@@ -46,6 +46,8 @@ Esses são plugins de fichas para diversos sistemas (Próprios e Comerciais) e s
 	- Ficha para d20system. Usada por jogadores de D&D3.5 e outros derivados.
 - [Ficha Shadowrun 5e](https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20Shadowrun%205E/output/Ficha%20Shadowrun%205E.rpk?raw=true): Ambesek
 	- Para o sistema e cenario Shadowrun 5ª edição
+- [Ficha Star Wars 5e](https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20Star%20Wars%205e/output/Ficha%20Star%20Wars%205e.rpk?raw=true): Ambesek
+	- Ficha para Star Wars 5e.
 - [Ficha The Maze](https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20The%20Maze/output/Ficha%20The%20Maze.rpk?raw=true): Ambesek
 	- Ficha para o cenario e sistema The Maze.
 - [Ficha Tormenta Imperio De Jade](https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Arc%20Metal%20Zhuls/output/Arc%20Metal%20Zhuls.rpk?raw=true): Miguel "AJ" Carigo
