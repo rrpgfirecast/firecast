@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmAtaques" align="client">
+
+	<scrollBox align="client">
+		<flowLayout align="top" autoHeight="true" maxColumns="3" horzAlign="center" orientation="vertical" avoidScale="true">
+			<ListaFlexivel nome="ATAQUES" rclName="campoDosAtaques" rclField="campoDosAtaques" form="frmAtaque"/>
+			<ListaFlexivel nome="PODERES DE COMBATE" rclName="campoDosPoderesDeAtaque" rclField="campoDosPoderesDeAtaque" form="frmFichaRPGmeister4h_svg"/>
+		</flowLayout>
+	</scrollBox>
+</form>

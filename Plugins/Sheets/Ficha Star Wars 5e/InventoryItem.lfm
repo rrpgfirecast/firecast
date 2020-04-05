@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmItem" height="40" width="300" margins="{top=2}">
+	 <script> 
+		<![CDATA[			
+		local function askForDelete()
+			Dialogs.confirmYesNo("Deseja realmente apagar esse item?",
+								 function (confirmado)
+									if confirmado then
+										NDB.deleteNode(sheet);
+									end;
+								 end);
+		end;
+		]]>
+	</script>
+
+	<template name="flexEdit">
+		<layout align="$(align)" width="$(width)">
+			<label align="top" height="15" fontSize="10" text="$(text)"/>
+			<edit align="bottom" height="25" field="$(field)"/>
+		</layout>
+	</template>
+
+	<layout align="right" width="125">
+		<button align="right" width="25" text="X" onClick="askForDelete();"/>
+		<flexEdit align="left" width="50" text="Valor" field="valor"/>
+		<flexEdit align="left" width="50" text="Peso" field="peso"/>
+	</layout>
+	<flexEdit align="client" width="100" text="Item" field="item"/>
+</form>

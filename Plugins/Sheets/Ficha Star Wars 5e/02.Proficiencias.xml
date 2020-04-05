@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmDnDNext_proficiencias" align="client" theme="dark" margins="{top=1}">
+	<scrollBox align="client">
+		<rectangle align="client" color="#0000007F">
+		
+			<button text="+" align="top" height="50" onClick="self.rclListaDasProficiencias:append();"/>
+
+			<recordList name="rclListaDasProficiencias" field="campoDasProficiencias" templateForm="frmDnDNext_proficiencias_proficiencia" align="client" layout="verticalTiles">
+					<event name="onCompare">
+			            return ((tonumber(nodeA.atr) or 0) - (tonumber(nodeB.atr) or 0));
+			        </event>
+			        <event name="onEndEnumeration">
+						if sheet==nil then return end;
+						local nodes = NDB.getChildNodes(sheet.campoDasProficiencias);               
+						if #nodes > 0 then return end;
+
+						local prof = {};
+						prof[1] = {losango=true,atr=1,nome="TR de Força"};
+						prof[2] = {losango=true,atr=2,nome="TR de Destreza"};
+						prof[3] = {losango=true,atr=3,nome="TR de Constitução"};
+						prof[4] = {losango=true,atr=4,nome="TR de Inteligência"};
+						prof[5] = {losango=true,atr=5,nome="TR de Sabedoria"};
+						prof[6] = {losango=true,atr=6,nome="TR de Carisma"};
+						prof[7] = {losango=false,atr=1,nome="Atletismo"};
+						prof[8] = {losango=false,atr=2,nome="Acrobacia"};
+						prof[9] = {losango=false,atr=2,nome="Furtividade"};
+						prof[10] = {losango=false,atr=2,nome="Prestidigitação"};
+						prof[11] = {losango=false,atr=4,nome="Tecnologia"};
+						prof[12] = {losango=false,atr=4,nome="História"};
+						prof[13] = {losango=false,atr=4,nome="Investigação"};
+						prof[14] = {losango=false,atr=4,nome="Natureza"};
+						prof[15] = {losango=false,atr=4,nome="Pilotar"};
+						prof[16] = {losango=false,atr=5,nome="Adestrar Animais"};
+						prof[17] = {losango=false,atr=5,nome="Intuição"};
+						prof[18] = {losango=false,atr=5,nome="Medicina"};
+						prof[19] = {losango=false,atr=5,nome="Percepção"};
+						prof[20] = {losango=false,atr=5,nome="Sobrevivência"};
+						prof[21] = {losango=false,atr=6,nome="Atuação"};
+						prof[22] = {losango=false,atr=6,nome="Enganação"};
+						prof[23] = {losango=false,atr=6,nome="Intimidação"};
+						prof[24] = {losango=false,atr=6,nome="Persuasão"};
+
+						for i=1, #prof, 1 do
+							local item = self.rclListaDasProficiencias:append();
+							item.losango = prof[i].losango;
+							item.atr = prof[i].atr;
+							item.nome = prof[i].nome;
+						end;
+
+			        </event>
+			</recordList>
+
+			<dataLink fields="{'bonusProficiencia','atributos.modforca','atributos.moddestreza','atributos.modconstituicao','atributos.modinteligencia','atributos.modsabedoria','atributos.modcarisma'}">
+					<event name="onChange">
+						if sheet==nil then return end;
+
+						local nodes = ndb.getChildNodes(sheet.campoDasProficiencias); 
+
+						for i=1, #nodes, 1 do
+							local bonus = 0;
+							if nodes[i].x1 then
+								bonus = tonumber(sheet.bonusProficiencia) or 0;
+							elseif nodes[i].x2 then
+								bonus = (tonumber(sheet.bonusProficiencia) or 0) * 2;
+							end;
+
+							local atr = {"forca","destreza","constituicao","inteligencia","sabedoria","carisma", ""};
+							local atrNum = tonumber(nodes[i].atr) or 7;
+							local atribute = atr[atrNum] or "";
+							mod = tonumber(sheet.atributos["mod" .. atribute]) or 0;
+
+							nodes[i].total = bonus + mod;
+						end;
+					</event>
+			</dataLink>
+		</rectangle>
+	</scrollBox>
+</form>

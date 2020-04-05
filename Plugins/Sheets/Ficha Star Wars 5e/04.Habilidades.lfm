@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmHabilidades" align="client">
+	<template name="habilidadeSmallCenter">
+		<flowPart minWidth="90" maxWidth="100" height="35">
+			<label align="top" class="tituloCampo" fontSize="10" text="$(text)" horzTextAlign="center" wordWrap="true" textTrimming="none" autoSize="true"/>
+			<edit align="client" class="" field="$(field)" horzTextAlign="center" fontSize="12" type="number"/>
+		</flowPart>
+	</template>
+	<template name="habilidadeLarge">
+		<flowPart minWidth="180" maxWidth="200" height="35">
+			<label align="top" class="tituloCampo" fontSize="10" text="$(text)" horzTextAlign="center" wordWrap="true" textTrimming="none" autoSize="true"/>
+			<edit align="client" class="" field="$(field)" fontSize="12"/>
+		</flowPart>
+	</template>
+	<template name="ListaFlexivel">
+		<flowPart minWidth="300" maxWidth="600" height="25" minScaledWidth="280" name="$(rclName)Part" adjustHeightToLine="false" margins="{left=5}">
+			<script>
+				<![CDATA[
+					rawset(self.$(rclName)Part, "_recalcHeight", 					
+						function ()
+							self.$(rclName)Part.height = self.$(rclName).height + 25;
+						end);
+				]]>
+			</script>
+
+			<layout align="top" height="25">
+				<button text="+" align="left" width="30" onClick="self.$(rclName):append();"/>
+				<label text="$(nome)" align="left" width="225" margins="{left=5}"/>
+			</layout>
+
+			<recordList name="$(rclName)" field="$(rclField)" templateForm="$(form)" align="top" layout="vertical" autoHeight="true" hitTest="false" onResize="self.$(rclName)Part._recalcHeight();" minQt="1">
+				<event name="onCompare">
+			        return ((tonumber(nodeA.nivelHabilidade) or 0) - (tonumber(nodeB.nivelHabilidade) or 0));
+			    </event>
+			</recordList>
+		</flowPart>
+	</template>	
+
+	<popup name="popHabilidade" width="300" height="240" backOpacity="0.4" autoScopeNode="false">
+			<flowLayout align="top" autoHeight="true" maxControlsPerLine="3" margins="{bottom=4}" horzAlign="center">
+				<habilidadeSmallCenter text="Nível" field="nivelHabilidade"/>
+				<habilidadeLarge text="Obtido" field="obtencaoHabilidade"/>
+				<habilidadeSmallCenter text="Página" field="paginaHabilidade"/>
+				<habilidadeLarge text="Livro" field="livroHabilidade"/>
+				<dataLink field="nivelHabilidade">
+					<event name="onChange">
+						local rcl = self:findControlByName("rclListaDosTalentos");
+						if rcl~= nil then
+							rcl:sort();
+						end;
+						local rcl = self:findControlByName("rclListaDasProezas");
+						if rcl~= nil then
+							rcl:sort();
+						end;
+						rcl = self:findControlByName("rclListaDosOutros");
+						if rcl~= nil then
+							rcl:sort();
+						end;
+						rcl = self:findControlByName("rclListaDasCaracteristicasClasse");
+						if rcl~= nil then
+							rcl:sort();
+						end;
+					</event>
+				</dataLink>
+			</flowLayout>
+			<textEditor align="client" field="descricao"/>
+	</popup>
+	<popup name="BarPopup" width="140" height="66" backOpacity="0" margins="{left=4, right=4, top=4, bottom=4}" autoScopeNode="false">
+		<rectangle align="client" color="white" xradius="5" yradius="5">
+			<rectangle align="client" name="PopupBarColor" color="#808080" xradius="5" yradius="5" opacity="0.9">
+				<label fontColor="black" margins="{left=6, top=2}" align="top" text="Valor" field="AtributoBarrinha" fontSize="12" fontStyle="bold" textTrimming="character"/>
+				<layout align="client" margins="{top=2, left=4}">
+					<layout align="top" height="18">
+						<label fontColor="black" align="left" text="Atual:  " horzTextAlign="trailing" width="34" margins="{right=2}" fontSize="12"/>
+						<comboBox fontColor="white" margins="{left=2}" align="left" transparent="false" width="40" field="ModificadorBarrinha" items="{'=', '+', '-'}" values="{'igual', 'mais', 'menos'}" value="igual"/>
+						<edit fontColor="white" margins="{left=2, right=4}" type="number" align="client" field="ValorMudadoAtualBarrinha" name="currentBarValue">
+							<event name="OnKeyDown">
+								local oenter = (event.keyCode == 13)
+								if oenter then
+									self.BarPopup:close();
+								end;
+							</event>
+						</edit>
+					</layout>
+					<layout align="top" height="18">
+						<label fontColor="black" align="left" text="Max:  " horzTextAlign="trailing" width="34" margins="{right=2}" fontSize="12"/>
+						<comboBox fontColor="white" margins="{left=2}" align="left" transparent="false" width="40" field="ModificadorBarrinhaMax" items="{'=', '+', '-'}" values="{'igual', 'mais', 'menos'}" value="igual"/>
+						<edit fontColor="white" margins="{left=2, right=4}" type="number" align="client" field="ValorMudadoMaxBarrinha" name="maxBarValue">
+							<event name="OnKeyDown">
+								local oenter = (event.keyCode == 13);
+								if oenter then
+									self.BarPopup:close();
+								end;
+							</event>
+						</edit>
+					</layout>
+				</layout>
+			</rectangle>
+		</rectangle>
+		
+		<event name="onClose">
+			setTimeout( function()
+				if (self.BarPopup.scopeNode.ModificadorBarrinha == "igual") then
+					self.BarPopup.scopeNode.ValorTempAtualBarrinha = tonumber(self.BarPopup.scopeNode.ValorMudadoAtualBarrinha or 0);
+				elseif (self.BarPopup.scopeNode.ModificadorBarrinha == "mais") then
+					self.BarPopup.scopeNode.ValorTempAtualBarrinha = tonumber(self.BarPopup.scopeNode.ValorTempAtualBarrinha or 0) + tonumber(self.BarPopup.scopeNode.ValorMudadoAtualBarrinha or 0);
+				elseif (self.BarPopup.scopeNode.ModificadorBarrinha == "menos") then
+					self.BarPopup.scopeNode.ValorTempAtualBarrinha = tonumber(self.BarPopup.scopeNode.ValorTempAtualBarrinha or 0) - tonumber(self.BarPopup.scopeNode.ValorMudadoAtualBarrinha or 0);
+				end;
+				
+				if (self.BarPopup.scopeNode.ModificadorBarrinhaMax == "igual") then
+					self.BarPopup.scopeNode.ValorTempMaxBarrinha = tonumber(self.BarPopup.scopeNode.ValorMudadoMaxBarrinha or 0);
+				elseif (self.BarPopup.scopeNode.ModificadorBarrinhaMax == "mais") then
+					self.BarPopup.scopeNode.ValorTempMaxBarrinha = tonumber(self.BarPopup.scopeNode.ValorTempMaxBarrinha or 0) + tonumber(self.BarPopup.scopeNode.ValorMudadoMaxBarrinha or 0);
+				elseif (self.BarPopup.scopeNode.ModificadorBarrinhaMax == "menos") then
+					self.BarPopup.scopeNode.ValorTempMaxBarrinha = tonumber(self.BarPopup.scopeNode.ValorTempMaxBarrinha or 0) - tonumber(self.BarPopup.scopeNode.ValorMudadoMaxBarrinha or 0);
+				end;
+				
+				local barrinhapc = 0
+				local barrinhapcmax = 0
+				local porcentagem = 0
+				local porcentagemmax = 0
+
+				barrinhapc = (self.BarPopup.scopeNode.ValorTempAtualBarrinha - (self.BarPopup.scopeNode.BarrinhaValor or 0));
+				barrinhapcmax = (self.BarPopup.scopeNode.ValorTempMaxBarrinha - (self.BarPopup.scopeNode.BarrinhaValorMax or 0));
+				self.BarPopup.scopeNode.BarrinhaValor = self.BarPopup.scopeNode.ValorTempAtualBarrinha;
+				self.BarPopup.scopeNode.BarrinhaValorMax = self.BarPopup.scopeNode.ValorTempMaxBarrinha;
+				
+				if ((barrinhapc ~= 0) or (barrinhapcmax ~= 0)) then
+					local nome = self.BarPopup.scopeNode.AtributoBarrinha or "Equipamento";
+					local personagem = sheet.nome or "nome";
+					local text = "[§K2]" .. nome .. "[§K3] de [§K2]" .. personagem.. "[§K3]: ";
+					local valor = barrinhapc;
+					local valormax = barrinhapcmax;
+					
+					if tonumber(barrinhapc) >= 0 then
+						valor = "+" .. tostring(barrinhapc);
+					end;
+					if tonumber(barrinhapcmax) >= 0 then
+						valormax = "+" .. tostring(barrinhapcmax);
+					end;
+					
+					if tonumber(valormax) == 0 then
+						text = text .. valor;
+					else
+						text = text .. valor .. "/" .. valormax;
+					end;
+					
+					local mesaDoPersonagem = Firecast.getMesaDe(sheet);
+					if mesaDoPersonagem ~= nil then
+						   mesaDoPersonagem.activeChat:enviarMensagem(text);
+					end;
+				end;
+			end, 100);
+		</event>
+	</popup>
+
+	<scrollBox align="client">
+		<flowLayout align="top" autoHeight="true" maxColumns="3" horzAlign="center" orientation="vertical" avoidScale="true">
+			<ListaFlexivel nome="TALENTOS" rclName="campoDosTalentos" rclField="campoDosTalentos" form="frmFichaRPGmeister4h_svg"/>
+			<ListaFlexivel nome="OUTROS" rclName="campoDosOutros" rclField="campoDosOutros" form="frmFichaRPGmeister4h_svg"/>
+			<ListaFlexivel nome="CARACTERISTICAS RACIAIS" rclName="campoDasRacas" rclField="campoDasRacas" form="frmFichaRPGmeister4h_svg"/>
+			<ListaFlexivel nome="CARACTERISTICAS DE CLASSE" rclName="campoDasCaracteristicasClasse" rclField="campoDasCaracteristicasClasse" form="frmFichaRPGmeister4h_svg"/>
+		</flowLayout>
+	</scrollBox>
+</form>

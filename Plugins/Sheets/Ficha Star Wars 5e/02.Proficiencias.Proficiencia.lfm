@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmDnDNext_proficiencias_proficiencia" height="25" width="350" margins="{top=2,right=10}">
+	 <script> 
+		<![CDATA[			
+		local function askForDelete()
+			dialogs.confirmYesNo("Deseja realmente apagar essa habilidade?",
+				function (confirmado)
+					if confirmado then
+						ndb.deleteNode(sheet);
+					end;
+				end);
+		end;
+	]]>
+	</script>
+
+	<rectangle align="client" color="#202020" hitTest="false"/>
+
+	<imageCheckBox align="left" width="20" field="x1" name="x1" optimize="false" imageChecked="images/checkbox1_checked.png" imageUnchecked="images/checkbox1_unchecked.png" height="20"/>
+	<imageCheckBox align="left" width="20" field="x2" name="x2" optimize="false" imageChecked="images/checkbox1_checked.png" imageUnchecked="images/checkbox1_unchecked.png" height="20"/>
+
+	<comboBox align="left" field="atr" width="60" items="{'FOR', 'DES', 'CON', 'INT', 'SAB', 'CAR', '-'}" values="{'1', '2', '3', '4', '5', '6', '7'}"/>
+
+	<layout align="left" width="26" margins="{left=2}">	
+		<label field="total" align="client" horzTextAlign="center" vertTextAlign="trailing" textTrimming="none"/>
+		<horzLine strokeColor="white" strokeSize="1" align="bottom"/>
+	</layout>
+	<edit align="client" field="nome" vertTextAlign="trailing" margins="{left=5}" wordWrap="false"/>
+
+	<button align="right" width="25" text="X" onClick="askForDelete();"/>
+
+	<dataLink fields="{'x1','x2','atr'}">
+		<event name="onChange">
+			if sheet==nil then return end;
+			local node = ndb.getRoot(sheet);
+
+			local bonus = 0;
+			if sheet.x1 then
+				bonus = tonumber(node.bonusProficiencia) or 0;
+			elseif sheet.x2 then
+				bonus = (tonumber(node.bonusProficiencia) or 0) * 2;
+			end;
+			
+			local atr = {"forca","destreza","constituicao","inteligencia","sabedoria","carisma", ""};
+			local atrNum = tonumber(sheet.atr) or 7;
+			local atribute = atr[atrNum] or "";
+			local mod = 0;
+			if (node.atributos ~= nil) then
+				mod = tonumber(node.atributos["mod" .. atribute]) or 0;
+			end;
+			
+			sheet.total = bonus + mod;
+		</event>
+	</dataLink>
+
+	<dataLink field="losango">
+		<event name="onChange">
+			if sheet==nil then return end;
+
+			if sheet.losango then 
+				self.x1.imageChecked="images/checkbox2_checked.png";
+				self.x1.imageUnchecked="images/checkbox2_unchecked.png";
+				self.x2.imageChecked="images/checkbox2_checked.png";
+				self.x2.imageUnchecked="images/checkbox2_unchecked.png";
+			else
+				self.x1.imageChecked="images/checkbox1_checked.png";
+				self.x1.imageUnchecked="images/checkbox1_unchecked.png";
+				self.x2.imageChecked="images/checkbox1_checked.png";
+				self.x2.imageUnchecked="images/checkbox1_unchecked.png";
+			end;
+		</event>
+	</dataLink>
+
+	<dataLink field="x1">
+		<event name="onChange">
+			if sheet==nil then return end;
+
+			if sheet.x1 then
+				sheet.x2 = false;
+			end
+		</event>
+	</dataLink>
+
+	<dataLink field="x2">
+		<event name="onChange">
+			if sheet==nil then return end;
+
+			if sheet.x2 then
+				sheet.x1 = false;
+			end
+		</event>
+	</dataLink>
+</form>
