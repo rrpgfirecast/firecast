@@ -279,4 +279,9 @@
             <dataType id="Lista.de.NPC.Ficha" title="Lista de NPCs (Ficha)"/>
         </dataTypes>
     </element>
+    <element id="Ambesek.Simple.Dealer" name="Dealer" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/ChatMods/Dealer/output/Dealer.rpk?raw=true" fileName="Dealer.rpk" repositoryPath="ChatMods/Dealer/" author="Ambesek" description="A simple card dealer for games that use decks of cards." version="0.1" compilationDate="26112019235846" compilationDigest="2c436d55f7346bc88202c1a8ce6d621275db7df0">
+        <dataTypes>
+            <dataType id="Ambesek.Simple.Dealer" title="Dealer"/>
+        </dataTypes>
+    </element>
 </root>
