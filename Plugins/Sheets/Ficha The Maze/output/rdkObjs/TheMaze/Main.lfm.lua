@@ -1058,7 +1058,7 @@ local function constructNew_frmMain()
     obj.label42:setTop(100);
     obj.label42:setWidth(110);
     obj.label42:setHeight(20);
-    obj.label42:setText("Percepção");
+    obj.label42:setText("Intuição");
     obj.label42:setHorzTextAlign("center");
     obj.label42:setName("label42");
 
@@ -1079,7 +1079,7 @@ local function constructNew_frmMain()
     obj.label43:setTop(100);
     obj.label43:setWidth(110);
     obj.label43:setHeight(20);
-    obj.label43:setText("Maldição");
+    obj.label43:setText("Impulsividade");
     obj.label43:setHorzTextAlign("center");
     obj.label43:setName("label43");
 
@@ -1121,7 +1121,7 @@ local function constructNew_frmMain()
     obj.label45:setTop(125);
     obj.label45:setWidth(110);
     obj.label45:setHeight(20);
-    obj.label45:setText("Vaidade");
+    obj.label45:setText("Materialismo");
     obj.label45:setHorzTextAlign("center");
     obj.label45:setName("label45");
 
@@ -4571,7 +4571,7 @@ local function constructNew_frmMain()
             if sheet==nil then return end;
             
             					local nivel = (tonumber(sheet.nivel) or 0);
-            					sheet.vidaBase = 380 + (nivel * 20);
+            					sheet.vidaBase = 360 + (nivel * 40);
             					sheet.fadigaBase = 90 + (nivel * 10);
             					sheet.imersaoBase = 10 + (nivel * 5);
             					sheet.atr_max = 44 + (nivel * 4);
@@ -4756,7 +4756,7 @@ local function constructNew_frmMain()
             					local pen = (sheet.carac_penalidade) or 0;
             					local extra = (sheet.carac_extra) or 0;
             
-            					sheet.carac_total = 15 + nivel + pen + extra;
+            					sheet.carac_total = nivel - 1 + pen + extra;
         end, obj);
 
     obj._e_event16 = obj.dataLink13:addEventListener("onChange",
@@ -4852,7 +4852,7 @@ local function constructNew_frmMain()
             
             				local iniciativa = 	(tonumber(sheet.iniciativaBase) or 0) + 
             									(tonumber(sheet.iniciativaAdicional) or 0);
-            				sheet.iniciativaTotal = iniciativa .. "";
+            				sheet.iniciativaTotal = iniciativa .. "%";
         end, obj);
 
     obj._e_event26 = obj.dataLink23:addEventListener("onChange",
@@ -5042,16 +5042,20 @@ local function constructNew_frmMain()
             
             					sheet.regVidaBase = 10 + math.floor(cac/4)*2;
             					sheet.regFadigaBase = 10 + math.floor(paranormalidade/4)*2;
-            					sheet.iniciativaBase = math.floor(agilidade/6);
+            					if agilidade > 4 then
+            						sheet.iniciativaBase = math.floor(agilidade);
+            					else
+            						sheet.iniciativaBase = 0;
+            					end;
             					sheet.criticoBase = 1 + math.floor(sorte/6);
-            					sheet.amplificacaoBase = 50 + math.floor(destreza/4)*5;
+            					sheet.amplificacaoBase = math.floor(destreza/4)*10;
             					sheet.negacaoBase = math.floor(precisao/4)*5;
             
             					-- REDUTORES
             
-            					sheet.fisicoBase = math.floor(cac/4)*10;
-            					sheet.paranormalBase = math.floor(paranormalidade/4)*10;
-            					sheet.projetilBase = math.floor(sorte/4)*10;
+            					sheet.fisicoBase = math.floor(cac/4)*20;
+            					sheet.paranormalBase = math.floor(paranormalidade/4)*20;
+            					sheet.projetilBase = math.floor(sorte/4)*20;
             
             					sheet.corrosivoBase = 0;
             
