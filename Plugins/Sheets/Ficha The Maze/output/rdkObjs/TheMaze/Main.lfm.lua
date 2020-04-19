@@ -5042,7 +5042,7 @@ local function constructNew_frmMain()
             
             					sheet.regVidaBase = 10 + math.floor(cac/4)*2;
             					sheet.regFadigaBase = 10 + math.floor(paranormalidade/4)*2;
-            					if agilidade > 4 then
+            					if agilidade > 3 then
             						sheet.iniciativaBase = math.floor(agilidade);
             					else
             						sheet.iniciativaBase = 0;
