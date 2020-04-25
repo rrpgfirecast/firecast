@@ -204,6 +204,8 @@ local function constructNew_frmFichaRPGmeister2Aar_svg()
                         pen = pen - 2;
                     end;
     			end;
+            elseif sheet.forma=="5" then
+                dado = dado .. "+" .. math.max(forc, des);
     		elseif sheet.empunhadura=="2" and sheet.ambidestria then
     			dado = dado .. "+" .. (forc*2);
     		elseif sheet.empunhadura=="2" or sheet.mao=="2" then
@@ -1246,8 +1248,8 @@ local function constructNew_frmFichaRPGmeister2Aar_svg()
     obj.comboBox1:setWidth(150);
     obj.comboBox1:setHeight(25);
     obj.comboBox1:setField("forma");
-    obj.comboBox1:setItems({'Corpo-a-Corpo', 'Distancia', 'Arremesso', 'Acuidade'});
-    obj.comboBox1:setValues({'1', '2', '3', '4'});
+    obj.comboBox1:setItems({'Corpo-a-Corpo', 'Distancia', 'Arremesso', 'Acuidade', 'Acuidade Mitica'});
+    obj.comboBox1:setValues({'1', '2', '3', '4', '5'});
     obj.comboBox1:setFontColor("white");
     obj.comboBox1:setName("comboBox1");
 

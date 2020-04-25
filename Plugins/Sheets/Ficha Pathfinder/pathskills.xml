@@ -48,7 +48,7 @@
     <__EHEX_3136 armadura="0" chave="4" nome="Conhecimento Religião" treino="True">
         <__ndb__ id="17" t_armadura="6" t_chave="S" t_nome="S" t_treino="B" />
     </__EHEX_3136>
-    <__EHEX_3137 armadura="0" chave="4" nome="Cura" treino="False">
+    <__EHEX_3137 armadura="0" chave="5" nome="Cura" treino="False">
         <__ndb__ id="18" t_armadura="6" t_chave="S" t_nome="S" t_treino="B" />
     </__EHEX_3137>
     <__EHEX_3138 armadura="0" chave="6" nome="Diplomacia" treino="False">
@@ -78,7 +78,7 @@
     <__EHEX_3236 armadura="0" chave="4" nome="Ofícios" treino="False">
         <__ndb__ id="27" t_armadura="6" t_chave="S" t_nome="S" t_treino="B" />
     </__EHEX_3236>
-    <__EHEX_3237 armadura="0" chave="4" nome="Operar Mecanismos" treino="True">
+    <__EHEX_3237 armadura="0" chave="2" nome="Operar Mecanismos" treino="True">
         <__ndb__ id="28" t_armadura="6" t_chave="S" t_nome="S" t_treino="B" />
     </__EHEX_3237>
     <__EHEX_3238 armadura="0" chave="5" nome="Percepção" treino="False">
@@ -105,11 +105,8 @@
     <__EHEX_3335 armadura="0" chave="4" nome="Conhecimento Geografia" treino="True">
         <__ndb__ id="36" t_armadura="6" t_chave="S" t_nome="S" t_treino="B" />
     </__EHEX_3335>
-    <__EHEX_3336 armadura="0" chave="4" nome="Linguística" treino="True">
-        <__ndb__ id="37" t_armadura="6" t_chave="S" t_nome="S" t_treino="B" />
+    <__EHEX_3336>
+        <__ndb__ id="36" />
     </__EHEX_3336>
-    <__EHEX_3435>
-        <__ndb__ id="38" />
-    </__EHEX_3435>
-    <__ndb__ id="1" idGenerator="38" />
+    <__ndb__ id="1" idGenerator="36" />
 </database>

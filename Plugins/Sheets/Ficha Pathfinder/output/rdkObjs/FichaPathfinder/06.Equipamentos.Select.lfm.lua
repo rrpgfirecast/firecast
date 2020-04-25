@@ -32,12 +32,47 @@ local function constructNew_frmFichaRPGmeister6ES_svg()
     obj:setTheme("dark");
     obj:setMargins({top=3});
 
+
+		local function use()
+			local mesa = Firecast.getMesaDe(sheet);
+
+			local texto = (sheet.nome or "Equipamento") .. " foi usado.";
+			if sheet.cd~=nil then
+				texto = texto .. " CD: " .. sheet.cd .. ".";
+			end;
+			
+			if sheet.dados~=nil then
+				local rolagem = Firecast.interpretarRolagem(sheet.dados);
+				
+				mesa.activeChat:rolarDados(rolagem, texto);
+			end;
+
+			if sheet.BarrinhaValor~=nil then
+				sheet.BarrinhaValor = tonumber(sheet.BarrinhaValor) - 1;
+
+				if sheet.dados==nil then
+					mesa.activeChat:enviarMensagem(texto);
+				end;
+			end;
+		end;
+	
+
+
     obj.background = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.background:setParent(obj);
     obj.background:setAlign("client");
     obj.background:setColor("#333333");
     obj.background:setHitTest(false);
     obj.background:setName("background");
+
+    obj.button1 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button1:setParent(obj);
+    obj.button1:setLeft(5);
+    obj.button1:setTop(5);
+    obj.button1:setWidth(20);
+    obj.button1:setHeight(20);
+    obj.button1:setText("U");
+    obj.button1:setName("button1");
 
     obj.label1 = GUI.fromHandle(_obj_newObject("label"));
     obj.label1:setParent(obj);
@@ -71,7 +106,13 @@ local function constructNew_frmFichaRPGmeister6ES_svg()
             self.background.color = "#333333";
         end, obj);
 
+    obj._e_event2 = obj.button1:addEventListener("onClick",
+        function (_)
+            use();
+        end, obj);
+
     function obj:_releaseEvents()
+        __o_rrpgObjs.removeEventListenerById(self._e_event2);
         __o_rrpgObjs.removeEventListenerById(self._e_event1);
         __o_rrpgObjs.removeEventListenerById(self._e_event0);
     end;
@@ -87,6 +128,7 @@ local function constructNew_frmFichaRPGmeister6ES_svg()
 
         if self.label2 ~= nil then self.label2:destroy(); self.label2 = nil; end;
         if self.background ~= nil then self.background:destroy(); self.background = nil; end;
+        if self.button1 ~= nil then self.button1:destroy(); self.button1 = nil; end;
         if self.label1 ~= nil then self.label1:destroy(); self.label1 = nil; end;
         self:_oldLFMDestroy();
     end;

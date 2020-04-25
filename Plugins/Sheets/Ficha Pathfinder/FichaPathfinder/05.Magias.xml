@@ -544,7 +544,49 @@
 
 						<flowLineBreak/>
 
-						<textEditor align="bottom" height="100" width="340" field="notes"/>
+						<textEditor align="bottom" height="75" width="340" field="notes"/>
+
+						<layout align="bottom" height="25" width="340">
+							<button vertTextAlign="center" left="0" top="0" width="100" height="25" text="Concentração" fontSize="11">
+				                <event name="onClick">
+				                    local concentracao = (tonumber(self.boxDetalhesDaMagia.node.concentracao) or 0);
+
+				                    local rolagem = Firecast.interpretarRolagem("1d20 +" .. concentracao);
+				                    local mesaDoPersonagem = Firecast.getMesaDe(sheet);
+				                    mesaDoPersonagem.activeChat:rolarDados(rolagem, "Teste de concentração de " .. (sheet.nome or "NOME"));
+				                </event>
+				            </button>
+				            
+							<rectangle left="105" top="0" width="50" height="25" color="black" strokeColor="white" strokeSize="1"/>
+							<label field="concentracao" left="110" top="0" width="40" height="25" vertTextAlign="center" horzTextAlign="center"/>
+
+							<comboBox vertTextAlign="center" horzTextAlign="center" left="155" top="0" width="60" height="25" field="atributoConcentracao" items="{'FOR', 'DES', 'CON', 'INT', 'SAB', 'CAR', '-'}" values="{'1', '2', '3', '4', '5', '6', '7'}" fontColor="white"/>
+							<edit vertTextAlign="center" left="215" top="0" width="50" height="25" field="concentracaoOutros"/>
+
+							<dataLink fields="{'NC', 'atributoConcentracao', 'concentracaoOutros'}">
+								<event name="onChange">
+									if sheet==nil then return end;
+									local concentracao = (tonumber(self.boxDetalhesDaMagia.node.NC) or 0) + 
+														 (tonumber(self.boxDetalhesDaMagia.node.concentracaoOutros) or 0);
+
+									if self.boxDetalhesDaMagia.node.atributoConcentracao == "1" then
+										concentracao = concentracao + sheet.efetModFor;
+									elseif self.boxDetalhesDaMagia.node.atributoConcentracao == "2" then
+										concentracao = concentracao + sheet.efetModDes;
+									elseif self.boxDetalhesDaMagia.node.atributoConcentracao == "3" then
+										concentracao = concentracao + sheet.efetModCon;
+									elseif self.boxDetalhesDaMagia.node.atributoConcentracao == "4" then
+										concentracao = concentracao + sheet.efetModInt;
+									elseif self.boxDetalhesDaMagia.node.atributoConcentracao == "5" then
+										concentracao = concentracao + sheet.efetModSab;
+									elseif self.boxDetalhesDaMagia.node.atributoConcentracao == "6" then
+										concentracao = concentracao + sheet.efetModCar;
+									end;
+
+									self.boxDetalhesDaMagia.node.concentracao = concentracao;
+								</event>
+							</dataLink>
+						</layout>
 					</flowLayout>
 				</rectangle>
 				<layout align="client" name="scrollPart" margins="{left=5}">

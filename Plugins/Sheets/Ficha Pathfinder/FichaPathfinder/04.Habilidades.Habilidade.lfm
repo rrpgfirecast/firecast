@@ -21,6 +21,29 @@
 				showMessage("Ops, bug.. nao encontrei o popup de habilidades para exibir");
 			end;				
 		end;
+
+		local function use()
+			local mesa = Firecast.getMesaDe(sheet);
+
+			local texto = (sheet.nomeHabilidade or "Habilidade") .. " foi usado.";
+			if sheet.cd~=nil then
+				texto = texto .. " CD: " .. sheet.cd .. ".";
+			end;
+			
+			if sheet.dados~=nil then
+				local rolagem = Firecast.interpretarRolagem(sheet.dados);
+				
+				mesa.activeChat:rolarDados(rolagem, texto);
+			end;
+
+			if sheet.BarrinhaValor~=nil then
+				sheet.BarrinhaValor = tonumber(sheet.BarrinhaValor) - 1;
+
+				if sheet.dados==nil then
+					mesa.activeChat:enviarMensagem(texto);
+				end;
+			end;
+		end;
 	]]>
 	</script>
 
@@ -77,6 +100,7 @@
 		</dataLink>
 	</layout>
 	<button align="right" width="25" text="i" onClick="showHabilidadePopup();"/>
+	<button align="right" width="25" text="U" onClick="use();"/>
 	<button align="right" width="25" text="X" onClick="askForDelete();"/>
 	<edit align="client" vertTextAlign="center" field="nomeHabilidade"/>
 </form>

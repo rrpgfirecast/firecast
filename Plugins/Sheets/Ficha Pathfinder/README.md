@@ -6,6 +6,9 @@ Talentos para Verificar:
 * Piranha Strike
 * Rajada de Golpes
 
+-BUG: pericias com atributos errados
+-BUG: concentração foi removido sem querer. 
+
 Versão 0.7
 - Campos editaveis invisiveis tem retangulo diferenciado agora. 
 - Aba de habilidades compativel com aparelhos moveis. 

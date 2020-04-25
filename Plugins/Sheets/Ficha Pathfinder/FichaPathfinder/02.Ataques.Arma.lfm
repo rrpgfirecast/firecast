@@ -172,6 +172,8 @@
                         pen = pen - 2;
                     end;
     			end;
+            elseif sheet.forma=="5" then
+                dado = dado .. "+" .. math.max(forc, des);
     		elseif sheet.empunhadura=="2" and sheet.ambidestria then
     			dado = dado .. "+" .. (forc*2);
     		elseif sheet.empunhadura=="2" or sheet.mao=="2" then
@@ -405,7 +407,7 @@
 		</layout>
 		<layout left="720" top="25" width="225" height="250">
 			<label left="0" top="0" width="75" height="25" text="Forma"/>
-			<comboBox left="75" top="0" width="150" height="25" field="forma" items="{'Corpo-a-Corpo', 'Distancia', 'Arremesso', 'Acuidade'}" values="{'1', '2', '3', '4'}" fontColor="white"/>
+			<comboBox left="75" top="0" width="150" height="25" field="forma" items="{'Corpo-a-Corpo', 'Distancia', 'Arremesso', 'Acuidade', 'Acuidade Mitica'}" values="{'1', '2', '3', '4', '5'}" fontColor="white"/>
 
             <label left="0" top="25" width="75" height="25" text="Empunhadura" fontSize="11"/>
 			<comboBox left="75" top="25" width="150" height="25" field="empunhadura" items="{'Leve', 'Uma Mão', 'Duas Mãos', 'Natural: Primario', 'Natural: Secundario'}" values="{'0', '1', '2', '3', '4'}" fontColor="white"/>
