@@ -73,7 +73,13 @@ SceneLib.registerPlugin(
 				                local arq = arquivos[1];
 
 				                FireDrive.createDirectory("/uploads");
-				                FireDrive.upload("/uploads/" .. arq.name, arq.stream,
+
+				                local date_table = os.date("*t")
+				                local subfolder = date_table.year .. date_table.month;
+
+				                FireDrive.createDirectory("/uploads/" .. subfolder);
+
+				                FireDrive.upload("/uploads/" .. subfolder .. "/" .. arq.name, arq.stream,
 				                	function(fditem)
 				                		local token = scene.items:addToken("tokens");
 
