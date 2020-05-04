@@ -132,12 +132,26 @@
 					<EdicaoBarrinha indice="2"/>
 					<EdicaoBarrinha indice="3"/>	
 					
-					
-				
 				</flowLayout>
 			</scrollBox>		
 		</tab>
 		
+		<tab name="tabAura" title="Auras">
+			<!-- AREA DO KAREL -->
+			<checkBox name="cbxPossuiAura" left="30" top="20" text="Possui Aura ?"/>
+			<label name="labAuraURL" visible="true" left="30" top="85"/>
+			<edit name="edtAuraURL" visible="false" left="130" top="80"/>
+			<label name="labFormaAura" left="30" top="50"/>
+			<comboBox name="cmbFormaAura" left="130" top="50" values="{'Circulo', 'Quadrado', 'Triangulo', 'URL'}"/>
+			<label name="labAlturaAura" left="30" top="125" />	
+			<edit name="edtAlturaAura" type="float" min="0.1" left="130" top="120"/>
+			<label name="labLarguraAura" left="30" top="165" />	
+			<edit name="edtLarguraAura" type="float" min="0.1" left="130 " top="160"/>
+			<edit name="edtFormaAura" visible="true" left="130" top="200"/> 
+			<colorComboBox name="cmbCorAura" left="130" top="205" />
+		 </tab>	
+
+		 
 		<template name="ComponenteDeLuz">
 			<!-- nomeLabel = uniqueName("labCompLuz");
 
@@ -239,6 +253,11 @@
 		self.labHasVision.text = lang('scene.fogOfWar.token.hasSight');
 		self.labFacingMode.text = lang('scene.FacingMode.title');
 		self.cmbFacingMode.items = {lang('scene.FacingMode.rotate'), lang('scene.FacingMode.arrow')};
+		self.labAlturaAura.text = lang('scene.labAlturaAura.text');
+		self.labLarguraAura.text = lang('scene.labLarguraAura.text');
+		self.labFormaAura.text = lang('scene.labFormaAura.text');
+		self.cmbFormaAura.items = {lang('scene.FormaAura.Circulo'), lang('scene.FormaAura.Quadrado'), lang('scene.FormaAura.Triangulo'), lang('scene.FormaAura.URL')};
+		self.labAuraURL.text = lang('scene.labAuraURL.text');
 		
 		function recursiveEnumPersonagensEmBibItem(bibItem, dest)
 			if bibItem.tipo == "personagem" then
@@ -304,8 +323,8 @@
 				end;
 			
 				self.cbxSnapToGrid.checked = theToken.snapToGrid;
-				self.edtNome.text = theToken.name;					
-								
+				self.edtNome.text = theToken.name;
+				
 				for i = 1, 3, 1 do
 					self["flpBar" .. i].visible = podeVerBarrinhas;
 					
@@ -316,6 +335,7 @@
 					end;
 				end;			
 				
+				
 				self.tabFOW.visible = podeVerCoisasDeFoW;
 				local metricToShow = lang("metric." .. oScene.worldMetricName);				
 				self.labMetricVLI.text = metricToShow;
@@ -323,8 +343,7 @@
 				self.labMetricVLE.text = metricToShow;
 				self.labMetricLI.text = metricToShow;
 				self.labMetricLF.text = metricToShow;
-	
-				
+								
 				self.edtMetricVLI.asNumber = theToken.visionIntenseLightRange;
 				self.edtMetricVLF.asNumber = theToken.visionWeakLightRange;
 				self.edtMetricVLE.asNumber = theToken.visionDarknessRange;				
@@ -332,12 +351,39 @@
 				self.edtMetricLF.asNumber = theToken.lightWeakRange;
 				self.edtAnguloVisao.asNumber = theToken.visionAngle;
 				self.edtAnguloLuz.asNumber = theToken.lightAngle;
-				self.cbxHasVision.checked = theToken.visionHaveVision;
+				self.cbxHasVision.checked = theToken.visionHaveVision;							
+				self.cmbFacingMode.value = theToken.facingMode;		
 				
-				self.cmbFacingMode.value = theToken.facingMode;				
-				self:endUpdate();
+------------------------------------------------------------------------------------------------	
+------------------------------------------------------------------------------------------------	
+------------------------------------------------------------------------------------------------	
+------------------------------------------------------------------------------------------------				
+				
+				local opGraficaAura = theToken.canvas:findByName(AURA_NAME);		
+						
+				if opGraficaAura ~= nil then				
+					self.cbxPossuiAura.checked = true
+					self.edtAlturaAura.asNumber = opGraficaAura.height or 0;					
+					self.edtLarguraAura.asNumber = opGraficaAura.width or 0;					
+					self.cmbFormaAura.value = opGraficaAura.userData.FormaAura;
+					
+					if opGraficaAura.userData.FormaAura == "URL" then
+						self.edtAuraURL.text = opGraficaAura.url; 					
+					else
+						self.cmbCorAura.color = opGraficaAura.color;					
+					end;					
+				else
+					self.cbxPossuiAura.checked = false						
+				end;																				
+				
+				self:endUpdate();				
+------------------------------------------------------------------------------------------------	
+------------------------------------------------------------------------------------------------	
+------------------------------------------------------------------------------------------------							
 			end;
+		
 		end;		
+		
 		
 		function self:processarOK()
 			if theToken == nil then
@@ -359,7 +405,7 @@
 							end;
 							
 							theToken.snapToGrid = self.cbxSnapToGrid.checked;
-							theToken.name = self.edtNome.text;
+							theToken.name = self.edtNome.text;				
 							
 							if podeVerBarrinhas then
 								for i = 1, 3, 1 do
@@ -368,7 +414,65 @@
 									theToken["barColor" .. i] = self["cmbCorBar" .. i].color;
 								end;										
 							end;
+------------------------------------------------------------------------------------------------	
+------------------------------------------------------------------------------------------------	
+------------------------------------------------------------------------------------------------	
+------------------------------------------------------------------------------------------------	
+							local opGraficaAura = theToken.canvas:findByName(AURA_NAME);	
 							
+							-- 1 - Deletar se precisar deletar, ou se o que tem lá não é util.
+							
+							if opGraficaAura ~= nil then
+							    local eraURL = opGraficaAura.userData.FormaAura == "URL"															
+								local deveSerURL = self.cmbFormaAura.value == "URL"
+							
+								if not self.cbxPossuiAura.checked or (eraURL and not deveSerURL) or (not eraURL and deveSerURL) then
+									opGraficaAura:delete()
+									opGraficaAura = nil
+								end;												
+							end
+														
+							
+							-- 2 -- Se precisar, criar aura
+														
+							if opGraficaAura == nil and self.cbxPossuiAura.checked then
+								if self.cmbFormaAura.value == "URL" then
+									opGraficaAura = theToken.canvas:addBitmap();
+								else
+									opGraficaAura = theToken.canvas:addPath();
+								end;															
+							end
+													
+							
+							-- 3 -- Se existir aura, alterar ela
+							
+							if opGraficaAura ~= nil then
+								opGraficaAura.name = AURA_NAME
+								opGraficaAura.height = self.edtAlturaAura.asNumber;
+								opGraficaAura.width = self.edtLarguraAura.asNumber;
+								opGraficaAura.y = -(opGraficaAura.height / 2);
+								opGraficaAura.x = -(opGraficaAura.width / 2);
+								opGraficaAura.xOrigin = 0.5;
+								opGraficaAura.yOrigin = 0.5;
+					            opGraficaAura.z = 10;                      
+								opGraficaAura.outOfOrderMode = "beforeOwnerLayer"; 
+								opGraficaAura.opacity = 0.5;     
+								opGraficaAura.userData.FormaAura = self.cmbFormaAura.value;
+								
+								if opGraficaAura.objectType == "opBitmap" then
+									opGraficaAura.url = "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Location_dot_dark_red.svg/1200px-Location_dot_dark_red.svg.png";
+								else								
+									opGraficaAura.data = "M 10 10 H 90 V 90 H 10 L 10 10";		
+									opGraficaAura.color = self.cmbCorAura.color;
+								end;
+							end;
+														
+							
+					
+------------------------------------------------------------------------------------------------	
+------------------------------------------------------------------------------------------------	
+------------------------------------------------------------------------------------------------	
+														
 							if podeVerCoisasDeFoW then
 								theToken.visionIntenseLightRange = self.edtMetricVLI.asNumber;
 								theToken.visionWeakLightRange = self.edtMetricVLF.asNumber;
@@ -378,6 +482,7 @@
 								theToken.visionAngle = self.edtAnguloVisao.asNumber;
 								theToken.lightAngle = self.edtAnguloLuz.asNumber;
 								theToken.visionHaveVision = self.cbxHasVision.checked;
+							
 							end;
 							
 							theToken.facingMode = self.cmbFacingMode.value;
@@ -385,11 +490,13 @@
 				end,
 				
 				function()
+				
 					theToken:endUpdate();	
 				end);			
 					
 			self:close();
 		end;
+	
 		
 		function self:processarCancel()
 			self:close();

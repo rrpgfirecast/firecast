@@ -389,6 +389,90 @@ local function constructNew_frmTokenProps()
 		
 
 
+    obj.tabAura = GUI.fromHandle(_obj_newObject("tab"));
+    obj.tabAura:setParent(obj.tabControl1);
+    obj.tabAura:setName("tabAura");
+    obj.tabAura:setTitle("Auras");
+
+    obj.cbxPossuiAura = GUI.fromHandle(_obj_newObject("checkBox"));
+    obj.cbxPossuiAura:setParent(obj.tabAura);
+    obj.cbxPossuiAura:setName("cbxPossuiAura");
+    obj.cbxPossuiAura:setLeft(30);
+    obj.cbxPossuiAura:setTop(20);
+    obj.cbxPossuiAura:setText("Possui Aura ?");
+
+    obj.labAuraURL = GUI.fromHandle(_obj_newObject("label"));
+    obj.labAuraURL:setParent(obj.tabAura);
+    obj.labAuraURL:setName("labAuraURL");
+    obj.labAuraURL:setVisible(true);
+    obj.labAuraURL:setLeft(30);
+    obj.labAuraURL:setTop(85);
+    obj.labAuraURL:setWordWrap(false);
+
+    obj.edtAuraURL = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edtAuraURL:setParent(obj.tabAura);
+    obj.edtAuraURL:setName("edtAuraURL");
+    obj.edtAuraURL:setVisible(false);
+    obj.edtAuraURL:setLeft(130);
+    obj.edtAuraURL:setTop(80);
+
+    obj.labFormaAura = GUI.fromHandle(_obj_newObject("label"));
+    obj.labFormaAura:setParent(obj.tabAura);
+    obj.labFormaAura:setName("labFormaAura");
+    obj.labFormaAura:setLeft(30);
+    obj.labFormaAura:setTop(50);
+    obj.labFormaAura:setWordWrap(false);
+
+    obj.cmbFormaAura = GUI.fromHandle(_obj_newObject("comboBox"));
+    obj.cmbFormaAura:setParent(obj.tabAura);
+    obj.cmbFormaAura:setName("cmbFormaAura");
+    obj.cmbFormaAura:setLeft(130);
+    obj.cmbFormaAura:setTop(50);
+    obj.cmbFormaAura:setValues({'Circulo', 'Quadrado', 'Triangulo', 'URL'});
+
+    obj.labAlturaAura = GUI.fromHandle(_obj_newObject("label"));
+    obj.labAlturaAura:setParent(obj.tabAura);
+    obj.labAlturaAura:setName("labAlturaAura");
+    obj.labAlturaAura:setLeft(30);
+    obj.labAlturaAura:setTop(125);
+    obj.labAlturaAura:setWordWrap(false);
+
+    obj.edtAlturaAura = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edtAlturaAura:setParent(obj.tabAura);
+    obj.edtAlturaAura:setName("edtAlturaAura");
+    obj.edtAlturaAura:setType("float");
+    obj.edtAlturaAura:setMin(0.1);
+    obj.edtAlturaAura:setLeft(130);
+    obj.edtAlturaAura:setTop(120);
+
+    obj.labLarguraAura = GUI.fromHandle(_obj_newObject("label"));
+    obj.labLarguraAura:setParent(obj.tabAura);
+    obj.labLarguraAura:setName("labLarguraAura");
+    obj.labLarguraAura:setLeft(30);
+    obj.labLarguraAura:setTop(165);
+    obj.labLarguraAura:setWordWrap(false);
+
+    obj.edtLarguraAura = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edtLarguraAura:setParent(obj.tabAura);
+    obj.edtLarguraAura:setName("edtLarguraAura");
+    obj.edtLarguraAura:setType("float");
+    obj.edtLarguraAura:setMin(0.1);
+    obj.edtLarguraAura:setLeft(130 );
+    obj.edtLarguraAura:setTop(160);
+
+    obj.edtFormaAura = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edtFormaAura:setParent(obj.tabAura);
+    obj.edtFormaAura:setName("edtFormaAura");
+    obj.edtFormaAura:setVisible(true);
+    obj.edtFormaAura:setLeft(130);
+    obj.edtFormaAura:setTop(200);
+
+    obj.cmbCorAura = GUI.fromHandle(_obj_newObject("colorComboBox"));
+    obj.cmbCorAura:setParent(obj.tabAura);
+    obj.cmbCorAura:setName("cmbCorAura");
+    obj.cmbCorAura:setLeft(130);
+    obj.cmbCorAura:setTop(205);
+
     obj.tabFOW = GUI.fromHandle(_obj_newObject("tab"));
     obj.tabFOW:setParent(obj.tabControl1);
     obj.tabFOW:setName("tabFOW");
@@ -890,6 +974,11 @@ local function constructNew_frmTokenProps()
 		self.labHasVision.text = lang('scene.fogOfWar.token.hasSight');
 		self.labFacingMode.text = lang('scene.FacingMode.title');
 		self.cmbFacingMode.items = {lang('scene.FacingMode.rotate'), lang('scene.FacingMode.arrow')};
+		self.labAlturaAura.text = lang('scene.labAlturaAura.text');
+		self.labLarguraAura.text = lang('scene.labLarguraAura.text');
+		self.labFormaAura.text = lang('scene.labFormaAura.text');
+		self.cmbFormaAura.items = {lang('scene.FormaAura.Circulo'), lang('scene.FormaAura.Quadrado'), lang('scene.FormaAura.Triangulo'), lang('scene.FormaAura.URL')};
+		self.labAuraURL.text = lang('scene.labAuraURL.text');
 		
 		function recursiveEnumPersonagensEmBibItem(bibItem, dest)
 			if bibItem.tipo == "personagem" then
@@ -955,8 +1044,8 @@ local function constructNew_frmTokenProps()
 				end;
 			
 				self.cbxSnapToGrid.checked = theToken.snapToGrid;
-				self.edtNome.text = theToken.name;					
-								
+				self.edtNome.text = theToken.name;
+				
 				for i = 1, 3, 1 do
 					self["flpBar" .. i].visible = podeVerBarrinhas;
 					
@@ -967,6 +1056,7 @@ local function constructNew_frmTokenProps()
 					end;
 				end;			
 				
+				
 				self.tabFOW.visible = podeVerCoisasDeFoW;
 				local metricToShow = lang("metric." .. oScene.worldMetricName);				
 				self.labMetricVLI.text = metricToShow;
@@ -974,8 +1064,7 @@ local function constructNew_frmTokenProps()
 				self.labMetricVLE.text = metricToShow;
 				self.labMetricLI.text = metricToShow;
 				self.labMetricLF.text = metricToShow;
-	
-				
+								
 				self.edtMetricVLI.asNumber = theToken.visionIntenseLightRange;
 				self.edtMetricVLF.asNumber = theToken.visionWeakLightRange;
 				self.edtMetricVLE.asNumber = theToken.visionDarknessRange;				
@@ -983,12 +1072,39 @@ local function constructNew_frmTokenProps()
 				self.edtMetricLF.asNumber = theToken.lightWeakRange;
 				self.edtAnguloVisao.asNumber = theToken.visionAngle;
 				self.edtAnguloLuz.asNumber = theToken.lightAngle;
-				self.cbxHasVision.checked = theToken.visionHaveVision;
+				self.cbxHasVision.checked = theToken.visionHaveVision;							
+				self.cmbFacingMode.value = theToken.facingMode;		
 				
-				self.cmbFacingMode.value = theToken.facingMode;				
-				self:endUpdate();
+------------------------------------------------------------------------------------------------	
+------------------------------------------------------------------------------------------------	
+------------------------------------------------------------------------------------------------	
+------------------------------------------------------------------------------------------------				
+				
+				local opGraficaAura = theToken.canvas:findByName(AURA_NAME);		
+						
+				if opGraficaAura ~= nil then				
+					self.cbxPossuiAura.checked = true
+					self.edtAlturaAura.asNumber = opGraficaAura.height or 0;					
+					self.edtLarguraAura.asNumber = opGraficaAura.width or 0;					
+					self.cmbFormaAura.value = opGraficaAura.userData.FormaAura;
+					
+					if opGraficaAura.userData.FormaAura == "URL" then
+						self.edtAuraURL.text = opGraficaAura.url; 					
+					else
+						self.cmbCorAura.color = opGraficaAura.color;					
+					end;					
+				else
+					self.cbxPossuiAura.checked = false						
+				end;																				
+				
+				self:endUpdate();				
+------------------------------------------------------------------------------------------------	
+------------------------------------------------------------------------------------------------	
+------------------------------------------------------------------------------------------------							
 			end;
+		
 		end;		
+		
 		
 		function self:processarOK()
 			if theToken == nil then
@@ -1010,7 +1126,7 @@ local function constructNew_frmTokenProps()
 							end;
 							
 							theToken.snapToGrid = self.cbxSnapToGrid.checked;
-							theToken.name = self.edtNome.text;
+							theToken.name = self.edtNome.text;				
 							
 							if podeVerBarrinhas then
 								for i = 1, 3, 1 do
@@ -1019,7 +1135,65 @@ local function constructNew_frmTokenProps()
 									theToken["barColor" .. i] = self["cmbCorBar" .. i].color;
 								end;										
 							end;
+------------------------------------------------------------------------------------------------	
+------------------------------------------------------------------------------------------------	
+------------------------------------------------------------------------------------------------	
+------------------------------------------------------------------------------------------------	
+							local opGraficaAura = theToken.canvas:findByName(AURA_NAME);	
 							
+							-- 1 - Deletar se precisar deletar, ou se o que tem lá não é util.
+							
+							if opGraficaAura ~= nil then
+							    local eraURL = opGraficaAura.userData.FormaAura == "URL"															
+								local deveSerURL = self.cmbFormaAura.value == "URL"
+							
+								if not self.cbxPossuiAura.checked or (eraURL and not deveSerURL) or (not eraURL and deveSerURL) then
+									opGraficaAura:delete()
+									opGraficaAura = nil
+								end;												
+							end
+														
+							
+							-- 2 -- Se precisar, criar aura
+														
+							if opGraficaAura == nil and self.cbxPossuiAura.checked then
+								if self.cmbFormaAura.value == "URL" then
+									opGraficaAura = theToken.canvas:addBitmap();
+								else
+									opGraficaAura = theToken.canvas:addPath();
+								end;															
+							end
+													
+							
+							-- 3 -- Se existir aura, alterar ela
+							
+							if opGraficaAura ~= nil then
+								opGraficaAura.name = AURA_NAME
+								opGraficaAura.height = self.edtAlturaAura.asNumber;
+								opGraficaAura.width = self.edtLarguraAura.asNumber;
+								opGraficaAura.y = -(opGraficaAura.height / 2);
+								opGraficaAura.x = -(opGraficaAura.width / 2);
+								opGraficaAura.xOrigin = 0.5;
+								opGraficaAura.yOrigin = 0.5;
+					            opGraficaAura.z = 10;                      
+								opGraficaAura.outOfOrderMode = "beforeOwnerLayer"; 
+								opGraficaAura.opacity = 0.5;     
+								opGraficaAura.userData.FormaAura = self.cmbFormaAura.value;
+								
+								if opGraficaAura.objectType == "opBitmap" then
+									opGraficaAura.url = "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Location_dot_dark_red.svg/1200px-Location_dot_dark_red.svg.png";
+								else								
+									opGraficaAura.data = "M 10 10 H 90 V 90 H 10 L 10 10";		
+									opGraficaAura.color = self.cmbCorAura.color;
+								end;
+							end;
+														
+							
+					
+------------------------------------------------------------------------------------------------	
+------------------------------------------------------------------------------------------------	
+------------------------------------------------------------------------------------------------	
+														
 							if podeVerCoisasDeFoW then
 								theToken.visionIntenseLightRange = self.edtMetricVLI.asNumber;
 								theToken.visionWeakLightRange = self.edtMetricVLF.asNumber;
@@ -1029,6 +1203,7 @@ local function constructNew_frmTokenProps()
 								theToken.visionAngle = self.edtAnguloVisao.asNumber;
 								theToken.lightAngle = self.edtAnguloLuz.asNumber;
 								theToken.visionHaveVision = self.cbxHasVision.checked;
+							
 							end;
 							
 							theToken.facingMode = self.cmbFacingMode.value;
@@ -1036,11 +1211,13 @@ local function constructNew_frmTokenProps()
 				end,
 				
 				function()
+				
 					theToken:endUpdate();	
 				end);			
 					
 			self:close();
 		end;
+	
 		
 		function self:processarCancel()
 			self:close();
@@ -1094,99 +1271,111 @@ local function constructNew_frmTokenProps()
 
         if self.edtMetricVLE ~= nil then self.edtMetricVLE:destroy(); self.edtMetricVLE = nil; end;
         if self.labCompAngulo1 ~= nil then self.labCompAngulo1:destroy(); self.labCompAngulo1 = nil; end;
-        if self.labCompLuz5 ~= nil then self.labCompLuz5:destroy(); self.labCompLuz5 = nil; end;
+        if self.edtLarguraAura ~= nil then self.edtLarguraAura:destroy(); self.edtLarguraAura = nil; end;
         if self.cbxHasVision ~= nil then self.cbxHasVision:destroy(); self.cbxHasVision = nil; end;
-        if self.label1 ~= nil then self.label1:destroy(); self.label1 = nil; end;
-        if self.layout4 ~= nil then self.layout4:destroy(); self.layout4 = nil; end;
         if self.flowPart8 ~= nil then self.flowPart8:destroy(); self.flowPart8 = nil; end;
         if self.layout15 ~= nil then self.layout15:destroy(); self.layout15 = nil; end;
         if self.flaContent ~= nil then self.flaContent:destroy(); self.flaContent = nil; end;
-        if self.labNome ~= nil then self.labNome:destroy(); self.labNome = nil; end;
-        if self.tabFOW ~= nil then self.tabFOW:destroy(); self.tabFOW = nil; end;
+        if self.layout10 ~= nil then self.layout10:destroy(); self.layout10 = nil; end;
         if self.edtBarMax3 ~= nil then self.edtBarMax3:destroy(); self.edtBarMax3 = nil; end;
+        if self.labAlturaAura ~= nil then self.labAlturaAura:destroy(); self.labAlturaAura = nil; end;
+        if self.edtBarMax1 ~= nil then self.edtBarMax1:destroy(); self.edtBarMax1 = nil; end;
+        if self.flowLayout3 ~= nil then self.flowLayout3:destroy(); self.flowLayout3 = nil; end;
+        if self.edtFormaAura ~= nil then self.edtFormaAura:destroy(); self.edtFormaAura = nil; end;
+        if self.labGroupHeader1 ~= nil then self.labGroupHeader1:destroy(); self.labGroupHeader1 = nil; end;
+        if self.edtAnguloVisao ~= nil then self.edtAnguloVisao:destroy(); self.edtAnguloVisao = nil; end;
+        if self.layout17 ~= nil then self.layout17:destroy(); self.layout17 = nil; end;
+        if self.flowPart7 ~= nil then self.flowPart7:destroy(); self.flowPart7 = nil; end;
+        if self.labLuz ~= nil then self.labLuz:destroy(); self.labLuz = nil; end;
+        if self.flowLayout1 ~= nil then self.flowLayout1:destroy(); self.flowLayout1 = nil; end;
+        if self.flowPart1 ~= nil then self.flowPart1:destroy(); self.flowPart1 = nil; end;
+        if self.flowPart2 ~= nil then self.flowPart2:destroy(); self.flowPart2 = nil; end;
+        if self.layout13 ~= nil then self.layout13:destroy(); self.layout13 = nil; end;
+        if self.layout3 ~= nil then self.layout3:destroy(); self.layout3 = nil; end;
+        if self.horzLine2 ~= nil then self.horzLine2:destroy(); self.horzLine2 = nil; end;
+        if self.layout8 ~= nil then self.layout8:destroy(); self.layout8 = nil; end;
+        if self.layout1 ~= nil then self.layout1:destroy(); self.layout1 = nil; end;
+        if self.cmbCorBar1 ~= nil then self.cmbCorBar1:destroy(); self.cmbCorBar1 = nil; end;
+        if self.labSnapToGrid ~= nil then self.labSnapToGrid:destroy(); self.labSnapToGrid = nil; end;
+        if self.tabAura ~= nil then self.tabAura:destroy(); self.tabAura = nil; end;
+        if self.labGroupHeader3 ~= nil then self.labGroupHeader3:destroy(); self.labGroupHeader3 = nil; end;
+        if self.layout12 ~= nil then self.layout12:destroy(); self.layout12 = nil; end;
+        if self.edtMetricVLI ~= nil then self.edtMetricVLI:destroy(); self.edtMetricVLI = nil; end;
+        if self.cmbFacingMode ~= nil then self.cmbFacingMode:destroy(); self.cmbFacingMode = nil; end;
+        if self.edtBarValue3 ~= nil then self.edtBarValue3:destroy(); self.edtBarValue3 = nil; end;
+        if self.labMetricVLI ~= nil then self.labMetricVLI:destroy(); self.labMetricVLI = nil; end;
+        if self.labCompLuz2 ~= nil then self.labCompLuz2:destroy(); self.labCompLuz2 = nil; end;
+        if self.layout9 ~= nil then self.layout9:destroy(); self.layout9 = nil; end;
+        if self.label4 ~= nil then self.label4:destroy(); self.label4 = nil; end;
+        if self.labMetricLF ~= nil then self.labMetricLF:destroy(); self.labMetricLF = nil; end;
+        if self.edtAnguloLuz ~= nil then self.edtAnguloLuz:destroy(); self.edtAnguloLuz = nil; end;
+        if self.labMetricLI ~= nil then self.labMetricLI:destroy(); self.labMetricLI = nil; end;
+        if self.scrollBox2 ~= nil then self.scrollBox2:destroy(); self.scrollBox2 = nil; end;
+        if self.edtMetricLF ~= nil then self.edtMetricLF:destroy(); self.edtMetricLF = nil; end;
+        if self.edtMetricLI ~= nil then self.edtMetricLI:destroy(); self.edtMetricLI = nil; end;
+        if self.edtNome ~= nil then self.edtNome:destroy(); self.edtNome = nil; end;
+        if self.tabPrincipal ~= nil then self.tabPrincipal:destroy(); self.tabPrincipal = nil; end;
+        if self.edtBarValue2 ~= nil then self.edtBarValue2:destroy(); self.edtBarValue2 = nil; end;
+        if self.cbxPossuiAura ~= nil then self.cbxPossuiAura:destroy(); self.cbxPossuiAura = nil; end;
+        if self.labBar3 ~= nil then self.labBar3:destroy(); self.labBar3 = nil; end;
+        if self.flowPart4 ~= nil then self.flowPart4:destroy(); self.flowPart4 = nil; end;
+        if self.labFormaAura ~= nil then self.labFormaAura:destroy(); self.labFormaAura = nil; end;
+        if self.labCompLuz4 ~= nil then self.labCompLuz4:destroy(); self.labCompLuz4 = nil; end;
+        if self.btnOk1 ~= nil then self.btnOk1:destroy(); self.btnOk1 = nil; end;
+        if self.cmbFormaAura ~= nil then self.cmbFormaAura:destroy(); self.cmbFormaAura = nil; end;
+        if self.labPersonagem ~= nil then self.labPersonagem:destroy(); self.labPersonagem = nil; end;
+        if self.labCampoDeVisao ~= nil then self.labCampoDeVisao:destroy(); self.labCampoDeVisao = nil; end;
+        if self.labCompLuz3 ~= nil then self.labCompLuz3:destroy(); self.labCompLuz3 = nil; end;
+        if self.labCompLuz5 ~= nil then self.labCompLuz5:destroy(); self.labCompLuz5 = nil; end;
+        if self.label1 ~= nil then self.label1:destroy(); self.label1 = nil; end;
+        if self.layout4 ~= nil then self.layout4:destroy(); self.layout4 = nil; end;
+        if self.edtAuraURL ~= nil then self.edtAuraURL:destroy(); self.edtAuraURL = nil; end;
+        if self.labNome ~= nil then self.labNome:destroy(); self.labNome = nil; end;
         if self.labHasVision ~= nil then self.labHasVision:destroy(); self.labHasVision = nil; end;
+        if self.tabFOW ~= nil then self.tabFOW:destroy(); self.tabFOW = nil; end;
         if self.labBar2 ~= nil then self.labBar2:destroy(); self.labBar2 = nil; end;
         if self.flaContentFOW ~= nil then self.flaContentFOW:destroy(); self.flaContentFOW = nil; end;
         if self.labFacingMode ~= nil then self.labFacingMode:destroy(); self.labFacingMode = nil; end;
-        if self.edtBarMax1 ~= nil then self.edtBarMax1:destroy(); self.edtBarMax1 = nil; end;
-        if self.flowLayout3 ~= nil then self.flowLayout3:destroy(); self.flowLayout3 = nil; end;
-        if self.layout10 ~= nil then self.layout10:destroy(); self.layout10 = nil; end;
+        if self.edtAlturaAura ~= nil then self.edtAlturaAura:destroy(); self.edtAlturaAura = nil; end;
         if self.flowPart5 ~= nil then self.flowPart5:destroy(); self.flowPart5 = nil; end;
-        if self.labGroupHeader1 ~= nil then self.labGroupHeader1:destroy(); self.labGroupHeader1 = nil; end;
         if self.cmbCorBar3 ~= nil then self.cmbCorBar3:destroy(); self.cmbCorBar3 = nil; end;
-        if self.layout5 ~= nil then self.layout5:destroy(); self.layout5 = nil; end;
-        if self.flowPart7 ~= nil then self.flowPart7:destroy(); self.flowPart7 = nil; end;
-        if self.edtAnguloVisao ~= nil then self.edtAnguloVisao:destroy(); self.edtAnguloVisao = nil; end;
         if self.flowPart9 ~= nil then self.flowPart9:destroy(); self.flowPart9 = nil; end;
-        if self.labLuz ~= nil then self.labLuz:destroy(); self.labLuz = nil; end;
-        if self.layout17 ~= nil then self.layout17:destroy(); self.layout17 = nil; end;
-        if self.flowLayout1 ~= nil then self.flowLayout1:destroy(); self.flowLayout1 = nil; end;
+        if self.layout5 ~= nil then self.layout5:destroy(); self.layout5 = nil; end;
         if self.labMetricVLE ~= nil then self.labMetricVLE:destroy(); self.labMetricVLE = nil; end;
         if self.layout18 ~= nil then self.layout18:destroy(); self.layout18 = nil; end;
-        if self.flowPart1 ~= nil then self.flowPart1:destroy(); self.flowPart1 = nil; end;
         if self.labCompAngulo2 ~= nil then self.labCompAngulo2:destroy(); self.labCompAngulo2 = nil; end;
-        if self.flowPart2 ~= nil then self.flowPart2:destroy(); self.flowPart2 = nil; end;
+        if self.labLarguraAura ~= nil then self.labLarguraAura:destroy(); self.labLarguraAura = nil; end;
         if self.labBar1 ~= nil then self.labBar1:destroy(); self.labBar1 = nil; end;
         if self.flowPart6 ~= nil then self.flowPart6:destroy(); self.flowPart6 = nil; end;
         if self.tabControl1 ~= nil then self.tabControl1:destroy(); self.tabControl1 = nil; end;
         if self.flowLayout2 ~= nil then self.flowLayout2:destroy(); self.flowLayout2 = nil; end;
         if self.horzLine1 ~= nil then self.horzLine1:destroy(); self.horzLine1 = nil; end;
-        if self.horzLine2 ~= nil then self.horzLine2:destroy(); self.horzLine2 = nil; end;
-        if self.layout3 ~= nil then self.layout3:destroy(); self.layout3 = nil; end;
         if self.edtBarMax2 ~= nil then self.edtBarMax2:destroy(); self.edtBarMax2 = nil; end;
-        if self.cmbCorBar1 ~= nil then self.cmbCorBar1:destroy(); self.cmbCorBar1 = nil; end;
-        if self.labGroupHeader2 ~= nil then self.labGroupHeader2:destroy(); self.labGroupHeader2 = nil; end;
-        if self.layout1 ~= nil then self.layout1:destroy(); self.layout1 = nil; end;
-        if self.layout2 ~= nil then self.layout2:destroy(); self.layout2 = nil; end;
-        if self.labSnapToGrid ~= nil then self.labSnapToGrid:destroy(); self.labSnapToGrid = nil; end;
         if self.labMetricVLF ~= nil then self.labMetricVLF:destroy(); self.labMetricVLF = nil; end;
-        if self.layout8 ~= nil then self.layout8:destroy(); self.layout8 = nil; end;
-        if self.layout13 ~= nil then self.layout13:destroy(); self.layout13 = nil; end;
-        if self.labGroupHeader3 ~= nil then self.labGroupHeader3:destroy(); self.labGroupHeader3 = nil; end;
+        if self.labGroupHeader2 ~= nil then self.labGroupHeader2:destroy(); self.labGroupHeader2 = nil; end;
+        if self.layout2 ~= nil then self.layout2:destroy(); self.layout2 = nil; end;
+        if self.cmbCorAura ~= nil then self.cmbCorAura:destroy(); self.cmbCorAura = nil; end;
         if self.cmbPersonagem ~= nil then self.cmbPersonagem:destroy(); self.cmbPersonagem = nil; end;
         if self.flowPart3 ~= nil then self.flowPart3:destroy(); self.flowPart3 = nil; end;
-        if self.edtMetricVLI ~= nil then self.edtMetricVLI:destroy(); self.edtMetricVLI = nil; end;
-        if self.cmbFacingMode ~= nil then self.cmbFacingMode:destroy(); self.cmbFacingMode = nil; end;
         if self.edtBarValue1 ~= nil then self.edtBarValue1:destroy(); self.edtBarValue1 = nil; end;
-        if self.edtBarValue3 ~= nil then self.edtBarValue3:destroy(); self.edtBarValue3 = nil; end;
-        if self.layout12 ~= nil then self.layout12:destroy(); self.layout12 = nil; end;
         if self.layout11 ~= nil then self.layout11:destroy(); self.layout11 = nil; end;
         if self.label3 ~= nil then self.label3:destroy(); self.label3 = nil; end;
-        if self.labMetricVLI ~= nil then self.labMetricVLI:destroy(); self.labMetricVLI = nil; end;
-        if self.labCompLuz2 ~= nil then self.labCompLuz2:destroy(); self.labCompLuz2 = nil; end;
-        if self.layout9 ~= nil then self.layout9:destroy(); self.layout9 = nil; end;
-        if self.label4 ~= nil then self.label4:destroy(); self.label4 = nil; end;
         if self.horzLine3 ~= nil then self.horzLine3:destroy(); self.horzLine3 = nil; end;
         if self.flpBar1 ~= nil then self.flpBar1:destroy(); self.flpBar1 = nil; end;
-        if self.labMetricLF ~= nil then self.labMetricLF:destroy(); self.labMetricLF = nil; end;
-        if self.edtAnguloLuz ~= nil then self.edtAnguloLuz:destroy(); self.edtAnguloLuz = nil; end;
-        if self.labMetricLI ~= nil then self.labMetricLI:destroy(); self.labMetricLI = nil; end;
         if self.flpBar3 ~= nil then self.flpBar3:destroy(); self.flpBar3 = nil; end;
         if self.cmbCorBar2 ~= nil then self.cmbCorBar2:destroy(); self.cmbCorBar2 = nil; end;
         if self.label2 ~= nil then self.label2:destroy(); self.label2 = nil; end;
-        if self.scrollBox2 ~= nil then self.scrollBox2:destroy(); self.scrollBox2 = nil; end;
         if self.labCompLuz1 ~= nil then self.labCompLuz1:destroy(); self.labCompLuz1 = nil; end;
-        if self.edtMetricLI ~= nil then self.edtMetricLI:destroy(); self.edtMetricLI = nil; end;
-        if self.edtNome ~= nil then self.edtNome:destroy(); self.edtNome = nil; end;
-        if self.tabPrincipal ~= nil then self.tabPrincipal:destroy(); self.tabPrincipal = nil; end;
-        if self.edtBarValue2 ~= nil then self.edtBarValue2:destroy(); self.edtBarValue2 = nil; end;
         if self.layout6 ~= nil then self.layout6:destroy(); self.layout6 = nil; end;
-        if self.edtMetricLF ~= nil then self.edtMetricLF:destroy(); self.edtMetricLF = nil; end;
+        if self.label5 ~= nil then self.label5:destroy(); self.label5 = nil; end;
         if self.flpBar2 ~= nil then self.flpBar2:destroy(); self.flpBar2 = nil; end;
         if self.cbxSnapToGrid ~= nil then self.cbxSnapToGrid:destroy(); self.cbxSnapToGrid = nil; end;
-        if self.label5 ~= nil then self.label5:destroy(); self.label5 = nil; end;
         if self.layout14 ~= nil then self.layout14:destroy(); self.layout14 = nil; end;
         if self.layout16 ~= nil then self.layout16:destroy(); self.layout16 = nil; end;
-        if self.labBar3 ~= nil then self.labBar3:destroy(); self.labBar3 = nil; end;
-        if self.flowPart4 ~= nil then self.flowPart4:destroy(); self.flowPart4 = nil; end;
-        if self.labCompLuz4 ~= nil then self.labCompLuz4:destroy(); self.labCompLuz4 = nil; end;
-        if self.btnOk1 ~= nil then self.btnOk1:destroy(); self.btnOk1 = nil; end;
+        if self.labAuraURL ~= nil then self.labAuraURL:destroy(); self.labAuraURL = nil; end;
         if self.scrollBox1 ~= nil then self.scrollBox1:destroy(); self.scrollBox1 = nil; end;
         if self.edtMetricVLF ~= nil then self.edtMetricVLF:destroy(); self.edtMetricVLF = nil; end;
-        if self.labCampoDeVisao ~= nil then self.labCampoDeVisao:destroy(); self.labCampoDeVisao = nil; end;
-        if self.labPersonagem ~= nil then self.labPersonagem:destroy(); self.labPersonagem = nil; end;
         if self.layout7 ~= nil then self.layout7:destroy(); self.layout7 = nil; end;
-        if self.labCompLuz3 ~= nil then self.labCompLuz3:destroy(); self.labCompLuz3 = nil; end;
         if self.btnCancel1 ~= nil then self.btnCancel1:destroy(); self.btnCancel1 = nil; end;
         self:_oldLFMDestroy();
     end;
