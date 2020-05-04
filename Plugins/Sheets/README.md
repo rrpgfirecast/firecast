@@ -42,6 +42,8 @@ Esses são plugins de fichas para diversos sistemas (Próprios e Comerciais) e s
 	- Ficha para o cenario e sistema Numenéra.
 - [Ficha Pathfinder](https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20Pathfinder/output/Ficha%20Pathfinder.rpk?raw=true): Ambesek
 	- Ficha para o sistema Pathfinder.
+- [Ficha Pathfinder 2e](https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20Pathfinder%202e/output/Ficha%20Pathfinder%202e.rpk?raw=true): Ambesek
+	- Ficha para o sistema Pathfinder 2e.
 - [Ficha RPG meister](https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20RPG%20meister/output/Ficha%20RPG%20meister.rpk?raw=true): Ambesek
 	- Ficha para d20system. Usada por jogadores de D&D3.5 e outros derivados.
 - [Ficha Shadowrun 5e](https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20Shadowrun%205E/output/Ficha%20Shadowrun%205E.rpk?raw=true): Ambesek

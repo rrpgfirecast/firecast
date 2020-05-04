@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmGolpes" height="50" width="350" margins="{top=2}">
+	 <script> 
+		<![CDATA[			
+		local function askForDelete()
+			Dialogs.confirmYesNo("Deseja realmente apagar esse golpe?",
+								 function (confirmado)
+									if confirmado then
+										NDB.deleteNode(sheet);
+									end;
+								 end);
+		end;
+
+		local function update()
+			if sheet==nil then return end;
+			local node = NDB.getRoot(sheet);
+
+			local atr = 0;
+			if sheet.key == 1 then
+				atr = tonumber(node.efetModFor) or 0;
+				sheet.atr = atr;
+			elseif sheet.key == 2 then
+				atr = tonumber(node.efetModDes) or 0;
+			end;
+
+			sheet.atribute = atr;
+		end;
+
+		local function roll()
+			local mesa = Firecast.getMesaDe(sheet);
+			local node = NDB.getRoot(sheet);
+
+			local ataque = math.floor(tonumber(sheet.total) or 0);
+			local rolagem = Firecast.interpretarRolagem("1d20 + " .. ataque);
+
+			mesa.activeChat:rolarDados(rolagem, "Ataque " .. (sheet.arma or "Arma") .. " de " .. (node.nome or "Nome"),
+                function (rolado)
+					local dice = sheet.dados or "1d2";
+					local bonus = (tonumber(node.atr) or 0)+(tonumber(node.espec) or 0);
+					local dano = Firecast.interpretarRolagem("" .. dice .. "+" .. bonus);
+
+					mesa.activeChat:rolarDados(dano, "Dano de " .. (sheet.arma or "Arma") .. " de " .. (node.nome or "Nome"));
+                end);
+
+		end;
+	]]>
+	</script>
+
+	<button align="right" width="25" text="A" onClick="update();"/>
+	<button align="right" width="25" text="R" onClick="roll();"/>
+	<button align="right" width="25" text="X" onClick="askForDelete();"/>
+
+	<layout align="client">
+		<layout align="top" height="25">
+			<rectangle align="right" width="40" color="black" strokeColor="white" strokeSize="1" margins="{right=5}">
+				<label field="total" align="client" horzTextAlign="center"/>
+			</rectangle>
+			<rectangle align="right" width="40" color="black" strokeColor="white" strokeSize="1">
+				<label field="atribute" align="client" horzTextAlign="center"/>
+			</rectangle>
+			<comboBox align="right" width="40" field="proficiencia" items="{'D', 'T', 'E', 'M', 'L'}" values="{'0', '2', '4', '6', '8'}" vertTextAlign="center" horzTextAlign="center" fontColor="white">
+				<event name="onChange">
+				if sheet==nil then return end;
+				local node = NDB.getRoot(sheet);
+
+				local prof = (tonumber(sheet.proficiencia) or 0);
+
+				if prof > 0 then
+					prof = prof + (tonumber(node.nep) or 0);
+				end;
+				sheet.bba = prof;
+				</event>
+			</comboBox>
+			<edit align="right" width="40" field="item"/>
+
+			<edit align="client" vertTextAlign="center" field="arma"/>
+		</layout>
+
+		<layout align="bottom" height="25">
+			<layout align="left" width="80">
+				<edit align="right" width="40" field="dados"/>
+				<label align="client" text="Dados" horzTextAlign="center"/>
+			</layout>
+			<layout align="left" width="80">
+				<edit align="right" width="40" field="atr"/>
+				<label align="client" text="Atr" horzTextAlign="center"/>
+			</layout>
+			<layout align="left" width="80">
+				<edit align="right" width="40" field="espec"/>
+				<label align="client" text="Espec" horzTextAlign="center"/>
+			</layout>
+
+			<checkBox align="left" width="40" text="Cn" field="cn"/>
+			<checkBox align="left" width="40" text="Ct" field="ct"/>
+			<checkBox align="left" width="40" text="Pf" field="pf"/>
+
+			<edit align="client" vertTextAlign="center" field="outros"/>
+		</layout>
+	</layout>
+	
+	<dataLink fields="{'key'}">
+		<event name="onChange">
+			update();
+		</event>
+	</dataLink>
+	<dataLink fields="{'bba','atribute','item'}">
+		<event name="onChange">
+			if sheet==nil then return end;
+
+			sheet.total = 	(tonumber(sheet.bba) or 0) + 
+							(tonumber(sheet.atribute) or 0) +
+							(tonumber(sheet.item) or 0);
+		</event>
+	</dataLink>
+</form>

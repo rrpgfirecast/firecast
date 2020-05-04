@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmFichaRPGmeister10_svg" align="client">
+
+	<script>		
+		local function fullResize()
+			local height = self.notes.height / 3;
+			
+			self.anotacoes1.height = height-25;
+			self.anotacoes1Part.height = height;
+			self.anotacoes2.height = height-25;
+			self.anotacoes2Part.height = height;
+			self.anotacoes3.height = height-25;
+			self.anotacoes3Part.height = height;
+			self.anotacoes4.height = height-25;
+			self.anotacoes4Part.height = height;
+			self.anotacoes5.height = height-25;
+			self.anotacoes5Part.height = height;
+			self.anotacoes6.height = height-25;
+			self.anotacoes6Part.height = height;
+			self.anotacoes7.height = height-25;
+			self.anotacoes7Part.height = height;
+			self.anotacoes8.height = height-25;
+			self.anotacoes8Part.height = height;
+			self.anotacoes9.height = height-25;
+			self.anotacoes9Part.height = height;
+		end;
+	</script>
+
+	<template name="magicNotes">
+		<flowPart minWidth="300" maxWidth="600" minScaledWidth="280" name="$(field)Part" adjustHeightToLine="false" margins="{left=5}">
+			<label align="top" height="25" text="ANOTAÇÕES" horzTextAlign="center"/>
+			<textEditor align="top" field="$(field)" height="52" name="$(field)">
+				<event name="onChange">
+					fullResize()
+				</event>
+				<event name="onEnter">
+					fullResize()
+				</event>
+				<event name="onExit">
+					fullResize()
+				</event>
+				<event name="onMouseMove">
+					fullResize()
+				</event>
+			</textEditor>
+
+		</flowPart>
+	</template>	
+
+	<scrollBox align="client" name="notes">
+		<flowLayout align="top" autoHeight="true" maxColumns="3" horzAlign="center" orientation="vertical" avoidScale="true">
+			<magicNotes field="anotacoes1"/>
+			<magicNotes field="anotacoes2"/>
+			<magicNotes field="anotacoes3"/>
+			<magicNotes field="anotacoes4"/>
+			<magicNotes field="anotacoes5"/>
+			<magicNotes field="anotacoes6"/>
+			<magicNotes field="anotacoes7"/>
+			<magicNotes field="anotacoes8"/>
+			<magicNotes field="anotacoes9"/>
+		</flowLayout>
+	    <event name="onResize">
+			fullResize()
+	    </event>
+	</scrollBox>
+</form>

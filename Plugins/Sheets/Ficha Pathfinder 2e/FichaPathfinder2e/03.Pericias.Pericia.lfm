@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmFichaRPGmeister3p_svg" width="480" height="25" margins="{top=2, bottom=2, right=10}">
+
+	<script> 
+		<![CDATA[			
+		local function askForDelete()
+			Dialogs.confirmYesNo("Deseja realmente apagar essa perícia?",
+								 function (confirmado)
+									if confirmado then
+										NDB.deleteNode(sheet);
+									end;
+								 end);
+		end;
+
+		local function showPericiaPopup()
+			local pop = self:findControlByName("popPericia");
+				
+			if pop ~= nil then
+				pop:setNodeObject(self.sheet);
+				pop:showPopupEx("right", self);
+			else
+				showMessage("Ops, bug.. nao encontrei o popup de pericias para exibir");
+			end;				
+		end;
+
+		local function rollTest()
+			local mesaDoPersonagem = Firecast.getMesaDe(sheet);
+			local node = NDB.getRoot(sheet);
+
+			local mod = math.floor(tonumber(sheet.totalPericia) or 0) + (tonumber(node.buffPericia) or 0);
+			local rolagem = Firecast.interpretarRolagem("1d20 + " .. mod);
+
+			mesaDoPersonagem.activeChat:rolarDados(rolagem, "Teste de " .. (sheet.nomePericia or "Pericia") .. " de " .. (node.nome or "Nome"));
+		end;
+
+		]]>	
+	</script>
+
+	<rectangle align="client" color="#202020" hitTest="false"/>
+
+	<edit vertTextAlign="center" left="1" top="0" width="158" height="25" field="nomePericia">
+		<event name="onChange">
+			local rcl = self:findControlByName("rclListaDasPericias");
+			if rcl~= nil then
+				rcl:sort();
+			end;
+		</event>
+	</edit>
+	<comboBox vertTextAlign="center" horzTextAlign="center" left="165" top="0" width="60" height="25" field="chavePericia" items="{'FOR', 'DES', 'CON', 'INT', 'SAB', 'CAR', '-'}" values="{'1', '2', '3', '4', '5', '6', '7'}" fontColor="white">
+		<event name="onChange">
+			if sheet~= nil then
+				local atributoPericia = 0;
+				local node = NDB.getRoot(sheet);
+
+				if sheet.chavePericia == "1" then
+					atributoPericia = tonumber(node.efetModFor) or 0;
+				elseif sheet.chavePericia == "2" then
+					atributoPericia = tonumber(node.efetModDes) or 0;
+				elseif sheet.chavePericia == "3" then
+					atributoPericia = tonumber(node.efetModCon) or 0;
+				elseif sheet.chavePericia == "4" then
+					atributoPericia = tonumber(node.efetModInt) or 0;
+				elseif sheet.chavePericia == "5" then
+					atributoPericia = tonumber(node.efetModSab) or 0;
+				elseif sheet.chavePericia == "6" then
+					atributoPericia = tonumber(node.efetModCar) or 0;
+				end;
+				sheet.atributoPericia = atributoPericia;
+			end;
+		</event>
+	</comboBox>
+	<rectangle left="240" top="0" width="35" height="25" color="black" strokeColor="white" strokeSize="1"/>
+	<label field="totalPericia" text="0" left="240" top="0" width="35" height="25" horzTextAlign="center"/>
+	<rectangle left="280" top="0" width="33" height="24" color="black" strokeColor="white" strokeSize="1"/>
+	<label field="atributoPericia" text="0" left="280" top="0" width="33" height="20" horzTextAlign="center"/>
+	<comboBox vertTextAlign="center" horzTextAlign="center" left="315" top="0" width="40" height="25" field="profPericia" items="{'D', 'T', 'E', 'M', 'L'}" values="{'0', '2', '4', '6', '8'}" fontColor="white">
+		<event name="onChange">
+			if sheet==nil then return end;
+			local node = NDB.getRoot(sheet);
+
+			local prof = (tonumber(sheet.profPericia) or 0);
+
+			if prof > 0 then
+				prof = prof + (tonumber(node.nep) or 0);
+			end;
+			sheet.graduacaoPericia = prof;
+		</event>
+	</comboBox>
+
+	<edit left="360" top="1" width="35" height="23" field="equipamentosPericia"/>
+	<checkBox left="400" top="5" width="19" height="15" field="penalidadeArmadura"/>
+
+	<button left="425" top="1" width="23" height="23" text="R" onClick="rollTest();"/>
+	<button left="450" top="1" width="23" height="23" text="X" onClick="askForDelete();"/>
+
+	<dataLink fields="{'atributoPericia', 'graduacaoPericia', 'penalidesPericia', 'racialPericia', 'sinergiaPericia', 'equipamentosPericia', 'magicoPericia', 'outrosPericia', 'penalidadeArmadura', 'talentosPericia', 'classePericia', 'condicionalPericia', 'competenciaPericia', 'intuicaoPericia', 'sortePericia'}">
+		<event name="onChange">
+			if sheet~= nil then
+				local node = NDB.getRoot(sheet);
+				local pen = (tonumber(node.penalidade) or 0)
+
+				local mod = 0;
+				mod = (tonumber(sheet.atributoPericia) or 0) +
+							(tonumber(sheet.graduacaoPericia) or 0) +
+							(tonumber(sheet.equipamentosPericia) or 0) +
+							(tonumber(sheet.penalidesPericia) or 0) +
+							(tonumber(sheet.racialPericia) or 0) +
+							(tonumber(sheet.sinergiaPericia) or 0) +
+							(tonumber(sheet.magicoPericia) or 0) +
+							(tonumber(sheet.outrosPericia) or 0) + 
+							(tonumber(sheet.talentosPericia) or 0) +
+							(tonumber(sheet.classePericia) or 0) +
+							(tonumber(sheet.competenciaPericia) or 0) +
+							(tonumber(sheet.intuicaoPericia) or 0) +
+							(tonumber(sheet.sortePericia) or 0) +
+							(tonumber(sheet.condicionalPericia) or 0);
+
+				if sheet.penalidadeArmadura then
+					mod = mod + pen;
+				end;
+
+				sheet.totalPericia = mod;
+			end;
+		</event>
+	</dataLink>
+</form>

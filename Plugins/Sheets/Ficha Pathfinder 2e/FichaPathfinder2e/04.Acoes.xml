@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmAcoes" align="client">
+	<popup name="popAcoes" width="300" height="240" backOpacity="0.4" autoScopeNode="false">
+			<flowLayout align="top" autoHeight="true" maxControlsPerLine="2" margins="{bottom=4}" horzAlign="center">
+				<habilidadeLarge text="Traços" field="tracos"/>
+				<habilidadeSmallCenter text="Página" field="pagina"/>
+			</flowLayout>
+			<textEditor align="client" field="descricao"/>
+	</popup>
+	<popup name="popReacao" width="300" height="240" backOpacity="0.4" autoScopeNode="false">
+			<flowLayout align="top" autoHeight="true" maxControlsPerLine="2" margins="{bottom=4}" horzAlign="center">
+				<habilidadeLarge text="Traços" field="tracos"/>
+				<habilidadeSmallCenter text="Página" field="pagina"/>
+				<habilidadeLarge text="Acionamento" field="acionamento"/>
+			</flowLayout>
+			<textEditor align="client" field="descricao"/>
+	</popup>
+
+	<scrollBox align="client">
+		<flowLayout align="top" autoHeight="true" maxColumns="3" horzAlign="center" orientation="vertical" avoidScale="true">
+			<ListaFlexivel nome="AÇÕES E ATIVIDADES" rclName="campoDasAcoes" rclField="campoDasAcoes" templateForm="frmAcao"/>
+			<ListaFlexivel nome="AÇÕES LIVRES E REAÇÕES" rclName="campoDasReacoes" rclField="campoDasReacoes" templateForm="frmReacao"/>
+		</flowLayout>
+	</scrollBox>
+</form>

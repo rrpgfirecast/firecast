@@ -1,0 +1,152 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<flowLayout minWidth="300" maxWidth="350" width="330" height="460" autoHeight="true" adjustHeightToLine="true" maxColumns="6" padding="{left=5,right=5,top=5,bottom=5}"  horzAlign="center">
+
+	<TitleCenter text="CD"/>
+	<TitleCenter text="ATR"/>
+	<TitleCenter text="PROF"/>
+	<TitleCenter text="OUT"/>
+
+	<flowLineBreak/>
+
+	<LabelCenter field="totalCD"/>
+	<ComboFlow items="{'FOR', 'DES', 'CON', 'INT', 'SAB', 'CAR'}" values="{'1', '2', '3', '4', '5', '6'}" field="atributoCD"/>
+	<ComboFlow items="{'Destreinado','Treinado','Especialista','Mestre','Lendário'}" values="{'0', '2', '4', '6', '8'}" field="proficienciaCD"/>
+	<FieldCenter field="outrosCD"/>
+
+	<dataLink fields="{'atributoCD','proficienciaCD','outrosCD'}">
+		<event name="onChange">
+			if sheet==nil then return end;
+
+			local prof = (tonumber(self.boxDetalhesDaMagia.node.proficienciaCD) or 0);
+			local atr = (tonumber(self.boxDetalhesDaMagia.node.atributoCD) or 0);
+			local atrBonus = 0;
+			local out = (tonumber(self.boxDetalhesDaMagia.node.outrosCD) or 0);
+
+			if atr == 1 then
+				atrBonus = tonumber(sheet.efetModFor) or 0;
+			elseif atr == 2 then
+				atrBonus = tonumber(sheet.efetModDes) or 0;
+			elseif atr == 3 then
+				atrBonus = tonumber(sheet.efetModCon) or 0;
+			elseif atr == 4 then
+				atrBonus = tonumber(sheet.efetModInt) or 0;
+			elseif atr == 5 then
+				atrBonus = tonumber(sheet.efetModSab) or 0;
+			elseif atr == 6 then
+				atrBonus = tonumber(sheet.efetModCar) or 0;
+			end;
+
+			if prof > 0 then
+				prof = prof + (tonumber(sheet.nep) or 0);
+			end;
+
+			self.boxDetalhesDaMagia.node.totalCD = 10 + prof + atrBonus + out;
+		</event>
+	</dataLink>
+
+	<flowLineBreak/>
+
+	<flowPart minWidth="50" maxWidth="150" height="15">
+		<button align="top" height="15" text="ATAQUE" horzTextAlign="center" fontSize="11">
+			<event name="onClick">
+				if sheet==nil then return end;
+				local ataq = tonumber(self.boxDetalhesDaMagia.node.totalAtaque) or 0;
+
+				local mesaDoPersonagem = Firecast.getMesaDe(sheet);
+				local rolagem = Firecast.interpretarRolagem("1d20 + " .. ataq);
+
+				mesaDoPersonagem.activeChat:rolarDados(rolagem, "Ataque Mágico de " .. (sheet.nome or "Nome"));
+			</event>
+		</button>
+	</flowPart>
+	<TitleCenter text="ATR"/>
+	<TitleCenter text="PROF"/>
+	<TitleCenter text="OUT"/>
+
+	<flowLineBreak/>
+
+	<LabelCenter field="totalAtaque"/>
+	<ComboFlow items="{'FOR', 'DES', 'CON', 'INT', 'SAB', 'CAR'}" values="{'1', '2', '3', '4', '5', '6'}" field="atributoAtaque"/>
+	<ComboFlow items="{'Destreinado','Treinado','Especialista','Mestre','Lendário'}" values="{'0', '2', '4', '6', '8'}" field="proficienciaAtaque"/>
+	<FieldCenter field="outrosAtaque"/>
+
+	<dataLink fields="{'atributoAtaque','proficienciaAtaque','outrosAtaque'}">
+		<event name="onChange">
+			if sheet==nil then return end;
+
+			local prof = (tonumber(self.boxDetalhesDaMagia.node.proficienciaAtaque) or 0);
+			local atr = (tonumber(self.boxDetalhesDaMagia.node.atributoAtaque) or 0);
+			local atrBonus = 0;
+			local out = (tonumber(self.boxDetalhesDaMagia.node.outrosAtaque) or 0);
+
+			if atr == 1 then
+				atrBonus = tonumber(sheet.efetModFor) or 0;
+			elseif atr == 2 then
+				atrBonus = tonumber(sheet.efetModDes) or 0;
+			elseif atr == 3 then
+				atrBonus = tonumber(sheet.efetModCon) or 0;
+			elseif atr == 4 then
+				atrBonus = tonumber(sheet.efetModInt) or 0;
+			elseif atr == 5 then
+				atrBonus = tonumber(sheet.efetModSab) or 0;
+			elseif atr == 6 then
+				atrBonus = tonumber(sheet.efetModCar) or 0;
+			end;
+
+			if prof > 0 then
+				prof = prof + (tonumber(sheet.nep) or 0);
+			end;
+
+			self.boxDetalhesDaMagia.node.totalAtaque = prof + atrBonus + out;
+		</event>
+	</dataLink>
+
+	<flowLineBreak/>
+
+	<CheckBoxCenter text="Arcanas" field="arcanas"/>
+	<CheckBoxCenter text="Ocultistas" field="ocultistas"/>
+	<CheckBoxCenter text="Primais" field="primais"/>
+	<CheckBoxCenter text="Divinas" field="divinas"/>
+
+	<flowLineBreak/>
+
+	<CheckBoxCenter text="Preparadas" field="preparadas"/>
+	<CheckBoxCenter text="Espontâneas" field="espontaneas"/>
+
+	<flowLineBreak/>
+
+	<TitleCenter text="FOCO"/>
+	<TitleCenter text="ATUAIS"/>
+	<TitleCenter text="MÁXIMOS"/>
+
+	<flowLineBreak/>
+
+	<TitleCenter text=""/>
+	<FieldCenter field="focoMin"/>
+	<FieldCenter field="focoMax"/>
+
+	<flowLineBreak/>
+
+	<TitleCenter text="TRUQUES"/>
+	<TitleCenter text="Nível"/>
+	<NumericFieldCenter field="conhecidasTruques"/>
+
+	<flowLineBreak/>
+
+	<TitleCenter text="NÍVEL"/>
+	<TitleCenter text="USADAS"/>
+	<TitleCenterSize text="DISPONIVEIS" fontSize="8"/>
+
+	<flowLineBreak/>
+
+	<magicLevel nivel="1"/>
+	<magicLevel nivel="2"/>
+	<magicLevel nivel="3"/>
+	<magicLevel nivel="4"/>
+	<magicLevel nivel="5"/>
+	<magicLevel nivel="6"/>
+	<magicLevel nivel="7"/>
+	<magicLevel nivel="8"/>
+	<magicLevel nivel="9"/>
+	<magicLevel nivel="10"/>
+</flowLayout>

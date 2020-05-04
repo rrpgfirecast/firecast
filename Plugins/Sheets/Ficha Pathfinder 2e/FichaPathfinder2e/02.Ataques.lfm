@@ -1,0 +1,275 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmFichaRPGmeister2_svg" align="client" margins="{top=1}">
+	<script>
+		local i;
+		local max;
+		local fimRolagem;
+		local array;
+		local decisivo;
+		local dano;
+		local danoCritico;
+
+		local function pos(rolado)
+			local dado = rolado.ops[1].resultados[1];
+			local mesa = Firecast.getMesaDe(sheet);
+			local valor = rolado.resultado;
+			
+			if (dado>=decisivo) then
+				mesa.activeChat:rolarDados(rolagem, "Confirmando Critico");
+			end;
+			
+			if dado>1 then
+				mesa.activeChat:rolarDados(dano, "Dano do Ataque " .. i);
+			end;
+			
+			if dado>=decisivo then
+				mesa.activeChat:rolarDados(danoCritico, "Dano Extra do Critico "  .. i);
+			end;
+			
+			i = i+1;
+			local mod = tonumber(array[i]);
+			
+			if mod~=nil then
+				rolagem = Firecast.interpretarRolagem("1d20 + " .. mod);
+				if sheet.buffAtaque ~= nil then
+					rolagem = rolagem:concatenar(sheet.buffAtaque);
+				end;
+
+				mesa.activeChat:rolarDados(rolagem, "Ataque " .. i .. " com " .. armamento .. " de " .. (sheet.nome or "NOME"), 
+					function (rolado)
+						pos(rolado)
+					end);
+			else
+				fimRolagem = true;
+			end;
+		end;
+	</script>
+
+	<template name="Ataque">
+		<rectangle align="client" color="black"/>
+		
+		<label left="5" top="5" width="50" height="25" text="NOME"/>
+		<edit vertTextAlign="center" left="55" top="5" width="225" height="25" field="nome$(num)"/>
+		
+		<label left="5" top="30" width="50" height="25" text="ARMA"/>
+		<edit vertTextAlign="center" left="55" top="30" width="225" height="25" field="arma$(num)"/>
+		
+		<label left="5" top="55" width="50" height="25" text="TIPO"/>
+		<edit vertTextAlign="center" left="55" top="55" width="225" height="25" field="tipo$(num)"/>
+		
+		<button left="279" top="6" width="73" text="ATAQUE" fontSize="11">
+			<event name="onClick">
+				i = 1;
+				max = 1;
+				fimRolagem = false;
+				
+				array = {sheet.ataque$(num)a, sheet.ataque$(num)b, sheet.ataque$(num)c, sheet.ataque$(num)d, sheet.ataque$(num)e, sheet.ataque$(num)f, sheet.ataque$(num)g, sheet.ataque$(num)h};
+	
+				decisivo = sheet.decisivo$(num) or "20";
+				decisivo = tonumber(string.sub(decisivo, 1, 2));
+				
+				dano = sheet.dano$(num) or "1d1";
+				dano = Firecast.interpretarRolagem(dano);
+				if sheet.buffDano ~= nil then
+					dano = dano:concatenar(sheet.buffDano);
+				end;
+				
+				danoCritico = sheet.danoCritico$(num) or "1d1";
+				danoCritico = Firecast.interpretarRolagem(danoCritico);
+				if sheet.buffDanoCritico ~= nil then
+					danoCritico = danoCritico:concatenar(sheet.buffDanoCritico);
+				end;
+				
+				armamento = sheet.nome$(num);
+				if armamento==nil then armamento = sheet.arma$(num) end;
+				if armamento==nil then armamento = "arma" end;
+
+				municao = tonumber(sheet.municao$(num));
+				
+				local mesa = Firecast.getMesaDe(sheet);
+				while array[max]~=nil do
+					max = max + 1;
+				end;
+				
+				local ataque = tonumber(array[1]) or 0;
+				if ataque~=nil then
+					rolagem = Firecast.interpretarRolagem("1d20 + " .. ataque);
+					if sheet.buffAtaque ~= nil then
+						rolagem = rolagem:concatenar(sheet.buffAtaque);
+					end;
+
+					mesa.activeChat:rolarDados(rolagem, "Ataque " .. i .. " com " .. armamento .. " de " .. (sheet.nome or "NOME"), 
+						function (rolado)
+							pos(rolado)
+						end);
+					if municao~=nil then
+						sheet.municao$(num) = municao-max+1;
+					end;
+				end;
+				
+			</event>
+		</button>
+		<edit type="number" vertTextAlign="center" left="352" top="5" width="25" height="25" field="ataque$(num)a"/>
+		<edit type="number" vertTextAlign="center" left="380" top="5" width="25" height="25" field="ataque$(num)b"/>
+		<edit type="number" vertTextAlign="center" left="409" top="5" width="25" height="25" field="ataque$(num)c"/>
+		<edit type="number" vertTextAlign="center" left="437" top="5" width="25" height="25" field="ataque$(num)d"/>
+		<edit type="number" vertTextAlign="center" left="465" top="5" width="25" height="25" field="ataque$(num)e"/>
+		<edit type="number" vertTextAlign="center" left="493" top="5" width="25" height="25" field="ataque$(num)f"/>
+		<edit type="number" vertTextAlign="center" left="522" top="5" width="25" height="25" field="ataque$(num)g"/>
+		<edit type="number" vertTextAlign="center" left="550" top="5" width="25" height="25" field="ataque$(num)h"/>
+		
+		<button left="279" top="31" width="73" text="DANO" fontSize="11">
+			<event name="onClick">
+				local mesa = Firecast.getMesaDe(sheet);
+				local dano = sheet.dano$(num) or "1d1";
+				dano = Firecast.interpretarRolagem(dano);
+				if sheet.buffDano ~= nil then
+					dano = dano:concatenar(sheet.buffDano);
+				end;
+				
+				local armamento = sheet.nome$(num);
+				if armamento==nil then armamento = sheet.arma$(num) end;
+				if armamento==nil then armamento = "arma" end;
+				
+				mesa.activeChat:rolarDados(dano, "Dano com " .. armamento .. " de " .. (sheet.nome or "NOME"));
+			</event>
+		</button>
+		<edit vertTextAlign="center" left="352" top="30" width="82" height="25" field="dano$(num)"/>
+		
+		<button left="434" top="31" width="60" text="CRITICO" fontSize="11">
+			<event name="onClick">
+				local mesa = Firecast.getMesaDe(sheet);
+				local danoCritico = sheet.danoCritico$(num) or "1d1";
+				danoCritico = Firecast.interpretarRolagem(danoCritico);
+				if sheet.buffDanoCritico ~= nil then
+					danoCritico = danoCritico:concatenar(sheet.buffDanoCritico);
+				end;
+				
+				local armamento = sheet.nome$(num);
+				if armamento==nil then armamento = sheet.arma$(num) end;
+				if armamento==nil then armamento = "arma" end;
+				
+				mesa.activeChat:rolarDados(danoCritico, "Dano Critico com " .. armamento .. " de " .. (sheet.nome or "NOME"));
+			</event>
+		</button>
+		<edit vertTextAlign="center" left="493" top="30" width="82" height="25" field="danoCritico$(num)"/>
+		
+		<label left="290" top="55" width="70" height="25" text="DECISIVO"/>
+		<edit vertTextAlign="center" left="352" top="55" width="82" height="25" field="decisivo$(num)"/>
+		
+		<label left="445" top="55" width="50" height="25" text="MULTI"/>
+		<edit vertTextAlign="center" left="493" top="55" width="82" height="25" field="multiplicador$(num)"/>
+		
+		<label left="580" top="5" width="80" height="25" text="CATEGORIA"/>
+		<edit vertTextAlign="center" left="660" top="5" width="200" height="25" field="categoria$(num)"/>
+		
+		<label left="610" top="30" width="50" height="25" text="TRAÇOS"/>
+		<edit vertTextAlign="center" left="660" top="30" width="200" height="25" field="obs$(num)"/>
+		
+		<label left="590" top="55" width="80" height="25" text="MUNIÇÃO"/>
+		<edit type="number" vertTextAlign="center" left="660" top="55" width="69" height="25" field="municao$(num)"/>
+		
+		<label left="735" top="55" width="70" height="25" text="ALCANCE"/>
+		<edit vertTextAlign="center" left="795" top="55" width="65" height="25" field="alcance$(num)"/>
+		
+		<rectangle left="869" top="4" width="332" height="77" color="black" strokeColor="white" strokeSize="1"/>
+		<label left="870" top="25" width="330" height="25" horzTextAlign="center" text="Clique para adicionar imagem"/>
+		<image field="imagemArma$(num)" editable="true" style="autoFit" left="870" top="5" width="330" height="75" />
+		
+		<button left="1205" top="5" width="25" height="75" text="X" fontSize="15" hint="Apaga o ataque.">
+			<event name="onClick">
+				Dialogs.confirmYesNo("Deseja realmente apagar esse ataque?",
+					function (confirmado)
+						if confirmado then
+							sheet.nome$(num) = nil;
+							sheet.arma$(num) = nil;
+							sheet.tipo$(num) = nil;
+							sheet.ataque$(num)a = nil;
+							sheet.ataque$(num)b = nil;
+							sheet.ataque$(num)c = nil;
+							sheet.ataque$(num)d = nil;
+							sheet.ataque$(num)e = nil;
+							sheet.ataque$(num)f = nil;
+							sheet.ataque$(num)g = nil;
+							sheet.ataque$(num)h = nil;
+							sheet.dano$(num) = nil;
+							sheet.danoCritico$(num) = nil;
+							sheet.decisivo$(num) = nil;
+							sheet.multiplicador$(num) = nil;
+							sheet.categoria$(num) = nil;
+							sheet.obs$(num) = nil;
+							sheet.municao$(num) = nil;
+							sheet.alcance$(num) = nil;
+							sheet.imagemArma$(num) = nil;
+						end;
+					end);
+			</event>
+		</button>
+	</template>
+
+	<scrollBox align="client">
+		<layout left="0" top="0" width="1234" height="1900">
+			<rectangle align="client" color="#0000007F"/>
+			<layout left="2" top="2" width="1232" height="92">
+				<Ataque num="1"/>
+			</layout>
+			<layout left="2" top="97" width="1232" height="92">
+				<Ataque num="2"/>
+			</layout>
+			<layout left="2" top="192" width="1232" height="92">
+				<Ataque num="3"/>
+			</layout>
+			<layout left="2" top="288" width="1232" height="92">
+				<Ataque num="4"/>
+			</layout>
+			<layout left="2" top="383" width="1232" height="92">
+				<Ataque num="5"/>
+			</layout>
+			<layout left="2" top="478" width="1232" height="92">
+				<Ataque num="6"/>
+			</layout>
+			<layout left="2" top="573" width="1232" height="92">
+				<Ataque num="7"/>
+			</layout>
+			<layout left="2" top="668" width="1232" height="92">
+				<Ataque num="8"/>
+			</layout>
+			<layout left="2" top="763" width="1232" height="92">
+				<Ataque num="9"/>
+			</layout>
+			<layout left="2" top="858" width="1232" height="92">
+				<Ataque num="10"/>
+			</layout>
+			<layout left="2" top="953" width="1232" height="92">
+				<Ataque num="11"/>
+			</layout>
+			<layout left="2" top="1048" width="1232" height="92">
+				<Ataque num="12"/>
+			</layout>
+			<layout left="2" top="1143" width="1232" height="92">
+				<Ataque num="13"/>
+			</layout>
+			<layout left="2" top="1238" width="1232" height="92">
+				<Ataque num="14"/>
+			</layout>
+			<layout left="2" top="1333" width="1232" height="92">
+				<Ataque num="15"/>
+			</layout>
+			<layout left="2" top="1428" width="1232" height="92">
+				<Ataque num="16"/>
+			</layout>
+			<layout left="2" top="1523" width="1232" height="92">
+				<Ataque num="17"/>
+			</layout>
+			<layout left="2" top="1618" width="1232" height="92">
+				<Ataque num="18"/>
+			</layout>
+			<layout left="2" top="1713" width="1232" height="92">
+				<Ataque num="19"/>
+			</layout>
+			<layout left="2" top="1808" width="1232" height="92">
+				<Ataque num="20"/>
+			</layout>
+		</layout>
+	</scrollBox>
+</form>
