@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<group>
+    <image left='809' top='53' width='390' height='299' editable='true' field='imagem' style='stretch'/>
+    <edit left='868' top='72' width='40' field='pvImg' fontSize='16' fontColor='green'/>
+    <edit left='820' top='102' width='60' field='pdNameImg' fontStyle='bold' fontSize='29' horzTextAlign='leading'/>
+    <edit left='868' top='108' width='40' field='pdImg' fontSize='16' name='edtPdImg'/>
+    <edit left='978' top='280' width='60' field='idade' fontSize='26' name='edtIdade'/>
+
+    <image left='842' top='196' width='100' height='100' field='imgConduta'/>
+    <edit readOnly='true' field='conduta' left='840' top='290' width='106' fontSize='20' name='edtNatureza' hitTest='true' cursor='handPoint' onClick='self.cbbConduta.visible = true;'/>
+    <comboBox field='conduta' left='843' top='294' items='{"Nocte", "Solar", "Virtus"}' values="{'nocte', 'solar', 'virtus'}" visible='false' name='cbbConduta' onChange='self.cbbConduta.visible = false; sheet.imgConduta = "img/" .. sheet.conduta .. ".png";'/>
+
+    <image left='1082' top='202' width='80' height='80' field='imgNatureza'/>
+    <edit readOnly='true' field='natureza' left='1069' top='290' width='106' fontSize='20' name='edtConduta' hitTest='true' cursor='handPoint' onClick='self.cbbNatureza.visible = true;'/>
+    <comboBox field='natureza' left='1073' top='294' items='{"Cruzado", "Dominador", "Druídico", "Líder", "Escarrado"}' values="{'cruzado', 'dominador', 'druidico', 'lider', 'escarrado'}" visible='false' name='cbbNatureza' onChange='self.cbbNatureza.visible = false; sheet.imgNatureza = "img/" .. sheet.natureza .. ".png";'/>
+
+    <colorComboBox left='1168' top='6' width='48' onChange='changeColor()' field='imgColor'/>
+
+    <script>
+        function changeColor()
+            if sheet ~= nil then
+                self.edtPdImg.fontColor = sheet.imgColor;
+                self.edtIdade.fontColor = sheet.imgColor;
+                self.edtNatureza.fontColor = sheet.imgColor;
+                self.edtConduta.fontColor = sheet.imgColor;
+                self.edtPdMinusOne.fontColor = sheet.imgColor;
+                self.edtPdMinusTwo.fontColor = sheet.imgColor;
+                self.edtPdMinusThree.fontColor = sheet.imgColor;
+            end
+        end
+    </script>
+</group>

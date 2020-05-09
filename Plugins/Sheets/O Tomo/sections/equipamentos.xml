@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<group>
+    <label left='840' top='379' width='40' field='fort' fontSize='18'/>
+    <label left='1030' top='379' width='40' field='vont' fontSize='18'/>
+
+    <edit left='812' top='442' width='190' field='cabeca' fontSize='16'/>
+    <edit left='812' top='482' width='190' field='acessorio1' fontSize='16'/>
+    <edit left='812' top='522' width='190' field='peitoral' fontSize='16'/>
+    <edit left='812' top='560' width='190' field='ombro' fontSize='16'/>
+    <edit left='812' top='600' width='190' field='calca' fontSize='16'/>
+    <edit left='812' top='639' width='190' field='cintura' fontSize='16'/>
+
+    <edit left='1007' top='442' width='190' field='mascara' fontSize='16'/>
+    <edit left='1007' top='482' width='190' field='acessorio2' fontSize='16'/>
+    <edit left='1007' top='522' width='190' field='vestienta' fontSize='16'/>
+    <edit left='1007' top='560' width='190' field='pulso' fontSize='16'/>
+    <edit left='1007' top='600' width='190' field='maos' fontSize='16'/>
+    <edit left='1007' top='639' width='190' field='pes' fontSize='16'/>
+
+    <imageCheckBox left='871' top='686' width='17' height='22' field='of101' checkedImage="img/oficio1.png" uncheckedImage="" onClick="changeOficio1(1)"/>
+    <imageCheckBox left='887' top='682' width='17' height='22' field='of102' checkedImage="img/oficio2.png" uncheckedImage="" onClick="changeOficio1(2)"/>
+    <imageCheckBox left='904' top='684' width='17' height='22' field='of103' checkedImage="img/oficio3.png" uncheckedImage="" onClick="changeOficio1(3)"/>
+
+    <imageCheckBox left='944' top='686' width='17' height='22' field='of201' checkedImage="img/oficio1.png" uncheckedImage="" onClick="changeOficio2(1)"/>
+    <imageCheckBox left='960' top='682' width='17' height='22' field='of202' checkedImage="img/oficio2.png" uncheckedImage="" onClick="changeOficio2(2)"/>
+    <imageCheckBox left='977' top='684' width='17' height='22' field='of203' checkedImage="img/oficio3.png" uncheckedImage="" onClick="changeOficio2(3)"/>
+
+    <imageCheckBox left='1017' top='686' width='17' height='22' field='of301' checkedImage="img/oficio1.png" uncheckedImage="" onClick="changeOficio3(1)"/>
+    <imageCheckBox left='1033' top='682' width='17' height='22' field='of302' checkedImage="img/oficio2.png" uncheckedImage="" onClick="changeOficio3(2)"/>
+    <imageCheckBox left='1050' top='684' width='17' height='22' field='of303' checkedImage="img/oficio3.png" uncheckedImage="" onClick="changeOficio3(3)"/>
+
+    <imageCheckBox left='1090' top='686' width='17' height='22' field='of401' checkedImage="img/oficio1.png" uncheckedImage="" onClick="changeOficio4(1)"/>
+    <imageCheckBox left='1106' top='682' width='17' height='22' field='of402' checkedImage="img/oficio2.png" uncheckedImage="" onClick="changeOficio4(2)"/>
+    <imageCheckBox left='1123' top='684' width='17' height='22' field='of403' checkedImage="img/oficio3.png" uncheckedImage="" onClick="changeOficio4(3)"/>
+
+    <edit left='873' top='704' width='44' height='18' field='ofiDice1' fontSize='14'/>
+    <edit left='869' top='718' width='52' height='18' field='ofiDesc1' fontSize='9.5' transparent='true'/>
+
+    <edit left='946' top='704' width='44' height='18' field='ofiDice2' fontSize='14'/>
+    <edit left='942' top='718' width='52' height='18' field='ofiDesc2' fontSize='9.5' transparent='true'/>
+
+    <edit left='1019' top='704' width='44' height='18' field='ofiDice3' fontSize='14'/>
+    <edit left='1015' top='718' width='52' height='18' field='ofiDesc3' fontSize='9.5' transparent='true'/>
+
+    <edit left='1093' top='704' width='44' height='18' field='ofiDice4' fontSize='14'/>
+    <edit left='1088' top='718' width='52' height='18' field='ofiDesc4' fontSize='9.5' transparent='true'/>    
+
+    <script>
+        function changeOficio1(oficio)
+            if sheet ~= nil then
+                if (oficio == 1) then                
+                    sheet.of102 = false;
+                    sheet.of103 = false;
+                elseif (oficio == 2) then
+                    sheet.of101 = true;
+                    sheet.of103 = false;
+                else
+                    sheet.of101 = true;
+                    sheet.of102 = true;
+                end
+            end
+        end
+        function changeOficio2(oficio)
+            if sheet ~= nil then
+                if (oficio == 1) then                
+                    sheet.of202 = false;
+                    sheet.of203 = false;
+                elseif (oficio == 2) then
+                    sheet.of201 = true;
+                    sheet.of203 = false;
+                else
+                    sheet.of201 = true;
+                    sheet.of202 = true;
+                end
+            end
+        end
+        function changeOficio3(oficio)
+            if sheet ~= nil then
+                if (oficio == 1) then                
+                    sheet.of302 = false;
+                    sheet.of303 = false;
+                elseif (oficio == 2) then
+                    sheet.of301 = true;
+                    sheet.of303 = false;
+                else
+                    sheet.of301 = true;
+                    sheet.of302 = true;
+                end
+            end
+        end
+        function changeOficio4(oficio)
+            if sheet ~= nil then
+                if (oficio == 1) then                
+                    sheet.of402 = false;
+                    sheet.of403 = false;
+                elseif (oficio == 2) then
+                    sheet.of401 = true;
+                    sheet.of403 = false;
+                else
+                    sheet.of401 = true;
+                    sheet.of402 = true;
+                end
+            end
+        end
+    </script>
+
+</group>

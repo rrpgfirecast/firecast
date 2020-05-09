@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<scrollBox align='client'>
+    <flowLayout width='1216' height='818' margins="{left=10, right=10, top=10, bottom=10}" autoHeight="true" horzAlign="center" lineSpacing="2">
+        <flowPart minWidth='1216' maxWidth='1216' height='818'>
+            <image align='client' src='img/o_tomo_bg.png' style="originalSize"/>            
+
+            <!-- Imagem -->
+            <import file='sections/imagem.xml' />
+            <image align='client' src='img/o_tomo_bg_avatar.png' style="originalSize"/>
+
+            <edit left='284' top='2' width='644' field='frasePersonagem' fontStyle='italic'/>
+
+            <!-- Atributos Base-->
+            <import file='sections/atributos_base.xml'/>
+
+            <!-- Itens-->
+            <import file='sections/itens.xml'/>
+
+            <!-- Status -->
+            <import file='sections/status.xml'/>
+
+            <!--Conjunto prestigio-->
+            <import file='sections/dons.xml'/>
+
+            <!-- Atributos -->
+            <import file='sections/atributos.xml'/>
+            
+            <!-- Equipamentos -->
+            <import file='sections/equipamentos.xml'/>
+
+            <!-- Cálculos -->
+            <import file='sections/calculos.xml'/>
+
+        </flowPart>
+    </flowLayout>
+</scrollBox>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<group>
+
+
+<dataLink fields="{'np', 'nc', 'stm', 'des', 'int', 'rp'}">             
+    <event name="onChange">
+
+        
+        sheet.eq = (tonumber(sheet.des) or 0) + (tonumber(sheet.rp) or 0) + 9;
+
+
+        if (tonumber(sheet.des) or 0) >= 0 then
+            sheet.aa = math.floor((tonumber(sheet.des) or 0) / 2 + 1);
+        else
+            sheet.aa = math.floor((tonumber(sheet.des) or 0) / 2  + 1.5);
+        end
+        
+        if (tonumber(sheet.aa) or 0) > 0 then
+            sheet.aa = "+" .. sheet.aa;
+        end
+
+        sheet.fort = (tonumber(sheet.np) or 0) + (tonumber(sheet.stm) or 0) + math.floor( (tonumber(sheet.int) or 0) / 2 );
+
+        sheet.vont = (tonumber(sheet.nc) or 0) + (tonumber(sheet.int) or 0) + math.floor( (tonumber(sheet.stm) or 0) / 2 );
+
+        sheet.pvMinusOne = math.floor( (tonumber(sheet.pvImg) or 0) / 2 );
+        sheet.pvMinusTwo = math.floor( (tonumber(sheet.pvMinusOne) or 0) / 2 );
+        sheet.pvMinusThree = math.floor( (tonumber(sheet.pvMinusTwo) or 0) / 2 );
+        sheet.pdMinusOne = math.floor( (tonumber(sheet.pdImg) or 0) / 2 );
+        sheet.pdMinusTwo = math.floor( (tonumber(sheet.pdMinusOne) or 0) / 2 );
+        sheet.pdMinusThree = math.floor( (tonumber(sheet.pdMinusTwo) or 0) / 2 );
+
+    </event>
+</dataLink>
+
+</group>

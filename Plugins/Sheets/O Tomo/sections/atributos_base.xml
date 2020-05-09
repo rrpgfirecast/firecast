@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<group>
+    <image name="imgOrdem" left='164' top='40' width='34' height='26' field='ordem' style="proportional" hitTest='true' onClick='self.popupSelectOrdem:show("bottom", self.imgOrdem);' cursor='handPoint'/>
+    <popup name="popupSelectOrdem" width="210" height="60" backOpacity="0.5">
+        <rectangle align='client' color='white' strokeSize='0'/>
+        <layout align='client'>
+            <label align="top" text="Selecione uma ordem!" autoSize="true" fontSize='14'/>
+            <layout align='client' margins='{top=4, bottom=4}'>
+                <image align="left" src="img/ordem1.png" width='40' hitTest='true' cursor='handPoint' onClick='sheet.ordem = "img/ordem1.png"; self.popupSelectOrdem:close();' hint='Andos'/>
+                <image align="left" src="img/ordem2.png" width='40' hitTest='true' cursor='handPoint' onClick='sheet.ordem = "img/ordem2.png"; self.popupSelectOrdem:close();' hint='Ayopi'/>
+                <image align="left" src="img/ordem3.png" width='40' hitTest='true' cursor='handPoint' onClick='sheet.ordem = "img/ordem3.png"; self.popupSelectOrdem:close();' hint='Nain'/>
+                <image align="left" src="img/ordem4.png" width='40' hitTest='true' cursor='handPoint' onClick='sheet.ordem = "img/ordem4.png"; self.popupSelectOrdem:close();' hint='Fejedelem'/>
+                <image align="left" src="img/ordem5.png" width='40' hitTest='true' cursor='handPoint' onClick='sheet.ordem = "img/ordem5.png"; self.popupSelectOrdem:close();' hint='Atroce'/>
+            </layout>
+        </layout>
+    </popup>
+    <image name="imgClasse" left='211' top='40' width='34' height='26' field='class' style="proportional" hitTest='true' onClick='self.popupSelectClasse:show("bottom", self.imgClasse);' cursor='handPoint'/>
+    <popup name="popupSelectClasse" width="296" height="60" backOpacity="0.5">
+        <rectangle align='client' color='white' strokeSize='0'/>
+        <layout align='client'>
+            <label align="top" text="Selecione uma ocupação!" autoSize="true" fontSize='14'/>
+            <layout align='client' margins='{top=4, bottom=4}'>
+                <image align="left" src="img/class1.png" width='40' hitTest='true' cursor='handPoint' onClick='sheet.class = "img/class1.png"; self.popupSelectClasse:close();' hint='Arruaceiro'/>
+                <image align="left" src="img/class2.png" width='40' hitTest='true' cursor='handPoint' onClick='sheet.class = "img/class2.png"; self.popupSelectClasse:close();' hint='Guerreiro'/>
+                <image align="left" src="img/class3.png" width='40' hitTest='true' cursor='handPoint' onClick='sheet.class = "img/class3.png"; self.popupSelectClasse:close();' hint='Lutador'/>
+                <image align="left" src="img/class4.png" width='40' hitTest='true' cursor='handPoint' onClick='sheet.class = "img/class4.png"; self.popupSelectClasse:close();' hint='Ocultista'/>
+                <image align="left" src="img/class5.png" width='40' hitTest='true' cursor='handPoint' onClick='sheet.class = "img/class5.png"; self.popupSelectClasse:close();' hint='Paladino'/>
+                <image align="left" src="img/class6.png" width='40' hitTest='true' cursor='handPoint' onClick='sheet.class = "img/class6.png"; self.popupSelectClasse:close();' hint='Pensante'/>
+                <image align="left" src="img/class7.png" width='40' hitTest='true' cursor='handPoint' onClick='sheet.class = "img/class7.png"; self.popupSelectClasse:close();' hint='Sacerdote'/>
+            </layout>
+        </layout>
+    </popup>
+    <edit left='10' top='78' width='240' field='nome' fontSize='18'/>
+    <edit left='52' top='126' width='50' field='np' fontSize='18' fontStyle='bold'/>
+    <edit left='158' top='126' width='50' field='nc' fontSize='18' fontStyle='bold'/>
+    <edit left='8' top='217' width='50' field='stm' fontSize='18' fontStyle='bold'/>
+    <edit left='35' top='260' width='69' field='stmText' fontSize='12' horzTextAlign='leading'/>
+    <edit left='8' top='290' width='50' field='des' fontSize='18' fontStyle='bold'/>
+    <edit left='35' top='333' width='69' field='desText' fontSize='12' horzTextAlign='leading'/>
+    <edit left='8' top='364' width='50' field='int' fontSize='18' fontStyle='bold'/>
+    <edit left='35' top='406' width='69' field='intText' fontSize='12' horzTextAlign='leading'/>
+    <edit left='8' top='436' width='50' field='car' fontSize='18' fontStyle='bold'/>
+    <edit left='35' top='481' width='69' field='carText' fontSize='12' horzTextAlign='leading'/>
+
+</group>

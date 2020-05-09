@@ -1,0 +1,19 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<form formType='sheetTemplate' dataType='OTomoByRafa' title='O Tomo' name='frmMain' theme='dark'>
+
+    <tabControl align='client'>
+
+        <tab title='Frente'>
+            <import file='frente.xml'/>
+        </tab>
+
+        <tab title='Verso'>
+            <import file='verso.xml'/>
+        </tab>
+        
+    </tabControl>
+
+    <import file='css.xml'/>
+
+
+</form>
