@@ -289,4 +289,9 @@
             <dataType id="Ambesek.Simple.Dealer" title="Dealer"/>
         </dataTypes>
     </element>
+    <element id="FICHAOTOMOBYRAFA" name="O Tomo Dragon" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/O%20Tomo/output/O%20Tomo.rpk?raw=true" fileName="O Tomo.rpk" repositoryPath="Sheets/O Tomo/" author="rafaelskate8" description="Ficha O Tomo para ser usada no RRPG Firecast" version="1.0" compilationDate="03042019135202" compilationDigest="70db99698e83302b2196e5227c60ea380624d378">
+        <dataTypes>
+            <dataType id="OTomoByRafa" title="O Tomo"/>
+        </dataTypes>
+    </element>
 </root>
