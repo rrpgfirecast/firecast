@@ -1,114 +1,114 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <form name="frmACN1" align="client" theme="dark">
-    <scrollBox align="client">
-        
-		<template name="Cabecalho">
+	<template name="Cabecalho">
         	<label left="0" top="5" width="100" height="20" text="$(nome)" horzTextAlign="trailing"/>
         	<edit left="110" top="0" width="200" height="25" field="$(field)"/>
-        </template>
-		
-		<template name="Historico">
-        	<radioButton left="0" top="0" groupName="grupo1" field="dado1" fieldValue="historicoTotal$(field)">
+    </template>
+	<template name="Historico">
+        <radioButton left="0" top="0" groupName="grupo1" field="dado1" fieldValue="historicoTotal$(field)">
+        	<event name="onChange">
+				if sheet==nil then return end;
+				sheet.field1 = sheet.dado1;
+				sheet.num1 = (tonumber(sheet[sheet.field1]) or 0);
+				sheet.nome1 = "$(nome)";
+        	</event>
+        </radioButton>
+    	<radioButton left="0" top="15" groupName="grupo2" field="dado2" fieldValue="historicoTotal$(field)">
+    		<event name="onChange">
+				if sheet==nil then return end;
+				sheet.field2 = sheet.dado2;
+				sheet.num2 = (tonumber(sheet[sheet.field2]) or 0);
+				sheet.nome2 = "$(nome)";
+        	</event>
+    	</radioButton>
+
+    	<edit left="20" top="0" width="100" height="25" field="historicoNome$(field)"/>
+
+		<rectangle left="125" top="0" width="35" height="25" color="Black" strokeColor="white" strokeSize="1"/>
+        <label left="135" top="3" width="30" height="20" field="historicoTotal$(field)"/>
+        <edit left="165" top="0" width="30" height="25" type="number" min="0" field="historicoValor$(field)">
+			<event name="onUserChange">
+				local mod = (tonumber(sheet.historicoValor$(field)) or 0)+
+							(tonumber(sheet.historicoBonus$(field)) or 0)+
+							(tonumber(sheet.historicoXp$(field)) or 0);
+				sheet.historicoTotal$(field) = mod;
+			</event>
+		</edit>
+        <edit left="200" top="0" width="30" height="25" type="number" min="0" field="historicoBonus$(field)">
+			<event name="onUserChange">
+				local mod = (tonumber(sheet.historicoValor$(field)) or 0)+
+							(tonumber(sheet.historicoBonus$(field)) or 0)+
+							(tonumber(sheet.historicoXp$(field)) or 0);
+				sheet.historicoTotal$(field) = mod;
+			</event>
+		</edit>
+        <edit left="235" top="0" width="30" height="25" type="number" min="0" field="historicoXp$(field)">
+			<event name="onUserChange">
+				local mod = (tonumber(sheet.historicoValor$(field)) or 0)+
+							(tonumber(sheet.historicoBonus$(field)) or 0)+
+							(tonumber(sheet.historicoXp$(field)) or 0);
+				sheet.historicoTotal$(field) = mod;
+				xpHistoricos();
+				xpMisticos();
+			</event>
+		</edit>
+    </template>
+    <template name="Atributo">
+		<radioButton left="0" top="0" groupName="grupo1" field="dado1" fieldValue="teste$(field)">
         		<event name="onChange">
-					if sheet~=nil then
-						sheet.num1 = (tonumber(sheet[sheet.dado1]) or 0);
-					end;
+					if sheet==nil then return end;
+					sheet.field1 = sheet.dado1;
+					sheet.num1 = (tonumber(sheet[sheet.field1]) or 0);
+					sheet.nome1 = "$(nome)";
         		</event>
-        	</radioButton>
-    		<radioButton left="0" top="15" groupName="grupo2" field="dado2" fieldValue="historicoTotal$(field)">
+        </radioButton>
+    	<radioButton left="0" top="13" groupName="grupo2" field="dado2" fieldValue="teste$(field)">
     			<event name="onChange">
-					if sheet~=nil then
-						sheet.num2 = (tonumber(sheet[sheet.dado2]) or 0);
-					end;
+					if sheet==nil then return end;
+					sheet.field2 = sheet.dado2;
+					sheet.num2 = (tonumber(sheet[sheet.field2]) or 0);
+					sheet.nome2 = "$(nome)";
         		</event>
-    		</radioButton>
+    	</radioButton>
 
-    		<edit left="20" top="0" width="100" height="25" field="historicoNome$(field)"/>
-
-			<rectangle left="125" top="0" width="35" height="25" color="Black" strokeColor="white" strokeSize="1"/>
-        	<label left="135" top="3" width="30" height="20" field="historicoTotal$(field)"/>
-        	<edit left="165" top="0" width="30" height="25" type="number" min="0" field="historicoValor$(field)">
-				<event name="onUserChange">
-					local mod = (tonumber(sheet.historicoValor$(field)) or 0)+
-											(tonumber(sheet.historicoBonus$(field)) or 0)+
-											(tonumber(sheet.historicoXp$(field)) or 0);
-					sheet.historicoTotal$(field) = mod;
-				</event>
-			</edit>
-        	<edit left="200" top="0" width="30" height="25" type="number" min="0" field="historicoBonus$(field)">
-				<event name="onUserChange">
-					local mod = (tonumber(sheet.historicoValor$(field)) or 0)+
-											(tonumber(sheet.historicoBonus$(field)) or 0)+
-											(tonumber(sheet.historicoXp$(field)) or 0);
-					sheet.historicoTotal$(field) = mod;
-				</event>
-			</edit>
-        	<edit left="235" top="0" width="30" height="25" type="number" min="0" field="historicoXp$(field)">
-				<event name="onUserChange">
-					local mod = (tonumber(sheet.historicoValor$(field)) or 0)+
-											(tonumber(sheet.historicoBonus$(field)) or 0)+
-											(tonumber(sheet.historicoXp$(field)) or 0);
-					sheet.historicoTotal$(field) = mod;
-					xpHistoricos();
-					xpMisticos();
-				</event>
-			</edit>
-        </template>
+        <label left="20" top="5" width="85" height="20" text="$(nome)"/>
 		
-        <template name="Atributo">
-			<radioButton left="0" top="0" groupName="grupo1" field="dado1" fieldValue="teste$(field)">
-        		<event name="onChange">
-					if sheet~=nil then
-						sheet.num1 = (tonumber(sheet[sheet.dado1]) or 0);
-					end;
-        		</event>
-        	</radioButton>
-    		<radioButton left="0" top="13" groupName="grupo2" field="dado2" fieldValue="teste$(field)">
-    			<event name="onChange">
-					if sheet~=nil then
-						sheet.num2 = (tonumber(sheet[sheet.dado2]) or 0);
-					end;
-        		</event>
-    		</radioButton>
-
-        	<label left="20" top="5" width="85" height="20" text="$(nome)"/>
-			
-			<rectangle left="100" top="0" width="40" height="25" color="black" strokeColor="white" strokeSize="1"/>
-        	<label left="100" top="3" width="40" height="20" field="total$(field)" horzTextAlign="center"/>
-        	
-			<edit left="145" top="0" width="30" height="25" type="number" field="base$(field)"/>
-        	<edit left="180" top="0" width="30" height="25" type="number" field="inicial$(field)"/>
-			<edit left="215" top="0" width="30" height="25" type="number" field="bonus$(field)"/>
-        	<edit left="250" top="0" width="30" height="25" type="number" field="xp$(field)"/>
-			
-			<dataLink fields="{'base$(field)', 'inicial$(field)', 'bonus$(field)', 'xp$(field)', 'penalidadeEscudo', 'penalidadeArmadura'}">
-				<event name="onChange">
-					if sheet~=nil then
-						local mod = (tonumber(sheet.base$(field)) or 0)+
-									(tonumber(sheet.inicial$(field)) or 0)+
-									(tonumber(sheet.bonus$(field)) or 0)+
-									(tonumber(sheet.xp$(field)) or 0);
-						if $(fator) > 1 then
-							local pen = 0;
-							if "$(field)"=="agilidade" then
-								pen = (tonumber(sheet.penalidadeArmadura) or 0) +
-									(tonumber(sheet.penalidadeEscudo) or 0);
-								mod = mod - pen;
-							end;
-							sheet.total$(field) = mod .. " | " ..(mod / $(fator));
-							sheet.teste$(field) = mod / $(fator);
-						else
-							sheet.total$(field) = mod;
-							sheet.teste$(field) = mod;
-						end;
-						xpAtributo();
-						xpAegis();
-					end;
-				</event>
-			</dataLink>
-        </template>
+		<rectangle left="100" top="0" width="40" height="25" color="black" strokeColor="white" strokeSize="1"/>
+        <label left="100" top="3" width="40" height="20" field="total$(field)" horzTextAlign="center"/>
+        
+        <rectangle left="145" top="0" width="30" height="25" color="black" strokeColor="white" strokeSize="1"/>
+		<label left="145" top="0" width="30" height="25" field="base$(field)" horzTextAlign="center" vertTextAlign="center"/>
+		<dataLink field="base$(field)" defaultValue="$(minVal)"/>
+        <edit left="180" top="0" width="30" height="25" type="number" field="inicial$(field)"/>
+		<edit left="215" top="0" width="30" height="25" type="number" field="bonus$(field)"/>
+        <edit left="250" top="0" width="30" height="25" type="number" field="xp$(field)"/>
 		
-		<template name="PV">
+		<dataLink fields="{'base$(field)', 'inicial$(field)', 'bonus$(field)', 'xp$(field)', 'penalidadeEscudo', 'penalidadeArmadura'}">
+			<event name="onChange">
+				if sheet==nil then return end;
+				local mod = (tonumber(sheet.base$(field)) or 0)+
+							(tonumber(sheet.inicial$(field)) or 0)+
+							(tonumber(sheet.bonus$(field)) or 0)+
+							(tonumber(sheet.xp$(field)) or 0);
+				if $(fator) > 1 then
+					local pen = 0;
+					if "$(field)"=="agilidade" then
+						pen = (tonumber(sheet.penalidadeArmadura) or 0) +
+							(tonumber(sheet.penalidadeEscudo) or 0);
+						mod = mod - pen;
+					end;
+					sheet.total$(field) = mod .. " | " ..(mod / $(fator));
+					sheet.teste$(field) = mod / $(fator);
+				else
+					sheet.total$(field) = mod;
+					sheet.teste$(field) = mod;
+				end;
+				xpAtributo();
+				xpAegis();
+			</event>
+		</dataLink>
+    </template>
+	<template name="PV">
         	<label left="10" top="0" width="95" height="20" text="$(nome)"/>
 			<flowLayout left="100" top="0" height="100" width="60">                 
 					<checkBox align="left" width="20" field="check1_1_$(field)"/>
@@ -141,6 +141,7 @@
 				<!-- end; -->
 			</flowLayout>
 			<edit left="170" top="0" width="30" height="25" field="penalidade$(field)"/>
+			<dataLink field="penalidade$(field)" defaultValue="$(default)"/>
 			<script>
 				local function isAny$(field)()
 					local mod = sheet.check1_1_$(field) or sheet.check2_1_$(field) or sheet.check3_1_$(field);
@@ -160,9 +161,9 @@
 					return mod;
 				end;
 			</script>
-			
-        </template>
-		
+    </template>
+
+    <scrollBox align="client">
 		<layout left="0" top="0" width="960" height="70">
 			<rectangle left="5" top="0" width="950" height="70" color="black" xradius="15" yradius="15" cornerType="round"/>
 			<layout left="5" top="5" width="310" height="25" >
@@ -291,44 +292,6 @@
 				</edit>
 				<progressBar left="100" top="5" width="65" height="15" color="blue" hitTest="true" max="1" field="gladius"/>
 			</layout>
-
-			<script>
-				local function xpAegis()
-					if sheet~=nil then
-						local mod = 0;
-						local valores = {   ((tonumber(sheet.testeconsciencia) or 0) - (tonumber(sheet.xpconsciencia) or 0)), 
-											((tonumber(sheet.testeespirito) or 0) - (tonumber(sheet.xpespirito) or 0)), 
-											((tonumber(sheet.testeperseveranca) or 0) - (tonumber(sheet.xpperseveranca) or 0))};
-						
-						local limites = {	(tonumber(sheet.xpconsciencia) or 0),
-											(tonumber(sheet.xpespirito) or 0),
-											(tonumber(sheet.xpperseveranca) or 0)}
-						
-						for i=1, 3, 1 do
-							for j=1, limites[i], 1 do
-								mod = mod + (valores[i]+j);
-							end;
-						end;
-
-						sheet.XPaegis = mod;
-						sheet.XPgasta = (tonumber(sheet.XPatributos) or 0) + 
-										(tonumber(sheet.XPaegis) or 0) + 
-										(tonumber(sheet.XPhistoricos) or 0) + 
-										(tonumber(sheet.XPmisticos) or 0) + 
-										(tonumber(sheet.XPaptidoes) or 0);
-					end;
-				end;
-			</script>
-		</layout>
-		
-		<layout left="840" top="530" width="200" height="65">
-			<rectangle align="client" color="black" xradius="15" yradius="15" cornerType="round"/>
-			<button left="65" top="10" width="70" text="PADRÃO*">
-				<event name="onClick">
-					default();
-				</event>
-			</button>
-			<label left="35" top="35" width="130" height="20" text="*Seta valores iniciais."/>
 		</layout>
 		
 		<layout left="625" top="530" width="210" height="65">
@@ -618,27 +581,27 @@
 			
 			<horzLine left="0" top="25" width="210" strokeColor="white"/>
 			<layout left="0" top="30" width="210" height="60">
-				<PV nome="LEVE" field="1" quantidade="3"/>
+				<PV nome="LEVE" field="1" quantidade="3" default="0"/>
 			</layout>
 			<horzLine left="0" top="95" width="210" strokeColor="white"/>
 			<layout left="0" top="100" width="210" height="40">
-				<PV nome="MEDIO" field="2" quantidade="2"/>
+				<PV nome="MEDIO" field="2" quantidade="2" default="0.5"/>
 			</layout>
 			<horzLine left="0" top="145" width="210" strokeColor="white"/>
 			<layout left="0" top="150" width="210" height="40">
-				<PV nome="SERIO" field="3" quantidade="2"/>
+				<PV nome="SERIO" field="3" quantidade="2" default="1"/>
 			</layout>
 			<horzLine left="0" top="195" width="210" strokeColor="white"/>
 			<layout left="0" top="200" width="210" height="40">
-				<PV nome="GRAVE" field="4" quantidade="2"/>
+				<PV nome="GRAVE" field="4" quantidade="2" default="2"/>
 			</layout>
 			<horzLine left="0" top="245" width="210" strokeColor="white"/>
 			<layout left="0" top="250" width="210" height="25">
-				<PV nome="INCAPACITADO" field="5" quantidade="1"/>
+				<PV nome="INCAPACITADO" field="5" quantidade="1" default="4"/>
 			</layout>
 			<horzLine left="0" top="280" width="210" strokeColor="white"/>
 			<layout left="0" top="285" width="210" height="100">
-				<PV nome="INCOSCIENTE" field="6" quantidade="5"/>
+				<PV nome="INCOSCIENTE" field="6" quantidade="5" default="0"/>
 			</layout>
 			<horzLine left="0" top="385" width="210" strokeColor="white"/>
 			
@@ -715,18 +678,27 @@
 			</dataLink>
 		</layout>
 		
-		<layout left="840" top="455" width="300" height="70">
-			<rectangle left="0" top="0" width="300" height="70" color="black" xradius="15" yradius="15" cornerType="round"/>
+		<layout left="840" top="455" width="300" height="75">
+			<rectangle align="client" color="black" xradius="5" yradius="5" cornerType="round"/>
 			
 			<rectangle left="10" top="30" width="35" height="25" color="Black" strokeColor="white" strokeSize="1"/>
 			<label left="5" top="10" width="50" height="20" text="Dado 1"/>
        		<label left="20" top="32" width="30" height="20" field="num1" text="val"/>
 			
        		<label left="46" top="32" width="10" height="20" text="+"/>
-			
+       		
        		<rectangle left="55" top="30" width="35" height="25" color="Black" strokeColor="white" strokeSize="1"/>
 			<label left="50" top="10" width="50" height="20" text="Dado 2"/>
        		<label left="65" top="32" width="30" height="20" field="num2" text="val"/>
+			
+			<button left="70" top="55" width="15" height="15" text="x" fontSize="10">
+				<event name="onClick">
+					if sheet==nil then return end;
+					sheet.field2 = nil;
+					sheet.num2 = nil;
+					sheet.nome2 = nil;
+				</event>
+			</button>
        		
 			<label left="92" top="32" width="10" height="20" text="+"/>
        		
@@ -739,7 +711,7 @@
 			<label left="195" top="10" width="40" height="20" text="Dific."/>
 			<edit left="195" top="30" width="30" height="25" field="dificuldade" type="number"/>
 			
-			<button left="230" top="30" width="50" text="ROLAR">
+			<button left="230" top="30" width="50" text="ROLAR" fontSize="11">
                 <event name="onClick">
                 	rolar();
                 </event>
@@ -775,105 +747,91 @@
 			</event>
 		</dataLink>
 		
-		<script>
-			local function rolar()
-				local mesaDoPersonagem = rrpg.getMesaDe(sheet);
-                local mod = (tonumber(sheet[sheet.dado1]) or 0) + (tonumber(sheet[sheet.dado2]) or 0) + (tonumber(sheet.extra) or 0);
-                if sheet.especBonus=='1' then
-                	mod = mod + 1.5;
-                elseif sheet.especBonus=='2' then
-                	mod = mod + 3;
-                end;
-				local pen = 0;
-				if isAny6() then
-					pen = tonumber(sheet.penalidade6) or 0;
-				elseif isAny5() then
-					pen = tonumber(sheet.penalidade5) or 0;
-				elseif isAny4() then
-					pen = tonumber(sheet.penalidade4) or 0;
-				elseif isAny3() then
-					pen = tonumber(sheet.penalidade3) or 0;
-				elseif isAny2() then
-					pen = tonumber(sheet.penalidade2) or 0;
-				elseif isAny1() then
-					pen = tonumber(sheet.penalidade1) or 0;
-				end;
-				mod = mod - pen;
-				
-                mod = math.floor(mod);
-
-               	local mod1 = (tonumber(sheet.dificuldade) or 0);
-               	dificuldade = mod1;
-
-               	rolagem = rrpg.interpretarRolagem(mod .. "d10");
-               	mesaDoPersonagem.activeChat:rolarDados(rolagem, "Dificuldade: " .. mod1  .. " (" ..(sheet[sheet.dado1] or 0) .. " + " .. (sheet[sheet.dado2] or 0) .. " + " .. (sheet.especBonus or 0) .. "x especializaçao + " .. (sheet.extra or 0) .. " - " .. pen .. " dano)", 
-					function (rolado)
-						local sucessos = 0;
-						local op = rolado.ops[1];
-
-						for j=1, #op.resultados, 1 do
-							if op.resultados[j] >= dificuldade then
-						    	sucessos = sucessos +1;
-							end;
-						end;
-						local mesaDoPersonagem = rrpg.getMesaDe(sheet);
-						mesaDoPersonagem.activeChat:enviarMensagem(sucessos .. " Sucesso(s)!");
-					end);
-			end;
-		</script>
-		
-		<script>
-			local function default()
-				sheet.nome0_1 = "Armas Brancas";
-				sheet.nome0_2 = "Arremesso";
-				sheet.nome0_3 = "Briga";
-				sheet.nome0_4 = "Esportes";
-				sheet.nome0_5 = "Esquiva";
-				sheet.nome0_6 = "Furtividade";
-				sheet.nome0_7 = "Prestidigitação";
-				sheet.nome0_8 = "Sobrevivência";
-				sheet.nome1_1 = "Empatia";
-				sheet.nome1_2 = "Emp. Animais";
-				sheet.nome1_3 = "Etiqueta";
-				sheet.nome1_4 = "Expressão";
-				sheet.nome1_5 = "Intimidação";
-				sheet.nome1_6 = "Investigação";
-				sheet.nome1_7 = "Lábia";
-				sheet.nome1_8 = "Liderança";
-				sheet.nome1_9 = "Manha";
-				sheet.nome1_10 = "Prontidão";
-				sheet.nome2_1 = "Acrobacia";
-				sheet.nome2_2 = "Armas de Fogo";
-				sheet.nome2_3 = "Arte da Fuga";
-				sheet.nome2_4 = "Artes Marciais";
-				sheet.nome2_5 = "Conduçao";
-				sheet.nome2_6 = "Oficios";
-				sheet.nome2_7 = "Performace";
-				sheet.nome2_8 = "Subterfúgio";
-				sheet.nome3_1 = "Acadêmicos";
-				sheet.nome3_2 = "Administração";
-				sheet.nome3_3 = "Ciências";
-				sheet.nome3_4 = "Computação";
-				sheet.nome3_5 = "Cultura";
-				sheet.nome3_6 = "Direito";
-				sheet.nome3_7 = "Medicina";
-				sheet.nome3_8 = "Ocultismo";
-				sheet.nome3_9 = "Política";
-				sheet.nome3_10 = "Tecnologia";
-				
-				sheet.baseforca = 3;
-				sheet.baseagilidade = 3;
-				sheet.baseresiliencia = 3;
-				sheet.basecarisma = 3;
-				sheet.basepercepcao = 3;
-				sheet.baseperspicacia = 3;
-				
-				sheet.baseconsciencia = 1;
-				sheet.baseespirito = 1;
-				sheet.baseperseveranca = 1;
-				
-			end;
-		</script>
-		
 	</scrollBox>
+
+	<script>
+		local function xpAegis()
+			if sheet==nil then return end;
+			
+			local mod = 0;
+			local valores = {   ((tonumber(sheet.testeconsciencia) or 0) - (tonumber(sheet.xpconsciencia) or 0)), 
+								((tonumber(sheet.testeespirito) or 0) - (tonumber(sheet.xpespirito) or 0)), 
+								((tonumber(sheet.testeperseveranca) or 0) - (tonumber(sheet.xpperseveranca) or 0))};
+			
+			local limites = {	(tonumber(sheet.xpconsciencia) or 0),
+								(tonumber(sheet.xpespirito) or 0),
+								(tonumber(sheet.xpperseveranca) or 0)}
+			
+			for i=1, 3, 1 do
+				for j=1, limites[i], 1 do
+					mod = mod + (valores[i]+j);
+				end;
+			end;
+
+			sheet.XPaegis = mod;
+			sheet.XPgasta = (tonumber(sheet.XPatributos) or 0) + 
+							(tonumber(sheet.XPaegis) or 0) + 
+							(tonumber(sheet.XPhistoricos) or 0) + 
+							(tonumber(sheet.XPmisticos) or 0) + 
+							(tonumber(sheet.XPaptidoes) or 0);
+		end;
+
+		local function rolar()
+			local mesaDoPersonagem = rrpg.getMesaDe(sheet);
+            local parada = (tonumber(sheet[sheet.dado1]) or 0) + (tonumber(sheet[sheet.dado2]) or 0) + (tonumber(sheet.extra) or 0);
+            if sheet.especBonus=='1' then
+            	parada = parada + 1.5;
+            elseif sheet.especBonus=='2' then
+            	parada = parada + 3;
+            end;
+			local pen = 0;
+			if isAny6() then
+				pen = tonumber(sheet.penalidade6) or 0;
+			elseif isAny5() then
+				pen = tonumber(sheet.penalidade5) or 0;
+			elseif isAny4() then
+				pen = tonumber(sheet.penalidade4) or 0;
+			elseif isAny3() then
+				pen = tonumber(sheet.penalidade3) or 0;
+			elseif isAny2() then
+				pen = tonumber(sheet.penalidade2) or 0;
+			elseif isAny1() then
+				pen = tonumber(sheet.penalidade1) or 0;
+			end;
+			parada = parada - math.abs(pen);
+			
+            parada = math.floor(parada);
+
+           	local dificuldade = (tonumber(sheet.dificuldade) or 0);
+           	dificuldade = dificuldade;
+
+           	local nome = "";
+           	if sheet.nome1 ~= nil then 
+           		nome = sheet.nome1 .. " ";
+           	end;
+           	if sheet.nome2 ~= nil then
+           		nome = nome .. "+ " .. sheet.nome2 .. " ";
+           	end;
+
+           	if parada &lt; 1 then 
+           		mesaDoPersonagem.activeChat:enviarMensagem("Sem dados suficientes para essa rolagem. ");
+           		return;
+           	end;
+
+           	rolagem = rrpg.interpretarRolagem(parada .. "d10");
+           	mesaDoPersonagem.activeChat:rolarDados(rolagem, nome .. "Dificuldade: " .. dificuldade  .. " (" ..(sheet[sheet.dado1] or 0) .. " + " .. (sheet[sheet.dado2] or 0) .. " + " .. (sheet.especBonus or 0) .. "x especializaçao + " .. (sheet.extra or 0) .. " - " .. pen .. " dano)", 
+				function (rolado)
+					local sucessos = 0;
+					local op = rolado.ops[1];
+
+					for j=1, #op.resultados, 1 do
+						if op.resultados[j] >= dificuldade then
+					    	sucessos = sucessos +1;
+						end;
+					end;
+					local mesaDoPersonagem = rrpg.getMesaDe(sheet);
+					mesaDoPersonagem.activeChat:enviarMensagem(sucessos .. " Sucesso(s)!");
+				end);
+		end;
+	</script>
 </form>

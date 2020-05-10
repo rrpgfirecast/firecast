@@ -1,230 +1,232 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <form name="frmACN2" align="client" theme="dark" margins="{top=1}">
-    <scrollBox align="client">
+    <template name="Aptidao">
+        <radioButton left="0" top="0" groupName="grupo1" field="dado1" fieldValue="total$(field)">
+        	<event name="onChange">
+				if sheet==nil then return end;
+				sheet.field1 = sheet.dado1;
+				sheet.num1 = (tonumber(sheet[sheet.field1]) or 0);
+				sheet.nome1 = sheet.nome$(field);
+        	</event>
+        </radioButton>
+    	<radioButton left="0" top="15" groupName="grupo2" field="dado2" fieldValue="total$(field)">
+    		<event name="onChange">
+				if sheet==nil then return end;
+				sheet.field2 = sheet.dado2;
+				sheet.num2 = (tonumber(sheet[sheet.field2]) or 0);
+				sheet.nome2 = sheet.nome$(field);
+        	</event>
+    	</radioButton>
+
+    	<edit left="20" top="0" width="100" height="25" field="nome$(field)"/>
+
+		<rectangle left="125" top="0" width="40" height="25" color="Black" strokeColor="white" strokeSize="1"/>
+        <label left="125" top="3" width="40" height="20" field="total2$(field)" horzTextAlign="center"/>
+        <edit left="170" top="0" width="30" height="25" type="number" min="0" field="base$(field)">
+			<event name="onChange">
+				if sheet~= nil then
+					local mod = (tonumber(sheet.base$(field)) or 0)+
+											(tonumber(sheet.bonus$(field)) or 0)+
+											(tonumber(sheet.xp$(field)) or 0);
+					sheet.total$(field) = mod / $(fator);
+					sheet.total2$(field) = mod .. " | " .. mod / $(fator);
+				end;
+			</event>
+		</edit>
+        <edit left="205" top="0" width="30" height="25" type="number" min="0" field="bonus$(field)">
+			<event name="onChange">
+				if sheet~= nil then
+					local mod = (tonumber(sheet.base$(field)) or 0)+
+											(tonumber(sheet.bonus$(field)) or 0)+
+											(tonumber(sheet.xp$(field)) or 0);
+					sheet.total$(field) = mod / $(fator);
+					sheet.total2$(field) = mod .. " | " .. mod / $(fator);
+				end;
+			</event>
+		</edit>
+        <edit left="240" top="0" width="30" height="25" type="number" min="0" field="xp$(field)">
+			<event name="onChange">
+				if sheet~= nil then
+					local mod = (tonumber(sheet.base$(field)) or 0)+
+											(tonumber(sheet.bonus$(field)) or 0)+
+											(tonumber(sheet.xp$(field)) or 0);
+					sheet.total$(field) = mod / $(fator);
+					sheet.total2$(field) = mod .. " | " .. mod / $(fator);
+					xpAptidoes();
+				end;
+			</event>
+		</edit>
+        <edit left="20" top="28" width="250" height="20" field="espec$(field)"/>
+    </template>
+
+    <template name="Aptidoes">
+	    <rectangle left="0" top="0" width="280" height="630" color="black" xradius="15" yradius="15" cornerType="round"/>
+	    <label left="5" top="0" width="240" height="20" text="$(nome)" horzTextAlign="center"/>
+		
+		<label left="25" top="25" width="315" height="20" text=" Nome"/>
+		<label left="135" top="25" width="315" height="20" text="Total"/>
+		<label left="170" top="25" width="315" height="20" text=" Inic"/>
+		<label left="202" top="25" width="315" height="20" text=" Apr."/>
+		<label left="235" top="25" width="315" height="20" text="  XP"/>
+		
+		<layout left="5" top="50" width="270" height="50" >
+			<Aptidao field="$(num)_1" fator="2"/>
+		</layout>
+		<layout left="5" top="100" width="270" height="50" >
+			<Aptidao field="$(num)_2" fator="2"/>
+		</layout>
+		<layout left="5" top="150" width="270" height="50" >
+			<Aptidao field="$(num)_3" fator="2"/>
+		</layout>
+		<layout left="5" top="200" width="270" height="50" >
+			<Aptidao field="$(num)_4" fator="2"/>
+		</layout>
+		<layout left="5" top="250" width="270" height="50" >
+			<Aptidao field="$(num)_5" fator="2"/>
+		</layout>
+		<layout left="5" top="300" width="270" height="50" >
+			<Aptidao field="$(num)_6" fator="2"/>
+		</layout>
+		<layout left="5" top="350" width="270" height="50" >
+			<Aptidao field="$(num)_7" fator="2"/>
+		</layout>
+		<layout left="5" top="400" width="270" height="50" >
+			<Aptidao field="$(num)_8" fator="2"/>
+		</layout>
+		<layout left="5" top="450" width="270" height="50" >
+			<Aptidao field="$(num)_9" fator="2"/>
+		</layout>
+		<layout left="5" top="500" width="270" height="50" >
+			<Aptidao field="$(num)_10" fator="2"/>
+		</layout>
+		<layout left="5" top="550" width="270" height="50" >
+			<Aptidao field="$(num)_11" fator="2"/>
+		</layout>
+		<layout left="5" top="600" width="270" height="50" >
+			<Aptidao field="$(num)_12" fator="2"/>
+		</layout>
+    </template>
         
-    	<template name="Aptidao">
-        	<radioButton left="0" top="0" groupName="grupo1" field="dado1" fieldValue="total$(field)">
-        		<event name="onChange">
-					if sheet~=nil then
-						sheet.num1 = (tonumber(sheet[sheet.dado1]) or 0);
-					end;
-        		</event>
-        	</radioButton>
-    		<radioButton left="0" top="15" groupName="grupo2" field="dado2" fieldValue="total$(field)">
-    			<event name="onChange">
-					if sheet~=nil then
-						sheet.num2 = (tonumber(sheet[sheet.dado2]) or 0);
-					end;
-        		</event>
-    		</radioButton>
+    <script>
+		local function xpAptidoes()
+			if sheet==nil then return end;
 
-    		<edit left="20" top="0" width="100" height="25" field="nome$(field)"/>
-
-			<rectangle left="125" top="0" width="40" height="25" color="Black" strokeColor="white" strokeSize="1"/>
-        	<label left="125" top="3" width="40" height="20" field="total2$(field)" horzTextAlign="center"/>
-        	<edit left="170" top="0" width="30" height="25" type="number" min="0" field="base$(field)">
-				<event name="onChange">
-					if sheet~= nil then
-						local mod = (tonumber(sheet.base$(field)) or 0)+
-												(tonumber(sheet.bonus$(field)) or 0)+
-												(tonumber(sheet.xp$(field)) or 0);
-						sheet.total$(field) = mod / $(fator);
-						sheet.total2$(field) = mod .. " | " .. mod / $(fator);
-					end;
-				</event>
-			</edit>
-        	<edit left="205" top="0" width="30" height="25" type="number" min="0" field="bonus$(field)">
-				<event name="onChange">
-					if sheet~= nil then
-						local mod = (tonumber(sheet.base$(field)) or 0)+
-												(tonumber(sheet.bonus$(field)) or 0)+
-												(tonumber(sheet.xp$(field)) or 0);
-						sheet.total$(field) = mod / $(fator);
-						sheet.total2$(field) = mod .. " | " .. mod / $(fator);
-					end;
-				</event>
-			</edit>
-        	<edit left="240" top="0" width="30" height="25" type="number" min="0" field="xp$(field)">
-				<event name="onChange">
-					if sheet~= nil then
-						local mod = (tonumber(sheet.base$(field)) or 0)+
-												(tonumber(sheet.bonus$(field)) or 0)+
-												(tonumber(sheet.xp$(field)) or 0);
-						sheet.total$(field) = mod / $(fator);
-						sheet.total2$(field) = mod .. " | " .. mod / $(fator);
-						xpAptidoes();
-					end;
-				</event>
-			</edit>
-        	<edit left="20" top="28" width="250" height="20" field="espec$(field)"/>
-        </template>
-
-        <template name="Aptidoes">
-	        <rectangle left="0" top="0" width="280" height="630" color="black" xradius="15" yradius="15" cornerType="round"/>
-	        <label left="5" top="0" width="240" height="20" text="$(nome)" horzTextAlign="center"/>
+			local mod = 0;
+			local valores = {   ((tonumber(sheet.total0_1 ) or 0)*2 - (tonumber(sheet.xp0_1 ) or 0)), 
+									((tonumber(sheet.total0_2 ) or 0)*2 - (tonumber(sheet.xp0_2 ) or 0)), 
+									((tonumber(sheet.total0_3 ) or 0)*2 - (tonumber(sheet.xp0_3 ) or 0)),
+									((tonumber(sheet.total0_4 ) or 0)*2 - (tonumber(sheet.xp0_4 ) or 0)),
+									((tonumber(sheet.total0_5 ) or 0)*2 - (tonumber(sheet.xp0_5 ) or 0)),
+									((tonumber(sheet.total0_6 ) or 0)*2 - (tonumber(sheet.xp0_6 ) or 0)),
+									((tonumber(sheet.total0_7 ) or 0)*2 - (tonumber(sheet.xp0_7 ) or 0)),
+									((tonumber(sheet.total0_8 ) or 0)*2 - (tonumber(sheet.xp0_8 ) or 0)),
+									((tonumber(sheet.total0_9 ) or 0)*2 - (tonumber(sheet.xp0_9 ) or 0)),
+									((tonumber(sheet.total0_10) or 0)*2 - (tonumber(sheet.xp0_10) or 0)),
+									((tonumber(sheet.total0_11) or 0)*2 - (tonumber(sheet.xp0_11) or 0)),
+									((tonumber(sheet.total0_12) or 0)*2 - (tonumber(sheet.xp0_12) or 0)),
+									((tonumber(sheet.total1_1 ) or 0)*2 - (tonumber(sheet.xp1_1 ) or 0)),
+									((tonumber(sheet.total1_2 ) or 0)*2 - (tonumber(sheet.xp1_2 ) or 0)),
+									((tonumber(sheet.total1_3 ) or 0)*2 - (tonumber(sheet.xp1_3 ) or 0)),
+									((tonumber(sheet.total1_4 ) or 0)*2 - (tonumber(sheet.xp1_4 ) or 0)),
+									((tonumber(sheet.total1_5 ) or 0)*2 - (tonumber(sheet.xp1_5 ) or 0)),
+									((tonumber(sheet.total1_6 ) or 0)*2 - (tonumber(sheet.xp1_6 ) or 0)),
+									((tonumber(sheet.total1_7 ) or 0)*2 - (tonumber(sheet.xp1_7 ) or 0)),
+									((tonumber(sheet.total1_8 ) or 0)*2 - (tonumber(sheet.xp1_8 ) or 0)),
+									((tonumber(sheet.total1_9 ) or 0)*2 - (tonumber(sheet.xp1_9 ) or 0)),
+									((tonumber(sheet.total1_10) or 0)*2 - (tonumber(sheet.xp1_10) or 0)),
+									((tonumber(sheet.total1_11) or 0)*2 - (tonumber(sheet.xp1_11) or 0)),
+									((tonumber(sheet.total1_12) or 0)*2 - (tonumber(sheet.xp1_12) or 0)),
+									((tonumber(sheet.total2_1 ) or 0)*2 - (tonumber(sheet.xp2_1 ) or 0)),
+									((tonumber(sheet.total2_2 ) or 0)*2 - (tonumber(sheet.xp2_2 ) or 0)),
+									((tonumber(sheet.total2_3 ) or 0)*2 - (tonumber(sheet.xp2_3 ) or 0)),
+									((tonumber(sheet.total2_4 ) or 0)*2 - (tonumber(sheet.xp2_4 ) or 0)),
+									((tonumber(sheet.total2_5 ) or 0)*2 - (tonumber(sheet.xp2_5 ) or 0)),
+									((tonumber(sheet.total2_6 ) or 0)*2 - (tonumber(sheet.xp2_6 ) or 0)),
+									((tonumber(sheet.total2_7 ) or 0)*2 - (tonumber(sheet.xp2_7 ) or 0)),
+									((tonumber(sheet.total2_8 ) or 0)*2 - (tonumber(sheet.xp2_8 ) or 0)),
+									((tonumber(sheet.total2_9 ) or 0)*2 - (tonumber(sheet.xp2_9 ) or 0)),
+									((tonumber(sheet.total2_10) or 0)*2 - (tonumber(sheet.xp2_10) or 0)),
+									((tonumber(sheet.total2_11) or 0)*2 - (tonumber(sheet.xp2_11) or 0)),
+									((tonumber(sheet.total2_12) or 0)*2 - (tonumber(sheet.xp2_12) or 0)),
+									((tonumber(sheet.total3_1 ) or 0)*2 - (tonumber(sheet.xp3_1 ) or 0)),
+									((tonumber(sheet.total3_2 ) or 0)*2 - (tonumber(sheet.xp3_2 ) or 0)),
+									((tonumber(sheet.total3_3 ) or 0)*2 - (tonumber(sheet.xp3_3 ) or 0)),
+									((tonumber(sheet.total3_4 ) or 0)*2 - (tonumber(sheet.xp3_4 ) or 0)),
+									((tonumber(sheet.total3_5 ) or 0)*2 - (tonumber(sheet.xp3_5 ) or 0)),
+									((tonumber(sheet.total3_6 ) or 0)*2 - (tonumber(sheet.xp3_6 ) or 0)),
+									((tonumber(sheet.total3_7 ) or 0)*2 - (tonumber(sheet.xp3_7 ) or 0)),
+									((tonumber(sheet.total3_8 ) or 0)*2 - (tonumber(sheet.xp3_8 ) or 0)),
+									((tonumber(sheet.total3_9 ) or 0)*2 - (tonumber(sheet.xp3_9 ) or 0)),
+									((tonumber(sheet.total3_10) or 0)*2 - (tonumber(sheet.xp3_10) or 0)),
+									((tonumber(sheet.total3_11) or 0)*2 - (tonumber(sheet.xp3_11) or 0)),
+									((tonumber(sheet.total3_12) or 0)*2 - (tonumber(sheet.xp3_12) or 0))
+									};
 			
-			<label left="25" top="25" width="315" height="20" text=" Nome"/>
-			<label left="135" top="25" width="315" height="20" text="Total"/>
-			<label left="170" top="25" width="315" height="20" text=" Inic"/>
-			<label left="202" top="25" width="315" height="20" text=" Apr."/>
-			<label left="235" top="25" width="315" height="20" text="  XP"/>
+			local limites = {	(tonumber(sheet.xp0_1 ) or 0),
+									(tonumber(sheet.xp0_2 ) or 0),
+									(tonumber(sheet.xp0_3 ) or 0),
+									(tonumber(sheet.xp0_4 ) or 0),
+									(tonumber(sheet.xp0_5 ) or 0),
+									(tonumber(sheet.xp0_6 ) or 0),
+									(tonumber(sheet.xp0_7 ) or 0),
+									(tonumber(sheet.xp0_8 ) or 0),
+									(tonumber(sheet.xp0_9 ) or 0),
+									(tonumber(sheet.xp0_10) or 0),
+									(tonumber(sheet.xp0_11) or 0),
+									(tonumber(sheet.xp0_12) or 0),
+									(tonumber(sheet.xp1_1 ) or 0),
+									(tonumber(sheet.xp1_2 ) or 0),
+									(tonumber(sheet.xp1_3 ) or 0),
+									(tonumber(sheet.xp1_4 ) or 0),
+									(tonumber(sheet.xp1_5 ) or 0),
+									(tonumber(sheet.xp1_6 ) or 0),
+									(tonumber(sheet.xp1_7 ) or 0),
+									(tonumber(sheet.xp1_8 ) or 0),
+									(tonumber(sheet.xp1_9 ) or 0),
+									(tonumber(sheet.xp1_10) or 0),
+									(tonumber(sheet.xp1_11) or 0),
+									(tonumber(sheet.xp1_12) or 0),
+									(tonumber(sheet.xp2_1 ) or 0),
+									(tonumber(sheet.xp2_2 ) or 0),
+									(tonumber(sheet.xp2_3 ) or 0),
+									(tonumber(sheet.xp2_4 ) or 0),
+									(tonumber(sheet.xp2_5 ) or 0),
+									(tonumber(sheet.xp2_6 ) or 0),
+									(tonumber(sheet.xp2_7 ) or 0),
+									(tonumber(sheet.xp2_8 ) or 0),
+									(tonumber(sheet.xp2_9 ) or 0),
+									(tonumber(sheet.xp2_10) or 0),
+									(tonumber(sheet.xp2_11) or 0),
+									(tonumber(sheet.xp2_12) or 0),
+									(tonumber(sheet.xp3_1 ) or 0),
+									(tonumber(sheet.xp3_2 ) or 0),
+									(tonumber(sheet.xp3_3 ) or 0),
+									(tonumber(sheet.xp3_4 ) or 0),
+									(tonumber(sheet.xp3_5 ) or 0),
+									(tonumber(sheet.xp3_6 ) or 0),
+									(tonumber(sheet.xp3_7 ) or 0),
+									(tonumber(sheet.xp3_8 ) or 0),
+									(tonumber(sheet.xp3_9 ) or 0),
+									(tonumber(sheet.xp3_10) or 0),
+									(tonumber(sheet.xp3_11) or 0),
+									(tonumber(sheet.xp3_12) or 0)
+									};
 			
-			<layout left="5" top="50" width="270" height="50" >
-				<Aptidao field="$(num)_1" fator="2"/>
-			</layout>
-			<layout left="5" top="100" width="270" height="50" >
-				<Aptidao field="$(num)_2" fator="2"/>
-			</layout>
-			<layout left="5" top="150" width="270" height="50" >
-				<Aptidao field="$(num)_3" fator="2"/>
-			</layout>
-			<layout left="5" top="200" width="270" height="50" >
-				<Aptidao field="$(num)_4" fator="2"/>
-			</layout>
-			<layout left="5" top="250" width="270" height="50" >
-				<Aptidao field="$(num)_5" fator="2"/>
-			</layout>
-			<layout left="5" top="300" width="270" height="50" >
-				<Aptidao field="$(num)_6" fator="2"/>
-			</layout>
-			<layout left="5" top="350" width="270" height="50" >
-				<Aptidao field="$(num)_7" fator="2"/>
-			</layout>
-			<layout left="5" top="400" width="270" height="50" >
-				<Aptidao field="$(num)_8" fator="2"/>
-			</layout>
-			<layout left="5" top="450" width="270" height="50" >
-				<Aptidao field="$(num)_9" fator="2"/>
-			</layout>
-			<layout left="5" top="500" width="270" height="50" >
-				<Aptidao field="$(num)_10" fator="2"/>
-			</layout>
-			<layout left="5" top="550" width="270" height="50" >
-				<Aptidao field="$(num)_11" fator="2"/>
-			</layout>
-			<layout left="5" top="600" width="270" height="50" >
-				<Aptidao field="$(num)_12" fator="2"/>
-			</layout>
-        </template>
-        <script>
-			local function xpAptidoes()
-				if sheet~=nil then
-					local mod = 0;
-					local valores = {   ((tonumber(sheet.total0_1 ) or 0)*2 - (tonumber(sheet.xp0_1 ) or 0)), 
-										((tonumber(sheet.total0_2 ) or 0)*2 - (tonumber(sheet.xp0_2 ) or 0)), 
-										((tonumber(sheet.total0_3 ) or 0)*2 - (tonumber(sheet.xp0_3 ) or 0)),
-										((tonumber(sheet.total0_4 ) or 0)*2 - (tonumber(sheet.xp0_4 ) or 0)),
-										((tonumber(sheet.total0_5 ) or 0)*2 - (tonumber(sheet.xp0_5 ) or 0)),
-										((tonumber(sheet.total0_6 ) or 0)*2 - (tonumber(sheet.xp0_6 ) or 0)),
-										((tonumber(sheet.total0_7 ) or 0)*2 - (tonumber(sheet.xp0_7 ) or 0)),
-										((tonumber(sheet.total0_8 ) or 0)*2 - (tonumber(sheet.xp0_8 ) or 0)),
-										((tonumber(sheet.total0_9 ) or 0)*2 - (tonumber(sheet.xp0_9 ) or 0)),
-										((tonumber(sheet.total0_10) or 0)*2 - (tonumber(sheet.xp0_10) or 0)),
-										((tonumber(sheet.total0_11) or 0)*2 - (tonumber(sheet.xp0_11) or 0)),
-										((tonumber(sheet.total0_12) or 0)*2 - (tonumber(sheet.xp0_12) or 0)),
-										((tonumber(sheet.total1_1 ) or 0)*2 - (tonumber(sheet.xp1_1 ) or 0)),
-										((tonumber(sheet.total1_2 ) or 0)*2 - (tonumber(sheet.xp1_2 ) or 0)),
-										((tonumber(sheet.total1_3 ) or 0)*2 - (tonumber(sheet.xp1_3 ) or 0)),
-										((tonumber(sheet.total1_4 ) or 0)*2 - (tonumber(sheet.xp1_4 ) or 0)),
-										((tonumber(sheet.total1_5 ) or 0)*2 - (tonumber(sheet.xp1_5 ) or 0)),
-										((tonumber(sheet.total1_6 ) or 0)*2 - (tonumber(sheet.xp1_6 ) or 0)),
-										((tonumber(sheet.total1_7 ) or 0)*2 - (tonumber(sheet.xp1_7 ) or 0)),
-										((tonumber(sheet.total1_8 ) or 0)*2 - (tonumber(sheet.xp1_8 ) or 0)),
-										((tonumber(sheet.total1_9 ) or 0)*2 - (tonumber(sheet.xp1_9 ) or 0)),
-										((tonumber(sheet.total1_10) or 0)*2 - (tonumber(sheet.xp1_10) or 0)),
-										((tonumber(sheet.total1_11) or 0)*2 - (tonumber(sheet.xp1_11) or 0)),
-										((tonumber(sheet.total1_12) or 0)*2 - (tonumber(sheet.xp1_12) or 0)),
-										((tonumber(sheet.total2_1 ) or 0)*2 - (tonumber(sheet.xp2_1 ) or 0)),
-										((tonumber(sheet.total2_2 ) or 0)*2 - (tonumber(sheet.xp2_2 ) or 0)),
-										((tonumber(sheet.total2_3 ) or 0)*2 - (tonumber(sheet.xp2_3 ) or 0)),
-										((tonumber(sheet.total2_4 ) or 0)*2 - (tonumber(sheet.xp2_4 ) or 0)),
-										((tonumber(sheet.total2_5 ) or 0)*2 - (tonumber(sheet.xp2_5 ) or 0)),
-										((tonumber(sheet.total2_6 ) or 0)*2 - (tonumber(sheet.xp2_6 ) or 0)),
-										((tonumber(sheet.total2_7 ) or 0)*2 - (tonumber(sheet.xp2_7 ) or 0)),
-										((tonumber(sheet.total2_8 ) or 0)*2 - (tonumber(sheet.xp2_8 ) or 0)),
-										((tonumber(sheet.total2_9 ) or 0)*2 - (tonumber(sheet.xp2_9 ) or 0)),
-										((tonumber(sheet.total2_10) or 0)*2 - (tonumber(sheet.xp2_10) or 0)),
-										((tonumber(sheet.total2_11) or 0)*2 - (tonumber(sheet.xp2_11) or 0)),
-										((tonumber(sheet.total2_12) or 0)*2 - (tonumber(sheet.xp2_12) or 0)),
-										((tonumber(sheet.total3_1 ) or 0)*2 - (tonumber(sheet.xp3_1 ) or 0)),
-										((tonumber(sheet.total3_2 ) or 0)*2 - (tonumber(sheet.xp3_2 ) or 0)),
-										((tonumber(sheet.total3_3 ) or 0)*2 - (tonumber(sheet.xp3_3 ) or 0)),
-										((tonumber(sheet.total3_4 ) or 0)*2 - (tonumber(sheet.xp3_4 ) or 0)),
-										((tonumber(sheet.total3_5 ) or 0)*2 - (tonumber(sheet.xp3_5 ) or 0)),
-										((tonumber(sheet.total3_6 ) or 0)*2 - (tonumber(sheet.xp3_6 ) or 0)),
-										((tonumber(sheet.total3_7 ) or 0)*2 - (tonumber(sheet.xp3_7 ) or 0)),
-										((tonumber(sheet.total3_8 ) or 0)*2 - (tonumber(sheet.xp3_8 ) or 0)),
-										((tonumber(sheet.total3_9 ) or 0)*2 - (tonumber(sheet.xp3_9 ) or 0)),
-										((tonumber(sheet.total3_10) or 0)*2 - (tonumber(sheet.xp3_10) or 0)),
-										((tonumber(sheet.total3_11) or 0)*2 - (tonumber(sheet.xp3_11) or 0)),
-										((tonumber(sheet.total3_12) or 0)*2 - (tonumber(sheet.xp3_12) or 0))
-										};
-					
-					local limites = {	(tonumber(sheet.xp0_1 ) or 0),
-										(tonumber(sheet.xp0_2 ) or 0),
-										(tonumber(sheet.xp0_3 ) or 0),
-										(tonumber(sheet.xp0_4 ) or 0),
-										(tonumber(sheet.xp0_5 ) or 0),
-										(tonumber(sheet.xp0_6 ) or 0),
-										(tonumber(sheet.xp0_7 ) or 0),
-										(tonumber(sheet.xp0_8 ) or 0),
-										(tonumber(sheet.xp0_9 ) or 0),
-										(tonumber(sheet.xp0_10) or 0),
-										(tonumber(sheet.xp0_11) or 0),
-										(tonumber(sheet.xp0_12) or 0),
-										(tonumber(sheet.xp1_1 ) or 0),
-										(tonumber(sheet.xp1_2 ) or 0),
-										(tonumber(sheet.xp1_3 ) or 0),
-										(tonumber(sheet.xp1_4 ) or 0),
-										(tonumber(sheet.xp1_5 ) or 0),
-										(tonumber(sheet.xp1_6 ) or 0),
-										(tonumber(sheet.xp1_7 ) or 0),
-										(tonumber(sheet.xp1_8 ) or 0),
-										(tonumber(sheet.xp1_9 ) or 0),
-										(tonumber(sheet.xp1_10) or 0),
-										(tonumber(sheet.xp1_11) or 0),
-										(tonumber(sheet.xp1_12) or 0),
-										(tonumber(sheet.xp2_1 ) or 0),
-										(tonumber(sheet.xp2_2 ) or 0),
-										(tonumber(sheet.xp2_3 ) or 0),
-										(tonumber(sheet.xp2_4 ) or 0),
-										(tonumber(sheet.xp2_5 ) or 0),
-										(tonumber(sheet.xp2_6 ) or 0),
-										(tonumber(sheet.xp2_7 ) or 0),
-										(tonumber(sheet.xp2_8 ) or 0),
-										(tonumber(sheet.xp2_9 ) or 0),
-										(tonumber(sheet.xp2_10) or 0),
-										(tonumber(sheet.xp2_11) or 0),
-										(tonumber(sheet.xp2_12) or 0),
-										(tonumber(sheet.xp3_1 ) or 0),
-										(tonumber(sheet.xp3_2 ) or 0),
-										(tonumber(sheet.xp3_3 ) or 0),
-										(tonumber(sheet.xp3_4 ) or 0),
-										(tonumber(sheet.xp3_5 ) or 0),
-										(tonumber(sheet.xp3_6 ) or 0),
-										(tonumber(sheet.xp3_7 ) or 0),
-										(tonumber(sheet.xp3_8 ) or 0),
-										(tonumber(sheet.xp3_9 ) or 0),
-										(tonumber(sheet.xp3_10) or 0),
-										(tonumber(sheet.xp3_11) or 0),
-										(tonumber(sheet.xp3_12) or 0)
-										};
-					
-					for i=1, 48, 1 do
-						for j=1, limites[i], 1 do
-							mod = mod + math.max(math.floor((valores[i]+j)*1.5), 3);
-						end;
-					end;
-
-					sheet.XPaptidoes = mod;
-					sheet.XPgasta = (tonumber(sheet.XPatributos) or 0) + 
-									(tonumber(sheet.XPaegis) or 0) + 
-									(tonumber(sheet.XPhistoricos) or 0) + 
-									(tonumber(sheet.XPmisticos) or 0) + 
-									(tonumber(sheet.XPaptidoes) or 0);
+			for i=1, 48, 1 do
+				for j=1, limites[i], 1 do
+					mod = mod + math.max(math.floor((valores[i]+j)*1.5), 3);
 				end;
 			end;
-		</script>
+
+			sheet.XPaptidoes = mod;
+			sheet.XPgasta = (tonumber(sheet.XPatributos) or 0) + 
+							(tonumber(sheet.XPaegis) or 0) + 
+							(tonumber(sheet.XPhistoricos) or 0) + 
+							(tonumber(sheet.XPmisticos) or 0) + 
+							(tonumber(sheet.XPaptidoes) or 0);
+		end;
+	</script>
+    <scrollBox align="client">
 
         <layout left="0" top="0" width="280" height="630">
         	<Aptidoes nome="TALENTOS FISICOS" num="0"/>
@@ -238,7 +240,6 @@
         <layout left="900" top="0" width="280" height="630">
         	<Aptidoes nome="CONHECIMENTOS MENTAIS" num="3"/>
         </layout>
-
         
 		<layout left="1200" top="0" width="110" height="230">
 			<rectangle left="0" top="0" width="110" height="230" color="black" xradius="15" yradius="15" cornerType="round"/>
@@ -252,6 +253,15 @@
 			<label left="5" top="60" width="50" height="20" text="Dado 2"/>
        		<rectangle left="50" top="58" width="35" height="25" color="Black" strokeColor="white" strokeSize="1"/>
 			<label left="60" top="60" width="30" height="20" field="num2" text="val"/>
+			
+			<button left="85" top="63" width="15" height="15" text="x" fontSize="10">
+				<event name="onClick">
+					if sheet==nil then return end;
+					sheet.field2 = nil;
+					sheet.num2 = nil;
+					sheet.nome2 = nil;
+				</event>
+			</button>
        		
 			<label left="63" top="85" width="10" height="20" text="+"/>
        		
@@ -264,11 +274,13 @@
 			<label left="5" top="165" width="40" height="20" text="Dific."/>
 			<edit left="50" top="165" width="30" height="25" field="dificuldade" type="number"/>
 			
-			<button left="30" top="195" width="50" text="ROLAR">
+			<button left="30" top="195" width="50" text="ROLAR" fontSize="11">
                 <event name="onClick">
                 	rolar();
                 </event>
        		</button>
-		</layout>		
+		</layout>	
+
+		<dataLink fields="{'nome0_1','nome0_2','nome0_3','nome0_4','nome0_5','nome0_6','nome0_7','nome0_8','nome1_1','nome1_2','nome1_3','nome1_4','nome1_5','nome1_6','nome1_7','nome1_8','nome1_9','nome1_10','nome2_1','nome2_2','nome2_3','nome2_4','nome2_5','nome2_6','nome2_7','nome2_8','nome3_1','nome3_2','nome3_3','nome3_4','nome3_5','nome3_6','nome3_7','nome3_8','nome3_9','nome3_10'}" defaultValues="{'Armas Brancas','Arremesso','Briga','Esportes','Esquiva','Furtividade','Prestidigitação','Sobrevivência','Empatia','Emp. Animais','Etiqueta','Expressão','Intimidação','Investigação','Lábia','Liderança','Manha','Prontidão','Acrobacia','Armas de Fogo','Arte da Fuga','Artes Marciais','Conduçao','Oficios','Performace','Subterfúgio','Acadêmicos','Administração','Ciências','Computação','Cultura','Direito','Medicina','Ocultismo','Política','Tecnologia'}"/>
     </scrollBox>
 </form>
