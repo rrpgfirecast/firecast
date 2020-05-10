@@ -6444,7 +6444,9 @@ local function constructNew_frmACN1()
 
 		local function rolar()
 			local mesaDoPersonagem = rrpg.getMesaDe(sheet);
-            local parada = (tonumber(sheet[sheet.dado1]) or 0) + (tonumber(sheet[sheet.dado2]) or 0) + (tonumber(sheet.extra) or 0);
+			local num1 = (tonumber(sheet.num1) or 0);
+			local num2 = (tonumber(sheet.num2) or 0);
+            local parada = num1 + num2 + (tonumber(sheet.extra) or 0);
             if sheet.especBonus=='1' then
             	parada = parada + 1.5;
             elseif sheet.especBonus=='2' then
@@ -6485,7 +6487,7 @@ local function constructNew_frmACN1()
            	end;
 
            	rolagem = rrpg.interpretarRolagem(parada .. "d10");
-           	mesaDoPersonagem.activeChat:rolarDados(rolagem, nome .. "Dificuldade: " .. dificuldade  .. " (" ..(sheet[sheet.dado1] or 0) .. " + " .. (sheet[sheet.dado2] or 0) .. " + " .. (sheet.especBonus or 0) .. "x especializaçao + " .. (sheet.extra or 0) .. " - " .. pen .. " dano)", 
+           	mesaDoPersonagem.activeChat:rolarDados(rolagem, nome .. "Dificuldade: " .. dificuldade  .. " (" .. num1 .. " + " .. num2 .. " + " .. (sheet.especBonus or 0) .. "x especializaçao + " .. (sheet.extra or 0) .. " - " .. pen .. " dano)", 
 				function (rolado)
 					local sucessos = 0;
 					local op = rolado.ops[1];
