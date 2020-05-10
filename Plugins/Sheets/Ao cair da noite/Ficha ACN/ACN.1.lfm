@@ -10,7 +10,7 @@
 				if sheet==nil then return end;
 				sheet.field1 = sheet.dado1;
 				sheet.num1 = (tonumber(sheet[sheet.field1]) or 0);
-				sheet.nome1 = "$(nome)";
+				sheet.rollnome1 = "$(nome)";
         	</event>
         </radioButton>
     	<radioButton left="0" top="15" groupName="grupo2" field="dado2" fieldValue="historicoTotal$(field)">
@@ -18,7 +18,7 @@
 				if sheet==nil then return end;
 				sheet.field2 = sheet.dado2;
 				sheet.num2 = (tonumber(sheet[sheet.field2]) or 0);
-				sheet.nome2 = "$(nome)";
+				sheet.rollnome2 = "$(nome)";
         	</event>
     	</radioButton>
 
@@ -59,7 +59,7 @@
 					if sheet==nil then return end;
 					sheet.field1 = sheet.dado1;
 					sheet.num1 = (tonumber(sheet[sheet.field1]) or 0);
-					sheet.nome1 = "$(nome)";
+					sheet.rollnome1 = "$(nome)";
         		</event>
         </radioButton>
     	<radioButton left="0" top="13" groupName="grupo2" field="dado2" fieldValue="teste$(field)">
@@ -67,7 +67,7 @@
 					if sheet==nil then return end;
 					sheet.field2 = sheet.dado2;
 					sheet.num2 = (tonumber(sheet[sheet.field2]) or 0);
-					sheet.nome2 = "$(nome)";
+					sheet.rollnome2 = "$(nome)";
         		</event>
     	</radioButton>
 
@@ -696,7 +696,7 @@
 					if sheet==nil then return end;
 					sheet.field2 = nil;
 					sheet.num2 = nil;
-					sheet.nome2 = nil;
+					sheet.rollnome2 = nil;
 				</event>
 			</button>
        		
@@ -808,11 +808,11 @@
            	dificuldade = dificuldade;
 
            	local nome = "";
-           	if sheet.nome1 ~= nil then 
-           		nome = sheet.nome1 .. " ";
+           	if sheet.rollnome1 ~= nil then 
+           		nome = sheet.rollnome1 .. " ";
            	end;
-           	if sheet.nome2 ~= nil then
-           		nome = nome .. "+ " .. sheet.nome2 .. " ";
+           	if sheet.rollnome2 ~= nil then
+           		nome = nome .. "+ " .. sheet.rollnome2 .. " ";
            	end;
 
            	if parada &lt; 1 then 

@@ -5346,7 +5346,7 @@ local function constructNew_frmACN2()
             if sheet==nil then return end;
             				sheet.field1 = sheet.dado1;
             				sheet.num1 = (tonumber(sheet[sheet.field1]) or 0);
-            				sheet.nome1 = sheet.nome0_1;
+            				sheet.rollnome1 = sheet.nome0_1;
         end, obj);
 
     obj._e_event1 = obj.radioButton2:addEventListener("onChange",
@@ -5354,7 +5354,7 @@ local function constructNew_frmACN2()
             if sheet==nil then return end;
             				sheet.field2 = sheet.dado2;
             				sheet.num2 = (tonumber(sheet[sheet.field2]) or 0);
-            				sheet.nome2 = sheet.nome0_1;
+            				sheet.rollnome2 = sheet.nome0_1;
         end, obj);
 
     obj._e_event2 = obj.edit2:addEventListener("onChange",
@@ -5396,7 +5396,7 @@ local function constructNew_frmACN2()
             if sheet==nil then return end;
             				sheet.field1 = sheet.dado1;
             				sheet.num1 = (tonumber(sheet[sheet.field1]) or 0);
-            				sheet.nome1 = sheet.nome0_2;
+            				sheet.rollnome1 = sheet.nome0_2;
         end, obj);
 
     obj._e_event6 = obj.radioButton4:addEventListener("onChange",
@@ -5404,7 +5404,7 @@ local function constructNew_frmACN2()
             if sheet==nil then return end;
             				sheet.field2 = sheet.dado2;
             				sheet.num2 = (tonumber(sheet[sheet.field2]) or 0);
-            				sheet.nome2 = sheet.nome0_2;
+            				sheet.rollnome2 = sheet.nome0_2;
         end, obj);
 
     obj._e_event7 = obj.edit7:addEventListener("onChange",
@@ -5446,7 +5446,7 @@ local function constructNew_frmACN2()
             if sheet==nil then return end;
             				sheet.field1 = sheet.dado1;
             				sheet.num1 = (tonumber(sheet[sheet.field1]) or 0);
-            				sheet.nome1 = sheet.nome0_3;
+            				sheet.rollnome1 = sheet.nome0_3;
         end, obj);
 
     obj._e_event11 = obj.radioButton6:addEventListener("onChange",
@@ -5454,7 +5454,7 @@ local function constructNew_frmACN2()
             if sheet==nil then return end;
             				sheet.field2 = sheet.dado2;
             				sheet.num2 = (tonumber(sheet[sheet.field2]) or 0);
-            				sheet.nome2 = sheet.nome0_3;
+            				sheet.rollnome2 = sheet.nome0_3;
         end, obj);
 
     obj._e_event12 = obj.edit12:addEventListener("onChange",
@@ -5496,7 +5496,7 @@ local function constructNew_frmACN2()
             if sheet==nil then return end;
             				sheet.field1 = sheet.dado1;
             				sheet.num1 = (tonumber(sheet[sheet.field1]) or 0);
-            				sheet.nome1 = sheet.nome0_4;
+            				sheet.rollnome1 = sheet.nome0_4;
         end, obj);
 
     obj._e_event16 = obj.radioButton8:addEventListener("onChange",
@@ -5504,7 +5504,7 @@ local function constructNew_frmACN2()
             if sheet==nil then return end;
             				sheet.field2 = sheet.dado2;
             				sheet.num2 = (tonumber(sheet[sheet.field2]) or 0);
-            				sheet.nome2 = sheet.nome0_4;
+            				sheet.rollnome2 = sheet.nome0_4;
         end, obj);
 
     obj._e_event17 = obj.edit17:addEventListener("onChange",
@@ -5546,7 +5546,7 @@ local function constructNew_frmACN2()
             if sheet==nil then return end;
             				sheet.field1 = sheet.dado1;
             				sheet.num1 = (tonumber(sheet[sheet.field1]) or 0);
-            				sheet.nome1 = sheet.nome0_5;
+            				sheet.rollnome1 = sheet.nome0_5;
         end, obj);
 
     obj._e_event21 = obj.radioButton10:addEventListener("onChange",
@@ -5554,7 +5554,7 @@ local function constructNew_frmACN2()
             if sheet==nil then return end;
             				sheet.field2 = sheet.dado2;
             				sheet.num2 = (tonumber(sheet[sheet.field2]) or 0);
-            				sheet.nome2 = sheet.nome0_5;
+            				sheet.rollnome2 = sheet.nome0_5;
         end, obj);
 
     obj._e_event22 = obj.edit22:addEventListener("onChange",
@@ -5596,7 +5596,7 @@ local function constructNew_frmACN2()
             if sheet==nil then return end;
             				sheet.field1 = sheet.dado1;
             				sheet.num1 = (tonumber(sheet[sheet.field1]) or 0);
-            				sheet.nome1 = sheet.nome0_6;
+            				sheet.rollnome1 = sheet.nome0_6;
         end, obj);
 
     obj._e_event26 = obj.radioButton12:addEventListener("onChange",
@@ -5604,7 +5604,7 @@ local function constructNew_frmACN2()
             if sheet==nil then return end;
             				sheet.field2 = sheet.dado2;
             				sheet.num2 = (tonumber(sheet[sheet.field2]) or 0);
-            				sheet.nome2 = sheet.nome0_6;
+            				sheet.rollnome2 = sheet.nome0_6;
         end, obj);
 
     obj._e_event27 = obj.edit27:addEventListener("onChange",
@@ -5646,7 +5646,7 @@ local function constructNew_frmACN2()
             if sheet==nil then return end;
             				sheet.field1 = sheet.dado1;
             				sheet.num1 = (tonumber(sheet[sheet.field1]) or 0);
-            				sheet.nome1 = sheet.nome0_7;
+            				sheet.rollnome1 = sheet.nome0_7;
         end, obj);
 
     obj._e_event31 = obj.radioButton14:addEventListener("onChange",
@@ -5654,7 +5654,7 @@ local function constructNew_frmACN2()
             if sheet==nil then return end;
             				sheet.field2 = sheet.dado2;
             				sheet.num2 = (tonumber(sheet[sheet.field2]) or 0);
-            				sheet.nome2 = sheet.nome0_7;
+            				sheet.rollnome2 = sheet.nome0_7;
         end, obj);
 
     obj._e_event32 = obj.edit32:addEventListener("onChange",
@@ -5696,7 +5696,7 @@ local function constructNew_frmACN2()
             if sheet==nil then return end;
             				sheet.field1 = sheet.dado1;
             				sheet.num1 = (tonumber(sheet[sheet.field1]) or 0);
-            				sheet.nome1 = sheet.nome0_8;
+            				sheet.rollnome1 = sheet.nome0_8;
         end, obj);
 
     obj._e_event36 = obj.radioButton16:addEventListener("onChange",
@@ -5704,7 +5704,7 @@ local function constructNew_frmACN2()
             if sheet==nil then return end;
             				sheet.field2 = sheet.dado2;
             				sheet.num2 = (tonumber(sheet[sheet.field2]) or 0);
-            				sheet.nome2 = sheet.nome0_8;
+            				sheet.rollnome2 = sheet.nome0_8;
         end, obj);
 
     obj._e_event37 = obj.edit37:addEventListener("onChange",
@@ -5746,7 +5746,7 @@ local function constructNew_frmACN2()
             if sheet==nil then return end;
             				sheet.field1 = sheet.dado1;
             				sheet.num1 = (tonumber(sheet[sheet.field1]) or 0);
-            				sheet.nome1 = sheet.nome0_9;
+            				sheet.rollnome1 = sheet.nome0_9;
         end, obj);
 
     obj._e_event41 = obj.radioButton18:addEventListener("onChange",
@@ -5754,7 +5754,7 @@ local function constructNew_frmACN2()
             if sheet==nil then return end;
             				sheet.field2 = sheet.dado2;
             				sheet.num2 = (tonumber(sheet[sheet.field2]) or 0);
-            				sheet.nome2 = sheet.nome0_9;
+            				sheet.rollnome2 = sheet.nome0_9;
         end, obj);
 
     obj._e_event42 = obj.edit42:addEventListener("onChange",
@@ -5796,7 +5796,7 @@ local function constructNew_frmACN2()
             if sheet==nil then return end;
             				sheet.field1 = sheet.dado1;
             				sheet.num1 = (tonumber(sheet[sheet.field1]) or 0);
-            				sheet.nome1 = sheet.nome0_10;
+            				sheet.rollnome1 = sheet.nome0_10;
         end, obj);
 
     obj._e_event46 = obj.radioButton20:addEventListener("onChange",
@@ -5804,7 +5804,7 @@ local function constructNew_frmACN2()
             if sheet==nil then return end;
             				sheet.field2 = sheet.dado2;
             				sheet.num2 = (tonumber(sheet[sheet.field2]) or 0);
-            				sheet.nome2 = sheet.nome0_10;
+            				sheet.rollnome2 = sheet.nome0_10;
         end, obj);
 
     obj._e_event47 = obj.edit47:addEventListener("onChange",
@@ -5846,7 +5846,7 @@ local function constructNew_frmACN2()
             if sheet==nil then return end;
             				sheet.field1 = sheet.dado1;
             				sheet.num1 = (tonumber(sheet[sheet.field1]) or 0);
-            				sheet.nome1 = sheet.nome0_11;
+            				sheet.rollnome1 = sheet.nome0_11;
         end, obj);
 
     obj._e_event51 = obj.radioButton22:addEventListener("onChange",
@@ -5854,7 +5854,7 @@ local function constructNew_frmACN2()
             if sheet==nil then return end;
             				sheet.field2 = sheet.dado2;
             				sheet.num2 = (tonumber(sheet[sheet.field2]) or 0);
-            				sheet.nome2 = sheet.nome0_11;
+            				sheet.rollnome2 = sheet.nome0_11;
         end, obj);
 
     obj._e_event52 = obj.edit52:addEventListener("onChange",
@@ -5896,7 +5896,7 @@ local function constructNew_frmACN2()
             if sheet==nil then return end;
             				sheet.field1 = sheet.dado1;
             				sheet.num1 = (tonumber(sheet[sheet.field1]) or 0);
-            				sheet.nome1 = sheet.nome0_12;
+            				sheet.rollnome1 = sheet.nome0_12;
         end, obj);
 
     obj._e_event56 = obj.radioButton24:addEventListener("onChange",
@@ -5904,7 +5904,7 @@ local function constructNew_frmACN2()
             if sheet==nil then return end;
             				sheet.field2 = sheet.dado2;
             				sheet.num2 = (tonumber(sheet[sheet.field2]) or 0);
-            				sheet.nome2 = sheet.nome0_12;
+            				sheet.rollnome2 = sheet.nome0_12;
         end, obj);
 
     obj._e_event57 = obj.edit57:addEventListener("onChange",
@@ -5946,7 +5946,7 @@ local function constructNew_frmACN2()
             if sheet==nil then return end;
             				sheet.field1 = sheet.dado1;
             				sheet.num1 = (tonumber(sheet[sheet.field1]) or 0);
-            				sheet.nome1 = sheet.nome2_1;
+            				sheet.rollnome1 = sheet.nome2_1;
         end, obj);
 
     obj._e_event61 = obj.radioButton26:addEventListener("onChange",
@@ -5954,7 +5954,7 @@ local function constructNew_frmACN2()
             if sheet==nil then return end;
             				sheet.field2 = sheet.dado2;
             				sheet.num2 = (tonumber(sheet[sheet.field2]) or 0);
-            				sheet.nome2 = sheet.nome2_1;
+            				sheet.rollnome2 = sheet.nome2_1;
         end, obj);
 
     obj._e_event62 = obj.edit62:addEventListener("onChange",
@@ -5996,7 +5996,7 @@ local function constructNew_frmACN2()
             if sheet==nil then return end;
             				sheet.field1 = sheet.dado1;
             				sheet.num1 = (tonumber(sheet[sheet.field1]) or 0);
-            				sheet.nome1 = sheet.nome2_2;
+            				sheet.rollnome1 = sheet.nome2_2;
         end, obj);
 
     obj._e_event66 = obj.radioButton28:addEventListener("onChange",
@@ -6004,7 +6004,7 @@ local function constructNew_frmACN2()
             if sheet==nil then return end;
             				sheet.field2 = sheet.dado2;
             				sheet.num2 = (tonumber(sheet[sheet.field2]) or 0);
-            				sheet.nome2 = sheet.nome2_2;
+            				sheet.rollnome2 = sheet.nome2_2;
         end, obj);
 
     obj._e_event67 = obj.edit67:addEventListener("onChange",
@@ -6046,7 +6046,7 @@ local function constructNew_frmACN2()
             if sheet==nil then return end;
             				sheet.field1 = sheet.dado1;
             				sheet.num1 = (tonumber(sheet[sheet.field1]) or 0);
-            				sheet.nome1 = sheet.nome2_3;
+            				sheet.rollnome1 = sheet.nome2_3;
         end, obj);
 
     obj._e_event71 = obj.radioButton30:addEventListener("onChange",
@@ -6054,7 +6054,7 @@ local function constructNew_frmACN2()
             if sheet==nil then return end;
             				sheet.field2 = sheet.dado2;
             				sheet.num2 = (tonumber(sheet[sheet.field2]) or 0);
-            				sheet.nome2 = sheet.nome2_3;
+            				sheet.rollnome2 = sheet.nome2_3;
         end, obj);
 
     obj._e_event72 = obj.edit72:addEventListener("onChange",
@@ -6096,7 +6096,7 @@ local function constructNew_frmACN2()
             if sheet==nil then return end;
             				sheet.field1 = sheet.dado1;
             				sheet.num1 = (tonumber(sheet[sheet.field1]) or 0);
-            				sheet.nome1 = sheet.nome2_4;
+            				sheet.rollnome1 = sheet.nome2_4;
         end, obj);
 
     obj._e_event76 = obj.radioButton32:addEventListener("onChange",
@@ -6104,7 +6104,7 @@ local function constructNew_frmACN2()
             if sheet==nil then return end;
             				sheet.field2 = sheet.dado2;
             				sheet.num2 = (tonumber(sheet[sheet.field2]) or 0);
-            				sheet.nome2 = sheet.nome2_4;
+            				sheet.rollnome2 = sheet.nome2_4;
         end, obj);
 
     obj._e_event77 = obj.edit77:addEventListener("onChange",
@@ -6146,7 +6146,7 @@ local function constructNew_frmACN2()
             if sheet==nil then return end;
             				sheet.field1 = sheet.dado1;
             				sheet.num1 = (tonumber(sheet[sheet.field1]) or 0);
-            				sheet.nome1 = sheet.nome2_5;
+            				sheet.rollnome1 = sheet.nome2_5;
         end, obj);
 
     obj._e_event81 = obj.radioButton34:addEventListener("onChange",
@@ -6154,7 +6154,7 @@ local function constructNew_frmACN2()
             if sheet==nil then return end;
             				sheet.field2 = sheet.dado2;
             				sheet.num2 = (tonumber(sheet[sheet.field2]) or 0);
-            				sheet.nome2 = sheet.nome2_5;
+            				sheet.rollnome2 = sheet.nome2_5;
         end, obj);
 
     obj._e_event82 = obj.edit82:addEventListener("onChange",
@@ -6196,7 +6196,7 @@ local function constructNew_frmACN2()
             if sheet==nil then return end;
             				sheet.field1 = sheet.dado1;
             				sheet.num1 = (tonumber(sheet[sheet.field1]) or 0);
-            				sheet.nome1 = sheet.nome2_6;
+            				sheet.rollnome1 = sheet.nome2_6;
         end, obj);
 
     obj._e_event86 = obj.radioButton36:addEventListener("onChange",
@@ -6204,7 +6204,7 @@ local function constructNew_frmACN2()
             if sheet==nil then return end;
             				sheet.field2 = sheet.dado2;
             				sheet.num2 = (tonumber(sheet[sheet.field2]) or 0);
-            				sheet.nome2 = sheet.nome2_6;
+            				sheet.rollnome2 = sheet.nome2_6;
         end, obj);
 
     obj._e_event87 = obj.edit87:addEventListener("onChange",
@@ -6246,7 +6246,7 @@ local function constructNew_frmACN2()
             if sheet==nil then return end;
             				sheet.field1 = sheet.dado1;
             				sheet.num1 = (tonumber(sheet[sheet.field1]) or 0);
-            				sheet.nome1 = sheet.nome2_7;
+            				sheet.rollnome1 = sheet.nome2_7;
         end, obj);
 
     obj._e_event91 = obj.radioButton38:addEventListener("onChange",
@@ -6254,7 +6254,7 @@ local function constructNew_frmACN2()
             if sheet==nil then return end;
             				sheet.field2 = sheet.dado2;
             				sheet.num2 = (tonumber(sheet[sheet.field2]) or 0);
-            				sheet.nome2 = sheet.nome2_7;
+            				sheet.rollnome2 = sheet.nome2_7;
         end, obj);
 
     obj._e_event92 = obj.edit92:addEventListener("onChange",
@@ -6296,7 +6296,7 @@ local function constructNew_frmACN2()
             if sheet==nil then return end;
             				sheet.field1 = sheet.dado1;
             				sheet.num1 = (tonumber(sheet[sheet.field1]) or 0);
-            				sheet.nome1 = sheet.nome2_8;
+            				sheet.rollnome1 = sheet.nome2_8;
         end, obj);
 
     obj._e_event96 = obj.radioButton40:addEventListener("onChange",
@@ -6304,7 +6304,7 @@ local function constructNew_frmACN2()
             if sheet==nil then return end;
             				sheet.field2 = sheet.dado2;
             				sheet.num2 = (tonumber(sheet[sheet.field2]) or 0);
-            				sheet.nome2 = sheet.nome2_8;
+            				sheet.rollnome2 = sheet.nome2_8;
         end, obj);
 
     obj._e_event97 = obj.edit97:addEventListener("onChange",
@@ -6346,7 +6346,7 @@ local function constructNew_frmACN2()
             if sheet==nil then return end;
             				sheet.field1 = sheet.dado1;
             				sheet.num1 = (tonumber(sheet[sheet.field1]) or 0);
-            				sheet.nome1 = sheet.nome2_9;
+            				sheet.rollnome1 = sheet.nome2_9;
         end, obj);
 
     obj._e_event101 = obj.radioButton42:addEventListener("onChange",
@@ -6354,7 +6354,7 @@ local function constructNew_frmACN2()
             if sheet==nil then return end;
             				sheet.field2 = sheet.dado2;
             				sheet.num2 = (tonumber(sheet[sheet.field2]) or 0);
-            				sheet.nome2 = sheet.nome2_9;
+            				sheet.rollnome2 = sheet.nome2_9;
         end, obj);
 
     obj._e_event102 = obj.edit102:addEventListener("onChange",
@@ -6396,7 +6396,7 @@ local function constructNew_frmACN2()
             if sheet==nil then return end;
             				sheet.field1 = sheet.dado1;
             				sheet.num1 = (tonumber(sheet[sheet.field1]) or 0);
-            				sheet.nome1 = sheet.nome2_10;
+            				sheet.rollnome1 = sheet.nome2_10;
         end, obj);
 
     obj._e_event106 = obj.radioButton44:addEventListener("onChange",
@@ -6404,7 +6404,7 @@ local function constructNew_frmACN2()
             if sheet==nil then return end;
             				sheet.field2 = sheet.dado2;
             				sheet.num2 = (tonumber(sheet[sheet.field2]) or 0);
-            				sheet.nome2 = sheet.nome2_10;
+            				sheet.rollnome2 = sheet.nome2_10;
         end, obj);
 
     obj._e_event107 = obj.edit107:addEventListener("onChange",
@@ -6446,7 +6446,7 @@ local function constructNew_frmACN2()
             if sheet==nil then return end;
             				sheet.field1 = sheet.dado1;
             				sheet.num1 = (tonumber(sheet[sheet.field1]) or 0);
-            				sheet.nome1 = sheet.nome2_11;
+            				sheet.rollnome1 = sheet.nome2_11;
         end, obj);
 
     obj._e_event111 = obj.radioButton46:addEventListener("onChange",
@@ -6454,7 +6454,7 @@ local function constructNew_frmACN2()
             if sheet==nil then return end;
             				sheet.field2 = sheet.dado2;
             				sheet.num2 = (tonumber(sheet[sheet.field2]) or 0);
-            				sheet.nome2 = sheet.nome2_11;
+            				sheet.rollnome2 = sheet.nome2_11;
         end, obj);
 
     obj._e_event112 = obj.edit112:addEventListener("onChange",
@@ -6496,7 +6496,7 @@ local function constructNew_frmACN2()
             if sheet==nil then return end;
             				sheet.field1 = sheet.dado1;
             				sheet.num1 = (tonumber(sheet[sheet.field1]) or 0);
-            				sheet.nome1 = sheet.nome2_12;
+            				sheet.rollnome1 = sheet.nome2_12;
         end, obj);
 
     obj._e_event116 = obj.radioButton48:addEventListener("onChange",
@@ -6504,7 +6504,7 @@ local function constructNew_frmACN2()
             if sheet==nil then return end;
             				sheet.field2 = sheet.dado2;
             				sheet.num2 = (tonumber(sheet[sheet.field2]) or 0);
-            				sheet.nome2 = sheet.nome2_12;
+            				sheet.rollnome2 = sheet.nome2_12;
         end, obj);
 
     obj._e_event117 = obj.edit117:addEventListener("onChange",
@@ -6546,7 +6546,7 @@ local function constructNew_frmACN2()
             if sheet==nil then return end;
             				sheet.field1 = sheet.dado1;
             				sheet.num1 = (tonumber(sheet[sheet.field1]) or 0);
-            				sheet.nome1 = sheet.nome1_1;
+            				sheet.rollnome1 = sheet.nome1_1;
         end, obj);
 
     obj._e_event121 = obj.radioButton50:addEventListener("onChange",
@@ -6554,7 +6554,7 @@ local function constructNew_frmACN2()
             if sheet==nil then return end;
             				sheet.field2 = sheet.dado2;
             				sheet.num2 = (tonumber(sheet[sheet.field2]) or 0);
-            				sheet.nome2 = sheet.nome1_1;
+            				sheet.rollnome2 = sheet.nome1_1;
         end, obj);
 
     obj._e_event122 = obj.edit122:addEventListener("onChange",
@@ -6596,7 +6596,7 @@ local function constructNew_frmACN2()
             if sheet==nil then return end;
             				sheet.field1 = sheet.dado1;
             				sheet.num1 = (tonumber(sheet[sheet.field1]) or 0);
-            				sheet.nome1 = sheet.nome1_2;
+            				sheet.rollnome1 = sheet.nome1_2;
         end, obj);
 
     obj._e_event126 = obj.radioButton52:addEventListener("onChange",
@@ -6604,7 +6604,7 @@ local function constructNew_frmACN2()
             if sheet==nil then return end;
             				sheet.field2 = sheet.dado2;
             				sheet.num2 = (tonumber(sheet[sheet.field2]) or 0);
-            				sheet.nome2 = sheet.nome1_2;
+            				sheet.rollnome2 = sheet.nome1_2;
         end, obj);
 
     obj._e_event127 = obj.edit127:addEventListener("onChange",
@@ -6646,7 +6646,7 @@ local function constructNew_frmACN2()
             if sheet==nil then return end;
             				sheet.field1 = sheet.dado1;
             				sheet.num1 = (tonumber(sheet[sheet.field1]) or 0);
-            				sheet.nome1 = sheet.nome1_3;
+            				sheet.rollnome1 = sheet.nome1_3;
         end, obj);
 
     obj._e_event131 = obj.radioButton54:addEventListener("onChange",
@@ -6654,7 +6654,7 @@ local function constructNew_frmACN2()
             if sheet==nil then return end;
             				sheet.field2 = sheet.dado2;
             				sheet.num2 = (tonumber(sheet[sheet.field2]) or 0);
-            				sheet.nome2 = sheet.nome1_3;
+            				sheet.rollnome2 = sheet.nome1_3;
         end, obj);
 
     obj._e_event132 = obj.edit132:addEventListener("onChange",
@@ -6696,7 +6696,7 @@ local function constructNew_frmACN2()
             if sheet==nil then return end;
             				sheet.field1 = sheet.dado1;
             				sheet.num1 = (tonumber(sheet[sheet.field1]) or 0);
-            				sheet.nome1 = sheet.nome1_4;
+            				sheet.rollnome1 = sheet.nome1_4;
         end, obj);
 
     obj._e_event136 = obj.radioButton56:addEventListener("onChange",
@@ -6704,7 +6704,7 @@ local function constructNew_frmACN2()
             if sheet==nil then return end;
             				sheet.field2 = sheet.dado2;
             				sheet.num2 = (tonumber(sheet[sheet.field2]) or 0);
-            				sheet.nome2 = sheet.nome1_4;
+            				sheet.rollnome2 = sheet.nome1_4;
         end, obj);
 
     obj._e_event137 = obj.edit137:addEventListener("onChange",
@@ -6746,7 +6746,7 @@ local function constructNew_frmACN2()
             if sheet==nil then return end;
             				sheet.field1 = sheet.dado1;
             				sheet.num1 = (tonumber(sheet[sheet.field1]) or 0);
-            				sheet.nome1 = sheet.nome1_5;
+            				sheet.rollnome1 = sheet.nome1_5;
         end, obj);
 
     obj._e_event141 = obj.radioButton58:addEventListener("onChange",
@@ -6754,7 +6754,7 @@ local function constructNew_frmACN2()
             if sheet==nil then return end;
             				sheet.field2 = sheet.dado2;
             				sheet.num2 = (tonumber(sheet[sheet.field2]) or 0);
-            				sheet.nome2 = sheet.nome1_5;
+            				sheet.rollnome2 = sheet.nome1_5;
         end, obj);
 
     obj._e_event142 = obj.edit142:addEventListener("onChange",
@@ -6796,7 +6796,7 @@ local function constructNew_frmACN2()
             if sheet==nil then return end;
             				sheet.field1 = sheet.dado1;
             				sheet.num1 = (tonumber(sheet[sheet.field1]) or 0);
-            				sheet.nome1 = sheet.nome1_6;
+            				sheet.rollnome1 = sheet.nome1_6;
         end, obj);
 
     obj._e_event146 = obj.radioButton60:addEventListener("onChange",
@@ -6804,7 +6804,7 @@ local function constructNew_frmACN2()
             if sheet==nil then return end;
             				sheet.field2 = sheet.dado2;
             				sheet.num2 = (tonumber(sheet[sheet.field2]) or 0);
-            				sheet.nome2 = sheet.nome1_6;
+            				sheet.rollnome2 = sheet.nome1_6;
         end, obj);
 
     obj._e_event147 = obj.edit147:addEventListener("onChange",
@@ -6846,7 +6846,7 @@ local function constructNew_frmACN2()
             if sheet==nil then return end;
             				sheet.field1 = sheet.dado1;
             				sheet.num1 = (tonumber(sheet[sheet.field1]) or 0);
-            				sheet.nome1 = sheet.nome1_7;
+            				sheet.rollnome1 = sheet.nome1_7;
         end, obj);
 
     obj._e_event151 = obj.radioButton62:addEventListener("onChange",
@@ -6854,7 +6854,7 @@ local function constructNew_frmACN2()
             if sheet==nil then return end;
             				sheet.field2 = sheet.dado2;
             				sheet.num2 = (tonumber(sheet[sheet.field2]) or 0);
-            				sheet.nome2 = sheet.nome1_7;
+            				sheet.rollnome2 = sheet.nome1_7;
         end, obj);
 
     obj._e_event152 = obj.edit152:addEventListener("onChange",
@@ -6896,7 +6896,7 @@ local function constructNew_frmACN2()
             if sheet==nil then return end;
             				sheet.field1 = sheet.dado1;
             				sheet.num1 = (tonumber(sheet[sheet.field1]) or 0);
-            				sheet.nome1 = sheet.nome1_8;
+            				sheet.rollnome1 = sheet.nome1_8;
         end, obj);
 
     obj._e_event156 = obj.radioButton64:addEventListener("onChange",
@@ -6904,7 +6904,7 @@ local function constructNew_frmACN2()
             if sheet==nil then return end;
             				sheet.field2 = sheet.dado2;
             				sheet.num2 = (tonumber(sheet[sheet.field2]) or 0);
-            				sheet.nome2 = sheet.nome1_8;
+            				sheet.rollnome2 = sheet.nome1_8;
         end, obj);
 
     obj._e_event157 = obj.edit157:addEventListener("onChange",
@@ -6946,7 +6946,7 @@ local function constructNew_frmACN2()
             if sheet==nil then return end;
             				sheet.field1 = sheet.dado1;
             				sheet.num1 = (tonumber(sheet[sheet.field1]) or 0);
-            				sheet.nome1 = sheet.nome1_9;
+            				sheet.rollnome1 = sheet.nome1_9;
         end, obj);
 
     obj._e_event161 = obj.radioButton66:addEventListener("onChange",
@@ -6954,7 +6954,7 @@ local function constructNew_frmACN2()
             if sheet==nil then return end;
             				sheet.field2 = sheet.dado2;
             				sheet.num2 = (tonumber(sheet[sheet.field2]) or 0);
-            				sheet.nome2 = sheet.nome1_9;
+            				sheet.rollnome2 = sheet.nome1_9;
         end, obj);
 
     obj._e_event162 = obj.edit162:addEventListener("onChange",
@@ -6996,7 +6996,7 @@ local function constructNew_frmACN2()
             if sheet==nil then return end;
             				sheet.field1 = sheet.dado1;
             				sheet.num1 = (tonumber(sheet[sheet.field1]) or 0);
-            				sheet.nome1 = sheet.nome1_10;
+            				sheet.rollnome1 = sheet.nome1_10;
         end, obj);
 
     obj._e_event166 = obj.radioButton68:addEventListener("onChange",
@@ -7004,7 +7004,7 @@ local function constructNew_frmACN2()
             if sheet==nil then return end;
             				sheet.field2 = sheet.dado2;
             				sheet.num2 = (tonumber(sheet[sheet.field2]) or 0);
-            				sheet.nome2 = sheet.nome1_10;
+            				sheet.rollnome2 = sheet.nome1_10;
         end, obj);
 
     obj._e_event167 = obj.edit167:addEventListener("onChange",
@@ -7046,7 +7046,7 @@ local function constructNew_frmACN2()
             if sheet==nil then return end;
             				sheet.field1 = sheet.dado1;
             				sheet.num1 = (tonumber(sheet[sheet.field1]) or 0);
-            				sheet.nome1 = sheet.nome1_11;
+            				sheet.rollnome1 = sheet.nome1_11;
         end, obj);
 
     obj._e_event171 = obj.radioButton70:addEventListener("onChange",
@@ -7054,7 +7054,7 @@ local function constructNew_frmACN2()
             if sheet==nil then return end;
             				sheet.field2 = sheet.dado2;
             				sheet.num2 = (tonumber(sheet[sheet.field2]) or 0);
-            				sheet.nome2 = sheet.nome1_11;
+            				sheet.rollnome2 = sheet.nome1_11;
         end, obj);
 
     obj._e_event172 = obj.edit172:addEventListener("onChange",
@@ -7096,7 +7096,7 @@ local function constructNew_frmACN2()
             if sheet==nil then return end;
             				sheet.field1 = sheet.dado1;
             				sheet.num1 = (tonumber(sheet[sheet.field1]) or 0);
-            				sheet.nome1 = sheet.nome1_12;
+            				sheet.rollnome1 = sheet.nome1_12;
         end, obj);
 
     obj._e_event176 = obj.radioButton72:addEventListener("onChange",
@@ -7104,7 +7104,7 @@ local function constructNew_frmACN2()
             if sheet==nil then return end;
             				sheet.field2 = sheet.dado2;
             				sheet.num2 = (tonumber(sheet[sheet.field2]) or 0);
-            				sheet.nome2 = sheet.nome1_12;
+            				sheet.rollnome2 = sheet.nome1_12;
         end, obj);
 
     obj._e_event177 = obj.edit177:addEventListener("onChange",
@@ -7146,7 +7146,7 @@ local function constructNew_frmACN2()
             if sheet==nil then return end;
             				sheet.field1 = sheet.dado1;
             				sheet.num1 = (tonumber(sheet[sheet.field1]) or 0);
-            				sheet.nome1 = sheet.nome3_1;
+            				sheet.rollnome1 = sheet.nome3_1;
         end, obj);
 
     obj._e_event181 = obj.radioButton74:addEventListener("onChange",
@@ -7154,7 +7154,7 @@ local function constructNew_frmACN2()
             if sheet==nil then return end;
             				sheet.field2 = sheet.dado2;
             				sheet.num2 = (tonumber(sheet[sheet.field2]) or 0);
-            				sheet.nome2 = sheet.nome3_1;
+            				sheet.rollnome2 = sheet.nome3_1;
         end, obj);
 
     obj._e_event182 = obj.edit182:addEventListener("onChange",
@@ -7196,7 +7196,7 @@ local function constructNew_frmACN2()
             if sheet==nil then return end;
             				sheet.field1 = sheet.dado1;
             				sheet.num1 = (tonumber(sheet[sheet.field1]) or 0);
-            				sheet.nome1 = sheet.nome3_2;
+            				sheet.rollnome1 = sheet.nome3_2;
         end, obj);
 
     obj._e_event186 = obj.radioButton76:addEventListener("onChange",
@@ -7204,7 +7204,7 @@ local function constructNew_frmACN2()
             if sheet==nil then return end;
             				sheet.field2 = sheet.dado2;
             				sheet.num2 = (tonumber(sheet[sheet.field2]) or 0);
-            				sheet.nome2 = sheet.nome3_2;
+            				sheet.rollnome2 = sheet.nome3_2;
         end, obj);
 
     obj._e_event187 = obj.edit187:addEventListener("onChange",
@@ -7246,7 +7246,7 @@ local function constructNew_frmACN2()
             if sheet==nil then return end;
             				sheet.field1 = sheet.dado1;
             				sheet.num1 = (tonumber(sheet[sheet.field1]) or 0);
-            				sheet.nome1 = sheet.nome3_3;
+            				sheet.rollnome1 = sheet.nome3_3;
         end, obj);
 
     obj._e_event191 = obj.radioButton78:addEventListener("onChange",
@@ -7254,7 +7254,7 @@ local function constructNew_frmACN2()
             if sheet==nil then return end;
             				sheet.field2 = sheet.dado2;
             				sheet.num2 = (tonumber(sheet[sheet.field2]) or 0);
-            				sheet.nome2 = sheet.nome3_3;
+            				sheet.rollnome2 = sheet.nome3_3;
         end, obj);
 
     obj._e_event192 = obj.edit192:addEventListener("onChange",
@@ -7296,7 +7296,7 @@ local function constructNew_frmACN2()
             if sheet==nil then return end;
             				sheet.field1 = sheet.dado1;
             				sheet.num1 = (tonumber(sheet[sheet.field1]) or 0);
-            				sheet.nome1 = sheet.nome3_4;
+            				sheet.rollnome1 = sheet.nome3_4;
         end, obj);
 
     obj._e_event196 = obj.radioButton80:addEventListener("onChange",
@@ -7304,7 +7304,7 @@ local function constructNew_frmACN2()
             if sheet==nil then return end;
             				sheet.field2 = sheet.dado2;
             				sheet.num2 = (tonumber(sheet[sheet.field2]) or 0);
-            				sheet.nome2 = sheet.nome3_4;
+            				sheet.rollnome2 = sheet.nome3_4;
         end, obj);
 
     obj._e_event197 = obj.edit197:addEventListener("onChange",
@@ -7346,7 +7346,7 @@ local function constructNew_frmACN2()
             if sheet==nil then return end;
             				sheet.field1 = sheet.dado1;
             				sheet.num1 = (tonumber(sheet[sheet.field1]) or 0);
-            				sheet.nome1 = sheet.nome3_5;
+            				sheet.rollnome1 = sheet.nome3_5;
         end, obj);
 
     obj._e_event201 = obj.radioButton82:addEventListener("onChange",
@@ -7354,7 +7354,7 @@ local function constructNew_frmACN2()
             if sheet==nil then return end;
             				sheet.field2 = sheet.dado2;
             				sheet.num2 = (tonumber(sheet[sheet.field2]) or 0);
-            				sheet.nome2 = sheet.nome3_5;
+            				sheet.rollnome2 = sheet.nome3_5;
         end, obj);
 
     obj._e_event202 = obj.edit202:addEventListener("onChange",
@@ -7396,7 +7396,7 @@ local function constructNew_frmACN2()
             if sheet==nil then return end;
             				sheet.field1 = sheet.dado1;
             				sheet.num1 = (tonumber(sheet[sheet.field1]) or 0);
-            				sheet.nome1 = sheet.nome3_6;
+            				sheet.rollnome1 = sheet.nome3_6;
         end, obj);
 
     obj._e_event206 = obj.radioButton84:addEventListener("onChange",
@@ -7404,7 +7404,7 @@ local function constructNew_frmACN2()
             if sheet==nil then return end;
             				sheet.field2 = sheet.dado2;
             				sheet.num2 = (tonumber(sheet[sheet.field2]) or 0);
-            				sheet.nome2 = sheet.nome3_6;
+            				sheet.rollnome2 = sheet.nome3_6;
         end, obj);
 
     obj._e_event207 = obj.edit207:addEventListener("onChange",
@@ -7446,7 +7446,7 @@ local function constructNew_frmACN2()
             if sheet==nil then return end;
             				sheet.field1 = sheet.dado1;
             				sheet.num1 = (tonumber(sheet[sheet.field1]) or 0);
-            				sheet.nome1 = sheet.nome3_7;
+            				sheet.rollnome1 = sheet.nome3_7;
         end, obj);
 
     obj._e_event211 = obj.radioButton86:addEventListener("onChange",
@@ -7454,7 +7454,7 @@ local function constructNew_frmACN2()
             if sheet==nil then return end;
             				sheet.field2 = sheet.dado2;
             				sheet.num2 = (tonumber(sheet[sheet.field2]) or 0);
-            				sheet.nome2 = sheet.nome3_7;
+            				sheet.rollnome2 = sheet.nome3_7;
         end, obj);
 
     obj._e_event212 = obj.edit212:addEventListener("onChange",
@@ -7496,7 +7496,7 @@ local function constructNew_frmACN2()
             if sheet==nil then return end;
             				sheet.field1 = sheet.dado1;
             				sheet.num1 = (tonumber(sheet[sheet.field1]) or 0);
-            				sheet.nome1 = sheet.nome3_8;
+            				sheet.rollnome1 = sheet.nome3_8;
         end, obj);
 
     obj._e_event216 = obj.radioButton88:addEventListener("onChange",
@@ -7504,7 +7504,7 @@ local function constructNew_frmACN2()
             if sheet==nil then return end;
             				sheet.field2 = sheet.dado2;
             				sheet.num2 = (tonumber(sheet[sheet.field2]) or 0);
-            				sheet.nome2 = sheet.nome3_8;
+            				sheet.rollnome2 = sheet.nome3_8;
         end, obj);
 
     obj._e_event217 = obj.edit217:addEventListener("onChange",
@@ -7546,7 +7546,7 @@ local function constructNew_frmACN2()
             if sheet==nil then return end;
             				sheet.field1 = sheet.dado1;
             				sheet.num1 = (tonumber(sheet[sheet.field1]) or 0);
-            				sheet.nome1 = sheet.nome3_9;
+            				sheet.rollnome1 = sheet.nome3_9;
         end, obj);
 
     obj._e_event221 = obj.radioButton90:addEventListener("onChange",
@@ -7554,7 +7554,7 @@ local function constructNew_frmACN2()
             if sheet==nil then return end;
             				sheet.field2 = sheet.dado2;
             				sheet.num2 = (tonumber(sheet[sheet.field2]) or 0);
-            				sheet.nome2 = sheet.nome3_9;
+            				sheet.rollnome2 = sheet.nome3_9;
         end, obj);
 
     obj._e_event222 = obj.edit222:addEventListener("onChange",
@@ -7596,7 +7596,7 @@ local function constructNew_frmACN2()
             if sheet==nil then return end;
             				sheet.field1 = sheet.dado1;
             				sheet.num1 = (tonumber(sheet[sheet.field1]) or 0);
-            				sheet.nome1 = sheet.nome3_10;
+            				sheet.rollnome1 = sheet.nome3_10;
         end, obj);
 
     obj._e_event226 = obj.radioButton92:addEventListener("onChange",
@@ -7604,7 +7604,7 @@ local function constructNew_frmACN2()
             if sheet==nil then return end;
             				sheet.field2 = sheet.dado2;
             				sheet.num2 = (tonumber(sheet[sheet.field2]) or 0);
-            				sheet.nome2 = sheet.nome3_10;
+            				sheet.rollnome2 = sheet.nome3_10;
         end, obj);
 
     obj._e_event227 = obj.edit227:addEventListener("onChange",
@@ -7646,7 +7646,7 @@ local function constructNew_frmACN2()
             if sheet==nil then return end;
             				sheet.field1 = sheet.dado1;
             				sheet.num1 = (tonumber(sheet[sheet.field1]) or 0);
-            				sheet.nome1 = sheet.nome3_11;
+            				sheet.rollnome1 = sheet.nome3_11;
         end, obj);
 
     obj._e_event231 = obj.radioButton94:addEventListener("onChange",
@@ -7654,7 +7654,7 @@ local function constructNew_frmACN2()
             if sheet==nil then return end;
             				sheet.field2 = sheet.dado2;
             				sheet.num2 = (tonumber(sheet[sheet.field2]) or 0);
-            				sheet.nome2 = sheet.nome3_11;
+            				sheet.rollnome2 = sheet.nome3_11;
         end, obj);
 
     obj._e_event232 = obj.edit232:addEventListener("onChange",
@@ -7696,7 +7696,7 @@ local function constructNew_frmACN2()
             if sheet==nil then return end;
             				sheet.field1 = sheet.dado1;
             				sheet.num1 = (tonumber(sheet[sheet.field1]) or 0);
-            				sheet.nome1 = sheet.nome3_12;
+            				sheet.rollnome1 = sheet.nome3_12;
         end, obj);
 
     obj._e_event236 = obj.radioButton96:addEventListener("onChange",
@@ -7704,7 +7704,7 @@ local function constructNew_frmACN2()
             if sheet==nil then return end;
             				sheet.field2 = sheet.dado2;
             				sheet.num2 = (tonumber(sheet[sheet.field2]) or 0);
-            				sheet.nome2 = sheet.nome3_12;
+            				sheet.rollnome2 = sheet.nome3_12;
         end, obj);
 
     obj._e_event237 = obj.edit237:addEventListener("onChange",

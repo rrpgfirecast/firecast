@@ -6,7 +6,7 @@
 				if sheet==nil then return end;
 				sheet.field1 = sheet.dado1;
 				sheet.num1 = (tonumber(sheet[sheet.field1]) or 0);
-				sheet.nome1 = sheet.nome$(field);
+				sheet.rollnome1 = sheet.nome$(field);
         	</event>
         </radioButton>
     	<radioButton left="0" top="15" groupName="grupo2" field="dado2" fieldValue="total$(field)">
@@ -14,7 +14,7 @@
 				if sheet==nil then return end;
 				sheet.field2 = sheet.dado2;
 				sheet.num2 = (tonumber(sheet[sheet.field2]) or 0);
-				sheet.nome2 = sheet.nome$(field);
+				sheet.rollnome2 = sheet.nome$(field);
         	</event>
     	</radioButton>
 
