@@ -360,3 +360,74 @@ function criarPathAreaConeHorizontal(Raio)
 	return path;			
 									
 end;
+
+
+function criarPathAreaSemiCirculo(Raio)
+	local reach = Raio;
+	local path = "M 0 0";
+
+	for i=1, reach, 1 do
+		if i == 1 then
+			path = path .. " h " .. 2;
+		elseif i==2 then
+			path = path .. " v " .. 1;
+		else
+			local ending = (i-2)%3;
+			if ending == 0 then
+				path = path .. " v " .. 1;
+			else
+				path = path .. " h " .. 2;
+			end;
+		end;
+	end;
+
+	for i=reach, 1, -1 do
+		if i == 1 then
+			path = path .. " v " .. 1;
+		elseif i==2 then
+			path = path .. " h " .. 2;
+		else
+			local ending = (i-2)%3;
+			if ending == 0 then
+				path = path .. " h " .. 2;
+			else
+				path = path .. " v " .. 1;
+			end;
+		end;
+	end;
+
+	for i=1, reach, 1 do
+		if i == 1 then
+			path = path .. " v " .. 1;
+		elseif i==2 then
+			path = path .. " h -" .. 2;
+		else
+			local ending = (i-2)%3;
+			if ending == 0 then
+				path = path .. " h -" .. 2;
+			else
+				path = path .. " v " .. 1;
+			end;
+		end;
+	end;
+
+	for i=reach, 1, -1 do
+		if i == 1 then
+			path = path .. " h -" .. 2;
+		elseif i==2 then
+			path = path .. " v " .. 1;
+		else
+			local ending = (i-2)%3;
+			if ending == 0 then
+				path = path .. " v " .. 1;
+			else
+				path = path .. " h -" .. 2;
+			end;
+		end;
+	end;
+
+	path = path .. " Z";
+	
+	return path;
+	
+end;

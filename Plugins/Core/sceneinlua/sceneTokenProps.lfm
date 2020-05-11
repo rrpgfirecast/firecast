@@ -536,81 +536,16 @@
 									end;
 									
 									if opGraficaAura.userData.FormaAura == lang("scene.FormaAura.SemiCirculo") then
-										local reach = math.ceil((opGraficaAura.height / 2) + (opGraficaAura.width / 2));
-										local path = "M 0 0";
-
-										for i=1, reach, 1 do
-											if i == 1 then
-												path = path .. " h " .. 2;
-											elseif i==2 then
-												path = path .. " v " .. 1;
-											else
-												local ending = (i-2)%3;
-												if ending == 0 then
-													path = path .. " v " .. 1;
-												else
-													path = path .. " h " .. 2;
-												end;
-											end;
+										opGraficaAura.pathData = criarPathAreaSemiCirculo(math.ceil((opGraficaAura.height / 2) + (opGraficaAura.width / 2)));
+										opGraficaAura.xOrigin = 1.0; 
+										opGraficaAura.yOrigin = 0.5;
+										opGraficaAura.widthMetric = "worldMetric";
+										opGraficaAura.heightMetric = "worldMetric";
+										opGraficaAura.x = 0.0;																		
+										opGraficaAura.xMetric = "worldMetric";
+										opGraficaAura.yMetric = "worldMetric";
+										opGraficaAura.color = self.cmbCorAura.color;
 										end;
-
-										for i=reach, 1, -1 do
-											if i == 1 then
-												path = path .. " v " .. 1;
-											elseif i==2 then
-												path = path .. " h " .. 2;
-											else
-												local ending = (i-2)%3;
-												if ending == 0 then
-													path = path .. " h " .. 2;
-												else
-													path = path .. " v " .. 1;
-												end;
-											end;
-										end;
-
-										for i=1, reach, 1 do
-											if i == 1 then
-												path = path .. " v " .. 1;
-											elseif i==2 then
-												path = path .. " h -" .. 2;
-											else
-												local ending = (i-2)%3;
-												if ending == 0 then
-													path = path .. " h -" .. 2;
-												else
-													path = path .. " v " .. 1;
-												end;
-											end;
-										end;
-
-										for i=reach, 1, -1 do
-											if i == 1 then
-												path = path .. " h -" .. 2;
-											elseif i==2 then
-												path = path .. " v " .. 1;
-											else
-												local ending = (i-2)%3;
-												if ending == 0 then
-													path = path .. " v " .. 1;
-												else
-													path = path .. " h -" .. 2;
-												end;
-											end;
-										end;
-
-										path = path .. " Z";
-									opGraficaAura.xOrigin = 1.0;     -- X começa em 1.0 largura de token + 0.0 metros
-									opGraficaAura.yOrigin = 0.5;
-									opGraficaAura.widthMetric = "worldMetric";
-									opGraficaAura.heightMetric = "worldMetric";
-									opGraficaAura.x = 0.0;																		
-									opGraficaAura.xMetric = "worldMetric";
-									
-									-- opGraficaAura.yMetric = "worldMetric";
-									opGraficaAura.pathData = path;
-									opGraficaAura.color = self.cmbCorAura.color;
-									end;
 									
 									if opGraficaAura.userData.FormaAura == lang("scene.FormaAura.CirculoPerfeito") then
 										opGraficaAura.data = "M 25, 50 a 25,25 0 1,1 50,0 a 25,25 0 1,1 -50,0";		
