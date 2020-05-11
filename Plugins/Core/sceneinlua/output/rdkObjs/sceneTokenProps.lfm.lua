@@ -474,57 +474,136 @@ local function constructNew_frmTokenProps()
     obj.edtAuraURL:setAlign("client");
     obj.edtAuraURL:setMargins({right=5});
 
+    obj.fplAlturaAura = GUI.fromHandle(_obj_newObject("flowPart"));
+    obj.fplAlturaAura:setParent(obj.flaAuraContent);
+    obj.fplAlturaAura:setName("fplAlturaAura");
+    obj.fplAlturaAura:setHeight(30);
+    obj.fplAlturaAura:setMinWidth(50);
+    obj.fplAlturaAura:setMaxWidth(5000);
+    obj.fplAlturaAura:setMargins({left=2, right=2, top=2, bottom=2});
+
     obj.labAlturaAura = GUI.fromHandle(_obj_newObject("label"));
-    obj.labAlturaAura:setParent(obj.flaAuraContent);
+    obj.labAlturaAura:setParent(obj.fplAlturaAura);
     obj.labAlturaAura:setName("labAlturaAura");
-    obj.labAlturaAura:setLeft(30);
-    obj.labAlturaAura:setTop(125);
     obj.labAlturaAura:setWordWrap(false);
+    obj.labAlturaAura:setAlign("left");
+    obj.labAlturaAura:setWidth(110);
+    obj.labAlturaAura:setAutoSize(false);
+    obj.labAlturaAura:setHorzTextAlign("trailing");
+    obj.labAlturaAura:setVertTextAlign("center");
+    obj.labAlturaAura:setMargins({right=5});
 
     obj.edtAlturaAura = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edtAlturaAura:setParent(obj.flaAuraContent);
+    obj.edtAlturaAura:setParent(obj.fplAlturaAura);
     obj.edtAlturaAura:setName("edtAlturaAura");
-    obj.edtAlturaAura:setType("float");
-    obj.edtAlturaAura:setMin(0.1);
-    obj.edtAlturaAura:setLeft(130);
-    obj.edtAlturaAura:setTop(120);
+    obj.edtAlturaAura:setAlign("client");
+    obj.edtAlturaAura:setMargins({right=5});
+
+    obj.fplLarguraAura = GUI.fromHandle(_obj_newObject("flowPart"));
+    obj.fplLarguraAura:setParent(obj.flaAuraContent);
+    obj.fplLarguraAura:setName("fplLarguraAura");
+    obj.fplLarguraAura:setHeight(30);
+    obj.fplLarguraAura:setMinWidth(50);
+    obj.fplLarguraAura:setMaxWidth(5000);
+    obj.fplLarguraAura:setMargins({left=2, right=2, top=2, bottom=2});
 
     obj.labLarguraAura = GUI.fromHandle(_obj_newObject("label"));
-    obj.labLarguraAura:setParent(obj.flaAuraContent);
+    obj.labLarguraAura:setParent(obj.fplLarguraAura);
     obj.labLarguraAura:setName("labLarguraAura");
-    obj.labLarguraAura:setLeft(30);
-    obj.labLarguraAura:setTop(165);
     obj.labLarguraAura:setWordWrap(false);
+    obj.labLarguraAura:setAlign("left");
+    obj.labLarguraAura:setWidth(110);
+    obj.labLarguraAura:setAutoSize(false);
+    obj.labLarguraAura:setHorzTextAlign("trailing");
+    obj.labLarguraAura:setVertTextAlign("center");
+    obj.labLarguraAura:setMargins({right=5});
 
     obj.edtLarguraAura = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edtLarguraAura:setParent(obj.flaAuraContent);
+    obj.edtLarguraAura:setParent(obj.fplLarguraAura);
     obj.edtLarguraAura:setName("edtLarguraAura");
-    obj.edtLarguraAura:setType("float");
-    obj.edtLarguraAura:setMin(0.1);
-    obj.edtLarguraAura:setLeft(130 );
-    obj.edtLarguraAura:setTop(160);
+    obj.edtLarguraAura:setAlign("client");
+    obj.edtLarguraAura:setMargins({right=5});
 
-    obj.reachVal = GUI.fromHandle(_obj_newObject("edit"));
-    obj.reachVal:setParent(obj.flaAuraContent);
-    obj.reachVal:setName("reachVal");
-    obj.reachVal:setVisible(true);
-    obj.reachVal:setLeft(130);
-    obj.reachVal:setTop(230);
+    obj.fplCorAura = GUI.fromHandle(_obj_newObject("flowPart"));
+    obj.fplCorAura:setParent(obj.flaAuraContent);
+    obj.fplCorAura:setName("fplCorAura");
+    obj.fplCorAura:setHeight(30);
+    obj.fplCorAura:setMinWidth(50);
+    obj.fplCorAura:setMaxWidth(5000);
+    obj.fplCorAura:setMargins({left=2, right=2, top=2, bottom=2});
 
     obj.labCorAura = GUI.fromHandle(_obj_newObject("label"));
-    obj.labCorAura:setParent(obj.flaAuraContent);
+    obj.labCorAura:setParent(obj.fplCorAura);
     obj.labCorAura:setName("labCorAura");
-    obj.labCorAura:setLeft(30);
-    obj.labCorAura:setTop(205);
     obj.labCorAura:setWordWrap(false);
+    obj.labCorAura:setAlign("left");
+    obj.labCorAura:setWidth(110);
+    obj.labCorAura:setAutoSize(false);
+    obj.labCorAura:setHorzTextAlign("trailing");
+    obj.labCorAura:setVertTextAlign("center");
+    obj.labCorAura:setMargins({right=5});
 
     obj.cmbCorAura = GUI.fromHandle(_obj_newObject("colorComboBox"));
-    obj.cmbCorAura:setParent(obj.flaAuraContent);
+    obj.cmbCorAura:setParent(obj.fplCorAura);
     obj.cmbCorAura:setName("cmbCorAura");
-    obj.cmbCorAura:setWidth(50);
-    obj.cmbCorAura:setHeight(35);
-    obj.cmbCorAura:setLeft(130);
-    obj.cmbCorAura:setTop(200);
+    obj.cmbCorAura:setAlign("client");
+    obj.cmbCorAura:setMargins({right=5});
+
+    obj.fplimagemAura1 = GUI.fromHandle(_obj_newObject("flowPart"));
+    obj.fplimagemAura1:setParent(obj.flaAuraContent);
+    obj.fplimagemAura1:setHeight(100);
+    obj.fplimagemAura1:setName("fplimagemAura1");
+    obj.fplimagemAura1:setMinWidth(50);
+    obj.fplimagemAura1:setMaxWidth(5000);
+    obj.fplimagemAura1:setMargins({left=2, right=2, top=2, bottom=2});
+
+    obj.rectangle1 = GUI.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle1:setParent(obj.fplimagemAura1);
+    obj.rectangle1:setWidth(200);
+    obj.rectangle1:setHeight(200);
+    obj.rectangle1:setStrokeColor("white");
+    obj.rectangle1:setColor("black");
+    obj.rectangle1:setName("rectangle1");
+    obj.rectangle1:setAlign("client");
+    obj.rectangle1:setMargins({right=5});
+
+    obj.imageAura = GUI.fromHandle(_obj_newObject("image"));
+    obj.imageAura:setParent(obj.fplimagemAura1);
+    obj.imageAura:setWidth(200);
+    obj.imageAura:setHeight(200);
+    obj.imageAura:setEditable(true);
+    obj.imageAura:setName("imageAura");
+    obj.imageAura:setField("image");
+    obj.imageAura:setAlign("client");
+    obj.imageAura:setMargins({right=5});
+
+    obj.fplimagemAura2 = GUI.fromHandle(_obj_newObject("flowPart"));
+    obj.fplimagemAura2:setParent(obj.flaAuraContent);
+    obj.fplimagemAura2:setName("fplimagemAura2");
+    obj.fplimagemAura2:setHeight(30);
+    obj.fplimagemAura2:setMinWidth(50);
+    obj.fplimagemAura2:setMaxWidth(5000);
+    obj.fplimagemAura2:setMargins({left=2, right=2, top=2, bottom=2});
+
+    obj.click = GUI.fromHandle(_obj_newObject("label"));
+    obj.click:setParent(obj.fplimagemAura2);
+    obj.click:setWidth(200);
+    obj.click:setHeight(20);
+    obj.click:setFontSize(11);
+    obj.click:setName("click");
+    obj.click:setHorzTextAlign("center");
+    obj.click:setWordWrap(false);
+    obj.click:setAlign("left");
+    obj.click:setAutoSize(false);
+    obj.click:setVertTextAlign("center");
+    obj.click:setMargins({right=5});
+
+    obj.input2 = GUI.fromHandle(_obj_newObject("button"));
+    obj.input2:setParent(obj.fplimagemAura2);
+    obj.input2:setOpacity(1.0);
+    obj.input2:setName("input2");
+    obj.input2:setAlign("client");
+    obj.input2:setMargins({right=5});
 
     obj.tabFOW = GUI.fromHandle(_obj_newObject("tab"));
     obj.tabFOW:setParent(obj.tabControl1);
@@ -1033,7 +1112,7 @@ local function constructNew_frmTokenProps()
 		self.cmbFormaAura.items = {lang('scene.FormaAura.URL'), lang('scene.FormaAura.Circulo'), lang('scene.FormaAura.Quadrado'), lang('scene.FormaAura.Triangulo'), lang('scene.FormaAura.ConeHorizontal'), lang('scene.FormaAura.SemiCirculo'), lang('scene.FormaAura.CirculoPerfeito')};
 		self.labAuraURL.text = lang('scene.labAuraURL.text');
 		self.labCorAura.text = lang('scene.labCorAura.text');
-		
+				
 		function recursiveEnumPersonagensEmBibItem(bibItem, dest)
 			if bibItem.tipo == "personagem" then
 				if (bibItem.loginDono ~= nil) and (bibItem.loginDono ~= "") then
@@ -1194,7 +1273,7 @@ local function constructNew_frmTokenProps()
 ------------------------------------------------------------------------------------------------	
 ------------------------------------------------------------------------------------------------	
 							local opGraficaAura = theToken.canvas:findByName(AURA_NAME);	
-							
+														
 							-- 1 - Deletar se precisar deletar, ou se o que tem lá não é util.
 							
 							if opGraficaAura ~= nil then
@@ -1206,7 +1285,7 @@ local function constructNew_frmTokenProps()
 									opGraficaAura = nil
 								end;												
 							end
-														
+															
 							
 							-- 2 -- Se precisar, criar aura
 														
@@ -1361,17 +1440,23 @@ local function constructNew_frmTokenProps()
             self.flaAuraContent.visible = self.cbxPossuiAura.checked
         end, obj);
 
-    obj._e_event3 = obj.btnOk1:addEventListener("onClick",
+    obj._e_event3 = obj.input2:addEventListener("onClick",
+        function (_)
+            self:openFile()
+        end, obj);
+
+    obj._e_event4 = obj.btnOk1:addEventListener("onClick",
         function (_)
             self:processarOK()
         end, obj);
 
-    obj._e_event4 = obj.btnCancel1:addEventListener("onClick",
+    obj._e_event5 = obj.btnCancel1:addEventListener("onClick",
         function (_)
             self:processarCancel()
         end, obj);
 
     function obj:_releaseEvents()
+        __o_rrpgObjs.removeEventListenerById(self._e_event5);
         __o_rrpgObjs.removeEventListenerById(self._e_event4);
         __o_rrpgObjs.removeEventListenerById(self._e_event3);
         __o_rrpgObjs.removeEventListenerById(self._e_event2);
@@ -1407,7 +1492,9 @@ local function constructNew_frmTokenProps()
         if self.flowPart7 ~= nil then self.flowPart7:destroy(); self.flowPart7 = nil; end;
         if self.labLuz ~= nil then self.labLuz:destroy(); self.labLuz = nil; end;
         if self.flowLayout1 ~= nil then self.flowLayout1:destroy(); self.flowLayout1 = nil; end;
+        if self.fplAlturaAura ~= nil then self.fplAlturaAura:destroy(); self.fplAlturaAura = nil; end;
         if self.flowPart1 ~= nil then self.flowPart1:destroy(); self.flowPart1 = nil; end;
+        if self.click ~= nil then self.click:destroy(); self.click = nil; end;
         if self.flowPart2 ~= nil then self.flowPart2:destroy(); self.flowPart2 = nil; end;
         if self.layout13 ~= nil then self.layout13:destroy(); self.layout13 = nil; end;
         if self.layout3 ~= nil then self.layout3:destroy(); self.layout3 = nil; end;
@@ -1415,7 +1502,9 @@ local function constructNew_frmTokenProps()
         if self.layout8 ~= nil then self.layout8:destroy(); self.layout8 = nil; end;
         if self.layout1 ~= nil then self.layout1:destroy(); self.layout1 = nil; end;
         if self.cmbCorBar1 ~= nil then self.cmbCorBar1:destroy(); self.cmbCorBar1 = nil; end;
+        if self.rectangle1 ~= nil then self.rectangle1:destroy(); self.rectangle1 = nil; end;
         if self.labSnapToGrid ~= nil then self.labSnapToGrid:destroy(); self.labSnapToGrid = nil; end;
+        if self.imageAura ~= nil then self.imageAura:destroy(); self.imageAura = nil; end;
         if self.tabAura ~= nil then self.tabAura:destroy(); self.tabAura = nil; end;
         if self.labGroupHeader3 ~= nil then self.labGroupHeader3:destroy(); self.labGroupHeader3 = nil; end;
         if self.layout12 ~= nil then self.layout12:destroy(); self.layout12 = nil; end;
@@ -1446,12 +1535,14 @@ local function constructNew_frmTokenProps()
         if self.labCampoDeVisao ~= nil then self.labCampoDeVisao:destroy(); self.labCampoDeVisao = nil; end;
         if self.labCompLuz3 ~= nil then self.labCompLuz3:destroy(); self.labCompLuz3 = nil; end;
         if self.labCompLuz5 ~= nil then self.labCompLuz5:destroy(); self.labCompLuz5 = nil; end;
+        if self.fplimagemAura2 ~= nil then self.fplimagemAura2:destroy(); self.fplimagemAura2 = nil; end;
         if self.label1 ~= nil then self.label1:destroy(); self.label1 = nil; end;
         if self.layout4 ~= nil then self.layout4:destroy(); self.layout4 = nil; end;
         if self.edtAuraURL ~= nil then self.edtAuraURL:destroy(); self.edtAuraURL = nil; end;
         if self.labNome ~= nil then self.labNome:destroy(); self.labNome = nil; end;
-        if self.labHasVision ~= nil then self.labHasVision:destroy(); self.labHasVision = nil; end;
+        if self.fplCorAura ~= nil then self.fplCorAura:destroy(); self.fplCorAura = nil; end;
         if self.tabFOW ~= nil then self.tabFOW:destroy(); self.tabFOW = nil; end;
+        if self.labHasVision ~= nil then self.labHasVision:destroy(); self.labHasVision = nil; end;
         if self.labBar2 ~= nil then self.labBar2:destroy(); self.labBar2 = nil; end;
         if self.flaContentFOW ~= nil then self.flaContentFOW:destroy(); self.flaContentFOW = nil; end;
         if self.labFacingMode ~= nil then self.labFacingMode:destroy(); self.labFacingMode = nil; end;
@@ -1462,7 +1553,9 @@ local function constructNew_frmTokenProps()
         if self.flowPart9 ~= nil then self.flowPart9:destroy(); self.flowPart9 = nil; end;
         if self.layout5 ~= nil then self.layout5:destroy(); self.layout5 = nil; end;
         if self.labMetricVLE ~= nil then self.labMetricVLE:destroy(); self.labMetricVLE = nil; end;
+        if self.input2 ~= nil then self.input2:destroy(); self.input2 = nil; end;
         if self.layout18 ~= nil then self.layout18:destroy(); self.layout18 = nil; end;
+        if self.fplimagemAura1 ~= nil then self.fplimagemAura1:destroy(); self.fplimagemAura1 = nil; end;
         if self.labCompAngulo2 ~= nil then self.labCompAngulo2:destroy(); self.labCompAngulo2 = nil; end;
         if self.labLarguraAura ~= nil then self.labLarguraAura:destroy(); self.labLarguraAura = nil; end;
         if self.labBar1 ~= nil then self.labBar1:destroy(); self.labBar1 = nil; end;
@@ -1496,7 +1589,7 @@ local function constructNew_frmTokenProps()
         if self.layout14 ~= nil then self.layout14:destroy(); self.layout14 = nil; end;
         if self.layout16 ~= nil then self.layout16:destroy(); self.layout16 = nil; end;
         if self.labAuraURL ~= nil then self.labAuraURL:destroy(); self.labAuraURL = nil; end;
-        if self.reachVal ~= nil then self.reachVal:destroy(); self.reachVal = nil; end;
+        if self.fplLarguraAura ~= nil then self.fplLarguraAura:destroy(); self.fplLarguraAura = nil; end;
         if self.labCorAura ~= nil then self.labCorAura:destroy(); self.labCorAura = nil; end;
         if self.scrollBox1 ~= nil then self.scrollBox1:destroy(); self.scrollBox1 = nil; end;
         if self.edtMetricVLF ~= nil then self.edtMetricVLF:destroy(); self.edtMetricVLF = nil; end;

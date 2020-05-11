@@ -155,24 +155,34 @@
 							<edit name="edtAuraURL" class="itemContent"/>
 						</flowPart>		
 					
-						<!--
-						<label name="labAuraURL" visible="true" left="30" top="85"/>
-						<edit name="edtAuraURL" visible="true" width="150" left="130" top="80"/>					
-						-->
 					
-						<!-- Personagem -->
-							
+						<flowPart class="optionPart" name="fplAlturaAura">	
+							<label name="labAlturaAura" class="itemTitle"/>
+							<edit name="edtAlturaAura" class="itemContent"/>
+						</flowPart>		
 						
-						<!-- <label name="labFormaAura" left="30" top="50"/> -->
-						<!-- <comboBox name="cmbFormaAura" left="130" top="50"/> -->
+						<flowPart class="optionPart" name="fplLarguraAura">	
+							<label name="labLarguraAura" class="itemTitle"/>
+							<edit name="edtLarguraAura" class="itemContent"/>
+						</flowPart>		
 						
-						<label name="labAlturaAura" left="30" top="125" />	
-						<edit name="edtAlturaAura" type="float" min="0.1" left="130" top="120"/>
-						<label name="labLarguraAura" left="30" top="165" />	
-						<edit name="edtLarguraAura" type="float" min="0.1" left="130 " top="160"/>
-						<edit name="reachVal" visible="true" left="130" top="230"/> 
-						<label name="labCorAura" left="30" top="205"/>
-						<colorComboBox name="cmbCorAura" width="50" height="35" left="130" top="200" />
+						<flowPart class="optionPart" name="fplCorAura">	
+							<label name="labCorAura" class="itemTitle"/>
+							<colorComboBox name="cmbCorAura" class="itemContent"/>
+						</flowPart>	
+												
+						<flowPart class="optionPart" height="100" name="fplimagemAura1">	
+						<rectangle class="itemContent"  width="200" height="200" strokeColor="white" color="black"/>
+						<image width="200" height="200" editable="true" name="imageAura" class="itemContent" field="image"/>
+						</flowPart>	
+
+						<flowPart class="optionPart"  name="fplimagemAura2">	
+						<label class="itemTitle" width="200" height="20" fontSize="11" name="click" horzTextAlign="center"/>
+						<button opacity="1.0" name="input2" class="itemContent" onClick="self:openFile()"/>
+						</flowPart>	
+						
+						
+						
 					</flowLayout>
 				</flowLayout>
 			</scrollBox>				
@@ -286,7 +296,7 @@
 		self.cmbFormaAura.items = {lang('scene.FormaAura.URL'), lang('scene.FormaAura.Circulo'), lang('scene.FormaAura.Quadrado'), lang('scene.FormaAura.Triangulo'), lang('scene.FormaAura.ConeHorizontal'), lang('scene.FormaAura.SemiCirculo'), lang('scene.FormaAura.CirculoPerfeito')};
 		self.labAuraURL.text = lang('scene.labAuraURL.text');
 		self.labCorAura.text = lang('scene.labCorAura.text');
-		
+				
 		function recursiveEnumPersonagensEmBibItem(bibItem, dest)
 			if bibItem.tipo == "personagem" then
 				if (bibItem.loginDono ~= nil) and (bibItem.loginDono ~= "") then
@@ -447,7 +457,7 @@
 ------------------------------------------------------------------------------------------------	
 ------------------------------------------------------------------------------------------------	
 							local opGraficaAura = theToken.canvas:findByName(AURA_NAME);	
-							
+														
 							-- 1 - Deletar se precisar deletar, ou se o que tem lá não é util.
 							
 							if opGraficaAura ~= nil then
@@ -459,7 +469,7 @@
 									opGraficaAura = nil
 								end;												
 							end
-														
+															
 							
 							-- 2 -- Se precisar, criar aura
 														
