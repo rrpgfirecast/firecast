@@ -66,6 +66,7 @@
 		require("system.lua");
 		require("rrpgScene_Globals.lua");
 		require("rrpgScene_Undo.dlua");
+		require("rrpgSceneUtil.lua");
 				
 		local theToken = nil;
 		local theSelection = nil;
@@ -137,18 +138,44 @@
 		</tab>
 		
 		<tab name="tabAura" title="Auras">
-			<!-- AREA DO KAREL -->
-			<checkBox name="cbxPossuiAura" left="30" top="20" text="Possui Aura ?"/>
-			<label name="labAuraURL" visible="true" left="30" top="85"/>
-			<edit name="edtAuraURL" visible="false" left="130" top="80"/>
-			<label name="labFormaAura" left="30" top="50"/>
-			<comboBox name="cmbFormaAura" left="130" top="50" values="{'Circulo', 'Quadrado', 'Triangulo', 'URL'}"/>
-			<label name="labAlturaAura" left="30" top="125" />	
-			<edit name="edtAlturaAura" type="float" min="0.1" left="130" top="120"/>
-			<label name="labLarguraAura" left="30" top="165" />	
-			<edit name="edtLarguraAura" type="float" min="0.1" left="130 " top="160"/>
-			<edit name="edtFormaAura" visible="true" left="130" top="200"/> 
-			<colorComboBox name="cmbCorAura" left="130" top="205" />
+			<scrollBox align="client">
+				<flowLayout align="top" autoHeight="true" maxControlsPerLine="1" name="flaAura" margins="{left=10, right=10, top=2, bottom=2">	
+					<!-- AREA DO KAREL -->
+					<checkBox name="cbxPossuiAura" left="30" top="20" text="Possui Aura ?" onChange="self.flaAuraContent.visible = self.cbxPossuiAura.checked"/>
+					
+					<flowLayout name="flaAuraContent" autoHeight="true" align="top" minWidth="50" maxWidth="50000"  maxControlsPerLine="1">
+
+						<flowPart class="optionPart" name="flpFormaAura">	
+							<label name="labFormaAura" class="itemTitle"/>
+							<comboBox name="cmbFormaAura" class="itemContent"/>
+						</flowPart>	
+
+						<flowPart class="optionPart" name="flpURLAura">	
+							<label name="labAuraURL" class="itemTitle"/>
+							<edit name="edtAuraURL" class="itemContent"/>
+						</flowPart>		
+					
+						<!--
+						<label name="labAuraURL" visible="true" left="30" top="85"/>
+						<edit name="edtAuraURL" visible="true" width="150" left="130" top="80"/>					
+						-->
+					
+						<!-- Personagem -->
+							
+						
+						<!-- <label name="labFormaAura" left="30" top="50"/> -->
+						<!-- <comboBox name="cmbFormaAura" left="130" top="50"/> -->
+						
+						<label name="labAlturaAura" left="30" top="125" />	
+						<edit name="edtAlturaAura" type="float" min="0.1" left="130" top="120"/>
+						<label name="labLarguraAura" left="30" top="165" />	
+						<edit name="edtLarguraAura" type="float" min="0.1" left="130 " top="160"/>
+						<edit name="reachVal" visible="true" left="130" top="230"/> 
+						<label name="labCorAura" left="30" top="205"/>
+						<colorComboBox name="cmbCorAura" width="50" height="35" left="130" top="200" />
+					</flowLayout>
+				</flowLayout>
+			</scrollBox>				
 		 </tab>	
 
 		 
@@ -256,8 +283,9 @@
 		self.labAlturaAura.text = lang('scene.labAlturaAura.text');
 		self.labLarguraAura.text = lang('scene.labLarguraAura.text');
 		self.labFormaAura.text = lang('scene.labFormaAura.text');
-		self.cmbFormaAura.items = {lang('scene.FormaAura.Circulo'), lang('scene.FormaAura.Quadrado'), lang('scene.FormaAura.Triangulo'), lang('scene.FormaAura.URL')};
+		self.cmbFormaAura.items = {lang('scene.FormaAura.URL'), lang('scene.FormaAura.Circulo'), lang('scene.FormaAura.Quadrado'), lang('scene.FormaAura.Triangulo'), lang('scene.FormaAura.ConeHorizontal'), lang('scene.FormaAura.SemiCirculo'), lang('scene.FormaAura.CirculoPerfeito')};
 		self.labAuraURL.text = lang('scene.labAuraURL.text');
+		self.labCorAura.text = lang('scene.labCorAura.text');
 		
 		function recursiveEnumPersonagensEmBibItem(bibItem, dest)
 			if bibItem.tipo == "personagem" then
@@ -450,20 +478,341 @@
 								opGraficaAura.name = AURA_NAME
 								opGraficaAura.height = self.edtAlturaAura.asNumber;
 								opGraficaAura.width = self.edtLarguraAura.asNumber;
-								opGraficaAura.y = -(opGraficaAura.height / 2);
-								opGraficaAura.x = -(opGraficaAura.width / 2);
+								opGraficaAura.y = -(opGraficaAura.height /2);
+								opGraficaAura.x = -(opGraficaAura.width /2);
 								opGraficaAura.xOrigin = 0.5;
 								opGraficaAura.yOrigin = 0.5;
 					            opGraficaAura.z = 10;                      
 								opGraficaAura.outOfOrderMode = "beforeOwnerLayer"; 
 								opGraficaAura.opacity = 0.5;     
 								opGraficaAura.userData.FormaAura = self.cmbFormaAura.value;
-								
+																
 								if opGraficaAura.objectType == "opBitmap" then
-									opGraficaAura.url = "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Location_dot_dark_red.svg/1200px-Location_dot_dark_red.svg.png";
+									opGraficaAura.url = self.edtAuraURL.text;
+									opGraficaAura.opacity = 1.0;
 								else								
-									opGraficaAura.data = "M 10 10 H 90 V 90 H 10 L 10 10";		
+									if opGraficaAura.userData.FormaAura == lang("scene.FormaAura.Quadrado") then																										
+										opGraficaAura.pathData = criarPathAreaQuadrado();
+										opGraficaAura.color = self.cmbCorAura.color;									
+									end;
+									
+									if opGraficaAura.userData.FormaAura == lang("scene.FormaAura.Triangulo") then
+											
+												local reach = (opGraficaAura.height /2) + (opGraficaAura.width /2);
+												local path = "M 0 0 h " .. reach;
+
+												for i=1, reach, 1 do
+													if i == 1 then
+														path = path .. " v " .. 1;
+													elseif i==2 then
+														path = path .. " h -" .. 1;
+													else
+														local ending = (i-2)%3;
+														if ending == 0 then
+															path = path .. " h -" .. 1;
+														else
+															path = path .. " v " .. 1;
+														end;
+													end;
+												end;
+
+												for i=reach, 1, -1 do
+													if i == 1 then
+														path = path .. " h -" .. 1;
+													elseif i==2 then
+														path = path .. " v " .. 1;
+													else
+														local ending = (i-2)%3;
+														if ending == 0 then
+															path = path .. " v " .. 1;
+														else
+															path = path .. " h -" .. 1;
+														end;
+													end;
+												end;
+
+												path = path .. " Z";
+											
+												opGraficaAura.xOrigin = opGraficaAura.height /2;
+												opGraficaAura.yOrigin = opGraficaAura.width /2;
+											opGraficaAura.pathData = path;	
+											
 									opGraficaAura.color = self.cmbCorAura.color;
+									end;
+									
+									if opGraficaAura.userData.FormaAura == lang("scene.FormaAura.Circulo") then							
+
+										local reach = tonumber(self.reachVal.text) or 1;
+										local path = "M " .. reach .. " 0";
+
+										path = path .. " h 1";
+
+										for i=1, reach, 1 do
+											if i == 1 then
+												path = path .. " h " .. 1;
+											elseif i==2 then
+												path = path .. " v " .. 1;
+											else
+												local ending = (i-2)%3;
+												if ending == 0 then
+													path = path .. " v " .. 1;
+												else
+													path = path .. " h " .. 1;
+												end;
+											end;
+										end;
+
+										for i=reach, 1, -1 do
+											if i == 1 then
+												path = path .. " v " .. 1;
+											elseif i==2 then
+												path = path .. " h " .. 1;
+											else
+												local ending = (i-2)%3;
+												if ending == 0 then
+													path = path .. " h " .. 1;
+												else
+													path = path .. " v " .. 1;
+												end;
+											end;
+										end;
+
+										path = path .. " v 1";
+
+										for i=1, reach, 1 do
+											if i == 1 then
+												path = path .. " v " .. 1;
+											elseif i==2 then
+												path = path .. " h -" .. 1;
+											else
+												local ending = (i-2)%3;
+												if ending == 0 then
+													path = path .. " h -" .. 1;
+												else
+													path = path .. " v " .. 1;
+												end;
+											end;
+										end;
+
+										for i=reach, 1, -1 do
+											if i == 1 then
+												path = path .. " h -" .. 1;
+											elseif i==2 then
+												path = path .. " v " .. 1;
+											else
+												local ending = (i-2)%3;
+												if ending == 0 then
+													path = path .. " v " .. 1;
+												else
+													path = path .. " h -" .. 1;
+												end;
+											end;
+										end;
+
+										path = path .. " h -1";
+
+										for i=1, reach, 1 do
+											if i == 1 then
+												path = path .. " h -" .. 1;
+											elseif i==2 then
+												path = path .. " v -" .. 1;
+											else
+												local ending = (i-2)%3;
+												if ending == 0 then
+													path = path .. " v -" .. 1;
+												else
+													path = path .. " h -" .. 1;
+												end;
+											end;
+										end;
+
+										for i=reach, 1, -1 do
+											if i == 1 then
+												path = path .. " v -" .. 1;
+											elseif i==2 then
+												path = path .. " h -" .. 1;
+											else
+												local ending = (i-2)%3;
+												if ending == 0 then
+													path = path .. " h -" .. 1;
+												else
+													path = path .. " v -" .. 1;
+												end;
+											end;
+										end;
+
+										path = path .. " v -1";
+
+										for i=1, reach, 1 do
+											if i == 1 then
+												path = path .. " v -" .. 1;
+											elseif i==2 then
+												path = path .. " h " .. 1;
+											else
+												local ending = (i-2)%3;
+												if ending == 0 then
+													path = path .. " h " .. 1;
+												else
+													path = path .. " v -" .. 1;
+												end;
+											end;
+										end;
+
+										for i=reach, 1, -1 do
+											if i == 1 then
+												path = path .. " h " .. 1;
+											elseif i==2 then
+												path = path .. " v -" .. 1;
+											else
+												local ending = (i-2)%3;
+												if ending == 0 then
+													path = path .. " v -" .. 1;
+												else
+													path = path .. " h " .. 1;
+												end;
+											end;
+										end;
+
+										path = path .. " Z";
+													
+													
+									opGraficaAura.pathData = path;
+									opGraficaAura.color = self.cmbCorAura.color;
+									end;
+									
+									if opGraficaAura.userData.FormaAura == lang("scene.FormaAura.ConeHorizontal") then
+									local reach = math.ceil((opGraficaAura.height / 2) + (opGraficaAura.width / 2));
+									local multy = 1;
+									local path = "M 0 0";
+									local height = math.ceil(reach*multy/2);
+									
+
+									for i=1, height, 1 do
+										path = path .. " v -1 h " .. multy;
+									end;
+
+									for i=reach, 1, -1 do
+										if i == 1 then
+											path = path .. " v 1";
+										elseif i == 2 then
+											path = path .. " h " .. multy;
+										else 
+											local ending = (i-2)%3;
+											if ending == 0 then
+												path = path .. " h " .. multy;
+											else
+												path = path .. " v 1";
+											end;
+										end;
+									end;
+
+									for i=1, reach, 1 do
+										if i == 1 then
+											path = path .. " v 1";
+										elseif i == 2 then
+											path = path .. " h -" .. multy;
+										else 
+											local ending = (i-2)%3;
+											if ending == 0 then
+												path = path .. " h -" .. multy;
+											else
+												path = path .. " v 1";
+											end;
+										end;
+									end;
+
+									for i=height, 1, -1 do
+										path = path .. " h -" .. multy .. " v -1";
+									end;
+
+									path = path .. " Z";	
+									opGraficaAura.xOrigin = opGraficaAura.width / 2 + 1.0;
+									opGraficaAura.yOrigin = 0.5;
+									opGraficaAura.pathData = path;
+									opGraficaAura.color = self.cmbCorAura.color;
+									end;
+									
+									if opGraficaAura.userData.FormaAura == lang("scene.FormaAura.SemiCirculo") then
+										local reach = math.ceil((opGraficaAura.height / 2) + (opGraficaAura.width / 2));
+										local path = "M 0 0";
+
+										for i=1, reach, 1 do
+											if i == 1 then
+												path = path .. " h " .. 2;
+											elseif i==2 then
+												path = path .. " v " .. 1;
+											else
+												local ending = (i-2)%3;
+												if ending == 0 then
+													path = path .. " v " .. 1;
+												else
+													path = path .. " h " .. 2;
+												end;
+											end;
+										end;
+
+										for i=reach, 1, -1 do
+											if i == 1 then
+												path = path .. " v " .. 1;
+											elseif i==2 then
+												path = path .. " h " .. 2;
+											else
+												local ending = (i-2)%3;
+												if ending == 0 then
+													path = path .. " h " .. 2;
+												else
+													path = path .. " v " .. 1;
+												end;
+											end;
+										end;
+
+										for i=1, reach, 1 do
+											if i == 1 then
+												path = path .. " v " .. 1;
+											elseif i==2 then
+												path = path .. " h -" .. 2;
+											else
+												local ending = (i-2)%3;
+												if ending == 0 then
+													path = path .. " h -" .. 2;
+												else
+													path = path .. " v " .. 1;
+												end;
+											end;
+										end;
+
+										for i=reach, 1, -1 do
+											if i == 1 then
+												path = path .. " h -" .. 2;
+											elseif i==2 then
+												path = path .. " v " .. 1;
+											else
+												local ending = (i-2)%3;
+												if ending == 0 then
+													path = path .. " v " .. 1;
+												else
+													path = path .. " h -" .. 2;
+												end;
+											end;
+										end;
+
+										path = path .. " Z";
+									opGraficaAura.xOrigin = 1.0;     -- X começa em 1.0 largura de token + 0.0 metros
+									opGraficaAura.yOrigin = 0.5;
+									opGraficaAura.widthMetric = "worldMetric";
+									opGraficaAura.heightMetric = "worldMetric";
+									opGraficaAura.x = 0.0;																		
+									opGraficaAura.xMetric = "worldMetric";
+									
+									-- opGraficaAura.yMetric = "worldMetric";
+									opGraficaAura.pathData = path;
+									opGraficaAura.color = self.cmbCorAura.color;
+									end;
+									
+									if opGraficaAura.userData.FormaAura == lang("scene.FormaAura.CirculoPerfeito") then
+										opGraficaAura.data = "M 25, 50 a 25,25 0 1,1 50,0 a 25,25 0 1,1 -50,0";		
+										opGraficaAura.color = self.cmbCorAura.color;									
+									end;
 								end;
 							end;
 														

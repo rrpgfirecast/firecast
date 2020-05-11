@@ -41,6 +41,7 @@ local function constructNew_frmTokenProps()
 		require("system.lua");
 		require("rrpgScene_Globals.lua");
 		require("rrpgScene_Undo.dlua");
+		require("rrpgSceneUtil.lua");
 				
 		local theToken = nil;
 		local theSelection = nil;
@@ -394,51 +395,94 @@ local function constructNew_frmTokenProps()
     obj.tabAura:setName("tabAura");
     obj.tabAura:setTitle("Auras");
 
+    obj.scrollBox2 = GUI.fromHandle(_obj_newObject("scrollBox"));
+    obj.scrollBox2:setParent(obj.tabAura);
+    obj.scrollBox2:setAlign("client");
+    obj.scrollBox2:setName("scrollBox2");
+
+    obj.flaAura = GUI.fromHandle(_obj_newObject("flowLayout"));
+    obj.flaAura:setParent(obj.scrollBox2);
+    obj.flaAura:setAlign("top");
+    obj.flaAura:setAutoHeight(true);
+    obj.flaAura:setMaxControlsPerLine(1);
+    obj.flaAura:setName("flaAura");
+    obj.flaAura:setMargins({left=10, right=10, top=2, bottom=2});
+
     obj.cbxPossuiAura = GUI.fromHandle(_obj_newObject("checkBox"));
-    obj.cbxPossuiAura:setParent(obj.tabAura);
+    obj.cbxPossuiAura:setParent(obj.flaAura);
     obj.cbxPossuiAura:setName("cbxPossuiAura");
     obj.cbxPossuiAura:setLeft(30);
     obj.cbxPossuiAura:setTop(20);
     obj.cbxPossuiAura:setText("Possui Aura ?");
 
-    obj.labAuraURL = GUI.fromHandle(_obj_newObject("label"));
-    obj.labAuraURL:setParent(obj.tabAura);
-    obj.labAuraURL:setName("labAuraURL");
-    obj.labAuraURL:setVisible(true);
-    obj.labAuraURL:setLeft(30);
-    obj.labAuraURL:setTop(85);
-    obj.labAuraURL:setWordWrap(false);
+    obj.flaAuraContent = GUI.fromHandle(_obj_newObject("flowLayout"));
+    obj.flaAuraContent:setParent(obj.flaAura);
+    obj.flaAuraContent:setName("flaAuraContent");
+    obj.flaAuraContent:setAutoHeight(true);
+    obj.flaAuraContent:setAlign("top");
+    obj.flaAuraContent:setMinWidth(50);
+    obj.flaAuraContent:setMaxWidth(50000);
+    obj.flaAuraContent:setMaxControlsPerLine(1);
 
-    obj.edtAuraURL = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edtAuraURL:setParent(obj.tabAura);
-    obj.edtAuraURL:setName("edtAuraURL");
-    obj.edtAuraURL:setVisible(false);
-    obj.edtAuraURL:setLeft(130);
-    obj.edtAuraURL:setTop(80);
+    obj.flpFormaAura = GUI.fromHandle(_obj_newObject("flowPart"));
+    obj.flpFormaAura:setParent(obj.flaAuraContent);
+    obj.flpFormaAura:setName("flpFormaAura");
+    obj.flpFormaAura:setHeight(30);
+    obj.flpFormaAura:setMinWidth(50);
+    obj.flpFormaAura:setMaxWidth(5000);
+    obj.flpFormaAura:setMargins({left=2, right=2, top=2, bottom=2});
 
     obj.labFormaAura = GUI.fromHandle(_obj_newObject("label"));
-    obj.labFormaAura:setParent(obj.tabAura);
+    obj.labFormaAura:setParent(obj.flpFormaAura);
     obj.labFormaAura:setName("labFormaAura");
-    obj.labFormaAura:setLeft(30);
-    obj.labFormaAura:setTop(50);
     obj.labFormaAura:setWordWrap(false);
+    obj.labFormaAura:setAlign("left");
+    obj.labFormaAura:setWidth(110);
+    obj.labFormaAura:setAutoSize(false);
+    obj.labFormaAura:setHorzTextAlign("trailing");
+    obj.labFormaAura:setVertTextAlign("center");
+    obj.labFormaAura:setMargins({right=5});
 
     obj.cmbFormaAura = GUI.fromHandle(_obj_newObject("comboBox"));
-    obj.cmbFormaAura:setParent(obj.tabAura);
+    obj.cmbFormaAura:setParent(obj.flpFormaAura);
     obj.cmbFormaAura:setName("cmbFormaAura");
-    obj.cmbFormaAura:setLeft(130);
-    obj.cmbFormaAura:setTop(50);
-    obj.cmbFormaAura:setValues({'Circulo', 'Quadrado', 'Triangulo', 'URL'});
+    obj.cmbFormaAura:setAlign("client");
+    obj.cmbFormaAura:setMargins({right=5});
+
+    obj.flpURLAura = GUI.fromHandle(_obj_newObject("flowPart"));
+    obj.flpURLAura:setParent(obj.flaAuraContent);
+    obj.flpURLAura:setName("flpURLAura");
+    obj.flpURLAura:setHeight(30);
+    obj.flpURLAura:setMinWidth(50);
+    obj.flpURLAura:setMaxWidth(5000);
+    obj.flpURLAura:setMargins({left=2, right=2, top=2, bottom=2});
+
+    obj.labAuraURL = GUI.fromHandle(_obj_newObject("label"));
+    obj.labAuraURL:setParent(obj.flpURLAura);
+    obj.labAuraURL:setName("labAuraURL");
+    obj.labAuraURL:setWordWrap(false);
+    obj.labAuraURL:setAlign("left");
+    obj.labAuraURL:setWidth(110);
+    obj.labAuraURL:setAutoSize(false);
+    obj.labAuraURL:setHorzTextAlign("trailing");
+    obj.labAuraURL:setVertTextAlign("center");
+    obj.labAuraURL:setMargins({right=5});
+
+    obj.edtAuraURL = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edtAuraURL:setParent(obj.flpURLAura);
+    obj.edtAuraURL:setName("edtAuraURL");
+    obj.edtAuraURL:setAlign("client");
+    obj.edtAuraURL:setMargins({right=5});
 
     obj.labAlturaAura = GUI.fromHandle(_obj_newObject("label"));
-    obj.labAlturaAura:setParent(obj.tabAura);
+    obj.labAlturaAura:setParent(obj.flaAuraContent);
     obj.labAlturaAura:setName("labAlturaAura");
     obj.labAlturaAura:setLeft(30);
     obj.labAlturaAura:setTop(125);
     obj.labAlturaAura:setWordWrap(false);
 
     obj.edtAlturaAura = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edtAlturaAura:setParent(obj.tabAura);
+    obj.edtAlturaAura:setParent(obj.flaAuraContent);
     obj.edtAlturaAura:setName("edtAlturaAura");
     obj.edtAlturaAura:setType("float");
     obj.edtAlturaAura:setMin(0.1);
@@ -446,44 +490,53 @@ local function constructNew_frmTokenProps()
     obj.edtAlturaAura:setTop(120);
 
     obj.labLarguraAura = GUI.fromHandle(_obj_newObject("label"));
-    obj.labLarguraAura:setParent(obj.tabAura);
+    obj.labLarguraAura:setParent(obj.flaAuraContent);
     obj.labLarguraAura:setName("labLarguraAura");
     obj.labLarguraAura:setLeft(30);
     obj.labLarguraAura:setTop(165);
     obj.labLarguraAura:setWordWrap(false);
 
     obj.edtLarguraAura = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edtLarguraAura:setParent(obj.tabAura);
+    obj.edtLarguraAura:setParent(obj.flaAuraContent);
     obj.edtLarguraAura:setName("edtLarguraAura");
     obj.edtLarguraAura:setType("float");
     obj.edtLarguraAura:setMin(0.1);
     obj.edtLarguraAura:setLeft(130 );
     obj.edtLarguraAura:setTop(160);
 
-    obj.edtFormaAura = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edtFormaAura:setParent(obj.tabAura);
-    obj.edtFormaAura:setName("edtFormaAura");
-    obj.edtFormaAura:setVisible(true);
-    obj.edtFormaAura:setLeft(130);
-    obj.edtFormaAura:setTop(200);
+    obj.reachVal = GUI.fromHandle(_obj_newObject("edit"));
+    obj.reachVal:setParent(obj.flaAuraContent);
+    obj.reachVal:setName("reachVal");
+    obj.reachVal:setVisible(true);
+    obj.reachVal:setLeft(130);
+    obj.reachVal:setTop(230);
+
+    obj.labCorAura = GUI.fromHandle(_obj_newObject("label"));
+    obj.labCorAura:setParent(obj.flaAuraContent);
+    obj.labCorAura:setName("labCorAura");
+    obj.labCorAura:setLeft(30);
+    obj.labCorAura:setTop(205);
+    obj.labCorAura:setWordWrap(false);
 
     obj.cmbCorAura = GUI.fromHandle(_obj_newObject("colorComboBox"));
-    obj.cmbCorAura:setParent(obj.tabAura);
+    obj.cmbCorAura:setParent(obj.flaAuraContent);
     obj.cmbCorAura:setName("cmbCorAura");
+    obj.cmbCorAura:setWidth(50);
+    obj.cmbCorAura:setHeight(35);
     obj.cmbCorAura:setLeft(130);
-    obj.cmbCorAura:setTop(205);
+    obj.cmbCorAura:setTop(200);
 
     obj.tabFOW = GUI.fromHandle(_obj_newObject("tab"));
     obj.tabFOW:setParent(obj.tabControl1);
     obj.tabFOW:setName("tabFOW");
 
-    obj.scrollBox2 = GUI.fromHandle(_obj_newObject("scrollBox"));
-    obj.scrollBox2:setParent(obj.tabFOW);
-    obj.scrollBox2:setAlign("client");
-    obj.scrollBox2:setName("scrollBox2");
+    obj.scrollBox3 = GUI.fromHandle(_obj_newObject("scrollBox"));
+    obj.scrollBox3:setParent(obj.tabFOW);
+    obj.scrollBox3:setAlign("client");
+    obj.scrollBox3:setName("scrollBox3");
 
     obj.flaContentFOW = GUI.fromHandle(_obj_newObject("flowLayout"));
-    obj.flaContentFOW:setParent(obj.scrollBox2);
+    obj.flaContentFOW:setParent(obj.scrollBox3);
     obj.flaContentFOW:setAlign("top");
     obj.flaContentFOW:setAutoHeight(true);
     obj.flaContentFOW:setMaxControlsPerLine(1);
@@ -977,8 +1030,9 @@ local function constructNew_frmTokenProps()
 		self.labAlturaAura.text = lang('scene.labAlturaAura.text');
 		self.labLarguraAura.text = lang('scene.labLarguraAura.text');
 		self.labFormaAura.text = lang('scene.labFormaAura.text');
-		self.cmbFormaAura.items = {lang('scene.FormaAura.Circulo'), lang('scene.FormaAura.Quadrado'), lang('scene.FormaAura.Triangulo'), lang('scene.FormaAura.URL')};
+		self.cmbFormaAura.items = {lang('scene.FormaAura.URL'), lang('scene.FormaAura.Circulo'), lang('scene.FormaAura.Quadrado'), lang('scene.FormaAura.Triangulo'), lang('scene.FormaAura.ConeHorizontal'), lang('scene.FormaAura.SemiCirculo'), lang('scene.FormaAura.CirculoPerfeito')};
 		self.labAuraURL.text = lang('scene.labAuraURL.text');
+		self.labCorAura.text = lang('scene.labCorAura.text');
 		
 		function recursiveEnumPersonagensEmBibItem(bibItem, dest)
 			if bibItem.tipo == "personagem" then
@@ -1171,20 +1225,341 @@ local function constructNew_frmTokenProps()
 								opGraficaAura.name = AURA_NAME
 								opGraficaAura.height = self.edtAlturaAura.asNumber;
 								opGraficaAura.width = self.edtLarguraAura.asNumber;
-								opGraficaAura.y = -(opGraficaAura.height / 2);
-								opGraficaAura.x = -(opGraficaAura.width / 2);
+								opGraficaAura.y = -(opGraficaAura.height /2);
+								opGraficaAura.x = -(opGraficaAura.width /2);
 								opGraficaAura.xOrigin = 0.5;
 								opGraficaAura.yOrigin = 0.5;
 					            opGraficaAura.z = 10;                      
 								opGraficaAura.outOfOrderMode = "beforeOwnerLayer"; 
 								opGraficaAura.opacity = 0.5;     
 								opGraficaAura.userData.FormaAura = self.cmbFormaAura.value;
-								
+																
 								if opGraficaAura.objectType == "opBitmap" then
-									opGraficaAura.url = "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Location_dot_dark_red.svg/1200px-Location_dot_dark_red.svg.png";
+									opGraficaAura.url = self.edtAuraURL.text;
+									opGraficaAura.opacity = 1.0;
 								else								
-									opGraficaAura.data = "M 10 10 H 90 V 90 H 10 L 10 10";		
+									if opGraficaAura.userData.FormaAura == lang("scene.FormaAura.Quadrado") then																										
+										opGraficaAura.pathData = criarPathAreaQuadrado();
+										opGraficaAura.color = self.cmbCorAura.color;									
+									end;
+									
+									if opGraficaAura.userData.FormaAura == lang("scene.FormaAura.Triangulo") then
+											
+												local reach = (opGraficaAura.height /2) + (opGraficaAura.width /2);
+												local path = "M 0 0 h " .. reach;
+
+												for i=1, reach, 1 do
+													if i == 1 then
+														path = path .. " v " .. 1;
+													elseif i==2 then
+														path = path .. " h -" .. 1;
+													else
+														local ending = (i-2)%3;
+														if ending == 0 then
+															path = path .. " h -" .. 1;
+														else
+															path = path .. " v " .. 1;
+														end;
+													end;
+												end;
+
+												for i=reach, 1, -1 do
+													if i == 1 then
+														path = path .. " h -" .. 1;
+													elseif i==2 then
+														path = path .. " v " .. 1;
+													else
+														local ending = (i-2)%3;
+														if ending == 0 then
+															path = path .. " v " .. 1;
+														else
+															path = path .. " h -" .. 1;
+														end;
+													end;
+												end;
+
+												path = path .. " Z";
+											
+												opGraficaAura.xOrigin = opGraficaAura.height /2;
+												opGraficaAura.yOrigin = opGraficaAura.width /2;
+											opGraficaAura.pathData = path;	
+											
 									opGraficaAura.color = self.cmbCorAura.color;
+									end;
+									
+									if opGraficaAura.userData.FormaAura == lang("scene.FormaAura.Circulo") then							
+
+										local reach = tonumber(self.reachVal.text) or 1;
+										local path = "M " .. reach .. " 0";
+
+										path = path .. " h 1";
+
+										for i=1, reach, 1 do
+											if i == 1 then
+												path = path .. " h " .. 1;
+											elseif i==2 then
+												path = path .. " v " .. 1;
+											else
+												local ending = (i-2)%3;
+												if ending == 0 then
+													path = path .. " v " .. 1;
+												else
+													path = path .. " h " .. 1;
+												end;
+											end;
+										end;
+
+										for i=reach, 1, -1 do
+											if i == 1 then
+												path = path .. " v " .. 1;
+											elseif i==2 then
+												path = path .. " h " .. 1;
+											else
+												local ending = (i-2)%3;
+												if ending == 0 then
+													path = path .. " h " .. 1;
+												else
+													path = path .. " v " .. 1;
+												end;
+											end;
+										end;
+
+										path = path .. " v 1";
+
+										for i=1, reach, 1 do
+											if i == 1 then
+												path = path .. " v " .. 1;
+											elseif i==2 then
+												path = path .. " h -" .. 1;
+											else
+												local ending = (i-2)%3;
+												if ending == 0 then
+													path = path .. " h -" .. 1;
+												else
+													path = path .. " v " .. 1;
+												end;
+											end;
+										end;
+
+										for i=reach, 1, -1 do
+											if i == 1 then
+												path = path .. " h -" .. 1;
+											elseif i==2 then
+												path = path .. " v " .. 1;
+											else
+												local ending = (i-2)%3;
+												if ending == 0 then
+													path = path .. " v " .. 1;
+												else
+													path = path .. " h -" .. 1;
+												end;
+											end;
+										end;
+
+										path = path .. " h -1";
+
+										for i=1, reach, 1 do
+											if i == 1 then
+												path = path .. " h -" .. 1;
+											elseif i==2 then
+												path = path .. " v -" .. 1;
+											else
+												local ending = (i-2)%3;
+												if ending == 0 then
+													path = path .. " v -" .. 1;
+												else
+													path = path .. " h -" .. 1;
+												end;
+											end;
+										end;
+
+										for i=reach, 1, -1 do
+											if i == 1 then
+												path = path .. " v -" .. 1;
+											elseif i==2 then
+												path = path .. " h -" .. 1;
+											else
+												local ending = (i-2)%3;
+												if ending == 0 then
+													path = path .. " h -" .. 1;
+												else
+													path = path .. " v -" .. 1;
+												end;
+											end;
+										end;
+
+										path = path .. " v -1";
+
+										for i=1, reach, 1 do
+											if i == 1 then
+												path = path .. " v -" .. 1;
+											elseif i==2 then
+												path = path .. " h " .. 1;
+											else
+												local ending = (i-2)%3;
+												if ending == 0 then
+													path = path .. " h " .. 1;
+												else
+													path = path .. " v -" .. 1;
+												end;
+											end;
+										end;
+
+										for i=reach, 1, -1 do
+											if i == 1 then
+												path = path .. " h " .. 1;
+											elseif i==2 then
+												path = path .. " v -" .. 1;
+											else
+												local ending = (i-2)%3;
+												if ending == 0 then
+													path = path .. " v -" .. 1;
+												else
+													path = path .. " h " .. 1;
+												end;
+											end;
+										end;
+
+										path = path .. " Z";
+													
+													
+									opGraficaAura.pathData = path;
+									opGraficaAura.color = self.cmbCorAura.color;
+									end;
+									
+									if opGraficaAura.userData.FormaAura == lang("scene.FormaAura.ConeHorizontal") then
+									local reach = math.ceil((opGraficaAura.height / 2) + (opGraficaAura.width / 2));
+									local multy = 1;
+									local path = "M 0 0";
+									local height = math.ceil(reach*multy/2);
+									
+
+									for i=1, height, 1 do
+										path = path .. " v -1 h " .. multy;
+									end;
+
+									for i=reach, 1, -1 do
+										if i == 1 then
+											path = path .. " v 1";
+										elseif i == 2 then
+											path = path .. " h " .. multy;
+										else 
+											local ending = (i-2)%3;
+											if ending == 0 then
+												path = path .. " h " .. multy;
+											else
+												path = path .. " v 1";
+											end;
+										end;
+									end;
+
+									for i=1, reach, 1 do
+										if i == 1 then
+											path = path .. " v 1";
+										elseif i == 2 then
+											path = path .. " h -" .. multy;
+										else 
+											local ending = (i-2)%3;
+											if ending == 0 then
+												path = path .. " h -" .. multy;
+											else
+												path = path .. " v 1";
+											end;
+										end;
+									end;
+
+									for i=height, 1, -1 do
+										path = path .. " h -" .. multy .. " v -1";
+									end;
+
+									path = path .. " Z";	
+									opGraficaAura.xOrigin = opGraficaAura.width / 2 + 1.0;
+									opGraficaAura.yOrigin = 0.5;
+									opGraficaAura.pathData = path;
+									opGraficaAura.color = self.cmbCorAura.color;
+									end;
+									
+									if opGraficaAura.userData.FormaAura == lang("scene.FormaAura.SemiCirculo") then
+										local reach = math.ceil((opGraficaAura.height / 2) + (opGraficaAura.width / 2));
+										local path = "M 0 0";
+
+										for i=1, reach, 1 do
+											if i == 1 then
+												path = path .. " h " .. 2;
+											elseif i==2 then
+												path = path .. " v " .. 1;
+											else
+												local ending = (i-2)%3;
+												if ending == 0 then
+													path = path .. " v " .. 1;
+												else
+													path = path .. " h " .. 2;
+												end;
+											end;
+										end;
+
+										for i=reach, 1, -1 do
+											if i == 1 then
+												path = path .. " v " .. 1;
+											elseif i==2 then
+												path = path .. " h " .. 2;
+											else
+												local ending = (i-2)%3;
+												if ending == 0 then
+													path = path .. " h " .. 2;
+												else
+													path = path .. " v " .. 1;
+												end;
+											end;
+										end;
+
+										for i=1, reach, 1 do
+											if i == 1 then
+												path = path .. " v " .. 1;
+											elseif i==2 then
+												path = path .. " h -" .. 2;
+											else
+												local ending = (i-2)%3;
+												if ending == 0 then
+													path = path .. " h -" .. 2;
+												else
+													path = path .. " v " .. 1;
+												end;
+											end;
+										end;
+
+										for i=reach, 1, -1 do
+											if i == 1 then
+												path = path .. " h -" .. 2;
+											elseif i==2 then
+												path = path .. " v " .. 1;
+											else
+												local ending = (i-2)%3;
+												if ending == 0 then
+													path = path .. " v " .. 1;
+												else
+													path = path .. " h -" .. 2;
+												end;
+											end;
+										end;
+
+										path = path .. " Z";
+									opGraficaAura.xOrigin = 1.0;     -- X começa em 1.0 largura de token + 0.0 metros
+									opGraficaAura.yOrigin = 0.5;
+									opGraficaAura.widthMetric = "worldMetric";
+									opGraficaAura.heightMetric = "worldMetric";
+									opGraficaAura.x = 0.0;																		
+									opGraficaAura.xMetric = "worldMetric";
+									
+									-- opGraficaAura.yMetric = "worldMetric";
+									opGraficaAura.pathData = path;
+									opGraficaAura.color = self.cmbCorAura.color;
+									end;
+									
+									if opGraficaAura.userData.FormaAura == lang("scene.FormaAura.CirculoPerfeito") then
+										opGraficaAura.data = "M 25, 50 a 25,25 0 1,1 50,0 a 25,25 0 1,1 -50,0";		
+										opGraficaAura.color = self.cmbCorAura.color;									
+									end;
 								end;
 							end;
 														
@@ -1243,17 +1618,23 @@ local function constructNew_frmTokenProps()
             self:processarCancel();
         end, obj);
 
-    obj._e_event2 = obj.btnOk1:addEventListener("onClick",
+    obj._e_event2 = obj.cbxPossuiAura:addEventListener("onChange",
+        function (_)
+            self.flaAuraContent.visible = self.cbxPossuiAura.checked
+        end, obj);
+
+    obj._e_event3 = obj.btnOk1:addEventListener("onClick",
         function (_)
             self:processarOK()
         end, obj);
 
-    obj._e_event3 = obj.btnCancel1:addEventListener("onClick",
+    obj._e_event4 = obj.btnCancel1:addEventListener("onClick",
         function (_)
             self:processarCancel()
         end, obj);
 
     function obj:_releaseEvents()
+        __o_rrpgObjs.removeEventListenerById(self._e_event4);
         __o_rrpgObjs.removeEventListenerById(self._e_event3);
         __o_rrpgObjs.removeEventListenerById(self._e_event2);
         __o_rrpgObjs.removeEventListenerById(self._e_event1);
@@ -1281,10 +1662,10 @@ local function constructNew_frmTokenProps()
         if self.labAlturaAura ~= nil then self.labAlturaAura:destroy(); self.labAlturaAura = nil; end;
         if self.edtBarMax1 ~= nil then self.edtBarMax1:destroy(); self.edtBarMax1 = nil; end;
         if self.flowLayout3 ~= nil then self.flowLayout3:destroy(); self.flowLayout3 = nil; end;
-        if self.edtFormaAura ~= nil then self.edtFormaAura:destroy(); self.edtFormaAura = nil; end;
         if self.labGroupHeader1 ~= nil then self.labGroupHeader1:destroy(); self.labGroupHeader1 = nil; end;
         if self.edtAnguloVisao ~= nil then self.edtAnguloVisao:destroy(); self.edtAnguloVisao = nil; end;
         if self.layout17 ~= nil then self.layout17:destroy(); self.layout17 = nil; end;
+        if self.flpFormaAura ~= nil then self.flpFormaAura:destroy(); self.flpFormaAura = nil; end;
         if self.flowPart7 ~= nil then self.flowPart7:destroy(); self.flowPart7 = nil; end;
         if self.labLuz ~= nil then self.labLuz:destroy(); self.labLuz = nil; end;
         if self.flowLayout1 ~= nil then self.flowLayout1:destroy(); self.flowLayout1 = nil; end;
@@ -1336,6 +1717,7 @@ local function constructNew_frmTokenProps()
         if self.labBar2 ~= nil then self.labBar2:destroy(); self.labBar2 = nil; end;
         if self.flaContentFOW ~= nil then self.flaContentFOW:destroy(); self.flaContentFOW = nil; end;
         if self.labFacingMode ~= nil then self.labFacingMode:destroy(); self.labFacingMode = nil; end;
+        if self.flaAuraContent ~= nil then self.flaAuraContent:destroy(); self.flaAuraContent = nil; end;
         if self.edtAlturaAura ~= nil then self.edtAlturaAura:destroy(); self.edtAlturaAura = nil; end;
         if self.flowPart5 ~= nil then self.flowPart5:destroy(); self.flowPart5 = nil; end;
         if self.cmbCorBar3 ~= nil then self.cmbCorBar3:destroy(); self.cmbCorBar3 = nil; end;
@@ -1350,6 +1732,8 @@ local function constructNew_frmTokenProps()
         if self.tabControl1 ~= nil then self.tabControl1:destroy(); self.tabControl1 = nil; end;
         if self.flowLayout2 ~= nil then self.flowLayout2:destroy(); self.flowLayout2 = nil; end;
         if self.horzLine1 ~= nil then self.horzLine1:destroy(); self.horzLine1 = nil; end;
+        if self.flaAura ~= nil then self.flaAura:destroy(); self.flaAura = nil; end;
+        if self.flpURLAura ~= nil then self.flpURLAura:destroy(); self.flpURLAura = nil; end;
         if self.edtBarMax2 ~= nil then self.edtBarMax2:destroy(); self.edtBarMax2 = nil; end;
         if self.labMetricVLF ~= nil then self.labMetricVLF:destroy(); self.labMetricVLF = nil; end;
         if self.labGroupHeader2 ~= nil then self.labGroupHeader2:destroy(); self.labGroupHeader2 = nil; end;
@@ -1358,6 +1742,7 @@ local function constructNew_frmTokenProps()
         if self.cmbPersonagem ~= nil then self.cmbPersonagem:destroy(); self.cmbPersonagem = nil; end;
         if self.flowPart3 ~= nil then self.flowPart3:destroy(); self.flowPart3 = nil; end;
         if self.edtBarValue1 ~= nil then self.edtBarValue1:destroy(); self.edtBarValue1 = nil; end;
+        if self.scrollBox3 ~= nil then self.scrollBox3:destroy(); self.scrollBox3 = nil; end;
         if self.layout11 ~= nil then self.layout11:destroy(); self.layout11 = nil; end;
         if self.label3 ~= nil then self.label3:destroy(); self.label3 = nil; end;
         if self.horzLine3 ~= nil then self.horzLine3:destroy(); self.horzLine3 = nil; end;
@@ -1373,6 +1758,8 @@ local function constructNew_frmTokenProps()
         if self.layout14 ~= nil then self.layout14:destroy(); self.layout14 = nil; end;
         if self.layout16 ~= nil then self.layout16:destroy(); self.layout16 = nil; end;
         if self.labAuraURL ~= nil then self.labAuraURL:destroy(); self.labAuraURL = nil; end;
+        if self.reachVal ~= nil then self.reachVal:destroy(); self.reachVal = nil; end;
+        if self.labCorAura ~= nil then self.labCorAura:destroy(); self.labCorAura = nil; end;
         if self.scrollBox1 ~= nil then self.scrollBox1:destroy(); self.scrollBox1 = nil; end;
         if self.edtMetricVLF ~= nil then self.edtMetricVLF:destroy(); self.edtMetricVLF = nil; end;
         if self.layout7 ~= nil then self.layout7:destroy(); self.layout7 = nil; end;

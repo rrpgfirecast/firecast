@@ -112,6 +112,7 @@ scene.tokenEdit.barraPrefix=Barrinha
 scene.digiteUmValor=Digite um valor
 scene.valor=Valor
 
+scene.labCorAura.text=Cor da Aura
 scene.labAlturaAura.text=Altura da Aura
 scene.labLarguraAura.text=Largura da Aura
 scene.labCorAura.text=Cor da Aura
@@ -255,6 +256,7 @@ scene.tokenEdit.barraPrefix=Bar
 scene.digiteUmValor=Type a value
 scene.valor=Value
 
+scene.labCorAura.text=Aura Color
 scene.labAlturaAura.text=Aura height
 scene.labLarguraAura.text=Aura width
 scene.labCorAura.text=Aura Color

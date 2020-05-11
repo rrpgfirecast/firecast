@@ -47,8 +47,11 @@ scene.FacingMode.arrow=Exibir uma seta
 
 scene.FormaAura.Circulo=Circulo
 scene.FormaAura.Quadrado=Quadrado
-scene.FormaAura.Triangulo=Triangulo
+scene.FormaAura.Triangulo=Cone Diagonal
 scene.FormaAura.URL=URL
+scene.FormaAura.ConeHorizontal=Cone Horizontal
+scene.FormaAura.SemiCirculo=Semi-Circulo
+scene.FormaAura.CirculoPerfeito=Perfect Circle
 
 [en]
 scene.fogOfWar=Fog of War
@@ -100,5 +103,8 @@ scene.FacingMode.arrow=Show a arrow
 
 scene.FormaAura.Circulo=Circle
 scene.FormaAura.Quadrado=Square
-scene.FormaAura.Triangulo=triangle
+scene.FormaAura.Triangulo=Diagonal Cone
 scene.FormaAura.URL=URL
+scene.FormaAura.ConeHorizontal=Horizontal Cone
+scene.FormaAura.SemiCirculo=Half Circle
+scene.FormaAura.CirculoPerfeito=Perfect Circle

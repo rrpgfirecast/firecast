@@ -60,7 +60,11 @@ local function fazNada()
 						end;	
 
 
-						opGrafica.name = AURA_NAME;   
+						opGrafica.name = AURA_NAME;  
+
+						opGrafica.userData.MultiplicadorH = nil;	
+
+						opGrafica.userData.MultiplicadorW = nil;							
 
 						opGrafica.userData.PossuiAura = nil;
 						
