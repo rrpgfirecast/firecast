@@ -449,8 +449,49 @@ local function constructNew_frmTokenProps()
     obj.cmbFormaAura:setAlign("client");
     obj.cmbFormaAura:setMargins({right=5});
 
+    obj.flpImagemAura = GUI.fromHandle(_obj_newObject("flowPart"));
+    obj.flpImagemAura:setParent(obj.flaAuraContent);
+    obj.flpImagemAura:setHeight(200);
+    obj.flpImagemAura:setWidth(200);
+    obj.flpImagemAura:setName("flpImagemAura");
+    obj.flpImagemAura:setMinWidth(50);
+    obj.flpImagemAura:setMaxWidth(5000);
+    obj.flpImagemAura:setMargins({left=2, right=2, top=2, bottom=2});
+
+    obj.rectangle1 = GUI.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle1:setParent(obj.flpImagemAura);
+    obj.rectangle1:setLeft(45);
+    obj.rectangle1:setTop(5);
+    obj.rectangle1:setWidth(200);
+    obj.rectangle1:setHeight(200);
+    obj.rectangle1:setStrokeColor("white");
+    obj.rectangle1:setColor("black");
+    obj.rectangle1:setName("rectangle1");
+
+    obj.click = GUI.fromHandle(_obj_newObject("label"));
+    obj.click:setParent(obj.flpImagemAura);
+    obj.click:setLeft(45);
+    obj.click:setTop(95);
+    obj.click:setWidth(200);
+    obj.click:setHeight(20);
+    obj.click:setFontSize(11);
+    obj.click:setName("click");
+    obj.click:setHorzTextAlign("center");
+    obj.click:setWordWrap(false);
+
+    obj.imageAura = GUI.fromHandle(_obj_newObject("image"));
+    obj.imageAura:setParent(obj.flpImagemAura);
+    obj.imageAura:setLeft(45);
+    obj.imageAura:setTop(5);
+    obj.imageAura:setWidth(200);
+    obj.imageAura:setHeight(200);
+    obj.imageAura:setStyle("autoFit");
+    obj.imageAura:setEditable(true);
+    obj.imageAura:setName("imageAura");
+
     obj.flpURLAura = GUI.fromHandle(_obj_newObject("flowPart"));
     obj.flpURLAura:setParent(obj.flaAuraContent);
+    obj.flpURLAura:setVisible(false);
     obj.flpURLAura:setName("flpURLAura");
     obj.flpURLAura:setHeight(30);
     obj.flpURLAura:setMinWidth(50);
@@ -548,62 +589,6 @@ local function constructNew_frmTokenProps()
     obj.cmbCorAura:setName("cmbCorAura");
     obj.cmbCorAura:setAlign("client");
     obj.cmbCorAura:setMargins({right=5});
-
-    obj.fplimagemAura1 = GUI.fromHandle(_obj_newObject("flowPart"));
-    obj.fplimagemAura1:setParent(obj.flaAuraContent);
-    obj.fplimagemAura1:setHeight(100);
-    obj.fplimagemAura1:setName("fplimagemAura1");
-    obj.fplimagemAura1:setMinWidth(50);
-    obj.fplimagemAura1:setMaxWidth(5000);
-    obj.fplimagemAura1:setMargins({left=2, right=2, top=2, bottom=2});
-
-    obj.rectangle1 = GUI.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle1:setParent(obj.fplimagemAura1);
-    obj.rectangle1:setWidth(200);
-    obj.rectangle1:setHeight(200);
-    obj.rectangle1:setStrokeColor("white");
-    obj.rectangle1:setColor("black");
-    obj.rectangle1:setName("rectangle1");
-    obj.rectangle1:setAlign("client");
-    obj.rectangle1:setMargins({right=5});
-
-    obj.imageAura = GUI.fromHandle(_obj_newObject("image"));
-    obj.imageAura:setParent(obj.fplimagemAura1);
-    obj.imageAura:setWidth(200);
-    obj.imageAura:setHeight(200);
-    obj.imageAura:setEditable(true);
-    obj.imageAura:setName("imageAura");
-    obj.imageAura:setField("image");
-    obj.imageAura:setAlign("client");
-    obj.imageAura:setMargins({right=5});
-
-    obj.fplimagemAura2 = GUI.fromHandle(_obj_newObject("flowPart"));
-    obj.fplimagemAura2:setParent(obj.flaAuraContent);
-    obj.fplimagemAura2:setName("fplimagemAura2");
-    obj.fplimagemAura2:setHeight(30);
-    obj.fplimagemAura2:setMinWidth(50);
-    obj.fplimagemAura2:setMaxWidth(5000);
-    obj.fplimagemAura2:setMargins({left=2, right=2, top=2, bottom=2});
-
-    obj.click = GUI.fromHandle(_obj_newObject("label"));
-    obj.click:setParent(obj.fplimagemAura2);
-    obj.click:setWidth(200);
-    obj.click:setHeight(20);
-    obj.click:setFontSize(11);
-    obj.click:setName("click");
-    obj.click:setHorzTextAlign("center");
-    obj.click:setWordWrap(false);
-    obj.click:setAlign("left");
-    obj.click:setAutoSize(false);
-    obj.click:setVertTextAlign("center");
-    obj.click:setMargins({right=5});
-
-    obj.input2 = GUI.fromHandle(_obj_newObject("button"));
-    obj.input2:setParent(obj.fplimagemAura2);
-    obj.input2:setOpacity(1.0);
-    obj.input2:setName("input2");
-    obj.input2:setAlign("client");
-    obj.input2:setMargins({right=5});
 
     obj.tabFOW = GUI.fromHandle(_obj_newObject("tab"));
     obj.tabFOW:setParent(obj.tabControl1);
@@ -1112,7 +1097,8 @@ local function constructNew_frmTokenProps()
 		self.cmbFormaAura.items = {lang('scene.FormaAura.URL'), lang('scene.FormaAura.Circulo'), lang('scene.FormaAura.Quadrado'), lang('scene.FormaAura.Triangulo'), lang('scene.FormaAura.ConeHorizontal'), lang('scene.FormaAura.SemiCirculo'), lang('scene.FormaAura.CirculoPerfeito')};
 		self.labAuraURL.text = lang('scene.labAuraURL.text');
 		self.labCorAura.text = lang('scene.labCorAura.text');
-				
+		
+		
 		function recursiveEnumPersonagensEmBibItem(bibItem, dest)
 			if bibItem.tipo == "personagem" then
 				if (bibItem.loginDono ~= nil) and (bibItem.loginDono ~= "") then
@@ -1220,9 +1206,10 @@ local function constructNew_frmTokenProps()
 					self.edtAlturaAura.asNumber = opGraficaAura.height or 0;					
 					self.edtLarguraAura.asNumber = opGraficaAura.width or 0;					
 					self.cmbFormaAura.value = opGraficaAura.userData.FormaAura;
+					self.imageAura.text = opGraficaAura.url;
 					
 					if opGraficaAura.userData.FormaAura == "URL" then
-						self.edtAuraURL.text = opGraficaAura.url; 					
+						self.imageAura.text = opGraficaAura.url;					
 					else
 						self.cmbCorAura.color = opGraficaAura.color;					
 					end;					
@@ -1314,7 +1301,7 @@ local function constructNew_frmTokenProps()
 								opGraficaAura.userData.FormaAura = self.cmbFormaAura.value;
 																
 								if opGraficaAura.objectType == "opBitmap" then
-									opGraficaAura.url = self.edtAuraURL.text;
+									opGraficaAura.url = self.imageAura.text;
 									opGraficaAura.opacity = 1.0;
 								else								
 									if opGraficaAura.userData.FormaAura == lang("scene.FormaAura.Quadrado") then																										
@@ -1440,23 +1427,17 @@ local function constructNew_frmTokenProps()
             self.flaAuraContent.visible = self.cbxPossuiAura.checked
         end, obj);
 
-    obj._e_event3 = obj.input2:addEventListener("onClick",
-        function (_)
-            self:openFile()
-        end, obj);
-
-    obj._e_event4 = obj.btnOk1:addEventListener("onClick",
+    obj._e_event3 = obj.btnOk1:addEventListener("onClick",
         function (_)
             self:processarOK()
         end, obj);
 
-    obj._e_event5 = obj.btnCancel1:addEventListener("onClick",
+    obj._e_event4 = obj.btnCancel1:addEventListener("onClick",
         function (_)
             self:processarCancel()
         end, obj);
 
     function obj:_releaseEvents()
-        __o_rrpgObjs.removeEventListenerById(self._e_event5);
         __o_rrpgObjs.removeEventListenerById(self._e_event4);
         __o_rrpgObjs.removeEventListenerById(self._e_event3);
         __o_rrpgObjs.removeEventListenerById(self._e_event2);
@@ -1535,7 +1516,6 @@ local function constructNew_frmTokenProps()
         if self.labCampoDeVisao ~= nil then self.labCampoDeVisao:destroy(); self.labCampoDeVisao = nil; end;
         if self.labCompLuz3 ~= nil then self.labCompLuz3:destroy(); self.labCompLuz3 = nil; end;
         if self.labCompLuz5 ~= nil then self.labCompLuz5:destroy(); self.labCompLuz5 = nil; end;
-        if self.fplimagemAura2 ~= nil then self.fplimagemAura2:destroy(); self.fplimagemAura2 = nil; end;
         if self.label1 ~= nil then self.label1:destroy(); self.label1 = nil; end;
         if self.layout4 ~= nil then self.layout4:destroy(); self.layout4 = nil; end;
         if self.edtAuraURL ~= nil then self.edtAuraURL:destroy(); self.edtAuraURL = nil; end;
@@ -1553,9 +1533,7 @@ local function constructNew_frmTokenProps()
         if self.flowPart9 ~= nil then self.flowPart9:destroy(); self.flowPart9 = nil; end;
         if self.layout5 ~= nil then self.layout5:destroy(); self.layout5 = nil; end;
         if self.labMetricVLE ~= nil then self.labMetricVLE:destroy(); self.labMetricVLE = nil; end;
-        if self.input2 ~= nil then self.input2:destroy(); self.input2 = nil; end;
         if self.layout18 ~= nil then self.layout18:destroy(); self.layout18 = nil; end;
-        if self.fplimagemAura1 ~= nil then self.fplimagemAura1:destroy(); self.fplimagemAura1 = nil; end;
         if self.labCompAngulo2 ~= nil then self.labCompAngulo2:destroy(); self.labCompAngulo2 = nil; end;
         if self.labLarguraAura ~= nil then self.labLarguraAura:destroy(); self.labLarguraAura = nil; end;
         if self.labBar1 ~= nil then self.labBar1:destroy(); self.labBar1 = nil; end;
@@ -1573,9 +1551,10 @@ local function constructNew_frmTokenProps()
         if self.cmbPersonagem ~= nil then self.cmbPersonagem:destroy(); self.cmbPersonagem = nil; end;
         if self.flowPart3 ~= nil then self.flowPart3:destroy(); self.flowPart3 = nil; end;
         if self.edtBarValue1 ~= nil then self.edtBarValue1:destroy(); self.edtBarValue1 = nil; end;
+        if self.flpImagemAura ~= nil then self.flpImagemAura:destroy(); self.flpImagemAura = nil; end;
         if self.scrollBox3 ~= nil then self.scrollBox3:destroy(); self.scrollBox3 = nil; end;
-        if self.layout11 ~= nil then self.layout11:destroy(); self.layout11 = nil; end;
         if self.label3 ~= nil then self.label3:destroy(); self.label3 = nil; end;
+        if self.layout11 ~= nil then self.layout11:destroy(); self.layout11 = nil; end;
         if self.horzLine3 ~= nil then self.horzLine3:destroy(); self.horzLine3 = nil; end;
         if self.flpBar1 ~= nil then self.flpBar1:destroy(); self.flpBar1 = nil; end;
         if self.flpBar3 ~= nil then self.flpBar3:destroy(); self.flpBar3 = nil; end;

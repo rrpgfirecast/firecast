@@ -68,7 +68,9 @@ local function fazNada()
 
 						opGrafica.userData.PossuiAura = nil;
 						
-						opGrafica.userData.FormaAura = nil;  		
+						opGrafica.userData.FormaAura = nil;  	
+
+						opGrafica.userData.ImagemAura = nil;  						
 						
 						opGrafica.width = nil;
 						

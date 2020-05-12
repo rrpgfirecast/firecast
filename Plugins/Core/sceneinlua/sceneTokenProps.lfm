@@ -149,12 +149,18 @@
 							<label name="labFormaAura" class="itemTitle"/>
 							<comboBox name="cmbFormaAura" class="itemContent"/>
 						</flowPart>	
+						
+						<flowPart class="optionPart" height="200" width="200" name="flpImagemAura">	
+						<rectangle left="45" top="5" width="200" height="200" strokeColor="white" color="black"/>
+						<label left="45" top="95" width="200" height="20" fontSize="11" name="click" horzTextAlign="center"/>
+						<image left="45" top="5" width="200" height="200" style="autoFit" editable="true" name="imageAura" />
+						</flowPart>	
 
-						<flowPart class="optionPart" name="flpURLAura">	
+
+						<flowPart class="optionPart" visible="false" name="flpURLAura">	
 							<label name="labAuraURL" class="itemTitle"/>
 							<edit name="edtAuraURL" class="itemContent"/>
 						</flowPart>		
-					
 					
 						<flowPart class="optionPart" name="fplAlturaAura">	
 							<label name="labAlturaAura" class="itemTitle"/>
@@ -170,19 +176,7 @@
 							<label name="labCorAura" class="itemTitle"/>
 							<colorComboBox name="cmbCorAura" class="itemContent"/>
 						</flowPart>	
-												
-						<flowPart class="optionPart" height="100" name="fplimagemAura1">	
-						<rectangle class="itemContent"  width="200" height="200" strokeColor="white" color="black"/>
-						<image width="200" height="200" editable="true" name="imageAura" class="itemContent" field="image"/>
-						</flowPart>	
-
-						<flowPart class="optionPart"  name="fplimagemAura2">	
-						<label class="itemTitle" width="200" height="20" fontSize="11" name="click" horzTextAlign="center"/>
-						<button opacity="1.0" name="input2" class="itemContent" onClick="self:openFile()"/>
-						</flowPart>	
-						
-						
-						
+																	
 					</flowLayout>
 				</flowLayout>
 			</scrollBox>				
@@ -296,7 +290,8 @@
 		self.cmbFormaAura.items = {lang('scene.FormaAura.URL'), lang('scene.FormaAura.Circulo'), lang('scene.FormaAura.Quadrado'), lang('scene.FormaAura.Triangulo'), lang('scene.FormaAura.ConeHorizontal'), lang('scene.FormaAura.SemiCirculo'), lang('scene.FormaAura.CirculoPerfeito')};
 		self.labAuraURL.text = lang('scene.labAuraURL.text');
 		self.labCorAura.text = lang('scene.labCorAura.text');
-				
+		
+		
 		function recursiveEnumPersonagensEmBibItem(bibItem, dest)
 			if bibItem.tipo == "personagem" then
 				if (bibItem.loginDono ~= nil) and (bibItem.loginDono ~= "") then
@@ -404,9 +399,10 @@
 					self.edtAlturaAura.asNumber = opGraficaAura.height or 0;					
 					self.edtLarguraAura.asNumber = opGraficaAura.width or 0;					
 					self.cmbFormaAura.value = opGraficaAura.userData.FormaAura;
+					self.imageAura.text = opGraficaAura.url;
 					
 					if opGraficaAura.userData.FormaAura == "URL" then
-						self.edtAuraURL.text = opGraficaAura.url; 					
+						self.imageAura.text = opGraficaAura.url;					
 					else
 						self.cmbCorAura.color = opGraficaAura.color;					
 					end;					
@@ -498,7 +494,7 @@
 								opGraficaAura.userData.FormaAura = self.cmbFormaAura.value;
 																
 								if opGraficaAura.objectType == "opBitmap" then
-									opGraficaAura.url = self.edtAuraURL.text;
+									opGraficaAura.url = self.imageAura.text;
 									opGraficaAura.opacity = 1.0;
 								else								
 									if opGraficaAura.userData.FormaAura == lang("scene.FormaAura.Quadrado") then																										
