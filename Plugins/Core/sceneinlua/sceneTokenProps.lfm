@@ -399,10 +399,10 @@
 					self.edtAlturaAura.asNumber = opGraficaAura.height or 0;					
 					self.edtLarguraAura.asNumber = opGraficaAura.width or 0;					
 					self.cmbFormaAura.value = opGraficaAura.userData.FormaAura;
-					self.imageAura.text = opGraficaAura.url;
+					self.imageAura.url = opGraficaAura.url;
 					
 					if opGraficaAura.userData.FormaAura == "URL" then
-						self.imageAura.text = opGraficaAura.url;					
+						self.imageAura.url = opGraficaAura.url;					
 					else
 						self.cmbCorAura.color = opGraficaAura.color;					
 					end;					
@@ -494,7 +494,7 @@
 								opGraficaAura.userData.FormaAura = self.cmbFormaAura.value;
 																
 								if opGraficaAura.objectType == "opBitmap" then
-									opGraficaAura.url = self.imageAura.text;
+									opGraficaAura.url = self.imageAura.url;
 									opGraficaAura.opacity = 1.0;
 								else								
 									if opGraficaAura.userData.FormaAura == lang("scene.FormaAura.Quadrado") then																										
