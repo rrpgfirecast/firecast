@@ -1432,12 +1432,12 @@ local function constructNew_frmTokenProps()
         function (_)
             if self.cmbFormaAura.value =="URL" then
             										self.flpImagemAura.visible = true;
-            										self.tabAura.width = self.tabAura.width + 1;
-            										self.tabAura.width = self.tabAura.width - 1;
+            										self.flaAuraContent.width = self.flaAuraContent.width + 1;
+            										self.flaAuraContent.width = self.flaAuraContent.width - 1;
             								   else
             										self.flpImagemAura.visible = false;
-            										self.tabAura.width = self.tabAura.width + 1;
-            										self.tabAura.width = self.tabAura.width - 1;										
+            										self.flaAuraContent.width = self.flaAuraContent.width + 1;
+            										self.flaAuraContent.width = self.flaAuraContent.width - 1;										
             								   end;
         end, obj);
 
