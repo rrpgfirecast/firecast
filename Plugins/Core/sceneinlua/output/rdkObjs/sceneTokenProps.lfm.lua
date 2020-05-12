@@ -452,6 +452,7 @@ local function constructNew_frmTokenProps()
     obj.flpImagemAura = GUI.fromHandle(_obj_newObject("flowPart"));
     obj.flpImagemAura:setParent(obj.flaAuraContent);
     obj.flpImagemAura:setHeight(200);
+    obj.flpImagemAura:setVisible(true);
     obj.flpImagemAura:setWidth(200);
     obj.flpImagemAura:setName("flpImagemAura");
     obj.flpImagemAura:setMinWidth(50);
@@ -460,34 +461,34 @@ local function constructNew_frmTokenProps()
 
     obj.rectangle1 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle1:setParent(obj.flpImagemAura);
-    obj.rectangle1:setLeft(45);
-    obj.rectangle1:setTop(5);
     obj.rectangle1:setWidth(200);
     obj.rectangle1:setHeight(200);
     obj.rectangle1:setStrokeColor("white");
     obj.rectangle1:setColor("black");
     obj.rectangle1:setName("rectangle1");
+    obj.rectangle1:setAlign("client");
+    obj.rectangle1:setMargins({right=5});
 
     obj.click = GUI.fromHandle(_obj_newObject("label"));
     obj.click:setParent(obj.flpImagemAura);
-    obj.click:setLeft(45);
-    obj.click:setTop(95);
     obj.click:setWidth(200);
     obj.click:setHeight(20);
     obj.click:setFontSize(11);
     obj.click:setName("click");
     obj.click:setHorzTextAlign("center");
     obj.click:setWordWrap(false);
+    obj.click:setAlign("client");
+    obj.click:setMargins({right=5});
 
     obj.imageAura = GUI.fromHandle(_obj_newObject("image"));
     obj.imageAura:setParent(obj.flpImagemAura);
-    obj.imageAura:setLeft(45);
-    obj.imageAura:setTop(5);
     obj.imageAura:setWidth(200);
     obj.imageAura:setHeight(200);
     obj.imageAura:setStyle("autoFit");
     obj.imageAura:setEditable(true);
     obj.imageAura:setName("imageAura");
+    obj.imageAura:setAlign("client");
+    obj.imageAura:setMargins({right=5});
 
     obj.flpURLAura = GUI.fromHandle(_obj_newObject("flowPart"));
     obj.flpURLAura:setParent(obj.flaAuraContent);
@@ -1427,17 +1428,31 @@ local function constructNew_frmTokenProps()
             self.flaAuraContent.visible = self.cbxPossuiAura.checked
         end, obj);
 
-    obj._e_event3 = obj.btnOk1:addEventListener("onClick",
+    obj._e_event3 = obj.cmbFormaAura:addEventListener("onChange",
+        function (_)
+            if self.cmbFormaAura.value =="URL" then
+            										self.flpImagemAura.visible = true;
+            										self.tabAura.width = self.tabAura.width + 1;
+            										self.tabAura.width = self.tabAura.width - 1;
+            								   else
+            										self.flpImagemAura.visible = false;
+            										self.tabAura.width = self.tabAura.width + 1;
+            										self.tabAura.width = self.tabAura.width - 1;										
+            								   end;
+        end, obj);
+
+    obj._e_event4 = obj.btnOk1:addEventListener("onClick",
         function (_)
             self:processarOK()
         end, obj);
 
-    obj._e_event4 = obj.btnCancel1:addEventListener("onClick",
+    obj._e_event5 = obj.btnCancel1:addEventListener("onClick",
         function (_)
             self:processarCancel()
         end, obj);
 
     function obj:_releaseEvents()
+        __o_rrpgObjs.removeEventListenerById(self._e_event5);
         __o_rrpgObjs.removeEventListenerById(self._e_event4);
         __o_rrpgObjs.removeEventListenerById(self._e_event3);
         __o_rrpgObjs.removeEventListenerById(self._e_event2);

@@ -147,13 +147,25 @@
 
 						<flowPart class="optionPart" name="flpFormaAura">	
 							<label name="labFormaAura" class="itemTitle"/>
-							<comboBox name="cmbFormaAura" class="itemContent"/>
+							<comboBox name="cmbFormaAura" class="itemContent">
+								 <event name="onChange">
+								   if self.cmbFormaAura.value =="URL" then
+										self.flpImagemAura.visible = true;
+										self.tabAura.width = self.tabAura.width + 1;
+										self.tabAura.width = self.tabAura.width - 1;
+								   else
+										self.flpImagemAura.visible = false;
+										self.tabAura.width = self.tabAura.width + 1;
+										self.tabAura.width = self.tabAura.width - 1;										
+								   end;									
+								  </event>
+							</comboBox>
 						</flowPart>	
 						
-						<flowPart class="optionPart" height="200" width="200" name="flpImagemAura">	
-						<rectangle left="45" top="5" width="200" height="200" strokeColor="white" color="black"/>
-						<label left="45" top="95" width="200" height="20" fontSize="11" name="click" horzTextAlign="center"/>
-						<image left="45" top="5" width="200" height="200" style="autoFit" editable="true" name="imageAura" />
+						<flowPart class="optionPart" height="200" visible="true" width="200" name="flpImagemAura">	
+						<rectangle class="itemContent" width="200" height="200" strokeColor="white" color="black"/>
+						<label class="itemContent" width="200" height="20" fontSize="11" name="click" horzTextAlign="center"/>
+						<image class="itemContent" width="200" height="200" style="autoFit" editable="true" name="imageAura" />
 						</flowPart>	
 
 
