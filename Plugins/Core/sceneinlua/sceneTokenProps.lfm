@@ -148,14 +148,39 @@
 						<flowPart class="optionPart" name="flpFormaAura">	
 							<label name="labFormaAura" class="itemTitle"/>
 							<comboBox name="cmbFormaAura" class="itemContent">
-								 <event name="onChange">
-								   if self.cmbFormaAura.value =="URL" then
+								<event name="onChange">
+									if self.cmbFormaAura.value =="URL" then
 										self.flpImagemAura.visible = true;
 										self.flaAuraContent:needRealign()
-								   else
+								    else
 										self.flpImagemAura.visible = false;
 										self.flaAuraContent:needRealign()									
-								   end;									
+								    end;
+
+								    if self.cmbFormaAura.value =="Circulo" or self.cmbFormaAura.value =="Circle" then
+										self.flpRaioAura.visible = true;
+										self.fplAlturaAura.visible = false;
+										self.fplLarguraAura.visible = false;
+										self.flaAuraContent:needRealign()
+								    else  if self.cmbFormaAura.value =="Semi Circulo" or self.cmbFormaAura.value =="Half Circle" then
+											self.flpRaioAura.visible = true;
+											self.fplAlturaAura.visible = false;
+											self.fplLarguraAura.visible = false;
+											self.flaAuraContent:needRealign()
+										  else if self.cmbFormaAura.value =="Perfect Circle" or self.cmbFormaAura.value =="Circulo Perfeito" then
+												self.flpRaioAura.visible = true;
+												self.fplAlturaAura.visible = false;
+												self.fplLarguraAura.visible = false;
+												self.flaAuraContent:needRealign()	
+											   else
+											    self.flpRaioAura.visible = false;
+											    self.fplAlturaAura.visible = true;
+											    self.fplLarguraAura.visible = true;
+											    self.flaAuraContent:needRealign()
+										  	   end;
+										  end;		
+									end;
+									
 								  </event>
 							</comboBox>
 						</flowPart>	
@@ -171,6 +196,11 @@
 							<label name="labAuraURL" class="itemTitle"/>
 							<edit name="edtAuraURL" class="itemContent"/>
 						</flowPart>		
+						
+						<flowPart class="optionPart" visible="false" name="flpRaioAura">	
+							<label name="labRaioAura" class="itemTitle"/>
+							<edit name="edtRaioAura" class="itemContent"/>
+						</flowPart>	
 					
 						<flowPart class="optionPart" name="fplAlturaAura">	
 							<label name="labAlturaAura" class="itemTitle"/>
@@ -186,6 +216,8 @@
 							<label name="labCorAura" class="itemTitle"/>
 							<colorComboBox name="cmbCorAura" class="itemContent"/>
 						</flowPart>	
+						
+						
 																	
 					</flowLayout>
 				</flowLayout>
@@ -300,7 +332,7 @@
 		self.cmbFormaAura.items = {lang('scene.FormaAura.URL'), lang('scene.FormaAura.Circulo'), lang('scene.FormaAura.Quadrado'), lang('scene.FormaAura.Triangulo'), lang('scene.FormaAura.ConeHorizontal'), lang('scene.FormaAura.SemiCirculo'), lang('scene.FormaAura.CirculoPerfeito')};
 		self.labAuraURL.text = lang('scene.labAuraURL.text');
 		self.labCorAura.text = lang('scene.labCorAura.text');
-		
+		self.labRaioAura.text = lang('scene.labRaioAura.text');
 		
 		function recursiveEnumPersonagensEmBibItem(bibItem, dest)
 			if bibItem.tipo == "personagem" then

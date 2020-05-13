@@ -50,8 +50,8 @@ scene.FormaAura.Quadrado=Quadrado
 scene.FormaAura.Triangulo=Cone Diagonal
 scene.FormaAura.URL=URL
 scene.FormaAura.ConeHorizontal=Cone Horizontal
-scene.FormaAura.SemiCirculo=Semi-Circulo
-scene.FormaAura.CirculoPerfeito=Perfect Circle
+scene.FormaAura.SemiCirculo=Semi Circulo
+scene.FormaAura.CirculoPerfeito=Circulo Perfeito
 
 [en]
 scene.fogOfWar=Fog of War

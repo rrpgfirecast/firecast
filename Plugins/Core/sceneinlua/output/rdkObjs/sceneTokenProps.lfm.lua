@@ -516,6 +516,32 @@ local function constructNew_frmTokenProps()
     obj.edtAuraURL:setAlign("client");
     obj.edtAuraURL:setMargins({right=5});
 
+    obj.flpRaioAura = GUI.fromHandle(_obj_newObject("flowPart"));
+    obj.flpRaioAura:setParent(obj.flaAuraContent);
+    obj.flpRaioAura:setVisible(false);
+    obj.flpRaioAura:setName("flpRaioAura");
+    obj.flpRaioAura:setHeight(30);
+    obj.flpRaioAura:setMinWidth(50);
+    obj.flpRaioAura:setMaxWidth(5000);
+    obj.flpRaioAura:setMargins({left=2, right=2, top=2, bottom=2});
+
+    obj.labRaioAura = GUI.fromHandle(_obj_newObject("label"));
+    obj.labRaioAura:setParent(obj.flpRaioAura);
+    obj.labRaioAura:setName("labRaioAura");
+    obj.labRaioAura:setWordWrap(false);
+    obj.labRaioAura:setAlign("left");
+    obj.labRaioAura:setWidth(110);
+    obj.labRaioAura:setAutoSize(false);
+    obj.labRaioAura:setHorzTextAlign("trailing");
+    obj.labRaioAura:setVertTextAlign("center");
+    obj.labRaioAura:setMargins({right=5});
+
+    obj.edtRaioAura = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edtRaioAura:setParent(obj.flpRaioAura);
+    obj.edtRaioAura:setName("edtRaioAura");
+    obj.edtRaioAura:setAlign("client");
+    obj.edtRaioAura:setMargins({right=5});
+
     obj.fplAlturaAura = GUI.fromHandle(_obj_newObject("flowPart"));
     obj.fplAlturaAura:setParent(obj.flaAuraContent);
     obj.fplAlturaAura:setName("fplAlturaAura");
@@ -1098,7 +1124,7 @@ local function constructNew_frmTokenProps()
 		self.cmbFormaAura.items = {lang('scene.FormaAura.URL'), lang('scene.FormaAura.Circulo'), lang('scene.FormaAura.Quadrado'), lang('scene.FormaAura.Triangulo'), lang('scene.FormaAura.ConeHorizontal'), lang('scene.FormaAura.SemiCirculo'), lang('scene.FormaAura.CirculoPerfeito')};
 		self.labAuraURL.text = lang('scene.labAuraURL.text');
 		self.labCorAura.text = lang('scene.labCorAura.text');
-		
+		self.labRaioAura.text = lang('scene.labRaioAura.text');
 		
 		function recursiveEnumPersonagensEmBibItem(bibItem, dest)
 			if bibItem.tipo == "personagem" then
@@ -1433,10 +1459,34 @@ local function constructNew_frmTokenProps()
             if self.cmbFormaAura.value =="URL" then
             										self.flpImagemAura.visible = true;
             										self.flaAuraContent:needRealign()
-            								   else
+            								    else
             										self.flpImagemAura.visible = false;
             										self.flaAuraContent:needRealign()									
-            								   end;
+            								    end;
+            
+            								    if self.cmbFormaAura.value =="Circulo" or self.cmbFormaAura.value =="Circle" then
+            										self.flpRaioAura.visible = true;
+            										self.fplAlturaAura.visible = false;
+            										self.fplLarguraAura.visible = false;
+            										self.flaAuraContent:needRealign()
+            								    else  if self.cmbFormaAura.value =="Semi Circulo" or self.cmbFormaAura.value =="Half Circle" then
+            											self.flpRaioAura.visible = true;
+            											self.fplAlturaAura.visible = false;
+            											self.fplLarguraAura.visible = false;
+            											self.flaAuraContent:needRealign()
+            										  else if self.cmbFormaAura.value =="Perfect Circle" or self.cmbFormaAura.value =="Circulo Perfeito" then
+            												self.flpRaioAura.visible = true;
+            												self.fplAlturaAura.visible = false;
+            												self.fplLarguraAura.visible = false;
+            												self.flaAuraContent:needRealign()	
+            											   else
+            											    self.flpRaioAura.visible = false;
+            											    self.fplAlturaAura.visible = true;
+            											    self.fplLarguraAura.visible = true;
+            											    self.flaAuraContent:needRealign()
+            										  	   end;
+            										  end;		
+            									end;
         end, obj);
 
     obj._e_event4 = obj.btnOk1:addEventListener("onClick",
@@ -1491,6 +1541,7 @@ local function constructNew_frmTokenProps()
         if self.click ~= nil then self.click:destroy(); self.click = nil; end;
         if self.flowPart2 ~= nil then self.flowPart2:destroy(); self.flowPart2 = nil; end;
         if self.layout13 ~= nil then self.layout13:destroy(); self.layout13 = nil; end;
+        if self.flpRaioAura ~= nil then self.flpRaioAura:destroy(); self.flpRaioAura = nil; end;
         if self.layout3 ~= nil then self.layout3:destroy(); self.layout3 = nil; end;
         if self.horzLine2 ~= nil then self.horzLine2:destroy(); self.horzLine2 = nil; end;
         if self.layout8 ~= nil then self.layout8:destroy(); self.layout8 = nil; end;
@@ -1525,9 +1576,10 @@ local function constructNew_frmTokenProps()
         if self.labCompLuz4 ~= nil then self.labCompLuz4:destroy(); self.labCompLuz4 = nil; end;
         if self.btnOk1 ~= nil then self.btnOk1:destroy(); self.btnOk1 = nil; end;
         if self.cmbFormaAura ~= nil then self.cmbFormaAura:destroy(); self.cmbFormaAura = nil; end;
-        if self.labPersonagem ~= nil then self.labPersonagem:destroy(); self.labPersonagem = nil; end;
-        if self.labCampoDeVisao ~= nil then self.labCampoDeVisao:destroy(); self.labCampoDeVisao = nil; end;
         if self.labCompLuz3 ~= nil then self.labCompLuz3:destroy(); self.labCompLuz3 = nil; end;
+        if self.labPersonagem ~= nil then self.labPersonagem:destroy(); self.labPersonagem = nil; end;
+        if self.edtRaioAura ~= nil then self.edtRaioAura:destroy(); self.edtRaioAura = nil; end;
+        if self.labCampoDeVisao ~= nil then self.labCampoDeVisao:destroy(); self.labCampoDeVisao = nil; end;
         if self.labCompLuz5 ~= nil then self.labCompLuz5:destroy(); self.labCompLuz5 = nil; end;
         if self.label1 ~= nil then self.label1:destroy(); self.label1 = nil; end;
         if self.layout4 ~= nil then self.layout4:destroy(); self.layout4 = nil; end;
@@ -1570,6 +1622,7 @@ local function constructNew_frmTokenProps()
         if self.layout11 ~= nil then self.layout11:destroy(); self.layout11 = nil; end;
         if self.horzLine3 ~= nil then self.horzLine3:destroy(); self.horzLine3 = nil; end;
         if self.flpBar1 ~= nil then self.flpBar1:destroy(); self.flpBar1 = nil; end;
+        if self.labRaioAura ~= nil then self.labRaioAura:destroy(); self.labRaioAura = nil; end;
         if self.flpBar3 ~= nil then self.flpBar3:destroy(); self.flpBar3 = nil; end;
         if self.cmbCorBar2 ~= nil then self.cmbCorBar2:destroy(); self.cmbCorBar2 = nil; end;
         if self.label2 ~= nil then self.label2:destroy(); self.label2 = nil; end;
