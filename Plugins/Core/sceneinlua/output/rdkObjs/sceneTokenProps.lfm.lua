@@ -1335,6 +1335,10 @@ local function constructNew_frmTokenProps()
 									if opGraficaAura.userData.FormaAura == lang("scene.FormaAura.Quadrado") then																										
 										opGraficaAura.pathData = criarPathAreaQuadrado();
 										opGraficaAura.color = self.cmbCorAura.color;
+										opGraficaAura.height = self.edtAlturaAura.asNumber;
+								        opGraficaAura.width = self.edtLarguraAura.asNumber;
+										opGraficaAura.y = -(opGraficaAura.height /2);
+										opGraficaAura.x = -(opGraficaAura.width /2);
 										opGraficaAura.xOrigin = 0.5; 
 										opGraficaAura.yOrigin = 0.5;
 										opGraficaAura.widthMetric = "worldMetric";
@@ -1355,7 +1359,6 @@ local function constructNew_frmTokenProps()
 									end;
 									
 									if opGraficaAura.userData.FormaAura == lang("scene.FormaAura.Circulo") then							
-										opGraficaAura.pathData = criarPathAreaCirculo(math.ceil(opGraficaAura.height / 4));	
 										opGraficaAura.color = self.cmbCorAura.color;
 										opGraficaAura.height = self.edtRaioAura.asNumber;
 								        opGraficaAura.width = self.edtRaioAura.asNumber;
@@ -1365,7 +1368,7 @@ local function constructNew_frmTokenProps()
 										opGraficaAura.yOrigin = 0.5;
 										opGraficaAura.widthMetric = "worldMetric";
 										opGraficaAura.heightMetric = "worldMetric";	
-
+										opGraficaAura.pathData = criarPathAreaCirculo(math.ceil(opGraficaAura.height / 3));	
 									end;
 									
 									if opGraficaAura.userData.FormaAura == lang("scene.FormaAura.ConeHorizontal") then
@@ -1472,7 +1475,7 @@ local function constructNew_frmTokenProps()
 
     obj._e_event3 = obj.cmbFormaAura:addEventListener("onChange",
         function (_)
-            if self.cmbFormaAura.value =="URL" then
+            if self.cmbFormaAura.value == lang('scene.FormaAura.URL') then
             										self.flpImagemAura.visible = true;
             										self.flaAuraContent:needRealign()
             										self.fplCorAura.visible = false;
@@ -1482,17 +1485,17 @@ local function constructNew_frmTokenProps()
             										self.fplCorAura.visible = true;										
             								    end;
             
-            								    if self.cmbFormaAura.value =="Circulo" or self.cmbFormaAura.value =="Circle" then
+            								    if self.cmbFormaAura.value == lang("scene.FormaAura.Circulo") then	
             										self.flpRaioAura.visible = true;
             										self.fplAlturaAura.visible = false;
             										self.fplLarguraAura.visible = false;
             										self.flaAuraContent:needRealign()
-            								    else  if self.cmbFormaAura.value =="Semi Circulo" or self.cmbFormaAura.value =="Half Circle" then
+            								    else  if self.cmbFormaAura.value == lang("scene.FormaAura.SemiCirculo") then		
             											self.flpRaioAura.visible = true;
             											self.fplAlturaAura.visible = false;
             											self.fplLarguraAura.visible = false;
             											self.flaAuraContent:needRealign()
-            										  else if self.cmbFormaAura.value =="Perfect Circle" or self.cmbFormaAura.value =="Circulo Perfeito" then
+            										  else if self.cmbFormaAura.value == lang("scene.FormaAura.CirculoPerfeito") then
             												self.flpRaioAura.visible = true;
             												self.fplAlturaAura.visible = false;
             												self.fplLarguraAura.visible = false;
