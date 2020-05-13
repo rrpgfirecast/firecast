@@ -418,6 +418,7 @@ local function constructNew_frmTokenProps()
     obj.flaAuraContent = GUI.fromHandle(_obj_newObject("flowLayout"));
     obj.flaAuraContent:setParent(obj.flaAura);
     obj.flaAuraContent:setName("flaAuraContent");
+    obj.flaAuraContent:setVisible(false);
     obj.flaAuraContent:setAutoHeight(true);
     obj.flaAuraContent:setAlign("top");
     obj.flaAuraContent:setMinWidth(50);
@@ -1452,41 +1453,49 @@ local function constructNew_frmTokenProps()
 
     obj._e_event2 = obj.cbxPossuiAura:addEventListener("onChange",
         function (_)
-            self.flaAuraContent.visible = self.cbxPossuiAura.checked
+            if self.cbxPossuiAura.checked then
+            							self.flaAuraContent.visible = true;
+            							self.flaAuraContent.height = self.flaAuraContent.height + 1;
+            							self.flaAuraContent.height = self.flaAuraContent.height - 1;
+            						else
+            							self.flaAuraContent.visible = false;
+            							self.flaAuraContent.height = self.flaAuraContent.height + 1;
+            							self.flaAuraContent.height = self.flaAuraContent.height - 1;
+            						end;
         end, obj);
 
     obj._e_event3 = obj.cmbFormaAura:addEventListener("onChange",
         function (_)
             if self.cmbFormaAura.value == lang('scene.FormaAura.URL') then
             										self.flpImagemAura.visible = true;
-            										self.flaAuraContent:needRealign()
             										self.fplCorAura.visible = false;
+            										self.flaAuraContent:needRealign();
             								    else
             										self.flpImagemAura.visible = false;
-            										self.flaAuraContent:needRealign()	
-            										self.fplCorAura.visible = true;										
+            										self.fplCorAura.visible = true;
+            										self.flaAuraContent:needRealign();											
             								    end;
             
             								    if self.cmbFormaAura.value == lang("scene.FormaAura.Circulo") then	
             										self.flpRaioAura.visible = true;
             										self.fplAlturaAura.visible = false;
             										self.fplLarguraAura.visible = false;
-            										self.flaAuraContent:needRealign()
+            										self.flaAuraContent:needRealign();
             								    else  if self.cmbFormaAura.value == lang("scene.FormaAura.SemiCirculo") then		
             											self.flpRaioAura.visible = true;
             											self.fplAlturaAura.visible = false;
             											self.fplLarguraAura.visible = false;
-            											self.flaAuraContent:needRealign()
+            											self.flaAuraContent:needRealign();
             										  else if self.cmbFormaAura.value == lang("scene.FormaAura.CirculoPerfeito") then
             												self.flpRaioAura.visible = true;
             												self.fplAlturaAura.visible = false;
             												self.fplLarguraAura.visible = false;
-            												self.flaAuraContent:needRealign()	
+            												self.flaAuraContent:needRealign();
             											   else
             											    self.flpRaioAura.visible = false;
             											    self.fplAlturaAura.visible = true;
             											    self.fplLarguraAura.visible = true;
-            											    self.flaAuraContent:needRealign()
+            											    self.flaAuraContent:needRealign();
             										  	   end;
             										  end;		
             									end;

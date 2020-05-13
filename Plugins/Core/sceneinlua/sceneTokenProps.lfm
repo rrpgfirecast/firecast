@@ -139,46 +139,72 @@
 		
 		<tab name="tabAura" title="Auras">
 			<scrollBox align="client">
+					
 				<flowLayout align="top" autoHeight="true" maxControlsPerLine="1" name="flaAura" margins="{left=10, right=10, top=2, bottom=2">	
 					<!-- AREA DO KAREL -->
-					<checkBox name="cbxPossuiAura" left="30" top="20" text="Possui Aura ?" onChange="self.flaAuraContent.visible = self.cbxPossuiAura.checked"/>
-					
-					<flowLayout name="flaAuraContent" autoHeight="true" align="top" minWidth="50" maxWidth="50000"  maxControlsPerLine="1">
 
+				<checkBox name="cbxPossuiAura" left="30" top="20" text="Possui Aura ?">
+					<event name="onChange">
+						if self.cbxPossuiAura.checked then
+							self.flaAuraContent.visible = true;
+							self.flaAuraContent.height = self.flaAuraContent.height + 1;
+							self.flaAuraContent.height = self.flaAuraContent.height - 1;
+						else
+							self.flaAuraContent.visible = false;
+							self.flaAuraContent.height = self.flaAuraContent.height + 1;
+							self.flaAuraContent.height = self.flaAuraContent.height - 1;
+						end;
+					</event>
+				</checkBox>
+				
+				<!--<checkBox name="cbxPossuiAura" left="30" top="20" text="Possui Aura ?">
+					<event name="onChange">
+						if self.cbxPossuiAura.checked then
+							self.flaAuraContent.visible = true;
+							self.flaAuraContent:needRealign();
+						else
+							self.flaAuraContent.visible = false;
+							self.flaAuraContent:needRealign();
+						end;
+					</event>
+				</checkBox>-->
+					
+					<flowLayout name="flaAuraContent" visible="false" autoHeight="true" align="top" minWidth="50" maxWidth="50000"  maxControlsPerLine="1">
+												
 						<flowPart class="optionPart" name="flpFormaAura">	
 							<label name="labFormaAura" class="itemTitle"/>
 							<comboBox name="cmbFormaAura" class="itemContent">
 								<event name="onChange">
 									if self.cmbFormaAura.value == lang('scene.FormaAura.URL') then
 										self.flpImagemAura.visible = true;
-										self.flaAuraContent:needRealign()
 										self.fplCorAura.visible = false;
+										self.flaAuraContent:needRealign();
 								    else
 										self.flpImagemAura.visible = false;
-										self.flaAuraContent:needRealign()	
-										self.fplCorAura.visible = true;										
+										self.fplCorAura.visible = true;
+										self.flaAuraContent:needRealign();											
 								    end;
 
 								    if self.cmbFormaAura.value == lang("scene.FormaAura.Circulo") then	
 										self.flpRaioAura.visible = true;
 										self.fplAlturaAura.visible = false;
 										self.fplLarguraAura.visible = false;
-										self.flaAuraContent:needRealign()
+										self.flaAuraContent:needRealign();
 								    else  if self.cmbFormaAura.value == lang("scene.FormaAura.SemiCirculo") then		
 											self.flpRaioAura.visible = true;
 											self.fplAlturaAura.visible = false;
 											self.fplLarguraAura.visible = false;
-											self.flaAuraContent:needRealign()
+											self.flaAuraContent:needRealign();
 										  else if self.cmbFormaAura.value == lang("scene.FormaAura.CirculoPerfeito") then
 												self.flpRaioAura.visible = true;
 												self.fplAlturaAura.visible = false;
 												self.fplLarguraAura.visible = false;
-												self.flaAuraContent:needRealign()	
+												self.flaAuraContent:needRealign();
 											   else
 											    self.flpRaioAura.visible = false;
 											    self.fplAlturaAura.visible = true;
 											    self.fplLarguraAura.visible = true;
-											    self.flaAuraContent:needRealign()
+											    self.flaAuraContent:needRealign();
 										  	   end;
 										  end;		
 									end;
@@ -222,6 +248,9 @@
 																	
 					</flowLayout>
 				</flowLayout>
+				
+
+				
 			</scrollBox>				
 		 </tab>	
 
