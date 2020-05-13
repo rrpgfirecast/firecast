@@ -443,7 +443,7 @@
 					self.edtLarguraAura.asNumber = opGraficaAura.width or 0;					
 					self.cmbFormaAura.value = opGraficaAura.userData.FormaAura;
 					self.imageAura.url = opGraficaAura.url;
-					self.edtRaioAura.asNumber = opGraficaAura.height or 0
+					self.edtRaioAura.asNumber = (opGraficaAura.height / 2) + (opGraficaAura.width / 2);
 					
 					if opGraficaAura.userData.FormaAura == "URL" then
 						self.imageAura.url = opGraficaAura.url;					
@@ -528,45 +528,24 @@
 								opGraficaAura.name = AURA_NAME
 								opGraficaAura.height = self.edtAlturaAura.asNumber;
 								opGraficaAura.width = self.edtLarguraAura.asNumber;
-								opGraficaAura.y = -(opGraficaAura.height /2);
-								opGraficaAura.x = -(opGraficaAura.width /2);
+								opGraficaAura.y = (opGraficaAura.height /-2);
+								opGraficaAura.x = (opGraficaAura.width /-2);
 								opGraficaAura.xOrigin = 0.5;
 								opGraficaAura.yOrigin = 0.5;
 					            opGraficaAura.z = 10;                      
 								opGraficaAura.outOfOrderMode = "beforeOwnerLayer"; 
 								opGraficaAura.opacity = 0.5;     
+								opGraficaAura.widthMetric = "worldMetric";
+								opGraficaAura.heightMetric = "worldMetric";	
+								opGraficaAura.xMetric = "worldMetric";
+								opGraficaAura.yMetric = "worldMetric";
 								opGraficaAura.userData.FormaAura = self.cmbFormaAura.value;
 																
 								if opGraficaAura.objectType == "opBitmap" then
 									opGraficaAura.url = self.imageAura.url;
 									opGraficaAura.opacity = 1.0;
-								else								
-									if opGraficaAura.userData.FormaAura == lang("scene.FormaAura.Quadrado") then																										
-										opGraficaAura.pathData = criarPathAreaQuadrado();
-										opGraficaAura.color = self.cmbCorAura.color;
-										opGraficaAura.height = self.edtAlturaAura.asNumber;
-								        opGraficaAura.width = self.edtLarguraAura.asNumber;
-										opGraficaAura.y = -(opGraficaAura.height /2);
-										opGraficaAura.x = -(opGraficaAura.width /2);
-										opGraficaAura.xOrigin = 0.5; 
-										opGraficaAura.yOrigin = 0.5;
-										opGraficaAura.widthMetric = "worldMetric";
-										opGraficaAura.heightMetric = "worldMetric";																								
-									end;
-									
-									if opGraficaAura.userData.FormaAura == lang("scene.FormaAura.Triangulo") then
-										opGraficaAura.pathData = criarPathAreaTriangulo(opGraficaAura.height / 2, opGraficaAura.width / 2);
-										opGraficaAura.color = self.cmbCorAura.color;
-										opGraficaAura.xOrigin = 0.0;     -- X começa em 1.0 largura de token + 0.0 metros
-										opGraficaAura.yOrigin = 0.0;
-										opGraficaAura.widthMetric = "worldMetric";
-										opGraficaAura.heightMetric = "worldMetric";
-										opGraficaAura.x = 0;	
-										opGraficaAura.y = 0;										
-										opGraficaAura.xMetric = "worldMetric";
-										opGraficaAura.yMetric = "worldMetric";
-									end;
-									
+								else		
+
 									if opGraficaAura.userData.FormaAura == lang("scene.FormaAura.Circulo") then							
 										opGraficaAura.color = self.cmbCorAura.color;
 										opGraficaAura.height = self.edtRaioAura.asNumber;
@@ -575,36 +554,41 @@
 										opGraficaAura.x = -(opGraficaAura.width /2);
 										opGraficaAura.xOrigin = 0.5; 
 										opGraficaAura.yOrigin = 0.5;
-										opGraficaAura.widthMetric = "worldMetric";
-										opGraficaAura.heightMetric = "worldMetric";	
-										opGraficaAura.pathData = criarPathAreaCirculo(math.ceil(opGraficaAura.height / 3));	
+										opGraficaAura.pathData = criarPathAreaCirculo(math.ceil(opGraficaAura.height / 2));	
+									end;
+								
+									if opGraficaAura.userData.FormaAura == lang("scene.FormaAura.Quadrado") then																										
+										opGraficaAura.color = self.cmbCorAura.color;
+										opGraficaAura.pathData = criarPathAreaQuadrado();										
 									end;
 									
+									if opGraficaAura.userData.FormaAura == lang("scene.FormaAura.Triangulo") then
+										opGraficaAura.color = self.cmbCorAura.color;
+										opGraficaAura.xOrigin = 0.0;     -- X começa em 1.0 largura de token + 0.0 metros
+										opGraficaAura.yOrigin = 0.0;
+										opGraficaAura.x = 0;	
+										opGraficaAura.y = 0;	
+										opGraficaAura.pathData = criarPathAreaTriangulo(math.ceil(opGraficaAura.height / 2), (math.ceil(opGraficaAura.width / 2)));										
+									end;
+																		
 									if opGraficaAura.userData.FormaAura == lang("scene.FormaAura.ConeHorizontal") then
-										opGraficaAura.pathData = criarPathAreaConeHorizontal(math.ceil((opGraficaAura.height / 2) + (opGraficaAura.width / 2)));
 										opGraficaAura.color = self.cmbCorAura.color;
 										opGraficaAura.xOrigin = 1.0;  
 										opGraficaAura.yOrigin = 0.5;
-										opGraficaAura.widthMetric = "worldMetric";
-										opGraficaAura.heightMetric = "worldMetric";
 										opGraficaAura.x = 0;	
-										opGraficaAura.y = opGraficaAura.height / -2;										
-										opGraficaAura.xMetric = "worldMetric";
-										opGraficaAura.yMetric = "worldMetric";
+										opGraficaAura.y = opGraficaAura.height / -2;	
+										opGraficaAura.pathData = criarPathAreaConeHorizontal(math.ceil((opGraficaAura.height / 2) + (opGraficaAura.width / 2)));										
 									end;
 									
 									if opGraficaAura.userData.FormaAura == lang("scene.FormaAura.SemiCirculo") then
-										opGraficaAura.pathData = criarPathAreaSemiCirculo(math.ceil((opGraficaAura.height / 2) + (opGraficaAura.width / 2)));
+										opGraficaAura.color = self.cmbCorAura.color;										
 										opGraficaAura.xOrigin = 1.0; 
 										opGraficaAura.yOrigin = 0.5;
-										opGraficaAura.widthMetric = "worldMetric";
-										opGraficaAura.heightMetric = "worldMetric";
-										opGraficaAura.x = 0.0;																		
-										opGraficaAura.xMetric = "worldMetric";
-										opGraficaAura.yMetric = "worldMetric";
-										opGraficaAura.color = self.cmbCorAura.color;
+										opGraficaAura.x = 0;
 										opGraficaAura.height = self.edtRaioAura.asNumber;
-								        opGraficaAura.width = self.edtRaioAura.asNumber;
+								        opGraficaAura.width = self.edtRaioAura.asNumber;										
+										opGraficaAura.y = opGraficaAura.height / -2;										
+										opGraficaAura.pathData = criarPathAreaSemiCirculo(math.ceil((opGraficaAura.height / 2) + (opGraficaAura.width / 2)));
 										end;
 									
 									if opGraficaAura.userData.FormaAura == lang("scene.FormaAura.CirculoPerfeito") then
@@ -612,12 +596,10 @@
 										opGraficaAura.color = self.cmbCorAura.color;
 										opGraficaAura.height = self.edtRaioAura.asNumber;
 								        opGraficaAura.width = self.edtRaioAura.asNumber;
-										opGraficaAura.y = -(opGraficaAura.height /2);
-										opGraficaAura.x = -(opGraficaAura.width /2);
+										opGraficaAura.y = opGraficaAura.height / -2 ;
+										opGraficaAura.x = opGraficaAura.width / -2 ;
 										opGraficaAura.xOrigin = 0.5; 
-										opGraficaAura.yOrigin = 0.5;
-										opGraficaAura.widthMetric = "worldMetric";
-										opGraficaAura.heightMetric = "worldMetric";											
+										opGraficaAura.yOrigin = 0.5;										
 									end;
 								end;
 							end;
