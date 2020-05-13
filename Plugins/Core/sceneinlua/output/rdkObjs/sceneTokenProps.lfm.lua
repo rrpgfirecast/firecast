@@ -1234,6 +1234,7 @@ local function constructNew_frmTokenProps()
 					self.edtLarguraAura.asNumber = opGraficaAura.width or 0;					
 					self.cmbFormaAura.value = opGraficaAura.userData.FormaAura;
 					self.imageAura.url = opGraficaAura.url;
+					self.edtRaioAura.asNumber = opGraficaAura.height or 0
 					
 					if opGraficaAura.userData.FormaAura == "URL" then
 						self.imageAura.url = opGraficaAura.url;					
@@ -1354,12 +1355,17 @@ local function constructNew_frmTokenProps()
 									end;
 									
 									if opGraficaAura.userData.FormaAura == lang("scene.FormaAura.Circulo") then							
-										opGraficaAura.pathData = criarPathAreaCirculo(math.ceil(opGraficaAura.height / 4));
+										opGraficaAura.pathData = criarPathAreaCirculo(math.ceil(opGraficaAura.height / 4));	
+										opGraficaAura.color = self.cmbCorAura.color;
+										opGraficaAura.height = self.edtRaioAura.asNumber;
+								        opGraficaAura.width = self.edtRaioAura.asNumber;
+										opGraficaAura.y = -(opGraficaAura.height /2);
+										opGraficaAura.x = -(opGraficaAura.width /2);
 										opGraficaAura.xOrigin = 0.5; 
 										opGraficaAura.yOrigin = 0.5;
 										opGraficaAura.widthMetric = "worldMetric";
 										opGraficaAura.heightMetric = "worldMetric";	
-										opGraficaAura.color = self.cmbCorAura.color;
+
 									end;
 									
 									if opGraficaAura.userData.FormaAura == lang("scene.FormaAura.ConeHorizontal") then
@@ -1385,11 +1391,21 @@ local function constructNew_frmTokenProps()
 										opGraficaAura.xMetric = "worldMetric";
 										opGraficaAura.yMetric = "worldMetric";
 										opGraficaAura.color = self.cmbCorAura.color;
+										opGraficaAura.height = self.edtRaioAura.asNumber;
+								        opGraficaAura.width = self.edtRaioAura.asNumber;
 										end;
 									
 									if opGraficaAura.userData.FormaAura == lang("scene.FormaAura.CirculoPerfeito") then
 										opGraficaAura.data = "M 25, 50 a 25,25 0 1,1 50,0 a 25,25 0 1,1 -50,0";		
-										opGraficaAura.color = self.cmbCorAura.color;									
+										opGraficaAura.color = self.cmbCorAura.color;
+										opGraficaAura.height = self.edtRaioAura.asNumber;
+								        opGraficaAura.width = self.edtRaioAura.asNumber;
+										opGraficaAura.y = -(opGraficaAura.height /2);
+										opGraficaAura.x = -(opGraficaAura.width /2);
+										opGraficaAura.xOrigin = 0.5; 
+										opGraficaAura.yOrigin = 0.5;
+										opGraficaAura.widthMetric = "worldMetric";
+										opGraficaAura.heightMetric = "worldMetric";											
 									end;
 								end;
 							end;
@@ -1459,9 +1475,11 @@ local function constructNew_frmTokenProps()
             if self.cmbFormaAura.value =="URL" then
             										self.flpImagemAura.visible = true;
             										self.flaAuraContent:needRealign()
+            										self.fplCorAura.visible = false;
             								    else
             										self.flpImagemAura.visible = false;
-            										self.flaAuraContent:needRealign()									
+            										self.flaAuraContent:needRealign()	
+            										self.fplCorAura.visible = true;										
             								    end;
             
             								    if self.cmbFormaAura.value =="Circulo" or self.cmbFormaAura.value =="Circle" then
