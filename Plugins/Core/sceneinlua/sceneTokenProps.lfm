@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<popupForm name="frmTokenProps" width="300" height="300" drawContainer="true" resizable="true" placement="center"
+<popupForm name="frmTokenProps" width="350" height="300" drawContainer="true" resizable="true" placement="center"
 		   cancelable="false">
  		   
 	<import file="interfaceUtils.xml"/>
@@ -20,7 +20,7 @@
 			margins:{right=5};
 		}
 		
-		.itemContent {
+		.itemContent { 
 			align: client;
 			margins:{right=5};
 		}
@@ -234,25 +234,24 @@
 							<label name="labAuraURL" class="itemTitle"/>
 							<edit name="edtAuraURL" class="itemContent"/>
 						</flowPart>		
-						
-						<flowPart class="optionPart" visible="True" name="flpUnidadeMetricaAura">	
-							<label name="labUnidadeMedida" class="itemTitle" />
-							<label name="labUnidadeMetrica" class="itemContent" />
-						</flowPart>	
+
 						
 						<flowPart class="optionPart" visible="false" name="flpRaioAura">	
 							<label name="labRaioAura" class="itemTitle"/>
-							<edit name="edtRaioAura" class="itemContent" type="float" text="5" min="0.1"/>
+							<edit name="edtRaioAura" class="itemContent" width="75" align="left" type="float" text="5" min="0.1"/>
+							<label name="labUnidadeMetrica1" align="left" class="itemContent" />
 						</flowPart>	
 					
 						<flowPart class="optionPart" name="fplAlturaAura">	
 							<label name="labAlturaAura" class="itemTitle"/>
-							<edit name="edtAlturaAura" class="itemContent" type="float" text="5" min="0.1"/>
+							<edit name="edtAlturaAura" class="itemContent" width="75" align="left" type="float" text="5" min="0.1"/>
+							<label name="labUnidadeMetrica2" align="left" class="itemContent" />
 						</flowPart>		
 						
 						<flowPart class="optionPart" name="fplLarguraAura">	
 							<label name="labLarguraAura" class="itemTitle"/>
-							<edit name="edtLarguraAura" class="itemContent" type="float" text="5" min="0.1"/>
+							<edit name="edtLarguraAura" class="itemContent" width="75" align="left" type="float" text="5" min="0.1"/>
+							<label name="labUnidadeMetrica3" align="left" class="itemContent" />
 						</flowPart>		
 						
 						<flowPart class="optionPart" name="fplCorAura">	
@@ -379,7 +378,7 @@
 		self.labCorAura.text = lang('scene.labCorAura.text');
 		self.labRaioAura.text = lang('scene.labRaioAura.text');
 		self.labescolhaimg.text = lang('scene.labescolhaimg.text');
-		self.labUnidadeMedida.text = lang('scene.labUnidadeMedida.text');
+	
 		
 		function recursiveEnumPersonagensEmBibItem(bibItem, dest)
 			if bibItem.tipo == "personagem" then
@@ -490,7 +489,9 @@
 					self.cmbFormaAura.value = opGraficaAura.userData.FormaAura;
 					self.imageAura.url = opGraficaAura.url;
 					self.edtRaioAura.asNumber = (opGraficaAura.height / 2) + (opGraficaAura.width / 2);
-					self.labUnidadeMetrica.text = lang("metric." .. oScene.worldMetricName);
+					self.labUnidadeMetrica1.text = lang("metric." .. oScene.worldMetricName);
+					self.labUnidadeMetrica2.text = lang("metric." .. oScene.worldMetricName);
+					self.labUnidadeMetrica3.text = lang("metric." .. oScene.worldMetricName);
 					
 					if opGraficaAura.userData.FormaAura == "URL" then
 						self.imageAura.url = opGraficaAura.url;					
@@ -673,15 +674,13 @@
 								theToken.visionAngle = self.edtAnguloVisao.asNumber;
 								theToken.lightAngle = self.edtAnguloLuz.asNumber;
 								theToken.visionHaveVision = self.cbxHasVision.checked;
-							
 							end;
 							
 							theToken.facingMode = self.cmbFacingMode.value;
 						end);
 				end,
 				
-				function()
-				
+				function()				
 					theToken:endUpdate();	
 				end);			
 					

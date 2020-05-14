@@ -119,8 +119,8 @@ scene.labCorAura.text=Cor da Aura
 scene.labFormaAura.text=Forma Aura
 scene.labAuraURL.text=URL da Aura
 scene.labRaioAura.text=Raio
-scene.labescolhaimg.text=Escolha a imagem
-scene.labUnidadeMedida.text=Unidade de Medida:
+scene.labescolhaimg.text=click here to choose image
+scene.labUnidadeMedida.text=Unidade de Medida
 
 userDrawing.categoryTitle=Rabiscos
 userDrawing.freeHand=Desenho à mão livre
@@ -266,7 +266,7 @@ scene.labCorAura.text=Aura Color
 scene.labFormaAura.text=Aura Form
 scene.labAuraURL.text=Aura URL
 scene.labRaioAura.text=Radius
-scene.labescolhaimg.text=Choise image
+scene.labescolhaimg.text=Click to change the image
 scene.labUnidadeMedida.text=Unit of measurement:
 
 userDrawing.categoryTitle=Sketches

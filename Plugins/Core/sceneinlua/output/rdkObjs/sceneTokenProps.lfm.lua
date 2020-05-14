@@ -27,7 +27,7 @@ local function constructNew_frmTokenProps()
     _gui_assignInitialParentForForm(obj.handle);
     obj:beginUpdate();
     obj:setName("frmTokenProps");
-    obj:setWidth(300);
+    obj:setWidth(350);
     obj:setHeight(300);
     obj:setDrawContainer(true);
     obj:setResizable(true);
@@ -519,33 +519,6 @@ local function constructNew_frmTokenProps()
     obj.edtAuraURL:setAlign("client");
     obj.edtAuraURL:setMargins({right=5});
 
-    obj.flpUnidadeMetricaAura = GUI.fromHandle(_obj_newObject("flowPart"));
-    obj.flpUnidadeMetricaAura:setParent(obj.flaAuraContent);
-    obj.flpUnidadeMetricaAura:setVisible(true);
-    obj.flpUnidadeMetricaAura:setName("flpUnidadeMetricaAura");
-    obj.flpUnidadeMetricaAura:setHeight(30);
-    obj.flpUnidadeMetricaAura:setMinWidth(50);
-    obj.flpUnidadeMetricaAura:setMaxWidth(5000);
-    obj.flpUnidadeMetricaAura:setMargins({left=2, right=2, top=2, bottom=2});
-
-    obj.labUnidadeMedida = GUI.fromHandle(_obj_newObject("label"));
-    obj.labUnidadeMedida:setParent(obj.flpUnidadeMetricaAura);
-    obj.labUnidadeMedida:setName("labUnidadeMedida");
-    obj.labUnidadeMedida:setWordWrap(false);
-    obj.labUnidadeMedida:setAlign("left");
-    obj.labUnidadeMedida:setWidth(130);
-    obj.labUnidadeMedida:setAutoSize(false);
-    obj.labUnidadeMedida:setHorzTextAlign("trailing");
-    obj.labUnidadeMedida:setVertTextAlign("center");
-    obj.labUnidadeMedida:setMargins({right=5});
-
-    obj.labUnidadeMetrica = GUI.fromHandle(_obj_newObject("label"));
-    obj.labUnidadeMetrica:setParent(obj.flpUnidadeMetricaAura);
-    obj.labUnidadeMetrica:setName("labUnidadeMetrica");
-    obj.labUnidadeMetrica:setWordWrap(false);
-    obj.labUnidadeMetrica:setAlign("client");
-    obj.labUnidadeMetrica:setMargins({right=5});
-
     obj.flpRaioAura = GUI.fromHandle(_obj_newObject("flowPart"));
     obj.flpRaioAura:setParent(obj.flaAuraContent);
     obj.flpRaioAura:setVisible(false);
@@ -569,11 +542,19 @@ local function constructNew_frmTokenProps()
     obj.edtRaioAura = GUI.fromHandle(_obj_newObject("edit"));
     obj.edtRaioAura:setParent(obj.flpRaioAura);
     obj.edtRaioAura:setName("edtRaioAura");
+    obj.edtRaioAura:setWidth(75);
+    obj.edtRaioAura:setAlign("left");
     obj.edtRaioAura:setType("float");
     obj.edtRaioAura:setText("5");
     obj.edtRaioAura:setMin(0.1);
-    obj.edtRaioAura:setAlign("client");
     obj.edtRaioAura:setMargins({right=5});
+
+    obj.labUnidadeMetrica1 = GUI.fromHandle(_obj_newObject("label"));
+    obj.labUnidadeMetrica1:setParent(obj.flpRaioAura);
+    obj.labUnidadeMetrica1:setName("labUnidadeMetrica1");
+    obj.labUnidadeMetrica1:setAlign("left");
+    obj.labUnidadeMetrica1:setWordWrap(false);
+    obj.labUnidadeMetrica1:setMargins({right=5});
 
     obj.fplAlturaAura = GUI.fromHandle(_obj_newObject("flowPart"));
     obj.fplAlturaAura:setParent(obj.flaAuraContent);
@@ -597,11 +578,19 @@ local function constructNew_frmTokenProps()
     obj.edtAlturaAura = GUI.fromHandle(_obj_newObject("edit"));
     obj.edtAlturaAura:setParent(obj.fplAlturaAura);
     obj.edtAlturaAura:setName("edtAlturaAura");
+    obj.edtAlturaAura:setWidth(75);
+    obj.edtAlturaAura:setAlign("left");
     obj.edtAlturaAura:setType("float");
     obj.edtAlturaAura:setText("5");
     obj.edtAlturaAura:setMin(0.1);
-    obj.edtAlturaAura:setAlign("client");
     obj.edtAlturaAura:setMargins({right=5});
+
+    obj.labUnidadeMetrica2 = GUI.fromHandle(_obj_newObject("label"));
+    obj.labUnidadeMetrica2:setParent(obj.fplAlturaAura);
+    obj.labUnidadeMetrica2:setName("labUnidadeMetrica2");
+    obj.labUnidadeMetrica2:setAlign("left");
+    obj.labUnidadeMetrica2:setWordWrap(false);
+    obj.labUnidadeMetrica2:setMargins({right=5});
 
     obj.fplLarguraAura = GUI.fromHandle(_obj_newObject("flowPart"));
     obj.fplLarguraAura:setParent(obj.flaAuraContent);
@@ -625,11 +614,19 @@ local function constructNew_frmTokenProps()
     obj.edtLarguraAura = GUI.fromHandle(_obj_newObject("edit"));
     obj.edtLarguraAura:setParent(obj.fplLarguraAura);
     obj.edtLarguraAura:setName("edtLarguraAura");
+    obj.edtLarguraAura:setWidth(75);
+    obj.edtLarguraAura:setAlign("left");
     obj.edtLarguraAura:setType("float");
     obj.edtLarguraAura:setText("5");
     obj.edtLarguraAura:setMin(0.1);
-    obj.edtLarguraAura:setAlign("client");
     obj.edtLarguraAura:setMargins({right=5});
+
+    obj.labUnidadeMetrica3 = GUI.fromHandle(_obj_newObject("label"));
+    obj.labUnidadeMetrica3:setParent(obj.fplLarguraAura);
+    obj.labUnidadeMetrica3:setName("labUnidadeMetrica3");
+    obj.labUnidadeMetrica3:setAlign("left");
+    obj.labUnidadeMetrica3:setWordWrap(false);
+    obj.labUnidadeMetrica3:setMargins({right=5});
 
     obj.fplCorAura = GUI.fromHandle(_obj_newObject("flowPart"));
     obj.fplCorAura:setParent(obj.flaAuraContent);
@@ -1167,7 +1164,7 @@ local function constructNew_frmTokenProps()
 		self.labCorAura.text = lang('scene.labCorAura.text');
 		self.labRaioAura.text = lang('scene.labRaioAura.text');
 		self.labescolhaimg.text = lang('scene.labescolhaimg.text');
-		self.labUnidadeMedida.text = lang('scene.labUnidadeMedida.text');
+	
 		
 		function recursiveEnumPersonagensEmBibItem(bibItem, dest)
 			if bibItem.tipo == "personagem" then
@@ -1278,7 +1275,9 @@ local function constructNew_frmTokenProps()
 					self.cmbFormaAura.value = opGraficaAura.userData.FormaAura;
 					self.imageAura.url = opGraficaAura.url;
 					self.edtRaioAura.asNumber = (opGraficaAura.height / 2) + (opGraficaAura.width / 2);
-					self.labUnidadeMetrica.text = lang("metric." .. oScene.worldMetricName);
+					self.labUnidadeMetrica1.text = lang("metric." .. oScene.worldMetricName);
+					self.labUnidadeMetrica2.text = lang("metric." .. oScene.worldMetricName);
+					self.labUnidadeMetrica3.text = lang("metric." .. oScene.worldMetricName);
 					
 					if opGraficaAura.userData.FormaAura == "URL" then
 						self.imageAura.url = opGraficaAura.url;					
@@ -1461,15 +1460,13 @@ local function constructNew_frmTokenProps()
 								theToken.visionAngle = self.edtAnguloVisao.asNumber;
 								theToken.lightAngle = self.edtAnguloLuz.asNumber;
 								theToken.visionHaveVision = self.cbxHasVision.checked;
-							
 							end;
 							
 							theToken.facingMode = self.cmbFacingMode.value;
 						end);
 				end,
 				
-				function()
-				
+				function()				
 					theToken:endUpdate();	
 				end);			
 					
@@ -1594,10 +1591,10 @@ local function constructNew_frmTokenProps()
         if self.cbxHasVision ~= nil then self.cbxHasVision:destroy(); self.cbxHasVision = nil; end;
         if self.flowPart8 ~= nil then self.flowPart8:destroy(); self.flowPart8 = nil; end;
         if self.layout15 ~= nil then self.layout15:destroy(); self.layout15 = nil; end;
+        if self.labUnidadeMetrica2 ~= nil then self.labUnidadeMetrica2:destroy(); self.labUnidadeMetrica2 = nil; end;
         if self.flaContent ~= nil then self.flaContent:destroy(); self.flaContent = nil; end;
         if self.layout10 ~= nil then self.layout10:destroy(); self.layout10 = nil; end;
         if self.edtBarMax3 ~= nil then self.edtBarMax3:destroy(); self.edtBarMax3 = nil; end;
-        if self.flpUnidadeMetricaAura ~= nil then self.flpUnidadeMetricaAura:destroy(); self.flpUnidadeMetricaAura = nil; end;
         if self.labAlturaAura ~= nil then self.labAlturaAura:destroy(); self.labAlturaAura = nil; end;
         if self.edtBarMax1 ~= nil then self.edtBarMax1:destroy(); self.edtBarMax1 = nil; end;
         if self.flowLayout3 ~= nil then self.flowLayout3:destroy(); self.flowLayout3 = nil; end;
@@ -1610,7 +1607,6 @@ local function constructNew_frmTokenProps()
         if self.flowLayout1 ~= nil then self.flowLayout1:destroy(); self.flowLayout1 = nil; end;
         if self.fplAlturaAura ~= nil then self.fplAlturaAura:destroy(); self.fplAlturaAura = nil; end;
         if self.flowPart1 ~= nil then self.flowPart1:destroy(); self.flowPart1 = nil; end;
-        if self.labUnidadeMedida ~= nil then self.labUnidadeMedida:destroy(); self.labUnidadeMedida = nil; end;
         if self.flowPart2 ~= nil then self.flowPart2:destroy(); self.flowPart2 = nil; end;
         if self.layout13 ~= nil then self.layout13:destroy(); self.layout13 = nil; end;
         if self.flpRaioAura ~= nil then self.flpRaioAura:destroy(); self.flpRaioAura = nil; end;
@@ -1623,6 +1619,7 @@ local function constructNew_frmTokenProps()
         if self.labSnapToGrid ~= nil then self.labSnapToGrid:destroy(); self.labSnapToGrid = nil; end;
         if self.imageAura ~= nil then self.imageAura:destroy(); self.imageAura = nil; end;
         if self.tabAura ~= nil then self.tabAura:destroy(); self.tabAura = nil; end;
+        if self.labUnidadeMetrica3 ~= nil then self.labUnidadeMetrica3:destroy(); self.labUnidadeMetrica3 = nil; end;
         if self.labGroupHeader3 ~= nil then self.labGroupHeader3:destroy(); self.labGroupHeader3 = nil; end;
         if self.layout12 ~= nil then self.layout12:destroy(); self.layout12 = nil; end;
         if self.edtMetricVLI ~= nil then self.edtMetricVLI:destroy(); self.edtMetricVLI = nil; end;
@@ -1673,7 +1670,6 @@ local function constructNew_frmTokenProps()
         if self.layout18 ~= nil then self.layout18:destroy(); self.layout18 = nil; end;
         if self.labCompAngulo2 ~= nil then self.labCompAngulo2:destroy(); self.labCompAngulo2 = nil; end;
         if self.labLarguraAura ~= nil then self.labLarguraAura:destroy(); self.labLarguraAura = nil; end;
-        if self.labUnidadeMetrica ~= nil then self.labUnidadeMetrica:destroy(); self.labUnidadeMetrica = nil; end;
         if self.labBar1 ~= nil then self.labBar1:destroy(); self.labBar1 = nil; end;
         if self.flowPart6 ~= nil then self.flowPart6:destroy(); self.flowPart6 = nil; end;
         if self.tabControl1 ~= nil then self.tabControl1:destroy(); self.tabControl1 = nil; end;
@@ -1692,6 +1688,7 @@ local function constructNew_frmTokenProps()
         if self.flpImagemAura ~= nil then self.flpImagemAura:destroy(); self.flpImagemAura = nil; end;
         if self.scrollBox3 ~= nil then self.scrollBox3:destroy(); self.scrollBox3 = nil; end;
         if self.label3 ~= nil then self.label3:destroy(); self.label3 = nil; end;
+        if self.labUnidadeMetrica1 ~= nil then self.labUnidadeMetrica1:destroy(); self.labUnidadeMetrica1 = nil; end;
         if self.layout11 ~= nil then self.layout11:destroy(); self.layout11 = nil; end;
         if self.horzLine3 ~= nil then self.horzLine3:destroy(); self.horzLine3 = nil; end;
         if self.flpBar1 ~= nil then self.flpBar1:destroy(); self.flpBar1 = nil; end;
