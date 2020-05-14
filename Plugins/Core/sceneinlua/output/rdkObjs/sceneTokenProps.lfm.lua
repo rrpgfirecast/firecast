@@ -406,14 +406,15 @@ local function constructNew_frmTokenProps()
     obj.flaAura:setAutoHeight(true);
     obj.flaAura:setMaxControlsPerLine(1);
     obj.flaAura:setName("flaAura");
-    obj.flaAura:setMargins({left=10, right=10, top=2, bottom=2});
+    obj.flaAura:setMargins({left=10, right=10, top=10, bottom=2});
 
     obj.cbxPossuiAura = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.cbxPossuiAura:setParent(obj.flaAura);
     obj.cbxPossuiAura:setName("cbxPossuiAura");
     obj.cbxPossuiAura:setLeft(30);
     obj.cbxPossuiAura:setTop(20);
-    obj.cbxPossuiAura:setText("Possui Aura ?");
+    obj.cbxPossuiAura:setFontSize(18);
+    obj.cbxPossuiAura:setText(lang("scene.FormaAura.PossuiAura"));
 
     obj.flaAuraContent = GUI.fromHandle(_obj_newObject("flowLayout"));
     obj.flaAuraContent:setParent(obj.flaAura);
@@ -424,6 +425,7 @@ local function constructNew_frmTokenProps()
     obj.flaAuraContent:setMinWidth(50);
     obj.flaAuraContent:setMaxWidth(50000);
     obj.flaAuraContent:setMaxControlsPerLine(1);
+    obj.flaAuraContent:setMargins({top=5});
 
     obj.flpFormaAura = GUI.fromHandle(_obj_newObject("flowPart"));
     obj.flpFormaAura:setParent(obj.flaAuraContent);
@@ -540,6 +542,8 @@ local function constructNew_frmTokenProps()
     obj.edtRaioAura = GUI.fromHandle(_obj_newObject("edit"));
     obj.edtRaioAura:setParent(obj.flpRaioAura);
     obj.edtRaioAura:setName("edtRaioAura");
+    obj.edtRaioAura:setType("float");
+    obj.edtRaioAura:setMin(0.1);
     obj.edtRaioAura:setAlign("client");
     obj.edtRaioAura:setMargins({right=5});
 
@@ -565,6 +569,9 @@ local function constructNew_frmTokenProps()
     obj.edtAlturaAura = GUI.fromHandle(_obj_newObject("edit"));
     obj.edtAlturaAura:setParent(obj.fplAlturaAura);
     obj.edtAlturaAura:setName("edtAlturaAura");
+    obj.edtAlturaAura:setType("float");
+    obj.edtAlturaAura:setText("5");
+    obj.edtAlturaAura:setMin(0.1);
     obj.edtAlturaAura:setAlign("client");
     obj.edtAlturaAura:setMargins({right=5});
 
@@ -590,6 +597,9 @@ local function constructNew_frmTokenProps()
     obj.edtLarguraAura = GUI.fromHandle(_obj_newObject("edit"));
     obj.edtLarguraAura:setParent(obj.fplLarguraAura);
     obj.edtLarguraAura:setName("edtLarguraAura");
+    obj.edtLarguraAura:setType("float");
+    obj.edtLarguraAura:setText("5");
+    obj.edtLarguraAura:setMin(0.1);
     obj.edtLarguraAura:setAlign("client");
     obj.edtLarguraAura:setMargins({right=5});
 
@@ -1122,10 +1132,14 @@ local function constructNew_frmTokenProps()
 		self.labAlturaAura.text = lang('scene.labAlturaAura.text');
 		self.labLarguraAura.text = lang('scene.labLarguraAura.text');
 		self.labFormaAura.text = lang('scene.labFormaAura.text');
-		self.cmbFormaAura.items = {lang('scene.FormaAura.URL'), lang('scene.FormaAura.Circulo'), lang('scene.FormaAura.Quadrado'), lang('scene.FormaAura.Triangulo'), lang('scene.FormaAura.ConeHorizontal'), lang('scene.FormaAura.SemiCirculo'), lang('scene.FormaAura.CirculoPerfeito')};
+		
+		self.cmbFormaAura.items = {lang('scene.FormaAura.URL'), lang('scene.FormaAura.Circulo'), lang('scene.FormaAura.Quadrado'), lang('scene.FormaAura.ConeDiagonal'), lang('scene.FormaAura.ConeHorizontal'), lang('scene.FormaAura.SemiCirculo'), lang('scene.FormaAura.CirculoPerfeito')};
+		self.cmbFormaAura.values = {'URL', 'C', 'Q', 'COD', 'COH', 'SC', 'CP'}
+		
 		self.labAuraURL.text = lang('scene.labAuraURL.text');
 		self.labCorAura.text = lang('scene.labCorAura.text');
 		self.labRaioAura.text = lang('scene.labRaioAura.text');
+		
 		
 		function recursiveEnumPersonagensEmBibItem(bibItem, dest)
 			if bibItem.tipo == "personagem" then
@@ -1243,7 +1257,8 @@ local function constructNew_frmTokenProps()
 						self.cmbCorAura.color = opGraficaAura.color;					
 					end;					
 				else
-					self.cbxPossuiAura.checked = false						
+					self.cbxPossuiAura.checked = false
+					self.cmbFormaAura.value = 'CP';
 				end;																				
 				
 				self:endUpdate();				
@@ -1335,10 +1350,10 @@ local function constructNew_frmTokenProps()
 																
 								if opGraficaAura.objectType == "opBitmap" then
 									opGraficaAura.url = self.imageAura.url;
-									opGraficaAura.opacity = 1.0;
+									opGraficaAura.opacity = 0.85;
 								else		
 
-									if opGraficaAura.userData.FormaAura == lang("scene.FormaAura.Circulo") then							
+									if opGraficaAura.userData.FormaAura == "C" then							
 										opGraficaAura.color = self.cmbCorAura.color;
 										opGraficaAura.height = self.edtRaioAura.asNumber;
 								        opGraficaAura.width = self.edtRaioAura.asNumber;
@@ -1349,21 +1364,21 @@ local function constructNew_frmTokenProps()
 										opGraficaAura.pathData = criarPathAreaCirculo(math.ceil(opGraficaAura.height / 2));	
 									end;
 								
-									if opGraficaAura.userData.FormaAura == lang("scene.FormaAura.Quadrado") then																										
+									if opGraficaAura.userData.FormaAura == "Q" then																										
 										opGraficaAura.color = self.cmbCorAura.color;
 										opGraficaAura.pathData = criarPathAreaQuadrado();										
 									end;
 									
-									if opGraficaAura.userData.FormaAura == lang("scene.FormaAura.Triangulo") then
+									if opGraficaAura.userData.FormaAura == "COD" then
 										opGraficaAura.color = self.cmbCorAura.color;
 										opGraficaAura.xOrigin = 0.0;     -- X começa em 1.0 largura de token + 0.0 metros
 										opGraficaAura.yOrigin = 0.0;
 										opGraficaAura.x = 0;	
 										opGraficaAura.y = 0;	
-										opGraficaAura.pathData = criarPathAreaTriangulo(math.ceil(opGraficaAura.height / 2), (math.ceil(opGraficaAura.width / 2)));										
+										opGraficaAura.pathData = criarPathAreaConeDiagonal(math.ceil(opGraficaAura.height / 2), (math.ceil(opGraficaAura.width / 2)));										
 									end;
 																		
-									if opGraficaAura.userData.FormaAura == lang("scene.FormaAura.ConeHorizontal") then
+									if opGraficaAura.userData.FormaAura == "COH" then
 										opGraficaAura.color = self.cmbCorAura.color;
 										opGraficaAura.xOrigin = 1.0;  
 										opGraficaAura.yOrigin = 0.5;
@@ -1372,7 +1387,7 @@ local function constructNew_frmTokenProps()
 										opGraficaAura.pathData = criarPathAreaConeHorizontal(math.ceil((opGraficaAura.height / 2) + (opGraficaAura.width / 2)));										
 									end;
 									
-									if opGraficaAura.userData.FormaAura == lang("scene.FormaAura.SemiCirculo") then
+									if opGraficaAura.userData.FormaAura == "SC" then
 										opGraficaAura.color = self.cmbCorAura.color;										
 										opGraficaAura.xOrigin = 1.0; 
 										opGraficaAura.yOrigin = 0.5;
@@ -1381,9 +1396,9 @@ local function constructNew_frmTokenProps()
 								        opGraficaAura.width = self.edtRaioAura.asNumber;										
 										opGraficaAura.y = opGraficaAura.height / -2;										
 										opGraficaAura.pathData = criarPathAreaSemiCirculo(math.ceil((opGraficaAura.height / 2) + (opGraficaAura.width / 2)));
-										end;
+									end;
 									
-									if opGraficaAura.userData.FormaAura == lang("scene.FormaAura.CirculoPerfeito") then
+									if opGraficaAura.userData.FormaAura == "CP" then
 										opGraficaAura.data = "M 25, 50 a 25,25 0 1,1 50,0 a 25,25 0 1,1 -50,0";		
 										opGraficaAura.color = self.cmbCorAura.color;
 										opGraficaAura.height = self.edtRaioAura.asNumber;
@@ -1453,7 +1468,9 @@ local function constructNew_frmTokenProps()
 
     obj._e_event2 = obj.cbxPossuiAura:addEventListener("onChange",
         function (_)
-            if self.cbxPossuiAura.checked then
+            -- por mais feio que seja..... blalbalbla
+            						
+            						if self.cbxPossuiAura.checked then
             							self.flaAuraContent.visible = true;
             							self.flaAuraContent.height = self.flaAuraContent.height + 1;
             							self.flaAuraContent.height = self.flaAuraContent.height - 1;
@@ -1466,7 +1483,7 @@ local function constructNew_frmTokenProps()
 
     obj._e_event3 = obj.cmbFormaAura:addEventListener("onChange",
         function (_)
-            if self.cmbFormaAura.value == lang('scene.FormaAura.URL') then
+            if self.cmbFormaAura.value == "URL" then
             										self.flpImagemAura.visible = true;
             										self.fplCorAura.visible = false;
             										self.flaAuraContent:needRealign();
@@ -1476,17 +1493,17 @@ local function constructNew_frmTokenProps()
             										self.flaAuraContent:needRealign();											
             								    end;
             
-            								    if self.cmbFormaAura.value == lang("scene.FormaAura.Circulo") then	
+            								    if self.cmbFormaAura.value == "C" then	
             										self.flpRaioAura.visible = true;
             										self.fplAlturaAura.visible = false;
             										self.fplLarguraAura.visible = false;
             										self.flaAuraContent:needRealign();
-            								    else  if self.cmbFormaAura.value == lang("scene.FormaAura.SemiCirculo") then		
+            								    else  if self.cmbFormaAura.value == "SC" then		
             											self.flpRaioAura.visible = true;
             											self.fplAlturaAura.visible = false;
             											self.fplLarguraAura.visible = false;
             											self.flaAuraContent:needRealign();
-            										  else if self.cmbFormaAura.value == lang("scene.FormaAura.CirculoPerfeito") then
+            										  else if self.cmbFormaAura.value == "CP" then
             												self.flpRaioAura.visible = true;
             												self.fplAlturaAura.visible = false;
             												self.fplLarguraAura.visible = false;

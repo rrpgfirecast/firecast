@@ -129,7 +129,7 @@ function criarPathAreaQuadrado()
 end;
 	
 	
-function criarPathAreaTriangulo(Altura, Largura)
+function criarPathAreaConeDiagonal(Altura, Largura)
 	local reach = (Altura) + (Largura);
 	local path = "M 0 0 h " .. reach;
 
@@ -171,142 +171,142 @@ end;
 
 
 function criarPathAreaCirculo(Raio)
-		local reach = Raio;
-		local path = "M " .. reach .. " 0";
+	local reach = Raio;
+	local path = "M " .. reach .. " 0";
 
-		path = path .. " h 1";
+	path = path .. " h 1";
 
-		for i=1, reach, 1 do
-			if i == 1 then
-				path = path .. " h " .. 1;
-			elseif i==2 then
+	for i=1, reach, 1 do
+		if i == 1 then
+			path = path .. " h " .. 1;
+		elseif i==2 then
+			path = path .. " v " .. 1;
+		else
+			local ending = (i-2)%3;
+			if ending == 0 then
 				path = path .. " v " .. 1;
 			else
-				local ending = (i-2)%3;
-				if ending == 0 then
-					path = path .. " v " .. 1;
-				else
-					path = path .. " h " .. 1;
-				end;
+				path = path .. " h " .. 1;
 			end;
 		end;
+	end;
 
-		for i=reach, 1, -1 do
-			if i == 1 then
-				path = path .. " v " .. 1;
-			elseif i==2 then
+	for i=reach, 1, -1 do
+		if i == 1 then
+			path = path .. " v " .. 1;
+		elseif i==2 then
+			path = path .. " h " .. 1;
+		else
+			local ending = (i-2)%3;
+			if ending == 0 then
 				path = path .. " h " .. 1;
 			else
-				local ending = (i-2)%3;
-				if ending == 0 then
-					path = path .. " h " .. 1;
-				else
-					path = path .. " v " .. 1;
-				end;
-			end;
-		end;
-
-		path = path .. " v 1";
-
-		for i=1, reach, 1 do
-			if i == 1 then
 				path = path .. " v " .. 1;
-			elseif i==2 then
-				path = path .. " h -" .. 1;
-			else
-				local ending = (i-2)%3;
-				if ending == 0 then
-					path = path .. " h -" .. 1;
-				else
-					path = path .. " v " .. 1;
-				end;
 			end;
 		end;
+	end;
 
-		for i=reach, 1, -1 do
-			if i == 1 then
+	path = path .. " v 1";
+
+	for i=1, reach, 1 do
+		if i == 1 then
+			path = path .. " v " .. 1;
+		elseif i==2 then
+			path = path .. " h -" .. 1;
+		else
+			local ending = (i-2)%3;
+			if ending == 0 then
 				path = path .. " h -" .. 1;
-			elseif i==2 then
+			else
+				path = path .. " v " .. 1;
+			end;
+		end;
+	end;
+
+	for i=reach, 1, -1 do
+		if i == 1 then
+			path = path .. " h -" .. 1;
+		elseif i==2 then
+			path = path .. " v " .. 1;
+		else
+			local ending = (i-2)%3;
+			if ending == 0 then
 				path = path .. " v " .. 1;
 			else
-				local ending = (i-2)%3;
-				if ending == 0 then
-					path = path .. " v " .. 1;
-				else
-					path = path .. " h -" .. 1;
-				end;
+				path = path .. " h -" .. 1;
 			end;
 		end;
+	end;
 
-		path = path .. " h -1";
+	path = path .. " h -1";
 
-		for i=1, reach, 1 do
-			if i == 1 then
-				path = path .. " h -" .. 1;
-			elseif i==2 then
+	for i=1, reach, 1 do
+		if i == 1 then
+			path = path .. " h -" .. 1;
+		elseif i==2 then
+			path = path .. " v -" .. 1;
+		else
+			local ending = (i-2)%3;
+			if ending == 0 then
 				path = path .. " v -" .. 1;
 			else
-				local ending = (i-2)%3;
-				if ending == 0 then
-					path = path .. " v -" .. 1;
-				else
-					path = path .. " h -" .. 1;
-				end;
+				path = path .. " h -" .. 1;
 			end;
 		end;
+	end;
 
-		for i=reach, 1, -1 do
-			if i == 1 then
-				path = path .. " v -" .. 1;
-			elseif i==2 then
+	for i=reach, 1, -1 do
+		if i == 1 then
+			path = path .. " v -" .. 1;
+		elseif i==2 then
+			path = path .. " h -" .. 1;
+		else
+			local ending = (i-2)%3;
+			if ending == 0 then
 				path = path .. " h -" .. 1;
 			else
-				local ending = (i-2)%3;
-				if ending == 0 then
-					path = path .. " h -" .. 1;
-				else
-					path = path .. " v -" .. 1;
-				end;
+				path = path .. " v -" .. 1;
 			end;
 		end;
+	end;
 
-		path = path .. " v -1";
+	path = path .. " v -1";
 
-		for i=1, reach, 1 do
-			if i == 1 then
-				path = path .. " v -" .. 1;
-			elseif i==2 then
+	for i=1, reach, 1 do
+		if i == 1 then
+			path = path .. " v -" .. 1;
+		elseif i==2 then
+			path = path .. " h " .. 1;
+		else
+			local ending = (i-2)%3;
+			if ending == 0 then
 				path = path .. " h " .. 1;
 			else
-				local ending = (i-2)%3;
-				if ending == 0 then
-					path = path .. " h " .. 1;
-				else
-					path = path .. " v -" .. 1;
-				end;
+				path = path .. " v -" .. 1;
 			end;
 		end;
+	end;
 
-		for i=reach, 1, -1 do
-			if i == 1 then
-				path = path .. " h " .. 1;
-			elseif i==2 then
+	for i=reach, 1, -1 do
+		if i == 1 then
+			path = path .. " h " .. 1;
+		elseif i==2 then
+			path = path .. " v -" .. 1;
+		else
+			local ending = (i-2)%3;
+			if ending == 0 then
 				path = path .. " v -" .. 1;
 			else
-				local ending = (i-2)%3;
-				if ending == 0 then
-					path = path .. " v -" .. 1;
-				else
-					path = path .. " h " .. 1;
-				end;
+				path = path .. " h " .. 1;
 			end;
 		end;
+	end;
 
-		path = path .. " Z";			
+	path = path .. " Z";			
 
 
 	return path;			
-									
+								
 end;
 
 
