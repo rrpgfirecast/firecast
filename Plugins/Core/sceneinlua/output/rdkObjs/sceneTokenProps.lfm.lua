@@ -1282,8 +1282,12 @@ local function constructNew_frmTokenProps()
 					
 					if opGraficaAura.userData.FormaAura == "URL" then
 						self.imageAura.url = opGraficaAura.url;					
-					else
-						self.cmbCorAura.color = opGraficaAura.color;					
+					else if opGraficaAura.userData.FormaAura == "SC" then
+						self.edtRaioAura.asNumber = (opGraficaAura.height / 2) + (opGraficaAura.width);
+						self.cmbCorAura.color = opGraficaAura.color;
+							else
+								self.cmbCorAura.color = opGraficaAura.color;
+						end;		
 					end;					
 				else
 					self.cbxPossuiAura.checked = false
@@ -1402,6 +1406,8 @@ local function constructNew_frmTokenProps()
 										opGraficaAura.color = self.cmbCorAura.color;
 										opGraficaAura.xOrigin = 0.0;     -- X começa em 1.0 largura de token + 0.0 metros
 										opGraficaAura.yOrigin = 0.0;
+										opGraficaAura.height = self.edtRaioAura.asNumber;
+								        opGraficaAura.width = self.edtRaioAura.asNumber;
 										opGraficaAura.x = 0;	
 										opGraficaAura.y = 0;	
 										opGraficaAura.pathData = criarPathAreaConeDiagonal(math.ceil(opGraficaAura.height / 2), (math.ceil(opGraficaAura.width / 2)));										
@@ -1422,7 +1428,7 @@ local function constructNew_frmTokenProps()
 										opGraficaAura.yOrigin = 0.5;
 										opGraficaAura.x = 0;
 										opGraficaAura.height = self.edtRaioAura.asNumber;
-								        opGraficaAura.width = self.edtRaioAura.asNumber;										
+								        opGraficaAura.width = self.edtRaioAura.asNumber / 2;										
 										opGraficaAura.y = opGraficaAura.height / -2;										
 										opGraficaAura.pathData = criarPathAreaSemiCirculo(math.ceil((opGraficaAura.height / 2) + (opGraficaAura.width / 2)));
 									end;
@@ -1527,23 +1533,30 @@ local function constructNew_frmTokenProps()
             										self.fplAlturaAura.visible = false;
             										self.fplLarguraAura.visible = false;
             										self.flaAuraContent:needRealign();
-            								    else  if self.cmbFormaAura.value == "SC" then		
+            								    else if self.cmbFormaAura.value == "SC" then		
             											self.flpRaioAura.visible = true;
             											self.fplAlturaAura.visible = false;
             											self.fplLarguraAura.visible = false;
             											self.flaAuraContent:needRealign();
-            										  else if self.cmbFormaAura.value == "CP" then
+            											else if self.cmbFormaAura.value == "CP" then
             												self.flpRaioAura.visible = true;
             												self.fplAlturaAura.visible = false;
             												self.fplLarguraAura.visible = false;
             												self.flaAuraContent:needRealign();
-            											   else
-            											    self.flpRaioAura.visible = false;
-            											    self.fplAlturaAura.visible = true;
-            											    self.fplLarguraAura.visible = true;
-            											    self.flaAuraContent:needRealign();
-            										  	   end;
-            										  end;		
+            												else if self.cmbFormaAura.value == "COD" then
+            														self.flpRaioAura.visible = true;
+            														self.fplAlturaAura.visible = false;
+            														self.fplLarguraAura.visible = false;
+            														self.flaAuraContent:needRealign();
+            												    else
+            														self.flpRaioAura.visible = false;
+            														self.fplAlturaAura.visible = true;
+            														self.fplLarguraAura.visible = true;
+            														self.flaAuraContent:needRealign();
+            												   end;
+            											 
+            											end;  
+            										end;		
             									end;
         end, obj);
 
