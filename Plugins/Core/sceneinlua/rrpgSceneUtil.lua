@@ -125,6 +125,7 @@ function criarPathAreaQuadrado()
 	end;
 
 	path = path .. " Z";		
+	
 	return path;
 end;
 	
@@ -303,7 +304,6 @@ function criarPathAreaCirculo(Raio)
 	end;
 
 	path = path .. " Z";			
-
 
 	return path;			
 								
