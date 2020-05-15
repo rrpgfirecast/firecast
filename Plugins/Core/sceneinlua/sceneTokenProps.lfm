@@ -145,7 +145,7 @@
 
 				<checkBox name="cbxPossuiAura" left="30" top="20" fontSize="18" text="@@scene.FormaAura.PossuiAura">
 					<event name="onChange">
-						-- por mais feio que seja..... blalbalbla
+						-- por mais feio que seja foi necessaria essas "gambiarra" por conta de algum bug do flowLayout --
 						
 						if self.cbxPossuiAura.checked then
 							self.flaAuraContent.visible = true;
