@@ -1,5 +1,4 @@
-﻿
-function criarPathAreaQuadrado()
+﻿function criarPathAreaQuadrado()
 	local reach = 1;
 	local path = "M " .. reach .. " 0";
 		
@@ -19,13 +18,14 @@ function criarPathAreaQuadrado()
 		end;
 	end;
 
-	for i=reach, 1, -1 do
+	for i = reach, 1, -1 do
 		if i == 1 then
 			path = path .. " v " .. 1;
-		elseif i==2 then
+		elseif i == 2 then
 			path = path .. " h " .. 1;
 		else
-			local ending = (i-2)%3;
+			local ending = (i - 2) % 3;
+			
 			if ending == 0 then
 				path = path .. " h " .. 1;
 			else
@@ -34,13 +34,14 @@ function criarPathAreaQuadrado()
 		end;
 	end;
 	
-	for i=1, reach, 1 do
+	for i = 1, reach, 1 do
 		if i == 1 then
 			path = path .. " v " .. 1;
-		elseif i==2 then
+		elseif i == 2 then
 			path = path .. " h -" .. 1;
 		else
-			local ending = (i-2)%3;
+			local ending = (i - 2) % 3;
+			
 			if ending == 0 then
 				path = path .. " h -" .. 1;
 			else
@@ -49,13 +50,14 @@ function criarPathAreaQuadrado()
 		end;
 	end;
 
-	for i=reach, 1, -1 do
+	for i = reach, 1, -1 do
 		if i == 1 then
 			path = path .. " h -" .. 1;
-		elseif i==2 then
+		elseif i == 2 then
 			path = path .. " v " .. 1;
 		else
-			local ending = (i-2)%3;
+			local ending = (i - 2) % 3;
+			
 			if ending == 0 then
 				path = path .. " v " .. 1;
 			else
@@ -64,13 +66,14 @@ function criarPathAreaQuadrado()
 		end;
 	end;
 
-	for i=1, reach, 1 do
+	for i = 1, reach, 1 do
 		if i == 1 then
 			path = path .. " h -" .. 1;
-		elseif i==2 then
+		elseif i == 2 then
 			path = path .. " v -" .. 1;
 		else
-			local ending = (i-2)%3;
+			local ending = (i - 2) % 3;
+					
 			if ending == 0 then
 				path = path .. " v -" .. 1;
 			else
@@ -79,13 +82,14 @@ function criarPathAreaQuadrado()
 		end;
 	end;
 
-	for i=reach, 1, -1 do
+	for i = reach, 1, -1 do
 		if i == 1 then
 			path = path .. " v -" .. 1;
-		elseif i==2 then
+		elseif i == 2 then
 			path = path .. " h -" .. 1;
 		else
-			local ending = (i-2)%3;
+			local ending = (i - 2) % 3;
+			
 			if ending == 0 then
 				path = path .. " h -" .. 1;
 			else
@@ -94,13 +98,14 @@ function criarPathAreaQuadrado()
 		end;
 	end;
 
-	for i=1, reach, 1 do
+	for i = 1, reach, 1 do
 		if i == 1 then
 			path = path .. " v -" .. 1;
-		elseif i==2 then
+		elseif i == 2 then
 			path = path .. " h " .. 1;
 		else
-			local ending = (i-2)%3;
+			local ending = (i - 2) % 3;
+			
 			if ending == 0 then
 				path = path .. " h " .. 1;
 			else
@@ -109,13 +114,14 @@ function criarPathAreaQuadrado()
 		end;
 	end;
 
-	for i=reach, 1, -1 do
+	for i = reach, 1, -1 do
 		if i == 1 then
 			path = path .. " h " .. 1;
-		elseif i==2 then
+		elseif i == 2 then
 			path = path .. " v -" .. 1;
 		else
-			local ending = (i-2)%3;
+			local ending = (i - 2) % 3;
+			
 			if ending == 0 then
 				path = path .. " v -" .. 1;
 			else
@@ -124,23 +130,22 @@ function criarPathAreaQuadrado()
 		end;
 	end;
 
-	path = path .. " Z";		
-	
-	return path;
+	path = path .. " Z";			
+	return path;	
 end;
-	
-	
+		
 function criarPathAreaConeDiagonal(Altura, Largura)
 	local reach = (Altura) + (Largura);
 	local path = "M 0 0 h " .. reach;
 
-	for i=1, reach, 1 do
+	for i = 1, reach, 1 do
 		if i == 1 then
 			path = path .. " v " .. 1;
-		elseif i==2 then
+		elseif i == 2 then
 			path = path .. " h -" .. 1;
 		else
-			local ending = (i-2)%3;
+			local ending = (i - 2) % 3;
+			
 			if ending == 0 then
 				path = path .. " h -" .. 1;
 			else
@@ -149,13 +154,14 @@ function criarPathAreaConeDiagonal(Altura, Largura)
 		end;
 	end;
 
-	for i=reach, 1, -1 do
+	for i = reach, 1, -1 do
 		if i == 1 then
 			path = path .. " h -" .. 1;
-		elseif i==2 then
+		elseif i == 2 then
 			path = path .. " v " .. 1;
 		else
-			local ending = (i-2)%3;
+			local ending = (i - 2) % 3;
+			
 			if ending == 0 then
 				path = path .. " v " .. 1;
 			else
@@ -165,25 +171,23 @@ function criarPathAreaConeDiagonal(Altura, Largura)
 	end;
 
 	path = path .. " Z";
-
-	return path;			
-									
+	return path;										
 end;
 
 
 function criarPathAreaCirculo(Raio)
 	local reach = Raio;
 	local path = "M " .. reach .. " 0";
-
 	path = path .. " h 1";
 
-	for i=1, reach, 1 do
+	for i = 1, reach, 1 do
 		if i == 1 then
 			path = path .. " h " .. 1;
-		elseif i==2 then
+		elseif i == 2 then
 			path = path .. " v " .. 1;
 		else
-			local ending = (i-2)%3;
+			local ending = (i - 2) % 3;
+			
 			if ending == 0 then
 				path = path .. " v " .. 1;
 			else
@@ -192,13 +196,14 @@ function criarPathAreaCirculo(Raio)
 		end;
 	end;
 
-	for i=reach, 1, -1 do
+	for i = reach, 1, -1 do
 		if i == 1 then
 			path = path .. " v " .. 1;
-		elseif i==2 then
+		elseif i == 2 then
 			path = path .. " h " .. 1;
 		else
-			local ending = (i-2)%3;
+			local ending = (i - 2) % 3;
+			
 			if ending == 0 then
 				path = path .. " h " .. 1;
 			else
@@ -209,13 +214,14 @@ function criarPathAreaCirculo(Raio)
 
 	path = path .. " v 1";
 
-	for i=1, reach, 1 do
+	for i = 1, reach, 1 do
 		if i == 1 then
 			path = path .. " v " .. 1;
-		elseif i==2 then
+		elseif i == 2 then
 			path = path .. " h -" .. 1;
 		else
-			local ending = (i-2)%3;
+			local ending = (i - 2) % 3;
+			
 			if ending == 0 then
 				path = path .. " h -" .. 1;
 			else
@@ -224,13 +230,14 @@ function criarPathAreaCirculo(Raio)
 		end;
 	end;
 
-	for i=reach, 1, -1 do
+	for i = reach, 1, -1 do
 		if i == 1 then
 			path = path .. " h -" .. 1;
 		elseif i==2 then
 			path = path .. " v " .. 1;
 		else
-			local ending = (i-2)%3;
+			local ending = (i - 2) % 3;
+			
 			if ending == 0 then
 				path = path .. " v " .. 1;
 			else
@@ -241,13 +248,14 @@ function criarPathAreaCirculo(Raio)
 
 	path = path .. " h -1";
 
-	for i=1, reach, 1 do
+	for i = 1, reach, 1 do
 		if i == 1 then
 			path = path .. " h -" .. 1;
-		elseif i==2 then
+		elseif i == 2 then
 			path = path .. " v -" .. 1;
 		else
-			local ending = (i-2)%3;
+			local ending = (i - 2) % 3;
+			
 			if ending == 0 then
 				path = path .. " v -" .. 1;
 			else
@@ -256,13 +264,14 @@ function criarPathAreaCirculo(Raio)
 		end;
 	end;
 
-	for i=reach, 1, -1 do
+	for i = reach, 1, -1 do
 		if i == 1 then
 			path = path .. " v -" .. 1;
-		elseif i==2 then
+		elseif i == 2 then
 			path = path .. " h -" .. 1;
 		else
-			local ending = (i-2)%3;
+			local ending = (i - 2) % 3;
+			
 			if ending == 0 then
 				path = path .. " h -" .. 1;
 			else
@@ -273,13 +282,14 @@ function criarPathAreaCirculo(Raio)
 
 	path = path .. " v -1";
 
-	for i=1, reach, 1 do
+	for i = 1, reach, 1 do
 		if i == 1 then
 			path = path .. " v -" .. 1;
-		elseif i==2 then
+		elseif i == 2 then
 			path = path .. " h " .. 1;
 		else
-			local ending = (i-2)%3;
+			local ending = (i - 2) % 3;
+			
 			if ending == 0 then
 				path = path .. " h " .. 1;
 			else
@@ -288,13 +298,14 @@ function criarPathAreaCirculo(Raio)
 		end;
 	end;
 
-	for i=reach, 1, -1 do
+	for i = reach, 1, -1 do
 		if i == 1 then
 			path = path .. " h " .. 1;
-		elseif i==2 then
+		elseif i == 2 then
 			path = path .. " v -" .. 1;
 		else
-			local ending = (i-2)%3;
+			local ending = (i - 2) % 3;
+			
 			if ending == 0 then
 				path = path .. " v -" .. 1;
 			else
@@ -304,9 +315,7 @@ function criarPathAreaCirculo(Raio)
 	end;
 
 	path = path .. " Z";			
-
-	return path;			
-								
+	return path;									
 end;
 
 
@@ -314,20 +323,20 @@ function criarPathAreaConeHorizontal(Raio)
 	local reach = Raio;
 	local multy = 1;
 	local path = "M 0 0";
-	local height = math.ceil(reach*multy/2);
+	local height = math.ceil(reach * multy / 2);
 	
-
-	for i=1, height, 1 do
+	for i = 1, height, 1 do
 		path = path .. " v -1 h " .. multy;
 	end;
 
-	for i=reach, 1, -1 do
+	for i = reach, 1, -1 do
 		if i == 1 then
 			path = path .. " v 1";
 		elseif i == 2 then
 			path = path .. " h " .. multy;
 		else 
-			local ending = (i-2)%3;
+			local ending = (i - 2) % 3;
+			
 			if ending == 0 then
 				path = path .. " h " .. multy;
 			else
@@ -336,13 +345,14 @@ function criarPathAreaConeHorizontal(Raio)
 		end;
 	end;
 
-	for i=1, reach, 1 do
+	for i = 1, reach, 1 do
 		if i == 1 then
 			path = path .. " v 1";
 		elseif i == 2 then
 			path = path .. " h -" .. multy;
 		else 
-			local ending = (i-2)%3;
+			local ending = (i - 2) % 3;
+			
 			if ending == 0 then
 				path = path .. " h -" .. multy;
 			else
@@ -351,14 +361,12 @@ function criarPathAreaConeHorizontal(Raio)
 		end;
 	end;
 
-	for i=height, 1, -1 do
+	for i = height, 1, -1 do
 		path = path .. " h -" .. multy .. " v -1";
 	end;
 
 	path = path .. " Z";	
-	
-	return path;			
-									
+	return path;								
 end;
 
 
@@ -366,13 +374,14 @@ function criarPathAreaSemiCirculo(Raio)
 	local reach = Raio;
 	local path = "M 0 0";
 
-	for i=1, reach, 1 do
+	for i = 1, reach, 1 do
 		if i == 1 then
 			path = path .. " h " .. 2;
-		elseif i==2 then
+		elseif i == 2 then
 			path = path .. " v " .. 1;
 		else
-			local ending = (i-2)%3;
+			local ending = (i - 2) % 3;
+			
 			if ending == 0 then
 				path = path .. " v " .. 1;
 			else
@@ -381,13 +390,14 @@ function criarPathAreaSemiCirculo(Raio)
 		end;
 	end;
 
-	for i=reach, 1, -1 do
+	for i = reach, 1, -1 do
 		if i == 1 then
 			path = path .. " v " .. 1;
 		elseif i==2 then
 			path = path .. " h " .. 2;
 		else
-			local ending = (i-2)%3;
+			local ending = (i - 2) % 3;
+			
 			if ending == 0 then
 				path = path .. " h " .. 2;
 			else
@@ -396,13 +406,14 @@ function criarPathAreaSemiCirculo(Raio)
 		end;
 	end;
 
-	for i=1, reach, 1 do
+	for i = 1, reach, 1 do
 		if i == 1 then
 			path = path .. " v " .. 1;
-		elseif i==2 then
+		elseif i == 2 then
 			path = path .. " h -" .. 2;
 		else
-			local ending = (i-2)%3;
+			local ending = (i - 2) % 3;
+			
 			if ending == 0 then
 				path = path .. " h -" .. 2;
 			else
@@ -411,13 +422,14 @@ function criarPathAreaSemiCirculo(Raio)
 		end;
 	end;
 
-	for i=reach, 1, -1 do
+	for i = reach, 1, -1 do
 		if i == 1 then
 			path = path .. " h -" .. 2;
-		elseif i==2 then
+		elseif i == 2 then
 			path = path .. " v " .. 1;
 		else
-			local ending = (i-2)%3;
+			local ending = (i - 2) % 3;
+			
 			if ending == 0 then
 				path = path .. " v " .. 1;
 			else
@@ -427,7 +439,5 @@ function criarPathAreaSemiCirculo(Raio)
 	end;
 
 	path = path .. " Z";
-	
 	return path;
-	
 end;

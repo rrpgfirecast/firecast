@@ -34,9 +34,6 @@ local function constructNew_frmTokenProps()
     obj:setPlacement("center");
     obj:setCancelable(false);
 
-
-		--local NAME_TEXT = '_name_text';
-		--local NAME_BACKGROUND = '_name_back';	
 	
 		require("system.lua");
 		require("rrpgScene_Globals.lua");
@@ -1158,13 +1155,22 @@ local function constructNew_frmTokenProps()
 		self.labAlturaAura.text = lang('scene.labAlturaAura.text');
 		self.labLarguraAura.text = lang('scene.labLarguraAura.text');
 		self.labFormaAura.text = lang('scene.labFormaAura.text');
-		self.cmbFormaAura.items = {lang('scene.FormaAura.URL'), lang('scene.FormaAura.Circulo'), lang('scene.FormaAura.Quadrado'), lang('scene.FormaAura.ConeDiagonal'), lang('scene.FormaAura.ConeHorizontal'), lang('scene.FormaAura.SemiCirculo'), lang('scene.FormaAura.CirculoPerfeito')};
+		
+		self.cmbFormaAura.items = {lang('scene.FormaAura.URL'), 
+		                           lang('scene.FormaAura.Circulo'), 
+								   lang('scene.FormaAura.Quadrado'), 
+								   lang('scene.FormaAura.ConeDiagonal'), 
+								   lang('scene.FormaAura.ConeHorizontal'), 
+								   lang('scene.FormaAura.SemiCirculo'), 
+								   lang('scene.FormaAura.CirculoPerfeito')};
+		
 		self.cmbFormaAura.values = {'URL', 'C', 'Q', 'COD', 'COH', 'SC', 'CP'}
 		self.labAuraURL.text = lang('scene.labAuraURL.text');
 		self.labCorAura.text = lang('scene.labCorAura.text');
 		self.labRaioAura.text = lang('scene.labRaioAura.text');
 		self.labescolhaimg.text = lang('scene.labescolhaimg.text');
-	
+		
+		local AURA_NAME = "aura"; 
 		
 		function recursiveEnumPersonagensEmBibItem(bibItem, dest)
 			if bibItem.tipo == "personagem" then
@@ -1240,8 +1246,7 @@ local function constructNew_frmTokenProps()
 						self["edtBarMax" .. i].text = theToken["barMax" .. i];						
 						self["cmbCorBar" .. i].color = theToken["barColor" .. i];
 					end;
-				end;			
-				
+				end;							
 				
 				self.tabFOW.visible = podeVerCoisasDeFoW;
 				local metricToShow = lang("metric." .. oScene.worldMetricName);				
@@ -1261,13 +1266,14 @@ local function constructNew_frmTokenProps()
 				self.cbxHasVision.checked = theToken.visionHaveVision;							
 				self.cmbFacingMode.value = theToken.facingMode;		
 				
-------------------------------------------------------------------------------------------------	
-------------------------------------------------------------------------------------------------	
-------------------------------------------------------------------------------------------------	
-------------------------------------------------------------------------------------------------				
+				-- Carregar Dados de Aura		
 				
-				local opGraficaAura = theToken.canvas:findByName(AURA_NAME);		
-						
+				self.labUnidadeMetrica1.text = lang("metric." .. oScene.worldMetricName);
+				self.labUnidadeMetrica2.text = lang("metric." .. oScene.worldMetricName);
+				self.labUnidadeMetrica3.text = lang("metric." .. oScene.worldMetricName);
+				
+				local opGraficaAura = theToken.canvas:findByName(AURA_NAME);	
+				
 				if opGraficaAura ~= nil then				
 					self.cbxPossuiAura.checked = true
 					self.edtAlturaAura.asNumber = opGraficaAura.height or 0;					
@@ -1281,24 +1287,19 @@ local function constructNew_frmTokenProps()
 					
 					if opGraficaAura.userData.FormaAura == "URL" then
 						self.imageAura.url = opGraficaAura.url;					
-					else if opGraficaAura.userData.FormaAura == "SC" then
+					elseif opGraficaAura.userData.FormaAura == "SC" then
 						self.edtRaioAura.asNumber = (opGraficaAura.height / 2) + (opGraficaAura.width);
 						self.cmbCorAura.color = opGraficaAura.color;
-							else
-								self.cmbCorAura.color = opGraficaAura.color;
-						end;		
+					else
+						self.cmbCorAura.color = opGraficaAura.color;		
 					end;					
 				else
 					self.cbxPossuiAura.checked = false
 					self.cmbFormaAura.value = 'CP';
 				end;																				
 				
-				self:endUpdate();				
-------------------------------------------------------------------------------------------------	
-------------------------------------------------------------------------------------------------	
-------------------------------------------------------------------------------------------------							
-			end;
-		
+				self:endUpdate();											
+			end;		
 		end;		
 		
 		
@@ -1331,10 +1332,9 @@ local function constructNew_frmTokenProps()
 									theToken["barColor" .. i] = self["cmbCorBar" .. i].color;
 								end;										
 							end;
-------------------------------------------------------------------------------------------------	
-------------------------------------------------------------------------------------------------	
-------------------------------------------------------------------------------------------------	
-------------------------------------------------------------------------------------------------	
+                           						   						   
+							-- Salvar Aura
+							
 							local opGraficaAura = theToken.canvas:findByName(AURA_NAME);	
 														
 							-- 1 - Deletar se precisar deletar, ou se o que tem lá não é util.
@@ -1348,8 +1348,7 @@ local function constructNew_frmTokenProps()
 									opGraficaAura = nil
 								end;												
 							end
-															
-							
+																						
 							-- 2 -- Se precisar, criar aura
 														
 							if opGraficaAura == nil and self.cbxPossuiAura.checked then
@@ -1384,13 +1383,12 @@ local function constructNew_frmTokenProps()
 									opGraficaAura.url = self.imageAura.url;
 									opGraficaAura.opacity = 0.85;
 								else		
-
 									if opGraficaAura.userData.FormaAura == "C" then							
 										opGraficaAura.color = self.cmbCorAura.color;
 										opGraficaAura.height = self.edtRaioAura.asNumber;
 								        opGraficaAura.width = self.edtRaioAura.asNumber;
-										opGraficaAura.y = -(opGraficaAura.height /2);
-										opGraficaAura.x = -(opGraficaAura.width /2);
+										opGraficaAura.y = -(opGraficaAura.height / 2);
+										opGraficaAura.x = -(opGraficaAura.width / 2);
 										opGraficaAura.xOrigin = 0.5; 
 										opGraficaAura.yOrigin = 0.5;
 										opGraficaAura.pathData = criarPathAreaCirculo(math.ceil(opGraficaAura.height / 2));	
@@ -1437,19 +1435,15 @@ local function constructNew_frmTokenProps()
 										opGraficaAura.color = self.cmbCorAura.color;
 										opGraficaAura.height = self.edtRaioAura.asNumber;
 								        opGraficaAura.width = self.edtRaioAura.asNumber;
-										opGraficaAura.y = opGraficaAura.height / -2 ;
-										opGraficaAura.x = opGraficaAura.width / -2 ;
+										opGraficaAura.y = opGraficaAura.height / -2;
+										opGraficaAura.x = opGraficaAura.width / -2;
 										opGraficaAura.xOrigin = 0.5; 
 										opGraficaAura.yOrigin = 0.5;										
 									end;
 								end;
 							end;
 														
-							
-					
-------------------------------------------------------------------------------------------------	
-------------------------------------------------------------------------------------------------	
-------------------------------------------------------------------------------------------------	
+							-- Finaliza o Salva Aura 	
 														
 							if podeVerCoisasDeFoW then
 								theToken.visionIntenseLightRange = self.edtMetricVLI.asNumber;
@@ -1472,8 +1466,7 @@ local function constructNew_frmTokenProps()
 					
 			self:close();
 		end;
-	
-		
+			
 		function self:processarCancel()
 			self:close();
 		end;
@@ -1500,17 +1493,17 @@ local function constructNew_frmTokenProps()
 
     obj._e_event2 = obj.cbxPossuiAura:addEventListener("onChange",
         function (_)
-            -- por mais feio que seja..... blalbalbla
-            						
-            						if self.cbxPossuiAura.checked then
-            							self.flaAuraContent.visible = true;
-            							self.flaAuraContent.height = self.flaAuraContent.height + 1;
-            							self.flaAuraContent.height = self.flaAuraContent.height - 1;
-            						else
-            							self.flaAuraContent.visible = false;
-            							self.flaAuraContent.height = self.flaAuraContent.height + 1;
-            							self.flaAuraContent.height = self.flaAuraContent.height - 1;
-            						end;
+            -- por mais feio que seja foi necessaria essas "gambiarra" por conta de algum bug do flowLayout --
+            							
+            							if self.cbxPossuiAura.checked then
+            								self.flaAuraContent.visible = true;
+            								self.flaAuraContent.height = self.flaAuraContent.height + 1;
+            								self.flaAuraContent.height = self.flaAuraContent.height - 1;
+            							else
+            								self.flaAuraContent.visible = false;
+            								self.flaAuraContent.height = self.flaAuraContent.height + 1;
+            								self.flaAuraContent.height = self.flaAuraContent.height - 1;
+            							end;
         end, obj);
 
     obj._e_event3 = obj.cmbFormaAura:addEventListener("onChange",
@@ -1519,41 +1512,37 @@ local function constructNew_frmTokenProps()
             										self.flpImagemAura.visible = true;
             										self.fplCorAura.visible = false;
             										self.flaAuraContent:needRealign();
-            								    else
+            									else
             										self.flpImagemAura.visible = false;
             										self.fplCorAura.visible = true;
             										self.flaAuraContent:needRealign();											
-            								    end;
+            									end;																			
             
-            								    if self.cmbFormaAura.value == "C" then	
+            									if self.cmbFormaAura.value == "C" then	
             										self.flpRaioAura.visible = true;
             										self.fplAlturaAura.visible = false;
             										self.fplLarguraAura.visible = false;
             										self.flaAuraContent:needRealign();
-            								    else if self.cmbFormaAura.value == "SC" then		
-            											self.flpRaioAura.visible = true;
-            											self.fplAlturaAura.visible = false;
-            											self.fplLarguraAura.visible = false;
-            											self.flaAuraContent:needRealign();
-            											else if self.cmbFormaAura.value == "CP" then
-            												self.flpRaioAura.visible = true;
-            												self.fplAlturaAura.visible = false;
-            												self.fplLarguraAura.visible = false;
-            												self.flaAuraContent:needRealign();
-            												else if self.cmbFormaAura.value == "COD" then
-            														self.flpRaioAura.visible = true;
-            														self.fplAlturaAura.visible = false;
-            														self.fplLarguraAura.visible = false;
-            														self.flaAuraContent:needRealign();
-            												    else
-            														self.flpRaioAura.visible = false;
-            														self.fplAlturaAura.visible = true;
-            														self.fplLarguraAura.visible = true;
-            														self.flaAuraContent:needRealign();
-            												   end;
-            											 
-            											end;  
-            										end;		
+            									elseif self.cmbFormaAura.value == "SC" then		
+            										self.flpRaioAura.visible = true;
+            										self.fplAlturaAura.visible = false;
+            										self.fplLarguraAura.visible = false;
+            										self.flaAuraContent:needRealign();
+            									elseif self.cmbFormaAura.value == "CP" then
+            										self.flpRaioAura.visible = true;
+            										self.fplAlturaAura.visible = false;
+            										self.fplLarguraAura.visible = false;
+            										self.flaAuraContent:needRealign();
+            									elseif self.cmbFormaAura.value == "COD" then
+            										self.flpRaioAura.visible = true;
+            										self.fplAlturaAura.visible = false;
+            										self.fplLarguraAura.visible = false;
+            										self.flaAuraContent:needRealign();
+            									else
+            										self.flpRaioAura.visible = false;
+            										self.fplAlturaAura.visible = true;
+            										self.fplLarguraAura.visible = true;
+            										self.flaAuraContent:needRealign();
             									end;
         end, obj);
 
