@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<database>
+    <__EHEX_31 armadura="1" chave="2" nome="Acrobatismo">
+        <__ndb__ id="2" t_armadura="6" t_chave="S" t_nome="S"/>
+    </__EHEX_31>
+    <__EHEX_32 armadura="0" chave="4" nome="Arcanismo">
+        <__ndb__ id="3" t_armadura="6" t_chave="S" t_nome="S"/>
+    </__EHEX_32>
+    <__EHEX_33 armadura="1" chave="1" nome="Atletismo">
+        <__ndb__ id="4" t_armadura="6" t_chave="S" t_nome="S"/>
+    </__EHEX_33>
+    <__EHEX_34 armadura="0" chave="6" nome="Diplomacia">
+        <__ndb__ id="5" t_armadura="6" t_chave="S" t_nome="S"/>
+    </__EHEX_34>
+    <__EHEX_35 armadura="0" chave="6" nome="Dissimulação">
+        <__ndb__ id="6" t_armadura="6" t_chave="S" t_nome="S"/>
+    </__EHEX_35>
+    <__EHEX_36 armadura="0" chave="6" nome="Intimidação">
+        <__ndb__ id="7" t_armadura="6" t_chave="S" t_nome="S"/>
+    </__EHEX_36>
+    <__EHEX_37 armadura="1" chave="2" nome="Ladroagem">
+        <__ndb__ id="8" t_armadura="6" t_chave="S" t_nome="S"/>
+    </__EHEX_37>
+    <__EHEX_38 armadura="0" chave="4" nome="Manufatura">
+        <__ndb__ id="9" t_armadura="6" t_chave="S" t_nome="S"/>
+    </__EHEX_38>
+    <__EHEX_39 armadura="0" chave="5" nome="Medicina">
+        <__ndb__ id="10" t_armadura="6" t_chave="S" t_nome="S"/>
+    </__EHEX_39>
+    <__EHEX_3130 armadura="0" chave="5" nome="Natureza">
+        <__ndb__ id="11" t_armadura="6" t_chave="S" t_nome="S"/>
+    </__EHEX_3130>
+    <__EHEX_3131 armadura="0" chave="4" nome="Ocultismo">
+        <__ndb__ id="12" t_armadura="6" t_chave="S" t_nome="S"/>
+    </__EHEX_3131>
+    <__EHEX_3132 armadura="0" chave="6" nome="Performance">
+        <__ndb__ id="13" t_armadura="6" t_chave="S" t_nome="S"/>
+    </__EHEX_3132>
+    <__EHEX_3133 armadura="0" chave="5" nome="Religião">
+        <__ndb__ id="14" t_armadura="6" t_chave="S" t_nome="S"/>
+    </__EHEX_3133>
+    <__EHEX_3134 armadura="0" chave="4" nome="Saber ">
+        <__ndb__ id="15" t_armadura="6" t_chave="S" t_nome="S"/>
+    </__EHEX_3134>
+    <__EHEX_3135 armadura="0" chave="4" nome="Sociedade">
+        <__ndb__ id="16" t_armadura="6" t_chave="S" t_nome="S"/>
+    </__EHEX_3135>
+    <__EHEX_3136 armadura="0" chave="5" nome="Sobrevivência">
+        <__ndb__ id="17" t_armadura="6" t_chave="S" t_nome="S"/>
+    </__EHEX_3136>
+    <__EHEX_3137 armadura="1" chave="2" nome="Furtividade">
+        <__ndb__ id="1" t_armadura="6" t_chave="S" t_nome="S"/>
+    </__EHEX_3137>
+    <__EHEX_3338>
+        <__ndb__ id="17" />
+    </__EHEX_3338>
+    <__ndb__ id="1" idGenerator="17" />
+</database>

@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmMagiasMagia" width="250" height="25" margins="{top=1}">
+	<script> 
+		<![CDATA[			
+		local function askForDelete()
+			Dialogs.confirmYesNo("Deseja realmente apagar essa magia?",
+								 function (confirmado)
+									if confirmado then
+										NDB.deleteNode(sheet);
+									end;
+								 end);
+		end;
+
+		local function showMagiaPopup()
+			local pop = self:findControlByName("popMagia");
+				
+			if pop ~= nil then
+				pop:setNodeObject(self.sheet);
+				pop:showPopupEx("bottomCenter", self);
+			else
+				showMessage("Ops, bug.. nao encontrei o popup de magia para exibir");
+			end;				
+		end;
+
+		local function write(str)
+            local mesa = Firecast.getMesaDe(sheet);
+            if str then
+                mesa.activeChat:escrever(str);
+            else
+                mesa.activeChat:escrever("String nula");
+            end;
+        end;
+		]]>	
+	</script>
+
+	<edit align="left" width="25" field="nivelHabilidade"/>
+	<edit align="right" width="25" field="dispMagia"/>
+	<edit align="right" width="25" field="prepMagia"/>
+
+	<button align="right" width="25" text="i" onClick="showMagiaPopup();"/>
+	<button align="right" width="25" text="X" onClick="askForDelete();"/>
+	<layout align="right" width="75">
+		<layout top="5" height="15" width="45">
+			<imageCheckBox align="client">
+				<progressBar colorMode="hl" width="45" height="15" margins="{top=5,bottom=5}" hitTest="true" mouseGlow="true" color="Green" name="Barrinha" field="BarrinhaValor" fieldMax="BarrinhaValorMax">
+					<event name="onMouseEnter">
+						self.CorBarrinha.color = "Green";
+						self.ValoresBarrinha.visible = true;
+						sheet.InfoBarrinha = (sheet.BarrinhaValor or 0) .. "/"	.. (sheet.BarrinhaValorMax or 0);					
+					</event>
+					<event name="onMouseLeave">
+						self.ValoresBarrinha.visible = false;
+					</event>
+					<event name="onDblClick">
+						sheet.BarrinhaID = sheet.index;
+						sheet.AtributoBarrinha = sheet.nomeMagia;
+						
+						sheet.ModificadorBarrinha = "igual";
+						sheet.ModificadorBarrinhaMax = "igual";
+						sheet.ValorTempAtualBarrinha = sheet.BarrinhaValor;
+						sheet.ValorTempMaxBarrinha = sheet.BarrinhaValorMax;
+						sheet.ValorMudadoAtualBarrinha = sheet.BarrinhaValor;
+						sheet.ValorMudadoMaxBarrinha = sheet.BarrinhaValorMax;
+
+						local rec = self:findControlByName("PopupBarColor");
+						if rec~=nil then rec.color = "Green" end;
+						
+						local pop = self:findControlByName("BarPopup");
+						if pop~= nil then
+							pop.scopeNode = sheet;
+							pop:show("top", self.Barrinha);
+							pop.top = (pop.top + 29 + 10);
+						end;
+					</event>
+				</progressBar>
+			</imageCheckBox>
+		</layout>
+		<layout left="45" top="5" height="15" width="30" margins="{top=5,bottom=5}" visible="false" name="ValoresBarrinha">
+			<rectangle align="client" xradius="2" yradius="2" name="CorBarrinha" color="Green">
+				<label align="left" fontColor="white" fontSize="10" autoSize="true" textTrimming="none" wordWrap="false" name="InfoBarrinha" field="InfoBarrinha" horzTextAlign="center" text="0/0">
+					<event name="onResize">
+						self.InfoBarrinha.width = (self.ValoresBarrinha.width - 4);
+					</event>
+				</label>
+			</rectangle>
+		</layout>
+		<dataLink field="CorBarrinha" defaultValue="Green">
+			<event name="onChange">
+				self.Barrinha.color = "Green";
+			</event>
+		</dataLink>
+	</layout>
+
+	<edit align="client" field="nomeMagia"/>
+
+	<dataLink fields="{'dispMagia','prepMagia'}">
+		<event name="onChange">
+			if sheet==nil then return end;
+			local id = sheet.id;
+			local box = self:findControlByName("boxDetalhesDaMagia");
+			local node = box.node;
+
+			if node == nil then return end;
+
+			-- Since last version did not store the id we will need to find it in old sheets.
+			if id==nil then 
+				local myRCLfield = NDB.getParent(sheet);
+				if node.campoDasMagias0 == myRCLfield then sheet.id = 0
+				elseif node.campoDasMagias1 == myRCLfield then sheet.id = 1
+				elseif node.campoDasMagias2 == myRCLfield then sheet.id = 2
+				elseif node.campoDasMagias3 == myRCLfield then sheet.id = 3
+				elseif node.campoDasMagias4 == myRCLfield then sheet.id = 4
+				elseif node.campoDasMagias5 == myRCLfield then sheet.id = 5
+				elseif node.campoDasMagias6 == myRCLfield then sheet.id = 6
+				elseif node.campoDasMagias7 == myRCLfield then sheet.id = 7
+				elseif node.campoDasMagias8 == myRCLfield then sheet.id = 8
+				elseif node.campoDasMagias9 == myRCLfield then sheet.id = 9
+				elseif node.campoDasMagias10 == myRCLfield then sheet.id = 10
+				elseif node.campoDasMagias11 == myRCLfield then sheet.id = 11
+				elseif node.campoDasMagias12 == myRCLfield then sheet.id = 12
+				elseif node.campoDasMagias13 == myRCLfield then sheet.id = 13
+				elseif node.campoDasMagias14 == myRCLfield then sheet.id = 14
+				elseif node.campoDasMagias15 == myRCLfield then sheet.id = 15
+				elseif node.campoDasMagias16 == myRCLfield then sheet.id = 16
+				elseif node.campoDasMagias17 == myRCLfield then sheet.id = 17
+				elseif node.campoDasMagias18 == myRCLfield then sheet.id = 18
+				elseif node.campoDasMagias19 == myRCLfield then sheet.id = 19 end;
+				id = sheet.id;
+
+				if id==nil then return end;
+			end;
+
+			-- sort list
+			local rcl = self:findControlByName("rclmagicList" .. id);
+			if rcl~= nil then
+				rcl:sort();
+			end;
+
+			-- calculate sum os prepared and used
+
+			local preparadas = 0;
+			local usadas = 0;
+			local nodes = NDB.getChildNodes(node["campoDasMagias" .. id]); 
+			for i=1, #nodes, 1 do
+				preparadas = preparadas + (tonumber(nodes[i].dispMagia) or 0);
+				usadas = usadas + (tonumber(nodes[i].prepMagia) or 0);
+			end
+			node["prep" .. id] = preparadas;
+			node["used" .. id] = usadas;
+		</event>
+	</dataLink>
+
+	<dataLink fields="{'nomeMagia','myCD','updateCD'}">
+		<event name="onChange">
+			if sheet==nil then return end;
+			local id = sheet.id;
+			local box = self:findControlByName("boxDetalhesDaMagia");
+			local node = box.node;
+
+			if node == nil then return end;
+
+			-- Since last version did not store the id we will need to find it in old sheets.
+			if id==nil then 
+				local myRCLfield = NDB.getParent(sheet);
+				if node.campoDasMagias0 == myRCLfield then sheet.id = 0
+				elseif node.campoDasMagias1 == myRCLfield then sheet.id = 1
+				elseif node.campoDasMagias2 == myRCLfield then sheet.id = 2
+				elseif node.campoDasMagias3 == myRCLfield then sheet.id = 3
+				elseif node.campoDasMagias4 == myRCLfield then sheet.id = 4
+				elseif node.campoDasMagias5 == myRCLfield then sheet.id = 5
+				elseif node.campoDasMagias6 == myRCLfield then sheet.id = 6
+				elseif node.campoDasMagias7 == myRCLfield then sheet.id = 7
+				elseif node.campoDasMagias8 == myRCLfield then sheet.id = 8
+				elseif node.campoDasMagias9 == myRCLfield then sheet.id = 9
+				elseif node.campoDasMagias10 == myRCLfield then sheet.id = 10
+				elseif node.campoDasMagias11 == myRCLfield then sheet.id = 11
+				elseif node.campoDasMagias12 == myRCLfield then sheet.id = 12
+				elseif node.campoDasMagias13 == myRCLfield then sheet.id = 13
+				elseif node.campoDasMagias14 == myRCLfield then sheet.id = 14
+				elseif node.campoDasMagias15 == myRCLfield then sheet.id = 15
+				elseif node.campoDasMagias16 == myRCLfield then sheet.id = 16
+				elseif node.campoDasMagias17 == myRCLfield then sheet.id = 17
+				elseif node.campoDasMagias18 == myRCLfield then sheet.id = 18
+				elseif node.campoDasMagias19 == myRCLfield then sheet.id = 19 end;
+				id = sheet.id;
+
+				if id==nil then return end;
+			end;
+
+			local baseCD = tonumber(node["cd" .. id]) or 10;
+			local ajustCD = tonumber(node.cd) or 0;
+			local myCD = tonumber(sheet.myCD) or 0;
+
+			sheet.cd = baseCD + ajustCD + myCD;
+		</event>
+	</dataLink>
+</form>

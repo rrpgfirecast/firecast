@@ -73,13 +73,14 @@
 					NDB.deleteNode(nodes[i]);
 				end
 
-				for i=1, 36, 1 do
+				for i=1, 35, 1 do
 					local pericia = self.rclListaDasPericias:append();
 					if pericia~=nil then
 						pericia.nomePericia = path[i].nome;
 						pericia.chavePericia = path[i].chave;
 						pericia.exigeTreino = path[i].treino;
-						if path[i].armadura > 0 then
+						local armadura = tonumber(path[i].armadura) or 0;
+						if armadura > 0 then
 							pericia.penalidadeArmadura2 = true;
 						end;
 					end;

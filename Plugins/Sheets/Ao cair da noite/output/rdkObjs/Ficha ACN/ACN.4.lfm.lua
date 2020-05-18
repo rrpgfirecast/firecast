@@ -339,7 +339,7 @@ local function constructNew_frmACN4()
     obj.layout11:setParent(obj.scrollBox1);
     obj.layout11:setLeft(410);
     obj.layout11:setTop(80);
-    obj.layout11:setWidth(600);
+    obj.layout11:setWidth(800);
     obj.layout11:setHeight(535);
     obj.layout11:setName("layout11");
 
@@ -347,7 +347,7 @@ local function constructNew_frmACN4()
     obj.rectangle5:setParent(obj.layout11);
     obj.rectangle5:setLeft(0);
     obj.rectangle5:setTop(0);
-    obj.rectangle5:setWidth(600);
+    obj.rectangle5:setWidth(800);
     obj.rectangle5:setHeight(535);
     obj.rectangle5:setColor("black");
     obj.rectangle5:setXradius(15);
@@ -359,22 +359,40 @@ local function constructNew_frmACN4()
     obj.label10:setParent(obj.layout11);
     obj.label10:setLeft(0);
     obj.label10:setTop(0);
-    obj.label10:setWidth(600);
+    obj.label10:setWidth(800);
     obj.label10:setHeight(20);
     obj.label10:setText("Historia");
     obj.label10:setHorzTextAlign("center");
     obj.label10:setName("label10");
 
-    obj.textEditor4 = GUI.fromHandle(_obj_newObject("textEditor"));
-    obj.textEditor4:setParent(obj.layout11);
-    obj.textEditor4:setLeft(10);
-    obj.textEditor4:setTop(25);
-    obj.textEditor4:setWidth(580);
-    obj.textEditor4:setHeight(495);
-    obj.textEditor4:setField("historia");
-    obj.textEditor4:setName("textEditor4");
+    obj.button1 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button1:setParent(obj.layout11);
+    obj.button1:setLeft(695);
+    obj.button1:setTop(1);
+    obj.button1:setWidth(100);
+    obj.button1:setHeight(20);
+    obj.button1:setText("Copiar Antigo");
+    obj.button1:setName("button1");
+
+    obj.richEdit1 = GUI.fromHandle(_obj_newObject("richEdit"));
+    obj.richEdit1:setParent(obj.layout11);
+    obj.richEdit1:setLeft(10);
+    obj.richEdit1:setTop(25);
+    obj.richEdit1:setWidth(780);
+    obj.richEdit1:setHeight(495);
+    obj.richEdit1:setField("background");
+    lfm_setPropAsString(obj.richEdit1, "backgroundColor",  "#333333");
+    lfm_setPropAsString(obj.richEdit1, "defaultFontSize",  "12");
+    lfm_setPropAsString(obj.richEdit1, "defaultFontColor",  "white");
+    obj.richEdit1:setName("richEdit1");
+
+    obj._e_event0 = obj.button1:addEventListener("onClick",
+        function (_)
+            System.setClipboardText(sheet.historia);
+        end, obj);
 
     function obj:_releaseEvents()
+        __o_rrpgObjs.removeEventListenerById(self._e_event0);
     end;
 
     obj._oldLFMDestroy = obj.destroy;
@@ -387,7 +405,8 @@ local function constructNew_frmACN4()
         end;
 
         if self.rectangle5 ~= nil then self.rectangle5:destroy(); self.rectangle5 = nil; end;
-        if self.textEditor4 ~= nil then self.textEditor4:destroy(); self.textEditor4 = nil; end;
+        if self.richEdit1 ~= nil then self.richEdit1:destroy(); self.richEdit1 = nil; end;
+        if self.button1 ~= nil then self.button1:destroy(); self.button1 = nil; end;
         if self.label1 ~= nil then self.label1:destroy(); self.label1 = nil; end;
         if self.layout4 ~= nil then self.layout4:destroy(); self.layout4 = nil; end;
         if self.edit4 ~= nil then self.edit4:destroy(); self.edit4 = nil; end;

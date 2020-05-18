@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<group>
+
+    <label left='448' top='57' width='50' field='eq' fontSize='18' fontStyle='bold'/>
+    <label left='554' top='57' width='50' field='aa' fontSize='18' fontStyle='bold'/>
+
+    <edit left='259' top='116' width='40' field='ataque1Letra' fontSize='18' fontStyle='bold'/>
+    <edit left='425' top='114' width='50' field='ataque1V1' fontSize='18' fontStyle='bold'/>
+    <edit left='469' top='114' width='50' field='ataque1V2' fontSize='18' fontStyle='bold'/>
+
+    <edit left='539' top='116' width='40' field='ataque2Letra' fontSize='18' fontStyle='bold'/>
+    <edit left='703' top='116' width='50' field='ataque2V1' fontSize='18' fontStyle='bold'/>
+    <edit left='749' top='116' width='50' field='ataque2V2' fontSize='18' fontStyle='bold'/>
+
+    <edit left='281' top='146' width='190' field='nomeAtk1' fontSize='18'/>
+    <edit left='281' top='180' width='190' field='nomeAtk1Desc' fontSize='18'/>
+
+    <edit left='559' top='146' width='190' field='nomeAtk2' fontSize='18'/>
+    <edit left='559' top='180' width='190' field='nomeAtk2Desc' fontSize='18'/>
+
+    <edit left='259' top='236' width='40' field='ataqueProtLetra' fontSize='18' fontStyle='bold'/>
+    <edit left='425' top='234' width='50' field='ataqueProtV1' fontSize='18' fontStyle='bold'/>
+    <edit left='469' top='234' width='50' field='ataqueProtV2' fontSize='18' fontStyle='bold'/>
+
+    <edit left='538' top='233' width='40' field='protecaoLetra' fontSize='18' fontStyle='bold'/>
+    <edit left='703' top='232' width='50' field='protecaoV1' fontSize='18' fontStyle='bold'/>
+    <edit left='747' top='232' width='50' field='protecaoV2' fontSize='18' fontStyle='bold'/>
+
+    <edit left='281' top='266' width='190' field='nomeAtkProt' fontSize='18'/>
+    <edit left='281' top='300' width='190' field='nomeAtkProtDesc' fontSize='18'/>
+
+    <edit left='559' top='264' width='190' field='nomeProtecao' fontSize='18'/>
+    <edit left='762' top='264' width='30' field='rp' fontSize='18'/>
+    <edit left='618' top='299' width='106' field='nomeProtecaoDesc' fontSize='18'/>
+
+    <imageCheckBox width='10' height='10' left='731' top='300' field='cross1' checkedImage="img/x.png" uncheckedImage=""/>
+    <imageCheckBox width='10' height='10' left='748' top='300' field='cross2' checkedImage="img/x.png" uncheckedImage=""/>
+    <imageCheckBox width='10' height='10' left='764' top='300' field='cross3' checkedImage="img/x.png" uncheckedImage=""/>
+    <imageCheckBox width='10' height='10' left='782' top='300' field='cross4' checkedImage="img/x.png" uncheckedImage=""/>
+    <imageCheckBox width='10' height='10' left='731' top='318' field='cross5' checkedImage="img/x.png" uncheckedImage=""/>
+    <imageCheckBox width='10' height='10' left='748' top='318' field='cross6' checkedImage="img/x.png" uncheckedImage=""/>
+    <imageCheckBox width='10' height='10' left='764' top='318' field='cross7' checkedImage="img/x.png" uncheckedImage=""/>
+    <imageCheckBox width='10' height='10' left='782' top='318' field='cross8' checkedImage="img/x.png" uncheckedImage=""/>
+</group>

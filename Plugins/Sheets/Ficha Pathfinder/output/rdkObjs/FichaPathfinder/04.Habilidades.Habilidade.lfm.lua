@@ -51,6 +51,29 @@ local function constructNew_frmFichaRPGmeister4h_svg()
 				showMessage("Ops, bug.. nao encontrei o popup de habilidades para exibir");
 			end;				
 		end;
+
+		local function use()
+			local mesa = Firecast.getMesaDe(sheet);
+
+			local texto = (sheet.nomeHabilidade or "Habilidade") .. " foi usado.";
+			if sheet.cd~=nil then
+				texto = texto .. " CD: " .. sheet.cd .. ".";
+			end;
+			
+			if sheet.dados~=nil then
+				local rolagem = Firecast.interpretarRolagem(sheet.dados);
+				
+				mesa.activeChat:rolarDados(rolagem, texto);
+			end;
+
+			if sheet.BarrinhaValor~=nil then
+				sheet.BarrinhaValor = tonumber(sheet.BarrinhaValor) - 1;
+
+				if sheet.dados==nil then
+					mesa.activeChat:enviarMensagem(texto);
+				end;
+			end;
+		end;
 	
 
 
@@ -142,8 +165,15 @@ local function constructNew_frmFichaRPGmeister4h_svg()
     obj.button2:setParent(obj);
     obj.button2:setAlign("right");
     obj.button2:setWidth(25);
-    obj.button2:setText("X");
+    obj.button2:setText("U");
     obj.button2:setName("button2");
+
+    obj.button3 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button3:setParent(obj);
+    obj.button3:setAlign("right");
+    obj.button3:setWidth(25);
+    obj.button3:setText("X");
+    obj.button3:setName("button3");
 
     obj.edit2 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit2:setParent(obj);
@@ -204,10 +234,16 @@ local function constructNew_frmFichaRPGmeister4h_svg()
 
     obj._e_event6 = obj.button2:addEventListener("onClick",
         function (_)
+            use();
+        end, obj);
+
+    obj._e_event7 = obj.button3:addEventListener("onClick",
+        function (_)
             askForDelete();
         end, obj);
 
     function obj:_releaseEvents()
+        __o_rrpgObjs.removeEventListenerById(self._e_event7);
         __o_rrpgObjs.removeEventListenerById(self._e_event6);
         __o_rrpgObjs.removeEventListenerById(self._e_event5);
         __o_rrpgObjs.removeEventListenerById(self._e_event4);
@@ -226,18 +262,19 @@ local function constructNew_frmFichaRPGmeister4h_svg()
           self:setNodeDatabase(nil);
         end;
 
-        if self.dataLink1 ~= nil then self.dataLink1:destroy(); self.dataLink1 = nil; end;
-        if self.button2 ~= nil then self.button2:destroy(); self.button2 = nil; end;
+        if self.Barrinha ~= nil then self.Barrinha:destroy(); self.Barrinha = nil; end;
         if self.button1 ~= nil then self.button1:destroy(); self.button1 = nil; end;
         if self.CorBarrinha ~= nil then self.CorBarrinha:destroy(); self.CorBarrinha = nil; end;
         if self.InfoBarrinha ~= nil then self.InfoBarrinha:destroy(); self.InfoBarrinha = nil; end;
-        if self.layout1 ~= nil then self.layout1:destroy(); self.layout1 = nil; end;
+        if self.button3 ~= nil then self.button3:destroy(); self.button3 = nil; end;
+        if self.ValoresBarrinha ~= nil then self.ValoresBarrinha:destroy(); self.ValoresBarrinha = nil; end;
+        if self.button2 ~= nil then self.button2:destroy(); self.button2 = nil; end;
+        if self.imageCheckBox1 ~= nil then self.imageCheckBox1:destroy(); self.imageCheckBox1 = nil; end;
         if self.edit2 ~= nil then self.edit2:destroy(); self.edit2 = nil; end;
+        if self.layout1 ~= nil then self.layout1:destroy(); self.layout1 = nil; end;
         if self.edit1 ~= nil then self.edit1:destroy(); self.edit1 = nil; end;
         if self.layout2 ~= nil then self.layout2:destroy(); self.layout2 = nil; end;
-        if self.ValoresBarrinha ~= nil then self.ValoresBarrinha:destroy(); self.ValoresBarrinha = nil; end;
-        if self.imageCheckBox1 ~= nil then self.imageCheckBox1:destroy(); self.imageCheckBox1 = nil; end;
-        if self.Barrinha ~= nil then self.Barrinha:destroy(); self.Barrinha = nil; end;
+        if self.dataLink1 ~= nil then self.dataLink1:destroy(); self.dataLink1 = nil; end;
         self:_oldLFMDestroy();
     end;
 

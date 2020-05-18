@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+
+<flowLayout align="top" autoHeight="true" maxColumns="4" horzAlign="center" orientation="vertical" avoidScale="true">
+	<ListaFlexivel nome="MAGIAS INATAS" rclName="campoDosInatos" rclField="campoDosInatos" templateForm="frmMagiasFoco"/>
+	<ListaFlexivel nome="MAGIAS DE FOCO" rclName="campoDosFocos" rclField="campoDosFocos" templateForm="frmMagiasFoco"/>
+	<ListaFlexivel nome="TRUQUES MÁGICOS" rclName="campoDosTruques" rclField="campoDosTruques" templateForm="frmMagiasMagia"/>
+	<ListaFlexivel nome="MAGIAS" rclName="campoDasMagias" rclField="campoDasMagias" templateForm="frmMagiasMagia"/>
+</flowLayout>

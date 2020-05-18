@@ -27,12 +27,53 @@ local function constructNew_frmInseriorFireDrive()
     _gui_assignInitialParentForForm(obj.handle);
     obj:beginUpdate();
     obj:setName("frmInseriorFireDrive");
-    obj:setWidth(460);
+    obj:setWidth(520);
     obj:setHeight(300);
     obj:setDrawContainer(true);
     obj:setResizable(true);
     obj:setPlacement("center");
     obj:setCancelable(false);
+
+    obj.popMany = GUI.fromHandle(_obj_newObject("popup"));
+    obj.popMany:setParent(obj);
+    obj.popMany:setName("popMany");
+    obj.popMany:setWidth(400);
+    obj.popMany:setHeight(250);
+    obj.popMany:setBackOpacity(0.4);
+    lfm_setPropAsString(obj.popMany, "autoScopeNode",  "false");
+
+    obj.manyDialog = GUI.fromHandle(_obj_newObject("label"));
+    obj.manyDialog:setParent(obj.popMany);
+    obj.manyDialog:setName("manyDialog");
+    obj.manyDialog:setAlign("top");
+    obj.manyDialog:setHeight(25);
+    obj.manyDialog:setText("");
+
+    obj.manyInstructions = GUI.fromHandle(_obj_newObject("label"));
+    obj.manyInstructions:setParent(obj.popMany);
+    obj.manyInstructions:setName("manyInstructions");
+    obj.manyInstructions:setAlign("top");
+    obj.manyInstructions:setHeight(25);
+    obj.manyInstructions:setText("");
+
+    obj.button1 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button1:setParent(obj.popMany);
+    obj.button1:setAlign("bottom");
+    obj.button1:setHeight(25);
+    obj.button1:setText("Ok");
+    obj.button1:setName("button1");
+
+    obj.textEditor1 = GUI.fromHandle(_obj_newObject("textEditor"));
+    obj.textEditor1:setParent(obj.popMany);
+    obj.textEditor1:setAlign("client");
+    obj.textEditor1:setField("input");
+    obj.textEditor1:setName("textEditor1");
+
+
+			self.manyDialog.text = lang('scene.inseridor.dialog.manyDialog');
+			self.manyInstructions.text = lang('scene.inseridor.dialog.manyInstructions');
+		
+
 
 
 		require("system.lua");
@@ -56,6 +97,17 @@ local function constructNew_frmInseriorFireDrive()
 			self.btnOkName.enabled = mustBeVisible;
 			self.delete.enabled = mustBeVisible;
 		end;
+
+		local function showPopupMany()
+			local pop = self:findControlByName("popMany");
+				
+			if pop ~= nil then
+				pop:setNodeObject(self.sheet);
+				pop:showPopupEx("right", self);
+			else
+				showMessage("Ops, bug.. nao encontrei o popup para exibir");
+			end;				
+		end;
 	
 
 
@@ -66,7 +118,7 @@ local function constructNew_frmInseriorFireDrive()
 
     obj.layout1 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout1:setParent(obj.scrollBox1);
-    obj.layout1:setWidth(130);
+    obj.layout1:setWidth(190);
     obj.layout1:setAlign("left");
     obj.layout1:setMargins({left=5, bottom=2, top=2});
     obj.layout1:setName("layout1");
@@ -88,9 +140,16 @@ local function constructNew_frmInseriorFireDrive()
     obj.delete = GUI.fromHandle(_obj_newObject("button"));
     obj.delete:setParent(obj.flowLayout1);
     obj.delete:setWidth(60);
-    obj.delete:setMargins({left=0, top=2, bottom=2});
+    obj.delete:setMargins({left=0, top=2, bottom=2, right=2});
     obj.delete:setName("delete");
     obj.delete:setHeight(35);
+
+    obj.btnMany = GUI.fromHandle(_obj_newObject("button"));
+    obj.btnMany:setParent(obj.flowLayout1);
+    obj.btnMany:setWidth(60);
+    obj.btnMany:setMargins({left=0, top=2, bottom=2});
+    obj.btnMany:setName("btnMany");
+    obj.btnMany:setHeight(35);
 
     obj.rectangle1 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle1:setParent(obj.layout1);
@@ -1141,6 +1200,22 @@ local function constructNew_frmInseriorFireDrive()
     obj.flowLayout5:setHorzAlign("trailing");
     obj.flowLayout5:setName("flowLayout5");
 
+    obj.btnImport = GUI.fromHandle(_obj_newObject("button"));
+    obj.btnImport:setParent(obj.flowLayout5);
+    obj.btnImport:setWidth(80);
+    obj.btnImport:setHorzTextAlign("center");
+    obj.btnImport:setName("btnImport");
+    obj.btnImport:setHeight(35);
+    obj.btnImport:setMargins({left=4, right=4});
+
+    obj.btnExport = GUI.fromHandle(_obj_newObject("button"));
+    obj.btnExport:setParent(obj.flowLayout5);
+    obj.btnExport:setWidth(80);
+    obj.btnExport:setHorzTextAlign("center");
+    obj.btnExport:setName("btnExport");
+    obj.btnExport:setHeight(35);
+    obj.btnExport:setMargins({left=4, right=4});
+
     obj.btnInsert = GUI.fromHandle(_obj_newObject("button"));
     obj.btnInsert:setParent(obj.flowLayout5);
     obj.btnInsert:setWidth(80);
@@ -1166,7 +1241,10 @@ local function constructNew_frmInseriorFireDrive()
     obj.btnCancelName:setMargins({left=4, right=4});
 
 
-			self.btnNew.text = lang('scene.inseridor.buttons.new');			
+			self.btnNew.text = lang('scene.inseridor.buttons.new');
+			self.btnMany.text = lang('scene.inseridor.buttons.many');
+			self.btnImport.text = lang('scene.inseridor.buttons.import');
+			self.btnExport.text = lang('scene.inseridor.buttons.export');
 			self.btnInsert.text = lang('scene.inseridor.buttons.insert');
 			self.btnOkName.text = lang('scene.inseridor.buttons.insertClose');
 			self.btnCancelName.text = lang('scene.inseridor.buttons.Close');
@@ -1302,7 +1380,13 @@ local function constructNew_frmInseriorFireDrive()
 		                -- arq.stream possui o objeto stream do conteúdo 
 
 		                FireDrive.createDirectory("/uploads");
-		                FireDrive.upload("/uploads/" .. arq.name, arq.stream,
+
+		                local date_table = os.date("*t")
+				        local subfolder = date_table.year .. date_table.month;
+
+				        FireDrive.createDirectory("/uploads/" .. subfolder);
+				        
+		                FireDrive.upload("/uploads/" .. subfolder .. "/" .. arq.name, arq.stream,
 		                	function(fditem)
 								if selNode ~= nil then
 									selNode.image = fditem.url;
@@ -1326,14 +1410,81 @@ local function constructNew_frmInseriorFireDrive()
 			end;
 		end;
 
+		function self:import()
+			Dialogs.openFile("Importar Ficha", "application/xml", false, 
+				function(arquivos)
+					local arq = arquivos[1];
+
+					local import = {};
+					local bytes = arq.stream:read(import, arq.stream.size);
+
+					local xml = Utils.binaryDecode(import, "utf8");
+
+					local node = NDB.newMemNodeDatabase();
+					NDB.importXML(node, xml);
+
+					local tokens = NDB.getChildNodes(node.tokensSalvos);
+					for i=1, #tokens, 1 do
+						local newNode = self.rclListaDosTokens:append();
+			
+						if newNode ~= nil then
+							newNode.angle = tokens[i].angle;
+							newNode.bar1 = tokens[i].bar1;
+							newNode.bar1Color = tokens[i].bar1Color;
+							newNode.bar1Max = tokens[i].bar1Max;
+							newNode.bar2 = tokens[i].bar2;
+							newNode.bar2Color = tokens[i].bar2Color;
+							newNode.bar2Max = tokens[i].bar2Max;
+							newNode.bar3 = tokens[i].bar3;
+							newNode.bar3Color = tokens[i].bar3Color;
+							newNode.bar3Max = tokens[i].bar3Max;
+							newNode.character = tokens[i].character;
+							newNode.facingMode = tokens[i].facingMode;
+							newNode.hasSight = tokens[i].hasSight;
+							newNode.height = tokens[i].height;
+							newNode.image = tokens[i].image;
+							newNode.layer = tokens[i].layer;
+							newNode.lightAngle = tokens[i].lightAngle;
+							newNode.lightIntense = tokens[i].lightIntense;
+							newNode.lightWeak = tokens[i].lightWeak;
+							newNode.name = tokens[i].name;
+							newNode.snapToGrid = tokens[i].snapToGrid;
+							newNode.visionAngle = tokens[i].visionAngle;
+							newNode.visionDark = tokens[i].visionDark;
+							newNode.visionIntense = tokens[i].visionIntense;
+							newNode.visionWeak = tokens[i].visionWeak;
+							newNode.width = tokens[i].width;
+						end;
+					end;
+					self.rclListaDosTokens:sort();
+				end);
+
+		end;
+
+		function self:export()
+			local xml = NDB.exportXML(sheet);
+
+			local export = {};
+			local bytes = Utils.binaryEncode(export, "utf8", xml);
+
+			local stream = Utils.newMemoryStream();
+			local bytes = stream:write(export);
+
+			Dialogs.saveFile("Salvar Ficha como XML", stream, "tokens.xml", "application/xml",
+				function()
+					stream:close();
+					showMessage("Ficha Exportada.");
+				end);
+		end;
+
 		function self:processarOkClose()
 			self:processarOK();
 			self:processarCancel();
 		end;
 
 		
-		function self:processarNew()			
-			local newNode = self.rclListaDosTokens:append();	
+		function self:processarNew()
+			local newNode = self.rclListaDosTokens:append();
 			
 			if newNode ~= nil then
 				newNode.name = lang("scene.inseridor.nameYourToken");
@@ -1473,53 +1624,118 @@ local function constructNew_frmInseriorFireDrive()
             self:processarCancel();
         end, obj);
 
-    obj._e_event2 = obj.btnNew:addEventListener("onClick",
+    obj._e_event2 = obj.button1:addEventListener("onClick",
+        function (_)
+            local s = sheet.input or "";
+            		        local t = {}
+            		        local size = 0;
+            				for substring in s:gmatch("[^#]+") do
+            				   table.insert(t, substring)
+            				   size = size + 1;
+            				end
+            
+            				for i=1, size, 2 do
+            					local newNode = self.rclListaDosTokens:append();
+            			
+            					if newNode ~= nil then
+            						newNode.name = t[i];
+            						newNode.image = t[i+1];	
+            						newNode.width = 1;
+            						newNode.height = 1;
+            						newNode.angle = 0;	
+            						newNode.snapToGrid = true;				
+            						newNode.bar1Color = "Indianred";
+            						newNode.bar2Color = "Lightskyblue";
+            						newNode.bar3Color = "Limegreen";	
+            						newNode.visionIntense = 102;
+            						newNode.visionWeak = 1.5;
+            						newNode.visionDark = 0;
+            						newNode.visionAngle = 360;
+            						newNode.hasSight = false;
+            						newNode.lightIntense = 0;
+            						newNode.lightWeak = 0;
+            						newNode.lightAngle = 360;
+            						newNode.layer = 'T';  -- tokens
+            						newNode.facingMode = "rotate";
+            						self.rclListaDosTokens.selectedNode = newNode;
+            						self:checkVisibilityOfTabControl();				
+            						self.tabCtrlDados.tabIndex = 0;
+            						self.labelVal:setFocus();
+            					end;
+            				end;
+            
+            				sheet.input = "";
+            
+            				local pop = self:findControlByName("popMany");
+            				if pop ~= nil then pop:close() end;
+        end, obj);
+
+    obj._e_event3 = obj.btnNew:addEventListener("onClick",
         function (_)
             self:processarNew()
         end, obj);
 
-    obj._e_event3 = obj.delete:addEventListener("onClick",
+    obj._e_event4 = obj.delete:addEventListener("onClick",
         function (_)
             self:deleteToken()
         end, obj);
 
-    obj._e_event4 = obj.rclListaDosTokens:addEventListener("onSelect",
+    obj._e_event5 = obj.btnMany:addEventListener("onClick",
+        function (_)
+            showPopupMany();
+        end, obj);
+
+    obj._e_event6 = obj.rclListaDosTokens:addEventListener("onSelect",
         function (_)
             self.dsbToken.node = self.rclListaDosTokens.selectedNode;													
             						self:checkVisibilityOfTabControl();
         end, obj);
 
-    obj._e_event5 = obj.rclListaDosTokens:addEventListener("onCompare",
+    obj._e_event7 = obj.rclListaDosTokens:addEventListener("onCompare",
         function (_, nodeA, nodeB)
             return Utils.compareStringPtBr(nodeA.name, nodeB.name);
         end, obj);
 
-    obj._e_event6 = obj.labelVal:addEventListener("onUserChange",
+    obj._e_event8 = obj.labelVal:addEventListener("onUserChange",
         function (_)
             self.rclListaDosTokens:sort()
         end, obj);
 
-    obj._e_event7 = obj.input:addEventListener("onClick",
+    obj._e_event9 = obj.input:addEventListener("onClick",
         function (_)
             self:openFile()
         end, obj);
 
-    obj._e_event8 = obj.btnInsert:addEventListener("onClick",
+    obj._e_event10 = obj.btnImport:addEventListener("onClick",
+        function (_)
+            self:import()
+        end, obj);
+
+    obj._e_event11 = obj.btnExport:addEventListener("onClick",
+        function (_)
+            self:export()
+        end, obj);
+
+    obj._e_event12 = obj.btnInsert:addEventListener("onClick",
         function (_)
             self:processarOK()
         end, obj);
 
-    obj._e_event9 = obj.btnOkName:addEventListener("onClick",
+    obj._e_event13 = obj.btnOkName:addEventListener("onClick",
         function (_)
             self:processarOkClose()
         end, obj);
 
-    obj._e_event10 = obj.btnCancelName:addEventListener("onClick",
+    obj._e_event14 = obj.btnCancelName:addEventListener("onClick",
         function (_)
             self:processarCancel()
         end, obj);
 
     function obj:_releaseEvents()
+        __o_rrpgObjs.removeEventListenerById(self._e_event14);
+        __o_rrpgObjs.removeEventListenerById(self._e_event13);
+        __o_rrpgObjs.removeEventListenerById(self._e_event12);
+        __o_rrpgObjs.removeEventListenerById(self._e_event11);
         __o_rrpgObjs.removeEventListenerById(self._e_event10);
         __o_rrpgObjs.removeEventListenerById(self._e_event9);
         __o_rrpgObjs.removeEventListenerById(self._e_event8);
@@ -1567,6 +1783,7 @@ local function constructNew_frmInseriorFireDrive()
         if self.flowPart1 ~= nil then self.flowPart1:destroy(); self.flowPart1 = nil; end;
         if self.angleVal ~= nil then self.angleVal:destroy(); self.angleVal = nil; end;
         if self.click ~= nil then self.click:destroy(); self.click = nil; end;
+        if self.btnMany ~= nil then self.btnMany:destroy(); self.btnMany = nil; end;
         if self.btnNew ~= nil then self.btnNew:destroy(); self.btnNew = nil; end;
         if self.visionHave ~= nil then self.visionHave:destroy(); self.visionHave = nil; end;
         if self.flowPart2 ~= nil then self.flowPart2:destroy(); self.flowPart2 = nil; end;
@@ -1582,18 +1799,22 @@ local function constructNew_frmInseriorFireDrive()
         if self.labSnapToGrid ~= nil then self.labSnapToGrid:destroy(); self.labSnapToGrid = nil; end;
         if self.labGroupHeader3 ~= nil then self.labGroupHeader3:destroy(); self.labGroupHeader3 = nil; end;
         if self.layout12 ~= nil then self.layout12:destroy(); self.layout12 = nil; end;
+        if self.button1 ~= nil then self.button1:destroy(); self.button1 = nil; end;
         if self.cmbFacingMode ~= nil then self.cmbFacingMode:destroy(); self.cmbFacingMode = nil; end;
         if self.edtBarValue3 ~= nil then self.edtBarValue3:destroy(); self.edtBarValue3 = nil; end;
         if self.labMetricVLI ~= nil then self.labMetricVLI:destroy(); self.labMetricVLI = nil; end;
         if self.labCompLuz2 ~= nil then self.labCompLuz2:destroy(); self.labCompLuz2 = nil; end;
         if self.label4 ~= nil then self.label4:destroy(); self.label4 = nil; end;
         if self.layout9 ~= nil then self.layout9:destroy(); self.layout9 = nil; end;
+        if self.popMany ~= nil then self.popMany:destroy(); self.popMany = nil; end;
         if self.labMetricLF ~= nil then self.labMetricLF:destroy(); self.labMetricLF = nil; end;
         if self.labMetricLI ~= nil then self.labMetricLI:destroy(); self.labMetricLI = nil; end;
+        if self.btnExport ~= nil then self.btnExport:destroy(); self.btnExport = nil; end;
         if self.flowPart12 ~= nil then self.flowPart12:destroy(); self.flowPart12 = nil; end;
         if self.scrollBox2 ~= nil then self.scrollBox2:destroy(); self.scrollBox2 = nil; end;
         if self.edtBarValue2 ~= nil then self.edtBarValue2:destroy(); self.edtBarValue2 = nil; end;
         if self.tabPrincipal ~= nil then self.tabPrincipal:destroy(); self.tabPrincipal = nil; end;
+        if self.btnImport ~= nil then self.btnImport:destroy(); self.btnImport = nil; end;
         if self.btnCancelName ~= nil then self.btnCancelName:destroy(); self.btnCancelName = nil; end;
         if self.labelVal ~= nil then self.labelVal:destroy(); self.labelVal = nil; end;
         if self.flowPart4 ~= nil then self.flowPart4:destroy(); self.flowPart4 = nil; end;
@@ -1644,9 +1865,12 @@ local function constructNew_frmInseriorFireDrive()
         if self.flowPart3 ~= nil then self.flowPart3:destroy(); self.flowPart3 = nil; end;
         if self.edtBarValue1 ~= nil then self.edtBarValue1:destroy(); self.edtBarValue1 = nil; end;
         if self.scrollBox3 ~= nil then self.scrollBox3:destroy(); self.scrollBox3 = nil; end;
-        if self.layout11 ~= nil then self.layout11:destroy(); self.layout11 = nil; end;
+        if self.manyInstructions ~= nil then self.manyInstructions:destroy(); self.manyInstructions = nil; end;
         if self.label3 ~= nil then self.label3:destroy(); self.label3 = nil; end;
+        if self.layout11 ~= nil then self.layout11:destroy(); self.layout11 = nil; end;
+        if self.textEditor1 ~= nil then self.textEditor1:destroy(); self.textEditor1 = nil; end;
         if self.horzLine3 ~= nil then self.horzLine3:destroy(); self.horzLine3 = nil; end;
+        if self.manyDialog ~= nil then self.manyDialog:destroy(); self.manyDialog = nil; end;
         if self.widthVal ~= nil then self.widthVal:destroy(); self.widthVal = nil; end;
         if self.flpBar1 ~= nil then self.flpBar1:destroy(); self.flpBar1 = nil; end;
         if self.lightWeak ~= nil then self.lightWeak:destroy(); self.lightWeak = nil; end;

@@ -42,6 +42,8 @@ Esses são plugins de fichas para diversos sistemas (Próprios e Comerciais) e s
 	- Ficha para o cenario e sistema Numenéra.
 - [Ficha Pathfinder](https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20Pathfinder/output/Ficha%20Pathfinder.rpk?raw=true): Ambesek
 	- Ficha para o sistema Pathfinder.
+- [Ficha Pathfinder 2e](https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20Pathfinder%202e/output/Ficha%20Pathfinder%202e.rpk?raw=true): Ambesek
+	- Ficha para o sistema Pathfinder 2e.
 - [Ficha RPG meister](https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20RPG%20meister/output/Ficha%20RPG%20meister.rpk?raw=true): Ambesek
 	- Ficha para d20system. Usada por jogadores de D&D3.5 e outros derivados.
 - [Ficha Shadowrun 5e](https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20Shadowrun%205E/output/Ficha%20Shadowrun%205E.rpk?raw=true): Ambesek
@@ -70,6 +72,7 @@ Esses são plugins de fichas para diversos sistemas (Próprios e Comerciais) e s
 - [Mighty Blade V6](https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/MightyBladeV6/output/MightyBladeV6.rpk?raw=true): DanielMartinsLF
 - [Mutante e Malfeitores 3e](https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Mutantes%20e%20Malfeitores%203e/output/MM3.rpk?raw=true): Janus71 e Gilgante
 	- Ficha para o sistema Mutantes e Malfeitores. 
+- [O Tomo](https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/O%20Tomo/output/O%20Tomo.rpk?raw=true): rafaelskate8
 - [Os Mundos dos Mortos](https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Os%20Mundos%20dos%20Mortos/output/Os%20Mundos%20dos%20Mortos.rpk?raw=true): Mestre_Stark
 - [Old Dragon](https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Old%20Dragon/output/Old%20Dragon.rpk?raw=true): Matheus Furtado
 - [Pokemon D20](https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Pokemon%20D20/output/Ficha%20PKMN.rpk?raw=true): Ambesek

@@ -1,0 +1,198 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmFichaRPGmeister3_svg" align="client" theme="dark" margins="{top=1}">
+	<scrollBox align="client">
+
+		<script> 
+		<![CDATA[
+			
+			local path = NDB.load("pathskills.xml");
+
+			local function updateAtributes(num)
+				local atr = "" .. num;
+				local mod = 0;
+				
+				if num == 1 then
+					mod = tonumber(sheet.efetModFor) or 0;
+				elseif num == 2 then
+					mod = tonumber(sheet.efetModDes) or 0;
+				elseif num == 3 then
+					mod = tonumber(sheet.efetModCon) or 0;
+				elseif num == 4 then
+					mod = tonumber(sheet.efetModInt) or 0;
+				elseif num == 5 then
+					mod = tonumber(sheet.efetModSab) or 0;
+				elseif num == 6 then
+					mod = tonumber(sheet.efetModCar) or 0;
+				end;
+
+				local nodes = NDB.getChildNodes(sheet.campoDasPericias); 
+				for i=1, #nodes, 1 do
+					if nodes[i].chavePericia == atr then
+						nodes[i].atributoPericia = mod;
+					end;
+				end
+			end;
+
+			local function updatePenalty()
+				if sheet~=nil then
+					local nodes = NDB.getChildNodes(sheet.campoDasPericias); 
+					for i=1, #nodes, 1 do
+						if nodes[i].penalidadeArmadura then
+							local pen = (tonumber(sheet.penalidade) or 0)
+
+							local mod = (tonumber(nodes[i].atributoPericia) or 0) +
+										(tonumber(nodes[i].graduacaoPericia) or 0) +
+										(tonumber(nodes[i].penalidesPericia) or 0) +
+										(tonumber(nodes[i].racialPericia) or 0) +
+										(tonumber(nodes[i].sinergiaPericia) or 0) +
+										(tonumber(nodes[i].equipamentosPericia) or 0) +
+										(tonumber(nodes[i].magicoPericia) or 0) +
+										(tonumber(nodes[i].outrosPericia) or 0) + 
+										(tonumber(nodes[i].talentosPericia) or 0) +
+										(tonumber(nodes[i].classePericia) or 0);
+
+							if nodes[i].penalidadeArmadura then
+								mod = mod + pen;
+							end;
+
+							nodes[i].totalPericia = mod;
+						end;
+					end;
+				end;
+			end;
+
+			local function pathSkills()
+				local nodes = NDB.getChildNodes(sheet.campoDasPericias); 
+				for i=1, #nodes, 1 do
+					NDB.deleteNode(nodes[i]);
+				end
+
+				for i=1, 17, 1 do
+					local pericia = self.rclListaDasPericias:append();
+					if pericia~=nil then
+						pericia.nomePericia = path[i].nome;
+						pericia.chavePericia = path[i].chave;
+						local armadura = tonumber(path[i].armadura) or 0;
+						if armadura > 0 then
+							pericia.penalidadeArmadura = true;
+						end;
+					end;
+				end;
+
+				self.rclListaDasPericias:sort();
+			end;
+		]]>	
+		</script>
+
+		<template name="periciaSmallCenter">
+			<flowPart minWidth="90" maxWidth="100" height="35">
+				<label align="top" class="tituloCampo" fontSize="10" text="$(text)" horzTextAlign="center" wordWrap="true" textTrimming="none" autoSize="true"/>
+				<edit align="client" class="" field="$(field)" horzTextAlign="center" fontSize="12" type="number"/>
+			</flowPart>
+		</template>
+		<template name="proficienciaLabel">
+			<label text="$(text)" left="5" top="$(top)" width="100" height="25" horzTextAlign="center"/>
+			<comboBox vertTextAlign="center" horzTextAlign="center" left="105" top="$(top)" width="40" height="25" field="prof$(field)" items="{'D', 'T', 'E', 'M', 'L'}" values="{'0', '2', '4', '6', '8'}" fontColor="white"/>
+		</template>
+		<template name="proficienciaEdit">
+			<edit field="$(field)" left="5" top="$(top)" width="100" height="25" horzTextAlign="center"/>
+			<comboBox vertTextAlign="center" horzTextAlign="center" left="105" top="$(top)" width="40" height="25" field="prof$(field)" items="{'D', 'T', 'E', 'M', 'L'}" values="{'0', '2', '4', '6', '8'}" fontColor="white"/>
+		</template>
+
+		<popup name="popPericia" width="300" height="250" backOpacity="0.4" autoScopeNode="false">
+			<flowLayout align="top" autoHeight="true" maxControlsPerLine="3" margins="{bottom=4}" horzAlign="center">
+				<periciaSmallCenter text="Penalidades" field="penalidesPericia"/>
+				<periciaSmallCenter text="Racial" field="racialPericia"/>
+				<periciaSmallCenter text="Traços" field="sinergiaPericia"/>
+				<periciaSmallCenter text="Equipamentos" field="equipamentosPericia"/>
+				<periciaSmallCenter text="Magico" field="magicoPericia"/>
+				<periciaSmallCenter text="Outros" field="outrosPericia"/>
+				<periciaSmallCenter text="Talentos" field="talentosPericia"/>
+				<periciaSmallCenter text="Classe" field="classePericia"/>
+				<periciaSmallCenter text="Condicional" field="condicionalPericia"/>
+				<periciaSmallCenter text="Competencia" field="competenciaPericia"/>
+				<periciaSmallCenter text="Intuição" field="intuicaoPericia"/>
+				<periciaSmallCenter text="Sorte" field="sortePericia"/>
+			</flowLayout>
+			<textEditor align="bottom" height="80" field="descricao"/>
+			<checkBox align="right" text="Penalidade Armadura" field="penalidadeArmadura"/>
+		</popup>
+		<popup name="popIdioma" width="200" height="100" backOpacity="0.4" autoScopeNode="false">
+			<checkBox align="top" text="Falar/Entender" field="conversarIdioma"/>
+			<checkBox align="top" text="Escrever/Ler" field="escritaIdioma"/>
+			<textEditor align="client" field="descricao"/>
+		</popup>
+
+		<layout left="0" top="0" width="515" height="635">
+			<rectangle align="client" color="black"/>
+			<label text="NOME DA PERÍCIA" left="20" top="1" width="135" height="20" horzTextAlign="center"/>
+			<label text="CHAVE" left="165" top="1" width="60" height="20" horzTextAlign="center"/>
+			<label text="TOTAL" left="245" top="1" width="40" height="20" horzTextAlign="center"/>
+			<label text="ATR" left="285" top="1" width="33" height="20" horzTextAlign="center"/>
+			<label text="PROF" left="320" top="1" width="40" height="20" horzTextAlign="center"/>
+			<label text="ITEM" left="365" top="1" width="40" height="20" horzTextAlign="center" fontSize="11"/>
+			<label text="ARM" left="405" top="1" width="40" height="20" horzTextAlign="center" fontSize="11"/>
+
+			<recordList name="rclListaDasPericias" field="campoDasPericias" templateForm="frmFichaRPGmeister3p_svg" left="5" top="25" width="505" height="650" layout="verticalTiles">
+				<event name="onCompare">
+		            return Utils.compareStringPtBr(nodeA.nomePericia, nodeB.nomePericia);
+			    </event>
+				<event name="onEndEnumeration">
+					if sheet==nil then return end;
+					local nodes = NDB.getChildNodes(sheet.campoDasPericias);               
+					if #nodes == 0 then
+						pathSkills();
+					end;
+				</event>
+				<event name="onBeginEnumeration">
+					if sheet==nil then return end;
+					local nodes = NDB.getChildNodes(sheet.campoDasPericias);               
+					if #nodes == 0 then
+						pathSkills();
+					end;
+				</event>
+			</recordList>
+		</layout>
+
+		<layout left="520" top="0" width="300" height="400">
+			<rectangle align="client" color="black"/>
+			<label text="IDIOMAS" left="0" top="1" width="300" height="20" horzTextAlign="center"/>
+
+			<label text="Idioma" left="0" top="30" width="110" height="20" horzTextAlign="center"/>
+			<label text="Alfabeto" left="110" top="30" width="110" height="20" horzTextAlign="center"/>
+
+			<recordList name="rclListaDosIdiomas" field="campoDosIdiomas" templateForm="frmFichaRPGmeister3i_svg" left="5" top="50" width="290" height="345" layout="vertical">
+				<event name="onCompare">
+		            return Utils.compareStringPtBr(nodeA.nomeIdioma, nodeB.nomeIdioma);
+		        </event>
+			</recordList>
+		</layout>
+
+		<layout left="520" top="410" width="135" height="200">
+			<button text="Nova Perícia" left="0" top="0" width="125" height="25" onClick="self.rclListaDasPericias:append();"/>
+			<button text="Novo Idioma" left="0" top="25" width="125" height="25">
+				<event name="onClick">
+					local idioma = self.rclListaDosIdiomas:append();
+					idioma.conversarIdioma = true;
+					idioma.escritaIdioma = true;
+				</event>
+			</button>
+		</layout>
+
+		<rectangle color="black" left="825" top="0" width="200" height="135">
+			<label text="PROFICIÊNCIA COM ARMAS" left="0" top="1" width="200" height="20" horzTextAlign="center"/>
+			<proficienciaLabel text="Simples" top="25" field="ArmasSimples"/>
+			<proficienciaLabel text="Marcial" top="50" field="ArmasMarcial"/>
+			<proficienciaEdit top="75" field="Outro1"/>
+			<proficienciaEdit top="100" field="Outro2"/>
+		</rectangle>
+
+		<rectangle color="black" left="825" top="140" width="200" height="135">
+			<label text="PROFICIÊNCIA COM ARMADURAS" left="0" top="1" width="200" height="20" horzTextAlign="center" fontSize="12"/>
+			<proficienciaLabel text="Sem Armadura" top="25" field="ArmaduraSemArmadura"/>
+			<proficienciaLabel text="Leve" top="50" field="ArmaduraLeve"/>
+			<proficienciaLabel text="Média" top="75" field="ArmaduraMedia"/>
+			<proficienciaLabel text="Pesada" top="100" field="ArmaduraPesada"/>
+		</rectangle>
+	</scrollBox>
+</form>
