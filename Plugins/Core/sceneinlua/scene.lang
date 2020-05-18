@@ -112,6 +112,15 @@ scene.tokenEdit.barraPrefix=Barrinha
 scene.digiteUmValor=Digite um valor
 scene.valor=Valor
 
+scene.labCorAura.text=Cor da Aura
+scene.labAlturaAura.text=Altura da Aura
+scene.labLarguraAura.text=Largura da Aura
+scene.labCorAura.text=Cor da Aura
+scene.labFormaAura.text=Forma Aura
+scene.labAuraURL.text=URL da Aura
+scene.labRaioAura.text=Raio
+scene.labescolhaimg.text=click here to choose image
+scene.labUnidadeMedida.text=Unidade de Medida
 
 userDrawing.categoryTitle=Rabiscos
 userDrawing.freeHand=Desenho à mão livre
@@ -249,6 +258,16 @@ scene.tokenEdit.barraPrefix=Bar
 
 scene.digiteUmValor=Type a value
 scene.valor=Value
+
+scene.labCorAura.text=Aura Color
+scene.labAlturaAura.text=Aura height
+scene.labLarguraAura.text=Aura width
+scene.labCorAura.text=Aura Color
+scene.labFormaAura.text=Aura Form
+scene.labAuraURL.text=Aura URL
+scene.labRaioAura.text=Radius
+scene.labescolhaimg.text=Click to change the image
+scene.labUnidadeMedida.text=Unit of measurement:
 
 userDrawing.categoryTitle=Sketches
 userDrawing.freeHand=Freehand drawing
