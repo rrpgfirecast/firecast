@@ -82,6 +82,9 @@ local function adicionarUmTokenDeUmSceneUnitClass(scene, suc, x, y)
 							tImg.y = 0.5 - suc.layoutCenterY * tImg.height;
 							--tImg.rotation = -suc.direcaoImg;
 							
+							--[[ nome do token direto da biblioteca ]]--
+							token.name = suc.nome;							
+							
 							token.snapToGrid = suc.snapToGrid;
 							token.width = suc.tamanhoX;
 							token.height = suc.tamanhoY;
