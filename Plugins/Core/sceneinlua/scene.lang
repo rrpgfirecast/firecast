@@ -118,7 +118,7 @@ scene.labLarguraAura.text=Largura da Aura
 scene.labCorAura.text=Cor da Aura
 scene.labFormaAura.text=Forma Aura
 scene.labAuraURL.text=URL da Aura
-scene.labRaioAura.text=Raio
+scene.labRaioAura.text=Diametro
 scene.labescolhaimg.text=click here to choose image
 scene.labUnidadeMedida.text=Unidade de Medida
 
@@ -265,7 +265,7 @@ scene.labLarguraAura.text=Aura width
 scene.labCorAura.text=Aura Color
 scene.labFormaAura.text=Aura Form
 scene.labAuraURL.text=Aura URL
-scene.labRaioAura.text=Radius
+scene.labRaioAura.text=Diameter
 scene.labescolhaimg.text=Click to change the image
 scene.labUnidadeMedida.text=Unit of measurement:
 
