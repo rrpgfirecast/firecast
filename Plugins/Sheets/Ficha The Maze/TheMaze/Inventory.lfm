@@ -1,26 +1,40 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <form name="frmInventory" align="client">
 	<template name="Equipamento">
-		<label left="5" top="$(top)" width="95" height="20" text="$(text)" horzTextAlign="center"/>
-		<edit left="100" top="$(top)" width="200" height="25" field="equip_$(field)" vertTextAlign="center" />
-		<edit left="300" top="$(top)" width="590" height="25" field="equip_$(field)_desc" vertTextAlign="center" />
+		<layout align="top" height="50">
+			<label left="5" top="15" width="95" height="20" text="$(text)" horzTextAlign="center"/>
+
+			<edit left="100" top="0" width="300" height="25" field="equip_$(field)" vertTextAlign="center"/>
+			<edit left="400" top="0" width="40" height="25" field="equip_$(field)_act" vertTextAlign="center" type="number"/>
+			<edit left="440" top="0" width="150" height="25" field="equip_$(field)_marca1" vertTextAlign="center"/>
+			<edit left="590" top="0" width="150" height="25" field="equip_$(field)_marca2" vertTextAlign="center"/>
+			<edit left="740" top="0" width="150" height="25" field="equip_$(field)_marca3" vertTextAlign="center"/>
+
+			<label left="100" top="30" width="50" height="20" text="Efeito:" horzTextAlign="center"/>
+			<edit left="150" top="25" width="740" height="25" field="equip_$(field)_desc" vertTextAlign="center"/>
+		</layout>
 	</template>
 	<scrollBox align="client">
-		<rectangle left="0" top="0" width="895" height="160" color="black" strokeColor="white" strokeSize="1">
-			<label left="100" top="5" width="200" height="25" horzTextAlign="center" text="Itens Equipados"/>
-			<label left="300" top="5" width="590" height="25" horzTextAlign="center" text="Efeitos Adicionais"/>
+		<rectangle left="0" top="0" width="895" height="225" color="black" strokeColor="white" strokeSize="1">
 
-			<Equipamento top="30" text="Arma" field="arma"/>
-			<Equipamento top="55" text="Equipamento" field="equipamento"/>
-			<Equipamento top="80" text="Vestimenta" field="vestimenta"/>
-			<edit left="100" top="105" width="200" height="25" field="equip_vestimenta1" vertTextAlign="center" />
-			<edit left="100" top="130" width="200" height="25" field="equip_vestimenta2" vertTextAlign="center" />
+			<layout align="top" height="22">
+				<label left="100" top="5" width="300" height="20" horzTextAlign="center" text="Nome do Item Equipado"/>
+				<label left="400" top="5" width="40" height="20" horzTextAlign="center" text="Act"/>
+				<label left="440" top="5" width="150" height="20" horzTextAlign="center" text="Marca1"/>
+				<label left="590" top="5" width="150" height="20" horzTextAlign="center" text="Marca2"/>
+				<label left="740" top="5" width="150" height="20" horzTextAlign="center" text="Marca3"/>
+			</layout>
+
+			<Equipamento text="Primária" field="arma"/>
+			<Equipamento text="Secundária" field="arma2"/>
+			<Equipamento text="Equipamento" field="equipamento"/>
+			<Equipamento text="Vestimenta" field="vestimenta"/>
 		</rectangle>
 
 		<rectangle left="900" top="0" width="310" height="110" color="black" strokeColor="white" strokeSize="1">
 			<label left="0" top="5" width="310" height="25" horzTextAlign="center" text="Armazenamento"/>
-			<comboBox left="5" top="30" width="300" height="25" field="armazenamento1" items="{'', 'Coldre Pequeno', 'Coldre Grande'}" values="{'0','4','6'}"/>
-			<comboBox left="5" top="55" width="300" height="25" field="armazenamento2" items="{'', 'Coldre Pequeno', 'Coldre Grande'}" values="{'0','4','6'}"/>
+			<comboBox left="5" top="30" width="300" height="25" field="armazenamento1" items="{'', 'Coldre Pequeno', 'Coldre Grande'}" values="{'0','3','6'}"/>
+			<comboBox left="5" top="55" width="300" height="25" field="armazenamento2" items="{'', 'Coldre Pequeno', 'Coldre Grande'}" values="{'0','3','6'}"/>
 			<comboBox left="5" top="80" width="300" height="25" field="armazenamento3" items="{'+0', '+1', '+2', '+3', '+4', '+5', '+6'}" values="{'0','1','2','3','4','5','6'}"/>
 
 			<dataLink fields="{'armazenamento1','armazenamento2','armazenamento3'}">
@@ -43,7 +57,7 @@
 			</dataLink>
 		</rectangle>
 		
-		<rectangle left="0" top="165" width="1210" height="505" color="black" strokeColor="white" strokeSize="1">
+		<rectangle left="0" top="230" width="1210" height="505" color="black" strokeColor="white" strokeSize="1">
 			<label left="5" top="5" width="200" height="25" horzTextAlign="center" text="Itens Guardados"/>
 			<label left="205" top="5" width="700" height="25" horzTextAlign="center" text="Efeitos Adicionais"/>
 			<label left="905" top="5" width="150" height="25" horzTextAlign="center" text="Tipo"/>

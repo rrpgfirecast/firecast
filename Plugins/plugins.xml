@@ -183,7 +183,7 @@
             <dataType id="br.com.RRPG.AODD_S3" title="A Odisseia do Dragão - Ficha de Personagem"/>
         </dataTypes>
     </element>
-    <element id="Ambesek.The.Maze" name="FichaTheMaze" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20The%20Maze/output/Ficha%20The%20Maze.rpk?raw=true" fileName="Ficha The Maze.rpk" repositoryPath="Sheets/Ficha The Maze/" author="Ambesek" description="Ficha para o sistema e cenario The Maze." version="3.5.3" compilationDate="27112019000152" compilationDigest="f7f2356606b4afcfe4ded97ade70a1b8b19ac524">
+    <element id="Ambesek.The.Maze" name="FichaTheMaze" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20The%20Maze/output/Ficha%20The%20Maze.rpk?raw=true" fileName="Ficha The Maze.rpk" repositoryPath="Sheets/Ficha The Maze/" author="Ambesek" description="Ficha para o sistema e cenario The Maze." version="3.5.5" compilationDate="27112019000152" compilationDigest="f7f2356606b4afcfe4ded97ade70a1b8b19ac524">
         <dataTypes>
             <dataType id="Ambesek.Nefertyne.TheMaze" title="Ficha The Maze"/>
             <dataType id="Ambesek.Maze.Tracker" title="Maze Tracker"/>
