@@ -1,14 +1,14 @@
-require("firecast.lua");
+require("rrpg.lua");
 local __o_rrpgObjs = require("rrpgObjs.lua");
 require("rrpgGUI.lua");
 require("rrpgDialogs.lua");
 require("rrpgLFM.lua");
 require("ndb.lua");
-require("locale.lua");
-local __o_Utils = require("utils.lua");
 
-local function constructNew_frmPetSeletor()
-    local obj = GUI.fromHandle(_obj_newObject("form"));
+function newfrmPetSeletor()
+    __o_rrpgObjs.beginObjectsLoading();
+
+    local obj = gui.fromHandle(_obj_newObject("form"));
     local self = obj;
     local sheet = nil;
 
@@ -30,7 +30,7 @@ local function constructNew_frmPetSeletor()
     obj:setWidth(200);
     obj:setHeight(30);
 
-    obj.button1 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button1 = gui.fromHandle(_obj_newObject("button"));
     obj.button1:setParent(obj);
     obj.button1:setTop(0);
     obj.button1:setWidth(30);
@@ -38,7 +38,7 @@ local function constructNew_frmPetSeletor()
     obj.button1:setText("X");
     obj.button1:setName("button1");
 
-    obj.rectangle1 = GUI.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle1 = gui.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle1:setParent(obj);
     obj.rectangle1:setLeft(30);
     obj.rectangle1:setWidth(170);
@@ -48,7 +48,7 @@ local function constructNew_frmPetSeletor()
     obj.rectangle1:setHitTest(false);
     obj.rectangle1:setName("rectangle1");
 
-    obj.label1 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label1 = gui.fromHandle(_obj_newObject("label"));
     obj.label1:setParent(obj.rectangle1);
     obj.label1:setLeft(5);
     obj.label1:setWidth(160);
@@ -57,11 +57,11 @@ local function constructNew_frmPetSeletor()
     obj.label1:setName("label1");
 
     obj._e_event0 = obj.button1:addEventListener("onClick",
-        function (_)
-            Dialogs.confirmOkCancel("Tem certeza que quer apagar esse Pet?",
+        function (self)
+            dialogs.confirmOkCancel("Tem certeza que quer apagar esse Pet?",
             				function (confirmado)
             					if confirmado then
-            						NDB.deleteNode(sheet);
+            						ndb.deleteNode(sheet);
             					end;
             			end);
         end, obj);
@@ -87,23 +87,9 @@ local function constructNew_frmPetSeletor()
 
     obj:endUpdate();
 
+     __o_rrpgObjs.endObjectsLoading();
+
     return obj;
-end;
-
-function newfrmPetSeletor()
-    local retObj = nil;
-    __o_rrpgObjs.beginObjectsLoading();
-
-    __o_Utils.tryFinally(
-      function()
-        retObj = constructNew_frmPetSeletor();
-      end,
-      function()
-        __o_rrpgObjs.endObjectsLoading();
-      end);
-
-    assert(retObj ~= nil);
-    return retObj;
 end;
 
 local _frmPetSeletor = {
@@ -117,6 +103,6 @@ local _frmPetSeletor = {
     description=""};
 
 frmPetSeletor = _frmPetSeletor;
-Firecast.registrarForm(_frmPetSeletor);
+rrpg.registrarForm(_frmPetSeletor);
 
 return _frmPetSeletor;

@@ -10,10 +10,10 @@
 
 	<rectangle align="client" color="#212121">
 		<layout align="top" height="50">
-			<VertLabelEdit width="200" text="Magia/Habilidade" field="nome" fontSize="13"/>
-			<VertLabelEdit width="50" text="AP/IM" field="ap" fontSize="13"/>
+			<VertLabelEdit width="200" text="Técnica" field="nome" fontSize="13"/>
+			<VertLabelEdit width="50" text="AP/TM" field="ap" fontSize="13"/>
 			<VertLabelEdit width="50" text="SP" field="sp" fontSize="13"/>
-			<VertLabelEdit width="50" text="LVL" field="lvl" fontSize="13"/>
+			<VertLabelEdit width="50" text="NV" field="lvl" fontSize="13"/>
 			<rectangle align="left" width="50" height="50" color="black" strokeColor="white" strokeSize="1">
 				<image align="client" field="avatar" editable="true" style="autoFit" margins="{left=2, right=2, top=2, bottom=2}">
 					<event name="OnStartDrag">
@@ -24,10 +24,10 @@
 
 			<button align="left" width="50" text="X" margins="{left=5}">
 				<event name="onClick">
-					Dialogs.confirmOkCancel("Tem certeza que quer apagar essa habilidade?",
+					dialogs.confirmOkCancel("Tem certeza que quer apagar essa habilidade?",
 						function (confirmado)
 							if confirmado then
-								NDB.deleteNode(sheet);
+								ndb.deleteNode(sheet);
 							end;
 					end);
 				</event>

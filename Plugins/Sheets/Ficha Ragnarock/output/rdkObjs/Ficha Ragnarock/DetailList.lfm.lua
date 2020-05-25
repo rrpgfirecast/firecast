@@ -1,14 +1,14 @@
-require("firecast.lua");
+require("rrpg.lua");
 local __o_rrpgObjs = require("rrpgObjs.lua");
 require("rrpgGUI.lua");
 require("rrpgDialogs.lua");
 require("rrpgLFM.lua");
 require("ndb.lua");
-require("locale.lua");
-local __o_Utils = require("utils.lua");
 
-local function constructNew_frmDetailList()
-    local obj = GUI.fromHandle(_obj_newObject("form"));
+function newfrmDetailList()
+    __o_rrpgObjs.beginObjectsLoading();
+
+    local obj = gui.fromHandle(_obj_newObject("form"));
     local self = obj;
     local sheet = nil;
 
@@ -29,26 +29,26 @@ local function constructNew_frmDetailList()
     obj:setName("frmDetailList");
     obj:setAlign("client");
 
-    obj.scrollBox1 = GUI.fromHandle(_obj_newObject("scrollBox"));
+    obj.scrollBox1 = gui.fromHandle(_obj_newObject("scrollBox"));
     obj.scrollBox1:setParent(obj);
     obj.scrollBox1:setAlign("client");
     obj.scrollBox1:setName("scrollBox1");
 
-    obj.layout1 = GUI.fromHandle(_obj_newObject("layout"));
+    obj.layout1 = gui.fromHandle(_obj_newObject("layout"));
     obj.layout1:setParent(obj.scrollBox1);
     obj.layout1:setHeight(660);
     obj.layout1:setWidth(1225);
     obj.layout1:setMargins({right=0});
     obj.layout1:setName("layout1");
 
-    obj.layout2 = GUI.fromHandle(_obj_newObject("layout"));
+    obj.layout2 = gui.fromHandle(_obj_newObject("layout"));
     obj.layout2:setParent(obj.layout1);
     obj.layout2:setAlign("left");
     obj.layout2:setWidth(600);
     obj.layout2:setMargins({right=25});
     obj.layout2:setName("layout2");
 
-    obj.rectangle1 = GUI.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle1 = gui.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle1:setParent(obj.layout2);
     obj.rectangle1:setLeft(0);
     obj.rectangle1:setTop(0);
@@ -57,17 +57,17 @@ local function constructNew_frmDetailList()
     obj.rectangle1:setColor("black");
     obj.rectangle1:setName("rectangle1");
 
-    obj.button1 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button1 = gui.fromHandle(_obj_newObject("button"));
     obj.button1:setParent(obj.layout2);
     obj.button1:setLeft(0);
     obj.button1:setTop(0);
     obj.button1:setWidth(200);
     obj.button1:setHeight(25);
-    obj.button1:setText("Ativa");
+    obj.button1:setText("Ativas");
     obj.button1:setHint("Adicionar");
     obj.button1:setName("button1");
 
-    obj.rclAtiva = GUI.fromHandle(_obj_newObject("recordList"));
+    obj.rclAtiva = gui.fromHandle(_obj_newObject("recordList"));
     obj.rclAtiva:setParent(obj.layout2);
     obj.rclAtiva:setLeft(0);
     obj.rclAtiva:setTop(25);
@@ -79,13 +79,13 @@ local function constructNew_frmDetailList()
     obj.rclAtiva:setLayout("vertical");
     obj.rclAtiva:setSelectable(true);
 
-    obj.layout3 = GUI.fromHandle(_obj_newObject("layout"));
+    obj.layout3 = gui.fromHandle(_obj_newObject("layout"));
     obj.layout3:setParent(obj.layout1);
     obj.layout3:setAlign("left");
     obj.layout3:setWidth(600);
     obj.layout3:setName("layout3");
 
-    obj.rectangle2 = GUI.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle2 = gui.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle2:setParent(obj.layout3);
     obj.rectangle2:setLeft(0);
     obj.rectangle2:setTop(0);
@@ -94,17 +94,17 @@ local function constructNew_frmDetailList()
     obj.rectangle2:setColor("black");
     obj.rectangle2:setName("rectangle2");
 
-    obj.button2 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button2 = gui.fromHandle(_obj_newObject("button"));
     obj.button2:setParent(obj.layout3);
     obj.button2:setLeft(0);
     obj.button2:setTop(0);
     obj.button2:setWidth(200);
     obj.button2:setHeight(25);
-    obj.button2:setText("Passiva");
+    obj.button2:setText("Passivas");
     obj.button2:setHint("Adicionar");
     obj.button2:setName("button2");
 
-    obj.rclPassiva = GUI.fromHandle(_obj_newObject("recordList"));
+    obj.rclPassiva = gui.fromHandle(_obj_newObject("recordList"));
     obj.rclPassiva:setParent(obj.layout3);
     obj.rclPassiva:setLeft(0);
     obj.rclPassiva:setTop(25);
@@ -117,25 +117,25 @@ local function constructNew_frmDetailList()
     obj.rclPassiva:setSelectable(true);
 
     obj._e_event0 = obj.button1:addEventListener("onClick",
-        function (_)
+        function (self)
             self.rclAtiva:append();
         end, obj);
 
     obj._e_event1 = obj.rclAtiva:addEventListener("onCompare",
-        function (_, nodeA, nodeB)
+        function (self, nodeA, nodeB)
             -- Esse codigo organiza a ordem dos objetos da lista alfabeticamente. 
-            				        return Utils.compareStringPtBr(nodeA.nome, nodeB.nome);
+            				        return utils.compareStringPtBr(nodeA.nome, nodeB.nome);
         end, obj);
 
     obj._e_event2 = obj.button2:addEventListener("onClick",
-        function (_)
+        function (self)
             self.rclPassiva:append();
         end, obj);
 
     obj._e_event3 = obj.rclPassiva:addEventListener("onCompare",
-        function (_, nodeA, nodeB)
+        function (self, nodeA, nodeB)
             -- Esse codigo organiza a ordem dos objetos da lista alfabeticamente. 
-            				        return Utils.compareStringPtBr(nodeA.nome, nodeB.nome);
+            				        return utils.compareStringPtBr(nodeA.nome, nodeB.nome);
         end, obj);
 
     function obj:_releaseEvents()
@@ -169,23 +169,9 @@ local function constructNew_frmDetailList()
 
     obj:endUpdate();
 
+     __o_rrpgObjs.endObjectsLoading();
+
     return obj;
-end;
-
-function newfrmDetailList()
-    local retObj = nil;
-    __o_rrpgObjs.beginObjectsLoading();
-
-    __o_Utils.tryFinally(
-      function()
-        retObj = constructNew_frmDetailList();
-      end,
-      function()
-        __o_rrpgObjs.endObjectsLoading();
-      end);
-
-    assert(retObj ~= nil);
-    return retObj;
 end;
 
 local _frmDetailList = {
@@ -199,6 +185,6 @@ local _frmDetailList = {
     description=""};
 
 frmDetailList = _frmDetailList;
-Firecast.registrarForm(_frmDetailList);
+rrpg.registrarForm(_frmDetailList);
 
 return _frmDetailList;

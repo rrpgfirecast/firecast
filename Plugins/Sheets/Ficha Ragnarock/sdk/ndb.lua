@@ -1,8 +1,6 @@
 local objs = require("rrpgObjs.lua");
-local vhd = require("vhd");
-require("utils.lua");
+require("vhd");
 ndb = {}
-NDB = ndb;
 
 local localNDB = {};
 
@@ -94,7 +92,9 @@ function localNDB.nodeFromHandle(nodeHandle)
 	
 	function ctrl:getAllChilds()
 		local ret = {};
-		local count = self:getChildCount();			
+		local i, count;
+		
+		count = self:getChildCount();
 		
 		for i = 0, count - 1, 1 do
 			ret[i + 1] = self:getChild(i);
@@ -115,18 +115,6 @@ function localNDB.nodeFromHandle(nodeHandle)
 		return _ndb_getNodeName(self.handle);
 	end;
 	
-	function ctrl:getPersistedAttributeValue(attributeName)
-		return _ndb_getPersistedAttributeValue(self.handle, attributeName);
-	end;
-
-	function ctrl:exportXML()
-		return _obj_invoke(self.handle, "ExportToXMLString");
-	end;
-	
-	function ctrl:importXML(xmlString)
-		return _obj_invoke(self.handle, "ImportXMLString", (tostring(xmlString)) or "");
-	end;	
-			
 	function ctrl:getLocalID()
 		return _obj_getProp(self.handle, "LocalID");
 	end;	
@@ -147,7 +135,7 @@ function localNDB.nodeFromHandle(nodeHandle)
 		return _obj_invokeEx(self.handle, "SetPermission", selKind, selId, permission, allowance);
 	end;
 	
-	function ctrl:getPermission(selKind, selId, permission)
+	function ctrl:getPermission(selKind, selId, permission, allowance)
 		return _obj_invokeEx(self.handle, "GetPermission", selKind, selId, permission);
 	end;	
 	
@@ -163,49 +151,27 @@ function localNDB.nodeFromHandle(nodeHandle)
 	return ctrl;
 end;
 
-function localNDB.copyNodeToAnother(nodeDest, nodeSrc, ctxCtrl)
+function localNDB.copyNodeToAnother(nodeDest, nodeSrc)
 	if nodeDest.handle == nodeSrc.handle then
 		return;
 	end;
 	
-	if ctxCtrl == nil then
-		ctxCtrl = {}; -- avoid circular reference
+	nodeDest:clearNode();
+	
+	local allAtts = nodeSrc:getAllAttributes();
+	
+	for k, v in pairs(allAtts) do
+		localNDB.assignPropValueToNode(nodeDest, k, v);
 	end;
 	
-	if ctxCtrl[nodeSrc.handle] then
-		return;
-	else
-		ctxCtrl[nodeSrc.handle] = true; 
-	end;				
+	local allChilds = nodeSrc:getAllChilds();
+	local newChild, srcChild;
 	
-	nodeDest:beginUpdate();
-	
-	tryFinally(
-		function()
-			nodeDest:clearNode();
-			
-			local allAtts = nodeSrc:getAllAttributes();
-			
-			for k, v in pairs(allAtts) do
-				localNDB.assignPropValueToNode(nodeDest, k, v);
-			end;
-			
-			local allChilds = nodeSrc:getAllChilds();
-			local newChild, srcChild;
-			
-			for _, v in pairs(allChilds) do
-				srcChild = v;
-				
-				if not ctxCtrl[srcChild.handle] then
-					newChild = nodeDest:addChild(srcChild:getName());
-					localNDB.copyNodeToAnother(newChild, srcChild, ctxCtrl);
-				end;
-			end;
-		end,
-		
-		function()
-			nodeDest:endUpdate();
-		end);
+	for k, v in pairs(allChilds) do
+		srcChild = v;
+		newChild = nodeDest:addChild(srcChild:getName());
+		localNDB.copyNodeToAnother(newChild, srcChild);
+	end;
 end;
 
 function localNDB.copyTableToNode(nodeDest, tableValue)
@@ -227,8 +193,6 @@ function localNDB.assignPropValueToNode(node, prop, value)
 
 	if type(value) == "function" then
 		-- Tipo inválido para setar
-		require("locale.lua");		
-		error(string.format(lang("sdk3.err.ndb.functionAssign"), tostring(prop)));
 		return;
 	end;
 	
@@ -514,80 +478,6 @@ function ndb.getNodeName(nodeObj)
 	end;
 end;
 
-function ndb.getPersistedAttributeValue(nodeObj, attributeName)
-	if (nodeObj == nil) then
-		return nil;
-	end;
-
-	local node = localNDB.getNodeObjectFromFacade(nodeObj);
-	
-	if node ~= nil then
-		return node:getPersistedAttributeValue(attributeName);
-	else
-		return nil;
-	end;
-end;
-
-function ndb.exportXML(nodeObj)
-	if (nodeObj == nil) then
-		local aLocale = require("locale.lua");
-		error(aLocale.lang("sdk3.err.ndb.func.exportToXML.invalidPar"));
-	end;
-
-	local node = localNDB.getNodeObjectFromFacade(nodeObj);
-	
-	if node ~= nil then
-		return node:exportXML();
-	else
-		local aLocale = require("locale.lua");
-		error(aLocale.lang("sdk3.err.ndb.func.exportToXML.invalidPar"));
-	end;
-end;
-
-function ndb.importXML(nodeObj, xmlString)
-	if (nodeObj == nil) then
-		local aLocale = require("locale.lua");
-		error(aLocale.lang("sdk3.err.ndb.func.importXML.invalidPar"));
-	end;
-
-	local node = localNDB.getNodeObjectFromFacade(nodeObj);
-	
-	if node ~= nil then
-		return node:importXML(xmlString);
-	else
-		local aLocale = require("locale.lua");
-		error(aLocale.lang("sdk3.err.ndb.func.importXML.invalidPar"));
-	end;
-end;
-
-function ndb.copy(destNodeObj, srcNodeObj)
-	if (destNodeObj == nil) then
-		local aLocale = require("locale.lua");
-		error(aLocale.lang("sdk3.err.ndb.func.copy.invalidPar2"));
-	end;
-
-	local srcNode;	
-	local dstNode = localNDB.getNodeObjectFromFacade(destNodeObj);
-	
-	if srcNodeObj ~= nil then
-		srcNode = localNDB.getNodeObjectFromFacade(srcNodeObj);
-	else
-		srcNode = nil;
-	end;	
-	
-	if dstNode ~= nil then	
-		if srcNode ~= nil then	
-			local xmlString = srcNode:exportXML();
-			dstNode:importXML(xmlString);			
-		else
-			dstNode:clearNode();
-		end;
-	else
-		local aLocale = require("locale.lua");
-		error(aLocale.lang("sdk3.err.ndb.func.copy.invalidPar2"));
-	end;
-end;
-
 function ndb.beginUpdate(nodeObj)
 	if nodeObj ~= nil then
 		local node = localNDB.getNodeObjectFromFacade(nodeObj);
@@ -801,7 +691,7 @@ function ndb.newBroadcastListener(nodeObj, messageId, callback)
 			
 			_obj_invoke(obj.handle, "SetupReceiver", node.handle, messageId or "");
 			
-			obj.onReceiveBroadcast = function(sender, returnedMessageId, messageText)			
+			obj.onReceiveBroadcast = function(sender, messageId, messageText)			
 										if callback ~= nil then										
 											if _Serializer == nil then
 												_Serializer = require("utils.serializer.dlua");
@@ -813,7 +703,7 @@ function ndb.newBroadcastListener(nodeObj, messageId, callback)
 												message = messageText;
 											end;
 										
-											callback(sender, returnedMessageId, message);
+											callback(sender, messageId, message);
 										end;
 									end;	
 			return obj;		
@@ -854,7 +744,7 @@ function ndb.onReady(nodeObj, callback, failCallback)
 	
 	local function checkState()
 		if not jaNotificou then
-			state = ndb.getState(nodeObj);
+			local state = ndb.getState(nodeObj);
 		
 			if state == "open" then
 				jaNotificou = true;
@@ -891,7 +781,7 @@ local function _prepareNodeFacadePairsState(nodeFacade)
 	
 	local childs = node:getAllChilds();
 	
-	for _, v in oldPairsFunc(childs) do
+	for k, v in oldPairsFunc(childs) do
 		local name = v:getName();
 		local nodeForName = node:findChild(name);
 		

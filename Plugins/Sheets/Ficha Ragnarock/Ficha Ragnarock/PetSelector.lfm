@@ -2,10 +2,10 @@
 <form name="frmPetSeletor" width="200" height="30">
 	<button top="0" width="30" height="30" text="X">
 		<event name="onClick">
-			Dialogs.confirmOkCancel("Tem certeza que quer apagar esse Pet?",
+			dialogs.confirmOkCancel("Tem certeza que quer apagar esse Pet?",
 				function (confirmado)
 					if confirmado then
-						NDB.deleteNode(sheet);
+						ndb.deleteNode(sheet);
 					end;
 			end);
 		</event>

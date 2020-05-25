@@ -1,14 +1,14 @@
-require("firecast.lua");
+require("rrpg.lua");
 local __o_rrpgObjs = require("rrpgObjs.lua");
 require("rrpgGUI.lua");
 require("rrpgDialogs.lua");
 require("rrpgLFM.lua");
 require("ndb.lua");
-require("locale.lua");
-local __o_Utils = require("utils.lua");
 
-local function constructNew_frmImportExport()
-    local obj = GUI.fromHandle(_obj_newObject("form"));
+function newfrmImportExport()
+    __o_rrpgObjs.beginObjectsLoading();
+
+    local obj = gui.fromHandle(_obj_newObject("form"));
     local self = obj;
     local sheet = nil;
 
@@ -29,12 +29,12 @@ local function constructNew_frmImportExport()
     obj:setName("frmImportExport");
     obj:setAlign("client");
 
-    obj.scrollBox1 = GUI.fromHandle(_obj_newObject("scrollBox"));
+    obj.scrollBox1 = gui.fromHandle(_obj_newObject("scrollBox"));
     obj.scrollBox1:setParent(obj);
     obj.scrollBox1:setAlign("client");
     obj.scrollBox1:setName("scrollBox1");
 
-    obj.button1 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button1 = gui.fromHandle(_obj_newObject("button"));
     obj.button1:setParent(obj.scrollBox1);
     obj.button1:setLeft(0);
     obj.button1:setTop(0);
@@ -43,7 +43,7 @@ local function constructNew_frmImportExport()
     obj.button1:setText("Exportar Ficha");
     obj.button1:setName("button1");
 
-    obj.button2 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button2 = gui.fromHandle(_obj_newObject("button"));
     obj.button2:setParent(obj.scrollBox1);
     obj.button2:setLeft(0);
     obj.button2:setTop(25);
@@ -53,16 +53,16 @@ local function constructNew_frmImportExport()
     obj.button2:setName("button2");
 
     obj._e_event0 = obj.button1:addEventListener("onClick",
-        function (_)
-            local xml = NDB.exportXML(sheet);
+        function (self)
+            local xml = ndb.exportXML(sheet);
             
             				local export = {};
-            				local bytes = Utils.binaryEncode(export, "utf8", xml);
+            				local bytes = utils.binaryEncode(export, "utf8", xml);
             
-            				local stream = Utils.newMemoryStream();
+            				local stream = utils.newMemoryStream();
             				local bytes = stream:write(export);
             
-            				Dialogs.saveFile("Salvar Ficha como XML", stream, "ficha.xml", "application/xml",
+            				dialogs.saveFile("Salvar Ficha como XML", stream, "ficha.xml", "application/xml",
             					function()
             						stream:close();
             						showMessage("Ficha Exportada.");
@@ -70,17 +70,17 @@ local function constructNew_frmImportExport()
         end, obj);
 
     obj._e_event1 = obj.button2:addEventListener("onClick",
-        function (_)
-            Dialogs.openFile("Importar Ficha", "application/xml", false, 
+        function (self)
+            dialogs.openFile("Importar Ficha", "application/xml", false, 
             					function(arquivos)
             						local arq = arquivos[1];
             
             						local import = {};
             						local bytes = arq.stream:read(import, arq.stream.size);
             
-            						local xml = Utils.binaryDecode(import, "utf8");
+            						local xml = utils.binaryDecode(import, "utf8");
             
-            						NDB.importXML(sheet, xml);
+            						ndb.importXML(sheet, xml);
             					end);
         end, obj);
 
@@ -106,23 +106,9 @@ local function constructNew_frmImportExport()
 
     obj:endUpdate();
 
+     __o_rrpgObjs.endObjectsLoading();
+
     return obj;
-end;
-
-function newfrmImportExport()
-    local retObj = nil;
-    __o_rrpgObjs.beginObjectsLoading();
-
-    __o_Utils.tryFinally(
-      function()
-        retObj = constructNew_frmImportExport();
-      end,
-      function()
-        __o_rrpgObjs.endObjectsLoading();
-      end);
-
-    assert(retObj ~= nil);
-    return retObj;
 end;
 
 local _frmImportExport = {
@@ -136,6 +122,6 @@ local _frmImportExport = {
     description=""};
 
 frmImportExport = _frmImportExport;
-Firecast.registrarForm(_frmImportExport);
+rrpg.registrarForm(_frmImportExport);
 
 return _frmImportExport;

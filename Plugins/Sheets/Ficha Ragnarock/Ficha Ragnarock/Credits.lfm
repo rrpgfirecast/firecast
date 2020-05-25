@@ -149,16 +149,47 @@
 		        </event>
 		    </dataLink>
 		</layout>
+
+		<layout left="850" top="360" width="200" height="80">
+			<rectangle align="client" color="black"/>
+			<checkBox left="0" top="5" width="200" height="20" field="scale" text="Escala"/>
+
+			<label left="0" top="30" width="80" height="20" text="Horizontal:" horzTextAlign="center"/>
+			<comboBox left="95" top="30" width="90" field="scaleX" fontColor="white" items="{'0.25', '0.5', '0.75', '1', '1.25', '1.5', '2', '3'}" horzTextAlign="center"/>
+
+			<label left="0" top="55" width="80" height="20" text="Vertical:" horzTextAlign="center"/>
+			<comboBox left="95" top="55" width="90" field="scaleY" fontColor="white" items="{'0.25', '0.5', '0.75', '1', '1.25', '1.5', '2', '3'}" horzTextAlign="center"/>
+
+			<dataLink fields="{'scale','scaleX','scaleY'}">
+				<event name="onChange">
+					if sheet == nil then return end;
+					local form = self:findControlByName("frmMain");
+
+					if not sheet.scale then 
+						form.scale = 1;
+						return;
+					end;
+
+					local scaleX = tonumber(sheet.scaleX) or 1;
+					if form ~= nil then form.scaleX = scaleX end;
+
+					local scaleY = tonumber(sheet.scaleY) or 1;
+					if form ~= nil then form.scaleY = scaleY end;
+				</event>
+			</dataLink>
+		</layout>
+
+
 		
 		<label left="555" top="275" width="200" height="20" text="Versão Atual: " horzTextAlign="center" field="versionInstalled"/>
 		<label left="555" top="300" width="200" height="20" text="Sua Versão: " horzTextAlign="center" field="versionDownloaded"/>
 		<checkBox left="555" top="325" width="200" height="20" field="noUpdate" text="Não pedir para atualizar."/>
 			
-		<button left="555" top="350" width="100" text="Change Log" onClick="GUI.openInBrowser('link_change_log')" />
-		<button left="667" top="350" width="100" text="Atualizar" onClick="GUI.openInBrowser('https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20Ragnarock/output/Ficha%20Ragnarock.rpk?raw=true')" />
+		<button left="555" top="350" width="100" text="Change Log" onClick="gui.openInBrowser('https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20Ragnarock/README.md')" />
+		<button left="667" top="350" width="100" text="Atualizar" onClick="gui.openInBrowser('https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20Ragnarock/output/Ficha%20Ragnarock.rpk?raw=true')" />
 		
 		<label left="555" top="400" width="200" height="20" text="Conheça as Mesas:"/>
-		<button left="555" top="425" width="100" text="RPGmeister" onClick="GUI.openInBrowser('https://my.firecastrpg.com/a?a=pagRWEMesaInfo.actInfoMesa&amp;mesaid=64070');" />
-		<button left="667" top="425" width="125" text="Ragnarök" onClick="GUI.openInBrowser('https://my.firecastrpg.com/a?a=pagRWEMesaInfo.actInfoMesa&amp;mesaid=1063');" />
+		<button left="555" top="425" width="100" text="RPGmeister" onClick="gui.openInBrowser('https://my.firecastrpg.com/a?a=pagRWEMesaInfo.actInfoMesa&amp;mesaid=64070');" />
+		<button left="667" top="425" width="125" text="Ragnarök" onClick="gui.openInBrowser('https://my.firecastrpg.com/a?a=pagRWEMesaInfo.actInfoMesa&amp;mesaid=1063');" />
 	</scrollBox>
 </form>

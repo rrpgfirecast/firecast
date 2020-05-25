@@ -79,5 +79,4 @@ function requests.criarPersonagem(itemPai, nome, dataType, visivelATodos, dono, 
 end;
 
 rrpg.requests = requests;
-rrpg.Requests = requests;
 return requests;

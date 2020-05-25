@@ -4,12 +4,12 @@
 		<layout height="660" width="1225" margins="{right=0}">
 			<layout align="left" width="600" margins="{right=25}">
 				<rectangle left="0" top="0" width="600" height="660" color="black"/>
-				<button left="0" top="0" width="200" height="25" text="Ativa" onClick="self.rclAtiva:append();" hint="Adicionar"/>
+				<button left="0" top="0" width="200" height="25" text="Ativas" onClick="self.rclAtiva:append();" hint="Adicionar"/>
 
 				<recordList left="0" top="25" width="600" height="635" name="rclAtiva" field="listaAtivas" templateForm="frmRecordListForm" layout="vertical" selectable="true">
 					<event name="onCompare"><![CDATA[
 						-- Esse codigo organiza a ordem dos objetos da lista alfabeticamente. 
-				        return Utils.compareStringPtBr(nodeA.nome, nodeB.nome);              
+				        return utils.compareStringPtBr(nodeA.nome, nodeB.nome);              
 				        ]]>
 					</event>
 				</recordList>
@@ -17,12 +17,12 @@
 
 			<layout align="left" width="600">
 				<rectangle left="0" top="0" width="600" height="660" color="black"/>
-				<button left="0" top="0" width="200" height="25" text="Passiva" onClick="self.rclPassiva:append();" hint="Adicionar"/>
+				<button left="0" top="0" width="200" height="25" text="Passivas" onClick="self.rclPassiva:append();" hint="Adicionar"/>
 
 				<recordList left="0" top="25" width="600" height="635" name="rclPassiva" field="listaPassivas" templateForm="frmRecordListForm" layout="vertical" selectable="true">
 					<event name="onCompare"><![CDATA[
 						-- Esse codigo organiza a ordem dos objetos da lista alfabeticamente. 
-				        return Utils.compareStringPtBr(nodeA.nome, nodeB.nome);              
+				        return utils.compareStringPtBr(nodeA.nome, nodeB.nome);              
 				        ]]>
 					</event>
 				</recordList>
