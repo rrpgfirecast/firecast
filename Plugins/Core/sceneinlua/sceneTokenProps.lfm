@@ -328,7 +328,7 @@
 	</tabControl>
 			
 	<BottomActionCancelPopupPanel actionClick="self:processarOK()" cancelClick="self:processarCancel()"/>
-	
+
 	<script><![CDATA[	
 		self.title = lang('scene.menu.tokenOptions');	
 		self.labPersonagem.text = lang('scene.tokenEdit.personagem');
@@ -372,7 +372,7 @@
 				for i = 1, #filhos, 1 do
 					recursiveEnumPersonagensEmBibItem(filhos[i], dest);
 				end;
-			end;
+			end; 
 		end;
 		
 		function self:listarPersonagens(mesa)

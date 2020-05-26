@@ -1183,7 +1183,7 @@ local function constructNew_frmTokenProps()
 				for i = 1, #filhos, 1 do
 					recursiveEnumPersonagensEmBibItem(filhos[i], dest);
 				end;
-			end;
+			end; 
 		end;
 		
 		function self:listarPersonagens(mesa)
