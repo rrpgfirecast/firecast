@@ -145,6 +145,7 @@ scene.bkgImageTabTitle=Imagem de Fundo
 scene.bkgImageTabTitle.useThis=Usar esta imagem:
 scene.bkgImageTabTitle.guide=Clique para alterar a imagem
 
+scene.gridFineTuning.menu=Ajustar grid com imagem de fundo
 
 [en]
 scene.arrowCursor=Select/Move
@@ -289,3 +290,5 @@ scene.zoom.zoomOut=Zoom -
 scene.bkgImageTabTitle=Background Image
 scene.bkgImageTabTitle.useThis=Use this image:
 scene.bkgImageTabTitle.guide=Click to change the image
+
+scene.gridFineTuning.menu=Adjust grid with background image
