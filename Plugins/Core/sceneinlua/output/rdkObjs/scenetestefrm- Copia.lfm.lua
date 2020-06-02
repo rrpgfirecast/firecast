@@ -55,27 +55,96 @@ local function constructNew_frmTeste()
     obj.labdesenhequadrados:setVertTextAlign("leading");
     obj.labdesenhequadrados:setMargins({right=5});
 
-    obj.labtamanhomundo = GUI.fromHandle(_obj_newObject("label"));
-    obj.labtamanhomundo:setParent(obj.flowPart1);
-    obj.labtamanhomundo:setName("labtamanhomundo");
-    obj.labtamanhomundo:setAutoSize(true);
-    obj.labtamanhomundo:setFontColor("black");
-    obj.labtamanhomundo:setAlign("top");
-    obj.labtamanhomundo:setWidth(280);
-    obj.labtamanhomundo:setWordWrap(true);
-    obj.labtamanhomundo:setHorzTextAlign("center");
-    obj.labtamanhomundo:setVertTextAlign("leading");
-    obj.labtamanhomundo:setMargins({right=5});
+    obj.labalturamundo = GUI.fromHandle(_obj_newObject("label"));
+    obj.labalturamundo:setParent(obj.flowPart1);
+    obj.labalturamundo:setName("labalturamundo");
+    obj.labalturamundo:setAutoSize(true);
+    obj.labalturamundo:setFontColor("white");
+    obj.labalturamundo:setAlign("left");
+    obj.labalturamundo:setWordWrap(true);
+    obj.labalturamundo:setHorzTextAlign("leading");
+    obj.labalturamundo:setVertTextAlign("center");
+    obj.labalturamundo:setMargins({left=10, right=5});
+    obj.labalturamundo:setFontSize(15);
+
+    obj.button1 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button1:setParent(obj.flowPart1);
+    obj.button1:setText("+");
+    obj.button1:setWidth(30);
+    obj.button1:setLeft(100);
+    obj.button1:setTop(58);
+    obj.button1:setName("button1");
+
+    obj.button2 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button2:setParent(obj.flowPart1);
+    obj.button2:setText("-");
+    obj.button2:setWidth(30);
+    obj.button2:setLeft(60);
+    obj.button2:setTop(58);
+    obj.button2:setName("button2");
+
+    obj.lablarguramundo = GUI.fromHandle(_obj_newObject("label"));
+    obj.lablarguramundo:setParent(obj.flowPart1);
+    obj.lablarguramundo:setName("lablarguramundo");
+    obj.lablarguramundo:setAutoSize(true);
+    obj.lablarguramundo:setFontColor("white");
+    obj.lablarguramundo:setAlign("left");
+    obj.lablarguramundo:setWordWrap(true);
+    obj.lablarguramundo:setHorzTextAlign("leading");
+    obj.lablarguramundo:setVertTextAlign("center");
+    obj.lablarguramundo:setMargins({left=10, right=5});
+    obj.lablarguramundo:setFontSize(15);
+
+    obj.button3 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button3:setParent(obj.flowPart1);
+    obj.button3:setText("+");
+    obj.button3:setWidth(30);
+    obj.button3:setLeft(250);
+    obj.button3:setTop(58);
+    obj.button3:setName("button3");
+
+    obj.button4 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button4:setParent(obj.flowPart1);
+    obj.button4:setText("-");
+    obj.button4:setWidth(30);
+    obj.button4:setLeft(210);
+    obj.button4:setTop(58);
+    obj.button4:setName("button4");
 
 	
 		
 		self.labdesenhequadrados.text = lang('scene.gridFineTuning.dica');
-		self.labtamanhomundo.text = lang('scene.gridFineTuning.tamanho');
+		self.lablarguramundo.text = lang('scene.gridFineTuning.largura');
+		self.labalturamundo.text = lang('scene.gridFineTuning.altura');
 		
 		
 
+
+    obj._e_event0 = obj.button1:addEventListener("onClick",
+        function (_)
+            worldControlIncreaseHeight();
+        end, obj);
+
+    obj._e_event1 = obj.button2:addEventListener("onClick",
+        function (_)
+            worldControlDecreaseHeight();
+        end, obj);
+
+    obj._e_event2 = obj.button3:addEventListener("onClick",
+        function (_)
+            worldControlIncreaseWidth();
+        end, obj);
+
+    obj._e_event3 = obj.button4:addEventListener("onClick",
+        function (_)
+            worldControlDecreaseWidth();
+        end, obj);
 
     function obj:_releaseEvents()
+        __o_rrpgObjs.removeEventListenerById(self._e_event3);
+        __o_rrpgObjs.removeEventListenerById(self._e_event2);
+        __o_rrpgObjs.removeEventListenerById(self._e_event1);
+        __o_rrpgObjs.removeEventListenerById(self._e_event0);
     end;
 
     obj._oldLFMDestroy = obj.destroy;
@@ -87,9 +156,14 @@ local function constructNew_frmTeste()
           self:setNodeDatabase(nil);
         end;
 
+        if self.button4 ~= nil then self.button4:destroy(); self.button4 = nil; end;
+        if self.button1 ~= nil then self.button1:destroy(); self.button1 = nil; end;
+        if self.button3 ~= nil then self.button3:destroy(); self.button3 = nil; end;
+        if self.lablarguramundo ~= nil then self.lablarguramundo:destroy(); self.lablarguramundo = nil; end;
         if self.flowPart1 ~= nil then self.flowPart1:destroy(); self.flowPart1 = nil; end;
+        if self.labalturamundo ~= nil then self.labalturamundo:destroy(); self.labalturamundo = nil; end;
         if self.labdesenhequadrados ~= nil then self.labdesenhequadrados:destroy(); self.labdesenhequadrados = nil; end;
-        if self.labtamanhomundo ~= nil then self.labtamanhomundo:destroy(); self.labtamanhomundo = nil; end;
+        if self.button2 ~= nil then self.button2:destroy(); self.button2 = nil; end;
         self:_oldLFMDestroy();
     end;
 

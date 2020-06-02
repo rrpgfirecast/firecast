@@ -146,8 +146,9 @@ scene.bkgImageTabTitle.useThis=Usar esta imagem:
 scene.bkgImageTabTitle.guide=Clique para alterar a imagem
 
 scene.gridFineTuning.menu=Ajustar grid com imagem de fundo
-scene.gridFineTuning.dica=Dica : Desenhe 5 quadrados para o RRPG calcular o tamanho do Grid em seu mundo
-scene.gridFineTuning.tamanho=Dica : Desenhe 5 quadrados para o RRPG calcular o tamanho do Grid em seu mundo
+scene.gridFineTuning.dica=Dica : Desenhe 5 quadrados para o RRPG calcular o tamanho do grid em seu mundo
+scene.gridFineTuning.largura=Largura
+scene.gridFineTuning.altura=Altura
 
 [en]
 scene.arrowCursor=Select/Move

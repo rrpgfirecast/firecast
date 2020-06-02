@@ -44,13 +44,41 @@
 	
 	<flowPart class="optionPart">
 	<label name="labdesenhequadrados" autoSize="true" fontColor="red" class="itemTitle"/>
-	<label name="labtamanhomundo" autoSize="true" fontColor="black" class="itemTitle"/>
+	<label name="labalturamundo" autoSize="true" fontColor="white" class="groupTitle"/>
+	
+	<button text="+" width="30" left="100" top="58">
+		<event name="onClick">
+			worldControlIncreaseHeight();      
+		</event>
+    </button>
+	
+	<button text="-" width="30" left="60" top="58">
+            <event name="onClick">
+            worldControlDecreaseHeight();           
+            </event>
+    </button>
+	
+	<label name="lablarguramundo" autoSize="true" fontColor="white" class="groupTitle"/>
+	
+	<button text="+" width="30" left="250" top="58">
+		<event name="onClick">
+			worldControlIncreaseWidth();      
+		</event>
+    </button>
+	
+	<button text="-" width="30" left="210" top="58">
+            <event name="onClick">
+            worldControlDecreaseWidth();           
+            </event>
+    </button>
+	
 	</flowPart>
 	
 	<script><![CDATA[	
 		
 		self.labdesenhequadrados.text = lang('scene.gridFineTuning.dica');
-		self.labtamanhomundo.text = lang('scene.gridFineTuning.tamanho');
+		self.lablarguramundo.text = lang('scene.gridFineTuning.largura');
+		self.labalturamundo.text = lang('scene.gridFineTuning.altura');
 		
 		]]>
 	</script>

@@ -333,10 +333,11 @@ SceneLib.registerPlugin(
 			amostras = {};
 		end;
 		
+		
+		
 		local function createShapeMaker()
 			assert(shapeMaker == nil);
 			
-			showMessage(lang('scene.gridFineTuning.dica'));
 			UserDrawingDetails_Show2(scene);
 			shapeMaker = SHAPEMaker_New(scene, SHAPE_RECTANGLE);
 			shapeMaker.autoDraw = true;			
@@ -374,5 +375,23 @@ SceneLib.registerPlugin(
 					shapeMaker:abort();
 					shapeMaker = nil;
 				end;	
-			end);				
+			end);
+
+		function worldControlIncreaseHeight()
+		scene.worldHeight = scene.worldHeight + 0.1;
+		scene.grid.drawGrid = true;
+		end;
+		
+		function worldControlDecreaseHeight()
+		scene.worldHeight = scene.worldHeight - 0.1;
+		end;
+		
+		function worldControlIncreaseWidth()
+		scene.worldWidth = scene.worldWidth + 0.1;
+		end;
+		
+		function worldControlDecreaseWidth()
+		scene.worldWidth = scene.worldWidth - 0.1;
+		end;
+			
 	end);	
