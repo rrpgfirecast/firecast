@@ -335,7 +335,9 @@ SceneLib.registerPlugin(
 		
 		local function createShapeMaker()
 			assert(shapeMaker == nil);
-		
+			
+			showMessage(lang('scene.gridFineTuning.dica'));
+			UserDrawingDetails_Show2(scene);
 			shapeMaker = SHAPEMaker_New(scene, SHAPE_RECTANGLE);
 			shapeMaker.autoDraw = true;			
 			shapeMaker.onStop = pararDesenhoGrid;
@@ -362,11 +364,13 @@ SceneLib.registerPlugin(
 			
 			function()
 				--[[ Em construção ]]-- 
-				scene.grid.drawGrid = possuiaGridAntes;					
+				scene.grid.drawGrid = possuiaGridAntes;	
+				
 				
 				amostras = {}
 				
 				if shapeMaker ~= nil then
+				UserDrawingDetails_Close2(scene);
 					shapeMaker:abort();
 					shapeMaker = nil;
 				end;	

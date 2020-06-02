@@ -1,0 +1,59 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<popupForm name="frmTeste" width="300" height="100" drawContainer="true" resizable="true" placement="center"
+		   cancelable="false">
+ 		   
+	<import file="interfaceUtils.xml"/>
+	
+	<style>
+		flowPart.optionPart {
+			height: 100;
+			width: 300;
+			minWidth: 50;
+			maxWidth: 5000;
+			margins: {left=2, right=2, top=2, bottom=2};
+		}	
+			
+		.itemTitle {
+			align: top;
+			width: 280;
+			wordWrap: true;
+			autoSize: false;
+			horzTextAlign: center;	
+			vertTextAlign: leading;
+			margins:{right=5};
+		}
+		
+		.itemContent {
+			align: client;
+			margins:{right=5};
+		}
+		
+		.groupTitle {
+			align: left;						
+			autoSize: true;
+			wordWrap: true;
+			horzTextAlign: leading;	
+			vertTextAlign: center;
+			margins:{left=10, right=5};		
+			fontSize: 15;
+			fontColor: #FFCC66;
+		}
+		
+				
+	</style>	
+	
+	<flowPart class="optionPart">
+	<label name="labdesenhequadrados" autoSize="true" fontColor="red" class="itemTitle"/>
+	<label name="labtamanhomundo" autoSize="true" fontColor="black" class="itemTitle"/>
+	</flowPart>
+	
+	<script><![CDATA[	
+		
+		self.labdesenhequadrados.text = lang('scene.gridFineTuning.dica');
+		self.labtamanhomundo.text = lang('scene.gridFineTuning.tamanho');
+		
+		]]>
+	</script>
+	
+	
+</popupForm>
