@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<popupForm name="frmSquareShape" width="300" height="100" drawContainer="true" resizable="true" placement="center"
+		   cancelable="false">
+ 		   
+	<import file="interfaceUtils.xml"/>
+	
+
+	<label name="labdicamaisemenos" left="10" top="5" width="290" autoSize="true" wordWrap="true" fontSize="20"  fontColor="red"/>
+	
+	<script><![CDATA[	
+			self.labdicamaisemenos.text = lang('scene.gridFineTuning.maisemenos');
+			]]>
+	</script>
+	
+	
+</popupForm>

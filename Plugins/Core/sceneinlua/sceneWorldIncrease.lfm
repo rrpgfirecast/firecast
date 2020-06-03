@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<popupForm name="frmTeste" width="300" height="100" drawContainer="true" resizable="true" placement="center"
+<popupForm name="frmWorldIncrease" width="300" height="100" drawContainer="true" resizable="true" placement="center"
 		   cancelable="false">
  		   
 	<import file="interfaceUtils.xml"/>
@@ -43,7 +43,7 @@
 	</style>	
 	
 	<flowPart class="optionPart">
-	<label name="labdesenhequadrados" autoSize="true" fontColor="red" class="itemTitle"/>
+	<label name="labdicamaisemenos" autoSize="true" fontColor="white" class="itemTitle"/>
 	<label name="labalturamundo" autoSize="true" fontColor="white" class="groupTitle"/>
 	
 	<button text="+" width="30" left="100" top="58">
@@ -71,14 +71,13 @@
             worldControlDecreaseWidth();           
             </event>
     </button>
-	
 	</flowPart>
 	
 	<script><![CDATA[	
-		
-		self.labdesenhequadrados.text = lang('scene.gridFineTuning.dica');
-		self.lablarguramundo.text = lang('scene.gridFineTuning.largura');
-		self.labalturamundo.text = lang('scene.gridFineTuning.altura');
+	
+			self.labdicamaisemenos.text = lang('scene.gridFineTuning.maisemenos');
+			self.lablarguramundo.text = lang('scene.gridFineTuning.largura');
+			self.labalturamundo.text = lang('scene.gridFineTuning.altura');
 		
 		]]>
 	</script>

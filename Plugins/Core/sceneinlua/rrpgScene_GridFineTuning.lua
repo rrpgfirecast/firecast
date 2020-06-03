@@ -268,7 +268,7 @@ SceneLib.registerPlugin(
 	function (scene, attachment)	
 		require("rrpgScene_ShapesMaker.dlua");			
 	
-		scene.viewport:setupToolCategory(SETTINGS_CATEGORY, lang("scene.toolcategory.settings"), -5);
+		scene.viewport:setupToolCategory(SETTINGS_CATEGORY, lang("scene.toolcategory.settings"), -2);
 		
 		local possuiaGridAntes = nil;
 		local shapeMaker = nil;
@@ -338,7 +338,8 @@ SceneLib.registerPlugin(
 		local function createShapeMaker()
 			assert(shapeMaker == nil);
 			
-			UserDrawingDetails_Show2(scene);
+			frmWorldIncrease_Close(scene);
+			FrmSquareShape_Show(scene);
 			shapeMaker = SHAPEMaker_New(scene, SHAPE_RECTANGLE);
 			shapeMaker.autoDraw = true;			
 			shapeMaker.onStop = pararDesenhoGrid;
@@ -371,27 +372,10 @@ SceneLib.registerPlugin(
 				amostras = {}
 				
 				if shapeMaker ~= nil then
-				UserDrawingDetails_Close2(scene);
+				FrmSquareShape_Close(scene);
 					shapeMaker:abort();
 					shapeMaker = nil;
 				end;	
 			end);
 
-		function worldControlIncreaseHeight()
-		scene.worldHeight = scene.worldHeight + 0.1;
-		scene.grid.drawGrid = true;
-		end;
-		
-		function worldControlDecreaseHeight()
-		scene.worldHeight = scene.worldHeight - 0.1;
-		end;
-		
-		function worldControlIncreaseWidth()
-		scene.worldWidth = scene.worldWidth + 0.1;
-		end;
-		
-		function worldControlDecreaseWidth()
-		scene.worldWidth = scene.worldWidth - 0.1;
-		end;
-			
 	end);	

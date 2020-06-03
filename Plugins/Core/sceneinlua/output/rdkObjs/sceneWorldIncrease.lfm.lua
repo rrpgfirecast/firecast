@@ -7,7 +7,7 @@ require("ndb.lua");
 require("locale.lua");
 local __o_Utils = require("utils.lua");
 
-local function constructNew_frmTeste()
+local function constructNew_frmWorldIncrease()
     local obj = GUI.fromHandle(_obj_newObject("popupForm"));
     local self = obj;
     local sheet = nil;
@@ -26,7 +26,7 @@ local function constructNew_frmTeste()
 
     _gui_assignInitialParentForForm(obj.handle);
     obj:beginUpdate();
-    obj:setName("frmTeste");
+    obj:setName("frmWorldIncrease");
     obj:setWidth(300);
     obj:setHeight(100);
     obj:setDrawContainer(true);
@@ -43,17 +43,17 @@ local function constructNew_frmTeste()
     obj.flowPart1:setMaxWidth(5000);
     obj.flowPart1:setMargins({left=2, right=2, top=2, bottom=2});
 
-    obj.labdesenhequadrados = GUI.fromHandle(_obj_newObject("label"));
-    obj.labdesenhequadrados:setParent(obj.flowPart1);
-    obj.labdesenhequadrados:setName("labdesenhequadrados");
-    obj.labdesenhequadrados:setAutoSize(true);
-    obj.labdesenhequadrados:setFontColor("red");
-    obj.labdesenhequadrados:setAlign("top");
-    obj.labdesenhequadrados:setWidth(280);
-    obj.labdesenhequadrados:setWordWrap(true);
-    obj.labdesenhequadrados:setHorzTextAlign("center");
-    obj.labdesenhequadrados:setVertTextAlign("leading");
-    obj.labdesenhequadrados:setMargins({right=5});
+    obj.labdicamaisemenos = GUI.fromHandle(_obj_newObject("label"));
+    obj.labdicamaisemenos:setParent(obj.flowPart1);
+    obj.labdicamaisemenos:setName("labdicamaisemenos");
+    obj.labdicamaisemenos:setAutoSize(true);
+    obj.labdicamaisemenos:setFontColor("white");
+    obj.labdicamaisemenos:setAlign("top");
+    obj.labdicamaisemenos:setWidth(280);
+    obj.labdicamaisemenos:setWordWrap(true);
+    obj.labdicamaisemenos:setHorzTextAlign("center");
+    obj.labdicamaisemenos:setVertTextAlign("leading");
+    obj.labdicamaisemenos:setMargins({right=5});
 
     obj.labalturamundo = GUI.fromHandle(_obj_newObject("label"));
     obj.labalturamundo:setParent(obj.flowPart1);
@@ -112,10 +112,10 @@ local function constructNew_frmTeste()
     obj.button4:setName("button4");
 
 	
-		
-		self.labdesenhequadrados.text = lang('scene.gridFineTuning.dica');
-		self.lablarguramundo.text = lang('scene.gridFineTuning.largura');
-		self.labalturamundo.text = lang('scene.gridFineTuning.altura');
+	
+			self.labdicamaisemenos.text = lang('scene.gridFineTuning.maisemenos');
+			self.lablarguramundo.text = lang('scene.gridFineTuning.largura');
+			self.labalturamundo.text = lang('scene.gridFineTuning.altura');
 		
 		
 
@@ -160,9 +160,9 @@ local function constructNew_frmTeste()
         if self.button1 ~= nil then self.button1:destroy(); self.button1 = nil; end;
         if self.button3 ~= nil then self.button3:destroy(); self.button3 = nil; end;
         if self.lablarguramundo ~= nil then self.lablarguramundo:destroy(); self.lablarguramundo = nil; end;
+        if self.labdicamaisemenos ~= nil then self.labdicamaisemenos:destroy(); self.labdicamaisemenos = nil; end;
         if self.flowPart1 ~= nil then self.flowPart1:destroy(); self.flowPart1 = nil; end;
         if self.labalturamundo ~= nil then self.labalturamundo:destroy(); self.labalturamundo = nil; end;
-        if self.labdesenhequadrados ~= nil then self.labdesenhequadrados:destroy(); self.labdesenhequadrados = nil; end;
         if self.button2 ~= nil then self.button2:destroy(); self.button2 = nil; end;
         self:_oldLFMDestroy();
     end;
@@ -172,13 +172,13 @@ local function constructNew_frmTeste()
     return obj;
 end;
 
-function newfrmTeste()
+function newfrmWorldIncrease()
     local retObj = nil;
     __o_rrpgObjs.beginObjectsLoading();
 
     __o_Utils.tryFinally(
       function()
-        retObj = constructNew_frmTeste();
+        retObj = constructNew_frmWorldIncrease();
       end,
       function()
         __o_rrpgObjs.endObjectsLoading();
@@ -188,17 +188,17 @@ function newfrmTeste()
     return retObj;
 end;
 
-local _frmTeste = {
-    newEditor = newfrmTeste, 
-    new = newfrmTeste, 
-    name = "frmTeste", 
+local _frmWorldIncrease = {
+    newEditor = newfrmWorldIncrease, 
+    new = newfrmWorldIncrease, 
+    name = "frmWorldIncrease", 
     dataType = "", 
     formType = "undefined", 
     formComponentName = "popupForm", 
     title = "", 
     description=""};
 
-frmTeste = _frmTeste;
-Firecast.registrarForm(_frmTeste);
+frmWorldIncrease = _frmWorldIncrease;
+Firecast.registrarForm(_frmWorldIncrease);
 
-return _frmTeste;
+return _frmWorldIncrease;
