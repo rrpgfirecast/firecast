@@ -31,9 +31,9 @@ SceneLib.registerPlugin(
 				
 				if frmSincronizar == nil then
 					frmSincronizar = GUI.newForm("frmWorldIncrease");
-					scene.viewport:showForm(frmSincronizar);	
 				end;
 				
+				scene.viewport:showForm(frmSincronizar, {placement="topLeft"});
 			end, 
 			
 			function()

@@ -275,7 +275,7 @@ SceneLib.registerPlugin(
 		local realCellWidth = nil
 		local realCellHeight = nil;			
 		local amostras = {}; 
-		frmInstrucao = nil;
+		local frmInstrucao = nil;
 				
 		local processarAmostras = nil;
 				
@@ -362,10 +362,9 @@ SceneLib.registerPlugin(
 				
 				if frmInstrucao == nil then
 					frmInstrucao = GUI.newForm("frmSquareShape");
-					scene.viewport:showForm(frmInstrucao);
 				end;
 				
-								
+				scene.viewport:showForm(frmInstrucao, {placement="topLeft"});
 				createShapeMaker();
 				amostras = {}				
 			end, 
