@@ -400,4 +400,21 @@ SceneLib.registerPlugin(
 		function worldControlDecreaseWidth()
 			scene.worldWidth = scene.worldWidth - 0.1;
 		end;
+		
+		function offsetLeft()
+		scene.grid.offsetX = scene.grid.offsetX - 0.05;
+		end;
+		
+		function offsetRight()
+		scene.grid.offsetX = scene.grid.offsetX + 0.05;
+		end;
+		
+		function offsetUp()
+		scene.grid.offsetY = scene.grid.offsetY + 0.05;
+		end;
+		
+		function offsetDown()
+		scene.grid.offsetY = scene.grid.offsetY -0.05;
+		end;
+		
 	end);	

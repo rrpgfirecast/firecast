@@ -139,16 +139,6 @@
 						</flowLayout>
 					</flowPart>		
 					
-					<flowPart class="optionPart" onClick="self.rbtCellTypeQuad.checked = true">
-						<button align="client" text="Redimensionar Mapa">
-							<event name="onClick">
-
-								scene.worldWidth = scene.worldWidth / larguraGrid * realCellWidth;
-								scene.worldHeight = scene.worldHeight / alturaGrid * realCellHeight;
-							</event>
-						</button>
-					</flowPart>	
-
 					<!-- Diagonais -->
 					<flowPart class="optionPart" name="partSquareDiagonals">	
 						<label name="labDiagonais" class="itemTitle"/>

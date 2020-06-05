@@ -28,7 +28,8 @@ local function constructNew_frmWorldIncrease()
     obj:beginUpdate();
     obj:setName("frmWorldIncrease");
     obj:setWidth(300);
-    obj:setHeight(100);
+    obj:setHeight(170);
+    obj:setOpacity(0.9);
     obj:setDrawContainer(true);
     obj:setResizable(true);
     obj:setPlacement("center");
@@ -71,7 +72,7 @@ local function constructNew_frmWorldIncrease()
     obj.button1:setParent(obj.flowPart1);
     obj.button1:setText("+");
     obj.button1:setWidth(30);
-    obj.button1:setLeft(100);
+    obj.button1:setLeft(105);
     obj.button1:setTop(58);
     obj.button1:setName("button1");
 
@@ -79,7 +80,7 @@ local function constructNew_frmWorldIncrease()
     obj.button2:setParent(obj.flowPart1);
     obj.button2:setText("-");
     obj.button2:setWidth(30);
-    obj.button2:setLeft(60);
+    obj.button2:setLeft(65);
     obj.button2:setTop(58);
     obj.button2:setName("button2");
 
@@ -99,7 +100,7 @@ local function constructNew_frmWorldIncrease()
     obj.button3:setParent(obj.flowPart1);
     obj.button3:setText("+");
     obj.button3:setWidth(30);
-    obj.button3:setLeft(250);
+    obj.button3:setLeft(235);
     obj.button3:setTop(58);
     obj.button3:setName("button3");
 
@@ -107,16 +108,67 @@ local function constructNew_frmWorldIncrease()
     obj.button4:setParent(obj.flowPart1);
     obj.button4:setText("-");
     obj.button4:setWidth(30);
-    obj.button4:setLeft(210);
+    obj.button4:setLeft(195);
     obj.button4:setTop(58);
     obj.button4:setName("button4");
 
+    obj.flowPart2 = GUI.fromHandle(_obj_newObject("flowPart"));
+    obj.flowPart2:setParent(obj);
+    obj.flowPart2:setName("flowPart2");
+    obj.flowPart2:setHeight(200);
+    obj.flowPart2:setWidth(300);
+    obj.flowPart2:setMinWidth(50);
+    obj.flowPart2:setMaxWidth(5000);
+    obj.flowPart2:setMargins({left=2, right=2, top=2, bottom=2});
+
+    obj.laboffset = GUI.fromHandle(_obj_newObject("label"));
+    obj.laboffset:setParent(obj.flowPart2);
+    obj.laboffset:setName("laboffset");
+    obj.laboffset:setAutoSize(true);
+    obj.laboffset:setWordWrap(true);
+    obj.laboffset:setWidth(200);
+    obj.laboffset:setFontColor("white");
+    obj.laboffset:setFontSize(17);
+    obj.laboffset:setLeft(57);
+    obj.laboffset:setTop(90);
+
+    obj.button5 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button5:setParent(obj.flowPart2);
+    obj.button5:setText("⮜");
+    obj.button5:setWidth(30);
+    obj.button5:setLeft(70);
+    obj.button5:setTop(120);
+    obj.button5:setName("button5");
+
+    obj.button6 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button6:setParent(obj.flowPart2);
+    obj.button6:setText("⮞");
+    obj.button6:setWidth(30);
+    obj.button6:setLeft(110);
+    obj.button6:setTop(120);
+    obj.button6:setName("button6");
+
+    obj.button7 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button7:setParent(obj.flowPart2);
+    obj.button7:setText("⮝");
+    obj.button7:setWidth(30);
+    obj.button7:setLeft(150);
+    obj.button7:setTop(120);
+    obj.button7:setName("button7");
+
+    obj.button8 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button8:setParent(obj.flowPart2);
+    obj.button8:setText("⮟");
+    obj.button8:setWidth(30);
+    obj.button8:setLeft(190);
+    obj.button8:setTop(120);
+    obj.button8:setName("button8");
+
 	
-	
-			self.labdicamaisemenos.text = lang('scene.gridFineTuning.maisemenos');
-			self.lablarguramundo.text = lang('scene.gridFineTuning.largura');
-			self.labalturamundo.text = lang('scene.gridFineTuning.altura');
-		
+		self.labdicamaisemenos.text = lang('scene.gridFineTuning.maisemenos');
+		self.lablarguramundo.text = lang('scene.gridFineTuning.largura');
+		self.labalturamundo.text = lang('scene.gridFineTuning.altura');
+		self.laboffset.text = lang('scene.gridFineTuning.offset');
 		
 
 
@@ -140,7 +192,31 @@ local function constructNew_frmWorldIncrease()
             worldControlDecreaseWidth();
         end, obj);
 
+    obj._e_event4 = obj.button5:addEventListener("onClick",
+        function (_)
+            offsetLeft();
+        end, obj);
+
+    obj._e_event5 = obj.button6:addEventListener("onClick",
+        function (_)
+            offsetRight();
+        end, obj);
+
+    obj._e_event6 = obj.button7:addEventListener("onClick",
+        function (_)
+            offsetDown();
+        end, obj);
+
+    obj._e_event7 = obj.button8:addEventListener("onClick",
+        function (_)
+            offsetUp();
+        end, obj);
+
     function obj:_releaseEvents()
+        __o_rrpgObjs.removeEventListenerById(self._e_event7);
+        __o_rrpgObjs.removeEventListenerById(self._e_event6);
+        __o_rrpgObjs.removeEventListenerById(self._e_event5);
+        __o_rrpgObjs.removeEventListenerById(self._e_event4);
         __o_rrpgObjs.removeEventListenerById(self._e_event3);
         __o_rrpgObjs.removeEventListenerById(self._e_event2);
         __o_rrpgObjs.removeEventListenerById(self._e_event1);
@@ -162,8 +238,14 @@ local function constructNew_frmWorldIncrease()
         if self.lablarguramundo ~= nil then self.lablarguramundo:destroy(); self.lablarguramundo = nil; end;
         if self.labdicamaisemenos ~= nil then self.labdicamaisemenos:destroy(); self.labdicamaisemenos = nil; end;
         if self.flowPart1 ~= nil then self.flowPart1:destroy(); self.flowPart1 = nil; end;
-        if self.labalturamundo ~= nil then self.labalturamundo:destroy(); self.labalturamundo = nil; end;
+        if self.button6 ~= nil then self.button6:destroy(); self.button6 = nil; end;
+        if self.button5 ~= nil then self.button5:destroy(); self.button5 = nil; end;
         if self.button2 ~= nil then self.button2:destroy(); self.button2 = nil; end;
+        if self.flowPart2 ~= nil then self.flowPart2:destroy(); self.flowPart2 = nil; end;
+        if self.button7 ~= nil then self.button7:destroy(); self.button7 = nil; end;
+        if self.laboffset ~= nil then self.laboffset:destroy(); self.laboffset = nil; end;
+        if self.labalturamundo ~= nil then self.labalturamundo:destroy(); self.labalturamundo = nil; end;
+        if self.button8 ~= nil then self.button8:destroy(); self.button8 = nil; end;
         self:_oldLFMDestroy();
     end;
 

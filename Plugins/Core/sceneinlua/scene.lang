@@ -145,12 +145,13 @@ scene.bkgImageTabTitle=Imagem de Fundo
 scene.bkgImageTabTitle.useThis=Usar esta imagem:
 scene.bkgImageTabTitle.guide=Clique para alterar a imagem
 
-scene.gridFineTuning.setup=Sincronizar Grid
-scene.gridFineTuning.menu=Ajuste milimétrico do Grid
+scene.gridFineTuning.setup=Ajuste milimétrico do Grid
+scene.gridFineTuning.menu=Sincronizar Grid
 scene.gridFineTuning.dica=Dica : Desenhe 5 quadrados para o RRPG calcular o tamanho do grid em seu mundo
-scene.gridFineTuning.maisemenos=Dica : Mova o scene todo para direita e todo para baixo para um melhor alinhamento
+scene.gridFineTuning.maisemenos=Dica : Alinhe o primeiro grid e em seguida va para o ultimo grid do mundo para um melhor alinhamento
 scene.gridFineTuning.largura=Largura
 scene.gridFineTuning.altura=Altura
+scene.gridFineTuning.offset=Escolha a posição do grid
 
 [en]
 scene.arrowCursor=Select/Move
@@ -296,4 +297,10 @@ scene.bkgImageTabTitle=Background Image
 scene.bkgImageTabTitle.useThis=Use this image:
 scene.bkgImageTabTitle.guide=Click to change the image
 
-scene.gridFineTuning.menu=Adjust grid with background image
+scene.gridFineTuning.setup=Synchronize grid
+scene.gridFineTuning.menu=Fine grid adjustment
+scene.gridFineTuning.dica=Dica : Draw 4 squares for the RRPG to calculate the size of the grid in your world
+scene.gridFineTuning.maisemenos=Tip: Align the first grid and then go to the last grid in the world for a better alignment
+scene.gridFineTuning.largura=Width
+scene.gridFineTuning.altura=Height
+scene.gridFineTuning.offset=Choose a Grid position

@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<popupForm name="frmWorldIncrease" width="300" height="100" drawContainer="true" resizable="true" placement="center"
+<popupForm name="frmWorldIncrease" width="300" height="170" opacity="0.9" drawContainer="true" resizable="true" placement="center"
 		   cancelable="false">
  		   
 	<import file="interfaceUtils.xml"/>
@@ -7,6 +7,14 @@
 	<style>
 		flowPart.optionPart {
 			height: 100;
+			width: 300;
+			minWidth: 50;
+			maxWidth: 5000;
+			margins: {left=2, right=2, top=2, bottom=2};
+		}	
+		
+		flowPart.optionPart2 {
+			height: 200;
 			width: 300;
 			minWidth: 50;
 			maxWidth: 5000;
@@ -43,44 +51,71 @@
 	</style>	
 	
 	<flowPart class="optionPart">
-	<label name="labdicamaisemenos" autoSize="true" fontColor="white" class="itemTitle"/>
-	<label name="labalturamundo" autoSize="true" fontColor="white" class="groupTitle"/>
+		<label name="labdicamaisemenos" autoSize="true" fontColor="white" class="itemTitle"/>
+		<label name="labalturamundo" autoSize="true" fontColor="white" class="groupTitle"/>
+		
+		<button text="+" width="30" left="105" top="58">
+			<event name="onClick">
+				worldControlIncreaseHeight();      
+			</event>
+		</button>
+		
+		<button text="-" width="30" left="65" top="58">
+			<event name="onClick">
+				worldControlDecreaseHeight();           
+			</event>
+		</button>
+		
+		<label name="lablarguramundo" autoSize="true" fontColor="white" class="groupTitle"/>
+		
+		<button text="+" width="30" left="235" top="58">
+			<event name="onClick">
+				worldControlIncreaseWidth();      
+			</event>
+		</button>
+		
+		<button text="-" width="30" left="195" top="58">
+			<event name="onClick">
+				worldControlDecreaseWidth();           
+			</event>
+		</button>
+	</flowPart>
 	
-	<button text="+" width="30" left="100" top="58">
-		<event name="onClick">
-			worldControlIncreaseHeight();      
-		</event>
-    </button>
 	
-	<button text="-" width="30" left="60" top="58">
-            <event name="onClick">
-            worldControlDecreaseHeight();           
-            </event>
-    </button>
+	-------------------------------------------------------------
 	
-	<label name="lablarguramundo" autoSize="true" fontColor="white" class="groupTitle"/>
-	
-	<button text="+" width="30" left="250" top="58">
-		<event name="onClick">
-			worldControlIncreaseWidth();      
-		</event>
-    </button>
-	
-	<button text="-" width="30" left="210" top="58">
-            <event name="onClick">
-            worldControlDecreaseWidth();           
-            </event>
-    </button>
+	<flowPart class="optionPart2">
+		<label name="laboffset" autoSize="true" wordWrap="true" width="200" fontColor="white" fontSize="17" left="57" top="90"/>
+		<button text="⮜" width="30" left="70" top="120">
+			<event name="onClick">
+				offsetLeft();    
+			</event>
+		</button>
+		
+		<button text="⮞" width="30" left="110" top="120">
+			<event name="onClick">
+				offsetRight();      
+			</event>
+		</button>
+		
+		<button text="⮝" width="30" left="150" top="120">
+			<event name="onClick">
+				offsetDown(); 
+			</event>
+		</button>
+		
+		<button text="⮟" width="30" left="190" top="120">
+			<event name="onClick">
+				offsetUp();       
+			</event>
+		</button>
 	</flowPart>
 	
 	<script><![CDATA[	
-	
-			self.labdicamaisemenos.text = lang('scene.gridFineTuning.maisemenos');
-			self.lablarguramundo.text = lang('scene.gridFineTuning.largura');
-			self.labalturamundo.text = lang('scene.gridFineTuning.altura');
-		
+		self.labdicamaisemenos.text = lang('scene.gridFineTuning.maisemenos');
+		self.lablarguramundo.text = lang('scene.gridFineTuning.largura');
+		self.labalturamundo.text = lang('scene.gridFineTuning.altura');
+		self.laboffset.text = lang('scene.gridFineTuning.offset');
 		]]>
-	</script>
-	
-	
+	</script>	
 </popupForm>
