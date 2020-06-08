@@ -80,10 +80,7 @@
 			</event>
 		</button>
 	</flowPart>
-	
-	
-	-------------------------------------------------------------
-	
+		
 	<flowPart class="optionPart2">
 		<label name="laboffset" autoSize="true" wordWrap="true" width="200" fontColor="white" fontSize="17" left="57" top="90"/>
 		<button text="⮜" width="30" left="70" top="120">

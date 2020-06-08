@@ -384,7 +384,10 @@ SceneLib.registerPlugin(
 					shapeMaker = nil;
 				end;	
 			end);
-			
+		
+		--[[funções do ajuste fino do grid, estão nesse arquivo por-
+		    conta das variaveis ja estarem declaradas e os calculos ja estarem prontos aqui ]]--
+		
 		function worldControlIncreaseHeight()
 			scene.worldHeight = scene.worldHeight + 0.1;
 		end;
