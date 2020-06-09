@@ -571,6 +571,41 @@ function SHAPEMaker_New(scene, shape)
 			end;
 		end;
 	end;
+	
+	function maker:getWorldBounds()		
+		local minX = nil;
+		local maxX = nil;
+		local minY = nil;
+		local maxY = nil;
+		local pol = self:getPolygon();
+					
+		for i = 1, #pol, 1 do
+			local p = pol[i];
+			local x = p.x;
+            local y = p.y;
+			
+			if minX == nil or x < minX then
+				minX = x;
+			end;
+			
+			if maxX == nil or x > maxX then
+				maxX = x;
+			end;
+			
+			if minY == nil or y < minY then
+				minY = y;
+			end;
+			
+			if maxY == nil or y > maxY then
+				maxY = y;
+			end;						
+		end;		
+	
+		local largura = maxX - minX;
+		local altura = maxY - minY;
+		
+		return {left=minX, top=minY, width=largura, height=altura, right=maxX, bottom=maxY};
+	end;
 		
 	local function ellipseToPolygon(x, y, x2, y2)
 		local PRECISAO_CIRCULO_EM_GRAUS = 360.0 / 18;
