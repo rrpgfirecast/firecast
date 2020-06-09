@@ -35,6 +35,45 @@ local function constructNew_frmWorldIncrease()
     obj:setPlacement("center");
     obj:setCancelable(false);
 
+
+		
+		--[[funções do ajuste fino do grid, estão nesse arquivo por-
+		    conta das variaveis ja estarem declaradas e os calculos ja estarem prontos aqui ]]--
+		
+		local function increaseWorldControlHeight()
+			self.sceneAlvo.worldHeight = self.sceneAlvo.worldHeight + 0.1;
+		end;
+				
+		local function decreaseWorldControlHeight()
+			self.sceneAlvo.worldHeight = self.sceneAlvo.worldHeight - 0.1;
+		end;
+		
+		local function increaseWorldControlWidth()
+			self.sceneAlvo.worldWidth = self.sceneAlvo.worldWidth + 0.1;
+		end;
+		
+		local function decreaseWorldControlWidth()
+			self.sceneAlvo.worldWidth = self.sceneAlvo.worldWidth - 0.1;
+		end;
+		
+		local function moveOffsetLeft()
+			self.sceneAlvo.grid.offsetX = self.sceneAlvo.grid.offsetX - 0.025;
+		end;
+		
+		local function moveOffsetRight()
+			self.sceneAlvo.grid.offsetX = self.sceneAlvo.grid.offsetX + 0.025;
+		end;
+		
+		local function moveOffsetUp()
+			self.sceneAlvo.grid.offsetY = self.sceneAlvo.grid.offsetY + 0.025;
+		end;
+		
+		local function moveOffsetDown()
+			self.sceneAlvo.grid.offsetY = self.sceneAlvo.grid.offsetY -0.025;
+		end;		
+	
+
+
     obj.flowPart1 = GUI.fromHandle(_obj_newObject("flowPart"));
     obj.flowPart1:setParent(obj);
     obj.flowPart1:setName("flowPart1");
@@ -44,29 +83,29 @@ local function constructNew_frmWorldIncrease()
     obj.flowPart1:setMaxWidth(5000);
     obj.flowPart1:setMargins({left=2, right=2, top=2, bottom=2});
 
-    obj.labdicamaisemenos = GUI.fromHandle(_obj_newObject("label"));
-    obj.labdicamaisemenos:setParent(obj.flowPart1);
-    obj.labdicamaisemenos:setName("labdicamaisemenos");
-    obj.labdicamaisemenos:setAutoSize(true);
-    obj.labdicamaisemenos:setFontColor("white");
-    obj.labdicamaisemenos:setAlign("top");
-    obj.labdicamaisemenos:setWidth(280);
-    obj.labdicamaisemenos:setWordWrap(true);
-    obj.labdicamaisemenos:setHorzTextAlign("center");
-    obj.labdicamaisemenos:setVertTextAlign("leading");
-    obj.labdicamaisemenos:setMargins({right=5});
+    obj.labTipDimension = GUI.fromHandle(_obj_newObject("label"));
+    obj.labTipDimension:setParent(obj.flowPart1);
+    obj.labTipDimension:setName("labTipDimension");
+    obj.labTipDimension:setAutoSize(true);
+    obj.labTipDimension:setFontColor("white");
+    obj.labTipDimension:setAlign("top");
+    obj.labTipDimension:setWidth(280);
+    obj.labTipDimension:setWordWrap(true);
+    obj.labTipDimension:setHorzTextAlign("center");
+    obj.labTipDimension:setVertTextAlign("leading");
+    obj.labTipDimension:setMargins({right=5});
 
-    obj.labalturamundo = GUI.fromHandle(_obj_newObject("label"));
-    obj.labalturamundo:setParent(obj.flowPart1);
-    obj.labalturamundo:setName("labalturamundo");
-    obj.labalturamundo:setAutoSize(true);
-    obj.labalturamundo:setFontColor("white");
-    obj.labalturamundo:setAlign("left");
-    obj.labalturamundo:setWordWrap(true);
-    obj.labalturamundo:setHorzTextAlign("leading");
-    obj.labalturamundo:setVertTextAlign("center");
-    obj.labalturamundo:setMargins({left=10, right=5});
-    obj.labalturamundo:setFontSize(15);
+    obj.labGridHeigh = GUI.fromHandle(_obj_newObject("label"));
+    obj.labGridHeigh:setParent(obj.flowPart1);
+    obj.labGridHeigh:setName("labGridHeigh");
+    obj.labGridHeigh:setAutoSize(true);
+    obj.labGridHeigh:setFontColor("white");
+    obj.labGridHeigh:setAlign("left");
+    obj.labGridHeigh:setWordWrap(true);
+    obj.labGridHeigh:setHorzTextAlign("leading");
+    obj.labGridHeigh:setVertTextAlign("center");
+    obj.labGridHeigh:setMargins({left=10, right=5});
+    obj.labGridHeigh:setFontSize(15);
 
     obj.button1 = GUI.fromHandle(_obj_newObject("button"));
     obj.button1:setParent(obj.flowPart1);
@@ -84,17 +123,17 @@ local function constructNew_frmWorldIncrease()
     obj.button2:setTop(58);
     obj.button2:setName("button2");
 
-    obj.lablarguramundo = GUI.fromHandle(_obj_newObject("label"));
-    obj.lablarguramundo:setParent(obj.flowPart1);
-    obj.lablarguramundo:setName("lablarguramundo");
-    obj.lablarguramundo:setAutoSize(true);
-    obj.lablarguramundo:setFontColor("white");
-    obj.lablarguramundo:setAlign("left");
-    obj.lablarguramundo:setWordWrap(true);
-    obj.lablarguramundo:setHorzTextAlign("leading");
-    obj.lablarguramundo:setVertTextAlign("center");
-    obj.lablarguramundo:setMargins({left=10, right=5});
-    obj.lablarguramundo:setFontSize(15);
+    obj.labGridWidth = GUI.fromHandle(_obj_newObject("label"));
+    obj.labGridWidth:setParent(obj.flowPart1);
+    obj.labGridWidth:setName("labGridWidth");
+    obj.labGridWidth:setAutoSize(true);
+    obj.labGridWidth:setFontColor("white");
+    obj.labGridWidth:setAlign("left");
+    obj.labGridWidth:setWordWrap(true);
+    obj.labGridWidth:setHorzTextAlign("leading");
+    obj.labGridWidth:setVertTextAlign("center");
+    obj.labGridWidth:setMargins({left=10, right=5});
+    obj.labGridWidth:setFontSize(15);
 
     obj.button3 = GUI.fromHandle(_obj_newObject("button"));
     obj.button3:setParent(obj.flowPart1);
@@ -165,51 +204,51 @@ local function constructNew_frmWorldIncrease()
     obj.button8:setName("button8");
 
 	
-		self.labdicamaisemenos.text = lang('scene.gridFineTuning.maisemenos');
-		self.lablarguramundo.text = lang('scene.gridFineTuning.largura');
-		self.labalturamundo.text = lang('scene.gridFineTuning.altura');
+		self.labTipDimension.text = lang('scene.gridFineTuning.dimension');
+		self.labGridHeigh.text = lang('scene.gridFineTuning.heigh');
+		self.labGridWidth.text = lang('scene.gridFineTuning.width');
 		self.laboffset.text = lang('scene.gridFineTuning.offset');
 		
 
 
     obj._e_event0 = obj.button1:addEventListener("onClick",
         function (_)
-            worldControlIncreaseHeight();
+            increaseWorldControlHeight();
         end, obj);
 
     obj._e_event1 = obj.button2:addEventListener("onClick",
         function (_)
-            worldControlDecreaseHeight();
+            decreaseWorldControlHeight();
         end, obj);
 
     obj._e_event2 = obj.button3:addEventListener("onClick",
         function (_)
-            worldControlIncreaseWidth();
+            increaseWorldControlWidth();
         end, obj);
 
     obj._e_event3 = obj.button4:addEventListener("onClick",
         function (_)
-            worldControlDecreaseWidth();
+            decreaseWorldControlWidth();
         end, obj);
 
     obj._e_event4 = obj.button5:addEventListener("onClick",
         function (_)
-            offsetLeft();
+            moveOffsetLeft();
         end, obj);
 
     obj._e_event5 = obj.button6:addEventListener("onClick",
         function (_)
-            offsetRight();
+            moveOffsetRight();
         end, obj);
 
     obj._e_event6 = obj.button7:addEventListener("onClick",
         function (_)
-            offsetDown();
+            moveOffsetDown();
         end, obj);
 
     obj._e_event7 = obj.button8:addEventListener("onClick",
         function (_)
-            offsetUp();
+            moveOffsetUp();
         end, obj);
 
     function obj:_releaseEvents()
@@ -233,18 +272,18 @@ local function constructNew_frmWorldIncrease()
         end;
 
         if self.button4 ~= nil then self.button4:destroy(); self.button4 = nil; end;
+        if self.labGridHeigh ~= nil then self.labGridHeigh:destroy(); self.labGridHeigh = nil; end;
         if self.button1 ~= nil then self.button1:destroy(); self.button1 = nil; end;
         if self.button3 ~= nil then self.button3:destroy(); self.button3 = nil; end;
-        if self.lablarguramundo ~= nil then self.lablarguramundo:destroy(); self.lablarguramundo = nil; end;
-        if self.labdicamaisemenos ~= nil then self.labdicamaisemenos:destroy(); self.labdicamaisemenos = nil; end;
-        if self.flowPart1 ~= nil then self.flowPart1:destroy(); self.flowPart1 = nil; end;
         if self.button6 ~= nil then self.button6:destroy(); self.button6 = nil; end;
+        if self.flowPart1 ~= nil then self.flowPart1:destroy(); self.flowPart1 = nil; end;
         if self.button5 ~= nil then self.button5:destroy(); self.button5 = nil; end;
         if self.button2 ~= nil then self.button2:destroy(); self.button2 = nil; end;
         if self.flowPart2 ~= nil then self.flowPart2:destroy(); self.flowPart2 = nil; end;
         if self.button7 ~= nil then self.button7:destroy(); self.button7 = nil; end;
+        if self.labGridWidth ~= nil then self.labGridWidth:destroy(); self.labGridWidth = nil; end;
         if self.laboffset ~= nil then self.laboffset:destroy(); self.laboffset = nil; end;
-        if self.labalturamundo ~= nil then self.labalturamundo:destroy(); self.labalturamundo = nil; end;
+        if self.labTipDimension ~= nil then self.labTipDimension:destroy(); self.labTipDimension = nil; end;
         if self.button8 ~= nil then self.button8:destroy(); self.button8 = nil; end;
         self:_oldLFMDestroy();
     end;

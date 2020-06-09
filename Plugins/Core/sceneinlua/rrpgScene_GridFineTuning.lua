@@ -17,7 +17,7 @@ SceneLib.registerPlugin(
 	
 		scene.viewport:setupToolCategory(SETTINGS_CATEGORY, lang("scene.toolcategory.settings"), -5);
 		
-		local frmSincronizar = nil;
+		local frmFineTuning = nil;
 		
 		scene.viewport:addToolButton(SETTINGS_CATEGORY, 
 		                             lang("scene.gridFineTuning.setup"), 
@@ -29,19 +29,20 @@ SceneLib.registerPlugin(
 				possuiaGridAntes = scene.grid.drawGrid;
 				scene.grid.drawGrid = true;
 				
-				if frmSincronizar == nil then
-					frmSincronizar = GUI.newForm("frmWorldIncrease");
+				if frmFineTuning == nil then
+					frmFineTuning = GUI.newForm("frmWorldIncrease");
+					frmFineTuning.sceneAlvo = scene;
 				end;
 				
-				scene.viewport:showForm(frmSincronizar, {placement="topLeft"});
+				scene.viewport:showForm(frmFineTuning, {placement="topLeft"});
 			end, 
 			
 			function()
 				--[[ Em construção ]]-- 
 				scene.grid.drawGrid = possuiaGridAntes;
 				
-				if frmSincronizar ~= nil then
-					scene.viewport:closeForm(frmSincronizar);
+				if frmFineTuning ~= nil then
+					scene.viewport:closeForm(frmFineTuning);
 				end;				
 			end);		
 	end);	

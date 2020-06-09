@@ -50,33 +50,71 @@
 				
 	</style>	
 	
+	<script>
+		
+		--[[funções do ajuste fino do grid, estão nesse arquivo por-
+		    conta das variaveis ja estarem declaradas e os calculos ja estarem prontos aqui ]]--
+		
+		local function increaseWorldControlHeight()
+			self.sceneAlvo.worldHeight = self.sceneAlvo.worldHeight + 0.1;
+		end;
+				
+		local function decreaseWorldControlHeight()
+			self.sceneAlvo.worldHeight = self.sceneAlvo.worldHeight - 0.1;
+		end;
+		
+		local function increaseWorldControlWidth()
+			self.sceneAlvo.worldWidth = self.sceneAlvo.worldWidth + 0.1;
+		end;
+		
+		local function decreaseWorldControlWidth()
+			self.sceneAlvo.worldWidth = self.sceneAlvo.worldWidth - 0.1;
+		end;
+		
+		local function moveOffsetLeft()
+			self.sceneAlvo.grid.offsetX = self.sceneAlvo.grid.offsetX - 0.025;
+		end;
+		
+		local function moveOffsetRight()
+			self.sceneAlvo.grid.offsetX = self.sceneAlvo.grid.offsetX + 0.025;
+		end;
+		
+		local function moveOffsetUp()
+			self.sceneAlvo.grid.offsetY = self.sceneAlvo.grid.offsetY + 0.025;
+		end;
+		
+		local function moveOffsetDown()
+			self.sceneAlvo.grid.offsetY = self.sceneAlvo.grid.offsetY -0.025;
+		end;		
+	</script>
+	
 	<flowPart class="optionPart">
-		<label name="labdicamaisemenos" autoSize="true" fontColor="white" class="itemTitle"/>
-		<label name="labalturamundo" autoSize="true" fontColor="white" class="groupTitle"/>
+		<label name="labTipDimension" autoSize="true" fontColor="white" class="itemTitle"/>
+		<label name="labGridHeigh" autoSize="true" fontColor="white" class="groupTitle"/>
 		
 		<button text="+" width="30" left="105" top="58">
 			<event name="onClick">
-				worldControlIncreaseHeight();      
+				increaseWorldControlHeight();      
 			</event>
 		</button>
 		
 		<button text="-" width="30" left="65" top="58">
 			<event name="onClick">
-				worldControlDecreaseHeight();           
+				decreaseWorldControlHeight();           
 			</event>
 		</button>
 		
-		<label name="lablarguramundo" autoSize="true" fontColor="white" class="groupTitle"/>
+		<label name="labGridWidth" autoSize="true" fontColor="white" class="groupTitle"/>
 		
 		<button text="+" width="30" left="235" top="58">
 			<event name="onClick">
-				worldControlIncreaseWidth();      
+				increaseWorldControlWidth();      
 			</event>
 		</button>
 		
 		<button text="-" width="30" left="195" top="58">
 			<event name="onClick">
-				worldControlDecreaseWidth();           
+				decreaseWorldControlWidth();           
 			</event>
 		</button>
 	</flowPart>
@@ -85,33 +123,33 @@
 		<label name="laboffset" autoSize="true" wordWrap="true" width="200" fontColor="white" fontSize="17" left="57" top="90"/>
 		<button text="⮜" width="30" left="70" top="120">
 			<event name="onClick">
-				offsetLeft();    
+				moveOffsetLeft();    
 			</event>
 		</button>
 		
 		<button text="⮞" width="30" left="110" top="120">
 			<event name="onClick">
-				offsetRight();      
+				moveOffsetRight();      
 			</event>
 		</button>
 		
 		<button text="⮝" width="30" left="150" top="120">
 			<event name="onClick">
-				offsetDown(); 
+				moveOffsetDown(); 
 			</event>
 		</button>
 		
 		<button text="⮟" width="30" left="190" top="120">
 			<event name="onClick">
-				offsetUp();       
+				moveOffsetUp();       
 			</event>
 		</button>
 	</flowPart>
 	
 	<script><![CDATA[	
-		self.labdicamaisemenos.text = lang('scene.gridFineTuning.maisemenos');
-		self.lablarguramundo.text = lang('scene.gridFineTuning.largura');
-		self.labalturamundo.text = lang('scene.gridFineTuning.altura');
+		self.labTipDimension.text = lang('scene.gridFineTuning.dimension');
+		self.labGridHeigh.text = lang('scene.gridFineTuning.heigh');
+		self.labGridWidth.text = lang('scene.gridFineTuning.width');
 		self.laboffset.text = lang('scene.gridFineTuning.offset');
 		]]>
 	</script>	

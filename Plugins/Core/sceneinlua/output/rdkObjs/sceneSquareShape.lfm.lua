@@ -7,7 +7,7 @@ require("ndb.lua");
 require("locale.lua");
 local __o_Utils = require("utils.lua");
 
-local function constructNew_frmSquareShape()
+local function constructNew_frmSynchronizeGrid()
     local obj = GUI.fromHandle(_obj_newObject("popupForm"));
     local self = obj;
     local sheet = nil;
@@ -26,7 +26,7 @@ local function constructNew_frmSquareShape()
 
     _gui_assignInitialParentForForm(obj.handle);
     obj:beginUpdate();
-    obj:setName("frmSquareShape");
+    obj:setName("frmSynchronizeGrid");
     obj:setWidth(300);
     obj:setHeight(100);
     obj:setDrawContainer(true);
@@ -34,19 +34,19 @@ local function constructNew_frmSquareShape()
     obj:setPlacement("center");
     obj:setCancelable(false);
 
-    obj.labdicamaisemenos = GUI.fromHandle(_obj_newObject("label"));
-    obj.labdicamaisemenos:setParent(obj);
-    obj.labdicamaisemenos:setName("labdicamaisemenos");
-    obj.labdicamaisemenos:setLeft(10);
-    obj.labdicamaisemenos:setTop(5);
-    obj.labdicamaisemenos:setWidth(290);
-    obj.labdicamaisemenos:setAutoSize(true);
-    obj.labdicamaisemenos:setWordWrap(true);
-    obj.labdicamaisemenos:setFontSize(20);
-    obj.labdicamaisemenos:setFontColor("red");
+    obj.labTip = GUI.fromHandle(_obj_newObject("label"));
+    obj.labTip:setParent(obj);
+    obj.labTip:setName("labTip");
+    obj.labTip:setLeft(10);
+    obj.labTip:setTop(5);
+    obj.labTip:setWidth(290);
+    obj.labTip:setAutoSize(true);
+    obj.labTip:setWordWrap(true);
+    obj.labTip:setFontSize(20);
+    obj.labTip:setFontColor("red");
 
 	
-			self.labdicamaisemenos.text = lang('scene.gridFineTuning.maisemenos');
+			self.labTip.text = lang('scene.Synchronize.tip');
 			
 
 
@@ -62,7 +62,7 @@ local function constructNew_frmSquareShape()
           self:setNodeDatabase(nil);
         end;
 
-        if self.labdicamaisemenos ~= nil then self.labdicamaisemenos:destroy(); self.labdicamaisemenos = nil; end;
+        if self.labTip ~= nil then self.labTip:destroy(); self.labTip = nil; end;
         self:_oldLFMDestroy();
     end;
 
@@ -71,13 +71,13 @@ local function constructNew_frmSquareShape()
     return obj;
 end;
 
-function newfrmSquareShape()
+function newfrmSynchronizeGrid()
     local retObj = nil;
     __o_rrpgObjs.beginObjectsLoading();
 
     __o_Utils.tryFinally(
       function()
-        retObj = constructNew_frmSquareShape();
+        retObj = constructNew_frmSynchronizeGrid();
       end,
       function()
         __o_rrpgObjs.endObjectsLoading();
@@ -87,17 +87,17 @@ function newfrmSquareShape()
     return retObj;
 end;
 
-local _frmSquareShape = {
-    newEditor = newfrmSquareShape, 
-    new = newfrmSquareShape, 
-    name = "frmSquareShape", 
+local _frmSynchronizeGrid = {
+    newEditor = newfrmSynchronizeGrid, 
+    new = newfrmSynchronizeGrid, 
+    name = "frmSynchronizeGrid", 
     dataType = "", 
     formType = "undefined", 
     formComponentName = "popupForm", 
     title = "", 
     description=""};
 
-frmSquareShape = _frmSquareShape;
-Firecast.registrarForm(_frmSquareShape);
+frmSynchronizeGrid = _frmSynchronizeGrid;
+Firecast.registrarForm(_frmSynchronizeGrid);
 
-return _frmSquareShape;
+return _frmSynchronizeGrid;

@@ -352,8 +352,8 @@ SceneLib.registerPlugin(
 				
 				
 		scene.viewport:addToolButton(SETTINGS_CATEGORY, 
-		                             lang("scene.gridFineTuning.menu"), 
-									 "/icos/gridFineTuning.png",
+		                             lang("scene.Synchronize.menu"), 
+									 "/icos/Synchronize.png",
 									 10,
 									 {selectable=true, defaultOfCategory=false},			
 			function()
@@ -361,7 +361,7 @@ SceneLib.registerPlugin(
 				scene.grid.drawGrid = false;
 				
 				if frmInstrucao == nil then
-					frmInstrucao = GUI.newForm("frmSquareShape");
+					frmInstrucao = GUI.newForm("frmSynchronizeGrid");
 				end;
 				
 				scene.viewport:showForm(frmInstrucao, {placement="topLeft"});
@@ -383,41 +383,5 @@ SceneLib.registerPlugin(
 					shapeMaker:abort();
 					shapeMaker = nil;
 				end;	
-			end);
-		
-		--[[funções do ajuste fino do grid, estão nesse arquivo por-
-		    conta das variaveis ja estarem declaradas e os calculos ja estarem prontos aqui ]]--
-		
-		function worldControlIncreaseHeight()
-			scene.worldHeight = scene.worldHeight + 0.1;
-		end;
-				
-		function worldControlDecreaseHeight()
-			scene.worldHeight = scene.worldHeight - 0.1;
-		end;
-		
-		function worldControlIncreaseWidth()
-			scene.worldWidth = scene.worldWidth + 0.1;
-		end;
-		
-		function worldControlDecreaseWidth()
-			scene.worldWidth = scene.worldWidth - 0.1;
-		end;
-		
-		function offsetLeft()
-		scene.grid.offsetX = scene.grid.offsetX - 0.05;
-		end;
-		
-		function offsetRight()
-		scene.grid.offsetX = scene.grid.offsetX + 0.05;
-		end;
-		
-		function offsetUp()
-		scene.grid.offsetY = scene.grid.offsetY + 0.05;
-		end;
-		
-		function offsetDown()
-		scene.grid.offsetY = scene.grid.offsetY -0.05;
-		end;
-		
+			end);		
 	end);	
