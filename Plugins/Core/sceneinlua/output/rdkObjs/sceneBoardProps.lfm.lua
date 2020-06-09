@@ -1027,6 +1027,7 @@ local function constructNew_frmBoardProps()
 					scene.grid.offsetX = self.edtOffsetX.asNumber;
 					scene.grid.offsetY = self.edtOffsetY.asNumber;
 					scene.grid.squareDiagonals = self.cmbDiagonais.value;
+										
 					
 					if self.rbtCellTypeVertHex.checked then
 						scene.grid.gridType = "vertHex";
