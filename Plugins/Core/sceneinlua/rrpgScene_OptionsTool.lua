@@ -18,7 +18,7 @@ SceneLib.registerPlugin(
 									lang("scene.menu.sceneOptions"), 
 									"/icos/scene_props.png",
 									-5,
-									{},
+									{defaultOfCategory=true},
 									 
 				function()
 					local frm;

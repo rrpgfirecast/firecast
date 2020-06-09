@@ -1,0 +1,156 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<popupForm name="frmWorldIncrease" width="300" height="170" opacity="0.9" drawContainer="true" resizable="true" placement="center"
+		   cancelable="false">
+ 		   
+	<import file="interfaceUtils.xml"/>
+	
+	<style>
+		flowPart.optionPart {
+			height: 100;
+			width: 300;
+			minWidth: 50;
+			maxWidth: 5000;
+			margins: {left=2, right=2, top=2, bottom=2};
+		}	
+		
+		flowPart.optionPart2 {
+			height: 200;
+			width: 300;
+			minWidth: 50;
+			maxWidth: 5000;
+			margins: {left=2, right=2, top=2, bottom=2};
+		}	
+			
+		.itemTitle {
+			align: top;
+			width: 280;
+			wordWrap: true;
+			autoSize: false;
+			horzTextAlign: center;	
+			vertTextAlign: leading;
+			margins:{right=5};
+		}
+		
+		.itemContent {
+			align: client;
+			margins:{right=5};
+		}
+		
+		.groupTitle {
+			align: left;						
+			autoSize: true;
+			wordWrap: true;
+			horzTextAlign: leading;	
+			vertTextAlign: center;
+			margins:{left=10, right=5};		
+			fontSize: 15;
+			fontColor: #FFCC66;
+		}
+		
+				
+	</style>	
+	
+	<script>
+		
+		--[[funções do ajuste fino do grid, estão nesse arquivo por-
+		    conta das variaveis ja estarem declaradas e os calculos ja estarem prontos aqui ]]--
+		
+		local function increaseWorldControlHeight()
+			self.sceneAlvo.worldHeight = self.sceneAlvo.worldHeight + 0.1;
+		end;
+				
+		local function decreaseWorldControlHeight()
+			self.sceneAlvo.worldHeight = self.sceneAlvo.worldHeight - 0.1;
+		end;
+		
+		local function increaseWorldControlWidth()
+			self.sceneAlvo.worldWidth = self.sceneAlvo.worldWidth + 0.1;
+		end;
+		
+		local function decreaseWorldControlWidth()
+			self.sceneAlvo.worldWidth = self.sceneAlvo.worldWidth - 0.1;
+		end;
+		
+		local function moveOffsetLeft()
+			self.sceneAlvo.grid.offsetX = self.sceneAlvo.grid.offsetX - 0.025;
+		end;
+		
+		local function moveOffsetRight()
+			self.sceneAlvo.grid.offsetX = self.sceneAlvo.grid.offsetX + 0.025;
+		end;
+		
+		local function moveOffsetUp()
+			self.sceneAlvo.grid.offsetY = self.sceneAlvo.grid.offsetY + 0.025;
+		end;
+		
+		local function moveOffsetDown()
+			self.sceneAlvo.grid.offsetY = self.sceneAlvo.grid.offsetY -0.025;
+		end;		
+	</script>
+	
+	<flowPart class="optionPart">
+		<label name="labTipDimension" autoSize="true" fontColor="white" class="itemTitle"/>
+		<label name="labGridHeigh" autoSize="true" fontColor="white" class="groupTitle"/>
+		
+		<button text="+" width="30" left="105" top="58">
+			<event name="onClick">
+				increaseWorldControlHeight();      
+			</event>
+		</button>
+		
+		<button text="-" width="30" left="65" top="58">
+			<event name="onClick">
+				decreaseWorldControlHeight();           
+			</event>
+		</button>
+		
+		<label name="labGridWidth" autoSize="true" fontColor="white" class="groupTitle"/>
+		
+		<button text="+" width="30" left="235" top="58">
+			<event name="onClick">
+				increaseWorldControlWidth();      
+			</event>
+		</button>
+		
+		<button text="-" width="30" left="195" top="58">
+			<event name="onClick">
+				decreaseWorldControlWidth();           
+			</event>
+		</button>
+	</flowPart>
+		
+	<flowPart class="optionPart2">
+		<label name="laboffset" autoSize="true" wordWrap="true" width="200" fontColor="white" fontSize="17" left="57" top="90"/>
+		<button text="⮜" width="30" left="70" top="120">
+			<event name="onClick">
+				moveOffsetLeft();    
+			</event>
+		</button>
+		
+		<button text="⮞" width="30" left="110" top="120">
+			<event name="onClick">
+				moveOffsetRight();      
+			</event>
+		</button>
+		
+		<button text="⮝" width="30" left="150" top="120">
+			<event name="onClick">
+				moveOffsetDown(); 
+			</event>
+		</button>
+		
+		<button text="⮟" width="30" left="190" top="120">
+			<event name="onClick">
+				moveOffsetUp();       
+			</event>
+		</button>
+	</flowPart>
+	
+	<script><![CDATA[	
+		self.labTipDimension.text = lang('scene.gridFineTuning.dimension');
+		self.labGridHeigh.text = lang('scene.gridFineTuning.heigh');
+		self.labGridWidth.text = lang('scene.gridFineTuning.width');
+		self.laboffset.text = lang('scene.gridFineTuning.offset');
+		]]>
+	</script>	
+</popupForm>
