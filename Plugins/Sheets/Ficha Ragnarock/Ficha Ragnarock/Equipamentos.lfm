@@ -1,7 +1,6 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <form name="frmEquipamentos" align="client">
 	<template name="Equipamento">
-
 		<layout align="left" width="325" margins="{bottom=0}">
 			<layout align="top" height="50" margins="{bottom=0}">
 				<layout align="left" width="125" margins="{right=0}">
@@ -28,16 +27,51 @@
 					</event>
 				</image>
 			</rectangle>
-		</layout>
-			
+		</layout>		
 	</template>
+	<template name="ListaFlexivel">
+		<layout align="client">
+			<layout align="top" height="25">
+				<button text="+" align="left" width="30" onClick="self.$(rclName):append();"/>
+				<label text="$(nome)" align="left" width="225" margins="{left=5}"/>
+			</layout>
+
+			<recordList name="$(rclName)" field="$(rclField)" templateForm="frmItem" align="client" layout="horizontalTiles" hitTest="false">
+				<event name="onCompare">
+			        return ((tonumber(nodeA.nivelHabilidade) or 0) - (tonumber(nodeB.nivelHabilidade) or 0));
+			    </event>
+			</recordList>
+		</layout>
+	</template>	
+
+	<popup name="popItem" width="300" height="200" backOpacity="0.4">
+		<rectangle align="left" width="100" color="black" strokeColor="white" strokeSize="1" hitTest="false">
+			<image align="client" field="iconBig" editable="true" style="autoFit" margins="{left=2, right=2, top=2, bottom=2}"/>
+		</rectangle>
+		<layout align="client">
+			<layout align="top" height="25">
+				<rectangle align="left" width="25" color="black" strokeColor="white" strokeSize="1" hitTest="false">
+					<image align="client" field="icon" editable="true" style="autoFit" margins="{left=2, right=2, top=2, bottom=2}"/>
+				</rectangle>
+				<edit align="left" width="275" field="nome"/>
+				<button align="right" width="25" text="X">
+					<event name="onClick">
+						self.popItem.node.delete = 1;
+						self.popItem:close();
+					</event>
+				</button>
+			</layout>
+			<textEditor align="client" field="descricao"/>
+		</layout>
+	
+	</popup>
 
 	<scrollBox align="client">
-		<layout height="900" width="1255" margins="{right=0}">
+		<layout height="925" width="1255" margins="{right=0}">
 
 			<rectangle color="black" align="top" height="175" margins="{bottom=5}">
 				<layout align="left" width="400" margins="{right=25}">
-					<label text="Cabeça (Alto)" align="top" height="25" horzTextAlign="center"/>
+					<label text="Cabeça (Topo)" align="top" height="25" horzTextAlign="center"/>
 					<Equipamento field="head1" text="Def" text2="Bônus"/>
 				</layout>
 				<layout align="left" width="400" margins="{right=25}">
@@ -86,8 +120,7 @@
 					<Equipamento field="acessorio2" text="Def" text2="Bônus"/>
 				</layout>
 				<layout align="left" width="400" margins="{right=25}">
-					<label text="Itens" align="top" height="25" horzTextAlign="center"/>
-					<textEditor align="client" field="itens_desc"/>
+					<ListaFlexivel nome="Inventário" rclName="campoDoInventario" rclField="campoDoInventario"/>
 				</layout>
 				<layout align="left" width="400" margins="{right=25}">
 					<label text="Acessório" align="top" height="25" horzTextAlign="center"/>
@@ -95,14 +128,9 @@
 				</layout>
 			</rectangle>
 
-			<rectangle color="black" align="top" height="175" margins="{bottom=5}">
-				<layout align="left" width="600" margins="{right=37.5}">
-					<label text="Orbs" align="top" height="25" horzTextAlign="center"/>
-					<textEditor align="client" field="orbs_desc"/>
-				</layout>
-				<layout align="left" width="600" margins="{right=37.5}">
-					<label text="Clã" align="top" height="25" horzTextAlign="center"/>
-					<textEditor align="client" field="cla_desc"/>
+			<rectangle color="black" align="top" height="200" margins="{bottom=5}">
+				<layout align="left" width="400" margins="{right=25}">
+					<ListaFlexivel nome="Orbes" rclName="campoDasOrbes" rclField="campoDasOrbes"/>
 				</layout>
 			</rectangle>
 

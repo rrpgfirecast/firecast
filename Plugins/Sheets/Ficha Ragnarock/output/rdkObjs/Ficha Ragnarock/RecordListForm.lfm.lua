@@ -1,14 +1,14 @@
-require("firecast.lua");
+require("rrpg.lua");
 local __o_rrpgObjs = require("rrpgObjs.lua");
 require("rrpgGUI.lua");
 require("rrpgDialogs.lua");
 require("rrpgLFM.lua");
 require("ndb.lua");
-require("locale.lua");
-local __o_Utils = require("utils.lua");
 
-local function constructNew_frmRecordListForm()
-    local obj = GUI.fromHandle(_obj_newObject("form"));
+function newfrmRecordListForm()
+    __o_rrpgObjs.beginObjectsLoading();
+
+    local obj = gui.fromHandle(_obj_newObject("form"));
     local self = obj;
     local sheet = nil;
 
@@ -31,34 +31,34 @@ local function constructNew_frmRecordListForm()
     obj:setHeight(125);
     obj:setMargins({top=1});
 
-    obj.rectangle1 = GUI.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle1 = gui.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle1:setParent(obj);
     obj.rectangle1:setAlign("client");
     obj.rectangle1:setColor("#212121");
     obj.rectangle1:setName("rectangle1");
 
-    obj.layout1 = GUI.fromHandle(_obj_newObject("layout"));
+    obj.layout1 = gui.fromHandle(_obj_newObject("layout"));
     obj.layout1:setParent(obj.rectangle1);
     obj.layout1:setAlign("top");
     obj.layout1:setHeight(50);
     obj.layout1:setName("layout1");
 
-    obj.layout2 = GUI.fromHandle(_obj_newObject("layout"));
+    obj.layout2 = gui.fromHandle(_obj_newObject("layout"));
     obj.layout2:setParent(obj.layout1);
     obj.layout2:setAlign("left");
     obj.layout2:setWidth(200);
     obj.layout2:setMargins({right=5});
     obj.layout2:setName("layout2");
 
-    obj.label1 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label1 = gui.fromHandle(_obj_newObject("label"));
     obj.label1:setParent(obj.layout2);
-    obj.label1:setText("Magia/Habilidade");
+    obj.label1:setText("Técnica");
     obj.label1:setWidth(200);
     obj.label1:setHorzTextAlign("leading");
     obj.label1:setFontSize(13);
     obj.label1:setName("label1");
 
-    obj.edit1 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit1 = gui.fromHandle(_obj_newObject("edit"));
     obj.edit1:setParent(obj.layout2);
     obj.edit1:setTop(20);
     obj.edit1:setField("nome");
@@ -66,22 +66,22 @@ local function constructNew_frmRecordListForm()
     obj.edit1:setHeight(25);
     obj.edit1:setName("edit1");
 
-    obj.layout3 = GUI.fromHandle(_obj_newObject("layout"));
+    obj.layout3 = gui.fromHandle(_obj_newObject("layout"));
     obj.layout3:setParent(obj.layout1);
     obj.layout3:setAlign("left");
     obj.layout3:setWidth(50);
     obj.layout3:setMargins({right=5});
     obj.layout3:setName("layout3");
 
-    obj.label2 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label2 = gui.fromHandle(_obj_newObject("label"));
     obj.label2:setParent(obj.layout3);
-    obj.label2:setText("AP/IM");
+    obj.label2:setText("AP/TM");
     obj.label2:setWidth(50);
     obj.label2:setHorzTextAlign("leading");
     obj.label2:setFontSize(13);
     obj.label2:setName("label2");
 
-    obj.edit2 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit2 = gui.fromHandle(_obj_newObject("edit"));
     obj.edit2:setParent(obj.layout3);
     obj.edit2:setTop(20);
     obj.edit2:setField("ap");
@@ -89,14 +89,14 @@ local function constructNew_frmRecordListForm()
     obj.edit2:setHeight(25);
     obj.edit2:setName("edit2");
 
-    obj.layout4 = GUI.fromHandle(_obj_newObject("layout"));
+    obj.layout4 = gui.fromHandle(_obj_newObject("layout"));
     obj.layout4:setParent(obj.layout1);
     obj.layout4:setAlign("left");
     obj.layout4:setWidth(50);
     obj.layout4:setMargins({right=5});
     obj.layout4:setName("layout4");
 
-    obj.label3 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label3 = gui.fromHandle(_obj_newObject("label"));
     obj.label3:setParent(obj.layout4);
     obj.label3:setText("SP");
     obj.label3:setWidth(50);
@@ -104,7 +104,7 @@ local function constructNew_frmRecordListForm()
     obj.label3:setFontSize(13);
     obj.label3:setName("label3");
 
-    obj.edit3 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit3 = gui.fromHandle(_obj_newObject("edit"));
     obj.edit3:setParent(obj.layout4);
     obj.edit3:setTop(20);
     obj.edit3:setField("sp");
@@ -112,22 +112,22 @@ local function constructNew_frmRecordListForm()
     obj.edit3:setHeight(25);
     obj.edit3:setName("edit3");
 
-    obj.layout5 = GUI.fromHandle(_obj_newObject("layout"));
+    obj.layout5 = gui.fromHandle(_obj_newObject("layout"));
     obj.layout5:setParent(obj.layout1);
     obj.layout5:setAlign("left");
     obj.layout5:setWidth(50);
     obj.layout5:setMargins({right=5});
     obj.layout5:setName("layout5");
 
-    obj.label4 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label4 = gui.fromHandle(_obj_newObject("label"));
     obj.label4:setParent(obj.layout5);
-    obj.label4:setText("LVL");
+    obj.label4:setText("NV");
     obj.label4:setWidth(50);
     obj.label4:setHorzTextAlign("leading");
     obj.label4:setFontSize(13);
     obj.label4:setName("label4");
 
-    obj.edit4 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit4 = gui.fromHandle(_obj_newObject("edit"));
     obj.edit4:setParent(obj.layout5);
     obj.edit4:setTop(20);
     obj.edit4:setField("lvl");
@@ -135,7 +135,7 @@ local function constructNew_frmRecordListForm()
     obj.edit4:setHeight(25);
     obj.edit4:setName("edit4");
 
-    obj.rectangle2 = GUI.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle2 = gui.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle2:setParent(obj.layout1);
     obj.rectangle2:setAlign("left");
     obj.rectangle2:setWidth(50);
@@ -145,7 +145,7 @@ local function constructNew_frmRecordListForm()
     obj.rectangle2:setStrokeSize(1);
     obj.rectangle2:setName("rectangle2");
 
-    obj.image1 = GUI.fromHandle(_obj_newObject("image"));
+    obj.image1 = gui.fromHandle(_obj_newObject("image"));
     obj.image1:setParent(obj.rectangle2);
     obj.image1:setAlign("client");
     obj.image1:setField("avatar");
@@ -154,7 +154,7 @@ local function constructNew_frmRecordListForm()
     obj.image1:setMargins({left=2, right=2, top=2, bottom=2});
     obj.image1:setName("image1");
 
-    obj.button1 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button1 = gui.fromHandle(_obj_newObject("button"));
     obj.button1:setParent(obj.layout1);
     obj.button1:setAlign("left");
     obj.button1:setWidth(50);
@@ -162,23 +162,23 @@ local function constructNew_frmRecordListForm()
     obj.button1:setMargins({left=5});
     obj.button1:setName("button1");
 
-    obj.textEditor1 = GUI.fromHandle(_obj_newObject("textEditor"));
+    obj.textEditor1 = gui.fromHandle(_obj_newObject("textEditor"));
     obj.textEditor1:setParent(obj.rectangle1);
     obj.textEditor1:setAlign("client");
     obj.textEditor1:setField("desc");
     obj.textEditor1:setName("textEditor1");
 
     obj._e_event0 = obj.image1:addEventListener("onStartDrag",
-        function (_, drag, x, y)
+        function (self, drag, x, y)
             drag:addData("imageURL", sheet.avatar);
         end, obj);
 
     obj._e_event1 = obj.button1:addEventListener("onClick",
-        function (_)
-            Dialogs.confirmOkCancel("Tem certeza que quer apagar essa habilidade?",
+        function (self)
+            dialogs.confirmOkCancel("Tem certeza que quer apagar essa habilidade?",
             						function (confirmado)
             							if confirmado then
-            								NDB.deleteNode(sheet);
+            								ndb.deleteNode(sheet);
             							end;
             					end);
         end, obj);
@@ -220,23 +220,9 @@ local function constructNew_frmRecordListForm()
 
     obj:endUpdate();
 
+     __o_rrpgObjs.endObjectsLoading();
+
     return obj;
-end;
-
-function newfrmRecordListForm()
-    local retObj = nil;
-    __o_rrpgObjs.beginObjectsLoading();
-
-    __o_Utils.tryFinally(
-      function()
-        retObj = constructNew_frmRecordListForm();
-      end,
-      function()
-        __o_rrpgObjs.endObjectsLoading();
-      end);
-
-    assert(retObj ~= nil);
-    return retObj;
 end;
 
 local _frmRecordListForm = {
@@ -250,6 +236,6 @@ local _frmRecordListForm = {
     description=""};
 
 frmRecordListForm = _frmRecordListForm;
-Firecast.registrarForm(_frmRecordListForm);
+rrpg.registrarForm(_frmRecordListForm);
 
 return _frmRecordListForm;

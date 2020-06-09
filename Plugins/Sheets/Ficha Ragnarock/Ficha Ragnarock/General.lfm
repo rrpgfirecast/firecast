@@ -14,7 +14,7 @@
 	</template>
 	<template name="LabelEditMid">
 		<layout align="left" width="220" margins="{right=5}">
-			<label text="$(text)" width="100" horzTextAlign="leading"/>
+			<label text="$(text)" width="100" horzTextAlign="leading" fontSize="$(fontSize)"/>
 			<edit left="105" field="$(field)" width="100" height="25"/>
 		</layout>
 	</template>
@@ -41,22 +41,22 @@
 
 					local faces = faceTable[atr];
 
-					local mesa = Firecast.getMesaDe(sheet);
+					local mesa = rrpg.getMesaDe(sheet);
 
 					local sucessos = 0;
 					local falhas = 0;
 					local decisivo = 0;
 					local falhaCritica = 0;
 
-					Dialogs.inputQuery("Quantidade de Dados", "Coloque quantos dados vai rolar", "1",
+					dialogs.inputQuery("Quantidade de Dados", "Coloque quantos dados vai rolar", "1",
 				        function (valorPreenchido)
 				        	local dados = tonumber(valorPreenchido) or 1;
-				        	local rolagem = Firecast.interpretarRolagem("ord " .. dados .. "d" .. faces); 
+				        	local rolagem = rrpg.interpretarRolagem("ord " .. dados .. "d" .. faces); 
 							
-							Dialogs.inputQuery("Margem de Critico", "Coloque o maior valor que deve ser considerado critico no dado. ", "1",
+							dialogs.inputQuery("Margem de Critico", "Coloque o maior valor que deve ser considerado critico no dado. ", "1",
 				        		function (valorPreenchido)
 				        			local margem = tonumber(valorPreenchido) or 1;
-				        			Dialogs.inputQuery("Bônus ou Redutores", "Há alguma bônus ou redutor na rolagem?. ", "0",
+				        			dialogs.inputQuery("Bônus ou Redutores", "Há alguma bônus ou redutor na rolagem?. ", "0",
 				        				function (valorPreenchido)
 				        					local extra = (tonumber(valorPreenchido) or 0);
 				        					local msg = "Teste de $(text)" .. ", margem de critico " .. margem;
@@ -129,11 +129,11 @@
 				<UpperBar width="150" text="Nome" field="nome" fontSize="13"/>
 				<UpperBar width="100" text="Classe" field="classe" fontSize="13"/>
 				<UpperBar width="100" text="Especialização" field="especializacao" fontSize="13"/>
-				<UpperBar width="30" text="Level" field="level" fontSize="13"/>
+				<UpperBar width="30" text="Nível" field="level" fontSize="13"/>
+				<UpperBar width="100" text="Experiência" field="exp" fontSize="13"/>
 				<UpperBar width="30" text="Job" field="job" fontSize="13"/>
-				<UpperBar width="100" text="Zenny" field="zenny" fontSize="13"/>
 				<UpperBar width="150" text="Personalidade" field="personalidade" fontSize="13"/>
-				<UpperBar width="100" text="Aparencia" field="aparencia" fontSize="13"/>
+				<UpperBar width="100" text="Aparência" field="aparencia" fontSize="13"/>
 			</rectangle>
 
 			<rectangle color="black" align="top" height="305" margins="{bottom=5}">
@@ -193,22 +193,22 @@
 
 									local faces = faceTable[atr];
 
-									local mesa = Firecast.getMesaDe(sheet);
+									local mesa = rrpg.getMesaDe(sheet);
 
 									local sucessos = 0;
 									local falhas = 0;
 									local decisivo = 0;
 									local falhaCritica = 0;
 
-									Dialogs.inputQuery("Quantidade de Dados", "Coloque quantos dados vai rolar", "1",
+									dialogs.inputQuery("Quantidade de Dados", "Coloque quantos dados vai rolar", "1",
 								        function (valorPreenchido)
 								        	local dados = tonumber(valorPreenchido) or 1;
-								        	local rolagem = Firecast.interpretarRolagem("ord " .. dados .. "d" .. faces); 
+								        	local rolagem = rrpg.interpretarRolagem("ord " .. dados .. "d" .. faces); 
 											
-											Dialogs.inputQuery("Margem de Critico", "Coloque o maior valor que deve ser considerado critico no dado. ", "1",
+											dialogs.inputQuery("Margem de Critico", "Coloque o maior valor que deve ser considerado critico no dado. ", "1",
 								        		function (valorPreenchido)
 								        			local margem = tonumber(valorPreenchido) or 1;
-								        			Dialogs.inputQuery("Bônus ou Redutores", "Há alguma bônus ou redutor na rolagem?. ", "0",
+								        			dialogs.inputQuery("Bônus ou Redutores", "Há alguma bônus ou redutor na rolagem?. ", "0",
 								        				function (valorPreenchido)
 								        					local extra = (tonumber(valorPreenchido) or 0);
 								        					local msg = "Teste de Esquiva" .. ", margem de critico " .. margem;
@@ -267,19 +267,16 @@
 
 					<layout align="top" height="175" margins="{bottom=5, top=5}">
 						<layout align="top" height="25" margins="{bottom=5}">
-							<LabelEditMid text="D. Corporal" field="def_corporal"/>
+							<LabelEditMid text="Constituição" field="def_corporal" fontSize="13"/>
 						</layout>
 						<layout align="top" height="25" margins="{bottom=5}">
-							<LabelEditMid text="D. Equipamento" field="def_equipamento"/>
+							<LabelEditMid text="Def. Equipamento" field="def_equipamento" fontSize="11"/>
 						</layout>
 						<layout align="top" height="25" margins="{bottom=5}">
-							<LabelEditMid text="R. Intensidade" field="R_intensidade"/>
-						</layout>
-						<layout align="top" height="25" margins="{bottom=10}">
-							<LabelEditMid text="D.M.A." field="dma"/>
+							<LabelEditMid text="Resistência" field="R_intensidade" fontSize="13"/>
 						</layout>
 						<layout align="top" height="25" margins="{bottom=0}">
-							<LabelEditMid text="D. Total" field="def_total"/>
+							<LabelEditMid text="Proteção Física" field="def_total" fontSize="13"/>
 						</layout>
 						<layout align="top" height="25" margins="{top=0}">
 							<checkBox left="0" top="0" width="190" height="25" field="doubleRoll" text="Usar dois atributos na rolagem." fontSize="12" hint="Clique no primeiro e depois no segundo. "/>
@@ -289,22 +286,27 @@
 
 				<layout align="left" width="220" margins="{right=5, top=5}">
 					<layout align="top" height="50" margins="{bottom=5}">
-						<UpperBar width="100" text="Velocidade" field="velocidade" fontSize="13"/>
+						
 					</layout>
 					<layout align="top" height="50" margins="{bottom=5}">
-						<UpperBar width="150" text="Experiência" field="experiencia" fontSize="13"/>
-						<UpperBar width="50" text="AP" field="ap" fontSize="13"/>
+						
 					</layout>
 
 					<layout align="top" height="150" margins="{bottom=5, top=5}">
 						<layout align="top" height="25" margins="{bottom=5}">
-							<LabelEditMid text="Critico" field="critico"/>
+							<LabelEditMid text="Critico" field="critico" fontSize="13"/>
 						</layout>
 						<layout align="top" height="25" margins="{bottom=5}">
-							<LabelEditMid text="Esquiva Perfeita" field="esquiva_perfeita"/>
+							<LabelEditMid text="Esquiva Perfeita" field="esquiva_perfeita" fontSize="13"/>
 						</layout>
 						<layout align="top" height="25" margins="{bottom=5}">
-							<LabelEditMid text="Turnos de Magia" field="tunos_magia"/>
+							<LabelEditMid text="Turnos de Magia" field="tunos_magia" fontSize="13"/>
+						</layout>
+						<layout align="top" height="25" margins="{bottom=5}">
+							<LabelEditMid text="Resiliência" field="dma" fontSize="13"/>
+						</layout>
+						<layout align="top" height="25" margins="{bottom=5}">
+							<LabelEditMid text="Pontos de Ação (AP)" field="ap" fontSize="11"/>
 						</layout>
 					</layout>
 				</layout>
@@ -331,7 +333,7 @@
 					<textEditor align="top" height="165" field="desvantagens"/>
 				</layout>
 
-				<image left="1010" top="25" width="190" height="116" style="autoFit" src="images/ragnarock.jpg"/>
+				<image left="1010" top="25" width="190" height="116" style="autoFit" src="images/ragnarok_b.jpg"/>
 							</rectangle>
 
 		</layout>

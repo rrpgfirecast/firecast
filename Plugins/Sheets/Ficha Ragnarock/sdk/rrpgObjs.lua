@@ -274,6 +274,7 @@ function objs.objectFromHandle(handle)
 		if (eventsOfThis ~= nil) then
 			local eventsIds = {};
 			local idx = 1;
+			local i;
 		
 			for k, v in pairs(eventsOfThis) do
 				eventsIds[idx] = k;
@@ -438,7 +439,10 @@ function objs.hierarchyObjectFromHandle(handle)
 	 function obj:destroy()		 
 		self:removeAllEventListeners();
 	 
-	 	if self._children ~= nil then	 		 	
+	 	if self._children ~= nil then	 
+			local k;
+	 		local v;	 	
+	 	
 		    for k, v in pairs(self._children) do
 		    	if v ~= nil then
 		    		v:setParent(nil);

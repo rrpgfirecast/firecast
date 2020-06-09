@@ -26,6 +26,7 @@ function lfm_destroyObject(ctrlOrHandle)
 	if obj ~= nil then
 		lfmObjectsStrongRef[obj.handle] = nil;
 		obj:destroy();
+		obj = nil;
 	end
 end
 
@@ -57,7 +58,7 @@ function lfm_enumProps(ctrlOrHandle)
 	return props;
 end;
 
-local function _getStrOfSetTable(value)
+local function _getStrOfSetTable(value, valuesOfTipo)
 	local ret = "";	
 	local qt = 0;
 	
@@ -213,13 +214,13 @@ function lfm_setPropAsString(ctrlOrHandle, propName, vAsStr)
 		local setter = obj[setterName];
 		setter(obj, v);
 	else
-		local writePropName = prop.writeProp;
+		local propName = prop.writeProp;
 		
-		if writePropName == nil then
+		if propName == nil then
 			error(propName .. " is readonly");			
 		end;
 		
-		_obj_setProp(obj.handle, writePropName, v);
+		_obj_setProp(obj.handle, propName, v);
 	end;	
 end;
 

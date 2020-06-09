@@ -5,7 +5,7 @@ require("rrpgDialogs.lua");
 require("rrpgLFM.lua");
 require("ndb.lua");
 
-function newfrmDescription()
+function newfrmGuild()
     __o_rrpgObjs.beginObjectsLoading();
 
     local obj = gui.fromHandle(_obj_newObject("form"));
@@ -26,7 +26,7 @@ function newfrmDescription()
 
     _gui_assignInitialParentForForm(obj.handle);
     obj:beginUpdate();
-    obj:setName("frmDescription");
+    obj:setName("frmGuild");
     obj:setAlign("client");
 
     obj.scrollBox1 = gui.fromHandle(_obj_newObject("scrollBox"));
@@ -37,7 +37,7 @@ function newfrmDescription()
     obj.richEdit1 = gui.fromHandle(_obj_newObject("richEdit"));
     obj.richEdit1:setParent(obj.scrollBox1);
     obj.richEdit1:setAlign("client");
-    obj.richEdit1:setField("background");
+    obj.richEdit1:setField("cla_desc");
     lfm_setPropAsString(obj.richEdit1, "backgroundColor",  "#333333");
     lfm_setPropAsString(obj.richEdit1, "defaultFontSize",  "12");
     lfm_setPropAsString(obj.richEdit1, "defaultFontColor",  "white");
@@ -67,17 +67,17 @@ function newfrmDescription()
     return obj;
 end;
 
-local _frmDescription = {
-    newEditor = newfrmDescription, 
-    new = newfrmDescription, 
-    name = "frmDescription", 
+local _frmGuild = {
+    newEditor = newfrmGuild, 
+    new = newfrmGuild, 
+    name = "frmGuild", 
     dataType = "", 
     formType = "undefined", 
     formComponentName = "form", 
     title = "", 
     description=""};
 
-frmDescription = _frmDescription;
-rrpg.registrarForm(_frmDescription);
+frmGuild = _frmGuild;
+rrpg.registrarForm(_frmGuild);
 
-return _frmDescription;
+return _frmGuild;

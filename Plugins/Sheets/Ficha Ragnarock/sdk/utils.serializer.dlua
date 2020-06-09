@@ -88,11 +88,11 @@ function serializer.outputValue(value, scope)
 			binaryWrite("u8", 0, scope);
 		end;
 	elseif idType == TYPE_TABLE then
-		serializer.outputTable(value, scope);	
+		serializer.outputTable(value, scope);
+	elseif idType == TYPE_NIL then
+		-- não grava nada;
 	else	
-		if idType ~= TYPE_NIL then 	
-			error("Tipo desconhecido");
-		end;		
+		error("Tipo desconhecido");
 	end;
 end;
 
