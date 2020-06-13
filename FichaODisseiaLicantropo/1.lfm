@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmFichaOdisseia2_01_L_svg" align="client" theme="light" margins="{top=1}">
+    <style>#frmFichaOdisseia2_01_svg path {color: black; strokeColor: black; mode: stretch;} &#xD;
+#frmFichaOdisseia2_01_svg label {fontColor: black; textTrimming: none; wordWrap: false; autoSize: true;}</style>
+    <scrollBox align="client">
+        <rectangle width="952" height="1347" color="white">&#xD;
+            <image left="0" top="0" width="952" height="1347" src="FichaOdisseia2.0/images/1.png" style="stretch" optimize="true" compilerOrder="0"/>&#xD;
+            <layout left="172" top="492" width="232" height="40" compilerOrder="1">
+                <edit transparent="true" fontSize="22" fontColor="#8B0000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="232" height="41" field="NomedoPersonagem" compilerOrder="1"/>
+            </layout>&#xD;
+            <layout left="463" top="492" width="223" height="41" compilerOrder="2">
+                <edit transparent="true" fontSize="22" fontColor="#8B0000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="223" height="42" field="RaçadoPersonagem" compilerOrder="2"/>
+            </layout>&#xD;
+            <layout left="739" top="516" width="66" height="47" compilerOrder="5">
+                <edit transparent="true" fontSize="30.8" fontColor="#8B0000" fontStyle="bold" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="66" height="48" field="NíveldoPersonagem" compilerOrder="3"/>
+            </layout>&#xD;
+            <layout left="173" top="573" width="226" height="40" compilerOrder="3">
+                <edit transparent="true" fontSize="22" fontColor="#8B0000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="226" height="41" field="NomedoJogador" compilerOrder="4"/>
+            </layout>&#xD;
+            <layout left="461" top="573" width="224" height="41" compilerOrder="4">
+                <edit transparent="true" fontSize="22" fontColor="#8B0000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="224" height="42" field="ClassedoPersonagem" compilerOrder="5"/>
+            </layout>&#xD;
+            <layout left="640" top="789" width="60" height="28" compilerOrder="12">
+                <edit transparent="true" fontSize="22" fontColor="#8B0000" fontStyle="bold" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="60" height="29" field="EXP_Atual" compilerOrder="6"/>
+            </layout>&#xD;
+            <layout left="798" top="789" width="60" height="28" compilerOrder="13">
+                <edit transparent="true" fontSize="22" fontColor="#8B0000" fontStyle="bold" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="60" height="29" field="EXPTotal" compilerOrder="7"/>
+            </layout>&#xD;
+            <layout left="246" top="828" width="46" height="37" compilerOrder="6">
+                <edit transparent="true" fontSize="20.8" fontColor="#8B0000" fontStyle="bold" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="44" height="38" field="Const" compilerOrder="8"/>
+            </layout>&#xD;
+            <layout left="136" top="861" width="46" height="37" compilerOrder="11">
+                <edit transparent="true" fontSize="20.8" fontColor="#8B0000" fontStyle="bold" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="44" height="38" field="For" compilerOrder="9"/>
+            </layout>&#xD;
+            <layout left="349" top="870" width="46" height="37" compilerOrder="7">
+                <edit transparent="true" fontSize="20.8" fontColor="#8B0000" fontStyle="bold" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="44" height="38" field="Int" compilerOrder="10"/>
+            </layout>&#xD;
+            <layout left="356" top="999" width="46" height="37" compilerOrder="8">
+                <edit transparent="true" fontSize="20.8" fontColor="#8B0000" fontStyle="bold" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="44" height="38" field="Mist" compilerOrder="11"/>
+            </layout>&#xD;
+            <layout left="143" top="999" width="46" height="37" compilerOrder="10">
+                <edit transparent="true" fontSize="20.8" fontColor="#8B0000" fontStyle="bold" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="44" height="38" field="Dest" compilerOrder="12"/>
+            </layout>&#xD;			
+            <layout left="244" top="1049" width="46" height="37" compilerOrder="9">
+                <edit transparent="true" fontSize="20.8" fontColor="#8B0000" fontStyle="bold" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="44" height="38" field="Car" compilerOrder="13"/>
+            </layout>&#xD;
+			<layout left="640" top="890" width="60" height="28" compilerOrder="14">
+                <edit transparent="true" fontSize="22" fontColor="#8B0000" fontStyle="bold" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="60" height="29" field="PHATual" compilerOrder="14"/>
+            </layout>&#xD;
+            <layout left="790" top="892" width="60" height="28" compilerOrder="15">
+                <edit transparent="true" fontSize="22" fontColor="#8B0000" fontStyle="bold" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="60" height="29" field="PHTotal" compilerOrder="15"/>
+            </layout>&#xD;
+            <layout left="721" top="1020" width="165" height="120.6" compilerOrder="17">
+                <textEditor left="0" top="0" width="165" height="120.6" fontSize="16.8" fontColor="#8B0000" field="CarInterpNegativas" transparent="true" compilerOrder="16"/>
+            </layout>&#xD;
+            <layout left="503" top="1020" width="165" height="120.6" compilerOrder="16">
+                <textEditor left="0" top="0" width="165" height="120.6" fontSize="16.8" fontColor="#8B0000" field="CarInterpPositivas" transparent="true" compilerOrder="17"/>
+            </layout>&#xD;
+        </rectangle>
+    </scrollBox>
+</form>

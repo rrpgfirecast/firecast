@@ -1,0 +1,371 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmFichaOdisseia2_02_svg" align="client" theme="light" margins="{top=1}">
+    <style>#frmFichaOdisseia2_02_svg path {color: black; strokeColor: black; mode: stretch;} &#xD;
+#frmFichaOdisseia2_02_svg label {fontColor: black; textTrimming: none; wordWrap: false; autoSize: true;}</style>
+    <scrollBox align="client">
+        <rectangle width="952" height="1347" color="white">&#xD;
+            <image left="0" top="0" width="952" height="1347" src="images/2.png" style="stretch" optimize="true" compilerOrder="0"/>&#xD;
+             <layout left="352" top="275" width="118" height="40" compilerOrder="1">
+                <edit transparent="true" readOnly="true" hitTest="false" canFocus="false" fontSize="22" fontColor="#8B0000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="118" height="41" field="ValorAtaqueFisico" compilerOrder="18"/>
+            </layout>&#xD;
+			<layout left="475" top="273" width="98" height="36" compilerOrder="2">
+                <edit transparent="true" fontSize="22" fontColor="#8B0000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="98" height="37" field="ModAtaqueFisico" compilerOrder="19"/>
+            </layout>&#xD;
+            <layout left="575" top="276" width="106" height="36" compilerOrder="3">
+                <edit transparent="true" fontSize="22" fontColor="#8B0000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="106" height="37" field="MultAtaqueFisico" compilerOrder="20"/>
+            </layout>&#xD;
+            <layout left="689" top="276" width="114" height="36" compilerOrder="4">
+                <edit transparent="true" fontSize="22" fontColor="#8B0000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="114" height="37" field="BonusAtaqueFisico" compilerOrder="21"/>
+            </layout>&#xD;
+            <layout left="352" top="316" width="118" height="40" compilerOrder="5">
+                <edit transparent="true" fontSize="22" fontColor="#8B0000" readOnly="true" hitTest="false" canFocus="false" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="115" height="34" field="ValorAtaqueMagico" compilerOrder="22"/>
+            </layout>&#xD;
+            <layout left="474" top="319" width="95" height="30" compilerOrder="6">
+                <edit transparent="true" fontSize="22" fontColor="#8B0000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="95" height="31" field="ModAtaque_Mágico" compilerOrder="23"/>
+            </layout>&#xD;
+            <layout left="575" top="319" width="106" height="30" compilerOrder="7">
+                <edit transparent="true" fontSize="22" fontColor="#8B0000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="106" height="31" field="MultAtaque_Mágico" compilerOrder="24"/>
+            </layout>&#xD;
+            <layout left="690" top="319" width="118" height="31" compilerOrder="8">
+                <edit transparent="true" fontSize="22" fontColor="#8B0000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="118" height="32" field="BonusAtaqueMagico__0" compilerOrder="25"/>
+            </layout>&#xD;
+            <layout left="352" top="350" width="118" height="40" compilerOrder="9">
+                <edit transparent="true" fontSize="22" fontColor="#8B0000" readOnly="true" hitTest="false" canFocus="false" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="115" height="34" field="ValorPrecisao" compilerOrder="26"/>
+            </layout>&#xD;
+            <layout left="474" top="354" width="95" height="30" compilerOrder="10">
+                <edit transparent="true" fontSize="22" fontColor="#8B0000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="95" height="31" field="ModPrecisão" compilerOrder="27"/>
+            </layout>&#xD;
+            <layout left="575" top="354" width="108" height="31" compilerOrder="11">
+                <edit transparent="true" fontSize="22" fontColor="#8B0000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="108" height="32" field="MultPrecisão" compilerOrder="28"/>
+            </layout>&#xD;
+            <layout left="690" top="354" width="118" height="29" compilerOrder="12">
+                <edit transparent="true" fontSize="22" fontColor="#8B0000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="118" height="30" field="BonusPrecisão" compilerOrder="29"/>
+            </layout>&#xD;
+            <layout left="352" top="386" width="118" height="40" compilerOrder="13">
+                <edit transparent="true" fontSize="22" fontColor="#8B0000" readOnly="true" hitTest="false" canFocus="false" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="115" height="34" field="ValorDefFisica" compilerOrder="30"/>
+            </layout>&#xD;
+            <layout left="474" top="390" width="95" height="28" compilerOrder="14">
+                <edit transparent="true" fontSize="22" fontColor="#8B0000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="95" height="29" field="ModDefesa_Física" compilerOrder="31"/>
+            </layout>&#xD;
+            <layout left="575" top="390" width="110" height="28" compilerOrder="15">
+                <edit transparent="true" fontSize="22" fontColor="#8B0000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="110" height="29" field="MultDefesa_Física" compilerOrder="32"/>
+            </layout>&#xD;
+			<layout left="689" top="389" width="120" height="29" compilerOrder="16">
+                <edit transparent="true" fontSize="22" fontColor="#8B0000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="120" height="30" field="BonusDefFisica" compilerOrder="33"/>
+            </layout>&#xD;
+            <layout left="352" top="421" width="118" height="40" compilerOrder="17">
+                <edit transparent="true" fontSize="22" fontColor="#8B0000" readOnly="true" hitTest="false" canFocus="false" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="115" height="34" field="ValorDefesaMagica" compilerOrder="34"/>
+            </layout>&#xD;
+			<layout left="474" top="425" width="95" height="29" compilerOrder="18">
+                <edit transparent="true" fontSize="22" fontColor="#8B0000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="95" height="30" field="ModDefesaMágica" compilerOrder="35"/>
+            </layout>&#xD;
+            <layout left="575" top="423" width="110" height="31" compilerOrder="19">
+                <edit transparent="true" fontSize="22" fontColor="#8B0000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="110" height="32" field="MultDefesaMagica" compilerOrder="36"/>
+            </layout>&#xD;
+            <layout left="688" top="423" width="121" height="35" compilerOrder="20">
+                <edit transparent="true" fontSize="22" fontColor="#8B0000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="121" height="36" field="BonusDefesaMagica1" compilerOrder="37"/>
+            </layout>&#xD;
+            <layout left="352" top="454" width="118" height="40" compilerOrder="21">
+                <edit transparent="true" fontSize="22" fontColor="#8B0000" readOnly="true" hitTest="false" canFocus="false" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="115" height="34" field="ValorEsquiva" compilerOrder="38"/>
+            </layout>&#xD;
+            <layout left="473" top="459" width="96" height="27" compilerOrder="22">
+                <edit transparent="true" fontSize="22" fontColor="#8B0000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="96" height="28" field="ModEsquiva" compilerOrder="39"/>
+            </layout>&#xD;
+            <layout left="575" top="459" width="110" height="27" compilerOrder="23">
+                <edit transparent="true" fontSize="22" fontColor="#8B0000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="110" height="28" field="MultEsquiva" compilerOrder="40"/>
+            </layout>&#xD;
+			<layout left="688" top="455" width="123" height="35" compilerOrder="24">
+                <edit transparent="true" fontSize="22" fontColor="#8B0000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="123" height="36" field="BonusEsquiva" compilerOrder="41"/>
+            </layout>&#xD;
+            <layout left="352" top="489" width="118" height="40" compilerOrder="25">
+                <edit transparent="true" fontSize="22" fontColor="#8B0000" readOnly="true" hitTest="false" canFocus="false" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="115" height="34" field="ValorIniciativa" compilerOrder="42"/>
+            </layout>&#xD;
+            <layout left="474" top="492" width="99" height="30" compilerOrder="26">
+                <edit transparent="true" fontSize="22" fontColor="#8B0000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="99" height="31" field="ModIniciativa" compilerOrder="43"/>
+            </layout>&#xD;
+			<layout left="575" top="491" width="113" height="31" compilerOrder="27">
+                <edit transparent="true" fontSize="22" fontColor="#8B0000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="113" height="32" field="MultIniciativa" compilerOrder="44"/>
+            </layout>&#xD;
+			<layout left="690" top="488" width="119" height="37" compilerOrder="28">
+                <edit transparent="true" fontSize="22" fontColor="#8B0000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="119" height="38" field="BonusIniciativa" compilerOrder="45"/>
+            </layout>&#xD;
+            <layout left="352" top="528" width="118" height="40" compilerOrder="29">
+                <edit transparent="true" fontSize="22" fontColor="#8B0000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="115" height="34" field="ValorBonusIniciativa" compilerOrder="46"/>
+            </layout>&#xD;
+			<layout left="473" top="526" width="100" height="36" compilerOrder="30">
+                <edit transparent="true" fontSize="22" fontColor="#8B0000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="100" height="37" field="ModBonusInciativa" compilerOrder="47"/>
+            </layout>&#xD;
+            <layout left="575" top="527" width="110" height="34" compilerOrder="31">
+                <edit transparent="true" fontSize="22" fontColor="#8B0000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="110" height="35" field="MultBonusIniciativa" compilerOrder="48"/>
+            </layout>&#xD;
+            <layout left="693" top="528" width="114" height="33" compilerOrder="32">
+                <edit transparent="true" fontSize="22" fontColor="#8B0000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="114" height="34" field="BonusBonusIniciativa" compilerOrder="49"/>
+            </layout>&#xD;
+			<layout left="186" top="603" width="38" height="31" compilerOrder="33">
+                <edit transparent="true" fontSize="18.8" fontColor="#FF0000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="38" height="32" field="PVAtual" compilerOrder="52"/>
+            </layout>&#xD;
+            <layout left="244" top="603" width="39" height="30" compilerOrder="34">
+                <edit transparent="true" readOnly="true" hitTest="false" canFocus="false" fontSize="20.3" fontColor="#FF0000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="39" height="31" field="PVTotal" compilerOrder="53"/>
+            </layout>&#xD;
+            <layout left="427" top="603" width="39" height="36" compilerOrder="35">
+                <edit transparent="true" fontSize="20.8" fontColor="#0000FF" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="39" height="37" field="PMAtual" compilerOrder="50"/>
+            </layout>&#xD;
+            <layout left="483" top="603" width="40" height="33" compilerOrder="36">
+                <edit transparent="true" readOnly="true" hitTest="false" canFocus="false" fontSize="20.8" fontColor="#0000FF" width="40" height="33" horzTextAlign="center" vertTextAlign="center" field="PMTotal" compilerOrder="51"/>
+            </layout>&#xD;
+			<layout left="670" top="603" width="40" height="33" compilerOrder="37">
+                <edit transparent="true" fontSize="20.8" fontColor="#008000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="40" height="34" field="EnergiaAtual" compilerOrder="54"/>
+            </layout>&#xD;
+            <layout left="728" top="603" width="43" height="31" compilerOrder="38">
+                <edit transparent="true" readOnly="true" hitTest="false" canFocus="false" fontSize="20.8" fontColor="#008000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="43" height="32" field="EnergiaTotal" compilerOrder="55"/>
+            </layout>&#xD;
+            <layout left="363" top="737" width="183" height="33" compilerOrder="39">
+                <edit transparent="true" fontSize="20.8" fontColor="#8B0000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="183" height="34" field="ItemCabeça" compilerOrder="56"/>
+            </layout>&#xD;
+            <layout left="553" top="737" width="90" height="33" compilerOrder="40">
+                <edit transparent="true" fontSize="20.8" fontColor="#8B0000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="90" height="34" field="BonusCabeça" compilerOrder="57"/>
+            </layout>&#xD;
+            <layout left="649" top="739" width="52" height="33" compilerOrder="41">
+                <edit transparent="true" fontSize="20.8" fontColor="#8B0000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="52" height="34" field="PesoCabeca" compilerOrder="58"/>
+            </layout>&#xD;
+			<layout left="710" top="740" width="135" height="33" compilerOrder="42">
+                <edit transparent="true" fontSize="20.8" fontColor="#8B0000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="135" height="34" field="DurabilidadeCabeça" compilerOrder="59"/>
+            </layout>&#xD;
+            <layout left="362" top="787" width="183" height="33" compilerOrder="43">
+                <edit transparent="true" fontSize="20.8" fontColor="#8B0000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="183" height="34" field="ItemTronco" compilerOrder="60"/>
+            </layout>&#xD;
+			<layout left="551" top="789" width="90" height="33" compilerOrder="44">
+                <edit transparent="true" fontSize="20.8" fontColor="#8B0000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="90" height="34" field="BonusTronco" compilerOrder="63"/>
+            </layout>&#xD;
+            <layout left="648" top="788" width="52" height="33" compilerOrder="45">
+                <edit transparent="true" fontSize="20.8" fontColor="#8B0000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="52" height="34" field="PesoTronco" compilerOrder="62"/>
+            </layout>&#xD;
+			<layout left="709" top="787" width="135" height="33" compilerOrder="46">
+                <edit transparent="true" fontSize="20.8" fontColor="#8B0000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="135" height="34" field="DurabilidadeTronco" compilerOrder="61"/>
+            </layout>&#xD;
+            <layout left="362" top="834" width="183" height="33" compilerOrder="47">
+                <edit transparent="true" fontSize="20.8" fontColor="#8B0000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="183" height="34" field="ItemBraços" compilerOrder="64"/>
+            </layout>&#xD;
+			<layout left="552" top="836" width="90" height="33" compilerOrder="48">
+                <edit transparent="true" fontSize="20.8" fontColor="#8B0000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="90" height="34" field="BonusBraços" compilerOrder="67"/>
+            </layout>&#xD;
+            <layout left="648" top="835" width="52" height="33" compilerOrder="49">
+                <edit transparent="true" fontSize="20.8" fontColor="#8B0000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="52" height="34" field="PesoBraços" compilerOrder="65"/>
+            </layout>&#xD;
+            <layout left="707" top="835" width="135" height="33" compilerOrder="50">
+                <edit transparent="true" fontSize="20.8" fontColor="#8B0000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="135" height="34" field="DurabilidadeBraços" compilerOrder="66"/>
+            </layout>&#xD;
+            <layout left="361" top="882" width="183" height="33" compilerOrder="51">
+                <edit transparent="true" fontSize="20.8" fontColor="#8B0000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="183" height="34" field="ItemMãoDIR" compilerOrder="69"/>
+            </layout>&#xD;
+            <layout left="550" top="882" width="90" height="33" compilerOrder="52">
+                <edit transparent="true" fontSize="20.8" fontColor="#8B0000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="90" height="34" field="BonusMãoDir" compilerOrder="70"/>
+            </layout>&#xD;
+			<layout left="649" top="881" width="52" height="33" compilerOrder="53">
+                <edit transparent="true" fontSize="20.8" fontColor="#8B0000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="52" height="34" field="PesoMaoDir" compilerOrder="68"/>
+            </layout>&#xD;
+            <layout left="708" top="882" width="135" height="33" compilerOrder="54">
+                <edit transparent="true" fontSize="20.8" fontColor="#8B0000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="135" height="34" field="DurabilidadeMãoDir" compilerOrder="71"/>
+            </layout>&#xD;
+			<layout left="551" top="935" width="90" height="33" compilerOrder="56">
+                <edit transparent="true" fontSize="20.8" fontColor="#8B0000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="90" height="34" field="ItemMãoESQ" compilerOrder="72"/>
+            </layout>&#xD;
+			 <layout left="361" top="936" width="183" height="33" compilerOrder="55">
+                <edit transparent="true" fontSize="20.8" fontColor="#8B0000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="183" height="34" field="BonusMãoESQ" compilerOrder="75"/>
+            </layout>&#xD;
+            <layout left="648" top="935" width="52" height="33" compilerOrder="57">
+                <edit transparent="true" fontSize="20.8" fontColor="#8B0000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="52" height="34" field="PesoMaoESQ" compilerOrder="73"/>
+            </layout>&#xD;
+            <layout left="708" top="935" width="135" height="33" compilerOrder="58">
+                <edit transparent="true" fontSize="20.8" fontColor="#8B0000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="135" height="34" field="DurabilidadeMãoESQ" compilerOrder="74"/>
+            </layout>&#xD;
+			<layout left="363" top="1001" width="183" height="33" compilerOrder="59">
+                <edit transparent="true" fontSize="20.8" fontColor="#8B0000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="183" height="34" field="ItemPernas" compilerOrder="78"/>
+            </layout>&#xD;
+            <layout left="550" top="1000" width="90" height="33" compilerOrder="60">
+                <edit transparent="true" fontSize="20.8" fontColor="#8B0000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="90" height="34" field="BonusPernas" compilerOrder="76"/>
+            </layout>&#xD;
+            <layout left="649" top="1001" width="52" height="33" compilerOrder="61">
+                <edit transparent="true" fontSize="20.8" fontColor="#8B0000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="52" height="34" field="PesoPernas" compilerOrder="79"/>
+            </layout>&#xD;
+            <layout left="709" top="1000" width="135" height="33" compilerOrder="62">
+                <edit transparent="true" fontSize="20.8" fontColor="#8B0000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="135" height="34" field="DurabilidadePernas" compilerOrder="77"/>
+            </layout>&#xD;
+            <layout left="362" top="1048" width="183" height="33" compilerOrder="63">
+                <edit transparent="true" fontSize="20.8" fontColor="#8B0000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="183" height="34" field="ItemPés" compilerOrder="80"/>
+            </layout>&#xD;
+            <layout left="551" top="1048" width="90" height="33" compilerOrder="64">
+                <edit transparent="true" fontSize="20.8" fontColor="#8B0000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="90" height="34" field="BonusPés" compilerOrder="81"/>
+            </layout>&#xD;
+			<layout left="648" top="1049" width="52" height="33" compilerOrder="65">
+                <edit transparent="true" fontSize="20.8" fontColor="#8B0000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="52" height="34" field="PesoPes" compilerOrder="83"/>
+            </layout>&#xD;
+            <layout left="710" top="1048" width="135" height="33" compilerOrder="66">
+                <edit transparent="true" fontSize="20.8" fontColor="#8B0000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="135" height="34" field="DurabilidadePés" compilerOrder="82"/>
+            </layout>&#xD;
+            <layout left="361" top="1095" width="183" height="33" compilerOrder="67">
+                <edit transparent="true" fontSize="20.8" fontColor="#8B0000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="183" height="34" field="ItemOutros" compilerOrder="84"/>
+            </layout>&#xD;
+            <layout left="551" top="1095" width="90" height="33" compilerOrder="68">
+                <edit transparent="true" fontSize="20.8" fontColor="#8B0000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="90" height="34" field="BonusOutros" compilerOrder="85"/>
+            </layout>&#xD;
+			<layout left="648" top="1096" width="52" height="33" compilerOrder="69">
+                <edit transparent="true" fontSize="20.8" fontColor="#8B0000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="52" height="34" field="PesoOutros" compilerOrder="87"/>
+            </layout>&#xD;
+            <layout left="708" top="1095" width="135" height="33" compilerOrder="70">
+                <edit transparent="true" fontSize="20.8" fontColor="#8B0000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="135" height="34" field="DurabilidadeOutros" compilerOrder="86"/>
+            </layout>&#xD;
+			<layout left="633" top="1166" width="53" height="30" compilerOrder="71">
+                <edit transparent="true" fontSize="20.3" fontColor="#8B0000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="53" height="31" field="PesoAtual" compilerOrder="89"/>
+            </layout>&#xD;
+            <layout left="709" top="1165" width="53" height="33" compilerOrder="72">
+                <edit transparent="true" fontSize="20.8" fontColor="#8B0000" readOnly="true" hitTest="false" canFocus="false" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="53" height="34" field="PesoLimite" compilerOrder="88"/>
+            </layout>&#xD;
+        </rectangle>
+    </scrollBox>
+
+<!-- Começa aqui os cálculos automáticos da ficha --> 
+<!-- Pontos de vida --> 
+
+<dataLink fields="{'Const', 'For'}">
+             <event name="onChange">
+               sheet.PVTotal= math.floor((tonumber(sheet.Const) or 0) * 5) +
+                              math.floor(tonumber(sheet.For) or 0);                  
+
+               if sheet.PVTotal >= 0 then
+                       sheet.PVTotal = "" .. sheet.PVTotal;
+               end;
+        </event>
+</dataLink>
+
+<!-- Pontos de Mana --> 
+
+<dataLink fields="{'Mist', 'Int'}">
+             <event name="onChange">
+               sheet.PMTotal = math.floor(tonumber(sheet.Mist) or 0) * 5 +
+                              math.floor(tonumber(sheet.Int) or 0);                  
+
+               if sheet.PMTotal >= 0 then
+                       sheet.PMTotal = "" .. sheet.PMTotal;
+               end;
+        </event>
+</dataLink>
+
+<!-- Pontos de Energia --> 
+
+<dataLink fields="{'Const', 'For'}">
+             <event name="onChange">
+               sheet.EnergiaTotal = math.floor(tonumber(sheet.Const) or 0) +
+                              math.floor((tonumber(sheet.For) or 0) / 2);                  
+
+               if sheet.EnergiaTotal >= 0 then
+                       sheet.EnergiaTotal = "" .. sheet.EnergiaTotal;
+               end;
+        </event>
+</dataLink>
+
+<!-- Ataque Físico -->
+
+<dataLink fields="{'Dest', 'For'}">
+             <event name="onChange">
+               sheet.ValorAtaqueFisico = math.floor((tonumber(sheet.Dest) or 0) / 2) +
+                              math.floor((tonumber(sheet.For) or 0) / 2);                  
+
+               if sheet.ValorAtaqueFisico >= 0 then
+                       sheet.ValorAtaqueFisico = sheet.ValorAtaqueFisico;
+               end;
+        </event>
+</dataLink>
+
+<!-- Ataque Mágico -->
+
+<dataLink fields="{'Mist', 'Int'}">
+        <event name="onChange">
+                sheet.ValorAtaqueMagico = math.floor((sheet.Mist or 0) / 2) +
+                         math.floor((sheet.Int or 0) / 2);				
+
+                if sheet.ValorAtaqueMagico >= 0 then
+                        sheet.ValorAtaqueMagico = sheet.ValorAtaqueMagico;
+                end;               
+        </event>
+</dataLink>
+
+<!-- Precisão -->
+
+<dataLink fields="{'Dest', 'Int'}">
+             <event name="onChange">
+               sheet.ValorPrecisao = math.floor((tonumber(sheet.Dest) or 0) / 2) +
+                              math.floor((tonumber(sheet.Int) or 0) / 2);                  
+
+               if sheet.ValorPrecisao >= 0 then
+                       sheet.ValorPrecisao = sheet.ValorPrecisao;
+               end;
+        </event>
+</dataLink>
+
+<!-- Defesa Física -->
+
+<dataLink fields="{'Const', 'For'}">
+             <event name="onChange">
+               sheet.ValorDefFisica = math.floor(tonumber(sheet.Const or 0) / 2) +
+                              math.floor(tonumber(sheet.For or 0) / 2) ;                  
+
+               if sheet.ValorDefFisica >= 0 then
+                       sheet.ValorDefFisica = sheet.ValorDefFisica;
+               end;
+        </event>
+</dataLink>
+
+<!-- Defesa Mágica -->
+
+<dataLink fields="{'Mist', 'Const'}">
+             <event name="onChange">
+               sheet.ValorDefesaMagica = math.floor(tonumber(sheet.Mist) or 0) +
+                              math.floor(tonumber(sheet.Const) or 0);                  
+
+               if sheet.ValorDefesaMagica >= 0 then
+                       sheet.ValorDefesaMagica = math.floor(tonumber(sheet.ValorDefesaMagica) / 2);
+               end;
+        </event>
+</dataLink>
+
+<!-- Esquiva -->
+
+<dataLink fields="{'Dest', 'Const'}">
+        <event name="onChange">
+                sheet.ValorEsquiva = math.floor(((sheet.Dest) or 0) / 2) +
+				         math.floor(((sheet.Const) or 0) / 2);               
+
+                if sheet.ValorEsquiva >= 0 then
+                        sheet.ValorEsquiva = sheet.ValorEsquiva;
+				end;
+        </event>
+</dataLink>
+
+<!-- Iniciativa -->
+
+<dataLink fields="{'Dest', 'Int'}">
+             <event name="onChange">
+               sheet.ValorIniciativa = math.floor(tonumber(sheet.Dest or 0) / 2) +
+                              math.floor(tonumber(sheet.Int or 0) / 2);                  
+
+               if sheet.ValorIniciativa >= 0 then
+                       sheet.ValorIniciativa = sheet.ValorIniciativa;
+               end;
+        </event>
+</dataLink>
+
+<!-- Peso Limite -->
+
+<dataLink fields="{'For', 'Const'}">
+             <event name="onChange">
+               sheet.PesoLimite = math.floor(tonumber(sheet.For or 0) * 2) +
+                              math.floor(tonumber(sheet.Const or 0));                  
+
+               if sheet.PesoLimite >= 0 then
+                       sheet.PesoLimite = sheet.PesoLimite;
+               end;
+        </event>
+</dataLink>
+
+</form>
