@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmFichaOdisseia2_0_Licantropo" formType="sheetTemplate" dataType="br.com.RRPG.AODDL_S3" title="A Odisseia do Dragão - Ficha de Licantropo" align="client" theme="light">
+    <tabControl align="client">
+        <tab title="Atributos">
+            <import file="1.lfm"/>
+        </tab>
+        <tab title="Combate">
+            <import file="2.lfm"/>
+        </tab>
+        <tab title="Habilidades">
+            <import file="3.lfm"/>
+		</tab>
+        <tab title="Créditos">
+            <import file="4.lfm"/>
+        </tab>
+    </tabControl>
+</form>

@@ -178,7 +178,7 @@
             <dataType id="Ambesek.Nefertyne.Shadowrun5E" title="Ficha Shadowrun 5E"/>
         </dataTypes>
     </element>
-    <element id="br.com.rrpg.AODD_SDK3" name="A Odisseia do Dragão" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/FichaAODD/output/FichaAODD.rpk?raw=true" fileName="FichaAODD.rpk" repositoryPath="Sheets/FichaAODD/" author="AlvagorH e Hellzen" description="Adiciona suporte para a ficha do sistema A Odisseia do Dragão" version="2.0" compilationDate="27112019000158" compilationDigest="f650cc7b48d1fd8e7d5765b93f75b22ca97ad5b9">
+    <element id="br.com.rrpg.AODD_SDK3" name="A Odisseia do Dragão" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/FichaAODD/output/FichaAODD.rpk?raw=true" fileName="FichaAODD.rpk" repositoryPath="Sheets/FichaAODD/" author="AlvagorH e Hellzen" description="Adiciona suporte para a ficha do sistema A Odisseia do Dragão" version="2.1" compilationDate="27112019000158" compilationDigest="f650cc7b48d1fd8e7d5765b93f75b22ca97ad5b9">
         <dataTypes>
             <dataType id="br.com.RRPG.AODD_S3" title="A Odisseia do Dragão - Ficha de Personagem"/>
         </dataTypes>

@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<form name="frmFichaOdisseia2_01_svg" align="client" theme="light" margins="{top=1}">
+<form name="frmFichaOdisseia2_01_L_svg" align="client" theme="light" margins="{top=1}">
     <style>#frmFichaOdisseia2_01_svg path {color: black; strokeColor: black; mode: stretch;} &#xD;
 #frmFichaOdisseia2_01_svg label {fontColor: black; textTrimming: none; wordWrap: false; autoSize: true;}</style>
     <scrollBox align="client">
         <rectangle width="952" height="1347" color="white">&#xD;
-            <image left="0" top="0" width="952" height="1347" src="images/1.png" style="stretch" optimize="true" compilerOrder="0"/>&#xD;
+            <image left="0" top="0" width="952" height="1347" src="FichaOdisseia2.0/images/1.png" style="stretch" optimize="true" compilerOrder="0"/>&#xD;
             <layout left="172" top="492" width="232" height="40" compilerOrder="1">
                 <edit transparent="true" fontSize="22" fontColor="#8B0000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="232" height="41" field="NomedoPersonagem" compilerOrder="1"/>
             </layout>&#xD;

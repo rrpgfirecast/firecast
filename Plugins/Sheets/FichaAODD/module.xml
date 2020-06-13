@@ -1,13 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<module sdkVersion="3.5" compilationDate="01042020202546" sdkApiVersion="86" originalPluginFileName="FichaAODD.rpk" compilationDigest="36dafb987f53f3df78686a76c77ee5b2cfa4156e">
+<module sdkVersion="3.5" compilationDate="12062020203849" sdkApiVersion="86" originalPluginFileName="FichaAOdisseiaDoDragão.rpk" compilationDigest="5e9145ded00972d921c69416afbb64822b9526fc">
     <!--The "id" identifies your plugin globally. Must be unique, must contain only alphanumeric characters, underlines and dots and must contain at least 5 characters and a maximum of 40. Once set the ID, you should not change it;)-->
     <id>br.com.rrpg.AODD_SDK3</id>
     <!--"version" is the version of your plugin. When you release a new version of your module, change here =)-->
-    <version>2.0</version>
+    <version>2.1</version>
     <name>A Odisseia do Dragão</name>
     <description>Adiciona suporte para a ficha do sistema A Odisseia do Dragão</description>
     <author>AlvagorH e Hellzen</author>
     <site>http://www.yourwebsite.com</site>
     <contact>https://www.facebook.com/sean.torres.5</contact>
-    
+    <dataTypes>
+        <dataType title="A Odisseia do Dragão - Ficha de Personagem" name="frmFichaOdisseia2_0" lfmFile="FichaOdisseia2.0/FichaOdisseia2.0.lfm">br.com.rrpg.AODD_S3</dataType>
+        <dataType title="A Odisseia do Dragão - Ficha de Personagem" name="frmFichaOdisseia2_0" lfmFile="FichaOdisseia2.0/FichaOdisseia2.0.lfm">br.com.RRPG.AODD_S3</dataType>
+        <dataType title="A Odisseia do Dragão - Ficha de Licantropo" name="frmFichaOdisseia2_0_Licantropo" lfmFile="FichaODisseiaLicantropo/FichaOdisseia2.0.lfm">br.com.RRPG.AODDL_S3</dataType>
+    </dataTypes>
 </module>
