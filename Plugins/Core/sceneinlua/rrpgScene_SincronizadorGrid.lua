@@ -350,38 +350,85 @@ SceneLib.registerPlugin(
 			shapeMaker:start();			
 		end;
 				
-				
-		scene.viewport:addToolButton(SETTINGS_CATEGORY, 
-		                             lang("scene.Synchronize.menu"), 
-									 "/icos/Synchronize.png",
-									 10,
-									 {selectable=true, defaultOfCategory=false},			
-			function()
-				possuiaGridAntes = scene.grid.drawGrid;
-				scene.grid.drawGrid = false;
-				
-				if frmInstrucao == nil then
-					frmInstrucao = GUI.newForm("frmSynchronizeGrid");
-				end;
-				
-				scene.viewport:showForm(frmInstrucao, {placement="topLeft"});
-				createShapeMaker();
-				amostras = {}				
-			end, 
-			
-			function()
-				--[[ Em construção ]]-- 
-				scene.grid.drawGrid = possuiaGridAntes;				
-				
-				amostras = {}
+			local function installTools()			
+				btn_viewAsPlayer = scene.viewport:addToolButton(SETTINGS_CATEGORY, 
+											 lang("scene.Synchronize.menu"), 
+											 "/icos/Synchronize.png",
+											 10,
+											 {selectable=true, defaultOfCategory=false},			
+					function()
+						possuiaGridAntes = scene.grid.drawGrid;
+						scene.grid.drawGrid = false;
+						
+						if frmInstrucao == nil then
+							frmInstrucao = GUI.newForm("frmSynchronizeGrid");
+						end;
+						
+						scene.viewport:showForm(frmInstrucao, {placement="topLeft"});
+						createShapeMaker();
+						amostras = {}				
+					end, 
+					
+					function()
+						--[[ Em construção ]]-- 
+						scene.grid.drawGrid = possuiaGridAntes;				
+						
+						amostras = {}
 
-				if frmInstrucao ~= nil then
-					scene.viewport:closeForm(frmInstrucao);
-				end;
+						if frmInstrucao ~= nil then
+							scene.viewport:closeForm(frmInstrucao);
+						end;
+						
+						if shapeMaker ~= nil then
+							shapeMaker:abort();
+							shapeMaker = nil;
+						end;	
+					end,
+
+										function()
+											scene.isViewingAsGM = not scene.isViewingAsGM;
+										end,	
+										
+										function()
+											mustSeeWalls = false;
+											scene.isViewingWalls = false;
+										end,
+										
+										function()
+											mustSeeWalls = true;
+											scene.isViewingWalls = true;											
+										end);						
+
+		end;
+
+	local function uninstallTools()
+			scene.viewport:removeToolButton(btn_viewAsPlayer);
+		end;
+		
+		local function captureGMStateChanged()
+			if scene.isGM and not installed then
+				installed = true;			
+				installTools();
+			elseif not scene.isGM and installed then
+				installed = false;
+				uninstallTools();
+				scene.viewport:closeForm(frmInstrucao);
+			end;
+			
+			if installed then
+				scene.viewport:checkToolButton(btn_viewAsPlayer, not scene.isViewingAsGM);
 				
-				if shapeMaker ~= nil then
-					shapeMaker:abort();
-					shapeMaker = nil;
-				end;	
-			end);		
-	end);	
+				if scene.isViewingAsGM then
+					scene.isViewingWalls = true;
+				else		
+					scene.isViewingWalls = mustSeeWalls;
+				end;
+			end;
+		end;
+		
+		scene:listen("onGMStateChange", captureGMStateChanged);
+		captureGMStateChanged();
+
+	
+		
+	end);			
