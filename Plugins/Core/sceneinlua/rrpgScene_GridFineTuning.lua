@@ -14,35 +14,80 @@ local SETTINGS_CATEGORY = "settings";
 SceneLib.registerPlugin(
 	function (scene, attachment)	
 		require("rrpgScene_ShapesMaker.dlua");			
+		
+	local function installTools()
+			btn_viewAsPlayer = scene.viewport:addToolButton(SETTINGS_CATEGORY, 
+										lang("scene.gridFineTuning.setup"), 
+										"/icos/maisemenos.png",
+										15,
+										{selectable=true, defaultOfCategory=false},
+										 
+										function()
+											possuiaGridAntes = scene.grid.drawGrid;
+											scene.grid.drawGrid = true;
+											
+											if frmFineTuning == nil then
+												frmFineTuning = GUI.newForm("frmWorldIncrease");
+												frmFineTuning.sceneAlvo = scene;
+											end;
+											
+											scene.viewport:showForm(frmFineTuning, {placement="topLeft"});
+										end, 
+										
+										function()
+											--[[ Em construção ]]-- 
+											scene.grid.drawGrid = possuiaGridAntes;
+											if frmFineTuning ~= nil then
+												scene.viewport:closeForm(frmFineTuning);
+											end;											
+										end,
+										
+										function()
+											scene.isViewingAsGM = not scene.isViewingAsGM;
+										end,	
+										
+										function()
+											mustSeeWalls = false;
+											scene.isViewingWalls = false;
+										end,
+										
+										function()
+											mustSeeWalls = true;
+											scene.isViewingWalls = true;											
+										end);										
+														
+	end;
 	
-		scene.viewport:setupToolCategory(SETTINGS_CATEGORY, lang("scene.toolcategory.settings"), -5);
+
 		
-		local frmFineTuning = nil;
+		local function uninstallTools()
+			scene.viewport:removeToolButton(btn_viewAsPlayer);
+		end;
 		
-		scene.viewport:addToolButton(SETTINGS_CATEGORY, 
-		                             lang("scene.gridFineTuning.setup"), 
-									 "/icos/maisemenos.png",
-									 15,
-									 {selectable=true, defaultOfCategory=false},			
+		local function captureGMStateChanged()
+			if scene.isGM and not installed then
+				installed = true;			
+				installTools();
+			elseif not scene.isGM and installed then
+				installed = false;
+				uninstallTools();
+				scene.viewport:closeForm(frmFineTuning);
+			end;
 			
-			function()
-				possuiaGridAntes = scene.grid.drawGrid;
-				scene.grid.drawGrid = true;
+			if installed then
+				scene.viewport:checkToolButton(btn_viewAsPlayer, not scene.isViewingAsGM);
 				
-				if frmFineTuning == nil then
-					frmFineTuning = GUI.newForm("frmWorldIncrease");
-					frmFineTuning.sceneAlvo = scene;
+				if scene.isViewingAsGM then
+					scene.isViewingWalls = true;
+				else		
+					scene.isViewingWalls = mustSeeWalls;
 				end;
-				
-				scene.viewport:showForm(frmFineTuning, {placement="topLeft"});
-			end, 
-			
-			function()
-				--[[ Em construção ]]-- 
-				scene.grid.drawGrid = possuiaGridAntes;
-				
-				if frmFineTuning ~= nil then
-					scene.viewport:closeForm(frmFineTuning);
-				end;				
-			end);		
+			end;
+		end;
+		
+		scene:listen("onGMStateChange", captureGMStateChanged);
+		captureGMStateChanged();
+
+	
+		
 	end);	
