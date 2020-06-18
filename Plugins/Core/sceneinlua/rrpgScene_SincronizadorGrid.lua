@@ -270,6 +270,8 @@ SceneLib.registerPlugin(
 	
 		scene.viewport:setupToolCategory(SETTINGS_CATEGORY, lang("scene.toolcategory.settings"), -2);
 		
+		local installed = false;
+		local btn_viewAsPlayer;	
 		local possuiaGridAntes = nil;
 		local shapeMaker = nil;
 		local realCellWidth = nil
@@ -387,16 +389,6 @@ SceneLib.registerPlugin(
 
 										function()
 											scene.isViewingAsGM = not scene.isViewingAsGM;
-										end,	
-										
-										function()
-											mustSeeWalls = false;
-											scene.isViewingWalls = false;
-										end,
-										
-										function()
-											mustSeeWalls = true;
-											scene.isViewingWalls = true;											
 										end);						
 
 		end;
@@ -417,12 +409,6 @@ SceneLib.registerPlugin(
 			
 			if installed then
 				scene.viewport:checkToolButton(btn_viewAsPlayer, not scene.isViewingAsGM);
-				
-				if scene.isViewingAsGM then
-					scene.isViewingWalls = true;
-				else		
-					scene.isViewingWalls = mustSeeWalls;
-				end;
 			end;
 		end;
 		

@@ -69,12 +69,6 @@ SceneLib.registerPlugin(
 			
 			if installed then
 				scene.viewport:checkToolButton(btn_viewAsPlayer, not scene.isViewingAsGM);
-				
-				if scene.isViewingAsGM then
-					scene.isViewingWalls = true;
-				else		
-					scene.isViewingWalls = mustSeeWalls;
-				end;
 			end;
 		end;
 		
