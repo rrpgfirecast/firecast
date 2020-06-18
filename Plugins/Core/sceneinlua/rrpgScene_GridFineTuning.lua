@@ -14,7 +14,10 @@ local SETTINGS_CATEGORY = "settings";
 SceneLib.registerPlugin(
 	function (scene, attachment)	
 		require("rrpgScene_ShapesMaker.dlua");			
-		
+	
+	local installed = false;
+	local btn_viewAsPlayer;	
+	
 	local function installTools()
 			btn_viewAsPlayer = scene.viewport:addToolButton(SETTINGS_CATEGORY, 
 										lang("scene.gridFineTuning.setup"), 
@@ -43,17 +46,7 @@ SceneLib.registerPlugin(
 										end,
 										
 										function()
-											scene.isViewingAsGM = not scene.isViewingAsGM;
-										end,	
-										
-										function()
-											mustSeeWalls = false;
-											scene.isViewingWalls = false;
-										end,
-										
-										function()
-											mustSeeWalls = true;
-											scene.isViewingWalls = true;											
+											scene.isViewingAsGM = not scene.isViewingAsGM;										
 										end);										
 														
 	end;
@@ -87,7 +80,5 @@ SceneLib.registerPlugin(
 		
 		scene:listen("onGMStateChange", captureGMStateChanged);
 		captureGMStateChanged();
-
-	
 		
 	end);	
