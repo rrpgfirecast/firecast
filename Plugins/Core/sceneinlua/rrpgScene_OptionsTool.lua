@@ -10,7 +10,6 @@ SceneLib.registerPlugin(
 	function (scene, attachment)			
 		local frmBoardProps = nil;
 		local timeoutClearFrmBoard = nil;
-
 		local installed = false;
 		local btn_viewAsPlayer;	
 			
@@ -21,38 +20,36 @@ SceneLib.registerPlugin(
 										lang("scene.menu.sceneOptions"), 
 										"/icos/scene_props.png",
 										1,
-										{defaultOfCategory=true},
-										 
-					function()
-						local frm;
-						
-						if timeoutClearFrmBoard ~= nil then
-							clearTimeout(timeoutClearFrmBoard);						
-							timeoutClearFrmBoard = nil;
-						end;								
-					
-						if frmBoardProps == nil then				
-							frm = GUI.newForm("frmBoardProps");
-						else
-							frm = frmBoardProps;
-						end;
-						
-						if not frm.isShowing then
-							frm:prepareForShow(scene);									  				    
-							frm:show();
-						end;
-						
-						frmBoardProps = frm;
-						
-						timeoutClearFrmBoard = setTimeout(
-						function()
-							frmBoardProps = nil;
-						end, 5 * 60 * 1000);  -- 5 minutos
-					end,		
-					function()
-						scene.isViewingAsGM = not scene.isViewingAsGM;										
-					end);		
-							
+										{defaultOfCategory=true},					 
+										function()
+											local frm;
+											
+											if timeoutClearFrmBoard ~= nil then
+												clearTimeout(timeoutClearFrmBoard);						
+												timeoutClearFrmBoard = nil;
+											end;								
+										
+											if frmBoardProps == nil then				
+												frm = GUI.newForm("frmBoardProps");
+											else
+												frm = frmBoardProps;
+											end;
+											
+											if not frm.isShowing then
+												frm:prepareForShow(scene);									  				    
+												frm:show();
+											end;
+											
+											frmBoardProps = frm;
+											
+											timeoutClearFrmBoard = setTimeout(
+											function()
+												frmBoardProps = nil;
+											end, 5 * 60 * 1000);  -- 5 minutos
+										end,		
+										function()
+											scene.isViewingAsGM = not scene.isViewingAsGM;										
+										end);							
 		end;		
 		
 
@@ -77,5 +74,4 @@ SceneLib.registerPlugin(
 		
 		scene:listen("onGMStateChange", captureGMStateChanged);
 		captureGMStateChanged();
-		
 	end);	

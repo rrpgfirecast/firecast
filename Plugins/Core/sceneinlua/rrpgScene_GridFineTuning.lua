@@ -18,41 +18,37 @@ SceneLib.registerPlugin(
 	local installed = false;
 	local btn_viewAsPlayer;	
 	
-	local function installTools()
-			btn_viewAsPlayer = scene.viewport:addToolButton(SETTINGS_CATEGORY, 
-										lang("scene.gridFineTuning.setup"), 
-										"/icos/maisemenos.png",
-										15,
-										{selectable=true, defaultOfCategory=false},
-										 
-										function()
-											possuiaGridAntes = scene.grid.drawGrid;
-											scene.grid.drawGrid = true;
+		local function installTools()
+				btn_viewAsPlayer = scene.viewport:addToolButton(SETTINGS_CATEGORY, 
+											lang("scene.gridFineTuning.setup"), 
+											"/icos/maisemenos.png",
+											2,
+											{selectable=true, defaultOfCategory=false}, 
+											function()
+												possuiaGridAntes = scene.grid.drawGrid;
+												scene.grid.drawGrid = true;
+												
+												if frmFineTuning == nil then
+													frmFineTuning = GUI.newForm("frmWorldIncrease");
+													frmFineTuning.sceneAlvo = scene;
+												end;
+												
+												scene.viewport:showForm(frmFineTuning, {placement="topLeft"});
+											end, 
 											
-											if frmFineTuning == nil then
-												frmFineTuning = GUI.newForm("frmWorldIncrease");
-												frmFineTuning.sceneAlvo = scene;
-											end;
+											function()
+												--[[ Em construção ]]-- 
+												scene.grid.drawGrid = possuiaGridAntes;
+												if frmFineTuning ~= nil then
+													scene.viewport:closeForm(frmFineTuning);
+												end;											
+											end,
 											
-											scene.viewport:showForm(frmFineTuning, {placement="topLeft"});
-										end, 
-										
-										function()
-											--[[ Em construção ]]-- 
-											scene.grid.drawGrid = possuiaGridAntes;
-											if frmFineTuning ~= nil then
-												scene.viewport:closeForm(frmFineTuning);
-											end;											
-										end,
-										
-										function()
-											scene.isViewingAsGM = not scene.isViewingAsGM;										
-										end);										
-														
-	end;
+											function()
+												scene.isViewingAsGM = not scene.isViewingAsGM;										
+											end);													
+		end;
 	
-
-		
 		local function uninstallTools()
 			scene.viewport:removeToolButton(btn_viewAsPlayer);
 		end;
@@ -60,7 +56,7 @@ SceneLib.registerPlugin(
 		local function captureGMStateChanged()
 			if scene.isGM and not installed then
 				installed = true;			
-				installTools();
+				installTools();	
 			elseif not scene.isGM and installed then
 				installed = false;
 				uninstallTools();
@@ -72,7 +68,6 @@ SceneLib.registerPlugin(
 			end;
 		end;
 		
-		scene:listen("onGMStateChange", captureGMStateChanged);
-		captureGMStateChanged();
-		
+	scene:listen("onGMStateChange", captureGMStateChanged);
+	captureGMStateChanged();		
 	end);	

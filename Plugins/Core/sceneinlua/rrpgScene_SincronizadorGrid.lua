@@ -352,51 +352,48 @@ SceneLib.registerPlugin(
 			shapeMaker:start();			
 		end;
 				
-			local function installTools()			
-				btn_viewAsPlayer = scene.viewport:addToolButton(SETTINGS_CATEGORY, 
-											 lang("scene.Synchronize.menu"), 
-											 "/icos/Synchronize.png",
-											 10,
-											 {selectable=true, defaultOfCategory=false},			
-					function()
-						possuiaGridAntes = scene.grid.drawGrid;
-						scene.grid.drawGrid = false;
-						
-						if frmInstrucao == nil then
-							frmInstrucao = GUI.newForm("frmSynchronizeGrid");
-						end;
-						
-						scene.viewport:showForm(frmInstrucao, {placement="topLeft"});
-						createShapeMaker();
-						amostras = {}				
-					end, 
+		local function installTools()			
+			btn_viewAsPlayer = scene.viewport:addToolButton(SETTINGS_CATEGORY, 
+										 lang("scene.Synchronize.menu"), 
+										 "/icos/Synchronize.png",
+										 10,
+										 {selectable=true, defaultOfCategory=false},			
+				function()
+					possuiaGridAntes = scene.grid.drawGrid;
+					scene.grid.drawGrid = false;
 					
-					function()
-						--[[ Em construção ]]-- 
-						scene.grid.drawGrid = possuiaGridAntes;				
-						
-						amostras = {}
+					if frmInstrucao == nil then
+						frmInstrucao = GUI.newForm("frmSynchronizeGrid");
+					end;
+					
+					scene.viewport:showForm(frmInstrucao, {placement="topLeft"});
+					createShapeMaker();
+					amostras = {}				
+				end, 
+				
+				function()
+					scene.grid.drawGrid = possuiaGridAntes;				
+					amostras = {}
 
-						if frmInstrucao ~= nil then
-							scene.viewport:closeForm(frmInstrucao);
-						end;
-						
-						if shapeMaker ~= nil then
-							shapeMaker:abort();
-							shapeMaker = nil;
-						end;	
-					end,
+					if frmInstrucao ~= nil then
+						scene.viewport:closeForm(frmInstrucao);
+					end;
+					
+					if shapeMaker ~= nil then
+						shapeMaker:abort();
+						shapeMaker = nil;
+					end;	
+				end,
 
-										function()
-											scene.isViewingAsGM = not scene.isViewingAsGM;
-										end);						
-
+				function()
+					scene.isViewingAsGM = not scene.isViewingAsGM;
+				end);						
 		end;
 
-	local function uninstallTools()
+		local function uninstallTools()
 			scene.viewport:removeToolButton(btn_viewAsPlayer);
 		end;
-		
+			
 		local function captureGMStateChanged()
 			if scene.isGM and not installed then
 				installed = true;			
@@ -409,12 +406,9 @@ SceneLib.registerPlugin(
 			
 			if installed then
 				scene.viewport:checkToolButton(btn_viewAsPlayer, not scene.isViewingAsGM);
-			end;
+			end;			
 		end;
 		
 		scene:listen("onGMStateChange", captureGMStateChanged);
-		captureGMStateChanged();
-
-	
-		
+		captureGMStateChanged();		
 	end);			
