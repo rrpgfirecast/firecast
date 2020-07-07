@@ -1034,7 +1034,6 @@ local function constructNew_frmDungeonOptions()
 			local horzSquare = math.floor(scene.worldWidth/size);
 			local vertSquare = math.floor(scene.worldHeight/size);
 
-
 			-- Inicializando grid
 			local map = {};
 			local stack = {};
@@ -1110,7 +1109,7 @@ local function constructNew_frmDungeonOptions()
 						end;
 					end;
 				else
-					i = salas;
+					i = salas+1;
 				end;
 			end;
 
