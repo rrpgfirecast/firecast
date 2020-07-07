@@ -147,7 +147,7 @@ scene.bkgImageTabTitle.guide=Clique para alterar a imagem
 
 scene.gridFineTuning.setup=Ajuste milimétrico do Grid
 scene.Synchronize.menu=Sincronizar Grid
-scene.gridFineTuning.tip=Dica : Desenhe 4 quadrados para o RRPG calcular o tamanho do grid em seu mundo
+scene.Synchronize.tip=Dica : Desenhe 4 quadrados para o RRPG calcular o tamanho do grid em seu mundo
 scene.gridFineTuning.dimension=Dica : Alinhe a primeira célula e em seguida va para a última célula do mundo para um melhor alinhamento
 scene.gridFineTuning.height=Largura
 scene.gridFineTuning.width=Altura
