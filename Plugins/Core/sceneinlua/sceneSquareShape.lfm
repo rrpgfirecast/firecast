@@ -1,11 +1,11 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<popupForm name="frmSynchronizeGrid" width="300" height="100" drawContainer="true" resizable="true" placement="center"
+<popupForm name="frmSynchronizeGrid" width="310" height="90" drawContainer="true" resizable="true" placement="center"
 		   cancelable="false">
  		   
 	<import file="interfaceUtils.xml"/>
 	
 
-	<label name="labTip" left="10" top="5" width="290" autoSize="true" wordWrap="true" fontSize="20"  fontColor="red"/>
+	<label name="labTip" left="20" top="10" width="270" autoSize="true" wordWrap="true" fontColor="white"/>
 	
 	<script><![CDATA[	
 			self.labTip.text = lang('scene.Synchronize.tip');

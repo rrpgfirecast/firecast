@@ -146,12 +146,12 @@ scene.bkgImageTabTitle.useThis=Usar esta imagem:
 scene.bkgImageTabTitle.guide=Clique para alterar a imagem
 
 scene.gridFineTuning.setup=Ajuste milimétrico do Grid
-scene.Synchronize.menu=Sincronizar Grid
-scene.Synchronize.tip=Dica : Desenhe 4 quadrados para o RRPG calcular o tamanho do grid em seu mundo
-scene.gridFineTuning.dimension=Dica : Alinhe a primeira célula e em seguida va para a última célula do mundo para um melhor alinhamento
-scene.gridFineTuning.height=Largura
-scene.gridFineTuning.width=Altura
-scene.gridFineTuning.offset=Escolha a posição do grid
+scene.Synchronize.menu=Sincronizador de Grid
+scene.Synchronize.tip=Dica: Sincronize o grid do background com o grid do firecast marcando/desenhando 4 células diferentes que existem na imagem de fundo.
+scene.gridFineTuning.dimension=Dica: Ajuste a primeira célula do tabuleiro e em seguida ajuste a última célula do tabuleiro.
+scene.gridFineTuning.height=Altura
+scene.gridFineTuning.width=Largura
+scene.gridFineTuning.offset=Mova a posição do grid
 
 
 [en]
@@ -300,8 +300,8 @@ scene.bkgImageTabTitle.guide=Click to change the image
 
 scene.gridFineTuning.setup=Fine grid adjustment
 scene.Synchronize.menu=Synchronize grid
-scene.Synchronize.tip=Tip : Draw 4 squares for the RRPG to calculate the size of the grid in your world
-scene.gridFineTuning.dimension=Tip: Align the first cell and then go to the last cell in the world for a better alignment
-scene.gridFineTuning.heigh=Heigh
+scene.Synchronize.tip=Tip: Synchronize the background grid with the firecast grid by marking / drawing 4 different cells that exist in the background image.
+scene.gridFineTuning.dimension=Tip: Adjuste the first cell on the background and then adjust the last cell on the background.
+scene.gridFineTuning.height=Height
 scene.gridFineTuning.width=Width
-scene.gridFineTuning.offset=Choose a Grid position
+scene.gridFineTuning.offset=Move a grid position

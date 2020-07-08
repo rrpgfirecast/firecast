@@ -27,8 +27,8 @@ local function constructNew_frmSynchronizeGrid()
     _gui_assignInitialParentForForm(obj.handle);
     obj:beginUpdate();
     obj:setName("frmSynchronizeGrid");
-    obj:setWidth(300);
-    obj:setHeight(100);
+    obj:setWidth(310);
+    obj:setHeight(90);
     obj:setDrawContainer(true);
     obj:setResizable(true);
     obj:setPlacement("center");
@@ -37,13 +37,12 @@ local function constructNew_frmSynchronizeGrid()
     obj.labTip = GUI.fromHandle(_obj_newObject("label"));
     obj.labTip:setParent(obj);
     obj.labTip:setName("labTip");
-    obj.labTip:setLeft(10);
-    obj.labTip:setTop(5);
-    obj.labTip:setWidth(290);
+    obj.labTip:setLeft(20);
+    obj.labTip:setTop(10);
+    obj.labTip:setWidth(270);
     obj.labTip:setAutoSize(true);
     obj.labTip:setWordWrap(true);
-    obj.labTip:setFontSize(20);
-    obj.labTip:setFontColor("red");
+    obj.labTip:setFontColor("white");
 
 	
 			self.labTip.text = lang('scene.Synchronize.tip');
