@@ -1,54 +1,8 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<popupForm name="frmWorldIncrease" width="300" height="170" opacity="0.9" drawContainer="true" resizable="true" placement="center"
+<popupForm name="frmWorldIncrease" width="300" height="200" opacity="0.9" drawContainer="true" resizable="true" placement="center"
 		   cancelable="false">
  		   
 	<import file="interfaceUtils.xml"/>
-	
-	<style>
-		flowPart.optionPart {
-			height: 100;
-			width: 300;
-			minWidth: 50;
-			maxWidth: 5000;
-			margins: {left=2, right=2, top=2, bottom=2};
-		}	
-		
-		flowPart.optionPart2 {
-			height: 200;
-			width: 300;
-			minWidth: 50;
-			maxWidth: 5000;
-			margins: {left=2, right=2, top=2, bottom=2};
-		}	
-			
-		.itemTitle {
-			align: top;
-			width: 280;
-			wordWrap: true;
-			autoSize: false;
-			horzTextAlign: center;	
-			vertTextAlign: leading;
-			margins:{right=5};
-		}
-		
-		.itemContent {
-			align: client;
-			margins:{right=5};
-		}
-		
-		.groupTitle {
-			align: left;						
-			autoSize: true;
-			wordWrap: true;
-			horzTextAlign: leading;	
-			vertTextAlign: center;
-			margins:{left=10, right=5};		
-			fontSize: 15;
-			fontColor: #FFCC66;
-		}
-		
-				
-	</style>	
 	
 	<script>
 		
@@ -85,70 +39,71 @@
 		
 		local function moveOffsetDown()
 			self.sceneAlvo.grid.offsetY = self.sceneAlvo.grid.offsetY -0.025;
-		end;		
+		end;
+		
 	</script>
 	
-	<flowPart class="optionPart">
-		<label name="labTipDimension" autoSize="true" fontColor="white" class="itemTitle"/>
-		<label name="labGridHeigh" autoSize="true" fontColor="white" class="groupTitle"/>
+		<label name="labTipDimension" top="20" left="20" width="270" autoSize="true" fontColor="white"/>
+		<label name="labGridWidth" top="85" left="20" width="75" autoSize="true" fontColor="white"/>
 		
-		<button text="+" width="30" left="105" top="58">
+		<button text="+" width="30" left="100" top="83">
 			<event name="onClick">
-				increaseWorldControlHeight();      
+				increaseWorldControlWidth();
+				      
 			</event>
 		</button>
 		
-		<button text="-" width="30" left="65" top="58">
+		<button text="-" width="30" left="60" top="83">
 			<event name="onClick">
-				decreaseWorldControlHeight();           
+				decreaseWorldControlWidth();
+				          
 			</event>
 		</button>
 		
-		<label name="labGridWidth" autoSize="true" fontColor="white" class="groupTitle"/>
-		
-		<button text="+" width="30" left="235" top="58">
+		<label name="labGridHeight" top="85" left="160" width="75" autoSize="true" fontColor="white"/>
+						
+		<button text="+" width="30" left="245" top="83">
 			<event name="onClick">
-				increaseWorldControlWidth();      
+				 
+				increaseWorldControlHeight();				
 			</event>
 		</button>
 		
-		<button text="-" width="30" left="195" top="58">
+		<button text="-" width="30" left="205" top="83">
 			<event name="onClick">
-				decreaseWorldControlWidth();           
+				
+				decreaseWorldControlHeight(); 				
 			</event>
 		</button>
-	</flowPart>
-		
-	<flowPart class="optionPart2">
-		<label name="laboffset" autoSize="true" wordWrap="true" width="200" fontColor="white" fontSize="17" left="57" top="90"/>
-		<button text="⮜" width="30" left="70" top="120">
+
+		<label name="laboffset" autoSize="true" wordWrap="true" width="200" fontColor="white" fontSize="17" left="68" top="120"/>
+		<button text="⮜" width="30" left="70" top="150">
 			<event name="onClick">
 				moveOffsetLeft();    
 			</event>
 		</button>
 		
-		<button text="⮞" width="30" left="110" top="120">
+		<button text="⮞" width="30" left="110" top="150">
 			<event name="onClick">
 				moveOffsetRight();      
 			</event>
 		</button>
 		
-		<button text="⮝" width="30" left="150" top="120">
+		<button text="⮝" width="30" left="150" top="150">
 			<event name="onClick">
 				moveOffsetDown(); 
 			</event>
 		</button>
 		
-		<button text="⮟" width="30" left="190" top="120">
+		<button text="⮟" width="30" left="190" top="150">
 			<event name="onClick">
 				moveOffsetUp();       
 			</event>
 		</button>
-	</flowPart>
 	
 	<script><![CDATA[	
 		self.labTipDimension.text = lang('scene.gridFineTuning.dimension');
-		self.labGridHeigh.text = lang('scene.gridFineTuning.heigh');
+		self.labGridHeight.text = lang('scene.gridFineTuning.height');
 		self.labGridWidth.text = lang('scene.gridFineTuning.width');
 		self.laboffset.text = lang('scene.gridFineTuning.offset');
 		]]>
