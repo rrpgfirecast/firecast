@@ -38,7 +38,7 @@ local function constructNew_frmSynchronizeGrid()
     obj.labTip:setParent(obj);
     obj.labTip:setName("labTip");
     obj.labTip:setLeft(20);
-    obj.labTip:setTop(20);
+    obj.labTip:setTop(10);
     obj.labTip:setWidth(270);
     obj.labTip:setAutoSize(true);
     obj.labTip:setWordWrap(true);

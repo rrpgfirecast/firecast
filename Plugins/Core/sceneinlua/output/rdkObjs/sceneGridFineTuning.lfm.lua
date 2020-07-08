@@ -97,7 +97,7 @@ local function constructNew_frmWorldIncrease()
     obj.button1:setParent(obj);
     obj.button1:setText("+");
     obj.button1:setWidth(30);
-    obj.button1:setLeft(100);
+    obj.button1:setLeft(110);
     obj.button1:setTop(83);
     obj.button1:setName("button1");
 
@@ -105,7 +105,7 @@ local function constructNew_frmWorldIncrease()
     obj.button2:setParent(obj);
     obj.button2:setText("-");
     obj.button2:setWidth(30);
-    obj.button2:setLeft(60);
+    obj.button2:setLeft(70);
     obj.button2:setTop(83);
     obj.button2:setName("button2");
 
@@ -122,7 +122,7 @@ local function constructNew_frmWorldIncrease()
     obj.button3:setParent(obj);
     obj.button3:setText("+");
     obj.button3:setWidth(30);
-    obj.button3:setLeft(245);
+    obj.button3:setLeft(250);
     obj.button3:setTop(83);
     obj.button3:setName("button3");
 
@@ -130,7 +130,7 @@ local function constructNew_frmWorldIncrease()
     obj.button4:setParent(obj);
     obj.button4:setText("-");
     obj.button4:setWidth(30);
-    obj.button4:setLeft(205);
+    obj.button4:setLeft(210);
     obj.button4:setTop(83);
     obj.button4:setName("button4");
 

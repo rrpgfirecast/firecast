@@ -5,7 +5,7 @@
 	<import file="interfaceUtils.xml"/>
 	
 
-	<label name="labTip" left="20" top="20" width="270" autoSize="true" wordWrap="true" fontColor="white"/>
+	<label name="labTip" left="20" top="10" width="270" autoSize="true" wordWrap="true" fontColor="white"/>
 	
 	<script><![CDATA[	
 			self.labTip.text = lang('scene.Synchronize.tip');

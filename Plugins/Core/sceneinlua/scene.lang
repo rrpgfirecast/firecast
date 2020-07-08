@@ -147,7 +147,7 @@ scene.bkgImageTabTitle.guide=Clique para alterar a imagem
 
 scene.gridFineTuning.setup=Ajuste milimétrico do Grid
 scene.Synchronize.menu=Sincronizador de Grid
-scene.gridFineTuning.tip=Dica: Sincronize o grid do background com o grid do firecast marcando/desenhando 4 células diferentes que existem na imagem de fundo.
+scene.Synchronize.tip=Dica: Sincronize o grid do background com o grid do firecast marcando/desenhando 4 células diferentes que existem na imagem de fundo.
 scene.gridFineTuning.dimension=Dica: Ajuste a primeira célula do tabuleiro e em seguida ajuste a última célula do tabuleiro.
 scene.gridFineTuning.height=Altura
 scene.gridFineTuning.width=Largura
