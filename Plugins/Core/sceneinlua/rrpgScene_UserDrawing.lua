@@ -75,9 +75,6 @@ SceneLib.registerPlugin(
 
 					larguraGrid = ud.width;
 					alturaGrid = ud.height;
-					
-					showMessage("Altura igual a " .. alturaGrid);
-					showMessage("Altura igual a " .. larguraGrid);
 				end);		
 		end;
 		
