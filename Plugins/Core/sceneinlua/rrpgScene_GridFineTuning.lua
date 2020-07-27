@@ -6,8 +6,6 @@ require("rrpgScene_MovementHistory.lua");
 require("rrpgScene_Undo.dlua");
 require("rrpgScene_UserDrawingDetails.lua");
 
---[[   PLUGIN para fazer user drawings ]]--	
-
 local SETTINGS_CATEGORY = "settings";
 
 	
@@ -17,6 +15,7 @@ SceneLib.registerPlugin(
 	
 	local installed = false;
 	local btn_viewAsPlayer;	
+	local frmFineTuning = nil;
 	
 		local function installTools()
 				btn_viewAsPlayer = scene.viewport:addToolButton(SETTINGS_CATEGORY, 
@@ -37,7 +36,6 @@ SceneLib.registerPlugin(
 											end, 
 											
 											function()
-												--[[ Em construção ]]-- 
 												scene.grid.drawGrid = possuiaGridAntes;
 												if frmFineTuning ~= nil then
 													scene.viewport:closeForm(frmFineTuning);
