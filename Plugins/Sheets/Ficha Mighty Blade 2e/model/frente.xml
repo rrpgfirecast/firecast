@@ -1,0 +1,303 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="formFicha" align="client" theme="dark">
+    <style>#frmmodel1_svg path {color: black; strokeColor: black; mode: stretch;} &#xD;
+#frmmodel1_svg label {fontColor: black; textTrimming: none; wordWrap: false; autoSize: true;}</style>
+	<script>
+		local function recalcArmadura()
+			if self ~= nil and sheet ~= nil then
+				-- ADICIONA FORÇA/AGILIDADE
+				local defesaNova = 5;
+				defesaNova = defesaNova + math.max((sheet.forca or 0), (sheet.agilidade or 0));
+
+				-- ADICIONA BÔNUS
+				defesaNova = defesaNova + (sheet.defesaBonus or 0);
+				
+				-- ADICIONA BÔNUS DE ARMADURAS
+				local bonusArmadura = 0;
+				local armaduras = NDB.getChildNodes(sheet.armaduras);
+				
+				for i = 1, #armaduras, 1 do								
+					bonusArmadura = bonusArmadura + (armaduras[i].defesaArmadura or 0);
+				end;
+				
+				-- LIMITA O BÔNUS DE ARMADURA PARA 4.
+				bonusArmadura = math.min(bonusArmadura, 4);
+				
+				defesaNova = defesaNova + bonusArmadura;
+				
+				-- SETA A DEFESA NOVA CALCULADA
+				sheet.defesa = defesaNova;
+			end;
+		end;
+	</script>
+	
+	<image name="imagemFundo" align="client" style="autoFit">
+		<scrollBox align="client">
+			<!-- INÍCIO: TROCAR O FUNDO DA FICHA -->
+			<button name="trocarFundo" text="Trocar Fundo" height="30" width="120">
+				<event name="onClick">
+					local pop = self:findControlByName("popFundo");
+					local popControle = self:findControlByName("trocarFundo");
+					
+					if pop ~= nil then
+						pop:setNodeObject(self.sheet);
+						pop:show("bottomCenter", popControle);
+					else
+						showMessage("Não foi encontrada a janela de seleção de fundos.");
+					end;
+				</event>
+			</button>
+			<!-- FIM: TROCAR O FUNDO DA FICHA -->
+			
+			<flowLayout align="top" autoHeight="true" horzAlign="center" margins="{left=20, right=20, top=20, bottom=20}" maxControlsPerLine="3" avoidScale="true">			
+				<!-- INÍCIO: HEADER DA FICHA (LOGO, NOME, RAÇA/CLASSE, ETC...) -->
+				<image src="images/logo.png" width="277" height="146" margins="{left=0, right=20, top=0}"/>
+				
+				<flowPart minWidth="450" maxWidth="450" height="200" vertAlign="center" frameStyle="frames/panel1/frame.xml"
+				margins="{left=5, top=5, right=5, bottom=5}">
+					<flowLayout width="600" autoHeight="true" align="client" lineSpacing="10" avoidScale="true">			
+						<baseField texto="PERSONAGEM" field="personagem"/>
+						<baseField texto="JOGADOR" field="jogador"/>
+						<baseField texto="RAÇA/CLASSE" field="racaClasse"/>						
+						<baseField texto="NÍVEL" minWidth="50" field="nivel"/>
+						<levelCheckbox/>
+						<baseField texto="MOTIVAÇÃO" maxWidth="450" field="motivacao"/>
+					</flowLayout>
+				</flowPart>
+				
+				<rectangle width="176" height="176" color="#404040" strokeColor="white" strokeSize="1" margins="{left=15, right=0, top=0}">
+					<rectangle left="3" top="3" width="170" height="170" color="#323232">
+						<label align="client" horzTextAlign="center" vertTextAlign="center" fontSize="15" text="&lt;Personagem&gt;"/>
+						<image field="imagemPersonagem" align="client" editable="true" style="autoFit"/>
+					</rectangle>
+				</rectangle>
+				<!-- FIM: HEADER DA FICHA -->
+				
+				<!-- INÍCIO: ATRIBUTOS (FORÇA, AGILIDADE, INTELIGÊNCIA, VONTADE) -->
+				<flowLayout minWidth="575" maxWidth="575" autoHeight="true" align="left" maxControlsPerLine="6" lineSpacing="10" avoidScale="true"
+				frameStyle="frames/panel1/frame.xml" margins="{left=5, top=5, right=5, bottom=5}">
+					<attributeField texto="Força" field="forca"/>
+					<attributeField texto="Agilidade" field="agilidade"/>
+					<attributeField texto="Inteligência" field="inteligencia"/>
+					<attributeField texto="Vontade" field="vontade"/>
+				</flowLayout>
+				<!-- FIM: ATRIBUTOS-->				
+				
+				<!-- INÍCIO: CAMPOS DE VIDA, MANA E DEFESA -->
+				<flowPart minWidth="200" maxWidth="350" height="200" vertAlign="center" frameStyle="frames/panel1/frame.xml"
+				margins="{left=5, top=5, right=5, bottom=5}">
+					<flowLayout autoHeight="true" align="client" lineSpacing="10" avoidScale="true" horzAlign="center">
+						<resourceField texto="VIDA" field="vida"/>
+						<resourceField texto="MANA" field="mana"/>
+						<flowLineBreak/>						
+						<defenseField texto="DEFESA BÔNUS" field="defesaBonus" changeable="true"/>
+						<defenseField texto="DEFESA" field="defesa" fontStyle="bold" changeable="false"/>
+					</flowLayout>
+				</flowPart>
+				<flowLineBreak/>
+				
+				<dataLink field="vida" defaultValue="60">
+					<event name="onChange">
+						if oldValue == nil and (sheet.vidaMax or nil) == nil then
+							sheet.vidaMax = newValue;
+						elseif newValue == nil then
+							sheet.vidaMax = nil;
+						elseif newValue > sheet.vidaMax then
+							sheet.vidaMax = newValue;
+						end;
+					</event>
+				</dataLink>
+				
+				<dataLink field="mana" defaultValue="60">
+					<event name="onChange">
+						if oldValue == nil and (sheet.manaMax or nil) == nil then
+							sheet.manaMax = newValue;
+						elseif newValue == nil then
+							sheet.manaMax = nil;
+						elseif newValue > sheet.manaMax then
+							sheet.manaMax = newValue;
+						end;
+					</event>
+				</dataLink>
+				
+				<dataLink field="defesaBonus">
+					<event name="onChange">
+						recalcArmadura();
+					</event>
+				</dataLink>
+				
+				<dataLink field="forca">
+					<event name="onChange">
+						recalcArmadura();
+					</event>
+				</dataLink>
+				
+				<dataLink field="agilidade">
+					<event name="onChange">
+						recalcArmadura();
+					</event>
+				</dataLink>
+				<!-- FIM: CAMPOS DE VIDA, MANA E DEFESA -->
+				
+				<!-- INÍCIO: POPUP DE FUNDO -->
+				<popup name="popFundo" width="375" height="360" backOpacity="0.4" autoScopeNode="true">			
+					<flowLayout align="top" autoHeight="true" maxControlsPerLine="2" margins="{bottom=4}" horzAlign="center">						
+						<comboBox align="top" items="{'Padrão', 'Montanhas 1', 'Montanhas 2', 'Montanhas 3', 'Pico Congelado 1', 'Pico Congelado 2', 'Pico Congelado 3',
+						'Praia 1', 'Praia 2', 'Praia 3', 'Floresta 1', 'Floresta 2', 'Floresta 3', 'Deserto 1', 'Deserto 2', 'Deserto 3'}"
+						
+						values="{'default', 'mountains1', 'mountains2', 'mountains3', 'snowpeaks1', 'snowpeaks2', 'snowpeaks3',
+						'beach1', 'beach2', 'beach3', 'forest1', 'forest2', 'forest3', 'desert1', 'desert2', 'desert3'}"
+
+						field="fundoPreviewCombobox" value="default" width="200" height="30"/>
+						
+						<image name="fundoPreview" width="320" height="180" align="top" style="autoFit" margins="{top=10}"/>
+						<label align="top" text="URL Customizada:" width="200" height="30" horzTextAlign="center"/>
+						
+						<edit align="top" field="fundoPreviewURLCustomizada" width="200" height="30"/>
+						
+						<!-- APLICA A IMAGEM ESCOLHIDA/URL -->
+						<button align="top" text="Aplicar" width="200" height="30" margins="{top=10}">
+							<event name="onClick">
+								if sheet.fundoPreviewCombobox ~= nil and sheet.fundoPreviewCombobox ~= "" then
+									self.imagemFundo.src = self.fundoPreview.src;
+									self.imagemFundoCaracteristicas.src = self.fundoPreview.src;
+										
+									sheet.backgroundCustomURL = self.fundoPreview.src;
+								end;
+							
+								self.popFundo:close();
+							</event>
+						</button>
+						
+						<button align="top" text="Aplicar URL" width="200" height="30">
+							<event name="onClick">
+								if sheet.fundoPreviewURLCustomizada ~= nil and sheet.fundoPreviewURLCustomizada ~= "" then
+									self.imagemFundo.src = sheet.fundoPreviewURLCustomizada;
+									self.imagemFundoCaracteristicas.src = sheet.fundoPreviewURLCustomizada;
+									
+									sheet.backgroundCustomURL = sheet.fundoPreviewURLCustomizada;
+								end;
+							
+								self.popFundo:close();
+							</event>
+						</button>
+						
+						<!-- MUDA A IMAGEM DO PREVIEW -->
+						<dataLink field="fundoPreviewCombobox">
+							<event name="onChange">
+								self.fundoPreview.src = "/model/images/backgrounds/" .. (sheet.fundoPreviewCombobox or "default") .. ".jpg";
+							</event>
+						</dataLink>
+					</flowLayout>
+				</popup>
+				<!-- FIM: POPUP DE FUNDO -->
+				
+				<!-- INÍCIO: POPUP DE DESCRIÇÃO DE HABILIDADE -->
+				<popup name="popHabilidade" width="340" height="340" backOpacity="0.4" autoScopeNode="false">			
+					<flowLayout align="top" autoHeight="true" maxControlsPerLine="2" margins="{bottom=4}" horzAlign="center">						
+						<infoField text="TIPO" field="tipoHab" type="text"/>
+						<flowLineBreak/>
+						<infoField text="MANA" field="manaHab" type="text"/>
+						<infoField text="DIFICULDADE" field="dificuldadeHab" type="text"/>
+						<infoField text="ALCANCE" field="alcanceHab" type="text"/>
+						<infoField text="DURAÇÃO" field="duracaoHab" type="text"/>
+					</flowLayout>
+					
+					<label align="top" fontSize="12" text="DESCRIÇÃO" horzTextAlign="center" wordWrap="true" textTrimming="none" autoSize="true"/>
+					<textEditor align="client" field="descricao" fontSize="15"/>
+				</popup>
+				<!-- FIM: POPUP DE DESCRIÇÃO DE HABILIDADE -->			
+				
+				<flowLayout autoHeight="true" maxControlsPerLine="1" width="400" vertAlign="leading">
+					<!-- INÍCIO: PROFICIÊNCIAS -->
+					<flowPart minWidth="400" maxWidth="400" height="125" align="top" avoidScale="true" frameStyle="frames/panel1/frame.xml">
+						<label height="20" align="top" text="PROFICIÊNCIAS" horzTextAlign="center" vertTextAlign="leading" wordWrap="true" textTrimming="none" fontSize="13"/>
+						<horzLine align="top" strokeColor="#FFFFFF50" strokeSize="1" height="1"/>	
+						<textEditor align="client" field="proficiencias"/>				
+					</flowPart>
+					<!-- FIM: PROFICIÊNCIAS -->
+					
+					<!-- INÍCIO: HABILIDADES -->
+					<flowLayout minWidth="400" maxWidth="400" align="top" horzAlign="leading" vertAlign="leading" autoHeight="true" lineSpacing="10" avoidScale="true"
+					frameStyle="frames/panel1/frame.xml" margins="{left=5, top=5, right=5, bottom=5}">
+						<button text="Nova Habilidade" onClick="self.rclHabilidades:append();" width="150" height="30"/>
+						<flowLineBreak/>
+						<recordList name="rclHabilidades" field="habilidades" templateForm="frmHabilidade" autoHeight="true" width="1200"/>					
+					</flowLayout>
+					<!-- FIM: HABILIDADES -->
+				</flowLayout>
+				
+				<!-- INÍCIO: POPUP DE DESCRIÇÃO DE ARMA -->
+				<popup name="popArma" width="275" height="300" backOpacity="0.4" autoScopeNode="false">			
+					<flowLayout align="top" autoHeight="true" maxControlsPerLine="2" margins="{bottom=4}" horzAlign="center">						
+						<infoField text="TIPO" field="tipoArma" type="text"/>
+						<infoField text="GRUPO" field="grupoArma" type="text"/>
+						<infoField text="CUSTO" field="custoArma" type="text"/>
+						<infoField text="DANO" field="danoArma" type="text"/>
+						<infoField text="FN" field="fnArma" type="text"/>
+						<infoField text="ALCANCE" field="alcanceArma" type="text"/>
+						<weaponAttributeField text="ATRIBUTO" field="atributoArma"/>
+					</flowLayout>					
+		
+					<label align="top" fontSize="12" text="OBSERVAÇÃO" horzTextAlign="center" wordWrap="true" textTrimming="none" autoSize="true"/>
+					<textEditor align="client" field="descricao" fontSize="15"/>
+				</popup>
+				<!-- FIM: POPUP DE DESCRIÇÃO DE ARMA -->
+				
+				<!-- INÍCIO: POPUP DE DESCRIÇÃO DE ARMADURA -->
+				<popup name="popArmadura" width="275" height="300" backOpacity="0.4" autoScopeNode="false">			
+					<flowLayout align="top" autoHeight="true" maxControlsPerLine="2" margins="{bottom=4}" horzAlign="center">						
+						<infoField text="CUSTO" field="custoArmadura" type="text"/>
+						<infoField text="DEFESA" field="defesaArmadura" type="number"/>
+						<infoField text="FN" field="fnArmadura" type="text"/>
+						<infoField text="AGILIDADE MÁXIMA" field="agilidadeMaximaArmadura" type="text"/>
+						<flowLineBreak/>
+						<checkBox align="left" text="Isolante Mágico" field="isolanteMagicoArmadura" height="20" width="130"/>
+						<checkBox align="left" text="Escudo" field="escudoArmadura" height="20" width="130"/>
+					</flowLayout>
+					
+					<label align="top" fontSize="12" text="OBSERVAÇÃO" horzTextAlign="center" wordWrap="true" textTrimming="none" autoSize="true"/>
+					<textEditor align="client" field="descricao" fontSize="15"/>
+					<label align="bottom" fontSize="10.5" text="*A soma da armadura com escudo não pode exceder +4." horzTextAlign="center" wordWrap="true" textTrimming="none" autoSize="true"/>
+					
+					<!-- INÍCIO: RECALCULA DEFESA -->
+					<dataLink field="defesaArmadura">
+						<event name="onChange">							
+							recalcArmadura();
+						</event>
+					</dataLink>
+					<!-- FIM: RECALCULA DEFESA -->
+				</popup>
+				<!-- FIM: POPUP DE DESCRIÇÃO DE ARMADURA -->
+				
+				<!-- INÍCIO: POPUP DE DESCRIÇÃO DE ITEM -->
+				<popup name="popItem" width="275" height="300" backOpacity="0.4" autoScopeNode="false">
+					<label align="top" fontSize="12" text="CUSTO" horzTextAlign="center" wordWrap="true" textTrimming="none" autoSize="true"/>
+					<edit align="top" field="custoItem" fontSize="15" height="25" margins="{bottom=5}"/>
+					<label align="top" fontSize="12" text="DESCRIÇÃO" horzTextAlign="center" wordWrap="true" textTrimming="none" autoSize="true"/>
+					<textEditor align="client" field="descricaoItem" fontSize="15"/>
+				</popup>
+				<!-- FIM: POPUP DE DESCRIÇÃO DE ITEM -->
+				
+				<!-- INÍCIO: EQUIPAMENTOS -->
+				<flowLayout minWidth="400" maxWidth="525" align="top" horzAlign="leading" vertAlign="leading" autoHeight="true" lineSpacing="10" avoidScale="true"
+				frameStyle="frames/panel1/frame.xml" margins="{left=5, top=5, right=5, bottom=5}">
+					<equipmentHeader texto="ARMAS" buttonText="Nova Arma" recordListName="rclArmas"/>
+					<flowLineBreak/>
+					<recordList name="rclArmas" field="armas" templateForm="frmArma" autoHeight="true" width="1300"/>
+					
+					<flowLineBreak/>
+					
+					<equipmentHeader texto="ARMADURAS" buttonText="Nova Armadura" recordListName="rclArmaduras" containCoins="true"/>
+					<flowLineBreak/>
+					<recordList name="rclArmaduras" field="armaduras" templateForm="frmArmadura" autoHeight="true" width="1300" onItemRemoved="recalcArmadura();"/>
+					
+					<equipmentHeader texto="ITENS" buttonText="Novo Item" recordListName="rclItens"/>
+					<flowLineBreak/>
+					<recordList name="rclItens" field="itens" templateForm="frmItem" autoHeight="true" width="1300"/>
+				</flowLayout>
+				<!-- FIM: EQUIPAMENTOS -->
+			</flowLayout>
+		</scrollBox>
+	</image>
+</form>

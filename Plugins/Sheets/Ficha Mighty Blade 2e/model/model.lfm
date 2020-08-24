@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmMB2e" formType="sheetTemplate" dataType="datatype.mb.2.5.gustavo.muller" title="Mighty Blade 2e" align="client" theme="dark">
+	<import file="includes/styles.xml"/>
+	<import file="includes/templates.xml"/>
+	
+	<tabControl align="client" name="pagPrincipal">
+		<tab title="Frente">
+			<import file="frente.xml"/>
+		</tab>
+		<tab title="Características">
+			<import file="caracteristicas.xml"/>
+		</tab>
+		<tab title="Anotações">
+			<textEditor align="client" fontColor="white" fontSize="17" field="anotacoesPersonagem"/>
+		</tab>
+	</tabControl>	
+	
+	<event name="onNodeReady">
+		recalcArmadura();		
+		
+		if sheet.backgroundCustomURL ~= nil then
+			self.imagemFundo.src = sheet.backgroundCustomURL;
+			self.imagemFundoCaracteristicas.src = sheet.backgroundCustomURL;
+		else
+			self.imagemFundo.src = "/model/images/backgrounds/default.jpg";
+			self.imagemFundoCaracteristicas.src = "/model/images/backgrounds/default.jpg";
+		end;
+	</event>
+</form>

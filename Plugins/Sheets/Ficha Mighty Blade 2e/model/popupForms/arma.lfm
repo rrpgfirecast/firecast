@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmArma" height="30" margins="{top=2,bottom=2}">
+	<import file="../includes/styles.xml"/>	
+
+	<flowPart minWidth="400" width="1400" maxWidth="1600" height="30">
+		<!-- INÍCIO: SCRIPT PARA PEGAR O POPUP -->
+		<script> 
+			<![CDATA[
+			local function askForDelete()
+				Dialogs.confirmYesNo("Deseja realmente apagar '" .. (sheet.nomeArma or "<sem nome>").. "'?'",
+									 function (confirmado)
+										if confirmado then
+											NDB.deleteNode(self.sheet);
+										end;
+									 end);
+			end;
+			
+			local function attackWithWeapon()
+				local pop = self:findControlByName("popArma");				
+					
+				if pop ~= nil then
+					pop:setNodeObject(sheet);
+				end;
+			
+				local weaponName = sheet.nomeArma or "";
+				local weaponAttribute = self:findControlByName("popWeaponAttribute").value or "forca";
+				local weaponDamage = self:findControlByName("popInfoFielddanoArma").text or "0";	
+				local rootSheet = NDB.getParent(NDB.getParent(sheet));
+			
+				local minhaMesa = Firecast.getMesaDe(sheet);
+				local chat = minhaMesa.chat;
+				local rolagem;
+				local narration = "";
+				
+				if weaponAttribute == "forca" then
+					rolagem = (2 + (sheet.forcaDadosBonus or 0)) .. "d6";
+					
+					if rootSheet.forca ~= nil and rootSheet.forca ~= 0 then
+						rolagem = rolagem .. " + " .. rootSheet.forca;
+					end;
+				elseif weaponAttribute == "agilidade" then
+					rolagem = (2 + (sheet.agilidadeDadosBonus or 0)) .. "d6";
+					
+					if rootSheet.agilidade ~= nil and rootSheet.agilidade ~= 0 then
+						rolagem = rolagem .. " + " .. rootSheet.agilidade;
+					end;
+				elseif weaponAttribute == "inteligencia" then
+					rolagem = (2 + (sheet.inteligenciaDadosBonus or 0)) .. "d6";
+					
+					if rootSheet.inteligencia ~= nil and rootSheet.inteligencia ~= 0 then
+						rolagem = rolagem .. " + " .. rootSheet.inteligencia;
+					end;
+				elseif weaponAttribute == "vontade" then
+					rolagem = (2 + (sheet.vontadeDadosBonus or 0)) .. "d6";
+					
+					if rootSheet.vontade ~= nil and rootSheet.vontade ~= 0 then
+						rolagem = rolagem .. " + " .. rootSheet.vontade;
+					end;
+				end;				
+				
+				narration = narration .. weaponName;
+				
+				if weaponDamage ~= "0" and weaponDamage ~= "" and weaponName ~= "" then
+					weaponDamage = " | Dano: " .. weaponDamage;
+					narration = narration .. weaponDamage;
+				end;
+				
+				chat:rolarDados(rolagem, narration);
+			end;
+			
+			local function showArmaPopup()
+				local pop = self:findControlByName("popArma");
+				local popControle = self:findControlByName("buttonWeaponInfo");
+					
+				if pop ~= nil then
+					pop:setNodeObject(self.sheet);
+					pop:show("topCenter", popControle);
+				else
+					showMessage("Não foi encontrada a janela de descrição correspondente.");
+				end;
+			end;
+			]]>
+		</script>
+		<!-- FIM: SCRIPT PARA PEGAR O POPUP -->
+	
+		<!-- INÍCIO: NOME, TIPO E ROLAGEM -->
+		<edit align="left" width="290" field="nomeArma" margins="{right=5}" fontSize="18"/>			
+		<button name="buttonWeaponInfo" align="left" text="i" width="30" onClick="showArmaPopup();" margins="{right=5}"/>
+		<button align="left" text="Atacar" onClick="attackWithWeapon();" margins="{right=5}"/>
+		<button align="left" text="Apagar" onClick="askForDelete();" margins="{right=5}"/>
+		<!-- FIM: NOME, TIPO E ROLAGEM -->
+	</flowPart>
+</form>

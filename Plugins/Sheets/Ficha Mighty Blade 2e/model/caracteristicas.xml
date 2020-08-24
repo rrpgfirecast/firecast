@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="formVerso" align="client" theme="dark">
+    <style>#frmmodel1_svg path {color: black; strokeColor: black; mode: stretch;} &#xD;
+#frmmodel1_svg label {fontColor: black; textTrimming: none; wordWrap: false; autoSize: true;}</style>	
+	<style>
+		textEditor {
+			fontSize: 17;
+		}
+	</style>
+	
+	<image name="imagemFundoCaracteristicas" align="client" style="autoFit">
+		<scrollBox align="client">
+			<flowLayout align="top" autoHeight="true" horzAlign="center" margins="{left=20, right=20, top=20, bottom=20}" maxControlsPerLine="3" avoidScale="true">
+				<!-- INÍCIO: HEADER DA FICHA (LOGO, NOME, RAÇA/CLASSE, ETC...) -->
+				<image src="images/logo.png" width="277" height="146" margins="{left=0, right=25, top=0}"/>				
+
+				<flowPart minWidth="450" maxWidth="450" height="200" vertAlign="center" margins="{left=0, right=20, top=0}"
+				frameStyle="frames/panel1/frame.xml">
+					<flowLayout width="600" autoHeight="true" align="client" lineSpacing="10" avoidScale="true">			
+						<baseField texto="IDADE" field="idade"/>
+						<baseField texto="ALTURA" field="altura"/>
+						<baseField texto="PESO" field="peso"/>
+						<baseField texto="OLHOS" field="olhos"/>
+						<baseField texto="PELE" field="pele"/>
+						<baseField texto="CABELO" field="cabelo"/>
+					</flowLayout>
+				</flowPart>
+				<!-- FIM: HEADER DA FICHA -->
+				
+				<!-- INÍCIO: FACÇÃO -->
+				<flowPart minWidth="195" maxWidth="195" height="240" frameStyle="frames/panel1/frame.xml">
+					<edit align="top" field="nomeFaccao" margins="{bottom=5}" fontSize="16" horzTextAlign="center"/>
+					<horzLine align="top" strokeColor="#FFFFFF50" strokeSize="1" height="1"/>
+					
+					<rectangle width="176" height="176" color="#404040" strokeColor="white" strokeSize="1" align="top">
+						<rectangle left="3" top="3" width="170" height="170" color="#323232">
+							<label align="client" horzTextAlign="center" vertTextAlign="center" fontSize="15" text="&lt;Facção&gt;"/>
+							<image field="imagemFaccao" align="client" editable="true" style="autoFit"/>
+						</rectangle>
+					</rectangle>
+				</flowPart>		
+				<flowLineBreak/>
+				<!-- FIM: FACÇÃO -->
+				
+				<!-- INÍCIO: CARACTERÍSTICAS DO PERSONAGEM -->
+				<flowLayout minWidth="200" maxWidth="600" autoHeight="true" maxControlsPerLine="2" frameStyle="frames/panel1/frame.xml">
+					<characteristicField texto="CARACTERÍSTICAS" field="caracteristicas"/>
+					<characteristicField texto="TRAÇOS DE PERSONALIDADE" field="tracosDePersonalidade"/>
+					<characteristicField texto="IDEAIS" field="ideais"/>
+					<characteristicField texto="VÍNCULOS" field="vinculos"/>
+					<characteristicField texto="FRAQUEZAS" field="fraquezas"/>
+					<characteristicField texto="IDIOMAS" field="idiomas"/>
+				</flowLayout>
+				<!-- FIM: CARACTERÍSTICAS DO PERSONAGEM -->
+				
+				<!-- INÍCIO: HISTÓRIA -->
+				<flowPart minWidth="200" maxWidth="500" height="510" align="right" vertAlign="trailing" frameStyle="frames/panel1/frame.xml">
+					<label height="20" align="top" text="HISTÓRIA" horzTextAlign="center" vertTextAlign="leading" wordWrap="true" textTrimming="none" fontSize="13"/>
+					<horzLine align="top" strokeColor="#FFFFFF50" strokeSize="1" height="1"/>	
+					<textEditor align="client" field="historia" width="500" height="400"/>
+					<label align="bottom" text="Ficha feita por: Gustavo Müller (PericlesDaFarofa)" fontSize="12" fontStyle="italic" width="300" margins="{top=5}"/>
+				</flowPart>
+				<!-- FIM: HISTÓRIA -->
+			</flowLayout>
+		</scrollBox>
+	</image>
+</form>

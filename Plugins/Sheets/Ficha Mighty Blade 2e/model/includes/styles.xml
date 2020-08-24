@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<group>
+	<style>
+		checkBox {
+			fontSize: 13;
+		}
+	
+		button, comboBox {
+			fontSize: 15;
+		}
+	
+		edit, label {
+			fontSize: 20;
+		}
+		
+		rectangle.fundo {
+			align: client;
+			color: #454545;
+			xradius: 10;
+			yradius: 10;
+		}
+	</style>
+</group>
