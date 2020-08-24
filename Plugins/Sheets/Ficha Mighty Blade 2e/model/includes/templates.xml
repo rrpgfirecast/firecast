@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<group>
+	<import file="styles.xml"/>	
+
+	<!-- CAMPO BÁSICO DE INFORMAÇÃO (HEADER) -->
+	<template name="baseField">
+		<!-- baseName = uniqueName("baseField"); -->
+		
+		<flowPart height="$(height or 50)" minScaledWidth="$(minScaledWidth or minWidth or 100)" 
+					  minWidth="$(minWidth or 150)" maxWidth="$(maxWidth or 233)" 
+					  maxScaledWidth="$(maxScaledWidth or maxWidth or 233)" avoidScale="true"
+					  name="$(baseName)" margins="{left=0, right=1, top=0}">
+					  
+			<edit name="edt$(baseName)" align="top" field="$(field)" transparent="true" fontSize="17"/>
+			<horzLine name="lin$(baseName)" align="top" strokeColor="#FFFFFF50" strokeSize="1"/>
+			<label name="lab$(baseName)" align="top" text="$(texto)" vertTextAlign="leading" wordWrap="true" textTrimming="none" fontSize="13"/>
+					
+			<script>
+				self.$(baseName):setHeight(self.edt$(baseName):getHeight() + self.lab$(baseName):getHeight() + self.lin$(baseName):getHeight());
+			</script>
+		</flowPart>
+	</template>
+	
+	<!-- 10 CHECKBOXES PARA A EXP DO JOGADOR -->
+	<template name="levelCheckbox">	
+		<!-- for i = 1, 10, 1 do
+			reference = i;-->
+		<checkBox align="left" width="20" field="exp$(reference)"/>
+		<!-- end; -->
+	</template>
+	
+	<!-- CAMPO PARA ATRIBUTO -->
+	<template name="attributeField">
+		<label text="$(texto):" height="30"/>
+		<edit field="$(field)PreCalc" width="150" margins="{left=0, right=5, top=0}"/>
+		<edit field="$(field)" onClick="
+			local minhaMesa = Firecast.getMesaDe(sheet);
+			local chat = minhaMesa.chat;
+			local rolagem = 2 + (sheet.$(field)DadoBonus or 0) .. 'd6';
+			
+			if sheet.$(field) ~= nil and sheet.$(field) ~= 0 then
+				rolagem = rolagem .. ' + ' .. sheet.$(field);
+			end;
+				
+			chat:rolarDados(rolagem, '$(texto)');" width="40" margins="{left=0, right=15, top=0}" fontStyle="bold" horzTextAlign="center"
+			readOnly="true" canFocus="false" cursor="handPoint" fontSize="22"/>
+		
+		<label text="Dados:" width="65" margins="{left=0, right=5, top=0}"/>
+		<edit field="$(field)DadoBonus" width="40" margins="{left=0, right=10, top=0}" horzTextAlign="center" type="number"/>
+		<button text="Rolar" onClick="
+			local minhaMesa = Firecast.getMesaDe(sheet);
+			local chat = minhaMesa.chat;
+			local rolagem = 2 + (sheet.$(field)DadoBonus or 0) .. 'd6';
+			
+			if sheet.$(field) ~= nil and sheet.$(field) ~= 0 then
+				rolagem = rolagem .. ' + ' .. sheet.$(field);
+			end;
+				
+			chat:rolarDados(rolagem, '$(texto)');" height="30"/>
+		
+		<dataLink field="$(field)PreCalc" onChange="
+			local expr = newValue or 0;
+			local getValue = assert(load('return ' .. expr));
+			local result = getValue();
+			
+			if result == 0 then
+				sheet.$(field) = '';
+			else
+				sheet.$(field) = result;
+			end;">
+		</dataLink>
+	</template>
+	
+	<!-- CAMPO PARA RECURSOS (HP E MP) -->
+	<template name="resourceField">
+		<!-- baseName = uniqueName("resourceField"); -->
+	
+		<flowPart height="$(height or 100)" minScaledWidth="$(minScaledWidth or minWidth or 200)" 
+						  minWidth="$(minWidth or 60)" maxWidth="$(maxWidth or 150)" avoidScale="true"
+						  name="$(baseName)" margins="{left=0, right=1, top=0}">
+						  
+				<edit name="edt$(baseName)" field="$(field)" align="top" transparent="true" horzTextAlign="center" fontStyle="bold" fontSize="25" type="number"/>
+				<horzLine name="lin$(baseName)" align="top" strokeColor="#FFFFFF50" strokeSize="1"/>
+				<label name="lab$(baseName)" align="top" text="$(texto)" vertTextAlign="leading" wordWrap="true" textTrimming="none" fontSize="13" fontStyle="bold"/>		
+					
+				<edit name="edt$(baseName)Max" field="$(field)Max" align="top" transparent="true" horzTextAlign="center" fontSize="25" type="number"/>
+				<horzLine name="lin$(baseName)Max" align="top" strokeColor="#FFFFFF50" strokeSize="1"/>
+				<label name="lab$(baseName)Max" align="top" text="$(texto) MÁXIMA" vertTextAlign="leading" wordWrap="true" textTrimming="none" fontSize="13"/>
+		</flowPart>
+	</template>
+	
+	<!-- CAMPO PARA CÁLCULO DE DEFESA -->
+	<template name="defenseField">
+		<!-- baseName = uniqueName("defenseField"); -->
+		
+		<flowPart height="$(height or 50)" minScaledWidth="$(minScaledWidth or minWidth or 100)" 
+					  minWidth="$(minWidth or 25)" maxWidth="$(maxWidth or 100)" 
+					  maxScaledWidth="$(maxScaledWidth or maxWidth or 100)" avoidScale="true"
+					  name="$(baseName)" margins="{left=0, right=1, top=12}">
+					  
+			<edit name="edt$(baseName)" align="top" field="$(field)" transparent="true" fontStyle="$(fontStyle)"
+				horzTextAlign="center" fontSize="25" canFocus="$(changeable)"/>
+			<horzLine name="lin$(baseName)" align="top" strokeColor="#FFFFFF50" strokeSize="1"/>
+			<label name="lab$(baseName)" align="top" text="$(texto)" horzTextAlign="center" vertTextAlign="leading" wordWrap="true" textTrimming="none" fontSize="13" fontStyle="$(fontStyle)"/>
+					
+			<script>
+				self.$(baseName):setHeight(self.edt$(baseName):getHeight() + self.lab$(baseName):getHeight() + self.lin$(baseName):getHeight());
+			</script>
+		</flowPart>
+	</template>
+	
+	<!-- CAMPOS PARA DESCRIÇÃO DE HABILIDADES, ARMAS E ARMADURAS -->
+	<template name="infoField">
+		<flowPart minWidth="30" maxWidth="400" height="40">	
+			<label align="top" fontSize="12" text="$(text)" horzTextAlign="center" wordWrap="true" textTrimming="none" autoSize="true"/>
+			<edit name="popInfoField$(field)" align="client" field="$(field)" horzTextAlign="center" fontSize="15" type="$(type)"/>
+		</flowPart>
+	</template>
+	
+	<!-- CAMPOS PARA DESCRIÇÃO DE HABILIDADES -->
+	<template name="weaponAttributeField">	
+		<flowPart minWidth="30" maxWidth="400" height="40">	
+			<label align="top" class="tituloCampo" fontSize="12" text="$(text)" horzTextAlign="center" wordWrap="true" textTrimming="none" autoSize="true"/>
+			<comboBox name="popWeaponAttribute" align="client" field="$(field)" items="{'Força', 'Agilidade', 'Inteligência', 'Vontade'}"
+				values="{'forca', 'agilidade', 'inteligencia', 'vontade'}" value="forca"/>
+		</flowPart>
+	</template>
+	
+	<!-- CAMPO PARA HEADER DE EQUIPAMENTOS -->
+	<template name="equipmentHeader">
+		<!-- baseName = uniqueName("equipmentHeader"); -->
+		<flowPart minWidth="30" maxWidth="500">	
+			<label name="lab$(baseName)" height="20" align="top" text="$(texto)" horzTextAlign="center" vertTextAlign="leading" wordWrap="true" textTrimming="none" fontSize="13"/>
+			<horzLine name="lin$(baseName)" align="top" strokeColor="#FFFFFF50" strokeSize="1" height="1"/>
+			<button text="$(buttonText)" align="left" onClick="self.$(recordListName):append();" width="150" height="30" margins="{left=0, right=5, top=0}"/>
+			
+			<!-- if containCoins == "true" then -->
+				<image src="images/coin.png" align="right" width="20" height="20" margins="{left=0, right=10, top=0}"/>		
+				<edit field="moedas" align="right" width="100" horzTextAlign="center"/>
+			<!-- end; -->
+		</flowPart>
+	</template>
+	
+	<!-- CAMPO PARA DESCRIÇÕES DE CARACTERÍSTICAS -->
+	<template name="characteristicField">
+		<flowPart minWidth="125" maxWidth="300" height="160" margins="{top=15, right=7}">
+			<label height="20" align="top" text="$(texto)" horzTextAlign="center" vertTextAlign="leading" wordWrap="true" textTrimming="none" fontSize="13"/>
+			<horzLine align="top" strokeColor="#FFFFFF50" strokeSize="1" height="1"/>		
+			<textEditor field="$(field)" align="client"/>
+		</flowPart>
+	</template>
+</group>

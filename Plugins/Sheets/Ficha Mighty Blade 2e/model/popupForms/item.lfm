@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmItem" height="30" margins="{top=2,bottom=2}">
+	<import file="../includes/styles.xml"/>	
+
+	<flowPart minWidth="400" width="1400" maxWidth="1600" height="30">
+		<!-- INÍCIO: SCRIPT PARA PEGAR O POPUP -->
+		<script> 
+			<![CDATA[			
+			local function askForDelete()
+				Dialogs.confirmYesNo("Deseja realmente apagar '" .. (sheet.nomeItem or "<sem nome>").. "'?'",
+									 function (confirmado)
+										if confirmado then
+											NDB.deleteNode(self.sheet);
+										end;
+									 end);
+			end;
+			
+			local function showItemPopup()
+				local pop = self:findControlByName("popItem");
+				local popControle = self:findControlByName("buttonItemInfo");
+					
+				if pop ~= nil then
+					pop:setNodeObject(self.sheet);
+					pop:show('topCenter', popControle);
+				else
+					showMessage("Não foi encontrada a janela de descrição correspondente.");
+				end;
+			end;
+			]]>
+		</script>
+		<!-- FIM: SCRIPT PARA PEGAR O POPUP -->
+	
+		<!-- INÍCIO: NOME, TIPO E ROLAGEM -->
+		<edit align="left" width="375" field="nomeItem" margins="{right=5}" fontSize="18"/>		
+		<button name="buttonItemInfo" align="left" text="i" width="30" onClick="showItemPopup();" margins="{right=5}"/>
+		<button align="left" text="Apagar" width="80" onClick="askForDelete();" margins="{right=5}"/>
+		<!-- FIM: NOME, TIPO E ROLAGEM -->
+	</flowPart>
+</form>
