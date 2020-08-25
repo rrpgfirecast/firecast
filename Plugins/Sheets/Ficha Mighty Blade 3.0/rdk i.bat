@@ -1,2 +1,0 @@
-rdk i
-pause
