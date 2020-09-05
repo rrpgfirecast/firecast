@@ -161,11 +161,11 @@ local function constructNew_frmMB3e()
 		
 		local function recalcDeslocAndCorrida()
 			if self ~= nil and sheet ~= nil then
-				local agilityToCalculateDesloc = (sheet.agilidade or 0) + (sheet.deslocamentoBonus or 0);
-				local agilityToCalculateCorrida = (sheet.agilidade or 0) + (sheet.corridaBonus or 0);
+				local agilityToCalculateDesloc = (sheet.agilidade or 0);
+				local agilityToCalculateCorrida = (sheet.agilidade or 0);
 				
 				if agilityToCalculateDesloc ~= 0 then
-					sheet.deslocamento = math.floor(agilityToCalculateDesloc/2) + 5;
+					sheet.deslocamento = math.floor(agilityToCalculateDesloc/2) + 5 + (sheet.deslocamentoBonus or 0);
 				else
 					sheet.deslocamento = "";
 				end;
@@ -181,7 +181,7 @@ local function constructNew_frmMB3e()
 						multiplicadorCorrida = 2;
 					end;
 					
-					sheet.corrida = (math.floor(agilityToCalculateCorrida/2) + 5) * multiplicadorCorrida;
+					sheet.corrida = ((math.floor(agilityToCalculateCorrida/2) + 5) * multiplicadorCorrida) + (sheet.corridaBonus or 0);
 				else
 					sheet.corrida = "";
 				end;
