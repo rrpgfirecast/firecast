@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="pericia" height="100" width="700">
+<rectangle align="client">	
+<scrollBox align="client">
+<flowLayout align="client" height="500" autoHeight="true" horzAlign="center" lineSpacing="3">	
+		
+		<label text="Nome da Pericia" width="170" height="30" left="30" fontColor="black"/>
+		<checkBox height="30" top="35"/>
+		<edit width="170" left="30" field="nomepericia" height="30" top="35" fontColor="black"/>
+		
+		<label text="Habilidade Chave" left="200" width="100" height="30" fontColor="black"/>
+		<comboBox field="modhabpericia" items="{'FOR', 'DES', 'CON', 'INT', 'SAB', 'CAR'}" values="{'1', '2', '3', '4', '5', '6'}" value="E" width="70" height="30" top="35" left="200" horzTextAlign="center" fontColor="black"/>
+		
+		<label text="Total" left="300" width="100" height="30" fontColor="black"/>
+		<edit field="51" width="70" height="30" left="300" top="35" fontColor="black"/>
+		
+		<label  text="Habilidade" left="400" width="100" height="30" fontColor="black"/>
+		<edit field="habpericia" width="70" height="30" left="400" top="35" fontColor="black"/>
+		
+		<label text="Graduacao" left="500" width="100" height="30" fontColor="black"/>
+		<edit field="52" width="70" height="30" left="500" top="35" fontColor="black"/>
+		
+		<label text="Outros" left="600" width="100" height="30" fontColor="black"/>
+		<edit field="53" width="70" height="30" left="600" top="35" fontColor="black"/>
+		
+		<button text="Apagar" fontSize="10" width="100" top="70" left="210"
+                onClick="ndb.deleteNode(sheet);"/>
+	
+	</flowLayout>
+	</scrollBox>
+	</rectangle>
+</form>

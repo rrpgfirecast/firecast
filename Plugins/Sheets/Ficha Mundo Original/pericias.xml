@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="lista" width="700" height="1000" align="client">
+
+<scrollBox align="client">
+
+	<form name="pericias" width="700" height="1000" align="client">
+	
+		<scrollBox align="client">
+				
+		<button left="20" top="20" height="30" text="Nova Perícia" width="150"
+        onClick="self.rclpericias:append();"/>
+			 
+		<recordList name="rclpericias" field="pericia" templateForm="pericia"
+        top="65" width="700" height="100" autoHeight="true"/>
+				
+			
+		 </scrollBox>
+		
+	</form>
+
+</scrollBox>
+
+</form>
