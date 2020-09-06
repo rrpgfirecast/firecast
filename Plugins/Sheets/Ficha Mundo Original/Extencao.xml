@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="extencao" width="700" height="1000" align="client">
+
+<scrollBox align="client">
+
+	<richEdit align="client" field="extencao" backgroundColor="#333333" defaultFontSize="12" defaultFontColor="white"/>
+
+</scrollBox>
+
+</form>

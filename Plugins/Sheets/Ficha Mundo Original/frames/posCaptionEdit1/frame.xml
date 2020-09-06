@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<frame width="298" height="76" autoScaleY="true">
+	<borders left="8" top="12" bottom="12" right="14" />
+	<draw>
+			<!-- EDIT PLACE  -->
+			<image left="0" top="0" right="80" bottom="76" overflowX="stretch" overflowY="stretch">
+				<anchors left="true" top="true" bottom="true"/>
+				<source url="imagem.png" left="0" right="80" top="0" bottom="76"/>
+			</image>	
+			
+			<!-- PARTE CONTENDO LABEL -->
+			<image left="80" top="0" right="264" bottom="76" overflowX="stretch" overflowY="stretch" zOrder="-1">
+				<anchors left="true" top="true" bottom="true" right="true"/>
+				<source url="imagem.png" left="80" right="264" top="0" bottom="76"/>
+			</image>			
+
+			<!-- CANTO DIREITO -->
+			<image left="264" top="0" right="298" bottom="76" overflowX="stretch" overflowY="stretch">
+				<anchors left="false" top="true" bottom="true" right="true"/>
+				<source url="imagem.png" left="264" right="298" top="0" bottom="76"/>
+			</image>		
+	</draw>
+</frame>

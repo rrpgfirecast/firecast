@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<frame width="160" height="163">
+	<borders left="14" top="10" bottom="6" right="14"/>
+	<draw>
+			<!-- QUINAS -->
+			<!-- quina superior esquerda -->
+			<image left="0" top="0" right="33" bottom="30" overflowX="stretch">
+				<anchors left="true" top="true"/>
+				<source url="upperEsq1.png" left="0" right="33" top="0" bottom="30"/>
+			</image>
+			
+			<!-- quina superior direita -->
+			<image left="127" top="0" right="160" bottom="30" overflowX="stretch" overflowY="stretch">
+				<anchors left="false" right="true" top="true"/>
+				<source url="upperDir1.png" left="0" right="33" top="0" bottom="30"/>
+			</image>			
+			
+			<!-- quina inferior esquerda -->
+			<image left="0" top="136" right="33" bottom="163">
+				<anchors left="true" top="false" bottom="true"/>
+				<source url="lowerEsq2.png" left="0" right="33" top="0" bottom="27"/>
+			</image>
+			
+			<!-- quina inferior direita -->
+			<image left="127" top="136" right="160" bottom="163">
+				<anchors left="false" right="true" top="false" bottom="true"/>
+				<source url="lowerDir2.png" left="0" right="33" top="0" bottom="27"/>
+			</image>			
+			
+			
+			<!-- LINHAS -->
+			<!-- linha horizontal superior -->
+			<image left="32" top="0" right="128" bottom="3" zOrder="-1" overflowX="stretch">
+				<anchors left="true" right="true" top="true"/>
+				<source url="upperLine1.png" left="0" right="33" top="0" bottom="3"/>
+			</image>	
+
+			<!-- linha horizontal inferior -->
+			<image left="32" top="159" right="128" bottom="163" zOrder="-1" overflowX="stretch">
+				<anchors left="true" right="true" top="false" bottom="true"/>
+				<source url="lowerLine2.png" left="0" right="34" top="0" bottom="4"/>
+			</image>	
+
+
+			<!-- linha vertical esquerda -->
+			<image left="0" top="30" right="7" bottom="136" zOrder="-1" overflowY="stretch" overflowX="stretch">
+				<anchors left="true" right="false" bottom="true" top="true"/>
+				<source url="leftLine1.png" left="0" right="7" top="0" bottom="106"/>
+			</image>	
+			
+			<!-- linha vertical direita -->
+			<image left="153" top="30" right="160" bottom="136" zOrder="-1" overflowY="stretch" overflowX="stretch">
+				<anchors left="false" right="true" bottom="true" top="true"/>
+				<source url="rightLine1.png" left="0" right="7" top="0" bottom="106"/>
+			</image>			
+	</draw>
+</frame>

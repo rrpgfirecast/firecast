@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rectangle align="client">
+<scrollBox align="client">
+	<flowLayout align="top" height="500" margins="{left=10, right=10, top=10}" autoHeight="true" horzAlign="center" lineSpacing="2">
+	<!-- Experiência -->
+	<rectangle width="450" height="200" color="white">
+		<edit field="20" width="450" height="30" fontColor="black"/>
+		<label text="Experiência" width="450" height="30" top="30" horzTextAlign="center" fontColor="black"/>
+		
+		<edit field="21" width="450" height="30" top="70" fontColor="black"/>
+		<label text="Teste de Resistência a Magia" width="450" height="30" top="100" horzTextAlign="center" fontColor="black"/>
+		
+		<edit field="22" width="450" height="30" top="140" fontColor="black"/>
+		<label text="Chance de Falha Arcana (%)" width="450" height="30" top="170" horzTextAlign="center" fontColor="black"/>
+	</rectangle>
+	
+	<!--Talentos-->
+	<rectangle width="450" height="200" left="455" color="white">
+		<label text="Talentos" width="450" height="30" horzTextAlign="center" fontColor="black"/>
+		<textEditor field="talentos" width="450" height="165" top="35" fontColor="black"/>
+	</rectangle>
+	
+	<!--Habilidades Especiais-->
+	<rectangle width="450" height="200" left="455" top="205" color="white">
+		<label text="Habilidades Especiais" width="450" height="30" horzTextAlign="center" fontColor="black"/>
+		<textEditor field=" habespeciais" width="450" height="165" top="35" fontColor="black"/>
+	</rectangle>
+	
+	<!--Idiomas-->
+	<rectangle width="450" height="200" left="455" top="410" color="white">
+		<label text="Idiomas" width="450" height="30" horzTextAlign="center" fontColor="black"/>
+		<textEditor field="idiomas" width="450" height="165" top="35" fontColor="black"/>
+	</rectangle>
+	
+	<!--Equipamentos de Proteção-->
+	<rectangle width="450" height="260" top="205" color="white">
+		
+		<!--Armadura-->
+		<layout width="450" height="130">
+			<label text="Armadura" width="210" height="30" horzTextAlign="center" fontColor="black"/>
+			<label text="Tipo" width="80" height="30" left="210" horzTextAlign="center" fontColor="black"/>
+			<label text="Bônus CA" width="80" height="30" left="290" horzTextAlign="center" fontColor="black"/>
+			<label text="Des Max." width="80" height="30" left="370" horzTextAlign="center" fontColor="black"/>
+			
+			<edit field="23" width="210" height="30" top="30" horzTextAlign="center" fontColor="black"/>
+			<edit field="24" width="80" height="30" left="210" top="30" horzTextAlign="center" fontColor="black"/>
+			<edit field="armadura" width="80" height="30" left="290" top="30" horzTextAlign="center" fontColor="black"/>
+			<edit field="25" width="80" height="30" left="370" top="30"  horzTextAlign="center" fontColor="black"/>
+			
+			<label text="Penalidade" width="100" height="30" top="60" horzTextAlign="center" fontColor="black"/>
+			<label text="Chance Falha Mágica" fontSize="8" width="100" height="30" left="100" top="60" horzTextAlign="center" fontColor="black"/>
+			<label text="Deslocamento" fontSize="9" width="75" height="30" top="60" left="200" horzTextAlign="center" fontColor="black"/>
+			<label text="Peso" width="75" height="30" top="60" left="275" horzTextAlign="center" fontColor="black"/>
+			<label text="Propriedades" width="100" height="30" top="60" left="350" horzTextAlign="center" fontColor="black"/>
+			
+			<edit field="26" width="100" height="30" top="90" horzTextAlign="center" fontColor="black"/>
+			<edit field="27" width="100" height="30" left="100" top="90" horzTextAlign="center" fontColor="black"/>
+			<edit field="28" width="75" height="30" top="90" left="200" horzTextAlign="center" fontColor="black"/>
+			<edit field="29" width="75" height="30" top="90" left="275" horzTextAlign="center" fontColor="black"/>
+			<edit field="30" width="100" height="30" top="90" left="350" horzTextAlign="center" fontColor="black"/>
+		</layout>
+		
+		<!--Escudo-->
+		<layout width="450" height="130" top="135">
+			<label text="Escudo" width="210" height="30" horzTextAlign="center" fontColor="black"/>
+			<label text="Bônus" width="80" height="30" left="210" horzTextAlign="center" fontColor="black"/>
+			<label text="Peso" width="80" height="30" left="290" horzTextAlign="center" fontColor="black"/>
+			<label text="Penalidade" width="80" height="30" left="370" horzTextAlign="center" fontColor="black"/>
+			
+			<edit field="31" width="210" height="30" top="30" horzTextAlign="center" fontColor="black"/>
+			<edit field="escudo" width="80" height="30" left="210" top="30" horzTextAlign="center" fontColor="black"/>
+			<edit field="32" width="80" height="30" left="290" top="30" horzTextAlign="center" fontColor="black"/>
+			<edit field="33" width="80" height="30" left="370" top="30"  horzTextAlign="center" fontColor="black"/>
+			
+			<label text="Chance Falha Mágica" width="150" height="30" top="60" horzTextAlign="center" fontColor="black"/>
+			<label text="Propriedades" width="300" height="30" top="60" left="150" horzTextAlign="center" fontColor="black"/>
+			
+			<edit field="34" width="150" height="30" top="90" horzTextAlign="center" fontColor="black"/>
+			<edit field="35" width="300" height="30" top="90" left="150" horzTextAlign="center" fontColor="black"/>
+		</layout>
+	</rectangle>
+	
+	<rectangle width="450" height="150" top="465" color="white">
+		<layout width="300" height="150">
+			<label text="Outros Itens" width="450" height="30" horzTextAlign="center" fontColor="black"/>
+			<textEditor field="outrositens" width="450" height="130" top="30" fontColor="black"/>
+		</layout>
+		
+		<layout width="145" height="150" left="305">
+			<label text="Dinheiro" width="145" height="30" horzTextAlign="center" fontColor="black"/>
+			
+			<label text="PC" width="45" height="30" top="30" fontColor="black"/>
+			<edit field="36" width="100" height="30" top="30" left="50" fontColor="black"/>
+			
+			<label text="PP" width="45" height="30" top="60" fontColor="black"/>
+			<edit field="37" width="100" height="30" top="60" left="50" fontColor="black"/>
+			
+			<label text="PO" width="45" height="30" top="90" fontColor="black"/>
+			<edit field="38" width="100" height="30" top="90" left="50" fontColor="black"/>
+			
+			<label text="PL" width="45" height="30" top="120" fontColor="black"/>
+			<edit field="39" width="100" height="30" top="120" left="50" fontColor="black"/>
+		</layout>
+	</rectangle>
+		
+	
+	</flowLayout>
+</scrollBox>
+</rectangle>
