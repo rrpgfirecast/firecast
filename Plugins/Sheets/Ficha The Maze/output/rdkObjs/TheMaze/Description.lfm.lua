@@ -295,9 +295,9 @@ local function constructNew_frmTemplateDescription()
     obj.layout1 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout1:setParent(obj.scrollBox1);
     obj.layout1:setLeft(0);
-    obj.layout1:setTop(410);
+    obj.layout1:setTop(110);
     obj.layout1:setWidth(375);
-    obj.layout1:setHeight(195);
+    obj.layout1:setHeight(495);
     obj.layout1:setName("layout1");
 
     obj.rectangle2 = GUI.fromHandle(_obj_newObject("rectangle"));
@@ -310,9 +310,9 @@ local function constructNew_frmTemplateDescription()
     obj.label14:setParent(obj.layout1);
     obj.label14:setLeft(5);
     obj.label14:setTop(1);
-    obj.label14:setWidth(100);
+    obj.label14:setWidth(365);
     obj.label14:setHeight(20);
-    obj.label14:setText("PERSONALIDADE");
+    obj.label14:setText("TÉCNICAS & FEITIÇOS");
     obj.label14:setName("label14");
 
     obj.textEditor1 = GUI.fromHandle(_obj_newObject("textEditor"));
@@ -320,7 +320,7 @@ local function constructNew_frmTemplateDescription()
     obj.textEditor1:setLeft(5);
     obj.textEditor1:setTop(25);
     obj.textEditor1:setWidth(365);
-    obj.textEditor1:setHeight(165);
+    obj.textEditor1:setHeight(465);
     obj.textEditor1:setField("personalidade");
     obj.textEditor1:setName("textEditor1");
 

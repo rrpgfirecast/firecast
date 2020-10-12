@@ -15,15 +15,15 @@
 				local nivel = (tonumber(sheet.$(field)_nivel) or 0);
 				local total = 	nivel + (tonumber(sheet.$(field)_outros) or 0);
 				sheet.$(field)_total = total;
-				local txt = "D (d20)";
+				local txt = "D (+0)";
 				if nivel > 43 then
-					txt = "S (d12)";
+					txt = "S (+8)";
 				elseif nivel > 29 then
-					txt = "A (d14)";
+					txt = "A (+6)";
 				elseif nivel > 17 then
-					txt = "B (d16)";
+					txt = "B (+4)";
 				elseif nivel > 7 then
-					txt = "C (d18)";
+					txt = "C (+2)";
 				end;
 				sheet.$(field)_pericia = txt;
 			</event>
@@ -183,7 +183,7 @@
 			<edit left="80" top="5" width="150" height="25" field="nome"/>
 
 			<label left="5" top="30" width="75" height="25" horzTextAlign="center" text="Aptidão"/>
-			<comboBox left="80" top="30" width="150" height="25" field="aptidao" items="{'Alquimista', 'Arcanista', 'Caçador', 'Bestial', 'Cavaleiro', 'Monge', 'Necromante', 'Xamã', 'Atirador', 'Cigano', 'Hoplita', 'Shinobi', 'Executor'}" values="{'1', '2', '3', '13', '4', '5', '6', '7', '8', '9', '10', '11', '12'}"/>
+			<comboBox left="80" top="30" width="150" height="25" field="aptidao" items="{'Alquimista', 'Arcanista', 'Caçador', 'Bestial', 'Cavaleiro', 'Monge', 'Necromante', 'Xamã', 'Atirador', 'Cigano', 'Hoplita', 'Shinobi', 'Executor', 'Invocador', 'Paladino'}" values="{'1', '2', '3', '13', '4', '5', '6', '7', '8', '9', '10', '11', '12', '14', '15'}"/>
 
 			<label left="225" top="5" width="75" height="25" horzTextAlign="center" text="Nível"/>
 			<rectangle left="300" top="5" width="50" height="25" color="black" strokeColor="white" strokeSize="1"/>
@@ -209,7 +209,7 @@
 				</event>
 			</edit>
 
-			<label left="345" top="30" width="100" height="25" horzTextAlign="center" text="Progresso"/>
+			<label left="345" top="30" width="100" height="25" horzTextAlign="center" text="Prestígio"/>
 			<edit left="440" top="30" width="50" height="25" field="progresso" type="number">
 				<event name="onChange">
 					if sheet==nil then return end;
@@ -262,7 +262,7 @@
 			<Atributo top="55" field="agilidade" atr="Agilidade" fontSize="13"/>
 			<Atributo top="80" field="cac" atr="Constituição" fontSize="11"/>
 			<Atributo top="105" field="manuseio" atr="Destreza" fontSize="13"/>
-			<Atributo top="130" field="pontaria" atr="Precisão" fontSize="13"/>
+			<Atributo top="130" field="pontaria" atr="Foco" fontSize="13"/>
 			<Atributo top="155" field="paranormalidade" atr="Reverberação" fontSize="11"/>
 			<Atributo top="180" field="sorte" atr="Sorte" fontSize="13"/>
 
@@ -384,16 +384,9 @@
 
 		<rectangle left="0" top="420" width="285" height="260" color="black" strokeColor="white" strokeSize="1">
 			<label left="0" top="0" width="285" height="20" horzTextAlign="center" text="Beneficios"/>
-			
-			<layout left="0" top="25" width="310" height="25">
-				<label left="0" top="0" width="75" height="25" horzTextAlign="center" text="Bloqueio"/>
 
-				<edit left="75" top="0" width="70" height="25" horzTextAlign="center" field="bloqueioFis"/>
-				<label left="145" top="0" width="35" height="25" horzTextAlign="center" text="Fís."/>
-
-				<edit left="180" top="0" width="70" height="25" horzTextAlign="center" field="bloqueioPar"/>
-				<label left="250" top="0" width="35" height="25" horzTextAlign="center" text="Par."/>
-			</layout>
+			<label left="0" top="25" width="75" height="25" horzTextAlign="center" text="Clã"/>
+			<edit left="75" top="25" width="200" height="25" horzTextAlign="center" field="cla"/>
 
 			<label left="0" top="50" width="75" height="25" horzTextAlign="center" text="Ultimato"/>
 			<edit left="75" top="50" width="200" height="25" horzTextAlign="center" field="ultimato"/>
@@ -401,55 +394,66 @@
 			<label left="0" top="75" width="75" height="25" horzTextAlign="center" text="Sentinela"/>
 			<edit left="75" top="75" width="200" height="25" horzTextAlign="center" field="sentinela"/>
 
-			<label left="0" top="100" width="75" height="25" horzTextAlign="center" text="Clã"/>
-			<edit left="75" top="100" width="200" height="25" horzTextAlign="center" field="cla"/>
-
-			<label left="0" top="125" width="75" height="25" horzTextAlign="center" text="Bençãos &amp;"/>
-			<label left="0" top="150" width="75" height="25" horzTextAlign="center" text="Feitiços"/>
-			<textEditor left="75" top="125" width="200" height="130" field="bencaos_feiticos"/>
+			<label left="0" top="100" width="75" height="25" horzTextAlign="center" text="Bençãos"/>
+			<textEditor left="75" top="100" width="200" height="155" field="bencaos_feiticos"/>
 
 		</rectangle>
 
-		<rectangle left="915" top="0" width="310" height="680" color="black" strokeColor="white" strokeSize="1">
+		<rectangle left="290" top="310" width="620" height="370" color="black" strokeColor="white" strokeSize="1">
 
 			<label align="top" height="20" horzTextAlign="center" text="Tabela de Status de Combate"/>
-			<layout align="top" height="25">
-				<label width="310" horzTextAlign="center" text="Poderes"/>
-				<label left="230" width="37.5" height="20" horzTextAlign="center" text="Pri"/>
-				<label left="267.5" width="37.5" height="20" horzTextAlign="center" text="Sec"/>
+
+			<layout align="left" width="310">
+				<layout align="top" height="20">
+					<label width="310" horzTextAlign="center" text="Poderes"/>
+					<label left="230" width="37.5" height="20" horzTextAlign="center" text="Pri"/>
+					<label left="267.5" width="37.5" height="20" horzTextAlign="center" text="Sec"/>
+				</layout>
+
+				<Poder text="Poder Físico" field="poderFisico" format="" fontSize="13"/>
+				<Poder text="Poder Paranormal" field="poderParanormal" format="" fontSize="11"/>
+				<Poder text="Poder de Projétil" field="poderProjetil" format="" fontSize="11"/>
+
+				<label align="top" height="20" horzTextAlign="center" text="Atribuições"/>
+
+				<Combate text="Reg. de Vida" field="regVida" format="%" fontSize="13"/>
+				<Combate text="Reg. de Fadiga" field="regFadiga" format="%" fontSize="13"/>
+				<ActField text="Act. Padrão" field="actPadrao" fontSize="11"/>
+				<Combate text="Pts. de Instantânea" field="ptsInstantanea" format="" fontSize="9"/>
+				<CombateFactor text="Chance de Crítico" field="critico" format="" fontSize="11" factor="5"/>
+				<Combate text="Amplificação" field="amplificacao" format="%" fontSize="13"/>
+				<Combate text="Negação" field="negacao" format="" fontSize="13"/>
+
+				<label align="top" height="20" horzTextAlign="center" text="Defesa"/>
+
+				<layout align="top" height="25">
+					<label align="left" width="100" horzTextAlign="center" text="Bloq. Físico"/>
+					<edit align="left" width="55" horzTextAlign="center" field="bloqueioFis"/>
+				
+					<label align="left" width="100" horzTextAlign="center" text="Bloq. Paranormal"/>
+					<edit align="left" width="55" horzTextAlign="center" field="bloqueioPar"/>
+				</layout>
 			</layout>
 
-			<Poder text="Poder Físico" field="poderFisico" format="" fontSize="13"/>
-			<Poder text="Poder Paranormal" field="poderParanormal" format="" fontSize="11"/>
-			<Poder text="Poder de Projétil" field="poderProjetil" format="" fontSize="11"/>
+			<layout align="left" width="310">
+				<label align="top" height="20" horzTextAlign="center" text="Redutores"/>
 
-			<label align="top" height="25" horzTextAlign="center" text="Atribuições"/>
+				<Combate text="Físico" field="fisico" format="" fontSize="13"/>
+				<Combate text="Paranormal" field="paranormal" format="" fontSize="13"/>
+				<Combate text="Projétil" field="projetil" format="" fontSize="13"/>
+				<Combate text="Corrosivo" field="corrosivo" format="" fontSize="13"/>
 
-			<Combate text="Reg. de Vida" field="regVida" format="%" fontSize="13"/>
-			<Combate text="Reg. de Fadiga" field="regFadiga" format="%" fontSize="13"/>
-			<ActField text="Act. Padrão" field="actPadrao" fontSize="11"/>
-			<Combate text="Pts. de Instantânea" field="ptsInstantanea" format="" fontSize="9"/>
-			<CombateFactor text="Chance de Crítico" field="critico" format="" fontSize="11" factor="5"/>
-			<Combate text="Amplificação" field="amplificacao" format="%" fontSize="13"/>
-			<Combate text="Negação" field="negacao" format="" fontSize="13"/>
-
-			<label align="top" height="25" horzTextAlign="center" text="Redutores"/>
-
-			<Combate text="Físico" field="fisico" format="" fontSize="13"/>
-			<Combate text="Paranormal" field="paranormal" format="" fontSize="13"/>
-			<Combate text="Projétil" field="projetil" format="" fontSize="13"/>
-			<Combate text="Corrosivo" field="corrosivo" format="" fontSize="13"/>
-
-			<label align="top" height="25" horzTextAlign="center" text="Resistências"/>
-			
-			<Combate text="Impelimento" field="impelimento" format="" fontSize="13"/>
-			<Combate text="Sangramento" field="sangramento" format="" fontSize="13"/>
-			<Combate text="Fragilização" field="fragilizacao" format="" fontSize="13"/>
-			<Combate text="Aturdido" field="atordoamento" format="" fontSize="13"/>
-			<Combate text="Provocação" field="provocacao" format="" fontSize="13"/>
-			<Combate text="Silenciamento" field="silenciado" format="" fontSize="13"/>
-			<Combate text="Envenenamento" field="envenenamento" format="" fontSize="13"/>
-			<Combate text="Incendiado" field="incendiado" format="" fontSize="13"/>
+				<label align="top" height="20" horzTextAlign="center" text="Resistências"/>
+				
+				<Combate text="Impelimento" field="impelimento" format="" fontSize="13"/>
+				<Combate text="Sangramento" field="sangramento" format="" fontSize="13"/>
+				<Combate text="Fragilização" field="fragilizacao" format="" fontSize="13"/>
+				<Combate text="Aturdido" field="atordoamento" format="" fontSize="13"/>
+				<Combate text="Provocação" field="provocacao" format="" fontSize="13"/>
+				<Combate text="Silenciamento" field="silenciado" format="" fontSize="13"/>
+				<Combate text="Envenenamento" field="envenenamento" format="" fontSize="13"/>
+				<Combate text="Incendiado" field="incendiado" format="" fontSize="13"/>
+			</layout>
 
 			<dataLink fields="{'nivel', 'cac_total', 'paranormalidade_total', 'agilidade_total', 'sorte_total', 'manuseio_total', 'pontaria_total', 'cac_nivel', 'paranormalidade_nivel', 'manuseio_nivel'}">
 				<event name="onChange">
@@ -505,7 +509,7 @@
 						sheet.actPadraoBase = 10;
 					end;
 
-					sheet.ptsInstantaneaBase = 6 + math.floor(agilidade/3);
+					sheet.ptsInstantaneaBase = 10 + math.floor(agilidade/3);
 					sheet.criticoBase = 5 + math.floor(sorte/3) * 3;
 					sheet.amplificacaoBase = math.floor(destreza/3)*5;
 					sheet.negacaoBase = math.floor(precisao/3)*5;
@@ -533,14 +537,14 @@
 			</dataLink>
 		</rectangle>
 
-		<rectangle left="290" top="310" width="620" height="370" color="black" strokeColor="white" strokeSize="1">
-			<label left="0" top="5" width="290" height="25" horzTextAlign="trailing" text="Habilidades"/>
-			<label left="560" top="5" width="50" height="25" horzTextAlign="center" text="Estágio" fontSize="11"/>
+		<rectangle left="915" top="0" width="465" height="680" color="black" strokeColor="white" strokeSize="1">
+			<label left="0" top="5" width="210" height="25" horzTextAlign="trailing" text="Habilidades"/>
+			<label left="405" top="5" width="50" height="25" horzTextAlign="center" text="Estágio" fontSize="11"/>
 
-			<rectangle left="305" top="5" width="50" height="25" color="black" strokeColor="white" strokeSize="1"/>
-			<label left="305" top="5" width="50" height="25" horzTextAlign="center" field="habilidadesNivel"/>
-			<rectangle left="355" top="5" width="50" height="25" color="black" strokeColor="white" strokeSize="1"/>
-			<label left="355" top="5" width="50" height="25" horzTextAlign="center" field="habilidadesDisponivel" name="habilidadesDisponivel"/>
+			<rectangle left="215" top="5" width="50" height="25" color="black" strokeColor="white" strokeSize="1"/>
+			<label left="215" top="5" width="50" height="25" horzTextAlign="center" field="habilidadesNivel"/>
+			<rectangle left="270" top="5" width="50" height="25" color="black" strokeColor="white" strokeSize="1"/>
+			<label left="270" top="5" width="50" height="25" horzTextAlign="center" field="habilidadesDisponivel" name="habilidadesDisponivel"/>
 			<dataLink fields="{'habilidadesNivel','habilidadesDisponivel'}">
 				<event name="onChange">
 					if sheet == nil then return end;
@@ -557,7 +561,7 @@
 				</event>
 			</dataLink>
 
-			<recordList left="5" top="30" width="610" height="335" name="rclHabilidades" field="listaDeHabilidades" templateForm="frmAbilities" layout="vertical" minQt="5">
+			<recordList left="5" top="30" width="455" height="645" name="rclHabilidades" field="listaDeHabilidades" templateForm="frmAbilities" layout="vertical" minQt="5">
 				<event name="onEndEnumeration"><![CDATA[
 					if sheet== nil then return end;
 					
