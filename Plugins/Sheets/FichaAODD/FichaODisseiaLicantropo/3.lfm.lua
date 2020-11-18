@@ -7,7 +7,7 @@ require("ndb.lua");
 require("locale.lua");
 local __o_Utils = require("utils.lua");
 
-local function constructNew_frmFichaOdisseia2_04_L_svg()
+local function constructNew_frmFichaOdisseia2_03_L_svg()
     local obj = GUI.fromHandle(_obj_newObject("form"));
     local self = obj;
     local sheet = nil;
@@ -26,7 +26,7 @@ local function constructNew_frmFichaOdisseia2_04_L_svg()
 
     _gui_assignInitialParentForForm(obj.handle);
     obj:beginUpdate();
-    obj:setName("frmFichaOdisseia2_04_L_svg");
+    obj:setName("frmFichaOdisseia2_03_L_svg");
     obj:setAlign("client");
     obj:setTheme("light");
     obj:setMargins({top=1});
@@ -4277,13 +4277,13 @@ local function constructNew_frmFichaOdisseia2_04_L_svg()
     return obj;
 end;
 
-function newfrmFichaOdisseia2_04_L_svg()
+function newfrmFichaOdisseia2_03_L_svg()
     local retObj = nil;
     __o_rrpgObjs.beginObjectsLoading();
 
     __o_Utils.tryFinally(
       function()
-        retObj = constructNew_frmFichaOdisseia2_04_L_svg();
+        retObj = constructNew_frmFichaOdisseia2_03_L_svg();
       end,
       function()
         __o_rrpgObjs.endObjectsLoading();
@@ -4293,17 +4293,17 @@ function newfrmFichaOdisseia2_04_L_svg()
     return retObj;
 end;
 
-local _frmFichaOdisseia2_04_L_svg = {
-    newEditor = newfrmFichaOdisseia2_04_L_svg, 
-    new = newfrmFichaOdisseia2_04_L_svg, 
-    name = "frmFichaOdisseia2_04_L_svg", 
+local _frmFichaOdisseia2_03_L_svg = {
+    newEditor = newfrmFichaOdisseia2_03_L_svg, 
+    new = newfrmFichaOdisseia2_03_L_svg, 
+    name = "frmFichaOdisseia2_03_L_svg", 
     dataType = "", 
     formType = "undefined", 
     formComponentName = "form", 
     title = "", 
     description=""};
 
-frmFichaOdisseia2_04_L_svg = _frmFichaOdisseia2_04_L_svg;
-Firecast.registrarForm(_frmFichaOdisseia2_04_L_svg);
+frmFichaOdisseia2_03_L_svg = _frmFichaOdisseia2_03_L_svg;
+Firecast.registrarForm(_frmFichaOdisseia2_03_L_svg);
 
-return _frmFichaOdisseia2_04_L_svg;
+return _frmFichaOdisseia2_03_L_svg;

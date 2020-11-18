@@ -8676,7 +8676,7 @@ local function constructNew_frmFichaOdisseia2_0()
 
     obj.tab7 = GUI.fromHandle(_obj_newObject("tab"));
     obj.tab7:setParent(obj.tabControl1);
-    obj.tab7:setTitle("Créditos");
+    obj.tab7:setTitle("Rolagens");
     obj.tab7:setName("tab7");
 
     obj.frmFichaOdisseia2_07_svg = GUI.fromHandle(_obj_newObject("form"));
@@ -8708,6 +8708,207 @@ local function constructNew_frmFichaOdisseia2_0()
     obj.image8:setStyle("stretch");
     obj.image8:setOptimize(true);
     obj.image8:setName("image8");
+
+    obj.scrollBox8 = GUI.fromHandle(_obj_newObject("scrollBox"));
+    obj.scrollBox8:setParent(obj.rectangle7);
+    obj.scrollBox8:setLeft(5);
+    obj.scrollBox8:setTop(115);
+    obj.scrollBox8:setWidth(952);
+    obj.scrollBox8:setHeight(505);
+    obj.scrollBox8:setName("scrollBox8");
+
+    obj.layout373 = GUI.fromHandle(_obj_newObject("layout"));
+    obj.layout373:setParent(obj.scrollBox8);
+    obj.layout373:setAlign("top");
+    obj.layout373:setHeight(30);
+    obj.layout373:setMargins({bottom=4});
+    obj.layout373:setName("layout373");
+
+    obj.button1 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button1:setParent(obj.layout373);
+    obj.button1:setText("Rolagem Habilidade");
+    obj.button1:setWidth(190);
+    obj.button1:setAlign("left");
+    obj.button1:setName("button1");
+
+    obj.rclListaDosItens = GUI.fromHandle(_obj_newObject("recordList"));
+    obj.rclListaDosItens:setParent(obj.scrollBox8);
+    obj.rclListaDosItens:setName("rclListaDosItens");
+    obj.rclListaDosItens:setField("campoDosItens");
+    obj.rclListaDosItens:setTemplateForm("frmLR");
+    obj.rclListaDosItens:setLeft(1);
+    obj.rclListaDosItens:setTop(40);
+    obj.rclListaDosItens:setHeight(40);
+    obj.rclListaDosItens:setWidth(950);
+    obj.rclListaDosItens:setAutoHeight(true);
+
+    obj.scrollBox9 = GUI.fromHandle(_obj_newObject("scrollBox"));
+    obj.scrollBox9:setParent(obj.rectangle7);
+    obj.scrollBox9:setLeft(5);
+    obj.scrollBox9:setTop(625);
+    obj.scrollBox9:setWidth(952);
+    obj.scrollBox9:setHeight(600);
+    obj.scrollBox9:setName("scrollBox9");
+
+    obj.layout374 = GUI.fromHandle(_obj_newObject("layout"));
+    obj.layout374:setParent(obj.scrollBox9);
+    obj.layout374:setAlign("top");
+    obj.layout374:setHeight(30);
+    obj.layout374:setMargins({bottom=4});
+    obj.layout374:setName("layout374");
+
+    obj.button2 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button2:setParent(obj.layout374);
+    obj.button2:setText("Rolagem Dano");
+    obj.button2:setWidth(150);
+    obj.button2:setAlign("left");
+    obj.button2:setName("button2");
+
+    obj.rclDano = GUI.fromHandle(_obj_newObject("recordList"));
+    obj.rclDano:setParent(obj.scrollBox9);
+    obj.rclDano:setName("rclDano");
+    obj.rclDano:setField("campoDano");
+    obj.rclDano:setTemplateForm("frmLD");
+    obj.rclDano:setLeft(1);
+    obj.rclDano:setTop(40);
+    obj.rclDano:setHeight(40);
+    obj.rclDano:setWidth(950);
+    obj.rclDano:setAutoHeight(true);
+
+    obj.boxDano = GUI.fromHandle(_obj_newObject("dataScopeBox"));
+    obj.boxDano:setParent(obj.scrollBox9);
+    obj.boxDano:setName("boxDano");
+    obj.boxDano:setVisible(false);
+    obj.boxDano:setAlign("right");
+    obj.boxDano:setWidth(400);
+    obj.boxDano:setMargins({left=4, right=4});
+
+    obj.rectangle8 = GUI.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle8:setParent(obj.boxDano);
+    obj.rectangle8:setAlign("top");
+    obj.rectangle8:setColor("black");
+    obj.rectangle8:setXradius(10);
+    obj.rectangle8:setYradius(10);
+    obj.rectangle8:setHeight(80);
+    obj.rectangle8:setPadding({top=3, left=3, right=3, bottom=3});
+    obj.rectangle8:setName("rectangle8");
+
+    obj.layout375 = GUI.fromHandle(_obj_newObject("layout"));
+    obj.layout375:setParent(obj.rectangle8);
+    obj.layout375:setAlign("top");
+    obj.layout375:setHeight(30);
+    obj.layout375:setMargins({bottom=4});
+    obj.layout375:setName("layout375");
+
+    obj.label1 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label1:setParent(obj.layout375);
+    obj.label1:setAlign("left");
+    obj.label1:setText("Nome do Dano:");
+    obj.label1:setFontColor("white");
+    obj.label1:setAutoSize(true);
+    obj.label1:setName("label1");
+    obj.label1:setTextTrimming("none");
+    obj.label1:setWordWrap(false);
+
+    obj.rectangle9 = GUI.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle9:setParent(obj.layout375);
+    obj.rectangle9:setAlign("client");
+    obj.rectangle9:setMargins({left=5, right=5});
+    obj.rectangle9:setName("rectangle9");
+
+    obj.edit363 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit363:setParent(obj.rectangle9);
+    obj.edit363:setFontSize(18);
+    obj.edit363:setHorzTextAlign("center");
+    lfm_setPropAsString(obj.edit363, "fontStyle",  "bold");
+    obj.edit363:setFontColor("Black");
+    obj.edit363:setAlign("client");
+    obj.edit363:setField("campoDano");
+    obj.edit363:setHitTest(true);
+    obj.edit363:setHint("Título da Rolagem");
+    obj.edit363:setName("edit363");
+
+    obj.layout376 = GUI.fromHandle(_obj_newObject("layout"));
+    obj.layout376:setParent(obj.rectangle8);
+    obj.layout376:setAlign("top");
+    obj.layout376:setHeight(100);
+    obj.layout376:setName("layout376");
+
+    obj.rectangle10 = GUI.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle10:setParent(obj.layout376);
+    obj.rectangle10:setLeft(60);
+    obj.rectangle10:setHeight(30);
+    obj.rectangle10:setWidth(180);
+    obj.rectangle10:setTop(3);
+    obj.rectangle10:setMargins({left=2});
+    obj.rectangle10:setName("rectangle10");
+
+    obj.edit364 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit364:setParent(obj.rectangle10);
+    obj.edit364:setFontSize(16);
+    lfm_setPropAsString(obj.edit364, "fontStyle",  "bold");
+    obj.edit364:setFontColor("Black");
+    obj.edit364:setAlign("client");
+    obj.edit364:setField("RolD");
+    obj.edit364:setHitTest(true);
+    obj.edit364:setHint("Dados de Dano");
+    obj.edit364:setName("edit364");
+
+    obj.rectangle11 = GUI.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle11:setParent(obj.layout376);
+    obj.rectangle11:setLeft(250);
+    obj.rectangle11:setTop(3);
+    obj.rectangle11:setHeight(30);
+    obj.rectangle11:setWidth(100);
+    obj.rectangle11:setMargins({left=2});
+    obj.rectangle11:setName("rectangle11");
+
+    obj.edit365 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit365:setParent(obj.rectangle11);
+    obj.edit365:setFontSize(16);
+    lfm_setPropAsString(obj.edit365, "fontStyle",  "bold");
+    obj.edit365:setFontColor("Black");
+    obj.edit365:setAlign("client");
+    obj.edit365:setField("Mult");
+    obj.edit365:setHorzTextAlign("center");
+    obj.edit365:setHitTest(true);
+    obj.edit365:setHint("Multiplicador (Apenas em rolagens de Dano)");
+    obj.edit365:setName("edit365");
+
+    obj.tab8 = GUI.fromHandle(_obj_newObject("tab"));
+    obj.tab8:setParent(obj.tabControl1);
+    obj.tab8:setTitle("Créditos");
+    obj.tab8:setName("tab8");
+
+    obj.frmFichaOdisseia2_08_svg = GUI.fromHandle(_obj_newObject("form"));
+    obj.frmFichaOdisseia2_08_svg:setParent(obj.tab8);
+    obj.frmFichaOdisseia2_08_svg:setName("frmFichaOdisseia2_08_svg");
+    obj.frmFichaOdisseia2_08_svg:setAlign("client");
+    obj.frmFichaOdisseia2_08_svg:setTheme("light");
+    obj.frmFichaOdisseia2_08_svg:setMargins({top=1});
+
+    obj.scrollBox10 = GUI.fromHandle(_obj_newObject("scrollBox"));
+    obj.scrollBox10:setParent(obj.frmFichaOdisseia2_08_svg);
+    obj.scrollBox10:setAlign("client");
+    obj.scrollBox10:setName("scrollBox10");
+
+    obj.rectangle12 = GUI.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle12:setParent(obj.scrollBox10);
+    obj.rectangle12:setWidth(952);
+    obj.rectangle12:setHeight(1347);
+    obj.rectangle12:setColor("white");
+    obj.rectangle12:setName("rectangle12");
+
+    obj.image9 = GUI.fromHandle(_obj_newObject("image"));
+    obj.image9:setParent(obj.rectangle12);
+    obj.image9:setLeft(0);
+    obj.image9:setTop(0);
+    obj.image9:setWidth(952);
+    obj.image9:setHeight(1347);
+    obj.image9:setSRC("/FichaOdisseia2.0/images/7.png");
+    obj.image9:setStyle("stretch");
+    obj.image9:setOptimize(true);
+    obj.image9:setName("image9");
 
     obj._e_event0 = obj.dataLink1:addEventListener("onChange",
         function (_, field, oldValue, newValue)
@@ -8819,7 +9020,23 @@ local function constructNew_frmFichaOdisseia2_0()
                            end;
         end, obj);
 
+    obj._e_event11 = obj.button1:addEventListener("onClick",
+        function (_)
+            -- Usuário clicou no botão de criar novo item.
+                                            -- Vamos inserir um novo item no nosso recordList                              
+                                            self.rclListaDosItens:append();
+        end, obj);
+
+    obj._e_event12 = obj.button2:addEventListener("onClick",
+        function (_)
+            -- Usuário clicou no botão de criar novo item.
+                                            -- Vamos inserir um novo item no nosso recordList                              
+                                            self.rclDano:append();
+        end, obj);
+
     function obj:_releaseEvents()
+        __o_rrpgObjs.removeEventListenerById(self._e_event12);
+        __o_rrpgObjs.removeEventListenerById(self._e_event11);
         __o_rrpgObjs.removeEventListenerById(self._e_event10);
         __o_rrpgObjs.removeEventListenerById(self._e_event9);
         __o_rrpgObjs.removeEventListenerById(self._e_event8);
@@ -8892,6 +9109,9 @@ local function constructNew_frmFichaOdisseia2_0()
         if self.edit159 ~= nil then self.edit159:destroy(); self.edit159 = nil; end;
         if self.layout210 ~= nil then self.layout210:destroy(); self.layout210 = nil; end;
         if self.layout106 ~= nil then self.layout106:destroy(); self.layout106 = nil; end;
+        if self.label1 ~= nil then self.label1:destroy(); self.label1 = nil; end;
+        if self.image9 ~= nil then self.image9:destroy(); self.image9 = nil; end;
+        if self.boxDano ~= nil then self.boxDano:destroy(); self.boxDano = nil; end;
         if self.edit235 ~= nil then self.edit235:destroy(); self.edit235 = nil; end;
         if self.layout205 ~= nil then self.layout205:destroy(); self.layout205 = nil; end;
         if self.edit347 ~= nil then self.edit347:destroy(); self.edit347 = nil; end;
@@ -8918,6 +9138,7 @@ local function constructNew_frmFichaOdisseia2_0()
         if self.layout362 ~= nil then self.layout362:destroy(); self.layout362 = nil; end;
         if self.edit67 ~= nil then self.edit67:destroy(); self.edit67 = nil; end;
         if self.layout325 ~= nil then self.layout325:destroy(); self.layout325 = nil; end;
+        if self.rectangle12 ~= nil then self.rectangle12:destroy(); self.rectangle12 = nil; end;
         if self.edit176 ~= nil then self.edit176:destroy(); self.edit176 = nil; end;
         if self.layout35 ~= nil then self.layout35:destroy(); self.layout35 = nil; end;
         if self.layout246 ~= nil then self.layout246:destroy(); self.layout246 = nil; end;
@@ -8958,6 +9179,7 @@ local function constructNew_frmFichaOdisseia2_0()
         if self.edit313 ~= nil then self.edit313:destroy(); self.edit313 = nil; end;
         if self.edit54 ~= nil then self.edit54:destroy(); self.edit54 = nil; end;
         if self.dataLink5 ~= nil then self.dataLink5:destroy(); self.dataLink5 = nil; end;
+        if self.rectangle10 ~= nil then self.rectangle10:destroy(); self.rectangle10 = nil; end;
         if self.edit287 ~= nil then self.edit287:destroy(); self.edit287 = nil; end;
         if self.tab2 ~= nil then self.tab2:destroy(); self.tab2 = nil; end;
         if self.layout315 ~= nil then self.layout315:destroy(); self.layout315 = nil; end;
@@ -9001,6 +9223,7 @@ local function constructNew_frmFichaOdisseia2_0()
         if self.layout309 ~= nil then self.layout309:destroy(); self.layout309 = nil; end;
         if self.layout130 ~= nil then self.layout130:destroy(); self.layout130 = nil; end;
         if self.edit166 ~= nil then self.edit166:destroy(); self.edit166 = nil; end;
+        if self.scrollBox10 ~= nil then self.scrollBox10:destroy(); self.scrollBox10 = nil; end;
         if self.edit184 ~= nil then self.edit184:destroy(); self.edit184 = nil; end;
         if self.layout70 ~= nil then self.layout70:destroy(); self.layout70 = nil; end;
         if self.layout303 ~= nil then self.layout303:destroy(); self.layout303 = nil; end;
@@ -9009,6 +9232,7 @@ local function constructNew_frmFichaOdisseia2_0()
         if self.edit17 ~= nil then self.edit17:destroy(); self.edit17 = nil; end;
         if self.edit170 ~= nil then self.edit170:destroy(); self.edit170 = nil; end;
         if self.edit314 ~= nil then self.edit314:destroy(); self.edit314 = nil; end;
+        if self.layout376 ~= nil then self.layout376:destroy(); self.layout376 = nil; end;
         if self.layout181 ~= nil then self.layout181:destroy(); self.layout181 = nil; end;
         if self.layout67 ~= nil then self.layout67:destroy(); self.layout67 = nil; end;
         if self.edit87 ~= nil then self.edit87:destroy(); self.edit87 = nil; end;
@@ -9018,6 +9242,7 @@ local function constructNew_frmFichaOdisseia2_0()
         if self.layout202 ~= nil then self.layout202:destroy(); self.layout202 = nil; end;
         if self.layout220 ~= nil then self.layout220:destroy(); self.layout220 = nil; end;
         if self.edit211 ~= nil then self.edit211:destroy(); self.edit211 = nil; end;
+        if self.layout373 ~= nil then self.layout373:destroy(); self.layout373 = nil; end;
         if self.edit154 ~= nil then self.edit154:destroy(); self.edit154 = nil; end;
         if self.layout170 ~= nil then self.layout170:destroy(); self.layout170 = nil; end;
         if self.edit278 ~= nil then self.edit278:destroy(); self.edit278 = nil; end;
@@ -9042,6 +9267,7 @@ local function constructNew_frmFichaOdisseia2_0()
         if self.edit28 ~= nil then self.edit28:destroy(); self.edit28 = nil; end;
         if self.image7 ~= nil then self.image7:destroy(); self.image7 = nil; end;
         if self.edit71 ~= nil then self.edit71:destroy(); self.edit71 = nil; end;
+        if self.layout374 ~= nil then self.layout374:destroy(); self.layout374 = nil; end;
         if self.layout219 ~= nil then self.layout219:destroy(); self.layout219 = nil; end;
         if self.edit85 ~= nil then self.edit85:destroy(); self.edit85 = nil; end;
         if self.edit201 ~= nil then self.edit201:destroy(); self.edit201 = nil; end;
@@ -9069,6 +9295,7 @@ local function constructNew_frmFichaOdisseia2_0()
         if self.layout217 ~= nil then self.layout217:destroy(); self.layout217 = nil; end;
         if self.tab5 ~= nil then self.tab5:destroy(); self.tab5 = nil; end;
         if self.layout199 ~= nil then self.layout199:destroy(); self.layout199 = nil; end;
+        if self.edit365 ~= nil then self.edit365:destroy(); self.edit365 = nil; end;
         if self.edit68 ~= nil then self.edit68:destroy(); self.edit68 = nil; end;
         if self.edit72 ~= nil then self.edit72:destroy(); self.edit72 = nil; end;
         if self.layout243 ~= nil then self.layout243:destroy(); self.layout243 = nil; end;
@@ -9130,14 +9357,17 @@ local function constructNew_frmFichaOdisseia2_0()
         if self.edit140 ~= nil then self.edit140:destroy(); self.edit140 = nil; end;
         if self.scrollBox1 ~= nil then self.scrollBox1:destroy(); self.scrollBox1 = nil; end;
         if self.layout274 ~= nil then self.layout274:destroy(); self.layout274 = nil; end;
+        if self.layout375 ~= nil then self.layout375:destroy(); self.layout375 = nil; end;
         if self.edit270 ~= nil then self.edit270:destroy(); self.edit270 = nil; end;
         if self.layout213 ~= nil then self.layout213:destroy(); self.layout213 = nil; end;
+        if self.rectangle11 ~= nil then self.rectangle11:destroy(); self.rectangle11 = nil; end;
         if self.layout142 ~= nil then self.layout142:destroy(); self.layout142 = nil; end;
         if self.edit46 ~= nil then self.edit46:destroy(); self.edit46 = nil; end;
         if self.edit276 ~= nil then self.edit276:destroy(); self.edit276 = nil; end;
         if self.layout308 ~= nil then self.layout308:destroy(); self.layout308 = nil; end;
         if self.layout269 ~= nil then self.layout269:destroy(); self.layout269 = nil; end;
         if self.edit288 ~= nil then self.edit288:destroy(); self.edit288 = nil; end;
+        if self.scrollBox8 ~= nil then self.scrollBox8:destroy(); self.scrollBox8 = nil; end;
         if self.layout149 ~= nil then self.layout149:destroy(); self.layout149 = nil; end;
         if self.layout80 ~= nil then self.layout80:destroy(); self.layout80 = nil; end;
         if self.edit207 ~= nil then self.edit207:destroy(); self.edit207 = nil; end;
@@ -9161,6 +9391,7 @@ local function constructNew_frmFichaOdisseia2_0()
         if self.image6 ~= nil then self.image6:destroy(); self.image6 = nil; end;
         if self.layout297 ~= nil then self.layout297:destroy(); self.layout297 = nil; end;
         if self.layout122 ~= nil then self.layout122:destroy(); self.layout122 = nil; end;
+        if self.rclListaDosItens ~= nil then self.rclListaDosItens:destroy(); self.rclListaDosItens = nil; end;
         if self.edit340 ~= nil then self.edit340:destroy(); self.edit340 = nil; end;
         if self.layout77 ~= nil then self.layout77:destroy(); self.layout77 = nil; end;
         if self.edit277 ~= nil then self.edit277:destroy(); self.edit277 = nil; end;
@@ -9262,6 +9493,7 @@ local function constructNew_frmFichaOdisseia2_0()
         if self.edit183 ~= nil then self.edit183:destroy(); self.edit183 = nil; end;
         if self.dataLink9 ~= nil then self.dataLink9:destroy(); self.dataLink9 = nil; end;
         if self.layout369 ~= nil then self.layout369:destroy(); self.layout369 = nil; end;
+        if self.scrollBox9 ~= nil then self.scrollBox9:destroy(); self.scrollBox9 = nil; end;
         if self.layout283 ~= nil then self.layout283:destroy(); self.layout283 = nil; end;
         if self.edit245 ~= nil then self.edit245:destroy(); self.edit245 = nil; end;
         if self.layout276 ~= nil then self.layout276:destroy(); self.layout276 = nil; end;
@@ -9298,6 +9530,7 @@ local function constructNew_frmFichaOdisseia2_0()
         if self.edit295 ~= nil then self.edit295:destroy(); self.edit295 = nil; end;
         if self.layout137 ~= nil then self.layout137:destroy(); self.layout137 = nil; end;
         if self.layout185 ~= nil then self.layout185:destroy(); self.layout185 = nil; end;
+        if self.rclDano ~= nil then self.rclDano:destroy(); self.rclDano = nil; end;
         if self.layout307 ~= nil then self.layout307:destroy(); self.layout307 = nil; end;
         if self.dataLink6 ~= nil then self.dataLink6:destroy(); self.dataLink6 = nil; end;
         if self.tabControl1 ~= nil then self.tabControl1:destroy(); self.tabControl1 = nil; end;
@@ -9337,6 +9570,7 @@ local function constructNew_frmFichaOdisseia2_0()
         if self.layout154 ~= nil then self.layout154:destroy(); self.layout154 = nil; end;
         if self.layout261 ~= nil then self.layout261:destroy(); self.layout261 = nil; end;
         if self.layout69 ~= nil then self.layout69:destroy(); self.layout69 = nil; end;
+        if self.rectangle9 ~= nil then self.rectangle9:destroy(); self.rectangle9 = nil; end;
         if self.edit121 ~= nil then self.edit121:destroy(); self.edit121 = nil; end;
         if self.edit263 ~= nil then self.edit263:destroy(); self.edit263 = nil; end;
         if self.edit199 ~= nil then self.edit199:destroy(); self.edit199 = nil; end;
@@ -9405,6 +9639,7 @@ local function constructNew_frmFichaOdisseia2_0()
         if self.layout31 ~= nil then self.layout31:destroy(); self.layout31 = nil; end;
         if self.layout226 ~= nil then self.layout226:destroy(); self.layout226 = nil; end;
         if self.edit269 ~= nil then self.edit269:destroy(); self.edit269 = nil; end;
+        if self.edit363 ~= nil then self.edit363:destroy(); self.edit363 = nil; end;
         if self.layout120 ~= nil then self.layout120:destroy(); self.layout120 = nil; end;
         if self.layout2 ~= nil then self.layout2:destroy(); self.layout2 = nil; end;
         if self.edit155 ~= nil then self.edit155:destroy(); self.edit155 = nil; end;
@@ -9454,6 +9689,7 @@ local function constructNew_frmFichaOdisseia2_0()
         if self.layout190 ~= nil then self.layout190:destroy(); self.layout190 = nil; end;
         if self.layout41 ~= nil then self.layout41:destroy(); self.layout41 = nil; end;
         if self.edit243 ~= nil then self.edit243:destroy(); self.edit243 = nil; end;
+        if self.button2 ~= nil then self.button2:destroy(); self.button2 = nil; end;
         if self.layout346 ~= nil then self.layout346:destroy(); self.layout346 = nil; end;
         if self.edit153 ~= nil then self.edit153:destroy(); self.edit153 = nil; end;
         if self.layout160 ~= nil then self.layout160:destroy(); self.layout160 = nil; end;
@@ -9461,11 +9697,13 @@ local function constructNew_frmFichaOdisseia2_0()
         if self.edit47 ~= nil then self.edit47:destroy(); self.edit47 = nil; end;
         if self.layout336 ~= nil then self.layout336:destroy(); self.layout336 = nil; end;
         if self.edit149 ~= nil then self.edit149:destroy(); self.edit149 = nil; end;
+        if self.button1 ~= nil then self.button1:destroy(); self.button1 = nil; end;
         if self.edit160 ~= nil then self.edit160:destroy(); self.edit160 = nil; end;
         if self.edit26 ~= nil then self.edit26:destroy(); self.edit26 = nil; end;
         if self.edit112 ~= nil then self.edit112:destroy(); self.edit112 = nil; end;
         if self.layout250 ~= nil then self.layout250:destroy(); self.layout250 = nil; end;
         if self.edit34 ~= nil then self.edit34:destroy(); self.edit34 = nil; end;
+        if self.tab8 ~= nil then self.tab8:destroy(); self.tab8 = nil; end;
         if self.edit19 ~= nil then self.edit19:destroy(); self.edit19 = nil; end;
         if self.layout54 ~= nil then self.layout54:destroy(); self.layout54 = nil; end;
         if self.edit210 ~= nil then self.edit210:destroy(); self.edit210 = nil; end;
@@ -9570,6 +9808,7 @@ local function constructNew_frmFichaOdisseia2_0()
         if self.layout45 ~= nil then self.layout45:destroy(); self.layout45 = nil; end;
         if self.edit356 ~= nil then self.edit356:destroy(); self.edit356 = nil; end;
         if self.edit344 ~= nil then self.edit344:destroy(); self.edit344 = nil; end;
+        if self.frmFichaOdisseia2_08_svg ~= nil then self.frmFichaOdisseia2_08_svg:destroy(); self.frmFichaOdisseia2_08_svg = nil; end;
         if self.layout150 ~= nil then self.layout150:destroy(); self.layout150 = nil; end;
         if self.layout175 ~= nil then self.layout175:destroy(); self.layout175 = nil; end;
         if self.layout46 ~= nil then self.layout46:destroy(); self.layout46 = nil; end;
@@ -9581,10 +9820,12 @@ local function constructNew_frmFichaOdisseia2_0()
         if self.layout350 ~= nil then self.layout350:destroy(); self.layout350 = nil; end;
         if self.layout342 ~= nil then self.layout342:destroy(); self.layout342 = nil; end;
         if self.edit148 ~= nil then self.edit148:destroy(); self.edit148 = nil; end;
+        if self.edit364 ~= nil then self.edit364:destroy(); self.edit364 = nil; end;
         if self.layout28 ~= nil then self.layout28:destroy(); self.layout28 = nil; end;
         if self.edit232 ~= nil then self.edit232:destroy(); self.edit232 = nil; end;
         if self.layout19 ~= nil then self.layout19:destroy(); self.layout19 = nil; end;
         if self.edit306 ~= nil then self.edit306:destroy(); self.edit306 = nil; end;
+        if self.rectangle8 ~= nil then self.rectangle8:destroy(); self.rectangle8 = nil; end;
         if self.edit217 ~= nil then self.edit217:destroy(); self.edit217 = nil; end;
         if self.edit234 ~= nil then self.edit234:destroy(); self.edit234 = nil; end;
         if self.edit272 ~= nil then self.edit272:destroy(); self.edit272 = nil; end;

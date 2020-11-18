@@ -19,8 +19,11 @@
         <tab title="Background">
             <import file="6.lfm"/>
         </tab>
-        <tab title="Créditos">
+		<tab title="Rolagens">
             <import file="7.lfm"/>
+        </tab>
+        <tab title="Créditos">
+            <import file="8.lfm"/>
         </tab>
     </tabControl>
 </form>

@@ -1,10 +1,98 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<form name="frmFichaOdisseia2_07_L_svg" align="client" theme="light" margins="{top=1}">
+<form name="frmFichaOdisseia2_04_L_svg" align="client" theme="light" margins="{top=1}">
     <style>#frmFichaOdisseia2_07_svg path {color: black; strokeColor: black; mode: stretch;} &#xD;
 #frmFichaOdisseia2_07_svg label {fontColor: black; textTrimming: none; wordWrap: false; autoSize: true;}</style>
-    <scrollBox align="client">
+    
+	<scrollBox align="client">
         <rectangle width="952" height="1347" color="white">&#xD;
             <image left="0" top="0" width="952" height="1347" src="FichaOdisseia2.0/images/7.png" style="stretch" optimize="true" compilerOrder="0"/>&#xD;
-        </rectangle>
+
+			<!-- Lista padrão -->
+
+		<scrollBox left="5" top="115" width="952" height="505">
+		
+			<!-- Botão de inserir nova rolagem padrão -->
+			
+        <layout align="top" height="30" margins="{bottom=4}">
+                <button text="Rolagem Habilidade" width="190" align="left">
+                        <event name="onClick">
+                                -- Usuário clicou no botão de criar novo item.
+                                -- Vamos inserir um novo item no nosso recordList                              
+                                self.rclListaDosItens:append();
+                        </event>
+                </button>
+        </layout>  
+
+             						
+
+        <!-- recordList, representando a lista de rolagens padrão -->
+		
+        <recordList name="rclListaDosItens" field="campoDosItens" templateForm="frmLRL"
+                                left="1" top="40" height="40" width="950" autoHeight="true">                              
+        </recordList>       
+ 
+	
+	</scrollBox>
+	
+					<!-- Lista Dano -->
+	
+			<scrollBox left="5" top="625" width="952" height="600">
+			
+			<!-- Botão de inserir nova rolagem de Dano -->
+			
+        <layout align="top" height="30" margins="{bottom=4}">
+                <button text="Rolagem Dano" width="150" align="left">
+                        <event name="onClick">
+                                -- Usuário clicou no botão de criar novo item.
+                                -- Vamos inserir um novo item no nosso recordList                              
+                                self.rclDano:append();
+                        </event>
+                </button>
+        </layout> 
+		
+				        <!-- recordList, DANO -->
+		        <recordList name="rclDano" field="campoDano" templateForm="frmLDL"
+                                left="1" top="40" height="40" width="950" autoHeight="true">
+				</recordList>
+		
+        <!-- dataScopeBox DANO --> 	
+
+        <dataScopeBox name="boxDano" visible="false" align="right" 
+                     width="400" margins="{left=4, right=4}">
+					 
+ 				<!-- Faça um layout "bonito" para sua caixa de detalhes =). Utilize a propriedade "field" nas tags aqui dentro	 -->		 
+ 
+				<rectangle align="top" color="black" xradius="10" yradius="10"
+									 height="80" padding="{top=3, left=3, right=3, bottom=3}">
+ 
+ 						<layout align="top" height="30" margins="{bottom=4}">
+								<label align="left" text="Nome do Dano:" fontColor="white" autoSize="true"/>
+								
+						<rectangle align="client" margins="{left=5, right=5}">
+						<edit fontSize="18" horzTextAlign="center" fontStyle="bold" fontColor="Black" align="client" field="campoDano" hitTest="true" hint="Título da Rolagem"/>
+						</rectangle>
+						
+						</layout>						 
+ 
+						<layout align="top" height="100">												 
+ 
+							<!-- Layout dados normais -->
+ 
+								<rectangle left="60" height="30" width="180" top="3" margins="{left=2}">
+										<edit fontSize="16" fontStyle="bold" fontColor="Black" align="client" field="RolD" hitTest="true" hint="Dados de Dano"/>
+								</rectangle>
+								
+ 								<rectangle left="250" top="3" height="30" width="100" margins="{left=2}">
+										<edit fontSize="16" fontStyle="bold" fontColor="Black" align="client" field="Mult" horzTextAlign="center" hitTest="true" hint="Multiplicador (Apenas em rolagens de Dano)"/>										
+								</rectangle>
+								
+						</layout>
+				</rectangle>
+
+		</dataScopeBox> 	
+			
+			</scrollBox>
+	
+	</rectangle>	
     </scrollBox>
 </form>
