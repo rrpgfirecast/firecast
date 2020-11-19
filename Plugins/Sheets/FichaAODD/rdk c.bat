@@ -1,2 +1,0 @@
-rdk c
-pause

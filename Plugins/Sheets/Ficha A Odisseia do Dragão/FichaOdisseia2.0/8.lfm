@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmFichaOdisseia2_08_svg" align="client" theme="light" margins="{top=1}">
+    <style>#frmFichaOdisseia2_08_svg path {color: black; strokeColor: black; mode: stretch;} &#xD;
+#frmFichaOdisseia2_08_svg label {fontColor: black; textTrimming: none; wordWrap: false; autoSize: true;}</style>
+    <scrollBox align="client">
+        <rectangle width="952" height="1347" color="white">&#xD;
+            <image left="0" top="0" width="952" height="1347" src="images/8.png" style="stretch" optimize="true" compilerOrder="0"/>&#xD;
+        </rectangle>
+    </scrollBox>
+</form>

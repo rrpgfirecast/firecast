@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmLR" height="30">    
+
+<layout align="client" margins="{bottom=2}">
+
+				<!-- Botão para apagar o item da lista -->
+                <button left="4" width="32" text="X" onClick="NDB.deleteNode(sheet);"/>
+
+				<!-- O título do item que aparece na lista -->
+						<rectangle height="30" width="865" left="34" color="#FF6347">	
+								
+								<rectangle left="5" height="30" width="50" color="#00000000">
+								 <label autoSize="true" wordWrap="false" horzTextAlign="center" fontSize="16" fontStyle="bold" fontColor="Black" text="Nome:"/>
+								</rectangle>
+								
+								<rectangle left="60" height="30" width="230">
+										<edit fontSize="18" horzTextAlign="center" fontStyle="bold" align="client" field="campoTitulo" hitTest="true" hint="Título da Rolagem"/>
+								</rectangle>
+								
+								<rectangle left="300" height="30" width="100" color="#00000000">
+								 <label autoSize="true" wordWrap="false" horzTextAlign="center" fontSize="16" fontStyle="bold" fontColor="Black" text="Dado Principal:"/>
+								</rectangle>
+ 
+								<rectangle left="420" height="30" width="180">
+										<edit fontSize="18" fontStyle="bold" align="client" horzTextAlign="center" field="RolP" hitTest="true" hint="Rolagem Principal"/>
+								</rectangle>
+								
+								<rectangle left="605" height="30" color="#00000000">
+										<label autoSize="true" wordWrap="false" horzTextAlign="center" fontSize="16" fontStyle="bold" fontColor="Black" text="Dado Secundário:"/>
+								</rectangle>
+								
+ 								<rectangle left="745" height="30" width="120">
+										<edit fontSize="18" fontStyle="bold" align="client" field="RolS" horzTextAlign="center" hitTest="true" hint="Rolagem Secundária (Apenas em rolagens de Habilidades)"/>										
+								</rectangle>
+								
+						</rectangle>
+				
+				<!-- Botão para a macro -->
+				
+				<button left="905" width="32" text="R">	
+				
+				<event name="onClick">
+
+			            local rolagem = Firecast.interpretarRolagem(sheet.RolP); 
+					    local rolagem2 = Firecast.interpretarRolagem(sheet.RolS); 
+						local nomeStr = sheet.campoTitulo
+
+                        if not rolagem.possuiAlgumDado then
+                                -- se o usuario não tiver preenchido qual dado rolar,
+                                -- vamos adicionar um 1d20 + na "fórmula da rolagem"
+                                rolagem = Firecast.interpretarRolagem("1d12"):concatenar(rolagem);
+                        end; 
+						
+                       local mesaDoPersonagem = Firecast.getMesaDe(sheet);
+
+                       if mesaDoPersonagem ~= nil then
+                               mesaDoPersonagem.chat:rolarDados(rolagem, nomeStr .. " - Rolagem Principal");
+                       end;
+					   
+					    
+					   if rolagem2.possuiAlgumDado then
+					   setTimeout(function () 
+							mesaDoPersonagem.chat:rolarDados(rolagem2, nomeStr .. " - Rolagem Secundária");
+							
+					   end, 1000)
+					   end;
+				
+				</event>		   
+			
+			</button>
+</layout>	
+</form>
