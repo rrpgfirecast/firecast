@@ -9,5 +9,8 @@
     <author>AlvagorH e Hellzen</author>
     <site>http://www.yourwebsite.com</site>
     <contact>https://www.facebook.com/sean.torres.5</contact>
-    
+    <dataTypes>
+        <dataType title="A Odisseia do Dragão - Ficha de Personagem" name="frmFichaOdisseia2_0" lfmFile="FichaOdisseia2.0/FichaOdisseia2.0.lfm">br.com.rrpg.AODD_S3</dataType>
+		<dataType title="A Odisseia do Dragão - Ficha de Licantropo" name="frmFichaOdisseia2_0_Licantropo" lfmFile="FichaODisseiaLicantropo/FichaOdisseia2.0_Licantropo.lfm">br.com.RRPG.AODDL_S3</dataType>
+    </dataTypes>
 </module>
