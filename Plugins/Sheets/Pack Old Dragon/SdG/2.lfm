@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmSdG2_svg" align="client" theme="light" margins="{top=1}">
+    <style>#frmSdG2_svg path {color: black; strokeColor: black; mode: stretch;} &#xD;
+#frmSdG2_svg label {fontColor: black; textTrimming: none; wordWrap: false; autoSize: true;}</style>
+    <scrollBox align="client">
+        <rectangle width="1259" height="1786" color="white">&#xD;
+            <image left="0" top="0" width="1259" height="1786" src="images/2.png" style="stretch" optimize="true" compilerOrder="0"/>&#xD;
+            <layout left="809" top="248" width="63" height="76" compilerOrder="27">
+                <edit transparent="true" fontSize="36" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="63" height="77" field="_3c" compilerOrder="28"/>
+            </layout>&#xD;
+            <layout left="922" top="250" width="68" height="68" compilerOrder="29">
+                <edit transparent="true" fontSize="36" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="68" height="69" field="_4c" compilerOrder="30"/>
+            </layout>&#xD;
+            <layout left="578" top="252" width="68" height="69" compilerOrder="23">
+                <edit transparent="true" fontSize="36" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="68" height="70" field="_1c" compilerOrder="24"/>
+            </layout>&#xD;
+            <layout left="693" top="254" width="63" height="66" compilerOrder="25">
+                <edit transparent="true" fontSize="36" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="63" height="67" field="_2c" compilerOrder="26"/>
+            </layout>&#xD;
+            <layout left="348" top="285" width="98" height="64" compilerOrder="1">
+                <edit transparent="true" fontSize="36" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="98" height="65" field="Marcha" compilerOrder="2"/>
+            </layout>&#xD;
+            <layout left="1034" top="299" width="65" height="66" compilerOrder="39">
+                <edit transparent="true" fontSize="36" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="65" height="67" field="_9c" compilerOrder="40"/>
+            </layout>&#xD;
+            <layout left="805" top="349" width="68" height="70" compilerOrder="35">
+                <edit transparent="true" fontSize="36" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="68" height="71" field="_7c" compilerOrder="36"/>
+            </layout>&#xD;
+            <layout left="922" top="351" width="65" height="70" compilerOrder="37">
+                <edit transparent="true" fontSize="36" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="65" height="71" field="_8c" compilerOrder="38"/>
+            </layout>&#xD;
+            <layout left="578" top="352" width="68" height="69" compilerOrder="31">
+                <edit transparent="true" fontSize="36" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="68" height="70" field="_5c" compilerOrder="32"/>
+            </layout>&#xD;
+            <layout left="690" top="352" width="69" height="68" compilerOrder="33">
+                <edit transparent="true" fontSize="36" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="69" height="69" field="_6c" compilerOrder="34"/>
+            </layout>&#xD;
+            <layout left="348" top="359" width="97" height="64" compilerOrder="3">
+                <edit transparent="true" fontSize="36" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="97" height="65" field="Armadilhas" compilerOrder="4"/>
+            </layout>&#xD;
+            <layout left="349" top="430" width="96" height="66" compilerOrder="5">
+                <edit transparent="true" fontSize="36" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="96" height="67" field="Escalar" compilerOrder="6"/>
+            </layout>&#xD;
+            <layout left="476" top="430" width="694" height="1022" compilerOrder="41">
+                <textEditor transparent="true" fontSize="25" fontColor="#000000" left="0" top="0" width="694" height="1023" field="Magias" compilerOrder="42"/>
+            </layout>&#xD;
+            <layout left="349" top="507" width="98" height="61" compilerOrder="7">
+                <edit transparent="true" fontSize="36" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="98" height="62" field="Silencio" compilerOrder="8"/>
+            </layout>&#xD;
+            <layout left="348" top="579" width="98" height="62" compilerOrder="9">
+                <edit transparent="true" fontSize="36" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="98" height="63" field="Sombras" compilerOrder="10"/>
+            </layout>&#xD;
+            <layout left="349" top="651" width="97" height="64" compilerOrder="11">
+                <edit transparent="true" fontSize="36" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="97" height="65" field="Pungar" compilerOrder="12"/>
+            </layout>&#xD;
+            <layout left="349" top="726" width="97" height="65" compilerOrder="13">
+                <edit transparent="true" fontSize="36" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="97" height="66" field="Ouvir" compilerOrder="14"/>
+            </layout>&#xD;
+            <layout left="373" top="799" width="74" height="64" compilerOrder="15">
+                <edit transparent="true" fontSize="36" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="74" height="65" field="Costas" compilerOrder="16"/>
+            </layout>&#xD;
+            <layout left="90" top="995" width="355" height="136" compilerOrder="17">
+                <textEditor transparent="true" fontSize="25" fontColor="#000000" left="0" top="0" width="355" height="137" field="Esp5" compilerOrder="18"/>
+            </layout>&#xD;
+            <layout left="92" top="1160" width="355" height="135" compilerOrder="19">
+                <textEditor transparent="true" fontSize="25" fontColor="#000000" left="0" top="0" width="355" height="136" field="Esp6" compilerOrder="20"/>
+            </layout>&#xD;
+            <layout left="91" top="1340" width="355" height="135" compilerOrder="21">
+                <textEditor transparent="true" fontSize="25" fontColor="#000000" left="0" top="0" width="355" height="136" field="Esp7" compilerOrder="22"/>
+            </layout>&#xD;
+            <layout left="859" top="1527" width="175" height="31" compilerOrder="45">
+                <edit transparent="true" fontSize="21.1" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="175" height="32" field="Tropas" compilerOrder="46"/>
+            </layout>&#xD;
+            <layout left="520" top="1544" width="74" height="82" compilerOrder="43">
+                <edit transparent="true" fontSize="36" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="74" height="83" field="Liderança" compilerOrder="44"/>
+            </layout>&#xD;
+            <layout left="714" top="1564" width="330" height="27" compilerOrder="47">
+                <edit transparent="true" fontSize="18" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="330" height="28" field="Moral" compilerOrder="48"/>
+            </layout>&#xD;
+            <layout left="754" top="1596" width="292" height="29" compilerOrder="49">
+                <edit transparent="true" fontSize="19.5" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="292" height="30" field="Sacerdotes" compilerOrder="50"/>
+            </layout>&#xD;
+            <layout left="549" top="1631" width="489" height="24" compilerOrder="51">
+                <edit transparent="true" fontSize="15.8" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="489" height="25" field="Canção" compilerOrder="52"/>
+            </layout>&#xD;
+        </rectangle>
+    </scrollBox>
+</form>

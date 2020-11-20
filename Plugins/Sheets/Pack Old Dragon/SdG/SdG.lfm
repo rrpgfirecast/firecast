@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmSdG" formType="sheetTemplate" dataType="br.com.RRPG.SdG_S3" title="Senhores da Guerra - Ficha de Personagem" align="client" theme="light">
+    <tabControl align="client">
+        <tab title="Atributos e Ataques">
+            <import file="1.lfm"/>
+        </tab>
+        <tab title="Talentos e Magias">
+            <import file="2.lfm"/>
+        </tab>
+        <tab title="Background">
+            <import file="3.lfm"/>
+        </tab>
+    </tabControl>
+</form>
