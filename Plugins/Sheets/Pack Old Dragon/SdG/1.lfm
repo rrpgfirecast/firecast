@@ -1,0 +1,327 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmSdG1_svg" align="client" theme="light" margins="{top=1}">
+    <style>#frmSdG1_svg path {color: black; strokeColor: black; mode: stretch;} &#xD;
+#frmSdG1_svg label {fontColor: black; textTrimming: none; wordWrap: false; autoSize: true;}</style>
+    <scrollBox align="client">
+        <rectangle width="1259" height="1786" color="white">&#xD;
+            <image left="0" top="0" width="1259" height="1786" src="images/1.png" style="stretch" optimize="true" compilerOrder="0"/>&#xD;
+            <layout left="104" top="122" width="633" height="72" compilerOrder="1">
+                <edit transparent="true" fontSize="36" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="633" height="73" field="Nome" compilerOrder="2"/>
+            </layout>&#xD;
+            <layout left="84" top="227" width="381" height="43" compilerOrder="3">
+                <edit transparent="true" fontSize="30.1" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="381" height="44" field="Classe" compilerOrder="4"/>
+            </layout>&#xD;
+            <layout left="471" top="228" width="100" height="43" compilerOrder="11">
+                <edit transparent="true" fontSize="30.1" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="100" height="44" field="Nivel" compilerOrder="12"/>
+            </layout>&#xD;
+            <layout left="592" top="228" width="165" height="43" compilerOrder="13">
+                <edit transparent="true" fontSize="30.1" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="165" height="44" field="Alinhamento" compilerOrder="14"/>
+            </layout>&#xD;
+            <layout left="87" top="301" width="310" height="43" compilerOrder="5">
+                <edit transparent="true" fontSize="30.1" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="310" height="44" field="Raça" compilerOrder="6"/>
+            </layout>&#xD;
+            <layout left="964" top="301" width="208" height="43" compilerOrder="9">
+                <edit transparent="true" fontSize="30.1" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="208" height="44" field="EXP" compilerOrder="10"/>
+            </layout>&#xD;
+            <layout left="414" top="302" width="536" height="43" compilerOrder="7">
+                <edit transparent="true" fontSize="30.1" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="536" height="44" field="Características" compilerOrder="8"/>
+            </layout>&#xD;
+            <layout left="237" top="400" width="72" height="79" compilerOrder="15">
+                <edit transparent="true" fontSize="36" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="72" height="80" field="For" compilerOrder="16"/>
+            </layout>&#xD;
+            <layout left="1003" top="403" width="144" height="77" compilerOrder="41">
+                <edit transparent="true" fontSize="36" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="144" height="78" field="Pressagio" compilerOrder="42"/>
+            </layout>&#xD;
+            <layout left="665" top="408" width="67" height="66" compilerOrder="31">
+                <edit transparent="true" fontSize="36" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="67" height="67" field="CAArmadura" compilerOrder="32"/>
+            </layout>&#xD;
+            <layout left="744" top="409" width="70" height="65" compilerOrder="33">
+                <edit transparent="true" fontSize="36" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="70" height="66" field="CaEsc" compilerOrder="34"/>
+            </layout>&#xD;
+            <layout left="585" top="410" width="69" height="65" compilerOrder="29">
+                <edit transparent="true" enabled="false" fontSize="36" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="69" height="66" field="CADest" compilerOrder="30"/>
+            </layout>&#xD;
+            <layout left="448" top="417" width="121" height="57" compilerOrder="27">
+                <edit transparent="true" enabled="false" fontStyle="bold" fontSize="42" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="121" height="58" field="CA" compilerOrder="28"/>
+            </layout>&#xD;
+            <layout left="238" top="491" width="72" height="79" compilerOrder="17">
+                <edit transparent="true" fontSize="36" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="72" height="80" field="Des" compilerOrder="18"/>
+            </layout>&#xD;
+            <layout left="955" top="494" width="192" height="113" compilerOrder="43">
+                <edit transparent="true" fontSize="36" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="192" height="114" field="PVs" compilerOrder="44"/>
+            </layout>&#xD;
+            <layout left="745" top="500" width="71" height="70" compilerOrder="39">
+                <edit transparent="true" fontSize="36" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="71" height="71" field="CAOutro2" compilerOrder="40"/>
+            </layout>&#xD;
+            <layout left="363" top="501" width="213" height="32" compilerOrder="129">
+                <edit transparent="true" fontSize="21.8" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="213" height="33" field="CADesc1" compilerOrder="130"/>
+            </layout>&#xD;
+            <layout left="584" top="501" width="71" height="67" compilerOrder="35">
+                <edit transparent="true" fontSize="36" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="71" height="68" field="CAItem" compilerOrder="36"/>
+            </layout>&#xD;
+            <layout left="665" top="501" width="68" height="66" compilerOrder="37">
+                <edit transparent="true" fontSize="36" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="68" height="67" field="CAOutro1" compilerOrder="38"/>
+            </layout>&#xD;
+            <layout left="364" top="534" width="213" height="32" compilerOrder="131">
+                <edit transparent="true" fontSize="21.8" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="213" height="33" field="CADesc2" compilerOrder="132"/>
+            </layout>&#xD;
+            <layout left="238" top="582" width="72" height="79" compilerOrder="19">
+                <edit transparent="true" fontSize="36" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="72" height="80" field="Con" compilerOrder="20"/>
+            </layout>&#xD;
+            <layout left="478" top="622" width="77" height="82" compilerOrder="47">
+                <edit transparent="true" fontSize="36" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="77" height="83" field="JP" compilerOrder="48"/>
+            </layout>&#xD;
+            <layout left="576" top="622" width="72" height="65" compilerOrder="49">
+                <edit transparent="true" enabled="false" fontSize="36" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="72" height="66" field="JPDes" compilerOrder="50"/>
+            </layout>&#xD;
+            <layout left="659" top="622" width="73" height="65" compilerOrder="51">
+                <edit transparent="true" enabled="false" fontSize="36" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="73" height="66" field="JPCon" compilerOrder="52"/>
+            </layout>&#xD;
+            <layout left="742" top="622" width="73" height="67" compilerOrder="53">
+                <edit transparent="true" enabled="false" fontSize="36" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="73" height="68" field="JPSab" compilerOrder="54"/>
+            </layout>&#xD;
+            <layout left="836" top="623" width="13" height="15" compilerOrder="133">
+                <checkBox left="0" top="0" width="13" height="16" field="Sangramento" compilerOrder="134"/>
+            </layout>&#xD;
+            <layout left="1022" top="623" width="13" height="15" compilerOrder="135">
+                <checkBox left="0" top="0" width="13" height="16" field="Crit" compilerOrder="136"/>
+            </layout>&#xD;
+            <layout left="237" top="672" width="72" height="79" compilerOrder="21">
+                <edit transparent="true" fontSize="36" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="72" height="80" field="Int" compilerOrder="22"/>
+            </layout>&#xD;
+            <layout left="1053" top="719" width="92" height="73" compilerOrder="45">
+                <edit transparent="true" fontSize="36" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="92" height="74" field="DanoLimite" compilerOrder="46"/>
+            </layout>&#xD;
+            <layout left="596" top="731" width="206" height="72" compilerOrder="55">
+                <edit transparent="true" fontSize="36" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="206" height="73" field="Mov" compilerOrder="56"/>
+            </layout>&#xD;
+            <layout left="836" top="752" width="13" height="15" compilerOrder="137">
+                <checkBox left="0" top="0" width="13" height="16" field="Emboscada" compilerOrder="138"/>
+            </layout>&#xD;
+            <layout left="237" top="763" width="72" height="79" compilerOrder="23">
+                <edit transparent="true" fontSize="36" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="72" height="80" field="Sab" compilerOrder="24"/>
+            </layout>&#xD;
+            <layout left="836" top="773" width="13" height="15" compilerOrder="139">
+                <checkBox left="0" top="0" width="13" height="16" field="Vontade" compilerOrder="140"/>
+            </layout>&#xD;
+            <layout left="915" top="831" width="83" height="76" compilerOrder="63">
+                <edit transparent="true" enabled="false" fontSize="36" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="83" height="77" field="BADes" compilerOrder="64"/>
+            </layout>&#xD;
+            <layout left="651" top="832" width="82" height="76" compilerOrder="59">
+                <edit transparent="true" enabled="false" fontSize="36" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="82" height="77" field="BAFor" compilerOrder="60"/>
+            </layout>&#xD;
+            <layout left="465" top="833" width="158" height="75" compilerOrder="57">
+                <edit transparent="true" fontSize="36" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="158" height="76" field="BABase" compilerOrder="58"/>
+            </layout>&#xD;
+            <layout left="759" top="833" width="131" height="74" compilerOrder="61">
+                <edit transparent="true" fontSize="36" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="131" height="75" field="BACxC" compilerOrder="62"/>
+            </layout>&#xD;
+            <layout left="1022" top="833" width="133" height="74" compilerOrder="65">
+                <edit transparent="true" fontSize="36" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="133" height="75" field="BADist" compilerOrder="66"/>
+            </layout>&#xD;
+            <layout left="238" top="852" width="72" height="79" compilerOrder="25">
+                <edit transparent="true" fontSize="36" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="72" height="80" field="Car" compilerOrder="26"/>
+            </layout>&#xD;
+            <layout left="329" top="996" width="14" height="17" compilerOrder="151">
+                <checkBox left="0" top="0" width="14" height="18" field="Check_Box7" compilerOrder="152"/>
+            </layout>&#xD;
+            <layout left="1096" top="1021" width="63" height="39" compilerOrder="77">
+                <edit transparent="true" fontSize="27.1" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="63" height="40" field="Tam1" compilerOrder="78"/>
+            </layout>&#xD;
+            <layout left="925" top="1022" width="160" height="39" compilerOrder="75">
+                <edit transparent="true" fontSize="27.1" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="160" height="40" field="Alc1" compilerOrder="76"/>
+            </layout>&#xD;
+            <layout left="800" top="1023" width="106" height="38" compilerOrder="73">
+                <edit transparent="true" fontSize="26.3" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="106" height="39" field="Dano1" compilerOrder="74"/>
+            </layout>&#xD;
+            <layout left="132" top="1024" width="367" height="39" compilerOrder="67">
+                <edit transparent="true" fontSize="27.1" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="367" height="40" field="Arma1" compilerOrder="68"/>
+            </layout>&#xD;
+            <layout left="520" top="1024" width="78" height="38" compilerOrder="69">
+                <edit transparent="true" fontSize="26.3" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="78" height="39" field="Ini1" compilerOrder="70"/>
+            </layout>&#xD;
+            <layout left="618" top="1024" width="162" height="39" compilerOrder="71">
+                <edit transparent="true" fontSize="27.1" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="162" height="40" field="ATQ1" compilerOrder="72"/>
+            </layout>&#xD;
+            <layout left="110" top="1049" width="12" height="14" compilerOrder="141">
+                <checkBox left="0" top="0" width="12" height="15" field="Check_Box1" compilerOrder="142"/>
+            </layout>&#xD;
+            <layout left="1096" top="1064" width="63" height="39" compilerOrder="89">
+                <edit transparent="true" fontSize="27.1" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="63" height="40" field="Tam2" compilerOrder="90"/>
+            </layout>&#xD;
+            <layout left="925" top="1065" width="160" height="39" compilerOrder="87">
+                <edit transparent="true" fontSize="27.1" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="160" height="40" field="Alc2" compilerOrder="88"/>
+            </layout>&#xD;
+            <layout left="132" top="1066" width="367" height="39" compilerOrder="79">
+                <edit transparent="true" fontSize="27.1" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="367" height="40" field="Arma2" compilerOrder="80"/>
+            </layout>&#xD;
+            <layout left="519" top="1066" width="79" height="38" compilerOrder="81">
+                <edit transparent="true" fontSize="26.3" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="79" height="39" field="Ini2" compilerOrder="82"/>
+            </layout>&#xD;
+            <layout left="618" top="1066" width="162" height="39" compilerOrder="83">
+                <edit transparent="true" fontSize="27.1" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="162" height="40" field="ATQ2" compilerOrder="84"/>
+            </layout>&#xD;
+            <layout left="800" top="1066" width="106" height="38" compilerOrder="85">
+                <edit transparent="true" fontSize="26.3" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="106" height="39" field="Dano2" compilerOrder="86"/>
+            </layout>&#xD;
+            <layout left="110" top="1091" width="12" height="14" compilerOrder="145">
+                <checkBox left="0" top="0" width="12" height="15" field="Check_Box4" compilerOrder="146"/>
+            </layout>&#xD;
+            <layout left="926" top="1107" width="160" height="39" compilerOrder="99">
+                <edit transparent="true" fontSize="27.1" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="160" height="40" field="Alc3" compilerOrder="100"/>
+            </layout>&#xD;
+            <layout left="1096" top="1107" width="63" height="39" compilerOrder="101">
+                <edit transparent="true" fontSize="27.1" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="63" height="40" field="Tam3" compilerOrder="102"/>
+            </layout>&#xD;
+            <layout left="132" top="1109" width="368" height="39" compilerOrder="91">
+                <edit transparent="true" fontSize="27.1" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="368" height="40" field="Arma3" compilerOrder="92"/>
+            </layout>&#xD;
+            <layout left="520" top="1109" width="79" height="38" compilerOrder="93">
+                <edit transparent="true" fontSize="26.3" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="79" height="39" field="Ini3" compilerOrder="94"/>
+            </layout>&#xD;
+            <layout left="618" top="1109" width="161" height="39" compilerOrder="95">
+                <edit transparent="true" fontSize="27.1" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="161" height="40" field="ATQ3" compilerOrder="96"/>
+            </layout>&#xD;
+            <layout left="800" top="1109" width="106" height="38" compilerOrder="97">
+                <edit transparent="true" fontSize="26.3" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="106" height="39" field="Dano3" compilerOrder="98"/>
+            </layout>&#xD;
+            <layout left="110" top="1134" width="12" height="13" compilerOrder="143">
+                <checkBox left="0" top="0" width="12" height="14" field="Check_Box3" compilerOrder="144"/>
+            </layout>&#xD;
+            <layout left="925" top="1150" width="160" height="39" compilerOrder="111">
+                <edit transparent="true" fontSize="27.1" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="160" height="40" field="Alc4" compilerOrder="112"/>
+            </layout>&#xD;
+            <layout left="1096" top="1150" width="63" height="39" compilerOrder="113">
+                <edit transparent="true" fontSize="27.1" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="63" height="40" field="Tam4" compilerOrder="114"/>
+            </layout>&#xD;
+            <layout left="132" top="1151" width="368" height="39" compilerOrder="103">
+                <edit transparent="true" fontSize="27.1" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="368" height="40" field="Arma4" compilerOrder="104"/>
+            </layout>&#xD;
+            <layout left="618" top="1151" width="161" height="39" compilerOrder="107">
+                <edit transparent="true" fontSize="27.1" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="161" height="40" field="ATQ4" compilerOrder="108"/>
+            </layout>&#xD;
+            <layout left="800" top="1152" width="106" height="38" compilerOrder="109">
+                <edit transparent="true" fontSize="26.3" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="106" height="39" field="Dano4" compilerOrder="110"/>
+            </layout>&#xD;
+            <layout left="519" top="1153" width="79" height="38" compilerOrder="105">
+                <edit transparent="true" fontSize="26.3" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="79" height="39" field="Ini4" compilerOrder="106"/>
+            </layout>&#xD;
+            <layout left="110" top="1177" width="13" height="13" compilerOrder="147">
+                <checkBox left="0" top="0" width="13" height="14" field="Check_Box5" compilerOrder="148"/>
+            </layout>&#xD;
+            <layout left="1096" top="1193" width="59" height="39" compilerOrder="125">
+                <edit transparent="true" fontSize="27.1" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="59" height="40" field="Tam5" compilerOrder="126"/>
+            </layout>&#xD;
+            <layout left="924" top="1194" width="160" height="39" compilerOrder="123">
+                <edit transparent="true" fontSize="27.1" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="160" height="40" field="Alc5" compilerOrder="124"/>
+            </layout>&#xD;
+            <layout left="132" top="1195" width="367" height="39" compilerOrder="115">
+                <edit transparent="true" fontSize="27.1" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="367" height="40" field="Arma" compilerOrder="116"/>
+            </layout>&#xD;
+            <layout left="519" top="1195" width="78" height="38" compilerOrder="117">
+                <edit transparent="true" fontSize="26.3" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="78" height="39" field="Ini5" compilerOrder="118"/>
+            </layout>&#xD;
+            <layout left="618" top="1195" width="162" height="39" compilerOrder="119">
+                <edit transparent="true" fontSize="27.1" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="162" height="40" field="ATQ5" compilerOrder="120"/>
+            </layout>&#xD;
+            <layout left="800" top="1195" width="106" height="38" compilerOrder="121">
+                <edit transparent="true" fontSize="26.3" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="106" height="39" field="Dano5" compilerOrder="122"/>
+            </layout>&#xD;
+            <layout left="110" top="1220" width="12" height="13" compilerOrder="149">
+                <checkBox left="0" top="0" width="12" height="14" field="Check_Box6" compilerOrder="150"/>
+            </layout>&#xD;
+            <layout left="103" top="1322" width="1051" height="384" compilerOrder="127">
+                <richEdit left="0" top="0" width="1051" height="384" field="Equip" compilerOrder="128"/>
+            </layout>&#xD;
+        </rectangle>
+    </scrollBox>
+	
+	
+	--Campos calculados
+	<dataLink field="Des">
+                <event name="onChange">
+                        local mod = math.floor(((sheet.Des or 0) - 10) / 2);
+                     
+
+                        if (mod >= 0) then
+                                mod = "+" .. mod;
+                        end;                       
+
+                        sheet.CADest = mod;
+                </event>
+        </dataLink>
+		
+	<dataLink fields="{'CADest', 'CAArmadura', 'CaEsc', 'CAItem', 'CAOutro1', 'CAOutro2'}">
+	<event name="onChange">
+               sheet.CA = ((tonumber(sheet.CADest) or 0) + 10) +
+                              (tonumber(sheet.CaEsc) or 0) +
+							  (tonumber(sheet.CAArmadura or 0) or 0) +
+                              (tonumber(sheet.CAItem) or 0) +
+							  (tonumber(sheet.CAOutro1) or 0) +
+                              (tonumber((sheet.CAOutro2) or 0));                  
+
+               if sheet.CA >= 0 then
+                       sheet.CA = sheet.CA;
+               end;
+        </event>
+        </dataLink>
+		
+		<dataLink fields="{'JP', 'Des'}">
+             <event name="onChange">
+               sheet.JPDes = (tonumber(sheet.JP or 0)) -
+                             (math.floor(((sheet.Des or 0) - 10) / 2));                  
+
+               if sheet.JPDes >= 0 then
+                       sheet.JPDes = sheet.JPDes;
+               end;
+        </event>
+     </dataLink>
+	 
+	 <dataLink fields="{'JP', 'Con'}">
+             <event name="onChange">
+               sheet.JPCon = (tonumber(sheet.JP or 0)) -
+                             (math.floor(((sheet.Con or 0) - 10) / 2));                  
+
+               if sheet.JPCon >= 0 then
+                       sheet.JPCon = sheet.JPCon;
+               end;
+        </event>
+     </dataLink>
+	 
+	  <dataLink fields="{'JP', 'Sab'}">
+             <event name="onChange">
+               sheet.JPSab = (tonumber(sheet.JP or 0)) -
+                             (math.floor(((sheet.Sab or 0) - 10) / 2));                  
+
+               if sheet.JPSab >= 0 then
+                       sheet.JPSab = sheet.JPSab;
+               end;
+        </event>
+     </dataLink>
+		
+	<dataLink field="Des">
+                <event name="onChange">
+                        local mod = math.floor(((sheet.Des or 0) - 10) / 2);
+                     
+
+                        if (mod >= 0) then
+                                mod = "+" .. mod;
+                        end;                       
+
+                        sheet.BADes = mod;
+                </event>
+        </dataLink>
+		
+			<dataLink field="For">
+                <event name="onChange">
+                        local mod = math.floor(((sheet.For or 0) - 10) / 2);
+                     
+
+                        if (mod >= 0) then
+                                mod = "+" .. mod;
+                        end;                       
+
+                        sheet.BAFor = mod;
+                </event>
+        </dataLink>  
+</form>

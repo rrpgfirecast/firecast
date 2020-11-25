@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmOD5_svg" align="client" theme="light" margins="{top=1}">
+    <style>#frmOD5_svg path {color: black; strokeColor: black; mode: stretch;} &#xD;
+#frmOD5_svg label {fontColor: black; textTrimming: none; wordWrap: false; autoSize: true;}</style>
+    <scrollBox align="client">
+        <rectangle width="1191" height="1684" color="white">&#xD;
+            <image left="0" top="0" width="1191" height="1684" src="images/m.png" style="stretch" optimize="true" compilerOrder="0"/>&#xD;
+			
+			
+            <layout left="52" top="139" width="62" height="55" compilerOrder="1">
+                <edit transparent="true" fontSize="30" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="62" height="56" field="_1_0_0" compilerOrder="2"/>
+            </layout>&#xD;
+            <layout left="121" top="139" width="62" height="55" compilerOrder="3">
+                <edit transparent="true" fontSize="30" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="62" height="56" field="_1_0_1" compilerOrder="4"/>
+            </layout>&#xD;
+            <layout left="191" top="139" width="62" height="55" compilerOrder="5">
+                <edit transparent="true" fontSize="30" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="62" height="56" field="_1_0_2" compilerOrder="6"/>
+            </layout>&#xD;
+            <layout left="260" top="139" width="62" height="55" compilerOrder="7">
+                <edit transparent="true" fontSize="30" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="62" height="56" field="_1_0_3" compilerOrder="8"/>
+            </layout>&#xD;
+            <layout left="330" top="139" width="62" height="55" compilerOrder="9">
+                <edit transparent="true" fontSize="30" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="62" height="56" field="_1_0_4" compilerOrder="10"/>
+            </layout>&#xD;
+            <layout left="399" top="139" width="62" height="55" compilerOrder="11">
+                <edit transparent="true" fontSize="30" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="62" height="56" field="_1_0_5" compilerOrder="12"/>
+            </layout>&#xD;
+            <layout left="468" top="139" width="62" height="55" compilerOrder="13">
+                <edit transparent="true" fontSize="30" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="62" height="56" field="_1_0_6" compilerOrder="14"/>
+            </layout>&#xD;
+            <layout left="538" top="139" width="62" height="55" compilerOrder="15">
+                <edit transparent="true" fontSize="30" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="62" height="56" field="_1_0_7" compilerOrder="16"/>
+            </layout>&#xD;
+            <layout left="607" top="139" width="62" height="55" compilerOrder="17">
+                <edit transparent="true" fontSize="30" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="62" height="56" field="_1_0_8" compilerOrder="18"/>
+            </layout>&#xD;
+			
+			
+            <layout left="52" top="217" width="62" height="55" compilerOrder="19">
+                <edit transparent="true" fontSize="30" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="62" height="56" field="_1_1_0" compilerOrder="20"/>
+            </layout>&#xD;
+            <layout left="121" top="217" width="62" height="55" compilerOrder="21">
+                <edit transparent="true" fontSize="30" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="62" height="56" field="_1_1_1" compilerOrder="22"/>
+            </layout>&#xD;
+            <layout left="191" top="217" width="62" height="55" compilerOrder="23">
+                <edit transparent="true" fontSize="30" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="62" height="56" field="_1_1_2" compilerOrder="24"/>
+            </layout>&#xD;
+            <layout left="260" top="217" width="62" height="55" compilerOrder="25">
+                <edit transparent="true" fontSize="30" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="62" height="56" field="_1_1_3" compilerOrder="26"/>
+            </layout>&#xD;
+            <layout left="330" top="217" width="62" height="55" compilerOrder="27">
+                <edit transparent="true" fontSize="30" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="62" height="56" field="_1_1_4" compilerOrder="28"/>
+            </layout>&#xD;
+            <layout left="399" top="217" width="62" height="55" compilerOrder="29">
+                <edit transparent="true" fontSize="30" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="62" height="56" field="_1_1_5" compilerOrder="30"/>
+            </layout>&#xD;
+            <layout left="468" top="217" width="62" height="55" compilerOrder="31">
+                <edit transparent="true" fontSize="30" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="62" height="56" field="_1_1_6" compilerOrder="32"/>
+            </layout>&#xD;
+            <layout left="538" top="217" width="62" height="55" compilerOrder="33">
+                <edit transparent="true" fontSize="30" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="62" height="56" field="_1_1_7" compilerOrder="34"/>
+            </layout>&#xD;
+            <layout left="607" top="217" width="62" height="55" compilerOrder="35">
+                <edit transparent="true" fontSize="30" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="62" height="56" field="_1_1_8" compilerOrder="36"/>
+            </layout>&#xD;
+			
+			<scrollBox width="1106" height="1284" top="365">
+
+        <layout align="top" height="30" margins="{bottom=4}">
+                <button text="Nova Magia" width="190" left="448">
+                        <event name="onClick">
+                                -- Usuário clicou no botão de criar novo item.
+                                -- Vamos inserir um novo item no nosso recordList                              
+                                self.rclListaDeMagia:append();
+                        </event>
+                </button>
+        </layout>  
+
+             						
+
+        <!-- recordList, representando a lista de rolagens padrão -->
+		
+        <recordList name="rclListaDeMagia" field="campoDasMagias" templateForm="frmMG"
+                                left="1" top="40" height="60" width="1106" autoHeight="true">  
+							
+        </recordList> 
+
+			</scrollBox>
+			
+        </rectangle>
+    </scrollBox>
+</form>

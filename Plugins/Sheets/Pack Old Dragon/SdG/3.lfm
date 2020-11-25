@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmSdG3_svg" align="client" theme="light" margins="{top=1}">
+    <style>#frmSdG3_svg path {color: black; strokeColor: black; mode: stretch;} &#xD;
+#frmSdG3_svg label {fontColor: black; textTrimming: none; wordWrap: false; autoSize: true;}</style>
+    <scrollBox align="client">
+        <rectangle width="1259" height="1786" color="white">&#xD;
+            <image left="0" top="0" width="1259" height="1786" src="images/3.png" style="stretch" optimize="true" compilerOrder="0"/>&#xD;
+            <image field="img1" style="autoFit" editable="true"
+              left="803" top="228" width="380" height="342" compilerOrder="1"/>
+            &#xD;
+            <layout left="129" top="279" width="261" height="79" compilerOrder="9">
+                <textEditor transparent="true" fontSize="24.1" fontColor="#000000" left="0" top="0" width="261" height="80" field="Conjuge" compilerOrder="10"/>
+            </layout>&#xD;
+            <layout left="461" top="279" width="281" height="35" compilerOrder="25">
+                <edit transparent="true" fontSize="24.1" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="281" height="36" field="Filhos" compilerOrder="26"/>
+            </layout>&#xD;
+            <layout left="512" top="309" width="231" height="35" compilerOrder="27">
+                <edit transparent="true" fontSize="24.1" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="231" height="36" field="Infância" compilerOrder="28"/>
+            </layout>&#xD;
+            <layout left="480" top="346" width="262" height="35" compilerOrder="29">
+                <edit transparent="true" fontSize="24.1" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="262" height="36" field="povo" compilerOrder="30"/>
+            </layout>&#xD;
+            <layout left="123" top="349" width="267" height="35" compilerOrder="11">
+                <edit transparent="true" fontSize="24.1" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="267" height="36" field="Crenca" compilerOrder="12"/>
+            </layout>&#xD;
+            <layout left="122" top="384" width="618" height="35" compilerOrder="13">
+                <edit transparent="true" fontSize="24.1" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="618" height="36" field="Brasao" compilerOrder="14"/>
+            </layout>&#xD;
+            <layout left="427" top="420" width="316" height="35" compilerOrder="17">
+                <edit transparent="true" fontSize="24.1" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="316" height="36" field="Serv2" compilerOrder="18"/>
+            </layout>&#xD;
+            <layout left="152" top="421" width="237" height="35" compilerOrder="15">
+                <edit transparent="true" fontSize="24.1" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="237" height="36" field="Serv1" compilerOrder="16"/>
+            </layout>&#xD;
+            <layout left="160" top="457" width="582" height="35" compilerOrder="19">
+                <edit transparent="true" fontSize="24.1" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="582" height="36" field="Juramento" compilerOrder="20"/>
+            </layout>&#xD;
+            <layout left="129" top="495" width="258" height="35" compilerOrder="21">
+                <edit transparent="true" fontSize="24.1" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="258" height="36" field="Idi1" compilerOrder="22"/>
+            </layout>&#xD;
+            <layout left="407" top="495" width="336" height="35" compilerOrder="23">
+                <edit transparent="true" fontSize="24.1" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="336" height="36" field="Idi2" compilerOrder="24"/>
+            </layout>&#xD;
+            <image field="img2" style="autoFit" editable="true"
+			left="682" top="643" width="462" height="422" compilerOrder="4"/>
+             &#xD;
+            <layout left="22" top="646" width="569" height="418" compilerOrder="5">
+                <richEdit left="0" top="0" width="569" height="419" field="Anotações" compilerOrder="6"/>
+            </layout>&#xD;
+            <layout left="116" top="1182" width="1026" height="458" compilerOrder="7">
+                <richEdit left="0" top="0" width="1026" height="458" field="BG" compilerOrder="8"/>
+            </layout>&#xD;
+        </rectangle>
+    </scrollBox>
+</form>
