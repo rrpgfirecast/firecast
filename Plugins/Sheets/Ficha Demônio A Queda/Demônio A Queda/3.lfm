@@ -1,0 +1,415 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmkpta3_svg" align="client" theme="light" margins="{top=1}">
+    <style>#frmkpta3_svg path {color: black; strokeColor: black; mode: stretch;} &#xD;
+#frmkpta3_svg label {fontColor: black; textTrimming: none; wordWrap: false; autoSize: true;}</style>
+    <scrollBox align="client">
+        <rectangle width="893" height="1263" color="white">&#xD;
+            <image left="0" top="0" width="893" height="1263" src="images/esp.png" style="stretch" optimize="true" compilerOrder="0"/>&#xD;
+            <layout left="411" top="203" width="26" height="18" compilerOrder="5">
+                <edit transparent="true" fontSize="14" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="26" height="19" field="Especialização__Mod__1" compilerOrder="6"/>
+            </layout>&#xD;
+            <layout left="58" top="204" width="139" height="18" compilerOrder="3">
+                <edit transparent="true" fontSize="14" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="139" height="19" field="Especialização__Atributo_Habilidade_1" compilerOrder="4"/>
+            </layout>&#xD;
+            <layout left="206" top="204" width="196" height="18" compilerOrder="7">
+                <edit transparent="true" fontSize="14" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="196" height="19" field="Especialização__Tipo_1" compilerOrder="8"/>
+            </layout>&#xD;
+            <layout left="457" top="204" width="139" height="18" compilerOrder="11">
+                <edit transparent="true" fontSize="14" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="139" height="19" field="Especialização__Atributo_Habilidade_8" compilerOrder="12"/>
+            </layout>&#xD;
+            <layout left="604" top="204" width="196" height="18" compilerOrder="9">
+                <edit transparent="true" fontSize="14" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="196" height="19" field="Especialização__Tipo_8" compilerOrder="10"/>
+            </layout>&#xD;
+            <layout left="810" top="204" width="26" height="18" compilerOrder="49">
+                <edit transparent="true" fontSize="14" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="26" height="19" field="Especialização__Mod__8" compilerOrder="50"/>
+            </layout>&#xD;
+            <layout left="58" top="225" width="139" height="18" compilerOrder="13">
+                <edit transparent="true" fontSize="14" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="139" height="19" field="Especialização__Atributo_Habilidade_2" compilerOrder="14"/>
+            </layout>&#xD;
+            <layout left="206" top="225" width="196" height="18" compilerOrder="15">
+                <edit transparent="true" fontSize="14" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="196" height="19" field="Especialização__Tipo_2" compilerOrder="16"/>
+            </layout>&#xD;
+            <layout left="411" top="225" width="26" height="18" compilerOrder="51">
+                <edit transparent="true" fontSize="14" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="26" height="19" field="Especialização__Mod__2" compilerOrder="52"/>
+            </layout>&#xD;
+            <layout left="810" top="225" width="26" height="18" compilerOrder="53">
+                <edit transparent="true" fontSize="14" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="26" height="19" field="Especialização__Mod__9" compilerOrder="54"/>
+            </layout>&#xD;
+            <layout left="457" top="226" width="139" height="18" compilerOrder="19">
+                <edit transparent="true" fontSize="14" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="139" height="19" field="Especialização__Atributo_Habilidade_9" compilerOrder="20"/>
+            </layout>&#xD;
+            <layout left="604" top="226" width="196" height="18" compilerOrder="17">
+                <edit transparent="true" fontSize="14" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="196" height="19" field="Especialização__Tipo_9" compilerOrder="18"/>
+            </layout>&#xD;
+            <layout left="58" top="246" width="139" height="18" compilerOrder="21">
+                <edit transparent="true" fontSize="14" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="139" height="19" field="Especialização__Atributo_Habilidade_3" compilerOrder="22"/>
+            </layout>&#xD;
+            <layout left="205" top="246" width="196" height="18" compilerOrder="23">
+                <edit transparent="true" fontSize="14" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="196" height="19" field="Especialização__Tipo_3" compilerOrder="24"/>
+            </layout>&#xD;
+            <layout left="411" top="247" width="26" height="18" compilerOrder="55">
+                <edit transparent="true" fontSize="14" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="26" height="19" field="Especialização__Mod__3__0" compilerOrder="56"/>
+            </layout>&#xD;
+            <layout left="457" top="247" width="139" height="18" compilerOrder="27">
+                <edit transparent="true" fontSize="14" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="139" height="19" field="Especialização__Atributo_Habilidade_10" compilerOrder="28"/>
+            </layout>&#xD;
+            <layout left="603" top="247" width="196" height="18" compilerOrder="25">
+                <edit transparent="true" fontSize="14" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="196" height="19" field="Especialização__Tipo_10" compilerOrder="26"/>
+            </layout>&#xD;
+            <layout left="810" top="248" width="26" height="18" compilerOrder="57">
+                <edit transparent="true" fontSize="14" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="26" height="19" field="Especialização__Mod__10" compilerOrder="58"/>
+            </layout>&#xD;
+            <layout left="58" top="268" width="139" height="18" compilerOrder="39">
+                <edit transparent="true" fontSize="14" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="139" height="19" field="Especialização__Atributo_Habilidade_4" compilerOrder="40"/>
+            </layout>&#xD;
+            <layout left="206" top="268" width="196" height="18" compilerOrder="29">
+                <edit transparent="true" fontSize="14" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="196" height="19" field="Especialização__Tipo_4" compilerOrder="30"/>
+            </layout>&#xD;
+            <layout left="411" top="268" width="26" height="18" compilerOrder="59">
+                <edit transparent="true" fontSize="14" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="26" height="19" field="Especialização__Mod__4" compilerOrder="60"/>
+            </layout>&#xD;
+            <layout left="457" top="269" width="139" height="18" compilerOrder="33">
+                <edit transparent="true" fontSize="14" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="139" height="19" field="Especialização__Atributo_Habilidade_11" compilerOrder="34"/>
+            </layout>&#xD;
+            <layout left="604" top="269" width="196" height="18" compilerOrder="31">
+                <edit transparent="true" fontSize="14" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="196" height="19" field="Especialização__Tipo_11" compilerOrder="32"/>
+            </layout>&#xD;
+            <layout left="810" top="269" width="26" height="18" compilerOrder="61">
+                <edit transparent="true" fontSize="14" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="26" height="19" field="Especialização__Mod__11" compilerOrder="62"/>
+            </layout>&#xD;
+            <layout left="58" top="290" width="139" height="18" compilerOrder="41">
+                <edit transparent="true" fontSize="14" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="139" height="19" field="Especialização__Atributo_Habilidade_5" compilerOrder="42"/>
+            </layout>&#xD;
+            <layout left="206" top="290" width="196" height="18" compilerOrder="43">
+                <edit transparent="true" fontSize="14" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="196" height="19" field="Especialização__Tipo_5" compilerOrder="44"/>
+            </layout>&#xD;
+            <layout left="411" top="290" width="26" height="18" compilerOrder="63">
+                <edit transparent="true" fontSize="14" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="26" height="19" field="Especialização__Mod__5" compilerOrder="64"/>
+            </layout>&#xD;
+            <layout left="457" top="290" width="139" height="18" compilerOrder="77">
+                <edit transparent="true" fontSize="14" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="139" height="19" field="Especialização__Atributo_Habilidade_12" compilerOrder="78"/>
+            </layout>&#xD;
+            <layout left="604" top="290" width="196" height="18" compilerOrder="45">
+                <edit transparent="true" fontSize="14" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="196" height="19" field="Especialização__Tipo_12" compilerOrder="46"/>
+            </layout>&#xD;
+            <layout left="810" top="290" width="26" height="18" compilerOrder="65">
+                <edit transparent="true" fontSize="14" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="26" height="19" field="Especialização__Mod__12" compilerOrder="66"/>
+            </layout>&#xD;
+            <layout left="411" top="311" width="26" height="18" compilerOrder="67">
+                <edit transparent="true" fontSize="14" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="26" height="19" field="Especialização__Mod__6__0" compilerOrder="68"/>
+            </layout>&#xD;
+            <layout left="58" top="312" width="139" height="18" compilerOrder="79">
+                <edit transparent="true" fontSize="14" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="139" height="19" field="Especialização__Atributo_Habilidade_6" compilerOrder="80"/>
+            </layout>&#xD;
+            <layout left="206" top="312" width="196" height="18" compilerOrder="35">
+                <edit transparent="true" fontSize="14" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="196" height="19" field="Especialização__Tipo_6" compilerOrder="36"/>
+            </layout>&#xD;
+            <layout left="457" top="312" width="139" height="18" compilerOrder="81">
+                <edit transparent="true" fontSize="14" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="139" height="19" field="Especialização__Atributo_Habilidade_13" compilerOrder="82"/>
+            </layout>&#xD;
+            <layout left="604" top="312" width="196" height="18" compilerOrder="83">
+                <edit transparent="true" fontSize="14" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="196" height="19" field="Especialização__Tipo_13" compilerOrder="84"/>
+            </layout>&#xD;
+            <layout left="810" top="312" width="26" height="18" compilerOrder="69">
+                <edit transparent="true" fontSize="14" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="26" height="19" field="Especialização__Mod__13" compilerOrder="70"/>
+            </layout>&#xD;
+            <layout left="411" top="332" width="26" height="18" compilerOrder="71">
+                <edit transparent="true" fontSize="14" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="26" height="19" field="Especialização__Mod__6__1" compilerOrder="72"/>
+            </layout>&#xD;
+            <layout left="58" top="333" width="139" height="18" compilerOrder="85">
+                <edit transparent="true" fontSize="14" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="139" height="19" field="Especialização__Atributo_Habilidade_7" compilerOrder="86"/>
+            </layout>&#xD;
+            <layout left="206" top="333" width="196" height="18" compilerOrder="37">
+                <edit transparent="true" fontSize="14" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="196" height="19" field="Especialização__Tipo_7" compilerOrder="38"/>
+            </layout>&#xD;
+            <layout left="810" top="333" width="26" height="18" compilerOrder="73">
+                <edit transparent="true" fontSize="14" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="26" height="19" field="Especialização__Mod__14" compilerOrder="74"/>
+            </layout>&#xD;
+            <layout left="457" top="334" width="139" height="18" compilerOrder="87">
+                <edit transparent="true" fontSize="14" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="139" height="19" field="Especialização__Atributo_Habilidade_14" compilerOrder="88"/>
+            </layout>&#xD;
+            <layout left="604" top="334" width="196" height="18" compilerOrder="89">
+                <edit transparent="true" fontSize="14" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="196" height="19" field="Especialização__Tipo_14" compilerOrder="90"/>
+            </layout>&#xD;
+            <layout left="69" top="411" width="303" height="18" compilerOrder="91">
+                <edit transparent="true" fontSize="14" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="303" height="19" field="Qualidades_1" compilerOrder="92"/>
+            </layout>&#xD;
+            <layout left="380" top="411" width="47" height="18" compilerOrder="113">
+                <edit transparent="true" fontSize="14" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="47" height="19" field="Qualidades__Custo_1" compilerOrder="114"/>
+            </layout>&#xD;
+            <layout left="467" top="412" width="303" height="18" compilerOrder="93">
+                <edit transparent="true" fontSize="14" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="303" height="19" field="Defeitos_1" compilerOrder="94"/>
+            </layout>&#xD;
+            <layout left="778" top="412" width="47" height="18" compilerOrder="95">
+                <edit transparent="true" fontSize="14" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="47" height="19" field="Defeitos__Custo_1" compilerOrder="96"/>
+            </layout>&#xD;
+            <layout left="69" top="432" width="303" height="18" compilerOrder="97">
+                <edit transparent="true" fontSize="14" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="303" height="19" field="Qualidades_2" compilerOrder="98"/>
+            </layout>&#xD;
+            <layout left="380" top="432" width="47" height="18" compilerOrder="115">
+                <edit transparent="true" fontSize="14" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="47" height="19" field="Qualidades__Custo_2" compilerOrder="116"/>
+            </layout>&#xD;
+            <layout left="467" top="433" width="303" height="18" compilerOrder="99">
+                <edit transparent="true" fontSize="14" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="303" height="19" field="Defeitos_2" compilerOrder="100"/>
+            </layout>&#xD;
+            <layout left="778" top="433" width="47" height="18" compilerOrder="101">
+                <edit transparent="true" fontSize="14" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="47" height="19" field="Defeitos__Custo_2" compilerOrder="102"/>
+            </layout>&#xD;
+            <layout left="69" top="453" width="303" height="18" compilerOrder="103">
+                <edit transparent="true" fontSize="14" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="303" height="19" field="Qualidades_3" compilerOrder="104"/>
+            </layout>&#xD;
+            <layout left="380" top="453" width="47" height="18" compilerOrder="75">
+                <edit transparent="true" fontSize="14" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="47" height="19" field="Especialização__Mod__3__1" compilerOrder="76"/>
+            </layout>&#xD;
+            <layout left="467" top="455" width="303" height="18" compilerOrder="105">
+                <edit transparent="true" fontSize="14" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="303" height="19" field="Defeitos_3" compilerOrder="106"/>
+            </layout>&#xD;
+            <layout left="778" top="455" width="47" height="18" compilerOrder="107">
+                <edit transparent="true" fontSize="14" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="47" height="19" field="Defeitos__Custo_3" compilerOrder="108"/>
+            </layout>&#xD;
+            <layout left="69" top="474" width="303" height="18" compilerOrder="109">
+                <edit transparent="true" fontSize="14" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="303" height="19" field="Qualidades_4" compilerOrder="110"/>
+            </layout>&#xD;
+            <layout left="380" top="474" width="47" height="18" compilerOrder="117">
+                <edit transparent="true" fontSize="14" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="47" height="19" field="Qualidades__Custo_4" compilerOrder="118"/>
+            </layout>&#xD;
+            <layout left="467" top="476" width="303" height="18" compilerOrder="119">
+                <edit transparent="true" fontSize="14" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="303" height="19" field="Defeitos_4" compilerOrder="120"/>
+            </layout>&#xD;
+            <layout left="778" top="476" width="47" height="18" compilerOrder="121">
+                <edit transparent="true" fontSize="14" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="47" height="19" field="Defeitos__Custo_4" compilerOrder="122"/>
+            </layout>&#xD;
+            <layout left="69" top="496" width="303" height="18" compilerOrder="111">
+                <edit transparent="true" fontSize="14" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="303" height="19" field="Qualidades_5" compilerOrder="112"/>
+            </layout>&#xD;
+            <layout left="380" top="496" width="47" height="18" compilerOrder="123">
+                <edit transparent="true" fontSize="14" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="47" height="19" field="Qualidades__Custo_5" compilerOrder="124"/>
+            </layout>&#xD;
+            <layout left="467" top="497" width="303" height="18" compilerOrder="125">
+                <edit transparent="true" fontSize="14" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="303" height="19" field="Defeitos_5" compilerOrder="126"/>
+            </layout>&#xD;
+            <layout left="778" top="497" width="47" height="18" compilerOrder="127">
+                <edit transparent="true" fontSize="14" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="47" height="19" field="Defeitos__Custo_5" compilerOrder="128"/>
+            </layout>&#xD;
+            <layout left="68" top="576" width="237" height="40" compilerOrder="129">
+                <textEditor transparent="true" fontSize="13" fontColor="#000000" left="0" top="0" width="237" height="40" field="Motes_e_Citações_1" compilerOrder="130"/>
+            </layout>&#xD;
+            <layout left="323" top="598" width="410" height="19" compilerOrder="141">
+                <edit transparent="true" fontSize="13" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="410" height="20" field="Conduta_Moral_1" compilerOrder="142"/>
+            </layout>&#xD;
+            <layout left="746" top="599" width="36" height="18" compilerOrder="149">
+                <edit transparent="true" fontSize="14" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="36" height="19" field="Nível_1_0" compilerOrder="150"/>
+            </layout>&#xD;
+            <layout left="796" top="599" width="36" height="18" compilerOrder="133">
+                <edit transparent="true" fontSize="14" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="36" height="19" field="Nível_1_1" compilerOrder="134"/>
+            </layout>&#xD;
+            <layout left="323" top="620" width="410" height="19" compilerOrder="143">
+                <edit transparent="true" fontSize="13" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="410" height="20" field="Conduta_Moral_2" compilerOrder="144"/>
+            </layout>&#xD;
+            <layout left="746" top="621" width="36" height="18" compilerOrder="151">
+                <edit transparent="true" fontSize="14" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="36" height="19" field="Nível_2_0" compilerOrder="152"/>
+            </layout>&#xD;
+            <layout left="796" top="621" width="36" height="18" compilerOrder="153">
+                <edit transparent="true" fontSize="14" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="36" height="19" field="Nível_2_1" compilerOrder="154"/>
+            </layout>&#xD;
+            <layout left="323" top="641" width="410" height="19" compilerOrder="145">
+                <edit transparent="true" fontSize="13" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="410" height="20" field="Conduta_Moral_3" compilerOrder="146"/>
+            </layout>&#xD;
+            <layout left="746" top="643" width="36" height="18" compilerOrder="155">
+                <edit transparent="true" fontSize="14" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="36" height="19" field="Nível_3_0" compilerOrder="156"/>
+            </layout>&#xD;
+            <layout left="796" top="643" width="36" height="18" compilerOrder="157">
+                <edit transparent="true" fontSize="14" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="36" height="19" field="Nível_3_1" compilerOrder="158"/>
+            </layout>&#xD;
+            <layout left="69" top="651" width="237" height="60" compilerOrder="137">
+                <textEditor transparent="true" fontSize="13" fontColor="#000000" left="0" top="0" width="237" height="60" field="Fraqueza_1" compilerOrder="138"/>
+            </layout>&#xD;
+            <layout left="323" top="662" width="410" height="19" compilerOrder="147">
+                <edit transparent="true" fontSize="13" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="410" height="20" field="Conduta_Moral_4" compilerOrder="148"/>
+            </layout>&#xD;
+            <layout left="746" top="665" width="36" height="18" compilerOrder="161">
+                <edit transparent="true" fontSize="14" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="36" height="19" field="Nível_4_0" compilerOrder="162"/>
+            </layout>&#xD;
+            <layout left="796" top="665" width="36" height="18" compilerOrder="163">
+                <edit transparent="true" fontSize="14" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="36" height="19" field="Nível_4_1" compilerOrder="164"/>
+            </layout>&#xD;
+            <layout left="323" top="685" width="410" height="19" compilerOrder="159">
+                <edit transparent="true" fontSize="13" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="410" height="20" field="Conduta_Moral_5" compilerOrder="160"/>
+            </layout>&#xD;
+            <layout left="746" top="686" width="36" height="18" compilerOrder="165">
+                <edit transparent="true" fontSize="14" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="36" height="19" field="Nível_5_0" compilerOrder="166"/>
+            </layout>&#xD;
+            <layout left="796" top="686" width="36" height="18" compilerOrder="167">
+                <edit transparent="true" fontSize="14" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="36" height="19" field="Nível_5_1" compilerOrder="168"/>
+            </layout>&#xD;
+            <layout left="407" top="728" width="174" height="19" compilerOrder="171">
+                <edit transparent="true" fontSize="13" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="174" height="20" field="Perturbação_1" compilerOrder="172"/>
+            </layout>&#xD;
+            <layout left="384" top="749" width="452" height="19" compilerOrder="175">
+                <edit transparent="true" fontSize="13" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="452" height="20" field="Detalhes_1" compilerOrder="176"/>
+            </layout>&#xD;
+            <layout left="68" top="753" width="237" height="40" compilerOrder="173">
+                <textEditor transparent="true" fontSize="13" fontColor="#000000" left="0" top="0" width="237" height="40" field="Cicatrizes_e_Deformidades_1" compilerOrder="174"/>
+            </layout>&#xD;
+            <layout left="407" top="774" width="174" height="19" compilerOrder="177">
+                <edit transparent="true" fontSize="13" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="174" height="20" field="Perturbação_2" compilerOrder="178"/>
+            </layout>&#xD;
+            <layout left="384" top="796" width="452" height="19" compilerOrder="179">
+                <edit transparent="true" fontSize="13" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="452" height="20" field="Detalhes_2" compilerOrder="180"/>
+            </layout>&#xD;
+            <layout left="78" top="831" width="105" height="19" compilerOrder="181">
+                <edit transparent="true" fontSize="13" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="105" height="20" field="Linguística_1" compilerOrder="182"/>
+            </layout>&#xD;
+            <layout left="201" top="832" width="105" height="19" compilerOrder="183">
+                <edit transparent="true" fontSize="13" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="105" height="20" field="Linguística_2" compilerOrder="184"/>
+            </layout>&#xD;
+            <layout left="366" top="836" width="161" height="19" compilerOrder="185">
+                <edit transparent="true" fontSize="13" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="161" height="20" field="Nome" compilerOrder="186"/>
+            </layout>&#xD;
+            <layout left="604" top="836" width="37" height="19" compilerOrder="197">
+                <edit transparent="true" fontSize="13" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="37" height="20" field="Nascimento__Dia" compilerOrder="198"/>
+            </layout>&#xD;
+            <layout left="650" top="836" width="37" height="19" compilerOrder="199">
+                <edit transparent="true" fontSize="13" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="37" height="20" field="Nascimento__Mês" compilerOrder="200"/>
+            </layout>&#xD;
+            <layout left="698" top="836" width="37" height="19" compilerOrder="201">
+                <edit transparent="true" fontSize="13" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="37" height="20" field="Nascimento__Ano" compilerOrder="202"/>
+            </layout>&#xD;
+            <layout left="779" top="836" width="44" height="19" compilerOrder="203">
+                <edit transparent="true" fontSize="13" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="44" height="20" field="Idade" compilerOrder="204"/>
+            </layout>&#xD;
+            <layout left="78" top="853" width="105" height="19" compilerOrder="187">
+                <edit transparent="true" fontSize="13" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="105" height="20" field="Linguística_3" compilerOrder="188"/>
+            </layout>&#xD;
+            <layout left="201" top="854" width="105" height="19" compilerOrder="189">
+                <edit transparent="true" fontSize="13" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="105" height="20" field="Linguística_4" compilerOrder="190"/>
+            </layout>&#xD;
+            <layout left="681" top="855" width="44" height="19" compilerOrder="207">
+                <edit transparent="true" fontSize="13" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="44" height="20" field="Peso" compilerOrder="208"/>
+            </layout>&#xD;
+            <layout left="600" top="856" width="44" height="19" compilerOrder="205">
+                <edit transparent="true" fontSize="13" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="44" height="20" field="Sexo" compilerOrder="206"/>
+            </layout>&#xD;
+            <layout left="771" top="856" width="44" height="19" compilerOrder="209">
+                <edit transparent="true" fontSize="13" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="44" height="20" field="Altura" compilerOrder="210"/>
+            </layout>&#xD;
+            <layout left="413" top="857" width="149" height="19" compilerOrder="191">
+                <edit transparent="true" fontSize="13" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="149" height="20" field="Nacionalidade" compilerOrder="192"/>
+            </layout>&#xD;
+            <layout left="78" top="875" width="105" height="19" compilerOrder="193">
+                <edit transparent="true" fontSize="13" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="105" height="20" field="Linguística_5" compilerOrder="194"/>
+            </layout>&#xD;
+            <layout left="201" top="876" width="105" height="19" compilerOrder="195">
+                <edit transparent="true" fontSize="13" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="105" height="20" field="Linguística_6" compilerOrder="196"/>
+            </layout>&#xD;
+            <layout left="402" top="877" width="82" height="19" compilerOrder="215">
+                <edit transparent="true" fontSize="13" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="82" height="20" field="Cor__Cabelo" compilerOrder="216"/>
+            </layout>&#xD;
+            <layout left="528" top="877" width="82" height="19" compilerOrder="217">
+                <edit transparent="true" fontSize="13" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="82" height="20" field="Cor__Olhos" compilerOrder="218"/>
+            </layout>&#xD;
+            <layout left="643" top="877" width="82" height="19" compilerOrder="219">
+                <edit transparent="true" fontSize="13" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="82" height="20" field="Cor__Pele" compilerOrder="220"/>
+            </layout>&#xD;
+            <layout left="78" top="896" width="105" height="19" compilerOrder="241">
+                <edit transparent="true" fontSize="13" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="105" height="20" field="Linguística_7" compilerOrder="242"/>
+            </layout>&#xD;
+            <layout left="201" top="897" width="105" height="19" compilerOrder="243">
+                <edit transparent="true" fontSize="13" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="105" height="20" field="Linguística_8" compilerOrder="244"/>
+            </layout>&#xD;
+            <layout left="428" top="897" width="397" height="60" compilerOrder="245">
+                <textEditor transparent="true" fontSize="13" fontColor="#000000" left="0" top="0" width="397" height="60" field="Aspectos_Gerais_1" compilerOrder="246"/>
+            </layout>&#xD;
+            <layout left="78" top="918" width="105" height="19" compilerOrder="247">
+                <edit transparent="true" fontSize="13" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="105" height="20" field="Linguística_9" compilerOrder="248"/>
+            </layout>&#xD;
+            <layout left="201" top="918" width="105" height="19" compilerOrder="249">
+                <edit transparent="true" fontSize="13" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="105" height="20" field="Linguística_10" compilerOrder="250"/>
+            </layout>&#xD;
+            <layout left="78" top="939" width="105" height="19" compilerOrder="253">
+                <edit transparent="true" fontSize="13" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="105" height="20" field="Linguística_11" compilerOrder="254"/>
+            </layout>&#xD;
+            <layout left="201" top="940" width="105" height="19" compilerOrder="255">
+                <edit transparent="true" fontSize="13" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="105" height="20" field="Linguística_12" compilerOrder="256"/>
+            </layout>&#xD;
+            <layout left="78" top="961" width="105" height="19" compilerOrder="259">
+                <edit transparent="true" fontSize="13" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="105" height="20" field="Linguística_13" compilerOrder="260"/>
+            </layout>&#xD;
+            <layout left="201" top="961" width="105" height="19" compilerOrder="261">
+                <edit transparent="true" fontSize="13" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="105" height="20" field="Linguística_14" compilerOrder="262"/>
+            </layout>&#xD;
+            <layout left="500" top="962" width="326" height="40" compilerOrder="269">
+                <textEditor transparent="true" fontSize="13" fontColor="#000000" left="0" top="0" width="326" height="40" field="Possuído_1" compilerOrder="270"/>
+            </layout>&#xD;
+            <layout left="78" top="982" width="105" height="19" compilerOrder="263">
+                <edit transparent="true" fontSize="13" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="105" height="20" field="Linguística_15" compilerOrder="264"/>
+            </layout>&#xD;
+            <layout left="201" top="983" width="105" height="19" compilerOrder="265">
+                <edit transparent="true" fontSize="13" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="105" height="20" field="Linguística_16" compilerOrder="266"/>
+            </layout>&#xD;
+            <layout left="347" top="1068" width="219" height="19" compilerOrder="221">
+                <edit transparent="true" fontSize="13" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="219" height="20" field="Baixo_Tormento_1" compilerOrder="222"/>
+            </layout>&#xD;
+            <layout left="606" top="1069" width="219" height="19" compilerOrder="223">
+                <edit transparent="true" fontSize="13" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="219" height="20" field="Alto_Tormento_1" compilerOrder="224"/>
+            </layout>&#xD;
+            <layout left="68" top="1072" width="238" height="107" compilerOrder="281">
+                <textEditor left="0" top="0" width="238" height="107" fontSize="18" fontColor="#000000" field="Aparência__1" transparent="true" compilerOrder="282"/>
+            </layout>&#xD;
+            <layout left="330" top="1073" width="11" height="12" compilerOrder="283">
+                <imageCheckBox checkedImage="images/on.png" uncheckedImage="images/off.png" left="0" top="0" width="11" height="13" field="Baixo_Tormento_Check_1" compilerOrder="284"/>
+            </layout>&#xD;
+            <layout left="591" top="1073" width="11" height="12" compilerOrder="285">
+                <imageCheckBox checkedImage="images/on.png" uncheckedImage="images/off.png" left="0" top="0" width="11" height="13" field="Alto_Tormento_Check_1" compilerOrder="286"/>
+            </layout>&#xD;
+            <layout left="347" top="1089" width="219" height="19" compilerOrder="225">
+                <edit transparent="true" fontSize="13" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="219" height="20" field="Baixo_Tormento_2" compilerOrder="226"/>
+            </layout>&#xD;
+            <layout left="606" top="1090" width="219" height="19" compilerOrder="227">
+                <edit transparent="true" fontSize="13" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="219" height="20" field="Alto_Tormento_2" compilerOrder="228"/>
+            </layout>&#xD;
+            <layout left="330" top="1095" width="11" height="12" compilerOrder="287">
+                <imageCheckBox checkedImage="images/on.png" uncheckedImage="images/off.png" left="0" top="0" width="11" height="13" field="Baixo_Tormento_Check_2" compilerOrder="288"/>
+            </layout>&#xD;
+            <layout left="591" top="1095" width="11" height="12" compilerOrder="289">
+                <imageCheckBox checkedImage="images/on.png" uncheckedImage="images/off.png" left="0" top="0" width="11" height="13" field="Alto_Tormento_Check_2" compilerOrder="290"/>
+            </layout>&#xD;
+            <layout left="347" top="1112" width="219" height="19" compilerOrder="229">
+                <edit transparent="true" fontSize="13" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="219" height="20" field="Baixo_Tormento_3" compilerOrder="230"/>
+            </layout>&#xD;
+            <layout left="606" top="1112" width="219" height="19" compilerOrder="231">
+                <edit transparent="true" fontSize="13" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="219" height="20" field="Alto_Tormento_3" compilerOrder="232"/>
+            </layout>&#xD;
+            <layout left="330" top="1117" width="11" height="12" compilerOrder="291">
+                <imageCheckBox checkedImage="images/on.png" uncheckedImage="images/off.png" left="0" top="0" width="11" height="13" field="Baixo_Tormento_Check_3" compilerOrder="292"/>
+            </layout>&#xD;
+            <layout left="591" top="1117" width="11" height="12" compilerOrder="293">
+                <imageCheckBox checkedImage="images/on.png" uncheckedImage="images/off.png" left="0" top="0" width="11" height="13" field="Alto_Tormento_Check_3" compilerOrder="294"/>
+            </layout>&#xD;
+            <layout left="347" top="1133" width="219" height="19" compilerOrder="233">
+                <edit transparent="true" fontSize="13" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="219" height="20" field="Baixo_Tormento_4" compilerOrder="234"/>
+            </layout>&#xD;
+            <layout left="606" top="1133" width="219" height="19" compilerOrder="235">
+                <edit transparent="true" fontSize="13" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="219" height="20" field="Alto_Tormento_4" compilerOrder="236"/>
+            </layout>&#xD;
+            <layout left="330" top="1138" width="11" height="12" compilerOrder="295">
+                <imageCheckBox checkedImage="images/on.png" uncheckedImage="images/off.png" left="0" top="0" width="11" height="13" field="Baixo_Tormento_Check_4" compilerOrder="296"/>
+            </layout>&#xD;
+            <layout left="591" top="1138" width="11" height="12" compilerOrder="297">
+                <imageCheckBox checkedImage="images/on.png" uncheckedImage="images/off.png" left="0" top="0" width="11" height="13" field="Alto_Tormento_Check_4" compilerOrder="298"/>
+            </layout>&#xD;
+            <layout left="347" top="1155" width="219" height="19" compilerOrder="237">
+                <edit transparent="true" fontSize="13" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="219" height="20" field="Baixo_Tormento_5" compilerOrder="238"/>
+            </layout>&#xD;
+            <layout left="606" top="1155" width="219" height="19" compilerOrder="239">
+                <edit transparent="true" fontSize="13" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="219" height="20" field="Alto_Tormento_5" compilerOrder="240"/>
+            </layout>&#xD;
+            <layout left="330" top="1160" width="11" height="12" compilerOrder="299">
+                <imageCheckBox checkedImage="images/on.png" uncheckedImage="images/off.png" left="0" top="0" width="11" height="13" field="Baixo_Tormento_Check_5" compilerOrder="300"/>
+            </layout>&#xD;
+            <layout left="591" top="1160" width="11" height="12" compilerOrder="301">
+                <imageCheckBox checkedImage="images/on.png" uncheckedImage="images/off.png" left="0" top="0" width="11" height="13" field="Alto_Tormento_Check_5" compilerOrder="302"/>
+            </layout>&#xD;
+        </rectangle>
+    </scrollBox>
+</form>

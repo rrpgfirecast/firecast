@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmkpta8_svg" align="client" theme="light" margins="{top=1}">
+    <style>#frmkpta8_svg path {color: black; strokeColor: black; mode: stretch;} &#xD;
+#frmkpta8_svg label {fontColor: black; textTrimming: none; wordWrap: false; autoSize: true;}</style>
+    <scrollBox align="client">
+        <rectangle width="893" height="1263" color="white">&#xD;
+            <image left="0" top="0" width="893" height="1263" src="images/bg.png" style="stretch" optimize="true" compilerOrder="0"/>&#xD;
+            <layout left="54" top="207" width="786" height="116" compilerOrder="1">
+                <textEditor left="0" top="0" width="786" height="116" fontSize="18" fontColor="#000000" field="Antes_da_Queda" transparent="true" compilerOrder="2"/>
+            </layout>&#xD;
+            <layout left="54" top="350" width="786" height="69" compilerOrder="3">
+                <textEditor left="0" top="0" width="786" height="69" fontSize="18" fontColor="#000000" field="A_Queda" transparent="true" compilerOrder="4"/>
+            </layout>&#xD;
+            <layout left="54" top="446" width="786" height="217" compilerOrder="11">
+                <richEdit left="0" top="0" width="786" height="217" field="Após_a_Queda" compilerOrder="12"/>
+            </layout>&#xD;
+			
+                <image field="imagem" editable="true" style="proportional" compilerOrder="13"
+				left="63" top="692" width="774" height="389"/>
+				
+            <layout left="57" top="1114" width="774" height="72" compilerOrder="15">
+                <edit left="0" top="0" fontSize="18" fontStyle="bold" horzTextAlign="center" fontColor="#000000" width="774" height="73" transparent="true" compilerOrder="16"/>
+            </layout>&#xD;
+        </rectangle>
+    </scrollBox>
+</form>
