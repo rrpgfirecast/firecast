@@ -1,0 +1,304 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmkpta4_svg" align="client" theme="light" margins="{top=1}">
+    <style>#frmkpta4_svg path {color: black; strokeColor: black; mode: stretch;} &#xD;
+#frmkpta4_svg label {fontColor: black; textTrimming: none; wordWrap: false; autoSize: true;}</style>
+    <scrollBox align="client">
+        <rectangle width="893" height="1263" color="white">&#xD;
+            <image left="0" top="0" width="893" height="1263" src="images/rel.png" style="stretch" optimize="true" compilerOrder="0"/>&#xD;
+            <layout left="706" top="193" width="18" height="23" compilerOrder="15">
+                <imageCheckBox checkedImage="images/on.png" uncheckedImage="images/off.png" left="0" top="0" width="18" height="24" field="Relíquias__Dout__Nec__1A" compilerOrder="16"/>
+            </layout>&#xD;
+            <layout left="720" top="193" width="18" height="23" compilerOrder="17">
+                <imageCheckBox checkedImage="images/on.png" uncheckedImage="images/off.png" left="0" top="0" width="18" height="24" field="Relíquias__Dout__Nec__1B" compilerOrder="18"/>
+            </layout>&#xD;
+            <layout left="734" top="193" width="18" height="23" compilerOrder="19">
+                <imageCheckBox checkedImage="images/on.png" uncheckedImage="images/off.png" left="0" top="0" width="18" height="24" field="Relíquias__Dout__Nec__1C" compilerOrder="20"/>
+            </layout>&#xD;
+            <layout left="747" top="193" width="18" height="23" compilerOrder="21">
+                <imageCheckBox checkedImage="images/on.png" uncheckedImage="images/off.png" left="0" top="0" width="18" height="24" field="Relíquias__Dout__Nec__1D" compilerOrder="22"/>
+            </layout>&#xD;
+            <layout left="761" top="193" width="18" height="23" compilerOrder="23">
+                <imageCheckBox checkedImage="images/on.png" uncheckedImage="images/off.png" left="0" top="0" width="18" height="24" field="Relíquias__Dout__Nec__1E" compilerOrder="24"/>
+            </layout>&#xD;
+            <layout left="782" top="193" width="18" height="23" compilerOrder="25">
+                <imageCheckBox checkedImage="images/on.png" uncheckedImage="images/off.png" left="0" top="0" width="18" height="24" field="Relíquias__Dout__Nec__1F" compilerOrder="26"/>
+            </layout>&#xD;
+            <layout left="796" top="193" width="18" height="23" compilerOrder="27">
+                <imageCheckBox checkedImage="images/on.png" uncheckedImage="images/off.png" left="0" top="0" width="18" height="24" field="Relíquias__Dout__Nec__1G" compilerOrder="28"/>
+            </layout>&#xD;
+            <layout left="810" top="193" width="18" height="23" compilerOrder="29">
+                <imageCheckBox checkedImage="images/on.png" uncheckedImage="images/off.png" left="0" top="0" width="18" height="24" field="Relíquias__Dout__Nec__1H" compilerOrder="30"/>
+            </layout>&#xD;
+            <layout left="107" top="194" width="237" height="19" compilerOrder="3">
+                <edit transparent="true" fontSize="14" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="237" height="20" field="Relíquias__Nome_1" compilerOrder="4"/>
+            </layout>&#xD;
+            <layout left="385" top="194" width="167" height="19" compilerOrder="5">
+                <edit transparent="true" fontSize="14" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="167" height="20" field="Relíquias__Tipo_1" compilerOrder="6"/>
+            </layout>&#xD;
+            <layout left="139" top="216" width="687" height="40" compilerOrder="31">
+                <textEditor transparent="true" fontSize="14" fontColor="#000000" left="0" top="0" width="687" height="40" field="Relíquias__Descrição_1" compilerOrder="32"/>
+            </layout>&#xD;
+            <layout left="124" top="257" width="701" height="40" compilerOrder="35">
+                <textEditor transparent="true" fontSize="14" fontColor="#000000" left="0" top="0" width="701" height="40" field="Relíquias__Sistema_1" compilerOrder="36"/>
+            </layout>&#xD;
+            <layout left="706" top="322" width="18" height="23" compilerOrder="39">
+                <imageCheckBox checkedImage="images/on.png" uncheckedImage="images/off.png" left="0" top="0" width="18" height="24" field="Relíquias__Dout__Nec__2A" compilerOrder="40"/>
+            </layout>&#xD;
+            <layout left="720" top="322" width="18" height="23" compilerOrder="41">
+                <imageCheckBox checkedImage="images/on.png" uncheckedImage="images/off.png" left="0" top="0" width="18" height="24" field="Relíquias__Dout__Nec__2B" compilerOrder="42"/>
+            </layout>&#xD;
+            <layout left="734" top="322" width="18" height="23" compilerOrder="43">
+                <imageCheckBox checkedImage="images/on.png" uncheckedImage="images/off.png" left="0" top="0" width="18" height="24" field="Relíquias__Dout__Nec__2C" compilerOrder="44"/>
+            </layout>&#xD;
+            <layout left="747" top="322" width="18" height="23" compilerOrder="45">
+                <imageCheckBox checkedImage="images/on.png" uncheckedImage="images/off.png" left="0" top="0" width="18" height="24" field="Relíquias__Dout__Nec__2D" compilerOrder="46"/>
+            </layout>&#xD;
+            <layout left="761" top="322" width="18" height="23" compilerOrder="47">
+                <imageCheckBox checkedImage="images/on.png" uncheckedImage="images/off.png" left="0" top="0" width="18" height="24" field="Relíquias__Dout__Nec__2E" compilerOrder="48"/>
+            </layout>&#xD;
+            <layout left="782" top="322" width="18" height="23" compilerOrder="49">
+                <imageCheckBox checkedImage="images/on.png" uncheckedImage="images/off.png" left="0" top="0" width="18" height="24" field="Relíquias__Dout__Nec__2F" compilerOrder="50"/>
+            </layout>&#xD;
+            <layout left="797" top="322" width="18" height="23" compilerOrder="51">
+                <imageCheckBox checkedImage="images/on.png" uncheckedImage="images/off.png" left="0" top="0" width="18" height="24" field="Relíquias__Dout__Nec__2G" compilerOrder="52"/>
+            </layout>&#xD;
+            <layout left="810" top="322" width="18" height="23" compilerOrder="53">
+                <imageCheckBox checkedImage="images/on.png" uncheckedImage="images/off.png" left="0" top="0" width="18" height="24" field="Relíquias__Dout__Nec__2H" compilerOrder="54"/>
+            </layout>&#xD;
+            <layout left="107" top="323" width="237" height="20" compilerOrder="7">
+                <edit transparent="true" fontSize="14" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="237" height="20" field="Relíquias__Nome_2" compilerOrder="8"/>
+            </layout>&#xD;
+            <layout left="385" top="323" width="167" height="19" compilerOrder="9">
+                <edit transparent="true" fontSize="14" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="167" height="20" field="Relíquias__Tipo_2" compilerOrder="10"/>
+            </layout>&#xD;
+            <layout left="139" top="345" width="687" height="40" compilerOrder="55">
+                <textEditor transparent="true" fontSize="14" fontColor="#000000" left="0" top="0" width="687" height="40" field="Relíquias__Descrição_2" compilerOrder="56"/>
+            </layout>&#xD;
+            <layout left="125" top="387" width="701" height="40" compilerOrder="59">
+                <textEditor transparent="true" fontSize="14" fontColor="#000000" left="0" top="0" width="701" height="40" field="Relíquias__Sistema_2" compilerOrder="60"/>
+            </layout>&#xD;
+            <layout left="706" top="451" width="18" height="23" compilerOrder="63">
+                <imageCheckBox checkedImage="images/on.png" uncheckedImage="images/off.png" left="0" top="0" width="18" height="24" field="Relíquias__Dout__Nec__3A" compilerOrder="64"/>
+            </layout>&#xD;
+            <layout left="720" top="451" width="18" height="23" compilerOrder="65">
+                <imageCheckBox checkedImage="images/on.png" uncheckedImage="images/off.png" left="0" top="0" width="18" height="24" field="Relíquias__Dout__Nec__3B" compilerOrder="66"/>
+            </layout>&#xD;
+            <layout left="734" top="451" width="18" height="23" compilerOrder="67">
+                <imageCheckBox checkedImage="images/on.png" uncheckedImage="images/off.png" left="0" top="0" width="18" height="24" field="Relíquias__Dout__Nec__3C" compilerOrder="68"/>
+            </layout>&#xD;
+            <layout left="747" top="451" width="18" height="23" compilerOrder="69">
+                <imageCheckBox checkedImage="images/on.png" uncheckedImage="images/off.png" left="0" top="0" width="18" height="24" field="Relíquias__Dout__Nec__3D" compilerOrder="70"/>
+            </layout>&#xD;
+            <layout left="761" top="451" width="18" height="23" compilerOrder="71">
+                <imageCheckBox checkedImage="images/on.png" uncheckedImage="images/off.png" left="0" top="0" width="18" height="24" field="Relíquias__Dout__Nec__3E" compilerOrder="72"/>
+            </layout>&#xD;
+            <layout left="782" top="451" width="18" height="23" compilerOrder="73">
+                <imageCheckBox checkedImage="images/on.png" uncheckedImage="images/off.png" left="0" top="0" width="18" height="24" field="Relíquias__Dout__Nec__3F" compilerOrder="74"/>
+            </layout>&#xD;
+            <layout left="797" top="451" width="18" height="23" compilerOrder="75">
+                <imageCheckBox checkedImage="images/on.png" uncheckedImage="images/off.png" left="0" top="0" width="18" height="24" field="Relíquias__Dout__Nec__3G" compilerOrder="76"/>
+            </layout>&#xD;
+            <layout left="810" top="451" width="18" height="23" compilerOrder="77">
+                <imageCheckBox checkedImage="images/on.png" uncheckedImage="images/off.png" left="0" top="0" width="18" height="24" field="Relíquias__Dout__Nec__3H" compilerOrder="78"/>
+            </layout>&#xD;
+            <layout left="107" top="453" width="237" height="19" compilerOrder="11">
+                <edit transparent="true" fontSize="14" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="237" height="20" field="Relíquias__Nome_3" compilerOrder="12"/>
+            </layout>&#xD;
+            <layout left="385" top="453" width="167" height="19" compilerOrder="13">
+                <edit transparent="true" fontSize="14" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="167" height="20" field="Relíquias__Tipo_3" compilerOrder="14"/>
+            </layout>&#xD;
+            <layout left="139" top="474" width="687" height="40" compilerOrder="79">
+                <textEditor transparent="true" fontSize="14" fontColor="#000000" left="0" top="0" width="687" height="40" field="Relíquias__Descrição_3" compilerOrder="80"/>
+            </layout>&#xD;
+
+            <layout left="124" top="516" width="701" height="40" compilerOrder="83">
+                <textEditor transparent="true" fontSize="14" fontColor="#000000" left="0" top="0" width="701" height="40" field="Relíquias__Sistema_3" compilerOrder="84"/>
+            </layout>&#xD;
+ 
+            <layout left="107" top="603" width="328" height="19" compilerOrder="87">
+                <edit transparent="true" fontSize="14" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="328" height="20" field="Ritual__Nome_1" compilerOrder="88"/>
+            </layout>&#xD;
+            <layout left="502" top="603" width="328" height="19" compilerOrder="105">
+                <edit transparent="true" fontSize="14" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="328" height="20" field="Ritual__Nome_2" compilerOrder="106"/>
+            </layout>&#xD;
+            <layout left="108" top="625" width="226" height="19" compilerOrder="113">
+                <edit transparent="true" fontSize="14" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="226" height="20" field="Ritual__Livro_1" compilerOrder="114"/>
+            </layout>&#xD;
+            <layout left="392" top="625" width="37" height="19" compilerOrder="115">
+                <edit transparent="true" fontSize="14" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="37" height="20" field="Ritual__Página_1" compilerOrder="116"/>
+            </layout>&#xD;
+            <layout left="502" top="625" width="226" height="19" compilerOrder="119">
+                <edit transparent="true" fontSize="14" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="226" height="20" field="Ritual__Livro_2" compilerOrder="120"/>
+            </layout>&#xD;
+            <layout left="786" top="625" width="37" height="19" compilerOrder="121">
+                <edit transparent="true" fontSize="14" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="37" height="20" field="Ritual__Página_2" compilerOrder="122"/>
+            </layout>&#xD;
+            <layout left="107" top="672" width="328" height="19" compilerOrder="117">
+                <edit transparent="true" fontSize="14" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="328" height="20" field="Ritual__Nome_3" compilerOrder="118"/>
+            </layout>&#xD;
+            <layout left="501" top="672" width="328" height="19" compilerOrder="107">
+                <edit transparent="true" fontSize="14" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="328" height="20" field="Ritual__Nome_4" compilerOrder="108"/>
+            </layout>&#xD;
+            <layout left="107" top="694" width="226" height="19" compilerOrder="123">
+                <edit transparent="true" fontSize="14" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="226" height="20" field="Ritual__Livro_3" compilerOrder="124"/>
+            </layout>&#xD;
+            <layout left="391" top="694" width="37" height="19" compilerOrder="125">
+                <edit transparent="true" fontSize="14" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="37" height="20" field="Ritual__Página_3" compilerOrder="126"/>
+            </layout>&#xD;
+            <layout left="501" top="694" width="226" height="19" compilerOrder="127">
+                <edit transparent="true" fontSize="14" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="226" height="20" field="Ritual__Livro_4" compilerOrder="128"/>
+            </layout>&#xD;
+            <layout left="785" top="694" width="37" height="19" compilerOrder="129">
+                <edit transparent="true" fontSize="14" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="37" height="20" field="Ritual__Página_4" compilerOrder="130"/>
+            </layout>&#xD;
+            <layout left="107" top="733" width="328" height="19" compilerOrder="109">
+                <edit transparent="true" fontSize="14" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="328" height="20" field="Ritual__Nome_5" compilerOrder="110"/>
+            </layout>&#xD;
+            <layout left="502" top="733" width="328" height="19" compilerOrder="111">
+                <edit transparent="true" fontSize="14" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="328" height="20" field="Ritual__Nome_6" compilerOrder="112"/>
+            </layout>&#xD;
+            <layout left="107" top="755" width="226" height="19" compilerOrder="131">
+                <edit transparent="true" fontSize="14" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="226" height="20" field="Ritual__Livro_5" compilerOrder="132"/>
+            </layout>&#xD;
+            <layout left="392" top="755" width="37" height="19" compilerOrder="143">
+                <edit transparent="true" fontSize="14" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="37" height="20" field="Ritual__Página_5" compilerOrder="144"/>
+            </layout>&#xD;
+            <layout left="502" top="755" width="226" height="19" compilerOrder="145">
+                <edit transparent="true" fontSize="14" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="226" height="20" field="Ritual__Livro_6" compilerOrder="146"/>
+            </layout>&#xD;
+            <layout left="786" top="755" width="37" height="19" compilerOrder="223">
+                <edit transparent="true" fontSize="14" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="37" height="20" field="Ritual__Página_6" compilerOrder="224"/>
+            </layout>&#xD;
+            <layout left="191" top="810" width="202" height="19" compilerOrder="137">
+                <edit transparent="true" fontSize="14" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="202" height="20" field="Ritual_Expandido__Nome" compilerOrder="138"/>
+            </layout>&#xD;
+            <layout left="441" top="810" width="45" height="19" compilerOrder="139">
+                <edit transparent="true" fontSize="14" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="45" height="20" field="Ritual_Expandido__Custo" compilerOrder="140"/>
+            </layout>&#xD;
+            <layout left="697" top="811" width="45" height="19" compilerOrder="141">
+                <edit transparent="true" fontSize="14" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="45" height="20" field="Ritual_Expandido__Tempo" compilerOrder="142"/>
+            </layout>&#xD;
+            <layout left="68" top="854" width="757" height="19" compilerOrder="147">
+                <edit transparent="true" fontSize="14" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="757" height="20" field="Ritual_Expandido__Restrições" compilerOrder="148"/>
+            </layout>&#xD;
+            <layout left="469" top="917" width="18" height="23" compilerOrder="89">
+                <imageCheckBox checkedImage="images/on.png" uncheckedImage="images/off.png" left="0" top="0" width="18" height="24" field="Ritual_Expandido__Primária_1" compilerOrder="90"/>
+            </layout>&#xD;
+            <layout left="482" top="917" width="18" height="23" compilerOrder="91">
+                <imageCheckBox checkedImage="images/on.png" uncheckedImage="images/off.png" left="0" top="0" width="18" height="24" field="Ritual_Expandido__Primária_2" compilerOrder="92"/>
+            </layout>&#xD;
+            <layout left="496" top="917" width="18" height="23" compilerOrder="93">
+                <imageCheckBox checkedImage="images/on.png" uncheckedImage="images/off.png" left="0" top="0" width="18" height="24" field="Ritual_Expandido__Primária_3" compilerOrder="94"/>
+            </layout>&#xD;
+            <layout left="510" top="917" width="18" height="23" compilerOrder="95">
+                <imageCheckBox checkedImage="images/on.png" uncheckedImage="images/off.png" left="0" top="0" width="18" height="24" field="Ritual_Expandido__Primária_4" compilerOrder="96"/>
+            </layout>&#xD;
+            <layout left="523" top="917" width="18" height="23" compilerOrder="97">
+                <imageCheckBox checkedImage="images/on.png" uncheckedImage="images/off.png" left="0" top="0" width="18" height="24" field="Ritual_Expandido__Primária_5" compilerOrder="98"/>
+            </layout>&#xD;
+            <layout left="545" top="917" width="18" height="23" compilerOrder="99">
+                <imageCheckBox checkedImage="images/on.png" uncheckedImage="images/off.png" left="0" top="0" width="18" height="24" field="Ritual_Expandido__Primária_6" compilerOrder="100"/>
+            </layout>&#xD;
+            <layout left="558" top="917" width="18" height="23" compilerOrder="101">
+                <imageCheckBox checkedImage="images/on.png" uncheckedImage="images/off.png" left="0" top="0" width="18" height="24" field="Ritual_Expandido__Primária_7" compilerOrder="102"/>
+            </layout>&#xD;
+            <layout left="572" top="917" width="18" height="23" compilerOrder="103">
+                <imageCheckBox checkedImage="images/on.png" uncheckedImage="images/off.png" left="0" top="0" width="18" height="24" field="Ritual_Expandido__Primária_8" compilerOrder="104"/>
+            </layout>&#xD;
+            <layout left="304" top="918" width="170" height="19" compilerOrder="149">
+                <edit transparent="true" fontSize="14" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="170" height="20" field="Ritual_Expandido__Doutrina_Primária" compilerOrder="150"/>
+            </layout>&#xD;
+            <layout left="185" top="960" width="18" height="23" compilerOrder="153">
+                <imageCheckBox checkedImage="images/on.png" uncheckedImage="images/off.png" left="0" top="0" width="18" height="24" field="Ritual_Expandido__Secundária_1A" compilerOrder="154"/>
+            </layout>&#xD;
+            <layout left="199" top="960" width="18" height="23" compilerOrder="155">
+                <imageCheckBox checkedImage="images/on.png" uncheckedImage="images/off.png" left="0" top="0" width="18" height="24" field="Ritual_Expandido__Secundária_1B" compilerOrder="156"/>
+            </layout>&#xD;
+            <layout left="212" top="960" width="18" height="23" compilerOrder="157">
+                <imageCheckBox checkedImage="images/on.png" uncheckedImage="images/off.png" left="0" top="0" width="18" height="24" field="Ritual_Expandido__Secundária_1C" compilerOrder="158"/>
+            </layout>&#xD;
+            <layout left="226" top="960" width="18" height="23" compilerOrder="159">
+                <imageCheckBox checkedImage="images/on.png" uncheckedImage="images/off.png" left="0" top="0" width="18" height="24" field="Ritual_Expandido__Secundária_1D" compilerOrder="160"/>
+            </layout>&#xD;
+            <layout left="240" top="960" width="18" height="23" compilerOrder="161">
+                <imageCheckBox checkedImage="images/on.png" uncheckedImage="images/off.png" left="0" top="0" width="18" height="24" field="Ritual_Expandido__Secundária_1E" compilerOrder="162"/>
+            </layout>&#xD;
+            <layout left="261" top="960" width="18" height="23" compilerOrder="163">
+                <imageCheckBox checkedImage="images/on.png" uncheckedImage="images/off.png" left="0" top="0" width="18" height="24" field="Ritual_Expandido__Secundária_1F" compilerOrder="164"/>
+            </layout>&#xD;
+            <layout left="275" top="960" width="18" height="23" compilerOrder="165">
+                <imageCheckBox checkedImage="images/on.png" uncheckedImage="images/off.png" left="0" top="0" width="18" height="24" field="Ritual_Expandido__Secundária_1G" compilerOrder="166"/>
+            </layout>&#xD;
+            <layout left="289" top="960" width="18" height="23" compilerOrder="167">
+                <imageCheckBox checkedImage="images/on.png" uncheckedImage="images/off.png" left="0" top="0" width="18" height="24" field="Ritual_Expandido__Secundária_1H" compilerOrder="168"/>
+            </layout>&#xD;
+            <layout left="440" top="960" width="18" height="23" compilerOrder="171">
+                <imageCheckBox checkedImage="images/on.png" uncheckedImage="images/off.png" left="0" top="0" width="18" height="24" field="Ritual_Expandido__Secundária_2A" compilerOrder="172"/>
+            </layout>&#xD;
+            <layout left="454" top="960" width="18" height="23" compilerOrder="173">
+                <imageCheckBox checkedImage="images/on.png" uncheckedImage="images/off.png" left="0" top="0" width="18" height="24" field="Ritual_Expandido__Secundária_2B" compilerOrder="174"/>
+            </layout>&#xD;
+            <layout left="467" top="960" width="18" height="23" compilerOrder="175">
+                <imageCheckBox checkedImage="images/on.png" uncheckedImage="images/off.png" left="0" top="0" width="18" height="24" field="Ritual_Expandido__Secundária_2C" compilerOrder="176"/>
+            </layout>&#xD;
+            <layout left="481" top="960" width="18" height="23" compilerOrder="177">
+                <imageCheckBox checkedImage="images/on.png" uncheckedImage="images/off.png" left="0" top="0" width="18" height="24" field="Ritual_Expandido__Secundária_2D" compilerOrder="178"/>
+            </layout>&#xD;
+            <layout left="495" top="960" width="18" height="23" compilerOrder="179">
+                <imageCheckBox checkedImage="images/on.png" uncheckedImage="images/off.png" left="0" top="0" width="18" height="24" field="Ritual_Expandido__Secundária_2E" compilerOrder="180"/>
+            </layout>&#xD;
+            <layout left="516" top="960" width="18" height="23" compilerOrder="181">
+                <imageCheckBox checkedImage="images/on.png" uncheckedImage="images/off.png" left="0" top="0" width="18" height="24" field="Ritual_Expandido__Secundária_2F" compilerOrder="182"/>
+            </layout>&#xD;
+            <layout left="530" top="960" width="18" height="23" compilerOrder="183">
+                <imageCheckBox checkedImage="images/on.png" uncheckedImage="images/off.png" left="0" top="0" width="18" height="24" field="Ritual_Expandido__Secundária_2G" compilerOrder="184"/>
+            </layout>&#xD;
+            <layout left="544" top="960" width="18" height="23" compilerOrder="185">
+                <imageCheckBox checkedImage="images/on.png" uncheckedImage="images/off.png" left="0" top="0" width="18" height="24" field="Ritual_Expandido__Secundária_2H" compilerOrder="186"/>
+            </layout>&#xD;
+            <layout left="705" top="960" width="18" height="23" compilerOrder="187">
+                <imageCheckBox checkedImage="images/on.png" uncheckedImage="images/off.png" left="0" top="0" width="18" height="24" field="Ritual_Expandido__Secundária_3A" compilerOrder="188"/>
+            </layout>&#xD;
+            <layout left="719" top="960" width="18" height="23" compilerOrder="189">
+                <imageCheckBox checkedImage="images/on.png" uncheckedImage="images/off.png" left="0" top="0" width="18" height="24" field="Ritual_Expandido__Secundária_3B" compilerOrder="190"/>
+            </layout>&#xD;
+            <layout left="733" top="960" width="18" height="23" compilerOrder="191">
+                <imageCheckBox checkedImage="images/on.png" uncheckedImage="images/off.png" left="0" top="0" width="18" height="24" field="Ritual_Expandido__Secundária_3C" compilerOrder="192"/>
+            </layout>&#xD;
+            <layout left="747" top="960" width="18" height="23" compilerOrder="193">
+                <imageCheckBox checkedImage="images/on.png" uncheckedImage="images/off.png" left="0" top="0" width="18" height="24" field="Ritual_Expandido__Secundária_3D" compilerOrder="194"/>
+            </layout>&#xD;
+            <layout left="760" top="960" width="18" height="23" compilerOrder="195">
+                <imageCheckBox checkedImage="images/on.png" uncheckedImage="images/off.png" left="0" top="0" width="18" height="24" field="Ritual_Expandido__Secundária_3E" compilerOrder="196"/>
+            </layout>&#xD;
+            <layout left="782" top="960" width="18" height="23" compilerOrder="197">
+                <imageCheckBox checkedImage="images/on.png" uncheckedImage="images/off.png" left="0" top="0" width="18" height="24" field="Ritual_Expandido__Secundária_3F" compilerOrder="198"/>
+            </layout>&#xD;
+            <layout left="795" top="960" width="18" height="23" compilerOrder="199">
+                <imageCheckBox checkedImage="images/on.png" uncheckedImage="images/off.png" left="0" top="0" width="18" height="24" field="Ritual_Expandido__Secundária_3G" compilerOrder="200"/>
+            </layout>&#xD;
+            <layout left="809" top="960" width="18" height="23" compilerOrder="201">
+                <imageCheckBox checkedImage="images/on.png" uncheckedImage="images/off.png" left="0" top="0" width="18" height="24" field="Ritual_Expandido__Secundária_3H" compilerOrder="202"/>
+            </layout>&#xD;
+            <layout left="67" top="961" width="124" height="60" compilerOrder="151">
+                <textEditor transparent="true" fontSize="14" fontColor="#000000" left="0" top="0" width="124" height="60" field="Ritual_Expandido__Doutrina_Secundária_1" compilerOrder="152"/>
+            </layout>&#xD;
+
+            <layout left="126" top="993" width="714" height="60" compilerOrder="205">
+                <textEditor transparent="true" fontSize="14" fontColor="#000000" left="0" top="0" width="714" height="60" field="Ritual_Expandido__Descrição_1" compilerOrder="206"/>
+            </layout>&#xD;
+
+            <layout left="116" top="1058" width="722" height="60" compilerOrder="211">
+                <textEditor transparent="true" fontSize="14" fontColor="#000000" left="0" top="0" width="722" height="60" field="Ritual_Expandido__Sistema_1" compilerOrder="212"/>
+            </layout>&#xD;
+   
+            <layout left="124" top="1123" width="714" height="40" compilerOrder="217">
+                <textEditor transparent="true" fontSize="14" fontColor="#000000" left="0" top="0" width="714" height="40" field="Ritual_Expandido__Tormento_1" compilerOrder="218"/>
+            </layout>&#xD;
+
+            <layout left="127" top="1168" width="711" height="20" compilerOrder="221">
+                <textEditor left="0" top="0" width="711" height="20" fontSize="14" fontColor="#000000" field="Ritual_Expandido__Variações" transparent="true" compilerOrder="222"/>
+            </layout>&#xD;
+        </rectangle>
+    </scrollBox>
+</form>

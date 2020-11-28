@@ -1,0 +1,278 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmkpta6_svg" align="client" theme="light" margins="{top=1}">
+    <style>#frmkpta6_svg path {color: black; strokeColor: black; mode: stretch;} &#xD;
+#frmkpta6_svg label {fontColor: black; textTrimming: none; wordWrap: false; autoSize: true;}</style>
+    <scrollBox align="client">
+        <rectangle width="893" height="1263" color="white">&#xD;
+            <image left="0" top="0" width="893" height="1263" src="images/seg.png" style="stretch" optimize="true" compilerOrder="0"/>&#xD;
+            <layout left="271" top="188" width="261" height="19" compilerOrder="3">
+                <edit transparent="true" fontSize="13" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="261" height="20" field="Seguidores__Nome_1" compilerOrder="4"/>
+            </layout>&#xD;
+            <layout left="591" top="188" width="151" height="19" compilerOrder="5">
+                <edit transparent="true" fontSize="13" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="151" height="20" field="Seguidores__Definição_1" compilerOrder="6"/>
+            </layout>&#xD;
+            <layout left="765" top="188" width="18" height="23" compilerOrder="9">
+                <imageCheckBox checkedImage="images/on.png" uncheckedImage="images/off.png" left="0" top="0" width="18" height="24" field="Seguidores__Fé_1A" compilerOrder="10"/>
+            </layout>&#xD;
+            <layout left="779" top="188" width="18" height="23" compilerOrder="11">
+                <imageCheckBox checkedImage="images/on.png" uncheckedImage="images/off.png" left="0" top="0" width="18" height="24" field="Seguidores__Fé_1B" compilerOrder="12"/>
+            </layout>&#xD;
+            <layout left="793" top="188" width="18" height="23" compilerOrder="13">
+                <imageCheckBox checkedImage="images/on.png" uncheckedImage="images/off.png" left="0" top="0" width="18" height="24" field="Seguidores__Fé_1C" compilerOrder="14"/>
+            </layout>&#xD;
+            <layout left="806" top="188" width="18" height="23" compilerOrder="15">
+                <imageCheckBox checkedImage="images/on.png" uncheckedImage="images/off.png" left="0" top="0" width="18" height="24" field="Seguidores__Fé_1D" compilerOrder="16"/>
+            </layout>&#xD;
+            <layout left="820" top="188" width="18" height="23" compilerOrder="17">
+                <imageCheckBox checkedImage="images/on.png" uncheckedImage="images/off.png" left="0" top="0" width="18" height="24" field="Seguidores__Fé_1E" compilerOrder="18"/>
+            </layout>&#xD;
+            <layout left="301" top="216" width="144" height="19" compilerOrder="19">
+                <edit transparent="true" fontSize="13" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="144" height="20" field="Seguidores__Lealdade_1" compilerOrder="20"/>
+            </layout>&#xD;
+            <layout left="449" top="216" width="388" height="19" compilerOrder="21">
+                <edit transparent="true" fontSize="13" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="388" height="20" field="Seguidores__Lealdade_1A" compilerOrder="22"/>
+            </layout>&#xD;
+            <layout left="346" top="237" width="359" height="19" compilerOrder="23">
+                <edit transparent="true" fontSize="13" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="359" height="20" field="Seguidores__Dádivas_1B" compilerOrder="24"/>
+            </layout>&#xD;
+            <layout left="779" top="254" width="50" height="7" compilerOrder="25">
+                <textEditor left="0" top="0" width="50" height="7" fontSize="18" fontColor="#000000" field="Seguidores__Fé_Oferecida_1" transparent="true" compilerOrder="26"/>
+            </layout>&#xD;
+            <layout left="265" top="282" width="267" height="19" compilerOrder="29">
+                <edit transparent="true" fontSize="13" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="267" height="20" field="Seguidores__1_2" compilerOrder="30"/>
+            </layout>&#xD;
+            <layout left="562" top="282" width="267" height="19" compilerOrder="31">
+                <edit transparent="true" fontSize="13" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="267" height="20" field="Seguidores__1_5" compilerOrder="32"/>
+            </layout>&#xD;
+            <layout left="265" top="305" width="267" height="19" compilerOrder="27">
+                <edit transparent="true" fontSize="13" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="267" height="20" field="Seguidores__1_3" compilerOrder="28"/>
+            </layout>&#xD;
+            <layout left="265" top="327" width="267" height="19" compilerOrder="35">
+                <edit transparent="true" fontSize="13" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="267" height="20" field="Seguidores__1_4" compilerOrder="36"/>
+            </layout>&#xD;
+            <layout left="536" top="327" width="290" height="19" compilerOrder="33">
+                <edit transparent="true" fontSize="13" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="290" height="20" field="Seguidores__Demônio_1" compilerOrder="34"/>
+            </layout>&#xD;
+            <layout left="764" top="392" width="18" height="23" compilerOrder="133">
+                <imageCheckBox checkedImage="images/on.png" uncheckedImage="images/off.png" left="0" top="0" width="18" height="24" field="Seguidores__Fé_2A" compilerOrder="134"/>
+            </layout>&#xD;
+            <layout left="778" top="392" width="18" height="23" compilerOrder="137">
+                <imageCheckBox checkedImage="images/on.png" uncheckedImage="images/off.png" left="0" top="0" width="18" height="24" field="Seguidores__Fé_2B" compilerOrder="138"/>
+            </layout>&#xD;
+            <layout left="792" top="392" width="18" height="23" compilerOrder="143">
+                <imageCheckBox checkedImage="images/on.png" uncheckedImage="images/off.png" left="0" top="0" width="18" height="24" field="Seguidores__Fé_2C" compilerOrder="144"/>
+            </layout>&#xD;
+            <layout left="806" top="392" width="18" height="23" compilerOrder="149">
+                <imageCheckBox checkedImage="images/on.png" uncheckedImage="images/off.png" left="0" top="0" width="18" height="24" field="Seguidores__Fé_2D" compilerOrder="150"/>
+            </layout>&#xD;
+            <layout left="820" top="392" width="18" height="23" compilerOrder="155">
+                <imageCheckBox checkedImage="images/on.png" uncheckedImage="images/off.png" left="0" top="0" width="18" height="24" field="Seguidores__Fé_2E" compilerOrder="156"/>
+            </layout>&#xD;
+            <layout left="270" top="393" width="261" height="19" compilerOrder="37">
+                <edit transparent="true" fontSize="13" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="261" height="20" field="Seguidores__Nome_2" compilerOrder="38"/>
+            </layout>&#xD;
+            <layout left="590" top="393" width="151" height="19" compilerOrder="39">
+                <edit transparent="true" fontSize="13" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="151" height="20" field="Seguidores__Definição_2" compilerOrder="40"/>
+            </layout>&#xD;
+            <layout left="301" top="420" width="144" height="19" compilerOrder="45">
+                <edit transparent="true" fontSize="13" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="144" height="20" field="Seguidores__Lealdade_2" compilerOrder="46"/>
+            </layout>&#xD;
+            <layout left="448" top="420" width="388" height="19" compilerOrder="47">
+                <edit transparent="true" fontSize="13" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="388" height="20" field="Seguidores__Lealdade_2A" compilerOrder="48"/>
+            </layout>&#xD;
+            <layout left="346" top="442" width="359" height="19" compilerOrder="49">
+                <edit transparent="true" fontSize="13" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="359" height="20" field="Seguidores__Dádivas_2B" compilerOrder="50"/>
+            </layout>&#xD;
+            <layout left="781" top="458" width="50" height="7" compilerOrder="51">
+                <textEditor left="0" top="0" width="50" height="7" fontSize="18" fontColor="#000000" field="Seguidores__Fé_Oferecida_2" transparent="true" compilerOrder="52"/>
+            </layout>&#xD;
+            <layout left="265" top="487" width="267" height="19" compilerOrder="53">
+                <edit transparent="true" fontSize="13" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="267" height="20" field="Seguidores__2_1" compilerOrder="54"/>
+            </layout>&#xD;
+            <layout left="561" top="487" width="267" height="19" compilerOrder="55">
+                <edit transparent="true" fontSize="13" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="267" height="20" field="Seguidores__2_5" compilerOrder="56"/>
+            </layout>&#xD;
+            <layout left="265" top="509" width="267" height="19" compilerOrder="57">
+                <edit transparent="true" fontSize="13" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="267" height="20" field="Seguidores__2_3" compilerOrder="58"/>
+            </layout>&#xD;
+            <layout left="265" top="531" width="267" height="19" compilerOrder="59">
+                <edit transparent="true" fontSize="13" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="267" height="20" field="Seguidores__2_4" compilerOrder="60"/>
+            </layout>&#xD;
+            <layout left="535" top="531" width="290" height="19" compilerOrder="61">
+                <edit transparent="true" fontSize="13" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="290" height="20" field="Seguidores__Demônio_2" compilerOrder="62"/>
+            </layout>&#xD;
+            <layout left="271" top="597" width="261" height="19" compilerOrder="63">
+                <edit transparent="true" fontSize="13" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="261" height="20" field="Seguidores__Nome_3" compilerOrder="64"/>
+            </layout>&#xD;
+            <layout left="592" top="597" width="151" height="19" compilerOrder="65">
+                <edit transparent="true" fontSize="13" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="151" height="20" field="Seguidores__Definição_3" compilerOrder="66"/>
+            </layout>&#xD;
+            <layout left="766" top="597" width="18" height="23" compilerOrder="131">
+                <imageCheckBox checkedImage="images/on.png" uncheckedImage="images/off.png" left="0" top="0" width="18" height="24" field="Seguidores__Fé_3A" compilerOrder="132"/>
+            </layout>&#xD;
+            <layout left="779" top="597" width="18" height="23" compilerOrder="139">
+                <imageCheckBox checkedImage="images/on.png" uncheckedImage="images/off.png" left="0" top="0" width="18" height="24" field="Seguidores__Fé_3B" compilerOrder="140"/>
+            </layout>&#xD;
+            <layout left="793" top="597" width="18" height="23" compilerOrder="145">
+                <imageCheckBox checkedImage="images/on.png" uncheckedImage="images/off.png" left="0" top="0" width="18" height="24" field="Seguidores__Fé_3C" compilerOrder="146"/>
+            </layout>&#xD;
+            <layout left="807" top="597" width="18" height="23" compilerOrder="151">
+                <imageCheckBox checkedImage="images/on.png" uncheckedImage="images/off.png" left="0" top="0" width="18" height="24" field="Seguidores__Fé_3D" compilerOrder="152"/>
+            </layout>&#xD;
+            <layout left="821" top="597" width="18" height="23" compilerOrder="157">
+                <imageCheckBox checkedImage="images/on.png" uncheckedImage="images/off.png" left="0" top="0" width="18" height="24" field="Seguidores__Fé_3E" compilerOrder="158"/>
+            </layout>&#xD;
+            <layout left="302" top="625" width="144" height="19" compilerOrder="67">
+                <edit transparent="true" fontSize="13" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="144" height="20" field="Seguidores__Lealdade_3" compilerOrder="68"/>
+            </layout>&#xD;
+            <layout left="450" top="625" width="388" height="19" compilerOrder="69">
+                <edit transparent="true" fontSize="13" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="388" height="20" field="Seguidores__Lealdade_3A" compilerOrder="70"/>
+            </layout>&#xD;
+            <layout left="346" top="646" width="359" height="19" compilerOrder="71">
+                <edit transparent="true" fontSize="13" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="359" height="20" field="Seguidores__Dádivas_3B" compilerOrder="72"/>
+            </layout>&#xD;
+            <layout left="781" top="663" width="50" height="7" compilerOrder="73">
+                <textEditor left="0" top="0" width="50" height="7" fontSize="18" fontColor="#000000" field="Seguidores__Fé_Oferecida_3" transparent="true" compilerOrder="74"/>
+            </layout>&#xD;
+            <layout left="268" top="692" width="267" height="19" compilerOrder="75">
+                <edit transparent="true" fontSize="13" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="267" height="20" field="Seguidores__3_1" compilerOrder="76"/>
+            </layout>&#xD;
+            <layout left="564" top="692" width="267" height="19" compilerOrder="77">
+                <edit transparent="true" fontSize="13" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="267" height="20" field="Seguidores__3_5" compilerOrder="78"/>
+            </layout>&#xD;
+            <layout left="268" top="714" width="267" height="19" compilerOrder="79">
+                <edit transparent="true" fontSize="13" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="267" height="20" field="Seguidores__3_2" compilerOrder="80"/>
+            </layout>&#xD;
+            <layout left="268" top="736" width="267" height="19" compilerOrder="81">
+                <edit transparent="true" fontSize="13" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="267" height="20" field="Seguidores__3_4" compilerOrder="82"/>
+            </layout>&#xD;
+            <layout left="538" top="736" width="290" height="19" compilerOrder="83">
+                <edit transparent="true" fontSize="13" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="290" height="20" field="Seguidores__Demônio_3" compilerOrder="84"/>
+            </layout>&#xD;
+            <layout left="272" top="801" width="261" height="19" compilerOrder="85">
+                <edit transparent="true" fontSize="13" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="261" height="20" field="Seguidores__Nome_4" compilerOrder="86"/>
+            </layout>&#xD;
+            <layout left="592" top="801" width="151" height="19" compilerOrder="87">
+                <edit transparent="true" fontSize="13" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="151" height="20" field="Seguidores__Definição_4" compilerOrder="88"/>
+            </layout>&#xD;
+            <layout left="766" top="801" width="18" height="23" compilerOrder="97">
+                <imageCheckBox checkedImage="images/on.png" uncheckedImage="images/off.png" left="0" top="0" width="18" height="24" field="Seguidores__Fé_4A" compilerOrder="98"/>
+            </layout>&#xD;
+            <layout left="780" top="801" width="18" height="23" compilerOrder="99">
+                <imageCheckBox checkedImage="images/on.png" uncheckedImage="images/off.png" left="0" top="0" width="18" height="24" field="Seguidores__Fé_4B" compilerOrder="100"/>
+            </layout>&#xD;
+            <layout left="794" top="801" width="18" height="23" compilerOrder="101">
+                <imageCheckBox checkedImage="images/on.png" uncheckedImage="images/off.png" left="0" top="0" width="18" height="24" field="Seguidores__Fé_4C" compilerOrder="102"/>
+            </layout>&#xD;
+            <layout left="808" top="801" width="18" height="23" compilerOrder="103">
+                <imageCheckBox checkedImage="images/on.png" uncheckedImage="images/off.png" left="0" top="0" width="18" height="24" field="Seguidores__Fé_4D" compilerOrder="104"/>
+            </layout>&#xD;
+            <layout left="821" top="801" width="18" height="23" compilerOrder="105">
+                <imageCheckBox checkedImage="images/on.png" uncheckedImage="images/off.png" left="0" top="0" width="18" height="24" field="Seguidores__Fé_4E" compilerOrder="106"/>
+            </layout>&#xD;
+            <layout left="303" top="829" width="144" height="19" compilerOrder="107">
+                <edit transparent="true" fontSize="13" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="144" height="20" field="Seguidores__Lealdade_4" compilerOrder="108"/>
+            </layout>&#xD;
+            <layout left="450" top="829" width="388" height="19" compilerOrder="109">
+                <edit transparent="true" fontSize="13" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="388" height="20" field="Seguidores__Lealdade_4A" compilerOrder="110"/>
+            </layout>&#xD;
+            <layout left="348" top="850" width="359" height="19" compilerOrder="111">
+                <edit transparent="true" fontSize="13" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="359" height="20" field="Seguidores__Dádivas_4B" compilerOrder="112"/>
+            </layout>&#xD;
+            <layout left="780" top="867" width="50" height="7" compilerOrder="113">
+                <textEditor left="0" top="0" width="50" height="7" fontSize="18" fontColor="#000000" field="Seguidores__Fé_Oferecida_4" transparent="true" compilerOrder="114"/>
+            </layout>&#xD;
+            <layout left="267" top="896" width="267" height="19" compilerOrder="115">
+                <edit transparent="true" fontSize="13" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="267" height="20" field="Seguidores__4_1" compilerOrder="116"/>
+            </layout>&#xD;
+            <layout left="563" top="896" width="267" height="19" compilerOrder="117">
+                <edit transparent="true" fontSize="13" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="267" height="20" field="Seguidores__4_5" compilerOrder="118"/>
+            </layout>&#xD;
+            <layout left="267" top="918" width="267" height="19" compilerOrder="119">
+                <edit transparent="true" fontSize="13" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="267" height="20" field="Seguidores__4_2" compilerOrder="120"/>
+            </layout>&#xD;
+            <layout left="267" top="940" width="267" height="19" compilerOrder="121">
+                <edit transparent="true" fontSize="13" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="267" height="20" field="Seguidores__4_3" compilerOrder="122"/>
+            </layout>&#xD;
+            <layout left="537" top="940" width="290" height="19" compilerOrder="123">
+                <edit transparent="true" fontSize="13" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="290" height="20" field="Seguidores__Demônio_4" compilerOrder="124"/>
+            </layout>&#xD;
+            <layout left="272" top="1006" width="261" height="19" compilerOrder="127">
+                <edit transparent="true" fontSize="13" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="261" height="20" field="Seguidores__Nome_5" compilerOrder="128"/>
+            </layout>&#xD;
+            <layout left="592" top="1006" width="151" height="19" compilerOrder="129">
+                <edit transparent="true" fontSize="13" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="151" height="20" field="Seguidores__Definição_5" compilerOrder="130"/>
+            </layout>&#xD;
+            <layout left="766" top="1006" width="18" height="23" compilerOrder="135">
+                <imageCheckBox checkedImage="images/on.png" uncheckedImage="images/off.png" left="0" top="0" width="18" height="24" field="Seguidores__Fé_5A" compilerOrder="136"/>
+            </layout>&#xD;
+            <layout left="780" top="1006" width="18" height="23" compilerOrder="141">
+                <imageCheckBox checkedImage="images/on.png" uncheckedImage="images/off.png" left="0" top="0" width="18" height="24" field="Seguidores__Fé_5B" compilerOrder="142"/>
+            </layout>&#xD;
+            <layout left="794" top="1006" width="18" height="23" compilerOrder="147">
+                <imageCheckBox checkedImage="images/on.png" uncheckedImage="images/off.png" left="0" top="0" width="18" height="24" field="Seguidores__Fé_5C" compilerOrder="148"/>
+            </layout>&#xD;
+            <layout left="808" top="1006" width="18" height="23" compilerOrder="153">
+                <imageCheckBox checkedImage="images/on.png" uncheckedImage="images/off.png" left="0" top="0" width="18" height="24" field="Seguidores__Fé_5D" compilerOrder="154"/>
+            </layout>&#xD;
+            <layout left="821" top="1006" width="18" height="23" compilerOrder="159">
+                <imageCheckBox checkedImage="images/on.png" uncheckedImage="images/off.png" left="0" top="0" width="18" height="24" field="Seguidores__Fé_5E" compilerOrder="160"/>
+            </layout>&#xD;
+            <layout left="303" top="1034" width="144" height="19" compilerOrder="163">
+                <edit transparent="true" fontSize="13" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="144" height="20" field="Seguidores__Lealdade_5" compilerOrder="164"/>
+            </layout>&#xD;
+            <layout left="450" top="1034" width="388" height="19" compilerOrder="165">
+                <edit transparent="true" fontSize="13" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="388" height="20" field="Seguidores__Lealdade_5A" compilerOrder="166"/>
+            </layout>&#xD;
+            <layout left="348" top="1055" width="359" height="19" compilerOrder="167">
+                <edit transparent="true" fontSize="13" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="359" height="20" field="Seguidores__Dádivas_5B" compilerOrder="168"/>
+            </layout>&#xD;
+            <layout left="780" top="1072" width="50" height="7" compilerOrder="169">
+                <textEditor left="0" top="0" width="50" height="7" fontSize="18" fontColor="#000000" field="Seguidores__Fé_Oferecida_5" transparent="true" compilerOrder="170"/>
+            </layout>&#xD;
+            <layout left="267" top="1100" width="267" height="19" compilerOrder="171">
+                <edit transparent="true" fontSize="13" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="267" height="20" field="Seguidores__5_1" compilerOrder="172"/>
+            </layout>&#xD;
+            <layout left="563" top="1100" width="267" height="19" compilerOrder="173">
+                <edit transparent="true" fontSize="13" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="267" height="20" field="Seguidores__5_4" compilerOrder="174"/>
+            </layout>&#xD;
+            <layout left="267" top="1123" width="267" height="19" compilerOrder="175">
+                <edit transparent="true" fontSize="13" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="267" height="20" field="Seguidores__5_2" compilerOrder="176"/>
+            </layout>&#xD;
+            <layout left="267" top="1145" width="267" height="19" compilerOrder="177">
+                <edit transparent="true" fontSize="13" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="267" height="20" field="Seguidores__5_3" compilerOrder="178"/>
+            </layout>&#xD;
+            <layout left="537" top="1145" width="290" height="19" compilerOrder="179">
+                <edit transparent="true" fontSize="13" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="290" height="20" field="Seguidores__Demônio_5" compilerOrder="180"/>
+            </layout>&#xD;
+			
+                <image field="imagems1" left="63" top="199" editable="true" style="proportional" width="151" height="153" compilerOrder="8"/>
+				
+                <image field="imagems2" style="proportional" editable="true" left="63" top="403" width="151" height="153" compilerOrder="42"/>
+                     
+                <image field="imagems3" style="proportional" editable="true" left="63" top="607" width="151" height="153" compilerOrder="44"/>
+	
+                <image field="imagems4" style="proportional" editable="true" left="63" top="813" width="151" height="153" compilerOrder="90"/>
+
+                <image field="imagems5" style="proportional" editable="true" left="63" top="1018" width="151" height="153" compilerOrder="162"/>
+			
+			            <image left="0" top="0" width="893" height="1263" src="images/2.png" style="stretch" optimize="true" compilerOrder="0"/>&#xD;
+            <layout left="780" top="236" width="56" height="18" compilerOrder="1">
+                <edit transparent="true" fontSize="14" fontColor="#000000" vertTextAlign="center" left="0" top="0" width="56" height="19" field="untitled9" compilerOrder="2"/>
+            </layout>&#xD;
+            <layout left="782" top="444" width="54" height="15" compilerOrder="3">
+                <edit transparent="true" fontSize="14" fontColor="#000000" vertTextAlign="center" left="0" top="0" width="54" height="16" field="untitled10" compilerOrder="4"/>
+            </layout>&#xD;
+            <layout left="782" top="649" width="54" height="14" compilerOrder="5">
+                <edit transparent="true" fontSize="14" fontColor="#000000" vertTextAlign="center" left="0" top="0" width="54" height="15" field="untitled11" compilerOrder="6"/>
+            </layout>&#xD;
+            <layout left="782" top="853" width="54" height="14" compilerOrder="7">
+                <edit transparent="true" fontSize="14" fontColor="#000000" vertTextAlign="center" left="0" top="0" width="54" height="15" field="untitled93" compilerOrder="8"/>
+            </layout>&#xD;
+            <layout left="780" top="1057" width="54" height="14" compilerOrder="9">
+                <edit transparent="true" fontSize="14" fontColor="#000000" vertTextAlign="center" left="0" top="0" width="54" height="15" field="untitled94" compilerOrder="10"/>
+            </layout>&#xD;
+			
+        </rectangle>
+    </scrollBox>
+</form>

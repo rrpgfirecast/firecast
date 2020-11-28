@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmLR" height="57">    
+
+<layout align="client" margins="{bottom=2}">
+
+				<!-- Botão para apagar o item da lista -->
+                <button left="4" top="27" width="32" text="X" onClick="NDB.deleteNode(sheet);"/>
+
+				<!-- O título do item que aparece na lista -->
+						<rectangle height="57" width="700" left="34" color="#FDF5E6">	
+								
+								<rectangle left="15" height="30" width="50" color="#00000000">
+								 <label autoSize="true" wordWrap="false" horzTextAlign="center" fontSize="16" fontStyle="bold" fontColor="Black" text="Atributo:"/>
+								</rectangle>
+								
+								<rectangle top="27" left="5" height="30" width="230">
+										<edit fontSize="18" horzTextAlign="center" fontStyle="bold" align="client" field="campoTitulo" hitTest="true" hint="Atributo"/>
+								</rectangle>
+								
+								<rectangle left="235" height="30" width="100" color="#00000000">
+								 <label autoSize="true" wordWrap="false" horzTextAlign="center" fontSize="16" fontStyle="bold" fontColor="Black" text="Qtd. de Dados:"/>
+								</rectangle>
+ 
+								<rectangle top="27" left="245" height="30" width="90">
+										<edit fontSize="18" fontStyle="bold" align="client" horzTextAlign="center" field="RolP" hitTest="true" hint="Quantidade de Dados do Atributo"/>
+								</rectangle>
+								
+								<rectangle left="365" height="30" color="#00000000">
+										<label autoSize="true" wordWrap="false" horzTextAlign="center" fontSize="16" fontStyle="bold" fontColor="Black" text="Habilidade"/>
+								</rectangle>
+								
+								<rectangle top="27" left="355" height="30" width="230">
+										<edit fontSize="18" horzTextAlign="center" fontStyle="bold" align="client" field="campoTitulo2" hitTest="true" hint="Habilidade"/>
+								</rectangle>
+								
+								<rectangle left="585" height="30" width="100" color="#00000000">
+								 <label autoSize="true" wordWrap="false" horzTextAlign="center" fontSize="16" fontStyle="bold" fontColor="Black" text="Qtd. de Dados:"/>
+								</rectangle>
+								
+ 								<rectangle top="27" left="595" height="30" width="90">
+										<edit fontSize="18" fontStyle="bold" align="client" field="RolS" horzTextAlign="center" hitTest="true" hint="Qtd. Dados Habilidade"/>										
+								</rectangle>
+								
+						</rectangle>
+				
+				<!-- Botão para a macro -->
+				
+				<button left="735" top="27" width="32" text="R" hitTest="true" hint="Rolar teste com dif 6">	
+				
+				<event name="onClick">
+				
+			            local dado1 = tonumber(sheet.RolP)
+					    local dado2 = tonumber(sheet.RolS)
+						local nomeStr = "Teste de: " .. (sheet.campoTitulo or " ") .. "+" .. (sheet.campoTitulo2 or " ")
+						
+						local quantidade = tonumber((dado1 or 0) + (dado2 or 0))
+						
+						local teste = quantidade .. "d10" .. ">" .. "6"
+						
+						local rolagem = Firecast.interpretarRolagem(teste)
+
+                        if not rolagem.possuiAlgumDado then
+                                -- se o usuario não tiver preenchido qual dado rolar,
+                                -- vamos adicionar um 1d20 + na "fórmula da rolagem"
+                                rolagem = Firecast.interpretarRolagem("1d10"):concatenar(rolagem);
+                        end; 
+						
+                       local mesaDoPersonagem = Firecast.getMesaDe(sheet);
+
+                       if mesaDoPersonagem ~= nil then
+                               mesaDoPersonagem.chat:rolarDados(rolagem, nomeStr);
+                       end;
+				
+				</event>		   
+			
+			</button>
+</layout>	
+</form>
