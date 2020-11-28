@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmTSC5_svg" align="client" theme="light" margins="{top=1}">
+    <style>#frmTSC5_svg path {color: black; strokeColor: black; mode: stretch;} &#xD;
+#frmTSC5_svg label {fontColor: black; textTrimming: none; wordWrap: false; autoSize: true;}</style>
+    <scrollBox align="client">
+        <rectangle width="1049" height="1488" color="white">&#xD;
+            <image left="0" top="0" width="1049" height="1488" src="images/bg.png" style="stretch" optimize="true" compilerOrder="0"/>&#xD;
+            <layout left="588" top="218" width="425" height="392" compilerOrder="3">
+                <image editable="true" style="autoFit" field="img" compilerOrder="4"
+				left="0" top="0" width="425" height="393"/>
+            </layout>&#xD;
+            <layout left="30" top="233" width="533" height="385" compilerOrder="1">
+                <textEditor transparent="true" left="0" fontSize="16" top="0" width="533" height="365" field="anotações" compilerOrder="2"/>
+            </layout>&#xD;
+            <layout left="95" top="688" width="838" height="682" compilerOrder="5">
+                <richEdit left="0" top="0" width="838" height="683" field="bg" compilerOrder="6"/>
+            </layout>&#xD;
+        </rectangle>
+    </scrollBox>
+</form>
