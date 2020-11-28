@@ -118,7 +118,7 @@
             <dataType id="Ambesek.FichaDnDNext" title="Ficha D&amp;D Next"/>
         </dataTypes>
     </element>
-    <element id="Ambesek.Nefertyne.Reinos" name="Ficha Reinos d20" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20de%20Reinos%20d20/output/Ficha%20de%20Reinos%20d20.rpk?raw=true" fileName="Ficha de Reinos d20.rpk" repositoryPath="Sheets/Ficha de Reinos d20/" author="Ambesek" description="Ficha para descrição de Reinos e Cidades seguindo o padrão d20system do Livro do Mestre." version="0.7.1" compilationDate="27112019000028" compilationDigest="71cb881c61675467a579ef70e10c15d6fe3dd90b">
+    <element id="Ambesek.Nefertyne.Reinos" name="Ficha Reinos d20" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20de%20Reinos%20d20/output/Ficha%20de%20Reinos%20d20.rpk?raw=true" fileName="Ficha de Reinos d20.rpk" repositoryPath="Sheets/Ficha de Reinos d20/" author="Ambesek" description="Ficha para descrição de Reinos e Cidades seguindo o padrão d20system do Livro do Mestre." version="0.7.2" compilationDate="27112019000028" compilationDigest="71cb881c61675467a579ef70e10c15d6fe3dd90b">
         <dataTypes>
             <dataType id="Ambesek.Nefertyne.Reinos" title="Ficha Reinos d20"/>
         </dataTypes>
