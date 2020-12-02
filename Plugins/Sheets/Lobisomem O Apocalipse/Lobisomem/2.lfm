@@ -1,0 +1,689 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frma2_svg" align="client" theme="light" margins="{top=1}">
+    <style>#frma2_svg path {color: black; strokeColor: black; mode: stretch;} &#xD;
+#frma2_svg label {fontColor: black; textTrimming: none; wordWrap: false; autoSize: true;}</style>
+    <scrollBox align="client">
+        <rectangle width="1369" height="1937" color="white">&#xD;
+            <image left="0" top="0" width="1369" height="1937" src="images/dom.png" style="stretch" optimize="true" compilerOrder="0"/>&#xD;
+            <layout left="453" top="300" width="30" height="32" compilerOrder="299">
+                <edit transparent="true" fontSize="21.8" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="30" height="33" field="fgla" compilerOrder="300"/>
+            </layout>&#xD;
+            <layout left="689" top="301" width="30" height="32" compilerOrder="307">
+                <edit transparent="true" fontSize="21.8" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="30" height="33" field="fcri" compilerOrder="308"/>
+            </layout>&#xD;
+            <layout left="917" top="301" width="30" height="32" compilerOrder="315">
+                <edit transparent="true" fontSize="21.8" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="30" height="33" field="fhis" compilerOrder="316"/>
+            </layout>&#xD;
+            <layout left="1151" top="303" width="30" height="32" compilerOrder="323">
+                <edit transparent="true" fontSize="21.8" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="30" height="33" field="flu" compilerOrder="324"/>
+            </layout>&#xD;
+            <layout left="956" top="335" width="28" height="31" compilerOrder="317">
+                <edit transparent="true" fontSize="21.1" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="28" height="32" field="deshis" compilerOrder="318"/>
+            </layout>&#xD;
+            <layout left="456" top="336" width="28" height="31" compilerOrder="301">
+                <edit transparent="true" fontSize="21.1" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="28" height="32" field="vgla" compilerOrder="302"/>
+            </layout>&#xD;
+            <layout left="721" top="336" width="28" height="31" compilerOrder="309">
+                <edit transparent="true" fontSize="21.1" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="28" height="32" field="descri" compilerOrder="310"/>
+            </layout>&#xD;
+            <layout left="1190" top="337" width="28" height="31" compilerOrder="325">
+                <edit transparent="true" fontSize="21.1" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="28" height="32" field="deslu" compilerOrder="326"/>
+            </layout>&#xD;
+            <layout left="501" top="368" width="28" height="31" compilerOrder="303">
+                <edit transparent="true" fontSize="21.1" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="28" height="32" field="apgla" compilerOrder="304"/>
+            </layout>&#xD;
+            <layout left="690" top="368" width="28" height="31" compilerOrder="311">
+                <edit transparent="true" fontSize="21.1" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="28" height="32" field="vigcri" compilerOrder="312"/>
+            </layout>&#xD;
+            <layout left="926" top="368" width="28" height="31" compilerOrder="319">
+                <edit transparent="true" fontSize="21.1" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="28" height="32" field="vighis" compilerOrder="320"/>
+            </layout>&#xD;
+            <layout left="1161" top="370" width="28" height="31" compilerOrder="327">
+                <edit transparent="true" fontSize="21.1" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="28" height="32" field="viglu" compilerOrder="328"/>
+            </layout>&#xD;
+            <layout left="531" top="401" width="28" height="31" compilerOrder="305">
+                <edit transparent="true" fontSize="21.1" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="28" height="32" field="mangla" compilerOrder="306"/>
+            </layout>&#xD;
+            <layout left="767" top="401" width="28" height="31" compilerOrder="313">
+                <edit transparent="true" fontSize="21.1" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="28" height="32" field="mancri" compilerOrder="314"/>
+            </layout>&#xD;
+            <layout left="1002" top="401" width="28" height="31" compilerOrder="321">
+                <edit transparent="true" fontSize="21.1" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="28" height="32" field="manhis" compilerOrder="322"/>
+            </layout>&#xD;
+            <layout left="1236" top="403" width="28" height="31" compilerOrder="329">
+                <edit transparent="true" fontSize="21.1" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="28" height="32" field="manlu" compilerOrder="330"/>
+            </layout>&#xD;
+            <layout left="111" top="723" width="253" height="33" compilerOrder="23">
+                <edit transparent="true" fontSize="22.6" fontColor="#000000" vertTextAlign="center" left="0" top="0" width="253" height="34" field="Row7_18" compilerOrder="24"/>
+            </layout>&#xD;
+            <layout left="571" top="724" width="406" height="33" compilerOrder="25">
+                <edit transparent="true" fontSize="22.6" fontColor="#000000" vertTextAlign="center" left="0" top="0" width="406" height="34" field="Item_1" compilerOrder="26"/>
+            </layout>&#xD;
+            <layout left="1210" top="725" width="45" height="30" compilerOrder="39">
+                <edit transparent="true" fontSize="20.3" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="45" height="31" field="Gnose" compilerOrder="40"/>
+            </layout>&#xD;
+            <layout left="1069" top="726" width="45" height="30" compilerOrder="27">
+                <edit transparent="true" fontSize="20.3" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="45" height="31" field="Gnose1_1" compilerOrder="28"/>
+            </layout>&#xD;
+            <layout left="367" top="730" width="22" height="25" compilerOrder="13">
+                <imageCheckBox checkedImage="images/on.png" uncheckedImage="images/off.png" left="0" top="0" width="22" height="26" field="Talentos_1_11" compilerOrder="14"/>
+            </layout>&#xD;
+            <layout left="389" top="730" width="22" height="25" compilerOrder="15">
+                <imageCheckBox checkedImage="images/on.png" uncheckedImage="images/off.png" left="0" top="0" width="22" height="26" field="Talentos_1_211" compilerOrder="16"/>
+            </layout>&#xD;
+            <layout left="410" top="730" width="22" height="25" compilerOrder="17">
+                <imageCheckBox checkedImage="images/on.png" uncheckedImage="images/off.png" left="0" top="0" width="22" height="26" field="Talentos_1_31" compilerOrder="18"/>
+            </layout>&#xD;
+            <layout left="431" top="730" width="22" height="25" compilerOrder="19">
+                <imageCheckBox checkedImage="images/on.png" uncheckedImage="images/off.png" left="0" top="0" width="22" height="26" field="Talentos_1_41" compilerOrder="20"/>
+            </layout>&#xD;
+            <layout left="451" top="730" width="22" height="25" compilerOrder="11">
+                <imageCheckBox checkedImage="images/on.png" uncheckedImage="images/off.png" left="0" top="0" width="22" height="26" field="Talentos_1_52" compilerOrder="12"/>
+            </layout>&#xD;
+            <layout left="111" top="754" width="253" height="33" compilerOrder="41">
+                <edit transparent="true" fontSize="22.6" fontColor="#000000" vertTextAlign="center" left="0" top="0" width="253" height="34" field="Row1_19" compilerOrder="42"/>
+            </layout>&#xD;
+            <layout left="592" top="757" width="524" height="33" compilerOrder="43">
+                <edit transparent="true" fontSize="22.6" fontColor="#000000" vertTextAlign="center" left="0" top="0" width="524" height="34" field="Poder_1" compilerOrder="44"/>
+            </layout>&#xD;
+            <layout left="1120" top="761" width="23" height="26" compilerOrder="297">
+                <imageCheckBox checkedImage="images/on.png" uncheckedImage="images/off.png" left="0" top="0" width="23" height="27" field="Vitalidade_82" compilerOrder="298"/>
+            </layout>&#xD;
+            <layout left="367" top="763" width="22" height="25" compilerOrder="31">
+                <imageCheckBox checkedImage="images/on.png" uncheckedImage="images/off.png" left="0" top="0" width="22" height="26" field="Talentos_2_11" compilerOrder="32"/>
+            </layout>&#xD;
+            <layout left="389" top="763" width="22" height="25" compilerOrder="33">
+                <imageCheckBox checkedImage="images/on.png" uncheckedImage="images/off.png" left="0" top="0" width="22" height="26" field="Talentos_2_21" compilerOrder="34"/>
+            </layout>&#xD;
+            <layout left="410" top="763" width="22" height="25" compilerOrder="35">
+                <imageCheckBox checkedImage="images/on.png" uncheckedImage="images/off.png" left="0" top="0" width="22" height="26" field="Talentos_2_31" compilerOrder="36"/>
+            </layout>&#xD;
+            <layout left="431" top="763" width="22" height="25" compilerOrder="37">
+                <imageCheckBox checkedImage="images/on.png" uncheckedImage="images/off.png" left="0" top="0" width="22" height="26" field="Talentos_2_41" compilerOrder="38"/>
+            </layout>&#xD;
+            <layout left="451" top="763" width="22" height="25" compilerOrder="29">
+                <imageCheckBox checkedImage="images/on.png" uncheckedImage="images/off.png" left="0" top="0" width="22" height="26" field="Talentos_2_51" compilerOrder="30"/>
+            </layout>&#xD;
+            <layout left="111" top="786" width="253" height="33" compilerOrder="45">
+                <edit transparent="true" fontSize="22.6" fontColor="#000000" vertTextAlign="center" left="0" top="0" width="253" height="34" field="Row7_20" compilerOrder="46"/>
+            </layout>&#xD;
+            <layout left="1210" top="787" width="45" height="33" compilerOrder="71">
+                <edit transparent="true" fontSize="22.6" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="45" height="34" field="Gnose_2" compilerOrder="72"/>
+            </layout>&#xD;
+            <layout left="571" top="788" width="406" height="33" compilerOrder="57">
+                <edit transparent="true" fontSize="22.6" fontColor="#000000" vertTextAlign="center" left="0" top="0" width="406" height="34" field="Item_2" compilerOrder="58"/>
+            </layout>&#xD;
+            <layout left="1069" top="788" width="45" height="33" compilerOrder="59">
+                <edit transparent="true" fontSize="22.6" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="45" height="34" field="Gnose1_2" compilerOrder="60"/>
+            </layout>&#xD;
+            <layout left="367" top="796" width="22" height="25" compilerOrder="49">
+                <imageCheckBox checkedImage="images/on.png" uncheckedImage="images/off.png" left="0" top="0" width="22" height="26" field="Talentos_3_11" compilerOrder="50"/>
+            </layout>&#xD;
+            <layout left="389" top="796" width="22" height="25" compilerOrder="51">
+                <imageCheckBox checkedImage="images/on.png" uncheckedImage="images/off.png" left="0" top="0" width="22" height="26" field="Talentos_3_21" compilerOrder="52"/>
+            </layout>&#xD;
+            <layout left="410" top="796" width="22" height="25" compilerOrder="53">
+                <imageCheckBox checkedImage="images/on.png" uncheckedImage="images/off.png" left="0" top="0" width="22" height="26" field="Talentos_3_31" compilerOrder="54"/>
+            </layout>&#xD;
+            <layout left="431" top="796" width="22" height="25" compilerOrder="55">
+                <imageCheckBox checkedImage="images/on.png" uncheckedImage="images/off.png" left="0" top="0" width="22" height="26" field="Talentos_3_41" compilerOrder="56"/>
+            </layout>&#xD;
+            <layout left="451" top="796" width="22" height="25" compilerOrder="47">
+                <imageCheckBox checkedImage="images/on.png" uncheckedImage="images/off.png" left="0" top="0" width="22" height="26" field="Talentos_3_51" compilerOrder="48"/>
+            </layout>&#xD;
+            <layout left="111" top="820" width="253" height="33" compilerOrder="73">
+                <edit transparent="true" fontSize="22.6" fontColor="#000000" vertTextAlign="center" left="0" top="0" width="253" height="34" field="Row1_21" compilerOrder="74"/>
+            </layout>&#xD;
+            <layout left="592" top="822" width="524" height="33" compilerOrder="75">
+                <edit transparent="true" fontSize="22.6" fontColor="#000000" vertTextAlign="center" left="0" top="0" width="524" height="34" field="Poder_2" compilerOrder="76"/>
+            </layout>&#xD;
+            <layout left="1120" top="826" width="23" height="26" compilerOrder="77">
+                <imageCheckBox checkedImage="images/on.png" uncheckedImage="images/off.png" left="0" top="0" width="23" height="27" field="Vitalidade_92" compilerOrder="78"/>
+            </layout>&#xD;
+            <layout left="367" top="829" width="22" height="25" compilerOrder="63">
+                <imageCheckBox checkedImage="images/on.png" uncheckedImage="images/off.png" left="0" top="0" width="22" height="26" field="Talentos_4_11" compilerOrder="64"/>
+            </layout>&#xD;
+            <layout left="389" top="829" width="22" height="25" compilerOrder="65">
+                <imageCheckBox checkedImage="images/on.png" uncheckedImage="images/off.png" left="0" top="0" width="22" height="26" field="Talentos_4_21" compilerOrder="66"/>
+            </layout>&#xD;
+            <layout left="410" top="829" width="22" height="25" compilerOrder="67">
+                <imageCheckBox checkedImage="images/on.png" uncheckedImage="images/off.png" left="0" top="0" width="22" height="26" field="Talentos_4_31" compilerOrder="68"/>
+            </layout>&#xD;
+            <layout left="431" top="829" width="22" height="25" compilerOrder="69">
+                <imageCheckBox checkedImage="images/on.png" uncheckedImage="images/off.png" left="0" top="0" width="22" height="26" field="Talentos_4_41" compilerOrder="70"/>
+            </layout>&#xD;
+            <layout left="451" top="829" width="22" height="25" compilerOrder="61">
+                <imageCheckBox checkedImage="images/on.png" uncheckedImage="images/off.png" left="0" top="0" width="22" height="26" field="Talentos_4_51" compilerOrder="62"/>
+            </layout>&#xD;
+            <layout left="1210" top="852" width="45" height="33" compilerOrder="105">
+                <edit transparent="true" fontSize="22.6" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="45" height="34" field="Gnose_3" compilerOrder="106"/>
+            </layout>&#xD;
+            <layout left="111" top="853" width="253" height="33" compilerOrder="79">
+                <edit transparent="true" fontSize="22.6" fontColor="#000000" vertTextAlign="center" left="0" top="0" width="253" height="34" field="Row2_22" compilerOrder="80"/>
+            </layout>&#xD;
+            <layout left="1069" top="854" width="45" height="33" compilerOrder="93">
+                <edit transparent="true" fontSize="22.6" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="45" height="34" field="Gnose1_3" compilerOrder="94"/>
+            </layout>&#xD;
+            <layout left="571" top="856" width="406" height="33" compilerOrder="91">
+                <edit transparent="true" fontSize="22.6" fontColor="#000000" vertTextAlign="center" left="0" top="0" width="406" height="34" field="Item_3" compilerOrder="92"/>
+            </layout>&#xD;
+            <layout left="367" top="859" width="22" height="25" compilerOrder="83">
+                <imageCheckBox checkedImage="images/on.png" uncheckedImage="images/off.png" left="0" top="0" width="22" height="26" field="Talentos_5_11" compilerOrder="84"/>
+            </layout>&#xD;
+            <layout left="389" top="859" width="22" height="25" compilerOrder="85">
+                <imageCheckBox checkedImage="images/on.png" uncheckedImage="images/off.png" left="0" top="0" width="22" height="26" field="Talentos_5_21" compilerOrder="86"/>
+            </layout>&#xD;
+            <layout left="410" top="859" width="22" height="25" compilerOrder="87">
+                <imageCheckBox checkedImage="images/on.png" uncheckedImage="images/off.png" left="0" top="0" width="22" height="26" field="Talentos_5_31" compilerOrder="88"/>
+            </layout>&#xD;
+            <layout left="431" top="859" width="22" height="25" compilerOrder="89">
+                <imageCheckBox checkedImage="images/on.png" uncheckedImage="images/off.png" left="0" top="0" width="22" height="26" field="Talentos_5_41" compilerOrder="90"/>
+            </layout>&#xD;
+            <layout left="451" top="859" width="22" height="25" compilerOrder="81">
+                <imageCheckBox checkedImage="images/on.png" uncheckedImage="images/off.png" left="0" top="0" width="22" height="26" field="Talentos_5_51" compilerOrder="82"/>
+            </layout>&#xD;
+            <layout left="111" top="884" width="253" height="33" compilerOrder="107">
+                <edit transparent="true" fontSize="22.6" fontColor="#000000" vertTextAlign="center" left="0" top="0" width="253" height="34" field="Row3_23" compilerOrder="108"/>
+            </layout>&#xD;
+            <layout left="592" top="887" width="524" height="33" compilerOrder="109">
+                <edit transparent="true" fontSize="22.6" fontColor="#000000" vertTextAlign="center" left="0" top="0" width="524" height="34" field="Poder_3" compilerOrder="110"/>
+            </layout>&#xD;
+            <layout left="1120" top="891" width="23" height="26" compilerOrder="295">
+                <imageCheckBox checkedImage="images/on.png" uncheckedImage="images/off.png" left="0" top="0" width="23" height="27" field="Vitalidade_112" compilerOrder="296"/>
+            </layout>&#xD;
+            <layout left="367" top="893" width="22" height="25" compilerOrder="97">
+                <imageCheckBox checkedImage="images/on.png" uncheckedImage="images/off.png" left="0" top="0" width="22" height="26" field="Talentos_6_11" compilerOrder="98"/>
+            </layout>&#xD;
+            <layout left="389" top="893" width="22" height="25" compilerOrder="99">
+                <imageCheckBox checkedImage="images/on.png" uncheckedImage="images/off.png" left="0" top="0" width="22" height="26" field="Talentos_6_21" compilerOrder="100"/>
+            </layout>&#xD;
+            <layout left="410" top="893" width="22" height="25" compilerOrder="101">
+                <imageCheckBox checkedImage="images/on.png" uncheckedImage="images/off.png" left="0" top="0" width="22" height="26" field="Talentos_6_31" compilerOrder="102"/>
+            </layout>&#xD;
+            <layout left="431" top="893" width="22" height="25" compilerOrder="103">
+                <imageCheckBox checkedImage="images/on.png" uncheckedImage="images/off.png" left="0" top="0" width="22" height="26" field="Talentos_6_41" compilerOrder="104"/>
+            </layout>&#xD;
+            <layout left="451" top="893" width="22" height="25" compilerOrder="95">
+                <imageCheckBox checkedImage="images/on.png" uncheckedImage="images/off.png" left="0" top="0" width="22" height="26" field="Talentos_6_51" compilerOrder="96"/>
+            </layout>&#xD;
+            <layout left="111" top="917" width="253" height="33" compilerOrder="111">
+                <edit transparent="true" fontSize="22.6" fontColor="#000000" vertTextAlign="center" left="0" top="0" width="253" height="34" field="Row4_24" compilerOrder="112"/>
+            </layout>&#xD;
+            <layout left="1210" top="918" width="45" height="33" compilerOrder="139">
+                <edit transparent="true" fontSize="22.6" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="45" height="34" field="Gnose_4" compilerOrder="140"/>
+            </layout>&#xD;
+            <layout left="1069" top="919" width="45" height="33" compilerOrder="125">
+                <edit transparent="true" fontSize="22.6" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="45" height="34" field="Gnose1_4" compilerOrder="126"/>
+            </layout>&#xD;
+            <layout left="571" top="920" width="406" height="33" compilerOrder="123">
+                <edit transparent="true" fontSize="22.6" fontColor="#000000" vertTextAlign="center" left="0" top="0" width="406" height="34" field="Item_4" compilerOrder="124"/>
+            </layout>&#xD;
+            <layout left="367" top="925" width="22" height="25" compilerOrder="115">
+                <imageCheckBox checkedImage="images/on.png" uncheckedImage="images/off.png" left="0" top="0" width="22" height="26" field="Talentos_7_11" compilerOrder="116"/>
+            </layout>&#xD;
+            <layout left="389" top="925" width="22" height="25" compilerOrder="117">
+                <imageCheckBox checkedImage="images/on.png" uncheckedImage="images/off.png" left="0" top="0" width="22" height="26" field="Talentos_7_21" compilerOrder="118"/>
+            </layout>&#xD;
+            <layout left="410" top="925" width="22" height="25" compilerOrder="119">
+                <imageCheckBox checkedImage="images/on.png" uncheckedImage="images/off.png" left="0" top="0" width="22" height="26" field="Talentos_7_31" compilerOrder="120"/>
+            </layout>&#xD;
+            <layout left="431" top="925" width="22" height="25" compilerOrder="121">
+                <imageCheckBox checkedImage="images/on.png" uncheckedImage="images/off.png" left="0" top="0" width="22" height="26" field="Talentos_7_41" compilerOrder="122"/>
+            </layout>&#xD;
+            <layout left="451" top="925" width="22" height="25" compilerOrder="113">
+                <imageCheckBox checkedImage="images/on.png" uncheckedImage="images/off.png" left="0" top="0" width="22" height="26" field="Talentos_7_51" compilerOrder="114"/>
+            </layout>&#xD;
+            <layout left="111" top="950" width="253" height="33" compilerOrder="141">
+                <edit transparent="true" fontSize="22.6" fontColor="#000000" vertTextAlign="center" left="0" top="0" width="253" height="34" field="Row5_25" compilerOrder="142"/>
+            </layout>&#xD;
+            <layout left="592" top="952" width="524" height="33" compilerOrder="143">
+                <edit transparent="true" fontSize="22.6" fontColor="#000000" vertTextAlign="center" left="0" top="0" width="524" height="34" field="Poder_4" compilerOrder="144"/>
+            </layout>&#xD;
+            <layout left="1120" top="957" width="23" height="26" compilerOrder="293">
+                <imageCheckBox checkedImage="images/on.png" uncheckedImage="images/off.png" left="0" top="0" width="23" height="27" field="Vitalidade_122" compilerOrder="294"/>
+            </layout>&#xD;
+            <layout left="367" top="958" width="22" height="25" compilerOrder="129">
+                <imageCheckBox checkedImage="images/on.png" uncheckedImage="images/off.png" left="0" top="0" width="22" height="26" field="Talentos_8_11" compilerOrder="130"/>
+            </layout>&#xD;
+            <layout left="389" top="958" width="22" height="25" compilerOrder="131">
+                <imageCheckBox checkedImage="images/on.png" uncheckedImage="images/off.png" left="0" top="0" width="22" height="26" field="Talentos_8_21" compilerOrder="132"/>
+            </layout>&#xD;
+            <layout left="410" top="958" width="22" height="25" compilerOrder="133">
+                <imageCheckBox checkedImage="images/on.png" uncheckedImage="images/off.png" left="0" top="0" width="22" height="26" field="Talentos_8_31" compilerOrder="134"/>
+            </layout>&#xD;
+            <layout left="431" top="958" width="22" height="25" compilerOrder="135">
+                <imageCheckBox checkedImage="images/on.png" uncheckedImage="images/off.png" left="0" top="0" width="22" height="26" field="Talentos_8_41" compilerOrder="136"/>
+            </layout>&#xD;
+            <layout left="451" top="958" width="22" height="25" compilerOrder="127">
+                <imageCheckBox checkedImage="images/on.png" uncheckedImage="images/off.png" left="0" top="0" width="22" height="26" field="Talentos_8_51" compilerOrder="128"/>
+            </layout>&#xD;
+            <layout left="111" top="983" width="253" height="33" compilerOrder="145">
+                <edit transparent="true" fontSize="22.6" fontColor="#000000" vertTextAlign="center" left="0" top="0" width="253" height="34" field="Row6_26" compilerOrder="146"/>
+            </layout>&#xD;
+            <layout left="1210" top="983" width="45" height="33" compilerOrder="159">
+                <edit transparent="true" fontSize="22.6" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="45" height="34" field="Gnose_5" compilerOrder="160"/>
+            </layout>&#xD;
+            <layout left="1069" top="984" width="45" height="33" compilerOrder="137">
+                <edit transparent="true" fontSize="22.6" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="45" height="34" field="Gnose1_5" compilerOrder="138"/>
+            </layout>&#xD;
+            <layout left="571" top="987" width="406" height="33" compilerOrder="157">
+                <edit transparent="true" fontSize="22.6" fontColor="#000000" vertTextAlign="center" left="0" top="0" width="406" height="34" field="Item_5" compilerOrder="158"/>
+            </layout>&#xD;
+            <layout left="367" top="991" width="22" height="25" compilerOrder="149">
+                <imageCheckBox checkedImage="images/on.png" uncheckedImage="images/off.png" left="0" top="0" width="22" height="26" field="Talentos_9_11" compilerOrder="150"/>
+            </layout>&#xD;
+            <layout left="389" top="991" width="22" height="25" compilerOrder="151">
+                <imageCheckBox checkedImage="images/on.png" uncheckedImage="images/off.png" left="0" top="0" width="22" height="26" field="Talentos_9_21" compilerOrder="152"/>
+            </layout>&#xD;
+            <layout left="410" top="991" width="22" height="25" compilerOrder="153">
+                <imageCheckBox checkedImage="images/on.png" uncheckedImage="images/off.png" left="0" top="0" width="22" height="26" field="Talentos_9_31" compilerOrder="154"/>
+            </layout>&#xD;
+            <layout left="431" top="991" width="22" height="25" compilerOrder="155">
+                <imageCheckBox checkedImage="images/on.png" uncheckedImage="images/off.png" left="0" top="0" width="22" height="26" field="Talentos_9_41" compilerOrder="156"/>
+            </layout>&#xD;
+            <layout left="451" top="991" width="22" height="25" compilerOrder="147">
+                <imageCheckBox checkedImage="images/on.png" uncheckedImage="images/off.png" left="0" top="0" width="22" height="26" field="Talentos_9_51" compilerOrder="148"/>
+            </layout>&#xD;
+            <layout left="111" top="1016" width="253" height="33" compilerOrder="161">
+                <edit transparent="true" fontSize="22.6" fontColor="#000000" vertTextAlign="center" left="0" top="0" width="253" height="34" field="Row4_27" compilerOrder="162"/>
+            </layout>&#xD;
+            <layout left="592" top="1017" width="524" height="33" compilerOrder="163">
+                <edit transparent="true" fontSize="22.6" fontColor="#000000" vertTextAlign="center" left="0" top="0" width="524" height="34" field="Poder_5" compilerOrder="164"/>
+            </layout>&#xD;
+            <layout left="1120" top="1023" width="23" height="26" compilerOrder="291">
+                <imageCheckBox checkedImage="images/on.png" uncheckedImage="images/off.png" left="0" top="0" width="23" height="27" field="Vitalidade_132" compilerOrder="292"/>
+            </layout>&#xD;
+            <layout left="367" top="1024" width="22" height="25" compilerOrder="5">
+                <imageCheckBox checkedImage="images/on.png" uncheckedImage="images/off.png" left="0" top="0" width="22" height="26" field="Talentos_10_11" compilerOrder="6"/>
+            </layout>&#xD;
+            <layout left="389" top="1024" width="22" height="25" compilerOrder="7">
+                <imageCheckBox checkedImage="images/on.png" uncheckedImage="images/off.png" left="0" top="0" width="22" height="26" field="Talentos_10_21" compilerOrder="8"/>
+            </layout>&#xD;
+            <layout left="410" top="1024" width="22" height="25" compilerOrder="9">
+                <imageCheckBox checkedImage="images/on.png" uncheckedImage="images/off.png" left="0" top="0" width="22" height="26" field="Talentos_10_31" compilerOrder="10"/>
+            </layout>&#xD;
+            <layout left="431" top="1024" width="22" height="25" compilerOrder="1">
+                <imageCheckBox checkedImage="images/on.png" uncheckedImage="images/off.png" left="0" top="0" width="22" height="26" field="Talentos_10_41" compilerOrder="2"/>
+            </layout>&#xD;
+            <layout left="451" top="1024" width="22" height="25" compilerOrder="3">
+                <imageCheckBox checkedImage="images/on.png" uncheckedImage="images/off.png" left="0" top="0" width="22" height="26" field="Talentos_10_51" compilerOrder="4"/>
+            </layout>&#xD;
+            <layout left="111" top="1049" width="253" height="33" compilerOrder="165">
+                <edit transparent="true" fontSize="22.6" fontColor="#000000" vertTextAlign="center" left="0" top="0" width="253" height="34" field="Row5_28" compilerOrder="166"/>
+            </layout>&#xD;
+            <layout left="1210" top="1049" width="45" height="33" compilerOrder="191">
+                <edit transparent="true" fontSize="22.6" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="45" height="34" field="Gnose_6" compilerOrder="192"/>
+            </layout>&#xD;
+            <layout left="1069" top="1050" width="45" height="33" compilerOrder="179">
+                <edit transparent="true" fontSize="22.6" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="45" height="34" field="Gnose1_6" compilerOrder="180"/>
+            </layout>&#xD;
+            <layout left="571" top="1051" width="406" height="33" compilerOrder="177">
+                <edit transparent="true" fontSize="22.6" fontColor="#000000" vertTextAlign="center" left="0" top="0" width="406" height="34" field="Item_6" compilerOrder="178"/>
+            </layout>&#xD;
+            <layout left="367" top="1056" width="22" height="25" compilerOrder="169">
+                <imageCheckBox checkedImage="images/on.png" uncheckedImage="images/off.png" left="0" top="0" width="22" height="26" field="Talentos_9_12" compilerOrder="170"/>
+            </layout>&#xD;
+            <layout left="389" top="1056" width="22" height="25" compilerOrder="171">
+                <imageCheckBox checkedImage="images/on.png" uncheckedImage="images/off.png" left="0" top="0" width="22" height="26" field="Talentos_9_22" compilerOrder="172"/>
+            </layout>&#xD;
+            <layout left="410" top="1056" width="22" height="25" compilerOrder="173">
+                <imageCheckBox checkedImage="images/on.png" uncheckedImage="images/off.png" left="0" top="0" width="22" height="26" field="Talentos_9_32" compilerOrder="174"/>
+            </layout>&#xD;
+            <layout left="431" top="1056" width="22" height="25" compilerOrder="175">
+                <imageCheckBox checkedImage="images/on.png" uncheckedImage="images/off.png" left="0" top="0" width="22" height="26" field="Talentos_9_42" compilerOrder="176"/>
+            </layout>&#xD;
+            <layout left="451" top="1056" width="22" height="25" compilerOrder="167">
+                <imageCheckBox checkedImage="images/on.png" uncheckedImage="images/off.png" left="0" top="0" width="22" height="26" field="Talentos_9_52" compilerOrder="168"/>
+            </layout>&#xD;
+            <layout left="592" top="1082" width="524" height="33" compilerOrder="195">
+                <edit transparent="true" fontSize="22.6" fontColor="#000000" vertTextAlign="center" left="0" top="0" width="524" height="34" field="Poder_6" compilerOrder="196"/>
+            </layout>&#xD;
+            <layout left="111" top="1083" width="253" height="33" compilerOrder="193">
+                <edit transparent="true" fontSize="22.6" fontColor="#000000" vertTextAlign="center" left="0" top="0" width="253" height="34" field="Row6_29" compilerOrder="194"/>
+            </layout>&#xD;
+            <layout left="1120" top="1088" width="23" height="26" compilerOrder="289">
+                <imageCheckBox checkedImage="images/on.png" uncheckedImage="images/off.png" left="0" top="0" width="23" height="27" field="Vitalidade_142" compilerOrder="290"/>
+            </layout>&#xD;
+            <layout left="367" top="1089" width="22" height="25" compilerOrder="183">
+                <imageCheckBox checkedImage="images/on.png" uncheckedImage="images/off.png" left="0" top="0" width="22" height="26" field="Talentos_10_12" compilerOrder="184"/>
+            </layout>&#xD;
+            <layout left="389" top="1089" width="22" height="25" compilerOrder="185">
+                <imageCheckBox checkedImage="images/on.png" uncheckedImage="images/off.png" left="0" top="0" width="22" height="26" field="Talentos_10_22" compilerOrder="186"/>
+            </layout>&#xD;
+            <layout left="410" top="1089" width="22" height="25" compilerOrder="187">
+                <imageCheckBox checkedImage="images/on.png" uncheckedImage="images/off.png" left="0" top="0" width="22" height="26" field="Talentos_10_32" compilerOrder="188"/>
+            </layout>&#xD;
+            <layout left="431" top="1089" width="22" height="25" compilerOrder="181">
+                <imageCheckBox checkedImage="images/on.png" uncheckedImage="images/off.png" left="0" top="0" width="22" height="26" field="Talentos_10_42" compilerOrder="182"/>
+            </layout>&#xD;
+            <layout left="451" top="1089" width="22" height="25" compilerOrder="189">
+                <imageCheckBox checkedImage="images/on.png" uncheckedImage="images/off.png" left="0" top="0" width="22" height="26" field="Talentos_10_52" compilerOrder="190"/>
+            </layout>&#xD;
+            <layout left="107" top="1156" width="355" height="293" compilerOrder="197">
+                <textEditor transparent="true" fontSize="23" fontColor="#000000" left="0" top="0" width="355" height="294" field="Row7_1" compilerOrder="198"/>
+            </layout>&#xD;
+            <layout left="505" top="1159" width="756" height="289" compilerOrder="199">
+                <textEditor transparent="true" fontSize="23" fontColor="#000000" left="0" top="0" width="756" height="290" field="Row7_9" compilerOrder="200"/>
+            </layout>&#xD;
+            <layout left="108" top="1547" width="279" height="33" compilerOrder="201">
+                <edit transparent="true" fontSize="22.6" fontColor="#000000" vertTextAlign="center" left="0" top="0" width="279" height="34" field="arma1_1" compilerOrder="202"/>
+            </layout>&#xD;
+            <layout left="392" top="1547" width="204" height="33" compilerOrder="203">
+                <edit transparent="true" fontSize="22.6" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="204" height="34" field="arma1_2" compilerOrder="204"/>
+            </layout>&#xD;
+            <layout left="600" top="1547" width="97" height="33" compilerOrder="205">
+                <edit transparent="true" fontSize="22.6" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="97" height="34" field="arma1_3" compilerOrder="206"/>
+            </layout>&#xD;
+            <layout left="702" top="1547" width="81" height="33" compilerOrder="207">
+                <edit transparent="true" fontSize="22.6" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="81" height="34" field="arma1_4" compilerOrder="208"/>
+            </layout>&#xD;
+            <layout left="787" top="1547" width="86" height="33" compilerOrder="209">
+                <edit transparent="true" fontSize="22.6" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="86" height="34" field="arma1_5" compilerOrder="210"/>
+            </layout>&#xD;
+            <layout left="877" top="1547" width="73" height="33" compilerOrder="211">
+                <edit transparent="true" fontSize="22.6" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="73" height="34" field="arma1_6" compilerOrder="212"/>
+            </layout>&#xD;
+            <layout left="955" top="1548" width="23" height="22" compilerOrder="331">
+                <button hitTest="true" hint="Clique apenas se Teste/Dificuldade estiver preenchido" width="32" text="R">	
+				
+				<event name="onClick">
+				
+						local dado = sheet.arma1_2
+						local nome = sheet.arma1_1
+						local dano = sheet.arma1_3
+						local alcance = sheet.arma1_4
+						local cad = sheet.arma1_5
+						local pen = sheet.arma1_6
+
+			            local str = dado; 
+						
+                       local mesaDoPersonagem = Firecast.getMesaDe(sheet);
+
+                       if mesaDoPersonagem ~= nil then
+                               mesaDoPersonagem.chat:enviarMensagem("/r " .. str .. " : " .. nome .. " - Dano: " .. dano .. " - Alcance: " .. alcance .. " - Cadência: " .. cad .. " - Pente: " .. pen);
+                       end;
+				
+				</event>
+				</button>				
+			
+			</layout>&#xD;
+			
+		
+            <layout left="1061" top="1549" width="192" height="33" compilerOrder="21">
+                <edit transparent="true" fontSize="22.6" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="192" height="34" field="Nvel" compilerOrder="22"/>
+            </layout>&#xD;
+            <layout left="108" top="1585" width="279" height="33" compilerOrder="213">
+                <edit transparent="true" fontSize="22.6" fontColor="#000000" vertTextAlign="center" left="0" top="0" width="279" height="34" field="arma2_1" compilerOrder="214"/>
+            </layout>&#xD;
+            <layout left="392" top="1585" width="204" height="33" compilerOrder="215">
+                <edit transparent="true" fontSize="22.6" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="204" height="34" field="arma2_2" compilerOrder="216"/>
+            </layout>&#xD;
+            <layout left="600" top="1585" width="97" height="33" compilerOrder="217">
+                <edit transparent="true" fontSize="22.6" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="97" height="34" field="arma2_3" compilerOrder="218"/>
+            </layout>&#xD;
+            <layout left="702" top="1585" width="81" height="33" compilerOrder="219">
+                <edit transparent="true" fontSize="22.6" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="81" height="34" field="arma2_4" compilerOrder="220"/>
+            </layout>&#xD;
+            <layout left="787" top="1585" width="86" height="33" compilerOrder="221">
+                <edit transparent="true" fontSize="22.6" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="86" height="34" field="arma2_5" compilerOrder="222"/>
+            </layout>&#xD;
+            <layout left="877" top="1585" width="73" height="33" compilerOrder="223">
+                <edit transparent="true" fontSize="22.6" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="73" height="34" field="arma2_6" compilerOrder="224"/>
+            </layout>&#xD;
+            <layout left="954" top="1586" width="23" height="22" compilerOrder="333">
+                             <button hitTest="true" hint="Clique apenas se Teste/Dificuldade estiver preenchido" width="32" text="R">	
+				
+				<event name="onClick">
+				
+						local dado = sheet.arma2_2
+						local nome = sheet.arma2_1
+						local dano = sheet.arma2_3
+						local alcance = sheet.arma2_4
+						local cad = sheet.arma2_5
+						local pen = sheet.arma2_6
+
+			            local str = dado; 
+						
+                       local mesaDoPersonagem = Firecast.getMesaDe(sheet);
+
+                       if mesaDoPersonagem ~= nil then
+                               mesaDoPersonagem.chat:enviarMensagem("/r " .. str .. " : " .. nome .. " - Dano: " .. dano .. " - Alcance: " .. alcance .. " - Cadência: " .. cad .. " - Pente: " .. pen);
+                       end;
+				
+				</event>
+				</button>
+				
+				
+				
+				
+            </layout>&#xD;
+            <layout left="1129" top="1592" width="123" height="33" compilerOrder="225">
+                <edit transparent="true" fontSize="22.6" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="123" height="34" field="Penalidade" compilerOrder="226"/>
+            </layout>&#xD;
+            <layout left="108" top="1622" width="279" height="33" compilerOrder="227">
+                <edit transparent="true" fontSize="22.6" fontColor="#000000" vertTextAlign="center" left="0" top="0" width="279" height="34" field="arma3_1" compilerOrder="228"/>
+            </layout>&#xD;
+            <layout left="392" top="1622" width="204" height="33" compilerOrder="229">
+                <edit transparent="true" fontSize="22.6" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="204" height="34" field="arma3_2" compilerOrder="230"/>
+            </layout>&#xD;
+            <layout left="600" top="1622" width="97" height="33" compilerOrder="231">
+                <edit transparent="true" fontSize="22.6" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="97" height="34" field="arma3_3" compilerOrder="232"/>
+            </layout>&#xD;
+            <layout left="702" top="1622" width="81" height="33" compilerOrder="233">
+                <edit transparent="true" fontSize="22.6" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="81" height="34" field="arma3_4" compilerOrder="234"/>
+            </layout>&#xD;
+            <layout left="787" top="1622" width="86" height="33" compilerOrder="235">
+                <edit transparent="true" fontSize="22.6" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="86" height="34" field="arma3_5" compilerOrder="236"/>
+            </layout>&#xD;
+            <layout left="877" top="1622" width="73" height="33" compilerOrder="237">
+                <edit transparent="true" fontSize="22.6" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="73" height="34" field="arma3_6" compilerOrder="238"/>
+            </layout>&#xD;
+            <layout left="954" top="1623" width="23" height="22" compilerOrder="337">
+                             <button hitTest="true" hint="Clique apenas se Teste/Dificuldade estiver preenchido" width="32" text="R">	
+				
+				<event name="onClick">
+				
+						local dado = sheet.arma3_2
+						local nome = sheet.arma3_1
+						local dano = sheet.arma3_3
+						local alcance = sheet.arma3_4
+						local cad = sheet.arma3_5
+						local pen = sheet.arma3_6
+
+			            local str = dado; 
+						
+                       local mesaDoPersonagem = Firecast.getMesaDe(sheet);
+
+                       if mesaDoPersonagem ~= nil then
+                               mesaDoPersonagem.chat:enviarMensagem("/r " .. str .. " : " .. nome .. " - Dano: " .. dano .. " - Alcance: " .. alcance .. " - Cadência: " .. cad .. " - Pente: " .. pen);
+                       end;
+				
+				</event>
+				</button>
+				
+				
+            </layout>&#xD;
+            <layout left="108" top="1660" width="279" height="33" compilerOrder="239">
+                <edit transparent="true" fontSize="22.6" fontColor="#000000" vertTextAlign="center" left="0" top="0" width="279" height="34" field="arma4_1" compilerOrder="240"/>
+            </layout>&#xD;
+            <layout left="392" top="1660" width="204" height="33" compilerOrder="241">
+                <edit transparent="true" fontSize="22.6" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="204" height="34" field="arma4_2" compilerOrder="242"/>
+            </layout>&#xD;
+            <layout left="600" top="1660" width="97" height="33" compilerOrder="243">
+                <edit transparent="true" fontSize="22.6" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="97" height="34" field="arma4_3" compilerOrder="244"/>
+            </layout>&#xD;
+            <layout left="702" top="1660" width="81" height="33" compilerOrder="245">
+                <edit transparent="true" fontSize="22.6" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="81" height="34" field="arma4_4" compilerOrder="246"/>
+            </layout>&#xD;
+            <layout left="787" top="1660" width="86" height="33" compilerOrder="247">
+                <edit transparent="true" fontSize="22.6" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="86" height="34" field="arma4_5" compilerOrder="248"/>
+            </layout>&#xD;
+            <layout left="877" top="1660" width="73" height="33" compilerOrder="249">
+                <edit transparent="true" fontSize="22.6" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="73" height="34" field="arma4_6" compilerOrder="250"/>
+            </layout>&#xD;
+            <layout left="954" top="1661" width="23" height="22" compilerOrder="335">
+                             <button hitTest="true" hint="Clique apenas se Teste/Dificuldade estiver preenchido" width="32" text="R">	
+				
+				<event name="onClick">
+				
+						local dado = sheet.arma4_2
+						local nome = sheet.arma4_1
+						local dano = sheet.arma4_3
+						local alcance = sheet.arma4_4
+						local cad = sheet.arma4_5
+						local pen = sheet.arma4_6
+
+			            local str = dado; 
+						
+                       local mesaDoPersonagem = Firecast.getMesaDe(sheet);
+
+                       if mesaDoPersonagem ~= nil then
+                               mesaDoPersonagem.chat:enviarMensagem("/r " .. str .. " : " .. nome .. " - Dano: " .. dano .. " - Alcance: " .. alcance .. " - Cadência: " .. cad .. " - Pente: " .. pen);
+                       end;
+				
+				</event>
+				</button>
+			
+				
+            </layout>&#xD;
+            <layout left="987" top="1672" width="275" height="102" compilerOrder="273">
+                <textEditor transparent="true" fontSize="23" fontColor="#000000" left="0" top="0" width="275" height="103" field="Descri_o_1" compilerOrder="274"/>
+            </layout>&#xD;
+            <layout left="108" top="1698" width="279" height="33" compilerOrder="251">
+                <edit transparent="true" fontSize="22.6" fontColor="#000000" vertTextAlign="center" left="0" top="0" width="279" height="34" field="arma5_1" compilerOrder="252"/>
+            </layout>&#xD;
+            <layout left="392" top="1698" width="204" height="33" compilerOrder="253">
+                <edit transparent="true" fontSize="22.6" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="204" height="34" field="arma5_2" compilerOrder="254"/>
+            </layout>&#xD;
+            <layout left="600" top="1698" width="97" height="33" compilerOrder="255">
+                <edit transparent="true" fontSize="22.6" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="97" height="34" field="arma5_3" compilerOrder="256"/>
+            </layout>&#xD;
+            <layout left="702" top="1698" width="81" height="33" compilerOrder="257">
+                <edit transparent="true" fontSize="22.6" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="81" height="34" field="arma5_4" compilerOrder="258"/>
+            </layout>&#xD;
+            <layout left="787" top="1698" width="86" height="33" compilerOrder="259">
+                <edit transparent="true" fontSize="22.6" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="86" height="34" field="arma5_5" compilerOrder="260"/>
+            </layout>&#xD;
+            <layout left="877" top="1698" width="73" height="33" compilerOrder="261">
+                <edit transparent="true" fontSize="22.6" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="73" height="34" field="arma5_6" compilerOrder="262"/>
+            </layout>&#xD;
+            <layout left="954" top="1700" width="23" height="22" compilerOrder="341">
+           <button hitTest="true" hint="Clique apenas se Teste/Dificuldade estiver preenchido" width="32" text="R">	
+				
+				<event name="onClick">
+				
+						local dado = sheet.arma5_2
+						local nome = sheet.arma5_1
+						local dano = sheet.arma5_3
+						local alcance = sheet.arma5_4
+						local cad = sheet.arma5_5
+						local pen = sheet.arma5_6
+
+			            local str = dado; 
+						
+                       local mesaDoPersonagem = Firecast.getMesaDe(sheet);
+
+                       if mesaDoPersonagem ~= nil then
+                               mesaDoPersonagem.chat:enviarMensagem("/r " .. str .. " : " .. nome .. " - Dano: " .. dano .. " - Alcance: " .. alcance .. " - Cadência: " .. cad .. " - Pente: " .. pen);
+                       end;
+				
+				</event>
+				</button>
+				
+				
+				
+				
+				
+            </layout>&#xD;
+            <layout left="108" top="1736" width="279" height="33" compilerOrder="263">
+                <edit transparent="true" fontSize="22.6" fontColor="#000000" vertTextAlign="center" left="0" top="0" width="279" height="34" field="arma6_1" compilerOrder="264"/>
+            </layout>&#xD;
+            <layout left="392" top="1736" width="204" height="33" compilerOrder="265">
+                <edit transparent="true" fontSize="22.6" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="204" height="34" field="arma6_2" compilerOrder="266"/>
+            </layout>&#xD;
+            <layout left="600" top="1736" width="97" height="33" compilerOrder="267">
+                <edit transparent="true" fontSize="22.6" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="97" height="34" field="arma6_3" compilerOrder="268"/>
+            </layout>&#xD;
+            <layout left="702" top="1736" width="81" height="33" compilerOrder="269">
+                <edit transparent="true" fontSize="22.6" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="81" height="34" field="arma6_4" compilerOrder="270"/>
+            </layout>&#xD;
+            <layout left="787" top="1736" width="86" height="33" compilerOrder="275">
+                <edit transparent="true" fontSize="22.6" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="86" height="34" field="arma6_5" compilerOrder="276"/>
+            </layout>&#xD;
+            <layout left="877" top="1736" width="73" height="33" compilerOrder="271">
+                <edit transparent="true" fontSize="22.6" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="73" height="34" field="arma6_6" compilerOrder="272"/>
+            </layout>&#xD;
+            <layout left="954" top="1738" width="23" height="22" compilerOrder="339">
+           <button hitTest="true" hint="Clique apenas se Teste/Dificuldade estiver preenchido" width="32" text="R">	
+				
+				<event name="onClick">
+				
+						local dado = sheet.arma6_2
+						local nome = sheet.arma6_1
+						local dano = sheet.arma6_3
+						local alcance = sheet.arma6_4
+						local cad = sheet.arma6_5
+						local pen = sheet.arma6_6
+
+			            local str = dado; 
+						
+                       local mesaDoPersonagem = Firecast.getMesaDe(sheet);
+
+                       if mesaDoPersonagem ~= nil then
+                               mesaDoPersonagem.chat:enviarMensagem("/r " .. str .. " : " .. nome .. " - Dano: " .. dano .. " - Alcance: " .. alcance .. " - Cadência: " .. cad .. " - Pente: " .. pen);
+                       end;
+				
+				</event>
+				</button>
+				
+				
+				
+				
+            </layout>&#xD;
+            <layout left="108" top="1773" width="279" height="33" compilerOrder="277">
+                <edit transparent="true" fontSize="22.6" fontColor="#000000" vertTextAlign="center" left="0" top="0" width="279" height="34" field="arma7_1" compilerOrder="278"/>
+            </layout>&#xD;
+            <layout left="392" top="1773" width="204" height="33" compilerOrder="279">
+                <edit transparent="true" fontSize="22.6" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="204" height="34" field="arma7_2" compilerOrder="280"/>
+            </layout>&#xD;
+            <layout left="600" top="1773" width="97" height="33" compilerOrder="281">
+                <edit transparent="true" fontSize="22.6" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="97" height="34" field="arma7_3" compilerOrder="282"/>
+            </layout>&#xD;
+            <layout left="702" top="1773" width="81" height="33" compilerOrder="283">
+                <edit transparent="true" fontSize="22.6" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="81" height="34" field="arma7_4" compilerOrder="284"/>
+            </layout>&#xD;
+            <layout left="787" top="1773" width="86" height="33" compilerOrder="285">
+                <edit transparent="true" fontSize="22.6" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="86" height="34" field="arma7_5" compilerOrder="286"/>
+            </layout>&#xD;
+            <layout left="877" top="1773" width="73" height="33" compilerOrder="287">
+                <edit transparent="true" fontSize="22.6" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="73" height="34" field="arma7_6" compilerOrder="288"/>
+            </layout>&#xD;
+            <layout left="953" top="1774" width="23" height="22" compilerOrder="343">
+           <button hitTest="true" hint="Clique apenas se Teste/Dificuldade estiver preenchido" width="32" text="R">	
+				
+				<event name="onClick">
+				
+						local dado = sheet.arma7_2
+						local nome = sheet.arma7_1
+						local dano = sheet.arma7_3
+						local alcance = sheet.arma7_4
+						local cad = sheet.arma7_5
+						local pen = sheet.arma7_6
+
+			            local str = dado; 
+						
+                       local mesaDoPersonagem = Firecast.getMesaDe(sheet);
+
+                       if mesaDoPersonagem ~= nil then
+                               mesaDoPersonagem.chat:enviarMensagem("/r " .. str .. " : " .. nome .. " - Dano: " .. dano .. " - Alcance: " .. alcance .. " - Cadência: " .. cad .. " - Pente: " .. pen);
+                       end;
+				
+				</event>
+				</button>
+				
+				
+				
+            </layout>&#xD;
+        </rectangle>
+    </scrollBox>
+</form>
