@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<frame width="808" height="110">
+	<borders left="35" top="26" bottom="35" right="35" />
+	<draw>
+		<!-- CANTO ESQUERDO -->
+			<image left="0" top="0" right="80" bottom="110" overflowX="stretch" overflowY="stretch">
+				<anchors left="true" top="true" bottom="true" right="false"/>
+				<source url="banner.png" left="0" right="80" top="0" bottom="110"/>
+			</image>	
+
+			<!-- CANTO DIREITO -->
+			<image left="728" top="0" right="808" bottom="110" overflowX="stretch" overflowY="stretch">
+				<anchors left="false" top="true" bottom="true" right="true"/>
+				<source url="banner.png" left="728" right="808" top="0" bottom="110"/>
+			</image>	
+			
+			<!-- CENTRO -->
+			<image left="80" top="0" right="728" bottom="110" overflowX="stretch" overflowY="stretch" zOrder="-1">
+				<anchors left="true" top="true" bottom="true" right="true"/>
+				<source url="banner.png" left="80" right="728" top="0" bottom="110"/>
+			</image>				
+	</draw>
+</frame>
