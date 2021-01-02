@@ -185,7 +185,7 @@
 			</event>
 		</dataLink>
 		
-		<flowPart height="140" minWidth="320" maxWidth="420" minScaledWidth="305" frameStyle="frames/atributeFrame2/frame.xml">
+		<flowPart height="160" minWidth="320" maxWidth="420" minScaledWidth="305" frameStyle="frames/atributeFrame2/frame.xml">
 			<layout left="6" top="12" width="116" height="115">
 				<edit class="atributo"  align="top" margins="{left=30, right=30}" field="atributos.$(field)" height="30" type="number" min="0" max="99"/>								
 			</layout>
