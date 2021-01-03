@@ -54,12 +54,12 @@
 			<flowLayout autoHeight="true" class="oneLineTile" minScaledWidth="290" horzAlign="center">
 			<!-- ATRIBUTOS -->
 			
-				<flowLayout name="fraLayAtributos" class="tile" vertAlign="leading" autoHeight="true" minScaledWidth="290" maxControlsPerLine="4" horzAlign="center"
+				<flowLayout name="fraLayAtributos" class="tile" vertAlign="leading" autoHeight="true" minScaledWidth="290" maxControlsPerLine="3" horzAlign="center"
 							lineSpacing="10" frameStyle="frames/panel1/frame.xml" 
-							margins="{left=5, top=5, right=19, bottom=12}" avoidScale="true">
+							margins="{left=2, top=2, right=16, bottom=4}" avoidScale="true">
 					<boxAtributo titulo="FORÇA" field="forca">		
-						{{"Atletismo", "atletismo"}},
-						{{"Taijutsu", "taijutsu"}}
+						{{"Atletismo", "atletismo"},
+						{"Taijutsu", "taijutsu"}}
 					</boxAtributo>
 					
 					<boxAtributo titulo="DESTREZA" field="destreza">									
