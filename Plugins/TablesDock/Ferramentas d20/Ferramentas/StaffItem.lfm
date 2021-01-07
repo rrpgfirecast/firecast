@@ -7,7 +7,7 @@
 		<label align="left" width="50" text="Nível" horzTextAlign="center"/>
 		<edit align="left" width="50" field="nivel" type="number"/>
 		<label align="left" width="50" text="NC" horzTextAlign="center"/>
-		<edit align="left" width="50" field="nc" type="number" min="8"/>
+		<edit align="left" width="50" field="nc" type="number" min="1"/>
 
 		<button align="left" width="25" text="X">
 			<event name="onClick">
@@ -48,6 +48,7 @@
 			local mults = {1, 0.75, 0.5};
 			local mult = mults[order] or 1;
 
+			-- BASE PRICE: 750
 			local price = nivel * nc * 750 * mult / cargas;
 			local materialCost = material * 50 / cargas;
 			local xpCost = xp * 5 / cargas;

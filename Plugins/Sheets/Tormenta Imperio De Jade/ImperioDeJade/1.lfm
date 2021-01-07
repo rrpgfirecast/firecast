@@ -1,0 +1,805 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmImperioDeJade1_svg" align="client" theme="light" margins="{top=1}">
+    <script>
+    
+    local function CalcularTotal(grad, mod, outros)
+        local total = grad + mod + outros; 
+        if (total > 0) then
+            total = "+" .. total;
+        end;
+        return total;
+    
+    end;
+    
+    </script>
+    <style>#frmImperioDeJade1_svg path {color: black; strokeColor: black; mode: stretch;} &#xD;
+#frmImperioDeJade1_svg label {fontColor: black; textTrimming: none; wordWrap: false; autoSize: true;}</style>
+    <scrollBox align="client">
+        <rectangle width="872" height="1169" color="white">&#xD;
+            <image left="0" top="0" width="872" height="1169" src="images/1.png" style="stretch" optimize="true" compilerOrder="0"/>&#xD;
+            <layout left="35" top="53" width="242" height="34" compilerOrder="1">
+                <edit transparent="true" fontSize="15" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="242" height="35" field="Personagem" compilerOrder="2"/>
+            </layout>&#xD;
+            <layout left="283" top="53" width="254" height="34" compilerOrder="3">
+                <edit transparent="true" fontSize="15" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="254" height="35" field="Jogador" compilerOrder="4"/>
+            </layout>&#xD;
+            <layout left="35" top="99" width="118" height="20" compilerOrder="5">
+                <edit transparent="true" fontSize="12.8" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="118" height="21" field="Raça" compilerOrder="6"/>
+            </layout>&#xD;
+            <layout left="157" top="99" width="244" height="20" compilerOrder="7">
+                <edit transparent="true" fontSize="12.8" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="244" height="21" field="Classe_e_Nível" compilerOrder="8"/>
+            </layout>&#xD;
+            <layout left="408" top="99" width="130" height="21" compilerOrder="9">
+                <label fontSize="13.5" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="130" height="22" field="Medida_de_Honra" compilerOrder="10"/>
+            </layout>&#xD;
+            <layout left="35" top="140" width="92" height="20" compilerOrder="11">
+                <edit transparent="true" fontSize="12.8" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="92" height="21" field="Gênero" compilerOrder="12"/>
+            </layout>&#xD;
+            <layout left="133" top="140" width="93" height="19" compilerOrder="13">
+                <edit transparent="true" fontSize="12" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="93" height="20" field="Idade" compilerOrder="14"/>
+            </layout>&#xD;
+            <layout left="233" top="140" width="92" height="19" compilerOrder="15">
+                <edit transparent="true" fontSize="12" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="92" height="20" field="Religião" compilerOrder="16"/>
+            </layout>&#xD;
+            <layout left="332" top="140" width="93" height="19" compilerOrder="17">
+                <edit transparent="true" fontSize="12" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="93" height="20" field="Tamanho" compilerOrder="18"/>
+            </layout>&#xD;
+            <layout left="431" top="140" width="106" height="18" compilerOrder="19">
+                <edit transparent="true" fontSize="11.3" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="106" height="19" field="Deslocamento" compilerOrder="20"/>
+            </layout>&#xD;
+            <layout left="97" top="205" width="14" height="16" compilerOrder="25">
+                <checkBox left="0" top="0" width="14" height="17" field="chacra_FOR" compilerOrder="26"/>
+            </layout>&#xD;
+            <layout left="367" top="205" width="14" height="16" compilerOrder="43">
+                <checkBox left="0" top="0" width="14" height="17" field="chacra_INT" compilerOrder="44"/>
+            </layout>&#xD;
+            <layout left="188" top="206" width="14" height="16" compilerOrder="31">
+                <checkBox left="0" top="0" width="14" height="17" field="chacra_DES" compilerOrder="32"/>
+            </layout>&#xD;
+            <layout left="454" top="206" width="14" height="16" compilerOrder="49">
+                <checkBox left="0" top="0" width="14" height="17" field="chacra_SAB" compilerOrder="50"/>
+            </layout>&#xD;
+            <layout left="276" top="207" width="14" height="16" compilerOrder="37">
+                <checkBox left="0" top="0" width="14" height="17" field="chacra_CON" compilerOrder="38"/>
+            </layout>&#xD;
+            <layout left="544" top="207" width="14" height="16" compilerOrder="55">
+                <checkBox left="0" top="0" width="14" height="17" field="chacra_CAR" compilerOrder="56"/>
+            </layout>&#xD;
+            <layout left="676" top="213" width="136" height="27" compilerOrder="61">
+                <edit transparent="true" fontSize="12" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="136" height="28" field="Reducao_de_Dano" compilerOrder="62"/>
+            </layout>&#xD;
+            <layout left="36" top="238" width="81" height="35" compilerOrder="23">
+                <label fontSize="24.1" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" align="client" width="81" height="36" field="Mod_FOR" compilerOrder="24"/> 
+            </layout>&#xD;
+            <layout left="125" top="238" width="81" height="35" compilerOrder="29">
+                <label fontSize="24.1" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" align="client" width="81" height="36" field="Mod_DES" compilerOrder="24"/>
+            </layout>&#xD;
+            <layout left="215" top="238" width="80" height="35" compilerOrder="35">
+                <label fontSize="24.1" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" align="client" width="81" height="36" field="Mod_CON" compilerOrder="24"/>
+            </layout>&#xD;
+            <layout left="304" top="238" width="81" height="35" compilerOrder="41">
+                <label fontSize="24.1" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" align="client" width="81" height="36" field="Mod_INT" compilerOrder="24"/>
+            </layout>&#xD;
+            <layout left="393" top="238" width="81" height="35" compilerOrder="47">
+                <label fontSize="24.1" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" align="client" width="81" height="36" field="Mod_SAB" compilerOrder="24"/>
+            </layout>&#xD;
+            <layout left="483" top="238" width="81" height="35" compilerOrder="53">
+                <label fontSize="24.1" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" align="client" width="81" height="36" field="Mod_CAR" compilerOrder="24"/>
+            </layout>&#xD;
+            <layout left="572" top="238" width="81" height="35" compilerOrder="59">
+                <label fontSize="24.1" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" align="client" width="81" height="36" field="Mod_HON" compilerOrder="24"/>
+            </layout>&#xD;
+            <layout left="676" top="264" width="136" height="27" compilerOrder="63">
+                <edit transparent="true" fontSize="12" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="136" height="28" field="Resistencia_a_Energia" compilerOrder="64"/>
+            </layout>&#xD;
+            <layout left="53" top="274" width="46" height="23" compilerOrder="21">
+                <edit transparent="true" fontSize="15" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="46" height="24" field="Valor_FOR" compilerOrder="22"/>
+            </layout>&#xD;
+            <dataLink fields="{'Valor_FOR', 'atletismo_grad', 'atletismo_outros'}">
+                <event name="onChange">
+                    local valorFORCA = tonumber(sheet.Valor_FOR);
+                    if (valorFORCA ~= nill) then
+                        sheet.Mod_FOR = math.floor(valorFORCA/2)-5;
+                        if (sheet.Mod_FOR > 0) then
+                            sheet.Mod_FOR = "+" .. sheet.Mod_FOR;
+                        end;
+                        sheet.FORCA = sheet.Mod_FOR;
+                        sheet.atletismo_total = CalcularTotal((tonumber(sheet.atletismo_grad) or 0) ,(tonumber(sheet.Mod_FOR) or 0) , (tonumber(sheet.atletismo_outros) or 0));
+                    else
+                        sheet.Mod_FOR = nill;
+                        sheet.FORCA = nill;
+                    end
+                </event>
+            </dataLink>
+            <layout left="142" top="274" width="46" height="23" compilerOrder="27">
+                <edit transparent="true" fontSize="15" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="46" height="24" field="Valor_DES" compilerOrder="28"/>
+            </layout>&#xD;
+            <dataLink fields="{'Valor_DES', '_1_2_nivel__0', 'CA_bonus_de_armadura', 'CA_outros', '_1_2_nivel__0', 'Reflexos_outros', 'acrobacia_grad', 'acrobacia_outros', 'cavalgar_grad', 'cavalgar_outros', 'furtividade_grad', 'furtividade_outros', 'iniciativa_grad', 'iniciativa_outros', 'ladinagem_grad', 'ladinagem_outros'}">
+                <event name="onChange">
+                    local valorDESTREZA = tonumber(sheet.Valor_DES);
+                    if (valorDESTREZA ~= nill) then
+                        sheet.Mod_DES = math.floor(valorDESTREZA/2)-5;
+                        if (sheet.Mod_DES > 0) then
+                            sheet.Mod_DES = "+" .. sheet.Mod_DES;
+                        end;
+                        sheet.DESTREZA__0 = sheet.Mod_DES;
+                        sheet.CA_total = 10 + (tonumber(sheet._1_2_nivel__0) or 0) + (tonumber(sheet.Mod_DES) or 0) + (tonumber(sheet.CA_bonus_de_armadura) or 0) + (tonumber(sheet.CA_outros) or 0);
+                        sheet.DESTREZA__1 = sheet.Mod_DES;
+                        sheet.Reflexos_total = CalcularTotal((tonumber(sheet._1_2_nivel__2) or 0) ,(tonumber(sheet.Mod_DES) or 0) , (tonumber(sheet.Reflexos_outros) or 0));
+                        sheet.DESTREZA__2 = sheet.Mod_DES;
+                        sheet.acrobacia_total = CalcularTotal((tonumber(sheet.acrobacia_grad) or 0) ,(tonumber(sheet.Mod_DES) or 0) , (tonumber(sheet.acrobacia_outros) or 0));
+                        sheet.DESTREZA__3 = sheet.Mod_DES;
+                        sheet.cavalgar_total = CalcularTotal((tonumber(sheet.cavalgar_grad) or 0) ,(tonumber(sheet.Mod_DES) or 0) , (tonumber(sheet.cavalgar_outros) or 0));
+                        sheet.DESTREZA__4 = sheet.Mod_DES;
+                        sheet.furtividade_total = CalcularTotal((tonumber(sheet.furtividade_grad) or 0) ,(tonumber(sheet.Mod_DES) or 0) , (tonumber(sheet.furtividade_outros) or 0));
+                        sheet.DESTREZA__5 = sheet.Mod_DES;
+                        sheet.iniciativa_total = CalcularTotal((tonumber(sheet.iniciativa_grad) or 0) ,(tonumber(sheet.Mod_DES) or 0) , (tonumber(sheet.iniciativa_outros) or 0));
+                        sheet.DESTREZA__6 = sheet.Mod_DES;
+                        sheet.ladinagem_total = CalcularTotal((tonumber(sheet.ladinagem_grad) or 0) ,(tonumber(sheet.Mod_DES) or 0) , (tonumber(sheet.ladinagem_outros) or 0));
+                    else
+                        sheet.Mod_DES = nill;
+                        sheet.DESTREZA__0 = nill;
+                        sheet.CA_total = 10 + (tonumber(sheet._1_2_nivel__0) or 0) + (tonumber(sheet.Mod_DES) or 0) + (tonumber(sheet.CA_bonus_de_armadura) or 0) + (tonumber(sheet.CA_outros) or 0);
+                        sheet.DESTREZA__1 = nill;
+                        sheet.Reflexos_total = CalcularTotal((tonumber(sheet._1_2_nivel__2) or 0) ,(tonumber(sheet.Mod_DES) or 0) , (tonumber(sheet.Reflexos_outros) or 0));
+                        sheet.DESTREZA__2 = nill;
+                        sheet.acrobacia_total = CalcularTotal((tonumber(sheet.acrobacia_grad) or 0) ,(tonumber(sheet.Mod_DES) or 0) , (tonumber(sheet.acrobacia_outros) or 0));
+                        sheet.DESTREZA__3 = nill;
+                        sheet.cavalgar_total = CalcularTotal((tonumber(sheet.cavalgar_grad) or 0) ,(tonumber(sheet.Mod_DES) or 0) , (tonumber(sheet.cavalgar_outros) or 0));
+                        sheet.DESTREZA__4 = nill;
+                        sheet.furtividade_total = CalcularTotal((tonumber(sheet.furtividade_grad) or 0) ,(tonumber(sheet.Mod_DES) or 0) , (tonumber(sheet.furtividade_outros) or 0));
+                        sheet.DESTREZA__5 = nill;
+                        sheet.iniciativa_total = CalcularTotal((tonumber(sheet.iniciativa_grad) or 0) ,(tonumber(sheet.Mod_DES) or 0) , (tonumber(sheet.iniciativa_outros) or 0));
+                        sheet.DESTREZA__6 = nill;
+                        sheet.ladinagem_total = CalcularTotal((tonumber(sheet.ladinagem_grad) or 0) ,(tonumber(sheet.Mod_DES) or 0) , (tonumber(sheet.ladinagem_outros) or 0));
+                    end
+                </event>
+            </dataLink>
+            <layout left="232" top="274" width="47" height="23" compilerOrder="33">
+                <edit transparent="true" fontSize="15" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="47" height="24" field="Valor_CON" compilerOrder="34"/>
+            </layout>&#xD;
+            <dataLink fields="{'Valor_CON', '_1_2_nivel__1', 'Fortitude_outros'}">
+                <event name="onChange">
+                    local valorCONSTITUICAO = tonumber(sheet.Valor_CON);
+                    if (valorCONSTITUICAO ~= nill) then
+                        sheet.Mod_CON = math.floor(valorCONSTITUICAO/2)-5;
+                        if (sheet.Mod_CON > 0) then
+                            sheet.Mod_CON = "+" .. sheet.Mod_CON;
+                        end;
+                        sheet.CONSTITUICAO = sheet.Mod_CON;
+                        sheet.Fortitude_total = CalcularTotal((tonumber(sheet._1_2_nivel__1) or 0) ,(tonumber(sheet.Mod_CON) or 0) , (tonumber(sheet.Fortitude_outros) or 0));
+                    else
+                        sheet.Mod_CON = nill;
+                        sheet.CONSTITUICAO = nill;
+                        sheet.Fortitude_total = CalcularTotal((tonumber(sheet._1_2_nivel__1) or 0) ,(tonumber(sheet.Mod_CON) or 0) , (tonumber(sheet.Fortitude_outros) or 0));
+                    end
+                </event>
+            </dataLink>
+            <layout left="321" top="274" width="47" height="23" compilerOrder="39">
+                <edit transparent="true" fontSize="15" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="47" height="24" field="Valor_INT" compilerOrder="40"/>
+            </layout>&#xD;
+            <dataLink fields="{'Valor_INT', 'conhecimento1_grad', 'conhecimento1_outros', 'conhecimento2_grad', 'conhecimento2_outros', 'ident_grad', 'ident_outros', 'oficio1_grad', 'oficio1_outros', 'oficio2_grad', 'oficio2_outros'}">
+                <event name="onChange">
+                    local valorINTELIGENCIA = tonumber(sheet.Valor_INT);
+                    if (valorINTELIGENCIA ~= nill) then
+                        sheet.Mod_INT = math.floor(valorINTELIGENCIA/2)-5;
+                        if (sheet.Mod_INT > 0) then
+                            sheet.Mod_INT = "+" .. sheet.Mod_INT;
+                        end;
+                        sheet.INTELIGENCIA__0 = sheet.Mod_INT;
+                        sheet.conhecimento1_total = CalcularTotal((tonumber(sheet.conhecimento1_grad) or 0) ,(tonumber(sheet.Mod_INT) or 0) , (tonumber(sheet.conhecimento1_outros) or 0));
+                        sheet.INTELIGENCIA__1 = sheet.Mod_INT;
+                        sheet.conhecimento2_total = CalcularTotal((tonumber(sheet.conhecimento2_grad) or 0) ,(tonumber(sheet.Mod_INT) or 0) , (tonumber(sheet.conhecimento2_outros) or 0));
+                        sheet.INTELIGENCIA__2 = sheet.Mod_INT;
+                        sheet.ident_total = CalcularTotal((tonumber(sheet.ident_grad) or 0) ,(tonumber(sheet.Mod_INT) or 0) , (tonumber(sheet.ident_outros) or 0));
+                        sheet.INTELIGENCIA__3 = sheet.Mod_INT;
+                        sheet.oficio1_total = CalcularTotal((tonumber(sheet.oficio1_grad) or 0) ,(tonumber(sheet.Mod_INT) or 0) , (tonumber(sheet.oficio1_outros) or 0));
+                        sheet.INTELIGENCIA__4 = sheet.Mod_INT;
+                        sheet.oficio2_total = CalcularTotal((tonumber(sheet.oficio2_grad) or 0) ,(tonumber(sheet.Mod_INT) or 0) , (tonumber(sheet.oficio2_outros) or 0));
+                    else
+                        sheet.Mod_INT = nill;
+                        sheet.INTELIGENCIA__0 = nill;
+                        sheet.conhecimento1_total = CalcularTotal((tonumber(sheet.conhecimento1_grad) or 0) ,(tonumber(sheet.Mod_INT) or 0) , (tonumber(sheet.conhecimento1_outros) or 0));
+                        sheet.INTELIGENCIA__1 = nill;
+                        sheet.conhecimento2_total = CalcularTotal((tonumber(sheet.conhecimento2_grad) or 0) ,(tonumber(sheet.Mod_INT) or 0) , (tonumber(sheet.conhecimento2_outros) or 0));
+                        sheet.INTELIGENCIA__2 = nill;
+                        sheet.ident_total = CalcularTotal((tonumber(sheet.ident_grad) or 0) ,(tonumber(sheet.Mod_INT) or 0) , (tonumber(sheet.ident_outros) or 0));
+                        sheet.INTELIGENCIA__3 = nill;
+                        sheet.oficio1_total = CalcularTotal((tonumber(sheet.oficio1_grad) or 0) ,(tonumber(sheet.Mod_INT) or 0) , (tonumber(sheet.oficio1_outros) or 0));
+                        sheet.INTELIGENCIA__4 = nill;
+                        sheet.oficio2_total = CalcularTotal((tonumber(sheet.oficio2_grad) or 0) ,(tonumber(sheet.Mod_INT) or 0) , (tonumber(sheet.oficio2_outros) or 0));
+                    end
+                </event>
+            </dataLink>
+            <layout left="410" top="274" width="46" height="23" compilerOrder="45">
+                <edit transparent="true" fontSize="15" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="46" height="24" field="Valor_SAB" compilerOrder="46"/>
+            </layout>&#xD;
+            <dataLink fields="{'Valor_SAB', '_1_2_nivel__3', 'Vontade_outros', 'cura_grad', 'cura_outros', 'intuicao_grad', 'intuicao_outros', 'percepcao_grad', 'percepcao_outros', 'sobrevivencia_grad', 'sobrevivencia_outros'}">
+                <event name="onChange">
+                    local valorSABEDORIA = tonumber(sheet.Valor_SAB);
+                    if (valorSABEDORIA ~= nill) then
+                        sheet.Mod_SAB = math.floor(valorSABEDORIA/2)-5;
+                        if (sheet.Mod_SAB > 0) then
+                            sheet.Mod_SAB = "+" .. sheet.Mod_SAB;
+                        end;
+                        sheet.SABEDORIA__0 = sheet.Mod_SAB;
+                        sheet.Vontade_total = CalcularTotal((tonumber(sheet._1_2_nivel__3) or 0) ,(tonumber(sheet.Mod_SAB) or 0) , (tonumber(sheet.Vontade_outros) or 0));
+                        sheet.SABEDORIA__1 = sheet.Mod_SAB;
+                        sheet.cura_total = CalcularTotal((tonumber(sheet.cura_grad) or 0) ,(tonumber(sheet.Mod_SAB) or 0) , (tonumber(sheet.cura_outros) or 0));
+                        sheet.SABEDORIA__2 = sheet.Mod_SAB;
+                        sheet.intuicao_total = CalcularTotal((tonumber(sheet.intuicao_grad) or 0) ,(tonumber(sheet.Mod_SAB) or 0) , (tonumber(sheet.intuicao_outros) or 0));
+                        sheet.SABEDORIA__3 = sheet.Mod_SAB;
+                        sheet.percepcao_total = CalcularTotal((tonumber(sheet.percepcao_grad) or 0) ,(tonumber(sheet.Mod_SAB) or 0) , (tonumber(sheet.percepcao_outros) or 0));
+                        sheet.SABEDORIA__4 = sheet.Mod_SAB;
+                        sheet.sobrevivencia_total = CalcularTotal((tonumber(sheet.sobrevivencia_grad) or 0) ,(tonumber(sheet.Mod_SAB) or 0) , (tonumber(sheet.sobrevivencia_outros) or 0));
+                    else
+                        sheet.Mod_SAB = nill;
+                        sheet.SABEDORIA__0 = nill;
+                        sheet.Vontade_total = CalcularTotal((tonumber(sheet._1_2_nivel__3) or 0) ,(tonumber(sheet.Mod_SAB) or 0) , (tonumber(sheet.Vontade_outros) or 0));
+                        sheet.SABEDORIA__1 = nill;
+                        sheet.cura_total = CalcularTotal((tonumber(sheet.cura_grad) or 0) ,(tonumber(sheet.Mod_SAB) or 0) , (tonumber(sheet.cura_outros) or 0));
+                        sheet.SABEDORIA__2 = nill;
+                        sheet.intuicao_total = CalcularTotal((tonumber(sheet.intuicao_grad) or 0) ,(tonumber(sheet.Mod_SAB) or 0) , (tonumber(sheet.intuicao_outros) or 0));
+                        sheet.SABEDORIA__3 = nill;
+                        sheet.percepcao_total = CalcularTotal((tonumber(sheet.percepcao_grad) or 0) ,(tonumber(sheet.Mod_SAB) or 0) , (tonumber(sheet.percepcao_outros) or 0));
+                        sheet.SABEDORIA__4 = nill;
+                        sheet.sobrevivencia_total = CalcularTotal((tonumber(sheet.sobrevivencia_grad) or 0) ,(tonumber(sheet.Mod_SAB) or 0) , (tonumber(sheet.sobrevivencia_outros) or 0));
+                    end
+                </event>
+            </dataLink>
+            <layout left="500" top="274" width="46" height="23" compilerOrder="51">
+                <edit transparent="true" fontSize="15" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="46" height="24" field="Valor_CAR" compilerOrder="52"/>
+            </layout>&#xD;
+            <dataLink fields="{'Valor_CAR', 'adestrar_grad', 'adestrar_outros', 'atuacao1_grad', 'atuacao1_outros', 'atuacao2_grad', 'atuacao2_outros', 'diplomacia_grad', 'diplomacia_outros', 'enganacao_grad', 'enganacao_outros', 'intimidacao_grad', 'intimidacao_outros', 'obterinfo_grad', 'obterinfo_outros'}">
+                <event name="onChange">
+                    local valorCARISMA = tonumber(sheet.Valor_CAR);
+                    if (valorCARISMA ~= nill) then
+                        sheet.Mod_CAR = math.floor(valorCARISMA/2)-5;
+                        if (sheet.Mod_CAR > 0) then
+                            sheet.Mod_CAR = "+" .. sheet.Mod_CAR;
+                        end;
+                        sheet.CARISMA__0 = sheet.Mod_CAR;
+                        sheet.adestrar_total = CalcularTotal((tonumber(sheet.adestrar_grad) or 0) ,(tonumber(sheet.Mod_CAR) or 0) , (tonumber(sheet.adestrar_outros) or 0));
+                        sheet.CARISMA__1 = sheet.Mod_CAR;
+                        sheet.atuacao1_total = CalcularTotal((tonumber(sheet.atuacao1_grad) or 0) ,(tonumber(sheet.Mod_CAR) or 0) , (tonumber(sheet.atuacao1_outros) or 0));
+                        sheet.CARISMA__2 = sheet.Mod_CAR;
+                        sheet.atuacao2_total = CalcularTotal((tonumber(sheet.atuacao2_grad) or 0) ,(tonumber(sheet.Mod_CAR) or 0) , (tonumber(sheet.atuacao2_outros) or 0));
+                        sheet.CARISMA__3 = sheet.Mod_CAR;
+                        sheet.diplomacia_total = CalcularTotal((tonumber(sheet.diplomacia_grad) or 0) ,(tonumber(sheet.Mod_CAR) or 0) , (tonumber(sheet.diplomacia_outros) or 0));
+                        sheet.CARISMA__4 = sheet.Mod_CAR;
+                        sheet.enganacao_total = CalcularTotal((tonumber(sheet.enganacao_grad) or 0) ,(tonumber(sheet.Mod_CAR) or 0) , (tonumber(sheet.enganacao_outros) or 0));
+                        sheet.CARISMA__5 = sheet.Mod_CAR;
+                        sheet.intimidacao_total = CalcularTotal((tonumber(sheet.intimidacao_grad) or 0) ,(tonumber(sheet.Mod_CAR) or 0) , (tonumber(sheet.intimidacao_outros) or 0));
+                        sheet.CARISMA__6 = sheet.Mod_CAR;
+                        sheet.obterinfo_total = CalcularTotal((tonumber(sheet.obterinfo_grad) or 0) ,(tonumber(sheet.Mod_CAR) or 0) , (tonumber(sheet.obterinfo_outros) or 0));
+                    else
+                        sheet.Mod_CAR = nill;
+                        sheet.CARISMA__0 = nill;
+                        sheet.adestrar_total = CalcularTotal((tonumber(sheet.adestrar_grad) or 0) ,(tonumber(sheet.Mod_CAR) or 0) , (tonumber(sheet.adestrar_outros) or 0));
+                        sheet.CARISMA__1 = nill;
+                        sheet.atuacao1_total = CalcularTotal((tonumber(sheet.atuacao1_grad) or 0) ,(tonumber(sheet.Mod_CAR) or 0) , (tonumber(sheet.atuacao1_outros) or 0));
+                        sheet.CARISMA__2 = nill;
+                        sheet.atuacao2_total = CalcularTotal((tonumber(sheet.atuacao2_grad) or 0) ,(tonumber(sheet.Mod_CAR) or 0) , (tonumber(sheet.atuacao2_outros) or 0));
+                        sheet.CARISMA__3 = nill;
+                        sheet.diplomacia_total = CalcularTotal((tonumber(sheet.diplomacia_grad) or 0) ,(tonumber(sheet.Mod_CAR) or 0) , (tonumber(sheet.diplomacia_outros) or 0));
+                        sheet.CARISMA__4 = nill;
+                        sheet.enganacao_total = CalcularTotal((tonumber(sheet.enganacao_grad) or 0) ,(tonumber(sheet.Mod_CAR) or 0) , (tonumber(sheet.enganacao_outros) or 0));
+                        sheet.CARISMA__5 = nill;
+                        sheet.intimidacao_total = CalcularTotal((tonumber(sheet.intimidacao_grad) or 0) ,(tonumber(sheet.Mod_CAR) or 0) , (tonumber(sheet.intimidacao_outros) or 0));
+                        sheet.CARISMA__6 = nill;
+                        sheet.obterinfo_total = CalcularTotal((tonumber(sheet.obterinfo_grad) or 0) ,(tonumber(sheet.Mod_CAR) or 0) , (tonumber(sheet.obterinfo_outros) or 0));
+                    end
+                </event>
+            </dataLink>
+            <layout left="591" top="274" width="44" height="23" compilerOrder="57">
+                <edit transparent="true" fontSize="15" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="44" height="24" field="Valor_HON" compilerOrder="58"/>
+            </layout>&#xD;
+            <dataLink field="Valor_HON">
+                <event name="onChange">
+                    local valorHONRA = tonumber(sheet.Valor_HON);
+                    if (valorHONRA ~= nill) then
+                        sheet.Mod_HON = math.floor(valorHONRA/2)-5;
+                        if (sheet.Mod_HON > 0) then
+                            sheet.Mod_HON = "+" .. sheet.Mod_HON;
+                        end
+                        
+                        if (valorHONRA >= 22) then
+                        
+                            sheet.Medida_de_Honra = "Digníssimo";
+                        
+                        elseif (valorHONRA >= 16) then
+                        
+                            sheet.Medida_de_Honra = "Honrado";
+                            
+                        elseif (valorHONRA >= 10) then
+            
+                            sheet.Medida_de_Honra = "Honesto";
+                            
+                        elseif (valorHONRA >= 6) then
+                        
+                            sheet.Medida_de_Honra = "Desonrado";
+                            
+                        elseif (valorHONRA >= 1) then
+                        
+                            sheet.Medida_de_Honra = "Sórdido";
+                            
+                        else
+                        
+                            sheet.Medida_de_Honra = "Desumano";
+                        end
+                    else
+                        sheet.Mod_HON = nill;
+                    end
+                </event>
+            </dataLink>
+            <layout left="613" top="346" width="33" height="22" compilerOrder="77">
+                <label fontSize="14.3" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" align="client" width="33" height="23" field="Fortitude_total" compilerOrder="78"/>
+            </layout>&#xD;
+            <layout left="676" top="347" width="40" height="22" compilerOrder="83">
+                <edit transparent="true" fontSize="14.3" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="40" height="23" field="_1_2_nivel__1" compilerOrder="84"/>
+            </layout>&#xD;
+            <layout left="731" top="347" width="40" height="22" compilerOrder="89">
+                <label fontSize="14.3" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" align="client" width="40" height="23" field="CONSTITUICAO" compilerOrder="90"/>
+            </layout>&#xD;
+            <layout left="787" top="347" width="40" height="22" compilerOrder="95">
+                <edit transparent="true" fontSize="14.3" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="40" height="23" field="Fortitude_outros" compilerOrder="96"/>
+            </layout>&#xD;
+            <layout left="429" top="359" width="91" height="35" compilerOrder="65">
+                <edit transparent="true" fontSize="24.1" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="91" height="36" field="BBA" compilerOrder="66"/>
+            </layout>&#xD;
+            <layout left="613" top="367" width="33" height="19" compilerOrder="79">
+                <label fontSize="12" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" align="client" width="33" height="20" field="Reflexos_total" compilerOrder="80"/>
+            </layout>&#xD;
+            <layout left="676" top="367" width="40" height="19" compilerOrder="85">
+                <edit transparent="true" fontSize="12" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="40" height="20" field="_1_2_nivel__2" compilerOrder="86"/>
+            </layout>&#xD;
+            <layout left="731" top="367" width="40" height="19" compilerOrder="91">
+                <label fontSize="12" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" align="client" width="40" height="20" field="DESTREZA__1" compilerOrder="92"/>
+            </layout>&#xD;
+            <layout left="787" top="367" width="40" height="19" compilerOrder="97">
+                <edit transparent="true" fontSize="12" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="40" height="20" field="Reflexos_outros" compilerOrder="98"/>
+            </layout>&#xD;
+            <layout left="49" top="372" width="51" height="30" compilerOrder="71">
+                <label fontSize="15" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" align="client" width="51" height="31" field="CA_total" compilerOrder="72"/>
+            </layout>&#xD;
+            <layout left="159" top="372" width="51" height="30" compilerOrder="67">
+                <edit transparent="true" fontSize="15" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="51" height="31" field="_1_2_nivel__0" compilerOrder="68"/>
+            </layout>&#xD;
+            <layout left="223" top="372" width="51" height="30" compilerOrder="69">
+                <label fontSize="15" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" align="client" width="51" height="31" field="DESTREZA__0" compilerOrder="70"/>
+            </layout>&#xD;
+            <layout left="289" top="372" width="51" height="30" compilerOrder="73">
+                <edit transparent="true" fontSize="15" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="51" height="31" field="CA_bonus_de_armadura" compilerOrder="74"/>
+            </layout>&#xD;
+            <layout left="354" top="372" width="51" height="30" compilerOrder="75">
+                <edit transparent="true" fontSize="15" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="51" height="31" field="CA_outros" compilerOrder="76"/>
+            </layout>&#xD;
+            <layout left="613" top="386" width="33" height="20" compilerOrder="81">
+                <label fontSize="12.8" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" align="client" width="33" height="21" field="Vontade_total" compilerOrder="82"/>
+            </layout>&#xD;
+            <layout left="676" top="386" width="40" height="20" compilerOrder="87">
+                <edit transparent="true" fontSize="12.8" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="40" height="21" field="_1_2_nivel__3" compilerOrder="88"/>
+            </layout>&#xD;
+            <layout left="731" top="386" width="40" height="20" compilerOrder="93">
+                <label fontSize="12.8" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" align="client" width="40" height="21" field="SABEDORIA__0" compilerOrder="94"/>
+            </layout>&#xD;
+            <layout left="787" top="386" width="40" height="20" compilerOrder="99">
+                <edit transparent="true" fontSize="12.8" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="40" height="21" field="Vontade_outros" compilerOrder="100"/>
+            </layout>&#xD;
+            <layout left="38" top="454" width="54" height="35" compilerOrder="289">
+                <edit transparent="true" fontSize="18" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="54" height="36" field="PV_maximos" compilerOrder="290"/>
+            </layout>&#xD;
+            <layout left="95" top="454" width="368" height="35" compilerOrder="291">
+                <edit transparent="true" fontSize="18" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="368" height="36" field="PV_atuais" compilerOrder="292"/>
+            </layout>&#xD;
+            <layout left="465" top="454" width="56" height="35" compilerOrder="293">
+                <edit transparent="true" fontSize="18" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="56" height="36" field="PV_temporarios" compilerOrder="294"/>
+            </layout>&#xD;
+            <layout left="689" top="472" width="30" height="24" compilerOrder="233">
+                <label fontSize="12" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" align="client" width="30" height="25" field="acrobacia_total" compilerOrder="234"/>
+            </layout>&#xD;
+            <layout left="732" top="472" width="30" height="24" compilerOrder="145">
+                <edit transparent="true" fontSize="12" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="30" height="25" field="acrobacia_grad" compilerOrder="146"/>
+            </layout>&#xD;
+            <layout left="766" top="472" width="30" height="24" compilerOrder="101">
+                <label fontSize="12" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" align="client" width="30" height="25" field="DESTREZA__2" compilerOrder="102"/>
+            </layout>&#xD;
+            <layout left="800" top="472" width="30" height="24" compilerOrder="147">
+                <edit transparent="true" fontSize="12" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="30" height="25" field="acrobacia_outros" compilerOrder="148"/>
+            </layout>&#xD;
+            <layout left="689" top="493" width="30" height="24" compilerOrder="235">
+                <label fontSize="12" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" align="client" width="30" height="25" field="adestrar_total" compilerOrder="236"/>
+            </layout>&#xD;
+            <layout left="732" top="493" width="30" height="24" compilerOrder="149">
+                <edit transparent="true" fontSize="12" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="30" height="25" field="adestrar_grad" compilerOrder="150"/>
+            </layout>&#xD;
+            <layout left="766" top="493" width="30" height="24" compilerOrder="111">
+                <label fontSize="12" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" align="client" width="30" height="25" field="CARISMA__0" compilerOrder="112"/>
+            </layout>&#xD;
+            <layout left="800" top="493" width="30" height="24" compilerOrder="151">
+                <edit transparent="true" fontSize="12" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="30" height="25" field="adestrar_outros" compilerOrder="152"/>
+            </layout>&#xD;
+            <layout left="689" top="513" width="30" height="24" compilerOrder="237">
+                <label fontSize="12" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" align="client" width="30" height="25" field="atletismo_total" compilerOrder="238"/>
+            </layout>&#xD;
+            <layout left="732" top="513" width="30" height="24" compilerOrder="153">
+                <edit transparent="true" fontSize="12" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="30" height="25" field="atletismo_grad" compilerOrder="154"/>
+            </layout>&#xD;
+            <layout left="766" top="513" width="30" height="24" compilerOrder="125">
+                <label fontSize="12" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" align="client" width="30" height="25" field="FORCA" compilerOrder="126"/>
+            </layout>&#xD;
+            <layout left="800" top="513" width="30" height="24" compilerOrder="155">
+                <edit transparent="true" fontSize="12" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="30" height="25" field="atletismo_outros" compilerOrder="156"/>
+            </layout>&#xD;
+            <layout left="587" top="531" width="90" height="20" compilerOrder="281">
+                <edit transparent="true" fontSize="9" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="90" height="21" field="atuacao_nome1" compilerOrder="282"/>
+            </layout>&#xD;
+            <layout left="689" top="533" width="30" height="24" compilerOrder="239">
+                <label fontSize="12" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" align="client" width="30" height="25" field="atuacao1_total" compilerOrder="240"/>
+            </layout>&#xD;
+            <layout left="732" top="533" width="30" height="24" compilerOrder="157">
+                <edit transparent="true" fontSize="12" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="30" height="25" field="atuacao1_grad" compilerOrder="158"/>
+            </layout>&#xD;
+            <layout left="766" top="533" width="30" height="24" compilerOrder="113">
+                <label fontSize="12" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" align="client" width="30" height="25" field="CARISMA__1" compilerOrder="114"/>
+            </layout>&#xD;
+            <layout left="800" top="533" width="30" height="24" compilerOrder="159">
+                <edit transparent="true" fontSize="12" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="30" height="25" field="atuacao1_outros" compilerOrder="160"/>
+            </layout>&#xD;
+            <layout left="38" top="547" width="54" height="35" compilerOrder="295">
+                <edit transparent="true" fontSize="18" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="54" height="36" field="PM_maximos" compilerOrder="296"/>
+            </layout>&#xD;
+            <layout left="94" top="547" width="368" height="35" compilerOrder="297">
+                <edit transparent="true" fontSize="18" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="368" height="36" field="PM_atuais" compilerOrder="298"/>
+            </layout>&#xD;
+            <layout left="465" top="547" width="56" height="35" compilerOrder="299">
+                <edit transparent="true" fontSize="18" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="56" height="36" field="PM_temporarios" compilerOrder="300"/>
+            </layout>&#xD;
+            <layout left="587" top="550" width="90" height="20" compilerOrder="283">
+                <edit transparent="true" fontSize="9" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="90" height="21" field="atuacao_nome2" compilerOrder="284"/>
+            </layout>&#xD;
+            <layout left="689" top="553" width="30" height="24" compilerOrder="241">
+                <label fontSize="12" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" align="client" width="30" height="25" field="atuacao2_total" compilerOrder="242"/>
+            </layout>&#xD;
+            <layout left="732" top="553" width="30" height="24" compilerOrder="161">
+                <edit transparent="true" fontSize="12" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="30" height="25" field="atuacao2_grad" compilerOrder="162"/>
+            </layout>&#xD;
+            <layout left="766" top="553" width="30" height="24" compilerOrder="115">
+                <label fontSize="12" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" align="client" width="30" height="25" field="CARISMA__2" compilerOrder="116"/>
+            </layout>&#xD;
+            <layout left="800" top="553" width="30" height="24" compilerOrder="163">
+                <edit transparent="true" fontSize="12" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="30" height="25" field="atuacao2_outros" compilerOrder="164"/>
+            </layout>&#xD;
+            <layout left="689" top="572" width="30" height="24" compilerOrder="243">
+                <label fontSize="12" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" align="client" width="30" height="25" field="cavalgar_total" compilerOrder="244"/>
+            </layout>&#xD;
+            <layout left="732" top="572" width="30" height="24" compilerOrder="167">
+                <edit transparent="true" fontSize="12" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="30" height="25" field="cavalgar_grad" compilerOrder="168"/>
+            </layout>&#xD;
+            <layout left="766" top="572" width="30" height="24" compilerOrder="103">
+                <label fontSize="12" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" align="client" width="30" height="25" field="DESTREZA__3" compilerOrder="104"/>
+            </layout>&#xD;
+            <layout left="800" top="572" width="30" height="24" compilerOrder="165">
+                <edit transparent="true" fontSize="12" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="30" height="25" field="cavalgar_outros" compilerOrder="166"/>
+            </layout>&#xD;
+            <layout left="616" top="589" width="58" height="20" compilerOrder="285">
+                <edit transparent="true" fontSize="9" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="58" height="21" field="conhecimento_nome1" compilerOrder="286"/>
+            </layout>&#xD;
+            <layout left="689" top="592" width="30" height="24" compilerOrder="245">
+                <label fontSize="12" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" align="client" width="30" height="25" field="conhecimento1_total" compilerOrder="246"/>
+            </layout>&#xD;
+            <layout left="732" top="592" width="30" height="24" compilerOrder="171">
+                <edit transparent="true" fontSize="12" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="30" height="25" field="conhecimento1_grad" compilerOrder="172"/>
+            </layout>&#xD;
+            <layout left="766" top="592" width="30" height="24" compilerOrder="127">
+                <label fontSize="12" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" align="client" width="30" height="25" field="INTELIGENCIA__0" compilerOrder="128"/>
+            </layout>&#xD;
+            <layout left="800" top="592" width="30" height="24" compilerOrder="169">
+                <edit transparent="true" fontSize="12" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="30" height="25" field="conhecimento1_outros" compilerOrder="170"/>
+            </layout>&#xD;
+            <layout left="616" top="609" width="58" height="20" compilerOrder="287">
+                <edit transparent="true" fontSize="9" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="58" height="21" field="conhecimento_nome2" compilerOrder="288"/>
+            </layout>&#xD;
+            <layout left="689" top="611" width="30" height="24" compilerOrder="247">
+                <label fontSize="12" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" align="client" width="30" height="25" field="conhecimento2_total" compilerOrder="248"/>
+            </layout>&#xD;
+            <layout left="732" top="611" width="30" height="24" compilerOrder="173">
+                <edit transparent="true" fontSize="12" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="30" height="25" field="conhecimento2_grad" compilerOrder="174"/>
+            </layout>&#xD;
+            <layout left="766" top="611" width="30" height="24" compilerOrder="129">
+                <label fontSize="12" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" align="client" width="30" height="25" field="INTELIGENCIA__1" compilerOrder="130"/>
+            </layout>&#xD;
+            <layout left="800" top="611" width="30" height="24" compilerOrder="175">
+                <edit transparent="true" fontSize="12" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="30" height="25" field="conhecimento2_outros" compilerOrder="176"/>
+            </layout>&#xD;
+            <layout left="689" top="631" width="30" height="24" compilerOrder="249">
+                <label fontSize="12" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" align="client" width="30" height="25" field="cura_total" compilerOrder="250"/>
+            </layout>&#xD;
+            <layout left="732" top="631" width="30" height="24" compilerOrder="179">
+                <edit transparent="true" fontSize="12" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="30" height="25" field="cura_grad" compilerOrder="180"/>
+            </layout>&#xD;
+            <layout left="766" top="631" width="30" height="24" compilerOrder="137">
+                <label fontSize="12" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" align="client" width="30" height="25" field="SABEDORIA__1" compilerOrder="138"/>
+            </layout>&#xD;
+            <layout left="800" top="631" width="30" height="24" compilerOrder="177">
+                <edit transparent="true" fontSize="12" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="30" height="25" field="cura_outros" compilerOrder="178"/>
+            </layout>&#xD;
+            <layout left="45" top="644" width="190" height="24" compilerOrder="301">
+                <edit transparent="true" fontSize="9" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="190" height="25" field="ataque1" compilerOrder="302"/>
+            </layout>&#xD;
+            <layout left="242" top="644" width="48" height="24" compilerOrder="303">
+                <edit transparent="true" fontSize="9" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="48" height="25" field="BBA1" compilerOrder="304"/>
+            </layout>&#xD;
+            <layout left="298" top="644" width="48" height="24" compilerOrder="305">
+                <edit transparent="true" fontSize="9" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="48" height="25" field="dano1" compilerOrder="306"/>
+            </layout>&#xD;
+            <layout left="353" top="644" width="48" height="24" compilerOrder="307">
+                <edit transparent="true" fontSize="9" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="48" height="25" field="critico1" compilerOrder="308"/>
+            </layout>&#xD;
+            <layout left="409" top="644" width="48" height="24" compilerOrder="309">
+                <edit transparent="true" fontSize="9" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="48" height="25" field="tipo1" compilerOrder="310"/>
+            </layout>&#xD;
+            <layout left="464" top="644" width="48" height="24" compilerOrder="311">
+                <edit transparent="true" fontSize="9" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="48" height="25" field="alcance1" compilerOrder="312"/>
+            </layout>&#xD;
+            <layout left="689" top="651" width="30" height="24" compilerOrder="251">
+                <label fontSize="12" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" align="client" width="30" height="25" field="diplomacia_total" compilerOrder="252"/>
+            </layout>&#xD;
+            <layout left="732" top="651" width="30" height="24" compilerOrder="181">
+                <edit transparent="true" fontSize="12" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="30" height="25" field="diplomacia_grad" compilerOrder="182"/>
+            </layout>&#xD;
+            <layout left="766" top="651" width="30" height="24" compilerOrder="117">
+                <label fontSize="12" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" align="client" width="30" height="25" field="CARISMA__3" compilerOrder="118"/>
+            </layout>&#xD;
+            <layout left="800" top="651" width="30" height="24" compilerOrder="183">
+                <edit transparent="true" fontSize="12" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="30" height="25" field="diplomacia_outros" compilerOrder="184"/>
+            </layout>&#xD;
+            <layout left="44" top="669" width="190" height="24" compilerOrder="313">
+                <edit transparent="true" fontSize="9" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="190" height="25" field="ataque2" compilerOrder="314"/>
+            </layout>&#xD;
+            <layout left="242" top="669" width="48" height="24" compilerOrder="315">
+                <edit transparent="true" fontSize="9" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="48" height="25" field="BBA2" compilerOrder="316"/>
+            </layout>&#xD;
+            <layout left="297" top="669" width="48" height="24" compilerOrder="317">
+                <edit transparent="true" fontSize="9" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="48" height="25" field="dano2" compilerOrder="318"/>
+            </layout>&#xD;
+            <layout left="353" top="669" width="48" height="24" compilerOrder="319">
+                <edit transparent="true" fontSize="9" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="48" height="25" field="critico2" compilerOrder="320"/>
+            </layout>&#xD;
+            <layout left="408" top="669" width="48" height="24" compilerOrder="321">
+                <edit transparent="true" fontSize="9" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="48" height="25" field="tipo2" compilerOrder="322"/>
+            </layout>&#xD;
+            <layout left="464" top="669" width="48" height="24" compilerOrder="323">
+                <edit transparent="true" fontSize="9" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="48" height="25" field="alcance2" compilerOrder="324"/>
+            </layout>&#xD;
+            <layout left="689" top="671" width="30" height="24" compilerOrder="253">
+                <label fontSize="12" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" align="client" width="30" height="25" field="enganacao_total" compilerOrder="254"/>
+            </layout>&#xD;
+            <layout left="732" top="671" width="30" height="24" compilerOrder="185">
+                <edit transparent="true" fontSize="12" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="30" height="25" field="enganacao_grad" compilerOrder="186"/>
+            </layout>&#xD;
+            <layout left="766" top="671" width="30" height="24" compilerOrder="119">
+                <label fontSize="12" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" align="client" width="30" height="25" field="CARISMA__4" compilerOrder="120"/>
+            </layout>&#xD;
+            <layout left="800" top="671" width="30" height="24" compilerOrder="187">
+                <edit transparent="true" fontSize="12" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="30" height="25" field="enganacao_outros" compilerOrder="188"/>
+            </layout>&#xD;
+            <layout left="689" top="691" width="30" height="24" compilerOrder="255">
+                <label fontSize="12" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" align="client" width="30" height="25" field="furtividade_total" compilerOrder="256"/>
+            </layout>&#xD;
+            <layout left="732" top="691" width="30" height="24" compilerOrder="189">
+                <edit transparent="true" fontSize="12" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="30" height="25" field="furtividade_grad" compilerOrder="190"/>
+            </layout>&#xD;
+            <layout left="766" top="691" width="30" height="24" compilerOrder="105">
+                <label fontSize="12" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" align="client" width="30" height="25" field="DESTREZA__4" compilerOrder="106"/>
+            </layout>&#xD;
+            <layout left="800" top="691" width="30" height="24" compilerOrder="191">
+                <edit transparent="true" fontSize="12" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="30" height="25" field="furtividade_outros" compilerOrder="192"/>
+            </layout>&#xD;
+            <layout left="45" top="695" width="190" height="24" compilerOrder="325">
+                <edit transparent="true" fontSize="9" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="190" height="25" field="ataque3" compilerOrder="326"/>
+            </layout>&#xD;
+            <layout left="242" top="695" width="48" height="24" compilerOrder="327">
+                <edit transparent="true" fontSize="9" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="48" height="25" field="BBA3" compilerOrder="328"/>
+            </layout>&#xD;
+            <layout left="298" top="695" width="48" height="24" compilerOrder="329">
+                <edit transparent="true" fontSize="9" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="48" height="25" field="dano3" compilerOrder="330"/>
+            </layout>&#xD;
+            <layout left="353" top="695" width="48" height="24" compilerOrder="331">
+                <edit transparent="true" fontSize="9" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="48" height="25" field="critico3" compilerOrder="332"/>
+            </layout>&#xD;
+            <layout left="409" top="695" width="48" height="24" compilerOrder="333">
+                <edit transparent="true" fontSize="9" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="48" height="25" field="tipo3" compilerOrder="334"/>
+            </layout>&#xD;
+            <layout left="464" top="695" width="48" height="24" compilerOrder="335">
+                <edit transparent="true" fontSize="9" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="48" height="25" field="alcance3" compilerOrder="336"/>
+            </layout>&#xD;
+            <layout left="689" top="711" width="30" height="24" compilerOrder="257">
+                <label fontSize="12" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" align="client" width="30" height="25" field="ident_total" compilerOrder="258"/>
+            </layout>&#xD;
+            <layout left="732" top="711" width="30" height="24" compilerOrder="193">
+                <edit transparent="true" fontSize="12" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="30" height="25" field="ident_grad" compilerOrder="194"/>
+            </layout>&#xD;
+            <layout left="766" top="711" width="30" height="24" compilerOrder="131">
+                <label fontSize="12" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" align="client" width="30" height="25" field="INTELIGENCIA__2" compilerOrder="132"/>
+            </layout>&#xD;
+            <layout left="800" top="711" width="30" height="24" compilerOrder="195">
+                <edit transparent="true" fontSize="12" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="30" height="25" field="ident_outros" compilerOrder="196"/>
+            </layout>&#xD;
+            <layout left="44" top="720" width="190" height="24" compilerOrder="337">
+                <edit transparent="true" fontSize="9" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="190" height="25" field="ataque4" compilerOrder="338"/>
+            </layout>&#xD;
+            <layout left="242" top="720" width="48" height="24" compilerOrder="339">
+                <edit transparent="true" fontSize="9" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="48" height="25" field="BBA4" compilerOrder="340"/>
+            </layout>&#xD;
+            <layout left="297" top="720" width="48" height="24" compilerOrder="341">
+                <edit transparent="true" fontSize="9" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="48" height="25" field="dano4" compilerOrder="342"/>
+            </layout>&#xD;
+            <layout left="353" top="720" width="48" height="24" compilerOrder="343">
+                <edit transparent="true" fontSize="9" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="48" height="25" field="critico4" compilerOrder="344"/>
+            </layout>&#xD;
+            <layout left="408" top="720" width="48" height="24" compilerOrder="345">
+                <edit transparent="true" fontSize="9" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="48" height="25" field="tipo4" compilerOrder="346"/>
+            </layout>&#xD;
+            <layout left="464" top="720" width="48" height="24" compilerOrder="347">
+                <edit transparent="true" fontSize="9" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="48" height="25" field="alcance4" compilerOrder="348"/>
+            </layout>&#xD;
+            <layout left="689" top="731" width="30" height="24" compilerOrder="259">
+                <label fontSize="12" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" align="client" width="30" height="25" field="iniciativa_total" compilerOrder="260"/>
+            </layout>&#xD;
+            <layout left="732" top="731" width="30" height="24" compilerOrder="197">
+                <edit transparent="true" fontSize="12" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="30" height="25" field="iniciativa_grad" compilerOrder="198"/>
+            </layout>&#xD;
+            <layout left="766" top="731" width="30" height="24" compilerOrder="107">
+                <label fontSize="12" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" align="client" width="30" height="25" field="DESTREZA__5" compilerOrder="108"/>
+            </layout>&#xD;
+            <layout left="800" top="731" width="30" height="24" compilerOrder="199">
+                <edit transparent="true" fontSize="12" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="30" height="25" field="iniciativa_outros" compilerOrder="200"/>
+            </layout>&#xD;
+            <layout left="689" top="750" width="30" height="24" compilerOrder="261">
+                <label fontSize="12" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" align="client" width="30" height="25" field="intimidacao_total" compilerOrder="262"/>
+            </layout>&#xD;
+            <layout left="732" top="750" width="30" height="24" compilerOrder="201">
+                <edit transparent="true" fontSize="12" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="30" height="25" field="intimidacao_grad" compilerOrder="202"/>
+            </layout>&#xD;
+            <layout left="766" top="750" width="30" height="24" compilerOrder="121">
+                <label fontSize="12" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" align="client" width="30" height="25" field="CARISMA__5" compilerOrder="122"/>
+            </layout>&#xD;
+            <layout left="800" top="750" width="30" height="24" compilerOrder="203">
+                <edit transparent="true" fontSize="12" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="30" height="25" field="intimidacao_outros" compilerOrder="204"/>
+            </layout>&#xD;
+            <layout left="690" top="770" width="30" height="24" compilerOrder="263">
+                <label fontSize="12" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" align="client" width="30" height="25" field="intuicao_total" compilerOrder="264"/>
+            </layout>&#xD;
+            <layout left="732" top="770" width="30" height="24" compilerOrder="205">
+                <edit transparent="true" fontSize="12" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="30" height="25" field="intuicao_grad" compilerOrder="206"/>
+            </layout>&#xD;
+            <layout left="766" top="770" width="30" height="24" compilerOrder="139">
+                <label fontSize="12" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" align="client" width="30" height="25" field="SABEDORIA__2" compilerOrder="140"/>
+            </layout>&#xD;
+            <layout left="800" top="770" width="30" height="24" compilerOrder="207">
+                <edit transparent="true" fontSize="12" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="30" height="25" field="intuicao_outros" compilerOrder="208"/>
+            </layout>&#xD;
+            <layout left="690" top="789" width="30" height="24" compilerOrder="265">
+                <label fontSize="12" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" align="client" width="30" height="25" field="ladinagem_total" compilerOrder="266"/>
+            </layout>&#xD;
+            <layout left="732" top="789" width="30" height="24" compilerOrder="209">
+                <edit transparent="true" fontSize="12" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="30" height="25" field="ladinagem_grad" compilerOrder="210"/>
+            </layout>&#xD;
+            <layout left="766" top="789" width="30" height="24" compilerOrder="109">
+                <label fontSize="12" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" align="client" width="30" height="25" field="DESTREZA__6" compilerOrder="110"/>
+            </layout>&#xD;
+            <layout left="800" top="789" width="30" height="24" compilerOrder="211">
+                <edit transparent="true" fontSize="12" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="30" height="25" field="ladinagem_outros" compilerOrder="212"/>
+            </layout>&#xD;
+            <layout left="43" top="799" width="240" height="24" compilerOrder="349">
+                <edit transparent="true" fontSize="9" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="240" height="25" field="armadura1" compilerOrder="350"/>
+            </layout>&#xD;
+            <layout left="293" top="799" width="67" height="24" compilerOrder="351">
+                <edit transparent="true" fontSize="9" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="67" height="25" field="bonusCA1" compilerOrder="352"/>
+            </layout>&#xD;
+            <layout left="369" top="799" width="67" height="24" compilerOrder="353">
+                <edit transparent="true" fontSize="9" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="67" height="25" field="bonusmaxdes1" compilerOrder="354"/>
+            </layout>&#xD;
+            <layout left="445" top="799" width="66" height="24" compilerOrder="355">
+                <edit transparent="true" fontSize="9" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="66" height="25" field="penalidade1" compilerOrder="356"/>
+            </layout>&#xD;
+            <layout left="690" top="809" width="30" height="24" compilerOrder="267">
+                <label fontSize="12" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" align="client" width="30" height="25" field="obterinfo_total" compilerOrder="268"/>
+            </layout>&#xD;
+            <layout left="732" top="809" width="30" height="24" compilerOrder="213">
+                <edit transparent="true" fontSize="12" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="30" height="25" field="obterinfo_grad" compilerOrder="214"/>
+            </layout>&#xD;
+            <layout left="766" top="809" width="30" height="24" compilerOrder="123">
+                <label fontSize="12" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" align="client" width="30" height="25" field="CARISMA__6" compilerOrder="124"/>
+            </layout>&#xD;
+            <layout left="800" top="809" width="30" height="24" compilerOrder="215">
+                <edit transparent="true" fontSize="12" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="30" height="25" field="obterinfo_outros" compilerOrder="216"/>
+            </layout>&#xD;
+            <layout left="43" top="825" width="240" height="24" compilerOrder="357">
+                <edit transparent="true" fontSize="9" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="240" height="25" field="armadura2" compilerOrder="358"/>
+            </layout>&#xD;
+            <layout left="293" top="825" width="67" height="24" compilerOrder="359">
+                <edit transparent="true" fontSize="9" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="67" height="25" field="bonusCA2" compilerOrder="360"/>
+            </layout>&#xD;
+            <layout left="369" top="825" width="67" height="24" compilerOrder="361">
+                <edit transparent="true" fontSize="9" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="67" height="25" field="bonusmaxdes2" compilerOrder="362"/>
+            </layout>&#xD;
+            <layout left="446" top="825" width="66" height="24" compilerOrder="363">
+                <edit transparent="true" fontSize="9" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="66" height="25" field="penalidade2" compilerOrder="364"/>
+            </layout>&#xD;
+            <layout left="577" top="826" width="96" height="20" compilerOrder="277">
+                <edit transparent="true" fontSize="9" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="96" height="21" field="oficio_nome1" compilerOrder="278"/>
+            </layout>&#xD;
+            <layout left="690" top="829" width="30" height="24" compilerOrder="269">
+                <label fontSize="12" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" align="client" width="30" height="25" field="oficio1_total" compilerOrder="270"/>
+            </layout>&#xD;
+            <layout left="732" top="829" width="30" height="24" compilerOrder="217">
+                <edit transparent="true" fontSize="12" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="30" height="25" field="oficio1_grad" compilerOrder="218"/>
+            </layout>&#xD;
+            <layout left="766" top="829" width="30" height="24" compilerOrder="133">
+                <label fontSize="12" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" align="client" width="30" height="25" field="INTELIGENCIA__3" compilerOrder="134"/>
+            </layout>&#xD;
+            <layout left="800" top="829" width="30" height="24" compilerOrder="219">
+                <edit transparent="true" fontSize="12" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="30" height="25" field="oficio1_outros" compilerOrder="220"/>
+            </layout>&#xD;
+            <layout left="577" top="846" width="96" height="20" compilerOrder="279">
+                <edit transparent="true" fontSize="9" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="96" height="21" field="oficio_nome2" compilerOrder="280"/>
+            </layout>&#xD;
+            <layout left="690" top="849" width="30" height="24" compilerOrder="271">
+                <label fontSize="12" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" align="client" width="30" height="25" field="oficio2_total" compilerOrder="272"/>
+            </layout>&#xD;
+            <layout left="732" top="849" width="30" height="24" compilerOrder="221">
+                <edit transparent="true" fontSize="12" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="30" height="25" field="oficio2_grad" compilerOrder="222"/>
+            </layout>&#xD;
+            <layout left="766" top="849" width="30" height="24" compilerOrder="135">
+                <label fontSize="12" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" align="client" width="30" height="25" field="INTELIGENCIA__4" compilerOrder="136"/>
+            </layout>&#xD;
+            <layout left="800" top="849" width="30" height="24" compilerOrder="223">
+                <edit transparent="true" fontSize="12" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="30" height="25" field="oficio2_outros" compilerOrder="224"/>
+            </layout>&#xD;
+            <layout left="43" top="851" width="240" height="24" compilerOrder="365">
+                <edit transparent="true" fontSize="9" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="240" height="25" field="armadura3" compilerOrder="366"/>
+            </layout>&#xD;
+            <layout left="293" top="851" width="67" height="24" compilerOrder="367">
+                <edit transparent="true" fontSize="9" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="67" height="25" field="bonusCA3" compilerOrder="368"/>
+            </layout>&#xD;
+            <layout left="369" top="851" width="67" height="24" compilerOrder="369">
+                <edit transparent="true" fontSize="9" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="67" height="25" field="bonusmaxdes3" compilerOrder="370"/>
+            </layout>&#xD;
+            <layout left="446" top="851" width="66" height="24" compilerOrder="371">
+                <edit transparent="true" fontSize="9" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="66" height="25" field="penalidade3" compilerOrder="372"/>
+            </layout>&#xD;
+            <layout left="689" top="868" width="30" height="24" compilerOrder="273">
+                <label fontSize="12" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" align="client" width="30" height="25" field="percepcao_total" compilerOrder="274"/>
+            </layout>&#xD;
+            <layout left="732" top="868" width="30" height="24" compilerOrder="225">
+                <edit transparent="true" fontSize="12" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="30" height="25" field="percepcao_grad" compilerOrder="226"/>
+            </layout>&#xD;
+            <layout left="766" top="868" width="30" height="24" compilerOrder="141">
+                <label fontSize="12" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" align="client" width="30" height="25" field="SABEDORIA__3" compilerOrder="142"/>
+            </layout>&#xD;
+            <layout left="800" top="868" width="30" height="24" compilerOrder="227">
+                <edit transparent="true" fontSize="12" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="30" height="25" field="percepcao_outros" compilerOrder="228"/>
+            </layout>&#xD;
+            <layout left="689" top="888" width="30" height="24" compilerOrder="275">
+                <label fontSize="12" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" align="client" width="30" height="25" field="sobrevivencia_total" compilerOrder="276"/>
+            </layout>&#xD;
+            <layout left="732" top="888" width="30" height="24" compilerOrder="229">
+                <edit transparent="true" fontSize="12" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="30" height="25" field="sobrevivencia_grad" compilerOrder="230"/>
+            </layout>&#xD;
+            <layout left="766" top="888" width="30" height="24" compilerOrder="143">
+                <label fontSize="12" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" align="client" width="30" height="25" field="SABEDORIA__4" compilerOrder="144"/>
+            </layout>&#xD;
+            <layout left="800" top="888" width="30" height="24" compilerOrder="231">
+                <edit transparent="true" fontSize="12" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="30" height="25" field="sobrevivencia_outros" compilerOrder="232"/>
+            </layout>&#xD;
+            <layout left="46" top="937" width="467" height="175" compilerOrder="373">
+                <textEditor left="0" top="0" width="467" height="175" fontSize="12" fontColor="#000000" field="habilidades_de_classe" transparent="true" compilerOrder="374"/>
+            </layout>&#xD;
+            <layout left="540" top="991" width="286" height="122" compilerOrder="375">
+                <textEditor left="0" top="0" width="286" height="122" fontSize="12" fontColor="#000000" field="habilidades_de_raca" transparent="true" compilerOrder="376"/>
+            </layout>&#xD;
+        </rectangle>
+    </scrollBox>
+</form>

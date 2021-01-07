@@ -2,7 +2,9 @@
 msg.apenas.mestre=Apenas o mestre!
 scene.generator.tab.options=Gerador
 scene.generator.tab.tiles=Tiles
-scene.generator.tabName=Gerador de Masmorras
+scene.generator.tabName=Gerador de Masmorras (old)
+scene.generator.maze=Gerador de Labirinto
+scene.generator.dungeon=Gerador de Masmorras
 scene.generator.salas.text=Maximo de Salas
 scene.generator.salas.hint=Quantidade Maxima de Salas.
 scene.generator.tamMax.text=Tamanho Maximo

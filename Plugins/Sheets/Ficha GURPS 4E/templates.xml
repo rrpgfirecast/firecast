@@ -35,6 +35,22 @@
 				<script>    self.$(baseName):setHeight(self.edt$(baseName):getHeight() + self.lab$(baseName):getHeight() + self.lin$(baseName):getHeight());</script>								
 			</flowPart>					
 	</template>	
+		
+	<template name="upperGridCampoLabel">
+		<!-- baseName = uniqueName("UpperGridCampo"); -->	
+	
+		<flowPart height="$(height or 50)" minScaledWidth="$(minScaledWidth or minWidth or 100)" 
+				  minWidth="$(minWidth or 100)" maxWidth="$(maxWidth or 233)" 
+				  maxScaledWidth="$(maxScaledWidth or maxWidth or 233)" avoidScale="true"
+				  name="$(baseName)">
+				  
+				<label name="edt$(baseName)" align="top" class="infoNoTopo" field="$(field)" fontSize="13"/>
+				<horzLine name="lin$(baseName)" align="top" strokeColor="#FFFFFF50" strokeSize="1"/>
+				<label name="lab$(baseName)" align="top" class="tituloCampo" text="$(titulo)" vertTextAlign="leading" wordWrap="true" textTrimming="none"/>															
+				
+				<script>    self.$(baseName):setHeight(self.edt$(baseName):getHeight() + self.lab$(baseName):getHeight() + self.lin$(baseName):getHeight());</script>								
+			</flowPart>					
+	</template>	
 	
 	<template name="upperGridCampoSolido">
 		<!-- baseName = uniqueName("GridCampoSolido"); -->
@@ -146,7 +162,7 @@
 		
 		
 	<template name="boxAtributo">
-		<flowPart height="140" minWidth="120" maxWidth="120" minScaledWidth="120" frameStyle="frames/atributeFrame/frame.xml">
+		<flowPart height="140" minWidth="120" maxWidth="120" minScaledWidth="120" margins="{bottom=0}" frameStyle="frames/atributeFrame/frame.xml">
 			<layout left="6" top="12" width="116" height="115">
 				<edit class="atributo" align="top" margins="{left=25, right=30}" field="atributos_$(field)" height="30" type="number" horzTextAlign="center" vertTextAlign="center"/>
 			</layout>
@@ -208,10 +224,10 @@
 		<script> 
 			<![CDATA[			
 			local function askForDelete()
-				dialogs.confirmYesNo("Deseja realmente apagar este item?",
+				Dialogs.confirmYesNo("Deseja realmente apagar este item?",
 									 function (confirmado)
 										if confirmado then
-											ndb.deleteNode(self.sheet);
+											NDB.deleteNode(self.sheet);
 										end;
 									 end);
 			end;
@@ -258,10 +274,10 @@
 		<script> 
 			<![CDATA[			
 			local function askForDelete()
-				dialogs.confirmYesNo("Deseja realmente apagar este item?",
+				Dialogs.confirmYesNo("Deseja realmente apagar este item?",
 									 function (confirmado)
 										if confirmado then
-											ndb.deleteNode(self.sheet);
+											NDB.deleteNode(self.sheet);
 										end;
 									 end);
 			end;

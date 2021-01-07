@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmAcao" height="25" width="350" margins="{top=2}">
+	 <script> 
+		<![CDATA[			
+		local function askForDelete()
+			Dialogs.confirmYesNo("Deseja realmente apagar essa habilidade?",
+								 function (confirmado)
+									if confirmado then
+										NDB.deleteNode(sheet);
+									end;
+								 end);
+		end;
+
+		local function showHabilidadePopup()
+			local pop = self:findControlByName("popAcoes");
+				
+			if pop ~= nil then
+				pop:setNodeObject(self.sheet);
+				pop:showPopupEx("right", self);
+			else
+				showMessage("Ops, bug.. nao encontrei o popup para exibir");
+			end;				
+		end;
+	]]>
+	</script>
+
+	<label align="right" width="44" text="Ações" horzTextAlign="center"/>
+	<edit align="right" width="45" field="acao" vertTextAlign="center"/>
+	<layout align="right" width="50">
+		<button align="right" width="25" text="i" onClick="showHabilidadePopup();"/>
+		<button align="right" width="25" text="X" onClick="askForDelete();"/>
+	</layout>
+	<edit align="client" vertTextAlign="center" field="nome"/>
+</form>

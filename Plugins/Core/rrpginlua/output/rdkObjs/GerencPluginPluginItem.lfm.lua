@@ -104,7 +104,7 @@ local function constructNew_frmGerencPluginItem()
 
     obj.label2 = GUI.fromHandle(_obj_newObject("label"));
     obj.label2:setParent(obj.flwPlug);
-    obj.label2:setText(lang("plugins.mgr.authorLabel"));
+    obj.label2:setText("@@plugins.mgr.authorLabel");
     obj.label2:setFontColor("silver");
     obj.label2:setFontSize(12);
     obj.label2:setMargins({left=10});
@@ -128,7 +128,7 @@ local function constructNew_frmGerencPluginItem()
     obj.btnDesinstalar = GUI.fromHandle(_obj_newObject("button"));
     obj.btnDesinstalar:setParent(obj.flwPlug);
     obj.btnDesinstalar:setName("btnDesinstalar");
-    obj.btnDesinstalar:setText(lang("plugins.mgr.uninstall"));
+    obj.btnDesinstalar:setText("@@plugins.mgr.uninstall");
     obj.btnDesinstalar:setMargins({left=5, top=5});
     obj.btnDesinstalar:setWidth(110);
     obj.btnDesinstalar:setHeight(40);

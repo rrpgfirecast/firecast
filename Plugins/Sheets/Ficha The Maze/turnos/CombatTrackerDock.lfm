@@ -92,7 +92,7 @@
 		<edit field="action" align="left" type="number" width="30" horzTextAlign="center" fontStyle="bold"/>	
 		
 		<layout align="right" width="150">
-			<label align="left" autoSize="true" text="Contador de Tempo" wordWrap="false" fontSize="11"/>
+			<label align="left" autoSize="true" text="Tempo Mundi" wordWrap="false" fontSize="11"/>
 			<edit field="rodada" align="client" type="number" min="0" horzTextAlign="center" fontStyle="bold"/>			
 		</layout>
 	</layout>

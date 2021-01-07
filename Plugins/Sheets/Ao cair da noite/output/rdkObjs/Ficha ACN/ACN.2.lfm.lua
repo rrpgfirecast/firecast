@@ -31,131 +31,131 @@ local function constructNew_frmACN2()
     obj:setTheme("dark");
     obj:setMargins({top=1});
 
+
+		local function xpAptidoes()
+			if sheet==nil then return end;
+
+			local mod = 0;
+			local valores = {   ((tonumber(sheet.total0_1 ) or 0)*2 - (tonumber(sheet.xp0_1 ) or 0)), 
+									((tonumber(sheet.total0_2 ) or 0)*2 - (tonumber(sheet.xp0_2 ) or 0)), 
+									((tonumber(sheet.total0_3 ) or 0)*2 - (tonumber(sheet.xp0_3 ) or 0)),
+									((tonumber(sheet.total0_4 ) or 0)*2 - (tonumber(sheet.xp0_4 ) or 0)),
+									((tonumber(sheet.total0_5 ) or 0)*2 - (tonumber(sheet.xp0_5 ) or 0)),
+									((tonumber(sheet.total0_6 ) or 0)*2 - (tonumber(sheet.xp0_6 ) or 0)),
+									((tonumber(sheet.total0_7 ) or 0)*2 - (tonumber(sheet.xp0_7 ) or 0)),
+									((tonumber(sheet.total0_8 ) or 0)*2 - (tonumber(sheet.xp0_8 ) or 0)),
+									((tonumber(sheet.total0_9 ) or 0)*2 - (tonumber(sheet.xp0_9 ) or 0)),
+									((tonumber(sheet.total0_10) or 0)*2 - (tonumber(sheet.xp0_10) or 0)),
+									((tonumber(sheet.total0_11) or 0)*2 - (tonumber(sheet.xp0_11) or 0)),
+									((tonumber(sheet.total0_12) or 0)*2 - (tonumber(sheet.xp0_12) or 0)),
+									((tonumber(sheet.total1_1 ) or 0)*2 - (tonumber(sheet.xp1_1 ) or 0)),
+									((tonumber(sheet.total1_2 ) or 0)*2 - (tonumber(sheet.xp1_2 ) or 0)),
+									((tonumber(sheet.total1_3 ) or 0)*2 - (tonumber(sheet.xp1_3 ) or 0)),
+									((tonumber(sheet.total1_4 ) or 0)*2 - (tonumber(sheet.xp1_4 ) or 0)),
+									((tonumber(sheet.total1_5 ) or 0)*2 - (tonumber(sheet.xp1_5 ) or 0)),
+									((tonumber(sheet.total1_6 ) or 0)*2 - (tonumber(sheet.xp1_6 ) or 0)),
+									((tonumber(sheet.total1_7 ) or 0)*2 - (tonumber(sheet.xp1_7 ) or 0)),
+									((tonumber(sheet.total1_8 ) or 0)*2 - (tonumber(sheet.xp1_8 ) or 0)),
+									((tonumber(sheet.total1_9 ) or 0)*2 - (tonumber(sheet.xp1_9 ) or 0)),
+									((tonumber(sheet.total1_10) or 0)*2 - (tonumber(sheet.xp1_10) or 0)),
+									((tonumber(sheet.total1_11) or 0)*2 - (tonumber(sheet.xp1_11) or 0)),
+									((tonumber(sheet.total1_12) or 0)*2 - (tonumber(sheet.xp1_12) or 0)),
+									((tonumber(sheet.total2_1 ) or 0)*2 - (tonumber(sheet.xp2_1 ) or 0)),
+									((tonumber(sheet.total2_2 ) or 0)*2 - (tonumber(sheet.xp2_2 ) or 0)),
+									((tonumber(sheet.total2_3 ) or 0)*2 - (tonumber(sheet.xp2_3 ) or 0)),
+									((tonumber(sheet.total2_4 ) or 0)*2 - (tonumber(sheet.xp2_4 ) or 0)),
+									((tonumber(sheet.total2_5 ) or 0)*2 - (tonumber(sheet.xp2_5 ) or 0)),
+									((tonumber(sheet.total2_6 ) or 0)*2 - (tonumber(sheet.xp2_6 ) or 0)),
+									((tonumber(sheet.total2_7 ) or 0)*2 - (tonumber(sheet.xp2_7 ) or 0)),
+									((tonumber(sheet.total2_8 ) or 0)*2 - (tonumber(sheet.xp2_8 ) or 0)),
+									((tonumber(sheet.total2_9 ) or 0)*2 - (tonumber(sheet.xp2_9 ) or 0)),
+									((tonumber(sheet.total2_10) or 0)*2 - (tonumber(sheet.xp2_10) or 0)),
+									((tonumber(sheet.total2_11) or 0)*2 - (tonumber(sheet.xp2_11) or 0)),
+									((tonumber(sheet.total2_12) or 0)*2 - (tonumber(sheet.xp2_12) or 0)),
+									((tonumber(sheet.total3_1 ) or 0)*2 - (tonumber(sheet.xp3_1 ) or 0)),
+									((tonumber(sheet.total3_2 ) or 0)*2 - (tonumber(sheet.xp3_2 ) or 0)),
+									((tonumber(sheet.total3_3 ) or 0)*2 - (tonumber(sheet.xp3_3 ) or 0)),
+									((tonumber(sheet.total3_4 ) or 0)*2 - (tonumber(sheet.xp3_4 ) or 0)),
+									((tonumber(sheet.total3_5 ) or 0)*2 - (tonumber(sheet.xp3_5 ) or 0)),
+									((tonumber(sheet.total3_6 ) or 0)*2 - (tonumber(sheet.xp3_6 ) or 0)),
+									((tonumber(sheet.total3_7 ) or 0)*2 - (tonumber(sheet.xp3_7 ) or 0)),
+									((tonumber(sheet.total3_8 ) or 0)*2 - (tonumber(sheet.xp3_8 ) or 0)),
+									((tonumber(sheet.total3_9 ) or 0)*2 - (tonumber(sheet.xp3_9 ) or 0)),
+									((tonumber(sheet.total3_10) or 0)*2 - (tonumber(sheet.xp3_10) or 0)),
+									((tonumber(sheet.total3_11) or 0)*2 - (tonumber(sheet.xp3_11) or 0)),
+									((tonumber(sheet.total3_12) or 0)*2 - (tonumber(sheet.xp3_12) or 0))
+									};
+			
+			local limites = {	(tonumber(sheet.xp0_1 ) or 0),
+									(tonumber(sheet.xp0_2 ) or 0),
+									(tonumber(sheet.xp0_3 ) or 0),
+									(tonumber(sheet.xp0_4 ) or 0),
+									(tonumber(sheet.xp0_5 ) or 0),
+									(tonumber(sheet.xp0_6 ) or 0),
+									(tonumber(sheet.xp0_7 ) or 0),
+									(tonumber(sheet.xp0_8 ) or 0),
+									(tonumber(sheet.xp0_9 ) or 0),
+									(tonumber(sheet.xp0_10) or 0),
+									(tonumber(sheet.xp0_11) or 0),
+									(tonumber(sheet.xp0_12) or 0),
+									(tonumber(sheet.xp1_1 ) or 0),
+									(tonumber(sheet.xp1_2 ) or 0),
+									(tonumber(sheet.xp1_3 ) or 0),
+									(tonumber(sheet.xp1_4 ) or 0),
+									(tonumber(sheet.xp1_5 ) or 0),
+									(tonumber(sheet.xp1_6 ) or 0),
+									(tonumber(sheet.xp1_7 ) or 0),
+									(tonumber(sheet.xp1_8 ) or 0),
+									(tonumber(sheet.xp1_9 ) or 0),
+									(tonumber(sheet.xp1_10) or 0),
+									(tonumber(sheet.xp1_11) or 0),
+									(tonumber(sheet.xp1_12) or 0),
+									(tonumber(sheet.xp2_1 ) or 0),
+									(tonumber(sheet.xp2_2 ) or 0),
+									(tonumber(sheet.xp2_3 ) or 0),
+									(tonumber(sheet.xp2_4 ) or 0),
+									(tonumber(sheet.xp2_5 ) or 0),
+									(tonumber(sheet.xp2_6 ) or 0),
+									(tonumber(sheet.xp2_7 ) or 0),
+									(tonumber(sheet.xp2_8 ) or 0),
+									(tonumber(sheet.xp2_9 ) or 0),
+									(tonumber(sheet.xp2_10) or 0),
+									(tonumber(sheet.xp2_11) or 0),
+									(tonumber(sheet.xp2_12) or 0),
+									(tonumber(sheet.xp3_1 ) or 0),
+									(tonumber(sheet.xp3_2 ) or 0),
+									(tonumber(sheet.xp3_3 ) or 0),
+									(tonumber(sheet.xp3_4 ) or 0),
+									(tonumber(sheet.xp3_5 ) or 0),
+									(tonumber(sheet.xp3_6 ) or 0),
+									(tonumber(sheet.xp3_7 ) or 0),
+									(tonumber(sheet.xp3_8 ) or 0),
+									(tonumber(sheet.xp3_9 ) or 0),
+									(tonumber(sheet.xp3_10) or 0),
+									(tonumber(sheet.xp3_11) or 0),
+									(tonumber(sheet.xp3_12) or 0)
+									};
+			
+			for i=1, 48, 1 do
+				for j=1, limites[i], 1 do
+					mod = mod + math.max(math.floor((valores[i]+j)*1.5), 3);
+				end;
+			end;
+
+			sheet.XPaptidoes = mod;
+			sheet.XPgasta = (tonumber(sheet.XPatributos) or 0) + 
+							(tonumber(sheet.XPaegis) or 0) + 
+							(tonumber(sheet.XPhistoricos) or 0) + 
+							(tonumber(sheet.XPmisticos) or 0) + 
+							(tonumber(sheet.XPaptidoes) or 0);
+		end;
+	
+
+
     obj.scrollBox1 = GUI.fromHandle(_obj_newObject("scrollBox"));
     obj.scrollBox1:setParent(obj);
     obj.scrollBox1:setAlign("client");
     obj.scrollBox1:setName("scrollBox1");
-
-
-			local function xpAptidoes()
-				if sheet~=nil then
-					local mod = 0;
-					local valores = {   ((tonumber(sheet.total0_1 ) or 0)*2 - (tonumber(sheet.xp0_1 ) or 0)), 
-										((tonumber(sheet.total0_2 ) or 0)*2 - (tonumber(sheet.xp0_2 ) or 0)), 
-										((tonumber(sheet.total0_3 ) or 0)*2 - (tonumber(sheet.xp0_3 ) or 0)),
-										((tonumber(sheet.total0_4 ) or 0)*2 - (tonumber(sheet.xp0_4 ) or 0)),
-										((tonumber(sheet.total0_5 ) or 0)*2 - (tonumber(sheet.xp0_5 ) or 0)),
-										((tonumber(sheet.total0_6 ) or 0)*2 - (tonumber(sheet.xp0_6 ) or 0)),
-										((tonumber(sheet.total0_7 ) or 0)*2 - (tonumber(sheet.xp0_7 ) or 0)),
-										((tonumber(sheet.total0_8 ) or 0)*2 - (tonumber(sheet.xp0_8 ) or 0)),
-										((tonumber(sheet.total0_9 ) or 0)*2 - (tonumber(sheet.xp0_9 ) or 0)),
-										((tonumber(sheet.total0_10) or 0)*2 - (tonumber(sheet.xp0_10) or 0)),
-										((tonumber(sheet.total0_11) or 0)*2 - (tonumber(sheet.xp0_11) or 0)),
-										((tonumber(sheet.total0_12) or 0)*2 - (tonumber(sheet.xp0_12) or 0)),
-										((tonumber(sheet.total1_1 ) or 0)*2 - (tonumber(sheet.xp1_1 ) or 0)),
-										((tonumber(sheet.total1_2 ) or 0)*2 - (tonumber(sheet.xp1_2 ) or 0)),
-										((tonumber(sheet.total1_3 ) or 0)*2 - (tonumber(sheet.xp1_3 ) or 0)),
-										((tonumber(sheet.total1_4 ) or 0)*2 - (tonumber(sheet.xp1_4 ) or 0)),
-										((tonumber(sheet.total1_5 ) or 0)*2 - (tonumber(sheet.xp1_5 ) or 0)),
-										((tonumber(sheet.total1_6 ) or 0)*2 - (tonumber(sheet.xp1_6 ) or 0)),
-										((tonumber(sheet.total1_7 ) or 0)*2 - (tonumber(sheet.xp1_7 ) or 0)),
-										((tonumber(sheet.total1_8 ) or 0)*2 - (tonumber(sheet.xp1_8 ) or 0)),
-										((tonumber(sheet.total1_9 ) or 0)*2 - (tonumber(sheet.xp1_9 ) or 0)),
-										((tonumber(sheet.total1_10) or 0)*2 - (tonumber(sheet.xp1_10) or 0)),
-										((tonumber(sheet.total1_11) or 0)*2 - (tonumber(sheet.xp1_11) or 0)),
-										((tonumber(sheet.total1_12) or 0)*2 - (tonumber(sheet.xp1_12) or 0)),
-										((tonumber(sheet.total2_1 ) or 0)*2 - (tonumber(sheet.xp2_1 ) or 0)),
-										((tonumber(sheet.total2_2 ) or 0)*2 - (tonumber(sheet.xp2_2 ) or 0)),
-										((tonumber(sheet.total2_3 ) or 0)*2 - (tonumber(sheet.xp2_3 ) or 0)),
-										((tonumber(sheet.total2_4 ) or 0)*2 - (tonumber(sheet.xp2_4 ) or 0)),
-										((tonumber(sheet.total2_5 ) or 0)*2 - (tonumber(sheet.xp2_5 ) or 0)),
-										((tonumber(sheet.total2_6 ) or 0)*2 - (tonumber(sheet.xp2_6 ) or 0)),
-										((tonumber(sheet.total2_7 ) or 0)*2 - (tonumber(sheet.xp2_7 ) or 0)),
-										((tonumber(sheet.total2_8 ) or 0)*2 - (tonumber(sheet.xp2_8 ) or 0)),
-										((tonumber(sheet.total2_9 ) or 0)*2 - (tonumber(sheet.xp2_9 ) or 0)),
-										((tonumber(sheet.total2_10) or 0)*2 - (tonumber(sheet.xp2_10) or 0)),
-										((tonumber(sheet.total2_11) or 0)*2 - (tonumber(sheet.xp2_11) or 0)),
-										((tonumber(sheet.total2_12) or 0)*2 - (tonumber(sheet.xp2_12) or 0)),
-										((tonumber(sheet.total3_1 ) or 0)*2 - (tonumber(sheet.xp3_1 ) or 0)),
-										((tonumber(sheet.total3_2 ) or 0)*2 - (tonumber(sheet.xp3_2 ) or 0)),
-										((tonumber(sheet.total3_3 ) or 0)*2 - (tonumber(sheet.xp3_3 ) or 0)),
-										((tonumber(sheet.total3_4 ) or 0)*2 - (tonumber(sheet.xp3_4 ) or 0)),
-										((tonumber(sheet.total3_5 ) or 0)*2 - (tonumber(sheet.xp3_5 ) or 0)),
-										((tonumber(sheet.total3_6 ) or 0)*2 - (tonumber(sheet.xp3_6 ) or 0)),
-										((tonumber(sheet.total3_7 ) or 0)*2 - (tonumber(sheet.xp3_7 ) or 0)),
-										((tonumber(sheet.total3_8 ) or 0)*2 - (tonumber(sheet.xp3_8 ) or 0)),
-										((tonumber(sheet.total3_9 ) or 0)*2 - (tonumber(sheet.xp3_9 ) or 0)),
-										((tonumber(sheet.total3_10) or 0)*2 - (tonumber(sheet.xp3_10) or 0)),
-										((tonumber(sheet.total3_11) or 0)*2 - (tonumber(sheet.xp3_11) or 0)),
-										((tonumber(sheet.total3_12) or 0)*2 - (tonumber(sheet.xp3_12) or 0))
-										};
-					
-					local limites = {	(tonumber(sheet.xp0_1 ) or 0),
-										(tonumber(sheet.xp0_2 ) or 0),
-										(tonumber(sheet.xp0_3 ) or 0),
-										(tonumber(sheet.xp0_4 ) or 0),
-										(tonumber(sheet.xp0_5 ) or 0),
-										(tonumber(sheet.xp0_6 ) or 0),
-										(tonumber(sheet.xp0_7 ) or 0),
-										(tonumber(sheet.xp0_8 ) or 0),
-										(tonumber(sheet.xp0_9 ) or 0),
-										(tonumber(sheet.xp0_10) or 0),
-										(tonumber(sheet.xp0_11) or 0),
-										(tonumber(sheet.xp0_12) or 0),
-										(tonumber(sheet.xp1_1 ) or 0),
-										(tonumber(sheet.xp1_2 ) or 0),
-										(tonumber(sheet.xp1_3 ) or 0),
-										(tonumber(sheet.xp1_4 ) or 0),
-										(tonumber(sheet.xp1_5 ) or 0),
-										(tonumber(sheet.xp1_6 ) or 0),
-										(tonumber(sheet.xp1_7 ) or 0),
-										(tonumber(sheet.xp1_8 ) or 0),
-										(tonumber(sheet.xp1_9 ) or 0),
-										(tonumber(sheet.xp1_10) or 0),
-										(tonumber(sheet.xp1_11) or 0),
-										(tonumber(sheet.xp1_12) or 0),
-										(tonumber(sheet.xp2_1 ) or 0),
-										(tonumber(sheet.xp2_2 ) or 0),
-										(tonumber(sheet.xp2_3 ) or 0),
-										(tonumber(sheet.xp2_4 ) or 0),
-										(tonumber(sheet.xp2_5 ) or 0),
-										(tonumber(sheet.xp2_6 ) or 0),
-										(tonumber(sheet.xp2_7 ) or 0),
-										(tonumber(sheet.xp2_8 ) or 0),
-										(tonumber(sheet.xp2_9 ) or 0),
-										(tonumber(sheet.xp2_10) or 0),
-										(tonumber(sheet.xp2_11) or 0),
-										(tonumber(sheet.xp2_12) or 0),
-										(tonumber(sheet.xp3_1 ) or 0),
-										(tonumber(sheet.xp3_2 ) or 0),
-										(tonumber(sheet.xp3_3 ) or 0),
-										(tonumber(sheet.xp3_4 ) or 0),
-										(tonumber(sheet.xp3_5 ) or 0),
-										(tonumber(sheet.xp3_6 ) or 0),
-										(tonumber(sheet.xp3_7 ) or 0),
-										(tonumber(sheet.xp3_8 ) or 0),
-										(tonumber(sheet.xp3_9 ) or 0),
-										(tonumber(sheet.xp3_10) or 0),
-										(tonumber(sheet.xp3_11) or 0),
-										(tonumber(sheet.xp3_12) or 0)
-										};
-					
-					for i=1, 48, 1 do
-						for j=1, limites[i], 1 do
-							mod = mod + math.max(math.floor((valores[i]+j)*1.5), 3);
-						end;
-					end;
-
-					sheet.XPaptidoes = mod;
-					sheet.XPgasta = (tonumber(sheet.XPatributos) or 0) + 
-									(tonumber(sheet.XPaegis) or 0) + 
-									(tonumber(sheet.XPhistoricos) or 0) + 
-									(tonumber(sheet.XPmisticos) or 0) + 
-									(tonumber(sheet.XPaptidoes) or 0);
-				end;
-			end;
-		
-
 
     obj.layout1 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout1:setParent(obj.scrollBox1);
@@ -5250,6 +5250,16 @@ local function constructNew_frmACN2()
     obj.label77:setText("val");
     obj.label77:setName("label77");
 
+    obj.button1 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button1:setParent(obj.layout53);
+    obj.button1:setLeft(85);
+    obj.button1:setTop(63);
+    obj.button1:setWidth(15);
+    obj.button1:setHeight(15);
+    obj.button1:setText("x");
+    obj.button1:setFontSize(10);
+    obj.button1:setName("button1");
+
     obj.label78 = GUI.fromHandle(_obj_newObject("label"));
     obj.label78:setParent(obj.layout53);
     obj.label78:setLeft(63);
@@ -5316,2324 +5326,2436 @@ local function constructNew_frmACN2()
     obj.edit242:setType("number");
     obj.edit242:setName("edit242");
 
-    obj.button1 = GUI.fromHandle(_obj_newObject("button"));
-    obj.button1:setParent(obj.layout53);
-    obj.button1:setLeft(30);
-    obj.button1:setTop(195);
-    obj.button1:setWidth(50);
-    obj.button1:setText("ROLAR");
-    obj.button1:setName("button1");
+    obj.button2 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button2:setParent(obj.layout53);
+    obj.button2:setLeft(30);
+    obj.button2:setTop(195);
+    obj.button2:setWidth(50);
+    obj.button2:setText("ROLAR");
+    obj.button2:setFontSize(11);
+    obj.button2:setName("button2");
+
+    obj.dataLink1 = GUI.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink1:setParent(obj.scrollBox1);
+    obj.dataLink1:setFields({'nome0_1','nome0_2','nome0_3','nome0_4','nome0_5','nome0_6','nome0_7','nome0_8','nome1_1','nome1_2','nome1_3','nome1_4','nome1_5','nome1_6','nome1_7','nome1_8','nome1_9','nome1_10','nome2_1','nome2_2','nome2_3','nome2_4','nome2_5','nome2_6','nome2_7','nome2_8','nome3_1','nome3_2','nome3_3','nome3_4','nome3_5','nome3_6','nome3_7','nome3_8','nome3_9','nome3_10'});
+    obj.dataLink1:setDefaultValues({'Armas Brancas','Arremesso','Briga','Esportes','Esquiva','Furtividade','Prestidigitação','Sobrevivência','Empatia','Emp. Animais','Etiqueta','Expressão','Intimidação','Investigação','Lábia','Liderança','Manha','Prontidão','Acrobacia','Armas de Fogo','Arte da Fuga','Artes Marciais','Conduçao','Oficios','Performace','Subterfúgio','Acadêmicos','Administração','Ciências','Computação','Cultura','Direito','Medicina','Ocultismo','Política','Tecnologia'});
+    obj.dataLink1:setName("dataLink1");
 
     obj._e_event0 = obj.radioButton1:addEventListener("onChange",
         function (_)
-            if sheet~=nil then
-            						sheet.num1 = (tonumber(sheet[sheet.dado1]) or 0);
-            					end;
+            if sheet==nil then return end;
+            				sheet.field1 = sheet.dado1;
+            				sheet.num1 = (tonumber(sheet[sheet.field1]) or 0);
+            				sheet.rollnome1 = sheet.nome0_1;
         end, obj);
 
     obj._e_event1 = obj.radioButton2:addEventListener("onChange",
         function (_)
-            if sheet~=nil then
-            						sheet.num2 = (tonumber(sheet[sheet.dado2]) or 0);
-            					end;
+            if sheet==nil then return end;
+            				sheet.field2 = sheet.dado2;
+            				sheet.num2 = (tonumber(sheet[sheet.field2]) or 0);
+            				sheet.rollnome2 = sheet.nome0_1;
         end, obj);
 
     obj._e_event2 = obj.edit2:addEventListener("onChange",
         function (_)
             if sheet~= nil then
-            						local mod = (tonumber(sheet.base0_1) or 0)+
-            												(tonumber(sheet.bonus0_1) or 0)+
-            												(tonumber(sheet.xp0_1) or 0);
-            						sheet.total0_1 = mod / 2;
-            						sheet.total20_1 = mod .. " | " .. mod / 2;
-            					end;
+            					local mod = (tonumber(sheet.base0_1) or 0)+
+            											(tonumber(sheet.bonus0_1) or 0)+
+            											(tonumber(sheet.xp0_1) or 0);
+            					sheet.total0_1 = mod / 2;
+            					sheet.total20_1 = mod .. " | " .. mod / 2;
+            				end;
         end, obj);
 
     obj._e_event3 = obj.edit3:addEventListener("onChange",
         function (_)
             if sheet~= nil then
-            						local mod = (tonumber(sheet.base0_1) or 0)+
-            												(tonumber(sheet.bonus0_1) or 0)+
-            												(tonumber(sheet.xp0_1) or 0);
-            						sheet.total0_1 = mod / 2;
-            						sheet.total20_1 = mod .. " | " .. mod / 2;
-            					end;
+            					local mod = (tonumber(sheet.base0_1) or 0)+
+            											(tonumber(sheet.bonus0_1) or 0)+
+            											(tonumber(sheet.xp0_1) or 0);
+            					sheet.total0_1 = mod / 2;
+            					sheet.total20_1 = mod .. " | " .. mod / 2;
+            				end;
         end, obj);
 
     obj._e_event4 = obj.edit4:addEventListener("onChange",
         function (_)
             if sheet~= nil then
-            						local mod = (tonumber(sheet.base0_1) or 0)+
-            												(tonumber(sheet.bonus0_1) or 0)+
-            												(tonumber(sheet.xp0_1) or 0);
-            						sheet.total0_1 = mod / 2;
-            						sheet.total20_1 = mod .. " | " .. mod / 2;
-            						xpAptidoes();
-            					end;
+            					local mod = (tonumber(sheet.base0_1) or 0)+
+            											(tonumber(sheet.bonus0_1) or 0)+
+            											(tonumber(sheet.xp0_1) or 0);
+            					sheet.total0_1 = mod / 2;
+            					sheet.total20_1 = mod .. " | " .. mod / 2;
+            					xpAptidoes();
+            				end;
         end, obj);
 
     obj._e_event5 = obj.radioButton3:addEventListener("onChange",
         function (_)
-            if sheet~=nil then
-            						sheet.num1 = (tonumber(sheet[sheet.dado1]) or 0);
-            					end;
+            if sheet==nil then return end;
+            				sheet.field1 = sheet.dado1;
+            				sheet.num1 = (tonumber(sheet[sheet.field1]) or 0);
+            				sheet.rollnome1 = sheet.nome0_2;
         end, obj);
 
     obj._e_event6 = obj.radioButton4:addEventListener("onChange",
         function (_)
-            if sheet~=nil then
-            						sheet.num2 = (tonumber(sheet[sheet.dado2]) or 0);
-            					end;
+            if sheet==nil then return end;
+            				sheet.field2 = sheet.dado2;
+            				sheet.num2 = (tonumber(sheet[sheet.field2]) or 0);
+            				sheet.rollnome2 = sheet.nome0_2;
         end, obj);
 
     obj._e_event7 = obj.edit7:addEventListener("onChange",
         function (_)
             if sheet~= nil then
-            						local mod = (tonumber(sheet.base0_2) or 0)+
-            												(tonumber(sheet.bonus0_2) or 0)+
-            												(tonumber(sheet.xp0_2) or 0);
-            						sheet.total0_2 = mod / 2;
-            						sheet.total20_2 = mod .. " | " .. mod / 2;
-            					end;
+            					local mod = (tonumber(sheet.base0_2) or 0)+
+            											(tonumber(sheet.bonus0_2) or 0)+
+            											(tonumber(sheet.xp0_2) or 0);
+            					sheet.total0_2 = mod / 2;
+            					sheet.total20_2 = mod .. " | " .. mod / 2;
+            				end;
         end, obj);
 
     obj._e_event8 = obj.edit8:addEventListener("onChange",
         function (_)
             if sheet~= nil then
-            						local mod = (tonumber(sheet.base0_2) or 0)+
-            												(tonumber(sheet.bonus0_2) or 0)+
-            												(tonumber(sheet.xp0_2) or 0);
-            						sheet.total0_2 = mod / 2;
-            						sheet.total20_2 = mod .. " | " .. mod / 2;
-            					end;
+            					local mod = (tonumber(sheet.base0_2) or 0)+
+            											(tonumber(sheet.bonus0_2) or 0)+
+            											(tonumber(sheet.xp0_2) or 0);
+            					sheet.total0_2 = mod / 2;
+            					sheet.total20_2 = mod .. " | " .. mod / 2;
+            				end;
         end, obj);
 
     obj._e_event9 = obj.edit9:addEventListener("onChange",
         function (_)
             if sheet~= nil then
-            						local mod = (tonumber(sheet.base0_2) or 0)+
-            												(tonumber(sheet.bonus0_2) or 0)+
-            												(tonumber(sheet.xp0_2) or 0);
-            						sheet.total0_2 = mod / 2;
-            						sheet.total20_2 = mod .. " | " .. mod / 2;
-            						xpAptidoes();
-            					end;
+            					local mod = (tonumber(sheet.base0_2) or 0)+
+            											(tonumber(sheet.bonus0_2) or 0)+
+            											(tonumber(sheet.xp0_2) or 0);
+            					sheet.total0_2 = mod / 2;
+            					sheet.total20_2 = mod .. " | " .. mod / 2;
+            					xpAptidoes();
+            				end;
         end, obj);
 
     obj._e_event10 = obj.radioButton5:addEventListener("onChange",
         function (_)
-            if sheet~=nil then
-            						sheet.num1 = (tonumber(sheet[sheet.dado1]) or 0);
-            					end;
+            if sheet==nil then return end;
+            				sheet.field1 = sheet.dado1;
+            				sheet.num1 = (tonumber(sheet[sheet.field1]) or 0);
+            				sheet.rollnome1 = sheet.nome0_3;
         end, obj);
 
     obj._e_event11 = obj.radioButton6:addEventListener("onChange",
         function (_)
-            if sheet~=nil then
-            						sheet.num2 = (tonumber(sheet[sheet.dado2]) or 0);
-            					end;
+            if sheet==nil then return end;
+            				sheet.field2 = sheet.dado2;
+            				sheet.num2 = (tonumber(sheet[sheet.field2]) or 0);
+            				sheet.rollnome2 = sheet.nome0_3;
         end, obj);
 
     obj._e_event12 = obj.edit12:addEventListener("onChange",
         function (_)
             if sheet~= nil then
-            						local mod = (tonumber(sheet.base0_3) or 0)+
-            												(tonumber(sheet.bonus0_3) or 0)+
-            												(tonumber(sheet.xp0_3) or 0);
-            						sheet.total0_3 = mod / 2;
-            						sheet.total20_3 = mod .. " | " .. mod / 2;
-            					end;
+            					local mod = (tonumber(sheet.base0_3) or 0)+
+            											(tonumber(sheet.bonus0_3) or 0)+
+            											(tonumber(sheet.xp0_3) or 0);
+            					sheet.total0_3 = mod / 2;
+            					sheet.total20_3 = mod .. " | " .. mod / 2;
+            				end;
         end, obj);
 
     obj._e_event13 = obj.edit13:addEventListener("onChange",
         function (_)
             if sheet~= nil then
-            						local mod = (tonumber(sheet.base0_3) or 0)+
-            												(tonumber(sheet.bonus0_3) or 0)+
-            												(tonumber(sheet.xp0_3) or 0);
-            						sheet.total0_3 = mod / 2;
-            						sheet.total20_3 = mod .. " | " .. mod / 2;
-            					end;
+            					local mod = (tonumber(sheet.base0_3) or 0)+
+            											(tonumber(sheet.bonus0_3) or 0)+
+            											(tonumber(sheet.xp0_3) or 0);
+            					sheet.total0_3 = mod / 2;
+            					sheet.total20_3 = mod .. " | " .. mod / 2;
+            				end;
         end, obj);
 
     obj._e_event14 = obj.edit14:addEventListener("onChange",
         function (_)
             if sheet~= nil then
-            						local mod = (tonumber(sheet.base0_3) or 0)+
-            												(tonumber(sheet.bonus0_3) or 0)+
-            												(tonumber(sheet.xp0_3) or 0);
-            						sheet.total0_3 = mod / 2;
-            						sheet.total20_3 = mod .. " | " .. mod / 2;
-            						xpAptidoes();
-            					end;
+            					local mod = (tonumber(sheet.base0_3) or 0)+
+            											(tonumber(sheet.bonus0_3) or 0)+
+            											(tonumber(sheet.xp0_3) or 0);
+            					sheet.total0_3 = mod / 2;
+            					sheet.total20_3 = mod .. " | " .. mod / 2;
+            					xpAptidoes();
+            				end;
         end, obj);
 
     obj._e_event15 = obj.radioButton7:addEventListener("onChange",
         function (_)
-            if sheet~=nil then
-            						sheet.num1 = (tonumber(sheet[sheet.dado1]) or 0);
-            					end;
+            if sheet==nil then return end;
+            				sheet.field1 = sheet.dado1;
+            				sheet.num1 = (tonumber(sheet[sheet.field1]) or 0);
+            				sheet.rollnome1 = sheet.nome0_4;
         end, obj);
 
     obj._e_event16 = obj.radioButton8:addEventListener("onChange",
         function (_)
-            if sheet~=nil then
-            						sheet.num2 = (tonumber(sheet[sheet.dado2]) or 0);
-            					end;
+            if sheet==nil then return end;
+            				sheet.field2 = sheet.dado2;
+            				sheet.num2 = (tonumber(sheet[sheet.field2]) or 0);
+            				sheet.rollnome2 = sheet.nome0_4;
         end, obj);
 
     obj._e_event17 = obj.edit17:addEventListener("onChange",
         function (_)
             if sheet~= nil then
-            						local mod = (tonumber(sheet.base0_4) or 0)+
-            												(tonumber(sheet.bonus0_4) or 0)+
-            												(tonumber(sheet.xp0_4) or 0);
-            						sheet.total0_4 = mod / 2;
-            						sheet.total20_4 = mod .. " | " .. mod / 2;
-            					end;
+            					local mod = (tonumber(sheet.base0_4) or 0)+
+            											(tonumber(sheet.bonus0_4) or 0)+
+            											(tonumber(sheet.xp0_4) or 0);
+            					sheet.total0_4 = mod / 2;
+            					sheet.total20_4 = mod .. " | " .. mod / 2;
+            				end;
         end, obj);
 
     obj._e_event18 = obj.edit18:addEventListener("onChange",
         function (_)
             if sheet~= nil then
-            						local mod = (tonumber(sheet.base0_4) or 0)+
-            												(tonumber(sheet.bonus0_4) or 0)+
-            												(tonumber(sheet.xp0_4) or 0);
-            						sheet.total0_4 = mod / 2;
-            						sheet.total20_4 = mod .. " | " .. mod / 2;
-            					end;
+            					local mod = (tonumber(sheet.base0_4) or 0)+
+            											(tonumber(sheet.bonus0_4) or 0)+
+            											(tonumber(sheet.xp0_4) or 0);
+            					sheet.total0_4 = mod / 2;
+            					sheet.total20_4 = mod .. " | " .. mod / 2;
+            				end;
         end, obj);
 
     obj._e_event19 = obj.edit19:addEventListener("onChange",
         function (_)
             if sheet~= nil then
-            						local mod = (tonumber(sheet.base0_4) or 0)+
-            												(tonumber(sheet.bonus0_4) or 0)+
-            												(tonumber(sheet.xp0_4) or 0);
-            						sheet.total0_4 = mod / 2;
-            						sheet.total20_4 = mod .. " | " .. mod / 2;
-            						xpAptidoes();
-            					end;
+            					local mod = (tonumber(sheet.base0_4) or 0)+
+            											(tonumber(sheet.bonus0_4) or 0)+
+            											(tonumber(sheet.xp0_4) or 0);
+            					sheet.total0_4 = mod / 2;
+            					sheet.total20_4 = mod .. " | " .. mod / 2;
+            					xpAptidoes();
+            				end;
         end, obj);
 
     obj._e_event20 = obj.radioButton9:addEventListener("onChange",
         function (_)
-            if sheet~=nil then
-            						sheet.num1 = (tonumber(sheet[sheet.dado1]) or 0);
-            					end;
+            if sheet==nil then return end;
+            				sheet.field1 = sheet.dado1;
+            				sheet.num1 = (tonumber(sheet[sheet.field1]) or 0);
+            				sheet.rollnome1 = sheet.nome0_5;
         end, obj);
 
     obj._e_event21 = obj.radioButton10:addEventListener("onChange",
         function (_)
-            if sheet~=nil then
-            						sheet.num2 = (tonumber(sheet[sheet.dado2]) or 0);
-            					end;
+            if sheet==nil then return end;
+            				sheet.field2 = sheet.dado2;
+            				sheet.num2 = (tonumber(sheet[sheet.field2]) or 0);
+            				sheet.rollnome2 = sheet.nome0_5;
         end, obj);
 
     obj._e_event22 = obj.edit22:addEventListener("onChange",
         function (_)
             if sheet~= nil then
-            						local mod = (tonumber(sheet.base0_5) or 0)+
-            												(tonumber(sheet.bonus0_5) or 0)+
-            												(tonumber(sheet.xp0_5) or 0);
-            						sheet.total0_5 = mod / 2;
-            						sheet.total20_5 = mod .. " | " .. mod / 2;
-            					end;
+            					local mod = (tonumber(sheet.base0_5) or 0)+
+            											(tonumber(sheet.bonus0_5) or 0)+
+            											(tonumber(sheet.xp0_5) or 0);
+            					sheet.total0_5 = mod / 2;
+            					sheet.total20_5 = mod .. " | " .. mod / 2;
+            				end;
         end, obj);
 
     obj._e_event23 = obj.edit23:addEventListener("onChange",
         function (_)
             if sheet~= nil then
-            						local mod = (tonumber(sheet.base0_5) or 0)+
-            												(tonumber(sheet.bonus0_5) or 0)+
-            												(tonumber(sheet.xp0_5) or 0);
-            						sheet.total0_5 = mod / 2;
-            						sheet.total20_5 = mod .. " | " .. mod / 2;
-            					end;
+            					local mod = (tonumber(sheet.base0_5) or 0)+
+            											(tonumber(sheet.bonus0_5) or 0)+
+            											(tonumber(sheet.xp0_5) or 0);
+            					sheet.total0_5 = mod / 2;
+            					sheet.total20_5 = mod .. " | " .. mod / 2;
+            				end;
         end, obj);
 
     obj._e_event24 = obj.edit24:addEventListener("onChange",
         function (_)
             if sheet~= nil then
-            						local mod = (tonumber(sheet.base0_5) or 0)+
-            												(tonumber(sheet.bonus0_5) or 0)+
-            												(tonumber(sheet.xp0_5) or 0);
-            						sheet.total0_5 = mod / 2;
-            						sheet.total20_5 = mod .. " | " .. mod / 2;
-            						xpAptidoes();
-            					end;
+            					local mod = (tonumber(sheet.base0_5) or 0)+
+            											(tonumber(sheet.bonus0_5) or 0)+
+            											(tonumber(sheet.xp0_5) or 0);
+            					sheet.total0_5 = mod / 2;
+            					sheet.total20_5 = mod .. " | " .. mod / 2;
+            					xpAptidoes();
+            				end;
         end, obj);
 
     obj._e_event25 = obj.radioButton11:addEventListener("onChange",
         function (_)
-            if sheet~=nil then
-            						sheet.num1 = (tonumber(sheet[sheet.dado1]) or 0);
-            					end;
+            if sheet==nil then return end;
+            				sheet.field1 = sheet.dado1;
+            				sheet.num1 = (tonumber(sheet[sheet.field1]) or 0);
+            				sheet.rollnome1 = sheet.nome0_6;
         end, obj);
 
     obj._e_event26 = obj.radioButton12:addEventListener("onChange",
         function (_)
-            if sheet~=nil then
-            						sheet.num2 = (tonumber(sheet[sheet.dado2]) or 0);
-            					end;
+            if sheet==nil then return end;
+            				sheet.field2 = sheet.dado2;
+            				sheet.num2 = (tonumber(sheet[sheet.field2]) or 0);
+            				sheet.rollnome2 = sheet.nome0_6;
         end, obj);
 
     obj._e_event27 = obj.edit27:addEventListener("onChange",
         function (_)
             if sheet~= nil then
-            						local mod = (tonumber(sheet.base0_6) or 0)+
-            												(tonumber(sheet.bonus0_6) or 0)+
-            												(tonumber(sheet.xp0_6) or 0);
-            						sheet.total0_6 = mod / 2;
-            						sheet.total20_6 = mod .. " | " .. mod / 2;
-            					end;
+            					local mod = (tonumber(sheet.base0_6) or 0)+
+            											(tonumber(sheet.bonus0_6) or 0)+
+            											(tonumber(sheet.xp0_6) or 0);
+            					sheet.total0_6 = mod / 2;
+            					sheet.total20_6 = mod .. " | " .. mod / 2;
+            				end;
         end, obj);
 
     obj._e_event28 = obj.edit28:addEventListener("onChange",
         function (_)
             if sheet~= nil then
-            						local mod = (tonumber(sheet.base0_6) or 0)+
-            												(tonumber(sheet.bonus0_6) or 0)+
-            												(tonumber(sheet.xp0_6) or 0);
-            						sheet.total0_6 = mod / 2;
-            						sheet.total20_6 = mod .. " | " .. mod / 2;
-            					end;
+            					local mod = (tonumber(sheet.base0_6) or 0)+
+            											(tonumber(sheet.bonus0_6) or 0)+
+            											(tonumber(sheet.xp0_6) or 0);
+            					sheet.total0_6 = mod / 2;
+            					sheet.total20_6 = mod .. " | " .. mod / 2;
+            				end;
         end, obj);
 
     obj._e_event29 = obj.edit29:addEventListener("onChange",
         function (_)
             if sheet~= nil then
-            						local mod = (tonumber(sheet.base0_6) or 0)+
-            												(tonumber(sheet.bonus0_6) or 0)+
-            												(tonumber(sheet.xp0_6) or 0);
-            						sheet.total0_6 = mod / 2;
-            						sheet.total20_6 = mod .. " | " .. mod / 2;
-            						xpAptidoes();
-            					end;
+            					local mod = (tonumber(sheet.base0_6) or 0)+
+            											(tonumber(sheet.bonus0_6) or 0)+
+            											(tonumber(sheet.xp0_6) or 0);
+            					sheet.total0_6 = mod / 2;
+            					sheet.total20_6 = mod .. " | " .. mod / 2;
+            					xpAptidoes();
+            				end;
         end, obj);
 
     obj._e_event30 = obj.radioButton13:addEventListener("onChange",
         function (_)
-            if sheet~=nil then
-            						sheet.num1 = (tonumber(sheet[sheet.dado1]) or 0);
-            					end;
+            if sheet==nil then return end;
+            				sheet.field1 = sheet.dado1;
+            				sheet.num1 = (tonumber(sheet[sheet.field1]) or 0);
+            				sheet.rollnome1 = sheet.nome0_7;
         end, obj);
 
     obj._e_event31 = obj.radioButton14:addEventListener("onChange",
         function (_)
-            if sheet~=nil then
-            						sheet.num2 = (tonumber(sheet[sheet.dado2]) or 0);
-            					end;
+            if sheet==nil then return end;
+            				sheet.field2 = sheet.dado2;
+            				sheet.num2 = (tonumber(sheet[sheet.field2]) or 0);
+            				sheet.rollnome2 = sheet.nome0_7;
         end, obj);
 
     obj._e_event32 = obj.edit32:addEventListener("onChange",
         function (_)
             if sheet~= nil then
-            						local mod = (tonumber(sheet.base0_7) or 0)+
-            												(tonumber(sheet.bonus0_7) or 0)+
-            												(tonumber(sheet.xp0_7) or 0);
-            						sheet.total0_7 = mod / 2;
-            						sheet.total20_7 = mod .. " | " .. mod / 2;
-            					end;
+            					local mod = (tonumber(sheet.base0_7) or 0)+
+            											(tonumber(sheet.bonus0_7) or 0)+
+            											(tonumber(sheet.xp0_7) or 0);
+            					sheet.total0_7 = mod / 2;
+            					sheet.total20_7 = mod .. " | " .. mod / 2;
+            				end;
         end, obj);
 
     obj._e_event33 = obj.edit33:addEventListener("onChange",
         function (_)
             if sheet~= nil then
-            						local mod = (tonumber(sheet.base0_7) or 0)+
-            												(tonumber(sheet.bonus0_7) or 0)+
-            												(tonumber(sheet.xp0_7) or 0);
-            						sheet.total0_7 = mod / 2;
-            						sheet.total20_7 = mod .. " | " .. mod / 2;
-            					end;
+            					local mod = (tonumber(sheet.base0_7) or 0)+
+            											(tonumber(sheet.bonus0_7) or 0)+
+            											(tonumber(sheet.xp0_7) or 0);
+            					sheet.total0_7 = mod / 2;
+            					sheet.total20_7 = mod .. " | " .. mod / 2;
+            				end;
         end, obj);
 
     obj._e_event34 = obj.edit34:addEventListener("onChange",
         function (_)
             if sheet~= nil then
-            						local mod = (tonumber(sheet.base0_7) or 0)+
-            												(tonumber(sheet.bonus0_7) or 0)+
-            												(tonumber(sheet.xp0_7) or 0);
-            						sheet.total0_7 = mod / 2;
-            						sheet.total20_7 = mod .. " | " .. mod / 2;
-            						xpAptidoes();
-            					end;
+            					local mod = (tonumber(sheet.base0_7) or 0)+
+            											(tonumber(sheet.bonus0_7) or 0)+
+            											(tonumber(sheet.xp0_7) or 0);
+            					sheet.total0_7 = mod / 2;
+            					sheet.total20_7 = mod .. " | " .. mod / 2;
+            					xpAptidoes();
+            				end;
         end, obj);
 
     obj._e_event35 = obj.radioButton15:addEventListener("onChange",
         function (_)
-            if sheet~=nil then
-            						sheet.num1 = (tonumber(sheet[sheet.dado1]) or 0);
-            					end;
+            if sheet==nil then return end;
+            				sheet.field1 = sheet.dado1;
+            				sheet.num1 = (tonumber(sheet[sheet.field1]) or 0);
+            				sheet.rollnome1 = sheet.nome0_8;
         end, obj);
 
     obj._e_event36 = obj.radioButton16:addEventListener("onChange",
         function (_)
-            if sheet~=nil then
-            						sheet.num2 = (tonumber(sheet[sheet.dado2]) or 0);
-            					end;
+            if sheet==nil then return end;
+            				sheet.field2 = sheet.dado2;
+            				sheet.num2 = (tonumber(sheet[sheet.field2]) or 0);
+            				sheet.rollnome2 = sheet.nome0_8;
         end, obj);
 
     obj._e_event37 = obj.edit37:addEventListener("onChange",
         function (_)
             if sheet~= nil then
-            						local mod = (tonumber(sheet.base0_8) or 0)+
-            												(tonumber(sheet.bonus0_8) or 0)+
-            												(tonumber(sheet.xp0_8) or 0);
-            						sheet.total0_8 = mod / 2;
-            						sheet.total20_8 = mod .. " | " .. mod / 2;
-            					end;
+            					local mod = (tonumber(sheet.base0_8) or 0)+
+            											(tonumber(sheet.bonus0_8) or 0)+
+            											(tonumber(sheet.xp0_8) or 0);
+            					sheet.total0_8 = mod / 2;
+            					sheet.total20_8 = mod .. " | " .. mod / 2;
+            				end;
         end, obj);
 
     obj._e_event38 = obj.edit38:addEventListener("onChange",
         function (_)
             if sheet~= nil then
-            						local mod = (tonumber(sheet.base0_8) or 0)+
-            												(tonumber(sheet.bonus0_8) or 0)+
-            												(tonumber(sheet.xp0_8) or 0);
-            						sheet.total0_8 = mod / 2;
-            						sheet.total20_8 = mod .. " | " .. mod / 2;
-            					end;
+            					local mod = (tonumber(sheet.base0_8) or 0)+
+            											(tonumber(sheet.bonus0_8) or 0)+
+            											(tonumber(sheet.xp0_8) or 0);
+            					sheet.total0_8 = mod / 2;
+            					sheet.total20_8 = mod .. " | " .. mod / 2;
+            				end;
         end, obj);
 
     obj._e_event39 = obj.edit39:addEventListener("onChange",
         function (_)
             if sheet~= nil then
-            						local mod = (tonumber(sheet.base0_8) or 0)+
-            												(tonumber(sheet.bonus0_8) or 0)+
-            												(tonumber(sheet.xp0_8) or 0);
-            						sheet.total0_8 = mod / 2;
-            						sheet.total20_8 = mod .. " | " .. mod / 2;
-            						xpAptidoes();
-            					end;
+            					local mod = (tonumber(sheet.base0_8) or 0)+
+            											(tonumber(sheet.bonus0_8) or 0)+
+            											(tonumber(sheet.xp0_8) or 0);
+            					sheet.total0_8 = mod / 2;
+            					sheet.total20_8 = mod .. " | " .. mod / 2;
+            					xpAptidoes();
+            				end;
         end, obj);
 
     obj._e_event40 = obj.radioButton17:addEventListener("onChange",
         function (_)
-            if sheet~=nil then
-            						sheet.num1 = (tonumber(sheet[sheet.dado1]) or 0);
-            					end;
+            if sheet==nil then return end;
+            				sheet.field1 = sheet.dado1;
+            				sheet.num1 = (tonumber(sheet[sheet.field1]) or 0);
+            				sheet.rollnome1 = sheet.nome0_9;
         end, obj);
 
     obj._e_event41 = obj.radioButton18:addEventListener("onChange",
         function (_)
-            if sheet~=nil then
-            						sheet.num2 = (tonumber(sheet[sheet.dado2]) or 0);
-            					end;
+            if sheet==nil then return end;
+            				sheet.field2 = sheet.dado2;
+            				sheet.num2 = (tonumber(sheet[sheet.field2]) or 0);
+            				sheet.rollnome2 = sheet.nome0_9;
         end, obj);
 
     obj._e_event42 = obj.edit42:addEventListener("onChange",
         function (_)
             if sheet~= nil then
-            						local mod = (tonumber(sheet.base0_9) or 0)+
-            												(tonumber(sheet.bonus0_9) or 0)+
-            												(tonumber(sheet.xp0_9) or 0);
-            						sheet.total0_9 = mod / 2;
-            						sheet.total20_9 = mod .. " | " .. mod / 2;
-            					end;
+            					local mod = (tonumber(sheet.base0_9) or 0)+
+            											(tonumber(sheet.bonus0_9) or 0)+
+            											(tonumber(sheet.xp0_9) or 0);
+            					sheet.total0_9 = mod / 2;
+            					sheet.total20_9 = mod .. " | " .. mod / 2;
+            				end;
         end, obj);
 
     obj._e_event43 = obj.edit43:addEventListener("onChange",
         function (_)
             if sheet~= nil then
-            						local mod = (tonumber(sheet.base0_9) or 0)+
-            												(tonumber(sheet.bonus0_9) or 0)+
-            												(tonumber(sheet.xp0_9) or 0);
-            						sheet.total0_9 = mod / 2;
-            						sheet.total20_9 = mod .. " | " .. mod / 2;
-            					end;
+            					local mod = (tonumber(sheet.base0_9) or 0)+
+            											(tonumber(sheet.bonus0_9) or 0)+
+            											(tonumber(sheet.xp0_9) or 0);
+            					sheet.total0_9 = mod / 2;
+            					sheet.total20_9 = mod .. " | " .. mod / 2;
+            				end;
         end, obj);
 
     obj._e_event44 = obj.edit44:addEventListener("onChange",
         function (_)
             if sheet~= nil then
-            						local mod = (tonumber(sheet.base0_9) or 0)+
-            												(tonumber(sheet.bonus0_9) or 0)+
-            												(tonumber(sheet.xp0_9) or 0);
-            						sheet.total0_9 = mod / 2;
-            						sheet.total20_9 = mod .. " | " .. mod / 2;
-            						xpAptidoes();
-            					end;
+            					local mod = (tonumber(sheet.base0_9) or 0)+
+            											(tonumber(sheet.bonus0_9) or 0)+
+            											(tonumber(sheet.xp0_9) or 0);
+            					sheet.total0_9 = mod / 2;
+            					sheet.total20_9 = mod .. " | " .. mod / 2;
+            					xpAptidoes();
+            				end;
         end, obj);
 
     obj._e_event45 = obj.radioButton19:addEventListener("onChange",
         function (_)
-            if sheet~=nil then
-            						sheet.num1 = (tonumber(sheet[sheet.dado1]) or 0);
-            					end;
+            if sheet==nil then return end;
+            				sheet.field1 = sheet.dado1;
+            				sheet.num1 = (tonumber(sheet[sheet.field1]) or 0);
+            				sheet.rollnome1 = sheet.nome0_10;
         end, obj);
 
     obj._e_event46 = obj.radioButton20:addEventListener("onChange",
         function (_)
-            if sheet~=nil then
-            						sheet.num2 = (tonumber(sheet[sheet.dado2]) or 0);
-            					end;
+            if sheet==nil then return end;
+            				sheet.field2 = sheet.dado2;
+            				sheet.num2 = (tonumber(sheet[sheet.field2]) or 0);
+            				sheet.rollnome2 = sheet.nome0_10;
         end, obj);
 
     obj._e_event47 = obj.edit47:addEventListener("onChange",
         function (_)
             if sheet~= nil then
-            						local mod = (tonumber(sheet.base0_10) or 0)+
-            												(tonumber(sheet.bonus0_10) or 0)+
-            												(tonumber(sheet.xp0_10) or 0);
-            						sheet.total0_10 = mod / 2;
-            						sheet.total20_10 = mod .. " | " .. mod / 2;
-            					end;
+            					local mod = (tonumber(sheet.base0_10) or 0)+
+            											(tonumber(sheet.bonus0_10) or 0)+
+            											(tonumber(sheet.xp0_10) or 0);
+            					sheet.total0_10 = mod / 2;
+            					sheet.total20_10 = mod .. " | " .. mod / 2;
+            				end;
         end, obj);
 
     obj._e_event48 = obj.edit48:addEventListener("onChange",
         function (_)
             if sheet~= nil then
-            						local mod = (tonumber(sheet.base0_10) or 0)+
-            												(tonumber(sheet.bonus0_10) or 0)+
-            												(tonumber(sheet.xp0_10) or 0);
-            						sheet.total0_10 = mod / 2;
-            						sheet.total20_10 = mod .. " | " .. mod / 2;
-            					end;
+            					local mod = (tonumber(sheet.base0_10) or 0)+
+            											(tonumber(sheet.bonus0_10) or 0)+
+            											(tonumber(sheet.xp0_10) or 0);
+            					sheet.total0_10 = mod / 2;
+            					sheet.total20_10 = mod .. " | " .. mod / 2;
+            				end;
         end, obj);
 
     obj._e_event49 = obj.edit49:addEventListener("onChange",
         function (_)
             if sheet~= nil then
-            						local mod = (tonumber(sheet.base0_10) or 0)+
-            												(tonumber(sheet.bonus0_10) or 0)+
-            												(tonumber(sheet.xp0_10) or 0);
-            						sheet.total0_10 = mod / 2;
-            						sheet.total20_10 = mod .. " | " .. mod / 2;
-            						xpAptidoes();
-            					end;
+            					local mod = (tonumber(sheet.base0_10) or 0)+
+            											(tonumber(sheet.bonus0_10) or 0)+
+            											(tonumber(sheet.xp0_10) or 0);
+            					sheet.total0_10 = mod / 2;
+            					sheet.total20_10 = mod .. " | " .. mod / 2;
+            					xpAptidoes();
+            				end;
         end, obj);
 
     obj._e_event50 = obj.radioButton21:addEventListener("onChange",
         function (_)
-            if sheet~=nil then
-            						sheet.num1 = (tonumber(sheet[sheet.dado1]) or 0);
-            					end;
+            if sheet==nil then return end;
+            				sheet.field1 = sheet.dado1;
+            				sheet.num1 = (tonumber(sheet[sheet.field1]) or 0);
+            				sheet.rollnome1 = sheet.nome0_11;
         end, obj);
 
     obj._e_event51 = obj.radioButton22:addEventListener("onChange",
         function (_)
-            if sheet~=nil then
-            						sheet.num2 = (tonumber(sheet[sheet.dado2]) or 0);
-            					end;
+            if sheet==nil then return end;
+            				sheet.field2 = sheet.dado2;
+            				sheet.num2 = (tonumber(sheet[sheet.field2]) or 0);
+            				sheet.rollnome2 = sheet.nome0_11;
         end, obj);
 
     obj._e_event52 = obj.edit52:addEventListener("onChange",
         function (_)
             if sheet~= nil then
-            						local mod = (tonumber(sheet.base0_11) or 0)+
-            												(tonumber(sheet.bonus0_11) or 0)+
-            												(tonumber(sheet.xp0_11) or 0);
-            						sheet.total0_11 = mod / 2;
-            						sheet.total20_11 = mod .. " | " .. mod / 2;
-            					end;
+            					local mod = (tonumber(sheet.base0_11) or 0)+
+            											(tonumber(sheet.bonus0_11) or 0)+
+            											(tonumber(sheet.xp0_11) or 0);
+            					sheet.total0_11 = mod / 2;
+            					sheet.total20_11 = mod .. " | " .. mod / 2;
+            				end;
         end, obj);
 
     obj._e_event53 = obj.edit53:addEventListener("onChange",
         function (_)
             if sheet~= nil then
-            						local mod = (tonumber(sheet.base0_11) or 0)+
-            												(tonumber(sheet.bonus0_11) or 0)+
-            												(tonumber(sheet.xp0_11) or 0);
-            						sheet.total0_11 = mod / 2;
-            						sheet.total20_11 = mod .. " | " .. mod / 2;
-            					end;
+            					local mod = (tonumber(sheet.base0_11) or 0)+
+            											(tonumber(sheet.bonus0_11) or 0)+
+            											(tonumber(sheet.xp0_11) or 0);
+            					sheet.total0_11 = mod / 2;
+            					sheet.total20_11 = mod .. " | " .. mod / 2;
+            				end;
         end, obj);
 
     obj._e_event54 = obj.edit54:addEventListener("onChange",
         function (_)
             if sheet~= nil then
-            						local mod = (tonumber(sheet.base0_11) or 0)+
-            												(tonumber(sheet.bonus0_11) or 0)+
-            												(tonumber(sheet.xp0_11) or 0);
-            						sheet.total0_11 = mod / 2;
-            						sheet.total20_11 = mod .. " | " .. mod / 2;
-            						xpAptidoes();
-            					end;
+            					local mod = (tonumber(sheet.base0_11) or 0)+
+            											(tonumber(sheet.bonus0_11) or 0)+
+            											(tonumber(sheet.xp0_11) or 0);
+            					sheet.total0_11 = mod / 2;
+            					sheet.total20_11 = mod .. " | " .. mod / 2;
+            					xpAptidoes();
+            				end;
         end, obj);
 
     obj._e_event55 = obj.radioButton23:addEventListener("onChange",
         function (_)
-            if sheet~=nil then
-            						sheet.num1 = (tonumber(sheet[sheet.dado1]) or 0);
-            					end;
+            if sheet==nil then return end;
+            				sheet.field1 = sheet.dado1;
+            				sheet.num1 = (tonumber(sheet[sheet.field1]) or 0);
+            				sheet.rollnome1 = sheet.nome0_12;
         end, obj);
 
     obj._e_event56 = obj.radioButton24:addEventListener("onChange",
         function (_)
-            if sheet~=nil then
-            						sheet.num2 = (tonumber(sheet[sheet.dado2]) or 0);
-            					end;
+            if sheet==nil then return end;
+            				sheet.field2 = sheet.dado2;
+            				sheet.num2 = (tonumber(sheet[sheet.field2]) or 0);
+            				sheet.rollnome2 = sheet.nome0_12;
         end, obj);
 
     obj._e_event57 = obj.edit57:addEventListener("onChange",
         function (_)
             if sheet~= nil then
-            						local mod = (tonumber(sheet.base0_12) or 0)+
-            												(tonumber(sheet.bonus0_12) or 0)+
-            												(tonumber(sheet.xp0_12) or 0);
-            						sheet.total0_12 = mod / 2;
-            						sheet.total20_12 = mod .. " | " .. mod / 2;
-            					end;
+            					local mod = (tonumber(sheet.base0_12) or 0)+
+            											(tonumber(sheet.bonus0_12) or 0)+
+            											(tonumber(sheet.xp0_12) or 0);
+            					sheet.total0_12 = mod / 2;
+            					sheet.total20_12 = mod .. " | " .. mod / 2;
+            				end;
         end, obj);
 
     obj._e_event58 = obj.edit58:addEventListener("onChange",
         function (_)
             if sheet~= nil then
-            						local mod = (tonumber(sheet.base0_12) or 0)+
-            												(tonumber(sheet.bonus0_12) or 0)+
-            												(tonumber(sheet.xp0_12) or 0);
-            						sheet.total0_12 = mod / 2;
-            						sheet.total20_12 = mod .. " | " .. mod / 2;
-            					end;
+            					local mod = (tonumber(sheet.base0_12) or 0)+
+            											(tonumber(sheet.bonus0_12) or 0)+
+            											(tonumber(sheet.xp0_12) or 0);
+            					sheet.total0_12 = mod / 2;
+            					sheet.total20_12 = mod .. " | " .. mod / 2;
+            				end;
         end, obj);
 
     obj._e_event59 = obj.edit59:addEventListener("onChange",
         function (_)
             if sheet~= nil then
-            						local mod = (tonumber(sheet.base0_12) or 0)+
-            												(tonumber(sheet.bonus0_12) or 0)+
-            												(tonumber(sheet.xp0_12) or 0);
-            						sheet.total0_12 = mod / 2;
-            						sheet.total20_12 = mod .. " | " .. mod / 2;
-            						xpAptidoes();
-            					end;
+            					local mod = (tonumber(sheet.base0_12) or 0)+
+            											(tonumber(sheet.bonus0_12) or 0)+
+            											(tonumber(sheet.xp0_12) or 0);
+            					sheet.total0_12 = mod / 2;
+            					sheet.total20_12 = mod .. " | " .. mod / 2;
+            					xpAptidoes();
+            				end;
         end, obj);
 
     obj._e_event60 = obj.radioButton25:addEventListener("onChange",
         function (_)
-            if sheet~=nil then
-            						sheet.num1 = (tonumber(sheet[sheet.dado1]) or 0);
-            					end;
+            if sheet==nil then return end;
+            				sheet.field1 = sheet.dado1;
+            				sheet.num1 = (tonumber(sheet[sheet.field1]) or 0);
+            				sheet.rollnome1 = sheet.nome2_1;
         end, obj);
 
     obj._e_event61 = obj.radioButton26:addEventListener("onChange",
         function (_)
-            if sheet~=nil then
-            						sheet.num2 = (tonumber(sheet[sheet.dado2]) or 0);
-            					end;
+            if sheet==nil then return end;
+            				sheet.field2 = sheet.dado2;
+            				sheet.num2 = (tonumber(sheet[sheet.field2]) or 0);
+            				sheet.rollnome2 = sheet.nome2_1;
         end, obj);
 
     obj._e_event62 = obj.edit62:addEventListener("onChange",
         function (_)
             if sheet~= nil then
-            						local mod = (tonumber(sheet.base2_1) or 0)+
-            												(tonumber(sheet.bonus2_1) or 0)+
-            												(tonumber(sheet.xp2_1) or 0);
-            						sheet.total2_1 = mod / 2;
-            						sheet.total22_1 = mod .. " | " .. mod / 2;
-            					end;
+            					local mod = (tonumber(sheet.base2_1) or 0)+
+            											(tonumber(sheet.bonus2_1) or 0)+
+            											(tonumber(sheet.xp2_1) or 0);
+            					sheet.total2_1 = mod / 2;
+            					sheet.total22_1 = mod .. " | " .. mod / 2;
+            				end;
         end, obj);
 
     obj._e_event63 = obj.edit63:addEventListener("onChange",
         function (_)
             if sheet~= nil then
-            						local mod = (tonumber(sheet.base2_1) or 0)+
-            												(tonumber(sheet.bonus2_1) or 0)+
-            												(tonumber(sheet.xp2_1) or 0);
-            						sheet.total2_1 = mod / 2;
-            						sheet.total22_1 = mod .. " | " .. mod / 2;
-            					end;
+            					local mod = (tonumber(sheet.base2_1) or 0)+
+            											(tonumber(sheet.bonus2_1) or 0)+
+            											(tonumber(sheet.xp2_1) or 0);
+            					sheet.total2_1 = mod / 2;
+            					sheet.total22_1 = mod .. " | " .. mod / 2;
+            				end;
         end, obj);
 
     obj._e_event64 = obj.edit64:addEventListener("onChange",
         function (_)
             if sheet~= nil then
-            						local mod = (tonumber(sheet.base2_1) or 0)+
-            												(tonumber(sheet.bonus2_1) or 0)+
-            												(tonumber(sheet.xp2_1) or 0);
-            						sheet.total2_1 = mod / 2;
-            						sheet.total22_1 = mod .. " | " .. mod / 2;
-            						xpAptidoes();
-            					end;
+            					local mod = (tonumber(sheet.base2_1) or 0)+
+            											(tonumber(sheet.bonus2_1) or 0)+
+            											(tonumber(sheet.xp2_1) or 0);
+            					sheet.total2_1 = mod / 2;
+            					sheet.total22_1 = mod .. " | " .. mod / 2;
+            					xpAptidoes();
+            				end;
         end, obj);
 
     obj._e_event65 = obj.radioButton27:addEventListener("onChange",
         function (_)
-            if sheet~=nil then
-            						sheet.num1 = (tonumber(sheet[sheet.dado1]) or 0);
-            					end;
+            if sheet==nil then return end;
+            				sheet.field1 = sheet.dado1;
+            				sheet.num1 = (tonumber(sheet[sheet.field1]) or 0);
+            				sheet.rollnome1 = sheet.nome2_2;
         end, obj);
 
     obj._e_event66 = obj.radioButton28:addEventListener("onChange",
         function (_)
-            if sheet~=nil then
-            						sheet.num2 = (tonumber(sheet[sheet.dado2]) or 0);
-            					end;
+            if sheet==nil then return end;
+            				sheet.field2 = sheet.dado2;
+            				sheet.num2 = (tonumber(sheet[sheet.field2]) or 0);
+            				sheet.rollnome2 = sheet.nome2_2;
         end, obj);
 
     obj._e_event67 = obj.edit67:addEventListener("onChange",
         function (_)
             if sheet~= nil then
-            						local mod = (tonumber(sheet.base2_2) or 0)+
-            												(tonumber(sheet.bonus2_2) or 0)+
-            												(tonumber(sheet.xp2_2) or 0);
-            						sheet.total2_2 = mod / 2;
-            						sheet.total22_2 = mod .. " | " .. mod / 2;
-            					end;
+            					local mod = (tonumber(sheet.base2_2) or 0)+
+            											(tonumber(sheet.bonus2_2) or 0)+
+            											(tonumber(sheet.xp2_2) or 0);
+            					sheet.total2_2 = mod / 2;
+            					sheet.total22_2 = mod .. " | " .. mod / 2;
+            				end;
         end, obj);
 
     obj._e_event68 = obj.edit68:addEventListener("onChange",
         function (_)
             if sheet~= nil then
-            						local mod = (tonumber(sheet.base2_2) or 0)+
-            												(tonumber(sheet.bonus2_2) or 0)+
-            												(tonumber(sheet.xp2_2) or 0);
-            						sheet.total2_2 = mod / 2;
-            						sheet.total22_2 = mod .. " | " .. mod / 2;
-            					end;
+            					local mod = (tonumber(sheet.base2_2) or 0)+
+            											(tonumber(sheet.bonus2_2) or 0)+
+            											(tonumber(sheet.xp2_2) or 0);
+            					sheet.total2_2 = mod / 2;
+            					sheet.total22_2 = mod .. " | " .. mod / 2;
+            				end;
         end, obj);
 
     obj._e_event69 = obj.edit69:addEventListener("onChange",
         function (_)
             if sheet~= nil then
-            						local mod = (tonumber(sheet.base2_2) or 0)+
-            												(tonumber(sheet.bonus2_2) or 0)+
-            												(tonumber(sheet.xp2_2) or 0);
-            						sheet.total2_2 = mod / 2;
-            						sheet.total22_2 = mod .. " | " .. mod / 2;
-            						xpAptidoes();
-            					end;
+            					local mod = (tonumber(sheet.base2_2) or 0)+
+            											(tonumber(sheet.bonus2_2) or 0)+
+            											(tonumber(sheet.xp2_2) or 0);
+            					sheet.total2_2 = mod / 2;
+            					sheet.total22_2 = mod .. " | " .. mod / 2;
+            					xpAptidoes();
+            				end;
         end, obj);
 
     obj._e_event70 = obj.radioButton29:addEventListener("onChange",
         function (_)
-            if sheet~=nil then
-            						sheet.num1 = (tonumber(sheet[sheet.dado1]) or 0);
-            					end;
+            if sheet==nil then return end;
+            				sheet.field1 = sheet.dado1;
+            				sheet.num1 = (tonumber(sheet[sheet.field1]) or 0);
+            				sheet.rollnome1 = sheet.nome2_3;
         end, obj);
 
     obj._e_event71 = obj.radioButton30:addEventListener("onChange",
         function (_)
-            if sheet~=nil then
-            						sheet.num2 = (tonumber(sheet[sheet.dado2]) or 0);
-            					end;
+            if sheet==nil then return end;
+            				sheet.field2 = sheet.dado2;
+            				sheet.num2 = (tonumber(sheet[sheet.field2]) or 0);
+            				sheet.rollnome2 = sheet.nome2_3;
         end, obj);
 
     obj._e_event72 = obj.edit72:addEventListener("onChange",
         function (_)
             if sheet~= nil then
-            						local mod = (tonumber(sheet.base2_3) or 0)+
-            												(tonumber(sheet.bonus2_3) or 0)+
-            												(tonumber(sheet.xp2_3) or 0);
-            						sheet.total2_3 = mod / 2;
-            						sheet.total22_3 = mod .. " | " .. mod / 2;
-            					end;
+            					local mod = (tonumber(sheet.base2_3) or 0)+
+            											(tonumber(sheet.bonus2_3) or 0)+
+            											(tonumber(sheet.xp2_3) or 0);
+            					sheet.total2_3 = mod / 2;
+            					sheet.total22_3 = mod .. " | " .. mod / 2;
+            				end;
         end, obj);
 
     obj._e_event73 = obj.edit73:addEventListener("onChange",
         function (_)
             if sheet~= nil then
-            						local mod = (tonumber(sheet.base2_3) or 0)+
-            												(tonumber(sheet.bonus2_3) or 0)+
-            												(tonumber(sheet.xp2_3) or 0);
-            						sheet.total2_3 = mod / 2;
-            						sheet.total22_3 = mod .. " | " .. mod / 2;
-            					end;
+            					local mod = (tonumber(sheet.base2_3) or 0)+
+            											(tonumber(sheet.bonus2_3) or 0)+
+            											(tonumber(sheet.xp2_3) or 0);
+            					sheet.total2_3 = mod / 2;
+            					sheet.total22_3 = mod .. " | " .. mod / 2;
+            				end;
         end, obj);
 
     obj._e_event74 = obj.edit74:addEventListener("onChange",
         function (_)
             if sheet~= nil then
-            						local mod = (tonumber(sheet.base2_3) or 0)+
-            												(tonumber(sheet.bonus2_3) or 0)+
-            												(tonumber(sheet.xp2_3) or 0);
-            						sheet.total2_3 = mod / 2;
-            						sheet.total22_3 = mod .. " | " .. mod / 2;
-            						xpAptidoes();
-            					end;
+            					local mod = (tonumber(sheet.base2_3) or 0)+
+            											(tonumber(sheet.bonus2_3) or 0)+
+            											(tonumber(sheet.xp2_3) or 0);
+            					sheet.total2_3 = mod / 2;
+            					sheet.total22_3 = mod .. " | " .. mod / 2;
+            					xpAptidoes();
+            				end;
         end, obj);
 
     obj._e_event75 = obj.radioButton31:addEventListener("onChange",
         function (_)
-            if sheet~=nil then
-            						sheet.num1 = (tonumber(sheet[sheet.dado1]) or 0);
-            					end;
+            if sheet==nil then return end;
+            				sheet.field1 = sheet.dado1;
+            				sheet.num1 = (tonumber(sheet[sheet.field1]) or 0);
+            				sheet.rollnome1 = sheet.nome2_4;
         end, obj);
 
     obj._e_event76 = obj.radioButton32:addEventListener("onChange",
         function (_)
-            if sheet~=nil then
-            						sheet.num2 = (tonumber(sheet[sheet.dado2]) or 0);
-            					end;
+            if sheet==nil then return end;
+            				sheet.field2 = sheet.dado2;
+            				sheet.num2 = (tonumber(sheet[sheet.field2]) or 0);
+            				sheet.rollnome2 = sheet.nome2_4;
         end, obj);
 
     obj._e_event77 = obj.edit77:addEventListener("onChange",
         function (_)
             if sheet~= nil then
-            						local mod = (tonumber(sheet.base2_4) or 0)+
-            												(tonumber(sheet.bonus2_4) or 0)+
-            												(tonumber(sheet.xp2_4) or 0);
-            						sheet.total2_4 = mod / 2;
-            						sheet.total22_4 = mod .. " | " .. mod / 2;
-            					end;
+            					local mod = (tonumber(sheet.base2_4) or 0)+
+            											(tonumber(sheet.bonus2_4) or 0)+
+            											(tonumber(sheet.xp2_4) or 0);
+            					sheet.total2_4 = mod / 2;
+            					sheet.total22_4 = mod .. " | " .. mod / 2;
+            				end;
         end, obj);
 
     obj._e_event78 = obj.edit78:addEventListener("onChange",
         function (_)
             if sheet~= nil then
-            						local mod = (tonumber(sheet.base2_4) or 0)+
-            												(tonumber(sheet.bonus2_4) or 0)+
-            												(tonumber(sheet.xp2_4) or 0);
-            						sheet.total2_4 = mod / 2;
-            						sheet.total22_4 = mod .. " | " .. mod / 2;
-            					end;
+            					local mod = (tonumber(sheet.base2_4) or 0)+
+            											(tonumber(sheet.bonus2_4) or 0)+
+            											(tonumber(sheet.xp2_4) or 0);
+            					sheet.total2_4 = mod / 2;
+            					sheet.total22_4 = mod .. " | " .. mod / 2;
+            				end;
         end, obj);
 
     obj._e_event79 = obj.edit79:addEventListener("onChange",
         function (_)
             if sheet~= nil then
-            						local mod = (tonumber(sheet.base2_4) or 0)+
-            												(tonumber(sheet.bonus2_4) or 0)+
-            												(tonumber(sheet.xp2_4) or 0);
-            						sheet.total2_4 = mod / 2;
-            						sheet.total22_4 = mod .. " | " .. mod / 2;
-            						xpAptidoes();
-            					end;
+            					local mod = (tonumber(sheet.base2_4) or 0)+
+            											(tonumber(sheet.bonus2_4) or 0)+
+            											(tonumber(sheet.xp2_4) or 0);
+            					sheet.total2_4 = mod / 2;
+            					sheet.total22_4 = mod .. " | " .. mod / 2;
+            					xpAptidoes();
+            				end;
         end, obj);
 
     obj._e_event80 = obj.radioButton33:addEventListener("onChange",
         function (_)
-            if sheet~=nil then
-            						sheet.num1 = (tonumber(sheet[sheet.dado1]) or 0);
-            					end;
+            if sheet==nil then return end;
+            				sheet.field1 = sheet.dado1;
+            				sheet.num1 = (tonumber(sheet[sheet.field1]) or 0);
+            				sheet.rollnome1 = sheet.nome2_5;
         end, obj);
 
     obj._e_event81 = obj.radioButton34:addEventListener("onChange",
         function (_)
-            if sheet~=nil then
-            						sheet.num2 = (tonumber(sheet[sheet.dado2]) or 0);
-            					end;
+            if sheet==nil then return end;
+            				sheet.field2 = sheet.dado2;
+            				sheet.num2 = (tonumber(sheet[sheet.field2]) or 0);
+            				sheet.rollnome2 = sheet.nome2_5;
         end, obj);
 
     obj._e_event82 = obj.edit82:addEventListener("onChange",
         function (_)
             if sheet~= nil then
-            						local mod = (tonumber(sheet.base2_5) or 0)+
-            												(tonumber(sheet.bonus2_5) or 0)+
-            												(tonumber(sheet.xp2_5) or 0);
-            						sheet.total2_5 = mod / 2;
-            						sheet.total22_5 = mod .. " | " .. mod / 2;
-            					end;
+            					local mod = (tonumber(sheet.base2_5) or 0)+
+            											(tonumber(sheet.bonus2_5) or 0)+
+            											(tonumber(sheet.xp2_5) or 0);
+            					sheet.total2_5 = mod / 2;
+            					sheet.total22_5 = mod .. " | " .. mod / 2;
+            				end;
         end, obj);
 
     obj._e_event83 = obj.edit83:addEventListener("onChange",
         function (_)
             if sheet~= nil then
-            						local mod = (tonumber(sheet.base2_5) or 0)+
-            												(tonumber(sheet.bonus2_5) or 0)+
-            												(tonumber(sheet.xp2_5) or 0);
-            						sheet.total2_5 = mod / 2;
-            						sheet.total22_5 = mod .. " | " .. mod / 2;
-            					end;
+            					local mod = (tonumber(sheet.base2_5) or 0)+
+            											(tonumber(sheet.bonus2_5) or 0)+
+            											(tonumber(sheet.xp2_5) or 0);
+            					sheet.total2_5 = mod / 2;
+            					sheet.total22_5 = mod .. " | " .. mod / 2;
+            				end;
         end, obj);
 
     obj._e_event84 = obj.edit84:addEventListener("onChange",
         function (_)
             if sheet~= nil then
-            						local mod = (tonumber(sheet.base2_5) or 0)+
-            												(tonumber(sheet.bonus2_5) or 0)+
-            												(tonumber(sheet.xp2_5) or 0);
-            						sheet.total2_5 = mod / 2;
-            						sheet.total22_5 = mod .. " | " .. mod / 2;
-            						xpAptidoes();
-            					end;
+            					local mod = (tonumber(sheet.base2_5) or 0)+
+            											(tonumber(sheet.bonus2_5) or 0)+
+            											(tonumber(sheet.xp2_5) or 0);
+            					sheet.total2_5 = mod / 2;
+            					sheet.total22_5 = mod .. " | " .. mod / 2;
+            					xpAptidoes();
+            				end;
         end, obj);
 
     obj._e_event85 = obj.radioButton35:addEventListener("onChange",
         function (_)
-            if sheet~=nil then
-            						sheet.num1 = (tonumber(sheet[sheet.dado1]) or 0);
-            					end;
+            if sheet==nil then return end;
+            				sheet.field1 = sheet.dado1;
+            				sheet.num1 = (tonumber(sheet[sheet.field1]) or 0);
+            				sheet.rollnome1 = sheet.nome2_6;
         end, obj);
 
     obj._e_event86 = obj.radioButton36:addEventListener("onChange",
         function (_)
-            if sheet~=nil then
-            						sheet.num2 = (tonumber(sheet[sheet.dado2]) or 0);
-            					end;
+            if sheet==nil then return end;
+            				sheet.field2 = sheet.dado2;
+            				sheet.num2 = (tonumber(sheet[sheet.field2]) or 0);
+            				sheet.rollnome2 = sheet.nome2_6;
         end, obj);
 
     obj._e_event87 = obj.edit87:addEventListener("onChange",
         function (_)
             if sheet~= nil then
-            						local mod = (tonumber(sheet.base2_6) or 0)+
-            												(tonumber(sheet.bonus2_6) or 0)+
-            												(tonumber(sheet.xp2_6) or 0);
-            						sheet.total2_6 = mod / 2;
-            						sheet.total22_6 = mod .. " | " .. mod / 2;
-            					end;
+            					local mod = (tonumber(sheet.base2_6) or 0)+
+            											(tonumber(sheet.bonus2_6) or 0)+
+            											(tonumber(sheet.xp2_6) or 0);
+            					sheet.total2_6 = mod / 2;
+            					sheet.total22_6 = mod .. " | " .. mod / 2;
+            				end;
         end, obj);
 
     obj._e_event88 = obj.edit88:addEventListener("onChange",
         function (_)
             if sheet~= nil then
-            						local mod = (tonumber(sheet.base2_6) or 0)+
-            												(tonumber(sheet.bonus2_6) or 0)+
-            												(tonumber(sheet.xp2_6) or 0);
-            						sheet.total2_6 = mod / 2;
-            						sheet.total22_6 = mod .. " | " .. mod / 2;
-            					end;
+            					local mod = (tonumber(sheet.base2_6) or 0)+
+            											(tonumber(sheet.bonus2_6) or 0)+
+            											(tonumber(sheet.xp2_6) or 0);
+            					sheet.total2_6 = mod / 2;
+            					sheet.total22_6 = mod .. " | " .. mod / 2;
+            				end;
         end, obj);
 
     obj._e_event89 = obj.edit89:addEventListener("onChange",
         function (_)
             if sheet~= nil then
-            						local mod = (tonumber(sheet.base2_6) or 0)+
-            												(tonumber(sheet.bonus2_6) or 0)+
-            												(tonumber(sheet.xp2_6) or 0);
-            						sheet.total2_6 = mod / 2;
-            						sheet.total22_6 = mod .. " | " .. mod / 2;
-            						xpAptidoes();
-            					end;
+            					local mod = (tonumber(sheet.base2_6) or 0)+
+            											(tonumber(sheet.bonus2_6) or 0)+
+            											(tonumber(sheet.xp2_6) or 0);
+            					sheet.total2_6 = mod / 2;
+            					sheet.total22_6 = mod .. " | " .. mod / 2;
+            					xpAptidoes();
+            				end;
         end, obj);
 
     obj._e_event90 = obj.radioButton37:addEventListener("onChange",
         function (_)
-            if sheet~=nil then
-            						sheet.num1 = (tonumber(sheet[sheet.dado1]) or 0);
-            					end;
+            if sheet==nil then return end;
+            				sheet.field1 = sheet.dado1;
+            				sheet.num1 = (tonumber(sheet[sheet.field1]) or 0);
+            				sheet.rollnome1 = sheet.nome2_7;
         end, obj);
 
     obj._e_event91 = obj.radioButton38:addEventListener("onChange",
         function (_)
-            if sheet~=nil then
-            						sheet.num2 = (tonumber(sheet[sheet.dado2]) or 0);
-            					end;
+            if sheet==nil then return end;
+            				sheet.field2 = sheet.dado2;
+            				sheet.num2 = (tonumber(sheet[sheet.field2]) or 0);
+            				sheet.rollnome2 = sheet.nome2_7;
         end, obj);
 
     obj._e_event92 = obj.edit92:addEventListener("onChange",
         function (_)
             if sheet~= nil then
-            						local mod = (tonumber(sheet.base2_7) or 0)+
-            												(tonumber(sheet.bonus2_7) or 0)+
-            												(tonumber(sheet.xp2_7) or 0);
-            						sheet.total2_7 = mod / 2;
-            						sheet.total22_7 = mod .. " | " .. mod / 2;
-            					end;
+            					local mod = (tonumber(sheet.base2_7) or 0)+
+            											(tonumber(sheet.bonus2_7) or 0)+
+            											(tonumber(sheet.xp2_7) or 0);
+            					sheet.total2_7 = mod / 2;
+            					sheet.total22_7 = mod .. " | " .. mod / 2;
+            				end;
         end, obj);
 
     obj._e_event93 = obj.edit93:addEventListener("onChange",
         function (_)
             if sheet~= nil then
-            						local mod = (tonumber(sheet.base2_7) or 0)+
-            												(tonumber(sheet.bonus2_7) or 0)+
-            												(tonumber(sheet.xp2_7) or 0);
-            						sheet.total2_7 = mod / 2;
-            						sheet.total22_7 = mod .. " | " .. mod / 2;
-            					end;
+            					local mod = (tonumber(sheet.base2_7) or 0)+
+            											(tonumber(sheet.bonus2_7) or 0)+
+            											(tonumber(sheet.xp2_7) or 0);
+            					sheet.total2_7 = mod / 2;
+            					sheet.total22_7 = mod .. " | " .. mod / 2;
+            				end;
         end, obj);
 
     obj._e_event94 = obj.edit94:addEventListener("onChange",
         function (_)
             if sheet~= nil then
-            						local mod = (tonumber(sheet.base2_7) or 0)+
-            												(tonumber(sheet.bonus2_7) or 0)+
-            												(tonumber(sheet.xp2_7) or 0);
-            						sheet.total2_7 = mod / 2;
-            						sheet.total22_7 = mod .. " | " .. mod / 2;
-            						xpAptidoes();
-            					end;
+            					local mod = (tonumber(sheet.base2_7) or 0)+
+            											(tonumber(sheet.bonus2_7) or 0)+
+            											(tonumber(sheet.xp2_7) or 0);
+            					sheet.total2_7 = mod / 2;
+            					sheet.total22_7 = mod .. " | " .. mod / 2;
+            					xpAptidoes();
+            				end;
         end, obj);
 
     obj._e_event95 = obj.radioButton39:addEventListener("onChange",
         function (_)
-            if sheet~=nil then
-            						sheet.num1 = (tonumber(sheet[sheet.dado1]) or 0);
-            					end;
+            if sheet==nil then return end;
+            				sheet.field1 = sheet.dado1;
+            				sheet.num1 = (tonumber(sheet[sheet.field1]) or 0);
+            				sheet.rollnome1 = sheet.nome2_8;
         end, obj);
 
     obj._e_event96 = obj.radioButton40:addEventListener("onChange",
         function (_)
-            if sheet~=nil then
-            						sheet.num2 = (tonumber(sheet[sheet.dado2]) or 0);
-            					end;
+            if sheet==nil then return end;
+            				sheet.field2 = sheet.dado2;
+            				sheet.num2 = (tonumber(sheet[sheet.field2]) or 0);
+            				sheet.rollnome2 = sheet.nome2_8;
         end, obj);
 
     obj._e_event97 = obj.edit97:addEventListener("onChange",
         function (_)
             if sheet~= nil then
-            						local mod = (tonumber(sheet.base2_8) or 0)+
-            												(tonumber(sheet.bonus2_8) or 0)+
-            												(tonumber(sheet.xp2_8) or 0);
-            						sheet.total2_8 = mod / 2;
-            						sheet.total22_8 = mod .. " | " .. mod / 2;
-            					end;
+            					local mod = (tonumber(sheet.base2_8) or 0)+
+            											(tonumber(sheet.bonus2_8) or 0)+
+            											(tonumber(sheet.xp2_8) or 0);
+            					sheet.total2_8 = mod / 2;
+            					sheet.total22_8 = mod .. " | " .. mod / 2;
+            				end;
         end, obj);
 
     obj._e_event98 = obj.edit98:addEventListener("onChange",
         function (_)
             if sheet~= nil then
-            						local mod = (tonumber(sheet.base2_8) or 0)+
-            												(tonumber(sheet.bonus2_8) or 0)+
-            												(tonumber(sheet.xp2_8) or 0);
-            						sheet.total2_8 = mod / 2;
-            						sheet.total22_8 = mod .. " | " .. mod / 2;
-            					end;
+            					local mod = (tonumber(sheet.base2_8) or 0)+
+            											(tonumber(sheet.bonus2_8) or 0)+
+            											(tonumber(sheet.xp2_8) or 0);
+            					sheet.total2_8 = mod / 2;
+            					sheet.total22_8 = mod .. " | " .. mod / 2;
+            				end;
         end, obj);
 
     obj._e_event99 = obj.edit99:addEventListener("onChange",
         function (_)
             if sheet~= nil then
-            						local mod = (tonumber(sheet.base2_8) or 0)+
-            												(tonumber(sheet.bonus2_8) or 0)+
-            												(tonumber(sheet.xp2_8) or 0);
-            						sheet.total2_8 = mod / 2;
-            						sheet.total22_8 = mod .. " | " .. mod / 2;
-            						xpAptidoes();
-            					end;
+            					local mod = (tonumber(sheet.base2_8) or 0)+
+            											(tonumber(sheet.bonus2_8) or 0)+
+            											(tonumber(sheet.xp2_8) or 0);
+            					sheet.total2_8 = mod / 2;
+            					sheet.total22_8 = mod .. " | " .. mod / 2;
+            					xpAptidoes();
+            				end;
         end, obj);
 
     obj._e_event100 = obj.radioButton41:addEventListener("onChange",
         function (_)
-            if sheet~=nil then
-            						sheet.num1 = (tonumber(sheet[sheet.dado1]) or 0);
-            					end;
+            if sheet==nil then return end;
+            				sheet.field1 = sheet.dado1;
+            				sheet.num1 = (tonumber(sheet[sheet.field1]) or 0);
+            				sheet.rollnome1 = sheet.nome2_9;
         end, obj);
 
     obj._e_event101 = obj.radioButton42:addEventListener("onChange",
         function (_)
-            if sheet~=nil then
-            						sheet.num2 = (tonumber(sheet[sheet.dado2]) or 0);
-            					end;
+            if sheet==nil then return end;
+            				sheet.field2 = sheet.dado2;
+            				sheet.num2 = (tonumber(sheet[sheet.field2]) or 0);
+            				sheet.rollnome2 = sheet.nome2_9;
         end, obj);
 
     obj._e_event102 = obj.edit102:addEventListener("onChange",
         function (_)
             if sheet~= nil then
-            						local mod = (tonumber(sheet.base2_9) or 0)+
-            												(tonumber(sheet.bonus2_9) or 0)+
-            												(tonumber(sheet.xp2_9) or 0);
-            						sheet.total2_9 = mod / 2;
-            						sheet.total22_9 = mod .. " | " .. mod / 2;
-            					end;
+            					local mod = (tonumber(sheet.base2_9) or 0)+
+            											(tonumber(sheet.bonus2_9) or 0)+
+            											(tonumber(sheet.xp2_9) or 0);
+            					sheet.total2_9 = mod / 2;
+            					sheet.total22_9 = mod .. " | " .. mod / 2;
+            				end;
         end, obj);
 
     obj._e_event103 = obj.edit103:addEventListener("onChange",
         function (_)
             if sheet~= nil then
-            						local mod = (tonumber(sheet.base2_9) or 0)+
-            												(tonumber(sheet.bonus2_9) or 0)+
-            												(tonumber(sheet.xp2_9) or 0);
-            						sheet.total2_9 = mod / 2;
-            						sheet.total22_9 = mod .. " | " .. mod / 2;
-            					end;
+            					local mod = (tonumber(sheet.base2_9) or 0)+
+            											(tonumber(sheet.bonus2_9) or 0)+
+            											(tonumber(sheet.xp2_9) or 0);
+            					sheet.total2_9 = mod / 2;
+            					sheet.total22_9 = mod .. " | " .. mod / 2;
+            				end;
         end, obj);
 
     obj._e_event104 = obj.edit104:addEventListener("onChange",
         function (_)
             if sheet~= nil then
-            						local mod = (tonumber(sheet.base2_9) or 0)+
-            												(tonumber(sheet.bonus2_9) or 0)+
-            												(tonumber(sheet.xp2_9) or 0);
-            						sheet.total2_9 = mod / 2;
-            						sheet.total22_9 = mod .. " | " .. mod / 2;
-            						xpAptidoes();
-            					end;
+            					local mod = (tonumber(sheet.base2_9) or 0)+
+            											(tonumber(sheet.bonus2_9) or 0)+
+            											(tonumber(sheet.xp2_9) or 0);
+            					sheet.total2_9 = mod / 2;
+            					sheet.total22_9 = mod .. " | " .. mod / 2;
+            					xpAptidoes();
+            				end;
         end, obj);
 
     obj._e_event105 = obj.radioButton43:addEventListener("onChange",
         function (_)
-            if sheet~=nil then
-            						sheet.num1 = (tonumber(sheet[sheet.dado1]) or 0);
-            					end;
+            if sheet==nil then return end;
+            				sheet.field1 = sheet.dado1;
+            				sheet.num1 = (tonumber(sheet[sheet.field1]) or 0);
+            				sheet.rollnome1 = sheet.nome2_10;
         end, obj);
 
     obj._e_event106 = obj.radioButton44:addEventListener("onChange",
         function (_)
-            if sheet~=nil then
-            						sheet.num2 = (tonumber(sheet[sheet.dado2]) or 0);
-            					end;
+            if sheet==nil then return end;
+            				sheet.field2 = sheet.dado2;
+            				sheet.num2 = (tonumber(sheet[sheet.field2]) or 0);
+            				sheet.rollnome2 = sheet.nome2_10;
         end, obj);
 
     obj._e_event107 = obj.edit107:addEventListener("onChange",
         function (_)
             if sheet~= nil then
-            						local mod = (tonumber(sheet.base2_10) or 0)+
-            												(tonumber(sheet.bonus2_10) or 0)+
-            												(tonumber(sheet.xp2_10) or 0);
-            						sheet.total2_10 = mod / 2;
-            						sheet.total22_10 = mod .. " | " .. mod / 2;
-            					end;
+            					local mod = (tonumber(sheet.base2_10) or 0)+
+            											(tonumber(sheet.bonus2_10) or 0)+
+            											(tonumber(sheet.xp2_10) or 0);
+            					sheet.total2_10 = mod / 2;
+            					sheet.total22_10 = mod .. " | " .. mod / 2;
+            				end;
         end, obj);
 
     obj._e_event108 = obj.edit108:addEventListener("onChange",
         function (_)
             if sheet~= nil then
-            						local mod = (tonumber(sheet.base2_10) or 0)+
-            												(tonumber(sheet.bonus2_10) or 0)+
-            												(tonumber(sheet.xp2_10) or 0);
-            						sheet.total2_10 = mod / 2;
-            						sheet.total22_10 = mod .. " | " .. mod / 2;
-            					end;
+            					local mod = (tonumber(sheet.base2_10) or 0)+
+            											(tonumber(sheet.bonus2_10) or 0)+
+            											(tonumber(sheet.xp2_10) or 0);
+            					sheet.total2_10 = mod / 2;
+            					sheet.total22_10 = mod .. " | " .. mod / 2;
+            				end;
         end, obj);
 
     obj._e_event109 = obj.edit109:addEventListener("onChange",
         function (_)
             if sheet~= nil then
-            						local mod = (tonumber(sheet.base2_10) or 0)+
-            												(tonumber(sheet.bonus2_10) or 0)+
-            												(tonumber(sheet.xp2_10) or 0);
-            						sheet.total2_10 = mod / 2;
-            						sheet.total22_10 = mod .. " | " .. mod / 2;
-            						xpAptidoes();
-            					end;
+            					local mod = (tonumber(sheet.base2_10) or 0)+
+            											(tonumber(sheet.bonus2_10) or 0)+
+            											(tonumber(sheet.xp2_10) or 0);
+            					sheet.total2_10 = mod / 2;
+            					sheet.total22_10 = mod .. " | " .. mod / 2;
+            					xpAptidoes();
+            				end;
         end, obj);
 
     obj._e_event110 = obj.radioButton45:addEventListener("onChange",
         function (_)
-            if sheet~=nil then
-            						sheet.num1 = (tonumber(sheet[sheet.dado1]) or 0);
-            					end;
+            if sheet==nil then return end;
+            				sheet.field1 = sheet.dado1;
+            				sheet.num1 = (tonumber(sheet[sheet.field1]) or 0);
+            				sheet.rollnome1 = sheet.nome2_11;
         end, obj);
 
     obj._e_event111 = obj.radioButton46:addEventListener("onChange",
         function (_)
-            if sheet~=nil then
-            						sheet.num2 = (tonumber(sheet[sheet.dado2]) or 0);
-            					end;
+            if sheet==nil then return end;
+            				sheet.field2 = sheet.dado2;
+            				sheet.num2 = (tonumber(sheet[sheet.field2]) or 0);
+            				sheet.rollnome2 = sheet.nome2_11;
         end, obj);
 
     obj._e_event112 = obj.edit112:addEventListener("onChange",
         function (_)
             if sheet~= nil then
-            						local mod = (tonumber(sheet.base2_11) or 0)+
-            												(tonumber(sheet.bonus2_11) or 0)+
-            												(tonumber(sheet.xp2_11) or 0);
-            						sheet.total2_11 = mod / 2;
-            						sheet.total22_11 = mod .. " | " .. mod / 2;
-            					end;
+            					local mod = (tonumber(sheet.base2_11) or 0)+
+            											(tonumber(sheet.bonus2_11) or 0)+
+            											(tonumber(sheet.xp2_11) or 0);
+            					sheet.total2_11 = mod / 2;
+            					sheet.total22_11 = mod .. " | " .. mod / 2;
+            				end;
         end, obj);
 
     obj._e_event113 = obj.edit113:addEventListener("onChange",
         function (_)
             if sheet~= nil then
-            						local mod = (tonumber(sheet.base2_11) or 0)+
-            												(tonumber(sheet.bonus2_11) or 0)+
-            												(tonumber(sheet.xp2_11) or 0);
-            						sheet.total2_11 = mod / 2;
-            						sheet.total22_11 = mod .. " | " .. mod / 2;
-            					end;
+            					local mod = (tonumber(sheet.base2_11) or 0)+
+            											(tonumber(sheet.bonus2_11) or 0)+
+            											(tonumber(sheet.xp2_11) or 0);
+            					sheet.total2_11 = mod / 2;
+            					sheet.total22_11 = mod .. " | " .. mod / 2;
+            				end;
         end, obj);
 
     obj._e_event114 = obj.edit114:addEventListener("onChange",
         function (_)
             if sheet~= nil then
-            						local mod = (tonumber(sheet.base2_11) or 0)+
-            												(tonumber(sheet.bonus2_11) or 0)+
-            												(tonumber(sheet.xp2_11) or 0);
-            						sheet.total2_11 = mod / 2;
-            						sheet.total22_11 = mod .. " | " .. mod / 2;
-            						xpAptidoes();
-            					end;
+            					local mod = (tonumber(sheet.base2_11) or 0)+
+            											(tonumber(sheet.bonus2_11) or 0)+
+            											(tonumber(sheet.xp2_11) or 0);
+            					sheet.total2_11 = mod / 2;
+            					sheet.total22_11 = mod .. " | " .. mod / 2;
+            					xpAptidoes();
+            				end;
         end, obj);
 
     obj._e_event115 = obj.radioButton47:addEventListener("onChange",
         function (_)
-            if sheet~=nil then
-            						sheet.num1 = (tonumber(sheet[sheet.dado1]) or 0);
-            					end;
+            if sheet==nil then return end;
+            				sheet.field1 = sheet.dado1;
+            				sheet.num1 = (tonumber(sheet[sheet.field1]) or 0);
+            				sheet.rollnome1 = sheet.nome2_12;
         end, obj);
 
     obj._e_event116 = obj.radioButton48:addEventListener("onChange",
         function (_)
-            if sheet~=nil then
-            						sheet.num2 = (tonumber(sheet[sheet.dado2]) or 0);
-            					end;
+            if sheet==nil then return end;
+            				sheet.field2 = sheet.dado2;
+            				sheet.num2 = (tonumber(sheet[sheet.field2]) or 0);
+            				sheet.rollnome2 = sheet.nome2_12;
         end, obj);
 
     obj._e_event117 = obj.edit117:addEventListener("onChange",
         function (_)
             if sheet~= nil then
-            						local mod = (tonumber(sheet.base2_12) or 0)+
-            												(tonumber(sheet.bonus2_12) or 0)+
-            												(tonumber(sheet.xp2_12) or 0);
-            						sheet.total2_12 = mod / 2;
-            						sheet.total22_12 = mod .. " | " .. mod / 2;
-            					end;
+            					local mod = (tonumber(sheet.base2_12) or 0)+
+            											(tonumber(sheet.bonus2_12) or 0)+
+            											(tonumber(sheet.xp2_12) or 0);
+            					sheet.total2_12 = mod / 2;
+            					sheet.total22_12 = mod .. " | " .. mod / 2;
+            				end;
         end, obj);
 
     obj._e_event118 = obj.edit118:addEventListener("onChange",
         function (_)
             if sheet~= nil then
-            						local mod = (tonumber(sheet.base2_12) or 0)+
-            												(tonumber(sheet.bonus2_12) or 0)+
-            												(tonumber(sheet.xp2_12) or 0);
-            						sheet.total2_12 = mod / 2;
-            						sheet.total22_12 = mod .. " | " .. mod / 2;
-            					end;
+            					local mod = (tonumber(sheet.base2_12) or 0)+
+            											(tonumber(sheet.bonus2_12) or 0)+
+            											(tonumber(sheet.xp2_12) or 0);
+            					sheet.total2_12 = mod / 2;
+            					sheet.total22_12 = mod .. " | " .. mod / 2;
+            				end;
         end, obj);
 
     obj._e_event119 = obj.edit119:addEventListener("onChange",
         function (_)
             if sheet~= nil then
-            						local mod = (tonumber(sheet.base2_12) or 0)+
-            												(tonumber(sheet.bonus2_12) or 0)+
-            												(tonumber(sheet.xp2_12) or 0);
-            						sheet.total2_12 = mod / 2;
-            						sheet.total22_12 = mod .. " | " .. mod / 2;
-            						xpAptidoes();
-            					end;
+            					local mod = (tonumber(sheet.base2_12) or 0)+
+            											(tonumber(sheet.bonus2_12) or 0)+
+            											(tonumber(sheet.xp2_12) or 0);
+            					sheet.total2_12 = mod / 2;
+            					sheet.total22_12 = mod .. " | " .. mod / 2;
+            					xpAptidoes();
+            				end;
         end, obj);
 
     obj._e_event120 = obj.radioButton49:addEventListener("onChange",
         function (_)
-            if sheet~=nil then
-            						sheet.num1 = (tonumber(sheet[sheet.dado1]) or 0);
-            					end;
+            if sheet==nil then return end;
+            				sheet.field1 = sheet.dado1;
+            				sheet.num1 = (tonumber(sheet[sheet.field1]) or 0);
+            				sheet.rollnome1 = sheet.nome1_1;
         end, obj);
 
     obj._e_event121 = obj.radioButton50:addEventListener("onChange",
         function (_)
-            if sheet~=nil then
-            						sheet.num2 = (tonumber(sheet[sheet.dado2]) or 0);
-            					end;
+            if sheet==nil then return end;
+            				sheet.field2 = sheet.dado2;
+            				sheet.num2 = (tonumber(sheet[sheet.field2]) or 0);
+            				sheet.rollnome2 = sheet.nome1_1;
         end, obj);
 
     obj._e_event122 = obj.edit122:addEventListener("onChange",
         function (_)
             if sheet~= nil then
-            						local mod = (tonumber(sheet.base1_1) or 0)+
-            												(tonumber(sheet.bonus1_1) or 0)+
-            												(tonumber(sheet.xp1_1) or 0);
-            						sheet.total1_1 = mod / 2;
-            						sheet.total21_1 = mod .. " | " .. mod / 2;
-            					end;
+            					local mod = (tonumber(sheet.base1_1) or 0)+
+            											(tonumber(sheet.bonus1_1) or 0)+
+            											(tonumber(sheet.xp1_1) or 0);
+            					sheet.total1_1 = mod / 2;
+            					sheet.total21_1 = mod .. " | " .. mod / 2;
+            				end;
         end, obj);
 
     obj._e_event123 = obj.edit123:addEventListener("onChange",
         function (_)
             if sheet~= nil then
-            						local mod = (tonumber(sheet.base1_1) or 0)+
-            												(tonumber(sheet.bonus1_1) or 0)+
-            												(tonumber(sheet.xp1_1) or 0);
-            						sheet.total1_1 = mod / 2;
-            						sheet.total21_1 = mod .. " | " .. mod / 2;
-            					end;
+            					local mod = (tonumber(sheet.base1_1) or 0)+
+            											(tonumber(sheet.bonus1_1) or 0)+
+            											(tonumber(sheet.xp1_1) or 0);
+            					sheet.total1_1 = mod / 2;
+            					sheet.total21_1 = mod .. " | " .. mod / 2;
+            				end;
         end, obj);
 
     obj._e_event124 = obj.edit124:addEventListener("onChange",
         function (_)
             if sheet~= nil then
-            						local mod = (tonumber(sheet.base1_1) or 0)+
-            												(tonumber(sheet.bonus1_1) or 0)+
-            												(tonumber(sheet.xp1_1) or 0);
-            						sheet.total1_1 = mod / 2;
-            						sheet.total21_1 = mod .. " | " .. mod / 2;
-            						xpAptidoes();
-            					end;
+            					local mod = (tonumber(sheet.base1_1) or 0)+
+            											(tonumber(sheet.bonus1_1) or 0)+
+            											(tonumber(sheet.xp1_1) or 0);
+            					sheet.total1_1 = mod / 2;
+            					sheet.total21_1 = mod .. " | " .. mod / 2;
+            					xpAptidoes();
+            				end;
         end, obj);
 
     obj._e_event125 = obj.radioButton51:addEventListener("onChange",
         function (_)
-            if sheet~=nil then
-            						sheet.num1 = (tonumber(sheet[sheet.dado1]) or 0);
-            					end;
+            if sheet==nil then return end;
+            				sheet.field1 = sheet.dado1;
+            				sheet.num1 = (tonumber(sheet[sheet.field1]) or 0);
+            				sheet.rollnome1 = sheet.nome1_2;
         end, obj);
 
     obj._e_event126 = obj.radioButton52:addEventListener("onChange",
         function (_)
-            if sheet~=nil then
-            						sheet.num2 = (tonumber(sheet[sheet.dado2]) or 0);
-            					end;
+            if sheet==nil then return end;
+            				sheet.field2 = sheet.dado2;
+            				sheet.num2 = (tonumber(sheet[sheet.field2]) or 0);
+            				sheet.rollnome2 = sheet.nome1_2;
         end, obj);
 
     obj._e_event127 = obj.edit127:addEventListener("onChange",
         function (_)
             if sheet~= nil then
-            						local mod = (tonumber(sheet.base1_2) or 0)+
-            												(tonumber(sheet.bonus1_2) or 0)+
-            												(tonumber(sheet.xp1_2) or 0);
-            						sheet.total1_2 = mod / 2;
-            						sheet.total21_2 = mod .. " | " .. mod / 2;
-            					end;
+            					local mod = (tonumber(sheet.base1_2) or 0)+
+            											(tonumber(sheet.bonus1_2) or 0)+
+            											(tonumber(sheet.xp1_2) or 0);
+            					sheet.total1_2 = mod / 2;
+            					sheet.total21_2 = mod .. " | " .. mod / 2;
+            				end;
         end, obj);
 
     obj._e_event128 = obj.edit128:addEventListener("onChange",
         function (_)
             if sheet~= nil then
-            						local mod = (tonumber(sheet.base1_2) or 0)+
-            												(tonumber(sheet.bonus1_2) or 0)+
-            												(tonumber(sheet.xp1_2) or 0);
-            						sheet.total1_2 = mod / 2;
-            						sheet.total21_2 = mod .. " | " .. mod / 2;
-            					end;
+            					local mod = (tonumber(sheet.base1_2) or 0)+
+            											(tonumber(sheet.bonus1_2) or 0)+
+            											(tonumber(sheet.xp1_2) or 0);
+            					sheet.total1_2 = mod / 2;
+            					sheet.total21_2 = mod .. " | " .. mod / 2;
+            				end;
         end, obj);
 
     obj._e_event129 = obj.edit129:addEventListener("onChange",
         function (_)
             if sheet~= nil then
-            						local mod = (tonumber(sheet.base1_2) or 0)+
-            												(tonumber(sheet.bonus1_2) or 0)+
-            												(tonumber(sheet.xp1_2) or 0);
-            						sheet.total1_2 = mod / 2;
-            						sheet.total21_2 = mod .. " | " .. mod / 2;
-            						xpAptidoes();
-            					end;
+            					local mod = (tonumber(sheet.base1_2) or 0)+
+            											(tonumber(sheet.bonus1_2) or 0)+
+            											(tonumber(sheet.xp1_2) or 0);
+            					sheet.total1_2 = mod / 2;
+            					sheet.total21_2 = mod .. " | " .. mod / 2;
+            					xpAptidoes();
+            				end;
         end, obj);
 
     obj._e_event130 = obj.radioButton53:addEventListener("onChange",
         function (_)
-            if sheet~=nil then
-            						sheet.num1 = (tonumber(sheet[sheet.dado1]) or 0);
-            					end;
+            if sheet==nil then return end;
+            				sheet.field1 = sheet.dado1;
+            				sheet.num1 = (tonumber(sheet[sheet.field1]) or 0);
+            				sheet.rollnome1 = sheet.nome1_3;
         end, obj);
 
     obj._e_event131 = obj.radioButton54:addEventListener("onChange",
         function (_)
-            if sheet~=nil then
-            						sheet.num2 = (tonumber(sheet[sheet.dado2]) or 0);
-            					end;
+            if sheet==nil then return end;
+            				sheet.field2 = sheet.dado2;
+            				sheet.num2 = (tonumber(sheet[sheet.field2]) or 0);
+            				sheet.rollnome2 = sheet.nome1_3;
         end, obj);
 
     obj._e_event132 = obj.edit132:addEventListener("onChange",
         function (_)
             if sheet~= nil then
-            						local mod = (tonumber(sheet.base1_3) or 0)+
-            												(tonumber(sheet.bonus1_3) or 0)+
-            												(tonumber(sheet.xp1_3) or 0);
-            						sheet.total1_3 = mod / 2;
-            						sheet.total21_3 = mod .. " | " .. mod / 2;
-            					end;
+            					local mod = (tonumber(sheet.base1_3) or 0)+
+            											(tonumber(sheet.bonus1_3) or 0)+
+            											(tonumber(sheet.xp1_3) or 0);
+            					sheet.total1_3 = mod / 2;
+            					sheet.total21_3 = mod .. " | " .. mod / 2;
+            				end;
         end, obj);
 
     obj._e_event133 = obj.edit133:addEventListener("onChange",
         function (_)
             if sheet~= nil then
-            						local mod = (tonumber(sheet.base1_3) or 0)+
-            												(tonumber(sheet.bonus1_3) or 0)+
-            												(tonumber(sheet.xp1_3) or 0);
-            						sheet.total1_3 = mod / 2;
-            						sheet.total21_3 = mod .. " | " .. mod / 2;
-            					end;
+            					local mod = (tonumber(sheet.base1_3) or 0)+
+            											(tonumber(sheet.bonus1_3) or 0)+
+            											(tonumber(sheet.xp1_3) or 0);
+            					sheet.total1_3 = mod / 2;
+            					sheet.total21_3 = mod .. " | " .. mod / 2;
+            				end;
         end, obj);
 
     obj._e_event134 = obj.edit134:addEventListener("onChange",
         function (_)
             if sheet~= nil then
-            						local mod = (tonumber(sheet.base1_3) or 0)+
-            												(tonumber(sheet.bonus1_3) or 0)+
-            												(tonumber(sheet.xp1_3) or 0);
-            						sheet.total1_3 = mod / 2;
-            						sheet.total21_3 = mod .. " | " .. mod / 2;
-            						xpAptidoes();
-            					end;
+            					local mod = (tonumber(sheet.base1_3) or 0)+
+            											(tonumber(sheet.bonus1_3) or 0)+
+            											(tonumber(sheet.xp1_3) or 0);
+            					sheet.total1_3 = mod / 2;
+            					sheet.total21_3 = mod .. " | " .. mod / 2;
+            					xpAptidoes();
+            				end;
         end, obj);
 
     obj._e_event135 = obj.radioButton55:addEventListener("onChange",
         function (_)
-            if sheet~=nil then
-            						sheet.num1 = (tonumber(sheet[sheet.dado1]) or 0);
-            					end;
+            if sheet==nil then return end;
+            				sheet.field1 = sheet.dado1;
+            				sheet.num1 = (tonumber(sheet[sheet.field1]) or 0);
+            				sheet.rollnome1 = sheet.nome1_4;
         end, obj);
 
     obj._e_event136 = obj.radioButton56:addEventListener("onChange",
         function (_)
-            if sheet~=nil then
-            						sheet.num2 = (tonumber(sheet[sheet.dado2]) or 0);
-            					end;
+            if sheet==nil then return end;
+            				sheet.field2 = sheet.dado2;
+            				sheet.num2 = (tonumber(sheet[sheet.field2]) or 0);
+            				sheet.rollnome2 = sheet.nome1_4;
         end, obj);
 
     obj._e_event137 = obj.edit137:addEventListener("onChange",
         function (_)
             if sheet~= nil then
-            						local mod = (tonumber(sheet.base1_4) or 0)+
-            												(tonumber(sheet.bonus1_4) or 0)+
-            												(tonumber(sheet.xp1_4) or 0);
-            						sheet.total1_4 = mod / 2;
-            						sheet.total21_4 = mod .. " | " .. mod / 2;
-            					end;
+            					local mod = (tonumber(sheet.base1_4) or 0)+
+            											(tonumber(sheet.bonus1_4) or 0)+
+            											(tonumber(sheet.xp1_4) or 0);
+            					sheet.total1_4 = mod / 2;
+            					sheet.total21_4 = mod .. " | " .. mod / 2;
+            				end;
         end, obj);
 
     obj._e_event138 = obj.edit138:addEventListener("onChange",
         function (_)
             if sheet~= nil then
-            						local mod = (tonumber(sheet.base1_4) or 0)+
-            												(tonumber(sheet.bonus1_4) or 0)+
-            												(tonumber(sheet.xp1_4) or 0);
-            						sheet.total1_4 = mod / 2;
-            						sheet.total21_4 = mod .. " | " .. mod / 2;
-            					end;
+            					local mod = (tonumber(sheet.base1_4) or 0)+
+            											(tonumber(sheet.bonus1_4) or 0)+
+            											(tonumber(sheet.xp1_4) or 0);
+            					sheet.total1_4 = mod / 2;
+            					sheet.total21_4 = mod .. " | " .. mod / 2;
+            				end;
         end, obj);
 
     obj._e_event139 = obj.edit139:addEventListener("onChange",
         function (_)
             if sheet~= nil then
-            						local mod = (tonumber(sheet.base1_4) or 0)+
-            												(tonumber(sheet.bonus1_4) or 0)+
-            												(tonumber(sheet.xp1_4) or 0);
-            						sheet.total1_4 = mod / 2;
-            						sheet.total21_4 = mod .. " | " .. mod / 2;
-            						xpAptidoes();
-            					end;
+            					local mod = (tonumber(sheet.base1_4) or 0)+
+            											(tonumber(sheet.bonus1_4) or 0)+
+            											(tonumber(sheet.xp1_4) or 0);
+            					sheet.total1_4 = mod / 2;
+            					sheet.total21_4 = mod .. " | " .. mod / 2;
+            					xpAptidoes();
+            				end;
         end, obj);
 
     obj._e_event140 = obj.radioButton57:addEventListener("onChange",
         function (_)
-            if sheet~=nil then
-            						sheet.num1 = (tonumber(sheet[sheet.dado1]) or 0);
-            					end;
+            if sheet==nil then return end;
+            				sheet.field1 = sheet.dado1;
+            				sheet.num1 = (tonumber(sheet[sheet.field1]) or 0);
+            				sheet.rollnome1 = sheet.nome1_5;
         end, obj);
 
     obj._e_event141 = obj.radioButton58:addEventListener("onChange",
         function (_)
-            if sheet~=nil then
-            						sheet.num2 = (tonumber(sheet[sheet.dado2]) or 0);
-            					end;
+            if sheet==nil then return end;
+            				sheet.field2 = sheet.dado2;
+            				sheet.num2 = (tonumber(sheet[sheet.field2]) or 0);
+            				sheet.rollnome2 = sheet.nome1_5;
         end, obj);
 
     obj._e_event142 = obj.edit142:addEventListener("onChange",
         function (_)
             if sheet~= nil then
-            						local mod = (tonumber(sheet.base1_5) or 0)+
-            												(tonumber(sheet.bonus1_5) or 0)+
-            												(tonumber(sheet.xp1_5) or 0);
-            						sheet.total1_5 = mod / 2;
-            						sheet.total21_5 = mod .. " | " .. mod / 2;
-            					end;
+            					local mod = (tonumber(sheet.base1_5) or 0)+
+            											(tonumber(sheet.bonus1_5) or 0)+
+            											(tonumber(sheet.xp1_5) or 0);
+            					sheet.total1_5 = mod / 2;
+            					sheet.total21_5 = mod .. " | " .. mod / 2;
+            				end;
         end, obj);
 
     obj._e_event143 = obj.edit143:addEventListener("onChange",
         function (_)
             if sheet~= nil then
-            						local mod = (tonumber(sheet.base1_5) or 0)+
-            												(tonumber(sheet.bonus1_5) or 0)+
-            												(tonumber(sheet.xp1_5) or 0);
-            						sheet.total1_5 = mod / 2;
-            						sheet.total21_5 = mod .. " | " .. mod / 2;
-            					end;
+            					local mod = (tonumber(sheet.base1_5) or 0)+
+            											(tonumber(sheet.bonus1_5) or 0)+
+            											(tonumber(sheet.xp1_5) or 0);
+            					sheet.total1_5 = mod / 2;
+            					sheet.total21_5 = mod .. " | " .. mod / 2;
+            				end;
         end, obj);
 
     obj._e_event144 = obj.edit144:addEventListener("onChange",
         function (_)
             if sheet~= nil then
-            						local mod = (tonumber(sheet.base1_5) or 0)+
-            												(tonumber(sheet.bonus1_5) or 0)+
-            												(tonumber(sheet.xp1_5) or 0);
-            						sheet.total1_5 = mod / 2;
-            						sheet.total21_5 = mod .. " | " .. mod / 2;
-            						xpAptidoes();
-            					end;
+            					local mod = (tonumber(sheet.base1_5) or 0)+
+            											(tonumber(sheet.bonus1_5) or 0)+
+            											(tonumber(sheet.xp1_5) or 0);
+            					sheet.total1_5 = mod / 2;
+            					sheet.total21_5 = mod .. " | " .. mod / 2;
+            					xpAptidoes();
+            				end;
         end, obj);
 
     obj._e_event145 = obj.radioButton59:addEventListener("onChange",
         function (_)
-            if sheet~=nil then
-            						sheet.num1 = (tonumber(sheet[sheet.dado1]) or 0);
-            					end;
+            if sheet==nil then return end;
+            				sheet.field1 = sheet.dado1;
+            				sheet.num1 = (tonumber(sheet[sheet.field1]) or 0);
+            				sheet.rollnome1 = sheet.nome1_6;
         end, obj);
 
     obj._e_event146 = obj.radioButton60:addEventListener("onChange",
         function (_)
-            if sheet~=nil then
-            						sheet.num2 = (tonumber(sheet[sheet.dado2]) or 0);
-            					end;
+            if sheet==nil then return end;
+            				sheet.field2 = sheet.dado2;
+            				sheet.num2 = (tonumber(sheet[sheet.field2]) or 0);
+            				sheet.rollnome2 = sheet.nome1_6;
         end, obj);
 
     obj._e_event147 = obj.edit147:addEventListener("onChange",
         function (_)
             if sheet~= nil then
-            						local mod = (tonumber(sheet.base1_6) or 0)+
-            												(tonumber(sheet.bonus1_6) or 0)+
-            												(tonumber(sheet.xp1_6) or 0);
-            						sheet.total1_6 = mod / 2;
-            						sheet.total21_6 = mod .. " | " .. mod / 2;
-            					end;
+            					local mod = (tonumber(sheet.base1_6) or 0)+
+            											(tonumber(sheet.bonus1_6) or 0)+
+            											(tonumber(sheet.xp1_6) or 0);
+            					sheet.total1_6 = mod / 2;
+            					sheet.total21_6 = mod .. " | " .. mod / 2;
+            				end;
         end, obj);
 
     obj._e_event148 = obj.edit148:addEventListener("onChange",
         function (_)
             if sheet~= nil then
-            						local mod = (tonumber(sheet.base1_6) or 0)+
-            												(tonumber(sheet.bonus1_6) or 0)+
-            												(tonumber(sheet.xp1_6) or 0);
-            						sheet.total1_6 = mod / 2;
-            						sheet.total21_6 = mod .. " | " .. mod / 2;
-            					end;
+            					local mod = (tonumber(sheet.base1_6) or 0)+
+            											(tonumber(sheet.bonus1_6) or 0)+
+            											(tonumber(sheet.xp1_6) or 0);
+            					sheet.total1_6 = mod / 2;
+            					sheet.total21_6 = mod .. " | " .. mod / 2;
+            				end;
         end, obj);
 
     obj._e_event149 = obj.edit149:addEventListener("onChange",
         function (_)
             if sheet~= nil then
-            						local mod = (tonumber(sheet.base1_6) or 0)+
-            												(tonumber(sheet.bonus1_6) or 0)+
-            												(tonumber(sheet.xp1_6) or 0);
-            						sheet.total1_6 = mod / 2;
-            						sheet.total21_6 = mod .. " | " .. mod / 2;
-            						xpAptidoes();
-            					end;
+            					local mod = (tonumber(sheet.base1_6) or 0)+
+            											(tonumber(sheet.bonus1_6) or 0)+
+            											(tonumber(sheet.xp1_6) or 0);
+            					sheet.total1_6 = mod / 2;
+            					sheet.total21_6 = mod .. " | " .. mod / 2;
+            					xpAptidoes();
+            				end;
         end, obj);
 
     obj._e_event150 = obj.radioButton61:addEventListener("onChange",
         function (_)
-            if sheet~=nil then
-            						sheet.num1 = (tonumber(sheet[sheet.dado1]) or 0);
-            					end;
+            if sheet==nil then return end;
+            				sheet.field1 = sheet.dado1;
+            				sheet.num1 = (tonumber(sheet[sheet.field1]) or 0);
+            				sheet.rollnome1 = sheet.nome1_7;
         end, obj);
 
     obj._e_event151 = obj.radioButton62:addEventListener("onChange",
         function (_)
-            if sheet~=nil then
-            						sheet.num2 = (tonumber(sheet[sheet.dado2]) or 0);
-            					end;
+            if sheet==nil then return end;
+            				sheet.field2 = sheet.dado2;
+            				sheet.num2 = (tonumber(sheet[sheet.field2]) or 0);
+            				sheet.rollnome2 = sheet.nome1_7;
         end, obj);
 
     obj._e_event152 = obj.edit152:addEventListener("onChange",
         function (_)
             if sheet~= nil then
-            						local mod = (tonumber(sheet.base1_7) or 0)+
-            												(tonumber(sheet.bonus1_7) or 0)+
-            												(tonumber(sheet.xp1_7) or 0);
-            						sheet.total1_7 = mod / 2;
-            						sheet.total21_7 = mod .. " | " .. mod / 2;
-            					end;
+            					local mod = (tonumber(sheet.base1_7) or 0)+
+            											(tonumber(sheet.bonus1_7) or 0)+
+            											(tonumber(sheet.xp1_7) or 0);
+            					sheet.total1_7 = mod / 2;
+            					sheet.total21_7 = mod .. " | " .. mod / 2;
+            				end;
         end, obj);
 
     obj._e_event153 = obj.edit153:addEventListener("onChange",
         function (_)
             if sheet~= nil then
-            						local mod = (tonumber(sheet.base1_7) or 0)+
-            												(tonumber(sheet.bonus1_7) or 0)+
-            												(tonumber(sheet.xp1_7) or 0);
-            						sheet.total1_7 = mod / 2;
-            						sheet.total21_7 = mod .. " | " .. mod / 2;
-            					end;
+            					local mod = (tonumber(sheet.base1_7) or 0)+
+            											(tonumber(sheet.bonus1_7) or 0)+
+            											(tonumber(sheet.xp1_7) or 0);
+            					sheet.total1_7 = mod / 2;
+            					sheet.total21_7 = mod .. " | " .. mod / 2;
+            				end;
         end, obj);
 
     obj._e_event154 = obj.edit154:addEventListener("onChange",
         function (_)
             if sheet~= nil then
-            						local mod = (tonumber(sheet.base1_7) or 0)+
-            												(tonumber(sheet.bonus1_7) or 0)+
-            												(tonumber(sheet.xp1_7) or 0);
-            						sheet.total1_7 = mod / 2;
-            						sheet.total21_7 = mod .. " | " .. mod / 2;
-            						xpAptidoes();
-            					end;
+            					local mod = (tonumber(sheet.base1_7) or 0)+
+            											(tonumber(sheet.bonus1_7) or 0)+
+            											(tonumber(sheet.xp1_7) or 0);
+            					sheet.total1_7 = mod / 2;
+            					sheet.total21_7 = mod .. " | " .. mod / 2;
+            					xpAptidoes();
+            				end;
         end, obj);
 
     obj._e_event155 = obj.radioButton63:addEventListener("onChange",
         function (_)
-            if sheet~=nil then
-            						sheet.num1 = (tonumber(sheet[sheet.dado1]) or 0);
-            					end;
+            if sheet==nil then return end;
+            				sheet.field1 = sheet.dado1;
+            				sheet.num1 = (tonumber(sheet[sheet.field1]) or 0);
+            				sheet.rollnome1 = sheet.nome1_8;
         end, obj);
 
     obj._e_event156 = obj.radioButton64:addEventListener("onChange",
         function (_)
-            if sheet~=nil then
-            						sheet.num2 = (tonumber(sheet[sheet.dado2]) or 0);
-            					end;
+            if sheet==nil then return end;
+            				sheet.field2 = sheet.dado2;
+            				sheet.num2 = (tonumber(sheet[sheet.field2]) or 0);
+            				sheet.rollnome2 = sheet.nome1_8;
         end, obj);
 
     obj._e_event157 = obj.edit157:addEventListener("onChange",
         function (_)
             if sheet~= nil then
-            						local mod = (tonumber(sheet.base1_8) or 0)+
-            												(tonumber(sheet.bonus1_8) or 0)+
-            												(tonumber(sheet.xp1_8) or 0);
-            						sheet.total1_8 = mod / 2;
-            						sheet.total21_8 = mod .. " | " .. mod / 2;
-            					end;
+            					local mod = (tonumber(sheet.base1_8) or 0)+
+            											(tonumber(sheet.bonus1_8) or 0)+
+            											(tonumber(sheet.xp1_8) or 0);
+            					sheet.total1_8 = mod / 2;
+            					sheet.total21_8 = mod .. " | " .. mod / 2;
+            				end;
         end, obj);
 
     obj._e_event158 = obj.edit158:addEventListener("onChange",
         function (_)
             if sheet~= nil then
-            						local mod = (tonumber(sheet.base1_8) or 0)+
-            												(tonumber(sheet.bonus1_8) or 0)+
-            												(tonumber(sheet.xp1_8) or 0);
-            						sheet.total1_8 = mod / 2;
-            						sheet.total21_8 = mod .. " | " .. mod / 2;
-            					end;
+            					local mod = (tonumber(sheet.base1_8) or 0)+
+            											(tonumber(sheet.bonus1_8) or 0)+
+            											(tonumber(sheet.xp1_8) or 0);
+            					sheet.total1_8 = mod / 2;
+            					sheet.total21_8 = mod .. " | " .. mod / 2;
+            				end;
         end, obj);
 
     obj._e_event159 = obj.edit159:addEventListener("onChange",
         function (_)
             if sheet~= nil then
-            						local mod = (tonumber(sheet.base1_8) or 0)+
-            												(tonumber(sheet.bonus1_8) or 0)+
-            												(tonumber(sheet.xp1_8) or 0);
-            						sheet.total1_8 = mod / 2;
-            						sheet.total21_8 = mod .. " | " .. mod / 2;
-            						xpAptidoes();
-            					end;
+            					local mod = (tonumber(sheet.base1_8) or 0)+
+            											(tonumber(sheet.bonus1_8) or 0)+
+            											(tonumber(sheet.xp1_8) or 0);
+            					sheet.total1_8 = mod / 2;
+            					sheet.total21_8 = mod .. " | " .. mod / 2;
+            					xpAptidoes();
+            				end;
         end, obj);
 
     obj._e_event160 = obj.radioButton65:addEventListener("onChange",
         function (_)
-            if sheet~=nil then
-            						sheet.num1 = (tonumber(sheet[sheet.dado1]) or 0);
-            					end;
+            if sheet==nil then return end;
+            				sheet.field1 = sheet.dado1;
+            				sheet.num1 = (tonumber(sheet[sheet.field1]) or 0);
+            				sheet.rollnome1 = sheet.nome1_9;
         end, obj);
 
     obj._e_event161 = obj.radioButton66:addEventListener("onChange",
         function (_)
-            if sheet~=nil then
-            						sheet.num2 = (tonumber(sheet[sheet.dado2]) or 0);
-            					end;
+            if sheet==nil then return end;
+            				sheet.field2 = sheet.dado2;
+            				sheet.num2 = (tonumber(sheet[sheet.field2]) or 0);
+            				sheet.rollnome2 = sheet.nome1_9;
         end, obj);
 
     obj._e_event162 = obj.edit162:addEventListener("onChange",
         function (_)
             if sheet~= nil then
-            						local mod = (tonumber(sheet.base1_9) or 0)+
-            												(tonumber(sheet.bonus1_9) or 0)+
-            												(tonumber(sheet.xp1_9) or 0);
-            						sheet.total1_9 = mod / 2;
-            						sheet.total21_9 = mod .. " | " .. mod / 2;
-            					end;
+            					local mod = (tonumber(sheet.base1_9) or 0)+
+            											(tonumber(sheet.bonus1_9) or 0)+
+            											(tonumber(sheet.xp1_9) or 0);
+            					sheet.total1_9 = mod / 2;
+            					sheet.total21_9 = mod .. " | " .. mod / 2;
+            				end;
         end, obj);
 
     obj._e_event163 = obj.edit163:addEventListener("onChange",
         function (_)
             if sheet~= nil then
-            						local mod = (tonumber(sheet.base1_9) or 0)+
-            												(tonumber(sheet.bonus1_9) or 0)+
-            												(tonumber(sheet.xp1_9) or 0);
-            						sheet.total1_9 = mod / 2;
-            						sheet.total21_9 = mod .. " | " .. mod / 2;
-            					end;
+            					local mod = (tonumber(sheet.base1_9) or 0)+
+            											(tonumber(sheet.bonus1_9) or 0)+
+            											(tonumber(sheet.xp1_9) or 0);
+            					sheet.total1_9 = mod / 2;
+            					sheet.total21_9 = mod .. " | " .. mod / 2;
+            				end;
         end, obj);
 
     obj._e_event164 = obj.edit164:addEventListener("onChange",
         function (_)
             if sheet~= nil then
-            						local mod = (tonumber(sheet.base1_9) or 0)+
-            												(tonumber(sheet.bonus1_9) or 0)+
-            												(tonumber(sheet.xp1_9) or 0);
-            						sheet.total1_9 = mod / 2;
-            						sheet.total21_9 = mod .. " | " .. mod / 2;
-            						xpAptidoes();
-            					end;
+            					local mod = (tonumber(sheet.base1_9) or 0)+
+            											(tonumber(sheet.bonus1_9) or 0)+
+            											(tonumber(sheet.xp1_9) or 0);
+            					sheet.total1_9 = mod / 2;
+            					sheet.total21_9 = mod .. " | " .. mod / 2;
+            					xpAptidoes();
+            				end;
         end, obj);
 
     obj._e_event165 = obj.radioButton67:addEventListener("onChange",
         function (_)
-            if sheet~=nil then
-            						sheet.num1 = (tonumber(sheet[sheet.dado1]) or 0);
-            					end;
+            if sheet==nil then return end;
+            				sheet.field1 = sheet.dado1;
+            				sheet.num1 = (tonumber(sheet[sheet.field1]) or 0);
+            				sheet.rollnome1 = sheet.nome1_10;
         end, obj);
 
     obj._e_event166 = obj.radioButton68:addEventListener("onChange",
         function (_)
-            if sheet~=nil then
-            						sheet.num2 = (tonumber(sheet[sheet.dado2]) or 0);
-            					end;
+            if sheet==nil then return end;
+            				sheet.field2 = sheet.dado2;
+            				sheet.num2 = (tonumber(sheet[sheet.field2]) or 0);
+            				sheet.rollnome2 = sheet.nome1_10;
         end, obj);
 
     obj._e_event167 = obj.edit167:addEventListener("onChange",
         function (_)
             if sheet~= nil then
-            						local mod = (tonumber(sheet.base1_10) or 0)+
-            												(tonumber(sheet.bonus1_10) or 0)+
-            												(tonumber(sheet.xp1_10) or 0);
-            						sheet.total1_10 = mod / 2;
-            						sheet.total21_10 = mod .. " | " .. mod / 2;
-            					end;
+            					local mod = (tonumber(sheet.base1_10) or 0)+
+            											(tonumber(sheet.bonus1_10) or 0)+
+            											(tonumber(sheet.xp1_10) or 0);
+            					sheet.total1_10 = mod / 2;
+            					sheet.total21_10 = mod .. " | " .. mod / 2;
+            				end;
         end, obj);
 
     obj._e_event168 = obj.edit168:addEventListener("onChange",
         function (_)
             if sheet~= nil then
-            						local mod = (tonumber(sheet.base1_10) or 0)+
-            												(tonumber(sheet.bonus1_10) or 0)+
-            												(tonumber(sheet.xp1_10) or 0);
-            						sheet.total1_10 = mod / 2;
-            						sheet.total21_10 = mod .. " | " .. mod / 2;
-            					end;
+            					local mod = (tonumber(sheet.base1_10) or 0)+
+            											(tonumber(sheet.bonus1_10) or 0)+
+            											(tonumber(sheet.xp1_10) or 0);
+            					sheet.total1_10 = mod / 2;
+            					sheet.total21_10 = mod .. " | " .. mod / 2;
+            				end;
         end, obj);
 
     obj._e_event169 = obj.edit169:addEventListener("onChange",
         function (_)
             if sheet~= nil then
-            						local mod = (tonumber(sheet.base1_10) or 0)+
-            												(tonumber(sheet.bonus1_10) or 0)+
-            												(tonumber(sheet.xp1_10) or 0);
-            						sheet.total1_10 = mod / 2;
-            						sheet.total21_10 = mod .. " | " .. mod / 2;
-            						xpAptidoes();
-            					end;
+            					local mod = (tonumber(sheet.base1_10) or 0)+
+            											(tonumber(sheet.bonus1_10) or 0)+
+            											(tonumber(sheet.xp1_10) or 0);
+            					sheet.total1_10 = mod / 2;
+            					sheet.total21_10 = mod .. " | " .. mod / 2;
+            					xpAptidoes();
+            				end;
         end, obj);
 
     obj._e_event170 = obj.radioButton69:addEventListener("onChange",
         function (_)
-            if sheet~=nil then
-            						sheet.num1 = (tonumber(sheet[sheet.dado1]) or 0);
-            					end;
+            if sheet==nil then return end;
+            				sheet.field1 = sheet.dado1;
+            				sheet.num1 = (tonumber(sheet[sheet.field1]) or 0);
+            				sheet.rollnome1 = sheet.nome1_11;
         end, obj);
 
     obj._e_event171 = obj.radioButton70:addEventListener("onChange",
         function (_)
-            if sheet~=nil then
-            						sheet.num2 = (tonumber(sheet[sheet.dado2]) or 0);
-            					end;
+            if sheet==nil then return end;
+            				sheet.field2 = sheet.dado2;
+            				sheet.num2 = (tonumber(sheet[sheet.field2]) or 0);
+            				sheet.rollnome2 = sheet.nome1_11;
         end, obj);
 
     obj._e_event172 = obj.edit172:addEventListener("onChange",
         function (_)
             if sheet~= nil then
-            						local mod = (tonumber(sheet.base1_11) or 0)+
-            												(tonumber(sheet.bonus1_11) or 0)+
-            												(tonumber(sheet.xp1_11) or 0);
-            						sheet.total1_11 = mod / 2;
-            						sheet.total21_11 = mod .. " | " .. mod / 2;
-            					end;
+            					local mod = (tonumber(sheet.base1_11) or 0)+
+            											(tonumber(sheet.bonus1_11) or 0)+
+            											(tonumber(sheet.xp1_11) or 0);
+            					sheet.total1_11 = mod / 2;
+            					sheet.total21_11 = mod .. " | " .. mod / 2;
+            				end;
         end, obj);
 
     obj._e_event173 = obj.edit173:addEventListener("onChange",
         function (_)
             if sheet~= nil then
-            						local mod = (tonumber(sheet.base1_11) or 0)+
-            												(tonumber(sheet.bonus1_11) or 0)+
-            												(tonumber(sheet.xp1_11) or 0);
-            						sheet.total1_11 = mod / 2;
-            						sheet.total21_11 = mod .. " | " .. mod / 2;
-            					end;
+            					local mod = (tonumber(sheet.base1_11) or 0)+
+            											(tonumber(sheet.bonus1_11) or 0)+
+            											(tonumber(sheet.xp1_11) or 0);
+            					sheet.total1_11 = mod / 2;
+            					sheet.total21_11 = mod .. " | " .. mod / 2;
+            				end;
         end, obj);
 
     obj._e_event174 = obj.edit174:addEventListener("onChange",
         function (_)
             if sheet~= nil then
-            						local mod = (tonumber(sheet.base1_11) or 0)+
-            												(tonumber(sheet.bonus1_11) or 0)+
-            												(tonumber(sheet.xp1_11) or 0);
-            						sheet.total1_11 = mod / 2;
-            						sheet.total21_11 = mod .. " | " .. mod / 2;
-            						xpAptidoes();
-            					end;
+            					local mod = (tonumber(sheet.base1_11) or 0)+
+            											(tonumber(sheet.bonus1_11) or 0)+
+            											(tonumber(sheet.xp1_11) or 0);
+            					sheet.total1_11 = mod / 2;
+            					sheet.total21_11 = mod .. " | " .. mod / 2;
+            					xpAptidoes();
+            				end;
         end, obj);
 
     obj._e_event175 = obj.radioButton71:addEventListener("onChange",
         function (_)
-            if sheet~=nil then
-            						sheet.num1 = (tonumber(sheet[sheet.dado1]) or 0);
-            					end;
+            if sheet==nil then return end;
+            				sheet.field1 = sheet.dado1;
+            				sheet.num1 = (tonumber(sheet[sheet.field1]) or 0);
+            				sheet.rollnome1 = sheet.nome1_12;
         end, obj);
 
     obj._e_event176 = obj.radioButton72:addEventListener("onChange",
         function (_)
-            if sheet~=nil then
-            						sheet.num2 = (tonumber(sheet[sheet.dado2]) or 0);
-            					end;
+            if sheet==nil then return end;
+            				sheet.field2 = sheet.dado2;
+            				sheet.num2 = (tonumber(sheet[sheet.field2]) or 0);
+            				sheet.rollnome2 = sheet.nome1_12;
         end, obj);
 
     obj._e_event177 = obj.edit177:addEventListener("onChange",
         function (_)
             if sheet~= nil then
-            						local mod = (tonumber(sheet.base1_12) or 0)+
-            												(tonumber(sheet.bonus1_12) or 0)+
-            												(tonumber(sheet.xp1_12) or 0);
-            						sheet.total1_12 = mod / 2;
-            						sheet.total21_12 = mod .. " | " .. mod / 2;
-            					end;
+            					local mod = (tonumber(sheet.base1_12) or 0)+
+            											(tonumber(sheet.bonus1_12) or 0)+
+            											(tonumber(sheet.xp1_12) or 0);
+            					sheet.total1_12 = mod / 2;
+            					sheet.total21_12 = mod .. " | " .. mod / 2;
+            				end;
         end, obj);
 
     obj._e_event178 = obj.edit178:addEventListener("onChange",
         function (_)
             if sheet~= nil then
-            						local mod = (tonumber(sheet.base1_12) or 0)+
-            												(tonumber(sheet.bonus1_12) or 0)+
-            												(tonumber(sheet.xp1_12) or 0);
-            						sheet.total1_12 = mod / 2;
-            						sheet.total21_12 = mod .. " | " .. mod / 2;
-            					end;
+            					local mod = (tonumber(sheet.base1_12) or 0)+
+            											(tonumber(sheet.bonus1_12) or 0)+
+            											(tonumber(sheet.xp1_12) or 0);
+            					sheet.total1_12 = mod / 2;
+            					sheet.total21_12 = mod .. " | " .. mod / 2;
+            				end;
         end, obj);
 
     obj._e_event179 = obj.edit179:addEventListener("onChange",
         function (_)
             if sheet~= nil then
-            						local mod = (tonumber(sheet.base1_12) or 0)+
-            												(tonumber(sheet.bonus1_12) or 0)+
-            												(tonumber(sheet.xp1_12) or 0);
-            						sheet.total1_12 = mod / 2;
-            						sheet.total21_12 = mod .. " | " .. mod / 2;
-            						xpAptidoes();
-            					end;
+            					local mod = (tonumber(sheet.base1_12) or 0)+
+            											(tonumber(sheet.bonus1_12) or 0)+
+            											(tonumber(sheet.xp1_12) or 0);
+            					sheet.total1_12 = mod / 2;
+            					sheet.total21_12 = mod .. " | " .. mod / 2;
+            					xpAptidoes();
+            				end;
         end, obj);
 
     obj._e_event180 = obj.radioButton73:addEventListener("onChange",
         function (_)
-            if sheet~=nil then
-            						sheet.num1 = (tonumber(sheet[sheet.dado1]) or 0);
-            					end;
+            if sheet==nil then return end;
+            				sheet.field1 = sheet.dado1;
+            				sheet.num1 = (tonumber(sheet[sheet.field1]) or 0);
+            				sheet.rollnome1 = sheet.nome3_1;
         end, obj);
 
     obj._e_event181 = obj.radioButton74:addEventListener("onChange",
         function (_)
-            if sheet~=nil then
-            						sheet.num2 = (tonumber(sheet[sheet.dado2]) or 0);
-            					end;
+            if sheet==nil then return end;
+            				sheet.field2 = sheet.dado2;
+            				sheet.num2 = (tonumber(sheet[sheet.field2]) or 0);
+            				sheet.rollnome2 = sheet.nome3_1;
         end, obj);
 
     obj._e_event182 = obj.edit182:addEventListener("onChange",
         function (_)
             if sheet~= nil then
-            						local mod = (tonumber(sheet.base3_1) or 0)+
-            												(tonumber(sheet.bonus3_1) or 0)+
-            												(tonumber(sheet.xp3_1) or 0);
-            						sheet.total3_1 = mod / 2;
-            						sheet.total23_1 = mod .. " | " .. mod / 2;
-            					end;
+            					local mod = (tonumber(sheet.base3_1) or 0)+
+            											(tonumber(sheet.bonus3_1) or 0)+
+            											(tonumber(sheet.xp3_1) or 0);
+            					sheet.total3_1 = mod / 2;
+            					sheet.total23_1 = mod .. " | " .. mod / 2;
+            				end;
         end, obj);
 
     obj._e_event183 = obj.edit183:addEventListener("onChange",
         function (_)
             if sheet~= nil then
-            						local mod = (tonumber(sheet.base3_1) or 0)+
-            												(tonumber(sheet.bonus3_1) or 0)+
-            												(tonumber(sheet.xp3_1) or 0);
-            						sheet.total3_1 = mod / 2;
-            						sheet.total23_1 = mod .. " | " .. mod / 2;
-            					end;
+            					local mod = (tonumber(sheet.base3_1) or 0)+
+            											(tonumber(sheet.bonus3_1) or 0)+
+            											(tonumber(sheet.xp3_1) or 0);
+            					sheet.total3_1 = mod / 2;
+            					sheet.total23_1 = mod .. " | " .. mod / 2;
+            				end;
         end, obj);
 
     obj._e_event184 = obj.edit184:addEventListener("onChange",
         function (_)
             if sheet~= nil then
-            						local mod = (tonumber(sheet.base3_1) or 0)+
-            												(tonumber(sheet.bonus3_1) or 0)+
-            												(tonumber(sheet.xp3_1) or 0);
-            						sheet.total3_1 = mod / 2;
-            						sheet.total23_1 = mod .. " | " .. mod / 2;
-            						xpAptidoes();
-            					end;
+            					local mod = (tonumber(sheet.base3_1) or 0)+
+            											(tonumber(sheet.bonus3_1) or 0)+
+            											(tonumber(sheet.xp3_1) or 0);
+            					sheet.total3_1 = mod / 2;
+            					sheet.total23_1 = mod .. " | " .. mod / 2;
+            					xpAptidoes();
+            				end;
         end, obj);
 
     obj._e_event185 = obj.radioButton75:addEventListener("onChange",
         function (_)
-            if sheet~=nil then
-            						sheet.num1 = (tonumber(sheet[sheet.dado1]) or 0);
-            					end;
+            if sheet==nil then return end;
+            				sheet.field1 = sheet.dado1;
+            				sheet.num1 = (tonumber(sheet[sheet.field1]) or 0);
+            				sheet.rollnome1 = sheet.nome3_2;
         end, obj);
 
     obj._e_event186 = obj.radioButton76:addEventListener("onChange",
         function (_)
-            if sheet~=nil then
-            						sheet.num2 = (tonumber(sheet[sheet.dado2]) or 0);
-            					end;
+            if sheet==nil then return end;
+            				sheet.field2 = sheet.dado2;
+            				sheet.num2 = (tonumber(sheet[sheet.field2]) or 0);
+            				sheet.rollnome2 = sheet.nome3_2;
         end, obj);
 
     obj._e_event187 = obj.edit187:addEventListener("onChange",
         function (_)
             if sheet~= nil then
-            						local mod = (tonumber(sheet.base3_2) or 0)+
-            												(tonumber(sheet.bonus3_2) or 0)+
-            												(tonumber(sheet.xp3_2) or 0);
-            						sheet.total3_2 = mod / 2;
-            						sheet.total23_2 = mod .. " | " .. mod / 2;
-            					end;
+            					local mod = (tonumber(sheet.base3_2) or 0)+
+            											(tonumber(sheet.bonus3_2) or 0)+
+            											(tonumber(sheet.xp3_2) or 0);
+            					sheet.total3_2 = mod / 2;
+            					sheet.total23_2 = mod .. " | " .. mod / 2;
+            				end;
         end, obj);
 
     obj._e_event188 = obj.edit188:addEventListener("onChange",
         function (_)
             if sheet~= nil then
-            						local mod = (tonumber(sheet.base3_2) or 0)+
-            												(tonumber(sheet.bonus3_2) or 0)+
-            												(tonumber(sheet.xp3_2) or 0);
-            						sheet.total3_2 = mod / 2;
-            						sheet.total23_2 = mod .. " | " .. mod / 2;
-            					end;
+            					local mod = (tonumber(sheet.base3_2) or 0)+
+            											(tonumber(sheet.bonus3_2) or 0)+
+            											(tonumber(sheet.xp3_2) or 0);
+            					sheet.total3_2 = mod / 2;
+            					sheet.total23_2 = mod .. " | " .. mod / 2;
+            				end;
         end, obj);
 
     obj._e_event189 = obj.edit189:addEventListener("onChange",
         function (_)
             if sheet~= nil then
-            						local mod = (tonumber(sheet.base3_2) or 0)+
-            												(tonumber(sheet.bonus3_2) or 0)+
-            												(tonumber(sheet.xp3_2) or 0);
-            						sheet.total3_2 = mod / 2;
-            						sheet.total23_2 = mod .. " | " .. mod / 2;
-            						xpAptidoes();
-            					end;
+            					local mod = (tonumber(sheet.base3_2) or 0)+
+            											(tonumber(sheet.bonus3_2) or 0)+
+            											(tonumber(sheet.xp3_2) or 0);
+            					sheet.total3_2 = mod / 2;
+            					sheet.total23_2 = mod .. " | " .. mod / 2;
+            					xpAptidoes();
+            				end;
         end, obj);
 
     obj._e_event190 = obj.radioButton77:addEventListener("onChange",
         function (_)
-            if sheet~=nil then
-            						sheet.num1 = (tonumber(sheet[sheet.dado1]) or 0);
-            					end;
+            if sheet==nil then return end;
+            				sheet.field1 = sheet.dado1;
+            				sheet.num1 = (tonumber(sheet[sheet.field1]) or 0);
+            				sheet.rollnome1 = sheet.nome3_3;
         end, obj);
 
     obj._e_event191 = obj.radioButton78:addEventListener("onChange",
         function (_)
-            if sheet~=nil then
-            						sheet.num2 = (tonumber(sheet[sheet.dado2]) or 0);
-            					end;
+            if sheet==nil then return end;
+            				sheet.field2 = sheet.dado2;
+            				sheet.num2 = (tonumber(sheet[sheet.field2]) or 0);
+            				sheet.rollnome2 = sheet.nome3_3;
         end, obj);
 
     obj._e_event192 = obj.edit192:addEventListener("onChange",
         function (_)
             if sheet~= nil then
-            						local mod = (tonumber(sheet.base3_3) or 0)+
-            												(tonumber(sheet.bonus3_3) or 0)+
-            												(tonumber(sheet.xp3_3) or 0);
-            						sheet.total3_3 = mod / 2;
-            						sheet.total23_3 = mod .. " | " .. mod / 2;
-            					end;
+            					local mod = (tonumber(sheet.base3_3) or 0)+
+            											(tonumber(sheet.bonus3_3) or 0)+
+            											(tonumber(sheet.xp3_3) or 0);
+            					sheet.total3_3 = mod / 2;
+            					sheet.total23_3 = mod .. " | " .. mod / 2;
+            				end;
         end, obj);
 
     obj._e_event193 = obj.edit193:addEventListener("onChange",
         function (_)
             if sheet~= nil then
-            						local mod = (tonumber(sheet.base3_3) or 0)+
-            												(tonumber(sheet.bonus3_3) or 0)+
-            												(tonumber(sheet.xp3_3) or 0);
-            						sheet.total3_3 = mod / 2;
-            						sheet.total23_3 = mod .. " | " .. mod / 2;
-            					end;
+            					local mod = (tonumber(sheet.base3_3) or 0)+
+            											(tonumber(sheet.bonus3_3) or 0)+
+            											(tonumber(sheet.xp3_3) or 0);
+            					sheet.total3_3 = mod / 2;
+            					sheet.total23_3 = mod .. " | " .. mod / 2;
+            				end;
         end, obj);
 
     obj._e_event194 = obj.edit194:addEventListener("onChange",
         function (_)
             if sheet~= nil then
-            						local mod = (tonumber(sheet.base3_3) or 0)+
-            												(tonumber(sheet.bonus3_3) or 0)+
-            												(tonumber(sheet.xp3_3) or 0);
-            						sheet.total3_3 = mod / 2;
-            						sheet.total23_3 = mod .. " | " .. mod / 2;
-            						xpAptidoes();
-            					end;
+            					local mod = (tonumber(sheet.base3_3) or 0)+
+            											(tonumber(sheet.bonus3_3) or 0)+
+            											(tonumber(sheet.xp3_3) or 0);
+            					sheet.total3_3 = mod / 2;
+            					sheet.total23_3 = mod .. " | " .. mod / 2;
+            					xpAptidoes();
+            				end;
         end, obj);
 
     obj._e_event195 = obj.radioButton79:addEventListener("onChange",
         function (_)
-            if sheet~=nil then
-            						sheet.num1 = (tonumber(sheet[sheet.dado1]) or 0);
-            					end;
+            if sheet==nil then return end;
+            				sheet.field1 = sheet.dado1;
+            				sheet.num1 = (tonumber(sheet[sheet.field1]) or 0);
+            				sheet.rollnome1 = sheet.nome3_4;
         end, obj);
 
     obj._e_event196 = obj.radioButton80:addEventListener("onChange",
         function (_)
-            if sheet~=nil then
-            						sheet.num2 = (tonumber(sheet[sheet.dado2]) or 0);
-            					end;
+            if sheet==nil then return end;
+            				sheet.field2 = sheet.dado2;
+            				sheet.num2 = (tonumber(sheet[sheet.field2]) or 0);
+            				sheet.rollnome2 = sheet.nome3_4;
         end, obj);
 
     obj._e_event197 = obj.edit197:addEventListener("onChange",
         function (_)
             if sheet~= nil then
-            						local mod = (tonumber(sheet.base3_4) or 0)+
-            												(tonumber(sheet.bonus3_4) or 0)+
-            												(tonumber(sheet.xp3_4) or 0);
-            						sheet.total3_4 = mod / 2;
-            						sheet.total23_4 = mod .. " | " .. mod / 2;
-            					end;
+            					local mod = (tonumber(sheet.base3_4) or 0)+
+            											(tonumber(sheet.bonus3_4) or 0)+
+            											(tonumber(sheet.xp3_4) or 0);
+            					sheet.total3_4 = mod / 2;
+            					sheet.total23_4 = mod .. " | " .. mod / 2;
+            				end;
         end, obj);
 
     obj._e_event198 = obj.edit198:addEventListener("onChange",
         function (_)
             if sheet~= nil then
-            						local mod = (tonumber(sheet.base3_4) or 0)+
-            												(tonumber(sheet.bonus3_4) or 0)+
-            												(tonumber(sheet.xp3_4) or 0);
-            						sheet.total3_4 = mod / 2;
-            						sheet.total23_4 = mod .. " | " .. mod / 2;
-            					end;
+            					local mod = (tonumber(sheet.base3_4) or 0)+
+            											(tonumber(sheet.bonus3_4) or 0)+
+            											(tonumber(sheet.xp3_4) or 0);
+            					sheet.total3_4 = mod / 2;
+            					sheet.total23_4 = mod .. " | " .. mod / 2;
+            				end;
         end, obj);
 
     obj._e_event199 = obj.edit199:addEventListener("onChange",
         function (_)
             if sheet~= nil then
-            						local mod = (tonumber(sheet.base3_4) or 0)+
-            												(tonumber(sheet.bonus3_4) or 0)+
-            												(tonumber(sheet.xp3_4) or 0);
-            						sheet.total3_4 = mod / 2;
-            						sheet.total23_4 = mod .. " | " .. mod / 2;
-            						xpAptidoes();
-            					end;
+            					local mod = (tonumber(sheet.base3_4) or 0)+
+            											(tonumber(sheet.bonus3_4) or 0)+
+            											(tonumber(sheet.xp3_4) or 0);
+            					sheet.total3_4 = mod / 2;
+            					sheet.total23_4 = mod .. " | " .. mod / 2;
+            					xpAptidoes();
+            				end;
         end, obj);
 
     obj._e_event200 = obj.radioButton81:addEventListener("onChange",
         function (_)
-            if sheet~=nil then
-            						sheet.num1 = (tonumber(sheet[sheet.dado1]) or 0);
-            					end;
+            if sheet==nil then return end;
+            				sheet.field1 = sheet.dado1;
+            				sheet.num1 = (tonumber(sheet[sheet.field1]) or 0);
+            				sheet.rollnome1 = sheet.nome3_5;
         end, obj);
 
     obj._e_event201 = obj.radioButton82:addEventListener("onChange",
         function (_)
-            if sheet~=nil then
-            						sheet.num2 = (tonumber(sheet[sheet.dado2]) or 0);
-            					end;
+            if sheet==nil then return end;
+            				sheet.field2 = sheet.dado2;
+            				sheet.num2 = (tonumber(sheet[sheet.field2]) or 0);
+            				sheet.rollnome2 = sheet.nome3_5;
         end, obj);
 
     obj._e_event202 = obj.edit202:addEventListener("onChange",
         function (_)
             if sheet~= nil then
-            						local mod = (tonumber(sheet.base3_5) or 0)+
-            												(tonumber(sheet.bonus3_5) or 0)+
-            												(tonumber(sheet.xp3_5) or 0);
-            						sheet.total3_5 = mod / 2;
-            						sheet.total23_5 = mod .. " | " .. mod / 2;
-            					end;
+            					local mod = (tonumber(sheet.base3_5) or 0)+
+            											(tonumber(sheet.bonus3_5) or 0)+
+            											(tonumber(sheet.xp3_5) or 0);
+            					sheet.total3_5 = mod / 2;
+            					sheet.total23_5 = mod .. " | " .. mod / 2;
+            				end;
         end, obj);
 
     obj._e_event203 = obj.edit203:addEventListener("onChange",
         function (_)
             if sheet~= nil then
-            						local mod = (tonumber(sheet.base3_5) or 0)+
-            												(tonumber(sheet.bonus3_5) or 0)+
-            												(tonumber(sheet.xp3_5) or 0);
-            						sheet.total3_5 = mod / 2;
-            						sheet.total23_5 = mod .. " | " .. mod / 2;
-            					end;
+            					local mod = (tonumber(sheet.base3_5) or 0)+
+            											(tonumber(sheet.bonus3_5) or 0)+
+            											(tonumber(sheet.xp3_5) or 0);
+            					sheet.total3_5 = mod / 2;
+            					sheet.total23_5 = mod .. " | " .. mod / 2;
+            				end;
         end, obj);
 
     obj._e_event204 = obj.edit204:addEventListener("onChange",
         function (_)
             if sheet~= nil then
-            						local mod = (tonumber(sheet.base3_5) or 0)+
-            												(tonumber(sheet.bonus3_5) or 0)+
-            												(tonumber(sheet.xp3_5) or 0);
-            						sheet.total3_5 = mod / 2;
-            						sheet.total23_5 = mod .. " | " .. mod / 2;
-            						xpAptidoes();
-            					end;
+            					local mod = (tonumber(sheet.base3_5) or 0)+
+            											(tonumber(sheet.bonus3_5) or 0)+
+            											(tonumber(sheet.xp3_5) or 0);
+            					sheet.total3_5 = mod / 2;
+            					sheet.total23_5 = mod .. " | " .. mod / 2;
+            					xpAptidoes();
+            				end;
         end, obj);
 
     obj._e_event205 = obj.radioButton83:addEventListener("onChange",
         function (_)
-            if sheet~=nil then
-            						sheet.num1 = (tonumber(sheet[sheet.dado1]) or 0);
-            					end;
+            if sheet==nil then return end;
+            				sheet.field1 = sheet.dado1;
+            				sheet.num1 = (tonumber(sheet[sheet.field1]) or 0);
+            				sheet.rollnome1 = sheet.nome3_6;
         end, obj);
 
     obj._e_event206 = obj.radioButton84:addEventListener("onChange",
         function (_)
-            if sheet~=nil then
-            						sheet.num2 = (tonumber(sheet[sheet.dado2]) or 0);
-            					end;
+            if sheet==nil then return end;
+            				sheet.field2 = sheet.dado2;
+            				sheet.num2 = (tonumber(sheet[sheet.field2]) or 0);
+            				sheet.rollnome2 = sheet.nome3_6;
         end, obj);
 
     obj._e_event207 = obj.edit207:addEventListener("onChange",
         function (_)
             if sheet~= nil then
-            						local mod = (tonumber(sheet.base3_6) or 0)+
-            												(tonumber(sheet.bonus3_6) or 0)+
-            												(tonumber(sheet.xp3_6) or 0);
-            						sheet.total3_6 = mod / 2;
-            						sheet.total23_6 = mod .. " | " .. mod / 2;
-            					end;
+            					local mod = (tonumber(sheet.base3_6) or 0)+
+            											(tonumber(sheet.bonus3_6) or 0)+
+            											(tonumber(sheet.xp3_6) or 0);
+            					sheet.total3_6 = mod / 2;
+            					sheet.total23_6 = mod .. " | " .. mod / 2;
+            				end;
         end, obj);
 
     obj._e_event208 = obj.edit208:addEventListener("onChange",
         function (_)
             if sheet~= nil then
-            						local mod = (tonumber(sheet.base3_6) or 0)+
-            												(tonumber(sheet.bonus3_6) or 0)+
-            												(tonumber(sheet.xp3_6) or 0);
-            						sheet.total3_6 = mod / 2;
-            						sheet.total23_6 = mod .. " | " .. mod / 2;
-            					end;
+            					local mod = (tonumber(sheet.base3_6) or 0)+
+            											(tonumber(sheet.bonus3_6) or 0)+
+            											(tonumber(sheet.xp3_6) or 0);
+            					sheet.total3_6 = mod / 2;
+            					sheet.total23_6 = mod .. " | " .. mod / 2;
+            				end;
         end, obj);
 
     obj._e_event209 = obj.edit209:addEventListener("onChange",
         function (_)
             if sheet~= nil then
-            						local mod = (tonumber(sheet.base3_6) or 0)+
-            												(tonumber(sheet.bonus3_6) or 0)+
-            												(tonumber(sheet.xp3_6) or 0);
-            						sheet.total3_6 = mod / 2;
-            						sheet.total23_6 = mod .. " | " .. mod / 2;
-            						xpAptidoes();
-            					end;
+            					local mod = (tonumber(sheet.base3_6) or 0)+
+            											(tonumber(sheet.bonus3_6) or 0)+
+            											(tonumber(sheet.xp3_6) or 0);
+            					sheet.total3_6 = mod / 2;
+            					sheet.total23_6 = mod .. " | " .. mod / 2;
+            					xpAptidoes();
+            				end;
         end, obj);
 
     obj._e_event210 = obj.radioButton85:addEventListener("onChange",
         function (_)
-            if sheet~=nil then
-            						sheet.num1 = (tonumber(sheet[sheet.dado1]) or 0);
-            					end;
+            if sheet==nil then return end;
+            				sheet.field1 = sheet.dado1;
+            				sheet.num1 = (tonumber(sheet[sheet.field1]) or 0);
+            				sheet.rollnome1 = sheet.nome3_7;
         end, obj);
 
     obj._e_event211 = obj.radioButton86:addEventListener("onChange",
         function (_)
-            if sheet~=nil then
-            						sheet.num2 = (tonumber(sheet[sheet.dado2]) or 0);
-            					end;
+            if sheet==nil then return end;
+            				sheet.field2 = sheet.dado2;
+            				sheet.num2 = (tonumber(sheet[sheet.field2]) or 0);
+            				sheet.rollnome2 = sheet.nome3_7;
         end, obj);
 
     obj._e_event212 = obj.edit212:addEventListener("onChange",
         function (_)
             if sheet~= nil then
-            						local mod = (tonumber(sheet.base3_7) or 0)+
-            												(tonumber(sheet.bonus3_7) or 0)+
-            												(tonumber(sheet.xp3_7) or 0);
-            						sheet.total3_7 = mod / 2;
-            						sheet.total23_7 = mod .. " | " .. mod / 2;
-            					end;
+            					local mod = (tonumber(sheet.base3_7) or 0)+
+            											(tonumber(sheet.bonus3_7) or 0)+
+            											(tonumber(sheet.xp3_7) or 0);
+            					sheet.total3_7 = mod / 2;
+            					sheet.total23_7 = mod .. " | " .. mod / 2;
+            				end;
         end, obj);
 
     obj._e_event213 = obj.edit213:addEventListener("onChange",
         function (_)
             if sheet~= nil then
-            						local mod = (tonumber(sheet.base3_7) or 0)+
-            												(tonumber(sheet.bonus3_7) or 0)+
-            												(tonumber(sheet.xp3_7) or 0);
-            						sheet.total3_7 = mod / 2;
-            						sheet.total23_7 = mod .. " | " .. mod / 2;
-            					end;
+            					local mod = (tonumber(sheet.base3_7) or 0)+
+            											(tonumber(sheet.bonus3_7) or 0)+
+            											(tonumber(sheet.xp3_7) or 0);
+            					sheet.total3_7 = mod / 2;
+            					sheet.total23_7 = mod .. " | " .. mod / 2;
+            				end;
         end, obj);
 
     obj._e_event214 = obj.edit214:addEventListener("onChange",
         function (_)
             if sheet~= nil then
-            						local mod = (tonumber(sheet.base3_7) or 0)+
-            												(tonumber(sheet.bonus3_7) or 0)+
-            												(tonumber(sheet.xp3_7) or 0);
-            						sheet.total3_7 = mod / 2;
-            						sheet.total23_7 = mod .. " | " .. mod / 2;
-            						xpAptidoes();
-            					end;
+            					local mod = (tonumber(sheet.base3_7) or 0)+
+            											(tonumber(sheet.bonus3_7) or 0)+
+            											(tonumber(sheet.xp3_7) or 0);
+            					sheet.total3_7 = mod / 2;
+            					sheet.total23_7 = mod .. " | " .. mod / 2;
+            					xpAptidoes();
+            				end;
         end, obj);
 
     obj._e_event215 = obj.radioButton87:addEventListener("onChange",
         function (_)
-            if sheet~=nil then
-            						sheet.num1 = (tonumber(sheet[sheet.dado1]) or 0);
-            					end;
+            if sheet==nil then return end;
+            				sheet.field1 = sheet.dado1;
+            				sheet.num1 = (tonumber(sheet[sheet.field1]) or 0);
+            				sheet.rollnome1 = sheet.nome3_8;
         end, obj);
 
     obj._e_event216 = obj.radioButton88:addEventListener("onChange",
         function (_)
-            if sheet~=nil then
-            						sheet.num2 = (tonumber(sheet[sheet.dado2]) or 0);
-            					end;
+            if sheet==nil then return end;
+            				sheet.field2 = sheet.dado2;
+            				sheet.num2 = (tonumber(sheet[sheet.field2]) or 0);
+            				sheet.rollnome2 = sheet.nome3_8;
         end, obj);
 
     obj._e_event217 = obj.edit217:addEventListener("onChange",
         function (_)
             if sheet~= nil then
-            						local mod = (tonumber(sheet.base3_8) or 0)+
-            												(tonumber(sheet.bonus3_8) or 0)+
-            												(tonumber(sheet.xp3_8) or 0);
-            						sheet.total3_8 = mod / 2;
-            						sheet.total23_8 = mod .. " | " .. mod / 2;
-            					end;
+            					local mod = (tonumber(sheet.base3_8) or 0)+
+            											(tonumber(sheet.bonus3_8) or 0)+
+            											(tonumber(sheet.xp3_8) or 0);
+            					sheet.total3_8 = mod / 2;
+            					sheet.total23_8 = mod .. " | " .. mod / 2;
+            				end;
         end, obj);
 
     obj._e_event218 = obj.edit218:addEventListener("onChange",
         function (_)
             if sheet~= nil then
-            						local mod = (tonumber(sheet.base3_8) or 0)+
-            												(tonumber(sheet.bonus3_8) or 0)+
-            												(tonumber(sheet.xp3_8) or 0);
-            						sheet.total3_8 = mod / 2;
-            						sheet.total23_8 = mod .. " | " .. mod / 2;
-            					end;
+            					local mod = (tonumber(sheet.base3_8) or 0)+
+            											(tonumber(sheet.bonus3_8) or 0)+
+            											(tonumber(sheet.xp3_8) or 0);
+            					sheet.total3_8 = mod / 2;
+            					sheet.total23_8 = mod .. " | " .. mod / 2;
+            				end;
         end, obj);
 
     obj._e_event219 = obj.edit219:addEventListener("onChange",
         function (_)
             if sheet~= nil then
-            						local mod = (tonumber(sheet.base3_8) or 0)+
-            												(tonumber(sheet.bonus3_8) or 0)+
-            												(tonumber(sheet.xp3_8) or 0);
-            						sheet.total3_8 = mod / 2;
-            						sheet.total23_8 = mod .. " | " .. mod / 2;
-            						xpAptidoes();
-            					end;
+            					local mod = (tonumber(sheet.base3_8) or 0)+
+            											(tonumber(sheet.bonus3_8) or 0)+
+            											(tonumber(sheet.xp3_8) or 0);
+            					sheet.total3_8 = mod / 2;
+            					sheet.total23_8 = mod .. " | " .. mod / 2;
+            					xpAptidoes();
+            				end;
         end, obj);
 
     obj._e_event220 = obj.radioButton89:addEventListener("onChange",
         function (_)
-            if sheet~=nil then
-            						sheet.num1 = (tonumber(sheet[sheet.dado1]) or 0);
-            					end;
+            if sheet==nil then return end;
+            				sheet.field1 = sheet.dado1;
+            				sheet.num1 = (tonumber(sheet[sheet.field1]) or 0);
+            				sheet.rollnome1 = sheet.nome3_9;
         end, obj);
 
     obj._e_event221 = obj.radioButton90:addEventListener("onChange",
         function (_)
-            if sheet~=nil then
-            						sheet.num2 = (tonumber(sheet[sheet.dado2]) or 0);
-            					end;
+            if sheet==nil then return end;
+            				sheet.field2 = sheet.dado2;
+            				sheet.num2 = (tonumber(sheet[sheet.field2]) or 0);
+            				sheet.rollnome2 = sheet.nome3_9;
         end, obj);
 
     obj._e_event222 = obj.edit222:addEventListener("onChange",
         function (_)
             if sheet~= nil then
-            						local mod = (tonumber(sheet.base3_9) or 0)+
-            												(tonumber(sheet.bonus3_9) or 0)+
-            												(tonumber(sheet.xp3_9) or 0);
-            						sheet.total3_9 = mod / 2;
-            						sheet.total23_9 = mod .. " | " .. mod / 2;
-            					end;
+            					local mod = (tonumber(sheet.base3_9) or 0)+
+            											(tonumber(sheet.bonus3_9) or 0)+
+            											(tonumber(sheet.xp3_9) or 0);
+            					sheet.total3_9 = mod / 2;
+            					sheet.total23_9 = mod .. " | " .. mod / 2;
+            				end;
         end, obj);
 
     obj._e_event223 = obj.edit223:addEventListener("onChange",
         function (_)
             if sheet~= nil then
-            						local mod = (tonumber(sheet.base3_9) or 0)+
-            												(tonumber(sheet.bonus3_9) or 0)+
-            												(tonumber(sheet.xp3_9) or 0);
-            						sheet.total3_9 = mod / 2;
-            						sheet.total23_9 = mod .. " | " .. mod / 2;
-            					end;
+            					local mod = (tonumber(sheet.base3_9) or 0)+
+            											(tonumber(sheet.bonus3_9) or 0)+
+            											(tonumber(sheet.xp3_9) or 0);
+            					sheet.total3_9 = mod / 2;
+            					sheet.total23_9 = mod .. " | " .. mod / 2;
+            				end;
         end, obj);
 
     obj._e_event224 = obj.edit224:addEventListener("onChange",
         function (_)
             if sheet~= nil then
-            						local mod = (tonumber(sheet.base3_9) or 0)+
-            												(tonumber(sheet.bonus3_9) or 0)+
-            												(tonumber(sheet.xp3_9) or 0);
-            						sheet.total3_9 = mod / 2;
-            						sheet.total23_9 = mod .. " | " .. mod / 2;
-            						xpAptidoes();
-            					end;
+            					local mod = (tonumber(sheet.base3_9) or 0)+
+            											(tonumber(sheet.bonus3_9) or 0)+
+            											(tonumber(sheet.xp3_9) or 0);
+            					sheet.total3_9 = mod / 2;
+            					sheet.total23_9 = mod .. " | " .. mod / 2;
+            					xpAptidoes();
+            				end;
         end, obj);
 
     obj._e_event225 = obj.radioButton91:addEventListener("onChange",
         function (_)
-            if sheet~=nil then
-            						sheet.num1 = (tonumber(sheet[sheet.dado1]) or 0);
-            					end;
+            if sheet==nil then return end;
+            				sheet.field1 = sheet.dado1;
+            				sheet.num1 = (tonumber(sheet[sheet.field1]) or 0);
+            				sheet.rollnome1 = sheet.nome3_10;
         end, obj);
 
     obj._e_event226 = obj.radioButton92:addEventListener("onChange",
         function (_)
-            if sheet~=nil then
-            						sheet.num2 = (tonumber(sheet[sheet.dado2]) or 0);
-            					end;
+            if sheet==nil then return end;
+            				sheet.field2 = sheet.dado2;
+            				sheet.num2 = (tonumber(sheet[sheet.field2]) or 0);
+            				sheet.rollnome2 = sheet.nome3_10;
         end, obj);
 
     obj._e_event227 = obj.edit227:addEventListener("onChange",
         function (_)
             if sheet~= nil then
-            						local mod = (tonumber(sheet.base3_10) or 0)+
-            												(tonumber(sheet.bonus3_10) or 0)+
-            												(tonumber(sheet.xp3_10) or 0);
-            						sheet.total3_10 = mod / 2;
-            						sheet.total23_10 = mod .. " | " .. mod / 2;
-            					end;
+            					local mod = (tonumber(sheet.base3_10) or 0)+
+            											(tonumber(sheet.bonus3_10) or 0)+
+            											(tonumber(sheet.xp3_10) or 0);
+            					sheet.total3_10 = mod / 2;
+            					sheet.total23_10 = mod .. " | " .. mod / 2;
+            				end;
         end, obj);
 
     obj._e_event228 = obj.edit228:addEventListener("onChange",
         function (_)
             if sheet~= nil then
-            						local mod = (tonumber(sheet.base3_10) or 0)+
-            												(tonumber(sheet.bonus3_10) or 0)+
-            												(tonumber(sheet.xp3_10) or 0);
-            						sheet.total3_10 = mod / 2;
-            						sheet.total23_10 = mod .. " | " .. mod / 2;
-            					end;
+            					local mod = (tonumber(sheet.base3_10) or 0)+
+            											(tonumber(sheet.bonus3_10) or 0)+
+            											(tonumber(sheet.xp3_10) or 0);
+            					sheet.total3_10 = mod / 2;
+            					sheet.total23_10 = mod .. " | " .. mod / 2;
+            				end;
         end, obj);
 
     obj._e_event229 = obj.edit229:addEventListener("onChange",
         function (_)
             if sheet~= nil then
-            						local mod = (tonumber(sheet.base3_10) or 0)+
-            												(tonumber(sheet.bonus3_10) or 0)+
-            												(tonumber(sheet.xp3_10) or 0);
-            						sheet.total3_10 = mod / 2;
-            						sheet.total23_10 = mod .. " | " .. mod / 2;
-            						xpAptidoes();
-            					end;
+            					local mod = (tonumber(sheet.base3_10) or 0)+
+            											(tonumber(sheet.bonus3_10) or 0)+
+            											(tonumber(sheet.xp3_10) or 0);
+            					sheet.total3_10 = mod / 2;
+            					sheet.total23_10 = mod .. " | " .. mod / 2;
+            					xpAptidoes();
+            				end;
         end, obj);
 
     obj._e_event230 = obj.radioButton93:addEventListener("onChange",
         function (_)
-            if sheet~=nil then
-            						sheet.num1 = (tonumber(sheet[sheet.dado1]) or 0);
-            					end;
+            if sheet==nil then return end;
+            				sheet.field1 = sheet.dado1;
+            				sheet.num1 = (tonumber(sheet[sheet.field1]) or 0);
+            				sheet.rollnome1 = sheet.nome3_11;
         end, obj);
 
     obj._e_event231 = obj.radioButton94:addEventListener("onChange",
         function (_)
-            if sheet~=nil then
-            						sheet.num2 = (tonumber(sheet[sheet.dado2]) or 0);
-            					end;
+            if sheet==nil then return end;
+            				sheet.field2 = sheet.dado2;
+            				sheet.num2 = (tonumber(sheet[sheet.field2]) or 0);
+            				sheet.rollnome2 = sheet.nome3_11;
         end, obj);
 
     obj._e_event232 = obj.edit232:addEventListener("onChange",
         function (_)
             if sheet~= nil then
-            						local mod = (tonumber(sheet.base3_11) or 0)+
-            												(tonumber(sheet.bonus3_11) or 0)+
-            												(tonumber(sheet.xp3_11) or 0);
-            						sheet.total3_11 = mod / 2;
-            						sheet.total23_11 = mod .. " | " .. mod / 2;
-            					end;
+            					local mod = (tonumber(sheet.base3_11) or 0)+
+            											(tonumber(sheet.bonus3_11) or 0)+
+            											(tonumber(sheet.xp3_11) or 0);
+            					sheet.total3_11 = mod / 2;
+            					sheet.total23_11 = mod .. " | " .. mod / 2;
+            				end;
         end, obj);
 
     obj._e_event233 = obj.edit233:addEventListener("onChange",
         function (_)
             if sheet~= nil then
-            						local mod = (tonumber(sheet.base3_11) or 0)+
-            												(tonumber(sheet.bonus3_11) or 0)+
-            												(tonumber(sheet.xp3_11) or 0);
-            						sheet.total3_11 = mod / 2;
-            						sheet.total23_11 = mod .. " | " .. mod / 2;
-            					end;
+            					local mod = (tonumber(sheet.base3_11) or 0)+
+            											(tonumber(sheet.bonus3_11) or 0)+
+            											(tonumber(sheet.xp3_11) or 0);
+            					sheet.total3_11 = mod / 2;
+            					sheet.total23_11 = mod .. " | " .. mod / 2;
+            				end;
         end, obj);
 
     obj._e_event234 = obj.edit234:addEventListener("onChange",
         function (_)
             if sheet~= nil then
-            						local mod = (tonumber(sheet.base3_11) or 0)+
-            												(tonumber(sheet.bonus3_11) or 0)+
-            												(tonumber(sheet.xp3_11) or 0);
-            						sheet.total3_11 = mod / 2;
-            						sheet.total23_11 = mod .. " | " .. mod / 2;
-            						xpAptidoes();
-            					end;
+            					local mod = (tonumber(sheet.base3_11) or 0)+
+            											(tonumber(sheet.bonus3_11) or 0)+
+            											(tonumber(sheet.xp3_11) or 0);
+            					sheet.total3_11 = mod / 2;
+            					sheet.total23_11 = mod .. " | " .. mod / 2;
+            					xpAptidoes();
+            				end;
         end, obj);
 
     obj._e_event235 = obj.radioButton95:addEventListener("onChange",
         function (_)
-            if sheet~=nil then
-            						sheet.num1 = (tonumber(sheet[sheet.dado1]) or 0);
-            					end;
+            if sheet==nil then return end;
+            				sheet.field1 = sheet.dado1;
+            				sheet.num1 = (tonumber(sheet[sheet.field1]) or 0);
+            				sheet.rollnome1 = sheet.nome3_12;
         end, obj);
 
     obj._e_event236 = obj.radioButton96:addEventListener("onChange",
         function (_)
-            if sheet~=nil then
-            						sheet.num2 = (tonumber(sheet[sheet.dado2]) or 0);
-            					end;
+            if sheet==nil then return end;
+            				sheet.field2 = sheet.dado2;
+            				sheet.num2 = (tonumber(sheet[sheet.field2]) or 0);
+            				sheet.rollnome2 = sheet.nome3_12;
         end, obj);
 
     obj._e_event237 = obj.edit237:addEventListener("onChange",
         function (_)
             if sheet~= nil then
-            						local mod = (tonumber(sheet.base3_12) or 0)+
-            												(tonumber(sheet.bonus3_12) or 0)+
-            												(tonumber(sheet.xp3_12) or 0);
-            						sheet.total3_12 = mod / 2;
-            						sheet.total23_12 = mod .. " | " .. mod / 2;
-            					end;
+            					local mod = (tonumber(sheet.base3_12) or 0)+
+            											(tonumber(sheet.bonus3_12) or 0)+
+            											(tonumber(sheet.xp3_12) or 0);
+            					sheet.total3_12 = mod / 2;
+            					sheet.total23_12 = mod .. " | " .. mod / 2;
+            				end;
         end, obj);
 
     obj._e_event238 = obj.edit238:addEventListener("onChange",
         function (_)
             if sheet~= nil then
-            						local mod = (tonumber(sheet.base3_12) or 0)+
-            												(tonumber(sheet.bonus3_12) or 0)+
-            												(tonumber(sheet.xp3_12) or 0);
-            						sheet.total3_12 = mod / 2;
-            						sheet.total23_12 = mod .. " | " .. mod / 2;
-            					end;
+            					local mod = (tonumber(sheet.base3_12) or 0)+
+            											(tonumber(sheet.bonus3_12) or 0)+
+            											(tonumber(sheet.xp3_12) or 0);
+            					sheet.total3_12 = mod / 2;
+            					sheet.total23_12 = mod .. " | " .. mod / 2;
+            				end;
         end, obj);
 
     obj._e_event239 = obj.edit239:addEventListener("onChange",
         function (_)
             if sheet~= nil then
-            						local mod = (tonumber(sheet.base3_12) or 0)+
-            												(tonumber(sheet.bonus3_12) or 0)+
-            												(tonumber(sheet.xp3_12) or 0);
-            						sheet.total3_12 = mod / 2;
-            						sheet.total23_12 = mod .. " | " .. mod / 2;
-            						xpAptidoes();
-            					end;
+            					local mod = (tonumber(sheet.base3_12) or 0)+
+            											(tonumber(sheet.bonus3_12) or 0)+
+            											(tonumber(sheet.xp3_12) or 0);
+            					sheet.total3_12 = mod / 2;
+            					sheet.total23_12 = mod .. " | " .. mod / 2;
+            					xpAptidoes();
+            				end;
         end, obj);
 
     obj._e_event240 = obj.button1:addEventListener("onClick",
+        function (_)
+            if sheet==nil then return end;
+            					sheet.field2 = nil;
+            					sheet.num2 = nil;
+            					sheet.nome2 = nil;
+        end, obj);
+
+    obj._e_event241 = obj.button2:addEventListener("onClick",
         function (_)
             rolar();
         end, obj);
 
     function obj:_releaseEvents()
+        __o_rrpgObjs.removeEventListenerById(self._e_event241);
         __o_rrpgObjs.removeEventListenerById(self._e_event240);
         __o_rrpgObjs.removeEventListenerById(self._e_event239);
         __o_rrpgObjs.removeEventListenerById(self._e_event238);
@@ -8182,6 +8304,7 @@ local function constructNew_frmACN2()
         if self.radioButton25 ~= nil then self.radioButton25:destroy(); self.radioButton25 = nil; end;
         if self.layout13 ~= nil then self.layout13:destroy(); self.layout13 = nil; end;
         if self.edit192 ~= nil then self.edit192:destroy(); self.edit192 = nil; end;
+        if self.button2 ~= nil then self.button2:destroy(); self.button2 = nil; end;
         if self.label13 ~= nil then self.label13:destroy(); self.label13 = nil; end;
         if self.layout8 ~= nil then self.layout8:destroy(); self.layout8 = nil; end;
         if self.radioButton10 ~= nil then self.radioButton10:destroy(); self.radioButton10 = nil; end;
@@ -8374,6 +8497,7 @@ local function constructNew_frmACN2()
         if self.radioButton83 ~= nil then self.radioButton83:destroy(); self.radioButton83 = nil; end;
         if self.rectangle49 ~= nil then self.rectangle49:destroy(); self.rectangle49 = nil; end;
         if self.layout53 ~= nil then self.layout53:destroy(); self.layout53 = nil; end;
+        if self.dataLink1 ~= nil then self.dataLink1:destroy(); self.dataLink1 = nil; end;
         if self.edit144 ~= nil then self.edit144:destroy(); self.edit144 = nil; end;
         if self.rectangle27 ~= nil then self.rectangle27:destroy(); self.rectangle27 = nil; end;
         if self.label36 ~= nil then self.label36:destroy(); self.label36 = nil; end;

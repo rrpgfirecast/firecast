@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmDonsItem" height="30" margins="{top=6,bottom=2, left=4, right=4}">
+
+    <imageCheckBox align="left" width='14' field='crossDon' checkedImage="img/x.png" uncheckedImage=""/>
+    <edit align="client" field="name" margins="{right=2}" fontColor='black' transparent='true' fontSize='14' fontStyle='bold' fontFamily='Ar Julian'/>
+    <button align='right' width='30' text='!' fontColor='white' fontSize='14' fontStyle='bold' onClick="showPopDons();" margins="{right=2}" cursor='handPoint'/>
+    <button align='right' width='30' text='➖' fontColor='white' fontSize='14' fontStyle='bold' onClick="NDB.deleteNode(sheet);" cursor='handPoint'/>
+
+    <popup name="popDonsView" width="600" height="150" backOpacity="0.5">
+        <dataScopeBox align='client'  name="boxDonsDetails" padding='{top=4, left=4, bottom=4, right=4}'>
+            <label align="top" text='Descrição' autoSize="true" horzTextAlign='center' fontColor='white' fontSize='16' fontStyle='bold'/>
+            <richEdit align='client' field='donsDescription' backgroundColor='white' defaultFontColor='black' showToolbar='false'/>
+        </dataScopeBox>        
+    </popup>
+
+    <script>
+        <![CDATA[         
+            local function showPopDons()
+                self.popDonsView:show();               
+            end
+        ]]>
+    </script>
+
+</form>

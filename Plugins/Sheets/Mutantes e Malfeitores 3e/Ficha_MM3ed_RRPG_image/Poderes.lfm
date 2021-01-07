@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <form name="frmFicha_MM3ed_RRPG_Power" align="client" theme="light" margins="{top=1}">
  <scrollBox align="client">
-  <rectangle width="700" height="1263" color="#50a48d">
+  <rectangle width="893" height="1263" color="#50a48d">
         <image left="0" top="0" width="893" height="1263" src="images/fundo.png" style="stretch" optimize="true" compilerOrder="0"/>
         <!-- Botao de inserir novo item a lista -->
         <layout align="top" height="30" margins="{bottom=4}">
@@ -27,54 +27,55 @@
 
         <!-- dataScopeBox representando a nossa caixa de detalhes -->  
         <dataScopeBox name="boxDetalhesDoItem" visible="false" align="right" 
-                     width="400" margins="{left=14, right=14}">
+                     width="600" margins="{left=14, right=14}">
                 <rectangle align="top" color="#6cb098" xradius="10" yradius="10"
-                                   height="500" padding="{top=7, left=7, right=7, bottom=7}">
+                                   height="560" padding="{top=7, left=7, right=7, bottom=7}">
 
 
                         <layout align="top" height="30" margins="{bottom=4}">
                                 <edit transparent="true" align="top" fontStyle="bold" horzTextAlign="center" left="0" top="0" width="68" height="31" field="PoderNome" fontColor="white"/> <dataLink fields="{'PoderNome'}" defaultValues="{'NOME DO PODER'}"/>
                         </layout>  
 
-			<layout left="10" top="40" width="350" height="600">
-                		<layout align="left" width="240">
-				    <rectangle align="top" width="240" height="298" color="#3f8270" strokeColor="white" strokeSize="1">
+			<layout left="10" top="40" width="440" height="600">
+                		<layout align="left" width="440">
+				    <rectangle align="top" width="4400" height="348" color="#3f8270" strokeColor="white" strokeSize="1">
 					<label align="top" fontSize="14" text="EFEITOS" fontColor="white" fontStyle="bold" horzTextAlign="center" margins="{top=1}"/>
-		                        <textEditor align="top" field="PoderEfeito" transparent="true" fontColor="white" height="280" margins="{left=10, right=10}"/><dataLink fields="{'PoderEfeito'}" defaultValues="{'Descreva os efeitos que estao associados a este Poder. Aproveite o espaco para anotar detalhes para nao precisar olhar o livro o tempo todo.'}"/>
+		                        <textEditor align="top" field="PoderEfeito" transparent="true" fontColor="white" height="320" margins="{left=10, right=10}"/><dataLink fields="{'PoderEfeito'}" defaultValues="{'Descreva os efeitos que estao associados a este Poder. Aproveite o espaco para anotar detalhes para nao precisar olhar o livro o tempo todo.'}"/>
 				    </rectangle>
 	        	        </layout>      
 		        </layout>
 
-			<layout left="10" top="348" width="350" height="400">
-                		<layout align="left" width="240">
-				    <rectangle align="top" width="240" height="82" color="#3f8270" strokeColor="white" strokeSize="1">
+			<layout left="10" top="398" width="440" height="390">
+                		<layout align="left" width="440">
+				    <rectangle align="top" width="390" height="93" color="#3f8270" strokeColor="white" strokeSize="1">
 					<label left="5" fontSize="16" text="Notas" fontStyle="bold" fontColor="white" vertTextAlign="center" margins="{left=2}"/>
 		                        <textEditor align="top" field="PoderNotas" transparent="true" fontColor="white" margins="{left=50}" height="82"/><dataLink fields="{'PoderNotas'}" defaultValues="{'Descreva como o poder funciona na pratica e seus descritores'}"/>
 				    </rectangle>
 	        	        </layout>     
 		        </layout>
 
-			<layout left="10" top="441" width="350" height="300">
-                		<layout align="left" width="240">
-				    <rectangle align="top" width="240" color="#3f8270" strokeColor="white" strokeSize="1">
-					<label left="5" fontSize="16" text="Custo" fontStyle="bold" fontColor="white" vertTextAlign="center" margins="{left=10}"/>
-		                        <textEditor align="top" field="PoderCusto" transparent="true" fontColor="white" margins="{left=50}"/><dataLink fields="{'PoderCusto'}" defaultValues="{'Total de Pontos de Poder investidos = (Grad + Extras - Falhas) x Custo + Extras Fixos - Falhas Fixas.'}"/>
-				    </rectangle>
+			<layout left="10" top="501" width="580" height="300">
+                		<layout align="left" width="580">
+							<rectangle align="top" width="580" color="#3f8270" strokeColor="white" strokeSize="1">
+								<label left="5" fontSize="16" text="Custo" fontStyle="bold" fontColor="white" vertTextAlign="center" margins="{left=10}"/>
+									<textEditor align="top" field="PoderCusto" transparent="true" fontColor="white" margins="{left=50}"/><dataLink fields="{'PoderCusto'}" defaultValues="{'Total de Pontos de Poder investidos = (Grad + Extras - Falhas) x Custo + Extras Fixos - Falhas Fixas.'}"/>
+							</rectangle>
 	        	        </layout>     
-		        </layout>
+		    </layout>
+			
 ----------------------------------------------------------------------------------------------------------------------------------
 
 ----------------------------------------------------------------------------------------------------------------------------------
-			<layout left="140" top="40" width="250" height="200">
+			<layout left="340" top="40" width="250" height="200">
 			    <rectangle align="right" width="130" color="#3f8270" strokeColor="white" strokeSize="1">
-				<label align="bottom" fontSize="12" text="IMAGEM" fontColor="white" fontStyle="bold" horzTextAlign="center" margins="{bottom=1}"/>
-                                <image align="right" editable="true" field="PoderImagem" width="130" margins="{top=1}"/> 
+				<label align="bottom" fontSize="12" text="IMAGEM" fontColor="white" fontStyle="bold" horzTextAlign="center" margins="{bottom=1, left=1}"/>
+                                <image align="right" editable="true" style="autoFit" field="PoderImagem" width="128" margins="{top=1, left=2, right=1, bottom=1}" animate="true"/> 
 			    </rectangle>                              
 		        </layout>
 ----------------------------------------------------------------------------------------------------------------------------------
 
 ----------------------------------------------------------------------------------------------------------------------------------
-			<layout left="260" top="252" width="130" height="38">
+			<layout left="460" top="252" width="130" height="38">
 			    <rectangle align="right" width="130" height="30" color="#3f8270" strokeColor="white" strokeSize="1">
 						<label align="top" fontSize="12" fontStyle="bold" text="DEFESA" fontColor="white" horzTextAlign="center"/>
 						<comboBox align="top" field="PoderDefesa" horzTextAlign="center" items="{'NENHUMA', 'ESQUIVA', 'APARAR', 'FORTITUDE', 'VONTADE', 'RESISTENCIA'}"/><dataLink fields="{'PoderDefesa'}" defaultValues="{'NENHUMA'}"/>
@@ -83,7 +84,7 @@
 ----------------------------------------------------------------------------------------------------------------------------------
 
 ----------------------------------------------------------------------------------------------------------------------------------
-			<layout left="260" top="300" width="130" height="38">
+			<layout left="460" top="300" width="130" height="38">
 			    <rectangle align="right" width="130" height="30" color="#3f8270" strokeColor="white" strokeSize="1">
 						<label align="top" fontSize="12" fontStyle="bold" text="ACAO" fontColor="white" horzTextAlign="center"/>
 						<comboBox align="top" field="PoderAcao" horzTextAlign="center" items="{'NENHUMA', 'LIVRE', 'REACAO', 'MOVIMENTO', 'PADRAO'}"/><dataLink fields="{'PoderAcao'}" defaultValues="{'NENHUMA'}"/>
@@ -92,34 +93,34 @@
 ----------------------------------------------------------------------------------------------------------------------------------
 
 ----------------------------------------------------------------------------------------------------------------------------------
-			<layout left="140" top="348" width="250" height="18">
+			<layout left="340" top="348" width="250" height="18">
 			    <rectangle align="right" width="130" color="#3f8270" strokeColor="white" strokeSize="1">
 					<label align="top" fontSize="12" fontStyle="bold" horzTextAlign="center" text="ALCANCE" fontColor="white"/>
 			    </rectangle>                          
 		        </layout>
-			<layout left="140" top="364" width="250" height="25">
+			<layout left="340" top="364" width="250" height="25">
 			                        <edit align="right" width="130" field="PoderAlcance"/><dataLink fields="{'PoderAlcance'}" defaultValues="{'Pessoal, Perto, Percepcao, ou o valor da tabela de referencia'}"/>
 		        </layout>
 ----------------------------------------------------------------------------------------------------------------------------------
 
 ----------------------------------------------------------------------------------------------------------------------------------
-			<layout left="140" top="398" width="250" height="18">
+			<layout left="340" top="398" width="250" height="18">
 			    <rectangle align="right" width="130" color="#3f8270" strokeColor="white" strokeSize="1">
 					<label align="top" fontSize="12" fontStyle="bold" horzTextAlign="center" text="DURACAO" fontColor="white"/>
 			    </rectangle>                          
 		        </layout>
-			<layout left="140" top="414" width="250" height="25">
+			<layout left="340" top="414" width="250" height="25">
 			                        <edit align="right" width="130" field="PoderDuracao"/><dataLink fields="{'PoderDuracao'}" defaultValues="{'Instantaneo, Sustentado, Continuo ou Permanente'}"/>
 		        </layout>
 ----------------------------------------------------------------------------------------------------------------------------------
 
 ----------------------------------------------------------------------------------------------------------------------------------
-			<layout left="140" top="449" width="250" height="18">
+			<layout left="340" top="449" width="250" height="18">
 			    <rectangle align="right" width="130" color="#3f8270" strokeColor="white" strokeSize="1">
 					<label align="top" fontSize="12" fontStyle="bold" horzTextAlign="center" text="REFERENCIA" fontColor="white"/>
 			    </rectangle>                          
 		        </layout>
-			<layout left="140" top="466" width="250" height="25">
+			<layout left="340" top="466" width="250" height="25">
 			                        <edit align="right" width="130" field="PoderReferencia"/><dataLink fields="{'PoderReferencia'}" defaultValues="{'Pagina e Livro de Ref'}"/>
 		        </layout>
 ----------------------------------------------------------------------------------------------------------------------------------

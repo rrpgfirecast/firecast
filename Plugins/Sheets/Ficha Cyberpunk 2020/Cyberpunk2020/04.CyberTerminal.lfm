@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmCyberTerminal" align="client">
+	<scrollBox align="client">
+		<layout align="top" height="50">
+			<button text="+" width="30" align="left">
+				<event name="onClick">
+					self.rclListaTerminais:append();
+				</event>
+			</button>
+			<recordList name="rclListaTerminais" field="campoDosTerminais" templateForm="frmDataboxSeletor" align="client" selectable="true" layout="horizontal">
+				<event name="onSelect">
+					local node = self.rclListaTerminais.selectedNode;
+					self.boxDetalheTerminal.node = node;
+					self.boxDetalheTerminal.visible = (node ~= nil);
+				</event>
+				<event name="onEndEnumeration">
+					if self.rclListaTerminais.selectedNode == nil and sheet ~= nil then
+						local nodes = NDB.getChildNodes(sheet.campoDosTerminais);               
+						if #nodes > 0 then
+							self.rclListaTerminais.selectedNode = nodes[1];
+						end;
+					end;
+				</event>
+			</recordList>
+		</layout>
+
+		<dataScopeBox name="boxDetalheTerminal" visible="false" align="client" height="550">
+			<layout left="0" top="0" width="310" height="635">
+				<rectangle align="client" color="black"/>
+				<label text="TIPO" left="5" top="1" width="100" height="20" horzTextAlign="center"/>
+				<label text="UM" left="105" top="1" width="50" height="20" horzTextAlign="center"/>
+				<label text="FORÇA" left="155" top="1" width="50" height="20" horzTextAlign="center"/>
+				<label text="PREÇO" left="205" top="1" width="50" height="20" horzTextAlign="center"/>
+				<button text="+" left="255" top="0" width="25" height="25" onClick="self.rclCyberTerminal:append();"/>	
+
+				<recordList name="rclCyberTerminal" field="cyberTerminalList" templateForm="frmCyberTerminalItem" left="5" top="25" width="300" height="600" layout="vertical">
+					<event name="onCompare">
+						return utils.compareStringPtBr(nodeA.nome, nodeB.nome);
+			        </event>
+				</recordList>
+			</layout>
+
+			<layout left="315" top="0" width="410" height="215">
+				<rectangle align="client" color="black"/>
+
+				<label left="5" top="5" width="100" height="20" text="Modelo" horzTextAlign="center"/>
+				<edit left="105" top="5" width="200" height="25" field="modelo"/>
+				<label left="305" top="5" width="50" height="20" text="# de CPU" horzTextAlign="center" fontSize="11"/>
+				<edit left="355" top="5" width="50" height="25" field="modeloNum"/>
+
+				<checkBox left="5" top="30" width="80" height="20" field="cyberTypeCelphone" text="Celular"/>
+				<checkBox left="85" top="30" width="80" height="20" field="cyberTypePortable" text="Portátil"/>
+				<checkBox left="165" top="30" width="80" height="20" field="cyberTypeCombat" text="Combate"/>
+				<checkBox left="245" top="30" width="80" height="20" field="cyberTypeCyber" text="Cibermembro" fontSize="10"/>
+				<checkBox left="325" top="30" width="80" height="20" field="cyberTypeDefault" text="Padrão"/>
+
+				<label left="5" top="60" width="100" height="20" text="Preço Total" horzTextAlign="center"/>
+				<edit left="105" top="60" width="100" height="25" field="teminalPrice" type="number"/>
+				<label left="205" top="60" width="100" height="20" text="Força do Muro de Dados" horzTextAlign="center" fontSize="8"/>
+				<edit left="305" top="60" width="100" height="25" field="strength"/>
+
+				<label left="5" top="85" width="100" height="20" text="Força Portão de Acesso" horzTextAlign="center" fontSize="10"/>
+				<edit left="105" top="85" width="100" height="25" field="strengthGate" type="number"/>
+				<label left="205" top="85" width="100" height="20" text="Velocidade" horzTextAlign="center"/>
+				<edit left="305" top="85" width="100" height="25" field="speed"/>
+
+				<label left="5" top="110" width="100" height="20" text="Memória" horzTextAlign="center"/>
+				<edit left="105" top="110" width="100" height="25" field="memory" type="number"/>
+
+				<checkBox left="5" top="135" width="100" height="20" field="cyberExtra0" text="Trodos"/>
+				<checkBox left="105" top="135" width="100" height="20" field="cyberExtra1" text="Teclado"/>
+				<checkBox left="205" top="135" width="100" height="20" field="cyberExtra2" text="Monitor"/>
+				<checkBox left="305" top="135" width="100" height="20" field="cyberExtra3" text="Impressora"/>
+				<checkBox left="5" top="160" width="100" height="20" field="cyberExtra4" text="Leitor de Chips" fontSize="10"/>
+				<checkBox left="105" top="160" width="100" height="20" field="cyberExtra5" text="Caixa de Voz"/>
+				<checkBox left="205" top="160" width="100" height="20" field="cyberExtra6" text="Scanner"/>
+				<checkBox left="305" top="160" width="100" height="20" field="cyberExtra7" text="Chips Extra"/>
+
+				<label left="5" top="185" width="100" height="20" text="Ícone" horzTextAlign="center"/>
+				<edit left="105" top="185" width="300" height="25" field="icon" type="number"/>
+			</layout>
+		</dataScopeBox>
+	</scrollBox>
+</form>

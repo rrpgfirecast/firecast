@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmOD" formType="sheetTemplate" dataType="br.com.RRPG.ODAPM_S3" title="Old Dragon Aprimorado - Ficha de Personagem" align="client" theme="light">
+    <tabControl align="client">
+        <tab title="Atributos e Ataques">
+            <import file="1.lfm"/>
+        </tab>
+        <tab title="Equipamentos e Habilidades">
+            <import file="2.lfm"/>
+        </tab>
+        <tab title="Background e Mochila">
+            <import file="3.lfm"/>
+        </tab>
+		<tab title="Magias">
+            <import file="5.lfm"/>
+        </tab>
+        <tab title="Anotações">
+            <import file="4.lfm"/>
+        </tab>
+    </tabControl>
+</form>

@@ -120,6 +120,8 @@
 								}
 							</style>
 							
+						
+							
 							<flowPart class="cellTypePart" onClick="self.rbtCellTypeQuad.checked = true">
 								<radioButton name="rbtCellTypeQuad" class="cellType" onChange="self:rbtCellTypeChanged()"/>
 								<path class="cellType" data="M 0 0 L 1 0 L 1 1 L 0 1 z"/>
@@ -136,7 +138,7 @@
 							</flowPart>									
 						</flowLayout>
 					</flowPart>		
-
+					
 					<!-- Diagonais -->
 					<flowPart class="optionPart" name="partSquareDiagonals">	
 						<label name="labDiagonais" class="itemTitle"/>
@@ -495,6 +497,7 @@
 					scene.grid.offsetX = self.edtOffsetX.asNumber;
 					scene.grid.offsetY = self.edtOffsetY.asNumber;
 					scene.grid.squareDiagonals = self.cmbDiagonais.value;
+										
 					
 					if self.rbtCellTypeVertHex.checked then
 						scene.grid.gridType = "vertHex";

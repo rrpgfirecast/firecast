@@ -1,0 +1,1112 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<popupForm name="frmMazeOptions" width="300" height="300" drawContainer="true" resizable="true" placement="center"
+		   cancelable="false">
+ 		   
+	<import file="../interfaceUtils.xml"/>
+	<style>
+		flowPart.optionPart {
+			height: 30;
+			minWidth: 50;
+			maxWidth: 5000;
+			margins: {left=2, right=2, top=2, bottom=2};
+		}
+		
+		.itemTitle {
+			align: left;
+			width: 110;
+			autoSize: false;
+			horzTextAlign: trailing;	
+			vertTextAlign: center;
+			margins:{right=5};
+		}
+		
+		.itemContent {
+			align: client;
+			margins:{right=5};
+		}
+		
+		.groupTitle {
+			align: left;						
+			autoSize: true;
+			wordWrap: false;
+			horzTextAlign: leading;	
+			vertTextAlign: center;
+			margins:{left=10, right=5};		
+			fontSize: 15;
+			fontColor: #FFCC66;
+		}
+	</style>
+			
+	<script>
+		require("system.lua");
+		require("rrpgScene_Undo.dlua");
+		local scene = nil;	
+		
+		if not System.isMobile() then
+			self.height = 450;
+		end;
+	</script>	
+	
+	<template name="option">
+		<label name="$(field)Text" left="10" top="$(top)" width="120" height="25" text="$(text)" hitTest="true" hint="$(hint)" horzTextAlign="trailing"/>
+		<edit left="140" top="$(top)" width="50" height="25" name="$(field)" type="number"/>
+	</template>
+	<template name="tileEdit">
+		<image left="$(left)" top="0" width="64" height="64"  style="stretch" name="$(field)Img" editable="true"/>
+		<label left="$(left)" top="64" width="64" height="15" fontSize="8"/>
+	</template>
+
+	<tabControl align="client">
+		<tab name="tabOptions">
+			<scrollBox align="client">
+				<label text="" name="tabName" align="top" margins="{left=10, right=5}" fontSize="15" fontColor="#FFCC66"/>
+				<horzLine align="top" strokeColor="#FFCC6670" margins="{left=10}"/>	
+
+				<option top="30" text="" field="entradas" hint="Quantidade de entradas"/>
+				<option top="55" text="" field="escadas" hint="Quantidade de escadas"/>
+				<option top="80" text="" field="armadilhas" hint=""/>
+				<option top="105" text="" field="passagens" hint=""/>
+
+				<label left="5" top="130" width="130" name="thickness" horzTextAlign="trailing" hitTest="true"/>
+				<comboBox left="140" top="130" width="50" name="thick" items="{'1','2','3'}"/>
+			</scrollBox>
+		</tab>
+		<tab name="tabTiles">
+			<scrollBox align="client">
+				<label left="5" top="5" name="style" margins="{left=10, right=5}" fontSize="15" fontColor="#FFCC66"/>
+				<comboBox left="75" top="5" width="175" name="styleOptions">
+					<event name="onChange">
+						if self.styleOptions.value == lang('scene.generator.tiles.style1') then
+							self.door_light.url = "http://firecast.blob.core.windows.net/blobs/LLBKLNNN_328371.png";
+							self.door_heavy.url = "http://firecast.blob.core.windows.net/blobs/NSVRSNLG_328370.png";
+							self.trap.url = "http://firecast.blob.core.windows.net/blobs/EDUPFJLI_328660.png";
+							self.passage.url = "http://firecast.blob.core.windows.net/blobs/AEHGOPMH_332114.png";
+
+							self.floor_deadend.url = "http://firecast.blob.core.windows.net/blobs/DCCHNTNH_328338.png";
+							self.floor_line.url = "http://firecast.blob.core.windows.net/blobs/VBQRSILF_328334.png";
+							self.floor_curve.url = "http://firecast.blob.core.windows.net/blobs/CHKWJATW_328360.png";
+							self.floor_tip.url = "http://firecast.blob.core.windows.net/blobs/RKDFSJOR_328336.png";
+							self.floor_t.url = "http://firecast.blob.core.windows.net/blobs/OUICQAEA_328330.png";
+							self.floor_coneright.url = "http://firecast.blob.core.windows.net/blobs/MFRICDNQ_328364.png";
+							self.floor_coneleft.url = "http://firecast.blob.core.windows.net/blobs/FALFKGFW_328365.png";
+							self.floor_side.url = "http://firecast.blob.core.windows.net/blobs/SUJINTTV_328324.png";
+							self.floor_cross.url = "http://firecast.blob.core.windows.net/blobs/EQDFPEFJ_328323.png";
+							self.floor_twoway.url = "http://firecast.blob.core.windows.net/blobs/MKBOEQSN_328560.png";
+							self.floor_opositeway.url = "http://firecast.blob.core.windows.net/blobs/RKJUVLDJ_328561.png";
+							self.floor_exit.url = "http://firecast.blob.core.windows.net/blobs/KEUMVLIT_328361.png";
+							self.floor_opencurve.url = "http://firecast.blob.core.windows.net/blobs/DIGAMPSO_328538.png";
+							self.floor_inside.url = "http://firecast.blob.core.windows.net/blobs/KKVCTGSV_328328.png";
+							self.floor_stair.url = "http://firecast.blob.core.windows.net/blobs/VGRUNOJU_328508.png";
+
+							self.wall_cross.url = "http://firecast.blob.core.windows.net/blobs/ERKWBFJS_328345.png";
+							self.wall_t.url = "http://firecast.blob.core.windows.net/blobs/LBOAERRP_328342.png";
+							self.wall_line.url = "http://firecast.blob.core.windows.net/blobs/IRSBUCLP_328346.png";
+							self.wall_curve.url = "http://firecast.blob.core.windows.net/blobs/SDMDKCTL_328344.png";
+							self.wall_deadend.url = "http://firecast.blob.core.windows.net/blobs/HKWNFCIW_328340.png";
+							self.wall_pilar.url = "http://firecast.blob.core.windows.net/blobs/CVFPGFHI_328350.png";
+						elseif self.styleOptions.value == lang('scene.generator.tiles.style2') then
+							self.door_light.url = "http://firecast.blob.core.windows.net/blobs/AWJKDKAC_328734.png";
+							self.door_heavy.url = "http://firecast.blob.core.windows.net/blobs/KEILLRML_328736.png";
+							self.trap.url = "http://firecast.blob.core.windows.net/blobs/HPNFUWKV_332117.png";
+							self.passage.url = "http://firecast.blob.core.windows.net/blobs/CBHDTEGQ_332116.png";
+							
+							self.floor_deadend.url = "http://firecast.blob.core.windows.net/blobs/KRRTQJUG_328743.png";
+							self.floor_line.url = "http://firecast.blob.core.windows.net/blobs/FFFCNNRA_328748.png";
+							self.floor_curve.url = "http://firecast.blob.core.windows.net/blobs/TGSUMGBG_328740.png";
+							self.floor_tip.url = "http://firecast.blob.core.windows.net/blobs/RCASWDBH_328764.png";
+							self.floor_t.url = "http://firecast.blob.core.windows.net/blobs/TGERSJBG_328750.png";
+							self.floor_coneright.url = "http://firecast.blob.core.windows.net/blobs/JSDMTBKW_328746.png";
+							self.floor_coneleft.url = "http://firecast.blob.core.windows.net/blobs/CPLNFUGG_328756.png";
+							self.floor_side.url = "http://firecast.blob.core.windows.net/blobs/IJOQKWAB_328778.png";
+							self.floor_cross.url = "http://firecast.blob.core.windows.net/blobs/PPIQFHNO_328735.png";
+							self.floor_twoway.url = "http://firecast.blob.core.windows.net/blobs/TMGOVKAH_328776.png";
+							self.floor_opositeway.url = "http://firecast.blob.core.windows.net/blobs/OCLLPSKP_328759.png";
+							self.floor_exit.url = "http://firecast.blob.core.windows.net/blobs/KJEAMHJU_328742.png";
+							self.floor_opencurve.url = "http://firecast.blob.core.windows.net/blobs/RDPGAKCT_328753.png";
+							self.floor_inside.url = "http://firecast.blob.core.windows.net/blobs/CAMUVFGO_328752.png";
+							self.floor_stair.url = "http://firecast.blob.core.windows.net/blobs/RHNLHKTP_328772.png";
+
+							self.wall_cross.url = "http://firecast.blob.core.windows.net/blobs/KJGCUDAM_328762.png";
+							self.wall_t.url = "http://firecast.blob.core.windows.net/blobs/FWMBVBCB_328758.png";
+							self.wall_line.url = "http://firecast.blob.core.windows.net/blobs/WBUQKCPR_328770.png";
+							self.wall_curve.url = "http://firecast.blob.core.windows.net/blobs/WVUEGBNU_328765.png";
+							self.wall_deadend.url = "http://firecast.blob.core.windows.net/blobs/HCGLWRRC_328768.png";
+							self.wall_pilar.url = "http://firecast.blob.core.windows.net/blobs/QLOPOGTG_328774.png";
+						elseif self.styleOptions.value == lang('scene.generator.tiles.style3') then
+							self.door_light.url = "http://firecast.blob.core.windows.net/blobs/ASGFSISW_329320.png";
+							self.door_heavy.url = "http://firecast.blob.core.windows.net/blobs/ASGFSISW_329320.png";
+							self.trap.url = "http://firecast.blob.core.windows.net/blobs/CJJFVOHM_332120.png";
+							self.passage.url = "http://firecast.blob.core.windows.net/blobs/ASGFSISW_329320.png";
+							
+							self.floor_deadend.url = "http://firecast.blob.core.windows.net/blobs/WLWRMANJ_329322.jpg";
+							self.floor_line.url = "http://firecast.blob.core.windows.net/blobs/CBDUBAMQ_329345.png";
+							self.floor_curve.url = "http://firecast.blob.core.windows.net/blobs/TTNASKFU_329323.jpg";
+							self.floor_tip.url = "http://firecast.blob.core.windows.net/blobs/DQCKIBNU_329328.jpg";
+							self.floor_t.url = "http://firecast.blob.core.windows.net/blobs/MTEOMLWF_329338.png";
+							self.floor_coneright.url = "http://firecast.blob.core.windows.net/blobs/BMDMFEMN_329337.png";
+							self.floor_coneleft.url = "http://firecast.blob.core.windows.net/blobs/OEGFLVQO_329343.png";
+							self.floor_side.url = "http://firecast.blob.core.windows.net/blobs/ITRDMMWK_329347.png";
+							self.floor_cross.url = "http://firecast.blob.core.windows.net/blobs/BTWIOSUO_329326.jpg";
+							self.floor_twoway.url = "http://firecast.blob.core.windows.net/blobs/FTFIPHHK_329352.jpg";
+							self.floor_opositeway.url = "http://firecast.blob.core.windows.net/blobs/PDOLMBKA_329335.jpg";
+							self.floor_exit.url = "http://firecast.blob.core.windows.net/blobs/PPGPCUGT_329358.jpg";
+							self.floor_opencurve.url = "http://firecast.blob.core.windows.net/blobs/GLSWWJBD_329332.png";
+							self.floor_inside.url = "http://firecast.blob.core.windows.net/blobs/SHGBFFHA_329341.png";
+							self.floor_stair.url = "http://firecast.blob.core.windows.net/blobs/GHANDAIU_329331.png";
+
+							self.wall_cross.url = "http://firecast.blob.core.windows.net/blobs/EHBQVTHS_329351.png";
+							self.wall_t.url = "http://firecast.blob.core.windows.net/blobs/EHBQVTHS_329351.png";
+							self.wall_line.url = "http://firecast.blob.core.windows.net/blobs/EHBQVTHS_329351.png";
+							self.wall_curve.url = "http://firecast.blob.core.windows.net/blobs/EHBQVTHS_329351.png";
+							self.wall_deadend.url = "http://firecast.blob.core.windows.net/blobs/EHBQVTHS_329351.png";
+							self.wall_pilar.url = "http://firecast.blob.core.windows.net/blobs/EHBQVTHS_329351.png";
+						elseif self.styleOptions.value == lang('scene.generator.tiles.style4') then
+							self.door_light.url = "http://firecast.blob.core.windows.net/blobs/IHNOSLRB_329541.png";
+							self.door_heavy.url = "http://firecast.blob.core.windows.net/blobs/QLSSSSQM_329580.png";
+							self.trap.url = "http://firecast.blob.core.windows.net/blobs/UVWDHKET_332122.png";
+							self.passage.url = "http://firecast.blob.core.windows.net/blobs/HQASAGPB_332124.png";
+
+							self.floor_deadend.url = "http://firecast.blob.core.windows.net/blobs/KNKLUVFJ_329540.png";
+							self.floor_line.url = "http://firecast.blob.core.windows.net/blobs/OEWGPTTL_329576.png";
+							self.floor_curve.url = "http://firecast.blob.core.windows.net/blobs/IWLQGFRB_329534.png";
+							self.floor_tip.url = "http://firecast.blob.core.windows.net/blobs/BFHBERSL_329570.png";
+							self.floor_t.url = "http://firecast.blob.core.windows.net/blobs/MCJPCEDL_329536.png";
+							self.floor_coneright.url = "http://firecast.blob.core.windows.net/blobs/LONCNMBR_329546.png";
+							self.floor_coneleft.url = "http://firecast.blob.core.windows.net/blobs/DMQPIQJR_329544.png";
+							self.floor_side.url = "http://firecast.blob.core.windows.net/blobs/BDLQMCWU_329560.png";
+							self.floor_cross.url = "http://firecast.blob.core.windows.net/blobs/JFIIPDRF_329554.png";
+							self.floor_twoway.url = "http://firecast.blob.core.windows.net/blobs/OAAFLUJI_329558.png";
+							self.floor_opositeway.url = "http://firecast.blob.core.windows.net/blobs/EUMIELCK_329566.png";
+							self.floor_exit.url = "http://firecast.blob.core.windows.net/blobs/LTDWDTPC_329535.png";
+							self.floor_opencurve.url = "http://firecast.blob.core.windows.net/blobs/UTWCKBMF_329568.png";
+							self.floor_inside.url = "http://firecast.blob.core.windows.net/blobs/HVARPVMD_329578.png";
+							self.floor_stair.url = "http://firecast.blob.core.windows.net/blobs/NFGUROCR_329572.png";
+
+							self.wall_cross.url = "http://firecast.blob.core.windows.net/blobs/FRJIBOIQ_329562.png";
+							self.wall_t.url = "http://firecast.blob.core.windows.net/blobs/SSUOWVOT_329550.png";
+							self.wall_line.url = "http://firecast.blob.core.windows.net/blobs/OVJWNISR_329551.png";
+							self.wall_curve.url = "http://firecast.blob.core.windows.net/blobs/KHSKBVNB_329556.png";
+							self.wall_deadend.url = "http://firecast.blob.core.windows.net/blobs/PSHQKLON_329574.png";
+							self.wall_pilar.url = "http://firecast.blob.core.windows.net/blobs/GPCUFOBC_329563.png";
+						elseif self.styleOptions.value == lang('scene.generator.tiles.style5') then
+							self.door_light.url = "http://firecast.blob.core.windows.net/blobs/LJKGSFOM_329829.png";
+							self.door_heavy.url = "http://firecast.blob.core.windows.net/blobs/OUOWGIWF_329825.png";
+							self.trap.url = "http://firecast.blob.core.windows.net/blobs/LTUAEHIS_332128.png";
+							self.passage.url = "http://firecast.blob.core.windows.net/blobs/CUJPIRNK_332126.png";
+							
+							self.floor_deadend.url = "http://firecast.blob.core.windows.net/blobs/LSBVEFUE_329833.png";
+							self.floor_line.url = "http://firecast.blob.core.windows.net/blobs/HCTNMNTG_329849.png";
+							self.floor_curve.url = "http://firecast.blob.core.windows.net/blobs/QFCUPDKL_329827.png";
+							self.floor_tip.url = "http://firecast.blob.core.windows.net/blobs/GWLTJWQD_329851.png";
+							self.floor_t.url = "http://firecast.blob.core.windows.net/blobs/VJRLJLIP_329835.png";
+							self.floor_coneright.url = "http://firecast.blob.core.windows.net/blobs/JETNCEDV_329837.png";
+							self.floor_coneleft.url = "http://firecast.blob.core.windows.net/blobs/AGQVIIOC_329831.png";
+							self.floor_side.url = "http://firecast.blob.core.windows.net/blobs/BGNSEQEV_329853.png";
+							self.floor_cross.url = "http://firecast.blob.core.windows.net/blobs/MUGCAHCC_329843.png";
+							self.floor_twoway.url = "http://firecast.blob.core.windows.net/blobs/MHTBQHCU_329841.png";
+							self.floor_opositeway.url = "http://firecast.blob.core.windows.net/blobs/DQKUIGSA_329855.png";
+							self.floor_exit.url = "http://firecast.blob.core.windows.net/blobs/MJWUJEGV_329865.png";
+							self.floor_opencurve.url = "http://firecast.blob.core.windows.net/blobs/VFLPUBSF_329839.png";
+							self.floor_inside.url = "http://firecast.blob.core.windows.net/blobs/VNAMTMGA_329847.png";
+							self.floor_stair.url = "http://firecast.blob.core.windows.net/blobs/TJSMPUQJ_331903.png";
+							
+							self.wall_cross.url = "http://firecast.blob.core.windows.net/blobs/VNQTBSEP_329857.png";
+							self.wall_t.url = "http://firecast.blob.core.windows.net/blobs/ANHEQLQS_329863.png";
+							self.wall_line.url = "http://firecast.blob.core.windows.net/blobs/JCEANFAN_329869.png";
+							self.wall_curve.url = "http://firecast.blob.core.windows.net/blobs/OCIAJCEG_329861.png";
+							self.wall_deadend.url = "http://firecast.blob.core.windows.net/blobs/SBKLABQH_329859.png";
+							self.wall_pilar.url = "http://firecast.blob.core.windows.net/blobs/EBQHSNUU_329867.png";
+						elseif self.styleOptions.value == lang('scene.generator.tiles.style6') then
+							self.door_light.url = "http://firecast.blob.core.windows.net/blobs/RIUGQSGD_330392.png";
+							self.door_heavy.url = "http://firecast.blob.core.windows.net/blobs/LROGHUWU_330376.png";
+							self.trap.url = "http://firecast.blob.core.windows.net/blobs/GAAAHVRC_332132.png";
+							self.passage.url = "http://firecast.blob.core.windows.net/blobs/RIUGQSGD_330392.png";
+							
+							self.floor_deadend.url = "http://firecast.blob.core.windows.net/blobs/CBRDIDTG_330380.png";
+							self.floor_line.url = "http://firecast.blob.core.windows.net/blobs/TKUGJHBB_330394.png";
+							self.floor_curve.url = "http://firecast.blob.core.windows.net/blobs/DWVVDDLE_330381.png";
+							self.floor_tip.url = "http://firecast.blob.core.windows.net/blobs/JTGVLEUL_330402.png";
+							self.floor_t.url = "http://firecast.blob.core.windows.net/blobs/ENDICILC_330390.png";
+							self.floor_coneright.url = "http://firecast.blob.core.windows.net/blobs/CUINVIGD_330372.png";
+							self.floor_coneleft.url = "http://firecast.blob.core.windows.net/blobs/EFEVEHJF_330374.png";
+							self.floor_side.url = "http://firecast.blob.core.windows.net/blobs/BVVUVHGR_330396.png";
+							self.floor_cross.url = "http://firecast.blob.core.windows.net/blobs/WVBEANSO_330378.png";
+							self.floor_twoway.url = "http://firecast.blob.core.windows.net/blobs/GRONQQCD_330400.png";
+							self.floor_opositeway.url = "http://firecast.blob.core.windows.net/blobs/EWLELELT_330386.png";
+							self.floor_exit.url = "http://firecast.blob.core.windows.net/blobs/GKMWAGIV_330384.png";
+							self.floor_opencurve.url = "http://firecast.blob.core.windows.net/blobs/UPEJUFOG_330404.png";
+							self.floor_inside.url = "http://firecast.blob.core.windows.net/blobs/MHGHUWBT_330388.png";
+							self.floor_stair.url = "http://firecast.blob.core.windows.net/blobs/JVRJFNEO_330398.png";
+							
+							self.wall_cross.url = "http://firecast.blob.core.windows.net/blobs/HKTNHTLV_330408.png";
+							self.wall_t.url = "http://firecast.blob.core.windows.net/blobs/FQKBVDRE_330414.png";
+							self.wall_line.url = "http://firecast.blob.core.windows.net/blobs/WFGNBKEK_330406.png";
+							self.wall_curve.url = "http://firecast.blob.core.windows.net/blobs/DGRLUWEC_330416.png";
+							self.wall_deadend.url = "http://firecast.blob.core.windows.net/blobs/WULMLDKW_330412.png";
+							self.wall_pilar.url = "http://firecast.blob.core.windows.net/blobs/OGNMMJLI_330410.png";
+						elseif self.styleOptions.value == lang('scene.generator.tiles.style7') and node.save1~=nil then
+							self.door_light.url = node.save1[1];
+							self.door_heavy.url = node.save1[2];
+							self.floor_deadend.url = node.save1[3];
+							self.floor_line.url = node.save1[4];
+							self.floor_curve.url = node.save1[5];
+							self.floor_tip.url = node.save1[6];
+							self.floor_t.url = node.save1[7];
+							self.floor_coneright.url = node.save1[8];
+							self.floor_coneleft.url = node.save1[9];
+							self.floor_side.url = node.save1[10];
+							self.floor_cross.url = node.save1[11];
+							self.floor_twoway.url = node.save1[12];
+							self.floor_opositeway.url = node.save1[13];
+							self.floor_exit.url = node.save1[14];
+							self.floor_opencurve.url = node.save1[15];
+							self.floor_inside.url = node.save1[16];
+							self.floor_stair.url = node.save1[17];
+							self.wall_cross.url = node.save1[18];
+							self.wall_t.url = node.save1[19];
+							self.wall_line.url = node.save1[20];
+							self.wall_curve.url = node.save1[21];
+							self.wall_deadend.url = node.save1[22];
+							self.wall_pilar.url = node.save1[23];
+							self.trap.url = node.save1[24];
+							self.passage.url = node.save1[25];
+						elseif self.styleOptions.value == lang('scene.generator.tiles.style8') and node.save2~=nil then
+							self.door_light.url = node.save2[1];
+							self.door_heavy.url = node.save2[2];
+							self.floor_deadend.url = node.save2[3];
+							self.floor_line.url = node.save2[4];
+							self.floor_curve.url = node.save2[5];
+							self.floor_tip.url = node.save2[6];
+							self.floor_t.url = node.save2[7];
+							self.floor_coneright.url = node.save2[8];
+							self.floor_coneleft.url = node.save2[9];
+							self.floor_side.url = node.save2[10];
+							self.floor_cross.url = node.save2[11];
+							self.floor_twoway.url = node.save2[12];
+							self.floor_opositeway.url = node.save2[13];
+							self.floor_exit.url = node.save2[14];
+							self.floor_opencurve.url = node.save2[15];
+							self.floor_inside.url = node.save2[16];
+							self.floor_stair.url = node.save2[17];
+							self.wall_cross.url = node.save2[18];
+							self.wall_t.url = node.save2[19];
+							self.wall_line.url = node.save2[20];
+							self.wall_curve.url = node.save2[21];
+							self.wall_deadend.url = node.save2[22];
+							self.wall_pilar.url = node.save2[23];
+							self.trap.url = node.save2[24];
+							self.passage.url = node.save2[25];
+						elseif self.styleOptions.value == lang('scene.generator.tiles.style9') and node.save3~=nil then
+							self.door_light.url = node.save3[1];
+							self.door_heavy.url = node.save3[2];
+							self.floor_deadend.url = node.save3[3];
+							self.floor_line.url = node.save3[4];
+							self.floor_curve.url = node.save3[5];
+							self.floor_tip.url = node.save3[6];
+							self.floor_t.url = node.save3[7];
+							self.floor_coneright.url = node.save3[8];
+							self.floor_coneleft.url = node.save3[9];
+							self.floor_side.url = node.save3[10];
+							self.floor_cross.url = node.save3[11];
+							self.floor_twoway.url = node.save3[12];
+							self.floor_opositeway.url = node.save3[13];
+							self.floor_exit.url = node.save3[14];
+							self.floor_opencurve.url = node.save3[15];
+							self.floor_inside.url = node.save3[16];
+							self.floor_stair.url = node.save3[17];
+							self.wall_cross.url = node.save3[18];
+							self.wall_t.url = node.save3[19];
+							self.wall_line.url = node.save3[20];
+							self.wall_curve.url = node.save3[21];
+							self.wall_deadend.url = node.save3[22];
+							self.wall_pilar.url = node.save3[23];
+							self.trap.url = node.save3[24];
+							self.passage.url = node.save3[25];
+						elseif self.styleOptions.value == lang('scene.generator.tiles.style10') then
+							self.door_light.url = "http://firecast.blob.core.windows.net/blobs/RLCOISRC_331335.png";
+							self.door_heavy.url = "http://firecast.blob.core.windows.net/blobs/RLCOISRC_331335.png";
+							self.trap.url = "http://firecast.blob.core.windows.net/blobs/RLCOISRC_331335.png";
+							self.passage.url = "http://firecast.blob.core.windows.net/blobs/RLCOISRC_331335.png";
+							self.floor_deadend.url = "http://firecast.blob.core.windows.net/blobs/RLCOISRC_331335.png";
+							self.floor_line.url = "http://firecast.blob.core.windows.net/blobs/RLCOISRC_331335.png";
+							self.floor_curve.url = "http://firecast.blob.core.windows.net/blobs/RLCOISRC_331335.png";
+							self.floor_tip.url = "http://firecast.blob.core.windows.net/blobs/RLCOISRC_331335.png";
+							self.floor_t.url = "http://firecast.blob.core.windows.net/blobs/RLCOISRC_331335.png";
+							self.floor_coneright.url = "http://firecast.blob.core.windows.net/blobs/RLCOISRC_331335.png";
+							self.floor_coneleft.url = "http://firecast.blob.core.windows.net/blobs/RLCOISRC_331335.png";
+							self.floor_side.url = "http://firecast.blob.core.windows.net/blobs/RLCOISRC_331335.png";
+							self.floor_cross.url = "http://firecast.blob.core.windows.net/blobs/RLCOISRC_331335.png";
+							self.floor_twoway.url = "http://firecast.blob.core.windows.net/blobs/RLCOISRC_331335.png";
+							self.floor_opositeway.url = "http://firecast.blob.core.windows.net/blobs/RLCOISRC_331335.png";
+							self.floor_exit.url = "http://firecast.blob.core.windows.net/blobs/RLCOISRC_331335.png";
+							self.floor_opencurve.url = "http://firecast.blob.core.windows.net/blobs/RLCOISRC_331335.png";
+							self.floor_inside.url = "http://firecast.blob.core.windows.net/blobs/RLCOISRC_331335.png";
+							self.floor_stair.url = "http://firecast.blob.core.windows.net/blobs/RLCOISRC_331335.png";
+							self.wall_cross.url = "http://firecast.blob.core.windows.net/blobs/BOINHCPW_344827.png";
+							self.wall_t.url = "http://firecast.blob.core.windows.net/blobs/JAFEEKVG_344832.png";
+							self.wall_line.url = "http://firecast.blob.core.windows.net/blobs/BUVMSHJO_344838.png";
+							self.wall_curve.url = "http://firecast.blob.core.windows.net/blobs/QDUISQSL_344829.png";
+							self.wall_deadend.url = "http://firecast.blob.core.windows.net/blobs/ESOQKQNL_344834.png";
+							self.wall_pilar.url = "http://firecast.blob.core.windows.net/blobs/MBSBDVKQ_344836.png";
+						end;
+					</event>
+                </comboBox>
+
+                <label left="5" top="30" name="saves" margins="{left=10, right=5}" fontSize="15" fontColor="#FFCC66" hitTest="true" />
+				<comboBox left="75" top="30" width="175" name="saveTile" items="{'1', '2', '3'}">
+					<event name="onChange">
+						if self.saveTile.value == "1" then
+							node.save1 = {};
+							node.save1[1] = self.door_light.url;
+							node.save1[2] = self.door_heavy.url;
+							node.save1[3] = self.floor_deadend.url;
+							node.save1[4] = self.floor_line.url;
+							node.save1[5] = self.floor_curve.url;
+							node.save1[6] = self.floor_tip.url;
+							node.save1[7] = self.floor_t.url;
+							node.save1[8] = self.floor_coneright.url;
+							node.save1[9] = self.floor_coneleft.url;
+							node.save1[10] = self.floor_side.url;
+							node.save1[11] = self.floor_cross.url;
+							node.save1[12] = self.floor_twoway.url;
+							node.save1[13] = self.floor_opositeway.url;
+							node.save1[14] = self.floor_exit.url;
+							node.save1[15] = self.floor_opencurve.url;
+							node.save1[16] = self.floor_inside.url;
+							node.save1[17] = self.floor_stair.url;
+							node.save1[18] = self.wall_cross.url;
+							node.save1[19] = self.wall_t.url;
+							node.save1[20] = self.wall_line.url;
+							node.save1[21] = self.wall_curve.url;
+							node.save1[22] = self.wall_deadend.url;
+							node.save1[23] = self.wall_pilar.url;
+							node.save1[24] = self.trap.url;
+							node.save1[25] = self.passage.url;
+						elseif self.saveTile.value == "2" then
+							node.save2 = {};
+							node.save2[1] = self.door_light.url;
+							node.save2[2] = self.door_heavy.url;
+							node.save2[3] = self.floor_deadend.url;
+							node.save2[4] = self.floor_line.url;
+							node.save2[5] = self.floor_curve.url;
+							node.save2[6] = self.floor_tip.url;
+							node.save2[7] = self.floor_t.url;
+							node.save2[8] = self.floor_coneright.url;
+							node.save2[9] = self.floor_coneleft.url;
+							node.save2[10] = self.floor_side.url;
+							node.save2[11] = self.floor_cross.url;
+							node.save2[12] = self.floor_twoway.url;
+							node.save2[13] = self.floor_opositeway.url;
+							node.save2[14] = self.floor_exit.url;
+							node.save2[15] = self.floor_opencurve.url;
+							node.save2[16] = self.floor_inside.url;
+							node.save2[17] = self.floor_stair.url;
+							node.save2[18] = self.wall_cross.url;
+							node.save2[19] = self.wall_t.url;
+							node.save2[20] = self.wall_line.url;
+							node.save2[21] = self.wall_curve.url;
+							node.save2[22] = self.wall_deadend.url;
+							node.save2[23] = self.wall_pilar.url;
+							node.save2[24] = self.trap.url;
+							node.save2[25] = self.passage.url;
+						elseif self.saveTile.value == "3" then
+							node.save3 = {};
+							node.save3[1] = self.door_light.url;
+							node.save3[2] = self.door_heavy.url;
+							node.save3[3] = self.floor_deadend.url;
+							node.save3[4] = self.floor_line.url;
+							node.save3[5] = self.floor_curve.url;
+							node.save3[6] = self.floor_tip.url;
+							node.save3[7] = self.floor_t.url;
+							node.save3[8] = self.floor_coneright.url;
+							node.save3[9] = self.floor_coneleft.url;
+							node.save3[10] = self.floor_side.url;
+							node.save3[11] = self.floor_cross.url;
+							node.save3[12] = self.floor_twoway.url;
+							node.save3[13] = self.floor_opositeway.url;
+							node.save3[14] = self.floor_exit.url;
+							node.save3[15] = self.floor_opencurve.url;
+							node.save3[16] = self.floor_inside.url;
+							node.save3[17] = self.floor_stair.url;
+							node.save3[18] = self.wall_cross.url;
+							node.save3[19] = self.wall_t.url;
+							node.save3[20] = self.wall_line.url;
+							node.save3[21] = self.wall_curve.url;
+							node.save3[22] = self.wall_deadend.url;
+							node.save3[23] = self.wall_pilar.url;
+							node.save3[24] = self.trap.url;
+							node.save3[25] = self.passage.url;
+						end;						
+					</event>
+				</comboBox>
+
+				<layout left="0" top="55" height="630" width="300">
+					<label text="" name="tiles1" align="top" fontSize="15" fontColor="#FFCC66"/>
+					<horzLine align="top" strokeColor="#FFCC6670" margins="{left=10}"/>
+
+					<image left="5" top="30" width="64" height="64"  style="stretch" name="door_light" editable="true">
+						<event name="OnStartDrag">
+					        drag:addData("imageURL", self.door_light.url);
+					    </event>
+					</image>
+					<image left="74" top="30" width="64" height="64"  style="stretch" name="door_heavy" editable="true">
+						<event name="OnStartDrag">
+					        drag:addData("imageURL", self.door_heavy.url);
+					    </event>
+					</image>
+					<image left="143" top="30" width="64" height="64"  style="stretch" name="trap" editable="true">
+						<event name="OnStartDrag">
+					        drag:addData("imageURL", self.trap.url);
+					    </event>
+					</image>
+					<image left="212" top="30" width="64" height="64"  style="stretch" name="passage" editable="true">
+						<event name="OnStartDrag">
+					        drag:addData("imageURL", self.passage.url);
+					    </event>
+					</image>
+
+					<label text="" name="tiles2" top="110" width="250" fontSize="15" fontColor="#FFCC66"/>
+					<horzLine top="130" width="250" strokeColor="#FFCC6670" margins="{left=10}"/>
+					
+					<image left="5" top="140" width="64" height="64"  style="stretch" name="floor_deadend" editable="true">
+						<event name="OnStartDrag">
+					        drag:addData("imageURL", self.floor_deadend.url);
+					    </event>
+					</image>
+					<image left="74" top="140" width="64" height="64"  style="stretch" name="floor_line" editable="true">
+						<event name="OnStartDrag">
+					        drag:addData("imageURL", self.floor_line.url);
+					    </event>
+					</image>
+					<image left="143" top="140" width="64" height="64"  style="stretch" name="floor_curve" editable="true">
+						<event name="OnStartDrag">
+					        drag:addData("imageURL", self.floor_curve.url);
+					    </event>
+					</image>
+					<image left="212" top="140" width="64" height="64"  style="stretch" name="floor_tip" editable="true">
+						<event name="OnStartDrag">
+					        drag:addData("imageURL", self.floor_tip.url);
+					    </event>
+					</image>
+					
+					<image left="5" top="209" width="64" height="64"  style="stretch" name="floor_t" editable="true">
+						<event name="OnStartDrag">
+					        drag:addData("imageURL", self.floor_t.url);
+					    </event>
+					</image>
+					<image left="74" top="209" width="64" height="64"  style="stretch" name="floor_coneright" editable="true">
+						<event name="OnStartDrag">
+					        drag:addData("imageURL", self.floor_coneright.url);
+					    </event>
+					</image>
+					<image left="143" top="209" width="64" height="64"  style="stretch" name="floor_coneleft" editable="true">
+						<event name="OnStartDrag">
+					        drag:addData("imageURL", self.floor_coneleft.url);
+					    </event>
+					</image>
+					<image left="212" top="209" width="64" height="64"  style="stretch" name="floor_side" editable="true">
+						<event name="OnStartDrag">
+					        drag:addData("imageURL", self.floor_side.url);
+					    </event>
+					</image>
+
+					<image left="5" top="278" width="64" height="64"  style="stretch" name="floor_cross" editable="true">
+						<event name="OnStartDrag">
+					        drag:addData("imageURL", self.floor_cross.url);
+					    </event>
+					</image>
+					<image left="74" top="278" width="64" height="64"  style="stretch" name="floor_twoway" editable="true">
+						<event name="OnStartDrag">
+					        drag:addData("imageURL", self.floor_twoway.url);
+					    </event>
+					</image>
+					<image left="143" top="278" width="64" height="64"  style="stretch" name="floor_opositeway" editable="true">
+						<event name="OnStartDrag">
+					        drag:addData("imageURL", self.floor_opositeway.url);
+					    </event>
+					</image>
+					<image left="212" top="278" width="64" height="64"  style="stretch" name="floor_exit" editable="true">
+						<event name="OnStartDrag">
+					        drag:addData("imageURL", self.floor_exit.url);
+					    </event>
+					</image>
+
+					<image left="5" top="347" width="64" height="64"  style="stretch" name="floor_opencurve" editable="true">
+						<event name="OnStartDrag">
+					        drag:addData("imageURL", self.floor_opencurve.url);
+					    </event>
+					</image>
+					<image left="74" top="347" width="64" height="64"  style="stretch" name="floor_inside" editable="true">
+						<event name="OnStartDrag">
+					        drag:addData("imageURL", self.floor_inside.url);
+					    </event>
+					</image>
+					<image left="143" top="347" width="64" height="64"  style="stretch" name="floor_stair" editable="true">
+						<event name="OnStartDrag">
+					        drag:addData("imageURL", self.floor_stair.url);
+					    </event>
+					</image>
+
+					<label text="" name="tiles3" top="447" width="250" fontSize="15" fontColor="#FFCC66"/>
+					<horzLine top="467" width="250" strokeColor="#FFCC6670" margins="{left=10}"/>
+
+					<image left="5" top="487" width="64" height="64"  style="stretch" name="wall_cross" editable="true">
+						<event name="OnStartDrag">
+					        drag:addData("imageURL", self.wall_cross.url);
+					    </event>
+					</image>
+					<image left="74" top="487" width="64" height="64"  style="stretch" name="wall_t" editable="true">
+						<event name="OnStartDrag">
+					        drag:addData("imageURL", self.wall_t.url);
+					    </event>
+					</image>
+					<image left="143" top="487" width="64" height="64"  style="stretch" name="wall_line" editable="true">
+						<event name="OnStartDrag">
+					        drag:addData("imageURL", self.wall_line.url);
+					    </event>
+					</image>
+					<image left="212" top="487" width="64" height="64"  style="stretch" name="wall_curve" editable="true">
+						<event name="OnStartDrag">
+					        drag:addData("imageURL", self.wall_curve.url);
+					    </event>
+					</image>
+
+					<image left="5" top="556" width="64" height="64"  style="stretch" name="wall_deadend" editable="true">
+						<event name="OnStartDrag">
+					        drag:addData("imageURL", self.wall_deadend.url);
+					    </event>
+					</image>
+					<image left="74" top="556" width="64" height="64"  style="stretch" name="wall_pilar" editable="true">
+						<event name="OnStartDrag">
+					        drag:addData("imageURL", self.wall_pilar.url);
+					    </event>
+					</image>
+
+				</layout>
+
+			</scrollBox>
+		</tab>
+	</tabControl>
+
+	<BottomActionCancelPopupPanel actionClick="self:processarOK()" cancelClick="self:processarCancel()"/>
+	
+	<script><![CDATA[
+		local node = NDB.load("generatorOptions.xml");
+		self.tabOptions.text = lang('scene.generator.tab.options');
+		self.tabTiles.text = lang('scene.generator.tab.tiles');
+		self.tabName.text = lang('scene.generator.maze');
+		self.entradasText.text = lang('scene.generator.entradas.text');
+		self.entradasText.hint = lang('scene.generator.entradas.hint');
+		self.escadasText.text = lang('scene.generator.escadas.text');
+		self.escadasText.hint = lang('scene.generator.escadas.hint');
+		self.armadilhasText.text = lang('scene.generator.armadilhas.text');
+		self.armadilhasText.hint = lang('scene.generator.armadilhas.hint');
+		self.passagensText.text = lang('scene.generator.passagens.text');
+		self.passagensText.hint = lang('scene.generator.passagens.hint');
+		self.saves.text = lang('scene.generator.saves.text');
+		self.saves.hint = lang('scene.generator.saves.hint');
+
+		if node.entradas == nil then
+			node.entradas = 2;
+			node.escadas = 0;
+			node.armadilhas = 2;
+			node.passagens = 2;
+			node.thick = "2";
+			node.style = lang('scene.generator.tiles.style1');
+			node.save = {};
+			node.save[1] = "http://firecast.blob.core.windows.net/blobs/LLBKLNNN_328371.png";
+			node.save[2] = "http://firecast.blob.core.windows.net/blobs/NSVRSNLG_328370.png";
+			node.save[3] = "http://firecast.blob.core.windows.net/blobs/DCCHNTNH_328338.png";
+			node.save[4] = "http://firecast.blob.core.windows.net/blobs/VBQRSILF_328334.png";
+			node.save[5] = "http://firecast.blob.core.windows.net/blobs/CHKWJATW_328360.png";
+			node.save[6] = "http://firecast.blob.core.windows.net/blobs/RKDFSJOR_328336.png";
+			node.save[7] = "http://firecast.blob.core.windows.net/blobs/OUICQAEA_328330.png";
+			node.save[8] = "http://firecast.blob.core.windows.net/blobs/MFRICDNQ_328364.png";
+			node.save[9] = "http://firecast.blob.core.windows.net/blobs/FALFKGFW_328365.png";
+			node.save[10] = "http://firecast.blob.core.windows.net/blobs/SUJINTTV_328324.png";
+			node.save[11] = "http://firecast.blob.core.windows.net/blobs/EQDFPEFJ_328323.png";
+			node.save[12] = "http://firecast.blob.core.windows.net/blobs/MKBOEQSN_328560.png";
+			node.save[13] = "http://firecast.blob.core.windows.net/blobs/RKJUVLDJ_328561.png";
+			node.save[14] = "http://firecast.blob.core.windows.net/blobs/KEUMVLIT_328361.png";
+			node.save[15] = "http://firecast.blob.core.windows.net/blobs/DIGAMPSO_328538.png";
+			node.save[16] = "http://firecast.blob.core.windows.net/blobs/KKVCTGSV_328328.png";
+			node.save[17] = "http://firecast.blob.core.windows.net/blobs/VGRUNOJU_328508.png";
+			node.save[18] = "http://firecast.blob.core.windows.net/blobs/ERKWBFJS_328345.png";
+			node.save[19] = "http://firecast.blob.core.windows.net/blobs/LBOAERRP_328342.png";
+			node.save[20] = "http://firecast.blob.core.windows.net/blobs/IRSBUCLP_328346.png";
+			node.save[21] = "http://firecast.blob.core.windows.net/blobs/SDMDKCTL_328344.png";
+			node.save[22] = "http://firecast.blob.core.windows.net/blobs/HKWNFCIW_328340.png";
+			node.save[23] = "http://firecast.blob.core.windows.net/blobs/CVFPGFHI_328350.png";
+			node.save[24] = "http://firecast.blob.core.windows.net/blobs/EDUPFJLI_328660.png";
+			node.save[25] = "http://firecast.blob.core.windows.net/blobs/AEHGOPMH_332114.png";
+		end;
+
+		self.entradas.text = node.entradas;
+		self.escadas.text = node.escadas;
+		self.armadilhas.text = node.armadilhas;
+		self.passagens.text = node.passagens;
+
+		self.thickness.text = lang('scene.generator.thickness.text');
+		self.thickness.hint = lang('scene.generator.thickness.hint');
+		self.thick.value = node.thick;
+
+		self.style.text = lang('scene.generator.tiles.style');
+		
+		self.styleOptions.items = {lang("scene.generator.tiles.style1"), 
+								  lang("scene.generator.tiles.style2"), 
+								  lang("scene.generator.tiles.style3"), 
+								  lang("scene.generator.tiles.style4"), 
+								  lang("scene.generator.tiles.style5"), 
+								  lang("scene.generator.tiles.style6"), 
+								  lang("scene.generator.tiles.style10"), 
+								  lang("scene.generator.tiles.style7"), 
+								  lang("scene.generator.tiles.style8"), 
+								  lang("scene.generator.tiles.style9")};
+
+		self.tiles1.text = lang('scene.generator.tiles.door');
+		self.tiles2.text = lang('scene.generator.tiles.floor');
+		self.tiles3.text = lang('scene.generator.tiles.wall');
+		self.door_light.url = node.save[1];
+		self.door_heavy.url = node.save[2];
+		self.floor_deadend.url = node.save[3];
+		self.floor_line.url = node.save[4];
+		self.floor_curve.url = node.save[5];
+		self.floor_tip.url = node.save[6];
+		self.floor_t.url = node.save[7];
+		self.floor_coneright.url = node.save[8];
+		self.floor_coneleft.url = node.save[9];
+		self.floor_side.url = node.save[10];
+		self.floor_cross.url = node.save[11];
+		self.floor_twoway.url = node.save[12];
+		self.floor_opositeway.url = node.save[13];
+		self.floor_exit.url = node.save[14];
+		self.floor_opencurve.url = node.save[15];
+		self.floor_inside.url = node.save[16];
+		self.floor_stair.url = node.save[17];
+		self.wall_cross.url = node.save[18];
+		self.wall_t.url = node.save[19];
+		self.wall_line.url = node.save[20];
+		self.wall_curve.url = node.save[21];
+		self.wall_deadend.url = node.save[22];
+		self.wall_pilar.url = node.save[23];
+		self.trap.url = node.save[24];
+		self.passage.url = node.save[25];
+		self.styleOptions.value = node.style;
+
+		--self.status.text = lang('scene.generator.status.message') .. lang('scene.generator.status.wait');
+
+		function self:prepareForShow(oScene)
+			scene = oScene;
+		end;
+
+		local function findPaths(grid, x, y)
+			local paths = 0;
+			if grid[x-1]~= nil and grid[x-1][y] ~= nil then
+				if grid[x-1][y].status == "undefined" then
+					paths = paths + 1;
+				end;
+			end;
+			if grid[x+1]~= nil and grid[x+1][y] ~= nil then
+				if grid[x+1][y].status == "undefined" then
+					paths = paths + 1;
+				end;
+			end;
+			if grid[x][y-1] ~= nil then
+				if grid[x][y-1].status == "undefined" then
+					paths = paths + 1;
+				end;
+			end;
+			if grid[x][y+1] ~= nil then
+				if grid[x][y+1].status == "undefined" then
+					paths = paths + 1;
+				end;
+			end;
+
+			return paths;
+		end;
+
+		local function selectPath(grid, x, y, paths)
+			local id = 0;
+			local rng = math.random(1, paths);
+
+			if grid[x-1]~= nil and grid[x-1][y] ~= nil then
+				if grid[x-1][y].status == "undefined" then
+					id = id + 1;
+				end;
+			end;
+			if id == rng then 
+				grid[x][y].west = "passage";
+				grid[x-1][y].east = "passage";
+				return (x-1),y;
+			end;
+
+			if grid[x+1]~= nil and grid[x+1][y] ~= nil then
+				if grid[x+1][y].status == "undefined" then
+					id = id + 1;
+				end;
+			end;
+			if id == rng then 
+				grid[x][y].east = "passage";
+				grid[x+1][y].west = "passage";
+				return (x+1),y;
+			end;
+
+			if grid[x][y-1] ~= nil then
+				if grid[x][y-1].status == "undefined" then
+					id = id + 1;
+				end;
+			end;
+			if id == rng then 
+				grid[x][y].north = "passage";
+				grid[x][y-1].south = "passage";
+				return x,(y-1);
+			end;
+
+			grid[x][y].south = "passage";
+			grid[x][y+1].north = "passage";
+			return x,(y+1);
+		end
+
+		local function buildMaze(grid, x, y, stack, stackSize)
+			-- showMessage("x: " .. x .. " y: " .. y .. " size: " .. stackSize);
+
+			grid[x][y].status = "visited";
+
+			local paths = findPaths(grid, x, y);
+			-- showMessage(paths);
+
+			if paths == 0 then
+				-- deadend go to next in the list
+
+				stackSize = stackSize - 1;
+				if stackSize > 0 then
+					buildMaze(grid, stack[stackSize].x, stack[stackSize].y, stack, stackSize)
+				end;
+			else
+				stackSize = stackSize + 1;
+				stack[stackSize] = grid[x][y];
+
+				x, y = selectPath(grid, x, y, paths);
+				buildMaze(grid, x, y, stack, stackSize);
+			end;
+		end;
+
+		local function buildVerticalWalls(grid, i, side, length, size)
+			local status = 0;
+			local aux = {};
+			local factor = 0;
+			if side == "west" then factor = -1 end;
+
+			for j=1, length, 1 do
+				if status == 0 then
+					-- look for first point
+					if grid[i][j][side] == "wall" then
+						--showMessage("wall started");
+						status = 1;
+						aux[1] = {x=(i+factor+0.05)*size, y=(j-1)*size};
+						aux[2] = {x=(i+factor-0.05)*size, y=(j-1)*size};
+					end;
+				else
+					-- look for last point
+					if grid[i][j][side] ~= "wall" then
+						--showMessage("wall ended on passage");
+						aux[3] = {x=(i+factor-0.05)*size, y=(j-1)*size};
+						aux[4] = {x=(i+factor+0.05)*size, y=(j-1)*size};
+
+						scene.fogOfWar:addOpaqueArea(aux);
+
+						aux = {};
+						status = 0;
+					end;
+				end;
+
+				if status == 1 and j == length then
+					--showMessage("wall ended on outer wall");
+					aux[3] = {x=(i+factor-0.05)*size, y=(j)*size};
+					aux[4] = {x=(i+factor+0.05)*size, y=(j)*size};
+
+					scene.fogOfWar:addOpaqueArea(aux);
+
+					aux = {};
+					status = 0;
+				end;
+			end;
+		end;
+
+		local function buildHorizontalWalls(grid, j, side, length, size)
+			local status = 0;
+			local aux = {};
+			local factor = 0;
+			if side == "north" then factor = -1 end;
+
+			for i=1, length, 1 do
+				if status == 0 then
+					-- look for first point
+					if grid[i][j][side] == "wall" then
+						--showMessage("wall started");
+						status = 1;
+						aux[1] = {x=(i-1)*size, y=(j+factor+0.05)*size};
+						aux[2] = {x=(i-1)*size, y=(j+factor-0.05)*size};
+					end;
+				else
+					-- look for last point
+					if grid[i][j][side] ~= "wall" then
+						--showMessage("wall ended on passage");
+						aux[3] = {x=(i-1)*size, y=(j+factor-0.05)*size};
+						aux[4] = {x=(i-1)*size, y=(j+factor+0.05)*size};
+
+						scene.fogOfWar:addOpaqueArea(aux);
+
+						aux = {};
+						status = 0;
+					end;
+				end;
+
+				if status == 1 and i == length then
+					--showMessage("wall ended on outer wall");
+					aux[3] = {x=(i)*size, y=(j+factor-0.05)*size};
+					aux[4] = {x=(i)*size, y=(j+factor+0.05)*size};
+
+					scene.fogOfWar:addOpaqueArea(aux);
+
+					aux = {};
+					status = 0;
+				end;
+			end;
+		end;
+
+		function self:processarOK()	
+			scene.bkgColor = "black";	
+			scene.grid.gridColor = "gray";
+
+			-- Limpando scene atual
+			scene.isViewingAsGM = true;
+			scene.fogOfWar:resetOpaqueAreas();
+			local deletions = #scene.items;
+			for i=deletions, 1, -1 do
+				if scene.items[i]~=nil and scene.items[i].layer=="background" then
+					scene.items[i]:delete();
+				end;
+			end;
+			scene.fogOfWar.enabled = true;
+
+			-- Inicializando variaveis uteis
+			local thick = tonumber(self.thick.value) or 1;
+			local size = scene.grid.cellSize * thick;
+			local horzSquare = math.floor(scene.worldWidth/size);
+			local vertSquare = math.floor(scene.worldHeight/size);
+
+
+			-- Inicializando grid
+			local map = {};
+			local stack = {};
+			for i=1, horzSquare, 1 do
+				map[i] = {};
+				for j=1, vertSquare, 1 do
+					map[i][j] = {};
+
+					map[i][j].north = "wall";
+					map[i][j].south = "wall";
+					map[i][j].east = "wall";
+					map[i][j].west = "wall";
+					map[i][j].type = "undefined";
+					map[i][j].status = "undefined";
+					map[i][j].url = "";
+					map[i][j].x = i;
+					map[i][j].y = j;
+				end;
+			end;
+
+			-- Criando labirinto
+			buildMaze(map,math.random(1,horzSquare), math.random(1,vertSquare), stack, 0);
+
+			-- Definir as imagens e rotações [TILES]
+			for x=1, horzSquare, 1 do
+					--self.status.text = lang('scene.generator.status.message') .. lang('scene.generator.status.tiles') .. x;
+					for y=1, vertSquare, 1 do
+						if map[x][y].type ~= "empty" then
+							local token = scene.items:addToken("background");
+							token.x = (x-1) * size;
+							token.y = (y-1) * size;
+
+							token.width = token.width * thick;
+							token.height = token.height * thick;
+
+							-- count walls
+							local walls = 0;
+							local vertDir = map[x][y].north ~= "wall" and map[x][y].south ~= "wall";
+							local horzDir = map[x][y].west ~= "wall" and map[x][y].east ~= "wall";
+							if map[x][y].north == "wall" then 
+								walls = walls + 1 
+							end;
+							if map[x][y].west == "wall" then 
+								walls = walls + 1 
+							end;
+							if map[x][y].south == "wall" then 
+								walls = walls + 1 
+							end;
+							if map[x][y].east == "wall" then 
+								walls = walls + 1 
+							end;
+
+
+							-- Define o tipo de tile e sua rotação
+							if walls == 0 then
+								-- 4-way path
+								token.image.url = self.floor_cross.url;
+							elseif walls == 1 then
+								-- 3-way path
+								token.image.url = self.floor_t.url;
+								if map[x][y].north == "wall" then
+									token.image.rotation = 0;
+								elseif map[x][y].east == "wall" then
+									token.image.rotation = 270;
+								elseif map[x][y].south == "wall" then
+									token.image.rotation = 180;
+								elseif map[x][y].west == "wall" then
+									token.image.rotation = 90;
+								end;
+							elseif walls == 2 and (vertDir or horzDir) then 
+								-- corridor
+								token.image.url = self.floor_line.url;
+								if vertDir then
+									-- vertical corridor
+									token.image.rotation = 90;
+								else
+									-- horizontal corridor
+									token.image.rotation = 0;
+								end
+							elseif walls == 2 then
+								-- curve
+								token.image.url = self.floor_curve.url;
+								if map[x][y].north == "wall" and map[x][y].west == "wall" then
+									token.image.rotation = 0;
+								elseif map[x][y].north == "wall" and map[x][y].east == "wall" then
+									token.image.rotation = 270;
+								elseif map[x][y].south == "wall" and map[x][y].east == "wall" then
+									token.image.rotation = 180;
+								elseif map[x][y].south == "wall" and map[x][y].west == "wall" then
+									token.image.rotation = 90;
+								end;
+							elseif walls == 3 then
+								-- deadend
+								token.image.url = self.floor_deadend.url;
+								if map[x][y].north ~= "wall" then
+									token.image.rotation = 90;
+								elseif map[x][y].east ~= "wall" then
+									token.image.rotation = 0;
+								elseif map[x][y].south ~= "wall" then
+									token.image.rotation = 270;
+								elseif map[x][y].west ~= "wall" then
+									token.image.rotation = 180;
+								end;
+							else
+								-- closed room
+								token.image.url = self.wall_pilar.url;
+							end;
+						end;
+					end;
+			end;
+
+			-- Criar paredes do fog of war
+			buildVerticalWalls(map, 1, "west", vertSquare, size);
+			for i=1, horzSquare, 1 do
+				buildVerticalWalls(map, i, "east", vertSquare, size);
+			end;
+			buildHorizontalWalls(map, 1, "north", horzSquare, size);
+			for j=1, horzSquare, 1 do
+				buildHorizontalWalls(map, j, "south", horzSquare, size);
+			end;
+
+			node.entradas = self.entradas.text;
+			node.escadas = self.escadas.text;
+			node.armadilhas = self.armadilhas.text;
+			node.passagens = self.passagens.text;
+			node.thick = self.thick.value;
+			node.style = self.styleOptions.value;
+			node.save = {};
+			node.save[1] = self.door_light.url;
+			node.save[2] = self.door_heavy.url;
+			node.save[3] = self.floor_deadend.url;
+			node.save[4] = self.floor_line.url;
+			node.save[5] = self.floor_curve.url;
+			node.save[6] = self.floor_tip.url;
+			node.save[7] = self.floor_t.url;
+			node.save[8] = self.floor_coneright.url;
+			node.save[9] = self.floor_coneleft.url;
+			node.save[10] = self.floor_side.url;
+			node.save[11] = self.floor_cross.url;
+			node.save[12] = self.floor_twoway.url;
+			node.save[13] = self.floor_opositeway.url;
+			node.save[14] = self.floor_exit.url;
+			node.save[15] = self.floor_opencurve.url;
+			node.save[16] = self.floor_inside.url;
+			node.save[17] = self.floor_stair.url;
+			node.save[18] = self.wall_cross.url;
+			node.save[19] = self.wall_t.url;
+			node.save[20] = self.wall_line.url;
+			node.save[21] = self.wall_curve.url;
+			node.save[22] = self.wall_deadend.url;
+			node.save[23] = self.wall_pilar.url;
+			node.save[24] = self.trap.url;
+			node.save[25] = self.passage.url;
+
+			self:close();
+		end;
+		
+		function self:processarCancel()
+			node.entradas = self.entradas.text;
+			node.escadas = self.escadas.text;
+			node.thick = self.thick.value;
+			node.style = self.styleOptions.value;
+			node.armadilhas = self.armadilhas.text;
+			node.passagens = self.passagens.text;
+			node.save = {};
+			node.save[1] = self.door_light.url;
+			node.save[2] = self.door_heavy.url;
+			node.save[3] = self.floor_deadend.url;
+			node.save[4] = self.floor_line.url;
+			node.save[5] = self.floor_curve.url;
+			node.save[6] = self.floor_tip.url;
+			node.save[7] = self.floor_t.url;
+			node.save[8] = self.floor_coneright.url;
+			node.save[9] = self.floor_coneleft.url;
+			node.save[10] = self.floor_side.url;
+			node.save[11] = self.floor_cross.url;
+			node.save[12] = self.floor_twoway.url;
+			node.save[13] = self.floor_opositeway.url;
+			node.save[14] = self.floor_exit.url;
+			node.save[15] = self.floor_opencurve.url;
+			node.save[16] = self.floor_inside.url;
+			node.save[17] = self.floor_stair.url;
+			node.save[18] = self.wall_cross.url;
+			node.save[19] = self.wall_t.url;
+			node.save[20] = self.wall_line.url;
+			node.save[21] = self.wall_curve.url;
+			node.save[22] = self.wall_deadend.url;
+			node.save[23] = self.wall_pilar.url;
+			node.save[24] = self.trap.url;
+			node.save[25] = self.passage.url;
+
+			self:close();
+		end;
+		]]>
+	</script>
+	
+	<event name="onKeyUp">	
+		if (event.keyCode == 0x89) or (event.keyCode == 0x1B) then
+			setTimeout(
+				function()
+					self:processarCancel();
+				end, 1);
+			
+			event.keyCode = 0;
+			event.key = "";
+		end;
+	</event>	
+	
+	<event name="onCancelRequest">
+		self:processarCancel();
+	</event>
+	
+</popupForm>

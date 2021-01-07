@@ -1,0 +1,450 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmFichaRPGmeister1_svg" align="client" theme="dark" margins="{top=1}">
+	<scrollBox align="client">
+		<template name="smallTitleCenter">
+			<flowPart minWidth="50" maxWidth="50" height="15">
+				<label align="top" class="tituloCampo" fontSize="10" text="$(text)" horzTextAlign="center" wordWrap="true" textTrimming="none" autoSize="true"/>
+			</flowPart>
+		</template>
+		<template name="smallFieldCenter">
+			<flowPart minWidth="50" maxWidth="50" height="20">
+				<edit align="client" class="" field="$(field)" horzTextAlign="center" fontSize="12" type="number"/>
+			</flowPart>
+		</template>
+		<template name="midFieldCenter">
+			<flowPart minWidth="50" maxWidth="75" height="20">
+				<edit align="client" class="" field="$(field)" horzTextAlign="center" fontSize="12" type="number"/>
+			</flowPart>
+		</template>
+		<template name="smallCheckboxCenter">
+			<flowPart minWidth="50" maxWidth="75" height="15">
+				<checkBox align="client" class="" field="$(field)" text="$(text)" horzTextAlign="center" fontSize="10"/>
+			</flowPart>
+		</template>
+		<template name="longTextCenter">
+			<flowPart minWidth="140" maxWidth="150" height="20">
+				<edit align="client" class="" field="$(field)" fontSize="12"/>
+			</flowPart>
+		</template>
+		<template name="smallLabelCenter">
+			<flowPart minWidth="50" maxWidth="50" height="20">
+				<rectangle align="client" color="black" strokeColor="white" strokeSize="1"/>
+				<label align="client" field="$(field)" horzTextAlign="center" fontSize="12"/>
+			</flowPart>
+		</template>
+		<template name="atributeComboBox">
+			<flowPart minWidth="60" maxWidth="60" height="20">
+				<comboBox align="client" fontColor="white" field="$(field)" items="{'FOR', 'DES', 'CON', 'INT', 'SAB', 'CAR', '-'}" values="{'1', '2', '3', '4', '5', '6', '7'}"/>
+			</flowPart>
+		</template>
+		<template name="atributeFlow">
+			<flowLayout align="top" autoHeight="true" maxControlsPerLine="13" margins="{bottom=4}" horzAlign="center">
+				<smallFieldCenter field="inicial$(atr)"/>
+				<smallFieldCenter field="raca$(atr)"/>
+				<smallFieldCenter field="nep$(atr)"/>
+				<smallFieldCenter field="inerente$(atr)"/>
+				<smallFieldCenter field="tamanho$(atr)"/>
+				<smallFieldCenter field="outros$(atr)"/>
+				<flowPart minWidth="20" maxWidth="20" height="20"/>
+				<midFieldCenter field="melhoria$(atr)"/>
+				<midFieldCenter field="danoTemp$(atr)"/>
+				<midFieldCenter field="danoPerm$(atr)"/>
+				<midFieldCenter field="temporario$(atr)"/>
+				<midFieldCenter field="magia$(atr)"/>
+				<midFieldCenter field="classe$(atr)"/>
+			</flowLayout>
+
+			<dataLink fields="{'isMelhoriaActive', 'isDnTempActive', 'isDnPermActive', 'isTempActive', 'isClasseActive', 'isMagiaActive'}" defaultValues="{'true', 'true', 'true', 'true', 'true', 'true'}"/>
+			<dataLink fields="{'inicial$(atr)', 'raca$(atr)', 'nep$(atr)', 'inerente$(atr)', 'tamanho$(atr)', 'outros$(atr)', 'melhoria$(atr)', 'danoTemp$(atr)', 'danoPerm$(atr)', 'temporario$(atr)', 'magia$(atr)', 'classe$(atr)', 'isMelhoriaActive', 'isDnTempActive', 'isDnPermActive', 'isTempActive', 'isClasseActive', 'isMagiaActive'}">
+				<event name="onChange"><![CDATA[
+					if sheet~= nil then
+						local real = 	(tonumber(sheet.inicial$(atr)) or 0) + 
+										(tonumber(sheet.raca$(atr)) or 0) + 
+										(tonumber(sheet.nep$(atr)) or 0) + 
+										(tonumber(sheet.inerente$(atr)) or 0) + 
+										(tonumber(sheet.tamanho$(atr)) or 0) + 
+										(tonumber(sheet.outros$(atr)) or 0);
+						local efetivo = real;
+						if sheet.isMelhoriaActive then
+							efetivo = efetivo + (tonumber(sheet.melhoria$(atr)) or 0);
+						end;
+						if sheet.isDnTempActive then
+							efetivo = efetivo + (tonumber(sheet.danoTemp$(atr)) or 0);
+						end;
+						if sheet.isDnPermActive then
+							efetivo = efetivo + (tonumber(sheet.danoPerm$(atr)) or 0);
+						end;
+						if sheet.isTempActive then
+							efetivo = efetivo + (tonumber(sheet.temporario$(atr)) or 0);
+						end;
+						if sheet.isClasseActive then
+							efetivo = efetivo + (tonumber(sheet.magia$(atr)) or 0);
+						end;
+						if sheet.isMagiaActive then
+							efetivo = efetivo + (tonumber(sheet.classe$(atr)) or 0);
+						end;			
+						sheet.real$(atr) = real;
+						sheet.efet$(atr) = efetivo;
+					end;
+					]]>	
+				</event>
+			</dataLink>
+		</template>
+		<template name="Atribute">
+			<button left="5" width="35" text="$(atrU)" fontSize="11">
+				<event name="onClick">
+					local rolagem = rrpg.interpretarRolagem("1d20 " .. (sheet.efetMod$(atr)) or 0);
+					local mesaDoPersonagem = rrpg.getMesaDe(sheet);
+					mesaDoPersonagem.activeChat:rolarDados(rolagem, "Teste de $(atrN) de " .. (sheet.nome or "NOME"));
+				</event>
+			</button>
+			
+			<rectangle left="45" top="0" width="35" height="25" color="black" strokeColor="white" strokeSize="1"/>
+			<label  left="45" width="35" height="25" field="real$(atr)" horzTextAlign="center"/>
+			<rectangle left="80" top="0" width="35" height="25" color="black" strokeColor="white" strokeSize="1"/>
+			<label field="realMod$(atr)" text="0" left="80" top="3" width="35" horzTextAlign="center"/>
+			<dataLink field="real$(atr)">
+				<event name="onChange">
+					if sheet ~= nil then
+						sheet.realMod$(atr) = getMOD(sheet.real$(atr));  
+					end;
+				</event>
+			</dataLink>
+			
+			<rectangle left="120" top="0" width="35" height="25" color="black" strokeColor="white" strokeSize="1"/>
+			<label  left="120" width="35" height="25" field="efet$(atr)" horzTextAlign="center"/>
+			<rectangle left="155" top="0" width="35" height="25" color="black" strokeColor="white" strokeSize="1"/>
+			<label field="efetMod$(atr)" text="0" left="155" top="3" width="35" horzTextAlign="center"/>
+			<dataLink field="efet$(atr)">
+				<event name="onChange">
+					if sheet ~= nil then
+						sheet.efetMod$(atr) = getMOD(sheet.efet$(atr));
+						updateAtributes($(num));
+					end;
+				</event>
+			</dataLink>
+			
+			<script>
+				local function get$(atrU)()
+					local mod = tonumber(sheet.efetMod$(atr)) or 0;
+					return mod;
+				end;
+			</script>
+		</template>
+		<template name="resitenceFlow">
+			<flowLayout align="top" autoHeight="true" maxControlsPerLine="11" margins="{bottom=4}" horzAlign="center">
+				<smallFieldCenter field="base$(tr)"/>
+				<smallLabelCenter field="atrMod$(tr)"/>
+				<smallFieldCenter field="magia$(tr)"/>
+				<smallFieldCenter field="variavel$(tr)"/>
+				<smallFieldCenter field="temporario$(tr)"/>
+				<smallFieldCenter field="outros$(tr)"/>
+				<atributeComboBox field="atrTr$(tr)"/>
+			</flowLayout>
+
+			<dataLink fields="{'base$(tr)', 'atrMod$(tr)', 'magia$(tr)', 'variavel$(tr)', 'temporario$(tr)', 'outros$(tr)'}">
+				<event name="onChange"><![CDATA[
+					if sheet~= nil then
+						local tr = (tonumber(sheet.base$(tr)) or 0) + 
+										(tonumber(sheet.atrMod$(tr)) or 0) + 
+										(tonumber(sheet.magia$(tr)) or 0) + 
+										(tonumber(sheet.variavel$(tr)) or 0) + 
+										(tonumber(sheet.temporario$(tr)) or 0) + 
+										(tonumber(sheet.outros$(tr)) or 0);
+						sheet.tr$(tr) = tr;
+					end;
+					]]>
+				</event>
+			</dataLink>
+		</template>
+		<template name="Resistence">
+			<button left="5" width="45" text="$(atrU)" fontSize="11">
+				<event name="onClick">
+					local rolagem = rrpg.interpretarRolagem("1d20 +" .. (sheet.tr$(atr)) or "0");
+					local mesaDoPersonagem = rrpg.getMesaDe(sheet);
+					mesaDoPersonagem.activeChat:rolarDados(rolagem, "Teste de $(atrN) de " .. (sheet.nome or "NOME"));
+				</event>
+			</button>
+			
+			<rectangle left="55" top="0" width="40" height="25" color="black" strokeColor="white" strokeSize="1"/>
+			<label  left="55" width="40" height="25" field="tr$(atr)" horzTextAlign="center"/>
+		</template>
+		<template name="Speed">
+			<label left="5" top="0" width="70" height="20" text="$(nome)"/>
+			<edit vertTextAlign="center" left="75" top="0" width="70" height="20" field="desl$(mode)"/>
+			<rectangle left="155" top="0" width="60" height="20" color="black" strokeColor="white" strokeSize="1"/>
+			<label left="155" top="0" width="60" height="20" field="desl$(mode)Quadrados" horzTextAlign="center"/>
+
+			<dataLink field="desl$(mode)">
+				<event name="onChange">
+					if sheet ~= nil and sheet.desl$(mode) ~= nil then
+
+						local mod = sheet.desl$(mode);
+						mod = string.gsub(mod, "m", "");
+						mod = string.gsub(mod, ",", ".");
+
+						mod = math.floor((tonumber(mod) or 0) / 1.5);
+						sheet.desl$(mode)Quadrados = mod .. "q";
+					end;
+				</event>
+			</dataLink>
+		</template>
+		<template name="Protection">
+			<smallTitleCenter text="$(nome)"/>
+			<smallFieldCenter field="$(field)"/>
+			<longTextCenter field="$(field)2"/>
+			<flowPart minWidth="50" maxWidth="60" height="20">
+				<checkBox field="$(field)Surp" text="Surpresa" fontSize="10" height="20"/>
+			</flowPart>
+			<flowPart minWidth="50" maxWidth="60" height="20">
+				<checkBox field="$(field)Toque" text="Toque" fontSize="10" height="15"/>
+			</flowPart>
+		</template>
+
+		<popup name="popAtributo" width="820" height="170" backOpacity="0.4">
+			<flowLayout align="top" autoHeight="true" maxControlsPerLine="13" margins="{bottom=4}" horzAlign="center">
+				<smallTitleCenter text="Inicial"/>
+				<smallTitleCenter text="Raça"/>
+				<smallTitleCenter text="NEP"/>
+				<smallTitleCenter text="Inerente"/>
+				<smallTitleCenter text="Tamanho"/>
+				<smallTitleCenter text="Outros"/>
+				<flowPart minWidth="20" maxWidth="20" height="15"/>
+				<smallCheckboxCenter text="Melhoria" field="isMelhoriaActive"/>
+				<smallCheckboxCenter text="Dn Temp." field="isDnTempActive"/>
+				<smallCheckboxCenter text="Dn Perm." field="isDnPermActive"/>
+				<smallCheckboxCenter text="Temp." field="isTempActive"/>
+				<smallCheckboxCenter text="Classe" field="isClasseActive"/>
+				<smallCheckboxCenter text="Magia" field="isMagiaActive"/>
+			</flowLayout>
+			<atributeFlow atr="For"/>
+			<atributeFlow atr="Des"/>
+			<atributeFlow atr="Con"/>
+			<atributeFlow atr="Int"/>
+			<atributeFlow atr="Sab"/>
+			<atributeFlow atr="Car"/>
+		</popup>
+		<popup name="popResistencia" width="380" height="150" backOpacity="0.4">
+			<flowLayout align="top" autoHeight="true" maxControlsPerLine="11" margins="{bottom=4}" horzAlign="center">
+				<smallTitleCenter text="Base"/>
+				<smallTitleCenter text="Atributo"/>
+				<smallTitleCenter text="Magia"/>
+				<smallTitleCenter text="Melhoria"/>
+				<smallTitleCenter text="Temp."/>
+				<smallTitleCenter text="Outros"/>
+				<smallTitleCenter text=""/>
+			</flowLayout>
+			<resitenceFlow tr="Fort"/>
+			<resitenceFlow tr="Ref"/>
+			<resitenceFlow tr="Von"/>
+			<textEditor align="client" field="trCondicional"/>
+		</popup>
+		<popup name="popCA" width="600" height="210" backOpacity="0.4">
+			<flowLayout align="top" autoHeight="true" margins="{bottom=4}">
+				<Protection nome="Armadura" field="armaduraCa"/>
+				<flowPart minWidth="10" maxWidth="20" height="15"/>
+				<smallTitleCenter text="Penalidade"/>
+				<smallLabelCenter field="equipamentoCorpoPen"/>
+				<smallTitleCenter text="Falha"/>
+				<smallLabelCenter field="equipamentoCorpoFalha"/>
+				<flowLineBreak/>
+				
+				<Protection nome="Escudo" field="escudoCa"/>
+				<flowPart minWidth="10" maxWidth="20" height="15"/>
+				<smallTitleCenter text="Penalidade"/>
+				<smallFieldCenter field="escudoPen"/>
+				<smallTitleCenter text="Falha"/>
+				<smallFieldCenter field="escudoFalha"/>
+				<flowLineBreak/>
+				
+				<smallTitleCenter text="Destreza"/>
+				<smallLabelCenter field="efetModDes"/>
+				<longTextCenter field="destrezaCa2"/>
+				<flowPart minWidth="50" maxWidth="60" height="20">
+					<checkBox field="destrezaCaSurp" text="Surpresa" fontSize="10" height="20"/>
+				</flowPart>
+				<flowPart minWidth="50" maxWidth="60" height="20">
+					<checkBox field="destrezaCaToque" text="Toque" fontSize="10" height="15"/>
+				</flowPart>
+				
+				<flowLineBreak/>
+				<Protection nome="Tamanho" field="tamanhoCa"/>
+				<flowLineBreak/>
+				<Protection nome="Natural" field="naturalCa"/>
+				<flowLineBreak/>
+				<Protection nome="Deflexao" field="deflexaoCa"/>
+				<flowLineBreak/>
+				<Protection nome="Esquiva" field="esquivaCa"/>
+				<flowLineBreak/>
+				<Protection nome="Sorte" field="sorteCa"/>
+				<flowLineBreak/>
+				<Protection nome="Outros" field="outrosCa"/>
+				<flowLineBreak/>
+				<Protection nome="Variados" field="variadosCa"/>
+				<flowLineBreak/>
+			</flowLayout>
+		</popup>
+		<popup name="popGrapple" width="225" height="50" backOpacity="0.4">
+			<flowLayout align="top" autoHeight="true" maxControlsPerLine="4" margins="{bottom=4}" horzAlign="center">
+				<smallTitleCenter text="BBA"/>
+				<smallTitleCenter text="Força"/>
+				<smallTitleCenter text="Tamanho"/>
+				<smallTitleCenter text="Outros"/>
+
+				<smallLabelCenter field="bba"/>
+				<smallLabelCenter field="efetModFor"/>
+				<smallFieldCenter field="agarrarTam"/>
+				<smallFieldCenter field="agarrarVar"/>
+			</flowLayout>
+		</popup>
+		<popup name="popManeuver" width="380" height="65" backOpacity="0.4">
+			<flowLayout align="top" autoHeight="true" maxControlsPerLine="7" margins="{bottom=4}" horzAlign="center">
+				
+				<flowPart minWidth="50" maxWidth="50" height="15"/>
+				<smallTitleCenter text="BBA"/>
+				<smallTitleCenter text="Força"/>
+				<smallTitleCenter text="Tamanho"/>
+				<smallTitleCenter text="Outros"/>
+				<smallTitleCenter text="Destreza"/>
+				<smallTitleCenter text="Diversos"/>
+
+				<flowLineBreak/> 
+
+				<smallTitleCenter text="BMC"/>
+				<smallLabelCenter field="bba"/>
+				<smallLabelCenter field="efetModFor"/>
+				<smallFieldCenter field="bmcTamanho"/>
+				<smallFieldCenter field="bmcOutros"/>
+				<flowPart minWidth="50" maxWidth="50" height="20">
+					<checkBox field="destrezaBMC" left="15" fontSize="10" height="20"/>
+				</flowPart>
+				<smallFieldCenter field="bmcDiversos"/>
+
+				<flowLineBreak/> 
+
+				<smallTitleCenter text="BMD"/>
+				<smallLabelCenter field="bba"/>
+				<smallLabelCenter field="efetModFor"/>
+				<smallFieldCenter field="bmdTamanho"/>
+				<smallFieldCenter field="bmdOutros"/>
+				<smallLabelCenter field="efetModDes"/>
+				<smallFieldCenter field="bmdDiversos"/>
+			</flowLayout>
+		</popup>
+
+		<script><![CDATA[
+			local function getMOD(valor)
+				if valor~= nil then
+					local mod = math.floor(((tonumber(valor) or 10) / 2) - 5);
+					if (mod >= 0) then
+						mod = "+" .. mod;
+					end;					   
+					return mod;
+				else
+					return "+0";
+				end;
+			end;
+			]]>
+		</script>
+
+		<rectangle align="client" color="black"/>
+		<flowLayout align="top" class="oneLineTile" autoHeight="true" minScaledWidth="290" horzAlign="center">
+			<rectangle top="0" width="800" height="110" color="black">
+				<label left="5" top="5" width="90" height="25" text="CLASSE"/>
+				<edit vertTextAlign="center" left="100" top="5" width="400" height="25" field="classe1"/>
+				
+				<label left="5" top="30" width="90" height="25" text="ESPECIE"/>
+				<edit vertTextAlign="center" left="100" top="30" width="400" height="25" field="raca"/>
+				
+				<label left="5" top="55" width="90" height="25" text="TENDÊNCIA"/>
+				<edit vertTextAlign="center" left="100" top="55" width="400" height="25" field="tendencia"/>
+				
+				<label left="5" top="80" width="90" height="25" text="ANTECEDENTE"/>
+				<edit vertTextAlign="center" left="100" top="80" width="400" height="25" field="antecedente"/>
+				
+				<label left="510" top="5" width="70" height="25" text="NEP"/>
+				<rectangle left="585" top="5" width="70" height="25" color="black" strokeColor="white" strokeSize="1"/>
+				<label field="nep" left="585" top="5" width="70" height="25" horzTextAlign="center"/>
+
+				<label left="670" top="5" width="60" height="25" text="AJUSTE"/>
+				<edit vertTextAlign="center" left="725" top="5" width="70" height="25" field="ajuste"/>
+				
+				<label left="510" top="30" width="70" height="25" text="XP ATUAL"/>
+				<edit vertTextAlign="center" left="585" top="30" width="210" height="25" field="xpAtual"/>
+				
+				<button left="510" top="56" width="50" text="ADD">
+					<event name="onClick">
+							local mod = (getNumber(sheet.xpAtual) or 0) + (getNumber(sheet.xpNova) or 0);
+							
+							while true do  
+								mod, k = string.gsub(mod, "^(-?%d+)(%d%d%d)", '%1,%2')
+								if (k==0) then
+								  break
+								end
+							end
+							mod = string.gsub(mod, ",", ".");
+							
+							sheet.xpAtual = mod .. "XP";
+							sheet.xpNova = "0";
+						</event>
+				</button>
+				<edit vertTextAlign="center" left="585" top="55" width="210" height="25" field="xpNova"/>
+				
+				<label left="510" top="80" width="70" height="25" text="XP ALVO"/>
+				<rectangle left="585" top="80" width="210" height="25" color="black" strokeColor="white" strokeSize="1"/>
+				<label field="xpNivel" left="585" top="80" width="210" height="25" horzTextAlign="center"/>
+
+				<dataLink field="xpAtual">
+					<event name="onChange">
+						<![CDATA[
+						if sheet~= nil then
+							if sheet.xpAtual == nil then
+								sheet.xpAtual = 0;
+							end;
+
+							local xpTable = {300, 900, 2700, 6500, 14000, 23000, 34000, 48000, 64000, 85000, 100000, 120000, 140000, 165000, 195000, 225000, 265000, 305000, 355000, 1000000};
+
+							local myXP = sheet.xpAtual;
+							myXP = string.gsub(myXP, "X", "");
+							myXP = string.gsub(myXP, "P", "");
+							myXP = string.gsub(myXP, "x", "");
+							myXP = string.gsub(myXP, "p", "");
+							myXP = string.gsub(myXP, "%.", "");
+							myXP = (tonumber(myXP) or 0);
+							local nextXP = xpTable[1];
+							local level = 1;
+							local prof = 2;
+							while myXP>=nextXP and level<20 do
+								level = level+1;
+								nextXP = xpTable[level];
+								if level>=17 then prof = 6 
+								elseif level>=13 then prof = 5
+								elseif level>=9 then prof = 4
+								elseif level>=5 then prof = 3 end;
+							end
+
+							if level == 20 then nextXP = 355000 end;
+							
+							while true do  
+								nextXP, k = string.gsub(nextXP, "^(-?%d+)(%d%d%d)", '%1,%2')
+								if (k==0) then
+								  break
+								end
+							end
+							nextXP = string.gsub(nextXP, ",", ".");
+							
+							sheet.xpNivel = nextXP .. "XP";
+							sheet.nep = level;
+							sheet.bonusProficiencia = prof;
+						end;
+						]]>
+					</event>
+				</dataLink>
+			</rectangle>
+		</flowLayout>
+
+		<rectangle align="client" color="black">
+			<import file="frente.xml"/>
+		</rectangle>
+	</scrollBox>
+</form>

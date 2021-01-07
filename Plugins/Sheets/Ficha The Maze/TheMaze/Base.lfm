@@ -12,10 +12,20 @@
 		<dataLink fields="{'$(field)_nivel', '$(field)_outros'}">
 			<event name="onChange">
 				if sheet==nil then return end;
-				local total = 	(tonumber(sheet.$(field)_nivel) or 0) + 
-								(tonumber(sheet.$(field)_outros) or 0);
+				local nivel = (tonumber(sheet.$(field)_nivel) or 0);
+				local total = 	nivel + (tonumber(sheet.$(field)_outros) or 0);
 				sheet.$(field)_total = total;
-				sheet.$(field)_pericia = math.floor(total/4);
+				local txt = "D (+0)";
+				if nivel > 43 then
+					txt = "S (+8)";
+				elseif nivel > 29 then
+					txt = "A (+6)";
+				elseif nivel > 17 then
+					txt = "B (+4)";
+				elseif nivel > 7 then
+					txt = "C (+2)";
+				end;
+				sheet.$(field)_pericia = txt;
 			</event>
 		</dataLink>
 	</template>
@@ -38,12 +48,12 @@
 		</layout>
 	</template>
 	<template name="Estado">
-		<label left="5" top="$(top)" width="100" height="25" horzTextAlign="center" text="$(text)"/>
-		<rectangle left="105" top="$(top)" width="50" height="25" color="black" strokeColor="white" strokeSize="1"/>
-		<label left="105" top="$(top)" width="50" height="25" horzTextAlign="center" field="$(field)Base"/>
-		<edit left="155" top="$(top)" width="75" height="25" field="$(field)Compensacao" horzTextAlign="center" type="number"/>
-		<rectangle left="230" top="$(top)" width="75" height="25" color="black" strokeColor="white" strokeSize="1"/>
-		<label left="230" top="$(top)" width="75" height="25" horzTextAlign="center" field="$(field)Atual"/>
+		<label left="5" top="$(top)" width="90" height="25" horzTextAlign="center" text="$(text)"/>
+		<rectangle left="95" top="$(top)" width="50" height="25" color="black" strokeColor="white" strokeSize="1"/>
+		<label left="95" top="$(top)" width="50" height="25" horzTextAlign="center" field="$(field)Base"/>
+		<edit left="145" top="$(top)" width="70" height="25" field="$(field)Compensacao" horzTextAlign="center" type="number"/>
+		<rectangle left="215" top="$(top)" width="65" height="25" color="black" strokeColor="white" strokeSize="1"/>
+		<label left="215" top="$(top)" width="65" height="25" horzTextAlign="center" field="$(field)Atual"/>
 
 		<dataLink fields="{'$(field)Base','$(field)Compensacao'}">
 			<event name="onChange">
@@ -60,31 +70,18 @@
 		<edit left="105" top="$(top)" width="200" height="25" field="$(field)"/>
 	</template>
 	<template name="Combate">
-		<label left="5" top="$(top)" width="100" height="25" horzTextAlign="center" text="$(text)" fontSize="$(fontSize)"/>
-		<rectangle left="105" top="$(top)" width="50" height="25" color="black" strokeColor="white" strokeSize="1"/>
-		<label left="105" top="$(top)" width="50" height="25" horzTextAlign="center" field="$(field)Base"/>
-		<edit left="155" top="$(top)" width="75" height="25" field="$(field)Adicional" horzTextAlign="center" type="number"/>
-		<rectangle left="230" top="$(top)" width="75" height="25" color="black" strokeColor="white" strokeSize="1"/>
-		<label left="230" top="$(top)" width="75" height="25" horzTextAlign="center" field="$(field)Total"/>
-
-		<dataLink fields="{'$(field)Base','$(field)Adicional'}">
-			<event name="onChange">
-				if sheet==nil then return end;
-
-				local $(field) = 	(tonumber(sheet.$(field)Base) or 0) + 
-									(tonumber(sheet.$(field)Adicional) or 0);
-				sheet.$(field)Total = $(field) .. "$(format)";
-			</event>
-		</dataLink>
+		<CombateFactor text="$(text)" field="$(field)" format="$(format)" fontSize="$(fontSize)" factor="1"/>
 	</template>
 	<template name="Combate2">
-		<label left="5" top="$(top)" width="100" height="25" horzTextAlign="center" text="$(text)"/>
-		<rectangle left="105" top="$(top)" width="50" height="25" color="black" strokeColor="white" strokeSize="1"/>
-		<label left="105" top="$(top)" width="50" height="25" horzTextAlign="center" field="$(field)Base"/>
-		<edit left="155" top="$(top)" width="37.5" height="25" field="$(field)Adicional1" horzTextAlign="center" type="number"/>
-		<edit left="192.5" top="$(top)" width="37.5" height="25" field="$(field)Adicional2" horzTextAlign="center" type="number"/>
-		<rectangle left="230" top="$(top)" width="75" height="25" color="black" strokeColor="white" strokeSize="1"/>
-		<label left="230" top="$(top)" width="75" height="25" horzTextAlign="center" field="$(field)Total"/>
+		<layout align="top" height="25">
+			<label left="5" width="100" height="25" horzTextAlign="center" text="$(text)" fontSize="$(fontSize)"/>
+			<rectangle left="105" width="50" height="25" color="black" strokeColor="white" strokeSize="1"/>
+			<label left="105" width="50" height="25" horzTextAlign="center" field="$(field)Base"/>
+			<edit left="155" width="37.5" height="25" field="$(field)Adicional1" horzTextAlign="center" type="number"/>
+			<edit left="192.5" width="37.5" height="25" field="$(field)Adicional2" horzTextAlign="center" type="number"/>
+			<rectangle left="230" width="75" height="25" color="black" strokeColor="white" strokeSize="1"/>
+			<label left="230" width="75" height="25" horzTextAlign="center" field="$(field)Total"/>
+		</layout>
 
 		<dataLink fields="{'$(field)Base1','$(field)Adicional1','$(field)Base2','$(field)Adicional2'}">
 			<event name="onChange">
@@ -98,21 +95,95 @@
 			</event>
 		</dataLink>
 	</template>
+	<template name="CombateFactor">
+		<layout align="top" height="25">
+			<label left="5" top="0" width="100" height="25" horzTextAlign="center" text="$(text)" fontSize="$(fontSize)"/>
+			<rectangle left="105" top="0" width="50" height="25" color="black" strokeColor="white" strokeSize="1"/>
+			<label left="105" top="0" width="50" height="25" horzTextAlign="center" field="$(field)Base"/>
+			<edit left="155" top="0" width="75" height="25" field="$(field)Adicional" horzTextAlign="center" type="number"/>
+			<rectangle left="230" top="0" width="75" height="25" color="black" strokeColor="white" strokeSize="1"/>
+			<label left="230" top="0" width="75" height="25" horzTextAlign="center" field="$(field)Total"/>
+		</layout>
+
+		<dataLink fields="{'$(field)Base','$(field)Adicional'}">
+			<event name="onChange">
+				if sheet==nil then return end;
+
+				local $(field) = 	(tonumber(sheet.$(field)Base) or 0) + 
+									(tonumber(sheet.$(field)Adicional) or 0);
+
+				$(field) = math.floor($(field) / $(factor));
+
+				sheet.$(field)Total = $(field) .. "$(format)";
+			</event>
+		</dataLink>
+	</template>
+	<template name="ActField">
+		<layout align="top" height="25">
+			<label left="5" top="0" width="100" height="25" horzTextAlign="center" text="$(text)" fontSize="$(fontSize)"/>
+			<rectangle left="105" top="0" width="50" height="25" color="black" strokeColor="white" strokeSize="1"/>
+			<label left="105" top="0" width="50" height="25" horzTextAlign="center" field="$(field)Base"/>
+			<edit left="155" top="0" width="75" height="25" field="$(field)Adicional" horzTextAlign="center" type="number"/>
+			<rectangle left="230" top="0" width="75" height="25" color="black" strokeColor="white" strokeSize="1"/>
+			<label left="230" top="0" width="75" height="25" horzTextAlign="center" field="$(field)Total"/>
+		</layout>
+
+		<dataLink fields="{'$(field)Base','$(field)Adicional','equip_arma_act','equip_arma2_act','equip_equipamento_act','equip_vestimenta_act'}">
+			<event name="onChange">
+				if sheet==nil then return end;
+
+				local $(field) = 	(tonumber(sheet.$(field)Base) or 0) + 
+									(tonumber(sheet.$(field)Adicional) or 0) + 
+									(tonumber(sheet.equip_arma_act) or 0) + 
+									(tonumber(sheet.equip_arma2_act) or 0) + 
+									(tonumber(sheet.equip_equipamento_act) or 0) + 
+									(tonumber(sheet.equip_vestimenta_act) or 0);
+
+				sheet.$(field)Total = $(field);
+			</event>
+		</dataLink>
+	</template>
+	<template name="Poder">
+		<layout align="top" height="25">
+			<label left="5" width="100" height="25" horzTextAlign="center" text="$(text)" fontSize="$(fontSize)"/>
+			<rectangle left="105" width="50" height="25" color="black" strokeColor="white" strokeSize="1"/>
+			<label left="105" width="50" height="25" horzTextAlign="center" field="$(field)Base"/>
+			<edit left="155" width="37.5" height="25" field="$(field)Adicional1" horzTextAlign="center" type="number"/>
+			<edit left="192.5" width="37.5" height="25" field="$(field)Adicional2" horzTextAlign="center" type="number"/>
+			<rectangle left="230" width="37.5" height="25" color="black" strokeColor="white" strokeSize="1"/>
+			<label left="230" width="37.5" height="25" horzTextAlign="center" field="$(field)Total1"/>
+			<rectangle left="267.5" width="37.5" height="25" color="black" strokeColor="white" strokeSize="1"/>
+			<label left="267.5" width="37.5" height="25" horzTextAlign="center" field="$(field)Total2"/>
+		</layout>
+
+		<dataLink fields="{'$(field)Base','$(field)Adicional1','$(field)Base2','$(field)Adicional2'}">
+			<event name="onChange">
+				if sheet==nil then return end;
+
+				local $(field)1 = 	(tonumber(sheet.$(field)Base) or 0) + 
+									(tonumber(sheet.$(field)Adicional1) or 0);
+				local $(field)2 = 	(tonumber(sheet.$(field)Base) or 0) + 
+									(tonumber(sheet.$(field)Adicional2) or 0);
+				sheet.$(field)Total1 = $(field)1 .. "$(format1)";
+				sheet.$(field)Total2 = $(field)2 .. "$(format2)";
+			</event>
+		</dataLink>
+	</template>
+	<template name="Caracteristica">
+		<label left="5" top="$(top)" width="110" height="20" text="$(text_p)" horzTextAlign="center"/>
+		<edit left="115" top="$(top)" width="30" height="25" field="$(field_p)" vertTextAlign="center" type="number"/>
+
+		<label left="185" top="$(top)" width="110" height="20" text="$(text_n)" horzTextAlign="center"/>
+		<edit left="155" top="$(top)" width="30" height="25" field="$(field_n)" vertTextAlign="center" type="number"/>
+	</template>
 
 	<scrollBox align="client">
-		<rectangle left="0" top="0" width="305" height="305" color="black" strokeColor="white" strokeSize="1"/>
-		<image left="0" top="1" width="303" height="303" field="avatar" editable="true" style="autoFit">
-			<event name="OnStartDrag">
-			    drag:addData("imageURL", sheet.avatar);
-			</event>
-		</image>
-		
-		<rectangle left="310" top="0" width="600" height="60" color="black" strokeColor="white" strokeSize="1">
+		<rectangle left="0" top="0" width="600" height="60" color="black" strokeColor="white" strokeSize="1">
 			<label top="5" width="75" height="25" horzTextAlign="center" text="Nome"/>
 			<edit left="80" top="5" width="150" height="25" field="nome"/>
 
 			<label left="5" top="30" width="75" height="25" horzTextAlign="center" text="Aptidão"/>
-			<comboBox left="80" top="30" width="150" height="25" field="aptidao" items="{'Alquimista', 'Arcanista', 'Caçador', 'Cavaleiro', 'Monge', 'Necromante', 'Xamã', 'Atirador', 'Cigano', 'Hoplita', 'Ronin', 'Executor'}" values="{'1', '2', '3', '4', '5', '6', '7', '8', '9','10','11','12'}"/>
+			<comboBox left="80" top="30" width="150" height="25" field="aptidao" items="{'Alquimista', 'Arcanista', 'Caçador', 'Bestial', 'Cavaleiro', 'Monge', 'Necromante', 'Xamã', 'Atirador', 'Cigano', 'Hoplita', 'Shinobi', 'Executor', 'Invocador', 'Paladino'}" values="{'1', '2', '3', '13', '4', '5', '6', '7', '8', '9', '10', '11', '12', '14', '15'}"/>
 
 			<label left="225" top="5" width="75" height="25" horzTextAlign="center" text="Nível"/>
 			<rectangle left="300" top="5" width="50" height="25" color="black" strokeColor="white" strokeSize="1"/>
@@ -138,7 +209,7 @@
 				</event>
 			</edit>
 
-			<label left="345" top="30" width="100" height="25" horzTextAlign="center" text="Progresso"/>
+			<label left="345" top="30" width="100" height="25" horzTextAlign="center" text="Prestígio"/>
 			<edit left="440" top="30" width="50" height="25" field="progresso" type="number">
 				<event name="onChange">
 					if sheet==nil then return end;
@@ -164,16 +235,23 @@
 					if sheet==nil then return end;
 
 					local nivel = (tonumber(sheet.nivel) or 0);
-					sheet.vidaBase = 140 + (nivel * 20);
+					sheet.vidaBase = 360 + (nivel * 40);
 					sheet.fadigaBase = 90 + (nivel * 10);
 					sheet.imersaoBase = 10 + (nivel * 5);
-					sheet.atr_max = 42 + (nivel * 6);
-					sheet.habilidadesDisponivel = math.min(nivel*2 + 1, 15);
+					sheet.atr_max = 44 + (nivel * 4);
+					sheet.habilidadesDisponivel = math.min(nivel*2 + 1, 25);
 				</event>
 			</dataLink>
 		</rectangle>
 
-		<rectangle left="310" top="65" width="285" height="240" color="black" strokeColor="white" strokeSize="1">
+		<rectangle left="605" top="0" width="305" height="305" color="black" strokeColor="white" strokeSize="1"/>
+		<image left="606" top="1" width="303" height="303" field="avatar" editable="true" style="autoFit">
+			<event name="OnStartDrag">
+			    drag:addData("imageURL", sheet.avatar);
+			</event>
+		</image>
+
+		<rectangle left="0" top="65" width="285" height="240" color="black" strokeColor="white" strokeSize="1">
 			<label left="0" top="5" width="285" height="25" horzTextAlign="center" text="Atributos Básicos"/>
 			
 			<label left="75" top="30" width="50" height="25" horzTextAlign="center" text="Natural" fontSize="11"/>
@@ -182,10 +260,10 @@
 			<label left="225" top="30" width="50" height="25" horzTextAlign="center" text="Perícia" fontSize="11"/>
 
 			<Atributo top="55" field="agilidade" atr="Agilidade" fontSize="13"/>
-			<Atributo top="80" field="cac" atr="Corpo-a-Corpo" fontSize="10"/>
+			<Atributo top="80" field="cac" atr="Constituição" fontSize="11"/>
 			<Atributo top="105" field="manuseio" atr="Destreza" fontSize="13"/>
-			<Atributo top="130" field="pontaria" atr="Precisão" fontSize="13"/>
-			<Atributo top="155" field="paranormalidade" atr="Paranormalidade" fontSize="9"/>
+			<Atributo top="130" field="pontaria" atr="Foco" fontSize="13"/>
+			<Atributo top="155" field="paranormalidade" atr="Reverberação" fontSize="11"/>
 			<Atributo top="180" field="sorte" atr="Sorte" fontSize="13"/>
 
 			<rectangle left="15" top="210" width="50" height="25" color="black" strokeColor="white" strokeSize="1"/>
@@ -222,143 +300,251 @@
 				</event>
 			</dataLink>
 		</rectangle>
+		
+		<layout left="290" top="65" width="310" height="240">
+			<rectangle align="client" color="black" strokeColor="white" strokeSize="1"/>
+			<label left="5" top="1" width="300" height="20" text="Características" horzTextAlign="center"/>
 
-		<rectangle left="600" top="65" width="310" height="105" color="black" strokeColor="white" strokeSize="1">
-			<label left="105" top="0" width="50" height="20" horzTextAlign="center" text="Natural"/>
-			<label left="155" top="0" width="75" height="20" horzTextAlign="center" text="Adicional"/>
-			<label left="230" top="0" width="75" height="20" horzTextAlign="center" text="Total"/>
+			<Caracteristica top="25" text_p="Carisma/Charme" text_n="Emotividade" field_p="carac_p_1" field_n="carac_n_1"/>
+			<Caracteristica top="50" text_p="Força de Vontade" text_n="Trauma/Medo" field_p="carac_p_2" field_n="carac_n_2"/>
+			<Caracteristica top="75" text_p="Intelecto" text_n="Azar" field_p="carac_p_3" field_n="carac_n_3"/>
+			<Caracteristica top="100" text_p="Intuição" text_n="Impulsividade" field_p="carac_p_4" field_n="carac_n_4"/>
+			<Caracteristica top="125" text_p="Intimidação" text_n="Materialismo" field_p="carac_p_5" field_n="carac_n_5"/>
+			<Caracteristica top="150" text_p="Fleuma" text_n="Irritação/Orgulho" field_p="carac_p_6" field_n="carac_n_6"/>
+
+
+			<rectangle left="115" top="175" width="30" height="25" color="black" strokeColor="white" strokeSize="1"/>
+			<label left="115" top="175" width="30" height="25" horzTextAlign="center" field="carac_gasto"/>
+			<edit left="155" top="175" width="30" height="25" field="carac_extra" horzTextAlign="center" type="number"/>
+			<rectangle left="185" top="175" width="30" height="25" color="black" strokeColor="white" strokeSize="1"/>
+			<label left="185" top="175" width="30" height="25" horzTextAlign="center" field="carac_total" fontColor="green" name="carac_total"/>
+
+			<label left="45" top="205" width="100" height="25" text="Carma"/>
+			<comboBox left="100" top="205" width="200" height="25" field="carma" items="{'Divino','Virtuoso','Humano','Herege','Demoníaco'}"/>
+ 
+			<dataLink fields="{'carac_p_1','carac_p_2','carac_p_3','carac_p_4','carac_p_5','carac_p_6'}">
+				<event name="onChange">
+					if sheet == nil then return end;
+					local gasto = (tonumber(sheet.carac_p_1) or 0) +
+									(tonumber(sheet.carac_p_2) or 0) +
+									(tonumber(sheet.carac_p_3) or 0) +
+									(tonumber(sheet.carac_p_4) or 0) +
+									(tonumber(sheet.carac_p_5) or 0) +
+									(tonumber(sheet.carac_p_6) or 0);
+					sheet.carac_gasto = gasto;
+				</event>
+			</dataLink>
+			<dataLink fields="{'carac_n_1','carac_n_2','carac_n_3','carac_n_4','carac_n_5','carac_n_6'}">
+				<event name="onChange">
+					if sheet == nil then return end;
+					local penalidade = (tonumber(sheet.carac_n_1) or 0) +
+									(tonumber(sheet.carac_n_2) or 0) +
+									(tonumber(sheet.carac_n_3) or 0) +
+									(tonumber(sheet.carac_n_4) or 0) +
+									(tonumber(sheet.carac_n_5) or 0) +
+									(tonumber(sheet.carac_n_6) or 0);
+					sheet.carac_penalidade = penalidade;
+				</event>
+			</dataLink>
+			<dataLink fields="{'nivel','carac_penalidade', 'carac_extra'}">
+				<event name="onChange">
+					if sheet==nil then return end;
+
+					local nivel = (tonumber(sheet.nivel) or 0);
+					local pen = (sheet.carac_penalidade) or 0;
+					local extra = (sheet.carac_extra) or 0;
+
+					sheet.carac_total = nivel - 1 + pen + extra;
+				</event>
+			</dataLink>
+			<dataLink fields="{'carac_gasto','carac_total'}">
+				<event name="onChange">
+					if sheet == nil then return end;
+					local gasto = tonumber(sheet.carac_gasto) or 0;
+					local total = tonumber(sheet.carac_total) or 0;
+
+					if gasto > total then
+						self.carac_total.fontColor = "#FF0000";
+					elseif gasto==total then
+						self.carac_total.fontColor = "#FFFFFF";
+					else 
+						self.carac_total.fontColor = "#00FF00";
+					end;
+				</event>
+			</dataLink>
+		</layout>
+
+		<rectangle left="0" top="310" width="285" height="105" color="black" strokeColor="white" strokeSize="1">
+			<label left="0" top="0" width="285" height="20" horzTextAlign="center" text="Integridade"/>
 
 			<Estado top="25" text="Vida" field="vida"/>
 			<Estado top="50" text="Fadiga" field="fadiga"/>
 			<Estado top="75" text="Imersão" field="imersao"/>
 		</rectangle>
 
-		<rectangle left="600" top="175" width="310" height="130" color="black" strokeColor="white" strokeSize="1">
-			<label left="0" top="0" width="310" height="20" horzTextAlign="center" text="Atributos Avançados"/>
+		<rectangle left="0" top="420" width="285" height="260" color="black" strokeColor="white" strokeSize="1">
+			<label left="0" top="0" width="285" height="20" horzTextAlign="center" text="Beneficios"/>
 
-			<AtributoAvancado top="25" text="Benção" field="bencao1"/>
-			<AtributoAvancado top="50" text="Sentinela" field="bencao2"/>
-			<AtributoAvancado top="75" text="Ultimato" field="ultimato"/>
-			<AtributoAvancado top="100" text="Clã" field="privilegio"/>
+			<label left="0" top="25" width="75" height="25" horzTextAlign="center" text="Clã"/>
+			<edit left="75" top="25" width="200" height="25" horzTextAlign="center" field="cla"/>
+
+			<label left="0" top="50" width="75" height="25" horzTextAlign="center" text="Ultimato"/>
+			<edit left="75" top="50" width="200" height="25" horzTextAlign="center" field="ultimato"/>
+
+			<label left="0" top="75" width="75" height="25" horzTextAlign="center" text="Sentinela"/>
+			<edit left="75" top="75" width="200" height="25" horzTextAlign="center" field="sentinela"/>
+
+			<label left="0" top="100" width="75" height="25" horzTextAlign="center" text="Bençãos"/>
+			<textEditor left="75" top="100" width="200" height="155" field="bencaos_feiticos"/>
+
 		</rectangle>
 
-		<rectangle left="915" top="0" width="310" height="680" color="black" strokeColor="white" strokeSize="1">
+		<rectangle left="290" top="310" width="620" height="370" color="black" strokeColor="white" strokeSize="1">
 
-			<Combate top="0" text="Poder Físico" field="poderFisico" format="" fontSize="13"/>
-			<Combate top="25" text="Poder Paranormal" field="poderParanormal" format="" fontSize="11"/>
-			<Combate top="50" text="Poder de Projétil" field="poderProjetil" format="" fontSize="11"/>
-			
-			<layout left="0" top="75" width="310" height="25">
-				<label left="0" top="0" width="100" height="25" horzTextAlign="center" text="Bloqueio"/>
+			<label align="top" height="20" horzTextAlign="center" text="Tabela de Status de Combate"/>
 
-				<edit left="100" top="0" width="70" height="25" horzTextAlign="center" field="bloqueioFis"/>
-				<label left="170" top="0" width="35" height="25" horzTextAlign="center" text="Fís."/>
+			<layout align="left" width="310">
+				<layout align="top" height="20">
+					<label width="310" horzTextAlign="center" text="Poderes"/>
+					<label left="230" width="37.5" height="20" horzTextAlign="center" text="Pri"/>
+					<label left="267.5" width="37.5" height="20" horzTextAlign="center" text="Sec"/>
+				</layout>
 
-				<edit left="205" top="0" width="70" height="25" horzTextAlign="center" field="bloqueioPar"/>
-				<label left="275" top="0" width="35" height="25" horzTextAlign="center" text="Par."/>
+				<Poder text="Poder Físico" field="poderFisico" format="" fontSize="13"/>
+				<Poder text="Poder Paranormal" field="poderParanormal" format="" fontSize="11"/>
+				<Poder text="Poder de Projétil" field="poderProjetil" format="" fontSize="11"/>
+
+				<label align="top" height="20" horzTextAlign="center" text="Atribuições"/>
+
+				<Combate text="Reg. de Vida" field="regVida" format="%" fontSize="13"/>
+				<Combate text="Reg. de Fadiga" field="regFadiga" format="%" fontSize="13"/>
+				<ActField text="Act. Padrão" field="actPadrao" fontSize="11"/>
+				<Combate text="Pts. de Instantânea" field="ptsInstantanea" format="" fontSize="9"/>
+				<CombateFactor text="Chance de Crítico" field="critico" format="" fontSize="11" factor="5"/>
+				<Combate text="Amplificação" field="amplificacao" format="%" fontSize="13"/>
+				<Combate text="Negação" field="negacao" format="" fontSize="13"/>
+
+				<label align="top" height="20" horzTextAlign="center" text="Defesa"/>
+
+				<layout align="top" height="25">
+					<label align="left" width="100" horzTextAlign="center" text="Bloq. Físico"/>
+					<edit align="left" width="55" horzTextAlign="center" field="bloqueioFis"/>
+				
+					<label align="left" width="100" horzTextAlign="center" text="Bloq. Paranormal"/>
+					<edit align="left" width="55" horzTextAlign="center" field="bloqueioPar"/>
+				</layout>
 			</layout>
 
-			<label left="0" top="105" width="310" height="20" horzTextAlign="center" text="Status de Combate"/>
+			<layout align="left" width="310">
+				<label align="top" height="20" horzTextAlign="center" text="Redutores"/>
 
-			<Combate top="125" text="Reg. de Vida" field="regVida" format="pt" fontSize="13"/>
-			<Combate top="150" text="Reg. de Fadiga" field="regFadiga" format="pt" fontSize="13"/>
-			<Combate top="175" text="Vel. de Movimento" field="iniciativa" format="" fontSize="11"/>
-			<Combate top="200" text="Chance de Crítico" field="critico" format="" fontSize="11"/>
-			<Combate top="225" text="Amplificação" field="amplificacao" format="%" fontSize="13"/>
-			<Combate top="250" text="Negação" field="negacao" format="%" fontSize="13"/>
+				<Combate text="Físico" field="fisico" format="" fontSize="13"/>
+				<Combate text="Paranormal" field="paranormal" format="" fontSize="13"/>
+				<Combate text="Projétil" field="projetil" format="" fontSize="13"/>
+				<Combate text="Corrosivo" field="corrosivo" format="" fontSize="13"/>
 
-			<label left="5" top="280" width="300" height="20" horzTextAlign="center" text="Redutores"/>
+				<label align="top" height="20" horzTextAlign="center" text="Resistências"/>
+				
+				<Combate text="Impelimento" field="impelimento" format="" fontSize="13"/>
+				<Combate text="Sangramento" field="sangramento" format="" fontSize="13"/>
+				<Combate text="Fragilização" field="fragilizacao" format="" fontSize="13"/>
+				<Combate text="Aturdido" field="atordoamento" format="" fontSize="13"/>
+				<Combate text="Provocação" field="provocacao" format="" fontSize="13"/>
+				<Combate text="Silenciamento" field="silenciado" format="" fontSize="13"/>
+				<Combate text="Envenenamento" field="envenenamento" format="" fontSize="13"/>
+				<Combate text="Incendiado" field="incendiado" format="" fontSize="13"/>
+			</layout>
 
-			<Combate2 top="300" text="Físico" field="fisico" format1="%+" format2=""/>
-			<Combate2 top="325" text="Paranormal" field="paranormal" format1="%+" format2=""/>
-			<Combate2 top="350" text="Projétil" field="projetil" format1="%+" format2=""/>
-			<Combate2 top="375" text="Corrosivo" field="corrosivo" format1="%+" format2=""/>
-
-			<label left="5" top="405" width="300" height="20" horzTextAlign="center" text="Resistências"/>
-
-			<Combate top="425" text="Sangramento" field="sangramento" format="%" fontSize="13"/>
-			<Combate top="450" text="Impelimento" field="impelimento" format="%" fontSize="13"/>
-			<Combate top="475" text="Imobilização" field="imobilizacao" format="%" fontSize="13"/>
-			<Combate top="500" text="Fratura" field="fratura" format="%" fontSize="13"/>
-			<Combate top="525" text="Aturdido" field="atordoamento" format="%" fontSize="13"/>
-			<Combate top="550" text="Envenenamento" field="envenenamento" format="%" fontSize="13"/>
-			<Combate top="575" text="Incendiado" field="incendiado" format="%" fontSize="13"/>
-			<Combate top="600" text="Paralisação" field="paralisacao" format="%" fontSize="13"/>
-			<Combate top="625" text="Provocação" field="provocacao" format="%" fontSize="13"/>
-			<Combate top="650" text="Silenciamento" field="silenciado" format="%" fontSize="13"/>
-
-			<dataLink fields="{'nivel', 'cac_total', 'paranormalidade_total', 'agilidade_total', 'sorte_total', 'manuseio_total', 'pontaria_total'}">
+			<dataLink fields="{'nivel', 'cac_total', 'paranormalidade_total', 'agilidade_total', 'sorte_total', 'manuseio_total', 'pontaria_total', 'cac_nivel', 'paranormalidade_nivel', 'manuseio_nivel'}">
 				<event name="onChange">
 					if sheet==nil then return end;
 
-					local cac = (tonumber(sheet.cac_total) or 0);
-					local paranormalidade = (tonumber(sheet.paranormalidade_total) or 0);
+					local cac = (tonumber(sheet.cac_total) or 0); -- constituição
+					local paranormalidade = (tonumber(sheet.paranormalidade_total) or 0); -- reverberação
 					local agilidade = (tonumber(sheet.agilidade_total) or 0);
 					local sorte = (tonumber(sheet.sorte_total) or 0);
 					local destreza = (tonumber(sheet.manuseio_total) or 0);
 					local precisao = (tonumber(sheet.pontaria_total) or 0);
 
-					-- PODER
+					local agilidadeBase = (tonumber(sheet.agilidade_nivel) or 0);
 
-					sheet.poderFisicoBase = agilidade * 2 + cac * 4 + destreza * 3 + precisao * 2 + sorte * 2;
-					sheet.poderParanormalBase = destreza * 3 + precisao * 2 + paranormalidade * 4 + sorte * 2;
-					sheet.poderProjetilBase = destreza * 3 + precisao * 4 + sorte * 3;
+					-- PODER
+					local aux = agilidade * 2 + cac * 4 + destreza * 3 + sorte * 2;
+					if (tonumber(sheet.cac_nivel) or 0) > 7 then 
+						aux = aux  + precisao * 4;
+					end;
+					sheet.poderFisicoBase = aux;
+
+					aux = destreza * 3 + paranormalidade * 4 + sorte * 2;
+					if (tonumber(sheet.paranormalidade_nivel) or 0) > 7 then 
+						aux = aux  + precisao * 5;
+					end;
+					sheet.poderParanormalBase = aux;
+
+					aux = destreza * 4 + sorte * 3;
+					if (tonumber(sheet.manuseio_nivel) or 0) > 7 then 
+						aux = aux  + precisao * 5;
+					end;
+					sheet.poderProjetilBase = aux;
 
 					-- STATUS DE COMBATE
 
-					sheet.regVidaBase = 8 + math.floor(cac/4)*4;
-					sheet.regFadigaBase = 5 + math.floor(paranormalidade/4)*3;
-					sheet.iniciativaBase = math.floor(agilidade/6);
-					sheet.criticoBase = 1 + math.floor(sorte/4);
-					sheet.amplificacaoBase = math.floor(destreza/4)*10;
-					sheet.negacaoBase = math.floor(precisao/4)*10;
+					sheet.regVidaBase = 10 + math.floor(cac/3);
+					sheet.regFadigaBase = 10 + math.floor(paranormalidade/3);
+
+					if agilidade > 3 then
+						sheet.actPadraoBase = math.floor(agilidade);
+					else
+						sheet.actPadraoBase = 0;
+					end;
+
+					sheet.actPadraoBase = 12;
+					if agilidadeBase > 43 then
+						sheet.actPadraoBase = 4;
+					elseif agilidadeBase > 29 then
+						sheet.actPadraoBase = 6;
+					elseif agilidadeBase > 17 then
+						sheet.actPadraoBase = 8;
+					elseif agilidadeBase > 7 then
+						sheet.actPadraoBase = 10;
+					end;
+
+					sheet.ptsInstantaneaBase = 10 + math.floor(agilidade/3);
+					sheet.criticoBase = 5 + math.floor(sorte/3) * 3;
+					sheet.amplificacaoBase = math.floor(destreza/3)*5;
+					sheet.negacaoBase = math.floor(precisao/3)*5;
 
 					-- REDUTORES
 
-					sheet.fisicoBase = math.floor(cac/4)*5;
-					sheet.fisicoBase1 = sheet.fisicoBase;
-					sheet.fisicoBase2 = 0;
-
-					sheet.paranormalBase = math.floor(paranormalidade/4)*5;
-					sheet.paranormalBase1 = sheet.paranormalBase;
-					sheet.paranormalBase2 = 0;
-
-					sheet.projetilBase = math.floor(sorte/4)*5;
-					sheet.projetilBase1 = sheet.projetilBase;
-					sheet.projetilBase2 = 0;
-					
-					sheet.corrosivoBase = 0;
-					sheet.corrosivoBase1 = sheet.corrosivoBase;
-					sheet.corrosivoBase2 = 0;
+					sheet.fisicoBase = math.floor(cac/3)*10;
+					sheet.paranormalBase = math.floor(paranormalidade/3)*10;
+					sheet.projetilBase = math.floor(sorte/3)*10;
+					sheet.corrosivoBase = math.floor(destreza/3)*10;
 
 					-- RESISTENCIAS
 
-					sheet.desaceleracaoBase = math.floor(cac/4)*5;
-					sheet.sangramentoBase = math.floor(cac/4)*5;
-					sheet.impelimentoBase = math.floor(cac/4)*5;
-					sheet.imobilizacaoBase = math.floor(cac/4)*5;
-					sheet.fraturaBase = math.floor(cac/4)*5;
-					sheet.fragilizacaoBase = math.floor(cac/4)*5;
-					sheet.envenenamentoBase = math.floor(paranormalidade/4)*5;
-					sheet.incendiadoBase = math.floor(paranormalidade/4)*5;
-					sheet.atordoamentoBase = math.floor(cac/4)*5;
-					sheet.paralisacaoBase = math.floor(paranormalidade/4)*5;
-					sheet.provocacaoBase = math.floor(paranormalidade/4)*5;
-					sheet.silenciadoBase = math.floor(paranormalidade/4)*5;
+					sheet.impelimentoBase = math.floor(cac/3)*2;
+					sheet.imobilizacaoBase = math.floor(agilidade/3)*2;
+					sheet.sangramentoBase = math.floor(cac/3)*2;
+					sheet.fragilizacaoBase = math.floor(destreza/3)*2;
+					sheet.atordoamentoBase = math.floor(destreza/3)*2;
+					sheet.paralisacaoBase = math.floor(destreza/3)*2;
+					sheet.provocacaoBase = math.floor(paranormalidade/3)*2;
+					sheet.silenciadoBase = math.floor(paranormalidade/3)*2;
+					sheet.envenenamentoBase = math.floor(sorte/3)*2;
+					sheet.incendiadoBase = math.floor(sorte/3)*2;
 				</event>
 			</dataLink>
 		</rectangle>
 
-		<rectangle left="0" top="310" width="910" height="370" color="black" strokeColor="white" strokeSize="1">
-			<label left="0" top="5" width="460" height="25" horzTextAlign="trailing" text="Habilidades"/>
-			<label left="690" top="5" width="75" height="25" horzTextAlign="center" text="Dificuldade" fontSize="11"/>
-			<label left="765" top="5" width="75" height="25" horzTextAlign="center" text="Custo" fontSize="11"/>
-			<label left="840" top="5" width="50" height="25" horzTextAlign="center" text="Estágio" fontSize="11"/>
+		<rectangle left="915" top="0" width="465" height="680" color="black" strokeColor="white" strokeSize="1">
+			<label left="0" top="5" width="210" height="25" horzTextAlign="trailing" text="Habilidades"/>
+			<label left="405" top="5" width="50" height="25" horzTextAlign="center" text="Estágio" fontSize="11"/>
 
-			<rectangle left="460" top="5" width="50" height="25" color="black" strokeColor="white" strokeSize="1"/>
-			<label left="460" top="5" width="50" height="25" horzTextAlign="center" field="habilidadesNivel"/>
-			<rectangle left="510" top="5" width="50" height="25" color="black" strokeColor="white" strokeSize="1"/>
-			<label left="510" top="5" width="50" height="25" horzTextAlign="center" field="habilidadesDisponivel" name="habilidadesDisponivel"/>
+			<rectangle left="215" top="5" width="50" height="25" color="black" strokeColor="white" strokeSize="1"/>
+			<label left="215" top="5" width="50" height="25" horzTextAlign="center" field="habilidadesNivel"/>
+			<rectangle left="270" top="5" width="50" height="25" color="black" strokeColor="white" strokeSize="1"/>
+			<label left="270" top="5" width="50" height="25" horzTextAlign="center" field="habilidadesDisponivel" name="habilidadesDisponivel"/>
 			<dataLink fields="{'habilidadesNivel','habilidadesDisponivel'}">
 				<event name="onChange">
 					if sheet == nil then return end;
@@ -375,7 +561,7 @@
 				</event>
 			</dataLink>
 
-			<recordList left="5" top="30" width="900" height="335" name="rclHabilidades" field="listaDeHabilidades" templateForm="frmAbilities" layout="vertical" minQt="5">
+			<recordList left="5" top="30" width="455" height="645" name="rclHabilidades" field="listaDeHabilidades" templateForm="frmAbilities" layout="vertical" minQt="5">
 				<event name="onEndEnumeration"><![CDATA[
 					if sheet== nil then return end;
 					

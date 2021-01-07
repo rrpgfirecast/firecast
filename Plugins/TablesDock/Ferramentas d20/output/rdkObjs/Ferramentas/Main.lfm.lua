@@ -36,6 +36,7 @@ local function constructNew_frmMainFerramentas()
 
 		local magicListData = NDB.load("magicListData.xml");
 
+		-- lists
 		local schools = {"Abjuration","Conjuration","Calling","Creation","Healing","Summoning","Teleportation","Divination","Scrying","Enchantment","Charm","Compulsion","Evocation","Illusion","Figment","Glamer","Pattern","Phantasm","Shadow","Necromancy","Transmutation","Polymorph","Universal"};
 		local tags = {"Acid","Air","Chaotic","Cold","Darkness","Death","Earth","Electricity","Evil","Fear","Fire","Force","Good","Language-Dependent","Lawful","Light","Mind-Affecting","Sonic","Water"};
 		local components = {"V", "S", "M", "F", "DF", "XP"}
@@ -3995,59 +3996,163 @@ local function constructNew_frmMainFerramentas()
     obj.dataLink6:setName("dataLink6");
 
     obj.tab10 = GUI.fromHandle(_obj_newObject("tab"));
-    obj.tab10:setParent(obj.tabControl1);
-    obj.tab10:setTitle("Creditos");
+    obj.tab10:setParent(obj.tabControl3);
+    obj.tab10:setTitle("Cetro");
     obj.tab10:setName("tab10");
 
-    obj.frmTemplateCreditos = GUI.fromHandle(_obj_newObject("form"));
-    obj.frmTemplateCreditos:setParent(obj.tab10);
-    obj.frmTemplateCreditos:setName("frmTemplateCreditos");
-    obj.frmTemplateCreditos:setAlign("client");
+    obj.frmScepterCalculator = GUI.fromHandle(_obj_newObject("form"));
+    obj.frmScepterCalculator:setParent(obj.tab10);
+    obj.frmScepterCalculator:setName("frmScepterCalculator");
+    obj.frmScepterCalculator:setAlign("client");
 
     obj.scrollBox9 = GUI.fromHandle(_obj_newObject("scrollBox"));
-    obj.scrollBox9:setParent(obj.frmTemplateCreditos);
+    obj.scrollBox9:setParent(obj.frmScepterCalculator);
     obj.scrollBox9:setAlign("client");
     obj.scrollBox9:setName("scrollBox9");
 
+    obj.layout107 = GUI.fromHandle(_obj_newObject("layout"));
+    obj.layout107:setParent(obj.scrollBox9);
+    obj.layout107:setAlign("top");
+    obj.layout107:setHeight(50);
+    obj.layout107:setName("layout107");
+
+    obj.button32 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button32:setParent(obj.layout107);
+    obj.button32:setAlign("left");
+    obj.button32:setWidth(50);
+    obj.button32:setText("+");
+    obj.button32:setName("button32");
+
+    obj.layout108 = GUI.fromHandle(_obj_newObject("layout"));
+    obj.layout108:setParent(obj.layout107);
+    obj.layout108:setAlign("left");
+    obj.layout108:setWidth(275);
+    obj.layout108:setName("layout108");
+
+    obj.layout109 = GUI.fromHandle(_obj_newObject("layout"));
+    obj.layout109:setParent(obj.layout108);
+    obj.layout109:setAlign("top");
+    obj.layout109:setHeight(25);
+    obj.layout109:setName("layout109");
+
+    obj.label55 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label55:setParent(obj.layout109);
+    obj.label55:setAlign("left");
+    obj.label55:setWidth(75);
+    obj.label55:setHorzTextAlign("center");
+    obj.label55:setText("Preço");
+    obj.label55:setName("label55");
+
+    obj.label56 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label56:setParent(obj.layout109);
+    obj.label56:setAlign("left");
+    obj.label56:setWidth(200);
+    obj.label56:setHorzTextAlign("center");
+    obj.label56:setField("scepterPrice");
+    lfm_setPropAsString(obj.label56, "formatFloat",  ",0.## PO");
+    obj.label56:setName("label56");
+
+    obj.layout110 = GUI.fromHandle(_obj_newObject("layout"));
+    obj.layout110:setParent(obj.layout108);
+    obj.layout110:setAlign("top");
+    obj.layout110:setHeight(25);
+    obj.layout110:setName("layout110");
+
+    obj.label57 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label57:setParent(obj.layout110);
+    obj.label57:setAlign("left");
+    obj.label57:setWidth(75);
+    obj.label57:setHorzTextAlign("center");
+    obj.label57:setText("Custo");
+    obj.label57:setName("label57");
+
+    obj.label58 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label58:setParent(obj.layout110);
+    obj.label58:setAlign("left");
+    obj.label58:setWidth(100);
+    obj.label58:setHorzTextAlign("center");
+    obj.label58:setField("scepterCost");
+    lfm_setPropAsString(obj.label58, "formatFloat",  ",0.## PO");
+    obj.label58:setName("label58");
+
+    obj.label59 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label59:setParent(obj.layout110);
+    obj.label59:setAlign("left");
+    obj.label59:setWidth(100);
+    obj.label59:setHorzTextAlign("center");
+    obj.label59:setField("scepterXP");
+    lfm_setPropAsString(obj.label59, "formatFloat",  ",0.## XP");
+    obj.label59:setName("label59");
+
+    obj.scepterList = GUI.fromHandle(_obj_newObject("recordList"));
+    obj.scepterList:setParent(obj.scrollBox9);
+    obj.scepterList:setAlign("left");
+    obj.scepterList:setWidth(395);
+    obj.scepterList:setField("scepterList");
+    obj.scepterList:setName("scepterList");
+    obj.scepterList:setTemplateForm("frmScepterItem");
+    obj.scepterList:setMinQt(1);
+    obj.scepterList:setMargins({right=5});
+
+    obj.dataLink7 = GUI.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink7:setParent(obj.scrollBox9);
+    obj.dataLink7:setFields({'sortScepter'});
+    obj.dataLink7:setName("dataLink7");
+
+    obj.tab11 = GUI.fromHandle(_obj_newObject("tab"));
+    obj.tab11:setParent(obj.tabControl1);
+    obj.tab11:setTitle("Creditos");
+    obj.tab11:setName("tab11");
+
+    obj.frmTemplateCreditos = GUI.fromHandle(_obj_newObject("form"));
+    obj.frmTemplateCreditos:setParent(obj.tab11);
+    obj.frmTemplateCreditos:setName("frmTemplateCreditos");
+    obj.frmTemplateCreditos:setAlign("client");
+
+    obj.scrollBox10 = GUI.fromHandle(_obj_newObject("scrollBox"));
+    obj.scrollBox10:setParent(obj.frmTemplateCreditos);
+    obj.scrollBox10:setAlign("client");
+    obj.scrollBox10:setName("scrollBox10");
+
     obj.rectangle1 = GUI.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle1:setParent(obj.scrollBox9);
+    obj.rectangle1:setParent(obj.scrollBox10);
     obj.rectangle1:setAlign("client");
     obj.rectangle1:setColor("black");
     obj.rectangle1:setName("rectangle1");
 
-    obj.label55 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label55:setParent(obj.scrollBox9);
-    obj.label55:setLeft(5);
-    obj.label55:setTop(10);
-    obj.label55:setWidth(200);
-    obj.label55:setHeight(20);
-    obj.label55:setText("Feito por: Vinny (Ambesek)");
-    obj.label55:setName("label55");
+    obj.label60 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label60:setParent(obj.scrollBox10);
+    obj.label60:setLeft(5);
+    obj.label60:setTop(10);
+    obj.label60:setWidth(200);
+    obj.label60:setHeight(20);
+    obj.label60:setText("Feito por: Vinny (Ambesek)");
+    obj.label60:setName("label60");
 
-    obj.label56 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label56:setParent(obj.scrollBox9);
-    obj.label56:setLeft(5);
-    obj.label56:setTop(35);
-    obj.label56:setWidth(200);
-    obj.label56:setHeight(20);
-    obj.label56:setText("Versão Atual: ");
-    obj.label56:setHorzTextAlign("center");
-    obj.label56:setField("versionInstalled");
-    obj.label56:setName("label56");
+    obj.label61 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label61:setParent(obj.scrollBox10);
+    obj.label61:setLeft(5);
+    obj.label61:setTop(35);
+    obj.label61:setWidth(200);
+    obj.label61:setHeight(20);
+    obj.label61:setText("Versão Atual: ");
+    obj.label61:setHorzTextAlign("center");
+    obj.label61:setField("versionInstalled");
+    obj.label61:setName("label61");
 
-    obj.label57 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label57:setParent(obj.scrollBox9);
-    obj.label57:setLeft(5);
-    obj.label57:setTop(60);
-    obj.label57:setWidth(200);
-    obj.label57:setHeight(20);
-    obj.label57:setText("Sua Versão: ");
-    obj.label57:setHorzTextAlign("center");
-    obj.label57:setField("versionDownloaded");
-    obj.label57:setName("label57");
+    obj.label62 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label62:setParent(obj.scrollBox10);
+    obj.label62:setLeft(5);
+    obj.label62:setTop(60);
+    obj.label62:setWidth(200);
+    obj.label62:setHeight(20);
+    obj.label62:setText("Sua Versão: ");
+    obj.label62:setHorzTextAlign("center");
+    obj.label62:setField("versionDownloaded");
+    obj.label62:setName("label62");
 
     obj.checkBox141 = GUI.fromHandle(_obj_newObject("checkBox"));
-    obj.checkBox141:setParent(obj.scrollBox9);
+    obj.checkBox141:setParent(obj.scrollBox10);
     obj.checkBox141:setLeft(5);
     obj.checkBox141:setTop(85);
     obj.checkBox141:setWidth(200);
@@ -4056,38 +4161,38 @@ local function constructNew_frmMainFerramentas()
     obj.checkBox141:setText("Não pedir para atualizar.");
     obj.checkBox141:setName("checkBox141");
 
-    obj.button32 = GUI.fromHandle(_obj_newObject("button"));
-    obj.button32:setParent(obj.scrollBox9);
-    obj.button32:setLeft(5);
-    obj.button32:setTop(110);
-    obj.button32:setWidth(100);
-    obj.button32:setText("Change Log");
-    obj.button32:setName("button32");
-
     obj.button33 = GUI.fromHandle(_obj_newObject("button"));
-    obj.button33:setParent(obj.scrollBox9);
+    obj.button33:setParent(obj.scrollBox10);
     obj.button33:setLeft(5);
-    obj.button33:setTop(135);
+    obj.button33:setTop(110);
     obj.button33:setWidth(100);
-    obj.button33:setText("Atualizar");
+    obj.button33:setText("Change Log");
     obj.button33:setName("button33");
 
-    obj.label58 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label58:setParent(obj.scrollBox9);
-    obj.label58:setLeft(5);
-    obj.label58:setTop(160);
-    obj.label58:setWidth(200);
-    obj.label58:setHeight(20);
-    obj.label58:setText("Conheça a Mesa:");
-    obj.label58:setName("label58");
-
     obj.button34 = GUI.fromHandle(_obj_newObject("button"));
-    obj.button34:setParent(obj.scrollBox9);
+    obj.button34:setParent(obj.scrollBox10);
     obj.button34:setLeft(5);
-    obj.button34:setTop(185);
+    obj.button34:setTop(135);
     obj.button34:setWidth(100);
-    obj.button34:setText("RPGmeister");
+    obj.button34:setText("Atualizar");
     obj.button34:setName("button34");
+
+    obj.label63 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label63:setParent(obj.scrollBox10);
+    obj.label63:setLeft(5);
+    obj.label63:setTop(160);
+    obj.label63:setWidth(200);
+    obj.label63:setHeight(20);
+    obj.label63:setText("Conheça a Mesa:");
+    obj.label63:setName("label63");
+
+    obj.button35 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button35:setParent(obj.scrollBox10);
+    obj.button35:setLeft(5);
+    obj.button35:setTop(185);
+    obj.button35:setWidth(100);
+    obj.button35:setText("RPGmeister");
+    obj.button35:setName("button35");
 
     obj._e_event0 = obj:addEventListener("onNodeReady",
         function (_)
@@ -4877,7 +4982,8 @@ local function constructNew_frmMainFerramentas()
             								(tonumber(toolSheet.weaponMaterial) or 0);
             				if toolSheet.weaponOP then mundano = mundano + 300 end;
             
-            				local bonus = (tonumber(toolSheet.weaponBonus) or 0)
+            				local bonus = (tonumber(toolSheet.weaponBonus) or 0);
+            				-- BASE PRICE: 2000
             				local magico = 	(bonus*bonus*2000) + 
             								(tonumber(toolSheet.weaponExtraPrice) or 0);
             
@@ -4904,7 +5010,8 @@ local function constructNew_frmMainFerramentas()
             								(tonumber(toolSheet.armorMaterial) or 0);
             				if toolSheet.armorOP then mundano = mundano + 300 end;
             
-            				local bonus = (tonumber(toolSheet.armorBonus) or 0)
+            				local bonus = (tonumber(toolSheet.armorBonus) or 0);
+            				-- BASE PRICE: 1000
             				local magico = 	(bonus*bonus*1000) + 
             								(tonumber(toolSheet.armorExtraPrice) or 0);
             
@@ -4923,8 +5030,11 @@ local function constructNew_frmMainFerramentas()
             				local material = (tonumber(toolSheet.consumableMaterial) or 0);
             				local xp = (tonumber(toolSheet.consumableXP) or 0);
             
+            				-- BASE PRICE: 25
             				local pergaminho = nivel * nc * 25;
+            				-- BASE PRICE: 50
             				local pocao = nivel * nc * 50;
+            				-- BASE PRICE: 750
             				local varinha = nivel * nc * 750;
             
             				toolSheet.scrollPrice = pergaminho + material + xp * 5;
@@ -4960,10 +5070,28 @@ local function constructNew_frmMainFerramentas()
 
     obj._e_event46 = obj.button32:addEventListener("onClick",
         function (_)
+            self.scepterList:append();
+        end, obj);
+
+    obj._e_event47 = obj.scepterList:addEventListener("onCompare",
+        function (_, nodeA, nodeB)
+            return (tonumber(nodeA.order) or 0) - (tonumber(nodeB.order) or 0);
+        end, obj);
+
+    obj._e_event48 = obj.dataLink7:addEventListener("onChange",
+        function (_, field, oldValue, newValue)
+            if toolSheet==nil then return end;
+            				if toolSheet.sortScepter ~= 1 then return end;
+            				toolSheet.sortScepter = 0;
+            				self.scepterList:sort();
+        end, obj);
+
+    obj._e_event49 = obj.button33:addEventListener("onClick",
+        function (_)
             GUI.openInBrowser('https://github.com/rrpgfirecast/firecast/blob/master/Plugins/TablesDock/Ferramentas%20d20/README.md')
         end, obj);
 
-    obj._e_event47 = obj.button32:addEventListener("onClick",
+    obj._e_event50 = obj.button33:addEventListener("onClick",
         function (_)
             local install = Firecast.Plugins.installPlugin(rawget(toolSheet,"stream"), true);
                             if install==false then
@@ -4971,17 +5099,20 @@ local function constructNew_frmMainFerramentas()
                             end;
         end, obj);
 
-    obj._e_event48 = obj.button33:addEventListener("onClick",
+    obj._e_event51 = obj.button34:addEventListener("onClick",
         function (_)
             GUI.openInBrowser('https://github.com/rrpgfirecast/firecast/blob/master/Plugins/TablesDock/Ferramentas%20d20/output/Ferramentas%20d20.rpk?raw=true')
         end, obj);
 
-    obj._e_event49 = obj.button34:addEventListener("onClick",
+    obj._e_event52 = obj.button35:addEventListener("onClick",
         function (_)
             GUI.openInBrowser('https://my.firecastrpg.com/a?a=pagRWEMesaInfo.actInfoMesa&mesaid=64070');
         end, obj);
 
     function obj:_releaseEvents()
+        __o_rrpgObjs.removeEventListenerById(self._e_event52);
+        __o_rrpgObjs.removeEventListenerById(self._e_event51);
+        __o_rrpgObjs.removeEventListenerById(self._e_event50);
         __o_rrpgObjs.removeEventListenerById(self._e_event49);
         __o_rrpgObjs.removeEventListenerById(self._e_event48);
         __o_rrpgObjs.removeEventListenerById(self._e_event47);
@@ -5063,6 +5194,7 @@ local function constructNew_frmMainFerramentas()
         if self.layout47 ~= nil then self.layout47:destroy(); self.layout47 = nil; end;
         if self.frmConsumableCalculator ~= nil then self.frmConsumableCalculator:destroy(); self.frmConsumableCalculator = nil; end;
         if self.button16 ~= nil then self.button16:destroy(); self.button16 = nil; end;
+        if self.label63 ~= nil then self.label63:destroy(); self.label63 = nil; end;
         if self.layout24 ~= nil then self.layout24:destroy(); self.layout24 = nil; end;
         if self.checkBox68 ~= nil then self.checkBox68:destroy(); self.checkBox68 = nil; end;
         if self.checkBox98 ~= nil then self.checkBox98:destroy(); self.checkBox98 = nil; end;
@@ -5074,6 +5206,7 @@ local function constructNew_frmMainFerramentas()
         if self.layout62 ~= nil then self.layout62:destroy(); self.layout62 = nil; end;
         if self.frmSpellsList ~= nil then self.frmSpellsList:destroy(); self.frmSpellsList = nil; end;
         if self.layout89 ~= nil then self.layout89:destroy(); self.layout89 = nil; end;
+        if self.button35 ~= nil then self.button35:destroy(); self.button35 = nil; end;
         if self.label8 ~= nil then self.label8:destroy(); self.label8 = nil; end;
         if self.layout9 ~= nil then self.layout9:destroy(); self.layout9 = nil; end;
         if self.layout88 ~= nil then self.layout88:destroy(); self.layout88 = nil; end;
@@ -5117,6 +5250,7 @@ local function constructNew_frmMainFerramentas()
         if self.dataLink3 ~= nil then self.dataLink3:destroy(); self.dataLink3 = nil; end;
         if self.checkBox127 ~= nil then self.checkBox127:destroy(); self.checkBox127 = nil; end;
         if self.label29 ~= nil then self.label29:destroy(); self.label29 = nil; end;
+        if self.dataLink7 ~= nil then self.dataLink7:destroy(); self.dataLink7 = nil; end;
         if self.layout78 ~= nil then self.layout78:destroy(); self.layout78 = nil; end;
         if self.frmTemplateCreditos ~= nil then self.frmTemplateCreditos:destroy(); self.frmTemplateCreditos = nil; end;
         if self.tab10 ~= nil then self.tab10:destroy(); self.tab10 = nil; end;
@@ -5137,7 +5271,9 @@ local function constructNew_frmMainFerramentas()
         if self.layout11 ~= nil then self.layout11:destroy(); self.layout11 = nil; end;
         if self.checkBox23 ~= nil then self.checkBox23:destroy(); self.checkBox23 = nil; end;
         if self.checkBox37 ~= nil then self.checkBox37:destroy(); self.checkBox37 = nil; end;
+        if self.layout108 ~= nil then self.layout108:destroy(); self.layout108 = nil; end;
         if self.checkBox40 ~= nil then self.checkBox40:destroy(); self.checkBox40 = nil; end;
+        if self.scepterList ~= nil then self.scepterList:destroy(); self.scepterList = nil; end;
         if self.checkBox28 ~= nil then self.checkBox28:destroy(); self.checkBox28 = nil; end;
         if self.checkBox125 ~= nil then self.checkBox125:destroy(); self.checkBox125 = nil; end;
         if self.label2 ~= nil then self.label2:destroy(); self.label2 = nil; end;
@@ -5172,6 +5308,7 @@ local function constructNew_frmMainFerramentas()
         if self.layout90 ~= nil then self.layout90:destroy(); self.layout90 = nil; end;
         if self.label24 ~= nil then self.label24:destroy(); self.label24 = nil; end;
         if self.dataLink5 ~= nil then self.dataLink5:destroy(); self.dataLink5 = nil; end;
+        if self.label61 ~= nil then self.label61:destroy(); self.label61 = nil; end;
         if self.layout1 ~= nil then self.layout1:destroy(); self.layout1 = nil; end;
         if self.tab2 ~= nil then self.tab2:destroy(); self.tab2 = nil; end;
         if self.button30 ~= nil then self.button30:destroy(); self.button30 = nil; end;
@@ -5183,6 +5320,7 @@ local function constructNew_frmMainFerramentas()
         if self.label6 ~= nil then self.label6:destroy(); self.label6 = nil; end;
         if self.button13 ~= nil then self.button13:destroy(); self.button13 = nil; end;
         if self.checkBox109 ~= nil then self.checkBox109:destroy(); self.checkBox109 = nil; end;
+        if self.layout107 ~= nil then self.layout107:destroy(); self.layout107 = nil; end;
         if self.scope ~= nil then self.scope:destroy(); self.scope = nil; end;
         if self.checkBox17 ~= nil then self.checkBox17:destroy(); self.checkBox17 = nil; end;
         if self.checkBox110 ~= nil then self.checkBox110:destroy(); self.checkBox110 = nil; end;
@@ -5201,6 +5339,7 @@ local function constructNew_frmMainFerramentas()
         if self.label53 ~= nil then self.label53:destroy(); self.label53 = nil; end;
         if self.checkBox83 ~= nil then self.checkBox83:destroy(); self.checkBox83 = nil; end;
         if self.button27 ~= nil then self.button27:destroy(); self.button27 = nil; end;
+        if self.tab11 ~= nil then self.tab11:destroy(); self.tab11 = nil; end;
         if self.button24 ~= nil then self.button24:destroy(); self.button24 = nil; end;
         if self.button3 ~= nil then self.button3:destroy(); self.button3 = nil; end;
         if self.checkBox139 ~= nil then self.checkBox139:destroy(); self.checkBox139 = nil; end;
@@ -5212,6 +5351,7 @@ local function constructNew_frmMainFerramentas()
         if self.button11 ~= nil then self.button11:destroy(); self.button11 = nil; end;
         if self.checkBox140 ~= nil then self.checkBox140:destroy(); self.checkBox140 = nil; end;
         if self.layout97 ~= nil then self.layout97:destroy(); self.layout97 = nil; end;
+        if self.scrollBox10 ~= nil then self.scrollBox10:destroy(); self.scrollBox10 = nil; end;
         if self.checkBox51 ~= nil then self.checkBox51:destroy(); self.checkBox51 = nil; end;
         if self.button6 ~= nil then self.button6:destroy(); self.button6 = nil; end;
         if self.checkBox75 ~= nil then self.checkBox75:destroy(); self.checkBox75 = nil; end;
@@ -5247,6 +5387,7 @@ local function constructNew_frmMainFerramentas()
         if self.label50 ~= nil then self.label50:destroy(); self.label50 = nil; end;
         if self.checkBox10 ~= nil then self.checkBox10:destroy(); self.checkBox10 = nil; end;
         if self.checkBox47 ~= nil then self.checkBox47:destroy(); self.checkBox47 = nil; end;
+        if self.layout109 ~= nil then self.layout109:destroy(); self.layout109 = nil; end;
         if self.checkBox130 ~= nil then self.checkBox130:destroy(); self.checkBox130 = nil; end;
         if self.scrollBox4 ~= nil then self.scrollBox4:destroy(); self.scrollBox4 = nil; end;
         if self.layout22 ~= nil then self.layout22:destroy(); self.layout22 = nil; end;
@@ -5265,6 +5406,7 @@ local function constructNew_frmMainFerramentas()
         if self.checkBox15 ~= nil then self.checkBox15:destroy(); self.checkBox15 = nil; end;
         if self.layout58 ~= nil then self.layout58:destroy(); self.layout58 = nil; end;
         if self.checkBox18 ~= nil then self.checkBox18:destroy(); self.checkBox18 = nil; end;
+        if self.layout110 ~= nil then self.layout110:destroy(); self.layout110 = nil; end;
         if self.label40 ~= nil then self.label40:destroy(); self.label40 = nil; end;
         if self.dataLink4 ~= nil then self.dataLink4:destroy(); self.dataLink4 = nil; end;
         if self.layout63 ~= nil then self.layout63:destroy(); self.layout63 = nil; end;
@@ -5282,6 +5424,7 @@ local function constructNew_frmMainFerramentas()
         if self.label27 ~= nil then self.label27:destroy(); self.label27 = nil; end;
         if self.checkBox7 ~= nil then self.checkBox7:destroy(); self.checkBox7 = nil; end;
         if self.button20 ~= nil then self.button20:destroy(); self.button20 = nil; end;
+        if self.label59 ~= nil then self.label59:destroy(); self.label59 = nil; end;
         if self.layout68 ~= nil then self.layout68:destroy(); self.layout68 = nil; end;
         if self.layout105 ~= nil then self.layout105:destroy(); self.layout105 = nil; end;
         if self.button1 ~= nil then self.button1:destroy(); self.button1 = nil; end;
@@ -5295,6 +5438,7 @@ local function constructNew_frmMainFerramentas()
         if self.edit5 ~= nil then self.edit5:destroy(); self.edit5 = nil; end;
         if self.layout54 ~= nil then self.layout54:destroy(); self.layout54 = nil; end;
         if self.layout50 ~= nil then self.layout50:destroy(); self.layout50 = nil; end;
+        if self.frmScepterCalculator ~= nil then self.frmScepterCalculator:destroy(); self.frmScepterCalculator = nil; end;
         if self.checkBox121 ~= nil then self.checkBox121:destroy(); self.checkBox121 = nil; end;
         if self.label41 ~= nil then self.label41:destroy(); self.label41 = nil; end;
         if self.scrollBox2 ~= nil then self.scrollBox2:destroy(); self.scrollBox2 = nil; end;
@@ -5342,6 +5486,7 @@ local function constructNew_frmMainFerramentas()
         if self.checkBox117 ~= nil then self.checkBox117:destroy(); self.checkBox117 = nil; end;
         if self.layout33 ~= nil then self.layout33:destroy(); self.layout33 = nil; end;
         if self.edit3 ~= nil then self.edit3:destroy(); self.edit3 = nil; end;
+        if self.label62 ~= nil then self.label62:destroy(); self.label62 = nil; end;
         if self.checkBox134 ~= nil then self.checkBox134:destroy(); self.checkBox134 = nil; end;
         if self.layout16 ~= nil then self.layout16:destroy(); self.layout16 = nil; end;
         if self.layout21 ~= nil then self.layout21:destroy(); self.layout21 = nil; end;
@@ -5376,6 +5521,7 @@ local function constructNew_frmMainFerramentas()
         if self.layout81 ~= nil then self.layout81:destroy(); self.layout81 = nil; end;
         if self.rectangle1 ~= nil then self.rectangle1:destroy(); self.rectangle1 = nil; end;
         if self.layout45 ~= nil then self.layout45:destroy(); self.layout45 = nil; end;
+        if self.label60 ~= nil then self.label60:destroy(); self.label60 = nil; end;
         if self.checkBox112 ~= nil then self.checkBox112:destroy(); self.checkBox112 = nil; end;
         if self.layout77 ~= nil then self.layout77:destroy(); self.layout77 = nil; end;
         if self.layout46 ~= nil then self.layout46:destroy(); self.layout46 = nil; end;

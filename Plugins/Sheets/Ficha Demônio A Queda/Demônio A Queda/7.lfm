@@ -1,0 +1,266 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmkpta7_svg" align="client" theme="light" margins="{top=1}">
+    <style>#frmkpta7_svg path {color: black; strokeColor: black; mode: stretch;} &#xD;
+#frmkpta7_svg label {fontColor: black; textTrimming: none; wordWrap: false; autoSize: true;}</style>
+    <scrollBox align="client">
+        <rectangle width="893" height="1263" color="white">&#xD;
+            <image left="0" top="0" width="893" height="1263" src="images/pac.png" style="stretch" optimize="true" compilerOrder="0"/>&#xD;
+            <layout left="353" top="181" width="16" height="26" compilerOrder="1">
+                <imageCheckBox checkedImage="images/on.png" uncheckedImage="images/off.png" left="0" top="0" width="16" height="27" field="Pactos__Fé_1A" compilerOrder="2"/>
+            </layout>&#xD;
+            <layout left="366" top="181" width="17" height="27" compilerOrder="5">
+                <imageCheckBox checkedImage="images/on.png" uncheckedImage="images/off.png" left="0" top="0" width="17" height="28" field="Pactos__Fé_1B" compilerOrder="6"/>
+            </layout>&#xD;
+            <layout left="380" top="181" width="16" height="26" compilerOrder="7">
+                <imageCheckBox checkedImage="images/on.png" uncheckedImage="images/off.png" left="0" top="0" width="16" height="27" field="Pactos__Fé_1C" compilerOrder="8"/>
+            </layout>&#xD;
+            <layout left="394" top="181" width="16" height="26" compilerOrder="9">
+                <imageCheckBox checkedImage="images/on.png" uncheckedImage="images/off.png" left="0" top="0" width="16" height="27" field="Pactos__Fé_1D" compilerOrder="10"/>
+            </layout>&#xD;
+            <layout left="408" top="181" width="16" height="26" compilerOrder="11">
+                <imageCheckBox checkedImage="images/on.png" uncheckedImage="images/off.png" left="0" top="0" width="16" height="27" field="Pactos__Fé_1E" compilerOrder="12"/>
+            </layout>&#xD;
+            <layout left="96" top="184" width="233" height="19" compilerOrder="3">
+                <edit transparent="true" fontSize="14" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="233" height="20" field="Pacto__Nome_1" compilerOrder="4"/>
+            </layout>&#xD;
+            <layout left="532" top="184" width="47" height="19" compilerOrder="13">
+                <edit transparent="true" fontSize="14" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="47" height="20" field="Pacto__Fé_Oferecida_1" compilerOrder="14"/>
+            </layout>&#xD;
+            <layout left="130" top="205" width="708" height="60" compilerOrder="15">
+                <textEditor transparent="true" fontSize="14" fontColor="#000000" left="0" top="0" width="708" height="60" field="Pacto__Pacto_Feito_1A" compilerOrder="16"/>
+            </layout>&#xD;
+
+            <layout left="197" top="269" width="643" height="44" compilerOrder="19">
+                <textEditor transparent="true" fontSize="14" fontColor="#000000" left="0" top="0" width="643" height="44" field="Pacto__Dádivas_Recebidas_1A" compilerOrder="20"/>
+            </layout>&#xD;
+			
+            <layout left="353" top="333" width="16" height="26" compilerOrder="25">
+                <imageCheckBox checkedImage="images/on.png" uncheckedImage="images/off.png" left="0" top="0" width="16" height="27" field="Pactos__Fé_2A" compilerOrder="26"/>
+            </layout>&#xD;
+            <layout left="367" top="333" width="16" height="26" compilerOrder="27">
+                <imageCheckBox checkedImage="images/on.png" uncheckedImage="images/off.png" left="0" top="0" width="16" height="27" field="Pactos__Fé_2B" compilerOrder="28"/>
+            </layout>&#xD;
+            <layout left="380" top="333" width="16" height="26" compilerOrder="29">
+                <imageCheckBox checkedImage="images/on.png" uncheckedImage="images/off.png" left="0" top="0" width="16" height="27" field="Pactos__Fé_2C" compilerOrder="30"/>
+            </layout>&#xD;
+            <layout left="393" top="333" width="16" height="26" compilerOrder="31">
+                <imageCheckBox checkedImage="images/on.png" uncheckedImage="images/off.png" left="0" top="0" width="16" height="27" field="Pactos__Fé_2D" compilerOrder="32"/>
+            </layout>&#xD;
+            <layout left="408" top="333" width="16" height="26" compilerOrder="33">
+                <imageCheckBox checkedImage="images/on.png" uncheckedImage="images/off.png" left="0" top="0" width="16" height="27" field="Pactos__Fé_2E" compilerOrder="34"/>
+            </layout>&#xD;
+            <layout left="97" top="335" width="233" height="19" compilerOrder="23">
+                <edit transparent="true" fontSize="14" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="233" height="20" field="Pacto__Nome_2" compilerOrder="24"/>
+            </layout>&#xD;
+            <layout left="533" top="335" width="47" height="19" compilerOrder="35">
+                <edit transparent="true" fontSize="14" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="47" height="20" field="Pacto__Fé_Oferecida_2" compilerOrder="36"/>
+            </layout>&#xD;
+            <layout left="130" top="356" width="708" height="60" compilerOrder="37">
+                <textEditor transparent="true" fontSize="14" fontColor="#000000" left="0" top="0" width="708" height="60" field="Pacto__Pacto_Feito_2A" compilerOrder="38"/>
+            </layout>&#xD;
+
+            <layout left="197" top="421" width="643" height="19" compilerOrder="41">
+                <textEditor transparent="true" fontSize="14" fontColor="#000000" left="0" top="0" width="643" height="40" field="Pacto__Dádivas_Recebidas_2A" compilerOrder="42"/>
+            </layout>&#xD;
+
+            <layout left="352" top="484" width="16" height="26" compilerOrder="47">
+                <imageCheckBox checkedImage="images/on.png" uncheckedImage="images/off.png" left="0" top="0" width="16" height="27" field="Pactos__Fé_3A" compilerOrder="48"/>
+            </layout>&#xD;
+            <layout left="367" top="484" width="16" height="26" compilerOrder="49">
+                <imageCheckBox checkedImage="images/on.png" uncheckedImage="images/off.png" left="0" top="0" width="16" height="27" field="Pactos__Fé_3B" compilerOrder="50"/>
+            </layout>&#xD;
+            <layout left="380" top="484" width="16" height="26" compilerOrder="51">
+                <imageCheckBox checkedImage="images/on.png" uncheckedImage="images/off.png" left="0" top="0" width="16" height="27" field="Pactos__Fé_3C" compilerOrder="52"/>
+            </layout>&#xD;
+            <layout left="393" top="484" width="16" height="26" compilerOrder="53">
+                <imageCheckBox checkedImage="images/on.png" uncheckedImage="images/off.png" left="0" top="0" width="16" height="27" field="Pactos__Fé_3D" compilerOrder="54"/>
+            </layout>&#xD;
+            <layout left="408" top="484" width="16" height="26" compilerOrder="55">
+                <imageCheckBox checkedImage="images/on.png" uncheckedImage="images/off.png" left="0" top="0" width="16" height="27" field="Pactos__Fé_3E" compilerOrder="56"/>
+            </layout>&#xD;
+            <layout left="96" top="486" width="233" height="19" compilerOrder="45">
+                <edit transparent="true" fontSize="14" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="233" height="20" field="Pacto__Nome_3" compilerOrder="46"/>
+            </layout>&#xD;
+            <layout left="532" top="486" width="47" height="19" compilerOrder="57">
+                <edit transparent="true" fontSize="14" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="47" height="20" field="Pacto__Fé_Oferecida_3" compilerOrder="58"/>
+            </layout>&#xD;
+            <layout left="129" top="507" width="708" height="60" compilerOrder="59">
+                <textEditor transparent="true" fontSize="14" fontColor="#000000" left="0" top="0" width="708" height="60" field="Pacto__Pacto_Feito_3A" compilerOrder="60"/>
+            </layout>&#xD;
+
+            <layout left="196" top="572" width="643" height="60" compilerOrder="63">
+                <textEditor transparent="true" fontSize="14" fontColor="#000000" left="0" top="0" width="643" height="60" field="Pacto__Dádivas_Recebidas_3A" compilerOrder="64"/>
+            </layout>&#xD;
+
+			
+			
+            <layout left="69" top="688" width="250" height="19" compilerOrder="67">
+                <edit transparent="true" fontSize="14" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="250" height="20" field="Combate__Nome_1" compilerOrder="68"/>
+            </layout>&#xD;
+            <layout left="333" top="688" width="35" height="19" compilerOrder="69">
+                <edit transparent="true" fontSize="14" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="35" height="20" field="Combate__Dano_1" compilerOrder="70"/>
+            </layout>&#xD;
+            <layout left="387" top="688" width="90" height="19" compilerOrder="71">
+                <edit transparent="true" fontSize="14" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="90" height="20" field="Combate__Tipo_de_Dano_1" compilerOrder="72"/>
+            </layout>&#xD;
+            <layout left="485" top="688" width="35" height="19" compilerOrder="73">
+                <edit transparent="true" fontSize="14" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="35" height="20" field="Combate__Dif__1" compilerOrder="74"/>
+            </layout>&#xD;
+            <layout left="534" top="688" width="53" height="19" compilerOrder="75">
+                <edit transparent="true" fontSize="14" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="53" height="20" field="Combate__Cad___1" compilerOrder="76"/>
+            </layout>&#xD;
+            <layout left="594" top="688" width="53" height="19" compilerOrder="77">
+                <edit transparent="true" fontSize="14" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="53" height="20" field="Combate__Distância__1" compilerOrder="78"/>
+            </layout>&#xD;
+            <layout left="654" top="688" width="53" height="19" compilerOrder="79">
+                <edit transparent="true" fontSize="14" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="53" height="20" field="Combate__Carga__1" compilerOrder="80"/>
+            </layout>&#xD;
+            <layout left="720" top="688" width="53" height="19" compilerOrder="81">
+                <edit transparent="true" fontSize="14" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="53" height="20" field="Combate__Peso_1" compilerOrder="82"/>
+            </layout>&#xD;
+            <layout left="786" top="688" width="35" height="19" compilerOrder="83">
+                <edit transparent="true" fontSize="14" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="35" height="20" field="Combate__Ocult__1" compilerOrder="84"/>
+            </layout>&#xD;
+            <layout left="69" top="711" width="250" height="19" compilerOrder="85">
+                <edit transparent="true" fontSize="14" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="250" height="20" field="Combate__Nome_2" compilerOrder="86"/>
+            </layout>&#xD;
+            <layout left="333" top="711" width="35" height="19" compilerOrder="87">
+                <edit transparent="true" fontSize="14" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="35" height="20" field="Combate__Dano_2" compilerOrder="88"/>
+            </layout>&#xD;
+            <layout left="387" top="711" width="90" height="19" compilerOrder="89">
+                <edit transparent="true" fontSize="14" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="90" height="20" field="Combate__Tipo_de_Dano_2" compilerOrder="90"/>
+            </layout>&#xD;
+            <layout left="485" top="711" width="35" height="19" compilerOrder="91">
+                <edit transparent="true" fontSize="14" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="35" height="20" field="Combate__Dif__2" compilerOrder="92"/>
+            </layout>&#xD;
+            <layout left="534" top="711" width="53" height="19" compilerOrder="93">
+                <edit transparent="true" fontSize="14" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="53" height="20" field="Combate__Cad___2" compilerOrder="94"/>
+            </layout>&#xD;
+            <layout left="594" top="711" width="53" height="19" compilerOrder="95">
+                <edit transparent="true" fontSize="14" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="53" height="20" field="Combate__Distância_2" compilerOrder="96"/>
+            </layout>&#xD;
+            <layout left="654" top="711" width="53" height="19" compilerOrder="97">
+                <edit transparent="true" fontSize="14" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="53" height="20" field="Combate__Carga_2" compilerOrder="98"/>
+            </layout>&#xD;
+            <layout left="720" top="711" width="53" height="19" compilerOrder="99">
+                <edit transparent="true" fontSize="14" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="53" height="20" field="Combate__Peso_2" compilerOrder="100"/>
+            </layout>&#xD;
+            <layout left="786" top="711" width="35" height="19" compilerOrder="101">
+                <edit transparent="true" fontSize="14" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="35" height="20" field="Combate__Ocult__2" compilerOrder="102"/>
+            </layout>&#xD;
+            <layout left="68" top="788" width="250" height="19" compilerOrder="103">
+                <edit transparent="true" fontSize="14" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="250" height="20" field="Combate__Nome_3" compilerOrder="104"/>
+            </layout>&#xD;
+            <layout left="336" top="788" width="35" height="19" compilerOrder="105">
+                <edit transparent="true" fontSize="14" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="35" height="20" field="Combate__Dano_3" compilerOrder="106"/>
+            </layout>&#xD;
+            <layout left="381" top="788" width="90" height="19" compilerOrder="107">
+                <edit transparent="true" fontSize="14" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="90" height="20" field="Combate__Tipo_de_Dano_3" compilerOrder="108"/>
+            </layout>&#xD;
+            <layout left="487" top="788" width="35" height="19" compilerOrder="109">
+                <edit transparent="true" fontSize="14" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="35" height="20" field="Combate__Dif__3__0" compilerOrder="110"/>
+            </layout>&#xD;
+            <layout left="540" top="788" width="35" height="19" compilerOrder="111">
+                <edit transparent="true" fontSize="14" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="35" height="20" field="Combate__Ocult__3__0" compilerOrder="112"/>
+            </layout>&#xD;
+            <layout left="632" top="788" width="35" height="19" compilerOrder="115">
+                <edit transparent="true" fontSize="14" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="35" height="20" field="Combate__Nível_5" compilerOrder="116"/>
+            </layout>&#xD;
+            <layout left="688" top="788" width="35" height="19" compilerOrder="125">
+                <edit transparent="true" fontSize="14" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="35" height="20" field="Combate__Peso_5" compilerOrder="126"/>
+            </layout>&#xD;
+            <layout left="740" top="788" width="35" height="19" compilerOrder="113">
+                <edit transparent="true" fontSize="14" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="35" height="20" field="Combate__Ocult__5" compilerOrder="114"/>
+            </layout>&#xD;
+            <layout left="790" top="788" width="35" height="19" compilerOrder="117">
+                <edit transparent="true" fontSize="14" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="35" height="20" field="Combate__Mod__5" compilerOrder="118"/>
+            </layout>&#xD;
+            <layout left="68" top="809" width="250" height="19" compilerOrder="119">
+                <edit transparent="true" fontSize="14" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="250" height="20" field="Combate__Nome_4" compilerOrder="120"/>
+            </layout>&#xD;
+            <layout left="336" top="809" width="35" height="19" compilerOrder="121">
+                <edit transparent="true" fontSize="14" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="35" height="20" field="Combate__Dano_4" compilerOrder="122"/>
+            </layout>&#xD;
+            <layout left="381" top="809" width="90" height="19" compilerOrder="123">
+                <edit transparent="true" fontSize="14" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="90" height="20" field="Combate__Tipo_de_Dano_4" compilerOrder="124"/>
+            </layout>&#xD;
+            <layout left="487" top="809" width="35" height="19" compilerOrder="127">
+                <edit transparent="true" fontSize="14" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="35" height="20" field="Combate__Dif__3__1" compilerOrder="128"/>
+            </layout>&#xD;
+            <layout left="540" top="809" width="35" height="19" compilerOrder="129">
+                <edit transparent="true" fontSize="14" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="35" height="20" field="Combate__Ocult__3__1" compilerOrder="130"/>
+            </layout>&#xD;
+            <layout left="632" top="810" width="35" height="19" compilerOrder="131">
+                <edit transparent="true" fontSize="14" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="35" height="20" field="Combate__Nível_6" compilerOrder="132"/>
+            </layout>&#xD;
+            <layout left="688" top="810" width="35" height="19" compilerOrder="133">
+                <edit transparent="true" fontSize="14" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="35" height="20" field="Combate__Peso_6" compilerOrder="134"/>
+            </layout>&#xD;
+            <layout left="740" top="810" width="35" height="19" compilerOrder="135">
+                <edit transparent="true" fontSize="14" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="35" height="20" field="Combate__Ocult__6" compilerOrder="136"/>
+            </layout>&#xD;
+            <layout left="790" top="810" width="35" height="19" compilerOrder="137">
+                <edit transparent="true" fontSize="14" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="35" height="20" field="Combate__Mod__6" compilerOrder="138"/>
+            </layout>&#xD;
+            <layout left="100" top="889" width="220" height="19" compilerOrder="149">
+                <edit transparent="true" fontSize="14" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="220" height="20" field="Manobras_de_Combate__Nome_1" compilerOrder="150"/>
+            </layout>&#xD;
+            <layout left="415" top="889" width="297" height="19" compilerOrder="151">
+                <edit transparent="true" fontSize="14" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="297" height="20" field="Manobras_de_Combate__Pré_requisitos" compilerOrder="152"/>
+            </layout>&#xD;
+            <layout left="791" top="889" width="32" height="19" compilerOrder="153">
+                <edit transparent="true" fontSize="14" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="32" height="20" field="Manobras_de_Combate__Página" compilerOrder="154"/>
+            </layout>&#xD;
+            <layout left="162" top="911" width="35" height="19" compilerOrder="155">
+                <edit transparent="true" fontSize="14" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="35" height="20" field="Manobras_de_Combate__Pontos_de_Poder" compilerOrder="156"/>
+            </layout>&#xD;
+            <layout left="241" top="911" width="55" height="19" compilerOrder="157">
+                <edit transparent="true" fontSize="14" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="55" height="20" field="Manobras_de_Combate__Custo" compilerOrder="158"/>
+            </layout>&#xD;
+            <layout left="363" top="911" width="62" height="19" compilerOrder="159">
+                <edit transparent="true" fontSize="14" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="62" height="20" field="Manobras_de_Combate__Iniciativa" compilerOrder="160"/>
+            </layout>&#xD;
+            <layout left="498" top="911" width="61" height="19" compilerOrder="161">
+                <edit transparent="true" fontSize="14" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="61" height="20" field="Manobras_de_Combate__Movimento" compilerOrder="162"/>
+            </layout>&#xD;
+            <layout left="598" top="911" width="112" height="19" compilerOrder="163">
+                <edit transparent="true" fontSize="14" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="112" height="20" field="Manobras_de_Combate__Dano" compilerOrder="164"/>
+            </layout>&#xD;
+            <layout left="767" top="911" width="58" height="19" compilerOrder="165">
+                <edit transparent="true" fontSize="14" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="58" height="20" field="Manobras_de_Combate__Precisão" compilerOrder="166"/>
+            </layout>&#xD;
+            <layout left="101" top="956" width="220" height="19" compilerOrder="167">
+                <edit transparent="true" fontSize="14" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="220" height="20" field="Manobras_de_Combate__Nome_2" compilerOrder="168"/>
+            </layout>&#xD;
+            <layout left="416" top="956" width="297" height="19" compilerOrder="169">
+                <edit transparent="true" fontSize="14" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="297" height="20" field="Manobras_de_Combate__Pré_requisitos_2" compilerOrder="170"/>
+            </layout>&#xD;
+            <layout left="793" top="956" width="32" height="19" compilerOrder="171">
+                <edit transparent="true" fontSize="14" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="32" height="20" field="Manobras_de_Combate__Página_2" compilerOrder="172"/>
+            </layout>&#xD;
+            <layout left="163" top="978" width="35" height="19" compilerOrder="173">
+                <edit transparent="true" fontSize="14" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="35" height="20" field="Manobras_de_Combate__Pontos_de_Poder_2" compilerOrder="174"/>
+            </layout>&#xD;
+            <layout left="242" top="978" width="55" height="19" compilerOrder="175">
+                <edit transparent="true" fontSize="14" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="55" height="20" field="Manobras_de_Combate__Custo_2" compilerOrder="176"/>
+            </layout>&#xD;
+            <layout left="365" top="978" width="62" height="19" compilerOrder="177">
+                <edit transparent="true" fontSize="14" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="62" height="20" field="Manobras_de_Combate__Iniciativa_2" compilerOrder="178"/>
+            </layout>&#xD;
+            <layout left="499" top="978" width="61" height="19" compilerOrder="179">
+                <edit transparent="true" fontSize="14" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="61" height="20" field="Manobras_de_Combate__Movimento_2" compilerOrder="180"/>
+            </layout>&#xD;
+            <layout left="599" top="978" width="112" height="19" compilerOrder="181">
+                <edit transparent="true" fontSize="14" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="112" height="20" field="Manobras_de_Combate__Dano_2" compilerOrder="182"/>
+            </layout>&#xD;
+            <layout left="768" top="978" width="58" height="19" compilerOrder="183">
+                <edit transparent="true" fontSize="14" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="58" height="20" field="Manobras_de_Combate__Precisão_2" compilerOrder="184"/>
+            </layout>&#xD;
+			
+			<layout left="64" top="1034" width="771" height="104" compilerOrder="1">
+                <textEditor transparent="true" fontSize="14" fontColor="#000000" width="771" height="105" field="untitled72" compilerOrder="2"/>
+            </layout>&#xD;
+			
+        </rectangle>
+    </scrollBox>
+</form>

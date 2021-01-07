@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmkpta9_svg" align="client" theme="light" margins="{top=1}">
+    <style>#frmkpta1_svg path {color: black; strokeColor: black; mode: stretch;} &#xD;
+#frmkpta1_svg label {fontColor: black; textTrimming: none; wordWrap: false; autoSize: true;}</style>
+    <scrollBox align="client">
+        <rectangle width="893" height="1263" color="white">&#xD;
+            <image left="0" top="0" width="893" height="1263" src="images/roll.png" style="stretch" optimize="true" compilerOrder="0"/>&#xD;
+			
+						<!-- Lista padrão -->
+
+		<scrollBox left="45" top="170" width="890" height="900">
+		
+			<!-- Botão de inserir nova rolagem padrão -->
+			
+        <layout align="top" height="30" margins="{bottom=4}">
+                <button text="Nova Rolagem" width="190" align="left" hitTest="true" hint="Programe as suas principais rolagens aqui!">
+                        <event name="onClick">
+                                -- Usuário clicou no botão de criar novo item.
+                                -- Vamos inserir um novo item no nosso recordList                              
+                                self.rclListaDosItens:append();
+                        </event>
+                </button>
+        </layout>  
+
+             						
+
+        <!-- recordList, representando a lista de rolagens padrão -->
+		
+        <recordList name="rclListaDosItens" field="campoDosItens" templateForm="frmLR"
+                                left="1" top="40" height="57" width="950" autoHeight="true">                              
+        </recordList>       
+ 
+	
+	</scrollBox>
+			
+			
+			
+			
+        </rectangle>
+    </scrollBox>
+</form>

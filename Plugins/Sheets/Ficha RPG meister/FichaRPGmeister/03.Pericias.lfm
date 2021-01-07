@@ -6,6 +6,8 @@
 		<![CDATA[
 			
 			local dnd = NDB.load("dndskills.xml");
+			local rpgmeister = NDB.load("rpgmeisterskills.xml");
+			local faroeste = NDB.load("faroesteskills.xml");
 
 			local function updateAtributes(num)
 				local atr = "" .. num;
@@ -65,28 +67,40 @@
 				end;
 			end;
 
-			local function dndSkills()
+			local function fillSkills(list, limit)
 				local nodes = NDB.getChildNodes(sheet.campoDasPericias); 
 				for i=1, #nodes, 1 do
 					NDB.deleteNode(nodes[i]);
 				end
 
-				for i=1, 44, 1 do
+				for i=1, limit, 1 do
 					local pericia = self.rclListaDasPericias:append();
 					if pericia ~= nil then
-						pericia.nomePericia = dnd[i].nome;
-						pericia.chavePericia = dnd[i].chave;
-						pericia.exigeTreino = dnd[i].treino;
-						if dnd[i].armadura > 0 then
+						pericia.nomePericia = list[i].nome;
+						pericia.chavePericia = list[i].chave;
+						pericia.exigeTreino = list[i].treino;
+						if list[i].armadura > 0 then
 							pericia.penalidadeArmadura2 = true;
 						end;
-						if dnd[i].armadura > 1 then
+						if list[i].armadura > 1 then
 							pericia.penalidadeArmadura = true;
 						end;
 					end;
 				end;
 
 				self.rclListaDasPericias:sort();
+			end;
+
+			local function dndSkills()
+				fillSkills(dnd, 44);
+			end;
+
+			local function rpgmeisterSkills()
+				fillSkills(rpgmeister, 41);
+			end;
+
+			local function faroesteSkills()
+				fillSkills(faroeste, 25);
 			end;
 		]]>	
 		</script>
@@ -98,7 +112,7 @@
 			</flowPart>
 		</template>
 
-		<popup name="popPericia" width="300" height="185" backOpacity="0.4" autoScopeNode="false">
+		<popup name="popPericia" width="300" height="250" backOpacity="0.4" autoScopeNode="false">
 			<flowLayout align="top" autoHeight="true" maxControlsPerLine="3" margins="{bottom=4}" horzAlign="center">
 				<periciaSmallCenter text="Penalidades" field="penalidesPericia"/>
 				<periciaSmallCenter text="Racial" field="racialPericia"/>
@@ -109,8 +123,11 @@
 				<periciaSmallCenter text="Talentos" field="talentosPericia"/>
 				<periciaSmallCenter text="Classe" field="classePericia"/>
 				<periciaSmallCenter text="Condicional" field="condicionalPericia"/>
+				<periciaSmallCenter text="Competencia" field="competenciaPericia"/>
+				<periciaSmallCenter text="Intuição" field="intuicaoPericia"/>
+				<periciaSmallCenter text="Sorte" field="sortePericia"/>
 			</flowLayout>
-			<textEditor align="bottom" field="descricao"/>
+			<textEditor align="bottom" height="80" field="descricao"/>
 			<checkBox align="left" text="Exige Treino" field="exigeTreino"/>
 			<checkBox align="right" text="Penalidade Armadura" field="penalidadeArmadura"/>
 			<checkBox align="right" width="20" text="" field="penalidadeArmadura2"/>
@@ -139,20 +156,6 @@
 				<event name="onCompare">
 		            return Utils.compareStringPtBr(nodeA.nomePericia, nodeB.nomePericia);
 		        </event>
-				<event name="onEndEnumeration">
-					if sheet==nil then return end;
-					local nodes = NDB.getChildNodes(sheet.campoDasPericias);               
-					if #nodes == 0 then
-						dndSkills();
-					end;
-				</event>
-				<event name="onBeginEnumeration">
-					if sheet==nil then return end;
-					local nodes = NDB.getChildNodes(sheet.campoDasPericias);               
-					if #nodes == 0 then
-						dndSkills();
-					end;
-				</event>
 			</recordList>
 		</layout>
 
@@ -191,7 +194,10 @@
 					idioma.escritaIdioma = true;
 				</event>
 			</button>
-			<button text="Padrão DnD3.5" left="0" top="50" width="125" height="25" onClick="dndSkills();" hint="Vai apagar todas perícias atuais. "/>
+			<label text="Padrões de Perícia" left="0" top="50" width="125" height="20" horzTextAlign="center"/>
+			<button text="DnD3.5" left="0" top="75" width="125" height="25" onClick="dndSkills();" hint="Vai apagar todas perícias atuais. "/>
+			<button text="RPGmeister" left="0" top="100" width="125" height="25" onClick="rpgmeisterSkills();" hint="Vai apagar todas perícias atuais. "/>
+			<button text="Faroeste Arcano" left="0" top="125" width="125" height="25" onClick="faroesteSkills();" hint="Vai apagar todas perícias atuais. "/>
 		</layout>
 	</scrollBox>
 </form>

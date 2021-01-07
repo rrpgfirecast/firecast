@@ -54,8 +54,11 @@
         <tab title="Habilidades">
             <import file="04.Habilidades.xml"/>
         </tab>
+        <tab title="Mítico">
+            <import file="04.HabilidadesMiticas.xml"/>
+        </tab>
 		<tab title="Magias">
-            <import file="05.Magias.lfm"/>
+            <import file="05.Magias.xml"/>
         </tab>
 		<tab title="Equipamentos">
             <import file="06.Equipamentos2.xml"/>
@@ -77,7 +80,7 @@
         </tab>
     </tabControl>
     <event name="onNodeReady">
-        internet.download("https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20Pathfinder/output/Ficha%20Pathfinder.rpk?raw=true",
+        Internet.download("https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20Pathfinder/output/Ficha%20Pathfinder.rpk?raw=true",
             function(stream, contentType)
                 local info = Firecast.Plugins.getRPKDetails(stream);
                 sheet.versionDownloaded = "VERSÃO DISPONÍVEL: " .. info.version;

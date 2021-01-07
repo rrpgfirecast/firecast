@@ -21,11 +21,86 @@
 				showMessage("Ops, bug.. nao encontrei o popup de habilidades para exibir");
 			end;				
 		end;
+
+		local function use()
+			local mesa = Firecast.getMesaDe(sheet);
+
+			local texto = (sheet.nomeHabilidade or "Habilidade") .. " foi usado.";
+			if sheet.cd~=nil then
+				texto = texto .. " CD: " .. sheet.cd .. ".";
+			end;
+			
+			if sheet.dados~=nil then
+				local rolagem = Firecast.interpretarRolagem(sheet.dados);
+				
+				mesa.activeChat:rolarDados(rolagem, texto);
+			end;
+
+			if sheet.BarrinhaValor~=nil then
+				sheet.BarrinhaValor = tonumber(sheet.BarrinhaValor) - 1;
+
+				if sheet.dados==nil then
+					mesa.activeChat:enviarMensagem(texto);
+				end;
+			end;
+		end;
 	]]>
 	</script>
 
-	<edit align="left" width="30" field="nivelHabilidade" type="number" vertTextAlign="center" />
+	<edit align="left" width="30" field="nivelHabilidade" type="number" vertTextAlign="center"/>
+	<layout align="right" width="75">
+		<layout top="5" height="15" width="45">
+			<imageCheckBox align="client">
+				<progressBar colorMode="hl" width="45" height="15" margins="{top=5,bottom=5}" hitTest="true" mouseGlow="true" color="Green" name="Barrinha" field="BarrinhaValor" fieldMax="BarrinhaValorMax">
+					<event name="onMouseEnter">
+						self.CorBarrinha.color = "Green";
+						self.ValoresBarrinha.visible = true;
+						sheet.InfoBarrinha = (sheet.BarrinhaValor or 0) .. "/"	.. (sheet.BarrinhaValorMax or 0);					
+					</event>
+					<event name="onMouseLeave">
+						self.ValoresBarrinha.visible = false;
+					</event>
+					<event name="onDblClick">
+						sheet.BarrinhaID = sheet.index;
+						sheet.AtributoBarrinha = sheet.nomeHabilidade;
+						
+						sheet.ModificadorBarrinha = "igual";
+						sheet.ModificadorBarrinhaMax = "igual";
+						sheet.ValorTempAtualBarrinha = sheet.BarrinhaValor;
+						sheet.ValorTempMaxBarrinha = sheet.BarrinhaValorMax;
+						sheet.ValorMudadoAtualBarrinha = sheet.BarrinhaValor;
+						sheet.ValorMudadoMaxBarrinha = sheet.BarrinhaValorMax;
+
+						local rec = self:findControlByName("PopupBarColor");
+						if rec~=nil then rec.color = "Green" end;
+						
+						local pop = self:findControlByName("BarPopup");
+						if pop~= nil then
+							pop.scopeNode = sheet;
+							pop:show("top", self.Barrinha);
+							pop.top = (pop.top + 29 + 10);
+						end;
+					</event>
+				</progressBar>
+			</imageCheckBox>
+		</layout>
+		<layout left="45" top="5" height="15" width="30" margins="{top=5,bottom=5}" visible="false" name="ValoresBarrinha">
+			<rectangle align="client" xradius="2" yradius="2" name="CorBarrinha" color="Green">
+				<label align="left" fontColor="white" fontSize="10" autoSize="true" textTrimming="none" wordWrap="false" name="InfoBarrinha" field="InfoBarrinha" horzTextAlign="center" text="0/0">
+					<event name="onResize">
+						self.InfoBarrinha.width = (self.ValoresBarrinha.width - 4);
+					</event>
+				</label>
+			</rectangle>
+		</layout>
+		<dataLink field="CorBarrinha" defaultValue="Green">
+			<event name="onChange">
+				self.Barrinha.color = "Green";
+			</event>
+		</dataLink>
+	</layout>
 	<button align="right" width="25" text="i" onClick="showHabilidadePopup();"/>
+	<button align="right" width="25" text="U" onClick="use();"/>
 	<button align="right" width="25" text="X" onClick="askForDelete();"/>
 	<edit align="client" vertTextAlign="center" field="nomeHabilidade"/>
 </form>

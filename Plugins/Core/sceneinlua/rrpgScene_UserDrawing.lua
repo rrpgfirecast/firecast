@@ -71,7 +71,10 @@ SceneLib.registerPlugin(
 					ud.y = minY;
 					ud.width = largura;
 					ud.height = altura;	
-					ud.snapToGrid = maker.snapToGrid;						
+					ud.snapToGrid = maker.snapToGrid;	
+
+					larguraGrid = ud.width;
+					alturaGrid = ud.height;
 				end);		
 		end;
 		

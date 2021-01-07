@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmDataboxSeletor" width="200" height="30">
+	<button top="0" width="30" height="30" text="X">
+		<event name="onClick">
+			Dialogs.confirmOkCancel("Tem certeza que quer apagar esse item?",
+				function (confirmado)
+					if confirmado then
+						NDB.deleteNode(sheet);
+					end;
+			end);
+		</event>
+	</button>
+	<rectangle left="30" width="170" height="30" color="#808080" strokeSize="1" hitTest="false">
+	    <label left="5" width="160" height="30" field="modelo"/>
+   	</rectangle>
+
+	<dataLink fields="{'cyberTerminalCost'}">
+		<event name="onChange">
+			if sheet==nil then return end;
+
+			local node = ndb.getParent(ndb.getParent(sheet));
+			local objetos = ndb.getChildNodes(node.campoDosTerminais);
+			local cost = 0;
+
+			for i=1, #objetos, 1 do 
+				cost = cost + (tonumber(objetos[i].cyberTerminalCost) or 0);
+			end;
+
+			node.cyberTerminalCost = cost;
+		</event>
+	</dataLink>
+
+	<dataLink fields="{'teminalPrice'}">
+		<event name="onChange">
+			if sheet==nil then return end;
+
+			local node = ndb.getParent(ndb.getParent(sheet));
+			local objetos = ndb.getChildNodes(node.campoDosTerminais);
+			local cost = 0;
+
+			for i=1, #objetos, 1 do 
+				cost = cost + (tonumber(objetos[i].teminalPrice) or 0);
+			end;
+
+			node.teminalPrice = cost;
+		</event>
+	</dataLink>
+
+	<dataLink fields="{'vehicleCost'}">
+		<event name="onChange">
+			if sheet==nil then return end;
+
+			local node = ndb.getParent(ndb.getParent(sheet));
+			local objetos = ndb.getChildNodes(node.campoDosVeiculos);
+			local cost = 0;
+
+			for i=1, #objetos, 1 do 
+				cost = cost + (tonumber(objetos[i].vehicleCost) or 0);
+			end;
+
+			node.vehicleCost = cost;
+		</event>
+	</dataLink>
+</form>

@@ -8,20 +8,28 @@
 
 			<comboBox left="30" top="0" width="50" height="25" field="atr" items="{'ST', 'DX', 'IQ', 'HT', 'Vont', 'Per', '-'}"/>
 
-			<edit left="85" top="0" width="30" height="25" type="number" field="dx" transparent="true" horzTextAlign="center"/>
-			<horzLine left="85" top="22" width="25" strokeColor="white"/>
+			<edit left="85" top="0" width="35" height="25" type="number" field="dx" transparent="true" horzTextAlign="center"/>
+			<horzLine left="85" top="22" width="35" strokeColor="white"/>
 
-			<label left="115" top="3" width="5" height="20" text="|" horzTextAlign="center"/>
-
-			<edit left="125" top="3" width="25" height="20" field="pts" horzTextAlign="center" transparent="true"/>
-			<horzLine left="125" top="22" width="25" strokeColor="white"/>
+			<button left="125" top="0" width="25" height="25" text="i">
+				<event name="onClick">
+					local pop = self:findControlByName("popSkill");
+						
+					if pop ~= nil then
+						pop:setNodeObject(self.sheet);
+						pop:showPopupEx("bottomCenter", self);
+					else
+						showMessage("Ops, bug.. nao encontrei o popup para exibir");
+					end;				
+				</event>
+			</button>
 			
 			<button left="155" top="0" width="25" height="25" text="X">
 				<event name="onClick">
-					dialogs.confirmOkCancel("Tem certeza que quer apagar esse objeto?",
+					Dialogs.confirmOkCancel("Tem certeza que quer apagar esse objeto?",
 						function (confirmado)
 							if confirmado then
-								ndb.deleteNode(sheet);
+								NDB.deleteNode(sheet);
 							end;
 					end);
 				</event>
@@ -46,7 +54,7 @@
 				local nh = (tonumber(sheet.dx) or 0);
 
 				local mod = 0;
-				local node = ndb.getRoot(sheet);
+				local node = NDB.getRoot(sheet);
 				if sheet.atr=="ST" then
 					mod = (tonumber(node.atributos_mod_st) or 0);
 				elseif sheet.atr=="DX" then

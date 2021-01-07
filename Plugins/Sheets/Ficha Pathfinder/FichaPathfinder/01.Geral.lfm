@@ -115,8 +115,8 @@
 		<button left="5" width="35" text="$(atrU)" fontSize="11">
 			<event name="onClick">
 				local rolagem = Firecast.interpretarRolagem("1d20 " .. (sheet.efetMod$(atr)) or 0);
-				local mesaDoPersonagem = Firecast.getMesaDe(sheet);
-				mesaDoPersonagem.activeChat:rolarDados(rolagem, "Teste de $(atrN) de " .. (sheet.nome or "NOME"));
+				local mesa = Firecast.getMesaDe(sheet);
+				mesa.activeChat:rolarDados(rolagem, "Teste de $(atrN) de " .. (sheet.nome or "NOME"));
 			</event>
 		</button>
 		
@@ -175,8 +175,8 @@
 		<button left="5" width="45" text="$(atrU)" fontSize="11">
 			<event name="onClick">
 				local rolagem = Firecast.interpretarRolagem("1d20 +" .. (sheet.tr$(atr)) or "0");
-				local mesaDoPersonagem = Firecast.getMesaDe(sheet);
-				mesaDoPersonagem.activeChat:rolarDados(rolagem, "Teste de $(atrN) de " .. (sheet.nome or "NOME"));
+				local mesa = Firecast.getMesaDe(sheet);
+				mesa.activeChat:rolarDados(rolagem, "Teste de $(atrN) de " .. (sheet.nome or "NOME"));
 			</event>
 		</button>
 		
@@ -185,7 +185,7 @@
 	</template>
 	<template name="Speed">
 		<label left="5" top="0" width="70" height="20" text="$(nome)"/>
-		<edit vertTextAlign="center" left="75" top="0" width="70" height="20" field="desl$(mode)"/>
+		<formatEdit vertTextAlign="center" left="75" top="0" width="70" height="20" field="desl$(mode)" unit="m"/>
 		<rectangle left="155" top="0" width="60" height="20" color="black" strokeColor="white" strokeSize="1"/>
 		<label left="155" top="0" width="60" height="20" field="desl$(mode)Quadrados" horzTextAlign="center"/>
 
@@ -422,10 +422,10 @@
 			<label left="445" top="5" width="50" height="25" text="NOME"/>
 			<edit vertTextAlign="center" left="520" top="5" width="290" height="25" field="nome"/>
 			
-			<label left="445" top="30" width="70" height="25" text="TENDÊNCIA"/>
+			<label left="445" top="30" width="70" height="25" text="TENDÊNCIA" fontSize="12"/>
 			<edit vertTextAlign="center" left="520" top="30" width="290" height="25" field="tendencia"/>
 			
-			<label left="445" top="55" width="70" height="25" text="CULTO"/>
+			<label left="445" top="55" width="70" height="25" text="RELIGIÂO"/>
 			<edit vertTextAlign="center" left="520" top="55" width="290" height="25" field="culto"/>
 			
 			<label left="445" top="80" width="70" height="25" text="TITULO"/>
@@ -586,8 +586,8 @@
 			<button left="35" top="25" width="75" height="25" text="INICIATIVA" fontSize="11">
 				<event name="onClick">
 					local rolagem = Firecast.interpretarRolagem("1d20 " .. (sheet.iniciativa or "+0"));
-					local mesaDoPersonagem = Firecast.getMesaDe(sheet);
-					mesaDoPersonagem.activeChat:rolarDados(rolagem, "Teste de Iniciativa de " .. (sheet.nome or "PONHA UM NOME NO PERSONAGEM"));
+					local mesa = Firecast.getMesaDe(sheet);
+					mesa.activeChat:rolarDados(rolagem, "Teste de Iniciativa de " .. (sheet.nome or "PONHA UM NOME NO PERSONAGEM"));
 				</event>
 			</button>
 			
@@ -634,8 +634,8 @@
 				<button left="170" top="0" width="45" height="20" fontSize="10" text="FALHA">
 					<event name="onClick">
 						local rolagem = Firecast.interpretarRolagem("1d100");
-						local mesaDoPersonagem = Firecast.getMesaDe(sheet);
-						mesaDoPersonagem.activeChat:rolarDados(rolagem, "Teste de Falha Arcana (" .. (sheet.falha or "0%").. ") de " .. (sheet.nome or "NOME"));
+						local mesa = Firecast.getMesaDe(sheet);
+						mesa.activeChat:rolarDados(rolagem, "Teste de Falha Arcana (" .. (sheet.falha or "0%").. ") de " .. (sheet.nome or "NOME"));
 					</event>
 				</button>
 				<rectangle left="175" top="25" width="35" height="25" color="black" strokeColor="white" strokeSize="1"/>
@@ -793,9 +793,9 @@
 			
 			<button left="5" top="70" width="40" height="25"  text="DVs">
 				<event name="onClick">
-					local mesaDoPersonagem = Firecast.getMesaDe(sheet);
+					local mesa = Firecast.getMesaDe(sheet);
 					sheet.modificador = sheet.modificador or 0;
-					mesaDoPersonagem.activeChat:rolarDados(sheet.dvs, "Pontos de Vida de " .. (sheet.nome or "NOME"),
+					mesa.activeChat:rolarDados(sheet.dvs, "Pontos de Vida de " .. (sheet.nome or "NOME"),
 						function (rolagem)
 							local maximo = 0;
 							local media = 0;
@@ -812,8 +812,8 @@
 									media = media + operacao.valor;
 								end;
 							end;
-							local mesaDoPersonagem = Firecast.getMesaDe(sheet);
-							mesaDoPersonagem.activeChat:enviarMensagem("PV máximo: " .. maximo .. "; PV médio: " .. math.floor(media));
+							local mesa = Firecast.getMesaDe(sheet);
+							mesa.activeChat:enviarMensagem("PV máximo: " .. maximo .. "; PV médio: " .. math.floor(media));
 							sheet.pvTotal = math.floor(media);
 						end);  
 				</event>
@@ -826,15 +826,15 @@
 			<rectangle align="client" color="black"/>
 			<label left="5" top="0" width="321" height="20" text="BÔNUS TEMPORARIOS"/>
 			
-			<label left="5" top="30" width="50" height="20" text="ATAQUE"/>
+			<label left="5" top="30" width="50" height="20" text="ATAQUE" fontSize="12"/>
 			<edit vertTextAlign="center" left="60" top="30" width="70" height="25" field="buffAtaque"/>
-			<label left="5" top="55" width="50" height="20" text="DANO"/>
+			<label left="5" top="55" width="50" height="20" text="DANO" fontSize="12"/>
 			<edit vertTextAlign="center" left="60" top="55" width="70" height="25" field="buffDano"/>
-			<label left="5" top="80" width="50" height="20" text="CRITICO"/>
+			<label left="5" top="80" width="50" height="20" text="CRITICO" fontSize="12"/>
 			<edit vertTextAlign="center" left="60" top="80" width="70" height="25" field="buffDanoCritico"/>
-			<label left="5" top="105" width="50" height="20" text="TR"/>
+			<label left="5" top="105" width="50" height="20" text="TR" fontSize="12"/>
 			<edit vertTextAlign="center" left="60" top="105" width="70" height="25" field="buffTR"/>
-			<label left="5" top="130" width="50" height="20" text="PERICIA"/>
+			<label left="5" top="130" width="50" height="20" text="PERICIA" fontSize="12"/>
 			<edit vertTextAlign="center" left="60" top="130" width="70" height="25" field="buffPericia"/>
 		</layout>
 
@@ -872,8 +872,8 @@
 				<button left="5" top="0" width="40" height="25" text="BMC" fontSize="11">
 					<event name="onClick">
 						local rolagem = Firecast.interpretarRolagem("1d20 + " .. (sheet.bmc or "0"));
-						local mesaDoPersonagem = Firecast.getMesaDe(sheet);
-						mesaDoPersonagem.activeChat:rolarDados(rolagem, "Teste de BMC de " .. (sheet.nome or "NOME"));
+						local mesa = Firecast.getMesaDe(sheet);
+						mesa.activeChat:rolarDados(rolagem, "Teste de BMC de " .. (sheet.nome or "NOME"));
 					</event>
 				</button>
 				<rectangle left="46" top="0" width="35" height="25" color="black" strokeColor="white" strokeSize="1"/>

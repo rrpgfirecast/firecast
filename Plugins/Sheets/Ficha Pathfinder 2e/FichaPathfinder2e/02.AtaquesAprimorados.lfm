@@ -1,0 +1,279 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmFichaRPGmeister2a_svg" align="client" theme="dark" margins="{top=1}">
+	<scrollBox align="client">
+		<button text="Novo Ataque" left="50" top="2" width="100" height="20">
+			<event name="onClick">
+				self.rclListaDosAtaques:append();
+			</event>
+		</button>
+		<rectangle left="0" top="25" width="205" height="600" color="black" strokeColor="white" strokeSize="1"/>
+		<recordList name="rclListaDosAtaques" field="campoDosAtaques" templateForm="frmFichaRPGmeister2AS_svg" left="2" top="27" width="200" height="595" selectable="true" layout="vertical" minQt="1">
+			<event name="onSelect">
+				local node = self.rclListaDosAtaques.selectedNode;
+				self.boxDetalhesDoAtaque.node = node;
+				self.boxDetalhesDoAtaque.visible = (node ~= nil);
+			</event>
+			<event name="onEndEnumeration">
+				if self.rclListaDosAtaques.selectedNode == nil and sheet ~= nil then
+					local nodes = NDB.getChildNodes(sheet.campoDosAtaques);               
+					if #nodes &gt; 0 then
+						self.rclListaDosAtaques.selectedNode = nodes[1];
+					end;
+				end;
+			</event>
+		</recordList>
+
+		<rectangle left="208" top="0" width="1134" height="624" color="black" strokeColor="white" strokeSize="1"/>
+		<dataScopeBox name="boxDetalhesDoAtaque" visible="false" left="210" top="2" width="1130" height="620">
+			<script><![CDATA[
+				local numeroAtaques = 0;
+				local ataquesFeitos = 0;
+				local ataqueID=1;
+				local weaponID=1;
+				local dadoAtaques = {};
+				local resultadoAtaques = {};
+				local rolando = false;
+
+				local function proximoCritico(rolado)
+					ataquesFeitos = ataquesFeitos + 1;
+
+					local personagem = sheet.nome or "personagem";
+					local mesaDoPersonagem = Firecast.getMesaDe(sheet);
+					local weapons = NDB.getChildNodes(self.boxDetalhesDoAtaque.node.campoDeArmas);
+
+					if ataquesFeitos < numeroAtaques then
+						ataqueID = ataqueID + 1;
+						if ataqueID > weapons[weaponID].numAtaques then
+							ataqueID = 1;
+							weaponID = weaponID+1;
+						end;
+
+						local decisivo = weapons[weaponID].decisivo;
+						local armamento = weapons[weaponID].nomeAtaque or "arma";
+						local crit = weapons[weaponID].crit;
+
+						if dadoAtaques[ataquesFeitos+1]>=decisivo then
+							local rolagem = Firecast.interpretarRolagem(crit);
+							mesaDoPersonagem.activeChat:rolarDados(rolagem, "Dano adicional do decisivo #" .. ataqueID .. " com " .. armamento .. " de " .. personagem, 
+								function (rolado)
+									proximoCritico(rolado)
+							end);
+						else
+							proximoCritico(nil);
+						end;
+					else
+						rolando = false;
+					end;
+					-- Fim do Ataque
+				end;
+
+				local function proximaConfirmacao(rolado)
+					ataquesFeitos = ataquesFeitos + 1;
+
+					local personagem = sheet.nome or "personagem";
+					local mesaDoPersonagem = Firecast.getMesaDe(sheet);
+					local weapons = NDB.getChildNodes(self.boxDetalhesDoAtaque.node.campoDeArmas);
+
+					if ataquesFeitos < numeroAtaques then
+						ataqueID = ataqueID + 1;
+						if ataqueID > weapons[weaponID].numAtaques then
+							ataqueID = 1;
+							weaponID = weaponID+1;
+						end;
+
+						local acertos = weapons[weaponID].acertos;
+						local decisivo = weapons[weaponID].decisivo;
+						local armamento = weapons[weaponID].nomeAtaque or "arma";
+						if dadoAtaques[ataquesFeitos+1]>=decisivo then
+							local confirmacao = Firecast.interpretarRolagem("1d20+" .. acertos[ataqueID]);
+							mesaDoPersonagem.activeChat:rolarDados(confirmacao, "Confirmação de Decisivo do ataque #" .. ataqueID .. " com " .. armamento .. " de " .. personagem, 
+								function (rolado)
+									proximaConfirmacao(rolado)
+							end);
+						else
+							proximaConfirmacao(nil);
+						end;
+					else
+						-- Causa o dano adicional
+
+						weaponID = 1;
+						ataqueID = 1;
+						ataquesFeitos = 0;
+
+						local decisivo = weapons[weaponID].decisivo;
+						local armamento = weapons[weaponID].nomeAtaque or "arma";
+						local crit = weapons[weaponID].crit;
+
+						if dadoAtaques[ataquesFeitos+1]>=decisivo then
+							local rolagem = Firecast.interpretarRolagem(crit);
+							mesaDoPersonagem.activeChat:rolarDados(rolagem, "Dano adicional do decisivo #" .. ataqueID .. " com " .. armamento .. " de " .. personagem, 
+								function (rolado)
+									proximoCritico(rolado)
+							end);
+						else
+							proximoCritico(nil);
+						end;
+					end;
+				end;
+
+				local function proximoDano(rolado)
+					ataquesFeitos = ataquesFeitos + 1;
+
+					local personagem = sheet.nome or "personagem";
+					local mesaDoPersonagem = Firecast.getMesaDe(sheet);
+					local weapons = NDB.getChildNodes(self.boxDetalhesDoAtaque.node.campoDeArmas);
+
+					if ataquesFeitos < numeroAtaques then
+						ataqueID = ataqueID + 1;
+						if ataqueID > weapons[weaponID].numAtaques then
+							ataqueID = 1;
+							weaponID = weaponID+1;
+						end;
+
+						local dano = weapons[weaponID].dado;
+						local armamento = weapons[weaponID].nomeAtaque or "arma";
+
+						local rolagem = Firecast.interpretarRolagem(dano);
+						mesaDoPersonagem.activeChat:rolarDados(rolagem, "Dano #" .. ataqueID .. " com " .. armamento .. " de " .. personagem, 
+							function (rolado)
+								proximoDano(rolado)
+						end);
+					else
+						-- confirma os criticos
+
+						-- reseta variaveis
+						weaponID = 1;
+						ataqueID = 1;
+						ataquesFeitos = 0;
+
+						local acertos = weapons[weaponID].acertos;
+						local decisivo = weapons[weaponID].decisivo;
+						local armamento = weapons[weaponID].nomeAtaque or "arma";
+						if dadoAtaques[ataquesFeitos+1]>=decisivo then
+							local confirmacao = Firecast.interpretarRolagem("1d20+" .. acertos[ataqueID]);
+							mesaDoPersonagem.activeChat:rolarDados(confirmacao, "Confirmação de Decisivo do ataque #" .. ataqueID .. " com " .. armamento .. " de " .. personagem, 
+								function (rolado)
+									proximaConfirmacao(rolado)
+							end);
+						else
+							proximaConfirmacao(nil);
+						end;
+					end
+				end;
+
+				local function proximoAtaque(rolado)
+					ataquesFeitos = ataquesFeitos + 1;
+					dadoAtaques[ataquesFeitos] = rolado.ops[1].resultados[1];
+					resultadoAtaques[ataquesFeitos] = rolado.resultado;
+
+					local personagem = sheet.nome or "personagem";
+					local mesaDoPersonagem = Firecast.getMesaDe(sheet);
+					local weapons = NDB.getChildNodes(self.boxDetalhesDoAtaque.node.campoDeArmas);
+
+					if ataquesFeitos < numeroAtaques then
+						ataqueID = ataqueID + 1;
+						if ataqueID > weapons[weaponID].numAtaques then
+							ataqueID = 1;
+							weaponID = weaponID+1;
+						end;
+
+						local acertos = weapons[weaponID].acertos;
+						local armamento = weapons[weaponID].nomeAtaque or "arma";
+
+						local rolagem = Firecast.interpretarRolagem("1d20+" .. acertos[ataqueID]);
+						mesaDoPersonagem.activeChat:rolarDados(rolagem, "Ataque #" .. ataqueID .. " com " .. armamento .. " de " .. personagem, 
+							function (rolado)
+								proximoAtaque(rolado)
+						end);
+
+					else
+						-- chama o dano
+
+						-- reseta variaveis
+						weaponID = 1;
+						ataqueID = 1;
+						ataquesFeitos = 0;
+
+						local dano = weapons[weaponID].dado;
+						local armamento = weapons[weaponID].nomeAtaque or "arma";
+
+						local rolagem = Firecast.interpretarRolagem(dano);
+						mesaDoPersonagem.activeChat:rolarDados(rolagem, "Dano #" .. ataqueID .. " com " .. armamento .. " de " .. personagem, 
+							function (rolado)
+								proximoDano(rolado)
+						end);
+					end
+				end;
+
+				]]>	
+			</script>
+			<layout left="0" top="0" width="1130" height="25">
+				<label left="5" top="5" width="70" height="20" text="Nome"/>
+				<edit left="55" top="5" width="300" height="20" field="nomeAtaque"/>
+
+				<button text="Nova Arma" left="360" top="5" width="100" height="20">
+					<event name="onClick">
+						self.rclListaDeArmas:append();
+					</event>
+				</button>
+				<button text="Ataque Total" left="465" top="5" width="100" height="20">
+					<event name="onClick">
+						if sheet==nil then
+							return;
+						end;
+						if rolando then
+							return;
+						end;
+						rolando = true;
+						
+						local weapons = NDB.getChildNodes(self.boxDetalhesDoAtaque.node.campoDeArmas);
+						local mesaDoPersonagem = Firecast.getMesaDe(sheet);
+						local personagem = sheet.nome or "personagem";
+
+						--limpando variaveis do ultimo ataque
+						dadoAtaques = {};
+						resultadoAtaques = {};
+						ataquesFeitos = 0;
+						multMunicao = 0;
+						ataqueID=1;
+						weaponID=1;
+
+						numeroAtaques = 0;
+						for i=1, #weapons, 1 do
+							numeroAtaques = numeroAtaques + weapons[i].numAtaques;
+
+							if weapons[i].municao~= nil then
+								local municao = tonumber(weapons[i].municao) or 0;
+								local multMunicao = tonumber(weapons[i].multMunicao) or 0;
+								if numeroAtaques > municao then
+									weapons[i].municao = 0;
+									mesaDoPersonagem.activeChat:enviarMensagem("Esta arma possui apenas " .. municao .. " das " .. numeroAtaques .. " munições necessarias para atacar.");
+								else
+									weapons[i].municao = municao - numeroAtaques - multMunicao;
+								end;
+							end;
+						end;
+
+						--preparando ataque
+						local acertos = weapons[weaponID].acertos;
+						local armamento = weapons[weaponID].nomeAtaque or "arma";
+
+						local rolagem = Firecast.interpretarRolagem("1d20+" .. acertos[ataqueID]);
+						mesaDoPersonagem.activeChat:rolarDados(rolagem, "Ataque #" .. ataqueID .. " com " .. armamento .. " de " .. personagem, 
+							function (rolado)
+								proximoAtaque(rolado)
+						end);
+					</event>
+				</button>
+				<button text="Cancelar" left="570" top="5" width="100" height="20">
+					<event name="onClick">
+						rolando =false;
+					</event>
+				</button>
+
+			</layout>
+			<recordList name="rclListaDeArmas" field="campoDeArmas" templateForm="frmFichaRPGmeister2Aar_svg" left="0" top="30" width="1130" height="590" layout="vertical" minQt="1"/>
+
+		</dataScopeBox>
+	</scrollBox>
+</form>

@@ -7,7 +7,7 @@ require("ndb.lua");
 require("locale.lua");
 local __o_Utils = require("utils.lua");
 
-local function constructNew_frmTemplate()
+local function constructNew_frmMainAutoupdater()
     local obj = GUI.fromHandle(_obj_newObject("form"));
     local self = obj;
     local sheet = nil;
@@ -26,7 +26,7 @@ local function constructNew_frmTemplate()
 
     _gui_assignInitialParentForForm(obj.handle);
     obj:beginUpdate();
-    obj:setName("frmTemplate");
+    obj:setName("frmMainAutoupdater");
     obj:setFormType("tablesDock");
     obj:setDataType("Ambesek.Auto.Updater");
     obj:setTitle("Plugin Auto Updater");
@@ -77,60 +77,128 @@ local function constructNew_frmTemplate()
             end;
         end;
 
-        local function verifyUpdate(id, url)
+        local function verifyUpdate(plugin)
             local nodes = NDB.getChildNodes(updaterSheet.installedPluginsList); 
             local myNode;
             for i=1, #nodes, 1 do
-                if nodes[i].moduleId == id then
+                if nodes[i].moduleId == plugin.id then
                     myNode = nodes[i];
                 end;
             end
 
-            Internet.download(url,
+            updaterSheet.loaded = updaterSheet.loaded + 1;
+            updaterSheet.loading = "Carregando " .. updaterSheet.loaded .. "/" .. updaterSheet.toLoad;
+
+            if updaterSheet.toLoad <= updaterSheet.loaded then
+                self.loader.visible = false;
+                self.downloadedPluginsList:sort();
+            end;
+
+            if myNode ~= nil then
+                myNode.versionAvailable = plugin.version;
+                myNode.url = plugin.url;
+            else
+                local item = self.downloadedPluginsList:append();
+                item.name = plugin.name;
+                item.moduleId = plugin.id;
+                item.author = plugin.author;
+                item.version = plugin.version;
+                item.url = plugin.url;
+                item.enabled = true;
+                item.description = plugin.description;
+                item.contact = plugin.contact;
+            end;
+        end;
+
+        local function init()
+            -- Carrega o local sheet para ser usado. 
+            updaterSheet = NDB.load("config.xml");
+            self.scope:setNodeObject(updaterSheet);
+
+            -- Limpa os recordList e carrega a lista de plugins instaladados
+            local installed = Firecast.Plugins.getInstalledPlugins();
+            local nodesDownloaded = NDB.getChildNodes(updaterSheet.downloadedPluginsList); 
+            for i=1, #nodesDownloaded, 1 do
+                NDB.deleteNode(nodesDownloaded[i]);
+            end;
+            local nodesInstalled = NDB.getChildNodes(updaterSheet.installedPluginsList); 
+            for i=1, #nodesInstalled, 1 do
+                NDB.deleteNode(nodesInstalled[i]);
+            end;
+
+            -- Adiciona os plugins instalados a lista
+            for i=1, #installed, 1 do
+                local item = self.installedPluginsList:append();
+                item.name = installed[i].name;
+                item.moduleId = installed[i].moduleId;
+                item.author = installed[i].author;
+                item.version = installed[i].version;
+                item.enabled = true;
+                item.description = installed[i].description;
+                item.contact = installed[i].contact;
+            end;
+            
+            -- Adiciona o nome das colunas as listas.
+            local item = self.installedPluginsList:append();
+            item.name = "Nome";
+            item.moduleId = "ID";
+            item.author = "Autor";
+            item.version = "Versão Instalada";
+            item.versionAvailable = "Versão Disponível";
+            item.enabled = false;
+
+            local item = self.downloadedPluginsList:append();
+            item.name = "Nome";
+            item.moduleId = "ID";
+            item.author = "Autor";
+            item.version = "Versão Disponível";
+            item.enabled = false;
+
+            self.installedPluginsList:sort();
+
+            -- Inicia o download da lista de plugins do git
+
+            self.loader.visible = true;
+            updaterSheet.loading = "Carregando ?/?";
+            Internet.download("https://raw.githubusercontent.com/rrpgfirecast/firecast/master/Plugins/plugins.xml",
                 function(stream, contentType)
-                    -- esta função será chamada quando o download terminar
-                    -- o conteúdo do arquivo baixado está em stream.
-                    local info = Firecast.Plugins.getRPKDetails(stream);
-
-                    updaterSheet.loaded = updaterSheet.loaded + 1;
-                    updaterSheet.loading = "Carregando " .. updaterSheet.loaded .. "/" .. updaterSheet.toLoad;
-
-                    if updaterSheet.toLoad <= updaterSheet.loaded then
-                        self.loader.visible = false;
-                        self.downloadedPluginsList:sort();
+                    if VHD.fileExists("plugins.xml") then
+                        VHD.deleteFile("plugins.xml");
                     end;
+                    local file = VHD.openFile("plugins.xml", "w");
+                    file:copyFrom(stream, stream.size);
+                    setTimeout(
+                        function ()
+                            file:close();
+                            local import = NDB.load("plugins.xml");
 
-                    if myNode ~= nil then
-                        myNode.versionAvailable = info.version;
-                        myNode.url = url;
-                        rawset(myNode,"stream",stream);
-                    else
-                        local item = self.downloadedPluginsList:append();
-                        item.name = info.name;
-                        item.moduleId = info.moduleId;
-                        item.author = info.author;
-                        item.version = info.version;
-                        item.url = url;
-                        rawset(item,"stream",stream);
-                        item.enabled = true;
-                        item.description = info.description;
-                        item.contact = info.contact;
+                            local list = NDB.getChildNodes(import);
 
-                        self.downloadedPluginsList:sort();
-                    end;
+                            updaterSheet.loaded = 0;
+                            updaterSheet.toLoad = #list;
+                            updaterSheet.loading = "Carregando 0/" .. updaterSheet.toLoad;
 
-                    
+                            for i=1, #list, 1 do
+                                -- Verifica se tem updates em cada plugin
+                                verifyUpdate(list[i]);
+                            end;
+
+                            self.downloadedPluginsList:sort();
+
+                        end, 
+                        1000
+                    );
                 end,       
                 function (errorMsg)
                     -- esta função será chamada quando ocorrer algum erro no download.
                     -- errorMsg possui a msg de erro
-                    showMessage(errorMsg);
-                end,
+                    showMessage("Não consegui pegar a lista de plugins do githut :/ \n" .. errorMsg);
+                end,       
                 function (downloaded, total)
                     -- esta função será chamada constantemente.
                     -- dividir "downloaded" por "total" lhe dará uma porcentagem do download.
                 end,
-                "checkForModification");
+                "alwaysDownload");
         end;
         
 
@@ -319,94 +387,9 @@ local function constructNew_frmTemplate()
     obj.label5:setField("loading");
     obj.label5:setName("label5");
 
-    obj._e_event0 = obj:addEventListener("onNodeReady",
+    obj._e_event0 = obj:addEventListener("onNodeChanged",
         function (_)
-            -- Carrega o local sheet para ser usado. 
-                    updaterSheet = NDB.load("config.xml");
-                    self.scope:setNodeObject(updaterSheet);
-            
-                    -- Limpa os recordList e carrega a lista de plugins instaladados
-                    local installed = Firecast.Plugins.getInstalledPlugins();
-                    local nodesDownloaded = NDB.getChildNodes(updaterSheet.downloadedPluginsList); 
-                    for i=1, #nodesDownloaded, 1 do
-                        NDB.deleteNode(nodesDownloaded[i]);
-                    end;
-                    local nodesInstalled = NDB.getChildNodes(updaterSheet.installedPluginsList); 
-                    for i=1, #nodesInstalled, 1 do
-                        NDB.deleteNode(nodesInstalled[i]);
-                    end;
-            
-                    -- Adiciona os plugins instalados a lista
-                    for i=1, #installed, 1 do
-                        local item = self.installedPluginsList:append();
-                        item.name = installed[i].name;
-                        item.moduleId = installed[i].moduleId;
-                        item.author = installed[i].author;
-                        item.version = installed[i].version;
-                        item.enabled = true;
-                        item.description = installed[i].description;
-                        item.contact = installed[i].contact;
-                    end;
-                    
-                    -- Adiciona o nome das colunas as listas.
-                    local item = self.installedPluginsList:append();
-                    item.name = "Nome";
-                    item.moduleId = "ID";
-                    item.author = "Autor";
-                    item.version = "Versão Instalada";
-                    item.versionAvailable = "Versão Disponível";
-                    item.enabled = false;
-            
-                    local item = self.downloadedPluginsList:append();
-                    item.name = "Nome";
-                    item.moduleId = "ID";
-                    item.author = "Autor";
-                    item.version = "Versão Disponível";
-                    item.enabled = false;
-            
-                    self.installedPluginsList:sort();
-            
-                    -- Inicia o download da lista de plugins do git
-            
-                    self.loader.visible = true;
-                    updaterSheet.loading = "Carregando ?/?";
-                    Internet.download("https://raw.githubusercontent.com/rrpgfirecast/firecast/master/Plugins/plugins.xml",
-                        function(stream, contentType)
-                            if VHD.fileExists("plugins.xml") then
-                                VHD.deleteFile("plugins.xml");
-                            end;
-                            local file = VHD.openFile("plugins.xml", "w");
-                            file:copyFrom(stream, stream.size);
-                            setTimeout(
-                                function ()
-                                    file:close();
-                                    local import = NDB.load("plugins.xml");
-            
-                                    local list = NDB.getChildNodes(import);
-            
-                                    updaterSheet.loaded = 0;
-                                    updaterSheet.toLoad = #list;
-                                    updaterSheet.loading = "Carregando 0/" .. updaterSheet.toLoad;
-            
-                                    for i=1, #list, 1 do
-                                        -- Verifica se tem updates em cada plugin
-                                        verifyUpdate(list[i].id, list[i].url);
-                                    end;
-            
-                                end, 
-                                1000
-                            );
-                        end,       
-                        function (errorMsg)
-                            -- esta função será chamada quando ocorrer algum erro no download.
-                            -- errorMsg possui a msg de erro
-                            showMessage("Não consegui pegar a lista de plugins do githut :/ \n" .. errorMsg);
-                        end,       
-                        function (downloaded, total)
-                            -- esta função será chamada constantemente.
-                            -- dividir "downloaded" por "total" lhe dará uma porcentagem do download.
-                        end,
-                        "alwaysDownload");
+            init();
         end, obj);
 
     obj._e_event1 = obj:addEventListener("onNodeReady",
@@ -594,13 +577,13 @@ local function constructNew_frmTemplate()
     return obj;
 end;
 
-function newfrmTemplate()
+function newfrmMainAutoupdater()
     local retObj = nil;
     __o_rrpgObjs.beginObjectsLoading();
 
     __o_Utils.tryFinally(
       function()
-        retObj = constructNew_frmTemplate();
+        retObj = constructNew_frmMainAutoupdater();
       end,
       function()
         __o_rrpgObjs.endObjectsLoading();
@@ -610,19 +593,19 @@ function newfrmTemplate()
     return retObj;
 end;
 
-local _frmTemplate = {
-    newEditor = newfrmTemplate, 
-    new = newfrmTemplate, 
-    name = "frmTemplate", 
+local _frmMainAutoupdater = {
+    newEditor = newfrmMainAutoupdater, 
+    new = newfrmMainAutoupdater, 
+    name = "frmMainAutoupdater", 
     dataType = "Ambesek.Auto.Updater", 
     formType = "tablesDock", 
     formComponentName = "form", 
     title = "Plugin Auto Updater", 
     description=""};
 
-frmTemplate = _frmTemplate;
-Firecast.registrarForm(_frmTemplate);
-Firecast.registrarDataType(_frmTemplate);
-Firecast.registrarSpecialForm(_frmTemplate);
+frmMainAutoupdater = _frmMainAutoupdater;
+Firecast.registrarForm(_frmMainAutoupdater);
+Firecast.registrarDataType(_frmMainAutoupdater);
+Firecast.registrarSpecialForm(_frmMainAutoupdater);
 
-return _frmTemplate;
+return _frmMainAutoupdater;

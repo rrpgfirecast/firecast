@@ -186,7 +186,7 @@
 	</template>
 	<template name="Speed">
 		<label left="5" top="0" width="70" height="20" text="$(nome)"/>
-		<edit vertTextAlign="center" left="75" top="0" width="70" height="20" field="desl$(mode)"/>
+		<formatEdit vertTextAlign="center" left="75" top="0" width="70" height="20" field="desl$(mode)" unit="m"/>
 		<rectangle left="155" top="0" width="60" height="20" color="black" strokeColor="white" strokeSize="1"/>
 		<label left="155" top="0" width="60" height="20" field="desl$(mode)Quadrados" horzTextAlign="center"/>
 

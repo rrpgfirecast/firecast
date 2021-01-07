@@ -117,7 +117,7 @@ local function constructNew_frmPluginBaixando()
     obj.btnCancelar = GUI.fromHandle(_obj_newObject("button"));
     obj.btnCancelar:setParent(obj.flwPlug);
     obj.btnCancelar:setName("btnCancelar");
-    obj.btnCancelar:setText(lang("plugins.mgr.cancel"));
+    obj.btnCancelar:setText("@@plugins.mgr.cancel");
     obj.btnCancelar:setMargins({left=10, top=5});
     obj.btnCancelar:setWidth(110);
     obj.btnCancelar:setHeight(32);

@@ -12,7 +12,7 @@
 			<edit align="client" class="" field="$(field)" fontSize="12"/>
 		</flowPart>
 	</template>
-	<template name="magicLayout">
+	<template name="ListaFlexivel">
 		<flowPart minWidth="300" maxWidth="600" height="25" minScaledWidth="280" name="$(rclName)Part" adjustHeightToLine="false" margins="{left=5}">
 			<script>
 				<![CDATA[
@@ -68,12 +68,12 @@
 
 	<scrollBox align="client">
 		<flowLayout align="top" autoHeight="true" maxColumns="3" horzAlign="center" orientation="vertical" avoidScale="true">
-			<magicLayout nome="TALENTOS" rclName="campoDosTalentos" rclField="campoDosTalentos"/>
-			<magicLayout nome="PROEZAS" rclName="campoDasProezas" rclField="campoDasProezas"/>
-			<magicLayout nome="OUTROS" rclName="campoDosOutros" rclField="campoDosOutros"/>
-			<magicLayout nome="TRAÇOS" rclName="campoDosTracos" rclField="campoDosTracos"/>
-			<magicLayout nome="CARACTERISTICAS RACIAIS" rclName="campoDasRacas" rclField="campoDasRacas"/>
-			<magicLayout nome="CARACTERISTICAS DE CLASSE" rclName="campoDasCaracteristicasClasse" rclField="campoDasCaracteristicasClasse"/>
+			<ListaFlexivel nome="TALENTOS" rclName="campoDosTalentos" rclField="campoDosTalentos"/>
+			<ListaFlexivel nome="PROEZAS" rclName="campoDasProezas" rclField="campoDasProezas"/>
+			<ListaFlexivel nome="OUTROS" rclName="campoDosOutros" rclField="campoDosOutros"/>
+			<ListaFlexivel nome="TRAÇOS" rclName="campoDosTracos" rclField="campoDosTracos"/>
+			<ListaFlexivel nome="CARACTERISTICAS RACIAIS" rclName="campoDasRacas" rclField="campoDasRacas"/>
+			<ListaFlexivel nome="CARACTERISTICAS DE CLASSE" rclName="campoDasCaracteristicasClasse" rclField="campoDasCaracteristicasClasse"/>
 		</flowLayout>
 	</scrollBox>
 </form>

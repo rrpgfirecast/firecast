@@ -33,42 +33,6 @@
 	</popup>
 	<scrollBox align="client">
 		<flowLayout class="tile" align="top" height="500" margins="{left=10, right=10, top=10}" autoHeight="true" horzAlign="center" lineSpacing="3" name="fraEquipamentoLayout">
-			
-			<flowPart class="tileCarac" height="600" frameStyle="frames/panel5/frame.xml" margins="{left = 4, right = 4}">
-
-				<layout align="top" height="25">
-					<label align="top" autoSize="true" text="MOCHILA" fontSize="12" vertTextAlign="center" horzTextAlign="center" fontStyle="bold"/>
-					<button align="left" text="+" width="25" hint="" horzTextAlign="center" onClick="self.rclBackpack:append();" margins="{top=-10}"/>
-				</layout>
-
-				<recordList align="client" name="rclBackpack" field="listaDeItens" templateForm="frmBackpackItem" layout="vertical">
-					<event name="onCompare">
-		                return utils.compareStringPtBr(nodeA.nome, nodeB.nome);
-			        </event>
-				</recordList>
-			</flowPart>
-
-			<flowPart class="tileCarac" height="600" frameStyle="frames/panel5/frame.xml" margins="{left = 4, right = 4}">
-
-				<layout align="top" height="25">
-					<label align="top" autoSize="true" text="EQUIPAMENTOS E OBJETOS" fontSize="12" vertTextAlign="center" horzTextAlign="center" fontStyle="bold"/>
-					<button align="left" text="+" width="25" hint="" horzTextAlign="center" onClick="self.rclEquipments:append();" margins="{top=-10}"/>
-				</layout>
-
-				<recordList align="client" name="rclEquipments" field="listaDeEquipamentos" templateForm="frmBackpackItem" layout="vertical">
-					<event name="onCompare">
-		                return utils.compareStringPtBr(nodeA.nome, nodeB.nome);
-			        </event>
-				</recordList>
-			</flowPart>
-
-			<flowPart class="tileCarac" height="600" frameStyle="frames/panel5/frame.xml" margins="{left = 4, right = 4}">
-				<label align="top" autoSize="true" text="EQUIPAMENTOS E POSSES" fontSize="12" vertTextAlign="center" horzTextAlign="center" fontStyle="bold"/>
-				
-				<textEditor align="client" field="outrosEquipamentos" class="transparente" margins="{top=2}" fontSize="16"/>
-			</flowPart>	
-
-			<flowLineBreak/>
 
 			<flowPart name="flwPartEquipAtack" class="tile" height="500" frameStyle="frames/panel5/frame.xml" minScaledWidth="290">	
 			
@@ -77,7 +41,7 @@
 				<recordList name="rclEquips" align="top" field="equipamentos.ataques" templateForm="frmEquipamentoItem" 
 							autoHeight="true" minHeight="5" onResize="recalcularTamanhoEquipsEAtaques();" minQt="1" hitTest="false">
 					<event name="onCompare">
-		                return utils.compareStringPtBr(nodeA.nome, nodeB.nome);
+		                return Utils.compareStringPtBr(nodeA.nome, nodeB.nome);
 			        </event>
 				</recordList>
 							
@@ -85,6 +49,92 @@
 					<button name="btnEquipAtackNew" align="left" onClick="self.rclEquips:append();" text="Novo Item" width="160" margins="{top=4, bottom=4}"/>								
 				</layout>															
 			</flowPart>	
+
+			<flowLineBreak/>
+			
+			<!-- Equipamentos de Defesa -->
+			 
+			<flowPart name="flwPartEquipDefense" class="tile" height="500" frameStyle="frames/panel5/frame.xml" minScaledWidth="290">	
+			
+				<label name="labEquipDefense" align="top" autoSize="true" text="EQUIPAMENTOS DE DEFESA" fontSize="12" vertTextAlign="center" horzTextAlign="center" fontStyle="bold" onResize="recalcularTamanhoEquipsDefesa();"/>										
+															
+				<recordList name="rclEquipsDefense" align="top" field="equipamentos.defesas" templateForm="frmEquipamentoItemDefesa" 
+							autoHeight="true" minHeight="5" onResize="recalcularTamanhoEquipsDefesa();" minQt="1" hitTest="false"/>					
+							
+				<layout name="layEquipDefenseBottom" align="top" height="40">
+					<button name="btnEquipDefenseNew" align="left" onClick="self.rclEquipsDefense:append();" text="Novo Item" width="160" margins="{top=4, bottom=4}"/>								
+				</layout>															
+			</flowPart>		
+
+			<flowLineBreak/>
+
+			<!-- Outros Equipamentos e DINHEIRO -->
+			<flowPart class="tile" height="500" frameStyle="frames/panel4transp/frame.xml" minScaledWidth="290">	
+				<flowLayout align="left" width="120" margins="{left=10, right=10, top=10}" horzAlign="center" lineSpacing="3">
+					<flowPart avoidScale="true" stepSizes="{120}" minScaledWidth="120" margins="{top=5}" height="145" frameStyle="frames/panel4transp/frame.xml">
+						<label align="top" text="Carga Base" height="20" fontSize="9" wordWrap="true" horzTextAlign="center" textTrimming="none"/>
+						<edit align="client" class="atributo transparente" field="carga" fontSize="30"/>	
+					</flowPart>	
+
+					<flowPart avoidScale="true" stepSizes="{120}" minScaledWidth="120" margins="{top=5}" height="145" frameStyle="frames/panel4transp/frame.xml">
+								<label left="15" top="10" width="90" height="25" field="bc_0" fontSize="10" wordWrap="true" horzTextAlign="center" textTrimming="none"/>
+								<label left="15" top="35" width="90" height="25" field="bc_1" fontSize="10" wordWrap="true" horzTextAlign="center" textTrimming="none"/>
+								<label left="15" top="60" width="90" height="25" field="bc_2" fontSize="10" wordWrap="true" horzTextAlign="center" textTrimming="none"/>
+								<label left="15" top="85" width="90" height="25" field="bc_3" fontSize="10" wordWrap="true" horzTextAlign="center" textTrimming="none"/>
+								<label left="15" top="110" width="90" height="25" field="bc_4" fontSize="10" wordWrap="true" horzTextAlign="center" textTrimming="none"/>
+					</flowPart>
+					<dataLink field="carga">
+								<event name="onChange">
+									if sheet==nil then return end;
+
+									local carga = tonumber(sheet.carga) or 0;
+
+									sheet.bc_0 = "Nenhuma (BC): " .. (carga);
+									sheet.bc_1 = "Leve (BCx2): " .. (carga*2);
+									sheet.bc_2 = "Média (BCx3): " .. (carga*3);
+									sheet.bc_3 = "Pesada (BCx6): " .. (carga*6);
+									sheet.bc_4 = "Muito Pesada (BCx10): " .. (carga*10);
+								</event>
+					</dataLink>
+					<flowPart avoidScale="true" stepSizes="{120}" minScaledWidth="120" margins="{top=5}" height="145" frameStyle="frames/panel4transp/frame.xml">
+								<label left="15" top="10" width="90" height="25" field="db_0" fontSize="10" wordWrap="true" horzTextAlign="center" textTrimming="none"/>
+								<label left="15" top="35" width="90" height="25" field="db_1" fontSize="10" wordWrap="true" horzTextAlign="center" textTrimming="none"/>
+								<label left="15" top="60" width="90" height="25" field="db_2" fontSize="10" wordWrap="true" horzTextAlign="center" textTrimming="none"/>
+								<label left="15" top="85" width="90" height="25" field="db_3" fontSize="10" wordWrap="true" horzTextAlign="center" textTrimming="none"/>
+								<label left="15" top="110" width="90" height="25" field="db_4" fontSize="10" wordWrap="true" horzTextAlign="center" textTrimming="none"/>
+					</flowPart>
+					<dataLink field="atributos_mod_deslocamento">
+								<event name="onChange">
+									if sheet==nil then return end;
+
+									local velocidade = tonumber(sheet.atributos_mod_deslocamento) or 0;
+
+									sheet.db_0 = "DBx1: " .. (velocidade);
+									sheet.db_1 = "DBx0,8: " .. math.floor(velocidade*0.8);
+									sheet.db_2 = "DBx0,6: " .. math.floor(velocidade*0.6);
+									sheet.db_3 = "DBx0,4: " .. math.floor(velocidade*0.4);
+									sheet.db_4 = "DBx0,2: " .. math.floor(velocidade*0.2);
+								</event>
+					</dataLink>				
+				</flowLayout>
+							
+				<flowPart class="tileCarac" align="client" height="600" frameStyle="frames/panel5/frame.xml" margins="{left = 4, right = 4}">
+					<layout align="top" height="25">
+						<label align="top" autoSize="true" text="EQUIPAMENTOS E OBJETOS" fontSize="12" vertTextAlign="center" horzTextAlign="center" fontStyle="bold"/>
+						<button align="left" text="+" width="25" hint="" horzTextAlign="center" onClick="self.rclEquipments:append();" margins="{top=-10}"/>
+					</layout>
+
+					<recordList align="client" name="rclEquipments" field="listaDeEquipamentos" templateForm="frmBackpackItem" layout="vertical">
+						<event name="onCompare">
+			                return Utils.compareStringPtBr(nodeA.nome, nodeB.nome);
+				        </event>
+					</recordList>
+				</flowPart>									
+			</flowPart>
+
+			<flowLineBreak/>
+			
+			
 
 		</flowLayout>
 	</scrollBox>

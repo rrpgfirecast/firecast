@@ -19,6 +19,6 @@ Passo a Passo:
  
 Obs.:  Arquivos ".bat" podem ser perigosos para seu computador, evite abrir .bat desconhecidos. Se quiser verificar o que o .bat faz abra ele em um editor de texto e veja que comandos possuem. Esses possuem apenas os comandos "rdk p" e "rdk i" do proprio SDK do RRPG. 
 
-   [template]: <https://github.com/VinnyAmbesek/PluginsRRPG/blob/master/Template/Template.rar>
+   [template]: <https://github.com/VinnyAmbesek/PluginsRRPG/blob/master/Template/Template.zip>
    [sublime]: <https://www.sublimetext.com/>
    [rdk]: <http://www.rrpg.com.br/sdk3/RRPG%20SDK%203.html?Introducao.html>

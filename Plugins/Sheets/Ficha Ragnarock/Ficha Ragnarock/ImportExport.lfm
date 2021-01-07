@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmImportExport" align="client">
+	<scrollBox align="client">
+		<!-- Combobox de exportar ficha -->
+		<button left="0" top="0" width="100" height="20" text="Exportar Ficha" >
+			<event name="onClick">
+				local xml = ndb.exportXML(sheet);
+
+				local export = {};
+				local bytes = utils.binaryEncode(export, "utf8", xml);
+
+				local stream = utils.newMemoryStream();
+				local bytes = stream:write(export);
+
+				dialogs.saveFile("Salvar Ficha como XML", stream, "ficha.xml", "application/xml",
+					function()
+						stream:close();
+						showMessage("Ficha Exportada.");
+					end);
+			</event>
+		</button>
+		<!-- Combobox de importar ficha -->
+		<button left="0" top="25" width="100" height="20" text="Importar Ficha" >
+			<event name="onClick">
+				dialogs.openFile("Importar Ficha", "application/xml", false, 
+					function(arquivos)
+						local arq = arquivos[1];
+
+						local import = {};
+						local bytes = arq.stream:read(import, arq.stream.size);
+
+						local xml = utils.binaryDecode(import, "utf8");
+
+						ndb.importXML(sheet, xml);
+					end);
+			</event>
+		</button>
+	</scrollBox>
+</form>

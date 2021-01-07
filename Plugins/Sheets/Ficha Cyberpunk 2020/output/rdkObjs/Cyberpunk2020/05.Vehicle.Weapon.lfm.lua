@@ -173,7 +173,7 @@ local function constructNew_frmVehicleWeapon()
         function (_, field, oldValue, newValue)
             if sheet==nil then return end;
             
-            				local node = ndb.getRoot(sheet);
+            				local node = ndb.getParent(ndb.getParent(sheet));
             				local objetos = ndb.getChildNodes(node.vehicleWeaponList);
             				local cost = 0;
             

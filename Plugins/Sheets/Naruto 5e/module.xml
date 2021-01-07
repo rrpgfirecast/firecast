@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module sdkVersion="3.5">
+	<!--O id identifica seu módulo globalmente. Deve ser único, conter apenas caracteres alfanuméricos, underlines, pontos e deve conter ao menos 5 caracteres e um máximo de 40. Uma vez definido o ID, você não deve alterar ele ;) -->
+	<id>br.com.rrpg.Naruto5_SDK3</id>
+	<!--version é a versão do seu módulo. Quando for lançar uma nova versão do seu módulo, altere aqui =) -->
+	<version>1.1</version>
+	<name>Naruto5e</name>
+	<description>Naruto 5ª edição</description>
+	<author>RRPG Firecast n helldemos</author>
+	<site>http://www.rrpg.com.br</site>
+	<contact>https://twitter.com/Davi_1437</contact>
+</module>

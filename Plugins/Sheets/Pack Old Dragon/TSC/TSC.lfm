@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmTSC" formType="sheetTemplate" dataType="br.com.RRPG.TSC_S3" title="Thordezilhas - Ficha de Personagem" align="client" theme="light">
+    <tabControl align="client">
+        <tab title="Atributos">
+            <import file="1.lfm"/>
+        </tab>
+        <tab title="Características">
+            <import file="2.lfm"/>
+        </tab>
+        <tab title="Magias">
+            <import file="3.lfm"/>
+        </tab>
+        <tab title="Navio">
+            <import file="4.lfm"/>
+        </tab>
+        <tab title="Background">
+            <import file="5.lfm"/>
+        </tab>
+    </tabControl>
+</form>

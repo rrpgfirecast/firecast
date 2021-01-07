@@ -7,8 +7,7 @@
 	
 	<settings>
 		<automaticStringLocalization>true</automaticStringLocalization>
-	</settings>
-		
+	</settings>		
 	
     <info lang="pt">
         <!--Informações do plugin na língua "pt". Você pode ter várias tags "info", uma para cada tradução que quiser.-->

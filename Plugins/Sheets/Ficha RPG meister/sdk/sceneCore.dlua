@@ -1,7 +1,7 @@
 ﻿local Objs = require("rrpgObjs.lua")
 local SceneWrappers = require("sceneWrappers.dlua");
 require("utils.lua");
-require("Firecast.lua");
+require("rrpg.lua");
 
 local SceneLib = {};
 local LocalSceneLib = {};
@@ -87,7 +87,7 @@ function SceneLib.registerPlugin(attachCallback)
 	
 	-- Instalar listeners para detectar novos scenes rodando
 	
-	plug._lstSceneLoaded = Firecast.listen('SC3SceneLoaded',
+	plug._lstSceneLoaded = RRPG.listen('SC3SceneLoaded',
 		function(msg)
 			if msg.scene ~= nil then
 				startAttachToScene(msg.scene);
@@ -95,7 +95,7 @@ function SceneLib.registerPlugin(attachCallback)
 			end;
 		end);
 		
-	plug._lstSceneUnloaded = Firecast.listen('SC3SceneUnloaded',
+	plug._lstSceneUnloaded = RRPG.listen('SC3SceneUnloaded',
 		function(msg)
 			if msg.scene ~= nil then
 				startDettachFromScene(msg.scene);
@@ -111,12 +111,12 @@ function SceneLib.unregisterPlugin(pluginHandle)
 	
 	if plug ~= nil then
 		if plug._lstSceneUnloaded ~= nil then
-			Firecast.unlisten(plug._lstSceneUnloaded);
+			RRPG.unlisten(plug._lstSceneUnloaded);
 			plug._lstSceneUnloaded = nil;
 		end;
 		
 		if plug._lstSceneLoaded ~= nil then
-			Firecast.unlisten(plug._lstSceneLoaded);
+			RRPG.unlisten(plug._lstSceneLoaded);
 			plug._lstSceneLoaded = nil;
 		end;		
 	

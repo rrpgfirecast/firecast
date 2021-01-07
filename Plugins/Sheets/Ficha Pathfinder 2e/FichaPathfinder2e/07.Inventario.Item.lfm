@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmInventarioItem" width="465" height="25" theme="dark" margins="{top=1}">
+	<script> 
+		<![CDATA[			
+		local function askForDelete()
+			Dialogs.confirmYesNo("Deseja realmente apagar esse item?",
+								 function (confirmado)
+									if confirmado then
+										NDB.deleteNode(sheet);
+									end;
+								 end);
+		end;
+
+		local function showItemPopup()
+			local pop = self:findControlByName("popInv");
+				
+			if pop ~= nil then
+				pop:setNodeObject(self.sheet);
+				pop:showPopupEx("bottomCenter", self);
+			else
+				showMessage("Ops, bug.. nao encontrei o popup de arma para exibir");
+			end;				
+		end;
+
+		local function weaponPrice()
+			if sheet~= nil then
+				local node = NDB.getRoot(sheet);
+				local precoArmas = 0;
+				local precoMochila = 0;
+				local precoPreparado = 0;
+
+				-- VESTIDO
+
+				local nodes = NDB.getChildNodes(node.campoDasArmas); 
+				for i=1, #nodes, 1 do
+					precoArmas = precoArmas + (tonumber(nodes[i].preco) or 0);
+				end
+				node.precoArmas = precoArmas;
+
+				-- MOCHILA
+
+				local nodes = NDB.getChildNodes(node.campoMochila); 
+				for i=1, #nodes, 1 do
+					precoMochila = precoMochila + (tonumber(nodes[i].preco) or 0);
+				end
+				node.precoMochila = precoMochila;
+
+				-- PREPARADOS
+
+				local nodes = NDB.getChildNodes(node.campoPreparado); 
+				for i=1, #nodes, 1 do
+					precoPreparado = precoPreparado + (tonumber(nodes[i].preco) or 0);
+				end
+				node.precoPreparado = precoPreparado;
+			end;
+		end;
+
+		local function weaponWeight()
+			if sheet~= nil then
+				local node = NDB.getRoot(sheet);
+				local pesoArmas = 0;
+				local pesoMochila = 0;
+				local pesoPreparado = 0;
+
+				-- VESTIDO
+
+				local nodes = NDB.getChildNodes(node.campoDasArmas); 
+				for i=1, #nodes, 1 do
+					pesoArmas = pesoArmas + (tonumber(nodes[i].peso) or 0);
+				end
+				node.pesoArmas = pesoArmas;
+
+				-- MOCHILA
+
+				local nodes = NDB.getChildNodes(node.campoMochila); 
+				for i=1, #nodes, 1 do
+					pesoMochila = pesoMochila + (tonumber(nodes[i].peso) or 0);
+				end
+				node.pesoMochila = pesoMochila;
+
+				-- PREPARADOS
+
+				local nodes = NDB.getChildNodes(node.campoPreparado); 
+				for i=1, #nodes, 1 do
+					pesoPreparado = pesoPreparado + (tonumber(nodes[i].peso) or 0);
+				end
+				node.pesoPreparado = pesoPreparado;
+			end;
+		end;
+		]]>	
+	</script>
+	<edit left="0" top="1" width="245" height="23" field="nome"/>
+	
+	<rectangle left="245" top="1" width="50" height="23" color="black" strokeColor="grey" strokeSize="1" name="weaponWeightLabel" visible="true">
+		<label width="50" height="23" field="peso" horzTextAlign="center" formatFloat=",0.## Vol"/>
+		<event name="onClick">
+			self.weaponWeightLabel.visible = false;
+			self.weaponWeightEdit.visible = true;
+			self.weaponWeightEdit:setFocus();
+		</event>
+	</rectangle>
+	<edit left="245" top="1" width="50" height="23" field="peso" type="float" name="weaponWeightEdit" visible="false">
+		<event name="onUserChange">
+			weaponWeight();
+		</event>
+		<event name="onExit">
+			self.weaponWeightLabel.visible = true;
+			self.weaponWeightEdit.visible = false;
+		</event>
+	</edit>
+
+	<rectangle left="295" top="1" width="75" height="23" color="black" strokeColor="grey" strokeSize="1" name="weaponPriceLabel" visible="true">
+		<label width="75" height="23" field="preco" horzTextAlign="center" formatFloat=",0.## PO"/>
+		<event name="onClick">
+			self.weaponPriceLabel.visible = false;
+			self.weaponPriceEdit.visible = true;
+			self.weaponPriceEdit:setFocus();
+		</event>
+	</rectangle>
+	<edit left="295" top="1" width="75" height="23" field="preco" type="float" name="weaponPriceEdit" visible="false">
+		<event name="onUserChange">
+			weaponPrice();
+		</event>
+		<event name="onExit">
+			self.weaponPriceLabel.visible = true;
+			self.weaponPriceEdit.visible = false;
+		</event>
+	</edit>
+
+	<button left="370" top="1" width="23" height="23" text="i" onClick="showItemPopup();"/>
+	<button left="395" top="1" width="23" height="23" text="X" onClick="askForDelete();"/>
+</form>

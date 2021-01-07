@@ -43,29 +43,29 @@ local function constructNew_frmEquipamentoItem()
 			end;
 			
 			local function askForDelete()
-				dialogs.confirmYesNo("Deseja realmente apagar este item?",
+				Dialogs.confirmYesNo("Deseja realmente apagar este item?",
 									 function (confirmado)
 										if confirmado then
-											ndb.deleteNode(self.sheet);
+											NDB.deleteNode(self.sheet);
 										end;
 									 end);
 			end;
 			
 			local function rolarAtaque()
-				local personagem = rrpg.getPersonagemDe(sheet);				
+				local personagem = Firecast.getPersonagemDe(sheet);				
 				
 				if (personagem ~= nil) then
 					local mesa = personagem.mesa;
 				
 					if ((personagem.dono == mesa.meuJogador) or (mesa.meuJogador.isMestre)) then
 						-- rollar						
-						local rolagem = rrpg.interpretarRolagem(sheet.ataque);
-						local rolagemDano = rrpg.interpretarRolagem(sheet.dano);
+						local rolagem = Firecast.interpretarRolagem(sheet.ataque);
+						local rolagemDano = Firecast.interpretarRolagem(sheet.dano);
 						local ataqueStr = "Ataque";
 						local danoStr = "Dano";
 						
 						if not rolagem.possuiAlgumDado then
-							rolagem = rrpg.interpretarRolagem("3d6"):concatenar(rolagem);
+							rolagem = Firecast.interpretarRolagem("3d6"):concatenar(rolagem);
 						end;
 										
 						if sheet.nome ~= nil then
@@ -474,17 +474,12 @@ local function constructNew_frmEquipamentoItem()
     obj._e_event0 = obj:addEventListener("onScopeNodeChanged",
         function (_)
             local oldNode = rawget(self, "__attachedScopeNode");
-            		local mesa = rawget(self, "__attachedMesa");
-            		
-            		if (oldNode ~= nil) then
-            		
-            		end;
             		
             		local newNode = self.scopeNode;
             		mesa = nil;
             		
             		if newNode ~= nil then
-            			mesa = rrpg.getMesaDe(newNode);
+            			mesa = Firecast.getMesaDe(newNode);
             		end;
             		
             		if mesa ~= nil then

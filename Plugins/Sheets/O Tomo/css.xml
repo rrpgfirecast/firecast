@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<style>
+
+    edit {
+        fontColor: black;
+        horzTextAlign: center;
+        fontFamily: Ar Julian;
+        transparent: true;
+        fontSize: 24;
+    }
+
+    label {
+        fontColor: black;
+        horzTextAlign: center;
+        fontFamily: Ar Julian;
+        fontSize: 24;
+    }
+
+    comboBox {
+        fontFamily: Ar Julian;
+        fontSize: 14;
+    }
+
+</style>

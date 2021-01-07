@@ -195,7 +195,7 @@ local function constructNew_frmFichaRPGmeister3p_svg()
 
     obj.dataLink1 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink1:setParent(obj);
-    obj.dataLink1:setFields({'atributoPericia', 'graduacaoPericia', 'penalidesPericia', 'racialPericia', 'sinergiaPericia', 'equipamentosPericia', 'magicoPericia', 'outrosPericia', 'penalidadeArmadura', 'penalidadeArmadura2', 'talentosPericia', 'classePericia', 'condicionalPericia'});
+    obj.dataLink1:setFields({'atributoPericia', 'graduacaoPericia', 'penalidesPericia', 'racialPericia', 'sinergiaPericia', 'equipamentosPericia', 'magicoPericia', 'outrosPericia', 'penalidadeArmadura', 'penalidadeArmadura2', 'talentosPericia', 'classePericia', 'condicionalPericia', 'competenciaPericia', 'intuicaoPericia', 'sortePericia'});
     obj.dataLink1:setName("dataLink1");
 
     obj.dataLink2 = GUI.fromHandle(_obj_newObject("dataLink"));
@@ -266,6 +266,9 @@ local function constructNew_frmFichaRPGmeister3p_svg()
             							(tonumber(sheet.outrosPericia) or 0) + 
             							(tonumber(sheet.talentosPericia) or 0) +
             							(tonumber(sheet.classePericia) or 0) +
+            							(tonumber(sheet.competenciaPericia) or 0) +
+            							(tonumber(sheet.intuicaoPericia) or 0) +
+            							(tonumber(sheet.sortePericia) or 0) +
             							(tonumber(sheet.condicionalPericia) or 0);
             
             				if sheet.penalidadeArmadura then

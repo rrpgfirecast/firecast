@@ -4,7 +4,7 @@
 		<edit left="0" top="0" width="200" height="25" field="nome"/>
 		<edit left="200" top="0" width="700" height="25" field="efeito"/>
 
-		<comboBox left="900" top="0" width="150" height="25" field="tipo" items="{'Consumível', 'Material', 'Arma', 'Equipamento'}"/>
+		<comboBox left="900" top="0" width="150" height="25" field="tipo" items="{'Consumível', 'Material', 'Arma', 'Equipamento', 'Peça de Vestimenta', '-'}"/>
 
 		<edit left="1050" top="0" width="50" height="25" field="quantidade"/>        
 		<rectangle left="1100" top="0" width="25" height="25" color="black" strokeColor="white" strokeSize="1"/>
@@ -34,6 +34,10 @@
 					max = 1;
 				elseif sheet.tipo == "Equipamento" then
 					max = 1;
+				elseif sheet.tipo == "Peça de Vestimenta" then
+					max = 1;
+				elseif sheet.tipo == "-" then
+					max = 99;
 				end;
 				sheet.max = max;
 			</event>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form dataType="Ambesek.FMO" formType="sheetTemplate" title="Ficha Mundo Original" name="MundoOriginal" theme="dark">
+	<import file="styles.xml"/>
+	<import file="templates.xml"/>
+	
+	<tabControl align="client" name="pgcPrincipal">
+		<tab title="Geral">
+			<import file="frente.xml"/>
+		</tab>
+		
+		<tab title="Equipamento">
+			<import file="Equipamento.xml"/>
+		</tab>
+		
+		<tab title="Habilidades">
+			<import file="Habilidades.xml"/>
+		</tab>
+		
+		<tab title="Extenção">
+			<import file="Extencao.xml"/>
+		</tab>
+		
+		<tab title="Creditos">
+			<import file="credits.xml"/>
+		</tab>
+	</tabControl>
+</form>

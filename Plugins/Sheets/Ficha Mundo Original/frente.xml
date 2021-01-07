@@ -1,0 +1,300 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rectangle class="fundo">
+	<scrollBox align="client">
+		<flowLayout class="tile" align="top" height="500" margins="{left=10, right=10, top=10}" autoHeight="true" horzAlign="center" lineSpacing="2" name="fraFrenteLayout">
+			<!-- PARTE SUPERIOR DA FRENTE -->
+			<flowLayout class="oneLineTile" autoHeight="true" minScaledWidth="290" horzAlign="center">
+				<!-- NOME DO PERSONAGEM -->				
+				
+				<flowPart name="flwNome1" minWidth="320" maxWidth="1600" frameStyle="frames/banner/dragon.xml" height="175" vertAlign="center" avoidScale="true">							
+					<layout align="client" name="layNomeHolderFrente">
+							<edit name="edtNome1" field="nome" class="transparente vcenter" fontSize="17" align="client"/>
+							<label margins="{left=3}" name="labNome1" align="bottom" text="NOME DO PERSONAGEM" class="tituloCampo" autoSize="true"/>
+					</layout>
+				</flowPart>								
+
+				<!-- GRID DE INFORMACOES SUPERIORES DA FRENTE -->
+				<flowLayout  minWidth="320" maxWidth="1600" name="fraUpperGridFrente" avoidScale="true" frameStyle="frames/upperInfoGrid/frame.xml" autoHeight="true" vertAlign="trailing" maxControlsPerLine="3">								
+						<upperGridCampo field="classe" minWidth="100" titulo="CLASSE"/>
+						<upperGridCampo field="nivel" titulo="NÍVEL"/>
+						<upperGridCampo field="nomeDoJogador" titulo="JOGADOR"/>									
+						<upperGridCampo field="raca" minWidth="100" titulo="RAÇA"/>
+						<upperGridCampo field="tendencia" titulo="TENDÊNCIA"/>
+						<upperGridCampo field="experiencia.valor" titulo="EXPERIÊNCIA"/>
+				</flowLayout>
+			</flowLayout>
+
+			<flowLineBreak/>
+
+			<flowPart minWidth="280" maxWidth="800" height="64" frameStyle="frames/posCaptionEdit2/frame.xml">
+				<edit align="left" class="pericia" field="heranca" width="70"/>
+				<label align="client" text="BÔNUS DE HERANÇA" textTrimming="none" wordWrap="true" margins="{left=10}" class="tituloCampo" horzTextAlign="center"/>
+			</flowPart>		
+
+			<flowPart minWidth="280" maxWidth="800" height="64" frameStyle="frames/posCaptionEdit2/frame.xml">
+				<edit align="left" class="pericia" field="souls" width="70"/>
+				<label align="client" text="Quantidade de Souls" textTrimming="none" wordWrap="true" margins="{left=10}" class="tituloCampo" horzTextAlign="center"/>
+			</flowPart>	
+
+			<flowLineBreak/>
+
+			<!-- TERCEIRA PARTE -->
+			<flowLayout minWidth="235" maxWidth="1200" autoHeight="true" avoidScale="false" horzAlign="center" maxControlsPerLine="12" margins="{top=0}">
+				<flowPart stepSizes="{105}" minScaledWidth="75" height="120" frameStyle="frames/panel4transp/frame.xml">
+					<label align="top" text="Água" height="20" fontSize="9" wordWrap="true" horzTextAlign="center" textTrimming="none"/>
+					<edit align="client" class="atributo transparente" field="aguaResistancia" fontSize="30"/>	
+				</flowPart>
+				<flowPart stepSizes="{105}" minScaledWidth="75" height="120" frameStyle="frames/panel4transp/frame.xml">
+					<label align="top" text="Fogo" height="20" fontSize="9" wordWrap="true" horzTextAlign="center" textTrimming="none"/>
+					<edit align="client" class="atributo transparente" field="fogoResistancia" fontSize="30"/>	
+				</flowPart>
+				<flowPart stepSizes="{105}" minScaledWidth="75" height="120" frameStyle="frames/panel4transp/frame.xml">
+					<label align="top" text="Raio" height="20" fontSize="9" wordWrap="true" horzTextAlign="center" textTrimming="none"/>
+					<edit align="client" class="atributo transparente" field="raioResistancia" fontSize="30"/>	
+				</flowPart>
+				<flowPart stepSizes="{105}" minScaledWidth="75" height="120" frameStyle="frames/panel4transp/frame.xml">
+					<label align="top" text="Ar" height="20" fontSize="9" wordWrap="true" horzTextAlign="center" textTrimming="none"/>
+					<edit align="client" class="atributo transparente" field="arResistancia" fontSize="30"/>	
+				</flowPart>
+				<flowPart stepSizes="{105}" minScaledWidth="75" height="120" frameStyle="frames/panel4transp/frame.xml">
+					<label align="top" text="Gelo" height="20" fontSize="9" wordWrap="true" horzTextAlign="center" textTrimming="none"/>
+					<edit align="client" class="atributo transparente" field="geloResistancia" fontSize="30"/>	
+				</flowPart>
+				<flowPart stepSizes="{105}" minScaledWidth="75" height="120" frameStyle="frames/panel4transp/frame.xml">
+					<label align="top" text="Lava" height="20" fontSize="9" wordWrap="true" horzTextAlign="center" textTrimming="none"/>
+					<edit align="client" class="atributo transparente" field="lavaResistancia" fontSize="30"/>	
+				</flowPart>
+				<flowPart stepSizes="{105}" minScaledWidth="75" height="120" frameStyle="frames/panel4transp/frame.xml">
+					<label align="top" text="Chaos" height="20" fontSize="9" wordWrap="true" horzTextAlign="center" textTrimming="none"/>
+					<edit align="client" class="atributo transparente" field="chaosResistancia" fontSize="30"/>	
+				</flowPart>
+				<flowPart stepSizes="{105}" minScaledWidth="75" height="120" frameStyle="frames/panel4transp/frame.xml">
+					<label align="top" text="Veneno" height="20" fontSize="9" wordWrap="true" horzTextAlign="center" textTrimming="none"/>
+					<edit align="client" class="atributo transparente" field="venenoResistancia" fontSize="30"/>	
+				</flowPart>
+				<flowPart stepSizes="{105}" minScaledWidth="75" height="120" frameStyle="frames/panel4transp/frame.xml">
+					<label align="top" text="Luz" height="20" fontSize="9" wordWrap="true" horzTextAlign="center" textTrimming="none"/>
+					<edit align="client" class="atributo transparente" field="luzResistancia" fontSize="30"/>	
+				</flowPart>
+				<flowPart stepSizes="{105}" minScaledWidth="75" height="120" frameStyle="frames/panel4transp/frame.xml">
+					<label align="top" text="Escuridão" height="20" fontSize="9" wordWrap="true" horzTextAlign="center" textTrimming="none"/>
+					<edit align="client" class="atributo transparente" field="escuridaoResistancia" fontSize="30"/>	
+				</flowPart>
+				<flowPart stepSizes="{105}" minScaledWidth="75" height="120" frameStyle="frames/panel4transp/frame.xml">
+					<label align="top" text="Físico" height="20" fontSize="9" wordWrap="true" horzTextAlign="center" textTrimming="none"/>
+					<edit align="client" class="atributo transparente" field="fisicoResistancia" fontSize="30"/>	
+				</flowPart>
+				<flowPart stepSizes="{105}" minScaledWidth="75" height="120" frameStyle="frames/panel4transp/frame.xml">
+					<label align="top" text="Magico" height="20" fontSize="9" wordWrap="true" horzTextAlign="center" textTrimming="none"/>
+					<edit align="client" class="atributo transparente" field="magicoResistancia" fontSize="30"/>	
+				</flowPart>
+			</flowLayout>
+
+			<flowLineBreak/>
+
+			<!-- SEGUNDA PARTE -->			
+			<flowLayout autoHeight="true" class="oneLineTile" minScaledWidth="290" horzAlign="center">
+			<!-- ATRIBUTOS -->
+			
+				<flowLayout name="fraLayAtributos" class="tile" vertAlign="leading" autoHeight="true" minScaledWidth="290" maxControlsPerLine="3" horzAlign="center" lineSpacing="10" frameStyle="frames/panel1/frame.xml" margins="{left=2, top=2, right=16, bottom=4}" avoidScale="true">
+					<boxAtributo titulo="FORÇA" field="forca">
+						{{"Atletismo", "atletismo"}}
+					</boxAtributo>
+					
+					<boxAtributo titulo="DESTREZA" field="destreza">
+						{{"Acrobacia", "acrobacia"}}
+					</boxAtributo>
+					
+					<boxAtributo titulo="AGILIDADE" field="agilidade">
+						{{"Furtividade", "furtividade"},
+						{"Ladinagem", "ladinagem"},
+						{"Percepção", "percepcao"}}
+					</boxAtributo>
+
+					<boxAtributo titulo="CONSTITUIÇÃO" field="constituicao">
+						{{"Teste de Resistencia", "tr"}}
+					</boxAtributo>
+
+					<boxAtributo titulo="INTELIGÊNCIA" field="inteligencia">
+						{{"Arcanismo", "arcanismo"}, 
+						 {"Investigação", "investigacao"},
+						 {"Sobrevivência", "sobrevivencia"},
+						 {"Intuição", "intuicao"}}								
+					</boxAtributo>
+					
+					<boxAtributo titulo="SABEDORIA" field="sabedoria">
+						{{"Adestrar Animais", "adestrarAnimais"}, 
+						 {"Religião", "religiao"},
+						 {"Medicina", "medicina"},
+						 {"Historia", "historia"}}									
+					</boxAtributo>
+					
+					<boxAtributo titulo="CARISMA" field="carisma">
+						{{"Atuação", "atuacao"}, 
+						 {"Enganação", "enganacao"},
+						 {"Intimidação", "intimidacao"},
+						 {"Persuasão", "persuasao"}}									 
+					</boxAtributo>
+
+					<boxAtributo titulo="VONTADE" field="vontade"/>
+
+					<dataLink field="atributos.chanceCritico">
+						<event name="onChange">		
+							local numAsStr = tostring(newValue);
+							local numero;
+							
+							if numAsStr ~= "" then
+								numero = tonumber(newValue);
+							else
+								numero = nil;
+							end;
+
+							if type(sheet.atributos) ~= 'table' then
+								sheet.atributos = {};
+							end;				
+							
+							if type(numero) == 'number' then
+								local modificador = math.floor(numero / 3);								
+								sheet.atributos.modchanceCritico = modificador;	
+								sheet.atributos.modchanceCriticostr = modificador .. "%";	
+							else
+								sheet.atributos.modchanceCritico = nil;
+								sheet.atributos.modchanceCriticostr = nil;
+							end;
+						</event>
+					</dataLink>
+					
+					<flowPart height="140" minWidth="320" maxWidth="420" minScaledWidth="305" frameStyle="frames/atributeFrame2/frame.xml">
+						<layout left="6" top="12" width="116" height="115">
+							<edit class="atributo"  align="top" margins="{left=30, right=30}" field="atributos.chanceCritico" height="30" type="number" min="0"/>								
+						</layout>
+						
+						<label frameRegion="modificador" field="atributos.modchanceCriticostr" horzTextAlign="center" vertTextAlign="center" fontSize="36" fontStyle="bold"/>
+						<label frameRegion="titulo" text="CHANCE DE CRÍTICO" vertTextAlign="center" horzTextAlign="center"/>
+					</flowPart>
+
+					<dataLink field="atributos.danoCritico">
+						<event name="onChange">		
+							local numAsStr = tostring(newValue);
+							local numero;
+							
+							if numAsStr ~= "" then
+								numero = tonumber(newValue);
+							else
+								numero = nil;
+							end;
+
+							if type(sheet.atributos) ~= 'table' then
+								sheet.atributos = {};
+							end;				
+							
+							if type(numero) == 'number' then
+								local modificador = math.floor(numero / 2.5);								
+								sheet.atributos.moddanoCritico = modificador;	
+								sheet.atributos.moddanoCriticostr = modificador .. "%";	
+							else
+								sheet.atributos.moddanoCritico = nil;
+								sheet.atributos.moddanoCriticostr = nil;
+							end;
+						</event>
+					</dataLink>
+					
+					<flowPart height="140" minWidth="320" maxWidth="420" minScaledWidth="305" frameStyle="frames/atributeFrame2/frame.xml">
+						<layout left="6" top="12" width="116" height="115">
+							<edit class="atributo"  align="top" margins="{left=30, right=30}" field="atributos.danoCritico" height="30" type="number" min="0"/>								
+						</layout>
+						
+						<label frameRegion="modificador" field="atributos.moddanoCriticostr" horzTextAlign="center" vertTextAlign="center" fontSize="36" fontStyle="bold"/>
+						<label frameRegion="titulo" text="DANO CRÍTICO" vertTextAlign="center" horzTextAlign="center"/>
+					</flowPart>
+
+					<dataLink field="atributos.amplificador">
+						<event name="onChange">		
+							local numAsStr = tostring(newValue);
+							local numero;
+							
+							if numAsStr ~= "" then
+								numero = tonumber(newValue);
+							else
+								numero = nil;
+							end;
+
+							if type(sheet.atributos) ~= 'table' then
+								sheet.atributos = {};
+							end;				
+							
+							if type(numero) == 'number' then
+								local modificador = math.floor(numero / 10);								
+								sheet.atributos.modamplificador = modificador;	
+								sheet.atributos.modamplificadorstr = modificador .. "%";	
+							else
+								sheet.atributos.modamplificador = nil;
+								sheet.atributos.modamplificadorstr = nil;
+							end;
+						</event>
+					</dataLink>
+					
+					<flowPart height="140" minWidth="320" maxWidth="420" minScaledWidth="305" frameStyle="frames/atributeFrame2/frame.xml">
+						<layout left="6" top="12" width="116" height="115">
+							<edit class="atributo"  align="top" margins="{left=30, right=30}" field="atributos.amplificador" height="30" type="number" min="0"/>								
+						</layout>
+						
+						<label frameRegion="modificador" field="atributos.modamplificadorstr" horzTextAlign="center" vertTextAlign="center" fontSize="36" fontStyle="bold"/>
+						<label frameRegion="titulo" text="AMPLIFICADOR" vertTextAlign="center" horzTextAlign="center"/>
+					</flowPart>
+
+					<dataLink fields="{'atributos.forca','atributos.destreza','atributos.agilidade','atributos.constituicao','atributos.inteligencia','atributos.sabedoria','atributos.carisma','atributos.vontade','atributos.chanceCritico','atributos.danoCritico'}">
+						<event name="onChange">
+							if sheet==nil then return end;
+							if sheet.atributos==nil then return end;
+							sheet.souls  =  (tonumber(sheet.atributos.forca) or 0) + 
+											(tonumber(sheet.atributos.destreza) or 0) + 
+											(tonumber(sheet.atributos.agilidade) or 0) + 
+											(tonumber(sheet.atributos.constituicao) or 0) + 
+											(tonumber(sheet.atributos.inteligencia) or 0) + 
+											(tonumber(sheet.atributos.sabedoria) or 0) + 
+											(tonumber(sheet.atributos.carisma) or 0) + 
+											(tonumber(sheet.atributos.vontade) or 0) + 
+											(tonumber(sheet.atributos.chanceCritico) or 0) + 
+											(tonumber(sheet.atributos.danoCritico) or 0);
+						</event>
+					</dataLink>
+				</flowLayout>
+				
+				<!-- segunda coluna -->
+				
+				<flowLayout autoHeight="true" horzAlign="center" vertAlign="leading" class="halfTile" maxControlsPerLine="2" maxWidth="600">
+					
+					<flowLayout minWidth="202" maxWidth="202" autoHeight="true" avoidScale="false" vertAlign="center" horzAlign="center">
+						<rectangle width="202" height="602" padding="{left=1,right=1,top=1,bottom=1}" color="black" strokeColor="white" strokeSize="1"> 
+							<image width="200" height="600" field="avatarHead"/>
+							<image width="200" height="600" field="avatarBody"/>
+							<image width="200" height="600" field="avatarArms"/>
+							<image width="200" height="600" field="avatarLegs"/>
+							<image width="200" height="600" field="avatarFeet"/>
+						</rectangle>
+					</flowLayout>
+
+					<flowLayout minWidth="202" maxWidth="202" autoHeight="true" avoidScale="false" vertAlign="center" horzAlign="center">
+						<layout left="202" width="200" height="602">
+							<BodyColor text="Capacete" slot="avatarHead" items="{'Água','Fogo','Raio','Ar','Gelo','Lava','Chaos','Veneno','Luz','Escuridão','Físico','Magico','Nenhum'}" values="{'http://blob.firecast.com.br/blobs/ABAWJFFJ_1373881/Agua.png','http://blob.firecast.com.br/blobs/NEGVWJNW_1373889/Fogo.png','http://blob.firecast.com.br/blobs/REDOJMMT_1373899/Raio.png','http://blob.firecast.com.br/blobs/QFNRMOOB_1373882/Ar.png','http://blob.firecast.com.br/blobs/OLCHSFMQ_1373893/Gelo.png','http://blob.firecast.com.br/blobs/SMAVRERG_1373896/Lava.png','http://blob.firecast.com.br/blobs/AVHUOTMP_1373883/Chaos.png','http://blob.firecast.com.br/blobs/GTPOFUSW_1373902/Veneno.png','http://blob.firecast.com.br/blobs/UKSOFION_1373894/Luz.png','http://blob.firecast.com.br/blobs/LLVRRNRM_1373887/Escuridao.png','http://blob.firecast.com.br/blobs/NTEFIGVB_1373888/Fisico.png','http://blob.firecast.com.br/blobs/JHEKDCST_1373900/Magico.png',''}" field="cabeca"/>
+
+
+							<BodyColor text="Peitoral" slot="avatarBody" items="{'Água','Fogo','Raio','Ar','Gelo','Lava','Chaos','Veneno','Luz','Escuridão','Físico','Magico','Nenhum'}" values="{'http://blob.firecast.com.br/blobs/QBGSFWKE_1373905/Agua.png','http://blob.firecast.com.br/blobs/IEARCEOW_1373913/Fogo.png','http://blob.firecast.com.br/blobs/ARPNCVPP_1373927/Raio.png','http://blob.firecast.com.br/blobs/LMTLFTUP_1373907/Ar.png','http://blob.firecast.com.br/blobs/BAOGCINR_1373917/Gelo.png','http://blob.firecast.com.br/blobs/DMFLCKJG_1373919/Lava.png','http://blob.firecast.com.br/blobs/TLAFJNDQ_1373908/Chaos.png','http://blob.firecast.com.br/blobs/TDVGHFLB_1373925/Veneno.png','http://blob.firecast.com.br/blobs/KEMHLWSR_1373920/Luz.png','http://blob.firecast.com.br/blobs/VMVLSMEF_1373914/Escuridao.png','http://blob.firecast.com.br/blobs/LEDFRLQO_1373911/Fisico.png','http://blob.firecast.com.br/blobs/HIOTINGO_1373923/Magico.png',''}" field="corpo"/>
+
+
+							<BodyColor text="Luva" slot="avatarArms" items="{'Água','Fogo','Raio','Ar','Gelo','Lava','Chaos','Veneno','Luz','Escuridão','Físico','Magico','Nenhum'}" values="{'http://blob.firecast.com.br/blobs/FVGAIPEF_1373857/Agua.png','http://blob.firecast.com.br/blobs/CQMIWTAK_1373864/Fogo.png','http://blob.firecast.com.br/blobs/UFTOWBBE_1373876/Raio.png','http://blob.firecast.com.br/blobs/MFPDHLOV_1373858/Ar.png','http://blob.firecast.com.br/blobs/PMPUFAGH_1373869/Gelo.png','http://blob.firecast.com.br/blobs/VEDJSAJB_1373871/Lava.png','http://blob.firecast.com.br/blobs/HCHJJMVE_1373863/Chaos.png','http://blob.firecast.com.br/blobs/GFEIWOFQ_1373877/Veneno.png','http://blob.firecast.com.br/blobs/NIEIIWQB_1373870/Luz.png','http://blob.firecast.com.br/blobs/DHBFBSFB_1373859/Escuridao.png','http://blob.firecast.com.br/blobs/KATECUIM_1373865/Fisico.png','http://blob.firecast.com.br/blobs/HTVEMMQP_1373875/Magico.png',''}" field="bracos"/>
+
+
+							<BodyColor text="Calça" slot="avatarLegs" items="{'Água','Fogo','Raio','Ar','Gelo','Lava','Chaos','Veneno','Luz','Escuridão','Físico','Magico','Nenhum'}" values="{'http://blob.firecast.com.br/blobs/GUHGVDCF_1373932/Agua.png','http://blob.firecast.com.br/blobs/UUIPVPFB_1373938/Fogo.png','http://blob.firecast.com.br/blobs/IUTDVHIK_1373951/Raio.png','http://blob.firecast.com.br/blobs/NKSQCOAP_1373931/Ar.png','http://blob.firecast.com.br/blobs/WJAEBTSL_1373943/Gelo.png','http://blob.firecast.com.br/blobs/EMLJBGAF_1373944/Lava.png','http://blob.firecast.com.br/blobs/DSFISGBG_1373933/Chaos.png','http://blob.firecast.com.br/blobs/HMQSELNB_1373950/Veneno.png','http://blob.firecast.com.br/blobs/LLWHRTEG_1373945/Luz.png','http://blob.firecast.com.br/blobs/AIBTEGOO_1373937/Escuridao.png','http://blob.firecast.com.br/blobs/JUJEQISA_1373939/Fisico.png','http://blob.firecast.com.br/blobs/TETKCWPT_1373949/Magico.png',''}" field="pernas"/>
+
+
+							<BodyColor text="Bota" slot="avatarLegs" items="{'Água','Fogo','Raio','Ar','Gelo','Lava','Chaos','Veneno','Luz','Escuridão','Físico','Magico','Nenhum'}" values="{'http://blob.firecast.com.br/blobs/GUHGVDCF_1373932/Agua.png','http://blob.firecast.com.br/blobs/UUIPVPFB_1373938/Fogo.png','http://blob.firecast.com.br/blobs/IUTDVHIK_1373951/Raio.png','http://blob.firecast.com.br/blobs/NKSQCOAP_1373931/Ar.png','http://blob.firecast.com.br/blobs/WJAEBTSL_1373943/Gelo.png','http://blob.firecast.com.br/blobs/EMLJBGAF_1373944/Lava.png','http://blob.firecast.com.br/blobs/DSFISGBG_1373933/Chaos.png','http://blob.firecast.com.br/blobs/HMQSELNB_1373950/Veneno.png','http://blob.firecast.com.br/blobs/LLWHRTEG_1373945/Luz.png','http://blob.firecast.com.br/blobs/AIBTEGOO_1373937/Escuridao.png','http://blob.firecast.com.br/blobs/JUJEQISA_1373939/Fisico.png','http://blob.firecast.com.br/blobs/TETKCWPT_1373949/Magico.png',''}" field="pernas"/>
+						</layout>
+					</flowLayout>								
+				</flowLayout>
+			</flowLayout>
+
+		</flowLayout>	
+	</scrollBox>
+</rectangle>	

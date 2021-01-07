@@ -161,7 +161,7 @@ local function constructNew_frmMacrosTD()
     obj.btnGerMacros:setParent(obj.layTopo);
     obj.btnGerMacros:setName("btnGerMacros");
     obj.btnGerMacros:setAlign("left");
-    obj.btnGerMacros:setText(lang("macros.ui.manageMacros"));
+    obj.btnGerMacros:setText("@@macros.ui.manageMacros");
     obj.btnGerMacros:setTextTrimming("none");
     obj.btnGerMacros:setWidth(112);
     obj.btnGerMacros:setMargins({left=3, right=3, top=1, bottom=1});

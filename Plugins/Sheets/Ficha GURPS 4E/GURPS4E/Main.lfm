@@ -35,6 +35,13 @@
         end;
         ]]> 
     </script>
+
+    <template name="magicInfoField">
+        <flowPart minWidth="30" maxWidth="400" height="35">
+            <label align="top" class="tituloCampo" fontSize="10" text="$(text)" horzTextAlign="center" wordWrap="true" textTrimming="none" autoSize="true"/>
+            <edit align="client" class="" field="$(field)" horzTextAlign="center" fontSize="12"/>
+        </flowPart>
+    </template>
     <popup name="popDetails" width="250" height="250" backOpacity="0.4" autoScopeNode="false">
         <label align="top" field="title" horzTextAlign="center"/>
 
@@ -79,22 +86,20 @@
                                 - (tonumber(sheet.atributos_per) or 0)
                                 - (tonumber(sheet.atributos_pv) or 0)
                                 - (tonumber(sheet.atributos_pf) or 0)
+                                - (tonumber(sheet.dodge_cost) or 0)
                                 - (tonumber(sheet.atributos_velocidade) or 0)
                                 - (tonumber(sheet.atributos_deslocamento) or 0)
                                 - (tonumber(sheet.vantagens_pontos) or 0)
-                                - (tonumber(sheet.desvantagens_pontos) or 0)
-                                - (tonumber(sheet.familiaridade_cultural) or 0)
-                                - (tonumber(sheet.arquetipo_pontos) or 0)
-                                - (tonumber(sheet.idiomas_pontos) or 0);
+                                - (tonumber(sheet.desvantagens_pontos) or 0);
 
-                local objetos = ndb.getChildNodes(sheet.listaDePericias);
+                local objetos = NDB.getChildNodes(sheet.listaDePericias);
                 local custo = 0;
                 for i=1, #objetos, 1 do
                     custo = custo + (tonumber(objetos[i].pts) or 0);
                 end;
                 pontos = pontos - custo;
 
-                local objetos = ndb.getChildNodes(sheet.listaDeTecnicas);
+                local objetos = NDB.getChildNodes(sheet.listaDeTecnicas);
                 local custo = 0;
                 for i=1, #objetos, 1 do
                     custo = custo + (tonumber(objetos[i].custo) or 0);
@@ -102,7 +107,7 @@
                 sheet.custoTecnicas = custo;
                 pontos = pontos - custo;
 
-                local objetos = ndb.getChildNodes(sheet.listaDeMagias);
+                local objetos = NDB.getChildNodes(sheet.listaDeMagias);
                 local custo = 0;
                 for i=1, #objetos, 1 do
                     custo = custo + (tonumber(objetos[i].custo) or 0);
@@ -120,13 +125,10 @@
             <tab title="Habilidades">
                 <import file="General.xml"/>
             </tab>
-            <tab title="Descrição">
+            <tab title="Características">
                 <import file="Characteristics.xml"/>
             </tab>
-            <tab title="Capacidades">
-                <import file="Power.xml"/>
-            </tab>
-            <tab title="Inventario">
+            <tab title="Equipamento">
                 <import file="Inventory.xml"/>
             </tab>
             <tab title="Anotações">
@@ -138,12 +140,12 @@
         </tabControl>
     </rectangle>
     <event name="onNodeReady">
-        internet.download("https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20GURPS%204E/output/Ficha%20GURPS%204E.rpk?raw=true",
+        Internet.download("https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20GURPS%204E/output/Ficha%20GURPS%204E.rpk?raw=true",
             function(stream, contentType)
-                local info = rrpg.plugins.getRPKDetails(stream);
+                local info = Firecast.Plugins.getRPKDetails(stream);
                 sheet.versionDownloaded = "VERSÃO DISPONÍVEL: " .. info.version;
 
-                local installed = rrpg.plugins.getInstalledPlugins();
+                local installed = Firecast.Plugins.getInstalledPlugins();
                 local myself;
                 for i=1, #installed, 1 do
                     if installed[i].moduleId == info.moduleId then
@@ -154,10 +156,10 @@
 
                 if sheet.noUpdate==true then return end;
                 if myself~= nil and isNewVersion(myself.version, info.version) then
-                    Dialogs.choose("Há uma nova versão (" .. info.version .. ") do plugin de FURPS 4E. Deseja instalar?",{"Sim", "Não", "Não perguntar novamente."},
+                    Dialogs.choose("Há uma nova versão (" .. info.version .. ") do plugin de GURPS 4E. Deseja instalar?",{"Sim", "Não", "Não perguntar novamente."},
                         function(selected, selectedIndex, selectedText)
                             if selected and selectedIndex == 1 then
-                                gui.openInBrowser('https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20GURPS%204E/output/Ficha%20GURPS%204E.rpk?raw=true');
+                                GUI.openInBrowser('https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20GURPS%204E/output/Ficha%20GURPS%204E.rpk?raw=true');
                             elseif selected and selectedIndex == 3 then
                                 sheet.noUpdate = true;
                             end;
@@ -170,6 +172,7 @@
             function (downloaded, total)
                 -- esta função será chamada constantemente.
                 -- dividir "downloaded" por "total" lhe dará uma porcentagem do download.
-            end);
+            end,
+            "checkForModification");
     </event>
 </form>

@@ -86,7 +86,7 @@ local function constructNew_frmStaffItem()
     obj.edit2:setWidth(50);
     obj.edit2:setField("nc");
     obj.edit2:setType("number");
-    obj.edit2:setMin(8);
+    obj.edit2:setMin(1);
     obj.edit2:setName("edit2");
 
     obj.button1 = GUI.fromHandle(_obj_newObject("button"));
@@ -205,6 +205,7 @@ local function constructNew_frmStaffItem()
             			local mults = {1, 0.75, 0.5};
             			local mult = mults[order] or 1;
             
+            			-- BASE PRICE: 750
             			local price = nivel * nc * 750 * mult / cargas;
             			local materialCost = material * 50 / cargas;
             			local xpCost = xp * 5 / cargas;

@@ -112,6 +112,15 @@ scene.tokenEdit.barraPrefix=Barrinha
 scene.digiteUmValor=Digite um valor
 scene.valor=Valor
 
+scene.labCorAura.text=Cor da Aura
+scene.labAlturaAura.text=Altura da Aura
+scene.labLarguraAura.text=Largura da Aura
+scene.labCorAura.text=Cor da Aura
+scene.labFormaAura.text=Forma Aura
+scene.labAuraURL.text=URL da Aura
+scene.labRaioAura.text=Diametro
+scene.labescolhaimg.text=click here to choose image
+scene.labUnidadeMedida.text=Unidade de Medida
 
 userDrawing.categoryTitle=Rabiscos
 userDrawing.freeHand=Desenho à mão livre
@@ -135,6 +144,14 @@ scene.zoom.zoomOut=Zoom -
 scene.bkgImageTabTitle=Imagem de Fundo
 scene.bkgImageTabTitle.useThis=Usar esta imagem:
 scene.bkgImageTabTitle.guide=Clique para alterar a imagem
+
+scene.gridFineTuning.setup=Ajuste milimétrico do Grid
+scene.Synchronize.menu=Sincronizador de Grid
+scene.Synchronize.tip=Dica: Sincronize o grid do background com o grid do firecast marcando/desenhando 4 células diferentes que existem na imagem de fundo.
+scene.gridFineTuning.dimension=Dica: Ajuste a primeira célula do tabuleiro e em seguida ajuste a última célula do tabuleiro.
+scene.gridFineTuning.height=Altura
+scene.gridFineTuning.width=Largura
+scene.gridFineTuning.offset=Mova a posição do grid
 
 
 [en]
@@ -250,6 +267,16 @@ scene.tokenEdit.barraPrefix=Bar
 scene.digiteUmValor=Type a value
 scene.valor=Value
 
+scene.labCorAura.text=Aura Color
+scene.labAlturaAura.text=Aura height
+scene.labLarguraAura.text=Aura width
+scene.labCorAura.text=Aura Color
+scene.labFormaAura.text=Aura Form
+scene.labAuraURL.text=Aura URL
+scene.labRaioAura.text=Diameter
+scene.labescolhaimg.text=Click to change the image
+scene.labUnidadeMedida.text=Unit of measurement:
+
 userDrawing.categoryTitle=Sketches
 userDrawing.freeHand=Freehand drawing
 userDrawing.rectangle=Rectangle drawing
@@ -270,3 +297,11 @@ scene.zoom.zoomOut=Zoom -
 scene.bkgImageTabTitle=Background Image
 scene.bkgImageTabTitle.useThis=Use this image:
 scene.bkgImageTabTitle.guide=Click to change the image
+
+scene.gridFineTuning.setup=Fine grid adjustment
+scene.Synchronize.menu=Synchronize grid
+scene.Synchronize.tip=Tip: Synchronize the background grid with the firecast grid by marking / drawing 4 different cells that exist in the background image.
+scene.gridFineTuning.dimension=Tip: Adjuste the first cell on the background and then adjust the last cell on the background.
+scene.gridFineTuning.height=Height
+scene.gridFineTuning.width=Width
+scene.gridFineTuning.offset=Move a grid position

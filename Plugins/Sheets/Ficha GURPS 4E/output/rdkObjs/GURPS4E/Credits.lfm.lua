@@ -58,15 +58,24 @@ local function constructNew_frmTemplateCreditos()
     obj.image2:setSRC("/GURPS4E/images/RPGmeister.jpg");
     obj.image2:setName("image2");
 
-    obj.image3 = GUI.fromHandle(_obj_newObject("image"));
-    obj.image3:setParent(obj.scrollBox1);
-    obj.image3:setLeft(850);
-    obj.image3:setTop(0);
-    obj.image3:setWidth(250);
-    obj.image3:setHeight(250);
-    obj.image3:setStyle("autoFit");
-    obj.image3:setSRC("/GURPS4E/images/Capa.png");
-    obj.image3:setName("image3");
+    obj.label1 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label1:setParent(obj.scrollBox1);
+    obj.label1:setLeft(850);
+    obj.label1:setTop(275);
+    obj.label1:setWidth(250);
+    obj.label1:setHeight(20);
+    obj.label1:setText("Anotações do Mestre");
+    obj.label1:setHorzTextAlign("center");
+    obj.label1:setName("label1");
+
+    obj.textEditor1 = GUI.fromHandle(_obj_newObject("textEditor"));
+    obj.textEditor1:setParent(obj.scrollBox1);
+    obj.textEditor1:setLeft(850);
+    obj.textEditor1:setTop(300);
+    obj.textEditor1:setWidth(250);
+    obj.textEditor1:setHeight(250);
+    obj.textEditor1:setField("anotacoesMestre");
+    obj.textEditor1:setName("textEditor1");
 
     obj.layout1 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout1:setParent(obj.scrollBox1);
@@ -85,47 +94,47 @@ local function constructNew_frmTemplateCreditos()
     obj.rectangle2:setCornerType("round");
     obj.rectangle2:setName("rectangle2");
 
-    obj.label1 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label1:setParent(obj.layout1);
-    obj.label1:setLeft(0);
-    obj.label1:setTop(10);
-    obj.label1:setWidth(200);
-    obj.label1:setHeight(20);
-    obj.label1:setText("Programador: Vinny (Ambesek)");
-    obj.label1:setHorzTextAlign("center");
-    obj.label1:setName("label1");
-
     obj.label2 = GUI.fromHandle(_obj_newObject("label"));
     obj.label2:setParent(obj.layout1);
     obj.label2:setLeft(0);
-    obj.label2:setTop(35);
+    obj.label2:setTop(10);
     obj.label2:setWidth(200);
     obj.label2:setHeight(20);
-    obj.label2:setText("Consultor: rexLiterate");
+    obj.label2:setText("Programador: Vinny (Ambesek)");
     obj.label2:setHorzTextAlign("center");
     obj.label2:setName("label2");
 
     obj.label3 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label3:setParent(obj.scrollBox1);
-    obj.label3:setLeft(555);
-    obj.label3:setTop(300);
+    obj.label3:setParent(obj.layout1);
+    obj.label3:setLeft(0);
+    obj.label3:setTop(35);
     obj.label3:setWidth(200);
     obj.label3:setHeight(20);
-    obj.label3:setText("Versão Atual: ");
+    obj.label3:setText("Consultor: rexLiterate");
     obj.label3:setHorzTextAlign("center");
-    obj.label3:setField("versionInstalled");
     obj.label3:setName("label3");
 
     obj.label4 = GUI.fromHandle(_obj_newObject("label"));
     obj.label4:setParent(obj.scrollBox1);
     obj.label4:setLeft(555);
-    obj.label4:setTop(325);
+    obj.label4:setTop(300);
     obj.label4:setWidth(200);
     obj.label4:setHeight(20);
-    obj.label4:setText("Sua Versão: ");
+    obj.label4:setText("Versão Atual: ");
     obj.label4:setHorzTextAlign("center");
-    obj.label4:setField("versionDownloaded");
+    obj.label4:setField("versionInstalled");
     obj.label4:setName("label4");
+
+    obj.label5 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label5:setParent(obj.scrollBox1);
+    obj.label5:setLeft(555);
+    obj.label5:setTop(325);
+    obj.label5:setWidth(200);
+    obj.label5:setHeight(20);
+    obj.label5:setText("Sua Versão: ");
+    obj.label5:setHorzTextAlign("center");
+    obj.label5:setField("versionDownloaded");
+    obj.label5:setName("label5");
 
     obj.button1 = GUI.fromHandle(_obj_newObject("button"));
     obj.button1:setParent(obj.scrollBox1);
@@ -143,14 +152,14 @@ local function constructNew_frmTemplateCreditos()
     obj.button2:setText("Atualizar");
     obj.button2:setName("button2");
 
-    obj.label5 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label5:setParent(obj.scrollBox1);
-    obj.label5:setLeft(555);
-    obj.label5:setTop(400);
-    obj.label5:setWidth(200);
-    obj.label5:setHeight(20);
-    obj.label5:setText("Conheça as Mesas:");
-    obj.label5:setName("label5");
+    obj.label6 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label6:setParent(obj.scrollBox1);
+    obj.label6:setLeft(555);
+    obj.label6:setTop(400);
+    obj.label6:setWidth(200);
+    obj.label6:setHeight(20);
+    obj.label6:setText("Conheça as Mesas:");
+    obj.label6:setName("label6");
 
     obj.button3 = GUI.fromHandle(_obj_newObject("button"));
     obj.button3:setParent(obj.scrollBox1);
@@ -160,36 +169,22 @@ local function constructNew_frmTemplateCreditos()
     obj.button3:setText("RPGmeister");
     obj.button3:setName("button3");
 
-    obj.button4 = GUI.fromHandle(_obj_newObject("button"));
-    obj.button4:setParent(obj.scrollBox1);
-    obj.button4:setLeft(667);
-    obj.button4:setTop(425);
-    obj.button4:setWidth(125);
-    obj.button4:setText("[A] Homebound");
-    obj.button4:setName("button4");
-
     obj._e_event0 = obj.button1:addEventListener("onClick",
         function (_)
-            gui.openInBrowser('https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20GURPS%204E/README.md')
+            GUI.openInBrowser('https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20GURPS%204E/README.md')
         end, obj);
 
     obj._e_event1 = obj.button2:addEventListener("onClick",
         function (_)
-            gui.openInBrowser('https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20GURPS%204E/output/Ficha%20GURPS%204E.rpk?raw=true')
+            GUI.openInBrowser('https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20GURPS%204E/output/Ficha%20GURPS%204E.rpk?raw=true')
         end, obj);
 
     obj._e_event2 = obj.button3:addEventListener("onClick",
         function (_)
-            gui.openInBrowser('http://firecast.rrpg.com.br:90/a?a=pagRWEMesaInfo.actInfoMesa&mesaid=64070');
-        end, obj);
-
-    obj._e_event3 = obj.button4:addEventListener("onClick",
-        function (_)
-            gui.openInBrowser('http://firecast.rrpg.com.br:90/a?a=pagRWEMesaInfo.actInfoMesa&mesaid=131156');
+            GUI.openInBrowser('http://firecast.rrpg.com.br:90/a?a=pagRWEMesaInfo.actInfoMesa&mesaid=64070');
         end, obj);
 
     function obj:_releaseEvents()
-        __o_rrpgObjs.removeEventListenerById(self._e_event3);
         __o_rrpgObjs.removeEventListenerById(self._e_event2);
         __o_rrpgObjs.removeEventListenerById(self._e_event1);
         __o_rrpgObjs.removeEventListenerById(self._e_event0);
@@ -204,7 +199,6 @@ local function constructNew_frmTemplateCreditos()
           self:setNodeDatabase(nil);
         end;
 
-        if self.button4 ~= nil then self.button4:destroy(); self.button4 = nil; end;
         if self.label5 ~= nil then self.label5:destroy(); self.label5 = nil; end;
         if self.button1 ~= nil then self.button1:destroy(); self.button1 = nil; end;
         if self.button3 ~= nil then self.button3:destroy(); self.button3 = nil; end;
@@ -212,10 +206,11 @@ local function constructNew_frmTemplateCreditos()
         if self.rectangle2 ~= nil then self.rectangle2:destroy(); self.rectangle2 = nil; end;
         if self.label3 ~= nil then self.label3:destroy(); self.label3 = nil; end;
         if self.label4 ~= nil then self.label4:destroy(); self.label4 = nil; end;
-        if self.button2 ~= nil then self.button2:destroy(); self.button2 = nil; end;
+        if self.textEditor1 ~= nil then self.textEditor1:destroy(); self.textEditor1 = nil; end;
         if self.image1 ~= nil then self.image1:destroy(); self.image1 = nil; end;
         if self.image2 ~= nil then self.image2:destroy(); self.image2 = nil; end;
-        if self.image3 ~= nil then self.image3:destroy(); self.image3 = nil; end;
+        if self.button2 ~= nil then self.button2:destroy(); self.button2 = nil; end;
+        if self.label6 ~= nil then self.label6:destroy(); self.label6 = nil; end;
         if self.layout1 ~= nil then self.layout1:destroy(); self.layout1 = nil; end;
         if self.scrollBox1 ~= nil then self.scrollBox1:destroy(); self.scrollBox1 = nil; end;
         if self.rectangle1 ~= nil then self.rectangle1:destroy(); self.rectangle1 = nil; end;

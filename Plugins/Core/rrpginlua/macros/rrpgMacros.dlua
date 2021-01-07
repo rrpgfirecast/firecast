@@ -126,9 +126,7 @@ local function handleCoResume(co, ...)
 		if retornos[2] == _MACRO_CALL_CO_FUNCTION_RET then			
 			local f = yieldedFunctions[retornos[3]];
 			
-			if type(f) == "function" then
-				f(co, table.unpack(retornos, 4));
-			end;
+			f(co, table.unpack(retornos, 4));
 		elseif coroutine.status(co)	== "dead" then
 			local endCallback = rawget(co, "__endCallback");
 			
@@ -907,7 +905,7 @@ function macros.compileMacro(body, chat, macroName, endCallback)
 		end;
 			
 		local co = coroutine.create(macroLauncher);		
-		rawset(co, "__endCallback", endCallback);		
+		rawset(co, "__endCallback", endCallback);			
 		handleCoResume(co);
 	end;
 	

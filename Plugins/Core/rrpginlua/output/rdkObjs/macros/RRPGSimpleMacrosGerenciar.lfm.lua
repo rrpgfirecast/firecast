@@ -27,7 +27,7 @@ local function constructNew_frmGerenciarSimpleMacros()
     _gui_assignInitialParentForForm(obj.handle);
     obj:beginUpdate();
     obj:setName("frmGerenciarSimpleMacros");
-    obj:setTitle(lang("macros.ui.manageMacros"));
+    obj:setTitle("@@macros.ui.manageMacros");
     obj:setWidth(450);
     obj:setHeight(450);
     obj:setResizable(true);
@@ -51,7 +51,7 @@ local function constructNew_frmGerenciarSimpleMacros()
 
     obj.label1 = GUI.fromHandle(_obj_newObject("label"));
     obj.label1:setParent(obj.layout1);
-    obj.label1:setText(lang("macros.ui.editLabel"));
+    obj.label1:setText("@@macros.ui.editLabel");
     obj.label1:setAlign("client");
     obj.label1:setMargins({right=2});
     obj.label1:setHorzTextAlign("center");
@@ -60,7 +60,7 @@ local function constructNew_frmGerenciarSimpleMacros()
 
     obj.button1 = GUI.fromHandle(_obj_newObject("button"));
     obj.button1:setParent(obj.layout1);
-    obj.button1:setText(lang("macros.ui.closeButton"));
+    obj.button1:setText("@@macros.ui.closeButton");
     obj.button1:setAlign("right");
     obj.button1:setWidth(80);
     obj.button1:setName("button1");
@@ -81,13 +81,13 @@ local function constructNew_frmGerenciarSimpleMacros()
 
     obj.label2 = GUI.fromHandle(_obj_newObject("label"));
     obj.label2:setParent(obj.flowLayout1);
-    obj.label2:setText(lang("macros.ui.nameLabel"));
+    obj.label2:setText("@@macros.ui.nameLabel");
     obj.label2:setAutoSize(true);
     obj.label2:setName("label2");
 
     obj.label3 = GUI.fromHandle(_obj_newObject("label"));
     obj.label3:setParent(obj.flowLayout1);
-    obj.label3:setText(lang("macros.ui.nameLabel.Orientation"));
+    obj.label3:setText("@@macros.ui.nameLabel.Orientation");
     obj.label3:setAutoSize(true);
     obj.label3:setFontSize(12);
     obj.label3:setFontColor("gray");
@@ -111,7 +111,7 @@ local function constructNew_frmGerenciarSimpleMacros()
     obj.edtNomeDaMacro:setName("edtNomeDaMacro");
     obj.edtNomeDaMacro:setAlign("client");
     obj.edtNomeDaMacro:setField("macro");
-    obj.edtNomeDaMacro:setTextPrompt(lang("macros.ui.macroName.example"));
+    obj.edtNomeDaMacro:setTextPrompt("@@macros.ui.macroName.example");
 
     obj.flowLineBreak2 = GUI.fromHandle(_obj_newObject("flowLineBreak"));
     obj.flowLineBreak2:setParent(obj.flowLayout1);
@@ -122,7 +122,7 @@ local function constructNew_frmGerenciarSimpleMacros()
     obj.radioButton1:setGroupName("tipoMacro");
     obj.radioButton1:setField("tipoMacro");
     obj.radioButton1:setFieldValue("S");
-    obj.radioButton1:setText(lang("macros.ui.macroType.simple"));
+    obj.radioButton1:setText("@@macros.ui.macroType.simple");
     obj.radioButton1:setName("radioButton1");
 
     obj.radioButton2 = GUI.fromHandle(_obj_newObject("radioButton"));
@@ -130,7 +130,7 @@ local function constructNew_frmGerenciarSimpleMacros()
     obj.radioButton2:setGroupName("tipoMacro");
     obj.radioButton2:setField("tipoMacro");
     obj.radioButton2:setFieldValue("L");
-    obj.radioButton2:setText(lang("macros.ui.macroType.lua"));
+    obj.radioButton2:setText("@@macros.ui.macroType.lua");
     obj.radioButton2:setMargins({bottom=12, right=8});
     obj.radioButton2:setName("radioButton2");
 
@@ -146,7 +146,7 @@ local function constructNew_frmGerenciarSimpleMacros()
 
     obj.label4 = GUI.fromHandle(_obj_newObject("label"));
     obj.label4:setParent(obj.flowLayout1);
-    obj.label4:setText(lang("macros.ui.actionsTitle"));
+    obj.label4:setText("@@macros.ui.actionsTitle");
     obj.label4:setAutoSize(true);
     obj.label4:setVertTextAlign("trailing");
     obj.label4:setName("label4");
@@ -154,7 +154,7 @@ local function constructNew_frmGerenciarSimpleMacros()
     obj.labExtraInfoAcoes = GUI.fromHandle(_obj_newObject("label"));
     obj.labExtraInfoAcoes:setParent(obj.flowLayout1);
     obj.labExtraInfoAcoes:setName("labExtraInfoAcoes");
-    obj.labExtraInfoAcoes:setText(lang("macros.ui.macroType.onePerLine"));
+    obj.labExtraInfoAcoes:setText("@@macros.ui.macroType.onePerLine");
     obj.labExtraInfoAcoes:setAutoSize(true);
     obj.labExtraInfoAcoes:setFontSize(12);
     obj.labExtraInfoAcoes:setFontColor("gray");
@@ -186,7 +186,7 @@ local function constructNew_frmGerenciarSimpleMacros()
 
     obj.button3 = GUI.fromHandle(_obj_newObject("button"));
     obj.button3:setParent(obj.flowLayout1);
-    obj.button3:setText(lang("macros.ui.deleteMacro"));
+    obj.button3:setText("@@macros.ui.deleteMacro");
     obj.button3:setWidth(150);
     obj.button3:setMargins({top=8, right=15, bottom=15});
     obj.button3:setHeight(30);
@@ -232,7 +232,7 @@ local function constructNew_frmGerenciarSimpleMacros()
 
     obj.tabMacroMesa = GUI.fromHandle(_obj_newObject("tab"));
     obj.tabMacroMesa:setParent(obj.tabControl1);
-    obj.tabMacroMesa:setTitle(lang("macros.ui.title.macrosForEveryoneOnRoom"));
+    obj.tabMacroMesa:setTitle("@@macros.ui.title.macrosForEveryoneOnRoom");
     obj.tabMacroMesa:setName("tabMacroMesa");
 
     obj.dsbMacrosMesaGlobal = GUI.fromHandle(_obj_newObject("dataScopeBox"));
@@ -256,7 +256,7 @@ local function constructNew_frmGerenciarSimpleMacros()
     obj.labTitMesa2 = GUI.fromHandle(_obj_newObject("label"));
     obj.labTitMesa2:setParent(obj.layout3);
     obj.labTitMesa2:setName("labTitMesa2");
-    obj.labTitMesa2:setText(lang("macros.ui.room"));
+    obj.labTitMesa2:setText("@@macros.ui.room");
     obj.labTitMesa2:setAlign("client");
     obj.labTitMesa2:setHorzTextAlign("center");
     obj.labTitMesa2:setFontSize(16);
@@ -271,7 +271,7 @@ local function constructNew_frmGerenciarSimpleMacros()
 
     obj.button4 = GUI.fromHandle(_obj_newObject("button"));
     obj.button4:setParent(obj.layout4);
-    obj.button4:setText(lang("macros.ui.roomMacro.newTitle"));
+    obj.button4:setText("@@macros.ui.roomMacro.newTitle");
     obj.button4:setAlign("left");
     obj.button4:setWidth(150);
     obj.button4:setName("button4");
@@ -286,7 +286,7 @@ local function constructNew_frmGerenciarSimpleMacros()
 
     obj.tab1 = GUI.fromHandle(_obj_newObject("tab"));
     obj.tab1:setParent(obj.tabControl1);
-    obj.tab1:setTitle(lang("macros.ui.myMacros.title"));
+    obj.tab1:setTitle("@@macros.ui.myMacros.title");
     obj.tab1:setName("tab1");
 
     obj.tabControl2 = GUI.fromHandle(_obj_newObject("tabControl"));
@@ -296,7 +296,7 @@ local function constructNew_frmGerenciarSimpleMacros()
 
     obj.tab2 = GUI.fromHandle(_obj_newObject("tab"));
     obj.tab2:setParent(obj.tabControl2);
-    obj.tab2:setTitle(lang("macros.ui.myMacros.global.title"));
+    obj.tab2:setTitle("@@macros.ui.myMacros.global.title");
     obj.tab2:setName("tab2");
 
     obj.layout5 = GUI.fromHandle(_obj_newObject("layout"));
@@ -314,7 +314,7 @@ local function constructNew_frmGerenciarSimpleMacros()
 
     obj.button5 = GUI.fromHandle(_obj_newObject("button"));
     obj.button5:setParent(obj.layout6);
-    obj.button5:setText(lang("macros.ui.myMacros.global.new.title"));
+    obj.button5:setText("@@macros.ui.myMacros.global.new.title");
     obj.button5:setAlign("left");
     obj.button5:setWidth(150);
     obj.button5:setName("button5");
@@ -330,7 +330,7 @@ local function constructNew_frmGerenciarSimpleMacros()
     obj.tabMacrosDaMesa = GUI.fromHandle(_obj_newObject("tab"));
     obj.tabMacrosDaMesa:setParent(obj.tabControl2);
     obj.tabMacrosDaMesa:setName("tabMacrosDaMesa");
-    obj.tabMacrosDaMesa:setTitle(lang("macros.ui.myMacros.thisroom.title"));
+    obj.tabMacrosDaMesa:setTitle("@@macros.ui.myMacros.thisroom.title");
 
     obj.dsbMacrosDaMesa = GUI.fromHandle(_obj_newObject("dataScopeBox"));
     obj.dsbMacrosDaMesa:setParent(obj.tabMacrosDaMesa);
@@ -353,7 +353,7 @@ local function constructNew_frmGerenciarSimpleMacros()
     obj.labTitMesa = GUI.fromHandle(_obj_newObject("label"));
     obj.labTitMesa:setParent(obj.layout8);
     obj.labTitMesa:setName("labTitMesa");
-    obj.labTitMesa:setText(lang("macros.ui.room"));
+    obj.labTitMesa:setText("@@macros.ui.room");
     obj.labTitMesa:setAlign("client");
     obj.labTitMesa:setHorzTextAlign("center");
     obj.labTitMesa:setFontSize(16);
@@ -368,7 +368,7 @@ local function constructNew_frmGerenciarSimpleMacros()
 
     obj.button6 = GUI.fromHandle(_obj_newObject("button"));
     obj.button6:setParent(obj.layout9);
-    obj.button6:setText(lang("macros.ui.myMacros.thisroom.new.title"));
+    obj.button6:setText("@@macros.ui.myMacros.thisroom.new.title");
     obj.button6:setAlign("left");
     obj.button6:setWidth(180);
     obj.button6:setName("button6");

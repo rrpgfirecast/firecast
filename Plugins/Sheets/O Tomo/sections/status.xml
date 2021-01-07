@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<group>
+    <label left='52' top='571' width='40' field='pvMinusOne' fontSize='18' fontColor='green'/>
+    <label left='52' top='601' width='40' field='pvMinusTwo' fontSize='18' fontColor='green'/>
+    <label left='52' top='631' width='40' field='pvMinusThree' fontSize='18' fontColor='green'/>
+    <label left='86' top='571' width='40' field='pdMinusOne' fontSize='18' fontColor='gold' name='edtPdMinusOne'/>
+    <label left='86' top='601' width='40' field='pdMinusTwo' fontSize='18' fontColor='gold' name='edtPdMinusTwo'/>
+    <label left='86' top='631' width='40' field='pdMinusThree' fontSize='18' fontColor='gold' name='edtPdMinusThree'/>
+
+    <imageCheckBox width='14' height='14' left='12' top='721' field='crossPrestigio1' checkedImage="img/x.png" uncheckedImage=""/>
+    <edit left='24' top='712' width='204' field='prestigio1' fontSize='16' horzTextAlign='leading'/>
+    <button left='230' top='718' width='20' height='20' text='!' fontColor='white' fontSize='14' fontStyle='bold' margins="{right=2}" cursor='handPoint' onClick="self.popPrestigio1:show();"/>
+
+    <imageCheckBox width='14' height='14' left='12' top='751' field='crossPrestigio2' checkedImage="img/x.png" uncheckedImage=""/>
+    <edit left='24' top='742' width='204' field='prestigio2' fontSize='16' horzTextAlign='leading'/>
+    <button left='230' top='748' width='20' height='20' text='!' fontColor='white' fontSize='14' fontStyle='bold' margins="{right=2}" cursor='handPoint' onClick="self.popPrestigio2:show();"/>
+
+    <imageCheckBox width='14' height='14' left='12' top='781' field='crossPrestigio3' checkedImage="img/x.png" uncheckedImage=""/>
+    <edit left='24' top='772' width='204' field='prestigio3' fontSize='16' horzTextAlign='leading'/>
+    <button left='230' top='778' width='20' height='20' text='!' fontColor='white' fontSize='14' fontStyle='bold' margins="{right=2}" cursor='handPoint' onClick="self.popPrestigio3:show();"/>
+
+    <popup name="popPrestigio1" width="600" height="150" backOpacity="0.5">
+            <label align="top" text='Descrição' autoSize="true" horzTextAlign='center' fontColor='white' fontSize='16' fontStyle='bold'/>
+            <richEdit align='client' field='prestigio1' backgroundColor='white' defaultFontColor='black' showToolbar='false'/>    
+    </popup>
+
+    <popup name="popPrestigio2" width="600" height="150" backOpacity="0.5">
+            <label align="top" text='Descrição' autoSize="true" horzTextAlign='center' fontColor='white' fontSize='16' fontStyle='bold'/>
+            <richEdit align='client' field='prestigio2' backgroundColor='white' defaultFontColor='black' showToolbar='false'/>    
+    </popup>
+
+    <popup name="popPrestigio3" width="600" height="150" backOpacity="0.5">
+            <label align="top" text='Descrição' autoSize="true" horzTextAlign='center' fontColor='white' fontSize='16' fontStyle='bold'/>
+            <richEdit align='client' field='prestigio3' backgroundColor='white' defaultFontColor='black' showToolbar='false'/>    
+    </popup>
+
+</group>

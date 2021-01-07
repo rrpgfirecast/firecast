@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module sdkVersion="3.5" compilationDate="05052020165015" sdkApiVersion="86" originalPluginFileName="OTomo.rpk" compilationDigest="2c0a85be567456b5f679025b85152cd91e720cf0">
+    <!--The "id" identifies your plugin globally. Must be unique, must contain only alphanumeric characters, underlines and dots and must contain at least 5 characters and a maximum of 40. Once set the ID, you should not change it;)-->
+    <id>FICHAOTOMOBYRAFA</id>
+    <!--"version" is the version of your plugin. When you release a new version of your module, change here =)-->
+    <version>1.0</version>
+    <name>O Tomo</name>
+    <description>Ficha O Tomo para ser usada no RRPG Firecast</description>
+    <author>rafaelskate8</author>
+    <site/>
+    <contact/>
+    <dataTypes>
+        <dataType title="O Tomo" name="frmMain" lfmFile="main.lfm">OTomoByRafa</dataType>
+    </dataTypes>
+</module>

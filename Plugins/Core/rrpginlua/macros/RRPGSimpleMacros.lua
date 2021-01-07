@@ -188,7 +188,7 @@ local function realExecutarMacro(macro, message, endCallback)
 				message.chat:enviarMensagem(linha);
 			end;	
 		end;
-		
+			
 		if endCallback ~= nil then
 			endCallback();
 		end;
@@ -199,16 +199,28 @@ function globalExecutarMacro(macro, message, endCallback)
 	if message == nil then
 		message = {};
 	end;
+	
+	local macroIdentifier = macro.macro;
 
-	if executingMacros[macro.macro] ~= nil then
+	if executingMacros[macroIdentifier] ~= nil then
+		error(string.format("Macro \"%s\" is already executing", macroIdentifier));
 		return;
 	end;
 
-	executingMacros[macro.macro] = true;
 	-- evitar dependencia circular de macros..
-	retorno, msg = pcall(realExecutarMacro, macro, message, endCallback);	
-	executingMacros[macro.macro] = nil;
+	executingMacros[macroIdentifier] = true;	
 	
+	retorno, msg = pcall(realExecutarMacro, macro, message, 
+						 function(...)
+							executingMacros[macroIdentifier] = nil;	
+						 
+							if endCallback ~= nil then
+								endCallback(...)
+							end;
+						 end);
+	
+	executingMacros[macroIdentifier] = nil;	
+
 	if not retorno then
 		reraise(msg);
 	end	

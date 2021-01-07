@@ -1,0 +1,111 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<popupForm name="frmWorldIncrease" width="300" height="200" opacity="0.9" drawContainer="true" resizable="true" placement="center"
+		   cancelable="false">
+ 		   
+	<import file="interfaceUtils.xml"/>
+	
+	<script>
+		
+		--[[funções do ajuste fino do grid, estão nesse arquivo por-
+		    conta das variaveis ja estarem declaradas e os calculos ja estarem prontos aqui ]]--
+		
+		local function increaseWorldControlHeight()
+			self.sceneAlvo.worldHeight = self.sceneAlvo.worldHeight + 0.1;
+		end;
+				
+		local function decreaseWorldControlHeight()
+			self.sceneAlvo.worldHeight = self.sceneAlvo.worldHeight - 0.1;
+		end;
+		
+		local function increaseWorldControlWidth()
+			self.sceneAlvo.worldWidth = self.sceneAlvo.worldWidth + 0.1;
+		end;
+		
+		local function decreaseWorldControlWidth()
+			self.sceneAlvo.worldWidth = self.sceneAlvo.worldWidth - 0.1;
+		end;
+		
+		local function moveOffsetLeft()
+			self.sceneAlvo.grid.offsetX = self.sceneAlvo.grid.offsetX - 0.025;
+		end;
+		
+		local function moveOffsetRight()
+			self.sceneAlvo.grid.offsetX = self.sceneAlvo.grid.offsetX + 0.025;
+		end;
+		
+		local function moveOffsetUp()
+			self.sceneAlvo.grid.offsetY = self.sceneAlvo.grid.offsetY + 0.025;
+		end;
+		
+		local function moveOffsetDown()
+			self.sceneAlvo.grid.offsetY = self.sceneAlvo.grid.offsetY -0.025;
+		end;
+		
+	</script>
+	
+		<label name="labTipDimension" top="20" left="20" width="270" autoSize="true" fontColor="white"/>
+		<label name="labGridWidth" top="85" left="20" width="75" autoSize="true" fontColor="white"/>
+		
+		<button text="+" width="30" left="110" top="83">
+			<event name="onClick">
+				increaseWorldControlWidth();
+				      
+			</event>
+		</button>
+		
+		<button text="-" width="30" left="70" top="83">
+			<event name="onClick">
+				decreaseWorldControlWidth();
+				          
+			</event>
+		</button>
+		
+		<label name="labGridHeight" top="85" left="160" width="75" autoSize="true" fontColor="white"/>
+						
+		<button text="+" width="30" left="250" top="83">
+			<event name="onClick">
+				 
+				increaseWorldControlHeight();				
+			</event>
+		</button>
+		
+		<button text="-" width="30" left="210" top="83">
+			<event name="onClick">
+				
+				decreaseWorldControlHeight(); 				
+			</event>
+		</button>
+
+		<label name="laboffset" autoSize="true" wordWrap="true" width="200" fontColor="white" fontSize="17" left="68" top="120"/>
+		<button text="⮜" width="30" left="70" top="150">
+			<event name="onClick">
+				moveOffsetLeft();    
+			</event>
+		</button>
+		
+		<button text="⮞" width="30" left="110" top="150">
+			<event name="onClick">
+				moveOffsetRight();      
+			</event>
+		</button>
+		
+		<button text="⮝" width="30" left="150" top="150">
+			<event name="onClick">
+				moveOffsetDown(); 
+			</event>
+		</button>
+		
+		<button text="⮟" width="30" left="190" top="150">
+			<event name="onClick">
+				moveOffsetUp();       
+			</event>
+		</button>
+	
+	<script><![CDATA[	
+		self.labTipDimension.text = lang('scene.gridFineTuning.dimension');
+		self.labGridHeight.text = lang('scene.gridFineTuning.height');
+		self.labGridWidth.text = lang('scene.gridFineTuning.width');
+		self.laboffset.text = lang('scene.gridFineTuning.offset');
+		]]>
+	</script>	
+</popupForm>

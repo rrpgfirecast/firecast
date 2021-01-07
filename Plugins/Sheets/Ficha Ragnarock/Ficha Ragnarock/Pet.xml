@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmPetList" align="client" margins="{top=1}">
+
+	<template name="AtributoPet">
+		<layout align="top" height="25" margins="{top=5}">
+			<button text="$(text)" align="left" width="100" horzTextAlign="center">
+				<event name="onClick">
+					local firstValue = tonumber(self.boxDetalhesDoPet.node.firstValue) or -1;
+					if (self.boxDetalhesDoPet.node.doubleRoll and firstValue &lt; 0) then
+						self.boxDetalhesDoPet.node.firstValue = tonumber(self.boxDetalhesDoPet.node.atr_$(field)Total) or 0;
+						self.boxDetalhesDoPet.node.firstValueName = "$(text)";
+						return;
+					end;
+					local faceTable = {10, 10, 10, 10, 10, 10, 12, 12, 14, 14, 16, 16, 18, 18, 20, 20, 22, 22, 26, 26, 28, 28, 30, 30, 32, 32, 34, 34, 38, 38, 40, 40, 42, 42, 44, 44, 46, 46, 50, 50, 52, 52, 54, 54, 56, 56, 58, 58, 62, 62, 64, 64, 66, 66, 68, 68, 70, 70, 74, 74, 76, 76, 78, 78, 80, 80, 82, 82, 86, 86, 88, 88, 90, 90, 92, 92, 94, 94, 98, 98};
+
+					local atr = tonumber(self.boxDetalhesDoPet.node.atr_$(field)Total) or 0;
+					if (self.boxDetalhesDoPet.node.doubleRoll) then
+						 atr = atr + firstValue;
+						 self.boxDetalhesDoPet.node.firstValue = -1;
+					end;
+
+					atr = math.min(80, atr);
+					atr = math.max(1, atr);
+
+					local faces = faceTable[atr];
+
+					local mesa = rrpg.getMesaDe(self.boxDetalhesDoPet.node);
+
+					local sucessos = 0;
+					local falhas = 0;
+					local decisivo = 0;
+					local falhaCritica = 0;
+
+					dialogs.inputQuery("Quantidade de Dados", "Coloque quantos dados vai rolar", "1",
+				        function (valorPreenchido)
+				        	local dados = tonumber(valorPreenchido) or 1;
+				        	local rolagem = rrpg.interpretarRolagem("ord " .. dados .. "d" .. faces); 
+							
+							dialogs.inputQuery("Margem de Critico", "Coloque o maior valor que deve ser considerado critico no dado. ", "1",
+				        		function (valorPreenchido)
+				        			local margem = tonumber(valorPreenchido) or 1;
+				        			dialogs.inputQuery("Bônus ou Redutores", "Há alguma bônus ou redutor na rolagem?. ", "0",
+				        				function (valorPreenchido)
+				        					local extra = (tonumber(valorPreenchido) or 0);
+				        					local msg = "Teste de $(text)" .. ", margem de critico " .. margem;
+				        					if (firstValue &gt; -1) then
+				        						msg = "Teste de $(text) + " .. (self.boxDetalhesDoPet.node.firstValueName or "") .. ", margem de critico " .. margem;
+				        					end;
+
+				        					if extra &gt; 0 then
+				        						msg = msg .. ", +" .. extra .. " penalidade.";
+				        					elseif extra &lt; 0 then
+				        						msg = msg .. ", " .. extra .. " bônus.";
+				        					end;
+				                        	mesa.activeChat:rolarDados(rolagem, msg,
+				                                function (rolado)
+				                                	local op = rolado.ops[2];
+		 
+													for j=1, #op.resultados, 1 do
+													    local result = op.resultados[j] + extra;
+													    
+													    if result &lt;= atr then
+													        sucessos = sucessos +1;
+													    else
+													        falhas = falhas +1;
+													    end;
+													    if result &lt;= margem then
+													        decisivo = decisivo +1;
+													    end;
+													    if result == faces then
+													        falhaCritica = falhaCritica +1;
+													    end;
+													end;
+
+													local txt = sucessos .. " Sucesso(s) e " .. falhas .. " Falha(s)! ";
+		 
+													if decisivo > 0 then
+													    txt = txt .. decisivo .. " Sucesso(s) Critico(s). ";
+													end;
+													if falhaCritica > 0 then
+													    txt = txt .. falhaCritica .. " Falha(s) Critica(s). ";
+													end;
+
+													mesa.activeChat:enviarMensagem(txt);
+				                                end);
+			                    end);
+                            end);
+				        end);
+				</event>
+			</button>
+
+			<edit field="atr_$(field)Base" left="105" width="30" height="25" type="number"/>
+			<label text="+" left="135" width="10" horzTextAlign="center"/>
+			<edit field="atr_$(field)Extra" left="145" width="30" height="25" type="number"/>
+			<label text="=" left="175" width="10" horzTextAlign="center"/>
+
+			<rectangle left="185" width="30" height="25" color="black" strokeColor="white" strokeSize="1"/>
+			<label field="atr_$(field)Total" left="185" width="30" height="25" horzTextAlign="center"/>
+		</layout>
+		<dataLink fields="{'atr_$(field)Base','atr_$(field)Extra'}">
+			<event name="onChange">
+				if self.boxDetalhesDoPet.node == nil then return end;
+				self.boxDetalhesDoPet.node.atr_$(field)Total = 	(tonumber(self.boxDetalhesDoPet.node.atr_$(field)Base) or 0) + 
+											(tonumber(self.boxDetalhesDoPet.node.atr_$(field)Extra) or 0);
+			</event>
+		</dataLink>
+	</template>
+
+	<scrollBox align="client">
+		<layout align="top" height="50">
+			<button text="+" width="30" align="left">
+				<event name="onClick">
+					self.rclPetList:append();
+				</event>
+			</button>
+			<recordList name="rclPetList" field="campoDosPets" templateForm="frmPetSeletor" align="client" selectable="true" layout="horizontal">
+				<event name="onSelect">
+					local node = self.rclPetList.selectedNode;
+					self.boxDetalhesDoPet.node = node;
+					self.boxDetalhesDoPet.visible = (node ~= nil);
+				</event>
+				<event name="onEndEnumeration">
+				    if self.rclPetList.selectedNode == nil and sheet ~= nil then
+				        local nodes = ndb.getChildNodes(sheet.campoDosPets);               
+
+				        if #nodes > 0 then
+				                self.rclPetList.selectedNode = nodes[1];
+				        end;
+				    end;
+				</event>
+			</recordList>
+		</layout>
+
+		<dataScopeBox name="boxDetalhesDoPet" visible="false" align="client">
+			<rectangle color="black" align="top" height="200" margins="{bottom=5}">
+				<layout align="left" width="220" margins="{right=5}">
+					<AtributoPet field="pet_FOR" text="Força"/>
+					<AtributoPet field="pet_AGI" text="Agilidade"/>
+					<AtributoPet field="pet_VIT" text="Vitalidade"/>
+					<AtributoPet field="pet_INT" text="Inteligência"/>
+					<layout align="top" height="25" margins="{top=5}">
+						<checkBox left="0" top="0" width="190" height="25" field="doubleRoll" text="Usar dois atributos na rolagem." fontSize="12" hint="Clique no primeiro e depois no segundo. "/>
+					</layout>
+				</layout>
+				<layout align="left" width="220" margins="{right=5}">
+					<AtributoPet field="pet_DES" text="Destreza"/>
+					<AtributoPet field="pet_SOR" text="Sorte"/>
+					<AtributoPet field="pet_MAG" text="Magia"/>
+					<AtributoPet field="pet_PUL" text="Pulo/Voo"/>
+				</layout>
+
+				<layout align="left" width="270" margins="{right=5}">
+					<layout align="top" height="50" margins="{bottom=5, top=5}">
+						<UpperBar width="150" text="Nome" field="pet_nome" fontSize="13"/>
+						<UpperBar width="50" text="Nível" field="pet_level" fontSize="13"/>
+					</layout>
+					<layout align="top" height="50" margins="{bottom=5, top=0}">
+						<UpperBar width="100" text="Raça" field="pet_raca" fontSize="13"/>
+						<UpperBar width="100" text="Aparencia" field="pet_aparencia" fontSize="13"/>
+					</layout>
+
+					<layout align="top" height="25" margins="{bottom=5, top=0}">
+						<LabelEdit text="HP" field="pet_hp"/>
+						<LabelEdit text="SP" field="pet_sp"/>
+					</layout>
+
+					<layout align="top" height="50" margins="{bottom=5}">
+						<UpperBar width="150" text="Experiência" field="pet_experiencia" fontSize="13"/>
+						<UpperBar width="50" text="AP" field="pet_ap" fontSize="13"/>
+						<UpperBar width="50" text="React" field="pet_react" fontSize="13"/>
+					</layout>
+				</layout>
+
+				<layout align="left" width="200" margins="{right=5}">
+					<rectangle left="0" top="0" width="200" height="200" color="black" strokeColor="white" strokeSize="1">
+						<image align="client" field="pet_avatar" editable="true" style="autoFit" margins="{left=2, right=2, top=2, bottom=2}">
+							<event name="OnStartDrag">
+							    drag:addData("imageURL", self.boxDetalhesDoPet.node.pet_avatar);
+							</event>
+						</image>
+					</rectangle>
+				</layout>
+
+			</rectangle>
+
+			<richEdit align="client" field="pet_background" backgroundColor="#333333" defaultFontSize="12" defaultFontColor="white"/>
+		</dataScopeBox>
+	</scrollBox>
+</form>

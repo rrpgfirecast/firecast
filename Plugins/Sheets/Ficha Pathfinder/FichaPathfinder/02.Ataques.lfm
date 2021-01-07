@@ -181,26 +181,26 @@
 				Dialogs.confirmYesNo("Deseja realmente apagar esse ataque?",
 					function (confirmado)
 						if confirmado then
-							sheet.nome$(num) = null;
-							sheet.arma$(num) = null;
-							sheet.tipo$(num) = null;
-							sheet.ataque$(num)a = null;
-							sheet.ataque$(num)b = null;
-							sheet.ataque$(num)c = null;
-							sheet.ataque$(num)d = null;
-							sheet.ataque$(num)e = null;
-							sheet.ataque$(num)f = null;
-							sheet.ataque$(num)g = null;
-							sheet.ataque$(num)h = null;
-							sheet.dano$(num) = null;
-							sheet.danoCritico$(num) = null;
-							sheet.decisivo$(num) = null;
-							sheet.multiplicador$(num) = null;
-							sheet.categoria$(num) = null;
-							sheet.obs$(num) = null;
-							sheet.municao$(num) = null;
-							sheet.alcance$(num) = null;
-							sheet.imagemArma$(num) = null;
+							sheet.nome$(num) = nil;
+							sheet.arma$(num) = nil;
+							sheet.tipo$(num) = nil;
+							sheet.ataque$(num)a = nil;
+							sheet.ataque$(num)b = nil;
+							sheet.ataque$(num)c = nil;
+							sheet.ataque$(num)d = nil;
+							sheet.ataque$(num)e = nil;
+							sheet.ataque$(num)f = nil;
+							sheet.ataque$(num)g = nil;
+							sheet.ataque$(num)h = nil;
+							sheet.dano$(num) = nil;
+							sheet.danoCritico$(num) = nil;
+							sheet.decisivo$(num) = nil;
+							sheet.multiplicador$(num) = nil;
+							sheet.categoria$(num) = nil;
+							sheet.obs$(num) = nil;
+							sheet.municao$(num) = nil;
+							sheet.alcance$(num) = nil;
+							sheet.imagemArma$(num) = nil;
 						end;
 					end);
 			</event>

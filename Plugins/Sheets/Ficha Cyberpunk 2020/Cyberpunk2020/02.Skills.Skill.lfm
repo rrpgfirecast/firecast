@@ -23,6 +23,16 @@
 			end;				
 		end;
 
+		local function roll()
+			local mesa = Firecast.getMesaDe(sheet);
+			local node = NDB.getRoot(sheet);
+
+			local total = math.floor(tonumber(sheet.total) or 0);
+			local rolagem = Firecast.interpretarRolagem("1d10 + " .. total);
+
+			mesa.activeChat:rolarDados(rolagem, "Teste de " .. (sheet.nomePericia or "Pericia") .. " de " .. (node.nome or "Nome"));				
+		end;
+
 		]]>	
 	</script>
 
@@ -63,11 +73,13 @@
 		</event>
 	</comboBox>
 
-	<rectangle left="240" top="0" width="35" height="25" color="black" strokeColor="white" strokeSize="1"/>
-	<label field="total" text="0" left="240" top="0" width="35" height="25" horzTextAlign="center"/>
+	<button left="230" top="1" width="23" height="23" text="R" onClick="roll();"/>
 
-	<rectangle left="280" top="0" width="33" height="24" color="black" strokeColor="white" strokeSize="1"/>
-	<label field="atributoPericia" text="0" left="280" top="0" width="33" height="20" horzTextAlign="center"/>
+	<rectangle left="255" top="0" width="35" height="25" color="black" strokeColor="white" strokeSize="1"/>
+	<label field="total" text="0" left="255" top="0" width="35" height="25" horzTextAlign="center"/>
+
+	<rectangle left="290" top="0" width="30" height="24" color="black" strokeColor="white" strokeSize="1"/>
+	<label field="atributoPericia" text="0" left="290" top="0" width="30" height="20" horzTextAlign="center"/>
 
 	<edit vertTextAlign="center" horzTextAlign="center" left="320" top="0" width="30" height="25" field="pontos" type="number"/>
 

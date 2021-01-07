@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<group>
+
+    <button left='525' top='339' width='20' height='20' text='➕' fontColor='white' cursor='handPoint' fontSize='10' fontStyle='bold' onClick='insertDon()'/>
+    <layout left='278' top='366' width='255' height='420'>
+        <layout align='client'>
+            <scrollBox align='client'>
+                <recordList name="rclDons" field="dons" templateForm="frmDonsItem" align='client' selectable="true" onSelect='setPopupDonsNode(1);'/>
+            </scrollBox>
+        </layout>
+    </layout>
+    <edit left='0' top='0' visible='false' field='donConfig'/>
+    <layout left='540' top='366' width='254' height='420'>
+        <layout align='client'>
+            <scrollBox align='client'>
+                <recordList name="rclDons2" field="dons2" templateForm="frmDonsItem" align='client' selectable="true" onSelect='setPopupDonsNode(2);'/>
+            </scrollBox>
+        </layout>
+    </layout>
+
+
+    <script>
+        <![CDATA[
+        
+            local function setPopupDonsNode(donRightLeft)
+                if(donRightLeft == 1) then
+                    self.boxDonsDetails = self.rclDons.selectedNode;
+                else
+                    self.boxDons2Details = self.rclDons2.selectedNode;
+                end
+                                                                
+            end       
+
+            local function insertDon() 
+                if sheet ~= nil then
+                    if(sheet.donConfig == '0') then
+                        sheet.donConfig = '1';
+                        self.rclDons:append();
+                    else
+                        sheet.donConfig = '0';
+                        self.rclDons2:append();
+                    end
+                end
+                
+            end
+        ]]>
+    </script>
+
+</group>

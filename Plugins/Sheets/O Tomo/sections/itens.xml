@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<group>
+    <edit left='200' top='209' width='40' field='itensQtd' fontSize='18'/>
+
+    <edit left='134' top='244' width='118' height='18' field='bag1' fontSize='12' horzTextAlign='leading'/>
+    <edit left='134' top='260' width='118' height='18' field='bag2' fontSize='12' horzTextAlign='leading'/>
+    <edit left='134' top='276' width='118' height='18' field='bag3' fontSize='12' horzTextAlign='leading'/>
+    <edit left='134' top='292' width='118' height='18' field='bag4' fontSize='12' horzTextAlign='leading'/>
+
+    <edit left='134' top='324' width='118' height='18' field='bag5' fontSize='12' horzTextAlign='leading'/>
+    <edit left='134' top='340' width='118' height='18' field='bag6' fontSize='12' horzTextAlign='leading'/>
+
+    <edit left='134' top='368' width='118' height='18' field='bag7' fontSize='12' horzTextAlign='leading'/>
+    <edit left='134' top='384' width='118' height='18' field='bag8' fontSize='12' horzTextAlign='leading'/>
+    <edit left='134' top='400' width='118' height='18' field='bag9' fontSize='12' horzTextAlign='leading'/>
+    <edit left='134' top='416' width='118' height='18' field='bag10' fontSize='12' horzTextAlign='leading'/>
+    <edit left='134' top='432' width='118' height='18' field='bag11' fontSize='12' horzTextAlign='leading'/>
+    <edit left='134' top='448' width='118' height='18' field='bag12' fontSize='12' horzTextAlign='leading'/>
+    <edit left='134' top='464' width='118' height='18' field='bag13' fontSize='12' horzTextAlign='leading'/>
+    <edit left='134' top='480' width='118' height='18' field='bag14' fontSize='12' horzTextAlign='leading'/>
+
+</group>
