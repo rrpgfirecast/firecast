@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmkpta1_svg" align="client" theme="light" margins="{top=1}">
+    <style>#frmkpta1_svg path {color: black; strokeColor: black; mode: stretch;} &#xD;
+#frmkpta1_svg label {fontColor: black; textTrimming: none; wordWrap: false; autoSize: true;}</style>
+    <scrollBox align="client">
+        <rectangle width="893" height="1263" color="white">&#xD;
+            <image left="0" top="0" width="893" height="1263" src="images/1.png" style="stretch" optimize="true" compilerOrder="0"/>&#xD;
+			
+			<button left="396" top="475" width="200" text="Criador do design da ficha" onClick="GUI.openInBrowser('https://www.facebook.com/groups/DemonioAQuedaADescida/permalink/916071661794435/')" />
+        </rectangle>
+    </scrollBox>
+</form>

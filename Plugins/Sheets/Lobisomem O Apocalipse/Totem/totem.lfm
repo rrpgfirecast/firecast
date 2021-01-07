@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmtotem" formType="sheetTemplate" dataType="br.com.RRPG.WTFTV3_S3" title="Lobisomem: O Apocalipse - Ficha do Totem" align="client" theme="light">
+    <import file="1.lfm"/>
+</form>

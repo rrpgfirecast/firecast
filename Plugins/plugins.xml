@@ -118,7 +118,7 @@
             <dataType id="Ambesek.FichaDnDNext" title="Ficha D&amp;D Next"/>
         </dataTypes>
     </element>
-    <element id="Ambesek.Nefertyne.Reinos" name="Ficha Reinos d20" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20de%20Reinos%20d20/output/Ficha%20de%20Reinos%20d20.rpk?raw=true" fileName="Ficha de Reinos d20.rpk" repositoryPath="Sheets/Ficha de Reinos d20/" author="Ambesek" description="Ficha para descrição de Reinos e Cidades seguindo o padrão d20system do Livro do Mestre." version="0.7.1" compilationDate="27112019000028" compilationDigest="71cb881c61675467a579ef70e10c15d6fe3dd90b">
+    <element id="Ambesek.Nefertyne.Reinos" name="Ficha Reinos d20" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20de%20Reinos%20d20/output/Ficha%20de%20Reinos%20d20.rpk?raw=true" fileName="Ficha de Reinos d20.rpk" repositoryPath="Sheets/Ficha de Reinos d20/" author="Ambesek" description="Ficha para descrição de Reinos e Cidades seguindo o padrão d20system do Livro do Mestre." version="0.7.2" compilationDate="27112019000028" compilationDigest="71cb881c61675467a579ef70e10c15d6fe3dd90b">
         <dataTypes>
             <dataType id="Ambesek.Nefertyne.Reinos" title="Ficha Reinos d20"/>
         </dataTypes>
@@ -178,12 +178,12 @@
             <dataType id="Ambesek.Nefertyne.Shadowrun5E" title="Ficha Shadowrun 5E"/>
         </dataTypes>
     </element>
-    <element id="br.com.rrpg.AODD_SDK3" name="A Odisseia do Dragão" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/FichaAODD/output/FichaAODD.rpk?raw=true" fileName="FichaAODD.rpk" repositoryPath="Sheets/FichaAODD/" author="AlvagorH e Hellzen" description="Adiciona suporte para a ficha do sistema A Odisseia do Dragão" version="2.1" compilationDate="27112019000158" compilationDigest="f650cc7b48d1fd8e7d5765b93f75b22ca97ad5b9">
+    <element id="br.com.rrpg.AODD_SDK3" name="A Odisseia do Dragão" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/FichaAODD/output/FichaAODD.rpk?raw=true" fileName="FichaAODD.rpk" repositoryPath="Sheets/FichaAODD/" author="AlvagorH e Hellzen" description="Adiciona suporte para a ficha do sistema A Odisseia do Dragão" version="3.0" compilationDate="27112019000158" compilationDigest="f650cc7b48d1fd8e7d5765b93f75b22ca97ad5b9">
         <dataTypes>
             <dataType id="br.com.RRPG.AODD_S3" title="A Odisseia do Dragão - Ficha de Personagem"/>
         </dataTypes>
     </element>
-    <element id="Ambesek.The.Maze" name="FichaTheMaze" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20The%20Maze/output/Ficha%20The%20Maze.rpk?raw=true" fileName="Ficha The Maze.rpk" repositoryPath="Sheets/Ficha The Maze/" author="Ambesek" description="Ficha para o sistema e cenario The Maze." version="3.5.5" compilationDate="27112019000152" compilationDigest="f7f2356606b4afcfe4ded97ade70a1b8b19ac524">
+    <element id="Ambesek.The.Maze" name="FichaTheMaze" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20The%20Maze/output/Ficha%20The%20Maze.rpk?raw=true" fileName="Ficha The Maze.rpk" repositoryPath="Sheets/Ficha The Maze/" author="Ambesek" description="Ficha para o sistema e cenario The Maze." version="3.5.7" compilationDate="27112019000152" compilationDigest="f7f2356606b4afcfe4ded97ade70a1b8b19ac524">
         <dataTypes>
             <dataType id="Ambesek.Nefertyne.TheMaze" title="Ficha The Maze"/>
             <dataType id="Ambesek.Maze.Tracker" title="Maze Tracker"/>

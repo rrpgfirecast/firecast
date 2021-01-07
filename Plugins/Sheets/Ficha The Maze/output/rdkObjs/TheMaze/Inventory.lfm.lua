@@ -38,7 +38,7 @@ local function constructNew_frmInventory()
     obj.rectangle1:setParent(obj.scrollBox1);
     obj.rectangle1:setLeft(0);
     obj.rectangle1:setTop(0);
-    obj.rectangle1:setWidth(895);
+    obj.rectangle1:setWidth(1210);
     obj.rectangle1:setHeight(225);
     obj.rectangle1:setColor("black");
     obj.rectangle1:setStrokeColor("white");
@@ -75,30 +75,30 @@ local function constructNew_frmInventory()
     obj.label3:setParent(obj.layout1);
     obj.label3:setLeft(440);
     obj.label3:setTop(5);
-    obj.label3:setWidth(150);
+    obj.label3:setWidth(255);
     obj.label3:setHeight(20);
     obj.label3:setHorzTextAlign("center");
-    obj.label3:setText("Marca1");
+    obj.label3:setText("Marca 1");
     obj.label3:setName("label3");
 
     obj.label4 = GUI.fromHandle(_obj_newObject("label"));
     obj.label4:setParent(obj.layout1);
-    obj.label4:setLeft(590);
+    obj.label4:setLeft(695);
     obj.label4:setTop(5);
-    obj.label4:setWidth(150);
+    obj.label4:setWidth(255);
     obj.label4:setHeight(20);
     obj.label4:setHorzTextAlign("center");
-    obj.label4:setText("Marca2");
+    obj.label4:setText("Marca 2");
     obj.label4:setName("label4");
 
     obj.label5 = GUI.fromHandle(_obj_newObject("label"));
     obj.label5:setParent(obj.layout1);
-    obj.label5:setLeft(740);
+    obj.label5:setLeft(950);
     obj.label5:setTop(5);
-    obj.label5:setWidth(150);
+    obj.label5:setWidth(255);
     obj.label5:setHeight(20);
     obj.label5:setHorzTextAlign("center");
-    obj.label5:setText("Marca3");
+    obj.label5:setText("Marca 3");
     obj.label5:setName("label5");
 
     obj.layout2 = GUI.fromHandle(_obj_newObject("layout"));
@@ -142,7 +142,7 @@ local function constructNew_frmInventory()
     obj.edit3:setParent(obj.layout2);
     obj.edit3:setLeft(440);
     obj.edit3:setTop(0);
-    obj.edit3:setWidth(150);
+    obj.edit3:setWidth(255);
     obj.edit3:setHeight(25);
     obj.edit3:setField("equip_arma_marca1");
     obj.edit3:setVertTextAlign("center");
@@ -150,9 +150,9 @@ local function constructNew_frmInventory()
 
     obj.edit4 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit4:setParent(obj.layout2);
-    obj.edit4:setLeft(590);
+    obj.edit4:setLeft(695);
     obj.edit4:setTop(0);
-    obj.edit4:setWidth(150);
+    obj.edit4:setWidth(255);
     obj.edit4:setHeight(25);
     obj.edit4:setField("equip_arma_marca2");
     obj.edit4:setVertTextAlign("center");
@@ -160,9 +160,9 @@ local function constructNew_frmInventory()
 
     obj.edit5 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit5:setParent(obj.layout2);
-    obj.edit5:setLeft(740);
+    obj.edit5:setLeft(950);
     obj.edit5:setTop(0);
-    obj.edit5:setWidth(150);
+    obj.edit5:setWidth(255);
     obj.edit5:setHeight(25);
     obj.edit5:setField("equip_arma_marca3");
     obj.edit5:setVertTextAlign("center");
@@ -182,7 +182,7 @@ local function constructNew_frmInventory()
     obj.edit6:setParent(obj.layout2);
     obj.edit6:setLeft(150);
     obj.edit6:setTop(25);
-    obj.edit6:setWidth(740);
+    obj.edit6:setWidth(1055);
     obj.edit6:setHeight(25);
     obj.edit6:setField("equip_arma_desc");
     obj.edit6:setVertTextAlign("center");
@@ -229,7 +229,7 @@ local function constructNew_frmInventory()
     obj.edit9:setParent(obj.layout3);
     obj.edit9:setLeft(440);
     obj.edit9:setTop(0);
-    obj.edit9:setWidth(150);
+    obj.edit9:setWidth(255);
     obj.edit9:setHeight(25);
     obj.edit9:setField("equip_arma2_marca1");
     obj.edit9:setVertTextAlign("center");
@@ -237,9 +237,9 @@ local function constructNew_frmInventory()
 
     obj.edit10 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit10:setParent(obj.layout3);
-    obj.edit10:setLeft(590);
+    obj.edit10:setLeft(695);
     obj.edit10:setTop(0);
-    obj.edit10:setWidth(150);
+    obj.edit10:setWidth(255);
     obj.edit10:setHeight(25);
     obj.edit10:setField("equip_arma2_marca2");
     obj.edit10:setVertTextAlign("center");
@@ -247,9 +247,9 @@ local function constructNew_frmInventory()
 
     obj.edit11 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit11:setParent(obj.layout3);
-    obj.edit11:setLeft(740);
+    obj.edit11:setLeft(950);
     obj.edit11:setTop(0);
-    obj.edit11:setWidth(150);
+    obj.edit11:setWidth(255);
     obj.edit11:setHeight(25);
     obj.edit11:setField("equip_arma2_marca3");
     obj.edit11:setVertTextAlign("center");
@@ -269,7 +269,7 @@ local function constructNew_frmInventory()
     obj.edit12:setParent(obj.layout3);
     obj.edit12:setLeft(150);
     obj.edit12:setTop(25);
-    obj.edit12:setWidth(740);
+    obj.edit12:setWidth(1055);
     obj.edit12:setHeight(25);
     obj.edit12:setField("equip_arma2_desc");
     obj.edit12:setVertTextAlign("center");
@@ -316,7 +316,7 @@ local function constructNew_frmInventory()
     obj.edit15:setParent(obj.layout4);
     obj.edit15:setLeft(440);
     obj.edit15:setTop(0);
-    obj.edit15:setWidth(150);
+    obj.edit15:setWidth(255);
     obj.edit15:setHeight(25);
     obj.edit15:setField("equip_equipamento_marca1");
     obj.edit15:setVertTextAlign("center");
@@ -324,9 +324,9 @@ local function constructNew_frmInventory()
 
     obj.edit16 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit16:setParent(obj.layout4);
-    obj.edit16:setLeft(590);
+    obj.edit16:setLeft(695);
     obj.edit16:setTop(0);
-    obj.edit16:setWidth(150);
+    obj.edit16:setWidth(255);
     obj.edit16:setHeight(25);
     obj.edit16:setField("equip_equipamento_marca2");
     obj.edit16:setVertTextAlign("center");
@@ -334,9 +334,9 @@ local function constructNew_frmInventory()
 
     obj.edit17 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit17:setParent(obj.layout4);
-    obj.edit17:setLeft(740);
+    obj.edit17:setLeft(950);
     obj.edit17:setTop(0);
-    obj.edit17:setWidth(150);
+    obj.edit17:setWidth(255);
     obj.edit17:setHeight(25);
     obj.edit17:setField("equip_equipamento_marca3");
     obj.edit17:setVertTextAlign("center");
@@ -356,7 +356,7 @@ local function constructNew_frmInventory()
     obj.edit18:setParent(obj.layout4);
     obj.edit18:setLeft(150);
     obj.edit18:setTop(25);
-    obj.edit18:setWidth(740);
+    obj.edit18:setWidth(1055);
     obj.edit18:setHeight(25);
     obj.edit18:setField("equip_equipamento_desc");
     obj.edit18:setVertTextAlign("center");
@@ -403,7 +403,7 @@ local function constructNew_frmInventory()
     obj.edit21:setParent(obj.layout5);
     obj.edit21:setLeft(440);
     obj.edit21:setTop(0);
-    obj.edit21:setWidth(150);
+    obj.edit21:setWidth(255);
     obj.edit21:setHeight(25);
     obj.edit21:setField("equip_vestimenta_marca1");
     obj.edit21:setVertTextAlign("center");
@@ -411,9 +411,9 @@ local function constructNew_frmInventory()
 
     obj.edit22 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit22:setParent(obj.layout5);
-    obj.edit22:setLeft(590);
+    obj.edit22:setLeft(695);
     obj.edit22:setTop(0);
-    obj.edit22:setWidth(150);
+    obj.edit22:setWidth(255);
     obj.edit22:setHeight(25);
     obj.edit22:setField("equip_vestimenta_marca2");
     obj.edit22:setVertTextAlign("center");
@@ -421,9 +421,9 @@ local function constructNew_frmInventory()
 
     obj.edit23 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit23:setParent(obj.layout5);
-    obj.edit23:setLeft(740);
+    obj.edit23:setLeft(950);
     obj.edit23:setTop(0);
-    obj.edit23:setWidth(150);
+    obj.edit23:setWidth(255);
     obj.edit23:setHeight(25);
     obj.edit23:setField("equip_vestimenta_marca3");
     obj.edit23:setVertTextAlign("center");
@@ -443,7 +443,7 @@ local function constructNew_frmInventory()
     obj.edit24:setParent(obj.layout5);
     obj.edit24:setLeft(150);
     obj.edit24:setTop(25);
-    obj.edit24:setWidth(740);
+    obj.edit24:setWidth(1055);
     obj.edit24:setHeight(25);
     obj.edit24:setField("equip_vestimenta_desc");
     obj.edit24:setVertTextAlign("center");
@@ -451,10 +451,10 @@ local function constructNew_frmInventory()
 
     obj.rectangle2 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle2:setParent(obj.scrollBox1);
-    obj.rectangle2:setLeft(900);
-    obj.rectangle2:setTop(0);
-    obj.rectangle2:setWidth(310);
-    obj.rectangle2:setHeight(110);
+    obj.rectangle2:setLeft(0);
+    obj.rectangle2:setTop(230);
+    obj.rectangle2:setWidth(1210);
+    obj.rectangle2:setHeight(35);
     obj.rectangle2:setColor("black");
     obj.rectangle2:setStrokeColor("white");
     obj.rectangle2:setStrokeSize(1);
@@ -462,9 +462,9 @@ local function constructNew_frmInventory()
 
     obj.label14 = GUI.fromHandle(_obj_newObject("label"));
     obj.label14:setParent(obj.rectangle2);
-    obj.label14:setLeft(0);
+    obj.label14:setLeft(5);
     obj.label14:setTop(5);
-    obj.label14:setWidth(310);
+    obj.label14:setWidth(295);
     obj.label14:setHeight(25);
     obj.label14:setHorzTextAlign("center");
     obj.label14:setText("Armazenamento");
@@ -472,9 +472,9 @@ local function constructNew_frmInventory()
 
     obj.comboBox1 = GUI.fromHandle(_obj_newObject("comboBox"));
     obj.comboBox1:setParent(obj.rectangle2);
-    obj.comboBox1:setLeft(5);
-    obj.comboBox1:setTop(30);
-    obj.comboBox1:setWidth(300);
+    obj.comboBox1:setLeft(305);
+    obj.comboBox1:setTop(5);
+    obj.comboBox1:setWidth(295);
     obj.comboBox1:setHeight(25);
     obj.comboBox1:setField("armazenamento1");
     obj.comboBox1:setItems({'', 'Coldre Pequeno', 'Coldre Grande'});
@@ -483,9 +483,9 @@ local function constructNew_frmInventory()
 
     obj.comboBox2 = GUI.fromHandle(_obj_newObject("comboBox"));
     obj.comboBox2:setParent(obj.rectangle2);
-    obj.comboBox2:setLeft(5);
-    obj.comboBox2:setTop(55);
-    obj.comboBox2:setWidth(300);
+    obj.comboBox2:setLeft(605);
+    obj.comboBox2:setTop(5);
+    obj.comboBox2:setWidth(295);
     obj.comboBox2:setHeight(25);
     obj.comboBox2:setField("armazenamento2");
     obj.comboBox2:setItems({'', 'Coldre Pequeno', 'Coldre Grande'});
@@ -494,9 +494,9 @@ local function constructNew_frmInventory()
 
     obj.comboBox3 = GUI.fromHandle(_obj_newObject("comboBox"));
     obj.comboBox3:setParent(obj.rectangle2);
-    obj.comboBox3:setLeft(5);
-    obj.comboBox3:setTop(80);
-    obj.comboBox3:setWidth(300);
+    obj.comboBox3:setLeft(905);
+    obj.comboBox3:setTop(5);
+    obj.comboBox3:setWidth(295);
     obj.comboBox3:setHeight(25);
     obj.comboBox3:setField("armazenamento3");
     obj.comboBox3:setItems({'+0', '+1', '+2', '+3', '+4', '+5', '+6'});
@@ -511,9 +511,9 @@ local function constructNew_frmInventory()
     obj.rectangle3 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle3:setParent(obj.scrollBox1);
     obj.rectangle3:setLeft(0);
-    obj.rectangle3:setTop(230);
+    obj.rectangle3:setTop(270);
     obj.rectangle3:setWidth(1210);
-    obj.rectangle3:setHeight(505);
+    obj.rectangle3:setHeight(460);
     obj.rectangle3:setColor("black");
     obj.rectangle3:setStrokeColor("white");
     obj.rectangle3:setStrokeSize(1);
@@ -574,7 +574,7 @@ local function constructNew_frmInventory()
     obj.rclInventario:setLeft(5);
     obj.rclInventario:setTop(30);
     obj.rclInventario:setWidth(1200);
-    obj.rclInventario:setHeight(470);
+    obj.rclInventario:setHeight(425);
     obj.rclInventario:setName("rclInventario");
     obj.rclInventario:setField("listaDeItens");
     obj.rclInventario:setTemplateForm("frmItem");

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmdtf" formType="sheetTemplate" dataType="br.com.rrpg.DTF_SDK3" title="Demônio a Queda - Ficha de Personagem" align="client" theme="light">
+    <tabControl align="client">
+        <tab title="Atributos">
+            <import file="2.lfm"/>
+        </tab>
+        <tab title="Especializações">
+            <import file="3.lfm"/>
+        </tab>
+        <tab title="Relíquias e Rituais">
+            <import file="4.lfm"/>
+        </tab>
+        <tab title="Antecedentes">
+            <import file="5.lfm"/>
+        </tab>
+        <tab title="Seguidores">
+            <import file="6.lfm"/>
+        </tab>
+        <tab title="Pactos">
+            <import file="7.lfm"/>
+        </tab>
+        <tab title="Background">
+            <import file="8.lfm"/>
+        </tab>
+		 <tab title="Rolagens">
+            <import file="rol.lfm"/>
+        </tab>
+		<tab title="Créditos">
+            <import file="1.lfm"/>
+        </tab>
+    </tabControl>
+</form>

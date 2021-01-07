@@ -2965,6 +2965,7 @@ local function constructNew_frmTemplate()
             internet.download("https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20de%20Reinos%20d20/output/Ficha%20de%20Reinos%20d20.rpk?raw=true",
                         function(stream, contentType)
                             local info = rrpg.plugins.getRPKDetails(stream);
+                            if sheet == nil then return end;
                             sheet.versionDownloaded = "VERSÃO DISPONÍVEL: " .. info.version;
             
                             local installed = rrpg.plugins.getInstalledPlugins();

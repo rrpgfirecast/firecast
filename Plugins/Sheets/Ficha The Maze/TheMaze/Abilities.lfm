@@ -1,9 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<form name="frmAbilities" width="610" height="65" margins="{top=2}">
+<form name="frmAbilities" width="455" height="125" margins="{top=2}">
 	<rectangle align="client" color="#212121">
-		<textEditor left="0" top="0" width="560" height="65" field="habilidade"/>
-		<edit left="560" top="0" width="50" height="65" field="nivel" type="number" fontSize="20" horzTextAlign="center" vertTextAlign="center" max="5"/>
+		<layout align="top" height="25">
+			<edit align="right" width="50" field="nivel" type="number" horzTextAlign="center" vertTextAlign="center" max="5"/>
+			<edit align="client" field="nome"/>
+		</layout>
 
+		<textEditor align="client" field="habilidade"/>
+		
 		<dataLink fields="{'nivel'}">
 			<event name="onChange">
 				if sheet==nil then return end;

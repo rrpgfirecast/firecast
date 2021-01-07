@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<group>
+	<style>
+		.painelatrib edit {
+			margins: {left = 10, top = 1, bottom = 1};		
+			align: client;		
+			keyboardType: numberPad;
+		}	
+			
+		.painelatrib label {
+			horzTextAlign: trailing;
+			width: 75;
+			align: left;
+		}
+		
+		layout.painelatrib {
+			height: 30;
+			align: top;
+		}
+		
+		edit.transparente, comboBox.transparente {
+			transparent: true;
+		}
+		
+		edit.vcenter {
+			vertTextAlign: center;
+		}
+		
+		label {
+			fontColor: white;
+		}
+		
+		edit {
+			#styledSettings: family style;		
+			fontSize: 15;			
+			fontColor: white;
+		}
+		
+		edit.infoNoTopo {
+			fontSize: 18;
+			height: 30;
+			transparent: true;
+			vertTextAlign: trailing;
+			width: 195;
+		}
+		
+		.alignedLeftPanel edit {
+			align: left;
+			margins: {right=5};
+		}
+		
+		rectangle.fundo {
+			align: client;
+			color: #40000000;
+			xradius: 10;
+			yradius: 10;
+		}
+		
+		scrollbox.boxContent {
+			align:client;
+		}
+		
+		scrollbox.__boxContent {	
+			align:none;
+			height:426;
+			width:320;
+		}		
+		
+		label.tituloCampo {
+			fontSize: 12;
+			fontColor: #D0D0D0;
+		}
+		
+		edit.atributo, edit.pericia {
+			transparent: true;
+			vertTextAlign: center;
+			horzTextAlign: center;			
+		}
+		
+		flowPart, flowLayout {
+			margins: {left=1, right=1, top=2, bottom=2};
+			vertAlign: leading;
+		}
+		
+		flowPart.tile, flowLayout.tile {
+			stepSizes: {310, 420, 640, 760, 1150};
+			minScaledWidth: 300;
+		}
+		
+		flowPart.tileCarac, flowLayout.tileCarac {
+			#stepSizes: {310, 420, 640, 740, 860, 960, 1070, 1180, 1290, 1510};
+			stepSizes: {};
+			minWidth: 300;
+			maxWidth: 1600;
+			minScaledWidth: 300;
+		}		
+		
+		flowPart.halfTile, flowLayout.halfTile {
+			stepSizes: {310, 360};
+			minScaledWidth: 300;
+			maxScaledWidth: 340;
+			avoidScale: true;
+		}		
+		
+		flowPart.halfTile2, flowLayout.halfTile2 {
+			stepSizes: {310, 360, 420};
+			minScaledWidth: 300;
+			maxScaledWidth: 340;
+			avoidScale: true;
+		}		
+
+		flowPart.halfTile3, flowLayout.halfTile3 {
+			stepSizes: {310, 360, 420, 600};
+			minScaledWidth: 300;
+			maxScaledWidth: 600;
+			avoidScale: true;
+		}	
+		
+		flowPart.oneLineTile, flowLayout.oneLineTile {
+			stepSizes: {310, 420, 640, 760, 1150};
+			minScaledWidth: 300;
+		}
+		
+		flowPart.oneLineTile2, flowLayout.oneLineTile2 {
+			stepSizes: {310, 420, 640, 760, 860, 960, 1150, 1200, 1600};
+			minScaledWidth: 300;
+		}		
+		
+		textEditor.transparent, textEditor.transparente {
+			transparent: true;
+		}
+	</style>
+</group>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmlobisomem" formType="sheetTemplate" dataType="br.com.RRPG.WTFV3_S3" title="Lobisomem: O Apocalipse - Ficha de Personagem" align="client" theme="light">
+    <tabControl align="client">
+        <tab title="Atributos">
+            <import file="1.lfm"/>
+        </tab>
+        <tab title="Dons e Rituais">
+            <import file="2.lfm"/>
+        </tab>
+        <tab title="Antecedentes">
+            <import file="3.lfm"/>
+        </tab>
+        <tab title="Prelúdio">
+            <import file="4.lfm"/>
+        </tab>
+    </tabControl>
+</form>

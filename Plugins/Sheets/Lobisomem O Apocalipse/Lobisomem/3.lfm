@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frma3_svg" align="client" theme="light" margins="{top=1}">
+    <style>#frma3_svg path {color: black; strokeColor: black; mode: stretch;} &#xD;
+#frma3_svg label {fontColor: black; textTrimming: none; wordWrap: false; autoSize: true;}</style>
+    <scrollBox align="client">
+        <rectangle width="1369" height="1937" color="white">&#xD;
+            <image left="0" top="0" width="1369" height="1937" src="images/ant.png" style="stretch" optimize="true" compilerOrder="0"/>&#xD;
+            <layout left="228" top="265" width="439" height="33" compilerOrder="1">
+                <edit transparent="true" fontSize="22.6" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="439" height="34" field="Natureza_1" compilerOrder="2"/>
+            </layout>&#xD;
+            <layout left="904" top="265" width="355" height="33" compilerOrder="3">
+                <edit transparent="true" fontSize="22.6" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="355" height="34" field="Comportamento_1" compilerOrder="4"/>
+            </layout>&#xD;
+            <layout left="108" top="404" width="277" height="33" compilerOrder="5">
+                <edit transparent="true" fontSize="22.6" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="277" height="34" field="Qualidade_1" compilerOrder="6"/>
+            </layout>&#xD;
+            <layout left="1013" top="404" width="148" height="33" compilerOrder="27">
+                <edit transparent="true" fontSize="22.6" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="148" height="34" field="Tipo_1" compilerOrder="28"/>
+            </layout>&#xD;
+            <layout left="1185" top="404" width="74" height="33" compilerOrder="61">
+                <edit transparent="true" fontSize="22.6" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="74" height="34" field="B_nus_1" compilerOrder="62"/>
+            </layout>&#xD;
+            <layout left="420" top="405" width="148" height="33" compilerOrder="7">
+                <edit transparent="true" fontSize="22.6" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="148" height="34" field="Tipo_1_1" compilerOrder="8"/>
+            </layout>&#xD;
+            <layout left="702" top="405" width="277" height="33" compilerOrder="11">
+                <edit transparent="true" fontSize="22.6" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="277" height="34" field="Defeito_1" compilerOrder="12"/>
+            </layout>&#xD;
+            <layout left="591" top="407" width="74" height="33" compilerOrder="9">
+                <edit transparent="true" fontSize="22.6" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="74" height="34" field="Custo_1" compilerOrder="10"/>
+            </layout>&#xD;
+            <layout left="420" top="440" width="148" height="33" compilerOrder="15">
+                <edit transparent="true" fontSize="22.6" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="148" height="34" field="Tipo_2_2" compilerOrder="16"/>
+            </layout>&#xD;
+            <layout left="1013" top="440" width="148" height="33" compilerOrder="29">
+                <edit transparent="true" fontSize="22.6" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="148" height="34" field="Tipo_2" compilerOrder="30"/>
+            </layout>&#xD;
+            <layout left="1185" top="440" width="74" height="33" compilerOrder="31">
+                <edit transparent="true" fontSize="22.6" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="74" height="34" field="B_nus_2" compilerOrder="32"/>
+            </layout>&#xD;
+            <layout left="108" top="441" width="277" height="33" compilerOrder="13">
+                <edit transparent="true" fontSize="22.6" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="277" height="34" field="Qualidade_2" compilerOrder="14"/>
+            </layout>&#xD;
+            <layout left="591" top="442" width="74" height="33" compilerOrder="19">
+                <edit transparent="true" fontSize="22.6" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="74" height="34" field="Custo_2" compilerOrder="20"/>
+            </layout>&#xD;
+            <layout left="702" top="442" width="277" height="33" compilerOrder="17">
+                <edit transparent="true" fontSize="22.6" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="277" height="34" field="Defeito_2" compilerOrder="18"/>
+            </layout>&#xD;
+            <layout left="420" top="475" width="148" height="33" compilerOrder="33">
+                <edit transparent="true" fontSize="22.6" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="148" height="34" field="Tipo_3_3" compilerOrder="34"/>
+            </layout>&#xD;
+            <layout left="1013" top="475" width="148" height="33" compilerOrder="39">
+                <edit transparent="true" fontSize="22.6" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="148" height="34" field="Tipo_3" compilerOrder="40"/>
+            </layout>&#xD;
+            <layout left="1185" top="475" width="74" height="33" compilerOrder="41">
+                <edit transparent="true" fontSize="22.6" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="74" height="34" field="B_nus_3" compilerOrder="42"/>
+            </layout>&#xD;
+            <layout left="108" top="476" width="277" height="33" compilerOrder="21">
+                <edit transparent="true" fontSize="22.6" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="277" height="34" field="Qualidade_3" compilerOrder="22"/>
+            </layout>&#xD;
+            <layout left="702" top="477" width="277" height="33" compilerOrder="37">
+                <edit transparent="true" fontSize="22.6" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="277" height="34" field="Defeito_3" compilerOrder="38"/>
+            </layout>&#xD;
+            <layout left="591" top="478" width="74" height="33" compilerOrder="35">
+                <edit transparent="true" fontSize="22.6" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="74" height="34" field="Custo_3" compilerOrder="36"/>
+            </layout>&#xD;
+            <layout left="1013" top="510" width="148" height="33" compilerOrder="49">
+                <edit transparent="true" fontSize="22.6" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="148" height="34" field="Tipo_4" compilerOrder="50"/>
+            </layout>&#xD;
+            <layout left="1185" top="510" width="74" height="33" compilerOrder="51">
+                <edit transparent="true" fontSize="22.6" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="74" height="34" field="B_nus_4" compilerOrder="52"/>
+            </layout>&#xD;
+            <layout left="420" top="511" width="148" height="33" compilerOrder="43">
+                <edit transparent="true" fontSize="22.6" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="148" height="34" field="Tipo_4_4" compilerOrder="44"/>
+            </layout>&#xD;
+            <layout left="108" top="513" width="277" height="33" compilerOrder="23">
+                <edit transparent="true" fontSize="22.6" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="277" height="34" field="Qualidade_4" compilerOrder="24"/>
+            </layout>&#xD;
+            <layout left="591" top="513" width="74" height="33" compilerOrder="45">
+                <edit transparent="true" fontSize="22.6" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="74" height="34" field="Custo_4" compilerOrder="46"/>
+            </layout>&#xD;
+            <layout left="702" top="513" width="277" height="33" compilerOrder="47">
+                <edit transparent="true" fontSize="22.6" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="277" height="34" field="Defeito_4" compilerOrder="48"/>
+            </layout>&#xD;
+            <layout left="420" top="545" width="148" height="33" compilerOrder="53">
+                <edit transparent="true" fontSize="22.6" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="148" height="34" field="Tipo_5_5" compilerOrder="54"/>
+            </layout>&#xD;
+            <layout left="1013" top="546" width="148" height="33" compilerOrder="59">
+                <edit transparent="true" fontSize="22.6" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="148" height="34" field="Tipo_5" compilerOrder="60"/>
+            </layout>&#xD;
+            <layout left="1185" top="546" width="74" height="33" compilerOrder="63">
+                <edit transparent="true" fontSize="22.6" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="74" height="34" field="B_nus_5" compilerOrder="64"/>
+            </layout>&#xD;
+            <layout left="108" top="547" width="277" height="33" compilerOrder="25">
+                <edit transparent="true" fontSize="22.6" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="277" height="34" field="Qualidade_5" compilerOrder="26"/>
+            </layout>&#xD;
+            <layout left="591" top="548" width="74" height="33" compilerOrder="55">
+                <edit transparent="true" fontSize="22.6" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="74" height="34" field="Custo_5" compilerOrder="56"/>
+            </layout>&#xD;
+            <layout left="702" top="548" width="277" height="33" compilerOrder="57">
+                <edit transparent="true" fontSize="22.6" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="277" height="34" field="Defeito_5" compilerOrder="58"/>
+            </layout>&#xD;
+            <layout left="106" top="685" width="552" height="139" compilerOrder="65">
+                <textEditor transparent="true" fontSize="23" fontColor="#000000" left="0" top="0" width="552" height="140" field="Aliados_1" compilerOrder="66"/>
+            </layout>&#xD;
+            <layout left="699" top="685" width="552" height="137" compilerOrder="67">
+                <textEditor transparent="true" fontSize="23" fontColor="#000000" left="0" top="0" width="552" height="138" field="Mentor_1" compilerOrder="68"/>
+            </layout>&#xD;
+            <layout left="106" top="867" width="552" height="142" compilerOrder="69">
+                <textEditor transparent="true" fontSize="23" fontColor="#000000" left="0" top="0" width="552" height="143" field="Ancestrais_1" compilerOrder="70"/>
+            </layout>&#xD;
+            <layout left="699" top="870" width="552" height="136" compilerOrder="71">
+                <textEditor transparent="true" fontSize="23" fontColor="#000000" left="0" top="0" width="552" height="137" field="Raça_pura_1" compilerOrder="72"/>
+            </layout>&#xD;
+            <layout left="106" top="1050" width="552" height="140" compilerOrder="73">
+                <textEditor transparent="true" fontSize="23" fontColor="#000000" left="0" top="0" width="552" height="141" field="Contatos_1" compilerOrder="74"/>
+            </layout>&#xD;
+            <layout left="699" top="1050" width="552" height="142" compilerOrder="75">
+                <textEditor transparent="true" fontSize="23" fontColor="#000000" left="0" top="0" width="552" height="143" field="Recursos_1" compilerOrder="76"/>
+            </layout>&#xD;
+            <layout left="903" top="1194" width="240" height="33" compilerOrder="79">
+                <edit transparent="true" fontSize="22.6" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="240" height="34" field="undefined_3" compilerOrder="80"/>
+            </layout>&#xD;
+            <layout left="106" top="1234" width="552" height="142" compilerOrder="77">
+                <textEditor transparent="true" fontSize="23" fontColor="#000000" left="0" top="0" width="552" height="143" field="Parentes_1" compilerOrder="78"/>
+            </layout>&#xD;
+            <layout left="699" top="1234" width="552" height="143" compilerOrder="81">
+                <textEditor transparent="true" fontSize="23" fontColor="#000000" left="0" top="0" width="552" height="144" field="Outro_1" compilerOrder="82"/>
+            </layout>&#xD;
+            <layout left="801" top="1415" width="82" height="33" compilerOrder="85">
+                <edit transparent="true" fontSize="22.6" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="82" height="34" field="TOTAL" compilerOrder="86"/>
+            </layout>&#xD;
+            <layout left="105" top="1447" width="565" height="65" compilerOrder="83">
+                <textEditor transparent="true" fontSize="23" fontColor="#000000" left="0" top="0" width="565" height="66" field="Equipamento_Carregado_1" compilerOrder="84"/>
+            </layout>&#xD;
+            <layout left="699" top="1480" width="565" height="137" compilerOrder="87">
+                <textEditor transparent="true" fontSize="23" fontColor="#000000" left="0" top="0" width="565" height="138" field="Adquirido_em_1" compilerOrder="88"/>
+            </layout>&#xD;
+            <layout left="105" top="1545" width="565" height="65" compilerOrder="89">
+                <textEditor transparent="true" fontSize="23" fontColor="#000000" left="0" top="0" width="565" height="66" field="Bens_Possuídos_1" compilerOrder="90"/>
+            </layout>&#xD;
+            <layout left="906" top="1635" width="82" height="33" compilerOrder="93">
+                <edit transparent="true" fontSize="22.6" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="82" height="34" field="undefined_5" compilerOrder="94"/>
+            </layout>&#xD;
+            <layout left="182" top="1663" width="489" height="33" compilerOrder="91">
+                <edit transparent="true" fontSize="22.6" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="489" height="34" field="Seita" compilerOrder="92"/>
+            </layout>&#xD;
+            <layout left="351" top="1699" width="320" height="33" compilerOrder="95">
+                <edit transparent="true" fontSize="22.6" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="320" height="34" field="undefined_6" compilerOrder="96"/>
+            </layout>&#xD;
+            <layout left="699" top="1701" width="565" height="135" compilerOrder="99">
+                <textEditor transparent="true" fontSize="23" fontColor="#000000" left="0" top="0" width="565" height="136" field="Gasto_em_1" compilerOrder="100"/>
+            </layout>&#xD;
+            <layout left="176" top="1733" width="54" height="33" compilerOrder="97">
+                <edit transparent="true" fontSize="22.6" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="54" height="34" field="Localização_do_Caern" compilerOrder="98"/>
+            </layout>&#xD;
+            <layout left="298" top="1733" width="373" height="33" compilerOrder="101">
+                <edit transparent="true" fontSize="22.6" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="373" height="34" field="undefined_7" compilerOrder="102"/>
+            </layout>&#xD;
+            <layout left="189" top="1765" width="482" height="33" compilerOrder="103">
+                <edit transparent="true" fontSize="22.6" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="482" height="34" field="Tipo" compilerOrder="104"/>
+            </layout>&#xD;
+            <layout left="171" top="1798" width="500" height="33" compilerOrder="105">
+                <edit transparent="true" fontSize="22.6" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="500" height="34" field="Totem" compilerOrder="106"/>
+            </layout>&#xD;
+        </rectangle>
+    </scrollBox>
+</form>

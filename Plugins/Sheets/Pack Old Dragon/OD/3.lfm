@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmOD3_svg" align="client" theme="light" margins="{top=1}">
+    <style>#frmOD3_svg path {color: black; strokeColor: black; mode: stretch;} &#xD;
+#frmOD3_svg label {fontColor: black; textTrimming: none; wordWrap: false; autoSize: true;}</style>
+    <scrollBox align="client">
+        <rectangle width="1190" height="1684" color="white">&#xD;
+            <image left="0" top="0" width="1190" height="1684" src="images/3.png" style="stretch" optimize="true" compilerOrder="0"/>&#xD;
+            <layout left="465" top="176" width="661" height="444" compilerOrder="1">
+                <richEdit left="0" top="0" width="661" height="444" field="His_Per" compilerOrder="2"/>
+            </layout>&#xD;
+             <image field="Aparen" editable="true" style="autoFit" compilerOrder="3"
+                left="29" top="267" width="421" height="368"/>&#xD;
+            <layout left="34" top="702" width="1096" height="856" compilerOrder="5">
+                <richEdit left="0" top="0" width="1096" height="856" field="Inv" compilerOrder="6"/>
+            </layout>&#xD;
+        </rectangle>
+    </scrollBox>
+</form>

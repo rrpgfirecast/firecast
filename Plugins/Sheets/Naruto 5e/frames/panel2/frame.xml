@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<frame width="253" height="306" autoScaleY="true">
+	<borders left="10" top="59" bottom="59" right="10" />
+	<draw>
+			<!-- PARTE SUPERIOR -->
+			<image left="0" top="0" right="253" bottom="109" overflowX="stretch" overflowY="stretch">
+				<anchors left="true" top="true" bottom="false" right="true"/>
+				<source url="upperPart.png" left="0" right="253" top="0" bottom="109"/>
+			</image>	
+			
+			<!-- PARTE INFERIOR -->
+	
+			<image left="0" top="197" right="253" bottom="306" overflowX="stretch" overflowY="stretch">
+				<anchors left="true" top="false" bottom="true" right="true"/>
+				<source url="lowerPart.png" left="0" right="253" top="0" bottom="109"/>
+			</image>	
+	
+			
+			<!-- FUNDO -->
+
+			<image left="0" top="108" right="253" bottom="198" overflowX="stretch" overflowY="stretch" zOrder="-1">
+				<anchors left="true" top="true" bottom="true" right="true"/>
+				<source url="fundo.png" left="0" right="253" top="0" bottom="90"/>
+			</image>			
+	</draw>
+</frame>

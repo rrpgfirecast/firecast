@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="ataques" height="180" width="632">       
+	<rectangle width="632" height="150" color="white">
+		<label text="Ataque" width="158" height="30" horzTextAlign="center" fontColor="black"/>
+        <edit width="158" field="ataque" height="30" top="30" horzTextAlign="center" fontColor="black"/>
+		
+		<label text="Bônus de Ataque" width="158" height="30" left="158" horzTextAlign="center" fontColor="black"/>
+		<edit width="158" field="bonus" height="30" top="30" left="158" horzTextAlign="center" fontColor="black"/>
+		
+		<label text="Dano" width="158" height="30" left="316" horzTextAlign="center" fontColor="black"/>
+		<edit width="158" field="dano" height="30" top="30" left="316" horzTextAlign="center" fontColor="black"/>
+		
+		<label text="Sucesso Decisivo" width="158" height="30" left="474" horzTextAlign="center" fontColor="black"/>
+		<edit width="158" field="decisivo" height="30" top="30" left="474" horzTextAlign="center" fontColor="black"/>
+		
+		<label text="Alcance" width="80" height="30" top="60" horzTextAlign="center" fontColor="black"/>
+		<edit width="80" field="alcance" height="30" top="90" horzTextAlign="center" fontColor="black"/>
+		
+		<label text="Tipo" width="80" height="30" top="60" left="80" horzTextAlign="center" fontColor="black"/>
+		<edit width="80" field="tipo" height="30" top="90" left="80" horzTextAlign="center" fontColor="black"/>
+		
+		<label text="Observações" width="472" height="30" top="60" left="160" horzTextAlign="center" fontColor="black"/>
+		<edit width="472" field="observacoes" height="30" top="90" left="160" horzTextAlign="center" fontColor="black"/>
+		
+		<button text="Apagar" width="100" height="30" top="120"
+                onClick="ndb.deleteNode(sheet);"/>
+	</rectangle>
+</form>

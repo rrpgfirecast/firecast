@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<frame width="808" height="179" autoScaleY="true">
+	<borders left="35" top="98" bottom="37" right="35" />
+	<draw>
+		<!-- CANTO ESQUERDO -->
+			<image left="0" top="69" right="80" bottom="179" overflowX="stretch" overflowY="stretch">
+				<anchors left="true" top="true" bottom="true" right="false"/>
+				<source url="blackBanner.png" left="0" right="80" top="0" bottom="110"/>
+			</image>	
+
+			<!-- CANTO DIREITO -->
+			<image left="728" top="69" right="808" bottom="179" overflowX="stretch" overflowY="stretch">
+				<anchors left="false" top="true" bottom="true" right="true"/>
+				<source url="blackBanner.png" left="728" right="808" top="0" bottom="110"/>
+			</image>	
+			
+			<!-- CENTRO -->
+			<image left="80" top="69" right="728" bottom="179" overflowX="stretch" overflowY="stretch" zOrder="-1">
+				<anchors left="true" top="true" bottom="true" right="true"/>
+				<source url="blackBanner.png" left="80" right="728" top="0" bottom="110"/>
+			</image>	
+
+			<!-- HERO GROUP -->
+			<image left="14" top="0" right="178" bottom="86" overflowX="stretch" overflowY="none" zOrder="-10">
+				<anchors left="true" top="true" bottom="true" right="false"/>
+				<source url="magicGroupUpper.png" left="0" right="164" top="0" bottom="86"/>
+			</image>
+	</draw>
+	
+	<postdraw>
+			
+	</postdraw>
+</frame>

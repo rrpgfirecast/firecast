@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frma4_svg" align="client" theme="light" margins="{top=1}">
+    <style>#frma4_svg path {color: black; strokeColor: black; mode: stretch;} &#xD;
+#frma4_svg label {fontColor: black; textTrimming: none; wordWrap: false; autoSize: true;}</style>
+    <scrollBox align="client">
+        <rectangle width="1369" height="1937" color="white">&#xD;
+            <image left="0" top="0" width="1369" height="1937" src="images/pre.png" style="stretch" optimize="true" compilerOrder="0"/>&#xD;
+            <layout left="111" top="362" width="1150" height="495" compilerOrder="1">
+                <richEdit left="0" top="0" width="1150" height="496" field="Prelœdio_1" compilerOrder="2"/>
+            </layout>&#xD;
+            <layout left="174" top="914" width="247" height="33" compilerOrder="3">
+                <edit transparent="true" fontSize="22.6" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="247" height="34" field="Idade" compilerOrder="4"/>
+            </layout>&#xD;
+            <layout left="453" top="914" width="799" height="230" compilerOrder="13">
+                <richEdit left="0" top="0" width="799" height="231" field="_1_3" compilerOrder="14"/>
+            </layout>&#xD;
+            <layout left="202" top="947" width="220" height="33" compilerOrder="5">
+                <edit transparent="true" fontSize="22.6" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="220" height="34" field="Cabelos" compilerOrder="6"/>
+            </layout>&#xD;
+            <layout left="188" top="979" width="233" height="33" compilerOrder="7">
+                <edit transparent="true" fontSize="22.6" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="233" height="34" field="Olhos" compilerOrder="8"/>
+            </layout>&#xD;
+            <layout left="174" top="1012" width="247" height="33" compilerOrder="9">
+                <edit transparent="true" fontSize="22.6" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="247" height="34" field="Raça" compilerOrder="10"/>
+            </layout>&#xD;
+            <layout left="274" top="1045" width="147" height="33" compilerOrder="11">
+                <edit transparent="true" fontSize="22.6" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="147" height="34" field="Nacionalidade" compilerOrder="12"/>
+            </layout>&#xD;
+            <layout left="169" top="1077" width="252" height="33" compilerOrder="15">
+                <edit transparent="true" fontSize="22.6" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="252" height="34" field="Sexo" compilerOrder="16"/>
+            </layout>&#xD;
+            <layout left="241" top="1142" width="82" height="33" compilerOrder="17">
+                <edit transparent="true" fontSize="22.6" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="82" height="34" field="Hominídeo" compilerOrder="18"/>
+            </layout>&#xD;
+            <layout left="340" top="1142" width="82" height="33" compilerOrder="19">
+                <edit transparent="true" fontSize="22.6" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="82" height="34" field="undefined_8" compilerOrder="20"/>
+            </layout>&#xD;
+            <layout left="200" top="1175" width="123" height="33" compilerOrder="21">
+                <edit transparent="true" fontSize="22.6" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="123" height="34" field="Glabro" compilerOrder="22"/>
+            </layout>&#xD;
+            <layout left="340" top="1175" width="82" height="33" compilerOrder="23">
+                <edit transparent="true" fontSize="22.6" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="82" height="34" field="undefined_9" compilerOrder="24"/>
+            </layout>&#xD;
+            <layout left="453" top="1175" width="799" height="65" compilerOrder="25">
+                <textEditor transparent="true" fontSize="23" fontColor="#000000" left="0" top="0" width="799" height="66" field="Altura__Peso_2" compilerOrder="26"/>
+            </layout>&#xD;
+            <layout left="188" top="1207" width="137" height="33" compilerOrder="27">
+                <edit transparent="true" fontSize="22.6" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="137" height="34" field="Crinos" compilerOrder="28"/>
+            </layout>&#xD;
+            <layout left="340" top="1207" width="82" height="33" compilerOrder="29">
+                <edit transparent="true" fontSize="22.6" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="82" height="34" field="undefined_10" compilerOrder="30"/>
+            </layout>&#xD;
+            <layout left="186" top="1240" width="137" height="33" compilerOrder="31">
+                <edit transparent="true" fontSize="22.6" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="137" height="34" field="Hispo" compilerOrder="32"/>
+            </layout>&#xD;
+            <layout left="340" top="1240" width="82" height="33" compilerOrder="33">
+                <edit transparent="true" fontSize="22.6" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="82" height="34" field="undefined_11" compilerOrder="34"/>
+            </layout>&#xD;
+            <layout left="743" top="1240" width="509" height="66" compilerOrder="35">
+                <textEditor transparent="true" fontSize="23" fontColor="#000000" left="0" top="0" width="509" height="67" field="Deformidades_de_Impuro" compilerOrder="36"/>
+            </layout>&#xD;
+            <layout left="199" top="1272" width="123" height="33" compilerOrder="37">
+                <edit transparent="true" fontSize="22.6" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="123" height="34" field="Lupino" compilerOrder="38"/>
+            </layout>&#xD;
+            <layout left="340" top="1272" width="82" height="33" compilerOrder="39">
+                <edit transparent="true" fontSize="22.6" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="82" height="34" field="undefined_12" compilerOrder="40"/>
+            </layout>&#xD;
+            <layout left="104" top="1430.4" width="574" height="405.6" compilerOrder="41">
+                <textEditor left="0" top="0" width="574" height="405.6" fontSize="23" fontColor="#000000" field="Relações_da_matilha" transparent="true" compilerOrder="42"/>
+            </layout>&#xD;
+            <layout left="695" top="1430.4" width="557" height="405.6" compilerOrder="43">
+                       <image field="imagemDoPersonagem" editable="true" style="proportional" align="client"/>
+            </layout>&#xD;
+        </rectangle>
+    </scrollBox>
+</form>

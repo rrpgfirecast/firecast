@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<frame width="469" height="100" autoScaleY="true">
+	<borders left="12" top="24" bottom="24" right="20" />
+	<draw>		
+		<!-- ParteEsquerda -->
+		<image left="0" top="0" right="53" bottom="100" overflowX="stretch" overflowY="stretch" zOrder="0">
+			<anchors left="true" top="true" bottom="true"/>
+			<source url="header1_smaller.png" left="0" right="53" top="0" bottom="100"/>
+		</image>	
+
+		<!-- Parte Direita -->
+		<image left="446" top="0" right="469" bottom="100" overflowX="stretch" overflowY="stretch" zOrder="0">
+			<anchors left="false" top="true" bottom="true" right="true"/>
+			<source url="header1_smaller.png" left="446" right="469" top="0" bottom="100"/>
+		</image>	
+		
+		<!-- Parte Central -->
+		<image left="53" top="0" right="446" bottom="100" overflowX="stretch" overflowY="stretch" zOrder="-1">
+			<anchors left="true" top="true" bottom="true" right="true"/>
+			<source url="header1_smaller.png" left="53" right="446" top="0" bottom="100"/>
+		</image>			
+		
+		<!-- fundo -->
+		<!--
+		<image left="0" top="0" right="228" bottom="94" overflowX="stretch" overflowY="stretch" zOrder="-1">
+			<anchors left="true" top="true" bottom="true" right="true"/>
+			<source url="header0_smaller.png" left="0" right="228" top="0" bottom="94"/>
+		</image>					
+		-->
+	</draw>
+	
+	<regions>
+		<region name="RegiaoSmallTitulo" left="10" top="30" right="39" bottom="70">
+			<anchors left="true" top="true" bottom="true" right="false"/>		
+		</region>
+		
+		<region name="RegaoConteudoCompleto" left="53" right="446" top="18" bottom="82" autoScaleX="true" autoScaleY="true">
+			<anchors left="true" top="true" bottom="true" right="true"/>	
+		
+			<region name="RegiaoConteudo1" left="0" top="0" right="108" bottom="65">
+				<anchors left="true" top="true" bottom="true" right="true"/>		
+			</region>	
+			
+			<region name="RegiaoConteudo2" left="142" top="7" right="393" bottom="58">
+				<anchors left="true" top="true" bottom="true" right="true"/>		
+			</region>			
+		</region>
+	</regions>	
+</frame>
