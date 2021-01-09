@@ -777,7 +777,7 @@ local function constructNew_frmNaruto5()
     obj.label11 = GUI.fromHandle(_obj_newObject("label"));
     obj.label11:setParent(obj.flowPart7);
     obj.label11:setAlign("client");
-    obj.label11:setText("Taijutsu");
+    obj.label11:setText("Artes Marciais");
     obj.label11:setVertTextAlign("trailing");
     obj.label11:setMargins({left=5});
     obj.label11:setAutoSize(true);
@@ -1475,7 +1475,7 @@ local function constructNew_frmNaruto5()
     obj.label33 = GUI.fromHandle(_obj_newObject("label"));
     obj.label33:setParent(obj.flowPart18);
     obj.label33:setAlign("client");
-    obj.label33:setText("Ninjutsu");
+    obj.label33:setText("Ninshou");
     obj.label33:setVertTextAlign("trailing");
     obj.label33:setMargins({left=5});
     obj.label33:setAutoSize(true);
@@ -2216,7 +2216,7 @@ local function constructNew_frmNaruto5()
     obj.label57 = GUI.fromHandle(_obj_newObject("label"));
     obj.label57:setParent(obj.flowPart30);
     obj.label57:setAlign("client");
-    obj.label57:setText("Genjutsu");
+    obj.label57:setText("Ilusão");
     obj.label57:setVertTextAlign("trailing");
     obj.label57:setMargins({left=5});
     obj.label57:setAutoSize(true);
