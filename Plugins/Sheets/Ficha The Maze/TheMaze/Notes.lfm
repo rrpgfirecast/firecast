@@ -1,22 +1,40 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <form name="frmTemplateNotes" align="client">
 	<scrollBox align="client">
-		<layout left="0" top="0" width="400" height="580">
-			<rectangle left="0" top="0" width="400" height="580" color="black" xradius="5" yradius="15" cornerType="round"/>
+		<layout left="0" top="0" width="400" height="290">
+			<rectangle left="0" top="0" width="400" height="290" color="black" xradius="5" yradius="15" cornerType="round"/>
 	        <label left="0" top="0" width="400" height="20" text="Anotações Gerais" horzTextAlign="center"/>
-			<textEditor left="10" top="25" width="380" height="540" field="anotacoes1"/>
+			<textEditor left="10" top="25" width="380" height="250" field="anotacoes1"/>
         </layout>
 		
-		<layout left="410" top="0" width="400" height="580">
-			<rectangle left="0" top="0" width="400" height="580" color="black" xradius="5" yradius="15" cornerType="round"/>
+		<layout left="410" top="0" width="400" height="290">
+			<rectangle left="0" top="0" width="400" height="290" color="black" xradius="5" yradius="15" cornerType="round"/>
 	        <label left="0" top="0" width="400" height="20" text="Tarefas" horzTextAlign="center"/>
-			<textEditor left="10" top="25" width="380" height="540" field="anotacoes2"/>
+			<textEditor left="10" top="25" width="380" height="250" field="anotacoes2"/>
         </layout>
 		
-		<layout left="820" top="0" width="400" height="580">
-			<rectangle left="0" top="0" width="400" height="580" color="black" xradius="5" yradius="15" cornerType="round"/>
+		<layout left="820" top="0" width="400" height="290">
+			<rectangle left="0" top="0" width="400" height="290" color="black" xradius="5" yradius="15" cornerType="round"/>
 	        <label left="0" top="0" width="400" height="20" text="Diário da Irmandade" horzTextAlign="center"/>
-			<textEditor left="10" top="25" width="380" height="540" field="anotacoes3"/>
+			<textEditor left="10" top="25" width="380" height="250" field="anotacoes3"/>
+        </layout>
+
+		<layout left="0" top="295" width="400" height="290">
+			<rectangle left="0" top="0" width="400" height="290" color="black" xradius="5" yradius="15" cornerType="round"/>
+	        <label left="0" top="0" width="400" height="20" text="Labirinto/Torre" horzTextAlign="center"/>
+			<textEditor left="10" top="25" width="380" height="250" field="anotacoes4"/>
+        </layout>
+		
+		<layout left="410" top="295" width="400" height="290">
+			<rectangle left="0" top="0" width="400" height="290" color="black" xradius="5" yradius="15" cornerType="round"/>
+	        <label left="0" top="0" width="400" height="20" text="Privilégios" horzTextAlign="center"/>
+			<textEditor left="10" top="25" width="380" height="250" field="anotacoes5"/>
+        </layout>
+		
+		<layout left="820" top="295" width="400" height="290">
+			<rectangle left="0" top="0" width="400" height="290" color="black" xradius="5" yradius="15" cornerType="round"/>
+	        <label left="0" top="0" width="400" height="20" text="Reputação" horzTextAlign="center"/>
+			<textEditor left="10" top="25" width="380" height="250" field="anotacoes6"/>
         </layout>
 	</scrollBox>
 </form>

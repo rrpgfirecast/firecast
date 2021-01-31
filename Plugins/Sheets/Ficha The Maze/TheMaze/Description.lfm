@@ -25,11 +25,18 @@
 			<Descricao left1="910" left2="1000" top="75" text="ETNIA" field="reino"/>
 		</rectangle>
 
-		<layout left="0" top="110" width="375" height="495">
+		<layout left="0" top="110" width="375" height="360">
 			<rectangle align="client" color="black"/>
 			<label left="5" top="1" width="365" height="20" text="TÉCNICAS &amp; FEITIÇOS"/>
-			<textEditor left="5" top="25" width="365" height="465" field="personalidade"/>
+			<textEditor left="5" top="25" width="365" height="330" field="personalidade"/>
 		</layout>
+
+		<layout left="0" top="475" width="375" height="130">
+			<rectangle align="client" color="black"/>
+			<label left="5" top="1" width="365" height="20" text="PECULIARIDADE"/>
+			<textEditor left="5" top="25" width="365" height="100" field="peculiaridade"/>
+		</layout>
+
 		<layout left="380" top="110" width="825" height="495">
 			<rectangle align="client" color="black"/>
 			<label left="5" top="1" width="100" height="20" text="PRE-MORTEM"/>
