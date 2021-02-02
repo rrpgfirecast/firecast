@@ -319,6 +319,7 @@ function rrpg.registrarForm(frm)
   if type(frm) == 'table' then	
 	if (frm.name ~= nil) then	
   		localRRPG.forms[frm.name] = frm;  
+		_rrpg_Forms_RegisterForm(frm);
   	end;	
   end;
 end;

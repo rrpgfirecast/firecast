@@ -25,12 +25,12 @@
 			self.panKG.parent = self.layCentro;		
 		end;
 		
-		self.onHide = function()		
+		--[[self.onHide = function()		
 			if self.navigator ~= nil then
 				self.navigator:finalizar();
 				self.navigator = nil;
 			end;
-		end;		
+		end;]]--		
 	</script>
 	
 </form>
