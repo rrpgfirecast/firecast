@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmFireDriveExplorerPanel" title="FireDrive">
+	<script>	
+		local cUser = Firecast.getCurrentUser();
+		local canUseFireDrive = cUser.isGold or cUser.isGoldPlus or cUser.isRuby;		
+
+		if canUseFireDrive then							
+			self.navigator = require("/firedrive/firedriveNavigator.dlua").newFDNavigatorLayout();				
+		end;	
+	</script>
+	
+	<layout name="layCentro" align="client">
+	</layout>
+	
+	<script>
+		if self.navigator ~= nil then
+			self.navigator:gotoDir('/');
+			self.navigator.align = "client";			
+			self.navigator.parent = self.layCentro;		
+		else
+			local KG = require("/knowGold/knowGoldPanel.dlua");
+			
+			self.panKG = KG.newPanel();
+			self.panKG:setInfo("@@firedrive.premium.goldExclusiveInfo");
+			self.panKG.parent = self.layCentro;		
+		end;
+		
+		self.onHide = function()		
+			if self.navigator ~= nil then
+				self.navigator:finalizar();
+				self.navigator = nil;
+			end;
+		end;		
+	</script>
+	
+</form>
