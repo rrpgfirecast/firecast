@@ -297,7 +297,7 @@ local function constructNew_frmTemplateDescription()
     obj.layout1:setLeft(0);
     obj.layout1:setTop(110);
     obj.layout1:setWidth(375);
-    obj.layout1:setHeight(495);
+    obj.layout1:setHeight(360);
     obj.layout1:setName("layout1");
 
     obj.rectangle2 = GUI.fromHandle(_obj_newObject("rectangle"));
@@ -320,16 +320,16 @@ local function constructNew_frmTemplateDescription()
     obj.textEditor1:setLeft(5);
     obj.textEditor1:setTop(25);
     obj.textEditor1:setWidth(365);
-    obj.textEditor1:setHeight(465);
+    obj.textEditor1:setHeight(330);
     obj.textEditor1:setField("personalidade");
     obj.textEditor1:setName("textEditor1");
 
     obj.layout2 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout2:setParent(obj.scrollBox1);
-    obj.layout2:setLeft(380);
-    obj.layout2:setTop(110);
-    obj.layout2:setWidth(825);
-    obj.layout2:setHeight(495);
+    obj.layout2:setLeft(0);
+    obj.layout2:setTop(475);
+    obj.layout2:setWidth(375);
+    obj.layout2:setHeight(130);
     obj.layout2:setName("layout2");
 
     obj.rectangle3 = GUI.fromHandle(_obj_newObject("rectangle"));
@@ -342,13 +342,45 @@ local function constructNew_frmTemplateDescription()
     obj.label15:setParent(obj.layout2);
     obj.label15:setLeft(5);
     obj.label15:setTop(1);
-    obj.label15:setWidth(100);
+    obj.label15:setWidth(365);
     obj.label15:setHeight(20);
-    obj.label15:setText("PRE-MORTEM");
+    obj.label15:setText("PECULIARIDADE");
     obj.label15:setName("label15");
 
+    obj.textEditor2 = GUI.fromHandle(_obj_newObject("textEditor"));
+    obj.textEditor2:setParent(obj.layout2);
+    obj.textEditor2:setLeft(5);
+    obj.textEditor2:setTop(25);
+    obj.textEditor2:setWidth(365);
+    obj.textEditor2:setHeight(100);
+    obj.textEditor2:setField("peculiaridade");
+    obj.textEditor2:setName("textEditor2");
+
+    obj.layout3 = GUI.fromHandle(_obj_newObject("layout"));
+    obj.layout3:setParent(obj.scrollBox1);
+    obj.layout3:setLeft(380);
+    obj.layout3:setTop(110);
+    obj.layout3:setWidth(825);
+    obj.layout3:setHeight(495);
+    obj.layout3:setName("layout3");
+
+    obj.rectangle4 = GUI.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle4:setParent(obj.layout3);
+    obj.rectangle4:setAlign("client");
+    obj.rectangle4:setColor("black");
+    obj.rectangle4:setName("rectangle4");
+
+    obj.label16 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label16:setParent(obj.layout3);
+    obj.label16:setLeft(5);
+    obj.label16:setTop(1);
+    obj.label16:setWidth(100);
+    obj.label16:setHeight(20);
+    obj.label16:setText("PRE-MORTEM");
+    obj.label16:setName("label16");
+
     obj.richEdit1 = GUI.fromHandle(_obj_newObject("richEdit"));
-    obj.richEdit1:setParent(obj.layout2);
+    obj.richEdit1:setParent(obj.layout3);
     obj.richEdit1:setLeft(5);
     obj.richEdit1:setTop(25);
     obj.richEdit1:setWidth(815);
@@ -384,6 +416,7 @@ local function constructNew_frmTemplateDescription()
         if self.textEditor1 ~= nil then self.textEditor1:destroy(); self.textEditor1 = nil; end;
         if self.edit9 ~= nil then self.edit9:destroy(); self.edit9 = nil; end;
         if self.edit5 ~= nil then self.edit5:destroy(); self.edit5 = nil; end;
+        if self.textEditor2 ~= nil then self.textEditor2:destroy(); self.textEditor2 = nil; end;
         if self.edit6 ~= nil then self.edit6:destroy(); self.edit6 = nil; end;
         if self.label15 ~= nil then self.label15:destroy(); self.label15 = nil; end;
         if self.label7 ~= nil then self.label7:destroy(); self.label7 = nil; end;
@@ -393,9 +426,12 @@ local function constructNew_frmTemplateDescription()
         if self.edit12 ~= nil then self.edit12:destroy(); self.edit12 = nil; end;
         if self.label5 ~= nil then self.label5:destroy(); self.label5 = nil; end;
         if self.label12 ~= nil then self.label12:destroy(); self.label12 = nil; end;
+        if self.rectangle4 ~= nil then self.rectangle4:destroy(); self.rectangle4 = nil; end;
         if self.edit8 ~= nil then self.edit8:destroy(); self.edit8 = nil; end;
         if self.rectangle2 ~= nil then self.rectangle2:destroy(); self.rectangle2 = nil; end;
         if self.rectangle3 ~= nil then self.rectangle3:destroy(); self.rectangle3 = nil; end;
+        if self.label16 ~= nil then self.label16:destroy(); self.label16 = nil; end;
+        if self.layout3 ~= nil then self.layout3:destroy(); self.layout3 = nil; end;
         if self.edit2 ~= nil then self.edit2:destroy(); self.edit2 = nil; end;
         if self.label9 ~= nil then self.label9:destroy(); self.label9 = nil; end;
         if self.edit10 ~= nil then self.edit10:destroy(); self.edit10 = nil; end;
