@@ -24,7 +24,7 @@ function KG.newPanel()
 	btnGoGold.text = "@@knowGold.goGold";	
 	btnGoGold.margins = {top=10};
 	btnGoGold.parent = pan;
-	btnGoGold.width = 200;
+	btnGoGold.width = 250;
 	btnGoGold.height = 30;
 	
 	layCentro.parent = pan;
