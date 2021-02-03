@@ -31,127 +31,6 @@ local function constructNew_frmACN2()
     obj:setTheme("dark");
     obj:setMargins({top=1});
 
-
-		local function xpAptidoes()
-			if sheet==nil then return end;
-
-			local mod = 0;
-			local valores = {   ((tonumber(sheet.total0_1 ) or 0)*2 - (tonumber(sheet.xp0_1 ) or 0)), 
-									((tonumber(sheet.total0_2 ) or 0)*2 - (tonumber(sheet.xp0_2 ) or 0)), 
-									((tonumber(sheet.total0_3 ) or 0)*2 - (tonumber(sheet.xp0_3 ) or 0)),
-									((tonumber(sheet.total0_4 ) or 0)*2 - (tonumber(sheet.xp0_4 ) or 0)),
-									((tonumber(sheet.total0_5 ) or 0)*2 - (tonumber(sheet.xp0_5 ) or 0)),
-									((tonumber(sheet.total0_6 ) or 0)*2 - (tonumber(sheet.xp0_6 ) or 0)),
-									((tonumber(sheet.total0_7 ) or 0)*2 - (tonumber(sheet.xp0_7 ) or 0)),
-									((tonumber(sheet.total0_8 ) or 0)*2 - (tonumber(sheet.xp0_8 ) or 0)),
-									((tonumber(sheet.total0_9 ) or 0)*2 - (tonumber(sheet.xp0_9 ) or 0)),
-									((tonumber(sheet.total0_10) or 0)*2 - (tonumber(sheet.xp0_10) or 0)),
-									((tonumber(sheet.total0_11) or 0)*2 - (tonumber(sheet.xp0_11) or 0)),
-									((tonumber(sheet.total0_12) or 0)*2 - (tonumber(sheet.xp0_12) or 0)),
-									((tonumber(sheet.total1_1 ) or 0)*2 - (tonumber(sheet.xp1_1 ) or 0)),
-									((tonumber(sheet.total1_2 ) or 0)*2 - (tonumber(sheet.xp1_2 ) or 0)),
-									((tonumber(sheet.total1_3 ) or 0)*2 - (tonumber(sheet.xp1_3 ) or 0)),
-									((tonumber(sheet.total1_4 ) or 0)*2 - (tonumber(sheet.xp1_4 ) or 0)),
-									((tonumber(sheet.total1_5 ) or 0)*2 - (tonumber(sheet.xp1_5 ) or 0)),
-									((tonumber(sheet.total1_6 ) or 0)*2 - (tonumber(sheet.xp1_6 ) or 0)),
-									((tonumber(sheet.total1_7 ) or 0)*2 - (tonumber(sheet.xp1_7 ) or 0)),
-									((tonumber(sheet.total1_8 ) or 0)*2 - (tonumber(sheet.xp1_8 ) or 0)),
-									((tonumber(sheet.total1_9 ) or 0)*2 - (tonumber(sheet.xp1_9 ) or 0)),
-									((tonumber(sheet.total1_10) or 0)*2 - (tonumber(sheet.xp1_10) or 0)),
-									((tonumber(sheet.total1_11) or 0)*2 - (tonumber(sheet.xp1_11) or 0)),
-									((tonumber(sheet.total1_12) or 0)*2 - (tonumber(sheet.xp1_12) or 0)),
-									((tonumber(sheet.total2_1 ) or 0)*2 - (tonumber(sheet.xp2_1 ) or 0)),
-									((tonumber(sheet.total2_2 ) or 0)*2 - (tonumber(sheet.xp2_2 ) or 0)),
-									((tonumber(sheet.total2_3 ) or 0)*2 - (tonumber(sheet.xp2_3 ) or 0)),
-									((tonumber(sheet.total2_4 ) or 0)*2 - (tonumber(sheet.xp2_4 ) or 0)),
-									((tonumber(sheet.total2_5 ) or 0)*2 - (tonumber(sheet.xp2_5 ) or 0)),
-									((tonumber(sheet.total2_6 ) or 0)*2 - (tonumber(sheet.xp2_6 ) or 0)),
-									((tonumber(sheet.total2_7 ) or 0)*2 - (tonumber(sheet.xp2_7 ) or 0)),
-									((tonumber(sheet.total2_8 ) or 0)*2 - (tonumber(sheet.xp2_8 ) or 0)),
-									((tonumber(sheet.total2_9 ) or 0)*2 - (tonumber(sheet.xp2_9 ) or 0)),
-									((tonumber(sheet.total2_10) or 0)*2 - (tonumber(sheet.xp2_10) or 0)),
-									((tonumber(sheet.total2_11) or 0)*2 - (tonumber(sheet.xp2_11) or 0)),
-									((tonumber(sheet.total2_12) or 0)*2 - (tonumber(sheet.xp2_12) or 0)),
-									((tonumber(sheet.total3_1 ) or 0)*2 - (tonumber(sheet.xp3_1 ) or 0)),
-									((tonumber(sheet.total3_2 ) or 0)*2 - (tonumber(sheet.xp3_2 ) or 0)),
-									((tonumber(sheet.total3_3 ) or 0)*2 - (tonumber(sheet.xp3_3 ) or 0)),
-									((tonumber(sheet.total3_4 ) or 0)*2 - (tonumber(sheet.xp3_4 ) or 0)),
-									((tonumber(sheet.total3_5 ) or 0)*2 - (tonumber(sheet.xp3_5 ) or 0)),
-									((tonumber(sheet.total3_6 ) or 0)*2 - (tonumber(sheet.xp3_6 ) or 0)),
-									((tonumber(sheet.total3_7 ) or 0)*2 - (tonumber(sheet.xp3_7 ) or 0)),
-									((tonumber(sheet.total3_8 ) or 0)*2 - (tonumber(sheet.xp3_8 ) or 0)),
-									((tonumber(sheet.total3_9 ) or 0)*2 - (tonumber(sheet.xp3_9 ) or 0)),
-									((tonumber(sheet.total3_10) or 0)*2 - (tonumber(sheet.xp3_10) or 0)),
-									((tonumber(sheet.total3_11) or 0)*2 - (tonumber(sheet.xp3_11) or 0)),
-									((tonumber(sheet.total3_12) or 0)*2 - (tonumber(sheet.xp3_12) or 0))
-									};
-			
-			local limites = {	(tonumber(sheet.xp0_1 ) or 0),
-									(tonumber(sheet.xp0_2 ) or 0),
-									(tonumber(sheet.xp0_3 ) or 0),
-									(tonumber(sheet.xp0_4 ) or 0),
-									(tonumber(sheet.xp0_5 ) or 0),
-									(tonumber(sheet.xp0_6 ) or 0),
-									(tonumber(sheet.xp0_7 ) or 0),
-									(tonumber(sheet.xp0_8 ) or 0),
-									(tonumber(sheet.xp0_9 ) or 0),
-									(tonumber(sheet.xp0_10) or 0),
-									(tonumber(sheet.xp0_11) or 0),
-									(tonumber(sheet.xp0_12) or 0),
-									(tonumber(sheet.xp1_1 ) or 0),
-									(tonumber(sheet.xp1_2 ) or 0),
-									(tonumber(sheet.xp1_3 ) or 0),
-									(tonumber(sheet.xp1_4 ) or 0),
-									(tonumber(sheet.xp1_5 ) or 0),
-									(tonumber(sheet.xp1_6 ) or 0),
-									(tonumber(sheet.xp1_7 ) or 0),
-									(tonumber(sheet.xp1_8 ) or 0),
-									(tonumber(sheet.xp1_9 ) or 0),
-									(tonumber(sheet.xp1_10) or 0),
-									(tonumber(sheet.xp1_11) or 0),
-									(tonumber(sheet.xp1_12) or 0),
-									(tonumber(sheet.xp2_1 ) or 0),
-									(tonumber(sheet.xp2_2 ) or 0),
-									(tonumber(sheet.xp2_3 ) or 0),
-									(tonumber(sheet.xp2_4 ) or 0),
-									(tonumber(sheet.xp2_5 ) or 0),
-									(tonumber(sheet.xp2_6 ) or 0),
-									(tonumber(sheet.xp2_7 ) or 0),
-									(tonumber(sheet.xp2_8 ) or 0),
-									(tonumber(sheet.xp2_9 ) or 0),
-									(tonumber(sheet.xp2_10) or 0),
-									(tonumber(sheet.xp2_11) or 0),
-									(tonumber(sheet.xp2_12) or 0),
-									(tonumber(sheet.xp3_1 ) or 0),
-									(tonumber(sheet.xp3_2 ) or 0),
-									(tonumber(sheet.xp3_3 ) or 0),
-									(tonumber(sheet.xp3_4 ) or 0),
-									(tonumber(sheet.xp3_5 ) or 0),
-									(tonumber(sheet.xp3_6 ) or 0),
-									(tonumber(sheet.xp3_7 ) or 0),
-									(tonumber(sheet.xp3_8 ) or 0),
-									(tonumber(sheet.xp3_9 ) or 0),
-									(tonumber(sheet.xp3_10) or 0),
-									(tonumber(sheet.xp3_11) or 0),
-									(tonumber(sheet.xp3_12) or 0)
-									};
-			
-			for i=1, 48, 1 do
-				for j=1, limites[i], 1 do
-					mod = mod + math.max(math.floor((valores[i]+j)*1.5), 3);
-				end;
-			end;
-
-			sheet.XPaptidoes = mod;
-			sheet.XPgasta = (tonumber(sheet.XPatributos) or 0) + 
-							(tonumber(sheet.XPaegis) or 0) + 
-							(tonumber(sheet.XPhistoricos) or 0) + 
-							(tonumber(sheet.XPmisticos) or 0) + 
-							(tonumber(sheet.XPaptidoes) or 0);
-		end;
-	
-
-
     obj.scrollBox1 = GUI.fromHandle(_obj_newObject("scrollBox"));
     obj.scrollBox1:setParent(obj);
     obj.scrollBox1:setAlign("client");
@@ -240,23 +119,23 @@ local function constructNew_frmACN2()
     obj.layout2:setHeight(50);
     obj.layout2:setName("layout2");
 
-    obj.radioButton1 = GUI.fromHandle(_obj_newObject("radioButton"));
-    obj.radioButton1:setParent(obj.layout2);
-    obj.radioButton1:setLeft(0);
-    obj.radioButton1:setTop(0);
-    obj.radioButton1:setGroupName("grupo1");
-    obj.radioButton1:setField("dado1");
-    obj.radioButton1:setFieldValue("total0_1");
-    obj.radioButton1:setName("radioButton1");
+    obj.button1 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button1:setParent(obj.layout2);
+    obj.button1:setLeft(0);
+    obj.button1:setTop(0);
+    obj.button1:setHeight(15);
+    obj.button1:setWidth(15);
+    obj.button1:setText("1");
+    obj.button1:setName("button1");
 
-    obj.radioButton2 = GUI.fromHandle(_obj_newObject("radioButton"));
-    obj.radioButton2:setParent(obj.layout2);
-    obj.radioButton2:setLeft(0);
-    obj.radioButton2:setTop(15);
-    obj.radioButton2:setGroupName("grupo2");
-    obj.radioButton2:setField("dado2");
-    obj.radioButton2:setFieldValue("total0_1");
-    obj.radioButton2:setName("radioButton2");
+    obj.button2 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button2:setParent(obj.layout2);
+    obj.button2:setLeft(0);
+    obj.button2:setTop(15);
+    obj.button2:setHeight(15);
+    obj.button2:setWidth(15);
+    obj.button2:setText("2");
+    obj.button2:setName("button2");
 
     obj.edit1 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit1:setParent(obj.layout2);
@@ -338,23 +217,23 @@ local function constructNew_frmACN2()
     obj.layout3:setHeight(50);
     obj.layout3:setName("layout3");
 
-    obj.radioButton3 = GUI.fromHandle(_obj_newObject("radioButton"));
-    obj.radioButton3:setParent(obj.layout3);
-    obj.radioButton3:setLeft(0);
-    obj.radioButton3:setTop(0);
-    obj.radioButton3:setGroupName("grupo1");
-    obj.radioButton3:setField("dado1");
-    obj.radioButton3:setFieldValue("total0_2");
-    obj.radioButton3:setName("radioButton3");
+    obj.button3 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button3:setParent(obj.layout3);
+    obj.button3:setLeft(0);
+    obj.button3:setTop(0);
+    obj.button3:setHeight(15);
+    obj.button3:setWidth(15);
+    obj.button3:setText("1");
+    obj.button3:setName("button3");
 
-    obj.radioButton4 = GUI.fromHandle(_obj_newObject("radioButton"));
-    obj.radioButton4:setParent(obj.layout3);
-    obj.radioButton4:setLeft(0);
-    obj.radioButton4:setTop(15);
-    obj.radioButton4:setGroupName("grupo2");
-    obj.radioButton4:setField("dado2");
-    obj.radioButton4:setFieldValue("total0_2");
-    obj.radioButton4:setName("radioButton4");
+    obj.button4 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button4:setParent(obj.layout3);
+    obj.button4:setLeft(0);
+    obj.button4:setTop(15);
+    obj.button4:setHeight(15);
+    obj.button4:setWidth(15);
+    obj.button4:setText("2");
+    obj.button4:setName("button4");
 
     obj.edit6 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit6:setParent(obj.layout3);
@@ -436,23 +315,23 @@ local function constructNew_frmACN2()
     obj.layout4:setHeight(50);
     obj.layout4:setName("layout4");
 
-    obj.radioButton5 = GUI.fromHandle(_obj_newObject("radioButton"));
-    obj.radioButton5:setParent(obj.layout4);
-    obj.radioButton5:setLeft(0);
-    obj.radioButton5:setTop(0);
-    obj.radioButton5:setGroupName("grupo1");
-    obj.radioButton5:setField("dado1");
-    obj.radioButton5:setFieldValue("total0_3");
-    obj.radioButton5:setName("radioButton5");
+    obj.button5 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button5:setParent(obj.layout4);
+    obj.button5:setLeft(0);
+    obj.button5:setTop(0);
+    obj.button5:setHeight(15);
+    obj.button5:setWidth(15);
+    obj.button5:setText("1");
+    obj.button5:setName("button5");
 
-    obj.radioButton6 = GUI.fromHandle(_obj_newObject("radioButton"));
-    obj.radioButton6:setParent(obj.layout4);
-    obj.radioButton6:setLeft(0);
-    obj.radioButton6:setTop(15);
-    obj.radioButton6:setGroupName("grupo2");
-    obj.radioButton6:setField("dado2");
-    obj.radioButton6:setFieldValue("total0_3");
-    obj.radioButton6:setName("radioButton6");
+    obj.button6 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button6:setParent(obj.layout4);
+    obj.button6:setLeft(0);
+    obj.button6:setTop(15);
+    obj.button6:setHeight(15);
+    obj.button6:setWidth(15);
+    obj.button6:setText("2");
+    obj.button6:setName("button6");
 
     obj.edit11 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit11:setParent(obj.layout4);
@@ -534,23 +413,23 @@ local function constructNew_frmACN2()
     obj.layout5:setHeight(50);
     obj.layout5:setName("layout5");
 
-    obj.radioButton7 = GUI.fromHandle(_obj_newObject("radioButton"));
-    obj.radioButton7:setParent(obj.layout5);
-    obj.radioButton7:setLeft(0);
-    obj.radioButton7:setTop(0);
-    obj.radioButton7:setGroupName("grupo1");
-    obj.radioButton7:setField("dado1");
-    obj.radioButton7:setFieldValue("total0_4");
-    obj.radioButton7:setName("radioButton7");
+    obj.button7 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button7:setParent(obj.layout5);
+    obj.button7:setLeft(0);
+    obj.button7:setTop(0);
+    obj.button7:setHeight(15);
+    obj.button7:setWidth(15);
+    obj.button7:setText("1");
+    obj.button7:setName("button7");
 
-    obj.radioButton8 = GUI.fromHandle(_obj_newObject("radioButton"));
-    obj.radioButton8:setParent(obj.layout5);
-    obj.radioButton8:setLeft(0);
-    obj.radioButton8:setTop(15);
-    obj.radioButton8:setGroupName("grupo2");
-    obj.radioButton8:setField("dado2");
-    obj.radioButton8:setFieldValue("total0_4");
-    obj.radioButton8:setName("radioButton8");
+    obj.button8 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button8:setParent(obj.layout5);
+    obj.button8:setLeft(0);
+    obj.button8:setTop(15);
+    obj.button8:setHeight(15);
+    obj.button8:setWidth(15);
+    obj.button8:setText("2");
+    obj.button8:setName("button8");
 
     obj.edit16 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit16:setParent(obj.layout5);
@@ -632,23 +511,23 @@ local function constructNew_frmACN2()
     obj.layout6:setHeight(50);
     obj.layout6:setName("layout6");
 
-    obj.radioButton9 = GUI.fromHandle(_obj_newObject("radioButton"));
-    obj.radioButton9:setParent(obj.layout6);
-    obj.radioButton9:setLeft(0);
-    obj.radioButton9:setTop(0);
-    obj.radioButton9:setGroupName("grupo1");
-    obj.radioButton9:setField("dado1");
-    obj.radioButton9:setFieldValue("total0_5");
-    obj.radioButton9:setName("radioButton9");
+    obj.button9 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button9:setParent(obj.layout6);
+    obj.button9:setLeft(0);
+    obj.button9:setTop(0);
+    obj.button9:setHeight(15);
+    obj.button9:setWidth(15);
+    obj.button9:setText("1");
+    obj.button9:setName("button9");
 
-    obj.radioButton10 = GUI.fromHandle(_obj_newObject("radioButton"));
-    obj.radioButton10:setParent(obj.layout6);
-    obj.radioButton10:setLeft(0);
-    obj.radioButton10:setTop(15);
-    obj.radioButton10:setGroupName("grupo2");
-    obj.radioButton10:setField("dado2");
-    obj.radioButton10:setFieldValue("total0_5");
-    obj.radioButton10:setName("radioButton10");
+    obj.button10 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button10:setParent(obj.layout6);
+    obj.button10:setLeft(0);
+    obj.button10:setTop(15);
+    obj.button10:setHeight(15);
+    obj.button10:setWidth(15);
+    obj.button10:setText("2");
+    obj.button10:setName("button10");
 
     obj.edit21 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit21:setParent(obj.layout6);
@@ -730,23 +609,23 @@ local function constructNew_frmACN2()
     obj.layout7:setHeight(50);
     obj.layout7:setName("layout7");
 
-    obj.radioButton11 = GUI.fromHandle(_obj_newObject("radioButton"));
-    obj.radioButton11:setParent(obj.layout7);
-    obj.radioButton11:setLeft(0);
-    obj.radioButton11:setTop(0);
-    obj.radioButton11:setGroupName("grupo1");
-    obj.radioButton11:setField("dado1");
-    obj.radioButton11:setFieldValue("total0_6");
-    obj.radioButton11:setName("radioButton11");
+    obj.button11 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button11:setParent(obj.layout7);
+    obj.button11:setLeft(0);
+    obj.button11:setTop(0);
+    obj.button11:setHeight(15);
+    obj.button11:setWidth(15);
+    obj.button11:setText("1");
+    obj.button11:setName("button11");
 
-    obj.radioButton12 = GUI.fromHandle(_obj_newObject("radioButton"));
-    obj.radioButton12:setParent(obj.layout7);
-    obj.radioButton12:setLeft(0);
-    obj.radioButton12:setTop(15);
-    obj.radioButton12:setGroupName("grupo2");
-    obj.radioButton12:setField("dado2");
-    obj.radioButton12:setFieldValue("total0_6");
-    obj.radioButton12:setName("radioButton12");
+    obj.button12 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button12:setParent(obj.layout7);
+    obj.button12:setLeft(0);
+    obj.button12:setTop(15);
+    obj.button12:setHeight(15);
+    obj.button12:setWidth(15);
+    obj.button12:setText("2");
+    obj.button12:setName("button12");
 
     obj.edit26 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit26:setParent(obj.layout7);
@@ -828,23 +707,23 @@ local function constructNew_frmACN2()
     obj.layout8:setHeight(50);
     obj.layout8:setName("layout8");
 
-    obj.radioButton13 = GUI.fromHandle(_obj_newObject("radioButton"));
-    obj.radioButton13:setParent(obj.layout8);
-    obj.radioButton13:setLeft(0);
-    obj.radioButton13:setTop(0);
-    obj.radioButton13:setGroupName("grupo1");
-    obj.radioButton13:setField("dado1");
-    obj.radioButton13:setFieldValue("total0_7");
-    obj.radioButton13:setName("radioButton13");
+    obj.button13 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button13:setParent(obj.layout8);
+    obj.button13:setLeft(0);
+    obj.button13:setTop(0);
+    obj.button13:setHeight(15);
+    obj.button13:setWidth(15);
+    obj.button13:setText("1");
+    obj.button13:setName("button13");
 
-    obj.radioButton14 = GUI.fromHandle(_obj_newObject("radioButton"));
-    obj.radioButton14:setParent(obj.layout8);
-    obj.radioButton14:setLeft(0);
-    obj.radioButton14:setTop(15);
-    obj.radioButton14:setGroupName("grupo2");
-    obj.radioButton14:setField("dado2");
-    obj.radioButton14:setFieldValue("total0_7");
-    obj.radioButton14:setName("radioButton14");
+    obj.button14 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button14:setParent(obj.layout8);
+    obj.button14:setLeft(0);
+    obj.button14:setTop(15);
+    obj.button14:setHeight(15);
+    obj.button14:setWidth(15);
+    obj.button14:setText("2");
+    obj.button14:setName("button14");
 
     obj.edit31 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit31:setParent(obj.layout8);
@@ -926,23 +805,23 @@ local function constructNew_frmACN2()
     obj.layout9:setHeight(50);
     obj.layout9:setName("layout9");
 
-    obj.radioButton15 = GUI.fromHandle(_obj_newObject("radioButton"));
-    obj.radioButton15:setParent(obj.layout9);
-    obj.radioButton15:setLeft(0);
-    obj.radioButton15:setTop(0);
-    obj.radioButton15:setGroupName("grupo1");
-    obj.radioButton15:setField("dado1");
-    obj.radioButton15:setFieldValue("total0_8");
-    obj.radioButton15:setName("radioButton15");
+    obj.button15 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button15:setParent(obj.layout9);
+    obj.button15:setLeft(0);
+    obj.button15:setTop(0);
+    obj.button15:setHeight(15);
+    obj.button15:setWidth(15);
+    obj.button15:setText("1");
+    obj.button15:setName("button15");
 
-    obj.radioButton16 = GUI.fromHandle(_obj_newObject("radioButton"));
-    obj.radioButton16:setParent(obj.layout9);
-    obj.radioButton16:setLeft(0);
-    obj.radioButton16:setTop(15);
-    obj.radioButton16:setGroupName("grupo2");
-    obj.radioButton16:setField("dado2");
-    obj.radioButton16:setFieldValue("total0_8");
-    obj.radioButton16:setName("radioButton16");
+    obj.button16 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button16:setParent(obj.layout9);
+    obj.button16:setLeft(0);
+    obj.button16:setTop(15);
+    obj.button16:setHeight(15);
+    obj.button16:setWidth(15);
+    obj.button16:setText("2");
+    obj.button16:setName("button16");
 
     obj.edit36 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit36:setParent(obj.layout9);
@@ -1024,23 +903,23 @@ local function constructNew_frmACN2()
     obj.layout10:setHeight(50);
     obj.layout10:setName("layout10");
 
-    obj.radioButton17 = GUI.fromHandle(_obj_newObject("radioButton"));
-    obj.radioButton17:setParent(obj.layout10);
-    obj.radioButton17:setLeft(0);
-    obj.radioButton17:setTop(0);
-    obj.radioButton17:setGroupName("grupo1");
-    obj.radioButton17:setField("dado1");
-    obj.radioButton17:setFieldValue("total0_9");
-    obj.radioButton17:setName("radioButton17");
+    obj.button17 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button17:setParent(obj.layout10);
+    obj.button17:setLeft(0);
+    obj.button17:setTop(0);
+    obj.button17:setHeight(15);
+    obj.button17:setWidth(15);
+    obj.button17:setText("1");
+    obj.button17:setName("button17");
 
-    obj.radioButton18 = GUI.fromHandle(_obj_newObject("radioButton"));
-    obj.radioButton18:setParent(obj.layout10);
-    obj.radioButton18:setLeft(0);
-    obj.radioButton18:setTop(15);
-    obj.radioButton18:setGroupName("grupo2");
-    obj.radioButton18:setField("dado2");
-    obj.radioButton18:setFieldValue("total0_9");
-    obj.radioButton18:setName("radioButton18");
+    obj.button18 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button18:setParent(obj.layout10);
+    obj.button18:setLeft(0);
+    obj.button18:setTop(15);
+    obj.button18:setHeight(15);
+    obj.button18:setWidth(15);
+    obj.button18:setText("2");
+    obj.button18:setName("button18");
 
     obj.edit41 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit41:setParent(obj.layout10);
@@ -1122,23 +1001,23 @@ local function constructNew_frmACN2()
     obj.layout11:setHeight(50);
     obj.layout11:setName("layout11");
 
-    obj.radioButton19 = GUI.fromHandle(_obj_newObject("radioButton"));
-    obj.radioButton19:setParent(obj.layout11);
-    obj.radioButton19:setLeft(0);
-    obj.radioButton19:setTop(0);
-    obj.radioButton19:setGroupName("grupo1");
-    obj.radioButton19:setField("dado1");
-    obj.radioButton19:setFieldValue("total0_10");
-    obj.radioButton19:setName("radioButton19");
+    obj.button19 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button19:setParent(obj.layout11);
+    obj.button19:setLeft(0);
+    obj.button19:setTop(0);
+    obj.button19:setHeight(15);
+    obj.button19:setWidth(15);
+    obj.button19:setText("1");
+    obj.button19:setName("button19");
 
-    obj.radioButton20 = GUI.fromHandle(_obj_newObject("radioButton"));
-    obj.radioButton20:setParent(obj.layout11);
-    obj.radioButton20:setLeft(0);
-    obj.radioButton20:setTop(15);
-    obj.radioButton20:setGroupName("grupo2");
-    obj.radioButton20:setField("dado2");
-    obj.radioButton20:setFieldValue("total0_10");
-    obj.radioButton20:setName("radioButton20");
+    obj.button20 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button20:setParent(obj.layout11);
+    obj.button20:setLeft(0);
+    obj.button20:setTop(15);
+    obj.button20:setHeight(15);
+    obj.button20:setWidth(15);
+    obj.button20:setText("2");
+    obj.button20:setName("button20");
 
     obj.edit46 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit46:setParent(obj.layout11);
@@ -1220,23 +1099,23 @@ local function constructNew_frmACN2()
     obj.layout12:setHeight(50);
     obj.layout12:setName("layout12");
 
-    obj.radioButton21 = GUI.fromHandle(_obj_newObject("radioButton"));
-    obj.radioButton21:setParent(obj.layout12);
-    obj.radioButton21:setLeft(0);
-    obj.radioButton21:setTop(0);
-    obj.radioButton21:setGroupName("grupo1");
-    obj.radioButton21:setField("dado1");
-    obj.radioButton21:setFieldValue("total0_11");
-    obj.radioButton21:setName("radioButton21");
+    obj.button21 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button21:setParent(obj.layout12);
+    obj.button21:setLeft(0);
+    obj.button21:setTop(0);
+    obj.button21:setHeight(15);
+    obj.button21:setWidth(15);
+    obj.button21:setText("1");
+    obj.button21:setName("button21");
 
-    obj.radioButton22 = GUI.fromHandle(_obj_newObject("radioButton"));
-    obj.radioButton22:setParent(obj.layout12);
-    obj.radioButton22:setLeft(0);
-    obj.radioButton22:setTop(15);
-    obj.radioButton22:setGroupName("grupo2");
-    obj.radioButton22:setField("dado2");
-    obj.radioButton22:setFieldValue("total0_11");
-    obj.radioButton22:setName("radioButton22");
+    obj.button22 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button22:setParent(obj.layout12);
+    obj.button22:setLeft(0);
+    obj.button22:setTop(15);
+    obj.button22:setHeight(15);
+    obj.button22:setWidth(15);
+    obj.button22:setText("2");
+    obj.button22:setName("button22");
 
     obj.edit51 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit51:setParent(obj.layout12);
@@ -1318,23 +1197,23 @@ local function constructNew_frmACN2()
     obj.layout13:setHeight(50);
     obj.layout13:setName("layout13");
 
-    obj.radioButton23 = GUI.fromHandle(_obj_newObject("radioButton"));
-    obj.radioButton23:setParent(obj.layout13);
-    obj.radioButton23:setLeft(0);
-    obj.radioButton23:setTop(0);
-    obj.radioButton23:setGroupName("grupo1");
-    obj.radioButton23:setField("dado1");
-    obj.radioButton23:setFieldValue("total0_12");
-    obj.radioButton23:setName("radioButton23");
+    obj.button23 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button23:setParent(obj.layout13);
+    obj.button23:setLeft(0);
+    obj.button23:setTop(0);
+    obj.button23:setHeight(15);
+    obj.button23:setWidth(15);
+    obj.button23:setText("1");
+    obj.button23:setName("button23");
 
-    obj.radioButton24 = GUI.fromHandle(_obj_newObject("radioButton"));
-    obj.radioButton24:setParent(obj.layout13);
-    obj.radioButton24:setLeft(0);
-    obj.radioButton24:setTop(15);
-    obj.radioButton24:setGroupName("grupo2");
-    obj.radioButton24:setField("dado2");
-    obj.radioButton24:setFieldValue("total0_12");
-    obj.radioButton24:setName("radioButton24");
+    obj.button24 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button24:setParent(obj.layout13);
+    obj.button24:setLeft(0);
+    obj.button24:setTop(15);
+    obj.button24:setHeight(15);
+    obj.button24:setWidth(15);
+    obj.button24:setText("2");
+    obj.button24:setName("button24");
 
     obj.edit56 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit56:setParent(obj.layout13);
@@ -1491,23 +1370,23 @@ local function constructNew_frmACN2()
     obj.layout15:setHeight(50);
     obj.layout15:setName("layout15");
 
-    obj.radioButton25 = GUI.fromHandle(_obj_newObject("radioButton"));
-    obj.radioButton25:setParent(obj.layout15);
-    obj.radioButton25:setLeft(0);
-    obj.radioButton25:setTop(0);
-    obj.radioButton25:setGroupName("grupo1");
-    obj.radioButton25:setField("dado1");
-    obj.radioButton25:setFieldValue("total2_1");
-    obj.radioButton25:setName("radioButton25");
+    obj.button25 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button25:setParent(obj.layout15);
+    obj.button25:setLeft(0);
+    obj.button25:setTop(0);
+    obj.button25:setHeight(15);
+    obj.button25:setWidth(15);
+    obj.button25:setText("1");
+    obj.button25:setName("button25");
 
-    obj.radioButton26 = GUI.fromHandle(_obj_newObject("radioButton"));
-    obj.radioButton26:setParent(obj.layout15);
-    obj.radioButton26:setLeft(0);
-    obj.radioButton26:setTop(15);
-    obj.radioButton26:setGroupName("grupo2");
-    obj.radioButton26:setField("dado2");
-    obj.radioButton26:setFieldValue("total2_1");
-    obj.radioButton26:setName("radioButton26");
+    obj.button26 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button26:setParent(obj.layout15);
+    obj.button26:setLeft(0);
+    obj.button26:setTop(15);
+    obj.button26:setHeight(15);
+    obj.button26:setWidth(15);
+    obj.button26:setText("2");
+    obj.button26:setName("button26");
 
     obj.edit61 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit61:setParent(obj.layout15);
@@ -1589,23 +1468,23 @@ local function constructNew_frmACN2()
     obj.layout16:setHeight(50);
     obj.layout16:setName("layout16");
 
-    obj.radioButton27 = GUI.fromHandle(_obj_newObject("radioButton"));
-    obj.radioButton27:setParent(obj.layout16);
-    obj.radioButton27:setLeft(0);
-    obj.radioButton27:setTop(0);
-    obj.radioButton27:setGroupName("grupo1");
-    obj.radioButton27:setField("dado1");
-    obj.radioButton27:setFieldValue("total2_2");
-    obj.radioButton27:setName("radioButton27");
+    obj.button27 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button27:setParent(obj.layout16);
+    obj.button27:setLeft(0);
+    obj.button27:setTop(0);
+    obj.button27:setHeight(15);
+    obj.button27:setWidth(15);
+    obj.button27:setText("1");
+    obj.button27:setName("button27");
 
-    obj.radioButton28 = GUI.fromHandle(_obj_newObject("radioButton"));
-    obj.radioButton28:setParent(obj.layout16);
-    obj.radioButton28:setLeft(0);
-    obj.radioButton28:setTop(15);
-    obj.radioButton28:setGroupName("grupo2");
-    obj.radioButton28:setField("dado2");
-    obj.radioButton28:setFieldValue("total2_2");
-    obj.radioButton28:setName("radioButton28");
+    obj.button28 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button28:setParent(obj.layout16);
+    obj.button28:setLeft(0);
+    obj.button28:setTop(15);
+    obj.button28:setHeight(15);
+    obj.button28:setWidth(15);
+    obj.button28:setText("2");
+    obj.button28:setName("button28");
 
     obj.edit66 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit66:setParent(obj.layout16);
@@ -1687,23 +1566,23 @@ local function constructNew_frmACN2()
     obj.layout17:setHeight(50);
     obj.layout17:setName("layout17");
 
-    obj.radioButton29 = GUI.fromHandle(_obj_newObject("radioButton"));
-    obj.radioButton29:setParent(obj.layout17);
-    obj.radioButton29:setLeft(0);
-    obj.radioButton29:setTop(0);
-    obj.radioButton29:setGroupName("grupo1");
-    obj.radioButton29:setField("dado1");
-    obj.radioButton29:setFieldValue("total2_3");
-    obj.radioButton29:setName("radioButton29");
+    obj.button29 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button29:setParent(obj.layout17);
+    obj.button29:setLeft(0);
+    obj.button29:setTop(0);
+    obj.button29:setHeight(15);
+    obj.button29:setWidth(15);
+    obj.button29:setText("1");
+    obj.button29:setName("button29");
 
-    obj.radioButton30 = GUI.fromHandle(_obj_newObject("radioButton"));
-    obj.radioButton30:setParent(obj.layout17);
-    obj.radioButton30:setLeft(0);
-    obj.radioButton30:setTop(15);
-    obj.radioButton30:setGroupName("grupo2");
-    obj.radioButton30:setField("dado2");
-    obj.radioButton30:setFieldValue("total2_3");
-    obj.radioButton30:setName("radioButton30");
+    obj.button30 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button30:setParent(obj.layout17);
+    obj.button30:setLeft(0);
+    obj.button30:setTop(15);
+    obj.button30:setHeight(15);
+    obj.button30:setWidth(15);
+    obj.button30:setText("2");
+    obj.button30:setName("button30");
 
     obj.edit71 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit71:setParent(obj.layout17);
@@ -1785,23 +1664,23 @@ local function constructNew_frmACN2()
     obj.layout18:setHeight(50);
     obj.layout18:setName("layout18");
 
-    obj.radioButton31 = GUI.fromHandle(_obj_newObject("radioButton"));
-    obj.radioButton31:setParent(obj.layout18);
-    obj.radioButton31:setLeft(0);
-    obj.radioButton31:setTop(0);
-    obj.radioButton31:setGroupName("grupo1");
-    obj.radioButton31:setField("dado1");
-    obj.radioButton31:setFieldValue("total2_4");
-    obj.radioButton31:setName("radioButton31");
+    obj.button31 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button31:setParent(obj.layout18);
+    obj.button31:setLeft(0);
+    obj.button31:setTop(0);
+    obj.button31:setHeight(15);
+    obj.button31:setWidth(15);
+    obj.button31:setText("1");
+    obj.button31:setName("button31");
 
-    obj.radioButton32 = GUI.fromHandle(_obj_newObject("radioButton"));
-    obj.radioButton32:setParent(obj.layout18);
-    obj.radioButton32:setLeft(0);
-    obj.radioButton32:setTop(15);
-    obj.radioButton32:setGroupName("grupo2");
-    obj.radioButton32:setField("dado2");
-    obj.radioButton32:setFieldValue("total2_4");
-    obj.radioButton32:setName("radioButton32");
+    obj.button32 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button32:setParent(obj.layout18);
+    obj.button32:setLeft(0);
+    obj.button32:setTop(15);
+    obj.button32:setHeight(15);
+    obj.button32:setWidth(15);
+    obj.button32:setText("2");
+    obj.button32:setName("button32");
 
     obj.edit76 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit76:setParent(obj.layout18);
@@ -1883,23 +1762,23 @@ local function constructNew_frmACN2()
     obj.layout19:setHeight(50);
     obj.layout19:setName("layout19");
 
-    obj.radioButton33 = GUI.fromHandle(_obj_newObject("radioButton"));
-    obj.radioButton33:setParent(obj.layout19);
-    obj.radioButton33:setLeft(0);
-    obj.radioButton33:setTop(0);
-    obj.radioButton33:setGroupName("grupo1");
-    obj.radioButton33:setField("dado1");
-    obj.radioButton33:setFieldValue("total2_5");
-    obj.radioButton33:setName("radioButton33");
+    obj.button33 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button33:setParent(obj.layout19);
+    obj.button33:setLeft(0);
+    obj.button33:setTop(0);
+    obj.button33:setHeight(15);
+    obj.button33:setWidth(15);
+    obj.button33:setText("1");
+    obj.button33:setName("button33");
 
-    obj.radioButton34 = GUI.fromHandle(_obj_newObject("radioButton"));
-    obj.radioButton34:setParent(obj.layout19);
-    obj.radioButton34:setLeft(0);
-    obj.radioButton34:setTop(15);
-    obj.radioButton34:setGroupName("grupo2");
-    obj.radioButton34:setField("dado2");
-    obj.radioButton34:setFieldValue("total2_5");
-    obj.radioButton34:setName("radioButton34");
+    obj.button34 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button34:setParent(obj.layout19);
+    obj.button34:setLeft(0);
+    obj.button34:setTop(15);
+    obj.button34:setHeight(15);
+    obj.button34:setWidth(15);
+    obj.button34:setText("2");
+    obj.button34:setName("button34");
 
     obj.edit81 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit81:setParent(obj.layout19);
@@ -1981,23 +1860,23 @@ local function constructNew_frmACN2()
     obj.layout20:setHeight(50);
     obj.layout20:setName("layout20");
 
-    obj.radioButton35 = GUI.fromHandle(_obj_newObject("radioButton"));
-    obj.radioButton35:setParent(obj.layout20);
-    obj.radioButton35:setLeft(0);
-    obj.radioButton35:setTop(0);
-    obj.radioButton35:setGroupName("grupo1");
-    obj.radioButton35:setField("dado1");
-    obj.radioButton35:setFieldValue("total2_6");
-    obj.radioButton35:setName("radioButton35");
+    obj.button35 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button35:setParent(obj.layout20);
+    obj.button35:setLeft(0);
+    obj.button35:setTop(0);
+    obj.button35:setHeight(15);
+    obj.button35:setWidth(15);
+    obj.button35:setText("1");
+    obj.button35:setName("button35");
 
-    obj.radioButton36 = GUI.fromHandle(_obj_newObject("radioButton"));
-    obj.radioButton36:setParent(obj.layout20);
-    obj.radioButton36:setLeft(0);
-    obj.radioButton36:setTop(15);
-    obj.radioButton36:setGroupName("grupo2");
-    obj.radioButton36:setField("dado2");
-    obj.radioButton36:setFieldValue("total2_6");
-    obj.radioButton36:setName("radioButton36");
+    obj.button36 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button36:setParent(obj.layout20);
+    obj.button36:setLeft(0);
+    obj.button36:setTop(15);
+    obj.button36:setHeight(15);
+    obj.button36:setWidth(15);
+    obj.button36:setText("2");
+    obj.button36:setName("button36");
 
     obj.edit86 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit86:setParent(obj.layout20);
@@ -2079,23 +1958,23 @@ local function constructNew_frmACN2()
     obj.layout21:setHeight(50);
     obj.layout21:setName("layout21");
 
-    obj.radioButton37 = GUI.fromHandle(_obj_newObject("radioButton"));
-    obj.radioButton37:setParent(obj.layout21);
-    obj.radioButton37:setLeft(0);
-    obj.radioButton37:setTop(0);
-    obj.radioButton37:setGroupName("grupo1");
-    obj.radioButton37:setField("dado1");
-    obj.radioButton37:setFieldValue("total2_7");
-    obj.radioButton37:setName("radioButton37");
+    obj.button37 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button37:setParent(obj.layout21);
+    obj.button37:setLeft(0);
+    obj.button37:setTop(0);
+    obj.button37:setHeight(15);
+    obj.button37:setWidth(15);
+    obj.button37:setText("1");
+    obj.button37:setName("button37");
 
-    obj.radioButton38 = GUI.fromHandle(_obj_newObject("radioButton"));
-    obj.radioButton38:setParent(obj.layout21);
-    obj.radioButton38:setLeft(0);
-    obj.radioButton38:setTop(15);
-    obj.radioButton38:setGroupName("grupo2");
-    obj.radioButton38:setField("dado2");
-    obj.radioButton38:setFieldValue("total2_7");
-    obj.radioButton38:setName("radioButton38");
+    obj.button38 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button38:setParent(obj.layout21);
+    obj.button38:setLeft(0);
+    obj.button38:setTop(15);
+    obj.button38:setHeight(15);
+    obj.button38:setWidth(15);
+    obj.button38:setText("2");
+    obj.button38:setName("button38");
 
     obj.edit91 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit91:setParent(obj.layout21);
@@ -2177,23 +2056,23 @@ local function constructNew_frmACN2()
     obj.layout22:setHeight(50);
     obj.layout22:setName("layout22");
 
-    obj.radioButton39 = GUI.fromHandle(_obj_newObject("radioButton"));
-    obj.radioButton39:setParent(obj.layout22);
-    obj.radioButton39:setLeft(0);
-    obj.radioButton39:setTop(0);
-    obj.radioButton39:setGroupName("grupo1");
-    obj.radioButton39:setField("dado1");
-    obj.radioButton39:setFieldValue("total2_8");
-    obj.radioButton39:setName("radioButton39");
+    obj.button39 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button39:setParent(obj.layout22);
+    obj.button39:setLeft(0);
+    obj.button39:setTop(0);
+    obj.button39:setHeight(15);
+    obj.button39:setWidth(15);
+    obj.button39:setText("1");
+    obj.button39:setName("button39");
 
-    obj.radioButton40 = GUI.fromHandle(_obj_newObject("radioButton"));
-    obj.radioButton40:setParent(obj.layout22);
-    obj.radioButton40:setLeft(0);
-    obj.radioButton40:setTop(15);
-    obj.radioButton40:setGroupName("grupo2");
-    obj.radioButton40:setField("dado2");
-    obj.radioButton40:setFieldValue("total2_8");
-    obj.radioButton40:setName("radioButton40");
+    obj.button40 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button40:setParent(obj.layout22);
+    obj.button40:setLeft(0);
+    obj.button40:setTop(15);
+    obj.button40:setHeight(15);
+    obj.button40:setWidth(15);
+    obj.button40:setText("2");
+    obj.button40:setName("button40");
 
     obj.edit96 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit96:setParent(obj.layout22);
@@ -2275,23 +2154,23 @@ local function constructNew_frmACN2()
     obj.layout23:setHeight(50);
     obj.layout23:setName("layout23");
 
-    obj.radioButton41 = GUI.fromHandle(_obj_newObject("radioButton"));
-    obj.radioButton41:setParent(obj.layout23);
-    obj.radioButton41:setLeft(0);
-    obj.radioButton41:setTop(0);
-    obj.radioButton41:setGroupName("grupo1");
-    obj.radioButton41:setField("dado1");
-    obj.radioButton41:setFieldValue("total2_9");
-    obj.radioButton41:setName("radioButton41");
+    obj.button41 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button41:setParent(obj.layout23);
+    obj.button41:setLeft(0);
+    obj.button41:setTop(0);
+    obj.button41:setHeight(15);
+    obj.button41:setWidth(15);
+    obj.button41:setText("1");
+    obj.button41:setName("button41");
 
-    obj.radioButton42 = GUI.fromHandle(_obj_newObject("radioButton"));
-    obj.radioButton42:setParent(obj.layout23);
-    obj.radioButton42:setLeft(0);
-    obj.radioButton42:setTop(15);
-    obj.radioButton42:setGroupName("grupo2");
-    obj.radioButton42:setField("dado2");
-    obj.radioButton42:setFieldValue("total2_9");
-    obj.radioButton42:setName("radioButton42");
+    obj.button42 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button42:setParent(obj.layout23);
+    obj.button42:setLeft(0);
+    obj.button42:setTop(15);
+    obj.button42:setHeight(15);
+    obj.button42:setWidth(15);
+    obj.button42:setText("2");
+    obj.button42:setName("button42");
 
     obj.edit101 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit101:setParent(obj.layout23);
@@ -2373,23 +2252,23 @@ local function constructNew_frmACN2()
     obj.layout24:setHeight(50);
     obj.layout24:setName("layout24");
 
-    obj.radioButton43 = GUI.fromHandle(_obj_newObject("radioButton"));
-    obj.radioButton43:setParent(obj.layout24);
-    obj.radioButton43:setLeft(0);
-    obj.radioButton43:setTop(0);
-    obj.radioButton43:setGroupName("grupo1");
-    obj.radioButton43:setField("dado1");
-    obj.radioButton43:setFieldValue("total2_10");
-    obj.radioButton43:setName("radioButton43");
+    obj.button43 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button43:setParent(obj.layout24);
+    obj.button43:setLeft(0);
+    obj.button43:setTop(0);
+    obj.button43:setHeight(15);
+    obj.button43:setWidth(15);
+    obj.button43:setText("1");
+    obj.button43:setName("button43");
 
-    obj.radioButton44 = GUI.fromHandle(_obj_newObject("radioButton"));
-    obj.radioButton44:setParent(obj.layout24);
-    obj.radioButton44:setLeft(0);
-    obj.radioButton44:setTop(15);
-    obj.radioButton44:setGroupName("grupo2");
-    obj.radioButton44:setField("dado2");
-    obj.radioButton44:setFieldValue("total2_10");
-    obj.radioButton44:setName("radioButton44");
+    obj.button44 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button44:setParent(obj.layout24);
+    obj.button44:setLeft(0);
+    obj.button44:setTop(15);
+    obj.button44:setHeight(15);
+    obj.button44:setWidth(15);
+    obj.button44:setText("2");
+    obj.button44:setName("button44");
 
     obj.edit106 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit106:setParent(obj.layout24);
@@ -2471,23 +2350,23 @@ local function constructNew_frmACN2()
     obj.layout25:setHeight(50);
     obj.layout25:setName("layout25");
 
-    obj.radioButton45 = GUI.fromHandle(_obj_newObject("radioButton"));
-    obj.radioButton45:setParent(obj.layout25);
-    obj.radioButton45:setLeft(0);
-    obj.radioButton45:setTop(0);
-    obj.radioButton45:setGroupName("grupo1");
-    obj.radioButton45:setField("dado1");
-    obj.radioButton45:setFieldValue("total2_11");
-    obj.radioButton45:setName("radioButton45");
+    obj.button45 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button45:setParent(obj.layout25);
+    obj.button45:setLeft(0);
+    obj.button45:setTop(0);
+    obj.button45:setHeight(15);
+    obj.button45:setWidth(15);
+    obj.button45:setText("1");
+    obj.button45:setName("button45");
 
-    obj.radioButton46 = GUI.fromHandle(_obj_newObject("radioButton"));
-    obj.radioButton46:setParent(obj.layout25);
-    obj.radioButton46:setLeft(0);
-    obj.radioButton46:setTop(15);
-    obj.radioButton46:setGroupName("grupo2");
-    obj.radioButton46:setField("dado2");
-    obj.radioButton46:setFieldValue("total2_11");
-    obj.radioButton46:setName("radioButton46");
+    obj.button46 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button46:setParent(obj.layout25);
+    obj.button46:setLeft(0);
+    obj.button46:setTop(15);
+    obj.button46:setHeight(15);
+    obj.button46:setWidth(15);
+    obj.button46:setText("2");
+    obj.button46:setName("button46");
 
     obj.edit111 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit111:setParent(obj.layout25);
@@ -2569,23 +2448,23 @@ local function constructNew_frmACN2()
     obj.layout26:setHeight(50);
     obj.layout26:setName("layout26");
 
-    obj.radioButton47 = GUI.fromHandle(_obj_newObject("radioButton"));
-    obj.radioButton47:setParent(obj.layout26);
-    obj.radioButton47:setLeft(0);
-    obj.radioButton47:setTop(0);
-    obj.radioButton47:setGroupName("grupo1");
-    obj.radioButton47:setField("dado1");
-    obj.radioButton47:setFieldValue("total2_12");
-    obj.radioButton47:setName("radioButton47");
+    obj.button47 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button47:setParent(obj.layout26);
+    obj.button47:setLeft(0);
+    obj.button47:setTop(0);
+    obj.button47:setHeight(15);
+    obj.button47:setWidth(15);
+    obj.button47:setText("1");
+    obj.button47:setName("button47");
 
-    obj.radioButton48 = GUI.fromHandle(_obj_newObject("radioButton"));
-    obj.radioButton48:setParent(obj.layout26);
-    obj.radioButton48:setLeft(0);
-    obj.radioButton48:setTop(15);
-    obj.radioButton48:setGroupName("grupo2");
-    obj.radioButton48:setField("dado2");
-    obj.radioButton48:setFieldValue("total2_12");
-    obj.radioButton48:setName("radioButton48");
+    obj.button48 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button48:setParent(obj.layout26);
+    obj.button48:setLeft(0);
+    obj.button48:setTop(15);
+    obj.button48:setHeight(15);
+    obj.button48:setWidth(15);
+    obj.button48:setText("2");
+    obj.button48:setName("button48");
 
     obj.edit116 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit116:setParent(obj.layout26);
@@ -2742,23 +2621,23 @@ local function constructNew_frmACN2()
     obj.layout28:setHeight(50);
     obj.layout28:setName("layout28");
 
-    obj.radioButton49 = GUI.fromHandle(_obj_newObject("radioButton"));
-    obj.radioButton49:setParent(obj.layout28);
-    obj.radioButton49:setLeft(0);
-    obj.radioButton49:setTop(0);
-    obj.radioButton49:setGroupName("grupo1");
-    obj.radioButton49:setField("dado1");
-    obj.radioButton49:setFieldValue("total1_1");
-    obj.radioButton49:setName("radioButton49");
+    obj.button49 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button49:setParent(obj.layout28);
+    obj.button49:setLeft(0);
+    obj.button49:setTop(0);
+    obj.button49:setHeight(15);
+    obj.button49:setWidth(15);
+    obj.button49:setText("1");
+    obj.button49:setName("button49");
 
-    obj.radioButton50 = GUI.fromHandle(_obj_newObject("radioButton"));
-    obj.radioButton50:setParent(obj.layout28);
-    obj.radioButton50:setLeft(0);
-    obj.radioButton50:setTop(15);
-    obj.radioButton50:setGroupName("grupo2");
-    obj.radioButton50:setField("dado2");
-    obj.radioButton50:setFieldValue("total1_1");
-    obj.radioButton50:setName("radioButton50");
+    obj.button50 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button50:setParent(obj.layout28);
+    obj.button50:setLeft(0);
+    obj.button50:setTop(15);
+    obj.button50:setHeight(15);
+    obj.button50:setWidth(15);
+    obj.button50:setText("2");
+    obj.button50:setName("button50");
 
     obj.edit121 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit121:setParent(obj.layout28);
@@ -2840,23 +2719,23 @@ local function constructNew_frmACN2()
     obj.layout29:setHeight(50);
     obj.layout29:setName("layout29");
 
-    obj.radioButton51 = GUI.fromHandle(_obj_newObject("radioButton"));
-    obj.radioButton51:setParent(obj.layout29);
-    obj.radioButton51:setLeft(0);
-    obj.radioButton51:setTop(0);
-    obj.radioButton51:setGroupName("grupo1");
-    obj.radioButton51:setField("dado1");
-    obj.radioButton51:setFieldValue("total1_2");
-    obj.radioButton51:setName("radioButton51");
+    obj.button51 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button51:setParent(obj.layout29);
+    obj.button51:setLeft(0);
+    obj.button51:setTop(0);
+    obj.button51:setHeight(15);
+    obj.button51:setWidth(15);
+    obj.button51:setText("1");
+    obj.button51:setName("button51");
 
-    obj.radioButton52 = GUI.fromHandle(_obj_newObject("radioButton"));
-    obj.radioButton52:setParent(obj.layout29);
-    obj.radioButton52:setLeft(0);
-    obj.radioButton52:setTop(15);
-    obj.radioButton52:setGroupName("grupo2");
-    obj.radioButton52:setField("dado2");
-    obj.radioButton52:setFieldValue("total1_2");
-    obj.radioButton52:setName("radioButton52");
+    obj.button52 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button52:setParent(obj.layout29);
+    obj.button52:setLeft(0);
+    obj.button52:setTop(15);
+    obj.button52:setHeight(15);
+    obj.button52:setWidth(15);
+    obj.button52:setText("2");
+    obj.button52:setName("button52");
 
     obj.edit126 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit126:setParent(obj.layout29);
@@ -2938,23 +2817,23 @@ local function constructNew_frmACN2()
     obj.layout30:setHeight(50);
     obj.layout30:setName("layout30");
 
-    obj.radioButton53 = GUI.fromHandle(_obj_newObject("radioButton"));
-    obj.radioButton53:setParent(obj.layout30);
-    obj.radioButton53:setLeft(0);
-    obj.radioButton53:setTop(0);
-    obj.radioButton53:setGroupName("grupo1");
-    obj.radioButton53:setField("dado1");
-    obj.radioButton53:setFieldValue("total1_3");
-    obj.radioButton53:setName("radioButton53");
+    obj.button53 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button53:setParent(obj.layout30);
+    obj.button53:setLeft(0);
+    obj.button53:setTop(0);
+    obj.button53:setHeight(15);
+    obj.button53:setWidth(15);
+    obj.button53:setText("1");
+    obj.button53:setName("button53");
 
-    obj.radioButton54 = GUI.fromHandle(_obj_newObject("radioButton"));
-    obj.radioButton54:setParent(obj.layout30);
-    obj.radioButton54:setLeft(0);
-    obj.radioButton54:setTop(15);
-    obj.radioButton54:setGroupName("grupo2");
-    obj.radioButton54:setField("dado2");
-    obj.radioButton54:setFieldValue("total1_3");
-    obj.radioButton54:setName("radioButton54");
+    obj.button54 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button54:setParent(obj.layout30);
+    obj.button54:setLeft(0);
+    obj.button54:setTop(15);
+    obj.button54:setHeight(15);
+    obj.button54:setWidth(15);
+    obj.button54:setText("2");
+    obj.button54:setName("button54");
 
     obj.edit131 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit131:setParent(obj.layout30);
@@ -3036,23 +2915,23 @@ local function constructNew_frmACN2()
     obj.layout31:setHeight(50);
     obj.layout31:setName("layout31");
 
-    obj.radioButton55 = GUI.fromHandle(_obj_newObject("radioButton"));
-    obj.radioButton55:setParent(obj.layout31);
-    obj.radioButton55:setLeft(0);
-    obj.radioButton55:setTop(0);
-    obj.radioButton55:setGroupName("grupo1");
-    obj.radioButton55:setField("dado1");
-    obj.radioButton55:setFieldValue("total1_4");
-    obj.radioButton55:setName("radioButton55");
+    obj.button55 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button55:setParent(obj.layout31);
+    obj.button55:setLeft(0);
+    obj.button55:setTop(0);
+    obj.button55:setHeight(15);
+    obj.button55:setWidth(15);
+    obj.button55:setText("1");
+    obj.button55:setName("button55");
 
-    obj.radioButton56 = GUI.fromHandle(_obj_newObject("radioButton"));
-    obj.radioButton56:setParent(obj.layout31);
-    obj.radioButton56:setLeft(0);
-    obj.radioButton56:setTop(15);
-    obj.radioButton56:setGroupName("grupo2");
-    obj.radioButton56:setField("dado2");
-    obj.radioButton56:setFieldValue("total1_4");
-    obj.radioButton56:setName("radioButton56");
+    obj.button56 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button56:setParent(obj.layout31);
+    obj.button56:setLeft(0);
+    obj.button56:setTop(15);
+    obj.button56:setHeight(15);
+    obj.button56:setWidth(15);
+    obj.button56:setText("2");
+    obj.button56:setName("button56");
 
     obj.edit136 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit136:setParent(obj.layout31);
@@ -3134,23 +3013,23 @@ local function constructNew_frmACN2()
     obj.layout32:setHeight(50);
     obj.layout32:setName("layout32");
 
-    obj.radioButton57 = GUI.fromHandle(_obj_newObject("radioButton"));
-    obj.radioButton57:setParent(obj.layout32);
-    obj.radioButton57:setLeft(0);
-    obj.radioButton57:setTop(0);
-    obj.radioButton57:setGroupName("grupo1");
-    obj.radioButton57:setField("dado1");
-    obj.radioButton57:setFieldValue("total1_5");
-    obj.radioButton57:setName("radioButton57");
+    obj.button57 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button57:setParent(obj.layout32);
+    obj.button57:setLeft(0);
+    obj.button57:setTop(0);
+    obj.button57:setHeight(15);
+    obj.button57:setWidth(15);
+    obj.button57:setText("1");
+    obj.button57:setName("button57");
 
-    obj.radioButton58 = GUI.fromHandle(_obj_newObject("radioButton"));
-    obj.radioButton58:setParent(obj.layout32);
-    obj.radioButton58:setLeft(0);
-    obj.radioButton58:setTop(15);
-    obj.radioButton58:setGroupName("grupo2");
-    obj.radioButton58:setField("dado2");
-    obj.radioButton58:setFieldValue("total1_5");
-    obj.radioButton58:setName("radioButton58");
+    obj.button58 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button58:setParent(obj.layout32);
+    obj.button58:setLeft(0);
+    obj.button58:setTop(15);
+    obj.button58:setHeight(15);
+    obj.button58:setWidth(15);
+    obj.button58:setText("2");
+    obj.button58:setName("button58");
 
     obj.edit141 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit141:setParent(obj.layout32);
@@ -3232,23 +3111,23 @@ local function constructNew_frmACN2()
     obj.layout33:setHeight(50);
     obj.layout33:setName("layout33");
 
-    obj.radioButton59 = GUI.fromHandle(_obj_newObject("radioButton"));
-    obj.radioButton59:setParent(obj.layout33);
-    obj.radioButton59:setLeft(0);
-    obj.radioButton59:setTop(0);
-    obj.radioButton59:setGroupName("grupo1");
-    obj.radioButton59:setField("dado1");
-    obj.radioButton59:setFieldValue("total1_6");
-    obj.radioButton59:setName("radioButton59");
+    obj.button59 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button59:setParent(obj.layout33);
+    obj.button59:setLeft(0);
+    obj.button59:setTop(0);
+    obj.button59:setHeight(15);
+    obj.button59:setWidth(15);
+    obj.button59:setText("1");
+    obj.button59:setName("button59");
 
-    obj.radioButton60 = GUI.fromHandle(_obj_newObject("radioButton"));
-    obj.radioButton60:setParent(obj.layout33);
-    obj.radioButton60:setLeft(0);
-    obj.radioButton60:setTop(15);
-    obj.radioButton60:setGroupName("grupo2");
-    obj.radioButton60:setField("dado2");
-    obj.radioButton60:setFieldValue("total1_6");
-    obj.radioButton60:setName("radioButton60");
+    obj.button60 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button60:setParent(obj.layout33);
+    obj.button60:setLeft(0);
+    obj.button60:setTop(15);
+    obj.button60:setHeight(15);
+    obj.button60:setWidth(15);
+    obj.button60:setText("2");
+    obj.button60:setName("button60");
 
     obj.edit146 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit146:setParent(obj.layout33);
@@ -3330,23 +3209,23 @@ local function constructNew_frmACN2()
     obj.layout34:setHeight(50);
     obj.layout34:setName("layout34");
 
-    obj.radioButton61 = GUI.fromHandle(_obj_newObject("radioButton"));
-    obj.radioButton61:setParent(obj.layout34);
-    obj.radioButton61:setLeft(0);
-    obj.radioButton61:setTop(0);
-    obj.radioButton61:setGroupName("grupo1");
-    obj.radioButton61:setField("dado1");
-    obj.radioButton61:setFieldValue("total1_7");
-    obj.radioButton61:setName("radioButton61");
+    obj.button61 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button61:setParent(obj.layout34);
+    obj.button61:setLeft(0);
+    obj.button61:setTop(0);
+    obj.button61:setHeight(15);
+    obj.button61:setWidth(15);
+    obj.button61:setText("1");
+    obj.button61:setName("button61");
 
-    obj.radioButton62 = GUI.fromHandle(_obj_newObject("radioButton"));
-    obj.radioButton62:setParent(obj.layout34);
-    obj.radioButton62:setLeft(0);
-    obj.radioButton62:setTop(15);
-    obj.radioButton62:setGroupName("grupo2");
-    obj.radioButton62:setField("dado2");
-    obj.radioButton62:setFieldValue("total1_7");
-    obj.radioButton62:setName("radioButton62");
+    obj.button62 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button62:setParent(obj.layout34);
+    obj.button62:setLeft(0);
+    obj.button62:setTop(15);
+    obj.button62:setHeight(15);
+    obj.button62:setWidth(15);
+    obj.button62:setText("2");
+    obj.button62:setName("button62");
 
     obj.edit151 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit151:setParent(obj.layout34);
@@ -3428,23 +3307,23 @@ local function constructNew_frmACN2()
     obj.layout35:setHeight(50);
     obj.layout35:setName("layout35");
 
-    obj.radioButton63 = GUI.fromHandle(_obj_newObject("radioButton"));
-    obj.radioButton63:setParent(obj.layout35);
-    obj.radioButton63:setLeft(0);
-    obj.radioButton63:setTop(0);
-    obj.radioButton63:setGroupName("grupo1");
-    obj.radioButton63:setField("dado1");
-    obj.radioButton63:setFieldValue("total1_8");
-    obj.radioButton63:setName("radioButton63");
+    obj.button63 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button63:setParent(obj.layout35);
+    obj.button63:setLeft(0);
+    obj.button63:setTop(0);
+    obj.button63:setHeight(15);
+    obj.button63:setWidth(15);
+    obj.button63:setText("1");
+    obj.button63:setName("button63");
 
-    obj.radioButton64 = GUI.fromHandle(_obj_newObject("radioButton"));
-    obj.radioButton64:setParent(obj.layout35);
-    obj.radioButton64:setLeft(0);
-    obj.radioButton64:setTop(15);
-    obj.radioButton64:setGroupName("grupo2");
-    obj.radioButton64:setField("dado2");
-    obj.radioButton64:setFieldValue("total1_8");
-    obj.radioButton64:setName("radioButton64");
+    obj.button64 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button64:setParent(obj.layout35);
+    obj.button64:setLeft(0);
+    obj.button64:setTop(15);
+    obj.button64:setHeight(15);
+    obj.button64:setWidth(15);
+    obj.button64:setText("2");
+    obj.button64:setName("button64");
 
     obj.edit156 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit156:setParent(obj.layout35);
@@ -3526,23 +3405,23 @@ local function constructNew_frmACN2()
     obj.layout36:setHeight(50);
     obj.layout36:setName("layout36");
 
-    obj.radioButton65 = GUI.fromHandle(_obj_newObject("radioButton"));
-    obj.radioButton65:setParent(obj.layout36);
-    obj.radioButton65:setLeft(0);
-    obj.radioButton65:setTop(0);
-    obj.radioButton65:setGroupName("grupo1");
-    obj.radioButton65:setField("dado1");
-    obj.radioButton65:setFieldValue("total1_9");
-    obj.radioButton65:setName("radioButton65");
+    obj.button65 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button65:setParent(obj.layout36);
+    obj.button65:setLeft(0);
+    obj.button65:setTop(0);
+    obj.button65:setHeight(15);
+    obj.button65:setWidth(15);
+    obj.button65:setText("1");
+    obj.button65:setName("button65");
 
-    obj.radioButton66 = GUI.fromHandle(_obj_newObject("radioButton"));
-    obj.radioButton66:setParent(obj.layout36);
-    obj.radioButton66:setLeft(0);
-    obj.radioButton66:setTop(15);
-    obj.radioButton66:setGroupName("grupo2");
-    obj.radioButton66:setField("dado2");
-    obj.radioButton66:setFieldValue("total1_9");
-    obj.radioButton66:setName("radioButton66");
+    obj.button66 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button66:setParent(obj.layout36);
+    obj.button66:setLeft(0);
+    obj.button66:setTop(15);
+    obj.button66:setHeight(15);
+    obj.button66:setWidth(15);
+    obj.button66:setText("2");
+    obj.button66:setName("button66");
 
     obj.edit161 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit161:setParent(obj.layout36);
@@ -3624,23 +3503,23 @@ local function constructNew_frmACN2()
     obj.layout37:setHeight(50);
     obj.layout37:setName("layout37");
 
-    obj.radioButton67 = GUI.fromHandle(_obj_newObject("radioButton"));
-    obj.radioButton67:setParent(obj.layout37);
-    obj.radioButton67:setLeft(0);
-    obj.radioButton67:setTop(0);
-    obj.radioButton67:setGroupName("grupo1");
-    obj.radioButton67:setField("dado1");
-    obj.radioButton67:setFieldValue("total1_10");
-    obj.radioButton67:setName("radioButton67");
+    obj.button67 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button67:setParent(obj.layout37);
+    obj.button67:setLeft(0);
+    obj.button67:setTop(0);
+    obj.button67:setHeight(15);
+    obj.button67:setWidth(15);
+    obj.button67:setText("1");
+    obj.button67:setName("button67");
 
-    obj.radioButton68 = GUI.fromHandle(_obj_newObject("radioButton"));
-    obj.radioButton68:setParent(obj.layout37);
-    obj.radioButton68:setLeft(0);
-    obj.radioButton68:setTop(15);
-    obj.radioButton68:setGroupName("grupo2");
-    obj.radioButton68:setField("dado2");
-    obj.radioButton68:setFieldValue("total1_10");
-    obj.radioButton68:setName("radioButton68");
+    obj.button68 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button68:setParent(obj.layout37);
+    obj.button68:setLeft(0);
+    obj.button68:setTop(15);
+    obj.button68:setHeight(15);
+    obj.button68:setWidth(15);
+    obj.button68:setText("2");
+    obj.button68:setName("button68");
 
     obj.edit166 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit166:setParent(obj.layout37);
@@ -3722,23 +3601,23 @@ local function constructNew_frmACN2()
     obj.layout38:setHeight(50);
     obj.layout38:setName("layout38");
 
-    obj.radioButton69 = GUI.fromHandle(_obj_newObject("radioButton"));
-    obj.radioButton69:setParent(obj.layout38);
-    obj.radioButton69:setLeft(0);
-    obj.radioButton69:setTop(0);
-    obj.radioButton69:setGroupName("grupo1");
-    obj.radioButton69:setField("dado1");
-    obj.radioButton69:setFieldValue("total1_11");
-    obj.radioButton69:setName("radioButton69");
+    obj.button69 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button69:setParent(obj.layout38);
+    obj.button69:setLeft(0);
+    obj.button69:setTop(0);
+    obj.button69:setHeight(15);
+    obj.button69:setWidth(15);
+    obj.button69:setText("1");
+    obj.button69:setName("button69");
 
-    obj.radioButton70 = GUI.fromHandle(_obj_newObject("radioButton"));
-    obj.radioButton70:setParent(obj.layout38);
-    obj.radioButton70:setLeft(0);
-    obj.radioButton70:setTop(15);
-    obj.radioButton70:setGroupName("grupo2");
-    obj.radioButton70:setField("dado2");
-    obj.radioButton70:setFieldValue("total1_11");
-    obj.radioButton70:setName("radioButton70");
+    obj.button70 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button70:setParent(obj.layout38);
+    obj.button70:setLeft(0);
+    obj.button70:setTop(15);
+    obj.button70:setHeight(15);
+    obj.button70:setWidth(15);
+    obj.button70:setText("2");
+    obj.button70:setName("button70");
 
     obj.edit171 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit171:setParent(obj.layout38);
@@ -3820,23 +3699,23 @@ local function constructNew_frmACN2()
     obj.layout39:setHeight(50);
     obj.layout39:setName("layout39");
 
-    obj.radioButton71 = GUI.fromHandle(_obj_newObject("radioButton"));
-    obj.radioButton71:setParent(obj.layout39);
-    obj.radioButton71:setLeft(0);
-    obj.radioButton71:setTop(0);
-    obj.radioButton71:setGroupName("grupo1");
-    obj.radioButton71:setField("dado1");
-    obj.radioButton71:setFieldValue("total1_12");
-    obj.radioButton71:setName("radioButton71");
+    obj.button71 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button71:setParent(obj.layout39);
+    obj.button71:setLeft(0);
+    obj.button71:setTop(0);
+    obj.button71:setHeight(15);
+    obj.button71:setWidth(15);
+    obj.button71:setText("1");
+    obj.button71:setName("button71");
 
-    obj.radioButton72 = GUI.fromHandle(_obj_newObject("radioButton"));
-    obj.radioButton72:setParent(obj.layout39);
-    obj.radioButton72:setLeft(0);
-    obj.radioButton72:setTop(15);
-    obj.radioButton72:setGroupName("grupo2");
-    obj.radioButton72:setField("dado2");
-    obj.radioButton72:setFieldValue("total1_12");
-    obj.radioButton72:setName("radioButton72");
+    obj.button72 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button72:setParent(obj.layout39);
+    obj.button72:setLeft(0);
+    obj.button72:setTop(15);
+    obj.button72:setHeight(15);
+    obj.button72:setWidth(15);
+    obj.button72:setText("2");
+    obj.button72:setName("button72");
 
     obj.edit176 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit176:setParent(obj.layout39);
@@ -3993,23 +3872,23 @@ local function constructNew_frmACN2()
     obj.layout41:setHeight(50);
     obj.layout41:setName("layout41");
 
-    obj.radioButton73 = GUI.fromHandle(_obj_newObject("radioButton"));
-    obj.radioButton73:setParent(obj.layout41);
-    obj.radioButton73:setLeft(0);
-    obj.radioButton73:setTop(0);
-    obj.radioButton73:setGroupName("grupo1");
-    obj.radioButton73:setField("dado1");
-    obj.radioButton73:setFieldValue("total3_1");
-    obj.radioButton73:setName("radioButton73");
+    obj.button73 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button73:setParent(obj.layout41);
+    obj.button73:setLeft(0);
+    obj.button73:setTop(0);
+    obj.button73:setHeight(15);
+    obj.button73:setWidth(15);
+    obj.button73:setText("1");
+    obj.button73:setName("button73");
 
-    obj.radioButton74 = GUI.fromHandle(_obj_newObject("radioButton"));
-    obj.radioButton74:setParent(obj.layout41);
-    obj.radioButton74:setLeft(0);
-    obj.radioButton74:setTop(15);
-    obj.radioButton74:setGroupName("grupo2");
-    obj.radioButton74:setField("dado2");
-    obj.radioButton74:setFieldValue("total3_1");
-    obj.radioButton74:setName("radioButton74");
+    obj.button74 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button74:setParent(obj.layout41);
+    obj.button74:setLeft(0);
+    obj.button74:setTop(15);
+    obj.button74:setHeight(15);
+    obj.button74:setWidth(15);
+    obj.button74:setText("2");
+    obj.button74:setName("button74");
 
     obj.edit181 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit181:setParent(obj.layout41);
@@ -4091,23 +3970,23 @@ local function constructNew_frmACN2()
     obj.layout42:setHeight(50);
     obj.layout42:setName("layout42");
 
-    obj.radioButton75 = GUI.fromHandle(_obj_newObject("radioButton"));
-    obj.radioButton75:setParent(obj.layout42);
-    obj.radioButton75:setLeft(0);
-    obj.radioButton75:setTop(0);
-    obj.radioButton75:setGroupName("grupo1");
-    obj.radioButton75:setField("dado1");
-    obj.radioButton75:setFieldValue("total3_2");
-    obj.radioButton75:setName("radioButton75");
+    obj.button75 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button75:setParent(obj.layout42);
+    obj.button75:setLeft(0);
+    obj.button75:setTop(0);
+    obj.button75:setHeight(15);
+    obj.button75:setWidth(15);
+    obj.button75:setText("1");
+    obj.button75:setName("button75");
 
-    obj.radioButton76 = GUI.fromHandle(_obj_newObject("radioButton"));
-    obj.radioButton76:setParent(obj.layout42);
-    obj.radioButton76:setLeft(0);
-    obj.radioButton76:setTop(15);
-    obj.radioButton76:setGroupName("grupo2");
-    obj.radioButton76:setField("dado2");
-    obj.radioButton76:setFieldValue("total3_2");
-    obj.radioButton76:setName("radioButton76");
+    obj.button76 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button76:setParent(obj.layout42);
+    obj.button76:setLeft(0);
+    obj.button76:setTop(15);
+    obj.button76:setHeight(15);
+    obj.button76:setWidth(15);
+    obj.button76:setText("2");
+    obj.button76:setName("button76");
 
     obj.edit186 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit186:setParent(obj.layout42);
@@ -4189,23 +4068,23 @@ local function constructNew_frmACN2()
     obj.layout43:setHeight(50);
     obj.layout43:setName("layout43");
 
-    obj.radioButton77 = GUI.fromHandle(_obj_newObject("radioButton"));
-    obj.radioButton77:setParent(obj.layout43);
-    obj.radioButton77:setLeft(0);
-    obj.radioButton77:setTop(0);
-    obj.radioButton77:setGroupName("grupo1");
-    obj.radioButton77:setField("dado1");
-    obj.radioButton77:setFieldValue("total3_3");
-    obj.radioButton77:setName("radioButton77");
+    obj.button77 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button77:setParent(obj.layout43);
+    obj.button77:setLeft(0);
+    obj.button77:setTop(0);
+    obj.button77:setHeight(15);
+    obj.button77:setWidth(15);
+    obj.button77:setText("1");
+    obj.button77:setName("button77");
 
-    obj.radioButton78 = GUI.fromHandle(_obj_newObject("radioButton"));
-    obj.radioButton78:setParent(obj.layout43);
-    obj.radioButton78:setLeft(0);
-    obj.radioButton78:setTop(15);
-    obj.radioButton78:setGroupName("grupo2");
-    obj.radioButton78:setField("dado2");
-    obj.radioButton78:setFieldValue("total3_3");
-    obj.radioButton78:setName("radioButton78");
+    obj.button78 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button78:setParent(obj.layout43);
+    obj.button78:setLeft(0);
+    obj.button78:setTop(15);
+    obj.button78:setHeight(15);
+    obj.button78:setWidth(15);
+    obj.button78:setText("2");
+    obj.button78:setName("button78");
 
     obj.edit191 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit191:setParent(obj.layout43);
@@ -4287,23 +4166,23 @@ local function constructNew_frmACN2()
     obj.layout44:setHeight(50);
     obj.layout44:setName("layout44");
 
-    obj.radioButton79 = GUI.fromHandle(_obj_newObject("radioButton"));
-    obj.radioButton79:setParent(obj.layout44);
-    obj.radioButton79:setLeft(0);
-    obj.radioButton79:setTop(0);
-    obj.radioButton79:setGroupName("grupo1");
-    obj.radioButton79:setField("dado1");
-    obj.radioButton79:setFieldValue("total3_4");
-    obj.radioButton79:setName("radioButton79");
+    obj.button79 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button79:setParent(obj.layout44);
+    obj.button79:setLeft(0);
+    obj.button79:setTop(0);
+    obj.button79:setHeight(15);
+    obj.button79:setWidth(15);
+    obj.button79:setText("1");
+    obj.button79:setName("button79");
 
-    obj.radioButton80 = GUI.fromHandle(_obj_newObject("radioButton"));
-    obj.radioButton80:setParent(obj.layout44);
-    obj.radioButton80:setLeft(0);
-    obj.radioButton80:setTop(15);
-    obj.radioButton80:setGroupName("grupo2");
-    obj.radioButton80:setField("dado2");
-    obj.radioButton80:setFieldValue("total3_4");
-    obj.radioButton80:setName("radioButton80");
+    obj.button80 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button80:setParent(obj.layout44);
+    obj.button80:setLeft(0);
+    obj.button80:setTop(15);
+    obj.button80:setHeight(15);
+    obj.button80:setWidth(15);
+    obj.button80:setText("2");
+    obj.button80:setName("button80");
 
     obj.edit196 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit196:setParent(obj.layout44);
@@ -4385,23 +4264,23 @@ local function constructNew_frmACN2()
     obj.layout45:setHeight(50);
     obj.layout45:setName("layout45");
 
-    obj.radioButton81 = GUI.fromHandle(_obj_newObject("radioButton"));
-    obj.radioButton81:setParent(obj.layout45);
-    obj.radioButton81:setLeft(0);
-    obj.radioButton81:setTop(0);
-    obj.radioButton81:setGroupName("grupo1");
-    obj.radioButton81:setField("dado1");
-    obj.radioButton81:setFieldValue("total3_5");
-    obj.radioButton81:setName("radioButton81");
+    obj.button81 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button81:setParent(obj.layout45);
+    obj.button81:setLeft(0);
+    obj.button81:setTop(0);
+    obj.button81:setHeight(15);
+    obj.button81:setWidth(15);
+    obj.button81:setText("1");
+    obj.button81:setName("button81");
 
-    obj.radioButton82 = GUI.fromHandle(_obj_newObject("radioButton"));
-    obj.radioButton82:setParent(obj.layout45);
-    obj.radioButton82:setLeft(0);
-    obj.radioButton82:setTop(15);
-    obj.radioButton82:setGroupName("grupo2");
-    obj.radioButton82:setField("dado2");
-    obj.radioButton82:setFieldValue("total3_5");
-    obj.radioButton82:setName("radioButton82");
+    obj.button82 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button82:setParent(obj.layout45);
+    obj.button82:setLeft(0);
+    obj.button82:setTop(15);
+    obj.button82:setHeight(15);
+    obj.button82:setWidth(15);
+    obj.button82:setText("2");
+    obj.button82:setName("button82");
 
     obj.edit201 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit201:setParent(obj.layout45);
@@ -4483,23 +4362,23 @@ local function constructNew_frmACN2()
     obj.layout46:setHeight(50);
     obj.layout46:setName("layout46");
 
-    obj.radioButton83 = GUI.fromHandle(_obj_newObject("radioButton"));
-    obj.radioButton83:setParent(obj.layout46);
-    obj.radioButton83:setLeft(0);
-    obj.radioButton83:setTop(0);
-    obj.radioButton83:setGroupName("grupo1");
-    obj.radioButton83:setField("dado1");
-    obj.radioButton83:setFieldValue("total3_6");
-    obj.radioButton83:setName("radioButton83");
+    obj.button83 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button83:setParent(obj.layout46);
+    obj.button83:setLeft(0);
+    obj.button83:setTop(0);
+    obj.button83:setHeight(15);
+    obj.button83:setWidth(15);
+    obj.button83:setText("1");
+    obj.button83:setName("button83");
 
-    obj.radioButton84 = GUI.fromHandle(_obj_newObject("radioButton"));
-    obj.radioButton84:setParent(obj.layout46);
-    obj.radioButton84:setLeft(0);
-    obj.radioButton84:setTop(15);
-    obj.radioButton84:setGroupName("grupo2");
-    obj.radioButton84:setField("dado2");
-    obj.radioButton84:setFieldValue("total3_6");
-    obj.radioButton84:setName("radioButton84");
+    obj.button84 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button84:setParent(obj.layout46);
+    obj.button84:setLeft(0);
+    obj.button84:setTop(15);
+    obj.button84:setHeight(15);
+    obj.button84:setWidth(15);
+    obj.button84:setText("2");
+    obj.button84:setName("button84");
 
     obj.edit206 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit206:setParent(obj.layout46);
@@ -4581,23 +4460,23 @@ local function constructNew_frmACN2()
     obj.layout47:setHeight(50);
     obj.layout47:setName("layout47");
 
-    obj.radioButton85 = GUI.fromHandle(_obj_newObject("radioButton"));
-    obj.radioButton85:setParent(obj.layout47);
-    obj.radioButton85:setLeft(0);
-    obj.radioButton85:setTop(0);
-    obj.radioButton85:setGroupName("grupo1");
-    obj.radioButton85:setField("dado1");
-    obj.radioButton85:setFieldValue("total3_7");
-    obj.radioButton85:setName("radioButton85");
+    obj.button85 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button85:setParent(obj.layout47);
+    obj.button85:setLeft(0);
+    obj.button85:setTop(0);
+    obj.button85:setHeight(15);
+    obj.button85:setWidth(15);
+    obj.button85:setText("1");
+    obj.button85:setName("button85");
 
-    obj.radioButton86 = GUI.fromHandle(_obj_newObject("radioButton"));
-    obj.radioButton86:setParent(obj.layout47);
-    obj.radioButton86:setLeft(0);
-    obj.radioButton86:setTop(15);
-    obj.radioButton86:setGroupName("grupo2");
-    obj.radioButton86:setField("dado2");
-    obj.radioButton86:setFieldValue("total3_7");
-    obj.radioButton86:setName("radioButton86");
+    obj.button86 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button86:setParent(obj.layout47);
+    obj.button86:setLeft(0);
+    obj.button86:setTop(15);
+    obj.button86:setHeight(15);
+    obj.button86:setWidth(15);
+    obj.button86:setText("2");
+    obj.button86:setName("button86");
 
     obj.edit211 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit211:setParent(obj.layout47);
@@ -4679,23 +4558,23 @@ local function constructNew_frmACN2()
     obj.layout48:setHeight(50);
     obj.layout48:setName("layout48");
 
-    obj.radioButton87 = GUI.fromHandle(_obj_newObject("radioButton"));
-    obj.radioButton87:setParent(obj.layout48);
-    obj.radioButton87:setLeft(0);
-    obj.radioButton87:setTop(0);
-    obj.radioButton87:setGroupName("grupo1");
-    obj.radioButton87:setField("dado1");
-    obj.radioButton87:setFieldValue("total3_8");
-    obj.radioButton87:setName("radioButton87");
+    obj.button87 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button87:setParent(obj.layout48);
+    obj.button87:setLeft(0);
+    obj.button87:setTop(0);
+    obj.button87:setHeight(15);
+    obj.button87:setWidth(15);
+    obj.button87:setText("1");
+    obj.button87:setName("button87");
 
-    obj.radioButton88 = GUI.fromHandle(_obj_newObject("radioButton"));
-    obj.radioButton88:setParent(obj.layout48);
-    obj.radioButton88:setLeft(0);
-    obj.radioButton88:setTop(15);
-    obj.radioButton88:setGroupName("grupo2");
-    obj.radioButton88:setField("dado2");
-    obj.radioButton88:setFieldValue("total3_8");
-    obj.radioButton88:setName("radioButton88");
+    obj.button88 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button88:setParent(obj.layout48);
+    obj.button88:setLeft(0);
+    obj.button88:setTop(15);
+    obj.button88:setHeight(15);
+    obj.button88:setWidth(15);
+    obj.button88:setText("2");
+    obj.button88:setName("button88");
 
     obj.edit216 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit216:setParent(obj.layout48);
@@ -4777,23 +4656,23 @@ local function constructNew_frmACN2()
     obj.layout49:setHeight(50);
     obj.layout49:setName("layout49");
 
-    obj.radioButton89 = GUI.fromHandle(_obj_newObject("radioButton"));
-    obj.radioButton89:setParent(obj.layout49);
-    obj.radioButton89:setLeft(0);
-    obj.radioButton89:setTop(0);
-    obj.radioButton89:setGroupName("grupo1");
-    obj.radioButton89:setField("dado1");
-    obj.radioButton89:setFieldValue("total3_9");
-    obj.radioButton89:setName("radioButton89");
+    obj.button89 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button89:setParent(obj.layout49);
+    obj.button89:setLeft(0);
+    obj.button89:setTop(0);
+    obj.button89:setHeight(15);
+    obj.button89:setWidth(15);
+    obj.button89:setText("1");
+    obj.button89:setName("button89");
 
-    obj.radioButton90 = GUI.fromHandle(_obj_newObject("radioButton"));
-    obj.radioButton90:setParent(obj.layout49);
-    obj.radioButton90:setLeft(0);
-    obj.radioButton90:setTop(15);
-    obj.radioButton90:setGroupName("grupo2");
-    obj.radioButton90:setField("dado2");
-    obj.radioButton90:setFieldValue("total3_9");
-    obj.radioButton90:setName("radioButton90");
+    obj.button90 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button90:setParent(obj.layout49);
+    obj.button90:setLeft(0);
+    obj.button90:setTop(15);
+    obj.button90:setHeight(15);
+    obj.button90:setWidth(15);
+    obj.button90:setText("2");
+    obj.button90:setName("button90");
 
     obj.edit221 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit221:setParent(obj.layout49);
@@ -4875,23 +4754,23 @@ local function constructNew_frmACN2()
     obj.layout50:setHeight(50);
     obj.layout50:setName("layout50");
 
-    obj.radioButton91 = GUI.fromHandle(_obj_newObject("radioButton"));
-    obj.radioButton91:setParent(obj.layout50);
-    obj.radioButton91:setLeft(0);
-    obj.radioButton91:setTop(0);
-    obj.radioButton91:setGroupName("grupo1");
-    obj.radioButton91:setField("dado1");
-    obj.radioButton91:setFieldValue("total3_10");
-    obj.radioButton91:setName("radioButton91");
+    obj.button91 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button91:setParent(obj.layout50);
+    obj.button91:setLeft(0);
+    obj.button91:setTop(0);
+    obj.button91:setHeight(15);
+    obj.button91:setWidth(15);
+    obj.button91:setText("1");
+    obj.button91:setName("button91");
 
-    obj.radioButton92 = GUI.fromHandle(_obj_newObject("radioButton"));
-    obj.radioButton92:setParent(obj.layout50);
-    obj.radioButton92:setLeft(0);
-    obj.radioButton92:setTop(15);
-    obj.radioButton92:setGroupName("grupo2");
-    obj.radioButton92:setField("dado2");
-    obj.radioButton92:setFieldValue("total3_10");
-    obj.radioButton92:setName("radioButton92");
+    obj.button92 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button92:setParent(obj.layout50);
+    obj.button92:setLeft(0);
+    obj.button92:setTop(15);
+    obj.button92:setHeight(15);
+    obj.button92:setWidth(15);
+    obj.button92:setText("2");
+    obj.button92:setName("button92");
 
     obj.edit226 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit226:setParent(obj.layout50);
@@ -4973,23 +4852,23 @@ local function constructNew_frmACN2()
     obj.layout51:setHeight(50);
     obj.layout51:setName("layout51");
 
-    obj.radioButton93 = GUI.fromHandle(_obj_newObject("radioButton"));
-    obj.radioButton93:setParent(obj.layout51);
-    obj.radioButton93:setLeft(0);
-    obj.radioButton93:setTop(0);
-    obj.radioButton93:setGroupName("grupo1");
-    obj.radioButton93:setField("dado1");
-    obj.radioButton93:setFieldValue("total3_11");
-    obj.radioButton93:setName("radioButton93");
+    obj.button93 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button93:setParent(obj.layout51);
+    obj.button93:setLeft(0);
+    obj.button93:setTop(0);
+    obj.button93:setHeight(15);
+    obj.button93:setWidth(15);
+    obj.button93:setText("1");
+    obj.button93:setName("button93");
 
-    obj.radioButton94 = GUI.fromHandle(_obj_newObject("radioButton"));
-    obj.radioButton94:setParent(obj.layout51);
-    obj.radioButton94:setLeft(0);
-    obj.radioButton94:setTop(15);
-    obj.radioButton94:setGroupName("grupo2");
-    obj.radioButton94:setField("dado2");
-    obj.radioButton94:setFieldValue("total3_11");
-    obj.radioButton94:setName("radioButton94");
+    obj.button94 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button94:setParent(obj.layout51);
+    obj.button94:setLeft(0);
+    obj.button94:setTop(15);
+    obj.button94:setHeight(15);
+    obj.button94:setWidth(15);
+    obj.button94:setText("2");
+    obj.button94:setName("button94");
 
     obj.edit231 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit231:setParent(obj.layout51);
@@ -5071,23 +4950,23 @@ local function constructNew_frmACN2()
     obj.layout52:setHeight(50);
     obj.layout52:setName("layout52");
 
-    obj.radioButton95 = GUI.fromHandle(_obj_newObject("radioButton"));
-    obj.radioButton95:setParent(obj.layout52);
-    obj.radioButton95:setLeft(0);
-    obj.radioButton95:setTop(0);
-    obj.radioButton95:setGroupName("grupo1");
-    obj.radioButton95:setField("dado1");
-    obj.radioButton95:setFieldValue("total3_12");
-    obj.radioButton95:setName("radioButton95");
+    obj.button95 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button95:setParent(obj.layout52);
+    obj.button95:setLeft(0);
+    obj.button95:setTop(0);
+    obj.button95:setHeight(15);
+    obj.button95:setWidth(15);
+    obj.button95:setText("1");
+    obj.button95:setName("button95");
 
-    obj.radioButton96 = GUI.fromHandle(_obj_newObject("radioButton"));
-    obj.radioButton96:setParent(obj.layout52);
-    obj.radioButton96:setLeft(0);
-    obj.radioButton96:setTop(15);
-    obj.radioButton96:setGroupName("grupo2");
-    obj.radioButton96:setField("dado2");
-    obj.radioButton96:setFieldValue("total3_12");
-    obj.radioButton96:setName("radioButton96");
+    obj.button96 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button96:setParent(obj.layout52);
+    obj.button96:setLeft(0);
+    obj.button96:setTop(15);
+    obj.button96:setHeight(15);
+    obj.button96:setWidth(15);
+    obj.button96:setText("2");
+    obj.button96:setName("button96");
 
     obj.edit236 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit236:setParent(obj.layout52);
@@ -5166,15 +5045,12 @@ local function constructNew_frmACN2()
     obj.layout53:setLeft(1200);
     obj.layout53:setTop(0);
     obj.layout53:setWidth(110);
-    obj.layout53:setHeight(230);
+    obj.layout53:setHeight(270);
     obj.layout53:setName("layout53");
 
     obj.rectangle53 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle53:setParent(obj.layout53);
-    obj.rectangle53:setLeft(0);
-    obj.rectangle53:setTop(0);
-    obj.rectangle53:setWidth(110);
-    obj.rectangle53:setHeight(230);
+    obj.rectangle53:setAlign("client");
     obj.rectangle53:setColor("black");
     obj.rectangle53:setXradius(15);
     obj.rectangle53:setYradius(15);
@@ -5250,15 +5126,15 @@ local function constructNew_frmACN2()
     obj.label77:setText("val");
     obj.label77:setName("label77");
 
-    obj.button1 = GUI.fromHandle(_obj_newObject("button"));
-    obj.button1:setParent(obj.layout53);
-    obj.button1:setLeft(85);
-    obj.button1:setTop(63);
-    obj.button1:setWidth(15);
-    obj.button1:setHeight(15);
-    obj.button1:setText("x");
-    obj.button1:setFontSize(10);
-    obj.button1:setName("button1");
+    obj.button97 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button97:setParent(obj.layout53);
+    obj.button97:setLeft(85);
+    obj.button97:setTop(63);
+    obj.button97:setWidth(15);
+    obj.button97:setHeight(15);
+    obj.button97:setText("x");
+    obj.button97:setFontSize(10);
+    obj.button97:setName("button97");
 
     obj.label78 = GUI.fromHandle(_obj_newObject("label"));
     obj.label78:setParent(obj.layout53);
@@ -5326,14 +5202,46 @@ local function constructNew_frmACN2()
     obj.edit242:setType("number");
     obj.edit242:setName("edit242");
 
-    obj.button2 = GUI.fromHandle(_obj_newObject("button"));
-    obj.button2:setParent(obj.layout53);
-    obj.button2:setLeft(30);
-    obj.button2:setTop(195);
-    obj.button2:setWidth(50);
-    obj.button2:setText("ROLAR");
-    obj.button2:setFontSize(11);
-    obj.button2:setName("button2");
+    obj.button98 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button98:setParent(obj.layout53);
+    obj.button98:setLeft(30);
+    obj.button98:setTop(195);
+    obj.button98:setWidth(50);
+    obj.button98:setText("ROLAR");
+    obj.button98:setFontSize(11);
+    obj.button98:setName("button98");
+
+    obj.label82 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label82:setParent(obj.layout53);
+    obj.label82:setLeft(5);
+    obj.label82:setTop(220);
+    obj.label82:setWidth(100);
+    obj.label82:setHeight(15);
+    obj.label82:setField("rollnome1");
+    obj.label82:setFontSize(11);
+    obj.label82:setHorzTextAlign("center");
+    obj.label82:setName("label82");
+
+    obj.label83 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label83:setParent(obj.layout53);
+    obj.label83:setLeft(5);
+    obj.label83:setTop(235);
+    obj.label83:setWidth(100);
+    obj.label83:setHeight(15);
+    obj.label83:setText("+");
+    obj.label83:setHorzTextAlign("center");
+    obj.label83:setName("label83");
+
+    obj.label84 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label84:setParent(obj.layout53);
+    obj.label84:setLeft(5);
+    obj.label84:setTop(250);
+    obj.label84:setWidth(100);
+    obj.label84:setHeight(15);
+    obj.label84:setField("rollnome2");
+    obj.label84:setFontSize(11);
+    obj.label84:setHorzTextAlign("center");
+    obj.label84:setName("label84");
 
     obj.dataLink1 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink1:setParent(obj.scrollBox1);
@@ -5341,7 +5249,7 @@ local function constructNew_frmACN2()
     obj.dataLink1:setDefaultValues({'Armas Brancas','Arremesso','Briga','Esportes','Esquiva','Furtividade','Prestidigitação','Sobrevivência','Empatia','Emp. Animais','Etiqueta','Expressão','Intimidação','Investigação','Lábia','Liderança','Manha','Prontidão','Acrobacia','Armas de Fogo','Arte da Fuga','Artes Marciais','Conduçao','Oficios','Performace','Subterfúgio','Acadêmicos','Administração','Ciências','Computação','Cultura','Direito','Medicina','Ocultismo','Política','Tecnologia'});
     obj.dataLink1:setName("dataLink1");
 
-    obj._e_event0 = obj.radioButton1:addEventListener("onChange",
+    obj._e_event0 = obj.button1:addEventListener("onClick",
         function (_)
             if sheet==nil then return end;
             				sheet.field1 = sheet.dado1;
@@ -5349,7 +5257,7 @@ local function constructNew_frmACN2()
             				sheet.rollnome1 = sheet.nome0_1;
         end, obj);
 
-    obj._e_event1 = obj.radioButton2:addEventListener("onChange",
+    obj._e_event1 = obj.button2:addEventListener("onClick",
         function (_)
             if sheet==nil then return end;
             				sheet.field2 = sheet.dado2;
@@ -5387,11 +5295,10 @@ local function constructNew_frmACN2()
             											(tonumber(sheet.xp0_1) or 0);
             					sheet.total0_1 = mod / 2;
             					sheet.total20_1 = mod .. " | " .. mod / 2;
-            					xpAptidoes();
             				end;
         end, obj);
 
-    obj._e_event5 = obj.radioButton3:addEventListener("onChange",
+    obj._e_event5 = obj.button3:addEventListener("onClick",
         function (_)
             if sheet==nil then return end;
             				sheet.field1 = sheet.dado1;
@@ -5399,7 +5306,7 @@ local function constructNew_frmACN2()
             				sheet.rollnome1 = sheet.nome0_2;
         end, obj);
 
-    obj._e_event6 = obj.radioButton4:addEventListener("onChange",
+    obj._e_event6 = obj.button4:addEventListener("onClick",
         function (_)
             if sheet==nil then return end;
             				sheet.field2 = sheet.dado2;
@@ -5437,11 +5344,10 @@ local function constructNew_frmACN2()
             											(tonumber(sheet.xp0_2) or 0);
             					sheet.total0_2 = mod / 2;
             					sheet.total20_2 = mod .. " | " .. mod / 2;
-            					xpAptidoes();
             				end;
         end, obj);
 
-    obj._e_event10 = obj.radioButton5:addEventListener("onChange",
+    obj._e_event10 = obj.button5:addEventListener("onClick",
         function (_)
             if sheet==nil then return end;
             				sheet.field1 = sheet.dado1;
@@ -5449,7 +5355,7 @@ local function constructNew_frmACN2()
             				sheet.rollnome1 = sheet.nome0_3;
         end, obj);
 
-    obj._e_event11 = obj.radioButton6:addEventListener("onChange",
+    obj._e_event11 = obj.button6:addEventListener("onClick",
         function (_)
             if sheet==nil then return end;
             				sheet.field2 = sheet.dado2;
@@ -5487,11 +5393,10 @@ local function constructNew_frmACN2()
             											(tonumber(sheet.xp0_3) or 0);
             					sheet.total0_3 = mod / 2;
             					sheet.total20_3 = mod .. " | " .. mod / 2;
-            					xpAptidoes();
             				end;
         end, obj);
 
-    obj._e_event15 = obj.radioButton7:addEventListener("onChange",
+    obj._e_event15 = obj.button7:addEventListener("onClick",
         function (_)
             if sheet==nil then return end;
             				sheet.field1 = sheet.dado1;
@@ -5499,7 +5404,7 @@ local function constructNew_frmACN2()
             				sheet.rollnome1 = sheet.nome0_4;
         end, obj);
 
-    obj._e_event16 = obj.radioButton8:addEventListener("onChange",
+    obj._e_event16 = obj.button8:addEventListener("onClick",
         function (_)
             if sheet==nil then return end;
             				sheet.field2 = sheet.dado2;
@@ -5537,11 +5442,10 @@ local function constructNew_frmACN2()
             											(tonumber(sheet.xp0_4) or 0);
             					sheet.total0_4 = mod / 2;
             					sheet.total20_4 = mod .. " | " .. mod / 2;
-            					xpAptidoes();
             				end;
         end, obj);
 
-    obj._e_event20 = obj.radioButton9:addEventListener("onChange",
+    obj._e_event20 = obj.button9:addEventListener("onClick",
         function (_)
             if sheet==nil then return end;
             				sheet.field1 = sheet.dado1;
@@ -5549,7 +5453,7 @@ local function constructNew_frmACN2()
             				sheet.rollnome1 = sheet.nome0_5;
         end, obj);
 
-    obj._e_event21 = obj.radioButton10:addEventListener("onChange",
+    obj._e_event21 = obj.button10:addEventListener("onClick",
         function (_)
             if sheet==nil then return end;
             				sheet.field2 = sheet.dado2;
@@ -5587,11 +5491,10 @@ local function constructNew_frmACN2()
             											(tonumber(sheet.xp0_5) or 0);
             					sheet.total0_5 = mod / 2;
             					sheet.total20_5 = mod .. " | " .. mod / 2;
-            					xpAptidoes();
             				end;
         end, obj);
 
-    obj._e_event25 = obj.radioButton11:addEventListener("onChange",
+    obj._e_event25 = obj.button11:addEventListener("onClick",
         function (_)
             if sheet==nil then return end;
             				sheet.field1 = sheet.dado1;
@@ -5599,7 +5502,7 @@ local function constructNew_frmACN2()
             				sheet.rollnome1 = sheet.nome0_6;
         end, obj);
 
-    obj._e_event26 = obj.radioButton12:addEventListener("onChange",
+    obj._e_event26 = obj.button12:addEventListener("onClick",
         function (_)
             if sheet==nil then return end;
             				sheet.field2 = sheet.dado2;
@@ -5637,11 +5540,10 @@ local function constructNew_frmACN2()
             											(tonumber(sheet.xp0_6) or 0);
             					sheet.total0_6 = mod / 2;
             					sheet.total20_6 = mod .. " | " .. mod / 2;
-            					xpAptidoes();
             				end;
         end, obj);
 
-    obj._e_event30 = obj.radioButton13:addEventListener("onChange",
+    obj._e_event30 = obj.button13:addEventListener("onClick",
         function (_)
             if sheet==nil then return end;
             				sheet.field1 = sheet.dado1;
@@ -5649,7 +5551,7 @@ local function constructNew_frmACN2()
             				sheet.rollnome1 = sheet.nome0_7;
         end, obj);
 
-    obj._e_event31 = obj.radioButton14:addEventListener("onChange",
+    obj._e_event31 = obj.button14:addEventListener("onClick",
         function (_)
             if sheet==nil then return end;
             				sheet.field2 = sheet.dado2;
@@ -5687,11 +5589,10 @@ local function constructNew_frmACN2()
             											(tonumber(sheet.xp0_7) or 0);
             					sheet.total0_7 = mod / 2;
             					sheet.total20_7 = mod .. " | " .. mod / 2;
-            					xpAptidoes();
             				end;
         end, obj);
 
-    obj._e_event35 = obj.radioButton15:addEventListener("onChange",
+    obj._e_event35 = obj.button15:addEventListener("onClick",
         function (_)
             if sheet==nil then return end;
             				sheet.field1 = sheet.dado1;
@@ -5699,7 +5600,7 @@ local function constructNew_frmACN2()
             				sheet.rollnome1 = sheet.nome0_8;
         end, obj);
 
-    obj._e_event36 = obj.radioButton16:addEventListener("onChange",
+    obj._e_event36 = obj.button16:addEventListener("onClick",
         function (_)
             if sheet==nil then return end;
             				sheet.field2 = sheet.dado2;
@@ -5737,11 +5638,10 @@ local function constructNew_frmACN2()
             											(tonumber(sheet.xp0_8) or 0);
             					sheet.total0_8 = mod / 2;
             					sheet.total20_8 = mod .. " | " .. mod / 2;
-            					xpAptidoes();
             				end;
         end, obj);
 
-    obj._e_event40 = obj.radioButton17:addEventListener("onChange",
+    obj._e_event40 = obj.button17:addEventListener("onClick",
         function (_)
             if sheet==nil then return end;
             				sheet.field1 = sheet.dado1;
@@ -5749,7 +5649,7 @@ local function constructNew_frmACN2()
             				sheet.rollnome1 = sheet.nome0_9;
         end, obj);
 
-    obj._e_event41 = obj.radioButton18:addEventListener("onChange",
+    obj._e_event41 = obj.button18:addEventListener("onClick",
         function (_)
             if sheet==nil then return end;
             				sheet.field2 = sheet.dado2;
@@ -5787,11 +5687,10 @@ local function constructNew_frmACN2()
             											(tonumber(sheet.xp0_9) or 0);
             					sheet.total0_9 = mod / 2;
             					sheet.total20_9 = mod .. " | " .. mod / 2;
-            					xpAptidoes();
             				end;
         end, obj);
 
-    obj._e_event45 = obj.radioButton19:addEventListener("onChange",
+    obj._e_event45 = obj.button19:addEventListener("onClick",
         function (_)
             if sheet==nil then return end;
             				sheet.field1 = sheet.dado1;
@@ -5799,7 +5698,7 @@ local function constructNew_frmACN2()
             				sheet.rollnome1 = sheet.nome0_10;
         end, obj);
 
-    obj._e_event46 = obj.radioButton20:addEventListener("onChange",
+    obj._e_event46 = obj.button20:addEventListener("onClick",
         function (_)
             if sheet==nil then return end;
             				sheet.field2 = sheet.dado2;
@@ -5837,11 +5736,10 @@ local function constructNew_frmACN2()
             											(tonumber(sheet.xp0_10) or 0);
             					sheet.total0_10 = mod / 2;
             					sheet.total20_10 = mod .. " | " .. mod / 2;
-            					xpAptidoes();
             				end;
         end, obj);
 
-    obj._e_event50 = obj.radioButton21:addEventListener("onChange",
+    obj._e_event50 = obj.button21:addEventListener("onClick",
         function (_)
             if sheet==nil then return end;
             				sheet.field1 = sheet.dado1;
@@ -5849,7 +5747,7 @@ local function constructNew_frmACN2()
             				sheet.rollnome1 = sheet.nome0_11;
         end, obj);
 
-    obj._e_event51 = obj.radioButton22:addEventListener("onChange",
+    obj._e_event51 = obj.button22:addEventListener("onClick",
         function (_)
             if sheet==nil then return end;
             				sheet.field2 = sheet.dado2;
@@ -5887,11 +5785,10 @@ local function constructNew_frmACN2()
             											(tonumber(sheet.xp0_11) or 0);
             					sheet.total0_11 = mod / 2;
             					sheet.total20_11 = mod .. " | " .. mod / 2;
-            					xpAptidoes();
             				end;
         end, obj);
 
-    obj._e_event55 = obj.radioButton23:addEventListener("onChange",
+    obj._e_event55 = obj.button23:addEventListener("onClick",
         function (_)
             if sheet==nil then return end;
             				sheet.field1 = sheet.dado1;
@@ -5899,7 +5796,7 @@ local function constructNew_frmACN2()
             				sheet.rollnome1 = sheet.nome0_12;
         end, obj);
 
-    obj._e_event56 = obj.radioButton24:addEventListener("onChange",
+    obj._e_event56 = obj.button24:addEventListener("onClick",
         function (_)
             if sheet==nil then return end;
             				sheet.field2 = sheet.dado2;
@@ -5937,11 +5834,10 @@ local function constructNew_frmACN2()
             											(tonumber(sheet.xp0_12) or 0);
             					sheet.total0_12 = mod / 2;
             					sheet.total20_12 = mod .. " | " .. mod / 2;
-            					xpAptidoes();
             				end;
         end, obj);
 
-    obj._e_event60 = obj.radioButton25:addEventListener("onChange",
+    obj._e_event60 = obj.button25:addEventListener("onClick",
         function (_)
             if sheet==nil then return end;
             				sheet.field1 = sheet.dado1;
@@ -5949,7 +5845,7 @@ local function constructNew_frmACN2()
             				sheet.rollnome1 = sheet.nome2_1;
         end, obj);
 
-    obj._e_event61 = obj.radioButton26:addEventListener("onChange",
+    obj._e_event61 = obj.button26:addEventListener("onClick",
         function (_)
             if sheet==nil then return end;
             				sheet.field2 = sheet.dado2;
@@ -5987,11 +5883,10 @@ local function constructNew_frmACN2()
             											(tonumber(sheet.xp2_1) or 0);
             					sheet.total2_1 = mod / 2;
             					sheet.total22_1 = mod .. " | " .. mod / 2;
-            					xpAptidoes();
             				end;
         end, obj);
 
-    obj._e_event65 = obj.radioButton27:addEventListener("onChange",
+    obj._e_event65 = obj.button27:addEventListener("onClick",
         function (_)
             if sheet==nil then return end;
             				sheet.field1 = sheet.dado1;
@@ -5999,7 +5894,7 @@ local function constructNew_frmACN2()
             				sheet.rollnome1 = sheet.nome2_2;
         end, obj);
 
-    obj._e_event66 = obj.radioButton28:addEventListener("onChange",
+    obj._e_event66 = obj.button28:addEventListener("onClick",
         function (_)
             if sheet==nil then return end;
             				sheet.field2 = sheet.dado2;
@@ -6037,11 +5932,10 @@ local function constructNew_frmACN2()
             											(tonumber(sheet.xp2_2) or 0);
             					sheet.total2_2 = mod / 2;
             					sheet.total22_2 = mod .. " | " .. mod / 2;
-            					xpAptidoes();
             				end;
         end, obj);
 
-    obj._e_event70 = obj.radioButton29:addEventListener("onChange",
+    obj._e_event70 = obj.button29:addEventListener("onClick",
         function (_)
             if sheet==nil then return end;
             				sheet.field1 = sheet.dado1;
@@ -6049,7 +5943,7 @@ local function constructNew_frmACN2()
             				sheet.rollnome1 = sheet.nome2_3;
         end, obj);
 
-    obj._e_event71 = obj.radioButton30:addEventListener("onChange",
+    obj._e_event71 = obj.button30:addEventListener("onClick",
         function (_)
             if sheet==nil then return end;
             				sheet.field2 = sheet.dado2;
@@ -6087,11 +5981,10 @@ local function constructNew_frmACN2()
             											(tonumber(sheet.xp2_3) or 0);
             					sheet.total2_3 = mod / 2;
             					sheet.total22_3 = mod .. " | " .. mod / 2;
-            					xpAptidoes();
             				end;
         end, obj);
 
-    obj._e_event75 = obj.radioButton31:addEventListener("onChange",
+    obj._e_event75 = obj.button31:addEventListener("onClick",
         function (_)
             if sheet==nil then return end;
             				sheet.field1 = sheet.dado1;
@@ -6099,7 +5992,7 @@ local function constructNew_frmACN2()
             				sheet.rollnome1 = sheet.nome2_4;
         end, obj);
 
-    obj._e_event76 = obj.radioButton32:addEventListener("onChange",
+    obj._e_event76 = obj.button32:addEventListener("onClick",
         function (_)
             if sheet==nil then return end;
             				sheet.field2 = sheet.dado2;
@@ -6137,11 +6030,10 @@ local function constructNew_frmACN2()
             											(tonumber(sheet.xp2_4) or 0);
             					sheet.total2_4 = mod / 2;
             					sheet.total22_4 = mod .. " | " .. mod / 2;
-            					xpAptidoes();
             				end;
         end, obj);
 
-    obj._e_event80 = obj.radioButton33:addEventListener("onChange",
+    obj._e_event80 = obj.button33:addEventListener("onClick",
         function (_)
             if sheet==nil then return end;
             				sheet.field1 = sheet.dado1;
@@ -6149,7 +6041,7 @@ local function constructNew_frmACN2()
             				sheet.rollnome1 = sheet.nome2_5;
         end, obj);
 
-    obj._e_event81 = obj.radioButton34:addEventListener("onChange",
+    obj._e_event81 = obj.button34:addEventListener("onClick",
         function (_)
             if sheet==nil then return end;
             				sheet.field2 = sheet.dado2;
@@ -6187,11 +6079,10 @@ local function constructNew_frmACN2()
             											(tonumber(sheet.xp2_5) or 0);
             					sheet.total2_5 = mod / 2;
             					sheet.total22_5 = mod .. " | " .. mod / 2;
-            					xpAptidoes();
             				end;
         end, obj);
 
-    obj._e_event85 = obj.radioButton35:addEventListener("onChange",
+    obj._e_event85 = obj.button35:addEventListener("onClick",
         function (_)
             if sheet==nil then return end;
             				sheet.field1 = sheet.dado1;
@@ -6199,7 +6090,7 @@ local function constructNew_frmACN2()
             				sheet.rollnome1 = sheet.nome2_6;
         end, obj);
 
-    obj._e_event86 = obj.radioButton36:addEventListener("onChange",
+    obj._e_event86 = obj.button36:addEventListener("onClick",
         function (_)
             if sheet==nil then return end;
             				sheet.field2 = sheet.dado2;
@@ -6237,11 +6128,10 @@ local function constructNew_frmACN2()
             											(tonumber(sheet.xp2_6) or 0);
             					sheet.total2_6 = mod / 2;
             					sheet.total22_6 = mod .. " | " .. mod / 2;
-            					xpAptidoes();
             				end;
         end, obj);
 
-    obj._e_event90 = obj.radioButton37:addEventListener("onChange",
+    obj._e_event90 = obj.button37:addEventListener("onClick",
         function (_)
             if sheet==nil then return end;
             				sheet.field1 = sheet.dado1;
@@ -6249,7 +6139,7 @@ local function constructNew_frmACN2()
             				sheet.rollnome1 = sheet.nome2_7;
         end, obj);
 
-    obj._e_event91 = obj.radioButton38:addEventListener("onChange",
+    obj._e_event91 = obj.button38:addEventListener("onClick",
         function (_)
             if sheet==nil then return end;
             				sheet.field2 = sheet.dado2;
@@ -6287,11 +6177,10 @@ local function constructNew_frmACN2()
             											(tonumber(sheet.xp2_7) or 0);
             					sheet.total2_7 = mod / 2;
             					sheet.total22_7 = mod .. " | " .. mod / 2;
-            					xpAptidoes();
             				end;
         end, obj);
 
-    obj._e_event95 = obj.radioButton39:addEventListener("onChange",
+    obj._e_event95 = obj.button39:addEventListener("onClick",
         function (_)
             if sheet==nil then return end;
             				sheet.field1 = sheet.dado1;
@@ -6299,7 +6188,7 @@ local function constructNew_frmACN2()
             				sheet.rollnome1 = sheet.nome2_8;
         end, obj);
 
-    obj._e_event96 = obj.radioButton40:addEventListener("onChange",
+    obj._e_event96 = obj.button40:addEventListener("onClick",
         function (_)
             if sheet==nil then return end;
             				sheet.field2 = sheet.dado2;
@@ -6337,11 +6226,10 @@ local function constructNew_frmACN2()
             											(tonumber(sheet.xp2_8) or 0);
             					sheet.total2_8 = mod / 2;
             					sheet.total22_8 = mod .. " | " .. mod / 2;
-            					xpAptidoes();
             				end;
         end, obj);
 
-    obj._e_event100 = obj.radioButton41:addEventListener("onChange",
+    obj._e_event100 = obj.button41:addEventListener("onClick",
         function (_)
             if sheet==nil then return end;
             				sheet.field1 = sheet.dado1;
@@ -6349,7 +6237,7 @@ local function constructNew_frmACN2()
             				sheet.rollnome1 = sheet.nome2_9;
         end, obj);
 
-    obj._e_event101 = obj.radioButton42:addEventListener("onChange",
+    obj._e_event101 = obj.button42:addEventListener("onClick",
         function (_)
             if sheet==nil then return end;
             				sheet.field2 = sheet.dado2;
@@ -6387,11 +6275,10 @@ local function constructNew_frmACN2()
             											(tonumber(sheet.xp2_9) or 0);
             					sheet.total2_9 = mod / 2;
             					sheet.total22_9 = mod .. " | " .. mod / 2;
-            					xpAptidoes();
             				end;
         end, obj);
 
-    obj._e_event105 = obj.radioButton43:addEventListener("onChange",
+    obj._e_event105 = obj.button43:addEventListener("onClick",
         function (_)
             if sheet==nil then return end;
             				sheet.field1 = sheet.dado1;
@@ -6399,7 +6286,7 @@ local function constructNew_frmACN2()
             				sheet.rollnome1 = sheet.nome2_10;
         end, obj);
 
-    obj._e_event106 = obj.radioButton44:addEventListener("onChange",
+    obj._e_event106 = obj.button44:addEventListener("onClick",
         function (_)
             if sheet==nil then return end;
             				sheet.field2 = sheet.dado2;
@@ -6437,11 +6324,10 @@ local function constructNew_frmACN2()
             											(tonumber(sheet.xp2_10) or 0);
             					sheet.total2_10 = mod / 2;
             					sheet.total22_10 = mod .. " | " .. mod / 2;
-            					xpAptidoes();
             				end;
         end, obj);
 
-    obj._e_event110 = obj.radioButton45:addEventListener("onChange",
+    obj._e_event110 = obj.button45:addEventListener("onClick",
         function (_)
             if sheet==nil then return end;
             				sheet.field1 = sheet.dado1;
@@ -6449,7 +6335,7 @@ local function constructNew_frmACN2()
             				sheet.rollnome1 = sheet.nome2_11;
         end, obj);
 
-    obj._e_event111 = obj.radioButton46:addEventListener("onChange",
+    obj._e_event111 = obj.button46:addEventListener("onClick",
         function (_)
             if sheet==nil then return end;
             				sheet.field2 = sheet.dado2;
@@ -6487,11 +6373,10 @@ local function constructNew_frmACN2()
             											(tonumber(sheet.xp2_11) or 0);
             					sheet.total2_11 = mod / 2;
             					sheet.total22_11 = mod .. " | " .. mod / 2;
-            					xpAptidoes();
             				end;
         end, obj);
 
-    obj._e_event115 = obj.radioButton47:addEventListener("onChange",
+    obj._e_event115 = obj.button47:addEventListener("onClick",
         function (_)
             if sheet==nil then return end;
             				sheet.field1 = sheet.dado1;
@@ -6499,7 +6384,7 @@ local function constructNew_frmACN2()
             				sheet.rollnome1 = sheet.nome2_12;
         end, obj);
 
-    obj._e_event116 = obj.radioButton48:addEventListener("onChange",
+    obj._e_event116 = obj.button48:addEventListener("onClick",
         function (_)
             if sheet==nil then return end;
             				sheet.field2 = sheet.dado2;
@@ -6537,11 +6422,10 @@ local function constructNew_frmACN2()
             											(tonumber(sheet.xp2_12) or 0);
             					sheet.total2_12 = mod / 2;
             					sheet.total22_12 = mod .. " | " .. mod / 2;
-            					xpAptidoes();
             				end;
         end, obj);
 
-    obj._e_event120 = obj.radioButton49:addEventListener("onChange",
+    obj._e_event120 = obj.button49:addEventListener("onClick",
         function (_)
             if sheet==nil then return end;
             				sheet.field1 = sheet.dado1;
@@ -6549,7 +6433,7 @@ local function constructNew_frmACN2()
             				sheet.rollnome1 = sheet.nome1_1;
         end, obj);
 
-    obj._e_event121 = obj.radioButton50:addEventListener("onChange",
+    obj._e_event121 = obj.button50:addEventListener("onClick",
         function (_)
             if sheet==nil then return end;
             				sheet.field2 = sheet.dado2;
@@ -6587,11 +6471,10 @@ local function constructNew_frmACN2()
             											(tonumber(sheet.xp1_1) or 0);
             					sheet.total1_1 = mod / 2;
             					sheet.total21_1 = mod .. " | " .. mod / 2;
-            					xpAptidoes();
             				end;
         end, obj);
 
-    obj._e_event125 = obj.radioButton51:addEventListener("onChange",
+    obj._e_event125 = obj.button51:addEventListener("onClick",
         function (_)
             if sheet==nil then return end;
             				sheet.field1 = sheet.dado1;
@@ -6599,7 +6482,7 @@ local function constructNew_frmACN2()
             				sheet.rollnome1 = sheet.nome1_2;
         end, obj);
 
-    obj._e_event126 = obj.radioButton52:addEventListener("onChange",
+    obj._e_event126 = obj.button52:addEventListener("onClick",
         function (_)
             if sheet==nil then return end;
             				sheet.field2 = sheet.dado2;
@@ -6637,11 +6520,10 @@ local function constructNew_frmACN2()
             											(tonumber(sheet.xp1_2) or 0);
             					sheet.total1_2 = mod / 2;
             					sheet.total21_2 = mod .. " | " .. mod / 2;
-            					xpAptidoes();
             				end;
         end, obj);
 
-    obj._e_event130 = obj.radioButton53:addEventListener("onChange",
+    obj._e_event130 = obj.button53:addEventListener("onClick",
         function (_)
             if sheet==nil then return end;
             				sheet.field1 = sheet.dado1;
@@ -6649,7 +6531,7 @@ local function constructNew_frmACN2()
             				sheet.rollnome1 = sheet.nome1_3;
         end, obj);
 
-    obj._e_event131 = obj.radioButton54:addEventListener("onChange",
+    obj._e_event131 = obj.button54:addEventListener("onClick",
         function (_)
             if sheet==nil then return end;
             				sheet.field2 = sheet.dado2;
@@ -6687,11 +6569,10 @@ local function constructNew_frmACN2()
             											(tonumber(sheet.xp1_3) or 0);
             					sheet.total1_3 = mod / 2;
             					sheet.total21_3 = mod .. " | " .. mod / 2;
-            					xpAptidoes();
             				end;
         end, obj);
 
-    obj._e_event135 = obj.radioButton55:addEventListener("onChange",
+    obj._e_event135 = obj.button55:addEventListener("onClick",
         function (_)
             if sheet==nil then return end;
             				sheet.field1 = sheet.dado1;
@@ -6699,7 +6580,7 @@ local function constructNew_frmACN2()
             				sheet.rollnome1 = sheet.nome1_4;
         end, obj);
 
-    obj._e_event136 = obj.radioButton56:addEventListener("onChange",
+    obj._e_event136 = obj.button56:addEventListener("onClick",
         function (_)
             if sheet==nil then return end;
             				sheet.field2 = sheet.dado2;
@@ -6737,11 +6618,10 @@ local function constructNew_frmACN2()
             											(tonumber(sheet.xp1_4) or 0);
             					sheet.total1_4 = mod / 2;
             					sheet.total21_4 = mod .. " | " .. mod / 2;
-            					xpAptidoes();
             				end;
         end, obj);
 
-    obj._e_event140 = obj.radioButton57:addEventListener("onChange",
+    obj._e_event140 = obj.button57:addEventListener("onClick",
         function (_)
             if sheet==nil then return end;
             				sheet.field1 = sheet.dado1;
@@ -6749,7 +6629,7 @@ local function constructNew_frmACN2()
             				sheet.rollnome1 = sheet.nome1_5;
         end, obj);
 
-    obj._e_event141 = obj.radioButton58:addEventListener("onChange",
+    obj._e_event141 = obj.button58:addEventListener("onClick",
         function (_)
             if sheet==nil then return end;
             				sheet.field2 = sheet.dado2;
@@ -6787,11 +6667,10 @@ local function constructNew_frmACN2()
             											(tonumber(sheet.xp1_5) or 0);
             					sheet.total1_5 = mod / 2;
             					sheet.total21_5 = mod .. " | " .. mod / 2;
-            					xpAptidoes();
             				end;
         end, obj);
 
-    obj._e_event145 = obj.radioButton59:addEventListener("onChange",
+    obj._e_event145 = obj.button59:addEventListener("onClick",
         function (_)
             if sheet==nil then return end;
             				sheet.field1 = sheet.dado1;
@@ -6799,7 +6678,7 @@ local function constructNew_frmACN2()
             				sheet.rollnome1 = sheet.nome1_6;
         end, obj);
 
-    obj._e_event146 = obj.radioButton60:addEventListener("onChange",
+    obj._e_event146 = obj.button60:addEventListener("onClick",
         function (_)
             if sheet==nil then return end;
             				sheet.field2 = sheet.dado2;
@@ -6837,11 +6716,10 @@ local function constructNew_frmACN2()
             											(tonumber(sheet.xp1_6) or 0);
             					sheet.total1_6 = mod / 2;
             					sheet.total21_6 = mod .. " | " .. mod / 2;
-            					xpAptidoes();
             				end;
         end, obj);
 
-    obj._e_event150 = obj.radioButton61:addEventListener("onChange",
+    obj._e_event150 = obj.button61:addEventListener("onClick",
         function (_)
             if sheet==nil then return end;
             				sheet.field1 = sheet.dado1;
@@ -6849,7 +6727,7 @@ local function constructNew_frmACN2()
             				sheet.rollnome1 = sheet.nome1_7;
         end, obj);
 
-    obj._e_event151 = obj.radioButton62:addEventListener("onChange",
+    obj._e_event151 = obj.button62:addEventListener("onClick",
         function (_)
             if sheet==nil then return end;
             				sheet.field2 = sheet.dado2;
@@ -6887,11 +6765,10 @@ local function constructNew_frmACN2()
             											(tonumber(sheet.xp1_7) or 0);
             					sheet.total1_7 = mod / 2;
             					sheet.total21_7 = mod .. " | " .. mod / 2;
-            					xpAptidoes();
             				end;
         end, obj);
 
-    obj._e_event155 = obj.radioButton63:addEventListener("onChange",
+    obj._e_event155 = obj.button63:addEventListener("onClick",
         function (_)
             if sheet==nil then return end;
             				sheet.field1 = sheet.dado1;
@@ -6899,7 +6776,7 @@ local function constructNew_frmACN2()
             				sheet.rollnome1 = sheet.nome1_8;
         end, obj);
 
-    obj._e_event156 = obj.radioButton64:addEventListener("onChange",
+    obj._e_event156 = obj.button64:addEventListener("onClick",
         function (_)
             if sheet==nil then return end;
             				sheet.field2 = sheet.dado2;
@@ -6937,11 +6814,10 @@ local function constructNew_frmACN2()
             											(tonumber(sheet.xp1_8) or 0);
             					sheet.total1_8 = mod / 2;
             					sheet.total21_8 = mod .. " | " .. mod / 2;
-            					xpAptidoes();
             				end;
         end, obj);
 
-    obj._e_event160 = obj.radioButton65:addEventListener("onChange",
+    obj._e_event160 = obj.button65:addEventListener("onClick",
         function (_)
             if sheet==nil then return end;
             				sheet.field1 = sheet.dado1;
@@ -6949,7 +6825,7 @@ local function constructNew_frmACN2()
             				sheet.rollnome1 = sheet.nome1_9;
         end, obj);
 
-    obj._e_event161 = obj.radioButton66:addEventListener("onChange",
+    obj._e_event161 = obj.button66:addEventListener("onClick",
         function (_)
             if sheet==nil then return end;
             				sheet.field2 = sheet.dado2;
@@ -6987,11 +6863,10 @@ local function constructNew_frmACN2()
             											(tonumber(sheet.xp1_9) or 0);
             					sheet.total1_9 = mod / 2;
             					sheet.total21_9 = mod .. " | " .. mod / 2;
-            					xpAptidoes();
             				end;
         end, obj);
 
-    obj._e_event165 = obj.radioButton67:addEventListener("onChange",
+    obj._e_event165 = obj.button67:addEventListener("onClick",
         function (_)
             if sheet==nil then return end;
             				sheet.field1 = sheet.dado1;
@@ -6999,7 +6874,7 @@ local function constructNew_frmACN2()
             				sheet.rollnome1 = sheet.nome1_10;
         end, obj);
 
-    obj._e_event166 = obj.radioButton68:addEventListener("onChange",
+    obj._e_event166 = obj.button68:addEventListener("onClick",
         function (_)
             if sheet==nil then return end;
             				sheet.field2 = sheet.dado2;
@@ -7037,11 +6912,10 @@ local function constructNew_frmACN2()
             											(tonumber(sheet.xp1_10) or 0);
             					sheet.total1_10 = mod / 2;
             					sheet.total21_10 = mod .. " | " .. mod / 2;
-            					xpAptidoes();
             				end;
         end, obj);
 
-    obj._e_event170 = obj.radioButton69:addEventListener("onChange",
+    obj._e_event170 = obj.button69:addEventListener("onClick",
         function (_)
             if sheet==nil then return end;
             				sheet.field1 = sheet.dado1;
@@ -7049,7 +6923,7 @@ local function constructNew_frmACN2()
             				sheet.rollnome1 = sheet.nome1_11;
         end, obj);
 
-    obj._e_event171 = obj.radioButton70:addEventListener("onChange",
+    obj._e_event171 = obj.button70:addEventListener("onClick",
         function (_)
             if sheet==nil then return end;
             				sheet.field2 = sheet.dado2;
@@ -7087,11 +6961,10 @@ local function constructNew_frmACN2()
             											(tonumber(sheet.xp1_11) or 0);
             					sheet.total1_11 = mod / 2;
             					sheet.total21_11 = mod .. " | " .. mod / 2;
-            					xpAptidoes();
             				end;
         end, obj);
 
-    obj._e_event175 = obj.radioButton71:addEventListener("onChange",
+    obj._e_event175 = obj.button71:addEventListener("onClick",
         function (_)
             if sheet==nil then return end;
             				sheet.field1 = sheet.dado1;
@@ -7099,7 +6972,7 @@ local function constructNew_frmACN2()
             				sheet.rollnome1 = sheet.nome1_12;
         end, obj);
 
-    obj._e_event176 = obj.radioButton72:addEventListener("onChange",
+    obj._e_event176 = obj.button72:addEventListener("onClick",
         function (_)
             if sheet==nil then return end;
             				sheet.field2 = sheet.dado2;
@@ -7137,11 +7010,10 @@ local function constructNew_frmACN2()
             											(tonumber(sheet.xp1_12) or 0);
             					sheet.total1_12 = mod / 2;
             					sheet.total21_12 = mod .. " | " .. mod / 2;
-            					xpAptidoes();
             				end;
         end, obj);
 
-    obj._e_event180 = obj.radioButton73:addEventListener("onChange",
+    obj._e_event180 = obj.button73:addEventListener("onClick",
         function (_)
             if sheet==nil then return end;
             				sheet.field1 = sheet.dado1;
@@ -7149,7 +7021,7 @@ local function constructNew_frmACN2()
             				sheet.rollnome1 = sheet.nome3_1;
         end, obj);
 
-    obj._e_event181 = obj.radioButton74:addEventListener("onChange",
+    obj._e_event181 = obj.button74:addEventListener("onClick",
         function (_)
             if sheet==nil then return end;
             				sheet.field2 = sheet.dado2;
@@ -7187,11 +7059,10 @@ local function constructNew_frmACN2()
             											(tonumber(sheet.xp3_1) or 0);
             					sheet.total3_1 = mod / 2;
             					sheet.total23_1 = mod .. " | " .. mod / 2;
-            					xpAptidoes();
             				end;
         end, obj);
 
-    obj._e_event185 = obj.radioButton75:addEventListener("onChange",
+    obj._e_event185 = obj.button75:addEventListener("onClick",
         function (_)
             if sheet==nil then return end;
             				sheet.field1 = sheet.dado1;
@@ -7199,7 +7070,7 @@ local function constructNew_frmACN2()
             				sheet.rollnome1 = sheet.nome3_2;
         end, obj);
 
-    obj._e_event186 = obj.radioButton76:addEventListener("onChange",
+    obj._e_event186 = obj.button76:addEventListener("onClick",
         function (_)
             if sheet==nil then return end;
             				sheet.field2 = sheet.dado2;
@@ -7237,11 +7108,10 @@ local function constructNew_frmACN2()
             											(tonumber(sheet.xp3_2) or 0);
             					sheet.total3_2 = mod / 2;
             					sheet.total23_2 = mod .. " | " .. mod / 2;
-            					xpAptidoes();
             				end;
         end, obj);
 
-    obj._e_event190 = obj.radioButton77:addEventListener("onChange",
+    obj._e_event190 = obj.button77:addEventListener("onClick",
         function (_)
             if sheet==nil then return end;
             				sheet.field1 = sheet.dado1;
@@ -7249,7 +7119,7 @@ local function constructNew_frmACN2()
             				sheet.rollnome1 = sheet.nome3_3;
         end, obj);
 
-    obj._e_event191 = obj.radioButton78:addEventListener("onChange",
+    obj._e_event191 = obj.button78:addEventListener("onClick",
         function (_)
             if sheet==nil then return end;
             				sheet.field2 = sheet.dado2;
@@ -7287,11 +7157,10 @@ local function constructNew_frmACN2()
             											(tonumber(sheet.xp3_3) or 0);
             					sheet.total3_3 = mod / 2;
             					sheet.total23_3 = mod .. " | " .. mod / 2;
-            					xpAptidoes();
             				end;
         end, obj);
 
-    obj._e_event195 = obj.radioButton79:addEventListener("onChange",
+    obj._e_event195 = obj.button79:addEventListener("onClick",
         function (_)
             if sheet==nil then return end;
             				sheet.field1 = sheet.dado1;
@@ -7299,7 +7168,7 @@ local function constructNew_frmACN2()
             				sheet.rollnome1 = sheet.nome3_4;
         end, obj);
 
-    obj._e_event196 = obj.radioButton80:addEventListener("onChange",
+    obj._e_event196 = obj.button80:addEventListener("onClick",
         function (_)
             if sheet==nil then return end;
             				sheet.field2 = sheet.dado2;
@@ -7337,11 +7206,10 @@ local function constructNew_frmACN2()
             											(tonumber(sheet.xp3_4) or 0);
             					sheet.total3_4 = mod / 2;
             					sheet.total23_4 = mod .. " | " .. mod / 2;
-            					xpAptidoes();
             				end;
         end, obj);
 
-    obj._e_event200 = obj.radioButton81:addEventListener("onChange",
+    obj._e_event200 = obj.button81:addEventListener("onClick",
         function (_)
             if sheet==nil then return end;
             				sheet.field1 = sheet.dado1;
@@ -7349,7 +7217,7 @@ local function constructNew_frmACN2()
             				sheet.rollnome1 = sheet.nome3_5;
         end, obj);
 
-    obj._e_event201 = obj.radioButton82:addEventListener("onChange",
+    obj._e_event201 = obj.button82:addEventListener("onClick",
         function (_)
             if sheet==nil then return end;
             				sheet.field2 = sheet.dado2;
@@ -7387,11 +7255,10 @@ local function constructNew_frmACN2()
             											(tonumber(sheet.xp3_5) or 0);
             					sheet.total3_5 = mod / 2;
             					sheet.total23_5 = mod .. " | " .. mod / 2;
-            					xpAptidoes();
             				end;
         end, obj);
 
-    obj._e_event205 = obj.radioButton83:addEventListener("onChange",
+    obj._e_event205 = obj.button83:addEventListener("onClick",
         function (_)
             if sheet==nil then return end;
             				sheet.field1 = sheet.dado1;
@@ -7399,7 +7266,7 @@ local function constructNew_frmACN2()
             				sheet.rollnome1 = sheet.nome3_6;
         end, obj);
 
-    obj._e_event206 = obj.radioButton84:addEventListener("onChange",
+    obj._e_event206 = obj.button84:addEventListener("onClick",
         function (_)
             if sheet==nil then return end;
             				sheet.field2 = sheet.dado2;
@@ -7437,11 +7304,10 @@ local function constructNew_frmACN2()
             											(tonumber(sheet.xp3_6) or 0);
             					sheet.total3_6 = mod / 2;
             					sheet.total23_6 = mod .. " | " .. mod / 2;
-            					xpAptidoes();
             				end;
         end, obj);
 
-    obj._e_event210 = obj.radioButton85:addEventListener("onChange",
+    obj._e_event210 = obj.button85:addEventListener("onClick",
         function (_)
             if sheet==nil then return end;
             				sheet.field1 = sheet.dado1;
@@ -7449,7 +7315,7 @@ local function constructNew_frmACN2()
             				sheet.rollnome1 = sheet.nome3_7;
         end, obj);
 
-    obj._e_event211 = obj.radioButton86:addEventListener("onChange",
+    obj._e_event211 = obj.button86:addEventListener("onClick",
         function (_)
             if sheet==nil then return end;
             				sheet.field2 = sheet.dado2;
@@ -7487,11 +7353,10 @@ local function constructNew_frmACN2()
             											(tonumber(sheet.xp3_7) or 0);
             					sheet.total3_7 = mod / 2;
             					sheet.total23_7 = mod .. " | " .. mod / 2;
-            					xpAptidoes();
             				end;
         end, obj);
 
-    obj._e_event215 = obj.radioButton87:addEventListener("onChange",
+    obj._e_event215 = obj.button87:addEventListener("onClick",
         function (_)
             if sheet==nil then return end;
             				sheet.field1 = sheet.dado1;
@@ -7499,7 +7364,7 @@ local function constructNew_frmACN2()
             				sheet.rollnome1 = sheet.nome3_8;
         end, obj);
 
-    obj._e_event216 = obj.radioButton88:addEventListener("onChange",
+    obj._e_event216 = obj.button88:addEventListener("onClick",
         function (_)
             if sheet==nil then return end;
             				sheet.field2 = sheet.dado2;
@@ -7537,11 +7402,10 @@ local function constructNew_frmACN2()
             											(tonumber(sheet.xp3_8) or 0);
             					sheet.total3_8 = mod / 2;
             					sheet.total23_8 = mod .. " | " .. mod / 2;
-            					xpAptidoes();
             				end;
         end, obj);
 
-    obj._e_event220 = obj.radioButton89:addEventListener("onChange",
+    obj._e_event220 = obj.button89:addEventListener("onClick",
         function (_)
             if sheet==nil then return end;
             				sheet.field1 = sheet.dado1;
@@ -7549,7 +7413,7 @@ local function constructNew_frmACN2()
             				sheet.rollnome1 = sheet.nome3_9;
         end, obj);
 
-    obj._e_event221 = obj.radioButton90:addEventListener("onChange",
+    obj._e_event221 = obj.button90:addEventListener("onClick",
         function (_)
             if sheet==nil then return end;
             				sheet.field2 = sheet.dado2;
@@ -7587,11 +7451,10 @@ local function constructNew_frmACN2()
             											(tonumber(sheet.xp3_9) or 0);
             					sheet.total3_9 = mod / 2;
             					sheet.total23_9 = mod .. " | " .. mod / 2;
-            					xpAptidoes();
             				end;
         end, obj);
 
-    obj._e_event225 = obj.radioButton91:addEventListener("onChange",
+    obj._e_event225 = obj.button91:addEventListener("onClick",
         function (_)
             if sheet==nil then return end;
             				sheet.field1 = sheet.dado1;
@@ -7599,7 +7462,7 @@ local function constructNew_frmACN2()
             				sheet.rollnome1 = sheet.nome3_10;
         end, obj);
 
-    obj._e_event226 = obj.radioButton92:addEventListener("onChange",
+    obj._e_event226 = obj.button92:addEventListener("onClick",
         function (_)
             if sheet==nil then return end;
             				sheet.field2 = sheet.dado2;
@@ -7637,11 +7500,10 @@ local function constructNew_frmACN2()
             											(tonumber(sheet.xp3_10) or 0);
             					sheet.total3_10 = mod / 2;
             					sheet.total23_10 = mod .. " | " .. mod / 2;
-            					xpAptidoes();
             				end;
         end, obj);
 
-    obj._e_event230 = obj.radioButton93:addEventListener("onChange",
+    obj._e_event230 = obj.button93:addEventListener("onClick",
         function (_)
             if sheet==nil then return end;
             				sheet.field1 = sheet.dado1;
@@ -7649,7 +7511,7 @@ local function constructNew_frmACN2()
             				sheet.rollnome1 = sheet.nome3_11;
         end, obj);
 
-    obj._e_event231 = obj.radioButton94:addEventListener("onChange",
+    obj._e_event231 = obj.button94:addEventListener("onClick",
         function (_)
             if sheet==nil then return end;
             				sheet.field2 = sheet.dado2;
@@ -7687,11 +7549,10 @@ local function constructNew_frmACN2()
             											(tonumber(sheet.xp3_11) or 0);
             					sheet.total3_11 = mod / 2;
             					sheet.total23_11 = mod .. " | " .. mod / 2;
-            					xpAptidoes();
             				end;
         end, obj);
 
-    obj._e_event235 = obj.radioButton95:addEventListener("onChange",
+    obj._e_event235 = obj.button95:addEventListener("onClick",
         function (_)
             if sheet==nil then return end;
             				sheet.field1 = sheet.dado1;
@@ -7699,7 +7560,7 @@ local function constructNew_frmACN2()
             				sheet.rollnome1 = sheet.nome3_12;
         end, obj);
 
-    obj._e_event236 = obj.radioButton96:addEventListener("onChange",
+    obj._e_event236 = obj.button96:addEventListener("onClick",
         function (_)
             if sheet==nil then return end;
             				sheet.field2 = sheet.dado2;
@@ -7737,11 +7598,10 @@ local function constructNew_frmACN2()
             											(tonumber(sheet.xp3_12) or 0);
             					sheet.total3_12 = mod / 2;
             					sheet.total23_12 = mod .. " | " .. mod / 2;
-            					xpAptidoes();
             				end;
         end, obj);
 
-    obj._e_event240 = obj.button1:addEventListener("onClick",
+    obj._e_event240 = obj.button97:addEventListener("onClick",
         function (_)
             if sheet==nil then return end;
             					sheet.field2 = nil;
@@ -7749,7 +7609,7 @@ local function constructNew_frmACN2()
             					sheet.nome2 = nil;
         end, obj);
 
-    obj._e_event241 = obj.button2:addEventListener("onClick",
+    obj._e_event241 = obj.button98:addEventListener("onClick",
         function (_)
             rolar();
         end, obj);
@@ -8010,97 +7870,95 @@ local function constructNew_frmACN2()
 
         if self.edit213 ~= nil then self.edit213:destroy(); self.edit213 = nil; end;
         if self.edit150 ~= nil then self.edit150:destroy(); self.edit150 = nil; end;
-        if self.radioButton37 ~= nil then self.radioButton37:destroy(); self.radioButton37 = nil; end;
+        if self.button89 ~= nil then self.button89:destroy(); self.button89 = nil; end;
         if self.label14 ~= nil then self.label14:destroy(); self.label14 = nil; end;
+        if self.button96 ~= nil then self.button96:destroy(); self.button96 = nil; end;
         if self.edit64 ~= nil then self.edit64:destroy(); self.edit64 = nil; end;
         if self.edit233 ~= nil then self.edit233:destroy(); self.edit233 = nil; end;
+        if self.button15 ~= nil then self.button15:destroy(); self.button15 = nil; end;
         if self.edit226 ~= nil then self.edit226:destroy(); self.edit226 = nil; end;
         if self.layout15 ~= nil then self.layout15:destroy(); self.layout15 = nil; end;
         if self.edit41 ~= nil then self.edit41:destroy(); self.edit41 = nil; end;
         if self.layout10 ~= nil then self.layout10:destroy(); self.layout10 = nil; end;
         if self.edit172 ~= nil then self.edit172:destroy(); self.edit172 = nil; end;
-        if self.radioButton75 ~= nil then self.radioButton75:destroy(); self.radioButton75 = nil; end;
         if self.edit195 ~= nil then self.edit195:destroy(); self.edit195 = nil; end;
+        if self.button85 ~= nil then self.button85:destroy(); self.button85 = nil; end;
         if self.edit36 ~= nil then self.edit36:destroy(); self.edit36 = nil; end;
         if self.edit9 ~= nil then self.edit9:destroy(); self.edit9 = nil; end;
         if self.label43 ~= nil then self.label43:destroy(); self.label43 = nil; end;
         if self.edit33 ~= nil then self.edit33:destroy(); self.edit33 = nil; end;
-        if self.radioButton93 ~= nil then self.radioButton93:destroy(); self.radioButton93 = nil; end;
+        if self.button67 ~= nil then self.button67:destroy(); self.button67 = nil; end;
         if self.edit29 ~= nil then self.edit29:destroy(); self.edit29 = nil; end;
         if self.label77 ~= nil then self.label77:destroy(); self.label77 = nil; end;
         if self.rectangle35 ~= nil then self.rectangle35:destroy(); self.rectangle35 = nil; end;
         if self.layout17 ~= nil then self.layout17:destroy(); self.layout17 = nil; end;
         if self.label45 ~= nil then self.label45:destroy(); self.label45 = nil; end;
         if self.rectangle46 ~= nil then self.rectangle46:destroy(); self.rectangle46 = nil; end;
-        if self.radioButton48 ~= nil then self.radioButton48:destroy(); self.radioButton48 = nil; end;
-        if self.radioButton72 ~= nil then self.radioButton72:destroy(); self.radioButton72 = nil; end;
         if self.layout47 ~= nil then self.layout47:destroy(); self.layout47 = nil; end;
-        if self.radioButton7 ~= nil then self.radioButton7:destroy(); self.radioButton7 = nil; end;
         if self.rectangle16 ~= nil then self.rectangle16:destroy(); self.rectangle16 = nil; end;
-        if self.radioButton63 ~= nil then self.radioButton63:destroy(); self.radioButton63 = nil; end;
+        if self.button16 ~= nil then self.button16:destroy(); self.button16 = nil; end;
         if self.label75 ~= nil then self.label75:destroy(); self.label75 = nil; end;
         if self.rectangle47 ~= nil then self.rectangle47:destroy(); self.rectangle47 = nil; end;
         if self.label63 ~= nil then self.label63:destroy(); self.label63 = nil; end;
         if self.edit76 ~= nil then self.edit76:destroy(); self.edit76 = nil; end;
         if self.layout24 ~= nil then self.layout24:destroy(); self.layout24 = nil; end;
-        if self.radioButton35 ~= nil then self.radioButton35:destroy(); self.radioButton35 = nil; end;
-        if self.radioButton56 ~= nil then self.radioButton56:destroy(); self.radioButton56 = nil; end;
-        if self.radioButton6 ~= nil then self.radioButton6:destroy(); self.radioButton6 = nil; end;
-        if self.label35 ~= nil then self.label35:destroy(); self.label35 = nil; end;
-        if self.radioButton54 ~= nil then self.radioButton54:destroy(); self.radioButton54 = nil; end;
         if self.label70 ~= nil then self.label70:destroy(); self.label70 = nil; end;
+        if self.label35 ~= nil then self.label35:destroy(); self.label35 = nil; end;
         if self.edit236 ~= nil then self.edit236:destroy(); self.edit236 = nil; end;
         if self.edit82 ~= nil then self.edit82:destroy(); self.edit82 = nil; end;
         if self.layout23 ~= nil then self.layout23:destroy(); self.layout23 = nil; end;
         if self.rectangle5 ~= nil then self.rectangle5:destroy(); self.rectangle5 = nil; end;
-        if self.radioButton50 ~= nil then self.radioButton50:destroy(); self.radioButton50 = nil; end;
-        if self.radioButton69 ~= nil then self.radioButton69:destroy(); self.radioButton69 = nil; end;
-        if self.radioButton88 ~= nil then self.radioButton88:destroy(); self.radioButton88 = nil; end;
+        if self.button35 ~= nil then self.button35:destroy(); self.button35 = nil; end;
+        if self.button93 ~= nil then self.button93:destroy(); self.button93 = nil; end;
         if self.label8 ~= nil then self.label8:destroy(); self.label8 = nil; end;
-        if self.radioButton79 ~= nil then self.radioButton79:destroy(); self.radioButton79 = nil; end;
         if self.edit11 ~= nil then self.edit11:destroy(); self.edit11 = nil; end;
         if self.layout9 ~= nil then self.layout9:destroy(); self.layout9 = nil; end;
+        if self.button40 ~= nil then self.button40:destroy(); self.button40 = nil; end;
         if self.rectangle17 ~= nil then self.rectangle17:destroy(); self.rectangle17 = nil; end;
         if self.edit183 ~= nil then self.edit183:destroy(); self.edit183 = nil; end;
-        if self.radioButton41 ~= nil then self.radioButton41:destroy(); self.radioButton41 = nil; end;
         if self.label15 ~= nil then self.label15:destroy(); self.label15 = nil; end;
         if self.layout32 ~= nil then self.layout32:destroy(); self.layout32 = nil; end;
         if self.label49 ~= nil then self.label49:destroy(); self.label49 = nil; end;
         if self.edit156 ~= nil then self.edit156:destroy(); self.edit156 = nil; end;
         if self.layout37 ~= nil then self.layout37:destroy(); self.layout37 = nil; end;
-        if self.radioButton16 ~= nil then self.radioButton16:destroy(); self.radioButton16 = nil; end;
+        if self.button79 ~= nil then self.button79:destroy(); self.button79 = nil; end;
+        if self.button37 ~= nil then self.button37:destroy(); self.button37 = nil; end;
         if self.rectangle33 ~= nil then self.rectangle33:destroy(); self.rectangle33 = nil; end;
+        if self.button36 ~= nil then self.button36:destroy(); self.button36 = nil; end;
         if self.rectangle51 ~= nil then self.rectangle51:destroy(); self.rectangle51 = nil; end;
         if self.layout36 ~= nil then self.layout36:destroy(); self.layout36 = nil; end;
+        if self.label82 ~= nil then self.label82:destroy(); self.label82 = nil; end;
         if self.edit69 ~= nil then self.edit69:destroy(); self.edit69 = nil; end;
         if self.layout52 ~= nil then self.layout52:destroy(); self.layout52 = nil; end;
         if self.label52 ~= nil then self.label52:destroy(); self.label52 = nil; end;
+        if self.button21 ~= nil then self.button21:destroy(); self.button21 = nil; end;
         if self.edit228 ~= nil then self.edit228:destroy(); self.edit228 = nil; end;
         if self.edit115 ~= nil then self.edit115:destroy(); self.edit115 = nil; end;
         if self.edit16 ~= nil then self.edit16:destroy(); self.edit16 = nil; end;
-        if self.radioButton29 ~= nil then self.radioButton29:destroy(); self.radioButton29 = nil; end;
         if self.label47 ~= nil then self.label47:destroy(); self.label47 = nil; end;
         if self.edit205 ~= nil then self.edit205:destroy(); self.edit205 = nil; end;
+        if self.button26 ~= nil then self.button26:destroy(); self.button26 = nil; end;
         if self.label48 ~= nil then self.label48:destroy(); self.label48 = nil; end;
         if self.edit116 ~= nil then self.edit116:destroy(); self.edit116 = nil; end;
         if self.edit214 ~= nil then self.edit214:destroy(); self.edit214 = nil; end;
         if self.label76 ~= nil then self.label76:destroy(); self.label76 = nil; end;
         if self.edit77 ~= nil then self.edit77:destroy(); self.edit77 = nil; end;
+        if self.button4 ~= nil then self.button4:destroy(); self.button4 = nil; end;
         if self.edit52 ~= nil then self.edit52:destroy(); self.edit52 = nil; end;
-        if self.edit196 ~= nil then self.edit196:destroy(); self.edit196 = nil; end;
         if self.layout34 ~= nil then self.layout34:destroy(); self.layout34 = nil; end;
         if self.edit159 ~= nil then self.edit159:destroy(); self.edit159 = nil; end;
+        if self.edit196 ~= nil then self.edit196:destroy(); self.edit196 = nil; end;
         if self.label1 ~= nil then self.label1:destroy(); self.label1 = nil; end;
         if self.rectangle7 ~= nil then self.rectangle7:destroy(); self.rectangle7 = nil; end;
         if self.edit220 ~= nil then self.edit220:destroy(); self.edit220 = nil; end;
         if self.rectangle55 ~= nil then self.rectangle55:destroy(); self.rectangle55 = nil; end;
-        if self.radioButton85 ~= nil then self.radioButton85:destroy(); self.radioButton85 = nil; end;
+        if self.button7 ~= nil then self.button7:destroy(); self.button7 = nil; end;
         if self.edit58 ~= nil then self.edit58:destroy(); self.edit58 = nil; end;
         if self.layout42 ~= nil then self.layout42:destroy(); self.layout42 = nil; end;
-        if self.radioButton26 ~= nil then self.radioButton26:destroy(); self.radioButton26 = nil; end;
         if self.edit235 ~= nil then self.edit235:destroy(); self.edit235 = nil; end;
-        if self.radioButton22 ~= nil then self.radioButton22:destroy(); self.radioButton22 = nil; end;
+        if self.button66 ~= nil then self.button66:destroy(); self.button66 = nil; end;
         if self.edit66 ~= nil then self.edit66:destroy(); self.edit66 = nil; end;
+        if self.button73 ~= nil then self.button73:destroy(); self.button73 = nil; end;
         if self.layout5 ~= nil then self.layout5:destroy(); self.layout5 = nil; end;
         if self.rectangle48 ~= nil then self.rectangle48:destroy(); self.rectangle48 = nil; end;
         if self.edit129 ~= nil then self.edit129:destroy(); self.edit129 = nil; end;
@@ -8109,55 +7967,57 @@ local function constructNew_frmACN2()
         if self.rectangle2 ~= nil then self.rectangle2:destroy(); self.rectangle2 = nil; end;
         if self.rectangle23 ~= nil then self.rectangle23:destroy(); self.rectangle23 = nil; end;
         if self.label30 ~= nil then self.label30:destroy(); self.label30 = nil; end;
-        if self.radioButton24 ~= nil then self.radioButton24:destroy(); self.radioButton24 = nil; end;
         if self.label51 ~= nil then self.label51:destroy(); self.label51 = nil; end;
+        if self.button45 ~= nil then self.button45:destroy(); self.button45 = nil; end;
         if self.edit99 ~= nil then self.edit99:destroy(); self.edit99 = nil; end;
         if self.label19 ~= nil then self.label19:destroy(); self.label19 = nil; end;
-        if self.radioButton66 ~= nil then self.radioButton66:destroy(); self.radioButton66 = nil; end;
         if self.edit182 ~= nil then self.edit182:destroy(); self.edit182 = nil; end;
         if self.rectangle52 ~= nil then self.rectangle52:destroy(); self.rectangle52 = nil; end;
         if self.edit67 ~= nil then self.edit67:destroy(); self.edit67 = nil; end;
         if self.rectangle12 ~= nil then self.rectangle12:destroy(); self.rectangle12 = nil; end;
         if self.rectangle50 ~= nil then self.rectangle50:destroy(); self.rectangle50 = nil; end;
+        if self.button43 ~= nil then self.button43:destroy(); self.button43 = nil; end;
         if self.edit176 ~= nil then self.edit176:destroy(); self.edit176 = nil; end;
         if self.layout35 ~= nil then self.layout35:destroy(); self.layout35 = nil; end;
+        if self.button44 ~= nil then self.button44:destroy(); self.button44 = nil; end;
         if self.layout11 ~= nil then self.layout11:destroy(); self.layout11 = nil; end;
         if self.edit221 ~= nil then self.edit221:destroy(); self.edit221 = nil; end;
-        if self.radioButton70 ~= nil then self.radioButton70:destroy(); self.radioButton70 = nil; end;
+        if self.button98 ~= nil then self.button98:destroy(); self.button98 = nil; end;
         if self.rectangle18 ~= nil then self.rectangle18:destroy(); self.rectangle18 = nil; end;
         if self.rectangle14 ~= nil then self.rectangle14:destroy(); self.rectangle14 = nil; end;
-        if self.radioButton18 ~= nil then self.radioButton18:destroy(); self.radioButton18 = nil; end;
         if self.edit124 ~= nil then self.edit124:destroy(); self.edit124 = nil; end;
         if self.label2 ~= nil then self.label2:destroy(); self.label2 = nil; end;
-        if self.radioButton23 ~= nil then self.radioButton23:destroy(); self.radioButton23 = nil; end;
         if self.edit157 ~= nil then self.edit157:destroy(); self.edit157 = nil; end;
+        if self.button33 ~= nil then self.button33:destroy(); self.button33 = nil; end;
         if self.edit83 ~= nil then self.edit83:destroy(); self.edit83 = nil; end;
         if self.label38 ~= nil then self.label38:destroy(); self.label38 = nil; end;
         if self.edit27 ~= nil then self.edit27:destroy(); self.edit27 = nil; end;
         if self.layout14 ~= nil then self.layout14:destroy(); self.layout14 = nil; end;
         if self.rectangle42 ~= nil then self.rectangle42:destroy(); self.rectangle42 = nil; end;
         if self.edit223 ~= nil then self.edit223:destroy(); self.edit223 = nil; end;
+        if self.button72 ~= nil then self.button72:destroy(); self.button72 = nil; end;
         if self.edit161 ~= nil then self.edit161:destroy(); self.edit161 = nil; end;
         if self.edit241 ~= nil then self.edit241:destroy(); self.edit241 = nil; end;
         if self.edit62 ~= nil then self.edit62:destroy(); self.edit62 = nil; end;
         if self.layout51 ~= nil then self.layout51:destroy(); self.layout51 = nil; end;
         if self.edit74 ~= nil then self.edit74:destroy(); self.edit74 = nil; end;
-        if self.radioButton34 ~= nil then self.radioButton34:destroy(); self.radioButton34 = nil; end;
+        if self.button92 ~= nil then self.button92:destroy(); self.button92 = nil; end;
         if self.layout7 ~= nil then self.layout7:destroy(); self.layout7 = nil; end;
         if self.edit60 ~= nil then self.edit60:destroy(); self.edit60 = nil; end;
-        if self.radioButton39 ~= nil then self.radioButton39:destroy(); self.radioButton39 = nil; end;
         if self.edit134 ~= nil then self.edit134:destroy(); self.edit134 = nil; end;
         if self.layout39 ~= nil then self.layout39:destroy(); self.layout39 = nil; end;
         if self.rectangle9 ~= nil then self.rectangle9:destroy(); self.rectangle9 = nil; end;
         if self.edit121 ~= nil then self.edit121:destroy(); self.edit121 = nil; end;
+        if self.button68 ~= nil then self.button68:destroy(); self.button68 = nil; end;
+        if self.button51 ~= nil then self.button51:destroy(); self.button51 = nil; end;
+        if self.button28 ~= nil then self.button28:destroy(); self.button28 = nil; end;
         if self.edit163 ~= nil then self.edit163:destroy(); self.edit163 = nil; end;
         if self.edit199 ~= nil then self.edit199:destroy(); self.edit199 = nil; end;
         if self.layout30 ~= nil then self.layout30:destroy(); self.layout30 = nil; end;
         if self.label73 ~= nil then self.label73:destroy(); self.label73 = nil; end;
-        if self.radioButton19 ~= nil then self.radioButton19:destroy(); self.radioButton19 = nil; end;
-        if self.radioButton3 ~= nil then self.radioButton3:destroy(); self.radioButton3 = nil; end;
         if self.edit92 ~= nil then self.edit92:destroy(); self.edit92 = nil; end;
         if self.label23 ~= nil then self.label23:destroy(); self.label23 = nil; end;
+        if self.button39 ~= nil then self.button39:destroy(); self.button39 = nil; end;
         if self.label32 ~= nil then self.label32:destroy(); self.label32 = nil; end;
         if self.label24 ~= nil then self.label24:destroy(); self.label24 = nil; end;
         if self.edit54 ~= nil then self.edit54:destroy(); self.edit54 = nil; end;
@@ -8166,15 +8026,13 @@ local function constructNew_frmACN2()
         if self.edit100 ~= nil then self.edit100:destroy(); self.edit100 = nil; end;
         if self.layout1 ~= nil then self.layout1:destroy(); self.layout1 = nil; end;
         if self.edit61 ~= nil then self.edit61:destroy(); self.edit61 = nil; end;
+        if self.button30 ~= nil then self.button30:destroy(); self.button30 = nil; end;
         if self.edit84 ~= nil then self.edit84:destroy(); self.edit84 = nil; end;
-        if self.radioButton81 ~= nil then self.radioButton81:destroy(); self.radioButton81 = nil; end;
-        if self.radioButton84 ~= nil then self.radioButton84:destroy(); self.radioButton84 = nil; end;
         if self.edit224 ~= nil then self.edit224:destroy(); self.edit224 = nil; end;
         if self.edit24 ~= nil then self.edit24:destroy(); self.edit24 = nil; end;
-        if self.radioButton14 ~= nil then self.radioButton14:destroy(); self.radioButton14 = nil; end;
+        if self.edit59 ~= nil then self.edit59:destroy(); self.edit59 = nil; end;
         if self.layout12 ~= nil then self.layout12:destroy(); self.layout12 = nil; end;
         if self.edit14 ~= nil then self.edit14:destroy(); self.edit14 = nil; end;
-        if self.edit59 ~= nil then self.edit59:destroy(); self.edit59 = nil; end;
         if self.rectangle38 ~= nil then self.rectangle38:destroy(); self.rectangle38 = nil; end;
         if self.edit4 ~= nil then self.edit4:destroy(); self.edit4 = nil; end;
         if self.layout25 ~= nil then self.layout25:destroy(); self.layout25 = nil; end;
@@ -8182,56 +8040,63 @@ local function constructNew_frmACN2()
         if self.label6 ~= nil then self.label6:destroy(); self.label6 = nil; end;
         if self.edit128 ~= nil then self.edit128:destroy(); self.edit128 = nil; end;
         if self.edit200 ~= nil then self.edit200:destroy(); self.edit200 = nil; end;
-        if self.radioButton38 ~= nil then self.radioButton38:destroy(); self.radioButton38 = nil; end;
-        if self.edit103 ~= nil then self.edit103:destroy(); self.edit103 = nil; end;
+        if self.button13 ~= nil then self.button13:destroy(); self.button13 = nil; end;
         if self.edit187 ~= nil then self.edit187:destroy(); self.edit187 = nil; end;
+        if self.edit103 ~= nil then self.edit103:destroy(); self.edit103 = nil; end;
+        if self.button74 ~= nil then self.button74:destroy(); self.button74 = nil; end;
         if self.label37 ~= nil then self.label37:destroy(); self.label37 = nil; end;
         if self.edit127 ~= nil then self.edit127:destroy(); self.edit127 = nil; end;
         if self.edit218 ~= nil then self.edit218:destroy(); self.edit218 = nil; end;
         if self.edit165 ~= nil then self.edit165:destroy(); self.edit165 = nil; end;
         if self.edit208 ~= nil then self.edit208:destroy(); self.edit208 = nil; end;
+        if self.button88 ~= nil then self.button88:destroy(); self.button88 = nil; end;
         if self.layout26 ~= nil then self.layout26:destroy(); self.layout26 = nil; end;
         if self.rectangle45 ~= nil then self.rectangle45:destroy(); self.rectangle45 = nil; end;
+        if self.button55 ~= nil then self.button55:destroy(); self.button55 = nil; end;
         if self.edit45 ~= nil then self.edit45:destroy(); self.edit45 = nil; end;
         if self.edit8 ~= nil then self.edit8:destroy(); self.edit8 = nil; end;
+        if self.button91 ~= nil then self.button91:destroy(); self.button91 = nil; end;
+        if self.button32 ~= nil then self.button32:destroy(); self.button32 = nil; end;
         if self.edit145 ~= nil then self.edit145:destroy(); self.edit145 = nil; end;
         if self.edit181 ~= nil then self.edit181:destroy(); self.edit181 = nil; end;
         if self.edit96 ~= nil then self.edit96:destroy(); self.edit96 = nil; end;
         if self.edit2 ~= nil then self.edit2:destroy(); self.edit2 = nil; end;
-        if self.radioButton67 ~= nil then self.radioButton67:destroy(); self.radioButton67 = nil; end;
-        if self.radioButton51 ~= nil then self.radioButton51:destroy(); self.radioButton51 = nil; end;
         if self.label53 ~= nil then self.label53:destroy(); self.label53 = nil; end;
         if self.rectangle53 ~= nil then self.rectangle53:destroy(); self.rectangle53 = nil; end;
+        if self.button27 ~= nil then self.button27:destroy(); self.button27 = nil; end;
         if self.edit109 ~= nil then self.edit109:destroy(); self.edit109 = nil; end;
         if self.edit21 ~= nil then self.edit21:destroy(); self.edit21 = nil; end;
+        if self.button24 ~= nil then self.button24:destroy(); self.button24 = nil; end;
+        if self.button3 ~= nil then self.button3:destroy(); self.button3 = nil; end;
         if self.label42 ~= nil then self.label42:destroy(); self.label42 = nil; end;
         if self.edit174 ~= nil then self.edit174:destroy(); self.edit174 = nil; end;
         if self.edit152 ~= nil then self.edit152:destroy(); self.edit152 = nil; end;
         if self.rectangle20 ~= nil then self.rectangle20:destroy(); self.rectangle20 = nil; end;
         if self.edit133 ~= nil then self.edit133:destroy(); self.edit133 = nil; end;
+        if self.button94 ~= nil then self.button94:destroy(); self.button94 = nil; end;
         if self.edit93 ~= nil then self.edit93:destroy(); self.edit93 = nil; end;
         if self.edit126 ~= nil then self.edit126:destroy(); self.edit126 = nil; end;
-        if self.radioButton21 ~= nil then self.radioButton21:destroy(); self.radioButton21 = nil; end;
         if self.edit13 ~= nil then self.edit13:destroy(); self.edit13 = nil; end;
         if self.edit225 ~= nil then self.edit225:destroy(); self.edit225 = nil; end;
+        if self.button77 ~= nil then self.button77:destroy(); self.button77 = nil; end;
         if self.edit81 ~= nil then self.edit81:destroy(); self.edit81 = nil; end;
         if self.edit177 ~= nil then self.edit177:destroy(); self.edit177 = nil; end;
-        if self.radioButton17 ~= nil then self.radioButton17:destroy(); self.radioButton17 = nil; end;
+        if self.button11 ~= nil then self.button11:destroy(); self.button11 = nil; end;
         if self.label81 ~= nil then self.label81:destroy(); self.label81 = nil; end;
-        if self.radioButton80 ~= nil then self.radioButton80:destroy(); self.radioButton80 = nil; end;
+        if self.button58 ~= nil then self.button58:destroy(); self.button58 = nil; end;
         if self.edit166 ~= nil then self.edit166:destroy(); self.edit166 = nil; end;
-        if self.radioButton31 ~= nil then self.radioButton31:destroy(); self.radioButton31 = nil; end;
-        if self.radioButton53 ~= nil then self.radioButton53:destroy(); self.radioButton53 = nil; end;
-        if self.radioButton52 ~= nil then self.radioButton52:destroy(); self.radioButton52 = nil; end;
+        if self.button78 ~= nil then self.button78:destroy(); self.button78 = nil; end;
+        if self.button6 ~= nil then self.button6:destroy(); self.button6 = nil; end;
+        if self.button5 ~= nil then self.button5:destroy(); self.button5 = nil; end;
         if self.edit37 ~= nil then self.edit37:destroy(); self.edit37 = nil; end;
-        if self.radioButton86 ~= nil then self.radioButton86:destroy(); self.radioButton86 = nil; end;
+        if self.button90 ~= nil then self.button90:destroy(); self.button90 = nil; end;
         if self.edit184 ~= nil then self.edit184:destroy(); self.edit184 = nil; end;
         if self.layout31 ~= nil then self.layout31:destroy(); self.layout31 = nil; end;
         if self.label10 ~= nil then self.label10:destroy(); self.label10 = nil; end;
         if self.edit17 ~= nil then self.edit17:destroy(); self.edit17 = nil; end;
-        if self.radioButton2 ~= nil then self.radioButton2:destroy(); self.radioButton2 = nil; end;
+        if self.button10 ~= nil then self.button10:destroy(); self.button10 = nil; end;
         if self.layout2 ~= nil then self.layout2:destroy(); self.layout2 = nil; end;
-        if self.radioButton49 ~= nil then self.radioButton49:destroy(); self.radioButton49 = nil; end;
+        if self.button41 ~= nil then self.button41:destroy(); self.button41 = nil; end;
         if self.rectangle30 ~= nil then self.rectangle30:destroy(); self.rectangle30 = nil; end;
         if self.edit155 ~= nil then self.edit155:destroy(); self.edit155 = nil; end;
         if self.edit162 ~= nil then self.edit162:destroy(); self.edit162 = nil; end;
@@ -8240,82 +8105,82 @@ local function constructNew_frmACN2()
         if self.edit87 ~= nil then self.edit87:destroy(); self.edit87 = nil; end;
         if self.label39 ~= nil then self.label39:destroy(); self.label39 = nil; end;
         if self.layout29 ~= nil then self.layout29:destroy(); self.layout29 = nil; end;
-        if self.radioButton55 ~= nil then self.radioButton55:destroy(); self.radioButton55 = nil; end;
-        if self.radioButton76 ~= nil then self.radioButton76:destroy(); self.radioButton76 = nil; end;
         if self.label79 ~= nil then self.label79:destroy(); self.label79 = nil; end;
-        if self.radioButton77 ~= nil then self.radioButton77:destroy(); self.radioButton77 = nil; end;
         if self.edit113 ~= nil then self.edit113:destroy(); self.edit113 = nil; end;
         if self.edit15 ~= nil then self.edit15:destroy(); self.edit15 = nil; end;
         if self.label11 ~= nil then self.label11:destroy(); self.label11 = nil; end;
         if self.label3 ~= nil then self.label3:destroy(); self.label3 = nil; end;
-        if self.radioButton11 ~= nil then self.radioButton11:destroy(); self.radioButton11 = nil; end;
         if self.label20 ~= nil then self.label20:destroy(); self.label20 = nil; end;
-        if self.radioButton60 ~= nil then self.radioButton60:destroy(); self.radioButton60 = nil; end;
+        if self.button54 ~= nil then self.button54:destroy(); self.button54 = nil; end;
         if self.rectangle40 ~= nil then self.rectangle40:destroy(); self.rectangle40 = nil; end;
         if self.edit211 ~= nil then self.edit211:destroy(); self.edit211 = nil; end;
         if self.edit240 ~= nil then self.edit240:destroy(); self.edit240 = nil; end;
         if self.rectangle36 ~= nil then self.rectangle36:destroy(); self.rectangle36 = nil; end;
-        if self.radioButton82 ~= nil then self.radioButton82:destroy(); self.radioButton82 = nil; end;
         if self.edit138 ~= nil then self.edit138:destroy(); self.edit138 = nil; end;
+        if self.button31 ~= nil then self.button31:destroy(); self.button31 = nil; end;
         if self.label7 ~= nil then self.label7:destroy(); self.label7 = nil; end;
+        if self.button8 ~= nil then self.button8:destroy(); self.button8 = nil; end;
+        if self.button18 ~= nil then self.button18:destroy(); self.button18 = nil; end;
         if self.label50 ~= nil then self.label50:destroy(); self.label50 = nil; end;
-        if self.radioButton12 ~= nil then self.radioButton12:destroy(); self.radioButton12 = nil; end;
         if self.edit42 ~= nil then self.edit42:destroy(); self.edit42 = nil; end;
         if self.edit209 ~= nil then self.edit209:destroy(); self.edit209 = nil; end;
         if self.edit118 ~= nil then self.edit118:destroy(); self.edit118 = nil; end;
         if self.edit154 ~= nil then self.edit154:destroy(); self.edit154 = nil; end;
-        if self.radioButton94 ~= nil then self.radioButton94:destroy(); self.radioButton94 = nil; end;
+        if self.button65 ~= nil then self.button65:destroy(); self.button65 = nil; end;
         if self.rectangle4 ~= nil then self.rectangle4:destroy(); self.rectangle4 = nil; end;
-        if self.radioButton8 ~= nil then self.radioButton8:destroy(); self.radioButton8 = nil; end;
         if self.layout22 ~= nil then self.layout22:destroy(); self.layout22 = nil; end;
+        if self.button82 ~= nil then self.button82:destroy(); self.button82 = nil; end;
         if self.layout48 ~= nil then self.layout48:destroy(); self.layout48 = nil; end;
         if self.edit135 ~= nil then self.edit135:destroy(); self.edit135 = nil; end;
         if self.edit191 ~= nil then self.edit191:destroy(); self.edit191 = nil; end;
+        if self.label84 ~= nil then self.label84:destroy(); self.label84 = nil; end;
+        if self.button71 ~= nil then self.button71:destroy(); self.button71 = nil; end;
         if self.edit32 ~= nil then self.edit32:destroy(); self.edit32 = nil; end;
         if self.edit178 ~= nil then self.edit178:destroy(); self.edit178 = nil; end;
         if self.edit102 ~= nil then self.edit102:destroy(); self.edit102 = nil; end;
-        if self.radioButton5 ~= nil then self.radioButton5:destroy(); self.radioButton5 = nil; end;
+        if self.button86 ~= nil then self.button86:destroy(); self.button86 = nil; end;
         if self.edit117 ~= nil then self.edit117:destroy(); self.edit117 = nil; end;
         if self.edit215 ~= nil then self.edit215:destroy(); self.edit215 = nil; end;
         if self.edit216 ~= nil then self.edit216:destroy(); self.edit216 = nil; end;
+        if self.button97 ~= nil then self.button97:destroy(); self.button97 = nil; end;
         if self.rectangle34 ~= nil then self.rectangle34:destroy(); self.rectangle34 = nil; end;
         if self.edit73 ~= nil then self.edit73:destroy(); self.edit73 = nil; end;
-        if self.radioButton40 ~= nil then self.radioButton40:destroy(); self.radioButton40 = nil; end;
         if self.edit222 ~= nil then self.edit222:destroy(); self.edit222 = nil; end;
         if self.edit98 ~= nil then self.edit98:destroy(); self.edit98 = nil; end;
         if self.rectangle37 ~= nil then self.rectangle37:destroy(); self.rectangle37 = nil; end;
-        if self.radioButton92 ~= nil then self.radioButton92:destroy(); self.radioButton92 = nil; end;
-        if self.radioButton96 ~= nil then self.radioButton96:destroy(); self.radioButton96 = nil; end;
         if self.edit185 ~= nil then self.edit185:destroy(); self.edit185 = nil; end;
         if self.label40 ~= nil then self.label40:destroy(); self.label40 = nil; end;
         if self.edit111 ~= nil then self.edit111:destroy(); self.edit111 = nil; end;
+        if self.button64 ~= nil then self.button64:destroy(); self.button64 = nil; end;
         if self.edit28 ~= nil then self.edit28:destroy(); self.edit28 = nil; end;
         if self.label57 ~= nil then self.label57:destroy(); self.label57 = nil; end;
         if self.edit71 ~= nil then self.edit71:destroy(); self.edit71 = nil; end;
+        if self.button47 ~= nil then self.button47:destroy(); self.button47 = nil; end;
         if self.label71 ~= nil then self.label71:destroy(); self.label71 = nil; end;
         if self.layout41 ~= nil then self.layout41:destroy(); self.layout41 = nil; end;
         if self.edit85 ~= nil then self.edit85:destroy(); self.edit85 = nil; end;
         if self.edit201 ~= nil then self.edit201:destroy(); self.edit201 = nil; end;
-        if self.radioButton91 ~= nil then self.radioButton91:destroy(); self.radioButton91 = nil; end;
-        if self.radioButton30 ~= nil then self.radioButton30:destroy(); self.radioButton30 = nil; end;
+        if self.button56 ~= nil then self.button56:destroy(); self.button56 = nil; end;
+        if self.button2 ~= nil then self.button2:destroy(); self.button2 = nil; end;
         if self.label22 ~= nil then self.label22:destroy(); self.label22 = nil; end;
         if self.layout38 ~= nil then self.layout38:destroy(); self.layout38 = nil; end;
-        if self.radioButton64 ~= nil then self.radioButton64:destroy(); self.radioButton64 = nil; end;
-        if self.radioButton25 ~= nil then self.radioButton25:destroy(); self.radioButton25 = nil; end;
+        if self.button70 ~= nil then self.button70:destroy(); self.button70 = nil; end;
         if self.layout13 ~= nil then self.layout13:destroy(); self.layout13 = nil; end;
         if self.edit192 ~= nil then self.edit192:destroy(); self.edit192 = nil; end;
-        if self.button2 ~= nil then self.button2:destroy(); self.button2 = nil; end;
         if self.label13 ~= nil then self.label13:destroy(); self.label13 = nil; end;
         if self.layout8 ~= nil then self.layout8:destroy(); self.layout8 = nil; end;
-        if self.radioButton10 ~= nil then self.radioButton10:destroy(); self.radioButton10 = nil; end;
-        if self.label27 ~= nil then self.label27:destroy(); self.label27 = nil; end;
         if self.edit153 ~= nil then self.edit153:destroy(); self.edit153 = nil; end;
+        if self.label27 ~= nil then self.label27:destroy(); self.label27 = nil; end;
+        if self.button20 ~= nil then self.button20:destroy(); self.button20 = nil; end;
+        if self.button38 ~= nil then self.button38:destroy(); self.button38 = nil; end;
         if self.edit131 ~= nil then self.edit131:destroy(); self.edit131 = nil; end;
-        if self.label59 ~= nil then self.label59:destroy(); self.label59 = nil; end;
         if self.edit47 ~= nil then self.edit47:destroy(); self.edit47 = nil; end;
-        if self.label68 ~= nil then self.label68:destroy(); self.label68 = nil; end;
+        if self.button52 ~= nil then self.button52:destroy(); self.button52 = nil; end;
+        if self.label59 ~= nil then self.label59:destroy(); self.label59 = nil; end;
         if self.label67 ~= nil then self.label67:destroy(); self.label67 = nil; end;
         if self.edit169 ~= nil then self.edit169:destroy(); self.edit169 = nil; end;
+        if self.label68 ~= nil then self.label68:destroy(); self.label68 = nil; end;
+        if self.button53 ~= nil then self.button53:destroy(); self.button53 = nil; end;
         if self.edit149 ~= nil then self.edit149:destroy(); self.edit149 = nil; end;
         if self.button1 ~= nil then self.button1:destroy(); self.button1 = nil; end;
         if self.edit160 ~= nil then self.edit160:destroy(); self.edit160 = nil; end;
@@ -8329,8 +8194,6 @@ local function constructNew_frmACN2()
         if self.edit114 ~= nil then self.edit114:destroy(); self.edit114 = nil; end;
         if self.label34 ~= nil then self.label34:destroy(); self.label34 = nil; end;
         if self.edit5 ~= nil then self.edit5:destroy(); self.edit5 = nil; end;
-        if self.radioButton59 ~= nil then self.radioButton59:destroy(); self.radioButton59 = nil; end;
-        if self.radioButton73 ~= nil then self.radioButton73:destroy(); self.radioButton73 = nil; end;
         if self.edit204 ~= nil then self.edit204:destroy(); self.edit204 = nil; end;
         if self.edit210 ~= nil then self.edit210:destroy(); self.edit210 = nil; end;
         if self.layout50 ~= nil then self.layout50:destroy(); self.layout50 = nil; end;
@@ -8340,22 +8203,24 @@ local function constructNew_frmACN2()
         if self.label12 ~= nil then self.label12:destroy(); self.label12 = nil; end;
         if self.edit68 ~= nil then self.edit68:destroy(); self.edit68 = nil; end;
         if self.edit72 ~= nil then self.edit72:destroy(); self.edit72 = nil; end;
-        if self.radioButton62 ~= nil then self.radioButton62:destroy(); self.radioButton62 = nil; end;
         if self.edit179 ~= nil then self.edit179:destroy(); self.edit179 = nil; end;
         if self.rectangle28 ~= nil then self.rectangle28:destroy(); self.rectangle28 = nil; end;
         if self.label16 ~= nil then self.label16:destroy(); self.label16 = nil; end;
-        if self.edit158 ~= nil then self.edit158:destroy(); self.edit158 = nil; end;
+        if self.button29 ~= nil then self.button29:destroy(); self.button29 = nil; end;
         if self.edit10 ~= nil then self.edit10:destroy(); self.edit10 = nil; end;
         if self.edit106 ~= nil then self.edit106:destroy(); self.edit106 = nil; end;
         if self.edit31 ~= nil then self.edit31:destroy(); self.edit31 = nil; end;
         if self.edit125 ~= nil then self.edit125:destroy(); self.edit125 = nil; end;
         if self.edit1 ~= nil then self.edit1:destroy(); self.edit1 = nil; end;
+        if self.edit158 ~= nil then self.edit158:destroy(); self.edit158 = nil; end;
         if self.edit79 ~= nil then self.edit79:destroy(); self.edit79 = nil; end;
         if self.rectangle26 ~= nil then self.rectangle26:destroy(); self.rectangle26 = nil; end;
         if self.label78 ~= nil then self.label78:destroy(); self.label78 = nil; end;
         if self.edit175 ~= nil then self.edit175:destroy(); self.edit175 = nil; end;
         if self.layout4 ~= nil then self.layout4:destroy(); self.layout4 = nil; end;
+        if self.button59 ~= nil then self.button59:destroy(); self.button59 = nil; end;
         if self.edit101 ~= nil then self.edit101:destroy(); self.edit101 = nil; end;
+        if self.button80 ~= nil then self.button80:destroy(); self.button80 = nil; end;
         if self.edit242 ~= nil then self.edit242:destroy(); self.edit242 = nil; end;
         if self.edit231 ~= nil then self.edit231:destroy(); self.edit231 = nil; end;
         if self.edit164 ~= nil then self.edit164:destroy(); self.edit164 = nil; end;
@@ -8363,34 +8228,32 @@ local function constructNew_frmACN2()
         if self.comboBox1 ~= nil then self.comboBox1:destroy(); self.comboBox1 = nil; end;
         if self.rectangle44 ~= nil then self.rectangle44:destroy(); self.rectangle44 = nil; end;
         if self.layout20 ~= nil then self.layout20:destroy(); self.layout20 = nil; end;
-        if self.radioButton1 ~= nil then self.radioButton1:destroy(); self.radioButton1 = nil; end;
         if self.edit23 ~= nil then self.edit23:destroy(); self.edit23 = nil; end;
         if self.layout18 ~= nil then self.layout18:destroy(); self.layout18 = nil; end;
         if self.label56 ~= nil then self.label56:destroy(); self.label56 = nil; end;
-        if self.radioButton43 ~= nil then self.radioButton43:destroy(); self.radioButton43 = nil; end;
-        if self.radioButton36 ~= nil then self.radioButton36:destroy(); self.radioButton36 = nil; end;
         if self.edit139 ~= nil then self.edit139:destroy(); self.edit139 = nil; end;
         if self.rectangle6 ~= nil then self.rectangle6:destroy(); self.rectangle6 = nil; end;
-        if self.radioButton32 ~= nil then self.radioButton32:destroy(); self.radioButton32 = nil; end;
         if self.label21 ~= nil then self.label21:destroy(); self.label21 = nil; end;
         if self.edit122 ~= nil then self.edit122:destroy(); self.edit122 = nil; end;
-        if self.radioButton90 ~= nil then self.radioButton90:destroy(); self.radioButton90 = nil; end;
         if self.edit40 ~= nil then self.edit40:destroy(); self.edit40 = nil; end;
-        if self.radioButton95 ~= nil then self.radioButton95:destroy(); self.radioButton95 = nil; end;
         if self.edit110 ~= nil then self.edit110:destroy(); self.edit110 = nil; end;
         if self.edit86 ~= nil then self.edit86:destroy(); self.edit86 = nil; end;
         if self.edit38 ~= nil then self.edit38:destroy(); self.edit38 = nil; end;
         if self.edit123 ~= nil then self.edit123:destroy(); self.edit123 = nil; end;
         if self.edit143 ~= nil then self.edit143:destroy(); self.edit143 = nil; end;
+        if self.button60 ~= nil then self.button60:destroy(); self.button60 = nil; end;
         if self.layout49 ~= nil then self.layout49:destroy(); self.layout49 = nil; end;
         if self.edit206 ~= nil then self.edit206:destroy(); self.edit206 = nil; end;
         if self.edit105 ~= nil then self.edit105:destroy(); self.edit105 = nil; end;
         if self.label54 ~= nil then self.label54:destroy(); self.label54 = nil; end;
-        if self.radioButton74 ~= nil then self.radioButton74:destroy(); self.radioButton74 = nil; end;
+        if self.button87 ~= nil then self.button87:destroy(); self.button87 = nil; end;
         if self.edit239 ~= nil then self.edit239:destroy(); self.edit239 = nil; end;
         if self.edit137 ~= nil then self.edit137:destroy(); self.edit137 = nil; end;
         if self.edit146 ~= nil then self.edit146:destroy(); self.edit146 = nil; end;
+        if self.button83 ~= nil then self.button83:destroy(); self.button83 = nil; end;
+        if self.button9 ~= nil then self.button9:destroy(); self.button9 = nil; end;
         if self.edit6 ~= nil then self.edit6:destroy(); self.edit6 = nil; end;
+        if self.button84 ~= nil then self.button84:destroy(); self.button84 = nil; end;
         if self.edit230 ~= nil then self.edit230:destroy(); self.edit230 = nil; end;
         if self.edit90 ~= nil then self.edit90:destroy(); self.edit90 = nil; end;
         if self.label18 ~= nil then self.label18:destroy(); self.label18 = nil; end;
@@ -8400,7 +8263,6 @@ local function constructNew_frmACN2()
         if self.edit49 ~= nil then self.edit49:destroy(); self.edit49 = nil; end;
         if self.rectangle32 ~= nil then self.rectangle32:destroy(); self.rectangle32 = nil; end;
         if self.label62 ~= nil then self.label62:destroy(); self.label62 = nil; end;
-        if self.radioButton46 ~= nil then self.radioButton46:destroy(); self.radioButton46 = nil; end;
         if self.layout16 ~= nil then self.layout16:destroy(); self.layout16 = nil; end;
         if self.layout21 ~= nil then self.layout21:destroy(); self.layout21 = nil; end;
         if self.edit140 ~= nil then self.edit140:destroy(); self.edit140 = nil; end;
@@ -8413,10 +8275,12 @@ local function constructNew_frmACN2()
         if self.label33 ~= nil then self.label33:destroy(); self.label33 = nil; end;
         if self.rectangle11 ~= nil then self.rectangle11:destroy(); self.rectangle11 = nil; end;
         if self.label44 ~= nil then self.label44:destroy(); self.label44 = nil; end;
-        if self.radioButton13 ~= nil then self.radioButton13:destroy(); self.radioButton13 = nil; end;
+        if self.button62 ~= nil then self.button62:destroy(); self.button62 = nil; end;
         if self.edit46 ~= nil then self.edit46:destroy(); self.edit46 = nil; end;
         if self.layout43 ~= nil then self.layout43:destroy(); self.layout43 = nil; end;
         if self.edit229 ~= nil then self.edit229:destroy(); self.edit229 = nil; end;
+        if self.label83 ~= nil then self.label83:destroy(); self.label83 = nil; end;
+        if self.button49 ~= nil then self.button49:destroy(); self.button49 = nil; end;
         if self.edit104 ~= nil then self.edit104:destroy(); self.edit104 = nil; end;
         if self.edit207 ~= nil then self.edit207:destroy(); self.edit207 = nil; end;
         if self.edit7 ~= nil then self.edit7:destroy(); self.edit7 = nil; end;
@@ -8426,17 +8290,15 @@ local function constructNew_frmACN2()
         if self.edit80 ~= nil then self.edit80:destroy(); self.edit80 = nil; end;
         if self.rectangle21 ~= nil then self.rectangle21:destroy(); self.rectangle21 = nil; end;
         if self.edit95 ~= nil then self.edit95:destroy(); self.edit95 = nil; end;
-        if self.radioButton4 ~= nil then self.radioButton4:destroy(); self.radioButton4 = nil; end;
         if self.edit35 ~= nil then self.edit35:destroy(); self.edit35 = nil; end;
-        if self.label26 ~= nil then self.label26:destroy(); self.label26 = nil; end;
         if self.edit171 ~= nil then self.edit171:destroy(); self.edit171 = nil; end;
+        if self.label26 ~= nil then self.label26:destroy(); self.label26 = nil; end;
+        if self.button76 ~= nil then self.button76:destroy(); self.button76 = nil; end;
         if self.label66 ~= nil then self.label66:destroy(); self.label66 = nil; end;
         if self.edit186 ~= nil then self.edit186:destroy(); self.edit186 = nil; end;
         if self.edit97 ~= nil then self.edit97:destroy(); self.edit97 = nil; end;
-        if self.radioButton57 ~= nil then self.radioButton57:destroy(); self.radioButton57 = nil; end;
         if self.edit57 ~= nil then self.edit57:destroy(); self.edit57 = nil; end;
         if self.rectangle19 ~= nil then self.rectangle19:destroy(); self.rectangle19 = nil; end;
-        if self.radioButton44 ~= nil then self.radioButton44:destroy(); self.radioButton44 = nil; end;
         if self.edit147 ~= nil then self.edit147:destroy(); self.edit147 = nil; end;
         if self.label65 ~= nil then self.label65:destroy(); self.label65 = nil; end;
         if self.layout3 ~= nil then self.layout3:destroy(); self.layout3 = nil; end;
@@ -8451,18 +8313,20 @@ local function constructNew_frmACN2()
         if self.edit88 ~= nil then self.edit88:destroy(); self.edit88 = nil; end;
         if self.layout46 ~= nil then self.layout46:destroy(); self.layout46 = nil; end;
         if self.edit44 ~= nil then self.edit44:destroy(); self.edit44 = nil; end;
-        if self.radioButton87 ~= nil then self.radioButton87:destroy(); self.radioButton87 = nil; end;
         if self.edit89 ~= nil then self.edit89:destroy(); self.edit89 = nil; end;
+        if self.button63 ~= nil then self.button63:destroy(); self.button63 = nil; end;
         if self.label4 ~= nil then self.label4:destroy(); self.label4 = nil; end;
+        if self.button34 ~= nil then self.button34:destroy(); self.button34 = nil; end;
         if self.rectangle54 ~= nil then self.rectangle54:destroy(); self.rectangle54 = nil; end;
         if self.rectangle25 ~= nil then self.rectangle25:destroy(); self.rectangle25 = nil; end;
         if self.label74 ~= nil then self.label74:destroy(); self.label74 = nil; end;
-        if self.radioButton27 ~= nil then self.radioButton27:destroy(); self.radioButton27 = nil; end;
-        if self.radioButton68 ~= nil then self.radioButton68:destroy(); self.radioButton68 = nil; end;
         if self.edit148 ~= nil then self.edit148:destroy(); self.edit148 = nil; end;
+        if self.button69 ~= nil then self.button69:destroy(); self.button69 = nil; end;
+        if self.button50 ~= nil then self.button50:destroy(); self.button50 = nil; end;
+        if self.button22 ~= nil then self.button22:destroy(); self.button22 = nil; end;
+        if self.button48 ~= nil then self.button48:destroy(); self.button48 = nil; end;
         if self.layout27 ~= nil then self.layout27:destroy(); self.layout27 = nil; end;
         if self.rectangle43 ~= nil then self.rectangle43:destroy(); self.rectangle43 = nil; end;
-        if self.radioButton33 ~= nil then self.radioButton33:destroy(); self.radioButton33 = nil; end;
         if self.edit53 ~= nil then self.edit53:destroy(); self.edit53 = nil; end;
         if self.edit180 ~= nil then self.edit180:destroy(); self.edit180 = nil; end;
         if self.layout28 ~= nil then self.layout28:destroy(); self.layout28 = nil; end;
@@ -8475,31 +8339,30 @@ local function constructNew_frmACN2()
         if self.edit107 ~= nil then self.edit107:destroy(); self.edit107 = nil; end;
         if self.edit217 ~= nil then self.edit217:destroy(); self.edit217 = nil; end;
         if self.edit234 ~= nil then self.edit234:destroy(); self.edit234 = nil; end;
+        if self.button95 ~= nil then self.button95:destroy(); self.button95 = nil; end;
         if self.edit237 ~= nil then self.edit237:destroy(); self.edit237 = nil; end;
+        if self.button42 ~= nil then self.button42:destroy(); self.button42 = nil; end;
         if self.edit30 ~= nil then self.edit30:destroy(); self.edit30 = nil; end;
         if self.edit56 ~= nil then self.edit56:destroy(); self.edit56 = nil; end;
+        if self.button57 ~= nil then self.button57:destroy(); self.button57 = nil; end;
         if self.label80 ~= nil then self.label80:destroy(); self.label80 = nil; end;
         if self.edit197 ~= nil then self.edit197:destroy(); self.edit197 = nil; end;
         if self.edit141 ~= nil then self.edit141:destroy(); self.edit141 = nil; end;
         if self.edit55 ~= nil then self.edit55:destroy(); self.edit55 = nil; end;
         if self.edit43 ~= nil then self.edit43:destroy(); self.edit43 = nil; end;
-        if self.radioButton47 ~= nil then self.radioButton47:destroy(); self.radioButton47 = nil; end;
         if self.label17 ~= nil then self.label17:destroy(); self.label17 = nil; end;
         if self.edit75 ~= nil then self.edit75:destroy(); self.edit75 = nil; end;
-        if self.radioButton65 ~= nil then self.radioButton65:destroy(); self.radioButton65 = nil; end;
-        if self.radioButton20 ~= nil then self.radioButton20:destroy(); self.radioButton20 = nil; end;
-        if self.edit65 ~= nil then self.edit65:destroy(); self.edit65 = nil; end;
-        if self.radioButton28 ~= nil then self.radioButton28:destroy(); self.radioButton28 = nil; end;
-        if self.radioButton42 ~= nil then self.radioButton42:destroy(); self.radioButton42 = nil; end;
-        if self.edit39 ~= nil then self.edit39:destroy(); self.edit39 = nil; end;
-        if self.edit130 ~= nil then self.edit130:destroy(); self.edit130 = nil; end;
         if self.edit193 ~= nil then self.edit193:destroy(); self.edit193 = nil; end;
-        if self.radioButton83 ~= nil then self.radioButton83:destroy(); self.radioButton83 = nil; end;
+        if self.button23 ~= nil then self.button23:destroy(); self.button23 = nil; end;
+        if self.edit65 ~= nil then self.edit65:destroy(); self.edit65 = nil; end;
+        if self.edit130 ~= nil then self.edit130:destroy(); self.edit130 = nil; end;
+        if self.edit39 ~= nil then self.edit39:destroy(); self.edit39 = nil; end;
         if self.rectangle49 ~= nil then self.rectangle49:destroy(); self.rectangle49 = nil; end;
         if self.layout53 ~= nil then self.layout53:destroy(); self.layout53 = nil; end;
         if self.dataLink1 ~= nil then self.dataLink1:destroy(); self.dataLink1 = nil; end;
         if self.edit144 ~= nil then self.edit144:destroy(); self.edit144 = nil; end;
         if self.rectangle27 ~= nil then self.rectangle27:destroy(); self.rectangle27 = nil; end;
+        if self.button12 ~= nil then self.button12:destroy(); self.button12 = nil; end;
         if self.label36 ~= nil then self.label36:destroy(); self.label36 = nil; end;
         if self.edit203 ~= nil then self.edit203:destroy(); self.edit203 = nil; end;
         if self.rectangle3 ~= nil then self.rectangle3:destroy(); self.rectangle3 = nil; end;
@@ -8509,31 +8372,31 @@ local function constructNew_frmACN2()
         if self.edit219 ~= nil then self.edit219:destroy(); self.edit219 = nil; end;
         if self.edit51 ~= nil then self.edit51:destroy(); self.edit51 = nil; end;
         if self.edit119 ~= nil then self.edit119:destroy(); self.edit119 = nil; end;
-        if self.radioButton89 ~= nil then self.radioButton89:destroy(); self.radioButton89 = nil; end;
+        if self.button17 ~= nil then self.button17:destroy(); self.button17 = nil; end;
         if self.edit48 ~= nil then self.edit48:destroy(); self.edit48 = nil; end;
+        if self.button25 ~= nil then self.button25:destroy(); self.button25 = nil; end;
         if self.label46 ~= nil then self.label46:destroy(); self.label46 = nil; end;
         if self.edit190 ~= nil then self.edit190:destroy(); self.edit190 = nil; end;
-        if self.radioButton9 ~= nil then self.radioButton9:destroy(); self.radioButton9 = nil; end;
         if self.edit168 ~= nil then self.edit168:destroy(); self.edit168 = nil; end;
-        if self.radioButton15 ~= nil then self.radioButton15:destroy(); self.radioButton15 = nil; end;
         if self.rectangle31 ~= nil then self.rectangle31:destroy(); self.rectangle31 = nil; end;
+        if self.button81 ~= nil then self.button81:destroy(); self.button81 = nil; end;
         if self.edit78 ~= nil then self.edit78:destroy(); self.edit78 = nil; end;
         if self.layout40 ~= nil then self.layout40:destroy(); self.layout40 = nil; end;
+        if self.button61 ~= nil then self.button61:destroy(); self.button61 = nil; end;
         if self.edit202 ~= nil then self.edit202:destroy(); self.edit202 = nil; end;
-        if self.radioButton61 ~= nil then self.radioButton61:destroy(); self.radioButton61 = nil; end;
         if self.edit91 ~= nil then self.edit91:destroy(); self.edit91 = nil; end;
         if self.label25 ~= nil then self.label25:destroy(); self.label25 = nil; end;
         if self.edit70 ~= nil then self.edit70:destroy(); self.edit70 = nil; end;
-        if self.radioButton78 ~= nil then self.radioButton78:destroy(); self.radioButton78 = nil; end;
+        if self.button46 ~= nil then self.button46:destroy(); self.button46 = nil; end;
         if self.edit22 ~= nil then self.edit22:destroy(); self.edit22 = nil; end;
-        if self.radioButton71 ~= nil then self.radioButton71:destroy(); self.radioButton71 = nil; end;
-        if self.radioButton45 ~= nil then self.radioButton45:destroy(); self.radioButton45 = nil; end;
+        if self.button75 ~= nil then self.button75:destroy(); self.button75 = nil; end;
         if self.label5 ~= nil then self.label5:destroy(); self.label5 = nil; end;
         if self.layout6 ~= nil then self.layout6:destroy(); self.layout6 = nil; end;
         if self.rectangle13 ~= nil then self.rectangle13:destroy(); self.rectangle13 = nil; end;
-        if self.radioButton58 ~= nil then self.radioButton58:destroy(); self.radioButton58 = nil; end;
         if self.rectangle39 ~= nil then self.rectangle39:destroy(); self.rectangle39 = nil; end;
         if self.rectangle41 ~= nil then self.rectangle41:destroy(); self.rectangle41 = nil; end;
+        if self.button19 ~= nil then self.button19:destroy(); self.button19 = nil; end;
+        if self.button14 ~= nil then self.button14:destroy(); self.button14 = nil; end;
         if self.edit136 ~= nil then self.edit136:destroy(); self.edit136 = nil; end;
         if self.edit212 ~= nil then self.edit212:destroy(); self.edit212 = nil; end;
         if self.edit173 ~= nil then self.edit173:destroy(); self.edit173 = nil; end;

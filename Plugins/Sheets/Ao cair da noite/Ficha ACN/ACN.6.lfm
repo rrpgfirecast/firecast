@@ -41,12 +41,30 @@
 
 		<comboBox left="95" top="$(top)" width="90" field="$(field)" items="{'AliceBlue', 'AntiqueWhite', 'Aqua', 'Aquamarine', 'Azure', 'Beige', 'Bisque', 'Black', 'BlanchedAlmond', 'Blue', 'BlueViolet', 'Brown', 'BurlyWood', 'CadetBlue', 'Chartreuse', 'Chocolate', 'Coral', 'CornflowerBlue', 'Cornsilk', 'Crimson', 'Cyan', 'DarkBlue', 'DarkCyan', 'DarkGoldenRod', 'DarkGray', 'DarkGreen', 'DarkKhaki', 'DarkMagenta', 'DarkOliveGreen', 'DarkOrange', 'DarkOrchid', 'DarkRed', 'DarkSalmon', 'DarkSeaGreen', 'DarkSlateBlue', 'DarkSlateGray', 'DarkTurquoise', 'DarkViolet', 'DeepPink', 'DeepSkyBlue', 'DimGray', 'DodgerBlue', 'FireBrick', 'FloralWhite', 'ForestGreen', 'Fuchsia', 'Gainsboro', 'GhostWhite', 'Gold', 'GoldenRod', 'Gray', 'Green', 'GreenYellow', 'HoneyDew', 'HotPink', 'IndianRed ', 'Indigo ', 'Ivory', 'Khaki', 'Lavender', 'LavenderBlush', 'LawnGreen', 'LemonChiffon', 'LightBlue', 'LightCoral', 'LightCyan', 'LightGoldenRodYellow', 'LightGray', 'LightGreen', 'LightPink', 'LightSalmon', 'LightSeaGreen', 'LightSkyBlue', 'LightSlateGray', 'LightSteelBlue', 'LightYellow', 'Lime', 'LimeGreen', 'Linen', 'Magenta', 'Maroon', 'MediumAquaMarine', 'MediumBlue', 'MediumOrchid', 'MediumPurple', 'MediumSeaGreen', 'MediumSlateBlue', 'MediumSpringGreen', 'MediumTurquoise', 'MediumVioletRed', 'MidnightBlue', 'MintCream', 'MistyRose', 'Moccasin', 'NavajoWhite', 'Navy', 'OldLace', 'Olive', 'OliveDrab', 'Orange', 'OrangeRed', 'Orchid', 'PaleGoldenRod', 'PaleGreen', 'PaleTurquoise', 'PaleVioletRed', 'PapayaWhip', 'PeachPuff', 'Peru', 'Pink', 'Plum', 'PowderBlue', 'Purple', 'RebeccaPurple', 'Red', 'RosyBrown', 'RoyalBlue', 'SaddleBrown', 'Salmon', 'SandyBrown', 'SeaGreen', 'SeaShell', 'Sienna', 'Silver', 'SkyBlue', 'SlateBlue', 'SlateGray', 'Snow', 'SpringGreen', 'SteelBlue', 'Tan', 'Teal', 'Thistle', 'Tomato', 'Turquoise', 'Violet', 'Wheat', 'White', 'WhiteSmoke', 'Yellow', 'YellowGreen'}" values="{'#F0F8FF', '#FAEBD7', '#00FFFF', '#7FFFD4', '#F0FFFF', '#F5F5DC', '#FFE4C4', '#000000', '#FFEBCD', '#0000FF', '#8A2BE2', '#A52A2A', '#DEB887', '#5F9EA0', '#7FFF00', '#D2691E', '#FF7F50', '#6495ED', '#FFF8DC', '#DC143C', '#00FFFF', '#00008B', '#008B8B', '#B8860B', '#A9A9A9', '#006400', '#BDB76B', '#8B008B', '#556B2F', '#FF8C00', '#9932CC', '#8B0000', '#E9967A', '#8FBC8F', '#483D8B', '#2F4F4F', '#00CED1', '#9400D3', '#FF1493', '#00BFFF', '#696969', '#1E90FF', '#B22222', '#FFFAF0', '#228B22', '#FF00FF', '#DCDCDC', '#F8F8FF', '#FFD700', '#DAA520', '#808080', '#008000', '#ADFF2F', '#F0FFF0', '#FF69B4', '#CD5C5C', '#4B0082', '#FFFFF0', '#F0E68C', '#E6E6FA', '#FFF0F5', '#7CFC00', '#FFFACD', '#ADD8E6', '#F08080', '#E0FFFF', '#FAFAD2', '#D3D3D3', '#90EE90', '#FFB6C1', '#FFA07A', '#20B2AA', '#87CEFA', '#778899', '#B0C4DE', '#FFFFE0', '#00FF00', '#32CD32', '#FAF0E6', '#FF00FF', '#800000', '#66CDAA', '#0000CD', '#BA55D3', '#9370DB', '#3CB371', '#7B68EE', '#00FA9A', '#48D1CC', '#C71585', '#191970', '#F5FFFA', '#FFE4E1', '#FFE4B5', '#FFDEAD', '#000080', '#FDF5E6', '#808000', '#6B8E23', '#FFA500', '#FF4500', '#DA70D6', '#EEE8AA', '#98FB98', '#AFEEEE', '#DB7093', '#FFEFD5', '#FFDAB9', '#CD853F', '#FFC0CB', '#DDA0DD', '#B0E0E6', '#800080', '#663399', '#FF0000', '#BC8F8F', '#4169E1', '#8B4513', '#FA8072', '#F4A460', '#2E8B57', '#FFF5EE', '#A0522D', '#C0C0C0', '#87CEEB', '#6A5ACD', '#708090', '#FFFAFA', '#00FF7F', '#4682B4', '#D2B48C', '#008080', '#D8BFD8', '#FF6347', '#40E0D0', '#EE82EE', '#F5DEB3', '#FFFFFF', '#F5F5F5', '#FFFF00', '#9ACD32'}"/>	
 	</template>
+	<template name="audit">
+		<layout align="top" height="25">
+			<label align="left" width="75" text="$(nome)" margins="{right=5}"/>
+			<rectangle align="left" width="40" color="black" strokeColor="white" strokeSize="1" margins="{right=5}">
+				<label align="client" field="auditini$(field)" horzTextAlign="center"/>
+			</rectangle>
+			<edit align="left" width="40" field="auditbonuscost$(field)" margins="{right=5}" type="float" decimalPlaces="1"/>
+			<rectangle align="left" width="40" color="black" strokeColor="white" strokeSize="1" margins="{right=5}">
+				<label align="client" field="auditbonus$(field)" horzTextAlign="center"/>
+			</rectangle>
+			<edit align="left" width="40" field="auditxpcost$(field)" margins="{right=5}" type="float" decimalPlaces="1"/>
+			<rectangle align="left" width="40" color="black" strokeColor="white" strokeSize="1" margins="{right=5}">
+				<label align="client" field="auditxp$(field)" horzTextAlign="center"/>
+			</rectangle>
+		</layout>
+		<dataLink field="auditbonuscost$(field)" defaultValue="$(bonuscost)"/>
+		<dataLink field="auditxpcost$(field)" defaultValue="$(xpcost)"/>
+	</template>
 
 	<scrollBox align="client">
 		<image left="0" top="0" width="500" height="500" style="autoFit" src="images/RPGmeister.jpg"/>
 		<image left="550" top="0" width="500" height="250" style="autoFit" src="images/SALEM.png"/>
 
-		<layout left="550" top="300" width="200" height="150">
+		<layout left="550" top="260" width="200" height="150">
 			<rectangle left="0" top="0" width="200" height="150" color="black" xradius="15" yradius="15" cornerType="round"/>
 			<label left="0" top="10" width="200" height="20" text="Programador: Vinny (Ambesek)" horzTextAlign="center"/>
 			<label left="0" top="35" width="200" height="20" text="Arte: Nefer (Nefertyne)" horzTextAlign="center"/>
@@ -55,7 +73,7 @@
 			<label left="0" top="120" width="200" height="20" text="Sistema: Ao Cair da Noite" horzTextAlign="center"/>
 		</layout>
 
-		<layout left="550" top="460" width="200" height="150">
+		<layout left="550" top="420" width="200" height="150">
 			<rectangle left="0" top="0" width="200" height="150" color="black"/>
 			<label left="0" top="10" width="80" height="20" text="Tema:" horzTextAlign="center"/>
 			<comboBox left="95" top="10" width="90" field="theme" fontColor="white" items="{'Escuro', 'Claro'}" horzTextAlign="center">
@@ -151,20 +169,20 @@
 		    </dataLink>
 		</layout>
 
-		<label left="755" top="300" width="200" height="20" text="Versão Atual: " horzTextAlign="center" field="versionInstalled"/>
-		<label left="755" top="325" width="200" height="20" text="Sua Versão: " horzTextAlign="center" field="versionDownloaded"/>
-		<checkBox left="755" top="350" width="200" height="20" field="noUpdate" text="Não pedir para atualizar."/>
+		<label left="0" top="505" width="200" height="20" text="Versão Atual: " horzTextAlign="leading" field="versionInstalled"/>
+		<label left="0" top="530" width="200" height="20" text="Sua Versão: " horzTextAlign="leading" field="versionDownloaded"/>
+		<checkBox left="0" top="555" width="200" height="20" field="noUpdate" text="Não pedir para atualizar."/>
 			
-		<button left="755" top="375" width="100" text="Change Log" onClick="gui.openInBrowser('https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ao%20cair%20da%20noite/README.md')" />
-		<button left="867" top="375" width="100" text="Atualizar" onClick="gui.openInBrowser('https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ao%20cair%20da%20noite/output/Ao%20cair%20da%20noite.rpk?raw=true')" />
+		<button left="180" top="505" width="100" text="Change Log" onClick="gui.openInBrowser('https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ao%20cair%20da%20noite/README.md')" />
+		<button left="180" top="530" width="100" text="Atualizar" onClick="gui.openInBrowser('https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ao%20cair%20da%20noite/output/Ao%20cair%20da%20noite.rpk?raw=true')" />
 		
-		<label left="755" top="400" width="200" height="20" text="Conheça as Mesas:"/>
-		<button left="755" top="425" width="100" text="RPGmeister" onClick="gui.openInBrowser('http://firecast.rrpg.com.br:90/a?a=pagRWEMesaInfo.actInfoMesa&amp;mesaid=64070');" />
-		<button left="867" top="425" width="100" text="SALEM" onClick="gui.openInBrowser('http://firecast.rrpg.com.br:90/a?a=pagRWEMesaInfo.actInfoMesa&amp;mesaid=97151');" />
+		<label left="305" top="505" width="200" height="20" text="Conheça as Mesas:"/>
+		<button left="305" top="530" width="100" text="RPGmeister" onClick="gui.openInBrowser('http://firecast.rrpg.com.br:90/a?a=pagRWEMesaInfo.actInfoMesa&amp;mesaid=64070');" />
+		<button left="410" top="530" width="100" text="SALEM" onClick="gui.openInBrowser('http://firecast.rrpg.com.br:90/a?a=pagRWEMesaInfo.actInfoMesa&amp;mesaid=97151');" />
 
 
 		<!-- Combobox de exportar ficha -->
-		<button left="755" top="475" width="100" height="20" text="Exportar Ficha" >
+		<button left="180" top="555" width="100" height="20" text="Exportar Ficha" >
 			<event name="onClick">
 				local xml = NDB.exportXML(sheet);
 
@@ -182,7 +200,7 @@
 			</event>
 		</button>
 		<!-- Combobox de importar ficha -->
-		<button left="755" top="500" width="100" height="20" text="Importar Ficha" >
+		<button left="180" top="580" width="100" height="20" text="Importar Ficha" >
 			<event name="onClick">
 				Dialogs.openFile("Importar Ficha", "application/xml", false, 
 					function(arquivos)
@@ -197,5 +215,458 @@
 					end);
 			</event>
 		</button>
+
+		<layout left="760" top="260" width="315" height="295">
+			<rectangle align="client" color="black" xradius="15" yradius="15" cornerType="round" padding="{left=5,right=5,top=5,bottom=5}">
+
+				<layout align="top" height="25">
+					<label align="left" width="75" text="" margins="{right=5}"/>
+					<label align="left" width="40" text="Inic" margins="{right=5}" horzTextAlign="center"/>
+					<label align="left" width="85" text="Aprimoramento" margins="{right=5}" horzTextAlign="center" fontSize="11"/>
+					<label align="left" width="85" text="XP" margins="{right=5}" horzTextAlign="center"/>
+				</layout>
+
+				<audit nome="Atr. Físico" field="_atrFis" bonuscost="3" xpcost="3"/>
+				<audit nome="Atr. Mental" field="_atrMen" bonuscost="3" xpcost="3"/>
+				<audit nome="Apt. Físico" field="_aptFis" bonuscost="1" xpcost="1.5"/>
+				<audit nome="Apt. Mental" field="_aptMen" bonuscost="1" xpcost="1.5"/>
+				<layout align="top" height="25">
+					<label align="left" width="75" text="Especialização" margins="{right=5}" fontSize="11"/>
+					
+					<edit align="left" width="40" field="auditini_espec" margins="{right=5}"/>
+
+					<edit align="left" width="40" field="auditbonuscost_espec" margins="{right=5}"/>
+					<edit align="left" width="40" field="auditbonus_espec" margins="{right=5}"/>
+
+					<edit align="left" width="40" field="auditxpcost_espec" margins="{right=5}"/>
+					<edit align="left" width="40" field="auditxp_espec"/>
+				</layout>
+				<audit nome="Historico" field="_hist" bonuscost="1" xpcost="2"/>
+				<audit nome="Eidolon" field="_eido" bonuscost="2" xpcost="1"/>
+				<audit nome="Outros" field="_out" bonuscost="5" xpcost="5"/>
+				<layout align="top" height="25">
+					<label align="left" width="75" text="Extra" margins="{right=5}"/>
+					
+					<edit align="left" width="40" field="auditini_extra" margins="{right=5}"/>
+
+					<edit align="left" width="40" field="auditbonuscost_extra" margins="{right=5}"/>
+					<edit align="left" width="40" field="auditbonus_extra" margins="{right=5}"/>
+
+					<edit align="left" width="40" field="auditxpcost_extra" margins="{right=5}"/>
+					<edit align="left" width="40" field="auditxp_extra"/>
+				</layout>
+				<layout align="top" height="25">
+					<label align="left" width="75" text="Total" margins="{right=5}"/>
+					
+					<layout align="left" width="40" margins="{right=5}"/>
+
+					<layout align="left" width="40" margins="{right=5}"/>
+
+					<rectangle align="left" width="40" color="black" strokeColor="white" strokeSize="1" margins="{right=5}">
+						<label align="client" field="auditbonus_total" horzTextAlign="center"/>
+					</rectangle>
+
+					<edit align="left" width="40" field="XP"/>
+
+					<rectangle align="left" width="40" color="black" strokeColor="white" strokeSize="1" margins="{right=5}">
+						<label align="client" field="auditxp_total" horzTextAlign="center"/>
+					</rectangle>
+				</layout>
+			</rectangle>
+
+			<dataLink fields="{'inicialforca', 'inicialagilidade', 'inicialresiliencia'}">
+				<event name="onChange">
+					if sheet==nil then return end;
+					local fisicos = (tonumber(sheet.inicialforca) or 0) + 
+									(tonumber(sheet.inicialagilidade) or 0) + 
+									(tonumber(sheet.inicialresiliencia) or 0);
+					sheet.auditini_atrFis = fisicos;
+				</event>
+			</dataLink>
+			<dataLink fields="{'bonusforca', 'bonusagilidade', 'bonusresiliencia','auditbonuscost_atrFis'}">
+				<event name="onChange">
+					if sheet==nil then return end;
+					local fisicos = (tonumber(sheet.bonusforca) or 0) + 
+									(tonumber(sheet.bonusagilidade) or 0) + 
+									(tonumber(sheet.bonusresiliencia) or 0);
+					local mult = (tonumber(sheet.auditbonuscost_atrFis) or 1);
+					sheet.auditbonus_atrFis = fisicos * mult;
+				</event>
+			</dataLink>
+			<dataLink fields="{'xpforca', 'xpagilidade', 'xpresiliencia', 'testeforca', 'testeagilidade', 'testeresiliencia','auditxpcost_atrFis'}">
+				<event name="onChange">
+					if sheet==nil then return end;
+					local fisicos = 0;
+					local mult = (tonumber(sheet.auditxpcost_atrFis) or 1);
+
+					local valores = {   ((tonumber(sheet.testeforca) or 0)*2 - (tonumber(sheet.xpforca) or 0)), 
+										((tonumber(sheet.testeagilidade) or 0)*2 - (tonumber(sheet.xpagilidade) or 0)), 
+										((tonumber(sheet.testeresiliencia) or 0)*2 - (tonumber(sheet.xpresiliencia) or 0)) };
+					
+					local limites = {	(tonumber(sheet.xpforca) or 0),
+										(tonumber(sheet.xpagilidade) or 0),
+										(tonumber(sheet.xpresiliencia) or 0)}
+					
+					for i=1, 3, 1 do
+						for j=1, limites[i], 1 do
+							fisicos = fisicos + (valores[i]+j)*mult;
+						end;
+					end;
+
+
+					sheet.auditxp_atrFis = fisicos;
+				</event>
+			</dataLink>
+
+			<dataLink fields="{'inicialcarisma', 'inicialpercepcao', 'inicialperspicacia'}">
+				<event name="onChange">
+					if sheet==nil then return end;
+					local mentais = (tonumber(sheet.inicialcarisma) or 0) + 
+									(tonumber(sheet.inicialpercepcao) or 0) + 
+									(tonumber(sheet.inicialperspicacia) or 0);
+					sheet.auditini_atrMen = mentais;
+				</event>
+			</dataLink>
+			<dataLink fields="{'bonuscarisma', 'bonuspercepcao', 'bonusperspicacia','auditbonuscost_atrMen'}">
+				<event name="onChange">
+					if sheet==nil then return end;
+					local mentais = (tonumber(sheet.bonuscarisma) or 0) + 
+									(tonumber(sheet.bonuspercepcao) or 0) + 
+									(tonumber(sheet.bonusperspicacia) or 0);
+					local mult = (tonumber(sheet.auditbonuscost_atrMen) or 1);
+					sheet.auditbonus_atrMen = mentais * mult;
+				</event>
+			</dataLink>
+			<dataLink fields="{'xpcarisma', 'xppercepcao', 'xpperspicacia', 'testecarisma', 'testepercepcao', 'testeperspicacia','auditxpcost_atrMen'}">
+				<event name="onChange">
+					if sheet==nil then return end;
+					local mentais = 0;
+					local mult = (tonumber(sheet.auditxpcost_atrMen) or 1);
+
+					local valores = {   ((tonumber(sheet.testecarisma) or 0)*2 - (tonumber(sheet.xpcarisma) or 0)), 
+										((tonumber(sheet.testepercepcao) or 0)*2 - (tonumber(sheet.xppercepcao) or 0)),
+										((tonumber(sheet.testeperspicacia) or 0)*2 - (tonumber(sheet.xpperspicacia) or 0)) };
+					
+					local limites = {	(tonumber(sheet.xpcarisma) or 0),
+										(tonumber(sheet.xppercepcao) or 0),
+										(tonumber(sheet.xpperspicacia) or 0)}
+					
+					for i=1, 3, 1 do
+						for j=1, limites[i], 1 do
+							mentais = mentais + (valores[i]+j)*mult;
+						end;
+					end;
+					sheet.auditxp_atrMen = mentais;
+				</event>
+			</dataLink>
+
+			<dataLink fields="{'base0_1', 'base0_2', 'base0_3', 'base0_4', 'base0_5', 'base0_6', 'base0_7', 'base0_8', 'base0_9', 'base0_10', 'base0_11', 'base0_12', 'base2_1', 'base2_2', 'base2_3', 'base2_4', 'base2_5', 'base2_6', 'base2_7', 'base2_8', 'base2_9', 'base2_10', 'base2_11', 'base2_12'}">
+				<event name="onChange">
+					if sheet==nil then return end;
+						
+					local fisicos = (tonumber(sheet.base0_1) or 0) + (tonumber(sheet.base0_2) or 0) + (tonumber(sheet.base0_3) or 0) + (tonumber(sheet.base0_4) or 0) + (tonumber(sheet.base0_5) or 0) + (tonumber(sheet.base0_6) or 0) + (tonumber(sheet.base0_7) or 0) + (tonumber(sheet.base0_8) or 0) + (tonumber(sheet.base0_9) or 0) + (tonumber(sheet.base0_10) or 0) + (tonumber(sheet.base0_11) or 0) + (tonumber(sheet.base0_12) or 0) + (tonumber(sheet.base2_1) or 0) + (tonumber(sheet.base2_2) or 0) + (tonumber(sheet.base2_3) or 0) + (tonumber(sheet.base2_4) or 0) + (tonumber(sheet.base2_5) or 0) + (tonumber(sheet.base2_6) or 0) + (tonumber(sheet.base2_7) or 0) + (tonumber(sheet.base2_8) or 0) + (tonumber(sheet.base2_9) or 0) + (tonumber(sheet.base2_10) or 0) + (tonumber(sheet.base2_11) or 0) + (tonumber(sheet.base2_12) or 0);
+					sheet.auditini_aptFis = fisicos;
+				</event>
+			</dataLink>
+			<dataLink fields="{'bonus0_1', 'bonus0_2', 'bonus0_3', 'bonus0_4', 'bonus0_5', 'bonus0_6', 'bonus0_7', 'bonus0_8', 'bonus0_9', 'bonus0_10', 'bonus0_11', 'bonus0_12', 'bonus2_1', 'bonus2_2', 'bonus2_3', 'bonus2_4', 'bonus2_5', 'bonus2_6', 'bonus2_7', 'bonus2_8', 'bonus2_9', 'bonus2_10', 'bonus2_11', 'bonus2_12','auditbonuscost_aptFis'}">
+				<event name="onChange">
+					if sheet==nil then return end;
+						
+					local fisicos = (tonumber(sheet.bonus0_1) or 0) + (tonumber(sheet.bonus0_2) or 0) + (tonumber(sheet.bonus0_3) or 0) + (tonumber(sheet.bonus0_4) or 0) + (tonumber(sheet.bonus0_5) or 0) + (tonumber(sheet.bonus0_6) or 0) + (tonumber(sheet.bonus0_7) or 0) + (tonumber(sheet.bonus0_8) or 0) + (tonumber(sheet.bonus0_9) or 0) + (tonumber(sheet.bonus0_10) or 0) + (tonumber(sheet.bonus0_11) or 0) + (tonumber(sheet.bonus0_12) or 0) + (tonumber(sheet.bonus2_1) or 0) + (tonumber(sheet.bonus2_2) or 0) + (tonumber(sheet.bonus2_3) or 0) + (tonumber(sheet.bonus2_4) or 0) + (tonumber(sheet.bonus2_5) or 0) + (tonumber(sheet.bonus2_6) or 0) + (tonumber(sheet.bonus2_7) or 0) + (tonumber(sheet.bonus2_8) or 0) + (tonumber(sheet.bonus2_9) or 0) + (tonumber(sheet.bonus2_10) or 0) + (tonumber(sheet.bonus2_11) or 0) + (tonumber(sheet.bonus2_12) or 0);
+					local mult = (tonumber(sheet.auditbonuscost_aptFis) or 1);
+					sheet.auditbonus_aptFis = fisicos * mult;
+				</event>
+			</dataLink>
+			<dataLink fields="{'xp0_1', 'xp0_2', 'xp0_3', 'xp0_4', 'xp0_5', 'xp0_6', 'xp0_7', 'xp0_8', 'xp0_9', 'xp0_10', 'xp0_11', 'xp0_12', 'xp2_1', 'xp2_2', 'xp2_3', 'xp2_4', 'xp2_5', 'xp2_6', 'xp2_7', 'xp2_8', 'xp2_9', 'xp2_10', 'xp2_11', 'xp2_12', 'total0_1', 'total0_2', 'total0_3', 'total0_4', 'total0_5', 'total0_6', 'total0_7', 'total0_8', 'total0_9', 'total0_10', 'total0_11', 'total0_12', 'total2_1', 'total2_2', 'total2_3', 'total2_4', 'total2_5', 'total2_6', 'total2_7', 'total2_8', 'total2_9', 'total2_10', 'total2_11', 'total2_12','auditxpcost_aptFis'}">
+				<event name="onChange">
+					if sheet==nil then return end;
+						
+					local fisicos = 0;
+					local mult = (tonumber(sheet.auditxpcost_aptFis) or 1);
+
+					local valores = {   ((tonumber(sheet.total0_1 ) or 0)*2 - (tonumber(sheet.xp0_1 ) or 0)), 
+										((tonumber(sheet.total0_2 ) or 0)*2 - (tonumber(sheet.xp0_2 ) or 0)), 
+										((tonumber(sheet.total0_3 ) or 0)*2 - (tonumber(sheet.xp0_3 ) or 0)),
+										((tonumber(sheet.total0_4 ) or 0)*2 - (tonumber(sheet.xp0_4 ) or 0)),
+										((tonumber(sheet.total0_5 ) or 0)*2 - (tonumber(sheet.xp0_5 ) or 0)),
+										((tonumber(sheet.total0_6 ) or 0)*2 - (tonumber(sheet.xp0_6 ) or 0)),
+										((tonumber(sheet.total0_7 ) or 0)*2 - (tonumber(sheet.xp0_7 ) or 0)),
+										((tonumber(sheet.total0_8 ) or 0)*2 - (tonumber(sheet.xp0_8 ) or 0)),
+										((tonumber(sheet.total0_9 ) or 0)*2 - (tonumber(sheet.xp0_9 ) or 0)),
+										((tonumber(sheet.total0_10) or 0)*2 - (tonumber(sheet.xp0_10) or 0)),
+										((tonumber(sheet.total0_11) or 0)*2 - (tonumber(sheet.xp0_11) or 0)),
+										((tonumber(sheet.total0_12) or 0)*2 - (tonumber(sheet.xp0_12) or 0)),
+										((tonumber(sheet.total2_1 ) or 0)*2 - (tonumber(sheet.xp2_1 ) or 0)),
+										((tonumber(sheet.total2_2 ) or 0)*2 - (tonumber(sheet.xp2_2 ) or 0)),
+										((tonumber(sheet.total2_3 ) or 0)*2 - (tonumber(sheet.xp2_3 ) or 0)),
+										((tonumber(sheet.total2_4 ) or 0)*2 - (tonumber(sheet.xp2_4 ) or 0)),
+										((tonumber(sheet.total2_5 ) or 0)*2 - (tonumber(sheet.xp2_5 ) or 0)),
+										((tonumber(sheet.total2_6 ) or 0)*2 - (tonumber(sheet.xp2_6 ) or 0)),
+										((tonumber(sheet.total2_7 ) or 0)*2 - (tonumber(sheet.xp2_7 ) or 0)),
+										((tonumber(sheet.total2_8 ) or 0)*2 - (tonumber(sheet.xp2_8 ) or 0)),
+										((tonumber(sheet.total2_9 ) or 0)*2 - (tonumber(sheet.xp2_9 ) or 0)),
+										((tonumber(sheet.total2_10) or 0)*2 - (tonumber(sheet.xp2_10) or 0)),
+										((tonumber(sheet.total2_11) or 0)*2 - (tonumber(sheet.xp2_11) or 0)),
+										((tonumber(sheet.total2_12) or 0)*2 - (tonumber(sheet.xp2_12) or 0))
+										};
+			
+					local limites = {	(tonumber(sheet.xp0_1 ) or 0),
+										(tonumber(sheet.xp0_2 ) or 0),
+										(tonumber(sheet.xp0_3 ) or 0),
+										(tonumber(sheet.xp0_4 ) or 0),
+										(tonumber(sheet.xp0_5 ) or 0),
+										(tonumber(sheet.xp0_6 ) or 0),
+										(tonumber(sheet.xp0_7 ) or 0),
+										(tonumber(sheet.xp0_8 ) or 0),
+										(tonumber(sheet.xp0_9 ) or 0),
+										(tonumber(sheet.xp0_10) or 0),
+										(tonumber(sheet.xp0_11) or 0),
+										(tonumber(sheet.xp0_12) or 0),
+										(tonumber(sheet.xp2_1 ) or 0),
+										(tonumber(sheet.xp2_2 ) or 0),
+										(tonumber(sheet.xp2_3 ) or 0),
+										(tonumber(sheet.xp2_4 ) or 0),
+										(tonumber(sheet.xp2_5 ) or 0),
+										(tonumber(sheet.xp2_6 ) or 0),
+										(tonumber(sheet.xp2_7 ) or 0),
+										(tonumber(sheet.xp2_8 ) or 0),
+										(tonumber(sheet.xp2_9 ) or 0),
+										(tonumber(sheet.xp2_10) or 0),
+										(tonumber(sheet.xp2_11) or 0),
+										(tonumber(sheet.xp2_12) or 0)
+										};
+			
+					for i=1, 24, 1 do
+						for j=1, limites[i], 1 do
+							fisicos = fisicos + math.max(math.floor((valores[i]+j)*mult), 2*mult);
+						end;
+					end;
+					sheet.auditxp_aptFis = fisicos;
+				</event>
+			</dataLink>
+
+			<dataLink fields="{'base1_1', 'base1_2', 'base1_3', 'base1_4', 'base1_5', 'base1_6', 'base1_7', 'base1_8', 'base1_9', 'base1_10', 'base1_11', 'base1_12', 'base3_1', 'base3_2', 'base3_3', 'base3_4', 'base3_5', 'base3_6', 'base3_7', 'base3_8', 'base3_9', 'base3_10', 'base3_11', 'base3_12'}">
+				<event name="onChange">
+					if sheet==nil then return end;
+					local mentais = (tonumber(sheet.base1_1) or 0) + (tonumber(sheet.base1_2) or 0) + (tonumber(sheet.base1_3) or 0) + (tonumber(sheet.base1_4) or 0) + (tonumber(sheet.base1_5) or 0) + (tonumber(sheet.base1_6) or 0) + (tonumber(sheet.base1_7) or 0) + (tonumber(sheet.base1_8) or 0) + (tonumber(sheet.base1_9) or 0) + (tonumber(sheet.base1_10) or 0) + (tonumber(sheet.base1_11) or 0) + (tonumber(sheet.base1_12) or 0) + (tonumber(sheet.base3_1) or 0) + (tonumber(sheet.base3_2) or 0) + (tonumber(sheet.base3_3) or 0) + (tonumber(sheet.base3_4) or 0) + (tonumber(sheet.base3_5) or 0) + (tonumber(sheet.base3_6) or 0) + (tonumber(sheet.base3_7) or 0) + (tonumber(sheet.base3_8) or 0) + (tonumber(sheet.base3_9) or 0) + (tonumber(sheet.base3_10) or 0) + (tonumber(sheet.base3_11) or 0) + (tonumber(sheet.base3_12) or 0);
+					sheet.auditini_aptMen = mentais;
+				</event>
+			</dataLink>
+			<dataLink fields="{'bonus1_1', 'bonus1_2', 'bonus1_3', 'bonus1_4', 'bonus1_5', 'bonus1_6', 'bonus1_7', 'bonus1_8', 'bonus1_9', 'bonus1_10', 'bonus1_11', 'bonus1_12', 'bonus3_1', 'bonus3_2', 'bonus3_3', 'bonus3_4', 'bonus3_5', 'bonus3_6', 'bonus3_7', 'bonus3_8', 'bonus3_9', 'bonus3_10', 'bonus3_11', 'bonus3_12','auditbonuscost_aptMen'}">
+				<event name="onChange">
+					if sheet==nil then return end;
+					local mentais = (tonumber(sheet.bonus1_1) or 0) + (tonumber(sheet.bonus1_2) or 0) + (tonumber(sheet.bonus1_3) or 0) + (tonumber(sheet.bonus1_4) or 0) + (tonumber(sheet.bonus1_5) or 0) + (tonumber(sheet.bonus1_6) or 0) + (tonumber(sheet.bonus1_7) or 0) + (tonumber(sheet.bonus1_8) or 0) + (tonumber(sheet.bonus1_9) or 0) + (tonumber(sheet.bonus1_10) or 0) + (tonumber(sheet.bonus1_11) or 0) + (tonumber(sheet.bonus1_12) or 0) + (tonumber(sheet.bonus3_1) or 0) + (tonumber(sheet.bonus3_2) or 0) + (tonumber(sheet.bonus3_3) or 0) + (tonumber(sheet.bonus3_4) or 0) + (tonumber(sheet.bonus3_5) or 0) + (tonumber(sheet.bonus3_6) or 0) + (tonumber(sheet.bonus3_7) or 0) + (tonumber(sheet.bonus3_8) or 0) + (tonumber(sheet.bonus3_9) or 0) + (tonumber(sheet.bonus3_10) or 0) + (tonumber(sheet.bonus3_11) or 0) + (tonumber(sheet.bonus3_12) or 0);
+					local mult = (tonumber(sheet.auditbonuscost_aptMen) or 1);
+					sheet.auditbonus_aptMen = mentais * mult;
+				</event>
+			</dataLink>
+			<dataLink fields="{'xp1_1', 'xp1_2', 'xp1_3', 'xp1_4', 'xp1_5', 'xp1_6', 'xp1_7', 'xp1_8', 'xp1_9', 'xp1_10', 'xp1_11', 'xp1_12', 'xp3_1', 'xp3_2', 'xp3_3', 'xp3_4', 'xp3_5', 'xp3_6', 'xp3_7', 'xp3_8', 'xp3_9', 'xp3_10', 'xp3_11', 'xp3_12', 'total1_1', 'total1_2', 'total1_3', 'total1_4', 'total1_5', 'total1_6', 'total1_7', 'total1_8', 'total1_9', 'total1_10', 'total1_11', 'total1_12', 'total3_1', 'total3_2', 'total3_3', 'total3_4', 'total3_5', 'total3_6', 'total3_7', 'total3_8', 'total3_9', 'total3_10', 'total3_11', 'total3_12','auditxpcost_aptMen'}">
+				<event name="onChange">
+					if sheet==nil then return end;
+					local mentais = 0;
+					local mult = (tonumber(sheet.auditxpcost_aptMen) or 1);
+
+					local valores = {   ((tonumber(sheet.total1_1 ) or 0)*2 - (tonumber(sheet.xp1_1 ) or 0)),
+										((tonumber(sheet.total1_2 ) or 0)*2 - (tonumber(sheet.xp1_2 ) or 0)),
+										((tonumber(sheet.total1_3 ) or 0)*2 - (tonumber(sheet.xp1_3 ) or 0)),
+										((tonumber(sheet.total1_4 ) or 0)*2 - (tonumber(sheet.xp1_4 ) or 0)),
+										((tonumber(sheet.total1_5 ) or 0)*2 - (tonumber(sheet.xp1_5 ) or 0)),
+										((tonumber(sheet.total1_6 ) or 0)*2 - (tonumber(sheet.xp1_6 ) or 0)),
+										((tonumber(sheet.total1_7 ) or 0)*2 - (tonumber(sheet.xp1_7 ) or 0)),
+										((tonumber(sheet.total1_8 ) or 0)*2 - (tonumber(sheet.xp1_8 ) or 0)),
+										((tonumber(sheet.total1_9 ) or 0)*2 - (tonumber(sheet.xp1_9 ) or 0)),
+										((tonumber(sheet.total1_10) or 0)*2 - (tonumber(sheet.xp1_10) or 0)),
+										((tonumber(sheet.total1_11) or 0)*2 - (tonumber(sheet.xp1_11) or 0)),
+										((tonumber(sheet.total1_12) or 0)*2 - (tonumber(sheet.xp1_12) or 0)),
+										((tonumber(sheet.total3_1 ) or 0)*2 - (tonumber(sheet.xp3_1 ) or 0)),
+										((tonumber(sheet.total3_2 ) or 0)*2 - (tonumber(sheet.xp3_2 ) or 0)),
+										((tonumber(sheet.total3_3 ) or 0)*2 - (tonumber(sheet.xp3_3 ) or 0)),
+										((tonumber(sheet.total3_4 ) or 0)*2 - (tonumber(sheet.xp3_4 ) or 0)),
+										((tonumber(sheet.total3_5 ) or 0)*2 - (tonumber(sheet.xp3_5 ) or 0)),
+										((tonumber(sheet.total3_6 ) or 0)*2 - (tonumber(sheet.xp3_6 ) or 0)),
+										((tonumber(sheet.total3_7 ) or 0)*2 - (tonumber(sheet.xp3_7 ) or 0)),
+										((tonumber(sheet.total3_8 ) or 0)*2 - (tonumber(sheet.xp3_8 ) or 0)),
+										((tonumber(sheet.total3_9 ) or 0)*2 - (tonumber(sheet.xp3_9 ) or 0)),
+										((tonumber(sheet.total3_10) or 0)*2 - (tonumber(sheet.xp3_10) or 0)),
+										((tonumber(sheet.total3_11) or 0)*2 - (tonumber(sheet.xp3_11) or 0)),
+										((tonumber(sheet.total3_12) or 0)*2 - (tonumber(sheet.xp3_12) or 0))
+										};
+			
+					local limites = {	(tonumber(sheet.xp1_1 ) or 0),
+										(tonumber(sheet.xp1_2 ) or 0),
+										(tonumber(sheet.xp1_3 ) or 0),
+										(tonumber(sheet.xp1_4 ) or 0),
+										(tonumber(sheet.xp1_5 ) or 0),
+										(tonumber(sheet.xp1_6 ) or 0),
+										(tonumber(sheet.xp1_7 ) or 0),
+										(tonumber(sheet.xp1_8 ) or 0),
+										(tonumber(sheet.xp1_9 ) or 0),
+										(tonumber(sheet.xp1_10) or 0),
+										(tonumber(sheet.xp1_11) or 0),
+										(tonumber(sheet.xp1_12) or 0),
+										(tonumber(sheet.xp3_1 ) or 0),
+										(tonumber(sheet.xp3_2 ) or 0),
+										(tonumber(sheet.xp3_3 ) or 0),
+										(tonumber(sheet.xp3_4 ) or 0),
+										(tonumber(sheet.xp3_5 ) or 0),
+										(tonumber(sheet.xp3_6 ) or 0),
+										(tonumber(sheet.xp3_7 ) or 0),
+										(tonumber(sheet.xp3_8 ) or 0),
+										(tonumber(sheet.xp3_9 ) or 0),
+										(tonumber(sheet.xp3_10) or 0),
+										(tonumber(sheet.xp3_11) or 0),
+										(tonumber(sheet.xp3_12) or 0)
+										};
+			
+					for i=1, 24, 1 do
+						for j=1, limites[i], 1 do
+							mentais = mentais + math.max(math.floor((valores[i]+j)*mult), 2*mult);
+						end;
+					end;
+					sheet.auditxp_aptMen = mentais;
+				</event>
+			</dataLink>
+
+			<dataLink fields="{'historicoValor1_1', 'historicoValor1_2', 'historicoValor1_3', 'historicoValor1_4', 'historicoValor1_5', 'historicoValor1_6', 'historicoValor2_1', 'historicoValor2_2', 'historicoValor2_3', 'historicoValor2_4', 'historicoValor2_5', 'historicoValor2_6', 'historicoValor3_1', 'historicoValor3_2', 'historicoValor3_3', 'historicoValor3_4', 'historicoValor3_5', 'historicoValor3_6'}">
+				<event name="onChange">
+					if sheet==nil then return end;
+					local historico = (tonumber(sheet.historicoValor1_1) or 0) + (tonumber(sheet.historicoValor1_2) or 0) + (tonumber(sheet.historicoValor1_3) or 0) + (tonumber(sheet.historicoValor1_4) or 0) + (tonumber(sheet.historicoValor1_5) or 0) + (tonumber(sheet.historicoValor1_6) or 0) + (tonumber(sheet.historicoValor2_1) or 0) + (tonumber(sheet.historicoValor2_2) or 0) + (tonumber(sheet.historicoValor2_3) or 0) + (tonumber(sheet.historicoValor2_4) or 0) + (tonumber(sheet.historicoValor2_5) or 0) + (tonumber(sheet.historicoValor2_6) or 0) + (tonumber(sheet.historicoValor3_1) or 0) + (tonumber(sheet.historicoValor3_2) or 0) + (tonumber(sheet.historicoValor3_3) or 0) + (tonumber(sheet.historicoValor3_4) or 0) + (tonumber(sheet.historicoValor3_5) or 0) + (tonumber(sheet.historicoValor3_6) or 0);
+					sheet.auditini_hist = historico;
+				</event>
+			</dataLink>
+			<dataLink fields="{'historicoBonus1_1', 'historicoBonus1_2', 'historicoBonus1_3', 'historicoBonus1_4', 'historicoBonus1_5', 'historicoBonus1_6', 'historicoBonus2_1', 'historicoBonus2_2', 'historicoBonus2_3', 'historicoBonus2_4', 'historicoBonus2_5', 'historicoBonus2_6', 'historicoBonus3_1', 'historicoBonus3_2', 'historicoBonus3_3', 'historicoBonus3_4', 'historicoBonus3_5', 'historicoBonus3_6','auditbonuscost_hist'}">
+				<event name="onChange">
+					if sheet==nil then return end;
+					local historico = (tonumber(sheet.historicoBonus1_1) or 0) + (tonumber(sheet.historicoBonus1_2) or 0) + (tonumber(sheet.historicoBonus1_3) or 0) + (tonumber(sheet.historicoBonus1_4) or 0) + (tonumber(sheet.historicoBonus1_5) or 0) + (tonumber(sheet.historicoBonus1_6) or 0) + (tonumber(sheet.historicoBonus2_1) or 0) + (tonumber(sheet.historicoBonus2_2) or 0) + (tonumber(sheet.historicoBonus2_3) or 0) + (tonumber(sheet.historicoBonus2_4) or 0) + (tonumber(sheet.historicoBonus2_5) or 0) + (tonumber(sheet.historicoBonus2_6) or 0) + (tonumber(sheet.historicoBonus3_1) or 0) + (tonumber(sheet.historicoBonus3_2) or 0) + (tonumber(sheet.historicoBonus3_3) or 0) + (tonumber(sheet.historicoBonus3_4) or 0) + (tonumber(sheet.historicoBonus3_5) or 0) + (tonumber(sheet.historicoBonus3_6) or 0);
+					local mult = (tonumber(sheet.auditbonuscost_hist) or 1);
+					sheet.auditbonus_hist = historico * mult;
+				</event>
+			</dataLink>
+			<dataLink fields="{'historicoXp1_1', 'historicoXp1_2', 'historicoXp1_3', 'historicoXp1_4', 'historicoXp1_5', 'historicoXp1_6', 'historicoXp2_1', 'historicoXp2_2', 'historicoXp2_3', 'historicoXp2_4', 'historicoXp2_5', 'historicoXp2_6', 'historicoXp3_1', 'historicoXp3_2', 'historicoXp3_3', 'historicoXp3_4', 'historicoXp3_5', 'historicoXp3_6', 'historicoTotal1_1', 'historicoTotal1_2', 'historicoTotal1_3', 'historicoTotal1_4', 'historicoTotal1_5', 'historicoTotal1_6', 'historicoTotal2_1', 'historicoTotal2_2', 'historicoTotal2_3', 'historicoTotal2_4', 'historicoTotal2_5', 'historicoTotal2_6', 'historicoTotal3_1', 'historicoTotal3_2', 'historicoTotal3_3', 'historicoTotal3_4', 'historicoTotal3_5', 'historicoTotal3_6','auditxpcost_hist'}">
+				<event name="onChange">
+					if sheet==nil then return end;
+					local historicos = 0;
+					local mult = (tonumber(sheet.auditxpcost_hist) or 1);
+
+					local valores = {   ((tonumber(sheet.historicoTotal1_1) or 0) - (tonumber(sheet.historicoXp1_1) or 0)), 
+										((tonumber(sheet.historicoTotal1_2) or 0) - (tonumber(sheet.historicoXp1_2) or 0)), 
+										((tonumber(sheet.historicoTotal1_3) or 0) - (tonumber(sheet.historicoXp1_3) or 0)),
+										((tonumber(sheet.historicoTotal1_4) or 0) - (tonumber(sheet.historicoXp1_4) or 0)),
+										((tonumber(sheet.historicoTotal1_5) or 0) - (tonumber(sheet.historicoXp1_5) or 0)),
+										((tonumber(sheet.historicoTotal1_6) or 0) - (tonumber(sheet.historicoXp1_6) or 0)),
+										((tonumber(sheet.historicoTotal2_1) or 0) - (tonumber(sheet.historicoXp2_1) or 0)),
+										((tonumber(sheet.historicoTotal2_2) or 0) - (tonumber(sheet.historicoXp2_2) or 0)),
+										((tonumber(sheet.historicoTotal2_3) or 0) - (tonumber(sheet.historicoXp2_3) or 0)),
+										((tonumber(sheet.historicoTotal2_4) or 0) - (tonumber(sheet.historicoXp2_4) or 0)),
+										((tonumber(sheet.historicoTotal2_5) or 0) - (tonumber(sheet.historicoXp2_5) or 0)),
+										((tonumber(sheet.historicoTotal2_6) or 0) - (tonumber(sheet.historicoXp2_6) or 0)),
+										((tonumber(sheet.historicoTotal3_1) or 0) - (tonumber(sheet.historicoXp3_1) or 0)),
+										((tonumber(sheet.historicoTotal3_2) or 0) - (tonumber(sheet.historicoXp3_2) or 0)),
+										((tonumber(sheet.historicoTotal3_3) or 0) - (tonumber(sheet.historicoXp3_3) or 0)),
+										((tonumber(sheet.historicoTotal3_4) or 0) - (tonumber(sheet.historicoXp3_4) or 0)),
+										((tonumber(sheet.historicoTotal3_5) or 0) - (tonumber(sheet.historicoXp3_5) or 0)),
+										((tonumber(sheet.historicoTotal3_6) or 0) - (tonumber(sheet.historicoXp3_6) or 0)),
+										};
+							
+					local limites = {	(tonumber(sheet.historicoXp1_1) or 0),
+										(tonumber(sheet.historicoXp1_2) or 0),
+										(tonumber(sheet.historicoXp1_3) or 0),
+										(tonumber(sheet.historicoXp1_4) or 0),
+										(tonumber(sheet.historicoXp1_5) or 0),
+										(tonumber(sheet.historicoXp1_6) or 0),
+										(tonumber(sheet.historicoXp2_1) or 0),
+										(tonumber(sheet.historicoXp2_2) or 0),
+										(tonumber(sheet.historicoXp2_3) or 0),
+										(tonumber(sheet.historicoXp2_4) or 0),
+										(tonumber(sheet.historicoXp2_5) or 0),
+										(tonumber(sheet.historicoXp2_6) or 0),
+										(tonumber(sheet.historicoXp3_1) or 0),
+										(tonumber(sheet.historicoXp3_2) or 0),
+										(tonumber(sheet.historicoXp3_3) or 0),
+										(tonumber(sheet.historicoXp3_4) or 0),
+										(tonumber(sheet.historicoXp3_5) or 0),
+										(tonumber(sheet.historicoXp3_6) or 0)
+										};
+							
+					for i=1, 18, 1 do
+						for j=1, limites[i], 1 do
+							historicos = historicos + (valores[i]+j)*mult;
+						end;
+					end;
+					sheet.auditxp_hist = historicos;
+				</event>
+			</dataLink>
+
+			<dataLink fields="{'inicialconsciencia', 'inicialespirito', 'inicialperseveranca'}">
+				<event name="onChange">
+					if sheet==nil then return end;
+					local eidolon = (tonumber(sheet.inicialconsciencia) or 0) + (tonumber(sheet.inicialespirito) or 0) + (tonumber(sheet.inicialperseveranca) or 0);
+					sheet.auditini_eido = eidolon;
+				</event>
+			</dataLink>
+			<dataLink fields="{'bonusconsciencia', 'bonusespirito', 'bonusperseveranca','auditbonuscost_eido'}">
+				<event name="onChange">
+					if sheet==nil then return end;
+					local eidolon = (tonumber(sheet.bonusconsciencia) or 0) + (tonumber(sheet.bonusespirito) or 0) + (tonumber(sheet.bonusperseveranca) or 0);
+					local mult = (tonumber(sheet.auditbonuscost_eido) or 1);
+					sheet.auditbonus_eido = eidolon * mult;
+				</event>
+			</dataLink>
+			<dataLink fields="{'xpconsciencia', 'xpespirito', 'xpperseveranca', 'testeconsciencia', 'testeespirito', 'testeperseveranca','auditxpcost_eido'}">
+				<event name="onChange">
+					if sheet==nil then return end;
+					local aegis = 0;
+					local mult = (tonumber(sheet.auditxpcost_eido) or 1);
+
+					local valores = {   ((tonumber(sheet.testeconsciencia) or 0) - (tonumber(sheet.xpconsciencia) or 0)), 
+										((tonumber(sheet.testeespirito) or 0) - (tonumber(sheet.xpespirito) or 0)), 
+										((tonumber(sheet.testeperseveranca) or 0) - (tonumber(sheet.xpperseveranca) or 0))};
+					
+					local limites = {	(tonumber(sheet.xpconsciencia) or 0),
+										(tonumber(sheet.xpespirito) or 0),
+										(tonumber(sheet.xpperseveranca) or 0)}
+					
+					for i=1, 3, 1 do
+						for j=1, limites[i], 1 do
+							aegis = aegis + (valores[i]+j) * mult;
+						end;
+					end;
+
+					sheet.auditxp_eido = aegis * mult;
+				</event>
+			</dataLink>
+
+
+			<dataLink fields="{'auditbonus_atrFis', 'auditbonus_atrMen', 'auditbonus_aptFis', 'auditbonus_aptMen', 'auditbonus_hist', 'auditbonus_eido', 'auditbonus_out', 'auditbonus_espec', 'auditbonus_extra'}">
+				<event name="onChange">
+					if sheet==nil then return end;
+					local bonus = 	(tonumber(sheet.auditbonus_atrFis) or 0) + 
+									(tonumber(sheet.auditbonus_atrMen) or 0) + 
+									(tonumber(sheet.auditbonus_aptFis) or 0) + 
+									(tonumber(sheet.auditbonus_aptMen) or 0) + 
+									(tonumber(sheet.auditbonus_hist) or 0) + 
+									(tonumber(sheet.auditbonus_eido) or 0) + 
+									(tonumber(sheet.auditbonus_out) or 0) + 
+									(tonumber(sheet.auditbonus_espec) or 0) + 
+									(tonumber(sheet.auditbonus_extra) or 0);
+					sheet.auditbonus_total = bonus;
+				</event>
+			</dataLink>
+			<dataLink fields="{'auditxp_atrFis', 'auditxp_atrMen', 'auditxp_aptFis', 'auditxp_aptMen', 'auditxp_hist', 'auditxp_eido', 'auditxp_out', 'auditxp_espec', 'auditxp_extra'}">
+				<event name="onChange">
+					if sheet==nil then return end;
+					local xp = 	(tonumber(sheet.auditxp_atrFis) or 0) + 
+									(tonumber(sheet.auditxp_atrMen) or 0) + 
+									(tonumber(sheet.auditxp_aptFis) or 0) + 
+									(tonumber(sheet.auditxp_aptMen) or 0) + 
+									(tonumber(sheet.auditxp_hist) or 0) + 
+									(tonumber(sheet.auditxp_eido) or 0) + 
+									(tonumber(sheet.auditxp_out) or 0) + 
+									(tonumber(sheet.auditxp_espec) or 0) + 
+									(tonumber(sheet.auditxp_extra) or 0);
+					sheet.auditxp_total = xp;
+				</event>
+			</dataLink>
+		</layout>
 	</scrollBox>
 </form>

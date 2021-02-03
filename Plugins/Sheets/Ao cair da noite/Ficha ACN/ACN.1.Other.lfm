@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmOther" width="110" height="35" margins="{top=1}">
+	<rectangle align="client" color="#212121">
+		<button left="0" top="2.5" height="15" width="15" text="1">
+        	<event name="onClick">
+				if sheet==nil then return end;
+				local node = NDB.getRoot(sheet);
+				if node==nil then return end;
+
+				node.field1 = true;
+				node.num1 = (tonumber(sheet.total) or 0);
+				node.rollnome1 = "" .. (sheet.nome or "");
+        	</event>
+        </button>
+    	<button left="0" top="17.5" height="15" width="15" text="2">
+    		<event name="onClick">
+				if sheet==nil then return end;
+				local node = NDB.getRoot(sheet);
+				if node==nil then return end;
+
+				node.field2 = true;
+				node.num2 = (tonumber(sheet.total) or 0);
+				node.rollnome2 = "" .. (sheet.nome or "");
+        	</event>
+    	</button>
+
+    	<edit left="20" top="5" width="150" height="25" field="nome"/>
+
+		<rectangle left="175" top="5" width="35" height="25" color="Black" strokeColor="white" strokeSize="1"/>
+        <label left="185" top="8" width="30" height="20" field="total"/>
+
+		<button left="215" top="5" width="25" height="25" text="i">
+			<event name="onClick">	
+				local pop = self:findControlByName("popOther");
+					
+				if pop ~= nil then
+					pop:setNodeObject(self.sheet);
+					pop:showPopupEx("right", self);
+				else
+					showMessage("Ops, bug.. nao encontrei o popup para exibir");
+				end;
+			</event>
+		</button>
+
+		<!-- Botão que apaga o objeto da lista -->
+		<button left="240" top="5" width="25" height="25" text="X">
+			<event name="onClick">
+				Dialogs.confirmOkCancel("Tem certeza que quer apagar?",
+					function (confirmado)
+						if confirmado then
+							NDB.deleteNode(sheet);
+						end;
+				end);
+			</event>
+		</button>
+
+		<dataLink fields="{'inicial','aprimoramento','xp','multApr','multXp'}">
+			<event name="onChange">
+				if sheet==nil then return end;
+				local apr = (tonumber(sheet.aprimoramento) or 0);
+				local xp = (tonumber(sheet.xp) or 0);
+				local mult = (tonumber(sheet.multXp) or 1);
+				local total = (tonumber(sheet.inicial) or 0) + apr + xp;
+
+				sheet.total = total;
+
+				local valor = total - xp;
+				local aux = 0;
+				for j=1, xp, 1 do
+					aux = aux + (valor+j)*mult;
+				end;
+				sheet.costXp = aux;
+
+				mult = (tonumber(sheet.multApr) or 1);
+				sheet.costApr = apr * mult;
+			</event>
+		</dataLink>
+
+		<dataLink field="inicial">
+			<event name="onChange"><![CDATA[
+		        if sheet~= nil then
+					local node = NDB.getRoot(sheet);
+					local objetos = NDB.getChildNodes(node.campoDosOutros);
+					local soma = 0;
+
+					for i=1, #objetos, 1 do 
+						soma = soma + (tonumber(objetos[i].inicial) or 0);
+					end;
+
+					node.auditini_out = soma;
+				end;
+		        ]]>
+			</event>
+		</dataLink>
+
+		<dataLink field="costApr">
+			<event name="onChange"><![CDATA[
+		        if sheet~= nil then
+					local node = NDB.getRoot(sheet);
+					local objetos = NDB.getChildNodes(node.campoDosOutros);
+					local soma = 0;
+
+					for i=1, #objetos, 1 do 
+						soma = soma + (tonumber(objetos[i].costApr) or 0);
+					end;
+
+					node.auditbonus_out = soma;
+				end;
+		        ]]>
+			</event>
+		</dataLink>
+
+		<dataLink field="costXp">
+			<event name="onChange"><![CDATA[
+		        if sheet~= nil then
+					local node = NDB.getRoot(sheet);
+					local objetos = NDB.getChildNodes(node.campoDosOutros);
+					local soma = 0;
+
+					for i=1, #objetos, 1 do 
+						soma = soma + (tonumber(objetos[i].costXp) or 0);
+					end;
+
+					node.auditxp_out = soma;
+				end;
+		        ]]>
+			</event>
+		</dataLink>
+	</rectangle>
+</form>
