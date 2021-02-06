@@ -12784,7 +12784,7 @@ local function constructNew_frmFichaACN()
                         function (downloaded, total)
                             -- esta função será chamada constantemente.
                             -- dividir "downloaded" por "total" lhe dará uma porcentagem do download.
-                        end);
+                        end,"checkForModification");
         end, obj);
 
     obj._e_event1 = obj.button1:addEventListener("onClick",
