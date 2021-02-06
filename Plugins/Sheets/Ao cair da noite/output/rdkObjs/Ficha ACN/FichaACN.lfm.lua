@@ -13927,16 +13927,16 @@ local function constructNew_frmFichaACN()
     obj._e_event128 = obj.button59:addEventListener("onClick",
         function (_)
             if sheet==nil then return end;
-            				sheet.field1 = sheet.dado1;
-            				sheet.num1 = (tonumber(sheet[sheet.field1]) or 0);
+            				sheet.field1 = true;
+            				sheet.num1 = (tonumber(sheet.total0_1) or 0);
             				sheet.rollnome1 = sheet.nome0_1;
         end, obj);
 
     obj._e_event129 = obj.button60:addEventListener("onClick",
         function (_)
             if sheet==nil then return end;
-            				sheet.field2 = sheet.dado2;
-            				sheet.num2 = (tonumber(sheet[sheet.field2]) or 0);
+            				sheet.field2 = true;
+            				sheet.num2 = (tonumber(sheet.total0_1) or 0);
             				sheet.rollnome2 = sheet.nome0_1;
         end, obj);
 
@@ -13976,16 +13976,16 @@ local function constructNew_frmFichaACN()
     obj._e_event133 = obj.button61:addEventListener("onClick",
         function (_)
             if sheet==nil then return end;
-            				sheet.field1 = sheet.dado1;
-            				sheet.num1 = (tonumber(sheet[sheet.field1]) or 0);
+            				sheet.field1 = true;
+            				sheet.num1 = (tonumber(sheet.total0_2) or 0);
             				sheet.rollnome1 = sheet.nome0_2;
         end, obj);
 
     obj._e_event134 = obj.button62:addEventListener("onClick",
         function (_)
             if sheet==nil then return end;
-            				sheet.field2 = sheet.dado2;
-            				sheet.num2 = (tonumber(sheet[sheet.field2]) or 0);
+            				sheet.field2 = true;
+            				sheet.num2 = (tonumber(sheet.total0_2) or 0);
             				sheet.rollnome2 = sheet.nome0_2;
         end, obj);
 
@@ -14025,16 +14025,16 @@ local function constructNew_frmFichaACN()
     obj._e_event138 = obj.button63:addEventListener("onClick",
         function (_)
             if sheet==nil then return end;
-            				sheet.field1 = sheet.dado1;
-            				sheet.num1 = (tonumber(sheet[sheet.field1]) or 0);
+            				sheet.field1 = true;
+            				sheet.num1 = (tonumber(sheet.total0_3) or 0);
             				sheet.rollnome1 = sheet.nome0_3;
         end, obj);
 
     obj._e_event139 = obj.button64:addEventListener("onClick",
         function (_)
             if sheet==nil then return end;
-            				sheet.field2 = sheet.dado2;
-            				sheet.num2 = (tonumber(sheet[sheet.field2]) or 0);
+            				sheet.field2 = true;
+            				sheet.num2 = (tonumber(sheet.total0_3) or 0);
             				sheet.rollnome2 = sheet.nome0_3;
         end, obj);
 
@@ -14074,16 +14074,16 @@ local function constructNew_frmFichaACN()
     obj._e_event143 = obj.button65:addEventListener("onClick",
         function (_)
             if sheet==nil then return end;
-            				sheet.field1 = sheet.dado1;
-            				sheet.num1 = (tonumber(sheet[sheet.field1]) or 0);
+            				sheet.field1 = true;
+            				sheet.num1 = (tonumber(sheet.total0_4) or 0);
             				sheet.rollnome1 = sheet.nome0_4;
         end, obj);
 
     obj._e_event144 = obj.button66:addEventListener("onClick",
         function (_)
             if sheet==nil then return end;
-            				sheet.field2 = sheet.dado2;
-            				sheet.num2 = (tonumber(sheet[sheet.field2]) or 0);
+            				sheet.field2 = true;
+            				sheet.num2 = (tonumber(sheet.total0_4) or 0);
             				sheet.rollnome2 = sheet.nome0_4;
         end, obj);
 
@@ -14123,16 +14123,16 @@ local function constructNew_frmFichaACN()
     obj._e_event148 = obj.button67:addEventListener("onClick",
         function (_)
             if sheet==nil then return end;
-            				sheet.field1 = sheet.dado1;
-            				sheet.num1 = (tonumber(sheet[sheet.field1]) or 0);
+            				sheet.field1 = true;
+            				sheet.num1 = (tonumber(sheet.total0_5) or 0);
             				sheet.rollnome1 = sheet.nome0_5;
         end, obj);
 
     obj._e_event149 = obj.button68:addEventListener("onClick",
         function (_)
             if sheet==nil then return end;
-            				sheet.field2 = sheet.dado2;
-            				sheet.num2 = (tonumber(sheet[sheet.field2]) or 0);
+            				sheet.field2 = true;
+            				sheet.num2 = (tonumber(sheet.total0_5) or 0);
             				sheet.rollnome2 = sheet.nome0_5;
         end, obj);
 
@@ -14172,16 +14172,16 @@ local function constructNew_frmFichaACN()
     obj._e_event153 = obj.button69:addEventListener("onClick",
         function (_)
             if sheet==nil then return end;
-            				sheet.field1 = sheet.dado1;
-            				sheet.num1 = (tonumber(sheet[sheet.field1]) or 0);
+            				sheet.field1 = true;
+            				sheet.num1 = (tonumber(sheet.total0_6) or 0);
             				sheet.rollnome1 = sheet.nome0_6;
         end, obj);
 
     obj._e_event154 = obj.button70:addEventListener("onClick",
         function (_)
             if sheet==nil then return end;
-            				sheet.field2 = sheet.dado2;
-            				sheet.num2 = (tonumber(sheet[sheet.field2]) or 0);
+            				sheet.field2 = true;
+            				sheet.num2 = (tonumber(sheet.total0_6) or 0);
             				sheet.rollnome2 = sheet.nome0_6;
         end, obj);
 
@@ -14221,16 +14221,16 @@ local function constructNew_frmFichaACN()
     obj._e_event158 = obj.button71:addEventListener("onClick",
         function (_)
             if sheet==nil then return end;
-            				sheet.field1 = sheet.dado1;
-            				sheet.num1 = (tonumber(sheet[sheet.field1]) or 0);
+            				sheet.field1 = true;
+            				sheet.num1 = (tonumber(sheet.total0_7) or 0);
             				sheet.rollnome1 = sheet.nome0_7;
         end, obj);
 
     obj._e_event159 = obj.button72:addEventListener("onClick",
         function (_)
             if sheet==nil then return end;
-            				sheet.field2 = sheet.dado2;
-            				sheet.num2 = (tonumber(sheet[sheet.field2]) or 0);
+            				sheet.field2 = true;
+            				sheet.num2 = (tonumber(sheet.total0_7) or 0);
             				sheet.rollnome2 = sheet.nome0_7;
         end, obj);
 
@@ -14270,16 +14270,16 @@ local function constructNew_frmFichaACN()
     obj._e_event163 = obj.button73:addEventListener("onClick",
         function (_)
             if sheet==nil then return end;
-            				sheet.field1 = sheet.dado1;
-            				sheet.num1 = (tonumber(sheet[sheet.field1]) or 0);
+            				sheet.field1 = true;
+            				sheet.num1 = (tonumber(sheet.total0_8) or 0);
             				sheet.rollnome1 = sheet.nome0_8;
         end, obj);
 
     obj._e_event164 = obj.button74:addEventListener("onClick",
         function (_)
             if sheet==nil then return end;
-            				sheet.field2 = sheet.dado2;
-            				sheet.num2 = (tonumber(sheet[sheet.field2]) or 0);
+            				sheet.field2 = true;
+            				sheet.num2 = (tonumber(sheet.total0_8) or 0);
             				sheet.rollnome2 = sheet.nome0_8;
         end, obj);
 
@@ -14319,16 +14319,16 @@ local function constructNew_frmFichaACN()
     obj._e_event168 = obj.button75:addEventListener("onClick",
         function (_)
             if sheet==nil then return end;
-            				sheet.field1 = sheet.dado1;
-            				sheet.num1 = (tonumber(sheet[sheet.field1]) or 0);
+            				sheet.field1 = true;
+            				sheet.num1 = (tonumber(sheet.total0_9) or 0);
             				sheet.rollnome1 = sheet.nome0_9;
         end, obj);
 
     obj._e_event169 = obj.button76:addEventListener("onClick",
         function (_)
             if sheet==nil then return end;
-            				sheet.field2 = sheet.dado2;
-            				sheet.num2 = (tonumber(sheet[sheet.field2]) or 0);
+            				sheet.field2 = true;
+            				sheet.num2 = (tonumber(sheet.total0_9) or 0);
             				sheet.rollnome2 = sheet.nome0_9;
         end, obj);
 
@@ -14368,16 +14368,16 @@ local function constructNew_frmFichaACN()
     obj._e_event173 = obj.button77:addEventListener("onClick",
         function (_)
             if sheet==nil then return end;
-            				sheet.field1 = sheet.dado1;
-            				sheet.num1 = (tonumber(sheet[sheet.field1]) or 0);
+            				sheet.field1 = true;
+            				sheet.num1 = (tonumber(sheet.total0_10) or 0);
             				sheet.rollnome1 = sheet.nome0_10;
         end, obj);
 
     obj._e_event174 = obj.button78:addEventListener("onClick",
         function (_)
             if sheet==nil then return end;
-            				sheet.field2 = sheet.dado2;
-            				sheet.num2 = (tonumber(sheet[sheet.field2]) or 0);
+            				sheet.field2 = true;
+            				sheet.num2 = (tonumber(sheet.total0_10) or 0);
             				sheet.rollnome2 = sheet.nome0_10;
         end, obj);
 
@@ -14417,16 +14417,16 @@ local function constructNew_frmFichaACN()
     obj._e_event178 = obj.button79:addEventListener("onClick",
         function (_)
             if sheet==nil then return end;
-            				sheet.field1 = sheet.dado1;
-            				sheet.num1 = (tonumber(sheet[sheet.field1]) or 0);
+            				sheet.field1 = true;
+            				sheet.num1 = (tonumber(sheet.total0_11) or 0);
             				sheet.rollnome1 = sheet.nome0_11;
         end, obj);
 
     obj._e_event179 = obj.button80:addEventListener("onClick",
         function (_)
             if sheet==nil then return end;
-            				sheet.field2 = sheet.dado2;
-            				sheet.num2 = (tonumber(sheet[sheet.field2]) or 0);
+            				sheet.field2 = true;
+            				sheet.num2 = (tonumber(sheet.total0_11) or 0);
             				sheet.rollnome2 = sheet.nome0_11;
         end, obj);
 
@@ -14466,16 +14466,16 @@ local function constructNew_frmFichaACN()
     obj._e_event183 = obj.button81:addEventListener("onClick",
         function (_)
             if sheet==nil then return end;
-            				sheet.field1 = sheet.dado1;
-            				sheet.num1 = (tonumber(sheet[sheet.field1]) or 0);
+            				sheet.field1 = true;
+            				sheet.num1 = (tonumber(sheet.total0_12) or 0);
             				sheet.rollnome1 = sheet.nome0_12;
         end, obj);
 
     obj._e_event184 = obj.button82:addEventListener("onClick",
         function (_)
             if sheet==nil then return end;
-            				sheet.field2 = sheet.dado2;
-            				sheet.num2 = (tonumber(sheet[sheet.field2]) or 0);
+            				sheet.field2 = true;
+            				sheet.num2 = (tonumber(sheet.total0_12) or 0);
             				sheet.rollnome2 = sheet.nome0_12;
         end, obj);
 
@@ -14515,16 +14515,16 @@ local function constructNew_frmFichaACN()
     obj._e_event188 = obj.button83:addEventListener("onClick",
         function (_)
             if sheet==nil then return end;
-            				sheet.field1 = sheet.dado1;
-            				sheet.num1 = (tonumber(sheet[sheet.field1]) or 0);
+            				sheet.field1 = true;
+            				sheet.num1 = (tonumber(sheet.total2_1) or 0);
             				sheet.rollnome1 = sheet.nome2_1;
         end, obj);
 
     obj._e_event189 = obj.button84:addEventListener("onClick",
         function (_)
             if sheet==nil then return end;
-            				sheet.field2 = sheet.dado2;
-            				sheet.num2 = (tonumber(sheet[sheet.field2]) or 0);
+            				sheet.field2 = true;
+            				sheet.num2 = (tonumber(sheet.total2_1) or 0);
             				sheet.rollnome2 = sheet.nome2_1;
         end, obj);
 
@@ -14564,16 +14564,16 @@ local function constructNew_frmFichaACN()
     obj._e_event193 = obj.button85:addEventListener("onClick",
         function (_)
             if sheet==nil then return end;
-            				sheet.field1 = sheet.dado1;
-            				sheet.num1 = (tonumber(sheet[sheet.field1]) or 0);
+            				sheet.field1 = true;
+            				sheet.num1 = (tonumber(sheet.total2_2) or 0);
             				sheet.rollnome1 = sheet.nome2_2;
         end, obj);
 
     obj._e_event194 = obj.button86:addEventListener("onClick",
         function (_)
             if sheet==nil then return end;
-            				sheet.field2 = sheet.dado2;
-            				sheet.num2 = (tonumber(sheet[sheet.field2]) or 0);
+            				sheet.field2 = true;
+            				sheet.num2 = (tonumber(sheet.total2_2) or 0);
             				sheet.rollnome2 = sheet.nome2_2;
         end, obj);
 
@@ -14613,16 +14613,16 @@ local function constructNew_frmFichaACN()
     obj._e_event198 = obj.button87:addEventListener("onClick",
         function (_)
             if sheet==nil then return end;
-            				sheet.field1 = sheet.dado1;
-            				sheet.num1 = (tonumber(sheet[sheet.field1]) or 0);
+            				sheet.field1 = true;
+            				sheet.num1 = (tonumber(sheet.total2_3) or 0);
             				sheet.rollnome1 = sheet.nome2_3;
         end, obj);
 
     obj._e_event199 = obj.button88:addEventListener("onClick",
         function (_)
             if sheet==nil then return end;
-            				sheet.field2 = sheet.dado2;
-            				sheet.num2 = (tonumber(sheet[sheet.field2]) or 0);
+            				sheet.field2 = true;
+            				sheet.num2 = (tonumber(sheet.total2_3) or 0);
             				sheet.rollnome2 = sheet.nome2_3;
         end, obj);
 
@@ -14662,16 +14662,16 @@ local function constructNew_frmFichaACN()
     obj._e_event203 = obj.button89:addEventListener("onClick",
         function (_)
             if sheet==nil then return end;
-            				sheet.field1 = sheet.dado1;
-            				sheet.num1 = (tonumber(sheet[sheet.field1]) or 0);
+            				sheet.field1 = true;
+            				sheet.num1 = (tonumber(sheet.total2_4) or 0);
             				sheet.rollnome1 = sheet.nome2_4;
         end, obj);
 
     obj._e_event204 = obj.button90:addEventListener("onClick",
         function (_)
             if sheet==nil then return end;
-            				sheet.field2 = sheet.dado2;
-            				sheet.num2 = (tonumber(sheet[sheet.field2]) or 0);
+            				sheet.field2 = true;
+            				sheet.num2 = (tonumber(sheet.total2_4) or 0);
             				sheet.rollnome2 = sheet.nome2_4;
         end, obj);
 
@@ -14711,16 +14711,16 @@ local function constructNew_frmFichaACN()
     obj._e_event208 = obj.button91:addEventListener("onClick",
         function (_)
             if sheet==nil then return end;
-            				sheet.field1 = sheet.dado1;
-            				sheet.num1 = (tonumber(sheet[sheet.field1]) or 0);
+            				sheet.field1 = true;
+            				sheet.num1 = (tonumber(sheet.total2_5) or 0);
             				sheet.rollnome1 = sheet.nome2_5;
         end, obj);
 
     obj._e_event209 = obj.button92:addEventListener("onClick",
         function (_)
             if sheet==nil then return end;
-            				sheet.field2 = sheet.dado2;
-            				sheet.num2 = (tonumber(sheet[sheet.field2]) or 0);
+            				sheet.field2 = true;
+            				sheet.num2 = (tonumber(sheet.total2_5) or 0);
             				sheet.rollnome2 = sheet.nome2_5;
         end, obj);
 
@@ -14760,16 +14760,16 @@ local function constructNew_frmFichaACN()
     obj._e_event213 = obj.button93:addEventListener("onClick",
         function (_)
             if sheet==nil then return end;
-            				sheet.field1 = sheet.dado1;
-            				sheet.num1 = (tonumber(sheet[sheet.field1]) or 0);
+            				sheet.field1 = true;
+            				sheet.num1 = (tonumber(sheet.total2_6) or 0);
             				sheet.rollnome1 = sheet.nome2_6;
         end, obj);
 
     obj._e_event214 = obj.button94:addEventListener("onClick",
         function (_)
             if sheet==nil then return end;
-            				sheet.field2 = sheet.dado2;
-            				sheet.num2 = (tonumber(sheet[sheet.field2]) or 0);
+            				sheet.field2 = true;
+            				sheet.num2 = (tonumber(sheet.total2_6) or 0);
             				sheet.rollnome2 = sheet.nome2_6;
         end, obj);
 
@@ -14809,16 +14809,16 @@ local function constructNew_frmFichaACN()
     obj._e_event218 = obj.button95:addEventListener("onClick",
         function (_)
             if sheet==nil then return end;
-            				sheet.field1 = sheet.dado1;
-            				sheet.num1 = (tonumber(sheet[sheet.field1]) or 0);
+            				sheet.field1 = true;
+            				sheet.num1 = (tonumber(sheet.total2_7) or 0);
             				sheet.rollnome1 = sheet.nome2_7;
         end, obj);
 
     obj._e_event219 = obj.button96:addEventListener("onClick",
         function (_)
             if sheet==nil then return end;
-            				sheet.field2 = sheet.dado2;
-            				sheet.num2 = (tonumber(sheet[sheet.field2]) or 0);
+            				sheet.field2 = true;
+            				sheet.num2 = (tonumber(sheet.total2_7) or 0);
             				sheet.rollnome2 = sheet.nome2_7;
         end, obj);
 
@@ -14858,16 +14858,16 @@ local function constructNew_frmFichaACN()
     obj._e_event223 = obj.button97:addEventListener("onClick",
         function (_)
             if sheet==nil then return end;
-            				sheet.field1 = sheet.dado1;
-            				sheet.num1 = (tonumber(sheet[sheet.field1]) or 0);
+            				sheet.field1 = true;
+            				sheet.num1 = (tonumber(sheet.total2_8) or 0);
             				sheet.rollnome1 = sheet.nome2_8;
         end, obj);
 
     obj._e_event224 = obj.button98:addEventListener("onClick",
         function (_)
             if sheet==nil then return end;
-            				sheet.field2 = sheet.dado2;
-            				sheet.num2 = (tonumber(sheet[sheet.field2]) or 0);
+            				sheet.field2 = true;
+            				sheet.num2 = (tonumber(sheet.total2_8) or 0);
             				sheet.rollnome2 = sheet.nome2_8;
         end, obj);
 
@@ -14907,16 +14907,16 @@ local function constructNew_frmFichaACN()
     obj._e_event228 = obj.button99:addEventListener("onClick",
         function (_)
             if sheet==nil then return end;
-            				sheet.field1 = sheet.dado1;
-            				sheet.num1 = (tonumber(sheet[sheet.field1]) or 0);
+            				sheet.field1 = true;
+            				sheet.num1 = (tonumber(sheet.total2_9) or 0);
             				sheet.rollnome1 = sheet.nome2_9;
         end, obj);
 
     obj._e_event229 = obj.button100:addEventListener("onClick",
         function (_)
             if sheet==nil then return end;
-            				sheet.field2 = sheet.dado2;
-            				sheet.num2 = (tonumber(sheet[sheet.field2]) or 0);
+            				sheet.field2 = true;
+            				sheet.num2 = (tonumber(sheet.total2_9) or 0);
             				sheet.rollnome2 = sheet.nome2_9;
         end, obj);
 
@@ -14956,16 +14956,16 @@ local function constructNew_frmFichaACN()
     obj._e_event233 = obj.button101:addEventListener("onClick",
         function (_)
             if sheet==nil then return end;
-            				sheet.field1 = sheet.dado1;
-            				sheet.num1 = (tonumber(sheet[sheet.field1]) or 0);
+            				sheet.field1 = true;
+            				sheet.num1 = (tonumber(sheet.total2_10) or 0);
             				sheet.rollnome1 = sheet.nome2_10;
         end, obj);
 
     obj._e_event234 = obj.button102:addEventListener("onClick",
         function (_)
             if sheet==nil then return end;
-            				sheet.field2 = sheet.dado2;
-            				sheet.num2 = (tonumber(sheet[sheet.field2]) or 0);
+            				sheet.field2 = true;
+            				sheet.num2 = (tonumber(sheet.total2_10) or 0);
             				sheet.rollnome2 = sheet.nome2_10;
         end, obj);
 
@@ -15005,16 +15005,16 @@ local function constructNew_frmFichaACN()
     obj._e_event238 = obj.button103:addEventListener("onClick",
         function (_)
             if sheet==nil then return end;
-            				sheet.field1 = sheet.dado1;
-            				sheet.num1 = (tonumber(sheet[sheet.field1]) or 0);
+            				sheet.field1 = true;
+            				sheet.num1 = (tonumber(sheet.total2_11) or 0);
             				sheet.rollnome1 = sheet.nome2_11;
         end, obj);
 
     obj._e_event239 = obj.button104:addEventListener("onClick",
         function (_)
             if sheet==nil then return end;
-            				sheet.field2 = sheet.dado2;
-            				sheet.num2 = (tonumber(sheet[sheet.field2]) or 0);
+            				sheet.field2 = true;
+            				sheet.num2 = (tonumber(sheet.total2_11) or 0);
             				sheet.rollnome2 = sheet.nome2_11;
         end, obj);
 
@@ -15054,16 +15054,16 @@ local function constructNew_frmFichaACN()
     obj._e_event243 = obj.button105:addEventListener("onClick",
         function (_)
             if sheet==nil then return end;
-            				sheet.field1 = sheet.dado1;
-            				sheet.num1 = (tonumber(sheet[sheet.field1]) or 0);
+            				sheet.field1 = true;
+            				sheet.num1 = (tonumber(sheet.total2_12) or 0);
             				sheet.rollnome1 = sheet.nome2_12;
         end, obj);
 
     obj._e_event244 = obj.button106:addEventListener("onClick",
         function (_)
             if sheet==nil then return end;
-            				sheet.field2 = sheet.dado2;
-            				sheet.num2 = (tonumber(sheet[sheet.field2]) or 0);
+            				sheet.field2 = true;
+            				sheet.num2 = (tonumber(sheet.total2_12) or 0);
             				sheet.rollnome2 = sheet.nome2_12;
         end, obj);
 
@@ -15103,16 +15103,16 @@ local function constructNew_frmFichaACN()
     obj._e_event248 = obj.button107:addEventListener("onClick",
         function (_)
             if sheet==nil then return end;
-            				sheet.field1 = sheet.dado1;
-            				sheet.num1 = (tonumber(sheet[sheet.field1]) or 0);
+            				sheet.field1 = true;
+            				sheet.num1 = (tonumber(sheet.total1_1) or 0);
             				sheet.rollnome1 = sheet.nome1_1;
         end, obj);
 
     obj._e_event249 = obj.button108:addEventListener("onClick",
         function (_)
             if sheet==nil then return end;
-            				sheet.field2 = sheet.dado2;
-            				sheet.num2 = (tonumber(sheet[sheet.field2]) or 0);
+            				sheet.field2 = true;
+            				sheet.num2 = (tonumber(sheet.total1_1) or 0);
             				sheet.rollnome2 = sheet.nome1_1;
         end, obj);
 
@@ -15152,16 +15152,16 @@ local function constructNew_frmFichaACN()
     obj._e_event253 = obj.button109:addEventListener("onClick",
         function (_)
             if sheet==nil then return end;
-            				sheet.field1 = sheet.dado1;
-            				sheet.num1 = (tonumber(sheet[sheet.field1]) or 0);
+            				sheet.field1 = true;
+            				sheet.num1 = (tonumber(sheet.total1_2) or 0);
             				sheet.rollnome1 = sheet.nome1_2;
         end, obj);
 
     obj._e_event254 = obj.button110:addEventListener("onClick",
         function (_)
             if sheet==nil then return end;
-            				sheet.field2 = sheet.dado2;
-            				sheet.num2 = (tonumber(sheet[sheet.field2]) or 0);
+            				sheet.field2 = true;
+            				sheet.num2 = (tonumber(sheet.total1_2) or 0);
             				sheet.rollnome2 = sheet.nome1_2;
         end, obj);
 
@@ -15201,16 +15201,16 @@ local function constructNew_frmFichaACN()
     obj._e_event258 = obj.button111:addEventListener("onClick",
         function (_)
             if sheet==nil then return end;
-            				sheet.field1 = sheet.dado1;
-            				sheet.num1 = (tonumber(sheet[sheet.field1]) or 0);
+            				sheet.field1 = true;
+            				sheet.num1 = (tonumber(sheet.total1_3) or 0);
             				sheet.rollnome1 = sheet.nome1_3;
         end, obj);
 
     obj._e_event259 = obj.button112:addEventListener("onClick",
         function (_)
             if sheet==nil then return end;
-            				sheet.field2 = sheet.dado2;
-            				sheet.num2 = (tonumber(sheet[sheet.field2]) or 0);
+            				sheet.field2 = true;
+            				sheet.num2 = (tonumber(sheet.total1_3) or 0);
             				sheet.rollnome2 = sheet.nome1_3;
         end, obj);
 
@@ -15250,16 +15250,16 @@ local function constructNew_frmFichaACN()
     obj._e_event263 = obj.button113:addEventListener("onClick",
         function (_)
             if sheet==nil then return end;
-            				sheet.field1 = sheet.dado1;
-            				sheet.num1 = (tonumber(sheet[sheet.field1]) or 0);
+            				sheet.field1 = true;
+            				sheet.num1 = (tonumber(sheet.total1_4) or 0);
             				sheet.rollnome1 = sheet.nome1_4;
         end, obj);
 
     obj._e_event264 = obj.button114:addEventListener("onClick",
         function (_)
             if sheet==nil then return end;
-            				sheet.field2 = sheet.dado2;
-            				sheet.num2 = (tonumber(sheet[sheet.field2]) or 0);
+            				sheet.field2 = true;
+            				sheet.num2 = (tonumber(sheet.total1_4) or 0);
             				sheet.rollnome2 = sheet.nome1_4;
         end, obj);
 
@@ -15299,16 +15299,16 @@ local function constructNew_frmFichaACN()
     obj._e_event268 = obj.button115:addEventListener("onClick",
         function (_)
             if sheet==nil then return end;
-            				sheet.field1 = sheet.dado1;
-            				sheet.num1 = (tonumber(sheet[sheet.field1]) or 0);
+            				sheet.field1 = true;
+            				sheet.num1 = (tonumber(sheet.total1_5) or 0);
             				sheet.rollnome1 = sheet.nome1_5;
         end, obj);
 
     obj._e_event269 = obj.button116:addEventListener("onClick",
         function (_)
             if sheet==nil then return end;
-            				sheet.field2 = sheet.dado2;
-            				sheet.num2 = (tonumber(sheet[sheet.field2]) or 0);
+            				sheet.field2 = true;
+            				sheet.num2 = (tonumber(sheet.total1_5) or 0);
             				sheet.rollnome2 = sheet.nome1_5;
         end, obj);
 
@@ -15348,16 +15348,16 @@ local function constructNew_frmFichaACN()
     obj._e_event273 = obj.button117:addEventListener("onClick",
         function (_)
             if sheet==nil then return end;
-            				sheet.field1 = sheet.dado1;
-            				sheet.num1 = (tonumber(sheet[sheet.field1]) or 0);
+            				sheet.field1 = true;
+            				sheet.num1 = (tonumber(sheet.total1_6) or 0);
             				sheet.rollnome1 = sheet.nome1_6;
         end, obj);
 
     obj._e_event274 = obj.button118:addEventListener("onClick",
         function (_)
             if sheet==nil then return end;
-            				sheet.field2 = sheet.dado2;
-            				sheet.num2 = (tonumber(sheet[sheet.field2]) or 0);
+            				sheet.field2 = true;
+            				sheet.num2 = (tonumber(sheet.total1_6) or 0);
             				sheet.rollnome2 = sheet.nome1_6;
         end, obj);
 
@@ -15397,16 +15397,16 @@ local function constructNew_frmFichaACN()
     obj._e_event278 = obj.button119:addEventListener("onClick",
         function (_)
             if sheet==nil then return end;
-            				sheet.field1 = sheet.dado1;
-            				sheet.num1 = (tonumber(sheet[sheet.field1]) or 0);
+            				sheet.field1 = true;
+            				sheet.num1 = (tonumber(sheet.total1_7) or 0);
             				sheet.rollnome1 = sheet.nome1_7;
         end, obj);
 
     obj._e_event279 = obj.button120:addEventListener("onClick",
         function (_)
             if sheet==nil then return end;
-            				sheet.field2 = sheet.dado2;
-            				sheet.num2 = (tonumber(sheet[sheet.field2]) or 0);
+            				sheet.field2 = true;
+            				sheet.num2 = (tonumber(sheet.total1_7) or 0);
             				sheet.rollnome2 = sheet.nome1_7;
         end, obj);
 
@@ -15446,16 +15446,16 @@ local function constructNew_frmFichaACN()
     obj._e_event283 = obj.button121:addEventListener("onClick",
         function (_)
             if sheet==nil then return end;
-            				sheet.field1 = sheet.dado1;
-            				sheet.num1 = (tonumber(sheet[sheet.field1]) or 0);
+            				sheet.field1 = true;
+            				sheet.num1 = (tonumber(sheet.total1_8) or 0);
             				sheet.rollnome1 = sheet.nome1_8;
         end, obj);
 
     obj._e_event284 = obj.button122:addEventListener("onClick",
         function (_)
             if sheet==nil then return end;
-            				sheet.field2 = sheet.dado2;
-            				sheet.num2 = (tonumber(sheet[sheet.field2]) or 0);
+            				sheet.field2 = true;
+            				sheet.num2 = (tonumber(sheet.total1_8) or 0);
             				sheet.rollnome2 = sheet.nome1_8;
         end, obj);
 
@@ -15495,16 +15495,16 @@ local function constructNew_frmFichaACN()
     obj._e_event288 = obj.button123:addEventListener("onClick",
         function (_)
             if sheet==nil then return end;
-            				sheet.field1 = sheet.dado1;
-            				sheet.num1 = (tonumber(sheet[sheet.field1]) or 0);
+            				sheet.field1 = true;
+            				sheet.num1 = (tonumber(sheet.total1_9) or 0);
             				sheet.rollnome1 = sheet.nome1_9;
         end, obj);
 
     obj._e_event289 = obj.button124:addEventListener("onClick",
         function (_)
             if sheet==nil then return end;
-            				sheet.field2 = sheet.dado2;
-            				sheet.num2 = (tonumber(sheet[sheet.field2]) or 0);
+            				sheet.field2 = true;
+            				sheet.num2 = (tonumber(sheet.total1_9) or 0);
             				sheet.rollnome2 = sheet.nome1_9;
         end, obj);
 
@@ -15544,16 +15544,16 @@ local function constructNew_frmFichaACN()
     obj._e_event293 = obj.button125:addEventListener("onClick",
         function (_)
             if sheet==nil then return end;
-            				sheet.field1 = sheet.dado1;
-            				sheet.num1 = (tonumber(sheet[sheet.field1]) or 0);
+            				sheet.field1 = true;
+            				sheet.num1 = (tonumber(sheet.total1_10) or 0);
             				sheet.rollnome1 = sheet.nome1_10;
         end, obj);
 
     obj._e_event294 = obj.button126:addEventListener("onClick",
         function (_)
             if sheet==nil then return end;
-            				sheet.field2 = sheet.dado2;
-            				sheet.num2 = (tonumber(sheet[sheet.field2]) or 0);
+            				sheet.field2 = true;
+            				sheet.num2 = (tonumber(sheet.total1_10) or 0);
             				sheet.rollnome2 = sheet.nome1_10;
         end, obj);
 
@@ -15593,16 +15593,16 @@ local function constructNew_frmFichaACN()
     obj._e_event298 = obj.button127:addEventListener("onClick",
         function (_)
             if sheet==nil then return end;
-            				sheet.field1 = sheet.dado1;
-            				sheet.num1 = (tonumber(sheet[sheet.field1]) or 0);
+            				sheet.field1 = true;
+            				sheet.num1 = (tonumber(sheet.total1_11) or 0);
             				sheet.rollnome1 = sheet.nome1_11;
         end, obj);
 
     obj._e_event299 = obj.button128:addEventListener("onClick",
         function (_)
             if sheet==nil then return end;
-            				sheet.field2 = sheet.dado2;
-            				sheet.num2 = (tonumber(sheet[sheet.field2]) or 0);
+            				sheet.field2 = true;
+            				sheet.num2 = (tonumber(sheet.total1_11) or 0);
             				sheet.rollnome2 = sheet.nome1_11;
         end, obj);
 
@@ -15642,16 +15642,16 @@ local function constructNew_frmFichaACN()
     obj._e_event303 = obj.button129:addEventListener("onClick",
         function (_)
             if sheet==nil then return end;
-            				sheet.field1 = sheet.dado1;
-            				sheet.num1 = (tonumber(sheet[sheet.field1]) or 0);
+            				sheet.field1 = true;
+            				sheet.num1 = (tonumber(sheet.total1_12) or 0);
             				sheet.rollnome1 = sheet.nome1_12;
         end, obj);
 
     obj._e_event304 = obj.button130:addEventListener("onClick",
         function (_)
             if sheet==nil then return end;
-            				sheet.field2 = sheet.dado2;
-            				sheet.num2 = (tonumber(sheet[sheet.field2]) or 0);
+            				sheet.field2 = true;
+            				sheet.num2 = (tonumber(sheet.total1_12) or 0);
             				sheet.rollnome2 = sheet.nome1_12;
         end, obj);
 
@@ -15691,16 +15691,16 @@ local function constructNew_frmFichaACN()
     obj._e_event308 = obj.button131:addEventListener("onClick",
         function (_)
             if sheet==nil then return end;
-            				sheet.field1 = sheet.dado1;
-            				sheet.num1 = (tonumber(sheet[sheet.field1]) or 0);
+            				sheet.field1 = true;
+            				sheet.num1 = (tonumber(sheet.total3_1) or 0);
             				sheet.rollnome1 = sheet.nome3_1;
         end, obj);
 
     obj._e_event309 = obj.button132:addEventListener("onClick",
         function (_)
             if sheet==nil then return end;
-            				sheet.field2 = sheet.dado2;
-            				sheet.num2 = (tonumber(sheet[sheet.field2]) or 0);
+            				sheet.field2 = true;
+            				sheet.num2 = (tonumber(sheet.total3_1) or 0);
             				sheet.rollnome2 = sheet.nome3_1;
         end, obj);
 
@@ -15740,16 +15740,16 @@ local function constructNew_frmFichaACN()
     obj._e_event313 = obj.button133:addEventListener("onClick",
         function (_)
             if sheet==nil then return end;
-            				sheet.field1 = sheet.dado1;
-            				sheet.num1 = (tonumber(sheet[sheet.field1]) or 0);
+            				sheet.field1 = true;
+            				sheet.num1 = (tonumber(sheet.total3_2) or 0);
             				sheet.rollnome1 = sheet.nome3_2;
         end, obj);
 
     obj._e_event314 = obj.button134:addEventListener("onClick",
         function (_)
             if sheet==nil then return end;
-            				sheet.field2 = sheet.dado2;
-            				sheet.num2 = (tonumber(sheet[sheet.field2]) or 0);
+            				sheet.field2 = true;
+            				sheet.num2 = (tonumber(sheet.total3_2) or 0);
             				sheet.rollnome2 = sheet.nome3_2;
         end, obj);
 
@@ -15789,16 +15789,16 @@ local function constructNew_frmFichaACN()
     obj._e_event318 = obj.button135:addEventListener("onClick",
         function (_)
             if sheet==nil then return end;
-            				sheet.field1 = sheet.dado1;
-            				sheet.num1 = (tonumber(sheet[sheet.field1]) or 0);
+            				sheet.field1 = true;
+            				sheet.num1 = (tonumber(sheet.total3_3) or 0);
             				sheet.rollnome1 = sheet.nome3_3;
         end, obj);
 
     obj._e_event319 = obj.button136:addEventListener("onClick",
         function (_)
             if sheet==nil then return end;
-            				sheet.field2 = sheet.dado2;
-            				sheet.num2 = (tonumber(sheet[sheet.field2]) or 0);
+            				sheet.field2 = true;
+            				sheet.num2 = (tonumber(sheet.total3_3) or 0);
             				sheet.rollnome2 = sheet.nome3_3;
         end, obj);
 
@@ -15838,16 +15838,16 @@ local function constructNew_frmFichaACN()
     obj._e_event323 = obj.button137:addEventListener("onClick",
         function (_)
             if sheet==nil then return end;
-            				sheet.field1 = sheet.dado1;
-            				sheet.num1 = (tonumber(sheet[sheet.field1]) or 0);
+            				sheet.field1 = true;
+            				sheet.num1 = (tonumber(sheet.total3_4) or 0);
             				sheet.rollnome1 = sheet.nome3_4;
         end, obj);
 
     obj._e_event324 = obj.button138:addEventListener("onClick",
         function (_)
             if sheet==nil then return end;
-            				sheet.field2 = sheet.dado2;
-            				sheet.num2 = (tonumber(sheet[sheet.field2]) or 0);
+            				sheet.field2 = true;
+            				sheet.num2 = (tonumber(sheet.total3_4) or 0);
             				sheet.rollnome2 = sheet.nome3_4;
         end, obj);
 
@@ -15887,16 +15887,16 @@ local function constructNew_frmFichaACN()
     obj._e_event328 = obj.button139:addEventListener("onClick",
         function (_)
             if sheet==nil then return end;
-            				sheet.field1 = sheet.dado1;
-            				sheet.num1 = (tonumber(sheet[sheet.field1]) or 0);
+            				sheet.field1 = true;
+            				sheet.num1 = (tonumber(sheet.total3_5) or 0);
             				sheet.rollnome1 = sheet.nome3_5;
         end, obj);
 
     obj._e_event329 = obj.button140:addEventListener("onClick",
         function (_)
             if sheet==nil then return end;
-            				sheet.field2 = sheet.dado2;
-            				sheet.num2 = (tonumber(sheet[sheet.field2]) or 0);
+            				sheet.field2 = true;
+            				sheet.num2 = (tonumber(sheet.total3_5) or 0);
             				sheet.rollnome2 = sheet.nome3_5;
         end, obj);
 
@@ -15936,16 +15936,16 @@ local function constructNew_frmFichaACN()
     obj._e_event333 = obj.button141:addEventListener("onClick",
         function (_)
             if sheet==nil then return end;
-            				sheet.field1 = sheet.dado1;
-            				sheet.num1 = (tonumber(sheet[sheet.field1]) or 0);
+            				sheet.field1 = true;
+            				sheet.num1 = (tonumber(sheet.total3_6) or 0);
             				sheet.rollnome1 = sheet.nome3_6;
         end, obj);
 
     obj._e_event334 = obj.button142:addEventListener("onClick",
         function (_)
             if sheet==nil then return end;
-            				sheet.field2 = sheet.dado2;
-            				sheet.num2 = (tonumber(sheet[sheet.field2]) or 0);
+            				sheet.field2 = true;
+            				sheet.num2 = (tonumber(sheet.total3_6) or 0);
             				sheet.rollnome2 = sheet.nome3_6;
         end, obj);
 
@@ -15985,16 +15985,16 @@ local function constructNew_frmFichaACN()
     obj._e_event338 = obj.button143:addEventListener("onClick",
         function (_)
             if sheet==nil then return end;
-            				sheet.field1 = sheet.dado1;
-            				sheet.num1 = (tonumber(sheet[sheet.field1]) or 0);
+            				sheet.field1 = true;
+            				sheet.num1 = (tonumber(sheet.total3_7) or 0);
             				sheet.rollnome1 = sheet.nome3_7;
         end, obj);
 
     obj._e_event339 = obj.button144:addEventListener("onClick",
         function (_)
             if sheet==nil then return end;
-            				sheet.field2 = sheet.dado2;
-            				sheet.num2 = (tonumber(sheet[sheet.field2]) or 0);
+            				sheet.field2 = true;
+            				sheet.num2 = (tonumber(sheet.total3_7) or 0);
             				sheet.rollnome2 = sheet.nome3_7;
         end, obj);
 
@@ -16034,16 +16034,16 @@ local function constructNew_frmFichaACN()
     obj._e_event343 = obj.button145:addEventListener("onClick",
         function (_)
             if sheet==nil then return end;
-            				sheet.field1 = sheet.dado1;
-            				sheet.num1 = (tonumber(sheet[sheet.field1]) or 0);
+            				sheet.field1 = true;
+            				sheet.num1 = (tonumber(sheet.total3_8) or 0);
             				sheet.rollnome1 = sheet.nome3_8;
         end, obj);
 
     obj._e_event344 = obj.button146:addEventListener("onClick",
         function (_)
             if sheet==nil then return end;
-            				sheet.field2 = sheet.dado2;
-            				sheet.num2 = (tonumber(sheet[sheet.field2]) or 0);
+            				sheet.field2 = true;
+            				sheet.num2 = (tonumber(sheet.total3_8) or 0);
             				sheet.rollnome2 = sheet.nome3_8;
         end, obj);
 
@@ -16083,16 +16083,16 @@ local function constructNew_frmFichaACN()
     obj._e_event348 = obj.button147:addEventListener("onClick",
         function (_)
             if sheet==nil then return end;
-            				sheet.field1 = sheet.dado1;
-            				sheet.num1 = (tonumber(sheet[sheet.field1]) or 0);
+            				sheet.field1 = true;
+            				sheet.num1 = (tonumber(sheet.total3_9) or 0);
             				sheet.rollnome1 = sheet.nome3_9;
         end, obj);
 
     obj._e_event349 = obj.button148:addEventListener("onClick",
         function (_)
             if sheet==nil then return end;
-            				sheet.field2 = sheet.dado2;
-            				sheet.num2 = (tonumber(sheet[sheet.field2]) or 0);
+            				sheet.field2 = true;
+            				sheet.num2 = (tonumber(sheet.total3_9) or 0);
             				sheet.rollnome2 = sheet.nome3_9;
         end, obj);
 
@@ -16132,16 +16132,16 @@ local function constructNew_frmFichaACN()
     obj._e_event353 = obj.button149:addEventListener("onClick",
         function (_)
             if sheet==nil then return end;
-            				sheet.field1 = sheet.dado1;
-            				sheet.num1 = (tonumber(sheet[sheet.field1]) or 0);
+            				sheet.field1 = true;
+            				sheet.num1 = (tonumber(sheet.total3_10) or 0);
             				sheet.rollnome1 = sheet.nome3_10;
         end, obj);
 
     obj._e_event354 = obj.button150:addEventListener("onClick",
         function (_)
             if sheet==nil then return end;
-            				sheet.field2 = sheet.dado2;
-            				sheet.num2 = (tonumber(sheet[sheet.field2]) or 0);
+            				sheet.field2 = true;
+            				sheet.num2 = (tonumber(sheet.total3_10) or 0);
             				sheet.rollnome2 = sheet.nome3_10;
         end, obj);
 
@@ -16181,16 +16181,16 @@ local function constructNew_frmFichaACN()
     obj._e_event358 = obj.button151:addEventListener("onClick",
         function (_)
             if sheet==nil then return end;
-            				sheet.field1 = sheet.dado1;
-            				sheet.num1 = (tonumber(sheet[sheet.field1]) or 0);
+            				sheet.field1 = true;
+            				sheet.num1 = (tonumber(sheet.total3_11) or 0);
             				sheet.rollnome1 = sheet.nome3_11;
         end, obj);
 
     obj._e_event359 = obj.button152:addEventListener("onClick",
         function (_)
             if sheet==nil then return end;
-            				sheet.field2 = sheet.dado2;
-            				sheet.num2 = (tonumber(sheet[sheet.field2]) or 0);
+            				sheet.field2 = true;
+            				sheet.num2 = (tonumber(sheet.total3_11) or 0);
             				sheet.rollnome2 = sheet.nome3_11;
         end, obj);
 
@@ -16230,16 +16230,16 @@ local function constructNew_frmFichaACN()
     obj._e_event363 = obj.button153:addEventListener("onClick",
         function (_)
             if sheet==nil then return end;
-            				sheet.field1 = sheet.dado1;
-            				sheet.num1 = (tonumber(sheet[sheet.field1]) or 0);
+            				sheet.field1 = true;
+            				sheet.num1 = (tonumber(sheet.total3_12) or 0);
             				sheet.rollnome1 = sheet.nome3_12;
         end, obj);
 
     obj._e_event364 = obj.button154:addEventListener("onClick",
         function (_)
             if sheet==nil then return end;
-            				sheet.field2 = sheet.dado2;
-            				sheet.num2 = (tonumber(sheet[sheet.field2]) or 0);
+            				sheet.field2 = true;
+            				sheet.num2 = (tonumber(sheet.total3_12) or 0);
             				sheet.rollnome2 = sheet.nome3_12;
         end, obj);
 

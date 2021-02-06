@@ -4,16 +4,16 @@
         <button left="0" top="0" height="15" width="15" text="1">
         	<event name="onClick">
 				if sheet==nil then return end;
-				sheet.field1 = sheet.dado1;
-				sheet.num1 = (tonumber(sheet[sheet.field1]) or 0);
+				sheet.field1 = true;
+				sheet.num1 = (tonumber(sheet.total$(field)) or 0);
 				sheet.rollnome1 = sheet.nome$(field);
         	</event>
         </button>
     	<button left="0" top="15" height="15" width="15" text="2">
     		<event name="onClick">
 				if sheet==nil then return end;
-				sheet.field2 = sheet.dado2;
-				sheet.num2 = (tonumber(sheet[sheet.field2]) or 0);
+				sheet.field2 = true;
+				sheet.num2 = (tonumber(sheet.total$(field)) or 0);
 				sheet.rollnome2 = sheet.nome$(field);
         	</event>
     	</button>
