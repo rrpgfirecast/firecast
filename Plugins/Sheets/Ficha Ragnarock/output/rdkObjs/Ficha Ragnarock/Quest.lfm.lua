@@ -5,7 +5,7 @@ require("rrpgDialogs.lua");
 require("rrpgLFM.lua");
 require("ndb.lua");
 
-function newfrmDetailList()
+function newfrmQuest()
     __o_rrpgObjs.beginObjectsLoading();
 
     local obj = gui.fromHandle(_obj_newObject("form"));
@@ -26,7 +26,7 @@ function newfrmDetailList()
 
     _gui_assignInitialParentForForm(obj.handle);
     obj:beginUpdate();
-    obj:setName("frmDetailList");
+    obj:setName("frmQuest");
     obj:setAlign("client");
 
     obj.scrollBox1 = gui.fromHandle(_obj_newObject("scrollBox"));
@@ -37,7 +37,7 @@ function newfrmDetailList()
     obj.image1 = gui.fromHandle(_obj_newObject("image"));
     obj.image1:setParent(obj.scrollBox1);
     obj.image1:setAlign("client");
-    obj.image1:setField("bgDestail");
+    obj.image1:setField("bgQuest");
     obj.image1:setStyle("autoFit");
     obj.image1:setEditable(true);
     obj.image1:setName("image1");
@@ -71,21 +71,21 @@ function newfrmDetailList()
     obj.button1:setTop(0);
     obj.button1:setWidth(200);
     obj.button1:setHeight(25);
-    obj.button1:setText("Ativas");
+    obj.button1:setText("Em Andamento");
     obj.button1:setHint("Adicionar");
     obj.button1:setName("button1");
 
-    obj.rclAtiva = gui.fromHandle(_obj_newObject("recordList"));
-    obj.rclAtiva:setParent(obj.layout2);
-    obj.rclAtiva:setLeft(0);
-    obj.rclAtiva:setTop(25);
-    obj.rclAtiva:setWidth(600);
-    obj.rclAtiva:setHeight(635);
-    obj.rclAtiva:setName("rclAtiva");
-    obj.rclAtiva:setField("listaAtivas");
-    obj.rclAtiva:setTemplateForm("frmRecordListForm");
-    obj.rclAtiva:setLayout("vertical");
-    obj.rclAtiva:setSelectable(true);
+    obj.rclQuestAtiva = gui.fromHandle(_obj_newObject("recordList"));
+    obj.rclQuestAtiva:setParent(obj.layout2);
+    obj.rclQuestAtiva:setLeft(0);
+    obj.rclQuestAtiva:setTop(25);
+    obj.rclQuestAtiva:setWidth(600);
+    obj.rclQuestAtiva:setHeight(635);
+    obj.rclQuestAtiva:setName("rclQuestAtiva");
+    obj.rclQuestAtiva:setField("listaQuestsAtivas");
+    obj.rclQuestAtiva:setTemplateForm("frmQuestForm");
+    obj.rclQuestAtiva:setLayout("vertical");
+    obj.rclQuestAtiva:setSelectable(true);
 
     obj.layout3 = gui.fromHandle(_obj_newObject("layout"));
     obj.layout3:setParent(obj.layout1);
@@ -108,28 +108,28 @@ function newfrmDetailList()
     obj.button2:setTop(0);
     obj.button2:setWidth(200);
     obj.button2:setHeight(25);
-    obj.button2:setText("Passivas");
+    obj.button2:setText("Terminadas");
     obj.button2:setHint("Adicionar");
     obj.button2:setName("button2");
 
-    obj.rclPassiva = gui.fromHandle(_obj_newObject("recordList"));
-    obj.rclPassiva:setParent(obj.layout3);
-    obj.rclPassiva:setLeft(0);
-    obj.rclPassiva:setTop(25);
-    obj.rclPassiva:setWidth(600);
-    obj.rclPassiva:setHeight(635);
-    obj.rclPassiva:setName("rclPassiva");
-    obj.rclPassiva:setField("listaPassivas");
-    obj.rclPassiva:setTemplateForm("frmRecordListForm");
-    obj.rclPassiva:setLayout("vertical");
-    obj.rclPassiva:setSelectable(true);
+    obj.rclQuestCompleta = gui.fromHandle(_obj_newObject("recordList"));
+    obj.rclQuestCompleta:setParent(obj.layout3);
+    obj.rclQuestCompleta:setLeft(0);
+    obj.rclQuestCompleta:setTop(25);
+    obj.rclQuestCompleta:setWidth(600);
+    obj.rclQuestCompleta:setHeight(635);
+    obj.rclQuestCompleta:setName("rclQuestCompleta");
+    obj.rclQuestCompleta:setField("listaQuestsCompletas");
+    obj.rclQuestCompleta:setTemplateForm("frmQuestForm");
+    obj.rclQuestCompleta:setLayout("vertical");
+    obj.rclQuestCompleta:setSelectable(true);
 
     obj._e_event0 = obj.button1:addEventListener("onClick",
         function (self)
-            self.rclAtiva:append();
+            self.rclQuestAtiva:append();
         end, obj);
 
-    obj._e_event1 = obj.rclAtiva:addEventListener("onCompare",
+    obj._e_event1 = obj.rclQuestAtiva:addEventListener("onCompare",
         function (self, nodeA, nodeB)
             -- Esse codigo organiza a ordem dos objetos da lista alfabeticamente. 
             				        return utils.compareStringPtBr(nodeA.nome, nodeB.nome);
@@ -137,10 +137,10 @@ function newfrmDetailList()
 
     obj._e_event2 = obj.button2:addEventListener("onClick",
         function (self)
-            self.rclPassiva:append();
+            self.rclQuestCompleta:append();
         end, obj);
 
-    obj._e_event3 = obj.rclPassiva:addEventListener("onCompare",
+    obj._e_event3 = obj.rclQuestCompleta:addEventListener("onCompare",
         function (self, nodeA, nodeB)
             -- Esse codigo organiza a ordem dos objetos da lista alfabeticamente. 
             				        return utils.compareStringPtBr(nodeA.nome, nodeB.nome);
@@ -162,14 +162,14 @@ function newfrmDetailList()
           self:setNodeDatabase(nil);
         end;
 
+        if self.rclQuestCompleta ~= nil then self.rclQuestCompleta:destroy(); self.rclQuestCompleta = nil; end;
         if self.layout3 ~= nil then self.layout3:destroy(); self.layout3 = nil; end;
-        if self.rclAtiva ~= nil then self.rclAtiva:destroy(); self.rclAtiva = nil; end;
         if self.button1 ~= nil then self.button1:destroy(); self.button1 = nil; end;
-        if self.rclPassiva ~= nil then self.rclPassiva:destroy(); self.rclPassiva = nil; end;
         if self.layout1 ~= nil then self.layout1:destroy(); self.layout1 = nil; end;
         if self.scrollBox1 ~= nil then self.scrollBox1:destroy(); self.scrollBox1 = nil; end;
         if self.rectangle1 ~= nil then self.rectangle1:destroy(); self.rectangle1 = nil; end;
         if self.layout2 ~= nil then self.layout2:destroy(); self.layout2 = nil; end;
+        if self.rclQuestAtiva ~= nil then self.rclQuestAtiva:destroy(); self.rclQuestAtiva = nil; end;
         if self.rectangle2 ~= nil then self.rectangle2:destroy(); self.rectangle2 = nil; end;
         if self.button2 ~= nil then self.button2:destroy(); self.button2 = nil; end;
         if self.image1 ~= nil then self.image1:destroy(); self.image1 = nil; end;
@@ -183,17 +183,17 @@ function newfrmDetailList()
     return obj;
 end;
 
-local _frmDetailList = {
-    newEditor = newfrmDetailList, 
-    new = newfrmDetailList, 
-    name = "frmDetailList", 
+local _frmQuest = {
+    newEditor = newfrmQuest, 
+    new = newfrmQuest, 
+    name = "frmQuest", 
     dataType = "", 
     formType = "undefined", 
     formComponentName = "form", 
     title = "", 
     description=""};
 
-frmDetailList = _frmDetailList;
-rrpg.registrarForm(_frmDetailList);
+frmQuest = _frmQuest;
+rrpg.registrarForm(_frmQuest);
 
-return _frmDetailList;
+return _frmQuest;

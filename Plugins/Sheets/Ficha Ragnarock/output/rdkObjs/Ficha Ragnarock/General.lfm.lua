@@ -34,6 +34,14 @@ function newfrmGeneral()
     obj.scrollBox1:setAlign("client");
     obj.scrollBox1:setName("scrollBox1");
 
+    obj.image1 = gui.fromHandle(_obj_newObject("image"));
+    obj.image1:setParent(obj.scrollBox1);
+    obj.image1:setAlign("client");
+    obj.image1:setField("bgGeneral");
+    obj.image1:setStyle("autoFit");
+    obj.image1:setEditable(true);
+    obj.image1:setName("image1");
+
     obj.layout1 = gui.fromHandle(_obj_newObject("layout"));
     obj.layout1:setParent(obj.scrollBox1);
     obj.layout1:setWidth(1200);
@@ -2255,14 +2263,14 @@ function newfrmGeneral()
     obj.label85:setHorzTextAlign("center");
     obj.label85:setName("label85");
 
-    obj.image1 = gui.fromHandle(_obj_newObject("image"));
-    obj.image1:setParent(obj.rectangle23);
-    obj.image1:setAlign("client");
-    obj.image1:setField("avatar");
-    obj.image1:setEditable(true);
-    obj.image1:setStyle("autoFit");
-    obj.image1:setMargins({left=2, right=2, top=2, bottom=2});
-    obj.image1:setName("image1");
+    obj.image2 = gui.fromHandle(_obj_newObject("image"));
+    obj.image2:setParent(obj.rectangle23);
+    obj.image2:setAlign("client");
+    obj.image2:setField("avatar");
+    obj.image2:setEditable(true);
+    obj.image2:setStyle("autoFit");
+    obj.image2:setMargins({left=2, right=2, top=2, bottom=2});
+    obj.image2:setName("image2");
 
     obj.rectangle24 = gui.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle24:setParent(obj.layout1);
@@ -2316,15 +2324,15 @@ function newfrmGeneral()
     obj.textEditor2:setField("desvantagens");
     obj.textEditor2:setName("textEditor2");
 
-    obj.image2 = gui.fromHandle(_obj_newObject("image"));
-    obj.image2:setParent(obj.rectangle24);
-    obj.image2:setLeft(1010);
-    obj.image2:setTop(25);
-    obj.image2:setWidth(190);
-    obj.image2:setHeight(116);
-    obj.image2:setStyle("autoFit");
-    obj.image2:setSRC("/Ficha Ragnarock/images/ragnarok_b.jpg");
-    obj.image2:setName("image2");
+    obj.image3 = gui.fromHandle(_obj_newObject("image"));
+    obj.image3:setParent(obj.rectangle24);
+    obj.image3:setLeft(1010);
+    obj.image3:setTop(25);
+    obj.image3:setWidth(190);
+    obj.image3:setHeight(116);
+    obj.image3:setStyle("autoFit");
+    obj.image3:setSRC("/Ficha Ragnarock/images/ragnarok_b.jpg");
+    obj.image3:setName("image3");
 
     obj._e_event0 = obj.button1:addEventListener("onClick",
         function (self)
@@ -4230,12 +4238,20 @@ function newfrmGeneral()
             								        end);
         end, obj);
 
-    obj._e_event41 = obj.image1:addEventListener("onStartDrag",
+    obj._e_event41 = obj.checkBox1:addEventListener("onChange",
+        function (self)
+            if sheet==nil then return end;
+            									sheet.firstValue = -1;
+            									sheet.firstValueName = nil;
+        end, obj);
+
+    obj._e_event42 = obj.image2:addEventListener("onStartDrag",
         function (self, drag, x, y)
             drag:addData("imageURL", sheet.avatar);
         end, obj);
 
     function obj:_releaseEvents()
+        __o_rrpgObjs.removeEventListenerById(self._e_event42);
         __o_rrpgObjs.removeEventListenerById(self._e_event41);
         __o_rrpgObjs.removeEventListenerById(self._e_event40);
         __o_rrpgObjs.removeEventListenerById(self._e_event39);
@@ -4345,9 +4361,9 @@ function newfrmGeneral()
         if self.edit34 ~= nil then self.edit34:destroy(); self.edit34 = nil; end;
         if self.layout9 ~= nil then self.layout9:destroy(); self.layout9 = nil; end;
         if self.edit11 ~= nil then self.edit11:destroy(); self.edit11 = nil; end;
+        if self.image1 ~= nil then self.image1:destroy(); self.image1 = nil; end;
         if self.edit19 ~= nil then self.edit19:destroy(); self.edit19 = nil; end;
         if self.label31 ~= nil then self.label31:destroy(); self.label31 = nil; end;
-        if self.image1 ~= nil then self.image1:destroy(); self.image1 = nil; end;
         if self.rectangle17 ~= nil then self.rectangle17:destroy(); self.rectangle17 = nil; end;
         if self.label34 ~= nil then self.label34:destroy(); self.label34 = nil; end;
         if self.edit5 ~= nil then self.edit5:destroy(); self.edit5 = nil; end;
@@ -4387,6 +4403,7 @@ function newfrmGeneral()
         if self.layout42 ~= nil then self.layout42:destroy(); self.layout42 = nil; end;
         if self.edit58 ~= nil then self.edit58:destroy(); self.edit58 = nil; end;
         if self.layout61 ~= nil then self.layout61:destroy(); self.layout61 = nil; end;
+        if self.image3 ~= nil then self.image3:destroy(); self.image3 = nil; end;
         if self.label58 ~= nil then self.label58:destroy(); self.label58 = nil; end;
         if self.dataLink20 ~= nil then self.dataLink20:destroy(); self.dataLink20 = nil; end;
         if self.layout5 ~= nil then self.layout5:destroy(); self.layout5 = nil; end;

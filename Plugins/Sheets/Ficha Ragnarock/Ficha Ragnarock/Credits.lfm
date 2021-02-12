@@ -43,6 +43,7 @@
 	</template>
 
 	<scrollBox align="client">
+		<image align="client" field="bgCreditos" style="autoFit" editable="true"/>
 		<image left="0" top="0" width="484" height="290" style="autoFit" src="images/ragnarok.jpg"/>
 		<image left="550" top="0" width="250" height="250" style="autoFit" src="images/RPGmeister.jpg"/>
 
@@ -178,8 +179,6 @@
 				</event>
 			</dataLink>
 		</layout>
-
-
 		
 		<label left="555" top="275" width="200" height="20" text="Versão Atual: " horzTextAlign="center" field="versionInstalled"/>
 		<label left="555" top="300" width="200" height="20" text="Sua Versão: " horzTextAlign="center" field="versionDownloaded"/>

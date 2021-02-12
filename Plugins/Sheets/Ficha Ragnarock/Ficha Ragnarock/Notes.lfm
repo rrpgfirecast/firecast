@@ -1,23 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <form name="frmTemplateNotes" align="client">
 	<scrollBox align="client">
-		<layout align="left" width="525" margins="{right=5}">
-			<rectangle align="client" color="black" xradius="5" yradius="15" cornerType="round">
-	        	<label align="top" height="20" text="Anotações" horzTextAlign="center"/>
-				<richEdit align="client" field="anotacoes1" backgroundColor="#333333" defaultFontSize="12" defaultFontColor="white"/>
-			</rectangle>
-        </layout>
-		<layout align="left" width="525" margins="{right=5}">
-			<rectangle align="client" color="black" xradius="5" yradius="15" cornerType="round">
-	        	<label align="top" height="20" text="Anotações" horzTextAlign="center"/>
-				<richEdit align="client" field="anotacoes2" backgroundColor="#333333" defaultFontSize="12" defaultFontColor="white"/>
-			</rectangle>
-        </layout>
-		<layout align="left" width="525" margins="{right=5}">
-			<rectangle align="client" color="black" xradius="5" yradius="15" cornerType="round">
-	        	<label align="top" height="20" text="Anotações" horzTextAlign="center"/>
-				<richEdit align="client" field="anotacoes3" backgroundColor="#333333" defaultFontSize="12" defaultFontColor="white"/>
-			</rectangle>
-        </layout>
+		<image align="client" field="bgNotes" style="autoFit" editable="true">
+			<layout align="left" width="525" margins="{right=5}">
+				<rectangle align="client" color="black" xradius="5" yradius="15" cornerType="round">
+		        	<label align="top" height="20" text="Anotações" horzTextAlign="center"/>
+					<richEdit align="client" field="anotacoes1" backgroundColor="#333333" defaultFontSize="12" defaultFontColor="white"/>
+				</rectangle>
+	        </layout>
+			<layout align="left" width="525" margins="{right=5}">
+				<rectangle align="client" color="black" xradius="5" yradius="15" cornerType="round">
+		        	<label align="top" height="20" text="Anotações" horzTextAlign="center"/>
+					<richEdit align="client" field="anotacoes2" backgroundColor="#333333" defaultFontSize="12" defaultFontColor="white"/>
+				</rectangle>
+	        </layout>
+			<layout align="left" width="525" margins="{right=5}">
+				<rectangle align="client" color="black" xradius="5" yradius="15" cornerType="round">
+		        	<label align="top" height="20" text="Anotações" horzTextAlign="center"/>
+					<richEdit align="client" field="anotacoes3" backgroundColor="#333333" defaultFontSize="12" defaultFontColor="white"/>
+				</rectangle>
+	        </layout>
+	    </image>
 	</scrollBox>
 </form>

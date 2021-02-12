@@ -34,8 +34,16 @@ function newfrmTemplateNotes()
     obj.scrollBox1:setAlign("client");
     obj.scrollBox1:setName("scrollBox1");
 
+    obj.image1 = gui.fromHandle(_obj_newObject("image"));
+    obj.image1:setParent(obj.scrollBox1);
+    obj.image1:setAlign("client");
+    obj.image1:setField("bgNotes");
+    obj.image1:setStyle("autoFit");
+    obj.image1:setEditable(true);
+    obj.image1:setName("image1");
+
     obj.layout1 = gui.fromHandle(_obj_newObject("layout"));
-    obj.layout1:setParent(obj.scrollBox1);
+    obj.layout1:setParent(obj.image1);
     obj.layout1:setAlign("left");
     obj.layout1:setWidth(525);
     obj.layout1:setMargins({right=5});
@@ -68,7 +76,7 @@ function newfrmTemplateNotes()
     obj.richEdit1:setName("richEdit1");
 
     obj.layout2 = gui.fromHandle(_obj_newObject("layout"));
-    obj.layout2:setParent(obj.scrollBox1);
+    obj.layout2:setParent(obj.image1);
     obj.layout2:setAlign("left");
     obj.layout2:setWidth(525);
     obj.layout2:setMargins({right=5});
@@ -101,7 +109,7 @@ function newfrmTemplateNotes()
     obj.richEdit2:setName("richEdit2");
 
     obj.layout3 = gui.fromHandle(_obj_newObject("layout"));
-    obj.layout3:setParent(obj.scrollBox1);
+    obj.layout3:setParent(obj.image1);
     obj.layout3:setAlign("left");
     obj.layout3:setWidth(525);
     obj.layout3:setMargins({right=5});
@@ -150,6 +158,7 @@ function newfrmTemplateNotes()
         if self.rectangle2 ~= nil then self.rectangle2:destroy(); self.rectangle2 = nil; end;
         if self.rectangle3 ~= nil then self.rectangle3:destroy(); self.rectangle3 = nil; end;
         if self.label3 ~= nil then self.label3:destroy(); self.label3 = nil; end;
+        if self.image1 ~= nil then self.image1:destroy(); self.image1 = nil; end;
         if self.richEdit2 ~= nil then self.richEdit2:destroy(); self.richEdit2 = nil; end;
         if self.layout3 ~= nil then self.layout3:destroy(); self.layout3 = nil; end;
         if self.layout1 ~= nil then self.layout1:destroy(); self.layout1 = nil; end;

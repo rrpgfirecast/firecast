@@ -110,6 +110,14 @@ function newfrmEquipamentos()
     obj.scrollBox1:setAlign("client");
     obj.scrollBox1:setName("scrollBox1");
 
+    obj.image3 = gui.fromHandle(_obj_newObject("image"));
+    obj.image3:setParent(obj.scrollBox1);
+    obj.image3:setAlign("client");
+    obj.image3:setField("bgEquipamentos");
+    obj.image3:setStyle("autoFit");
+    obj.image3:setEditable(true);
+    obj.image3:setName("image3");
+
     obj.layout3 = gui.fromHandle(_obj_newObject("layout"));
     obj.layout3:setParent(obj.scrollBox1);
     obj.layout3:setHeight(925);
@@ -245,15 +253,15 @@ function newfrmEquipamentos()
     obj.rectangle4:setStrokeSize(1);
     obj.rectangle4:setName("rectangle4");
 
-    obj.image3 = gui.fromHandle(_obj_newObject("image"));
-    obj.image3:setParent(obj.rectangle4);
-    obj.image3:setWidth(75);
-    obj.image3:setHeight(100);
-    obj.image3:setField("head1_pic");
-    obj.image3:setEditable(true);
-    obj.image3:setStyle("autoFit");
-    obj.image3:setMargins({left=2, right=2, top=2, bottom=2});
-    obj.image3:setName("image3");
+    obj.image4 = gui.fromHandle(_obj_newObject("image"));
+    obj.image4:setParent(obj.rectangle4);
+    obj.image4:setWidth(75);
+    obj.image4:setHeight(100);
+    obj.image4:setField("head1_pic");
+    obj.image4:setEditable(true);
+    obj.image4:setStyle("autoFit");
+    obj.image4:setMargins({left=2, right=2, top=2, bottom=2});
+    obj.image4:setName("image4");
 
     obj.layout11 = gui.fromHandle(_obj_newObject("layout"));
     obj.layout11:setParent(obj.rectangle3);
@@ -375,15 +383,15 @@ function newfrmEquipamentos()
     obj.rectangle5:setStrokeSize(1);
     obj.rectangle5:setName("rectangle5");
 
-    obj.image4 = gui.fromHandle(_obj_newObject("image"));
-    obj.image4:setParent(obj.rectangle5);
-    obj.image4:setWidth(75);
-    obj.image4:setHeight(100);
-    obj.image4:setField("head2_pic");
-    obj.image4:setEditable(true);
-    obj.image4:setStyle("autoFit");
-    obj.image4:setMargins({left=2, right=2, top=2, bottom=2});
-    obj.image4:setName("image4");
+    obj.image5 = gui.fromHandle(_obj_newObject("image"));
+    obj.image5:setParent(obj.rectangle5);
+    obj.image5:setWidth(75);
+    obj.image5:setHeight(100);
+    obj.image5:setField("head2_pic");
+    obj.image5:setEditable(true);
+    obj.image5:setStyle("autoFit");
+    obj.image5:setMargins({left=2, right=2, top=2, bottom=2});
+    obj.image5:setName("image5");
 
     obj.layout18 = gui.fromHandle(_obj_newObject("layout"));
     obj.layout18:setParent(obj.rectangle3);
@@ -505,15 +513,15 @@ function newfrmEquipamentos()
     obj.rectangle6:setStrokeSize(1);
     obj.rectangle6:setName("rectangle6");
 
-    obj.image5 = gui.fromHandle(_obj_newObject("image"));
-    obj.image5:setParent(obj.rectangle6);
-    obj.image5:setWidth(75);
-    obj.image5:setHeight(100);
-    obj.image5:setField("head3_pic");
-    obj.image5:setEditable(true);
-    obj.image5:setStyle("autoFit");
-    obj.image5:setMargins({left=2, right=2, top=2, bottom=2});
-    obj.image5:setName("image5");
+    obj.image6 = gui.fromHandle(_obj_newObject("image"));
+    obj.image6:setParent(obj.rectangle6);
+    obj.image6:setWidth(75);
+    obj.image6:setHeight(100);
+    obj.image6:setField("head3_pic");
+    obj.image6:setEditable(true);
+    obj.image6:setStyle("autoFit");
+    obj.image6:setMargins({left=2, right=2, top=2, bottom=2});
+    obj.image6:setName("image6");
 
     obj.rectangle7 = gui.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle7:setParent(obj.layout3);
@@ -643,15 +651,15 @@ function newfrmEquipamentos()
     obj.rectangle8:setStrokeSize(1);
     obj.rectangle8:setName("rectangle8");
 
-    obj.image6 = gui.fromHandle(_obj_newObject("image"));
-    obj.image6:setParent(obj.rectangle8);
-    obj.image6:setWidth(75);
-    obj.image6:setHeight(100);
-    obj.image6:setField("left_pic");
-    obj.image6:setEditable(true);
-    obj.image6:setStyle("autoFit");
-    obj.image6:setMargins({left=2, right=2, top=2, bottom=2});
-    obj.image6:setName("image6");
+    obj.image7 = gui.fromHandle(_obj_newObject("image"));
+    obj.image7:setParent(obj.rectangle8);
+    obj.image7:setWidth(75);
+    obj.image7:setHeight(100);
+    obj.image7:setField("left_pic");
+    obj.image7:setEditable(true);
+    obj.image7:setStyle("autoFit");
+    obj.image7:setMargins({left=2, right=2, top=2, bottom=2});
+    obj.image7:setName("image7");
 
     obj.layout32 = gui.fromHandle(_obj_newObject("layout"));
     obj.layout32:setParent(obj.rectangle7);
@@ -773,15 +781,15 @@ function newfrmEquipamentos()
     obj.rectangle9:setStrokeSize(1);
     obj.rectangle9:setName("rectangle9");
 
-    obj.image7 = gui.fromHandle(_obj_newObject("image"));
-    obj.image7:setParent(obj.rectangle9);
-    obj.image7:setWidth(75);
-    obj.image7:setHeight(100);
-    obj.image7:setField("armor_pic");
-    obj.image7:setEditable(true);
-    obj.image7:setStyle("autoFit");
-    obj.image7:setMargins({left=2, right=2, top=2, bottom=2});
-    obj.image7:setName("image7");
+    obj.image8 = gui.fromHandle(_obj_newObject("image"));
+    obj.image8:setParent(obj.rectangle9);
+    obj.image8:setWidth(75);
+    obj.image8:setHeight(100);
+    obj.image8:setField("armor_pic");
+    obj.image8:setEditable(true);
+    obj.image8:setStyle("autoFit");
+    obj.image8:setMargins({left=2, right=2, top=2, bottom=2});
+    obj.image8:setName("image8");
 
     obj.layout39 = gui.fromHandle(_obj_newObject("layout"));
     obj.layout39:setParent(obj.rectangle7);
@@ -903,15 +911,15 @@ function newfrmEquipamentos()
     obj.rectangle10:setStrokeSize(1);
     obj.rectangle10:setName("rectangle10");
 
-    obj.image8 = gui.fromHandle(_obj_newObject("image"));
-    obj.image8:setParent(obj.rectangle10);
-    obj.image8:setWidth(75);
-    obj.image8:setHeight(100);
-    obj.image8:setField("right_pic");
-    obj.image8:setEditable(true);
-    obj.image8:setStyle("autoFit");
-    obj.image8:setMargins({left=2, right=2, top=2, bottom=2});
-    obj.image8:setName("image8");
+    obj.image9 = gui.fromHandle(_obj_newObject("image"));
+    obj.image9:setParent(obj.rectangle10);
+    obj.image9:setWidth(75);
+    obj.image9:setHeight(100);
+    obj.image9:setField("right_pic");
+    obj.image9:setEditable(true);
+    obj.image9:setStyle("autoFit");
+    obj.image9:setMargins({left=2, right=2, top=2, bottom=2});
+    obj.image9:setName("image9");
 
     obj.rectangle11 = gui.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle11:setParent(obj.layout3);
@@ -1041,15 +1049,15 @@ function newfrmEquipamentos()
     obj.rectangle12:setStrokeSize(1);
     obj.rectangle12:setName("rectangle12");
 
-    obj.image9 = gui.fromHandle(_obj_newObject("image"));
-    obj.image9:setParent(obj.rectangle12);
-    obj.image9:setWidth(75);
-    obj.image9:setHeight(100);
-    obj.image9:setField("garmel_pic");
-    obj.image9:setEditable(true);
-    obj.image9:setStyle("autoFit");
-    obj.image9:setMargins({left=2, right=2, top=2, bottom=2});
-    obj.image9:setName("image9");
+    obj.image10 = gui.fromHandle(_obj_newObject("image"));
+    obj.image10:setParent(obj.rectangle12);
+    obj.image10:setWidth(75);
+    obj.image10:setHeight(100);
+    obj.image10:setField("garmel_pic");
+    obj.image10:setEditable(true);
+    obj.image10:setStyle("autoFit");
+    obj.image10:setMargins({left=2, right=2, top=2, bottom=2});
+    obj.image10:setName("image10");
 
     obj.layout53 = gui.fromHandle(_obj_newObject("layout"));
     obj.layout53:setParent(obj.rectangle11);
@@ -1171,15 +1179,15 @@ function newfrmEquipamentos()
     obj.rectangle13:setStrokeSize(1);
     obj.rectangle13:setName("rectangle13");
 
-    obj.image10 = gui.fromHandle(_obj_newObject("image"));
-    obj.image10:setParent(obj.rectangle13);
-    obj.image10:setWidth(75);
-    obj.image10:setHeight(100);
-    obj.image10:setField("bota_pic");
-    obj.image10:setEditable(true);
-    obj.image10:setStyle("autoFit");
-    obj.image10:setMargins({left=2, right=2, top=2, bottom=2});
-    obj.image10:setName("image10");
+    obj.image11 = gui.fromHandle(_obj_newObject("image"));
+    obj.image11:setParent(obj.rectangle13);
+    obj.image11:setWidth(75);
+    obj.image11:setHeight(100);
+    obj.image11:setField("bota_pic");
+    obj.image11:setEditable(true);
+    obj.image11:setStyle("autoFit");
+    obj.image11:setMargins({left=2, right=2, top=2, bottom=2});
+    obj.image11:setName("image11");
 
     obj.layout60 = gui.fromHandle(_obj_newObject("layout"));
     obj.layout60:setParent(obj.rectangle11);
@@ -1301,15 +1309,15 @@ function newfrmEquipamentos()
     obj.rectangle14:setStrokeSize(1);
     obj.rectangle14:setName("rectangle14");
 
-    obj.image11 = gui.fromHandle(_obj_newObject("image"));
-    obj.image11:setParent(obj.rectangle14);
-    obj.image11:setWidth(75);
-    obj.image11:setHeight(100);
-    obj.image11:setField("acessorio1_pic");
-    obj.image11:setEditable(true);
-    obj.image11:setStyle("autoFit");
-    obj.image11:setMargins({left=2, right=2, top=2, bottom=2});
-    obj.image11:setName("image11");
+    obj.image12 = gui.fromHandle(_obj_newObject("image"));
+    obj.image12:setParent(obj.rectangle14);
+    obj.image12:setWidth(75);
+    obj.image12:setHeight(100);
+    obj.image12:setField("acessorio1_pic");
+    obj.image12:setEditable(true);
+    obj.image12:setStyle("autoFit");
+    obj.image12:setMargins({left=2, right=2, top=2, bottom=2});
+    obj.image12:setName("image12");
 
     obj.rectangle15 = gui.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle15:setParent(obj.layout3);
@@ -1439,15 +1447,15 @@ function newfrmEquipamentos()
     obj.rectangle16:setStrokeSize(1);
     obj.rectangle16:setName("rectangle16");
 
-    obj.image12 = gui.fromHandle(_obj_newObject("image"));
-    obj.image12:setParent(obj.rectangle16);
-    obj.image12:setWidth(75);
-    obj.image12:setHeight(100);
-    obj.image12:setField("acessorio2_pic");
-    obj.image12:setEditable(true);
-    obj.image12:setStyle("autoFit");
-    obj.image12:setMargins({left=2, right=2, top=2, bottom=2});
-    obj.image12:setName("image12");
+    obj.image13 = gui.fromHandle(_obj_newObject("image"));
+    obj.image13:setParent(obj.rectangle16);
+    obj.image13:setWidth(75);
+    obj.image13:setHeight(100);
+    obj.image13:setField("acessorio2_pic");
+    obj.image13:setEditable(true);
+    obj.image13:setStyle("autoFit");
+    obj.image13:setMargins({left=2, right=2, top=2, bottom=2});
+    obj.image13:setName("image13");
 
     obj.layout74 = gui.fromHandle(_obj_newObject("layout"));
     obj.layout74:setParent(obj.rectangle15);
@@ -1611,15 +1619,15 @@ function newfrmEquipamentos()
     obj.rectangle17:setStrokeSize(1);
     obj.rectangle17:setName("rectangle17");
 
-    obj.image13 = gui.fromHandle(_obj_newObject("image"));
-    obj.image13:setParent(obj.rectangle17);
-    obj.image13:setWidth(75);
-    obj.image13:setHeight(100);
-    obj.image13:setField("acessorio3_pic");
-    obj.image13:setEditable(true);
-    obj.image13:setStyle("autoFit");
-    obj.image13:setMargins({left=2, right=2, top=2, bottom=2});
-    obj.image13:setName("image13");
+    obj.image14 = gui.fromHandle(_obj_newObject("image"));
+    obj.image14:setParent(obj.rectangle17);
+    obj.image14:setWidth(75);
+    obj.image14:setHeight(100);
+    obj.image14:setField("acessorio3_pic");
+    obj.image14:setEditable(true);
+    obj.image14:setStyle("autoFit");
+    obj.image14:setMargins({left=2, right=2, top=2, bottom=2});
+    obj.image14:setName("image14");
 
     obj.rectangle18 = gui.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle18:setParent(obj.layout3);
@@ -1677,52 +1685,52 @@ function newfrmEquipamentos()
             						self.popItem:close();
         end, obj);
 
-    obj._e_event1 = obj.image3:addEventListener("onStartDrag",
+    obj._e_event1 = obj.image4:addEventListener("onStartDrag",
         function (self, drag, x, y)
             drag:addData("imageURL", sheet.head1_pic);
         end, obj);
 
-    obj._e_event2 = obj.image4:addEventListener("onStartDrag",
+    obj._e_event2 = obj.image5:addEventListener("onStartDrag",
         function (self, drag, x, y)
             drag:addData("imageURL", sheet.head2_pic);
         end, obj);
 
-    obj._e_event3 = obj.image5:addEventListener("onStartDrag",
+    obj._e_event3 = obj.image6:addEventListener("onStartDrag",
         function (self, drag, x, y)
             drag:addData("imageURL", sheet.head3_pic);
         end, obj);
 
-    obj._e_event4 = obj.image6:addEventListener("onStartDrag",
+    obj._e_event4 = obj.image7:addEventListener("onStartDrag",
         function (self, drag, x, y)
             drag:addData("imageURL", sheet.left_pic);
         end, obj);
 
-    obj._e_event5 = obj.image7:addEventListener("onStartDrag",
+    obj._e_event5 = obj.image8:addEventListener("onStartDrag",
         function (self, drag, x, y)
             drag:addData("imageURL", sheet.armor_pic);
         end, obj);
 
-    obj._e_event6 = obj.image8:addEventListener("onStartDrag",
+    obj._e_event6 = obj.image9:addEventListener("onStartDrag",
         function (self, drag, x, y)
             drag:addData("imageURL", sheet.right_pic);
         end, obj);
 
-    obj._e_event7 = obj.image9:addEventListener("onStartDrag",
+    obj._e_event7 = obj.image10:addEventListener("onStartDrag",
         function (self, drag, x, y)
             drag:addData("imageURL", sheet.garmel_pic);
         end, obj);
 
-    obj._e_event8 = obj.image10:addEventListener("onStartDrag",
+    obj._e_event8 = obj.image11:addEventListener("onStartDrag",
         function (self, drag, x, y)
             drag:addData("imageURL", sheet.bota_pic);
         end, obj);
 
-    obj._e_event9 = obj.image11:addEventListener("onStartDrag",
+    obj._e_event9 = obj.image12:addEventListener("onStartDrag",
         function (self, drag, x, y)
             drag:addData("imageURL", sheet.acessorio1_pic);
         end, obj);
 
-    obj._e_event10 = obj.image12:addEventListener("onStartDrag",
+    obj._e_event10 = obj.image13:addEventListener("onStartDrag",
         function (self, drag, x, y)
             drag:addData("imageURL", sheet.acessorio2_pic);
         end, obj);
@@ -1737,7 +1745,7 @@ function newfrmEquipamentos()
             return ((tonumber(nodeA.nivelHabilidade) or 0) - (tonumber(nodeB.nivelHabilidade) or 0));
         end, obj);
 
-    obj._e_event13 = obj.image13:addEventListener("onStartDrag",
+    obj._e_event13 = obj.image14:addEventListener("onStartDrag",
         function (self, drag, x, y)
             drag:addData("imageURL", sheet.acessorio3_pic);
         end, obj);
@@ -1913,6 +1921,7 @@ function newfrmEquipamentos()
         if self.layout59 ~= nil then self.layout59:destroy(); self.layout59 = nil; end;
         if self.layout65 ~= nil then self.layout65:destroy(); self.layout65 = nil; end;
         if self.label26 ~= nil then self.label26:destroy(); self.label26 = nil; end;
+        if self.image14 ~= nil then self.image14:destroy(); self.image14 = nil; end;
         if self.layout72 ~= nil then self.layout72:destroy(); self.layout72 = nil; end;
         if self.label23 ~= nil then self.label23:destroy(); self.label23 = nil; end;
         if self.label32 ~= nil then self.label32:destroy(); self.label32 = nil; end;
@@ -1990,8 +1999,8 @@ function newfrmEquipamentos()
         if self.rectangle13 ~= nil then self.rectangle13:destroy(); self.rectangle13 = nil; end;
         if self.layout73 ~= nil then self.layout73:destroy(); self.layout73 = nil; end;
         if self.image4 ~= nil then self.image4:destroy(); self.image4 = nil; end;
-        if self.edit32 ~= nil then self.edit32:destroy(); self.edit32 = nil; end;
         if self.image13 ~= nil then self.image13:destroy(); self.image13 = nil; end;
+        if self.edit32 ~= nil then self.edit32:destroy(); self.edit32 = nil; end;
         if self.layout86 ~= nil then self.layout86:destroy(); self.layout86 = nil; end;
         if self.layout85 ~= nil then self.layout85:destroy(); self.layout85 = nil; end;
         if self.layout75 ~= nil then self.layout75:destroy(); self.layout75 = nil; end;

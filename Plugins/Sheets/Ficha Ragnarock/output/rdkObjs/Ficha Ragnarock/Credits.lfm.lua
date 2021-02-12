@@ -72,23 +72,31 @@ function newfrmTemplateCreditos()
 
     obj.image1 = gui.fromHandle(_obj_newObject("image"));
     obj.image1:setParent(obj.scrollBox1);
-    obj.image1:setLeft(0);
-    obj.image1:setTop(0);
-    obj.image1:setWidth(484);
-    obj.image1:setHeight(290);
+    obj.image1:setAlign("client");
+    obj.image1:setField("bgCreditos");
     obj.image1:setStyle("autoFit");
-    obj.image1:setSRC("/Ficha Ragnarock/images/ragnarok.jpg");
+    obj.image1:setEditable(true);
     obj.image1:setName("image1");
 
     obj.image2 = gui.fromHandle(_obj_newObject("image"));
     obj.image2:setParent(obj.scrollBox1);
-    obj.image2:setLeft(550);
+    obj.image2:setLeft(0);
     obj.image2:setTop(0);
-    obj.image2:setWidth(250);
-    obj.image2:setHeight(250);
+    obj.image2:setWidth(484);
+    obj.image2:setHeight(290);
     obj.image2:setStyle("autoFit");
-    obj.image2:setSRC("/Ficha Ragnarock/images/RPGmeister.jpg");
+    obj.image2:setSRC("/Ficha Ragnarock/images/ragnarok.jpg");
     obj.image2:setName("image2");
+
+    obj.image3 = gui.fromHandle(_obj_newObject("image"));
+    obj.image3:setParent(obj.scrollBox1);
+    obj.image3:setLeft(550);
+    obj.image3:setTop(0);
+    obj.image3:setWidth(250);
+    obj.image3:setHeight(250);
+    obj.image3:setStyle("autoFit");
+    obj.image3:setSRC("/Ficha Ragnarock/images/RPGmeister.jpg");
+    obj.image3:setName("image3");
 
     obj.layout1 = gui.fromHandle(_obj_newObject("layout"));
     obj.layout1:setParent(obj.scrollBox1);
@@ -574,6 +582,7 @@ function newfrmTemplateCreditos()
         if self.label4 ~= nil then self.label4:destroy(); self.label4 = nil; end;
         if self.label6 ~= nil then self.label6:destroy(); self.label6 = nil; end;
         if self.image1 ~= nil then self.image1:destroy(); self.image1 = nil; end;
+        if self.image3 ~= nil then self.image3:destroy(); self.image3 = nil; end;
         if self.dataLink4 ~= nil then self.dataLink4:destroy(); self.dataLink4 = nil; end;
         if self.comboBox1 ~= nil then self.comboBox1:destroy(); self.comboBox1 = nil; end;
         if self.label7 ~= nil then self.label7:destroy(); self.label7 = nil; end;

@@ -123,6 +123,7 @@
 	</template>
 
 	<scrollBox align="client">
+		<image align="client" field="bgGeneral" style="autoFit" editable="true"/>
 		<layout width="1200" height="570">
 
 			<rectangle color="black" align="top" height="50" margins="{bottom=5}">
@@ -279,7 +280,13 @@
 							<LabelEditMid text="Proteção Física" field="def_total" fontSize="13"/>
 						</layout>
 						<layout align="top" height="25" margins="{top=0}">
-							<checkBox left="0" top="0" width="190" height="25" field="doubleRoll" text="Usar dois atributos na rolagem." fontSize="12" hint="Clique no primeiro e depois no segundo. "/>
+							<checkBox left="0" top="0" width="190" height="25" field="doubleRoll" text="Usar dois atributos na rolagem." fontSize="12" hint="Clique no primeiro e depois no segundo. ">
+								<event name="onChange">
+									if sheet==nil then return end;
+									sheet.firstValue = -1;
+									sheet.firstValueName = nil;
+								</event>
+							</checkBox>
 						</layout>
 					</layout>
 				</layout>

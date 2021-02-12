@@ -107,83 +107,85 @@
 	</template>
 
 	<scrollBox align="client">
-		<layout align="top" height="50">
-			<button text="+" width="30" align="left">
-				<event name="onClick">
-					self.rclPetList:append();
-				</event>
-			</button>
-			<recordList name="rclPetList" field="campoDosPets" templateForm="frmPetSeletor" align="client" selectable="true" layout="horizontal">
-				<event name="onSelect">
-					local node = self.rclPetList.selectedNode;
-					self.boxDetalhesDoPet.node = node;
-					self.boxDetalhesDoPet.visible = (node ~= nil);
-				</event>
-				<event name="onEndEnumeration">
-				    if self.rclPetList.selectedNode == nil and sheet ~= nil then
-				        local nodes = ndb.getChildNodes(sheet.campoDosPets);               
+		<image align="client" field="bgPet" style="autoFit" editable="true">
+			<layout align="top" height="50">
+				<button text="+" width="30" align="left">
+					<event name="onClick">
+						self.rclPetList:append();
+					</event>
+				</button>
+				<recordList name="rclPetList" field="campoDosPets" templateForm="frmPetSeletor" align="client" selectable="true" layout="horizontal">
+					<event name="onSelect">
+						local node = self.rclPetList.selectedNode;
+						self.boxDetalhesDoPet.node = node;
+						self.boxDetalhesDoPet.visible = (node ~= nil);
+					</event>
+					<event name="onEndEnumeration">
+					    if self.rclPetList.selectedNode == nil and sheet ~= nil then
+					        local nodes = ndb.getChildNodes(sheet.campoDosPets);               
 
-				        if #nodes > 0 then
-				                self.rclPetList.selectedNode = nodes[1];
-				        end;
-				    end;
-				</event>
-			</recordList>
-		</layout>
+					        if #nodes > 0 then
+					                self.rclPetList.selectedNode = nodes[1];
+					        end;
+					    end;
+					</event>
+				</recordList>
+			</layout>
 
-		<dataScopeBox name="boxDetalhesDoPet" visible="false" align="client">
-			<rectangle color="black" align="top" height="200" margins="{bottom=5}">
-				<layout align="left" width="220" margins="{right=5}">
-					<AtributoPet field="pet_FOR" text="Força"/>
-					<AtributoPet field="pet_AGI" text="Agilidade"/>
-					<AtributoPet field="pet_VIT" text="Vitalidade"/>
-					<AtributoPet field="pet_INT" text="Inteligência"/>
-					<layout align="top" height="25" margins="{top=5}">
-						<checkBox left="0" top="0" width="190" height="25" field="doubleRoll" text="Usar dois atributos na rolagem." fontSize="12" hint="Clique no primeiro e depois no segundo. "/>
+			<dataScopeBox name="boxDetalhesDoPet" visible="false" align="client">
+				<rectangle color="black" align="top" height="200" margins="{bottom=5}">
+					<layout align="left" width="220" margins="{right=5}">
+						<AtributoPet field="pet_FOR" text="Força"/>
+						<AtributoPet field="pet_AGI" text="Agilidade"/>
+						<AtributoPet field="pet_VIT" text="Vitalidade"/>
+						<AtributoPet field="pet_INT" text="Inteligência"/>
+						<layout align="top" height="25" margins="{top=5}">
+							<checkBox left="0" top="0" width="190" height="25" field="doubleRoll" text="Usar dois atributos na rolagem." fontSize="12" hint="Clique no primeiro e depois no segundo. "/>
+						</layout>
 					</layout>
-				</layout>
-				<layout align="left" width="220" margins="{right=5}">
-					<AtributoPet field="pet_DES" text="Destreza"/>
-					<AtributoPet field="pet_SOR" text="Sorte"/>
-					<AtributoPet field="pet_MAG" text="Magia"/>
-					<AtributoPet field="pet_PUL" text="Pulo/Voo"/>
-				</layout>
-
-				<layout align="left" width="270" margins="{right=5}">
-					<layout align="top" height="50" margins="{bottom=5, top=5}">
-						<UpperBar width="150" text="Nome" field="pet_nome" fontSize="13"/>
-						<UpperBar width="50" text="Nível" field="pet_level" fontSize="13"/>
-					</layout>
-					<layout align="top" height="50" margins="{bottom=5, top=0}">
-						<UpperBar width="100" text="Raça" field="pet_raca" fontSize="13"/>
-						<UpperBar width="100" text="Aparencia" field="pet_aparencia" fontSize="13"/>
+					<layout align="left" width="220" margins="{right=5}">
+						<AtributoPet field="pet_DES" text="Destreza"/>
+						<AtributoPet field="pet_SOR" text="Sorte"/>
+						<AtributoPet field="pet_MAG" text="Magia"/>
+						<AtributoPet field="pet_PUL" text="Pulo/Voo"/>
 					</layout>
 
-					<layout align="top" height="25" margins="{bottom=5, top=0}">
-						<LabelEdit text="HP" field="pet_hp"/>
-						<LabelEdit text="SP" field="pet_sp"/>
+					<layout align="left" width="270" margins="{right=5}">
+						<layout align="top" height="50" margins="{bottom=5, top=5}">
+							<UpperBar width="150" text="Nome" field="pet_nome" fontSize="13"/>
+							<UpperBar width="50" text="Nível" field="pet_level" fontSize="13"/>
+						</layout>
+						<layout align="top" height="50" margins="{bottom=5, top=0}">
+							<UpperBar width="100" text="Raça" field="pet_raca" fontSize="13"/>
+							<UpperBar width="100" text="Aparencia" field="pet_aparencia" fontSize="13"/>
+						</layout>
+
+						<layout align="top" height="25" margins="{bottom=5, top=0}">
+							<LabelEdit text="HP" field="pet_hp"/>
+							<LabelEdit text="SP" field="pet_sp"/>
+						</layout>
+
+						<layout align="top" height="50" margins="{bottom=5}">
+							<UpperBar width="150" text="Experiência" field="pet_experiencia" fontSize="13"/>
+							<UpperBar width="50" text="AP" field="pet_ap" fontSize="13"/>
+							<UpperBar width="50" text="React" field="pet_react" fontSize="13"/>
+						</layout>
 					</layout>
 
-					<layout align="top" height="50" margins="{bottom=5}">
-						<UpperBar width="150" text="Experiência" field="pet_experiencia" fontSize="13"/>
-						<UpperBar width="50" text="AP" field="pet_ap" fontSize="13"/>
-						<UpperBar width="50" text="React" field="pet_react" fontSize="13"/>
+					<layout align="left" width="200" margins="{right=5}">
+						<rectangle left="0" top="0" width="200" height="200" color="black" strokeColor="white" strokeSize="1">
+							<image align="client" field="pet_avatar" editable="true" style="autoFit" margins="{left=2, right=2, top=2, bottom=2}">
+								<event name="OnStartDrag">
+								    drag:addData("imageURL", self.boxDetalhesDoPet.node.pet_avatar);
+								</event>
+							</image>
+						</rectangle>
 					</layout>
-				</layout>
 
-				<layout align="left" width="200" margins="{right=5}">
-					<rectangle left="0" top="0" width="200" height="200" color="black" strokeColor="white" strokeSize="1">
-						<image align="client" field="pet_avatar" editable="true" style="autoFit" margins="{left=2, right=2, top=2, bottom=2}">
-							<event name="OnStartDrag">
-							    drag:addData("imageURL", self.boxDetalhesDoPet.node.pet_avatar);
-							</event>
-						</image>
-					</rectangle>
-				</layout>
+				</rectangle>
 
-			</rectangle>
-
-			<richEdit align="client" field="pet_background" backgroundColor="#333333" defaultFontSize="12" defaultFontColor="white"/>
-		</dataScopeBox>
+				<richEdit align="client" field="pet_background" backgroundColor="#333333" defaultFontSize="12" defaultFontColor="white"/>
+			</dataScopeBox>
+		</image>
 	</scrollBox>
 </form>
