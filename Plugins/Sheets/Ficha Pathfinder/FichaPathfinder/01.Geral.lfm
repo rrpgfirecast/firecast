@@ -155,21 +155,6 @@
 			<smallFieldCenter field="outros$(tr)"/>
 			<atributeComboBox field="atrTr$(tr)"/>
 		</flowLayout>
-
-		<dataLink fields="{'base$(tr)', 'atrMod$(tr)', 'magia$(tr)', 'variavel$(tr)', 'temporario$(tr)', 'outros$(tr)'}">
-			<event name="onChange"><![CDATA[
-				if sheet~= nil then
-					local tr = (tonumber(sheet.base$(tr)) or 0) + 
-									(tonumber(sheet.atrMod$(tr)) or 0) + 
-									(tonumber(sheet.magia$(tr)) or 0) + 
-									(tonumber(sheet.variavel$(tr)) or 0) + 
-									(tonumber(sheet.temporario$(tr)) or 0) + 
-									(tonumber(sheet.outros$(tr)) or 0);
-					sheet.tr$(tr) = tr;
-				end;
-				]]>
-			</event>
-		</dataLink>
 	</template>
 	<template name="Resistence">
 		<button left="5" width="45" text="$(atrU)" fontSize="11">
@@ -182,6 +167,22 @@
 		
 		<rectangle left="55" top="0" width="40" height="25" color="black" strokeColor="white" strokeSize="1"/>
 		<label  left="55" width="40" height="25" field="tr$(atr)" horzTextAlign="center"/>
+
+		<dataLink fields="{'base$(atr)', 'atrMod$(atr)', 'magia$(atr)', 'variavel$(atr)', 'temporario$(atr)', 'outros$(atr)','buffTR'}">
+			<event name="onChange"><![CDATA[
+				if sheet~= nil then
+					local tr = (tonumber(sheet.base$(atr)) or 0) + 
+									(tonumber(sheet.atrMod$(atr)) or 0) + 
+									(tonumber(sheet.magia$(atr)) or 0) + 
+									(tonumber(sheet.variavel$(atr)) or 0) + 
+									(tonumber(sheet.temporario$(atr)) or 0) + 
+									(tonumber(sheet.outros$(atr)) or 0) + 
+									(tonumber(sheet.buffTR) or 0);
+					sheet.tr$(atr) = tr;
+				end;
+				]]>
+			</event>
+		</dataLink>
 	</template>
 	<template name="Speed">
 		<label left="5" top="0" width="70" height="20" text="$(nome)"/>
@@ -280,6 +281,9 @@
 			<flowPart minWidth="50" maxWidth="60" height="20">
 				<checkBox field="destrezaCaToque" text="Toque" fontSize="10" height="15"/>
 			</flowPart>
+			<smallTitleCenter text="Limite"/>
+			<flowPart minWidth="10" maxWidth="10" height="15"/>
+			<smallFieldCenter field="destrezaCALimit"/>
 			
 			<flowLineBreak/>
 			<Protection nome="Tamanho" field="tamanhoCa"/>
@@ -654,7 +658,7 @@
 				</event>
 			</button>
 
-			<dataLink fields="{'armaduraCa', 'escudoCa', 'efetModDes', 'tamanhoCa', 'naturalCa', 'deflexaoCa', 'esquivaCa', 'sorteCa', 'outrosCa', 'variadosCa', 'armaduraCaSurp', 'escudoCaSurp', 'destrezaCaSurp', 'tamanhoCaSurp', 'naturalCaSurp', 'deflexaoCaSurp', 'esquivaCaSurp', 'sorteCaSurp', 'outrosCaSurp', 'variadosCaSurp', 'armaduraCaToque', 'escudoCaToque', 'destrezaCaToque', 'tamanhoCaToque', 'naturalCaToque', 'deflexaoCaToque', 'esquivaCaToque', 'sorteCaToque', 'outrosCaToque', 'variadosCaToque'}">
+			<dataLink fields="{'armaduraCa', 'escudoCa', 'efetModDes', 'tamanhoCa', 'naturalCa', 'deflexaoCa', 'esquivaCa', 'sorteCa', 'outrosCa', 'variadosCa', 'armaduraCaSurp', 'escudoCaSurp', 'destrezaCaSurp', 'tamanhoCaSurp', 'naturalCaSurp', 'deflexaoCaSurp', 'esquivaCaSurp', 'sorteCaSurp', 'outrosCaSurp', 'variadosCaSurp', 'armaduraCaToque', 'escudoCaToque', 'destrezaCaToque', 'tamanhoCaToque', 'naturalCaToque', 'deflexaoCaToque', 'esquivaCaToque', 'sorteCaToque', 'outrosCaToque', 'variadosCaToque','destrezaCALimit'}">
 				<event name="onChange"><![CDATA[
 					if sheet~= nil then
 						local armaduraCa = (tonumber(sheet.armaduraCa) or 0);
@@ -668,7 +672,7 @@
 						local outrosCa = (tonumber(sheet.outrosCa) or 0);
 						local variadosCa = (tonumber(sheet.variadosCa) or 0);
 
-						local desMax = tonumber(sheet.equipamentoCorpoDesMax) or 999;
+						local desMax = tonumber(sheet.destrezaCALimit) or 999;
 						if desMax < efetModDes then
 							efetModDes = desMax;
 						end;

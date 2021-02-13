@@ -1400,7 +1400,7 @@ local function constructNew_frmFichaRPGmeister2Aar_svg()
 
     obj.dataLink31 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink31:setParent(obj.default);
-    obj.dataLink31:setFields({'furtivo', 'ataquePoderoso', 'especializacaoCombate', 'tiroMultiplo', 'ataqueMultiplo', 'alcance', 'composto', 'limite', 'energia', 'rajada', 'tamanho', 'talentos', 'itens', 'magias', 'extra', 'outros', 'ambidestria', 'combate2armas', 'combate2armasLeve', 'velocidade', 'tiroRapido', 'tiroRapidoAprimorado', 'perspicaz', 'ataqueMultiploApr', 'forma', 'empunhadura', 'mao', 'zen', 'flanquear'});
+    obj.dataLink31:setFields({'furtivo', 'ataquePoderoso', 'especializacaoCombate', 'tiroMultiplo', 'ataqueMultiplo', 'alcance', 'composto', 'limite', 'energia', 'rajada', 'tamanho', 'talentos', 'itens', 'magias', 'extra', 'outros', 'ambidestria', 'combate2armas', 'combate2armasLeve', 'velocidade', 'tiroRapido', 'tiroRapidoAprimorado', 'perspicaz', 'ataqueMultiploApr', 'forma', 'empunhadura', 'mao', 'zen', 'flanquear','atualizar'});
     obj.dataLink31:setName("dataLink31");
 
     obj.auto = GUI.fromHandle(_obj_newObject("layout"));
@@ -1443,9 +1443,8 @@ local function constructNew_frmFichaRPGmeister2Aar_svg()
 
     obj._e_event2 = obj.button1:addEventListener("onClick",
         function (_)
-            if sheet == nil then
-            						return;
-            					end;
+            if sheet == nil then return end;
+                                updateAll();
             					local mesaDoPersonagem = Firecast.getMesaDe(sheet);
             					if sheet.acertos[1] ~= nil then
             						
@@ -1468,9 +1467,8 @@ local function constructNew_frmFichaRPGmeister2Aar_svg()
 
     obj._e_event3 = obj.button2:addEventListener("onClick",
         function (_)
-            if sheet == nil then
-            						return;
-            					end;
+            if sheet == nil then return end;
+                                updateAll();
             					local mesaDoPersonagem = Firecast.getMesaDe(sheet);
             					if sheet.dado ~= nil then
             						local rolagem = Firecast.interpretarRolagem(sheet.dado);
@@ -1483,9 +1481,8 @@ local function constructNew_frmFichaRPGmeister2Aar_svg()
 
     obj._e_event4 = obj.button3:addEventListener("onClick",
         function (_)
-            if sheet == nil then
-            						return;
-            					end;
+            if sheet == nil then return end;
+                                updateAll();
             					local mesaDoPersonagem = Firecast.getMesaDe(sheet);
             					if sheet.crit ~= nil then
             						local rolagem = Firecast.interpretarRolagem(sheet.crit);
@@ -1510,9 +1507,8 @@ local function constructNew_frmFichaRPGmeister2Aar_svg()
 
     obj._e_event6 = obj.button5:addEventListener("onClick",
         function (_)
-            if sheet == nil then
-            						return;
-            					end;
+            if sheet == nil then return end;
+                                updateAll();
             					local mesaDoPersonagem = Firecast.getMesaDe(sheet);
             					if sheet.auto ~= nil then
             						local mensagem = sheet.auto or "";

@@ -423,9 +423,8 @@
 		<layout left="950" top="25" width="100" height="225">
 			<button left="0" top="0" width="100" height="25" text="Ataque">
 				<event name="onClick">
-					if sheet == nil then
-						return;
-					end;
+					if sheet == nil then return end;
+                    updateAll();
 					local mesaDoPersonagem = Firecast.getMesaDe(sheet);
 					if sheet.acertos[1] ~= nil then
 						
@@ -448,9 +447,8 @@
 			</button>
 			<button left="0" top="25" width="100" height="25" text="Dano">
 				<event name="onClick">
-					if sheet == nil then
-						return;
-					end;
+                    if sheet == nil then return end;
+                    updateAll();
 					local mesaDoPersonagem = Firecast.getMesaDe(sheet);
 					if sheet.dado ~= nil then
 						local rolagem = Firecast.interpretarRolagem(sheet.dado);
@@ -463,9 +461,8 @@
 			</button>
 			<button left="0" top="50" width="100" height="25" text="Decisivo">
 				<event name="onClick">
-					if sheet == nil then
-						return;
-					end;
+                    if sheet == nil then return end;
+                    updateAll();
 					local mesaDoPersonagem = Firecast.getMesaDe(sheet);
 					if sheet.crit ~= nil then
 						local rolagem = Firecast.interpretarRolagem(sheet.crit);
@@ -490,9 +487,8 @@
 			</button>
 			<button left="0" top="100" width="100" height="25" text="Exibir">
 				<event name="onClick">
-					if sheet == nil then
-						return;
-					end;
+                    if sheet == nil then return end;
+                    updateAll();
 					local mesaDoPersonagem = Firecast.getMesaDe(sheet);
 					if sheet.auto ~= nil then
 						local mensagem = sheet.auto or "";
@@ -516,8 +512,8 @@
 				</event>
 			</button>
 		</layout> 
-		<dataLink fields="{'furtivo', 'ataquePoderoso', 'especializacaoCombate', 'tiroMultiplo', 'ataqueMultiplo', 'alcance', 'composto', 'limite', 'energia', 'rajada', 'tamanho', 'talentos', 'itens', 'magias', 'extra', 'outros', 'ambidestria', 'combate2armas', 'combate2armasLeve', 'velocidade', 'tiroRapido', 'tiroRapidoAprimorado', 'perspicaz', 'ataqueMultiploApr', 'forma', 'empunhadura', 'mao', 'zen', 'flanquear'}">
-	        <event name="onChange">                
+		<dataLink fields="{'furtivo', 'ataquePoderoso', 'especializacaoCombate', 'tiroMultiplo', 'ataqueMultiplo', 'alcance', 'composto', 'limite', 'energia', 'rajada', 'tamanho', 'talentos', 'itens', 'magias', 'extra', 'outros', 'ambidestria', 'combate2armas', 'combate2armasLeve', 'velocidade', 'tiroRapido', 'tiroRapidoAprimorado', 'perspicaz', 'ataqueMultiploApr', 'forma', 'empunhadura', 'mao', 'zen', 'flanquear','atualizar'}">
+	        <event name="onChange">
 	            updateAll();
 	        </event>
 	    </dataLink>
