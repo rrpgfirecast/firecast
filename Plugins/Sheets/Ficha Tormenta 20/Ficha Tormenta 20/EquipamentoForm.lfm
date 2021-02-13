@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmEquipamentoForm" width="300" height="50" margins="{right=5,bottom=5}" theme="light">
+
+	<template name="VertLabelEdit">
+		<layout align="left" width="$(width)" margins="{right=5}">
+			<label text="$(text)" width="$(width)" horzTextAlign="leading" fontSize="$(fontSize)"/>
+			<edit top="20" field="$(field)" width="$(width)" height="25"/>
+		</layout>
+	</template>
+
+	<dataLink field="peso">
+		<event name="onChange"><![CDATA[
+	        if sheet== nil then return end;
+			local node = NDB.getRoot(sheet);
+			local objetos = NDB.getChildNodes(node.listaEquipamentos);
+			local soma = 0;
+
+			for i=1, #objetos, 1 do 
+				soma = soma + (tonumber(objetos[i].peso) or 0);
+			end;
+
+			node.cargaAtual = soma;
+	        ]]>
+		</event>
+	</dataLink>
+
+	<rectangle width="300" height="50" color="#F0FFFF">
+		<VertLabelEdit text="Item" field="nome" width="150" fontSize="13"/>
+		<VertLabelEdit text="Qtd" field="qtd" width="50" fontSize="13"/>
+		<VertLabelEdit text="Peso" field="peso" width="50" fontSize="11" type="float" decimalPlaces="2"/>
+
+		<button align="left" width="25" text="X" margins="{left=5}">
+			<event name="onClick">
+				dialogs.confirmOkCancel("Tem certeza que quer apagar esse equipamento?",
+					function (confirmado)
+						if confirmado then
+							ndb.deleteNode(sheet);
+						end;
+				end);
+			</event>
+		</button>
+	</rectangle>
+</form>

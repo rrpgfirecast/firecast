@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmMagias" align="client" theme="light">
+
+
+	<dataLink fields="{'atrMagiaCombo','forMod','desMod','conMod','intMod','sabMod','carMod'}">
+		<event name="onChange">
+			if sheet==nil then return end;
+
+			local atr = sheet.atrMagiaCombo or "empty";
+			sheet.atrMagia = tonumber(sheet[atr]) or 0;
+		</event>
+	</dataLink>
+
+	<dataLink fields="{'atrMagia','nivel'}">
+		<event name="onChange">
+			if sheet==nil then return end;
+
+			local atr = tonumber(sheet.atrMagia) or 0;
+
+
+			local nivel = tonumber(sheet.nivel) or 0;
+			nivel = math.floor(nivel/2);
+
+			sheet.cdMagia = 10 + atr + nivel;
+		</event>
+	</dataLink>
+
+	<scrollBox align="client">
+		<layout align="top" height="25"  margins="{bottom=5}">
+			<button align="left" text="Novo" width="100" onClick="self.rclMagias:append();"/>
+
+			<label align="left" width="100" text="Atributo-Chave" horzTextAlign="center" vertTextAlign="center"/>
+
+			<comboBox align="left" width="50" fontSize="9" field="atrMagiaCombo" items="{'FOR','DES','CON','INT','SAB','CAR'}" values="{'forMod','desMod','conMod','intMod','sabMod','carMod'}"/>
+
+			<rectangle align="left" width="50" color="#F0FFFF" strokeColor="black" strokeSize="1">
+				<label align="client" field="atrMagia" horzTextAlign="center" vertTextAlign="center"/>
+			</rectangle>
+
+			<label align="left" width="100" text="Teste de Resistência" horzTextAlign="center" vertTextAlign="center" fontSize="11"/>
+
+			<rectangle align="left" width="50" color="#F0FFFF" strokeColor="black" strokeSize="1">
+				<label align="client" field="cdMagia" horzTextAlign="center" vertTextAlign="center"/>
+			</rectangle>
+		</layout>
+
+		<recordList align="client" name="rclMagias" field="listaMagias" templateForm="frmMagiaForm" layout="verticalTiles" selectable="true">
+			<event name="onCompare"><![CDATA[
+				-- Esse codigo organiza a ordem dos objetos da lista alfabeticamente. 
+		        return utils.compareStringPtBr(nodeA.nome, nodeB.nome);              
+		        ]]>
+			</event>
+		</recordList>
+	</scrollBox>
+</form>

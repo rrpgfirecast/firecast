@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmGeral" align="client" theme="light">
+	<template name="VertLabelEdit">
+		<layout align="left" width="$(width)" margins="{right=5}">
+			<label text="$(text)" width="$(width)" horzTextAlign="leading" fontSize="$(fontSize)"/>
+			<edit top="20" field="$(field)" width="$(width)" height="25"/>
+		</layout>
+	</template>
+	<template name="VertLabelLabel">
+		<layout align="left" width="$(width)" margins="{right=5}">
+			<label text="$(text)" width="$(width)" horzTextAlign="leading" fontSize="$(fontSize)"/>
+			<rectangle top="20" height="25" width="$(width)" color="#F0FFFF" strokeColor="black" strokeSize="1">
+				<label align="client" field="$(field)" horzTextAlign="center" vertTextAlign="center"/>
+			</rectangle>
+		</layout>
+	</template>
+	<template name="VertCheckCombo">
+		<layout align="left" width="$(width)" margins="{right=5}">
+			<checkBox text="$(text)" width="$(width)" field="$(field)Check" horzTextAlign="leading"/>
+			<comboBox top="20" field="$(field)Combo" width="$(width)" height="25" items="$(items)" values="$(values)" fontSize="$(fontSize)"/>
+		</layout>
+	</template>
+
+	<template name="HorzLabelEditEdit">
+		<layout align="top" height="25" margins="{right=5,left=5}">
+			<label  align="left" text="$(text)" width="100" horzTextAlign="center"/>
+			<edit align="left" width="50" field="$(field)Max" height="25" horzTextAlign="center" type="number"/>
+			<edit align="left" width="100" field="$(field)Temp" height="25"/>
+		</layout>
+	</template>
+
+	<template name="Atributo">
+		<layout align="top" height="25" margins="{right=5,left=5}">
+			<label  align="left" text="$(text)" width="50" horzTextAlign="center"/>
+			<edit align="left" width="50" field="$(field)Atr" height="25" horzTextAlign="center" type="number"/>
+			<rectangle align="left" width="50" color="#F0FFFF" strokeColor="black" strokeSize="1">
+				<label align="client" field="$(field)Mod" horzTextAlign="center" vertTextAlign="center"/>
+			</rectangle>
+		</layout>
+
+		<dataLink field="$(field)Atr">
+			<event name="onChange">
+				if sheet==nil then return end;
+				local atr = tonumber(sheet.$(field)Atr) or 0;
+				sheet.$(field)mod = math.floor((atr-10)/2)
+			</event>
+		</dataLink>
+	</template>
+
+	<scrollBox align="client">
+		<layout width="615" height="440"/>
+
+		<layout align="top" height="100" margins="{bottom=5}">	
+			<rectangle align="left" width="615" color="#F0FFFF" xradius="5" yradius="15" cornerType="round">
+	        	<layout align="top" height="50">
+	        		<VertLabelEdit width="300" text="Nome" fontSize="13" field="nome"/>
+	        		<VertLabelEdit width="250" text="Classe" fontSize="13" field="classe"/>
+	        		<VertLabelEdit width="50" text="Nível" fontSize="13" field="nivel"/>
+	        	</layout>
+	        	<layout align="top" height="50">
+	        		<VertLabelEdit width="200" text="Raça" fontSize="13" field="raca"/>
+	        		<VertLabelEdit width="200" text="Origem" fontSize="13" field="origem"/>
+	        		<VertLabelEdit width="200" text="Divindade" fontSize="13" field="divindade"/>
+	        	</layout>
+			</rectangle>
+        </layout>
+
+        <layout align="top" height="160" margins="{bottom=5}">
+        	<rectangle align="left" width="160" color="#F0FFFF" xradius="5" yradius="15" cornerType="round" padding="{top=5,bottom=5}" margins="{right=5}">
+        		<Atributo text="FOR" field="for"/>
+        		<Atributo text="DES" field="des"/>
+        		<Atributo text="CON" field="con"/>
+        		<Atributo text="INT" field="int"/>
+        		<Atributo text="SAB" field="sab"/>
+        		<Atributo text="CAR" field="car"/>
+        	</rectangle>
+
+        	<rectangle align="left" width="410" color="#F0FFFF" xradius="5" yradius="15" cornerType="round" padding="{top=5,bottom=5,left=5,right=5}" margins="{right=5}">
+				<layout align="top" height="50" margins="{right=5,left=5}">
+					<VertLabelLabel width="50" text="Defesa" fontSize="13" field="defesa"/>
+
+					<dataLink fields="{'caAtr','caAtr','caArm','caEsc','caOut'}">
+						<event name="onChange">
+							if sheet==nil then return end;
+
+							sheet.defesa = 	(tonumber(sheet.caAtr) or 0) + 
+											(tonumber(sheet.caArm) or 0) + 
+											(tonumber(sheet.caEsc) or 0) + 
+											(tonumber(sheet.caOut) or 0) + 10;
+						</event>
+					</dataLink>
+
+
+					<layout align="left" width="50" margins="{right=5}">
+						<label top="30" height="25" width="50" align="client" text="= 10 + " horzTextAlign="center" vertTextAlign="center"/>
+					</layout>
+
+					<VertCheckCombo width="50" text="Mod." field="atrMod" items="{'FOR','DES','CON','INT','SAB','CAR'}" values="{'forMod','desMod','conMod','intMod','sabMod','carMod'}" fontSize="9"/>
+					<dataLink fields="{'atrModCheck','atrModCombo'}">
+						<event name="onChange">
+							if sheet==nil then return end;
+							local check = sheet.atrModCheck or false;
+							local field = sheet.atrModCombo or "empty";
+
+							if check then 
+								sheet.caAtr = tonumber(sheet[field]) or 0;
+							else
+								sheet.caAtr = 0;
+							end;
+						</event>
+					</dataLink>
+
+					<VertLabelLabel width="50" text="Atributo" fontSize="11" field="caAtr"/>
+					<VertLabelLabel width="50" text="Armadura" fontSize="11" field="caArm"/>
+					<VertLabelLabel width="50" text="Escudo" fontSize="11" field="caEsc"/>
+					<VertLabelEdit width="50" text="Outros" fontSize="11" field="caOut"/>
+				</layout>
+
+				<layout align="top" height="50" margins="{right=5,left=5}">
+					<VertLabelEdit width="200" text="Armadura" fontSize="13" field="armaduraNome"/>
+					<VertLabelEdit width="50" text="Defesa" fontSize="11" field="caArm"/>
+					<VertLabelEdit width="50" text="Penalidade" fontSize="9" field="caArmPen"/>
+				</layout>
+
+				<layout align="top" height="50" margins="{right=5,left=5}">
+					<VertLabelEdit width="200" text="Escudo" fontSize="13" field="escudoNome"/>
+					<VertLabelEdit width="50" text="Defesa" fontSize="11" field="caEsc"/>
+					<VertLabelEdit width="50" text="Penalidade" fontSize="9" field="caEscPen"/>
+				</layout>
+        	</rectangle>
+
+			<rectangle align="left" width="160" color="black" strokeColor="white" strokeSize="1">
+				<label left="0" top="40" width="160" height="20" text="Avatar" horzTextAlign="center"/>
+				<image align="client" field="avatar" editable="true" style="autoFit" margins="{left=2, right=2, top=2, bottom=2}">
+					<event name="OnStartDrag">
+					    drag:addData("imageURL", sheet.avatar);
+					</event>
+				</image>
+			</rectangle>
+        </layout>
+
+        <layout align="top" height="160" margins="{bottom=5}">
+
+        	<rectangle align="left" width="160" color="#F0FFFF" xradius="5" yradius="15" cornerType="round" padding="{top=5,bottom=5,left=5,right=5}" margins="{right=5}">
+        		<label text="Proficiências" align="top" height="25" horzTextAlign="center"/>
+        		<textEditor align="client" field="proficiencias"/>
+			</rectangle>
+
+        	<rectangle align="left" width="260" color="#F0FFFF" xradius="5" yradius="15" cornerType="round" padding="{top=5,bottom=5}" margins="{right=5}">
+        		<HorzLabelEditEdit text="Pontos de Vida" field="pv" fontSize="9"/>
+        		<HorzLabelEditEdit text="Pontos de Mana" field="pm" fontSize="9"/>
+
+				<layout align="top" height="25" margins="{right=5,left=5}">
+					<label align="left" text="Pontos de Experiência" width="100" horzTextAlign="center" fontSize="9"/>
+					<edit align="left" width="150" field="xp" height="25"/>
+				</layout>
+				<layout align="top" height="25" margins="{right=5,left=5}">
+					<label  align="left" text="Deslocamento" width="100" horzTextAlign="center"/>
+					<edit align="left" width="150" field="deslocamento"/>
+				</layout>
+
+				<layout align="top" height="25" margins="{right=5,left=5}">
+					<label  align="left" text="Tamanho" width="100" horzTextAlign="center"/>
+
+					<comboBox align="left" width="100" field="tamanho" items="{'Minúsculo','Pequeno','Médio','Grande','Enorme','Colossal'}" values="{'5','2','0','-2','-5','-10'}"/>
+					<dataLink field="tamanho">
+						<event name="onChange">
+							if sheet==nil then return end;
+							local tam = tonumber(sheet.tamanho) or 0;
+							sheet.tamanhoMod = tam .. "/" .. (tam*-1);
+						</event>
+					</dataLink>
+
+
+					<rectangle align="left" width="50" color="#F0FFFF" strokeColor="black" strokeSize="1">
+						<label align="client" field="tamanhoMod" horzTextAlign="center" vertTextAlign="center"/>
+					</rectangle>
+				</layout>
+
+
+			</rectangle>
+			<recordList align="left" width="450" name="rclAtaques" field="listaAtaques" templateForm="frmAtaqueForm" layout="vertical" selectable="true" minQt="3">
+				<event name="onCompare"><![CDATA[
+					-- Esse codigo organiza a ordem dos objetos da lista alfabeticamente. 
+			        return utils.compareStringPtBr(nodeA.nome, nodeB.nome);              
+			        ]]>
+				</event>
+			</recordList>
+
+        </layout>
+	</scrollBox>
+</form>

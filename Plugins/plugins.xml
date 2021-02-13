@@ -158,6 +158,11 @@
             <dataType id="Ambesek.Nefertyne.FichaPathfinder" title="Ficha Pathfinder"/>
         </dataTypes>
     </element>
+    <element id="Ambesek.Tormenta20" name="Ficha Tormenta 20" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20Tormenta%2020/output/Ficha%20Tormenta%2020.rpk?raw=true" fileName="Ficha Tormenta 20.rpk" repositoryPath="Sheets/Ficha Tormenta 20/" author="Ambesek" description="Ficha para o cenario e sistema Tormenta 20. " version="0.1" compilationDate="11102019015525" compilationDigest="c1e9f4960b942650a4dcba1e5db472007df38d72">
+        <dataTypes>
+            <dataType id="mbesek.Tormenta20" title="Ficha Tormenta 20"/>
+        </dataTypes>
+    </element>
     <element id="Ambesek.Pathfinder.2e" name="Ficha Pathfinder 2e" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20Pathfinder%202e/output/Ficha%20Pathfinder%202e.rpk?raw=true" fileName="Ficha Pathfinder 2e.rpk" repositoryPath="Sheets/Ficha Pathfinder 2e/" author="Ambesek" description="Ficha feita para o sistema Pathfinder 2e." version="0.1" compilationDate="11102019015525" compilationDigest="c1e9f4960b942650a4dcba1e5db472007df38d72">
         <dataTypes>
             <dataType id="Ambesek.FichaPathfinder.2e" title="Ficha Pathfinder 2e"/>

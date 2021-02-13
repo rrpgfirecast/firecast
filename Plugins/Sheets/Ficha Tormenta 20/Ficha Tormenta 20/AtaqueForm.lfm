@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmAtaqueForm" width="450" height="50" margins="{right=0,bottom=1}" theme="light">
+
+	<template name="VertLabelEdit">
+		<layout align="left" width="$(width)" margins="{right=5}">
+			<label text="$(text)" width="$(width)" horzTextAlign="leading" fontSize="$(fontSize)"/>
+			<edit top="20" field="$(field)" width="$(width)" height="25"/>
+		</layout>
+	</template>
+
+	<rectangle width="450" height="50" color="#F0FFFF">
+		<VertLabelEdit text="Ataque" field="nome" width="150" fontSize="13"/>
+		<VertLabelEdit text="Teste" field="teste" width="50" fontSize="13"/>
+		<VertLabelEdit text="Dano" field="dano" width="50" fontSize="13"/>
+		<VertLabelEdit text="Crítico" field="critico" width="50" fontSize="13"/>
+		<VertLabelEdit text="Tipo" field="tipo" width="50" fontSize="13"/>
+		<VertLabelEdit text="Alcance" field="alcance" width="50" fontSize="13"/>
+	</rectangle>
+</form>
