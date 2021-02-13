@@ -103,7 +103,7 @@ local function constructNew_frmTemplate()
     obj.rectangle1 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle1:setParent(obj.layout2);
     obj.rectangle1:setAlign("left");
-    obj.rectangle1:setWidth(615);
+    obj.rectangle1:setWidth(1030);
     obj.rectangle1:setColor("#F0FFFF");
     obj.rectangle1:setXradius(5);
     obj.rectangle1:setYradius(15);
@@ -119,14 +119,14 @@ local function constructNew_frmTemplate()
     obj.layout4 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout4:setParent(obj.layout3);
     obj.layout4:setAlign("left");
-    obj.layout4:setWidth(300);
+    obj.layout4:setWidth(500);
     obj.layout4:setMargins({right=5});
     obj.layout4:setName("layout4");
 
     obj.label1 = GUI.fromHandle(_obj_newObject("label"));
     obj.label1:setParent(obj.layout4);
     obj.label1:setText("Nome");
-    obj.label1:setWidth(300);
+    obj.label1:setWidth(500);
     obj.label1:setHorzTextAlign("leading");
     obj.label1:setFontSize(13);
     obj.label1:setName("label1");
@@ -135,21 +135,21 @@ local function constructNew_frmTemplate()
     obj.edit1:setParent(obj.layout4);
     obj.edit1:setTop(20);
     obj.edit1:setField("nome");
-    obj.edit1:setWidth(300);
+    obj.edit1:setWidth(500);
     obj.edit1:setHeight(25);
     obj.edit1:setName("edit1");
 
     obj.layout5 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout5:setParent(obj.layout3);
     obj.layout5:setAlign("left");
-    obj.layout5:setWidth(250);
+    obj.layout5:setWidth(450);
     obj.layout5:setMargins({right=5});
     obj.layout5:setName("layout5");
 
     obj.label2 = GUI.fromHandle(_obj_newObject("label"));
     obj.label2:setParent(obj.layout5);
     obj.label2:setText("Classe");
-    obj.label2:setWidth(250);
+    obj.label2:setWidth(450);
     obj.label2:setHorzTextAlign("leading");
     obj.label2:setFontSize(13);
     obj.label2:setName("label2");
@@ -158,21 +158,21 @@ local function constructNew_frmTemplate()
     obj.edit2:setParent(obj.layout5);
     obj.edit2:setTop(20);
     obj.edit2:setField("classe");
-    obj.edit2:setWidth(250);
+    obj.edit2:setWidth(450);
     obj.edit2:setHeight(25);
     obj.edit2:setName("edit2");
 
     obj.layout6 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout6:setParent(obj.layout3);
     obj.layout6:setAlign("left");
-    obj.layout6:setWidth(50);
+    obj.layout6:setWidth(65);
     obj.layout6:setMargins({right=5});
     obj.layout6:setName("layout6");
 
     obj.label3 = GUI.fromHandle(_obj_newObject("label"));
     obj.label3:setParent(obj.layout6);
     obj.label3:setText("Nível");
-    obj.label3:setWidth(50);
+    obj.label3:setWidth(65);
     obj.label3:setHorzTextAlign("leading");
     obj.label3:setFontSize(13);
     obj.label3:setName("label3");
@@ -181,7 +181,7 @@ local function constructNew_frmTemplate()
     obj.edit3:setParent(obj.layout6);
     obj.edit3:setTop(20);
     obj.edit3:setField("nivel");
-    obj.edit3:setWidth(50);
+    obj.edit3:setWidth(65);
     obj.edit3:setHeight(25);
     obj.edit3:setName("edit3");
 
@@ -194,14 +194,14 @@ local function constructNew_frmTemplate()
     obj.layout8 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout8:setParent(obj.layout7);
     obj.layout8:setAlign("left");
-    obj.layout8:setWidth(200);
+    obj.layout8:setWidth(340);
     obj.layout8:setMargins({right=5});
     obj.layout8:setName("layout8");
 
     obj.label4 = GUI.fromHandle(_obj_newObject("label"));
     obj.label4:setParent(obj.layout8);
     obj.label4:setText("Raça");
-    obj.label4:setWidth(200);
+    obj.label4:setWidth(340);
     obj.label4:setHorzTextAlign("leading");
     obj.label4:setFontSize(13);
     obj.label4:setName("label4");
@@ -210,21 +210,21 @@ local function constructNew_frmTemplate()
     obj.edit4:setParent(obj.layout8);
     obj.edit4:setTop(20);
     obj.edit4:setField("raca");
-    obj.edit4:setWidth(200);
+    obj.edit4:setWidth(340);
     obj.edit4:setHeight(25);
     obj.edit4:setName("edit4");
 
     obj.layout9 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout9:setParent(obj.layout7);
     obj.layout9:setAlign("left");
-    obj.layout9:setWidth(200);
+    obj.layout9:setWidth(340);
     obj.layout9:setMargins({right=5});
     obj.layout9:setName("layout9");
 
     obj.label5 = GUI.fromHandle(_obj_newObject("label"));
     obj.label5:setParent(obj.layout9);
     obj.label5:setText("Origem");
-    obj.label5:setWidth(200);
+    obj.label5:setWidth(340);
     obj.label5:setHorzTextAlign("leading");
     obj.label5:setFontSize(13);
     obj.label5:setName("label5");
@@ -233,21 +233,21 @@ local function constructNew_frmTemplate()
     obj.edit5:setParent(obj.layout9);
     obj.edit5:setTop(20);
     obj.edit5:setField("origem");
-    obj.edit5:setWidth(200);
+    obj.edit5:setWidth(340);
     obj.edit5:setHeight(25);
     obj.edit5:setName("edit5");
 
     obj.layout10 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout10:setParent(obj.layout7);
     obj.layout10:setAlign("left");
-    obj.layout10:setWidth(200);
+    obj.layout10:setWidth(335);
     obj.layout10:setMargins({right=5});
     obj.layout10:setName("layout10");
 
     obj.label6 = GUI.fromHandle(_obj_newObject("label"));
     obj.label6:setParent(obj.layout10);
     obj.label6:setText("Divindade");
-    obj.label6:setWidth(200);
+    obj.label6:setWidth(335);
     obj.label6:setHorzTextAlign("leading");
     obj.label6:setFontSize(13);
     obj.label6:setName("label6");
@@ -256,7 +256,7 @@ local function constructNew_frmTemplate()
     obj.edit6:setParent(obj.layout10);
     obj.edit6:setTop(20);
     obj.edit6:setField("divindade");
-    obj.edit6:setWidth(200);
+    obj.edit6:setWidth(335);
     obj.edit6:setHeight(25);
     obj.edit6:setName("edit6");
 
@@ -564,7 +564,7 @@ local function constructNew_frmTemplate()
     obj.rectangle9 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle9:setParent(obj.layout11);
     obj.rectangle9:setAlign("left");
-    obj.rectangle9:setWidth(410);
+    obj.rectangle9:setWidth(700);
     obj.rectangle9:setColor("#F0FFFF");
     obj.rectangle9:setXradius(5);
     obj.rectangle9:setYradius(15);
@@ -799,14 +799,14 @@ local function constructNew_frmTemplate()
     obj.layout27 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout27:setParent(obj.layout26);
     obj.layout27:setAlign("left");
-    obj.layout27:setWidth(200);
+    obj.layout27:setWidth(570);
     obj.layout27:setMargins({right=5});
     obj.layout27:setName("layout27");
 
     obj.label29 = GUI.fromHandle(_obj_newObject("label"));
     obj.label29:setParent(obj.layout27);
     obj.label29:setText("Armadura");
-    obj.label29:setWidth(200);
+    obj.label29:setWidth(570);
     obj.label29:setHorzTextAlign("leading");
     obj.label29:setFontSize(13);
     obj.label29:setName("label29");
@@ -815,7 +815,7 @@ local function constructNew_frmTemplate()
     obj.edit14:setParent(obj.layout27);
     obj.edit14:setTop(20);
     obj.edit14:setField("armaduraNome");
-    obj.edit14:setWidth(200);
+    obj.edit14:setWidth(570);
     obj.edit14:setHeight(25);
     obj.edit14:setName("edit14");
 
@@ -875,14 +875,14 @@ local function constructNew_frmTemplate()
     obj.layout31 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout31:setParent(obj.layout30);
     obj.layout31:setAlign("left");
-    obj.layout31:setWidth(200);
+    obj.layout31:setWidth(570);
     obj.layout31:setMargins({right=5});
     obj.layout31:setName("layout31");
 
     obj.label32 = GUI.fromHandle(_obj_newObject("label"));
     obj.label32:setParent(obj.layout31);
     obj.label32:setText("Escudo");
-    obj.label32:setWidth(200);
+    obj.label32:setWidth(570);
     obj.label32:setHorzTextAlign("leading");
     obj.label32:setFontSize(13);
     obj.label32:setName("label32");
@@ -891,7 +891,7 @@ local function constructNew_frmTemplate()
     obj.edit17:setParent(obj.layout31);
     obj.edit17:setTop(20);
     obj.edit17:setField("escudoNome");
-    obj.edit17:setWidth(200);
+    obj.edit17:setWidth(570);
     obj.edit17:setHeight(25);
     obj.edit17:setName("edit17");
 
@@ -1175,7 +1175,7 @@ local function constructNew_frmTemplate()
     obj.rclAtaques = GUI.fromHandle(_obj_newObject("recordList"));
     obj.rclAtaques:setParent(obj.layout34);
     obj.rclAtaques:setAlign("left");
-    obj.rclAtaques:setWidth(450);
+    obj.rclAtaques:setWidth(600);
     obj.rclAtaques:setName("rclAtaques");
     obj.rclAtaques:setField("listaAtaques");
     obj.rclAtaques:setTemplateForm("frmAtaqueForm");

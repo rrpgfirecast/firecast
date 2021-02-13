@@ -27,7 +27,7 @@ local function constructNew_frmEquipamentoForm()
     _gui_assignInitialParentForForm(obj.handle);
     obj:beginUpdate();
     obj:setName("frmEquipamentoForm");
-    obj:setWidth(300);
+    obj:setWidth(600);
     obj:setHeight(50);
     obj:setMargins({right=5,bottom=5});
     obj:setTheme("light");
@@ -39,7 +39,7 @@ local function constructNew_frmEquipamentoForm()
 
     obj.rectangle1 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle1:setParent(obj);
-    obj.rectangle1:setWidth(300);
+    obj.rectangle1:setWidth(600);
     obj.rectangle1:setHeight(50);
     obj.rectangle1:setColor("#F0FFFF");
     obj.rectangle1:setName("rectangle1");
@@ -47,14 +47,14 @@ local function constructNew_frmEquipamentoForm()
     obj.layout1 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout1:setParent(obj.rectangle1);
     obj.layout1:setAlign("left");
-    obj.layout1:setWidth(150);
+    obj.layout1:setWidth(300);
     obj.layout1:setMargins({right=5});
     obj.layout1:setName("layout1");
 
     obj.label1 = GUI.fromHandle(_obj_newObject("label"));
     obj.label1:setParent(obj.layout1);
     obj.label1:setText("Item");
-    obj.label1:setWidth(150);
+    obj.label1:setWidth(300);
     obj.label1:setHorzTextAlign("leading");
     obj.label1:setFontSize(13);
     obj.label1:setName("label1");
@@ -63,21 +63,21 @@ local function constructNew_frmEquipamentoForm()
     obj.edit1:setParent(obj.layout1);
     obj.edit1:setTop(20);
     obj.edit1:setField("nome");
-    obj.edit1:setWidth(150);
+    obj.edit1:setWidth(300);
     obj.edit1:setHeight(25);
     obj.edit1:setName("edit1");
 
     obj.layout2 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout2:setParent(obj.rectangle1);
     obj.layout2:setAlign("left");
-    obj.layout2:setWidth(50);
+    obj.layout2:setWidth(100);
     obj.layout2:setMargins({right=5});
     obj.layout2:setName("layout2");
 
     obj.label2 = GUI.fromHandle(_obj_newObject("label"));
     obj.label2:setParent(obj.layout2);
     obj.label2:setText("Qtd");
-    obj.label2:setWidth(50);
+    obj.label2:setWidth(100);
     obj.label2:setHorzTextAlign("leading");
     obj.label2:setFontSize(13);
     obj.label2:setName("label2");
@@ -86,21 +86,21 @@ local function constructNew_frmEquipamentoForm()
     obj.edit2:setParent(obj.layout2);
     obj.edit2:setTop(20);
     obj.edit2:setField("qtd");
-    obj.edit2:setWidth(50);
+    obj.edit2:setWidth(100);
     obj.edit2:setHeight(25);
     obj.edit2:setName("edit2");
 
     obj.layout3 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout3:setParent(obj.rectangle1);
     obj.layout3:setAlign("left");
-    obj.layout3:setWidth(50);
+    obj.layout3:setWidth(100);
     obj.layout3:setMargins({right=5});
     obj.layout3:setName("layout3");
 
     obj.label3 = GUI.fromHandle(_obj_newObject("label"));
     obj.label3:setParent(obj.layout3);
     obj.label3:setText("Peso");
-    obj.label3:setWidth(50);
+    obj.label3:setWidth(100);
     obj.label3:setHorzTextAlign("leading");
     obj.label3:setFontSize(11);
     obj.label3:setName("label3");
@@ -109,14 +109,14 @@ local function constructNew_frmEquipamentoForm()
     obj.edit3:setParent(obj.layout3);
     obj.edit3:setTop(20);
     obj.edit3:setField("peso");
-    obj.edit3:setWidth(50);
+    obj.edit3:setWidth(100);
     obj.edit3:setHeight(25);
     obj.edit3:setName("edit3");
 
     obj.button1 = GUI.fromHandle(_obj_newObject("button"));
     obj.button1:setParent(obj.rectangle1);
     obj.button1:setAlign("left");
-    obj.button1:setWidth(25);
+    obj.button1:setWidth(50);
     obj.button1:setText("X");
     obj.button1:setMargins({left=5});
     obj.button1:setName("button1");

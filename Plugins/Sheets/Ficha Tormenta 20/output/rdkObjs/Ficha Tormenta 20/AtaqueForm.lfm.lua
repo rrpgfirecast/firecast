@@ -27,14 +27,14 @@ local function constructNew_frmAtaqueForm()
     _gui_assignInitialParentForForm(obj.handle);
     obj:beginUpdate();
     obj:setName("frmAtaqueForm");
-    obj:setWidth(450);
+    obj:setWidth(600);
     obj:setHeight(50);
     obj:setMargins({right=0,bottom=1});
     obj:setTheme("light");
 
     obj.rectangle1 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle1:setParent(obj);
-    obj.rectangle1:setWidth(450);
+    obj.rectangle1:setWidth(600);
     obj.rectangle1:setHeight(50);
     obj.rectangle1:setColor("#F0FFFF");
     obj.rectangle1:setName("rectangle1");
@@ -42,14 +42,14 @@ local function constructNew_frmAtaqueForm()
     obj.layout1 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout1:setParent(obj.rectangle1);
     obj.layout1:setAlign("left");
-    obj.layout1:setWidth(150);
+    obj.layout1:setWidth(250);
     obj.layout1:setMargins({right=5});
     obj.layout1:setName("layout1");
 
     obj.label1 = GUI.fromHandle(_obj_newObject("label"));
     obj.label1:setParent(obj.layout1);
     obj.label1:setText("Ataque");
-    obj.label1:setWidth(150);
+    obj.label1:setWidth(250);
     obj.label1:setHorzTextAlign("leading");
     obj.label1:setFontSize(13);
     obj.label1:setName("label1");
@@ -58,21 +58,21 @@ local function constructNew_frmAtaqueForm()
     obj.edit1:setParent(obj.layout1);
     obj.edit1:setTop(20);
     obj.edit1:setField("nome");
-    obj.edit1:setWidth(150);
+    obj.edit1:setWidth(250);
     obj.edit1:setHeight(25);
     obj.edit1:setName("edit1");
 
     obj.layout2 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout2:setParent(obj.rectangle1);
     obj.layout2:setAlign("left");
-    obj.layout2:setWidth(50);
+    obj.layout2:setWidth(75);
     obj.layout2:setMargins({right=5});
     obj.layout2:setName("layout2");
 
     obj.label2 = GUI.fromHandle(_obj_newObject("label"));
     obj.label2:setParent(obj.layout2);
     obj.label2:setText("Teste");
-    obj.label2:setWidth(50);
+    obj.label2:setWidth(75);
     obj.label2:setHorzTextAlign("leading");
     obj.label2:setFontSize(13);
     obj.label2:setName("label2");
@@ -81,21 +81,21 @@ local function constructNew_frmAtaqueForm()
     obj.edit2:setParent(obj.layout2);
     obj.edit2:setTop(20);
     obj.edit2:setField("teste");
-    obj.edit2:setWidth(50);
+    obj.edit2:setWidth(75);
     obj.edit2:setHeight(25);
     obj.edit2:setName("edit2");
 
     obj.layout3 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout3:setParent(obj.rectangle1);
     obj.layout3:setAlign("left");
-    obj.layout3:setWidth(50);
+    obj.layout3:setWidth(75);
     obj.layout3:setMargins({right=5});
     obj.layout3:setName("layout3");
 
     obj.label3 = GUI.fromHandle(_obj_newObject("label"));
     obj.label3:setParent(obj.layout3);
     obj.label3:setText("Dano");
-    obj.label3:setWidth(50);
+    obj.label3:setWidth(75);
     obj.label3:setHorzTextAlign("leading");
     obj.label3:setFontSize(13);
     obj.label3:setName("label3");
@@ -104,7 +104,7 @@ local function constructNew_frmAtaqueForm()
     obj.edit3:setParent(obj.layout3);
     obj.edit3:setTop(20);
     obj.edit3:setField("dano");
-    obj.edit3:setWidth(50);
+    obj.edit3:setWidth(75);
     obj.edit3:setHeight(25);
     obj.edit3:setName("edit3");
 

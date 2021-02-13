@@ -51,16 +51,16 @@
 		<layout width="615" height="440"/>
 
 		<layout align="top" height="100" margins="{bottom=5}">	
-			<rectangle align="left" width="615" color="#F0FFFF" xradius="5" yradius="15" cornerType="round">
+			<rectangle align="left" width="1030" color="#F0FFFF" xradius="5" yradius="15" cornerType="round">
 	        	<layout align="top" height="50">
-	        		<VertLabelEdit width="300" text="Nome" fontSize="13" field="nome"/>
-	        		<VertLabelEdit width="250" text="Classe" fontSize="13" field="classe"/>
-	        		<VertLabelEdit width="50" text="Nível" fontSize="13" field="nivel"/>
+	        		<VertLabelEdit width="500" text="Nome" fontSize="13" field="nome"/>
+	        		<VertLabelEdit width="450" text="Classe" fontSize="13" field="classe"/>
+	        		<VertLabelEdit width="65" text="Nível" fontSize="13" field="nivel"/>
 	        	</layout>
 	        	<layout align="top" height="50">
-	        		<VertLabelEdit width="200" text="Raça" fontSize="13" field="raca"/>
-	        		<VertLabelEdit width="200" text="Origem" fontSize="13" field="origem"/>
-	        		<VertLabelEdit width="200" text="Divindade" fontSize="13" field="divindade"/>
+	        		<VertLabelEdit width="340" text="Raça" fontSize="13" field="raca"/>
+	        		<VertLabelEdit width="340" text="Origem" fontSize="13" field="origem"/>
+	        		<VertLabelEdit width="335" text="Divindade" fontSize="13" field="divindade"/>
 	        	</layout>
 			</rectangle>
         </layout>
@@ -75,7 +75,7 @@
         		<Atributo text="CAR" field="car"/>
         	</rectangle>
 
-        	<rectangle align="left" width="410" color="#F0FFFF" xradius="5" yradius="15" cornerType="round" padding="{top=5,bottom=5,left=5,right=5}" margins="{right=5}">
+        	<rectangle align="left" width="700" color="#F0FFFF" xradius="5" yradius="15" cornerType="round" padding="{top=5,bottom=5,left=5,right=5}" margins="{right=5}">
 				<layout align="top" height="50" margins="{right=5,left=5}">
 					<VertLabelLabel width="50" text="Defesa" fontSize="13" field="defesa"/>
 
@@ -117,13 +117,13 @@
 				</layout>
 
 				<layout align="top" height="50" margins="{right=5,left=5}">
-					<VertLabelEdit width="200" text="Armadura" fontSize="13" field="armaduraNome"/>
+					<VertLabelEdit width="570" text="Armadura" fontSize="13" field="armaduraNome"/>
 					<VertLabelEdit width="50" text="Defesa" fontSize="11" field="caArm"/>
 					<VertLabelEdit width="50" text="Penalidade" fontSize="9" field="caArmPen"/>
 				</layout>
 
 				<layout align="top" height="50" margins="{right=5,left=5}">
-					<VertLabelEdit width="200" text="Escudo" fontSize="13" field="escudoNome"/>
+					<VertLabelEdit width="570" text="Escudo" fontSize="13" field="escudoNome"/>
 					<VertLabelEdit width="50" text="Defesa" fontSize="11" field="caEsc"/>
 					<VertLabelEdit width="50" text="Penalidade" fontSize="9" field="caEscPen"/>
 				</layout>
@@ -179,7 +179,7 @@
 
 
 			</rectangle>
-			<recordList align="left" width="450" name="rclAtaques" field="listaAtaques" templateForm="frmAtaqueForm" layout="vertical" selectable="true" minQt="3">
+			<recordList align="left" width="600" name="rclAtaques" field="listaAtaques" templateForm="frmAtaqueForm" layout="vertical" selectable="true" minQt="3">
 				<event name="onCompare"><![CDATA[
 					-- Esse codigo organiza a ordem dos objetos da lista alfabeticamente. 
 			        return utils.compareStringPtBr(nodeA.nome, nodeB.nome);              
