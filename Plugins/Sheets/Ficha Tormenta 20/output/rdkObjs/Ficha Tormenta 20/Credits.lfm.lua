@@ -340,7 +340,7 @@ local function constructNew_frmTemplateCreditos()
     obj.button4:setLeft(667);
     obj.button4:setTop(425);
     obj.button4:setWidth(125);
-    obj.button4:setText("Nome Mesa");
+    obj.button4:setText("Fulgurante");
     obj.button4:setName("button4");
 
     obj._e_event0 = obj.comboBox1:addEventListener("onChange",

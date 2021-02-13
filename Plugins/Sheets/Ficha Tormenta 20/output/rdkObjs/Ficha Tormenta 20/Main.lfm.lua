@@ -2465,7 +2465,7 @@ local function constructNew_frmTemplate()
     obj.button8:setLeft(667);
     obj.button8:setTop(425);
     obj.button8:setWidth(125);
-    obj.button8:setText("Nome Mesa");
+    obj.button8:setText("Fulgurante");
     obj.button8:setName("button8");
 
     obj._e_event0 = obj:addEventListener("onNodeReady",
