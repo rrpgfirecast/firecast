@@ -1,0 +1,310 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmVehicleMod" width="465" height="25" theme="dark" margins="{top=1}">
+	<script> 
+		<![CDATA[			
+		local function askForDelete()
+			Dialogs.confirmYesNo("Deseja realmente apagar?",
+								 function (confirmado)
+									if confirmado then
+										NDB.deleteNode(sheet);
+									end;
+								 end);
+		end;
+
+		local function showPopup()
+			local pop = self:findControlByName("addPop");
+				
+			if pop ~= nil then
+				pop:setNodeObject(self.sheet);
+				pop:showPopupEx("bottomCenter", self);
+			else
+				showMessage("Ops, bug.. nao encontrei o popup para exibir");
+			end;				
+		end;
+		]]>	
+	</script>
+	<edit align="client" field="nome" margins="{top=1,bottom=1}"/>
+
+	<layout align="right" width="50">
+		<button align="right" width="23" text="i" onClick="showPopup();" margins="{top=1,bottom=1}"/>
+		<button align="right" width="23" text="X" onClick="askForDelete();" margins="{top=1,bottom=1}"/>
+	</layout>
+
+	<dataLink fields="{'level','precoPorLevel'}">
+		<event name="onChange">
+			if sheet==nil then return end;
+			local level = tonumber(sheet.level) or 1;
+			local preco = tonumber(sheet.precoPorLevel) or 0;
+
+			sheet.precoLevel = level * preco;
+		</event>
+	</dataLink>
+
+	<dataLink fields="{'tamanho','precoPorTam'}">
+		<event name="onChange">
+			if sheet==nil then return end;
+			local tamanho = tonumber(sheet.tamanho) or 1;
+			local preco = tonumber(sheet.precoPorTam) or 0;
+
+			sheet.precoTam = tamanho * preco;
+		</event>
+	</dataLink>
+
+	<dataLink fields="{'precoLevel','precoTam','precoAdd'}">
+		<event name="onChange">
+			if sheet==nil then return end;
+
+			sheet.precoTotal = (tonumber(sheet.precoLevel) or 0)+
+								(tonumber(sheet.precoTam) or 0)+
+								(tonumber(sheet.precoAdd) or 0);
+		</event>
+	</dataLink>
+
+	<dataLink fields="{'precoTotal'}">
+		<event name="onChange">
+			if sheet==nil then return end;
+			local node = NDB.getParent(NDB.getParent(sheet));
+
+			local preco = 0;
+			local nodes = NDB.getChildNodes(node.listaMods); 
+			for i=1, #nodes, 1 do
+				preco = preco + (tonumber(nodes[i].precoTotal) or 0);
+			end
+			local nodes = NDB.getChildNodes(node.listaEquips); 
+			for i=1, #nodes, 1 do
+				preco = preco + (tonumber(nodes[i].precoTotal) or 0);
+			end
+			node.precoMod = preco;
+		</event>
+	</dataLink>
+
+	<dataLink fields="{'precoMult'}">
+		<event name="onChange">
+			if sheet==nil then return end;
+			local node = NDB.getParent(NDB.getParent(sheet));
+
+			local mult = 1;
+			local nodes = NDB.getChildNodes(node.listaMods); 
+			for i=1, #nodes, 1 do
+				mult = mult + ((tonumber(nodes[i].precoMult) or 0)/100);
+			end
+			local nodes = NDB.getChildNodes(node.listaEquips); 
+			for i=1, #nodes, 1 do
+				mult = mult + ((tonumber(nodes[i].precoMult) or 0)/100);
+			end
+			node.precoMult = mult;
+		</event>
+	</dataLink>
+
+	<dataLink fields="{'deslAdd'}">
+		<event name="onChange">
+			if sheet==nil then return end;
+			local node = NDB.getParent(NDB.getParent(sheet));
+
+			local desl = 0;
+			local nodes = NDB.getChildNodes(node.listaMods); 
+			for i=1, #nodes, 1 do
+				desl = desl + (tonumber(nodes[i].deslAdd) or 0);
+			end
+			local nodes = NDB.getChildNodes(node.listaEquips); 
+			for i=1, #nodes, 1 do
+				desl = desl + (tonumber(nodes[i].deslAdd) or 0);
+			end
+			node.deslAdd = desl;
+		</event>
+	</dataLink>
+	<dataLink fields="{'deslMult'}">
+		<event name="onChange">
+			if sheet==nil then return end;
+			local node = NDB.getParent(NDB.getParent(sheet));
+
+			local mult = 1;
+			local nodes = NDB.getChildNodes(node.listaMods); 
+			for i=1, #nodes, 1 do
+				mult = mult + ((tonumber(nodes[i].deslMult) or 0)/100);
+			end
+			local nodes = NDB.getChildNodes(node.listaEquips); 
+			for i=1, #nodes, 1 do
+				mult = mult + ((tonumber(nodes[i].deslMult) or 0)/100);
+			end
+			node.deslMult = mult;
+		</event>
+	</dataLink>
+
+	<dataLink fields="{'pilotarAdd'}">
+		<event name="onChange">
+			if sheet==nil then return end;
+			local node = NDB.getParent(NDB.getParent(sheet));
+
+			local pil = 0;
+			local nodes = NDB.getChildNodes(node.listaMods); 
+			for i=1, #nodes, 1 do
+				pil = pil + (tonumber(nodes[i].pilotarAdd) or 0);
+			end
+			local nodes = NDB.getChildNodes(node.listaEquips); 
+			for i=1, #nodes, 1 do
+				pil = pil + (tonumber(nodes[i].pilotarAdd) or 0);
+			end
+			node.pilotarAdd = pil;
+		</event>
+	</dataLink>
+
+	<dataLink fields="{'ataqueAdd'}">
+		<event name="onChange">
+			if sheet==nil then return end;
+			local node = NDB.getParent(NDB.getParent(sheet));
+
+			local atk = 0;
+			local nodes = NDB.getChildNodes(node.listaMods); 
+			for i=1, #nodes, 1 do
+				atk = atk + (tonumber(nodes[i].ataqueAdd) or 0);
+			end
+			local nodes = NDB.getChildNodes(node.listaEquips); 
+			for i=1, #nodes, 1 do
+				atk = atk + (tonumber(nodes[i].ataqueAdd) or 0);
+			end
+			node.ataqueAdd = atk;
+		</event>
+	</dataLink>
+
+	<dataLink fields="{'protAdd'}">
+		<event name="onChange">
+			if sheet==nil then return end;
+			local node = NDB.getParent(NDB.getParent(sheet));
+
+			local aux = 0;
+			local nodes = NDB.getChildNodes(node.listaMods); 
+			for i=1, #nodes, 1 do
+				aux = aux + (tonumber(nodes[i].protAdd) or 0);
+			end
+			local nodes = NDB.getChildNodes(node.listaEquips); 
+			for i=1, #nodes, 1 do
+				aux = aux + (tonumber(nodes[i].protAdd) or 0);
+			end
+			node.protAdd = aux;
+		</event>
+	</dataLink>
+	<dataLink fields="{'protMult'}">
+		<event name="onChange">
+			if sheet==nil then return end;
+			local node = NDB.getParent(NDB.getParent(sheet));
+
+			local mult = 1;
+			local nodes = NDB.getChildNodes(node.listaMods); 
+			for i=1, #nodes, 1 do
+				mult = mult + ((tonumber(nodes[i].protMult) or 0)/100);
+			end
+			local nodes = NDB.getChildNodes(node.listaEquips); 
+			for i=1, #nodes, 1 do
+				mult = mult + ((tonumber(nodes[i].protMult) or 0)/100);
+			end
+			node.protMult = mult;
+		</event>
+	</dataLink>
+
+	<dataLink fields="{'cacAdd'}">
+		<event name="onChange">
+			if sheet==nil then return end;
+			local node = NDB.getParent(NDB.getParent(sheet));
+
+			local aux = 0;
+			local nodes = NDB.getChildNodes(node.listaMods); 
+			for i=1, #nodes, 1 do
+				aux = aux + (tonumber(nodes[i].cacAdd) or 0);
+			end
+			local nodes = NDB.getChildNodes(node.listaEquips); 
+			for i=1, #nodes, 1 do
+				aux = aux + (tonumber(nodes[i].cacAdd) or 0);
+			end
+			node.cacAdd = aux;
+		</event>
+	</dataLink>
+	<dataLink fields="{'cacMult'}">
+		<event name="onChange">
+			if sheet==nil then return end;
+			local node = NDB.getParent(NDB.getParent(sheet));
+
+			local mult = 1;
+			local nodes = NDB.getChildNodes(node.listaMods); 
+			for i=1, #nodes, 1 do
+				mult = mult + ((tonumber(nodes[i].cacMult) or 0)/100);
+			end
+			local nodes = NDB.getChildNodes(node.listaEquips); 
+			for i=1, #nodes, 1 do
+				mult = mult + ((tonumber(nodes[i].cacMult) or 0)/100);
+			end
+			node.cacMult = mult;
+		</event>
+	</dataLink>
+
+	<dataLink fields="{'caeAdd'}">
+		<event name="onChange">
+			if sheet==nil then return end;
+			local node = NDB.getParent(NDB.getParent(sheet));
+
+			local aux = 0;
+			local nodes = NDB.getChildNodes(node.listaMods); 
+			for i=1, #nodes, 1 do
+				aux = aux + (tonumber(nodes[i].caeAdd) or 0);
+			end
+			local nodes = NDB.getChildNodes(node.listaEquips); 
+			for i=1, #nodes, 1 do
+				aux = aux + (tonumber(nodes[i].caeAdd) or 0);
+			end
+			node.caeAdd = aux;
+		</event>
+	</dataLink>
+	<dataLink fields="{'caeMult'}">
+		<event name="onChange">
+			if sheet==nil then return end;
+			local node = NDB.getParent(NDB.getParent(sheet));
+
+			local mult = 1;
+			local nodes = NDB.getChildNodes(node.listaMods); 
+			for i=1, #nodes, 1 do
+				mult = mult + ((tonumber(nodes[i].caeMult) or 0)/100);
+			end
+			local nodes = NDB.getChildNodes(node.listaEquips); 
+			for i=1, #nodes, 1 do
+				mult = mult + ((tonumber(nodes[i].caeMult) or 0)/100);
+			end
+			node.caeMult = mult;
+		</event>
+	</dataLink>
+	
+	<dataLink fields="{'pvAdd'}">
+		<event name="onChange">
+			if sheet==nil then return end;
+			local node = NDB.getParent(NDB.getParent(sheet));
+
+			local aux = 0;
+			local nodes = NDB.getChildNodes(node.listaMods); 
+			for i=1, #nodes, 1 do
+				aux = aux + (tonumber(nodes[i].pvAdd) or 0);
+			end
+			local nodes = NDB.getChildNodes(node.listaEquips); 
+			for i=1, #nodes, 1 do
+				aux = aux + (tonumber(nodes[i].pvAdd) or 0);
+			end
+			node.pvAdd = aux;
+		</event>
+	</dataLink>
+	<dataLink fields="{'pvMult'}">
+		<event name="onChange">
+			if sheet==nil then return end;
+			local node = NDB.getParent(NDB.getParent(sheet));
+
+			local mult = 1;
+			local nodes = NDB.getChildNodes(node.listaMods); 
+			for i=1, #nodes, 1 do
+				mult = mult + ((tonumber(nodes[i].pvMult) or 0)/100);
+			end
+			local nodes = NDB.getChildNodes(node.listaEquips); 
+			for i=1, #nodes, 1 do
+				mult = mult + ((tonumber(nodes[i].pvMult) or 0)/100);
+			end
+			node.pvMult = mult;
+		</event>
+	</dataLink>
+	
+</form>

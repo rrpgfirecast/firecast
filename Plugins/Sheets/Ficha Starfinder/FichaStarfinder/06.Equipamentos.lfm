@@ -1,0 +1,369 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmFichaRPGmeister6_svg" align="client" theme="dark" margins="{top=1}">
+	<scrollBox align="client">
+		<script>
+			local function getNumber(text)
+				local mod = "0";
+				if text~= nil then
+					mod = string.gsub(text, "%.", "");
+					mod = string.gsub(mod, "k", "000");
+					mod = string.gsub(mod, "K", "");
+					mod = string.gsub(mod, "g", "");
+					mod = string.gsub(mod, "P", "");
+					mod = string.gsub(mod, "p", "");
+					mod = string.gsub(mod, "O", "");
+					mod = string.gsub(mod, "o", "");
+					mod = string.gsub(mod, "X", "");
+					mod = string.gsub(mod, "x", "");
+					mod = string.gsub(mod, " ", "");
+					mod = string.gsub(mod, ",", ".");
+				end
+				return tonumber(mod);
+			end;
+
+			function EnviarMudanca(valor, valormax)
+				if sheet ~= nil then
+					local nome = sheet.AtributoBarrinha or "Equipamento";
+					local personagem = sheet.nome or "nome";
+					local text = "[§K2]" .. nome .. "[§K3] de [§K2]" .. personagem.. "[§K3]: ";
+					
+					if tonumber(valor) >= 0 then
+						valor = "+" .. tostring(valor);
+					end;
+					if tonumber(valormax) >= 0 then
+						valormax = "+" .. tostring(valormax);
+					end;
+					
+					if tonumber(valormax) == 0 then
+						text = text .. valor;
+					else
+						text = text .. valor .. "/" .. valormax;
+					end;
+					
+					local mesaDoPersonagem = Firecast.getMesaDe(sheet);
+					if mesaDoPersonagem ~= nil then
+						   mesaDoPersonagem.activeChat:enviarMensagem(text);
+					end;
+				end;
+			end;
+			
+			function RequestReload(mode)
+				if sheet ~= nil then
+					if mode == "begin" then
+						self.rclListaDeNPC:beginUpdate();
+						self.rclListaDeNPC.visible = false;
+					elseif mode == "end" then
+						self.rclListaDeNPC.visible = true;
+						self.rclListaDeNPC:endUpdate();
+					end;
+				end;
+			end;
+
+			local function resetImgSlot()
+				if sheet==nil then return end;
+				sheet.imgSlots = "http://www.cin.ufpe.br/~jvdl/Plugins/Ficha%20RPG%20meister%20releases/images/slots.png";
+			end;
+		</script>
+		
+		<template name="Equipamento">
+			<script>
+				local function loadImgSlot$(slot)()
+					if sheet==nil then return end;
+					sheet.imgSlots = "$(url)";
+				end;
+			</script>
+
+			<rectangle align="client" color="black">
+				<event name="onMouseEnter">
+					loadImgSlot$(slot)()
+				</event>
+			</rectangle>
+			<label left="5" top="1" width="200" height="20" text="$(nome)"/>
+			<edit vertTextAlign="center" left="5" top="20" width="240" height="25" field="equipamento$(slot)">
+				<event name="onMouseEnter">
+					loadImgSlot$(slot)()
+				</event>
+			</edit>
+			<textEditor left="5" top="47" width="240" height="140" field="descricao$(slot)">
+				<event name="onMouseEnter">
+					loadImgSlot$(slot)()
+				</event>
+			</textEditor>
+
+			<label left="70" top="193" width="50" height="20" text="Kg"/>
+			<edit horzTextAlign="center" vertTextAlign="center" left="90" top="190" width="50" height="25" field="peso$(slot)">
+				<event name="onMouseEnter">
+					loadImgSlot$(slot)()
+				</event>
+			</edit>
+			<label left="147" top="193" width="50" height="20" text="$"/>
+			<edit horzTextAlign="center" vertTextAlign="center" left="160" top="190" width="84" height="25" field="preco$(slot)">
+				<event name="onMouseEnter">
+					loadImgSlot$(slot)()
+				</event>
+			</edit>
+			<layout left="5" top="195" height="15" width="64">
+				<imageCheckBox align="client">
+					<progressBar colorMode="hl" width="50" height="15" hitTest="true" mouseGlow="true" color="Green" name="Barrinha$(num)" field="Barrinha$(num)Valor" fieldMax="Barrinha$(num)ValorMax">
+						<event name="onMouseEnter">
+							loadImgSlot$(slot)();
+							self.CorBarrinha$(num).color = "Green";
+							self.ValoresBarrinha$(num).visible = true;
+							sheet.InfoBarrinha$(num) = (sheet.Barrinha$(num)Valor or 0) .. "/"	.. (sheet.Barrinha$(num)ValorMax or 0);					
+						</event>
+						<event name="onMouseLeave">
+							self.ValoresBarrinha$(num).visible = false;
+						</event>
+						<event name="onDblClick">
+							sheet.BarrinhaID = $(num);
+							sheet.AtributoBarrinha = sheet.equipamento$(slot);
+							
+							sheet.ModificadorBarrinha = "igual";
+							sheet.ModificadorBarrinhaMax = "igual";
+							sheet.ValorTempAtualBarrinha = sheet.Barrinha$(num)Valor;
+							sheet.ValorTempMaxBarrinha = sheet.Barrinha$(num)ValorMax;
+							sheet.ValorMudadoAtualBarrinha = sheet.Barrinha$(num)Valor;
+							sheet.ValorMudadoMaxBarrinha = sheet.Barrinha$(num)ValorMax;
+							self.CorPopupBarrinhas.color = "Green";
+							self.BarrinhaPopup.scopeNode = sheet;
+							self.BarrinhaPopup:show("top", self.Barrinha$(num));
+							self.BarrinhaPopup.top = (self.BarrinhaPopup.top + 29 + 10);
+						</event>
+					</progressBar>
+				</imageCheckBox>
+			</layout>
+			<layout left="55" top="195" width="90" height="14" visible="false" name="ValoresBarrinha$(num)">
+				<rectangle align="client" xradius="2" yradius="2" name="CorBarrinha$(num)" color="Green">
+					<label align="left" fontColor="white" fontSize="12" autoSize="true" textTrimming="none" wordWrap="false" name="InfoBarrinha$(num)" field="InfoBarrinha$(num)" horzTextAlign="center" text="0/0">
+						<event name="onResize">
+							self.InfoBarrinha$(num).width = (self.ValoresBarrinha1.width - 4);
+						</event>
+					</label>
+				</rectangle>
+			</layout>
+			<dataLink field="CorBarrinha$(num)" defaultValue="Green">
+				<event name="onChange">
+					self.Barrinha$(num).color = "Green";
+				</event>
+			</dataLink>
+		</template>
+
+		<popup name="BarrinhaPopup" width="140" height="66" backOpacity="0" margins="{left=4, right=4, top=4, bottom=4}" autoScopeNode="false">
+			<rectangle align="client" color="white" xradius="5" yradius="5">
+				<rectangle align="client" name="CorPopupBarrinhas" color="#808080" xradius="5" yradius="5" opacity="0.9">
+					<label fontColor="black" margins="{left=6, top=2}" align="top" text="Valor" field="AtributoBarrinha" fontSize="12" fontStyle="bold" textTrimming="character"/>
+					<layout align="client" margins="{top=2, left=4}">
+						<layout align="top" height="18">
+							<label fontColor="black" align="left" text="Atual:  " horzTextAlign="trailing" width="34" margins="{right=2}" fontSize="12"/>
+							<comboBox fontColor="white" margins="{left=2}" align="left" transparent="false" width="40" field="ModificadorBarrinha" items="{'=', '+', '-'}" values="{'igual', 'mais', 'menos'}" value="igual"/>
+							<edit fontColor="white" margins="{left=2, right=4}" type="number" align="client" field="ValorMudadoAtualBarrinha" name="ValorAtualBarrinha">
+								<event name="OnKeyDown">
+									local oenter = (event.keyCode == 13)
+									if oenter then
+										self.BarrinhaPopup:close();
+									end;
+								</event>
+							</edit>
+						</layout>
+						<layout align="top" height="18">
+							<label fontColor="black" align="left" text="Max:  " horzTextAlign="trailing" width="34" margins="{right=2}" fontSize="12"/>
+							<comboBox fontColor="white" margins="{left=2}" align="left" transparent="false" width="40" field="ModificadorBarrinhaMax" items="{'=', '+', '-'}" values="{'igual', 'mais', 'menos'}" value="igual"/>
+							<edit fontColor="white" margins="{left=2, right=4}" type="number" align="client" field="ValorMudadoMaxBarrinha" name="ValorMaxBarrinha">
+								<event name="OnKeyDown">
+									local oenter = (event.keyCode == 13);
+									if oenter then
+										self.BarrinhaPopup:close();
+									end;
+								</event>
+							</edit>
+						</layout>
+					</layout>
+				</rectangle>
+			</rectangle>
+			
+			<event name="onClose">
+				setTimeout( function()
+					if (sheet.ModificadorBarrinha == "igual") then
+						sheet.ValorTempAtualBarrinha = tonumber(sheet.ValorMudadoAtualBarrinha or 0);
+					elseif (sheet.ModificadorBarrinha == "mais") then
+						sheet.ValorTempAtualBarrinha = tonumber(sheet.ValorTempAtualBarrinha or 0) + tonumber(sheet.ValorMudadoAtualBarrinha or 0);
+					elseif (sheet.ModificadorBarrinha == "menos") then
+						sheet.ValorTempAtualBarrinha = tonumber(sheet.ValorTempAtualBarrinha or 0) - tonumber(sheet.ValorMudadoAtualBarrinha or 0);
+					end;
+					
+					if (sheet.ModificadorBarrinhaMax == "igual") then
+						sheet.ValorTempMaxBarrinha = tonumber(sheet.ValorMudadoMaxBarrinha or 0);
+					elseif (sheet.ModificadorBarrinhaMax == "mais") then
+						sheet.ValorTempMaxBarrinha = tonumber(sheet.ValorTempMaxBarrinha or 0) + tonumber(sheet.ValorMudadoMaxBarrinha or 0);
+					elseif (sheet.ModificadorBarrinhaMax == "menos") then
+						sheet.ValorTempMaxBarrinha = tonumber(sheet.ValorTempMaxBarrinha or 0) - tonumber(sheet.ValorMudadoMaxBarrinha or 0);
+					end;
+					
+					local barrinhapc = 0
+					local barrinhapcmax = 0
+					local porcentagem = 0
+					local porcentagemmax = 0
+
+					barrinhapc = (sheet.ValorTempAtualBarrinha - (sheet["Barrinha" .. (sheet.barrinhaID or 12) .. "Valor"] or 0));
+					barrinhapcmax = (sheet.ValorTempMaxBarrinha - (sheet["Barrinha" .. (sheet.barrinhaID or 12) .. "ValorMax"] or 0));
+					sheet["Barrinha" .. (sheet.barrinhaID or 12) .. "Valor"] = sheet.ValorTempAtualBarrinha;
+					sheet["Barrinha" .. (sheet.barrinhaID or 12) .. "ValorMax"] = sheet.ValorTempMaxBarrinha;
+					
+					if ((barrinhapc ~= 0) or (barrinhapcmax ~= 0)) then
+						local nome = sheet.AtributoBarrinha or "Equipamento";
+						local personagem = sheet.nome or "nome";
+						local text = "[§K2]" .. nome .. "[§K3] de [§K2]" .. personagem.. "[§K3]: ";
+						local valor = barrinhapc;
+						local valormax = barrinhapcmax;
+						
+						if tonumber(barrinhapc) >= 0 then
+							valor = "+" .. tostring(barrinhapc);
+						end;
+						if tonumber(barrinhapcmax) >= 0 then
+							valormax = "+" .. tostring(barrinhapcmax);
+						end;
+						
+						if tonumber(valormax) == 0 then
+							text = text .. valor;
+						else
+							text = text .. valor .. "/" .. valormax;
+						end;
+						
+						local mesaDoPersonagem = Firecast.getMesaDe(sheet);
+						if mesaDoPersonagem ~= nil then
+							   mesaDoPersonagem.activeChat:enviarMensagem(text);
+						end;
+					end;
+				end, 100);
+			</event>
+		</popup>
+
+		<rectangle align="client" color="#00000000" opacity="0">
+			<event name="onMouseEnter">
+				resetImgSlot()
+			</event>
+		</rectangle>
+
+		<image left="506" top="70" width="200" height="600" src="http://blob.Firecast..com.br/blobs/GADIAGUF_607701/slots.png" field="imgSlots" style="stretch" optimize="true" compilerOrder="0"/>
+
+		<layout left="1" top="1" width="250" height="222">
+			<Equipamento slot="Cabeca" nome="CABEÇA" num="0" url="http://www.cin.ufpe.br/~jvdl/Plugins/Ficha%20RPG%20meister%20releases/images/cabeca.png"/>
+		</layout>
+		<layout left="252" top="1" width="250" height="222">
+			<Equipamento slot="Testa" nome="TESTA" num="12" url="http://www.cin.ufpe.br/~jvdl/Plugins/Ficha%20RPG%20meister%20releases/images/testa.png"/>
+		</layout>
+		<layout left="710" top="1" width="250" height="222">
+			<Equipamento slot="Olhos" nome="OLHOS" num="1" url="http://www.cin.ufpe.br/~jvdl/Plugins/Ficha%20RPG%20meister%20releases/images/olhos.png"/>
+		</layout>
+		<layout left="961" top="1" width="250" height="222">
+			<Equipamento slot="Pescoco" nome="PESCOÇO" num="2" url="http://www.cin.ufpe.br/~jvdl/Plugins/Ficha%20RPG%20meister%20releases/images/pescoco.png"/>
+		</layout>
+		<layout left="1212" top="1" width="250" height="222">
+			<Equipamento slot="Ombros" nome="OMBROS" num="3" url="http://www.cin.ufpe.br/~jvdl/Plugins/Ficha%20RPG%20meister%20releases/images/ombros.png"/>
+		</layout>
+		
+		<layout left="1" top="224" width="250" height="222">
+			<Equipamento slot="Torso" nome="TORSO"  num="4" url="http://www.cin.ufpe.br/~jvdl/Plugins/Ficha%20RPG%20meister%20releases/images/torso.png"/>
+		</layout>
+		<layout left="252" top="224" width="250" height="222">
+			<Equipamento slot="Corpo2" nome="CORPO"  num="13" url="http://www.cin.ufpe.br/~jvdl/Plugins/Ficha%20RPG%20meister%20releases/images/corpo.png"/>
+		</layout>
+
+		<layout left="710" top="224" width="250" height="222">
+			<rectangle align="client" color="black">
+				<event name="onMouseEnter">
+					if sheet==nil then return end;
+					sheet.imgSlots = "http://www.cin.ufpe.br/~jvdl/Plugins/Ficha%20RPG%20meister%20releases/images/corpo.png";
+				</event>
+			</rectangle>
+			<label left="5" top="1" width="200" height="20" text="ARMADURA"/>
+			<edit vertTextAlign="center" left="5" top="20" width="240" height="25" field="equipamentoCorpo"/>
+
+			<label left="5" top="50" width="50" height="20" text="CA"/>
+			<edit vertTextAlign="center" left="25" top="50" width="40" height="20" field="equipamentoCorpoCA"/>
+			<edit vertTextAlign="center" left="65" top="50" width="40" height="20" field="equipamentoCorpoCAmelhoria"/>
+			<label left="110" top="50" width="50" height="20" text="CAT"/>
+			<comboBox left="140" top="50" width="105" height="20" field="equipamentoCorpoCategoria" items="{'Leve', 'Média', 'Pesada', 'Massiva'}" fontColor="white"/>
+
+			<label left="10" top="75" width="50" height="20" text="DES"/>
+			<edit vertTextAlign="center" left="45" top="75" width="40" height="20" field="equipamentoCorpoDesMax"/>
+			<label left="90" top="75" width="50" height="20" text="PEN"/>
+			<edit vertTextAlign="center" left="125" top="75" width="40" height="20" field="equipamentoCorpoPen"/>
+			<label left="170" top="75" width="50" height="20" text="Falha" fontSize="13"/>
+			<edit vertTextAlign="center" left="205" top="75" width="40" height="20" field="equipamentoCorpoFalha"/>
+
+			<label left="10" top="100" width="50" height="20" text="Desl"/>
+			<edit vertTextAlign="center" left="45" top="100" width="40" height="20" field="equipamentoCorpoDesl"/>
+			<label left="170" top="100" width="50" height="20" text="Correr" fontSize="12"/>
+			<edit vertTextAlign="center" left="205" top="100" width="40" height="20" field="equipamentoCorpoCorrer"/>
+
+			<textEditor left="5" top="122" width="240" height="65" field="descricaoCorpo"/>
+			<label left="70" top="193" width="50" height="20" text="Kg"/>
+			<edit horzTextAlign="center" vertTextAlign="center" left="90" top="190" width="50" height="25" field="pesoCorpo"/>
+			<label left="147" top="193" width="50" height="20" text="$"/>
+			<edit horzTextAlign="center" vertTextAlign="center" left="160" top="190" width="84" height="25" field="precoCorpo"/>
+			<layout left="5" top="195" height="15" width="64">
+				<imageCheckBox align="client">
+					<progressBar colorMode="hl" width="50" height="15" hitTest="true" mouseGlow="true" color="Green" name="Barrinha5" field="Barrinha5Valor" fieldMax="Barrinha5ValorMax">
+						<event name="onMouseEnter">
+							self.CorBarrinha5.color = "Green";
+							self.ValoresBarrinha5.visible = true;
+							sheet.InfoBarrinha5 = (sheet.Barrinha5Valor or 0) .. "/"	.. (sheet.Barrinha5ValorMax or 0);					
+						</event>
+						<event name="onMouseLeave">
+							self.ValoresBarrinha5.visible = false;
+						</event>
+						<event name="onDblClick">
+							sheet.BarrinhaID = 5;
+							sheet.AtributoBarrinha = sheet.equipamentoCorpo;
+							
+							sheet.ModificadorBarrinha = "igual";
+							sheet.ModificadorBarrinhaMax = "igual";
+							sheet.ValorTempAtualBarrinha = sheet.Barrinha5Valor;
+							sheet.ValorTempMaxBarrinha = sheet.Barrinha5ValorMax;
+							sheet.ValorMudadoAtualBarrinha = sheet.Barrinha5Valor;
+							sheet.ValorMudadoMaxBarrinha = sheet.Barrinha5ValorMax;
+							self.CorPopupBarrinhas.color = "Green";
+							self.BarrinhaPopup.scopeNode = sheet;
+							self.BarrinhaPopup:show("top", self.Barrinha5);
+							self.BarrinhaPopup.top = (self.BarrinhaPopup.top + 29 + 10);
+						</event>
+					</progressBar>
+				</imageCheckBox>
+			</layout>
+			<layout left="55" top="195" width="90" height="14" visible="false" name="ValoresBarrinha5">
+				<rectangle align="client" xradius="2" yradius="2" name="CorBarrinha5" color="Green">
+					<label align="left" fontColor="white" fontSize="12" autoSize="true" textTrimming="none" wordWrap="false" name="InfoBarrinha5" field="InfoBarrinha5" horzTextAlign="center" text="0/0">
+						<event name="onResize">
+							self.InfoBarrinha5.width = (self.ValoresBarrinha1.width - 4);
+						</event>
+					</label>
+				</rectangle>
+			</layout>
+			<dataLink field="CorBarrinha5" defaultValue="Green">
+				<event name="onChange">
+					self.Barrinha5.color = "Green";
+				</event>
+			</dataLink>
+		</layout>
+		<layout left="961" top="224" width="250" height="222">
+			<Equipamento slot="Punhos" nome="PUNHOS" num="6" url="http://www.cin.ufpe.br/~jvdl/Plugins/Ficha%20RPG%20meister%20releases/images/punhos.png"/>
+		</layout>
+		<layout left="1212" top="224" width="250" height="222">
+			<Equipamento slot="Cintura" nome="CINTURA" num="7" url="http://www.cin.ufpe.br/~jvdl/Plugins/Ficha%20RPG%20meister%20releases/images/cintura.png"/>
+		</layout>
+		
+		<layout left="1" top="447" width="250" height="222">
+			<Equipamento slot="Maos" nome="MÃOS" num="8" url="http://www.cin.ufpe.br/~jvdl/Plugins/Ficha%20RPG%20meister%20releases/images/maos.png"/>
+		</layout>
+		<layout left="252" top="447" width="250" height="222">
+			<Equipamento slot="DedosI" nome="DEDO I" num="9" url="http://www.cin.ufpe.br/~jvdl/Plugins/Ficha%20RPG%20meister%20releases/images/dedoI.png"/>
+		</layout>
+		<layout left="710" top="447" width="250" height="222">
+			<Equipamento slot="DesdosII" nome="DEDO II" num="10" url="http://www.cin.ufpe.br/~jvdl/Plugins/Ficha%20RPG%20meister%20releases/images/dedoII.png"/>
+		</layout>
+		<layout left="961" top="447" width="250" height="222">
+			<Equipamento slot="Pes" nome="PÉS" num="11" url="http://www.cin.ufpe.br/~jvdl/Plugins/Ficha%20RPG%20meister%20releases/images/pes.png"/>
+		</layout>
+	</scrollBox>
+</form>

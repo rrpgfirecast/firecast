@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmHabilidadesMiticas" align="client">
+	<scrollBox align="client">
+		<flowLayout align="top" autoHeight="false" height="25" maxColumns="3" horzAlign="leading" orientation="vertical" avoidScale="true">
+			<layout left="0" width="300" margins="{right=10}">
+				<label left="0" width="75" height="25" text="Caminho"/>
+				<edit left="75" width="225" height="25" field="caminhoMitico"/>
+			</layout>
+			<layout left="310" width="155">
+				<label left="0" width="100" height="25" text="Poder Mítico"/>
+				<edit left="105" width="50" height="25" field="poderMitico" type="number"/>
+			</layout>
+		</flowLayout>
+		<flowLayout align="top" autoHeight="true" maxColumns="3" horzAlign="center" orientation="vertical" avoidScale="true">
+			<ListaFlexivel nome="HABILIDADES MÍTICAS" rclName="campoDasHabilidadesMiticas" rclField="campoDasHabilidadesMiticas"/>
+			<ListaFlexivel nome="CAMINHO MÍTICO" rclName="campoDosCaminhosMiticos" rclField="campoDosCaminhosMiticos"/>
+			<ListaFlexivel nome="TALENTOS MÍTICOS" rclName="campoDosTalentosMiticos" rclField="campoDosTalentosMiticos"/>
+		</flowLayout>
+	</scrollBox>
+</form>

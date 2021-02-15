@@ -1,0 +1,79 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmHabilidades" align="client">
+	<template name="habilidadeSmallCenter">
+		<flowPart minWidth="90" maxWidth="100" height="35">
+			<label align="top" class="tituloCampo" fontSize="10" text="$(text)" horzTextAlign="center" wordWrap="true" textTrimming="none" autoSize="true"/>
+			<edit align="client" class="" field="$(field)" horzTextAlign="center" fontSize="12" type="number"/>
+		</flowPart>
+	</template>
+	<template name="habilidadeLarge">
+		<flowPart minWidth="180" maxWidth="200" height="35">
+			<label align="top" class="tituloCampo" fontSize="10" text="$(text)" horzTextAlign="center" wordWrap="true" textTrimming="none" autoSize="true"/>
+			<edit align="client" class="" field="$(field)" fontSize="12"/>
+		</flowPart>
+	</template>
+	<template name="ListaFlexivel">
+		<flowPart minWidth="300" maxWidth="600" height="25" minScaledWidth="280" name="$(rclName)Part" adjustHeightToLine="false" margins="{left=5}">
+			<script>
+				<![CDATA[
+					rawset(self.$(rclName)Part, "_recalcHeight", 					
+						function ()
+							self.$(rclName)Part.height = self.$(rclName).height + 25;
+						end);
+				]]>
+			</script>
+
+			<layout align="top" height="25">
+				<button text="+" align="left" width="30" onClick="self.$(rclName):append();"/>
+				<label text="$(nome)" align="left" width="225" margins="{left=5}"/>
+			</layout>
+
+			<recordList name="$(rclName)" field="$(rclField)" templateForm="frmFichaRPGmeister4h_svg" align="top" layout="vertical" autoHeight="true" hitTest="false" onResize="self.$(rclName)Part._recalcHeight();" minQt="1">
+				<event name="onCompare">
+			        return ((tonumber(nodeA.nivelHabilidade) or 0) - (tonumber(nodeB.nivelHabilidade) or 0));
+			    </event>
+			</recordList>
+		</flowPart>
+	</template>	
+
+	<popup name="popHabilidade" width="300" height="240" backOpacity="0.4" autoScopeNode="false">
+			<flowLayout align="top" autoHeight="true" maxControlsPerLine="3" margins="{bottom=4}" horzAlign="center">
+				<habilidadeSmallCenter text="Nível" field="nivelHabilidade"/>
+				<habilidadeLarge text="Obtido" field="obtencaoHabilidade"/>
+				<habilidadeSmallCenter text="Página" field="paginaHabilidade"/>
+				<habilidadeLarge text="Livro" field="livroHabilidade"/>
+				<dataLink field="nivelHabilidade">
+					<event name="onChange">
+						local rcl = self:findControlByName("rclListaDosTalentos");
+						if rcl~= nil then
+							rcl:sort();
+						end;
+						local rcl = self:findControlByName("rclListaDasProezas");
+						if rcl~= nil then
+							rcl:sort();
+						end;
+						rcl = self:findControlByName("rclListaDosOutros");
+						if rcl~= nil then
+							rcl:sort();
+						end;
+						rcl = self:findControlByName("rclListaDasCaracteristicasClasse");
+						if rcl~= nil then
+							rcl:sort();
+						end;
+					</event>
+				</dataLink>
+			</flowLayout>
+			<textEditor align="client" field="descricao"/>
+	</popup>
+
+	<scrollBox align="client">
+		<flowLayout align="top" autoHeight="true" maxColumns="3" horzAlign="center" orientation="vertical" avoidScale="true">
+			<ListaFlexivel nome="TALENTOS" rclName="campoDosTalentos" rclField="campoDosTalentos"/>
+			<ListaFlexivel nome="TEMA" rclName="campoDosTemas" rclField="campoDosTemas"/>
+			<ListaFlexivel nome="OUTROS" rclName="campoDosOutros" rclField="campoDosOutros"/>
+			<ListaFlexivel nome="TRAÇOS" rclName="campoDosTracos" rclField="campoDosTracos"/>
+			<ListaFlexivel nome="CARACTERISTICAS RACIAIS" rclName="campoDasRacas" rclField="campoDasRacas"/>
+			<ListaFlexivel nome="CARACTERISTICAS DE CLASSE" rclName="campoDasCaracteristicasClasse" rclField="campoDasCaracteristicasClasse"/>
+		</flowLayout>
+	</scrollBox>
+</form>
