@@ -219,7 +219,7 @@ local function constructNew_frmFichaRPGmeister8_svg()
     obj.label8:setTop(8);
     obj.label8:setWidth(30);
     obj.label8:setHeight(20);
-    obj.label8:setText("PE");
+    obj.label8:setText("PD");
     obj.label8:setHorzTextAlign("center");
     obj.label8:setName("label8");
 
@@ -229,7 +229,7 @@ local function constructNew_frmFichaRPGmeister8_svg()
     obj.edit8:setTop(5);
     obj.edit8:setWidth(30);
     obj.edit8:setHeight(25);
-    obj.edit8:setField("pesComp");
+    obj.edit8:setField("pdsComp");
     obj.edit8:setName("edit8");
 
     obj.label9 = GUI.fromHandle(_obj_newObject("label"));

@@ -96,8 +96,8 @@
 				<label left="65" top="8" width="30" height="20" text="PE" horzTextAlign="center"/>
 				<edit left="95" top="5" width="30" height="25" field="pesComp"/>
 
-				<label left="125" top="8" width="30" height="20" text="PE" horzTextAlign="center"/>
-				<edit left="155" top="5" width="30" height="25" field="pesComp"/>
+				<label left="125" top="8" width="30" height="20" text="PD" horzTextAlign="center"/>
+				<edit left="155" top="5" width="30" height="25" field="pdsComp"/>
 
 				<label left="5" top="35" width="60" height="20" text="CAE"/>
 				<edit left="70" top="30" width="35" height="25" field="caeComp"/>

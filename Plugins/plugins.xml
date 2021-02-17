@@ -158,7 +158,7 @@
             <dataType id="Ambesek.Nefertyne.FichaPathfinder" title="Ficha Pathfinder"/>
         </dataTypes>
     </element>
-    <element id="Ambesek.Starfinder" name="Ficha Starfinder" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20Starfinder/output/Ficha%20Starfinder.rpk?raw=true" fileName="Ficha Starfinder.rpk" repositoryStar="Sheets/Ficha Starfinder/" author="Ambesek" description="Ficha feita para o sistema Starfinder." version="0.1.0" compilationDate="11102019015525" compilationDigest="c1e9f4960b942650a4dcba1e5db472007df38d72">
+    <element id="Ambesek.Starfinder" name="Ficha Starfinder" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20Starfinder/output/Ficha%20Starfinder.rpk?raw=true" fileName="Ficha Starfinder.rpk" repositoryStar="Sheets/Ficha Starfinder/" author="Ambesek" description="Ficha feita para o sistema Starfinder." version="0.1.1" compilationDate="11102019015525" compilationDigest="c1e9f4960b942650a4dcba1e5db472007df38d72">
         <dataTypes>
             <dataType id="Ambesek.FichaStarfinder" title="Ficha Starfinder"/>
         </dataTypes>

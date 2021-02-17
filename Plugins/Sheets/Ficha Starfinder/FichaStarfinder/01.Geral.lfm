@@ -262,7 +262,7 @@
 			<Protection nome="Armadura" field="armaduraCa"/>
 			<flowPart minWidth="10" maxWidth="20" height="15"/>
 			<smallTitleCenter text="Penalidade"/>
-			<smallLabelCenter field="equipamentoCorpoPen"/>
+			<smallFieldCenter field="equipamentoCorpoPen"/>
 			<flowLineBreak/>
 			
 			<smallTitleCenter text="Destreza"/>

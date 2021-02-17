@@ -329,7 +329,7 @@
 			</event>
 		</button>
 
-		<recordList name="rclVeiculos" field="campoDosVeiculos" templateForm="frmVehicleSelect" align="client" selectable="true" layout="horizontal" margins="{left=0}" minQt="1">
+		<recordList name="rclVeiculos" field="campoDosVeiculos" templateForm="frmVehicleSelect" align="client" selectable="true" layout="horizontal" margins="{left=0}" minQt="0">
 			<event name="onSelect">
 				local node = self.rclVeiculos.selectedNode;
 				self.boxDetalhesDoVeiculo.node = node;

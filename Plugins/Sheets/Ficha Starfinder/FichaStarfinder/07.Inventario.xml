@@ -39,7 +39,7 @@
 	<popup name="popEquip" width="200" height="250" backOpacity="0.4" autoScopeNode="false">
 		<flowLayout align="top" autoHeight="true" maxControlsPerLine="2" margins="{bottom=4}" horzAlign="center">
 			<weaponInfoFieldSmall text="NOME" field="nome"/>
-			<weaponInfoFieldSmall text="Nível" field="preco"/>
+			<weaponInfoFieldSmall text="Nível" field="nivel"/>
 			<weaponInfoFieldSmall text="Vol" field="peso"/>
 			<weaponInfoFieldSmall text="$" field="preco"/>
 		</flowLayout>
@@ -118,7 +118,7 @@
 			<smallInventory title="MUNIÇÕES" field="municoes" field2="Municoes"/>
 		</layout>
 		<layout left="480" top="450" width="200" height="221">
-			<smallInventory title="BOLSOS" field="bolsos" field2="Bolsos"/>
+			<smallInventory title="MOCHILA" field="bolsos" field2="Bolsos"/>
 		</layout>
 		<layout left="685" top="450" width="200" height="221">
 			<smallInventory title="IMOVEIS" field="moveis" field2="Imoveis"/>
@@ -141,7 +141,7 @@
 			<label field="dinheiroRestante" text="0" left="65" top="160" width="85" height="20" horzTextAlign="center" fontSize="11" formatFloat=",0.## C"/>
 		</layout>
 
-		<layout left="890" top="190" width="155" height="120">
+		<layout left="890" top="190" width="155" height="145">
 			<rectangle align="client" color="black"/>
 			<label left="5" top="1" width="150" height="20" text="CARGA"/>
 			
@@ -159,6 +159,9 @@
 
 			<label left="20" top="90" width="65" height="20" text="ATUAL"/>
 			<label field="cargaAtual" width="70" height="20" left="80" top="90" horzTextAlign="center" fontColor="white"  formatFloat=",0.##"/>
+
+			<label left="20" top="115" width="65" height="20" text="EXTRA"/>
+			<edit field="cargaExtra" width="70" height="20" left="80" top="115" type="number"/>
 		</layout>
 		<dataLink fields="{'precoEquipamentos', 'precoImplantes', 'precoPermanencias', 'precoLivres', 'precoOutros', 'precoMunicoes', 'precoBolsos', 'precoImoveis', 'precoInventorioComp', 'dinheiroTotal', 'precoItens'}">
 			<event name="onChange">
@@ -201,11 +204,11 @@
 			</event>
 		</dataLink>
 
-		<dataLink fields="{'efetFor'}">
+		<dataLink fields="{'efetFor','cargaExtra'}">
 			<event name="onChange">
 				<![CDATA[
 				if sheet~=nil then
-					local str = tonumber(sheet.efetFor) or 1;
+					local str = (tonumber(sheet.efetFor) or 1) + (tonumber(sheet.cargaExtra) or 0);
 
 					sheet.cargaDesatravancado = math.floor(str/2);
 					sheet.cargaAtravancado = str;

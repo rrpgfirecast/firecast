@@ -115,7 +115,7 @@
 			<flowLayout align="top" autoHeight="true" maxControlsPerLine="3" margins="{bottom=4}" horzAlign="center">
 				<periciaSmallCenter text="Penalidades" field="penalidesPericia"/>
 				<periciaSmallCenter text="Racial" field="racialPericia"/>
-				<periciaSmallCenter text="Traços" field="sinergiaPericia"/>
+				<periciaSmallCenter text="Tema" field="sinergiaPericia"/>
 				<periciaSmallCenter text="Equipamentos" field="equipamentosPericia"/>
 				<periciaSmallCenter text="Magico" field="magicoPericia"/>
 				<periciaSmallCenter text="Outros" field="outrosPericia"/>
@@ -137,33 +137,36 @@
 			<textEditor align="client" field="descricao"/>
 		</popup>
 
-		<layout left="0" top="0" width="470" height="685">
-			<rectangle align="client" color="black"/>
-			<label text="NOME DA PERÍCIA" left="20" top="1" width="135" height="20" horzTextAlign="center"/>
-			<label text="CHAVE" left="165" top="1" width="60" height="20" horzTextAlign="center"/>
-			<label text="TOTAL" left="245" top="1" width="40" height="20" horzTextAlign="center"/>
-			<label text="ATR" left="285" top="1" width="33" height="20" horzTextAlign="center"/>
-			<label text="GRAD" left="320" top="1" width="40" height="20" horzTextAlign="center"/>
+		<layout align="left" width="470">
+			<rectangle align="client" color="black">
+				<layout align="top" height="25">
+					<label text="NOME DA PERÍCIA" left="20" top="1" width="135" height="20" horzTextAlign="center"/>
+					<label text="CHAVE" left="165" top="1" width="60" height="20" horzTextAlign="center"/>
+					<label text="TOTAL" left="245" top="1" width="40" height="20" horzTextAlign="center"/>
+					<label text="ATR" left="285" top="1" width="33" height="20" horzTextAlign="center"/>
+					<label text="GRAD" left="320" top="1" width="40" height="20" horzTextAlign="center"/>
+				</layout>
 
-			<recordList name="rclListaDasPericias" field="campoDasPericias" templateForm="frmFichaRPGmeister3p_svg" left="5" top="25" width="460" height="650" layout="vertical">
-				<event name="onCompare">
-		            return Utils.compareStringPtBr(nodeA.nomePericia, nodeB.nomePericia);
-			    </event>
-				<event name="onEndEnumeration">
-					if sheet==nil then return end;
-					local nodes = NDB.getChildNodes(sheet.campoDasPericias);               
-					if #nodes == 0 then
-						starSkills();
-					end;
-				</event>
-				<event name="onBeginEnumeration">
-					if sheet==nil then return end;
-					local nodes = NDB.getChildNodes(sheet.campoDasPericias);               
-					if #nodes == 0 then
-						starSkills();
-					end;
-				</event>
-			</recordList>
+				<recordList name="rclListaDasPericias" field="campoDasPericias" templateForm="frmFichaRPGmeister3p_svg" align="client" top="25" width="460" height="650" layout="vertical">
+					<event name="onCompare">
+			            return Utils.compareStringPtBr(nodeA.nomePericia, nodeB.nomePericia);
+				    </event>
+					<event name="onEndEnumeration">
+						if sheet==nil then return end;
+						local nodes = NDB.getChildNodes(sheet.campoDasPericias);               
+						if #nodes == 0 then
+							starSkills();
+						end;
+					</event>
+					<event name="onBeginEnumeration">
+						if sheet==nil then return end;
+						local nodes = NDB.getChildNodes(sheet.campoDasPericias);               
+						if #nodes == 0 then
+							starSkills();
+						end;
+					</event>
+				</recordList>
+			</rectangle>
 		</layout>
 
 		<layout left="480" top="0" width="300" height="400">

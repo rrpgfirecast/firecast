@@ -211,7 +211,7 @@ local function constructNew_frmFichaRPGmeister3_svg()
     obj.label3:setParent(obj.flowPart3);
     obj.label3:setAlign("top");
     obj.label3:setFontSize(10);
-    obj.label3:setText("Traços");
+    obj.label3:setText("Tema");
     obj.label3:setHorzTextAlign("center");
     obj.label3:setWordWrap(true);
     obj.label3:setTextTrimming("none");
@@ -529,10 +529,8 @@ local function constructNew_frmFichaRPGmeister3_svg()
 
     obj.layout1 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout1:setParent(obj.scrollBox1);
-    obj.layout1:setLeft(0);
-    obj.layout1:setTop(0);
+    obj.layout1:setAlign("left");
     obj.layout1:setWidth(470);
-    obj.layout1:setHeight(685);
     obj.layout1:setName("layout1");
 
     obj.rectangle1 = GUI.fromHandle(_obj_newObject("rectangle"));
@@ -541,8 +539,14 @@ local function constructNew_frmFichaRPGmeister3_svg()
     obj.rectangle1:setColor("black");
     obj.rectangle1:setName("rectangle1");
 
+    obj.layout2 = GUI.fromHandle(_obj_newObject("layout"));
+    obj.layout2:setParent(obj.rectangle1);
+    obj.layout2:setAlign("top");
+    obj.layout2:setHeight(25);
+    obj.layout2:setName("layout2");
+
     obj.label13 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label13:setParent(obj.layout1);
+    obj.label13:setParent(obj.layout2);
     obj.label13:setText("NOME DA PERÍCIA");
     obj.label13:setLeft(20);
     obj.label13:setTop(1);
@@ -552,7 +556,7 @@ local function constructNew_frmFichaRPGmeister3_svg()
     obj.label13:setName("label13");
 
     obj.label14 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label14:setParent(obj.layout1);
+    obj.label14:setParent(obj.layout2);
     obj.label14:setText("CHAVE");
     obj.label14:setLeft(165);
     obj.label14:setTop(1);
@@ -562,7 +566,7 @@ local function constructNew_frmFichaRPGmeister3_svg()
     obj.label14:setName("label14");
 
     obj.label15 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label15:setParent(obj.layout1);
+    obj.label15:setParent(obj.layout2);
     obj.label15:setText("TOTAL");
     obj.label15:setLeft(245);
     obj.label15:setTop(1);
@@ -572,7 +576,7 @@ local function constructNew_frmFichaRPGmeister3_svg()
     obj.label15:setName("label15");
 
     obj.label16 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label16:setParent(obj.layout1);
+    obj.label16:setParent(obj.layout2);
     obj.label16:setText("ATR");
     obj.label16:setLeft(285);
     obj.label16:setTop(1);
@@ -582,7 +586,7 @@ local function constructNew_frmFichaRPGmeister3_svg()
     obj.label16:setName("label16");
 
     obj.label17 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label17:setParent(obj.layout1);
+    obj.label17:setParent(obj.layout2);
     obj.label17:setText("GRAD");
     obj.label17:setLeft(320);
     obj.label17:setTop(1);
@@ -592,32 +596,32 @@ local function constructNew_frmFichaRPGmeister3_svg()
     obj.label17:setName("label17");
 
     obj.rclListaDasPericias = GUI.fromHandle(_obj_newObject("recordList"));
-    obj.rclListaDasPericias:setParent(obj.layout1);
+    obj.rclListaDasPericias:setParent(obj.rectangle1);
     obj.rclListaDasPericias:setName("rclListaDasPericias");
     obj.rclListaDasPericias:setField("campoDasPericias");
     obj.rclListaDasPericias:setTemplateForm("frmFichaRPGmeister3p_svg");
-    obj.rclListaDasPericias:setLeft(5);
+    obj.rclListaDasPericias:setAlign("client");
     obj.rclListaDasPericias:setTop(25);
     obj.rclListaDasPericias:setWidth(460);
     obj.rclListaDasPericias:setHeight(650);
     obj.rclListaDasPericias:setLayout("vertical");
 
-    obj.layout2 = GUI.fromHandle(_obj_newObject("layout"));
-    obj.layout2:setParent(obj.scrollBox1);
-    obj.layout2:setLeft(480);
-    obj.layout2:setTop(0);
-    obj.layout2:setWidth(300);
-    obj.layout2:setHeight(400);
-    obj.layout2:setName("layout2");
+    obj.layout3 = GUI.fromHandle(_obj_newObject("layout"));
+    obj.layout3:setParent(obj.scrollBox1);
+    obj.layout3:setLeft(480);
+    obj.layout3:setTop(0);
+    obj.layout3:setWidth(300);
+    obj.layout3:setHeight(400);
+    obj.layout3:setName("layout3");
 
     obj.rectangle2 = GUI.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle2:setParent(obj.layout2);
+    obj.rectangle2:setParent(obj.layout3);
     obj.rectangle2:setAlign("client");
     obj.rectangle2:setColor("black");
     obj.rectangle2:setName("rectangle2");
 
     obj.label18 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label18:setParent(obj.layout2);
+    obj.label18:setParent(obj.layout3);
     obj.label18:setText("IDIOMAS");
     obj.label18:setLeft(0);
     obj.label18:setTop(1);
@@ -627,7 +631,7 @@ local function constructNew_frmFichaRPGmeister3_svg()
     obj.label18:setName("label18");
 
     obj.label19 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label19:setParent(obj.layout2);
+    obj.label19:setParent(obj.layout3);
     obj.label19:setText("Idioma");
     obj.label19:setLeft(0);
     obj.label19:setTop(30);
@@ -637,7 +641,7 @@ local function constructNew_frmFichaRPGmeister3_svg()
     obj.label19:setName("label19");
 
     obj.label20 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label20:setParent(obj.layout2);
+    obj.label20:setParent(obj.layout3);
     obj.label20:setText("Alfabeto");
     obj.label20:setLeft(110);
     obj.label20:setTop(30);
@@ -647,7 +651,7 @@ local function constructNew_frmFichaRPGmeister3_svg()
     obj.label20:setName("label20");
 
     obj.rclListaDosIdiomas = GUI.fromHandle(_obj_newObject("recordList"));
-    obj.rclListaDosIdiomas:setParent(obj.layout2);
+    obj.rclListaDosIdiomas:setParent(obj.layout3);
     obj.rclListaDosIdiomas:setName("rclListaDosIdiomas");
     obj.rclListaDosIdiomas:setField("campoDosIdiomas");
     obj.rclListaDosIdiomas:setTemplateForm("frmFichaRPGmeister3i_svg");
@@ -657,22 +661,22 @@ local function constructNew_frmFichaRPGmeister3_svg()
     obj.rclListaDosIdiomas:setHeight(345);
     obj.rclListaDosIdiomas:setLayout("vertical");
 
-    obj.layout3 = GUI.fromHandle(_obj_newObject("layout"));
-    obj.layout3:setParent(obj.scrollBox1);
-    obj.layout3:setLeft(480);
-    obj.layout3:setTop(410);
-    obj.layout3:setWidth(135);
-    obj.layout3:setHeight(100);
-    obj.layout3:setName("layout3");
+    obj.layout4 = GUI.fromHandle(_obj_newObject("layout"));
+    obj.layout4:setParent(obj.scrollBox1);
+    obj.layout4:setLeft(480);
+    obj.layout4:setTop(410);
+    obj.layout4:setWidth(135);
+    obj.layout4:setHeight(100);
+    obj.layout4:setName("layout4");
 
     obj.rectangle3 = GUI.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle3:setParent(obj.layout3);
+    obj.rectangle3:setParent(obj.layout4);
     obj.rectangle3:setAlign("client");
     obj.rectangle3:setColor("black");
     obj.rectangle3:setName("rectangle3");
 
     obj.label21 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label21:setParent(obj.layout3);
+    obj.label21:setParent(obj.layout4);
     obj.label21:setText("PONTOS GASTOS");
     obj.label21:setLeft(0);
     obj.label21:setTop(0);
@@ -682,7 +686,7 @@ local function constructNew_frmFichaRPGmeister3_svg()
     obj.label21:setName("label21");
 
     obj.label22 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label22:setParent(obj.layout3);
+    obj.label22:setParent(obj.layout4);
     obj.label22:setLeft(10);
     obj.label22:setTop(30);
     obj.label22:setWidth(70);
@@ -691,7 +695,7 @@ local function constructNew_frmFichaRPGmeister3_svg()
     obj.label22:setName("label22");
 
     obj.rectangle4 = GUI.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle4:setParent(obj.layout3);
+    obj.rectangle4:setParent(obj.layout4);
     obj.rectangle4:setLeft(80);
     obj.rectangle4:setTop(30);
     obj.rectangle4:setWidth(37);
@@ -702,7 +706,7 @@ local function constructNew_frmFichaRPGmeister3_svg()
     obj.rectangle4:setName("rectangle4");
 
     obj.label23 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label23:setParent(obj.layout3);
+    obj.label23:setParent(obj.layout4);
     obj.label23:setField("pontosPericiaPath");
     obj.label23:setLeft(80);
     obj.label23:setTop(30);
@@ -711,16 +715,16 @@ local function constructNew_frmFichaRPGmeister3_svg()
     obj.label23:setHorzTextAlign("center");
     obj.label23:setName("label23");
 
-    obj.layout4 = GUI.fromHandle(_obj_newObject("layout"));
-    obj.layout4:setParent(obj.scrollBox1);
-    obj.layout4:setLeft(480);
-    obj.layout4:setTop(520);
-    obj.layout4:setWidth(135);
-    obj.layout4:setHeight(200);
-    obj.layout4:setName("layout4");
+    obj.layout5 = GUI.fromHandle(_obj_newObject("layout"));
+    obj.layout5:setParent(obj.scrollBox1);
+    obj.layout5:setLeft(480);
+    obj.layout5:setTop(520);
+    obj.layout5:setWidth(135);
+    obj.layout5:setHeight(200);
+    obj.layout5:setName("layout5");
 
     obj.button1 = GUI.fromHandle(_obj_newObject("button"));
-    obj.button1:setParent(obj.layout4);
+    obj.button1:setParent(obj.layout5);
     obj.button1:setText("Nova Perícia");
     obj.button1:setLeft(0);
     obj.button1:setTop(0);
@@ -729,7 +733,7 @@ local function constructNew_frmFichaRPGmeister3_svg()
     obj.button1:setName("button1");
 
     obj.button2 = GUI.fromHandle(_obj_newObject("button"));
-    obj.button2:setParent(obj.layout4);
+    obj.button2:setParent(obj.layout5);
     obj.button2:setText("Novo Idioma");
     obj.button2:setLeft(0);
     obj.button2:setTop(25);
@@ -756,19 +760,19 @@ local function constructNew_frmFichaRPGmeister3_svg()
     obj._e_event2 = obj.rclListaDasPericias:addEventListener("onEndEnumeration",
         function (_)
             if sheet==nil then return end;
-            					local nodes = NDB.getChildNodes(sheet.campoDasPericias);               
-            					if #nodes == 0 then
-            						starSkills();
-            					end;
+            						local nodes = NDB.getChildNodes(sheet.campoDasPericias);               
+            						if #nodes == 0 then
+            							starSkills();
+            						end;
         end, obj);
 
     obj._e_event3 = obj.rclListaDasPericias:addEventListener("onBeginEnumeration",
         function (_)
             if sheet==nil then return end;
-            					local nodes = NDB.getChildNodes(sheet.campoDasPericias);               
-            					if #nodes == 0 then
-            						starSkills();
-            					end;
+            						local nodes = NDB.getChildNodes(sheet.campoDasPericias);               
+            						if #nodes == 0 then
+            							starSkills();
+            						end;
         end, obj);
 
     obj._e_event4 = obj.rclListaDosIdiomas:addEventListener("onCompare",
@@ -821,6 +825,7 @@ local function constructNew_frmFichaRPGmeister3_svg()
         if self.rclListaDosIdiomas ~= nil then self.rclListaDosIdiomas:destroy(); self.rclListaDosIdiomas = nil; end;
         if self.flowPart5 ~= nil then self.flowPart5:destroy(); self.flowPart5 = nil; end;
         if self.flowPart9 ~= nil then self.flowPart9:destroy(); self.flowPart9 = nil; end;
+        if self.layout5 ~= nil then self.layout5:destroy(); self.layout5 = nil; end;
         if self.flowPart7 ~= nil then self.flowPart7:destroy(); self.flowPart7 = nil; end;
         if self.edit7 ~= nil then self.edit7:destroy(); self.edit7 = nil; end;
         if self.flowPart11 ~= nil then self.flowPart11:destroy(); self.flowPart11 = nil; end;
