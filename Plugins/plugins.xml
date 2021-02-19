@@ -277,7 +277,7 @@
             <dataType id="DataType.Zombie.Survival" title="Zombie Survival"/>
         </dataTypes>
     </element>
-    <element id="Ambesek.Auto.Updater" name="Plugin Auto Updater" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/TablesDock/AutoUpdater/output/AutoUpdater.rpk?raw=true" fileName="AutoUpdater.rpk" repositoryPath="TablesDock/AutoUpdater/" author="Ambesek" description="Verifica seus plugins e encontra quais tem atualizações disponíveis no git do firecast. Também permite acesso a plugins não instalados do git." version="0.7" compilationDate="27112019000332" compilationDigest="da678e4b86fe1ac6a36e7f190912c53747420cbb">
+    <element id="Ambesek.Auto.Updater" name="Plugin Auto Updater" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/TablesDock/AutoUpdater/output/AutoUpdater.rpk?raw=true" fileName="AutoUpdater.rpk" repositoryPath="TablesDock/AutoUpdater/" author="Ambesek" description="Verifica seus plugins e encontra quais tem atualizações disponíveis no git do firecast. Também permite acesso a plugins não instalados do git." version="0.8" compilationDate="27112019000332" compilationDigest="da678e4b86fe1ac6a36e7f190912c53747420cbb">
         <dataTypes>
             <dataType id="ambesek.autoupdater" title="Auto Updater"/>
             <dataType id="Ambesek.Auto.Updater" title="Plugin Auto Updater"/>
