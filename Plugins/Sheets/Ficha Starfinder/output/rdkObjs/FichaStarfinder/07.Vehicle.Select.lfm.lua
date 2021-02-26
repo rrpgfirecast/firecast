@@ -41,7 +41,7 @@ local function constructNew_frmVehicleSelect()
     obj.rectangle1 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle1:setParent(obj);
     obj.rectangle1:setLeft(30);
-    obj.rectangle1:setWidth(145);
+    obj.rectangle1:setWidth(85);
     obj.rectangle1:setHeight(30);
     obj.rectangle1:setColor("#808080");
     obj.rectangle1:setStrokeSize(1);
@@ -51,7 +51,7 @@ local function constructNew_frmVehicleSelect()
     obj.label1 = GUI.fromHandle(_obj_newObject("label"));
     obj.label1:setParent(obj.rectangle1);
     obj.label1:setLeft(5);
-    obj.label1:setWidth(135);
+    obj.label1:setWidth(75);
     obj.label1:setHeight(30);
     obj.label1:setField("nome");
     obj.label1:setName("label1");
@@ -61,6 +61,24 @@ local function constructNew_frmVehicleSelect()
     obj.dataLink1:setField("nome");
     obj.dataLink1:setDefaultValue("Veículo");
     obj.dataLink1:setName("dataLink1");
+
+    obj.button2 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button2:setParent(obj);
+    obj.button2:setLeft(115);
+    obj.button2:setTop(0);
+    obj.button2:setWidth(30);
+    obj.button2:setHeight(30);
+    obj.button2:setText("E");
+    obj.button2:setName("button2");
+
+    obj.button3 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button3:setParent(obj);
+    obj.button3:setLeft(145);
+    obj.button3:setTop(0);
+    obj.button3:setWidth(30);
+    obj.button3:setHeight(30);
+    obj.button3:setText("I");
+    obj.button3:setName("button3");
 
     obj.dataLink2 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink2:setParent(obj);
@@ -122,7 +140,39 @@ local function constructNew_frmVehicleSelect()
             			end);
         end, obj);
 
-    obj._e_event1 = obj.dataLink2:addEventListener("onChange",
+    obj._e_event1 = obj.button2:addEventListener("onClick",
+        function (_)
+            local xml = NDB.exportXML(sheet);
+            
+            			local export = {};
+            			local bytes = Utils.binaryEncode(export, "utf8", xml);
+            
+            			local stream = Utils.newMemoryStream();
+            			local bytes = stream:write(export);
+            
+            			Dialogs.saveFile("Salvar Ficha como XML", stream, "veiculo.xml", "application/xml",
+            				function()
+            					stream:close();
+            					showMessage("Veículo Exportado.");
+            				end);
+        end, obj);
+
+    obj._e_event2 = obj.button3:addEventListener("onClick",
+        function (_)
+            Dialogs.openFile("Importar Ficha", "application/xml", false, 
+            				function(arquivos)
+            					local arq = arquivos[1];
+            
+            					local import = {};
+            					local bytes = arq.stream:read(import, arq.stream.size);
+            
+            					local xml = Utils.binaryDecode(import, "utf8");
+            
+            					NDB.importXML(sheet, xml);
+            				end);
+        end, obj);
+
+    obj._e_event3 = obj.dataLink2:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet==nil then return end;
             
@@ -138,7 +188,7 @@ local function constructNew_frmVehicleSelect()
             			end
         end, obj);
 
-    obj._e_event2 = obj.dataLink3:addEventListener("onChange",
+    obj._e_event4 = obj.dataLink3:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet==nil then return end;
             
@@ -154,7 +204,7 @@ local function constructNew_frmVehicleSelect()
             			end
         end, obj);
 
-    obj._e_event3 = obj.dataLink4:addEventListener("onChange",
+    obj._e_event5 = obj.dataLink4:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet==nil then return end;
             
@@ -167,7 +217,7 @@ local function constructNew_frmVehicleSelect()
             			sheet.preco = level * precoBase * precoMult + precoMod + precoOutros;
         end, obj);
 
-    obj._e_event4 = obj.dataLink5:addEventListener("onChange",
+    obj._e_event6 = obj.dataLink5:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet==nil then return end;
             
@@ -180,13 +230,13 @@ local function constructNew_frmVehicleSelect()
             
             			if sheet.quebrado then deslMult = deslMult * 0.5 end;
             
-            			local desl = (deslBase + deslAdd) * deslMult + deslOutros;
+            			local desl = math.floor((deslBase + deslAdd) * deslMult + deslOutros);
             			sheet.deslQuadrados = desl;
             			sheet.deslMetros = desl * 1.5;
             			sheet.deslViagem = deslBaseViagem * deslMult + deslOutrosViagem;
         end, obj);
 
-    obj._e_event5 = obj.dataLink6:addEventListener("onChange",
+    obj._e_event7 = obj.dataLink6:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet==nil then return end;
             
@@ -200,7 +250,7 @@ local function constructNew_frmVehicleSelect()
             			sheet.pilotarPen = pilBase + pilotarAdd + pilOutros + pen;
         end, obj);
 
-    obj._e_event6 = obj.dataLink7:addEventListener("onChange",
+    obj._e_event8 = obj.dataLink7:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet==nil then return end;
             
@@ -211,7 +261,7 @@ local function constructNew_frmVehicleSelect()
             			sheet.ataquePen = atkBase + ataqueAdd + atkOutros;
         end, obj);
 
-    obj._e_event7 = obj.dataLink8:addEventListener("onChange",
+    obj._e_event9 = obj.dataLink8:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet==nil then return end;
             
@@ -225,7 +275,7 @@ local function constructNew_frmVehicleSelect()
             			sheet.cae = math.floor((caeBase + caeAdd) * caeMult + caeOutros);
         end, obj);
 
-    obj._e_event8 = obj.dataLink9:addEventListener("onChange",
+    obj._e_event10 = obj.dataLink9:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet==nil then return end;
             
@@ -239,7 +289,7 @@ local function constructNew_frmVehicleSelect()
             			sheet.cac = math.floor((cacBase + cacAdd) * cacMult + cacOutros);
         end, obj);
 
-    obj._e_event9 = obj.dataLink10:addEventListener("onChange",
+    obj._e_event11 = obj.dataLink10:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet==nil then return end;
             
@@ -253,7 +303,7 @@ local function constructNew_frmVehicleSelect()
             			sheet.protecao = math.floor((protBase + protAdd) * protMult + protOutros);
         end, obj);
 
-    obj._e_event10 = obj.dataLink11:addEventListener("onChange",
+    obj._e_event12 = obj.dataLink11:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet==nil then return end;
             
@@ -263,7 +313,7 @@ local function constructNew_frmVehicleSelect()
             			local pvOutros = tonumber(sheet.pvOutros) or 0;
             			local cobertura = tonumber(sheet.cobertura) or 25;
             
-            			local total = (pvBase + pvAdd) * pvMult + pvOutros;
+            			local total = math.floor((pvBase + pvAdd) * pvMult + pvOutros);
             
             			local pv = math.floor(total * (100-cobertura) / 100)
             			sheet.pv = pv;
@@ -271,6 +321,8 @@ local function constructNew_frmVehicleSelect()
         end, obj);
 
     function obj:_releaseEvents()
+        __o_rrpgObjs.removeEventListenerById(self._e_event12);
+        __o_rrpgObjs.removeEventListenerById(self._e_event11);
         __o_rrpgObjs.removeEventListenerById(self._e_event10);
         __o_rrpgObjs.removeEventListenerById(self._e_event9);
         __o_rrpgObjs.removeEventListenerById(self._e_event8);
@@ -295,11 +347,13 @@ local function constructNew_frmVehicleSelect()
 
         if self.dataLink3 ~= nil then self.dataLink3:destroy(); self.dataLink3 = nil; end;
         if self.button1 ~= nil then self.button1:destroy(); self.button1 = nil; end;
-        if self.dataLink8 ~= nil then self.dataLink8:destroy(); self.dataLink8 = nil; end;
+        if self.button3 ~= nil then self.button3:destroy(); self.button3 = nil; end;
         if self.label1 ~= nil then self.label1:destroy(); self.label1 = nil; end;
         if self.dataLink7 ~= nil then self.dataLink7:destroy(); self.dataLink7 = nil; end;
+        if self.dataLink8 ~= nil then self.dataLink8:destroy(); self.dataLink8 = nil; end;
         if self.dataLink11 ~= nil then self.dataLink11:destroy(); self.dataLink11 = nil; end;
         if self.dataLink10 ~= nil then self.dataLink10:destroy(); self.dataLink10 = nil; end;
+        if self.button2 ~= nil then self.button2:destroy(); self.button2 = nil; end;
         if self.dataLink6 ~= nil then self.dataLink6:destroy(); self.dataLink6 = nil; end;
         if self.dataLink5 ~= nil then self.dataLink5:destroy(); self.dataLink5 = nil; end;
         if self.dataLink2 ~= nil then self.dataLink2:destroy(); self.dataLink2 = nil; end;

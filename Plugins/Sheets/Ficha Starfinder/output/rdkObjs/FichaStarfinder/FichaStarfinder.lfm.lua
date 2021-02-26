@@ -3349,7 +3349,7 @@ local function constructNew_frmFichaStarfinder()
     obj.comboBox4:setTop(80);
     obj.comboBox4:setWidth(100);
     obj.comboBox4:setHeight(25);
-    obj.comboBox4:setItems({'Rapido', 'Medio', 'Lento'});
+    obj.comboBox4:setItems({'Rapido', 'Medio', 'Lento', 'd20'});
     obj.comboBox4:setName("comboBox4");
 
     obj.dataLink13 = GUI.fromHandle(_obj_newObject("dataLink"));
@@ -11418,40 +11418,6 @@ local function constructNew_frmFichaStarfinder()
 						nodes[i].atributoPericia = mod;
 					end;
 				end
-			end;
-
-			local function updatePenalty()
-				if sheet~=nil then
-					local nodes = NDB.getChildNodes(sheet.campoDasPericias); 
-					for i=1, #nodes, 1 do
-						if nodes[i].penalidadeArmadura or nodes[i].penalidadeArmadura2 then
-							local pen = (tonumber(sheet.equipamentoCorpoPen) or 0)
-
-							local mod = (tonumber(nodes[i].atributoPericia) or 0) +
-										(tonumber(nodes[i].graduacaoPericia) or 0) +
-										(tonumber(nodes[i].penalidesPericia) or 0) +
-										(tonumber(nodes[i].racialPericia) or 0) +
-										(tonumber(nodes[i].sinergiaPericia) or 0) +
-										(tonumber(nodes[i].equipamentosPericia) or 0) +
-										(tonumber(nodes[i].magicoPericia) or 0) +
-										(tonumber(nodes[i].outrosPericia) or 0) + 
-										(tonumber(nodes[i].talentosPericia) or 0) +
-										(tonumber(nodes[i].classePericia) or 0);
-
-							if nodes[i].penalidadeArmadura then
-								mod = mod + pen;
-							end;
-							if nodes[i].penalidadeArmadura2 then
-								mod = mod + pen;
-							end;
-							if nodes[i].isClass and (tonumber(nodes[i].graduacaoPericia) or 0)>0 then
-								mod = mod + 3;
-							end;
-
-							nodes[i].totalPericia = mod;
-						end;
-					end;
-				end;
 			end;
 
 			local function starSkills()
@@ -26383,7 +26349,8 @@ local function constructNew_frmFichaStarfinder()
     obj.label953:setField("preco");
     obj.label953:setHorzTextAlign("center");
     obj.label953:setVertTextAlign("center");
-    lfm_setPropAsString(obj.label953, "format",  "%d C");
+    lfm_setPropAsString(obj.label953, "format",  "");
+    lfm_setPropAsString(obj.label953, "formatFloat",  ",0.# C");
     obj.label953:setName("label953");
 
     obj.layout187 = GUI.fromHandle(_obj_newObject("layout"));
@@ -29734,6 +29701,8 @@ local function constructNew_frmFichaStarfinder()
             							xpTable = {3000, 7500, 14000, 23000, 35000, 53000, 77000, 115000, 160000, 235000, 330000, 475000, 665000, 955000, 1350000, 1900000, 2700000, 3850000, 5350000};
             						elseif sheet.xpVelocidade == "Medio" then
             							xpTable = {2000, 5000, 9000, 15000, 23000, 35000, 51000, 75000, 105000, 155000, 220000, 315000, 445000, 635000, 890000, 1300000, 1800000, 2550000, 3600000};
+            						elseif sheet.xpVelocidade == "d20" then
+            							xpTable = {1000, 3000, 6000, 10000, 15000, 21000, 28000, 36000, 45000, 55000, 66000, 78000, 91000, 105000, 120000, 136000, 153000, 171000, 190000};
             						else
             							xpTable = {1300, 3300, 6000, 10000, 15000, 23000, 34000, 50000, 71000, 105000, 145000, 210000, 295000, 425000, 600000, 850000, 1200000, 1700000, 2400000};
             						end;
@@ -30109,7 +30078,7 @@ local function constructNew_frmFichaStarfinder()
             							efetModDes = desMax;
             						end;
             
-            						local cae = 	10 + armaduraCae + efetModDes + tamanhoCae + naturalCae + deflexaoCae + esquivaCae + sorteCae + outrosCae + variadosCae;
+            						local cae = 10 + armaduraCae + efetModDes + tamanhoCae + naturalCae + deflexaoCae + esquivaCae + sorteCae + outrosCae + variadosCae;
             
             						sheet.cae = cae;
             					end;
@@ -30118,7 +30087,11 @@ local function constructNew_frmFichaStarfinder()
     obj._e_event50 = obj.dataLink34:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet==nil then return end;
-            					updatePenalty();
+            					
+            					local nodes = NDB.getChildNodes(sheet.campoDasPericias); 
+            					for i=1, #nodes, 1 do
+            						nodes[i].penalidade = sheet.equipamentoCorpoPen;
+            					end;
         end, obj);
 
     obj._e_event51 = obj.button9:addEventListener("onClick",

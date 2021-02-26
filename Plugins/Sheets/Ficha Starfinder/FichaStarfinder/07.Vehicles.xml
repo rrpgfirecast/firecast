@@ -176,7 +176,7 @@
 			<label text="$(text)" width="$(width2)" horzTextAlign="leading" fontSize="$(fontSize)"/>
 			<button left="$(width2)" width="20" height="20" text="i" onClick="$(onClick)"/>
 			<rectangle top="20" height="25" width="$(width)" color="#F0FFFF" strokeColor="black" strokeSize="1">
-				<label align="client" field="$(field)" horzTextAlign="center" vertTextAlign="center" format="$(format)"/>
+				<label align="client" field="$(field)" horzTextAlign="center" vertTextAlign="center" format="$(format)" formatFloat="$(formatFloat)"/>
 			</rectangle>
 		</layout>
 	</template>
@@ -371,7 +371,7 @@
 						</layout>
 						<layout align="top" height="50">
 							<layout align="left" width="5"/>
-							<VertLabelPop text="Preço" field="preco" width="95" width2="70" fontSize="13" format="%d C" onClick="findPopup(&quot;costPop&quot;);"/>
+							<VertLabelPop text="Preço" field="preco" width="95" width2="70" fontSize="13" formatFloat=",0.# C" onClick="findPopup(&quot;costPop&quot;);"/>
 							<VertLabelCombo text="Tamanho" field="tamanho" width="95" fontSize="13" items="{'Minúsculo', 'Pequeno', 'Médio', 'Grande', 'Enorme', 'Imenso', 'Colossal'}" values="{'1','2','3','4','5','6','7'}"/>
 						</layout>
 						<layout align="top" height="50">

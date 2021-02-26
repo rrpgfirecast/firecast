@@ -46,40 +46,6 @@
 				end
 			end;
 
-			local function updatePenalty()
-				if sheet~=nil then
-					local nodes = NDB.getChildNodes(sheet.campoDasPericias); 
-					for i=1, #nodes, 1 do
-						if nodes[i].penalidadeArmadura or nodes[i].penalidadeArmadura2 then
-							local pen = (tonumber(sheet.equipamentoCorpoPen) or 0)
-
-							local mod = (tonumber(nodes[i].atributoPericia) or 0) +
-										(tonumber(nodes[i].graduacaoPericia) or 0) +
-										(tonumber(nodes[i].penalidesPericia) or 0) +
-										(tonumber(nodes[i].racialPericia) or 0) +
-										(tonumber(nodes[i].sinergiaPericia) or 0) +
-										(tonumber(nodes[i].equipamentosPericia) or 0) +
-										(tonumber(nodes[i].magicoPericia) or 0) +
-										(tonumber(nodes[i].outrosPericia) or 0) + 
-										(tonumber(nodes[i].talentosPericia) or 0) +
-										(tonumber(nodes[i].classePericia) or 0);
-
-							if nodes[i].penalidadeArmadura then
-								mod = mod + pen;
-							end;
-							if nodes[i].penalidadeArmadura2 then
-								mod = mod + pen;
-							end;
-							if nodes[i].isClass and (tonumber(nodes[i].graduacaoPericia) or 0)>0 then
-								mod = mod + 3;
-							end;
-
-							nodes[i].totalPericia = mod;
-						end;
-					end;
-				end;
-			end;
-
 			local function starSkills()
 				local nodes = NDB.getChildNodes(sheet.campoDasPericias); 
 				for i=1, #nodes, 1 do

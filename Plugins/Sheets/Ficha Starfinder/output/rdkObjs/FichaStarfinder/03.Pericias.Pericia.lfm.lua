@@ -195,7 +195,7 @@ local function constructNew_frmFichaRPGmeister3p_svg()
 
     obj.dataLink1 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink1:setParent(obj);
-    obj.dataLink1:setFields({'atributoPericia', 'graduacaoPericia', 'penalidesPericia', 'racialPericia', 'sinergiaPericia', 'equipamentosPericia', 'magicoPericia', 'outrosPericia', 'penalidadeArmadura', 'penalidadeArmadura2', 'talentosPericia', 'classePericia', 'condicionalPericia', 'competenciaPericia', 'intuicaoPericia', 'sortePericia', 'isClass', 'buffPericia'});
+    obj.dataLink1:setFields({'atributoPericia', 'graduacaoPericia', 'penalidesPericia', 'racialPericia', 'sinergiaPericia', 'equipamentosPericia', 'magicoPericia', 'outrosPericia', 'penalidadeArmadura', 'penalidadeArmadura2', 'talentosPericia', 'classePericia', 'condicionalPericia', 'competenciaPericia', 'intuicaoPericia', 'sortePericia', 'isClass', 'buffPericia','penalidade'});
     obj.dataLink1:setName("dataLink1");
 
     obj.dataLink2 = GUI.fromHandle(_obj_newObject("dataLink"));
@@ -253,7 +253,7 @@ local function constructNew_frmFichaRPGmeister3p_svg()
         function (_, field, oldValue, newValue)
             if sheet~= nil then
             				local node = NDB.getRoot(sheet);
-            				local pen = (tonumber(node.penalidade) or 0)
+            				local pen = (tonumber(sheet.penalidade) or 0)
             
             				local mod = 0;
             				mod = (tonumber(sheet.atributoPericia) or 0) +

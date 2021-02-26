@@ -11,10 +11,43 @@
 		</event>
 	</button>
     
-	<rectangle left="30" width="145" height="30" color="#808080" strokeSize="1" hitTest="false">
-	    <label left="5" width="135" height="30" field="nome"/>
+	<rectangle left="30" width="85" height="30" color="#808080" strokeSize="1" hitTest="false">
+	    <label left="5" width="75" height="30" field="nome"/>
    	</rectangle>
 	<dataLink field="nome" defaultValue="Veículo"/>
+
+	<button left="115" top="0" width="30" height="30" text="E" >
+		<event name="onClick">
+			local xml = NDB.exportXML(sheet);
+
+			local export = {};
+			local bytes = Utils.binaryEncode(export, "utf8", xml);
+
+			local stream = Utils.newMemoryStream();
+			local bytes = stream:write(export);
+
+			Dialogs.saveFile("Salvar Ficha como XML", stream, "veiculo.xml", "application/xml",
+				function()
+					stream:close();
+					showMessage("Veículo Exportado.");
+				end);
+		</event>
+	</button>
+	<button left="145" top="0" width="30" height="30" text="I" >
+		<event name="onClick">
+			Dialogs.openFile("Importar Ficha", "application/xml", false, 
+				function(arquivos)
+					local arq = arquivos[1];
+
+					local import = {};
+					local bytes = arq.stream:read(import, arq.stream.size);
+
+					local xml = Utils.binaryDecode(import, "utf8");
+
+					NDB.importXML(sheet, xml);
+				end);
+		</event>
+	</button>
 
 	<dataLink field="level">
 		<event name="onChange">
@@ -77,7 +110,7 @@
 
 			if sheet.quebrado then deslMult = deslMult * 0.5 end;
 
-			local desl = (deslBase + deslAdd) * deslMult + deslOutros;
+			local desl = math.floor((deslBase + deslAdd) * deslMult + deslOutros);
 			sheet.deslQuadrados = desl;
 			sheet.deslMetros = desl * 1.5;
 			sheet.deslViagem = deslBaseViagem * deslMult + deslOutrosViagem;
@@ -164,7 +197,7 @@
 			local pvOutros = tonumber(sheet.pvOutros) or 0;
 			local cobertura = tonumber(sheet.cobertura) or 25;
 
-			local total = (pvBase + pvAdd) * pvMult + pvOutros;
+			local total = math.floor((pvBase + pvAdd) * pvMult + pvOutros);
 
 			local pv = math.floor(total * (100-cobertura) / 100)
 			sheet.pv = pv;

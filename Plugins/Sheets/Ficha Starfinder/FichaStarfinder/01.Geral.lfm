@@ -355,7 +355,7 @@
 			<label left="815" top="80" width="70" height="25" text="XP ALVO"/>
 			<rectangle left="890" top="80" width="100" height="25" color="black" strokeColor="white" strokeSize="1"/>
 			<label field="xpNivel" left="890" top="80" width="100" height="25" horzTextAlign="center"/>
-			<comboBox field="xpVelocidade" left="1000" top="80" width="100" height="25" items="{'Rapido', 'Medio', 'Lento'}"/>
+			<comboBox field="xpVelocidade" left="1000" top="80" width="100" height="25" items="{'Rapido', 'Medio', 'Lento', 'd20'}"/>
 
 			<dataLink fields="{'xpAtual', 'xpVelocidade'}">
 				<event name="onChange">
@@ -381,6 +381,8 @@
 							xpTable = {3000, 7500, 14000, 23000, 35000, 53000, 77000, 115000, 160000, 235000, 330000, 475000, 665000, 955000, 1350000, 1900000, 2700000, 3850000, 5350000};
 						elseif sheet.xpVelocidade == "Medio" then
 							xpTable = {2000, 5000, 9000, 15000, 23000, 35000, 51000, 75000, 105000, 155000, 220000, 315000, 445000, 635000, 890000, 1300000, 1800000, 2550000, 3600000};
+						elseif sheet.xpVelocidade == "d20" then
+							xpTable = {1000, 3000, 6000, 10000, 15000, 21000, 28000, 36000, 45000, 55000, 66000, 78000, 91000, 105000, 120000, 136000, 153000, 171000, 190000};
 						else
 							xpTable = {1300, 3300, 6000, 10000, 15000, 23000, 34000, 50000, 71000, 105000, 145000, 210000, 295000, 425000, 600000, 850000, 1200000, 1700000, 2400000};
 						end;
@@ -592,7 +594,7 @@
 							efetModDes = desMax;
 						end;
 
-						local cae = 	10 + armaduraCae + efetModDes + tamanhoCae + naturalCae + deflexaoCae + esquivaCae + sorteCae + outrosCae + variadosCae;
+						local cae = 10 + armaduraCae + efetModDes + tamanhoCae + naturalCae + deflexaoCae + esquivaCae + sorteCae + outrosCae + variadosCae;
 
 						sheet.cae = cae;
 					end;
@@ -603,7 +605,11 @@
 			<dataLink fields="{'equipamentoCorpoPen'}">
 				<event name="onChange"><![CDATA[
 					if sheet==nil then return end;
-					updatePenalty();
+					
+					local nodes = NDB.getChildNodes(sheet.campoDasPericias); 
+					for i=1, #nodes, 1 do
+						nodes[i].penalidade = sheet.equipamentoCorpoPen;
+					end;
 					]]>
 				</event>
 			</dataLink>
