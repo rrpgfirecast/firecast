@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmMultImageCheckbox" align="client">
+	<scrollBox align="client">
+		<!-- Imagem que ao ser clicada passa para a proxima da lista -->
+		<button left="0" top="0" width="100" height="100" hint="click to change image">
+			<!-- Coloca imagem padrão -->
+			<dataLink field="clickableImage" defaultValue="http://firecast.blob.core.windows.net/blobs/KEMDMPRM_386214.png"/>
+			<image align="client" field="clickableImage" margins="{left=5, right=5, top=5, bottom=5}" style="proportional"/>
+
+			<script>
+				<![CDATA[
+				-- criando array das imagens que vão ser utilizadas. 
+				-- melhor usar imagens hospedadas no firedrive nesse caso
+				local pics = {	"http://firecast.blob.core.windows.net/blobs/KEMDMPRM_386214.png", 
+								"http://firecast.blob.core.windows.net/blobs/IAUQMVUR_386260.png", 
+								"http://firecast.blob.core.windows.net/blobs/QNIIBIMV_386244.png", 
+								"http://firecast.blob.core.windows.net/blobs/APKABCKF_386218.png", 
+								"http://firecast.blob.core.windows.net/blobs/DFBFKPTH_386212.png", 
+								"http://firecast.blob.core.windows.net/blobs/PPIRFSBI_386208.png", 
+								"http://firecast.blob.core.windows.net/blobs/FGLDGNRW_386257.png", 
+								"http://firecast.blob.core.windows.net/blobs/LFRIRPIW_386226.png", 
+								"http://firecast.blob.core.windows.net/blobs/CEJAMDNT_386246.png", 
+								"http://firecast.blob.core.windows.net/blobs/MKLJSRET_386230.png"};
+				]]>
+			</script>
+
+			<event name="onClick"><![CDATA[
+				if sheet.imageCounter == nil then
+					sheet.imageCounter = 0;
+				end;
+				-- Contador que vai de 0 a 9 e reseta ao passar de 9
+				sheet.imageCounter = (sheet.imageCounter + 1) % #pics;
+				-- pegando imagem do array. O +1 é por que arrays em lua começam em 1 e não em 0
+				sheet.clickableImage = pics[sheet.imageCounter +1];
+				]]>
+			</event>
+		</button>
+	</scrollBox>
+</form>

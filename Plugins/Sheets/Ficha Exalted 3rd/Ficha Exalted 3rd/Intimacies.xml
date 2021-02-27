@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmIntimacies" align="client" theme="dark">
+
+	<scrollBox align="client">
+		<layout align="top" height="25"  margins="{bottom=5}">
+			<button align="left" text="Novo" width="100" onClick="self.rclIntimacies:append();"/>
+		</layout>
+
+		<recordList align="client" name="rclIntimacies" field="listIntimacies" templateForm="frmIntimacyForm" layout="verticalTiles" selectable="true">
+			<event name="onCompare"><![CDATA[
+				-- Esse codigo organiza a ordem dos objetos da lista alfabeticamente. 
+		        return utils.compareStringPtBr(nodeA.nome, nodeB.nome);              
+		        ]]>
+			</event>
+		</recordList>
+	</scrollBox>
+</form>

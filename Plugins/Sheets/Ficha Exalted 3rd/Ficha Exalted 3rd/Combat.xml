@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmCombat" align="client" theme="dark" margins="{top=1}">
+
+	<scrollBox align="client">
+		<layout height="610"/>
+		<recordList align="left" width="630" name="rclCombat" field="listCombat" templateForm="frmWeaponForm" layout="vertical" minQt="1">
+			<event name="onCompare">
+		         return Utils.compareStringPtBr(nodeA.ability, nodeB.ability);
+		    </event>
+		</recordList>
+
+		<layout align="left" width="400" margins="{right=5,left=5}">
+			<button align="top" height="25" text="Additional Weapon" margins="{left=5,right=5}" onClick="self.rclCombat:append();"/>
+
+			<rectangle align="top" height="280" color="black" xradius="5" yradius="15" cornerType="round">
+				<label align="top" height="25" horzTextAlign="center" text="HEALTH &amp; DEFENSE"/>
+
+	        	<layout align="top" height="50">
+	        		<layout align="left" width="5"/>
+	        		<VertLabelEdit align="left" width="120" text="Armor" fontSize="13" field="armor_1"/>
+	        		<VertLabelEdit align="left" width="50" text="Soak" fontSize="13" field="soak_1"/>
+	        		<VertLabelEdit align="left" width="50" text="Hard" fontSize="13" field="hard_1"/>
+	        		<VertLabelEdit align="left" width="50" text="MP" fontSize="13" field="mp_1"/>
+	        		<VertLabelEdit align="left" width="100" text="Tags" fontSize="13" field="tags_1"/>
+	        	</layout>
+
+	        	<layout align="top" height="50">
+	        		<layout align="left" width="5"/>
+	        		<VertLabelEdit align="left" width="120" text="Armor" fontSize="13" field="armor_2"/>
+	        		<VertLabelEdit align="left" width="50" text="Soak" fontSize="13" field="soak_2"/>
+	        		<VertLabelEdit align="left" width="50" text="Hard" fontSize="13" field="hard_2"/>
+	        		<VertLabelEdit align="left" width="50" text="MP" fontSize="13" field="mp_2"/>
+	        		<VertLabelEdit align="left" width="100" text="Tags" fontSize="13" field="tags_2"/>
+	        	</layout>
+
+	        	<layout align="top" height="50">
+	        		<layout align="left" width="5"/>
+	        		<VertLabelEdit align="left" width="125" text="Parry" fontSize="13" field="parry"/>
+	        		<VertLabelEdit align="left" width="125" text="Resolve" fontSize="13" field="resolve"/>
+	        		<VertLabelEdit align="left" width="125" text="Evasion" fontSize="13" field="evasion"/>
+	        	</layout>
+
+	        	<layout align="top" height="50">
+	        		<layout align="left" width="5"/>
+	        		<VertLabelEdit align="left" width="125" text="Guile" fontSize="13" field="guile"/>
+	        		<VertLabelEdit align="left" width="125" text="Rush" fontSize="13" field="rush"/>
+	        		<VertLabelEdit align="left" width="125" text="Disengage" fontSize="13" field="disengage"/>
+	        	</layout>
+
+	        	<layout align="top" height="50">
+	        		<layout align="left" width="5"/>
+	        		<VertLabelEdit align="left" width="125" text="Natural Soak" fontSize="13" field="natSoak"/>
+	        		<VertLabelEdit align="left" width="125" text="Final Soak" fontSize="13" field="totalSoak"/>
+	        		<VertLabelEdit align="left" width="125" text="Join Battle" fontSize="13" field="battle"/>
+	        	</layout>
+			</rectangle>
+
+			<layout align="client">
+				<layout align="left" width="135">
+					<button align="top" height="25" text="HEALTH" margins="{left=5,right=5}" onClick="self.rclHealth:append();"/>
+					<recordList align="client" name="rclHealth" field="listHealth" templateForm="frmHealthForm" layout="vertical" minQt="1"/>
+				</layout>
+			</layout>
+
+		</layout>
+	</scrollBox>
+</form>

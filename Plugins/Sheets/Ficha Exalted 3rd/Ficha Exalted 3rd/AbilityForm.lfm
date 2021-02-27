@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmAbilityForm" width="110" height="25" margins="{top=1}">
+	<rectangle align="client" color="#212121">
+		<checkBox align="left" width="15" field="fav" margins="{right=5}"/>
+		<edit align="left" width="100" field="ability"/>
+		<edit align="client" field="espec"/>
+		
+		<imageCheckBox align="right" width="15" field="ability_1" checkedImage="images/ball_on.png" uncheckedImage="images/ball_off.png"/>
+		<imageCheckBox align="right" width="15" field="ability_2" checkedImage="images/ball_on.png" uncheckedImage="images/ball_off.png"/>
+		<imageCheckBox align="right" width="15" field="ability_3" checkedImage="images/ball_on.png" uncheckedImage="images/ball_off.png"/>
+		<imageCheckBox align="right" width="15" field="ability_4" checkedImage="images/ball_on.png" uncheckedImage="images/ball_off.png"/>
+		<imageCheckBox align="right" width="15" field="ability_5" checkedImage="images/ball_on.png" uncheckedImage="images/ball_off.png"/>
+
+		<button align="right" width="25" height="25" text="X">
+			<event name="onClick">
+				Dialogs.confirmOkCancel("Tem certeza que quer apagar?",
+					function (confirmado)
+						if confirmado then
+							NDB.deleteNode(sheet);
+						end;
+				end);
+			</event>
+		</button>
+	</rectangle>
+</form>

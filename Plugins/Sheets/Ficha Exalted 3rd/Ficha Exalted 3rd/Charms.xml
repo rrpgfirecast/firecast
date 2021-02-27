@@ -1,0 +1,120 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<rectangle class="fundo" align="client">
+	<style>
+		flowPart.magicHeader {
+			avoidScale: true;
+			minScaledWidth: 280;
+			minWidth: 300;
+			maxWidth: 600;
+			height: 80;			
+		}
+		
+		label.magicLevelNumber {			
+			horzTextAlign: center;
+			vertTextAlign: center;
+			fontSize: 18;			
+		}
+		
+		edit.magicLevelInformation {
+			horzTextAlign: center;
+			vertTextAlign: center;
+			fontSize: 18;
+			transparent: true;
+		}
+		
+		flowLayout.magicTile, flowPart.magicTile {
+			margins: {left=10, right=10, top=4, bottom=4};
+		}
+	</style>	
+
+	<template name="magicHeader0">
+		<flowPart class="magicHeader" frameStyle="frames/magicHeader/header0.xml">
+			<label frameRegion="RegiaoSmallTitulo" text="" class="magicLevelNumber"/>
+			<label frameRegion="RegiaoConteudo" text="$(text)" fontSize="15" horzTextAlign="center" vertTextAlign="center"/>
+		</flowPart>
+	</template>
+
+	<template name="magicRecordList">
+		<flowPart minWidth="300" maxWidth="600" minScaledWidth="280" name="$(baseName)">																			
+			<script>
+				<![CDATA[
+					rawset(self.$(baseName), "_recalcHeight", 					
+						function ()
+							self.$(baseName).height = self.rcl$(baseName).height +
+														self.layBottom$(baseName).height + 
+														self.$(baseName).padding.top + self.$(baseName).padding.bottom + 7;
+						end);
+				]]>
+			</script>			
+		
+			<recordList name="rcl$(baseName)" align="top" field="magias.magias.$(baseName)" templateForm="frmMagiaItemSemCheckbox" 
+						autoHeight="true" minHeight="5" onResize="self.$(baseName)._recalcHeight();" hitTest="false" margins="{left=10, right=10}"/>					
+						
+			<layout name="layBottom$(baseName)" align="top" height="36">			
+				<button name="btnNovo$(baseName)" align="left" onClick="self.rcl$(baseName):append();" text="Nova Magia" width="160" margins="{top=4, bottom=4, left=48}"/>								
+			</layout>	
+			
+		</flowPart>
+			
+		<script>self.$(baseName)._recalcHeight();</script>			
+	</template>
+	
+	<template name="magicsLayout0">
+		<flowLayout class="halfTile3 magicTile" minWidth="300" maxWidth="600" height="100" avoidScale="true" maxControlsPerLine="1" autoHeight="true">
+			<magicHeader0 text="$(text)"/>
+			<magicRecordList baseName="$(name)"/>
+		</flowLayout>	
+	</template>
+	
+	<template name="magicInfoField">
+		<flowPart minWidth="30" maxWidth="400" height="35">
+			<label align="top" class="tituloCampo" fontSize="10" text="$(text)" horzTextAlign="center" wordWrap="true" textTrimming="none" autoSize="true"/>
+			<edit align="client" class="" field="$(field)" horzTextAlign="center" fontSize="12"/>
+		</flowPart>
+	</template>
+	
+	<popup name="popMagia" width="250" height="250" backOpacity="0.4" autoScopeNode="false">
+		<edit align="top" class="" field="nome" textPrompt="NOME" horzTextAlign="center"/>
+	
+		<flowLayout align="top" autoHeight="true" maxControlsPerLine="2" margins="{bottom=4}" horzAlign="center">
+			<magicInfoField text="Type" field="type"/>
+			<magicInfoField text="Duration" field="duration"/>
+			<magicInfoField text="Cost" field="cost"/>
+			<magicInfoField text="Book" field="book"/>
+		</flowLayout>
+		
+		<textEditor align="client" field="descricao" class=""/>
+	</popup>
+	
+	<scrollBox align="client">
+			<flowLayout width="1030" height="600" class="oneLineTile2" autoHeight="true" maxColumns="3" horzAlign="center" orientation="vertical">
+				<magicsLayout0 text="Archery" name="Archery"/>
+				<magicsLayout0 text="Athletics" name="Athletics"/>
+				<magicsLayout0 text="Awareness" name="Awareness"/>
+				<magicsLayout0 text="Brawl" name="Brawl"/>
+				<magicsLayout0 text="Bureaucracy" name="Bureaucracy"/>
+				<magicsLayout0 text="Craft" name="Craft"/>
+				<magicsLayout0 text="Dodge" name="Dodge"/>
+				<magicsLayout0 text="Integrity" name="Integrity"/>
+				<magicsLayout0 text="Investigation" name="Investigation"/>
+				<magicsLayout0 text="Larceny" name="Larceny"/>
+				<magicsLayout0 text="Linguistics" name="Linguistics"/>
+				<magicsLayout0 text="Lore" name="Lore"/>
+				<magicsLayout0 text="Martial Arts" name="Martial"/>
+				<magicsLayout0 text="Medicine" name="Medicine"/>
+				<magicsLayout0 text="Melee" name="Melee"/>
+				<magicsLayout0 text="Occult" name="Occult"/>
+				<magicsLayout0 text="Performance" name="Performance"/>
+				<magicsLayout0 text="Presence" name="Presence"/>
+				<magicsLayout0 text="Resistance" name="Resistance"/>
+				<magicsLayout0 text="Ride" name="Ride"/>
+				<magicsLayout0 text="Sail" name="Sail"/>
+				<magicsLayout0 text="Socialize" name="Socialize"/>
+				<magicsLayout0 text="Stealth" name="Stealth"/>
+				<magicsLayout0 text="Survival" name="Survival"/>
+				<magicsLayout0 text="Thrown" name="Thrown"/>
+				<magicsLayout0 text="War" name="War"/>
+				<magicsLayout0 text="Evocation" name="Evocation"/>
+			</flowLayout>	
+	</scrollBox> 
+</rectangle>	

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmLunarSelect" width="180" height="30" theme="dark">
+    <button width="30" height="30" text="X">
+		<event name="onClick">
+			Dialogs.confirmOkCancel("Tem certeza que quer apagar?",
+				function (confirmado)
+					if confirmado then
+						NDB.deleteNode(sheet);
+					end;
+			end);
+		</event>
+	</button>
+    
+	<rectangle left="30" width="85" height="30" color="#808080" strokeSize="1" hitTest="false">
+	    <label left="5" width="75" height="30" field="nome"/>
+   	</rectangle>
+	<dataLink field="nome" defaultValue="Form"/>
+</form>

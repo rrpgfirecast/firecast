@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<frame width="221" height="100" autoScaleY="true" autoScaleX="true">
+	<borders left="12" top="5" bottom="5" right="12" />
+	<draw>
+			<!-- EDIT PLACE  -->
+			<image left="0" top="0" right="221" bottom="100" overflowX="stretch" overflowY="stretch">
+				<anchors left="true" top="true" bottom="true" right="true"/>
+				<source url="fundo.png" left="0" right="221" top="0" bottom="100"/>
+			</image>		
+	</draw>
+	
+	<regions>
+		<region name="ContentRegion" left="26" top="5" right="194" bottom="95">
+			<anchors left="true" top="true" bottom="true" right="true"/>			
+		</region>
+	</regions>
+</frame>
