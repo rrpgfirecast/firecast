@@ -10,7 +10,7 @@
 		<dataLink field="$(field)ComboBox">
 			<event name="onChange">
 				if sheet == nil then return end;
-				sheet.$(slot) = sheet.$(field)ComboBox;
+				sheet.$(slot) = "https://github.com/rrpgfirecast/firecast/raw/master/Plugins/Sheets/Ficha".. "%" .. "20Mundo" .. "%" .."20Original/images/" .. (sheet.$(field)ComboBox or "");
 			</event>
 		</dataLink>
 	</template>
@@ -170,24 +170,18 @@
 	
 		<dataLink fields="{'atributos.$(field)','atributos.amplificador'}">
 			<event name="onChange">		
-				local numAsStr = tostring(newValue);
-				local numero;
-				
-				if numAsStr ~= "" then
-					numero = tonumber(newValue);
-				else
-					numero = nil;
-				end;
-
+				if sheet == nil then return end;
 				if type(sheet.atributos) ~= 'table' then
 					sheet.atributos = {};
-				end;				
+				end;
+
+				local numero = tonumber(sheet.atributos.$(field));			
 				
 				if type(numero) == 'number' then
 					local amp = 1 + math.floor( (tonumber(sheet.atributos.amplificador) or 0) /10) /100;
 
 
-					local modificador = math.floor(numero*amp / 2) - 5;								
+					local modificador = math.floor((math.floor(numero/2) - 5) * amp);
 					sheet.atributos.mod$(field) = modificador;	
 				
 					if modificador >= 0 then

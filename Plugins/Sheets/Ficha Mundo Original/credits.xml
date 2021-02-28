@@ -154,7 +154,7 @@
 		<checkBox left="555" top="325" width="200" height="20" field="noUpdate" text="Não pedir para atualizar."/>
 			
 		<button left="555" top="350" width="100" text="Change Log" onClick="GUI.openInBrowser('README.md')" />
-		<button left="667" top="350" width="100" text="Atualizar" onClick="GUI.openInBrowser('ficha.rpk?raw=true')" />
+		<button left="667" top="350" width="100" text="Atualizar" onClick="GUI.openInBrowser('https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20Mundo%20Original/output/Ficha%20Mundo%20Original.rpk?raw=true')" />
 		
 		<label left="555" top="400" width="200" height="20" text="Conheça as Mesas:"/>
 		<button left="555" top="425" width="100" text="RPGmeister" onClick="GUI.openInBrowser('http://firecast.rrpg.com.br:90/a?a=pagRWEMesaInfo.actInfoMesa&amp;mesaid=64070');" />
