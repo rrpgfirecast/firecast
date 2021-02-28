@@ -24,28 +24,31 @@
 	</script>
 
 	<scrollBox align="client">
-		<recordList align="left" width="400" name="rclAbilities" field="listAbilities" templateForm="frmAbilityForm" layout="vertical">
-			<event name="onCompare">
-		         return Utils.compareStringPtBr(nodeA.ability, nodeB.ability);
-		    </event>
-			<event name="onEndEnumeration">
-				if sheet==nil then return end;
-				local nodes = NDB.getChildNodes(sheet.listAbilities);               
-				if #nodes == 0 then
-					Abilities();
-				end;
-			</event>
-			<event name="onBeginEnumeration">
-				if sheet==nil then return end;
-				local nodes = NDB.getChildNodes(sheet.listAbilities);               
-				if #nodes == 0 then
-					Abilities();
-				end;
-			</event>
-		</recordList>
+		<layout align="left" width="400">
+			<button align="top" height="25" text="Additional Ability" margins="{left=5,right=5}" onClick="self.rclAbilities:append();"/>
+			<recordList align="client" name="rclAbilities" field="listAbilities" templateForm="frmAbilityForm" layout="vertical">
+				<event name="onCompare">
+			         return Utils.compareStringPtBr(nodeA.ability, nodeB.ability);
+			    </event>
+				<event name="onEndEnumeration">
+					if sheet==nil then return end;
+					local nodes = NDB.getChildNodes(sheet.listAbilities);               
+					if #nodes == 0 then
+						Abilities();
+					end;
+				</event>
+				<event name="onBeginEnumeration">
+					if sheet==nil then return end;
+					local nodes = NDB.getChildNodes(sheet.listAbilities);               
+					if #nodes == 0 then
+						Abilities();
+					end;
+				</event>
+			</recordList>
+		</layout>
 
 		<layout align="left" width="400" margins="{right=5,left=5}">
-			<button align="top" height="25" text="Additional Ability" margins="{left=5,right=5}" onClick="self.rclAbilities:append();"/>
+			<label align="top" height="25" horzTextAlign="center" text="SPECIALIZATIONS"/>
 
 			<textEditor align="client" field="specializations" margins="{left=5,right=5,bottom=5}"/>
 		</layout>

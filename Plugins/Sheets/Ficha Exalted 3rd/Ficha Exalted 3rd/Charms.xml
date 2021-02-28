@@ -87,7 +87,7 @@
 	</popup>
 	
 	<scrollBox align="client">
-			<flowLayout width="1030" height="600" class="oneLineTile2" autoHeight="true" maxColumns="3" horzAlign="center" orientation="vertical">
+			<flowLayout width="1030" height="600" class="oneLineTile2" autoHeight="true" maxColumns="4" horzAlign="center" orientation="vertical">
 				<magicsLayout0 text="Archery" name="Archery"/>
 				<magicsLayout0 text="Athletics" name="Athletics"/>
 				<magicsLayout0 text="Awareness" name="Awareness"/>

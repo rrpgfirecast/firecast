@@ -3,15 +3,17 @@
 
 	<scrollBox align="client">
 		<layout height="610"/>
-		<recordList align="left" width="630" name="rclCombat" field="listCombat" templateForm="frmWeaponForm" layout="vertical" minQt="1">
-			<event name="onCompare">
-		         return Utils.compareStringPtBr(nodeA.ability, nodeB.ability);
-		    </event>
-		</recordList>
 
-		<layout align="left" width="400" margins="{right=5,left=5}">
+		<layout align="left" width="630" margins="{right=0,left=5}">
 			<button align="top" height="25" text="Additional Weapon" margins="{left=5,right=5}" onClick="self.rclCombat:append();"/>
+			<recordList align="left" width="630" name="rclCombat" field="listCombat" templateForm="frmWeaponForm" layout="vertical" minQt="1">
+				<event name="onCompare">
+			         return Utils.compareStringPtBr(nodeA.ability, nodeB.ability);
+			    </event>
+			</recordList>
+		</layout>
 
+		<layout align="left" width="400" margins="{right=0,left=5}">
 			<rectangle align="top" height="280" color="black" xradius="5" yradius="15" cornerType="round">
 				<label align="top" height="25" horzTextAlign="center" text="HEALTH &amp; DEFENSE"/>
 

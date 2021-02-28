@@ -2,13 +2,13 @@
 <form name="frmGeral" align="client">
 	<template name="VertLabelEdit">
 		<layout align="$(align)" width="$(width)" margins="{right=5}" name="$(name)">
-			<label text="$(text)" width="$(width)" horzTextAlign="leading" fontSize="$(fontSize)"/>
+			<label text="$(text)" width="$(width)" horzTextAlign="center" fontSize="$(fontSize)" name="$(nameLabel)"/>
 			<edit top="20" field="$(field)" width="$(width)" height="25"/>
 		</layout>
 	</template>
 	<template name="VertLabelLabel">
 		<layout align="left" width="$(width)" margins="{right=5}">
-			<label text="$(text)" width="$(width)" horzTextAlign="leading" fontSize="$(fontSize)"/>
+			<label text="$(text)" width="$(width)" horzTextAlign="center" fontSize="$(fontSize)"/>
 			<rectangle top="20" height="25" width="$(width)" color="black" strokeColor="black" strokeSize="1">
 				<label align="client" field="$(field)" horzTextAlign="center" vertTextAlign="center"/>
 			</rectangle>
@@ -16,7 +16,7 @@
 	</template>
 	<template name="VertCombo">
 		<layout align="$(align)" width="$(width)" margins="{right=5}" visible="$(visible)" name="$(name)">
-			<label text="$(text)" width="$(width)" horzTextAlign="leading" fontSize="$(fontSize)"/>
+			<label text="$(text)" width="$(width)" horzTextAlign="center" fontSize="$(fontSize)"/>
 			<comboBox top="20" field="$(field)" width="$(width)" height="25" items="$(items)" values="$(values)" fontSize="$(fontSize)"/>
 		</layout>
 	</template>
@@ -60,7 +60,7 @@
 	        	<layout align="top" height="50">
 	        		<VertLabelEdit align="left" width="250" text="Concept" fontSize="13" field="concept" name="Concept"/>
 	        		<VertLabelEdit align="left" width="250" text="Anima" fontSize="13" field="anima" name="Anima"/>
-	        		<VertLabelEdit align="left" width="250" text="Supernatural Ability" fontSize="13" field="supernatural" name="Supernatural"/>
+	        		<VertLabelEdit align="left" width="250" text="Supernatural Ability" fontSize="13" field="supernatural" name="Supernatural" nameLabel="SupernaturalLabel"/>
 	        		<VertLabelEdit align="right" width="125" text="Tell" fontSize="13" field="tell" name="Tell"/>
 	        		<VertLabelEdit align="right" width="125" text="Spirit Shape" fontSize="13" field="Spirit" name="Spirit"/>
 	        	</layout>
@@ -72,6 +72,7 @@
 					self.LunarCaste.visible = false;
 					self.DragonAspect.visible = false;
 					self.LunarShapes.visible = false;
+					self.Supernatural.visible = false;
 
 					self.Spirit.visible = false;
 					self.Tell.visible = false;
@@ -80,16 +81,17 @@
 
 					if exaltation == 1 then
 						self.SolarCaste.visible = true;
-						self.Supernatural.text = "Supernatural Ability";
+						self.SupernaturalLabel.text = "Supernatural Ability";
+						self.Supernatural.visible = true;
 					elseif exaltation == 2 then
 						self.LunarCaste.visible = true;
-						self.Supernatural.text = "Supernatural Ability";
 						self.Spirit.visible = true;
 						self.Tell.visible = true;
 						self.LunarShapes.visible = true;
 					elseif exaltation == 3 then
 						self.DragonAspect.visible = true;
-						self.Supernatural.text = "Origin";
+						self.SupernaturalLabel.text = "Origin";
+						self.Supernatural.visible = true;
 					end;
 				</event>
 			</dataLink>
@@ -185,7 +187,7 @@
 				<layout align="client" margins="{bottom=5}">
 					<layout align="top" height="25" margins="{bottom=0}">
 						<button align="left" width="25" text="+" margins="{left=5,right=5}" onClick="self.rclCommited:append();"/>
-						<label align="client" text="Commited"/>
+						<label align="client" text="Commited (Personal|Peripheral)" fontSize="9"/>
 					</layout>
 					<recordList align="client" margins="{left=5,right=5,bottom=5,top=0}" name="rclCommited" field="listCommit" templateForm="frmCommitForm" layout="vertical"/>
 				</layout>

@@ -342,14 +342,6 @@ local function constructNew_frmTemplateCreditos()
     obj.button5:setText("RPGmeister");
     obj.button5:setName("button5");
 
-    obj.button6 = GUI.fromHandle(_obj_newObject("button"));
-    obj.button6:setParent(obj.scrollBox1);
-    obj.button6:setLeft(667);
-    obj.button6:setTop(425);
-    obj.button6:setWidth(125);
-    obj.button6:setText("Nome Mesa");
-    obj.button6:setName("button6");
-
     obj._e_event0 = obj.comboBox1:addEventListener("onChange",
         function (_)
             if sheet == nil then return end;
@@ -463,7 +455,7 @@ local function constructNew_frmTemplateCreditos()
 
     obj._e_event6 = obj.button3:addEventListener("onClick",
         function (_)
-            GUI.openInBrowser('link_change_log')
+            GUI.openInBrowser('https://github.com/rrpgfirecast/firecast/commits/master/Plugins/Sheets/Ficha%20Exalted%203rd')
         end, obj);
 
     obj._e_event7 = obj.button4:addEventListener("onClick",
@@ -476,13 +468,7 @@ local function constructNew_frmTemplateCreditos()
             GUI.openInBrowser('https://my.firecastrpg.com/a?a=pagRWEMesaInfo.actInfoMesa&mesaid=64070');
         end, obj);
 
-    obj._e_event9 = obj.button6:addEventListener("onClick",
-        function (_)
-            GUI.openInBrowser('link_mesa');
-        end, obj);
-
     function obj:_releaseEvents()
-        __o_rrpgObjs.removeEventListenerById(self._e_event9);
         __o_rrpgObjs.removeEventListenerById(self._e_event8);
         __o_rrpgObjs.removeEventListenerById(self._e_event7);
         __o_rrpgObjs.removeEventListenerById(self._e_event6);
@@ -520,7 +506,6 @@ local function constructNew_frmTemplateCreditos()
         if self.label2 ~= nil then self.label2:destroy(); self.label2 = nil; end;
         if self.label5 ~= nil then self.label5:destroy(); self.label5 = nil; end;
         if self.dataLink3 ~= nil then self.dataLink3:destroy(); self.dataLink3 = nil; end;
-        if self.button6 ~= nil then self.button6:destroy(); self.button6 = nil; end;
         if self.comboBox4 ~= nil then self.comboBox4:destroy(); self.comboBox4 = nil; end;
         if self.rectangle2 ~= nil then self.rectangle2:destroy(); self.rectangle2 = nil; end;
         if self.button5 ~= nil then self.button5:destroy(); self.button5 = nil; end;
