@@ -42,10 +42,16 @@ function newfrmNPCs()
     obj.image1:setEditable(true);
     obj.image1:setName("image1");
 
+    obj.dataLink1 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink1:setParent(obj.image1);
+    obj.dataLink1:setField("bgNPC");
+    obj.dataLink1:setDefaultValue("http://blob.firecast.com.br/blobs/VAPCNRTG_1601946/Aba_07.jpg");
+    obj.dataLink1:setName("dataLink1");
+
     obj.button1 = gui.fromHandle(_obj_newObject("button"));
     obj.button1:setParent(obj.image1);
     obj.button1:setAlign("top");
-    obj.button1:setText("Novo");
+    obj.button1:setText("Novo NPC");
     obj.button1:setHint("Adicionar");
     obj.button1:setMargins({bottom=10});
     obj.button1:setName("button1");
@@ -84,10 +90,11 @@ function newfrmNPCs()
           self:setNodeDatabase(nil);
         end;
 
-        if self.rclNPCs ~= nil then self.rclNPCs:destroy(); self.rclNPCs = nil; end;
-        if self.scrollBox1 ~= nil then self.scrollBox1:destroy(); self.scrollBox1 = nil; end;
-        if self.button1 ~= nil then self.button1:destroy(); self.button1 = nil; end;
         if self.image1 ~= nil then self.image1:destroy(); self.image1 = nil; end;
+        if self.scrollBox1 ~= nil then self.scrollBox1:destroy(); self.scrollBox1 = nil; end;
+        if self.rclNPCs ~= nil then self.rclNPCs:destroy(); self.rclNPCs = nil; end;
+        if self.button1 ~= nil then self.button1:destroy(); self.button1 = nil; end;
+        if self.dataLink1 ~= nil then self.dataLink1:destroy(); self.dataLink1 = nil; end;
         self:_oldLFMDestroy();
     end;
 

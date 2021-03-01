@@ -108,6 +108,7 @@
 
 	<scrollBox align="client">
 		<image align="client" field="bgPet" style="autoFit" editable="true">
+			<dataLink field="bgPet" defaultValue="http://blob.firecast.com.br/blobs/AJGKAGVM_1601944/Aba_04.png"/>
 			<layout align="top" height="50">
 				<button text="+" width="30" align="left">
 					<event name="onClick">

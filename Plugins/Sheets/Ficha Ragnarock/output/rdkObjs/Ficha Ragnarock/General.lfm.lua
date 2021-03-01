@@ -42,6 +42,12 @@ function newfrmGeneral()
     obj.image1:setEditable(true);
     obj.image1:setName("image1");
 
+    obj.dataLink1 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink1:setParent(obj.scrollBox1);
+    obj.dataLink1:setField("bgGeneral");
+    obj.dataLink1:setDefaultValue("http://blob.firecast.com.br/blobs/WRKNFRIT_1601940/Aba_01.jpg");
+    obj.dataLink1:setName("dataLink1");
+
     obj.layout1 = gui.fromHandle(_obj_newObject("layout"));
     obj.layout1:setParent(obj.scrollBox1);
     obj.layout1:setWidth(1200);
@@ -78,6 +84,25 @@ function newfrmGeneral()
     obj.edit1:setWidth(150);
     obj.edit1:setHeight(25);
     obj.edit1:setName("edit1");
+
+    obj.rectangle2 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle2:setParent(obj.rectangle1);
+    obj.rectangle2:setAlign("left");
+    obj.rectangle2:setWidth(50);
+    obj.rectangle2:setColor("black");
+    obj.rectangle2:setStrokeColor("white");
+    obj.rectangle2:setStrokeSize(1);
+    obj.rectangle2:setMargins({right=5});
+    obj.rectangle2:setName("rectangle2");
+
+    obj.image2 = gui.fromHandle(_obj_newObject("image"));
+    obj.image2:setParent(obj.rectangle2);
+    obj.image2:setAlign("client");
+    obj.image2:setField("classeIcon");
+    obj.image2:setEditable(true);
+    obj.image2:setStyle("autoFit");
+    obj.image2:setMargins({left=2, right=2, top=2, bottom=2});
+    obj.image2:setName("image2");
 
     obj.layout3 = gui.fromHandle(_obj_newObject("layout"));
     obj.layout3:setParent(obj.rectangle1);
@@ -240,16 +265,16 @@ function newfrmGeneral()
     obj.edit8:setHeight(25);
     obj.edit8:setName("edit8");
 
-    obj.rectangle2 = gui.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle2:setParent(obj.layout1);
-    obj.rectangle2:setColor("black");
-    obj.rectangle2:setAlign("top");
-    obj.rectangle2:setHeight(305);
-    obj.rectangle2:setMargins({bottom=5});
-    obj.rectangle2:setName("rectangle2");
+    obj.rectangle3 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle3:setParent(obj.layout1);
+    obj.rectangle3:setColor("black");
+    obj.rectangle3:setAlign("top");
+    obj.rectangle3:setHeight(305);
+    obj.rectangle3:setMargins({bottom=5});
+    obj.rectangle3:setName("rectangle3");
 
     obj.layout10 = gui.fromHandle(_obj_newObject("layout"));
-    obj.layout10:setParent(obj.rectangle2);
+    obj.layout10:setParent(obj.rectangle3);
     obj.layout10:setAlign("left");
     obj.layout10:setWidth(220);
     obj.layout10:setMargins({right=5});
@@ -304,15 +329,15 @@ function newfrmGeneral()
     obj.label10:setHorzTextAlign("center");
     obj.label10:setName("label10");
 
-    obj.rectangle3 = gui.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle3:setParent(obj.layout11);
-    obj.rectangle3:setLeft(185);
-    obj.rectangle3:setWidth(30);
-    obj.rectangle3:setHeight(25);
-    obj.rectangle3:setColor("black");
-    obj.rectangle3:setStrokeColor("white");
-    obj.rectangle3:setStrokeSize(1);
-    obj.rectangle3:setName("rectangle3");
+    obj.rectangle4 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle4:setParent(obj.layout11);
+    obj.rectangle4:setLeft(185);
+    obj.rectangle4:setWidth(30);
+    obj.rectangle4:setHeight(25);
+    obj.rectangle4:setColor("black");
+    obj.rectangle4:setStrokeColor("white");
+    obj.rectangle4:setStrokeSize(1);
+    obj.rectangle4:setName("rectangle4");
 
     obj.label11 = gui.fromHandle(_obj_newObject("label"));
     obj.label11:setParent(obj.layout11);
@@ -323,10 +348,10 @@ function newfrmGeneral()
     obj.label11:setHorzTextAlign("center");
     obj.label11:setName("label11");
 
-    obj.dataLink1 = gui.fromHandle(_obj_newObject("dataLink"));
-    obj.dataLink1:setParent(obj.layout10);
-    obj.dataLink1:setFields({'atr_FORBase','atr_FORExtra'});
-    obj.dataLink1:setName("dataLink1");
+    obj.dataLink2 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink2:setParent(obj.layout10);
+    obj.dataLink2:setFields({'atr_FORBase','atr_FORExtra'});
+    obj.dataLink2:setName("dataLink2");
 
     obj.layout12 = gui.fromHandle(_obj_newObject("layout"));
     obj.layout12:setParent(obj.layout10);
@@ -377,15 +402,15 @@ function newfrmGeneral()
     obj.label13:setHorzTextAlign("center");
     obj.label13:setName("label13");
 
-    obj.rectangle4 = gui.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle4:setParent(obj.layout12);
-    obj.rectangle4:setLeft(185);
-    obj.rectangle4:setWidth(30);
-    obj.rectangle4:setHeight(25);
-    obj.rectangle4:setColor("black");
-    obj.rectangle4:setStrokeColor("white");
-    obj.rectangle4:setStrokeSize(1);
-    obj.rectangle4:setName("rectangle4");
+    obj.rectangle5 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle5:setParent(obj.layout12);
+    obj.rectangle5:setLeft(185);
+    obj.rectangle5:setWidth(30);
+    obj.rectangle5:setHeight(25);
+    obj.rectangle5:setColor("black");
+    obj.rectangle5:setStrokeColor("white");
+    obj.rectangle5:setStrokeSize(1);
+    obj.rectangle5:setName("rectangle5");
 
     obj.label14 = gui.fromHandle(_obj_newObject("label"));
     obj.label14:setParent(obj.layout12);
@@ -396,10 +421,10 @@ function newfrmGeneral()
     obj.label14:setHorzTextAlign("center");
     obj.label14:setName("label14");
 
-    obj.dataLink2 = gui.fromHandle(_obj_newObject("dataLink"));
-    obj.dataLink2:setParent(obj.layout10);
-    obj.dataLink2:setFields({'atr_HABBase','atr_HABExtra'});
-    obj.dataLink2:setName("dataLink2");
+    obj.dataLink3 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink3:setParent(obj.layout10);
+    obj.dataLink3:setFields({'atr_HABBase','atr_HABExtra'});
+    obj.dataLink3:setName("dataLink3");
 
     obj.layout13 = gui.fromHandle(_obj_newObject("layout"));
     obj.layout13:setParent(obj.layout10);
@@ -450,15 +475,15 @@ function newfrmGeneral()
     obj.label16:setHorzTextAlign("center");
     obj.label16:setName("label16");
 
-    obj.rectangle5 = gui.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle5:setParent(obj.layout13);
-    obj.rectangle5:setLeft(185);
-    obj.rectangle5:setWidth(30);
-    obj.rectangle5:setHeight(25);
-    obj.rectangle5:setColor("black");
-    obj.rectangle5:setStrokeColor("white");
-    obj.rectangle5:setStrokeSize(1);
-    obj.rectangle5:setName("rectangle5");
+    obj.rectangle6 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle6:setParent(obj.layout13);
+    obj.rectangle6:setLeft(185);
+    obj.rectangle6:setWidth(30);
+    obj.rectangle6:setHeight(25);
+    obj.rectangle6:setColor("black");
+    obj.rectangle6:setStrokeColor("white");
+    obj.rectangle6:setStrokeSize(1);
+    obj.rectangle6:setName("rectangle6");
 
     obj.label17 = gui.fromHandle(_obj_newObject("label"));
     obj.label17:setParent(obj.layout13);
@@ -469,10 +494,10 @@ function newfrmGeneral()
     obj.label17:setHorzTextAlign("center");
     obj.label17:setName("label17");
 
-    obj.dataLink3 = gui.fromHandle(_obj_newObject("dataLink"));
-    obj.dataLink3:setParent(obj.layout10);
-    obj.dataLink3:setFields({'atr_AGIBase','atr_AGIExtra'});
-    obj.dataLink3:setName("dataLink3");
+    obj.dataLink4 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink4:setParent(obj.layout10);
+    obj.dataLink4:setFields({'atr_AGIBase','atr_AGIExtra'});
+    obj.dataLink4:setName("dataLink4");
 
     obj.layout14 = gui.fromHandle(_obj_newObject("layout"));
     obj.layout14:setParent(obj.layout10);
@@ -523,15 +548,15 @@ function newfrmGeneral()
     obj.label19:setHorzTextAlign("center");
     obj.label19:setName("label19");
 
-    obj.rectangle6 = gui.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle6:setParent(obj.layout14);
-    obj.rectangle6:setLeft(185);
-    obj.rectangle6:setWidth(30);
-    obj.rectangle6:setHeight(25);
-    obj.rectangle6:setColor("black");
-    obj.rectangle6:setStrokeColor("white");
-    obj.rectangle6:setStrokeSize(1);
-    obj.rectangle6:setName("rectangle6");
+    obj.rectangle7 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle7:setParent(obj.layout14);
+    obj.rectangle7:setLeft(185);
+    obj.rectangle7:setWidth(30);
+    obj.rectangle7:setHeight(25);
+    obj.rectangle7:setColor("black");
+    obj.rectangle7:setStrokeColor("white");
+    obj.rectangle7:setStrokeSize(1);
+    obj.rectangle7:setName("rectangle7");
 
     obj.label20 = gui.fromHandle(_obj_newObject("label"));
     obj.label20:setParent(obj.layout14);
@@ -542,10 +567,10 @@ function newfrmGeneral()
     obj.label20:setHorzTextAlign("center");
     obj.label20:setName("label20");
 
-    obj.dataLink4 = gui.fromHandle(_obj_newObject("dataLink"));
-    obj.dataLink4:setParent(obj.layout10);
-    obj.dataLink4:setFields({'atr_VITBase','atr_VITExtra'});
-    obj.dataLink4:setName("dataLink4");
+    obj.dataLink5 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink5:setParent(obj.layout10);
+    obj.dataLink5:setFields({'atr_VITBase','atr_VITExtra'});
+    obj.dataLink5:setName("dataLink5");
 
     obj.layout15 = gui.fromHandle(_obj_newObject("layout"));
     obj.layout15:setParent(obj.layout10);
@@ -596,15 +621,15 @@ function newfrmGeneral()
     obj.label22:setHorzTextAlign("center");
     obj.label22:setName("label22");
 
-    obj.rectangle7 = gui.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle7:setParent(obj.layout15);
-    obj.rectangle7:setLeft(185);
-    obj.rectangle7:setWidth(30);
-    obj.rectangle7:setHeight(25);
-    obj.rectangle7:setColor("black");
-    obj.rectangle7:setStrokeColor("white");
-    obj.rectangle7:setStrokeSize(1);
-    obj.rectangle7:setName("rectangle7");
+    obj.rectangle8 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle8:setParent(obj.layout15);
+    obj.rectangle8:setLeft(185);
+    obj.rectangle8:setWidth(30);
+    obj.rectangle8:setHeight(25);
+    obj.rectangle8:setColor("black");
+    obj.rectangle8:setStrokeColor("white");
+    obj.rectangle8:setStrokeSize(1);
+    obj.rectangle8:setName("rectangle8");
 
     obj.label23 = gui.fromHandle(_obj_newObject("label"));
     obj.label23:setParent(obj.layout15);
@@ -615,10 +640,10 @@ function newfrmGeneral()
     obj.label23:setHorzTextAlign("center");
     obj.label23:setName("label23");
 
-    obj.dataLink5 = gui.fromHandle(_obj_newObject("dataLink"));
-    obj.dataLink5:setParent(obj.layout10);
-    obj.dataLink5:setFields({'atr_INTBase','atr_INTExtra'});
-    obj.dataLink5:setName("dataLink5");
+    obj.dataLink6 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink6:setParent(obj.layout10);
+    obj.dataLink6:setFields({'atr_INTBase','atr_INTExtra'});
+    obj.dataLink6:setName("dataLink6");
 
     obj.layout16 = gui.fromHandle(_obj_newObject("layout"));
     obj.layout16:setParent(obj.layout10);
@@ -669,15 +694,15 @@ function newfrmGeneral()
     obj.label25:setHorzTextAlign("center");
     obj.label25:setName("label25");
 
-    obj.rectangle8 = gui.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle8:setParent(obj.layout16);
-    obj.rectangle8:setLeft(185);
-    obj.rectangle8:setWidth(30);
-    obj.rectangle8:setHeight(25);
-    obj.rectangle8:setColor("black");
-    obj.rectangle8:setStrokeColor("white");
-    obj.rectangle8:setStrokeSize(1);
-    obj.rectangle8:setName("rectangle8");
+    obj.rectangle9 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle9:setParent(obj.layout16);
+    obj.rectangle9:setLeft(185);
+    obj.rectangle9:setWidth(30);
+    obj.rectangle9:setHeight(25);
+    obj.rectangle9:setColor("black");
+    obj.rectangle9:setStrokeColor("white");
+    obj.rectangle9:setStrokeSize(1);
+    obj.rectangle9:setName("rectangle9");
 
     obj.label26 = gui.fromHandle(_obj_newObject("label"));
     obj.label26:setParent(obj.layout16);
@@ -688,10 +713,10 @@ function newfrmGeneral()
     obj.label26:setHorzTextAlign("center");
     obj.label26:setName("label26");
 
-    obj.dataLink6 = gui.fromHandle(_obj_newObject("dataLink"));
-    obj.dataLink6:setParent(obj.layout10);
-    obj.dataLink6:setFields({'atr_DESBase','atr_DESExtra'});
-    obj.dataLink6:setName("dataLink6");
+    obj.dataLink7 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink7:setParent(obj.layout10);
+    obj.dataLink7:setFields({'atr_DESBase','atr_DESExtra'});
+    obj.dataLink7:setName("dataLink7");
 
     obj.layout17 = gui.fromHandle(_obj_newObject("layout"));
     obj.layout17:setParent(obj.layout10);
@@ -742,15 +767,15 @@ function newfrmGeneral()
     obj.label28:setHorzTextAlign("center");
     obj.label28:setName("label28");
 
-    obj.rectangle9 = gui.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle9:setParent(obj.layout17);
-    obj.rectangle9:setLeft(185);
-    obj.rectangle9:setWidth(30);
-    obj.rectangle9:setHeight(25);
-    obj.rectangle9:setColor("black");
-    obj.rectangle9:setStrokeColor("white");
-    obj.rectangle9:setStrokeSize(1);
-    obj.rectangle9:setName("rectangle9");
+    obj.rectangle10 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle10:setParent(obj.layout17);
+    obj.rectangle10:setLeft(185);
+    obj.rectangle10:setWidth(30);
+    obj.rectangle10:setHeight(25);
+    obj.rectangle10:setColor("black");
+    obj.rectangle10:setStrokeColor("white");
+    obj.rectangle10:setStrokeSize(1);
+    obj.rectangle10:setName("rectangle10");
 
     obj.label29 = gui.fromHandle(_obj_newObject("label"));
     obj.label29:setParent(obj.layout17);
@@ -761,10 +786,10 @@ function newfrmGeneral()
     obj.label29:setHorzTextAlign("center");
     obj.label29:setName("label29");
 
-    obj.dataLink7 = gui.fromHandle(_obj_newObject("dataLink"));
-    obj.dataLink7:setParent(obj.layout10);
-    obj.dataLink7:setFields({'atr_SORBase','atr_SORExtra'});
-    obj.dataLink7:setName("dataLink7");
+    obj.dataLink8 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink8:setParent(obj.layout10);
+    obj.dataLink8:setFields({'atr_SORBase','atr_SORExtra'});
+    obj.dataLink8:setName("dataLink8");
 
     obj.layout18 = gui.fromHandle(_obj_newObject("layout"));
     obj.layout18:setParent(obj.layout10);
@@ -815,15 +840,15 @@ function newfrmGeneral()
     obj.label31:setHorzTextAlign("center");
     obj.label31:setName("label31");
 
-    obj.rectangle10 = gui.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle10:setParent(obj.layout18);
-    obj.rectangle10:setLeft(185);
-    obj.rectangle10:setWidth(30);
-    obj.rectangle10:setHeight(25);
-    obj.rectangle10:setColor("black");
-    obj.rectangle10:setStrokeColor("white");
-    obj.rectangle10:setStrokeSize(1);
-    obj.rectangle10:setName("rectangle10");
+    obj.rectangle11 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle11:setParent(obj.layout18);
+    obj.rectangle11:setLeft(185);
+    obj.rectangle11:setWidth(30);
+    obj.rectangle11:setHeight(25);
+    obj.rectangle11:setColor("black");
+    obj.rectangle11:setStrokeColor("white");
+    obj.rectangle11:setStrokeSize(1);
+    obj.rectangle11:setName("rectangle11");
 
     obj.label32 = gui.fromHandle(_obj_newObject("label"));
     obj.label32:setParent(obj.layout18);
@@ -834,10 +859,10 @@ function newfrmGeneral()
     obj.label32:setHorzTextAlign("center");
     obj.label32:setName("label32");
 
-    obj.dataLink8 = gui.fromHandle(_obj_newObject("dataLink"));
-    obj.dataLink8:setParent(obj.layout10);
-    obj.dataLink8:setFields({'atr_MAGBase','atr_MAGExtra'});
-    obj.dataLink8:setName("dataLink8");
+    obj.dataLink9 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink9:setParent(obj.layout10);
+    obj.dataLink9:setFields({'atr_MAGBase','atr_MAGExtra'});
+    obj.dataLink9:setName("dataLink9");
 
     obj.layout19 = gui.fromHandle(_obj_newObject("layout"));
     obj.layout19:setParent(obj.layout10);
@@ -888,15 +913,15 @@ function newfrmGeneral()
     obj.label34:setHorzTextAlign("center");
     obj.label34:setName("label34");
 
-    obj.rectangle11 = gui.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle11:setParent(obj.layout19);
-    obj.rectangle11:setLeft(185);
-    obj.rectangle11:setWidth(30);
-    obj.rectangle11:setHeight(25);
-    obj.rectangle11:setColor("black");
-    obj.rectangle11:setStrokeColor("white");
-    obj.rectangle11:setStrokeSize(1);
-    obj.rectangle11:setName("rectangle11");
+    obj.rectangle12 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle12:setParent(obj.layout19);
+    obj.rectangle12:setLeft(185);
+    obj.rectangle12:setWidth(30);
+    obj.rectangle12:setHeight(25);
+    obj.rectangle12:setColor("black");
+    obj.rectangle12:setStrokeColor("white");
+    obj.rectangle12:setStrokeSize(1);
+    obj.rectangle12:setName("rectangle12");
 
     obj.label35 = gui.fromHandle(_obj_newObject("label"));
     obj.label35:setParent(obj.layout19);
@@ -907,10 +932,10 @@ function newfrmGeneral()
     obj.label35:setHorzTextAlign("center");
     obj.label35:setName("label35");
 
-    obj.dataLink9 = gui.fromHandle(_obj_newObject("dataLink"));
-    obj.dataLink9:setParent(obj.layout10);
-    obj.dataLink9:setFields({'atr_DEFBase','atr_DEFExtra'});
-    obj.dataLink9:setName("dataLink9");
+    obj.dataLink10 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink10:setParent(obj.layout10);
+    obj.dataLink10:setFields({'atr_DEFBase','atr_DEFExtra'});
+    obj.dataLink10:setName("dataLink10");
 
     obj.layout20 = gui.fromHandle(_obj_newObject("layout"));
     obj.layout20:setParent(obj.layout10);
@@ -961,15 +986,15 @@ function newfrmGeneral()
     obj.label37:setHorzTextAlign("center");
     obj.label37:setName("label37");
 
-    obj.rectangle12 = gui.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle12:setParent(obj.layout20);
-    obj.rectangle12:setLeft(185);
-    obj.rectangle12:setWidth(30);
-    obj.rectangle12:setHeight(25);
-    obj.rectangle12:setColor("black");
-    obj.rectangle12:setStrokeColor("white");
-    obj.rectangle12:setStrokeSize(1);
-    obj.rectangle12:setName("rectangle12");
+    obj.rectangle13 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle13:setParent(obj.layout20);
+    obj.rectangle13:setLeft(185);
+    obj.rectangle13:setWidth(30);
+    obj.rectangle13:setHeight(25);
+    obj.rectangle13:setColor("black");
+    obj.rectangle13:setStrokeColor("white");
+    obj.rectangle13:setStrokeSize(1);
+    obj.rectangle13:setName("rectangle13");
 
     obj.label38 = gui.fromHandle(_obj_newObject("label"));
     obj.label38:setParent(obj.layout20);
@@ -980,13 +1005,13 @@ function newfrmGeneral()
     obj.label38:setHorzTextAlign("center");
     obj.label38:setName("label38");
 
-    obj.dataLink10 = gui.fromHandle(_obj_newObject("dataLink"));
-    obj.dataLink10:setParent(obj.layout10);
-    obj.dataLink10:setFields({'atr_M.DEFBase','atr_M.DEFExtra'});
-    obj.dataLink10:setName("dataLink10");
+    obj.dataLink11 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink11:setParent(obj.layout10);
+    obj.dataLink11:setFields({'atr_M.DEFBase','atr_M.DEFExtra'});
+    obj.dataLink11:setName("dataLink11");
 
     obj.layout21 = gui.fromHandle(_obj_newObject("layout"));
-    obj.layout21:setParent(obj.rectangle2);
+    obj.layout21:setParent(obj.rectangle3);
     obj.layout21:setAlign("left");
     obj.layout21:setWidth(220);
     obj.layout21:setMargins({right=5});
@@ -1041,15 +1066,15 @@ function newfrmGeneral()
     obj.label40:setHorzTextAlign("center");
     obj.label40:setName("label40");
 
-    obj.rectangle13 = gui.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle13:setParent(obj.layout22);
-    obj.rectangle13:setLeft(185);
-    obj.rectangle13:setWidth(30);
-    obj.rectangle13:setHeight(25);
-    obj.rectangle13:setColor("black");
-    obj.rectangle13:setStrokeColor("white");
-    obj.rectangle13:setStrokeSize(1);
-    obj.rectangle13:setName("rectangle13");
+    obj.rectangle14 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle14:setParent(obj.layout22);
+    obj.rectangle14:setLeft(185);
+    obj.rectangle14:setWidth(30);
+    obj.rectangle14:setHeight(25);
+    obj.rectangle14:setColor("black");
+    obj.rectangle14:setStrokeColor("white");
+    obj.rectangle14:setStrokeSize(1);
+    obj.rectangle14:setName("rectangle14");
 
     obj.label41 = gui.fromHandle(_obj_newObject("label"));
     obj.label41:setParent(obj.layout22);
@@ -1060,10 +1085,10 @@ function newfrmGeneral()
     obj.label41:setHorzTextAlign("center");
     obj.label41:setName("label41");
 
-    obj.dataLink11 = gui.fromHandle(_obj_newObject("dataLink"));
-    obj.dataLink11:setParent(obj.layout21);
-    obj.dataLink11:setFields({'atr_PULBase','atr_PULExtra'});
-    obj.dataLink11:setName("dataLink11");
+    obj.dataLink12 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink12:setParent(obj.layout21);
+    obj.dataLink12:setFields({'atr_PULBase','atr_PULExtra'});
+    obj.dataLink12:setName("dataLink12");
 
     obj.layout23 = gui.fromHandle(_obj_newObject("layout"));
     obj.layout23:setParent(obj.layout21);
@@ -1114,15 +1139,15 @@ function newfrmGeneral()
     obj.label43:setHorzTextAlign("center");
     obj.label43:setName("label43");
 
-    obj.rectangle14 = gui.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle14:setParent(obj.layout23);
-    obj.rectangle14:setLeft(185);
-    obj.rectangle14:setWidth(30);
-    obj.rectangle14:setHeight(25);
-    obj.rectangle14:setColor("black");
-    obj.rectangle14:setStrokeColor("white");
-    obj.rectangle14:setStrokeSize(1);
-    obj.rectangle14:setName("rectangle14");
+    obj.rectangle15 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle15:setParent(obj.layout23);
+    obj.rectangle15:setLeft(185);
+    obj.rectangle15:setWidth(30);
+    obj.rectangle15:setHeight(25);
+    obj.rectangle15:setColor("black");
+    obj.rectangle15:setStrokeColor("white");
+    obj.rectangle15:setStrokeSize(1);
+    obj.rectangle15:setName("rectangle15");
 
     obj.label44 = gui.fromHandle(_obj_newObject("label"));
     obj.label44:setParent(obj.layout23);
@@ -1133,10 +1158,10 @@ function newfrmGeneral()
     obj.label44:setHorzTextAlign("center");
     obj.label44:setName("label44");
 
-    obj.dataLink12 = gui.fromHandle(_obj_newObject("dataLink"));
-    obj.dataLink12:setParent(obj.layout21);
-    obj.dataLink12:setFields({'atr_ESCBase','atr_ESCExtra'});
-    obj.dataLink12:setName("dataLink12");
+    obj.dataLink13 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink13:setParent(obj.layout21);
+    obj.dataLink13:setFields({'atr_ESCBase','atr_ESCExtra'});
+    obj.dataLink13:setName("dataLink13");
 
     obj.layout24 = gui.fromHandle(_obj_newObject("layout"));
     obj.layout24:setParent(obj.layout21);
@@ -1187,15 +1212,15 @@ function newfrmGeneral()
     obj.label46:setHorzTextAlign("center");
     obj.label46:setName("label46");
 
-    obj.rectangle15 = gui.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle15:setParent(obj.layout24);
-    obj.rectangle15:setLeft(185);
-    obj.rectangle15:setWidth(30);
-    obj.rectangle15:setHeight(25);
-    obj.rectangle15:setColor("black");
-    obj.rectangle15:setStrokeColor("white");
-    obj.rectangle15:setStrokeSize(1);
-    obj.rectangle15:setName("rectangle15");
+    obj.rectangle16 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle16:setParent(obj.layout24);
+    obj.rectangle16:setLeft(185);
+    obj.rectangle16:setWidth(30);
+    obj.rectangle16:setHeight(25);
+    obj.rectangle16:setColor("black");
+    obj.rectangle16:setStrokeColor("white");
+    obj.rectangle16:setStrokeSize(1);
+    obj.rectangle16:setName("rectangle16");
 
     obj.label47 = gui.fromHandle(_obj_newObject("label"));
     obj.label47:setParent(obj.layout24);
@@ -1206,10 +1231,10 @@ function newfrmGeneral()
     obj.label47:setHorzTextAlign("center");
     obj.label47:setName("label47");
 
-    obj.dataLink13 = gui.fromHandle(_obj_newObject("dataLink"));
-    obj.dataLink13:setParent(obj.layout21);
-    obj.dataLink13:setFields({'atr_MIRBase','atr_MIRExtra'});
-    obj.dataLink13:setName("dataLink13");
+    obj.dataLink14 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink14:setParent(obj.layout21);
+    obj.dataLink14:setFields({'atr_MIRBase','atr_MIRExtra'});
+    obj.dataLink14:setName("dataLink14");
 
     obj.layout25 = gui.fromHandle(_obj_newObject("layout"));
     obj.layout25:setParent(obj.layout21);
@@ -1260,15 +1285,15 @@ function newfrmGeneral()
     obj.label49:setHorzTextAlign("center");
     obj.label49:setName("label49");
 
-    obj.rectangle16 = gui.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle16:setParent(obj.layout25);
-    obj.rectangle16:setLeft(185);
-    obj.rectangle16:setWidth(30);
-    obj.rectangle16:setHeight(25);
-    obj.rectangle16:setColor("black");
-    obj.rectangle16:setStrokeColor("white");
-    obj.rectangle16:setStrokeSize(1);
-    obj.rectangle16:setName("rectangle16");
+    obj.rectangle17 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle17:setParent(obj.layout25);
+    obj.rectangle17:setLeft(185);
+    obj.rectangle17:setWidth(30);
+    obj.rectangle17:setHeight(25);
+    obj.rectangle17:setColor("black");
+    obj.rectangle17:setStrokeColor("white");
+    obj.rectangle17:setStrokeSize(1);
+    obj.rectangle17:setName("rectangle17");
 
     obj.label50 = gui.fromHandle(_obj_newObject("label"));
     obj.label50:setParent(obj.layout25);
@@ -1279,10 +1304,10 @@ function newfrmGeneral()
     obj.label50:setHorzTextAlign("center");
     obj.label50:setName("label50");
 
-    obj.dataLink14 = gui.fromHandle(_obj_newObject("dataLink"));
-    obj.dataLink14:setParent(obj.layout21);
-    obj.dataLink14:setFields({'atr_CARBase','atr_CARExtra'});
-    obj.dataLink14:setName("dataLink14");
+    obj.dataLink15 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink15:setParent(obj.layout21);
+    obj.dataLink15:setFields({'atr_CARBase','atr_CARExtra'});
+    obj.dataLink15:setName("dataLink15");
 
     obj.layout26 = gui.fromHandle(_obj_newObject("layout"));
     obj.layout26:setParent(obj.layout21);
@@ -1333,15 +1358,15 @@ function newfrmGeneral()
     obj.label52:setHorzTextAlign("center");
     obj.label52:setName("label52");
 
-    obj.rectangle17 = gui.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle17:setParent(obj.layout26);
-    obj.rectangle17:setLeft(185);
-    obj.rectangle17:setWidth(30);
-    obj.rectangle17:setHeight(25);
-    obj.rectangle17:setColor("black");
-    obj.rectangle17:setStrokeColor("white");
-    obj.rectangle17:setStrokeSize(1);
-    obj.rectangle17:setName("rectangle17");
+    obj.rectangle18 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle18:setParent(obj.layout26);
+    obj.rectangle18:setLeft(185);
+    obj.rectangle18:setWidth(30);
+    obj.rectangle18:setHeight(25);
+    obj.rectangle18:setColor("black");
+    obj.rectangle18:setStrokeColor("white");
+    obj.rectangle18:setStrokeSize(1);
+    obj.rectangle18:setName("rectangle18");
 
     obj.label53 = gui.fromHandle(_obj_newObject("label"));
     obj.label53:setParent(obj.layout26);
@@ -1352,10 +1377,10 @@ function newfrmGeneral()
     obj.label53:setHorzTextAlign("center");
     obj.label53:setName("label53");
 
-    obj.dataLink15 = gui.fromHandle(_obj_newObject("dataLink"));
-    obj.dataLink15:setParent(obj.layout21);
-    obj.dataLink15:setFields({'atr_LABBase','atr_LABExtra'});
-    obj.dataLink15:setName("dataLink15");
+    obj.dataLink16 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink16:setParent(obj.layout21);
+    obj.dataLink16:setFields({'atr_LABBase','atr_LABExtra'});
+    obj.dataLink16:setName("dataLink16");
 
     obj.layout27 = gui.fromHandle(_obj_newObject("layout"));
     obj.layout27:setParent(obj.layout21);
@@ -1406,15 +1431,15 @@ function newfrmGeneral()
     obj.label55:setHorzTextAlign("center");
     obj.label55:setName("label55");
 
-    obj.rectangle18 = gui.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle18:setParent(obj.layout27);
-    obj.rectangle18:setLeft(185);
-    obj.rectangle18:setWidth(30);
-    obj.rectangle18:setHeight(25);
-    obj.rectangle18:setColor("black");
-    obj.rectangle18:setStrokeColor("white");
-    obj.rectangle18:setStrokeSize(1);
-    obj.rectangle18:setName("rectangle18");
+    obj.rectangle19 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle19:setParent(obj.layout27);
+    obj.rectangle19:setLeft(185);
+    obj.rectangle19:setWidth(30);
+    obj.rectangle19:setHeight(25);
+    obj.rectangle19:setColor("black");
+    obj.rectangle19:setStrokeColor("white");
+    obj.rectangle19:setStrokeSize(1);
+    obj.rectangle19:setName("rectangle19");
 
     obj.label56 = gui.fromHandle(_obj_newObject("label"));
     obj.label56:setParent(obj.layout27);
@@ -1425,10 +1450,10 @@ function newfrmGeneral()
     obj.label56:setHorzTextAlign("center");
     obj.label56:setName("label56");
 
-    obj.dataLink16 = gui.fromHandle(_obj_newObject("dataLink"));
-    obj.dataLink16:setParent(obj.layout21);
-    obj.dataLink16:setFields({'atr_DECBase','atr_DECExtra'});
-    obj.dataLink16:setName("dataLink16");
+    obj.dataLink17 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink17:setParent(obj.layout21);
+    obj.dataLink17:setFields({'atr_DECBase','atr_DECExtra'});
+    obj.dataLink17:setName("dataLink17");
 
     obj.layout28 = gui.fromHandle(_obj_newObject("layout"));
     obj.layout28:setParent(obj.layout21);
@@ -1479,15 +1504,15 @@ function newfrmGeneral()
     obj.label58:setHorzTextAlign("center");
     obj.label58:setName("label58");
 
-    obj.rectangle19 = gui.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle19:setParent(obj.layout28);
-    obj.rectangle19:setLeft(185);
-    obj.rectangle19:setWidth(30);
-    obj.rectangle19:setHeight(25);
-    obj.rectangle19:setColor("black");
-    obj.rectangle19:setStrokeColor("white");
-    obj.rectangle19:setStrokeSize(1);
-    obj.rectangle19:setName("rectangle19");
+    obj.rectangle20 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle20:setParent(obj.layout28);
+    obj.rectangle20:setLeft(185);
+    obj.rectangle20:setWidth(30);
+    obj.rectangle20:setHeight(25);
+    obj.rectangle20:setColor("black");
+    obj.rectangle20:setStrokeColor("white");
+    obj.rectangle20:setStrokeSize(1);
+    obj.rectangle20:setName("rectangle20");
 
     obj.label59 = gui.fromHandle(_obj_newObject("label"));
     obj.label59:setParent(obj.layout28);
@@ -1498,10 +1523,10 @@ function newfrmGeneral()
     obj.label59:setHorzTextAlign("center");
     obj.label59:setName("label59");
 
-    obj.dataLink17 = gui.fromHandle(_obj_newObject("dataLink"));
-    obj.dataLink17:setParent(obj.layout21);
-    obj.dataLink17:setFields({'atr_FURBase','atr_FURExtra'});
-    obj.dataLink17:setName("dataLink17");
+    obj.dataLink18 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink18:setParent(obj.layout21);
+    obj.dataLink18:setFields({'atr_FURBase','atr_FURExtra'});
+    obj.dataLink18:setName("dataLink18");
 
     obj.layout29 = gui.fromHandle(_obj_newObject("layout"));
     obj.layout29:setParent(obj.layout21);
@@ -1552,15 +1577,15 @@ function newfrmGeneral()
     obj.label61:setHorzTextAlign("center");
     obj.label61:setName("label61");
 
-    obj.rectangle20 = gui.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle20:setParent(obj.layout29);
-    obj.rectangle20:setLeft(185);
-    obj.rectangle20:setWidth(30);
-    obj.rectangle20:setHeight(25);
-    obj.rectangle20:setColor("black");
-    obj.rectangle20:setStrokeColor("white");
-    obj.rectangle20:setStrokeSize(1);
-    obj.rectangle20:setName("rectangle20");
+    obj.rectangle21 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle21:setParent(obj.layout29);
+    obj.rectangle21:setLeft(185);
+    obj.rectangle21:setWidth(30);
+    obj.rectangle21:setHeight(25);
+    obj.rectangle21:setColor("black");
+    obj.rectangle21:setStrokeColor("white");
+    obj.rectangle21:setStrokeSize(1);
+    obj.rectangle21:setName("rectangle21");
 
     obj.label62 = gui.fromHandle(_obj_newObject("label"));
     obj.label62:setParent(obj.layout29);
@@ -1571,10 +1596,10 @@ function newfrmGeneral()
     obj.label62:setHorzTextAlign("center");
     obj.label62:setName("label62");
 
-    obj.dataLink18 = gui.fromHandle(_obj_newObject("dataLink"));
-    obj.dataLink18:setParent(obj.layout21);
-    obj.dataLink18:setFields({'atr_PERBase','atr_PERExtra'});
-    obj.dataLink18:setName("dataLink18");
+    obj.dataLink19 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink19:setParent(obj.layout21);
+    obj.dataLink19:setFields({'atr_PERBase','atr_PERExtra'});
+    obj.dataLink19:setName("dataLink19");
 
     obj.layout30 = gui.fromHandle(_obj_newObject("layout"));
     obj.layout30:setParent(obj.layout21);
@@ -1625,15 +1650,15 @@ function newfrmGeneral()
     obj.label64:setHorzTextAlign("center");
     obj.label64:setName("label64");
 
-    obj.rectangle21 = gui.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle21:setParent(obj.layout30);
-    obj.rectangle21:setLeft(185);
-    obj.rectangle21:setWidth(30);
-    obj.rectangle21:setHeight(25);
-    obj.rectangle21:setColor("black");
-    obj.rectangle21:setStrokeColor("white");
-    obj.rectangle21:setStrokeSize(1);
-    obj.rectangle21:setName("rectangle21");
+    obj.rectangle22 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle22:setParent(obj.layout30);
+    obj.rectangle22:setLeft(185);
+    obj.rectangle22:setWidth(30);
+    obj.rectangle22:setHeight(25);
+    obj.rectangle22:setColor("black");
+    obj.rectangle22:setStrokeColor("white");
+    obj.rectangle22:setStrokeSize(1);
+    obj.rectangle22:setName("rectangle22");
 
     obj.label65 = gui.fromHandle(_obj_newObject("label"));
     obj.label65:setParent(obj.layout30);
@@ -1644,10 +1669,10 @@ function newfrmGeneral()
     obj.label65:setHorzTextAlign("center");
     obj.label65:setName("label65");
 
-    obj.dataLink19 = gui.fromHandle(_obj_newObject("dataLink"));
-    obj.dataLink19:setParent(obj.layout21);
-    obj.dataLink19:setFields({'atr_CNHBase','atr_CNHExtra'});
-    obj.dataLink19:setName("dataLink19");
+    obj.dataLink20 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink20:setParent(obj.layout21);
+    obj.dataLink20:setFields({'atr_CNHBase','atr_CNHExtra'});
+    obj.dataLink20:setName("dataLink20");
 
     obj.layout31 = gui.fromHandle(_obj_newObject("layout"));
     obj.layout31:setParent(obj.layout21);
@@ -1698,15 +1723,15 @@ function newfrmGeneral()
     obj.label67:setHorzTextAlign("center");
     obj.label67:setName("label67");
 
-    obj.rectangle22 = gui.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle22:setParent(obj.layout31);
-    obj.rectangle22:setLeft(185);
-    obj.rectangle22:setWidth(30);
-    obj.rectangle22:setHeight(25);
-    obj.rectangle22:setColor("black");
-    obj.rectangle22:setStrokeColor("white");
-    obj.rectangle22:setStrokeSize(1);
-    obj.rectangle22:setName("rectangle22");
+    obj.rectangle23 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle23:setParent(obj.layout31);
+    obj.rectangle23:setLeft(185);
+    obj.rectangle23:setWidth(30);
+    obj.rectangle23:setHeight(25);
+    obj.rectangle23:setColor("black");
+    obj.rectangle23:setStrokeColor("white");
+    obj.rectangle23:setStrokeSize(1);
+    obj.rectangle23:setName("rectangle23");
 
     obj.label68 = gui.fromHandle(_obj_newObject("label"));
     obj.label68:setParent(obj.layout31);
@@ -1717,13 +1742,13 @@ function newfrmGeneral()
     obj.label68:setHorzTextAlign("center");
     obj.label68:setName("label68");
 
-    obj.dataLink20 = gui.fromHandle(_obj_newObject("dataLink"));
-    obj.dataLink20:setParent(obj.layout21);
-    obj.dataLink20:setFields({'atr_AMBBase','atr_AMBExtra'});
-    obj.dataLink20:setName("dataLink20");
+    obj.dataLink21 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink21:setParent(obj.layout21);
+    obj.dataLink21:setFields({'atr_AMBBase','atr_AMBExtra'});
+    obj.dataLink21:setName("dataLink21");
 
     obj.layout32 = gui.fromHandle(_obj_newObject("layout"));
-    obj.layout32:setParent(obj.rectangle2);
+    obj.layout32:setParent(obj.rectangle3);
     obj.layout32:setAlign("left");
     obj.layout32:setWidth(270);
     obj.layout32:setMargins({right=5});
@@ -2058,7 +2083,7 @@ function newfrmGeneral()
     obj.checkBox1:setName("checkBox1");
 
     obj.layout52 = gui.fromHandle(_obj_newObject("layout"));
-    obj.layout52:setParent(obj.rectangle2);
+    obj.layout52:setParent(obj.rectangle3);
     obj.layout52:setAlign("left");
     obj.layout52:setWidth(220);
     obj.layout52:setMargins({right=5, top=5});
@@ -2236,25 +2261,25 @@ function newfrmGeneral()
     obj.edit64:setName("edit64");
 
     obj.layout66 = gui.fromHandle(_obj_newObject("layout"));
-    obj.layout66:setParent(obj.rectangle2);
+    obj.layout66:setParent(obj.rectangle3);
     obj.layout66:setAlign("left");
     obj.layout66:setWidth(220);
     obj.layout66:setMargins({right=5});
     obj.layout66:setName("layout66");
 
-    obj.rectangle23 = gui.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle23:setParent(obj.layout66);
-    obj.rectangle23:setLeft(0);
-    obj.rectangle23:setTop(50);
-    obj.rectangle23:setWidth(200);
-    obj.rectangle23:setHeight(200);
-    obj.rectangle23:setColor("black");
-    obj.rectangle23:setStrokeColor("white");
-    obj.rectangle23:setStrokeSize(1);
-    obj.rectangle23:setName("rectangle23");
+    obj.rectangle24 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle24:setParent(obj.layout66);
+    obj.rectangle24:setLeft(0);
+    obj.rectangle24:setTop(50);
+    obj.rectangle24:setWidth(200);
+    obj.rectangle24:setHeight(200);
+    obj.rectangle24:setColor("black");
+    obj.rectangle24:setStrokeColor("white");
+    obj.rectangle24:setStrokeSize(1);
+    obj.rectangle24:setName("rectangle24");
 
     obj.label85 = gui.fromHandle(_obj_newObject("label"));
-    obj.label85:setParent(obj.rectangle23);
+    obj.label85:setParent(obj.rectangle24);
     obj.label85:setLeft(0);
     obj.label85:setTop(40);
     obj.label85:setWidth(200);
@@ -2263,25 +2288,25 @@ function newfrmGeneral()
     obj.label85:setHorzTextAlign("center");
     obj.label85:setName("label85");
 
-    obj.image2 = gui.fromHandle(_obj_newObject("image"));
-    obj.image2:setParent(obj.rectangle23);
-    obj.image2:setAlign("client");
-    obj.image2:setField("avatar");
-    obj.image2:setEditable(true);
-    obj.image2:setStyle("autoFit");
-    obj.image2:setMargins({left=2, right=2, top=2, bottom=2});
-    obj.image2:setName("image2");
+    obj.image3 = gui.fromHandle(_obj_newObject("image"));
+    obj.image3:setParent(obj.rectangle24);
+    obj.image3:setAlign("client");
+    obj.image3:setField("avatar");
+    obj.image3:setEditable(true);
+    obj.image3:setStyle("autoFit");
+    obj.image3:setMargins({left=2, right=2, top=2, bottom=2});
+    obj.image3:setName("image3");
 
-    obj.rectangle24 = gui.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle24:setParent(obj.layout1);
-    obj.rectangle24:setColor("black");
-    obj.rectangle24:setAlign("top");
-    obj.rectangle24:setHeight(200);
-    obj.rectangle24:setMargins({bottom=5});
-    obj.rectangle24:setName("rectangle24");
+    obj.rectangle25 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle25:setParent(obj.layout1);
+    obj.rectangle25:setColor("black");
+    obj.rectangle25:setAlign("top");
+    obj.rectangle25:setHeight(200);
+    obj.rectangle25:setMargins({bottom=5});
+    obj.rectangle25:setName("rectangle25");
 
     obj.layout67 = gui.fromHandle(_obj_newObject("layout"));
-    obj.layout67:setParent(obj.rectangle24);
+    obj.layout67:setParent(obj.rectangle25);
     obj.layout67:setAlign("left");
     obj.layout67:setWidth(500);
     obj.layout67:setMargins({right=5});
@@ -2303,7 +2328,7 @@ function newfrmGeneral()
     obj.textEditor1:setName("textEditor1");
 
     obj.layout68 = gui.fromHandle(_obj_newObject("layout"));
-    obj.layout68:setParent(obj.rectangle24);
+    obj.layout68:setParent(obj.rectangle25);
     obj.layout68:setAlign("left");
     obj.layout68:setWidth(500);
     obj.layout68:setMargins({right=5});
@@ -2324,17 +2349,22 @@ function newfrmGeneral()
     obj.textEditor2:setField("desvantagens");
     obj.textEditor2:setName("textEditor2");
 
-    obj.image3 = gui.fromHandle(_obj_newObject("image"));
-    obj.image3:setParent(obj.rectangle24);
-    obj.image3:setLeft(1010);
-    obj.image3:setTop(25);
-    obj.image3:setWidth(190);
-    obj.image3:setHeight(116);
-    obj.image3:setStyle("autoFit");
-    obj.image3:setSRC("/Ficha Ragnarock/images/ragnarok_b.jpg");
-    obj.image3:setName("image3");
+    obj.image4 = gui.fromHandle(_obj_newObject("image"));
+    obj.image4:setParent(obj.rectangle25);
+    obj.image4:setLeft(1010);
+    obj.image4:setTop(25);
+    obj.image4:setWidth(190);
+    obj.image4:setHeight(116);
+    obj.image4:setStyle("autoFit");
+    obj.image4:setSRC("/Ficha Ragnarock/images/ragnarok_b.jpg");
+    obj.image4:setName("image4");
 
-    obj._e_event0 = obj.button1:addEventListener("onClick",
+    obj._e_event0 = obj.image2:addEventListener("onStartDrag",
+        function (self, drag, x, y)
+            drag:addData("imageURL", sheet.classeIcon);
+        end, obj);
+
+    obj._e_event1 = obj.button1:addEventListener("onClick",
         function (self)
             local firstValue = tonumber(sheet.firstValue) or -1;
             					if (sheet.doubleRoll and firstValue < 0) then
@@ -2342,7 +2372,7 @@ function newfrmGeneral()
             						sheet.firstValueName = "Força";
             						return;
             					end;
-            					local faceTable = {10, 10, 10, 10, 10, 10, 12, 12, 14, 14, 16, 16, 18, 18, 20, 20, 22, 22, 26, 26, 28, 28, 30, 30, 32, 32, 34, 34, 38, 38, 40, 40, 42, 42, 44, 44, 46, 46, 50, 50, 52, 52, 54, 54, 56, 56, 58, 58, 62, 62, 64, 64, 66, 66, 68, 68, 70, 70, 74, 74, 76, 76, 78, 78, 80, 80, 82, 82, 86, 86, 88, 88, 90, 90, 92, 92, 94, 94, 98, 98};
+            					local faceTable = {10, 10, 10, 10, 10, 10, 12, 12, 14, 14, 16, 16, 18, 18, 20, 20, 22, 22, 26, 26, 28, 28, 30, 30, 32, 32, 34, 34, 38, 38, 40, 40, 42, 42, 44, 44, 46, 46, 50, 50, 52, 52, 54, 54, 56, 56, 58, 58, 62, 62, 64, 64, 66, 66, 68, 68, 70, 70, 74, 74, 76, 76, 78, 78, 80, 80, 82, 82, 86, 86, 88, 88, 90, 90, 92, 92, 94, 94, 98, 98, 100, 100, 102, 102, 104, 104, 106, 106, 110, 110, 112, 112, 114, 114, 116, 118, 122, 122, 124, 124, 126, 126, 128, 128, 130, 130, 134, 134, 136, 136, 138, 138, 140, 140, 142, 142, 146, 146, 148, 148, 150, 150, 152, 152, 154, 154, 158, 158, 160, 160, 162, 162, 164, 164, 166, 166, 170, 170, 172, 172, 174, 174, 176, 176, 178, 178, 182, 182, 184, 184, 186, 186, 188, 188, 190, 190, 194, 194, 196, 196, 198, 198, 200, 200, 202, 202, 206, 206, 208, 208, 210, 210, 212, 212, 214, 214, 218, 218, 220, 220, 222, 222, 224, 224, 226, 226, 230, 230, 232, 232, 234, 234, 236, 236, 238, 238, 242, 242, 244, 244, 246, 246, 248, 248, 250, 250, 254, 254, 255};
             
             					local atr = tonumber(sheet.atr_FORTotal) or 0;
             					if (sheet.doubleRoll) then
@@ -2350,7 +2380,7 @@ function newfrmGeneral()
             						 sheet.firstValue = -1;
             					end;
             
-            					atr = math.min(80, atr);
+            					atr = math.min(209, atr);
             					atr = math.max(1, atr);
             
             					local faces = faceTable[atr];
@@ -2418,14 +2448,14 @@ function newfrmGeneral()
             				        end);
         end, obj);
 
-    obj._e_event1 = obj.dataLink1:addEventListener("onChange",
+    obj._e_event2 = obj.dataLink2:addEventListener("onChange",
         function (self, field, oldValue, newValue)
             if sheet == nil then return end;
             				sheet.atr_FORTotal = 	(tonumber(sheet.atr_FORBase) or 0) + 
             											(tonumber(sheet.atr_FORExtra) or 0);
         end, obj);
 
-    obj._e_event2 = obj.button2:addEventListener("onClick",
+    obj._e_event3 = obj.button2:addEventListener("onClick",
         function (self)
             local firstValue = tonumber(sheet.firstValue) or -1;
             					if (sheet.doubleRoll and firstValue < 0) then
@@ -2433,7 +2463,7 @@ function newfrmGeneral()
             						sheet.firstValueName = "Habilidade";
             						return;
             					end;
-            					local faceTable = {10, 10, 10, 10, 10, 10, 12, 12, 14, 14, 16, 16, 18, 18, 20, 20, 22, 22, 26, 26, 28, 28, 30, 30, 32, 32, 34, 34, 38, 38, 40, 40, 42, 42, 44, 44, 46, 46, 50, 50, 52, 52, 54, 54, 56, 56, 58, 58, 62, 62, 64, 64, 66, 66, 68, 68, 70, 70, 74, 74, 76, 76, 78, 78, 80, 80, 82, 82, 86, 86, 88, 88, 90, 90, 92, 92, 94, 94, 98, 98};
+            					local faceTable = {10, 10, 10, 10, 10, 10, 12, 12, 14, 14, 16, 16, 18, 18, 20, 20, 22, 22, 26, 26, 28, 28, 30, 30, 32, 32, 34, 34, 38, 38, 40, 40, 42, 42, 44, 44, 46, 46, 50, 50, 52, 52, 54, 54, 56, 56, 58, 58, 62, 62, 64, 64, 66, 66, 68, 68, 70, 70, 74, 74, 76, 76, 78, 78, 80, 80, 82, 82, 86, 86, 88, 88, 90, 90, 92, 92, 94, 94, 98, 98, 100, 100, 102, 102, 104, 104, 106, 106, 110, 110, 112, 112, 114, 114, 116, 118, 122, 122, 124, 124, 126, 126, 128, 128, 130, 130, 134, 134, 136, 136, 138, 138, 140, 140, 142, 142, 146, 146, 148, 148, 150, 150, 152, 152, 154, 154, 158, 158, 160, 160, 162, 162, 164, 164, 166, 166, 170, 170, 172, 172, 174, 174, 176, 176, 178, 178, 182, 182, 184, 184, 186, 186, 188, 188, 190, 190, 194, 194, 196, 196, 198, 198, 200, 200, 202, 202, 206, 206, 208, 208, 210, 210, 212, 212, 214, 214, 218, 218, 220, 220, 222, 222, 224, 224, 226, 226, 230, 230, 232, 232, 234, 234, 236, 236, 238, 238, 242, 242, 244, 244, 246, 246, 248, 248, 250, 250, 254, 254, 255};
             
             					local atr = tonumber(sheet.atr_HABTotal) or 0;
             					if (sheet.doubleRoll) then
@@ -2441,7 +2471,7 @@ function newfrmGeneral()
             						 sheet.firstValue = -1;
             					end;
             
-            					atr = math.min(80, atr);
+            					atr = math.min(209, atr);
             					atr = math.max(1, atr);
             
             					local faces = faceTable[atr];
@@ -2509,14 +2539,14 @@ function newfrmGeneral()
             				        end);
         end, obj);
 
-    obj._e_event3 = obj.dataLink2:addEventListener("onChange",
+    obj._e_event4 = obj.dataLink3:addEventListener("onChange",
         function (self, field, oldValue, newValue)
             if sheet == nil then return end;
             				sheet.atr_HABTotal = 	(tonumber(sheet.atr_HABBase) or 0) + 
             											(tonumber(sheet.atr_HABExtra) or 0);
         end, obj);
 
-    obj._e_event4 = obj.button3:addEventListener("onClick",
+    obj._e_event5 = obj.button3:addEventListener("onClick",
         function (self)
             local firstValue = tonumber(sheet.firstValue) or -1;
             					if (sheet.doubleRoll and firstValue < 0) then
@@ -2524,7 +2554,7 @@ function newfrmGeneral()
             						sheet.firstValueName = "Agilidade";
             						return;
             					end;
-            					local faceTable = {10, 10, 10, 10, 10, 10, 12, 12, 14, 14, 16, 16, 18, 18, 20, 20, 22, 22, 26, 26, 28, 28, 30, 30, 32, 32, 34, 34, 38, 38, 40, 40, 42, 42, 44, 44, 46, 46, 50, 50, 52, 52, 54, 54, 56, 56, 58, 58, 62, 62, 64, 64, 66, 66, 68, 68, 70, 70, 74, 74, 76, 76, 78, 78, 80, 80, 82, 82, 86, 86, 88, 88, 90, 90, 92, 92, 94, 94, 98, 98};
+            					local faceTable = {10, 10, 10, 10, 10, 10, 12, 12, 14, 14, 16, 16, 18, 18, 20, 20, 22, 22, 26, 26, 28, 28, 30, 30, 32, 32, 34, 34, 38, 38, 40, 40, 42, 42, 44, 44, 46, 46, 50, 50, 52, 52, 54, 54, 56, 56, 58, 58, 62, 62, 64, 64, 66, 66, 68, 68, 70, 70, 74, 74, 76, 76, 78, 78, 80, 80, 82, 82, 86, 86, 88, 88, 90, 90, 92, 92, 94, 94, 98, 98, 100, 100, 102, 102, 104, 104, 106, 106, 110, 110, 112, 112, 114, 114, 116, 118, 122, 122, 124, 124, 126, 126, 128, 128, 130, 130, 134, 134, 136, 136, 138, 138, 140, 140, 142, 142, 146, 146, 148, 148, 150, 150, 152, 152, 154, 154, 158, 158, 160, 160, 162, 162, 164, 164, 166, 166, 170, 170, 172, 172, 174, 174, 176, 176, 178, 178, 182, 182, 184, 184, 186, 186, 188, 188, 190, 190, 194, 194, 196, 196, 198, 198, 200, 200, 202, 202, 206, 206, 208, 208, 210, 210, 212, 212, 214, 214, 218, 218, 220, 220, 222, 222, 224, 224, 226, 226, 230, 230, 232, 232, 234, 234, 236, 236, 238, 238, 242, 242, 244, 244, 246, 246, 248, 248, 250, 250, 254, 254, 255};
             
             					local atr = tonumber(sheet.atr_AGITotal) or 0;
             					if (sheet.doubleRoll) then
@@ -2532,7 +2562,7 @@ function newfrmGeneral()
             						 sheet.firstValue = -1;
             					end;
             
-            					atr = math.min(80, atr);
+            					atr = math.min(209, atr);
             					atr = math.max(1, atr);
             
             					local faces = faceTable[atr];
@@ -2600,14 +2630,14 @@ function newfrmGeneral()
             				        end);
         end, obj);
 
-    obj._e_event5 = obj.dataLink3:addEventListener("onChange",
+    obj._e_event6 = obj.dataLink4:addEventListener("onChange",
         function (self, field, oldValue, newValue)
             if sheet == nil then return end;
             				sheet.atr_AGITotal = 	(tonumber(sheet.atr_AGIBase) or 0) + 
             											(tonumber(sheet.atr_AGIExtra) or 0);
         end, obj);
 
-    obj._e_event6 = obj.button4:addEventListener("onClick",
+    obj._e_event7 = obj.button4:addEventListener("onClick",
         function (self)
             local firstValue = tonumber(sheet.firstValue) or -1;
             					if (sheet.doubleRoll and firstValue < 0) then
@@ -2615,7 +2645,7 @@ function newfrmGeneral()
             						sheet.firstValueName = "Vitalidade";
             						return;
             					end;
-            					local faceTable = {10, 10, 10, 10, 10, 10, 12, 12, 14, 14, 16, 16, 18, 18, 20, 20, 22, 22, 26, 26, 28, 28, 30, 30, 32, 32, 34, 34, 38, 38, 40, 40, 42, 42, 44, 44, 46, 46, 50, 50, 52, 52, 54, 54, 56, 56, 58, 58, 62, 62, 64, 64, 66, 66, 68, 68, 70, 70, 74, 74, 76, 76, 78, 78, 80, 80, 82, 82, 86, 86, 88, 88, 90, 90, 92, 92, 94, 94, 98, 98};
+            					local faceTable = {10, 10, 10, 10, 10, 10, 12, 12, 14, 14, 16, 16, 18, 18, 20, 20, 22, 22, 26, 26, 28, 28, 30, 30, 32, 32, 34, 34, 38, 38, 40, 40, 42, 42, 44, 44, 46, 46, 50, 50, 52, 52, 54, 54, 56, 56, 58, 58, 62, 62, 64, 64, 66, 66, 68, 68, 70, 70, 74, 74, 76, 76, 78, 78, 80, 80, 82, 82, 86, 86, 88, 88, 90, 90, 92, 92, 94, 94, 98, 98, 100, 100, 102, 102, 104, 104, 106, 106, 110, 110, 112, 112, 114, 114, 116, 118, 122, 122, 124, 124, 126, 126, 128, 128, 130, 130, 134, 134, 136, 136, 138, 138, 140, 140, 142, 142, 146, 146, 148, 148, 150, 150, 152, 152, 154, 154, 158, 158, 160, 160, 162, 162, 164, 164, 166, 166, 170, 170, 172, 172, 174, 174, 176, 176, 178, 178, 182, 182, 184, 184, 186, 186, 188, 188, 190, 190, 194, 194, 196, 196, 198, 198, 200, 200, 202, 202, 206, 206, 208, 208, 210, 210, 212, 212, 214, 214, 218, 218, 220, 220, 222, 222, 224, 224, 226, 226, 230, 230, 232, 232, 234, 234, 236, 236, 238, 238, 242, 242, 244, 244, 246, 246, 248, 248, 250, 250, 254, 254, 255};
             
             					local atr = tonumber(sheet.atr_VITTotal) or 0;
             					if (sheet.doubleRoll) then
@@ -2623,7 +2653,7 @@ function newfrmGeneral()
             						 sheet.firstValue = -1;
             					end;
             
-            					atr = math.min(80, atr);
+            					atr = math.min(209, atr);
             					atr = math.max(1, atr);
             
             					local faces = faceTable[atr];
@@ -2691,14 +2721,14 @@ function newfrmGeneral()
             				        end);
         end, obj);
 
-    obj._e_event7 = obj.dataLink4:addEventListener("onChange",
+    obj._e_event8 = obj.dataLink5:addEventListener("onChange",
         function (self, field, oldValue, newValue)
             if sheet == nil then return end;
             				sheet.atr_VITTotal = 	(tonumber(sheet.atr_VITBase) or 0) + 
             											(tonumber(sheet.atr_VITExtra) or 0);
         end, obj);
 
-    obj._e_event8 = obj.button5:addEventListener("onClick",
+    obj._e_event9 = obj.button5:addEventListener("onClick",
         function (self)
             local firstValue = tonumber(sheet.firstValue) or -1;
             					if (sheet.doubleRoll and firstValue < 0) then
@@ -2706,7 +2736,7 @@ function newfrmGeneral()
             						sheet.firstValueName = "Inteligência";
             						return;
             					end;
-            					local faceTable = {10, 10, 10, 10, 10, 10, 12, 12, 14, 14, 16, 16, 18, 18, 20, 20, 22, 22, 26, 26, 28, 28, 30, 30, 32, 32, 34, 34, 38, 38, 40, 40, 42, 42, 44, 44, 46, 46, 50, 50, 52, 52, 54, 54, 56, 56, 58, 58, 62, 62, 64, 64, 66, 66, 68, 68, 70, 70, 74, 74, 76, 76, 78, 78, 80, 80, 82, 82, 86, 86, 88, 88, 90, 90, 92, 92, 94, 94, 98, 98};
+            					local faceTable = {10, 10, 10, 10, 10, 10, 12, 12, 14, 14, 16, 16, 18, 18, 20, 20, 22, 22, 26, 26, 28, 28, 30, 30, 32, 32, 34, 34, 38, 38, 40, 40, 42, 42, 44, 44, 46, 46, 50, 50, 52, 52, 54, 54, 56, 56, 58, 58, 62, 62, 64, 64, 66, 66, 68, 68, 70, 70, 74, 74, 76, 76, 78, 78, 80, 80, 82, 82, 86, 86, 88, 88, 90, 90, 92, 92, 94, 94, 98, 98, 100, 100, 102, 102, 104, 104, 106, 106, 110, 110, 112, 112, 114, 114, 116, 118, 122, 122, 124, 124, 126, 126, 128, 128, 130, 130, 134, 134, 136, 136, 138, 138, 140, 140, 142, 142, 146, 146, 148, 148, 150, 150, 152, 152, 154, 154, 158, 158, 160, 160, 162, 162, 164, 164, 166, 166, 170, 170, 172, 172, 174, 174, 176, 176, 178, 178, 182, 182, 184, 184, 186, 186, 188, 188, 190, 190, 194, 194, 196, 196, 198, 198, 200, 200, 202, 202, 206, 206, 208, 208, 210, 210, 212, 212, 214, 214, 218, 218, 220, 220, 222, 222, 224, 224, 226, 226, 230, 230, 232, 232, 234, 234, 236, 236, 238, 238, 242, 242, 244, 244, 246, 246, 248, 248, 250, 250, 254, 254, 255};
             
             					local atr = tonumber(sheet.atr_INTTotal) or 0;
             					if (sheet.doubleRoll) then
@@ -2714,7 +2744,7 @@ function newfrmGeneral()
             						 sheet.firstValue = -1;
             					end;
             
-            					atr = math.min(80, atr);
+            					atr = math.min(209, atr);
             					atr = math.max(1, atr);
             
             					local faces = faceTable[atr];
@@ -2782,14 +2812,14 @@ function newfrmGeneral()
             				        end);
         end, obj);
 
-    obj._e_event9 = obj.dataLink5:addEventListener("onChange",
+    obj._e_event10 = obj.dataLink6:addEventListener("onChange",
         function (self, field, oldValue, newValue)
             if sheet == nil then return end;
             				sheet.atr_INTTotal = 	(tonumber(sheet.atr_INTBase) or 0) + 
             											(tonumber(sheet.atr_INTExtra) or 0);
         end, obj);
 
-    obj._e_event10 = obj.button6:addEventListener("onClick",
+    obj._e_event11 = obj.button6:addEventListener("onClick",
         function (self)
             local firstValue = tonumber(sheet.firstValue) or -1;
             					if (sheet.doubleRoll and firstValue < 0) then
@@ -2797,7 +2827,7 @@ function newfrmGeneral()
             						sheet.firstValueName = "Destreza";
             						return;
             					end;
-            					local faceTable = {10, 10, 10, 10, 10, 10, 12, 12, 14, 14, 16, 16, 18, 18, 20, 20, 22, 22, 26, 26, 28, 28, 30, 30, 32, 32, 34, 34, 38, 38, 40, 40, 42, 42, 44, 44, 46, 46, 50, 50, 52, 52, 54, 54, 56, 56, 58, 58, 62, 62, 64, 64, 66, 66, 68, 68, 70, 70, 74, 74, 76, 76, 78, 78, 80, 80, 82, 82, 86, 86, 88, 88, 90, 90, 92, 92, 94, 94, 98, 98};
+            					local faceTable = {10, 10, 10, 10, 10, 10, 12, 12, 14, 14, 16, 16, 18, 18, 20, 20, 22, 22, 26, 26, 28, 28, 30, 30, 32, 32, 34, 34, 38, 38, 40, 40, 42, 42, 44, 44, 46, 46, 50, 50, 52, 52, 54, 54, 56, 56, 58, 58, 62, 62, 64, 64, 66, 66, 68, 68, 70, 70, 74, 74, 76, 76, 78, 78, 80, 80, 82, 82, 86, 86, 88, 88, 90, 90, 92, 92, 94, 94, 98, 98, 100, 100, 102, 102, 104, 104, 106, 106, 110, 110, 112, 112, 114, 114, 116, 118, 122, 122, 124, 124, 126, 126, 128, 128, 130, 130, 134, 134, 136, 136, 138, 138, 140, 140, 142, 142, 146, 146, 148, 148, 150, 150, 152, 152, 154, 154, 158, 158, 160, 160, 162, 162, 164, 164, 166, 166, 170, 170, 172, 172, 174, 174, 176, 176, 178, 178, 182, 182, 184, 184, 186, 186, 188, 188, 190, 190, 194, 194, 196, 196, 198, 198, 200, 200, 202, 202, 206, 206, 208, 208, 210, 210, 212, 212, 214, 214, 218, 218, 220, 220, 222, 222, 224, 224, 226, 226, 230, 230, 232, 232, 234, 234, 236, 236, 238, 238, 242, 242, 244, 244, 246, 246, 248, 248, 250, 250, 254, 254, 255};
             
             					local atr = tonumber(sheet.atr_DESTotal) or 0;
             					if (sheet.doubleRoll) then
@@ -2805,7 +2835,7 @@ function newfrmGeneral()
             						 sheet.firstValue = -1;
             					end;
             
-            					atr = math.min(80, atr);
+            					atr = math.min(209, atr);
             					atr = math.max(1, atr);
             
             					local faces = faceTable[atr];
@@ -2873,14 +2903,14 @@ function newfrmGeneral()
             				        end);
         end, obj);
 
-    obj._e_event11 = obj.dataLink6:addEventListener("onChange",
+    obj._e_event12 = obj.dataLink7:addEventListener("onChange",
         function (self, field, oldValue, newValue)
             if sheet == nil then return end;
             				sheet.atr_DESTotal = 	(tonumber(sheet.atr_DESBase) or 0) + 
             											(tonumber(sheet.atr_DESExtra) or 0);
         end, obj);
 
-    obj._e_event12 = obj.button7:addEventListener("onClick",
+    obj._e_event13 = obj.button7:addEventListener("onClick",
         function (self)
             local firstValue = tonumber(sheet.firstValue) or -1;
             					if (sheet.doubleRoll and firstValue < 0) then
@@ -2888,7 +2918,7 @@ function newfrmGeneral()
             						sheet.firstValueName = "Sorte";
             						return;
             					end;
-            					local faceTable = {10, 10, 10, 10, 10, 10, 12, 12, 14, 14, 16, 16, 18, 18, 20, 20, 22, 22, 26, 26, 28, 28, 30, 30, 32, 32, 34, 34, 38, 38, 40, 40, 42, 42, 44, 44, 46, 46, 50, 50, 52, 52, 54, 54, 56, 56, 58, 58, 62, 62, 64, 64, 66, 66, 68, 68, 70, 70, 74, 74, 76, 76, 78, 78, 80, 80, 82, 82, 86, 86, 88, 88, 90, 90, 92, 92, 94, 94, 98, 98};
+            					local faceTable = {10, 10, 10, 10, 10, 10, 12, 12, 14, 14, 16, 16, 18, 18, 20, 20, 22, 22, 26, 26, 28, 28, 30, 30, 32, 32, 34, 34, 38, 38, 40, 40, 42, 42, 44, 44, 46, 46, 50, 50, 52, 52, 54, 54, 56, 56, 58, 58, 62, 62, 64, 64, 66, 66, 68, 68, 70, 70, 74, 74, 76, 76, 78, 78, 80, 80, 82, 82, 86, 86, 88, 88, 90, 90, 92, 92, 94, 94, 98, 98, 100, 100, 102, 102, 104, 104, 106, 106, 110, 110, 112, 112, 114, 114, 116, 118, 122, 122, 124, 124, 126, 126, 128, 128, 130, 130, 134, 134, 136, 136, 138, 138, 140, 140, 142, 142, 146, 146, 148, 148, 150, 150, 152, 152, 154, 154, 158, 158, 160, 160, 162, 162, 164, 164, 166, 166, 170, 170, 172, 172, 174, 174, 176, 176, 178, 178, 182, 182, 184, 184, 186, 186, 188, 188, 190, 190, 194, 194, 196, 196, 198, 198, 200, 200, 202, 202, 206, 206, 208, 208, 210, 210, 212, 212, 214, 214, 218, 218, 220, 220, 222, 222, 224, 224, 226, 226, 230, 230, 232, 232, 234, 234, 236, 236, 238, 238, 242, 242, 244, 244, 246, 246, 248, 248, 250, 250, 254, 254, 255};
             
             					local atr = tonumber(sheet.atr_SORTotal) or 0;
             					if (sheet.doubleRoll) then
@@ -2896,7 +2926,7 @@ function newfrmGeneral()
             						 sheet.firstValue = -1;
             					end;
             
-            					atr = math.min(80, atr);
+            					atr = math.min(209, atr);
             					atr = math.max(1, atr);
             
             					local faces = faceTable[atr];
@@ -2964,14 +2994,14 @@ function newfrmGeneral()
             				        end);
         end, obj);
 
-    obj._e_event13 = obj.dataLink7:addEventListener("onChange",
+    obj._e_event14 = obj.dataLink8:addEventListener("onChange",
         function (self, field, oldValue, newValue)
             if sheet == nil then return end;
             				sheet.atr_SORTotal = 	(tonumber(sheet.atr_SORBase) or 0) + 
             											(tonumber(sheet.atr_SORExtra) or 0);
         end, obj);
 
-    obj._e_event14 = obj.button8:addEventListener("onClick",
+    obj._e_event15 = obj.button8:addEventListener("onClick",
         function (self)
             local firstValue = tonumber(sheet.firstValue) or -1;
             					if (sheet.doubleRoll and firstValue < 0) then
@@ -2979,7 +3009,7 @@ function newfrmGeneral()
             						sheet.firstValueName = "Magia";
             						return;
             					end;
-            					local faceTable = {10, 10, 10, 10, 10, 10, 12, 12, 14, 14, 16, 16, 18, 18, 20, 20, 22, 22, 26, 26, 28, 28, 30, 30, 32, 32, 34, 34, 38, 38, 40, 40, 42, 42, 44, 44, 46, 46, 50, 50, 52, 52, 54, 54, 56, 56, 58, 58, 62, 62, 64, 64, 66, 66, 68, 68, 70, 70, 74, 74, 76, 76, 78, 78, 80, 80, 82, 82, 86, 86, 88, 88, 90, 90, 92, 92, 94, 94, 98, 98};
+            					local faceTable = {10, 10, 10, 10, 10, 10, 12, 12, 14, 14, 16, 16, 18, 18, 20, 20, 22, 22, 26, 26, 28, 28, 30, 30, 32, 32, 34, 34, 38, 38, 40, 40, 42, 42, 44, 44, 46, 46, 50, 50, 52, 52, 54, 54, 56, 56, 58, 58, 62, 62, 64, 64, 66, 66, 68, 68, 70, 70, 74, 74, 76, 76, 78, 78, 80, 80, 82, 82, 86, 86, 88, 88, 90, 90, 92, 92, 94, 94, 98, 98, 100, 100, 102, 102, 104, 104, 106, 106, 110, 110, 112, 112, 114, 114, 116, 118, 122, 122, 124, 124, 126, 126, 128, 128, 130, 130, 134, 134, 136, 136, 138, 138, 140, 140, 142, 142, 146, 146, 148, 148, 150, 150, 152, 152, 154, 154, 158, 158, 160, 160, 162, 162, 164, 164, 166, 166, 170, 170, 172, 172, 174, 174, 176, 176, 178, 178, 182, 182, 184, 184, 186, 186, 188, 188, 190, 190, 194, 194, 196, 196, 198, 198, 200, 200, 202, 202, 206, 206, 208, 208, 210, 210, 212, 212, 214, 214, 218, 218, 220, 220, 222, 222, 224, 224, 226, 226, 230, 230, 232, 232, 234, 234, 236, 236, 238, 238, 242, 242, 244, 244, 246, 246, 248, 248, 250, 250, 254, 254, 255};
             
             					local atr = tonumber(sheet.atr_MAGTotal) or 0;
             					if (sheet.doubleRoll) then
@@ -2987,7 +3017,7 @@ function newfrmGeneral()
             						 sheet.firstValue = -1;
             					end;
             
-            					atr = math.min(80, atr);
+            					atr = math.min(209, atr);
             					atr = math.max(1, atr);
             
             					local faces = faceTable[atr];
@@ -3055,14 +3085,14 @@ function newfrmGeneral()
             				        end);
         end, obj);
 
-    obj._e_event15 = obj.dataLink8:addEventListener("onChange",
+    obj._e_event16 = obj.dataLink9:addEventListener("onChange",
         function (self, field, oldValue, newValue)
             if sheet == nil then return end;
             				sheet.atr_MAGTotal = 	(tonumber(sheet.atr_MAGBase) or 0) + 
             											(tonumber(sheet.atr_MAGExtra) or 0);
         end, obj);
 
-    obj._e_event16 = obj.button9:addEventListener("onClick",
+    obj._e_event17 = obj.button9:addEventListener("onClick",
         function (self)
             local firstValue = tonumber(sheet.firstValue) or -1;
             					if (sheet.doubleRoll and firstValue < 0) then
@@ -3070,7 +3100,7 @@ function newfrmGeneral()
             						sheet.firstValueName = "Defesa";
             						return;
             					end;
-            					local faceTable = {10, 10, 10, 10, 10, 10, 12, 12, 14, 14, 16, 16, 18, 18, 20, 20, 22, 22, 26, 26, 28, 28, 30, 30, 32, 32, 34, 34, 38, 38, 40, 40, 42, 42, 44, 44, 46, 46, 50, 50, 52, 52, 54, 54, 56, 56, 58, 58, 62, 62, 64, 64, 66, 66, 68, 68, 70, 70, 74, 74, 76, 76, 78, 78, 80, 80, 82, 82, 86, 86, 88, 88, 90, 90, 92, 92, 94, 94, 98, 98};
+            					local faceTable = {10, 10, 10, 10, 10, 10, 12, 12, 14, 14, 16, 16, 18, 18, 20, 20, 22, 22, 26, 26, 28, 28, 30, 30, 32, 32, 34, 34, 38, 38, 40, 40, 42, 42, 44, 44, 46, 46, 50, 50, 52, 52, 54, 54, 56, 56, 58, 58, 62, 62, 64, 64, 66, 66, 68, 68, 70, 70, 74, 74, 76, 76, 78, 78, 80, 80, 82, 82, 86, 86, 88, 88, 90, 90, 92, 92, 94, 94, 98, 98, 100, 100, 102, 102, 104, 104, 106, 106, 110, 110, 112, 112, 114, 114, 116, 118, 122, 122, 124, 124, 126, 126, 128, 128, 130, 130, 134, 134, 136, 136, 138, 138, 140, 140, 142, 142, 146, 146, 148, 148, 150, 150, 152, 152, 154, 154, 158, 158, 160, 160, 162, 162, 164, 164, 166, 166, 170, 170, 172, 172, 174, 174, 176, 176, 178, 178, 182, 182, 184, 184, 186, 186, 188, 188, 190, 190, 194, 194, 196, 196, 198, 198, 200, 200, 202, 202, 206, 206, 208, 208, 210, 210, 212, 212, 214, 214, 218, 218, 220, 220, 222, 222, 224, 224, 226, 226, 230, 230, 232, 232, 234, 234, 236, 236, 238, 238, 242, 242, 244, 244, 246, 246, 248, 248, 250, 250, 254, 254, 255};
             
             					local atr = tonumber(sheet.atr_DEFTotal) or 0;
             					if (sheet.doubleRoll) then
@@ -3078,7 +3108,7 @@ function newfrmGeneral()
             						 sheet.firstValue = -1;
             					end;
             
-            					atr = math.min(80, atr);
+            					atr = math.min(209, atr);
             					atr = math.max(1, atr);
             
             					local faces = faceTable[atr];
@@ -3146,14 +3176,14 @@ function newfrmGeneral()
             				        end);
         end, obj);
 
-    obj._e_event17 = obj.dataLink9:addEventListener("onChange",
+    obj._e_event18 = obj.dataLink10:addEventListener("onChange",
         function (self, field, oldValue, newValue)
             if sheet == nil then return end;
             				sheet.atr_DEFTotal = 	(tonumber(sheet.atr_DEFBase) or 0) + 
             											(tonumber(sheet.atr_DEFExtra) or 0);
         end, obj);
 
-    obj._e_event18 = obj.button10:addEventListener("onClick",
+    obj._e_event19 = obj.button10:addEventListener("onClick",
         function (self)
             local firstValue = tonumber(sheet.firstValue) or -1;
             					if (sheet.doubleRoll and firstValue < 0) then
@@ -3161,7 +3191,7 @@ function newfrmGeneral()
             						sheet.firstValueName = "Defesa Mágica";
             						return;
             					end;
-            					local faceTable = {10, 10, 10, 10, 10, 10, 12, 12, 14, 14, 16, 16, 18, 18, 20, 20, 22, 22, 26, 26, 28, 28, 30, 30, 32, 32, 34, 34, 38, 38, 40, 40, 42, 42, 44, 44, 46, 46, 50, 50, 52, 52, 54, 54, 56, 56, 58, 58, 62, 62, 64, 64, 66, 66, 68, 68, 70, 70, 74, 74, 76, 76, 78, 78, 80, 80, 82, 82, 86, 86, 88, 88, 90, 90, 92, 92, 94, 94, 98, 98};
+            					local faceTable = {10, 10, 10, 10, 10, 10, 12, 12, 14, 14, 16, 16, 18, 18, 20, 20, 22, 22, 26, 26, 28, 28, 30, 30, 32, 32, 34, 34, 38, 38, 40, 40, 42, 42, 44, 44, 46, 46, 50, 50, 52, 52, 54, 54, 56, 56, 58, 58, 62, 62, 64, 64, 66, 66, 68, 68, 70, 70, 74, 74, 76, 76, 78, 78, 80, 80, 82, 82, 86, 86, 88, 88, 90, 90, 92, 92, 94, 94, 98, 98, 100, 100, 102, 102, 104, 104, 106, 106, 110, 110, 112, 112, 114, 114, 116, 118, 122, 122, 124, 124, 126, 126, 128, 128, 130, 130, 134, 134, 136, 136, 138, 138, 140, 140, 142, 142, 146, 146, 148, 148, 150, 150, 152, 152, 154, 154, 158, 158, 160, 160, 162, 162, 164, 164, 166, 166, 170, 170, 172, 172, 174, 174, 176, 176, 178, 178, 182, 182, 184, 184, 186, 186, 188, 188, 190, 190, 194, 194, 196, 196, 198, 198, 200, 200, 202, 202, 206, 206, 208, 208, 210, 210, 212, 212, 214, 214, 218, 218, 220, 220, 222, 222, 224, 224, 226, 226, 230, 230, 232, 232, 234, 234, 236, 236, 238, 238, 242, 242, 244, 244, 246, 246, 248, 248, 250, 250, 254, 254, 255};
             
             					local atr = tonumber(sheet.atr_M.DEFTotal) or 0;
             					if (sheet.doubleRoll) then
@@ -3169,7 +3199,7 @@ function newfrmGeneral()
             						 sheet.firstValue = -1;
             					end;
             
-            					atr = math.min(80, atr);
+            					atr = math.min(209, atr);
             					atr = math.max(1, atr);
             
             					local faces = faceTable[atr];
@@ -3237,14 +3267,14 @@ function newfrmGeneral()
             				        end);
         end, obj);
 
-    obj._e_event19 = obj.dataLink10:addEventListener("onChange",
+    obj._e_event20 = obj.dataLink11:addEventListener("onChange",
         function (self, field, oldValue, newValue)
             if sheet == nil then return end;
             				sheet.atr_M.DEFTotal = 	(tonumber(sheet.atr_M.DEFBase) or 0) + 
             											(tonumber(sheet.atr_M.DEFExtra) or 0);
         end, obj);
 
-    obj._e_event20 = obj.button11:addEventListener("onClick",
+    obj._e_event21 = obj.button11:addEventListener("onClick",
         function (self)
             local firstValue = tonumber(sheet.firstValue) or -1;
             					if (sheet.doubleRoll and firstValue < 0) then
@@ -3252,7 +3282,7 @@ function newfrmGeneral()
             						sheet.firstValueName = "Pulo";
             						return;
             					end;
-            					local faceTable = {10, 10, 10, 10, 10, 10, 12, 12, 14, 14, 16, 16, 18, 18, 20, 20, 22, 22, 26, 26, 28, 28, 30, 30, 32, 32, 34, 34, 38, 38, 40, 40, 42, 42, 44, 44, 46, 46, 50, 50, 52, 52, 54, 54, 56, 56, 58, 58, 62, 62, 64, 64, 66, 66, 68, 68, 70, 70, 74, 74, 76, 76, 78, 78, 80, 80, 82, 82, 86, 86, 88, 88, 90, 90, 92, 92, 94, 94, 98, 98};
+            					local faceTable = {10, 10, 10, 10, 10, 10, 12, 12, 14, 14, 16, 16, 18, 18, 20, 20, 22, 22, 26, 26, 28, 28, 30, 30, 32, 32, 34, 34, 38, 38, 40, 40, 42, 42, 44, 44, 46, 46, 50, 50, 52, 52, 54, 54, 56, 56, 58, 58, 62, 62, 64, 64, 66, 66, 68, 68, 70, 70, 74, 74, 76, 76, 78, 78, 80, 80, 82, 82, 86, 86, 88, 88, 90, 90, 92, 92, 94, 94, 98, 98, 100, 100, 102, 102, 104, 104, 106, 106, 110, 110, 112, 112, 114, 114, 116, 118, 122, 122, 124, 124, 126, 126, 128, 128, 130, 130, 134, 134, 136, 136, 138, 138, 140, 140, 142, 142, 146, 146, 148, 148, 150, 150, 152, 152, 154, 154, 158, 158, 160, 160, 162, 162, 164, 164, 166, 166, 170, 170, 172, 172, 174, 174, 176, 176, 178, 178, 182, 182, 184, 184, 186, 186, 188, 188, 190, 190, 194, 194, 196, 196, 198, 198, 200, 200, 202, 202, 206, 206, 208, 208, 210, 210, 212, 212, 214, 214, 218, 218, 220, 220, 222, 222, 224, 224, 226, 226, 230, 230, 232, 232, 234, 234, 236, 236, 238, 238, 242, 242, 244, 244, 246, 246, 248, 248, 250, 250, 254, 254, 255};
             
             					local atr = tonumber(sheet.atr_PULTotal) or 0;
             					if (sheet.doubleRoll) then
@@ -3260,7 +3290,7 @@ function newfrmGeneral()
             						 sheet.firstValue = -1;
             					end;
             
-            					atr = math.min(80, atr);
+            					atr = math.min(209, atr);
             					atr = math.max(1, atr);
             
             					local faces = faceTable[atr];
@@ -3328,14 +3358,14 @@ function newfrmGeneral()
             				        end);
         end, obj);
 
-    obj._e_event21 = obj.dataLink11:addEventListener("onChange",
+    obj._e_event22 = obj.dataLink12:addEventListener("onChange",
         function (self, field, oldValue, newValue)
             if sheet == nil then return end;
             				sheet.atr_PULTotal = 	(tonumber(sheet.atr_PULBase) or 0) + 
             											(tonumber(sheet.atr_PULExtra) or 0);
         end, obj);
 
-    obj._e_event22 = obj.button12:addEventListener("onClick",
+    obj._e_event23 = obj.button12:addEventListener("onClick",
         function (self)
             local firstValue = tonumber(sheet.firstValue) or -1;
             					if (sheet.doubleRoll and firstValue < 0) then
@@ -3343,7 +3373,7 @@ function newfrmGeneral()
             						sheet.firstValueName = "Escalada";
             						return;
             					end;
-            					local faceTable = {10, 10, 10, 10, 10, 10, 12, 12, 14, 14, 16, 16, 18, 18, 20, 20, 22, 22, 26, 26, 28, 28, 30, 30, 32, 32, 34, 34, 38, 38, 40, 40, 42, 42, 44, 44, 46, 46, 50, 50, 52, 52, 54, 54, 56, 56, 58, 58, 62, 62, 64, 64, 66, 66, 68, 68, 70, 70, 74, 74, 76, 76, 78, 78, 80, 80, 82, 82, 86, 86, 88, 88, 90, 90, 92, 92, 94, 94, 98, 98};
+            					local faceTable = {10, 10, 10, 10, 10, 10, 12, 12, 14, 14, 16, 16, 18, 18, 20, 20, 22, 22, 26, 26, 28, 28, 30, 30, 32, 32, 34, 34, 38, 38, 40, 40, 42, 42, 44, 44, 46, 46, 50, 50, 52, 52, 54, 54, 56, 56, 58, 58, 62, 62, 64, 64, 66, 66, 68, 68, 70, 70, 74, 74, 76, 76, 78, 78, 80, 80, 82, 82, 86, 86, 88, 88, 90, 90, 92, 92, 94, 94, 98, 98, 100, 100, 102, 102, 104, 104, 106, 106, 110, 110, 112, 112, 114, 114, 116, 118, 122, 122, 124, 124, 126, 126, 128, 128, 130, 130, 134, 134, 136, 136, 138, 138, 140, 140, 142, 142, 146, 146, 148, 148, 150, 150, 152, 152, 154, 154, 158, 158, 160, 160, 162, 162, 164, 164, 166, 166, 170, 170, 172, 172, 174, 174, 176, 176, 178, 178, 182, 182, 184, 184, 186, 186, 188, 188, 190, 190, 194, 194, 196, 196, 198, 198, 200, 200, 202, 202, 206, 206, 208, 208, 210, 210, 212, 212, 214, 214, 218, 218, 220, 220, 222, 222, 224, 224, 226, 226, 230, 230, 232, 232, 234, 234, 236, 236, 238, 238, 242, 242, 244, 244, 246, 246, 248, 248, 250, 250, 254, 254, 255};
             
             					local atr = tonumber(sheet.atr_ESCTotal) or 0;
             					if (sheet.doubleRoll) then
@@ -3351,7 +3381,7 @@ function newfrmGeneral()
             						 sheet.firstValue = -1;
             					end;
             
-            					atr = math.min(80, atr);
+            					atr = math.min(209, atr);
             					atr = math.max(1, atr);
             
             					local faces = faceTable[atr];
@@ -3419,14 +3449,14 @@ function newfrmGeneral()
             				        end);
         end, obj);
 
-    obj._e_event23 = obj.dataLink12:addEventListener("onChange",
+    obj._e_event24 = obj.dataLink13:addEventListener("onChange",
         function (self, field, oldValue, newValue)
             if sheet == nil then return end;
             				sheet.atr_ESCTotal = 	(tonumber(sheet.atr_ESCBase) or 0) + 
             											(tonumber(sheet.atr_ESCExtra) or 0);
         end, obj);
 
-    obj._e_event24 = obj.button13:addEventListener("onClick",
+    obj._e_event25 = obj.button13:addEventListener("onClick",
         function (self)
             local firstValue = tonumber(sheet.firstValue) or -1;
             					if (sheet.doubleRoll and firstValue < 0) then
@@ -3434,7 +3464,7 @@ function newfrmGeneral()
             						sheet.firstValueName = "Mira";
             						return;
             					end;
-            					local faceTable = {10, 10, 10, 10, 10, 10, 12, 12, 14, 14, 16, 16, 18, 18, 20, 20, 22, 22, 26, 26, 28, 28, 30, 30, 32, 32, 34, 34, 38, 38, 40, 40, 42, 42, 44, 44, 46, 46, 50, 50, 52, 52, 54, 54, 56, 56, 58, 58, 62, 62, 64, 64, 66, 66, 68, 68, 70, 70, 74, 74, 76, 76, 78, 78, 80, 80, 82, 82, 86, 86, 88, 88, 90, 90, 92, 92, 94, 94, 98, 98};
+            					local faceTable = {10, 10, 10, 10, 10, 10, 12, 12, 14, 14, 16, 16, 18, 18, 20, 20, 22, 22, 26, 26, 28, 28, 30, 30, 32, 32, 34, 34, 38, 38, 40, 40, 42, 42, 44, 44, 46, 46, 50, 50, 52, 52, 54, 54, 56, 56, 58, 58, 62, 62, 64, 64, 66, 66, 68, 68, 70, 70, 74, 74, 76, 76, 78, 78, 80, 80, 82, 82, 86, 86, 88, 88, 90, 90, 92, 92, 94, 94, 98, 98, 100, 100, 102, 102, 104, 104, 106, 106, 110, 110, 112, 112, 114, 114, 116, 118, 122, 122, 124, 124, 126, 126, 128, 128, 130, 130, 134, 134, 136, 136, 138, 138, 140, 140, 142, 142, 146, 146, 148, 148, 150, 150, 152, 152, 154, 154, 158, 158, 160, 160, 162, 162, 164, 164, 166, 166, 170, 170, 172, 172, 174, 174, 176, 176, 178, 178, 182, 182, 184, 184, 186, 186, 188, 188, 190, 190, 194, 194, 196, 196, 198, 198, 200, 200, 202, 202, 206, 206, 208, 208, 210, 210, 212, 212, 214, 214, 218, 218, 220, 220, 222, 222, 224, 224, 226, 226, 230, 230, 232, 232, 234, 234, 236, 236, 238, 238, 242, 242, 244, 244, 246, 246, 248, 248, 250, 250, 254, 254, 255};
             
             					local atr = tonumber(sheet.atr_MIRTotal) or 0;
             					if (sheet.doubleRoll) then
@@ -3442,7 +3472,7 @@ function newfrmGeneral()
             						 sheet.firstValue = -1;
             					end;
             
-            					atr = math.min(80, atr);
+            					atr = math.min(209, atr);
             					atr = math.max(1, atr);
             
             					local faces = faceTable[atr];
@@ -3510,14 +3540,14 @@ function newfrmGeneral()
             				        end);
         end, obj);
 
-    obj._e_event25 = obj.dataLink13:addEventListener("onChange",
+    obj._e_event26 = obj.dataLink14:addEventListener("onChange",
         function (self, field, oldValue, newValue)
             if sheet == nil then return end;
             				sheet.atr_MIRTotal = 	(tonumber(sheet.atr_MIRBase) or 0) + 
             											(tonumber(sheet.atr_MIRExtra) or 0);
         end, obj);
 
-    obj._e_event26 = obj.button14:addEventListener("onClick",
+    obj._e_event27 = obj.button14:addEventListener("onClick",
         function (self)
             local firstValue = tonumber(sheet.firstValue) or -1;
             					if (sheet.doubleRoll and firstValue < 0) then
@@ -3525,7 +3555,7 @@ function newfrmGeneral()
             						sheet.firstValueName = "Carisma";
             						return;
             					end;
-            					local faceTable = {10, 10, 10, 10, 10, 10, 12, 12, 14, 14, 16, 16, 18, 18, 20, 20, 22, 22, 26, 26, 28, 28, 30, 30, 32, 32, 34, 34, 38, 38, 40, 40, 42, 42, 44, 44, 46, 46, 50, 50, 52, 52, 54, 54, 56, 56, 58, 58, 62, 62, 64, 64, 66, 66, 68, 68, 70, 70, 74, 74, 76, 76, 78, 78, 80, 80, 82, 82, 86, 86, 88, 88, 90, 90, 92, 92, 94, 94, 98, 98};
+            					local faceTable = {10, 10, 10, 10, 10, 10, 12, 12, 14, 14, 16, 16, 18, 18, 20, 20, 22, 22, 26, 26, 28, 28, 30, 30, 32, 32, 34, 34, 38, 38, 40, 40, 42, 42, 44, 44, 46, 46, 50, 50, 52, 52, 54, 54, 56, 56, 58, 58, 62, 62, 64, 64, 66, 66, 68, 68, 70, 70, 74, 74, 76, 76, 78, 78, 80, 80, 82, 82, 86, 86, 88, 88, 90, 90, 92, 92, 94, 94, 98, 98, 100, 100, 102, 102, 104, 104, 106, 106, 110, 110, 112, 112, 114, 114, 116, 118, 122, 122, 124, 124, 126, 126, 128, 128, 130, 130, 134, 134, 136, 136, 138, 138, 140, 140, 142, 142, 146, 146, 148, 148, 150, 150, 152, 152, 154, 154, 158, 158, 160, 160, 162, 162, 164, 164, 166, 166, 170, 170, 172, 172, 174, 174, 176, 176, 178, 178, 182, 182, 184, 184, 186, 186, 188, 188, 190, 190, 194, 194, 196, 196, 198, 198, 200, 200, 202, 202, 206, 206, 208, 208, 210, 210, 212, 212, 214, 214, 218, 218, 220, 220, 222, 222, 224, 224, 226, 226, 230, 230, 232, 232, 234, 234, 236, 236, 238, 238, 242, 242, 244, 244, 246, 246, 248, 248, 250, 250, 254, 254, 255};
             
             					local atr = tonumber(sheet.atr_CARTotal) or 0;
             					if (sheet.doubleRoll) then
@@ -3533,7 +3563,7 @@ function newfrmGeneral()
             						 sheet.firstValue = -1;
             					end;
             
-            					atr = math.min(80, atr);
+            					atr = math.min(209, atr);
             					atr = math.max(1, atr);
             
             					local faces = faceTable[atr];
@@ -3601,14 +3631,14 @@ function newfrmGeneral()
             				        end);
         end, obj);
 
-    obj._e_event27 = obj.dataLink14:addEventListener("onChange",
+    obj._e_event28 = obj.dataLink15:addEventListener("onChange",
         function (self, field, oldValue, newValue)
             if sheet == nil then return end;
             				sheet.atr_CARTotal = 	(tonumber(sheet.atr_CARBase) or 0) + 
             											(tonumber(sheet.atr_CARExtra) or 0);
         end, obj);
 
-    obj._e_event28 = obj.button15:addEventListener("onClick",
+    obj._e_event29 = obj.button15:addEventListener("onClick",
         function (self)
             local firstValue = tonumber(sheet.firstValue) or -1;
             					if (sheet.doubleRoll and firstValue < 0) then
@@ -3616,7 +3646,7 @@ function newfrmGeneral()
             						sheet.firstValueName = "Labia";
             						return;
             					end;
-            					local faceTable = {10, 10, 10, 10, 10, 10, 12, 12, 14, 14, 16, 16, 18, 18, 20, 20, 22, 22, 26, 26, 28, 28, 30, 30, 32, 32, 34, 34, 38, 38, 40, 40, 42, 42, 44, 44, 46, 46, 50, 50, 52, 52, 54, 54, 56, 56, 58, 58, 62, 62, 64, 64, 66, 66, 68, 68, 70, 70, 74, 74, 76, 76, 78, 78, 80, 80, 82, 82, 86, 86, 88, 88, 90, 90, 92, 92, 94, 94, 98, 98};
+            					local faceTable = {10, 10, 10, 10, 10, 10, 12, 12, 14, 14, 16, 16, 18, 18, 20, 20, 22, 22, 26, 26, 28, 28, 30, 30, 32, 32, 34, 34, 38, 38, 40, 40, 42, 42, 44, 44, 46, 46, 50, 50, 52, 52, 54, 54, 56, 56, 58, 58, 62, 62, 64, 64, 66, 66, 68, 68, 70, 70, 74, 74, 76, 76, 78, 78, 80, 80, 82, 82, 86, 86, 88, 88, 90, 90, 92, 92, 94, 94, 98, 98, 100, 100, 102, 102, 104, 104, 106, 106, 110, 110, 112, 112, 114, 114, 116, 118, 122, 122, 124, 124, 126, 126, 128, 128, 130, 130, 134, 134, 136, 136, 138, 138, 140, 140, 142, 142, 146, 146, 148, 148, 150, 150, 152, 152, 154, 154, 158, 158, 160, 160, 162, 162, 164, 164, 166, 166, 170, 170, 172, 172, 174, 174, 176, 176, 178, 178, 182, 182, 184, 184, 186, 186, 188, 188, 190, 190, 194, 194, 196, 196, 198, 198, 200, 200, 202, 202, 206, 206, 208, 208, 210, 210, 212, 212, 214, 214, 218, 218, 220, 220, 222, 222, 224, 224, 226, 226, 230, 230, 232, 232, 234, 234, 236, 236, 238, 238, 242, 242, 244, 244, 246, 246, 248, 248, 250, 250, 254, 254, 255};
             
             					local atr = tonumber(sheet.atr_LABTotal) or 0;
             					if (sheet.doubleRoll) then
@@ -3624,7 +3654,7 @@ function newfrmGeneral()
             						 sheet.firstValue = -1;
             					end;
             
-            					atr = math.min(80, atr);
+            					atr = math.min(209, atr);
             					atr = math.max(1, atr);
             
             					local faces = faceTable[atr];
@@ -3692,14 +3722,14 @@ function newfrmGeneral()
             				        end);
         end, obj);
 
-    obj._e_event29 = obj.dataLink15:addEventListener("onChange",
+    obj._e_event30 = obj.dataLink16:addEventListener("onChange",
         function (self, field, oldValue, newValue)
             if sheet == nil then return end;
             				sheet.atr_LABTotal = 	(tonumber(sheet.atr_LABBase) or 0) + 
             											(tonumber(sheet.atr_LABExtra) or 0);
         end, obj);
 
-    obj._e_event30 = obj.button16:addEventListener("onClick",
+    obj._e_event31 = obj.button16:addEventListener("onClick",
         function (self)
             local firstValue = tonumber(sheet.firstValue) or -1;
             					if (sheet.doubleRoll and firstValue < 0) then
@@ -3707,7 +3737,7 @@ function newfrmGeneral()
             						sheet.firstValueName = "Decifrar";
             						return;
             					end;
-            					local faceTable = {10, 10, 10, 10, 10, 10, 12, 12, 14, 14, 16, 16, 18, 18, 20, 20, 22, 22, 26, 26, 28, 28, 30, 30, 32, 32, 34, 34, 38, 38, 40, 40, 42, 42, 44, 44, 46, 46, 50, 50, 52, 52, 54, 54, 56, 56, 58, 58, 62, 62, 64, 64, 66, 66, 68, 68, 70, 70, 74, 74, 76, 76, 78, 78, 80, 80, 82, 82, 86, 86, 88, 88, 90, 90, 92, 92, 94, 94, 98, 98};
+            					local faceTable = {10, 10, 10, 10, 10, 10, 12, 12, 14, 14, 16, 16, 18, 18, 20, 20, 22, 22, 26, 26, 28, 28, 30, 30, 32, 32, 34, 34, 38, 38, 40, 40, 42, 42, 44, 44, 46, 46, 50, 50, 52, 52, 54, 54, 56, 56, 58, 58, 62, 62, 64, 64, 66, 66, 68, 68, 70, 70, 74, 74, 76, 76, 78, 78, 80, 80, 82, 82, 86, 86, 88, 88, 90, 90, 92, 92, 94, 94, 98, 98, 100, 100, 102, 102, 104, 104, 106, 106, 110, 110, 112, 112, 114, 114, 116, 118, 122, 122, 124, 124, 126, 126, 128, 128, 130, 130, 134, 134, 136, 136, 138, 138, 140, 140, 142, 142, 146, 146, 148, 148, 150, 150, 152, 152, 154, 154, 158, 158, 160, 160, 162, 162, 164, 164, 166, 166, 170, 170, 172, 172, 174, 174, 176, 176, 178, 178, 182, 182, 184, 184, 186, 186, 188, 188, 190, 190, 194, 194, 196, 196, 198, 198, 200, 200, 202, 202, 206, 206, 208, 208, 210, 210, 212, 212, 214, 214, 218, 218, 220, 220, 222, 222, 224, 224, 226, 226, 230, 230, 232, 232, 234, 234, 236, 236, 238, 238, 242, 242, 244, 244, 246, 246, 248, 248, 250, 250, 254, 254, 255};
             
             					local atr = tonumber(sheet.atr_DECTotal) or 0;
             					if (sheet.doubleRoll) then
@@ -3715,7 +3745,7 @@ function newfrmGeneral()
             						 sheet.firstValue = -1;
             					end;
             
-            					atr = math.min(80, atr);
+            					atr = math.min(209, atr);
             					atr = math.max(1, atr);
             
             					local faces = faceTable[atr];
@@ -3783,14 +3813,14 @@ function newfrmGeneral()
             				        end);
         end, obj);
 
-    obj._e_event31 = obj.dataLink16:addEventListener("onChange",
+    obj._e_event32 = obj.dataLink17:addEventListener("onChange",
         function (self, field, oldValue, newValue)
             if sheet == nil then return end;
             				sheet.atr_DECTotal = 	(tonumber(sheet.atr_DECBase) or 0) + 
             											(tonumber(sheet.atr_DECExtra) or 0);
         end, obj);
 
-    obj._e_event32 = obj.button17:addEventListener("onClick",
+    obj._e_event33 = obj.button17:addEventListener("onClick",
         function (self)
             local firstValue = tonumber(sheet.firstValue) or -1;
             					if (sheet.doubleRoll and firstValue < 0) then
@@ -3798,7 +3828,7 @@ function newfrmGeneral()
             						sheet.firstValueName = "Furtividade";
             						return;
             					end;
-            					local faceTable = {10, 10, 10, 10, 10, 10, 12, 12, 14, 14, 16, 16, 18, 18, 20, 20, 22, 22, 26, 26, 28, 28, 30, 30, 32, 32, 34, 34, 38, 38, 40, 40, 42, 42, 44, 44, 46, 46, 50, 50, 52, 52, 54, 54, 56, 56, 58, 58, 62, 62, 64, 64, 66, 66, 68, 68, 70, 70, 74, 74, 76, 76, 78, 78, 80, 80, 82, 82, 86, 86, 88, 88, 90, 90, 92, 92, 94, 94, 98, 98};
+            					local faceTable = {10, 10, 10, 10, 10, 10, 12, 12, 14, 14, 16, 16, 18, 18, 20, 20, 22, 22, 26, 26, 28, 28, 30, 30, 32, 32, 34, 34, 38, 38, 40, 40, 42, 42, 44, 44, 46, 46, 50, 50, 52, 52, 54, 54, 56, 56, 58, 58, 62, 62, 64, 64, 66, 66, 68, 68, 70, 70, 74, 74, 76, 76, 78, 78, 80, 80, 82, 82, 86, 86, 88, 88, 90, 90, 92, 92, 94, 94, 98, 98, 100, 100, 102, 102, 104, 104, 106, 106, 110, 110, 112, 112, 114, 114, 116, 118, 122, 122, 124, 124, 126, 126, 128, 128, 130, 130, 134, 134, 136, 136, 138, 138, 140, 140, 142, 142, 146, 146, 148, 148, 150, 150, 152, 152, 154, 154, 158, 158, 160, 160, 162, 162, 164, 164, 166, 166, 170, 170, 172, 172, 174, 174, 176, 176, 178, 178, 182, 182, 184, 184, 186, 186, 188, 188, 190, 190, 194, 194, 196, 196, 198, 198, 200, 200, 202, 202, 206, 206, 208, 208, 210, 210, 212, 212, 214, 214, 218, 218, 220, 220, 222, 222, 224, 224, 226, 226, 230, 230, 232, 232, 234, 234, 236, 236, 238, 238, 242, 242, 244, 244, 246, 246, 248, 248, 250, 250, 254, 254, 255};
             
             					local atr = tonumber(sheet.atr_FURTotal) or 0;
             					if (sheet.doubleRoll) then
@@ -3806,7 +3836,7 @@ function newfrmGeneral()
             						 sheet.firstValue = -1;
             					end;
             
-            					atr = math.min(80, atr);
+            					atr = math.min(209, atr);
             					atr = math.max(1, atr);
             
             					local faces = faceTable[atr];
@@ -3874,14 +3904,14 @@ function newfrmGeneral()
             				        end);
         end, obj);
 
-    obj._e_event33 = obj.dataLink17:addEventListener("onChange",
+    obj._e_event34 = obj.dataLink18:addEventListener("onChange",
         function (self, field, oldValue, newValue)
             if sheet == nil then return end;
             				sheet.atr_FURTotal = 	(tonumber(sheet.atr_FURBase) or 0) + 
             											(tonumber(sheet.atr_FURExtra) or 0);
         end, obj);
 
-    obj._e_event34 = obj.button18:addEventListener("onClick",
+    obj._e_event35 = obj.button18:addEventListener("onClick",
         function (self)
             local firstValue = tonumber(sheet.firstValue) or -1;
             					if (sheet.doubleRoll and firstValue < 0) then
@@ -3889,7 +3919,7 @@ function newfrmGeneral()
             						sheet.firstValueName = "Percepção";
             						return;
             					end;
-            					local faceTable = {10, 10, 10, 10, 10, 10, 12, 12, 14, 14, 16, 16, 18, 18, 20, 20, 22, 22, 26, 26, 28, 28, 30, 30, 32, 32, 34, 34, 38, 38, 40, 40, 42, 42, 44, 44, 46, 46, 50, 50, 52, 52, 54, 54, 56, 56, 58, 58, 62, 62, 64, 64, 66, 66, 68, 68, 70, 70, 74, 74, 76, 76, 78, 78, 80, 80, 82, 82, 86, 86, 88, 88, 90, 90, 92, 92, 94, 94, 98, 98};
+            					local faceTable = {10, 10, 10, 10, 10, 10, 12, 12, 14, 14, 16, 16, 18, 18, 20, 20, 22, 22, 26, 26, 28, 28, 30, 30, 32, 32, 34, 34, 38, 38, 40, 40, 42, 42, 44, 44, 46, 46, 50, 50, 52, 52, 54, 54, 56, 56, 58, 58, 62, 62, 64, 64, 66, 66, 68, 68, 70, 70, 74, 74, 76, 76, 78, 78, 80, 80, 82, 82, 86, 86, 88, 88, 90, 90, 92, 92, 94, 94, 98, 98, 100, 100, 102, 102, 104, 104, 106, 106, 110, 110, 112, 112, 114, 114, 116, 118, 122, 122, 124, 124, 126, 126, 128, 128, 130, 130, 134, 134, 136, 136, 138, 138, 140, 140, 142, 142, 146, 146, 148, 148, 150, 150, 152, 152, 154, 154, 158, 158, 160, 160, 162, 162, 164, 164, 166, 166, 170, 170, 172, 172, 174, 174, 176, 176, 178, 178, 182, 182, 184, 184, 186, 186, 188, 188, 190, 190, 194, 194, 196, 196, 198, 198, 200, 200, 202, 202, 206, 206, 208, 208, 210, 210, 212, 212, 214, 214, 218, 218, 220, 220, 222, 222, 224, 224, 226, 226, 230, 230, 232, 232, 234, 234, 236, 236, 238, 238, 242, 242, 244, 244, 246, 246, 248, 248, 250, 250, 254, 254, 255};
             
             					local atr = tonumber(sheet.atr_PERTotal) or 0;
             					if (sheet.doubleRoll) then
@@ -3897,7 +3927,7 @@ function newfrmGeneral()
             						 sheet.firstValue = -1;
             					end;
             
-            					atr = math.min(80, atr);
+            					atr = math.min(209, atr);
             					atr = math.max(1, atr);
             
             					local faces = faceTable[atr];
@@ -3965,14 +3995,14 @@ function newfrmGeneral()
             				        end);
         end, obj);
 
-    obj._e_event35 = obj.dataLink18:addEventListener("onChange",
+    obj._e_event36 = obj.dataLink19:addEventListener("onChange",
         function (self, field, oldValue, newValue)
             if sheet == nil then return end;
             				sheet.atr_PERTotal = 	(tonumber(sheet.atr_PERBase) or 0) + 
             											(tonumber(sheet.atr_PERExtra) or 0);
         end, obj);
 
-    obj._e_event36 = obj.button19:addEventListener("onClick",
+    obj._e_event37 = obj.button19:addEventListener("onClick",
         function (self)
             local firstValue = tonumber(sheet.firstValue) or -1;
             					if (sheet.doubleRoll and firstValue < 0) then
@@ -3980,7 +4010,7 @@ function newfrmGeneral()
             						sheet.firstValueName = "Conhecimento";
             						return;
             					end;
-            					local faceTable = {10, 10, 10, 10, 10, 10, 12, 12, 14, 14, 16, 16, 18, 18, 20, 20, 22, 22, 26, 26, 28, 28, 30, 30, 32, 32, 34, 34, 38, 38, 40, 40, 42, 42, 44, 44, 46, 46, 50, 50, 52, 52, 54, 54, 56, 56, 58, 58, 62, 62, 64, 64, 66, 66, 68, 68, 70, 70, 74, 74, 76, 76, 78, 78, 80, 80, 82, 82, 86, 86, 88, 88, 90, 90, 92, 92, 94, 94, 98, 98};
+            					local faceTable = {10, 10, 10, 10, 10, 10, 12, 12, 14, 14, 16, 16, 18, 18, 20, 20, 22, 22, 26, 26, 28, 28, 30, 30, 32, 32, 34, 34, 38, 38, 40, 40, 42, 42, 44, 44, 46, 46, 50, 50, 52, 52, 54, 54, 56, 56, 58, 58, 62, 62, 64, 64, 66, 66, 68, 68, 70, 70, 74, 74, 76, 76, 78, 78, 80, 80, 82, 82, 86, 86, 88, 88, 90, 90, 92, 92, 94, 94, 98, 98, 100, 100, 102, 102, 104, 104, 106, 106, 110, 110, 112, 112, 114, 114, 116, 118, 122, 122, 124, 124, 126, 126, 128, 128, 130, 130, 134, 134, 136, 136, 138, 138, 140, 140, 142, 142, 146, 146, 148, 148, 150, 150, 152, 152, 154, 154, 158, 158, 160, 160, 162, 162, 164, 164, 166, 166, 170, 170, 172, 172, 174, 174, 176, 176, 178, 178, 182, 182, 184, 184, 186, 186, 188, 188, 190, 190, 194, 194, 196, 196, 198, 198, 200, 200, 202, 202, 206, 206, 208, 208, 210, 210, 212, 212, 214, 214, 218, 218, 220, 220, 222, 222, 224, 224, 226, 226, 230, 230, 232, 232, 234, 234, 236, 236, 238, 238, 242, 242, 244, 244, 246, 246, 248, 248, 250, 250, 254, 254, 255};
             
             					local atr = tonumber(sheet.atr_CNHTotal) or 0;
             					if (sheet.doubleRoll) then
@@ -3988,7 +4018,7 @@ function newfrmGeneral()
             						 sheet.firstValue = -1;
             					end;
             
-            					atr = math.min(80, atr);
+            					atr = math.min(209, atr);
             					atr = math.max(1, atr);
             
             					local faces = faceTable[atr];
@@ -4056,14 +4086,14 @@ function newfrmGeneral()
             				        end);
         end, obj);
 
-    obj._e_event37 = obj.dataLink19:addEventListener("onChange",
+    obj._e_event38 = obj.dataLink20:addEventListener("onChange",
         function (self, field, oldValue, newValue)
             if sheet == nil then return end;
             				sheet.atr_CNHTotal = 	(tonumber(sheet.atr_CNHBase) or 0) + 
             											(tonumber(sheet.atr_CNHExtra) or 0);
         end, obj);
 
-    obj._e_event38 = obj.button20:addEventListener("onClick",
+    obj._e_event39 = obj.button20:addEventListener("onClick",
         function (self)
             local firstValue = tonumber(sheet.firstValue) or -1;
             					if (sheet.doubleRoll and firstValue < 0) then
@@ -4071,7 +4101,7 @@ function newfrmGeneral()
             						sheet.firstValueName = "Ambidestria";
             						return;
             					end;
-            					local faceTable = {10, 10, 10, 10, 10, 10, 12, 12, 14, 14, 16, 16, 18, 18, 20, 20, 22, 22, 26, 26, 28, 28, 30, 30, 32, 32, 34, 34, 38, 38, 40, 40, 42, 42, 44, 44, 46, 46, 50, 50, 52, 52, 54, 54, 56, 56, 58, 58, 62, 62, 64, 64, 66, 66, 68, 68, 70, 70, 74, 74, 76, 76, 78, 78, 80, 80, 82, 82, 86, 86, 88, 88, 90, 90, 92, 92, 94, 94, 98, 98};
+            					local faceTable = {10, 10, 10, 10, 10, 10, 12, 12, 14, 14, 16, 16, 18, 18, 20, 20, 22, 22, 26, 26, 28, 28, 30, 30, 32, 32, 34, 34, 38, 38, 40, 40, 42, 42, 44, 44, 46, 46, 50, 50, 52, 52, 54, 54, 56, 56, 58, 58, 62, 62, 64, 64, 66, 66, 68, 68, 70, 70, 74, 74, 76, 76, 78, 78, 80, 80, 82, 82, 86, 86, 88, 88, 90, 90, 92, 92, 94, 94, 98, 98, 100, 100, 102, 102, 104, 104, 106, 106, 110, 110, 112, 112, 114, 114, 116, 118, 122, 122, 124, 124, 126, 126, 128, 128, 130, 130, 134, 134, 136, 136, 138, 138, 140, 140, 142, 142, 146, 146, 148, 148, 150, 150, 152, 152, 154, 154, 158, 158, 160, 160, 162, 162, 164, 164, 166, 166, 170, 170, 172, 172, 174, 174, 176, 176, 178, 178, 182, 182, 184, 184, 186, 186, 188, 188, 190, 190, 194, 194, 196, 196, 198, 198, 200, 200, 202, 202, 206, 206, 208, 208, 210, 210, 212, 212, 214, 214, 218, 218, 220, 220, 222, 222, 224, 224, 226, 226, 230, 230, 232, 232, 234, 234, 236, 236, 238, 238, 242, 242, 244, 244, 246, 246, 248, 248, 250, 250, 254, 254, 255};
             
             					local atr = tonumber(sheet.atr_AMBTotal) or 0;
             					if (sheet.doubleRoll) then
@@ -4079,7 +4109,7 @@ function newfrmGeneral()
             						 sheet.firstValue = -1;
             					end;
             
-            					atr = math.min(80, atr);
+            					atr = math.min(209, atr);
             					atr = math.max(1, atr);
             
             					local faces = faceTable[atr];
@@ -4147,14 +4177,14 @@ function newfrmGeneral()
             				        end);
         end, obj);
 
-    obj._e_event39 = obj.dataLink20:addEventListener("onChange",
+    obj._e_event40 = obj.dataLink21:addEventListener("onChange",
         function (self, field, oldValue, newValue)
             if sheet == nil then return end;
             				sheet.atr_AMBTotal = 	(tonumber(sheet.atr_AMBBase) or 0) + 
             											(tonumber(sheet.atr_AMBExtra) or 0);
         end, obj);
 
-    obj._e_event40 = obj.button21:addEventListener("onClick",
+    obj._e_event41 = obj.button21:addEventListener("onClick",
         function (self)
             local firstValue = tonumber(sheet.firstValue) or -1;
             									if (sheet.doubleRoll and firstValue < 0) then
@@ -4238,19 +4268,20 @@ function newfrmGeneral()
             								        end);
         end, obj);
 
-    obj._e_event41 = obj.checkBox1:addEventListener("onChange",
+    obj._e_event42 = obj.checkBox1:addEventListener("onChange",
         function (self)
             if sheet==nil then return end;
             									sheet.firstValue = -1;
             									sheet.firstValueName = nil;
         end, obj);
 
-    obj._e_event42 = obj.image2:addEventListener("onStartDrag",
+    obj._e_event43 = obj.image3:addEventListener("onStartDrag",
         function (self, drag, x, y)
             drag:addData("imageURL", sheet.avatar);
         end, obj);
 
     function obj:_releaseEvents()
+        __o_rrpgObjs.removeEventListenerById(self._e_event43);
         __o_rrpgObjs.removeEventListenerById(self._e_event42);
         __o_rrpgObjs.removeEventListenerById(self._e_event41);
         __o_rrpgObjs.removeEventListenerById(self._e_event40);
@@ -4340,16 +4371,17 @@ function newfrmGeneral()
         if self.dataLink18 ~= nil then self.dataLink18:destroy(); self.dataLink18 = nil; end;
         if self.layout13 ~= nil then self.layout13:destroy(); self.layout13 = nil; end;
         if self.label35 ~= nil then self.label35:destroy(); self.label35 = nil; end;
-        if self.label70 ~= nil then self.label70:destroy(); self.label70 = nil; end;
+        if self.dataLink21 ~= nil then self.dataLink21:destroy(); self.dataLink21 = nil; end;
         if self.label13 ~= nil then self.label13:destroy(); self.label13 = nil; end;
         if self.layout8 ~= nil then self.layout8:destroy(); self.layout8 = nil; end;
-        if self.layout38 ~= nil then self.layout38:destroy(); self.layout38 = nil; end;
+        if self.label70 ~= nil then self.label70:destroy(); self.label70 = nil; end;
         if self.label27 ~= nil then self.label27:destroy(); self.label27 = nil; end;
         if self.label59 ~= nil then self.label59:destroy(); self.label59 = nil; end;
         if self.layout23 ~= nil then self.layout23:destroy(); self.layout23 = nil; end;
         if self.button20 ~= nil then self.button20:destroy(); self.button20 = nil; end;
         if self.edit47 ~= nil then self.edit47:destroy(); self.edit47 = nil; end;
         if self.label68 ~= nil then self.label68:destroy(); self.label68 = nil; end;
+        if self.layout38 ~= nil then self.layout38:destroy(); self.layout38 = nil; end;
         if self.label67 ~= nil then self.label67:destroy(); self.label67 = nil; end;
         if self.rectangle5 ~= nil then self.rectangle5:destroy(); self.rectangle5 = nil; end;
         if self.layout62 ~= nil then self.layout62:destroy(); self.layout62 = nil; end;
@@ -4480,16 +4512,16 @@ function newfrmGeneral()
         if self.label23 ~= nil then self.label23:destroy(); self.label23 = nil; end;
         if self.label32 ~= nil then self.label32:destroy(); self.label32 = nil; end;
         if self.dataLink10 ~= nil then self.dataLink10:destroy(); self.dataLink10 = nil; end;
+        if self.image2 ~= nil then self.image2:destroy(); self.image2 = nil; end;
         if self.rectangle19 ~= nil then self.rectangle19:destroy(); self.rectangle19 = nil; end;
-        if self.edit57 ~= nil then self.edit57:destroy(); self.edit57 = nil; end;
         if self.label24 ~= nil then self.label24:destroy(); self.label24 = nil; end;
         if self.layout3 ~= nil then self.layout3:destroy(); self.layout3 = nil; end;
         if self.dataLink5 ~= nil then self.dataLink5:destroy(); self.dataLink5 = nil; end;
         if self.label61 ~= nil then self.label61:destroy(); self.label61 = nil; end;
         if self.rectangle10 ~= nil then self.rectangle10:destroy(); self.rectangle10 = nil; end;
-        if self.label65 ~= nil then self.label65:destroy(); self.label65 = nil; end;
-        if self.layout1 ~= nil then self.layout1:destroy(); self.layout1 = nil; end;
         if self.rectangle22 ~= nil then self.rectangle22:destroy(); self.rectangle22 = nil; end;
+        if self.layout1 ~= nil then self.layout1:destroy(); self.layout1 = nil; end;
+        if self.label65 ~= nil then self.label65:destroy(); self.label65 = nil; end;
         if self.rectangle1 ~= nil then self.rectangle1:destroy(); self.rectangle1 = nil; end;
         if self.edit50 ~= nil then self.edit50:destroy(); self.edit50 = nil; end;
         if self.edit54 ~= nil then self.edit54:destroy(); self.edit54 = nil; end;
@@ -4497,24 +4529,25 @@ function newfrmGeneral()
         if self.label64 ~= nil then self.label64:destroy(); self.label64 = nil; end;
         if self.edit24 ~= nil then self.edit24:destroy(); self.edit24 = nil; end;
         if self.layout45 ~= nil then self.layout45:destroy(); self.layout45 = nil; end;
-        if self.edit59 ~= nil then self.edit59:destroy(); self.edit59 = nil; end;
+        if self.edit57 ~= nil then self.edit57:destroy(); self.edit57 = nil; end;
         if self.layout12 ~= nil then self.layout12:destroy(); self.layout12 = nil; end;
         if self.edit14 ~= nil then self.edit14:destroy(); self.edit14 = nil; end;
-        if self.edit61 ~= nil then self.edit61:destroy(); self.edit61 = nil; end;
+        if self.edit59 ~= nil then self.edit59:destroy(); self.edit59 = nil; end;
         if self.layout46 ~= nil then self.layout46:destroy(); self.layout46 = nil; end;
         if self.dataLink8 ~= nil then self.dataLink8:destroy(); self.dataLink8 = nil; end;
         if self.edit4 ~= nil then self.edit4:destroy(); self.edit4 = nil; end;
         if self.layout25 ~= nil then self.layout25:destroy(); self.layout25 = nil; end;
         if self.edit44 ~= nil then self.edit44:destroy(); self.edit44 = nil; end;
         if self.layout56 ~= nil then self.layout56:destroy(); self.layout56 = nil; end;
-        if self.edit63 ~= nil then self.edit63:destroy(); self.edit63 = nil; end;
+        if self.edit61 ~= nil then self.edit61:destroy(); self.edit61 = nil; end;
         if self.dataLink14 ~= nil then self.dataLink14:destroy(); self.dataLink14 = nil; end;
         if self.label4 ~= nil then self.label4:destroy(); self.label4 = nil; end;
         if self.label6 ~= nil then self.label6:destroy(); self.label6 = nil; end;
+        if self.edit63 ~= nil then self.edit63:destroy(); self.edit63 = nil; end;
         if self.layout66 ~= nil then self.layout66:destroy(); self.layout66 = nil; end;
-        if self.image2 ~= nil then self.image2:destroy(); self.image2 = nil; end;
         if self.button13 ~= nil then self.button13:destroy(); self.button13 = nil; end;
         if self.textEditor2 ~= nil then self.textEditor2:destroy(); self.textEditor2 = nil; end;
+        if self.rectangle25 ~= nil then self.rectangle25:destroy(); self.rectangle25 = nil; end;
         if self.label74 ~= nil then self.label74:destroy(); self.label74 = nil; end;
         if self.label37 ~= nil then self.label37:destroy(); self.label37 = nil; end;
         if self.dataLink19 ~= nil then self.dataLink19:destroy(); self.dataLink19 = nil; end;
@@ -4585,11 +4618,12 @@ function newfrmGeneral()
         if self.layout6 ~= nil then self.layout6:destroy(); self.layout6 = nil; end;
         if self.label5 ~= nil then self.label5:destroy(); self.label5 = nil; end;
         if self.rectangle4 ~= nil then self.rectangle4:destroy(); self.rectangle4 = nil; end;
-        if self.layout22 ~= nil then self.layout22:destroy(); self.layout22 = nil; end;
         if self.rectangle13 ~= nil then self.rectangle13:destroy(); self.rectangle13 = nil; end;
         if self.dataLink11 ~= nil then self.dataLink11:destroy(); self.dataLink11 = nil; end;
+        if self.layout22 ~= nil then self.layout22:destroy(); self.layout22 = nil; end;
         if self.layout48 ~= nil then self.layout48:destroy(); self.layout48 = nil; end;
         if self.label84 ~= nil then self.label84:destroy(); self.label84 = nil; end;
+        if self.image4 ~= nil then self.image4:destroy(); self.image4 = nil; end;
         if self.button19 ~= nil then self.button19:destroy(); self.button19 = nil; end;
         if self.edit32 ~= nil then self.edit32:destroy(); self.edit32 = nil; end;
         if self.button14 ~= nil then self.button14:destroy(); self.button14 = nil; end;

@@ -42,6 +42,12 @@ function newfrmTemplateNotes()
     obj.image1:setEditable(true);
     obj.image1:setName("image1");
 
+    obj.dataLink1 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink1:setParent(obj.image1);
+    obj.dataLink1:setField("bgNotes");
+    obj.dataLink1:setDefaultValue("http://blob.firecast.com.br/blobs/LMFLOSRA_1594494/Ragnarok_Anotacoes_2_NEW.jpg");
+    obj.dataLink1:setName("dataLink1");
+
     obj.layout1 = gui.fromHandle(_obj_newObject("layout"));
     obj.layout1:setParent(obj.image1);
     obj.layout1:setAlign("left");
@@ -153,6 +159,7 @@ function newfrmTemplateNotes()
           self:setNodeDatabase(nil);
         end;
 
+        if self.label2 ~= nil then self.label2:destroy(); self.label2 = nil; end;
         if self.richEdit1 ~= nil then self.richEdit1:destroy(); self.richEdit1 = nil; end;
         if self.label1 ~= nil then self.label1:destroy(); self.label1 = nil; end;
         if self.rectangle2 ~= nil then self.rectangle2:destroy(); self.rectangle2 = nil; end;
@@ -166,7 +173,7 @@ function newfrmTemplateNotes()
         if self.rectangle1 ~= nil then self.rectangle1:destroy(); self.rectangle1 = nil; end;
         if self.layout2 ~= nil then self.layout2:destroy(); self.layout2 = nil; end;
         if self.richEdit3 ~= nil then self.richEdit3:destroy(); self.richEdit3 = nil; end;
-        if self.label2 ~= nil then self.label2:destroy(); self.label2 = nil; end;
+        if self.dataLink1 ~= nil then self.dataLink1:destroy(); self.dataLink1 = nil; end;
         self:_oldLFMDestroy();
     end;
 

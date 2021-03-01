@@ -2,6 +2,7 @@
 <form name="frmQuest" align="client">
 	<scrollBox align="client">
 		<image align="client" field="bgQuest" style="autoFit" editable="true"/>
+		<dataLink field="bgQuest" defaultValue="http://blob.firecast.com.br/blobs/FKMADRLH_1595976/Ragnarok_Quest_Window_2.0.jpg"/>
 		<layout height="660" width="1225" margins="{right=0}">
 			<layout align="left" width="600" margins="{right=25}">
 				<rectangle left="0" top="0" width="600" height="660" color="black"/>

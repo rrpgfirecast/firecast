@@ -2,6 +2,7 @@
 <form name="frmTemplateNotes" align="client">
 	<scrollBox align="client">
 		<image align="client" field="bgNotes" style="autoFit" editable="true">
+			<dataLink field="bgNotes" defaultValue="http://blob.firecast.com.br/blobs/LMFLOSRA_1594494/Ragnarok_Anotacoes_2_NEW.jpg"/>
 			<layout align="left" width="525" margins="{right=5}">
 				<rectangle align="client" color="black" xradius="5" yradius="15" cornerType="round">
 		        	<label align="top" height="20" text="Anotações" horzTextAlign="center"/>

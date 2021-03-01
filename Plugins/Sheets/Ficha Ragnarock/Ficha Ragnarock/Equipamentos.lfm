@@ -68,6 +68,7 @@
 
 	<scrollBox align="client">
 		<image align="client" field="bgEquipamentos" style="autoFit" editable="true"/>
+		<dataLink field="bgEquipamentos" defaultValue="http://blob.firecast.com.br/blobs/RFMEDQFE_1615758/tab2.png"/>
 		
 		<layout height="925" width="1255" margins="{right=0}">
 
@@ -133,6 +134,14 @@
 			<rectangle color="black" align="top" height="200" margins="{bottom=5}">
 				<layout align="left" width="400" margins="{right=25}">
 					<ListaFlexivel nome="Orbes" rclName="campoDasOrbes" rclField="campoDasOrbes"/>
+				</layout>
+
+				<layout align="left" width="400" margins="{right=25}">
+					<ListaFlexivel nome="Títulos" rclName="campoDosTitulos" rclField="campoDosTitulos"/>
+				</layout>
+
+				<layout align="left" width="400" margins="{right=25}">
+					<ListaFlexivel nome="Conquistas" rclName="campoDasConquistas" rclField="campoDasConquistas"/>
 				</layout>
 			</rectangle>
 

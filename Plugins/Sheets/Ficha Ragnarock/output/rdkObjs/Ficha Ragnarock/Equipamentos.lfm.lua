@@ -118,6 +118,12 @@ function newfrmEquipamentos()
     obj.image3:setEditable(true);
     obj.image3:setName("image3");
 
+    obj.dataLink1 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink1:setParent(obj.scrollBox1);
+    obj.dataLink1:setField("bgEquipamentos");
+    obj.dataLink1:setDefaultValue("http://blob.firecast.com.br/blobs/RFMEDQFE_1615758/tab2.png");
+    obj.dataLink1:setName("dataLink1");
+
     obj.layout3 = gui.fromHandle(_obj_newObject("layout"));
     obj.layout3:setParent(obj.scrollBox1);
     obj.layout3:setHeight(925);
@@ -1679,6 +1685,90 @@ function newfrmEquipamentos()
     obj.campoDasOrbes:setLayout("horizontalTiles");
     obj.campoDasOrbes:setHitTest(false);
 
+    obj.layout87 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout87:setParent(obj.rectangle18);
+    obj.layout87:setAlign("left");
+    obj.layout87:setWidth(400);
+    obj.layout87:setMargins({right=25});
+    obj.layout87:setName("layout87");
+
+    obj.layout88 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout88:setParent(obj.layout87);
+    obj.layout88:setAlign("client");
+    obj.layout88:setName("layout88");
+
+    obj.layout89 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout89:setParent(obj.layout88);
+    obj.layout89:setAlign("top");
+    obj.layout89:setHeight(25);
+    obj.layout89:setName("layout89");
+
+    obj.button4 = gui.fromHandle(_obj_newObject("button"));
+    obj.button4:setParent(obj.layout89);
+    obj.button4:setText("+");
+    obj.button4:setAlign("left");
+    obj.button4:setWidth(30);
+    obj.button4:setName("button4");
+
+    obj.label47 = gui.fromHandle(_obj_newObject("label"));
+    obj.label47:setParent(obj.layout89);
+    obj.label47:setText("Títulos");
+    obj.label47:setAlign("left");
+    obj.label47:setWidth(225);
+    obj.label47:setMargins({left=5});
+    obj.label47:setName("label47");
+
+    obj.campoDosTitulos = gui.fromHandle(_obj_newObject("recordList"));
+    obj.campoDosTitulos:setParent(obj.layout88);
+    obj.campoDosTitulos:setName("campoDosTitulos");
+    obj.campoDosTitulos:setField("campoDosTitulos");
+    obj.campoDosTitulos:setTemplateForm("frmItem");
+    obj.campoDosTitulos:setAlign("client");
+    obj.campoDosTitulos:setLayout("horizontalTiles");
+    obj.campoDosTitulos:setHitTest(false);
+
+    obj.layout90 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout90:setParent(obj.rectangle18);
+    obj.layout90:setAlign("left");
+    obj.layout90:setWidth(400);
+    obj.layout90:setMargins({right=25});
+    obj.layout90:setName("layout90");
+
+    obj.layout91 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout91:setParent(obj.layout90);
+    obj.layout91:setAlign("client");
+    obj.layout91:setName("layout91");
+
+    obj.layout92 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout92:setParent(obj.layout91);
+    obj.layout92:setAlign("top");
+    obj.layout92:setHeight(25);
+    obj.layout92:setName("layout92");
+
+    obj.button5 = gui.fromHandle(_obj_newObject("button"));
+    obj.button5:setParent(obj.layout92);
+    obj.button5:setText("+");
+    obj.button5:setAlign("left");
+    obj.button5:setWidth(30);
+    obj.button5:setName("button5");
+
+    obj.label48 = gui.fromHandle(_obj_newObject("label"));
+    obj.label48:setParent(obj.layout92);
+    obj.label48:setText("Conquistas");
+    obj.label48:setAlign("left");
+    obj.label48:setWidth(225);
+    obj.label48:setMargins({left=5});
+    obj.label48:setName("label48");
+
+    obj.campoDasConquistas = gui.fromHandle(_obj_newObject("recordList"));
+    obj.campoDasConquistas:setParent(obj.layout91);
+    obj.campoDasConquistas:setName("campoDasConquistas");
+    obj.campoDasConquistas:setField("campoDasConquistas");
+    obj.campoDasConquistas:setTemplateForm("frmItem");
+    obj.campoDasConquistas:setAlign("client");
+    obj.campoDasConquistas:setLayout("horizontalTiles");
+    obj.campoDasConquistas:setHitTest(false);
+
     obj._e_event0 = obj.button1:addEventListener("onClick",
         function (self)
             self.popItem.node.delete = 1;
@@ -1760,7 +1850,31 @@ function newfrmEquipamentos()
             return ((tonumber(nodeA.nivelHabilidade) or 0) - (tonumber(nodeB.nivelHabilidade) or 0));
         end, obj);
 
+    obj._e_event16 = obj.button4:addEventListener("onClick",
+        function (self)
+            self.campoDosTitulos:append();
+        end, obj);
+
+    obj._e_event17 = obj.campoDosTitulos:addEventListener("onCompare",
+        function (self, nodeA, nodeB)
+            return ((tonumber(nodeA.nivelHabilidade) or 0) - (tonumber(nodeB.nivelHabilidade) or 0));
+        end, obj);
+
+    obj._e_event18 = obj.button5:addEventListener("onClick",
+        function (self)
+            self.campoDasConquistas:append();
+        end, obj);
+
+    obj._e_event19 = obj.campoDasConquistas:addEventListener("onCompare",
+        function (self, nodeA, nodeB)
+            return ((tonumber(nodeA.nivelHabilidade) or 0) - (tonumber(nodeB.nivelHabilidade) or 0));
+        end, obj);
+
     function obj:_releaseEvents()
+        __o_rrpgObjs.removeEventListenerById(self._e_event19);
+        __o_rrpgObjs.removeEventListenerById(self._e_event18);
+        __o_rrpgObjs.removeEventListenerById(self._e_event17);
+        __o_rrpgObjs.removeEventListenerById(self._e_event16);
         __o_rrpgObjs.removeEventListenerById(self._e_event15);
         __o_rrpgObjs.removeEventListenerById(self._e_event14);
         __o_rrpgObjs.removeEventListenerById(self._e_event13);
@@ -1822,6 +1936,7 @@ function newfrmEquipamentos()
         if self.rectangle5 ~= nil then self.rectangle5:destroy(); self.rectangle5 = nil; end;
         if self.layout62 ~= nil then self.layout62:destroy(); self.layout62 = nil; end;
         if self.layout68 ~= nil then self.layout68:destroy(); self.layout68 = nil; end;
+        if self.layout89 ~= nil then self.layout89:destroy(); self.layout89 = nil; end;
         if self.button1 ~= nil then self.button1:destroy(); self.button1 = nil; end;
         if self.label8 ~= nil then self.label8:destroy(); self.label8 = nil; end;
         if self.edit26 ~= nil then self.edit26:destroy(); self.edit26 = nil; end;
@@ -1836,7 +1951,9 @@ function newfrmEquipamentos()
         if self.edit5 ~= nil then self.edit5:destroy(); self.edit5 = nil; end;
         if self.layout54 ~= nil then self.layout54:destroy(); self.layout54 = nil; end;
         if self.layout71 ~= nil then self.layout71:destroy(); self.layout71 = nil; end;
+        if self.layout88 ~= nil then self.layout88:destroy(); self.layout88 = nil; end;
         if self.label15 ~= nil then self.label15:destroy(); self.label15 = nil; end;
+        if self.campoDosTitulos ~= nil then self.campoDosTitulos:destroy(); self.campoDosTitulos = nil; end;
         if self.layout50 ~= nil then self.layout50:destroy(); self.layout50 = nil; end;
         if self.layout32 ~= nil then self.layout32:destroy(); self.layout32 = nil; end;
         if self.label41 ~= nil then self.label41:destroy(); self.label41 = nil; end;
@@ -1846,13 +1963,17 @@ function newfrmEquipamentos()
         if self.image11 ~= nil then self.image11:destroy(); self.image11 = nil; end;
         if self.layout36 ~= nil then self.layout36:destroy(); self.layout36 = nil; end;
         if self.textEditor5 ~= nil then self.textEditor5:destroy(); self.textEditor5 = nil; end;
+        if self.layout92 ~= nil then self.layout92:destroy(); self.layout92 = nil; end;
         if self.layout52 ~= nil then self.layout52:destroy(); self.layout52 = nil; end;
         if self.label16 ~= nil then self.label16:destroy(); self.label16 = nil; end;
         if self.textEditor7 ~= nil then self.textEditor7:destroy(); self.textEditor7 = nil; end;
         if self.edit10 ~= nil then self.edit10:destroy(); self.edit10 = nil; end;
         if self.edit16 ~= nil then self.edit16:destroy(); self.edit16 = nil; end;
         if self.edit31 ~= nil then self.edit31:destroy(); self.edit31 = nil; end;
+        if self.label47 ~= nil then self.label47:destroy(); self.label47 = nil; end;
         if self.edit1 ~= nil then self.edit1:destroy(); self.edit1 = nil; end;
+        if self.label48 ~= nil then self.label48:destroy(); self.label48 = nil; end;
+        if self.button4 ~= nil then self.button4:destroy(); self.button4 = nil; end;
         if self.textEditor4 ~= nil then self.textEditor4:destroy(); self.textEditor4 = nil; end;
         if self.layout34 ~= nil then self.layout34:destroy(); self.layout34 = nil; end;
         if self.label1 ~= nil then self.label1:destroy(); self.label1 = nil; end;
@@ -1919,6 +2040,7 @@ function newfrmEquipamentos()
         if self.layout60 ~= nil then self.layout60:destroy(); self.layout60 = nil; end;
         if self.edit12 ~= nil then self.edit12:destroy(); self.edit12 = nil; end;
         if self.layout59 ~= nil then self.layout59:destroy(); self.layout59 = nil; end;
+        if self.campoDasConquistas ~= nil then self.campoDasConquistas:destroy(); self.campoDasConquistas = nil; end;
         if self.layout65 ~= nil then self.layout65:destroy(); self.layout65 = nil; end;
         if self.label26 ~= nil then self.label26:destroy(); self.label26 = nil; end;
         if self.image14 ~= nil then self.image14:destroy(); self.image14 = nil; end;
@@ -1926,6 +2048,7 @@ function newfrmEquipamentos()
         if self.label23 ~= nil then self.label23:destroy(); self.label23 = nil; end;
         if self.label32 ~= nil then self.label32:destroy(); self.label32 = nil; end;
         if self.image2 ~= nil then self.image2:destroy(); self.image2 = nil; end;
+        if self.layout90 ~= nil then self.layout90:destroy(); self.layout90 = nil; end;
         if self.label24 ~= nil then self.label24:destroy(); self.label24 = nil; end;
         if self.layout3 ~= nil then self.layout3:destroy(); self.layout3 = nil; end;
         if self.rectangle10 ~= nil then self.rectangle10:destroy(); self.rectangle10 = nil; end;
@@ -1969,8 +2092,10 @@ function newfrmEquipamentos()
         if self.popItem ~= nil then self.popItem:destroy(); self.popItem = nil; end;
         if self.layout53 ~= nil then self.layout53:destroy(); self.layout53 = nil; end;
         if self.edit13 ~= nil then self.edit13:destroy(); self.edit13 = nil; end;
+        if self.dataLink1 ~= nil then self.dataLink1:destroy(); self.dataLink1 = nil; end;
         if self.label36 ~= nil then self.label36:destroy(); self.label36 = nil; end;
         if self.rectangle3 ~= nil then self.rectangle3:destroy(); self.rectangle3 = nil; end;
+        if self.button5 ~= nil then self.button5:destroy(); self.button5 = nil; end;
         if self.textEditor10 ~= nil then self.textEditor10:destroy(); self.textEditor10 = nil; end;
         if self.layout70 ~= nil then self.layout70:destroy(); self.layout70 = nil; end;
         if self.layout31 ~= nil then self.layout31:destroy(); self.layout31 = nil; end;
@@ -1987,6 +2112,7 @@ function newfrmEquipamentos()
         if self.label20 ~= nil then self.label20:destroy(); self.label20 = nil; end;
         if self.layout84 ~= nil then self.layout84:destroy(); self.layout84 = nil; end;
         if self.layout40 ~= nil then self.layout40:destroy(); self.layout40 = nil; end;
+        if self.layout87 ~= nil then self.layout87:destroy(); self.layout87 = nil; end;
         if self.campoDasOrbes ~= nil then self.campoDasOrbes:destroy(); self.campoDasOrbes = nil; end;
         if self.label25 ~= nil then self.label25:destroy(); self.label25 = nil; end;
         if self.label7 ~= nil then self.label7:destroy(); self.label7 = nil; end;
@@ -2004,6 +2130,7 @@ function newfrmEquipamentos()
         if self.layout86 ~= nil then self.layout86:destroy(); self.layout86 = nil; end;
         if self.layout85 ~= nil then self.layout85:destroy(); self.layout85 = nil; end;
         if self.layout75 ~= nil then self.layout75:destroy(); self.layout75 = nil; end;
+        if self.layout91 ~= nil then self.layout91:destroy(); self.layout91 = nil; end;
         if self.edit20 ~= nil then self.edit20:destroy(); self.edit20 = nil; end;
         self:_oldLFMDestroy();
     end;

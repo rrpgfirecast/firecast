@@ -42,6 +42,12 @@ function newfrmQuest()
     obj.image1:setEditable(true);
     obj.image1:setName("image1");
 
+    obj.dataLink1 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink1:setParent(obj.scrollBox1);
+    obj.dataLink1:setField("bgQuest");
+    obj.dataLink1:setDefaultValue("http://blob.firecast.com.br/blobs/FKMADRLH_1595976/Ragnarok_Quest_Window_2.0.jpg");
+    obj.dataLink1:setName("dataLink1");
+
     obj.layout1 = gui.fromHandle(_obj_newObject("layout"));
     obj.layout1:setParent(obj.scrollBox1);
     obj.layout1:setHeight(660);
@@ -162,6 +168,7 @@ function newfrmQuest()
           self:setNodeDatabase(nil);
         end;
 
+        if self.dataLink1 ~= nil then self.dataLink1:destroy(); self.dataLink1 = nil; end;
         if self.rclQuestCompleta ~= nil then self.rclQuestCompleta:destroy(); self.rclQuestCompleta = nil; end;
         if self.layout3 ~= nil then self.layout3:destroy(); self.layout3 = nil; end;
         if self.button1 ~= nil then self.button1:destroy(); self.button1 = nil; end;

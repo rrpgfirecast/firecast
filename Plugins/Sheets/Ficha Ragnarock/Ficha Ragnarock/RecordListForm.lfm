@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<form name="frmRecordListForm" width="575" height="125" margins="{top=1}">
+<form name="frmRecordListForm" width="575" height="25" margins="{top=1}" theme="light">
 
 	<template name="VertLabelEdit">
 		<layout align="left" width="$(width)" margins="{right=5}">
@@ -8,33 +8,35 @@
 		</layout>
 	</template>
 
-	<rectangle align="client" color="#212121">
-		<layout align="top" height="50">
-			<VertLabelEdit width="200" text="Técnica" field="nome" fontSize="13"/>
-			<VertLabelEdit width="50" text="AP/TM" field="ap" fontSize="13"/>
-			<VertLabelEdit width="50" text="SP" field="sp" fontSize="13"/>
-			<VertLabelEdit width="50" text="NV" field="lvl" fontSize="13"/>
-			<rectangle align="left" width="50" height="50" color="black" strokeColor="white" strokeSize="1">
-				<image align="client" field="avatar" editable="true" style="autoFit" margins="{left=2, right=2, top=2, bottom=2}">
-					<event name="OnStartDrag">
-					    drag:addData("imageURL", sheet.avatar);
-					</event>
-				</image>
-			</rectangle>
+	<rectangle width="575" height="25" color="#F0FFFF">
+		<checkBox align="left" width="15" text="" field="classe"/>
+		<edit align="left" width="100" field="nome" margins="{right=5}"/>
 
-			<button align="left" width="50" text="X" margins="{left=5}">
-				<event name="onClick">
-					dialogs.confirmOkCancel("Tem certeza que quer apagar essa habilidade?",
-						function (confirmado)
-							if confirmado then
-								ndb.deleteNode(sheet);
-							end;
-					end);
-				</event>
-			</button>
-		</layout>
+		<rectangle align="left" width="50" color="#F0FFFF" strokeColor="black" strokeSize="1" margins="{right=5}">
+			<label align="client" field="total" horzTextAlign="center" vertTextAlign="center"/>
+		</rectangle>
 
-		<textEditor align="client" field="desc"/>
-		
+		<rectangle align="left" width="50" color="#F0FFFF" strokeColor="black" strokeSize="1">
+			<label align="client" field="nivel" horzTextAlign="center" vertTextAlign="center"/>
+		</rectangle>
+
+		<comboBox align="left" width="50" fontSize="9" field="mod" items="{'FOR','DES','CON','INT','SAB','CAR'}" values="{'forMod','desMod','conMod','intMod','sabMod','carMod'}"/>
+
+		<rectangle align="left" width="50" color="#F0FFFF" strokeColor="black" strokeSize="1">
+			<label align="client" field="treinamento" horzTextAlign="center" vertTextAlign="center"/>
+		</rectangle>
+
+		<edit align="left" width="50" field="outros" type="number"/>
+
+		<button align="left" width="25" text="X" margins="{left=5}">
+			<event name="onClick">
+				dialogs.confirmOkCancel("Tem certeza que quer apagar essa habilidade?",
+					function (confirmado)
+						if confirmado then
+							ndb.deleteNode(sheet);
+						end;
+				end);
+			</event>
+		</button>
 	</rectangle>
 </form>

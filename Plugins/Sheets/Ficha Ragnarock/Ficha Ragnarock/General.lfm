@@ -28,7 +28,7 @@
 						sheet.firstValueName = "$(text)";
 						return;
 					end;
-					local faceTable = {10, 10, 10, 10, 10, 10, 12, 12, 14, 14, 16, 16, 18, 18, 20, 20, 22, 22, 26, 26, 28, 28, 30, 30, 32, 32, 34, 34, 38, 38, 40, 40, 42, 42, 44, 44, 46, 46, 50, 50, 52, 52, 54, 54, 56, 56, 58, 58, 62, 62, 64, 64, 66, 66, 68, 68, 70, 70, 74, 74, 76, 76, 78, 78, 80, 80, 82, 82, 86, 86, 88, 88, 90, 90, 92, 92, 94, 94, 98, 98};
+					local faceTable = {10, 10, 10, 10, 10, 10, 12, 12, 14, 14, 16, 16, 18, 18, 20, 20, 22, 22, 26, 26, 28, 28, 30, 30, 32, 32, 34, 34, 38, 38, 40, 40, 42, 42, 44, 44, 46, 46, 50, 50, 52, 52, 54, 54, 56, 56, 58, 58, 62, 62, 64, 64, 66, 66, 68, 68, 70, 70, 74, 74, 76, 76, 78, 78, 80, 80, 82, 82, 86, 86, 88, 88, 90, 90, 92, 92, 94, 94, 98, 98, 100, 100, 102, 102, 104, 104, 106, 106, 110, 110, 112, 112, 114, 114, 116, 118, 122, 122, 124, 124, 126, 126, 128, 128, 130, 130, 134, 134, 136, 136, 138, 138, 140, 140, 142, 142, 146, 146, 148, 148, 150, 150, 152, 152, 154, 154, 158, 158, 160, 160, 162, 162, 164, 164, 166, 166, 170, 170, 172, 172, 174, 174, 176, 176, 178, 178, 182, 182, 184, 184, 186, 186, 188, 188, 190, 190, 194, 194, 196, 196, 198, 198, 200, 200, 202, 202, 206, 206, 208, 208, 210, 210, 212, 212, 214, 214, 218, 218, 220, 220, 222, 222, 224, 224, 226, 226, 230, 230, 232, 232, 234, 234, 236, 236, 238, 238, 242, 242, 244, 244, 246, 246, 248, 248, 250, 250, 254, 254, 255};
 
 					local atr = tonumber(sheet.atr_$(field)Total) or 0;
 					if (sheet.doubleRoll) then
@@ -36,7 +36,7 @@
 						 sheet.firstValue = -1;
 					end;
 
-					atr = math.min(80, atr);
+					atr = math.min(209, atr);
 					atr = math.max(1, atr);
 
 					local faces = faceTable[atr];
@@ -124,10 +124,20 @@
 
 	<scrollBox align="client">
 		<image align="client" field="bgGeneral" style="autoFit" editable="true"/>
+		<dataLink field="bgGeneral" defaultValue="http://blob.firecast.com.br/blobs/WRKNFRIT_1601940/Aba_01.jpg"/>
 		<layout width="1200" height="570">
 
 			<rectangle color="black" align="top" height="50" margins="{bottom=5}">
 				<UpperBar width="150" text="Nome" field="nome" fontSize="13"/>
+
+				<rectangle align="left" width="50" color="black" strokeColor="white" strokeSize="1" margins="{right=5}">
+					<image align="client" field="classeIcon" editable="true" style="autoFit" margins="{left=2, right=2, top=2, bottom=2}">
+						<event name="OnStartDrag">
+						    drag:addData("imageURL", sheet.classeIcon);
+						</event>
+					</image>
+				</rectangle>
+
 				<UpperBar width="100" text="Classe" field="classe" fontSize="13"/>
 				<UpperBar width="100" text="Especialização" field="especializacao" fontSize="13"/>
 				<UpperBar width="30" text="Nível" field="level" fontSize="13"/>
