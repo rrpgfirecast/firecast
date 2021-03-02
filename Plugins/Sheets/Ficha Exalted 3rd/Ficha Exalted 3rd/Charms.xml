@@ -51,7 +51,7 @@
 						autoHeight="true" minHeight="5" onResize="self.$(baseName)._recalcHeight();" hitTest="false" margins="{left=10, right=10}"/>					
 						
 			<layout name="layBottom$(baseName)" align="top" height="36">			
-				<button name="btnNovo$(baseName)" align="left" onClick="self.rcl$(baseName):append();" text="Nova Magia" width="160" margins="{top=4, bottom=4, left=48}"/>								
+				<button name="btnNovo$(baseName)" align="left" onClick="self.rcl$(baseName):append();" text="Novo Charm" width="160" margins="{top=4, bottom=4, left=48}"/>								
 			</layout>	
 			
 		</flowPart>

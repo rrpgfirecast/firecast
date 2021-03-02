@@ -7,8 +7,9 @@
 		</layout>
 	</template>
 
-	<rectangle align="client" color="black">
-		<VertLabelEdit text="Weapon" field="weapon" width="200" fontSize="13"/>
+	<rectangle align="client" color="dimgray">
+		<layout align="left" width="5"/>
+		<VertLabelEdit text="Weapon" field="weapon" width="195" fontSize="13"/>
 		<VertLabelEdit text="Acc" field="acc" width="50" fontSize="13"/>
 		<VertLabelEdit text="Dmg" field="dmg" width="50" fontSize="13"/>
 		<VertLabelEdit text="Def" field="def" width="50" fontSize="13"/>
@@ -16,7 +17,7 @@
 		<VertLabelEdit text="Tags" field="tags" width="100" fontSize="13"/>
 		<VertLabelEdit text="Dice Pool" field="dice" width="50" fontSize="9"/>
 
-		<button align="left" width="25" text="X" margins="{left=5}">
+		<button align="left" width="25" text="X" margins="{left=5,right=5}">
 			<event name="onClick">
 				dialogs.confirmOkCancel("Tem certeza que quer apagar?",
 					function (confirmado)

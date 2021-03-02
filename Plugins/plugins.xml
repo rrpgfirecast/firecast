@@ -168,7 +168,7 @@
             <dataType id="Ambesek.FichaStarfinder" title="Ficha Starfinder"/>
         </dataTypes>
     </element>
-    <element id="Ambesek.Exalted.3rd" name="Ficha Exalted 3rd" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20Exalted%203rd/output/Ficha%20Exalted%203rd.rpk?raw=true" fileName="Ficha Exalted 3rd.rpk" repositoryStar="Sheets/Ficha Exalted 3rd/" author="Ambesek" description="Plugin pra jogar Exalted 3ª edição" version="0.2" compilationDate="11102019015525" compilationDigest="c1e9f4960b942650a4dcba1e5db472007df38d72">
+    <element id="Ambesek.Exalted.3rd" name="Ficha Exalted 3rd" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20Exalted%203rd/output/Ficha%20Exalted%203rd.rpk?raw=true" fileName="Ficha Exalted 3rd.rpk" repositoryStar="Sheets/Ficha Exalted 3rd/" author="Ambesek" description="Plugin pra jogar Exalted 3ª edição" version="0.3" compilationDate="11102019015525" compilationDigest="c1e9f4960b942650a4dcba1e5db472007df38d72">
         <dataTypes>
             <dataType id="Ambesek.Exalted.3rd" title="Ficha Exalted 3rd"/>
         </dataTypes>

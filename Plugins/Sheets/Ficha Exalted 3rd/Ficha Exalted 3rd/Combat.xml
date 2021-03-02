@@ -57,7 +57,9 @@
 	        	</layout>
 			</rectangle>
 
-			<layout align="client">
+			<layout align="top" height="10"/>
+
+			<layout align="top" height="300">
 				<layout align="left" width="135">
 					<button align="top" height="25" text="HEALTH" margins="{left=5,right=5}" onClick="self.rclHealth:append();"/>
 					<recordList align="client" name="rclHealth" field="listHealth" templateForm="frmHealthForm" layout="vertical" minQt="1"/>

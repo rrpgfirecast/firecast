@@ -88,15 +88,16 @@ local function constructNew_frmMain()
 
     obj.layout1 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout1:setParent(obj.scrollBox1);
-    obj.layout1:setWidth(1030);
-    obj.layout1:setHeight(610);
+    obj.layout1:setWidth(1050);
+    obj.layout1:setHeight(630);
     obj.layout1:setName("layout1");
 
     obj.layout2 = GUI.fromHandle(_obj_newObject("layout"));
-    obj.layout2:setParent(obj.scrollBox1);
+    obj.layout2:setParent(obj.layout1);
     obj.layout2:setAlign("top");
-    obj.layout2:setHeight(100);
+    obj.layout2:setHeight(110);
     obj.layout2:setMargins({bottom=5});
+    obj.layout2:setPadding({bottom=5,top=5});
     obj.layout2:setName("layout2");
 
     obj.rectangle1 = GUI.fromHandle(_obj_newObject("rectangle"));
@@ -113,19 +114,20 @@ local function constructNew_frmMain()
     obj.layout3:setParent(obj.rectangle1);
     obj.layout3:setAlign("top");
     obj.layout3:setHeight(50);
+    obj.layout3:setPadding({left=5,right=5});
     obj.layout3:setName("layout3");
 
     obj.Name = GUI.fromHandle(_obj_newObject("layout"));
     obj.Name:setParent(obj.layout3);
     obj.Name:setAlign("left");
-    obj.Name:setWidth(300);
+    obj.Name:setWidth(295);
     obj.Name:setMargins({right=5});
     obj.Name:setName("Name");
 
     obj.label1 = GUI.fromHandle(_obj_newObject("label"));
     obj.label1:setParent(obj.Name);
     obj.label1:setText("Name");
-    obj.label1:setWidth(300);
+    obj.label1:setWidth(295);
     obj.label1:setHorzTextAlign("center");
     obj.label1:setFontSize(13);
     obj.label1:setName("label1");
@@ -134,21 +136,21 @@ local function constructNew_frmMain()
     obj.edit1:setParent(obj.Name);
     obj.edit1:setTop(20);
     obj.edit1:setField("nome");
-    obj.edit1:setWidth(300);
+    obj.edit1:setWidth(295);
     obj.edit1:setHeight(25);
     obj.edit1:setName("edit1");
 
     obj.Player = GUI.fromHandle(_obj_newObject("layout"));
     obj.Player:setParent(obj.layout3);
     obj.Player:setAlign("left");
-    obj.Player:setWidth(300);
+    obj.Player:setWidth(295);
     obj.Player:setMargins({right=5});
     obj.Player:setName("Player");
 
     obj.label2 = GUI.fromHandle(_obj_newObject("label"));
     obj.label2:setParent(obj.Player);
     obj.label2:setText("Player");
-    obj.label2:setWidth(300);
+    obj.label2:setWidth(295);
     obj.label2:setHorzTextAlign("center");
     obj.label2:setFontSize(13);
     obj.label2:setName("label2");
@@ -157,7 +159,7 @@ local function constructNew_frmMain()
     obj.edit2:setParent(obj.Player);
     obj.edit2:setTop(20);
     obj.edit2:setField("jogador");
-    obj.edit2:setWidth(300);
+    obj.edit2:setWidth(295);
     obj.edit2:setHeight(25);
     obj.edit2:setName("edit2");
 
@@ -273,6 +275,7 @@ local function constructNew_frmMain()
     obj.layout4:setParent(obj.rectangle1);
     obj.layout4:setAlign("top");
     obj.layout4:setHeight(50);
+    obj.layout4:setPadding({left=5,right=5});
     obj.layout4:setName("layout4");
 
     obj.Concept = GUI.fromHandle(_obj_newObject("layout"));
@@ -396,9 +399,9 @@ local function constructNew_frmMain()
     obj.dataLink1:setName("dataLink1");
 
     obj.layout5 = GUI.fromHandle(_obj_newObject("layout"));
-    obj.layout5:setParent(obj.scrollBox1);
+    obj.layout5:setParent(obj.layout1);
     obj.layout5:setAlign("top");
-    obj.layout5:setHeight(100);
+    obj.layout5:setHeight(105);
     obj.layout5:setMargins({bottom=5});
     obj.layout5:setName("layout5");
 
@@ -1096,7 +1099,7 @@ local function constructNew_frmMain()
     obj.dataLink10:setName("dataLink10");
 
     obj.layout18 = GUI.fromHandle(_obj_newObject("layout"));
-    obj.layout18:setParent(obj.scrollBox1);
+    obj.layout18:setParent(obj.layout1);
     obj.layout18:setAlign("top");
     obj.layout18:setHeight(400);
     obj.layout18:setMargins({bottom=5});
@@ -1111,6 +1114,7 @@ local function constructNew_frmMain()
     obj.rectangle3:setYradius(15);
     obj.rectangle3:setCornerType("round");
     obj.rectangle3:setMargins({right=5});
+    obj.rectangle3:setPadding({bottom=0,top=5});
     obj.rectangle3:setName("rectangle3");
 
     obj.layout19 = GUI.fromHandle(_obj_newObject("layout"));
@@ -1122,7 +1126,7 @@ local function constructNew_frmMain()
 
     obj.button1 = GUI.fromHandle(_obj_newObject("button"));
     obj.button1:setParent(obj.layout19);
-    obj.button1:setAlign("left");
+    obj.button1:setAlign("right");
     obj.button1:setWidth(25);
     obj.button1:setText("+");
     obj.button1:setMargins({left=5,right=5});
@@ -2440,17 +2444,24 @@ local function constructNew_frmMain()
 
     obj.layout64 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout64:setParent(obj.layout34);
-    obj.layout64:setAlign("client");
+    obj.layout64:setAlign("top");
+    obj.layout64:setHeight(10);
     obj.layout64:setName("layout64");
 
     obj.layout65 = GUI.fromHandle(_obj_newObject("layout"));
-    obj.layout65:setParent(obj.layout64);
-    obj.layout65:setAlign("left");
-    obj.layout65:setWidth(135);
+    obj.layout65:setParent(obj.layout34);
+    obj.layout65:setAlign("top");
+    obj.layout65:setHeight(300);
     obj.layout65:setName("layout65");
 
+    obj.layout66 = GUI.fromHandle(_obj_newObject("layout"));
+    obj.layout66:setParent(obj.layout65);
+    obj.layout66:setAlign("left");
+    obj.layout66:setWidth(135);
+    obj.layout66:setName("layout66");
+
     obj.button5 = GUI.fromHandle(_obj_newObject("button"));
-    obj.button5:setParent(obj.layout65);
+    obj.button5:setParent(obj.layout66);
     obj.button5:setAlign("top");
     obj.button5:setHeight(25);
     obj.button5:setText("HEALTH");
@@ -2458,7 +2469,7 @@ local function constructNew_frmMain()
     obj.button5:setName("button5");
 
     obj.rclHealth = GUI.fromHandle(_obj_newObject("recordList"));
-    obj.rclHealth:setParent(obj.layout65);
+    obj.rclHealth:setParent(obj.layout66);
     obj.rclHealth:setAlign("client");
     obj.rclHealth:setName("rclHealth");
     obj.rclHealth:setField("listHealth");
@@ -2482,15 +2493,15 @@ local function constructNew_frmMain()
     obj.scrollBox4:setAlign("client");
     obj.scrollBox4:setName("scrollBox4");
 
-    obj.layout66 = GUI.fromHandle(_obj_newObject("layout"));
-    obj.layout66:setParent(obj.scrollBox4);
-    obj.layout66:setAlign("top");
-    obj.layout66:setHeight(25);
-    obj.layout66:setMargins({bottom=5});
-    obj.layout66:setName("layout66");
+    obj.layout67 = GUI.fromHandle(_obj_newObject("layout"));
+    obj.layout67:setParent(obj.scrollBox4);
+    obj.layout67:setAlign("top");
+    obj.layout67:setHeight(25);
+    obj.layout67:setMargins({bottom=5});
+    obj.layout67:setName("layout67");
 
     obj.button6 = GUI.fromHandle(_obj_newObject("button"));
-    obj.button6:setParent(obj.layout66);
+    obj.button6:setParent(obj.layout67);
     obj.button6:setAlign("left");
     obj.button6:setText("Novo");
     obj.button6:setWidth(100);
@@ -2742,7 +2753,7 @@ local function constructNew_frmMain()
     obj.btnNovoArchery:setParent(obj.layBottomArchery);
     obj.btnNovoArchery:setName("btnNovoArchery");
     obj.btnNovoArchery:setAlign("left");
-    obj.btnNovoArchery:setText("Nova Magia");
+    obj.btnNovoArchery:setText("Novo Charm");
     obj.btnNovoArchery:setWidth(160);
     obj.btnNovoArchery:setMargins({top=4, bottom=4, left=48});
 
@@ -2826,7 +2837,7 @@ self.Archery._recalcHeight();
     obj.btnNovoAthletics:setParent(obj.layBottomAthletics);
     obj.btnNovoAthletics:setName("btnNovoAthletics");
     obj.btnNovoAthletics:setAlign("left");
-    obj.btnNovoAthletics:setText("Nova Magia");
+    obj.btnNovoAthletics:setText("Novo Charm");
     obj.btnNovoAthletics:setWidth(160);
     obj.btnNovoAthletics:setMargins({top=4, bottom=4, left=48});
 
@@ -2910,7 +2921,7 @@ self.Athletics._recalcHeight();
     obj.btnNovoAwareness:setParent(obj.layBottomAwareness);
     obj.btnNovoAwareness:setName("btnNovoAwareness");
     obj.btnNovoAwareness:setAlign("left");
-    obj.btnNovoAwareness:setText("Nova Magia");
+    obj.btnNovoAwareness:setText("Novo Charm");
     obj.btnNovoAwareness:setWidth(160);
     obj.btnNovoAwareness:setMargins({top=4, bottom=4, left=48});
 
@@ -2994,7 +3005,7 @@ self.Awareness._recalcHeight();
     obj.btnNovoBrawl:setParent(obj.layBottomBrawl);
     obj.btnNovoBrawl:setName("btnNovoBrawl");
     obj.btnNovoBrawl:setAlign("left");
-    obj.btnNovoBrawl:setText("Nova Magia");
+    obj.btnNovoBrawl:setText("Novo Charm");
     obj.btnNovoBrawl:setWidth(160);
     obj.btnNovoBrawl:setMargins({top=4, bottom=4, left=48});
 
@@ -3078,7 +3089,7 @@ self.Brawl._recalcHeight();
     obj.btnNovoBureaucracy:setParent(obj.layBottomBureaucracy);
     obj.btnNovoBureaucracy:setName("btnNovoBureaucracy");
     obj.btnNovoBureaucracy:setAlign("left");
-    obj.btnNovoBureaucracy:setText("Nova Magia");
+    obj.btnNovoBureaucracy:setText("Novo Charm");
     obj.btnNovoBureaucracy:setWidth(160);
     obj.btnNovoBureaucracy:setMargins({top=4, bottom=4, left=48});
 
@@ -3162,7 +3173,7 @@ self.Bureaucracy._recalcHeight();
     obj.btnNovoCraft:setParent(obj.layBottomCraft);
     obj.btnNovoCraft:setName("btnNovoCraft");
     obj.btnNovoCraft:setAlign("left");
-    obj.btnNovoCraft:setText("Nova Magia");
+    obj.btnNovoCraft:setText("Novo Charm");
     obj.btnNovoCraft:setWidth(160);
     obj.btnNovoCraft:setMargins({top=4, bottom=4, left=48});
 
@@ -3246,7 +3257,7 @@ self.Craft._recalcHeight();
     obj.btnNovoDodge:setParent(obj.layBottomDodge);
     obj.btnNovoDodge:setName("btnNovoDodge");
     obj.btnNovoDodge:setAlign("left");
-    obj.btnNovoDodge:setText("Nova Magia");
+    obj.btnNovoDodge:setText("Novo Charm");
     obj.btnNovoDodge:setWidth(160);
     obj.btnNovoDodge:setMargins({top=4, bottom=4, left=48});
 
@@ -3330,7 +3341,7 @@ self.Dodge._recalcHeight();
     obj.btnNovoIntegrity:setParent(obj.layBottomIntegrity);
     obj.btnNovoIntegrity:setName("btnNovoIntegrity");
     obj.btnNovoIntegrity:setAlign("left");
-    obj.btnNovoIntegrity:setText("Nova Magia");
+    obj.btnNovoIntegrity:setText("Novo Charm");
     obj.btnNovoIntegrity:setWidth(160);
     obj.btnNovoIntegrity:setMargins({top=4, bottom=4, left=48});
 
@@ -3414,7 +3425,7 @@ self.Integrity._recalcHeight();
     obj.btnNovoInvestigation:setParent(obj.layBottomInvestigation);
     obj.btnNovoInvestigation:setName("btnNovoInvestigation");
     obj.btnNovoInvestigation:setAlign("left");
-    obj.btnNovoInvestigation:setText("Nova Magia");
+    obj.btnNovoInvestigation:setText("Novo Charm");
     obj.btnNovoInvestigation:setWidth(160);
     obj.btnNovoInvestigation:setMargins({top=4, bottom=4, left=48});
 
@@ -3498,7 +3509,7 @@ self.Investigation._recalcHeight();
     obj.btnNovoLarceny:setParent(obj.layBottomLarceny);
     obj.btnNovoLarceny:setName("btnNovoLarceny");
     obj.btnNovoLarceny:setAlign("left");
-    obj.btnNovoLarceny:setText("Nova Magia");
+    obj.btnNovoLarceny:setText("Novo Charm");
     obj.btnNovoLarceny:setWidth(160);
     obj.btnNovoLarceny:setMargins({top=4, bottom=4, left=48});
 
@@ -3582,7 +3593,7 @@ self.Larceny._recalcHeight();
     obj.btnNovoLinguistics:setParent(obj.layBottomLinguistics);
     obj.btnNovoLinguistics:setName("btnNovoLinguistics");
     obj.btnNovoLinguistics:setAlign("left");
-    obj.btnNovoLinguistics:setText("Nova Magia");
+    obj.btnNovoLinguistics:setText("Novo Charm");
     obj.btnNovoLinguistics:setWidth(160);
     obj.btnNovoLinguistics:setMargins({top=4, bottom=4, left=48});
 
@@ -3666,7 +3677,7 @@ self.Linguistics._recalcHeight();
     obj.btnNovoLore:setParent(obj.layBottomLore);
     obj.btnNovoLore:setName("btnNovoLore");
     obj.btnNovoLore:setAlign("left");
-    obj.btnNovoLore:setText("Nova Magia");
+    obj.btnNovoLore:setText("Novo Charm");
     obj.btnNovoLore:setWidth(160);
     obj.btnNovoLore:setMargins({top=4, bottom=4, left=48});
 
@@ -3750,7 +3761,7 @@ self.Lore._recalcHeight();
     obj.btnNovoMartial:setParent(obj.layBottomMartial);
     obj.btnNovoMartial:setName("btnNovoMartial");
     obj.btnNovoMartial:setAlign("left");
-    obj.btnNovoMartial:setText("Nova Magia");
+    obj.btnNovoMartial:setText("Novo Charm");
     obj.btnNovoMartial:setWidth(160);
     obj.btnNovoMartial:setMargins({top=4, bottom=4, left=48});
 
@@ -3834,7 +3845,7 @@ self.Martial._recalcHeight();
     obj.btnNovoMedicine:setParent(obj.layBottomMedicine);
     obj.btnNovoMedicine:setName("btnNovoMedicine");
     obj.btnNovoMedicine:setAlign("left");
-    obj.btnNovoMedicine:setText("Nova Magia");
+    obj.btnNovoMedicine:setText("Novo Charm");
     obj.btnNovoMedicine:setWidth(160);
     obj.btnNovoMedicine:setMargins({top=4, bottom=4, left=48});
 
@@ -3918,7 +3929,7 @@ self.Medicine._recalcHeight();
     obj.btnNovoMelee:setParent(obj.layBottomMelee);
     obj.btnNovoMelee:setName("btnNovoMelee");
     obj.btnNovoMelee:setAlign("left");
-    obj.btnNovoMelee:setText("Nova Magia");
+    obj.btnNovoMelee:setText("Novo Charm");
     obj.btnNovoMelee:setWidth(160);
     obj.btnNovoMelee:setMargins({top=4, bottom=4, left=48});
 
@@ -4002,7 +4013,7 @@ self.Melee._recalcHeight();
     obj.btnNovoOccult:setParent(obj.layBottomOccult);
     obj.btnNovoOccult:setName("btnNovoOccult");
     obj.btnNovoOccult:setAlign("left");
-    obj.btnNovoOccult:setText("Nova Magia");
+    obj.btnNovoOccult:setText("Novo Charm");
     obj.btnNovoOccult:setWidth(160);
     obj.btnNovoOccult:setMargins({top=4, bottom=4, left=48});
 
@@ -4086,7 +4097,7 @@ self.Occult._recalcHeight();
     obj.btnNovoPerformance:setParent(obj.layBottomPerformance);
     obj.btnNovoPerformance:setName("btnNovoPerformance");
     obj.btnNovoPerformance:setAlign("left");
-    obj.btnNovoPerformance:setText("Nova Magia");
+    obj.btnNovoPerformance:setText("Novo Charm");
     obj.btnNovoPerformance:setWidth(160);
     obj.btnNovoPerformance:setMargins({top=4, bottom=4, left=48});
 
@@ -4170,7 +4181,7 @@ self.Performance._recalcHeight();
     obj.btnNovoPresence:setParent(obj.layBottomPresence);
     obj.btnNovoPresence:setName("btnNovoPresence");
     obj.btnNovoPresence:setAlign("left");
-    obj.btnNovoPresence:setText("Nova Magia");
+    obj.btnNovoPresence:setText("Novo Charm");
     obj.btnNovoPresence:setWidth(160);
     obj.btnNovoPresence:setMargins({top=4, bottom=4, left=48});
 
@@ -4254,7 +4265,7 @@ self.Presence._recalcHeight();
     obj.btnNovoResistance:setParent(obj.layBottomResistance);
     obj.btnNovoResistance:setName("btnNovoResistance");
     obj.btnNovoResistance:setAlign("left");
-    obj.btnNovoResistance:setText("Nova Magia");
+    obj.btnNovoResistance:setText("Novo Charm");
     obj.btnNovoResistance:setWidth(160);
     obj.btnNovoResistance:setMargins({top=4, bottom=4, left=48});
 
@@ -4338,7 +4349,7 @@ self.Resistance._recalcHeight();
     obj.btnNovoRide:setParent(obj.layBottomRide);
     obj.btnNovoRide:setName("btnNovoRide");
     obj.btnNovoRide:setAlign("left");
-    obj.btnNovoRide:setText("Nova Magia");
+    obj.btnNovoRide:setText("Novo Charm");
     obj.btnNovoRide:setWidth(160);
     obj.btnNovoRide:setMargins({top=4, bottom=4, left=48});
 
@@ -4422,7 +4433,7 @@ self.Ride._recalcHeight();
     obj.btnNovoSail:setParent(obj.layBottomSail);
     obj.btnNovoSail:setName("btnNovoSail");
     obj.btnNovoSail:setAlign("left");
-    obj.btnNovoSail:setText("Nova Magia");
+    obj.btnNovoSail:setText("Novo Charm");
     obj.btnNovoSail:setWidth(160);
     obj.btnNovoSail:setMargins({top=4, bottom=4, left=48});
 
@@ -4506,7 +4517,7 @@ self.Sail._recalcHeight();
     obj.btnNovoSocialize:setParent(obj.layBottomSocialize);
     obj.btnNovoSocialize:setName("btnNovoSocialize");
     obj.btnNovoSocialize:setAlign("left");
-    obj.btnNovoSocialize:setText("Nova Magia");
+    obj.btnNovoSocialize:setText("Novo Charm");
     obj.btnNovoSocialize:setWidth(160);
     obj.btnNovoSocialize:setMargins({top=4, bottom=4, left=48});
 
@@ -4590,7 +4601,7 @@ self.Socialize._recalcHeight();
     obj.btnNovoStealth:setParent(obj.layBottomStealth);
     obj.btnNovoStealth:setName("btnNovoStealth");
     obj.btnNovoStealth:setAlign("left");
-    obj.btnNovoStealth:setText("Nova Magia");
+    obj.btnNovoStealth:setText("Novo Charm");
     obj.btnNovoStealth:setWidth(160);
     obj.btnNovoStealth:setMargins({top=4, bottom=4, left=48});
 
@@ -4674,7 +4685,7 @@ self.Stealth._recalcHeight();
     obj.btnNovoSurvival:setParent(obj.layBottomSurvival);
     obj.btnNovoSurvival:setName("btnNovoSurvival");
     obj.btnNovoSurvival:setAlign("left");
-    obj.btnNovoSurvival:setText("Nova Magia");
+    obj.btnNovoSurvival:setText("Novo Charm");
     obj.btnNovoSurvival:setWidth(160);
     obj.btnNovoSurvival:setMargins({top=4, bottom=4, left=48});
 
@@ -4758,7 +4769,7 @@ self.Survival._recalcHeight();
     obj.btnNovoThrown:setParent(obj.layBottomThrown);
     obj.btnNovoThrown:setName("btnNovoThrown");
     obj.btnNovoThrown:setAlign("left");
-    obj.btnNovoThrown:setText("Nova Magia");
+    obj.btnNovoThrown:setText("Novo Charm");
     obj.btnNovoThrown:setWidth(160);
     obj.btnNovoThrown:setMargins({top=4, bottom=4, left=48});
 
@@ -4842,7 +4853,7 @@ self.Thrown._recalcHeight();
     obj.btnNovoWar:setParent(obj.layBottomWar);
     obj.btnNovoWar:setName("btnNovoWar");
     obj.btnNovoWar:setAlign("left");
-    obj.btnNovoWar:setText("Nova Magia");
+    obj.btnNovoWar:setText("Novo Charm");
     obj.btnNovoWar:setWidth(160);
     obj.btnNovoWar:setMargins({top=4, bottom=4, left=48});
 
@@ -4926,7 +4937,7 @@ self.War._recalcHeight();
     obj.btnNovoEvocation:setParent(obj.layBottomEvocation);
     obj.btnNovoEvocation:setName("btnNovoEvocation");
     obj.btnNovoEvocation:setAlign("left");
-    obj.btnNovoEvocation:setText("Nova Magia");
+    obj.btnNovoEvocation:setText("Novo Charm");
     obj.btnNovoEvocation:setWidth(160);
     obj.btnNovoEvocation:setMargins({top=4, bottom=4, left=48});
 
@@ -4961,14 +4972,14 @@ self.Evocation._recalcHeight();
 		
 
 
-    obj.layout67 = GUI.fromHandle(_obj_newObject("layout"));
-    obj.layout67:setParent(obj.frmLunarForm);
-    obj.layout67:setAlign("top");
-    obj.layout67:setHeight(50);
-    obj.layout67:setName("layout67");
+    obj.layout68 = GUI.fromHandle(_obj_newObject("layout"));
+    obj.layout68:setParent(obj.frmLunarForm);
+    obj.layout68:setAlign("top");
+    obj.layout68:setHeight(50);
+    obj.layout68:setName("layout68");
 
     obj.button7 = GUI.fromHandle(_obj_newObject("button"));
-    obj.button7:setParent(obj.layout67);
+    obj.button7:setParent(obj.layout68);
     obj.button7:setText("+");
     obj.button7:setAlign("left");
     obj.button7:setWidth(40);
@@ -4976,7 +4987,7 @@ self.Evocation._recalcHeight();
     obj.button7:setName("button7");
 
     obj.rclLunar = GUI.fromHandle(_obj_newObject("recordList"));
-    obj.rclLunar:setParent(obj.layout67);
+    obj.rclLunar:setParent(obj.layout68);
     obj.rclLunar:setName("rclLunar");
     obj.rclLunar:setField("campoLunar");
     obj.rclLunar:setTemplateForm("frmLunarSelect");
@@ -4997,20 +5008,20 @@ self.Evocation._recalcHeight();
     obj.scrollBox6:setAlign("client");
     obj.scrollBox6:setName("scrollBox6");
 
-    obj.layout68 = GUI.fromHandle(_obj_newObject("layout"));
-    obj.layout68:setParent(obj.scrollBox6);
-    obj.layout68:setHeight(610);
-    obj.layout68:setName("layout68");
-
     obj.layout69 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout69:setParent(obj.scrollBox6);
-    obj.layout69:setAlign("top");
-    obj.layout69:setHeight(200);
-    obj.layout69:setMargins({bottom=5});
+    obj.layout69:setHeight(610);
     obj.layout69:setName("layout69");
 
+    obj.layout70 = GUI.fromHandle(_obj_newObject("layout"));
+    obj.layout70:setParent(obj.scrollBox6);
+    obj.layout70:setAlign("top");
+    obj.layout70:setHeight(200);
+    obj.layout70:setMargins({bottom=5});
+    obj.layout70:setName("layout70");
+
     obj.rectangle14 = GUI.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle14:setParent(obj.layout69);
+    obj.rectangle14:setParent(obj.layout70);
     obj.rectangle14:setAlign("left");
     obj.rectangle14:setWidth(200);
     obj.rectangle14:setColor("black");
@@ -5028,7 +5039,7 @@ self.Evocation._recalcHeight();
     obj.image2:setName("image2");
 
     obj.rectangle15 = GUI.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle15:setParent(obj.layout69);
+    obj.rectangle15:setParent(obj.layout70);
     obj.rectangle15:setAlign("left");
     obj.rectangle15:setWidth(210);
     obj.rectangle15:setColor("black");
@@ -5037,27 +5048,27 @@ self.Evocation._recalcHeight();
     obj.rectangle15:setMargins({right=5});
     obj.rectangle15:setName("rectangle15");
 
-    obj.layout70 = GUI.fromHandle(_obj_newObject("layout"));
-    obj.layout70:setParent(obj.rectangle15);
-    obj.layout70:setAlign("top");
-    obj.layout70:setHeight(50);
-    obj.layout70:setName("layout70");
-
     obj.layout71 = GUI.fromHandle(_obj_newObject("layout"));
-    obj.layout71:setParent(obj.layout70);
-    obj.layout71:setAlign("left");
-    obj.layout71:setWidth(5);
+    obj.layout71:setParent(obj.rectangle15);
+    obj.layout71:setAlign("top");
+    obj.layout71:setHeight(50);
     obj.layout71:setName("layout71");
 
     obj.layout72 = GUI.fromHandle(_obj_newObject("layout"));
-    obj.layout72:setParent(obj.layout70);
+    obj.layout72:setParent(obj.layout71);
     obj.layout72:setAlign("left");
-    obj.layout72:setWidth(200);
-    obj.layout72:setMargins({right=5});
+    obj.layout72:setWidth(5);
     obj.layout72:setName("layout72");
 
+    obj.layout73 = GUI.fromHandle(_obj_newObject("layout"));
+    obj.layout73:setParent(obj.layout71);
+    obj.layout73:setAlign("left");
+    obj.layout73:setWidth(200);
+    obj.layout73:setMargins({right=5});
+    obj.layout73:setName("layout73");
+
     obj.label115 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label115:setParent(obj.layout72);
+    obj.label115:setParent(obj.layout73);
     obj.label115:setText("Nome");
     obj.label115:setWidth(200);
     obj.label115:setHorzTextAlign("center");
@@ -5065,34 +5076,34 @@ self.Evocation._recalcHeight();
     obj.label115:setName("label115");
 
     obj.edit45 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit45:setParent(obj.layout72);
+    obj.edit45:setParent(obj.layout73);
     obj.edit45:setTop(20);
     obj.edit45:setField("nome");
     obj.edit45:setWidth(200);
     obj.edit45:setHeight(25);
     obj.edit45:setName("edit45");
 
-    obj.layout73 = GUI.fromHandle(_obj_newObject("layout"));
-    obj.layout73:setParent(obj.rectangle15);
-    obj.layout73:setAlign("top");
-    obj.layout73:setHeight(50);
-    obj.layout73:setName("layout73");
-
     obj.layout74 = GUI.fromHandle(_obj_newObject("layout"));
-    obj.layout74:setParent(obj.layout73);
-    obj.layout74:setAlign("left");
-    obj.layout74:setWidth(5);
+    obj.layout74:setParent(obj.rectangle15);
+    obj.layout74:setAlign("top");
+    obj.layout74:setHeight(50);
     obj.layout74:setName("layout74");
 
     obj.layout75 = GUI.fromHandle(_obj_newObject("layout"));
-    obj.layout75:setParent(obj.layout73);
+    obj.layout75:setParent(obj.layout74);
     obj.layout75:setAlign("left");
-    obj.layout75:setWidth(200);
-    obj.layout75:setMargins({right=5});
+    obj.layout75:setWidth(5);
     obj.layout75:setName("layout75");
 
+    obj.layout76 = GUI.fromHandle(_obj_newObject("layout"));
+    obj.layout76:setParent(obj.layout74);
+    obj.layout76:setAlign("left");
+    obj.layout76:setWidth(200);
+    obj.layout76:setMargins({right=5});
+    obj.layout76:setName("layout76");
+
     obj.label116 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label116:setParent(obj.layout75);
+    obj.label116:setParent(obj.layout76);
     obj.label116:setText("Combat Movement");
     obj.label116:setWidth(200);
     obj.label116:setHorzTextAlign("center");
@@ -5100,34 +5111,34 @@ self.Evocation._recalcHeight();
     obj.label116:setName("label116");
 
     obj.edit46 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit46:setParent(obj.layout75);
+    obj.edit46:setParent(obj.layout76);
     obj.edit46:setTop(20);
     obj.edit46:setField("movement");
     obj.edit46:setWidth(200);
     obj.edit46:setHeight(25);
     obj.edit46:setName("edit46");
 
-    obj.layout76 = GUI.fromHandle(_obj_newObject("layout"));
-    obj.layout76:setParent(obj.rectangle15);
-    obj.layout76:setAlign("top");
-    obj.layout76:setHeight(50);
-    obj.layout76:setName("layout76");
-
     obj.layout77 = GUI.fromHandle(_obj_newObject("layout"));
-    obj.layout77:setParent(obj.layout76);
-    obj.layout77:setAlign("left");
-    obj.layout77:setWidth(5);
+    obj.layout77:setParent(obj.rectangle15);
+    obj.layout77:setAlign("top");
+    obj.layout77:setHeight(50);
     obj.layout77:setName("layout77");
 
     obj.layout78 = GUI.fromHandle(_obj_newObject("layout"));
-    obj.layout78:setParent(obj.layout76);
+    obj.layout78:setParent(obj.layout77);
     obj.layout78:setAlign("left");
-    obj.layout78:setWidth(95);
-    obj.layout78:setMargins({right=5});
+    obj.layout78:setWidth(5);
     obj.layout78:setName("layout78");
 
+    obj.layout79 = GUI.fromHandle(_obj_newObject("layout"));
+    obj.layout79:setParent(obj.layout77);
+    obj.layout79:setAlign("left");
+    obj.layout79:setWidth(95);
+    obj.layout79:setMargins({right=5});
+    obj.layout79:setName("layout79");
+
     obj.label117 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label117:setParent(obj.layout78);
+    obj.label117:setParent(obj.layout79);
     obj.label117:setText("Evasion");
     obj.label117:setWidth(95);
     obj.label117:setHorzTextAlign("center");
@@ -5135,22 +5146,22 @@ self.Evocation._recalcHeight();
     obj.label117:setName("label117");
 
     obj.edit47 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit47:setParent(obj.layout78);
+    obj.edit47:setParent(obj.layout79);
     obj.edit47:setTop(20);
     obj.edit47:setField("evasion");
     obj.edit47:setWidth(95);
     obj.edit47:setHeight(25);
     obj.edit47:setName("edit47");
 
-    obj.layout79 = GUI.fromHandle(_obj_newObject("layout"));
-    obj.layout79:setParent(obj.layout76);
-    obj.layout79:setAlign("left");
-    obj.layout79:setWidth(95);
-    obj.layout79:setMargins({right=5});
-    obj.layout79:setName("layout79");
+    obj.layout80 = GUI.fromHandle(_obj_newObject("layout"));
+    obj.layout80:setParent(obj.layout77);
+    obj.layout80:setAlign("left");
+    obj.layout80:setWidth(95);
+    obj.layout80:setMargins({right=5});
+    obj.layout80:setName("layout80");
 
     obj.label118 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label118:setParent(obj.layout79);
+    obj.label118:setParent(obj.layout80);
     obj.label118:setText("Parry");
     obj.label118:setWidth(95);
     obj.label118:setHorzTextAlign("center");
@@ -5158,34 +5169,34 @@ self.Evocation._recalcHeight();
     obj.label118:setName("label118");
 
     obj.edit48 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit48:setParent(obj.layout79);
+    obj.edit48:setParent(obj.layout80);
     obj.edit48:setTop(20);
     obj.edit48:setField("parry");
     obj.edit48:setWidth(95);
     obj.edit48:setHeight(25);
     obj.edit48:setName("edit48");
 
-    obj.layout80 = GUI.fromHandle(_obj_newObject("layout"));
-    obj.layout80:setParent(obj.rectangle15);
-    obj.layout80:setAlign("top");
-    obj.layout80:setHeight(50);
-    obj.layout80:setName("layout80");
-
     obj.layout81 = GUI.fromHandle(_obj_newObject("layout"));
-    obj.layout81:setParent(obj.layout80);
-    obj.layout81:setAlign("left");
-    obj.layout81:setWidth(5);
+    obj.layout81:setParent(obj.rectangle15);
+    obj.layout81:setAlign("top");
+    obj.layout81:setHeight(50);
     obj.layout81:setName("layout81");
 
     obj.layout82 = GUI.fromHandle(_obj_newObject("layout"));
-    obj.layout82:setParent(obj.layout80);
+    obj.layout82:setParent(obj.layout81);
     obj.layout82:setAlign("left");
-    obj.layout82:setWidth(95);
-    obj.layout82:setMargins({right=5});
+    obj.layout82:setWidth(5);
     obj.layout82:setName("layout82");
 
+    obj.layout83 = GUI.fromHandle(_obj_newObject("layout"));
+    obj.layout83:setParent(obj.layout81);
+    obj.layout83:setAlign("left");
+    obj.layout83:setWidth(95);
+    obj.layout83:setMargins({right=5});
+    obj.layout83:setName("layout83");
+
     obj.label119 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label119:setParent(obj.layout82);
+    obj.label119:setParent(obj.layout83);
     obj.label119:setText("Soak");
     obj.label119:setWidth(95);
     obj.label119:setHorzTextAlign("center");
@@ -5193,22 +5204,22 @@ self.Evocation._recalcHeight();
     obj.label119:setName("label119");
 
     obj.edit49 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit49:setParent(obj.layout82);
+    obj.edit49:setParent(obj.layout83);
     obj.edit49:setTop(20);
     obj.edit49:setField("soak");
     obj.edit49:setWidth(95);
     obj.edit49:setHeight(25);
     obj.edit49:setName("edit49");
 
-    obj.layout83 = GUI.fromHandle(_obj_newObject("layout"));
-    obj.layout83:setParent(obj.layout80);
-    obj.layout83:setAlign("left");
-    obj.layout83:setWidth(95);
-    obj.layout83:setMargins({right=5});
-    obj.layout83:setName("layout83");
+    obj.layout84 = GUI.fromHandle(_obj_newObject("layout"));
+    obj.layout84:setParent(obj.layout81);
+    obj.layout84:setAlign("left");
+    obj.layout84:setWidth(95);
+    obj.layout84:setMargins({right=5});
+    obj.layout84:setName("layout84");
 
     obj.label120 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label120:setParent(obj.layout83);
+    obj.label120:setParent(obj.layout84);
     obj.label120:setText("Hardness");
     obj.label120:setWidth(95);
     obj.label120:setHorzTextAlign("center");
@@ -5216,7 +5227,7 @@ self.Evocation._recalcHeight();
     obj.label120:setName("label120");
 
     obj.edit50 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit50:setParent(obj.layout83);
+    obj.edit50:setParent(obj.layout84);
     obj.edit50:setTop(20);
     obj.edit50:setField("hardness");
     obj.edit50:setWidth(95);
@@ -5224,7 +5235,7 @@ self.Evocation._recalcHeight();
     obj.edit50:setName("edit50");
 
     obj.rectangle16 = GUI.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle16:setParent(obj.layout69);
+    obj.rectangle16:setParent(obj.layout70);
     obj.rectangle16:setAlign("left");
     obj.rectangle16:setWidth(410);
     obj.rectangle16:setColor("black");
@@ -5248,15 +5259,15 @@ self.Evocation._recalcHeight();
     obj.textEditor4:setMargins({left=5,right=5,bottom=5});
     obj.textEditor4:setName("textEditor4");
 
-    obj.layout84 = GUI.fromHandle(_obj_newObject("layout"));
-    obj.layout84:setParent(obj.scrollBox6);
-    obj.layout84:setAlign("top");
-    obj.layout84:setHeight(300);
-    obj.layout84:setMargins({bottom=5});
-    obj.layout84:setName("layout84");
+    obj.layout85 = GUI.fromHandle(_obj_newObject("layout"));
+    obj.layout85:setParent(obj.scrollBox6);
+    obj.layout85:setAlign("top");
+    obj.layout85:setHeight(300);
+    obj.layout85:setMargins({bottom=5});
+    obj.layout85:setName("layout85");
 
     obj.rectangle17 = GUI.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle17:setParent(obj.layout84);
+    obj.rectangle17:setParent(obj.layout85);
     obj.rectangle17:setAlign("left");
     obj.rectangle17:setWidth(410);
     obj.rectangle17:setColor("black");
@@ -5265,15 +5276,15 @@ self.Evocation._recalcHeight();
     obj.rectangle17:setMargins({right=5});
     obj.rectangle17:setName("rectangle17");
 
-    obj.layout85 = GUI.fromHandle(_obj_newObject("layout"));
-    obj.layout85:setParent(obj.rectangle17);
-    obj.layout85:setAlign("top");
-    obj.layout85:setHeight(25);
-    obj.layout85:setMargins({top=5});
-    obj.layout85:setName("layout85");
+    obj.layout86 = GUI.fromHandle(_obj_newObject("layout"));
+    obj.layout86:setParent(obj.rectangle17);
+    obj.layout86:setAlign("top");
+    obj.layout86:setHeight(25);
+    obj.layout86:setMargins({top=5});
+    obj.layout86:setName("layout86");
 
     obj.button8 = GUI.fromHandle(_obj_newObject("button"));
-    obj.button8:setParent(obj.layout85);
+    obj.button8:setParent(obj.layout86);
     obj.button8:setAlign("left");
     obj.button8:setWidth(25);
     obj.button8:setText("+");
@@ -5281,7 +5292,7 @@ self.Evocation._recalcHeight();
     obj.button8:setName("button8");
 
     obj.label122 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label122:setParent(obj.layout85);
+    obj.label122:setParent(obj.layout86);
     obj.label122:setAlign("client");
     obj.label122:setHeight(25);
     obj.label122:setHorzTextAlign("center");
@@ -5298,7 +5309,7 @@ self.Evocation._recalcHeight();
     obj.rclActions:setLayout("vertical");
 
     obj.rectangle18 = GUI.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle18:setParent(obj.layout84);
+    obj.rectangle18:setParent(obj.layout85);
     obj.rectangle18:setAlign("left");
     obj.rectangle18:setWidth(410);
     obj.rectangle18:setColor("black");
@@ -5307,15 +5318,15 @@ self.Evocation._recalcHeight();
     obj.rectangle18:setMargins({right=5});
     obj.rectangle18:setName("rectangle18");
 
-    obj.layout86 = GUI.fromHandle(_obj_newObject("layout"));
-    obj.layout86:setParent(obj.rectangle18);
-    obj.layout86:setAlign("top");
-    obj.layout86:setHeight(25);
-    obj.layout86:setMargins({top=5});
-    obj.layout86:setName("layout86");
+    obj.layout87 = GUI.fromHandle(_obj_newObject("layout"));
+    obj.layout87:setParent(obj.rectangle18);
+    obj.layout87:setAlign("top");
+    obj.layout87:setHeight(25);
+    obj.layout87:setMargins({top=5});
+    obj.layout87:setName("layout87");
 
     obj.button9 = GUI.fromHandle(_obj_newObject("button"));
-    obj.button9:setParent(obj.layout86);
+    obj.button9:setParent(obj.layout87);
     obj.button9:setAlign("left");
     obj.button9:setWidth(25);
     obj.button9:setText("+");
@@ -5323,7 +5334,7 @@ self.Evocation._recalcHeight();
     obj.button9:setName("button9");
 
     obj.label123 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label123:setParent(obj.layout86);
+    obj.label123:setParent(obj.layout87);
     obj.label123:setAlign("client");
     obj.label123:setHeight(25);
     obj.label123:setHorzTextAlign("center");
@@ -5612,22 +5623,22 @@ self.Evocation._recalcHeight();
     obj.edit62:setVertTextAlign("center");
     obj.edit62:setName("edit62");
 
-    obj.layout87 = GUI.fromHandle(_obj_newObject("layout"));
-    obj.layout87:setParent(obj.scrollBox7);
-    obj.layout87:setLeft(0);
-    obj.layout87:setTop(110);
-    obj.layout87:setWidth(375);
-    obj.layout87:setHeight(240);
-    obj.layout87:setName("layout87");
+    obj.layout88 = GUI.fromHandle(_obj_newObject("layout"));
+    obj.layout88:setParent(obj.scrollBox7);
+    obj.layout88:setLeft(0);
+    obj.layout88:setTop(110);
+    obj.layout88:setWidth(375);
+    obj.layout88:setHeight(240);
+    obj.layout88:setName("layout88");
 
     obj.rectangle20 = GUI.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle20:setParent(obj.layout87);
+    obj.rectangle20:setParent(obj.layout88);
     obj.rectangle20:setAlign("client");
     obj.rectangle20:setColor("black");
     obj.rectangle20:setName("rectangle20");
 
     obj.label137 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label137:setParent(obj.layout87);
+    obj.label137:setParent(obj.layout88);
     obj.label137:setLeft(5);
     obj.label137:setTop(1);
     obj.label137:setWidth(100);
@@ -5636,7 +5647,7 @@ self.Evocation._recalcHeight();
     obj.label137:setName("label137");
 
     obj.textEditor5 = GUI.fromHandle(_obj_newObject("textEditor"));
-    obj.textEditor5:setParent(obj.layout87);
+    obj.textEditor5:setParent(obj.layout88);
     obj.textEditor5:setLeft(5);
     obj.textEditor5:setTop(25);
     obj.textEditor5:setWidth(365);
@@ -5644,22 +5655,22 @@ self.Evocation._recalcHeight();
     obj.textEditor5:setField("aparencia");
     obj.textEditor5:setName("textEditor5");
 
-    obj.layout88 = GUI.fromHandle(_obj_newObject("layout"));
-    obj.layout88:setParent(obj.scrollBox7);
-    obj.layout88:setLeft(0);
-    obj.layout88:setTop(355);
-    obj.layout88:setWidth(375);
-    obj.layout88:setHeight(250);
-    obj.layout88:setName("layout88");
+    obj.layout89 = GUI.fromHandle(_obj_newObject("layout"));
+    obj.layout89:setParent(obj.scrollBox7);
+    obj.layout89:setLeft(0);
+    obj.layout89:setTop(355);
+    obj.layout89:setWidth(375);
+    obj.layout89:setHeight(250);
+    obj.layout89:setName("layout89");
 
     obj.rectangle21 = GUI.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle21:setParent(obj.layout88);
+    obj.rectangle21:setParent(obj.layout89);
     obj.rectangle21:setAlign("client");
     obj.rectangle21:setColor("black");
     obj.rectangle21:setName("rectangle21");
 
     obj.label138 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label138:setParent(obj.layout88);
+    obj.label138:setParent(obj.layout89);
     obj.label138:setLeft(5);
     obj.label138:setTop(1);
     obj.label138:setWidth(100);
@@ -5668,7 +5679,7 @@ self.Evocation._recalcHeight();
     obj.label138:setName("label138");
 
     obj.textEditor6 = GUI.fromHandle(_obj_newObject("textEditor"));
-    obj.textEditor6:setParent(obj.layout88);
+    obj.textEditor6:setParent(obj.layout89);
     obj.textEditor6:setLeft(5);
     obj.textEditor6:setTop(25);
     obj.textEditor6:setWidth(365);
@@ -5676,22 +5687,22 @@ self.Evocation._recalcHeight();
     obj.textEditor6:setField("personalidade");
     obj.textEditor6:setName("textEditor6");
 
-    obj.layout89 = GUI.fromHandle(_obj_newObject("layout"));
-    obj.layout89:setParent(obj.scrollBox7);
-    obj.layout89:setLeft(380);
-    obj.layout89:setTop(110);
-    obj.layout89:setWidth(825);
-    obj.layout89:setHeight(495);
-    obj.layout89:setName("layout89");
+    obj.layout90 = GUI.fromHandle(_obj_newObject("layout"));
+    obj.layout90:setParent(obj.scrollBox7);
+    obj.layout90:setLeft(380);
+    obj.layout90:setTop(110);
+    obj.layout90:setWidth(825);
+    obj.layout90:setHeight(495);
+    obj.layout90:setName("layout90");
 
     obj.rectangle22 = GUI.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle22:setParent(obj.layout89);
+    obj.rectangle22:setParent(obj.layout90);
     obj.rectangle22:setAlign("client");
     obj.rectangle22:setColor("black");
     obj.rectangle22:setName("rectangle22");
 
     obj.label139 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label139:setParent(obj.layout89);
+    obj.label139:setParent(obj.layout90);
     obj.label139:setLeft(5);
     obj.label139:setTop(1);
     obj.label139:setWidth(100);
@@ -5700,7 +5711,7 @@ self.Evocation._recalcHeight();
     obj.label139:setName("label139");
 
     obj.richEdit1 = GUI.fromHandle(_obj_newObject("richEdit"));
-    obj.richEdit1:setParent(obj.layout89);
+    obj.richEdit1:setParent(obj.layout90);
     obj.richEdit1:setLeft(5);
     obj.richEdit1:setTop(25);
     obj.richEdit1:setWidth(815);
@@ -5726,15 +5737,15 @@ self.Evocation._recalcHeight();
     obj.scrollBox8:setAlign("client");
     obj.scrollBox8:setName("scrollBox8");
 
-    obj.layout90 = GUI.fromHandle(_obj_newObject("layout"));
-    obj.layout90:setParent(obj.scrollBox8);
-    obj.layout90:setAlign("left");
-    obj.layout90:setWidth(400);
-    obj.layout90:setMargins({right=5});
-    obj.layout90:setName("layout90");
+    obj.layout91 = GUI.fromHandle(_obj_newObject("layout"));
+    obj.layout91:setParent(obj.scrollBox8);
+    obj.layout91:setAlign("left");
+    obj.layout91:setWidth(400);
+    obj.layout91:setMargins({right=5});
+    obj.layout91:setName("layout91");
 
     obj.rectangle23 = GUI.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle23:setParent(obj.layout90);
+    obj.rectangle23:setParent(obj.layout91);
     obj.rectangle23:setAlign("client");
     obj.rectangle23:setColor("black");
     obj.rectangle23:setXradius(5);
@@ -5757,15 +5768,15 @@ self.Evocation._recalcHeight();
     obj.textEditor7:setMargins({left=5,right=5,bottom=5});
     obj.textEditor7:setName("textEditor7");
 
-    obj.layout91 = GUI.fromHandle(_obj_newObject("layout"));
-    obj.layout91:setParent(obj.scrollBox8);
-    obj.layout91:setAlign("left");
-    obj.layout91:setWidth(400);
-    obj.layout91:setMargins({right=5});
-    obj.layout91:setName("layout91");
+    obj.layout92 = GUI.fromHandle(_obj_newObject("layout"));
+    obj.layout92:setParent(obj.scrollBox8);
+    obj.layout92:setAlign("left");
+    obj.layout92:setWidth(400);
+    obj.layout92:setMargins({right=5});
+    obj.layout92:setName("layout92");
 
     obj.rectangle24 = GUI.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle24:setParent(obj.layout91);
+    obj.rectangle24:setParent(obj.layout92);
     obj.rectangle24:setAlign("client");
     obj.rectangle24:setColor("black");
     obj.rectangle24:setXradius(5);
@@ -5788,15 +5799,15 @@ self.Evocation._recalcHeight();
     obj.textEditor8:setMargins({left=5,right=5,bottom=5});
     obj.textEditor8:setName("textEditor8");
 
-    obj.layout92 = GUI.fromHandle(_obj_newObject("layout"));
-    obj.layout92:setParent(obj.scrollBox8);
-    obj.layout92:setAlign("left");
-    obj.layout92:setWidth(400);
-    obj.layout92:setMargins({right=5});
-    obj.layout92:setName("layout92");
+    obj.layout93 = GUI.fromHandle(_obj_newObject("layout"));
+    obj.layout93:setParent(obj.scrollBox8);
+    obj.layout93:setAlign("left");
+    obj.layout93:setWidth(400);
+    obj.layout93:setMargins({right=5});
+    obj.layout93:setName("layout93");
 
     obj.rectangle25 = GUI.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle25:setParent(obj.layout92);
+    obj.rectangle25:setParent(obj.layout93);
     obj.rectangle25:setAlign("client");
     obj.rectangle25:setColor("black");
     obj.rectangle25:setXradius(5);
@@ -5890,16 +5901,16 @@ self.Evocation._recalcHeight();
     obj.image4:setSRC("/Ficha Exalted 3rd/images/RPGmeister.jpg");
     obj.image4:setName("image4");
 
-    obj.layout93 = GUI.fromHandle(_obj_newObject("layout"));
-    obj.layout93:setParent(obj.scrollBox9);
-    obj.layout93:setLeft(850);
-    obj.layout93:setTop(0);
-    obj.layout93:setWidth(200);
-    obj.layout93:setHeight(160);
-    obj.layout93:setName("layout93");
+    obj.layout94 = GUI.fromHandle(_obj_newObject("layout"));
+    obj.layout94:setParent(obj.scrollBox9);
+    obj.layout94:setLeft(850);
+    obj.layout94:setTop(0);
+    obj.layout94:setWidth(200);
+    obj.layout94:setHeight(160);
+    obj.layout94:setName("layout94");
 
     obj.rectangle26 = GUI.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle26:setParent(obj.layout93);
+    obj.rectangle26:setParent(obj.layout94);
     obj.rectangle26:setAlign("client");
     obj.rectangle26:setColor("black");
     obj.rectangle26:setXradius(5);
@@ -5908,7 +5919,7 @@ self.Evocation._recalcHeight();
     obj.rectangle26:setName("rectangle26");
 
     obj.label143 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label143:setParent(obj.layout93);
+    obj.label143:setParent(obj.layout94);
     obj.label143:setLeft(0);
     obj.label143:setTop(10);
     obj.label143:setWidth(200);
@@ -5918,7 +5929,7 @@ self.Evocation._recalcHeight();
     obj.label143:setName("label143");
 
     obj.label144 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label144:setParent(obj.layout93);
+    obj.label144:setParent(obj.layout94);
     obj.label144:setLeft(0);
     obj.label144:setTop(35);
     obj.label144:setWidth(200);
@@ -5927,16 +5938,16 @@ self.Evocation._recalcHeight();
     obj.label144:setHorzTextAlign("center");
     obj.label144:setName("label144");
 
-    obj.layout94 = GUI.fromHandle(_obj_newObject("layout"));
-    obj.layout94:setParent(obj.scrollBox9);
-    obj.layout94:setLeft(850);
-    obj.layout94:setTop(170);
-    obj.layout94:setWidth(200);
-    obj.layout94:setHeight(150);
-    obj.layout94:setName("layout94");
+    obj.layout95 = GUI.fromHandle(_obj_newObject("layout"));
+    obj.layout95:setParent(obj.scrollBox9);
+    obj.layout95:setLeft(850);
+    obj.layout95:setTop(170);
+    obj.layout95:setWidth(200);
+    obj.layout95:setHeight(150);
+    obj.layout95:setName("layout95");
 
     obj.rectangle27 = GUI.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle27:setParent(obj.layout94);
+    obj.rectangle27:setParent(obj.layout95);
     obj.rectangle27:setLeft(0);
     obj.rectangle27:setTop(0);
     obj.rectangle27:setWidth(200);
@@ -5945,7 +5956,7 @@ self.Evocation._recalcHeight();
     obj.rectangle27:setName("rectangle27");
 
     obj.label145 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label145:setParent(obj.layout94);
+    obj.label145:setParent(obj.layout95);
     obj.label145:setLeft(0);
     obj.label145:setTop(10);
     obj.label145:setWidth(80);
@@ -5955,7 +5966,7 @@ self.Evocation._recalcHeight();
     obj.label145:setName("label145");
 
     obj.comboBox5 = GUI.fromHandle(_obj_newObject("comboBox"));
-    obj.comboBox5:setParent(obj.layout94);
+    obj.comboBox5:setParent(obj.layout95);
     obj.comboBox5:setLeft(95);
     obj.comboBox5:setTop(10);
     obj.comboBox5:setWidth(90);
@@ -5966,13 +5977,13 @@ self.Evocation._recalcHeight();
     obj.comboBox5:setName("comboBox5");
 
     obj.dataLink14 = GUI.fromHandle(_obj_newObject("dataLink"));
-    obj.dataLink14:setParent(obj.layout94);
+    obj.dataLink14:setParent(obj.layout95);
     obj.dataLink14:setField("theme");
     obj.dataLink14:setDefaultValue("Escuro");
     obj.dataLink14:setName("dataLink14");
 
     obj.label146 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label146:setParent(obj.layout94);
+    obj.label146:setParent(obj.layout95);
     obj.label146:setLeft(0);
     obj.label146:setTop(35);
     obj.label146:setWidth(90);
@@ -5982,7 +5993,7 @@ self.Evocation._recalcHeight();
     obj.label146:setName("label146");
 
     obj.label147 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label147:setParent(obj.layout94);
+    obj.label147:setParent(obj.layout95);
     obj.label147:setLeft(0);
     obj.label147:setTop(60);
     obj.label147:setWidth(90);
@@ -5992,7 +6003,7 @@ self.Evocation._recalcHeight();
     obj.label147:setName("label147");
 
     obj.comboBox6 = GUI.fromHandle(_obj_newObject("comboBox"));
-    obj.comboBox6:setParent(obj.layout94);
+    obj.comboBox6:setParent(obj.layout95);
     obj.comboBox6:setLeft(95);
     obj.comboBox6:setTop(60);
     obj.comboBox6:setWidth(90);
@@ -6002,13 +6013,13 @@ self.Evocation._recalcHeight();
     obj.comboBox6:setName("comboBox6");
 
     obj.dataLink15 = GUI.fromHandle(_obj_newObject("dataLink"));
-    obj.dataLink15:setParent(obj.layout94);
+    obj.dataLink15:setParent(obj.layout95);
     obj.dataLink15:setField("colorBackground");
     obj.dataLink15:setDefaultValue("#000000");
     obj.dataLink15:setName("dataLink15");
 
     obj.label148 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label148:setParent(obj.layout94);
+    obj.label148:setParent(obj.layout95);
     obj.label148:setLeft(0);
     obj.label148:setTop(85);
     obj.label148:setWidth(90);
@@ -6018,7 +6029,7 @@ self.Evocation._recalcHeight();
     obj.label148:setName("label148");
 
     obj.comboBox7 = GUI.fromHandle(_obj_newObject("comboBox"));
-    obj.comboBox7:setParent(obj.layout94);
+    obj.comboBox7:setParent(obj.layout95);
     obj.comboBox7:setLeft(95);
     obj.comboBox7:setTop(85);
     obj.comboBox7:setWidth(90);
@@ -6028,13 +6039,13 @@ self.Evocation._recalcHeight();
     obj.comboBox7:setName("comboBox7");
 
     obj.dataLink16 = GUI.fromHandle(_obj_newObject("dataLink"));
-    obj.dataLink16:setParent(obj.layout94);
+    obj.dataLink16:setParent(obj.layout95);
     obj.dataLink16:setField("colorStroke");
     obj.dataLink16:setDefaultValue("#FFFFFF");
     obj.dataLink16:setName("dataLink16");
 
     obj.label149 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label149:setParent(obj.layout94);
+    obj.label149:setParent(obj.layout95);
     obj.label149:setLeft(0);
     obj.label149:setTop(110);
     obj.label149:setWidth(90);
@@ -6044,7 +6055,7 @@ self.Evocation._recalcHeight();
     obj.label149:setName("label149");
 
     obj.comboBox8 = GUI.fromHandle(_obj_newObject("comboBox"));
-    obj.comboBox8:setParent(obj.layout94);
+    obj.comboBox8:setParent(obj.layout95);
     obj.comboBox8:setLeft(95);
     obj.comboBox8:setTop(110);
     obj.comboBox8:setWidth(90);
@@ -6054,7 +6065,7 @@ self.Evocation._recalcHeight();
     obj.comboBox8:setName("comboBox8");
 
     obj.dataLink17 = GUI.fromHandle(_obj_newObject("dataLink"));
-    obj.dataLink17:setParent(obj.layout94);
+    obj.dataLink17:setParent(obj.layout95);
     obj.dataLink17:setField("colorFont");
     obj.dataLink17:setDefaultValue("#FFFFFF");
     obj.dataLink17:setName("dataLink17");
@@ -6183,31 +6194,31 @@ self.Evocation._recalcHeight();
     obj._e_event1 = obj.dataLink1:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet==nil then return end;
-            					self.SolarCaste.visible = false;
-            					self.LunarCaste.visible = false;
-            					self.DragonAspect.visible = false;
-            					self.LunarShapes.visible = false;
-            					self.Supernatural.visible = false;
+            						self.SolarCaste.visible = false;
+            						self.LunarCaste.visible = false;
+            						self.DragonAspect.visible = false;
+            						self.LunarShapes.visible = false;
+            						self.Supernatural.visible = false;
             
-            					self.Spirit.visible = false;
-            					self.Tell.visible = false;
+            						self.Spirit.visible = false;
+            						self.Tell.visible = false;
             
-            					local exaltation = tonumber(sheet.exaltation) or 0;
+            						local exaltation = tonumber(sheet.exaltation) or 0;
             
-            					if exaltation == 1 then
-            						self.SolarCaste.visible = true;
-            						self.SupernaturalLabel.text = "Supernatural Ability";
-            						self.Supernatural.visible = true;
-            					elseif exaltation == 2 then
-            						self.LunarCaste.visible = true;
-            						self.Spirit.visible = true;
-            						self.Tell.visible = true;
-            						self.LunarShapes.visible = true;
-            					elseif exaltation == 3 then
-            						self.DragonAspect.visible = true;
-            						self.SupernaturalLabel.text = "Origin";
-            						self.Supernatural.visible = true;
-            					end;
+            						if exaltation == 1 then
+            							self.SolarCaste.visible = true;
+            							self.SupernaturalLabel.text = "Supernatural Ability";
+            							self.Supernatural.visible = true;
+            						elseif exaltation == 2 then
+            							self.LunarCaste.visible = true;
+            							self.Spirit.visible = true;
+            							self.Tell.visible = true;
+            							self.LunarShapes.visible = true;
+            						elseif exaltation == 3 then
+            							self.DragonAspect.visible = true;
+            							self.SupernaturalLabel.text = "Origin";
+            							self.Supernatural.visible = true;
+            						end;
         end, obj);
 
     obj._e_event2 = obj.button1:addEventListener("onClick",
@@ -6224,37 +6235,37 @@ self.Evocation._recalcHeight();
         function (_, field, oldValue, newValue)
             if sheet==nil then return end;
             
-            						local essence = 0;
-            						if sheet.essence_1 then essence = essence +1 end;
-            						if sheet.essence_2 then essence = essence +1 end;
-            						if sheet.essence_3 then essence = essence +1 end;
-            						if sheet.essence_4 then essence = essence +1 end;
-            						if sheet.essence_5 then essence = essence +1 end;
+            							local essence = 0;
+            							if sheet.essence_1 then essence = essence +1 end;
+            							if sheet.essence_2 then essence = essence +1 end;
+            							if sheet.essence_3 then essence = essence +1 end;
+            							if sheet.essence_4 then essence = essence +1 end;
+            							if sheet.essence_5 then essence = essence +1 end;
             
-            						local exaltation = tonumber(sheet.exaltation) or 0;
+            							local exaltation = tonumber(sheet.exaltation) or 0;
             
-            						if exaltation == 1 then
-            							sheet.personalMax = (essence*3) + 10;
-            							sheet.peripheralMax = (essence*7) + 26;
-            						elseif exaltation == 2 then
-            							sheet.personalMax = essence + 15;
-            							sheet.peripheralMax = (essence*4) + 34;
-            						elseif exaltation == 3 then
-            							sheet.personalMax = essence + 11;
-            							sheet.peripheralMax = (essence*4) + 23;
-            						end;
+            							if exaltation == 1 then
+            								sheet.personalMax = (essence*3) + 10;
+            								sheet.peripheralMax = (essence*7) + 26;
+            							elseif exaltation == 2 then
+            								sheet.personalMax = essence + 15;
+            								sheet.peripheralMax = (essence*4) + 34;
+            							elseif exaltation == 3 then
+            								sheet.personalMax = essence + 11;
+            								sheet.peripheralMax = (essence*4) + 23;
+            							end;
         end, obj);
 
     obj._e_event5 = obj.dataLink12:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet==nil then return end;
-            						sheet.personalMin = (tonumber(sheet.personalMax) or 0) - (tonumber(sheet.personalSpent) or 0);
+            							sheet.personalMin = (tonumber(sheet.personalMax) or 0) - (tonumber(sheet.personalSpent) or 0);
         end, obj);
 
     obj._e_event6 = obj.dataLink13:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet==nil then return end;
-            						sheet.peripheralMin = (tonumber(sheet.peripheralMax) or 0) - (tonumber(sheet.peripheralSpent) or 0);
+            							sheet.peripheralMin = (tonumber(sheet.peripheralMax) or 0) - (tonumber(sheet.peripheralSpent) or 0);
         end, obj);
 
     obj._e_event7 = obj.image1:addEventListener("onStartDrag",
@@ -6890,8 +6901,8 @@ self.Evocation._recalcHeight();
         if self.rectangle16 ~= nil then self.rectangle16:destroy(); self.rectangle16 = nil; end;
         if self.label128 ~= nil then self.label128:destroy(); self.label128 = nil; end;
         if self.label35 ~= nil then self.label35:destroy(); self.label35 = nil; end;
-        if self.label143 ~= nil then self.label143:destroy(); self.label143 = nil; end;
         if self.layout94 ~= nil then self.layout94:destroy(); self.layout94 = nil; end;
+        if self.label143 ~= nil then self.label143:destroy(); self.label143 = nil; end;
         if self.label148 ~= nil then self.label148:destroy(); self.label148 = nil; end;
         if self.flowPart25 ~= nil then self.flowPart25:destroy(); self.flowPart25 = nil; end;
         if self.layout23 ~= nil then self.layout23:destroy(); self.layout23 = nil; end;
@@ -7417,10 +7428,11 @@ self.Evocation._recalcHeight();
         if self.label4 ~= nil then self.label4:destroy(); self.label4 = nil; end;
         if self.layout66 ~= nil then self.layout66:destroy(); self.layout66 = nil; end;
         if self.layout93 ~= nil then self.layout93:destroy(); self.layout93 = nil; end;
-        if self.dataLink14 ~= nil then self.dataLink14:destroy(); self.dataLink14 = nil; end;
+        if self.layout95 ~= nil then self.layout95:destroy(); self.layout95 = nil; end;
         if self.label136 ~= nil then self.label136:destroy(); self.label136 = nil; end;
-        if self.label150 ~= nil then self.label150:destroy(); self.label150 = nil; end;
+        if self.dataLink14 ~= nil then self.dataLink14:destroy(); self.dataLink14 = nil; end;
         if self.rclBrawl ~= nil then self.rclBrawl:destroy(); self.rclBrawl = nil; end;
+        if self.label150 ~= nil then self.label150:destroy(); self.label150 = nil; end;
         if self.imageCheckBox60 ~= nil then self.imageCheckBox60:destroy(); self.imageCheckBox60 = nil; end;
         if self.imageCheckBox52 ~= nil then self.imageCheckBox52:destroy(); self.imageCheckBox52 = nil; end;
         if self.rectangle25 ~= nil then self.rectangle25:destroy(); self.rectangle25 = nil; end;

@@ -45,230 +45,230 @@
 	</template>
 
 	<scrollBox align="client">
-		<layout width="1030" height="610"/>
-
-		<layout align="top" height="100" margins="{bottom=5}">	
-			<rectangle align="left" width="1030" color="black" xradius="5" yradius="15" cornerType="round">
-	        	<layout align="top" height="50">
-	        		<VertLabelEdit align="left" width="300" text="Name" fontSize="13" field="nome" name="Name"/>
-	        		<VertLabelEdit align="left" width="300" text="Player" fontSize="13" field="jogador" name="Player"/>
-	        		<VertCombo align="left" width="205" text="Exaltation" field="exaltation" items="{'Solar','Lunar','Dragon-Blooded'}" values="{'1','2','3'}" fontSize="13" name="Exaltation" visible="true"/>
-	        		<VertCombo align="right" width="205" text="Caste" field="solarCaste" items="{'Dawn','Zenith','Twilight','Night','Eclipse'}" values="{'1','2','3','4','5'}" fontSize="13" name="SolarCaste" visible="false"/>
-	        		<VertCombo align="right" width="205" text="Caste" field="lunarCaste" items="{'Full Moon','Wzxing Moon','No Moon','Casteless'}" values="{'1','2','3','4'}" fontSize="13" name="LunarCaste" visible="false"/>
-	        		<VertCombo align="right" width="205" text="Aspect" field="dragonAspect" items="{'Fire','Water','Air','Earth','Wood'}" values="{'1','2','3','4','5'}" fontSize="13" name="DragonAspect" visible="false"/>
-	        	</layout>
-	        	<layout align="top" height="50">
-	        		<VertLabelEdit align="left" width="250" text="Concept" fontSize="13" field="concept" name="Concept"/>
-	        		<VertLabelEdit align="left" width="250" text="Anima" fontSize="13" field="anima" name="Anima"/>
-	        		<VertLabelEdit align="left" width="250" text="Supernatural Ability" fontSize="13" field="supernatural" name="Supernatural" nameLabel="SupernaturalLabel"/>
-	        		<VertLabelEdit align="right" width="125" text="Tell" fontSize="13" field="tell" name="Tell"/>
-	        		<VertLabelEdit align="right" width="125" text="Spirit Shape" fontSize="13" field="Spirit" name="Spirit"/>
-	        	</layout>
-			</rectangle>
-			<dataLink field="exaltation">
-				<event name="onChange">
-					if sheet==nil then return end;
-					self.SolarCaste.visible = false;
-					self.LunarCaste.visible = false;
-					self.DragonAspect.visible = false;
-					self.LunarShapes.visible = false;
-					self.Supernatural.visible = false;
-
-					self.Spirit.visible = false;
-					self.Tell.visible = false;
-
-					local exaltation = tonumber(sheet.exaltation) or 0;
-
-					if exaltation == 1 then
-						self.SolarCaste.visible = true;
-						self.SupernaturalLabel.text = "Supernatural Ability";
-						self.Supernatural.visible = true;
-					elseif exaltation == 2 then
-						self.LunarCaste.visible = true;
-						self.Spirit.visible = true;
-						self.Tell.visible = true;
-						self.LunarShapes.visible = true;
-					elseif exaltation == 3 then
-						self.DragonAspect.visible = true;
-						self.SupernaturalLabel.text = "Origin";
-						self.Supernatural.visible = true;
-					end;
-				</event>
-			</dataLink>
-        </layout>
-
-		<layout align="top" height="100" margins="{bottom=5}">	
-			<rectangle align="left" width="1030" color="black" xradius="5" yradius="15" cornerType="round">
-				<label align="top" height="25" horzTextAlign="center" text="ATTRIBUTES"/>
-	        	<layout align="top" height="25">
-	        		<Attribute text="Strength" field="strength" width="330"/>
-	        		<Attribute text="Charisma" field="charisma" width="330"/>
-	        		<Attribute text="Perception" field="perception" width="330"/>
-	        	</layout>
-	        	<layout align="top" height="25">
-	        		<Attribute text="Dexterity" field="dexterity" width="330"/>
-	        		<Attribute text="Manipulation" field="manipulation" width="330"/>
-	        		<Attribute text="Intelligence" field="intelligence" width="330"/>
-	        	</layout>
-	        	<layout align="top" height="25">
-	        		<Attribute text="Stamina" field="stamina" width="330"/>
-	        		<Attribute text="Appearance" field="appearance" width="330"/>
-	        		<Attribute text="Wits" field="wits" width="330"/>
-	        	</layout>
-			</rectangle>
-        </layout>
-
-        <layout align="top" height="400" margins="{bottom=5}">
-			<rectangle align="left" width="340" color="black" xradius="5" yradius="15" cornerType="round" margins="{right=5}">
-
-				<layout align="top" height="25" margins="{bottom=0}">
-					<button align="left" width="25" text="+" margins="{left=5,right=5}" onClick="self.rclMerits:append();"/>
-					<label align="client" height="25" horzTextAlign="center" text="MERITS"/>
-				</layout>
-				
-				<recordList align="client" margins="{left=5,right=5,bottom=5,top=0}" name="rclMerits" field="listMerits" templateForm="frmMeritForm" layout="vertical"/>
-			</rectangle>
-			<rectangle align="left" width="170" color="black" xradius="5" yradius="15" cornerType="round" margins="{right=5}">
-				<label align="top" height="25" horzTextAlign="center" text="WILLPOWER"/>
-				<layout align="top" height="25" margins="{bottom=0}">
-					<imageCheckBox align="left" width="15" field="willpower_1" checkedImage="images/ball_on.png" uncheckedImage="images/ball_off.png" margins="{left=10}"/>
-					<imageCheckBox align="left" width="15" field="willpower_2" checkedImage="images/ball_on.png" uncheckedImage="images/ball_off.png"/>
-					<imageCheckBox align="left" width="15" field="willpower_3" checkedImage="images/ball_on.png" uncheckedImage="images/ball_off.png"/>
-					<imageCheckBox align="left" width="15" field="willpower_4" checkedImage="images/ball_on.png" uncheckedImage="images/ball_off.png"/>
-					<imageCheckBox align="left" width="15" field="willpower_5" checkedImage="images/ball_on.png" uncheckedImage="images/ball_off.png"/>
-					<imageCheckBox align="left" width="15" field="willpower_6" checkedImage="images/ball_on.png" uncheckedImage="images/ball_off.png"/>
-					<imageCheckBox align="left" width="15" field="willpower_7" checkedImage="images/ball_on.png" uncheckedImage="images/ball_off.png"/>
-					<imageCheckBox align="left" width="15" field="willpower_8" checkedImage="images/ball_on.png" uncheckedImage="images/ball_off.png"/>
-					<imageCheckBox align="left" width="15" field="willpower_9" checkedImage="images/ball_on.png" uncheckedImage="images/ball_off.png"/>
-					<imageCheckBox align="left" width="15" field="willpower_10" checkedImage="images/ball_on.png" uncheckedImage="images/ball_off.png"/>
-				</layout>
-				<layout align="top" height="25" margins="{bottom=5}">
-					<checkBox align="left" width="15" field="willpower_1_temp" text="" margins="{left=10}"/>
-					<checkBox align="left" width="15" field="willpower_2_temp" text=""/>
-					<checkBox align="left" width="15" field="willpower_3_temp" text=""/>
-					<checkBox align="left" width="15" field="willpower_4_temp" text=""/>
-					<checkBox align="left" width="15" field="willpower_5_temp" text=""/>
-					<checkBox align="left" width="15" field="willpower_6_temp" text=""/>
-					<checkBox align="left" width="15" field="willpower_7_temp" text=""/>
-					<checkBox align="left" width="15" field="willpower_8_temp" text=""/>
-					<checkBox align="left" width="15" field="willpower_9_temp" text=""/>
-					<checkBox align="left" width="15" field="willpower_10_temp" text=""/>
-				</layout>
-				<label align="top" height="25" horzTextAlign="center" text="ESSENCE"/>
-				<layout align="top" height="25" margins="{bottom=0}">
-					<imageCheckBox align="left" width="15" field="essence_1" checkedImage="images/ball_on.png" uncheckedImage="images/ball_off.png" margins="{left=15,right=10}"/>
-					<imageCheckBox align="left" width="15" field="essence_2" checkedImage="images/ball_on.png" uncheckedImage="images/ball_off.png" margins="{left=5,right=10}"/>
-					<imageCheckBox align="left" width="15" field="essence_3" checkedImage="images/ball_on.png" uncheckedImage="images/ball_off.png" margins="{left=5,right=10}"/>
-					<imageCheckBox align="left" width="15" field="essence_4" checkedImage="images/ball_on.png" uncheckedImage="images/ball_off.png" margins="{left=5,right=10}"/>
-					<imageCheckBox align="left" width="15" field="essence_5" checkedImage="images/ball_on.png" uncheckedImage="images/ball_off.png" margins="{left=5,right=10}"/>
-				</layout>
-				<layout align="top" height="25" margins="{bottom=0}">
-					<label align="left" width="100" horzTextAlign="center" text="Personal" margins="{left=5}"/>
-
-					<rectangle align="left" width="30" color="black" strokeColor="black" strokeSize="1">
-						<label align="client" field="personalMin" horzTextAlign="center" vertTextAlign="center"/>
-					</rectangle>
-
-					<rectangle align="left" width="30" color="black" strokeColor="black" strokeSize="1">
-						<label align="client" field="personalMax" horzTextAlign="center" vertTextAlign="center"/>
-					</rectangle>
-				</layout>
-				<layout align="top" height="25" margins="{bottom=0}">
-					<label align="left" width="100" horzTextAlign="center" text="Peripheral" margins="{left=5}"/>
-
-					<rectangle align="left" width="30" color="black" strokeColor="black" strokeSize="1">
-						<label align="client" field="peripheralMin" horzTextAlign="center" vertTextAlign="center"/>
-					</rectangle>
-
-					<rectangle align="left" width="30" color="black" strokeColor="black" strokeSize="1">
-						<label align="client" field="peripheralMax" horzTextAlign="center" vertTextAlign="center"/>
-					</rectangle>
-				</layout>
-				<layout align="client" margins="{bottom=5}">
-					<layout align="top" height="25" margins="{bottom=0}">
-						<button align="left" width="25" text="+" margins="{left=5,right=5}" onClick="self.rclCommited:append();"/>
-						<label align="client" text="Commited (Personal|Peripheral)" fontSize="9"/>
-					</layout>
-					<recordList align="client" margins="{left=5,right=5,bottom=5,top=0}" name="rclCommited" field="listCommit" templateForm="frmCommitForm" layout="vertical"/>
-				</layout>
-
-				<dataLink fields="{'essence_1','essence_2','essence_3','essence_4','essence_5','exaltation'}">
+		<layout width="1050" height="630">
+			<layout align="top" height="110" margins="{bottom=5}" padding="{bottom=5,top=5}">	
+				<rectangle align="left" width="1030" color="black" xradius="5" yradius="15" cornerType="round">
+		        	<layout align="top" height="50" padding="{left=5,right=5}">
+		        		<VertLabelEdit align="left" width="295" text="Name" fontSize="13" field="nome" name="Name"/>
+		        		<VertLabelEdit align="left" width="295" text="Player" fontSize="13" field="jogador" name="Player"/>
+		        		<VertCombo align="left" width="205" text="Exaltation" field="exaltation" items="{'Solar','Lunar','Dragon-Blooded'}" values="{'1','2','3'}" fontSize="13" name="Exaltation" visible="true"/>
+		        		<VertCombo align="right" width="205" text="Caste" field="solarCaste" items="{'Dawn','Zenith','Twilight','Night','Eclipse'}" values="{'1','2','3','4','5'}" fontSize="13" name="SolarCaste" visible="false"/>
+		        		<VertCombo align="right" width="205" text="Caste" field="lunarCaste" items="{'Full Moon','Wzxing Moon','No Moon','Casteless'}" values="{'1','2','3','4'}" fontSize="13" name="LunarCaste" visible="false"/>
+		        		<VertCombo align="right" width="205" text="Aspect" field="dragonAspect" items="{'Fire','Water','Air','Earth','Wood'}" values="{'1','2','3','4','5'}" fontSize="13" name="DragonAspect" visible="false"/>
+		        	</layout>
+		        	<layout align="top" height="50" padding="{left=5,right=5}">
+		        		<VertLabelEdit align="left" width="250" text="Concept" fontSize="13" field="concept" name="Concept"/>
+		        		<VertLabelEdit align="left" width="250" text="Anima" fontSize="13" field="anima" name="Anima"/>
+		        		<VertLabelEdit align="left" width="250" text="Supernatural Ability" fontSize="13" field="supernatural" name="Supernatural" nameLabel="SupernaturalLabel"/>
+		        		<VertLabelEdit align="right" width="125" text="Tell" fontSize="13" field="tell" name="Tell"/>
+		        		<VertLabelEdit align="right" width="125" text="Spirit Shape" fontSize="13" field="Spirit" name="Spirit"/>
+		        	</layout>
+				</rectangle>
+				<dataLink field="exaltation">
 					<event name="onChange">
 						if sheet==nil then return end;
+						self.SolarCaste.visible = false;
+						self.LunarCaste.visible = false;
+						self.DragonAspect.visible = false;
+						self.LunarShapes.visible = false;
+						self.Supernatural.visible = false;
 
-						local essence = 0;
-						if sheet.essence_1 then essence = essence +1 end;
-						if sheet.essence_2 then essence = essence +1 end;
-						if sheet.essence_3 then essence = essence +1 end;
-						if sheet.essence_4 then essence = essence +1 end;
-						if sheet.essence_5 then essence = essence +1 end;
+						self.Spirit.visible = false;
+						self.Tell.visible = false;
 
 						local exaltation = tonumber(sheet.exaltation) or 0;
 
 						if exaltation == 1 then
-							sheet.personalMax = (essence*3) + 10;
-							sheet.peripheralMax = (essence*7) + 26;
+							self.SolarCaste.visible = true;
+							self.SupernaturalLabel.text = "Supernatural Ability";
+							self.Supernatural.visible = true;
 						elseif exaltation == 2 then
-							sheet.personalMax = essence + 15;
-							sheet.peripheralMax = (essence*4) + 34;
+							self.LunarCaste.visible = true;
+							self.Spirit.visible = true;
+							self.Tell.visible = true;
+							self.LunarShapes.visible = true;
 						elseif exaltation == 3 then
-							sheet.personalMax = essence + 11;
-							sheet.peripheralMax = (essence*4) + 23;
+							self.DragonAspect.visible = true;
+							self.SupernaturalLabel.text = "Origin";
+							self.Supernatural.visible = true;
 						end;
 					</event>
 				</dataLink>
-				<dataLink fields="{'personalMax','personalSpent'}">
-					<event name="onChange">
-						if sheet==nil then return end;
-						sheet.personalMin = (tonumber(sheet.personalMax) or 0) - (tonumber(sheet.personalSpent) or 0);
-					</event>
-				</dataLink>
-				<dataLink fields="{'peripheralMax','peripheralSpent'}">
-					<event name="onChange">
-						if sheet==nil then return end;
-						sheet.peripheralMin = (tonumber(sheet.peripheralMax) or 0) - (tonumber(sheet.peripheralSpent) or 0);
-					</event>
-				</dataLink>
-			</rectangle>
-			<rectangle align="left" width="300" color="black" xradius="5" yradius="15" cornerType="round" margins="{right=5}">
-				<label align="top" height="25" horzTextAlign="center" text="LIMIT BREAK"/>
-				<layout align="top" height="25" margins="{bottom=5}">
-					<checkBox align="left" width="15" field="limit_1" text="" margins="{left=75}"/>
-					<checkBox align="left" width="15" field="limit_2" text=""/>
-					<checkBox align="left" width="15" field="limit_3" text=""/>
-					<checkBox align="left" width="15" field="limit_4" text=""/>
-					<checkBox align="left" width="15" field="limit_5" text=""/>
-					<checkBox align="left" width="15" field="limit_6" text=""/>
-					<checkBox align="left" width="15" field="limit_7" text=""/>
-					<checkBox align="left" width="15" field="limit_8" text=""/>
-					<checkBox align="left" width="15" field="limit_9" text=""/>
-					<checkBox align="left" width="15" field="limit_10" text=""/>
-				</layout>
-				<label align="top" height="25" horzTextAlign="center" text="LIMIT TRIGGER"/>
-				<textEditor align="client" field="limitTrigger" margins="{left=5,right=5,bottom=5}"/>
-			</rectangle>
+	        </layout>
 
-			<rectangle align="left" width="205" color="black" xradius="5" yradius="15" cornerType="round">
-				<label align="top" height="25" horzTextAlign="center" text="EXPERIENCE"/>
-				<layout align="top" height="25" margins="{bottom=5}">
-					<edit left="5" width="95" field="xpCurr"/>
-					<edit left="105" width="95" field="xpTotal"/>
-				</layout>
-				<label align="top" height="25" horzTextAlign="center" text="SOLAR EXPERIENCE"/>
-				<layout align="top" height="25" margins="{bottom=5}">
-					<edit left="5" width="95" field="xpSolarCurr"/>
-					<edit left="105" width="95" field="xpSolarTotal"/>
-				</layout>
-
-				<rectangle align="bottom" height="200" color="black" strokeColor="white" strokeSize="1" margins="{left=5,right=5,bottom=5}">
-					<label left="0" top="90" width="200" height="20" text="Avatar" horzTextAlign="center"/>
-					<image align="client" field="avatar" editable="true" style="autoFit" margins="{left=2, right=2, top=2, bottom=2}">
-						<event name="OnStartDrag">
-						    drag:addData("imageURL", sheet.avatar);
-						</event>
-					</image>
+			<layout align="top" height="105" margins="{bottom=5}">	
+				<rectangle align="left" width="1030" color="black" xradius="5" yradius="15" cornerType="round">
+					<label align="top" height="25" horzTextAlign="center" text="ATTRIBUTES"/>
+		        	<layout align="top" height="25">
+		        		<Attribute text="Strength" field="strength" width="330"/>
+		        		<Attribute text="Charisma" field="charisma" width="330"/>
+		        		<Attribute text="Perception" field="perception" width="330"/>
+		        	</layout>
+		        	<layout align="top" height="25">
+		        		<Attribute text="Dexterity" field="dexterity" width="330"/>
+		        		<Attribute text="Manipulation" field="manipulation" width="330"/>
+		        		<Attribute text="Intelligence" field="intelligence" width="330"/>
+		        	</layout>
+		        	<layout align="top" height="25">
+		        		<Attribute text="Stamina" field="stamina" width="330"/>
+		        		<Attribute text="Appearance" field="appearance" width="330"/>
+		        		<Attribute text="Wits" field="wits" width="330"/>
+		        	</layout>
 				</rectangle>
-			</rectangle>
+	        </layout>
+
+	        <layout align="top" height="400" margins="{bottom=5}">
+				<rectangle align="left" width="340" color="black" xradius="5" yradius="15" cornerType="round" margins="{right=5}" padding="{bottom=0,top=5}">
+
+					<layout align="top" height="25" margins="{bottom=0}">
+						<button align="right" width="25" text="+" margins="{left=5,right=5}" onClick="self.rclMerits:append();"/>
+						<label align="client" height="25" horzTextAlign="center" text="MERITS"/>
+					</layout>
+					
+					<recordList align="client" margins="{left=5,right=5,bottom=5,top=0}" name="rclMerits" field="listMerits" templateForm="frmMeritForm" layout="vertical"/>
+				</rectangle>
+				<rectangle align="left" width="170" color="black" xradius="5" yradius="15" cornerType="round" margins="{right=5}">
+					<label align="top" height="25" horzTextAlign="center" text="WILLPOWER"/>
+					<layout align="top" height="25" margins="{bottom=0}">
+						<imageCheckBox align="left" width="15" field="willpower_1" checkedImage="images/ball_on.png" uncheckedImage="images/ball_off.png" margins="{left=10}"/>
+						<imageCheckBox align="left" width="15" field="willpower_2" checkedImage="images/ball_on.png" uncheckedImage="images/ball_off.png"/>
+						<imageCheckBox align="left" width="15" field="willpower_3" checkedImage="images/ball_on.png" uncheckedImage="images/ball_off.png"/>
+						<imageCheckBox align="left" width="15" field="willpower_4" checkedImage="images/ball_on.png" uncheckedImage="images/ball_off.png"/>
+						<imageCheckBox align="left" width="15" field="willpower_5" checkedImage="images/ball_on.png" uncheckedImage="images/ball_off.png"/>
+						<imageCheckBox align="left" width="15" field="willpower_6" checkedImage="images/ball_on.png" uncheckedImage="images/ball_off.png"/>
+						<imageCheckBox align="left" width="15" field="willpower_7" checkedImage="images/ball_on.png" uncheckedImage="images/ball_off.png"/>
+						<imageCheckBox align="left" width="15" field="willpower_8" checkedImage="images/ball_on.png" uncheckedImage="images/ball_off.png"/>
+						<imageCheckBox align="left" width="15" field="willpower_9" checkedImage="images/ball_on.png" uncheckedImage="images/ball_off.png"/>
+						<imageCheckBox align="left" width="15" field="willpower_10" checkedImage="images/ball_on.png" uncheckedImage="images/ball_off.png"/>
+					</layout>
+					<layout align="top" height="25" margins="{bottom=5}">
+						<checkBox align="left" width="15" field="willpower_1_temp" text="" margins="{left=10}"/>
+						<checkBox align="left" width="15" field="willpower_2_temp" text=""/>
+						<checkBox align="left" width="15" field="willpower_3_temp" text=""/>
+						<checkBox align="left" width="15" field="willpower_4_temp" text=""/>
+						<checkBox align="left" width="15" field="willpower_5_temp" text=""/>
+						<checkBox align="left" width="15" field="willpower_6_temp" text=""/>
+						<checkBox align="left" width="15" field="willpower_7_temp" text=""/>
+						<checkBox align="left" width="15" field="willpower_8_temp" text=""/>
+						<checkBox align="left" width="15" field="willpower_9_temp" text=""/>
+						<checkBox align="left" width="15" field="willpower_10_temp" text=""/>
+					</layout>
+					<label align="top" height="25" horzTextAlign="center" text="ESSENCE"/>
+					<layout align="top" height="25" margins="{bottom=0}">
+						<imageCheckBox align="left" width="15" field="essence_1" checkedImage="images/ball_on.png" uncheckedImage="images/ball_off.png" margins="{left=15,right=10}"/>
+						<imageCheckBox align="left" width="15" field="essence_2" checkedImage="images/ball_on.png" uncheckedImage="images/ball_off.png" margins="{left=5,right=10}"/>
+						<imageCheckBox align="left" width="15" field="essence_3" checkedImage="images/ball_on.png" uncheckedImage="images/ball_off.png" margins="{left=5,right=10}"/>
+						<imageCheckBox align="left" width="15" field="essence_4" checkedImage="images/ball_on.png" uncheckedImage="images/ball_off.png" margins="{left=5,right=10}"/>
+						<imageCheckBox align="left" width="15" field="essence_5" checkedImage="images/ball_on.png" uncheckedImage="images/ball_off.png" margins="{left=5,right=10}"/>
+					</layout>
+					<layout align="top" height="25" margins="{bottom=0}">
+						<label align="left" width="100" horzTextAlign="center" text="Personal" margins="{left=5}"/>
+
+						<rectangle align="left" width="30" color="black" strokeColor="black" strokeSize="1">
+							<label align="client" field="personalMin" horzTextAlign="center" vertTextAlign="center"/>
+						</rectangle>
+
+						<rectangle align="left" width="30" color="black" strokeColor="black" strokeSize="1">
+							<label align="client" field="personalMax" horzTextAlign="center" vertTextAlign="center"/>
+						</rectangle>
+					</layout>
+					<layout align="top" height="25" margins="{bottom=0}">
+						<label align="left" width="100" horzTextAlign="center" text="Peripheral" margins="{left=5}"/>
+
+						<rectangle align="left" width="30" color="black" strokeColor="black" strokeSize="1">
+							<label align="client" field="peripheralMin" horzTextAlign="center" vertTextAlign="center"/>
+						</rectangle>
+
+						<rectangle align="left" width="30" color="black" strokeColor="black" strokeSize="1">
+							<label align="client" field="peripheralMax" horzTextAlign="center" vertTextAlign="center"/>
+						</rectangle>
+					</layout>
+					<layout align="client" margins="{bottom=5}">
+						<layout align="top" height="25" margins="{bottom=0}">
+							<button align="left" width="25" text="+" margins="{left=5,right=5}" onClick="self.rclCommited:append();"/>
+							<label align="client" text="Commited (Personal|Peripheral)" fontSize="9"/>
+						</layout>
+						<recordList align="client" margins="{left=5,right=5,bottom=5,top=0}" name="rclCommited" field="listCommit" templateForm="frmCommitForm" layout="vertical"/>
+					</layout>
+
+					<dataLink fields="{'essence_1','essence_2','essence_3','essence_4','essence_5','exaltation'}">
+						<event name="onChange">
+							if sheet==nil then return end;
+
+							local essence = 0;
+							if sheet.essence_1 then essence = essence +1 end;
+							if sheet.essence_2 then essence = essence +1 end;
+							if sheet.essence_3 then essence = essence +1 end;
+							if sheet.essence_4 then essence = essence +1 end;
+							if sheet.essence_5 then essence = essence +1 end;
+
+							local exaltation = tonumber(sheet.exaltation) or 0;
+
+							if exaltation == 1 then
+								sheet.personalMax = (essence*3) + 10;
+								sheet.peripheralMax = (essence*7) + 26;
+							elseif exaltation == 2 then
+								sheet.personalMax = essence + 15;
+								sheet.peripheralMax = (essence*4) + 34;
+							elseif exaltation == 3 then
+								sheet.personalMax = essence + 11;
+								sheet.peripheralMax = (essence*4) + 23;
+							end;
+						</event>
+					</dataLink>
+					<dataLink fields="{'personalMax','personalSpent'}">
+						<event name="onChange">
+							if sheet==nil then return end;
+							sheet.personalMin = (tonumber(sheet.personalMax) or 0) - (tonumber(sheet.personalSpent) or 0);
+						</event>
+					</dataLink>
+					<dataLink fields="{'peripheralMax','peripheralSpent'}">
+						<event name="onChange">
+							if sheet==nil then return end;
+							sheet.peripheralMin = (tonumber(sheet.peripheralMax) or 0) - (tonumber(sheet.peripheralSpent) or 0);
+						</event>
+					</dataLink>
+				</rectangle>
+				<rectangle align="left" width="300" color="black" xradius="5" yradius="15" cornerType="round" margins="{right=5}">
+					<label align="top" height="25" horzTextAlign="center" text="LIMIT BREAK"/>
+					<layout align="top" height="25" margins="{bottom=5}">
+						<checkBox align="left" width="15" field="limit_1" text="" margins="{left=75}"/>
+						<checkBox align="left" width="15" field="limit_2" text=""/>
+						<checkBox align="left" width="15" field="limit_3" text=""/>
+						<checkBox align="left" width="15" field="limit_4" text=""/>
+						<checkBox align="left" width="15" field="limit_5" text=""/>
+						<checkBox align="left" width="15" field="limit_6" text=""/>
+						<checkBox align="left" width="15" field="limit_7" text=""/>
+						<checkBox align="left" width="15" field="limit_8" text=""/>
+						<checkBox align="left" width="15" field="limit_9" text=""/>
+						<checkBox align="left" width="15" field="limit_10" text=""/>
+					</layout>
+					<label align="top" height="25" horzTextAlign="center" text="LIMIT TRIGGER"/>
+					<textEditor align="client" field="limitTrigger" margins="{left=5,right=5,bottom=5}"/>
+				</rectangle>
+
+				<rectangle align="left" width="205" color="black" xradius="5" yradius="15" cornerType="round">
+					<label align="top" height="25" horzTextAlign="center" text="EXPERIENCE"/>
+					<layout align="top" height="25" margins="{bottom=5}">
+						<edit left="5" width="95" field="xpCurr"/>
+						<edit left="105" width="95" field="xpTotal"/>
+					</layout>
+					<label align="top" height="25" horzTextAlign="center" text="SOLAR EXPERIENCE"/>
+					<layout align="top" height="25" margins="{bottom=5}">
+						<edit left="5" width="95" field="xpSolarCurr"/>
+						<edit left="105" width="95" field="xpSolarTotal"/>
+					</layout>
+
+					<rectangle align="bottom" height="200" color="black" strokeColor="white" strokeSize="1" margins="{left=5,right=5,bottom=5}">
+						<label left="0" top="90" width="200" height="20" text="Avatar" horzTextAlign="center"/>
+						<image align="client" field="avatar" editable="true" style="autoFit" margins="{left=2, right=2, top=2, bottom=2}">
+							<event name="OnStartDrag">
+							    drag:addData("imageURL", sheet.avatar);
+							</event>
+						</image>
+					</rectangle>
+				</rectangle>
+			</layout>
 		</layout>
 	</scrollBox>
 </form>

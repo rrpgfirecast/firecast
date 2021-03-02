@@ -35,7 +35,7 @@ local function constructNew_frmIntimacyForm()
     obj.rectangle1 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle1:setParent(obj);
     obj.rectangle1:setAlign("client");
-    obj.rectangle1:setColor("black");
+    obj.rectangle1:setColor("dimgray");
     obj.rectangle1:setName("rectangle1");
 
     obj.layout1 = GUI.fromHandle(_obj_newObject("layout"));

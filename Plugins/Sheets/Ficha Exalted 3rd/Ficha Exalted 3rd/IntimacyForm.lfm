@@ -14,7 +14,7 @@
 		</layout>
 	</template>
 
-	<rectangle align="client" color="black">
+	<rectangle align="client" color="dimgray">
 		<VertCombo text="Type" field="type" width="100" fontSize="13" items="{'Principle','Tie'}" values="{'1','2'}"/>
 		<VertLabelEdit text="Intimacy" field="intimacy" width="200" fontSize="13"/>
 		<VertCombo text="Nature" field="nature" width="100" fontSize="13" items="{'Negative','Positive'}" values="{'1','2'}"/>
