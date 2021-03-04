@@ -1,0 +1,221 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmFichaRPGmeister7_svg" align="client" theme="dark" margins="{top=1}">
+	<template name="smallInventory">
+		<rectangle align="client" color="black"/>
+		<label left="5" top="1" width="150" height="20" text="$(title)"/>
+		
+		<textEditor left="5" top="25" width="190" height="165" field="$(field)"/>
+		
+		<label left="5" top="195" width="50" height="20" text="Vol"/>
+		<formatEdit left="25" top="195" width="70" height="20" field="peso$(field2)" unit=""/>
+		<label left="105" top="195" width="50" height="20" text="$"/>
+		<formatEdit left="120" top="195" width="70" height="20" field="preco$(field2)" unit="C"/>
+	</template>
+	<template name="weaponInfoField">
+		<flowPart minWidth="290" maxWidth="300" height="35">
+			<label align="top" class="tituloCampo" fontSize="10" text="$(text)" horzTextAlign="center" wordWrap="true" textTrimming="none" autoSize="true" hint="$(hint)" hitTest="true"/>
+			<edit align="client" class="" field="$(field)" fontSize="12"/>
+		</flowPart>
+	</template>
+	<template name="weaponInfoFieldSmallCenter">
+		<flowPart minWidth="90" maxWidth="100" height="35">
+			<label align="top" class="tituloCampo" fontSize="10" text="$(text)" horzTextAlign="center" wordWrap="true" textTrimming="none" autoSize="true" hint="$(hint)" hitTest="true"/>
+			<edit align="client" class="" field="$(field)" horzTextAlign="center" fontSize="12"/>
+		</flowPart>
+	</template>
+	<template name="weaponInfoFieldSmall">
+		<flowPart minWidth="90" maxWidth="100" height="35">
+			<label align="top" class="tituloCampo" fontSize="10" text="$(text)" horzTextAlign="center" wordWrap="true" textTrimming="none" autoSize="true" hint="$(hint)" hitTest="true"/>
+			<edit align="client" class="" field="$(field)" fontSize="12"/>
+		</flowPart>
+	</template>
+	   <template name="itemInfoFieldSmall">
+        <flowPart minWidth="90" maxWidth="100" height="35">
+            <label align="top" class="tituloCampo" fontSize="10" text="$(text)" horzTextAlign="center" wordWrap="true" textTrimming="none" autoSize="true" hint="$(hint)" hitTest="true"/>
+            <edit align="client" class="" field="$(field)" fontSize="12" type="float"/>
+        </flowPart>
+    </template>
+
+	<popup name="popEquip" width="200" height="250" backOpacity="0.4" autoScopeNode="false">
+		<flowLayout align="top" autoHeight="true" maxControlsPerLine="2" margins="{bottom=4}" horzAlign="center">
+			<weaponInfoFieldSmall text="NOME" field="nome"/>
+			<weaponInfoFieldSmall text="Nível" field="nivel"/>
+			<weaponInfoFieldSmall text="Vol" field="peso"/>
+			<weaponInfoFieldSmall text="$" field="preco"/>
+		</flowLayout>
+		<textEditor align="client" field="descricao" class=""/>
+	</popup>
+	<popup name="popItem" width="300" height="250" backOpacity="0.4" autoScopeNode="false">
+        <flowLayout align="top" autoHeight="true" maxControlsPerLine="3" margins="{bottom=4}" horzAlign="center">
+            <weaponInfoFieldSmall text="Nome" field="nome" hint=""/>
+            <weaponInfoFieldSmall text="Tipo" field="tipo" hint="Varinha? Poção? Cajado?"/>
+            <weaponInfoFieldSmall text="Rolagem" field="dados" hint="Rolagem feita ao usar o item."/>
+
+            <weaponInfoFieldSmallCenter text="NC" field="nc" hint="Nível de Conjurador"/>
+            <weaponInfoFieldSmallCenter text="CD" field="cd" hint="Classe de Dificuldade"/>
+            <itemInfoFieldSmall text="PREÇO" field="preco" hint=""/>
+        </flowLayout>
+        <textEditor align="client" field="descricao" class=""/>
+    </popup>
+
+
+	<scrollBox align="client">
+		<layout align="left" width="475">
+			<rectangle align="top" height="330" color="black" margins="{bottom=5}">
+				<button text="+" left="5" top="5" width="20" height="20">
+					<event name="onClick">
+						self.rclListaDosEquipamentos:append();
+					</event>
+				</button>
+				<label left="30" top="5" width="270" height="20" text="EQUIPAMENTOS"/>
+				<label left="275" top="5" width="50" height="20" text="Vol"/>
+				<label left="325" top="5" width="50" height="20" text="$"/>
+				<recordList name="rclListaDosEquipamentos" field="campoDosEquipamentos" templateForm="frmFichaRPGmeister7A_svg" align="left" width="465" margins="{bottom=0,top=30}" layout="vertical" minQt="1"/>
+
+				<layout align="bottom" height="30">
+					<label left="260" top="5" width="50" height="20" text="Vol"/>
+					<rectangle left="280" top="5" width="70" height="20" color="black" strokeColor="white" strokeSize="1"/>
+					<label vertTextAlign="center" horzTextAlign="center" left="280" top="5" width="70" height="20" field="pesoEquipamentos" formatFloat=",0.##"/>
+					<label left="360" top="5" width="50" height="20" text="$"/>
+					<rectangle left="375" top="5" width="91" height="20" color="black" strokeColor="white" strokeSize="1"/>
+					<label vertTextAlign="center" horzTextAlign="center" left="375" top="5" width="91" height="20" field="precoEquipamentos"  formatFloat=",0.## C"/>
+				</layout>
+			</rectangle>
+
+			<rectangle align="top" height="330" color="black" margins="{bottom=5}">
+				<button text="+" left="5" top="5" width="20" height="20">
+					<event name="onClick">
+						self.rclListaDosImplates:append();
+					</event>
+				</button>
+				
+				<label left="30" top="5" width="270" height="20" text="IMPLANTES"/>
+				<label left="275" top="5" width="50" height="20" text="Vol"/>
+				<label left="325" top="5" width="50" height="20" text="$"/>
+				<recordList name="rclListaDosImplates" field="campoDosImplates" templateForm="frmFichaRPGmeister7A_svg" align="left" width="465" margins="{bottom=0,top=30}" layout="vertical" minQt="1"/>
+
+				<layout align="bottom" height="30">
+					<label left="260" top="5" width="50" height="20" text="Vol"/>
+					<rectangle left="280" top="5" width="70" height="20" color="black" strokeColor="white" strokeSize="1"/>
+					<label vertTextAlign="center" horzTextAlign="center" left="280" top="5" width="70" height="20" field="pesoImplantes" formatFloat=",0.##"/>
+					<label left="360" top="5" width="50" height="20" text="$"/>
+					<rectangle left="375" top="5" width="91" height="20" color="black" strokeColor="white" strokeSize="1"/>
+					<label vertTextAlign="center" horzTextAlign="center" left="375" top="5" width="91" height="20" field="precoImplantes"  formatFloat=",0.## C"/>
+				</layout>
+			</rectangle>
+		</layout>
+		
+		<layout left="480" top="0" width="200" height="220">
+			<smallInventory title="COMPUTADORES" field="permanencias" field2="Permanencias"/>
+		</layout>
+		<layout left="685" top="0" width="200" height="220">
+			<smallInventory title="LIVRES" field="livres" field2="Livres"/>
+		</layout>
+		<layout left="480" top="225" width="200" height="220">
+			<smallInventory title="OUTROS" field="outros" field2="Outros"/>
+		</layout>
+		<layout left="685" top="225" width="200" height="220">
+			<smallInventory title="MUNIÇÕES" field="municoes" field2="Municoes"/>
+		</layout>
+		<layout left="480" top="450" width="200" height="221">
+			<smallInventory title="MOCHILA" field="bolsos" field2="Bolsos"/>
+		</layout>
+		<layout left="685" top="450" width="200" height="221">
+			<smallInventory title="IMOVEIS" field="moveis" field2="Imoveis"/>
+		</layout>
+
+		<layout left="890" top="0" width="155" height="185">
+			<rectangle align="client" color="black"/>
+			<label left="5" top="1" width="200" height="20" text="CRÉDITOS"/>
+			<textEditor left="5" top="25" width="145" height="80" field="dinheiro"/>
+
+			<label left="10" top="110" width="50" height="20" text="TOTAL"/>
+			<formatEdit left="65" top="110" width="85" height="20" field="dinheiroTotal" unit="C"/>
+
+			<label left="10" top="135" width="50" height="20" text="GASTOS"/>
+			<rectangle left="65" top="135" width="85" height="20" color="black" strokeColor="white" strokeSize="1"/>
+			<label field="gastos" text="0" left="65" top="135" width="85" height="20" horzTextAlign="center" fontSize="11" formatFloat=",0.## C"/>
+
+			<label left="10" top="160" width="50" height="20" text="RESTANTE" fontSize="10"/>
+			<rectangle left="65" top="160" width="85" height="20" color="black" strokeColor="white" strokeSize="1"/>
+			<label field="dinheiroRestante" text="0" left="65" top="160" width="85" height="20" horzTextAlign="center" fontSize="11" formatFloat=",0.## C"/>
+		</layout>
+
+		<layout left="890" top="190" width="155" height="145">
+			<rectangle align="client" color="black"/>
+			<label left="5" top="1" width="150" height="20" text="CARGA"/>
+			
+			<label left="5" top="25" width="65" height="20" text="Desatravancado" fontSize="9"/>
+			<rectangle left="80" top="25" width="70" height="20" color="black" strokeColor="white" strokeSize="1"/>
+			<label left="80" top="25" width="70" height="20" field="cargaDesatravancado" horzTextAlign="center"/>
+
+			<label left="5" top="47" width="65" height="20" text="Atravancado" fontSize="11"/>
+			<rectangle left="80" top="47" width="70" height="20" color="black" strokeColor="white" strokeSize="1"/>
+			<label left="80" top="47" width="70" height="20" field="cargaAtravancado" horzTextAlign="center"/>
+
+			<label left="5" top="69" width="65" height="20" text="Sobrecarregado" fontSize="9"/>
+			<rectangle left="80" top="69" width="70" height="20" color="black" strokeColor="white" strokeSize="1"/>
+			<label left="80" top="69" width="70" height="20" field="cargaSobrecarregado" horzTextAlign="center"/>
+
+			<label left="20" top="90" width="65" height="20" text="ATUAL"/>
+			<label field="cargaAtual" width="70" height="20" left="80" top="90" horzTextAlign="center" fontColor="white"  formatFloat=",0.##"/>
+
+			<label left="20" top="115" width="65" height="20" text="EXTRA"/>
+			<edit field="cargaExtra" width="70" height="20" left="80" top="115" type="number"/>
+		</layout>
+		<dataLink fields="{'precoEquipamentos', 'precoImplantes', 'precoPermanencias', 'precoLivres', 'precoOutros', 'precoMunicoes', 'precoBolsos', 'precoImoveis', 'precoInventorioComp', 'dinheiroTotal', 'precoItens'}">
+			<event name="onChange">
+				if sheet~= nil then
+
+					-- Calculando todos gastos
+					local gastos = (tonumber(sheet.precoEquipamentos) or 0) +
+									(tonumber(sheet.precoImplantes) or 0) +
+									(tonumber(sheet.precoPermanencias) or 0) +
+									(tonumber(sheet.precoLivres) or 0) +
+									(tonumber(sheet.precoOutros) or 0) +
+									(tonumber(sheet.precoMunicoes) or 0) +
+									(tonumber(sheet.precoBolsos) or 0) +
+									(tonumber(sheet.precoImoveis) or 0) +
+									(tonumber(sheet.precoInventorioComp) or 0) +
+									(tonumber(sheet.precoItens) or 0);
+
+					-- Calculando dinheiro restante
+					local total = tonumber(sheet.dinheiroTotal) or 0;
+					local restante = total - gastos;
+
+					sheet.gastos = gastos;
+					sheet.dinheiroRestante = restante;
+				end;
+			</event>
+		</dataLink>
+		<dataLink fields="{'pesoEquipamentos', 'pesoImplantes', 'pesoPermanencias', 'pesoLivres', 'pesoOutros', 'pesoMunicoes', 'pesoBolsos', 'pesoImoveis', 'pesoInventorioComp'}">
+			<event name="onChange">
+				if sheet~=nil then
+					local carga = (tonumber(sheet.pesoEquipamentos) or 0) +
+								(tonumber(sheet.pesoImplantes) or 0) +
+								(tonumber(sheet.pesoPermanencias) or 0) +
+								(tonumber(sheet.pesoLivres) or 0) +
+								(tonumber(sheet.pesoOutros) or 0) +
+								(tonumber(sheet.pesoMunicoes) or 0) +
+								(tonumber(sheet.pesoBolsos) or 0) +
+								(tonumber(sheet.pesoImoveis) or 0);
+					sheet.cargaAtual = carga;
+				end;
+			</event>
+		</dataLink>
+
+		<dataLink fields="{'efetFor','cargaExtra'}">
+			<event name="onChange">
+				<![CDATA[
+				if sheet~=nil then
+					local str = (tonumber(sheet.efetFor) or 1) + (tonumber(sheet.cargaExtra) or 0);
+
+					sheet.cargaDesatravancado = math.floor(str/2);
+					sheet.cargaAtravancado = str;
+					sheet.cargaSobrecarregado = str .. "+";
+				end;
+				]]>
+			</event>	
+		</dataLink>
+	</scrollBox>
+</form>

@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmFichaRPGmeister7A_svg" width="465" height="25" theme="dark" margins="{top=1}">
+	<script> 
+		<![CDATA[			
+		local function askForDelete()
+			Dialogs.confirmYesNo("Deseja realmente apagar esse equipamento?",
+								 function (confirmado)
+									if confirmado then
+										NDB.deleteNode(sheet);
+									end;
+								 end);
+		end;
+
+		local function showPopup()
+			local pop = self:findControlByName("popEquip");
+				
+			if pop ~= nil then
+				pop:setNodeObject(self.sheet);
+				pop:showPopupEx("bottomCenter", self);
+			else
+				showMessage("Ops, bug.. nao encontrei o popup para exibir");
+			end;				
+		end;
+
+		local function equipPrice()
+			if sheet~= nil then
+				local node = NDB.getRoot(sheet);
+
+				local preco = 0;
+				local nodes = NDB.getChildNodes(node.campoDosEquipamentos); 
+				for i=1, #nodes, 1 do
+					preco = preco + (tonumber(nodes[i].preco) or 0);
+				end
+				node.precoEquipamentos = preco;
+
+				preco = 0;
+				nodes = NDB.getChildNodes(node.campoDosImplates); 
+				for i=1, #nodes, 1 do
+					preco = preco + (tonumber(nodes[i].preco) or 0);
+				end
+
+				node.precoImplantes = preco;
+			end;
+		end;
+
+		local function equipWeight()
+			if sheet~= nil then
+				local node = NDB.getRoot(sheet);
+
+				local peso = 0;
+				local nodes = NDB.getChildNodes(node.campoDosEquipamentos); 
+				for i=1, #nodes, 1 do
+					peso = peso + (tonumber(nodes[i].peso) or 0);
+				end
+				node.pesoEquipamentos = peso;
+
+				peso = 0;
+				nodes = NDB.getChildNodes(node.campoDosImplates); 
+				for i=1, #nodes, 1 do
+					peso = peso + (tonumber(nodes[i].peso) or 0);
+				end
+
+				node.pesoImplantes = peso;
+			end;
+		end;
+		]]>	
+	</script>
+	<edit left="0" top="1" width="270" height="23" field="nome"/>
+	
+	<rectangle left="270" top="1" width="50" height="23" color="black" strokeColor="grey" strokeSize="1" name="equipWeightLabel" visible="true">
+		<label width="50" height="23" field="peso" horzTextAlign="center" formatFloat=",0.##"/>
+		<event name="onClick">
+			self.equipWeightLabel.visible = false;
+			self.equipWeightEdit.visible = true;
+			self.equipWeightEdit:setFocus();
+		</event>
+	</rectangle>
+	<edit left="270" top="1" width="50" height="23" field="peso" type="float" name="equipWeightEdit" visible="false">
+		<event name="onUserChange">
+			equipWeight();
+		</event>
+		<event name="onExit">
+			self.equipWeightLabel.visible = true;
+			self.equipWeightEdit.visible = false;
+		</event>
+	</edit>
+
+	<rectangle left="320" top="1" width="75" height="23" color="black" strokeColor="grey" strokeSize="1" name="equipPriceLabel" visible="true">
+		<label width="75" height="23" field="preco" horzTextAlign="center" formatFloat=",0.## C"/>
+		<event name="onClick">
+			self.equipPriceLabel.visible = false;
+			self.equipPriceEdit.visible = true;
+			self.equipPriceEdit:setFocus();
+		</event>
+	</rectangle>
+	<edit left="320" top="1" width="75" height="23" field="preco" type="float" name="equipPriceEdit" visible="false">
+		<event name="onUserChange">
+			equipPrice();
+		</event>
+		<event name="onExit">
+			self.equipPriceLabel.visible = true;
+			self.equipPriceEdit.visible = false;
+		</event>
+	</edit>
+	<button left="395" top="1" width="23" height="23" text="i" onClick="showPopup();"/>
+	<button left="420" top="1" width="23" height="23" text="X" onClick="askForDelete();"/>
+</form>

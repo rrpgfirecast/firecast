@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmIntimacyForm" width="550" height="50" margins="{right=5,bottom=5}" theme="dark">
+
+	<template name="VertCombo">
+		<layout align="left" width="$(width)" margins="{right=5}">
+			<label text="$(text)" width="$(width)" horzTextAlign="leading" fontSize="$(fontSize)"/>
+			<comboBox top="20" field="$(field)" width="$(width)" height="25" items="$(items)" values="$(values)" fontSize="$(fontSize)"/>
+		</layout>
+	</template>
+	<template name="VertLabelEdit">
+		<layout align="left" width="$(width)" margins="{right=5}">
+			<label text="$(text)" width="$(width)" horzTextAlign="leading" fontSize="$(fontSize)"/>
+			<edit top="20" field="$(field)" width="$(width)" height="25"/>
+		</layout>
+	</template>
+
+	<rectangle align="client" color="dimgray">
+		<VertCombo text="Type" field="type" width="100" fontSize="13" items="{'Principle','Tie'}" values="{'1','2'}"/>
+		<VertLabelEdit text="Intimacy" field="intimacy" width="200" fontSize="13"/>
+		<VertCombo text="Nature" field="nature" width="100" fontSize="13" items="{'Negative','Positive'}" values="{'1','2'}"/>
+		<VertCombo text="Intensity" field="intensity" width="100" fontSize="13" items="{'Minor','Major','Defining'}" values="{'1','2','3'}"/>
+
+		<button align="left" width="25" text="X" margins="{left=5}">
+			<event name="onClick">
+				dialogs.confirmOkCancel("Tem certeza que quer apagar?",
+					function (confirmado)
+						if confirmado then
+							ndb.deleteNode(sheet);
+						end;
+				end);
+			</event>
+		</button>
+	</rectangle>
+</form>

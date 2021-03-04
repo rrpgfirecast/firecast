@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmRecordListForm" width="525" height="25" margins="{right=5,bottom=5}" theme="light">
+
+	<template name="VertLabelEdit">
+		<layout align="left" width="$(width)" margins="{right=5}">
+			<label text="$(text)" width="$(width)" horzTextAlign="leading" fontSize="$(fontSize)"/>
+			<edit top="20" field="$(field)" width="$(width)" height="25"/>
+		</layout>
+	</template>
+
+	<dataLink fields="{'mod','forMod','desMod','conMod','intMod','sabMod','carMod'}">
+		<event name="onChange">
+			if sheet==nil then return end;
+
+			local atr = sheet.mod or "empty";
+			sheet.atr = tonumber(sheet[atr]) or 0;
+		</event>
+	</dataLink>
+
+	<dataLink fields="{'treino','classe','bonus','nivelMod'}">
+		<event name="onChange">
+			if sheet==nil then return end;
+			if sheet.classe then
+				sheet.treinamento = sheet.bonus;
+			else
+				sheet.treinamento = 0;
+			end;
+
+			if (sheet.treino and sheet.classe) or not sheet.treino then
+				sheet.nivel = sheet.nivelMod;
+			else 
+				sheet.nivel = 0;
+			end;
+		</event>
+	</dataLink>
+
+	<dataLink fields="{'atr','nivel','treinamento','pen','outros','armadura'}">
+		<event name="onChange">
+			if sheet==nil then return end;
+			
+			local pen = 0;
+			if sheet.armadura then pen = (tonumber(sheet.pen) or 0) end;
+
+			sheet.total = 	(tonumber(sheet.atr) or 0) + 
+							(tonumber(sheet.nivel) or 0) + 
+							(tonumber(sheet.treinamento) or 0) + 
+							pen + 
+							(tonumber(sheet.outros) or 0);
+		</event>
+	</dataLink>
+
+	<rectangle width="525" height="25" color="#F0FFFF">
+		<checkBox align="left" width="15" text="" field="classe"/>
+		<edit align="left" width="100" field="nome" margins="{right=5}"/>
+
+		<rectangle align="left" width="50" color="#F0FFFF" strokeColor="black" strokeSize="2" margins="{right=5}">
+			<label align="client" field="total" horzTextAlign="center" vertTextAlign="center"/>
+		</rectangle>
+
+		<rectangle align="left" width="50" color="#F0FFFF" strokeColor="black" strokeSize="1">
+			<label align="client" field="nivel" horzTextAlign="center" vertTextAlign="center"/>
+		</rectangle>
+
+		<comboBox align="left" width="50" fontSize="9" field="mod" items="{'FOR','DES','CON','INT','SAB','CAR'}" values="{'forMod','desMod','conMod','intMod','sabMod','carMod'}"/>
+
+		<rectangle align="left" width="50" color="#F0FFFF" strokeColor="black" strokeSize="1">
+			<label align="client" field="treinamento" horzTextAlign="center" vertTextAlign="center"/>
+		</rectangle>
+
+		<edit align="left" width="50" field="outros" type="number"/>
+
+		<checkBox align="left" width="50" text="Treino" field="treino" fontSize="9"/>
+		<checkBox align="left" width="50" text="Pen. Arm." field="armadura" fontSize="8"/>
+
+		<button align="left" width="25" text="X" margins="{left=5}">
+			<event name="onClick">
+				dialogs.confirmOkCancel("Tem certeza que quer apagar essa perícia?",
+					function (confirmado)
+						if confirmado then
+							ndb.deleteNode(sheet);
+						end;
+				end);
+			</event>
+		</button>
+	</rectangle>
+</form>

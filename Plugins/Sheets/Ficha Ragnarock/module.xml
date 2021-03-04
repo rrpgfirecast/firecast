@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <module sdkVersion="3.4">
 	<id>Ambesek.Ragnarock</id>
-	<version>0.4</version>
-	<name>Ficha Ragnarok</name>
-	<description>Ficha para um sistema proprio de Ragnarock.  </description>
+	<version>0.7</version>
+	<name>Plugin Ragnarök</name>
+	<description>Ficha para um sistema proprio de Ragnaröck.</description>
 	<author>Ambesek</author>
 	<site/>
 	<contact>vinnyrpgmeister@gmail.com</contact>

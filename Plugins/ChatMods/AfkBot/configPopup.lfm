@@ -19,6 +19,11 @@
 			<edit left="200" top="220" width="50" height="25" field="limitLaugh" type="number" min="1" horzTextAlign="center"/>
 			<checkBox field="noVoice" left="10" top="240" width="270" text="Tirar voz de jogadores expulsos."/>
 
+			<horzLine left="10" top="270" width="270"/>
+
+			<checkBox field="giveVoice" left="10" top="300" width="270" text="Dar voz aos jogadores."/>
+			<checkBox field="giveSheet" left="10" top="330" width="270" text="Dar ficha aos jogadores."/>
+
 			<dataLink fields="{'botEnabled','autoEnable'}">
 				<event name="OnChange">
 					if sheet==nil then return end;

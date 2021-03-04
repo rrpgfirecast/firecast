@@ -1,5 +1,18 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <form name="frmFichaRPGmeister3_svg" align="client" theme="dark" margins="{top=1}">
+
+	<dataLink fields="{'buffPericia'}">
+		<event name="onChange">
+			if sheet==nil then return end;
+			local buffPericia = tonumber(sheet.buffPericia) or 0;
+
+			local nodes = NDB.getChildNodes(sheet.campoDasPericias); 
+			for i=1, #nodes, 1 do
+				nodes[i].buffPericia = buffPericia;
+			end
+		</event>
+	</dataLink>
+
 	<scrollBox align="client">
 
 		<script> 

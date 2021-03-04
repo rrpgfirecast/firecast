@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmVehicleItem" width="465" height="25" theme="dark" margins="{top=1}">
+	<script> 
+		<![CDATA[			
+		local function askForDelete()
+			Dialogs.confirmYesNo("Deseja realmente apagar esse item?",
+								 function (confirmado)
+									if confirmado then
+										NDB.deleteNode(sheet);
+									end;
+								 end);
+		end;
+
+		local function showPopup()
+			local pop = self:findControlByName("popEquip");
+				
+			if pop ~= nil then
+				pop:setNodeObject(self.sheet);
+				pop:showPopupEx("bottomCenter", self);
+			else
+				showMessage("Ops, bug.. nao encontrei o popup para exibir");
+			end;				
+		end;
+
+		local function equipPrice()
+			if sheet~= nil then
+				local node = NDB.getParent(NDB.getParent(sheet));
+
+				local preco = 0;
+				local nodes = NDB.getChildNodes(node.listaInv); 
+				for i=1, #nodes, 1 do
+					preco = preco + (tonumber(nodes[i].preco) or 0);
+				end
+				node.precoInv = preco;
+
+				preco = 0;
+			end;
+		end;
+
+		local function equipWeight()
+			if sheet~= nil then
+				local node = NDB.getParent(NDB.getParent(sheet));
+
+				local peso = 0;
+				local nodes = NDB.getChildNodes(node.listaInv); 
+				for i=1, #nodes, 1 do
+					peso = peso + (tonumber(nodes[i].peso) or 0);
+				end
+				node.pesoInv = peso;
+			end;
+		end;
+		]]>	
+	</script>
+	<edit align="client" field="nome" margins="{top=1,bottom=1}"/>
+
+	<layout align="right" width="175">
+		<rectangle align="left" width="50" height="23" color="black" strokeColor="grey" strokeSize="1" name="equipWeightLabel" visible="true" margins="{top=1,bottom=1}">
+			<label width="50" height="23" field="peso" horzTextAlign="center" formatFloat=",0.##"/>
+			<event name="onClick">
+				--self.equipWeightLabel.visible = false;
+				self.equipWeightEdit.visible = true;
+				self.equipWeightEdit:setFocus();
+			</event>
+			<edit width="50" height="23" field="peso" type="float" name="equipWeightEdit" visible="false">
+				<event name="onUserChange">
+					equipWeight();
+				</event>
+				<event name="onExit">
+					--self.equipWeightLabel.visible = true;
+					self.equipWeightEdit.visible = false;
+				</event>
+			</edit>
+		</rectangle>
+
+		<rectangle align="client" width="75" color="black" strokeColor="grey" strokeSize="1" name="equipPriceLabel" visible="true" margins="{top=1,bottom=1}">
+			<label width="75" height="23" field="preco" horzTextAlign="center" formatFloat=",0.## C"/>
+			<event name="onClick">
+				--self.equipPriceLabel.visible = false;
+				self.equipPriceEdit.visible = true;
+				self.equipPriceEdit:setFocus();
+			</event>
+			<edit width="75" height="23" field="preco" type="float" name="equipPriceEdit" visible="false">
+				<event name="onUserChange">
+					equipPrice();
+				</event>
+				<event name="onExit">
+					--self.equipPriceLabel.visible = true;
+					self.equipPriceEdit.visible = false;
+				</event>
+			</edit>
+		</rectangle>
+
+		<button align="right" width="23" text="i" onClick="showPopup();" margins="{top=1,bottom=1}"/>
+		<button align="right" width="23" text="X" onClick="askForDelete();" margins="{top=1,bottom=1}"/>
+
+	</layout>
+	
+</form>

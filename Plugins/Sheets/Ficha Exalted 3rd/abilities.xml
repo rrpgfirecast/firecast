@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<database>
+    <__EHEX_31 nome="Archery">
+        <__ndb__ id="2" t_nome="S"/>
+    </__EHEX_31>
+    <__EHEX_32 nome="Athletics">
+        <__ndb__ id="3" t_nome="S"/>
+    </__EHEX_32>
+    <__EHEX_33 nome="Awareness">
+        <__ndb__ id="4" t_nome="S"/>
+    </__EHEX_33>
+    <__EHEX_34 nome="Brawl">
+        <__ndb__ id="5" t_nome="S"/>
+    </__EHEX_34>
+    <__EHEX_35 nome="Bureaucracy">
+        <__ndb__ id="6" t_nome="S"/>
+    </__EHEX_35>
+    <__EHEX_36 nome="Craft">
+        <__ndb__ id="7" t_nome="S"/>
+    </__EHEX_36>
+    <__EHEX_37 nome="Dodge">
+        <__ndb__ id="8" t_nome="S"/>
+    </__EHEX_37>
+    <__EHEX_38 nome="Integrity">
+        <__ndb__ id="9" t_nome="S"/>
+    </__EHEX_38>
+    <__EHEX_39 nome="Investigation">
+        <__ndb__ id="10" t_nome="S"/>
+    </__EHEX_39>
+    <__EHEX_3130 nome="Larceny">
+        <__ndb__ id="11" t_nome="S"/>
+    </__EHEX_3130>
+    <__EHEX_3131 nome="Linguistics">
+        <__ndb__ id="12" t_nome="S"/>
+    </__EHEX_3131>
+    <__EHEX_3132 nome="Lore">
+        <__ndb__ id="13" t_nome="S"/>
+    </__EHEX_3132>
+    <__EHEX_3133 nome="Martial Arts">
+        <__ndb__ id="14" t_nome="S"/>
+    </__EHEX_3133>
+    <__EHEX_3134 nome="Medicine">
+        <__ndb__ id="15" t_nome="S"/>
+    </__EHEX_3134>
+    <__EHEX_3135 nome="Melee">
+        <__ndb__ id="16" t_nome="S"/>
+    </__EHEX_3135>
+    <__EHEX_3136 nome="Occult">
+        <__ndb__ id="17" t_nome="S"/>
+    </__EHEX_3136>
+    <__EHEX_3137 nome="Performance">
+        <__ndb__ id="18" t_nome="S"/>
+    </__EHEX_3137>
+    <__EHEX_3138 nome="Presence">
+        <__ndb__ id="19" t_nome="S"/>
+    </__EHEX_3138>
+    <__EHEX_3139 nome="Resistance">
+        <__ndb__ id="20" t_nome="S"/>
+    </__EHEX_3139>
+    <__EHEX_3230 nome="Ride">
+        <__ndb__ id="21" t_nome="S"/>
+    </__EHEX_3230>
+    <__EHEX_3231 nome="Sail">
+        <__ndb__ id="22" t_nome="S"/>
+    </__EHEX_3231>
+    <__EHEX_3232 nome="Socialize">
+        <__ndb__ id="23" t_nome="S"/>
+    </__EHEX_3232>
+    <__EHEX_3233 nome="Stealth">
+        <__ndb__ id="24" t_nome="S"/>
+    </__EHEX_3233>
+    <__EHEX_3234 nome="Survival">
+        <__ndb__ id="25" t_nome="S"/>
+    </__EHEX_3234>
+    <__EHEX_3235 nome="Thrown">
+        <__ndb__ id="26" t_nome="S"/>
+    </__EHEX_3235>
+    <__EHEX_3236 nome="War">
+        <__ndb__ id="27" t_nome="S"/>
+    </__EHEX_3236>
+    <__EHEX_3336>
+        <__ndb__ id="27"/>
+    </__EHEX_3336>
+    <__ndb__ id="1" idGenerator="27"/>
+</database>

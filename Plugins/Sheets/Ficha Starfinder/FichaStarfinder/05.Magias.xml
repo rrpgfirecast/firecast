@@ -1,0 +1,604 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmMagias" align="client">
+	<template name="TitleCenter">
+		<TitleCenterSize fontSize="10" text="$(text)"/>
+	</template>
+	<template name="TitleCenterSize">
+		<flowPart minWidth="50" maxWidth="150" height="15">
+			<label align="top" class="tituloCampo" fontSize="$(fontSize)" text="$(text)" horzTextAlign="center" wordWrap="true" textTrimming="none" autoSize="true"/>
+		</flowPart>
+	</template>
+	<template name="FieldCenter">
+		<flowPart minWidth="50" maxWidth="150" height="25">
+			<edit align="client" class="" field="$(field)" fontSize="12"/>
+		</flowPart>
+	</template>
+	<template name="NumericFieldCenter">
+		<flowPart minWidth="50" maxWidth="150" height="25">
+			<edit align="client" class="" field="$(field)" horzTextAlign="center" fontSize="12" type="number"/>
+		</flowPart>
+	</template>
+	<template name="LabelCenter">
+		<flowPart minWidth="50" maxWidth="150" height="20">
+			<rectangle align="client" color="black" strokeColor="white" strokeSize="1"/>
+			<label align="client" field="$(field)" horzTextAlign="center" fontSize="12"/>
+		</flowPart>
+	</template>
+	<template name="ComboFlow">
+		<flowPart minWidth="50" maxWidth="150" height="25">
+			<comboBox align="client" items="$(items)" values="$(values)" field="$(field)" fontColor="white"/>
+		</flowPart>
+	</template>
+	<template name="smallComboFlow">
+		<flowPart minWidth="50" maxWidth="50" height="25">
+			<comboBox align="client" items="$(items)" values="$(values)" field="$(field)" fontColor="white"/>
+		</flowPart>
+	</template>
+	<template name="magicInfoLabel">
+		<flowPart minWidth="30" maxWidth="400" height="35">
+			<label align="top" class="tituloCampo" fontSize="10" text="$(text)" horzTextAlign="center" wordWrap="true" textTrimming="none" autoSize="true"/>
+			<rectangle align="client" color="black" strokeColor="white" strokeSize="1"/>
+			<label align="client" field="$(field)" horzTextAlign="center" fontSize="12" formatFloat="$(format)"/>
+		</flowPart>
+	</template>
+	<template name="magicInfoField">
+		<flowPart minWidth="30" maxWidth="400" height="35">
+			<label align="top" class="tituloCampo" fontSize="10" text="$(text)" horzTextAlign="center" wordWrap="true" textTrimming="none" autoSize="true"/>
+			<edit align="client" class="" field="$(field)" horzTextAlign="center" fontSize="12"/>
+		</flowPart>
+	</template>
+	<template name="magicLevel">
+		<TitleCenter text="$(nivel)"/>
+		<LabelCenter field="total$(nivel)"/>
+		<NumericFieldCenter field="base$(nivel)"/>
+		<LabelCenter field="bonus$(nivel)"/>
+		<NumericFieldCenter field="conhecidas$(nivel)"/>
+		<dataLink fields="{'base$(nivel)', 'bonus$(nivel)'}">
+			<event name="onChange">
+				local node = self.boxDetalhesDaMagia.node;
+				if node.base$(nivel)==nil then 
+					node.total$(nivel) = nil;
+				else
+					node.total$(nivel) = 	(tonumber(node.base$(nivel)) or 0) + 
+											(tonumber(node.bonus$(nivel)) or 0);
+				end;
+			</event>
+		</dataLink>
+		<dataLink fields="{'atributoBonus', 'updatedATR'}">
+			<event name="onChange">
+				if self.boxDetalhesDaMagia.node == nil then return end;
+				local resultado = 0;
+				local mod = 0;
+				local ctrl = self.boxDetalhesDaMagia.node.atributoBonus;
+				
+				if ctrl=='1' then
+					mod = tonumber(sheet.efetModFor) or 0;
+				elseif ctrl=='2' then
+					mod = tonumber(sheet.efetModDes) or 0;
+				elseif ctrl=='3' then
+					mod = tonumber(sheet.efetModCon) or 0;
+				elseif ctrl=='4' then
+					mod = tonumber(sheet.efetModInt) or 0;
+				elseif ctrl=='5' then
+					mod = tonumber(sheet.efetModSab) or 0;
+				elseif ctrl=='6' then
+					mod = tonumber(sheet.efetModCar) or 0;
+				end;
+				local nivel = $(nivel);
+				
+				if nivel==0 then
+					resultado = 0;
+				else 
+					if (nivel>mod) then
+						result = 0;
+					else
+						resultado = mod + 4 - nivel;
+						resultado = math.floor(resultado/4);
+					end;
+				end;
+				
+				self.boxDetalhesDaMagia.node.bonus$(nivel) = resultado;
+			</event>
+		</dataLink>
+		<dataLink fields="{'atributoCD', 'updatedATR'}">
+			<event name="onChange">
+				if self.boxDetalhesDaMagia.node == nil then return end;
+				local mod = 0;
+				local node = self.boxDetalhesDaMagia.node;
+				local ctrl = node.atributoCD;
+				
+				if ctrl=='1' then
+					mod = tonumber(sheet.efetModFor) or 0;
+				elseif ctrl=='2' then
+					mod = tonumber(sheet.efetModDes) or 0;
+				elseif ctrl=='3' then
+					mod = tonumber(sheet.efetModCon) or 0;
+				elseif ctrl=='4' then
+					mod = tonumber(sheet.efetModInt) or 0;
+				elseif ctrl=='5' then
+					mod = tonumber(sheet.efetModSab) or 0;
+				elseif ctrl=='6' then
+					mod = tonumber(sheet.efetModCar) or 0;
+				end;
+				local nivel = $(nivel);
+
+				local nodes = NDB.getChildNodes(node.campoDasMagiasEpicas); 
+				for i=1, #nodes, 1 do
+					nodes[i].atr = mod;
+				end
+				
+				mod = 10 + mod + nivel;
+
+				node.cd$(nivel) = mod;
+
+				updateMagicCD($(nivel));
+			</event>
+		</dataLink>
+
+		<flowLineBreak/>
+	</template>
+	<template name="magicListFlow">
+		<flowPart stepSizes="{300, 350, 400, 450, 500, 550, 600}" height="25" minScaledWidth="300"  maxScaledWidth="600" name="rclmagicList$(num)Part" adjustHeightToLine="true" margins="{left=5}">
+			<script>
+				<![CDATA[
+					rawset(self.rclmagicList$(num)Part, "_recalcHeight", 					
+						function ()
+							self.rclmagicList$(num)Part.height = self.rclmagicList$(num).height + 50;
+							
+							--self.boxDetalhesDaMagia.height = math.max(self.detalhesDaMagia.height, 550);
+						end);
+				]]>
+			</script>
+
+			<layout align="top" height="25">
+				<button text="+" align="left" width="30" onClick="">
+					<event name="onClick">
+						local item = self.rclmagicList$(num):append();
+						if item then item.id = $(num) end;
+					</event>
+				</button>
+				<label text="Nível $(num)" align="left" width="225" margins="{left=5}"/>
+			</layout>
+
+			<layout align="top" height="25">
+				<label text="Preparadas: " align="left" width="55" margins="{right=5}" fontSize="10"/>
+				<label field="prep$(num)" align="left" width="20" margins="{right=5}" fontSize="10"/>/>
+
+				<label text="Usadas: " align="left" width="35" margins="{right=5}" fontSize="10"/>
+				<label field="used$(num)" align="left" width="20" horzTextAlign="center" fontSize="10"/>/>
+				<label text="/" align="left" width="5" margins="{left=5,right=5}" fontSize="10"/>/>
+				<label field="total$(num)" align="left" width="20" horzTextAlign="center" fontSize="10"/>/>
+
+				<label text="PREP" align="right" width="25" horzTextAlign="center" fontSize="10"/>/>
+				<label text="USO" align="right" width="25" horzTextAlign="center" fontSize="10"/>/>
+				<label text="CD" align="right" width="25" horzTextAlign="center" fontSize="10"/>/>
+				<label text="" align="right" width="25" horzTextAlign="center" fontSize="10"/>/>
+				<label text="" align="right" width="25" horzTextAlign="center" fontSize="10"/>/>
+			</layout>
+
+			<recordList name="rclmagicList$(num)" field="campoDasMagias$(num)" templateForm="frmMagiasMagia" align="top" layout="vertical" autoHeight="true" hitTest="false" onResize="self.rclmagicList$(num)Part._recalcHeight();" onEndEnumeration="self.rclmagicList$(num)Part._recalcHeight();" minQt="1">
+				<event name="onCompare"><![CDATA[ 
+					local aDisponivel = (tonumber(nodeA.dispMagia) or 0);
+					local bDisponivel = (tonumber(nodeB.dispMagia) or 0);
+					local aUsada = (tonumber(nodeA.prepMagia) or 0);
+					local bUsada = (tonumber(nodeB.prepMagia) or 0);
+
+				    if aDisponivel < bDisponivel then
+				        return 1;
+				    elseif aDisponivel > bDisponivel then
+				        return -1;
+				    elseif aUsada < bUsada then
+				        return 1;
+				    elseif aUsada > bUsada then
+				        return -1;
+				    else
+				        return Utils.compareStringPtBr(nodeA.nomeMagia, nodeB.nomeMagia);
+				    end;               
+				    ]]>
+				</event>
+			</recordList>
+		</flowPart>
+	</template>
+
+	<popup name="popMagia" width="250" height="350" backOpacity="0.4" autoScopeNode="false">
+		<flowLayout align="top" autoHeight="true" maxControlsPerLine="2" margins="{bottom=4}" horzAlign="center">
+			<magicInfoField text="ESCOLA" field="escola"/>
+			<flowLineBreak/>
+			<magicInfoField text="COMPONENTES" field="componentes"/>
+			<magicInfoField text="EXECUÇÃO" field="execucao"/>
+			<magicInfoField text="ALCANCE" field="alcance"/>
+			<magicInfoField text="ALVO" field="alvo"/>
+			<magicInfoField text="DURAÇÃO" field="duracao"/>
+			<magicInfoField text="TR" field="tr"/>
+			<magicInfoField text="RM" field="rm"/>
+			<magicInfoField text="CD + " field="myCD"/>
+			<magicInfoField text="LIVRO" field="livro"/>
+			<magicInfoField text="PÁGINA" field="pagina"/>
+		</flowLayout>
+		<button align="top" height="25" text="Exibir">
+			<event name="onClick">
+				local txt = "\n";
+				local node = self.popMagia.node;
+				if (node.nomeMagia ~= nil) then txt = txt .. node.nomeMagia .. "\n" end;
+				if (node.escola ~= nil) then txt = txt .. node.escola .. "\n" end;
+				if (node.componentes ~= nil) then txt = txt .. "Componentes: " .. node.componentes .. "\n" end;
+				if (node.execucao ~= nil) then txt = txt .. "Execução: " .. node.execucao .. "\n" end;
+				if (node.alcance ~= nil) then txt = txt .. "Alcance: " .. node.alcance .. "\n" end;
+				if (node.alvo ~= nil) then txt = txt .. "Alvo: " .. node.alvo .. "\n" end;
+				if (node.duracao ~= nil) then txt = txt .. "Duração: " .. node.duracao .. "\n" end;
+				if (node.tr ~= nil) then txt = txt .. "Teste de Resistência: " .. node.tr .. "\n" end;
+				if (node.rm ~= nil) then txt = txt .. "Resistência a Magia: " .. node.rm .. "\n" end;
+				if (node.livro ~= nil) then txt = txt .. "Livro: " .. node.livro .. " " .. (node.pagina or "") .. "\n" end;
+				if (node.descricao ~= nil) then txt = txt .. node.descricao end;
+
+				local mesa = Firecast.getMesaDe(node);
+				if mesa ~= nil then
+					   mesa.activeChat:enviarMensagem(txt);
+				end;
+			</event>
+		</button>
+		
+		<textEditor align="client" field="descricao" class=""/>
+	</popup>
+	<popup name="popMagiaEpica" width="500" height="500" backOpacity="0.4" autoScopeNode="false">
+		<flowLayout align="top" autoHeight="true" maxControlsPerLine="4" margins="{bottom=4}" horzAlign="center">
+			<magicInfoField text="NOME" field="nomeMagia"/>
+			<magicInfoField text="ESCOLA" field="escola"/>
+			<flowPart minWidth="30" maxWidth="35" height="35">
+				<button align="client" text="+" onClick="self.rclFactors:append();"/>
+			</flowPart>
+			<flowPart minWidth="30" maxWidth="35" height="35">
+				<button align="client" text="Exibir" fontSize="10">
+					<event name="onClick">
+						local txt = "\n";
+						local node = self.popMagiaEpica.node;
+						if (node.nomeMagia ~= nil) then txt = txt .. node.nomeMagia .. " CD: " .. (node.idMagia or "?") .. "\n"  end;
+						if (node.escola ~= nil) then txt = txt .. node.escola .. "\n" end;
+						if (node.componentes ~= nil) then txt = txt .. "Componentes: " .. node.componentes .. "\n" end;
+						if (node.execucao ~= nil) then txt = txt .. "Execução: " .. node.execucao .. "\n" end;
+						if (node.alcance ~= nil) then txt = txt .. "Alcance: " .. node.alcance .. "\n" end;
+						if (node.alvo ~= nil) then txt = txt .. "Alvo: " .. node.alvo .. "\n" end;
+						if (node.duracao ~= nil) then txt = txt .. "Duração: " .. node.duracao .. "\n" end;
+						if (node.tr ~= nil) then txt = txt .. "Teste de Resistência: " .. node.tr .. "\n" end;
+						if (node.rm ~= nil) then txt = txt .. "Resistência a Magia: " .. node.rm .. "\n" end;
+
+						-- Organize rcl in groups [seed, factor, mult, pen]
+						local factors = {};
+						factors[0] = "";
+						factors[1] = "";
+						factors[2] = "";
+						factors[3] = "";
+
+						local spells = NDB.getChildNodes(node.campoDosFatores); 
+						for i=1, #spells, 1 do
+							local spell = spells[i];
+							local txt = "" .. (spell.custo or "");
+							local tipo = string.sub(txt, 1, 1);
+
+							local index = 0;
+							if tipo=="+" then index = 1 end;
+							if tipo=="x" then index = 2 end;
+							if tipo=="-" then index = 3 end;
+
+							if factors[index] == "" then 
+								factors[index] = (spell.fator or "") .. " (CD " .. (spell.custo or 0) .. ")";
+							else 
+								factors[index] = factors[index] .. ", " .. (spell.fator or "") .. " (CD " .. (spell.custo or 0) .. ")";
+							end;
+						end;
+
+						if (factors[0] ~= "") then txt = txt .. "Palavras de Poder: " .. factors[0] .. ".\n" end;
+						if (factors[1] ~= "") then txt = txt .. "Fatores: " .. factors[1] .. ".\n" end;
+						if (factors[2] ~= "") then txt = txt .. "Multiplicadores: " .. factors[2] .. ".\n" end;
+						if (factors[3] ~= "") then txt = txt .. "Atenuadores: " .. factors[3] .. ".\n" end;
+
+						-- spell description
+						if (node.descricao ~= nil) then txt = txt .. node.descricao end;
+
+						local mesa = Firecast.getMesaDe(node);
+						if mesa ~= nil then
+							   mesa.activeChat:enviarMensagem(txt);
+						end;
+					</event>
+				</button>
+			</flowPart>
+			<flowLineBreak/>
+			<magicInfoField text="COMPONENTES" field="componentes"/>
+			<magicInfoField text="EXECUÇÃO" field="execucao"/>
+			<magicInfoField text="ALCANCE" field="alcance"/>
+			<magicInfoField text="ALVO" field="alvo"/>
+			<magicInfoField text="DURAÇÃO" field="duracao"/>
+			<magicInfoField text="TR" field="tr"/>
+			<magicInfoField text="RM" field="rm"/>
+			<magicInfoField text="CD + " field="myCD"/>
+			<magicInfoLabel text="ID. MAGIA" field="idMagia" format=",0"/>
+			<magicInfoLabel text="MULT" field="mult" format="x 0"/>
+			<magicInfoLabel text="PO" field="po" format=",0 PO"/>
+			<magicInfoLabel text="XP" field="xp" format=",0 XP"/>
+		</flowLayout>
+
+		<recordList name="rclFactors" field="campoDosFatores" templateForm="frmFator" align="top" height="200" layout="verticalTiles" hitTest="false" minQt="1">
+			<event name="onCompare"><![CDATA[ 
+				local txt = "" .. (nodeA.custo or "");
+				local tipoA = string.sub(txt, 1, 1);
+				local valueA = 15;
+				if tipoA=="x" then valueA = 10
+				elseif tipoA=="+" then valueA = 5
+				elseif tipoA=="-" then valueA = 0 end;
+
+				txt = "" .. (nodeB.custo or "");
+				local tipoB = string.sub(txt, 1, 1);
+				local valueB = 15;
+				if tipoB=="x" then valueB = 10
+				elseif tipoB=="+" then valueB = 5
+				elseif tipoB=="-" then valueB = 0 end;
+
+				local comp = valueB - valueA;
+
+				if comp~=0 then return comp end;
+			    return Utils.compareStringPtBr(nodeA.fator, nodeB.fator);         
+			    ]]>
+			</event>
+		</recordList>
+		
+		<textEditor align="client" field="descricao" class=""/>
+	</popup>
+
+	<script>
+		local function showHiddenLayouts()
+			if self.boxDetalhesDaMagia.node== nil then return end;
+
+			-- Tira todas visibilidades.
+			self.details3.visible = false;
+			self.details2.visible = false;
+			self.details1.visible = false;
+			self.details7.visible = false;
+			self.details8.visible = false;
+
+			self.magicList3.visible = false;
+			self.magicList2.visible = false;
+			self.magicList1.visible = false;
+			self.magicList7.visible = false;
+			self.magicList8.visible = false;
+
+			-- Recoloca as visibilidades.
+			local tipo = self.boxDetalhesDaMagia.node.tipoMagia or "";
+			if self["details" .. tipo] then 
+				self["details" .. tipo].visible = true 
+				self["details" .. tipo].left = 5;
+				self["details" .. tipo].top = 5;
+
+				if tipo == "7" then
+					self.epicDetails.left = 5;
+					self.epicDetails.top = 5;
+				end;
+			end;
+
+			if self["magicList" .. tipo] then 
+				self["magicList" .. tipo].visible = true;
+				self["magicList" .. tipo].width = self.magics.width - 350;
+				local height = self.magics.height - 50;
+				if self["magicList" .. tipo].height&lt;height then self["magicList" .. tipo].height = height end;
+
+				if tipo == "7" then
+					self.rclEpicMagicList.width = self.magics.width - 350;
+					self.rclEpicMagicList.height = self["magicList" .. tipo].height;
+				end;
+				if tipo == "2" then
+					self.rclSignDescList.width = self.magics.width - 350;
+					self.rclSignDescList.height = self["magicList" .. tipo].height;
+				end;
+				if tipo == "1" then
+					self.rclMagiasOld.width = self.magics.width - 350;
+					self.rclMagiasOld.height = self["magicList" .. tipo].height;
+				end;
+			end;
+
+			self.detailsPart.left = 0;
+		end;
+
+		local function updateMagicCD(num) 
+			local node = self.boxDetalhesDaMagia.node;
+			local nodes = NDB.getChildNodes(node["campoDasMagias" .. num]); 
+
+			for i=1, #nodes, 1 do
+				nodes[i].updateCD = (tonumber(nodes[i].updateCD) or 0) + 1;
+				if nodes[i].updateCD > 999999 then nodes[i].updateCD = -1 end;
+			end
+		end;
+
+		local function removeZeroes(num)
+			if num%1 == 0 then
+				return math.floor(num);
+			end;
+			return num;
+		end;
+	</script>
+
+	<scrollBox align="client" name="magics">
+		<layout align="top" height="50">
+			<button text="+" width="30" align="left">
+				<event name="onClick">
+					self.rclListaDasClassesMagicas:append();
+				</event>
+			</button>
+			<recordList name="rclListaDasClassesMagicas" field="campoDosItens" templateForm="frmMagiasSeletor" align="client" selectable="true" layout="horizontal">
+				<event name="onSelect">
+					local node = self.rclListaDasClassesMagicas.selectedNode;
+					self.boxDetalhesDaMagia.node = node;
+					self.boxDetalhesDaMagia.visible = (node ~= nil);
+					showHiddenLayouts();
+				</event>
+				<event name="onEndEnumeration">
+					if self.rclListaDasClassesMagicas.selectedNode == nil and sheet ~= nil then
+						local nodes = NDB.getChildNodes(sheet.campoDosItens);               
+						if #nodes > 0 then
+							--self.rclListaDasClassesMagicas.selectedNode = nodes[1];
+						end;
+						showHiddenLayouts();
+					end;
+				</event>
+			</recordList>
+		</layout>
+
+		<dataLink fields="{'efetModFor', 'efetModDes', 'efetModCon', 'efetModInt', 'efetModSab', 'efetModCar'}">
+			<event name="onChange">
+				local node = self.boxDetalhesDaMagia.node;
+				if node == nil then return end;
+				node.updatedATR = not node.updatedATR;
+			</event>
+		</dataLink>
+
+		<dataScopeBox name="boxDetalhesDaMagia" visible="false" align="client" height="550">
+			<rectangle align="client" color="black" padding="{left=5,right=5,top=5,bottom=5}">
+				<rectangle align="left" width="350" strokeSize="1" name="listPart">
+					<flowLayout left="5" top="5" minWidth="300" maxWidth="350" width="340" height="540" autoHeight="true" adjustHeightToLine="true" maxColumns="5" name="detailsLayout">
+						<TitleCenter text="Classe"/>
+						<TitleCenter text="Tipo"/>
+						<flowPart minWidth="50" maxWidth="50" height="15">
+							<button align="top" text="NC" height="15">
+								<event name="onClick">
+									local rolagem = Firecast.interpretarRolagem("1d20 +" .. (self.boxDetalhesDaMagia.node.NC or "0"));
+									local mesa = Firecast.getMesaDe(sheet);
+									mesa.activeChat:rolarDados(rolagem, "Teste de conjurador de " .. (sheet.nome or "Nome"));
+								</event>
+							</button>
+						</flowPart>
+						<smallTitleCenter text="CD +"/>
+
+						<flowLineBreak/>
+
+						<FieldCenter field="classeMagia"/>
+						<flowPart minWidth="75" maxWidth="150" height="25">
+							<comboBox align="client" items="{'Lista Magias', 'Signos', 'Magias (OLD)', 'Magia Epica', 'Magias Aprimoradas'}" values="{'3', '2', '1', '7', '8'}" value="3" field="tipoMagia" fontColor="white">
+								<event name="onChange">
+									showHiddenLayouts();
+								</event>
+							</comboBox>
+						</flowPart>
+						<smallFieldCenter field="NC"/>
+						<smallFieldCenter field="cd"/>
+
+						<dataLink fields="{'NC'}">
+							<event name="onChange">
+								if self.boxDetalhesDaMagia.node== nil then return end;
+								local node = self.boxDetalhesDaMagia.node;
+
+								local nc = tonumber(node.nc) or 0;
+
+								local longo = 120 + 12 * nc;
+								local medio = 30 + 3 * nc;
+								local curto = 7.5 + 1.5 * (math.floor(nc/2));
+
+								node.alcanceContinental = removeZeroes(longo) .. "Km";
+								node.alcanceRegional = removeZeroes(longo/10) .. "Km";
+								node.alcanceQuilometrico = removeZeroes(longo/100) .. "Km";
+								node.alcanceLongo = removeZeroes(longo) .. "m (" .. removeZeroes(longo/1.5) .. "q)";
+								node.alcanceMedio = removeZeroes(medio) .. "m (" .. removeZeroes(medio/1.5) .. "q)";
+								node.alcanceCurto = removeZeroes(curto) .. "m (" .. removeZeroes(curto/1.5) .. "q)";
+
+							</event>
+						</dataLink>
+						<dataLink fields="{'cd'}">
+							<event name="onChange">
+								if self.boxDetalhesDaMagia.node== nil then return end;
+								local node = self.boxDetalhesDaMagia.node;
+
+								updateMagicCD(0);
+								updateMagicCD(1);
+								updateMagicCD(2);
+								updateMagicCD(3);
+								updateMagicCD(4);
+								updateMagicCD(5);
+								updateMagicCD(6);
+								updateMagicCD(7);
+								updateMagicCD(8);
+								updateMagicCD(9);
+
+								local nodes = NDB.getChildNodes(node.campoDasMagiasEpicas); 
+								for i=1, #nodes, 1 do
+									nodes[i].cdExtra = node.cd;
+								end
+							</event>
+						</dataLink>
+
+						<flowLineBreak/>
+
+						<flowPart minWidth="150" maxWidth="340" height="400">
+							<rectangle align="client" strokeSize="1" padding="{left=5,right=5,top=5,bottom=5}" name="details3" visible="false">
+								<import file="05.Magias.Details3.xml"/>
+							</rectangle>
+							<rectangle align="client" strokeSize="1" padding="{left=5,right=5,top=5,bottom=5}" name="details2" visible="false">
+								<import file="05.Magias.Details2.xml"/>
+							</rectangle>
+							<rectangle align="client" strokeSize="1" padding="{left=5,right=5,top=5,bottom=5}" name="details1" visible="false">
+								<import file="05.Magias.Details1.xml"/>
+							</rectangle>
+							<rectangle align="client" strokeSize="1" padding="{left=5,right=5,top=5,bottom=5}" name="details7" visible="false">
+								<import file="05.Magias.Details7.xml"/>
+							</rectangle>
+							<rectangle align="client" strokeSize="1" padding="{left=5,right=5,top=5,bottom=5}" name="details8" visible="false">
+								<import file="05.Magias.Details8.xml"/>
+							</rectangle>
+						</flowPart>
+
+						<flowLineBreak/>
+
+						<textEditor align="bottom" height="75" width="340" field="notes"/>
+
+						<layout align="bottom" height="25" width="340">
+							<button vertTextAlign="center" left="0" top="0" width="100" height="25" text="Concentração" fontSize="11">
+				                <event name="onClick">
+				                    local concentracao = (tonumber(self.boxDetalhesDaMagia.node.concentracao) or 0);
+
+				                    local rolagem = Firecast.interpretarRolagem("1d20 +" .. concentracao);
+				                    local mesaDoPersonagem = Firecast.getMesaDe(sheet);
+				                    mesaDoPersonagem.activeChat:rolarDados(rolagem, "Teste de concentração de " .. (sheet.nome or "NOME"));
+				                </event>
+				            </button>
+				            
+							<rectangle left="105" top="0" width="50" height="25" color="black" strokeColor="white" strokeSize="1"/>
+							<label field="concentracao" left="110" top="0" width="40" height="25" vertTextAlign="center" horzTextAlign="center"/>
+
+							<comboBox vertTextAlign="center" horzTextAlign="center" left="155" top="0" width="60" height="25" field="atributoConcentracao" items="{'FOR', 'DES', 'CON', 'INT', 'SAB', 'CAR', '-'}" values="{'1', '2', '3', '4', '5', '6', '7'}" fontColor="white"/>
+							<edit vertTextAlign="center" left="215" top="0" width="50" height="25" field="concentracaoOutros"/>
+
+							<dataLink fields="{'NC', 'atributoConcentracao', 'concentracaoOutros'}">
+								<event name="onChange">
+									if sheet==nil then return end;
+									local concentracao = (tonumber(self.boxDetalhesDaMagia.node.NC) or 0) + 
+														 (tonumber(self.boxDetalhesDaMagia.node.concentracaoOutros) or 0);
+
+									if self.boxDetalhesDaMagia.node.atributoConcentracao == "1" then
+										concentracao = concentracao + sheet.efetModFor;
+									elseif self.boxDetalhesDaMagia.node.atributoConcentracao == "2" then
+										concentracao = concentracao + sheet.efetModDes;
+									elseif self.boxDetalhesDaMagia.node.atributoConcentracao == "3" then
+										concentracao = concentracao + sheet.efetModCon;
+									elseif self.boxDetalhesDaMagia.node.atributoConcentracao == "4" then
+										concentracao = concentracao + sheet.efetModInt;
+									elseif self.boxDetalhesDaMagia.node.atributoConcentracao == "5" then
+										concentracao = concentracao + sheet.efetModSab;
+									elseif self.boxDetalhesDaMagia.node.atributoConcentracao == "6" then
+										concentracao = concentracao + sheet.efetModCar;
+									end;
+
+									self.boxDetalhesDaMagia.node.concentracao = concentracao;
+								</event>
+							</dataLink>
+						</layout>
+					</flowLayout>
+				</rectangle>
+				<layout align="client" name="scrollPart" margins="{left=5}">
+					<scrollBox align="client" name="detailsPart" padding="{left=5,right=5,top=5,bottom=5}">
+						<import file="05.Magias.List3.xml"/>
+						<import file="05.Magias.List2.xml"/>
+						<import file="05.Magias.List1.xml"/>
+						<import file="05.Magias.List7.xml"/>
+						<import file="05.Magias.List8.xml"/>
+					</scrollBox>
+				</layout>
+			</rectangle>
+		</dataScopeBox>
+	</scrollBox>
+</form>

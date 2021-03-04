@@ -31,6 +31,11 @@ local function constructNew_frmFichaRPGmeister3_svg()
     obj:setTheme("dark");
     obj:setMargins({top=1});
 
+    obj.dataLink1 = GUI.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink1:setParent(obj);
+    obj.dataLink1:setFields({'buffPericia'});
+    obj.dataLink1:setName("dataLink1");
+
     obj.scrollBox1 = GUI.fromHandle(_obj_newObject("scrollBox"));
     obj.scrollBox1:setParent(obj);
     obj.scrollBox1:setAlign("client");
@@ -782,12 +787,23 @@ local function constructNew_frmFichaRPGmeister3_svg()
     obj.button2:setHeight(25);
     obj.button2:setName("button2");
 
-    obj._e_event0 = obj.rclListaDasPericias:addEventListener("onCompare",
+    obj._e_event0 = obj.dataLink1:addEventListener("onChange",
+        function (_, field, oldValue, newValue)
+            if sheet==nil then return end;
+            			local buffPericia = tonumber(sheet.buffPericia) or 0;
+            
+            			local nodes = NDB.getChildNodes(sheet.campoDasPericias); 
+            			for i=1, #nodes, 1 do
+            				nodes[i].buffPericia = buffPericia;
+            			end
+        end, obj);
+
+    obj._e_event1 = obj.rclListaDasPericias:addEventListener("onCompare",
         function (_, nodeA, nodeB)
             return Utils.compareStringPtBr(nodeA.nomePericia, nodeB.nomePericia);
         end, obj);
 
-    obj._e_event1 = obj.rclListaDasPericias:addEventListener("onEndEnumeration",
+    obj._e_event2 = obj.rclListaDasPericias:addEventListener("onEndEnumeration",
         function (_)
             if sheet==nil then return end;
             					local nodes = NDB.getChildNodes(sheet.campoDasPericias);               
@@ -796,7 +812,7 @@ local function constructNew_frmFichaRPGmeister3_svg()
             					end;
         end, obj);
 
-    obj._e_event2 = obj.rclListaDasPericias:addEventListener("onBeginEnumeration",
+    obj._e_event3 = obj.rclListaDasPericias:addEventListener("onBeginEnumeration",
         function (_)
             if sheet==nil then return end;
             					local nodes = NDB.getChildNodes(sheet.campoDasPericias);               
@@ -805,17 +821,17 @@ local function constructNew_frmFichaRPGmeister3_svg()
             					end;
         end, obj);
 
-    obj._e_event3 = obj.rclListaDosIdiomas:addEventListener("onCompare",
+    obj._e_event4 = obj.rclListaDosIdiomas:addEventListener("onCompare",
         function (_, nodeA, nodeB)
             return Utils.compareStringPtBr(nodeA.nomeIdioma, nodeB.nomeIdioma);
         end, obj);
 
-    obj._e_event4 = obj.button1:addEventListener("onClick",
+    obj._e_event5 = obj.button1:addEventListener("onClick",
         function (_)
             self.rclListaDasPericias:append();
         end, obj);
 
-    obj._e_event5 = obj.button2:addEventListener("onClick",
+    obj._e_event6 = obj.button2:addEventListener("onClick",
         function (_)
             local idioma = self.rclListaDosIdiomas:append();
             					idioma.conversarIdioma = true;
@@ -823,6 +839,7 @@ local function constructNew_frmFichaRPGmeister3_svg()
         end, obj);
 
     function obj:_releaseEvents()
+        __o_rrpgObjs.removeEventListenerById(self._e_event6);
         __o_rrpgObjs.removeEventListenerById(self._e_event5);
         __o_rrpgObjs.removeEventListenerById(self._e_event4);
         __o_rrpgObjs.removeEventListenerById(self._e_event3);
@@ -857,6 +874,7 @@ local function constructNew_frmFichaRPGmeister3_svg()
         if self.flowPart7 ~= nil then self.flowPart7:destroy(); self.flowPart7 = nil; end;
         if self.edit7 ~= nil then self.edit7:destroy(); self.edit7 = nil; end;
         if self.flowPart11 ~= nil then self.flowPart11:destroy(); self.flowPart11 = nil; end;
+        if self.dataLink1 ~= nil then self.dataLink1:destroy(); self.dataLink1 = nil; end;
         if self.edit12 ~= nil then self.edit12:destroy(); self.edit12 = nil; end;
         if self.flowLayout1 ~= nil then self.flowLayout1:destroy(); self.flowLayout1 = nil; end;
         if self.label26 ~= nil then self.label26:destroy(); self.label26 = nil; end;

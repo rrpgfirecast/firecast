@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmEquipamentos" align="client" theme="light">
+
+	<dataLink fields="{'forAtr'}">
+		<event name="onChange">
+			if sheet==nil then return end;
+
+			local forca = tonumber(sheet.forAtr) or 0;
+
+			sheet.cargaMax = forca * 3;
+			sheet.cargaLev = forca * 10;
+		</event>
+	</dataLink>
+
+	<scrollBox align="client">
+		<layout align="top" height="25"  margins="{bottom=5}">
+			<button align="left" text="Novo" width="100" onClick="self.rclEquipamentos:append();"/>
+
+			<label align="left" width="100" text="Carga Atual" horzTextAlign="center" vertTextAlign="center"/>
+
+			<rectangle align="left" width="50" color="#F0FFFF" strokeColor="black" strokeSize="1">
+				<label align="client" field="cargaAtual" horzTextAlign="center" vertTextAlign="center"/>
+			</rectangle>
+
+			<label align="left" width="100" text="Carga Máxima" horzTextAlign="center" vertTextAlign="center"/>
+
+			<rectangle align="left" width="50" color="#F0FFFF" strokeColor="black" strokeSize="1">
+				<label align="client" field="cargaMax" horzTextAlign="center" vertTextAlign="center"/>
+			</rectangle>
+
+			<label align="left" width="100" text="Levantar" horzTextAlign="center" vertTextAlign="center"/>
+
+			<rectangle align="left" width="50" color="#F0FFFF" strokeColor="black" strokeSize="1">
+				<label align="client" field="cargaLev" horzTextAlign="center" vertTextAlign="center"/>
+			</rectangle>
+
+			<label align="left" width="50" text="T$" horzTextAlign="center" vertTextAlign="center" fontSize="11"/>
+			<edit align="left" width="75" field="dinheiroTS"/>
+
+			<label align="left" width="50" text="TO" horzTextAlign="center" vertTextAlign="center" fontSize="11"/>
+			<edit align="left" width="75" field="dinheiroTO"/>
+		</layout>
+
+		<recordList align="client" name="rclEquipamentos" field="listaEquipamentos" templateForm="frmEquipamentoForm" layout="verticalTiles" selectable="true">
+			<event name="onCompare"><![CDATA[
+				-- Esse codigo organiza a ordem dos objetos da lista alfabeticamente. 
+		        return utils.compareStringPtBr(nodeA.nome, nodeB.nome);              
+		        ]]>
+			</event>
+		</recordList>
+	</scrollBox>
+</form>

@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmVehicleSelect" width="180" height="30" theme="dark">
+    <button width="30" height="30" text="X">
+		<event name="onClick">
+			Dialogs.confirmOkCancel("Tem certeza que quer apagar esse Veículo?",
+				function (confirmado)
+					if confirmado then
+						NDB.deleteNode(sheet);
+					end;
+			end);
+		</event>
+	</button>
+    
+	<rectangle left="30" width="85" height="30" color="#808080" strokeSize="1" hitTest="false">
+	    <label left="5" width="75" height="30" field="nome"/>
+   	</rectangle>
+	<dataLink field="nome" defaultValue="Veículo"/>
+
+	<button left="115" top="0" width="30" height="30" text="E" >
+		<event name="onClick">
+			local xml = NDB.exportXML(sheet);
+
+			local export = {};
+			local bytes = Utils.binaryEncode(export, "utf8", xml);
+
+			local stream = Utils.newMemoryStream();
+			local bytes = stream:write(export);
+
+			Dialogs.saveFile("Salvar Ficha como XML", stream, "veiculo.xml", "application/xml",
+				function()
+					stream:close();
+					showMessage("Veículo Exportado.");
+				end);
+		</event>
+	</button>
+	<button left="145" top="0" width="30" height="30" text="I" >
+		<event name="onClick">
+			Dialogs.openFile("Importar Ficha", "application/xml", false, 
+				function(arquivos)
+					local arq = arquivos[1];
+
+					local import = {};
+					local bytes = arq.stream:read(import, arq.stream.size);
+
+					local xml = Utils.binaryDecode(import, "utf8");
+
+					NDB.importXML(sheet, xml);
+				end);
+		</event>
+	</button>
+
+	<dataLink field="level">
+		<event name="onChange">
+			if sheet==nil then return end;
+
+			local level = tonumber(sheet.level) or 0;
+
+			local nodes = NDB.getChildNodes(sheet.listaMods); 
+			for i=1, #nodes, 1 do
+				nodes[i].level = level;
+			end;
+			nodes = NDB.getChildNodes(sheet.listaEquips); 
+			for i=1, #nodes, 1 do
+				nodes[i].level = level;
+			end
+		</event>
+	</dataLink>
+
+	<dataLink field="tamanho">
+		<event name="onChange">
+			if sheet==nil then return end;
+
+			local tamanho = tonumber(sheet.tamanho) or 0;
+
+			local nodes = NDB.getChildNodes(sheet.listaMods); 
+			for i=1, #nodes, 1 do
+				nodes[i].tamanho = tamanho;
+			end;
+			nodes = NDB.getChildNodes(sheet.listaEquips); 
+			for i=1, #nodes, 1 do
+				nodes[i].tamanho = tamanho;
+			end
+		</event>
+	</dataLink>
+
+	<dataLink fields="{'precoBase','precoMult','precoMod','precoOutros','level'}">
+		<event name="onChange">
+			if sheet==nil then return end;
+
+			local level = tonumber(sheet.level) or 1;
+			local precoBase = tonumber(sheet.precoBase) or 0;
+			local precoMult = tonumber(sheet.precoMult) or 1;
+			local precoMod = tonumber(sheet.precoMod) or 0;
+			local precoOutros = tonumber(sheet.precoOutros) or 0;
+
+			sheet.preco = level * precoBase * precoMult + precoMod + precoOutros;
+		</event>
+	</dataLink>
+
+	<dataLink fields="{'deslBase','deslBaseViagem','deslAdd','deslMult','deslOutros','deslOutrosViagem','quebrado'}">
+		<event name="onChange">
+			if sheet==nil then return end;
+
+			local deslBase = tonumber(sheet.deslBase) or 0;
+			local deslBaseViagem = tonumber(sheet.deslBaseViagem) or 0;
+			local deslAdd = tonumber(sheet.deslAdd) or 0;
+			local deslMult = tonumber(sheet.deslMult) or 1;
+			local deslOutros = tonumber(sheet.deslOutros) or 0;
+			local deslOutrosViagem = tonumber(sheet.deslOutrosViagem) or 0;
+
+			if sheet.quebrado then deslMult = deslMult * 0.5 end;
+
+			local desl = math.floor((deslBase + deslAdd) * deslMult + deslOutros);
+			sheet.deslQuadrados = desl;
+			sheet.deslMetros = desl * 1.5;
+			sheet.deslViagem = deslBaseViagem * deslMult + deslOutrosViagem;
+		</event>
+	</dataLink>
+
+	<dataLink fields="{'pilBase','pilotarAdd','pilOutros','quebrado'}">
+		<event name="onChange">
+			if sheet==nil then return end;
+
+			local pilBase = tonumber(sheet.pilBase) or 0;
+			local pilotarAdd = tonumber(sheet.pilotarAdd) or 0;
+			local pilOutros = tonumber(sheet.pilOutros) or 0;
+
+			local pen = 0;
+			if sheet.quebrado then pen = -2 end;
+
+			sheet.pilotarPen = pilBase + pilotarAdd + pilOutros + pen;
+		</event>
+	</dataLink>
+
+	<dataLink fields="{'atkBase','ataqueAdd','atkOutros'}">
+		<event name="onChange">
+			if sheet==nil then return end;
+
+			local atkBase = tonumber(sheet.atkBase) or 0;
+			local ataqueAdd = tonumber(sheet.ataqueAdd) or 0;
+			local atkOutros = tonumber(sheet.atkOutros) or 0;
+
+			sheet.ataquePen = atkBase + ataqueAdd + atkOutros;
+		</event>
+	</dataLink>
+
+	<dataLink fields="{'caeBase','caeAdd','caeMult','caeOutros','quebrado'}">
+		<event name="onChange">
+			if sheet==nil then return end;
+
+			local caeBase = tonumber(sheet.caeBase) or 0;
+			local caeAdd = tonumber(sheet.caeAdd) or 0;
+			local caeMult = tonumber(sheet.caeMult) or 1;
+			local caeOutros = tonumber(sheet.caeOutros) or 0;
+
+			if sheet.quebrado then caeMult = caeMult * 0.5 end;
+
+			sheet.cae = math.floor((caeBase + caeAdd) * caeMult + caeOutros);
+		</event>
+	</dataLink>
+	<dataLink fields="{'cacBase','cacAdd','cacMult','cacOutros','quebrado'}">
+		<event name="onChange">
+			if sheet==nil then return end;
+
+			local cacBase = tonumber(sheet.cacBase) or 0;
+			local cacAdd = tonumber(sheet.cacAdd) or 0;
+			local cacMult = tonumber(sheet.cacMult) or 1;
+			local cacOutros = tonumber(sheet.cacOutros) or 0;
+
+			if sheet.quebrado then cacMult = cacMult * 0.5 end;
+
+			sheet.cac = math.floor((cacBase + cacAdd) * cacMult + cacOutros);
+		</event>
+	</dataLink>
+	<dataLink fields="{'protBase','protAdd','protMult','protOutros','quebrado'}">
+		<event name="onChange">
+			if sheet==nil then return end;
+
+			local protBase = tonumber(sheet.protBase) or 0;
+			local protAdd = tonumber(sheet.protAdd) or 0;
+			local protMult = tonumber(sheet.protMult) or 1;
+			local protOutros = tonumber(sheet.protOutros) or 0;
+
+			if sheet.quebrado then protMult = protMult * 0.5 end;
+
+			sheet.protecao = math.floor((protBase + protAdd) * protMult + protOutros);
+		</event>
+	</dataLink>
+
+	<dataLink fields="{'pvBase','pvAdd','pvMult','pvOutros','cobertura'}">
+		<event name="onChange">
+			if sheet==nil then return end;
+
+			local pvBase = tonumber(sheet.pvBase) or 0;
+			local pvAdd = tonumber(sheet.pvAdd) or 0;
+			local pvMult = tonumber(sheet.pvMult) or 1;
+			local pvOutros = tonumber(sheet.pvOutros) or 0;
+			local cobertura = tonumber(sheet.cobertura) or 25;
+
+			local total = math.floor((pvBase + pvAdd) * pvMult + pvOutros);
+
+			local pv = math.floor(total * (100-cobertura) / 100)
+			sheet.pv = pv;
+			sheet.pe = total - pv;
+		</event>
+	</dataLink>
+</form>

@@ -170,7 +170,7 @@
 						</layout>
 						
 						<label frameRegion="modificador" field="atributos.modchanceCriticostr" horzTextAlign="center" vertTextAlign="center" fontSize="36" fontStyle="bold"/>
-						<label frameRegion="titulo" text="CHANCE DE CRÍTICO" vertTextAlign="center" horzTextAlign="center"/>
+						<label frameRegion="titulo" text="CHANCE DE CRÍTICO" vertTextAlign="center" horzTextAlign="center" fontSize="11"/>
 					</flowPart>
 
 					<dataLink field="atributos.danoCritico">
@@ -243,20 +243,27 @@
 						<label frameRegion="titulo" text="AMPLIFICADOR" vertTextAlign="center" horzTextAlign="center"/>
 					</flowPart>
 
-					<dataLink fields="{'atributos.forca','atributos.destreza','atributos.agilidade','atributos.constituicao','atributos.inteligencia','atributos.sabedoria','atributos.carisma','atributos.vontade','atributos.chanceCritico','atributos.danoCritico'}">
+					<dataLink fields="{'atributos.modforca','atributos.moddestreza','atributos.modagilidade','atributos.modconstituicao','atributos.modinteligencia','atributos.modsabedoria','atributos.modcarisma','atributos.modvontade'}">
 						<event name="onChange">
 							if sheet==nil then return end;
 							if sheet.atributos==nil then return end;
-							sheet.souls  =  (tonumber(sheet.atributos.forca) or 0) + 
-											(tonumber(sheet.atributos.destreza) or 0) + 
-											(tonumber(sheet.atributos.agilidade) or 0) + 
-											(tonumber(sheet.atributos.constituicao) or 0) + 
-											(tonumber(sheet.atributos.inteligencia) or 0) + 
-											(tonumber(sheet.atributos.sabedoria) or 0) + 
-											(tonumber(sheet.atributos.carisma) or 0) + 
-											(tonumber(sheet.atributos.vontade) or 0) + 
-											(tonumber(sheet.atributos.chanceCritico) or 0) + 
-											(tonumber(sheet.atributos.danoCritico) or 0);
+							local forca = string.gsub(sheet.atributos.modforca or "", "+", "");
+							local destreza = string.gsub(sheet.atributos.moddestreza or "", "+", "");
+							local agilidade = string.gsub(sheet.atributos.modagilidade or "", "+", "");
+							local constituicao = string.gsub(sheet.atributos.modconstituicao or "", "+", "");
+							local inteligencia = string.gsub(sheet.atributos.modinteligencia or "", "+", "");
+							local sabedoria = string.gsub(sheet.atributos.modsabedoria or "", "+", "");
+							local carisma = string.gsub(sheet.atributos.modcarisma or "", "+", "");
+							local vontade = string.gsub(sheet.atributos.modvontade or "", "+", "");
+
+							sheet.souls = 	(tonumber(forca) or 0) + 
+											(tonumber(destreza) or 0) + 
+											(tonumber(agilidade) or 0) + 
+											(tonumber(constituicao) or 0) + 
+											(tonumber(inteligencia) or 0) + 
+											(tonumber(sabedoria) or 0) + 
+											(tonumber(carisma) or 0) + 
+											(tonumber(vontade) or 0);
 						</event>
 					</dataLink>
 				</flowLayout>
@@ -271,25 +278,25 @@
 							<image width="200" height="600" field="avatarBody"/>
 							<image width="200" height="600" field="avatarArms"/>
 							<image width="200" height="600" field="avatarLegs"/>
-							<image width="200" height="600" field="avatarFeet"/>
+							<image width="200" height="600" field="avatarBoot"/>
 						</rectangle>
 					</flowLayout>
 
 					<flowLayout minWidth="202" maxWidth="202" autoHeight="true" avoidScale="false" vertAlign="center" horzAlign="center">
 						<layout left="202" width="200" height="602">
-							<BodyColor text="Capacete" slot="avatarHead" items="{'Água','Fogo','Raio','Ar','Gelo','Lava','Chaos','Veneno','Luz','Escuridão','Físico','Magico','Nenhum'}" values="{'http://blob.firecast.com.br/blobs/ABAWJFFJ_1373881/Agua.png','http://blob.firecast.com.br/blobs/NEGVWJNW_1373889/Fogo.png','http://blob.firecast.com.br/blobs/REDOJMMT_1373899/Raio.png','http://blob.firecast.com.br/blobs/QFNRMOOB_1373882/Ar.png','http://blob.firecast.com.br/blobs/OLCHSFMQ_1373893/Gelo.png','http://blob.firecast.com.br/blobs/SMAVRERG_1373896/Lava.png','http://blob.firecast.com.br/blobs/AVHUOTMP_1373883/Chaos.png','http://blob.firecast.com.br/blobs/GTPOFUSW_1373902/Veneno.png','http://blob.firecast.com.br/blobs/UKSOFION_1373894/Luz.png','http://blob.firecast.com.br/blobs/LLVRRNRM_1373887/Escuridao.png','http://blob.firecast.com.br/blobs/NTEFIGVB_1373888/Fisico.png','http://blob.firecast.com.br/blobs/JHEKDCST_1373900/Magico.png',''}" field="cabeca"/>
+							<BodyColor text="Capacete" slot="avatarHead" items="{'Água','Fogo','Raio','Ar','Gelo','Lava','Chaos','Veneno','Luz','Escuridão','Físico','Magico','Nenhum'}" values="{'head/Agua.png','head/Fogo.png','head/Raio.png','head/Ar.png','head/Gelo.png','head/Lava.png','head/Chaos.png','head/Veneno.png','head/Luz.png','head/Escuridao.png','head/Fisico.png','head/Magico.png','head/'}" field="cabeca"/>
 
 
-							<BodyColor text="Peitoral" slot="avatarBody" items="{'Água','Fogo','Raio','Ar','Gelo','Lava','Chaos','Veneno','Luz','Escuridão','Físico','Magico','Nenhum'}" values="{'http://blob.firecast.com.br/blobs/QBGSFWKE_1373905/Agua.png','http://blob.firecast.com.br/blobs/IEARCEOW_1373913/Fogo.png','http://blob.firecast.com.br/blobs/ARPNCVPP_1373927/Raio.png','http://blob.firecast.com.br/blobs/LMTLFTUP_1373907/Ar.png','http://blob.firecast.com.br/blobs/BAOGCINR_1373917/Gelo.png','http://blob.firecast.com.br/blobs/DMFLCKJG_1373919/Lava.png','http://blob.firecast.com.br/blobs/TLAFJNDQ_1373908/Chaos.png','http://blob.firecast.com.br/blobs/TDVGHFLB_1373925/Veneno.png','http://blob.firecast.com.br/blobs/KEMHLWSR_1373920/Luz.png','http://blob.firecast.com.br/blobs/VMVLSMEF_1373914/Escuridao.png','http://blob.firecast.com.br/blobs/LEDFRLQO_1373911/Fisico.png','http://blob.firecast.com.br/blobs/HIOTINGO_1373923/Magico.png',''}" field="corpo"/>
+							<BodyColor text="Peitoral" slot="avatarBody" items="{'Água','Fogo','Raio','Ar','Gelo','Lava','Chaos','Veneno','Luz','Escuridão','Físico','Magico','Nenhum'}" values="{'body/Agua.png','body/Fogo.png','body/Raio.png','body/Ar.png','body/Gelo.png','body/Lava.png','body/Chaos.png','body/Veneno.png','body/Luz.png','body/Escuridao.png','body/Fisico.png','body/Magico.png','body/'}" field="corpo"/>
 
 
-							<BodyColor text="Luva" slot="avatarArms" items="{'Água','Fogo','Raio','Ar','Gelo','Lava','Chaos','Veneno','Luz','Escuridão','Físico','Magico','Nenhum'}" values="{'http://blob.firecast.com.br/blobs/FVGAIPEF_1373857/Agua.png','http://blob.firecast.com.br/blobs/CQMIWTAK_1373864/Fogo.png','http://blob.firecast.com.br/blobs/UFTOWBBE_1373876/Raio.png','http://blob.firecast.com.br/blobs/MFPDHLOV_1373858/Ar.png','http://blob.firecast.com.br/blobs/PMPUFAGH_1373869/Gelo.png','http://blob.firecast.com.br/blobs/VEDJSAJB_1373871/Lava.png','http://blob.firecast.com.br/blobs/HCHJJMVE_1373863/Chaos.png','http://blob.firecast.com.br/blobs/GFEIWOFQ_1373877/Veneno.png','http://blob.firecast.com.br/blobs/NIEIIWQB_1373870/Luz.png','http://blob.firecast.com.br/blobs/DHBFBSFB_1373859/Escuridao.png','http://blob.firecast.com.br/blobs/KATECUIM_1373865/Fisico.png','http://blob.firecast.com.br/blobs/HTVEMMQP_1373875/Magico.png',''}" field="bracos"/>
+							<BodyColor text="Luva" slot="avatarArms" items="{'Água','Fogo','Raio','Ar','Gelo','Lava','Chaos','Veneno','Luz','Escuridão','Físico','Magico','Nenhum'}" values="{'arms/Agua.png','arms/Fogo.png','arms/Raio.png','arms/Ar.png','arms/Gelo.png','arms/Lava.png','arms/Chaos.png','arms/Veneno.png','arms/Luz.png','arms/Escuridao.png','arms/Fisico.png','arms/Magico.png','arms/'}" field="bracos"/>
 
 
-							<BodyColor text="Calça" slot="avatarLegs" items="{'Água','Fogo','Raio','Ar','Gelo','Lava','Chaos','Veneno','Luz','Escuridão','Físico','Magico','Nenhum'}" values="{'http://blob.firecast.com.br/blobs/GUHGVDCF_1373932/Agua.png','http://blob.firecast.com.br/blobs/UUIPVPFB_1373938/Fogo.png','http://blob.firecast.com.br/blobs/IUTDVHIK_1373951/Raio.png','http://blob.firecast.com.br/blobs/NKSQCOAP_1373931/Ar.png','http://blob.firecast.com.br/blobs/WJAEBTSL_1373943/Gelo.png','http://blob.firecast.com.br/blobs/EMLJBGAF_1373944/Lava.png','http://blob.firecast.com.br/blobs/DSFISGBG_1373933/Chaos.png','http://blob.firecast.com.br/blobs/HMQSELNB_1373950/Veneno.png','http://blob.firecast.com.br/blobs/LLWHRTEG_1373945/Luz.png','http://blob.firecast.com.br/blobs/AIBTEGOO_1373937/Escuridao.png','http://blob.firecast.com.br/blobs/JUJEQISA_1373939/Fisico.png','http://blob.firecast.com.br/blobs/TETKCWPT_1373949/Magico.png',''}" field="pernas"/>
+							<BodyColor text="Calça" slot="avatarLegs" items="{'Água','Fogo','Raio','Ar','Gelo','Lava','Chaos','Veneno','Luz','Escuridão','Físico','Magico','Nenhum'}" values="{'legs/Agua.png','legs/Fogo.png','legs/Raio.png','legs/Ar.png','legs/Gelo.png','legs/Lava.png','legs/Chaos.png','legs/Veneno.png','legs/Luz.png','legs/Escuridao.png','legs/Fisico.png','legs/Magico.png','legs/'}" field="pernas"/>
 
 
-							<BodyColor text="Bota" slot="avatarLegs" items="{'Água','Fogo','Raio','Ar','Gelo','Lava','Chaos','Veneno','Luz','Escuridão','Físico','Magico','Nenhum'}" values="{'http://blob.firecast.com.br/blobs/GUHGVDCF_1373932/Agua.png','http://blob.firecast.com.br/blobs/UUIPVPFB_1373938/Fogo.png','http://blob.firecast.com.br/blobs/IUTDVHIK_1373951/Raio.png','http://blob.firecast.com.br/blobs/NKSQCOAP_1373931/Ar.png','http://blob.firecast.com.br/blobs/WJAEBTSL_1373943/Gelo.png','http://blob.firecast.com.br/blobs/EMLJBGAF_1373944/Lava.png','http://blob.firecast.com.br/blobs/DSFISGBG_1373933/Chaos.png','http://blob.firecast.com.br/blobs/HMQSELNB_1373950/Veneno.png','http://blob.firecast.com.br/blobs/LLWHRTEG_1373945/Luz.png','http://blob.firecast.com.br/blobs/AIBTEGOO_1373937/Escuridao.png','http://blob.firecast.com.br/blobs/JUJEQISA_1373939/Fisico.png','http://blob.firecast.com.br/blobs/TETKCWPT_1373949/Magico.png',''}" field="pernas"/>
+							<BodyColor text="Bota" slot="avatarBoot" items="{'Água','Fogo','Raio','Ar','Gelo','Lava','Chaos','Veneno','Luz','Escuridão','Físico','Magico','Nenhum'}" values="{'boot/Agua.png','boot/Fogo.png','boot/Raio.png','boot/Ar.png','boot/Gelo.png','boot/Lava.png','boot/Chaos.png','boot/Veneno.png','boot/Luz.png','boot/Escuridao.png','boot/Fisico.png','boot/Magico.png','boot/'}" field="pes"/>
 						</layout>
 					</flowLayout>								
 				</flowLayout>

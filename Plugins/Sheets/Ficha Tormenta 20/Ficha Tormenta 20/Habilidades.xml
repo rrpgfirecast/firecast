@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmHabilidades" align="client" theme="light">
+	<scrollBox align="client">
+		<layout align="left" width="600" margins="{right=5}">
+			<rectangle align="client" color="black" xradius="5" yradius="15" cornerType="round">
+	        	<label align="top" height="20" text="Habilidades de Raça e Origem" horzTextAlign="center"/>
+				<textEditor align="client" field="habRaca" margins="{left=5,right=5,bottom=5}"/>
+			</rectangle>
+        </layout>
+		
+		<layout align="left" width="600" margins="{right=5}">
+			<rectangle align="client" color="black" xradius="5" yradius="15" cornerType="round">
+	        	<label align="top" height="20" text="Habilidades de Classe e Poderes" horzTextAlign="center"/>
+				<textEditor align="client" field="habClasse" margins="{left=5,right=5,bottom=5}"/>
+			</rectangle>
+        </layout>
+	</scrollBox>
+</form>

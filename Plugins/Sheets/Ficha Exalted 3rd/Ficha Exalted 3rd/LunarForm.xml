@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmLunarForm" align="client" theme="dark" margins="{top=1}">
+	<script> 
+		<![CDATA[
+		local function findPopup(myPop)
+			local pop = self:findControlByName(myPop);
+			local node = self.boxLunar.node;
+				
+			if pop ~= nil and node ~= nil then
+				pop:setNodeObject(node);
+				pop:showPopupEx("center", self);
+			elseif pop == nil then
+				showMessage("Ops, bug.. nao encontrei o popup para exibir");
+			end;				
+		end;
+
+		]]>	
+	</script>
+
+	<layout align="top" height="50">
+		<button text="+" align="left" width="40" margins="{bottom=5,top=5}">
+			<event name="onClick">
+				self.rclLunar:append();
+			</event>
+		</button>
+
+		<recordList name="rclLunar" field="campoLunar" templateForm="frmLunarSelect" align="client" selectable="true" layout="horizontal" margins="{left=0}" minQt="0">
+			<event name="onSelect">
+				local node = self.rclLunar.selectedNode;
+				self.boxLunar.node = node;
+				self.boxLunar.visible = (node ~= nil);
+			</event>
+			<event name="onEndEnumeration">
+				if self.rclLunar.selectedNode == nil and sheet ~= nil then
+					local nodes = NDB.getChildNodes(sheet.campoLunar);               
+					if #nodes &gt; 0 then
+						self.rclLunar.selectedNode = nodes[1];
+					end;
+				end;
+			</event>
+		</recordList>
+	</layout>
+
+	<dataScopeBox name="boxLunar" visible="false" align="client">
+		<scrollBox align="client">
+			<layout height="610"/>
+			<layout align="top" height="200" margins="{bottom=5}">
+				<rectangle align="left" width="200" color="black" strokeColor="white" strokeSize="1" margins="{right=5}">
+					<image align="client" field="avatarLunar" editable="true" style="autoFit">
+						<event name="OnStartDrag">
+						    drag:addData("imageURL", self.rclVeiculos.selectedNode.avatarComp);
+						</event>
+					</image>
+				</rectangle>
+
+				<rectangle align="left" width="210" color="black" strokeColor="white" strokeSize="1" margins="{right=5}">
+					<layout align="top" height="50">
+						<layout align="left" width="5"/>
+						<VertLabelEdit text="Nome" field="nome" width="200" fontSize="13" align="left"/>
+					</layout>
+					<layout align="top" height="50">
+						<layout align="left" width="5"/>
+						<VertLabelEdit text="Combat Movement" field="movement" width="200" fontSize="13" align="left"/>
+					</layout>
+					<layout align="top" height="50">
+						<layout align="left" width="5"/>
+						<VertLabelEdit text="Evasion" field="evasion" width="95" fontSize="13" align="left"/>
+						<VertLabelEdit text="Parry" field="parry" width="95" fontSize="13" align="left"/>
+					</layout>
+					<layout align="top" height="50">
+						<layout align="left" width="5"/>
+						<VertLabelEdit text="Soak" field="soak" width="95" fontSize="13" align="left"/>
+						<VertLabelEdit text="Hardness" field="hardness" width="95" fontSize="13" align="left"/>
+					</layout>
+				</rectangle>
+
+				<rectangle align="left" width="410" color="black" strokeColor="white" strokeSize="1" margins="{right=5}">
+					<label align="top" height="25" horzTextAlign="center" text="Special Abilities"/>
+					<textEditor align="client" field="abilitiesForm" margins="{left=5,right=5,bottom=5}"/>
+				</rectangle>
+			</layout>
+
+			<layout align="top" height="300" margins="{bottom=5}">
+				<rectangle align="left" width="410" color="black" strokeColor="white" strokeSize="1" margins="{right=5}">
+					<layout align="top" height="25" margins="{top=5}">
+						<button align="left" width="25" text="+" margins="{left=5,right=5}" onClick="self.rclActions:append();"/>
+						<label align="client" height="25" horzTextAlign="center" text="Actions"/>
+					</layout>
+
+					<recordList align="client" margins="{left=5,right=5,bottom=5,top=0}" name="rclActions" field="listActions" templateForm="frmActionForm" layout="vertical"/>
+				</rectangle>
+
+				<rectangle align="left" width="410" color="black" strokeColor="white" strokeSize="1" margins="{right=5}">
+					<layout align="top" height="25" margins="{top=5}">
+						<button align="left" width="25" text="+" margins="{left=5,right=5}" onClick="self.rclAttacks:append();"/>
+						<label align="client" height="25" horzTextAlign="center" text="Attacks"/>
+					</layout>
+
+					<recordList align="client" margins="{left=5,right=5,bottom=5,top=0}" name="rclAttacks" field="listAttacks" templateForm="frmAttackForm" layout="vertical"/>
+				</rectangle>
+			</layout>
+		</scrollBox>
+	</dataScopeBox>
+</form>

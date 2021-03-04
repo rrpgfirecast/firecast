@@ -66,6 +66,7 @@ local function isNewVersion(installed, downloaded)
 end;
 
 local function initializeRoom(mesa)
+	if mesa == nil then return end;
 	if afkdb.config[mesa.codigoInterno] == nil then
 		afkdb.config[mesa.codigoInterno] = {};
 	end;
@@ -85,6 +86,11 @@ local function sendPersonalMessage(chat, mesa)
 	local message = "";
 	for i=1, #messages, 1 do
 		local msg = messages[i];
+		if msg.hourStart == nil then msg.hourStart = 0 end;
+		if msg.minuteStart == nil then msg.minuteStart = 0 end;
+		if msg.hourEnd == nil then msg.hourEnd = 23 end;
+		if msg.minuteEnd == nil then msg.minuteEnd = 59 end;
+
 		local valid = true;
 		-- verifica se é do dia da semana certo. 
 		valid = valid and msg["d" .. date.wday];
@@ -93,7 +99,7 @@ local function sendPersonalMessage(chat, mesa)
 		valid = valid and (msg.hourEnd > date.hour or (msg.hourEnd == date.hour and msg.minuteEnd >= date.min));
 
 		if valid then
-			message = message .. msg.message;
+			message = message .. (msg.message or "");
 		end;
 	end;
 
@@ -392,6 +398,32 @@ Firecast.Messaging.listen("ChatMessage",
 				user.kicked = true;
 			end;
 		end
+	end);
+
+-- Escuta por conversa com afkBot
+Firecast.Messaging.listen("ChatMessage",
+	function (message)
+		initializeRoom(message.mesa);
+		local txt =  Utils.removerFmtChat(message.texto, true);
+		local arg = {};
+		for substring in txt:gmatch("%S+") do
+   			table.insert(arg, substring)
+		end
+
+		if arg[1]=="afkbot" then
+			-- give voice to players
+			if ((arg[2]=="voz" or arg[2]=="voice") and message.jogador~=nil and message.jogador.isJogador and message.mesa.isModerada and afkdb.config[message.mesa.codigoInterno].giveVoice) then
+				message.jogador:requestSetVoz(true);
+			elseif ((arg[2]=="ficha" or arg[2]=="sheet") and message.jogador~=nil and message.jogador.isJogador and afkdb.config[message.mesa.codigoInterno].giveSheet) then
+				-- da ficha aos jogadores
+			elseif (arg[2]=="off") then
+				-- poe o jogador no off chat
+			elseif (arg[2]=="math") then
+				-- faz calculo matematico
+			else
+				-- message.chat:enviarMensagem("AfkBot: Não posso. ");
+			end;
+		end;
 	end);
 
 Firecast.Messaging.listen("ListChatCommands",

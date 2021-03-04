@@ -1,13 +1,13 @@
 # Ficha Pathfinder
 Talentos para Verificar:
-* Ataque Poderoso;
-* Tiro Multiplo;
-* Especialização em Combate;
+* Ataque Poderoso
+* Tiro Multiplo
+* Especialização em Combate
 * Piranha Strike
 * Rajada de Golpes
 
--BUG: pericias com atributos errados
--BUG: concentração foi removido sem querer. 
+Versão 0.9.2
+- Clicar para atacar automaticamente atualiza os campos de ataque. 
 
 Versão 0.7
 - Campos editaveis invisiveis tem retangulo diferenciado agora. 

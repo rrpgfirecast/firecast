@@ -388,6 +388,7 @@ local function constructNew_frmFichaRPGmeister2a_svg()
             
             						numeroAtaques = 0;
             						for i=1, #weapons, 1 do
+                                        weapons[i].atualizar = not (weapons[i].atualizar==true);
             							numeroAtaques = numeroAtaques + weapons[i].numAtaques;
             
             							if weapons[i].municao~= nil then

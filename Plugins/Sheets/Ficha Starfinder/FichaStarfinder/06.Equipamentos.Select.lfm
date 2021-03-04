@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmFichaRPGmeister6ES_svg" width="150" height="40" theme="dark" margins="{top=3}">
+	<script>
+		local function use()
+			local mesa = Firecast.getMesaDe(sheet);
+
+			local texto = (sheet.nome or "Equipamento") .. " foi usado.";
+			if sheet.cd~=nil then
+				texto = texto .. " CD: " .. sheet.cd .. ".";
+			end;
+			
+			if sheet.dados~=nil then
+				local rolagem = Firecast.interpretarRolagem(sheet.dados);
+				
+				mesa.activeChat:rolarDados(rolagem, texto);
+			end;
+
+			if sheet.BarrinhaValor~=nil then
+				sheet.BarrinhaValor = tonumber(sheet.BarrinhaValor) - 1;
+
+				if sheet.dados==nil then
+					mesa.activeChat:enviarMensagem(texto);
+				end;
+			end;
+		end;
+	</script>
+
+    <rectangle align="client" color="#333333" hitTest="false" name="background"/>
+    <button left="5" top="5" width="20" height="20" text="U" onClick="use();"/>
+    <label left="5" top="0" width="140" height="25" field="slot" fontSize="16" horzTextAlign="center"/>
+    <label left="5" top="25" width="140" height="15" field="nome" fontSize="9" horzTextAlign="center"/>
+
+    <event name="onMouseEnter">
+    	self.background.color = "#444444";
+    </event>
+    <event name="onMouseLeave">
+    	self.background.color = "#333333";
+    </event>
+</form>

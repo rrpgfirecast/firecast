@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmVehicleArma" width="465" height="25" theme="dark" margins="{top=1}">
+	<script> 
+		<![CDATA[			
+		local function askForDelete()
+			Dialogs.confirmYesNo("Deseja realmente apagar esse ataque?",
+								 function (confirmado)
+									if confirmado then
+										NDB.deleteNode(sheet);
+									end;
+								 end);
+		end;
+		]]>	
+	</script>
+	<checkBox align="left" width="20" field="ativo"/>
+	<edit align="client" field="nome" margins="{top=1,bottom=1}"/>
+
+	<layout align="right" width="365">
+		<edit align="left" width="100" field="lugar" margins="{top=1,bottom=1}"/>
+		<edit align="left" width="40" field="ataque" type="number" margins="{top=1,bottom=1}"/>
+		<edit align="left" width="40" field="dano" margins="{top=1,bottom=1}"/>
+		<edit align="left" width="40" field="margem" type="number" margins="{top=1,bottom=1}"/>
+		<edit align="left" width="40" field="multiplicador" type="number" margins="{top=1,bottom=1}"/>
+		<edit align="left" width="40" field="alcance" type="number" margins="{top=1,bottom=1}"/>
+		<edit align="left" width="40" field="municao" type="number" margins="{top=1,bottom=1}"/>
+
+		<dataLink fields="{'margem','multiplicador'}" defaultValues="{'20','2'}"/>
+
+		<button align="right" width="23" text="X" onClick="askForDelete();" margins="{top=1,bottom=1}"/>
+
+	</layout>
+	
+</form>

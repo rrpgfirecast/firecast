@@ -2614,6 +2614,7 @@ local function constructNew_MundoOriginal()
     obj.label68:setText("CHANCE DE CRÍTICO");
     obj.label68:setVertTextAlign("center");
     obj.label68:setHorzTextAlign("center");
+    obj.label68:setFontSize(11);
     obj.label68:setName("label68");
     obj.label68:setFontColor("white");
 
@@ -2737,7 +2738,7 @@ local function constructNew_MundoOriginal()
 
     obj.dataLink30 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink30:setParent(obj.fraLayAtributos);
-    obj.dataLink30:setFields({'atributos.forca','atributos.destreza','atributos.agilidade','atributos.constituicao','atributos.inteligencia','atributos.sabedoria','atributos.carisma','atributos.vontade','atributos.chanceCritico','atributos.danoCritico'});
+    obj.dataLink30:setFields({'atributos.modforca','atributos.moddestreza','atributos.modagilidade','atributos.modconstituicao','atributos.modinteligencia','atributos.modsabedoria','atributos.modcarisma','atributos.modvontade'});
     obj.dataLink30:setName("dataLink30");
 
     obj.flowLayout12 = GUI.fromHandle(_obj_newObject("flowLayout"));
@@ -2803,6 +2804,13 @@ local function constructNew_MundoOriginal()
     obj.image4:setField("avatarLegs");
     obj.image4:setName("image4");
 
+    obj.image5 = GUI.fromHandle(_obj_newObject("image"));
+    obj.image5:setParent(obj.rectangle2);
+    obj.image5:setWidth(200);
+    obj.image5:setHeight(600);
+    obj.image5:setField("avatarBoot");
+    obj.image5:setName("image5");
+
     obj.flowLayout14 = GUI.fromHandle(_obj_newObject("flowLayout"));
     obj.flowLayout14:setParent(obj.flowLayout12);
     obj.flowLayout14:setMinWidth(202);
@@ -2825,7 +2833,7 @@ local function constructNew_MundoOriginal()
     obj.label73:setParent(obj.layout30);
     obj.label73:setAlign("top");
     obj.label73:setHeight(25);
-    obj.label73:setText("Cabeça");
+    obj.label73:setText("Capacete");
     obj.label73:setName("label73");
     obj.label73:setFontColor("white");
 
@@ -2834,7 +2842,7 @@ local function constructNew_MundoOriginal()
     obj.comboBox1:setAlign("top");
     obj.comboBox1:setHeight(25);
     obj.comboBox1:setItems({'Água','Fogo','Raio','Ar','Gelo','Lava','Chaos','Veneno','Luz','Escuridão','Físico','Magico','Nenhum'});
-    obj.comboBox1:setValues({'http://blob.firecast.com.br/blobs/ABAWJFFJ_1373881/Agua.png','http://blob.firecast.com.br/blobs/NEGVWJNW_1373889/Fogo.png','http://blob.firecast.com.br/blobs/REDOJMMT_1373899/Raio.png','http://blob.firecast.com.br/blobs/QFNRMOOB_1373882/Ar.png','http://blob.firecast.com.br/blobs/OLCHSFMQ_1373893/Gelo.png','http://blob.firecast.com.br/blobs/SMAVRERG_1373896/Lava.png','http://blob.firecast.com.br/blobs/AVHUOTMP_1373883/Chaos.png','http://blob.firecast.com.br/blobs/GTPOFUSW_1373902/Veneno.png','http://blob.firecast.com.br/blobs/UKSOFION_1373894/Luz.png','http://blob.firecast.com.br/blobs/LLVRRNRM_1373887/Escuridao.png','http://blob.firecast.com.br/blobs/NTEFIGVB_1373888/Fisico.png','http://blob.firecast.com.br/blobs/JHEKDCST_1373900/Magico.png',''});
+    obj.comboBox1:setValues({'head/Agua.png','head/Fogo.png','head/Raio.png','head/Ar.png','head/Gelo.png','head/Lava.png','head/Chaos.png','head/Veneno.png','head/Luz.png','head/Escuridao.png','head/Fisico.png','head/Magico.png','head/'});
     obj.comboBox1:setField("cabecaComboBox");
     obj.comboBox1:setName("comboBox1");
 
@@ -2856,7 +2864,7 @@ local function constructNew_MundoOriginal()
     obj.label74:setParent(obj.layout30);
     obj.label74:setAlign("top");
     obj.label74:setHeight(25);
-    obj.label74:setText("Corpo");
+    obj.label74:setText("Peitoral");
     obj.label74:setName("label74");
     obj.label74:setFontColor("white");
 
@@ -2865,7 +2873,7 @@ local function constructNew_MundoOriginal()
     obj.comboBox2:setAlign("top");
     obj.comboBox2:setHeight(25);
     obj.comboBox2:setItems({'Água','Fogo','Raio','Ar','Gelo','Lava','Chaos','Veneno','Luz','Escuridão','Físico','Magico','Nenhum'});
-    obj.comboBox2:setValues({'http://blob.firecast.com.br/blobs/QBGSFWKE_1373905/Agua.png','http://blob.firecast.com.br/blobs/IEARCEOW_1373913/Fogo.png','http://blob.firecast.com.br/blobs/ARPNCVPP_1373927/Raio.png','http://blob.firecast.com.br/blobs/LMTLFTUP_1373907/Ar.png','http://blob.firecast.com.br/blobs/BAOGCINR_1373917/Gelo.png','http://blob.firecast.com.br/blobs/DMFLCKJG_1373919/Lava.png','http://blob.firecast.com.br/blobs/TLAFJNDQ_1373908/Chaos.png','http://blob.firecast.com.br/blobs/TDVGHFLB_1373925/Veneno.png','http://blob.firecast.com.br/blobs/KEMHLWSR_1373920/Luz.png','http://blob.firecast.com.br/blobs/VMVLSMEF_1373914/Escuridao.png','http://blob.firecast.com.br/blobs/LEDFRLQO_1373911/Fisico.png','http://blob.firecast.com.br/blobs/HIOTINGO_1373923/Magico.png',''});
+    obj.comboBox2:setValues({'body/Agua.png','body/Fogo.png','body/Raio.png','body/Ar.png','body/Gelo.png','body/Lava.png','body/Chaos.png','body/Veneno.png','body/Luz.png','body/Escuridao.png','body/Fisico.png','body/Magico.png','body/'});
     obj.comboBox2:setField("corpoComboBox");
     obj.comboBox2:setName("comboBox2");
 
@@ -2887,7 +2895,7 @@ local function constructNew_MundoOriginal()
     obj.label75:setParent(obj.layout30);
     obj.label75:setAlign("top");
     obj.label75:setHeight(25);
-    obj.label75:setText("Braços");
+    obj.label75:setText("Luva");
     obj.label75:setName("label75");
     obj.label75:setFontColor("white");
 
@@ -2896,7 +2904,7 @@ local function constructNew_MundoOriginal()
     obj.comboBox3:setAlign("top");
     obj.comboBox3:setHeight(25);
     obj.comboBox3:setItems({'Água','Fogo','Raio','Ar','Gelo','Lava','Chaos','Veneno','Luz','Escuridão','Físico','Magico','Nenhum'});
-    obj.comboBox3:setValues({'http://blob.firecast.com.br/blobs/FVGAIPEF_1373857/Agua.png','http://blob.firecast.com.br/blobs/CQMIWTAK_1373864/Fogo.png','http://blob.firecast.com.br/blobs/UFTOWBBE_1373876/Raio.png','http://blob.firecast.com.br/blobs/MFPDHLOV_1373858/Ar.png','http://blob.firecast.com.br/blobs/PMPUFAGH_1373869/Gelo.png','http://blob.firecast.com.br/blobs/VEDJSAJB_1373871/Lava.png','http://blob.firecast.com.br/blobs/HCHJJMVE_1373863/Chaos.png','http://blob.firecast.com.br/blobs/GFEIWOFQ_1373877/Veneno.png','http://blob.firecast.com.br/blobs/NIEIIWQB_1373870/Luz.png','http://blob.firecast.com.br/blobs/DHBFBSFB_1373859/Escuridao.png','http://blob.firecast.com.br/blobs/KATECUIM_1373865/Fisico.png','http://blob.firecast.com.br/blobs/HTVEMMQP_1373875/Magico.png',''});
+    obj.comboBox3:setValues({'arms/Agua.png','arms/Fogo.png','arms/Raio.png','arms/Ar.png','arms/Gelo.png','arms/Lava.png','arms/Chaos.png','arms/Veneno.png','arms/Luz.png','arms/Escuridao.png','arms/Fisico.png','arms/Magico.png','arms/'});
     obj.comboBox3:setField("bracosComboBox");
     obj.comboBox3:setName("comboBox3");
 
@@ -2918,7 +2926,7 @@ local function constructNew_MundoOriginal()
     obj.label76:setParent(obj.layout30);
     obj.label76:setAlign("top");
     obj.label76:setHeight(25);
-    obj.label76:setText("Pernas");
+    obj.label76:setText("Calça");
     obj.label76:setName("label76");
     obj.label76:setFontColor("white");
 
@@ -2927,7 +2935,7 @@ local function constructNew_MundoOriginal()
     obj.comboBox4:setAlign("top");
     obj.comboBox4:setHeight(25);
     obj.comboBox4:setItems({'Água','Fogo','Raio','Ar','Gelo','Lava','Chaos','Veneno','Luz','Escuridão','Físico','Magico','Nenhum'});
-    obj.comboBox4:setValues({'http://blob.firecast.com.br/blobs/GUHGVDCF_1373932/Agua.png','http://blob.firecast.com.br/blobs/UUIPVPFB_1373938/Fogo.png','http://blob.firecast.com.br/blobs/IUTDVHIK_1373951/Raio.png','http://blob.firecast.com.br/blobs/NKSQCOAP_1373931/Ar.png','http://blob.firecast.com.br/blobs/WJAEBTSL_1373943/Gelo.png','http://blob.firecast.com.br/blobs/EMLJBGAF_1373944/Lava.png','http://blob.firecast.com.br/blobs/DSFISGBG_1373933/Chaos.png','http://blob.firecast.com.br/blobs/HMQSELNB_1373950/Veneno.png','http://blob.firecast.com.br/blobs/LLWHRTEG_1373945/Luz.png','http://blob.firecast.com.br/blobs/AIBTEGOO_1373937/Escuridao.png','http://blob.firecast.com.br/blobs/JUJEQISA_1373939/Fisico.png','http://blob.firecast.com.br/blobs/TETKCWPT_1373949/Magico.png',''});
+    obj.comboBox4:setValues({'legs/Agua.png','legs/Fogo.png','legs/Raio.png','legs/Ar.png','legs/Gelo.png','legs/Lava.png','legs/Chaos.png','legs/Veneno.png','legs/Luz.png','legs/Escuridao.png','legs/Fisico.png','legs/Magico.png','legs/'});
     obj.comboBox4:setField("pernasComboBox");
     obj.comboBox4:setName("comboBox4");
 
@@ -2944,6 +2952,37 @@ local function constructNew_MundoOriginal()
     obj.dataLink34:setParent(obj.layout30);
     obj.dataLink34:setField("pernasComboBox");
     obj.dataLink34:setName("dataLink34");
+
+    obj.label77 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label77:setParent(obj.layout30);
+    obj.label77:setAlign("top");
+    obj.label77:setHeight(25);
+    obj.label77:setText("Bota");
+    obj.label77:setName("label77");
+    obj.label77:setFontColor("white");
+
+    obj.comboBox5 = GUI.fromHandle(_obj_newObject("comboBox"));
+    obj.comboBox5:setParent(obj.layout30);
+    obj.comboBox5:setAlign("top");
+    obj.comboBox5:setHeight(25);
+    obj.comboBox5:setItems({'Água','Fogo','Raio','Ar','Gelo','Lava','Chaos','Veneno','Luz','Escuridão','Físico','Magico','Nenhum'});
+    obj.comboBox5:setValues({'boot/Agua.png','boot/Fogo.png','boot/Raio.png','boot/Ar.png','boot/Gelo.png','boot/Lava.png','boot/Chaos.png','boot/Veneno.png','boot/Luz.png','boot/Escuridao.png','boot/Fisico.png','boot/Magico.png','boot/'});
+    obj.comboBox5:setField("pesComboBox");
+    obj.comboBox5:setName("comboBox5");
+
+    obj.edit30 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit30:setParent(obj.layout30);
+    obj.edit30:setAlign("top");
+    obj.edit30:setHeight(25);
+    obj.edit30:setField("pesEdit");
+    obj.edit30:setName("edit30");
+    obj.edit30:setFontSize(15);
+    obj.edit30:setFontColor("white");
+
+    obj.dataLink35 = GUI.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink35:setParent(obj.layout30);
+    obj.dataLink35:setField("pesComboBox");
+    obj.dataLink35:setName("dataLink35");
 
     obj.tab2 = GUI.fromHandle(_obj_newObject("tab"));
     obj.tab2:setParent(obj.pgcPrincipal);
@@ -3074,25 +3113,25 @@ local function constructNew_MundoOriginal()
     obj.scrollBox5:setAlign("client");
     obj.scrollBox5:setName("scrollBox5");
 
-    obj.image5 = GUI.fromHandle(_obj_newObject("image"));
-    obj.image5:setParent(obj.scrollBox5);
-    obj.image5:setLeft(0);
-    obj.image5:setTop(0);
-    obj.image5:setWidth(500);
-    obj.image5:setHeight(500);
-    obj.image5:setStyle("autoFit");
-    obj.image5:setSRC("logo");
-    obj.image5:setName("image5");
-
     obj.image6 = GUI.fromHandle(_obj_newObject("image"));
     obj.image6:setParent(obj.scrollBox5);
-    obj.image6:setLeft(550);
+    obj.image6:setLeft(0);
     obj.image6:setTop(0);
-    obj.image6:setWidth(250);
-    obj.image6:setHeight(250);
+    obj.image6:setWidth(500);
+    obj.image6:setHeight(500);
     obj.image6:setStyle("autoFit");
-    obj.image6:setSRC("images/RPGmeister.jpg");
+    obj.image6:setSRC("logo");
     obj.image6:setName("image6");
+
+    obj.image7 = GUI.fromHandle(_obj_newObject("image"));
+    obj.image7:setParent(obj.scrollBox5);
+    obj.image7:setLeft(550);
+    obj.image7:setTop(0);
+    obj.image7:setWidth(250);
+    obj.image7:setHeight(250);
+    obj.image7:setStyle("autoFit");
+    obj.image7:setSRC("images/RPGmeister.jpg");
+    obj.image7:setName("image7");
 
     obj.layout31 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout31:setParent(obj.scrollBox5);
@@ -3111,24 +3150,13 @@ local function constructNew_MundoOriginal()
     obj.rectangle3:setCornerType("round");
     obj.rectangle3:setName("rectangle3");
 
-    obj.label77 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label77:setParent(obj.layout31);
-    obj.label77:setLeft(0);
-    obj.label77:setTop(10);
-    obj.label77:setWidth(200);
-    obj.label77:setHeight(20);
-    obj.label77:setText("Programado por: ");
-    obj.label77:setHorzTextAlign("center");
-    obj.label77:setName("label77");
-    obj.label77:setFontColor("white");
-
     obj.label78 = GUI.fromHandle(_obj_newObject("label"));
     obj.label78:setParent(obj.layout31);
     obj.label78:setLeft(0);
-    obj.label78:setTop(35);
+    obj.label78:setTop(10);
     obj.label78:setWidth(200);
     obj.label78:setHeight(20);
-    obj.label78:setText("Vinny (Ambesek)");
+    obj.label78:setText("Programado por: ");
     obj.label78:setHorzTextAlign("center");
     obj.label78:setName("label78");
     obj.label78:setFontColor("white");
@@ -3136,13 +3164,24 @@ local function constructNew_MundoOriginal()
     obj.label79 = GUI.fromHandle(_obj_newObject("label"));
     obj.label79:setParent(obj.layout31);
     obj.label79:setLeft(0);
-    obj.label79:setTop(60);
+    obj.label79:setTop(35);
     obj.label79:setWidth(200);
     obj.label79:setHeight(20);
-    obj.label79:setText("Consultor: ");
+    obj.label79:setText("Vinny (Ambesek)");
     obj.label79:setHorzTextAlign("center");
     obj.label79:setName("label79");
     obj.label79:setFontColor("white");
+
+    obj.label80 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label80:setParent(obj.layout31);
+    obj.label80:setLeft(0);
+    obj.label80:setTop(60);
+    obj.label80:setWidth(200);
+    obj.label80:setHeight(20);
+    obj.label80:setText("Consultor: ");
+    obj.label80:setHorzTextAlign("center");
+    obj.label80:setName("label80");
+    obj.label80:setFontColor("white");
 
     obj.layout32 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout32:setParent(obj.scrollBox5);
@@ -3161,79 +3200,52 @@ local function constructNew_MundoOriginal()
     obj.rectangle4:setColor("black");
     obj.rectangle4:setName("rectangle4");
 
-    obj.label80 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label80:setParent(obj.layout32);
-    obj.label80:setLeft(0);
-    obj.label80:setTop(10);
-    obj.label80:setWidth(80);
-    obj.label80:setHeight(20);
-    obj.label80:setText("Tema:");
-    obj.label80:setHorzTextAlign("center");
-    obj.label80:setName("label80");
-    obj.label80:setFontColor("white");
-
-    obj.comboBox5 = GUI.fromHandle(_obj_newObject("comboBox"));
-    obj.comboBox5:setParent(obj.layout32);
-    obj.comboBox5:setLeft(95);
-    obj.comboBox5:setTop(10);
-    obj.comboBox5:setWidth(90);
-    obj.comboBox5:setField("theme");
-    obj.comboBox5:setFontColor("white");
-    obj.comboBox5:setItems({'Escuro', 'Claro'});
-    obj.comboBox5:setHorzTextAlign("center");
-    obj.comboBox5:setName("comboBox5");
-
-    obj.dataLink35 = GUI.fromHandle(_obj_newObject("dataLink"));
-    obj.dataLink35:setParent(obj.layout32);
-    obj.dataLink35:setField("theme");
-    obj.dataLink35:setDefaultValue("Escuro");
-    obj.dataLink35:setName("dataLink35");
-
     obj.label81 = GUI.fromHandle(_obj_newObject("label"));
     obj.label81:setParent(obj.layout32);
     obj.label81:setLeft(0);
-    obj.label81:setTop(35);
-    obj.label81:setWidth(90);
+    obj.label81:setTop(10);
+    obj.label81:setWidth(80);
     obj.label81:setHeight(20);
-    obj.label81:setText("Cores: ");
+    obj.label81:setText("Tema:");
     obj.label81:setHorzTextAlign("center");
     obj.label81:setName("label81");
     obj.label81:setFontColor("white");
 
-    obj.label82 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label82:setParent(obj.layout32);
-    obj.label82:setLeft(0);
-    obj.label82:setTop(60);
-    obj.label82:setWidth(90);
-    obj.label82:setHeight(20);
-    obj.label82:setText("Fundo ");
-    obj.label82:setHorzTextAlign("center");
-    obj.label82:setName("label82");
-    obj.label82:setFontColor("white");
-
     obj.comboBox6 = GUI.fromHandle(_obj_newObject("comboBox"));
     obj.comboBox6:setParent(obj.layout32);
     obj.comboBox6:setLeft(95);
-    obj.comboBox6:setTop(60);
+    obj.comboBox6:setTop(10);
     obj.comboBox6:setWidth(90);
-    obj.comboBox6:setField("colorBackground");
-    obj.comboBox6:setItems({'AliceBlue', 'AntiqueWhite', 'Aqua', 'Aquamarine', 'Azure', 'Beige', 'Bisque', 'Black', 'BlanchedAlmond', 'Blue', 'BlueViolet', 'Brown', 'BurlyWood', 'CadetBlue', 'Chartreuse', 'Chocolate', 'Coral', 'CornflowerBlue', 'Cornsilk', 'Crimson', 'Cyan', 'DarkBlue', 'DarkCyan', 'DarkGoldenRod', 'DarkGray', 'DarkGreen', 'DarkKhaki', 'DarkMagenta', 'DarkOliveGreen', 'DarkOrange', 'DarkOrchid', 'DarkRed', 'DarkSalmon', 'DarkSeaGreen', 'DarkSlateBlue', 'DarkSlateGray', 'DarkTurquoise', 'DarkViolet', 'DeepPink', 'DeepSkyBlue', 'DimGray', 'DodgerBlue', 'FireBrick', 'FloralWhite', 'ForestGreen', 'Fuchsia', 'Gainsboro', 'GhostWhite', 'Gold', 'GoldenRod', 'Gray', 'Green', 'GreenYellow', 'HoneyDew', 'HotPink', 'IndianRed ', 'Indigo ', 'Ivory', 'Khaki', 'Lavender', 'LavenderBlush', 'LawnGreen', 'LemonChiffon', 'LightBlue', 'LightCoral', 'LightCyan', 'LightGoldenRodYellow', 'LightGray', 'LightGreen', 'LightPink', 'LightSalmon', 'LightSeaGreen', 'LightSkyBlue', 'LightSlateGray', 'LightSteelBlue', 'LightYellow', 'Lime', 'LimeGreen', 'Linen', 'Magenta', 'Maroon', 'MediumAquaMarine', 'MediumBlue', 'MediumOrchid', 'MediumPurple', 'MediumSeaGreen', 'MediumSlateBlue', 'MediumSpringGreen', 'MediumTurquoise', 'MediumVioletRed', 'MidnightBlue', 'MintCream', 'MistyRose', 'Moccasin', 'NavajoWhite', 'Navy', 'OldLace', 'Olive', 'OliveDrab', 'Orange', 'OrangeRed', 'Orchid', 'PaleGoldenRod', 'PaleGreen', 'PaleTurquoise', 'PaleVioletRed', 'PapayaWhip', 'PeachPuff', 'Peru', 'Pink', 'Plum', 'PowderBlue', 'Purple', 'RebeccaPurple', 'Red', 'RosyBrown', 'RoyalBlue', 'SaddleBrown', 'Salmon', 'SandyBrown', 'SeaGreen', 'SeaShell', 'Sienna', 'Silver', 'SkyBlue', 'SlateBlue', 'SlateGray', 'Snow', 'SpringGreen', 'SteelBlue', 'Tan', 'Teal', 'Thistle', 'Tomato', 'Turquoise', 'Violet', 'Wheat', 'White', 'WhiteSmoke', 'Yellow', 'YellowGreen'});
-    obj.comboBox6:setValues({'#F0F8FF', '#FAEBD7', '#00FFFF', '#7FFFD4', '#F0FFFF', '#F5F5DC', '#FFE4C4', '#000000', '#FFEBCD', '#0000FF', '#8A2BE2', '#A52A2A', '#DEB887', '#5F9EA0', '#7FFF00', '#D2691E', '#FF7F50', '#6495ED', '#FFF8DC', '#DC143C', '#00FFFF', '#00008B', '#008B8B', '#B8860B', '#A9A9A9', '#006400', '#BDB76B', '#8B008B', '#556B2F', '#FF8C00', '#9932CC', '#8B0000', '#E9967A', '#8FBC8F', '#483D8B', '#2F4F4F', '#00CED1', '#9400D3', '#FF1493', '#00BFFF', '#696969', '#1E90FF', '#B22222', '#FFFAF0', '#228B22', '#FF00FF', '#DCDCDC', '#F8F8FF', '#FFD700', '#DAA520', '#808080', '#008000', '#ADFF2F', '#F0FFF0', '#FF69B4', '#CD5C5C', '#4B0082', '#FFFFF0', '#F0E68C', '#E6E6FA', '#FFF0F5', '#7CFC00', '#FFFACD', '#ADD8E6', '#F08080', '#E0FFFF', '#FAFAD2', '#D3D3D3', '#90EE90', '#FFB6C1', '#FFA07A', '#20B2AA', '#87CEFA', '#778899', '#B0C4DE', '#FFFFE0', '#00FF00', '#32CD32', '#FAF0E6', '#FF00FF', '#800000', '#66CDAA', '#0000CD', '#BA55D3', '#9370DB', '#3CB371', '#7B68EE', '#00FA9A', '#48D1CC', '#C71585', '#191970', '#F5FFFA', '#FFE4E1', '#FFE4B5', '#FFDEAD', '#000080', '#FDF5E6', '#808000', '#6B8E23', '#FFA500', '#FF4500', '#DA70D6', '#EEE8AA', '#98FB98', '#AFEEEE', '#DB7093', '#FFEFD5', '#FFDAB9', '#CD853F', '#FFC0CB', '#DDA0DD', '#B0E0E6', '#800080', '#663399', '#FF0000', '#BC8F8F', '#4169E1', '#8B4513', '#FA8072', '#F4A460', '#2E8B57', '#FFF5EE', '#A0522D', '#C0C0C0', '#87CEEB', '#6A5ACD', '#708090', '#FFFAFA', '#00FF7F', '#4682B4', '#D2B48C', '#008080', '#D8BFD8', '#FF6347', '#40E0D0', '#EE82EE', '#F5DEB3', '#FFFFFF', '#F5F5F5', '#FFFF00', '#9ACD32'});
+    obj.comboBox6:setField("theme");
+    obj.comboBox6:setFontColor("white");
+    obj.comboBox6:setItems({'Escuro', 'Claro'});
+    obj.comboBox6:setHorzTextAlign("center");
     obj.comboBox6:setName("comboBox6");
 
     obj.dataLink36 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink36:setParent(obj.layout32);
-    obj.dataLink36:setField("colorBackground");
-    obj.dataLink36:setDefaultValue("#000000");
+    obj.dataLink36:setField("theme");
+    obj.dataLink36:setDefaultValue("Escuro");
     obj.dataLink36:setName("dataLink36");
+
+    obj.label82 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label82:setParent(obj.layout32);
+    obj.label82:setLeft(0);
+    obj.label82:setTop(35);
+    obj.label82:setWidth(90);
+    obj.label82:setHeight(20);
+    obj.label82:setText("Cores: ");
+    obj.label82:setHorzTextAlign("center");
+    obj.label82:setName("label82");
+    obj.label82:setFontColor("white");
 
     obj.label83 = GUI.fromHandle(_obj_newObject("label"));
     obj.label83:setParent(obj.layout32);
     obj.label83:setLeft(0);
-    obj.label83:setTop(85);
+    obj.label83:setTop(60);
     obj.label83:setWidth(90);
     obj.label83:setHeight(20);
-    obj.label83:setText("Linhas ");
+    obj.label83:setText("Fundo ");
     obj.label83:setHorzTextAlign("center");
     obj.label83:setName("label83");
     obj.label83:setFontColor("white");
@@ -3241,26 +3253,26 @@ local function constructNew_MundoOriginal()
     obj.comboBox7 = GUI.fromHandle(_obj_newObject("comboBox"));
     obj.comboBox7:setParent(obj.layout32);
     obj.comboBox7:setLeft(95);
-    obj.comboBox7:setTop(85);
+    obj.comboBox7:setTop(60);
     obj.comboBox7:setWidth(90);
-    obj.comboBox7:setField("colorStroke");
+    obj.comboBox7:setField("colorBackground");
     obj.comboBox7:setItems({'AliceBlue', 'AntiqueWhite', 'Aqua', 'Aquamarine', 'Azure', 'Beige', 'Bisque', 'Black', 'BlanchedAlmond', 'Blue', 'BlueViolet', 'Brown', 'BurlyWood', 'CadetBlue', 'Chartreuse', 'Chocolate', 'Coral', 'CornflowerBlue', 'Cornsilk', 'Crimson', 'Cyan', 'DarkBlue', 'DarkCyan', 'DarkGoldenRod', 'DarkGray', 'DarkGreen', 'DarkKhaki', 'DarkMagenta', 'DarkOliveGreen', 'DarkOrange', 'DarkOrchid', 'DarkRed', 'DarkSalmon', 'DarkSeaGreen', 'DarkSlateBlue', 'DarkSlateGray', 'DarkTurquoise', 'DarkViolet', 'DeepPink', 'DeepSkyBlue', 'DimGray', 'DodgerBlue', 'FireBrick', 'FloralWhite', 'ForestGreen', 'Fuchsia', 'Gainsboro', 'GhostWhite', 'Gold', 'GoldenRod', 'Gray', 'Green', 'GreenYellow', 'HoneyDew', 'HotPink', 'IndianRed ', 'Indigo ', 'Ivory', 'Khaki', 'Lavender', 'LavenderBlush', 'LawnGreen', 'LemonChiffon', 'LightBlue', 'LightCoral', 'LightCyan', 'LightGoldenRodYellow', 'LightGray', 'LightGreen', 'LightPink', 'LightSalmon', 'LightSeaGreen', 'LightSkyBlue', 'LightSlateGray', 'LightSteelBlue', 'LightYellow', 'Lime', 'LimeGreen', 'Linen', 'Magenta', 'Maroon', 'MediumAquaMarine', 'MediumBlue', 'MediumOrchid', 'MediumPurple', 'MediumSeaGreen', 'MediumSlateBlue', 'MediumSpringGreen', 'MediumTurquoise', 'MediumVioletRed', 'MidnightBlue', 'MintCream', 'MistyRose', 'Moccasin', 'NavajoWhite', 'Navy', 'OldLace', 'Olive', 'OliveDrab', 'Orange', 'OrangeRed', 'Orchid', 'PaleGoldenRod', 'PaleGreen', 'PaleTurquoise', 'PaleVioletRed', 'PapayaWhip', 'PeachPuff', 'Peru', 'Pink', 'Plum', 'PowderBlue', 'Purple', 'RebeccaPurple', 'Red', 'RosyBrown', 'RoyalBlue', 'SaddleBrown', 'Salmon', 'SandyBrown', 'SeaGreen', 'SeaShell', 'Sienna', 'Silver', 'SkyBlue', 'SlateBlue', 'SlateGray', 'Snow', 'SpringGreen', 'SteelBlue', 'Tan', 'Teal', 'Thistle', 'Tomato', 'Turquoise', 'Violet', 'Wheat', 'White', 'WhiteSmoke', 'Yellow', 'YellowGreen'});
     obj.comboBox7:setValues({'#F0F8FF', '#FAEBD7', '#00FFFF', '#7FFFD4', '#F0FFFF', '#F5F5DC', '#FFE4C4', '#000000', '#FFEBCD', '#0000FF', '#8A2BE2', '#A52A2A', '#DEB887', '#5F9EA0', '#7FFF00', '#D2691E', '#FF7F50', '#6495ED', '#FFF8DC', '#DC143C', '#00FFFF', '#00008B', '#008B8B', '#B8860B', '#A9A9A9', '#006400', '#BDB76B', '#8B008B', '#556B2F', '#FF8C00', '#9932CC', '#8B0000', '#E9967A', '#8FBC8F', '#483D8B', '#2F4F4F', '#00CED1', '#9400D3', '#FF1493', '#00BFFF', '#696969', '#1E90FF', '#B22222', '#FFFAF0', '#228B22', '#FF00FF', '#DCDCDC', '#F8F8FF', '#FFD700', '#DAA520', '#808080', '#008000', '#ADFF2F', '#F0FFF0', '#FF69B4', '#CD5C5C', '#4B0082', '#FFFFF0', '#F0E68C', '#E6E6FA', '#FFF0F5', '#7CFC00', '#FFFACD', '#ADD8E6', '#F08080', '#E0FFFF', '#FAFAD2', '#D3D3D3', '#90EE90', '#FFB6C1', '#FFA07A', '#20B2AA', '#87CEFA', '#778899', '#B0C4DE', '#FFFFE0', '#00FF00', '#32CD32', '#FAF0E6', '#FF00FF', '#800000', '#66CDAA', '#0000CD', '#BA55D3', '#9370DB', '#3CB371', '#7B68EE', '#00FA9A', '#48D1CC', '#C71585', '#191970', '#F5FFFA', '#FFE4E1', '#FFE4B5', '#FFDEAD', '#000080', '#FDF5E6', '#808000', '#6B8E23', '#FFA500', '#FF4500', '#DA70D6', '#EEE8AA', '#98FB98', '#AFEEEE', '#DB7093', '#FFEFD5', '#FFDAB9', '#CD853F', '#FFC0CB', '#DDA0DD', '#B0E0E6', '#800080', '#663399', '#FF0000', '#BC8F8F', '#4169E1', '#8B4513', '#FA8072', '#F4A460', '#2E8B57', '#FFF5EE', '#A0522D', '#C0C0C0', '#87CEEB', '#6A5ACD', '#708090', '#FFFAFA', '#00FF7F', '#4682B4', '#D2B48C', '#008080', '#D8BFD8', '#FF6347', '#40E0D0', '#EE82EE', '#F5DEB3', '#FFFFFF', '#F5F5F5', '#FFFF00', '#9ACD32'});
     obj.comboBox7:setName("comboBox7");
 
     obj.dataLink37 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink37:setParent(obj.layout32);
-    obj.dataLink37:setField("colorStroke");
-    obj.dataLink37:setDefaultValue("#FFFFFF");
+    obj.dataLink37:setField("colorBackground");
+    obj.dataLink37:setDefaultValue("#000000");
     obj.dataLink37:setName("dataLink37");
 
     obj.label84 = GUI.fromHandle(_obj_newObject("label"));
     obj.label84:setParent(obj.layout32);
     obj.label84:setLeft(0);
-    obj.label84:setTop(110);
+    obj.label84:setTop(85);
     obj.label84:setWidth(90);
     obj.label84:setHeight(20);
-    obj.label84:setText("Fonte ");
+    obj.label84:setText("Linhas ");
     obj.label84:setHorzTextAlign("center");
     obj.label84:setName("label84");
     obj.label84:setFontColor("white");
@@ -3268,42 +3280,69 @@ local function constructNew_MundoOriginal()
     obj.comboBox8 = GUI.fromHandle(_obj_newObject("comboBox"));
     obj.comboBox8:setParent(obj.layout32);
     obj.comboBox8:setLeft(95);
-    obj.comboBox8:setTop(110);
+    obj.comboBox8:setTop(85);
     obj.comboBox8:setWidth(90);
-    obj.comboBox8:setField("colorFont");
+    obj.comboBox8:setField("colorStroke");
     obj.comboBox8:setItems({'AliceBlue', 'AntiqueWhite', 'Aqua', 'Aquamarine', 'Azure', 'Beige', 'Bisque', 'Black', 'BlanchedAlmond', 'Blue', 'BlueViolet', 'Brown', 'BurlyWood', 'CadetBlue', 'Chartreuse', 'Chocolate', 'Coral', 'CornflowerBlue', 'Cornsilk', 'Crimson', 'Cyan', 'DarkBlue', 'DarkCyan', 'DarkGoldenRod', 'DarkGray', 'DarkGreen', 'DarkKhaki', 'DarkMagenta', 'DarkOliveGreen', 'DarkOrange', 'DarkOrchid', 'DarkRed', 'DarkSalmon', 'DarkSeaGreen', 'DarkSlateBlue', 'DarkSlateGray', 'DarkTurquoise', 'DarkViolet', 'DeepPink', 'DeepSkyBlue', 'DimGray', 'DodgerBlue', 'FireBrick', 'FloralWhite', 'ForestGreen', 'Fuchsia', 'Gainsboro', 'GhostWhite', 'Gold', 'GoldenRod', 'Gray', 'Green', 'GreenYellow', 'HoneyDew', 'HotPink', 'IndianRed ', 'Indigo ', 'Ivory', 'Khaki', 'Lavender', 'LavenderBlush', 'LawnGreen', 'LemonChiffon', 'LightBlue', 'LightCoral', 'LightCyan', 'LightGoldenRodYellow', 'LightGray', 'LightGreen', 'LightPink', 'LightSalmon', 'LightSeaGreen', 'LightSkyBlue', 'LightSlateGray', 'LightSteelBlue', 'LightYellow', 'Lime', 'LimeGreen', 'Linen', 'Magenta', 'Maroon', 'MediumAquaMarine', 'MediumBlue', 'MediumOrchid', 'MediumPurple', 'MediumSeaGreen', 'MediumSlateBlue', 'MediumSpringGreen', 'MediumTurquoise', 'MediumVioletRed', 'MidnightBlue', 'MintCream', 'MistyRose', 'Moccasin', 'NavajoWhite', 'Navy', 'OldLace', 'Olive', 'OliveDrab', 'Orange', 'OrangeRed', 'Orchid', 'PaleGoldenRod', 'PaleGreen', 'PaleTurquoise', 'PaleVioletRed', 'PapayaWhip', 'PeachPuff', 'Peru', 'Pink', 'Plum', 'PowderBlue', 'Purple', 'RebeccaPurple', 'Red', 'RosyBrown', 'RoyalBlue', 'SaddleBrown', 'Salmon', 'SandyBrown', 'SeaGreen', 'SeaShell', 'Sienna', 'Silver', 'SkyBlue', 'SlateBlue', 'SlateGray', 'Snow', 'SpringGreen', 'SteelBlue', 'Tan', 'Teal', 'Thistle', 'Tomato', 'Turquoise', 'Violet', 'Wheat', 'White', 'WhiteSmoke', 'Yellow', 'YellowGreen'});
     obj.comboBox8:setValues({'#F0F8FF', '#FAEBD7', '#00FFFF', '#7FFFD4', '#F0FFFF', '#F5F5DC', '#FFE4C4', '#000000', '#FFEBCD', '#0000FF', '#8A2BE2', '#A52A2A', '#DEB887', '#5F9EA0', '#7FFF00', '#D2691E', '#FF7F50', '#6495ED', '#FFF8DC', '#DC143C', '#00FFFF', '#00008B', '#008B8B', '#B8860B', '#A9A9A9', '#006400', '#BDB76B', '#8B008B', '#556B2F', '#FF8C00', '#9932CC', '#8B0000', '#E9967A', '#8FBC8F', '#483D8B', '#2F4F4F', '#00CED1', '#9400D3', '#FF1493', '#00BFFF', '#696969', '#1E90FF', '#B22222', '#FFFAF0', '#228B22', '#FF00FF', '#DCDCDC', '#F8F8FF', '#FFD700', '#DAA520', '#808080', '#008000', '#ADFF2F', '#F0FFF0', '#FF69B4', '#CD5C5C', '#4B0082', '#FFFFF0', '#F0E68C', '#E6E6FA', '#FFF0F5', '#7CFC00', '#FFFACD', '#ADD8E6', '#F08080', '#E0FFFF', '#FAFAD2', '#D3D3D3', '#90EE90', '#FFB6C1', '#FFA07A', '#20B2AA', '#87CEFA', '#778899', '#B0C4DE', '#FFFFE0', '#00FF00', '#32CD32', '#FAF0E6', '#FF00FF', '#800000', '#66CDAA', '#0000CD', '#BA55D3', '#9370DB', '#3CB371', '#7B68EE', '#00FA9A', '#48D1CC', '#C71585', '#191970', '#F5FFFA', '#FFE4E1', '#FFE4B5', '#FFDEAD', '#000080', '#FDF5E6', '#808000', '#6B8E23', '#FFA500', '#FF4500', '#DA70D6', '#EEE8AA', '#98FB98', '#AFEEEE', '#DB7093', '#FFEFD5', '#FFDAB9', '#CD853F', '#FFC0CB', '#DDA0DD', '#B0E0E6', '#800080', '#663399', '#FF0000', '#BC8F8F', '#4169E1', '#8B4513', '#FA8072', '#F4A460', '#2E8B57', '#FFF5EE', '#A0522D', '#C0C0C0', '#87CEEB', '#6A5ACD', '#708090', '#FFFAFA', '#00FF7F', '#4682B4', '#D2B48C', '#008080', '#D8BFD8', '#FF6347', '#40E0D0', '#EE82EE', '#F5DEB3', '#FFFFFF', '#F5F5F5', '#FFFF00', '#9ACD32'});
     obj.comboBox8:setName("comboBox8");
 
     obj.dataLink38 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink38:setParent(obj.layout32);
-    obj.dataLink38:setField("colorFont");
+    obj.dataLink38:setField("colorStroke");
     obj.dataLink38:setDefaultValue("#FFFFFF");
     obj.dataLink38:setName("dataLink38");
 
     obj.label85 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label85:setParent(obj.scrollBox5);
-    obj.label85:setLeft(555);
-    obj.label85:setTop(275);
-    obj.label85:setWidth(200);
+    obj.label85:setParent(obj.layout32);
+    obj.label85:setLeft(0);
+    obj.label85:setTop(110);
+    obj.label85:setWidth(90);
     obj.label85:setHeight(20);
-    obj.label85:setText("Versão Atual: ");
+    obj.label85:setText("Fonte ");
     obj.label85:setHorzTextAlign("center");
-    obj.label85:setField("versionInstalled");
     obj.label85:setName("label85");
     obj.label85:setFontColor("white");
+
+    obj.comboBox9 = GUI.fromHandle(_obj_newObject("comboBox"));
+    obj.comboBox9:setParent(obj.layout32);
+    obj.comboBox9:setLeft(95);
+    obj.comboBox9:setTop(110);
+    obj.comboBox9:setWidth(90);
+    obj.comboBox9:setField("colorFont");
+    obj.comboBox9:setItems({'AliceBlue', 'AntiqueWhite', 'Aqua', 'Aquamarine', 'Azure', 'Beige', 'Bisque', 'Black', 'BlanchedAlmond', 'Blue', 'BlueViolet', 'Brown', 'BurlyWood', 'CadetBlue', 'Chartreuse', 'Chocolate', 'Coral', 'CornflowerBlue', 'Cornsilk', 'Crimson', 'Cyan', 'DarkBlue', 'DarkCyan', 'DarkGoldenRod', 'DarkGray', 'DarkGreen', 'DarkKhaki', 'DarkMagenta', 'DarkOliveGreen', 'DarkOrange', 'DarkOrchid', 'DarkRed', 'DarkSalmon', 'DarkSeaGreen', 'DarkSlateBlue', 'DarkSlateGray', 'DarkTurquoise', 'DarkViolet', 'DeepPink', 'DeepSkyBlue', 'DimGray', 'DodgerBlue', 'FireBrick', 'FloralWhite', 'ForestGreen', 'Fuchsia', 'Gainsboro', 'GhostWhite', 'Gold', 'GoldenRod', 'Gray', 'Green', 'GreenYellow', 'HoneyDew', 'HotPink', 'IndianRed ', 'Indigo ', 'Ivory', 'Khaki', 'Lavender', 'LavenderBlush', 'LawnGreen', 'LemonChiffon', 'LightBlue', 'LightCoral', 'LightCyan', 'LightGoldenRodYellow', 'LightGray', 'LightGreen', 'LightPink', 'LightSalmon', 'LightSeaGreen', 'LightSkyBlue', 'LightSlateGray', 'LightSteelBlue', 'LightYellow', 'Lime', 'LimeGreen', 'Linen', 'Magenta', 'Maroon', 'MediumAquaMarine', 'MediumBlue', 'MediumOrchid', 'MediumPurple', 'MediumSeaGreen', 'MediumSlateBlue', 'MediumSpringGreen', 'MediumTurquoise', 'MediumVioletRed', 'MidnightBlue', 'MintCream', 'MistyRose', 'Moccasin', 'NavajoWhite', 'Navy', 'OldLace', 'Olive', 'OliveDrab', 'Orange', 'OrangeRed', 'Orchid', 'PaleGoldenRod', 'PaleGreen', 'PaleTurquoise', 'PaleVioletRed', 'PapayaWhip', 'PeachPuff', 'Peru', 'Pink', 'Plum', 'PowderBlue', 'Purple', 'RebeccaPurple', 'Red', 'RosyBrown', 'RoyalBlue', 'SaddleBrown', 'Salmon', 'SandyBrown', 'SeaGreen', 'SeaShell', 'Sienna', 'Silver', 'SkyBlue', 'SlateBlue', 'SlateGray', 'Snow', 'SpringGreen', 'SteelBlue', 'Tan', 'Teal', 'Thistle', 'Tomato', 'Turquoise', 'Violet', 'Wheat', 'White', 'WhiteSmoke', 'Yellow', 'YellowGreen'});
+    obj.comboBox9:setValues({'#F0F8FF', '#FAEBD7', '#00FFFF', '#7FFFD4', '#F0FFFF', '#F5F5DC', '#FFE4C4', '#000000', '#FFEBCD', '#0000FF', '#8A2BE2', '#A52A2A', '#DEB887', '#5F9EA0', '#7FFF00', '#D2691E', '#FF7F50', '#6495ED', '#FFF8DC', '#DC143C', '#00FFFF', '#00008B', '#008B8B', '#B8860B', '#A9A9A9', '#006400', '#BDB76B', '#8B008B', '#556B2F', '#FF8C00', '#9932CC', '#8B0000', '#E9967A', '#8FBC8F', '#483D8B', '#2F4F4F', '#00CED1', '#9400D3', '#FF1493', '#00BFFF', '#696969', '#1E90FF', '#B22222', '#FFFAF0', '#228B22', '#FF00FF', '#DCDCDC', '#F8F8FF', '#FFD700', '#DAA520', '#808080', '#008000', '#ADFF2F', '#F0FFF0', '#FF69B4', '#CD5C5C', '#4B0082', '#FFFFF0', '#F0E68C', '#E6E6FA', '#FFF0F5', '#7CFC00', '#FFFACD', '#ADD8E6', '#F08080', '#E0FFFF', '#FAFAD2', '#D3D3D3', '#90EE90', '#FFB6C1', '#FFA07A', '#20B2AA', '#87CEFA', '#778899', '#B0C4DE', '#FFFFE0', '#00FF00', '#32CD32', '#FAF0E6', '#FF00FF', '#800000', '#66CDAA', '#0000CD', '#BA55D3', '#9370DB', '#3CB371', '#7B68EE', '#00FA9A', '#48D1CC', '#C71585', '#191970', '#F5FFFA', '#FFE4E1', '#FFE4B5', '#FFDEAD', '#000080', '#FDF5E6', '#808000', '#6B8E23', '#FFA500', '#FF4500', '#DA70D6', '#EEE8AA', '#98FB98', '#AFEEEE', '#DB7093', '#FFEFD5', '#FFDAB9', '#CD853F', '#FFC0CB', '#DDA0DD', '#B0E0E6', '#800080', '#663399', '#FF0000', '#BC8F8F', '#4169E1', '#8B4513', '#FA8072', '#F4A460', '#2E8B57', '#FFF5EE', '#A0522D', '#C0C0C0', '#87CEEB', '#6A5ACD', '#708090', '#FFFAFA', '#00FF7F', '#4682B4', '#D2B48C', '#008080', '#D8BFD8', '#FF6347', '#40E0D0', '#EE82EE', '#F5DEB3', '#FFFFFF', '#F5F5F5', '#FFFF00', '#9ACD32'});
+    obj.comboBox9:setName("comboBox9");
+
+    obj.dataLink39 = GUI.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink39:setParent(obj.layout32);
+    obj.dataLink39:setField("colorFont");
+    obj.dataLink39:setDefaultValue("#FFFFFF");
+    obj.dataLink39:setName("dataLink39");
 
     obj.label86 = GUI.fromHandle(_obj_newObject("label"));
     obj.label86:setParent(obj.scrollBox5);
     obj.label86:setLeft(555);
-    obj.label86:setTop(300);
+    obj.label86:setTop(275);
     obj.label86:setWidth(200);
     obj.label86:setHeight(20);
-    obj.label86:setText("Sua Versão: ");
+    obj.label86:setText("Versão Atual: ");
     obj.label86:setHorzTextAlign("center");
-    obj.label86:setField("versionDownloaded");
+    obj.label86:setField("versionInstalled");
     obj.label86:setName("label86");
     obj.label86:setFontColor("white");
+
+    obj.label87 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label87:setParent(obj.scrollBox5);
+    obj.label87:setLeft(555);
+    obj.label87:setTop(300);
+    obj.label87:setWidth(200);
+    obj.label87:setHeight(20);
+    obj.label87:setText("Sua Versão: ");
+    obj.label87:setHorzTextAlign("center");
+    obj.label87:setField("versionDownloaded");
+    obj.label87:setName("label87");
+    obj.label87:setFontColor("white");
 
     obj.checkBox1 = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox1:setParent(obj.scrollBox5);
@@ -3331,15 +3370,15 @@ local function constructNew_MundoOriginal()
     obj.button2:setText("Atualizar");
     obj.button2:setName("button2");
 
-    obj.label87 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label87:setParent(obj.scrollBox5);
-    obj.label87:setLeft(555);
-    obj.label87:setTop(400);
-    obj.label87:setWidth(200);
-    obj.label87:setHeight(20);
-    obj.label87:setText("Conheça as Mesas:");
-    obj.label87:setName("label87");
-    obj.label87:setFontColor("white");
+    obj.label88 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label88:setParent(obj.scrollBox5);
+    obj.label88:setLeft(555);
+    obj.label88:setTop(400);
+    obj.label88:setWidth(200);
+    obj.label88:setHeight(20);
+    obj.label88:setText("Conheça as Mesas:");
+    obj.label88:setName("label88");
+    obj.label88:setFontColor("white");
 
     obj.button3 = GUI.fromHandle(_obj_newObject("button"));
     obj.button3:setParent(obj.scrollBox5);
@@ -3359,24 +3398,18 @@ local function constructNew_MundoOriginal()
 
     obj._e_event0 = obj.dataLink1:addEventListener("onChange",
         function (_, field, oldValue, newValue)
-            local numAsStr = tostring(newValue);
-            				local numero;
-            				
-            				if numAsStr ~= "" then
-            					numero = tonumber(newValue);
-            				else
-            					numero = nil;
-            				end;
-            
+            if sheet == nil then return end;
             				if type(sheet.atributos) ~= 'table' then
             					sheet.atributos = {};
-            				end;				
+            				end;
+            
+            				local numero = tonumber(sheet.atributos.forca);			
             				
             				if type(numero) == 'number' then
             					local amp = 1 + math.floor( (tonumber(sheet.atributos.amplificador) or 0) /10) /100;
             
             
-            					local modificador = math.floor(numero*amp / 2) - 5;								
+            					local modificador = math.floor((math.floor(numero/2) - 5) * amp);
             					sheet.atributos.modforca = modificador;	
             				
             					if modificador >= 0 then
@@ -3439,24 +3472,18 @@ local function constructNew_MundoOriginal()
 
     obj._e_event2 = obj.dataLink3:addEventListener("onChange",
         function (_, field, oldValue, newValue)
-            local numAsStr = tostring(newValue);
-            				local numero;
-            				
-            				if numAsStr ~= "" then
-            					numero = tonumber(newValue);
-            				else
-            					numero = nil;
-            				end;
-            
+            if sheet == nil then return end;
             				if type(sheet.atributos) ~= 'table' then
             					sheet.atributos = {};
-            				end;				
+            				end;
+            
+            				local numero = tonumber(sheet.atributos.destreza);			
             				
             				if type(numero) == 'number' then
             					local amp = 1 + math.floor( (tonumber(sheet.atributos.amplificador) or 0) /10) /100;
             
             
-            					local modificador = math.floor(numero*amp / 2) - 5;								
+            					local modificador = math.floor((math.floor(numero/2) - 5) * amp);
             					sheet.atributos.moddestreza = modificador;	
             				
             					if modificador >= 0 then
@@ -3519,24 +3546,18 @@ local function constructNew_MundoOriginal()
 
     obj._e_event4 = obj.dataLink5:addEventListener("onChange",
         function (_, field, oldValue, newValue)
-            local numAsStr = tostring(newValue);
-            				local numero;
-            				
-            				if numAsStr ~= "" then
-            					numero = tonumber(newValue);
-            				else
-            					numero = nil;
-            				end;
-            
+            if sheet == nil then return end;
             				if type(sheet.atributos) ~= 'table' then
             					sheet.atributos = {};
-            				end;				
+            				end;
+            
+            				local numero = tonumber(sheet.atributos.agilidade);			
             				
             				if type(numero) == 'number' then
             					local amp = 1 + math.floor( (tonumber(sheet.atributos.amplificador) or 0) /10) /100;
             
             
-            					local modificador = math.floor(numero*amp / 2) - 5;								
+            					local modificador = math.floor((math.floor(numero/2) - 5) * amp);
             					sheet.atributos.modagilidade = modificador;	
             				
             					if modificador >= 0 then
@@ -3693,24 +3714,18 @@ local function constructNew_MundoOriginal()
 
     obj._e_event8 = obj.dataLink9:addEventListener("onChange",
         function (_, field, oldValue, newValue)
-            local numAsStr = tostring(newValue);
-            				local numero;
-            				
-            				if numAsStr ~= "" then
-            					numero = tonumber(newValue);
-            				else
-            					numero = nil;
-            				end;
-            
+            if sheet == nil then return end;
             				if type(sheet.atributos) ~= 'table' then
             					sheet.atributos = {};
-            				end;				
+            				end;
+            
+            				local numero = tonumber(sheet.atributos.constituicao);			
             				
             				if type(numero) == 'number' then
             					local amp = 1 + math.floor( (tonumber(sheet.atributos.amplificador) or 0) /10) /100;
             
             
-            					local modificador = math.floor(numero*amp / 2) - 5;								
+            					local modificador = math.floor((math.floor(numero/2) - 5) * amp);
             					sheet.atributos.modconstituicao = modificador;	
             				
             					if modificador >= 0 then
@@ -3773,24 +3788,18 @@ local function constructNew_MundoOriginal()
 
     obj._e_event10 = obj.dataLink11:addEventListener("onChange",
         function (_, field, oldValue, newValue)
-            local numAsStr = tostring(newValue);
-            				local numero;
-            				
-            				if numAsStr ~= "" then
-            					numero = tonumber(newValue);
-            				else
-            					numero = nil;
-            				end;
-            
+            if sheet == nil then return end;
             				if type(sheet.atributos) ~= 'table' then
             					sheet.atributos = {};
-            				end;				
+            				end;
+            
+            				local numero = tonumber(sheet.atributos.inteligencia);			
             				
             				if type(numero) == 'number' then
             					local amp = 1 + math.floor( (tonumber(sheet.atributos.amplificador) or 0) /10) /100;
             
             
-            					local modificador = math.floor(numero*amp / 2) - 5;								
+            					local modificador = math.floor((math.floor(numero/2) - 5) * amp);
             					sheet.atributos.modinteligencia = modificador;	
             				
             					if modificador >= 0 then
@@ -3994,24 +4003,18 @@ local function constructNew_MundoOriginal()
 
     obj._e_event15 = obj.dataLink16:addEventListener("onChange",
         function (_, field, oldValue, newValue)
-            local numAsStr = tostring(newValue);
-            				local numero;
-            				
-            				if numAsStr ~= "" then
-            					numero = tonumber(newValue);
-            				else
-            					numero = nil;
-            				end;
-            
+            if sheet == nil then return end;
             				if type(sheet.atributos) ~= 'table' then
             					sheet.atributos = {};
-            				end;				
+            				end;
+            
+            				local numero = tonumber(sheet.atributos.sabedoria);			
             				
             				if type(numero) == 'number' then
             					local amp = 1 + math.floor( (tonumber(sheet.atributos.amplificador) or 0) /10) /100;
             
             
-            					local modificador = math.floor(numero*amp / 2) - 5;								
+            					local modificador = math.floor((math.floor(numero/2) - 5) * amp);
             					sheet.atributos.modsabedoria = modificador;	
             				
             					if modificador >= 0 then
@@ -4215,24 +4218,18 @@ local function constructNew_MundoOriginal()
 
     obj._e_event20 = obj.dataLink21:addEventListener("onChange",
         function (_, field, oldValue, newValue)
-            local numAsStr = tostring(newValue);
-            				local numero;
-            				
-            				if numAsStr ~= "" then
-            					numero = tonumber(newValue);
-            				else
-            					numero = nil;
-            				end;
-            
+            if sheet == nil then return end;
             				if type(sheet.atributos) ~= 'table' then
             					sheet.atributos = {};
-            				end;				
+            				end;
+            
+            				local numero = tonumber(sheet.atributos.carisma);			
             				
             				if type(numero) == 'number' then
             					local amp = 1 + math.floor( (tonumber(sheet.atributos.amplificador) or 0) /10) /100;
             
             
-            					local modificador = math.floor(numero*amp / 2) - 5;								
+            					local modificador = math.floor((math.floor(numero/2) - 5) * amp);
             					sheet.atributos.modcarisma = modificador;	
             				
             					if modificador >= 0 then
@@ -4436,24 +4433,18 @@ local function constructNew_MundoOriginal()
 
     obj._e_event25 = obj.dataLink26:addEventListener("onChange",
         function (_, field, oldValue, newValue)
-            local numAsStr = tostring(newValue);
-            				local numero;
-            				
-            				if numAsStr ~= "" then
-            					numero = tonumber(newValue);
-            				else
-            					numero = nil;
-            				end;
-            
+            if sheet == nil then return end;
             				if type(sheet.atributos) ~= 'table' then
             					sheet.atributos = {};
-            				end;				
+            				end;
+            
+            				local numero = tonumber(sheet.atributos.vontade);			
             				
             				if type(numero) == 'number' then
             					local amp = 1 + math.floor( (tonumber(sheet.atributos.amplificador) or 0) /10) /100;
             
             
-            					local modificador = math.floor(numero*amp / 2) - 5;								
+            					local modificador = math.floor((math.floor(numero/2) - 5) * amp);
             					sheet.atributos.modvontade = modificador;	
             				
             					if modificador >= 0 then
@@ -4546,43 +4537,56 @@ local function constructNew_MundoOriginal()
         function (_, field, oldValue, newValue)
             if sheet==nil then return end;
             							if sheet.atributos==nil then return end;
-            							sheet.souls  =  (tonumber(sheet.atributos.forca) or 0) + 
-            											(tonumber(sheet.atributos.destreza) or 0) + 
-            											(tonumber(sheet.atributos.agilidade) or 0) + 
-            											(tonumber(sheet.atributos.constituicao) or 0) + 
-            											(tonumber(sheet.atributos.inteligencia) or 0) + 
-            											(tonumber(sheet.atributos.sabedoria) or 0) + 
-            											(tonumber(sheet.atributos.carisma) or 0) + 
-            											(tonumber(sheet.atributos.vontade) or 0) + 
-            											(tonumber(sheet.atributos.chanceCritico) or 0) + 
-            											(tonumber(sheet.atributos.danoCritico) or 0);
+            							local forca = string.gsub(sheet.atributos.modforca or "", "+", "");
+            							local destreza = string.gsub(sheet.atributos.moddestreza or "", "+", "");
+            							local agilidade = string.gsub(sheet.atributos.modagilidade or "", "+", "");
+            							local constituicao = string.gsub(sheet.atributos.modconstituicao or "", "+", "");
+            							local inteligencia = string.gsub(sheet.atributos.modinteligencia or "", "+", "");
+            							local sabedoria = string.gsub(sheet.atributos.modsabedoria or "", "+", "");
+            							local carisma = string.gsub(sheet.atributos.modcarisma or "", "+", "");
+            							local vontade = string.gsub(sheet.atributos.modvontade or "", "+", "");
+            
+            							sheet.souls = 	(tonumber(forca) or 0) + 
+            											(tonumber(destreza) or 0) + 
+            											(tonumber(agilidade) or 0) + 
+            											(tonumber(constituicao) or 0) + 
+            											(tonumber(inteligencia) or 0) + 
+            											(tonumber(sabedoria) or 0) + 
+            											(tonumber(carisma) or 0) + 
+            											(tonumber(vontade) or 0);
         end, obj);
 
     obj._e_event30 = obj.dataLink31:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet == nil then return end;
-            				sheet.avatarHead = sheet.cabecaComboBox;
+            				sheet.avatarHead = "https://github.com/rrpgfirecast/firecast/raw/master/Plugins/Sheets/Ficha".. "%" .. "20Mundo" .. "%" .."20Original/images/" .. sheet.cabecaComboBox;
         end, obj);
 
     obj._e_event31 = obj.dataLink32:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet == nil then return end;
-            				sheet.avatarBody = sheet.corpoComboBox;
+            				sheet.avatarBody = "https://github.com/rrpgfirecast/firecast/raw/master/Plugins/Sheets/Ficha".. "%" .. "20Mundo" .. "%" .."20Original/images/" .. sheet.corpoComboBox;
         end, obj);
 
     obj._e_event32 = obj.dataLink33:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet == nil then return end;
-            				sheet.avatarArms = sheet.bracosComboBox;
+            				sheet.avatarArms = "https://github.com/rrpgfirecast/firecast/raw/master/Plugins/Sheets/Ficha".. "%" .. "20Mundo" .. "%" .."20Original/images/" .. sheet.bracosComboBox;
         end, obj);
 
     obj._e_event33 = obj.dataLink34:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet == nil then return end;
-            				sheet.avatarLegs = sheet.pernasComboBox;
+            				sheet.avatarLegs = "https://github.com/rrpgfirecast/firecast/raw/master/Plugins/Sheets/Ficha".. "%" .. "20Mundo" .. "%" .."20Original/images/" .. sheet.pernasComboBox;
         end, obj);
 
-    obj._e_event34 = obj.comboBox5:addEventListener("onChange",
+    obj._e_event34 = obj.dataLink35:addEventListener("onChange",
+        function (_, field, oldValue, newValue)
+            if sheet == nil then return end;
+            				sheet.avatarBoot = "https://github.com/rrpgfirecast/firecast/raw/master/Plugins/Sheets/Ficha".. "%" .. "20Mundo" .. "%" .."20Original/images/" .. sheet.pesComboBox;
+        end, obj);
+
+    obj._e_event35 = obj.comboBox6:addEventListener("onChange",
         function (_)
             if sheet == nil then return end;
             					local theme = sheet.theme;
@@ -4599,7 +4603,7 @@ local function constructNew_MundoOriginal()
             					end;
         end, obj);
 
-    obj._e_event35 = obj.dataLink36:addEventListener("onChange",
+    obj._e_event36 = obj.dataLink37:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet==nil then return end;
             					local color = sheet.colorBackground or "#000000";
@@ -4611,7 +4615,7 @@ local function constructNew_MundoOriginal()
             					end;
         end, obj);
 
-    obj._e_event36 = obj.dataLink37:addEventListener("onChange",
+    obj._e_event37 = obj.dataLink38:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet==nil then return end;
             					local strokeColor = sheet.colorStroke or "#FFFFFF";
@@ -4623,7 +4627,7 @@ local function constructNew_MundoOriginal()
             					end;
         end, obj);
 
-    obj._e_event37 = obj.dataLink38:addEventListener("onChange",
+    obj._e_event38 = obj.dataLink39:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet==nil then return end;
             					local fontColor = sheet.colorFont or "#FFFFFF";
@@ -4661,27 +4665,28 @@ local function constructNew_MundoOriginal()
             					end;
         end, obj);
 
-    obj._e_event38 = obj.button1:addEventListener("onClick",
+    obj._e_event39 = obj.button1:addEventListener("onClick",
         function (_)
             GUI.openInBrowser('README.md')
         end, obj);
 
-    obj._e_event39 = obj.button2:addEventListener("onClick",
+    obj._e_event40 = obj.button2:addEventListener("onClick",
         function (_)
-            GUI.openInBrowser('ficha.rpk?raw=true')
+            GUI.openInBrowser('https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20Mundo%20Original/output/Ficha%20Mundo%20Original.rpk?raw=true')
         end, obj);
 
-    obj._e_event40 = obj.button3:addEventListener("onClick",
+    obj._e_event41 = obj.button3:addEventListener("onClick",
         function (_)
             GUI.openInBrowser('http://firecast.rrpg.com.br:90/a?a=pagRWEMesaInfo.actInfoMesa&mesaid=64070');
         end, obj);
 
-    obj._e_event41 = obj.button4:addEventListener("onClick",
+    obj._e_event42 = obj.button4:addEventListener("onClick",
         function (_)
             GUI.openInBrowser('http://firecast.rrpg.com.br:90/a?a=pagRWEMesaInfo.actInfoMesa&mesaid=');
         end, obj);
 
     function obj:_releaseEvents()
+        __o_rrpgObjs.removeEventListenerById(self._e_event42);
         __o_rrpgObjs.removeEventListenerById(self._e_event41);
         __o_rrpgObjs.removeEventListenerById(self._e_event40);
         __o_rrpgObjs.removeEventListenerById(self._e_event39);
@@ -4752,8 +4757,8 @@ local function constructNew_MundoOriginal()
         if self.label43 ~= nil then self.label43:destroy(); self.label43 = nil; end;
         if self.UpperGridCampo1 ~= nil then self.UpperGridCampo1:destroy(); self.UpperGridCampo1 = nil; end;
         if self.dataLink4 ~= nil then self.dataLink4:destroy(); self.dataLink4 = nil; end;
-        if self.edit29 ~= nil then self.edit29:destroy(); self.edit29 = nil; end;
         if self.image5 ~= nil then self.image5:destroy(); self.image5 = nil; end;
+        if self.edit29 ~= nil then self.edit29:destroy(); self.edit29 = nil; end;
         if self.label77 ~= nil then self.label77:destroy(); self.label77 = nil; end;
         if self.labUpperGridCampo1 ~= nil then self.labUpperGridCampo1:destroy(); self.labUpperGridCampo1 = nil; end;
         if self.layout17 ~= nil then self.layout17:destroy(); self.layout17 = nil; end;
@@ -4767,6 +4772,7 @@ local function constructNew_MundoOriginal()
         if self.UpperGridCampo4 ~= nil then self.UpperGridCampo4:destroy(); self.UpperGridCampo4 = nil; end;
         if self.flowPart13 ~= nil then self.flowPart13:destroy(); self.flowPart13 = nil; end;
         if self.label71 ~= nil then self.label71:destroy(); self.label71 = nil; end;
+        if self.image7 ~= nil then self.image7:destroy(); self.image7 = nil; end;
         if self.flowPart1 ~= nil then self.flowPart1:destroy(); self.flowPart1 = nil; end;
         if self.label75 ~= nil then self.label75:destroy(); self.label75 = nil; end;
         if self.horzLine10 ~= nil then self.horzLine10:destroy(); self.horzLine10 = nil; end;
@@ -4814,6 +4820,7 @@ local function constructNew_MundoOriginal()
         if self.label72 ~= nil then self.label72:destroy(); self.label72 = nil; end;
         if self.tab5 ~= nil then self.tab5:destroy(); self.tab5 = nil; end;
         if self.layout32 ~= nil then self.layout32:destroy(); self.layout32 = nil; end;
+        if self.label88 ~= nil then self.label88:destroy(); self.label88 = nil; end;
         if self.label12 ~= nil then self.label12:destroy(); self.label12 = nil; end;
         if self.label82 ~= nil then self.label82:destroy(); self.label82 = nil; end;
         if self.labUpperGridCampo5 ~= nil then self.labUpperGridCampo5:destroy(); self.labUpperGridCampo5 = nil; end;
@@ -4929,6 +4936,7 @@ local function constructNew_MundoOriginal()
         if self.tab3 ~= nil then self.tab3:destroy(); self.tab3 = nil; end;
         if self.flowPart10 ~= nil then self.flowPart10:destroy(); self.flowPart10 = nil; end;
         if self.label83 ~= nil then self.label83:destroy(); self.label83 = nil; end;
+        if self.dataLink39 ~= nil then self.dataLink39:destroy(); self.dataLink39 = nil; end;
         if self.flowLayout3 ~= nil then self.flowLayout3:destroy(); self.flowLayout3 = nil; end;
         if self.layout30 ~= nil then self.layout30:destroy(); self.layout30 = nil; end;
         if self.flowPart7 ~= nil then self.flowPart7:destroy(); self.flowPart7 = nil; end;
@@ -5008,10 +5016,11 @@ local function constructNew_MundoOriginal()
         if self.horzLine12 ~= nil then self.horzLine12:destroy(); self.horzLine12 = nil; end;
         if self.imageCheckBox14 ~= nil then self.imageCheckBox14:destroy(); self.imageCheckBox14 = nil; end;
         if self.edit21 ~= nil then self.edit21:destroy(); self.edit21 = nil; end;
+        if self.edit30 ~= nil then self.edit30:destroy(); self.edit30 = nil; end;
         if self.tab4 ~= nil then self.tab4:destroy(); self.tab4 = nil; end;
         if self.label80 ~= nil then self.label80:destroy(); self.label80 = nil; end;
-        if self.button3 ~= nil then self.button3:destroy(); self.button3 = nil; end;
         if self.label42 ~= nil then self.label42:destroy(); self.label42 = nil; end;
+        if self.button3 ~= nil then self.button3:destroy(); self.button3 = nil; end;
         if self.labUpperGridCampo4 ~= nil then self.labUpperGridCampo4:destroy(); self.labUpperGridCampo4 = nil; end;
         if self.comboBox5 ~= nil then self.comboBox5:destroy(); self.comboBox5 = nil; end;
         if self.labUpperGridCampo3 ~= nil then self.labUpperGridCampo3:destroy(); self.labUpperGridCampo3 = nil; end;
@@ -5032,6 +5041,7 @@ local function constructNew_MundoOriginal()
         if self.imageCheckBox16 ~= nil then self.imageCheckBox16:destroy(); self.imageCheckBox16 = nil; end;
         if self.flowPart36 ~= nil then self.flowPart36:destroy(); self.flowPart36 = nil; end;
         if self.label36 ~= nil then self.label36:destroy(); self.label36 = nil; end;
+        if self.comboBox9 ~= nil then self.comboBox9:destroy(); self.comboBox9 = nil; end;
         if self.rectangle3 ~= nil then self.rectangle3:destroy(); self.rectangle3 = nil; end;
         if self.horzLine15 ~= nil then self.horzLine15:destroy(); self.horzLine15 = nil; end;
         if self.dataLink26 ~= nil then self.dataLink26:destroy(); self.dataLink26 = nil; end;

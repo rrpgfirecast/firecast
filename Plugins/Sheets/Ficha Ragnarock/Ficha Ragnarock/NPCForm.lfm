@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmNPCForm" width="375" height="150" margins="{top=1}">
+
+	<template name="VertLabelEdit">
+		<layout align="left" width="$(width)" margins="{right=5}">
+			<label text="$(text)" width="$(width)" horzTextAlign="leading" fontSize="$(fontSize)"/>
+			<edit top="20" field="$(field)" width="$(width)" height="25"/>
+		</layout>
+	</template>
+
+	<rectangle align="client" color="#212121">
+
+		<rectangle align="left" width="100" color="black" strokeColor="white" strokeSize="1">
+			<image align="client" field="avatar" editable="true" style="autoFit" margins="{left=2, right=2, top=2, bottom=2}">
+				<event name="OnStartDrag">
+				    drag:addData("imageURL", sheet.avatar);
+				</event>
+			</image>
+		</rectangle>
+
+		<layout align="client" margins="{left=5}">
+			<layout align="top" height="50">
+				<button align="right" width="50" text="X" margins="{left=5}">
+					<event name="onClick">
+						dialogs.confirmOkCancel("Tem certeza que quer apagar essa habilidade?",
+							function (confirmado)
+								if confirmado then
+									ndb.deleteNode(sheet);
+								end;
+						end);
+					</event>
+				</button>
+
+				<layout align="client">
+					<VertLabelEdit width="200" text="Nome" field="nome" fontSize="13"/>
+				</layout>
+			</layout>
+
+			<textEditor align="client" field="desc"/>
+		</layout>
+		
+	</rectangle>
+</form>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmHealthForm" width="110" height="25" margins="{top=1}">
+
+	<rectangle align="client" color="black">
+		<checkBox align="left" width="15" field="check"/>
+		<edit align="client" field="nome" margins="{left=5}"/>
+
+		<button align="right" width="25" text="X" margins="{left=5}">
+			<event name="onClick">
+				dialogs.confirmOkCancel("Tem certeza que quer apagar?",
+					function (confirmado)
+						if confirmado then
+							ndb.deleteNode(sheet);
+						end;
+				end);
+			</event>
+		</button>
+	</rectangle>
+</form>

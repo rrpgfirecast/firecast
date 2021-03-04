@@ -175,6 +175,31 @@ local function constructNew_afkbotPopup()
     obj.checkBox6:setText("Tirar voz de jogadores expulsos.");
     obj.checkBox6:setName("checkBox6");
 
+    obj.horzLine2 = GUI.fromHandle(_obj_newObject("horzLine"));
+    obj.horzLine2:setParent(obj.tab1);
+    obj.horzLine2:setLeft(10);
+    obj.horzLine2:setTop(270);
+    obj.horzLine2:setWidth(270);
+    obj.horzLine2:setName("horzLine2");
+
+    obj.checkBox7 = GUI.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox7:setParent(obj.tab1);
+    obj.checkBox7:setField("giveVoice");
+    obj.checkBox7:setLeft(10);
+    obj.checkBox7:setTop(300);
+    obj.checkBox7:setWidth(270);
+    obj.checkBox7:setText("Dar voz aos jogadores.");
+    obj.checkBox7:setName("checkBox7");
+
+    obj.checkBox8 = GUI.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox8:setParent(obj.tab1);
+    obj.checkBox8:setField("giveSheet");
+    obj.checkBox8:setLeft(10);
+    obj.checkBox8:setTop(330);
+    obj.checkBox8:setWidth(270);
+    obj.checkBox8:setText("Dar ficha aos jogadores.");
+    obj.checkBox8:setName("checkBox8");
+
     obj.dataLink1 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink1:setParent(obj.tab1);
     obj.dataLink1:setFields({'botEnabled','autoEnable'});
@@ -376,9 +401,12 @@ local function constructNew_afkbotPopup()
         if self.horzLine1 ~= nil then self.horzLine1:destroy(); self.horzLine1 = nil; end;
         if self.checkBox1 ~= nil then self.checkBox1:destroy(); self.checkBox1 = nil; end;
         if self.edit2 ~= nil then self.edit2:destroy(); self.edit2 = nil; end;
+        if self.horzLine2 ~= nil then self.horzLine2:destroy(); self.horzLine2 = nil; end;
+        if self.checkBox7 ~= nil then self.checkBox7:destroy(); self.checkBox7 = nil; end;
+        if self.edit1 ~= nil then self.edit1:destroy(); self.edit1 = nil; end;
+        if self.checkBox8 ~= nil then self.checkBox8:destroy(); self.checkBox8 = nil; end;
         if self.dataLink2 ~= nil then self.dataLink2:destroy(); self.dataLink2 = nil; end;
         if self.tab2 ~= nil then self.tab2:destroy(); self.tab2 = nil; end;
-        if self.edit1 ~= nil then self.edit1:destroy(); self.edit1 = nil; end;
         if self.dataLink5 ~= nil then self.dataLink5:destroy(); self.dataLink5 = nil; end;
         self:_oldLFMDestroy();
     end;

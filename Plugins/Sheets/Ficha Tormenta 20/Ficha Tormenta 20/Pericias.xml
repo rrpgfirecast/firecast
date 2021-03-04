@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmPericias" align="client" theme="light">
+
+	<script> 
+		<![CDATA[
+
+		local function addSkill(nome, mod, treino, armadura)
+			local skill = self.rclPericias:append();
+			if skill == nil then return end;
+
+			skill.nome = nome;
+			skill.mod = mod;
+			skill.treino = treino;
+			skill.armadura = armadura;
+		end;
+
+		local function tormenta20()
+			addSkill("Acrobacia", "desMod", false, true);
+			addSkill("Adestramento", "carMod", true, false);
+			addSkill("Atletismo", "forMod", false, false);
+			addSkill("Atuação", "carMod", false, false);
+			addSkill("Cavalgar", "desMod", false, false);
+			addSkill("Conhecimento", "intMod", true, false);
+			addSkill("Cura", "sabMod", false, false);
+			addSkill("Diplomacia", "carMod", false, false);
+			addSkill("Enganação", "carMod", false, false);
+			addSkill("Fortitude", "conMod", false, false);
+			addSkill("Furtividade", "desMod", false, true);
+			addSkill("Guerra", "intMod", true, false);
+			addSkill("Iniciativa", "desMod", false, false);
+			addSkill("Intimidação", "carMod", false, false);
+			addSkill("Intuição", "sabMod", false, false);
+			addSkill("Inestigação", "intMod", false, false);
+			addSkill("Jogatina", "carMod", false, false);
+			addSkill("Ladinagem", "desMod", true, true);
+			addSkill("Luta", "forMod", false, false);
+			addSkill("Misticismo", "intMod", true, false);
+			addSkill("Navegação", "sabMod", true, false);
+			addSkill("Nobreza", "intMod", true, false);
+			addSkill("Ofício", "intMod", false, false);
+			addSkill("Percepção", "sabMod", false, false);
+			addSkill("Pontaria", "desMod", false, false);
+			addSkill("Reflexos", "desMod", false, false);
+			addSkill("Religião", "sabMod", true, false);
+			addSkill("Percepção", "sabMod", false, false);
+			addSkill("Vontade", "sabMod", false, false);
+		end
+
+		]]>
+	</script>
+
+	<dataLink field="nivel">
+		<event name="onChange">
+			if sheet==nil then return end;
+			local nivel = tonumber(sheet.nivel) or 0;
+
+			local nivelMod = math.floor(nivel/2);
+			local bonus = 2;
+			if nivel >= 15 then
+				bonus = 6;
+			elseif nivel >= 7 then
+				bonus = 4;
+			end;
+
+			local nodes = NDB.getChildNodes(sheet.listaPericias); 
+			for i=1, #nodes, 1 do
+				nodes[i].nivelMod = nivelMod;
+				nodes[i].bonus = bonus;
+			end
+		</event>
+	</dataLink>
+
+	<dataLink fields="{'caArmPen','caEscPen'}">
+		<event name="onChange">
+			if sheet==nil then return end;
+			local caArmPen = tonumber(sheet.caArmPen) or 0;
+			local caEscPen = tonumber(sheet.caEscPen) or 0;
+
+			local nodes = NDB.getChildNodes(sheet.listaPericias); 
+			for i=1, #nodes, 1 do
+				nodes[i].pen = caArmPen + caEscPen;
+			end
+		</event>
+	</dataLink>
+
+	<dataLink field="forMod">
+		<event name="onChange">
+			if sheet==nil then return end;
+			local mod = tonumber(sheet.forMod) or 0;
+
+			local nodes = NDB.getChildNodes(sheet.listaPericias); 
+			for i=1, #nodes, 1 do
+				nodes[i].forMod = mod;
+			end
+		</event>
+	</dataLink>
+	<dataLink field="desMod">
+		<event name="onChange">
+			if sheet==nil then return end;
+			local mod = tonumber(sheet.desMod) or 0;
+
+			local nodes = NDB.getChildNodes(sheet.listaPericias); 
+			for i=1, #nodes, 1 do
+				nodes[i].desMod = mod;
+			end
+		</event>
+	</dataLink>
+	<dataLink field="conMod">
+		<event name="onChange">
+			if sheet==nil then return end;
+			local mod = tonumber(sheet.conMod) or 0;
+
+			local nodes = NDB.getChildNodes(sheet.listaPericias); 
+			for i=1, #nodes, 1 do
+				nodes[i].conMod = mod;
+			end
+		</event>
+	</dataLink>
+	<dataLink field="intMod">
+		<event name="onChange">
+			if sheet==nil then return end;
+			local mod = tonumber(sheet.intMod) or 0;
+
+			local nodes = NDB.getChildNodes(sheet.listaPericias); 
+			for i=1, #nodes, 1 do
+				nodes[i].intMod = mod;
+			end
+		</event>
+	</dataLink>
+	<dataLink field="sabMod">
+		<event name="onChange">
+			if sheet==nil then return end;
+			local mod = tonumber(sheet.sabMod) or 0;
+
+			local nodes = NDB.getChildNodes(sheet.listaPericias); 
+			for i=1, #nodes, 1 do
+				nodes[i].sabMod = mod;
+			end
+		</event>
+	</dataLink>
+	<dataLink field="carMod">
+		<event name="onChange">
+			if sheet==nil then return end;
+			local mod = tonumber(sheet.carMod) or 0;
+
+			local nodes = NDB.getChildNodes(sheet.listaPericias); 
+			for i=1, #nodes, 1 do
+				nodes[i].carMod = mod;
+			end
+		</event>
+	</dataLink>
+
+	<scrollBox align="client">
+		<layout align="top" height="25"  margins="{bottom=5}">
+			<button align="left" text="Novo" width="100" onClick="addSkill(&quot;&quot;,&quot;&quot;,false,false);"/>
+			<button align="left" text="Tormenta 20" width="100" onClick="tormenta20();"/>
+		</layout>
+
+		<recordList align="client" name="rclPericias" field="listaPericias" templateForm="frmRecordListForm" layout="verticalTiles" selectable="true">
+			<event name="onCompare"><![CDATA[
+				-- Esse codigo organiza a ordem dos objetos da lista alfabeticamente. 
+		        return utils.compareStringPtBr(nodeA.nome, nodeB.nome);              
+		        ]]>
+			</event>
+		</recordList>
+	</scrollBox>
+</form>

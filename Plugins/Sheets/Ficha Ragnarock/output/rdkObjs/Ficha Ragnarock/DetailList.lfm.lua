@@ -34,25 +34,39 @@ function newfrmDetailList()
     obj.scrollBox1:setAlign("client");
     obj.scrollBox1:setName("scrollBox1");
 
+    obj.image1 = gui.fromHandle(_obj_newObject("image"));
+    obj.image1:setParent(obj.scrollBox1);
+    obj.image1:setAlign("client");
+    obj.image1:setField("bgDestail");
+    obj.image1:setStyle("autoFit");
+    obj.image1:setEditable(true);
+    obj.image1:setName("image1");
+
+    obj.dataLink1 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink1:setParent(obj.scrollBox1);
+    obj.dataLink1:setField("bgDestail");
+    obj.dataLink1:setDefaultValue("http://blob.firecast.com.br/blobs/VPLCLETD_1601938/Aba_03.jpg");
+    obj.dataLink1:setName("dataLink1");
+
     obj.layout1 = gui.fromHandle(_obj_newObject("layout"));
     obj.layout1:setParent(obj.scrollBox1);
     obj.layout1:setHeight(660);
-    obj.layout1:setWidth(1225);
+    obj.layout1:setWidth(1510);
     obj.layout1:setMargins({right=0});
     obj.layout1:setName("layout1");
 
     obj.layout2 = gui.fromHandle(_obj_newObject("layout"));
     obj.layout2:setParent(obj.layout1);
     obj.layout2:setAlign("left");
-    obj.layout2:setWidth(600);
-    obj.layout2:setMargins({right=25});
+    obj.layout2:setWidth(500);
+    obj.layout2:setMargins({right=5});
     obj.layout2:setName("layout2");
 
     obj.rectangle1 = gui.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle1:setParent(obj.layout2);
     obj.rectangle1:setLeft(0);
     obj.rectangle1:setTop(0);
-    obj.rectangle1:setWidth(600);
+    obj.rectangle1:setWidth(500);
     obj.rectangle1:setHeight(660);
     obj.rectangle1:setColor("black");
     obj.rectangle1:setName("rectangle1");
@@ -71,7 +85,7 @@ function newfrmDetailList()
     obj.rclAtiva:setParent(obj.layout2);
     obj.rclAtiva:setLeft(0);
     obj.rclAtiva:setTop(25);
-    obj.rclAtiva:setWidth(600);
+    obj.rclAtiva:setWidth(500);
     obj.rclAtiva:setHeight(635);
     obj.rclAtiva:setName("rclAtiva");
     obj.rclAtiva:setField("listaAtivas");
@@ -82,14 +96,15 @@ function newfrmDetailList()
     obj.layout3 = gui.fromHandle(_obj_newObject("layout"));
     obj.layout3:setParent(obj.layout1);
     obj.layout3:setAlign("left");
-    obj.layout3:setWidth(600);
+    obj.layout3:setWidth(500);
+    obj.layout3:setMargins({right=5});
     obj.layout3:setName("layout3");
 
     obj.rectangle2 = gui.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle2:setParent(obj.layout3);
     obj.rectangle2:setLeft(0);
     obj.rectangle2:setTop(0);
-    obj.rectangle2:setWidth(600);
+    obj.rectangle2:setWidth(500);
     obj.rectangle2:setHeight(660);
     obj.rectangle2:setColor("black");
     obj.rectangle2:setName("rectangle2");
@@ -108,13 +123,50 @@ function newfrmDetailList()
     obj.rclPassiva:setParent(obj.layout3);
     obj.rclPassiva:setLeft(0);
     obj.rclPassiva:setTop(25);
-    obj.rclPassiva:setWidth(600);
+    obj.rclPassiva:setWidth(500);
     obj.rclPassiva:setHeight(635);
     obj.rclPassiva:setName("rclPassiva");
     obj.rclPassiva:setField("listaPassivas");
     obj.rclPassiva:setTemplateForm("frmRecordListForm");
     obj.rclPassiva:setLayout("vertical");
     obj.rclPassiva:setSelectable(true);
+
+    obj.layout4 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout4:setParent(obj.layout1);
+    obj.layout4:setAlign("left");
+    obj.layout4:setWidth(500);
+    obj.layout4:setName("layout4");
+
+    obj.rectangle3 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle3:setParent(obj.layout4);
+    obj.rectangle3:setLeft(0);
+    obj.rectangle3:setTop(0);
+    obj.rectangle3:setWidth(500);
+    obj.rectangle3:setHeight(660);
+    obj.rectangle3:setColor("black");
+    obj.rectangle3:setName("rectangle3");
+
+    obj.button3 = gui.fromHandle(_obj_newObject("button"));
+    obj.button3:setParent(obj.layout4);
+    obj.button3:setLeft(0);
+    obj.button3:setTop(0);
+    obj.button3:setWidth(200);
+    obj.button3:setHeight(25);
+    obj.button3:setText("Perícias");
+    obj.button3:setHint("Adicionar");
+    obj.button3:setName("button3");
+
+    obj.rclPericia = gui.fromHandle(_obj_newObject("recordList"));
+    obj.rclPericia:setParent(obj.layout4);
+    obj.rclPericia:setLeft(0);
+    obj.rclPericia:setTop(25);
+    obj.rclPericia:setWidth(500);
+    obj.rclPericia:setHeight(635);
+    obj.rclPericia:setName("rclPericia");
+    obj.rclPericia:setField("listaPericias");
+    obj.rclPericia:setTemplateForm("frmPericiaForm");
+    obj.rclPericia:setLayout("vertical");
+    obj.rclPericia:setSelectable(true);
 
     obj._e_event0 = obj.button1:addEventListener("onClick",
         function (self)
@@ -138,7 +190,20 @@ function newfrmDetailList()
             				        return utils.compareStringPtBr(nodeA.nome, nodeB.nome);
         end, obj);
 
+    obj._e_event4 = obj.button3:addEventListener("onClick",
+        function (self)
+            self.rclPericia:append();
+        end, obj);
+
+    obj._e_event5 = obj.rclPericia:addEventListener("onCompare",
+        function (self, nodeA, nodeB)
+            -- Esse codigo organiza a ordem dos objetos da lista alfabeticamente. 
+            				        return utils.compareStringPtBr(nodeA.nome, nodeB.nome);
+        end, obj);
+
     function obj:_releaseEvents()
+        __o_rrpgObjs.removeEventListenerById(self._e_event5);
+        __o_rrpgObjs.removeEventListenerById(self._e_event4);
         __o_rrpgObjs.removeEventListenerById(self._e_event3);
         __o_rrpgObjs.removeEventListenerById(self._e_event2);
         __o_rrpgObjs.removeEventListenerById(self._e_event1);
@@ -154,16 +219,22 @@ function newfrmDetailList()
           self:setNodeDatabase(nil);
         end;
 
-        if self.layout3 ~= nil then self.layout3:destroy(); self.layout3 = nil; end;
         if self.rclAtiva ~= nil then self.rclAtiva:destroy(); self.rclAtiva = nil; end;
         if self.button1 ~= nil then self.button1:destroy(); self.button1 = nil; end;
+        if self.button3 ~= nil then self.button3:destroy(); self.button3 = nil; end;
+        if self.layout4 ~= nil then self.layout4:destroy(); self.layout4 = nil; end;
+        if self.rectangle2 ~= nil then self.rectangle2:destroy(); self.rectangle2 = nil; end;
+        if self.rectangle3 ~= nil then self.rectangle3:destroy(); self.rectangle3 = nil; end;
+        if self.button2 ~= nil then self.button2:destroy(); self.button2 = nil; end;
+        if self.image1 ~= nil then self.image1:destroy(); self.image1 = nil; end;
+        if self.rclPericia ~= nil then self.rclPericia:destroy(); self.rclPericia = nil; end;
+        if self.layout3 ~= nil then self.layout3:destroy(); self.layout3 = nil; end;
         if self.rclPassiva ~= nil then self.rclPassiva:destroy(); self.rclPassiva = nil; end;
         if self.layout1 ~= nil then self.layout1:destroy(); self.layout1 = nil; end;
         if self.scrollBox1 ~= nil then self.scrollBox1:destroy(); self.scrollBox1 = nil; end;
         if self.rectangle1 ~= nil then self.rectangle1:destroy(); self.rectangle1 = nil; end;
         if self.layout2 ~= nil then self.layout2:destroy(); self.layout2 = nil; end;
-        if self.rectangle2 ~= nil then self.rectangle2:destroy(); self.rectangle2 = nil; end;
-        if self.button2 ~= nil then self.button2:destroy(); self.button2 = nil; end;
+        if self.dataLink1 ~= nil then self.dataLink1:destroy(); self.dataLink1 = nil; end;
         self:_oldLFMDestroy();
     end;
 

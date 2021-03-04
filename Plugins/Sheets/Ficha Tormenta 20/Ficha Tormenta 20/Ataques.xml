@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmAtaques" align="client" theme="light">
+
+	<scrollBox align="client">
+		<layout align="top" height="25"  margins="{bottom=5}">
+			<button align="left" text="Novo" width="100" onClick="self.rclAtaques:append();"/>
+		</layout>
+
+		<recordList align="client" name="rclAtaques" field="listaAtaques" templateForm="frmAtaqueForm" layout="verticalTiles" selectable="true">
+			<event name="onCompare"><![CDATA[
+				-- Esse codigo organiza a ordem dos objetos da lista alfabeticamente. 
+		        return utils.compareStringPtBr(nodeA.nome, nodeB.nome);              
+		        ]]>
+			</event>
+		</recordList>
+	</scrollBox>
+</form>
