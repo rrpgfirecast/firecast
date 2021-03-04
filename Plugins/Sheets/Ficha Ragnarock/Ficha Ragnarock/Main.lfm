@@ -58,6 +58,9 @@
         <tab title="Quests">
             <import file="Quest.lfm"/>
         </tab>
+        <tab title="Biblioteca">
+            <import file="Library.lfm"/>
+        </tab>
         <tab title="Anotações">
             <import file="Notes.lfm"/>
         </tab>

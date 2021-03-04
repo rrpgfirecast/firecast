@@ -66,6 +66,7 @@ local function isNewVersion(installed, downloaded)
 end;
 
 local function initializeRoom(mesa)
+	if mesa == nil then return end;
 	if afkdb.config[mesa.codigoInterno] == nil then
 		afkdb.config[mesa.codigoInterno] = {};
 	end;

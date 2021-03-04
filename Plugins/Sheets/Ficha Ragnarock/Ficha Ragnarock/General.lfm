@@ -284,10 +284,13 @@
 							<LabelEditMid text="Def. Equipamento" field="def_equipamento" fontSize="11"/>
 						</layout>
 						<layout align="top" height="25" margins="{bottom=5}">
-							<LabelEditMid text="Resistência" field="R_intensidade" fontSize="13"/>
+							<LabelEditMid text="Tenacidade" field="R_intensidade" fontSize="13"/>
+						</layout>
+						<layout align="top" height="25" margins="{bottom=5}">
+							<LabelEditMid text="Proteção Física" field="def_total" fontSize="13"/>
 						</layout>
 						<layout align="top" height="25" margins="{bottom=0}">
-							<LabelEditMid text="Proteção Física" field="def_total" fontSize="13"/>
+							<LabelEditMid text="Resistências" field="def_resistencias" fontSize="13"/>
 						</layout>
 						<layout align="top" height="25" margins="{top=0}">
 							<checkBox left="0" top="0" width="190" height="25" field="doubleRoll" text="Usar dois atributos na rolagem." fontSize="12" hint="Clique no primeiro e depois no segundo. ">

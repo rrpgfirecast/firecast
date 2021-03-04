@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <root>
-    <element id="AfkBot" name="AfkBot" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/ChatMods/AfkBot/output/AfkBot.rpk?raw=true" fileName="AfkBot.rpk" repositoryPath="ChatMods/AfkBot/" author="Ambesek" description="Crie uma mensagem padrão para responder quando estiver ocupado. Também protege a mesa de flood de dados e /rir se configurado para tal. Use /afkbot para abrir o popup de configuração." version="1.3" compilationDate="26112019235846" compilationDigest="2c436d55f7346bc88202c1a8ce6d621275db7df0">
+    <element id="AfkBot" name="AfkBot" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/ChatMods/AfkBot/output/AfkBot.rpk?raw=true" fileName="AfkBot.rpk" repositoryPath="ChatMods/AfkBot/" author="Ambesek" description="Crie uma mensagem padrão para responder quando estiver ocupado. Também protege a mesa de flood de dados e /rir se configurado para tal. Use /afkbot para abrir o popup de configuração." version="1.3.1" compilationDate="26112019235846" compilationDigest="2c436d55f7346bc88202c1a8ce6d621275db7df0">
         <dataTypes>
             <dataType id="ambesek.afkbot" title="AfkBot"/>
         </dataTypes>
@@ -183,7 +183,7 @@
             <dataType id="Ambesek.FichaPathfinder.2e" title="Ficha Pathfinder 2e"/>
         </dataTypes>
     </element>
-    <element id="Ambesek.Ragnarock" name="Ficha Ragnarok" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20Ragnarock/output/Ficha%20Ragnarock.rpk?raw=true" fileName="Ficha Ragnarock.rpk" repositoryPath="Sheets/Ficha Ragnarock/" author="Ambesek" description="Ficha para um sistema proprio de Ragnarock." version="0.6" compilationDate="27112019000123" compilationDigest="886b42b8401ccb09df7dde5f9a836da3dd60c0ef">
+    <element id="Ambesek.Ragnarock" name="Ficha Ragnarok" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20Ragnarock/output/Ficha%20Ragnarock.rpk?raw=true" fileName="Ficha Ragnarock.rpk" repositoryPath="Sheets/Ficha Ragnarock/" author="Ambesek" description="Ficha para um sistema proprio de Ragnarock." version="0.7" compilationDate="27112019000123" compilationDigest="886b42b8401ccb09df7dde5f9a836da3dd60c0ef">
         <dataTypes>
             <dataType id="Ambesek.Ragnarock" title="Ficha Ragnarok"/>
         </dataTypes>
