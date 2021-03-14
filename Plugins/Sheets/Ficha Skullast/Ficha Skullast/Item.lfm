@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmItem" height="50" width="50" margins="{top=2,right=2}">
+	 <script> 
+		<![CDATA[
+		local function showPopup()
+			local pop = self:findControlByName("popItem");
+				
+			if pop ~= nil then
+				pop:setNodeObject(self.sheet);
+				pop:showPopupEx("center", self);
+			else
+				showMessage("Ops, bug.. nao encontrei o popup para exibir");
+			end;				
+		end;
+	]]>
+	</script>
+
+	<rectangle height="50" width="50" color="black" strokeColor="white" strokeSize="1" hitTest="false">
+		<image align="client" field="icon" editable="false" hitTest="true" style="autoFit" margins="{left=2, right=2, top=2, bottom=2}">
+			<event name="OnClick">
+			    showPopup();
+			</event>
+		</image>
+	</rectangle>
+
+	<dataLink field="delete">
+		<event name="onChange">
+			if sheet==nil then return end;
+			if sheet.delete == 1 then
+				Dialogs.confirmYesNo("Deseja realmente apagar esse item?",
+								 function (confirmado)
+									if confirmado then
+										ndb.deleteNode(sheet);
+									else
+										sheet.delete = 0;
+									end;
+								 end);
+			end;
+		</event>
+	</dataLink>
+</form>

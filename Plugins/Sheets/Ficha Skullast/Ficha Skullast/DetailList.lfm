@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmDetailList" align="client">
+	<scrollBox align="client">
+		<image align="client" field="bgDestail" style="autoFit" editable="true"/>
+		<dataLink field="bgDestail" defaultValue=""/>
+		<layout height="660" width="1510" margins="{right=0}">
+			<layout align="left" width="500" margins="{right=5}">
+				<rectangle left="0" top="0" width="500" height="660" color="black"/>
+				<button left="0" top="0" width="200" height="25" text="Ativas" onClick="self.rclAtiva:append();" hint="Adicionar"/>
+
+				<recordList left="0" top="25" width="500" height="635" name="rclAtiva" field="listaAtivas" templateForm="frmRecordListForm" layout="vertical" selectable="true">
+					<event name="onCompare"><![CDATA[
+						-- Esse codigo organiza a ordem dos objetos da lista alfabeticamente. 
+				        return utils.compareStringPtBr(nodeA.nome, nodeB.nome);              
+				        ]]>
+					</event>
+				</recordList>
+			</layout>
+
+			<layout align="left" width="500" margins="{right=5}">
+				<rectangle left="0" top="0" width="500" height="660" color="black"/>
+				<button left="0" top="0" width="200" height="25" text="Passivas" onClick="self.rclPassiva:append();" hint="Adicionar"/>
+
+				<recordList left="0" top="25" width="500" height="635" name="rclPassiva" field="listaPassivas" templateForm="frmRecordListForm" layout="vertical" selectable="true">
+					<event name="onCompare"><![CDATA[
+						-- Esse codigo organiza a ordem dos objetos da lista alfabeticamente. 
+				        return utils.compareStringPtBr(nodeA.nome, nodeB.nome);              
+				        ]]>
+					</event>
+				</recordList>
+			</layout>
+
+			<layout align="left" width="500">
+				<rectangle left="0" top="0" width="500" height="660" color="black"/>
+				<button left="0" top="0" width="200" height="25" text="Perícias" onClick="self.rclPericia:append();" hint="Adicionar"/>
+
+				<recordList left="0" top="25" width="500" height="635" name="rclPericia" field="listaPericias" templateForm="frmPericiaForm" layout="vertical" selectable="true">
+					<event name="onCompare"><![CDATA[
+						-- Esse codigo organiza a ordem dos objetos da lista alfabeticamente. 
+				        return utils.compareStringPtBr(nodeA.nome, nodeB.nome);              
+				        ]]>
+					</event>
+				</recordList>
+			</layout>
+
+		</layout>
+	</scrollBox>
+</form>
