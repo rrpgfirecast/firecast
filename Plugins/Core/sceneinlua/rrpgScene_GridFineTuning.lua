@@ -29,9 +29,9 @@ SceneLib.registerPlugin(
 												
 												if frmFineTuning == nil then
 													frmFineTuning = GUI.newForm("frmWorldIncrease");
-													frmFineTuning.sceneAlvo = scene;
 												end;
 												
+												frmFineTuning.sceneAlvo = scene;
 												scene.viewport:showForm(frmFineTuning, {placement="topLeft"});
 											end, 
 											
