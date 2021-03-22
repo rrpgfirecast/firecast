@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmGuild" align="client">
+	<scrollBox align="client">
+		<richEdit align="client" field="cla_desc" backgroundColor="#333333" defaultFontSize="12" defaultFontColor="white"/>
+	</scrollBox>
+</form>

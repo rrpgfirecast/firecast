@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmNPCs" align="client">
+	<scrollBox align="client">
+		<image align="client" field="bgNPC" style="autoFit" editable="true">
+			<dataLink field="bgNPC" defaultValue=""/>
+			<button align="top" text="Novo NPC" onClick="self.rclNPCs:append();" hint="Adicionar" margins="{bottom=10}"/>
+
+			<recordList align="client" name="rclNPCs" field="listaNPCs" templateForm="frmNPCForm" layout="horizontalTiles" selectable="true">
+				<event name="onCompare"><![CDATA[
+					-- Esse codigo organiza a ordem dos objetos da lista alfabeticamente. 
+			        return utils.compareStringPtBr(nodeA.nome, nodeB.nome);              
+			        ]]>
+				</event>
+			</recordList>
+		</image>
+	</scrollBox>
+</form>

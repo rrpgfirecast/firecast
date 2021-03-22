@@ -183,6 +183,11 @@
             <dataType id="Ambesek.FichaPathfinder.2e" title="Ficha Pathfinder 2e"/>
         </dataTypes>
     </element>
+    <element id="Ambesek.Skullast" name="Ficha Ragnarok" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20Skullast/output/Ficha%20Skullast.rpk?raw=true" fileName="Ficha Skullast.rpk" repositoryPath="Sheets/Ficha Skullast/" author="Ambesek" description="Ficha para um sistema proprio de Skullast." version="0.7" compilationDate="27112019000123" compilationDigest="886b42b8401ccb09df7dde5f9a836da3dd60c0ef">
+        <dataTypes>
+            <dataType id="Ambesek.Skullast" title="Ficha Ragnarok"/>
+        </dataTypes>
+    </element>
     <element id="Ambesek.Ragnarock" name="Ficha Ragnarok" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20Ragnarock/output/Ficha%20Ragnarock.rpk?raw=true" fileName="Ficha Ragnarock.rpk" repositoryPath="Sheets/Ficha Ragnarock/" author="Ambesek" description="Ficha para um sistema proprio de Ragnarock." version="0.7" compilationDate="27112019000123" compilationDigest="886b42b8401ccb09df7dde5f9a836da3dd60c0ef">
         <dataTypes>
             <dataType id="Ambesek.Ragnarock" title="Ficha Ragnarok"/>
