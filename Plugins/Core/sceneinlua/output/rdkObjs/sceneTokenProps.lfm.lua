@@ -411,7 +411,7 @@ local function constructNew_frmTokenProps()
     obj.cbxPossuiAura:setLeft(30);
     obj.cbxPossuiAura:setTop(20);
     obj.cbxPossuiAura:setFontSize(18);
-    obj.cbxPossuiAura:setText(lang("scene.FormaAura.PossuiAura"));
+    obj.cbxPossuiAura:setText("@@scene.FormaAura.PossuiAura");
 
     obj.flaAuraContent = GUI.fromHandle(_obj_newObject("flowLayout"));
     obj.flaAuraContent:setParent(obj.flaAura);

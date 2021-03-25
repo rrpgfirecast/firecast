@@ -1,10 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<module sdkVersion="3.5">
+<module sdkVersion="3.6_prealfa_1">
 	<id>FICHA_RPG_MEISTER</id>
 	<version>3.4.1</version>
-	<name>Ficha RPG meister</name>
-	<description>Ficha feita para a mesa RPGmeister. Funciona normalmente para o sistema d20/D&amp;D3.5</description>
-	<author>Ambesek &amp; Nefertyne</author>
-	<site>http://pt-br.rpgmeister.wikia.com/wiki/Main_Page</site>
-	<contact>vinnyrpgmeister@gmail.com</contact>
+	
+	
+	
+	
+	
+    <info lang="pt-BR">
+        <!--Informações do plugin na língua "pt-BR". Você pode ter várias tags "info", uma para cada tradução que quiser.-->
+        <name>Ficha RPG meister</name>
+        <description>Ficha feita para a mesa RPGmeister. Funciona normalmente para o sistema d20/D&amp;D3.5</description>
+        <author>Ambesek &amp; Nefertyne</author>
+        <site>http://pt-br.rpgmeister.wikia.com/wiki/Main_Page</site>
+        <contact>vinnyrpgmeister@gmail.com</contact>
+    </info>
 </module>
