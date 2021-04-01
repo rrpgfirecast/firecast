@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmEspecificas" align="client" theme="dark" margins="{top=1}">
+
+	<layout left="000" top="000" height="650" width="1100">
+		<image left="000" top="000" width="1100" height="650" src="/img/wallpaper.png" />
+		</layout>	
+	
+	<layout left="50" top="10" height="260" width="800">
+		<checkBox left="000" top="000" height="20" width="200" text="Ofícios" field="perTEC" fontStyle="bold"/>		
+		<label left="130" top="000" height="20" width="50" text="Pts" horzTextAlign="center"/>			
+		<label left="185" top="000" height="20" width="50" text="Bôn" horzTextAlign="center"/>			
+		<label left="240" top="000" height="20" width="50" text="Tot" horzTextAlign="center"/>
+		<PerGen Top="025" Pericia="CARP" Nome="Carpinteiro"/>
+		<PerGen Top="050" Pericia="JOAL" Nome="Joalheiro"/>
+		<PerGen Top="075" Pericia="ARME" Nome="Armeiro"/>
+		<PerGen Top="100" Pericia="ALFA" Nome="Alfaiate"/>
+		<PerGen Top="125" Pericia="ESCU" Nome="Escultor"/>
+		</layout>
+					
+	<layout left="50" top="160" height="200" width="350">
+		<checkBox left="000" top="000" height="20" width="200" text="Perícias de Saber - Idiomas" field="perSAB" fontStyle="bold"/>		
+		<textEditor left="000" top="025" width="250" height="170" field="campoIdiomas"/>
+		<label left="255" top="100" height="20" width="50" text="P.Ger." autoSize="true" />			
+		<edit left="255" top="125" height="20" width="50" field="perIDIOponGER" horzTextAlign="center" />	
+		<label left="255" top="150" height="20" width="50" text="P.Esp." autoSize="true" />			
+		<edit left="255" top="175" height="20" width="50" field="perIDIOponESP" horzTextAlign="center" />	
+		</layout>
+			
+	<layout left="50" top="360" height="200" width="350">
+		<checkBox left="000" top="000" height="20" width="250" text="Perícias de Saber - Conhecimentos" field="perSAB" fontStyle="bold"/>		
+		<textEditor left="000" top="025" width="250" height="170" field="campoConhec"/>
+		<label left="255" top="100" height="20" width="50" text="P.Ger." autoSize="true" />			
+		<edit left="255" top="125" height="20" width="50" field="perCONHponGER" horzTextAlign="center" />	
+		<label left="255" top="150" height="20" width="50" text="P.Esp." autoSize="true" />			
+		<edit left="255" top="175" height="20" width="50" field="perCONHponESP" horzTextAlign="center" />	
+		</layout>
+			
+	<layout left="400" top="10" height="150" width="600">
+		<label left="000" top="000" height="20" width="240" text="Vantagens" autoSize="true"  fontColor="White" fontSize="18" horzTextAlign="center" fontStyle="bold"/>
+		<textEditor left="000" top="025" width="240" height="120" field="campoVantagens" fontSize = "14"/>
+		</layout>	
+			
+	<layout left="400" top="160" height="150" width="600">
+		<label left="000" top="000" height="20" width="240" text="Desvantagens" autoSize="true"  fontColor="White" fontSize="18" horzTextAlign="center" fontStyle="bold"/>
+		<textEditor left="000" top="025" width="240" height="120" field="campoDesvantagens" fontSize = "14"/>
+		</layout>	
+			
+	<layout left="400" top="310" height="300" width="600">
+		<label left="000" top="000" height="20" width="240" text="Peculiaridades" autoSize="true"  fontColor="White" fontSize="18" horzTextAlign="center" fontStyle="bold"/>
+		<textEditor left="000" top="025" width="240" height="230" field="campoPeculiaridades" fontSize = "14"/>
+		</layout>	
+			
+	<layout left="680" top="10" height="800" width="600">
+		<rectangle left="000" top="000" width="390" height="565" color="darkblue" strokeColor="black" strokeSize="5" />
+		<label left="000" top="005" height="20" width="380" text="Habilidades de Classe" autoSize="true" fontColor="White" fontSize="18" horzTextAlign="center" fontStyle="bold"/>
+		<label left="010" top="030" height="20" width="160" text="Pontos de Perícia Iniciais" autoSize="true"  fontStyle="bold"/>
+		<edit left="165" top="030" height="20" width="50" field="ponPER" horzTextAlign="center" />	
+		<label left="010" top="055" height="20" width="160" text="Bônus de Ataque" autoSize="true" fontStyle="bold"/>
+		<edit left="165" top="055" height="20" width="50" field="ponATK" horzTextAlign="center" />	
+		<richEdit left="005" top="080" width="380" height="480" backgroundColor="black" defaultFontColor="white" field="campoHabClasse2" />
+		</layout>
+
+	<layout left="720" top="590" height="260" width="800">			
+		<label left="00" top="000" height="20" width="50" text="P.G." autoSize="true" />	
+		<edit left="25" top="000" height="20" width="50" field="PERGERG" horzTextAlign="center" />
+		<label left="80" top="000" height="20" width="50" text="/" autoSize="true" />
+		<edit left="90" top="000" height="20" width="50" field="PERGER" horzTextAlign="center" />
+		</layout>	
+
+	<layout left="870" top="590" height="260" width="800">
+		<label left="00" top="000" height="20" width="50" text="P.E." autoSize="true" />	
+		<edit left="25" top="000" height="20" width="50" field="PERESPG" horzTextAlign="center" />
+		<label left="80" top="000" height="20" width="50" text="/" autoSize="true" />
+		<edit left="90" top="000" height="20" width="50" field="PERESP" horzTextAlign="center" />
+		</layout>
+
+			
+
+</form>			

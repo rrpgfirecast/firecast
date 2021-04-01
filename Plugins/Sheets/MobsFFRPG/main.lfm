@@ -1,0 +1,1916 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form formType="sheetTemplate" dataType="MOB_CREATOR_FFRPG" title="Hitoshura - FFRPG Mob Creator" name="frmMOBFFRPG" theme="dark" padding="{left=4, top=4, right=4, bottom=4}">
+ 
+
+
+ <tabControl left="20" top="20" height="650" width="1100">
+        <tab title="General">
+			<import file="01.General.xml" />   
+		</tab>
+		
+        <tab title="Attacks">
+			<import file="02.Attack.xml" />   
+		</tab>
+		
+        <tab title="Action">
+			<import file="03.Action.xml" />   			
+			</tab>
+
+        <tab title="Spells/Jobs/Moves">
+			<import file="04.SpellsJobs.xml" />   		
+			</tab>
+
+        <tab title="Support A">
+			<import file="05.SupportA.xml"/>   		
+			</tab>	
+
+        <tab title="Support B">
+			<import file="06.SupportB.xml"/>   		
+			</tab>		
+
+        <tab title="Support C">
+			<import file="07.SupportC.xml"/>   		
+			</tab>
+		
+        <tab title="Reaction">
+			<import file="08.Reaction.xml"/>   		
+			</tab>		
+
+        <tab title="Field/Boss">
+			<import file="09.FieldBoss.xml"/>   		
+			</tab>			
+		
+		<tab title="Notes">
+			<import file="10.Notas.xml"/>  	
+			</tab>
+		
+		<tab title="Macros">
+			 <import file="12.Macros.xml" />   
+		</tab>
+		
+    </tabControl>
+
+	<script>
+		local function setEG1(addEXP, addGIL)
+			local BaEXP = tonumber(sheet.baseEXP) or 0
+			local BoEXP = tonumber(addEXP) or 0
+			local BaGIL = tonumber(sheet.baseGIL) or 0
+			local BoGIL = tonumber(addGIL) or 0
+			
+			sheet.baseEXP = BaEXP + BoEXP;
+			sheet.baseGIL = BaGIL + BoGIL;		
+			end;
+		</script>
+	
+    <dataLink fields="{'baseTIPO', 'valSTR', 'valVIT', 'valAGI', 'valSPD', 'valMAG', 'valSPR', 'valLV', 'baseArmor', 'baseMArmor', 'baseHP', 'baseMP','statBLINK', 'statIMM',
+        'supEva10', 'supEva25', 'supEva50', 'supEva75', 'supMEva10', 'supMEva25', 'supMEva50', 'supMEva75', 'supLEva', 'supLMEva', 'statAGIUP', 'statAGIDOWN', 'statAGIBREAK', 
+		'statSPIUP', 'statSPIDOWN', 'statSPIBREAK', 'statARMUP', 'statARMDOWN', 'statARMBREAK', 'statMENUP', 'statMENDOWN', 'statMENBREAK', 'statTOAD', 'statMINI','statBLIND'}">
+	
+		<event name="onChange">
+			local bLV = sheet.valLV or 1;
+			local bTIPO = sheet.baseTIPO or "Regular";
+			local bSTR = sheet.valSTR or 0;
+			local bVIT = sheet.valVIT or 0;
+			local bAGI = sheet.valAGI or 0;
+			local bSPD = sheet.valSPD or 0;
+			local bMAG = sheet.valMAG or 0;
+			local bSPR = sheet.valSPR or 0;
+			local bArmor = sheet.baseArmor or 0.5;
+			local bMArmor = sheet.baseMArmor or 0.5;
+			local bHP = tonumber(sheet.baseHP) or 0;
+			local bMP = tonumber(sheet.baseMP) or 0;
+			local sAGIUP = sheet.statAGIUP or false;
+			local sAGIDOWN = sheet.statAGIDOWN or false;
+			local sAGIBREAK = sheet.statAGIBREAK or false;
+			local sBLIND = sheet.statBLIND or false;
+			local sSPIUP = sheet.statSPIUP or false;
+			local sSPIDOWN = sheet.statSPIDOWN or false;
+			local sSPIBREAK = sheet.statSPIBREAK or false;
+			local loEVA = sheet.supLEva or false;			
+			local EVA10 = sheet.supEva10 or false;			
+			local EVA25 = sheet.supEva25 or false;			
+			local EVA50 = sheet.supEva50 or false;			
+			local EVA75 = sheet.supEva75 or false;
+			local loMEVA = sheet.supLMEva or false;			
+			local MEVA10 = sheet.supMEva10 or false;			
+			local MEVA25 = sheet.supMEva25 or false;			
+			local MEVA50 = sheet.supMEva50 or false;			
+			local MEVA75 = sheet.supMEva75 or false;
+			local sIMM = sheet.statIMMOBILIZE or false;
+			local sBLINK = sheet.statBLINK or false;
+			local sARMUP = sheet.statARMUP or false;
+			local sARMDO = sheet.statARMDOWN or false;
+			local sARMBR = sheet.statARMBREAK or false;
+			local sMENUP = sheet.statMENUP or false;
+			local sMENDO = sheet.statMENDOWN or false;
+			local sMENBR = sheet.statMENBREAK or false;
+			local sTOAD = sheet.statTOAD or false;
+			local sMINI = sheet.statMINI or false;
+				
+			sheet.TeoricoATT = bLV + 35;				
+			sheet.SomaATT = bSTR + bVIT  + bAGI  + bSPD  + bMAG  + bSPR;
+			
+			local ACC_MOD = 1;
+			local MACC_MOD = 1;
+			local EVA_MOD = 1;
+			local MEVA_MOD = 1;
+			local bEVA = 0;
+			local bMEVA = 0;
+			local ARM_MOD = 1;
+			local MARM_MOD = 1;
+			if (sAGIUP) then
+				ACC_MOD = ACC_MOD +0.25;
+				EVA_MOD = EVA_MOD +0.25;
+				end
+			if (sAGIDOWN) then
+				ACC_MOD = ACC_MOD -0.25;
+				EVA_MOD = EVA_MOD -0.25;
+				end
+			if (sAGIBREAK) then
+				ACC_MOD = ACC_MOD -0.5;
+				EVA_MOD = EVA_MOD -0.5;
+				end
+			if (sBLIND) then
+				ACC_MOD = ACC_MOD -0.5;
+				end
+			if (sSPIUP) then
+				MACC_MOD = MACC_MOD +0.25;
+				MEVA_MOD = MEVA_MOD +0.25;
+				end
+			if (sSPIDOWN) then
+				MACC_MOD = MACC_MOD -0.25;
+				MEVA_MOD = MEVA_MOD -0.25;
+				end
+			if (sSPIBREAK) then
+				MACC_MOD = MACC_MOD -0.5;
+				MEVA_MOD = MEVA_MOD -0.5;
+				end
+			if (loEVA) then
+				EVA_MOD = EVA_MOD -0.5;
+				end
+			if (EVA10) then
+				EVA_MOD = EVA_MOD +0.1;
+				end
+			if (EVA25) then
+				EVA_MOD = EVA_MOD +0.25;
+				end
+			if (EVA50) then
+				EVA_MOD = EVA_MOD +0.50;
+				end
+			if (EVA75) then
+				EVA_MOD = EVA_MOD +0.75;
+				end	
+			if (sIMM) then
+				EVA_MOD = EVA_MOD -0.5;
+				end	
+			if (sBLINK) then
+				bEVA = bEVA + 20;
+				end	
+			if (loMEVA) then
+				MEVA_MOD = MEVA_MOD -0.5;
+				end
+			if (MEVA10) then
+				MEVA_MOD = MEVA_MOD +0.1;
+				end
+			if (MEVA25) then
+				MEVA_MOD = MEVA_MOD +0.25;
+				end
+			if (MEVA50) then
+				MEVA_MOD = MEVA_MOD +0.50;
+				end
+			if (MEVA75) then
+				MEVA_MOD = MEVA_MOD +0.75;
+				end	
+			if (sARMUP) then
+				ARM_MOD = ARM_MOD +0.25;
+				end
+			if (sARMDO) then
+				ARM_MOD = ARM_MOD -0.25;
+				end
+			if (sARMBR) then
+				ARM_MOD = ARM_MOD -0.5;
+				end
+			if (sMENUP) then
+				MARM_MOD = MARM_MOD +0.25;
+				end
+			if (sMENDO) then
+				MARM_MOD = MARM_MOD -0.25;
+				end
+			if (sMENBR) then
+				MARM_MOD = MARM_MOD -0.5;
+				end
+			if (sTOAD) then
+				ARM_MOD = ARM_MOD -0.5;
+				MARM_MOD = MARM_MOD -0.5;
+				end
+			if (sMINI) then
+				ARM_MOD = ARM_MOD -0.5;
+				MARM_MOD = MARM_MOD -0.5;
+				end
+			if (0 > ACC_MOD) then
+				ACC_MOD = 0;
+				end	
+			if (0 > MACC_MOD) then
+				MACC_MOD = 0;
+				end	
+			if (0 > EVA_MOD) then
+				EVA_MOD = 0;
+				end	
+			if (0 > MEVA_MOD) then
+				MEVA_MOD = 0;
+				end	
+			if (0 > ARM_MOD) then
+				ARM_MOD = 0;
+				end	
+			if (0 > MARM_MOD) then
+				MARM_MOD = 0;
+				end	
+			sheet.valACC 	= math.floor((80 + bLV + bAGI*2)*ACC_MOD);
+			sheet.valMACC 	= math.floor((100 + bLV + bMAG*2)*MACC_MOD);
+			sheet.valDEX 	= 50 + bLV + bAGI*2;
+			sheet.valMND 	= 50 + bLV + bMAG*2;
+			sheet.valEVA 	= math.floor((bLV+bAGI+bSPD+bEVA)*EVA_MOD);
+			sheet.valMEVA 	= math.floor((bLV+bMAG+bSPR+bMEVA)*MEVA_MOD);
+			sheet.valARM 	= math.floor((bArmor*bLV +(bVIT/2))*ARM_MOD);
+			sheet.valMARM 	= math.floor((bMArmor*bLV +(bSPR/2))*MARM_MOD);
+			sheet.valMaxHP 	= math.floor(bHP*bVIT*bLV);
+			sheet.valMaxMP 	= math.floor(bMP*bSPR*bLV);									
+			if (bTIPO == "Notorious") then	
+				sheet.valMaxHP = math.floor((sheet.valMaxHP)*2);
+				sheet.valMaxMP = math.floor((sheet.valMaxMP)*1.5);
+				sheet.immDeath = true;				
+				sheet.immCondemn = true;						
+				end
+			if (bTIPO == "Boss") then	
+				sheet.valMaxHP = math.floor((sheet.valMaxHP)*4);
+				sheet.valMaxMP = math.floor((sheet.valMaxMP)*2);
+				sheet.immFatal = true;
+				end
+			if (bTIPO == "End Boss") then	
+				sheet.valMaxHP = math.floor((sheet.valMaxHP)*6);
+				sheet.valMaxMP = math.floor((sheet.valMaxMP)*3);
+				sheet.immFatal = true;
+				end					
+			</event>
+		</dataLink>
+
+	<dataLink fields="{'baseTIPO', 'valLV', 'baseArmor', 'baseMArmor', 'baseHP', 'baseMP', 'bonusEXP', 'bonusGIL', 'NPlayers', 
+						'addFloat', 'addAgiUP', 'addSpiUP', 'addGNDSpikes', 'addFIRSpikes', 'addWATSpikes', 'addWINSpikes', 'addICESpikes', 'addELESpikes', 'addHOLSpikes', 'addSHASpikes','addBIOSpikes',
+						'addProtect', 'addShell', 'addARMUP', 'addMENUP', 'addHaste', 'addReflect', 'addPOWUP', 'addMAGUP', 'addRegen', 'addAura', 'addVanish', 'aaAlarm',
+						'canFloat', 'canAgiUP', 'canSpiUP', 'canGNDSpikes', 'canFIRSpikes', 'canWATSpikes', 'canWINSpikes', 'canICESpikes', 'canELESpikes', 'canHOLSpikes', 'canSHASpikes','canBIOSpikes',
+						'canProtect', 'canShell', 'canARMUP', 'canMENUP', 'canHaste', 'canReflect', 'canPOWUP', 'canMAGUP', 'canRegen', 'canAura', 'canVanish', 'canHealHP',
+						'aaAlarm', 'aaClone', 'aaEscape', 'aaImprison', 'aaBPrison', 'aaIPrison', 'aaSPrison', 'aaDPrison', 'aaVPrison', 'aaItemUse', 'aaRestore25',
+						'aaRestore50', 'aaRestore75', 'aaSSPO', 'aaSSPN', 'SpellsTIPO1', 'SpellsTIPO2', 'SpellsTIPO3', 'SpellsTIPO4', 'SpellsTIPO5', 'SpellsTIPO6',
+						'SpellsTIPO7', 'SpellsTIPO8', 'SpellsTIPO9', 'SpellsTIPO10', 'SpellsTIPO11', 'SpellsTIPO12', 'JSTipo1', 'JSTipo2', 'JSTipo3', 'weakBIO', 'resBIO', 'immBIO', 'absBIO','potBIO',
+						'JSTipo4', 'JSTipo5', 'JSTipo6', 'JSTipo7', 'JSTipo8', 'JSTipo9', 'JSTipo10', 'JSTipo11', 'JSTipo12', 'maBurrow', 'maBurrowMP',
+						'maBurrowSOSG', 'maBurrowSOSL', 'maFlight', 'maFlightMP', 'maFlightSOSG', 'maFlightSOSL', 'maFloat', 'maFloatMP', 'maFloatSOSG',
+						'maFloatSOSL', 'maTeleport', 'maTeleportMP', 'maTeleportSOSG', 'maTeleportSOSL', 'autoFloat', 'autoAgiUP', 'autoSpiUP', 'autoGNDSpikes', 'autoFIRSpikes', 'autoBIOSpikes',
+						'autoWATSpikes', 'autoWINSpikes', 'autoICESpikes', 'autoELESpikes', 'autoHOLSpikes', 'autoSHASpikes','autoProtect', 'autoShell', 'autoARMUP', 'autoMENUP', 'autoHaste', 
+						'autoReflect', 'autoPOWUP', 'autoMAGUP', 'autoRegen', 'autoAura', 'autoVanish', 'autoBerserk', 'autoBlind', 'autoPoison', 'autoSleep', 'autoSlow', 'autoZombie',
+						'autoConfuse', 'autoSap', 'autoUnaware', 'autoMini', 'autoToad', 'autoVenom', 'autoCondemn', 'autoPetrify', 'sosFloat', 'sosAgiUP', 'sosSpiUP', 'sosGNDSpikes', 'sosFIRSpikes', 'sosBIOSpikes',
+						'sosWATSpikes', 'sosWINSpikes', 'sosICESpikes', 'sosELESpikes', 'sosHOLSpikes', 'sosSHASpikes','sosProtect', 'sosShell', 'sosARMUP', 'sosMENUP', 'sosHaste', 
+						'sosReflect', 'sosPOWUP', 'sosMAGUP', 'sosRegen', 'sosAura', 'sosVanish', 'sosBerserk', 'sosBlind', 'sosPoison', 'sosSleep', 'sosSlow', 'sosZombie',
+						'sosConfuse', 'sosSap', 'sosUnaware', 'sosMini', 'sosToad', 'sosVenom', 'sosCondemn', 'sosPetrify', 'Comeback2', 'Comeback4', 'Comeback6', 'bossSlaveN2', 'bossXACtion',
+						'supCrit1', 'supCrit2', 'supCrit3', 'potELE', 'potFIR', 'potGND', 'potHOL', 'potICE', 'potSHA', 'potWAT', 'potWIN', 'weakELE', 'weakFIR', 'weakGND', 'weakHOL', 'weakICE', 
+						'weakSHA', 'weakWAT', 'weakWIN', 'resELE', 'resFIR', 'resGND', 'resHOL', 'resICE', 'resSHA', 'resWAT', 'resWIN', 'immELE', 'immFIR', 'immGND', 'immHOL', 'immICE', 'immSHA', 
+						'immWAT', 'immWIN', 'absELE', 'absFIR', 'absGND', 'absHOL', 'absICE', 'absSHA', 'absWAT', 'absWIN', 'bossDecoy', 'bossDecoyNum', 'immStatus', 'bossSlave', 'bossSlaveN1',
+						'resBerserk', 'resBlind', 'resImmobilize', 'resPoison', 'resSleep', 'resSlow', 'resZombie', 'resLock', 'resCondemn', 'resConfuse', 'resCurse', 'resDisable', 'resPetrify',
+						'resSilence', 'resSap', 'resUnaware', 'resEject', 'resMini', 'resSTRDown', 'resAGIDown', 'resMAGDown', 'resARMDown', 'resMENDown', 'resSPIDown', 'resSTRBrk', 'resAGIBrk', 
+						'resMAGBrk', 'resARMBrk', 'resMENBrk', 'resSPIBrk', 'resStop', 'resToad', 'resVenom', 'resElemWeak', 'resCharm', 'resDeath', 'resFrozen', 'resGravity', 'resHeat', 'resMeltdown', 'resStone', 
+						'immBerserk', 'immBlind', 'immImmobilize', 'immPoison', 'immSleep', 'immSlow', 'immZombie', 'immLock', 'immCondemn', 'immConfuse', 'immCurse', 'immDisable', 'immPetrify',
+						'immSilence', 'immSap', 'immUnaware', 'immEject', 'immMini', 'immSTRDown', 'immAGIDown', 'immMAGDown', 'immARMDown', 'immMENDown', 'immSPIDown', 'immSTRBrk', 'immAGIBrk', 
+						'immMAGBrk', 'immARMBrk', 'immMENBrk', 'immSPIBrk', 'immStop', 'immToad', 'immVenom', 'immElemWeak', 'immCharm', 'immDeath', 'immFrozen', 'immGravity', 'immHeat', 'immMeltdown', 'immStone',
+						'weakBerserk', 'weakBlind', 'weakImmobilize', 'weakPoison', 'weakSleep', 'weakSlow', 'weakZombie', 'weakCondemn', 'weakConfuse', 'weakCurse', 'weakDisable', 'weakPetrify',
+						'weakSilence', 'weakSap', 'weakUnaware', 'weakEject', 'weakMini', 'weakSTRDown', 'weakAGIDown', 'weakMAGDown', 'weakARMDown', 'weakMENDown', 'weakSPIDown', 'weakSTRBrk', 'weakAGIBrk', 
+						'weakMAGBrk', 'weakARMBrk', 'weakMENBrk', 'weakSPIBrk', 'weakStop', 'weakToad', 'weakVenom', 'weakCharm', 'weakDeath', 'weakFrozen', 'weakHeat', 'weakMeltdown', 'weakStone',
+						'resToxin', 'resFatal', 'resMystify', 'resSeal', 'resTime', 'resTransform', 'resWeaken', 'immToxin', 'immFatal', 'immMystify', 'immSeal', 'immTime', 'immTransform', 'immWeaken', 'immStatus',
+						'fieldAttack', 'fieldItem', 'fieldMPSap', 'fieldMagic', 'fieldMagnetic', 'fieldSap', 'fieldSpell', 'fieldTech','recCSMAGUP', 'recCSRegen', 'recCSAura', 'recCSVanish',
+						'reCAtk50', 'reCAtk75', 'reCAtk100', 'reCAtkSOSL', 'reCAtkSOSG', 'reCAtkUns', 'reCMag50', 'reCMag75', 'reCMag100', 'reCMagSOSL', 'reCMagSOSG', 'reCMagUns', 'reCStanPhys', 'reCStanMag',
+						'reCStanSOSL', 'reCStanSOSG', 'reCStanUns', 'reRD5', 'reRD10', 'reRD25', 'reRDSOSL', 'reRDSOSG', 'reRDUns', 'reCFin', 'reCFinUns', 'reCFiss', 'reCFissUns', 'reRotate', 'reRotateGain',
+						'reRotateLose', 'reRotateUns', 'recCSGain', 'recCSLose', 'recCSUns', 'recCSFloat', 'recCSAgiUP', 'recCSSpiUP', 'recCSGNDSpikes', 'recCSFIRSpikes', 'recCSWATSpikes', 'recCSWINSpikes','recCSBIOSpikes',
+						'recCSICESpikes', 'recCSELESpikes', 'recCSHOLSpikes', 'recCSSHASpikes', 'recCSProtect', 'recCSShell', 'recCSARMUP', 'recCSMENUP', 'recCSHaste', 'recCSReflect', 'recCSPOWUP',
+						'Atk1ExpF', 'Atk2ExpF', 'Atk3ExpF', 'Atk4ExpF', 'Atk1GilF', 'Atk2GilF', 'Atk3GilF', 'Atk4GilF', 'Special1Exp', 'Special2Exp', 'Special3Exp', 'Special1Gil', 'Special2Gil', 'Special3Gil',
+						'speBadScan', 'speNoScan', 'supEvader', 'supEva10', 'supEva25', 'supEva50', 'supEva75', 'supHArm', 'supLEva', 'supLMEva', 'supMEva10', 'supMEva25', 'supMEva50', 'supMEva75',
+						'supMBound', 'supMinion', 'supNDrain', 'supRDrain', 'supXFight','Atk5ExpF', 'Atk5ExpF', 'Atk6ExpF', 'Atk6ExpF','bossSlaveN2','bossSlaveN','bossSlaveS'}">	
+											
+						
+        <event name="onChange">
+			sheet.baseEXP = 0;
+			sheet.baseGIL = 0;
+			
+			bLV = sheet.valLV or 1;
+			bTIPO = sheet.baseTIPO or "Regular"
+			if (bTIPO == "Regular") then		
+				setEG1(40,15)				
+				end;
+			if (bTIPO == "Notorious") then
+				setEG1(100,25)				
+				end;
+			if (bTIPO == "Boss") then
+				setEG1(225,55)				
+				end;
+			if (bTIPO == "End Boss") then
+				setEG1(350,90)				
+				end;
+				
+			bHP = tonumber(sheet.baseHP) or 1
+			if (bHP == 1) then	
+				setEG1(-16,-6)				
+				end;
+			if (bHP == 1.5) then	
+				setEG1(-8,-3)				
+				end;
+			if (bHP == 4) then	
+				setEG1(18,8)				
+				end;
+			if (bHP == 6) then	
+				setEG1(40,19)				
+				end;
+			if (bHP == 8) then	
+				setEG1(60,30)				
+				end;
+				
+			bMP = tonumber(sheet.baseMP) or 0
+			if (bMP == 0.5) then	
+				setEG1(8,3)				
+				end;
+			if (bMP == 1) then	
+				setEG1(15,7)				
+				end;
+			if (bMP == 1.5) then	
+				setEG1(22,10)				
+				end;
+			if (bMP == 2) then	
+				setEG1(35,16)				
+				end;
+			if (bMP == 4) then	
+				setEG1(50,28)				
+				end;		
+
+			bARM = tonumber(sheet.baseArmor) or 0.5
+			if (bARM == 0.5) then	
+				setEG1(-5,-2)				
+				end;
+			if (bARM == 2) then	
+				setEG1(10,5)				
+				end;
+			if (bARM == 4) then	
+				setEG1(19,9)				
+				end;
+			if (bARM == 6) then	
+				setEG1(26,18)				
+				end;
+				
+			bMARM = tonumber(sheet.baseMArmor) or 0.5
+			if (bMARM == 0.5) then	
+				setEG1(-5,-2)				
+				end;
+			if (bMARM == 2) then	
+				setEG1(10,5)				
+				end;
+			if (bMARM == 4) then	
+				setEG1(19,9)				
+				end;
+			if (bMARM == 6) then	
+				setEG1(26,18)				
+				end;
+				
+			local addBlock1 = {}	
+			addBlock1.var1 = sheet.addFloat or false;
+			addBlock1.var2 = sheet.addAgiUP or false;
+			addBlock1.var3  = sheet.addSpiUP or false;
+			addBlock1.var4  = sheet.addBIOSpikes or false;
+			addBlock1.var5  = sheet.addGNDSpikes or false;	
+			addBlock1.var6  = sheet.addFIRSpikes or false;	
+			addBlock1.var7  = sheet.addWATSpikes or false;	
+			addBlock1.var8  = sheet.addWINSpikes or false;	
+			addBlock1.var9  = sheet.addICESpikes or false;	
+			addBlock1.var10  = sheet.addELESpikes or false;	
+			addBlock1.var11  = sheet.addHOLSpikes or false;	
+			addBlock1.var12  = sheet.addSHASpikes or false;
+			for i=1,12,1 do
+				if (addBlock1["var" .. i]) then
+					setEG1(14,4)
+					end
+				end
+			local addBlock2 = {}	
+			addBlock2.var1 = sheet.addProtect or false;				
+			addBlock2.var2 = sheet.addShell or false;
+			addBlock2.var3 = sheet.addARMUP or false;
+			addBlock2.var4 = sheet.addMENUP or false;
+			for i=1,4,1 do
+				if (addBlock2["var" .. i]) then
+					setEG1(18,6)
+					end
+				end
+			local addBlock3 = {}	
+			addBlock3.var1 = sheet.addHaste or false;	
+			addBlock3.var2 = sheet.addReflect or false;
+			addBlock3.var3 = sheet.addPOWUP or false;
+			addBlock3.var4 = sheet.addMAGUP or false;
+			for i=1,4,1 do
+				if (addBlock3["var" .. i]) then
+					setEG1(26,9)
+					end
+				end
+			local addBlock4 = {}	
+			addBlock4.var1 = sheet.addRegen or false;
+			addBlock4.var2 = sheet.addAura or false;
+			addBlock4.var3 = sheet.addVanish or false;
+			for i=1,3,1 do
+				if (addBlock4["var".. i]) then
+					setEG1(38,12)
+					end
+				end
+				
+			local canBlock1 = {}	
+			canBlock1.var1 = sheet.canFloat or false;
+			canBlock1.var2 = sheet.canAgiUP or false;
+			canBlock1.var3 = sheet.canSpiUP or false;
+			canBlock1.var4 = sheet.canBIOSpikes or false;
+			canBlock1.var5 = sheet.canGNDSpikes or false;	
+			canBlock1.var6 = sheet.canFIRSpikes or false;	
+			canBlock1.var7 = sheet.canWATSpikes or false;	
+			canBlock1.var8 = sheet.canWINSpikes or false;	
+			canBlock1.var9 = sheet.canICESpikes or false;	
+			canBlock1.var10 = sheet.canELESpikes or false;	
+			canBlock1.var11 = sheet.canHOLSpikes or false;	
+			canBlock1.var12 = sheet.canSHASpikes or false;
+			for i=1,12,1 do
+				if (canBlock1["var" .. i]) then
+					setEG1(10,3)
+					end
+				end
+			local canBlock2 = {}	
+			canBlock2.var1 = sheet.canProtect or false;				
+			canBlock2.var2 = sheet.canShell or false;
+			canBlock2.var3 = sheet.canARMUP or false;
+			canBlock2.var4 = sheet.canMENUP or false;
+			for i=1,4,1 do
+				if (canBlock2["var" .. i]) then
+					setEG1(15,5)
+					end
+				end
+			local canBlock3 = {}	
+			canBlock3.var1 = sheet.canHaste or false;	
+			canBlock3.var2 = sheet.canReflect or false;
+			canBlock3.var3 = sheet.canPOWUP or false;
+			canBlock3.var4 = sheet.canMAGUP or false;
+			for i=1,4,1 do
+				if (canBlock3["var" .. i]) then
+					setEG1(22,8)
+					end
+				end
+			local canBlock4 = {}	
+			canBlock4.var1 = sheet.canRegen or false;
+			canBlock4.var2 = sheet.canAura or false;
+			canBlock4.var3 = sheet.canVanish or false;
+			canBlock4.var4 = sheet.canHealHP or false;
+			for i=1,4,1 do
+				if (canBlock4["var" .. i]) then
+					setEG1(32,11)
+					end
+				end
+	
+
+			local aALARM = sheet.aaAlarm or false;
+			if aALARM then		
+				setEG1(32,18)
+				end
+			local aCLONE = sheet.aaClone or false;
+			if aCLONE then		
+				setEG1(64,32)
+				end		
+			local aESCAPE = sheet.aaEscape or false;
+			if aESCAPE then		
+				setEG1(5,2)
+				end						
+			local aIMPRISON = {}
+			aIMPRISON.var1 = sheet.aaImprison or false;
+			aIMPRISON.var2 = sheet.aaBPrison or false;
+			aIMPRISON.var3 = sheet.aaIPrison or false;
+			aIMPRISON.var4 = sheet.aaSPrison or false;
+			aIMPRISON.var5 = sheet.aaDPrison or false;
+			aIMPRISON.var6 = sheet.aaVPrison or false;
+			if aIMPRISON.var1 then
+				setEG1(36,12)
+				if aIMPRISON.var2 then
+					setEG1(12,4)
+					end
+				if aIMPRISON.var3 then
+					setEG1(12,4)
+					end
+				if aIMPRISON.var4 then
+					setEG1(-9,-3)
+					end
+				if aIMPRISON.var5 then
+					setEG1(9,3)
+					end
+				if aIMPRISON.var6 then
+					setEG1(-12,-4)
+					end
+				end		
+			local aITEMUSE = sheet.aaItemUse or false;
+			if aITEMUSE then		
+				setEG1(15,0)
+				end		
+			local aRES25 = sheet.aaRestore25 or false;
+			if aRES25 then		
+				setEG1(20,13)
+				end	
+			local aRES50 = sheet.aaRestore50 or false;
+			if aRES50 then		
+				setEG1(60,40)
+				end	
+			local aRES75 = sheet.aaRestore75 or false;
+			if aRES75 then		
+				setEG1(100,75)
+				end					
+			local aSSPO = sheet.aaSSPO or false;
+			if aSSPO then		
+				setEG1(12,4)
+				end					
+			local aSSPN = sheet.aaSSPN or false;
+			if aSSPN then		
+				setEG1(9,3)
+				end	
+			
+			obj={}
+			obj.SpT1 = sheet.SpellsTIPO1 or "None"
+			obj.SpT2 = sheet.SpellsTIPO2 or "None"
+			obj.SpT3 = sheet.SpellsTIPO3 or "None"
+			obj.SpT4 = sheet.SpellsTIPO4 or "None"
+			obj.SpT5 = sheet.SpellsTIPO5 or "None"
+			obj.SpT6 = sheet.SpellsTIPO6 or "None"
+			obj.SpT7 = sheet.SpellsTIPO7 or "None"
+			obj.SpT8 = sheet.SpellsTIPO8 or "None"
+			obj.SpT9 = sheet.SpellsTIPO9 or "None"
+			obj.SpT10 = sheet.SpellsTIPO10 or "None"
+			obj.SpT11 = sheet.SpellsTIPO11 or "None"
+			obj.SpT12 = sheet.SpellsTIPO12 or "None"
+			for i=1,12,1 do
+				if (obj["SpT" .. i] == "Spell1" or obj["SpT" .. i] == "Blue1") then
+					setEG1(8,5)
+					end
+				if (obj["SpT" .. i] == "Spell2" or obj["SpT" .. i] == "Blue2") then
+					setEG1(15,9)
+					end
+				if (obj["SpT" .. i] == "Spell3" or obj["SpT" .. i] == "Blue3") then
+					setEG1(25,14)
+					end
+				if (obj["SpT" .. i] == "Spell4" or obj["SpT" .. i] == "Blue4") then
+					setEG1(33,21)
+					end
+				if (obj["SpT" .. i] == "Spell5" or obj["SpT" .. i] == "Blue5") then
+					setEG1(45,30)
+					end
+				if (obj["SpT" .. i] == "Spell6" or obj["SpT" .. i] == "Blue6") then
+					setEG1(55,37)
+					end				
+				if (obj["SpT" .. i] == "Spell7" or obj["SpT" .. i] == "Blue7") then
+					setEG1(64,44)
+					end				
+				if (obj["SpT" .. i] == "Spell8" or obj["SpT" .. i] == "Blue8") then
+					setEG1(80,55)
+					end	
+				if (obj["SpT" .. i] == "Call1") then
+					setEG1(27,14)
+					end	
+				if (obj["SpT" .. i] == "Call2") then
+					setEG1(42,29)
+					end	
+				if (obj["SpT" .. i] == "Call3") then
+					setEG1(64,44)
+					end	
+				if (obj["SpT" .. i] == "Call4") then
+					setEG1(88,59)
+					end	
+				end
+
+			job={}
+			job.JST1 = sheet.JSTipo1 or "None"
+			job.JST2 = sheet.JSTipo2 or "None"
+			job.JST3 = sheet.JSTipo3 or "None"
+			job.JST4 = sheet.JSTipo4 or "None"
+			job.JST5 = sheet.JSTipo5 or "None"
+			job.JST6 = sheet.JSTipo6 or "None"
+			job.JST7 = sheet.JSTipo7 or "None"
+			job.JST8 = sheet.JSTipo8 or "None"
+			job.JST9 = sheet.JSTipo9 or "None"
+			job.JST10 = sheet.JSTipo10 or "None"
+			job.JST11 = sheet.JSTipo11 or "None"
+			job.JST12 = sheet.JSTipo12 or "None"
+			for i=1,12,1 do
+				if (job["JST" .. i] == "JSNv1") then
+					setEG1(10,3)
+					end		
+				if (job["JST" .. i] == "JSNv2") then
+					setEG1(18,7)
+					end	
+				if (job["JST" .. i] == "JSNv3") then
+					setEG1(26,9)
+					end	
+				if (job["JST" .. i] == "JSNv4") then
+					setEG1(32,12)
+					end	
+				if (job["JST" .. i] == "JSNv5") then
+					setEG1(44,16)
+					end	
+				if (job["JST" .. i] == "JSNv6") then
+					setEG1(53,19)
+					end	
+				if (job["JST" .. i] == "JSNv7") then
+					setEG1(61,22)
+					end	
+				if (job["JST" .. i] == "JSNv8") then
+					setEG1(70,25)
+					end		
+				if (job["JST" .. i] == "JSNv9") then
+					setEG1(78,28)
+					end	
+				if (job["JST" .. i] == "JSNv10") then
+					setEG1(86,31)
+					end		
+				end
+
+			local dBURROW = {}
+			dBURROW.var1 = sheet.maBurrow or false		
+			if dBURROW.var1 then
+				dBURROW.var2 = 60;
+				dBURROW.var3 = 20;
+				dBURROW.var4 = 1;
+				dBURROW.var5 = sheet.maBurrowSOSG or false
+				dBURROW.var6 = sheet.maBurrowSOSL or false
+				dBURROW.var7 = sheet.maBurrowMP or false
+				if dBURROW.var5 then		
+					dBURROW.var4 = dBURROW.var4 - 0.25;	
+					end
+				if dBURROW.var6 then		
+					dBURROW.var4 = dBURROW.var4 - 0.25;	
+					end
+				if dBURROW.var7 then			
+					dBURROW.var4 = dBURROW.var4 - 0.25;			
+					sheet.maBurrowMPCost = math.floor(dBURROW.var2*dBURROW.var4) + bLV;
+					end
+				dBURROW.var8 = math.floor(dBURROW.var2*dBURROW.var4);
+				dBURROW.var9 = math.floor(dBURROW.var3*dBURROW.var4);
+				setEG1(dBURROW.var8,dBURROW.var9)
+				end
+
+			local dFLIGHT = {}
+			dFLIGHT.var1 = sheet.maFlight or false		
+			if dFLIGHT.var1 then
+				dFLIGHT.var2 = 20;
+				dFLIGHT.var3 = 9;
+				dFLIGHT.var4 = 1;
+				dFLIGHT.var5 = sheet.maFlightSOSG or false
+				dFLIGHT.var6 = sheet.maFlightSOSL or false
+				dFLIGHT.var7 = sheet.maFlightMP or false
+				if dFLIGHT.var5 then		
+					dFLIGHT.var4 = dFLIGHT.var4 - 0.25;	
+					end
+				if dFLIGHT.var6 then		
+					dFLIGHT.var4 = dFLIGHT.var4 - 0.25;	
+					end
+				if dFLIGHT.var7 then			
+					dFLIGHT.var4 = dFLIGHT.var4 - 0.25;			
+					sheet.maBurrowMPCost = math.floor(dFLIGHT.var2*dFLIGHT.var4) + bLV;
+					end
+				dFLIGHT.var8 = math.floor(dFLIGHT.var2*dFLIGHT.var4);
+				dFLIGHT.var9 = math.floor(dFLIGHT.var3*dFLIGHT.var4);
+				setEG1(dFLIGHT.var8,dFLIGHT.var9)
+				end
+				
+			local dFLOAT = {}
+			dFLOAT.var1 = sheet.maFloat or false		
+			if dFLOAT.var1 then
+				dFLOAT.var2 = 19;
+				dFLOAT.var3 = 6;
+				dFLOAT.var4 = 1;
+				dFLOAT.var5 = sheet.maFloatSOSG or false
+				dFLOAT.var6 = sheet.maFloatSOSL or false
+				dFLOAT.var7 = sheet.maFloatMP or false
+				if dFLOAT.var5 then		
+					dFLOAT.var4 = dFLOAT.var4 - 0.25;	
+					end
+				if dFLOAT.var6 then		
+					dFLOAT.var4 = dFLOAT.var4 - 0.25;	
+					end
+				if dFLOAT.var7 then			
+					dFLOAT.var4 = dFLOAT.var4 - 0.25;			
+					sheet.maBurrowMPCost = math.floor(dFLOAT.var2*dFLOAT.var4) + bLV;
+					end
+				dFLOAT.var8 = math.floor(dFLOAT.var2*dFLOAT.var4);
+				dFLOAT.var9 = math.floor(dFLOAT.var3*dFLOAT.var4);
+				setEG1(dFLOAT.var8,dFLOAT.var9)
+				end
+
+			local dTELEPORT = {}
+			dTELEPORT.var1 = sheet.maTeleport or false		
+			if dTELEPORT.var1 then
+				dTELEPORT.var2 = 60;
+				dTELEPORT.var3 = 40;
+				dTELEPORT.var4 = 1;
+				dTELEPORT.var5 = sheet.maTeleportSOSG or false
+				dTELEPORT.var6 = sheet.maTeleportSOSL or false
+				dTELEPORT.var7 = sheet.maTeleportMP or false
+				if dTELEPORT.var5 then		
+					dTELEPORT.var4 = dTELEPORT.var4 - 0.25;	
+					end
+				if dTELEPORT.var6 then		
+					dTELEPORT.var4 = dTELEPORT.var4 - 0.25;	
+					end
+				if dTELEPORT.var7 then			
+					dTELEPORT.var4 = dTELEPORT.var4 - 0.25;			
+					sheet.maBurrowMPCost = math.floor(dTELEPORT.var2*dTELEPORT.var4) + bLV;
+					end
+				dTELEPORT.var8 = math.floor(dTELEPORT.var2*dTELEPORT.var4);
+				dTELEPORT.var9 = math.floor(dTELEPORT.var3*dTELEPORT.var4);
+				setEG1(dTELEPORT.var8,dTELEPORT.var9)
+				end
+
+			local dGROUND = sheet.maGround or false
+			if dGROUND then
+				local MPGround = sheet.maGroundMP or false;
+				if MPGround then
+					sheet.maGroundMP = bLV;
+					end
+				end
+				
+			local auBlock1 = {}	
+			auBlock1.var1 = sheet.autoFloat or false;
+			auBlock1.var2 = sheet.autoAgiUP or false;
+			auBlock1.var3 = sheet.autoSpiUP or false;
+			auBlock1.var4 = sheet.autoBIOSpikes or false;
+			auBlock1.var5 = sheet.autoGNDSpikes or false;		
+			auBlock1.var6  = sheet.autoFIRSpikes or false;		
+			auBlock1.var7  = sheet.autoWATSpikes or false;		
+			auBlock1.var8  = sheet.autoWINSpikes or false;		
+			auBlock1.var9  = sheet.autoICESpikes or false;		
+			auBlock1.var10  = sheet.autoELESpikes or false;		
+			auBlock1.var11  = sheet.autoHOLSpikes or false;		
+			auBlock1.var12  = sheet.autoSHASpikes or false;			
+			for i=1,12,1 do
+				if (auBlock1["var" .. i]) then
+					setEG1(19,6)
+					end
+				end
+			local auBlock2 = {}	
+			auBlock2.var1 = sheet.autoProtect or false;				
+			auBlock2.var2 = sheet.autoShell or false;
+			auBlock2.var3 = sheet.autoARMUP or false;
+			auBlock2.var4 = sheet.autoMENUP or false;
+			for i=1,4,1 do
+				if (auBlock2["var" .. i]) then
+					setEG1(30,10)
+					end
+				end
+			local auBlock3 = {}	
+			auBlock3.var1 = sheet.autoHaste or false;	
+			auBlock3.var2 = sheet.autoReflect or false;
+			auBlock3.var3 = sheet.autoPOWUP or false;
+			auBlock3.var4 = sheet.autoMAGUP or false;
+			for i=1,4,1 do
+				if (auBlock3["var" .. i]) then
+					setEG1(44,15)
+					end
+				end
+			local auBlock4 = {}	
+			auBlock4.var1 = sheet.autoRegen or false;
+			auBlock4.var2  = sheet.autoAura or false;
+			auBlock4.var3  = sheet.autoVanish or false;
+			for i=1,3,1 do
+				if (auBlock4["var" .. i]) then
+					setEG1(64,21)
+					end
+				end
+			local auBlock5 = {}	
+			auBlock5.var1 = sheet.autoBerserk or false;
+			auBlock5.var2 = sheet.autoBlind or false;
+			auBlock5.var3 = sheet.autoPoison or false;
+			auBlock5.var4 = sheet.autoSleep or false;
+			auBlock5.var5 = sheet.autoSlow or false;
+			auBlock5.var6 = sheet.autoZombie or false;
+			for i=1,6,1 do
+				if (auBlock5["var" .. i]) then
+					setEG1(-19,-6)
+					end
+				end
+			local auBlock6 = {}	
+			auBlock6.var1 = sheet.autoConfuse or false;
+			auBlock6.var2 = sheet.autoSap or false;
+			auBlock6.var3 = sheet.autoUnaware or false;	
+			for i=1,3,1 do
+				if (auBlock6["var" .. i]) then
+					setEG1(-30,-10)
+					end
+				end
+			local auBlock7 = {}
+			auBlock7.var1 = sheet.autoMini or false;	
+			auBlock7.var2 = sheet.autoToad or false;	
+			auBlock7.var3 = sheet.autoVenom or false;			
+			for i=1,3,1 do
+				if (auBlock7["var" .. i]) then
+					setEG1(-44,-15)
+					end
+				end
+			local auBlock8 = {}	
+			auBlock8.var1 = sheet.autoCondemn or false;		
+			auBlock8.var2 = sheet.autoPetrify or false;	
+			for i=1,2,1 do
+				if (auBlock8["var" .. i]) then
+					setEG1(-64,-21)
+					end
+				end
+				
+			local soBlock1 = {}	
+			soBlock1.var1 = sheet.sosFloat or false;
+			soBlock1.var2 = sheet.sosAgiUP or false;
+			soBlock1.var3 = sheet.sosSpiUP or false;
+			soBlock1.var4 = sheet.sosBIOSpikes or false;
+			soBlock1.var5 = sheet.sosGNDSpikes or false;		
+			soBlock1.var6  = sheet.sosFIRSpikes or false;		
+			soBlock1.var7  = sheet.sosWATSpikes or false;		
+			soBlock1.var8  = sheet.sosWINSpikes or false;		
+			soBlock1.var9  = sheet.sosICESpikes or false;		
+			soBlock1.var10  = sheet.sosELESpikes or false;		
+			soBlock1.var11  = sheet.sosHOLSpikes or false;		
+			soBlock1.var12  = sheet.sosSHASpikes or false;			
+			for i=1,12,1 do
+				if ((soBlock1["var" .. i]) and (not auBlock1["var" .. i])) then
+					setEG1(7,3)
+					end
+				end
+			local soBlock2 = {}	
+			soBlock2.var1 = sheet.sosProtect or false;				
+			soBlock2.var2 = sheet.sosShell or false;
+			soBlock2.var3 = sheet.sosARMUP or false;
+			soBlock2.var4 = sheet.sosMENUP or false;
+			for i=1,4,1 do
+				if ((soBlock2["var" .. i]) and (not auBlock2["var" .. i])) then
+					setEG1(12,4)
+					end
+				end
+			local soBlock3 = {}	
+			soBlock3.var1 = sheet.sosHaste or false;	
+			soBlock3.var2 = sheet.sosReflect or false;
+			soBlock3.var3 = sheet.sosPOWUP or false;
+			soBlock3.var4 = sheet.sosMAGUP or false;
+			for i=1,4,1 do
+				if ((soBlock3["var" .. i]) and (not auBlock3["var" .. i])) then
+					setEG1(20,8)
+					end
+				end
+			local soBlock4 = {}	
+			soBlock4.var1 = sheet.sosRegen or false;
+			soBlock4.var2  = sheet.sosAura or false;
+			soBlock4.var3  = sheet.sosVanish or false;
+			for i=1,3,1 do
+				if ((soBlock4["var" .. i]) and (not auBlock4["var" .. i])) then
+					setEG1(36,12)
+					end
+				end
+			local soBlock5 = {}	
+			soBlock5.var1 = sheet.sosBerserk or false;
+			soBlock5.var2 = sheet.sosBlind or false;
+			soBlock5.var3 = sheet.sosPoison or false;
+			soBlock5.var4 = sheet.sosSleep or false;
+			soBlock5.var5 = sheet.sosSlow or false;
+			soBlock5.var6 = sheet.sosZombie or false;
+			for i=1,6,1 do
+				if ((soBlock5["var" .. i]) and (not auBlock5["var" .. i])) then
+					setEG1(-7,-2)
+					end
+				end
+			local soBlock6 = {}	
+			soBlock6.var1 = sheet.sosConfuse or false;
+			soBlock6.var2 = sheet.sosSap or false;
+			soBlock6.var3 = sheet.sosUnaware or false;	
+			for i=1,3,1 do
+				if ((soBlock6["var" .. i]) and (not auBlock6["var" .. i])) then
+					setEG1(-12,-4)
+					end
+				end
+			local soBlock7 = {}
+			soBlock7.var1 = sheet.sosMini or false;	
+			soBlock7.var2 = sheet.sosToad or false;	
+			soBlock7.var3 = sheet.sosVenom or false;			
+			for i=1,3,1 do
+				if ((soBlock7["var" .. i]) and (not auBlock7["var" .. i])) then
+					setEG1(-20,-8)
+					end
+				end
+			local soBlock8 = {}	
+			soBlock8.var1 = sheet.sosCondemn or false;		
+			soBlock8.var2 = sheet.sosPetrify or false;	
+			for i=1,2,1 do
+				if ((soBlock8["var" .. i]) and (not auBlock8["var" .. i])) then
+					setEG1(-36,-12)
+					end
+				end
+
+			local Comeback = {}
+			Comeback.var1 = sheet.Comeback2 or false;
+			Comeback.var2 = sheet.Comeback4 or false;
+			Comeback.var3 = sheet.Comeback6 or false;
+			if (Comeback.var3) and (not Comeback.var2) and (not Comeback.var1) then
+				setEG1(25,9)
+				end
+			if (Comeback.var2) and (not Comeback.var1) then
+				setEG1(37,14)
+				end
+			if (Comeback.var1) then
+				setEG1(50,18)
+				end		
+
+			local Critical = {}
+			Critical.var1 = sheet.supCrit1 or false;
+			Critical.var2 = sheet.supCrit2 or false;
+			Critical.var3 = sheet.supCrit3 or false;
+			if (Critical.var1) and (not Critical.var2) and (not Critical.var3) then
+				setEG1(8,3)
+				end
+			if (Critical.var2) and (not Critical.var3) then
+				setEG1(13,5)
+				end
+			if (Critical.var3) then
+				setEG1(18,7)
+				end					
+					
+			local poBlock = {}	
+			poBlock.var1 = sheet.potFIR or false
+			poBlock.var2 = sheet.potICE or false
+			poBlock.var3 = sheet.potWAT or false
+			poBlock.var4 = sheet.potELE or false
+			poBlock.var5 = sheet.potGND or false
+			poBlock.var6 = sheet.potWIN or false
+			poBlock.var7 = sheet.potBIO or false
+			poBlock.var8 = sheet.potSHA or false
+			poBlock.var9 = sheet.potHOL or false			
+			for i=1,9,1 do
+				if (poBlock["var" .. i]) then
+					setEG1(60,41)
+					end
+				end
+		
+			local wkBlock = {}	
+			wkBlock.var1 = sheet.weakFIR or false
+			wkBlock.var2 = sheet.weakICE or false
+			wkBlock.var3 = sheet.weakWAT or false
+			wkBlock.var4 = sheet.weakELE or false
+			wkBlock.var5 = sheet.weakGND or false
+			wkBlock.var6 = sheet.weakWIN or false
+			wkBlock.var7 = sheet.weakBIO or false
+			wkBlock.var8 = sheet.weakSHA or false
+			wkBlock.var9 = sheet.weakHOL or false	
+			
+			local reBlock = {}	
+			reBlock.var1 = sheet.resFIR or false
+			reBlock.var2 = sheet.resICE or false
+			reBlock.var3 = sheet.resWAT or false
+			reBlock.var4 = sheet.resELE or false
+			reBlock.var5 = sheet.resGND or false
+			reBlock.var6 = sheet.resWIN or false
+			reBlock.var7 = sheet.resBIO or false
+			reBlock.var8 = sheet.resSHA or false
+			reBlock.var9 = sheet.resHOL or false				
+
+			local imBlock = {}	
+			imBlock.var1 = sheet.immFIR or false
+			imBlock.var2 = sheet.immICE or false
+			imBlock.var3 = sheet.immWAT or false
+			imBlock.var4 = sheet.immELE or false
+			imBlock.var5 = sheet.immGND or false
+			imBlock.var6 = sheet.immWIN or false
+			imBlock.var7 = sheet.immBIO or false
+			imBlock.var8 = sheet.immSHA or false
+			imBlock.var9 = sheet.immHOL or false	
+			
+			local abBlock = {}	
+			abBlock.var1 = sheet.absFIR or false
+			abBlock.var2 = sheet.absICE or false
+			abBlock.var3 = sheet.absWAT or false
+			abBlock.var4 = sheet.absELE or false
+			abBlock.var5 = sheet.absGND or false
+			abBlock.var6 = sheet.absWIN or false
+			abBlock.var7 = sheet.absBIO or false
+			abBlock.var8 = sheet.absSHA or false
+			abBlock.var9 = sheet.absHOL or false	
+			
+			for i=1,9,1 do
+				if ((wkBlock["var" .. i]) and (not reBlock["var" .. i]) and (not imBlock["var" .. i]) and (not abBlock["var" .. i])) then
+					setEG1(-9,-4)
+					end
+				end	
+				
+			for i=1,9,1 do
+				if ((reBlock["var" .. i]) and (not imBlock["var" .. i]) and (not abBlock["var" .. i])) then
+					setEG1(7,3)
+					end
+				end	
+				
+			for i=1,9,1 do
+				if ((imBlock["var" .. i]) and (not abBlock["var" .. i])) then
+					setEG1(15,7)
+					end
+				end	
+			for i=1,9,1 do
+				if (abBlock["var" .. i]) then
+					setEG1(33,15)
+					end
+				end	
+
+		local Scan = {}
+		Scan.var1 = sheet.speBadScan or false;
+		Scan.var2 = sheet.speNoScan or false;
+		if (Scan.var1) then
+			setEG1(14,7)
+			end
+		if (Scan.var2) then
+			setEG1(10,4)
+			end
+	
+		local Heavy = sheet.supHArm or false;
+		if Heavy then
+			setEG1(10,3)
+			end
+		local Mystic = sheet.supMRes or false;
+		if Mystic then
+			setEG1(10,3)
+			end	
+	
+		local Evasion = {}
+		Evasion.var1 = sheet.supEvader or false;
+		Evasion.var2 = sheet.supEva10 or false;
+		Evasion.var3 = sheet.supEva25 or false;
+		Evasion.var4 = sheet.supEva50 or false;
+		Evasion.var5 = sheet.supEva75 or false;
+		Evasion.var6 = sheet.supLEva or false;
+		if (Evasion.var1) then
+			setEG1(35,25)
+			end
+		if (Evasion.var2) then
+			setEG1(10,3)
+			end
+		if (Evasion.var3) then
+			setEG1(19,6)
+			end
+		if (Evasion.var4) then
+			setEG1(35,25)
+			end
+		if (Evasion.var5) then
+			setEG1(60,25)
+			end
+		if (Evasion.var6) then
+			setEG1(-33,-11)
+			end
+			
+		local MEvasion = {}
+		MEvasion.var1 = sheet.supLMEva or false;
+		MEvasion.var2 = sheet.supMEva10 or false;
+		MEvasion.var3 = sheet.supMEva25 or false;
+		MEvasion.var4 = sheet.supMEva50 or false;
+		MEvasion.var5 = sheet.supMEva75 or false;
+		if (MEvasion.var1) then
+			setEG1(-33,-11)
+			end
+		if (MEvasion.var2) then
+			setEG1(10,3)
+			end
+		if (MEvasion.var3) then
+			setEG1(19,6)
+			end
+		if (MEvasion.var4) then
+			setEG1(35,25)
+			end
+		if (MEvasion.var5) then
+			setEG1(60,25)
+			end
+
+		local wkStat = {}
+		wkStat.var1 = sheet.weakBerserk or false;
+		wkStat.var2 = sheet.weakBlind or false;
+		wkStat.var3 = sheet.weakCurse or false;
+		wkStat.var4 = sheet.weakDisable or false;
+		wkStat.var5 = sheet.weakImmobilize or false;
+		wkStat.var6 = sheet.weakPoison or false;
+		wkStat.var7 = sheet.weakSilence or false;
+		wkStat.var8 = sheet.weakSleep or false;
+		wkStat.var9 = sheet.weakSlow or false;
+		for i=1,9,1 do
+			if (wkStat["var" .. i]) then
+				setEG1(-10,-3)
+				end
+			end		
+		wkStat.var10 = sheet.weakCondemn or false;
+		wkStat.var11 = sheet.weakConfuse or false;
+		wkStat.var12 = sheet.weakPetrify or false;
+		wkStat.var13 = sheet.weakSTRDown or false;
+		wkStat.var14 = sheet.weakAGIDown or false;
+		wkStat.var15 = sheet.weakMAGDown or false;
+		wkStat.var16 = sheet.weakMENDown or false;
+		wkStat.var17 = sheet.weakARMDown or false;
+		wkStat.var18 = sheet.weakSPIDown or false;
+		wkStat.var19 = sheet.weakSap or false;
+		wkStat.var20 = sheet.weakUnaware or false;
+		for i=10,20,1 do
+			if (wkStat["var" .. i]) then
+				setEG1(-19,-6)
+				end
+			end		
+		wkStat.var21 = sheet.weakEject or false;
+		wkStat.var22 = sheet.weakMini or false;
+		wkStat.var23 = sheet.weakToad or false;
+		wkStat.var24 = sheet.weakSTRBrk or false;
+		wkStat.var25 = sheet.weakAGIBrk or false;
+		wkStat.var26 = sheet.weakMAGBrk or false;
+		wkStat.var27 = sheet.weakMENBrk or false;
+		wkStat.var28 = sheet.weakARMBrk or false;
+		wkStat.var29 = sheet.weakSPIBrk or false;
+		wkStat.var30 = sheet.weakStop or false;
+		wkStat.var31 = sheet.weakVenom or false;
+		wkStat.var32 = sheet.weakZombie or false;
+		for i=21,32,1 do
+			if (wkStat["var" .. i]) then
+				setEG1(-30,-10)
+				end
+			end						
+		wkStat.var33 = sheet.weakCharm or false;
+		wkStat.var34 = sheet.weakDeath or false;
+		wkStat.var35 = sheet.weakFrozen or false;
+		wkStat.var36 = sheet.weakHeat or false;
+		wkStat.var37 = sheet.weakMeltdown or false;
+		wkStat.var38 = sheet.weakStone or false;
+		for i=33,38,1 do
+			if (wkStat["var" .. i]) then
+				setEG1(-44,-15)
+				end
+			end	
+			
+		local reStat = {}
+		reStat.var1 = sheet.resBerserk or false;
+		reStat.var2 = sheet.resBlind or false;
+		reStat.var3 = sheet.resImmobilize or false;
+		reStat.var4 = sheet.resPoison or false;
+		reStat.var5 = sheet.resSleep or false;
+		reStat.var6 = sheet.resSlow or false;
+		reStat.var7 = sheet.resZombie or false;
+		reStat.var8 = sheet.resLock or false;
+		reStat.var9 = sheet.resCondemn or false;
+		reStat.var10 = sheet.resConfuse or false;
+		reStat.var11 = sheet.resCurse or false;
+		reStat.var12 = sheet.resDisable or false;
+		reStat.var13 = sheet.resPetrify or false;
+		reStat.var14 = sheet.resSilence or false;
+		reStat.var15 = sheet.resSap or false;
+		reStat.var16 = sheet.resUnaware or false;
+		reStat.var17 = sheet.resEject or false;
+		reStat.var18 = sheet.resMini or false;
+		reStat.var19 = sheet.resSTRDown or false;
+		reStat.var20 = sheet.resAGIDown or false;
+		reStat.var21 = sheet.resMAGDown or false;
+		reStat.var22 = sheet.resMENDown or false;
+		reStat.var23 = sheet.resARMDown or false;
+		reStat.var24 = sheet.resSPIDown or false;
+		reStat.var25 = sheet.resSTRBrk or false;
+		reStat.var26 = sheet.resAGIBrk or false;
+		reStat.var27 = sheet.resMAGBrk or false;
+		reStat.var28 = sheet.resMENBrk or false;
+		reStat.var29 = sheet.resARMBrk or false;
+		reStat.var30 = sheet.resSPIBrk or false;
+		reStat.var31 = sheet.resStop or false;
+		reStat.var32 = sheet.resToad or false;
+		reStat.var33 = sheet.resVenom or false;
+		reStat.var34 = sheet.resElemWeak or false;
+		reStat.var35 = sheet.resCharm or false;
+		reStat.var36 = sheet.resDeath or false;
+		reStat.var37 = sheet.resFrozen or false;
+		reStat.var38 = sheet.resGravity or false;
+		reStat.var39 = sheet.resHeat or false;
+		reStat.var40 = sheet.resMeltdown or false;
+		reStat.var41 = sheet.resStone or false;
+
+		local imStat = {}
+		imStat.var1 = sheet.immBerserk or false;
+		imStat.var2 = sheet.immBlind or false;
+		imStat.var3 = sheet.immImmobilize or false;
+		imStat.var4 = sheet.immPoison or false;
+		imStat.var5 = sheet.immSleep or false;
+		imStat.var6 = sheet.immSlow or false;
+		imStat.var7 = sheet.immZombie or false;
+		imStat.var8 = sheet.immLock or false;
+		imStat.var9 = sheet.immCondemn or false;
+		imStat.var10 = sheet.immConfuse or false;
+		imStat.var11 = sheet.immCurse or false;
+		imStat.var12 = sheet.immDisable or false;
+		imStat.var13 = sheet.immPetrify or false;
+		imStat.var14 = sheet.immSilence or false;
+		imStat.var15 = sheet.immSap or false;
+		imStat.var16 = sheet.immUnaware or false;
+		imStat.var17 = sheet.immEject or false;
+		imStat.var18 = sheet.immMini or false;
+		imStat.var19 = sheet.immSTRDown or false;
+		imStat.var20 = sheet.immAGIDown or false;
+		imStat.var21 = sheet.immMAGDown or false;
+		imStat.var22 = sheet.immMENDown or false;
+		imStat.var23 = sheet.immARMDown or false;
+		imStat.var24 = sheet.immSPIDown or false;
+		imStat.var25 = sheet.immSTRBrk or false;
+		imStat.var26 = sheet.immAGIBrk or false;
+		imStat.var27 = sheet.immMAGBrk or false;
+		imStat.var28 = sheet.immMENBrk or false;
+		imStat.var29 = sheet.immARMBrk or false;
+		imStat.var30 = sheet.immSPIBrk or false;
+		imStat.var31 = sheet.immStop or false;
+		imStat.var32 = sheet.immToad or false;
+		imStat.var33 = sheet.immVenom or false;
+		imStat.var34 = sheet.immElemWeak or false;
+		imStat.var35 = sheet.immCharm or false;
+		imStat.var36 = sheet.immDeath or false;
+		imStat.var37 = sheet.immFrozen or false;
+		imStat.var38 = sheet.immGravity or false;
+		imStat.var39 = sheet.immHeat or false;
+		imStat.var40 = sheet.immMeltdown or false;
+		imStat.var41 = sheet.immStone or false;
+
+		local imCAT = {}
+		local ReCAT = {}
+		ReCAT.var1 = sheet.resFatal or false;
+		ReCAT.var2 = sheet.resMystify or false;
+		ReCAT.var3 = sheet.resSeal or false;
+		ReCAT.var4 = sheet.resTime or false;
+		ReCAT.var5 = sheet.resToxin or false;
+		ReCAT.var6 = sheet.resTransform or false;
+		ReCAT.var7 = sheet.resWeaken or false;
+		imCAT.var1 = sheet.immFatal or false;		
+		imCAT.var2 = sheet.immMystify or false;
+		imCAT.var3 = sheet.immSeal or false;
+		imCAT.var4 = sheet.immTime or false;
+		imCAT.var5 = sheet.immToxin or false;
+		imCAT.var6 = sheet.immTransform or false;
+		imCAT.var7 = sheet.immWeaken or false;
+
+		local immALL = sheet.immStatus or false;
+			if immALL then
+				for i=1,41,1 do
+					reStat["var" .. i] = false;
+					imStat["var" .. i] = false;
+					end
+				for i=1,7,1 do
+					ReCAT["var" .. i] = false;
+					imCAT["var" .. i] = false;
+					end
+				setEG1(80,30)
+				end
+		
+		if (imCAT.var1) then
+			ReCAT.var1 = false;
+			reStat.var9 = false;
+			reStat.var17 = false;
+			reStat.var36 = false;
+			reStat.var37 = false;
+			reStat.var38 = false;
+			reStat.var39 = false;	
+			imStat.var9 = false;
+			imStat.var17 = false;
+			imStat.var36 = false;
+			imStat.var37 = false;
+			imStat.var38 = false;
+			imStat.var39 = false;
+			if ((bTIPO ~= "Boss") and (bTIPO ~= "End Boss")) then
+				setEG1(25,10)
+				end
+			end			
+		if (imCAT.var2) then
+			ReCAT.var2 = false
+			reStat.var1 = false;
+			reStat.var10 = false;
+			reStat.var16 = false;
+			reStat.var35 = false;
+			imStat.var1 = false;
+			imStat.var10 = false;
+			imStat.var16 = false;
+			imStat.var35 = false;
+			setEG1(18,8)
+			end
+		if (imCAT.var3) then
+			ReCAT.var3 = false;
+			reStat.var2 = false;
+			reStat.var5 = false;
+			reStat.var11 = false;
+			reStat.var13 = false;
+			reStat.var14 = false;
+			reStat.var41 = false;
+			imStat.var2 = false;
+			imStat.var5 = false;
+			imStat.var11 = false;
+			imStat.var13 = false;
+			imStat.var14 = false;
+			imStat.var41 = false;
+			setEG1(22,9)
+			end
+		if (imCAT.var4) then
+			ReCAT.var4 = false;
+			reStat.var3 = false;
+			reStat.var6 = false;
+			reStat.var12 = false;
+			reStat.var15 = false;
+			reStat.var31 = false;
+			imStat.var3 = false;
+			imStat.var6 = false;
+			imStat.var12 = false;
+			imStat.var15 = false;
+			imStat.var31 = false;
+			setEG1(12,5)
+			end
+		if (imCAT.var5) then
+			ReCAT.var5 = false;
+			reStat.var4 = false;
+			reStat.var33 = false;
+			imStat.var4 = false;
+			imStat.var33 = false;
+			setEG1(13,5)
+			end
+		if (imCAT.var6) then
+			ReCAT.var6 = false;
+			reStat.var7 = false;
+			reStat.var18 = false;
+			reStat.var32 = false;	
+			imStat.var7 = false;
+			imStat.var18 = false;
+			imStat.var32 = false;	
+			setEG1(18,7)	
+			end
+		if (imCAT.var7) then
+			ReCAT.var7 = false;
+			reStat.var8 = false;
+			reStat.var19 = false;
+			reStat.var20 = false;
+			reStat.var21 = false;
+			reStat.var22 = false;
+			reStat.var23 = false;
+			reStat.var24 = false;
+			reStat.var25 = false;
+			reStat.var26 = false;
+			reStat.var27 = false;
+			reStat.var28 = false;
+			reStat.var29 = false;
+			reStat.var30 = false;
+			reStat.var34 = false;
+			reStat.var40 = false;	
+			imStat.var8 = false;
+			imStat.var19 = false;
+			imStat.var20 = false;
+			imStat.var21 = false;
+			imStat.var22 = false;
+			imStat.var23 = false;
+			imStat.var24 = false;
+			imStat.var25 = false;
+			imStat.var26 = false;
+			imStat.var27 = false;
+			imStat.var28 = false;
+			imStat.var29 = false;
+			imStat.var30 = false;
+			imStat.var34 = false;
+			imStat.var40 = false;		
+			setEG1(19,8)			
+			end
+		if (ReCAT.var1) then
+			reStat.var9 = false;
+			reStat.var17 = false;
+			reStat.var36 = false;
+			reStat.var37 = false;
+			reStat.var38 = false;
+			reStat.var39 = false;			
+			setEG1(13,5)			
+			end			
+		if (ReCAT.var2) then
+			reStat.var1 = false;
+			reStat.var10 = false;
+			reStat.var16 = false;
+			reStat.var35 = false;		
+			setEG1(9,4)		
+			end
+		if (ReCAT.var3) then
+			reStat.var2 = false;
+			reStat.var5 = false;
+			reStat.var11 = false;
+			reStat.var13 = false;
+			reStat.var14 = false;
+			reStat.var41 = false;		
+			setEG1(11,4)		
+			end
+		if (ReCAT.var4) then
+			reStat.var3 = false;
+			reStat.var6 = false;
+			reStat.var12 = false;
+			reStat.var15 = false;
+			reStat.var31 = false;		
+			setEG1(6,2)		
+			end
+		if (ReCAT.var5) then
+			reStat.var4 = false;
+			reStat.var33 = false;		
+			setEG1(6,2)		
+			end
+		if (ReCAT.var6) then
+			reStat.var7 = false;
+			reStat.var18 = false;
+			reStat.var32 = false;			
+			setEG1(9,3)			
+			end
+		if (ReCAT.var7) then
+			reStat.var8 = false;
+			reStat.var19 = false;
+			reStat.var20 = false;
+			reStat.var21 = false;
+			reStat.var22 = false;
+			reStat.var23 = false;
+			reStat.var24 = false;
+			reStat.var25 = false;
+			reStat.var26 = false;
+			reStat.var27 = false;
+			reStat.var28 = false;
+			reStat.var29 = false;
+			reStat.var30 = false;
+			reStat.var34 = false;
+			reStat.var40 = false;		
+			setEG1(9,4)					
+			end
+		
+		
+		for i=1,8,1 do
+			if ((reStat["var" .. i]) and (not imStat["var" .. i])) then
+				setEG1(2,1)
+				end
+			end
+		for i=9,16,1 do
+			if ((reStat["var" .. i]) and (not imStat["var" .. i])) then
+				setEG1(4,1)
+				end
+			end
+		for i=17,34,1 do
+			if ((reStat["var" .. i]) and (not imStat["var" .. i])) then
+				setEG1(6,2)
+				end
+			end
+		for i=35,41,1 do
+			if ((reStat["var" .. i]) and (not imStat["var" .. i])) then
+				setEG1(8,3)
+				end
+			end
+			
+		for i=1,8,1 do
+			if (imStat["var" .. i])  then
+				setEG1(5,2)
+				end
+			end
+		for i=9,16,1 do
+			if (imStat["var" .. i]) then
+				setEG1(9,3)
+				end
+			end
+		for i=17,34,1 do
+			if (imStat["var" .. i]) then
+				setEG1(12,5)
+				end
+			end
+		for i=35,41,1 do
+			if (imStat["var" .. i]) then
+				setEG1(16,6)
+				end
+			if ((i== 36) and (bTIPO ~= "Notorious")) then
+				setEG1(-16,-6)
+				end
+			end
+
+		local ManaBound = sheet.supMBound or false;
+		if ManaBound then
+			setEG1(-30,-10)
+			end
+		local Minion = sheet.supMinion or false;
+		if Minion then
+			setEG1(-20,-7)
+			end		
+		
+		local Drain = {}
+		Drain.var1 = sheet.supNDrain or false;
+		Drain.var2 = sheet.supRDrain or false;
+		if ((Drain.var2) and (not Drain.var1)) then
+			setEG1(7,3)
+			end	
+		if (Drain.var1) then
+			setEG1(15,7)
+			end				
+
+		local XFight = sheet.supXFight or false;
+		if (XFight) then
+			setEG1(50,18)
+			end	
+
+		local FIELD = {}
+		FIELD.var1 = sheet.fieldAttack or false;
+		if (FIELD.var1) then
+			setEG1(22,7)
+			end				
+		FIELD.var2 = sheet.fieldSap or false;
+		if (FIELD.var2) then
+			setEG1(48,16)
+			end	
+		FIELD.var3 = sheet.fieldItem or false;
+		if (FIELD.var3) then
+			setEG1(33,11)
+			end	
+		FIELD.var4 = sheet.fieldMagic or false;
+		if (FIELD.var4) then
+			setEG1(48,16)
+			end	
+		FIELD.var5 = sheet.fieldMagnetic or false;
+		if (FIELD.var5) then
+			setEG1(48,16)
+			end	
+		FIELD.var6 = sheet.fieldMPSap or false;
+		if (FIELD.var6) then
+			setEG1(48,16)
+			end	
+		FIELD.var7 = sheet.fieldSpell or false;
+		if (FIELD.var7) then
+			setEG1(33,11)
+			end	
+		FIELD.var8 = sheet.fieldTech or false;
+		if (FIELD.var8) then
+			setEG1(48,16)
+			end
+
+		local BOSS = {}
+		BOSS.var1 = sheet.bossDecoy or false
+		BOSS.var2 = sheet.bossDecoyNum or 1;
+		BOSS.var3 = 20*BOSS.var2;
+		BOSS.var4 = 25*BOSS.var2;
+		if (BOSS.var1) then
+			setEG1(BOSS.var3,BOSS.var4)
+			end		
+		BOSS.var5 = sheet.bossSlave or false
+		BOSS.var6 = sheet.bossSlaveN or false
+		BOSS.var7 = sheet.bossSlaveS or false
+		BOSS.var8 = sheet.bossSlaveN1 or 1;
+		BOSS.var9 = sheet.bossSlaveN2 or 1;
+		BOSS.var10 = -30 * BOSS.var8;
+		BOSS.var11 = -10 * BOSS.var8;
+		BOSS.var12 = -10 * BOSS.var9;
+		BOSS.var13 = -5 * BOSS.var9;
+		if (BOSS.var5) then
+			if (BOSS.var6) then
+				setEG1(BOSS.var10,BOSS.var11)
+				end
+			if (BOSS.var7) then
+				setEG1(BOSS.var12,BOSS.var13)
+				end
+			end			
+		BOSS.var14 = sheet.bossXACtion or false
+		if (BOSS.var14) then
+			setEG1(80,30)
+			end		
+		
+		COUNTER = {}
+		COUNTER.var1 = sheet.reCAtk50;
+		COUNTER.var2 = sheet.reCAtk75;
+		COUNTER.var3 = sheet.reCAtk100;
+		COUNTER.var4 = sheet.reCAtkSOSL;
+		COUNTER.var5 = sheet.reCAtkSOSG;
+		COUNTER.var6 = sheet.reCAtkUns;
+		COUNTER.var7 = 1;
+		if (COUNTER.var4) then
+			COUNTER.var7 = COUNTER.var7 -0.25;
+			end
+		if (COUNTER.var5) then
+			COUNTER.var7 = COUNTER.var7 -0.25;
+			end
+		if (COUNTER.var6) then
+			COUNTER.var7 = COUNTER.var7 +1;
+			end
+		COUNTER.var8 = 0;
+		COUNTER.var9 = 0;	
+		if ((COUNTER.var1) and (not COUNTER.var2) and (not COUNTER.var3)) then
+			COUNTER.var8 = math.floor(14*COUNTER.var7)
+			COUNTER.var9 = math.floor(7*COUNTER.var7)
+			setEG1(COUNTER.var8,COUNTER.var9)
+			end
+		if ((COUNTER.var2) and (not COUNTER.var3)) then
+			COUNTER.var8 = math.floor(22*COUNTER.var7)
+			COUNTER.var9 = math.floor(11*COUNTER.var7)
+			setEG1(COUNTER.var8,COUNTER.var9)
+			end
+		if (COUNTER.var3) then
+			COUNTER.var8 = math.floor(44*COUNTER.var7)
+			COUNTER.var9 = math.floor(22*COUNTER.var7)
+			setEG1(COUNTER.var8,COUNTER.var9)
+			end
+			
+		MCOUNTER = {}
+		MCOUNTER.var1 = sheet.reCMag50;
+		MCOUNTER.var2 = sheet.reCMag75;
+		MCOUNTER.var3 = sheet.reCMag100;
+		MCOUNTER.var4 = sheet.reCMagSOSL;
+		MCOUNTER.var5 = sheet.reCMagSOSG;
+		MCOUNTER.var6 = sheet.reCMagUns;
+		MCOUNTER.var7 = 1;
+		if (MCOUNTER.var4) then
+			MCOUNTER.var7 = MCOUNTER.var7 -0.25;
+			end
+		if (MCOUNTER.var5) then
+			MCOUNTER.var7 = MCOUNTER.var7 -0.25;
+			end
+		if (MCOUNTER.var6) then
+			MCOUNTER.var7 = MCOUNTER.var7 +1;
+			end
+		MCOUNTER.var8 = 0;
+		MCOUNTER.var9 = 0;
+		if ((MCOUNTER.var1) and (not MCOUNTER.var2) and (not MCOUNTER.var3)) then
+			MCOUNTER.var8 = math.floor(15*MCOUNTER.var7)
+			MCOUNTER.var9 = math.floor(7*MCOUNTER.var7)
+			setEG1(MCOUNTER.var8,MCOUNTER.var9)
+			end
+		if ((MCOUNTER.var2) and (not MCOUNTER.var3)) then
+			MCOUNTER.var8 = math.floor(24*MCOUNTER.var7)
+			MCOUNTER.var9 = math.floor(12*MCOUNTER.var7)
+			setEG1(MCOUNTER.var8,MCOUNTER.var9)
+			end
+		if (MCOUNTER.var3) then
+			MCOUNTER.var8 = math.floor(48*MCOUNTER.var7)
+			MCOUNTER.var9 = math.floor(24*MCOUNTER.var7)
+			setEG1(MCOUNTER.var8,MCOUNTER.var9)
+			end
+			
+		CSTANCE = {}
+		CSTANCE.var1 = sheet.reCStanPhys;
+		CSTANCE.var2 = sheet.reCStanSOSL;
+		CSTANCE.var3 = sheet.reCStanSOSG;
+		CSTANCE.var4 = sheet.reCStanUns;
+		CSTANCE.var5 = 1;
+		if (CSTANCE.var2) then
+			CSTANCE.var5 = CSTANCE.var5 -0.25;
+			end
+		if (CSTANCE.var3) then
+			CSTANCE.var5 = CSTANCE.var5 -0.25;
+			end
+		if (CSTANCE.var4) then
+			CSTANCE.var5 = CSTANCE.var5 +1;
+			end
+		CSTANCE.var6 = 0;
+		CSTANCE.var7 = 0;
+		if (CSTANCE.var1) then
+			CSTANCE.var6 = math.floor(15*CSTANCE.var5)
+			CSTANCE.var7 = math.floor(7*CSTANCE.var5)
+			setEG1(CSTANCE.var6,CSTANCE.var7)
+			end
+			
+		CSTANCE2 = {}
+		CSTANCE2.var1 = sheet.reCStanMag;
+		CSTANCE2.var2 = sheet.reCStanSOSL;
+		CSTANCE2.var3 = sheet.reCStanSOSG;
+		CSTANCE2.var4 = sheet.reCStanUns;
+		CSTANCE2.var5 = 1;
+		if (CSTANCE2.var2) then
+			CSTANCE2.var5 = CSTANCE2.var5 -0.25;
+			end
+		if (CSTANCE2.var3) then
+			CSTANCE2.var5 = CSTANCE2.var5 -0.25;
+			end
+		if (CSTANCE2.var4) then
+			CSTANCE2.var5 = CSTANCE2.var5 +1;
+			end
+		CSTANCE2.var6 = 0;
+		CSTANCE2.var7 = 0;
+		if (CSTANCE2.var1) then
+			CSTANCE2.var6 = math.floor(15*CSTANCE2.var5)
+			CSTANCE2.var7 = math.floor(7*CSTANCE2.var5)
+			setEG1(CSTANCE2.var6,CSTANCE2.var7)
+			end
+			
+		REFLECTD = {}
+		REFLECTD.var1 = sheet.reRD5;
+		REFLECTD.var2 = sheet.reRD10;
+		REFLECTD.var3 = sheet.reRD25;
+		REFLECTD.var4 = sheet.reRDSOSL;
+		REFLECTD.var5 = sheet.reRDSOSG;
+		REFLECTD.var6 = sheet.reRDUns;
+		REFLECTD.var7 = 1;
+		if (REFLECTD.var4) then
+			REFLECTD.var7 = REFLECTD.var7 -0.25;
+			end
+		if (REFLECTD.var5) then
+			REFLECTD.var7 = REFLECTD.var7 -0.25;
+			end
+		if (REFLECTD.var6) then
+			REFLECTD.var7 = REFLECTD.var7 +1;
+			end
+		REFLECTD.var8 = 0;
+		REFLECTD.var9 = 0;
+		if ((REFLECTD.var1) and (not REFLECTD.var2) and (not REFLECTD.var3)) then
+			REFLECTD.var8 = math.floor(25*REFLECTD.var7)
+			REFLECTD.var9 = math.floor(7*REFLECTD.var7)
+			setEG1(REFLECTD.var8,REFLECTD.var9)
+			end
+		if ((REFLECTD.var2) and (not REFLECTD.var3)) then
+			REFLECTD.var8 = math.floor(30*REFLECTD.var7)
+			REFLECTD.var9 = math.floor(10*REFLECTD.var7)
+			setEG1(REFLECTD.var8,REFLECTD.var9)
+			end
+		if (REFLECTD.var3) then
+			REFLECTD.var8 = math.floor(50*REFLECTD.var7)
+			REFLECTD.var9 = math.floor(17*REFLECTD.var7)
+			setEG1(REFLECTD.var8,REFLECTD.var9)
+			end
+
+
+		local FinAtk = {}
+		FinAtk.var1 = sheet.reCFin or false;
+		FinAtk.var2 = sheet.reCFinUns or false;
+		FinAtk.var3 = 1;
+		if (FinAtk.var2) then
+			FinAtk.var3 = FinAtk.var3+1;
+			end
+		FinAtk.var4 = math.floor(20*FinAtk.var3)
+		FinAtk.var5 = math.floor(10*FinAtk.var3)
+		if (FinAtk.var1) then
+			setEG1(FinAtk.var4,FinAtk.var5)		
+			end
+			
+		local Fission = {}
+		Fission.var1 = sheet.reCFiss or false;
+		Fission.var2 = sheet.reCFissUns or false;
+		Fission.var3 = 1;
+		if (Fission.var2) then
+			Fission.var3 = Fission.var3+1;
+			end
+		Fission.var4 = math.floor(10*Fission.var3)
+		Fission.var5 = math.floor(3*Fission.var3)
+		if (Fission.var1) then
+			setEG1(Fission.var4,Fission.var5)		
+			end
+			
+		ROTATE = {}
+		ROTATE.var1 = sheet.reRotate;
+		ROTATE.var2 = sheet.reRotateGain;
+		ROTATE.var3 = sheet.reRotateLose;
+		ROTATE.var4 = sheet.reRotateUns;
+		ROTATE.var5 = 1;
+		if (ROTATE.var2) then
+			ROTATE.var5 = ROTATE.var5 -0.25;
+			end
+		if (ROTATE.var3) then
+			ROTATE.var5 = ROTATE.var5 -0.25;
+			end
+		if (ROTATE.var4) then
+			ROTATE.var5 = ROTATE.var5 +1;
+			end
+		ROTATE.var6 = 0;
+		ROTATE.var7 = 0;
+		if (ROTATE.var1) then
+			ROTATE.var6 = math.floor(21*ROTATE.var5)
+			ROTATE.var7 = math.floor(7*ROTATE.var5)
+			setEG1(ROTATE.var6,ROTATE.var7)
+			end
+
+		recSTAT = {}
+		recSTAT.var1 = sheet.recCSFloat or false;
+		recSTAT.var2 = sheet.recCSAgiUP or false;
+		recSTAT.var3 = sheet.recCSSpiUP or false;
+		recSTAT.var4 = sheet.recCSBIOSpikes or false;
+		recSTAT.var5 = sheet.recCSGNDSpikes or false;
+		recSTAT.var6 = sheet.recCSFIRSpikes or false;
+		recSTAT.var7 = sheet.recCSWATSpikes or false;
+		recSTAT.var8 = sheet.recCSWINSpikes or false;
+		recSTAT.var9 = sheet.recCSICESpikes or false;
+		recSTAT.var10 = sheet.recCSELESpikes or false;
+		recSTAT.var11 = sheet.recCSHOLSpikes or false;
+		recSTAT.var12 = sheet.recCSSHASpikes or false;
+		recSTAT.var13 = sheet.recCSProtect or false;
+		recSTAT.var14 = sheet.recCSShell or false;
+		recSTAT.var15 = sheet.recCSARMUP or false;
+		recSTAT.var16 = sheet.recCSMENUP or false;
+		recSTAT.var17 = sheet.recCSHaste or false;
+		recSTAT.var19 = sheet.recCSReflect or false;
+		recSTAT.var20 = sheet.recCSPOWUP or false;
+		recSTAT.var21 = sheet.recCSMAGUP or false;
+		recSTAT.var22 = sheet.recCSRegen or false;
+		recSTAT.var23 = sheet.recCSAura or false;
+		recSTAT.var24 = sheet.recCSVanish or false;
+		recSTAT.var25 = sheet.recCSGain or false;
+		recSTAT.var26 = sheet.recCSLose or false;
+		recSTAT.var27 = sheet.recCSUns or false;
+		recSTAT.var28 = 1;
+		if (recSTAT.var25) then
+			recSTAT.var28 = recSTAT.var28 -0.25;
+			end
+		if (recSTAT.var26) then
+			recSTAT.var28 = recSTAT.var28 -0.25;
+			end
+		if (recSTAT.var27) then
+			recSTAT.var28 = recSTAT.var28 +1;
+			end
+		recSTAT.var29 = 0;
+		recSTAT.var30 = 0;
+		for i=1,12,1 do
+			recSTAT.var29 = math.floor(30*recSTAT.var28);
+			recSTAT.var30 = math.floor(14*recSTAT.var28);
+			setEG1(ROTATE.var29,ROTATE.var30)
+			end
+		for i=13,16,1 do
+			recSTAT.var29 = math.floor(35*recSTAT.var28);
+			recSTAT.var30 = math.floor(16*recSTAT.var28);
+			setEG1(ROTATE.var29,ROTATE.var30)
+			end
+		for i=17,21,1 do
+			recSTAT.var29 = math.floor(43*recSTAT.var28);
+			recSTAT.var30 = math.floor(20*recSTAT.var28);
+			setEG1(ROTATE.var29,ROTATE.var30)
+			end
+		for i=22,24,1 do
+			recSTAT.var29 = math.floor(59*recSTAT.var28);
+			recSTAT.var30 = math.floor(24*recSTAT.var28);
+			setEG1(ROTATE.var29,ROTATE.var30)
+			end
+		
+		local Ataque1 = {}
+		Ataque1.var1 = tonumber(sheet.Atk1ExpF) or 0;
+		Ataque1.var2 = tonumber(sheet.Atk1GilF) or 0;
+		if ((Ataque1.var1 > 0) and (Ataque1.var2 >0)) then
+			setEG1(Ataque1.var1,Ataque1.var2)
+			end
+
+		local Ataque2 = {}
+		Ataque2.var1 = tonumber(sheet.Atk2ExpF) or 0;
+		Ataque2.var2 = tonumber(sheet.Atk2GilF) or 0;
+		if ((Ataque2.var1 > 0) and (Ataque2.var2 >0)) then
+			setEG1(Ataque2.var1,Ataque2.var2)
+			end
+
+		local Ataque3 = {}
+		Ataque3.var1 = tonumber(sheet.Atk3ExpF) or 0;
+		Ataque3.var2 = tonumber(sheet.Atk3GilF) or 0;
+		if ((Ataque3.var1 > 0) and (Ataque3.var2 >0)) then
+			setEG1(Ataque3.var1,Ataque3.var2)
+			end
+
+		local Ataque4 = {}
+		Ataque4.var1 = tonumber(sheet.Atk4ExpF) or 0;
+		Ataque4.var2 = tonumber(sheet.Atk4GilF) or 0;
+		if ((Ataque4.var1 > 0) or (Ataque4.var2 >0)) then
+			setEG1(Ataque4.var1,Ataque4.var2)
+			end	
+
+		local Ataque5 = {}
+		Ataque5.var1 = tonumber(sheet.Atk5ExpF) or 0;
+		Ataque5.var2 = tonumber(sheet.Atk5GilF) or 0;
+		if ((Ataque5.var1 > 0) or (Ataque5.var2 >0)) then
+			setEG1(Ataque5.var1,Ataque5.var2)
+			end	
+			
+		local Ataque6 = {}
+		Ataque6.var1 = tonumber(sheet.Atk6ExpF) or 0;
+		Ataque6.var2 = tonumber(sheet.Atk6GilF) or 0;
+		if ((Ataque6.var1 > 0) or (Ataque6.var2 >0)) then
+			setEG1(Ataque6.var1,Ataque6.var2)
+			end		
+			
+		local Special1 = {}
+		Special1.var1 = tonumber(sheet.Special1Exp) or 0;
+		Special1.var2 = tonumber(sheet.Special1Gil) or 0;
+		if ((Special1.var1 > 0) or (Special1.var2 >0)) then
+			setEG1(Special1.var1,Special1.var2)
+			end	
+		
+		local Special2 = {}
+		Special2.var1 = tonumber(sheet.Special2Exp) or 0;
+		Special2.var2 = tonumber(sheet.Special2Gil) or 0;
+		if ((Special2.var1 > 0) or (Special2.var2 >0)) then
+			setEG1(Special2.var1,Special2.var2)
+			end	
+			
+		local Special3 = {}
+		Special3.var1 = tonumber(sheet.Special3Exp) or 0;
+		Special3.var2 = tonumber(sheet.Special3Gil) or 0;
+		if ((Special3.var1 > 0) or (Special3.var2 >0)) then
+			setEG1(Special3.var1,Special3.var2)
+			end	
+			
+		local EXPVAR = {}
+		EXPVAR.var1 = sheet.baseEXP or 0;
+		EXPVAR.var2 = sheet.bonusEXP or 0;
+		
+		local GILVAR = {}
+		GILVAR.var1 = sheet.baseGIL or 0;
+		GILVAR.var2 = sheet.bonusGIL or 0;	
+		
+		sheet.ExpFinal = math.floor((EXPVAR.var1+EXPVAR.var2)*bLV);
+		sheet.GilFinal = math.floor((GILVAR.var1+GILVAR.var2)*bLV);
+		EXPVAR.var3 = sheet.ExpFinal or 0;
+		GILVAR.var3 = sheet.GilFinal or 0;
+		local NPLAYER = sheet.NPlayers or 1;
+		sheet.ExpEach = math.floor(EXPVAR.var3/NPLAYER);
+		sheet.GilEach = math.floor(GILVAR.var3/NPLAYER);
+		</event>
+    </dataLink>
+</form>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+	<form name="frmCreditos" align="client" theme="dark" margins="{top=1}">
+
+		<layout left="000" top="000" height="650" width="1100">
+			<image left="000" top="000" height="650" width="1100" src="/img/Pokeball.jpg" style="autoFIT" />
+			</layout>
+			
+		<layout left="400" top="200" height="600" width="465">
+			<label left="0" top="000" height="20" width="600" text="Hitoshura (Criador do Plugin)" autoSize="true" />
+			<label left="0" top="025" height="20" width="600" text="Shakerskj (Aba pokedéx)" autoSize="true" />
+			<label left="0" top="050" height="20" width="600" text="Dragontail (Testes e sugestões)" autoSize="true" />
+			<label left="0" top="075" height="20" width="600" text="Ambesek (Ajudou BASTANTE no Código)" autoSize="true" />
+			<label left="0" top="100" height="20" width="600" text="Mia (Ajudou no código)" autoSize="true" />
+			<label left="0" top="125" height="20" width="600" text="Bloody (Ajudou no código)" autoSize="true" />
+			<label left="0" top="150" height="20" width="600" text="Webrian (Dicas e sugestões)" autoSize="true" />
+			<label left="0" top="175" height="20" width="600" text="Lucasedu19 (Dicas e sugestões)" autoSize="true" />
+			</layout>
+
+	</form>

@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmInventario" align="client" theme="dark" margins="{top=1}">
+
+	<layout left="000" top="000" height="650" width="1100">
+		<image left="000" top="000" width="1100" height="650" src="/img/wallpaper.png" />
+		</layout>	
+		
+	<layout left="50" top="010" height="600" width="1000">		
+		<label left="275" top="000" width="50" height="20" text="Dado" horzTextAlign="center" autoSize="true" fontStyle="bold"/>
+		<label left="335" top="000" width="40" height="20" text="Mult." horzTextAlign="center" autoSize="true" fontStyle="bold"/>
+		<label left="385" top="000" width="80" height="20" text="Atributo" horzTextAlign="center" autoSize="true" fontStyle="bold"/>
+		<edit  left="275" top="025" width="50" height="20" field="eqARMDdado" />
+		<label left="327" top="025" width="5" height="20" text="+" horzTextAlign="center" autoSize="true" fontStyle="bold"/>
+		<edit  left="335" top="025" width="40" height="20" field="eqARMDmult" type="number"/>
+		<label left="377" top="025" width="5" height="20" text="x" horzTextAlign="center" autoSize="true" fontStyle="bold"/>	
+		<comboBox left="385" top="025" width="80" height="20" field="eqARMDatrib" horzTextAlign="center"  items="{'FOR', 'VIT', 'AGI', 'VEL', 'MAG', 'ESP'}" values="{'1','2','3','4','5','6'}" />                                      	
+		<dataLink field="atribGolpe" defaultValue="1" />
+		<edit  left="275" top="050" width="50" height="20" field="eqARMEdado" />
+		<label left="327" top="050" width="5" height="20" text="+" horzTextAlign="center" autoSize="true" fontStyle="bold"/>
+		<edit  left="335" top="050" width="40" height="20" field="eqARMEmult" type="number"/>
+		<label left="377" top="050" width="5" height="20" text="x" horzTextAlign="center" autoSize="true" fontStyle="bold"/>	
+		<comboBox left="385" top="050" width="80" height="20" field="eqARMEatrib" horzTextAlign="center"  items="{'FOR', 'VIT', 'AGI', 'VEL', 'MAG', 'ESP'}" values="{'1','2','3','4','5','6'}" />                                     	
+		<dataLink field="atribGolpe" defaultValue="1" />
+        <label left="000" top="000" height="20" width="095" text="Arma" horzTextAlign="center" autoSize="true" fontStyle="bold" fontSize = "14"/>
+		<label left="100" top="000" height="20" width="140" text="Nome" horzTextAlign="center" autoSize="true" fontStyle="bold" fontSize = "14"/>
+		<label left="490" top="000" height="20" width="050" text="Tier" horzTextAlign="center" autoSize="true" fontStyle="bold" fontSize = "14"/>
+		<label left="545" top="000" height="20" width="050" text="Preço" horzTextAlign="center" autoSize="true" fontStyle="bold" fontSize = "14"/>
+		<label left="600" top="000" height="20" width="380" text="Habilidade" horzTextAlign="center" autoSize="true" fontStyle="bold" fontSize = "14"/>
+		<label left="000" top="025" height="20" width="95" text="Mão Direita" autoSize="true" fontStyle="bold" fontSize = "14"/>
+		<edit left="100" top="025" height="20" width="140" field="eqARMDNOM" horzTextAlign="center" />
+		<edit left="490" top="025" height="20" width="050" field="eqARMDTIER" horzTextAlign="center" />
+		<edit left="545" top="025" height="20" width="050" field="eqARMDPRICE" horzTextAlign="center" />
+		<edit left="600" top="025" height="20" width="380" field="eqARMDHAB" horzTextAlign="center" />
+		<label left="000" top="050" height="20" width="95" text="Mão Esquerda" autoSize="true" fontStyle="bold" fontSize = "14"/>
+		<edit left="100" top="050" height="20" width="140" field="eqARMENOM" horzTextAlign="center" />
+		<edit left="490" top="050" height="20" width="050" field="eqARMETIER" horzTextAlign="center" />
+		<edit left="545" top="050" height="20" width="050" field="eqARMEPRICE" horzTextAlign="center" />
+		<edit left="600" top="050" height="20" width="380" field="eqARMEHAB" horzTextAlign="center" />
+		</layout>
+			
+	<layout left="50" top="025" height="600" width="1000">
+		<label left="000" top="075" height="20" width="095" text="Armadura" horzTextAlign="center" autoSize="true" fontStyle="bold" fontSize = "14"/>
+		<label left="100" top="075" height="20" width="140" text="Nome" horzTextAlign="center" autoSize="true"  fontStyle="bold" fontSize = "14"/>
+		<label left="250" top="075" height="20" width="050" text="ARM." horzTextAlign="center" autoSize="true"  fontStyle="bold" fontSize = "14"/>
+		<label left="310" top="075" height="20" width="050" text="ARM.M." horzTextAlign="center" autoSize="true"  fontStyle="bold" fontSize = "14"/>
+		<label left="370" top="075" height="20" width="050" text="EVA." horzTextAlign="center" autoSize="true"  fontStyle="bold" fontSize = "14"/>
+		<label left="430" top="075" height="20" width="050" text="EVA.M." horzTextAlign="center" autoSize="true"  fontStyle="bold" fontSize = "14"/>
+		<label left="490" top="075" height="20" width="050" text="Tier" horzTextAlign="center" autoSize="true"  fontStyle="bold" fontSize = "14"/>
+		<label left="545" top="075" height="20" width="050" text="Preço" horzTextAlign="center" autoSize="true"  fontStyle="bold" fontSize = "14"/>
+		<label left="600" top="075" height="20" width="380" text="Habilidade" horzTextAlign="center" autoSize="true" fontStyle="bold" fontSize = "14"/>
+		<label left="000" top="100" height="20" width="095" text="Cabeça" autoSize="true" fontStyle="bold" fontSize = "16"/>
+		<edit left="100" top="100" height="20" width="140" field="eqHEDNOM" horzTextAlign="center" />
+		<edit left="250" top="100" height="20" width="050" field="eqHEDARM" horzTextAlign="center" type="number"/>
+		<edit left="310" top="100" height="20" width="050" field="eqHEDMARM" horzTextAlign="center"  type="number"/>
+		<edit left="370" top="100" height="20" width="050" field="eqHEDEVA" horzTextAlign="center"  type="number"/>
+		<edit left="430" top="100" height="20" width="050" field="eqHEDMEVA" horzTextAlign="center"  type="number"/>
+		<edit left="490" top="100" height="20" width="050" field="eqHEDTIER" horzTextAlign="center" />
+		<edit left="545" top="100" height="20" width="050" field="eqHEDPRICE" horzTextAlign="center" />
+		<edit left="600" top="100" height="20" width="380" field="eqHEDHAB" horzTextAlign="center" />		
+		<label left="000" top="125" height="20" width="095" text="Corpo" autoSize="true" fontStyle="bold" fontSize = "16"/>
+		<edit left="100" top="125" height="20" width="140" field="eqBDYNOM" horzTextAlign="center" />
+		<edit left="250" top="125" height="20" width="050" field="eqBDYARM" horzTextAlign="center"  type="number"/>
+		<edit left="310" top="125" height="20" width="050" field="eqBDYMARM" horzTextAlign="center"  type="number"/>
+		<edit left="370" top="125" height="20" width="050" field="eqBDYEVA" horzTextAlign="center"  type="number"/>
+		<edit left="430" top="125" height="20" width="050" field="eqBDYMEVA" horzTextAlign="center"  type="number"/>
+		<edit left="490" top="125" height="20" width="050" field="eqBDYTIER" horzTextAlign="center" />
+		<edit left="545" top="125" height="20" width="050" field="eqBDYPRICE" horzTextAlign="center" />
+		<edit left="600" top="125" height="20" width="380" field="eqBDYHAB" horzTextAlign="center" />	
+		<label left="000" top="150" height="20" width="095" text="Braços" autoSize="true" fontStyle="bold" fontSize = "16"/>
+		<edit left="100" top="150" height="20" width="140" field="eqARMNOM" horzTextAlign="center" />
+		<edit left="250" top="150" height="20" width="050" field="eqARMARM" horzTextAlign="center"  type="number"/>
+		<edit left="310" top="150" height="20" width="050" field="eqARMMARM" horzTextAlign="center"  type="number"/>
+		<edit left="370" top="150" height="20" width="050" field="eqARMEVA" horzTextAlign="center"  type="number"/>
+		<edit left="430" top="150" height="20" width="050" field="eqARMMEVA" horzTextAlign="center"  type="number"/>
+		<edit left="490" top="150" height="20" width="050" field="eqARMTIER" horzTextAlign="center" />
+		<edit left="545" top="150" height="20" width="050" field="eqARMPRICE" horzTextAlign="center" />
+		<edit left="600" top="150" height="20" width="380" field="eqARMHAB" horzTextAlign="center" />	
+		<label left="000" top="175" height="20" width="095" text="Escudo" autoSize="true" fontStyle="bold" fontSize = "16"/>
+		<edit left="100" top="175" height="20" width="140" field="eqESCNOM" horzTextAlign="center" />
+		<edit left="370" top="175" height="20" width="050" field="eqESCEVA" horzTextAlign="center"  type="number"/>
+		<edit left="430" top="175" height="20" width="050" field="eqESCMEVA" horzTextAlign="center"  type="number"/>
+		<edit left="490" top="175" height="20" width="050" field="eqESCTIER" horzTextAlign="center" />
+		<edit left="545" top="175" height="20" width="050" field="eqESCPRICE" horzTextAlign="center" />
+		<edit left="600" top="175" height="20" width="380" field="eqESCHAB" horzTextAlign="center" />	
+		<label left="000" top="200" height="20" width="095" text="Acc. (1)" autoSize="true" fontStyle="bold" fontSize = "16"/>
+		<edit left="100" top="200" height="20" width="140" field="eqACC1NOM" horzTextAlign="center" />
+		<edit left="370" top="200" height="20" width="050" field="eqACC1EVA" horzTextAlign="center"  type="number"/>
+		<edit left="430" top="200" height="20" width="050" field="eqACC1MEVA" horzTextAlign="center"  type="number"/>
+		<edit left="490" top="200" height="20" width="050" field="eqACC1TIER" horzTextAlign="center" />
+		<edit left="545" top="200" height="20" width="050" field="eqACC1PRICE" horzTextAlign="center" />
+		<edit left="600" top="200" height="20" width="380" field="eqACC1HAB" horzTextAlign="center" />	
+		<label left="000" top="225" height="20" width="095" text="Acc. (2)" autoSize="true" fontStyle="bold" fontSize = "16"/>
+		<edit left="100" top="225" height="20" width="140" field="eqACC2NOM" horzTextAlign="center" />
+		<edit left="370" top="225" height="20" width="050" field="eqACC2EVA" horzTextAlign="center"  type="number"/>
+		<edit left="430" top="225" height="20" width="050" field="eqACC2MEVA" horzTextAlign="center"  type="number"/>
+		<edit left="490" top="225" height="20" width="050" field="eqACC2TIER" horzTextAlign="center" />
+		<edit left="545" top="225" height="20" width="050" field="eqACC2PRICE" horzTextAlign="center" />
+		<edit left="600" top="225" height="20" width="380" field="eqACC2HAB" horzTextAlign="center" />				
+		</layout>
+			
+	<layout left="60" top="280" height="300" width="160">
+		<label left="000" top="000" height="20" width="150" text="Itens de Cura" autoSize="true" fontColor="White" fontSize="16" horzTextAlign="center" fontStyle="bold"/>			
+		<textEditor left="000" top="025" width="150" height="280" fontSize = "14" field="campoItemRec"/>
+		</layout>	
+		
+	<layout left="220" top="280" height="300" width="150">
+		<label left="000" top="000" height="20" width="150" text="Itens de Batalha"  autoSize="true" fontColor="White" fontSize="16" horzTextAlign="center" fontStyle="bold"/>
+		<textEditor left="000" top="025" width="150" height="280" fontSize = "14" field="campoItemBat"/>
+		</layout>	
+			
+	<layout left="380" top="280" height="300" width="150">
+		<label left="000" top="000" height="20" width="150" text="Itens de Suporte"  autoSize="true" fontColor="White" fontSize="16" horzTextAlign="center" fontStyle="bold"/>
+		<textEditor left="000" top="025" width="150" height="280" fontSize = "14" field="campoItemSup"/>
+		</layout>	
+			
+	<layout left="540" top="280" height="300" width="150">
+		<label left="000" top="000" height="20" width="150" text="Munição"  autoSize="true" fontColor="White" fontSize="16" horzTextAlign="center" fontStyle="bold"/>
+		<textEditor left="000" top="025" width="150" height="280" fontSize = "14" field="campoItemMunA"/>
+		</layout>
+			
+	<layout left="700" top="280" height="300" width="150">
+		<label left="000" top="000" height="20" width="150" text="Key Items"  autoSize="true" fontColor="White" fontSize="16" horzTextAlign="center" fontStyle="bold"/>
+		<textEditor left="000" top="025" width="150" height="280" fontSize = "14" field="campoKEY"/>
+		</layout>	
+			
+	<layout left="860" top="280" height="300" width="600">
+		<label left="000" top="000" height="20" width="150" text="Equipamentos Extras"  autoSize="true" fontColor="White" fontSize="16" horzTextAlign="center" fontStyle="bold"/>
+		<textEditor left="000" top="025" width="150" height="280" fontSize = "14" field="campoEquipsExtras"/>
+		</layout>
+
+</form>			

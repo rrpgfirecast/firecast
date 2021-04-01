@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmNotes" align="client" theme="dark" margins="{top=1}">
+	<layout left="000" top="000" height="650" width="1100">
+		<image left="000" top="000" height="650" width="1100" src="/img/wallpaper.png" style="autoFIT" />
+		</layout>
+	<scrollBox align ="client">	
+        <textEditor left="040" top="020" width="500" height="560" field="campoTextoGrande"/>
+        <textEditor left="560" top="020" width="500" height="560" field="campoTextoGrande2"/>
+
+		</scrollBox>
+	</form>			

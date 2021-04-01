@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmSupportA" align="client" theme="dark" margins="{top=1}">
+	<layout left="000" top="000" height="650" width="1100">
+		<image left="000" top="000" height="650" width="1100" src="/img/wallpaper.png" style="autoFIT" />
+		</layout>
+	
+	<scrollBox align ="client">
+		<layout left="60" top="20" height="500" width="380">
+			<basicAbiName Top ="000" Name="Auto-Status" field = "nameAutoStat" 
+			Texto ="The monster is permanently under the effects of a certain Status Condition, and begins the battle with that Condition active.  This Condition can be removed through the use of Spells or Abilities such as Dispel; but will be re-added during the next Status Phase and only fully cancelled once the monster is defeated.  Auto-Status can be taken in conjunction with both positive and negative Status Conditions. XP and Gil values depend on the exact Status being taken:"/>
+			<addStat Top = "025" Name="Float" field="autoFloat"/>
+			<addStat Top = "050" Name="Agility Up" field="autoAgiUP"/>
+			<addStat Top = "075" Name="Spirit Up" field="autoSpiUP"/>
+			<addStat Top = "100" Name="Fire Spikes" field="autoFIRSpikes"/>
+			<addStat Top = "125" Name="Ice Spikes" field="autoICESpikes"/>
+			<addStat Top = "150" Name="Water Spikes" field="autoWATSpikes"/>
+			<addStat Top = "175" Name="Lightning Spikes" field="autoELESpikes"/>
+			<addStat Top = "200" Name="Ground Spikes" field="autoGNDSpikes"/>
+			<addStat Top = "225" Name="Wind Spikes" field="autoWINSpikes"/>
+			<addStat Top = "250" Name="Bio Spikes" field="autoBIOSpikes"/>
+			<addStat Top = "275" Name="Shadow Spikes" field="autoSHASpikes"/>
+			<addStat Top = "300" Name="Holy Spikes" field="autoHOLSpikes"/>	
+			<addStat Top = "325" Name="Protect" field="autoProtect"/>	
+			<addStat Top = "350" Name="Shell" field="autoShell"/>	
+			<addStat Top = "375" Name="Armor Up" field="autoARMUP"/>	
+			<addStat Top = "400" Name="Mental Up" field="autoMENUP"/>	
+			<addStat Top = "425" Name="Haste" field="autoHaste"/>
+			<addStat Top = "450" Name="Reflect" field="autoReflect"/>
+			<addStat Top = "475" Name="Power Up" field="autoPOWUP"/>	
+			</layout>
+			
+		<layout left="200" top="20" height="500" width="380">
+			<addStat Top = "025" Name="Magic Up" field="autoMAGUP"/>
+			<addStat Top = "050" Name="Regen" field="autoRegen"/>
+			<addStat Top = "075" Name="Aura" field="autoAura"/>
+			<addStat Top = "100" Name="Vanish" field="autoVanish"/>
+			<addStat Top = "125" Name="Berserk" field="autoBerserk"/>
+			<addStat Top = "150" Name="Blind" field="autoBlind"/>
+			<addStat Top = "175" Name="Poison" field="autoPoison"/>
+			<addStat Top = "200" Name="Sleep" field="autoSleep"/>
+			<addStat Top = "225" Name="Slow" field="autoSlow"/>	
+			<addStat Top = "250" Name="Zombie" field="autoZombie"/>	
+			<addStat Top = "275" Name="Confuse" field="autoConfuse"/>	
+			<addStat Top = "300" Name="Sap" field="autoSap"/>	
+			<addStat Top = "325" Name="Unaware" field="autoUnaware"/>	
+			<addStat Top = "350" Name="Mini" field="autoMini"/>	
+			<addStat Top = "375" Name="Toad" field="autoToad"/>	
+			<addStat Top = "400" Name="Venom" field="autoVenom"/>	
+			<addStat Top = "425" Name="Condemn" field="autoCondemn"/>
+			<addStat Top = "450" Name="Petrify" field="autoPetrify"/>				
+			</layout>
+
+		<layout left="350" top="20" height="500" width="380">			
+			<basicAbiName Top ="000" Name="SOS-Status" field = "nameSOSStat" 
+			Texto ="The monster is subject to a certain Status Condition, activated when its current Hit Points reach 25% of their maximum value.  As with Auto-Status, a Status Condition inflicted by SOS-Status can be removed through the use of Spells or Abilities such as Dispel;  but will be re-added during the next Status Phase and only fully cancelled once the monster is defeated. Should the monster be healed to above 25% of its maximum Hit Points, the Condition will cancel automatically.  SOS-Status can be taken in conjunction with both positive and negative Status Conditions. XP and Gil values depend on the exact Status being taken:"/>
+			<addStat Top = "025" Name="Float" field="sosFloat"/>
+			<addStat Top = "050" Name="Agility Up" field="sosAgiUP"/>
+			<addStat Top = "075" Name="Spirit Up" field="sosSpiUP"/>
+			<addStat Top = "100" Name="Fire Spikes" field="sosFIRSpikes"/>
+			<addStat Top = "125" Name="Ice Spikes" field="sosICESpikes"/>
+			<addStat Top = "150" Name="Water Spikes" field="sosWATSpikes"/>
+			<addStat Top = "175" Name="Lightning Spikes" field="sosELESpikes"/>
+			<addStat Top = "200" Name="Ground Spikes" field="sosGNDSpikes"/>
+			<addStat Top = "225" Name="Wind Spikes" field="sosWINSpikes"/>
+			<addStat Top = "250" Name="Bio Spikes" field="sosBIOSpikes"/>
+			<addStat Top = "275" Name="Shadow Spikes" field="sosSHASpikes"/>
+			<addStat Top = "300" Name="Holy Spikes" field="sosHOLSpikes"/>	
+			<addStat Top = "325" Name="Protect" field="sosProtect"/>	
+			<addStat Top = "350" Name="Shell" field="sosShell"/>	
+			<addStat Top = "375" Name="Armor Up" field="sosARMUP"/>	
+			<addStat Top = "400" Name="Mental Up" field="sosMENUP"/>	
+			<addStat Top = "425" Name="Haste" field="sosHaste"/>
+			<addStat Top = "450" Name="Reflect" field="sosReflect"/>
+			<addStat Top = "475" Name="Power Up" field="sosPOWUP"/>	
+			</layout>
+			
+		<layout left="490" top="20" height="500" width="380">
+			<addStat Top = "025" Name="Magic Up" field="sosMAGUP"/>
+			<addStat Top = "050" Name="Regen" field="sosRegen"/>
+			<addStat Top = "075" Name="Aura" field="sosAura"/>
+			<addStat Top = "100" Name="Vanish" field="sosVanish"/>
+			<addStat Top = "125" Name="Berserk" field="sosBerserk"/>
+			<addStat Top = "150" Name="Blind" field="sosBlind"/>
+			<addStat Top = "175" Name="Poison" field="sosPoison"/>
+			<addStat Top = "200" Name="Sleep" field="sosSleep"/>
+			<addStat Top = "225" Name="Slow" field="sosSlow"/>	
+			<addStat Top = "250" Name="Zombie" field="sosZombie"/>	
+			<addStat Top = "275" Name="Confuse" field="sosConfuse"/>	
+			<addStat Top = "300" Name="Sap" field="sosSap"/>	
+			<addStat Top = "325" Name="Unaware" field="sosUnaware"/>	
+			<addStat Top = "350" Name="Mini" field="sosMini"/>	
+			<addStat Top = "375" Name="Toad" field="sosToad"/>	
+			<addStat Top = "400" Name="Venom" field="sosVenom"/>	
+			<addStat Top = "425" Name="Condemn" field="sosCondemn"/>
+			<addStat Top = "450" Name="Petrify" field="sosPetrify"/>				
+			</layout>
+			
+		<layout left="650" top="20" height="600" width="400">
+			<basicAbiName2 Top = "000" Name="Comeback" field="namComeback" 
+			Texto="The monster cannot be killed by normal means. Attacks can damage and even incapacitate it, but it is only a matter of time before the fell beast is back on its feet and ready for more action.  If reduced to 0 or fewer HP in battle, a monster with Comeback is incapacitated as normal, but begins regenerating damage immediately.  After a certain number of Rounds, regeneration is complete, and the monster comes back into the battle with 100% of its Hit Points and Magic Points restored. Comeback’s XP and Gil values depend on the number of Rounds the monster needs to regenerate"/>
+			<basicSubAbility2 Top = "025" Name="2 rounds" field="Comeback2"/>
+			<basicSubAbility2 Top = "050" Name="4 rounds" field="Comeback4"/>
+			<basicSubAbility2 Top = "075" Name="6 rounds" field="Comeback6"/>
+			<basicAbiName2 Top = "100" Name="Critical Attack" field="namCritical" 
+			Texto="By default, monsters' Attack Actions cannot land Critical Hits in combat.  A monster with Critical Attack, however, is no longer subject to his restriction. Critical Attack’s XP and Gil values depend on the likelihood of a Critical Hit being landed"/>
+			<basicSubAbility2 Top = "125" Name="Standard (1-10)" field="supCrit1"/>
+			<basicSubAbility2 Top = "150" Name="Critical+ (1-20" field="supCrit2"/>
+			<basicSubAbility2 Top = "175" Name="Critical++ (1-30)" field="supCrit3"/>
+			<basicAbility Top = "250" Name="Low Evasion" field="supLEva" 
+			Texto="The monster is especially sluggish when it comes to dodging. As a result, the following formula is used to calculate the monster’s Evasion:  ([Level / 2] + SPD + AGI)  Because of the strong impact this can have on a monster's Gil and XP values, this option should not be used on low-Level monsters."/>		
+			<basicAbility Top = "275" Name="Low Magic Evasion" field="supLMEva" 
+			Texto="The monster is highly vulnerable to the effects of spellcasting. As a result, the following formula is used to calculate the monster’s M. Evasion:  ([Level / 2] + MAG + SPR)  Because of the strong impact this can have on a monster's Gil and XP values, this option should not be used on low-Level monsters."/>				
+			<basicAbility Top = "300" Name="Evader" field="namEvader" 
+			Texto="A monster with this ability is extremely adept at evading harm. Attacks and Abilities that target the monster have their CoS halved, although Critical Hits may still be scored. Abilities that hit a target automatically only have a CoS of Accuracy, Evasion of affecting a monster with Evader. With Magic Abilities, this CoS is M. Accuracy, M.Evasion. Item accuracy remains unaffected."/>
+			<basicAbiName2 Top = "350" Name="Evasion+" field="namEvasion" 
+			Texto="Improves the monster’s ability to dodge physical attacks by increasing its base Evasion rating. The amount by which the monster’s EVA increases determines the XP and Gil modifiers"/>
+			<basicSubAbility2 Top = "375" Name="Evasion +10%" field="supEva10"/>
+			<basicSubAbility2 Top = "400" Name="Evasion +25%" field="supEva25"/>
+			<basicSubAbility2 Top = "425" Name="Evasion +50%" field="supEva50"/>	
+			<basicSubAbility2 Top = "450" Name="Evasion +75%" field="supEva75"/>	
+			</layout>
+		<layout left="870" top="370" height="150" width="200">			
+			<basicAbiName2 Top = "000" Name="Magic Evasion+" field="namMEvasion" 
+			Texto="The monster is more adept than usual at resisting incoming magical attacks, increasing its base M. EVA rating. The amount by which the monster’s M. EVA increases determines how much the monster’s value is increased by."/>
+			<basicSubAbility2 Top = "025" Name="M.Evasion +10%" field="supMEva10"/>
+			<basicSubAbility2 Top = "050" Name="M.Evasion +25%" field="supMEva25"/>
+			<basicSubAbility2 Top = "075" Name="M.Evasion +50%" field="supMEva50"/>	
+			<basicSubAbility2 Top = "100" Name="M.Evasion +75%" field="supMEva75"/>	
+			</layout>	    
+			
+		<layout left="1000" top="570" height="50" width="90">
+			<label left="000" top="000" height="20" width="30" text="Exp" autoSize="true"/>
+			<edit left="035" top="000" height="20" width="50" field="ExpFinal" horzTextAlign="center" />
+			<label left="000" top="025" height="20" width="30" text="Gil" autoSize="true"/>
+			<edit left="35" top="025" height="20" width="50" field="GilFinal" horzTextAlign="center" />
+			</layout>	
+
+		</scrollBox>
+	</form>			

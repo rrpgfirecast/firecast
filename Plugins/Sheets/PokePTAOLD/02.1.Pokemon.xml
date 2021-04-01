@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+	<form name="frmPokemon1" align="client" theme="dark" margins="{top=1}">
+		<layout left="000" top="000" height="650" width="1100">
+			<image left="000" top="000" height="650" width="1100" src="/img/Pokeball.jpg" style="autoFIT" />
+			</layout>
+			
+		<scrollBox align="client">
+			<layout align="top" height="30" margins="{bottom=4}">
+				<button text="Novo Pokémon" width="150" align="left">
+					<event name="onClick">                       
+						self.rclListaDosItens:append();
+						</event>
+					</button>
+				<button text="Organizar" width="150" align="left">
+					<event name="onClick">
+						self.rclListaDosItens:sort();
+						</event>
+					</button>
+				</layout>
+				
+			<recordList name="rclListaDosItens" field="campoDosItens" templateForm="frmItemDaLista" align="client" selectable="true">
+				<event name="onSelect">              
+					local node = self.rclListaDosItens.selectedNode;
+					self.boxDetalhesDoItem.node = node;                    
+					self.boxDetalhesDoItem.visible = (node ~= nil);
+					</event>
+				<event name="onCompare">
+					if (nodeA.active and not nodeB.active) then
+						return -1;
+						elseif (not nodeA.active and nodeB.active) then
+							return 1;
+						else
+							return Utils.compareStringPtBr(nodeA.campoNome, nodeB.campoNome);
+						end;
+					</event>
+				</recordList>
+				
+			<dataScopeBox name="boxDetalhesDoItem" visible="false" align="right" width="900" margins="{left=4, right=8}">
+				<tabControl left="20" top="20" height="560" width="890">
+				
+					<tab title="Geral">
+						<import file="02.2.Geral.xml" />   
+						</tab>
+						
+					<tab title="Golpes">
+						<import file="02.3.GolpesP.lfm" />
+						</tab>
+
+					<tab title="Habilidades e Capacidades">
+						<import file="02.4.HabCap.xml" />
+						</tab>
+
+					<tab title="Outros">
+						<import file="02.5.Notas.xml" />
+						</tab>
+						
+					</tabControl>
+				</dataScopeBox>
+			</scrollBox>
+		</form>

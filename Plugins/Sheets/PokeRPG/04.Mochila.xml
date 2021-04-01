@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+	<form name="frmMochila" align="client" theme="dark" margins="{top=1}">
+
+		<template name="SlotMochila">
+			<image left="080" top="005" width="40" height="40" src="$(Image)" editable="true" style="proportional" />
+			<label left="000" top="045" height="20" width="200" text="$(Name)" autoSize="true" fontColor="White" fontSize="18" horzTextAlign="center" />
+			<textEditor left="000" top="065" width="200" height="230" field="$(Field)" />
+			</template>	
+
+		<layout left="000" top="000" height="650" width="1100">
+			<image left="000" top="000" height="650" width="1100" src="/img/Pokeball.jpg" style="autoFIT" />
+			</layout>
+			
+		<layout left="80" top="10" height="400" width="300">
+			<SlotMochila Image = "/img/DP_Items_pocket_M.png" Name = "Itens" Field="campoItens" />
+			<dataLink field="campoItens" defaultValue=" Cristal Z (DEFINA)" />
+			</layout>
+
+		<layout left="330" top="10" height="400" width="300">
+			<SlotMochila Image = "/img/DP_Medicine_pocket_M.png" Name = "Medicina" Field="campoMedicina" />
+			<dataLink field="campoMedicina" defaultValue=" Poção x5 \n Antídoto x1 \n Antiparalisia x1 \n Antissono x1 \n Antiqueimadura x1 \n Anticongelamento x1" />
+			</layout>			
+
+		<layout left="580" top="10" height="400" width="300">
+			<SlotMochila Image = "/img/DP_Poke_Balls_pocket_M.png" Name = "Pokébolas" Field="campoPokebolas" />
+			<dataLink field="campoPokebolas" defaultValue=" PokéBola x3" />
+			</layout>			
+
+		<layout left="830" top="10" height="400" width="300">
+			<SlotMochila Image = "/img/DP_TMs_and_HMs_pocket_M.png" Name = "TMs e HMs" Field="campoRegistros" />
+			</layout>	
+
+
+		<layout left="80" top="310" height="400" width="300">
+			<SlotMochila Image = "/img/DP_Berries_pocket_M.png" Name = "Berries" Field="campoBerries" />
+			<dataLink field="campoBerries" defaultValue=" Oran Berry x3" />
+			</layout>	
+
+		<layout left="330" top="310" height="400" width="300">
+			<SlotMochila Image = "/img/DP_Battle_items_pocket_M.png" Name = "Itens de Batalha" Field="campoItemBatalha" />
+			<dataLink field="campoItemBatalha" defaultValue=" Ataque X x1 \n Ataque Especial X x1" />
+			</layout>	
+
+		<layout left="580" top="310" height="400" width="300">
+			<SlotMochila Image = "/img/DP_Key_items_pocket_M.png" Name = "Itens-Chave" Field="campoItemChave" />
+			<dataLink field="campoItemChave" defaultValue=" Pokédex x1 \n Mega-Acessório x1 \n Bracelete Z \n Pokégear" />
+			</layout>			
+
+		<layout left="830" top="310" height="400" width="300">
+			<SlotMochila Image = "/img/DP_Mail_pocket_M.png" Name = "Outros" Field="campoOutros" />
+			<dataLink field="campoOutros" defaultValue=" Barraca x1 \n Mantimentos x1 \n Lanternas \n Kit de Acampamento \n Kit de Primeiros Socorros" />
+			</layout>
+
+	</form>

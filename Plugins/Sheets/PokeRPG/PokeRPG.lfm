@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form formType="sheetTemplate" dataType="HITO_PLAYER_POKERPG" title="Hitoshura - PokéRPG" name="frmHITOPOKERPG" theme="dark" padding="{left=4, top=4, right=4, bottom=4}">
+    <scrollBox align="client">
+        <tabControl left="20" top="20" height="650" width="1100">
+			<tab title="Geral">
+				<import file="01.Geral.xml" />   
+				</tab>
+
+            <tab title="Pokémons">
+ 				<import file="02.1.Pokemon.xml" />  
+            </tab>
+
+			<tab title="Missões e Talentos">
+				<import file="03.Talentos.xml" />   
+				</tab>
+				
+			<tab title="Mochila">
+				<import file="04.Mochila.xml" />   
+				</tab>
+
+			<tab title="Pokédex">
+				<import file="05.Pokedex.xml" />   
+				</tab>		
+			
+            <tab title="Background">
+				<import file="06.Background.xml" />   
+				</tab>
+				
+            <tab title="Anotações">
+				<import file="07.Anotacoes.xml" />   
+				</tab>
+				
+            <tab title="Créditos">
+				<import file="08.Creditos.xml" />   
+				</tab>
+				
+			</tabControl>
+		</scrollBox>
+	</form>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module sdkVersion="3.5" compilationDate="03032020023125" sdkApiVersion="86" originalPluginFileName="MobsFFRPG.rpk" compilationDigest="ecb64bfaf32a8f4d86fbaf081efe38c5e6fae6c6">
+	<id>ID_MOB_FFRPG_3.5</id>
+	<version>1.0</version>
+	<name>FFRPG - Ficha de Monstro</name>
+	<description>Essa ficha auxilia na criação de monstros.</description>
+	<author>Hitoshura</author>
+	<site/>
+	<contact>fliraf@gmail.com</contact>
+    <dataTypes>
+        <dataType title="Hitoshura - FFRPG Mob Creator" name="frmMOBFFRPG" lfmFile="main.lfm">MOB_CREATOR_FFRPG</dataType>
+    </dataTypes>
+</module>

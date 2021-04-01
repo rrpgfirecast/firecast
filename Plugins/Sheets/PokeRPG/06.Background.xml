@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+	<form name="frmBackground" align="client" theme="dark" margins="{top=1}">
+
+		<layout left="000" top="000" height="650" width="1100">
+			<image left="000" top="000" height="650" width="1100" src="/img/Pokeball.jpg" style="autoFIT" />
+			</layout>
+			
+		<layout left="10" top="10" height="800" width="1000">
+			<rectangle left="000" top="000" width="710" height="575" color="darkred" strokeColor="black" strokeSize="5" />
+			<label left="000" top="005" height="20" width="700" fontColor="White" fontSize="18" text="História" autoSize="true" horzTextAlign="center" />
+			<richEdit left="005" top="030" width="700" height="540" backgroundColor="black" defaultFontColor="white" field="campoHistoria" />
+			</layout>
+			
+		<layout left="740" top="10" height="600" width="1000">
+			<rectangle left="000" top="000" width="340" height="435" color="darkred" strokeColor="black" strokeSize="5" />
+			<label left="000" top="005" height="20" width="330" fontColor="White" fontSize="18" text="Personalidade" autoSize="true" horzTextAlign="center" />
+			<richEdit left="005" top="030" width="330" height="400" backgroundColor="black" defaultFontColor="white" field="campoPersonalidade" />
+			</layout>
+
+	</form>

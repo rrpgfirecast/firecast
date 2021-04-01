@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmPokemon5" align="client" theme="dark" margins="{top=1}">
+	<rectangle align="top" color="black" xradius="10" yradius="10" height="880" padding="{top=3, left=3, right=3, bottom=3}">
+		<layout left="50" top="20" height="600" width="800">
+			<label left="000" top="000" height="20" width="60" text="Dieta:" autoSize="true" fontStyle="bold"/>
+			<edit left="85" top="000" height="20" width="160" field="Dieta_Poke" horzTextAlign="center" />
+			<label left="000" top="025" height="20" width="60" text="Likes:" autoSize="true" fontStyle="bold"/>
+			<edit left="85" top="025" height="20" width="160" field="Sabor_Fav" horzTextAlign="center" enabled="false"/>
+			<label left="000" top="050" height="20" width="60" text="Dislikes:" autoSize="true" fontStyle="bold"/>
+			<edit left="85" top="050" height="20" width="160" field="Sabor_Desg" horzTextAlign="center" enabled="false"/>
+			</layout>
+
+		<layout left="300" top="160" height="400" width="410">
+			<rectangle left="000" top="000" width="280" height="310" color="darkred" strokeColor="black" strokeSize="5" />
+			<label left="000" top="005" height="20" width="300" fontColor="White" fontSize="18" text="Anotações" autoSize="true" horzTextAlign="center" />
+			<textEditor left="05" top="30" width="270" height="315" field="campoNotasPok" />
+			</layout>
+		</rectangle>
+
+	</form>

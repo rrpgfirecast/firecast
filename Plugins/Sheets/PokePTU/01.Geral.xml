@@ -1,0 +1,430 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmGeral" align="client" theme="dark" margins="{top=1}">
+
+	<template name="campoGen">
+		<label left="000" top="$(Top)" height="20" width="90" text="$(Name)" autoSize="true" fontStyle="bold" />
+		<edit left="95" top="$(Top)" height="20" width="190" field="base$(Field)" horzTextAlign="center" />
+		</template>	
+
+	<template name="campoAtuMax1">
+		<label left="000" top="$(Top)" height="20" width="80" text="$(Name)" autoSize="true" fontStyle="bold" />
+		<edit left="095" top="$(Top)" height="20" width="80" field="$(Field1)" horzTextAlign="center" type="number"/>
+		<label left="188" top="$(Top)" height="20" width="16" text="/" autoSize="true" fontStyle="bold" />
+		<edit left="205" top="$(Top)" height="20" width="80" field="$(Field2)" horzTextAlign="center" enabled="false"  type="number"/>
+		</template>	
+		
+	<template name="AttributeT">
+		<label left="000" top="$(Top)" height="20" width="100" text="$(Name)" horzTextAlign="center" autoSize="true" fontStyle="bold"/>
+        <edit left="105" top="$(Top)" height="20" width="30" field="$(Field)_val" horzTextAlign="center" type="number" />
+        <comboBox left="140" top="$(Top)" height="20" width="45" field="$(Field)_edc" horzTextAlign="center" items="{'-6', '-5', '-4', '-3', '-2', '-1', '0', '1', '2', '3', '4', '5', '6'}" values="{'1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13'}" />
+        <edit left="190" top="$(Top)" height="20" width="30" field="$(Field)_tot" horzTextAlign="center" type="number" enabled="false" />
+        <dataLink field="$(Field)_val" defaultValue="5" />
+        <dataLink field="$(Field)_edc" defaultValue="7" />
+		</template>
+	
+	<template name="TotBon">
+		<label left="000" top="$(Top)" height="20" width="80" text="$(Name)" autoSize="true" fontStyle="bold"/>
+        <edit left="85" top="$(Top)" height="20" width="30" field="$(Field1)" horzTextAlign="center" type="number"  enabled="false"/>
+        <edit left="120" top="$(Top)" height="20" width="30" field="$(Field2)" horzTextAlign="center" type="number" />
+		</template>
+
+	<template name="TotSolo">
+		<label left="000" top="$(Top)" height="20" width="80" text="$(Name)" autoSize="true" fontStyle="bold"/>
+        <edit left="85" top="$(Top)" height="20" width="30" field="$(Field)" horzTextAlign="center" type="number"  enabled="false"/>
+		</template>
+
+	<template name="Insignea">	
+		<rectangle left="000" top="$(Top)" width="40" height="40" color="Red" strokeColor="black" strokeSize="4" />
+		<rectangle left="005" top="$(Top2)" width="30" height="30" color="Black" strokeColor="black" strokeSize="4" />
+		<image left="005" top="$(Top2)" width="30" height="30" field="basBADGE1$(num)" editable="true" style="proportional" hint="Insígnea, Ribbon, Key Item, etc"/>
+		</template>		
+
+	<template name="PokeSlot">	
+        <rectangle left="0" top="0" width="285" height="75" color="black" strokeColor="red" strokeSize="1" cornerType="round"/>
+        <image left="005" top="10" height="50" width="50" field="ImagemSlot$(num)" style="stretch" animate="true"/>
+        <edit left="060" top="5" height="20" width="120" field="NomeSlot$(num)" horzTextAlign="center" enabled="false"/>
+		<label left="060" top="30" height="20" width="20" text="HP" autoSize="true" fontStyle="bold"/>
+		<progressBar left="080" top="30" width="100" height="15" color="green" field = "baseHPAtual$(num)" fieldMax="baseHPMAX$(num)"/>
+        <image left="235" top="25" height="30" width="30" field="GenderSlot$(num)" style="stretch"/>	
+		<label left="190" top="5" height="20" width="20" text="Lv." autoSize="true" fontStyle="bold"/>
+        <edit left="210" top="5" height="20" width="30" field="LevelSlot$(num)" horzTextAlign="center" enabled="false"/>
+		<button left="262" top="51" height="20" width="20" text = "A" hint ="Apagar">
+			<event name="onClick">
+				if sheet==nil 	then    return end
+				sheet.ImagemSlot$(num) = "";
+				sheet.NomeSlot$(num) = "";
+				sheet.LevelSlot$(num) = "";
+				sheet.GenderSlot$(num) = "";
+				sheet.baseHPAtual$(num) = 0;
+				sheet.baseHPMAX$(num) = 0;
+				sheet.IniSlot$(num) = 0;
+			</event>
+		</button>
+        <edit left="95" top="50" height="20" width="30" field="baseHPAtual$(num)" horzTextAlign="center" enabled="false"/>
+		<label left="125" top="50" height="20" width="5" text="/" autoSize="true" fontStyle="bold"/>
+        <edit left="130" top="50" height="20" width="30" field="baseHPMAX$(num)" horzTextAlign="center" enabled="false"/>
+		<dataLink field="baseHPAtual$(num)" defaultValue="0" />
+		<dataLink field="baseHPMAX$(num)" defaultValue="0" />
+		<label left="190" top="50" height="20" width="20" text="In." autoSize="true" fontStyle="bold"/>
+        <edit left="210" top="50" height="20" width="30" field="IniSlot$(num)" horzTextAlign="center" enabled="false"/>
+		</template>			
+
+	<layout left="000" top="000" height="650" width="1100">
+		<image left="000" top="000" height="650" width="1100" src="/img/Pokeball.jpg" style="autoFIT" />
+		</layout>
+
+	<layout left="10" top="010" height="175" width="300">
+		<campoGen Top="000" Field="Name" Name="Personagem" />
+		<campoGen Top="025" Field="Classes1" Name="Classe #1" />
+		<campoGen Top="050" Field="Classes3" Name="Classe #3" />
+		<campoGen Top="075" Field="Idade" Name="Idade" />
+		<campoGen Top="100" Field="Altura" Name="Altura" />
+		<campoGen Top="125" Field="NIVER" Name="Aniversário" />
+		</layout>
+			
+	<layout left="305" top="010" height="175" width="300">
+		<campoGen Top="000" Field="NameJ" Name="Jogador" />
+		<campoGen Top="025" Field="Classes2" Name="Classe #2" />
+		<campoGen Top="050" Field="Classes4" Name="Classe #4" />
+		<campoGen Top="075" Field="Genero" Name="Gênero" />
+		<campoGen Top="100" Field="Peso" Name="Peso" />
+		<campoGen Top="125" Field="MONY" Name="Dinheiro" />
+		</layout>
+
+	<layout left="10" top="160" height="260" width="800">
+		<campoAtuMax1 Top="000" Name="Nível" Field1="basLV" Field2 = "maxLV"/>
+		<dataLink field="basLV" defaultValue="1" />	
+		<dataLink field="maxLV" defaultValue="50" />	
+		<campoAtuMax1 Top="025" Name="Experiência" Field1="baseTREXP" Field2 = "baseTREXPMAX"/>
+		<dataLink field="baseTREXP" defaultValue="0" />	
+		</layout>
+		
+	<layout left="305" top="160" height="260" width="800">
+		<campoAtuMax1 Top="000" Name="Hit Points" Field1="baseHPAtual" Field2 = "baseHPMAX"/>
+		<campoAtuMax1 Top="025" Name="Action P." Field1="baseAPAtual" Field2 = "baseAPMAX"/>
+		<dataLink field="baseAPAtual" defaultValue="5" />	
+		</layout>
+		
+	<layout left="10" top="225" height="320" width="420">
+		<label left="000" top="000" height="20" width="100" text="Atributo" horzTextAlign="center" autoSize="true" fontStyle="bold" />
+		<label left="105" top="000" height="20" width="30" text="Valor" autoSize="true" horzTextAlign="center"/>
+		<label left="140" top="000" height="20" width="45" text="Lesões" autoSize="true" horzTextAlign="center"/>
+		<label left="190" top="000" height="20" width="30" text="RD" autoSize="true" horzTextAlign="center"/>
+		<label left="190" top="050" height="20" width="30" text="Total" autoSize="true" horzTextAlign="center"/>
+		<label left="000" top="025" height="20" width="100" text="HP" horzTextAlign="center" autoSize="true" fontStyle="bold" />
+		<edit left="105" top="025" height="20" width="30" field="HP_val" horzTextAlign="center" type="number" />
+		<dataLink field="HP_val" defaultValue="10" />
+		<comboBox left="140" top="025" height="20" width="45" field="HP_Les" horzTextAlign="center" items="{'0', '1', '2', '3', '4', '5', '6', '7', '8', '9'}" values="{'0', '1', '2', '3', '4', '5', '6', '7', '8', '9'}" />
+		<edit left="190" top="025" height="20" width="30" field="Red_Dano" horzTextAlign="center" type="number"/>
+		<dataLink field="HP_Les" defaultValue="0" />
+		<label left="140" top="050" height="20" width="30" text="EdC" autoSize="true" horzTextAlign="center"/>		
+		<AttributeT Top="075" Field="ATK" Name="Ataque"/>
+		<AttributeT Top="100" Field="DEF" Name="Defesa"/>
+		<AttributeT Top="125" Field="SPATK" Name="Ataque Especial"/>
+		<AttributeT Top="150" Field="SPDEF" Name="Defesa Especial"/>
+		<AttributeT Top="175" Field="SPD" Name="Velocidade"/>
+		</layout>
+				
+	<layout left="285" top="250" height="320" width="420">
+		<label left="85" top="000" height="20" width="30" text="Tot." autoSize="true" horzTextAlign="center"/>
+		<label left="120" top="000" height="20" width="30" text="Bôn." autoSize="true" horzTextAlign="center"/>
+		<TotBon Top ="025" Name="Eva. Física" Field1 = "pers_EVAF" Field2 = "pers_bonEVAF"/>
+		<TotBon Top ="050" Name="Eva. Especial" Field1 = "pers_EVAE" Field2 = "pers_bonEVAE"/>
+		<TotBon Top ="075" Name="Eva. Veloz" Field1 = "pers_EVAV" Field2 = "pers_bonEVAV"/>
+		<TotBon Top ="100" Name="Iniciativa" Field1 = "pers_INI" Field2 = "pers_bonINI"/>
+		<TotSolo Top = "125" Name="Força" Field = "DES_Forca"/>
+		<TotSolo Top = "150" Name="Arremesso" Field = "DES_ARREM"/>
+		</layout>
+		
+	<layout left="480" top="250" height="320" width="420">
+		<label left="85" top="000" height="20" width="30" text="Tot." autoSize="true" horzTextAlign="center"/>
+		<TotSolo Top="025" Name="Terrestre" Field = "DES_TER"/>
+		<TotSolo Top="050" Name="Natação" Field = "DES_NAT"/>
+		<TotSolo Top="075" Name="Levitação" Field = "DES_LEVI"/>
+		<TotSolo Top="100" Name="Teleporte" Field = "DES_TELE"/>
+		<TotSolo Top="125" Name="Salto Ver." Field = "DES_SALV"/>
+		<TotSolo Top="150" Name="Salto Hor." Field = "DES_SALH"/>
+		</layout>
+
+	<layout left="620" top="10" height="512" width="512">
+		<rectangle left="000" top="000" width="360" height="360" color="Red" strokeColor="black" strokeSize="3" />
+		<rectangle left="005" top="005" width="350" height="350" color="Black" strokeColor="black" strokeSize="4" />
+		<image left="005" top="005" width="350" height="350" field="basPERS" editable="true" style="proportional" animate="true" hint="350x350"/>
+		</layout>
+		
+	<layout left="680" top="395" height="512" width="512">
+		<button left="00" top="00" width="240" height="25" text="Contador de Iniciativas" fontStyle="bold" fontSize="15">
+			<event name="onClick">
+				if sheet == nil then 
+					return 
+					end
+				local mesaDoPersonagem = Firecast.getMesaDe(sheet)
+				NamTrainer = sheet.baseName or "Treinador"
+				NamSlot01 = sheet.NomeSlot1 or "";
+				NamSlot02 = sheet.NomeSlot2 or "";
+				NamSlot03 = sheet.NomeSlot3 or "";
+				NamSlot04 = sheet.NomeSlot4 or "";
+				NamSlot05 = sheet.NomeSlot5 or "";
+				NamSlot06 = sheet.NomeSlot6 or "";
+				NamSlot07 = sheet.NomeSlot7 or "";
+				NamSlot08 = sheet.NomeSlot8 or "";
+				IniTrainer = sheet.pers_INI or 0;
+				IniSlot01 = sheet.IniSlot1 or 0;
+				IniSlot02 = sheet.IniSlot2 or 0;
+				IniSlot03 = sheet.IniSlot3 or 0;
+				IniSlot04 = sheet.IniSlot4 or 0;
+				IniSlot05 = sheet.IniSlot5 or 0;
+				IniSlot06 = sheet.IniSlot6 or 0;
+				IniSlot07 = sheet.IniSlot7 or 0;
+				IniSlot08 = sheet.IniSlot8 or 0;
+				mesaDoPersonagem.activeChat:enviarMensagem("[§B]Contador de Iniciativas[§B]") 	
+				if (IniTrainer >0) then
+					mesaDoPersonagem.activeChat:enviarMensagem("[§B]" .. NamTrainer .. ":[§B] " .. IniTrainer)
+					end
+				if (IniSlot01 >0) then
+					mesaDoPersonagem.activeChat:enviarMensagem("[§B]" .. NamSlot01 .. ":[§B] " .. IniSlot01)
+					end
+				if (IniSlot02 >0) then
+					mesaDoPersonagem.activeChat:enviarMensagem("[§B]" .. NamSlot02 .. ":[§B] " .. IniSlot02)
+					end
+				if (IniSlot03 >0) then
+					mesaDoPersonagem.activeChat:enviarMensagem("[§B]" .. NamSlot03 .. ":[§B] " .. IniSlot03)
+					end
+				if (IniSlot04 >0) then
+					mesaDoPersonagem.activeChat:enviarMensagem("[§B]" .. NamSlot04 .. ":[§B] " .. IniSlot04)
+					end
+				if (IniSlot05 >0) then
+					mesaDoPersonagem.activeChat:enviarMensagem("[§B]" .. NamSlot05 .. ":[§B] " .. IniSlot05)
+					end
+				if (IniSlot06 >0) then
+					mesaDoPersonagem.activeChat:enviarMensagem("[§B]" .. NamSlot06 .. ":[§B] " .. IniSlot06)
+					end		
+				</event>
+			</button>
+		</layout>
+
+	<layout left="990" top="13" height="800" width="100">
+		<Insignea num="1" Top="00" Top2="05"/>
+		<Insignea num="2" Top="45" Top2="50"/>
+		<Insignea num="3" Top="90" Top2="95"/>
+		<Insignea num="4" Top="135" Top2="140"/>
+		<Insignea num="5" Top="180" Top2="185"/>
+		<Insignea num="6" Top="225" Top2="230"/>
+		<Insignea num="7" Top="270" Top2="275"/>
+		<Insignea num="8" Top="315" Top2="320"/>
+		</layout>	
+			
+	<layout left="1040" top="13" height="800" width="100">
+		<Insignea num="9" Top="00" Top2="05"/>
+		<Insignea num="10" Top="45" Top2="50"/>
+		<Insignea num="11" Top="90" Top2="95"/>
+		<Insignea num="12" Top="135" Top2="140"/>
+		<Insignea num="13" Top="180" Top2="185"/>
+		<Insignea num="14" Top="225" Top2="230"/>
+		<Insignea num="15" Top="270" Top2="275"/>
+		<Insignea num="16" Top="315" Top2="320"/>
+		</layout>	
+
+	<layout left="60" top="460" height="650" width="1100">
+		<PokeSlot num="1"/>
+		</layout>
+	<layout left="60" top="545" height="650" width="1100">
+		<PokeSlot num="2"/>
+		</layout>
+	<layout left="350" top="460" height="650" width="1100">
+		<PokeSlot num="3"/>
+		</layout> 
+	<layout left="350" top="545" height="650" width="1100">
+		<PokeSlot num="4"/>
+		</layout>
+	<layout left="640" top="460" height="650" width="1100">
+		<PokeSlot num="5"/>
+		</layout>
+	<layout left="640" top="545" height="650" width="1100">
+		<PokeSlot num="6"/>
+		</layout>
+		
+	<dataLink fields="{	'HP_val','baseHPAtual','basLV', 'HP_Les','ATK_val','ATK_edc', 'DEF_edc', 'DEF_val', 'SPATK_edc','SPATK_val',
+						'SPDEF_edc', 'SPDEF_val', 'SPD_edc', 'SPD_val', 'bon_DES_TER', 'niv_ACRO', 'niv_ATLE', 'niv_COMB', 'bon_DES_NAT', 
+						'bon_DES_ARREM','bon_DES_SALH','bon_DES_SALV', 'bon_DES_FORCA', 'pers_bonEVAF', 'pers_bonEVAE', 'pers_bonEVAV', 'pers_bonINI',
+						'bas_DES_LEVI','bas_DES_TELE','bon_DES_LEVI','bon_DES_TELE','niv_SOBR','FlagTraveler',}">
+		<event name="onChange">
+			if sheet== nil then 
+				return 
+				end;
+			local Nivel = tonumber(sheet.basLV) or 1;
+			local Lesoes = tonumber(sheet.HP_Les) or 0;
+			local basHP = tonumber(sheet.HP_val) or 10;
+			local SPDedc = tonumber(sheet.SPD_edc) or 7;
+			if 1 &gt; SPDedc then 
+				SPDedc = 7 
+				end;
+			if SPDedc &gt; 13 then 
+				SPDedc = 7 
+				end;
+			local HPAt = tonumber(sheet.baseHPAtual) or 0;
+			
+			sheet.baseHPMAX = math.floor((Nivel*2 + basHP*3 + 10)*((10-Lesoes)/10));
+			local HPMax = tonumber(sheet.baseHPMAX) or 0;			
+			if (HPAt &gt; HPMax) then 	
+				sheet.baseHPAtual = HPMax;
+				end
+
+			local SPDedcDES = {-3,-2,-2,-1,-1,0,0,0,1,1,2,2,3};
+			local spdBonEdC = SPDedcDES[SPDedc] or 0;
+			
+			local Acrobacia = tonumber(sheet.niv_ACRO) or 2
+			local Atletismo = tonumber(sheet.niv_ATLE) or 2
+			local Combate = tonumber(sheet.niv_COMB) or 2
+			local Sobrevivencia = tonumber(sheet.niv_SOBR) or 2
+			local Traveler = sheet.FlagTraveler or false
+			local ValDes = {}
+			ValDes.Temp1 = Acrobacia;
+			ValDes.Temp2 = Atletismo;
+			if (Traveler) then
+				if (Acrobacia > Atletismo) then
+					ValDes.Temp2 = Sobrevivencia;
+					else
+						ValDes.Temp1 = Sobrevivencia;
+					end
+				end
+			sheet.bas_DES_TER = 3 + math.floor((ValDes.Temp1+ValDes.Temp2)/2)
+			local basDesTer = tonumber(sheet.bas_DES_TER) or 0;
+			local bonDesTer = tonumber(sheet.bon_DES_TER) or 0;
+			sheet.DES_TER = basDesTer + bonDesTer + spdBonEdC
+			if (0 &gt; (sheet.DES_TER or 0)) then
+				sheet.DES_TER = 0;
+				end
+
+			sheet.bas_DES_NAT = math.floor(basDesTer/2)
+			local basDesNat = tonumber(sheet.bas_DES_NAT) or 0;
+			local bonDesNat = tonumber(sheet.bon_DES_NAT) or 0;
+			sheet.DES_NAT = basDesNat + bonDesNat + spdBonEdC;
+			if (0 &gt; (sheet.DES_NAT or 0)) then
+				sheet.DES_NAT = 0;
+				end
+
+			local bonAtletismo = 0
+			ValDes.Temp3 = Atletismo;
+			if (Traveler) then
+				if (Sobrevivencia > Atletismo) then
+					ValDes.Temp3 = Sobrevivencia;
+					end
+				end
+			if (ValDes.Temp3 >= 3) then
+				bonAtletismo = 1;
+				end
+			sheet.bas_DES_FORCA = 4 + bonAtletismo + math.floor(Combate/4);
+			local basFORCA = tonumber(sheet.bas_DES_FORCA) or 4;
+			local bonFORCA = tonumber(sheet.bon_DES_FORCA) or 0;
+			sheet.DES_FORCA = basFORCA + bonFORCA;
+
+			sheet.bas_DES_ARREM = 4 + Atletismo;
+			local basARREM = tonumber(sheet.bas_DES_ARREM) or 4;
+			local bonARREM = tonumber(sheet.bon_DES_ARREM) or 0;
+			sheet.DES_ARREM = basARREM + bonARREM;
+
+			ValDes.Temp4 = Acrobacia;
+			if (Traveler) then
+				if (Sobrevivencia > Acrobacia) then
+					ValDes.Temp4 = Sobrevivencia;
+					end
+				end
+				
+			sheet.bas_DES_SALH = math.floor(ValDes.Temp4/2)
+			local basDesSaH = tonumber(sheet.bas_DES_SALH) or 0;
+			local bonDesSaH = tonumber(sheet.bon_DES_SALH) or 0;			
+			sheet.DES_SALH = basDesSaH + bonDesSaH;
+			
+			sheet.bas_DES_SALV = math.floor(ValDes.Temp4/4) + math.floor(ValDes.Temp4/6) 
+			local basDesSaV = tonumber(sheet.bas_DES_SALV) or 0;
+			local bonDesSaV = tonumber(sheet.bon_DES_SALV) or 0;
+			sheet.DES_SALV = basDesSaV + bonDesSaV;	
+
+			local basDesLev = tonumber(sheet.bas_DES_LEVI) or 0;
+			local bonDesLev = tonumber(sheet.bon_DES_LEVI) or 0;		
+			if (basDesLev &gt; 0) then
+				sheet.DES_LEVI = basDesLev + bonDesLev + spdBonEdC;
+				if (0 &gt; (sheet.DES_LEVI or 0)) then 
+					sheet.DES_LEVI = 0; 
+					end
+				end
+				
+			local basDesTel = tonumber(sheet.bas_DES_TELE) or 0;
+			local bonDesTel = tonumber(sheet.bon_DES_TELE) or 0;	
+			if (basDesTel &gt; 0) then
+				sheet.DES_TELE = basDesTel + bonDesTel + spdBonEdC;
+				if (0 &gt; (sheet.DES_TELE or 0)) then 
+					sheet.DES_TELE = 0; 
+					end
+				end
+
+			local basATK = tonumber(sheet.ATK_val) or 5;
+			local basDEF = tonumber(sheet.DEF_val) or 5;
+			local basAES = tonumber(sheet.SPATK_val) or 5;
+			local basDES = tonumber(sheet.SPDEF_val) or 5;
+			local basVEL = tonumber(sheet.SPD_val) or 5;
+			local edcATK = tonumber(sheet.ATK_edc) or 7;
+			if 1 &gt; edcATK then 
+				edcATK = 7 
+				end;
+			if edcATK &gt; 13 then 
+				edcATK = 7 
+				end;
+			local edcDEF = tonumber(sheet.DEF_edc) or 7;
+			if 1 &gt; edcDEF then 
+				edcDEF = 7 
+				end;
+			if edcDEF &gt; 13 then 
+				edcDEF = 7 
+				end;
+			local edcAES = tonumber(sheet.SPATK_edc) or 7;
+			if 1 &gt; edcAES then 
+				edcAES = 7 
+				end;
+			if edcAES &gt; 13 then 
+				edcAES = 7 
+				end;
+			local edcDES = tonumber(sheet.SPDEF_edc) or 7;
+			if 1 &gt; edcDES then 
+				edcDES = 7 
+				end;
+			if edcDES &gt; 13 then 
+				edcDES = 7 
+				end;			
+			local EdCtable = {0.4,0.5,0.6,0.7,0.8,0.9,1,1.2,1.4,1.6,1.8,2,2.2};
+			
+			sheet.ATK_tot = math.floor(EdCtable[edcATK]*(basATK));	
+			sheet.DEF_tot = math.floor(EdCtable[edcDEF]*(basDEF));	
+			sheet.SPATK_tot = math.floor(EdCtable[edcAES]*(basAES));	
+			sheet.SPDEF_tot = math.floor(EdCtable[edcDES]*(basDES));				
+			sheet.SPD_tot = math.floor(EdCtable[SPDedc]*(basVEL));
+		
+			local Defesa = tonumber(sheet.DEF_tot) or 5;
+			local DefEsp = tonumber(sheet.SPDEF_tot) or 5
+			local BonINI = sheet.pers_bonINI or 0;
+			local Velocidade = tonumber(sheet.SPD_tot) or 5
+			sheet.pers_INI = Velocidade + BonINI;
+			if (Defesa &gt;= 31) then 
+				Defesa = 30; 	
+				end
+			if (DefEsp &gt;= 31) then 
+				DefEsp = 30; 	
+				end
+			if (Velocidade &gt;= 31) then 
+				Velocidade = 30; 	
+				end
+			local BonEvaF = sheet.pers_bonEVAF or 0;
+			local BonEvaE = sheet.pers_bonEVAE or 0;
+			local BonEvaV = sheet.pers_bonEVAV or 0;
+			
+			sheet.pers_EVAF = math.floor(Defesa/5) + BonEvaF;
+			sheet.pers_EVAE = math.floor(DefEsp/5) + BonEvaE;
+			sheet.pers_EVAV = math.floor(Velocidade/5) + BonEvaV;		
+			sheet.baseAPMAX = 5 + math.floor(Nivel/5);
+			sheet.baseTREXPMAX = 10*Nivel;
+		
+		</event>
+        </dataLink>
+
+	</form>

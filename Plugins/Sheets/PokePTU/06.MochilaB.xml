@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+	<form name="frmMochilaB" align="client" theme="dark" margins="{top=1}">
+
+	<template name="weaponInfoFieldSmall">
+		<flowPart minWidth="90" maxWidth="150" height="35">
+			<label align="top" class="tituloCampo" fontSize="10" text="$(text)" horzTextAlign="center" wordWrap="true" textTrimming="none" autoSize="true" hint="$(hint)" hitTest="true"/>
+			<edit align="client" class="" field="$(field)" fontSize="12"/>
+		</flowPart>
+	</template>
+	<template name="itemInfoFieldSmall">
+		<flowPart minWidth="90" maxWidth="150" height="35">
+			<label align="top" class="tituloCampo" fontSize="10" text="$(text)" horzTextAlign="center" wordWrap="true" textTrimming="none" autoSize="true" hint="$(hint)" hitTest="true"/>
+			<edit align="client" class="" field="$(field)" fontSize="12" type="number"/>
+		</flowPart>
+	</template>
+		
+	<popup name="popItem" width="300" height="250" backOpacity="0.4" autoScopeNode="false">
+		<flowLayout align="top" autoHeight="true" maxControlsPerLine="3" margins="{bottom=4}" horzAlign="center">
+			<weaponInfoFieldSmall text="Nome" field="nome" hint=""/>
+			<itemInfoFieldSmall text="Preço" field="preco" hint=""/>
+			<weaponInfoFieldSmall text="Rolagem" field="Roll" hint="Se usar o item envolver dados, colocar a rolagem"/>
+			</flowLayout>
+		<textEditor align="client" field="descricao" class=""/>
+		</popup>
+
+		<layout left="000" top="000" height="650" width="1100">
+			<image left="000" top="000" height="650" width="1100" src="/img/Pokeball.jpg" style="autoFIT" />
+			</layout>
+
+		<layout left="30" top="10" width="315" height="300">
+			<rectangle align="client" color="#0000007F"  strokeColor="black" strokeSize="1"/>
+			<button left="5" top="5" height="20" width="305" text="Medicina ou Bandagem" onClick="self.rclConsumiveis:append();"/>
+			<recordList left="5" top="30" width="305" height="263" name="rclConsumiveis" field="itensConsumiveis" templateForm="frmConsumiveis"/>
+			</layout>
+		
+		<layout left="380" top="10" width="315" height="300">
+			<rectangle align="client" color="#0000007F"  strokeColor="black" strokeSize="1"/>
+			<button left="5" top="5" height="20" width="305" text="Comida, Lanche ou Refresco" onClick="self.rclItens2:append();"/>
+			<recordList left="5" top="30" width="305" height="263" name="rclItens2" field="itens2" templateForm="frmConsumiveis"/>
+			</layout>
+			
+		<layout left="730" top="10" width="315" height="300">
+			<rectangle align="client" color="#0000007F"  strokeColor="black" strokeSize="1"/>
+			<button left="5" top="5" height="20" width="305" text="Apricó, Fruta ou Erva" onClick="self.rclItens3:append();"/>
+			<recordList left="5" top="30" width="305" height="263" name="rclItens3" field="itens3" templateForm="frmConsumiveis"/>
+			</layout>
+			
+		<layout left="30" top="310" width="315" height="300">
+			<rectangle align="client" color="#0000007F"  strokeColor="black" strokeSize="1"/>
+			<button left="5" top="5" height="20" width="305" text="Item de Pokémons ou Pokébola" onClick="self.rclItens4:append();"/>
+			<recordList left="5" top="30" width="305" height="263" name="rclItens4" field="itens4" templateForm="frmConsumiveis"/>
+			</layout>
+		
+		<layout left="380" top="310" width="315" height="300">
+			<rectangle align="client" color="#0000007F"  strokeColor="black" strokeSize="1"/>
+			<button left="5" top="5" height="20" width="305" text="Equipamento de Viagem ou Kit" onClick="self.rclItens5:append();"/>
+			<recordList left="5" top="30" width="305" height="263" name="rclItens5" field="itens5" templateForm="frmConsumiveis"/>
+			</layout>
+			
+		<layout left="730" top="310" width="315" height="300">
+			<rectangle align="client" color="#0000007F"  strokeColor="black" strokeSize="1"/>
+			<button left="5" top="5" height="20" width="305" text="Itens-Chave" onClick="self.rclItens6:append();"/>
+			<recordList left="5" top="30" width="305" height="263" name="rclItens6" field="itens6" templateForm="frmConsumiveis"/>
+			</layout>
+
+		</form>

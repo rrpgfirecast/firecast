@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmPoke8" align="client" theme="dark" margins="{top=1}">
+
+	<rectangle align="top" color="black" xradius="10" yradius="10" height="880" padding="{top=3, left=3, right=3, bottom=3}"/>
+
+	<layout left="10" top="10" height="600" width="900">
+		<rectangle left="000" top="00" width="260" height="515" color="darkred" strokeColor="black" strokeSize="5" />
+		<label left="005" top="05" height="20" width="250" fontColor="White" fontSize="18" text="Level Up Moves" autoSize="true" horzTextAlign="center" />								
+		<textEditor left="005" top="30" width="250" height="485" field="campoLvUp" />
+		</layout>
+		
+	<layout left="300" top="10" height="600" width="900">
+		<rectangle left="000" top="00" width="260" height="250" color="darkred" strokeColor="black" strokeSize="5" />
+		<label left="005" top="05" height="20" width="250" fontColor="White" fontSize="18" text="TM Moves" autoSize="true" horzTextAlign="center" />								
+		<textEditor left="005" top="30" width="250" height="220" field="campoTM" />
+		</layout>
+		
+	<layout left="300" top="275" height="600" width="900">
+		<rectangle left="000" top="00" width="260" height="250" color="darkred" strokeColor="black" strokeSize="5" />
+		<label left="005" top="05" height="20" width="250" fontColor="White" fontSize="18" text="Egg Moves" autoSize="true" horzTextAlign="center" />								
+		<textEditor left="005" top="30" width="250" height="220" field="campoEgg" />
+		</layout>
+		
+	<layout left="590" top="10" height="600" width="900">
+		<rectangle left="000" top="00" width="260" height="250" color="darkred" strokeColor="black" strokeSize="5" />
+		<label left="005" top="05" height="20" width="250" fontColor="White" fontSize="18" text="Tutor Moves" autoSize="true" horzTextAlign="center" />								
+		<textEditor left="005" top="30" width="250" height="220" field="campoTutor" />
+		</layout>
+		
+	<layout left="590" top="275" height="600" width="900">
+		<rectangle left="000" top="00" width="260" height="250" color="darkred" strokeColor="black" strokeSize="5" />
+		<label left="005" top="05" height="20" width="250" fontColor="White" fontSize="18" text="Inheritance Moves" autoSize="true" horzTextAlign="center" />								
+		<textEditor left="005" top="30" width="250" height="220" field="campoInheritance" />
+		</layout>
+
+	</form>

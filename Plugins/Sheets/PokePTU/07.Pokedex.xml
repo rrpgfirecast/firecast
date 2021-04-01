@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmPokedex" align="client" theme="dark" margins="{top=1}">
+
+	<layout left="000" top="000" height="650" width="1100">
+		<image left="000" top="000" height="650" width="1100" src="/img/Pokeball.jpg" style="autoFIT" />
+		</layout>
+		
+	<button align="top" height="25" text="Adicionar Entrada" onClick="self.rclDex:append();" />
+	<layout align="top" width="170" height="30" margins="{top=5, bottom=5, left=15}">
+		<label text="Capturados:" align="left" width="80" />
+		<rectangle color="darkred" align="left" class="roRect" margins="{left=5}">
+			<label field="trainerPokeCaught" align="client" class="roValues" horzTextAlign="center" />
+			</rectangle>
+		<label text="Vistos:" align="left" width="80" margins="{left=80}" />
+		<rectangle color="darkred" align="left" class="roRect" margins="{left=10}">
+			<label field="trainerPokeSeen" align="client" class="roValues" horzTextAlign="center" />
+			</rectangle>
+		</layout>
+
+	<layout align="client" top="35">
+		<recordList name="rclDex" field="recDex" templateForm="frmDex" align="client" layout="horizontalTiles" minQt="1" selectable="true">
+			<event name="onCompare"><![CDATA[               
+				if (nodeA.pokeNumber or 0) < (nodeB.pokeNumber or 0) then
+					return -1;
+				elseif (nodeA.pokeNumber or 0) > (nodeB.pokeNumber or 0) then
+					return 1;
+				else   
+					return utils.compareStringPtBr(nodeA.pokeSpecie, nodeB.pokeSpecie);
+					end;               
+					]]></event>
+			<event name="onItemAdded">
+				self.recalcDex();
+				</event>
+			<event name="onItemRemoved">
+				self.recalcDex();
+				</event>
+			<script>
+				function self.recalcDex()
+					if sheet ~= nil then
+						local pokeSeenTotal = 0;
+						local pokeCaughtTotal = 0;
+						local nodes = NDB.getChildNodes(sheet.recDex);
+						for i=1, #nodes, 1 do
+							pokeSeenTotal = pokeSeenTotal + 1;
+							if nodes[i].pokeCaught then
+								pokeCaughtTotal = pokeCaughtTotal +1;
+								end					
+							end	
+						sheet.trainerPokeSeen = pokeSeenTotal;
+						sheet.trainerPokeCaught = pokeCaughtTotal;
+
+						for i=1, #nodes, 1 do
+							if (nodes[i].pokeNumber == nil) then
+								nodes[i].urlDexNum = 0;
+							elseif (string.len(nodes[i].pokeNumber) == 2) then
+								nodes[i].urlDexNum = "0" .. nodes[i].pokeNumber;
+							elseif (string.len(nodes[i].pokeNumber) == 3) then
+								nodes[i].urlDexNum = nodes[i].pokeNumber;
+							elseif (string.len(nodes[i].pokeNumber) == 1) then
+								nodes[i].urlDexNum = "00" .. nodes[i].pokeNumber;
+								end;
+							nodes[i].pokeImgUrl = "https://www.serebii.net/xy/pokemon/" .. nodes[i].urlDexNum .. ".png";
+							end
+						end;
+					end
+				</script>
+			</recordList>
+		</layout>
+	</form>

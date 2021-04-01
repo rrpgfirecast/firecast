@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module sdkVersion="3.5" compilationDate="31032020172259" sdkApiVersion="86" originalPluginFileName="PokePTAOLD.rpk" compilationDigest="2682e61e3cf36252c2ecaf4390b24c3ece69bc06">
+	<id>ID_PLAYER_PokePTAOLDHITO</id>
+	<version>1.0</version>
+	<name>Pokémon - Ficha</name>
+	<description>Essa ficha permite fazer a ficha de jogador no sistema Pokémon PTA versão antiga.</description>
+	<author>Hitoshura</author>
+	<site/>
+	<contact>fliraf@gmail.com</contact>
+    <dataTypes>
+        <dataType title="Hitoshura - Pokemon PTA (Antigo)" name="frmHITOPOKEPTAOLD" lfmFile="PokePTAOLD.lfm">HITO_PLAYER_POKEPTAOLD</dataType>
+    </dataTypes>
+</module>

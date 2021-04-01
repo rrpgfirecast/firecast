@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmFichaRPGmeister2_svg" align="client" theme="dark" margins="{top=1}">
+
+	<template name="Ataque">
+		<rectangle align="client" color="black" compilerOrder="0"/>
+		<label left="5" top="5" width="70" height="25" text="Golpe" fontStyle="bold"/>
+		<edit vertTextAlign="center" left="75" top="5" width="160" height="25" field="golpe$(num)"/>	
+		<label left="5" top="30" width="80" height="25" text="Descritores" fontStyle="bold"/>
+		<edit vertTextAlign="center" left="75" top="30" width="160" height="25" field="Descritores$(num)"/>	
+		<label left="5" top="55" width="70" height="25" text="Alcance" fontStyle="bold"/>
+		<edit vertTextAlign="center" left="75" top="55" width="160" height="25" field="alcance$(num)"/>
+		<label left="240" top="6" width="50" height="25" text="Tipo" fontStyle="bold"/>
+		<edit vertTextAlign="center" left="282" top="6" width="82" height="25" field="tipo$(num)"/>		
+		<label left="240" top="31" width="50" height="25" text="Classe" fontStyle="bold"/>
+		<comboBox left="282" top="31" width="82" height="25" field="classe$(num)" horzTextAlign="center" items="{'Ataque', 'Especial', 'Efeito','Arma'}" values="{'1', '2', '3','4'}" />        
+		<label left="240" top="55" width="50" height="25" text="Freq." fontStyle="bold"/>
+		<edit vertTextAlign="center" left="282" top="55" width="82" height="25" field="frequencia$(num)"/>	
+		<label left="370" top="6" width="70" height="25" text="Acurácia" fontStyle="bold"/>
+		<edit vertTextAlign="center" left="425" top="6" width="53" height="25" field="Acc$(num)" type = "number"/>  
+		<label left="370" top="31" width="70" height="25" text="Prec.Bôn." fontStyle="bold"/>
+		<edit vertTextAlign="center" left="425" top="31" width="53" height="25" field="ataque$(num)" type = "number"/>    
+		<label left="370" top="55" width="70" height="25" text="D. Base" fontStyle="bold"/>
+		<edit vertTextAlign="center" left="425" top="55" width="53" height="25" field="dano$(num)"/>         		
+		
+		<button left="488" top="6" width="82" text="Acerto" fontSize="11" fontStyle="bold">
+			<event name="onClick">
+				if sheet == nil then return end;
+				local mesaDoPersonagem = Firecast.getMesaDe(sheet)
+				local ATAQUE = sheet.ataque$(num) or 0;
+				local NomeGolpe = sheet.golpe$(num) or "Golpe"
+				local NomeUser = sheet.baseName or "Treinador"
+				local Accuracy = sheet.Acc$(num) or "N/A"
+				mesaDoPersonagem.activeChat:rolarDados("1d20 + " .. ATAQUE, "Acerto (AC = " .. Accuracy .. ") de " .. NomeGolpe .. " usado por " .. NomeUser) 					
+			</event>
+			</button>			
+		
+		<button left="488" top="31" width="82" text="Dano" fontSize="11" fontStyle="bold">
+			<event name="onClick">
+				if sheet == nil then return end;
+				local mesaDoPersonagem = Firecast.getMesaDe(sheet)
+				local NomeGolpe = sheet.golpe$(num) or "Golpe"
+				local NomeUser = sheet.baseName or "Pokémon"
+
+				local Attribute = tonumber(sheet.classe$(num)) or 3;
+					if Attribute &gt; 4 then 
+						Attribute = 3; 					
+						end
+					if 1 &gt; Attribute then 
+						Attribute = 1; 					
+						end
+				local ATKFIS = sheet.ATK_tot or 0;
+				local ATKESP = sheet.SPATK_tot or 0;
+				local ATKWEA = sheet.ATK_mod or 0;
+				local ATK = {ATKFIS,ATKESP,0,ATKWEA} or 0;
+					
+				local dado = (sheet.dano$(num) or "1d2");
+				local extra = (ATK[Attribute] or "") or "0";
+				local extra2 = sheet.BDano$(num) or "0"
+				local rolagem = Firecast.interpretarRolagem(dado);
+				rolagem:concatenar(extra);
+				rolagem:concatenar(extra2);		
+					
+				if (Attribute == 1 or Attribute == 2 or Attribute == 4) then
+					mesaDoPersonagem.activeChat:rolarDados(rolagem, "Dano de " .. NomeGolpe .. " usado por " .. NomeUser) 
+					end
+				</event>
+			</button>
+			
+		<button left="488" top="55" width="82" text="Crítico" fontSize="11" fontStyle="bold">
+			<event name="onClick">
+				if sheet == nil then return end;
+				local mesaDoPersonagem = Firecast.getMesaDe(sheet)					
+				local NomeGolpe = sheet.golpe$(num) or "Golpe"
+				local NomeUser = sheet.baseName or "Pokémon"
+				local Attribute = tonumber(sheet.classe$(num)) or 3;
+				if Attribute &gt; 4 then 
+					Attribute = 3; 					
+					end
+				if 1 &gt; Attribute then 
+					Attribute = 1; 					
+					end
+				local ATKFIS = sheet.ATK_tot or 0;
+				local ATKESP = sheet.SPATK_tot or 0;
+				local ATKWEA = sheet.ATK_mod or 0;
+				local ATK = {ATKFIS,ATKESP,0,ATKWEA} or 0;
+
+				local dado = (sheet.dano$(num) or "1d2");
+				local extra = (ATK[Attribute] or "") or "0";
+				local extra2 = sheet.BDano$(num) or "0"
+				local rolagem = Firecast.interpretarRolagem(dado);
+				rolagem:concatenar(dado);
+				rolagem:concatenar(extra);
+				rolagem:concatenar(extra2);					
+				if (Attribute == 1 or Attribute == 2 or Attribute == 4) then
+					mesaDoPersonagem.activeChat:rolarDados(rolagem, "Dano CRÍTICO de " .. NomeGolpe .. " usado por " .. NomeUser) 
+					end
+				</event>
+			</button>	
+      				
+		<textEditor left="575" top="5" width="295" height="75" field="campoEfeitoGolpes$(num)" />	
+		<label left="875" top="5" width="80" height="25" text="Aptidão" fontStyle="bold"/>
+		<edit vertTextAlign="center" left="940" top="5" width="120" height="25" field="tipoContest$(num)"/>			
+		<label left="875" top="30" width="80" height="25" text="Concursos" fontStyle="bold"/>
+		<edit vertTextAlign="center" left="940" top="30" width="120" height="25" field="efeitoContest$(num)"/>			
+		<label left="875" top="55" width="80" height="25" text="Bôn.Dano" fontStyle="bold"/>
+		<edit vertTextAlign="center" left="940" top="55" width="120" height="25" field="BDano$(num)"/>
+			
+		</template>
+
+	<scrollBox align="client">			
+		<layout left="0" top="0" width="1080" height="760">
+			<rectangle align="client" color="#0000007F" compilerOrder="0"/>
+			<layout left="2" top="2" width="1207" height="92" compilerOrder="1">
+				<Ataque num="1"/>
+				</layout>
+			<layout left="2" top="97" width="1207" height="92" compilerOrder="1">
+				<Ataque num="2"/>
+				</layout>
+			<layout left="2" top="192" width="1207" height="92" compilerOrder="1">
+				<Ataque num="3"/>
+				</layout>
+			<layout left="2" top="288" width="1207" height="92" compilerOrder="1">
+				<Ataque num="4"/>
+				</layout>
+			<layout left="2" top="383" width="1207" height="92" compilerOrder="1">
+				<Ataque num="5"/>
+				</layout>
+			<layout left="2" top="478" width="1207" height="92" compilerOrder="1">
+				<Ataque num="6"/>
+				</layout>
+			<layout left="2" top="573" width="1207" height="92" compilerOrder="1">
+				<Ataque num="7"/>
+				</layout>
+			<layout left="2" top="668" width="1207" height="92" compilerOrder="1">
+				<Ataque num="8"/>
+				</layout>
+			</layout>
+		</scrollBox>
+	</form>

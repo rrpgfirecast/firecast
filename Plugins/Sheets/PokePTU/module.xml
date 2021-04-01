@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module sdkVersion="3.5" compilationDate="31032021204109" sdkApiVersion="86" originalPluginFileName="PokePTU.rpk" compilationDigest="bdad15d171c04648936bb7c644dc8ffb91c26689">
+	<id>ID_PLAYER_PokemonPTUHITO</id>
+	<version>4.0</version>
+	<name>Hito - Pokémon PTU</name>
+	<description>Essa ficha permite fazer a ficha de jogador e pokémons no sistema Pokémon Tabletop United.</description>
+	<author>Hitoshura</author>
+	<site/>
+	<contact>fliraf@gmail.com</contact>
+    <dataTypes>
+        <dataType title="Hitoshura - Pokemon PTU" name="frmHITOPOKEPTU" lfmFile="PokePTU.lfm">HITO_PLAYER_POKEMONPTU</dataType>
+    </dataTypes>
+</module>

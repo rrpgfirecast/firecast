@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmConsumiveis" height="25" width="285" margins="{top=2,bottom=2}">
+	<script> 
+		<![CDATA[			
+		local function askForDelete()
+			Dialogs.confirmYesNo("Deseja realmente apagar esse item?",
+								 function (confirmado)
+									if confirmado then
+										NDB.deleteNode(sheet);
+									end;
+								 end);
+		end;
+
+		local function showItemPopup()
+			local pop = self:findControlByName("popItem");
+				
+			if pop ~= nil then
+				pop:setNodeObject(self.sheet);
+				pop:showPopupEx("left", self);
+			else
+				showMessage("Ops, bug.. nao encontrei o popup de items para exibir");
+			end;				
+		end;
+
+		local function use()
+			local mesa = Firecast.getMesaDe(sheet);
+
+			if sheet.BarrinhaValor~=nil then
+				if sheet.BarrinhaValor>= 1 then
+					local vAntigo = sheet.BarrinhaValor;
+					sheet.BarrinhaValor = tonumber(sheet.BarrinhaValor) - 1;
+					local vNovo = sheet.BarrinhaValor;
+					local nomItem = sheet.nome or "Item"
+					if sheet.dados==nil then
+						local texto = nomItem .. " foi usado ( " .. vAntigo .. " -> " .. vNovo .. " ).";
+						mesa.activeChat:enviarMensagem(texto);
+						local dado = (sheet.Roll or "");
+						local rolagem = Firecast.interpretarRolagem(dado);
+						if (rolagem.possuiAlgumDado) then
+							mesa.activeChat:rolarDados(rolagem, nomItem)
+							end
+
+						end;
+					end
+				end;
+			end;
+
+		]]>	
+	</script>
+
+	<rectangle align="client" color="#000000">
+		<button align="left" width="50" text="Usar" onClick="use();" margins="{right=5}"/>
+		<edit align="left" width="140" field="nome"/>
+		<edit align="left" width="30" field="BarrinhaValor" horzTextAlign="center" type="number" margins="{right=3, left=3}"/>
+    	<button align="right" text="i" width="25" margins="{right=5}" onClick="showItemPopup()"/>
+    	<button align="right" text="X" width="25" onClick="askForDelete()"/>
+	</rectangle>
+
+	<event name="onMouseEnter">
+    	self.background.color = "#444444";
+    </event>
+    <event name="onMouseLeave">
+    	self.background.color = "#333333";
+    </event>
+</form>

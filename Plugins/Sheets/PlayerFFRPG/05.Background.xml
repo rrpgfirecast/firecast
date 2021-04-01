@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmBackground" align="client" theme="dark" margins="{top=1}">
+
+	<layout left="000" top="000" height="650" width="1100">
+		<image left="000" top="000" width="1100" height="650" src="/img/wallpaper.png" />
+		</layout>	
+	
+	<layout left="25" top="10" height="900" width="1000">
+		<rectangle left="000" top="000" width="730" height="575" color="darkblue" strokeColor="black" strokeSize="5" />
+		<label left="000" top="005" height="20" width="720" fontColor="White" fontSize="18" text="História" autoSize="true" horzTextAlign="center" />
+		<richEdit left="005" top="030" width="720" height="540" backgroundColor="black" defaultFontColor="white" field="campoHistoria" />
+		</layout>
+		
+	<layout left="755" top="10" height="900" width="1000">
+		<rectangle left="000" top="000" width="320" height="575" color="darkblue" strokeColor="black" strokeSize="5" />
+		<label left="000" top="005" height="20" width="330" fontColor="White" fontSize="18" text="Personalidade" autoSize="true" horzTextAlign="center" />
+		<richEdit left="005" top="030" width="310" height="540" backgroundColor="black" defaultFontColor="white" field="campoPersonalidade" />
+		</layout>	
+
+	</form>			

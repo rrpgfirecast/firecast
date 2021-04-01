@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+	<form name="frmTalMissions" align="client" theme="dark" margins="{top=1}">
+				
+	 	<template name="habilidadeSmallCenterNum">
+			<flowPart minWidth="90" maxWidth="100" height="35">
+				<label align="top" class="tituloCampo" fontSize="10" text="$(text)" horzTextAlign="center" wordWrap="true" textTrimming="none" autoSize="true"/>
+				<edit align="client" class="" field="$(field)" horzTextAlign="center" fontSize="12" type="number"/>
+				</flowPart>
+			</template>
+	 	<template name="habilidadeSmallCenter">
+			<flowPart minWidth="90" maxWidth="100" height="35">
+				<label align="top" class="tituloCampo" fontSize="10" text="$(text)" horzTextAlign="center" wordWrap="true" textTrimming="none" autoSize="true"/>
+				<edit align="client" class="" field="$(field)" horzTextAlign="center" fontSize="12"/>
+				</flowPart>
+			</template>
+		<template name="habilidadeLarge">
+			<flowPart minWidth="180" maxWidth="200" height="35">
+				<label align="top" class="tituloCampo" fontSize="10" text="$(text)" horzTextAlign="center" wordWrap="true" textTrimming="none" autoSize="true"/>
+				<edit align="client" class="" field="$(field)" fontSize="12"/>
+				</flowPart>
+			</template>
+
+	 	<popup name="popHabilidade" width="300" height="240" backOpacity="0.4" autoScopeNode="false">
+			<flowLayout align="top" autoHeight="true" maxControlsPerLine="3" margins="{bottom=4}" horzAlign="center">
+				<habilidadeSmallCenterNum text="Nível" field="nivelHabilidade"/>
+				<habilidadeLarge text="Nome" field="nomeHabilidade"/>	
+				<habilidadeSmallCenter text="Classe" field="classeHabilidade"/>			
+				<habilidadeLarge text="Requisitos" field="reqHabilidade"/>
+				<habilidadeSmallCenter text="Frequência" field="freqHabilidade"/>
+				<habilidadeLarge text="Tipo" field="tipoHabilidade"/>
+				<dataLink field="nivelHabilidade">
+					<event name="onChange">
+						local rcl = self:findControlByName("rclListaDosTalentos");
+						if rcl~= nil then
+							rcl:sort();
+						end;
+						rcl = self:findControlByName("rclListaDosOutros");
+						if rcl~= nil then
+							rcl:sort();
+						end;
+						rcl = self:findControlByName("rclListaDasCaracteristicasClasse");
+						if rcl~= nil then
+							rcl:sort();
+						end;
+						</event>
+					</dataLink>
+				</flowLayout>
+			<textEditor align="client" field="descricao"/>
+		</popup>
+
+		<layout left="000" top="000" height="650" width="1100">
+			<image left="000" top="000" height="650" width="1100" src="/img/Pokeball.jpg" style="autoFIT" />
+			</layout>
+
+		<layout left="10" top="10" height="800" width="1000">
+			<rectangle left="000" top="000" width="660" height="575" color="darkred" strokeColor="black" strokeSize="5" />
+			<label left="000" top="005" height="20" width="650" fontColor="white" fontSize="18" text="Missões" autoSize="true" horzTextAlign="center" />
+			<richEdit left="005" top="030" width="650" height="540" backgroundColor="black" defaultFontColor="white" field="campoCapacidadesTrainer" />
+			</layout>
+
+		<layout left="690" top="10" width="400" height="600">
+			<rectangle align="client" color="#0000007F"/>
+			<rectangle left="000" top="000" width="400" height="40" color="darkred" strokeColor="black" strokeSize="5" />
+			<label left="0" top="5" width="400" height="20" text="Talentos" autoSize="true" fontColor ="White" fontSize = "18" horzTextAlign="center"/>
+			<button text="Novo Talento" left="5" top="30" width="390" height="20" onClick="self.rclListaDasCaracteristicasClasse:append();"/>
+			<recordList name="rclListaDasCaracteristicasClasse" field="campoDasCaracteristicasClasse" templateForm="frmFichaRPGmeister4h_svg" left="5" top="50" width="390" height="515" layout="vertical">
+				<event name="onCompare">
+		            return ((tonumber(nodeA.nivelHabilidade) or 0) - (tonumber(nodeB.nivelHabilidade) or 0));
+					</event>
+				</recordList>
+			</layout>
+
+	</form>
