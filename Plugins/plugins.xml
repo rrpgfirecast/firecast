@@ -74,11 +74,6 @@
             <dataType id="Ambesek.FichaSW5e" title="Ficha Star Wars 5e"/>
         </dataTypes>
     </element>
-    <element id="ID_MOB_FFRPG_3.5" name="FFRPG - Ficha de Monstro" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/FFRPG%20Mob%20Creator/output/FFRPG%20Mob%20Creator.rpk?raw=true" fileName="FFRPG Mob Creator.rpk" repositoryPath="Sheets/FFRPG Mob Creator/" author="Hitoshura" description="Essa ficha auxilia na criação de monstros." version="1.0" compilationDate="26112019235930" compilationDigest="ddf3011131ff15866d45be4405d762b02d83f44c">
-        <dataTypes>
-            <dataType id="MOB_CREATOR_FFRPG" title="Hitoshura - FFRPG Mob Creator"/>
-        </dataTypes>
-    </element>
     <element id="FICHA_13_ERA" name="Ficha 13º Era" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%2013%C2%BA%20Era/output/Ficha%2013%C2%BA%20Era.rpk?raw=true" fileName="Ficha 13º Era.rpk" repositoryPath="Sheets/Ficha 13º Era/" author="Lincoln Ruteskid" description="Ficha de personagem para o sistema 13º Era" version="1.0" compilationDate="26112019235933" compilationDigest="9e8c10a82e3155ffcb04a72c44315f43062c8f84">
         <dataTypes>
             <dataType id="rrpg.Ficha.13.Era" title="Ficha - 13º Era"/>
@@ -190,7 +185,7 @@
             <dataType id="Ambesek.FichaPathfinder.2e" title="Ficha Pathfinder 2e"/>
         </dataTypes>
     </element>
-    <element id="Ambesek.Skullast" name="Ficha Ragnarok" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20Skullast/output/Ficha%20Skullast.rpk?raw=true" fileName="Ficha Skullast.rpk" repositoryPath="Sheets/Ficha Skullast/" author="Ambesek" description="Ficha para um sistema proprio de Skullast." version="0.7" compilationDate="27112019000123" compilationDigest="886b42b8401ccb09df7dde5f9a836da3dd60c0ef">
+    <element id="Ambesek.Skullast" name="Ficha Skullast" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20Skullast/output/Ficha%20Skullast.rpk?raw=true" fileName="Ficha Skullast.rpk" repositoryPath="Sheets/Ficha Skullast/" author="Ambesek" description="Ficha para um sistema proprio de Skullast." version="0.7" compilationDate="27112019000123" compilationDigest="886b42b8401ccb09df7dde5f9a836da3dd60c0ef">
         <dataTypes>
             <dataType id="Ambesek.Skullast" title="Ficha Ragnarok"/>
         </dataTypes>
