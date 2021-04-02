@@ -787,6 +787,16 @@ local function constructNew_frmFichaRPGmeister3_svg()
     obj.button2:setHeight(25);
     obj.button2:setName("button2");
 
+    obj.button3 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button3:setParent(obj.layout4);
+    obj.button3:setText("Pathfinder");
+    obj.button3:setLeft(0);
+    obj.button3:setTop(50);
+    obj.button3:setWidth(125);
+    obj.button3:setHeight(25);
+    obj.button3:setHint("Vai apagar todas perícias atuais. ");
+    obj.button3:setName("button3");
+
     obj._e_event0 = obj.dataLink1:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet==nil then return end;
@@ -838,7 +848,13 @@ local function constructNew_frmFichaRPGmeister3_svg()
             					idioma.escritaIdioma = true;
         end, obj);
 
+    obj._e_event7 = obj.button3:addEventListener("onClick",
+        function (_)
+            pathSkills();
+        end, obj);
+
     function obj:_releaseEvents()
+        __o_rrpgObjs.removeEventListenerById(self._e_event7);
         __o_rrpgObjs.removeEventListenerById(self._e_event6);
         __o_rrpgObjs.removeEventListenerById(self._e_event5);
         __o_rrpgObjs.removeEventListenerById(self._e_event4);
@@ -863,6 +879,7 @@ local function constructNew_frmFichaRPGmeister3_svg()
         if self.flowPart8 ~= nil then self.flowPart8:destroy(); self.flowPart8 = nil; end;
         if self.label1 ~= nil then self.label1:destroy(); self.label1 = nil; end;
         if self.layout4 ~= nil then self.layout4:destroy(); self.layout4 = nil; end;
+        if self.button3 ~= nil then self.button3:destroy(); self.button3 = nil; end;
         if self.flowPart10 ~= nil then self.flowPart10:destroy(); self.flowPart10 = nil; end;
         if self.checkBox3 ~= nil then self.checkBox3:destroy(); self.checkBox3 = nil; end;
         if self.label17 ~= nil then self.label17:destroy(); self.label17 = nil; end;
