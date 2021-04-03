@@ -24443,6 +24443,7 @@ local function constructNew_frmFichaStarfinder()
 			if node==nil then return end;
 
 			local armas = NDB.getChildNodes(node.listaAtaqs); 
+			if #armas < 1 then return end;
 			local atk = {};
 			local index = 0;
 			local mesa = Firecast.getMesaDe(sheet);

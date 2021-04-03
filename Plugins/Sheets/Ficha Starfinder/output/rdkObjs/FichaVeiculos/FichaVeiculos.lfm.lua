@@ -161,6 +161,7 @@ local function constructNew_frmFichaVeiculos()
             if sheet==nil then return end;
 
             local armas = NDB.getChildNodes(sheet.listaAtaqs); 
+            if #armas < 1 then return end;
             local atk = {};
             local index = 0;
             local mesa = Firecast.getMesaDe(sheet);
@@ -180,6 +181,7 @@ local function constructNew_frmFichaVeiculos()
                 qPen = -2;
                 qPenDano = "-2";
             end;
+
 
             for i=1, #armas, 1 do
                 if armas[i].ativo then
