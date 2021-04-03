@@ -26741,7 +26741,7 @@ local function constructNew_frmFichaStarfinder()
     obj.checkBox33 = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox33:setParent(obj.layout199);
     obj.checkBox33:setAlign("left");
-    obj.checkBox33:setText("Ataque Total");
+    obj.checkBox33:setText("Ataque Mov.");
     obj.checkBox33:setField("atkTotal");
     obj.checkBox33:setName("checkBox33");
 
