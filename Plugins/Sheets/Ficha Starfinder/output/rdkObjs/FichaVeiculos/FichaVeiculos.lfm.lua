@@ -79,7 +79,7 @@ local function constructNew_frmFichaVeiculos()
             if atk[num].crit then
                 local rolagem = Firecast.interpretarRolagem(atk[num].dano);
 
-                atk[num].mesa.activeChat:rolarDados(rolagem, "Dano Extra " .. num .. " com " .. atk[num].nome .. " de " .. (sheet.piloto.nome or "Personagem"), 
+                atk[num].mesa.activeChat:rolarDados(rolagem, "Dano Extra " .. num .. " com " .. atk[num].nome .. " de " .. (sheet.nome or "Veículo"), 
                     function (rolado)
                         if num < max then
                             rollDanoExtra(atk,num+1,max);
@@ -104,7 +104,7 @@ local function constructNew_frmFichaVeiculos()
                 -- Confirmar Crit
                 local rolagem = Firecast.interpretarRolagem("1d20 + " .. atk[num].bonus);
 
-                atk[num].mesa.activeChat:rolarDados(rolagem, "Confirmação de Crítico " .. num .. " com " .. atk[num].nome .. " de " .. (sheet.piloto.nome or "Personagem"), 
+                atk[num].mesa.activeChat:rolarDados(rolagem, "Confirmação de Crítico " .. num .. " com " .. atk[num].nome .. " de " .. (sheet.nome or "Veículo"), 
                     function (rolado)
                         atk[num].crit = true;
 
@@ -130,7 +130,7 @@ local function constructNew_frmFichaVeiculos()
             else
                 local rolagem = Firecast.interpretarRolagem(atk[num].dano);
 
-                atk[num].mesa.activeChat:rolarDados(rolagem, "Dano " .. num .. " com " .. atk[num].nome .. " de " .. (sheet.piloto.nome or "Personagem"), 
+                atk[num].mesa.activeChat:rolarDados(rolagem, "Dano " .. num .. " com " .. atk[num].nome .. " de " .. (sheet.nome or "Veículo"), 
                     function (rolado)
                         if num == max then
                             rollCrit(atk,1,max);
@@ -144,7 +144,7 @@ local function constructNew_frmFichaVeiculos()
         local function rollAtaque(atk, num, max)
             local rolagem = Firecast.interpretarRolagem("1d20 + " .. atk[num].bonus);
 
-            atk[num].mesa.activeChat:rolarDados(rolagem, "Ataque " .. num .. " com " .. atk[num].nome .. " de " .. (sheet.piloto.nome or "Personagem"), 
+            atk[num].mesa.activeChat:rolarDados(rolagem, "Ataque " .. num .. " com " .. atk[num].nome .. " de " .. (sheet.nome or "Veículo"), 
                 function (rolado)
                     atk[num].rolAtk = rolado;
 
@@ -195,9 +195,9 @@ local function constructNew_frmFichaVeiculos()
                     if ammo ~= nil then
                         ammo = ammo -1;
                         if ammo==0 then
-                            mesa.activeChat:enviarMensagem("Ataque " .. index .. " com " .. atk[index].nome .. " de " .. (sheet.piloto.nome or "Personagem") .. " última munição.");
+                            mesa.activeChat:enviarMensagem("Ataque " .. index .. " com " .. atk[index].nome .. " de " .. (sheet.nome or "Veículo") .. " última munição.");
                         elseif ammo < 0 then
-                            mesa.activeChat:enviarMensagem("Ataque " .. index .. " com " .. atk[index].nome .. " de " .. (sheet.piloto.nome or "Personagem") .. " sem munição.");
+                            mesa.activeChat:enviarMensagem("Ataque " .. index .. " com " .. atk[index].nome .. " de " .. (sheet.nome or "Veículo") .. " sem munição.");
                         end;
                         armas[i].municao = ammo;
                     end;
@@ -3646,6 +3646,56 @@ local function constructNew_frmFichaVeiculos()
     obj.button17:setText("Importar Ficha");
     obj.button17:setName("button17");
 
+    obj.dataLink6 = GUI.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink6:setParent(obj);
+    obj.dataLink6:setField("level");
+    obj.dataLink6:setName("dataLink6");
+
+    obj.dataLink7 = GUI.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink7:setParent(obj);
+    obj.dataLink7:setField("tamanho");
+    obj.dataLink7:setName("dataLink7");
+
+    obj.dataLink8 = GUI.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink8:setParent(obj);
+    obj.dataLink8:setFields({'precoBase','precoMult','precoMod','precoOutros','level'});
+    obj.dataLink8:setName("dataLink8");
+
+    obj.dataLink9 = GUI.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink9:setParent(obj);
+    obj.dataLink9:setFields({'deslBase','deslBaseViagem','deslAdd','deslMult','deslOutros','deslOutrosViagem','quebrado'});
+    obj.dataLink9:setName("dataLink9");
+
+    obj.dataLink10 = GUI.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink10:setParent(obj);
+    obj.dataLink10:setFields({'pilBase','pilotarAdd','pilOutros','quebrado'});
+    obj.dataLink10:setName("dataLink10");
+
+    obj.dataLink11 = GUI.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink11:setParent(obj);
+    obj.dataLink11:setFields({'atkBase','ataqueAdd','atkOutros'});
+    obj.dataLink11:setName("dataLink11");
+
+    obj.dataLink12 = GUI.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink12:setParent(obj);
+    obj.dataLink12:setFields({'caeBase','caeAdd','caeMult','caeOutros','quebrado'});
+    obj.dataLink12:setName("dataLink12");
+
+    obj.dataLink13 = GUI.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink13:setParent(obj);
+    obj.dataLink13:setFields({'cacBase','cacAdd','cacMult','cacOutros','quebrado'});
+    obj.dataLink13:setName("dataLink13");
+
+    obj.dataLink14 = GUI.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink14:setParent(obj);
+    obj.dataLink14:setFields({'protBase','protAdd','protMult','protOutros','quebrado'});
+    obj.dataLink14:setName("dataLink14");
+
+    obj.dataLink15 = GUI.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink15:setParent(obj);
+    obj.dataLink15:setFields({'pvBase','pvAdd','pvMult','pvOutros','cobertura'});
+    obj.dataLink15:setName("dataLink15");
+
     obj._e_event0 = obj:addEventListener("onNodeReady",
         function (_)
             Internet.download("https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20Starfinder/output/Ficha%20Starfinder.rpk?raw=true",
@@ -4091,7 +4141,165 @@ local function constructNew_frmFichaVeiculos()
             					end);
         end, obj);
 
+    obj._e_event62 = obj.dataLink6:addEventListener("onChange",
+        function (_, field, oldValue, newValue)
+            if sheet==nil then return end;
+            
+                        local level = tonumber(sheet.level) or 0;
+            
+                        local nodes = NDB.getChildNodes(sheet.listaMods); 
+                        for i=1, #nodes, 1 do
+                            nodes[i].level = level;
+                        end;
+                        nodes = NDB.getChildNodes(sheet.listaEquips); 
+                        for i=1, #nodes, 1 do
+                            nodes[i].level = level;
+                        end
+        end, obj);
+
+    obj._e_event63 = obj.dataLink7:addEventListener("onChange",
+        function (_, field, oldValue, newValue)
+            if sheet==nil then return end;
+            
+                        local tamanho = tonumber(sheet.tamanho) or 0;
+            
+                        local nodes = NDB.getChildNodes(sheet.listaMods); 
+                        for i=1, #nodes, 1 do
+                            nodes[i].tamanho = tamanho;
+                        end;
+                        nodes = NDB.getChildNodes(sheet.listaEquips); 
+                        for i=1, #nodes, 1 do
+                            nodes[i].tamanho = tamanho;
+                        end
+        end, obj);
+
+    obj._e_event64 = obj.dataLink8:addEventListener("onChange",
+        function (_, field, oldValue, newValue)
+            if sheet==nil then return end;
+            
+                        local level = tonumber(sheet.level) or 1;
+                        local precoBase = tonumber(sheet.precoBase) or 0;
+                        local precoMult = tonumber(sheet.precoMult) or 1;
+                        local precoMod = tonumber(sheet.precoMod) or 0;
+                        local precoOutros = tonumber(sheet.precoOutros) or 0;
+            
+                        sheet.preco = level * precoBase * precoMult + precoMod + precoOutros;
+        end, obj);
+
+    obj._e_event65 = obj.dataLink9:addEventListener("onChange",
+        function (_, field, oldValue, newValue)
+            if sheet==nil then return end;
+            
+                        local deslBase = tonumber(sheet.deslBase) or 0;
+                        local deslBaseViagem = tonumber(sheet.deslBaseViagem) or 0;
+                        local deslAdd = tonumber(sheet.deslAdd) or 0;
+                        local deslMult = tonumber(sheet.deslMult) or 1;
+                        local deslOutros = tonumber(sheet.deslOutros) or 0;
+                        local deslOutrosViagem = tonumber(sheet.deslOutrosViagem) or 0;
+            
+                        if sheet.quebrado then deslMult = deslMult * 0.5 end;
+            
+                        local desl = math.floor((deslBase + deslAdd) * deslMult + deslOutros);
+                        sheet.deslQuadrados = desl;
+                        sheet.deslMetros = desl * 1.5;
+                        sheet.deslViagem = deslBaseViagem * deslMult + deslOutrosViagem;
+        end, obj);
+
+    obj._e_event66 = obj.dataLink10:addEventListener("onChange",
+        function (_, field, oldValue, newValue)
+            if sheet==nil then return end;
+            
+                        local pilBase = tonumber(sheet.pilBase) or 0;
+                        local pilotarAdd = tonumber(sheet.pilotarAdd) or 0;
+                        local pilOutros = tonumber(sheet.pilOutros) or 0;
+            
+                        local pen = 0;
+                        if sheet.quebrado then pen = -2 end;
+            
+                        sheet.pilotarPen = pilBase + pilotarAdd + pilOutros + pen;
+        end, obj);
+
+    obj._e_event67 = obj.dataLink11:addEventListener("onChange",
+        function (_, field, oldValue, newValue)
+            if sheet==nil then return end;
+            
+                        local atkBase = tonumber(sheet.atkBase) or 0;
+                        local ataqueAdd = tonumber(sheet.ataqueAdd) or 0;
+                        local atkOutros = tonumber(sheet.atkOutros) or 0;
+            
+                        sheet.ataquePen = atkBase + ataqueAdd + atkOutros;
+        end, obj);
+
+    obj._e_event68 = obj.dataLink12:addEventListener("onChange",
+        function (_, field, oldValue, newValue)
+            if sheet==nil then return end;
+            
+                        local caeBase = tonumber(sheet.caeBase) or 0;
+                        local caeAdd = tonumber(sheet.caeAdd) or 0;
+                        local caeMult = tonumber(sheet.caeMult) or 1;
+                        local caeOutros = tonumber(sheet.caeOutros) or 0;
+            
+                        if sheet.quebrado then caeMult = caeMult * 0.5 end;
+            
+                        sheet.cae = math.floor((caeBase + caeAdd) * caeMult + caeOutros);
+        end, obj);
+
+    obj._e_event69 = obj.dataLink13:addEventListener("onChange",
+        function (_, field, oldValue, newValue)
+            if sheet==nil then return end;
+            
+                        local cacBase = tonumber(sheet.cacBase) or 0;
+                        local cacAdd = tonumber(sheet.cacAdd) or 0;
+                        local cacMult = tonumber(sheet.cacMult) or 1;
+                        local cacOutros = tonumber(sheet.cacOutros) or 0;
+            
+                        if sheet.quebrado then cacMult = cacMult * 0.5 end;
+            
+                        sheet.cac = math.floor((cacBase + cacAdd) * cacMult + cacOutros);
+        end, obj);
+
+    obj._e_event70 = obj.dataLink14:addEventListener("onChange",
+        function (_, field, oldValue, newValue)
+            if sheet==nil then return end;
+            
+                        local protBase = tonumber(sheet.protBase) or 0;
+                        local protAdd = tonumber(sheet.protAdd) or 0;
+                        local protMult = tonumber(sheet.protMult) or 1;
+                        local protOutros = tonumber(sheet.protOutros) or 0;
+            
+                        if sheet.quebrado then protMult = protMult * 0.5 end;
+            
+                        sheet.protecao = math.floor((protBase + protAdd) * protMult + protOutros);
+        end, obj);
+
+    obj._e_event71 = obj.dataLink15:addEventListener("onChange",
+        function (_, field, oldValue, newValue)
+            if sheet==nil then return end;
+            
+                        local pvBase = tonumber(sheet.pvBase) or 0;
+                        local pvAdd = tonumber(sheet.pvAdd) or 0;
+                        local pvMult = tonumber(sheet.pvMult) or 1;
+                        local pvOutros = tonumber(sheet.pvOutros) or 0;
+                        local cobertura = tonumber(sheet.cobertura) or 25;
+            
+                        local total = math.floor((pvBase + pvAdd) * pvMult + pvOutros);
+            
+                        local pv = math.floor(total * (100-cobertura) / 100)
+                        sheet.pv = pv;
+                        sheet.pe = total - pv;
+        end, obj);
+
     function obj:_releaseEvents()
+        __o_rrpgObjs.removeEventListenerById(self._e_event71);
+        __o_rrpgObjs.removeEventListenerById(self._e_event70);
+        __o_rrpgObjs.removeEventListenerById(self._e_event69);
+        __o_rrpgObjs.removeEventListenerById(self._e_event68);
+        __o_rrpgObjs.removeEventListenerById(self._e_event67);
+        __o_rrpgObjs.removeEventListenerById(self._e_event66);
+        __o_rrpgObjs.removeEventListenerById(self._e_event65);
+        __o_rrpgObjs.removeEventListenerById(self._e_event64);
+        __o_rrpgObjs.removeEventListenerById(self._e_event63);
+        __o_rrpgObjs.removeEventListenerById(self._e_event62);
         __o_rrpgObjs.removeEventListenerById(self._e_event61);
         __o_rrpgObjs.removeEventListenerById(self._e_event60);
         __o_rrpgObjs.removeEventListenerById(self._e_event59);
@@ -4213,6 +4421,7 @@ local function constructNew_frmFichaVeiculos()
         if self.rectangle17 ~= nil then self.rectangle17:destroy(); self.rectangle17 = nil; end;
         if self.layout71 ~= nil then self.layout71:destroy(); self.layout71 = nil; end;
         if self.label15 ~= nil then self.label15:destroy(); self.label15 = nil; end;
+        if self.dataLink9 ~= nil then self.dataLink9:destroy(); self.dataLink9 = nil; end;
         if self.label99 ~= nil then self.label99:destroy(); self.label99 = nil; end;
         if self.label107 ~= nil then self.label107:destroy(); self.label107 = nil; end;
         if self.anotacoes6Part ~= nil then self.anotacoes6Part:destroy(); self.anotacoes6Part = nil; end;
@@ -4248,6 +4457,7 @@ local function constructNew_frmFichaVeiculos()
         if self.layout55 ~= nil then self.layout55:destroy(); self.layout55 = nil; end;
         if self.dataLink3 ~= nil then self.dataLink3:destroy(); self.dataLink3 = nil; end;
         if self.label29 ~= nil then self.label29:destroy(); self.label29 = nil; end;
+        if self.dataLink7 ~= nil then self.dataLink7:destroy(); self.dataLink7 = nil; end;
         if self.rectangle2 ~= nil then self.rectangle2:destroy(); self.rectangle2 = nil; end;
         if self.layout78 ~= nil then self.layout78:destroy(); self.layout78 = nil; end;
         if self.rectangle23 ~= nil then self.rectangle23:destroy(); self.rectangle23 = nil; end;
@@ -4255,6 +4465,7 @@ local function constructNew_frmFichaVeiculos()
         if self.label91 ~= nil then self.label91:destroy(); self.label91 = nil; end;
         if self.label30 ~= nil then self.label30:destroy(); self.label30 = nil; end;
         if self.tabControl1 ~= nil then self.tabControl1:destroy(); self.tabControl1 = nil; end;
+        if self.dataLink6 ~= nil then self.dataLink6:destroy(); self.dataLink6 = nil; end;
         if self.label51 ~= nil then self.label51:destroy(); self.label51 = nil; end;
         if self.label19 ~= nil then self.label19:destroy(); self.label19 = nil; end;
         if self.layout103 ~= nil then self.layout103:destroy(); self.layout103 = nil; end;
@@ -4293,6 +4504,7 @@ local function constructNew_frmFichaVeiculos()
         if self.label23 ~= nil then self.label23:destroy(); self.label23 = nil; end;
         if self.label32 ~= nil then self.label32:destroy(); self.label32 = nil; end;
         if self.label90 ~= nil then self.label90:destroy(); self.label90 = nil; end;
+        if self.dataLink10 ~= nil then self.dataLink10:destroy(); self.dataLink10 = nil; end;
         if self.layout90 ~= nil then self.layout90:destroy(); self.layout90 = nil; end;
         if self.label24 ~= nil then self.label24:destroy(); self.label24 = nil; end;
         if self.dataLink5 ~= nil then self.dataLink5:destroy(); self.dataLink5 = nil; end;
@@ -4305,6 +4517,7 @@ local function constructNew_frmFichaVeiculos()
         if self.layout12 ~= nil then self.layout12:destroy(); self.layout12 = nil; end;
         if self.edit14 ~= nil then self.edit14:destroy(); self.edit14 = nil; end;
         if self.rectangle38 ~= nil then self.rectangle38:destroy(); self.rectangle38 = nil; end;
+        if self.dataLink8 ~= nil then self.dataLink8:destroy(); self.dataLink8 = nil; end;
         if self.edit4 ~= nil then self.edit4:destroy(); self.edit4 = nil; end;
         if self.layout25 ~= nil then self.layout25:destroy(); self.layout25 = nil; end;
         if self.label6 ~= nil then self.label6:destroy(); self.label6 = nil; end;
@@ -4374,6 +4587,7 @@ local function constructNew_frmFichaVeiculos()
         if self.tab1 ~= nil then self.tab1:destroy(); self.tab1 = nil; end;
         if self.layout75 ~= nil then self.layout75:destroy(); self.layout75 = nil; end;
         if self.rectangle34 ~= nil then self.rectangle34:destroy(); self.rectangle34 = nil; end;
+        if self.dataLink12 ~= nil then self.dataLink12:destroy(); self.dataLink12 = nil; end;
         if self.label110 ~= nil then self.label110:destroy(); self.label110 = nil; end;
         if self.rectangle37 ~= nil then self.rectangle37:destroy(); self.rectangle37 = nil; end;
         if self.layout58 ~= nil then self.layout58:destroy(); self.layout58 = nil; end;
@@ -4455,6 +4669,7 @@ local function constructNew_frmFichaVeiculos()
         if self.label120 ~= nil then self.label120:destroy(); self.label120 = nil; end;
         if self.dataLink2 ~= nil then self.dataLink2:destroy(); self.dataLink2 = nil; end;
         if self.edit38 ~= nil then self.edit38:destroy(); self.edit38 = nil; end;
+        if self.dataLink15 ~= nil then self.dataLink15:destroy(); self.dataLink15 = nil; end;
         if self.label130 ~= nil then self.label130:destroy(); self.label130 = nil; end;
         if self.layout49 ~= nil then self.layout49:destroy(); self.layout49 = nil; end;
         if self.label54 ~= nil then self.label54:destroy(); self.label54 = nil; end;
@@ -4497,6 +4712,7 @@ local function constructNew_frmFichaVeiculos()
         if self.edit35 ~= nil then self.edit35:destroy(); self.edit35 = nil; end;
         if self.label26 ~= nil then self.label26:destroy(); self.label26 = nil; end;
         if self.comboBox4 ~= nil then self.comboBox4:destroy(); self.comboBox4 = nil; end;
+        if self.dataLink13 ~= nil then self.dataLink13:destroy(); self.dataLink13 = nil; end;
         if self.label112 ~= nil then self.label112:destroy(); self.label112 = nil; end;
         if self.rectangle19 ~= nil then self.rectangle19:destroy(); self.rectangle19 = nil; end;
         if self.layout99 ~= nil then self.layout99:destroy(); self.layout99 = nil; end;
@@ -4516,6 +4732,7 @@ local function constructNew_frmFichaVeiculos()
         if self.layout77 ~= nil then self.layout77:destroy(); self.layout77 = nil; end;
         if self.layout46 ~= nil then self.layout46:destroy(); self.layout46 = nil; end;
         if self.layout56 ~= nil then self.layout56:destroy(); self.layout56 = nil; end;
+        if self.dataLink14 ~= nil then self.dataLink14:destroy(); self.dataLink14 = nil; end;
         if self.label4 ~= nil then self.label4:destroy(); self.label4 = nil; end;
         if self.layout66 ~= nil then self.layout66:destroy(); self.layout66 = nil; end;
         if self.anotacoes5 ~= nil then self.anotacoes5:destroy(); self.anotacoes5 = nil; end;
@@ -4567,6 +4784,7 @@ local function constructNew_frmFichaVeiculos()
         if self.rectangle39 ~= nil then self.rectangle39:destroy(); self.rectangle39 = nil; end;
         if self.label141 ~= nil then self.label141:destroy(); self.label141 = nil; end;
         if self.rectangle41 ~= nil then self.rectangle41:destroy(); self.rectangle41 = nil; end;
+        if self.dataLink11 ~= nil then self.dataLink11:destroy(); self.dataLink11 = nil; end;
         if self.notes ~= nil then self.notes:destroy(); self.notes = nil; end;
         if self.button14 ~= nil then self.button14:destroy(); self.button14 = nil; end;
         if self.layout86 ~= nil then self.layout86:destroy(); self.layout86 = nil; end;
