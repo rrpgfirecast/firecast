@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module sdkVersion="3.5" compilationDate="06022021220530" sdkApiVersion="86" originalPluginFileName="PlayerFFRPG.rpk" compilationDigest="e650ece74b126139ff1ae716f74795e96c68ab09">
+	<id>ID_PLAYER_FFRPG</id>
+	<version>3.4</version>
+	<name>Hito - FFRPG - Jogador</name>
+	<description>Ficha de Jogador para o sistema FFRPG 3.5.</description>
+	<author>Hitoshura</author>
+	<site/>
+	<contact>fliraf@gmail.com</contact>
+    <dataTypes>
+        <dataType title="Hitoshura - FFRPG Jogador" name="frmHITOPCFFRPG" lfmFile="pFFRPG.lfm">HITO_PLAYER_FFRPG</dataType>
+    </dataTypes>
+</module>

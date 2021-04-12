@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmTalentos" align="client" theme="dark" margins="{top=1}">
+
+	<layout left="000" top="000" height="650" width="1100">
+		<image left="000" top="000" height="650" width="1100" src="/img/Pokeball.jpg" style="autoFIT" />
+		</layout>
+
+	 <template name="habilidadeSmallCenter">
+		<flowPart minWidth="90" maxWidth="100" height="35">
+			<label align="top" class="tituloCampo" fontSize="10" text="$(text)" horzTextAlign="center" wordWrap="true" textTrimming="none" autoSize="true"/>
+			<edit align="client" class="" field="$(field)" horzTextAlign="center" fontSize="12" type="number"/>
+			</flowPart>
+		</template>
+		
+	 <template name="habilidadeSmallCenter2">
+		<flowPart minWidth="90" maxWidth="100" height="35">
+			<label align="top" class="tituloCampo" fontSize="10" text="$(text)" horzTextAlign="center" wordWrap="true" textTrimming="none" autoSize="true"/>
+			<edit align="client" class="" field="$(field)" horzTextAlign="center" fontSize="12"/>
+			</flowPart>
+		</template>
+
+	<template name="habilidadeLarge">
+		<flowPart minWidth="180" maxWidth="200" height="35">
+			<label align="top" class="tituloCampo" fontSize="10" text="$(text)" horzTextAlign="center" wordWrap="true" textTrimming="none" autoSize="true"/>
+			<edit align="client" class="" field="$(field)" fontSize="12"/>
+			</flowPart>
+		</template>
+
+ 	<popup name="popHabilidade" width="300" height="280" backOpacity="0.4" autoScopeNode="false">
+		<flowLayout align="top" autoHeight="true" maxControlsPerLine="3" margins="{bottom=4}" horzAlign="center">
+			<habilidadeSmallCenter text="Nível" field="nivelHabilidade"/>
+			<habilidadeLarge text="Nome" field="nomeHabilidade"/>
+			<habilidadeSmallCenter2 text="Freq." field="freqHabilidade"/>
+			<habilidadeLarge text="Gatilho/Alvo" field="gatHabilidade"/>
+			<habilidadeSmallCenter2 text="Íncones" field="incHabilidade"/>
+			<habilidadeLarge text="Requisitos" field="reqHabilidade"/>				
+			<dataLink field="nivelHabilidade">
+				<event name="onChange">
+					local rcl = self:findControlByName("rclListaDosTalentosBase");
+					if rcl~= nil then
+						rcl:sort();
+					end;
+					rcl = self:findControlByName("rclListaDosTalentosAvanc");
+					if rcl~= nil then
+						rcl:sort();
+						end;
+					</event>
+				</dataLink>
+			</flowLayout>
+			<textEditor align="client" field="descricao"/>
+		</popup>
+
+	<layout left="50" top="25" width="400" height="520">
+		<rectangle align="client" color="#0000007F"/>
+		<rectangle left="000" top="000" width="390" height="40" color="darkred" strokeColor="black" strokeSize="1" />
+		<label left="0" top="0" width="400" height="20" text="Talentos Comuns e de Classes Básicas" autoSize="true" fontColor ="White" fontSize = "18" horzTextAlign="center"/>
+		<button text="Novo Talento" left="0" top="25" width="390" height="20" onClick="self.rclListaDosTalentosBase:append();"/>
+		<recordList name="rclListaDosTalentosBase" field="campoDosTalB" templateForm="frmFichaRPGmeister4h_svg" left="0" top="50" width="390" height="460" layout="vertical">
+			<event name="onCompare">
+	            return ((tonumber(nodeA.nivelHabilidade) or 0) - (tonumber(nodeB.nivelHabilidade) or 0));
+				</event>
+			</recordList>
+		</layout>
+		
+	<layout left="590" top="25" width="400" height="520">
+		<rectangle align="client" color="#0000007F"/>
+		<rectangle left="000" top="000" width="390" height="40" color="darkred" strokeColor="black" strokeSize="1" />
+		<label left="0" top="0" width="400" height="20" text="Talentos de Classes Avançadas" autoSize="true" fontColor ="White" fontSize = "18" horzTextAlign="center"/>
+		<button text="Novo Talento" left="0" top="25" width="390" height="20" onClick="self.rclListaDosTalentosAvanc:append();"/>
+		<recordList name="rclListaDosTalentosAvanc" field="campoDosTalA" templateForm="frmFichaRPGmeister4h_svg" left="0" top="50" width="390" height="460" layout="vertical">
+			<event name="onCompare">
+	            return ((tonumber(nodeA.nivelHabilidade) or 0) - (tonumber(nodeB.nivelHabilidade) or 0));
+		        </event>
+			</recordList>
+		</layout>		
+
+	</form>

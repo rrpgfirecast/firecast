@@ -1,0 +1,1449 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmMacros2" align="client" theme="dark" margins="{top=1}">
+	<layout left="000" top="000" height="650" width="1100">
+		<image left="000" top="000" height="650" width="1100" src="/img/wallpaper4.png" style="autoFIT" />
+		</layout>
+
+	<script>
+		local function setTarget(obj3, max, name)
+			for i=1, max, 1 do
+				obj3[i] = sheet[name .. i] or "";	
+			end;
+		end;
+		</script>
+		
+	<script>
+		local function setSelect(obj2, max2, name2)
+			for i=1, max2, 1 do
+				obj2[i] = sheet[name2 .. i] or false;	
+			end;
+		end;
+		</script>
+		
+	<template name="StatusNeg">	
+		<checkBox top="$(Top)" left="0" width="20" height="20" field="activeStatus$(num)"/>
+        <edit top="$(Top)" left="25" width="250" height="20" field="nameStatus$(num)" />
+		<comboBox top="$(Top)" left="280" width="120" height="20" field="sourceStatus$(num)" horzTextAlign="center" items="{'PRECM-50', 'PRECM', 'Destreza', 'Mente', 'Expert', '30%', '60%', '90%', 'Auto'}" values="{'1', '2', '3', '4', '5', '6','7','8','9'}"/>                                      	
+		<comboBox top="$(Top)" left="405" width="65" height="20" field="reduceStatus$(num)" horzTextAlign="center" items="{'EVA', 'EVAM', '-'}" values="{'1', '2', '3'}"/>                                      	
+		<dataLink field="sourceStatus$(num)" defaultValue="1" />
+		<dataLink field="reduceStatus$(num)" defaultValue="2" />
+		</template>	
+
+	<template name="Physiscal">	
+		<radioButton top="$(Top)" left="0" width="20" height="20" groupName="AtkPercent" field="PAtkField" fieldValue="$(Mult)"/>
+		<label top="$(Top)" left="25" width="40" height="20" text="$(Text)" horzTextAlign="leading" autoSize="true" fontStyle="bold"/>
+		<dataLink field="PAtkField" defaultValue="1" />
+		</template>	
+
+	<template name="AlvoGol">	
+		<radioButton 	top="$(Top)" left="00" width="20" height="20" groupName="singleGA" field="singleGB" fieldValue="$(num)"/>
+		<checkBox 		top="$(Top)" left="25" width="20" height="20" field="ValidTarget$(num)"/>
+        <edit 			top="$(Top)" left="50" width="150" height="20" field="nameEnemy$(num)">
+            <event name="onChange">
+				if sheet== nil then return end;
+			</event>
+		</edit>
+		<dataLink field="singleGB" defaultValue="1" />
+		<dataLink field="ValidTarget$(num)" defaultValue="true" />
+		</template>	
+
+	<template name="Aliados">	
+		<radioButton 	top="$(Top)" left="00" width="20" height="20" groupName="singleAllyA" field="singleAllyB" fieldValue="$(num)"/>
+		<checkBox 		top="$(Top)" left="25" width="20" height="20" field="ValidAllyG$(num)"/>
+        <edit 			top="$(Top)" left="50" width="150" height="20" field="nameAlly$(num)">
+            <event name="onChange">
+				if sheet== nil then return end;
+			</event>
+		</edit>
+		<dataLink field="singleAllyB" defaultValue="1" />
+		<dataLink field="ValidAllyG$(num)" defaultValue="true" />
+		</template>	
+
+    <layout align="top" height="30" margins="{bottom=4}">
+		<button text="Novo Golpe" width="150" align="left">
+			<event name="onClick">                       
+				self.rclListaDosItens:append();
+				</event>
+			</button>
+		<button text="Organizar" width="150" align="left">
+			<event name="onClick">
+				self.rclListaDosItens:sort();
+				</event>
+			</button>
+		</layout>
+ 
+	<recordList name="rclListaDosItens" field="campoDosItens" templateForm="frmItemDaLista" align="client" selectable="true">
+        <event name="onSelect">              
+            local node = self.rclListaDosItens.selectedNode;
+            self.boxDetalhesDoItem.node = node;                    
+            self.boxDetalhesDoItem.visible = (node ~= nil);
+			</event>
+        <event name="onCompare">
+			if (nodeA.active and not nodeB.active) then
+				return -1;
+			elseif (not nodeA.active and nodeB.active) then
+				return 1;
+			else
+				return Utils.compareStringPtBr(nodeA.campoNome, nodeB.campoNome);
+			end;
+            </event>
+		</recordList>
+
+    <dataScopeBox name="boxDetalhesDoItem" visible="false" align="right" width="900" margins="{left=4, right=8}">
+		<tabControl left="50" top="00" height="530" width="840">
+			<tab title="Golpe 1">
+				<layout left="010" top="10" width="580" height="560">
+					<label left="0" top="00" width="60" height="20" text="Nome:" autoSize="true" fontStyle="bold"/>
+					<edit left="65" top="00" width="140" height="20" field="campoNome" />
+					<label left="0" top="25" width="60" height="20" text="Alvo:" autoSize="true" fontStyle="bold"/>
+					<comboBox left="65" top="25" width="140" height="20" field="catAlvo" horzTextAlign="center" items="{'Único Inimigo', 'Único Aliado', 'Inimigo Aleatório', 'Grupo', 'Aliados', 'Todos', 'Aleatório'}" values="{'1', '2', '3', '4', '5','6', '7'}" />                                      
+					<dataLink field="catAlvo" defaultValue="1" />
+					<label left="0" top="50" width="60" height="20" text="Acerto:" autoSize="true" fontStyle="bold"/>
+					<comboBox left="65" top="50" width="140" height="20" field="catAcerto" horzTextAlign="center" items="{'Precisão Física', 'Precisão Mágica', 'Automático', 'Precisão Física/2'}" values="{'1', '2', '3','4'}" />                                      
+					<dataLink field="catAcerto" defaultValue="1" />
+					<label left="0" top="75" width="60" height="20" text="Tipo:" autoSize="true" fontStyle="bold"/>
+					<comboBox left="65" top="75" width="140" height="20" field="catTipo" horzTextAlign="center" items="{'Não-Elemental', 'Arcano', 'Fogo', 'Gelo', 'Água', 'Eletricidade', 'Terra', 'Vento', 'Bio', 'Trevas', 'Sagrado', 'Recuperação'}" values="{'1', '2', '3', '4', '5','6', '7', '8', '9', '10', '11','12'}" />                                      
+					<dataLink field="catTipo" defaultValue="1" />
+					</layout>
+			
+				<layout left="010" top="60" width="580" height="560">
+					<label left="0" top="75" width="105" height="20" text="Custo em MP:" autoSize="true" fontStyle="bold"/>
+					<edit left="110" top="75" width="30" height="20" field="campoCustoMP" type="number" horzTextAlign="center"/>
+					<button left="145" top="75" text="Gastar" width="60">
+						<event name="onClick">
+							if sheet== nil then 
+								return 
+								end;
+							local CustoMP = self.boxDetalhesDoItem.node.campoCustoMP or "0"
+							local mesa = Firecast.getMesaDe(sheet);
+							if (CustoMP >= 1) then
+								mesa.activeChat:enviarMensagem("/MP -" .. CustoMP);
+								end
+							</event>
+						</button>		
+					<label left="0" top="100" width="105" height="20" text="Tempo de Carga:" autoSize="true" fontStyle="bold"/>
+					<edit left="110" top="100" width="30" height="20" field="campoTC" type="number" horzTextAlign="center"/>
+					<button left="145" top="100" text="Carregar" width="60">
+						<event name="onClick">
+							if sheet== nil then return end;
+							local NomeP = sheet.baseName or "???"
+							local NomeG = self.boxDetalhesDoItem.node.campoNome or "???";
+							local TempoCarga = self.boxDetalhesDoItem.node.campoTC or 0;
+							local mesa = Firecast.getMesaDe(sheet);
+							mesa.activeChat:enviarMensagem("[§B]" .. NomeP .. "[§B]" .. " carrega o golpe [§B]" .. NomeG .. "[§B] (TC " .. TempoCarga .. " )");
+							</event>
+						</button>
+					</layout>
+
+				<layout left="230" top="60" width="300" height="300">
+					<label left="00" top="00" width="80" height="20" text="Subtrai:" horzTextAlign="leading" autoSize="true" fontStyle="bold"/>
+					<comboBox left="50" top="00" width="80" height="20" field="fieldSubEVA" horzTextAlign="center" items="{'EVA', 'EVAM', 'EVA/2', 'Nada'}" values="{'1', '2', '3', '4'}" />                                      
+					<dataLink field="fieldSubEVA" defaultValue="1" />
+					<label left="00" top="25" width="80" height="20" text="Subtrai:" horzTextAlign="leading" autoSize="true" fontStyle="bold"/>
+					<comboBox left="50" top="25" width="80" height="20" field="fieldSubDEF" horzTextAlign="center" items="{'ARM', 'ARMM', 'ARM/2', 'ARMM/2', 'Nada'}" values="{'1', '2', '3', '4', '5'}" />                                      
+					<dataLink field="fieldSubDEF" defaultValue="1" />
+					</layout>
+			
+				<layout left="230" top="85" width="300" height="300">	
+					<label left="00" top="50" width="80" height="20" text="Custo HP%:" horzTextAlign="leading" autoSize="true" fontStyle="bold"/>
+					<edit top="50" left="75" width="55" height="20" field="campoCustoHP" horzTextAlign="center"/>	
+					<label left="00" top="75" width="80" height="20" text="Repetições:" horzTextAlign="leading" autoSize="true" fontStyle="bold"/>
+					<edit top="75" left="75" width="55" height="20" field="campoRepeat" horzTextAlign="center" type="number"/>	
+					<dataLink field="campoRepeat" defaultValue="1" />
+					</layout>
+
+				<layout left="365" top="10" width="500" height="300">
+					<label left="25" top="00" width="300" height="20" text="Status" horzTextAlign="center" autoSize="true" fontStyle="bold"/>
+					<checkBox top="00" left="330" width="20" height="20" field="activeSRANDOM"/>
+					<label left="355" top="00" width="150" height="20" text="Status Aleatório" horzTextAlign="leading" autoSize="true" fontStyle="bold"/>					
+					<StatusNeg Top ="25" num="1"/>
+					<StatusNeg Top ="50" num="2"/>
+					<StatusNeg Top ="75" num="3"/>
+					<StatusNeg Top ="100" num="4"/>
+					<StatusNeg Top ="125" num="5"/>
+					<StatusNeg Top ="150" num="6"/>
+					</layout>
+
+				<layout left="10" top="215" width="400" height="300">
+					<radioButton top="00" left="20" width="20" height="20" groupName="AtkTypeG" field="AtkTypeF" fieldValue="1"/>
+					<radioButton top="25" left="20" width="20" height="20" groupName="AtkTypeG" field="AtkTypeF" fieldValue="2"/>
+					<radioButton top="00" left="230" width="20" height="20" groupName="AtkTypeG" field="AtkTypeF" fieldValue="3"/>
+					<radioButton top="25" left="230" width="20" height="20" groupName="AtkTypeG" field="AtkTypeF" fieldValue="4"/>
+					<dataLink field="AtkTypeF" defaultValue="1" />
+					<label left="25" top="00" width="120" height="20" text="Sem Dano" horzTextAlign="center" autoSize="true" fontStyle="bold"/>
+					<label left="50" top="25" width="40" height="20" text="Dado" horzTextAlign="center" autoSize="true" fontStyle="bold"/>
+					<label left="100" top="25" width="40" height="20" text="Mult." horzTextAlign="center" autoSize="true" fontStyle="bold"/>
+					<label left="150" top="25" width="40" height="20" text="Atrib." horzTextAlign="center" autoSize="true" fontStyle="bold"/>
+					<label left="92" top="50" width="5" height="20" text="+" horzTextAlign="center" autoSize="true" fontStyle="bold"/>
+					<label left="142" top="50" width="5" height="20" text="x" horzTextAlign="center" autoSize="true" fontStyle="bold"/>	
+					<edit top="50" left="50" width="40" height="20" field="dadoGolpe" />
+					<edit top="50" left="100" width="40" height="20" field="multGolpe" />
+					<comboBox top="50" left="150" width="60" height="20" field="atribGolpe" horzTextAlign="center" items="{'FOR', 'VIT', 'AGI', 'VEL', 'MAG', 'ESP'}" values="{'1','2','3','4','5','6'}" />                                      	
+					<dataLink field="atribGolpe" defaultValue="5" />
+					<label left="240" top="00" width="120" height="20" text="Base na Arma 1" horzTextAlign="center" autoSize="true" fontStyle="bold"/>
+					<label left="240" top="25" width="120" height="20" text="Base na Arma 2" horzTextAlign="center" autoSize="true" fontStyle="bold"/>
+					<label left="230" top="50" width="105" height="20" text="Margem Crít.%:" autoSize="true" fontStyle="bold"/>			
+					<edit left="330" top="50" width="30" height="20" field="campoMargem" type="number" horzTextAlign="center"/> 
+					<label left="230" top="75" width="105" height="20" text="Margem Erro%:" autoSize="true" fontStyle="bold"/>			
+					<edit left="330" top="75" width="30" height="20" field="campoMargemE" type="number" horzTextAlign="center"/> 
+					</layout>
+	
+				<layout left="25" top="300" width="300" height="300">
+					<label top="00" left="60" width="140" height="20" text="Fator Multiplicativo" horzTextAlign="leading" autoSize="true" fontStyle="bold"/>
+					<Physiscal Top ="25" num="1" Text = "25%" Mult = "0.25"/>
+					<Physiscal Top ="50" num="2" Text = "50%" Mult = "0.50"/>
+					<Physiscal Top ="75" num="3" Text = "75%" Mult = "0.75"/>
+					<Physiscal Top ="100" num="4" Text = "100%" Mult = "1"/>
+					<Physiscal Top ="125" num="5" Text = "125%" Mult = "1.25"/>
+					<Physiscal Top ="150" num="6" Text = "150%" Mult = "1.50"/>
+					</layout>
+				<layout left="100" top="300" width="100" height="300">
+					<Physiscal Top ="025" num="7" Text = "175%" Mult = "1.75"/>
+					<Physiscal Top ="050" num="8" Text = "200%" Mult = "2.00"/>
+					<Physiscal Top ="075" num="9" Text = "225%" Mult = "2.25"/>
+					<Physiscal Top ="100" num="10" Text = "250%" Mult = "2.50"/>
+					<Physiscal Top ="125" num="11" Text = "275%" Mult = "2.75"/>
+					<Physiscal Top ="150" num="12" Text = "300%" Mult = "3.00"/>
+					</layout>	
+				<layout left="175" top="300" width="100" height="300">
+					<Physiscal Top ="025" num="13" Text = "325%" Mult = "3.25"/>
+					<Physiscal Top ="050" num="14" Text = "350%" Mult = "3.50"/>
+					<Physiscal Top ="075" num="15" Text = "375%" Mult = "3.75"/>
+					<Physiscal Top ="100" num="16" Text = "400%" Mult = "4.00"/>
+					<Physiscal Top ="125" num="17" Text = "425%" Mult = "4.25"/>
+					<Physiscal Top ="150" num="18" Text = "450%" Mult = "4.50"/>
+					</layout>
+
+
+				<layout left="250" top="300" width="500" height="300">
+					<checkBox top="25" left="00" width="20" height="20" field="activeBDM"/>
+					<label left="25" top="25" width="150" height="20" text="B. Dam. Limit" horzTextAlign="leading" autoSize="true" fontStyle="bold"/>
+					<checkBox top="50" left="00" width="20" height="20" field="activeTripleCrit"/>
+					<label left="25" top="50" width="150" height="20" text="Triple Critical" horzTextAlign="leading" autoSize="true" fontStyle="bold"/>
+					<checkBox top="75" left="00" width="20" height="20" field="activeConsMP"/>
+					<label left="25" top="75" width="150" height="20" text="Consumir MP" horzTextAlign="leading" autoSize="true" fontStyle="bold"/>
+					<checkBox top="100" left="00" width="20" height="20" field="activeConsHP"/>
+					<label left="25" top="100" width="150" height="20" text="Consumir HP" horzTextAlign="leading" autoSize="true" fontStyle="bold"/>
+					<checkBox top="125" left="00" width="20" height="20" field="activeSamCur"/>
+					<label left="25" top="125" width="150" height="20" text="Exaurir" horzTextAlign="leading" autoSize="true" fontStyle="bold"/>
+					<edit left="80" top="125" width="30" height="20" field="campoCurse" type="number" horzTextAlign="center"/>
+					<checkBox top="150" left="00" width="20" height="20" field="checkAmmo"/>
+					<label left="25" top="150" width="150" height="20" text="Munição Especial" horzTextAlign="leading" autoSize="true" fontStyle="bold"/>
+					<edit left="25" top="175" width="100" height="20" field="campoAmmo" horzTextAlign="center"/>
+					</layout>
+		
+				<button left="230" top="10" width="130" height="45" text="USAR" fontSize="11" fontStyle="bold">
+					<event name="onClick">
+						if sheet== nil then return end;
+						local mesa = Firecast.getMesaDe(sheet);
+						local NOME
+						local CMP = tonumber(self.boxDetalhesDoItem.node.campoCustoMP) or 0;					
+						if (CMP >= 0) then
+							NOME = "[§B]" .. self.boxDetalhesDoItem.node.campoNome .. "[§B]; " or "[§B]Golpe[§B]";
+							else
+							NOME = "[§B]" .. self.boxDetalhesDoItem.node.campoNome .. "[§B][§K14]; " or "[§B]Golpe[§B][§K14]; ";
+							end
+						MSG_CMP = "";
+						if (CMP > 0) then 
+							MSG_CMP = "(" .. CMP .. " MP)[§K14]; "	
+							end
+
+						local REPEAT = tonumber(self.boxDetalhesDoItem.node.campoRepeat) or 1
+						
+						local Ammo = {};
+						Ammo.Select = self.boxDetalhesDoItem.node.checkAmmo or false;
+						Ammo.Name = self.boxDetalhesDoItem.node.campoAmmo or "";
+						Ammo.MSG = "";
+						if (Ammo.Select) then 
+							Ammo.MSG = ("([§B]Munição Especial:[§B] " .. Ammo.Name .. "); ")	
+							end
+						
+						local Att = {};
+						Att.STR = tonumber(sheet.totSTR) or 1;
+						Att.VIT = tonumber(sheet.totVIT) or 1;
+						Att.AGI = tonumber(sheet.totAGI) or 1;
+						Att.SPD = tonumber(sheet.totSPD) or 1;
+						Att.MAG = tonumber(sheet.totMAG) or 1;
+						Att.SPR = tonumber(sheet.totSPR) or 1;
+						
+						local AttSec = {}
+						AttSec.PrecPhys = tonumber(sheet.valACC) or 0;
+						AttSec.PrecMag = tonumber(sheet.valMACC) or 0;
+						AttSec.Dexterity = tonumber(sheet.valDEX) or 0;
+						AttSec.Mind = tonumber(sheet.valMND) or 0;
+						AttSec.Expert = tonumber(sheet.valEXP) or 0;
+
+						local Acerto ={}
+						Acerto.Select = tonumber(self.boxDetalhesDoItem.node.catAcerto) or 1;
+						Acerto.Dado = 0;
+						Acerto.AttSec = 0;
+						Acerto.Final = 0;
+						Acerto.MSG = "";
+						if (Acerto.Select == 1 or Acerto.Select == 4) then
+							Acerto.AttSec = AttSec.PrecPhys;
+							elseif (Acerto.Select == 2) then
+								Acerto.AttSec = AttSec.PrecMag;
+							end
+						
+						local Critico = {}					
+						Critico.Margem = tonumber(self.boxDetalhesDoItem.node.campoMargem) or 0;
+						Critico.Triplo = self.boxDetalhesDoItem.node.activeTripleCrit or false;
+						Critico.Flag = 0;
+						Critico.MSG = "";
+						Critico.Erro = tonumber(self.boxDetalhesDoItem.node.campoMargemE) or 101;
+						
+						local Dano = {}
+						Dano.Tipo = tonumber(self.boxDetalhesDoItem.node.AtkTypeF) or 1
+						Dano.Dado = "1d1"
+						Dano.Fixo = 0;	
+						Dano.MSG ="";
+						Dano.MSG2 ="";
+						Dano.BDL = self.boxDetalhesDoItem.node.activeBDM or false;
+						if (Dano.BDL) then	
+							Dano.MSG2 = " [§K13](BDL)[§K14]"
+							end
+
+						local Golpe = {}
+						Golpe.Dano = "1d1";
+						if (Dano.Tipo == 2) then
+							Golpe.Dic = self.boxDetalhesDoItem.node.dadoGolpe or "1d1"					
+							Golpe.Att = tonumber(self.boxDetalhesDoItem.node.atribGolpe) or 1;
+							Golpe.Mul = tonumber(self.boxDetalhesDoItem.node.multGolpe) or 1
+							Golpe.Temp = 0;
+							if (Golpe.Att == 1) then	
+								Golpe.Temp = (Golpe.Mul)*(Att.STR) or 0	
+								elseif (Golpe.Att == 2) then
+									Golpe.Temp = (Golpe.Mul)*(Att.VIT) or 0	
+								elseif (Golpe.Att == 3) then	
+									Golpe.Temp = (Golpe.Mul)*(Att.AGI) or 0	
+								elseif (Golpe.Att == 4) then								
+									Golpe.Temp = (Golpe.Mul)*(Att.SPD) or 0	
+								elseif (Golpe.Att == 5) then								
+									Golpe.Temp = (Golpe.Mul)*(Att.MAG) or 0	
+								elseif (Golpe.Att == 6) then								
+									Golpe.Temp = (Golpe.Mul)*(Att.SPR) or 0	
+								end	
+							Golpe.Dano = Firecast.interpretarRolagem(Golpe.Dic);
+							Golpe.Dano:concatenar(Golpe.Temp);						
+							end
+
+						local ArmaDir = {}
+						ArmaDir.Dano = "1d1";
+						if (Dano.Tipo == 3) then
+							ArmaDir.Dic = sheet.eqARMDdado or "1d1"
+							ArmaDir.Att = tonumber(sheet.eqARMDatrib) or 1;
+							ArmaDir.Mul = tonumber(sheet.eqARMDmult) or 1;
+							ArmaDir.Temp = 0;
+							if (ArmaDir.Att == 1) then	
+								ArmaDir.Temp = (ArmaDir.Mul)*(Att.STR) or 0	
+								elseif (ArmaDir.Att == 2) then
+									ArmaDir.Temp = (ArmaDir.Mul)*(Att.VIT) or 0	
+								elseif (ArmaDir.Att == 3) then	
+									ArmaDir.Temp = (ArmaDir.Mul)*(Att.AGI) or 0	
+								elseif (ArmaDir.Att == 4) then								
+									ArmaDir.Temp = (ArmaDir.Mul)*(Att.SPD) or 0	
+								elseif (ArmaDir.Att == 5) then								
+									ArmaDir.Temp = (ArmaDir.Mul)*(Att.MAG) or 0	
+								elseif (ArmaDir.Att == 6) then								
+									ArmaDir.Temp = (ArmaDir.Mul)*(Att.SPR) or 0	
+								end	
+							ArmaDir.Dano = Firecast.interpretarRolagem(ArmaDir.Dic);
+							ArmaDir.Dano:concatenar(ArmaDir.Temp);
+							end
+						
+						local ArmaEsc = {}
+						ArmaEsc.Dano = "1d1";
+						if (Dano.Tipo == 4) then	
+							ArmaEsc.Dic = sheet.eqARMEdado or "1d1"
+							ArmaEsc.Att = tonumber(sheet.eqARMEatrib) or 1;	
+							ArmaEsc.Mul = tonumber(sheet.eqARMEmult) or 1;
+							ArmaEsc.Temp = 0;
+							if (ArmaEsc.Att == 1) then	
+								ArmaEsc.Temp = (ArmaEsc.Mul)*(Att.STR) or 0	
+								elseif (ArmaEsc.Att == 2) then
+									ArmaEsc.Temp = (ArmaEsc.Mul)*(Att.VIT) or 0	
+								elseif (ArmaEsc.Att == 3) then	
+									ArmaEsc.Temp = (ArmaEsc.Mul)*(Att.AGI) or 0	
+								elseif (ArmaEsc.Att == 4) then								
+									ArmaEsc.Temp = (ArmaEsc.Mul)*(Att.SPD) or 0	
+								elseif (ArmaEsc.Att == 5) then								
+									ArmaEsc.Temp = (ArmaEsc.Mul)*(Att.MAG) or 0	
+								elseif (ArmaEsc.Att == 6) then								
+									ArmaEsc.Temp = (ArmaEsc.Mul)*(Att.SPR) or 0	
+								end	
+							ArmaEsc.Dano = Firecast.interpretarRolagem(ArmaEsc.Dic);
+							ArmaEsc.Dano:concatenar(ArmaEsc.Temp);
+							end
+
+						if(Dano.Tipo == 2) then
+							Dano.Dado = Golpe.Dano;
+							elseif(Dano.Tipo == 3) then
+								Dano.Dado = ArmaDir.Dano;
+							elseif(Dano.Tipo == 4) then
+								Dano.Dado = ArmaEsc.Dano;
+							end
+						Dano.Final = 0;
+						Dano.Weak = 0;
+						Dano.Men25 = 0;
+						Dano.Mai25 = 0;
+
+						local enemies = {};
+						setTarget(enemies, 11, "nameEnemy");
+						local selectEnemy = {};
+						setSelect(selectEnemy, 11, "ValidTarget");
+						local mobs = {};
+						for i = 1, 11, 1 do
+							if (i == 1 and enemies[1] ~= "" and selectEnemy[1] == true) then 
+								table.insert(mobs, enemies[1]);
+								elseif (i == 2 and enemies[2] ~= "" and selectEnemy[2] == true) then 
+									table.insert(mobs, enemies[2]); 
+								elseif (i == 3 and enemies[3] ~= "" and selectEnemy[3] == true) then 
+									table.insert(mobs, enemies[3]); 
+								elseif (i == 4 and enemies[4] ~= "" and selectEnemy[4] == true) then 
+									table.insert(mobs, enemies[4]); 
+								elseif (i == 5 and enemies[5] ~= "" and selectEnemy[5] == true) then 
+									table.insert(mobs, enemies[5]); 
+								elseif (i == 6 and enemies[6] ~= "" and selectEnemy[6] == true) then 
+									table.insert(mobs, enemies[6]); 
+								elseif (i == 7 and enemies[7] ~= "" and selectEnemy[7] == true) then 
+									table.insert(mobs, enemies[7]);
+								elseif (i == 8 and enemies[8] ~= "" and selectEnemy[8] == true) then 
+									table.insert(mobs, enemies[8]); 
+								elseif (i == 9 and enemies[9] ~= "" and selectEnemy[9] == true) then 
+									table.insert(mobs, enemies[9]);
+								elseif (i == 10 and enemies[10] ~= "" and selectEnemy[10] == true) then 
+									table.insert(mobs, enemies[10]);
+								elseif (i == 11 and enemies[11] ~= "" and selectEnemy[11] == true) then 
+									table.insert(mobs, enemies[11]); 
+								end;
+							end;
+
+						local alliesA = {};
+						setTarget(alliesA, 11, "nameAlly");	
+						local selectAllyG = {};
+						setSelect(selectAllyG, 11, "ValidAllyG");		
+						local allies = {};
+						for i = 1, 11, 1 do
+							if (i == 1 and alliesA[1] ~= "" and selectAllyG[1] == true) then 
+								table.insert(allies, alliesA[1]);
+								elseif (i == 2 and alliesA[2] ~= "" and selectAllyG[2] == true) then 
+									table.insert(allies, alliesA[2]);
+								elseif (i == 3 and alliesA[3] ~= "" and selectAllyG[3] == true) then 
+									table.insert(allies, alliesA[3]);
+								elseif (i == 4 and alliesA[4] ~= "" and selectAllyG[4] == true) then 
+									table.insert(allies, alliesA[4]);
+								elseif (i == 5 and alliesA[5] ~= "" and selectAllyG[5] == true) then 
+									table.insert(allies, alliesA[5]);
+								elseif (i == 6 and alliesA[6] ~= "" and selectAllyG[6] == true) then 
+									table.insert(allies, alliesA[6]);
+								elseif (i == 7 and alliesA[7] ~= "" and selectAllyG[7] == true) then 
+									table.insert(allies, alliesA[7]); 
+								elseif (i == 8 and alliesA[8] ~= "" and selectAllyG[8] == true) then 
+									table.insert(allies, alliesA[8]); 
+								elseif (i == 9 and alliesA[9] ~= "" and selectAllyG[9] == true) then 
+									table.insert(allies, alliesA[9]); 
+								elseif (i == 10 and alliesA[10] ~= "" and selectAllyG[10] == true) then 
+									table.insert(allies, alliesA[10]); 
+								elseif (i == 11 and alliesA[11] ~= "" and selectAllyG[11] == true) then 
+									table.insert(allies, alliesA[11]); 
+								end;
+							end;
+							
+						local all = {};
+						for i = 1, 22, 1 do
+							if (i == 1 and enemies[1] ~= "") then 
+								table.insert(all, enemies[1]);
+								elseif (i == 2 and enemies[2] ~= "") then 
+									table.insert(all, enemies[2]);
+								elseif (i == 3 and enemies[3] ~= "") then 
+									table.insert(all, enemies[3]);
+								elseif (i == 4 and enemies[4] ~= "") then 
+									table.insert(all, enemies[4]);
+								elseif (i == 5 and enemies[5] ~= "") then 
+									table.insert(all, enemies[5]);
+								elseif (i == 6 and enemies[6] ~= "") then 
+									table.insert(all, enemies[6]);
+								elseif (i == 7 and enemies[7] ~= "") then 
+									table.insert(all, enemies[7]);
+								elseif (i == 8 and enemies[8] ~= "") then 
+									table.insert(all, enemies[8]);
+								elseif (i == 9 and enemies[9] ~= "") then 
+									table.insert(all, enemies[9]);
+								elseif (i == 10 and enemies[10] ~= "") then 
+									table.insert(all, enemies[10]);
+								elseif (i == 11 and enemies[11] ~= "") then 
+									table.insert(all, enemies[11]);
+								elseif (i == 12 and alliesA[1] ~= "") then 
+									table.insert(all, alliesA[1]);
+								elseif (i == 13 and alliesA[2] ~= "") then 
+									table.insert(all, alliesA[2]);
+								elseif (i == 14 and alliesA[3] ~= "") then 
+									table.insert(all, alliesA[3]);
+								elseif (i == 15 and alliesA[4] ~= "") then 
+									table.insert(all, alliesA[4]);
+								elseif (i == 16 and alliesA[5] ~= "") then 
+									table.insert(all, alliesA[5]);
+								elseif (i == 17 and alliesA[6] ~= "") then 
+									table.insert(all, alliesA[6]);
+								elseif (i == 18 and alliesA[7] ~= "") then 
+									table.insert(all, alliesA[7]);
+								elseif (i == 19 and alliesA[8] ~= "") then 
+									table.insert(all, alliesA[8]);
+								elseif (i == 20 and alliesA[9] ~= "") then 
+									table.insert(all, alliesA[9]);
+								elseif (i == 21 and alliesA[10] ~= "") then 
+									table.insert(all, alliesA[10]);
+								elseif (i == 22 and alliesA[11] ~= "") then 
+									table.insert(all, alliesA[11]); 
+								end;
+							end;
+							
+						local EVA = {};
+						EVA.Select = tonumber(self.boxDetalhesDoItem.node.fieldSubEVA) or 1;
+						EVA.MSG = "";
+						if (EVA.Select == 1) then 
+							EVA.MSG = "[-EVA]"
+							elseif (EVA.Select == 2) then 
+								EVA.MSG = "[-EVAM]"
+							elseif (EVA.Select == 3) then 
+								EVA.MSG = "[-EVA/2]"	
+							end
+							
+						local DEF = {};
+						DEF.Select = tonumber(self.boxDetalhesDoItem.node.fieldSubDEF) or 1;
+						DEF.MSG = "";
+						if (DEF.Select == 1) then 
+							DEF.MSG = "[-ARM]"
+							elseif (DEF.Select == 2) then 
+								DEF.MSG = "[-ARMM]"
+							elseif (DEF.Select == 3) then 
+								DEF.MSG = "[-ARM/2]"
+							elseif (DEF.Select == 4) then 
+								DEF.MSG = "[-ARMM/2]"	
+							end
+						
+						local DanEl = {};
+						DanEl.Select = tonumber(self.boxDetalhesDoItem.node.catTipo) or 1;
+						DanEl.MSG = "";
+						DanEl.Cor = "";
+						if (DanEl.Select == 1) then 
+							DanEl.MSG = " Não-Elemental";
+							DanEl.Cor ="[§K14]";	
+							elseif (DanEl.Select == 2) then 
+								DanEl.MSG = " Arcano";		
+								DanEl.Cor ="[§K14]";	
+							elseif (DanEl.Select == 3) then 
+								DanEl.MSG = " Fogo";			
+								DanEl.Cor ="[§K4]";	
+							elseif (DanEl.Select == 4) then 
+								DanEl.MSG = " Gelo";				
+								DanEl.Cor ="[§K10]";	
+							elseif (DanEl.Select == 5) then 
+								DanEl.MSG = " Água";			
+								DanEl.Cor ="[§K12]";	
+							elseif (DanEl.Select == 6) then 
+								DanEl.MSG = " Eletricidade"		
+								DanEl.Cor ="[§K8]";
+							elseif (DanEl.Select == 7) then 
+								DanEl.MSG = " Terra"			
+								DanEl.Cor ="[§K7]";
+							elseif (DanEl.Select == 8) then 
+								DanEl.MSG = " Vento"	
+								DanEl.Cor ="[§K9]";
+							elseif (DanEl.Select == 9) then 
+								DanEl.MSG = " Bio"				
+								DanEl.Cor ="[§K13]";
+							elseif (DanEl.Select == 10) then 
+								DanEl.MSG = " Trevas"			
+								DanEl.Cor ="[§K14]";	
+							elseif (DanEl.Select == 11) then 
+								DanEl.MSG = " Sagrado"			
+								DanEl.Cor ="[§K1]";
+							elseif (DanEl.Select == 12) then 
+								DanEl.MSG = " Recuperação"		
+								DanEl.Cor ="[§K3]";	
+							end
+						
+						local DanMul = {};
+						DanMul.Select = tonumber(self.boxDetalhesDoItem.node.PAtkField) or 1;
+						DanMul.MSG = "";
+						if (DanMul.Select == 0.25) then 
+							DanMul.MSG = "(25%)"
+							elseif (DanMul.Select == 0.50) then 
+								DanMul.MSG = "(50%)"
+							elseif (DanMul.Select == 0.75) then 
+								DanMul.MSG = "(75%)"
+							elseif (DanMul.Select == 1) then 
+								DanMul.MSG = "(100%)"
+							elseif (DanMul.Select == 1.25) then 
+								DanMul.MSG = "(125%)"
+							elseif (DanMul.Select == 1.50) then 
+								DanMul.MSG = "(150%)"
+							elseif (DanMul.Select == 1.75) then 
+								DanMul.MSG = "(175%)"
+							elseif (DanMul.Select == 2.00) then 
+								DanMul.MSG = "(200%)"
+							elseif (DanMul.Select == 2.25) then 
+								DanMul.MSG = "(225%)"
+							elseif (DanMul.Select == 2.50) then 
+								DanMul.MSG = "(250%)"
+							elseif (DanMul.Select == 2.75) then 
+								DanMul.MSG = "(275%)"
+							elseif (DanMul.Select == 3.00) then 
+								DanMul.MSG = "(300%)"
+							elseif (DanMul.Select == 3.25) then 
+								DanMul.MSG = "(325%)"
+							elseif (DanMul.Select == 3.50) then 
+								DanMul.MSG = "(350%)"
+							elseif (DanMul.Select == 3.75) then 
+								DanMul.MSG = "(375%)"
+							elseif (DanMul.Select == 4.00) then 
+								DanMul.MSG = "(400%)"
+							elseif (DanMul.Select == 4.25) then 
+								DanMul.MSG = "(425%)"
+							elseif (DanMul.Select == 4.50) then 
+								DanMul.MSG = "(450%)"	
+							end
+
+						local Status1 = {}
+						Status1.Select = self.boxDetalhesDoItem.node.activeStatus1 or false;
+						Status1.Name = self.boxDetalhesDoItem.node.nameStatus1 or "";
+						Status1.Type = tonumber(self.boxDetalhesDoItem.node.sourceStatus1) or 1;
+						Status1.Reduce = tonumber(self.boxDetalhesDoItem.node.reduceStatus1) or 3;
+						Status1.Preamble = 0;
+						Status1.MSG = "";
+						Status1.Final = 0;
+						if (Status1.Select) then
+							if (Status1.Type == 1) then	
+								Status1.Preamble = AttSec.PrecMag - 50;
+								elseif (Status1.Type == 2) then
+									Status1.Preamble = AttSec.PrecMag;
+								elseif (Status1.Type == 3) then
+									Status1.Preamble = AttSec.Dexterity;
+								elseif (Status1.Type == 4) then
+									Status1.Preamble = AttSec.Mind;
+								elseif (Status1.Type == 5) then
+									Status1.Preamble = AttSec.Expert;
+								end						
+							if (Status1.Reduce == 1) then
+								Status1.MSG = "[-EVA]";
+								elseif (Status1.Reduce == 2) then
+									Status1.MSG = "[-EVAM]";
+								end
+							if (Status1.Type == 6) then
+								Status1.MSG = " (30%)";
+								elseif (Status1.Type == 7) then
+									Status1.MSG = " (60%)";
+								elseif (Status1.Type == 8) then
+									Status1.MSG = " (90%)";
+								elseif (Status1.Type == 9) then
+									Status1.MSG = " (Auto)";
+								end
+							end					
+
+						local Status2 = {}
+						Status2.Select = self.boxDetalhesDoItem.node.activeStatus2 or false;
+						Status2.Name = self.boxDetalhesDoItem.node.nameStatus2 or "";
+						Status2.Type = tonumber(self.boxDetalhesDoItem.node.sourceStatus2) or 1;
+						Status2.Reduce = tonumber(self.boxDetalhesDoItem.node.reduceStatus2) or 3;
+						Status2.Preamble = 0;
+						Status2.MSG = "";
+						Status2.Final = 0;
+						if (Status2.Select) then
+							if (Status2.Type == 1) then	
+								Status2.Preamble = AttSec.PrecMag - 50;
+								elseif (Status2.Type == 2) then
+									Status2.Preamble = AttSec.PrecMag;
+								elseif (Status2.Type == 3) then
+									Status2.Preamble = AttSec.Dexterity;
+								elseif (Status2.Type == 4) then
+									Status2.Preamble = AttSec.Mind;
+								elseif (Status2.Type == 5) then
+									Status2.Preamble = AttSec.Expert;
+								end						
+							if (Status2.Reduce == 1) then
+								Status2.MSG = "[-EVA]";
+								elseif (Status2.Reduce == 2) then
+									Status2.MSG = "[-EVAM]";
+								end
+							if (Status2.Type == 6) then
+								Status2.MSG = " (30%)";
+								elseif (Status2.Type == 7) then
+									Status2.MSG = " (60%)";
+								elseif (Status2.Type == 8) then
+									Status2.MSG = " (90%)";
+								elseif (Status2.Type == 9) then
+									Status2.MSG = " (Auto)";
+								end
+							end
+
+						local Status3 = {}
+						Status3.Select = self.boxDetalhesDoItem.node.activeStatus3 or false;
+						Status3.Name = self.boxDetalhesDoItem.node.nameStatus3 or "";
+						Status3.Type = tonumber(self.boxDetalhesDoItem.node.sourceStatus3) or 1;
+						Status3.Reduce = tonumber(self.boxDetalhesDoItem.node.reduceStatus3) or 3;
+						Status3.Preamble = 0;
+						Status3.MSG = "";
+						Status3.Final = 0;
+						if (Status3.Select) then
+							if (Status3.Type == 1) then	
+								Status3.Preamble = AttSec.PrecMag - 50;
+								elseif (Status3.Type == 2) then
+									Status3.Preamble = AttSec.PrecMag;
+								elseif (Status3.Type == 3) then
+									Status3.Preamble = AttSec.Dexterity;
+								elseif (Status3.Type == 4) then
+									Status3.Preamble = AttSec.Mind;
+								elseif (Status3.Type == 5) then
+									Status3.Preamble = AttSec.Expert;
+								end						
+							if (Status3.Reduce == 1) then
+								Status3.MSG = "[-EVA]";
+								elseif (Status3.Reduce == 2) then
+									Status3.MSG = "[-EVAM]";
+								end
+							if (Status3.Type == 6) then
+								Status3.MSG = " (30%)";
+								elseif (Status3.Type == 7) then
+									Status3.MSG = " (60%)";
+								elseif (Status3.Type == 8) then
+									Status3.MSG = " (90%)";
+								elseif (Status3.Type == 9) then
+									Status3.MSG = " (Auto)";
+								end
+							end
+
+						local Status4 = {}
+						Status4.Select = self.boxDetalhesDoItem.node.activeStatus4 or false;
+						Status4.Name = self.boxDetalhesDoItem.node.nameStatus4 or "";
+						Status4.Type = tonumber(self.boxDetalhesDoItem.node.sourceStatus4) or 1;
+						Status4.Reduce = tonumber(self.boxDetalhesDoItem.node.reduceStatus4) or 3;
+						Status4.Preamble = 0;
+						Status4.MSG = "";
+						Status4.Final = 0;
+						if (Status4.Select) then
+							if (Status4.Type == 1) then	
+								Status4.Preamble = AttSec.PrecMag - 50;
+								elseif (Status4.Type == 2) then
+									Status4.Preamble = AttSec.PrecMag;
+								elseif (Status4.Type == 3) then
+									Status4.Preamble = AttSec.Dexterity;
+								elseif (Status4.Type == 4) then
+									Status4.Preamble = AttSec.Mind;
+								elseif (Status4.Type == 5) then
+									Status4.Preamble = AttSec.Expert;
+								end						
+							if (Status4.Reduce == 1) then
+								Status4.MSG = "[-EVA]";
+								elseif (Status4.Reduce == 2) then
+									Status4.MSG = "[-EVAM]";
+								end
+							if (Status4.Type == 6) then
+								Status4.MSG = " (30%)";
+								elseif (Status4.Type == 7) then
+									Status4.MSG = " (60%)";
+								elseif (Status4.Type == 8) then
+									Status4.MSG = " (90%)";
+								elseif (Status4.Type == 9) then
+									Status4.MSG = " (Auto)";
+								end
+							end
+
+						local Status5 = {}
+						Status5.Select = self.boxDetalhesDoItem.node.activeStatus5 or false;
+						Status5.Name = self.boxDetalhesDoItem.node.nameStatus5 or "";
+						Status5.Type = tonumber(self.boxDetalhesDoItem.node.sourceStatus5) or 1;
+						Status5.Reduce = tonumber(self.boxDetalhesDoItem.node.reduceStatus5) or 3;
+						Status5.Preamble = 0;
+						Status5.MSG = "";
+						Status5.Final = 0;
+						if (Status5.Select) then
+							if (Status5.Type == 1) then	
+								Status5.Preamble = AttSec.PrecMag - 50;
+								elseif (Status5.Type == 2) then
+									Status5.Preamble = AttSec.PrecMag;
+								elseif (Status5.Type == 3) then
+									Status5.Preamble = AttSec.Dexterity;
+								elseif (Status5.Type == 4) then
+									Status5.Preamble = AttSec.Mind;
+								elseif (Status5.Type == 5) then
+									Status5.Preamble = AttSec.Expert;
+								end						
+							if (Status5.Reduce == 1) then
+								Status5.MSG = "[-EVA]";
+								elseif (Status5.Reduce == 2) then
+									Status5.MSG = "[-EVAM]";
+								end
+							if (Status5.Type == 6) then
+								Status5.MSG = " (30%)";
+								elseif (Status5.Type == 7) then
+									Status5.MSG = " (60%)";
+								elseif (Status5.Type == 8) then
+									Status5.MSG = " (90%)";
+								elseif (Status5.Type == 9) then
+									Status5.MSG = " (Auto)";
+								end
+							end
+							
+						local Status6 = {}
+						Status6.Select = self.boxDetalhesDoItem.node.activeStatus6 or false;
+						Status6.Name = self.boxDetalhesDoItem.node.nameStatus6 or "";
+						Status6.Type = tonumber(self.boxDetalhesDoItem.node.sourceStatus6) or 1;
+						Status6.Reduce = tonumber(self.boxDetalhesDoItem.node.reduceStatus6) or 3;
+						Status6.Preamble = 0;
+						Status6.MSG = "";
+						Status6.Final = 0;
+						if (Status6.Select) then
+							if (Status6.Type == 1) then	
+								Status6.Preamble = AttSec.PrecMag - 50;
+								elseif (Status6.Type == 2) then
+									Status6.Preamble = AttSec.PrecMag;
+								elseif (Status6.Type == 3) then
+									Status6.Preamble = AttSec.Dexterity;
+								elseif (Status6.Type == 4) then
+									Status6.Preamble = AttSec.Mind;
+								elseif (Status6.Type == 5) then
+									Status6.Preamble = AttSec.Expert;
+								end						
+							if (Status6.Reduce == 1) then
+								Status6.MSG = "[-EVA]";
+								elseif (Status6.Reduce == 2) then
+									Status6.MSG = "[-EVAM]";
+								end
+							if (Status6.Type == 6) then
+								Status6.MSG = " (30%)";
+								elseif (Status6.Type == 7) then
+									Status6.MSG = " (60%)";
+								elseif (Status6.Type == 8) then
+									Status6.MSG = " (90%)";
+								elseif (Status6.Type == 9) then
+									Status6.MSG = " (Auto)";
+								end
+							end
+							
+						local Rstatus = {};
+						for i = 1, 6, 1 do
+							if (i == 1 and Status1.Name ~= "" and Status1.Select == true) then 
+								table.insert(Rstatus, Status1.Name); 
+								end;
+							if (i == 2 and Status2.Name ~= "" and Status2.Select == true) then 
+								table.insert(Rstatus, Status2.Name); 
+								end;
+							if (i == 3 and Status3.Name ~= "" and Status3.Select == true) then 
+								table.insert(Rstatus, Status3.Name); 
+								end;
+							if (i == 4 and Status4.Name ~= "" and Status4.Select == true) then 
+								table.insert(Rstatus, Status4.Name); 
+								end;
+							if (i == 5 and Status5.Name ~= "" and Status5.Select == true) then 
+								table.insert(Rstatus, Status5.Name); 
+								end;
+							if (i == 6 and Status6.Name ~= "" and Status6.Select == true) then 
+								table.insert(Rstatus, Status6.Name); 
+								end;
+						end;
+
+						local STATRANDOM = self.boxDetalhesDoItem.node.activeSRANDOM or false					
+						ALVO = tonumber(self.boxDetalhesDoItem.node.catAlvo) or 1;
+
+						if (ALVO == 1 or ALVO == 2 or ALVO == 3 or ALVO == 7) then
+							local MSG_TARGET = "";
+							if (ALVO == 1 ) then
+								local AlvoSelect = tonumber(sheet.singleGB) or 1;
+								if (AlvoSelect == 1) then 
+									MSG_TARGET = ("[§B]Alvo:[§B] " .. enemies[1] .. "; ")
+									elseif (AlvoSelect == 2) then 
+										MSG_TARGET = ("[§B]Alvo:[§B] " .. enemies[2] .. "; ")
+									elseif (AlvoSelect == 3) then 
+										MSG_TARGET = ("[§B]Alvo:[§B] " .. enemies[3] .. "; ")
+									elseif (AlvoSelect == 4) then 
+										MSG_TARGET = ("[§B]Alvo:[§B] " .. enemies[4] .. "; ")
+									elseif (AlvoSelect == 5) then 
+										MSG_TARGET = ("[§B]Alvo:[§B] " .. enemies[5] .. "; ")
+									elseif (AlvoSelect == 6) then 
+										MSG_TARGET = ("[§B]Alvo:[§B] " .. enemies[6] .. "; ")
+									elseif (AlvoSelect == 7) then 
+										MSG_TARGET = ("[§B]Alvo:[§B] " .. enemies[7] .. "; ")
+									elseif (AlvoSelect == 8) then 
+										MSG_TARGET = ("[§B]Alvo:[§B] " .. enemies[8] .. "; ")
+									elseif (AlvoSelect == 9) then 
+										MSG_TARGET = ("[§B]Alvo:[§B] " .. enemies[9] .. "; ")
+									elseif (AlvoSelect == 10) then 
+										MSG_TARGET = ("[§B]Alvo:[§B] " .. enemies[10] .. "; ")
+									elseif (AlvoSelect == 11) then 
+										MSG_TARGET = ("[§B]Alvo:[§B] " .. enemies[11] .. "; ")	
+									end
+								end
+								
+							if (ALVO == 2 ) then
+								local AlvoSelect = tonumber(sheet.singleAllyB) or 1;
+								if (AlvoSelect == 1) then 
+									MSG_TARGET = ("[§B]Alvo:[§B] " .. alliesA[1] .. "; ")
+									elseif (AlvoSelect == 2) then 
+										MSG_TARGET = ("[§B]Alvo:[§B] " .. alliesA[2] .. "; ")	
+									elseif (AlvoSelect == 3) then 
+										MSG_TARGET = ("[§B]Alvo:[§B] " .. alliesA[3] .. "; ")	
+									elseif (AlvoSelect == 4) then 
+										MSG_TARGET = ("[§B]Alvo:[§B] " .. alliesA[4] .. "; ")	
+									elseif (AlvoSelect == 5) then 
+										MSG_TARGET = ("[§B]Alvo:[§B] " .. alliesA[5] .. "; ")	
+									elseif (AlvoSelect == 6) then 
+										MSG_TARGET = ("[§B]Alvo:[§B] " .. alliesA[6] .. "; ")	
+									elseif (AlvoSelect == 7) then 
+										MSG_TARGET = ("[§B]Alvo:[§B] " .. alliesA[7] .. "; ")	
+									elseif (AlvoSelect == 8) then 
+										MSG_TARGET = ("[§B]Alvo:[§B] " .. alliesA[8] .. "; ")	
+									elseif (AlvoSelect == 9) then 
+										MSG_TARGET = ("[§B]Alvo:[§B] " .. alliesA[9] .. "; ")	
+									elseif (AlvoSelect == 10) then 
+										MSG_TARGET = ("[§B]Alvo:[§B] " .. alliesA[10] .. "; ")	
+									elseif (AlvoSelect == 11) then 
+										MSG_TARGET = ("[§B]Alvo:[§B] " .. alliesA[11] .. "; ")	
+									end
+								end
+								
+							if (REPEAT >= 2 and 2 >= ALVO) then	
+								mesa.activeChat:enviarMensagem(DanEl.Cor .. NOME .. Ammo.MSG .. MSG_TARGET)
+							elseif (REPEAT >= 2 and (ALVO == 3 or ALVO == 7)) then
+								mesa.activeChat:enviarMensagem(DanEl.Cor .. NOME .. Ammo.MSG)
+							end
+						
+							
+							for i = 1, REPEAT, 1 do	
+								if (ALVO == 3) then
+									local m = math.random(1,#mobs);
+									if (m == 1) then 
+										MSG_TARGET = ("[§B]Alvo:[§B] " .. mobs[m] .. "; ")	
+										elseif (m == 2) then 
+											MSG_TARGET = ("[§B]Alvo:[§B] " .. mobs[m] .. "; ")	
+										elseif (m == 3) then 
+											MSG_TARGET = ("[§B]Alvo:[§B] " .. mobs[m] .. "; ")	
+										elseif (m == 4) then 
+											MSG_TARGET = ("[§B]Alvo:[§B] " .. mobs[m] .. "; ")	
+										elseif (m == 5) then 
+											MSG_TARGET = ("[§B]Alvo:[§B] " .. mobs[m] .. "; ")	
+										elseif (m == 6) then 
+											MSG_TARGET = ("[§B]Alvo:[§B] " .. mobs[m] .. "; ")	
+										elseif (m == 7) then 
+											MSG_TARGET = ("[§B]Alvo:[§B] " .. mobs[m] .. "; ")	
+										elseif (m == 8) then 
+											MSG_TARGET = ("[§B]Alvo:[§B] " .. mobs[m] .. "; ")	
+										elseif (m == 9) then 
+											MSG_TARGET = ("[§B]Alvo:[§B] " .. mobs[m] .. "; ")	
+										elseif (m == 10) then 
+											MSG_TARGET = ("[§B]Alvo:[§B] " .. mobs[m] .. "; ")	
+										elseif (m == 11) then 
+											MSG_TARGET = ("[§B]Alvo:[§B] " .. mobs[m] .. "; ")	
+										end
+									end
+								if (ALVO == 7) then
+									local m = math.random(1,#all);
+									if (m == 1) then 
+										MSG_TARGET = ("[§B]Alvo:[§B] " .. all[m] .. "; ")	
+										elseif (m == 2) then 
+											MSG_TARGET = ("[§B]Alvo:[§B] " .. all[m] .. "; ")	
+										elseif (m == 3) then 
+											MSG_TARGET = ("[§B]Alvo:[§B] " .. all[m] .. "; ")	
+										elseif (m == 4) then 
+											MSG_TARGET = ("[§B]Alvo:[§B] " .. all[m] .. "; ")	
+										elseif (m == 5) then 
+											MSG_TARGET = ("[§B]Alvo:[§B] " .. all[m] .. "; ")	
+										elseif (m == 6) then 
+											MSG_TARGET = ("[§B]Alvo:[§B] " .. all[m] .. "; ")	
+										elseif (m == 7) then 
+											MSG_TARGET = ("[§B]Alvo:[§B] " .. all[m] .. "; ")	
+										elseif (m == 8) then 
+											MSG_TARGET = ("[§B]Alvo:[§B] " .. all[m] .. "; ")	
+										elseif (m == 9) then 
+											MSG_TARGET = ("[§B]Alvo:[§B] " .. all[m] .. "; ")	
+										elseif (m == 10) then 
+											MSG_TARGET = ("[§B]Alvo:[§B] " .. all[m] .. "; ")	
+										elseif (m == 11) then 
+											MSG_TARGET = ("[§B]Alvo:[§B] " .. all[m] .. "; ")	
+										elseif (m == 12) then 
+											MSG_TARGET = ("[§B]Alvo:[§B] " .. all[m] .. "; ")	
+										elseif (m == 13) then 
+											MSG_TARGET = ("[§B]Alvo:[§B] " .. all[m] .. "; ")	
+										elseif (m == 14) then 
+											MSG_TARGET = ("[§B]Alvo:[§B] " .. all[m] .. "; ")	
+										elseif (m == 15) then 
+											MSG_TARGET = ("[§B]Alvo:[§B] " .. all[m] .. "; ")	
+										elseif (m == 16) then 
+											MSG_TARGET = ("[§B]Alvo:[§B] " .. all[m] .. "; ")	
+										elseif (m == 17) then 
+											MSG_TARGET = ("[§B]Alvo:[§B] " .. all[m] .. "; ")	
+										elseif (m == 18) then 
+											MSG_TARGET = ("[§B]Alvo:[§B] " .. all[m] .. "; ")	
+										elseif (m == 19) then 
+											MSG_TARGET = ("[§B]Alvo:[§B] " .. all[m] .. "; ")	
+										elseif (m == 20) then 
+											MSG_TARGET = ("[§B]Alvo:[§B] " .. all[m] .. "; ")	
+										elseif (m == 21) then 
+											MSG_TARGET = ("[§B]Alvo:[§B] " .. all[m] .. "; ")	
+										elseif (m == 22) then 
+											MSG_TARGET = ("[§B]Alvo:[§B] " .. all[m] .. "; ")	
+										end	
+									end
+
+								if ((STATRANDOM == true) and (#Rstatus > 0)) then
+									local ACTIVESTAT = tonumber(math.random(1,#Rstatus));	
+									Status1.Select = false;					
+									Status2.Select = false;
+									Status3.Select = false;
+									Status4.Select = false;
+									Status5.Select = false;	
+									Status6.Select = false;									
+									if tonumber(ACTIVESTAT) == 1 then 
+										Status1.Select = true;
+										elseif tonumber(ACTIVESTAT) == 2 then 
+											Status2.Select = true;
+										elseif tonumber(ACTIVESTAT) == 3 then 
+											Status3.Select = true;
+										elseif tonumber(ACTIVESTAT) == 4 then 
+											Status4.Select = true;
+										elseif tonumber(ACTIVESTAT) == 5 then 
+											Status5.Select = true;
+										elseif tonumber(ACTIVESTAT) == 6 then 
+											Status6.Select = true;
+										end	
+									end
+								Critico.Bon = 0;
+								Critico.MSG = "";
+								Dano.Final = 0;
+								Status1.MSG2 ="";
+								Status2.MSG2 ="";
+								Status3.MSG2 ="";
+								Status4.MSG2 ="";
+								Status5.MSG2 ="";
+								Status6.MSG2 ="";
+
+								Acerto.Dado = math.random(1,100);
+								Acerto.Final = Acerto.AttSec - Acerto.Dado;
+								if (Acerto.Select == 4) then
+									Acerto.Final = math.floor(Acerto.Final/2);
+									end
+								if (Acerto.Select == 3) then
+									Acerto.MSG = "[§B]Acerto:[§B] Auto [" .. Acerto.Dado .. "]; ";
+									else
+										Acerto.MSG = "[§B]Acerto:[§B] " .. Acerto.Final .. EVA.MSG .. "[" .. Acerto.Dado .. "]; ";
+									end
+								
+								if (Critico.Margem >= 1 and Critico.Margem >= Acerto.Dado) then
+									if (not Critico.Triplo) then
+										Critico.Bon = 1;
+										Critico.MSG = ("[§K9](CRIT)" .. DanEl.Cor)
+										elseif (Critico.Triplo) then
+											Critico.Bon = 2;
+											Critico.MSG = ("[§K9](3xCRIT)" .. DanEl.Cor)
+										end	
+									end
+								
+								if (Dano.Tipo > 1) then
+									Dano.Dado:rolarLocalmente()		
+									Dano.Temp = Dano.Dado.resultado
+									Dano.Final = math.floor((DanMul.Select+Critico.Bon)*(Dano.Temp));
+									Dano.Weak = math.floor((DanMul.Select+Critico.Bon+0.5)*(Dano.Temp));
+									Dano.Men25 = math.floor((DanMul.Select+Critico.Bon-0.25)*(Dano.Temp));
+									Dano.Mai25 = math.floor((DanMul.Select+Critico.Bon+0.25)*(Dano.Temp));
+									if (2 >= DanEl.Select) then
+										Dano.MSG = ("[§B]Dano: [§B]" .. DanEl.Cor .. Dano.Final .. Critico.MSG .. DanMul.MSG .. DEF.MSG .. DanEl.MSG .. Dano.MSG2 .. "[§K14]; ")
+										elseif (DanEl.Select >= 3 and 11 >= DanEl.Select) then
+											Dano.MSG = ("[§B]Dano: [§B]" .. DanEl.Cor .. Dano.Final .. Critico.MSG .. DanMul.MSG .. DEF.MSG .. DanEl.MSG .. Dano.MSG2 .. "[§K14]; [§B]Vs Weak: [§B]" .. DanEl.Cor .. Dano.Weak .. "[§K14]; ")
+										elseif (DanEl.Select == 12) then
+											Dano.MSG = ("[§B]Restaura: [§B]" .. DanEl.Cor .. Dano.Final .. DanMul.MSG .. Dano.MSG2 .. "[§K14]; [§B][§K4]-25%:[§K14] " .. Dano.Men25 .. "[§K14]; [§B][§K9]+25%:[§K14] " .. Dano.Mai25  .. "[§K14]; ")
+										end	
+									end
+								
+								if (Status1.Select == true) then
+									Status1.Dado = math.random(1,100);
+									if (5 >= Status1.Type) then
+										Status1.Final = Status1.Preamble - Status1.Dado;
+										Status1.MSG2 = "CdS de [§B]" .. Status1.Name .. "[§B]: " .. Status1.Final .. Status1.MSG .. " (" .. Status1.Dado .. "); ";
+										else
+										Status1.Final = Status1.Dado;
+										Status1.MSG2 = "CdS de [§B]" .. Status1.Name .. "[§B]: " .. Status1.Final .. Status1.MSG .. "; ";
+										end	
+									end
+
+								if (Status2.Select == true) then
+									Status2.Dado = math.random(1,100);
+									if (5 >= Status2.Type) then
+										Status2.Final = Status2.Preamble - Status2.Dado;
+										Status2.MSG2 = "CdS de [§B]" .. Status2.Name .. "[§B]: " .. Status2.Final .. Status2.MSG .. " (" .. Status2.Dado .. "); ";
+										else
+										Status2.Final = Status2.Dado;
+										Status2.MSG2 = "CdS de [§B]" .. Status2.Name .. "[§B]: " .. Status2.Final .. Status2.MSG .. "; ";
+										end	
+									end
+									
+								if (Status3.Select == true) then
+									Status3.Dado = math.random(1,100);
+									if (5 >= Status3.Type) then
+										Status3.Final = Status3.Preamble - Status3.Dado;
+										Status3.MSG2 = "CdS de [§B]" .. Status3.Name .. "[§B]: " .. Status3.Final .. Status3.MSG .. " (" .. Status3.Dado .. "); ";		
+										else
+										Status3.Final = Status3.Dado;
+										Status3.MSG2 = "CdS de [§B]" .. Status3.Name .. "[§B]: " .. Status3.Final .. Status3.MSG .. "; ";
+										end	
+									end
+
+								if (Status4.Select == true) then
+									Status4.Dado = math.random(1,100);
+									if (5 >= Status4.Type) then
+										Status4.Final = Status4.Preamble - Status4.Dado;
+										Status4.MSG2 = "CdS de [§B]" .. Status4.Name .. "[§B]: " .. Status4.Final .. Status4.MSG .. " (" .. Status4.Dado .. "); ";
+										else
+										Status4.Final = Status4.Dado;
+										Status4.MSG2 = "CdS de [§B]" .. Status4.Name .. "[§B]: " .. Status4.Final .. Status4.MSG .. "; ";
+										end	
+									end
+
+								if (Status5.Select == true) then
+									Status5.Dado = math.random(1,100);
+									if (5 >= Status5.Type) then
+										Status5.Final = Status5.Preamble - Status5.Dado;
+										Status5.MSG2 = "CdS de [§B]" .. Status5.Name .. "[§B]: " .. Status5.Final .. Status5.MSG .. " (" .. Status5.Dado .. "); ";
+										else
+										Status5.Final = Status5.Dado;
+										Status5.MSG2 = "CdS de [§B]" .. Status5.Name .. "[§B]: " .. Status5.Final .. Status5.MSG .. "; ";
+										end	
+									end
+									
+								if (Status6.Select == true) then
+									Status6.Dado = math.random(1,100);
+									if (5 >= Status6.Type) then
+										Status6.Final = Status6.Preamble - Status6.Dado;
+										Status6.MSG2 = "CdS de [§B]" .. Status6.Name .. "[§B]: " .. Status6.Final .. Status6.MSG .. " (" .. Status6.Dado .. "); ";
+										else
+										Status6.Final = Status6.Dado;
+										Status6.MSG2 = "CdS de [§B]" .. Status6.Name .. "[§B]: " .. Status6.Final .. Status6.MSG .. "; ";
+										end	
+									end
+
+								if (Acerto.Dado >= Critico.Erro) then
+									Acerto.MSG = "[§K4]Erro Crítico![§K14] (" .. Acerto.Dado .. ") "
+									Dano.MSG = "";
+									Status1.MSG2 ="";
+									Status2.MSG2 ="";
+									Status3.MSG2 ="";
+									Status4.MSG2 ="";
+									Status5.MSG2 ="";
+									Status6.MSG2 ="";
+									end
+									
+								if (REPEAT == 1) then
+									mesa.activeChat:enviarMensagem(DanEl.Cor .. NOME .. Ammo.MSG .. MSG_CMP .. MSG_TARGET .. Acerto.MSG .. Dano.MSG .. Status1.MSG2 .. Status2.MSG2 .. Status3.MSG2 .. Status4.MSG2 .. Status5.MSG2 .. Status6.MSG2)
+								elseif (REPEAT >= 2 and 2>= ALVO) then	
+									mesa.activeChat:enviarMensagem("[§K14]#" .. i .. "; " .. Acerto.MSG .. Dano.MSG .. Status1.MSG2 .. Status2.MSG2 .. Status3.MSG2 .. Status4.MSG2 .. Status5.MSG2 .. Status6.MSG2)
+								else	
+									mesa.activeChat:enviarMensagem("[§K14]" .. MSG_TARGET .. Acerto.MSG .. Dano.MSG .. Status1.MSG2 .. Status2.MSG2 .. Status3.MSG2 .. Status4.MSG2 .. Status5.MSG2 .. Status6.MSG2)
+									end
+								end
+							end
+							
+						if (ALVO == 4 or ALVO == 5 or ALVO == 6) then
+							local MSG_TARGET = "";
+							local targets = {}
+							if (ALVO == 4 ) then
+								targets = mobs;
+								end
+							if (ALVO == 5) then
+								targets = allies;
+								end
+							if (ALVO == 6) then
+								targets = all;
+								end
+							mesa.activeChat:enviarMensagem(DanEl.Cor .. NOME .. Ammo.MSG)	
+							
+							for counter = 1,#targets,1 do
+								if (counter == 1) then 
+									MSG_TARGET = ("[§B]Alvo:[§B] " .. targets[counter] .. "; ")	
+									elseif (counter == 2) then 
+										MSG_TARGET = ("[§B]Alvo:[§B] " .. targets[counter] .. "; ")	
+									elseif (counter == 3) then 
+										MSG_TARGET = ("[§B]Alvo:[§B] " .. targets[counter] .. "; ")	
+									elseif (counter == 4) then 
+										MSG_TARGET = ("[§B]Alvo:[§B] " .. targets[counter] .. "; ")	
+									elseif (counter == 5) then 
+										MSG_TARGET = ("[§B]Alvo:[§B] " .. targets[counter] .. "; ")	
+									elseif (counter == 6) then 
+										MSG_TARGET = ("[§B]Alvo:[§B] " .. targets[counter] .. "; ")	
+									elseif (counter == 7) then 
+										MSG_TARGET = ("[§B]Alvo:[§B] " .. targets[counter] .. "; ")	
+									elseif (counter == 8) then 
+										MSG_TARGET = ("[§B]Alvo:[§B] " .. targets[counter] .. "; ")	
+									elseif (counter == 9) then 
+										MSG_TARGET = ("[§B]Alvo:[§B] " .. targets[counter] .. "; ")	
+									elseif (counter == 10) then 
+										MSG_TARGET = ("[§B]Alvo:[§B] " .. targets[counter] .. "; ")	
+									elseif (counter == 11) then 
+										MSG_TARGET = ("[§B]Alvo:[§B] " .. targets[counter] .. "; ")	
+									elseif (counter == 12) then 
+										MSG_TARGET = ("[§B]Alvo:[§B] " .. targets[counter] .. "; ")	
+									elseif (counter == 13) then 
+										MSG_TARGET = ("[§B]Alvo:[§B] " .. targets[counter] .. "; ")	
+									elseif (counter == 14) then 
+										MSG_TARGET = ("[§B]Alvo:[§B] " .. targets[counter] .. "; ")	
+									elseif (counter == 15) then 
+										MSG_TARGET = ("[§B]Alvo:[§B] " .. targets[counter] .. "; ")	
+									elseif (counter == 16) then 
+										MSG_TARGET = ("[§B]Alvo:[§B] " .. targets[counter] .. "; ")	
+									elseif (counter == 17) then 
+										MSG_TARGET = ("[§B]Alvo:[§B] " .. targets[counter] .. "; ")	
+									elseif (counter == 18) then 
+										MSG_TARGET = ("[§B]Alvo:[§B] " .. targets[counter] .. "; ")	
+									elseif (counter == 19) then 
+										MSG_TARGET = ("[§B]Alvo:[§B] " .. targets[counter] .. "; ")	
+									elseif (counter == 20) then 
+										MSG_TARGET = ("[§B]Alvo:[§B] " .. targets[counter] .. "; ")	
+									elseif (counter == 21) then 
+										MSG_TARGET = ("[§B]Alvo:[§B] " .. targets[counter] .. "; ")	
+									elseif (counter == 22) then 
+										MSG_TARGET = ("[§B]Alvo:[§B] " .. targets[counter] .. "; ")	
+									end						
+							
+								for counter2 =1,REPEAT,1 do
+									if ((STATRANDOM == true) and (#Rstatus > 0)) then
+										local ACTIVESTAT = tonumber(math.random(1,#Rstatus));	
+										Status1.Select = false;					
+										Status2.Select = false;
+										Status3.Select = false;
+										Status4.Select = false;
+										Status5.Select = false;	
+										Status6.Select = false;									
+										if tonumber(ACTIVESTAT) == 1 then 
+											Status1.Select = true;
+											elseif tonumber(ACTIVESTAT) == 2 then 
+												Status2.Select = true;
+											elseif tonumber(ACTIVESTAT) == 3 then 
+												Status3.Select = true;
+											elseif tonumber(ACTIVESTAT) == 4 then 
+												Status4.Select = true;
+											elseif tonumber(ACTIVESTAT) == 5 then 
+												Status5.Select = true;
+											elseif tonumber(ACTIVESTAT) == 6 then 
+												Status6.Select = true;
+											end	
+										end
+									Critico.Bon = 0;
+									Critico.MSG = "";
+									Dano.Final = 0;
+									Status1.MSG2 ="";
+									Status2.MSG2 ="";
+									Status3.MSG2 ="";
+									Status4.MSG2 ="";
+									Status5.MSG2 ="";
+									Status6.MSG2 ="";									
+									
+									Acerto.Dado = math.random(1,100);
+									Acerto.Final = Acerto.AttSec - Acerto.Dado;
+									if (Acerto.Select == 4) then
+										Acerto.Final = math.floor(Acerto.Final/2);
+										end
+									if (Acerto.Select == 3) then
+										Acerto.MSG = "[§B]Acerto:[§B] Auto [" .. Acerto.Dado .. "]; ";
+										else
+											Acerto.MSG = "[§B]Acerto:[§B] " .. Acerto.Final .. EVA.MSG .. "[" .. Acerto.Dado .. "]; ";
+										end
+									
+									if (Critico.Margem >= 1 and Critico.Margem >= Acerto.Dado) then
+										if (not Critico.Triplo) then
+											Critico.Bon = 1;
+											Critico.MSG = ("[§K9](CRIT)" .. DanEl.Cor)
+											elseif (Critico.Triplo) then
+												Critico.Bon = 2;
+												Critico.MSG = ("[§K9](3xCRIT)" .. DanEl.Cor)
+											end	
+										end
+									
+									if (Dano.Tipo > 1) then
+										Dano.Dado:rolarLocalmente()		
+										Dano.Temp = Dano.Dado.resultado
+										Dano.Final = math.floor((DanMul.Select+Critico.Bon)*(Dano.Temp));
+										Dano.Weak = math.floor((DanMul.Select+Critico.Bon+0.5)*(Dano.Temp));
+										Dano.Men25 = math.floor((DanMul.Select+Critico.Bon-0.25)*(Dano.Temp));
+										Dano.Mai25 = math.floor((DanMul.Select+Critico.Bon+0.25)*(Dano.Temp));
+										if (2 >= DanEl.Select) then
+											Dano.MSG = ("[§B]Dano: [§B]" .. DanEl.Cor .. Dano.Final .. Critico.MSG .. DanMul.MSG .. DEF.MSG .. DanEl.MSG .. Dano.MSG2 .. "[§K14]; ")
+											elseif (DanEl.Select >= 3 and 11 >= DanEl.Select) then
+												Dano.MSG = ("[§B]Dano: [§B]" .. DanEl.Cor .. Dano.Final .. Critico.MSG .. DanMul.MSG .. DEF.MSG .. DanEl.MSG .. Dano.MSG2 .. "[§K14]; [§B]Vs Weak: [§B]" .. DanEl.Cor .. Dano.Weak .. "[§K14]; ")
+											elseif (DanEl.Select == 12) then
+												Dano.MSG = ("[§B]Restaura: [§B]" .. DanEl.Cor .. Dano.Final .. DanMul.MSG .. Dano.MSG2 .. "[§K14]; [§B][§K4]-25%:[§K14] " .. Dano.Men25 .. "[§K14]; [§B][§K9]+25%:[§K14] " .. Dano.Mai25  .. "[§K14]; ")
+											end	
+										end
+									
+									if (Status1.Select == true) then
+										Status1.Dado = math.random(1,100);
+										if (5 >= Status1.Type) then
+											Status1.Final = Status1.Preamble - Status1.Dado;
+											Status1.MSG2 = "CdS de [§B]" .. Status1.Name .. "[§B]: " .. Status1.Final .. Status1.MSG .. " (" .. Status1.Dado .. "); ";
+											else
+											Status1.Final = Status1.Dado;
+											Status1.MSG2 = "CdS de [§B]" .. Status1.Name .. "[§B]: " .. Status1.Final .. Status1.MSG .. "; ";
+											end	
+										end
+
+									if (Status2.Select == true) then
+										Status2.Dado = math.random(1,100);
+										if (5 >= Status2.Type) then
+											Status2.Final = Status2.Preamble - Status2.Dado;
+											Status2.MSG2 = "CdS de [§B]" .. Status2.Name .. "[§B]: " .. Status2.Final .. Status2.MSG .. " (" .. Status2.Dado .. "); ";
+											else
+											Status2.Final = Status2.Dado;
+											Status2.MSG2 = "CdS de [§B]" .. Status2.Name .. "[§B]: " .. Status2.Final .. Status2.MSG .. "; ";
+											end	
+										end
+										
+									if (Status3.Select == true) then
+										Status3.Dado = math.random(1,100);
+										if (5 >= Status3.Type) then
+											Status3.Final = Status3.Preamble - Status3.Dado;
+											Status3.MSG2 = "CdS de [§B]" .. Status3.Name .. "[§B]: " .. Status3.Final .. Status3.MSG .. " (" .. Status3.Dado .. "); ";		
+											else
+											Status3.Final = Status3.Dado;
+											Status3.MSG2 = "CdS de [§B]" .. Status3.Name .. "[§B]: " .. Status3.Final .. Status3.MSG .. "; ";
+											end	
+										end
+
+									if (Status4.Select == true) then
+										Status4.Dado = math.random(1,100);
+										if (5 >= Status4.Type) then
+											Status4.Final = Status4.Preamble - Status4.Dado;
+											Status4.MSG2 = "CdS de [§B]" .. Status4.Name .. "[§B]: " .. Status4.Final .. Status4.MSG .. " (" .. Status4.Dado .. "); ";
+											else
+											Status4.Final = Status4.Dado;
+											Status4.MSG2 = "CdS de [§B]" .. Status4.Name .. "[§B]: " .. Status4.Final .. Status4.MSG .. "; ";
+											end	
+										end
+
+									if (Status5.Select == true) then
+										Status5.Dado = math.random(1,100);
+										if (5 >= Status5.Type) then
+											Status5.Final = Status5.Preamble - Status5.Dado;
+											Status5.MSG2 = "CdS de [§B]" .. Status5.Name .. "[§B]: " .. Status5.Final .. Status5.MSG .. " (" .. Status5.Dado .. "); ";
+											else
+											Status5.Final = Status5.Dado;
+											Status5.MSG2 = "CdS de [§B]" .. Status5.Name .. "[§B]: " .. Status5.Final .. Status5.MSG .. "; ";
+											end	
+										end
+										
+									if (Status6.Select == true) then
+										Status6.Dado = math.random(1,100);
+										if (5 >= Status6.Type) then
+											Status6.Final = Status6.Preamble - Status6.Dado;
+											Status6.MSG2 = "CdS de [§B]" .. Status6.Name .. "[§B]: " .. Status6.Final .. Status6.MSG .. " (" .. Status6.Dado .. "); ";
+											else
+											Status6.Final = Status6.Dado;
+											Status6.MSG2 = "CdS de [§B]" .. Status6.Name .. "[§B]: " .. Status6.Final .. Status6.MSG .. "; ";
+											end	
+										end
+									
+									if (Acerto.Dado >= Critico.Erro) then
+									Acerto.MSG = "[§K4]Erro Crítico![§K14] (" .. Acerto.Dado .. ") "
+									Dano.MSG = "";
+									Status1.MSG2 ="";
+									Status2.MSG2 ="";
+									Status3.MSG2 ="";
+									Status4.MSG2 ="";
+									Status5.MSG2 ="";
+									Status6.MSG2 ="";
+									end
+										
+									mesa.activeChat:enviarMensagem("[§K14]" .. MSG_TARGET .. Acerto.MSG .. Dano.MSG .. Status1.MSG2 .. Status2.MSG2 .. Status3.MSG2 .. Status4.MSG2 .. Status5.MSG2 .. Status6.MSG2)
+									end
+								end
+							end							
+							
+			local HPAtu = tonumber(sheet.basHPAtual) or 0;
+			local HPMax = tonumber(sheet.basHPMAX) or 0;
+			if (mesa.meuJogador.isJogador and not mesa.meuJogador.isMestre) then
+				HPAtu, HPMax = mesa.meuJogador:getBarValue(1);
+				sheet.basHPAtual = HPAtu;
+				end
+			local GastarHP = self.boxDetalhesDoItem.node.activeConsHP or false
+			local CHP2 = tonumber(self.boxDetalhesDoItem.node.campoCustoHP) or 0
+			local CHP3 = math.ceil(HPMax*(CHP2/100))
+			if (CHP3 >= 1 and (CHP3 > HPAtu) and GastarHP) then
+				showMessage("Você não tem HP suficiente!")
+				elseif (CHP3 >= 1 and GastarHP) then
+					local HPNew = HPAtu - CHP3;
+					mesa.meuJogador:requestSetBarValue(1, HPNew, HPMax) 
+					sheet.basHPAtual = HPAtu - CHP3;
+				end
+
+			local MPAtu = tonumber(sheet.basMPAtual) or 0;
+			local MPMax = tonumber(sheet.basMPMAX) or 0;
+			if (mesa.meuJogador.isJogador and not mesa.meuJogador.isMestre) then
+				MPAtu, MPMax = mesa.meuJogador:getBarValue(2);
+				sheet.basMPAtual = MPAtu;				
+				end
+			GastarMP = self.boxDetalhesDoItem.node.activeConsMP or false
+			local CMP2 = tonumber(self.boxDetalhesDoItem.node.campoCustoMP) or 0;
+			if (CMP2 > 0 and (CMP2 > MPAtu) and GastarMP) then
+				showMessage("Você não tem MP suficiente!")
+				elseif (CMP2 > 0 and GastarMP) then
+					local MPNew = MPAtu - CMP2;
+					mesa.meuJogador:requestSetBarValue(2, MPNew, MPMax) 
+					sheet.basMPAtual = MPAtu-CMP2;
+				end
+					
+
+						ExaurirON = self.boxDetalhesDoItem.node.activeSamCur or false
+						Samurai = self.boxDetalhesDoItem.node.campoCurse or 0;
+						NIVEL = sheet.basLV or 1;
+						MSG_Exaurir =""
+						if (Samurai >= 1 and ExaurirON == true) then
+							ChanceEX = math.random(1,100);
+							Modificador = Samurai-NIVEL;
+							if (10 > Modificador) then 
+								Modificador = 10;	
+								end
+							if (ChanceEX > Modificador) then 
+								MSG_Exaurir = "A lâmina não exauriu"	
+								end
+							if (Modificador >= ChanceEX) then 
+								MSG_Exaurir = "A lâmina exauriu, recebe Curse ( 4 )"	
+								end
+							mesa.activeChat:enviarMensagem(MSG_Exaurir .. "[" .. ChanceEX .. "(" .. Modificador .. "%)]");
+							end								
+						</event>
+					</button>	
+				</tab>
+			</tabControl>
+		</dataScopeBox>
+
+		<layout left="630" top="250" width="225" height="300">
+			<label left="50" top="00" width="150" height="20" text="Inimigos" horzTextAlign="center" autoSize="true" fontStyle="bold"/>
+			<label left="0" top="00" width="20" height="20" text="S" horzTextAlign="center" autoSize="true" fontStyle="bold"/>
+			<label left="25" top="00" width="20" height="20" text="G" horzTextAlign="center" autoSize="true" fontStyle="bold"/>
+			<AlvoGol Top ="025" num="1"/>
+			<AlvoGol Top ="050" num="2"/>
+			<AlvoGol Top ="075" num="3"/>
+			<AlvoGol Top ="100" num="4"/>
+			<AlvoGol Top ="125" num="5"/>
+			<AlvoGol Top ="150" num="6"/>
+			<AlvoGol Top ="175" num="7"/>
+			<AlvoGol Top ="200" num="8"/>
+			<AlvoGol Top ="225" num="9"/>
+			<AlvoGol Top ="250" num="10"/>
+			<AlvoGol Top ="275" num="11"/>
+			</layout>
+		<layout left="855" top="250" width="225" height="300">
+			<label left="50" top="00" width="150" height="20" text="Aliados" horzTextAlign="center" autoSize="true" fontStyle="bold"/>
+			<label left="0" top="00" width="20" height="20" text="S" horzTextAlign="center" autoSize="true" fontStyle="bold"/>
+			<label left="25" top="00" width="20" height="20" text="G" horzTextAlign="center" autoSize="true" fontStyle="bold"/>
+			<Aliados Top ="025" num="1"/>
+			<Aliados Top ="050" num="2"/>
+			<Aliados Top ="075" num="3"/>
+			<Aliados Top ="100" num="4"/>
+			<Aliados Top ="125" num="5"/>
+			<Aliados Top ="150" num="6"/>
+			<Aliados Top ="175" num="7"/>
+			<Aliados Top ="200" num="8"/>
+			<Aliados Top ="225" num="9"/>
+			<Aliados Top ="250" num="10"/>
+			<Aliados Top ="275" num="11"/>
+			</layout>
+
+
+</form>

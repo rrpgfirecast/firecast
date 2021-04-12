@@ -1,0 +1,382 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmGeral" align="client" theme="dark" margins="{top=1}">
+
+	<template name="trAtt">
+		<label left="000" top="$(Top)" height="20" width="120" text="$(Name)" autoSize="true" fontStyle="bold" />
+		<edit left="100" top="$(Top)" height="20" width="30" field="$(Field)_val" horzTextAlign="center" type="number" />
+		<comboBox left="135" top="$(Top)" height="20" width="45" field="$(Field)_edc" horzTextAlign="center" items="{'-6', '-5', '-4', '-3', '-2', '-1', '0', '1', '2', '3', '4', '5', '6'}" values="{'1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13'}" />
+		<edit left="185" top="$(Top)" height="20" width="30" field="$(Field)_tot" horzTextAlign="center" type="number" enabled="false" />
+		<edit left="220" top="$(Top)" height="20" width="30" field="$(Field)_mod" horzTextAlign="center" type="number" enabled="false" />
+		<dataLink field="$(Field)_val" defaultValue="8" />
+		<dataLink field="$(Field)_edc" defaultValue="7" />
+		</template>
+
+	<template name="PokeSlot">	
+        <rectangle left="0" top="0" width="285" height="75" color="black" strokeColor="red" strokeSize="1" cornerType="round"/>
+        <image left="005" top="10" height="50" width="50" field="ImagemSlot$(num)" style="stretch" animate="true"/>
+        <edit left="060" top="5" height="20" width="120" field="NomeSlot$(num)" horzTextAlign="center" enabled="false"/>
+		<label left="060" top="30" height="20" width="20" text="HP" autoSize="true" fontStyle="bold"/>
+		<progressBar left="080" top="30" width="100" height="15" color="green" field = "baseHPAtual$(num)" fieldMax="baseHPMAX$(num)"/>
+        <image left="235" top="25" height="30" width="30" field="GenderSlot$(num)" style="stretch"/>	
+		<label left="190" top="5" height="20" width="20" text="Lv." autoSize="true" fontStyle="bold"/>
+        <edit left="210" top="5" height="20" width="30" field="LevelSlot$(num)" horzTextAlign="center" enabled="false"/>
+		<button left="262" top="51" height="20" width="20" text = "A" hint ="Apagar">
+			<event name="onClick">
+				if sheet==nil 	then    return end
+				sheet.ImagemSlot$(num) = "";
+				sheet.NomeSlot$(num) = "";
+				sheet.LevelSlot$(num) = "";
+				sheet.GenderSlot$(num) = "";
+				sheet.baseHPAtual$(num) = 0;
+				sheet.baseHPMAX$(num) = 0;
+			</event>
+		</button>
+        <edit left="95" top="50" height="20" width="30" field="baseHPAtual$(num)" horzTextAlign="center" enabled="false"/>
+		<label left="125" top="50" height="20" width="5" text="/" autoSize="true" fontStyle="bold"/>
+        <edit left="130" top="50" height="20" width="30" field="baseHPMAX$(num)" horzTextAlign="center" enabled="false"/>
+		<dataLink field="baseHPAtual$(num)" defaultValue="0" />
+		<dataLink field="baseHPMAX$(num)" defaultValue="0" />
+		</template>	
+
+	<template name="Insignea">	
+		<rectangle left="000" top="$(Top)" width="40" height="40" color="Red" strokeColor="black" strokeSize="4" />
+        <rectangle left="005" top="$(Top2)" width="30" height="30" color="Black" strokeColor="black" strokeSize="4" />
+        <image left="005" top="$(Top)" width="30" height="30" field="basBADGE1$(num)" editable="true" style="proportional" hint="Insígnea, Ribbon, Key Item, etc"/>
+		</template>	
+
+	<layout left="000" top="000" height="650" width="1100">
+		<image left="000" top="000" height="650" width="1100" src="/img/Pokeball.jpg" style="autoFIT" />
+		</layout>
+			
+	<layout left="10" top="010" height="260" width="800">
+		<label left="000" top="000" height="20" width="80" text="Nome" autoSize="true" fontStyle="bold"/>
+		<edit left="085" top="000" height="20" width="500" field="baseName" horzTextAlign="center" />
+		<label left="000" top="025" height="20" width="80" text="Classe #1" autoSize="true" fontStyle="bold"/>
+		<edit left="085" top="025" height="20" width="200" field="baseClasses1" horzTextAlign="center" />
+		<label left="300" top="025" height="20" width="80" text="Classe #2" autoSize="true" fontStyle="bold"/>
+		<edit left="385" top="025" height="20" width="200" field="baseClasses2" horzTextAlign="center" />
+		<label left="000" top="050" height="20" width="80" text="Classe #3" autoSize="true" fontStyle="bold"/>
+		<edit left="085" top="050" height="20" width="200" field="baseClasses3" horzTextAlign="center" />
+		<label left="300" top="050" height="20" width="80" text="Classe #4" autoSize="true" fontStyle="bold"/>
+		<edit left="385" top="050" height="20" width="200" field="baseClasses4" horzTextAlign="center" />				
+		<label left="000" top="75" height="20" width="80" text="Idade" autoSize="true" fontStyle="bold"/>
+		<edit left="085" top="75" height="20" width="200" field="baseIdade" horzTextAlign="center" />
+		<label left="300" top="75" height="20" width="80" text="Gênero" autoSize="true" fontStyle="bold"/>
+		<edit left="385" top="75" height="20" width="200" field="baseGenero" horzTextAlign="center" />
+		<label left="000" top="100" height="20" width="80" text="Altura" autoSize="true" fontStyle="bold"/>
+		<edit left="085" top="100" height="20" width="200" field="baseAltura" horzTextAlign="center" />
+		<label left="300" top="100" height="20" width="80" text="Peso" autoSize="true" fontStyle="bold"/>
+		<edit left="385" top="100" height="20" width="200" field="basePeso" horzTextAlign="center" />
+		<label left="000" top="125" height="20" width="80" text="Arma" autoSize="true" fontStyle="bold"/>
+		<edit left="085" top="125" height="20" width="200" field="baseArma" horzTextAlign="center" />
+		<label left="300" top="125" height="20" width="80" text="Tendência" autoSize="true" fontStyle="bold"/>
+		<edit left="385" top="125" height="20" width="200" field="baseTEND" horzTextAlign="center" />				
+		<label left="000" top="150" height="20" width="80" text="Aniversário" autoSize="true" fontStyle="bold"/>
+		<edit left="085" top="150" height="20" width="200" field="baseNIVER" horzTextAlign="center" />
+		<label left="300" top="150" height="20" width="80" text="Dinheiro" autoSize="true" fontStyle="bold"/>
+		<edit left="385" top="150" height="20" width="200" field="baseMONY" horzTextAlign="center" />					
+		<label left="000" top="175" height="20" width="80" text="Nível" autoSize="true" fontStyle="bold"/>
+		<edit left="085" top="175" height="20" width="200" field="basLV" horzTextAlign="center" type="number"/>
+		<label left="300" top="175" height="20" width="80" text="HP" autoSize="true" fontStyle="bold"/>
+		<edit left="385" top="175" height="20" width="90" field="baseHPAtual" horzTextAlign="center" type="number"/>
+		<label left="485" top="175" height="20" width="16" text="/" autoSize="true" />
+		<edit left="495" top="175" height="20" width="90" field="baseHPMAX" horzTextAlign="center" type="number" enabled="false"/>	
+		<label left="485" top="200" height="20" width="16" text="+" autoSize="true" />
+		<edit left="495" top="200" height="20" width="90" field="baseHPMAXEXTRA" horzTextAlign="center" type="number"/>									
+		</layout>
+
+	<layout left="620" top="10" height="512" width="512">
+		<rectangle left="000" top="000" width="360" height="360" color="Red" strokeColor="black" strokeSize="3" />
+		<rectangle left="005" top="005" width="350" height="350" color="Black" strokeColor="black" strokeSize="4" />
+		<image left="005" top="005" width="350" height="350" field="basPERS" editable="true" style="proportional" hint="Imagem do Personagem" animate="true"/>
+		</layout>
+			
+	<layout left="10" top="250" height="320" width="420">
+		<label left="000" top="000" height="20" width="120" text="Atributo" autoSize="true" fontStyle="bold" />
+		<label left="100" top="000" height="20" width="30" text="Valor" autoSize="true" />
+		<label left="135" top="000" height="20" width="50" text="Estágios" autoSize="true" />
+		<label left="185" top="000" height="20" width="30" text="Total" autoSize="true" />
+		<label left="220" top="000" height="20" width="30" text="Mod" autoSize="true" />
+		<label left="000" top="025" height="20" width="120" text="HP" autoSize="true" fontStyle="bold" />
+		<edit left="100" top="025" height="20" width="30" field="HP_val" horzTextAlign="center" type="number" />
+		<edit left="185" top="025" height="20" width="30" field="HP_tot" horzTextAlign="center" type="number" enabled="false" />
+		<trAtt Top ="050" Field="ATK" Name="Ataque"/>
+		<trAtt Top ="075" Field="DEF" Name="Defesa"/>
+		<trAtt Top ="100" Field="SPATK" Name="Ataque Especial"/>
+		<trAtt Top ="125" Field="SPDEF" Name="Defesa Especial"/>
+		<trAtt Top ="150" Field="SPD" Name="Velocidade"/>
+		</layout>
+					
+	<layout left="275" top="300" height="320" width="420">
+		<label left="00" top="000" height="20" width="80" text="Evasão" autoSize="true" fontStyle="bold"/>
+		<label left="55" top="000" height="20" width="30" text="Tot." autoSize="true" />
+		<label left="90" top="000" height="20" width="30" text="Bôn." autoSize="true" />
+		<label left="000" top="025" height="20" width="50" text="Física" autoSize="true" fontStyle="bold"/>
+		<edit left="55" top="025" height="20" width="30" field="EVA_FIS" horzTextAlign="center" type="number"  enabled="false"/>
+		<edit left="90" top="025" height="20" width="30" field="pers_bonEVAF" horzTextAlign="center" type="number" />
+		<label left="000" top="050" height="20" width="50" text="Especial" autoSize="true" fontStyle="bold"/>
+		<edit left="55" top="050" height="20" width="30" field="EVA_ESP" horzTextAlign="center" type="number"  enabled="false"/>
+		<edit left="90" top="050" height="20" width="30" field="pers_bonEVAE" horzTextAlign="center" type="number" />
+		<label left="000" top="075" height="20" width="50" text="Veloz" autoSize="true" fontStyle="bold"/>
+		<edit left="55" top="075" height="20" width="30" field="EVA_VEL" horzTextAlign="center" type="number"  enabled="false"/>
+		<edit left="90" top="075" height="20" width="30" field="pers_bonEVAV" horzTextAlign="center" type="number" />
+		</layout>
+			
+	<layout left="410" top="275" height="320" width="420">
+		<label left="000" top="000" height="20" width="110" text="Desloc." autoSize="true" fontStyle="bold"/>
+		<label left="80" top="000" height="20" width="100" text="Total" autoSize="true" />
+		<label left="115" top="000" height="20" width="100" text="Base" autoSize="true" />
+		<label left="150" top="000" height="20" width="100" text="Bônus" autoSize="true" />
+		<label left="000" top="025" height="20" width="110" text="Terrestre" autoSize="true" fontStyle="bold"/>
+		<edit left="80" top="025" height="20" width="30" field="DES_TER" horzTextAlign="center" type="number" enabled="false" />
+		<edit left="115" top="025" height="20" width="30" field="bas_DES_TER" horzTextAlign="center" type="number" enabled="false"/>
+		<edit left="150" top="025" height="20" width="30" field="bon_DES_TER" horzTextAlign="center" type="number" />
+		<label left="000" top="050" height="20" width="110" text="Natação" autoSize="true" fontStyle="bold"/>
+		<edit left="80" top="050" height="20" width="30" field="DES_NAT" horzTextAlign="center" type="number" enabled="false" />
+		<edit left="115" top="050" height="20" width="30" field="bas_DES_NAT" horzTextAlign="center" type="number" enabled="false"/>
+		<edit left="150" top="050" height="20" width="30" field="bon_DES_NAT" horzTextAlign="center" type="number" />
+		<label left="000" top="075" height="20" width="110" text="Subaquático" autoSize="true" fontStyle="bold"/>
+		<edit left="80" top="075" height="20" width="30" field="DES_SUB" horzTextAlign="center" type="number" enabled="false" />
+		<edit left="115" top="075" height="20" width="30" field="bas_DES_SUB" horzTextAlign="center" type="number" enabled="false"/>
+		<edit left="150" top="075" height="20" width="30" field="bon_DES_SUB" horzTextAlign="center" type="number" />
+		<label left="000" top="100" height="20" width="110" text="Escavação" autoSize="true" fontStyle="bold"/>
+		<edit left="80" top="100" height="20" width="30" field="DES_ESC" horzTextAlign="center" type="number" enabled="false" />
+		<edit left="115" top="100" height="20" width="30" field="bas_DES_ESC" horzTextAlign="center" type="number" />
+		<edit left="150" top="100" height="20" width="30" field="bon_DES_ESC" horzTextAlign="center" type="number" />
+		<label left="000" top="125" height="20" width="110" text="Voo" autoSize="true" fontStyle="bold"/>
+		<edit left="80" top="125" height="20" width="30" field="DES_VOO" horzTextAlign="center" type="number" enabled="false" />
+		<edit left="115" top="125" height="20" width="30" field="bas_DES_VOO" horzTextAlign="center" type="number" />
+		<edit left="150" top="125" height="20" width="30" field="bon_DES_VOO" horzTextAlign="center" type="number" />
+		</layout>
+			
+	<layout left="60" top="460" height="650" width="1100">
+		<PokeSlot num="1"/>
+		</layout>
+	<layout left="60" top="545" height="650" width="1100">
+		<PokeSlot num="2"/>
+		</layout>
+	<layout left="350" top="460" height="650" width="1100">
+		<PokeSlot num="3"/>
+		</layout> 
+	<layout left="350" top="545" height="650" width="1100">
+		<PokeSlot num="4"/>
+		</layout>
+     <layout left="640" top="460" height="650" width="1100">
+		<PokeSlot num="5"/>
+		</layout>
+	<layout left="640" top="545" height="650" width="1100">
+		<PokeSlot num="6"/>
+		</layout>
+
+	<layout left="990" top="13" height="800" width="100">
+		<Insignea num="1" Top="00" Top2="05"/>
+		<Insignea num="2" Top="45" Top2="50"/>
+		<Insignea num="3" Top="90" Top2="95"/>
+		<Insignea num="4" Top="135" Top2="140"/>
+		<Insignea num="5" Top="180" Top2="185"/>
+		<Insignea num="6" Top="225" Top2="230"/>
+		<Insignea num="7" Top="270" Top2="275"/>
+		<Insignea num="8" Top="315" Top2="320"/>
+		</layout>	
+			
+	<layout left="1040" top="13" height="800" width="100">
+		<Insignea num="9" Top="00" Top2="05"/>
+		<Insignea num="10" Top="45" Top2="50"/>
+		<Insignea num="11" Top="90" Top2="95"/>
+		<Insignea num="12" Top="135" Top2="140"/>
+		<Insignea num="13" Top="180" Top2="185"/>
+		<Insignea num="14" Top="225" Top2="230"/>
+		<Insignea num="15" Top="270" Top2="275"/>
+		<Insignea num="16" Top="315" Top2="320"/>
+		</layout>	
+
+	<dataLink fields="{'HP_val', 'basLV', 'HP_val','ATK_val','ATK_edc', 'DEF_edc', 'DEF_val', 'SPATK_edc','SPATK_val','baseHPMAXEXTRA', 'HP_val','SPD_tot','SPD_mod','bas_DES_ESC','bon_DES_ESC','bon_DES_VOO',
+						'SPDEF_edc', 'SPDEF_val', 'SPD_edc', 'SPD_val', 'bon_DES_TER', 'bon_DES_NAT', 'bon_DES_SUB', 'pers_bonEVAF', 'pers_bonEVAE', 'pers_bonEVAV', 'bas_DES_VOO','bas_DES_ESCA'}">
+		<event name="onChange">
+			if sheet== nil then return end;
+			
+			local Nivel = tonumber(sheet.basLV) or 1
+			local attHP = sheet.HP_val or 0;
+			local bonHP = sheet.baseHPMAXEXTRA or 0;
+			
+			sheet.baseHPMAX = math.floor(Nivel*4 + attHP*4 + bonHP);
+
+			local SPDedcDES = {-2,-1,-1,-1,0,0,0,0,1,1,2,2,3};
+			local SPDedc = tonumber(sheet.SPD_edc) or 7
+			
+			local EdCtable = {0.4,0.5,0.6,0.7,0.8,0.9,1,1.25,1.5,1.75,2,2.25,2.5};
+			
+
+			local Ataque = {}	
+			Ataque.var1 = tonumber(sheet.ATK_val) or 8;
+			Ataque.var2 = tonumber(sheet.ATK_edc) or 7			
+			if 1 &gt; Ataque.var2 then 
+				Ataque.var2 = 7 
+				end;
+			if Ataque.var2 &gt; 13 then 
+				Ataque.var2 = 7 
+				end;
+			Ataque.var3 = math.floor(EdCtable[Ataque.var2]*Ataque.var1)
+			Ataque.var4 = 0;
+			if (10 > Ataque.var3) then
+				Ataque.var4	= Ataque.var3-10;
+				end
+			if (Ataque.var3 >= 10) then
+				Ataque.var4 = math.floor((Ataque.var3-10)/2);
+				end				
+			sheet.ATK_tot = Ataque.var3
+			sheet.ATK_mod = Ataque.var4
+			
+			local Defesa = {}	
+			Defesa.var1 = tonumber(sheet.DEF_val) or 8;
+			Defesa.var2 = tonumber(sheet.DEF_edc) or 7			
+			if 1 &gt; Defesa.var2 then 
+				Defesa.var2 = 7 
+				end;
+			if Defesa.var2 &gt; 13 then 
+				Defesa.var2 = 7 
+				end;
+			Defesa.var3 = math.floor(EdCtable[Defesa.var2]*Defesa.var1)
+			Defesa.var4 = 0;
+			if (10 > Defesa.var3) then
+				Defesa.var4	= Defesa.var3-10;
+				end
+			if (Defesa.var3 >= 10) then
+				Defesa.var4 = math.floor((Defesa.var3-10)/2);
+				end				
+			sheet.DEF_tot = Defesa.var3
+			sheet.DEF_mod = Defesa.var4
+					
+			local AtaEsp = {}	
+			AtaEsp.var1 = tonumber(sheet.SPATK_val) or 8;
+			AtaEsp.var2 = tonumber(sheet.SPATK_edc) or 7			
+			if 1 &gt; AtaEsp.var2 then 
+				AtaEsp.var2 = 7 
+				end;
+			if AtaEsp.var2 &gt; 13 then 
+				AtaEsp.var2 = 7 
+				end;
+			AtaEsp.var3 = math.floor(EdCtable[AtaEsp.var2]*AtaEsp.var1)
+			AtaEsp.var4 = 0;
+			if (10 > AtaEsp.var3) then
+				AtaEsp.var4	= AtaEsp.var3-10;
+				end
+			if (AtaEsp.var3 >= 10) then
+				AtaEsp.var4 = math.floor((AtaEsp.var3-10)/2);
+				end				
+			sheet.SPATK_tot = AtaEsp.var3
+			sheet.SPATK_mod = AtaEsp.var4	
+
+			local DefEsp = {}	
+			DefEsp.var1 = tonumber(sheet.SPDEF_val) or 8;
+			DefEsp.var2 = tonumber(sheet.SPDEF_edc) or 7			
+			if 1 &gt; DefEsp.var2 then 
+				DefEsp.var2 = 7 
+				end;
+			if DefEsp.var2 &gt; 13 then 
+				DefEsp.var2 = 7 
+				end;
+			DefEsp.var3 = math.floor(EdCtable[DefEsp.var2]*DefEsp.var1)
+			DefEsp.var4 = 0;
+			if (10 > DefEsp.var3) then
+				DefEsp.var4	= DefEsp.var3-10;
+				end
+			if (DefEsp.var3 >= 10) then
+				DefEsp.var4 = math.floor((DefEsp.var3-10)/2);
+				end				
+			sheet.SPDEF_tot = DefEsp.var3
+			sheet.SPDEF_mod = DefEsp.var4	
+
+			local Veloc = {}	
+			Veloc.var1 = tonumber(sheet.SPD_val) or 8;
+			Veloc.var2 = tonumber(sheet.SPD_edc) or 7			
+			if 1 &gt; Veloc.var2 then 
+				Veloc.var2 = 7 
+				end;
+			if Veloc.var2 &gt; 13 then 
+				Veloc.var2 = 7 
+				end;
+			Veloc.var3 = math.floor(EdCtable[Veloc.var2]*Veloc.var1)
+			Veloc.var4 = 0;
+			if (10 > Veloc.var3) then
+				Veloc.var4	= Veloc.var3-10;
+				end
+			if (Veloc.var3 >= 10) then
+				Veloc.var4 = math.floor((Veloc.var3-10)/2);
+				end				
+			sheet.SPD_tot = Veloc.var3
+			sheet.SPD_mod = Veloc.var4	
+					
+			local def_temp = Defesa.var3;
+			local def_bon = tonumber(sheet.pers_bonEVAF) or 0;
+			if (def_temp &gt;= 31) then 
+				def_temp = 30; 	
+				end
+			sheet.EVA_FIS = math.floor(def_temp/5) + def_bon;
+
+			local spdef_temp = DefEsp.var3
+			local spdef_bon = tonumber(sheet.pers_bonEVAE) or 0;
+			if (spdef_temp &gt;= 31) then 
+				spdef_temp = 30; 	
+				end			
+			sheet.EVA_ESP = math.floor(spdef_temp/5) + spdef_bon;
+			
+			local spd_temp = Veloc.var3;
+			local spd_bon = tonumber(sheet.pers_bonEVAV) or 0;
+			if (spd_temp &gt;= 61) then 
+				spd_temp = 60; 	
+				end
+			sheet.EVA_VEL = math.floor(spd_temp/10) + spd_bon;
+	
+			local bonus_DES_TER = 0;
+			if (Ataque.var4) &gt;= (Defesa.var4) then 
+				bonus_DES_TER = math.floor(Ataque.var4/2) or 0;	
+				end
+			if (Defesa.var4) &gt;= (Ataque.var4) then 
+				bonus_DES_TER = math.floor(Defesa.var4/2) or 0;	
+				end
+			sheet.bas_DES_TER = 3 + bonus_DES_TER;
+			sheet.DES_TER = (sheet.bas_DES_TER or 0) + (sheet.bon_DES_TER or 0) + (SPDedcDES[SPDedc] or 0)
+			if (5 >= (sheet.DES_TER or 0)) then 
+				sheet.DES_TER = 5; 
+				end
+				
+			sheet.bas_DES_NAT = 2 + math.floor((Defesa.var4)/2) or 0;
+			sheet.DES_NAT = (sheet.bas_DES_NAT or 0) + (sheet.bon_DES_NAT or 0) + (SPDedcDES[SPDedc] or 0)
+			if (4 &gt; (sheet.DES_NAT or 0)) then 
+				sheet.DES_NAT = 4;
+				end
+			
+			local bonus_DES_SUB = 0;			
+			if (((Ataque.var4) &gt;= 4) or ((Defesa.var4) &gt;= 3)) then
+				bonus_DES_SUB=1;
+				end			
+			sheet.bas_DES_SUB = 3 + (bonus_DES_SUB or 0);
+			sheet.DES_SUB = (sheet.bas_DES_SUB or 0) + (sheet.bon_DES_SUB or 0) + (SPDedcDES[SPDedc] or 0)
+			if (1 &gt; (sheet.DES_SUB or 0)) then 
+				sheet.DES_SUB = 1; 
+				end				
+			
+			if (sheet.bas_DES_VOO or 0 &gt; 0) then
+				sheet.DES_VOO = (sheet.bas_DES_VOO or 0) + (sheet.bon_DES_VOO or 0) + (SPDedcDES[SPDedc] or 0)
+				if (0 &gt; (sheet.DES_VOO or 0)) then 
+					sheet.DES_VOO = 0; 
+					end
+				end
+			if (sheet.bas_DES_VOO == nil) then 
+				sheet.DES_VOO = nil; 
+				end
+				
+			if (sheet.bas_DES_ESC or 0 &gt; 0) then
+				sheet.DES_ESC = (sheet.bas_DES_ESC or 0) + (sheet.bon_DES_ESC or 0) + (SPDedcDES[SPDedc] or 0)
+				if (0 &gt; (sheet.DES_ESC or 0)) then 
+					sheet.DES_ESC = 0; 
+					end
+				end
+			if (sheet.bas_DES_ESC == nil) then 
+				sheet.DES_ESC = nil; 
+				end	
+		</event>
+        </dataLink>
+
+	</form>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmPoke4" align="client" theme="dark" margins="{top=1}">
+
+	<rectangle align="top" color="black" xradius="10" yradius="10" height="880" padding="{top=3, left=3, right=3, bottom=3}"/>
+
+	<layout left="10" top="10" height="600" width="410">
+		<rectangle left="000" top="000" width="415" height="500" color="darkred" strokeColor="black" strokeSize="5" />
+		<label left="000" top="005" height="20" width="405" fontColor="White" fontSize="18" text="Habilidades" autoSize="true" horzTextAlign="center" />
+		<textEditor left="07" top="30" width="400" height="460" field="campoHabilidades2" />
+		</layout>
+
+	<layout left="460" top="10" height="600" width="410">
+		<rectangle left="000" top="000" width="415" height="500" color="darkred" strokeColor="black" strokeSize="5" />
+		<label left="000" top="005" height="20" width="405" fontColor="White" fontSize="18" text="Capacidades" autoSize="true" horzTextAlign="center" />
+		<textEditor left="07" top="30" width="400" height="460" field="campoCapacidades2" />
+		</layout>
+
+	</form>

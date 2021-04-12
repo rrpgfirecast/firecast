@@ -1,0 +1,383 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmFichaRPGmeister3_svg" align="client" theme="dark" margins="{top=1}">
+	 <scrollBox align="left" width="880">	
+		<template name="AtaquePoke">
+			<rectangle align="client" color="black" compilerOrder="0"/>
+
+		<button left="000" top="5" width="20" height="20" text="I" hint = "Importar um Golpe">
+			<event name="onClick">
+				Dialogs.openFile("Importar Ficha", "text/plain", false, 
+					function(arquivos)
+						local arq = arquivos[1];
+						local msg = arq.stream:readBinary("ansi",txt);
+						local import = strToTable(msg);
+						self.boxDetalhesDoItem.node.golpeP$(num) = import[1];
+						self.boxDetalhesDoItem.node.frequenciaP$(num) = import[2];
+						self.boxDetalhesDoItem.node.alcanceP$(num) = import[3];
+						self.boxDetalhesDoItem.node.tipoP$(num) = import[4];
+						self.boxDetalhesDoItem.node.classeP$(num) = import[5];
+						self.boxDetalhesDoItem.node.ACP$(num) = import[6];
+						self.boxDetalhesDoItem.node.ataqueP$(num) = import[7];
+						self.boxDetalhesDoItem.node.danoP$(num) = import[8];
+						self.boxDetalhesDoItem.node.BonDMGP$(num) = import[9];
+						self.boxDetalhesDoItem.node.campoEfeitoGolpesP$(num) = import[10];
+						self.boxDetalhesDoItem.node.tipoContestP$(num) = import[11];
+						self.boxDetalhesDoItem.node.efeitoContestP$(num) = import[12];
+						local bytes = arq.stream:close();		
+					end);
+				</event>
+			</button>	
+		<button left="000" top="30" width="20" height="20" text="E" hint = "Exportar o Golpe">
+			<event name="onClick">
+				local stream = Utils.newMemoryStream();
+				local export = {self.boxDetalhesDoItem.node.golpeP$(num), self.boxDetalhesDoItem.node.frequenciaP$(num), self.boxDetalhesDoItem.node.alcanceP$(num), self.boxDetalhesDoItem.node.tipoP$(num), self.boxDetalhesDoItem.node.classeP$(num), self.boxDetalhesDoItem.node.ACP$(num), self.boxDetalhesDoItem.node.ataqueP$(num), self.boxDetalhesDoItem.node.danoP$(num), self.boxDetalhesDoItem.node.BonDMGP$(num), self.boxDetalhesDoItem.node.campoEfeitoGolpesP$(num), self.boxDetalhesDoItem.node.tipoContestP$(num), self.boxDetalhesDoItem.node.efeitoContestP$(num)};
+				local txt = tableToStr(export);
+				local bytes = stream:writeBinary("ansi",txt);
+				Dialogs.saveFile("Salvar golpe como txt", stream, "ficha.txt", "text/plain",
+				function()
+					stream:close();
+					end);
+				</event>
+			</button>
+
+		<button left="000" top="55" width="20" height="20" text="A" hint = "Apagar o Golpe">
+			<event name="onClick">
+				self.boxDetalhesDoItem.node.golpeP$(num) = nil;
+				self.boxDetalhesDoItem.node.frequenciaP$(num) = nil;
+				self.boxDetalhesDoItem.node.alcanceP$(num) = nil;
+				self.boxDetalhesDoItem.node.tipoP$(num) = nil;
+				self.boxDetalhesDoItem.node.classeP$(num) = nil;
+				self.boxDetalhesDoItem.node.ACP$(num) = nil;
+				self.boxDetalhesDoItem.node.ataqueP$(num) = nil;
+				self.boxDetalhesDoItem.node.danoP$(num) = nil;
+				self.boxDetalhesDoItem.node.BonDMGP$(num) = nil;
+				self.boxDetalhesDoItem.node.campoEfeitoGolpesP$(num) = nil;
+				self.boxDetalhesDoItem.node.tipoContestP$(num) = nil;
+				self.boxDetalhesDoItem.node.efeitoContestP$(num) = nil;
+				</event>
+			</button>	
+			
+			<label left="25" top="5" width="70" height="25" text="Golpe"/>
+			<edit vertTextAlign="center" left="90" top="5" width="135" height="25" field="golpeP$(num)"/>
+			
+			<label left="25" top="30" width="80" height="25" text="Frequência"/>
+			<edit vertTextAlign="center" left="90" top="30" width="135" height="25" field="frequenciaP$(num)"/>
+			
+			<label left="25" top="55" width="70" height="25" text="Alcance"/>
+			<edit vertTextAlign="center" left="90" top="55" width="135" height="25" field="alcanceP$(num)"/>
+
+			<label left="235" top="6" width="50" height="25" text="Tipo"/>
+			<comboBox left="277" top="6" width="87" height="25" field="tipoP$(num)" horzTextAlign="leading" items="{'Normal', 'Fogo', 'Água', 'Elétrico', 'Grama', 'Gelo', 'Lutador', 'Venenoso', 'Terra', 'Voador', 'Psíquico', 'Inseto', 'Rocha', 'Fantasma', 'Dragão', 'Noturno', 'Metálico', 'Fada', ''}" values="{'1', '2', '3', '4','5','6', '7','8','9','10','11','12','13','14','15','16','17','18','19'}"/>	
+			
+			<label left="235" top="31" width="50" height="25" text="Classe"/>
+			<comboBox left="277" top="31" width="87" height="25" field="classeP$(num)" horzTextAlign="leading" items="{'Ataque', 'Especial', 'Efeito'}" values="{'1', '2', '3'}" />
+             
+			<label left="235" top="55" width="50" height="25" text="AC"/>
+			<edit vertTextAlign="center" left="277" top="55" width="87" height="25" field="ACP$(num)" horzTextAlign="center"/>
+			
+			<label left="370" top="6" width="70" height="25" text="Prec.Bôn."/>
+			<edit vertTextAlign="center" left="443" top="6" width="42" height="25" field="ataqueP$(num)" horzTextAlign="center"/>         		
+
+			<label left="370" top="31" width="70" height="25" text="Dano Base"/>
+			<edit vertTextAlign="center" left="443" top="31" width="42" height="25" field="danoP$(num)" horzTextAlign="center"/>         		
+
+			<label left="370" top="55" width="70" height="25" text="Dano Bôn."/>
+			<edit vertTextAlign="center" left="443" top="55" width="42" height="25" field="BonDMGP$(num)" horzTextAlign="center"/>  
+			
+			<button left="488" top="6" width="82" text="Acerto" fontSize="11">
+				<event name="onClick">
+					if sheet == nil then return end;
+					local mesaDoPersonagem = Firecast.getMesaDe(sheet)
+					local ATAQUE = tonumber(self.boxDetalhesDoItem.node.ataqueP$(num)) or 0;
+					local NomeGolpe = self.boxDetalhesDoItem.node.golpeP$(num) or "Golpe"
+					local NomeUser = self.boxDetalhesDoItem.node.campoNome or "Pokémon"
+					local flagFocadoTr = self.boxDetalhesDoItem.node.focTr or false
+					if (flagFocadoTr) then
+						ATAQUE = ATAQUE+1;
+						end
+					local flagFocadoOr = self.boxDetalhesDoItem.node.focOr or false
+					if (flagFocadoOr) then
+						ATAQUE = ATAQUE+1;
+						end
+					local Accuracy = tonumber(self.boxDetalhesDoItem.node.ACP$(num)) or "N/A"
+					local TipoG = tonumber(self.boxDetalhesDoItem.node.tipoP$(num)) or 0;
+					MSG_Color = "[§K14]"
+					if (TipoG == 1) then
+						MSG_Color = "[§K1]"
+						elseif (TipoG == 2) then
+							MSG_Color = "[§K4]"
+						elseif (TipoG == 3) then
+							MSG_Color = "[§K22]"
+						elseif (TipoG == 4) then
+							MSG_Color = "[§K8]"
+						elseif (TipoG == 5) then
+							MSG_Color = "[§K3]"
+						elseif (TipoG == 6) then
+							MSG_Color = "[§K10]"
+						elseif (TipoG == 7) then
+							MSG_Color = "[§K28]"
+						elseif (TipoG == 8) then
+							MSG_Color = "[§K13]"
+						elseif (TipoG == 9) then
+							MSG_Color = "[§K23]"
+						elseif (TipoG == 10) then
+							MSG_Color = "[§K2]"
+						elseif (TipoG == 11) then
+							MSG_Color = "[§K6]"
+						elseif (TipoG == 12) then
+							MSG_Color = "[§K9]"
+						elseif (TipoG == 13) then
+							MSG_Color = "[§K7]"
+						elseif (TipoG == 14) then
+							MSG_Color = "[§K25]"
+						elseif (TipoG == 15) then
+							MSG_Color = "[§K27]"
+						elseif (TipoG == 16) then
+							MSG_Color = "[§K15]"
+						elseif (TipoG == 17) then
+							MSG_Color = "[§K18]"
+						elseif (TipoG == 18) then
+							MSG_Color = "[§K26]"
+						end	
+					local Attribute = tonumber(self.boxDetalhesDoItem.node.classeP$(num)) or 3;
+					if Attribute &gt; 3 then 
+						Attribute = 3; 					
+						end
+					if 1 &gt; Attribute then 
+						Attribute = 1; 					
+						end
+					local MSG_ATT = "";
+					if (Attribute == 3) then
+						MSG_ATT = " [§I http://blob.firecast.com.br/blobs/NVLBUHIV_1536933/other.png]"
+						end	
+					if (ATAQUE > 6) then
+						ATAQUE = 6;
+						end
+					if (-6 > ATAQUE) then
+						ATAQUE = -6;
+						end
+					mesaDoPersonagem.activeChat:rolarDados("1d20 + " .. ATAQUE, "[§K14]Acerto (AC = " .. Accuracy .. ") de " .. MSG_Color .. NomeGolpe .. MSG_ATT .. "[§K14] usado por " .. NomeUser) 					
+					</event>
+			</button>			
+		
+			<button left="488" top="31" width="82" text="Dano" fontSize="11">
+				<event name="onClick">
+					if sheet == nil then return end;
+					local mesaDoPersonagem = Firecast.getMesaDe(sheet)
+					local Tipo1 = tonumber(self.boxDetalhesDoItem.node.campoElem1) or 0;
+					local Tipo2 = tonumber(self.boxDetalhesDoItem.node.campoElem2) or 0;
+					local TipoG = tonumber(self.boxDetalhesDoItem.node.tipoP$(num)) or 0;
+					MSG_Color = "[§K14]"
+					if (TipoG == 1) then
+						MSG_Color = "[§K1]"
+						elseif (TipoG == 2) then
+							MSG_Color = "[§K4]"
+						elseif (TipoG == 3) then
+							MSG_Color = "[§K22]"
+						elseif (TipoG == 4) then
+							MSG_Color = "[§K8]"
+						elseif (TipoG == 5) then
+							MSG_Color = "[§K3]"
+						elseif (TipoG == 6) then
+							MSG_Color = "[§K10]"
+						elseif (TipoG == 7) then
+							MSG_Color = "[§K28]"
+						elseif (TipoG == 8) then
+							MSG_Color = "[§K13]"
+						elseif (TipoG == 9) then
+							MSG_Color = "[§K23]"
+						elseif (TipoG == 10) then
+							MSG_Color = "[§K2]"
+						elseif (TipoG == 11) then
+							MSG_Color = "[§K6]"
+						elseif (TipoG == 12) then
+							MSG_Color = "[§K9]"
+						elseif (TipoG == 13) then
+							MSG_Color = "[§K7]"
+						elseif (TipoG == 14) then
+							MSG_Color = "[§K25]"
+						elseif (TipoG == 15) then
+							MSG_Color = "[§K27]"
+						elseif (TipoG == 16) then
+							MSG_Color = "[§K15]"
+						elseif (TipoG == 17) then
+							MSG_Color = "[§K18]"
+						elseif (TipoG == 18) then
+							MSG_Color = "[§K26]"
+						end						
+					local NomeGolpe = self.boxDetalhesDoItem.node.golpeP$(num) or "Golpe"
+					local NomeUser = self.boxDetalhesDoItem.node.campoNome or "Pokémon"
+					local DamageTable = {"1d6+1","1d6+3","1d6+5","1d8+6","1d8+8","2d6+8","2d6+10","2d8+10","2d10+10","3d8+10","3d10+10","3d12+10","4d10+10","4d10+15","4d10+20",
+									"5d10+20","5d12+25","6d12+25","6d12+30","6d12+35","6d12+40","6d12+45","6d12+50","6d12+55","6d12+60","7d12+65","8d12+70","8d12+80"};
+					local BaseDamage = tonumber(self.boxDetalhesDoItem.node.danoP$(num)) or 1;
+						if ((TipoG == Tipo1) or (TipoG == Tipo2)) then
+							BaseDamage = BaseDamage +2;
+							end
+						if BaseDamage &gt; 28 then 
+							BaseDamage = 28; 					
+							end
+						if 1 &gt; BaseDamage then 
+							BaseDamage = 1; 					
+							end
+					local Attribute = tonumber(self.boxDetalhesDoItem.node.classeP$(num)) or 3;
+						if Attribute &gt; 3 then 
+							Attribute = 3; 					
+							end
+						if 1 &gt; Attribute then 
+							Attribute = 1; 					
+							end
+					local MSG_ATT = "";
+					if (Attribute == 1) then
+						MSG_ATT = " [§I http://blob.firecast.com.br/blobs/EVMJDECV_1536935/phy.png]"
+						end
+					if (Attribute == 2) then
+						MSG_ATT = " [§I http://blob.firecast.com.br/blobs/HFCCDNWD_1536937/spe.png]"
+						end		
+					if (Attribute == 3) then
+						MSG_ATT = " [§I http://blob.firecast.com.br/blobs/NVLBUHIV_1536933/other.png]"
+						end					
+					local ATKFIS = self.boxDetalhesDoItem.node.Ataque_Form1 or 0;
+					local ATKESP = self.boxDetalhesDoItem.node.AtaqueEsp_Form1 or 0;
+					local ATK = {ATKFIS,ATKESP,0};
+					local BonusDamage = self.boxDetalhesDoItem.node.BonDMGP$(num) or 0;
+					if (Attribute == 1 or Attribute == 2) then
+						mesaDoPersonagem.activeChat:rolarDados((DamageTable[BaseDamage] or "1d2") .. "+" .. (ATK[Attribute] or 0) .. "+" .. BonusDamage, "[§K14]Dano de " .. MSG_Color .. NomeGolpe .. "[§K14]" .. MSG_ATT .. MSG_Color .. "[§K14] usado por " .. NomeUser) 
+						end
+					</event>
+			</button>
+			
+			<button left="488" top="55" width="82" text="Crítico" fontSize="11">
+				<event name="onClick">
+					if sheet == nil then return end;
+					local mesaDoPersonagem = Firecast.getMesaDe(sheet)
+					local Tipo1 = tonumber(self.boxDetalhesDoItem.node.campoElem1) or 0;
+					local Tipo2 = tonumber(self.boxDetalhesDoItem.node.campoElem2) or 0;
+					local TipoG = tonumber(self.boxDetalhesDoItem.node.tipoP$(num)) or 0;
+					MSG_Color = "[§K14]"
+					if (TipoG == 1) then
+						MSG_Color = "[§K1]"
+						elseif (TipoG == 2) then
+							MSG_Color = "[§K4]"
+						elseif (TipoG == 3) then
+							MSG_Color = "[§K22]"
+						elseif (TipoG == 4) then
+							MSG_Color = "[§K8]"
+						elseif (TipoG == 5) then
+							MSG_Color = "[§K3]"
+						elseif (TipoG == 6) then
+							MSG_Color = "[§K10]"
+						elseif (TipoG == 7) then
+							MSG_Color = "[§K28]"
+						elseif (TipoG == 8) then
+							MSG_Color = "[§K13]"
+						elseif (TipoG == 9) then
+							MSG_Color = "[§K23]"
+						elseif (TipoG == 10) then
+							MSG_Color = "[§K2]"
+						elseif (TipoG == 11) then
+							MSG_Color = "[§K6]"
+						elseif (TipoG == 12) then
+							MSG_Color = "[§K9]"
+						elseif (TipoG == 13) then
+							MSG_Color = "[§K7]"
+						elseif (TipoG == 14) then
+							MSG_Color = "[§K25]"
+						elseif (TipoG == 15) then
+							MSG_Color = "[§K27]"
+						elseif (TipoG == 16) then
+							MSG_Color = "[§K15]"
+						elseif (TipoG == 17) then
+							MSG_Color = "[§K18]"
+						elseif (TipoG == 18) then
+							MSG_Color = "[§K26]"
+						end	
+					local NomeGolpe = self.boxDetalhesDoItem.node.golpeP$(num) or "Golpe"
+					local NomeUser = self.boxDetalhesDoItem.node.campoNome or "Pokémon"
+					local DamageTable = {"2d6+2","2d6+6","2d6+10","2d8+12","2d8+16","4d6+16","4d6+20","4d8+20","4d10+20","6d8+20","6d10+20","6d12+20","8d10+20","8d10+30","8d10+40",
+									"10d10+40","10d12+50","12d12+50","12d12+60","12d12+70","12d12+80","12d12+90","12d12+100","12d12+110","12d12+120","14d12+130","16d12+140","16d12+160"};
+					local BaseDamage = tonumber(self.boxDetalhesDoItem.node.danoP$(num)) or 1;
+						if ((TipoG == Tipo1) or (TipoG == Tipo2)) then
+							BaseDamage = BaseDamage +2;
+							end
+						if BaseDamage &gt; 28 then 
+							BaseDamage = 28; 					
+							end
+						if 1 &gt; BaseDamage then 
+							BaseDamage = 1; 					
+							end
+					local Attribute = tonumber(self.boxDetalhesDoItem.node.classeP$(num)) or 3;
+						if Attribute &gt; 3 then 
+							Attribute = 3; 					
+							end
+						if 1 &gt; Attribute then 
+							Attribute = 1; 					
+							end
+					local MSG_ATT = "";
+					if (Attribute == 1) then
+						MSG_ATT = " [§I http://blob.firecast.com.br/blobs/EVMJDECV_1536935/phy.png]"
+						end
+					if (Attribute == 2) then
+						MSG_ATT = " [§I http://blob.firecast.com.br/blobs/HFCCDNWD_1536937/spe.png]"
+						end		
+					if (Attribute == 3) then
+						MSG_ATT = " [§I http://blob.firecast.com.br/blobs/NVLBUHIV_1536933/other.png]"
+						end							
+					local ATKFIS = self.boxDetalhesDoItem.node.Ataque_Form1 or 0;
+					local ATKESP = self.boxDetalhesDoItem.node.AtaqueEsp_Form1 or 0;
+					local ATK = {ATKFIS,ATKESP,0};
+					local BonusDamage = self.boxDetalhesDoItem.node.BonDMGP$(num) or 0;
+					if (Attribute == 1 or Attribute == 2) then
+						mesaDoPersonagem.activeChat:rolarDados((DamageTable[BaseDamage] or "1d2") .. "+" .. (ATK[Attribute] or 0) .. "+" .. BonusDamage, "[§K14]Dano CRÍTICO de " .. MSG_Color .. NomeGolpe .. "[§K14]" .. MSG_ATT .. MSG_Color .. "[§K14] usado por " .. NomeUser) 
+						end
+					</event>
+			</button>
+			
+			
+			<textEditor left="575" top="5" width="280" height="50" field="campoEfeitoGolpesP$(num)"/>
+			
+			<label left="575" top="60" width="60" height="25" text="Tipo(C)"/>
+			<edit vertTextAlign="center" left="620" top="60" width="45" height="25" field="tipoContestP$(num)"/>
+			
+			<label left="675" top="60" width="60" height="25" text="Efeito(C)"/>
+			<edit vertTextAlign="center" left="730" top="60" width="125" height="25" field="efeitoContestP$(num)"/>
+			
+		</template>
+			
+		<layout left="0" top="0" width="864" height="953">
+			<rectangle align="client" color="#0000007F" compilerOrder="0"/>
+			<layout left="2" top="2" width="880" height="92" compilerOrder="1">
+				<AtaquePoke num="1"/>
+			</layout>
+			<layout left="2" top="97" width="880" height="92" compilerOrder="1">
+				<AtaquePoke num="2"/>
+			</layout>
+			<layout left="2" top="192" width="880" height="92" compilerOrder="1">
+				<AtaquePoke num="3"/>
+			</layout>
+			<layout left="2" top="288" width="880" height="92" compilerOrder="1">
+				<AtaquePoke num="4"/>
+			</layout>
+			<layout left="2" top="383" width="880" height="92" compilerOrder="1">
+				<AtaquePoke num="5"/>
+			</layout>
+			<layout left="2" top="478" width="880" height="92" compilerOrder="1">
+				<AtaquePoke num="6"/>
+			</layout>
+			
+			<layout left="2" top="644" width="880" height="92" compilerOrder="1">
+				<label left="0" top="0" width="880" height="25" text="Struggle, Guidance, Advanced Connection, Cluster Mind e similares" fontStyle = "Bold" fontSize ="16" horzTextAlign ="center"/>
+			</layout>
+			
+			<layout left="2" top="668" width="880" height="92" compilerOrder="1">
+				<AtaquePoke num="7"/>
+			</layout>
+			<layout left="2" top="763" width="880" height="92" compilerOrder="1">
+				<AtaquePoke num="8"/>
+			</layout>
+			<layout left="2" top="858" width="880" height="92" compilerOrder="1">
+				<AtaquePoke num="9"/>
+			</layout>
+		</layout>
+			
+	</scrollBox>
+</form>

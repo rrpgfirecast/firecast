@@ -1,0 +1,1380 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<form formType="sheetTemplate" dataType="HITO_RPGPOKEMON" title="Hitoshura - Ficha de Personagem (RPG Pokémon)" name="frmHITORPGPOKE2" theme="dark" padding="{left=4, top=4, right=4, bottom=4}">
+
+<scrollBox align="client">
+    <tabControl left="20" top="20" height="650" width="1100">
+  <tab title="Geral">
+			<layout left="000" top="000" height="650" width="1100">
+				<image left="000" top="000" height="650" width="1100" src="/img/Pokeball.jpg" style="autoFIT" />
+            </layout>
+			
+			<layout left="10" top="010" height="260" width="800">
+                <label left="000" top="000" height="20" width="80" text="Nome" autoSize="true" fontStyle="bold"/>
+                <edit left="085" top="000" height="20" width="500" field="baseName" horzTextAlign="center" />
+                <label left="000" top="025" height="20" width="80" text="Caminho" autoSize="true" fontStyle="bold"/>
+                <edit left="085" top="025" height="20" width="500" field="baseCaminho" horzTextAlign="center" />	
+                <label left="000" top="50" height="20" width="80" text="Cidade Natal" autoSize="true" fontStyle="bold"/>
+                <edit left="085" top="50" height="20" width="200" field="baseCidade" horzTextAlign="center" />
+                <label left="300" top="50" height="20" width="80" text="Estilo" autoSize="true" fontStyle="bold"/>
+                <edit left="385" top="50" height="20" width="200" field="baseESTILO" horzTextAlign="center" />			
+				<label left="000" top="75" height="20" width="80" text="Idade" autoSize="true" fontStyle="bold"/>
+                <edit left="085" top="75" height="20" width="200" field="baseIdade" horzTextAlign="center" />
+                <label left="300" top="75" height="20" width="80" text="Gênero" autoSize="true" fontStyle="bold"/>
+                <edit left="385" top="75" height="20" width="200" field="baseGenero" horzTextAlign="center" />
+                <label left="000" top="100" height="20" width="80" text="Altura" autoSize="true" fontStyle="bold"/>
+                <edit left="085" top="100" height="20" width="200" field="baseAltura" horzTextAlign="center" />
+                <label left="300" top="100" height="20" width="80" text="Peso" autoSize="true" fontStyle="bold"/>
+                <edit left="385" top="100" height="20" width="200" field="basePeso" horzTextAlign="center" />
+                <label left="000" top="125" height="20" width="80" text="Aniversário" autoSize="true" fontStyle="bold"/>
+                <edit left="085" top="125" height="20" width="200" field="baseNIVER" horzTextAlign="center" />
+                <label left="300" top="125" height="20" width="80" text="Dinheiro" autoSize="true" fontStyle="bold"/>
+                <edit left="385" top="125" height="20" width="200" field="baseMONY" horzTextAlign="center" />					
+                <label left="000" top="150" height="20" width="80" text="Nível" autoSize="true" fontStyle="bold"/>
+                <edit left="085" top="150" height="20" width="200" field="basLV" horzTextAlign="center" type="number"/>
+                <label left="300" top="150" height="20" width="80" text="EXP" autoSize="true" fontStyle="bold"/>
+                <edit left="385" top="150" height="20" width="90" field="baseEXPAtual" horzTextAlign="center" type="number"/>
+                <label left="485" top="150" height="20" width="16" text="/" autoSize="true" />
+                <edit left="495" top="150" height="20" width="90" field="baseEXPMAX" horzTextAlign="center" type="number"/>								
+			
+            </layout>
+
+			<layout left="620" top="10" height="512" width="512">
+                <rectangle left="000" top="000" width="360" height="360" color="Red" strokeColor="black" strokeSize="3" />
+				<rectangle left="005" top="005" width="350" height="350" color="Black" strokeColor="black" strokeSize="4" />
+                <image left="005" top="005" width="350" height="350" field="basPERS" editable="true" style="proportional" />
+            </layout>
+
+<template name="Atributo">
+	<button left="00" top="$(Top)" height="20" width="120" text="$(Attrib)" horzTextAlign="center">
+		<event name="onClick">
+			if sheet == nil then return end;
+			local mesaDoPersonagem = Firecast.getMesaDe(sheet);
+			local NOMATRIBUTO = "$(Attrib)" or 0;
+			local VALATRIBUTO = sheet.$(Field) or 0;
+			local NOMEPERS = sheet.baseName or "Nomeie seu personagem";
+			local ROLAGEM = Firecast.interpretarRolagem("1d20+" .. VALATRIBUTO)
+			mesaDoPersonagem.chat:rolarDados(ROLAGEM, "Teste de " .. NOMATRIBUTO .. " usado por " .. NOMEPERS); 
+		</event>
+	</button>
+    <radioButton top="$(Top)" left="125" width="20" height="20" groupName="$(Grupo)" field="$(Field)" fieldValue="1"/>                                
+    <radioButton top="$(Top)" left="150" width="20" height="20" groupName="$(Grupo)" field="$(Field)" fieldValue="2"/>                                 
+    <radioButton top="$(Top)" left="175" width="20" height="20" groupName="$(Grupo)" field="$(Field)" fieldValue="3"/>
+    <radioButton top="$(Top)" left="200" width="20" height="20" groupName="$(Grupo)" field="$(Field)" fieldValue="4"/>
+    <radioButton top="$(Top)" left="225" width="20" height="20" groupName="$(Grupo)" field="$(Field)" fieldValue="5"/>
+    <radioButton top="$(Top)" left="250" width="20" height="20" groupName="$(Grupo)" field="$(Field)" fieldValue="6"/>                                
+    <radioButton top="$(Top)" left="275" width="20" height="20" groupName="$(Grupo)" field="$(Field)" fieldValue="7"/>                                 
+    <radioButton top="$(Top)" left="300" width="20" height="20" groupName="$(Grupo)" field="$(Field)" fieldValue="8"/>
+    <radioButton top="$(Top)" left="325" width="20" height="20" groupName="$(Grupo)" field="$(Field)" fieldValue="9"/>
+    <radioButton top="$(Top)" left="350" width="20" height="20" groupName="$(Grupo)" field="$(Field)" fieldValue="10"/>
+    <dataLink field="$(Field)" defaultValue="1" />
+</template>
+
+		<layout left="130" top="190" height="320" width="420">
+			<label left="000" top="000" height="20" width="120" text="Atributo" autoSize="true" fontColor="White" fontSize="14" horzTextAlign="center" fontStyle="bold"/>
+			<label top="00" left="130" width="20" height="20"  text="1" autoSize="true"/>
+			<label top="00" left="155" width="20" height="20"  text="2" autoSize="true"/>
+			<label top="00" left="180" width="20" height="20"  text="3" autoSize="true"/>
+			<label top="00" left="205" width="20" height="20"  text="4" autoSize="true"/>
+			<label top="00" left="230" width="20" height="20"  text="5" autoSize="true"/>
+			<label top="00" left="255" width="20" height="20"  text="6" autoSize="true"/>
+			<label top="00" left="280" width="20" height="20"  text="7" autoSize="true"/>
+			<label top="00" left="305" width="20" height="20"  text="8" autoSize="true"/>
+			<label top="00" left="330" width="20" height="20"  text="9" autoSize="true"/>
+			<label top="00" left="355" width="20" height="20"  text="10" autoSize="true"/>
+			<Atributo Top ="25" Attrib ="Força" Grupo="groupFOR" Field="fieldFOR"/> 
+			<Atributo Top ="50" Attrib ="Destreza" Grupo="groupDES" Field="fieldDES"/>
+			<Atributo Top ="75" Attrib ="Vigor" Grupo="groupVIG" Field="fieldVIG"/>
+			<Atributo Top ="110" Attrib ="Carisma" Grupo="groupCAR" Field="fieldCAR"/>
+			<Atributo Top ="135" Attrib ="Manipulação" Grupo="groupMAN" Field="fieldMAN"/>
+			<Atributo Top ="160" Attrib ="Aparência" Grupo="groupAPA" Field="fieldAPA"/>
+			<Atributo Top ="195" Attrib ="Percepção" Grupo="groupPER" Field="fieldPER"/>
+			<Atributo Top ="220" Attrib ="Inteligência" Grupo="groupINT" Field="fieldINT"/>
+			<Atributo Top ="245" Attrib ="Raciocínio" Grupo="groupRAC" Field="fieldRAC"/>
+		</layout>	
+
+<template name="Insignea">	
+		<rectangle left="000" top="$(Top)" width="40" height="40" color="Red" strokeColor="black" strokeSize="4" />
+        <rectangle left="005" top="$(Top2)" width="30" height="30" color="Black" strokeColor="black" strokeSize="4" />
+        <image left="005" top="$(Top)" width="30" height="30" field="basBADGE1$(num)" editable="true" style="proportional" />
+</template>	
+
+			<layout left="990" top="13" height="800" width="100">
+				<Insignea num="1" Top="00" Top2="05"/>
+				<Insignea num="2" Top="45" Top2="50"/>
+				<Insignea num="3" Top="90" Top2="95"/>
+				<Insignea num="4" Top="135" Top2="140"/>
+				<Insignea num="5" Top="180" Top2="185"/>
+				<Insignea num="6" Top="225" Top2="230"/>
+				<Insignea num="7" Top="270" Top2="275"/>
+				<Insignea num="8" Top="315" Top2="320"/>
+            </layout>	
+			
+			<layout left="1040" top="13" height="800" width="100">
+				<Insignea num="9" Top="00" Top2="05"/>
+				<Insignea num="10" Top="45" Top2="50"/>
+				<Insignea num="11" Top="90" Top2="95"/>
+				<Insignea num="12" Top="135" Top2="140"/>
+				<Insignea num="13" Top="180" Top2="185"/>
+				<Insignea num="14" Top="225" Top2="230"/>
+				<Insignea num="15" Top="270" Top2="275"/>
+				<Insignea num="16" Top="315" Top2="320"/>
+            </layout>	
+
+
+			<layout left="80" top="475" height="650" width="1100">
+				<image left="000" top="000" height="36" width="36" field="ImagemSlot1" style="autoFIT" enabled="false"/>
+				<edit left="040" top="000" height="36" width="120" field="NomeSlot1" horzTextAlign="center" enabled="false"/>
+				<edit left="165" top="000" height="36" width="30" field="LevelSlot1" horzTextAlign="center" enabled="false"/>
+				<image left="000" top="040" height="36" width="36" field="ImagemSlot2" style="autoFIT" enabled="false"/>
+				<edit left="040" top="040" height="36" width="120" field="NomeSlot2" horzTextAlign="center" enabled="false"/>
+				<edit left="165" top="040" height="36" width="30" field="LevelSlot2" horzTextAlign="center" enabled="false"/>
+				<image left="000" top="080" height="36" width="36" field="ImagemSlot3" style="autoFIT" enabled="false"/>
+				<edit left="040" top="080" height="36" width="120" field="NomeSlot3" horzTextAlign="center" enabled="false"/>
+				<edit left="165" top="080" height="36" width="30" field="LevelSlot3" horzTextAlign="center" enabled="false"/>
+            </layout>		
+			<layout left="310" top="475" height="650" width="1100">	
+				<image left="000" top="000" height="36" width="36" field="ImagemSlot4" style="autoFIT" enabled="false"/>
+				<edit left="040" top="000" height="36" width="120" field="NomeSlot4" horzTextAlign="center" enabled="false"/>
+				<edit left="165" top="000" height="36" width="30" field="LevelSlot4" horzTextAlign="center" enabled="false"/>
+				<image left="000" top="040" height="36" width="36" field="ImagemSlot5" style="autoFIT" enabled="false"/>
+				<edit left="040" top="040" height="36" width="120" field="NomeSlot5" horzTextAlign="center" enabled="false"/>
+				<edit left="165" top="040" height="36" width="30" field="LevelSlot5" horzTextAlign="center" enabled="false"/>
+				<image left="000" top="080" height="36" width="36" field="ImagemSlot6" style="autoFIT" enabled="false"/>
+				<edit left="040" top="080" height="36" width="120" field="NomeSlot6" horzTextAlign="center" enabled="false"/>
+				<edit left="165" top="080" height="36" width="30" field="LevelSlot6" horzTextAlign="center" enabled="false"/>	
+            </layout>	
+
+
+		<layout left="590" top="400" height="320" width="420">
+			<label left="000" top="000" height="20" width="120" text="Vitalidade" autoSize="true" fontColor="White" fontSize="14" horzTextAlign="center" fontStyle="bold"/>
+			<label top="00" left="130" width="20" height="20"  text="0" autoSize="true"/>
+			<label top="00" left="155" width="20" height="20"  text="1" autoSize="true"/>
+			<label top="00" left="180" width="20" height="20"  text="2" autoSize="true"/>
+			<label top="00" left="205" width="20" height="20"  text="3" autoSize="true"/>
+			<label top="00" left="230" width="20" height="20"  text="4" autoSize="true"/>
+			<label top="00" left="255" width="20" height="20"  text="5" autoSize="true"/>
+			<label top="00" left="280" width="20" height="20"  text="6" autoSize="true"/>
+			<label top="00" left="305" width="20" height="20"  text="7" autoSize="true"/>
+			<label top="00" left="330" width="20" height="20"  text="8" autoSize="true"/>
+			<label top="00" left="355" width="20" height="20"  text="9" autoSize="true"/>
+			<label top="00" left="375" width="20" height="20"  text="10" autoSize="true"/>
+			<Antecedente Top ="25" NomAntec ="Escoriado(OK)" Grupo="groupESCO" Field="fieldESCO"/> 
+			<Antecedente Top ="50" NomAntec ="Machucado(-1)" Grupo="groupMACHU" Field="fieldMACHU"/>
+			<Antecedente Top ="75" NomAntec ="Espancado(-2)" Grupo="groupESPA" Field="fieldESPA"/>
+			<Antecedente Top ="100" NomAntec ="Ferido(-3)" Grupo="groupFER1" Field="fieldFER1"/>
+			<Antecedente Top ="125" NomAntec ="Ferido G.(-3)" Grupo="groupFER2" Field="fieldFER2"/>
+			<Antecedente Top ="150" NomAntec ="Incapacitado" Grupo="groupINCA" Field="fieldINCA"/>
+		</layout>	
+
+
+			
+			
+			
+		</tab>
+
+		<tab title="Pokemons">
+			<layout left="000" top="000" height="650" width="1100">
+				<image left="000" top="000" height="650" width="1100" src="/img/Pokeball.jpg" style="autoFIT" />
+            </layout>
+		
+			<scrollBox align="client">
+        <layout align="top" height="30" margins="{bottom=4}">
+            <button text="Novo Pokémon" width="150" align="left">
+                <event name="onClick">                       
+                    self.rclListaDosItens:append();
+                </event>
+            </button>
+            <button text="Organizar" width="150" align="left">
+                <event name="onClick">
+                    self.rclListaDosItens:sort();
+                </event>
+            </button>
+        </layout>  
+       
+        <recordList name="rclListaDosItens" field="campoDosItens" templateForm="frmItemDaLista" align="client" selectable="true">
+            <event name="onSelect">              
+                local node = self.rclListaDosItens.selectedNode;
+                self.boxDetalhesDoItem.node = node;                    
+                self.boxDetalhesDoItem.visible = (node ~= nil);
+            </event>
+            <event name="onCompare">
+		if (nodeA.active and not nodeB.active) then
+			return -1;
+		elseif (not nodeA.active and nodeB.active) then
+			return 1;
+		else
+			return Utils.compareStringPtBr(nodeA.campoNome, nodeB.campoNome);
+		end;
+            </event>
+        </recordList>      
+ 
+        <dataScopeBox name="boxDetalhesDoItem" visible="false" align="right" width="900" margins="{left=4, right=8}">  
+ 
+    <tabControl left="20" top="20" height="560" width="1000">
+  <tab title="Geral">
+ 
+		<rectangle align="top" color="black" xradius="10" yradius="10" height="880" padding="{top=3, left=3, right=3, bottom=3}">
+
+            <layout left="005" top="10" width="800" height="560">
+				<rectangle left="00" top="00" width="30" height="30" color="gray"/>
+                <image left="00" top="00" width="30" height="30" editable="true" field="campoPokebola"/>   
+				<dataLink field="campoPokebola" defaultValue="https://cdn.bulbagarden.net/upload/9/93/Bag_Pok%C3%A9_Ball_Sprite.png" />
+				<rectangle left="35" top="00" width="160" height="160" color="gray"/>
+                <image left="35" top="00" width="160" height="160" editable="true" field="campoPokemon"/>
+				<checkBox left="00" top="35" width="30" height="30" field="active"/>
+            </layout>    
+
+			<layout left="210" top="10" width="800" height="800">
+                    <label left="0" top="00" width="100" height="20" text="Número:" autoSize="true" fontStyle="bold"/>
+                    <edit left="105" top="00" width="35" height="20"  field="campoNumero" type="number"/>
+                    <label left="160" top="00" width="45" height="20" text="IC:" autoSize="true" fontStyle="bold"/>
+                    <edit left="195" top="00" width="50" height="20"  field="campoIC" type="number"/>
+                    <label left="0" top="25" width="100" height="20" text="Espécie:" autoSize="true" fontStyle="bold"/>
+                    <edit left="105" top="25" width="140" height="20"  field="campoNome"/>	
+					<label left="0" top="50" width="100" height="20" text="Apelido:" autoSize="true" fontStyle="bold"/>
+                    <edit left="105" top="50" width="140" height="20"  field="campoApelido"/>	
+					<label left="0" top="75" width="100" height="20" text="Tipo(s):" autoSize="true" fontStyle="bold"/>
+                    <edit left="105" top="75" width="140" height="20"  field="campoTipos"/>	
+					<label left="0" top="100" width="100" height="20" text="Gênero:" autoSize="true" fontStyle="bold"/>
+                    <edit left="105" top="100" width="140" height="20"  field="campoGenero"/>	
+					<label left="0" top="125" width="100" height="20" text="Natureza:" autoSize="true" fontStyle="bold"/>
+                    <edit left="105" top="125" width="140" height="20"  field="campoNatureza"/>	
+					<label left="0" top="150" width="100" height="20" text="Peculiaridade:" autoSize="true" fontStyle="bold"/>
+                    <edit left="105" top="150" width="140" height="20"  field="campoPECUL"/>	
+            </layout> 					
+			
+			<layout left="10" top="190" width="1000" height="800">
+                    <label left="0" top="00" width="100" height="20" text="Habilidade (1):" autoSize="true" fontStyle="bold"/>
+                    <edit left="105" top="00" width="120" height="20"  field="campoHab1NomA"/>
+					<textEditor left="230" top="00" width="630" height="20" field="campoHab1DescA"/>
+
+                    <label left="0" top="25" width="100" height="20" text="Habilidade (2):" autoSize="true" fontStyle="bold"/>
+                    <edit left="105" top="25" width="120" height="20"  field="campoHab2NomA"/>
+					<textEditor left="230" top="25" width="630" height="20" field="campoHab2DescA"/>
+
+                    <label left="0" top="50" width="100" height="20" text="Item:" autoSize="true" fontStyle="bold"/>
+                    <edit left="105" top="50" width="120" height="20"  field="campoItemNomA"/>
+					<textEditor left="230" top="50" width="630" height="20" field="campoItemDescA"/>
+
+            </layout> 				
+
+    <layout left="10" top="270" height="600" width="800">
+		<button left="000" top="00" height="20" width="80" text="B. Ataque" horzTextAlign="leading" fontStyle="bold">
+			<event name="onClick">
+			if sheet == nil then return end;
+			local mesaDoPersonagem = Firecast.getMesaDe(sheet);
+			local NOMATRIBUTO = "Bônus de Ataque";
+			local NOMEPERS = self.boxDetalhesDoItem.node.campoNome or "Pokémon";
+			local VALATRIBUTO = self.boxDetalhesDoItem.node.TAtk_poke or 0;
+			local ROLAGEM = Firecast.interpretarRolagem("1d20+" .. VALATRIBUTO)
+			mesaDoPersonagem.chat:rolarDados(ROLAGEM, "Teste de " .. NOMATRIBUTO .. " de " .. NOMEPERS); 				
+			</event>
+		</button>
+		<edit left="85" top="00" height="20" width="30" field="TAtk_poke" horzTextAlign="center" type ="number"/>
+		
+		<button left="000" top="25" height="20" width="80" text="B. Defesa" horzTextAlign="leading" fontStyle="bold">
+			<event name="onClick">
+			if sheet == nil then return end;
+			local mesaDoPersonagem = Firecast.getMesaDe(sheet);
+			local NOMATRIBUTO = "Bônus de Defesa";
+			local VALATRIBUTO = self.boxDetalhesDoItem.node.TDef_poke or 0;
+			local NOMEPERS = self.boxDetalhesDoItem.node.campoNome or "Pokémon";
+			local ROLAGEM = Firecast.interpretarRolagem("1d20+" .. VALATRIBUTO)
+			mesaDoPersonagem.chat:rolarDados(ROLAGEM, "Teste de " .. NOMATRIBUTO .. " de " .. NOMEPERS); 
+			</event>
+		</button>
+		<edit left="85" top="25" height="20" width="30" field="TDef_poke" horzTextAlign="center" type ="number"/>
+		<label left="000" top="50" height="20" width="90" text="Poder" autoSize="true" fontStyle="bold"/>
+		<edit left="85" top="50" height="20" width="30" field="TPod_poke" horzTextAlign="center" type ="number"/>		
+
+	</layout>
+
+    <layout left="140" top="270" height="600" width="800">		
+		<button left="000" top="00" height="20" width="80" text="Absorção" horzTextAlign="leading" fontStyle="bold">
+			<event name="onClick">
+			if sheet == nil then return end;
+			local mesaDoPersonagem = Firecast.getMesaDe(sheet);
+			local NOMATRIBUTO = "Absorção";
+			local VALATRIBUTO = self.boxDetalhesDoItem.node.TAbs_poke or 0;
+			local NOMEPERS = self.boxDetalhesDoItem.node.campoNome or "Pokémon";
+			local ROLAGEM = Firecast.interpretarRolagem(VALATRIBUTO .. "d4")
+			mesaDoPersonagem.chat:rolarDados(ROLAGEM, "Teste de " .. NOMATRIBUTO .. " de " .. NOMEPERS); 
+			</event>
+		</button>
+		<edit left="85" top="00" height="20" width="30" field="TAbs_poke" horzTextAlign="center" type ="number"/>
+
+		<button left="000" top="25" height="20" width="80" text="Iniciativa" horzTextAlign="leading" fontStyle="bold">
+			<event name="onClick">
+			if sheet == nil then return end;
+			local mesaDoPersonagem = Firecast.getMesaDe(sheet);
+			local NOMATRIBUTO = "Iniciativa";
+			local VALATRIBUTO = self.boxDetalhesDoItem.node.TIni_poke or 0;
+			local NOMEPERS = self.boxDetalhesDoItem.node.campoNome or "Pokémon";
+			local ROLAGEM = Firecast.interpretarRolagem("1d20+" .. VALATRIBUTO)
+			mesaDoPersonagem.chat:rolarDados(ROLAGEM, "Teste de " .. NOMATRIBUTO .. " de " .. NOMEPERS); 
+			</event>
+		</button>
+		<edit left="85" top="25" height="20" width="30" field="TIni_poke" horzTextAlign="center" type ="number"/>
+		
+		<label left="000" top="50" height="20" width="80" text="B.Dano" autoSize="true" fontStyle="bold"/>
+		<edit left="85" top="50" height="20" width="30" field="TDan_poke" horzTextAlign="center" type ="number"/>
+                                    </layout>
+
+                                    <layout left="280" top="270" width="900" height="800">
+                                        <label left="0" top="00" width="100" height="20" text="Nível Total:" autoSize="true" horzTextAlign="center" fontStyle="bold" />
+                                        <edit left="105" top="0" width="40" height="20" field="NTo_poke" type="number">
+                                            <event name="onChange">
+											if self.boxDetalhesDoItem.node == nil then return end;
+													self.boxDetalhesDoItem.node.nextLVEXP = 15*(self.boxDetalhesDoItem.node.NTo_poke or 1);
+											</event>
+                                        </edit>
+                                        <label left="0" top="25" width="100" height="20" text="Nível Efetivo:" autoSize="true" horzTextAlign="center" fontStyle="bold" />
+                                        <edit left="105" top="25" width="40" height="20" field="NEf_poke" type="number"/>
+                                        <label left="150" top="00" width="100" height="20" text="Experiência:" autoSize="true" horzTextAlign="center" fontStyle="bold"/>
+										<edit left="250" top="00" width="45" height="20" field="campoExpAt" horzTextAlign="center" type="number"/>
+										<label left="297" top="00" height="20" width="8" text="/" autoSize="true" />									
+										<edit left="305" top="00" height="20" width="45" field="nextLVEXP" horzTextAlign="center" enabled="false"/>
+
+                                        <label left="0" top="50" width="100" height="20" text="Lealdade:" autoSize="true" horzTextAlign="center" fontStyle="bold"/>
+                                        <edit left="105" top="50" width="40" height="20" field="campoLealdade" type="number"/>
+
+										
+										<label left="150" top="25" width="100" height="20"  text="Vida" autoSize="true" horzTextAlign="center" fontStyle="bold"/>
+										<edit left="250" top="25" height="20" width="45" field="baseHPAtual" horzTextAlign="center" type="number"/>
+										<label left="297" top="25" height="20" width="8" text="/" autoSize="true" />
+										<edit left="305" top="25" height="20" width="45" field="TVid_poke" horzTextAlign="center" enabled="false"/>
+
+										<label left="150" top="50" width="100" height="20"  text="Disposição" autoSize="true" horzTextAlign="center" fontStyle="bold"/>
+										<edit left="250" top="50" height="20" width="45" field="baseDisAtual" horzTextAlign="center" type="number"/>
+										<label left="297" top="50" height="20" width="8" text="/" autoSize="true" />
+										<edit left="305" top="50" height="20" width="45" field="TDis_poke" horzTextAlign="center" enabled="false"/>
+                                    </layout>
+		
+
+
+								<layout left="655" top="270" height="320" width="420">
+									<label left="85" top="00" width="60" height="20" text="Base:" autoSize="true" fontStyle="bold"/>
+									<label left="150" top="00" width="60" height="20" text="Total:" autoSize="true" fontStyle="bold"/>
+									<label left="10" top="25" width="80" height="20" text="Altura(m):" autoSize="true" fontStyle="bold"/>
+									<edit left="085" top="25" width="60" height="20" field="campoAlturaBase" type="float">
+									        <event name="onChange">
+											if self.boxDetalhesDoItem.node == nil then return end;
+												local Altura = self.boxDetalhesDoItem.node.campoAlturaBase or 0;
+												local NivelEfetivo = self.boxDetalhesDoItem.node.NEf_poke or 0
+												self.boxDetalhesDoItem.node.campoAlturaTot = Altura + 0.001*(NivelEfetivo);
+											</event> 
+									</edit>
+									<edit left="150" top="25" width="60" height="20" field="campoAlturaTot" enabled="false"/>
+									<label left="10" top="50" width="80" height="20" text="Peso(kg):" autoSize="true" fontStyle="bold"/>
+									<edit left="85" top="50" width="60" height="20" field="campoPesoBase" type="float">
+									        <event name="onChange">
+											if self.boxDetalhesDoItem.node == nil then return end;
+												local Peso = self.boxDetalhesDoItem.node.campoPesoBase or 0;
+												local NivelEfetivo = self.boxDetalhesDoItem.node.NEf_poke or 0
+												self.boxDetalhesDoItem.node.campoPesoTot = Peso + 0.1*(NivelEfetivo);
+											</event> 
+									</edit>
+									<edit left="150" top="50" width="60" height="20" field="campoPesoTot" enabled="false"/>
+									</layout>    
+
+<template name="Golpe">
+	<button left="380" top="$(Top)" height="20" width="40" text="Usar" horzTextAlign="leading">
+		<event name="onClick">
+			if sheet == nil then return end;
+			local mesaDoPersonagem = Firecast.getMesaDe(sheet);
+			local NOMSKILL = self.boxDetalhesDoItem.node.Nome$(num) or "";
+			local CUSTO = self.boxDetalhesDoItem.node.Custo$(num) or 0;
+			local NOMEPERS = sheet.campoNome or "Pokemon";	
+			local VAUX1 = (self.boxDetalhesDoItem.node.Dano$(num) or "1d2")
+			local ROLAGEMDAM = Firecast.interpretarRolagem(VAUX1)
+			local VALATRIBUTO = self.boxDetalhesDoItem.node.TAtk_poke or 0;
+			local ROLAGEMATK = Firecast.interpretarRolagem("1d20+" .. VALATRIBUTO)
+			mesaDoPersonagem.chat:rolarDados(ROLAGEMATK, "Teste de Ataque para " .. NOMSKILL .. " usado por " .. NOMEPERS .. "; Custo: " .. CUSTO); 
+			mesaDoPersonagem.chat:rolarDados(ROLAGEMDAM, "Dano do Golpe " .. NOMSKILL .. " usado por " .. NOMEPERS); 
+		</event>
+	</button>
+	<edit left="000" top="$(Top)" height="20" width="160" field="Nome$(num)" horzTextAlign="center" />
+	<edit left="165" top="$(Top)" height="20" width="80" field="Tipo$(num)" horzTextAlign="center" />
+	<edit left="250" top="$(Top)" height="20" width="40" field="Custo$(num)" horzTextAlign="center" />
+	<edit left="295" top="$(Top)" height="20" width="80" field="Dano$(num)" horzTextAlign="center" />  
+	<textEditor left="425" top="$(Top)" width="420" height="36" field="Efeito$(num)"/>	
+</template>
+
+	<layout left="10" top="345" height="600" width="1000">
+		<label left="000" top="000" height="20" width="160" text="Golpe" autoSize="true" fontColor="White" fontSize="14" horzTextAlign="center"/>
+		<label left="165" top="000" height="20" width="80" text="Tipo" autoSize="true" fontColor="White" fontSize="14" horzTextAlign="center"/>
+		<label left="250" top="000" height="20" width="40" text="Custo" autoSize="true" fontColor="White" fontSize="14" horzTextAlign="center"/>
+		<label left="295" top="000" height="20" width="80" text="Dano" autoSize="true" fontColor="White" fontSize="14" horzTextAlign="center"/>
+		<label left="425" top="000" height="20" width="420" text="Efeito" autoSize="true" fontColor="White" fontSize="14" horzTextAlign="center"/>
+		<Golpe Top ="25"  num="1"/>
+		<Golpe Top ="68"  num="2"/>
+		<Golpe Top ="111" num="3"/>
+		<Golpe Top ="154" num="4"/>
+	</layout>
+	
+	<layout left="470" top="30" height="600" width="1000">
+		<image left="000" top="000" width="40" height="40" src="/img/normal2.gif" />
+		<image left="045" top="000" width="40" height="40" src="/img/fire2.gif" />
+		<image left="090" top="000" width="40" height="40" src="/img/water2.gif" />
+		<image left="135" top="000" width="40" height="40" src="/img/electric2.gif" />
+		<image left="180" top="000" width="40" height="40" src="/img/grass2.gif" />
+		<image left="225" top="000" width="40" height="40" src="/img/ice2.gif" />
+		<image left="270" top="000" width="40" height="40" src="/img/fighting2.gif" />
+		<image left="315" top="000" width="40" height="40" src="/img/poison2.gif" />
+		<image left="360" top="000" width="40" height="40" src="/img/ground2.gif" />
+		<edit left="000" top="045" height="20" width="40" field="Norm_Poke1" horzTextAlign="center" />
+		<edit left="045" top="045" height="20" width="40" field="Fire_Poke1" horzTextAlign="center" />	
+		<edit left="090" top="045" height="20" width="40" field="Wate_Poke1" horzTextAlign="center" />
+		<edit left="135" top="045" height="20" width="40" field="Elec_Poke1" horzTextAlign="center" />
+		<edit left="180" top="045" height="20" width="40" field="Gras_Poke1" horzTextAlign="center" />
+		<edit left="225" top="045" height="20" width="40" field="Ice_Poke1" horzTextAlign="center" />
+		<edit left="270" top="045" height="20" width="40" field="Figh_Poke1" horzTextAlign="center" />
+		<edit left="315" top="045" height="20" width="40" field="Pois_Poke1" horzTextAlign="center" />
+		<edit left="360" top="045" height="20" width="40" field="Grou_Poke1" horzTextAlign="center" />
+    </layout>	
+
+	<layout left="065" top="100" height="600" width="1000">		
+		<image left="405" top="000" width="40" height="40" src="/img/flying2.gif" />
+		<image left="450" top="000" width="40" height="40" src="/img/psychic2.gif" />
+		<image left="495" top="000" width="40" height="40" src="/img/bug2.gif" />
+		<image left="540" top="000" width="40" height="40" src="/img/rock2.gif" />
+		<image left="585" top="000" width="40" height="40" src="/img/ghost2.gif" />
+		<image left="630" top="000" width="40" height="40" src="/img/dragon2.gif" />
+		<image left="675" top="000" width="40" height="40" src="/img/dark2.gif" />
+		<image left="720" top="000" width="40" height="40" src="/img/steel2.gif" />
+		<image left="765" top="000" width="40" height="40" src="/img/fairy2.gif" />
+		<edit left="405" top="045" height="20" width="40" field="Flyi_Poke1" horzTextAlign="center" />
+		<edit left="450" top="045" height="20" width="40" field="Psyc_Poke1" horzTextAlign="center" />
+		<edit left="495" top="045" height="20" width="40" field="Bug_Poke1" horzTextAlign="center" />
+		<edit left="540" top="045" height="20" width="40" field="Rock_Poke1" horzTextAlign="center" />
+		<edit left="585" top="045" height="20" width="40" field="Ghos_Poke1" horzTextAlign="center" />
+		<edit left="630" top="045" height="20" width="40" field="Drag_Poke1" horzTextAlign="center" />
+		<edit left="675" top="045" height="20" width="40" field="Dark_Poke1" horzTextAlign="center" />
+		<edit left="720" top="045" height="20" width="40" field="Stee_Poke1" horzTextAlign="center" />
+		<edit left="765" top="045" height="20" width="40" field="Fair_Poke1" horzTextAlign="center" />
+    </layout>	
+
+
+		</rectangle>
+		</tab>
+		
+        <tab title="Atributos">
+		
+		<rectangle align="top" color="black" xradius="10" yradius="10" height="880" padding="{top=3, left=3, right=3, bottom=3}">  
+		
+	<layout left="10" top="10" height="600" width="800">
+		<label left="000" top="000" height="20" width="90" text="Atributo" autoSize="true" fontStyle="bold"/>
+		<label left="095" top="000" height="20" width="50" text="Base" autoSize="true" fontStyle="bold"/>
+		<label left="140" top="000" height="20" width="50" text="Prog." autoSize="true" fontStyle="bold"/>
+		<label left="185" top="000" height="20" width="50" text="Total" autoSize="true" fontStyle="bold"/>
+		<label left="000" top="025" height="20" width="90" text="Energia" autoSize="true" fontStyle="bold" />
+		<edit left="095" top="025" height="20" width="30" field="BEn_poke" horzTextAlign="center"   type ="number"/>
+		<edit left="140" top="025" height="20" width="30" field="PEn_poke" horzTextAlign="center"   type ="number"/>
+		<edit left="185" top="025" height="20" width="30" field="TEn_poke" horzTextAlign="center" type ="number"/>
+		<label left="000" top="050" height="20" width="90" text="Ataque" autoSize="true" fontStyle="bold"/>
+		<edit left="095" top="050" height="20" width="30" field="BAt_poke" horzTextAlign="center"   type ="number"/>
+		<edit left="140" top="050" height="20" width="30" field="PAt_poke" horzTextAlign="center"   type ="number"/>
+		<edit left="185" top="050" height="20" width="30" field="TAt_poke" horzTextAlign="center" type ="number"/>			
+		<label left="000" top="075" height="20" width="90" text="Defesa" autoSize="true" fontStyle="bold"/>		
+		<edit left="095" top="075" height="20" width="30" field="BDf_poke" horzTextAlign="center"   type ="number"/>
+		<edit left="140" top="075" height="20" width="30" field="PDf_poke" horzTextAlign="center"   type ="number"/>
+		<edit left="185" top="075" height="20" width="30" field="TDf_poke" horzTextAlign="center" type ="number"/>	
+		<label left="000" top="100" height="20" width="90" text="Velocidade" autoSize="true" fontStyle="bold"/>
+		<edit left="095" top="100" height="20" width="30" field="BVl_poke" horzTextAlign="center"   type ="number"/>
+		<edit left="140" top="100" height="20" width="30" field="PVl_poke" horzTextAlign="center"   type ="number"/>
+		<edit left="185" top="100" height="20" width="30" field="TVl_poke" horzTextAlign="center" type ="number"/>
+		<label left="000" top="125" height="20" width="90" text="Especial" autoSize="true" fontStyle="bold"/>	
+		<edit left="095" top="125" height="20" width="30" field="BEs_poke" horzTextAlign="center"   type ="number"/>
+		<edit left="140" top="125" height="20" width="30" field="PEs_poke" horzTextAlign="center"   type ="number"/>
+		<edit left="185" top="125" height="20" width="30" field="TEs_poke" horzTextAlign="center" type ="number"/>	
+	</layout>
+
+    <layout left="300" top="10" height="600" width="800">
+		<label left="000" top="000" height="20" width="90" text="Bônus" autoSize="true" fontStyle="bold"/>
+		<label left="095" top="000" height="20" width="50" text="Poké" autoSize="true" fontStyle="bold"/>
+		<label left="140" top="000" height="20" width="50" text="Itens" autoSize="true" fontStyle="bold"/>
+		<label left="185" top="000" height="20" width="50" text="Berry" autoSize="true" fontStyle="bold"/>
+		<label left="230" top="000" height="20" width="50" text="Ficha" autoSize="true" fontStyle="bold"/>
+		<label left="275" top="000" height="20" width="50" text="Espec." autoSize="true" fontStyle="bold"/>
+		<label left="320" top="000" height="20" width="50" text="Pec." autoSize="true" fontStyle="bold"/>
+		<label left="365" top="000" height="20" width="50" text="Total" autoSize="true" fontStyle="bold"/>
+		
+		<label left="000" top="025" height="20" width="90" text="Pts.de Vida" autoSize="true" fontStyle="bold"/>
+		<edit left="095" top="025" height="20" width="30" field="PoVid_poke" horzTextAlign="center" type ="number"/>
+		<edit left="140" top="025" height="20" width="30" field="IVid_poke" horzTextAlign="center"   type ="number"/>
+		<edit left="185" top="025" height="20" width="30" field="BVid_poke" horzTextAlign="center"   type ="number"/>
+		<edit left="230" top="025" height="20" width="30" field="FVid_poke" horzTextAlign="center"   type ="number"/>
+		<edit left="275" top="025" height="20" width="30" field="EVid_poke" horzTextAlign="center"   type ="number"/>
+		<edit left="320" top="025" height="20" width="30" field="PeVid_poke" horzTextAlign="center"   type ="number"/>
+		<edit left="365" top="025" height="20" width="30" field="TVid_poke" horzTextAlign="center" type ="number"/>
+		
+		<label left="000" top="050" height="20" width="90" text="Disposição" autoSize="true" fontStyle="bold"/>
+		<edit left="095" top="050" height="20" width="30" field="PoDis_poke" horzTextAlign="center" type ="number"/>
+		<edit left="140" top="050" height="20" width="30" field="IDis_poke" horzTextAlign="center"   type ="number"/>
+		<edit left="185" top="050" height="20" width="30" field="BDis_poke" horzTextAlign="center"   type ="number"/>
+		<edit left="230" top="050" height="20" width="30" field="FDis_poke" horzTextAlign="center"   type ="number"/>
+		<edit left="275" top="050" height="20" width="30" field="EDis_poke" horzTextAlign="center"   type ="number"/>
+		<edit left="320" top="050" height="20" width="30" field="PeDis_poke" horzTextAlign="center"  type ="number"/>
+		<edit left="365" top="050" height="20" width="30" field="TDis_poke" horzTextAlign="center" type ="number"/>
+		
+		<button left="000" top="075" height="20" width="80" text="B. Ataque" horzTextAlign="leading" fontStyle="bold">
+			<event name="onClick">
+			if sheet == nil then return end;
+			local mesaDoPersonagem = Firecast.getMesaDe(sheet);
+			local NOMATRIBUTO = "Bônus de Ataque";
+			local VALATRIBUTO = self.boxDetalhesDoItem.node.TAtk_poke or 0;
+			local NOMEPERS = self.boxDetalhesDoItem.node.campoNome or "Pokémon";
+			local ROLAGEM = Firecast.interpretarRolagem("1d20+" .. VALATRIBUTO)
+			mesaDoPersonagem.chat:rolarDados(ROLAGEM, "Teste de " .. NOMATRIBUTO .. " de " .. NOMEPERS); 				
+			</event>
+		</button>
+		<edit left="095" top="075" height="20" width="30" field="PoAtk_poke" horzTextAlign="center" type ="number"/>
+		<edit left="140" top="075" height="20" width="30" field="IAtk_poke" horzTextAlign="center"   type ="number"/>
+		<edit left="185" top="075" height="20" width="30" field="BAtk_poke" horzTextAlign="center"   type ="number"/>
+		<edit left="230" top="075" height="20" width="30" field="FAtk_poke" horzTextAlign="center"   type ="number"/>
+		<edit left="275" top="075" height="20" width="30" field="EAtk_poke" horzTextAlign="center"   type ="number"/>
+		<edit left="320" top="075" height="20" width="30" field="PeAtk_poke" horzTextAlign="center"   type ="number"/>
+		<edit left="365" top="075" height="20" width="30" field="TAtk_poke" horzTextAlign="center" type ="number"/>
+		
+		<button left="000" top="100" height="20" width="80" text="B. Defesa" horzTextAlign="leading" fontStyle="bold">
+			<event name="onClick">
+			if sheet == nil then return end;
+			local mesaDoPersonagem = Firecast.getMesaDe(sheet);
+			local NOMATRIBUTO = "Bônus de Defesa";
+			local VALATRIBUTO = self.boxDetalhesDoItem.node.TDef_poke or 0;
+			local NOMEPERS = self.boxDetalhesDoItem.node.campoNome or "Pokémon";
+			local ROLAGEM = Firecast.interpretarRolagem("1d20+" .. VALATRIBUTO)
+			mesaDoPersonagem.chat:rolarDados(ROLAGEM, "Teste de " .. NOMATRIBUTO .. " de " .. NOMEPERS); 
+			</event>
+		</button>
+		<edit left="095" top="100" height="20" width="30" field="PoDef_poke" horzTextAlign="center" type ="number"/>
+		<edit left="140" top="100" height="20" width="30" field="IDef_poke" horzTextAlign="center"   type ="number"/>
+		<edit left="185" top="100" height="20" width="30" field="BDef_poke" horzTextAlign="center"   type ="number"/>
+		<edit left="230" top="100" height="20" width="30" field="FDef_poke" horzTextAlign="center"   type ="number"/>
+		<edit left="275" top="100" height="20" width="30" field="EDef_poke" horzTextAlign="center"   type ="number"/>
+		<edit left="320" top="100" height="20" width="30" field="PeDef_poke" horzTextAlign="center"   type ="number"/>
+		<edit left="365" top="100" height="20" width="30" field="TDef_poke" horzTextAlign="center" type ="number"/>
+		
+		<label left="000" top="125" height="20" width="80" text="B.Dano" autoSize="true" fontStyle="bold"/>
+		<edit left="095" top="125" height="20" width="30" field="PoDan_poke" horzTextAlign="center" type ="number"/>
+		<edit left="140" top="125" height="20" width="30" field="IDan_poke" horzTextAlign="center"   type ="number"/>
+		<edit left="185" top="125" height="20" width="30" field="BDan_poke" horzTextAlign="center"   type ="number"/>
+		<edit left="230" top="125" height="20" width="30" field="FDan_poke" horzTextAlign="center"   type ="number"/>
+		<edit left="275" top="125" height="20" width="30" field="EDan_poke" horzTextAlign="center"   type ="number"/>
+		<edit left="320" top="125" height="20" width="30" field="PeDan_poke" horzTextAlign="center"   type ="number"/>
+		<edit left="365" top="125" height="20" width="30" field="TDan_poke" horzTextAlign="center" type ="number"/>
+		
+		<button left="000" top="150" height="20" width="80" text="Absorção" horzTextAlign="leading" fontStyle="bold">
+			<event name="onClick">
+			if sheet == nil then return end;
+			local mesaDoPersonagem = Firecast.getMesaDe(sheet);
+			local NOMATRIBUTO = "Absorção";
+			local VALATRIBUTO = self.boxDetalhesDoItem.node.TAbs_poke or 0;
+			local NOMEPERS = self.boxDetalhesDoItem.node.campoNome or "Pokémon";
+			local ROLAGEM = Firecast.interpretarRolagem(VALATRIBUTO .. "d4")
+			mesaDoPersonagem.chat:rolarDados(ROLAGEM, "Teste de " .. NOMATRIBUTO .. " de " .. NOMEPERS); 
+			</event>
+		</button>
+		<edit left="095" top="150" height="20" width="30" field="PoAbs_poke" horzTextAlign="center" type ="number"/>
+		<edit left="140" top="150" height="20" width="30" field="IAbs_poke" horzTextAlign="center"   type ="number"/>
+		<edit left="185" top="150" height="20" width="30" field="BAbs_poke" horzTextAlign="center"   type ="number"/>
+		<edit left="230" top="150" height="20" width="30" field="FAbs_poke" horzTextAlign="center"   type ="number"/>
+		<edit left="275" top="150" height="20" width="30" field="EAbs_poke" horzTextAlign="center"   type ="number"/>
+		<edit left="320" top="150" height="20" width="30" field="PeAbs_poke" horzTextAlign="center"  type ="number"/>
+		<edit left="365" top="150" height="20" width="30" field="TAbs_poke" horzTextAlign="center" type ="number"/>
+
+		<button left="000" top="175" height="20" width="80" text="Iniciativa" horzTextAlign="leading" fontStyle="bold">
+			<event name="onClick">
+			if sheet == nil then return end;
+			local mesaDoPersonagem = Firecast.getMesaDe(sheet);
+			local NOMATRIBUTO = "Iniciativa";
+			local VALATRIBUTO = self.boxDetalhesDoItem.node.TIni_poke or 0;
+			local NOMEPERS = self.boxDetalhesDoItem.node.campoNome or "Pokémon";
+			local ROLAGEM = Firecast.interpretarRolagem("1d20+" .. VALATRIBUTO)
+			mesaDoPersonagem.chat:rolarDados(ROLAGEM, "Teste de " .. NOMATRIBUTO .. " de " .. NOMEPERS); 
+			</event>
+		</button>
+		<edit left="095" top="175" height="20" width="30" field="PoIni_poke" horzTextAlign="center" type ="number"/>
+		<edit left="140" top="175" height="20" width="30" field="IIni_poke" horzTextAlign="center"   type ="number"/>
+		<edit left="185" top="175" height="20" width="30" field="BIni_poke" horzTextAlign="center"   type ="number"/>
+		<edit left="230" top="175" height="20" width="30" field="FIni_poke" horzTextAlign="center"   type ="number"/>
+		<edit left="275" top="175" height="20" width="30" field="EIni_poke" horzTextAlign="center"   type ="number"/>
+		<edit left="320" top="175" height="20" width="30" field="PeIni_poke" horzTextAlign="center"   type ="number"/>
+		<edit left="365" top="175" height="20" width="30" field="TIni_poke" horzTextAlign="center" type ="number"/>
+		
+		<label left="000" top="200" height="20" width="90" text="Poder" autoSize="true" fontStyle="bold"/>
+		<edit left="095" top="200" height="20" width="30" field="PoPod_poke" horzTextAlign="center" type ="number"/>
+		<edit left="140" top="200" height="20" width="30" field="IPod_poke" horzTextAlign="center"   type ="number"/>
+		<edit left="185" top="200" height="20" width="30" field="BPod_poke" horzTextAlign="center"   type ="number"/>
+		<edit left="230" top="200" height="20" width="30" field="FPod_poke" horzTextAlign="center"   type ="number"/>
+		<edit left="275" top="200" height="20" width="30" field="EPod_poke" horzTextAlign="center"   type ="number"/>
+		<edit left="320" top="200" height="20" width="30" field="PePod_poke" horzTextAlign="center"   type ="number"/>
+		<edit left="365" top="200" height="20" width="30" field="TPod_poke" horzTextAlign="center" type ="number"/>
+                                    </layout>
+
+<layout left="300" top="400" width="800" height="800">
+	<label left="0" top="00" width="100" height="20" text="Natureza:" autoSize="true" fontStyle="bold"/>
+    <edit left="95" top="00" width="140" height="20"  field="campoNatureza"/>	
+</layout> 		
+
+									
+   <dataLink fields="{'BEn_Poke', 'PEn_Poke', 'BAt_Poke', 'PAt_Poke', 'BDf_Poke', 'PDf_Poke', 'BVl_Poke', 'PVl_Poke', 'BEs_Poke', 'PEs_Poke', 'NEf_Poke', 'NTo_Poke',
+						'PesI_Poke', 'AltI_Poke', 'IVid_Poke', 'BVid_Poke', 'FVid_Poke', 'EVid_Poke', 'PeVid_Poke', 'IDis_Poke', 'BDis_Poke', 'FDis_Poke', 'EDis_Poke', 'PeDis_Poke',
+						'IAtk_Poke', 'BAtk_Poke', 'FAtk_Poke', 'EAtk_Poke', 'PeAtk_Poke', 'IDef_Poke', 'BDef_Poke', 'FDef_Poke', 'EDef_Poke', 'PeDef_Poke',
+						'IDan_Poke', 'BDan_Poke', 'FDan_Poke', 'EDan_Poke', 'PeDan_Poke', 'IAbs_Poke', 'BAbs_Poke', 'FAbs_Poke', 'EAbs_Poke', 'PeAbs_Poke',
+						'IIni_Poke', 'BIni_Poke', 'FIni_Poke', 'EIni_Poke', 'PeIni_Poke', 'IPod_Poke', 'BPod_Poke', 'FPod_Poke', 'EPod_Poke', 'PePod_Poke'}">	
+		<event name="onChange">
+					self.boxDetalhesDoItem.node.TEn_Poke = (self.boxDetalhesDoItem.node.BEn_Poke or 0) + (self.boxDetalhesDoItem.node.PEn_Poke or 0)*(self.boxDetalhesDoItem.node.NEf_Poke or 1);
+					self.boxDetalhesDoItem.node.TAt_Poke = (self.boxDetalhesDoItem.node.BAt_Poke or 0) + (self.boxDetalhesDoItem.node.PAt_Poke or 0)*(self.boxDetalhesDoItem.node.NEf_Poke or 1);
+					self.boxDetalhesDoItem.node.TDf_Poke = (self.boxDetalhesDoItem.node.BDf_Poke or 0) + (self.boxDetalhesDoItem.node.PDf_Poke or 0)*(self.boxDetalhesDoItem.node.NEf_Poke or 1);
+					self.boxDetalhesDoItem.node.TVl_Poke = (self.boxDetalhesDoItem.node.BVl_Poke or 0) + (self.boxDetalhesDoItem.node.PVl_Poke or 0)*(self.boxDetalhesDoItem.node.NEf_Poke or 1);
+					self.boxDetalhesDoItem.node.TEs_Poke = (self.boxDetalhesDoItem.node.BEs_Poke or 0) + (self.boxDetalhesDoItem.node.PEs_Poke or 0)*(self.boxDetalhesDoItem.node.NEf_Poke or 1);	
+					self.boxDetalhesDoItem.node.PoVid_Poke = (self.boxDetalhesDoItem.node.TEn_Poke or 0)
+					self.boxDetalhesDoItem.node.PoDis_Poke = math.floor(((self.boxDetalhesDoItem.node.TEn_Poke or 0) + (self.boxDetalhesDoItem.node.TVl_Poke or 0))/2);
+					self.boxDetalhesDoItem.node.PoAtk_Poke = math.floor((self.boxDetalhesDoItem.node.TAt_Poke or 0)/15);
+					self.boxDetalhesDoItem.node.PoDef_Poke = math.floor((self.boxDetalhesDoItem.node.TDf_Poke or 0)/15);
+					self.boxDetalhesDoItem.node.PoDan_Poke = math.floor((self.boxDetalhesDoItem.node.TAt_Poke or 0)/20);
+					self.boxDetalhesDoItem.node.PoAbs_Poke = math.floor((self.boxDetalhesDoItem.node.TDf_Poke or 0)/20);
+					self.boxDetalhesDoItem.node.PoIni_Poke = math.floor((self.boxDetalhesDoItem.node.TVl_Poke or 0)/10);
+					self.boxDetalhesDoItem.node.PoPod_Poke = math.floor((self.boxDetalhesDoItem.node.TEs_Poke or 0)/10);
+					self.boxDetalhesDoItem.node.PesT_Poke = (self.boxDetalhesDoItem.node.PesI_Poke or 0) + 100*(self.boxDetalhesDoItem.node.NEf_Poke or 1);
+					self.boxDetalhesDoItem.node.AltT_Poke = (self.boxDetalhesDoItem.node.AltI_Poke or 0) + 1*(self.boxDetalhesDoItem.node.NEf_Poke or 1);
+					self.boxDetalhesDoItem.node.TVid_Poke = ((self.boxDetalhesDoItem.node.PoVid_Poke or 0) + (self.boxDetalhesDoItem.node.IVid_Poke or 0) + (self.boxDetalhesDoItem.node.BVid_Poke or 0) + (self.boxDetalhesDoItem.node.FVid_Poke or 0) + (self.boxDetalhesDoItem.node.EVid_Poke or 0) + (self.boxDetalhesDoItem.node.PeVid_Poke or 0));
+					self.boxDetalhesDoItem.node.TDis_Poke = ((self.boxDetalhesDoItem.node.PoDis_Poke or 0) + (self.boxDetalhesDoItem.node.IDis_Poke or 0) + (self.boxDetalhesDoItem.node.BDis_Poke or 0) + (self.boxDetalhesDoItem.node.FDis_Poke or 0) + (self.boxDetalhesDoItem.node.EDis_Poke or 0) + (self.boxDetalhesDoItem.node.PeDis_Poke or 0));
+					self.boxDetalhesDoItem.node.TAtk_Poke = ((self.boxDetalhesDoItem.node.PoAtk_Poke or 0) + (self.boxDetalhesDoItem.node.IAtk_Poke or 0) + (self.boxDetalhesDoItem.node.BAtk_Poke or 0) + (self.boxDetalhesDoItem.node.FAtk_Poke or 0) + (self.boxDetalhesDoItem.node.EAtk_Poke or 0) + (self.boxDetalhesDoItem.node.PeAtk_Poke or 0));
+					self.boxDetalhesDoItem.node.TDef_Poke = ((self.boxDetalhesDoItem.node.PoDef_Poke or 0) + (self.boxDetalhesDoItem.node.IDef_Poke or 0) + (self.boxDetalhesDoItem.node.BDef_Poke or 0) + (self.boxDetalhesDoItem.node.FDef_Poke or 0) + (self.boxDetalhesDoItem.node.EDef_Poke or 0) + (self.boxDetalhesDoItem.node.PeDef_Poke or 0));
+					self.boxDetalhesDoItem.node.TDan_Poke = ((self.boxDetalhesDoItem.node.PoDan_Poke or 0) + (self.boxDetalhesDoItem.node.IDan_Poke or 0) + (self.boxDetalhesDoItem.node.BDan_Poke or 0) + (self.boxDetalhesDoItem.node.FDan_Poke or 0) + (self.boxDetalhesDoItem.node.EDan_Poke or 0) + (self.boxDetalhesDoItem.node.PeDan_Poke or 0));
+					self.boxDetalhesDoItem.node.TAbs_Poke = ((self.boxDetalhesDoItem.node.PoAbs_Poke or 0) + (self.boxDetalhesDoItem.node.IAbs_Poke or 0) + (self.boxDetalhesDoItem.node.BAbs_Poke or 0) + (self.boxDetalhesDoItem.node.FAbs_Poke or 0) + (self.boxDetalhesDoItem.node.EAbs_Poke or 0) + (self.boxDetalhesDoItem.node.PeAbs_Poke or 0));
+					self.boxDetalhesDoItem.node.TIni_Poke = ((self.boxDetalhesDoItem.node.PoIni_Poke or 0) + (self.boxDetalhesDoItem.node.IIni_Poke or 0) + (self.boxDetalhesDoItem.node.BIni_Poke or 0) + (self.boxDetalhesDoItem.node.FIni_Poke or 0) + (self.boxDetalhesDoItem.node.EIni_Poke or 0) + (self.boxDetalhesDoItem.node.PeIni_Poke or 0));
+					self.boxDetalhesDoItem.node.TPod_Poke = ((self.boxDetalhesDoItem.node.PoPod_Poke or 0) + (self.boxDetalhesDoItem.node.IPod_Poke or 0) + (self.boxDetalhesDoItem.node.BPod_Poke or 0) + (self.boxDetalhesDoItem.node.FPod_Poke or 0) + (self.boxDetalhesDoItem.node.EPod_Poke or 0) + (self.boxDetalhesDoItem.node.PePod_Poke or 0));
+					self.boxDetalhesDoItem.node.ExpT_Poke = (self.boxDetalhesDoItem.node.NTo_Poke or 1)*15
+					</event>
+    </dataLink>
+		</rectangle>
+	   </tab>
+		
+        <tab title="Registrar/Importar/Exportar">
+		<rectangle align="top" color="black" xradius="10" yradius="10" height="880" padding="{top=3, left=3, right=3, bottom=3}">
+
+		<button left="10" top="10" width="100" height="20" text="Exportar Ficha" >
+			<event name="onClick">
+				local xml = NDB.exportXML(self.boxDetalhesDoItem.node);
+
+				local export = {};
+				local bytes = Utils.binaryEncode(export, "utf8", xml);
+
+				local stream = Utils.newMemoryStream();
+				local bytes = stream:write(export);
+
+				Dialogs.saveFile("Salvar Ficha como XML", stream, "ficha.xml", "application/xml",
+					function()
+						stream:close();
+						showMessage("Ficha Exportada.");
+					end);
+			</event>
+		</button>
+		<!-- Combobox de importar ficha -->
+		<button left="10" top="35" width="100" height="20" text="Importar Ficha" >
+			<event name="onClick">
+				Dialogs.openFile("Importar Ficha", "application/xml", false, 
+					function(arquivos)
+						local arq = arquivos[1];
+
+						local import = {};
+						local bytes = arq.stream:read(import, arq.stream.size);
+
+						local xml = Utils.binaryDecode(import, "utf8");
+
+						NDB.importXML(self.boxDetalhesDoItem.node, xml);
+					end);
+			</event>
+		</button>
+
+                                <layout left="300" top="25" height="600" width="1000">
+                                    <label left="000" top="000" height="20" width="300" text="Registrar o pokémon (Aba 1)" autoSize="true" />
+                                </layout>
+                                <layout left="300" top="50" height="600" width="1000">
+                                    <button left="000" top="000" height="20" width="120" text="Slot 1" horzTextAlign="leading">
+                                        <event name="onClick">
+				sheet.ImagemSlot1 = (self.boxDetalhesDoItem.node.campoPokemon or "");
+				sheet.NomeSlot1 = (self.boxDetalhesDoItem.node.campoApelido or self.boxDetalhesDoItem.node.campoNome or "");
+				sheet.LevelSlot1 = (self.boxDetalhesDoItem.node.NTo_poke or "")
+			</event>
+                                    </button>
+                                    <button left="000" top="025" height="20" width="120" text="Slot 2" horzTextAlign="leading">
+                                        <event name="onClick">
+				sheet.ImagemSlot2 = (self.boxDetalhesDoItem.node.campoPokemon or "");
+				sheet.NomeSlot2 = (self.boxDetalhesDoItem.node.campoApelido or self.boxDetalhesDoItem.node.campoNome or "");
+				sheet.LevelSlot2 = (self.boxDetalhesDoItem.node.NTo_poke or "")
+			</event>
+                                    </button>
+                                    <button left="000" top="050" height="20" width="120" text="Slot 3" horzTextAlign="leading">
+                                        <event name="onClick">
+				sheet.ImagemSlot3 = (self.boxDetalhesDoItem.node.campoPokemon or "");
+				sheet.NomeSlot3 = (self.boxDetalhesDoItem.node.campoApelido or self.boxDetalhesDoItem.node.campoNome or "");
+				sheet.LevelSlot3 = (self.boxDetalhesDoItem.node.NTo_poke or "")
+			</event>
+                                    </button>
+                                    <button left="150" top="000" height="20" width="120" text="Slot 4" horzTextAlign="leading">
+                                        <event name="onClick">
+				sheet.ImagemSlot4 = (self.boxDetalhesDoItem.node.campoPokemon or "");
+				sheet.NomeSlot4 = (self.boxDetalhesDoItem.node.campoApelido or self.boxDetalhesDoItem.node.campoNome or "");
+				sheet.LevelSlot4 = (self.boxDetalhesDoItem.node.NTo_poke or "")
+			</event>
+                                    </button>
+                                    <button left="150" top="025" height="20" width="120" text="Slot 5" horzTextAlign="leading">
+                                        <event name="onClick">
+				sheet.ImagemSlot5 = (self.boxDetalhesDoItem.node.campoPokemon or "");
+				sheet.NomeSlot5 = (self.boxDetalhesDoItem.node.campoApelido or self.boxDetalhesDoItem.node.campoNome or "");
+				sheet.LevelSlot5 = (self.boxDetalhesDoItem.node.NTo_poke or "")
+			</event>
+                                    </button>
+                                    <button left="150" top="050" height="20" width="120" text="Slot 6" horzTextAlign="leading">
+                                        <event name="onClick">
+				sheet.ImagemSlot6 = (self.boxDetalhesDoItem.node.campoPokemon or "");
+				sheet.NomeSlot6 = (self.boxDetalhesDoItem.node.campoApelido or self.boxDetalhesDoItem.node.campoNome or "");
+				sheet.LevelSlot6 = (self.boxDetalhesDoItem.node.NTo_poke or "")
+			</event>
+                                    </button>
+                                </layout>
+                                <layout left="300" top="225" height="600" width="1000">
+                                    <label left="000" top="000" height="20" width="300" text="Apagar QUALQUER pokémon (Aba 1)" autoSize="true" />
+                                </layout>
+                                <layout left="300" top="250" height="600" width="1000">
+                                    <button left="000" top="000" height="20" width="120" text="Slot 1" horzTextAlign="leading">
+                                        <event name="onClick">
+				sheet.ImagemSlot1 = "";
+				sheet.NomeSlot1 = "";
+				sheet.LevelSlot1 = "";
+			</event>
+                                    </button>
+                                    <button left="000" top="025" height="20" width="120" text="Slot 2" horzTextAlign="leading">
+                                        <event name="onClick">
+				sheet.ImagemSlot2 = "";
+				sheet.NomeSlot2 = "";
+				sheet.LevelSlot2 = "";
+			</event>
+                                    </button>
+                                    <button left="000" top="050" height="20" width="120" text="Slot 3" horzTextAlign="leading">
+                                        <event name="onClick">
+				sheet.ImagemSlot3 = "";
+				sheet.NomeSlot3 = "";
+				sheet.LevelSlot3 = "";
+			</event>
+                                    </button>
+                                    <button left="150" top="000" height="20" width="120" text="Slot 4" horzTextAlign="leading">
+                                        <event name="onClick">
+				sheet.ImagemSlot4 = "";
+				sheet.NomeSlot4 = "";
+				sheet.LevelSlot4 = "";
+			</event>
+                                    </button>
+                                    <button left="150" top="025" height="20" width="120" text="Slot 5" horzTextAlign="leading">
+                                        <event name="onClick">
+				sheet.ImagemSlot5 = "";
+				sheet.NomeSlot5 = "";
+				sheet.LevelSlot5 = "";
+			</event>
+                                    </button>
+                                    <button left="150" top="050" height="20" width="120" text="Slot 6" horzTextAlign="leading">
+                                        <event name="onClick">
+				sheet.ImagemSlot6 = "";
+				sheet.NomeSlot6 = "";
+				sheet.LevelSlot6 = "";
+			</event>
+                                    </button>
+                                </layout>
+		</rectangle>
+                            </tab>
+	
+	</tabControl>		
+        </dataScopeBox>
+    </scrollBox>
+	
+		</tab>
+
+
+	
+<template name="Skill">
+	<button left="00" top="$(Top)" height="20" width="120" text="$(NomSkill)" horzTextAlign="leading">
+		<event name="onClick">
+			if sheet == nil then return end;
+			local mesaDoPersonagem = Firecast.getMesaDe(sheet);
+			local NOMSKILL = "$(NomSkill)" or 0;
+			local VALSKILL = sheet.$(Field) or 0;
+			local NOMEPERS = sheet.baseName or "Treinador";	
+				local FORC = tonumber(sheet.fieldFOR) or 1;
+				local DEFE = tonumber(sheet.fieldDES) or 1;
+				local VIGO = tonumber(sheet.fieldVIG) or 1;
+				local CARI = tonumber(sheet.fieldCAR) or 1;
+				local MANI = tonumber(sheet.fieldMAN) or 1;
+				local APAR = tonumber(sheet.fieldAPA) or 1;
+				local PERC = tonumber(sheet.fieldPER) or 1;
+				local INTE = tonumber(sheet.fieldINT) or 1;
+				local RACI = tonumber(sheet.fieldRAC) or 1;
+				local ATTNUM = tonumber(sheet.Att$(num)) or 1;
+			local auxATRIBUTO = {0,FORC,DEFE,VIGO,CARI,MANI,APAR,PERC,INTE,RACI}
+			local VALATRIBUTO = auxATRIBUTO[ATTNUM] or 1;	
+			local ROLAGEM = Firecast.interpretarRolagem("1d20+" .. VALSKILL .. "+" .. VALATRIBUTO)
+			mesaDoPersonagem.chat:rolarDados(ROLAGEM, "Teste de " .. NOMSKILL .. " usado por " .. NOMEPERS); 
+		</event>
+	</button>
+    <radioButton top="$(Top)" left="125" width="20" height="20" groupName="$(Grupo)" field="$(Field)" fieldValue="0"/>                                
+    <radioButton top="$(Top)" left="150" width="20" height="20" groupName="$(Grupo)" field="$(Field)" fieldValue="1"/>                    
+    <radioButton top="$(Top)" left="175" width="20" height="20" groupName="$(Grupo)" field="$(Field)" fieldValue="2"/>
+    <radioButton top="$(Top)" left="200" width="20" height="20" groupName="$(Grupo)" field="$(Field)" fieldValue="3"/>
+    <radioButton top="$(Top)" left="225" width="20" height="20" groupName="$(Grupo)" field="$(Field)" fieldValue="4"/>
+    <radioButton top="$(Top)" left="250" width="20" height="20" groupName="$(Grupo)" field="$(Field)" fieldValue="5"/>
+    <radioButton top="$(Top)" left="275" width="20" height="20" groupName="$(Grupo)" field="$(Field)" fieldValue="6"/>
+    <radioButton top="$(Top)" left="300" width="20" height="20" groupName="$(Grupo)" field="$(Field)" fieldValue="7"/>
+    <radioButton top="$(Top)" left="325" width="20" height="20" groupName="$(Grupo)" field="$(Field)" fieldValue="8"/>
+    <radioButton top="$(Top)" left="350" width="20" height="20" groupName="$(Grupo)" field="$(Field)" fieldValue="9"/>
+    <radioButton top="$(Top)" left="375" width="20" height="20" groupName="$(Grupo)" field="$(Field)" fieldValue="10"/>
+    <dataLink field="$(Field)" defaultValue="0" />
+	<comboBox left="400" top="$(Top)" height="20" width="60" field="Att$(num)" horzTextAlign="center" items="{'-', 'FOR', 'DES', 'VIG', 'CAR', 'MAN', 'APA', 'PER', 'INT', 'RAC'}" values="{'1', '2', '3', '4', '5', '6', '7', '8', '9', '10'}" />
+    <dataLink field="Att$(num)" defaultValue="1" />                   
+</template>
+		
+		<tab title="Ataques e Conhecimentos">
+			<layout left="000" top="000" height="650" width="1100">
+				<image left="000" top="000" height="650" width="1100" src="/img/Pokeball.jpg" style="autoFIT" />
+            </layout>
+
+	<layout left="010" top="030" height="600" width="1000">		
+		<label top="00" left="130" width="20" height="20"  text="0" autoSize="true"/>
+		<label top="00" left="155" width="20" height="20"  text="1" autoSize="true"/>
+		<label top="00" left="180" width="20" height="20"  text="2" autoSize="true"/>
+		<label top="00" left="205" width="20" height="20"  text="3" autoSize="true"/>
+		<label top="00" left="230" width="20" height="20"  text="4" autoSize="true"/>
+		<label top="00" left="255" width="20" height="20"  text="5" autoSize="true"/>
+		<label top="00" left="280" width="20" height="20"  text="6" autoSize="true"/>
+		<label top="00" left="305" width="20" height="20"  text="7" autoSize="true"/>
+		<label top="00" left="330" width="20" height="20"  text="8" autoSize="true"/>
+		<label top="00" left="355" width="20" height="20"  text="9" autoSize="true"/>
+		<label top="00" left="375" width="20" height="20"  text="10" autoSize="true"/>	
+		<Skill Top="25" NomSkill="Ataques" Grupo = "GrupoATA" Field = "fieldATA" num="1"/>
+		<Skill Top="75" NomSkill="Ataq. de Água" Grupo = "GrupoATAAG" Field = "fieldATAAG" num="2"/>
+		<Skill Top="100" NomSkill="Ataq. de Dragão" Grupo = "GrupoATADR" Field = "fieldATADR" num="3"/>
+		<Skill Top="125" NomSkill="Ataq. de Elétricos" Grupo = "GrupoATAEL" Field = "fieldATAEL" num="4"/>
+		<Skill Top="150" NomSkill="Ataq. de Fadas" Grupo = "GrupoATAFAD" Field = "fieldATAFAD" num="5"/>
+		<Skill Top="175" NomSkill="Ataq. de Fantasma" Grupo = "GrupoATAFAN" Field = "fieldATAFAN" num="6"/>
+		<Skill Top="200" NomSkill="Ataq. de Fogo" Grupo = "GrupoATAFO" Field = "fieldATAFO" num="7"/>
+		<Skill Top="225" NomSkill="Ataq. de Gelo" Grupo = "GrupoATAGE" Field = "fieldATAGE" num="8"/>
+		<Skill Top="250" NomSkill="Ataq. de Inseto" Grupo = "GrupoATAIN" Field = "fieldATAIN" num="9"/>
+		<Skill Top="275" NomSkill="Ataq. de Lutador" Grupo = "GrupoATALU" Field = "fieldATALU" num="10"/>
+		<Skill Top="300" NomSkill="Ataq. de Metálico" Grupo = "GrupoATAME" Field = "fieldATAME" num="11"/>
+		<Skill Top="325" NomSkill="Ataq. de Normal" Grupo = "GrupoATANOR" Field = "fieldATANOR" num="12"/>
+		<Skill Top="350" NomSkill="Ataq. de Noturno" Grupo = "GrupoATANOT" Field = "fieldATANOT" num="13"/>	
+		<Skill Top="375" NomSkill="Ataq. de Pedra" Grupo = "GrupoATAPE" Field = "fieldATAPE" num="14"/>
+		<Skill Top="400" NomSkill="Ataq. de Planta" Grupo = "GrupoATAPL" Field = "fieldATAPL" num="80"/>
+		<Skill Top="425" NomSkill="Ataq. de Psíquico" Grupo = "GrupoATAPS" Field = "fieldATAPS" num="15"/>
+		<Skill Top="450" NomSkill="Ataq. de Terra" Grupo = "GrupoATATE" Field = "fieldATATE" num="16"/>
+		<Skill Top="475" NomSkill="Ataq. de Venenoso" Grupo = "GrupoATAVE" Field = "fieldATAVE" num="17"/>
+		<Skill Top="500" NomSkill="Ataq. de Voador" Grupo = "GrupoATAVO" Field = "fieldATAVO" num="18"/>
+	</layout>
+
+	<layout left="550" top="030" height="600" width="1000">		
+		<label top="00" left="130" width="20" height="20"  text="0" autoSize="true"/>
+		<label top="00" left="155" width="20" height="20"  text="1" autoSize="true"/>
+		<label top="00" left="180" width="20" height="20"  text="2" autoSize="true"/>
+		<label top="00" left="205" width="20" height="20"  text="3" autoSize="true"/>
+		<label top="00" left="230" width="20" height="20"  text="4" autoSize="true"/>
+		<label top="00" left="255" width="20" height="20"  text="5" autoSize="true"/>
+		<label top="00" left="280" width="20" height="20"  text="6" autoSize="true"/>
+		<label top="00" left="305" width="20" height="20"  text="7" autoSize="true"/>
+		<label top="00" left="330" width="20" height="20"  text="8" autoSize="true"/>
+		<label top="00" left="355" width="20" height="20"  text="9" autoSize="true"/>
+		<label top="00" left="375" width="20" height="20"  text="10" autoSize="true"/>	
+		<Skill Top="25" NomSkill="Conhecimento" Grupo = "GrupoCONH" Field = "fieldCONH" num="19"/>
+		<Skill Top="75" NomSkill="Conhec. Água" Grupo = "GrupoCONHAG" Field = "fieldCONHAG" num="20"/>
+		<Skill Top="100" NomSkill="Conhec. Dragão" Grupo = "GrupoCONHDR" Field = "fieldCONHDR" num="21"/>
+		<Skill Top="125" NomSkill="Conhec. Elétrico" Grupo = "GrupoCONHEL" Field = "fieldCONHEL" num="22"/>
+		<Skill Top="150" NomSkill="Conhec. Fadas" Grupo = "GrupoCONHFAD" Field = "fieldCONHFAD" num="23"/>
+		<Skill Top="175" NomSkill="Conhec. Fantasma" Grupo = "GrupoCONHFAN" Field = "fieldCONHFAN" num="24"/>
+		<Skill Top="200" NomSkill="Conhec. Fogo" Grupo = "GrupoCONHFO" Field = "fieldCONHFO" num="25"/>
+		<Skill Top="225" NomSkill="Conhec. Gelo" Grupo = "GrupoCONHGE" Field = "fieldCONHGE" num="26"/>
+		<Skill Top="250" NomSkill="Conhec. Inseto" Grupo = "GrupoCONHIN" Field = "fieldCONHIN" num="27"/>
+		<Skill Top="275" NomSkill="Conhec. Lutador" Grupo = "GrupoCONHLU" Field = "fieldCONHLU" num="28"/>
+		<Skill Top="300" NomSkill="Conhec. Metálico" Grupo = "GrupoCONHME" Field = "fieldCONHME" num="29"/>
+		<Skill Top="325" NomSkill="Conhec. Normal" Grupo = "GrupoCONHNOR" Field = "fieldCONHNOR" num="30"/>
+		<Skill Top="350" NomSkill="Conhec. Noturno" Grupo = "GrupoCONHNOT" Field = "fieldCONHNOT" num="31"/>	
+		<Skill Top="375" NomSkill="Conhec. Pedra" Grupo = "GrupoCONHPE" Field = "fieldCONHPE" num="32"/>
+		<Skill Top="400" NomSkill="Conhec. Planta" Grupo = "GrupoCONHPL" Field = "fieldCONHPL" num="81"/>
+		<Skill Top="425" NomSkill="Conhec. Psíquico" Grupo = "GrupoCONHPS" Field = "fieldCONHPS" num="33"/>
+		<Skill Top="450" NomSkill="Conhec. Terra" Grupo = "GrupoCONHTE" Field = "fieldCONHTE" num="34"/>
+		<Skill Top="475" NomSkill="Conhec. Venenoso" Grupo = "GrupoCONHVE" Field = "fieldCONHVE" num="35"/>
+		<Skill Top="500" NomSkill="Conhec. Voador" Grupo = "GrupoCONHVO" Field = "fieldCONHVO" num="36"/>
+	</layout>
+
+		
+		</tab>
+		
+		<tab title="Perícias e Talentos">
+			<layout left="000" top="000" height="650" width="1100">
+				<image left="000" top="000" height="650" width="1100" src="/img/Pokeball.jpg" style="autoFIT" />
+            </layout>
+
+	<layout left="550" top="025" height="600" width="1000">		
+		<label top="00" left="130" width="20" height="20"  text="0" autoSize="true"/>
+		<label top="00" left="155" width="20" height="20"  text="1" autoSize="true"/>
+		<label top="00" left="180" width="20" height="20"  text="2" autoSize="true"/>
+		<label top="00" left="205" width="20" height="20"  text="3" autoSize="true"/>
+		<label top="00" left="230" width="20" height="20"  text="4" autoSize="true"/>
+		<label top="00" left="255" width="20" height="20"  text="5" autoSize="true"/>
+		<label top="00" left="280" width="20" height="20"  text="6" autoSize="true"/>
+		<label top="00" left="305" width="20" height="20"  text="7" autoSize="true"/>
+		<label top="00" left="330" width="20" height="20"  text="8" autoSize="true"/>
+		<label top="00" left="355" width="20" height="20"  text="9" autoSize="true"/>
+		<label top="00" left="375" width="20" height="20"  text="10" autoSize="true"/>	
+		<label top="00" left="0" width="120" height="20"  text="Perícia" autoSize="true" fontColor="White" fontSize="18" horzTextAlign="center"/>
+		<Skill Top="25" NomSkill="Briga" Grupo = "GrupoBriga" Field = "fieldBriga" num="37"/>
+		<Skill Top="50" NomSkill="Captura" Grupo = "GrupoCaptura" Field = "fieldCaptura" num="38"/>
+		<Skill Top="75" NomSkill="Determinação" Grupo = "GrupoDeterm" Field = "fieldDeterm" num="39"/>
+		<Skill Top="100" NomSkill="Empatia" Grupo = "GrupoEmpatia" Field = "fieldEmpatia" num="40"/>
+		<Skill Top="125" NomSkill="Empatia Pokémon" Grupo = "GrupoEmpatiaPok" Field = "fieldEmpatiaPok" num="41"/>
+		<Skill Top="150" NomSkill="Esportes" Grupo = "GrupoEsportes" Field = "fieldEsportes" num="42"/>
+		<Skill Top="175" NomSkill="Esquiva" Grupo = "GrupoEsquiva" Field = "fieldEsquiva" num="43"/>
+		<Skill Top="200" NomSkill="Furtividade" Grupo = "GrupoFurtivid" Field = "fieldFurtivid" num="44"/>
+		<Skill Top="225" NomSkill="Intimidação" Grupo = "GrupoIntim" Field = "fieldIntim" num="45"/>
+		<Skill Top="250" NomSkill="Lábia" Grupo = "GrupoLabia" Field = "fieldLabia" num="46"/>
+		<Skill Top="275" NomSkill="Liderança" Grupo = "GrupoLidera" Field = "fieldLidera" num="47"/>
+		<Skill Top="300" NomSkill="Memória" Grupo = "GrupoMemor" Field = "fieldMemor" num="48"/>
+		<Skill Top="325" NomSkill="Prontidão" Grupo = "GrupoProntid" Field = "fieldProntid" num="49"/>	
+		<Skill Top="350" NomSkill="Resistência" Grupo = "GrupoResist" Field = "fieldResist" num="50"/>
+		<Skill Top="375" NomSkill="Revitalizar" Grupo = "GrupoRevita" Field = "fieldRevita" num="51"/>
+		<Skill Top="400" NomSkill="Sobrevivência" Grupo = "GrupoSobrev" Field = "fieldSobrev" num="52"/>
+	</layout>
+
+	<layout left="10" top="025" height="600" width="1000">		
+		<label top="00" left="130" width="20" height="20"  text="0" autoSize="true"/>
+		<label top="00" left="155" width="20" height="20"  text="1" autoSize="true"/>
+		<label top="00" left="180" width="20" height="20"  text="2" autoSize="true"/>
+		<label top="00" left="205" width="20" height="20"  text="3" autoSize="true"/>
+		<label top="00" left="230" width="20" height="20"  text="4" autoSize="true"/>
+		<label top="00" left="255" width="20" height="20"  text="5" autoSize="true"/>
+		<label top="00" left="280" width="20" height="20"  text="6" autoSize="true"/>
+		<label top="00" left="305" width="20" height="20"  text="7" autoSize="true"/>
+		<label top="00" left="330" width="20" height="20"  text="8" autoSize="true"/>
+		<label top="00" left="355" width="20" height="20"  text="9" autoSize="true"/>
+		<label top="00" left="375" width="20" height="20"  text="10" autoSize="true"/>	
+		<label top="00" left="0" width="120" height="20"  text="Talento" autoSize="true" fontColor="White" fontSize="18" horzTextAlign="center"/>
+		<Skill Top="25" NomSkill="Adestrar Pokémon" Grupo = "GrupoAdPok" Field = "fieldAdPok" num="53"/>
+		<Skill Top="50" NomSkill="Aprendizado" Grupo = "GrupoApren" Field = "fieldApren" num="54"/>
+		<Skill Top="75" NomSkill="Armamentos" Grupo = "GrupoArmad" Field = "fieldArmad" num="55"/>
+		<Skill Top="100" NomSkill="Artes Marciais" Grupo = "GrupoArtMar" Field = "fieldArtMar" num="55"/>
+		<Skill Top="125" NomSkill="Computador" Grupo = "GrupoComput" Field = "fieldComput" num="56"/>
+		<Skill Top="150" NomSkill="Condução" Grupo = "GrupoConduc" Field = "fieldConduc" num="57"/>
+		<Skill Top="175" NomSkill="Cozinha" Grupo = "GrupoCozinh" Field = "fieldCozinh" num="58"/>
+		<Skill Top="200" NomSkill="Escavação" Grupo = "GrupoEscav" Field = "fieldEscav" num="59"/>
+		<Skill Top="225" NomSkill="Etiqueta" Grupo = "GrupoEtique" Field = "fieldEtique" num="60"/>
+		<Skill Top="250" NomSkill="Investigação" Grupo = "GrupoInvestig" Field = "fieldInvestig" num="61"/>
+		<Skill Top="275" NomSkill="Marinhagem" Grupo = "GrupoMarinh" Field = "fieldMarinh" num="62"/>
+		<Skill Top="300" NomSkill="Meditação" Grupo = "GrupoMedita" Field = "fieldMedita" num="63"/>
+		<Skill Top="325" NomSkill="Observar" Grupo = "GrupoObserva" Field = "fieldObserva" num="64"/>
+		<Skill Top="350" NomSkill="Orientação" Grupo = "GrupoOrienta" Field = "fieldOrienta" num="65"/>	
+		<Skill Top="375" NomSkill="Primeiros Socorros" Grupo = "GrupoPrimSoc" Field = "fieldPrimSoc" num="66"/>
+		<Skill Top="400" NomSkill="Pokébolas" Grupo = "GrupoPokebola" Field = "fieldPokebola" num="67"/>
+		<Skill Top="425" NomSkill="Poções" Grupo = "GrupoPocao" Field = "fieldPocao" num="68"/>
+		<Skill Top="450" NomSkill="Procura" Grupo = "GrupoProcura" Field = "fieldProcura" num="69"/>
+	</layout>
+</tab>
+
+		<tab title="Psiquismo e Antecedentes">
+			<layout left="000" top="000" height="650" width="1100">
+				<image left="000" top="000" height="650" width="1100" src="/img/Pokeball.jpg" style="autoFIT" />
+            </layout>
+
+	<layout left="10" top="030" height="600" width="1000">		
+		<label top="00" left="130" width="20" height="20"  text="0" autoSize="true"/>
+		<label top="00" left="155" width="20" height="20"  text="1" autoSize="true"/>
+		<label top="00" left="180" width="20" height="20"  text="2" autoSize="true"/>
+		<label top="00" left="205" width="20" height="20"  text="3" autoSize="true"/>
+		<label top="00" left="230" width="20" height="20"  text="4" autoSize="true"/>
+		<label top="00" left="255" width="20" height="20"  text="5" autoSize="true"/>
+		<label top="00" left="280" width="20" height="20"  text="6" autoSize="true"/>
+		<label top="00" left="305" width="20" height="20"  text="7" autoSize="true"/>
+		<label top="00" left="330" width="20" height="20"  text="8" autoSize="true"/>
+		<label top="00" left="355" width="20" height="20"  text="9" autoSize="true"/>
+		<label top="00" left="375" width="20" height="20"  text="10" autoSize="true"/>	
+		<label top="00" left="0" width="120" height="20"  text="Psiquismo" autoSize="true" fontColor="White" fontSize="18" horzTextAlign="center"/>
+		<Skill Top="25" NomSkill="Psionismo" Grupo = "GrupoPsionismo" Field = "fieldPsionismo" num="70"/>
+		<Skill Top="75" NomSkill="Barreira Mental" Grupo = "GrupoBarMen" Field = "fieldBarMen" num="71"/>
+		<Skill Top="100" NomSkill="Elo Pokémon" Grupo = "GrupoEloPok" Field = "fieldEloPok" num="72"/>
+		<Skill Top="125" NomSkill="Elo Psíquico" Grupo = "GrupoEloPsi" Field = "fieldEloPsi" num="73"/>
+		<Skill Top="150" NomSkill="Ler Mentes" Grupo = "GrupoLerMen" Field = "fieldLerMen" num="74"/>
+		<Skill Top="175" NomSkill="Mon. de Ferro" Grupo = "GrupoMonFer" Field = "fieldMonFer" num="75"/>
+		<Skill Top="200" NomSkill="Raio Psíquico" Grupo = "GrupoRaiPsi" Field = "fieldRaiPsi" num="76"/>
+		<Skill Top="225" NomSkill="Telecinésia" Grupo = "GrupoTelec" Field = "fieldTelec" num="77"/>
+		<Skill Top="250" NomSkill="Teleporte" Grupo = "GrupoTelep" Field = "fieldTelep" num="78"/>
+		<Skill Top="275" NomSkill="Voo" Grupo = "GrupoVoo" Field = "fieldVoo" num="79"/>
+	</layout>
+
+<template name="Antecedente">
+	<label top="$(Top)" left="0" width="120" height="20"  text="$(NomAntec)" autoSize="true" fontColor="White" fontSize="14" horzTextAlign="center"/>
+    <radioButton top="$(Top)" left="125" width="20" height="20" groupName="$(Grupo)" field="$(Field)" fieldValue="0"/>                                
+    <radioButton top="$(Top)" left="150" width="20" height="20" groupName="$(Grupo)" field="$(Field)" fieldValue="1"/>                    
+    <radioButton top="$(Top)" left="175" width="20" height="20" groupName="$(Grupo)" field="$(Field)" fieldValue="2"/>
+    <radioButton top="$(Top)" left="200" width="20" height="20" groupName="$(Grupo)" field="$(Field)" fieldValue="3"/>
+    <radioButton top="$(Top)" left="225" width="20" height="20" groupName="$(Grupo)" field="$(Field)" fieldValue="4"/>
+    <radioButton top="$(Top)" left="250" width="20" height="20" groupName="$(Grupo)" field="$(Field)" fieldValue="5"/>
+    <radioButton top="$(Top)" left="275" width="20" height="20" groupName="$(Grupo)" field="$(Field)" fieldValue="6"/>
+    <radioButton top="$(Top)" left="300" width="20" height="20" groupName="$(Grupo)" field="$(Field)" fieldValue="7"/>
+    <radioButton top="$(Top)" left="325" width="20" height="20" groupName="$(Grupo)" field="$(Field)" fieldValue="8"/>
+    <radioButton top="$(Top)" left="350" width="20" height="20" groupName="$(Grupo)" field="$(Field)" fieldValue="9"/>
+    <radioButton top="$(Top)" left="375" width="20" height="20" groupName="$(Grupo)" field="$(Field)" fieldValue="10"/>
+    <dataLink field="$(Field)" defaultValue="0" />                  
+</template>
+	
+	<layout left="10" top="450" height="600" width="1000">		
+		<label top="00" left="130" width="20" height="20"  text="0" autoSize="true"/>
+		<label top="00" left="155" width="20" height="20"  text="1" autoSize="true"/>
+		<label top="00" left="180" width="20" height="20"  text="2" autoSize="true"/>
+		<label top="00" left="205" width="20" height="20"  text="3" autoSize="true"/>
+		<label top="00" left="230" width="20" height="20"  text="4" autoSize="true"/>
+		<label top="00" left="255" width="20" height="20"  text="5" autoSize="true"/>
+		<label top="00" left="280" width="20" height="20"  text="6" autoSize="true"/>
+		<label top="00" left="305" width="20" height="20"  text="7" autoSize="true"/>
+		<label top="00" left="330" width="20" height="20"  text="8" autoSize="true"/>
+		<label top="00" left="355" width="20" height="20"  text="9" autoSize="true"/>
+		<label top="00" left="375" width="20" height="20"  text="10" autoSize="true"/>	
+		<label top="00" left="0" width="120" height="20"  text="Antecedente" autoSize="true" fontColor="White" fontSize="18" horzTextAlign="center"/>
+		<Antecedente Top="25" NomAntec="Mentor" Grupo = "GrupoMentor" Field = "fieldMentor"/>
+		<Antecedente Top="50" NomAntec="Recursos" Grupo = "GrupoRecursos" Field = "fieldRecursos"/>
+		<Antecedente Top="75" NomAntec="Status" Grupo = "GrupoStatus" Field = "fieldStatus"/>
+		<Antecedente Top="100" NomAntec="Vontade" Grupo = "GrupoVontade" Field = "fieldVontade"/>
+	</layout>
+
+	 	<template name="habilidadeSmallCenter">
+			<flowPart minWidth="90" maxWidth="100" height="35">
+				<label align="top" class="tituloCampo" fontSize="10" text="$(text)" horzTextAlign="center" wordWrap="true" textTrimming="none" autoSize="true"/>
+				<edit align="client" class="" field="$(field)" horzTextAlign="center" fontSize="12" type="number"/>
+			</flowPart>
+		</template>
+	 	<template name="habilidadeSmallCenter2">
+			<flowPart minWidth="90" maxWidth="100" height="35">
+				<label align="top" class="tituloCampo" fontSize="10" text="$(text)" horzTextAlign="center" wordWrap="true" textTrimming="none" autoSize="true"/>
+				<edit align="client" class="" field="$(field)" horzTextAlign="center" fontSize="12"/>
+			</flowPart>
+		</template>
+		<template name="habilidadeLarge">
+			<flowPart minWidth="180" maxWidth="200" height="35">
+				<label align="top" class="tituloCampo" fontSize="10" text="$(text)" horzTextAlign="center" wordWrap="true" textTrimming="none" autoSize="true"/>
+				<edit align="client" class="" field="$(field)" fontSize="12"/>
+			</flowPart>
+		</template>
+
+	 	<popup name="popHabilidade" width="300" height="280" backOpacity="0.4" autoScopeNode="false">
+			<flowLayout align="top" autoHeight="true" maxControlsPerLine="3" margins="{bottom=4}" horzAlign="center">
+				<habilidadeSmallCenter text="Pts" field="nivelHabilidade"/>
+				<habilidadeLarge text="Nome" field="nomeHabilidade"/>			
+				<dataLink field="nivelHabilidade">
+					<event name="onChange">
+						local rcl = self:findControlByName("rclListaDosTalentosBase");
+						if rcl~= nil then
+							rcl:sort();
+						end;
+						rcl = self:findControlByName("rclListaDosTalentosAvanc");
+						if rcl~= nil then
+							rcl:sort();
+						end;
+					</event>
+				</dataLink>
+			</flowLayout>
+			<textEditor align="client" field="descricao"/>
+		</popup>
+
+		<layout left="590" top="25" width="380" height="520">
+			<rectangle align="client" color="#0000007F"/>
+			<label left="0" top="0" width="380" height="20" text="Antecedentes Específicos" autoSize="true" fontColor ="White" fontSize = "18" horzTextAlign="center"/>
+			<button text="Novo Antecedente" left="0" top="25" width="380" height="20" onClick="self.rclListaDosTalentosAvanc:append();"/>
+			<recordList name="rclListaDosTalentosAvanc" field="campoDosTalA" templateForm="frmFichaRPGmeister4h_svg" left="5" top="50" width="370" height="460" layout="vertical">
+				<event name="onCompare">
+		            return ((tonumber(nodeA.nivelHabilidade) or 0) - (tonumber(nodeB.nivelHabilidade) or 0));
+		        </event>
+			</recordList>
+		</layout>	
+		
+		</tab>
+	
+            <tab title="Mochila">
+                <layout left="000" top="000" height="650" width="1100">
+                    <image left="000" top="000" height="650" width="1100" src="/img/Pokeball.jpg" style="autoFIT" />
+                </layout>
+                <layout left="50" top="10" height="400" width="300">
+                    <image left="080" top="005" width="40" height="40" src="/img/DP_Items_pocket_M.png" editable="true" style="proportional" />
+                    <label left="000" top="045" height="20" width="200" text="Itens" autoSize="true" fontColor="White" fontSize="18" horzTextAlign="center" />
+                    <textEditor left="000" top="065" width="200" height="230" field="campoItens" />
+                </layout>
+                <layout left="300" top="10" height="400" width="300">
+                    <image left="080" top="005" width="40" height="40" src="/img/DP_Medicine_pocket_M.png" editable="true" style="proportional" />
+                    <label left="000" top="045" height="20" width="200" text="Medicina" autoSize="true" fontColor="White" fontSize="18" horzTextAlign="center" />
+                    <textEditor left="000" top="065" width="200" height="230" field="campoMedicina" />
+                </layout>
+                <layout left="550" top="10" height="400" width="300">
+                    <image left="080" top="005" width="40" height="40" src="/img/DP_Poke_Balls_pocket_M.png" editable="true" style="proportional" />
+                    <label left="000" top="045" height="20" width="200" text="Pokébolas" autoSize="true" fontColor="White" fontSize="18" horzTextAlign="center" />
+                    <textEditor left="000" top="065" width="200" height="230" field="campoPokebolas" />
+                </layout>
+                <layout left="800" top="10" height="400" width="300">
+                    <image left="080" top="005" width="40" height="40" src="/img/DP_TMs_and_HMs_pocket_M.png" editable="true" style="proportional" />
+                    <label left="000" top="045" height="20" width="200" text="Registros(TMs e HMs)" autoSize="true" fontColor="White" fontSize="18" horzTextAlign="center" />
+                    <textEditor left="000" top="065" width="200" height="230" field="campoRegistros" />
+                </layout>
+                <layout left="50" top="310" height="400" width="300">
+                    <image left="080" top="005" width="40" height="40" src="/img/DP_Berries_pocket_M.png" editable="true" style="proportional" />
+                    <label left="000" top="045" height="20" width="200" text="Berries" autoSize="true" fontColor="White" fontSize="18" horzTextAlign="center" />
+                    <textEditor left="000" top="065" width="200" height="230" field="campoBerries" />
+                </layout>
+                <layout left="300" top="310" height="400" width="300">
+                    <image left="080" top="005" width="40" height="40" src="/img/DP_Battle_items_pocket_M.png" editable="true" style="proportional" />
+                    <label left="000" top="045" height="20" width="200" text="Itens de Batalha" autoSize="true" fontColor="White" fontSize="18" horzTextAlign="center" />
+                    <textEditor left="000" top="065" width="200" height="230" field="campoItemBatalha" />
+                </layout>
+                <layout left="550" top="310" height="400" width="300">
+                    <image left="080" top="005" width="40" height="40" src="/img/DP_Key_items_pocket_M.png" editable="true" style="proportional" />
+                    <label left="000" top="045" height="20" width="200" text="Itens-Chave" autoSize="true" fontColor="White" fontSize="18" horzTextAlign="center" />
+                    <textEditor left="000" top="065" width="200" height="230" field="campoItemChave" />
+                </layout>
+                <layout left="800" top="310" height="400" width="300">
+                    <image left="080" top="005" width="40" height="40" src="/img/DP_Mail_pocket_M.png" editable="true" style="proportional" />
+                    <label left="000" top="045" height="20" width="200" text="Outros" autoSize="true" fontColor="White" fontSize="18" horzTextAlign="center" />
+                    <textEditor left="000" top="065" width="200" height="230" field="campoOutros" />
+                </layout>
+            </tab>
+		
+		  <tab title="Pokédex">	
+			<layout left="000" top="000" height="650" width="1100">
+				<image left="000" top="000" height="650" width="1100" src="/img/Pokeball.jpg" style="autoFIT" />
+            </layout>		  
+			<button align="top" height="25" text="Adicionar Entrada" onClick="self.rclDex:append();"/>
+			<layout align="top" width="170" height="30" margins="{top=5, bottom=5, left=15}">
+			
+				<label text="Capturados:" align="left" width="80"/>
+				<rectangle color="darkred" align="left" class="roRect" margins="{left=5}">
+					<label field="trainerPokeCaught" align="client" class="roValues" horzTextAlign="center"/>
+				</rectangle>
+				
+				<label text="Vistos:" align="left" width="80" margins="{left=80}"/>
+				<rectangle color="darkred" align="left" class="roRect" margins="{left=10}">
+					<label field="trainerPokeSeen" align="client" class="roValues" horzTextAlign="center"/>
+				</rectangle>
+				
+			</layout>
+			<layout align="client" top="35">
+				<scrollBox margins="{top=5}" align="client">
+					<recordList name="rclDex" field="recDex" templateForm="frmDex" align="client" layout="horizontalTiles" minQt="1" selectable="true">
+						<event name="onCompare"><![CDATA[               
+
+							if (nodeA.pokeNumber or 0) < (nodeB.pokeNumber or 0) then
+								return -1;
+							elseif (nodeA.pokeNumber or 0) > (nodeB.pokeNumber or 0) then
+								return 1;
+							else   
+								return Utils.compareStringPtBr(nodeA.pokeSpecie, nodeB.pokeSpecie);
+							end;               
+
+							]]>
+						</event>
+						<event name="onItemAdded">
+							self.recalcDex();
+						</event>
+						<event name="onItemRemoved">
+							self.recalcDex();
+						</event>
+						<script>
+							function self.recalcDex()
+							
+								if sheet ~= nil then
+									local pokeSeenTotal = 0;
+									local pokeCaughtTotal = 0;
+									local nodes = NDB.getChildNodes(sheet.recDex);
+									
+									for i=1, #nodes, 1 do
+										pokeSeenTotal = pokeSeenTotal + 1;
+										if nodes[i].pokeCaught then
+											pokeCaughtTotal = pokeCaughtTotal +1;
+										end					
+									end	
+									sheet.trainerPokeSeen = pokeSeenTotal;
+									sheet.trainerPokeCaught = pokeCaughtTotal;
+
+									for i=1, #nodes, 1 do
+										if (nodes[i].pokeNumber == nil) then
+											nodes[i].urlDexNum = 0;
+										elseif (string.len(nodes[i].pokeNumber) == 2) then
+											nodes[i].urlDexNum = "0" .. nodes[i].pokeNumber;
+										elseif (string.len(nodes[i].pokeNumber) == 3) then
+											nodes[i].urlDexNum = nodes[i].pokeNumber;
+										elseif (string.len(nodes[i].pokeNumber) == 1) then
+											nodes[i].urlDexNum = "00" .. nodes[i].pokeNumber;
+										end;
+										nodes[i].pokeImgUrl = "https://www.serebii.net/xy/pokemon/" .. nodes[i].urlDexNum .. ".png";
+									end
+									
+								end;
+							end
+						</script>
+					</recordList>
+				</scrollBox>
+			</layout>
+		  </tab>
+		
+
+            <tab title="Background">
+                <layout left="000" top="000" height="650" width="1100">
+                    <image left="000" top="000" height="650" width="1100" src="/img/Pokeball.jpg" style="autoFIT" />
+                </layout>
+                <layout left="10" top="10" height="800" width="1000">
+                    <rectangle left="000" top="000" width="710" height="575" color="darkred" strokeColor="black" strokeSize="5" />
+                    <label left="000" top="005" height="20" width="700" fontColor="White" fontSize="18" text="História" autoSize="true" horzTextAlign="center" />
+                    <richEdit left="005" top="030" width="700" height="540" backgroundColor="black" defaultFontColor="white" field="campoHistoria" />
+                </layout>
+                <layout left="740" top="10" height="600" width="1000">
+                    <rectangle left="000" top="000" width="340" height="435" color="darkred" strokeColor="black" strokeSize="5" />
+                    <label left="000" top="005" height="20" width="330" fontColor="White" fontSize="18" text="Personalidade" autoSize="true" horzTextAlign="center" />
+                    <richEdit left="005" top="030" width="330" height="400" backgroundColor="black" defaultFontColor="white" field="campoPersonalidade" />
+                </layout>
+            </tab>
+			
+		<tab title="Notes">
+			<layout left="000" top="000" height="650" width="1100">
+				<image left="000" top="000" height="650" width="1100" src="/img/Pokeball.jpg" style="autoFIT" />
+            </layout>
+		<layout left="10" top="10" height="600" width="465">
+			<rectangle left="000" top="000" width="465" height="540" color="Red" strokeColor="black" strokeSize="5" />
+            <richEdit left="005" top="005" width="455" height="530"  backgroundColor="black" defaultFontColor="white" field="campoTextoGrande"/>
+		</layout>
+		
+		<layout left="510" top="10" height="600" width="465">
+			<rectangle left="000" top="000" width="465" height="540" color="Red" strokeColor="black" strokeSize="5" />
+			 <richEdit left="005" top="005" width="455" height="530"  backgroundColor="black" defaultFontColor="white" field="campoTextoGrande2"/>
+		</layout>	
+		</tab>
+
+		 <tab title="Créditos">	
+			<layout left="000" top="000" height="650" width="1100">
+				<image left="000" top="000" height="650" width="1100" src="/img/Pokeball.jpg" style="autoFIT" />
+           </layout>
+		<layout left="400" top="200" height="600" width="465">
+			<label left="0" top="000" height="20" width="600" text="Hitoshura (Criador do Plugin)" autoSize="true"/>
+			<label left="0" top="025" height="20" width="600" text="Shakerskj (Aba pokedéx)" autoSize="true"/>
+			<label left="0" top="050" height="20" width="600" text="Jonatas de Lima Carvalho (Criador do Sistema)" autoSize="true"/>
+			<label left="0" top="075" height="20" width="600" text="Ambesek (Ajudou no Código)" autoSize="true"/>
+		</layout>	
+		 </tab> 
+
+		</tabControl>
+		
+        <dataLink fields="{'HP_val', 'basLV', 'HP_val','ATK_val','ATK_edc', 'DEF_edc', 'DEF_val', 'SPATK_edc','SPATK_val','baseHPMAXEXTRA', 'HP_val','SPD_tot','SPD_mod','bas_DES_ESC','bon_DES_ESC','bon_DES_VOO',
+							'SPDEF_edc', 'SPDEF_val', 'SPD_edc', 'SPD_val', 'bon_DES_TER', 'bon_DES_NAT', 'bon_DES_SUB', 'pers_bonEVAF', 'pers_bonEVAE', 'pers_bonEVAV', 'bas_DES_VOO','bas_DES_ESCA'}">
+ <event name="onChange">
+			if sheet== nil then return end;
+			
+			sheet.basLV = tonumber(sheet.basLV) or 1
+			sheet.HP_tot = sheet.HP_val or 0;
+			
+			sheet.baseHPMAX = math.floor((sheet.basLV or 1)*4 + (sheet.HP_tot or 1)*4) + (sheet.baseHPMAXEXTRA or 0);
+
+			local SPDedcDES = {-2,-1,-1,-1,0,0,0,0,1,1,2,2,3};
+			local SPDedc = tonumber(sheet.SPD_edc) or 7
+			
+			local EdCtable = {0.4,0.5,0.6,0.7,0.8,0.9,1,1.25,1.5,1.75,2,2.25,2.5};
+			
+			
+			local atkedc = tonumber(sheet.ATK_edc) or 7
+				if 1 &gt; atkedc then atkedc = 7 end;
+				if atkedc &gt; 13 then atkedc = 7 end;
+			sheet.ATK_tot = math.floor(EdCtable[atkedc]*(sheet.ATK_val or 0));
+				sheet.ATK_mod = sheet.ATK_tot-10;
+				if ((sheet.ATK_tot or 0) &gt; 10) then
+					sheet.ATK_mod = math.floor(((sheet.ATK_tot or 10)-10)/2);
+					end
+			
+			local defedc = tonumber(sheet.DEF_edc) or 7
+				if 1 &gt; defedc then defedc = 7 end;
+				if defedc &gt; 13 then defedc = 7 end;
+			sheet.DEF_tot = math.floor(EdCtable[defedc]*(sheet.DEF_val or 0));	
+				sheet.DEF_mod = sheet.DEF_tot-10;
+				if ((sheet.DEF_tot or 0) &gt; 10) then
+					sheet.DEF_mod = math.floor(((sheet.DEF_tot or 10)-10)/2);
+					end
+					
+			local spatkedc = tonumber(sheet.SPATK_edc) or 7
+				if 1 &gt; spatkedc then spatkedc = 7 end;
+				if spatkedc &gt; 13 then spatkedc = 7 end;
+			sheet.SPATK_tot = math.floor(EdCtable[spatkedc]*(sheet.SPATK_val or 0));
+				sheet.SPATK_mod = sheet.SPATK_tot-10;
+				if ((sheet.SPATK_tot or 0) &gt; 10) then
+					sheet.SPATK_mod = math.floor(((sheet.SPATK_tot or 10)-10)/2);
+					end			
+			
+			local spdefedc = tonumber(sheet.SPDEF_edc) or 7
+				if 1 &gt; spdefedc then spdefedc = 7 end;
+				if spdefedc &gt; 13 then spdefedc = 7 end;
+			sheet.SPDEF_tot = math.floor(EdCtable[spdefedc]*(sheet.SPDEF_val or 0));				
+				sheet.SPDEF_mod = sheet.SPDEF_tot-10;
+				if ((sheet.SPDEF_tot or 0) &gt; 10) then
+					sheet.SPDEF_mod = math.floor(((sheet.SPDEF_tot or 10)-10)/2);
+					end
+
+				if 1 &gt; SPDedc then SPDedc = 7 end;
+				if SPDedc &gt; 13 then SPDedc = 7 end;
+			sheet.SPD_tot = math.floor(EdCtable[SPDedc]*(sheet.SPD_val or 0));
+				sheet.SPD_mod = sheet.SPD_tot-10;
+				if ((sheet.SPD_tot or 0) &gt; 10) then
+					sheet.SPD_mod = math.floor(((sheet.SPD_tot or 10)-10)/2);
+					end
+					
+				local def_temp = tonumber(sheet.DEF_tot) or 0;
+				if (def_temp &gt;= 31) then def_temp = 30; 	end
+			sheet.EVA_FIS = math.floor(def_temp/5) + (sheet.pers_bonEVAF or 0);
+				local spdef_temp = tonumber(sheet.SPDEF_tot) or 0;
+				if (spdef_temp &gt;= 31) then spdef_temp = 30; 	end
+			sheet.EVA_ESP = math.floor(spdef_temp/5) + (sheet.pers_bonEVAE or 0);
+				local spd_temp = tonumber(sheet.SPD_tot) or 0;
+				if (spd_temp &gt;= 31) then spd_temp = 30; 	end
+			sheet.EVA_VEL = math.floor(spd_temp/5) + (sheet.pers_bonEVAV or 0);
+	
+			local bonus_DES_TER = 0;
+			if (sheet.ATK_mod or 0) &gt;= (sheet.DEF_mod or 0) then 
+				bonus_DES_TER = math.floor(sheet.ATK_mod/2) or 0;	
+				end
+			if (sheet.DEF_mod or 0) &gt;= (sheet.ATK_mod or 0) then 
+				bonus_DES_TER = math.floor(sheet.DEF_mod/2) or 0;	
+				end
+			sheet.bas_DES_TER = 3 + bonus_DES_TER;
+			sheet.DES_TER = (sheet.bas_DES_TER or 0) + (sheet.bon_DES_TER or 0) + (SPDedcDES[SPDedc] or 0)
+				if (5 &gt; (sheet.DES_TER or 0)) then sheet.DES_TER = 5; end
+				
+			sheet.bas_DES_NAT = 2 + math.floor((sheet.DEF_mod)/2) or 0;
+			sheet.DES_NAT = (sheet.bas_DES_NAT or 0) + (sheet.bon_DES_NAT or 0) + (SPDedcDES[SPDedc] or 0)
+				if (4 &gt; (sheet.DES_NAT or 0)) then sheet.DES_NAT = 4; end
+			
+			local bonus_DES_SUB = 0;			
+			if (((sheet.ATK_mod or 0) &gt;= 4) or ((sheet.DEF_mod or 0) &gt;= 3)) then
+				bonus_DES_SUB=1;
+				end
+				
+			sheet.bas_DES_SUB = 3 + (bonus_DES_SUB or 0);
+			sheet.DES_SUB = (sheet.bas_DES_SUB or 0) + (sheet.bon_DES_SUB or 0) + (SPDedcDES[SPDedc] or 0)
+				if (1 &gt; (sheet.DES_NAT or 0)) then sheet.DES_NAT = 1; end				
+
+			
+			if (sheet.bas_DES_VOO or 0 &gt; 0) then
+				sheet.DES_VOO = (sheet.bas_DES_VOO or 0) + (sheet.bon_DES_VOO or 0) + (SPDedcDES[SPDedc] or 0)
+				if (0 &gt; (sheet.DES_VOO or 0)) then sheet.DES_VOO = 0; end
+				end
+				if (sheet.bas_DES_VOO == nil) then sheet.DES_VOO = nil; end
+			if (sheet.bas_DES_ESC or 0 &gt; 0) then
+				sheet.DES_ESC = (sheet.bas_DES_ESC or 0) + (sheet.bon_DES_ESC or 0) + (SPDedcDES[SPDedc] or 0)
+				if (0 &gt; (sheet.DES_ESC or 0)) then sheet.DES_ESC = 0; end
+				end
+				if (sheet.bas_DES_ESC == nil) then sheet.DES_ESC = nil; end	
+		</event>
+        </dataLink>
+	</scrollBox>		
+
+		
+	
+</form>

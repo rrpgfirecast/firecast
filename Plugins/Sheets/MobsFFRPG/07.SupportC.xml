@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmSupportC" align="client" theme="dark" margins="{top=1}">
+	<layout left="000" top="000" height="650" width="1100">
+		<image left="000" top="000" height="650" width="1100" src="/img/wallpaper.png" style="autoFIT" />
+		</layout>
+	
+	<scrollBox align ="client">
+		<layout left="60" top="20" height="550" width="380">
+			<basicAbiName2 Top ="000" Name="Status Weakness" field = "namStatweak" 
+			Texto ="The monster is vulnerable to a certain kind of attack or effect. Select a single Ability, Item, or damage type as a vulnerability when adding Weak Spot to a monster, as well as one or more negative Status Conditions. \n If an attack or effect the monster is vulnerable to is used on it, the selected Status Condition – or Conditions – will automatically be added to the monster. XP and Gil modifiers for Weak Spot depend on the actual Condition inflicted, and are given per Status – to have a monster suffer from Confuse and Slow if struck by Lightning Elemental damage, for instance, incurs a modifier of -29/-9."/>
+			<addStat Top = "025" Name="Berserk (4)" field="weakBerserk"/>
+			<addStat Top = "050" Name="Blind (4)" field="weakBlind"/>
+			<addStat Top = "075" Name="Immobilize (4)" field="weakImmobilize"/>
+			<addStat Top = "100" Name="Poison (∞)" field="weakPoison"/>
+			<addStat Top = "125" Name="Sleep (4)" field="weakSleep"/>
+			<addStat Top = "150" Name="Slow (4)" field="weakSlow"/>
+			<addStat Top = "175" Name="Zombie (∞)" field="weakZombie"/>
+			<addStat Top = "225" Name="Condemn (4)" field="weakCondemn"/>
+			<addStat Top = "250" Name="Confuse (4)" field="weakConfuse"/>
+			<addStat Top = "275" Name="Curse (4)" field="weakCurse"/>
+			<addStat Top = "300" Name="Disable (4)" field="weakDisable"/>
+			<addStat Top = "325" Name="Petrify (4)" field="weakPetrify"/>
+			<addStat Top = "350" Name="Silence (4)" field="weakSilence"/>
+			<addStat Top = "375" Name="Sap (4)" field="weakSap"/>
+			<addStat Top = "400" Name="Unaware (1)" field="weakUnaware"/>
+			<addStat Top = "425" Name="Eject" field="weakEject"/>
+			<addStat Top = "450" Name="Mini (4)" field="weakMini"/>
+			<addStat Top = "475" Name="Strength Down (6)" field="weakSTRDown"/>
+			<addStat Top = "500" Name="Agility Down (6)" field="weakAGIDown"/>
+			<addStat Top = "525" Name="Magic Down (6)" field="weakMAGDown"/>
+			</layout>   
+
+		<layout left="200" top="20" height="550" width="380">
+			<addStat Top = "025" Name="Mental Down (6)" field="weakMENDown"/>
+			<addStat Top = "050" Name="Armor Down (6)" field="weakARMDown"/>
+			<addStat Top = "075" Name="Spirit Down (6)" field="weakSPIDown"/>
+			<addStat Top = "100" Name="Strength Break (6)" field="weakSTRBrk"/>
+			<addStat Top = "125" Name="Agility Break (6)" field="weakAGIBrk"/>
+			<addStat Top = "150" Name="Magic Break (6)" field="weakMAGBrk"/>
+			<addStat Top = "175" Name="Mental Break (6)" field="weakMENBrk"/>
+			<addStat Top = "200" Name="Armor Break (6)" field="weakARMBrk"/>
+			<addStat Top = "225" Name="Spirit Break (6)" field="weakSPIBrk"/>
+			<addStat Top = "250" Name="Stop (4)" field="weakStop"/>
+			<addStat Top = "275" Name="Toad (4)" field="weakToad"/>
+			<addStat Top = "300" Name="Venom (4)" field="weakVenom"/>
+			<addStat Top = "350" Name="Charm (4)" field="weakCharm"/>
+			<addStat Top = "375" Name="Death" field="weakDeath"/>
+			<addStat Top = "400" Name="Frozen (4)" field="weakFrozen"/>
+			<addStat Top = "450" Name="Heat (4)" field="weakHeat"/>
+			<addStat Top = "475" Name="Meltdown (2)" field="weakMeltdown"/>
+			<addStat Top = "500" Name="Stone (∞)" field="weakStone"/>
+			</layout> 
+
+		<layout left="350" top="20" height="550" width="380">
+			<basicAbiName2 Top ="000" Name="Status Resistance (Single)" field = "namStatRes" 
+			Texto ="The monster is partially immune to the effects of a particular Status Condition. \n Any rolls to inflict this Status Condition have their CoS reduced by -50%. Gil and XP modifiers depend on the Class of Status Condition the monster is Immune to"/>
+			<addStat Top = "025" Name="Berserk" field="resBerserk"/>
+			<addStat Top = "050" Name="Blind" field="resBlind"/>
+			<addStat Top = "075" Name="Immobilize" field="resImmobilize"/>
+			<addStat Top = "100" Name="Poison" field="resPoison"/>
+			<addStat Top = "125" Name="Sleep" field="resSleep"/>
+			<addStat Top = "150" Name="Slow" field="resSlow"/>
+			<addStat Top = "175" Name="Zombie" field="resZombie"/>
+			<addStat Top = "200" Name="Lock" field="resLock"/>
+			<addStat Top = "225" Name="Condemn" field="resCondemn"/>
+			<addStat Top = "250" Name="Confuse" field="resConfuse"/>
+			<addStat Top = "275" Name="Curse" field="resCurse"/>
+			<addStat Top = "300" Name="Disable" field="resDisable"/>
+			<addStat Top = "325" Name="Petrify" field="resPetrify"/>
+			<addStat Top = "350" Name="Silence" field="resSilence"/>
+			<addStat Top = "375" Name="Sap" field="resSap"/>
+			<addStat Top = "400" Name="Unaware" field="resUnaware"/>
+			<addStat Top = "425" Name="Eject" field="resEject"/>
+			<addStat Top = "450" Name="Mini" field="resMini"/>
+			<addStat Top = "475" Name="Strength Down" field="resSTRDown"/>
+			<addStat Top = "500" Name="Agility Down" field="resAGIDown"/>
+			<addStat Top = "525" Name="Magic Down" field="resMAGDown"/>
+			</layout>   
+
+		<layout left="490" top="20" height="550" width="380">
+			<addStat Top = "025" Name="Mental Down" field="resMENDown"/>
+			<addStat Top = "050" Name="Armor Down" field="resARMDown"/>
+			<addStat Top = "075" Name="Spirit Down" field="resSPIDown"/>
+			<addStat Top = "100" Name="Strength Break" field="resSTRBrk"/>
+			<addStat Top = "125" Name="Agility Break" field="resAGIBrk"/>
+			<addStat Top = "150" Name="Magic Break" field="resMAGBrk"/>
+			<addStat Top = "175" Name="Mental Break" field="resMENBrk"/>
+			<addStat Top = "200" Name="Armor Break" field="resARMBrk"/>
+			<addStat Top = "225" Name="Spirit Break" field="resSPIBrk"/>
+			<addStat Top = "250" Name="Stop" field="resStop"/>
+			<addStat Top = "275" Name="Toad" field="resToad"/>
+			<addStat Top = "300" Name="Venom" field="resVenom"/>
+			<addStat Top = "325" Name="Element Weak" field="resElemWeak"/>
+			<addStat Top = "350" Name="Charm" field="resCharm"/>
+			<addStat Top = "375" Name="Death" field="resDeath"/>
+			<addStat Top = "400" Name="Frozen" field="resFrozen"/>
+			<addStat Top = "425" Name="Gravity" field="resGravity"/>
+			<addStat Top = "450" Name="Heat" field="resHeat"/>
+			<addStat Top = "475" Name="Meltdown" field="resMeltdown"/>
+			<addStat Top = "500" Name="Stone" field="resStone"/>
+			</layout>  	
+			
+		<layout left="640" top="20" height="550" width="200">
+			<basicAbiName2 Top ="000" Name="Status Immunity (Single)" field = "namStatimm" 
+			Texto ="The monster is wholly immune to the effects of a particular Status Condition. \n Any rolls to inflict this Status Condition have a CoS of 0. Gil and XP modifiers depend on the Class of Status Condition the monster is Immune to:"/>
+			<addStat Top = "025" Name="Berserk" field="immBerserk"/>
+			<addStat Top = "050" Name="Blind" field="immBlind"/>
+			<addStat Top = "075" Name="Immobilize" field="immImmobilize"/>
+			<addStat Top = "100" Name="Poison" field="immPoison"/>
+			<addStat Top = "125" Name="Sleep" field="immSleep"/>
+			<addStat Top = "150" Name="Slow" field="immSlow"/>
+			<addStat Top = "175" Name="Zombie" field="immZombie"/>
+			<addStat Top = "200" Name="Lock" field="immLock"/>
+			<addStat Top = "225" Name="Condemn" field="immCondemn"/>
+			<addStat Top = "250" Name="Confuse" field="immConfuse"/>
+			<addStat Top = "275" Name="Curse" field="immCurse"/>
+			<addStat Top = "300" Name="Disable" field="immDisable"/>
+			<addStat Top = "325" Name="Petrify" field="immPetrify"/>
+			<addStat Top = "350" Name="Silence" field="immSilence"/>
+			<addStat Top = "375" Name="Sap" field="immSap"/>
+			<addStat Top = "400" Name="Unaware" field="immUnaware"/>
+			<addStat Top = "425" Name="Eject" field="immEject"/>
+			<addStat Top = "450" Name="Mini" field="immMini"/>
+			<addStat Top = "475" Name="Strength Down" field="immSTRDown"/>
+			<addStat Top = "500" Name="Agility Down" field="immAGIDown"/>
+			<addStat Top = "525" Name="Magic Down" field="immMAGDown"/>
+			</layout>   
+
+		<layout left="780" top="20" height="550" width="200">
+			<addStat Top = "025" Name="Mental Down" field="immMENDown"/>
+			<addStat Top = "050" Name="Armor Down" field="immARMDown"/>
+			<addStat Top = "075" Name="Spirit Down" field="immSPIDown"/>
+			<addStat Top = "100" Name="Strength Break" field="immSTRBrk"/>
+			<addStat Top = "125" Name="Agility Break" field="immAGIBrk"/>
+			<addStat Top = "150" Name="Magic Break" field="immMAGBrk"/>
+			<addStat Top = "175" Name="Mental Break" field="immMENBrk"/>
+			<addStat Top = "200" Name="Armor Break" field="immARMBrk"/>
+			<addStat Top = "225" Name="Spirit Break" field="immSPIBrk"/>
+			<addStat Top = "250" Name="Stop" field="immStop"/>
+			<addStat Top = "275" Name="Toad" field="immToad"/>
+			<addStat Top = "300" Name="Venom" field="immVenom"/>
+			<addStat Top = "325" Name="Element Weak" field="immElemWeak"/>
+			<addStat Top = "350" Name="Charm" field="immCharm"/>
+			<addStat Top = "375" Name="Death" field="immDeath"/>
+			<addStat Top = "400" Name="Frozen" field="immFrozen"/>
+			<addStat Top = "425" Name="Gravity" field="immGravity"/>
+			<addStat Top = "450" Name="Heat" field="immHeat"/>
+			<addStat Top = "475" Name="Meltdown" field="immMeltdown"/>
+			<addStat Top = "500" Name="Stone" field="immStone"/>
+			</layout>  	
+
+		<layout left="930" top="20" height="200" width="150">
+			<basicAbiName Top ="000" Name="Cat. Resistance" field = "namStatresC" 
+			Texto ="The monster is partially immune to the effects of one of the Status Condition categories outlined in Chapter 7. \n Any rolls to inflict a Status Condition belonging to this category have their CoS halved. Gil and XP modifiers depend on the exact category the monster resists"/>
+			<addStat Top = "025" Name="Fatal" field="resFatal"/>
+			<addStat Top = "050" Name="Mystify" field="resMystify"/>
+			<addStat Top = "075" Name="Seal" field="resSeal"/>
+			<addStat Top = "100" Name="Time" field="resTime"/>
+			<addStat Top = "125" Name="Toxin" field="resToxin"/>
+			<addStat Top = "150" Name="Transform" field="resTransform"/>
+			<addStat Top = "175" Name="Weaken" field="resWeaken"/>
+			</layout>  
+			
+		<layout left="930" top="300" height="200" width="150">
+			<basicAbiName Top ="000" Name="Cat. Immunity" field = "namStatimmC" 
+			Texto ="The monster is wholly immune to the effects of one of the Status Condition categories outlined in Chapter 7. \n Any rolls to inflict a Status Condition belonging to this category have a CoS of 0. Gil and XP modifiers depend on the exact category the monster is Immune to"/>
+			<addStat Top = "025" Name="Fatal" field="immFatal"/>
+			<addStat Top = "050" Name="Mystify" field="immMystify"/>
+			<addStat Top = "075" Name="Seal" field="immSeal"/>
+			<addStat Top = "100" Name="Time" field="immTime"/>
+			<addStat Top = "125" Name="Toxin" field="immToxin"/>
+			<addStat Top = "150" Name="Transform" field="immTransform"/>
+			<addStat Top = "175" Name="Weaken" field="immWeaken"/>
+			</layout>  
+
+			
+		<layout left="1000" top="570" height="50" width="90">
+			<label left="000" top="000" height="20" width="30" text="Exp" autoSize="true"/>
+			<edit left="035" top="000" height="20" width="50" field="ExpFinal" horzTextAlign="center" />
+			<label left="000" top="025" height="20" width="30" text="Gil" autoSize="true"/>
+			<edit left="35" top="025" height="20" width="50" field="GilFinal" horzTextAlign="center" />
+			</layout>	
+
+		</scrollBox>
+	</form>			

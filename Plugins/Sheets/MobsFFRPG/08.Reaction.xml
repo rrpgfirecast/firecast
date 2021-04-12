@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmReaction" align="client" theme="dark" margins="{top=1}">
+	<layout left="000" top="000" height="650" width="1100">
+		<image left="000" top="000" height="650" width="1100" src="/img/wallpaper.png" style="autoFIT" />
+		</layout>
+
+	<scrollBox align ="client">
+
+		<layout left="060" top="050" height="100" width="200">
+			<basicAbility Top = "000" Name="Counterattack" field="reaCounterP" 
+			Texto="The monster is capable of responding to enemy attacks with a potent counter-assault. \n Counter Attack triggers when the monster takes Physical damage from an enemy Action, and allows the monster to immediately use a specific Attack, Spell, or Action Ability against that opponent at no Action cost. \n Select one Attack, Spell, or Action Ability to use in conjunction with Counter Attack when taking this Reaction Ability, or create a new one; the XP and Gil costs for Counter Attack depend on its CoS, and are added to the attack’s final value." />
+			<basicSubAbility2 Top = "025" Name="50%" field="reCAtk50" />
+			<basicSubAbility2 Top = "050" Name="75%" field="reCAtk75" />
+			<basicSubAbility2 Top = "075" Name="100%" field="reCAtk100" />
+			</layout>	
+		<layout left="160" top="050" height="100" width="200">
+			<basicSubAbility2 Top = "25" Name="SOS-Lose" field="reCAtkSOSL" />
+			<basicSubAbility2 Top = "50" Name="SOS-Gain" field="reCAtkSOSG" />
+			<basicSubAbility2 Top = "75" Name="Unsealable" field="reCAtkUns" />
+			</layout>	
+
+		<layout left="060" top="175" height="100" width="200">
+			<basicAbility Top = "00" Name="Counter Magic" field="reaCounterM" 
+			Texto="The monster is capable of responding to enemy magic with a potent counter-assault. \n Counter Magic has a CoS of either 30% or 60% of triggering when the monster takes Magical damage from an enemy Action, allowing the monster to immediately use a specific Attack, Spell, or Action Ability against that opponent at no Action cost. \n Select one Attack, Spell, or Action Ability to use in conjunction with Counter Magic when taking this Reaction Ability, or create a new one; the XP and Gil costs for Counter Magic are added to the attack’s final value." />
+			<basicSubAbility2 Top = "25" Name="30%" field="reCMag50" />
+			<basicSubAbility2 Top = "50" Name="60%" field="reCMag75" />
+			<basicSubAbility2 Top = "75" Name="100%" field="reCMag100" />
+			</layout>	
+		<layout left="160" top="175" height="100" width="200">
+			<basicSubAbility2 Top = "25" Name="SOS-Lose" field="reCMagSOSL" />
+			<basicSubAbility2 Top = "50" Name="SOS-Gain" field="reCMagSOSG" />
+			<basicSubAbility2 Top = "75" Name="Unsealable" field="reCMagUns" />
+			</layout>	
+
+		<layout left="060" top="300" height="100" width="200">
+			<basicAbility Top = "00" Name="Counter Stance" field="reaCounterS" 
+			Texto="By entering into a special defensive posture at the cost of an Action, the monster can intercept opponents’ attacks. \n Select an Attack, Action Ability, or Spell for Counter Stance to be attached to, as well as a damage type – Physical or Magical – to respond to. \n For as long as the Counter Stance remains in effect, the monster will counter with the chosen attack when it takes damage of the selected type from an opponent’s Action. \n The monster cannot make any other Actions while in a Counter Stance, but can come out of it as a free action on its turn." />
+			<basicSubAbility2 Top = "25" Name="Physical" field="reCStanPhys" />
+			<basicSubAbility2 Top = "50" Name="Magical" field="reCStanMag" />
+			</layout>	
+		<layout left="160" top="300" height="100" width="200">
+			<basicSubAbility2 Top = "25" Name="SOS-Lose" field="reCStanSOSL" />
+			<basicSubAbility2 Top = "50" Name="SOS-Gain" field="reCStanSOSG" />
+			<basicSubAbility2 Top = "75" Name="Unsealable" field="reCStanUns" />
+			</layout>	
+			
+		<layout left="060" top="425" height="100" width="200">
+			<basicAbility Top = "00" Name="Return Damage" field="reaCounterRD" 
+			Texto="A certain percentage of all damage inflicted on the monster after modifying for ARM and M. ARM is automatically returned to the combatant that originally dealt it. \n The combatant's ARM and M. ARM can be used to further reduce this damage. \n XP and Gil modifiers depend on the exact percentage of damage returned." />
+			<basicSubAbility2 Top = "25" Name="5%" field="reRD5" />
+			<basicSubAbility2 Top = "50" Name="10%" field="reRD10" />
+			<basicSubAbility2 Top = "75" Name="25%" field="reRD25" />
+			</layout>	
+		<layout left="160" top="425" height="100" width="200">
+			<basicSubAbility2 Top = "25" Name="SOS-Lose" field="reRDSOSL" />
+			<basicSubAbility2 Top = "50" Name="SOS-Gain" field="reRDSOSG" />
+			<basicSubAbility2 Top = "75" Name="Unsealable" field="reRDUns" />
+			</layout>
+
+		<layout left="400" top="120" height="400" width="200">
+			<basicAbiName Top ="000" Name="Counter Status" field = "nameCounterStat" 
+			Texto ="The monster’s power increases in response to the attacks of its opponents. \n Power Up automatically adds a positive Status Condition (4) to the monster when it takes a specific kind of damage – Physical, Magical, or one of the nine kinds of Elemental – from an enemy Action. \n Specify which of the three triggers Counter Status, and select a corresponding Status Condition; XP and Gil values are given per Status added, and depend on the exact Status taken:"/>
+			<addStat Top = "025" Name="Float" field="recCSFloat"/>
+			<addStat Top = "050" Name="Agility Up" field="recCSAgiUP"/>
+			<addStat Top = "075" Name="Spirit Up" field="recCSSpiUP"/>
+			<addStat Top = "100" Name="Fire Spikes" field="recCSFIRSpikes"/>
+			<addStat Top = "125" Name="Ice Spikes" field="recCSICESpikes"/>
+			<addStat Top = "150" Name="Water Spikes" field="recCSWATSpikes"/>
+			<addStat Top = "175" Name="Lightning Spikes" field="recCSELESpikes"/>
+			<addStat Top = "200" Name="Ground Spikes" field="recCSGNDSpikes"/>
+			<addStat Top = "225" Name="Wind Spikes" field="recCSWINSpikes"/>
+			<addStat Top = "250" Name="Bio Spikes" field="recCBIOSpikes"/>
+			<addStat Top = "275" Name="Shadow Spikes" field="recCSSHASpikes"/>
+			<addStat Top = "300" Name="Holy Spikes" field="recCSHOLSpikes"/>	
+			<addStat Top = "325" Name="Protect" field="recCSProtect"/>	
+			</layout>
+		<layout left="540" top="120" height="400" width="200">			
+			<addStat Top = "25" Name="Shell" field="recCSShell"/>	
+			<addStat Top = "50" Name="Armor Up" field="recCSARMUP"/>	
+			<addStat Top = "75" Name="Mental Up" field="recCSMENUP"/>	
+			<addStat Top = "100" Name="Haste" field="recCSHaste"/>
+			<addStat Top = "125" Name="Reflect" field="recCSReflect"/>
+			<addStat Top = "150" Name="Power Up" field="recCSPOWUP"/>	
+			<addStat Top = "175" Name="Magic Up" field="recCSMAGUP"/>
+			<addStat Top = "200" Name="Regen" field="recCSRegen"/>
+			<addStat Top = "225" Name="Aura" field="recCSAura"/>
+			<addStat Top = "250" Name="Vanish" field="recCSVanish"/>
+			<addStat Top = "275" Name="SOS Gain" field="recCSGain"/>
+			<addStat Top = "300" Name="SOS Lose" field="recCSLose"/>
+			<addStat Top = "325" Name="Unsealable" field="recCSUns"/>
+			</layout>
+
+		<layout left="750" top="200" height="300" width="200">
+			<basicAbility Top = "00" Name="Final Attack" field="reCFin" 
+			Texto="Before dying, the monster can unleash one last attack on its opponents. \n Select an Attack, Action Ability, or Spell for Final Attack to be attached to; the monster will automatically use it upon being reduced to 0 or fewer HP, selecting targets as normal." />
+			<basicSubAbility2 Top = "25" Name="Unsealable" field="reCFinUns" />
+			<basicAbility Top = "50" Name="Fission" field="reCFissUns" 
+			Texto="The monster is capable of splitting into identical copies of itself. \n Select a damage type – Physical, one of the nine kinds of Elemental, or Magical – when adding Fission to a monster. \n If reduced to 0 or fewer HP by the selected damage type during the course of a Round, the monster will split into two copies during the Status Phase. \n Each copy is treated as if it were the monster revived with full HP and MP, and generates Initiative as normal. \n If defeated, the copies award XP and Gil equal to that of the original monster." />
+			<basicSubAbility2 Top = "75" Name="Unsealable" field="reCFissUns" />
+			<basicAbility Top = "100" Name="Rotating Weakness" field="reRotate" 
+			Texto="The monster’s vulnerabilities are always in flux. In order to take Rotating Weakness, the monster must have at least one Elemental Weakness already in place. \n If the monster takes damage from an Element it currently has a Weakness against during the course of a Round, the Weakness immediately changes; roll a d8 and consult the table below to determine which Element the monster now has a Weakness towards. \n If the Element rolled is the same as the one the monster currently has a Weakness towards, the monster's new Weakness will be Bio. \n Roll Weakness \n 1 Earth \n 2 Fire \n 3 Water \n 4 Wind \n 5 Ice \n 6 Lightning \n 7 Holy \n 8 Shadow \n A Weakness inflicted by Rotating Weakness takes precedence over Elemental Resistance, Elemental Immunity, and Elemental Absorbance, though Status Conditions still override it as normal." />
+			<basicSubAbility2 Top = "125" Name="SOS Gain" field="reRotateGain" />
+			<basicSubAbility2 Top = "150" Name="SOS Lose" field="reRotateLose" />
+			<basicSubAbility2 Top = "175" Name="Unsealable" field="reRotateUns" />
+			</layout>	
+
+			
+		<layout left="1000" top="570" height="50" width="90">
+			<label left="000" top="000" height="20" width="30" text="Exp" autoSize="true"/>
+			<edit left="035" top="000" height="20" width="50" field="ExpFinal" horzTextAlign="center" />
+			<label left="000" top="025" height="20" width="30" text="Gil" autoSize="true"/>
+			<edit left="35" top="025" height="20" width="50" field="GilFinal" horzTextAlign="center" />
+			</layout>	
+
+		</scrollBox>
+	</form>			

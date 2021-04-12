@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmNotas" align="client" theme="dark" margins="{top=1}">
+
+	<layout left="000" top="000" height="650" width="1100">
+		<image left="000" top="000" width="1100" height="650" src="/img/wallpaper.png" />
+		</layout>	
+	
+	<layout left="10" top="10" height="600" width="600">
+		<rectangle left="000" top="000" width="525" height="570" color="darkblue" strokeColor="black" strokeSize="5" />
+		<richEdit left="005" top="005" width="515" height="560"  backgroundColor="black" defaultFontColor="white" field="campoTextoGrande3"/>
+		</layout>
+		
+	<layout left="560" top="10" height="600" width="600">
+		<rectangle left="000" top="000" width="525" height="570" color="darkblue" strokeColor="black" strokeSize="5" />
+		<richEdit left="005" top="005" width="515" height="560"  backgroundColor="black" defaultFontColor="white" field="campoTextoGrande4"/>
+		</layout>	
+
+	</form>			

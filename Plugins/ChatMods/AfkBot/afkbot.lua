@@ -157,6 +157,7 @@ end
 -- Implementação dos comandos
 Firecast.Messaging.listen("HandleChatCommand", 
 	function (message)
+		if message.mesa == nil then return end;
 		initializeRoom(message.mesa);
 		if message.comando == "afk" then
 			if afkdb.config[message.mesa.codigoInterno].botEnabled == false or afkdb.config[message.mesa.codigoInterno].botEnabled == nil then
@@ -232,6 +233,7 @@ Firecast.Messaging.listen("HandleChatCommand",
 -- Escuta das mensagens de chat padrão 
 Firecast.Messaging.listen("ChatMessage", 
 	function (message)
+		if message.mesa == nil then return end;
 		initializeRoom(message.mesa);
 		initializeClock(message.mesa);
 		-- se o alerta está ativado
@@ -272,6 +274,7 @@ Firecast.Messaging.listen("ChatMessage",
 -- Escuta de quem entra na sala
 Firecast.Messaging.listen("MesaJoined",
 	function(message)
+		if message.mesa == nil then return end;
 		-- Enviar a mensagem de afk para todos espectadores, se ativo
 		initializeRoom(message.mesa);
 		initializeClock(message.mesa);
@@ -327,6 +330,7 @@ Firecast.Messaging.listen("MesaJoined",
 -- Escuta por rolagens de dado
 Firecast.Messaging.listen("ChatMessage", 
 	function (message)
+		if message.mesa == nil then return end;
 		initializeRoom(message.mesa);
 		-- Ve se está ligado o autokick para dados
 		local valid = afkdb.config[message.mesa.codigoInterno].stopDice == true;
@@ -365,6 +369,7 @@ Firecast.Messaging.listen("ChatMessage",
 -- Escuta por risadas
 Firecast.Messaging.listen("ChatMessage", 
 	function (message)
+		if message.mesa == nil then return end;
 		initializeRoom(message.mesa);
 		-- Ve se está ligado o autokick para risadas
 		local valid = afkdb.config[message.mesa.codigoInterno].stopDice == true;
@@ -403,6 +408,7 @@ Firecast.Messaging.listen("ChatMessage",
 -- Escuta por conversa com afkBot
 Firecast.Messaging.listen("ChatMessage",
 	function (message)
+		if message.mesa == nil then return end;
 		initializeRoom(message.mesa);
 		local txt =  Utils.removerFmtChat(message.texto, true);
 		local arg = {};

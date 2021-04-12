@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmPokemon3" align="client" theme="dark" margins="{top=1}">
+	 <scrollBox align="left" width="880">	
+		<template name="AtaquePoke">
+			<rectangle align="client" color="black" compilerOrder="0"/>
+			
+			<label left="5" top="5" width="70" height="25" text="Golpe" fontStyle="bold"/>
+			<edit vertTextAlign="center" left="75" top="5" width="160" height="25" field="golpeP$(num)"/>
+			
+			<label left="5" top="30" width="80" height="25" text="Descritores" fontStyle="bold"/>
+			<edit vertTextAlign="center" left="75" top="30" width="160" height="25" field="DescritoresP$(num)"/>
+			
+			<label left="5" top="55" width="70" height="25" text="Alcance" fontStyle="bold"/>
+			<edit vertTextAlign="center" left="75" top="55" width="160" height="25" field="alcanceP$(num)"/>
+
+			<label left="240" top="6" width="50" height="25" text="Tipo" fontStyle="bold"/>
+			<edit vertTextAlign="center" left="282" top="6" width="82" height="25" field="tipoP$(num)"/>
+			
+			<label left="240" top="31" width="50" height="25" text="Classe" fontStyle="bold"/>
+			<comboBox left="282" top="31" width="82" height="25" field="classeP$(num)" horzTextAlign="center" items="{'Ataque', 'Especial', 'Efeito'}" values="{'1', '2', '3'}" />
+             
+			<label left="240" top="55" width="50" height="25" text="Freq." fontStyle="bold"/>
+			<edit vertTextAlign="center" left="282" top="55" width="82" height="25" field="frequenciaP$(num)"/>
+	
+			<label left="370" top="6" width="70" height="25" text="Acurácia" fontStyle="bold"/>
+			<edit vertTextAlign="center" left="425" top="6" width="53" height="25" field="AccP$(num)" type = "number"/>  
+
+			<label left="370" top="31" width="70" height="25" text="Prec.Bôn." fontStyle="bold"/>
+			<edit vertTextAlign="center" left="425" top="31" width="53" height="25" field="ataqueP$(num)" type = "number"/>    
+			
+			<label left="370" top="55" width="70" height="25" text="D. Base" fontStyle="bold"/>
+			<edit vertTextAlign="center" left="425" top="55" width="53" height="25" field="danoP$(num)"/>         		
+
+
+			
+			<button left="488" top="6" width="82" text="Acerto" fontSize="11" fontStyle="bold">
+				<event name="onClick">
+					if sheet == nil then return end;
+					local mesaDoPersonagem = Firecast.getMesaDe(sheet)
+					local ATAQUE = self.boxDetalhesDoItem.node.ataqueP$(num) or 0;
+					local NomeGolpe = self.boxDetalhesDoItem.node.golpeP$(num) or "Golpe"
+					local NomeUser = self.boxDetalhesDoItem.node.campoNome or "Pokémon"
+					local Accuracy = self.boxDetalhesDoItem.node.AccP$(num) or "N/A"
+					mesaDoPersonagem.activeChat:rolarDados("1d20 + " .. ATAQUE, "Acerto (AC = " .. Accuracy .. ") de " .. NomeGolpe .. " usado por " .. NomeUser) 					
+					</event>
+			</button>			
+		
+			<button left="488" top="31" width="82" text="Dano" fontSize="11" fontStyle="bold">
+				<event name="onClick">
+					if sheet == nil then return end;
+					local mesaDoPersonagem = Firecast.getMesaDe(sheet)
+					local NomeGolpe = self.boxDetalhesDoItem.node.golpeP$(num) or "Golpe"
+					local NomeUser = self.boxDetalhesDoItem.node.campoNome or "Pokémon"
+
+					local Attribute = tonumber(self.boxDetalhesDoItem.node.classeP$(num)) or 3;
+						if Attribute &gt; 3 then Attribute = 3; 					end
+						if 1 &gt; Attribute then Attribute = 1; 					end
+					local ATKFIS = self.boxDetalhesDoItem.node.Ataque_Form1 or 0;
+					local ATKESP = self.boxDetalhesDoItem.node.AtaqueEsp_Form1 or 0;
+					local ATK = {ATKFIS,ATKESP,0} or 0;
+					
+					local str = ((self.boxDetalhesDoItem.node.danoP$(num) or "")  .. "+" .. (ATK[Attribute] or "")) or "1d2";
+					local rolagem = Firecast.interpretarRolagem(str);
+					
+					if (Attribute == 1 or Attribute == 2) then
+						mesaDoPersonagem.activeChat:rolarDados(rolagem, "Dano de " .. NomeGolpe .. " usado por " .. NomeUser) 
+						end
+					</event>
+			</button>
+			
+			<button left="488" top="55" width="82" text="Crítico" fontSize="11" fontStyle="bold">
+				<event name="onClick">
+					if sheet == nil then return end;
+					local mesaDoPersonagem = Firecast.getMesaDe(sheet)
+					local NomeGolpe = self.boxDetalhesDoItem.node.golpeP$(num) or "Golpe"
+					local NomeUser = self.boxDetalhesDoItem.node.campoNome or "Pokémon"
+					local Attribute = tonumber(self.boxDetalhesDoItem.node.classeP$(num)) or 3;
+						if Attribute &gt; 3 then Attribute = 3; 					end
+						if 1 &gt; Attribute then Attribute = 1; 					end
+					local ATKFIS = self.boxDetalhesDoItem.node.Ataque_Form1 or 0;
+					local ATKESP = self.boxDetalhesDoItem.node.AtaqueEsp_Form1 or 0;
+					local ATK = {ATKFIS,ATKESP,0} or 0;
+
+					local dado = (self.boxDetalhesDoItem.node.danoP$(num) or "1d2");
+					local extra = (ATK[Attribute] or "") or "0";
+					local rolagem = Firecast.interpretarRolagem(dado);
+					rolagem:concatenar(dado);
+					rolagem:concatenar(extra);
+					
+					if (Attribute == 1 or Attribute == 2) then
+						mesaDoPersonagem.activeChat:rolarDados(rolagem, "Dano CRÍTICO de " .. NomeGolpe .. " usado por " .. NomeUser) 
+						end
+					</event>
+			</button>
+			
+			
+			<textEditor left="575" top="5" width="280" height="50" field="campoEfeitoGolpesP$(num)"/>
+			
+			<label left="575" top="55" width="60" height="25" text="Aptidão" fontStyle="bold"/>
+			<edit vertTextAlign="center" left="625" top="60" width="55" height="25" field="tipoContestP$(num)"/>
+			
+			<label left="685" top="55" width="40" height="25" text="Conc." fontStyle="bold"/>
+			<edit vertTextAlign="center" left="730" top="60" width="125" height="25" field="efeitoContestP$(num)"/>
+			
+		</template>
+			
+		<layout left="0" top="0" width="865" height="760">
+			<rectangle align="client" color="#0000007F" compilerOrder="0"/>
+			<layout left="2" top="2" width="880" height="92" compilerOrder="1">
+				<AtaquePoke num="1"/>
+			</layout>
+			<layout left="2" top="97" width="880" height="92" compilerOrder="1">
+				<AtaquePoke num="2"/>
+			</layout>
+			<layout left="2" top="192" width="880" height="92" compilerOrder="1">
+				<AtaquePoke num="3"/>
+			</layout>
+			<layout left="2" top="288" width="880" height="92" compilerOrder="1">
+				<AtaquePoke num="4"/>
+			</layout>
+			<layout left="2" top="383" width="880" height="92" compilerOrder="1">
+				<AtaquePoke num="5"/>
+			</layout>
+			<layout left="2" top="478" width="880" height="92" compilerOrder="1">
+				<AtaquePoke num="6"/>
+			</layout>
+			<layout left="2" top="573" width="880" height="92" compilerOrder="1">
+				<AtaquePoke num="7"/>
+			</layout>
+			<layout left="2" top="668" width="880" height="92" compilerOrder="1">
+				<AtaquePoke num="8"/>
+			</layout>
+		</layout>
+			
+	</scrollBox>
+</form>

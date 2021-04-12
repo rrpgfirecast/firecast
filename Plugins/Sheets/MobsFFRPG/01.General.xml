@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmGeneral" align="client" theme="dark" margins="{top=1}">
+	<layout left="000" top="000" height="650" width="1100">
+		<image left="000" top="000" height="650" width="1100" src="/img/wallpaper.png" style="autoFIT" />
+		</layout>
+
+
+	<scrollBox align ="client">
+        <layout left="30" top="010" height="76" width="675">
+			<label left="000" top="000" height="20" width="60" text="Name" autoSize="true" />
+			<edit left="065" top="000" height="20" width="240" field="baseName" horzTextAlign="center" />
+			<label left="000" top="025" height="20" width="60" text="Category" autoSize="true" />
+			<comboBox left="065" top="025" height="20" width="240" field="baseCATEGORY" horzTextAlign="center" items="{'Abnormal', 'Aerial', 'Amorph', 'Aquan', 'Arcana', 'Beast', 'Construct', 'Dragon', 'Fiend', 'Humanoid', 'Insect', 'Lizard', 'Plant', 'Undead'}" values="{'Abnormal', 'Aerial', 'Amorph', 'Aquan', 'Arcana', 'Beast', 'Construct', 'Dragon', 'Fiend', 'Humanoid', 'Insect', 'Lizard', 'Plant', 'Undead'}" />
+			<label left="390" top="000" height="20" width="30" text="Exp" autoSize="true" />
+			<edit left="425" top="000" height="20" width="40" field="ExpFinal" horzTextAlign="center" />
+			<label left="475" top="000" height="20" width="55" text="Dividida" autoSize="true" />
+			<edit left="535" top="000" height="20" width="40" field="ExpEach" horzTextAlign="center" />
+			<label left="390" top="025" height="20" width="30" text="Gil" autoSize="true" />
+			<edit left="425" top="025" height="20" width="40" field="GilFinal" horzTextAlign="center" />
+			<label left="475" top="025" height="20" width="55" text="Dividido" autoSize="true" />
+			<edit left="535" top="025" height="20" width="40" field="GilEach" horzTextAlign="center" />
+			<label left="390" top="050" height="20" width="70" text="Nº Players" autoSize="true" />
+			<edit left="475" top="050" height="20" width="40" field="NPlayers" horzTextAlign="center" type="number"/>
+			</layout>
+			
+		<layout left="30" top="60" height="170" width="320">
+			<label left="000" top="000" height="20" width="60" text="Tipo" autoSize="true" />
+			<comboBox left="065" top="000" height="20" width="100" field="baseTIPO" horzTextAlign="center" items="{'Regular' , 'Notorious' , 'Boss' , 'End Boss'}" values="{'Regular' , 'Notorious' , 'Boss' , 'End Boss'}" />
+			<label left="180" top="000" height="20" width="46" text="LV" autoSize="true" />
+			<edit left="256" top="000" height="20" width="30" field="valLV" horzTextAlign="center" />
+			<label left="000" top="025" height="20" width="60" text="Base HP" autoSize="true" />
+			<comboBox left="065" top="025" height="20" width="46" field="baseHP" horzTextAlign="center" items="{'1' , '1.5' , '2' , '4', '6', '8'}" values="{'1' , '1.5' , '2' , '4', '6', '8'}" />
+			<label left="000" top="050" height="20" width="60" text="Base MP" autoSize="true" />
+			<comboBox left="065" top="050" height="20" width="46" field="baseMP" horzTextAlign="center" items="{'0' , '0.5' , '1' , '1.5', '2', '4'}" values="{'0' , '0.5' , '1' , '1.5', '2', '4'}" />
+			<label left="180" top="025" height="20" width="60" text="Armor" autoSize="true" />
+			<comboBox left="256" top="025" height="20" width="46" field="baseArmor" horzTextAlign="center" items="{'0.5' , '1' , '2' , '4', '6'}" values="{'0.5' , '1' , '2' , '4', '6'}" />
+			<label left="180" top="050" height="20" width="60" text="M. Armor" autoSize="true" />
+			<comboBox left="256" top="050" height="20" width="46" field="baseMArmor" horzTextAlign="center" items="{'0.5' , '1' , '2' , '4', '6'}" values="{'0.5' , '1' , '2' , '4', '6'}" />
+			</layout>
+
+		<layout left="70" top="320" height="100" width="320">
+			<label left="000" top="000" height="20" width="55" text="HP Atual" autoSize="true" />
+			<edit left="060" top="000" height="20" width="40" field="valAtHP" horzTextAlign="center" />
+			<label left="110" top="000" height="20" width="55" text="HP Máx" autoSize="true" />
+			<edit left="165" top="000" height="20" width="40" field="valMaxHP" horzTextAlign="center" />
+			<label left="000" top="025" height="20" width="55" text="MP Atual" autoSize="true" />
+			<edit left="060" top="025" height="20" width="40" field="valAtMP" horzTextAlign="center" />
+			<label left="110" top="025" height="20" width="55" text="MP Máx" autoSize="true" />
+			<edit left="165" top="025" height="20" width="40" field="valMaxMP" horzTextAlign="center" />
+			<label left="000" top="050" height="20" width="55" text="Exp Base" autoSize="true" />
+			<edit left="060" top="050" height="20" width="40" field="baseEXP" horzTextAlign="center" />
+			<label left="110" top="050" height="20" width="55" text="Exp Extra" autoSize="true" />
+			<edit left="165" top="050" height="20" width="40" field="bonusEXP" horzTextAlign="center" type="number"/>
+			<label left="000" top="075" height="20" width="55" text="Gil Base" autoSize="true" />
+			<edit left="060" top="075" height="20" width="40" field="baseGIL" horzTextAlign="center" />
+			<label left="110" top="075" height="20" width="55" text="Gil Extra" autoSize="true" />
+			<edit left="165" top="075" height="20" width="40" field="bonusGIL" horzTextAlign="center" type="number"/>
+            </layout>
+			
+		<layout left="100" top="160" height="170" width="150">
+			<label left="000" top="000" height="20" width="30" text="STR" autoSize="true" />
+			<edit left="035" top="000" height="20" width="30" field="valSTR" horzTextAlign="center" type="number"/>
+			<label left="000" top="025" height="20" width="30" text="VIT" autoSize="true" />
+			<edit left="035" top="025" height="20" width="30" field="valVIT" horzTextAlign="center" type="number"/>
+			<label left="000" top="050" height="20" width="30" text="AGI" autoSize="true" />
+			<edit left="035" top="050" height="20" width="30" field="valAGI" horzTextAlign="center" type="number" />
+			<label left="080" top="000" height="20" width="30" text="SPD" autoSize="true" />
+			<edit left="115" top="000" height="20" width="30" field="valSPD" horzTextAlign="center" type="number" />
+			<label left="080" top="025" height="20" width="30" text="MAG" autoSize="true" />
+			<edit left="115" top="025" height="20" width="30" field="valMAG" horzTextAlign="center" type="number" />
+			<label left="080" top="050" height="20" width="30" text="SPR" autoSize="true" />
+			<edit left="115" top="050" height="20" width="30" field="valSPR" horzTextAlign="center" type="number" />
+			<label left="020" top="075" height="20" width="30" text="Total" autoSize="true" />
+			<label left="055" top="075" height="20" width="20" field="SomaATT" horzTextAlign="center" />
+			<label left="075" top="075" height="20" width="4" text="/" horzTextAlign="center" />
+			<label left="079" top="075" height="20" width="30" field="TeoricoATT" horzTextAlign="center" />
+			</layout>
+			
+		<layout left="780" top="450" height="100" width="235">
+			<label left="000" top="000" height="20" width="150" text="Unique Trait" autoSize="true"/>
+			<label left="160" top="000" height="20" width="30" text="Exp" autoSize="true"/>
+			<label left="200" top="000" height="20" width="30" text="Gil" autoSize="true"/>
+			<edit left="000" top="025" height="20" width="150" field="Special1" horzTextAlign="center" />
+			<edit left="160" top="025" height="20" width="30" field="Special1Exp" horzTextAlign="center" type="number"/>
+			<edit left="200" top="025" height="20" width="30" field="Special1Gil" horzTextAlign="center" type="number"/>
+			<edit left="000" top="050" height="20" width="150" field="Special2" horzTextAlign="center" />
+			<edit left="160" top="050" height="20" width="30" field="Special2Exp" horzTextAlign="center" type="number"/>
+			<edit left="200" top="050" height="20" width="30" field="Special2Gil" horzTextAlign="center" type="number"/>
+			<edit left="000" top="075" height="20" width="150" field="Special3" horzTextAlign="center" />
+			<edit left="160" top="075" height="20" width="30" field="Special3Exp" horzTextAlign="center" type="number"/>
+			<edit left="200" top="075" height="20" width="30" field="Special3Gil" horzTextAlign="center" type="number"/>
+			</layout>
+			
+		<layout left="420" top="150" height="200" width="140">
+			<label left="000" top="000" height="20" width="100" text="Accuracy" autoSize="true" />
+			<edit left="105" top="000" height="20" width="30" field="valACC" horzTextAlign="center" />
+			<label left="000" top="025" height="20" width="100" text="Magic Accuracy" autoSize="true" />
+			<edit left="105" top="025" height="20" width="30" field="valMACC" horzTextAlign="center" />
+			<label left="000" top="050" height="20" width="100" text="Dexterity" autoSize="true" />
+			<edit left="105" top="050" height="20" width="30" field="valDEX" horzTextAlign="center" />
+			<label left="000" top="075" height="20" width="100" text="Mind" autoSize="true" />
+			<edit left="105" top="075" height="20" width="30" field="valMND" horzTextAlign="center" />
+			<label left="000" top="100" height="20" width="100" text="Armor" autoSize="true" />
+			<edit left="105" top="100" height="20" width="30" field="valARM" horzTextAlign="center" />
+			<label left="000" top="125" height="20" width="100" text="Magic Armor" autoSize="true" />
+			<edit left="105" top="125" height="20" width="30" field="valMARM" horzTextAlign="center" />
+			<label left="000" top="150" height="20" width="100" text="Evasion" autoSize="true" />
+			<edit left="105" top="150" height="20" width="30" field="valEVA" horzTextAlign="center" />
+			<label left="000" top="175" height="20" width="100" text="Magic Evasion" autoSize="true" />
+			<edit left="105" top="175" height="20" width="30" field="valMEVA" horzTextAlign="center" />
+			</layout>
+			
+			
+		<layout left="700" top="40" height="400" width="370">
+			<button left="53" top="00" height="20" width="80" text="Scan">
+				<event name="onClick">
+					local mesa = Firecast.getMesaDe(sheet);
+					mesa.activeChat:enviarMensagem("[§B]Scan[§B]");
+					mesa.activeChat:enviarMensagem("[§B]Nome: [§B]" .. (sheet.baseName or ""));
+					mesa.activeChat:enviarMensagem("[§B]Level: [§B]" .. (sheet.valLV or ""));
+					mesa.activeChat:enviarMensagem("[§B]HP: [§B]" .. (sheet.valAtHP or 0) .. "/" .. (sheet.valMaxHP or 0));
+					mesa.activeChat:enviarMensagem("[§B]MP: [§B]" .. (sheet.valAtMP or 0) .. "/" .. (sheet.valMaxMP or 0));
+					mesa.activeChat:enviarMensagem("[§B]Absorções Elementais: [§B]".. (sheet.MSGabsELE or "") .. (sheet.MSGabsFIR or "") .. (sheet.MSGabsGND or "") .. 
+					(sheet.MSGabsHOL or "") .. (sheet.MSGabsICE or "") .. (sheet.MSGabsSHA or "") .. (sheet.MSGabsWAT or "") .. (sheet.MSGabsWIN or "") .. (sheet.MSGabsBIO or ""));
+					mesa.activeChat:enviarMensagem("[§B]Imunidades Elementais: [§B]" .. (sheet.MSGimmELE or "") .. (sheet.MSGimmFIR or "") .. (sheet.MSGimmGND or "") .. 
+					(sheet.MSGimmHOL or "") .. (sheet.MSGimmICE or "") .. (sheet.MSGimmSHA or "") .. (sheet.MSGimmWAT or "") .. (sheet.MSGimmWIN or "") .. (sheet.MSGimmBIO or ""));
+					mesa.activeChat:enviarMensagem("[§B]Resistências Elementais: [§B]" .. (sheet.MSGresELE or "") .. (sheet.MSGresFIR or "") .. (sheet.MSGresGND or "") .. 
+					(sheet.MSGresHOL or "") .. (sheet.MSGresICE or "") .. (sheet.MSGresSHA or "") .. (sheet.MSGresWAT or "").. (sheet.MSGresWIN or "") .. (sheet.MSGresBIO or ""));
+					mesa.activeChat:enviarMensagem("[§B]Fraquezas Elementais: [§B]" .. (sheet.MSGweakELE or "") .. (sheet.MSGweakFIR or "") .. (sheet.MSGweakGND or "") .. 
+					(sheet.MSGweakHOL or "") .. (sheet.MSGweakICE or "") .. (sheet.MSGweakSHA or "") .. (sheet.MSGweakWAT or "").. (sheet.MSGweakWIN or "") .. (sheet.MSGweakBIO or ""));
+					mesa.activeChat:enviarMensagem("[§B]Resistências a Status: [§B]" .. (sheet.MSG_resFatal or "") .. (sheet.MSG_resMystify or "") .. (sheet.MSG_resToxin or "") .. 
+					(sheet.MSG_resSeal or "") .. (sheet.MSG_resTime or "") .. (sheet.MSG_resTransform or "") .. (sheet.MSG_resWeaken or "") .. (sheet.MSGresBerserk or "") .. 
+					(sheet.MSGresBlind or "") .. (sheet.MSGresImmobilize or "") .. (sheet.MSGresPoison or "") .. (sheet.MSGresSleep or "") .. (sheet.MSGresSlow or "") .. 
+					(sheet.MSGresZombie or "") .. (sheet.MSGresLock or "") .. (sheet.MSGresCondemn or "") .. (sheet.MSGresConfuse or "") .. (sheet.MSGresCurse or "") .. 
+					(sheet.MSGresDisable or "") .. (sheet.MSGresPetrify or "") .. (sheet.MSGresSilence or "") .. (sheet.MSGresSap or "") .. (sheet.MSGresUnaware or "") .. 
+					(sheet.MSGresEject or "") .. (sheet.MSGresMini or "") .. (sheet.MSGresSTRDown or "") .. (sheet.MSGresAGIDown or "") .. (sheet.MSGresMAGDown or "") .. 
+					(sheet.MSGresMENDown or "") .. (sheet.MSGresARMDown or "") .. (sheet.MSGresSPIDown or "") .. (sheet.MSGresSTRBrk or "") .. (sheet.MSGresAGIBrk or "") .. 
+					(sheet.MSGresMAGBrk or "") .. (sheet.MSGresMENBrk or "") .. (sheet.MSGresARMBrk or "") .. (sheet.MSGresSPIBrk or "") .. (sheet.MSGresStop or "") .. 
+					(sheet.MSGresToad or "") .. (sheet.MSGresVenom or "") .. (sheet.MSGresElemWeak or "") .. (sheet.MSGresCharm or "") .. (sheet.MSGresDeath or "") .. 
+					(sheet.MSGresFrozen or "") .. (sheet.MSGresGravity or "") .. (sheet.MSGresHeat or "") .. (sheet.MSGresMeltdown or "") .. (sheet.MSGresStone or ""));
+					mesa.activeChat:enviarMensagem("[§B]Imunidades a Status: [§B]" .. (sheet.MSG_immAll or "") .. (sheet.MSG_immFatal or "") .. (sheet.MSG_immMystify or "") .. 
+					(sheet.MSG_immToxin or "") .. (sheet.MSG_immSeal or "") .. (sheet.MSG_immTime or "") .. (sheet.MSG_immTransform or "") .. (sheet.MSG_immWeaken or "").. 
+					(sheet.MSGimmBerserk or "") .. (sheet.MSGimmBlind or "") .. (sheet.MSGimmImmobilize or "") .. (sheet.MSGimmPoison or "") .. (sheet.MSGimmSleep or "") .. 
+					(sheet.MSGimmSlow or "") .. (sheet.MSGimmZombie or "") .. (sheet.MSGimmLock or "") .. (sheet.MSGimmCondemn or "") .. (sheet.MSGimmConfuse or "") .. 
+					(sheet.MSGimmCurse or "") .. (sheet.MSGimmDisable or "") .. (sheet.MSGimmPetrify or "") .. (sheet.MSGimmSilence or "") .. (sheet.MSGimmSap or "") .. 
+					(sheet.MSGimmUnaware or "") .. (sheet.MSGimmEject or "") .. (sheet.MSGimmMini or "") .. (sheet.MSGimmSTRDown or "") .. (sheet.MSGimmAGIDown or "") .. 
+					(sheet.MSGimmMAGDown or "") .. (sheet.MSGimmMENDown or "") .. (sheet.MSGimmARMDown or "") .. (sheet.MSGimmSPIDown or "") .. (sheet.MSGimmSTRBrk or "") .. 
+					(sheet.MSGimmAGIBrk or "") .. (sheet.MSGimmMAGBrk or "") .. (sheet.MSGimmMENBrk or "") .. (sheet.MSGimmARMBrk or "") .. (sheet.MSGimmSPIBrk or "") .. 
+					(sheet.MSGimmStop or "") .. (sheet.MSGimmToad or "") .. (sheet.MSGimmVenom or "") .. (sheet.MSGimmElemWeak or "") .. (sheet.MSGimmCharm or "") .. 
+					(sheet.MSGimmDeath or "") .. (sheet.MSGimmFrozen or "") .. (sheet.MSGimmGravity or "") .. (sheet.MSGimmHeat or "") .. (sheet.MSGimmMeltdown or "") .. (sheet.MSGimmStone or ""));
+					</event>
+				</button>
+			<button left="137" top="00" height="20" width="80" text="Sensor">
+				<event name="onClick">
+					local mesa = Firecast.getMesaDe(sheet);
+					mesa.activeChat:enviarMensagem("[§B]Sensor[§B]");
+					mesa.activeChat:enviarMensagem("[§B]Nome: [§B]" .. (sheet.baseName or ""));
+					mesa.activeChat:enviarMensagem("[§B]HP: [§B]" .. (sheet.valAtHP or 0) .. "/" .. (sheet.valMaxHP or 0));
+					mesa.activeChat:enviarMensagem("[§B]Absorções Elementais: [§B]".. (sheet.MSGabsELE or "") .. (sheet.MSGabsFIR or "") .. (sheet.MSGabsGND or "") .. 
+					(sheet.MSGabsHOL or "") .. (sheet.MSGabsICE or "") .. (sheet.MSGabsSHA or "") .. (sheet.MSGabsWAT or "") .. (sheet.MSGabsWIN or "") .. (sheet.MSGabsBIO or ""));
+					mesa.activeChat:enviarMensagem("[§B]Imunidades Elementais: [§B]" .. (sheet.MSGimmELE or "") .. (sheet.MSGimmFIR or "") .. (sheet.MSGimmGND or "") .. 
+					(sheet.MSGimmHOL or "") .. (sheet.MSGimmICE or "") .. (sheet.MSGimmSHA or "") .. (sheet.MSGimmWAT or "") .. (sheet.MSGimmWIN or "") .. (sheet.MSGimmBIO or ""));
+					mesa.activeChat:enviarMensagem("[§B]Resistências Elementais: [§B]" .. (sheet.MSGresELE or "") .. (sheet.MSGresFIR or "") .. (sheet.MSGresGND or "") .. 
+					(sheet.MSGresHOL or "") .. (sheet.MSGresICE or "") .. (sheet.MSGresSHA or "") .. (sheet.MSGresWAT or "").. (sheet.MSGresWIN or "") .. (sheet.MSGresBIO or ""));
+					mesa.activeChat:enviarMensagem("[§B]Fraquezas Elementais: [§B]" .. (sheet.MSGweakELE or "") .. (sheet.MSGweakFIR or "") .. (sheet.MSGweakGND or "") .. 
+					(sheet.MSGweakHOL or "") .. (sheet.MSGweakICE or "") .. (sheet.MSGweakSHA or "") .. (sheet.MSGweakWAT or "").. (sheet.MSGweakWIN or "") .. (sheet.MSGweakBIO or ""));
+					</event>
+				</button>
+			<button left="222" top="00" height="20" width="80" text="Peep">
+				<event name="onClick">
+					local mesa = Firecast.getMesaDe(sheet);
+					mesa.activeChat:enviarMensagem("[§B]Peep[§B]");
+					mesa.activeChat:enviarMensagem("[§B]Nome: [§B]" .. (sheet.baseName or ""));
+					mesa.activeChat:enviarMensagem("[§B]Level: [§B]" .. (sheet.valLV or ""));
+					mesa.activeChat:enviarMensagem("[§B]HP: [§B]" .. (sheet.valAtHP or 0) .. "/" .. (sheet.valMaxHP or 0));
+					mesa.activeChat:enviarMensagem("[§B]MP: [§B]" .. (sheet.valAtMP or 0) .. "/" .. (sheet.valMaxMP or 0));
+					mesa.activeChat:enviarMensagem("[§B]Absorções Elementais: [§B]".. (sheet.MSGabsELE or "") .. (sheet.MSGabsFIR or "") .. (sheet.MSGabsGND or "") .. 
+					(sheet.MSGabsHOL or "") .. (sheet.MSGabsICE or "") .. (sheet.MSGabsSHA or "") .. (sheet.MSGabsWAT or "") .. (sheet.MSGabsWIN or "") .. (sheet.MSGabsBIO or ""));
+					mesa.activeChat:enviarMensagem("[§B]Imunidades Elementais: [§B]" .. (sheet.MSGimmELE or "") .. (sheet.MSGimmFIR or "") .. (sheet.MSGimmGND or "") .. 
+					(sheet.MSGimmHOL or "") .. (sheet.MSGimmICE or "") .. (sheet.MSGimmSHA or "") .. (sheet.MSGimmWAT or "") .. (sheet.MSGimmWIN or "") .. (sheet.MSGimmBIO or ""));
+					mesa.activeChat:enviarMensagem("[§B]Resistências Elementais: [§B]" .. (sheet.MSGresELE or "") .. (sheet.MSGresFIR or "") .. (sheet.MSGresGND or "") .. 
+					(sheet.MSGresHOL or "") .. (sheet.MSGresICE or "") .. (sheet.MSGresSHA or "") .. (sheet.MSGresWAT or "").. (sheet.MSGresWIN or "") .. (sheet.MSGresBIO or ""));
+					mesa.activeChat:enviarMensagem("[§B]Fraquezas Elementais: [§B]" .. (sheet.MSGweakELE or "") .. (sheet.MSGweakFIR or "") .. (sheet.MSGweakGND or "") .. 
+					(sheet.MSGweakHOL or "") .. (sheet.MSGweakICE or "") .. (sheet.MSGweakSHA or "") .. (sheet.MSGweakWAT or "").. (sheet.MSGweakWIN or "") .. (sheet.MSGweakBIO or ""));
+					</event>
+				</button>
+			<rectangle left="000" top="25" width="360" height="360" color="black" strokeColor="white" strokeSize="1" />
+            <image left="000" top="25" width="360" height="360" field="imagemDoPersonagem" editable="true" style="proportional" />
+			</layout>
+			
+		<layout left="1000" top="570" height="50" width="90">
+			<label left="000" top="000" height="20" width="30" text="Exp" autoSize="true"/>
+			<edit left="035" top="000" height="20" width="50" field="ExpFinal" horzTextAlign="center" />
+			<label left="000" top="025" height="20" width="30" text="Gil" autoSize="true"/>
+			<edit left="35" top="025" height="20" width="50" field="GilFinal" horzTextAlign="center" />
+			</layout>	
+
+		<layout left="300" top="450" height="150" width="500">
+			<checkBox left="000" top="000" height="20" width="100" text="Agility Up" field="statAGIUP"/>
+			<checkBox left="000" top="025" height="20" width="100" text="Agility Down" field="statAGIDOWN"/>
+			<checkBox left="000" top="050" height="20" width="100" text="Agility Break" field="statAGIBREAK"/>
+			<checkBox left="000" top="075" height="20" width="100" text="Blink" field="statBLINK"/>
+			<checkBox left="105" top="000" height="20" width="100" text="Spirit Up" field="statSPIUP"/>
+			<checkBox left="105" top="025" height="20" width="100" text="Spirit Down" field="statSPIDOWN"/>
+			<checkBox left="105" top="050" height="20" width="100" text="Spirit Break" field="statSPIBREAK"/>
+			<checkBox left="105" top="075" height="20" width="100" text="Immobilize" field="statIMMOBILIZE"/>
+			<checkBox left="210" top="000" height="20" width="100" text="Armor Up" field="statARMUP"/>
+			<checkBox left="210" top="025" height="20" width="100" text="Armor Down" field="statARMDOWN"/>
+			<checkBox left="210" top="050" height="20" width="100" text="Armor Break" field="statARMBREAK"/>
+			<checkBox left="210" top="075" height="20" width="100" text="Mini" field="statMINI"/>
+			<checkBox left="315" top="000" height="20" width="100" text="Mental Up" field="statMENUP"/>
+			<checkBox left="315" top="025" height="20" width="100" text="Mental Down" field="statMENDOWN"/>
+			<checkBox left="315" top="050" height="20" width="100" text="Mental Break" field="statMENBREAK"/>
+			<checkBox left="315" top="075" height="20" width="100" text="Toad" field="statTOAD"/>	
+			<checkBox left="000" top="100" height="20" width="100" text="Blind" field="statBLIND"/>	
+            </layout>
+		</scrollBox>
+	</form>

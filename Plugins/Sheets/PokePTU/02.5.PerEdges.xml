@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmPoke5" align="client" theme="dark" margins="{top=1}">
+
+	<template name = "PerPo">
+		<button left="00" top="$(Top)" height="20" width="120" text="$(Name)" horzTextAlign="leading">
+			<event name="onClick">
+				sheet.nivPER = self.boxDetalhesDoItem.node.niv_$(Field);
+				sheet.bonPER = self.boxDetalhesDoItem.node.bon_$(Field);
+				sheet.namPER = "$(Name)";
+				sheet.namUSE = self.boxDetalhesDoItem.node.campoNome or "Pokémon";
+				local flagFocadoTr = self.boxDetalhesDoItem.node.focTr or false
+				if (flagFocadoTr) then
+					sheet.bonPER = sheet.bonPER+2;
+					end
+				local flagFocadoOr = self.boxDetalhesDoItem.node.focOr or false
+				if (flagFocadoOr) then
+					sheet.bonPER = sheet.bonPER+2;
+					end
+				realizarTesteDePericia()
+			</event>			
+		</button>
+		<comboBox left="125" top="$(Top)" height="20" width="100" field="niv_$(Field)" horzTextAlign="center" items="{'1d6', '2d6', '3d6', '4d6', '5d6', '6d6'}" values="{'1', '2', '3', '4', '5', '6'}"/>
+		<dataLink field="niv_$(Field)" defaultValue="1"/>
+		<edit left="230" top="$(Top)" width="40" height="20"  field="bon_$(Field)"/>
+		</template>
+
+	<rectangle align="top" color="black" xradius="10" yradius="10" height="880" padding="{top=3, left=3, right=3, bottom=3}"/>
+
+	<layout left="010" top="020" height="600" width="1000">
+		<label left="00" top="00" height="20" width="120" text="Perícias de Corpo" autoSize="true" fontStyle="bold"/>
+		<label left="125" top="00" width="40" height="100" text="Dados" autoSize="true" horzTextAlign="center" />
+		<label left="230" top="00" width="40" height="20" text="Bônus" autoSize="true" horzTextAlign="center" />
+		<PerPo Top="025" Field="ACRO" Name="Acrobacias"/>
+		<PerPo Top="050" Field="ATLE" Name="Atletismo"/>
+		<PerPo Top="075" Field="COMB" Name="Combate"/>
+		<PerPo Top="100" Field="FURT" Name="Furtividade"/>
+		<PerPo Top="125" Field="INTI" Name="Intimidação"/>
+		<PerPo Top="150" Field="SOBR" Name="Sobrevivência"/>
+        </layout>
+
+	<layout left="300" top="20" height="600" width="1000">
+		<label left="00" top="00" height="20" width="120" text="Perícias de Mente" autoSize="true" fontStyle="bold"/>
+		<label left="125" top="00" width="40" height="100" text="Dados" autoSize="true" horzTextAlign="center"/>
+		<label left="230" top="00" width="40" height="20" text="Bônus" autoSize="true" horzTextAlign="center" />
+		<PerPo Top="025" Field="ASTU" Name="Astúcia"/>		
+		<PerPo Top="050" Field="EGER" Name="Ed.Geral"/>		
+		<PerPo Top="075" Field="EOCU" Name="Ed.Oculta"/>		
+		<PerPo Top="100" Field="EPOK" Name="Ed.Pokémon"/>		
+		<PerPo Top="125" Field="ETEC" Name="Ed.Tecnológica"/>		
+		<PerPo Top="150" Field="MEDI" Name="Medicina"/>			
+		<PerPo Top="175" Field="PERC" Name="Percepção"/>
+		</layout>
+		
+		
+	<layout left="600" top="20" height="600" width="1000">
+		<label left="00" top="00" height="20" width="120" text="Perícias de Espírito" autoSize="true" fontStyle="bold"/>
+		<label left="125" top="00" width="40" height="100" text="Dados" autoSize="true" horzTextAlign="center"/>
+		<label left="230" top="00" width="40" height="20" text="Bônus" autoSize="true" horzTextAlign="center"/>
+		<PerPo Top="025" Field="CHAR" Name="Charme"/>		
+		<PerPo Top="050" Field="COMA" Name="Comando"/>		
+		<PerPo Top="075" Field="FOCO" Name="Foco"/>		
+		<PerPo Top="100" Field="INTU" Name="Intuição"/>			
+		</layout>
+		
+	<layout left="010" top="250" height="600" width="1000">
+		<rectangle left="000" top="000" width="280" height="250" color="darkred" strokeColor="black" strokeSize="5" />
+		<label left="000" top="005" height="20" width="270" fontColor="White" fontSize="18" text="Edges (Atributos, Perícias)" autoSize="true" horzTextAlign="center" />
+		<textEditor left="005" top="30" width="270" height="220" field="campoEdgesPok1" />
+		</layout>
+		
+	<layout left="300" top="250" height="600" width="1000">
+		<rectangle left="000" top="000" width="280" height="250" color="darkred" strokeColor="black" strokeSize="5" />
+		<label left="000" top="005" height="20" width="270" fontColor="White" fontSize="18" text="Edges (Habilidades, Golpes)" autoSize="true" horzTextAlign="center" />
+		<textEditor left="005" top="30" width="270" height="220" field="campoEdgesPok2" />
+		</layout>
+		
+	<layout left="600" top="250" height="600" width="1000">
+		<rectangle left="000" top="000" width="280" height="250" color="darkred" strokeColor="black" strokeSize="5" />
+		<label left="000" top="005" height="20" width="270" fontColor="White" fontSize="18" text="Edges (Capacidades)" autoSize="true" horzTextAlign="center" />
+		<textEditor left="005" top="30" width="270" height="220" field="campoEdgesPok3" />
+		</layout>
+
+	</form>

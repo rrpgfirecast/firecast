@@ -1,0 +1,1094 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmPoke2" align="client" theme="dark" margins="{top=1}">
+
+	<template name="PokeAtt">	
+		<edit left="000" top="$(Top)" height="20" width="30" field="$(Nome)_Pri" horzTextAlign="center" type="number" enabled="false"/>
+		<label left="035" top="$(Top)" height="20" width="100" text="$(Nome2)" autoSize="true" fontStyle="bold" />
+		<edit left="140" top="$(Top)" height="20" width="30" field="$(Nome)_Form1" horzTextAlign="center" type="number" enabled="false" />
+		<edit left="185" top="$(Top)" height="20" width="30" field="$(Nome)_Base1" horzTextAlign="center" type="number" />
+		<edit left="230" top="$(Top)" height="20" width="30" field="$(Nome)_Vit" horzTextAlign="center" type="number" />
+		<edit left="275" top="$(Top)" height="20" width="30" field="$(Nome)_Nivel" horzTextAlign="center" type="number" />
+		<edit left="320" top="$(Top)" height="20" width="30" field="$(Nome)_Bon1" horzTextAlign="center" type="number" hint="NÃO é multiplicado por Estágios de Combate e nem afeta a relação basal"/>
+		<edit left="365" top="$(Top)" height="20" width="30" field="$(Nome)_Bon2" horzTextAlign="center" type="number" />
+		<comboBox left="400" top="$(Top)" height="20" width="45" field="$(Nome)_edc" horzTextAlign="center" items="{'-6', '-5', '-4', '-3', '-2', '-1', '0', '1', '2', '3', '4', '5', '6'}" values="{'1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13'}" />
+		<dataLink field="$(Nome)_edc" defaultValue="7" />
+		</template>	
+		
+	 <template name="PokeSlotPok">	
+		<imageCheckBox left="$(Left)" top="$(Top)" height="30" width="30" field="SlotActive$(num)" hint="$(Hint)"
+			checkedImage="$(checked)"
+			uncheckedImage="$(unchecked)" onClick="atualizarbotao($(num));"/>
+		<dataLink field="SlotActive1" defaultValue="false"/>		
+		<dataLink field="SlotActive2" defaultValue="false"/>	
+		<dataLink field="SlotActive3" defaultValue="false"/>	
+		<dataLink field="SlotActive4" defaultValue="false"/>	
+		<dataLink field="SlotActive5" defaultValue="false"/>
+		<dataLink field="SlotActive6" defaultValue="false"/>
+		<dataLink field="SlotActive7" defaultValue="true"/>	
+		</template>
+
+	 <template name="PokeDesloc">	
+		<label left="0" top="$(Top)" width="100" height="20" text="$(Nome):" autoSize="true" fontStyle="bold"/>
+		<edit left="070" top="$(Top)" width="40" height="20" field="to$(Field)" horzTextAlign="center" enabled="false"/>
+		<edit left="115" top="$(Top)" width="40" height="20" field="campo$(Field)" horzTextAlign="center"/>		
+		<edit left="160" top="$(Top)" width="40" height="20" field="bo$(Field)" horzTextAlign="center"/>
+		</template>	
+
+	<rectangle align="top" color="black" xradius="10" yradius="10" height="880" padding="{top=3, left=3, right=3, bottom=3}"/>
+
+	<layout left="005" top="10" width="800" height="560">
+		<rectangle left="00" top="00" width="30" height="30" color="gray"/>
+		<image left="00" top="00" width="30" height="30" editable="true" field="campoPokebola"/>   
+		<dataLink field="campoPokebola" defaultValue="https://cdn.bulbagarden.net/upload/9/93/Bag_Pok%C3%A9_Ball_Sprite.png" />
+		<rectangle left="35" top="00" width="160" height="160" color="gray" />
+		<image left="35" top="00" width="160" height="160" editable="true" field="campoPokemon" animate = "true"/>
+		<image left="000" top="45" width="30" height="30" field="basSEX" style="proportional" editable="false"/>	
+		<button left="0" top="140" width="15" height="20" text="E" hint = "Exportar uma ficha">
+			<event name="onClick">
+				local xml = NDB.exportXML(self.boxDetalhesDoItem.node);
+				local export = {};
+				local bytes = Utils.binaryEncode(export, "utf8", xml);
+				local stream = Utils.newMemoryStream();
+				local bytes = stream:write(export);
+				Dialogs.saveFile("Salvar Ficha como XML", stream, "ficha.xml", "application/xml",
+				function()
+					stream:close();
+						showMessage("Ficha Exportada.");
+					end);
+				</event>
+			</button>
+		<button left="17" top="140" width="15" height="20" text="I" hint = "Importar uma ficha">
+			<event name="onClick">
+				Dialogs.openFile("Importar Ficha", "application/xml", false, 
+					function(arquivos)
+						local arq = arquivos[1];
+						local import = {};
+						local bytes = arq.stream:read(import, arq.stream.size);
+						local xml = Utils.binaryDecode(import, "utf8");
+						NDB.importXML(self.boxDetalhesDoItem.node, xml);
+					end);
+				</event>
+			</button>				
+		<dataLink field="active" defaultValue="true" />										
+			<imageCheckBox left="00" top="90" height="30" width="30" field="PokShiny" hint="Padrão ou Shiny"
+				checkedImage="/img/Shiny_ON.png"
+				uncheckedImage="/img/Shiny_OFF.png"/>
+		<dataLink field="PokShiny" defaultValue="false" />
+		</layout>    
+
+	<layout left="210" top="10" width="800" height="800">
+		<label left="0" top="00" width="80" height="20" text="Número:" autoSize="true" fontStyle="bold"/>
+		<edit left="75" top="00" width="60" height="20" field="campoNumero" horzTextAlign="center"/>
+		<comboBox left="140" top="00" width="110" height="20" field="campoGenero" horzTextAlign="center" items="{'Masculino', 'Feminino', 'Agênero'}" values="{'1', '2', '3'}" >
+			<event name="onChange">	
+				if self.boxDetalhesDoItem.node==nil then    
+					return 
+					end
+				local Genero = self.boxDetalhesDoItem.node.campoGenero or 3
+				if Genero == "1" then	
+					self.boxDetalhesDoItem.node.basSEX = "/img/Gender_Male.png"	
+					end
+				if Genero == "2" then	
+					self.boxDetalhesDoItem.node.basSEX = "/img/Gender_Female.png"	
+					end
+				if Genero == "3" then	
+					self.boxDetalhesDoItem.node.basSEX = "/img/Gender_Less.png"	
+					end
+				</event>
+			</comboBox>
+		<label left="0" top="25" width="80" height="20" text="Espécie:" autoSize="true" fontStyle="bold"/>
+		<edit left="75" top="25" width="175" height="20" field="campoNome" />
+		<label left="0" top="50" width="80" height="20" text="Apelido:" autoSize="true" fontStyle="bold"/>
+		<edit left="75" top="50" width="175" height="20" field="campoApelido" />
+		<label left="0" top="75" width="80" height="20" text="Tipo(s):" autoSize="true" fontStyle="bold"/>
+		<comboBox left="75" top="75" width="85" height="20" field="campoElem1" horzTextAlign="leading" items="{'Normal', 'Fogo', 'Água', 'Elétrico', 'Grama', 'Gelo', 'Lutador', 'Venenoso', 'Terra', 'Voador', 'Psíquico', 'Inseto', 'Rocha', 'Fantasma', 'Dragão', 'Noturno', 'Metálico', 'Fada', ''}" values="{'1', '2', '3', '4','5','6', '7','8','9','10','11','12','13','14','15','16','17','18','19'}"/>
+		<comboBox left="165" top="75" width="85" height="20" field="campoElem2" horzTextAlign="leading" items="{'Normal', 'Fogo', 'Água', 'Elétrico', 'Grama', 'Gelo', 'Lutador', 'Venenoso', 'Terra', 'Voador', 'Psíquico', 'Inseto', 'Rocha', 'Fantasma', 'Dragão', 'Noturno', 'Metálico', 'Fada', ''}" values="{'1', '2', '3', '4','5','6', '7','8','9','10','11','12','13','14','15','16','17','18','19'}"/>
+		<dataLink field="campoElem1" defaultValue="19" />	
+		<dataLink field="campoElem1" defaultValue="19" />										
+		<label left="0" top="100" width="80" height="20" text="Natureza:" autoSize="true" fontStyle="bold"/>
+		<edit left="75" top="100" width="175" height="20" field="campoNatureza" />
+		<label left="0" top="125" width="80" height="20" text="Lesões" autoSize="true" fontStyle="bold" horzTextAlign="leading"/>
+		<comboBox left="0" top="145" height="20" width="45" field="pokHP_Les" horzTextAlign="center" items="{'0', '1', '2', '3', '4', '5', '6', '7', '8', '9'}" values="{'0', '1', '2', '3', '4', '5', '6', '7', '8', '9'}" />
+		<dataLink field="pokHP_Les" defaultValue="0" />
+		<label left="95" top="125" width="68" height="20" text="Aumenta" autoSize="true" fontStyle="bold" horzTextAlign="center"/>
+		<label left="168" top="125" width="68" height="20" text="Diminui" autoSize="true" fontStyle="bold" horzTextAlign="center"/>
+		<comboBox left="95" top="145" width="68" height="20" field="campoNatPlus" horzTextAlign="leading" items="{'HP', 'ATK', 'DEF', 'AES', 'DES', 'VEL'}" values="{'1', '2', '3', '4','5','6'}"/>
+		<comboBox left="168" top="145" width="68" height="20" field="campoNatMinus" horzTextAlign="leading" items="{'HP', 'ATK', 'DEF', 'AES', 'DES', 'VEL'}" values="{'1', '2', '3', '4','5','6'}" />
+		</layout>
+
+	<layout left="480" top="00" width="200" height="25">
+		<label left="070" top="00" width="40" height="20" text="Tot." horzTextAlign="center" autoSize="true" fontStyle="bold"/>
+		<label left="115" top="00" width="40" height="20" text="Bas." horzTextAlign="center" autoSize="true" fontStyle="bold"/>
+		<label left="160" top="00" width="40" height="20" text="Bôn." horzTextAlign="center" autoSize="true" fontStyle="bold"/>
+		</layout>
+
+	<layout left="480" top="20" width="800" height="800">
+		<PokeDesloc Top="000" Nome="Terrestre" Field ="Terrestre"/>
+		<PokeDesloc Top="025" Nome="Natação" Field ="Natacao"/>
+		<PokeDesloc Top="050" Nome="Escavação" Field ="Escavacao"/>
+		<PokeDesloc Top="075" Nome="Levitação" Field ="Levitacao"/>
+		<PokeDesloc Top="100" Nome="Voo" Field ="Voo"/>
+		<PokeDesloc Top="125" Nome="Teleporte" Field ="Teleporte"/>
+		<label left="220" top="00" width="100" height="20" text="Altura:" autoSize="true" fontStyle="bold"/>
+		<edit left="305" top="00" width="80" height="20" field="campoAltura" horzTextAlign="center"/>
+		<label left="220" top="25" width="100" height="20" text="Categoria:" autoSize="true" fontStyle="bold"/>
+		<comboBox left="305" top="25" width="80" height="20" field="catAltura" horzTextAlign="center" items="{'Pequeno', 'Médio', 'Grande', 'Enorme', 'Gigante'}" values="{'Pequeno', 'Médio', 'Grande', 'Enorme', 'Gigante'}" />
+		<label left="220" top="50" width="100" height="20" text="Peso:" autoSize="true" fontStyle="bold"/>
+		<edit left="305" top="50" width="80" height="20" field="campoPeso" horzTextAlign="center"/>
+		<label left="220" top="75" width="100" height="20" text="Categoria:" autoSize="true" fontStyle="bold"/>
+		<comboBox left="305" top="75" width="80" height="20" field="catPeso" horzTextAlign="center" items="{'1', '2', '3', '4', '5', '6', '7'}" values="{'1', '2', '3', '4', '5', '6', '7'}" />
+		<label left="220" top="100" width="100" height="20" text="Força:" autoSize="true" fontStyle="bold"/>
+		<edit left="305" top="100" width="80" height="20" field="campoForca" horzTextAlign="center"/>
+		<label left="220" top="125" width="100" height="20" text="Salto:" autoSize="true" fontStyle="bold"/>
+		<edit left="305" top="125" width="80" height="20" field="campoSalto" horzTextAlign="center"/>
+		</layout>
+									
+	<layout left="300" top="195" width="900" height="800">
+		<label left="0" top="00" width="100" height="20" text="Nível:" autoSize="true" fontStyle="bold"/>
+		<edit left="100" top="0" width="45" height="20" field="pokeLevel" type="number" horzTextAlign="center">
+			<event name="onChange">
+				if self.boxDetalhesDoItem.node == nil then return end;
+				local level = tonumber(self.boxDetalhesDoItem.node.pokeLevel) or 1
+				if 	1 &gt; level or level &gt; 100 then return end;
+				local xpTable = {10,20,30,40,50,60,70,80,90,110,135,160,190,220,250,285,320,360,400,460,530,600,670,745,820,900,990,1075,1165,1260,1355,1455,1555,1660,1770,1880,1995,2110,2230, 
+								2355,2480,2610,2740,2875,3015,3155,3300,3455,3645,3850,4060,4270,4485,4705,4930,5160,5390,5625,5865,6110,6360,6610,6865,7125,7390,7660,7925,8205,8485,8770,9060,
+								9350,9645,9945,10250,10560,10870,11185,11505,11910,12320,12735,13155,13580,14010,14445,14885,15330,15780,16235,16695,17160,17630,18105,18585,19070,19560,20055,20555};
+				self.boxDetalhesDoItem.node.nextLVEXP = xpTable [level];
+				</event>
+			</edit>
+		<label left="0" top="25" width="100" height="20" text="Experiência:" autoSize="true" fontStyle="bold"/>
+		<edit left="100" top="25" width="45" height="20" field="campoExpAt" horzTextAlign="center"/>
+		<label left="147" top="25" height="20" width="8" text="/" autoSize="true" />									
+		<edit left="155" top="25" height="20" width="45" field="nextLVEXP" horzTextAlign="center" enabled="false"/>
+		<label left="0" top="50" width="100" height="20" text="Lealdade:" autoSize="true" fontStyle="bold"/>
+		<edit left="100" top="50" width="45" height="20" field="campoLealdade" horzTextAlign="center"/>
+		<label left="0" top="75" width="100" height="20"  text="Vida" autoSize="true" fontStyle="bold"/>
+		<edit left="100" top="75" height="20" width="45" field="baseHPAtual" horzTextAlign="center" />
+		<label left="147" top="75" height="20" width="8" text="/" autoSize="true" />
+		<edit left="155" top="75" height="20" width="45" field="baseHPMAX" horzTextAlign="center" enabled="false"/>
+		<label left="0" top="100" width="100" height="20" text="Red. de Dano:" autoSize="true" fontStyle="bold"/>
+		<edit left="100" top="100" width="45" height="20" field="PokRD" horzTextAlign="center"/>
+		</layout>
+		
+	<layout left="520" top="170" width="900" height="800">
+		<label left="0" top="00" width="85" height="20" text="Vida" autoSize="true" fontStyle="bold" horzTextAlign="center"/>
+		<label left="0" top="25" width="45" height="20" text="100%" autoSize="true" fontStyle="bold"/>
+		<label left="0" top="50" width="45" height="20" text="50%:" autoSize="true" fontStyle="bold"/>
+		<label left="0" top="75" width="45" height="20" text="10%:" autoSize="true" fontStyle="bold"/>
+		<label left="0" top="100" width="45" height="20" text="Morte:" autoSize="true" fontStyle="bold"/>
+		<edit left="045" top="25" height="20" width="40" field="HP100" horzTextAlign="center" type="number" enabled="false"/>
+		<edit left="045" top="50" height="20" width="40" field="HP50" horzTextAlign="center" type="number" enabled="false"/>
+		<edit left="045" top="75" height="20" width="40" field="HP10" horzTextAlign="center" type="number" enabled="false"/>
+		<edit left="045" top="100" height="20" width="40" field="HPDEAD" horzTextAlign="center" type="number" enabled="false"/>
+		</layout>
+									
+	<layout left="620" top="180" height="320" width="420">
+		<label left="85" top="000" height="20" width="30" text="Tot." horzTextAlign="center" autoSize="true" />
+		<label left="120" top="000" height="20" width="30" text="Bôn." horzTextAlign="center" autoSize="true" />
+		<label left="000" top="025" height="20" width="120" text="Eva. Física" autoSize="true" fontStyle="bold"/>
+		<edit left="85" top="025" height="20" width="30" field="campoEFIS" horzTextAlign="center" type="number"  enabled="false"/>
+		<edit left="120" top="025" height="20" width="30" field="pok_bonEVAF" horzTextAlign="center" type="number" />
+		<label left="000" top="050" height="20" width="120" text="Eva. Especial" autoSize="true" fontStyle="bold"/>
+		<edit left="85" top="050" height="20" width="30" field="campoEESP" horzTextAlign="center" type="number"  enabled="false"/>
+		<edit left="120" top="050" height="20" width="30" field="pok_bonEVAE" horzTextAlign="center" type="number" />
+		<label left="000" top="075" height="20" width="120" text="Eva. Veloz" autoSize="true" fontStyle="bold"/>
+		<edit left="85" top="075" height="20" width="30" field="campoEVEL" horzTextAlign="center" type="number"  enabled="false"/>
+		<edit left="120" top="075" height="20" width="30" field="Pok_bonEVAV" horzTextAlign="center" type="number" />
+		<label left="000" top="100" height="20" width="120" text="Iniciativa" autoSize="true" fontStyle="bold"/>
+		<edit left="85" top="100" height="20" width="30" field="pok_INI" horzTextAlign="center" type="number"  enabled="false"/>
+		<edit left="120" top="100" height="20" width="30" field="pok_bonINI" horzTextAlign="center" type="number" />									
+		</layout>									
+													
+	<layout left="10" top="320" height="600" width="800">
+		<label left="000" top="000" height="20" width="30" text="R.B." autoSize="true" horzTextAlign="center"/>
+		<label left="035" top="000" height="20" width="100" text="Atributo" autoSize="true" horzTextAlign="center" fontStyle="bold" />
+		<label left="140" top="000" height="20" width="30" text="Total" autoSize="true" horzTextAlign="center"/>
+		<label left="185" top="000" height="20" width="30" text="Base" autoSize="true" horzTextAlign="center"/>
+		<label left="230" top="000" height="20" width="30" text="Vit." autoSize="true" horzTextAlign="center"/>
+		<label left="275" top="000" height="20" width="30" text="Nível" autoSize="true" horzTextAlign="center"/>
+		<label left="320" top="000" height="20" width="30" text="Bôn" autoSize="true" horzTextAlign="center"/>
+		<imageCheckBox left="370" top="000" height="40" width="20" field="MegaEvo" hint="Normal ou Mega"
+			checkedImage="/img/Mega_ON.png"
+			uncheckedImage="/img/Mega_OFF.png"/>
+		<edit left="000" top="025" height="20" width="30" field="Vida_Pri" horzTextAlign="center" type="number" enabled="false"/>
+		<label left="035" top="025" height="20" width="100" text="HP" autoSize="true" fontStyle="bold"/>
+		<edit left="140" top="025" height="20" width="30" field="Vida_Form1" horzTextAlign="center" type="number" enabled="false" />
+		<edit left="185" top="025" height="20" width="30" field="Vida_Base1" horzTextAlign="center" type="number" />
+		<edit left="230" top="025" height="20" width="30" field="Vida_Vit" horzTextAlign="center" type="number" />
+		<edit left="275" top="025" height="20" width="30" field="Vida_Nivel" horzTextAlign="center" type="number" />
+		<edit left="320" top="025" height="20" width="30" field="Vida_Bon1" horzTextAlign="center" type="number"  hint="NÃO é multiplicado por Estágios de Combate e nem afeta a relação basal"/>
+		<PokeAtt Top = "050" Nome2="Ataque" Nome = "Ataque"/>
+		<PokeAtt Top = "075" Nome2="Defesa" Nome = "Defesa"/>
+		<PokeAtt Top = "100" Nome2="Ataque Especial" Nome = "AtaqueEsp"/>
+		<PokeAtt Top = "125" Nome2="Defesa Especial" Nome = "DefesaEsp"/>
+		<PokeAtt Top = "150" Nome2="Velocidade" Nome = "Velocidade"/>
+		<edit left="275" top="175" height="20" width="30" field="Soma" horzTextAlign="center" type="number" enabled="false"/>
+		</layout>
+
+	<layout left="800" top="190" height="320" width="420">							
+		<PokeSlotPok Left = "00" Top = "0" checked = "/img/Poke1T.png" unchecked = "/img/Poke1F.png" num = "1" Hint = "Aba 1, Slot 1"/>
+		<PokeSlotPok Left = "00" Top = "35" checked = "/img/Poke2T.png" unchecked = "/img/Poke2F.png" num = "2" Hint = "Aba 1, Slot 2"/>
+		<PokeSlotPok Left = "00" Top = "70" checked = "/img/Poke3T.png" unchecked = "/img/Poke3F.png" num = "3" Hint = "Aba 1, Slot 3"/>
+		<PokeSlotPok Left = "40" Top = "0" checked = "/img/Poke4T.png" unchecked = "/img/Poke4F.png" num = "4" Hint = "Aba 1, Slot 4"/>
+		<PokeSlotPok Left = "40" Top = "35" checked = "/img/Poke5T.png" unchecked = "/img/Poke5F.png" num = "5" Hint = "Aba 1, Slot 5"/>
+		<PokeSlotPok Left = "40" Top = "70" checked = "/img/Poke6T.png" unchecked = "/img/Poke6F.png" num = "6" Hint = "Aba 1, Slot 6"/>
+		<PokeSlotPok Left = "20" Top = "105" checked = "/img/Computer_ON.png" unchecked = "/img/Computer_OFF.png" num = "7" Hint = "Na Reserva"/>
+		</layout>
+
+	<layout left="470" top="335" height="600" width="1000">
+		<image left="000" top="000" width="40" height="40" src="/img/normal2.gif" />
+		<image left="045" top="000" width="40" height="40" src="/img/fire2.gif" />
+		<image left="090" top="000" width="40" height="40" src="/img/water2.gif" />
+		<image left="135" top="000" width="40" height="40" src="/img/electric2.gif" />
+		<image left="180" top="000" width="40" height="40" src="/img/grass2.gif" />
+		<image left="225" top="000" width="40" height="40" src="/img/ice2.gif" />
+		<image left="270" top="000" width="40" height="40" src="/img/fighting2.gif" />
+		<image left="315" top="000" width="40" height="40" src="/img/poison2.gif" />
+		<image left="360" top="000" width="40" height="40" src="/img/ground2.gif" />
+		<edit left="000" top="045" height="20" width="40" field="weakTot1" horzTextAlign="center" enabled="true"/>
+		<edit left="045" top="045" height="20" width="40" field="weakTot2" horzTextAlign="center" enabled="true"/>
+		<edit left="090" top="045" height="20" width="40" field="weakTot3" horzTextAlign="center" enabled="true"/>
+		<edit left="135" top="045" height="20" width="40" field="weakTot4" horzTextAlign="center" enabled="true"/>
+		<edit left="180" top="045" height="20" width="40" field="weakTot5" horzTextAlign="center" enabled="true"/>
+		<edit left="225" top="045" height="20" width="40" field="weakTot6" horzTextAlign="center" enabled="true"/>
+		<edit left="270" top="045" height="20" width="40" field="weakTot7" horzTextAlign="center" enabled="true"/>
+		<edit left="315" top="045" height="20" width="40" field="weakTot8" horzTextAlign="center" enabled="true"/>
+		<edit left="360" top="045" height="20" width="40" field="weakTot9" horzTextAlign="center" enabled="true"/>
+		</layout>
+		
+	<layout left="065" top="405" height="600" width="1000">
+		<image left="405" top="000" width="40" height="40" src="/img/flying2.gif" />
+		<image left="450" top="000" width="40" height="40" src="/img/psychic2.gif" />
+		<image left="495" top="000" width="40" height="40" src="/img/bug2.gif" />
+		<image left="540" top="000" width="40" height="40" src="/img/rock2.gif" />
+		<image left="585" top="000" width="40" height="40" src="/img/ghost2.gif" />
+		<image left="630" top="000" width="40" height="40" src="/img/dragon2.gif" />
+		<image left="675" top="000" width="40" height="40" src="/img/dark2.gif" />
+		<image left="720" top="000" width="40" height="40" src="/img/steel2.gif" />
+		<image left="765" top="000" width="40" height="40" src="/img/fairy2.gif" />
+		<edit left="405" top="045" height="20" width="40" field="weakTot10" horzTextAlign="center" enabled="true"/>
+		<edit left="450" top="045" height="20" width="40" field="weakTot11" horzTextAlign="center" enabled="true"/>
+		<edit left="495" top="045" height="20" width="40" field="weakTot12" horzTextAlign="center" enabled="true"/>
+		<edit left="540" top="045" height="20" width="40" field="weakTot13" horzTextAlign="center" enabled="true"/>
+		<edit left="585" top="045" height="20" width="40" field="weakTot14" horzTextAlign="center" enabled="true"/>
+		<edit left="630" top="045" height="20" width="40" field="weakTot15" horzTextAlign="center" enabled="true"/>
+		<edit left="675" top="045" height="20" width="40" field="weakTot16" horzTextAlign="center" enabled="true"/>
+		<edit left="720" top="045" height="20" width="40" field="weakTot17" horzTextAlign="center" enabled="true" />
+		<edit left="765" top="045" height="20" width="40" field="weakTot18" horzTextAlign="center" enabled="true"/>
+		</layout>
+		
+	<layout left="465" top="480" height="100" width="400">
+		<label left="000" top="000" height="20" width="50" text="Treino" autoSize="true" horzTextAlign="center" fontStyle="bold"/>
+		<imageCheckBox left="55" top="000" height="25.6" width="81.6" field="agiTr"
+			checkedImage="/img/AgilON.png"
+			uncheckedImage="/img/AgilOFF.png"/>
+		<imageCheckBox left="140" top="000" height="25.6" width="81.6" field="bruTr"
+			checkedImage="/img/BrutalON.png"
+			uncheckedImage="/img/BrutalOFF.png"/>
+		<imageCheckBox left="225" top="000" height="25.6" width="81.6" field="focTr"
+			checkedImage="/img/FocadoON.png"
+			uncheckedImage="/img/FocadoOFF.png"/>
+		<imageCheckBox left="310" top="000" height="25.6" width="81.6" field="insTr"
+			checkedImage="/img/InspiradoON.png"
+			uncheckedImage="/img/InspiradoOFF.png"/>
+		<label left="000" top="030" height="25" width="50" text="Ordem" autoSize="true" horzTextAlign="center" fontStyle="bold"/>
+		<imageCheckBox left="55" top="028" height="25.6" width="81.6" field="agiOr"
+			checkedImage="/img/AgilON.png"
+			uncheckedImage="/img/AgilOFF.png"/>
+		<imageCheckBox left="140" top="028" height="25.6" width="81.6" field="bruOr"
+			checkedImage="/img/BrutalON.png"
+			uncheckedImage="/img/BrutalOFF.png"/>
+		<imageCheckBox left="225" top="028" height="25.6" width="81.6" field="focOr"
+			checkedImage="/img/FocadoON.png"
+			uncheckedImage="/img/FocadoOFF.png"/>
+		<imageCheckBox left="310" top="028" height="25.6" width="81.6" field="insOr"
+			checkedImage="/img/InspiradoON.png"
+			uncheckedImage="/img/InspiradoOFF.png"/>
+		</layout>
+
+
+	<popup name="popExemplo" width="300" height="200" backOpacity="0.4" autoScopeNode="false">
+		<label left="0" top="5" width="60" height="20" text="Efeito:" horzTextAlign="center"/>
+		<textEditor left="005" top="30" height="165" width="290" field="Descricao1"/>
+		</popup>
+
+	<popup name="popExemplo2" width="300" height="200" backOpacity="0.4" autoScopeNode="false">
+		<label left="0" top="5" width="60" height="20" text="Efeito:" horzTextAlign="center"/>
+		<textEditor left="005" top="30" height="165" width="290" field="Descricao2"/>
+		</popup>
+		
+	<popup name="popExemplo3" width="300" height="200" backOpacity="0.4" autoScopeNode="false">
+		<label left="0" top="5" width="60" height="20" text="Efeito:" horzTextAlign="center"/>
+		<textEditor left="005" top="30" height="165" width="290" field="Descricao3"/>
+		</popup>
+
+
+    <layout left="50" top="180" height="500" width="300">
+		<label left="000" top="00" height="20" width="180" text="Itens" autoSize="true" fontColor="White" fontSize="14" horzTextAlign="center" />
+		<radioButton top="25" left="0" width="20" height="20" groupName="ItensPok" field="ItensField" fieldValue="1"/>   
+		<edit vertTextAlign="center" left="25" top="25" width="150" height="25" field="nomeItem1"/>
+		<button left="180" top="25" width="23" height="25" text="i" name="BotaoItemA">
+			<event name="onClick"><![CDATA[
+	    		local pop = self:findControlByName("popExemplo");
+				
+			if pop ~= nil then
+				pop:setNodeObject(self.boxDetalhesDoItem.node);
+				pop:showPopupEx("right", self.BotaoItemA);
+			else
+				showMessage("Ops, erro");
+			end;
+				]]>
+			</event>
+		</button>                      
+		<radioButton top="55" left="0" width="20" height="20" groupName="ItensPok" field="ItensField" fieldValue="2"/> 
+		<edit vertTextAlign="center" left="25" top="55" width="150" height="25" field="nomeItem2"/>
+		<button left="180" top="55" width="23" height="25" text="i" name="BotaoItemB">
+			<event name="onClick"><![CDATA[
+	    		local pop = self:findControlByName("popExemplo2");
+				
+				if pop ~= nil then
+				pop:setNodeObject(self.boxDetalhesDoItem.node);
+				pop:showPopupEx("right", self.BotaoItemB);
+			else
+				showMessage("Ops, erro");
+				end;
+				]]>
+			</event>
+		</button>
+		<radioButton top="85" left="0" width="20" height="20" groupName="ItensPok" field="ItensField" fieldValue="3"/>
+		<edit vertTextAlign="center" left="25" top="85" width="150" height="25" field="nomeItem3"/>
+		<button left="180" top="85" width="23" height="25" text="i" name="BotaoItemC">
+			<event name="onClick"><![CDATA[
+	    		local pop = self:findControlByName("popExemplo3");
+				
+			if pop ~= nil then
+				pop:setNodeObject(self.boxDetalhesDoItem.node);
+				pop:showPopupEx("right", self.BotaoItemC);
+			else
+				showMessage("Ops, erro");
+			end;
+				]]>
+			</event>
+		</button>
+        <dataLink field="ItensField" defaultValue="1" />
+    </layout>
+
+
+    <dataLink fields="{'campoNatPlus', 'campoNatMinus'}">
+        <event name="onChange">
+			local BonNat = self.boxDetalhesDoItem.node.campoNatPlus or "";
+			local PenNat = self.boxDetalhesDoItem.node.campoNatMinus or "";
+			if BonNat == "1" 		then	
+				self.boxDetalhesDoItem.node.Sabor_Fav = "Comida Salgada"	
+			elseif BonNat == "2" 		then	
+				self.boxDetalhesDoItem.node.Sabor_Fav = "Comida Apimentada" 
+			elseif BonNat == "3" 		then	
+				self.boxDetalhesDoItem.node.Sabor_Fav = "Comida Azeda"		
+			elseif BonNat == "4" 		then	
+				self.boxDetalhesDoItem.node.Sabor_Fav = "Comida Seca"		
+			elseif BonNat == "5" 		then	
+				self.boxDetalhesDoItem.node.Sabor_Fav = "Comida Amarga"		
+			elseif BonNat == "6" 		then	
+				self.boxDetalhesDoItem.node.Sabor_Fav = "Comida Doce"		
+				end
+			if PenNat == "1" 		then	
+				self.boxDetalhesDoItem.node.Sabor_Desg = "Comida Salgada"	
+			elseif PenNat == "2" 		then	
+				self.boxDetalhesDoItem.node.Sabor_Desg = "Comida Apimentada" 
+			elseif PenNat == "3" 		then	
+				self.boxDetalhesDoItem.node.Sabor_Desg = "Comida Azeda"		
+			elseif PenNat == "4" 		then	
+				self.boxDetalhesDoItem.node.Sabor_Desg = "Comida Seca"		
+			elseif PenNat == "5" 		then	
+				self.boxDetalhesDoItem.node.Sabor_Desg = "Comida Amarga"	
+			elseif PenNat == "6" 		then	
+				self.boxDetalhesDoItem.node.Sabor_Desg = "Comida Doce"		
+				end
+			if (BonNat == PenNat) then 	
+				self.boxDetalhesDoItem.node.Sabor_Fav = "Sem Preferência"
+				self.boxDetalhesDoItem.node.Sabor_Desg = "Sem Preferência"
+				end
+			</event>
+		</dataLink>
+
+    <dataLink fields="{'campoElem1', 'campoElem2'}">
+        <event name="onChange">
+			local PweakTot = {"1x","1x","1x","1x","1x","1x","1x","1x","1x","1x","1x","1x","1x","1x","1x","1x","1x","1x"};
+			local weakElem1 = {"Norm","Norm","Norm","Norm","Norm","Norm","Norm","Norm","Norm","Norm","Norm","Norm","Norm","Norm","Norm","Norm","Norm","Norm"}
+			local CampoElem1Aux = self.boxDetalhesDoItem.node.campoElem1 or 0;
+			if CampoElem1Aux == "1" 		then	
+				weakElem1 = {"Norm","Norm","Norm","Norm","Norm","Norm","Weak","Norm","Norm","Norm","Norm","Norm","Norm","Immu","Norm","Norm","Norm","Norm"}	
+				end
+			if CampoElem1Aux == "2" 		then	
+				weakElem1 = {"Norm","Resi","Weak","Norm","Resi","Resi","Norm","Norm","Weak","Norm","Norm","Resi","Weak","Norm","Norm","Norm","Resi","Resi"}	
+				end
+			if CampoElem1Aux == "3" 		then	
+				weakElem1 = {"Norm","Resi","Resi","Weak","Weak","Resi","Norm","Norm","Norm","Norm","Norm","Norm","Norm","Norm","Norm","Norm","Resi","Norm"}	
+				end
+			if CampoElem1Aux == "4" 		then	
+				weakElem1 = {"Norm","Norm","Norm","Resi","Norm","Norm","Norm","Norm","Weak","Resi","Norm","Norm","Norm","Norm","Norm","Norm","Resi","Norm"}	
+				end
+			if CampoElem1Aux == "5" 		then	
+				weakElem1 = {"Norm","Weak","Resi","Resi","Resi","Weak","Norm","Weak","Resi","Weak","Norm","Weak","Norm","Norm","Norm","Norm","Norm","Norm"}	
+				end
+			if CampoElem1Aux == "6" 		then	
+				weakElem1 = {"Norm","Weak","Norm","Norm","Norm","Resi","Weak","Norm","Norm","Norm","Norm","Norm","Weak","Norm","Norm","Norm","Weak","Norm"}	
+				end
+			if CampoElem1Aux == "7" 		then	
+				weakElem1 = {"Norm","Norm","Norm","Norm","Norm","Norm","Norm","Norm","Norm","Weak","Weak","Resi","Resi","Norm","Norm","Resi","Norm","Weak"}	
+				end
+			if CampoElem1Aux == "8" 		then	
+				weakElem1 = {"Norm","Norm","Norm","Norm","Resi","Norm","Resi","Resi","Weak","Norm","Weak","Resi","Norm","Norm","Norm","Norm","Norm","Resi"}	
+				end
+			if CampoElem1Aux == "9" 		then	
+				weakElem1 = {"Norm","Norm","Weak","Immu","Weak","Weak","Norm","Resi","Norm","Norm","Norm","Norm","Resi","Norm","Norm","Norm","Norm","Norm"}	
+				end
+			if CampoElem1Aux == "10" 		then	
+				weakElem1 = {"Norm","Norm","Norm","Weak","Resi","Weak","Resi","Norm","Immu","Norm","Norm","Resi","Weak","Norm","Norm","Norm","Norm","Norm"}	
+				end
+			if CampoElem1Aux == "11" 		then	
+				weakElem1 = {"Norm","Norm","Norm","Norm","Norm","Norm","Resi","Norm","Norm","Norm","Resi","Weak","Norm","Weak","Norm","Weak","Norm","Norm"}	
+				end
+			if CampoElem1Aux == "12" 		then	
+				weakElem1 = {"Norm","Weak","Norm","Norm","Resi","Norm","Resi","Norm","Resi","Weak","Norm","Norm","Weak","Norm","Norm","Norm","Norm","Norm"}	
+				end
+			if CampoElem1Aux == "13" 		then	
+				weakElem1 = {"Resi","Resi","Weak","Norm","Weak","Norm","Weak","Resi","Weak","Resi","Norm","Norm","Norm","Norm","Norm","Norm","Weak","Norm"}	
+				end
+			if CampoElem1Aux == "14" 		then	
+				weakElem1 = {"Immu","Norm","Norm","Norm","Norm","Norm","Immu","Resi","Norm","Norm","Norm","Resi","Norm","Weak","Norm","Weak","Norm","Norm"}	
+				end
+			if CampoElem1Aux == "15" 		then	
+				weakElem1 = {"Norm","Resi","Resi","Resi","Resi","Weak","Norm","Norm","Norm","Norm","Norm","Norm","Norm","Norm","Weak","Norm","Norm","Weak"}	
+				end
+			if CampoElem1Aux == "16" 		then	
+				weakElem1 = {"Norm","Norm","Norm","Norm","Norm","Norm","Weak","Norm","Norm","Norm","Immu","Weak","Norm","Resi","Norm","Resi","Norm","Weak"}	
+				end
+			if CampoElem1Aux == "17" 		then	
+				weakElem1 = {"Resi","Weak","Norm","Norm","Resi","Resi","Weak","Immu","Weak","Resi","Resi","Resi","Resi","Norm","Resi","Norm","Resi","Resi"}	
+				end
+			if CampoElem1Aux == "18" 		then	
+				weakElem1 = {"Norm","Norm","Norm","Norm","Norm","Norm","Resi","Weak","Norm","Norm","Norm","Resi","Norm","Norm","Immu","Resi","Weak","Norm"}	
+				end			
+			if CampoElem1Aux == "19" 		then	
+				weakElem1 = {"Norm","Norm","Norm","Norm","Norm","Norm","Norm","Norm","Norm","Norm","Norm","Norm","Norm","Norm","Norm","Norm","Norm","Norm"}	
+				end
+			local weakElem2 = {"Norm","Norm","Norm","Norm","Norm","Norm","Norm","Norm","Norm","Norm","Norm","Norm","Norm","Norm","Norm","Norm","Norm","Norm"}
+			local CampoElem2Aux = self.boxDetalhesDoItem.node.campoElem2 or 0;
+			if CampoElem2Aux == "1" 		then	
+				weakElem2 = {"Norm","Norm","Norm","Norm","Norm","Norm","Weak","Norm","Norm","Norm","Norm","Norm","Norm","Immu","Norm","Norm","Norm","Norm"}	
+				end
+			if CampoElem2Aux == "2" 		then	
+				weakElem2 = {"Norm","Resi","Weak","Norm","Resi","Resi","Norm","Norm","Weak","Norm","Norm","Resi","Weak","Norm","Norm","Norm","Resi","Resi"}	
+				end
+			if CampoElem2Aux == "3" 		then	
+				weakElem2 = {"Norm","Resi","Resi","Weak","Weak","Resi","Norm","Norm","Norm","Norm","Norm","Norm","Norm","Norm","Norm","Norm","Resi","Norm"}	
+				end
+			if CampoElem2Aux == "4" 		then	
+				weakElem2 = {"Norm","Norm","Norm","Resi","Norm","Norm","Norm","Norm","Weak","Resi","Norm","Norm","Norm","Norm","Norm","Norm","Resi","Norm"}	
+				end
+			if CampoElem2Aux == "5" 		then	
+				weakElem2 = {"Norm","Weak","Resi","Resi","Resi","Weak","Norm","Weak","Resi","Weak","Norm","Weak","Norm","Norm","Norm","Norm","Norm","Norm"}	
+				end
+			if CampoElem2Aux == "6" 		then	
+				weakElem2 = {"Norm","Weak","Norm","Norm","Norm","Resi","Weak","Norm","Norm","Norm","Norm","Norm","Weak","Norm","Norm","Norm","Weak","Norm"}	
+				end
+			if CampoElem2Aux == "7" 		then	
+				weakElem2 = {"Norm","Norm","Norm","Norm","Norm","Norm","Norm","Norm","Norm","Weak","Weak","Resi","Resi","Norm","Norm","Resi","Norm","Weak"}	
+				end
+			if CampoElem2Aux == "8" 		then	
+				weakElem2 = {"Norm","Norm","Norm","Norm","Resi","Norm","Resi","Resi","Weak","Norm","Weak","Resi","Norm","Norm","Norm","Norm","Norm","Resi"}	
+				end
+			if CampoElem2Aux == "9" 		then	
+				weakElem2 = {"Norm","Norm","Weak","Immu","Weak","Weak","Norm","Resi","Norm","Norm","Norm","Norm","Resi","Norm","Norm","Norm","Norm","Norm"}	
+				end
+			if CampoElem2Aux == "10" 		then	
+				weakElem2 = {"Norm","Norm","Norm","Weak","Resi","Weak","Resi","Norm","Immu","Norm","Norm","Resi","Weak","Norm","Norm","Norm","Norm","Norm"}	
+				end
+			if CampoElem2Aux == "11" 		then	
+				weakElem2 = {"Norm","Norm","Norm","Norm","Norm","Norm","Resi","Norm","Norm","Norm","Resi","Weak","Norm","Weak","Norm","Weak","Norm","Norm"}	
+				end
+			if CampoElem2Aux == "12" 		then	
+				weakElem2 = {"Norm","Weak","Norm","Norm","Resi","Norm","Resi","Norm","Resi","Weak","Norm","Norm","Weak","Norm","Norm","Norm","Norm","Norm"}	
+				end
+			if CampoElem2Aux == "13" 		then	
+				weakElem2 = {"Resi","Resi","Weak","Norm","Weak","Norm","Weak","Resi","Weak","Resi","Norm","Norm","Norm","Norm","Norm","Norm","Weak","Norm"}	
+				end
+			if CampoElem2Aux == "14"		then	
+				weakElem2 = {"Immu","Norm","Norm","Norm","Norm","Norm","Immu","Resi","Norm","Norm","Norm","Resi","Norm","Weak","Norm","Weak","Norm","Norm"}	
+				end
+			if CampoElem2Aux == "15"		then	
+				weakElem2 = {"Norm","Resi","Resi","Resi","Resi","Weak","Norm","Norm","Norm","Norm","Norm","Norm","Norm","Norm","Weak","Norm","Norm","Weak"}	
+				end
+			if CampoElem2Aux == "16" 		then	
+				weakElem2 = {"Norm","Norm","Norm","Norm","Norm","Norm","Weak","Norm","Norm","Norm","Immu","Weak","Norm","Resi","Norm","Resi","Norm","Weak"}	
+				end
+			if CampoElem2Aux == "17" 		then	
+				weakElem2 = {"Resi","Weak","Norm","Norm","Resi","Resi","Weak","Immu","Weak","Resi","Resi","Resi","Resi","Norm","Resi","Norm","Resi","Resi"}	
+				end
+			if CampoElem2Aux == "18" 		then	
+				weakElem2 = {"Norm","Norm","Norm","Norm","Norm","Norm","Resi","Weak","Norm","Norm","Norm","Resi","Norm","Norm","Immu","Resi","Weak","Norm"}	
+				end
+			if CampoElem2Aux == "19" 		then	
+				weakElem2 = {"Norm","Norm","Norm","Norm","Norm","Norm","Norm","Norm","Norm","Norm","Norm","Norm","Norm","Norm","Norm","Norm","Norm","Norm"}	
+				end
+			for i=1, 18, 1 do
+				if (weakElem1[i] == "Norm" and weakElem2[i] == "Norm") then 
+					PweakTot[i] = "x1"		
+					end
+				if (weakElem1[i] == "Resi" and weakElem2[i] == "Resi") then 
+					PweakTot[i] = "x0.25"	
+					end
+				if (weakElem1[i] == "Immu" and weakElem2[i] == "Immu") then 
+					PweakTot[i] = "x0"		
+					end
+				if (weakElem1[i] == "Weak" and weakElem2[i] == "Weak") then 
+					PweakTot[i] = "x2"		
+					end	  
+				if (weakElem1[i] == "Resi" and weakElem2[i] == "Norm") then 
+					PweakTot[i] = "x0.5"	
+					end
+				if (weakElem1[i] == "Norm" and weakElem2[i] == "Resi") then 
+					PweakTot[i] = "x0.5"	
+					end
+				if (weakElem1[i] == "Weak" and weakElem2[i] == "Norm") then 
+					PweakTot[i] = "x1.5"		
+					end
+				if (weakElem1[i] == "Norm" and weakElem2[i] == "Weak") then 
+					PweakTot[i] = "x1.5"		
+					end
+				if (weakElem1[i] == "Immu" and weakElem2[i] == "Norm") then 
+					PweakTot[i] = "x0"		
+					end
+				if (weakElem1[i] == "Norm" and weakElem2[i] == "Immu") then 
+					PweakTot[i] = "x0"		
+					end
+				if (weakElem1[i] == "Resi" and weakElem2[i] == "Weak") then 
+					PweakTot[i] = "x1"		
+					end
+				if (weakElem1[i] == "Weak" and weakElem2[i] == "Resi") then 
+					PweakTot[i] = "x1"		
+					end
+				if (weakElem1[i] == "Resi" and weakElem2[i] == "Immu") then 
+					PweakTot[i] = "x0"		
+					end
+				if (weakElem1[i] == "Immu" and weakElem2[i] == "Resi") then 
+					PweakTot[i] = "x0"		
+					end
+				if (weakElem1[i] == "Immu" and weakElem2[i] == "Weak") then 
+					PweakTot[i] = "x0"		
+					end
+				if (weakElem1[i] == "Weak" and weakElem2[i] == "Immu") then 
+					PweakTot[i] = "x0"		
+					end
+				end
+			self.boxDetalhesDoItem.node.weakTot1 = PweakTot[1] or "x1"
+			self.boxDetalhesDoItem.node.weakTot2 = PweakTot[2] or "x1"
+			self.boxDetalhesDoItem.node.weakTot3 = PweakTot[3] or "x1"
+			self.boxDetalhesDoItem.node.weakTot4 = PweakTot[4] or "x1"
+			self.boxDetalhesDoItem.node.weakTot5 = PweakTot[5] or "x1"
+			self.boxDetalhesDoItem.node.weakTot6 = PweakTot[6] or "x1"
+			self.boxDetalhesDoItem.node.weakTot7 = PweakTot[7] or "x1"
+			self.boxDetalhesDoItem.node.weakTot8 = PweakTot[8] or "x1"
+			self.boxDetalhesDoItem.node.weakTot9 = PweakTot[9] or "x1"
+			self.boxDetalhesDoItem.node.weakTot10 = PweakTot[10] or "x1"
+			self.boxDetalhesDoItem.node.weakTot11 = PweakTot[11] or "x1"
+			self.boxDetalhesDoItem.node.weakTot12 = PweakTot[12] or "x1"
+			self.boxDetalhesDoItem.node.weakTot13 = PweakTot[13] or "x1"
+			self.boxDetalhesDoItem.node.weakTot14 = PweakTot[14] or "x1"
+			self.boxDetalhesDoItem.node.weakTot15 = PweakTot[15] or "x1"
+			self.boxDetalhesDoItem.node.weakTot16 = PweakTot[16] or "x1"
+			self.boxDetalhesDoItem.node.weakTot17 = PweakTot[17] or "x1"
+			self.boxDetalhesDoItem.node.weakTot18 = PweakTot[18] or "x1"
+			</event>
+        </dataLink>
+		
+       <dataLink fields="{	'pokeLevel', 'Vida_Base1','Vida_Bon1','Vida_Nivel','Vida_Vit','pokHP_Les','campoPokemon','basSEX','pok_INI',
+							'Ataque_Base1', 'Ataque_Bon1', 'Ataque_Bon2','Ataque_Nivel','Ataque_Vit','Ataque_edc','campoApelido',
+							'Defesa_Base1', 'Defesa_Bon1', 'Defesa_Bon2','Defesa_Nivel','Defesa_Vit','Defesa_edc','campoNome',
+							'AtaqueEsp_Base1', 'AtaqueEsp_Bon1', 'AtaqueEsp_Bon2','AtaqueEsp_Nivel','AtaqueEsp_Vit','AtaqueEsp_edc',
+							'DefesaEsp_Base1', 'DefesaEsp_Bon1', 'DefesaEsp_Bon2','DefesaEsp_Nivel','DefesaEsp_Vit','DefesaEsp_edc',
+							'Velocidade_Nivel','Velocidade_Base1','Velocidade_Bon1','Velocidade_Bon2','Velocidade_Vit','Velocidade_edc',
+							'pok_bonEVAF', 'pok_bonEVAE', 'pok_bonEVAV', 'pok_bonINI', 'MegaEvo', 'active','baseHPAtual', 'baseHPMAX',
+							'SlotActive1', 'SlotActive2', 'SlotActive3', 'SlotActive4', 'SlotActive5', 'SlotActive6', 'SlotActive7',
+							'Poffins_Usos','Poffins_Bonus','Treino_Usos','Treino_Bonus','agiTr','agiOr','insTr','insOr'}">
+            <event name="onChange">
+				if self.boxDetalhesDoItem.node == nil then 
+					return 
+					end;
+				local EdCtable = {0.4,0.5,0.6,0.7,0.8,0.9,1,1.2,1.4,1.6,1.8,2,2.2};
+				local AuxMega = 0;
+				if (not self.boxDetalhesDoItem.node.MegaEvo) then 
+					AuxMega = 0;	
+					end
+				if (self.boxDetalhesDoItem.node.MegaEvo == true) then 
+					AuxMega = 1;	
+					end
+					
+				local HPBase1 = self.boxDetalhesDoItem.node.Vida_Base1 or 0;
+				local HPBon1 = self.boxDetalhesDoItem.node.Vida_Bon1 or 0;
+				local HPNivel = self.boxDetalhesDoItem.node.Vida_Nivel or 0;
+				local HPVitam = self.boxDetalhesDoItem.node.Vida_Vit or 0;
+				local PokInjuries = tonumber(self.boxDetalhesDoItem.node.pokHP_Les) or 0;
+				if (HPBase1 > 0) then 
+					self.boxDetalhesDoItem.node.Vida_Form1 = math.floor((HPBase1 + HPNivel + HPVitam + HPBon1));
+					end
+			
+				local ATKBase1 = self.boxDetalhesDoItem.node.Ataque_Base1 or 0;
+				local ATKBon1 = self.boxDetalhesDoItem.node.Ataque_Bon1 or 0;
+				local ATKBon2 = self.boxDetalhesDoItem.node.Ataque_Bon2 or 0;
+				local ATKNivel = self.boxDetalhesDoItem.node.Ataque_Nivel or 0;
+				local ATKVitam = self.boxDetalhesDoItem.node.Ataque_Vit or 0;
+				local ATKedc = tonumber(self.boxDetalhesDoItem.node.Ataque_edc) or 7;
+					if 1 &gt; ATKedc then 
+						ATKedc = 7 
+						end;
+					if ATKedc &gt; 13 then 
+						ATKedc = 7 
+						end;
+				if (ATKBase1 > 0) then 
+					self.boxDetalhesDoItem.node.Ataque_Form1 = math.floor((ATKBase1 + ATKNivel + ATKVitam + ATKBon2*AuxMega)*EdCtable[ATKedc]) + math.floor(ATKBon1);
+					end				
+
+				local DEFBase1 = self.boxDetalhesDoItem.node.Defesa_Base1 or 0;
+				local DEFBon1 = self.boxDetalhesDoItem.node.Defesa_Bon1 or 0;
+				local DEFBon2 = self.boxDetalhesDoItem.node.Defesa_Bon2 or 0;
+				local DEFNivel = self.boxDetalhesDoItem.node.Defesa_Nivel or 0;
+				local DEFVitam = self.boxDetalhesDoItem.node.Defesa_Vit or 0;
+				local DEFedc = tonumber(self.boxDetalhesDoItem.node.Defesa_edc) or 7;
+					if 1 &gt; DEFedc then 
+						DEFedc = 7 
+						end;
+					if DEFedc &gt; 13 then 
+						DEFedc = 7 
+						end;
+				if (DEFBase1 > 0) then 
+					self.boxDetalhesDoItem.node.Defesa_Form1 = math.floor((DEFBase1 + DEFNivel + DEFVitam + DEFBon2*AuxMega)*EdCtable[DEFedc]) +math.floor(DEFBon1);
+					end
+
+				local AESBase1 = self.boxDetalhesDoItem.node.AtaqueEsp_Base1 or 0;
+				local AESBon1 = self.boxDetalhesDoItem.node.AtaqueEsp_Bon1 or 0;
+				local AESBon2 = self.boxDetalhesDoItem.node.AtaqueEsp_Bon2 or 0;
+				local AESNivel = self.boxDetalhesDoItem.node.AtaqueEsp_Nivel or 0;
+				local AESVitam = self.boxDetalhesDoItem.node.AtaqueEsp_Vit or 0;
+				local AESedc = tonumber(self.boxDetalhesDoItem.node.AtaqueEsp_edc) or 7;
+					if 1 &gt; AESedc then 
+						AESedc = 7 
+						end;
+					if AESedc &gt; 13 then 
+						AESedc = 7 
+						end;
+				if (AESBase1 > 0) then 
+					self.boxDetalhesDoItem.node.AtaqueEsp_Form1 = math.floor((AESBase1 + AESNivel + AESVitam + AESBon2*AuxMega)*EdCtable[AESedc]) +math.floor(AESBon1);
+					end
+				
+				local DESBase1 = self.boxDetalhesDoItem.node.DefesaEsp_Base1 or 0;
+				local DESBon1 = self.boxDetalhesDoItem.node.DefesaEsp_Bon1 or 0;
+				local DESBon2 = self.boxDetalhesDoItem.node.DefesaEsp_Bon2 or 0;
+				local DESNivel = self.boxDetalhesDoItem.node.DefesaEsp_Nivel or 0;
+				local DESVitam = self.boxDetalhesDoItem.node.DefesaEsp_Vit or 0;
+				local DESedc = tonumber(self.boxDetalhesDoItem.node.DefesaEsp_edc) or 7;
+					if 1 &gt; DESedc then 
+						DESedc = 7 
+						end;
+					if DESedc &gt; 13 then 
+						DESedc = 7 
+						end;
+				if (DESBase1 > 0) then 
+					self.boxDetalhesDoItem.node.DefesaEsp_Form1 = math.floor((DESBase1 + DESNivel + DESVitam + DESBon2*AuxMega)*EdCtable[DESedc]) +math.floor(DESBon1);
+					end
+
+				local VelBase1 = self.boxDetalhesDoItem.node.Velocidade_Base1 or 0;
+				local VelBon1 = self.boxDetalhesDoItem.node.Velocidade_Bon1 or 0;
+				local VelBon2 = self.boxDetalhesDoItem.node.Velocidade_Bon2 or 0;
+				local VelNivel = self.boxDetalhesDoItem.node.Velocidade_Nivel or 0;
+				local VelVitam = self.boxDetalhesDoItem.node.Velocidade_Vit or 0;
+				local Veledc = tonumber(self.boxDetalhesDoItem.node.Velocidade_edc) or 7;
+					if 1 &gt; Veledc then 
+						Veledc = 7 
+						end;
+					if Veledc &gt; 13 then 
+						Veledc = 7 
+						end;
+				if (VelBase1 > 0) then 
+					self.boxDetalhesDoItem.node.Velocidade_Form1 = math.floor((VelBase1 + VelNivel + VelVitam + VelBon2*AuxMega)*EdCtable[Veledc]) +math.floor(VelBon1);
+					end
+					
+				self.boxDetalhesDoItem.node.Soma = HPNivel + ATKNivel + DEFNivel + AESNivel + DESNivel + VelNivel;
+				
+				local EFISbon = self.boxDetalhesDoItem.node.pok_bonEVAF or 0;
+				local EESPbon = self.boxDetalhesDoItem.node.pok_bonEVAE or 0; 
+				local EVELbon = self.boxDetalhesDoItem.node.Pok_bonEVAV or 0;	
+				flagInspiredTr = self.boxDetalhesDoItem.node.insTr or false;
+				if (flagInspiredTr) then
+					EFISbon = EFISbon+1;
+					EESPbon = EESPbon+1;
+					EVELbon = EVELbon+1;
+					end
+				flagInspiredOr = self.boxDetalhesDoItem.node.insOr or false;
+				if (flagInspiredOr) then
+					EFISbon = EFISbon+1;
+					EESPbon = EESPbon+1;
+					EVELbon = EVELbon+1;
+					end				
+				local INIbon = self.boxDetalhesDoItem.node.pok_bonINI or 0;	
+				local DEF_fim = self.boxDetalhesDoItem.node.Defesa_Form1 or 0;
+				if DEF_fim > 30 then 
+					DEF_fim = 30;	
+					end
+				local DEFE_fim = self.boxDetalhesDoItem.node.DefesaEsp_Form1 or 0;
+				if DEFE_fim > 30 then 
+					DEFE_fim = 30;	
+					end
+				local VEL_fim = self.boxDetalhesDoItem.node.Velocidade_Form1 or 0;
+				local agiTRFlag = self.boxDetalhesDoItem.node.agiTr or false;
+				if (agiTRFlag) then
+					INIbon = INIbon +4;
+					end
+				local agiORFlag = self.boxDetalhesDoItem.node.agiOr or false;
+				if (agiORFlag) then
+					INIbon = INIbon +4;
+					end
+				self.boxDetalhesDoItem.node.pok_INI = math.floor(VEL_fim) + INIbon;					
+				if VEL_fim > 30 then 
+					VEL_fim = 30;	
+					end
+				local VIDA_fim = self.boxDetalhesDoItem.node.Vida_Form1 or 0;
+				self.boxDetalhesDoItem.node.campoEFIS = math.floor(DEF_fim/5) + EFISbon;
+				if (self.boxDetalhesDoItem.node.campoEFIS >9) then 
+					self.boxDetalhesDoItem.node.campoEFIS = 0; 	
+					end
+				self.boxDetalhesDoItem.node.campoEESP = math.floor(DEFE_fim/5) + EESPbon;
+				if (self.boxDetalhesDoItem.node.campoEESP >9) then 
+					self.boxDetalhesDoItem.node.campoEESP = 0; 	
+					end
+				self.boxDetalhesDoItem.node.campoEVEL = math.floor(VEL_fim/5) + EVELbon;
+				if (self.boxDetalhesDoItem.node.campoEVEL >9) then 
+					self.boxDetalhesDoItem.node.campoEVEL = 0; 	
+					end
+
+				local PokeLV = self.boxDetalhesDoItem.node.pokeLevel or 1
+				self.boxDetalhesDoItem.node.baseHPMAX = math.floor((PokeLV + VIDA_fim*3 +10)*((10-PokInjuries)/10));	
+				self.boxDetalhesDoItem.node.HP100 = math.floor(PokeLV + VIDA_fim*3 +10);
+				self.boxDetalhesDoItem.node.HP50 = math.ceil(self.boxDetalhesDoItem.node.HP100*0.5)
+				self.boxDetalhesDoItem.node.HP10 = math.floor(self.boxDetalhesDoItem.node.HP100*0.1)
+				self.boxDetalhesDoItem.node.HPDEAD = -2*(self.boxDetalhesDoItem.node.HP100)
+				if (self.boxDetalhesDoItem.node.HPDEAD > -50) then
+					self.boxDetalhesDoItem.node.HPDEAD = -50;
+					end
+				
+				self.boxDetalhesDoItem.node.Poffins_Base = 1 + math.floor(PokeLV/5);
+				local basPoffin = tonumber(self.boxDetalhesDoItem.node.Poffins_Base);
+				local usoPoffin = tonumber(self.boxDetalhesDoItem.node.Poffins_Usos) or 0;
+				local bonPoffin = tonumber(self.boxDetalhesDoItem.node.Poffins_Bonus) or 0;
+				local MaxPoffin = basPoffin + bonPoffin - usoPoffin;
+				self.boxDetalhesDoItem.node.Poffins_Restam = MaxPoffin;
+				
+				self.boxDetalhesDoItem.node.Treino_Base = 1 + math.floor(PokeLV/5);
+				local basTutor = tonumber(self.boxDetalhesDoItem.node.Treino_Base);
+				local usoTutor = tonumber(self.boxDetalhesDoItem.node.Treino_Usos) or 0;
+				local bonTutor = tonumber(self.boxDetalhesDoItem.node.Treino_Bonus) or 0;
+				local MaxTutor = basTutor + bonTutor - usoTutor;
+				self.boxDetalhesDoItem.node.Treino_Restam = MaxTutor;
+
+				local aux = {}
+				aux.hp = math.floor(tonumber(HPBase1) + tonumber(HPVitam))
+				aux.atk = math.floor(tonumber(ATKBase1) + tonumber(ATKVitam))
+				aux.def = math.floor(tonumber(DEFBase1) + tonumber(DEFVitam))
+				aux.aes = math.floor(tonumber(AESBase1) + tonumber(AESVitam))
+				aux.des = math.floor(tonumber(DESBase1) + tonumber(DESVitam))
+				aux.spd = math.floor(tonumber(VelBase1) + tonumber(VelVitam))
+				
+				local hp = aux.hp or 0;
+				local atk = aux.atk or 0;
+				local def = aux.def or 0;
+				local atksp = aux.aes or 0;
+				local defsp = aux.des or 0;
+				local spd = aux.spd or 0
+				local basal = {hp,atk,def,atksp,defsp,spd};
+				local basecompacta = {};
+				local n = 1;
+				for x,y in ipairs(basal) do
+					local add = 1;
+					for c,d in ipairs(basecompacta) do
+						if y == d then add = 0;
+						end
+					end
+					if add == 1 then 
+						table.insert(basecompacta,y);
+						n = n +1;
+					end
+				end
+				table.sort(basecompacta);
+				local basal = {};
+				for x,y in ipairs(basecompacta) do
+				  basal[y] = n-x;
+				end
+				self.boxDetalhesDoItem.node.Vida_Pri = basal[aux.hp]; 
+				self.boxDetalhesDoItem.node.Ataque_Pri = basal[aux.atk]; 
+				self.boxDetalhesDoItem.node.Defesa_Pri = basal[aux.def];
+				self.boxDetalhesDoItem.node.AtaqueEsp_Pri = basal[aux.aes];
+				self.boxDetalhesDoItem.node.DefesaEsp_Pri = basal[aux.des]; 
+				self.boxDetalhesDoItem.node.Velocidade_Pri = basal[aux.spd]; 
+				
+				local Active1 = self.boxDetalhesDoItem.node.SlotActive1 or false;
+				local Active2 = self.boxDetalhesDoItem.node.SlotActive2 or false;
+				local Active3 = self.boxDetalhesDoItem.node.SlotActive3 or false;
+				local Active4 = self.boxDetalhesDoItem.node.SlotActive4 or false;
+				local Active5 = self.boxDetalhesDoItem.node.SlotActive5 or false;
+				local Active6 = self.boxDetalhesDoItem.node.SlotActive6 or false;
+
+				if (Active1) then 
+					self.boxDetalhesDoItem.node.SlotActive2 = false;
+					self.boxDetalhesDoItem.node.SlotActive3 = false;
+					self.boxDetalhesDoItem.node.SlotActive4 = false;
+					self.boxDetalhesDoItem.node.SlotActive5 = false;
+					self.boxDetalhesDoItem.node.SlotActive6 = false;
+					self.boxDetalhesDoItem.node.SlotActive7 = false;			
+					sheet.ImagemSlot1 = (self.boxDetalhesDoItem.node.campoPokemon or "");
+					sheet.NomeSlot1 = (self.boxDetalhesDoItem.node.campoApelido or self.boxDetalhesDoItem.node.campoNome or "");
+					sheet.LevelSlot1 = (self.boxDetalhesDoItem.node.pokeLevel or "")
+					sheet.GenderSlot1 = (self.boxDetalhesDoItem.node.basSEX or "");
+					sheet.IniSlot1 = (self.boxDetalhesDoItem.node.pok_INI or "");
+					self.boxDetalhesDoItem.node.active = true;
+					sheet.baseHPAtual1 = tonumber(self.boxDetalhesDoItem.node.baseHPAtual) or 0;
+					sheet.baseHPMAX1 = tonumber(self.boxDetalhesDoItem.node.baseHPMAX) or 0;
+					end
+					
+				if (Active2) then 
+					self.boxDetalhesDoItem.node.SlotActive1 = false;
+					self.boxDetalhesDoItem.node.SlotActive3 = false;
+					self.boxDetalhesDoItem.node.SlotActive4 = false;
+					self.boxDetalhesDoItem.node.SlotActive5 = false;
+					self.boxDetalhesDoItem.node.SlotActive6 = false;
+					self.boxDetalhesDoItem.node.SlotActive7 = false;	
+					sheet.ImagemSlot2 = (self.boxDetalhesDoItem.node.campoPokemon or "");
+					sheet.NomeSlot2 = (self.boxDetalhesDoItem.node.campoApelido or self.boxDetalhesDoItem.node.campoNome or "");
+					sheet.LevelSlot2 = (self.boxDetalhesDoItem.node.pokeLevel or "")
+					sheet.GenderSlot2 = (self.boxDetalhesDoItem.node.basSEX or "");
+					sheet.IniSlot2 = (self.boxDetalhesDoItem.node.pok_INI or "");
+					self.boxDetalhesDoItem.node.active = true;
+					sheet.baseHPAtual2 = tonumber(self.boxDetalhesDoItem.node.baseHPAtual) or 0;
+					sheet.baseHPMAX2 = tonumber(self.boxDetalhesDoItem.node.baseHPMAX) or 0;
+					end
+					
+				if (Active3) then 
+					self.boxDetalhesDoItem.node.SlotActive1 = false;
+					self.boxDetalhesDoItem.node.SlotActive2 = false;
+					self.boxDetalhesDoItem.node.SlotActive4 = false;
+					self.boxDetalhesDoItem.node.SlotActive5 = false;
+					self.boxDetalhesDoItem.node.SlotActive6 = false;
+					self.boxDetalhesDoItem.node.SlotActive7 = false;	
+					sheet.ImagemSlot3 = (self.boxDetalhesDoItem.node.campoPokemon or "");
+					sheet.NomeSlot3 = (self.boxDetalhesDoItem.node.campoApelido or self.boxDetalhesDoItem.node.campoNome or "");
+					sheet.LevelSlot3 = (self.boxDetalhesDoItem.node.pokeLevel or "")
+					sheet.GenderSlot3 = (self.boxDetalhesDoItem.node.basSEX or "");
+					sheet.IniSlot3 = (self.boxDetalhesDoItem.node.pok_INI or "");
+					self.boxDetalhesDoItem.node.active = true;
+					sheet.baseHPAtual3 = tonumber(self.boxDetalhesDoItem.node.baseHPAtual) or 0;
+					sheet.baseHPMAX3 = tonumber(self.boxDetalhesDoItem.node.baseHPMAX) or 0;
+					end
+					
+				if (Active4) then 
+					self.boxDetalhesDoItem.node.SlotActive1 = false;
+					self.boxDetalhesDoItem.node.SlotActive2 = false;
+					self.boxDetalhesDoItem.node.SlotActive3 = false;
+					self.boxDetalhesDoItem.node.SlotActive5 = false;
+					self.boxDetalhesDoItem.node.SlotActive6 = false;
+					self.boxDetalhesDoItem.node.SlotActive7 = false;	
+					sheet.ImagemSlot4 = (self.boxDetalhesDoItem.node.campoPokemon or "");
+					sheet.NomeSlot4 = (self.boxDetalhesDoItem.node.campoApelido or self.boxDetalhesDoItem.node.campoNome or "");
+					sheet.LevelSlot4 = (self.boxDetalhesDoItem.node.pokeLevel or "")
+					sheet.GenderSlot4 = (self.boxDetalhesDoItem.node.basSEX or "");
+					sheet.IniSlot4 = (self.boxDetalhesDoItem.node.pok_INI or "");
+					self.boxDetalhesDoItem.node.active = true;
+					sheet.baseHPAtual4 = tonumber(self.boxDetalhesDoItem.node.baseHPAtual) or 0;
+					sheet.baseHPMAX4 = tonumber(self.boxDetalhesDoItem.node.baseHPMAX) or 0;
+					end		
+					
+				if (Active5) then 
+					self.boxDetalhesDoItem.node.SlotActive1 = false;
+					self.boxDetalhesDoItem.node.SlotActive2 = false;
+					self.boxDetalhesDoItem.node.SlotActive3 = false;
+					self.boxDetalhesDoItem.node.SlotActive4 = false;
+					self.boxDetalhesDoItem.node.SlotActive6 = false;
+					self.boxDetalhesDoItem.node.SlotActive7 = false;	
+					sheet.ImagemSlot5 = (self.boxDetalhesDoItem.node.campoPokemon or "");
+					sheet.NomeSlot5 = (self.boxDetalhesDoItem.node.campoApelido or self.boxDetalhesDoItem.node.campoNome or "");
+					sheet.LevelSlot5 = (self.boxDetalhesDoItem.node.pokeLevel or "")
+					sheet.GenderSlot5 = (self.boxDetalhesDoItem.node.basSEX or "");
+					sheet.IniSlot5 = (self.boxDetalhesDoItem.node.pok_INI or "");					
+					self.boxDetalhesDoItem.node.active = true;
+					sheet.baseHPAtual5 = tonumber(self.boxDetalhesDoItem.node.baseHPAtual) or 0;
+					sheet.baseHPMAX5 = tonumber(self.boxDetalhesDoItem.node.baseHPMAX) or 0;
+					end
+					
+				if (Active6) then 
+					self.boxDetalhesDoItem.node.SlotActive1 = false;
+					self.boxDetalhesDoItem.node.SlotActive2 = false;
+					self.boxDetalhesDoItem.node.SlotActive3 = false;
+					self.boxDetalhesDoItem.node.SlotActive4 = false;
+					self.boxDetalhesDoItem.node.SlotActive5 = false;
+					self.boxDetalhesDoItem.node.SlotActive7 = false;	
+					sheet.ImagemSlot6 = (self.boxDetalhesDoItem.node.campoPokemon or "");
+					sheet.NomeSlot6 = (self.boxDetalhesDoItem.node.campoApelido or self.boxDetalhesDoItem.node.campoNome or "");
+					sheet.LevelSlot6 = (self.boxDetalhesDoItem.node.pokeLevel or "")
+					sheet.GenderSlot6 = (self.boxDetalhesDoItem.node.basSEX or "");	
+					sheet.IniSlot6 = (self.boxDetalhesDoItem.node.pok_INI or "");		
+					self.boxDetalhesDoItem.node.active = true;
+					sheet.baseHPAtual6 = tonumber(self.boxDetalhesDoItem.node.baseHPAtual) or 0;
+					sheet.baseHPMAX6 = tonumber(self.boxDetalhesDoItem.node.baseHPMAX) or 0;
+					end	
+					
+				if (self.boxDetalhesDoItem.node.SlotActive7 == true) then 
+					self.boxDetalhesDoItem.node.SlotActive2 = false;
+					self.boxDetalhesDoItem.node.SlotActive3 = false;
+					self.boxDetalhesDoItem.node.SlotActive4 = false;
+					self.boxDetalhesDoItem.node.SlotActive5 = false;
+					self.boxDetalhesDoItem.node.SlotActive6 = false;
+					self.boxDetalhesDoItem.node.SlotActive1 = false;	
+					self.boxDetalhesDoItem.node.active = false;
+					end	
+
+				
+			</event>
+			</dataLink>
+
+       <dataLink fields="{'campoTerrestre','boTerrestre','campoNatacao','boNatacao','campoEscavacao','boEscavacao',
+						  'campoLevitacao','boLevitacao','campoVoo','boVoo','campoTeleporte','boTeleporte',
+						  'Velocidade_edc','agiTr','agiOr'}">
+            <event name="onChange">
+				local SPDedc = tonumber(self.boxDetalhesDoItem.node.Velocidade_edc) or 7;
+				local SPDedcDES = {-3,-2,-2,-1,-1,0,0,0,1,1,2,2,3};
+				local spdBonEdC = SPDedcDES[SPDedc] or 0;
+				local basTer = tonumber(self.boxDetalhesDoItem.node.campoTerrestre) or 0;
+				local basNat = tonumber(self.boxDetalhesDoItem.node.campoNatacao) or 0;
+				local basEsc = tonumber(self.boxDetalhesDoItem.node.campoEscavacao) or 0;
+				local basLev = tonumber(self.boxDetalhesDoItem.node.campoLevitacao) or 0;
+				local basVoo = tonumber(self.boxDetalhesDoItem.node.campoVoo) or 0;
+				local basTel = tonumber(self.boxDetalhesDoItem.node.campoTeleporte) or 0;			
+				local bonTer = tonumber(self.boxDetalhesDoItem.node.boTerrestre) or 0;
+				local bonNat = tonumber(self.boxDetalhesDoItem.node.boNatacao) or 0;
+				local bonEsc = tonumber(self.boxDetalhesDoItem.node.boEscavacao) or 0;
+				local bonLev = tonumber(self.boxDetalhesDoItem.node.boLevitacao) or 0;
+				local bonVoo = tonumber(self.boxDetalhesDoItem.node.boVoo) or 0;
+				local bonTel = tonumber(self.boxDetalhesDoItem.node.boTeleporte) or 0;
+				local agiTre = self.boxDetalhesDoItem.node.agiTr or false;
+				if (agiTre) then
+					bonTer = bonTer +1;
+					bonNat = bonNat +1;
+					bonEsc = bonEsc +1;
+					bonLev = bonLev +1;
+					bonVoo = bonVoo +1;
+					bonTel = bonTel +1;
+					end
+				local agiOrd = self.boxDetalhesDoItem.node.agiOr or false;
+				if (agiOrd) then
+					bonTer = bonTer +1;
+					bonNat = bonNat +1;
+					bonEsc = bonEsc +1;
+					bonLev = bonLev +1;
+					bonVoo = bonVoo +1;
+					bonTel = bonTel +1;
+					end
+				if (basTer > 0) then
+					self.boxDetalhesDoItem.node.toTerrestre = basTer + bonTer + spdBonEdC
+					else
+						self.boxDetalhesDoItem.node.toTerrestre = nil;
+					end
+				if (basNat > 0) then
+					self.boxDetalhesDoItem.node.toNatacao = basNat + bonNat + spdBonEdC
+					else
+						self.boxDetalhesDoItem.node.toNatacao = nil;
+					end
+				if (basEsc > 0) then
+					self.boxDetalhesDoItem.node.toEscavacao = basEsc + bonEsc + spdBonEdC
+					else
+						self.boxDetalhesDoItem.node.toEscavacao = nil;
+					end
+				if (basLev > 0) then
+					self.boxDetalhesDoItem.node.toLevitacao = basLev + bonLev + spdBonEdC
+					else
+						self.boxDetalhesDoItem.node.toLevitacao = nil;
+					end
+				if (basVoo > 0) then
+					self.boxDetalhesDoItem.node.toVoo = basVoo + bonVoo + spdBonEdC
+					else
+						self.boxDetalhesDoItem.node.toVoo = nil;
+					end
+				if (basTel > 0) then
+					self.boxDetalhesDoItem.node.toTeleporte = basTel + bonTel + spdBonEdC
+					else
+						self.boxDetalhesDoItem.node.toTeleporte = nil;
+					end
+				</event>
+			</dataLink>
+
+	<script>
+		local function atualizarbotao(valor)            
+		if valor == 1 then
+			self.boxDetalhesDoItem.node.SlotActive2 = false;
+			self.boxDetalhesDoItem.node.SlotActive3 = false;
+			self.boxDetalhesDoItem.node.SlotActive4 = false;
+			self.boxDetalhesDoItem.node.SlotActive5 = false;
+			self.boxDetalhesDoItem.node.SlotActive6 = false;
+			self.boxDetalhesDoItem.node.SlotActive7 = false;
+			end;
+			
+		if valor == 2 then
+			self.boxDetalhesDoItem.node.SlotActive1 = false;
+			self.boxDetalhesDoItem.node.SlotActive3 = false;
+			self.boxDetalhesDoItem.node.SlotActive4 = false;
+			self.boxDetalhesDoItem.node.SlotActive5 = false;
+			self.boxDetalhesDoItem.node.SlotActive6 = false;
+			self.boxDetalhesDoItem.node.SlotActive7 = false;
+			end;
+				
+		if valor == 3 then
+			self.boxDetalhesDoItem.node.SlotActive1 = false;
+			self.boxDetalhesDoItem.node.SlotActive2 = false;
+			self.boxDetalhesDoItem.node.SlotActive4 = false;
+			self.boxDetalhesDoItem.node.SlotActive5 = false;
+			self.boxDetalhesDoItem.node.SlotActive6 = false;
+			self.boxDetalhesDoItem.node.SlotActive7 = false;
+			end;
+			
+		if valor == 4 then
+			self.boxDetalhesDoItem.node.SlotActive1 = false;
+			self.boxDetalhesDoItem.node.SlotActive2 = false;
+			self.boxDetalhesDoItem.node.SlotActive3 = false;
+			self.boxDetalhesDoItem.node.SlotActive5 = false;
+			self.boxDetalhesDoItem.node.SlotActive6 = false;
+			self.boxDetalhesDoItem.node.SlotActive7 = false;
+			end;
+			
+		if valor == 5 then
+			self.boxDetalhesDoItem.node.SlotActive1 = false;
+			self.boxDetalhesDoItem.node.SlotActive2 = false;
+			self.boxDetalhesDoItem.node.SlotActive3 = false;
+			self.boxDetalhesDoItem.node.SlotActive4 = false;
+			self.boxDetalhesDoItem.node.SlotActive6 = false;
+			self.boxDetalhesDoItem.node.SlotActive7 = false;
+			end;
+			
+		if valor == 6 then
+			self.boxDetalhesDoItem.node.SlotActive1 = false;
+			self.boxDetalhesDoItem.node.SlotActive2 = false;
+			self.boxDetalhesDoItem.node.SlotActive3 = false;
+			self.boxDetalhesDoItem.node.SlotActive4 = false;
+			self.boxDetalhesDoItem.node.SlotActive5 = false;
+			self.boxDetalhesDoItem.node.SlotActive7 = false;
+			end;
+			
+		if valor == 7 then
+			self.boxDetalhesDoItem.node.SlotActive1 = false;
+			self.boxDetalhesDoItem.node.SlotActive2 = false;
+			self.boxDetalhesDoItem.node.SlotActive3 = false;
+			self.boxDetalhesDoItem.node.SlotActive4 = false;
+			self.boxDetalhesDoItem.node.SlotActive5 = false;
+			self.boxDetalhesDoItem.node.SlotActive6 = false;
+			end;
+		end;               
+		</script> 
+
+	</form>

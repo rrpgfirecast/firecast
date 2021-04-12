@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmHPMP" align="client" theme="dark" margins="{top=1}">
+
+	<layout left="000" top="000" height="650" width="1100">
+		<image left="000" top="000" width="1100" height="650" src="/img/wallpaper.png" />
+		</layout>
+
+	<layout left="70" top="005" height="650" width="1100">
+		<label left="000" top="000" height="20" width="100" text="Nível" autoSize="true" fontStyle="bold" fontSize = "16"/>
+		<edit left="065" top="000" height="20" width="40" field="basLV" horzTextAlign="center" type="number"/>
+		</layout>
+
+	<layout left="260" top="005" height="650" width="1100">
+		<checkBox left="000" top="000" height="20" width="80" text="VIT fixa" field="fixVIT" fontStyle="bold"/>
+		<edit left="85" top="000" height="20" width="40" field="totVIT" horzTextAlign="center" type="number" enabled="false"/>	
+		<checkBox left="000" top="025" height="20" width="80" text="dHP fixo" field="fixdHP" fontStyle="bold"/>
+		<edit left="85" top="025" height="20" width="40" field="basHPDADO" horzTextAlign="center" type="number" hint="Todo dado de HP rolado terá esse valor"/>	
+		</layout>
+
+	<layout left="450" top="005" height="650" width="1100">
+		<label left="000" top="000" height="20" width="100" text="HP Extra" autoSize="true" fontStyle="bold" fontSize = "16"/>
+		<edit left="105" top="000" height="20" width="40" field="basHPEXT" horzTextAlign="center" type="number"/>	
+		<label left="000" top="025" height="20" width="100" text="Bonus HP(%)" autoSize="true" fontStyle="bold" fontSize = "16"/>
+		<edit left="105" top="025" height="20" width="40" field="basHPBON" horzTextAlign="center" type="number"/>	
+		</layout>
+		
+	<layout left="640" top="005" height="650" width="1100">
+		<checkBox left="000" top="000" height="20" width="80" text="ESP fixo" field="fixESP" fontStyle="bold"/>
+		<edit left="85" top="000" height="20" width="40" field="totSPR" horzTextAlign="center" type="number" enabled="false"/>	
+		<checkBox left="000" top="025" height="20" width="80" text="dMP fixo" field="fixdMP" fontStyle="bold"/>
+		<edit left="85" top="025" height="20" width="40" field="basMPDADO" horzTextAlign="center" type="number" hint="Todo dado de MP rolado terá esse valor"/>	
+		</layout>
+
+	<layout left="830" top="005" height="650" width="1100">
+		<label left="000" top="000" height="20" width="100" text="Alma Pura" autoSize="true" fontStyle="bold" fontSize = "16"/>
+		<edit left="105" top="000" height="20" width="40" field="basMPEXT" horzTextAlign="center" type="number"/>		
+		<label left="000" top="025" height="20" width="105" text="Bonus MP(%)" autoSize="true" fontStyle="bold" fontSize = "16"/>
+		<edit left="105" top="025" height="20" width="40" field="basMPBON" horzTextAlign="center" type="number"/>	
+		</layout>
+		
+	<layout left="70" top="050" height="650" width="1100">
+		<label left="35" top="000" height="20" width="30" text="dHP" horzTextAlign="center"/>
+		<label left="70" top="000" height="20" width="30" text="VIT" horzTextAlign="center"/>
+		<label left="105" top="000" height="20" width="30" text="dMP" horzTextAlign="center"/>
+		<label left="140" top="000" height="20" width="30" text="ESP" horzTextAlign="center"/>
+		</layout>	
+	<layout left="70" top="075" height="650" width="1100">
+		<StatLog Top="000" num = "1" />
+		<StatLog Top="025" num = "2" />
+		<StatLog Top="050" num = "3" />
+		<StatLog Top="075" num = "4" />
+		<StatLog Top="100" num = "5" />
+		<StatLog Top="125" num = "6" />
+		<StatLog Top="150" num = "7" />
+		<StatLog Top="175" num = "8" />
+		<StatLog Top="200" num = "9" />
+		<StatLog Top="225" num = "10" />
+		<StatLog Top="250" num = "11" />
+		<StatLog Top="275" num = "12" />
+		<StatLog Top="300" num = "13" />
+		<StatLog Top="325" num = "14" />
+		<StatLog Top="350" num = "15" />
+		<StatLog Top="375" num = "16" />
+		<StatLog Top="400" num = "17" />
+		<StatLog Top="425" num = "18" />
+		<StatLog Top="450" num = "19" />
+		<StatLog Top="475" num = "20" />
+		</layout>
+
+	<layout left="260" top="050" height="650" width="1100">
+		<label left="35" top="000" height="20" width="30" text="dHP" horzTextAlign="center"/>
+		<label left="70" top="000" height="20" width="30" text="VIT" horzTextAlign="center"/>
+		<label left="105" top="000" height="20" width="30" text="dMP" horzTextAlign="center"/>
+		<label left="140" top="000" height="20" width="30" text="ESP" horzTextAlign="center"/>
+		</layout>	
+	<layout left="260" top="075" height="650" width="1100">		
+		<StatLog Top="000" num = "21" />
+		<StatLog Top="025" num = "22" />
+		<StatLog Top="050" num = "23" />
+		<StatLog Top="075" num = "24" />
+		<StatLog Top="100" num = "25" />
+		<StatLog Top="125" num = "26" />
+		<StatLog Top="150" num = "27" />
+		<StatLog Top="175" num = "28" />
+		<StatLog Top="200" num = "29" />
+		<StatLog Top="225" num = "30" />
+		<StatLog Top="250" num = "31" />
+		<StatLog Top="275" num = "32" />
+		<StatLog Top="300" num = "33" />
+		<StatLog Top="325" num = "34" />
+		<StatLog Top="350" num = "35" />
+		<StatLog Top="375" num = "36" />
+		<StatLog Top="400" num = "37" />
+		<StatLog Top="425" num = "38" />
+		<StatLog Top="450" num = "39" />
+		<StatLog Top="475" num = "40" />
+		</layout>
+
+	<layout left="450" top="050" height="650" width="1100">
+		<label left="35" top="000" height="20" width="30" text="dHP" horzTextAlign="center"/>
+		<label left="70" top="000" height="20" width="30" text="VIT" horzTextAlign="center"/>
+		<label left="105" top="000" height="20" width="30" text="dMP" horzTextAlign="center"/>
+		<label left="140" top="000" height="20" width="30" text="ESP" horzTextAlign="center"/>
+		</layout>		
+	<layout left="450" top="075" height="650" width="1100">		
+		<StatLog Top="000" num = "41" />
+		<StatLog Top="025" num = "42" />
+		<StatLog Top="050" num = "43" />
+		<StatLog Top="075" num = "44" />
+		<StatLog Top="100" num = "45" />
+		<StatLog Top="125" num = "46" />
+		<StatLog Top="150" num = "47" />
+		<StatLog Top="175" num = "48" />
+		<StatLog Top="200" num = "49" />
+		<StatLog Top="225" num = "50" />
+		<StatLog Top="250" num = "51" />
+		<StatLog Top="275" num = "52" />
+		<StatLog Top="300" num = "53" />
+		<StatLog Top="325" num = "54" />
+		<StatLog Top="350" num = "55" />
+		<StatLog Top="375" num = "56" />
+		<StatLog Top="400" num = "57" />
+		<StatLog Top="425" num = "58" />
+		<StatLog Top="450" num = "59" />
+		<StatLog Top="475" num = "60" />
+		</layout>
+
+	<layout left="640" top="050" height="650" width="1100">
+		<label left="35" top="000" height="20" width="30" text="dHP" horzTextAlign="center"/>
+		<label left="70" top="000" height="20" width="30" text="VIT" horzTextAlign="center"/>
+		<label left="105" top="000" height="20" width="30" text="dMP" horzTextAlign="center"/>
+		<label left="140" top="000" height="20" width="30" text="ESP" horzTextAlign="center"/>
+		</layout>		
+	<layout left="640" top="075" height="650" width="1100">		
+		<StatLog Top="000" num = "61" />
+		<StatLog Top="025" num = "62" />
+		<StatLog Top="050" num = "63" />
+		<StatLog Top="075" num = "64" />
+		<StatLog Top="100" num = "65" />
+		<StatLog Top="125" num = "66" />
+		<StatLog Top="150" num = "67" />
+		<StatLog Top="175" num = "68" />
+		<StatLog Top="200" num = "69" />
+		<StatLog Top="225" num = "70" />
+		<StatLog Top="250" num = "71" />
+		<StatLog Top="275" num = "72" />
+		<StatLog Top="300" num = "73" />
+		<StatLog Top="325" num = "74" />
+		<StatLog Top="350" num = "75" />
+		<StatLog Top="375" num = "76" />
+		<StatLog Top="400" num = "77" />
+		<StatLog Top="425" num = "78" />
+		<StatLog Top="450" num = "79" />
+		<StatLog Top="475" num = "80" />
+		</layout>
+
+	<layout left="830" top="050" height="650" width="1100">
+		<label left="35" top="000" height="20" width="30" text="dHP" horzTextAlign="center"/>
+		<label left="70" top="000" height="20" width="30" text="VIT" horzTextAlign="center"/>
+		<label left="105" top="000" height="20" width="30" text="dMP" horzTextAlign="center"/>
+		<label left="140" top="000" height="20" width="30" text="ESP" horzTextAlign="center"/>
+		</layout>		
+	<layout left="830" top="075" height="650" width="1100">		
+		<StatLog Top="000" num = "81" />
+		<StatLog Top="025" num = "82" />
+		<StatLog Top="050" num = "83" />
+		<StatLog Top="075" num = "84" />
+		<StatLog Top="100" num = "85" />
+		<StatLog Top="125" num = "86" />
+		<StatLog Top="150" num = "87" />
+		<StatLog Top="175" num = "88" />
+		<StatLog Top="200" num = "89" />
+		<StatLog Top="225" num = "90" />
+		<StatLog Top="250" num = "91" />
+		<StatLog Top="275" num = "92" />
+		<StatLog Top="300" num = "93" />
+		<StatLog Top="325" num = "94" />
+		<StatLog Top="350" num = "95" />
+		<StatLog Top="375" num = "96" />
+		<StatLog Top="400" num = "97" />
+		<StatLog Top="425" num = "98" />
+		<StatLog Top="450" num = "99" />
+		</layout>
+
+	<layout left="830" top="550" height="650" width="1100">
+		<label left="055" top="000" height="20" width="40" text="Soma" horzTextAlign="center"/>	
+		<label left="100" top="000" height="20" width="40" text="Total" horzTextAlign="center"/>	
+		<label left="000" top="025" height="20" width="80" text="HP:" horzTextAlign="center"/>
+		<edit left="055" top="025" height="20" width="40" field="HPMaxEXP" horzTextAlign="center"/>	
+		<edit left="100" top="025" height="20" width="40" field="basHPMax" horzTextAlign="center" enabled="false"/>			
+		<label left="000" top="050" height="20" width="80" text="MP:" horzTextAlign="center"/>
+		<edit left="055" top="050" height="20" width="40" field="MPMaxEXP" horzTextAlign="center"/>	
+		<edit left="100" top="050" height="20" width="40" field="basMPMax" horzTextAlign="center" enabled="false"/>	
+		</layout>	
+
+	<layout left="980" top="550" height="650" width="1100">
+		<button left="00" top="025" height="50" width="50">
+			<dataLink field="UpdateHPMP" defaultValue="/img/update.png"/>
+			<image align="client" field="UpdateHPMP" margins="{left=0, right=0, top=0, bottom=0}" style="proportional"/>
+			<event name="onClick">
+				if sheet == nil then 
+					return 
+					end;
+				local Flag = sheet.FlagHPMP or 0
+				sheet.FlagHPMP = Flag+1;
+				</event>
+			</button>
+		</layout>			
+	</form>			

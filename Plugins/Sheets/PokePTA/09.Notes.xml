@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmNotes" align="client" theme="dark" margins="{top=1}">
+
+	<layout left="000" top="000" height="650" width="1100">
+		<image left="000" top="000" height="650" width="1100" src="/img/Pokeball.jpg" style="autoFIT" />
+		</layout>
+		
+	<layout left="10" top="10" height="600" width="465">
+		<rectangle left="000" top="000" width="465" height="540" color="Red" strokeColor="black" strokeSize="5" />
+		<richEdit left="005" top="005" width="455" height="530" backgroundColor="black" defaultFontColor="white" field="campoTextoGrande" />
+		</layout>
+		
+	<layout left="510" top="10" height="600" width="465">
+		<rectangle left="000" top="000" width="465" height="540" color="Red" strokeColor="black" strokeSize="5" />
+		<richEdit left="005" top="005" width="455" height="530" backgroundColor="black" defaultFontColor="white" field="campoTextoGrande2" />
+		</layout>
+		
+	</form>

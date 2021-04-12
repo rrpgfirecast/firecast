@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmPericias" align="client" theme="dark" margins="{top=1}">
+
+	<layout left="000" top="000" height="650" width="1100">
+		<image left="000" top="000" width="1100" height="650" src="/img/wallpaper.png" />
+		</layout>	
+	
+	<layout left="10" top="010" height="260" width="800">
+		<checkBox left="000" top="000" height="20" width="200" text="Perícias Artísticas" field="perART" fontStyle="bold"/>
+		<label left="160" top="000" height="20" width="40" text="Pts" horzTextAlign="center"/>			
+		<label left="205" top="000" height="20" width="40" text="Bôn" horzTextAlign="center"/>			
+		<label left="250" top="000" height="20" width="40" text="Tot" horzTextAlign="center"/>
+		<PerGen Top="025" Pericia="ARTES" Nome="Artes"/>
+		<PerGen Top="050" Pericia="DANCA" Nome="Dança"/>
+		<PerArm Top="075" Pericia="INSTRU" Nome="Instrumentos" num="13"/>
+		<PerGen Top="100" Pericia="CANTO" Nome="Canto"/>
+		<PerGen Top="125" Pericia="ATUA" Nome="Atuação"/>				
+		</layout>
+			
+	<layout left="10" top="185" height="260" width="800">
+		<checkBox left="000" top="000" height="20" width="200" text="Perícias Gerais" field="perGERX" fontStyle="bold"/>		
+		<label left="160" top="000" height="20" width="40" text="Pts" horzTextAlign="center"/>			
+		<label left="205" top="000" height="20" width="40" text="Bôn" horzTextAlign="center"/>			
+		<label left="250" top="000" height="20" width="40" text="Tot" horzTextAlign="center"/>
+		<PerGen Top="025" Pericia="ACRO" Nome="Acrobacias"/>
+		<PerGen Top="050" Pericia="PRONT" Nome="Prontidão"/>
+		<PerGen Top="075" Pericia="CULIN" Nome="Culinária"/>
+		<PerGen Top="100" Pericia="NEGO" Nome="Negociar"/>
+		</layout>
+
+	<layout left="10" top="335" height="260" width="800">
+		<checkBox left="000" top="000" height="20" width="200" text="Perícias Técnicas" field="perTEC" fontStyle="bold"/>		
+		<label left="160" top="000" height="20" width="40" text="Pts" horzTextAlign="center"/>			
+		<label left="205" top="000" height="20" width="40" text="Bôn" horzTextAlign="center"/>			
+		<label left="250" top="000" height="20" width="40" text="Tot" horzTextAlign="center"/>
+		<PerGen Top="025" Pericia="ALQU" Nome="Alquimia"/>
+		<PerGen Top="050" Pericia="EXPL" Nome="Explosivos"/>
+		<PerGen Top="075" Pericia="CURA" Nome="Cura"/>
+		<PerGen Top="100" Pericia="INVE" Nome="Inventar"/>
+		<PerGen Top="125" Pericia="REPA" Nome="Reparos"/>
+		<PerGen Top="150" Pericia="SIST" Nome="Sistemas"/>
+		<PerGen Top="175" Pericia="VEIC" Nome="Veículos"/>					
+		</layout>
+					
+	<layout left="360" top="10" height="260" width="800">
+		<checkBox left="000" top="000" height="20" width="200" text="Perícias Sociais" field="perSOC" fontStyle="bold"/>		
+		<label left="160" top="000" height="20" width="40" text="Pts" horzTextAlign="center"/>			
+		<label left="205" top="000" height="20" width="40" text="Bôn" horzTextAlign="center"/>			
+		<label left="250" top="000" height="20" width="40" text="Tot" horzTextAlign="center"/>
+		<PerGen Top="025" Pericia="ETIQ" Nome="Etiqueta"/>
+		<PerGen Top="050" Pericia="INTI" Nome="Intimidação"/>
+		<PerGen Top="075" Pericia="LIDER" Nome="Liderança"/>
+		<PerGen Top="100" Pericia="LABI" Nome="Lábia"/>
+		<PerGen Top="125" Pericia="SEDU" Nome="Sedução"/>
+		</layout>
+	
+	<layout left="360" top="185" height="400" width="800">
+		<checkBox left="000" top="000" height="20" width="200" text="Perícias com Armas" field="perARM" fontStyle="bold"/>	
+		<label left="160" top="000" height="20" width="40" text="Pts" horzTextAlign="center"/>			
+		<label left="205" top="000" height="20" width="40" text="Bôn" horzTextAlign="center"/>			
+		<label left="250" top="000" height="20" width="40" text="Tot" horzTextAlign="center"/>
+		<PerArm Top="025" Pericia="MACH" Nome="Machados" num="1"/>	
+		<PerArm Top="050" Pericia="ARC" Nome="Arcos" num="2"/>	
+		<PerArm Top="075" Pericia="BRIG" Nome="Briga" num="3"/>	
+		<PerArm Top="100" Pericia="CAJA" Nome="Cajados" num="4"/>	
+		<PerArm Top="125" Pericia="CHICO" Nome="Chicotes" num="5"/>		
+		<PerArm Top="150" Pericia="ARDF" Nome="Armas de Fogo" num="6"/>		
+		<PerArm Top="175" Pericia="FACA" Nome="Facas" num="7"/>			
+		<PerArm Top="200" Pericia="ARDH" Nome="Armas de Haste" num="8"/>			
+		<PerArm Top="225" Pericia="ESPA" Nome="Espadas" num="9"/>			
+		<PerArm Top="250" Pericia="ARDA" Nome="Armas de Arremesso" num="10"/>				
+		<PerArm Top="275" Pericia="TWOAR" Nome="Duas Armas" num="11"/>				
+		<PerArm Top="300" Pericia="SISDA" Nome="S. de Armas" num="12"/>		
+		<checkBox left="050" top="325" height="20" width="200" text="Inabilidade com Armas" field="flagInabil"/>
+		<checkBox left="050" top="350" height="20" width="120" text="Ambidestria" field="flagAmbid"/>	
+		</layout>
+			
+	<layout left="720" top="010" height="260" width="800">
+		<checkBox left="000" top="000" height="20" width="200" text="Perícias Selvagens" field="perSEL"  fontStyle="bold"/>
+		<label left="160" top="000" height="20" width="40" text="Pts" horzTextAlign="center"/>			
+		<label left="205" top="000" height="20" width="40" text="Bôn" horzTextAlign="center"/>			
+		<label left="250" top="000" height="20" width="40" text="Tot" horzTextAlign="center"/>
+		<PerGen Top="025" Pericia="TRAN" Nome="Treinar Animais"/>
+		<PerGen Top="050" Pericia="ESCA" Nome="Escalada"/>
+		<PerGen Top="075" Pericia="NAVE" Nome="Navegação"/>
+		<PerGen Top="100" Pericia="PILH" Nome="Pilhagem"/>
+		<PerGen Top="125" Pericia="CAVA" Nome="Cavalgar"/>
+		<PerGen Top="150" Pericia="SOBR" Nome="Sobrevivência"/>
+		<PerGen Top="175" Pericia="NATA" Nome="Natação"/>
+		<PerGen Top="200" Pericia="RAST" Nome="Rastreamento"/>				
+		</layout>
+			
+	<layout left="720" top="240" height="260" width="800">
+		<checkBox left="000" top="000" height="20" width="200" text="Perícias Ladinas" field="perLAD" fontStyle="bold"/>
+		<label left="160" top="000" height="20" width="40" text="Pts" horzTextAlign="center"/>			
+		<label left="205" top="000" height="20" width="40" text="Bôn" horzTextAlign="center"/>			
+		<label left="250" top="000" height="20" width="40" text="Tot" horzTextAlign="center"/>
+		<PerGen Top="025" Pericia="DISF" Nome="Disfarces"/>
+		<PerGen Top="050" Pericia="FUGA" Nome="Fuga"/>
+		<PerGen Top="075" Pericia="JOGO" Nome="Jogos"/>
+		<PerGen Top="100" Pericia="AFEC" Nome="Abrir Fechaduras"/>
+		<PerGen Top="125" Pericia="PUNG" Nome="Punga"/>
+		<PerGen Top="150" Pericia="FURT" Nome="Furtividade"/>
+		<PerGen Top="175" Pericia="MANH" Nome="Manha"/>
+		<PerGen Top="200" Pericia="ARMAD" Nome="Armadilhas"/>			
+		</layout>
+
+	<layout left="720" top="470" height="260" width="800">
+        <checkBox left="000" top="000" height="20" width="200" text="Perícias de Saber" field="perSAB" fontStyle="bold"/>	
+		<label left="160" top="000" height="20" width="40" text="Pts" horzTextAlign="center"/>			
+		<label left="205" top="000" height="20" width="40" text="Bôn" horzTextAlign="center"/>			
+		<label left="250" top="000" height="20" width="40" text="Tot" horzTextAlign="center"/>
+		<PerGen Top="025" Pericia="INVEST" Nome="Investigação"/>
+		<PerArm Top="050" Pericia="ENSIN" Nome="Ensinar" num="14"/>
+		</layout>
+		
+	<layout left="720" top="565" height="25" width="200">
+		<label left="00" top="000" height="20" width="50" text="Tira" autoSize="true" />	
+		<edit left="25" top="000" height="20" width="50" field="PerTirar" horzTextAlign="center" />
+		</layout>
+
+	<layout left="720" top="590" height="260" width="800">			
+		<label left="00" top="000" height="20" width="50" text="P.G." autoSize="true" />	
+		<edit left="25" top="000" height="20" width="50" field="PERGERG" horzTextAlign="center" />
+		<label left="80" top="000" height="20" width="50" text="/" autoSize="true" />
+		<edit left="90" top="000" height="20" width="50" field="PERGER" horzTextAlign="center" />
+		</layout>	
+
+	<layout left="870" top="590" height="260" width="800">
+		<label left="00" top="000" height="20" width="50" text="P.E." autoSize="true" />	
+		<edit left="25" top="000" height="20" width="50" field="PERESPG" horzTextAlign="center" />
+		<label left="80" top="000" height="20" width="50" text="/" autoSize="true" />
+		<edit left="90" top="000" height="20" width="50" field="PERESP" horzTextAlign="center" />
+		</layout>	
+		
+
+
+</form>			

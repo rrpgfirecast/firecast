@@ -1,0 +1,169 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmPokePerEdgeFea" align="client" theme="dark" margins="{top=1}">
+
+	<template name="habilidadeSmallCenter1">
+		<flowPart minWidth="90" maxWidth="100" height="35">
+			<label align="top" class="tituloCampo" fontSize="10" text="$(text)" horzTextAlign="center" wordWrap="true" textTrimming="none" autoSize="true"/>
+			<edit align="client" class="" field="$(field)" horzTextAlign="center" fontSize="12" type="number"/>
+			</flowPart>
+		</template>
+		
+	<template name="habilidadeSmallCenter2">
+		<flowPart minWidth="90" maxWidth="100" height="35">
+			<label align="top" class="tituloCampo" fontSize="10" text="$(text)" horzTextAlign="center" wordWrap="true" textTrimming="none" autoSize="true"/>
+			<edit align="client" class="" field="$(field)" horzTextAlign="center" fontSize="12"/>
+			</flowPart>
+		</template>
+
+	<template name="habilidadeLarge">
+		<flowPart minWidth="180" maxWidth="200" height="35">
+			<label align="top" class="tituloCampo" fontSize="10" text="$(text)" horzTextAlign="center" wordWrap="true" textTrimming="none" autoSize="true"/>
+			<edit align="client" class="" field="$(field)" fontSize="12"/>
+			</flowPart>
+		</template>
+
+	<template name = "PerTr">
+		<button left="00" top="$(Top)" height="20" width="120" text="$(Name)" horzTextAlign="leading">
+			<event name="onClick">
+				sheet.nivPER = sheet.niv_$(Field);
+				sheet.bonPER = sheet.bon_$(Field);
+				sheet.namPER = "$(Name)";
+				sheet.namUSE = sheet.baseName or "Treinador";
+				realizarTesteDePericia()
+			</event>			
+		</button>
+		<comboBox left="125" top="$(Top)" height="20" width="100" field="niv_$(Field)" horzTextAlign="center" items="{'Patético', 'Destreinado', 'Noviço', 'Adepto', 'Expert', 'Mestre', 'Virtuoso'}" values="{'1', '2', '3', '4', '5', '6', '8'}"/>
+		<dataLink field="niv_$(Field)" defaultValue="2"/>
+		<edit left="230" top="$(Top)" width="40" height="20"  field="bon_$(Field)"/>
+		</template>
+
+	<popup name="popHabilidade1" width="300" height="240" backOpacity="0.4" autoScopeNode="false">
+		<flowLayout align="top" autoHeight="true" maxControlsPerLine="3" margins="{bottom=4}" horzAlign="center">
+			<habilidadeSmallCenter1 text="Nível" field="nivelHabilidade"/>
+			<habilidadeLarge text="Requisitos" field="obtencaoHabilidade"/>
+			<dataLink field="nivelHabilidade">
+				<event name="onChange">
+					local rcl = self:findControlByName("rclListaDosTalentos");
+					if rcl~= nil then
+						rcl:sort();
+					end;
+					rcl = self:findControlByName("rclListaDosOutros");
+					if rcl~= nil then
+						rcl:sort();
+					end;
+					rcl = self:findControlByName("rclListaDasCaracteristicasClasse");
+					if rcl~= nil then
+						rcl:sort();
+					end;
+				</event>
+			</dataLink>
+		</flowLayout>
+		<textEditor align="client" field="descricao"/>
+		</popup>
+		
+	<popup name="popHabilidade2" width="300" height="240" backOpacity="0.4" autoScopeNode="false">
+		<flowLayout align="top" autoHeight="true" maxControlsPerLine="3" margins="{bottom=4}" horzAlign="center">
+			<habilidadeSmallCenter1 text="Nível" field="nivelHabilidade"/>
+			<habilidadeLarge text="Requisitos" field="obtencaoHabilidade"/>
+			<habilidadeSmallCenter2 text="Gatilho" field="gatHabilidade"/>
+			<habilidadeLarge text="Frequência" field="freqHabilidade"/>
+			<dataLink field="nivelHabilidade">
+				<event name="onChange">
+					local rcl = self:findControlByName("rclListaDosTalentos");
+					if rcl~= nil then
+						rcl:sort();
+					end;
+					rcl = self:findControlByName("rclListaDosOutros");
+					if rcl~= nil then
+						rcl:sort();
+					end;
+					rcl = self:findControlByName("rclListaDasCaracteristicasClasse");
+					if rcl~= nil then
+						rcl:sort();
+					end;
+				</event>
+			</dataLink>
+		</flowLayout>
+		<textEditor align="client" field="descricao"/>
+		</popup>
+
+	<layout left="000" top="000" height="600" width="1095">
+		<image left="000" top="000" height="650" width="1100" src="/img/Pokeball.jpg" style="autoFIT" />
+		</layout>
+			
+	<layout left="295" top="25" width="400" height="520">
+		<rectangle align="client" color="#0000007F"/>
+		<rectangle left="000" top="000" width="390" height="40" color="darkred" strokeColor="black" strokeSize="1" />
+		<label left="0" top="0" width="400" height="20" text="EDGES" autoSize="true" fontColor ="White" fontSize = "18" horzTextAlign="center"/>
+		<button text="Novo Edge" left="0" top="25" width="390" height="20" onClick="self.rclListaDosOutros:append();"/>
+		<recordList name="rclListaDosOutros" field="campoDosOutros" templateForm="frmPokePerEdgeFea1" left="0" top="50" width="390" height="460" layout="vertical">
+			<event name="onCompare">
+	            return ((tonumber(nodeA.nivelHabilidade) or 0) - (tonumber(nodeB.nivelHabilidade) or 0));
+				</event>
+			</recordList>
+		</layout>
+		
+		
+	<layout left="690" top="25" width="400" height="520">
+		<rectangle align="client" color="#0000007F"/>
+		<rectangle left="000" top="000" width="390" height="40" color="darkred" strokeColor="black" strokeSize="1" />
+		<label left="0" top="0" width="400" height="20" text="FEATURES" autoSize="true" fontColor ="White" fontSize = "18" horzTextAlign="center"/>
+		<button text="Nova Feature" left="0" top="25" width="390" height="20" onClick="self.rclListaDasCaracteristicasClasse:append();"/>
+		<recordList name="rclListaDasCaracteristicasClasse" field="campoDasCaracteristicasClasse" templateForm="frmPokePerEdgeFea2" left="0" top="50" width="390" height="460" layout="vertical">
+			<event name="onCompare">
+	            return ((tonumber(nodeA.nivelHabilidade) or 0) - (tonumber(nodeB.nivelHabilidade) or 0));
+		        </event>
+			</recordList>
+		</layout>
+
+	<layout left="010" top="020" height="200" width="1000">		
+		<label left="00" top="00" height="20" width="120" text="Perícias de Corpo" autoSize="true" fontStyle="bold"/>
+		<label left="125" top="00" width="40" height="100" text="Nível" autoSize="true" horzTextAlign="center"/>
+		<label left="230" top="00" width="40" height="20" text="Bônus" autoSize="true" horzTextAlign="center"/>
+		<PerTr Top="025" Field="ACRO" Name="Acrobacias"/>
+		<PerTr Top="050" Field="ATLE" Name="Atletismo"/>
+		<PerTr Top="075" Field="COMB" Name="Combate"/>
+		<PerTr Top="100" Field="FURT" Name="Furtividade"/>
+		<PerTr Top="125" Field="INTI" Name="Intimidação"/>
+		<PerTr Top="150" Field="SOBR" Name="Sobrevivência"/>
+		</layout>	  
+
+	<layout left="010" top="210" height="200" width="1000">		
+		<label left="00" top="00" height="20" width="120" text="Perícias de Mente" autoSize="true" fontStyle="bold"/>
+		<label left="125" top="00" width="40" height="100" text="Nível" autoSize="true" horzTextAlign="center"/>
+		<label left="230" top="00" width="40" height="20" text="Bônus" autoSize="true" horzTextAlign="center"/>
+		<PerTr Top="025" Field="ASTU" Name="Astúcia"/>		
+		<PerTr Top="050" Field="EGER" Name="Ed.Geral"/>		
+		<PerTr Top="075" Field="EOCU" Name="Ed.Oculta"/>		
+		<PerTr Top="100" Field="EPOK" Name="Ed.Pokémon"/>		
+		<PerTr Top="125" Field="ETEC" Name="Ed.Tecnológica"/>		
+		<PerTr Top="150" Field="MEDI" Name="Medicina"/>			
+		<PerTr Top="175" Field="PERC" Name="Percepção"/>		
+		</layout>	
+	
+	<layout left="10" top="430" height="125" width="1000">
+		<label left="00" top="00" height="20" width="120" text="Perícias de Espírito" autoSize="true" fontStyle="bold"/>
+		<label left="125" top="00" width="40" height="100" text="Nível" autoSize="true" horzTextAlign="center"/>
+		<label left="230" top="00" width="40" height="20" text="Bônus" autoSize="true" horzTextAlign="center"/>
+		<PerTr Top="025" Field="CHAR" Name="Charme"/>		
+		<PerTr Top="050" Field="COMA" Name="Comando"/>		
+		<PerTr Top="075" Field="FOCO" Name="Foco"/>		
+		<PerTr Top="100" Field="INTU" Name="Intuição"/>		
+		</layout>	  
+
+
+	<script>
+		local function realizarTesteDePericia()            
+			local mesaDoPersonagem = Firecast.getMesaDe(sheet);        
+			local Nivel = tonumber(sheet.nivPER) or 1;
+			if (Nivel == 8) then
+				Nivel = 6;
+				end
+			local Bonus = tonumber(sheet.bonPER) or 0;
+			local NameP = sheet.namPER or "";
+			local NameC = sheet.namUSE or sheet.baseName or "";
+			mesaDoPersonagem.activeChat:rolarDados(Nivel .. "d6 + " .. Bonus, "Teste da Perícia " .. NameP .. " usada por " .. NameC); 	
+			end;               
+		</script> 
+		
+</form>

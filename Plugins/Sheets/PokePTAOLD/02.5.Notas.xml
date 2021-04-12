@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmPokemon5" align="client" theme="dark" margins="{top=1}">
+	<rectangle align="top" color="black" xradius="10" yradius="10" height="880" padding="{top=3, left=3, right=3, bottom=3}">
+
+		<layout left="50" top="20" height="600" width="800">
+			<label left="000" top="000" height="20" width="60" text="Dieta:" autoSize="true" fontStyle="bold"/>
+			<edit left="85" top="000" height="20" width="160" field="Dieta_Poke" horzTextAlign="center" />
+			<label left="000" top="025" height="20" width="60" text="Likes:" autoSize="true" fontStyle="bold"/>
+			<edit left="85" top="025" height="20" width="160" field="Sabor_Fav" horzTextAlign="center" enabled="false"/>
+			<label left="000" top="050" height="20" width="60" text="Dislikes:" autoSize="true" fontStyle="bold"/>
+			<edit left="85" top="050" height="20" width="160" field="Sabor_Desg" horzTextAlign="center" enabled="false"/>
+			</layout>
+
+		<layout left="50" top="160" height="400" width="600">
+			<rectangle left="000" top="000" width="580" height="310" color="darkred" strokeColor="black" strokeSize="5" />
+			<label left="000" top="005" height="20" width="600" fontColor="White" fontSize="18" text="Anotações" autoSize="true" horzTextAlign="center" />
+			<textEditor left="05" top="30" width="570" height="315" field="campoNotasPok" />
+			</layout>
+
+		<layout left="660" top="10" height="320" width="420">
+				<label left="000" top="000" height="20" width="80" text="Aptidão" autoSize="true"  fontStyle="bold"/>
+                <label left="85" top="000" height="20" width="30" text="Rank" autoSize="true" />
+                <label left="120" top="000" height="20" width="30" text="Total" autoSize="true" />		
+                <label left="155" top="000" height="20" width="30" text="Atual" autoSize="true" />					
+				
+				<label left="000" top="025" height="20" width="80" text="Estilo" autoSize="true"  fontStyle="bold"/>
+				<edit left="85" top="025" height="20" width="30" field="Estilo_Rank" horzTextAlign="center" type ="number"/>	
+				<edit left="120" top="025" height="20" width="30" field="Estilo_Total" horzTextAlign="center" type ="number"/>
+				<edit left="155" top="025" height="20" width="30" field="Estilo_Atual" horzTextAlign="center" type ="number"/>				
+		
+				<label left="000" top="050" height="20" width="80" text="Beleza" autoSize="true"  fontStyle="bold"/>
+				<edit left="85" top="050" height="20" width="30" field="Beleza_Rank" horzTextAlign="center" type ="number"/>	
+				<edit left="120" top="050" height="20" width="30" field="Beleza_Total" horzTextAlign="center" type ="number"/>
+				<edit left="155" top="050" height="20" width="30" field="Beleza_Atual" horzTextAlign="center" type ="number"/>	
+
+				<label left="000" top="075" height="20" width="80" text="Ternura" autoSize="true"  fontStyle="bold"/>
+				<edit left="85" top="075" height="20" width="30" field="Ternura_Rank" horzTextAlign="center" type ="number"/>	
+				<edit left="120" top="075" height="20" width="30" field="Ternura_Total" horzTextAlign="center" type ="number"/>
+				<edit left="155" top="075" height="20" width="30" field="Ternura_Atual" horzTextAlign="center" type ="number"/>	
+
+				<label left="000" top="100" height="20" width="80" text="Perspicácia" autoSize="true"  fontStyle="bold"/>
+				<edit left="85" top="100" height="20" width="30" field="Perspicácia_Rank" horzTextAlign="center" type ="number"/>	
+				<edit left="120" top="100" height="20" width="30" field="Perspicácia_Total" horzTextAlign="center" type ="number"/>
+				<edit left="155" top="100" height="20" width="30" field="Perspicácia_Atual" horzTextAlign="center" type ="number"/>	
+
+				<label left="000" top="125" height="20" width="80" text="Vigor" autoSize="true"  fontStyle="bold"/>
+				<edit left="85" top="125" height="20" width="30" field="Vigor_Rank" horzTextAlign="center" type ="number"/>	
+				<edit left="120" top="125" height="20" width="30" field="Vigor_Total" horzTextAlign="center" type ="number"/>
+				<edit left="155" top="125" height="20" width="30" field="Vigor_Atual" horzTextAlign="center" type ="number"/>	
+		</layout>	
+
+            <layout left="640" top="175" height="350" width="250">
+			<label left="000" top="0" height="20" width="200" text="Conquistas em Contests" autoSize="true" horzTextAlign="center"/>
+            <textEditor left="0" top="25" height="305" width="225" field="CampoContestsP2" />
+            </layout>
+
+
+		</rectangle>
+
+	</form>

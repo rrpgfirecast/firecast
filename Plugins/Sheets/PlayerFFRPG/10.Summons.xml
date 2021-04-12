@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmSumm" align="client" theme="dark" margins="{top=1}">
+
+	<layout left="000" top="000" height="650" width="1100">
+		<image left="000" top="000" height="650" width="1100" src="/img/wallpaper.png" style="autoFIT" />
+		</layout>
+
+	<template name="Summon">
+		<rectangle left="000" top="000" width="152" height="152" color="black" strokeColor="white" strokeSize="1" />
+        <image left="002" top="002" width="148" height="148" field="Ima$(i)" editable="true" style="proportional" hint="Imagem do Summon"/>
+		<label left="155" top="000" height="20" width="040" text="Nome" horzTextAlign="leading" autoSize="true" fontStyle="bold" />
+		<edit left="200" top="000" height="20" width="175" field="sumN$(i)" horzTextAlign="center"/>	
+		<label left="155" top="025" height="20" width="040" text="HP:" horzTextAlign="leading" autoSize="true" fontStyle="bold" />
+		<comboBox left="200" top="025" height="20" width="60" field="sumHP$(i)" horzTextAlign="leading" items="{'x0','x1.5','x2','x2.5'}" values="{'0','1.5','2','2.5'}">
+			<event name="onChange">
+				if sheet==nil 	then    
+					return 
+					end
+				Mult = tonumber(sheet.sumHP$(i)) or 0;
+				HPMax = sheet.basHPMax or 0;
+				sheet.sumHM$(i) = math.floor(Mult*HPMax)
+				</event>
+			</comboBox>
+        <edit left="265" top="025" height="20" width="50" field="sumHA$(i)" horzTextAlign="center" enabled="false"/>
+		<label left="317" top="025" height="20" width="5" text="/" autoSize="true" fontStyle="bold"/>
+        <edit left="325" top="025" height="20" width="50" field="sumHM$(i)" horzTextAlign="center" enabled="false"/>
+		<dataLink field="sumHA$(i)" defaultValue="0" />
+		<dataLink field="sumHM$(i)" defaultValue="0" />
+		<label left="155" top="050" height="20" width="40" text="Cura" autoSize="true" fontStyle="bold"/>
+		<edit left="200" top="050" height="20" width="40" field="DanoCur$(i)" type ="number"/>	
+		<button left="245" top="050" height="20" width="20" text="C" horzTextAlign="leading">
+			<event name="onClick">
+				if sheet==nil then    
+					return 
+					end
+				local mesa = Firecast.getMesaDe(sheet);
+				local HPAtu = tonumber(sheet.sumHA$(i)) or 0;
+				local HPMax = tonumber(sheet.sumHM$(i)) or 0;
+				local DanCur = tonumber(sheet.DanoCur$(i)) or 0;
+				local Aeon = sheet.sumN$(i) or "Summon"
+				local HPNew = HPAtu + DanCur
+				if (HPNew > HPMax) then
+					HPNew = HPMax;
+					end
+				sheet.sumHA$(i) = HPNew;
+				mesa.activeChat:enviarMensagem("[§K14][§B]" .. Aeon .. "[§B][§K3] recuperou " .. DanCur .. " de HP[§K14] (" .. HPNew .. "/" .. HPMax .. ")")
+				</event>
+			</button>
+		<label left="270" top="050" height="20" width="40" text="Dano" autoSize="true" fontStyle="bold"/>
+		<edit left="310" top="050" height="20" width="40" field="DanoRec$(i)" type ="number"/>	
+		<button left="355" top="050" height="20" width="20" text="D" horzTextAlign="leading">
+			<event name="onClick">
+				if sheet==nil then    
+					return 
+					end
+				local mesa = Firecast.getMesaDe(sheet);
+				local HPAtu = tonumber(sheet.sumHA$(i)) or 0;
+				local HPMax = tonumber(sheet.sumHM$(i)) or 0;
+				local DanRec = tonumber(sheet.DanoRec$(i)) or 0;
+				local Aeon = sheet.sumN$(i) or "Summon"
+				local HPNew = HPAtu - DanRec
+				if (0 > HPNew) then
+					HPNew = 0;
+					end
+				sheet.sumHA$(i) = HPNew;
+				mesa.activeChat:enviarMensagem("[§K14][§B]" .. Aeon .. "[§B] recebeu " .. DanRec .. " de dano (" .. HPNew .. "/" .. HPMax .. ")")
+				</event>
+			</button>
+		<textEditor left="155" top="075" width="220" height="70" field="sumT$(i)"/>
+		</template>
+		
+	<tabControl left="0" top="0" height="600" width="1075">
+		<tab title="1-6">	
+			<rectangle align="top" color="black" xradius="10" yradius="10" height="600" padding="{top=3, left=3, right=3, bottom=3}"/>		
+			<layout left="040" top="010" height="600" width="600">
+				<Summon i="1"/>
+				</layout>	
+					
+			<layout left="040" top="200" height="600" width="600">
+				<Summon i="2"/>
+				</layout>	
+
+			<layout left="040" top="390" height="600" width="600">
+				<Summon i="3"/>
+				</layout>				
+					
+			<layout left="570" top="010" height="600" width="600">
+				<Summon i="4"/>
+				</layout>	
+
+			<layout left="570" top="200" height="600" width="600">
+				<Summon i="5"/>
+				</layout>			
+
+			<layout left="570" top="390" height="600" width="600">
+				<Summon i="6"/>
+				</layout>	
+			</tab>
+		<tab title="7-12">	
+			<rectangle align="top" color="black" xradius="10" yradius="10" height="600" padding="{top=3, left=3, right=3, bottom=3}"/>	
+			<layout left="040" top="010" height="600" width="600">
+				<Summon i="7"/>
+				</layout>	
+					
+			<layout left="040" top="200" height="600" width="600">
+				<Summon i="8"/>
+				</layout>	
+
+			<layout left="040" top="390" height="600" width="600">
+				<Summon i="9"/>
+				</layout>				
+					
+			<layout left="570" top="010" height="600" width="600">
+				<Summon i="10"/>
+				</layout>	
+
+			<layout left="570" top="200" height="600" width="600">
+				<Summon i="11"/>
+				</layout>			
+
+			<layout left="570" top="390" height="600" width="600">
+				<Summon i="12"/>
+				</layout>	
+			</tab>
+		<tab title="13-18">	
+			<rectangle align="top" color="black" xradius="10" yradius="10" height="600" padding="{top=3, left=3, right=3, bottom=3}"/>	
+			<layout left="040" top="010" height="600" width="600">
+				<Summon i="13"/>
+				</layout>	
+					
+			<layout left="040" top="200" height="600" width="600">
+				<Summon i="14"/>
+				</layout>	
+
+			<layout left="040" top="390" height="600" width="600">
+				<Summon i="15"/>
+				</layout>				
+					
+			<layout left="570" top="010" height="600" width="600">
+				<Summon i="16"/>
+				</layout>	
+
+			<layout left="570" top="200" height="600" width="600">
+				<Summon i="17"/>
+				</layout>			
+
+			<layout left="570" top="390" height="600" width="600">
+				<Summon i="18"/>
+				</layout>	
+			</tab>
+		</tabControl>
+	</form>

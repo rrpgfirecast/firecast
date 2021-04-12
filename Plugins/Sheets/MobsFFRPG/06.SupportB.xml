@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmSupportB" align="client" theme="dark" margins="{top=1}">
+	<layout left="000" top="000" height="650" width="1100">
+		<image left="000" top="000" height="650" width="1100" src="/img/wallpaper.png" style="autoFIT" />
+		</layout>
+	
+	<scrollBox align ="client">
+		<layout left="140" top="20" height="500" width="380">
+			<basicAbiName Top ="000" Name="Potency" field = "namElemPot" 
+			Texto ="The monster's elemental attacks are more potent than usual, circumventing natural and magical defenses with ease. Select an Element when taking this Ability; any time the monster deals damage associated with that Element, it will deal 125% damage unless the target has a Weakness to it, where it deals 150% as normal. Combatants with a Resistance to the Element in question take 100% damage; a Immunity reduces damage to 50%, while Absorbance reduces it to 0. XP and Gil modifiers are given per Element – having Potency towards Wind and Earth would carry a combined modifier of +120/+82"/>
+			<addStat Top = "025" Name="Fire" field="potFIR"/>
+			<addStat Top = "050" Name="Ice" field="potICE"/>
+			<addStat Top = "075" Name="Water" field="potWAT"/>
+			<addStat Top = "100" Name="Lightning" field="potELE"/>
+			<addStat Top = "125" Name="Ground" field="potGND"/>
+			<addStat Top = "150" Name="Wind" field="potWIN"/>
+			<addStat Top = "175" Name="Bio" field="potBIO"/>
+			<addStat Top = "200" Name="Shadow" field="potSHA"/>
+			<addStat Top = "225" Name="Holy" field="potHOL"/>
+			</layout>    
+			
+		<layout left="280" top="20" height="500" width="380">
+			<basicAbiName Top ="000" Name="Absorbance" field = "namElemAbs" 
+			Texto ="The monster has an extremely strong affinity towards one or more of the nine Combat Elements, and is considered to have an Absorbance to it.  Select which Element Elemental Absorbance applies to when taking this Ability.  Elemental Absorbance cannot be taken in conjunction with a Weakness, Resistance, or Immunity for the same Element. XP and Gil modifiers are given per Element – having Absorbance towards Wind and Earth would carry a combined modifier of +66/+30."/>
+			<addStat Top = "025" Name="Fire" field="absFIR"/>
+			<addStat Top = "050" Name="Ice" field="absICE"/>
+			<addStat Top = "075" Name="Water" field="absWAT"/>
+			<addStat Top = "100" Name="Lightning" field="absELE"/>
+			<addStat Top = "125" Name="Ground" field="absGND"/>
+			<addStat Top = "150" Name="Wind" field="absWIN"/>
+			<addStat Top = "175" Name="Bio" field="absBIO"/>
+			<addStat Top = "200" Name="Shadow" field="absSHA"/>
+			<addStat Top = "225" Name="Holy" field="absHOL"/>
+			</layout>    
+
+		<layout left="420" top="20" height="500" width="380">
+			<basicAbiName Top ="000" Name="Immunity" field = "namElemImm" 
+			Texto ="The monster has a strong affinity towards one or more of the nine Combat Elements, and is considered to have an Immunity to it. Select which Element Elemental Immunity applies to when taking this Ability. Elemental Immunity cannot be taken in conjunction with a Weakness, Resistance, or Absorbance for the same Element.  XP and Gil modifiers are given per Element – having Immunity towards Wind and Earth would carry a combined modifier of +30/+14."/>
+			<addStat Top = "025" Name="Fire" field="immFIR"/>
+			<addStat Top = "050" Name="Ice" field="immICE"/>
+			<addStat Top = "075" Name="Water" field="immWAT"/>
+			<addStat Top = "100" Name="Lightning" field="immELE"/>
+			<addStat Top = "125" Name="Ground" field="immGND"/>
+			<addStat Top = "150" Name="Wind" field="immWIN"/>
+			<addStat Top = "175" Name="Bio" field="immBIO"/>
+			<addStat Top = "200" Name="Shadow" field="immSHA"/>
+			<addStat Top = "225" Name="Holy" field="immHOL"/>
+			</layout>    
+			
+		<layout left="560" top="20" height="500" width="380">
+			<basicAbiName Top ="000" Name="Resistance" field = "namElemRes" 
+			Texto ="The monster has an affinity towards one or more of the nine Combat Elements, and is considered to have a Resistance to it.  Select which Element Elemental Resistance applies to when taking this Ability. Elemental Resistance cannot be taken in conjunction with a Weakness, Resistance, or Absorbance for the same Element.  XP and Gil modifiers are given per Element – having Resistance towards Wind and Earth would carry a combined modifier of +14/+6"/>
+			<addStat Top = "025" Name="Fire" field="resFIR"/>
+			<addStat Top = "050" Name="Ice" field="resICE"/>
+			<addStat Top = "075" Name="Water" field="resWAT"/>
+			<addStat Top = "100" Name="Lightning" field="resELE"/>
+			<addStat Top = "125" Name="Ground" field="resGND"/>
+			<addStat Top = "150" Name="Wind" field="resWIN"/>
+			<addStat Top = "175" Name="Bio" field="resBIO"/>
+			<addStat Top = "200" Name="Shadow" field="resSHA"/>
+			<addStat Top = "225" Name="Holy" field="resHOL"/>
+			</layout>    
+
+		<layout left="700" top="20" height="500" width="380">
+			<basicAbiName Top ="000" Name="Weakness" field = "namElemWk" 
+			Texto ="The monster is vulnerable towards one or more of the nine Combat Elements, and is considered to have a Weakness to it.  Select which Element Elemental Weakness applies to when taking this Ability.  Elemental Weakness cannot be taken in conjunction with a Resistance, Immunity, or Absorbance for the same Element. XP and Gil modifiers are given per Element – having Weaknesses towards Wind and Earth would carry a combined modifier of -18/-8"/>
+			<addStat Top = "025" Name="Fire" field="weakFIR"/>
+			<addStat Top = "050" Name="Ice" field="weakICE"/>
+			<addStat Top = "075" Name="Water" field="weakWAT"/>
+			<addStat Top = "100" Name="Lightning" field="weakELE"/>
+			<addStat Top = "125" Name="Ground" field="weakGND"/>
+			<addStat Top = "150" Name="Wind" field="weakWIN"/>
+			<addStat Top = "175" Name="Bio" field="weakBIO"/>
+			<addStat Top = "200" Name="Shadow" field="weakSHA"/>
+			<addStat Top = "225" Name="Holy" field="weakHOL"/>
+			</layout>    
+
+		<layout left="100" top="350" height="100" width="200">
+			<basicAbility Top = "000" Name="Bad Scan" field="speBadScan" 
+			Texto="If analyzed via the Scan Spell, the Equipment Ability Sensor, or any similar effect, the monster will return incorrect information intended to mislead the Party.  How the Scan is ‘tampered’ with is left to the designer to decide, but should be noted in the monster’s writeup – one of the more obvious uses would have the monster register as having a Weakness to an Element they in fact Absorb, or vice versa, though there are other possibilities.  Useless or not, scanning the monster still costs MP or Actions as usual."/>
+			<basicAbility Top = "025" Name="Can't Scan" field="speNoScan" 
+			Texto="The monster cannot be analyzed by means of the Scan Spell, the Equipment Ability Sensor, or any similar effect.  Any attempts to do so cost Actions and MP as usual, but return no useful information."/>
+			<basicAbility Top = "050" Name="Heavy Armor" field="supHArm" 
+			Texto="The monster sports armor heavier than the norm, giving it better resistance against armor-piercing attacks.  When a monster with Heavy Armor is struck by any attack or Ability which would normally ignore or reduce ARM, ARM is factored into the attack as normal.  Note that this does not affect Status Conditions such as Armor Break and Meltdown, which continue to work as normal."/>
+			</layout>  	
+
+		<layout left="400" top="350" height="100" width="200">
+			<basicAbility Top = "000" Name="Manabound" field="supMBound" 
+			Texto="As a creature of pure magic, the monster's mana is its lifeblood.  A Manabound monster whose Magic Points reach 0 is treated as if its Hit Points had been reduced to 0."/>
+			<basicAbility Top = "025" Name="Minion" field="supMinion" 
+			Texto="The monster’s existence is tied to another monster’s, usually a controlling or summoning influence.  Select a specific monster as the designated ‘master’ when taking Minion; if that monster is reduced to 0 or fewer HP during the course of battle, all Minions attached to it are immediately reduced to 0 HP as well.."/>
+			<basicAbility Top = "050" Name="Mystic Resistance" field="supMRes" 
+			Texto="The monster is capable of weathering significantly more magical damage than the norm, allowing it to resist even armorpiercing spells.  When a monster with Mystic Resistance is struck by any attack or Ability which would normally ignore or reduce M. ARM, M. ARM is factored into the attack as normal.  Note that this does not affect Status Conditions such as Spirit Break, which continue to work as normal."/>
+			</layout>  	
+
+		<layout left="700" top="350" height="100" width="200">
+			<basicAbility Top = "000" Name="Null Drain" field="supNDrain" 
+			Texto="The monster is immune to attacks which draw on its vital or magical essences.  Attacks or Abilities that drain HP or MP from a monster with Null Drain do damage as normal, but do not restore the attacker’s Hit Points or Magic Points."/>
+			<basicAbility Top = "025" Name="Resist Drain" field="supRDrain" 
+			Texto="The monster has improved resistance against attacks which draw on its vital or magical essences.  Attacks or Abilities that drain HP or MP from a monster with Resist Drain do damage as normal, but only restore 50% of the Hit Points or Magic Points the attacker would normally regain from such an Action."/>
+			<basicAbility Top = "050" Name="X-Fight" field="supXFight" 
+			Texto="The monster can take two Attack Actions at the cost of just one Action in battle.  Targets must be declared separately for each attack, though both may target the same combatant."/>
+			</layout>  
+			
+			
+		<layout left="1000" top="570" height="50" width="90">
+			<label left="000" top="000" height="20" width="30" text="Exp" autoSize="true"/>
+			<edit left="035" top="000" height="20" width="50" field="ExpFinal" horzTextAlign="center" />
+			<label left="000" top="025" height="20" width="30" text="Gil" autoSize="true"/>
+			<edit left="35" top="025" height="20" width="50" field="GilFinal" horzTextAlign="center" />
+			</layout>	
+
+		</scrollBox>
+	</form>			

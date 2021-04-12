@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmPoke6" align="client" theme="dark" margins="{top=1}">
+
+	<rectangle align="top" color="black" xradius="10" yradius="10" height="880" padding="{top=3, left=3, right=3, bottom=3}"/>
+
+	<template name="Contest">
+		<label left="020" top="$(Top)" height="20" width="80" text="$(Name)" autoSize="true" fontStyle="bold" horzTextAlign="leading"/>
+		<edit left="125" top="$(Top)" height="20" width="30" field="$(Name)_Rank" horzTextAlign="center" type="number" />
+		<edit left="160" top="$(Top)" height="20" width="30" field="$(Name)_Total" horzTextAlign="center" type="number" />
+		<edit left="195" top="$(Top)" height="20" width="30" field="$(Name)_Atual" horzTextAlign="center" type="number" />
+		</template>
+	
+	<layout left="10" top="10" height="600" width="900">
+		<label left="000" top="000" height="20" width="260" text="Pontos de Treino" autoSize="true" fontStyle="bold" horzTextAlign="center"/>
+		<label left="35" top="025" height="20" width="45" text="Base" autoSize="true" fontStyle="bold" horzTextAlign="center"/>
+		<label left="85" top="025" height="20" width="45" text="Bônus" autoSize="true" fontStyle="bold" horzTextAlign="center"/>
+		<label left="135" top="025" height="20" width="45" text="Usos" autoSize="true" fontStyle="bold" horzTextAlign="center"/>
+		<label left="185" top="025" height="20" width="45" text="Restam" autoSize="true" fontStyle="bold" horzTextAlign="center"/>		
+		<edit left="35" top="050" height="20" width="45" field="Treino_Base" horzTextAlign="center" type="number" enabled="false" /> 
+		<edit left="85" top="050" height="20" width="45" field="Treino_Bonus" horzTextAlign="center" type="number" />
+		<edit left="135" top="050" height="20" width="45" field="Treino_Usos" horzTextAlign="center" type="number" /> 
+		<edit left="185" top="050" height="20" width="45" field="Treino_Restam" horzTextAlign="center" type="number" enabled="false" /> 	
+		
+		<rectangle left="000" top="75" width="260" height="365" color="darkred" strokeColor="black" strokeSize="5" />
+		<label left="005" top="80" height="20" width="250" fontColor="White" fontSize="18" text="Pts. de Treino de Gastos" autoSize="true" horzTextAlign="center" />								
+		<textEditor left="005" top="105" width="250" height="410" field="campoGastos" />
+		</layout>
+
+	<layout left="300" top="20" height="600" width="800">
+		<label left="000" top="000" height="20" width="80" text="Egg Group:" autoSize="true" fontStyle="bold"/>
+		<edit left="85" top="000" height="20" width="160" field="EggG_Poke" horzTextAlign="center" />
+		<label left="000" top="025" height="20" width="80" text="Dieta:" autoSize="true" fontStyle="bold"/>
+		<edit left="85" top="025" height="20" width="160" field="Dieta_Poke" horzTextAlign="center" />
+		<label left="000" top="050" height="20" width="80" text="Likes:" autoSize="true" fontStyle="bold"/>
+		<edit left="85" top="050" height="20" width="160" field="Sabor_Fav" horzTextAlign="center" enabled="false"/>
+		<label left="000" top="075" height="20" width="80" text="Dislikes:" autoSize="true" fontStyle="bold"/>
+		<edit left="85" top="075" height="20" width="160" field="Sabor_Desg" horzTextAlign="center" enabled="false"/>
+		<label left="000" top="100" height="20" width="260" text="Pontos de Poffins" autoSize="true" fontStyle="bold" horzTextAlign="center"/>
+		<label left="35" top="125" height="20" width="45" text="Base" autoSize="true" fontStyle="bold" horzTextAlign="center"/>
+		<label left="85" top="125" height="20" width="45" text="Bônus" autoSize="true" fontStyle="bold" horzTextAlign="center"/>
+		<label left="135" top="125" height="20" width="45" text="Usos" autoSize="true" fontStyle="bold" horzTextAlign="center"/>
+		<label left="185" top="125" height="20" width="45" text="Restam" autoSize="true" fontStyle="bold" horzTextAlign="center"/>		
+		<edit left="35" top="150" height="20" width="45" field="Poffins_Base" horzTextAlign="center" type="number" enabled="false" /> 
+		<edit left="85" top="150" height="20" width="45" field="Poffins_Bonus" horzTextAlign="center" type="number" />
+		<edit left="135" top="150" height="20" width="45" field="Poffins_Usos" horzTextAlign="center" type="number" /> 
+		<edit left="185" top="150" height="20" width="45" field="Poffins_Restam" horzTextAlign="center" type="number" enabled="false" /> 	
+		<rectangle left="000" top="175" width="260" height="100" color="darkred" strokeColor="black" strokeSize="5" />		
+		<label left="000" top="180" height="20" width="255" fontColor="White" fontSize="18" text="Relatório de Poffins" autoSize="true" horzTextAlign="center" />
+		<textEditor left="005" top="205" width="250" height="300" field="campoGastosPoffin" />
+		</layout>
+
+	<layout left="580" top="020" height="320" width="420">
+		<label left="020" top="000" height="20" width="80" text="Aptidão" fontStyle="bold" horzTextAlign="leading"/>
+		<label left="125" top="000" height="20" width="30" text="Rank" autoSize="true" />
+		<label left="160" top="000" height="20" width="30" text="Total" autoSize="true" />
+		<label left="195" top="000" height="20" width="30" text="Atual" autoSize="true" />
+		<Contest Top="025" Name="Estilo"/>
+		<Contest Top="050" Name="Beleza"/>
+		<Contest Top="075" Name="Ternura"/>
+		<Contest Top="100" Name="Perspicácia"/>
+		<Contest Top="125" Name="Vigor"/>
+		</layout>
+		
+	<layout left="580" top="180" height="400" width="410">
+		<rectangle left="000" top="000" width="280" height="310" color="darkred" strokeColor="black" strokeSize="5" />
+		<label left="000" top="005" height="20" width="300" fontColor="White" fontSize="18" text="Anotações" autoSize="true" horzTextAlign="center" />
+		<textEditor left="05" top="30" width="270" height="315" field="campoNotasPok" />
+		</layout>
+
+	</form>

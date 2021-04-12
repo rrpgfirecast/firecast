@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmAction" align="client" theme="dark" margins="{top=1}">
+	<layout left="000" top="000" height="650" width="1100">
+		<image left="000" top="000" height="650" width="1100" src="/img/wallpaper.png" style="autoFIT" />
+		</layout>
+
+	<template name="addStat">	
+		<checkBox left="000" top="$(Top)" height="20" width="120" text="$(Name)" field="$(field)"/>
+	</template>		
+	<template name="basicAbility">
+		<popup name="popAbility$(field)" width="300" height="200" backOpacity="0.4" autoScopeNode="false">
+			<label left="05" top="5" width="60" height="20" text="Descrição:" horzTextAlign="center"/>
+			<textEditor left="005" top="30" height="165" width="290" field="Descricao$(field)" text="$(Texto)"/>
+			</popup>
+		<checkBox left="000" top="$(Top)" height="20" width="150" text="$(Name)" field="$(field)" fontStyle="bold"/>
+		<button left="175" top="$(Top)" width="23" height="25" text="i" name="Botao$(field)">
+			<event name="onClick"><![CDATA[
+				local pop = self:findControlByName("popAbility$(field)");
+					
+				if pop ~= nil then
+					pop:setNodeObject(self.boxDetalhesDoItem.node);
+					pop:showPopupEx("right", self.Botao$(field));
+				else
+					showMessage("Ops, erro");
+				end;
+				]]>
+				</event>
+			</button>  
+	</template>	
+	<template name="basicSubAbility">
+		<popup name="popAbility$(field)" width="300" height="200" backOpacity="0.4" autoScopeNode="false">
+			<label left="05" top="5" width="60" height="20" text="Descrição:" horzTextAlign="center"/>
+			<textEditor left="005" top="30" height="165" width="290" field="Descricao$(field)" text="$(Texto)"/>
+			</popup>
+		<checkBox left="020" top="$(Top)" height="20" width="150" text="$(Name)" field="$(field)"/>
+		<button left="175" top="$(Top)" width="23" height="25" text="i" name="Botao$(field)">
+			<event name="onClick"><![CDATA[
+				local pop = self:findControlByName("popAbility$(field)");
+					
+				if pop ~= nil then
+					pop:setNodeObject(self.boxDetalhesDoItem.node);
+					pop:showPopupEx("right", self.Botao$(field));
+				else
+					showMessage("Ops, erro");
+				end;
+				]]>
+				</event>
+			</button>  
+	</template>	
+	<template name="basicSubAbility2">
+		<checkBox left="020" top="$(Top)" height="20" width="150" text="$(Name)" field="$(field)"/>
+	</template>	
+	<template name="basicAbiName">
+		<popup name="popAbility$(field)" width="300" height="200" backOpacity="0.4" autoScopeNode="false">
+			<label left="05" top="5" width="60" height="20" text="Descrição:" horzTextAlign="center"/>
+			<textEditor left="005" top="30" height="165" width="290" field="Descricao$(field)" text="$(Texto)"/>
+			</popup>
+		<label left="000" top="$(Top)" height="20" width="150" text="$(Name)" fontStyle="bold"/>
+		<button left="100" top="$(Top)" width="23" height="25" text="i" name="Botao$(field)">
+			<event name="onClick"><![CDATA[
+				local pop = self:findControlByName("popAbility$(field)");
+					
+				if pop ~= nil then
+					pop:setNodeObject(self.boxDetalhesDoItem.node);
+					pop:showPopupEx("right", self.Botao$(field));
+				else
+					showMessage("Ops, erro");
+				end;
+				]]>
+				</event>
+			</button>  
+	</template>	
+	
+	<template name="basicAbiName2">
+		<popup name="popAbility$(field)" width="300" height="200" backOpacity="0.4" autoScopeNode="false">
+			<label left="05" top="5" width="60" height="20" text="Descrição:" horzTextAlign="center"/>
+			<textEditor left="005" top="30" height="165" width="290" field="Descricao$(field)" text="$(Texto)"/>
+			</popup>
+		<label left="000" top="$(Top)" height="20" width="170" text="$(Name)" fontStyle="bold"/>
+		<button left="175" top="$(Top)" width="23" height="25" text="i" name="Botao$(field)">
+			<event name="onClick"><![CDATA[
+				local pop = self:findControlByName("popAbility$(field)");
+					
+				if pop ~= nil then
+					pop:setNodeObject(self.boxDetalhesDoItem.node);
+					pop:showPopupEx("right", self.Botao$(field));
+				else
+					showMessage("Ops, erro");
+				end;
+				]]>
+				</event>
+			</button>  
+	</template>	
+
+
+	<scrollBox align ="client">
+	
+		<layout left="60" top="100" height="325" width="380">
+			<basicAbiName Top ="000" Name="Add Status" field = "nameAddstatus" Texto ="The monster can use an Ability Action to automatically add a positive Status Condition (4) to a Single target.  XP and Gil values are given per Status added, and depend on the exact Status taken.  Add Status can be used to add more than one Status Condition at a time, though it is recommended that this option be reserved for Boss monsters and creatures of Level 30 or above"/>
+			<addStat Top = "025" Name="Float" field="addFloat"/>
+			<addStat Top = "050" Name="Agility Up" field="addAgiUP"/>
+			<addStat Top = "075" Name="Spirit Up" field="addSpiUP"/>
+			<addStat Top = "100" Name="Fire Spikes" field="addFIRSpikes"/>
+			<addStat Top = "125" Name="Ice Spikes" field="addICESpikes"/>
+			<addStat Top = "150" Name="Water Spikes" field="addWATSpikes"/>
+			<addStat Top = "175" Name="Lightning Spikes" field="addELESpikes"/>
+			<addStat Top = "200" Name="Ground Spikes" field="addGNDSpikes"/>
+			<addStat Top = "225" Name="Wind Spikes" field="addWINSpikes"/>
+			<addStat Top = "250" Name="Bio Spikes" field="addBIOSpikes"/>
+			<addStat Top = "275" Name="Shadow Spikes" field="addSHASpikes"/>
+			<addStat Top = "300" Name="Holy Spikes" field="addHOLSpikes"/>		
+			</layout>
+
+		<layout left="200" top="100" height="325" width="380">
+			<addStat Top = "025" Name="Protect" field="addProtect"/>
+			<addStat Top = "050" Name="Shell" field="addShell"/>
+			<addStat Top = "075" Name="Armor Up" field="addARMUP"/>
+			<addStat Top = "100" Name="Mental Up" field="addMENUP"/>
+			<addStat Top = "125" Name="Haste" field="addHaste"/>
+			<addStat Top = "150" Name="Reflect" field="addReflect"/>
+			<addStat Top = "175" Name="Power Up" field="addPOWUP"/>
+			<addStat Top = "200" Name="Magic Up" field="addMAGUP"/>
+			<addStat Top = "225" Name="Regen" field="addRegen"/>
+			<addStat Top = "250" Name="Aura" field="addAura"/>
+			<addStat Top = "275" Name="Vanish" field="addVanish"/>	
+			</layout>	
+
+		<layout left="350" top="100" height="325" width="380">
+			<basicAbiName Top ="000" Name="Cannibalize" field = "nameCannibalize" Texto ="The monster can consume other monsters to increase its own strength.  A monster can Cannibalize a Single ally of a Level no higher than (Monster's Level / 2) at the cost of one Ability Action.  This automatically reduces the target's HP to 0 – treat this as an Eject-type effect. XP and Gil values for Cannibalize depend on what effects it has.  By default, the monster regains (Target's Current HP) Hit Points, but Cannibalize can instead bestow one positive Status Condition (4) on the monster. XP and Gil values are given per Status added, and depend on the exact Status taken:"/>
+			<addStat Top = "025" Name="Float" field="canFloat"/>
+			<addStat Top = "050" Name="Agility Up" field="canAgiUP"/>
+			<addStat Top = "075" Name="Spirit Up" field="canSpiUP"/>
+			<addStat Top = "100" Name="Fire Spikes" field="canFIRSpikes"/>
+			<addStat Top = "125" Name="Ice Spikes" field="canICESpikes"/>
+			<addStat Top = "150" Name="Water Spikes" field="canWATSpikes"/>
+			<addStat Top = "175" Name="Lightning Spikes" field="canELESpikes"/>
+			<addStat Top = "200" Name="Ground Spikes" field="canGNDSpikes"/>
+			<addStat Top = "225" Name="Wind Spikes" field="canWINSpikes"/>
+			<addStat Top = "250" Name="Bio Spikes" field="canBIOSpikes"/>
+			<addStat Top = "275" Name="Shadow Spikes" field="canSHASpikes"/>
+			<addStat Top = "300" Name="Holy Spikes" field="canHOLSpikes"/>		
+			</layout>
+
+		<layout left="490" top="100" height="325" width="380">
+			<addStat Top = "025" Name="Protect" field="canProtect"/>
+			<addStat Top = "050" Name="Shell" field="canShell"/>
+			<addStat Top = "075" Name="Armor Up" field="canARMUP"/>
+			<addStat Top = "100" Name="Mental Up" field="canMENUP"/>
+			<addStat Top = "125" Name="Haste" field="canHaste"/>
+			<addStat Top = "150" Name="Reflect" field="canReflect"/>
+			<addStat Top = "175" Name="Power Up" field="canPOWUP"/>
+			<addStat Top = "200" Name="Magic Up" field="canMAGUP"/>
+			<addStat Top = "225" Name="Regen" field="canRegen"/>
+			<addStat Top = "250" Name="Aura" field="canAura"/>
+			<addStat Top = "275" Name="Vanish" field="canVanish"/>	
+			<addStat Top = "300" Name="Regain HP" field="canHealHP"/>
+			</layout>				
+
+		<layout left="650" top="50" height="430" width="400">
+			<basicAbility Top = "000" Name="Alarm" field="aaAlarm" Texto="The monster can use an Ability Action to summon an additional monster into battle. The new monster arrives on the battlefield at the beginning of the following Round, forming a Group with the original monster, and generates Initiative as normal. Once used, Alarm cannot be used again until the summoned monster has been defeated or incapacitated. The type of monster summoned by Alarm should be noted in the Ability’s description. Multiple monsters can be summoned through a single Alarm; in this case, multiply the XP and Gil Modifiers given below by the number of monsters summoned. It is generally recommended that any monsters summoned through Alarm be of equal or lower Level to the monster doing the summoning"/>
+			<basicAbility Top = "025" Name="Clone" field="aaClone" Texto="The monster can use an Ability Action to create a copy of one of its opponents to act as an active combatant in the current battle.  The clone has all the Attributes, Combat Statistics, Equipment, and Abilities of the original character, and generates Initiative as normal, fighting on the monster’s behalf until killed or incapacitated. No XP or Gil is awarded for defeating opponents created by Clone." />
+			<basicAbility Top = "050" Name="Escape" field="aaEscape" Texto="The monster has the ability to make Escape Actions, allowing it to flee from battle.  Monsters that successfully escape are not counted as defeated, and award no XP, Gil, or Items to the players. Escape is sealed by the Status Condition Immobilize." />
+			<basicAbility Top = "075" Name="Imprison" field="aaImprison" Texto="The monster is capable of seizing and imprisoning opponents in battle. Doing so requires the monster to use an Ability Action. Whilst imprisoned, the prisoner is afflicted with the Status Condition Immobilize – even if he would normally be Immune to it – and suffers 50% of any damage done to the monster after it has been modified for ARM or M. ARM. The prisoner's ARM and M. ARM can be used to further reduce this damage.  By default, the prisoner is only released if the monster decides to let him go – this is done during the Status Phase, and costs no Actions to do – or if the monster is incapacitated. However, Imprison has a number of special Modifiers that can be added to give it more strategic depth." />
+			<basicSubAbility Top = "100" Name="Binding Prison" field="aaBPrison" Texto="A Binding Prison prevents the captured target from making Actions or generating Initiative for as long as he remains in the monster’s clutches"/>
+			<basicSubAbility Top = "125" Name="Insecure Prison" field="aaIPrison" Texto="An Insecure Prison gives the target the opportunity to make an Escape Action. The opposed roll for the Escape Action uses (Monster's AGI + Monster's Level) instead of the monster's SPD Rating."/>
+			<basicSubAbility Top = "150" Name="Sheltered Prison" field="aaSPrison" Texto="A Sheltered Prison prevents the captured target from taking damage when the monster is damaged in battle."/>
+			<basicSubAbility Top = "175" Name="Damaging Prison" field="aaDPrison" Texto="A target in a Damaging Prison loses 10% of his maximum Hit Points at the end of every Status Phase he still remains imprisoned for."/>
+			<basicSubAbility Top = "200" Name="Vulnerable Prison" field="aaVPrison" Texto="A Vulnerable Prison releases the target released from the monster’s clutches once the monster suffers damage equal to 10% of the monster’s maximum Hit Points. This damage is cumulative, and does not have to be done in one attack."/>
+			<basicAbility Top = "225" Name="Item Use" field="aaItemUse" Texto="The monster can make Item Actions, and has an Inventory of its own. Items made available to a monster via its Inventory are separate from the monster’s Treasure Tables; anything still left in the monster’s Inventory when it is defeated is awarded to the players alongside the usual treasure.  Successful use of Steal liberates a random item from the monster’s Inventory until there is nothing left to steal; at this point, subsequent uses of Steal take items from the Treasure Table as normal. Item Use is sealed by the Status Condition Disable." />
+			<basicAbiName2 Top = "250" Name="Restore" field="aaRestore" 
+			Texto="The monster has the ability to regenerate even grievous damage. Through the use of an Ability Action, a monster with Restore can regenerate 25%, 50%, or 75% of its maximum Hit Points.  Creatures under the Status Condition Zombie suffer the appropriate amount of damage instead."/>
+			<basicSubAbility2 Top = "275" Name="25%" field="aaRestore25" />
+			<basicSubAbility2 Top = "300" Name="50%" field="aaRestore50"/>
+			<basicSubAbility2 Top = "325" Name="75%" field="aaRestore75"/>
+			<basicAbiName2 Top = "350" Name="Steal Status" field="aaSealStat" 
+			Texto="The monster is capable of stealing Status Conditions from another combatant. Steal Status requires an Ability Action to carry out, and transfers the newest Status Condition added to the target to the monster, duration included, canceling it on the target in the process.  XP and Gil values depend on whether the monster will steal any Status Condition, or only the newest positive Status Condition added to the target. Steal Status may take multiple Status Conditions with just one Action; in this case, multiply the values given below by the maximum number of Status Conditions Steal Status can take.  When dealing with Auto- or SOS- Status Conditions, Steal Status will add the Status Condition in question to the monster without canceling the original; Status Conditions stolen in this manner automatically have a Timer of (4)."/>
+			<basicSubAbility2 Top = "375" Name="Positive Only" field="aaSSPO" />
+			<basicSubAbility2 Top = "400" Name="Positive or Negative" field="aaSSPN"/>			
+			</layout>
+			
+		<layout left="1000" top="570" height="50" width="90">
+			<label left="000" top="000" height="20" width="30" text="Exp" autoSize="true"/>
+			<edit left="035" top="000" height="20" width="50" field="ExpFinal" horzTextAlign="center" />
+			<label left="000" top="025" height="20" width="30" text="Gil" autoSize="true"/>
+			<edit left="35" top="025" height="20" width="50" field="GilFinal" horzTextAlign="center" />
+			</layout>	
+
+		</scrollBox>
+	</form>			

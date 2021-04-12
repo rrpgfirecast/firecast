@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmPoke7" align="client" theme="dark" margins="{top=1}">
+
+	<rectangle align="top" color="black" xradius="10" yradius="10" height="880" padding="{top=3, left=3, right=3, bottom=3}"/>
+
+	<layout top = "10" left="10" width = "150" height = "800">
+		<comboBox left="00" top="00" width="120" height="20" field="letterA" horzTextAlign="leading" 
+			items="{'A','Abomasnow', 'Abra', 'Absol', 'Accelgor', 'Aegislash', 'Aerodactyl', 'Aggron', 'Aipom', 'Alakazam', 'Alcremie', 'Alomomola', 'Altaria', 'Amaura', 'Ambipom', 'Amoonguss', 'Ampharos', 'Anorith', 'Appletun', 'Applin','Araquanid','Arbok','Arcanine','Arceus','Archen','Archeops','Arcovish','Artozolt','Aromatisse','Aron','Arrokuda','Articuno','Audino','Aurorus','Avalugg','Axew','Azelf','Azumarill','Azurill'}" 
+			values="{1,'Abomasnow', 'Abra', 'Absol', 'Accelgor', 'Aegislash', 'Aerodactyl', 'Aggron', 'Aipom', 'Alakazam', 'Alcremie', 'Alomomola', 'Altaria', 'Amaura', 'Ambipom', 'Amoonguss', 'Ampharos', 'Anorith', 'Appletun', 'Applin','Araquanid','Arbok','Arcanine','Arceus','Archen','Archeops','Arcovish','Artozolt','Aromatisse','Aron','Arrokuda','Articuno','Audino','Aurorus','Avalugg','Axew','Azelf','Azumarill','Azurill'}"
+			/>
+		<dataLink field="letterA" defaultValue="1" />	
+
+		<comboBox left="00" top="25" width="120" height="20" field="letterB" horzTextAlign="leading" 
+			items="{'B','Bagon','Baltoy','Banette','Barbaracle','Barboach','Barraskewda','Basculin','Bastiodon','Bayleef','Beartic','Beautifly','Beedrill','Beheeyem','Beldum','Bellossom','Bellsprout','Bergmite','Bewear','Bibarel','Bidoof','Binacle','Bisharp','Blacephalon','Blastoise','Blaziken','Blipbug','Blissey','Blitzle','Boldore','Boltund','Bonsly','Bouffalant','Bounseweet','Braixen','Braviary','Breloom','Brionne','Bronzong','Bronzor','Bruxish','Budew','Buizel','Bulbasaur','Buneary','Bunnelby','Burmy','Butterfree','Buzzwole'}" 
+			values="{1,'Bagon','Baltoy','Banette','Barbaracle','Barboach','Barraskewda','Basculin','Bastiodon','Bayleef','Beartic','Beautifly','Beedrill','Beheeyem','Beldum','Bellossom','Bellsprout','Bergmite','Bewear','Bibarel','Bidoof','Binacle','Bisharp','Blacephalon','Blastoise','Blaziken','Blipbug','Blissey','Blitzle','Boldore','Boltund','Bonsly','Bouffalant','Bounseweet','Braixen','Braviary','Breloom','Brionne','Bronzong','Bronzor','Bruxish','Budew','Buizel','Bulbasaur','Buneary','Bunnelby','Burmy','Butterfree','Buzzwole'}"
+			/>
+		<dataLink field="letterB" defaultValue="1" />			
+
+		<comboBox left="00" top="50" width="120" height="20" field="letterC" horzTextAlign="leading" 
+			items="{'C','Cacnea','Cacturne','Calyrex','Camerupt','Carbink','Carkol','Carnivine','Carracosta','Carvanha','Cascoon','Castform','Caterpie','Celebi','Celesteela','Centiskorch','Chandelure','Chansey','Charizard','Charjabug','Charmander','Charmeleon','Chatot','Cherrim','Cherubi','Chesnaught','Chespin','Chewtle','Chikorita','Chimchar','Chimecho','Chinchou','Chingling','Cinccino','Cinderace','Clampearl','Clauncher','Clawitzer','Claydol','Clefable','Clefairy','Cleffa','Clobbopus','Cloyster','Coalossal','Cobalion','Cofagrigus','Combee','Combusken','Conkeldurr','Copperjah','Corphish','Corsola','Corvilknight','Corvisquire','Cosmoem','Cosmog','Cottonee','Crabominable','Crabrawler','Cradily','Cramorant','Cranidos','Crawdaunt','Cresselia','Croagunk','Crobat','Croconaw','Crustle','Crygonal','Cubchoo','Cubone','Cufant','Cursola','Cutiefly','Cyndaquil'}" 
+			values="{1,'Cacnea','Cacturne','Calyrex','Camerupt','Carbink','Carkol','Carnivine','Carracosta','Carvanha','Cascoon','Castform','Caterpie','Celebi','Celesteela','Centiskorch','Chandelure','Chansey','Charizard','Charjabug','Charmander','Charmeleon','Chatot','Cherrim','Cherubi','Chesnaught','Chespin','Chewtle','Chikorita','Chimchar','Chimecho','Chinchou','Chingling','Cinccino','Cinderace','Clampearl','Clauncher','Clawitzer','Claydol','Clefable','Clefairy','Cleffa','Clobbopus','Cloyster','Coalossal','Cobalion','Cofagrigus','Combee','Combusken','Conkeldurr','Copperjah','Corphish','Corsola','Corvilknight','Corvisquire','Cosmoem','Cosmog','Cottonee','Crabominable','Crabrawler','Cradily','Cramorant','Cranidos','Crawdaunt','Cresselia','Croagunk','Crobat','Croconaw','Crustle','Crygonal','Cubchoo','Cubone','Cufant','Cursola','Cutiefly','Cyndaquil'}"
+			/>
+		<dataLink field="letterC" defaultValue="1" />	
+		
+		<comboBox left="00" top="75" width="120" height="20" field="letterD" horzTextAlign="leading" 
+			items="{'D','Darkrai','Darminitan','Dartrix','Darumaka','Decidueye','Dedenne','Deerling','Deino','Delcatty','Delibird','Delphox','Deoxys','Dewgong','Dewott','Dewpider','Dhelmise','Dialga','Diancie','Diggersby','Diglett','Ditto','Dodrio','Doduo','Donphan','Dottler','Duoblade','Dracovish','Dracozolt','Dragalge','Dragapult','Dragonair','Dragonite','Drakloak','Drampa','Drapion','Dratini','Drednaw','Dreepy','Drifblim','Drifloon','Drilbur','Drizzile','Drowzee','Druddigon','Dubwool','Ducklett','Dugtrio','Dunsparce','Duosion','Duraludon','Durant','Dusclops','Dusknoir','Duskull','Dustox','Dwebble'}" 
+			values="{1,'Darkrai','Darminitan','Dartrix','Darumaka','Decidueye','Dedenne','Deerling','Deino','Delcatty','Delibird','Delphox','Deoxys','Dewgong','Dewott','Dewpider','Dhelmise','Dialga','Diancie','Diggersby','Diglett','Ditto','Dodrio','Doduo','Donphan','Dottler','Duoblade','Dracovish','Dracozolt','Dragalge','Dragapult','Dragonair','Dragonite','Drakloak','Drampa','Drapion','Dratini','Drednaw','Dreepy','Drifblim','Drifloon','Drilbur','Drizzile','Drowzee','Druddigon','Dubwool','Ducklett','Dugtrio','Dunsparce','Duosion','Duraludon','Durant','Dusclops','Dusknoir','Duskull','Dustox','Dwebble'}"
+			/>
+		<dataLink field="letterD" defaultValue="1" />	
+		
+		<comboBox left="00" top="100" width="120" height="20" field="letterE" horzTextAlign="leading" 
+			items="{'E', 'Eelektross','Eevee','Eiscue','Ekans','Eldegoss','Electabuzz','Electivire','Electrike','Electrode','Elekid','Elgyem','Emboar','Emolga','Empoleon','Entei','Escavelier','Espeon','Espurr','Eternatus','Excadrill','Exeggcute','Exeggutor','Exploud'}" 
+			values="{1, 'Eelektross','Eevee','Eiscue','Ekans','Eldegoss','Electabuzz','Electivire','Electrike','Electrode','Elekid','Elgyem','Emboar','Emolga','Empoleon','Entei','Escavelier','Espeon','Espurr','Eternatus','Excadrill','Exeggcute','Exeggutor','Exploud'}"
+			/>
+		<dataLink field="letterE" defaultValue="1" />	
+		
+		<comboBox left="00" top="125" width="120" height="20" field="letterF" horzTextAlign="leading" 
+			items="{'F', 'Falinks','Farfetchd','Fearow','Feebas','Fennekin','Feraligatr','Ferroseed','Ferrothorn','Finneon','Flaaffy','Flabébé','Flapple','Flareon','Fletchinder','Fletchling','Floatzel','Floette','Florges','Flygon','Fomantis','Foongus','Forretress','Fraxure','Frillish','Froakie','Frogadier','Froslass','Frosmoth','Furfrou','Furret'}" 
+			values="{1, 'Falinks','Farfetchd','Fearow','Feebas','Fennekin','Feraligatr','Ferroseed','Ferrothorn','Finneon','Flaaffy','Flabébé','Flapple','Flareon','Fletchinder','Fletchling','Floatzel','Floette','Florges','Flygon','Fomantis','Foongus','Forretress','Fraxure','Frillish','Froakie','Frogadier','Froslass','Frosmoth','Furfrou','Furret'}"
+			/>
+		<dataLink field="letterF" defaultValue="1" />	
+		
+		<comboBox left="00" top="150" width="120" height="20" field="letterG" horzTextAlign="leading" 
+			items="{'G','Gabite','Gallade','Galvantula','Garbodor','Garchomp','Gardevoir','Gastly','Gastrodon','Genesect','Gengar','Geodude','Gible','Gigalith','Girafarig','Giratina','Glaceon','Glalie','Glameow','Gligar','Gliscor','Gloom','Gogoat','Golbat','Goldeen','Golduck','Golem','Golett','Golisopod','Golurk','Goodra','Goomy','Gorebyss','Gossifleur','Gothita','Gothitelle','Gothorita','Gourgeist','Granbull','Grapploct','Graveler','Greedent','Greninja','Grimer','Grimmsnarl','Grookey','Grotle','Groudon','Grovyle','Growlithe','Grubbin','Grumpig','Gulpin','Gumshoos','Gurdurr','Guzzlord','Gyarados'}" 
+			values="{1,'Gabite','Gallade','Galvantula','Garbodor','Garchomp','Gardevoir','Gastly','Gastrodon','Genesect','Gengar','Geodude','Gible','Gigalith','Girafarig','Giratina','Glaceon','Glalie','Glameow','Gligar','Gliscor','Gloom','Gogoat','Golbat','Goldeen','Golduck','Golem','Golett','Golisopod','Golurk','Goodra','Goomy','Gorebyss','Gossifleur','Gothita','Gothitelle','Gothorita','Gourgeist','Granbull','Grapploct','Graveler','Greedent','Greninja','Grimer','Grimmsnarl','Grookey','Grotle','Groudon','Grovyle','Growlithe','Grubbin','Grumpig','Gulpin','Gumshoos','Gurdurr','Guzzlord','Gyarados'}"
+			/>
+		<dataLink field="letterG" defaultValue="1" />	
+		
+		<comboBox left="00" top="175" width="120" height="20" field="letterH" horzTextAlign="leading" 
+			items="{'H','Hakamo-o','Happiny','Hariyama','Hatenna','Hatterene','Hattrem','Haunter','Hawlucha','Haxorus','Heatmor','Heatran','Heliolisk','Helioptile','Heracross','Herdier','Hippopotas','Hippowdon','Hitmonchan','Hitmonlee','Hitmontop','Ho-Oh','Honchkrow','Honedge','Hoopa','Hoothoot','Hoppip','Horsea','Houndoom','Houndour','Huntail','Hydreigon','Hypno'}" 
+			values="{1,'Hakamo-o','Happiny','Hariyama','Hatenna','Hatterene','Hattrem','Haunter','Hawlucha','Haxorus','Heatmor','Heatran','Heliolisk','Helioptile','Heracross','Herdier','Hippopotas','Hippowdon','Hitmonchan','Hitmonlee','Hitmontop','Ho-Oh','Honchkrow','Honedge','Hoopa','Hoothoot','Hoppip','Horsea','Houndoom','Houndour','Huntail','Hydreigon','Hypno'}"
+			/>
+		<dataLink field="letterH" defaultValue="1" />	
+		
+		<comboBox left="00" top="200" width="120" height="20" field="letterI" horzTextAlign="leading" 
+			items="{'I','Igglybuff','Illumise','Impidimp','Incineroar','Indeedee','Infernape','Inkay','Inteleon','Ivysaur'}" 
+			values="{1,'Igglybuff','Illumise','Impidimp','Incineroar','Indeedee','Infernape','Inkay','Inteleon','Ivysaur'}"
+			/>
+		<dataLink field="letterI" defaultValue="1" />	
+		
+		<comboBox left="00" top="225" width="120" height="20" field="letterJ" horzTextAlign="leading" 
+			items="{'J','Jangmo-o','Jellicent','Jigglypuff','Jirachi','Jolteon','Joltik','Jumpluff','Jynx'}" 
+			values="{1,'Jangmo-o','Jellicent','Jigglypuff','Jirachi','Jolteon','Joltik','Jumpluff','Jynx'}"
+			/>
+		<dataLink field="letterJ" defaultValue="1" />	
+
+		</layout>
+		
+	<layout top = "10" left="200" width = "150" height = "800">
+		<comboBox left="00" top="00" width="120" height="20" field="letterK" horzTextAlign="leading" 
+			items="{'K','Kabuto','Kabutops','Kadabra','Kakuna','Kangaskhan','Karrablast','Kartana','Kecleon','Keldeo','Kingdra','Kingler','Kirlia','Klang','Klefki','Klink','Klinklang','Koffing','Komala','Kommo-o','Krabby','Kricketot','Kricketune','Krokorok','Krookodile','Kubfu','Kyogre','Kyurem'}" 
+			values="{1,'Kabuto','Kabutops','Kadabra','Kakuna','Kangaskhan','Karrablast','Kartana','Kecleon','Keldeo','Kingdra','Kingler','Kirlia','Klang','Klefki','Klink','Klinklang','Koffing','Komala','Kommo-o','Krabby','Kricketot','Kricketune','Krokorok','Krookodile','Kubfu','Kyogre','Kyurem'}"
+			/>
+		<dataLink field="letterK" defaultValue="1" />	
+		
+		<comboBox left="00" top="25" width="120" height="20" field="letterL" horzTextAlign="leading" 
+			items="{'L','Lairon','Lampent','Landorus','Lanturn','Lapras','Larvesta','Larvitar','Latias','Latios','Leafeon','Leavanny','Ledian','Ledyba','Lickilicky','Lickitung','Liepard','Lileep','Lilligant','Lillipup','Linoone','Litleo','Litten','Litwick','Lombre','Lopunny','Lotad','Loudred','Lucario','Ludicolo','Lugia','Lumineon','Lunala','Lunatone','Lurantis','Luvdisc','Luxio','Luxray','Lycanroc'}" 
+			values="{1,'Lairon','Lampent','Landorus','Lanturn','Lapras','Larvesta','Larvitar','Latias','Latios','Leafeon','Leavanny','Ledian','Ledyba','Lickilicky','Lickitung','Liepard','Lileep','Lilligant','Lillipup','Linoone','Litleo','Litten','Litwick','Lombre','Lopunny','Lotad','Loudred','Lucario','Ludicolo','Lugia','Lumineon','Lunala','Lunatone','Lurantis','Luvdisc','Luxio','Luxray','Lycanroc'}"
+			/>
+		<dataLink field="letterL" defaultValue="1" />	
+		
+		<comboBox left="00" top="50" width="120" height="20" field="letterM" horzTextAlign="leading" 
+			items="{'M','Machamp','Macoke','Machop','Magby','Magcargo','Magearna','Magikarp','Magmar','Magmortar','Magnemite','Magneton','Magnezone','Makuhita','Malamar','Mamoswine','Manaphy','Mandibuzz','Manectric','Mankey','Mantine','Mantyke','Maractus','Mareanie','Mareep','Marill','Marowak','Marshadow','Marshtomp','Masquerain','Mawile','Medicham','Meditite','Meganium','Melmetal','Meloetta','Meltan','Meowstic','Meowth','Mesprit','Metagross','Metang','Metapod','Mew','Mewtwo','Mienfoo','Mienshao','Mightyena','Milcery','Milotic','Miltank','Mime Jr.','Mimikyu','Minccino','Minior','Minun','Misdreavus','Mismagius','Moltres','Monferno','Morelull','Morgrem','Morpeko','Mothim','Mr.Mime','Mr.Rime','Mudbray','Mudkip','Mudsdale','Muk','Munchlax','Munna','Murkrow','Musharna'}" 
+			values="{1,'Machamp','Macoke','Machop','Magby','Magcargo','Magearna','Magikarp','Magmar','Magmortar','Magnemite','Magneton','Magnezone','Makuhita','Malamar','Mamoswine','Manaphy','Mandibuzz','Manectric','Mankey','Mantine','Mantyke','Maractus','Mareanie','Mareep','Marill','Marowak','Marshadow','Marshtomp','Masquerain','Mawile','Medicham','Meditite','Meganium','Melmetal','Meloetta','Meltan','Meowstic','Meowth','Mesprit','Metagross','Metang','Metapod','Mew','Mewtwo','Mienfoo','Mienshao','Mightyena','Milcery','Milotic','Miltank','Mime Jr.','Mimikyu','Minccino','Minior','Minun','Misdreavus','Mismagius','Moltres','Monferno','Morelull','Morgrem','Morpeko','Mothim','Mr.Mime','Mr.Rime','Mudbray','Mudkip','Mudsdale','Muk','Munchlax','Munna','Murkrow','Musharna'}"
+			/>
+		<dataLink field="letterM" defaultValue="1" />	
+		
+		<comboBox left="00" top="75" width="120" height="20" field="letterN" horzTextAlign="leading" 
+			items="{'N','Naganadel','Natu','Necrozma','Nickit','Nidoking','Nidoqueen','Nidoran♀','Nidoran♂', 'Nidorina','Nidorino','Nihilego','Nincada','Ninetales','Ninjask','Noctowl','Noibat','Noivern','Nosepass','Numel','Nuzleaf'}" 
+			values="{1,'Naganadel','Natu','Necrozma','Nickit','Nidoking','Nidoqueen','Nidoran♀','Nidoran♂', 'Nidorina','Nidorino','Nihilego','Nincada','Ninetales','Ninjask','Noctowl','Noibat','Noivern','Nosepass','Numel','Nuzleaf'}"
+			/>
+		<dataLink field="letterN" defaultValue="1" />	
+		
+		<comboBox left="00" top="100" width="120" height="20" field="letterO" horzTextAlign="leading" 
+			items="{'O','Obstagoon','Octillery','Oddish','Omanyte','Omastar','Onix','Oranguru','Obeetle','Oricorio','Oshawott'}" 
+			values="{1,'Obstagoon','Octillery','Oddish','Omanyte','Omastar','Onix','Oranguru','Obeetle','Oricorio','Oshawott'}"
+			/>
+		<dataLink field="letterO" defaultValue="1" />
+		
+		<comboBox left="00" top="125" width="120" height="20" field="letterP" horzTextAlign="leading" 
+			items="{'P','Pachirisu','Palkia','Palossand','Palpitoad','Pancham','Pangoro','Panpour','Pansage','Pansear','Paras','Parasect','Passimian','Patrat','Pawniar','Pelipper','Perrserker','Persian','Petilil','Phanpy','Phantump','Pheromosa','Phione','Pichu','Pidgeot','Pidgeotto','Pidgey','Pidove','Pignite','Pikachu','Pikipek','Piloswine','Pincurchin','Pineco','Pinsir','Piplup','Plusle','Poipole','Politoed','Poliwag','Poliwhirl','Poliwrath','Polteageist','Ponyta','Poochyena','Popplio','Porygon','Porygon-Z','Porygon2','Primarina','Primeape','Prinplup','Probopass','Psyduck','Pumpkaboo','Pupitar','Purrloin','Purogly','Pyroar','Pyukumuku'}" 
+			values="{1,'Pachirisu','Palkia','Palossand','Palpitoad','Pancham','Pangoro','Panpour','Pansage','Pansear','Paras','Parasect','Passimian','Patrat','Pawniar','Pelipper','Perrserker','Persian','Petilil','Phanpy','Phantump','Pheromosa','Phione','Pichu','Pidgeot','Pidgeotto','Pidgey','Pidove','Pignite','Pikachu','Pikipek','Piloswine','Pincurchin','Pineco','Pinsir','Piplup','Plusle','Poipole','Politoed','Poliwag','Poliwhirl','Poliwrath','Polteageist','Ponyta','Poochyena','Popplio','Porygon','Porygon-Z','Porygon2','Primarina','Primeape','Prinplup','Probopass','Psyduck','Pumpkaboo','Pupitar','Purrloin','Purogly','Pyroar','Pyukumuku'}"
+			/>
+		<dataLink field="letterP" defaultValue="1" />
+		
+		<comboBox left="00" top="150" width="120" height="20" field="letterQ" horzTextAlign="leading" 
+			items="{'Q','Quagsire','Quilava','Quilladin','Qwilfish'}" 
+			values="{1,'Quagsire','Quilava','Quilladin','Qwilfish'}"
+			/>
+		<dataLink field="letterQ" defaultValue="1" />
+		
+		<comboBox left="00" top="175" width="120" height="20" field="letterR" horzTextAlign="leading" 
+			items="{'R','Raboot','Raichu','Raikou','Ralts','Rampardos','Rapidash','Raticate','Rattata','Rayquaza','Regice','Regigigas','Regirock','Registeel','Relicanth','Remoraid','Reshiram','Reuniclus','Rhydon','Rhyhorn','Rhyperior','Ribombee','Rillaboom','Riolu','Rockruff','Roggenrola','Rolycoly','Rookiedee','Roselia','Roserade', 'Rotom','Rowlet','Rufflet','Runerigus'}" 
+			values="{1,'Raboot','Raichu','Raikou','Ralts','Rampardos','Rapidash','Raticate','Rattata','Rayquaza','Regice','Regigigas','Regirock','Registeel','Relicanth','Remoraid','Reshiram','Reuniclus','Rhydon','Rhyhorn','Rhyperior','Ribombee','Rillaboom','Riolu','Rockruff','Roggenrola','Rolycoly','Rookiedee','Roselia','Roserade', 'Rotom','Rowlet','Rufflet','Runerigus'}"
+			/>
+		<dataLink field="letterR" defaultValue="1" />
+		
+		<comboBox left="00" top="200" width="120" height="20" field="letterS" horzTextAlign="leading" 
+			items="{'S','Sableye','Salamance','Salandit','Salazzle','Samurott','Sandaconda','Sandile','Sandshrew','Sandslash','Sandygast','Sawk','Sawsbuck','Scattergbug','Sceptile','Scizor','Scolipede','Scorbunny','Scrafty','Scraggy','Scyther','Seadra','Seaking','Sealeo','Seedot','Seel','Seismitoad','Sentret','Serperior','Seviper','Sewaddle','Sharpedo','Shaymin','Shedinja','Shelgon','Shellder','Shellos','Shelmet','Shieldon','Shiftry','Shiinotic','Shinx','Shroomish','Shucke', 'Shuppet','Sigilyph','Silcoon','Silicobra','Silvally','Simipour','Simisage','Simisear','Sinistea','Sirfetchd','Sizzlipede','Skarmory','Skiddo','Skiploom','Skitty','Skorupi','Skrelp','Skutank','Skwovet','Slaking','Slakoth','Sliggoo','Slowbro','Slowking','Slowpoke','Slugma','Slurpuff','Smeargle','Smoochum','Sneasel','Snivy','Snom','Snorlax','Snorunt','Snover','Snubbull','Sobble','Solgaleo','Solosis','Solrock','Spearow', 'Spewpa','Spheal','Spinarak','Spinda','Spiritomb','Spoink','Spritzee','Squirtle','Stakatakara','Stantler','Staraptor','Staravia','Starly','Starmie','Staryu','Steelix','Steenee','Stonjourner','Stoutland','Stufful','Stunfisk','Stunky','Sudowoodo','Suicune','Sunflora','Sunkern','Surskit','Swablu','Swadloon','Swalot','Swampert','Swanna','Swellow','Swinub','Swirlix','Swoobat','Sylveon'}" 
+			values="{1,'Sableye','Salamance','Salandit','Salazzle','Samurott','Sandaconda','Sandile','Sandshrew','Sandslash','Sandygast','Sawk','Sawsbuck','Scattergbug','Sceptile','Scizor','Scolipede','Scorbunny','Scrafty','Scraggy','Scyther','Seadra','Seaking','Sealeo','Seedot','Seel','Seismitoad','Sentret','Serperior','Seviper','Sewaddle','Sharpedo','Shaymin','Shedinja','Shelgon','Shellder','Shellos','Shelmet','Shieldon','Shiftry','Shiinotic','Shinx','Shroomish','Shucke', 'Shuppet','Sigilyph','Silcoon','Silicobra','Silvally','Simipour','Simisage','Simisear','Sinistea','Sirfetchd','Sizzlipede','Skarmory','Skiddo','Skiploom','Skitty','Skorupi','Skrelp','Skutank','Skwovet','Slaking','Slakoth','Sliggoo','Slowbro','Slowking','Slowpoke','Slugma','Slurpuff','Smeargle','Smoochum','Sneasel','Snivy','Snom','Snorlax','Snorunt','Snover','Snubbull','Sobble','Solgaleo','Solosis','Solrock','Spearow', 'Spewpa','Spheal','Spinarak','Spinda','Spiritomb','Spoink','Spritzee','Squirtle','Stakatakara','Stantler','Staraptor','Staravia','Starly','Starmie','Staryu','Steelix','Steenee','Stonjourner','Stoutland','Stufful','Stunfisk','Stunky','Sudowoodo','Suicune','Sunflora','Sunkern','Surskit','Swablu','Swadloon','Swalot','Swampert','Swanna','Swellow','Swinub','Swirlix','Swoobat','Sylveon'}"
+			/>
+		<dataLink field="letterS" defaultValue="1" />
+		
+		
+		
+		</layout>
+		
+
+
+	</form>

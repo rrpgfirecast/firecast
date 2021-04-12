@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<form name="frmDex" height="80" width="185" margins="{top=2, right=5, bottom=2}">
+
+	<style>
+		label {
+			fontColor: Moccasin;
+			fontStyle: bold;
+		}
+		
+		flowPart {
+            margins: {left=5, right=5, top=5, bottom=5};
+                }   
+		
+		edit {
+			fontColor: White;
+			fontStyle: bold;
+		}
+		
+		.titleLabel {
+			fontColor: Moccasin;
+			fontStyle: bold;
+			fontSize: 18;
+		}
+		
+		.conditionsLabel {
+			fontColor: Moccasin;
+			fontStyle: ;
+		}
+		
+		.roValues {
+			fontColor: Orange;
+			fontStyle: bold;
+		}
+		
+		.statsLegendRect {
+			sides: bottom;
+			corners: bottomRight bottomLeft;
+			color: transparent;
+			strokeColor: Moccasin;
+			strokeSize: 1;
+			xradius: 25;
+			yradius: 7;
+			cornerType: bevel;
+			strokeDash: dash;
+		}
+		
+		.statsRect {
+			 color: transparent;
+			 strokeColor: white;
+			 strokeSize: 1;
+			 xradius: 10;
+			 yradius: 10;
+			 cornerType: bevel;
+			 strokeDash: dash;
+		}
+		
+		.conditionsRect {
+			 color: transparent;
+			 strokeColor: white;
+			 strokeSize: 1;
+			 xradius: 10;
+			 yradius: 10;
+			 cornerType: innerLine;
+			 strokeDash: dash;
+		}
+		
+		.roRect {
+			 color: transparent;
+			 strokeColor: Orange;
+			 strokeSize: 1;
+			 xradius: 10;
+			 yradius: 10;
+			 cornerType: innerRound;
+			 strokeDash: dash;
+		}
+		
+		.rollBtn {
+			fontSize: 20;
+			fontColor: Orange;
+			left: 5;
+			top: 5;
+			height: 25;
+			width: 25;
+			align: left;
+		}
+	</style>
+
+	<rectangle align="client" class="statsRect" margins="{left=5}">	
+
+		<!-- Bloco Horizontal -->
+		<!-- Nome e AC -->
+		
+			<layout align="top" width="170" height="30" margins="{top=5}">
+				<label text="Dex #:" width="40" fontSize="10" fontStyle="bold" align="left" margins="{left=5}"/>
+				
+				<rectangle align="left" width="45" class="statsRect" margins="{left=5}">
+					<edit field="pokeNumber" type="number" align="client" transparent="true" margins="{left=3,right=3}" horzTextAlign="center"/>			
+				</rectangle>
+				
+				<imageCheckBox width="20" align="right" field="pokeCaught" optimize="true" margins="{left=5}" hint="Capturado?"
+                              checkedImage="/img/pokeball-on.png" uncheckedImage="/img/pokeball-off.png"/>
+				
+
+				
+				<button align="right" text="X" hint="Apagar Entrada" width="20" margins="{left=5, right=10}">
+					<event name="onClick">
+					
+					Dialogs.confirmYesNo("Deseja realmente apagar este item?",
+						function (confirmado)
+								if confirmado then
+										NDB.deleteNode(sheet);
+								end;
+						end);
+					</event>
+				</button>
+				
+			</layout>
+		
+
+			<layout align="top" width="170" height="30" margins="{top=5}">
+			  <label text="Espécie:" width="40" fontSize="10" fontStyle="bold" align="left" margins="{left=5}"/>
+			  <rectangle align="left" width="120" class="statsRect" margins="{left=5}">
+				<edit field="pokeSpecie" align="client" transparent="true" margins="{left=5,right=5}" horzTextAlign="center"/>
+			  </rectangle>
+			</layout>
+		
+		
+		<!-- Fim do Bloco Horizontal -->
+	</rectangle>
+
+	<dataLink fields="{'pokeNumber', 'pokeCaught'}">
+		<event name="onChange">
+		
+			local formPai = self:findControlByName("frmPtuTrainer");
+
+			if formPai ~= nil then
+				formPai.recalcDex();
+				end;
+			
+		</event>
+	</dataLink>
+	
+	
+
+</form>

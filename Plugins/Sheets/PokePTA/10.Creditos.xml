@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmCreditos" align="client" theme="dark" margins="{top=1}">
+
+	<layout left="000" top="000" height="650" width="1100">
+		<image left="000" top="000" height="650" width="1100" src="/img/Pokeball.jpg" style="autoFIT" />
+		</layout>
+		
+	<layout left="400" top="200" height="600" width="665">
+		<label left="0" top="000" height="20" width="600" text="Hitoshura (Criador do Plugin)" autoSize="true" />
+		<label left="0" top="025" height="20" width="600" text="Shakerskj (Aba pokedéx)" autoSize="true" />
+		<label left="0" top="050" height="20" width="600" text="Dragontail (Testes e sugestões)" autoSize="true" />
+		<label left="0" top="075" height="20" width="600" text="Ambesek (Ajudou BASTANTE no Código)" autoSize="true" />
+		<label left="0" top="100" height="20" width="600" text="Mia (Ajudou no código)" autoSize="true" />
+		<label left="0" top="125" height="20" width="600" text="Bloody (Ajudou no código)" autoSize="true" />
+		<label left="0" top="150" height="20" width="600" text="Webrian (Dicas e sugestões)" autoSize="true" />
+		<label left="0" top="175" height="20" width="600" text="Lucasedu19 (Dicas e sugestões)" autoSize="true" />
+		<label left="0" top="200" height="20" width="600" text="Caio Graco Pimenta (Adaptou o Sistema)" autoSize="true"/>
+
+		<button left="400" top="50" height="20" width="200" text = "Livro do Jogador" hint ="Link para baixar" 
+			onClick="GUI.openInBrowser('https://www.dropbox.com/s/j0pyn9zxu1827zk/Livro%20do%20Jogador.pdf?dl=0')">
+			</button>
+		<button left="400" top="75" height="20" width="200" text = "Livro do Mestre" hint ="Link para baixar"
+			onClick="GUI.openInBrowser('https://drive.google.com/file/d/11XrR-iKt0hyr-NkxLp6vxwERe0YcYayM/view')">
+			</button>
+		<button left="400" top="100" height="20" width="200" text = "Livro dos Pokémons" hint ="Link para baixar"
+			onClick="GUI.openInBrowser('https://drive.google.com/file/d/1aq9A1zeIiCDlaFw58BLLu8S0iqXd1mp6/view')">
+			</button>
+		</layout>
+		
+	</form>

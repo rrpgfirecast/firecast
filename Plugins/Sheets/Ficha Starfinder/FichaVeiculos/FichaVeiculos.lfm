@@ -1,0 +1,766 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmFichaVeiculos" formType="sheetTemplate" dataType="Ambesek.Starfinder.Veiculos" title="Ficha Starfinder (Veículos)" align="client" theme="dark">
+    <script>
+        <![CDATA[
+
+        local function isNewVersion(installed, downloaded)
+            local installedVersion = {};
+            local installedIndex = 0;
+            for i in string.gmatch(installed, "[^%.]+") do
+                installedIndex = installedIndex +1;
+                installedVersion[installedIndex] = i;
+            end
+
+            local downloadedVersion = {};
+            local downloadedIndex = 0;
+            for i in string.gmatch(downloaded, "[^%.]+") do
+                downloadedIndex = downloadedIndex +1;
+                downloadedVersion[downloadedIndex] = i;
+            end
+
+            for i=1, math.min(installedIndex, downloadedIndex), 1 do 
+                if (tonumber(installedVersion[i]) or 0) > (tonumber(downloadedVersion[i]) or 0) then
+                    return false;
+                elseif (tonumber(installedVersion[i]) or 0) < (tonumber(downloadedVersion[i]) or 0) then
+                    return true;
+                end;
+            end;
+
+            if downloadedIndex > installedIndex then
+                return true;
+            else
+                return false;
+            end;
+        end;
+        local function findPopup(myPop)
+            local pop = self:findControlByName(myPop);
+                
+            if pop ~= nil and sheet ~= nil then
+                pop:setNodeObject(sheet);
+                pop:showPopupEx("center", self);
+            elseif pop == nil then
+                showMessage("Ops, bug.. nao encontrei o popup para exibir");
+            end;                
+        end;
+
+        local function rollDanoExtra(atk, num, max)
+            if atk[num].crit then
+                local rolagem = Firecast.interpretarRolagem(atk[num].dano);
+
+                atk[num].mesa.activeChat:rolarDados(rolagem, "Dano Extra " .. num .. " com " .. atk[num].nome .. " de " .. (sheet.nome or "Veículo"), 
+                    function (rolado)
+                        if num < max then
+                            rollDanoExtra(atk,num+1,max);
+                        end;
+                    end);
+            elseif num<max then
+                rollDanoExtra(atk, num+1, max);
+            end;
+        end;
+
+        local function rollCrit(atk, num, max)
+            local dado = atk[num].rolAtk.ops[1].resultados[1];
+            if dado == 20 and num==max then
+                -- Auto Crit + Fim de Fase
+                atk[num].crit = true;
+                rollDanoExtra(atk, 1, max);
+            elseif dado == 20 then
+                -- Auto Crit
+                atk[num].crit = true;
+                rollCrit(atk, num+1, max);
+            elseif dado >= atk[num].margem then
+                -- Confirmar Crit
+                local rolagem = Firecast.interpretarRolagem("1d20 + " .. atk[num].bonus);
+
+                atk[num].mesa.activeChat:rolarDados(rolagem, "Confirmação de Crítico " .. num .. " com " .. atk[num].nome .. " de " .. (sheet.nome or "Veículo"), 
+                    function (rolado)
+                        atk[num].crit = true;
+
+                        if num == max then
+                            rollDanoExtra(atk,1,max);
+                        else
+                            rollCrit(atk,num+1,max);
+                        end;
+                    end);
+            elseif num == max then
+                rollDanoExtra(atk, 1, max);
+            else
+                rollCrit(atk, num+1,max);
+            end;
+        end;
+
+        local function rollDano(atk, num, max)
+            local dado = atk[num].rolAtk.ops[1].resultados[1];
+            if dado == 1 and num == max then
+                rollCrit(atk, 1, max);
+            elseif dado == 1 then
+                rollDano(atk, num+1, max);
+            else
+                local rolagem = Firecast.interpretarRolagem(atk[num].dano);
+
+                atk[num].mesa.activeChat:rolarDados(rolagem, "Dano " .. num .. " com " .. atk[num].nome .. " de " .. (sheet.nome or "Veículo"), 
+                    function (rolado)
+                        if num == max then
+                            rollCrit(atk,1,max);
+                        else
+                            rollDano(atk,num+1,max);
+                        end;
+                    end);
+            end;
+        end;
+
+        local function rollAtaque(atk, num, max)
+            local rolagem = Firecast.interpretarRolagem("1d20 + " .. atk[num].bonus);
+
+            atk[num].mesa.activeChat:rolarDados(rolagem, "Ataque " .. num .. " com " .. atk[num].nome .. " de " .. (sheet.nome or "Veículo"), 
+                function (rolado)
+                    atk[num].rolAtk = rolado;
+
+                    if num == max then
+                        rollDano(atk,1,max);
+                    else
+                        rollAtaque(atk,num+1,max);
+                    end;
+                end);
+        end;
+
+        local function prepareAtaque()
+            if sheet.piloto == nil then return end;
+            if sheet==nil then return end;
+
+            local armas = NDB.getChildNodes(sheet.listaAtaqs); 
+            if #armas < 1 then return end;
+            local atk = {};
+            local index = 0;
+            local mesa = Firecast.getMesaDe(sheet);
+
+            local pen = 0;
+            local ataquePen = tonumber(sheet.ataquePen) or 0;
+            if sheet.atkTotal and ataquePen < 0 then
+                pen = ataquePen;
+            elseif not sheet.atkTotal and ataquePen > 0 then
+                pen = ataquePen;
+            end;
+            local des = tonumber(sheet.piloto.efetModDes) or 0;
+
+            local qPen = 0;
+            local qPenDano = "";
+            if sheet.quebrado then
+                qPen = -2;
+                qPenDano = "-2";
+            end;
+
+
+            for i=1, #armas, 1 do
+                if armas[i].ativo then
+                    index = index + 1;
+                    atk[index] = {};
+                    atk[index].mesa = mesa;
+                    atk[index].bonus = (tonumber(armas[i].ataque) or 0) + pen + des + qPen;
+                    atk[index].dano = (armas[i].dano or "1d1") .. qPenDano;
+                    atk[index].nome = armas[i].nome or "arma";
+                    atk[index].margem = tonumber(armas[i].margem) or 20;
+
+                    local ammo = tonumber(armas[i].municao);
+                    if ammo ~= nil then
+                        ammo = ammo -1;
+                        if ammo==0 then
+                            mesa.activeChat:enviarMensagem("Ataque " .. index .. " com " .. atk[index].nome .. " de " .. (sheet.nome or "Veículo") .. " última munição.");
+                        elseif ammo < 0 then
+                            mesa.activeChat:enviarMensagem("Ataque " .. index .. " com " .. atk[index].nome .. " de " .. (sheet.nome or "Veículo") .. " sem munição.");
+                        end;
+                        armas[i].municao = ammo;
+                    end;
+                end;
+            end;
+
+            rollAtaque(atk, 1, index);
+        end;
+
+        function recursiveEnumPersonagensEmBibItem(bibItem, dest, dono)
+            if bibItem.tipo == "personagem" and dono == nil and dono.loginDono == nil then
+                if (bibItem.loginDono ~= nil) and (bibItem.loginDono ~= "") then
+                    dest[#dest + 1] = bibItem;
+                end;
+            elseif bibItem.tipo == "personagem" then
+                if (bibItem.loginDono == dono.loginDono) and (bibItem.codigoInterno ~= dono.codigoInterno) then
+                    dest[#dest + 1] = bibItem;
+                end;
+            else
+                local filhos = bibItem.filhos;
+                
+                for i = 1, #filhos, 1 do
+                    recursiveEnumPersonagensEmBibItem(filhos[i], dest, dono);
+                end;
+            end;
+        end;
+
+        function listAllCharacters()
+            local mesa = Firecast.getMesaDe(sheet);
+            local dono = Firecast.getPersonagemDe(sheet); -- Objeto Personagem
+
+            local personagens = {};
+            recursiveEnumPersonagensEmBibItem(mesa.biblioteca, personagens, dono);
+            
+            table.sort(personagens,
+                function(left, right)
+                    return Utils.compareStringPtBr(left.nome, right.nome) < 0;
+                end);
+                
+            local nomes = {};
+            local valores = {};
+            
+            nomes[1] = "-";
+            valores[1] = "0";
+            
+            for i = 1, #personagens, 1 do
+                nomes[#nomes + 1] = personagens[i].nome;
+                valores[#valores + 1] = tostring(personagens[i].codigoInterno);
+            end;
+            
+            self.cmbPersonagem.items = nomes;
+            self.cmbPersonagem.values = valores;
+
+            if #personagens == 1 then
+                sheet.cmbPersonagem = valores[2];
+                self.cmbPersonagem.text = nomes[2];
+            end;
+        end;
+
+        ]]> 
+    </script>
+
+    <template name="VertLabelEdit">
+        <layout align="left" width="$(width)" margins="{right=5}">
+            <label text="$(text)" width="$(width)" horzTextAlign="leading" fontSize="$(fontSize)"/>
+            <edit top="20" field="$(field)" width="$(width)" height="25"/>
+        </layout>
+    </template> 
+    <template name="VertLabelLabelEdit">
+        <layout align="left" width="$(width)" margins="{right=5}">
+            <label text="$(text)" width="$(width)" horzTextAlign="leading" fontSize="$(fontSize)"/>
+            <rectangle top="20" height="25" width="$(width2)" color="#F0FFFF" strokeColor="black" strokeSize="1">
+                <label align="client" field="$(field)Min" horzTextAlign="center" vertTextAlign="center" format="$(format)"/>
+            </rectangle>
+            <edit left="$(width2)" top="20" field="$(field)Max" width="$(width2)" height="25"/>
+        </layout>
+    </template>
+    <template name="VertLabelLabel">
+        <layout align="left" width="$(width)" margins="{right=5}">
+            <label text="$(text)" width="$(width)" horzTextAlign="leading" fontSize="$(fontSize)"/>
+            <rectangle top="20" height="25" width="$(width)" color="#F0FFFF" strokeColor="black" strokeSize="1">
+                <label align="client" field="$(field)" horzTextAlign="center" vertTextAlign="center" format="$(format)"/>
+            </rectangle>
+        </layout>
+    </template>
+    <template name="VertLabelPop">
+        <layout align="left" width="$(width)" margins="{right=5}">
+            <label text="$(text)" width="$(width2)" horzTextAlign="leading" fontSize="$(fontSize)"/>
+            <button left="$(width2)" width="20" height="20" text="i" onClick="$(onClick)"/>
+            <rectangle top="20" height="25" width="$(width)" color="#F0FFFF" strokeColor="black" strokeSize="1">
+                <label align="client" field="$(field)" horzTextAlign="center" vertTextAlign="center" format="$(format)" formatFloat="$(formatFloat)"/>
+            </rectangle>
+        </layout>
+    </template>
+    <template name="VertLabelCombo">
+        <layout align="left" width="$(width)" margins="{right=5}">
+            <label text="$(text)" width="$(width)" horzTextAlign="leading" fontSize="$(fontSize)"/>
+            <comboBox top="20" field="$(field)" name="$(field)" width="$(width)" height="25" items="$(items)" values="$(values)" fontSize="$(fontSize)"/>
+        </layout>
+    </template>
+    <template name="VertComboButton">
+        <layout align="left" width="$(width)" margins="{right=5}">
+            <label text="$(text)" width="$(width)" horzTextAlign="leading" fontSize="$(fontSize)">
+                <button align="right" width="15" margins="{top=2}" text="o" fontSize="9" onClick="$(onClick)"/>
+            </label>
+            <comboBox top="20" field="$(field)" name="$(field)" width="$(width)" height="25" items="$(items)" values="$(values)" fontSize="$(fontSize)"/>
+        </layout>
+    </template>
+    <template name="HorzLabel">
+        <layout align="left" width="$(widthTotal)" margins="{right=5}">
+            <label align="left" text="$(text)" width="$(width)" horzTextAlign="center" fontSize="$(fontSize)"/>
+            <rectangle align="left" width="$(width2)" color="black" strokeColor="white" strokeSize="1">
+                <label align="client" field="$(field)" horzTextAlign="center" vertTextAlign="center" format="$(format)"/>
+            </rectangle>
+        </layout>
+    </template>
+    <template name="HorzLabelPop">
+        <layout align="left" width="$(widthTotal)" margins="{right=5}">
+            <button align="left" width="20" height="20" text="i" margins="{top=2.5,left=2.5,right=2.5}" onClick="$(onClick)"/>
+            <label align="left" text="$(text)" width="$(width)" horzTextAlign="center" fontSize="$(fontSize)"/>
+            <rectangle align="left" width="$(width2)" color="black" strokeColor="white" strokeSize="1">
+                <label align="client" field="$(field)" horzTextAlign="center" vertTextAlign="center" format="$(format)"/>
+            </rectangle>
+        </layout>
+    </template>
+
+    <popup name="addPop" width="455" height="310" backOpacity="0.4" autoScopeNode="false" padding="{left=5,right=0,top=5,bottom=5}">
+        <layout align="top" height="25">
+            <label align="left" text="Estrutura (PV)" width="210" horzTextAlign="center"/>
+
+            <label align="left" text="CAE" width="70" margins="{right=10}" horzTextAlign="center" />
+            <label align="left" text="CAC" width="70" margins="{right=10}" horzTextAlign="center" />
+            <label align="left" text="Proteção" width="70" horzTextAlign="center" />
+        </layout>
+        <layout align="top" height="50">
+            <VertLabelEdit text="+%" field="pvMult" width="100" fontSize="13"/>
+            <VertLabelEdit text="Fixo" field="pvAdd" width="100" fontSize="13"/>
+
+            <VertLabelEdit text="+%" field="caeMult" width="35" fontSize="11"/>
+            <VertLabelEdit text="Fixo" field="caeAdd" width="35" fontSize="11"/>
+            <VertLabelEdit text="+%" field="cacMult" width="35" fontSize="11"/>
+            <VertLabelEdit text="Fixo" field="cacAdd" width="35" fontSize="11"/>
+            <VertLabelEdit text="+%" field="protMult" width="35" fontSize="11"/>
+            <VertLabelEdit text="Fixo" field="protAdd" width="35" fontSize="11"/>
+        </layout>
+
+        <layout align="top" height="25">
+            <label align="left" text="Modificadores" width="210" horzTextAlign="center"/>
+
+            <label align="left" text="Deslocamento" height="210" horzTextAlign="center" />
+        </layout>
+        <layout align="top" height="50">
+            <VertLabelEdit text="Pilotar" field="pilotarAdd" width="100" fontSize="13"/>
+            <VertLabelEdit text="Ataque" field="ataqueAdd" width="100" fontSize="13"/>
+
+            <VertLabelEdit text="+%" field="deslMult" width="100" fontSize="13"/>
+            <VertLabelEdit text="Fixo (q)" field="deslAdd" width="100" fontSize="13"/>
+        </layout>
+
+        <label align="top" text="Preço" height="25" horzTextAlign="center"/>
+        <layout align="top" height="50">
+            <VertLabelLabel text="Total" field="precoTotal" width="60" fontSize="11" format="%d C"/>
+            <VertLabelEdit text="Level" field="precoPorLevel" width="60" fontSize="11"/>
+            <VertLabelLabel text="" field="precoLevel" width="60" fontSize="11" format="%d C"/>
+            <VertLabelEdit text="Tam" field="precoPorTam" width="60" fontSize="11"/>
+            <VertLabelLabel text="" field="precoTam" width="60" fontSize="11" format="%d C"/>
+            <VertLabelEdit text="Fixo" field="precoAdd" width="60" fontSize="11"/>
+            <VertLabelEdit text="+%" field="precoMult" width="60" fontSize="11"/>
+        </layout>
+
+        <textEditor align="client" field="detalhes"/>
+    </popup>
+    <popup name="costPop" width="325" height="60" backOpacity="0.4" autoScopeNode="false" padding="{left=5,right=0,top=5,bottom=5}">
+        <layout align="top" height="50">
+            <VertLabelEdit text="Base" field="precoBase" width="75" fontSize="11"/>
+            <VertLabelLabel text="Multiplicador" field="precoMult" width="75" fontSize="9" format="%.2f"/>
+            <VertLabelLabel text="Adicionais" field="precoMod" width="75" fontSize="11" format="%d C"/>
+            <VertLabelEdit text="Outros" field="precoOutros" width="75" fontSize="11"/>
+        </layout>
+    </popup>
+    <popup name="deslPop" width="395" height="60" backOpacity="0.4" autoScopeNode="false" padding="{left=5,right=0,top=5,bottom=5}">
+        <layout align="top" height="50">
+            <VertLabelEdit text="Base (q)" field="deslBase" width="60" fontSize="11"/>
+            <VertLabelEdit text="Viagem (Km/h)" field="deslBaseViagem" width="60" fontSize="9"/>
+            <VertLabelLabel text="Multiplicador" field="deslMult" width="60" fontSize="9" format="%.2f"/>
+            <VertLabelLabel text="Adicionais (q)" field="deslAdd" width="60" fontSize="9"/>
+            <VertLabelEdit text="Outros (q)" field="deslOutros" width="60" fontSize="11"/>
+            <VertLabelEdit text="Outros (Km/h)" field="deslOutrosViagem" width="60" fontSize="9"/>
+        </layout>
+    </popup>
+    <popup name="modPop" width="200" height="160" backOpacity="0.4" autoScopeNode="false" padding="{left=5,right=0,top=5,bottom=5}">
+        <label align="top" text="Pilotagem" height="25" horzTextAlign="center"/>
+        <layout align="top" height="50">
+            <VertLabelEdit text="Base" field="pilBase" width="60" fontSize="11"/>
+            <VertLabelLabel text="Adicional" field="pilotarAdd" width="60" fontSize="9"/>
+            <VertLabelEdit text="Outros" field="pilOutros" width="60" fontSize="11"/>
+        </layout>
+        <label align="top" text="Ataque" height="25" horzTextAlign="center"/>
+        <layout align="top" height="50">
+            <VertLabelEdit text="Base" field="atkBase" width="60" fontSize="11"/>
+            <VertLabelLabel text="Adicional" field="ataqueAdd" width="60" fontSize="9"/>
+            <VertLabelEdit text="Outros" field="atkOutros" width="60" fontSize="11"/>
+        </layout>
+    </popup>
+    <popup name="caPop" width="265" height="235" backOpacity="0.4" autoScopeNode="false" padding="{left=5,right=0,top=5,bottom=5}">
+        <label align="top" text="CAE" height="25" horzTextAlign="center"/>
+        <layout align="top" height="50">
+            <VertLabelEdit text="Base" field="caeBase" width="60" fontSize="11"/>
+            <VertLabelLabel text="Adicional" field="caeAdd" width="60" fontSize="9"/>
+            <VertLabelLabel text="Multiplicador" field="caeMult" width="60" fontSize="9"/>
+            <VertLabelEdit text="Outros" field="caeOutros" width="60" fontSize="11"/>
+        </layout>
+        <label align="top" text="CAC" height="25" horzTextAlign="center"/>
+        <layout align="top" height="50">
+            <VertLabelEdit text="Base" field="cacBase" width="60" fontSize="11"/>
+            <VertLabelLabel text="Adicional" field="cacAdd" width="60" fontSize="9"/>
+            <VertLabelLabel text="Multiplicador" field="cacMult" width="60" fontSize="9"/>
+            <VertLabelEdit text="Outros" field="cacOutros" width="60" fontSize="11"/>
+        </layout>
+        <label align="top" text="Proteção" height="25" horzTextAlign="center"/>
+        <layout align="top" height="50">
+            <VertLabelEdit text="Base" field="protBase" width="60" fontSize="11"/>
+            <VertLabelLabel text="Adicional" field="protAdd" width="60" fontSize="9"/>
+            <VertLabelLabel text="Multiplicador" field="protMult" width="60" fontSize="9"/>
+            <VertLabelEdit text="Outros" field="protOutros" width="60" fontSize="11"/>
+        </layout>
+    </popup>
+    <popup name="healthPop" width="370" height="85" backOpacity="0.4" autoScopeNode="false" padding="{left=5,right=0,top=5,bottom=5}">
+        <label align="top" text="Estrutura" height="25" horzTextAlign="center"/>
+        <layout align="top" height="50">
+            <VertLabelEdit text="Base" field="pvBase" width="60" fontSize="11"/>
+            <VertLabelLabel text="Adicional" field="pvAdd" width="60" fontSize="9"/>
+            <VertLabelLabel text="Multiplicador" field="pvMult" width="60" fontSize="9"/>
+            <VertLabelEdit text="Outros" field="pvOutros" width="60" fontSize="11"/>
+            <VertLabelCombo text="Cobertura" field="cobertura" width="100" fontSize="13" items="{'Nenhuma', 'Parcial', 'Completa'}" values="{'25','50','75'}"/>
+        </layout>
+    </popup>
+
+    <tabControl align="client">
+        <tab title="Geral">
+            <scrollBox align="client">
+                <layout height="610"/>
+                <layout align="left" width="765" margins="{bottom=5}">
+                    <layout align="top" height="200" margins="{bottom=5}">
+                        <rectangle align="left" width="200" color="black" strokeColor="white" strokeSize="1" margins="{right=5}">
+                            <image align="client" field="avatarComp" editable="true" style="autoFit">
+                                <event name="OnStartDrag">
+                                    drag:addData("imageURL", sheet.avatarComp);
+                                </event>
+                            </image>
+                        </rectangle>
+
+                        <rectangle align="left" width="210" color="black" strokeColor="white" strokeSize="1" margins="{right=5}">
+                            <layout align="top" height="50">
+                                <layout align="left" width="5"/>
+                                <VertLabelEdit text="Nome" field="nome" width="95" fontSize="13"/>
+                                <VertComboButton text="Piloto" field="cmbPersonagem" width="95" fontSize="13" onClick="listAllCharacters();"/>
+                                <dataLink field="cmbPersonagem">
+                                    <event name="onChange">
+                                        if sheet==nil then return end;
+                                        if tonumber(sheet.cmbPersonagem) == 0 then return end;
+
+                                        local personagem;
+                                        
+                                        local mesa = Firecast.getMesaDe(sheet);
+                                        local dono = Firecast.getPersonagemDe(sheet); -- Objeto Personagem
+
+                                        local personagens = {};
+                                        recursiveEnumPersonagensEmBibItem(mesa.biblioteca, personagens, dono);
+
+                                        for i = 1, #personagens, 1 do
+                                            if personagens[i].codigoInterno == tonumber(sheet.cmbPersonagem) then
+                                                personagem = personagens[i];
+                                            end;
+                                        end;
+                                        if personagem ~= nil then
+                                            personagem:loadSheetNDB(
+                                                function (piloto)
+                                                    sheet.piloto = piloto;
+                                                end);
+                                        end;
+                                    </event>
+                                </dataLink>
+                            </layout>
+                            <layout align="top" height="50">
+                                <layout align="left" width="5"/>
+                                <VertLabelEdit text="Level/Ranque" field="level" width="95" fontSize="13"/>
+                                <VertLabelEdit text="Tipo" field="tipo" width="95" fontSize="13"/>
+                            </layout>
+                            <layout align="top" height="50">
+                                <layout align="left" width="5"/>
+                                <VertLabelPop text="Preço" field="preco" width="95" width2="70" fontSize="13" formatFloat=",0.# C" onClick="findPopup(&quot;costPop&quot;);"/>
+                                <VertLabelCombo text="Tamanho" field="tamanho" width="95" fontSize="13" items="{'Minúsculo', 'Pequeno', 'Médio', 'Grande', 'Enorme', 'Imenso', 'Colossal'}" values="{'1','2','3','4','5','6','7'}"/>
+                            </layout>
+                            <layout align="top" height="50">
+                                <layout align="left" width="5"/>
+                                <VertLabelEdit text="Passageiros" field="passageiros" width="95" fontSize="13"/>
+                                <VertLabelEdit text="Carga" field="carga" width="95" fontSize="13"/>
+                            </layout>
+                        </rectangle>
+
+                        <rectangle align="left" width="340" color="black" strokeColor="white" strokeSize="1" margins="{right=5}" padding="{top=5,bottom=5}">
+                            <layout align="top" height="25">
+                                <HorzLabelPop text="PV" widthTotal="125" width="50" width2="50" fontSize="13" field="pv" onClick="findPopup(&quot;healthPop&quot;);"/>
+                                <HorzLabel text="PE" widthTotal="100" width="50" width2="50" fontSize="13" field="pe"/>
+                                <checkBox align="left" text="Quebrado" field="quebrado"/>
+                            </layout>
+                            <layout align="top" height="25">
+                                <HorzLabelPop text="CAE" widthTotal="125" width="50" width2="50" fontSize="13" field="cae" onClick="findPopup(&quot;caPop&quot;);" format="%d"/>
+                                <HorzLabel text="CAC" widthTotal="100" width="50" width2="50" fontSize="13" field="cac" format="%d"/>
+                                <HorzLabel text="Proteção" widthTotal="100" width="50" width2="50" fontSize="10" field="protecao" format="%d"/>
+                            </layout>
+                            <layout align="top" height="25">
+                                <HorzLabelPop text="Pilotar" widthTotal="125" width="50" width2="50" fontSize="13" field="pilotarPen" onClick="findPopup(&quot;modPop&quot;);"/>
+                                <HorzLabel text="Ataque" widthTotal="100" width="50" width2="50" fontSize="13" field="ataquePen"/>
+                                <checkBox align="left" text="Ataque Mov." field="atkTotal"/>
+                            </layout>
+                            <layout align="top" height="25">
+                                <HorzLabelPop text="Deslocamento" widthTotal="175" width="105" width2="45" fontSize="13" field="deslQuadrados" format="%d q" onClick="findPopup(&quot;deslPop&quot;);"/>
+                                <rectangle align="left" width="50" color="black" strokeColor="white" strokeSize="1" margins="{right=5}">
+                                    <label align="client" field="deslMetros" horzTextAlign="center" vertTextAlign="center" formatFloat="0.# m" fontSize="10"/>
+                                </rectangle>
+                                <rectangle align="left" width="100" color="black" strokeColor="white" strokeSize="1" margins="{right=5}">
+                                    <label align="client" field="deslViagem" horzTextAlign="center" vertTextAlign="center" formatFloat="0.## Km/h" fontSize="11"/>
+                                </rectangle>
+                            </layout>
+                            <textEditor align="client" field="detalhes" margins="{left=5,right=5,top=5}"/>
+                        </rectangle>
+                    </layout>
+                    <layout align="top" height="200" margins="{bottom=5}">
+                        <rectangle align="left" width="380" color="black" strokeColor="white" strokeSize="1" margins="{right=5}" padding="{top=5,bottom=5}">
+                            <layout align="top" height="20">
+                                <button align="left" width="20" height="20" text="+" margins="{left=5}" onClick="self.rclMods:append();"/>
+                                <label align="left" text="Modificações" width="100" margins="{left=5}"/>
+                            </layout>
+                            <recordList name="rclMods" field="listaMods" templateForm="frmVehicleMod" align="client" width="465" margins="{left=5,right=5}" layout="vertical" minQt="1"/>
+                        </rectangle>
+                        <rectangle align="left" width="375" color="black" strokeColor="white" strokeSize="1" margins="{right=5}" padding="{top=5,bottom=5}">
+                            <layout align="top" height="20">
+                                <button align="left" width="20" height="20" text="+" margins="{left=5}" onClick="self.rclEquips:append();"/>
+                                <label align="left" text="Equipamentos" width="100" margins="{left=5}"/>
+                            </layout>
+                            <recordList name="rclEquips" field="listaEquips" templateForm="frmVehicleMod" align="client" width="465" margins="{left=5,right=5}" layout="vertical" minQt="1"/>
+                        </rectangle>
+                    </layout>
+                    <layout align="top" height="200" margins="{bottom=5}">
+                        <rectangle align="client" width="340" color="black" strokeColor="white" strokeSize="1" margins="{right=5}" padding="{top=5,bottom=5}">
+                            <layout align="top" height="20">
+                                <button align="left" width="20" height="20" text="+" margins="{left=5}" onClick="self.rclAtaqs:append();"/>
+                                <label align="left" text="Ataques" width="50" margins="{left=5}"/>
+                                <button align="left" width="20" height="20" text="R" margins="{left=5}" onClick="prepareAtaque();"/>
+
+                                <label align="right" text="Lugar" width="100" margins="{left=0}" horzTextAlign="center"/>
+                                <layout align="right" width="270">
+                                    <label align="right" text="Bônus" width="40" margins="{left=0}" horzTextAlign="center"/>
+                                    <label align="right" text="Dano" width="40" margins="{left=0}" horzTextAlign="center"/>
+                                    <label align="right" text="Crítico" width="40" margins="{left=0}" horzTextAlign="center"/>
+                                    <label align="right" text="Mult." width="40" margins="{left=0}" horzTextAlign="center"/>
+                                    <label align="right" text="Alcance" width="40" margins="{left=0}" fontSize="9" horzTextAlign="center"/>
+                                    <label align="right" text="Munição" width="40" margins="{left=0,right=30}" fontSize="9" horzTextAlign="center"/>
+                                </layout>
+                            </layout>
+                            <recordList name="rclAtaqs" field="listaAtaqs" templateForm="frmVehicleArma" align="client" width="465" margins="{left=5,right=5}" layout="vertical" minQt="1"/>
+                        </rectangle>
+                    </layout>
+                </layout>
+                <layout align="left" width="500" margins="{bottom=5}">
+                    <layout align="top" height="405" margins="{bottom=5}">
+                        <rectangle align="client" width="340" color="black" strokeColor="white" strokeSize="1" margins="{right=5}" padding="{top=5,bottom=5}">
+                            <textEditor align="client" field="anotacoes" margins="{left=5,right=5}"/>
+                        </rectangle>
+                    </layout>
+                    <layout align="top" height="200" margins="{bottom=5}">
+                        <rectangle align="client" width="340" color="black" strokeColor="white" strokeSize="1" margins="{right=5}" padding="{top=5,bottom=5}">
+                            <layout align="top" height="20">
+                                <button align="left" width="20" height="20" text="+" margins="{left=5}" onClick="self.rclInv:append();"/>
+                                <label align="left" text="Inventario" width="100" margins="{left=5}"/>
+                            </layout>
+                            <layout align="bottom" height="20" margins="{top=5}">
+                                <label left="5" top="0" width="50" height="20" text="Vol"/>
+                                <rectangle left="25" top="0" width="70" height="20" color="black" strokeColor="white" strokeSize="1"/>
+                                <label vertTextAlign="center" horzTextAlign="center" left="25" top="0" width="70" height="20" field="pesoInv" formatFloat=",0.##"/>
+                                <label left="105" top="0" width="50" height="20" text="$"/>
+                                <rectangle left="120" top="0" width="91" height="20" color="black" strokeColor="white" strokeSize="1"/>
+                                <label vertTextAlign="center" horzTextAlign="center" left="120" top="0" width="91" height="20" field="precoInv"  formatFloat=",0.## C"/>
+                            </layout>
+
+                            <recordList name="rclInv" field="listaInv" templateForm="frmVehicleItem" align="client" width="465" margins="{left=5,right=5}" layout="vertical" minQt="1"/>
+                        </rectangle>
+                    </layout>
+                </layout>
+            </scrollBox>
+        </tab>
+        <tab title="Anotações">
+            <import file="../FichaStarfinder/10.Anotacoes.xml"/>
+        </tab>
+        <tab title="Creditos">
+            <import file="../FichaStarfinder/11.Creditos.xml"/>
+        </tab>
+    </tabControl>
+
+    <dataLink field="level">
+        <event name="onChange">
+            if sheet==nil then return end;
+
+            local level = tonumber(sheet.level) or 0;
+
+            local nodes = NDB.getChildNodes(sheet.listaMods); 
+            for i=1, #nodes, 1 do
+                nodes[i].level = level;
+            end;
+            nodes = NDB.getChildNodes(sheet.listaEquips); 
+            for i=1, #nodes, 1 do
+                nodes[i].level = level;
+            end
+        </event>
+    </dataLink>
+
+    <dataLink field="tamanho">
+        <event name="onChange">
+            if sheet==nil then return end;
+
+            local tamanho = tonumber(sheet.tamanho) or 0;
+
+            local nodes = NDB.getChildNodes(sheet.listaMods); 
+            for i=1, #nodes, 1 do
+                nodes[i].tamanho = tamanho;
+            end;
+            nodes = NDB.getChildNodes(sheet.listaEquips); 
+            for i=1, #nodes, 1 do
+                nodes[i].tamanho = tamanho;
+            end
+        </event>
+    </dataLink>
+
+    <dataLink fields="{'precoBase','precoMult','precoMod','precoOutros','level'}">
+        <event name="onChange">
+            if sheet==nil then return end;
+
+            local level = tonumber(sheet.level) or 1;
+            local precoBase = tonumber(sheet.precoBase) or 0;
+            local precoMult = tonumber(sheet.precoMult) or 1;
+            local precoMod = tonumber(sheet.precoMod) or 0;
+            local precoOutros = tonumber(sheet.precoOutros) or 0;
+
+            sheet.preco = level * precoBase * precoMult + precoMod + precoOutros;
+        </event>
+    </dataLink>
+
+    <dataLink fields="{'deslBase','deslBaseViagem','deslAdd','deslMult','deslOutros','deslOutrosViagem','quebrado'}">
+        <event name="onChange">
+            if sheet==nil then return end;
+
+            local deslBase = tonumber(sheet.deslBase) or 0;
+            local deslBaseViagem = tonumber(sheet.deslBaseViagem) or 0;
+            local deslAdd = tonumber(sheet.deslAdd) or 0;
+            local deslMult = tonumber(sheet.deslMult) or 1;
+            local deslOutros = tonumber(sheet.deslOutros) or 0;
+            local deslOutrosViagem = tonumber(sheet.deslOutrosViagem) or 0;
+
+            if sheet.quebrado then deslMult = deslMult * 0.5 end;
+
+            local desl = math.floor((deslBase + deslAdd) * deslMult + deslOutros);
+            sheet.deslQuadrados = desl;
+            sheet.deslMetros = desl * 1.5;
+            sheet.deslViagem = deslBaseViagem * deslMult + deslOutrosViagem;
+        </event>
+    </dataLink>
+
+    <dataLink fields="{'pilBase','pilotarAdd','pilOutros','quebrado'}">
+        <event name="onChange">
+            if sheet==nil then return end;
+
+            local pilBase = tonumber(sheet.pilBase) or 0;
+            local pilotarAdd = tonumber(sheet.pilotarAdd) or 0;
+            local pilOutros = tonumber(sheet.pilOutros) or 0;
+
+            local pen = 0;
+            if sheet.quebrado then pen = -2 end;
+
+            sheet.pilotarPen = pilBase + pilotarAdd + pilOutros + pen;
+        </event>
+    </dataLink>
+
+    <dataLink fields="{'atkBase','ataqueAdd','atkOutros'}">
+        <event name="onChange">
+            if sheet==nil then return end;
+
+            local atkBase = tonumber(sheet.atkBase) or 0;
+            local ataqueAdd = tonumber(sheet.ataqueAdd) or 0;
+            local atkOutros = tonumber(sheet.atkOutros) or 0;
+
+            sheet.ataquePen = atkBase + ataqueAdd + atkOutros;
+        </event>
+    </dataLink>
+
+    <dataLink fields="{'caeBase','caeAdd','caeMult','caeOutros','quebrado'}">
+        <event name="onChange">
+            if sheet==nil then return end;
+
+            local caeBase = tonumber(sheet.caeBase) or 0;
+            local caeAdd = tonumber(sheet.caeAdd) or 0;
+            local caeMult = tonumber(sheet.caeMult) or 1;
+            local caeOutros = tonumber(sheet.caeOutros) or 0;
+
+            if sheet.quebrado then caeMult = caeMult * 0.5 end;
+
+            sheet.cae = math.floor((caeBase + caeAdd) * caeMult + caeOutros);
+        </event>
+    </dataLink>
+    <dataLink fields="{'cacBase','cacAdd','cacMult','cacOutros','quebrado'}">
+        <event name="onChange">
+            if sheet==nil then return end;
+
+            local cacBase = tonumber(sheet.cacBase) or 0;
+            local cacAdd = tonumber(sheet.cacAdd) or 0;
+            local cacMult = tonumber(sheet.cacMult) or 1;
+            local cacOutros = tonumber(sheet.cacOutros) or 0;
+
+            if sheet.quebrado then cacMult = cacMult * 0.5 end;
+
+            sheet.cac = math.floor((cacBase + cacAdd) * cacMult + cacOutros);
+        </event>
+    </dataLink>
+    <dataLink fields="{'protBase','protAdd','protMult','protOutros','quebrado'}">
+        <event name="onChange">
+            if sheet==nil then return end;
+
+            local protBase = tonumber(sheet.protBase) or 0;
+            local protAdd = tonumber(sheet.protAdd) or 0;
+            local protMult = tonumber(sheet.protMult) or 1;
+            local protOutros = tonumber(sheet.protOutros) or 0;
+
+            if sheet.quebrado then protMult = protMult * 0.5 end;
+
+            sheet.protecao = math.floor((protBase + protAdd) * protMult + protOutros);
+        </event>
+    </dataLink>
+
+    <dataLink fields="{'pvBase','pvAdd','pvMult','pvOutros','cobertura'}">
+        <event name="onChange">
+            if sheet==nil then return end;
+
+            local pvBase = tonumber(sheet.pvBase) or 0;
+            local pvAdd = tonumber(sheet.pvAdd) or 0;
+            local pvMult = tonumber(sheet.pvMult) or 1;
+            local pvOutros = tonumber(sheet.pvOutros) or 0;
+            local cobertura = tonumber(sheet.cobertura) or 25;
+
+            local total = math.floor((pvBase + pvAdd) * pvMult + pvOutros);
+
+            local pv = math.floor(total * (100-cobertura) / 100)
+            sheet.pv = pv;
+            sheet.pe = total - pv;
+        </event>
+    </dataLink>
+    <event name="onNodeReady">
+        Internet.download("https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20Starfinder/output/Ficha%20Starfinder.rpk?raw=true",
+            function(stream, contentType)
+                local info = Firecast.Plugins.getRPKDetails(stream);
+                sheet.versionDownloaded = "VERSÃO DISPONÍVEL: " .. info.version;
+
+                local installed = Firecast.Plugins.getInstalledPlugins();
+                local myself;
+                for i=1, #installed, 1 do
+                    if installed[i].moduleId == info.moduleId then
+                        myself = installed[i];
+                        sheet.versionInstalled = "VERSÃO INSTALADA: " .. installed[i].version;
+                    end;
+                end;
+
+                if sheet.noUpdate==true then return end;
+                if myself~= nil and isNewVersion(myself.version, info.version) then
+                    Dialogs.choose("Há uma nova versão(" .. info.version .. ") da Ficha Pathfinder. Deseja instalar?",{"Sim", "Não", "Não perguntar novamente."},
+                        function(selected, selectedIndex, selectedText)
+                            if selected and selectedIndex == 1 then
+                                GUI.openInBrowser('https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20Pathfinder/output/Ficha%20Pathfinder.rpk?raw=true');
+                            elseif selected and selectedIndex == 3 then
+                                sheet.noUpdate = true;
+                            end;
+                        end);
+                end;
+            end,       
+            function (errorMsg)
+                --showMessage(errorMsg);
+            end,       
+            function (downloaded, total)
+                -- esta função será chamada constantemente.
+                -- dividir "downloaded" por "total" lhe dará uma porcentagem do download.
+            end,
+            "checkForModification");
+    </event>
+    <event name="onNodeReady">
+        listAllCharacters();
+    </event>
+</form>

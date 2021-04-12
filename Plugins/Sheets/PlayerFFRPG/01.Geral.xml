@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmGeneral" align="client" theme="dark" margins="{top=1}">
+	<layout left="000" top="000" height="650" width="1100">
+		<image left="000" top="000" height="650" width="1100" src="/img/wallpaper.png" style="autoFIT" />
+		</layout>
+		
+	<layout left="40" top="010" height="260" width="400">
+		<label left="000" top="000" height="20" width="60" text="Nome" autoSize="true" fontStyle="bold" fontSize = "16"/>
+		<edit left="065" top="000" height="20" width="270" field="baseName" horzTextAlign="center" />
+		<label left="000" top="025" height="20" width="50" text="Raça" autoSize="true" fontStyle="bold" fontSize = "16"/>
+		<edit left="065" top="025" height="20" width="270" field="baseRace" horzTextAlign="center" />
+		<label left="000" top="050" height="20" width="60" text="Classe" autoSize="true" fontStyle="bold" fontSize = "16"/>
+		<edit left="065" top="050" height="20" width="100" field="baseClass" horzTextAlign="center" />
+		<label left="180" top="050" height="20" width="50" text="Job" autoSize="true" fontStyle="bold" fontSize = "16"/>
+		<edit left="235" top="050" height="20" width="100" field="baseJob" horzTextAlign="center" />
+		<label left="000" top="075" height="20" width="60" text="Gênero" autoSize="true" fontStyle="bold" fontSize = "16"/>
+		<edit left="065" top="075" height="20" width="100" field="baseSex" horzTextAlign="center" />
+		<label left="180" top="075" height="20" width="50" text="Idade" autoSize="true" fontStyle="bold" fontSize = "16"/>
+		<edit left="235" top="075" height="20" width="100" field="baseAge" horzTextAlign="center" />
+		<label left="000" top="100" height="20" width="60" text="Sangue" autoSize="true" fontStyle="bold" fontSize = "16"/>
+		<edit left="065" top="100" height="20" width="100" field="baseBlood" horzTextAlign="center" />
+		<label left="180" top="100" height="20" width="50" text="Signo" autoSize="true" fontStyle="bold" fontSize = "16"/>
+		<edit left="235" top="100" height="20" width="100" field="baseZodiac" horzTextAlign="center" />
+		<label left="000" top="125" height="20" width="60" text="Altura" autoSize="true" fontStyle="bold" fontSize = "16"/>
+		<edit left="065" top="125" height="20" width="100" field="baseHeight" horzTextAlign="center" />
+		<label left="180" top="125" height="20" width="50" text="Peso" autoSize="true" fontStyle="bold" fontSize = "16"/>
+		<edit left="235" top="125" height="20" width="100" field="baseWeight" horzTextAlign="center" />
+		<label left="000" top="150" height="20" width="60" text="Nível" autoSize="true" fontStyle="bold" fontSize = "16"/>
+		<edit left="065" top="150" height="20" width="100" field="basLV" horzTextAlign="center" type="number"/>
+		<label left="180" top="150" height="20" width="50" text="EXP" autoSize="true" fontStyle="bold" fontSize = "16"/>
+		<edit left="235" top="150" height="20" width="45" field="baseEXP" horzTextAlign="center" type="number" />
+		<label left="282" top="150" height="20" width="8" text="/" autoSize="true" />
+		<edit left="290" top="150" height="20" width="45" field="baseEXPLUP" horzTextAlign="center" />			
+		</layout>
+	
+	<layout left="380" top="60" height="200" width="320">
+		<label left="080" top="000" height="20" width="90" text="Gil Atual" horzTextAlign="center" autoSize="true" fontStyle="bold" fontSize = "16"/>
+		<edit left="175" top="000" height="20" width="60" field="basGIL" horzTextAlign="center" type="number"  fontSize = "14"/>
+		<button left="080" top="025" height="20" width="90" text="Add Gil" fontStyle="bold" fontSize = "16">
+			<event name="onClick">
+				if sheet == nil then 
+					return 
+					end;
+				local MoneyAtu = tonumber(sheet.basGIL) or 0
+				local MoneyMult = tonumber(sheet.MoneyModifier) or 1
+				local MoneyAdd = tonumber(sheet.addGIL) or 0
+				if (0 > MoneyAdd) then
+					MoneyMult = 1;
+					end
+				local MoneyDiff = math.floor(MoneyAdd*MoneyMult)
+				sheet.basGIL = MoneyAtu + MoneyDiff;
+				</event>
+			</button>
+		<edit left="175" top="025" height="20" width="60" field="addGIL" horzTextAlign="center" type="number"/>			
+		<radioButton left="000" top="050" height="20" width="60" text ="0%" groupName="grupoMoney" field="MoneyModifier" fieldValue="1" fontStyle="bold"/>                                
+		<radioButton left="065" top="050" height="20" width="60" text ="5%" groupName="grupoMoney" field="MoneyModifier" fieldValue="1.05" fontStyle="bold"/>                                 
+		<radioButton left="130" top="050" height="20" width="60" text ="10%" groupName="grupoMoney" field="MoneyModifier" fieldValue="1.1" fontStyle="bold"/>
+		<radioButton left="195" top="050" height="20" width="60" text ="15%" groupName="grupoMoney" field="MoneyModifier" fieldValue="1.15" fontStyle="bold"/>
+		<radioButton left="260" top="050" height="20" width="60" text ="20%" groupName="grupoMoney" field="MoneyModifier" fieldValue="1.20" fontStyle="bold"/>
+		<radioButton left="000" top="075" height="20" width="60" text ="-5%" groupName="grupoMoney" field="MoneyModifier" fieldValue="0.95" fontStyle="bold"/>
+		<radioButton left="065" top="075" height="20" width="60" text ="-10%" groupName="grupoMoney" field="MoneyModifier" fieldValue="0.9" fontStyle="bold"/>
+		<radioButton left="130" top="075" height="20" width="60" text="-15%" groupName="grupoMoney" field="MoneyModifier" fieldValue="0.85" fontStyle="bold"/>
+		<radioButton left="195" top="075" height="20" width="60" text="-20%" groupName="grupoMoney" field="MoneyModifier" fieldValue="0.8" fontStyle="bold"/>	
+		<radioButton left="260" top="075" height="20" width="60" text ="-25%" groupName="grupoMoney" field="MoneyModifier" fieldValue="0.75" fontStyle="bold"/>	
+		<dataLink field="MoneyModifier" defaultValue="1" />	
+		</layout>				
+
+	<layout left="460" top="195" height="200" width="145">
+		<label left="035" top="000" height="20" width="40" text="Atual" autoSize="true" fontStyle="bold" horzTextAlign="center"/>
+		<label left="085" top="000" height="20" width="40" text="Máx" autoSize="true" fontStyle="bold" horzTextAlign="center"/>
+		<campoAtuMax Top="025" Name="HP" Field1 = "basHPAtual" Field2="basHPMax"/>
+		<campoAtuMax Top="050" Name="MP" Field1 = "basMPAtual" Field2="basMPMax"/>
+		</layout>
+
+	<layout left="420" top="270" height="200" width="300">	
+		<label left="000" top="000" height="20" width="70" text="Cura" autoSize="true" fontStyle="bold" fontSize = "16" horzTextAlign="center"/>
+		<edit left="095" top="000" height="20" width="50" field="curVAL" horzTextAlign="center" />
+		<button left="170" top="000" height="20" width="70" text="Receber" horzTextAlign="center">
+			<event name="onClick">
+				if sheet == nil then 
+					return 
+					end;
+				local mesa = Firecast.getMesaDe(sheet);
+				local NomePers = sheet.baseName or "Personagem"
+				local HPAtual = tonumber(sheet.basHPAtual) or 0;
+				local HPMax = tonumber(sheet.basHPMax) or 0;
+				local HPCur = tonumber(sheet.curVAL) or 0;
+				local HPNew = HPAtual + HPCur;
+				if (HPNew > HPMax) then
+					HPNew = HPMax
+					end
+				if (0 >= HPAtual) then
+					showMessage("O personagem está nocauteado, magias de cura não o afetam!")
+					end
+				if (HPAtual > 0) then
+					sheet.basHPAtual = HPNew;
+					mesa.activeChat:enviarMensagem("[§K14][§B]" .. NomePers .. "[§B] recuperou [§B][§K3]" .. HPCur .. "[§K14][§B] de vida (" .. HPNew .. "/" .. HPMax .. ")")
+					end
+				</event>
+			</button>
+		<label left="000" top="025" height="20" width="70" text="Dano" autoSize="true" fontStyle="bold" fontSize = "16" horzTextAlign="center"/>
+		<edit left="095" top="025" height="20" width="50" field="danVAL" horzTextAlign="center" />
+		<button left="170" top="025" height="20" width="70" text="Receber" horzTextAlign="center" >
+			<event name="onClick">
+				if sheet == nil then 
+					return 
+					end;
+				local mesa = Firecast.getMesaDe(sheet);
+				local NomePers = sheet.baseName or "Personagem"
+				local HPAtual = tonumber(sheet.basHPAtual) or 0;
+				local HPMax = tonumber(sheet.basHPMax) or 0;
+				local BEFORE = sheet.danRES or "1";
+				local REDUCE = sheet.danARM or "3";
+				local AFTER = sheet.danAFT or "1";
+				local HPPer = tonumber(sheet.danVAL) or 0;
+				local ARMOR = tonumber(sheet.valARM) or 0;
+				local MARMOR = tonumber(sheet.valMARM) or 0;
+				local MSG = "";
+				if (BEFORE == "2") then
+					HPPer = math.floor(HPPer*0.5)
+					elseif (BEFORE == "3") then
+						HPPer = math.floor(HPPer*0.25)
+					end
+				if (REDUCE == "1") then
+					HPPer = HPPer - ARMOR;
+					MSG ="[ARM]"
+					elseif (REDUCE == "2") then
+						HPPer = HPPer - math.floor(ARMOR/2);
+						MSG ="[ARM/2]"
+					elseif (REDUCE == "3") then
+						HPPer = HPPer - MARMOR;
+						MSG ="[ARMM]"
+					elseif (REDUCE == "4") then
+						HPPer = HPPer - math.floor(MARMOR/2);
+						MSG ="[ARMM/2]"
+					end
+				if (AFTER == "2") then
+					HPPer = math.floor(HPPer*0.5)
+					elseif (AFTER == "3") then
+						HPPer = math.floor(HPPer*0.75)
+					end
+				local HPNew = HPAtual - HPPer;
+				if (0 > HPNew) then
+					HPNew = 0
+					end
+				if (HPAtual > 0) then
+					sheet.basHPAtual = HPNew;
+					mesa.activeChat:enviarMensagem("[§K14][§B]" .. NomePers .. "[§B] recebeu [§B][§K4]" .. HPPer .. "[§K14][§B] de dano " .. MSG .. " (" .. HPNew .. "/" .. HPMax .. ")")
+					end
+				</event>
+			</button>
+		<comboBox left="000" top="050" height="20" width="70" field="danRES" horzTextAlign="leading" items="{'0%','-50%','-75%'}" values="{'1','2','3'}" hint="Exclusivo para Resistência Elemental, Guardião ou ambos"/>
+		<comboBox left="170" top="050" height="20" width="70" field="danAFT" horzTextAlign="leading" items="{'0%','-50%'}" values="{'1','2'}" hint="Exclusivo para Shell ou Protect"/>
+		<comboBox left="075" top="050" height="20" width="90" field="danARM" horzTextAlign="leading" items="{'-ARM','-ARM/2','-ARMM','-ARMM/2','True'}" values="{'1','2','3','4','5'}"/>
+		<dataLink field="danBEF" defaultValue="1" />	
+		<dataLink field="danARM" defaultValue="3" />	
+		<dataLink field="danRES" defaultValue="1" />			
+		</layout>
+			
+	<layout left="50" top="220" height="220" width="325">
+		<label left="000" top="000" height="20" width="60" text="Atributo" autoSize="true" fontStyle="bold" />
+		<label left="055" top="000" height="20" width="40" text="Base" autoSize="true" horzTextAlign="center" fontStyle="bold"/>
+		<label left="100" top="000" height="20" width="40" text="Bonus" autoSize="true" horzTextAlign="center" fontStyle="bold"/>
+		<label left="145" top="000" height="20" width="40" text="Total" autoSize="true" horzTextAlign="center" fontStyle="bold"/>
+		<label left="190" top="000" height="20" width="40" text="Máx" autoSize="true" horzTextAlign="center" fontStyle="bold"/>
+		<label left="235" top="000" height="20" width="40" text="Teste" autoSize="true" horzTextAlign="center" fontStyle="bold"/>
+		<label left="275" top="000" height="20" width="50" text="Padrão" autoSize="true" horzTextAlign="center" fontStyle="bold"/>
+		<Atributo Top = "025" Name="FOR" Field="STR"/>		
+		<Atributo Top = "050" Name="VIT" Field="VIT"/>					
+		<Atributo Top = "075" Name="AGI" Field="AGI"/>				
+		<Atributo Top = "100" Name="VEL" Field="SPD"/>					
+		<Atributo Top = "125" Name="MAG" Field="MAG"/>					
+		<Atributo Top = "150" Name="ESP" Field="SPR"/>						
+		<edit left="060" top="175" height="20" width="30" field="sumATT" horzTextAlign="center" />
+		<label left="095" top="175" height="20" width="10" text="/" autoSize="true" />
+		<edit left="105" top="175" height="20" width="30" field="theATT" horzTextAlign="center" />
+		</layout>	
+			
+	<layout left="700" top="10" height="512" width="512">
+		<rectangle left="000" top="000" width="360" height="360" color="black" strokeColor="white" strokeSize="1" />
+		<image left="001" top="001" width="358" height="358" field="basIMG" editable="true" style="proportional" />
+		</layout>
+	
+	<layout left="395" top="375" height="225" width="230">
+		<label left="70" top="00" height="20" width="40" text="Tot." autoSize="true" fontStyle="bold" horzTextAlign="center"/>
+		<label left="115" top="00" height="20" width="40" text="Bôn." autoSize="true" fontStyle="bold" horzTextAlign="center"/>
+		<campoAtuBonMax Top="025" Name="EVA." Field1="valEVA" Field2="bonEVA"/>
+		<campoAtuBonMax Top="050" Name="EVA.M." Field1="valMEVA" Field2="bonMEVA"/>
+		</layout>
+		
+	<layout left="555" top="375" height="225" width="230">
+		<label left="70" top="00" height="20" width="40" text="Tot." autoSize="true" fontStyle="bold" horzTextAlign="center"/>
+		<label left="00" top="025" height="20" width="65" text="ARM." autoSize="true" fontStyle="bold" fontSize = "16"/>
+		<edit left="70" top="025" height="20" width="40" field="valARM" horzTextAlign="center" enabled="false"/>
+		<label left="00" top="050" height="20" width="65" text="ARM.M." autoSize="true" fontStyle="bold" fontSize = "16"/>
+		<edit left="70" top="050" height="20" width="40" field="valMARM" horzTextAlign="center" enabled="false"/>	
+		</layout>
+		
+	<layout left="760" top="375" height="225" width="245">
+		<label left="115" top="030" height="20" width="40" text="Base" autoSize="true" fontStyle="bold" horzTextAlign="center"/>
+		<label left="160" top="030" height="20" width="40" text="Bônus" autoSize="true" fontStyle="bold" horzTextAlign="center"/>
+		<label left="205" top="030" height="20" width="40" text="Atual" autoSize="true" fontStyle="bold" horzTextAlign="center"/>				
+		<AttSec Top="050" Name="Precisão" Field="ACC"/>
+		<AttSec Top="075" Name="Prec. Mágica" Field="MACC"/>
+		<AttSec Top="100" Name="Destreza" Field="DEX"/>
+		<AttSec Top="125" Name="Mente" Field="MND"/>
+		<AttSec Top="150" Name="Expert" Field="EXP"/>
+		<comboBox left="000" top="175" height="20" width="110" field="attEXP" horzTextAlign="center" items="{'Agilidade' , 'Magia' , 'Espírito',''}" values="{'1','2','3','4'}" />
+		<comboBox left="115" top="175" height="20" width="130" field="perEXP" horzTextAlign="center" items="{'Alquimia' , 'Atuação', 'Canto' , 'Dança', 'Etiqueta', 'Invenção', 'Jogos', 'Lábia', 'Punga', 'Sobrevivência',''}" values="{'Alquimia' , 'Atuação', 'Canto' , 'Dança', 'Etiqueta', 'Invenção', 'Jogos', 'Lábia', 'Punga', 'Sobrevivência',''}" />
+		</layout>
+        
+	<layout left="80" top="475" height="100" width="600">
+		<checkBox left="000" top="000" height="20" width="115" text="Agility Up" field="statAGIUP" fontStyle="bold" fontSize = "14"/>
+		<checkBox left="000" top="025" height="20" width="115" text="Agility Down" field="statAGIDOWN" fontStyle="bold" fontSize = "14"/>
+		<checkBox left="000" top="050" height="20" width="115" text="Agility Break" field="statAGIBREAK" fontStyle="bold" fontSize = "14"/>				
+		<checkBox left="000" top="075" height="20" width="115" text="Blink" field="statBLINK" fontStyle="bold" fontSize = "14"/>
+		<checkBox left="120" top="000" height="20" width="115" text="Spirit Up" field="statSPIUP" fontStyle="bold" fontSize = "14"/>
+		<checkBox left="120" top="025" height="20" width="115" text="Spirit Down" field="statSPIDOWN" fontStyle="bold" fontSize = "14"/>
+		<checkBox left="120" top="050" height="20" width="115" text="Spirit Break" field="statSPIBREAK" fontStyle="bold" fontSize = "14"/>
+		<checkBox left="120" top="075" height="20" width="115" text="Ruse" field="statRUSE" fontStyle="bold" fontSize = "14"/>
+		<checkBox left="240" top="000" height="20" width="115" text="Armor Up" field="statARMUP" fontStyle="bold" fontSize = "14"/>
+		<checkBox left="240" top="025" height="20" width="115" text="Armor Down" field="statARMDOWN" fontStyle="bold" fontSize = "14"/>
+		<checkBox left="240" top="050" height="20" width="115" text="Armor Break" field="statARMBREAK" fontStyle="bold" fontSize = "14"/>
+		<checkBox left="240" top="075" height="20" width="115" text="Mini" field="statMINI" fontStyle="bold" fontSize = "14"/>
+		<checkBox left="360" top="000" height="20" width="115" text="Mental Up" field="statMENUP" fontStyle="bold" fontSize = "14"/>
+		<checkBox left="360" top="025" height="20" width="115" text="Mental Down" field="statMENDOWN" fontStyle="bold" fontSize = "14"/>
+		<checkBox left="360" top="050" height="20" width="115" text="Mental Break" field="statMENBREAK" fontStyle="bold" fontSize = "14"/>
+		<checkBox left="360" top="075" height="20" width="115" text="Toad" field="statTOAD" fontStyle="bold" fontSize = "14"/>
+		<checkBox left="480" top="075" height="20" width="115" text="Immobilize" field="statIMMOBILIZE" fontStyle="bold" fontSize = "14"/>
+		<checkBox left="480" top="050" height="20" width="115" text="Lock" field="statLOCK" fontStyle="bold" fontSize = "14"/>
+		<checkBox left="480" top="025" height="20" width="115" text="Blind" field="statBLIND" fontStyle="bold" fontSize = "14"/>
+		<checkBox left="480" top="000" height="20" width="115" text="Dano Fácil" field="statSQUISHY" fontStyle="bold" fontSize = "14"/>
+		</layout>
+	
+	</form>

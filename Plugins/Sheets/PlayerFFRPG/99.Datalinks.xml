@@ -1,0 +1,1095 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmDatalinks" align="client" theme="dark" margins="{top=1}">
+
+    <dataLink fields="{'totSTR', 'totVIT', 'totAGI', 'totSPD', 'totMAG', 'totSPR', 'basLV', 'statAGIUP', 'statAGIDOWN', 'statAGIBREAK', 'statBLINK', 'statIMMOBILIZE',
+		'statSPIUP', 'statSPIDOWN', 'statSPIBREAK', 'statARMUP', 'statARMDOWN', 'statARMBREAK', 'statMENUP', 'statMENDOWN', 'statMENBREAK', 'statTOAD', 'statMINI',
+		'basHPDADO', 'basMPDADO', 'basHPEXT', 'basMPEXT', 'basHPBON', 'basMPBON', 'bonACC', 'bonMACC', 'bonDEX', 'bonMND', 'ponATK', 'statLOCK',
+		'eqHEDARM', 'eqHEDMARM', 'eqHEDEVA', 'eqHEDMEVA', 'eqBDYARM', 'eqBDYMARM', 'eqBDYEVA', 'eqBDYMEVA', 'eqARMARM', 'eqARMMARM', 'eqARMEVA', 'eqARMMEVA',
+		'eqESCEVA', 'eqESCMEVA', 'eqACC1EVA', 'eqACC1MEVA', 'eqACC2EVA', 'eqACC2MEVA', 'statRUSE', 'fieldArma', 'statBLIND', 'statSQUISHY',
+		'bonEXP', 'attEXP', 'perEXP','bonEVA','bonMEVA'}">
+	
+		<event name="onChange">
+			local Nivel = tonumber(sheet.basLV) or 1;
+			local ValVIT = tonumber(sheet.totVIT) or 0;
+			local ValAGI = tonumber(sheet.totAGI) or 0;
+			local ValVEL = tonumber(sheet.totSPD) or 0;
+			local ValMAG = tonumber(sheet.totMAG) or 0;
+			local ValESP = tonumber(sheet.totSPR) or 0;
+			local BonCla = tonumber(sheet.ponATK) or 0;
+			local BonPre = tonumber(sheet.bonACC) or 0;
+			local BonPrM = tonumber(sheet.bonMACC) or 0;
+			local BonDEX = tonumber(sheet.bonDEX) or 0;
+			local BonMND = tonumber(sheet.bonMND) or 0;
+			local BonEXP = tonumber(sheet.bonEXP) or 0;
+			local Status = {}
+			Status.AGIUP = sheet.statAGIUP or false;
+			Status.AGIDO = sheet.statAGIDOWN or false;
+			Status.AGIBR = sheet.statAGIBREAK or false;
+			Status.BLIND = sheet.statBLIND or false;
+			Status.SPIUP = sheet.statSPIUP or false;
+			Status.SPIDO = sheet.statSPIDOWN or false;
+			Status.SPIBR = sheet.statSPIBREAK or false;
+			Status.IMMOB = sheet.statIMMOBILIZE or false;
+			Status.BLINK = sheet.statBLINK or false;
+			Status.RUSE = sheet.statRUSE or false;
+			Status.LOCK = sheet.statLOCK or false;
+			Status.ARMUP = sheet.statARMUP or false;
+			Status.ARMDO = sheet.statARMDOWN or false;
+			Status.ARMBR = sheet.statARMBREAK or false;
+			Status.MENUP = sheet.statMENUP or false;
+			Status.MENDO = sheet.statMENDOWN or false;
+			Status.MENBR = sheet.statMENBREAK or false;
+			Status.TOAD = sheet.statTOAD or false;
+			Status.MINI = sheet.statMINI or false;
+			Status.SQUI = sheet.statSQUISHY or false;
+			local Mod_VIT = ((ValVIT+1)/2)*0.05;
+			local Mod_ESP = ((ValESP+1)/2)*0.05;
+			local ACC_MOD = 1;
+			local MACC_MOD = 1;
+			local EVA_MOD = 1;
+			local MEVA_MOD = 1;
+			local ARM_MOD = 1 + Mod_VIT;
+			local MARM_MOD = 1 + Mod_ESP;
+			local Bon_Blink = 0;
+			local Bon_Lock = 0;	
+			local Bon_Ruse = 0;		
+			if (Status.AGIUP)	then	
+				ACC_MOD = ACC_MOD +0.25;
+				EVA_MOD = EVA_MOD +0.25;
+				end
+			if (Status.AGIDO)	then	
+				ACC_MOD = ACC_MOD -0.25;
+				EVA_MOD = EVA_MOD -0.25;
+				end
+			if (Status.AGIBR)	then	
+				ACC_MOD = ACC_MOD -0.5;
+				EVA_MOD = EVA_MOD -0.5;
+				end			
+			if (Status.BLIND)	then	
+				ACC_MOD = ACC_MOD -0.5;
+				end	
+			if (Status.SPIUP) then
+				MACC_MOD = MACC_MOD +0.25;
+				MEVA_MOD = MEVA_MOD +0.25;
+				end
+			if (Status.SPIDO) then
+				MACC_MOD = MACC_MOD -0.25;
+				MEVA_MOD = MEVA_MOD -0.25;
+				end
+			if (Status.SPIBR) then
+				MACC_MOD = MACC_MOD -0.5;
+				MEVA_MOD = MEVA_MOD -0.5;
+				end
+			if (Status.IMMOB) then
+				EVA_MOD = EVA_MOD -0.5;
+				end
+			if (Status.BLINK) then
+				Bon_Blink = 20;
+				end
+			if (Status.LOCK) then
+				Bon_Lock = -20;
+				end
+			if (Status.RUSE) then
+				Bon_Ruse = 40;
+				end
+			if (Status.ARMUP) then
+				ARM_MOD = ARM_MOD +0.25;
+				end
+			if (Status.ARMDO) then
+				ARM_MOD = ARM_MOD -0.25;
+				end
+			if (Status.ARMBR) then
+				ARM_MOD = ARM_MOD -0.5;
+				end				
+			if (Status.MENUP) then
+				MARM_MOD = MARM_MOD +0.25;
+				end
+			if (Status.MENDO) then
+				MARM_MOD = MARM_MOD -0.25;
+				end
+			if (Status.MENBR) then
+				MARM_MOD = MARM_MOD -0.5;
+				end
+			if (Status.TOAD) then
+				ARM_MOD = ARM_MOD -0.5;
+				MARM_MOD = MARM_MOD -0.5;
+				end
+			if (Status.MINI) then
+				ARM_MOD = ARM_MOD -0.5;
+				MARM_MOD = MARM_MOD -0.5;
+				end
+			if (Status.SQUI) then
+				ARM_MOD = ARM_MOD -0.5;
+				MARM_MOD = MARM_MOD -0.5;
+				end				
+			if (0 > ACC_MOD) then
+				ACC_MOD = 0;
+				end
+			if (0 > MACC_MOD) then
+				MACC_MOD = 0;
+				end
+			if (0 > EVA_MOD) then
+				EVA_MOD = 0;
+				end
+			if (0 > MEVA_MOD) then
+				MEVA_MOD = 0;
+				end
+			if (0 > ARM_MOD) then
+				ARM_MOD = 0;
+				end
+			if (0 > MARM_MOD) then
+				MARM_MOD = 0;
+				end
+
+			local eq = {};
+			eq.HeadEva = tonumber(sheet.eqHEDEVA) or 0;
+			eq.HeadMEv = tonumber(sheet.eqHEDMEVA) or 0;
+			eq.HeadArm = tonumber(sheet.eqHEDARM) or 0;
+			eq.HeadMAr = tonumber(sheet.eqHEDMARM) or 0;
+			eq.BodyEva = tonumber(sheet.eqBDYEVA) or 0;
+			eq.BodyMEv = tonumber(sheet.eqBDYMEVA) or 0;
+			eq.BodyArm = tonumber(sheet.eqBDYARM) or 0;
+			eq.BodyMAr = tonumber(sheet.eqBDYMARM) or 0;
+			eq.ArmsEva = tonumber(sheet.eqARMEVA) or 0;
+			eq.ArmsMEv = tonumber(sheet.eqARMMEVA) or 0;
+			eq.ArmsArm = tonumber(sheet.eqARMARM) or 0;
+			eq.ArmsMAr = tonumber(sheet.eqARMMARM) or 0;
+			eq.EscEva = tonumber(sheet.eqESCEVA) or 0;
+			eq.EscMEv = tonumber(sheet.eqESCMEVA) or 0;
+			eq.Ac1Eva = tonumber(sheet.eqACC1EVA) or 0;
+			eq.Ac1MEv = tonumber(sheet.eqACC1MEVA) or 0;
+			eq.Ac2Eva = tonumber(sheet.eqACC2EVA) or 0;
+			eq.Ac2MEv = tonumber(sheet.eqACC2MEVA) or 0;
+
+			local BonPer = 0;
+			local fieldArma = tonumber(sheet.fieldArma) or 0
+			if (fieldArma == 1) then
+				BonPer = sheet.perMACHtot or 0;
+				elseif (fieldArma == 2) then
+					BonPer = sheet.perARCtot or 0;
+				elseif (fieldArma == 3) then
+					BonPer = sheet.perBRIGtot or 0;
+				elseif (fieldArma == 4) then
+					BonPer = sheet.perCAJAtot or 0;
+				elseif (fieldArma == 5) then
+					BonPer = sheet.perCHICOtot or 0;
+				elseif (fieldArma == 6) then
+					BonPer = sheet.perARDFtot or 0;
+				elseif (fieldArma == 7) then
+					BonPer = sheet.perFACAtot or 0;
+				elseif (fieldArma == 8) then
+					BonPer = sheet.perARDHtot or 0;
+				elseif (fieldArma == 9) then
+					BonPer = sheet.perESPAtot or 0;
+				elseif (fieldArma == 10) then
+					BonPer = sheet.perARDAtot or 0;
+				elseif (fieldArma == 11) then
+					BonPer = sheet.perTWOARtot or 0;
+				elseif (fieldArma == 12) then
+					BonPer = sheet.perSISDAtot or 0;
+				elseif (fieldArma == 13) then
+					BonPer = sheet.perINSTRUtot or 0;
+				elseif (fieldArma == 14) then
+					BonPer = sheet.perENSINtot or 0;
+				end
+			sheet.basACC = math.floor(BonCla + BonPer + Nivel + ValAGI*2)	
+			sheet.valACC = math.floor((BonCla + BonPer + Nivel + ValAGI*2 + BonPre)*ACC_MOD);
+			sheet.basMACC = math.floor(100 + Nivel + ValMAG*2)
+			sheet.valMACC = math.floor((100 + Nivel + ValMAG*2 + BonPrM)*MACC_MOD);
+			sheet.basDEX = 50 + Nivel + ValAGI*2
+			sheet.valDEX = 50 + Nivel + ValAGI*2  + BonDEX;
+			sheet.basMND = 50 + Nivel + ValMAG*2
+			sheet.valMND = 50 + Nivel + ValMAG*2  + BonMND;
+			local bonEVA = tonumber(sheet.bonEVA) or 0
+			sheet.valEVA = math.floor((eq.HeadEva + eq.BodyEva + eq.ArmsEva + eq.EscEva + eq.Ac1Eva + eq.Ac2Eva + ValAGI + ValVEL + bonEVA + Bon_Blink + Bon_Lock + Bon_Ruse)*EVA_MOD)
+			if (0 > sheet.valEVA) then
+				sheet.valEVA = 0;
+				end
+			local bonMEVA = tonumber(sheet.bonMEVA) or 0
+			sheet.valMEVA = math.floor((eq.HeadMEv + eq.BodyMEv + eq.ArmsMEv + eq.EscMEv + eq.Ac1MEv + eq.Ac2MEv + ValMAG + ValESP +bonMEVA + Bon_Lock)*MEVA_MOD)
+			if (0 > sheet.valMEVA) then
+				sheet.valMEVA = 0;
+				end
+			sheet.valARM = math.floor((eq.HeadArm + eq.BodyArm + eq.ArmsArm)*ARM_MOD)
+			sheet.valMARM = math.floor((eq.HeadMAr + eq.BodyMAr + eq.ArmsMAr)*MARM_MOD)
+
+			local AttExpert = tonumber(sheet.attEXP) or 0;
+			local PerExpert = sheet.perEXP or "";
+			local ValATT = 0;
+			local ValPER = 0;
+			if AttExpert == 1 then 
+				ValATT = ValAGI;				
+				end
+			if AttExpert == 2 then 
+				ValATT = ValMAG;
+				end
+			if AttExpert == 3 then 
+				ValATT = ValESP;
+				end			
+			if PerExpert == "Alquimia" then 
+				ValPER = sheet.perALQUtot or 0;
+				end
+			if PerExpert == "Canto" then 
+				ValPER = sheet.perCANTOtot or 0;
+				end
+			if PerExpert == "Dança" then 
+				ValPER = sheet.perDANCAtot or 0;
+				end
+			if PerExpert == "Invenção" then 
+				ValPER = sheet.perINVEtot or 0;
+				end
+			if PerExpert == "Etiqueta" then 
+				ValPER = sheet.perETIQtot or 0;
+				end
+			if PerExpert == "Lábia" then 
+				ValPER = sheet.perLABItot or 0;
+				end
+			if PerExpert == "Jogos" then 
+				ValPER = sheet.perJOGOtot or 0;
+				end
+			if PerExpert == "Sobrevivência" then 
+				ValPER = sheet.perSOBRtot or 0;
+				end
+			if PerExpert == "Atuação" then 
+				ValPER = sheet.perATUAtot or 0;
+				end
+			if PerExpert == "Punga" then 
+				ValPER = sheet.perPUNGtot or 0;
+				end
+			sheet.valEXP = 0;
+			sheet.basEXP = 0;
+			if ((ValATT > 0) or (ValATT >0)) then
+				sheet.basEXP = math.floor(Nivel + ValATT*2 + ValPER/2)
+				sheet.valEXP = math.floor(Nivel + ValATT*2 + ValPER/2 + BonEXP)
+				end		
+			</event>
+    </dataLink>
+
+    <dataLink fields="{'basSTR', 'bonSTR', 'basVIT', 'bonVIT', 'basAGI', 'bonAGI', 'basSPD', 'bonSPD', 'basMAG', 'bonMAG', 'basSPR', 'bonSPR', 'basLV'}">	
+		<event name="onChange">
+					sheet.totSTR = (sheet.basSTR or 0) + (sheet.bonSTR or 0);
+					sheet.ratSTR = 10 + (sheet.totSTR or 0)*3;
+					sheet.defSTR = math.floor(sheet.ratSTR/2);
+					sheet.totVIT = (sheet.basVIT or 0) + (sheet.bonVIT or 0);
+					sheet.ratVIT = 10 + (sheet.totVIT or 0)*3;
+					sheet.defVIT = math.floor(sheet.ratVIT/2);
+					sheet.totAGI = (sheet.basAGI or 0) + (sheet.bonAGI or 0);
+					sheet.ratAGI = 10 + (sheet.totAGI or 0)*3;
+					sheet.defAGI = math.floor(sheet.ratAGI/2);
+					sheet.totSPD = (sheet.basSPD or 0) + (sheet.bonSPD or 0);
+					sheet.ratSPD = 10 + (sheet.totSPD or 0)*3;
+					sheet.defSPD = math.floor(sheet.ratSPD/2);
+					sheet.totMAG = (sheet.basMAG or 0) + (sheet.bonMAG or 0);
+					sheet.ratMAG = 10 + (sheet.totMAG or 0)*3;
+					sheet.defMAG = math.floor(sheet.ratMAG/2);
+					sheet.totSPR = (sheet.basSPR or 0) + (sheet.bonSPR or 0);
+					sheet.ratSPR = 10 + (sheet.totSPR or 0)*3;
+					sheet.defSPR = math.floor(sheet.ratSPR/2);					
+					sheet.theATT = (tonumber(sheet.basLV) or 1) + 39;				
+                    sheet.sumATT = (tonumber(sheet.basSTR) or 0) + (tonumber(sheet.basVIT) or 0)  + (tonumber(sheet.basAGI) or 0)  + (tonumber(sheet.basSPD) or 0)  + (tonumber(sheet.basMAG) or 0)  + (tonumber(sheet.basSPR) or 0);
+					sheet.baseEXPLUP = 500*((sheet.basLV) or 1);
+				</event>
+    </dataLink>
+
+	<dataLink fields="{'defSTR','defAGI','defVIT','defMAG','defSPR', 'basLV','flagInabil','flagAmbid',
+						'perART','perGERX','perTEC','perSOC','perARM','perSEL','perLAD','perSAB',
+						'perARTESpon','perARTESbon','perDANCApon','perDANCAbon','perINSTRUpon','perINSTRUbon',
+						'perCANTOpon','perCANTObon','perATUApon','perATUAbon','perACROpon','perACRObon',
+						'perCULINpon','perCULINbon','perJOGOpon','perJOGObon','PerTirar',
+						'perPRONTpon','perPRONTbon','perNEGOpon','perNEGObon','perALQUpon','perALQUbon',
+						'perEXPLpon','perEXPLbon','perCURApon','perCURAbon','perINVEpon','perINVEbon',
+						'perREPApon','perREPAbon','perSISTpon','perSISTbon','perVEICpon','perVEICbon',
+						'perETIQpon','perETIQbon','perINTIpon','perINTIbon','perLIDERpon','perLIDERbon',
+						'perLABIpon','perLABIbon','perSEDUpon','perSEDUbon','perMACHpon','perMACHbon',
+						'perARCpon','perARCbon','perBRIGpon','perBRIGbon','perCAJApon','perCAJAbon',
+						'perCHICOpon','perCHICObon', 'perARDFpon','perARDFbon','perFACApon','perFACAbon',
+						'perARDHpon','perARDHbon','perESPApon','perESPAbon','perARDApon','perARDAbon',
+						'perTWOARpon','perTWOARbon','perSISDApon','perSISDAbon','perTRANpon','perTRANbon',
+						'perESCApon','perESCAbon','perNAVEpon','perNAVEbon','perPILHpon','perPILHbon',
+						'perCAVApon','perCAVAbon','perSOBRpon','perSOBRbon','perNATApon','perNATAbon',
+						'perRASTpon','perRASTbon','perDISFpon','perDISFbon','perFUGApon','perFUGAbon',
+						'perAFECpon','perAFECbon','perPUNGpon','perPUNGbon','perFURTpon','perFURTbon',
+						'perMANHpon','perMANHbon','perARMADpon','perARMADbon','perINVESTpon','perINVESTbon',
+						'perENSINpon','perENSINbon','perCARPpon','perCARPbon','perJOALpon','perJOALbon',
+						'perARMEpon','perARMEbon','perALFApon','perALFAbon','perESCUpon','perESCUbon',
+						'perIDIOponGER','perIDIOponESP','perCONHponGER','perCONHponESP','ponPER'}">
+		<event name="onChange">
+			local Nivel = tonumber(sheet.basLV) or 1;
+			local TesteSTR = tonumber(sheet.defSTR) or 0;
+			local TesteAGI = tonumber(sheet.defAGI) or 0;
+			local TesteVIT = tonumber(sheet.defVIT) or 0;
+			local TesteMAG = tonumber(sheet.defMAG) or 0;
+			local TesteSPR = tonumber(sheet.defSPR) or 0;
+			local FlagInabil = sheet.flagInabil or false;
+			local FlagAmbid = sheet.flagAmbid or false;
+			local FlagArtes = sheet.perART or false;
+			local FlagGeral = sheet.perGERX or false;
+			local FlagSocial = sheet.perSOC or false;
+			local FlagArmas = sheet.perARM or false;
+			local FlagTech = sheet.perTEC or false;
+			local FlagSelv = sheet.perSEL or false;
+			local FlagLadi = sheet.perLAD or false;
+			local FlagSabe = sheet.perSAB or false;
+			
+			local ARTES = {}
+			ARTES.Pon = tonumber(sheet.perARTESpon) or 0;
+			ARTES.Bon = tonumber(sheet.perARTESbon) or 0;
+			if ((FlagArtes) and (ARTES.Pon > 0)) then
+				sheet.perARTEStot = 2*ARTES.Pon + ARTES.Bon;
+				elseif ((not FlagArtes) and (ARTES.Pon > 0)) then
+					sheet.perARTEStot = ARTES.Pon + ARTES.Bon;
+				elseif ((FlagArtes) and (ARTES.Pon == 0)) then
+					sheet.perARTEStot = TesteSPR + ARTES.Bon;
+				else
+					sheet.perARTEStot = 0;
+				end
+				
+			local DANCA = {}
+			DANCA.Pon = tonumber(sheet.perDANCApon) or 0;
+			DANCA.Bon = tonumber(sheet.perDANCAbon) or 0;
+			if ((FlagArtes) and (DANCA.Pon > 0)) then
+				sheet.perDANCAtot = 2*DANCA.Pon + DANCA.Bon;
+				elseif ((not FlagArtes) and (DANCA.Pon > 0)) then
+					sheet.perDANCAtot = DANCA.Pon + DANCA.Bon;
+				else
+					sheet.perDANCAtot = TesteAGI + DANCA.Bon;
+				end
+
+			local INSTRU = {}
+			INSTRU.Pon = tonumber(sheet.perINSTRUpon) or 0;
+			INSTRU.Bon = tonumber(sheet.perINSTRUbon) or 0;
+			if ((FlagArtes) and (INSTRU.Pon > 0)) then
+				sheet.perINSTRUtot = 2*INSTRU.Pon + INSTRU.Bon;
+				elseif ((not FlagArtes) and (INSTRU.Pon > 0)) then
+					sheet.perINSTRUtot = INSTRU.Pon + INSTRU.Bon;
+				elseif ((FlagArtes) and (INSTRU.Pon == 0)) then
+					sheet.perINSTRUtot = TesteSPR + INSTRU.Bon;
+				else
+					sheet.perINSTRUtot = 0;
+				end
+
+			local CANTO = {}
+			CANTO.Pon = tonumber(sheet.perCANTOpon) or 0;
+			CANTO.Bon = tonumber(sheet.perCANTObon) or 0;
+			if ((FlagArtes) and (CANTO.Pon > 0)) then
+				sheet.perCANTOtot = 2*CANTO.Pon + CANTO.Bon;
+				elseif ((not FlagArtes) and (CANTO.Pon > 0)) then
+					sheet.perCANTOtot = CANTO.Pon + CANTO.Bon;
+				else
+					sheet.perCANTOtot = TesteSPR + CANTO.Bon;
+				end
+
+			local ATUA = {}
+			ATUA.Pon = tonumber(sheet.perATUApon) or 0;
+			ATUA.Bon = tonumber(sheet.perATUAbon) or 0;
+			if ((FlagArtes) and (ATUA.Pon > 0)) then
+				sheet.perATUAtot = 2*ATUA.Pon + ATUA.Bon;
+				elseif ((not FlagArtes) and (ATUA.Pon > 0)) then
+					sheet.perATUAtot = ATUA.Pon + ATUA.Bon;
+				else
+					sheet.perATUAtot = TesteSPR + ATUA.Bon;
+				end		
+
+			local ACRO = {}
+			ACRO.Pon = tonumber(sheet.perACROpon) or 0;
+			ACRO.Bon = tonumber(sheet.perACRObon) or 0;
+			if ((FlagGeral) and (ACRO.Pon > 0)) then
+				sheet.perACROtot = 2*ACRO.Pon + ACRO.Bon;
+				elseif ((not FlagGeral) and (ACRO.Pon > 0)) then
+					sheet.perACROtot = ACRO.Pon + ACRO.Bon;
+				else
+					sheet.perACROtot = TesteAGI + ACRO.Bon;
+				end
+				
+			local PRONT = {}
+			PRONT.Pon = tonumber(sheet.perPRONTpon) or 0;
+			PRONT.Bon = tonumber(sheet.perPRONTbon) or 0;
+			if ((FlagGeral) and (PRONT.Pon > 0)) then
+				sheet.perPRONTtot = 30 + 2*PRONT.Pon + PRONT.Bon;
+				elseif ((not FlagGeral) and (PRONT.Pon > 0)) then
+					sheet.perPRONTtot = 30 + PRONT.Pon + PRONT.Bon;
+				else
+					sheet.perPRONTtot = 30 + PRONT.Bon;
+				end
+
+			local CULIN = {}
+			CULIN.Pon = tonumber(sheet.perCULINpon) or 0;
+			CULIN.Bon = tonumber(sheet.perCULINbon) or 0;
+			if ((FlagGeral) and (CULIN.Pon > 0)) then
+				sheet.perCULINtot = 2*CULIN.Pon + CULIN.Bon;
+				elseif ((not FlagGeral) and (CULIN.Pon > 0)) then
+					sheet.perCULINtot = CULIN.Pon + CULIN.Bon;
+				elseif ((FlagGeral) and (CULIN.Pon == 0)) then
+					sheet.perCULINtot = TesteMAG + CULIN.Bon;
+				else
+					sheet.perCULINtot = 0;
+				end
+
+			local NEGO = {}
+			NEGO.Pon = tonumber(sheet.perNEGOpon) or 0;
+			NEGO.Bon = tonumber(sheet.perNEGObon) or 0;
+			if ((FlagGeral) and (NEGO.Pon > 0)) then
+				sheet.perNEGOtot = 2*NEGO.Pon + NEGO.Bon;
+				elseif ((not FlagGeral) and (NEGO.Pon > 0)) then
+					sheet.perNEGOtot = NEGO.Pon + NEGO.Bon;
+				elseif ((FlagGeral) and (NEGO.Pon == 0)) then
+					sheet.perNEGOtot = TesteMAG + NEGO.Bon;
+				else
+					sheet.perNEGOtot = 0;
+				end
+
+			local ETIQ = {}
+			ETIQ.Pon = tonumber(sheet.perETIQpon) or 0;
+			ETIQ.Bon = tonumber(sheet.perETIQbon) or 0;
+			if ((FlagSocial) and (ETIQ.Pon > 0)) then
+				sheet.perETIQtot = 2*ETIQ.Pon + ETIQ.Bon;
+				elseif ((not FlagSocial) and (ETIQ.Pon > 0)) then
+					sheet.perETIQtot = ETIQ.Pon + ETIQ.Bon;
+				else
+					sheet.perETIQtot = TesteSPR + ETIQ.Bon;
+				end
+
+			local INTI = {}
+			INTI.Pon = tonumber(sheet.perINTIpon) or 0;
+			INTI.Bon = tonumber(sheet.perINTIbon) or 0;
+			if ((FlagSocial) and (INTI.Pon > 0)) then
+				sheet.perINTItot = 2*INTI.Pon + INTI.Bon;
+				else
+					sheet.perINTItot = TesteSPR + INTI.Bon;
+				end
+
+			local LIDER = {}
+			LIDER.Pon = tonumber(sheet.perLIDERpon) or 0;
+			LIDER.Bon = tonumber(sheet.perLIDERbon) or 0;
+			if ((FlagSocial) and (LIDER.Pon > 0)) then
+				sheet.perLIDERtot = 2*LIDER.Pon + LIDER.Bon;
+				else
+					sheet.perLIDERtot = TesteSPR + LIDER.Bon;
+				end
+			
+			local LABI = {}
+			LABI.Pon = tonumber(sheet.perLABIpon) or 0;
+			LABI.Bon = tonumber(sheet.perLABIbon) or 0;
+			if ((FlagSocial) and (LABI.Pon > 0)) then
+				sheet.perLABItot = 2*LABI.Pon + LABI.Bon;
+				else
+					sheet.perLABItot = TesteSPR + LABI.Bon;
+				end
+
+			local SEDU = {}
+			SEDU.Pon = tonumber(sheet.perSEDUpon) or 0;
+			SEDU.Bon = tonumber(sheet.perSEDUbon) or 0;
+			if ((FlagSocial) and (SEDU.Pon > 0)) then
+				sheet.perSEDUtot = 2*SEDU.Pon + SEDU.Bon;
+				else
+					sheet.perSEDUtot = TesteSPR + SEDU.Bon;
+				end	
+
+			local MACH = {}
+			MACH.Pon = tonumber(sheet.perMACHpon) or 0;
+			MACH.Bon = tonumber(sheet.perMACHbon) or 0;
+			if ((FlagInabil) and (MACH.Pon > 0)) then
+				sheet.perMACHtot = math.floor(MACH.Pon/2) + MACH.Bon
+				elseif ((FlagArmas) and (MACH.Pon > 0)) then
+					sheet.perMACHtot = 2*MACH.Pon + MACH.Bon;
+				elseif ((not FlagArmas) and (MACH.Pon > 0)) then
+					sheet.perMACHtot = MACH.Pon + MACH.Bon;
+				else
+					sheet.perMACHtot = TesteAGI + MACH.Bon;
+				end 
+
+			local ARC = {}
+			ARC.Pon = tonumber(sheet.perARCpon) or 0;
+			ARC.Bon = tonumber(sheet.perARCbon) or 0;
+			if ((FlagInabil) and (ARC.Pon > 0)) then
+				sheet.perARCtot = math.floor(ARC.Pon/2) + ARC.Bon
+				elseif ((FlagArmas) and (ARC.Pon > 0)) then
+					sheet.perARCtot = 2*ARC.Pon + ARC.Bon;
+				elseif ((not FlagArmas) and (ARC.Pon > 0)) then
+					sheet.perARCtot = ARC.Pon + ARC.Bon;
+				else
+					sheet.perARCtot = TesteAGI + ARC.Bon;
+				end
+
+			local BRIG = {}
+			BRIG.Pon = tonumber(sheet.perBRIGpon) or 0;
+			BRIG.Bon = tonumber(sheet.perBRIGbon) or 0;
+			if ((FlagInabil) and (BRIG.Pon > 0)) then
+				sheet.perBRIGtot = math.floor(BRIG.Pon/2) + BRIG.Bon
+				elseif ((FlagArmas) and (BRIG.Pon > 0)) then
+					sheet.perBRIGtot = 2*BRIG.Pon + BRIG.Bon;
+				elseif ((not FlagArmas) and (BRIG.Pon > 0)) then
+					sheet.perBRIGtot = BRIG.Pon + BRIG.Bon;
+				else
+					sheet.perBRIGtot = TesteAGI + BRIG.Bon;
+				end			
+
+			local CAJA = {}
+			CAJA.Pon = tonumber(sheet.perCAJApon) or 0;
+			CAJA.Bon = tonumber(sheet.perCAJAbon) or 0;
+			if ((FlagInabil) and (CAJA.Pon > 0)) then
+				sheet.perCAJAtot = math.floor(CAJA.Pon/2) + CAJA.Bon
+				elseif ((FlagArmas) and (CAJA.Pon > 0)) then
+					sheet.perCAJAtot = 2*CAJA.Pon + CAJA.Bon;
+				elseif ((not FlagArmas) and (CAJA.Pon > 0)) then
+					sheet.perCAJAtot = CAJA.Pon + CAJA.Bon;
+				else
+					sheet.perCAJAtot = TesteAGI + CAJA.Bon;
+				end
+
+			local CHICO = {}
+			CHICO.Pon = tonumber(sheet.perCHICOpon) or 0;
+			CHICO.Bon = tonumber(sheet.perCHICObon) or 0;
+			if ((FlagInabil) and (CHICO.Pon > 0)) then
+				sheet.perCHICOtot = math.floor(CHICO.Pon/2) + CHICO.Bon
+				elseif ((FlagArmas) and (CHICO.Pon > 0)) then
+					sheet.perCHICOtot = 2*CHICO.Pon + CHICO.Bon;
+				elseif ((not FlagArmas) and (CHICO.Pon > 0)) then
+					sheet.perCHICOtot = CHICO.Pon + CHICO.Bon;
+				else
+					sheet.perCHICOtot = TesteAGI + CHICO.Bon;
+				end		
+
+			local ARDF = {}
+			ARDF.Pon = tonumber(sheet.perARDFpon) or 0;
+			ARDF.Bon = tonumber(sheet.perARDFbon) or 0;
+			if ((FlagInabil) and (ARDF.Pon > 0)) then
+				sheet.perARDFtot = math.floor(ARDF.Pon/2) + ARDF.Bon
+				elseif ((FlagArmas) and (ARDF.Pon > 0)) then
+					sheet.perARDFtot = 2*ARDF.Pon + ARDF.Bon;
+				elseif ((not FlagArmas) and (ARDF.Pon > 0)) then
+					sheet.perARDFtot = ARDF.Pon + ARDF.Bon;
+				else
+					sheet.perARDFtot = TesteAGI + ARDF.Bon;
+				end
+						
+			local FACA = {}
+			FACA.Pon = tonumber(sheet.perFACApon) or 0;
+			FACA.Bon = tonumber(sheet.perFACAbon) or 0;
+			if ((FlagInabil) and (FACA.Pon > 0)) then
+				sheet.perFACAtot = math.floor(FACA.Pon/2) + FACA.Bon
+				elseif ((FlagArmas) and (FACA.Pon > 0)) then
+					sheet.perFACAtot = 2*FACA.Pon + FACA.Bon;
+				elseif ((not FlagArmas) and (FACA.Pon > 0)) then
+					sheet.perFACAtot = FACA.Pon + FACA.Bon;
+				else
+					sheet.perFACAtot = TesteAGI + FACA.Bon;
+				end
+
+			local ARDH = {}
+			ARDH.Pon = tonumber(sheet.perARDHpon) or 0;
+			ARDH.Bon = tonumber(sheet.perARDHbon) or 0;
+			if ((FlagInabil) and (ARDH.Pon > 0)) then
+				sheet.perARDHtot = math.floor(ARDH.Pon/2) + ARDH.Bon
+				elseif ((FlagArmas) and (ARDH.Pon > 0)) then
+					sheet.perARDHtot = 2*ARDH.Pon + ARDH.Bon;
+				elseif ((not FlagArmas) and (ARDH.Pon > 0)) then
+					sheet.perARDHtot = ARDH.Pon + ARDH.Bon;
+				else
+					sheet.perARDHtot = TesteAGI + ARDH.Bon;
+				end			
+
+			local ESPA = {}
+			ESPA.Pon = tonumber(sheet.perESPApon) or 0;
+			ESPA.Bon = tonumber(sheet.perESPAbon) or 0;
+			if ((FlagInabil) and (ESPA.Pon > 0)) then
+				sheet.perESPAtot = math.floor(ESPA.Pon/2) + ESPA.Bon
+				elseif ((FlagArmas) and (ESPA.Pon > 0)) then
+					sheet.perESPAtot = 2*ESPA.Pon + ESPA.Bon;
+				elseif ((not FlagArmas) and (ESPA.Pon > 0)) then
+					sheet.perESPAtot = ESPA.Pon + ESPA.Bon;
+				else
+					sheet.perESPAtot = TesteAGI + ESPA.Bon;
+				end
+
+			local ARDA = {}
+			ARDA.Pon = tonumber(sheet.perARDApon) or 0;
+			ARDA.Bon = tonumber(sheet.perARDAbon) or 0;
+			if ((FlagInabil) and (ARDA.Pon > 0)) then
+				sheet.perARDAtot = math.floor(ARDA.Pon/2) + ARDA.Bon
+				elseif ((FlagArmas) and (ARDA.Pon > 0)) then
+					sheet.perARDAtot = 2*ARDA.Pon + ARDA.Bon;
+				elseif ((not FlagArmas) and (ARDA.Pon > 0)) then
+					sheet.perARDAtot = ARDA.Pon + ARDA.Bon;
+				else
+					sheet.perARDAtot = TesteAGI + ARDA.Bon;
+				end
+
+			local TWOAR = {}
+			TWOAR.Pon = tonumber(sheet.perTWOARpon) or 0;
+			TWOAR.Bon = tonumber(sheet.perTWOARbon) or 0;
+			if ((FlagInabil) and (TWOAR.Pon > 0) and (not FlagAmbid)) then
+				sheet.per2ARtot = math.floor(TWOAR.Pon/4) + TWOAR.Bon
+				elseif ((FlagInabil) and (TWOAR.Pon > 0) and (FlagAmbid)) then
+					sheet.perTWOARtot = math.floor(TWOAR.Pon/2) + TWOAR.Bon
+				elseif ((FlagAmbid) and (TWOAR.Pon > 0)) then
+					sheet.perTWOARtot = TWOAR.Pon + TWOAR.Bon;
+				elseif ((not FlagAmbid) and (TWOAR.Pon > 0)) then
+					sheet.perTWOARtot = math.floor(TWOAR.Pon/2) + TWOAR.Bon;
+				else
+					sheet.perTWOARtot = 0;
+				end
+
+			local SISDA = {}
+			SISDA.Pon = tonumber(sheet.perSISDApon) or 0;
+			SISDA.Bon = tonumber(sheet.perSISDAbon) or 0;
+			if ((FlagInabil) and (SISDA.Pon > 0)) then
+				sheet.perSISDAtot = math.floor(SISDA.Pon/2) + SISDA.Bon
+				elseif ((FlagArmas) and (SISDA.Pon > 0)) then
+					sheet.perSISDAtot = 2*SISDA.Pon + SISDA.Bon;
+				elseif ((not FlagArmas) and (SISDA.Pon > 0)) then
+					sheet.perSISDAtot = SISDA.Pon + SISDA.Bon;
+				else
+					sheet.perSISDAtot = TesteAGI + SISDA.Bon;
+				end		
+		
+			local ALQU = {}
+			ALQU.Pon = tonumber(sheet.perALQUpon) or 0;
+			ALQU.Bon = tonumber(sheet.perALQUbon) or 0;
+			if ((FlagTech) and (ALQU.Pon > 0)) then
+				sheet.perALQUtot = 2*ALQU.Pon + ALQU.Bon;
+				elseif ((not FlagTech) and (ALQU.Pon > 0)) then
+					sheet.perALQUtot = ALQU.Pon + ALQU.Bon;
+				elseif ((FlagTech) and (ALQU.Pon == 0)) then
+					sheet.perALQUtot = TesteMAG + ALQU.Bon;
+				else
+					sheet.perALQUtot = 0;
+				end
+
+			local EXPL = {}
+			EXPL.Pon = tonumber(sheet.perEXPLpon) or 0;
+			EXPL.Bon = tonumber(sheet.perEXPLbon) or 0;
+			if ((FlagTech) and (EXPL.Pon > 0)) then
+				sheet.perEXPLtot = 2*EXPL.Pon + EXPL.Bon;
+				elseif ((not FlagTech) and (EXPL.Pon > 0)) then
+					sheet.perEXPLtot = EXPL.Pon + EXPL.Bon;
+				else
+					sheet.perEXPLtot = TesteMAG + EXPL.Bon;
+				end
+				
+			local CURA = {}
+			CURA.Pon = tonumber(sheet.perCURApon) or 0;
+			CURA.Bon = tonumber(sheet.perCURAbon) or 0;
+			if ((FlagTech) and (CURA.Pon > 0)) then
+				sheet.perCURAtot = 2*CURA.Pon + CURA.Bon;
+				elseif ((not FlagTech) and (CURA.Pon > 0)) then
+					sheet.perCURAtot = CURA.Pon + CURA.Bon;
+				elseif ((FlagTech) and (CURA.Pon == 0)) then
+					sheet.perCURAtot = TesteMAG + CURA.Bon;
+				else
+					sheet.perCURAtot = 0;
+				end			
+
+			local INVE = {}
+			INVE.Pon = tonumber(sheet.perINVEpon) or 0;
+			INVE.Bon = tonumber(sheet.perINVEbon) or 0;
+			if ((FlagTech) and (INVE.Pon > 0)) then
+				sheet.perINVEtot = INVE.Pon + INVE.Bon;
+				elseif ((not FlagTech) and (INVE.Pon > 0)) then
+					sheet.perINVEtot = math.floor(INVE.Pon/2) + INVE.Bon;
+				elseif ((FlagTech) and (INVE.Pon == 0)) then
+					sheet.perINVEtot = TesteMAG + INVE.Bon;
+				else
+					sheet.perINVEtot = 0;
+				end				
+
+			local REPA = {}
+			REPA.Pon = tonumber(sheet.perREPApon) or 0;
+			REPA.Bon = tonumber(sheet.perREPAbon) or 0;
+			if ((FlagTech) and (REPA.Pon > 0)) then
+				sheet.perREPAtot = 2*REPA.Pon + REPA.Bon;
+				elseif ((not FlagTech) and (REPA.Pon > 0)) then
+					sheet.perREPAtot = REPA.Pon + REPA.Bon;
+				else
+					sheet.perREPAtot = TesteMAG + REPA.Bon;
+				end		
+
+			local SIST = {}
+			SIST.Pon = tonumber(sheet.perSISTpon) or 0;
+			SIST.Bon = tonumber(sheet.perSISTbon) or 0;
+			if ((FlagTech) and (SIST.Pon > 0)) then
+				sheet.perSISTtot = 2*SIST.Pon + SIST.Bon;
+				elseif ((not FlagTech) and (SIST.Pon > 0)) then
+					sheet.perSISTtot = SIST.Pon + SIST.Bon;
+				elseif ((FlagTech) and (SIST.Pon == 0)) then
+					sheet.perSISTtot = TesteMAG + SIST.Bon;
+				else
+					sheet.perSISTtot = 0;
+				end			
+
+			local VEIC = {}
+			VEIC.Pon = tonumber(sheet.perVEICpon) or 0;
+			VEIC.Bon = tonumber(sheet.perVEICbon) or 0;
+			if ((FlagTech) and (VEIC.Pon > 0)) then
+				sheet.perVEICtot = 2*VEIC.Pon + VEIC.Bon;
+				elseif ((not FlagTech) and (VEIC.Pon > 0)) then
+					sheet.perVEICtot = VEIC.Pon + VEIC.Bon;
+				elseif ((FlagTech) and (VEIC.Pon == 0)) then
+					sheet.perVEICtot = TesteAGI + VEIC.Bon;
+				else
+					sheet.perVEICtot = 0;
+				end						
+
+			local TRAN = {}
+			TRAN.Pon = tonumber(sheet.perTRANpon) or 0;
+			TRAN.Bon = tonumber(sheet.perTRANbon) or 0;
+			if ((FlagSelv) and (TRAN.Pon > 0)) then
+				sheet.perTRANtot = 2*TRAN.Pon + TRAN.Bon;
+				elseif ((not FlagSelv) and (TRAN.Pon > 0)) then
+					sheet.perTRANtot = TRAN.Pon + TRAN.Bon;
+				elseif ((FlagSelv) and (TRAN.Pon == 0)) then
+					sheet.perTRANtot = TesteSPR + TRAN.Bon;
+				else
+					sheet.perTRANtot = 0;
+				end		
+			
+			local ESCA = {}
+			ESCA.Pon = tonumber(sheet.perESCApon) or 0;
+			ESCA.Bon = tonumber(sheet.perESCAbon) or 0;
+			if ((FlagSelv) and (ESCA.Pon > 0)) then
+				sheet.perESCAtot = 2*ESCA.Pon + ESCA.Bon;
+				elseif ((not FlagSelv) and (ESCA.Pon > 0)) then
+					sheet.perESCAtot = ESCA.Pon + ESCA.Bon;
+				else
+					sheet.perESCAtot = TesteSTR + ESCA.Bon;
+				end		
+
+			local NAVE = {}
+			NAVE.Pon = tonumber(sheet.perNAVEpon) or 0;
+			NAVE.Bon = tonumber(sheet.perNAVEbon) or 0;
+			if ((FlagSelv) and (NAVE.Pon > 0)) then
+				sheet.perNAVEtot = 2*NAVE.Pon + NAVE.Bon;
+				elseif ((not FlagSelv) and (NAVE.Pon > 0)) then
+					sheet.perNAVEtot = NAVE.Pon + NAVE.Bon;
+				else
+					sheet.perNAVEtot = TesteMAG + NAVE.Bon;
+				end					
+	
+			local PILH = {}
+			PILH.Pon = tonumber(sheet.perPILHpon) or 0;
+			PILH.Bon = tonumber(sheet.perPILHbon) or 0;
+			if ((FlagSelv) and (PILH.Pon > 0)) then
+				sheet.perPILHtot = 2*PILH.Pon + PILH.Bon;
+				elseif ((not FlagSelv) and (PILH.Pon > 0)) then
+					sheet.perPILHtot = PILH.Pon + PILH.Bon;
+				elseif ((FlagSelv) and (PILH.Pon == 0)) then
+					sheet.perPILHtot = TesteMAG + PILH.Bon;
+				else
+					sheet.perPILHtot = 0;
+				end			
+
+			local CAVA = {}
+			CAVA.Pon = tonumber(sheet.perCAVApon) or 0;
+			CAVA.Bon = tonumber(sheet.perCAVAbon) or 0;
+			if ((FlagSelv) and (CAVA.Pon > 0)) then
+				sheet.perCAVAtot = 2*CAVA.Pon + CAVA.Bon;
+				elseif ((not FlagSelv) and (CAVA.Pon > 0)) then
+					sheet.perCAVAtot = CAVA.Pon + CAVA.Bon;
+				else
+					sheet.perCAVAtot = TesteAGI + CAVA.Bon;
+				end				
+
+			local SOBR = {}
+			SOBR.Pon = tonumber(sheet.perSOBRpon) or 0;
+			SOBR.Bon = tonumber(sheet.perSOBRbon) or 0;
+			if ((FlagSelv) and (SOBR.Pon > 0)) then
+				sheet.perSOBRtot = 2*SOBR.Pon + SOBR.Bon;
+				elseif ((not FlagSelv) and (SOBR.Pon > 0)) then
+					sheet.perSOBRtot = SOBR.Pon + SOBR.Bon;
+				else
+					sheet.perSOBRtot = TesteMAG + SOBR.Bon;
+				end		
+
+			local NATA = {}
+			NATA.Pon = tonumber(sheet.perNATApon) or 0;
+			NATA.Bon = tonumber(sheet.perNATAbon) or 0;
+			if ((FlagSelv) and (NATA.Pon > 0)) then
+				sheet.perNATAtot = 2*NATA.Pon + NATA.Bon;
+				elseif ((not FlagSelv) and (NATA.Pon > 0)) then
+					sheet.perNATAtot = NATA.Pon + NATA.Bon;
+				else
+					sheet.perNATAtot = TesteVIT + NATA.Bon;
+				end					
+
+			local RAST = {}
+			RAST.Pon = tonumber(sheet.perRASTpon) or 0;
+			RAST.Bon = tonumber(sheet.perRASTbon) or 0;
+			if ((FlagSelv) and (RAST.Pon > 0)) then
+				sheet.perRASTtot = 2*RAST.Pon + RAST.Bon;
+				elseif ((not FlagSelv) and (RAST.Pon > 0)) then
+					sheet.perRASTtot = RAST.Pon + RAST.Bon;
+				else
+					sheet.perRASTtot = TesteMAG + RAST.Bon;
+				end		
+
+			local DISF = {}
+			DISF.Pon = tonumber(sheet.perDISFpon) or 0;
+			DISF.Bon = tonumber(sheet.perDISFbon) or 0;
+			if ((FlagLadi) and (DISF.Pon > 0)) then
+				sheet.perDISFtot = 2*DISF.Pon + DISF.Bon;
+				elseif ((not FlagLadi) and (DISF.Pon > 0)) then
+					sheet.perDISFtot = DISF.Pon + DISF.Bon;
+				else
+					sheet.perDISFtot = TesteMAG + DISF.Bon;
+				end		
+
+			local FUGA = {}
+			FUGA.Pon = tonumber(sheet.perFUGApon) or 0;
+			FUGA.Bon = tonumber(sheet.perFUGAbon) or 0;
+			if ((FlagLadi) and (FUGA.Pon > 0)) then
+				sheet.perFUGAtot = 2*FUGA.Pon + FUGA.Bon;
+				elseif ((not FlagLadi) and (FUGA.Pon > 0)) then
+					sheet.perFUGAtot = FUGA.Pon + FUGA.Bon;
+				else
+					sheet.perFUGAtot = TesteAGI + FUGA.Bon;
+				end		
+
+			local JOGO = {}
+			JOGO.Pon = tonumber(sheet.perJOGOpon) or 0;
+			JOGO.Bon = tonumber(sheet.perJOGObon) or 0;
+			if ((FlagLadi) and (JOGO.Pon > 0)) then
+				sheet.perJOGOtot = 2*JOGO.Pon + JOGO.Bon;
+				elseif ((not FlagLadi) and (JOGO.Pon > 0)) then
+					sheet.perJOGOtot = JOGO.Pon + JOGO.Bon;
+				elseif ((FlagLadi) and (JOGO.Pon == 0)) then
+					sheet.perJOGOtot = TesteMAG + JOGO.Bon;
+				else
+					sheet.perJOGOtot = 0;
+				end			
+
+			local AFEC = {}
+			AFEC.Pon = tonumber(sheet.perAFECpon) or 0;
+			AFEC.Bon = tonumber(sheet.perAFECbon) or 0;
+			if ((FlagLadi) and (AFEC.Pon > 0)) then
+				sheet.perAFECtot = 2*AFEC.Pon + AFEC.Bon;
+				elseif ((not FlagLadi) and (AFEC.Pon > 0)) then
+					sheet.perAFECtot = AFEC.Pon + AFEC.Bon;
+				elseif ((FlagLadi) and (AFEC.Pon == 0)) then
+					sheet.perAFECtot = TesteMAG + AFEC.Bon;
+				else
+					sheet.perAFECtot = 0;
+				end		
+
+			local PUNG = {}
+			PUNG.Pon = tonumber(sheet.perPUNGpon) or 0;
+			PUNG.Bon = tonumber(sheet.perPUNGbon) or 0;
+			if ((FlagLadi) and (PUNG.Pon > 0)) then
+				sheet.perPUNGtot = 2*PUNG.Pon + PUNG.Bon;
+				elseif ((not FlagLadi) and (PUNG.Pon > 0)) then
+					sheet.perPUNGtot = PUNG.Pon + PUNG.Bon;
+				else
+					sheet.perPUNGtot = TesteAGI + PUNG.Bon;
+				end				
+		
+			local FURT = {}
+			FURT.Pon = tonumber(sheet.perFURTpon) or 0;
+			FURT.Bon = tonumber(sheet.perFURTbon) or 0;
+			if ((FlagLadi) and (FURT.Pon > 0)) then
+				sheet.perFURTtot = 2*FURT.Pon + FURT.Bon;
+				elseif ((not FlagLadi) and (FURT.Pon > 0)) then
+					sheet.perFURTtot = FURT.Pon + FURT.Bon;
+				else
+					sheet.perFURTtot = TesteAGI + FURT.Bon;
+				end	
+
+			local MANH = {}
+			MANH.Pon = tonumber(sheet.perMANHpon) or 0;
+			MANH.Bon = tonumber(sheet.perMANHbon) or 0;
+			if ((FlagLadi) and (MANH.Pon > 0)) then
+				sheet.perMANHtot = 2*MANH.Pon + MANH.Bon;
+				elseif ((not FlagLadi) and (MANH.Pon > 0)) then
+					sheet.perMANHtot = MANH.Pon + MANH.Bon;
+				elseif ((FlagLadi) and (MANH.Pon == 0)) then
+					sheet.perMANHtot = TesteSPR + MANH.Bon;
+				else
+					sheet.perMANHtot = 0;
+				end				
+
+			local ARMAD = {}
+			ARMAD.Pon = tonumber(sheet.perARMADpon) or 0;
+			ARMAD.Bon = tonumber(sheet.perARMADbon) or 0;
+			if ((FlagLadi) and (ARMAD.Pon > 0)) then
+				sheet.perARMADtot = 2*ARMAD.Pon + ARMAD.Bon;
+				elseif ((not FlagLadi) and (ARMAD.Pon > 0)) then
+					sheet.perARMADtot = ARMAD.Pon + ARMAD.Bon;
+				elseif ((FlagLadi) and (ARMAD.Pon == 0)) then
+					sheet.perARMADtot = TesteMAG + ARMAD.Bon;
+				else
+					sheet.perARMADtot = 0;
+				end			
+			
+			local INVEST = {}
+			INVEST.Pon = tonumber(sheet.perINVESTpon) or 0;
+			INVEST.Bon = tonumber(sheet.perINVESTbon) or 0;
+			if ((FlagSabe) and (INVEST.Pon > 0)) then
+				sheet.perINVESTtot = 2*INVEST.Pon + INVEST.Bon;
+				elseif ((not FlagSabe) and (INVEST.Pon > 0)) then
+					sheet.perINVESTtot = INVEST.Pon + INVEST.Bon;
+				else
+					sheet.perINVESTtot = TesteMAG + INVEST.Bon;
+				end	
+				
+			local ENSIN = {}
+			ENSIN.Pon = tonumber(sheet.perENSINpon) or 0;
+			ENSIN.Bon = tonumber(sheet.perENSINbon) or 0;
+			if ((FlagSabe) and (ENSIN.Pon > 0)) then
+				sheet.perENSINtot = ENSIN.Pon + ENSIN.Bon;
+				elseif ((not FlagSabe) and (ENSIN.Pon > 0)) then
+					sheet.perENSINtot = math.floor(ENSIN.Pon/2) + ENSIN.Bon;
+				elseif ((FlagSabe) and (ENSIN.Pon == 0)) then
+					sheet.perENSINtot = TesteSPR + ENSIN.Bon;
+				else
+					sheet.perENSINtot = 0;
+				end	
+				
+			local CARP = {}
+			CARP.Pon = tonumber(sheet.perCARPpon) or 0;
+			CARP.Bon = tonumber(sheet.perCARPbon) or 0;
+			if ((FlagTech) and (CARP.Pon > 0)) then
+				sheet.perCARPtot = 2*CARP.Pon + CARP.Bon;
+				elseif ((not FlagTech) and (CARP.Pon > 0)) then
+					sheet.perCARPtot = CARP.Pon + CARP.Bon;
+				elseif ((FlagTech) and (CARP.Pon == 0)) then
+					sheet.perCARPtot = TesteSPR + CARP.Bon;
+				else
+					sheet.perCARPtot = 0;
+				end	
+				
+			local JOAL = {}
+			JOAL.Pon = tonumber(sheet.perJOALpon) or 0;
+			JOAL.Bon = tonumber(sheet.perJOALbon) or 0;
+			if ((FlagTech) and (JOAL.Pon > 0)) then
+				sheet.perJOALtot = 2*JOAL.Pon + JOAL.Bon;
+				elseif ((not FlagTech) and (JOAL.Pon > 0)) then
+					sheet.perJOALtot = JOAL.Pon + JOAL.Bon;
+				elseif ((FlagTech) and (JOAL.Pon == 0)) then
+					sheet.perJOALtot = TesteSPR + JOAL.Bon;
+				else
+					sheet.perJOALtot = 0;
+				end	
+				
+			local ARME = {}
+			ARME.Pon = tonumber(sheet.perARMEpon) or 0;
+			ARME.Bon = tonumber(sheet.perARMEbon) or 0;
+			if ((FlagTech) and (ARME.Pon > 0)) then
+				sheet.perARMEtot = 2*ARME.Pon + ARME.Bon;
+				elseif ((not FlagTech) and (ARME.Pon > 0)) then
+					sheet.perARMEtot = ARME.Pon + ARME.Bon;
+				elseif ((FlagTech) and (ARME.Pon == 0)) then
+					sheet.perARMEtot = TesteSPR + ARME.Bon;
+				else
+					sheet.perARMEtot = 0;
+				end	
+
+			local ALFA = {}
+			ALFA.Pon = tonumber(sheet.perALFApon) or 0;
+			ALFA.Bon = tonumber(sheet.perALFAbon) or 0;
+			if ((FlagTech) and (ALFA.Pon > 0)) then
+				sheet.perALFAtot = 2*ALFA.Pon + ALFA.Bon;
+				elseif ((not FlagTech) and (ALFA.Pon > 0)) then
+					sheet.perALFAtot = ALFA.Pon + ALFA.Bon;
+				elseif ((FlagTech) and (ALFA.Pon == 0)) then
+					sheet.perALFAtot = TesteSPR + ALFA.Bon;
+				else
+					sheet.perALFAtot = 0;
+				end	
+				
+			local ESCU = {}
+			ESCU.Pon = tonumber(sheet.perESCUpon) or 0;
+			ESCU.Bon = tonumber(sheet.perESCUbon) or 0;
+			if ((FlagTech) and (ESCU.Pon > 0)) then
+				sheet.perESCUtot = 2*ESCU.Pon + ESCU.Bon;
+				elseif ((not FlagTech) and (ESCU.Pon > 0)) then
+					sheet.perESCUtot = ESCU.Pon + ESCU.Bon;
+				elseif ((FlagTech) and (ESCU.Pon == 0)) then
+					sheet.perESCUtot = TesteSPR + ESCU.Bon;
+				else
+					sheet.perESCUtot = 0;
+				end	
+			
+			local IdiomGER = tonumber(sheet.perIDIOponGER) or 0
+			local ConheGER = tonumber(sheet.perCONHponGER) or 0
+			local IdiomESP = tonumber(sheet.perIDIOponESP) or 0
+			local ConheESP = tonumber(sheet.perCONHponESP) or 0
+			local PeriTirar = tonumber(sheet.PerTirar) or 0;
+			
+			sheet.PERGERG = ARTES.Pon + DANCA.Pon + INSTRU.Pon + CANTO.Pon + ATUA.Pon + ACRO.Pon + PRONT.Pon +
+							 CULIN.Pon + NEGO.Pon + ETIQ.Pon + INTI.Pon + LIDER.Pon + LABI.Pon + SEDU.Pon + MACH.Pon +
+							 ARC.Pon + BRIG.Pon + CAJA.Pon + CHICO.Pon + ARDF.Pon + FACA.Pon + ARDH.Pon + ESPA.Pon +
+							 ARDA.Pon + TWOAR.Pon + SISDA.Pon + ALQU.Pon + EXPL.Pon + CURA.Pon + INVE.Pon + REPA.Pon + 
+							 SIST.Pon + VEIC.Pon + TRAN.Pon + ESCA.Pon + NAVE.Pon + PILH.Pon + CAVA.Pon + SOBR.Pon + 
+							 NATA.Pon + RAST.Pon + DISF.Pon + FUGA.Pon + JOGO.Pon + AFEC.Pon + PUNG.Pon + 
+							 FURT.Pon + MANH.Pon + ARMAD.Pon + INVEST.Pon + ENSIN.Pon + CARP.Pon + JOAL.Pon + ARME.Pon + 
+							 ALFA.Pon + ESCU.Pon + IdiomGER + ConheGER - PeriTirar;
+			sheet.PERESPG = IdiomESP + ConheESP;
+
+			local perClasse = tonumber(sheet.ponPER) or 0
+			sheet.PERGER = perClasse + ((Nivel-1)*10);
+			sheet.PERESP = 160 + tonumber((Nivel-1)*6);					
+		</event>
+    </dataLink>
+
+	<dataLink fields="{'basLV','basHPEXT','basMPEXT','dHP1','dMP1','VIT1','ESP1','fixVIT','fixdHP','fixESP','fixDMP',
+						'basHPDADO','basMPDADO','FlagHPMP'}">
+		<event name="onChange">
+			Nivel = tonumber(sheet.basLV) or 1;
+			local fVIT = sheet.fixVIT or false;
+			local fESP = sheet.fixESP or false;
+			local fdHP = sheet.fixdHP or false;
+			local fdMP = sheet.fixDMP or false;
+			local HPExt = tonumber(sheet.basHPEXT) or 0;
+			local MPExt = tonumber(sheet.basMPEXT) or 0;
+			local dHP1 = tonumber(sheet.dHP1) or 0;
+			if (fdHP) then
+				dHP1 = tonumber(sheet.basHPDADO) or 0;
+				end
+			local dMP1 = tonumber(sheet.dMP1) or 0;
+			if (fdMP) then
+				dMP1 = tonumber(sheet.basMPDADO) or 0;
+				end
+			local VIT1 = tonumber(sheet.VIT1) or 0;
+			if (fVIT) then
+				VIT1 = tonumber(sheet.totVIT) or 0;
+				end
+			local ESP1 = tonumber(sheet.ESP1) or 0;
+			if (fESP) then
+				ESP1 = tonumber(sheet.totSPR) or 0;
+				end
+			local HPTot = 30 + dHP1 + VIT1 + HPExt;
+			local MPTot = 10 + dMP1 + ESP1 + MPExt;
+			local HPPorc = tonumber(sheet.basHPBON) or 0
+			local MPPorc = tonumber(sheet.basMPBON) or 0
+			local DaHP;
+			local DaMP;
+			local VIT;
+			local ESP;
+			if Nivel > 1 then
+				for i = 2, Nivel, 1 do
+					DaHP = tonumber(sheet["dHP" .. i]) or 0;
+					if (fdHP) then
+						DaHP = tonumber(sheet.basHPDADO) or 0;
+						end
+					DaMP = tonumber(sheet["dMP" .. i]) or 0;
+					if (fdMP) then
+						DaMP = tonumber(sheet.basMPDADO) or 0;
+						end
+					VIT = tonumber(sheet["VIT" .. i]) or 0;
+					if (fVIT) then
+						VIT = tonumber(sheet.totVIT) or 0;
+						end
+					ESP = tonumber(sheet["ESP" .. i]) or 0;
+					if (fESP) then
+						ESP = tonumber(sheet.totSPR) or 0;
+						end
+					HPTot = HPTot + DaHP + math.floor(VIT/2) + HPExt;
+					MPTot = MPTot + DaMP + math.floor(ESP/2) + MPExt;
+					end
+				end
+			sheet.HPMaxEXP = HPTot
+			sheet.basHPMax = math.floor(HPTot*(1+(HPPorc/100)))
+			sheet.MPMaxEXP = MPTot
+			sheet.basMPMax = math.floor(MPTot*(1+(MPPorc/100)))
+			</event>
+		</dataLink>
+		
+	</form>			

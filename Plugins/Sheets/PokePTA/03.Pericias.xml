@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmPericias" align="client" theme="dark" margins="{top=1}">
+
+	<layout left="000" top="000" height="650" width="1100">
+		<image left="000" top="000" height="650" width="1100" src="/img/Pokeball.jpg" style="autoFIT" />
+		</layout>
+
+	<template name="pericia">
+        <radioButton top="$(Top)" left="00" width="20" height="20" groupName="grupo$(Nome2)" field="per$(Nome2)" fieldValue="0"/>                                
+        <radioButton top="$(Top)" left="25" width="20" height="20" groupName="grupo$(Nome2)" field="per$(Nome2)" fieldValue="1"/>                                 
+        <radioButton top="$(Top)" left="50" width="20" height="20" groupName="grupo$(Nome2)" field="per$(Nome2)" fieldValue="2"/>
+        <dataLink field="per$(Nome2)" defaultValue="0" />
+		<button left="75" top="$(Top)" height="20" width="120" text="$(Nome1)" horzTextAlign="leading">
+			<event name="onClick">
+				local mesa = Firecast.getMesaDe(sheet);
+				local Pericia = tonumber(sheet.per$(Nome2)) or 0
+				local nome = "$(Nome1)" or "Perícia"
+				local nomTr = sheet.baseName or "Treinador"
+				local AttSelect = tonumber($(Att)) or 0;
+				local Ataque = sheet.ATK_mod or 0;
+				local Defesa = sheet.DEF_mod or 0;
+				local AtaEsp = sheet.SPATK_mod or 0;
+				local DefEsp = sheet.SPDEF_mod or 0;
+				local Veloc = sheet.SPD_mod or 0;			
+				local Atributos = {Ataque, Defesa, AtaEsp, DefEsp, Veloc}
+				local bonAtt = 0
+				if (Pericia == 1) then
+					bonAtt = Atributos[AttSelect];
+					end
+				if (Pericia == 2) then
+					bonAtt = Atributos[AttSelect]*2;
+					end										
+				local bonFix = 0;
+				if Pericia == 1 then
+					bonFix = 2;
+					end
+				if Pericia == 2 then
+					bonFix = 4;
+					end
+				local Total = bonAtt + bonFix 
+				local Rolagem = rrpg.interpretarRolagem("1d20")
+				Rolagem:concatenar(Total);
+				mesa.activeChat:rolarDados(Rolagem, "Teste da Perícia:[§B] " .. nome .. "[§B] usada por " .. nomTr)
+				</event>
+			</button>	
+		</template>
+
+	<layout left="010" top="030" height="150" width="300">		
+		<label top="00" left="05" width="20" height="20"  text="0" autoSize="true"/>
+		<label top="00" left="30" width="20" height="20"  text="1" autoSize="true"/>
+		<label top="00" left="55" width="20" height="20"  text="2" autoSize="true"/>
+		<label left="75" top="00" height="20" width="120" text="Perícias de Ataque" autoSize="true"/>
+		<pericia Top ="025" Att="1" Nome1 = "Corrida" Nome2="Corrida"/>
+		<pericia Top ="050" Att="1" Nome1 = "Força" Nome2="Forca"/>
+		<pericia Top ="075" Att="1" Nome1 = "Intimidação" Nome2="Intimidacao"/>
+		<pericia Top ="100" Att="1" Nome1 = "Salto" Nome2="Salto"/>
+		</layout>
+			
+	<layout left="010" top="250" height="150" width="300">		
+		<label top="00" left="05" width="20" height="20"  text="0" autoSize="true"/>
+		<label top="00" left="30" width="20" height="20"  text="1" autoSize="true"/>
+		<label top="00" left="55" width="20" height="20"  text="2" autoSize="true"/>
+		<label left="75" top="00" height="20" width="120" text="Perícias de Defesa" autoSize="true"/>
+		<pericia Top ="025" Att="2" Nome1 = "Concentração" Nome2="Concentra"/>
+		<pericia Top ="050" Att="2" Nome1 = "Deflexão" Nome2="Deflex"/>
+		<pericia Top ="075" Att="2" Nome1 = "Incansável" Nome2="Incansa"/>
+		<pericia Top ="100" Att="2" Nome1 = "Regeneração" Nome2="Regen"/>		
+		</layout>
+
+	<layout left="310" top="030" height="150" width="300">		
+		<label top="00" left="05" width="20" height="20"  text="0" autoSize="true"/>
+		<label top="00" left="30" width="20" height="20"  text="1" autoSize="true"/>
+		<label top="00" left="55" width="20" height="20"  text="2" autoSize="true"/>
+		<label left="75" top="00" height="20" width="150" text="Perícias de A. Especial" autoSize="true"/>
+		<pericia Top ="025" Att="3" Nome1 = "Engenharia" Nome2="Engenha"/>
+		<pericia Top ="050" Att="3" Nome1 = "História" Nome2="Historia"/>
+		<pericia Top ="075" Att="3" Nome1 = "Investigação" Nome2="Investig"/>
+		<pericia Top ="100" Att="3" Nome1 = "Programação" Nome2="Program"/>	
+		</layout>			
+
+	<layout left="310" top="250" height="150" width="300">		
+		<label top="00" left="05" width="20" height="20"  text="0" autoSize="true"/>
+		<label top="00" left="30" width="20" height="20"  text="1" autoSize="true"/>
+		<label top="00" left="55" width="20" height="20"  text="2" autoSize="true"/>
+		<label left="75" top="00" height="20" width="150" text="Perícias de D. Especial" autoSize="true"/>
+		<pericia Top ="025" Att="4" Nome1 = "Empatia" Nome2="Empatia"/>
+		<pericia Top ="050" Att="4" Nome1 = "Manha" Nome2="Manha"/>
+		<pericia Top ="075" Att="4" Nome1 = "Manipulação" Nome2="Manipul"/>
+		<pericia Top ="100" Att="4" Nome1 = "Percepção" Nome2="Percepcao"/>	
+		</layout>
+
+	<layout left="610" top="030" height="600" width="1000">		
+		<label top="00" left="05" width="20" height="20"  text="0" autoSize="true"/>
+		<label top="00" left="30" width="20" height="20"  text="1" autoSize="true"/>
+		<label top="00" left="55" width="20" height="20"  text="2" autoSize="true"/>
+		<label left="75" top="00" height="20" width="150" text="Perícias de Velocidade" autoSize="true"/>
+		<pericia Top ="025" Att="5" Nome1 = "Acrobacia" Nome2="Acrobacia"/>
+		<pericia Top ="050" Att="5" Nome1 = "Furtividade" Nome2="Furtiv"/>
+		<pericia Top ="075" Att="5" Nome1 = "Performance" Nome2="Perfomace"/>
+		<pericia Top ="100" Att="5" Nome1 = "Prestidigitação" Nome2="Prestid"/>	
+		</layout>
+	
+	<layout left="610" top="250" height="320" width="420">
+		<label left="000" top="000" height="20" width="120" text="Capacidades" autoSize="true" />
+		<checkBox left="000" top="025" height="20" width="120" text="Apneia" field="cap_APN"/>
+		<checkBox left="000" top="050" height="20" width="120" text="Imunidade" field="cap_IMU"/>
+		<checkBox left="000" top="075" height="20" width="120" text="Jejum" field="cap_JEJ"/>
+		<checkBox left="000" top="100" height="20" width="120" text="Resiliência" field="cap_RES"/>			
+		</layout>		
+
+	</form>

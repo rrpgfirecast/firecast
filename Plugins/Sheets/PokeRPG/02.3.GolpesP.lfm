@@ -1,0 +1,313 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmPokemon3" align="client" theme="dark" margins="{top=1}">
+	 <scrollBox align="left" width="880">	
+		<template name="AtaquePoke">
+			<rectangle align="client" color="black" compilerOrder="0"/>
+			
+			<label left="5" top="5" width="70" height="25" text="Golpe $(num)"/>
+			<edit vertTextAlign="center" left="75" top="5" width="160" height="25" field="golpeP$(num)"/>
+
+			<label left="5" top="30" width="80" height="25" text="Tipo"/>
+			<comboBox left="75" top="32" width="90" height="20" field="campoElem3$(num)" horzTextAlign="leading" items="{'Normal', 'Fogo', 'Água', 'Elétrico', 'Grama', 'Gelo', 'Lutador', 'Venenoso', 'Terra', 'Voador', 'Psíquico', 'Inseto', 'Rocha', 'Fantasma', 'Dragão', 'Noturno', 'Metálico', 'Fada', ''}" values="{'1', '2', '3', '4','5','6', '7','8','9','10','11','12','13','14','15','16','17','18','19'}"/>
+			<dataLink field="campoElem3$(num)" defaultValue="19" />	
+
+			<label left="170" top="32" width="10" height="25" text="Z:"/>
+			<edit vertTextAlign="center" left="190" top="32" width="45" height="25" field="danoZ$(num)" hint = "Poder do golpe Z"/>		
+
+			<label left="5" top="55" width="80" height="25" text="ACP/ACS(%)"/>
+			<edit vertTextAlign="center" left="75" top="55" width="75" height="25" field="ACP$(num)" hint ="Acerto Primário" type="number" horzTextAlign="center"/>
+			<edit vertTextAlign="center" left="160" top="55" width="75" height="25" field="ACS$(num)" hint ="Acerto Secundário" type="number" horzTextAlign="center"/>
+			
+			<label left="240" top="6" width="50" height="25" text="Classe"/>
+			<comboBox left="282" top="6" width="82" height="25" field="classeP$(num)" horzTextAlign="center" items="{'Ataque', 'Especial', 'Efeito'}" values="{'1', '2', '3'}" />
+
+			<label left="240" top="31" width="50" height="25" text="Cont."/>
+			<edit vertTextAlign="center" left="282" top="31" width="82" height="25" field="contP$(num)" hint="Contato" horzTextAlign="center"/>
+             
+			<label left="240" top="55" width="50" height="25" text="Área"/>
+			<edit vertTextAlign="center" left="282" top="55" width="82" height="25" field="Area$(num)" horzTextAlign="center"/>
+			
+			<label left="370" top="6" width="70" height="25" text="Prioridade"/>
+			<edit vertTextAlign="center" left="443" top="6" width="42" height="25" field="prioP$(num)" horzTextAlign="center"/>         		
+
+			<label left="370" top="31" width="70" height="25" text="Poder"/>
+			<edit vertTextAlign="center" left="443" top="31" width="42" height="25" field="danoP$(num)" horzTextAlign="center" type="number"/>         		
+
+			<label left="370" top="55" width="70" height="25" text="Dano Bôn."/>
+			<edit vertTextAlign="center" left="443" top="55" width="42" height="25" field="BonDMGP$(num)" horzTextAlign="center" type="number"/>  
+			
+			<button left="488" top="6" width="82" text="Acerto" fontSize="11">
+				<event name="onClick">
+					if sheet == nil then return end;
+					local mesa = Firecast.getMesaDe(sheet)
+					local NomeGolpe = self.boxDetalhesDoItem.node.golpeP$(num) or "Golpe"
+					local NomeUser = self.boxDetalhesDoItem.node.campoNome or "Pokémon"
+					local CLASSE = tonumber(self.boxDetalhesDoItem.node.classeP$(num)) or 3
+					local DAN_ATT = 0;
+					if CLASSE == 1 then
+						DAN_ATT = self.boxDetalhesDoItem.node.Ataque_Form1 or 0;
+						end
+					if CLASSE == 2 then
+						DAN_ATT = self.boxDetalhesDoItem.node.AtaqueEsp_Form1 or 0;
+						end
+					local DanSTAB = 0;
+					local MSG_Crit = "";
+					local MSG_Effe = "";
+					local MSG_ACC = "";
+					local NomeEfeito = self.boxDetalhesDoItem.node.EFF$(num) or ""
+					local Acerto = tonumber(self.boxDetalhesDoItem.node.ACP$(num)) or 0 
+						Acerto = math.floor(Acerto/10)
+					local Elemento = tonumber(self.boxDetalhesDoItem.node.campoElem3$(num)) or 19;
+					local Tipo1 = tonumber(self.boxDetalhesDoItem.node.campoElem1) or 19;
+					local Tipo2 = tonumber(self.boxDetalhesDoItem.node.campoElem2) or 19;
+					local Poder = tonumber(self.boxDetalhesDoItem.node.danoP$(num)) or 0 
+					if (Elemento ~= 19) then
+						if (Elemento == Tipo1 or Elemento == Tipo2) then
+							DanSTAB = math.ceil(Poder/2);
+							end
+						end
+					local DanBon = tonumber(self.boxDetalhesDoItem.node.BonDMGP$(num)) or 0 
+					local MCRIT = tonumber(self.boxDetalhesDoItem.node.MCRIT$(num)) or 10;
+					local MEFFE = tonumber(self.boxDetalhesDoItem.node.MARGEF$(num)) or 11;
+					local EDCPREC = tonumber(self.boxDetalhesDoItem.node.edcPREC) or 0;
+					local EDCCRIT = tonumber(self.boxDetalhesDoItem.node.edcCRIT) or 1;
+					local CRITOT = MCRIT + EDCCRIT -1;
+					local ACC = math.random(1,10)
+					local Acerto2 = Acerto + EDCPREC;
+					local Acerto2po = "" .. Acerto2*10 .. "%"
+					local Acerto3 = 10 - Acerto2;
+					local DANFINAL = math.ceil(ACC/2) + Poder + DanSTAB + DAN_ATT + DanBon
+					if (ACC > Acerto3) then
+						MSG_ACC = "; [§K9]Acertou![§K14](" .. Acerto2po .. ") "
+						end
+					if (ACC >= CRITOT) then
+						DANFINAL = math.floor(DANFINAL*1.5)
+						MSG_Crit = "; [§K9](Crítico)[§K14] "
+						end
+					if (ACC >= MEFFE) then
+						MSG_Effe = "; " .. NomeEfeito .. " causado."
+						end
+					local MSG_DANO = "; [§B]Dano:[§B] " .. DANFINAL .. ""
+					if (CLASSE == 3) then
+						MSG_DANO = "";
+						end
+					if (Acerto3 >= ACC) then
+						MSG_ACC = "; [§K4]Errou![§K14](" .. Acerto2po .. ") "
+						MSG_DANO ="";
+						MSG_Crit ="";
+						MSG_Effe ="";
+						end
+					mesa.activeChat:enviarMensagem("[§B]Dado:[§B]" .. ACC .. MSG_ACC .. MSG_Crit .. MSG_DANO .. "; [§B]" .. NomeGolpe .. "[§B] usado por " .. NomeUser .. MSG_Effe) 								
+					</event>
+				</button>			
+		
+			<button left="488" top="31" width="82" text="A. Seguido" fontSize="11">
+				<event name="onClick">
+					if sheet == nil then return end;
+					local mesa = Firecast.getMesaDe(sheet)
+					local NomeGolpe = self.boxDetalhesDoItem.node.golpeP$(num) or "Golpe"
+					local NomeUser = self.boxDetalhesDoItem.node.campoNome or "Pokémon"
+					local CLASSE = tonumber(self.boxDetalhesDoItem.node.classeP$(num)) or 3
+					local DAN_ATT = 0;
+					if CLASSE == 1 then
+						DAN_ATT = self.boxDetalhesDoItem.node.Ataque_Form1 or 0;
+						end
+					if CLASSE == 2 then
+						DAN_ATT = self.boxDetalhesDoItem.node.AtaqueEsp_Form1 or 0;
+						end
+					local DanSTAB = 0;
+					local MSG_Crit = "";
+					local MSG_Effe = "";
+					local MSG_ACC = "";
+					local NomeEfeito = self.boxDetalhesDoItem.node.EFF$(num) or ""
+					local Acerto = tonumber(self.boxDetalhesDoItem.node.ACS$(num)) or 0 
+						Acerto = math.floor(Acerto/10)
+					local Elemento = tonumber(self.boxDetalhesDoItem.node.campoElem3$(num)) or 19;
+					local Tipo1 = tonumber(self.boxDetalhesDoItem.node.campoElem1) or 19;
+					local Tipo2 = tonumber(self.boxDetalhesDoItem.node.campoElem2) or 19;
+					local Poder = tonumber(self.boxDetalhesDoItem.node.danoP$(num)) or 0 
+					if (Elemento ~= 19) then
+						if (Elemento == Tipo1 or Elemento == Tipo2) then
+							DanSTAB = math.ceil(Poder/2);
+							end
+						end
+					local DanBon = tonumber(self.boxDetalhesDoItem.node.BonDMGP$(num)) or 0 
+					local MCRIT = tonumber(self.boxDetalhesDoItem.node.MCRIT$(num)) or 10;
+					local MEFFE = tonumber(self.boxDetalhesDoItem.node.MARGEF$(num)) or 11;
+					local EDCPREC = tonumber(self.boxDetalhesDoItem.node.edcPREC) or 0;
+					local EDCCRIT = tonumber(self.boxDetalhesDoItem.node.edcCRIT) or 1;
+					local CRITOT = MCRIT + EDCCRIT -1;
+					local ACC = math.random(1,10)
+					local Acerto2 = Acerto + EDCPREC;
+					local Acerto2po = "" .. Acerto2*10 .. "%"
+					local Acerto3 = 10 - Acerto2;
+					local DANFINAL = math.ceil(ACC/2) + Poder + DanSTAB + DAN_ATT + DanBon
+					if (ACC > Acerto3) then
+						MSG_ACC = "; [§K9]Acertou![§K14](" .. Acerto2po .. ") "
+						end
+					if (ACC >= CRITOT) then
+						DANFINAL = math.floor(DANFINAL*1.5)
+						MSG_Crit = "; [§K9](Crítico)[§K14] "
+						end
+					if (ACC >= MEFFE) then
+						MSG_Effe = "; " .. NomeEfeito .. " causado."
+						end
+					local MSG_DANO = "; [§B]Dano:[§B] " .. DANFINAL .. ""
+					if (CLASSE == 3) then
+						MSG_DANO = "";
+						end
+					if (Acerto3 >= ACC) then
+						MSG_ACC = "; [§K4]Errou![§K14](" .. Acerto2po .. ") "
+						MSG_DANO ="";
+						MSG_Crit ="";
+						MSG_Effe ="";
+						end
+					mesa.activeChat:enviarMensagem("[§B]Dado:[§B]" .. ACC .. MSG_ACC .. MSG_Crit .. MSG_DANO .. "; [§B]" .. NomeGolpe .. "[§B] usado por " .. NomeUser .. MSG_Effe) 								
+					</event>
+				</button>	
+			
+			<button left="488" top="55" width="82" text="Golpe Z" fontSize="11">
+				<event name="onClick">
+					if sheet == nil then return end;
+					local mesa = Firecast.getMesaDe(sheet)
+					local NomeGolpe
+					local NomeUser = self.boxDetalhesDoItem.node.campoNome or "Pokémon"
+					local CLASSE = tonumber(self.boxDetalhesDoItem.node.classeP$(num)) or 3
+					local DAN_ATT = 0;
+					if CLASSE == 1 then
+						DAN_ATT = self.boxDetalhesDoItem.node.Ataque_Form1 or 0;
+						end
+					if CLASSE == 2 then
+						DAN_ATT = self.boxDetalhesDoItem.node.AtaqueEsp_Form1 or 0;
+						end
+					local DanSTAB = 0;
+					local MSG_Crit = "";
+					local MSG_ACC = "; [§K9]Auto-Acerto![§K14] "
+					local Elemento = tonumber(self.boxDetalhesDoItem.node.campoElem3$(num)) or 19;
+					if (Elemento == 1) then 
+						NomeGolpe = "Breakneck Blitz"
+						end
+					if (Elemento == 2) then 
+						NomeGolpe = "Inferno Overdrive"
+						end
+					if (Elemento == 3) then 
+						NomeGolpe = "Hydro Vortex"
+						end
+					if (Elemento == 4) then 
+						NomeGolpe = "Gigavolt Havoc"
+						end
+					if (Elemento == 5) then 
+						NomeGolpe = "Bloom Doom"
+						end
+					if (Elemento == 6) then 
+						NomeGolpe = "Subzero Slammer"
+						end
+					if (Elemento == 7) then 
+						NomeGolpe = "All-Out Plummeling"
+						end
+					if (Elemento == 8) then 
+						NomeGolpe = "Acid Downpur"
+						end
+					if (Elemento == 9) then 
+						NomeGolpe = "Tectonic Rage"
+						end
+					if (Elemento == 10) then 
+						NomeGolpe = "Supersonic Skystrike"
+						end
+					if (Elemento == 11) then 
+						NomeGolpe = "Shattered Psyche"
+						end
+					if (Elemento == 12) then 
+						NomeGolpe = "Savage Spin-Out"
+						end
+					if (Elemento == 13) then 
+						NomeGolpe = "Continental Crush"
+						end
+					if (Elemento == 14) then 
+						NomeGolpe = "Never-Ending Nightmare"
+						end
+					if (Elemento == 15) then 
+						NomeGolpe = "Devastating Drake"
+						end
+					if (Elemento == 16) then 
+						NomeGolpe = "Blackhole Eclipse"
+						end
+					if (Elemento == 17) then 
+						NomeGolpe = "Corkscrew Crash"
+						end
+					if (Elemento == 18) then 
+						NomeGolpe = "Twinkle Tackle"
+						end
+					local Tipo1 = tonumber(self.boxDetalhesDoItem.node.campoElem1) or 19;
+					local Tipo2 = tonumber(self.boxDetalhesDoItem.node.campoElem2) or 19;
+					local Poder = tonumber(self.boxDetalhesDoItem.node.danoZ$(num)) or 0 
+					if (Elemento ~= 19) then
+						if (Elemento == Tipo1 or Elemento == Tipo2) then
+							DanSTAB = math.ceil(Poder/2);
+							end
+						end
+					local DanBon = tonumber(self.boxDetalhesDoItem.node.BonDMGP$(num)) or 0 
+					local MCRIT = tonumber(self.boxDetalhesDoItem.node.MCRIT$(num)) or 10;
+					local EDCCRIT = tonumber(self.boxDetalhesDoItem.node.edcCRIT) or 1;
+					local CRITOT = MCRIT + EDCCRIT -1;
+					local ACC = math.random(1,10)
+					local DANFINAL = math.ceil(ACC/2) + Poder + DanSTAB + DAN_ATT + DanBon
+					if (ACC >= CRITOT) then
+						DANFINAL = math.floor(DANFINAL*1.5)
+						MSG_Crit = "; [§K9](Crítico)[§K14] "
+						end
+					local MSG_DANO = "; [§B]Dano:[§B] " .. DANFINAL .. ""
+					if (CLASSE == 3) then
+						MSG_DANO = "";
+						end
+					mesa.activeChat:enviarMensagem("[§B]Dado:[§B]" .. ACC .. MSG_ACC .. MSG_Crit .. MSG_DANO .. "; [§B]" .. NomeGolpe .. "[§B] usado por " .. NomeUser) 								
+					</event>
+			</button>
+			
+			
+			<textEditor left="575" top="5" width="280" height="50" field="campoEfeitoGolpesP$(num)"/>
+			<label left="575" top="55" width="50" height="25" text="M.Crit."/>
+			<edit vertTextAlign="center" left="630" top="55" width="50" height="25" field="MCRIT$(num)" hint="Margem de Crítico" horzTextAlign="center" type="number"/>			
+			<dataLink field="BCRIT$(num)" defaultValue="10" />	
+			<label left="685" top="55" width="50" height="25" text="Efeito"/>
+			<edit vertTextAlign="center" left="740" top="55" width="80" height="25" field="EFF$(num)" hint="Efeito Causado" horzTextAlign="center"/>			
+			<edit vertTextAlign="center" left="825" top="55" width="30" height="25" field="MARGEF$(num)" hint="Margem" horzTextAlign="center" type="number"/>			
+
+		</template>
+			
+		<layout left="0" top="0" width="864" height="953">
+			<rectangle align="client" color="#0000007F" compilerOrder="0"/>
+			<layout left="2" top="2" width="880" height="92" compilerOrder="1">
+				<AtaquePoke num="1"/>
+				</layout>
+			<layout left="2" top="97" width="880" height="92" compilerOrder="1">
+				<AtaquePoke num="2"/>
+				</layout>
+			<layout left="2" top="192" width="880" height="92" compilerOrder="1">
+				<AtaquePoke num="3"/>
+				</layout>
+			<layout left="2" top="288" width="880" height="92" compilerOrder="1">
+				<AtaquePoke num="4"/>
+				</layout>
+			<layout left="2" top="427" width="880" height="92" compilerOrder="1">
+				<label left="0" top="0" width="880" height="25" text="Golpes de Classe ou Outros" fontStyle = "Bold" fontSize ="16" horzTextAlign ="center"/>
+				</layout>
+			<layout left="2" top="478" width="880" height="92" compilerOrder="1">
+				<AtaquePoke num="5"/>
+				</layout>
+			<layout left="2" top="573" width="880" height="92" compilerOrder="1">
+				<AtaquePoke num="6"/>
+				</layout>		
+			<layout left="2" top="668" width="880" height="92" compilerOrder="1">
+				<AtaquePoke num="7"/>
+				</layout>
+			<layout left="2" top="763" width="880" height="92" compilerOrder="1">
+				<AtaquePoke num="8"/>
+				</layout>
+			<layout left="2" top="858" width="880" height="92" compilerOrder="1">
+				<AtaquePoke num="9"/>
+				</layout>
+		</layout>
+			
+	</scrollBox>
+</form>

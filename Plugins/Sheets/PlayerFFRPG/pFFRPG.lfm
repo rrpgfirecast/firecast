@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form formType="sheetTemplate" dataType="HITO_PLAYER_FFRPG" title="Hitoshura - FFRPG Jogador" name="frmHITOPCFFRPG" theme="dark" padding="{left=4, top=4, right=4, bottom=4}">
+	<scrollBox align="client">
+		<import file="99.Datalinks.xml" />
+		<import file="99.Templates.xml" />
+		<tabControl left="20" top="20" height="650" width="1100">
+            <tab title="Geral">
+				<scrollBox align="client">
+					<import file="01.Geral.xml" />	
+					</scrollBox>
+				</tab>
+			<tab title="HP/MP">
+				<scrollBox align="client">				
+					<import file="09.HPMPLog.xml" />   
+					</scrollBox>
+				</tab>				
+			<tab title="Inventário">
+				<scrollBox align="client">	
+					<import file="02.Inventario.xml" />	
+					</scrollBox>
+				</tab>
+			<tab title="Perícias Gerais">
+				<scrollBox align="client">
+					<import file="03.Pericias.xml" />	
+					</scrollBox>
+				</tab>
+			<tab title="Específicas">
+				<scrollBox align="client">
+					<import file="04.Especificas.xml" />	
+					</scrollBox>
+				</tab>
+            <tab title="Background">
+				<scrollBox align="client">
+					<import file="05.Background.xml" />	
+					</scrollBox>
+				</tab>
+			<tab title="Macros">
+				<scrollBox align="client">
+					<import file="07.Macros2.xml" />   
+					</scrollBox>
+				</tab>
+			<tab title="Notas">
+				<scrollBox align="client">
+					<import file="06.Notas.xml" />	
+					</scrollBox>
+				</tab>
+			<tab title="Summons">
+				<scrollBox align="client">
+					<import file="10.Summons.xml" />	
+					</scrollBox>
+				</tab>
+			 <tab title="Créditos">	
+				<scrollBox align="client">
+					<import file="08.Creditos.xml" />   
+					</scrollBox>
+				</tab> 
+			</tabControl>
+		</scrollBox>		
+	</form>		
+		
+	
+		
+	
+

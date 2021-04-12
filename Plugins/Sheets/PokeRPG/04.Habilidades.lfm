@@ -1,0 +1,325 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmFichaRPGmeister4_svg" align="client" theme="dark" margins="{top=1}">
+	 <scrollBox align="client">
+
+	 	<template name="habilidadeSmallCenter">
+			<flowPart minWidth="90" maxWidth="100" height="35">
+				<label align="top" class="tituloCampo" fontSize="10" text="$(text)" horzTextAlign="center" wordWrap="true" textTrimming="none" autoSize="true"/>
+				<edit align="client" class="" field="$(field)" horzTextAlign="center" fontSize="12" type="number"/>
+			</flowPart>
+		</template>
+		<template name="habilidadeLarge">
+			<flowPart minWidth="180" maxWidth="200" height="35">
+				<label align="top" class="tituloCampo" fontSize="10" text="$(text)" horzTextAlign="center" wordWrap="true" textTrimming="none" autoSize="true"/>
+				<edit align="client" class="" field="$(field)" fontSize="12"/>
+			</flowPart>
+		</template>
+
+	 	<popup name="popHabilidade" width="300" height="240" backOpacity="0.4" autoScopeNode="false">
+			<flowLayout align="top" autoHeight="true" maxControlsPerLine="3" margins="{bottom=4}" horzAlign="center">
+				<habilidadeSmallCenter text="Nível" field="nivelHabilidade"/>
+				<habilidadeLarge text="Requisitos" field="obtencaoHabilidade"/>
+				<habilidadeSmallCenter text="Tags" field="tagHabilidade"/>
+				<habilidadeLarge text="Frequência" field="freqHabilidade"/>
+				<dataLink field="nivelHabilidade">
+					<event name="onChange">
+						local rcl = self:findControlByName("rclListaDosTalentos");
+						if rcl~= nil then
+							rcl:sort();
+						end;
+						rcl = self:findControlByName("rclListaDosOutros");
+						if rcl~= nil then
+							rcl:sort();
+						end;
+						rcl = self:findControlByName("rclListaDasCaracteristicasClasse");
+						if rcl~= nil then
+							rcl:sort();
+						end;
+					</event>
+				</dataLink>
+			</flowLayout>
+			<textEditor align="client" field="descricao"/>
+		</popup>
+
+			<layout left="000" top="000" height="600" width="1095">
+				<image left="000" top="000" height="650" width="1100" src="/img/Pokeball.jpg" style="autoFIT" />
+            </layout>
+			
+		
+		<layout left="295" top="25" width="380" height="520">
+			<rectangle align="client" color="#0000007F"/>
+			<rectangle left="000" top="000" width="380" height="40" color="darkred" strokeColor="black" strokeSize="5" />
+			<label left="0" top="5" width="380" height="20" text="EDGES" autoSize="true" fontColor ="White" fontSize = "18" horzTextAlign="center"/>
+			<button text="Novo Edge" left="5" top="30" width="370" height="20" onClick="self.rclListaDosOutros:append();"/>
+			<recordList name="rclListaDosOutros" field="campoDosOutros" templateForm="frmFichaRPGmeister4h_svg" left="5" top="50" width="370" height="460" layout="vertical">
+				<event name="onCompare">
+		            return ((tonumber(nodeA.nivelHabilidade) or 0) - (tonumber(nodeB.nivelHabilidade) or 0));
+		        </event>
+			</recordList>
+		</layout>
+		
+		<layout left="690" top="25" width="380" height="520">
+			<rectangle align="client" color="#0000007F"/>
+			<rectangle left="000" top="000" width="380" height="40" color="darkred" strokeColor="black" strokeSize="5" />
+			<label left="0" top="5" width="380" height="20" text="FEATURES" autoSize="true" fontColor ="White" fontSize = "18" horzTextAlign="center"/>
+			<button text="Nova Feature" left="5" top="30" width="370" height="20" onClick="self.rclListaDasCaracteristicasClasse:append();"/>
+			<recordList name="rclListaDasCaracteristicasClasse" field="campoDasCaracteristicasClasse" templateForm="frmFichaRPGmeister4h_svg" left="5" top="50" width="370" height="460" layout="vertical">
+				<event name="onCompare">
+		            return ((tonumber(nodeA.nivelHabilidade) or 0) - (tonumber(nodeB.nivelHabilidade) or 0));
+		        </event>
+			</recordList>
+		</layout>
+
+	<layout left="010" top="020" height="200" width="1000">		
+		<label left="00" top="00" height="20" width="120" text="Perícias de Corpo" autoSize="true" fontStyle="bold"/>
+		<label left="125" top="00" width="40" height="100" text="Nível" autoSize="true" horzTextAlign="center"/>
+		<label left="230" top="00" width="40" height="20" text="Bônus" autoSize="true" horzTextAlign="center"/>
+
+		<button left="00" top="25" height="20" width="120" text="Acrobacias" horzTextAlign="leading">
+			<event name="onClick">
+				sheet.nivPER = sheet.niv_ACRO;
+				sheet.bonPER = sheet.bon_ACRO;
+				sheet.namPER = "Acrobacias";
+				sheet.namUSE = sheet.baseName or "Treinador";
+				realizarTesteDePericia()
+			</event>			
+		</button>
+		<comboBox left="125" top="25" height="20" width="100" field="niv_ACRO" horzTextAlign="center" items="{'Patético', 'Destreinado', 'Noviço', 'Adepto', 'Expert', 'Mestre'}" values="{'1', '2', '3', '4', '5', '6'}"/>
+		<dataLink field="niv_ACRO" defaultValue="2"/>
+		<edit left="230" top="025" width="40" height="20"  field="bon_ACRO"/>
+		
+		<button left="00" top="50" height="20" width="120" text="Atletismo" horzTextAlign="leading">
+			<event name="onClick">
+				sheet.nivPER = sheet.niv_ATLE;
+				sheet.bonPER = sheet.bon_ATLE;
+				sheet.namPER = "Atletismo";
+				sheet.namUSE = sheet.baseName or "Treinador";
+				realizarTesteDePericia()
+			</event>
+		</button>
+		<comboBox left="125" top="050" height="20" width="100" field="niv_ATLE" horzTextAlign="center" items="{'Patético', 'Destreinado', 'Noviço', 'Adepto', 'Expert', 'Mestre'}" values="{'1', '2', '3', '4', '5', '6'}"/>
+		<dataLink field="niv_ATLE" defaultValue="2"/>
+		<edit left="230" top="050" width="40" height="20"  field="bon_ATLE"/>
+		
+		<button left="00" top="75" height="20" width="120" text="Combate" horzTextAlign="leading">
+			<event name="onClick">
+				sheet.nivPER = sheet.niv_COMB;
+				sheet.bonPER = sheet.bon_COMB;
+				sheet.namPER = "Combate";
+				sheet.namUSE = sheet.baseName or "Treinador";
+				realizarTesteDePericia()
+			</event>
+		</button>
+		<comboBox left="125" top="075" height="20" width="100" field="niv_COMB" horzTextAlign="center" items="{'Patético', 'Destreinado', 'Noviço', 'Adepto', 'Expert', 'Mestre'}" values="{'1', '2', '3', '4', '5', '6'}"/>
+		<dataLink field="niv_COMB" defaultValue="2"/>
+		<edit left="230" top="075" width="40" height="20"  field="bon_COMB"/>
+		
+		<button left="00" top="100" height="20" width="120" text="Furtividade" horzTextAlign="leading">
+			<event name="onClick">
+				sheet.nivPER = sheet.niv_FURT;
+				sheet.bonPER = sheet.bon_FURT;
+				sheet.namPER = "Furtividade";
+				sheet.namUSE = sheet.baseName or "Treinador";
+				realizarTesteDePericia()
+			</event>
+		</button>
+		<comboBox left="125" top="100" height="20" width="100" field="niv_FURT" horzTextAlign="center" items="{'Patético', 'Destreinado', 'Noviço', 'Adepto', 'Expert', 'Mestre'}" values="{'1', '2', '3', '4', '5', '6'}"/>
+		<dataLink field="niv_FURT" defaultValue="2"/>
+		<edit left="230" top="100" width="40" height="20"  field="bon_FURT"/>
+
+		<button left="00" top="125" height="20" width="120" text="Intimidação" horzTextAlign="leading">
+			<event name="onClick">
+				sheet.nivPER = sheet.niv_INTI;
+				sheet.bonPER = sheet.bon_INTI;
+				sheet.namPER = "Intimidação";
+				sheet.namUSE = sheet.baseName or "Treinador";
+				realizarTesteDePericia()
+			</event>
+		</button>
+		<comboBox left="125" top="125" height="20" width="100" field="niv_INTI" horzTextAlign="center" items="{'Patético', 'Destreinado', 'Noviço', 'Adepto', 'Expert', 'Mestre'}" values="{'1', '2', '3', '4', '5', '6'}"/>
+		<dataLink field="niv_INTI" defaultValue="2"/>
+		<edit left="230" top="125" width="40" height="20"  field="bon_INTI"/>
+		
+		<button left="00" top="150" height="20" width="120" text="Sobrevivência" horzTextAlign="leading">
+			<event name="onClick">
+				sheet.nivPER = sheet.niv_SOBR;
+				sheet.bonPER = sheet.bon_SOBR;
+				sheet.namPER = "Sobrevivência";
+				sheet.namUSE = sheet.baseName or "Treinador";
+				realizarTesteDePericia()
+			</event>
+		</button>
+		<comboBox left="125" top="150" height="20" width="100" field="niv_SOBR" horzTextAlign="center" items="{'Patético', 'Destreinado', 'Noviço', 'Adepto', 'Expert', 'Mestre'}" values="{'1', '2', '3', '4', '5', '6'}"/>
+		<dataLink field="niv_SOBR" defaultValue="2"/>
+		<edit left="230" top="150" width="40" height="20"  field="bon_SOBR"/>
+		</layout>	  
+
+	<layout left="010" top="210" height="200" width="1000">		
+		<label left="00" top="00" height="20" width="120" text="Perícias de Mente" autoSize="true" fontStyle="bold"/>
+		<label left="125" top="00" width="40" height="100" text="Nível" autoSize="true" horzTextAlign="center"/>
+		<label left="230" top="00" width="40" height="20" text="Bônus" autoSize="true" horzTextAlign="center"/>
+		
+		<button left="00" top="25" height="20" width="120" text="Astúcia" horzTextAlign="leading">
+			<event name="onClick">
+				sheet.nivPER = sheet.niv_ASTU;
+				sheet.bonPER = sheet.bon_ASTU;
+				sheet.namPER = "Astúcia";
+				sheet.namUSE = sheet.baseName or "Treinador";
+				realizarTesteDePericia()
+			</event>
+		</button>
+		<comboBox left="125" top="25" height="20" width="100" field="niv_ASTU" horzTextAlign="center" items="{'Patético', 'Destreinado', 'Noviço', 'Adepto', 'Expert', 'Mestre'}" values="{'1', '2', '3', '4', '5', '6'}"/>
+		<dataLink field="niv_ASTU" defaultValue="2"/>
+		<edit left="230" top="25" width="40" height="20"  field="bon_ASTU"/>		
+		
+		<button left="00" top="50" height="20" width="120" text="Ed. Geral" horzTextAlign="leading">
+			<event name="onClick">
+				sheet.nivPER = sheet.niv_EGER;
+				sheet.bonPER = sheet.bon_EGER;
+				sheet.namPER = "Educação Geral";
+				sheet.namUSE = sheet.baseName or "Treinador";
+				realizarTesteDePericia()
+			</event>
+		</button>
+		<comboBox left="125" top="050" height="20" width="100" field="niv_EGER" horzTextAlign="center" items="{'Patético', 'Destreinado', 'Noviço', 'Adepto', 'Expert', 'Mestre'}" values="{'1', '2', '3', '4', '5', '6'}"/>
+		<dataLink field="niv_EGER" defaultValue="2"/>
+		<edit left="230" top="50" width="40" height="20"  field="bon_EGER"/>	
+		
+		<button left="00" top="75" height="20" width="120" text="Ed. Oculta" horzTextAlign="leading">
+			<event name="onClick">
+				sheet.nivPER = sheet.niv_EOCU;
+				sheet.bonPER = sheet.bon_EOCU;
+				sheet.namPER = "Educação Oculta";
+				sheet.namUSE = sheet.baseName or "Treinador";
+				realizarTesteDePericia()
+			</event>
+		</button>
+		<comboBox left="125" top="075" height="20" width="100" field="niv_EOCU" horzTextAlign="center" items="{'Patético', 'Destreinado', 'Noviço', 'Adepto', 'Expert', 'Mestre'}" values="{'1', '2', '3', '4', '5', '6'}"/>
+		<dataLink field="niv_EOCU" defaultValue="2"/>
+		<edit left="230" top="75" width="40" height="20"  field="bon_EOCU"/>	
+
+		<button left="00" top="100" height="20" width="120" text="Ed. Pokémon" horzTextAlign="leading">
+			<event name="onClick">
+				sheet.nivPER = sheet.niv_EPOK;
+				sheet.bonPER = sheet.bon_EPOK;
+				sheet.namPER = "Educação Pokémon";
+				sheet.namUSE = sheet.baseName or "Treinador";
+				realizarTesteDePericia()
+			</event>
+		</button>
+		<comboBox left="125" top="100" height="20" width="100" field="niv_EPOK" horzTextAlign="center" items="{'Patético', 'Destreinado', 'Noviço', 'Adepto', 'Expert', 'Mestre'}" values="{'1', '2', '3', '4', '5', '6'}"/>
+		<dataLink field="niv_EPOK" defaultValue="2"/>
+		<edit left="230" top="100" width="40" height="20"  field="bon_EPOK"/>
+		
+		<button left="00" top="125" height="20" width="120" text="Ed. Tecnológica" horzTextAlign="leading">
+			<event name="onClick">				
+				sheet.nivPER = sheet.niv_ETEC;
+				sheet.bonPER = sheet.bon_ETEC;
+				sheet.namPER = "Educação Tecnológica";
+				sheet.namUSE = sheet.baseName or "Treinador";
+				realizarTesteDePericia()
+			</event>
+		</button>
+		<comboBox left="125" top="125" height="20" width="100" field="niv_ETEC" horzTextAlign="center" items="{'Patético', 'Destreinado', 'Noviço', 'Adepto', 'Expert', 'Mestre'}" values="{'1', '2', '3', '4', '5', '6'}"/>
+		<dataLink field="niv_ETEC" defaultValue="2"/>
+		<edit left="230" top="125" width="40" height="20"  field="bon_ETEC"/>
+		
+		<button left="00" top="150" height="20" width="120" text="Medicina" horzTextAlign="leading">
+			<event name="onClick">
+				sheet.nivPER = sheet.niv_MEDI;
+				sheet.bonPER = sheet.bon_MEDI;
+				sheet.namPER = "Medicina";
+				sheet.namUSE = sheet.baseName or "Treinador";
+				realizarTesteDePericia()	
+			</event>
+		</button>
+		<comboBox left="125" top="150" height="20" width="100" field="niv_MEDI" horzTextAlign="center" items="{'Patético', 'Destreinado', 'Noviço', 'Adepto', 'Expert', 'Mestre'}" values="{'1', '2', '3', '4', '5', '6'}"/>
+		<dataLink field="niv_MEDI" defaultValue="2"/>		
+		<edit left="230" top="150" width="40" height="20"  field="bon_MEDI"/>
+		
+		<button left="00" top="175" height="20" width="120" text="Percepção" horzTextAlign="leading">
+			<event name="onClick">
+				sheet.nivPER = sheet.niv_PERC;
+				sheet.bonPER = sheet.bon_PERC;
+				sheet.namPER = "Percepção";
+				sheet.namUSE = sheet.baseName or "Treinador";
+				realizarTesteDePericia()
+			</event>
+		</button>
+		<comboBox left="125" top="175" height="20" width="100" field="niv_PERC" horzTextAlign="center" items="{'Patético', 'Destreinado', 'Noviço', 'Adepto', 'Expert', 'Mestre'}" values="{'1', '2', '3', '4', '5', '6'}"/>
+		<dataLink field="niv_PERC" defaultValue="2"/>	
+		<edit left="230" top="175" width="40" height="20"  field="bon_PERC"/>		
+	</layout>	
+	
+	<layout left="10" top="430" height="125" width="1000">
+		<label left="00" top="00" height="20" width="120" text="Perícias de Espírito" autoSize="true" fontStyle="bold"/>
+		<label left="125" top="00" width="40" height="100" text="Nível" autoSize="true" horzTextAlign="center"/>
+		<label left="230" top="00" width="40" height="20" text="Bônus" autoSize="true" horzTextAlign="center"/>
+		
+		<button left="00" top="25" height="20" width="120" text="Charme" horzTextAlign="leading">
+			<event name="onClick">
+				sheet.nivPER = sheet.niv_CHAR;
+				sheet.bonPER = sheet.bon_CHAR;
+				sheet.namPER = "Charme";
+				sheet.namUSE = sheet.baseName or "Treinador";
+				realizarTesteDePericia()
+			</event>
+		</button>
+		<comboBox left="125" top="25" height="20" width="100" field="niv_CHAR" horzTextAlign="center" items="{'Patético', 'Destreinado', 'Noviço', 'Adepto', 'Expert', 'Mestre'}" values="{'1', '2', '3', '4', '5', '6'}"/>
+		<dataLink field="niv_CHAR" defaultValue="2"/>
+		<edit left="230" top="25" width="40" height="20"  field="bon_CHAR"/>	
+		
+		<button left="00" top="50" height="20" width="120" text="Comando" horzTextAlign="leading">
+			<event name="onClick">
+				sheet.nivPER = sheet.niv_COMA;
+				sheet.bonPER = sheet.bon_COMA;
+				sheet.namPER = "Comando";
+				sheet.namUSE = sheet.baseName or "Treinador";
+				realizarTesteDePericia()
+			</event>
+		</button>
+		<comboBox left="125" top="050" height="20" width="100" field="niv_COMA" horzTextAlign="center" items="{'Patético', 'Destreinado', 'Noviço', 'Adepto', 'Expert', 'Mestre'}" values="{'1', '2', '3', '4', '5', '6'}"/>
+		<dataLink field="niv_COMA" defaultValue="2"/>	
+		<edit left="230" top="50" width="40" height="20"  field="bon_COMA"/>	
+		
+		<button left="00" top="75" height="20" width="120" text="Foco" horzTextAlign="leading">
+			<event name="onClick">
+				sheet.nivPER = sheet.niv_FOCO;
+				sheet.bonPER = sheet.bon_FOCO;
+				sheet.namPER = "Foco";
+				sheet.namUSE = sheet.baseName or "Treinador";
+				realizarTesteDePericia()
+			</event>
+		</button>
+		<comboBox left="125" top="075" height="20" width="100" field="niv_FOCO" horzTextAlign="center" items="{'Patético', 'Destreinado', 'Noviço', 'Adepto', 'Expert', 'Mestre'}" values="{'1', '2', '3', '4', '5', '6'}"/>
+		<dataLink field="niv_FOCO" defaultValue="2"/>	
+		<edit left="230" top="75" width="40" height="20"  field="bon_FOCO"/>	
+		
+		<button left="00" top="100" height="20" width="120" text="Intuição" horzTextAlign="leading">
+			<event name="onClick">
+				sheet.nivPER = sheet.niv_INTU;
+				sheet.bonPER = sheet.bon_INTU;
+				sheet.namPER = "Intuição";
+				sheet.namUSE = sheet.baseName or "Treinador";
+				realizarTesteDePericia()
+			</event>
+		</button>
+		<comboBox left="125" top="100" height="20" width="100" field="niv_INTU" horzTextAlign="center" items="{'Patético', 'Destreinado', 'Noviço', 'Adepto', 'Expert', 'Mestre'}" values="{'1', '2', '3', '4', '5', '6'}"/>
+		<dataLink field="niv_INTU" defaultValue="2"/>
+		<edit left="230" top="100" width="40" height="20"  field="bon_INTU"/>				
+	</layout>	  
+
+
+<script>
+    local function realizarTesteDePericia()            
+		local mesaDoPersonagem = Firecast.getMesaDe(sheet);        
+		sheet.nivPER = sheet.nivPER or 1;
+		sheet.bonPER = sheet.bonPER or 0;
+		sheet.namPER = sheet.namPER or "";
+		sheet.namUSE = sheet.namUSE or sheet.baseName or "";
+		mesaDoPersonagem.chat:rolarDados(sheet.nivPER .. "d6 + " .. sheet.bonPER, "Teste da Perícia " .. sheet.namPER .. " usada por " .. sheet.namUSE); 	
+	end;               
+</script> 
+		
+	 </scrollBox>
+</form>

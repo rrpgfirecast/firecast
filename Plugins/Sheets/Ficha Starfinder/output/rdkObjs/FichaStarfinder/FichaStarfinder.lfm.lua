@@ -24443,6 +24443,7 @@ local function constructNew_frmFichaStarfinder()
 			if node==nil then return end;
 
 			local armas = NDB.getChildNodes(node.listaAtaqs); 
+			if #armas < 1 then return end;
 			local atk = {};
 			local index = 0;
 			local mesa = Firecast.getMesaDe(sheet);
@@ -26741,7 +26742,7 @@ local function constructNew_frmFichaStarfinder()
     obj.checkBox33 = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox33:setParent(obj.layout199);
     obj.checkBox33:setAlign("left");
-    obj.checkBox33:setText("Ataque Total");
+    obj.checkBox33:setText("Ataque Mov.");
     obj.checkBox33:setField("atkTotal");
     obj.checkBox33:setName("checkBox33");
 

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmBossField" align="client" theme="dark" margins="{top=1}">
+	<layout left="000" top="000" height="650" width="1100">
+		<image left="000" top="000" height="650" width="1100" src="/img/wallpaper.png" style="autoFIT" />
+		</layout>
+	
+	<scrollBox align ="client">
+		<layout left="100" top="50" height="275" width="200">
+			<basicAbiName2 Top = "075" Name="Field Effects" field="bossField" 
+			Texto="Field Effects are special Abilities that allow a monster to change the nature of the immediate battlefield to seal a party's powers or otherwise inconvenience them. A Field Effect takes a single Action to deploy. Its effects only harm the PCs and their allies; the only way to stop an Effect is by defeating the monster that deployed it. Because Field Effects can have a drastic impact on combat difficulty, it is recommended that they be restricted to Boss monsters and creatures summoned through Alarm or Slave Parts. Only one Field Effect may be active at any one time even if multiple monsters can use them, though the current Field Effect can be changed by expending an Action to deploy a new Effect.." />
+			<basicSubAbility Top = "100" Name="Attack Lock" field="fieldAttack" 
+			Texto="Basic attacks are locked down. \n No Attack Actions may be used for as long as Attack Lock remains active, \n though Abilities that take an Attack Action as a basis remain unaffected."/>
+			<basicSubAbility Top = "125" Name="HP Sap" field="fieldSap" 
+			Texto="The surrounding area continuously drains the party's health, reducing their HP by 5% of its maximum value at the end of every Round. \n This Effect is cumulative with anything else that deals damage over time, such as the Status Condition Poison, and remains in effect as long as HP Sap is active."/>
+			<basicSubAbility Top = "150" Name="Item Lock" field="fieldItem" 
+			Texto="Item use is locked down. No Item Actions may be taken for as long as Item Lock remains active. \n This includes Abilities that use an Item Action as their basis, such as Auto-Potion"/>
+			<basicSubAbility Top = "175" Name="Magic Lock" field="fieldMagic" 
+			Texto="All magical energy on the battlefield is sealed. \n No Magic Abilities may be used for as long as Magic Lock remains active."/>
+			<basicSubAbility Top = "200" Name="Magnetic Field" field="fieldMagnetic" 
+			Texto="A powerful magnetic field dominates the area, weighing down any combatant with metallic equipment. \n Characters wearing Mail, Helmets, Shields, or Gauntlets are afflicted with the Status Condition Slow, even if they would normally be immune to it; \n the same applies to characters wielding any Weapon other than Boomerangs, Bows, Flails, Gloves, Rods or Staves. Slow cannot be canceled for as long as Magnetic Field remains active."/>
+			<basicSubAbility Top = "225" Name="Spell Lock" field="fieldSpell" 
+			Texto="A powerful anti-magic field disrupts all spellcasting in the area. \n No Spells may be used for as long as Spell Lock remains active."/>
+			<basicSubAbility Top = "250" Name="Technique Lock" field="fieldTech" 
+			Texto="Non-magical techniques are locked down.  \n No Slow or Fast Abilities may be used for as long as Technique Lock remains active, though Magic Abilities continue to function as normal."/>
+			</layout>
+ 
+ 
+ 		<layout left="500" top="150" height="275" width="400">
+			<basicAbility Top = "000" Name="Decoy" field="bossDecoy" 
+			Texto="For protection’s sake, the monster surrounds itself with doppelgangers, taking safety in numbers. \n A Decoy is entirely identical in appearance to the monster it replicates; not even a Scan Spell would be able to find a difference between the two. \n For this reason, Decoys are treated as a separate targets in combat, though they have no HP of their own and may make no Actions; the only way to destroy them is to eliminate their 'parent.' \n The Decoy's effects depend on how the Party direct its attacks. If the original monster is hit, it will take damage as normal, but striking a Decoy will result in an immediate counterattack; the monster itself suffers no ill effects. This attack takes the form of a Reaction Ability that must be assembled and paid for separately from the Decoy. XP and Gil values are given per Decoy assigned; a monster with three Decoys would incur XP and Gil modifiers of +60 and +75 respectively." />
+			<edit left="205" top="000" height="20" width="30" field="bossDecoyNum" horzTextAlign="center" hint="Número de Decoys" type="number"/>	
+			<basicAbility Top = "025" Name="Immunity-All" field="immStatus" 
+			Texto="The monster has Immunity to all negative Status Conditions – Fatal-type, Mystify-type, Seal-type, Time-type, Toxin-type, Transform-type, and Weaken-type. \n Any rolls to inflict a Status Condition have a CoS of 0" />
+			<basicAbility Top = "050" Name="Slave Part" field="bossSlave" 
+			Texto="Some bosses in the Final Fantasy games are so large that they are actually composed of multiple parts. \n In the FFRPG, this is simulated by giving a Boss Slave Parts. \n A Slave Part is created as if it were an individual monster with the Slave Part Ability, and is treated as an individual combatant with its own Initiative in combat. \n However, it cannot move under its own power – it moves where the Boss moves. \n Slave Parts are incapacitated as normal when they are reduced to 0 HP, though they award no Gil or Experience when defeated; instead, the XP and Gil values of a Boss's Slave Parts are added to the Boss's own. \n When the Boss is reduced to 0 HP, all of its Slave Parts are also reduced to 0 Hit Points, regardless of current HP, ARM, or M. ARM. Slave Parts come in three types:" />
+			<basicSubAbility Top = "075" Name="Normal Parts" field="bossSlaveN" 
+			Texto="Normal Parts begin the battle with the Boss, and are permanently incapacitated when reduced to 0 HP in combat."/>
+			<edit left="205" top="075" height="20" width="30" field="bossSlaveN1" horzTextAlign="center" hint="número de partes" type="number" />
+			<basicSubAbility Top = "100" Name="Summoned Parts" field="bossSlaveS" 
+			Texto="Summoned Parts must be brought into battle by the Boss at the cost of an Ability Action. \n If reduced to 0 or fewer Hit Points in combat, the controlling monster may revive them with full HP and MP at the cost of a second Action."/>
+			<edit left="205" top="100" height="20" width="30" field="bossSlaveN2" horzTextAlign="center" hint="número de partes" type="number" />
+			<basicSubAbility Top = "125" Name="Auto-Reviving Parts" field="bossSlaveAR" 
+			Texto="Auto-Reviving Parts revive with full Hit Points and Magic Points two Rounds after being incapacitated."/>
+			<edit left="205" top="125" height="20" width="30" field="bossSlaveN3" horzTextAlign="center" hint="número de partes" type="number"/>				
+			</layout>
+ 
+			
+		<layout left="1000" top="570" height="50" width="90">
+			<label left="000" top="000" height="20" width="30" text="Exp" autoSize="true"/>
+			<edit left="035" top="000" height="20" width="50" field="ExpFinal" horzTextAlign="center" />
+			<label left="000" top="025" height="20" width="30" text="Gil" autoSize="true"/>
+			<edit left="35" top="025" height="20" width="50" field="GilFinal" horzTextAlign="center" />
+			</layout>	
+
+		</scrollBox>
+	</form>			
