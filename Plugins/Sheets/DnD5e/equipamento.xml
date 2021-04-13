@@ -26,13 +26,13 @@
 			
 			<flowPart name="flwPartEquipAtack" class="tile" height="500" frameStyle="frames/panel5/frame.xml" minScaledWidth="290">	
 			
-				<label name="labEquipAtackTit" align="top" autoSize="true" text="EQUIPAMENTOS E ATAQUES" fontSize="12" vertTextAlign="center" horzTextAlign="center" fontStyle="bold" onResize="recalcularTamanhoEquipsEAtaques();"/>										
+				<label name="labEquipAtackTit" align="top" autoSize="true" text="@@DnD5e.tab.equipament.attack.title" fontSize="12" vertTextAlign="center" horzTextAlign="center" fontStyle="bold" onResize="recalcularTamanhoEquipsEAtaques();"/>										
 															
 				<recordList name="rclEquips" align="top" field="equipamentos.ataques" templateForm="frmEquipamentoItem" 
 							autoHeight="true" minHeight="5" onResize="recalcularTamanhoEquipsEAtaques();" minQt="1" hitTest="false"/>					
 							
 				<layout name="layEquipAtackBottom" align="top" height="40">
-					<button name="btnEquipAtackNew" align="left" onClick="self.rclEquips:append();" text="Novo Item" width="160" margins="{top=4, bottom=4}"/>								
+					<button name="btnEquipAtackNew" align="left" onClick="self.rclEquips:append();" text="@@DnD5e.tab.equipament.btn.newItem" width="160" margins="{top=4, bottom=4}"/>								
 				</layout>															
 			</flowPart>		
 				
@@ -43,13 +43,13 @@
 			 
 			<flowPart name="flwPartEquipDefense" class="tile" height="500" frameStyle="frames/panel5/frame.xml" minScaledWidth="290">	
 			
-				<label name="labEquipDefense" align="top" autoSize="true" text="EQUIPAMENTOS DE DEFESA" fontSize="12" vertTextAlign="center" horzTextAlign="center" fontStyle="bold" onResize="recalcularTamanhoEquipsDefesa();"/>										
+				<label name="labEquipDefense" align="top" autoSize="true" text="@@DnD5e.tab.equipament.defend.title" fontSize="12" vertTextAlign="center" horzTextAlign="center" fontStyle="bold" onResize="recalcularTamanhoEquipsDefesa();"/>										
 															
 				<recordList name="rclEquipsDefense" align="top" field="equipamentos.defesas" templateForm="frmEquipamentoItemDefesa" 
 							autoHeight="true" minHeight="5" onResize="recalcularTamanhoEquipsDefesa();" minQt="1" hitTest="false"/>					
 							
 				<layout name="layEquipDefenseBottom" align="top" height="40">
-					<button name="btnEquipDefenseNew" align="left" onClick="self.rclEquipsDefense:append();" text="Novo Item" width="160" margins="{top=4, bottom=4}"/>								
+					<button name="btnEquipDefenseNew" align="left" onClick="self.rclEquipsDefense:append();" text="@@DnD5e.tab.equipament.btn.newItem" width="160" margins="{top=4, bottom=4}"/>								
 				</layout>															
 			</flowPart>	
 			
@@ -58,16 +58,16 @@
 			<!-- Outros Equipamentos e DINHEIRO -->
 			<flowPart class="tile" height="390" frameStyle="frames/panel4transp/frame.xml" minScaledWidth="290">	
 				<layout align="left" width="140" margins="{left=-20}">
-					<boxDinheiro align="top" text="PC" field="equipamento.dinheiro.pc"/>
-					<boxDinheiro align="top" text="PP" field="equipamento.dinheiro.pp" margins="{top=6}"/>
-					<boxDinheiro align="top" text="PE" field="equipamento.dinheiro.pe" margins="{top=6}"/>
-					<boxDinheiro align="top" text="PO" field="equipamento.dinheiro.po" margins="{top=6}"/>					
-					<boxDinheiro align="top" text="PL" field="equipamento.dinheiro.pl" margins="{top=6}"/>					
+					<boxDinheiro align="top" text="@@DnD5e.tab.equipament.lab.PC" field="equipamento.dinheiro.pc"/>
+					<boxDinheiro align="top" text="@@DnD5e.tab.equipament.lab.PP" field="equipamento.dinheiro.pp" margins="{top=6}"/>
+					<boxDinheiro align="top" text="@@DnD5e.tab.equipament.lab.PE" field="equipamento.dinheiro.pe" margins="{top=6}"/>
+					<boxDinheiro align="top" text="@@DnD5e.tab.equipament.lab.PO" field="equipamento.dinheiro.po" margins="{top=6}"/>					
+					<boxDinheiro align="top" text="@@DnD5e.tab.equipament.lab.PL" field="equipamento.dinheiro.pl" margins="{top=6}"/>					
 				</layout>
 							
 				<textEditor align="client" field="equipamento.outros" margins="{left=10, right=10}" fontSize="15"/>
 							
-				<label align="bottom" autoSize="true" text="OUTROS EQUIPAMENTOS" fontSize="12" vertTextAlign="center" horzTextAlign="center" fontStyle="bold" onResize="recalcularTamanhoEquipsDefesa();"/>										
+				<label align="bottom" autoSize="true" text="@@DnD5e.tab.equipament.lab.extraEquip" fontSize="12" vertTextAlign="center" horzTextAlign="center" fontStyle="bold" onResize="recalcularTamanhoEquipsDefesa();"/>										
 			</flowPart>		
 		</flowLayout>	
 	</scrollBox>

@@ -1,0 +1,33 @@
+﻿[pt]
+DnD5e.spells.spellcasterClass=CLASSE CONJURADORA
+DnD5e.spells.spellcasterAbility= HABILIDADE DE CONJURAÇÃO
+DnD5e.spells.spellSaveDC= CD DA MAGIA
+DnD5e.spells.spellAttackBonus=BÔNUS DE ATAQUE DE MAGIA
+DnD5e.spells.SP/Ki=SP/Ki
+DnD5e.spells.cantrip=PRECES E TRUQUES
+DnD5e.spells.btn.newspell=Nova Magia
+DnD5e.spells.int=INTELIGÊNCIA
+DnD5e.spells.wis=SABEDORIA
+DnD5e.spells.char=CARISMA
+DnD5e.spells.formulationTime=TEMPO DE FORMULAÇÃO
+DnD5e.spells.range=ALCANCE
+DnD5e.spells.component=COMPONENTES	
+DnD5e.spells.duration=DURAÇÃO
+
+[en]
+DnD5e.spells.spellcasterClass=SPELLCASTER CLASS
+DnD5e.spells.spellcasterAbility= SPELLCASTER ABILITY
+DnD5e.spells.spellSaveDC= SPELL SAVE DC
+DnD5e.spells.spellAttackBonus=SPELL ATTACK BONUS
+DnD5e.spells.SP/Ki=SP/Ki
+DnD5e.spells.cantrip=CANTRIPS
+DnD5e.spells.btn.newspell=New Spell
+DnD5e.spells.int=INTELECT
+DnD5e.spells.wis=WISDOM
+DnD5e.spells.char=CHARISM
+DnD5e.spells.formulationTime=FORMULATION TIME
+DnD5e.spells.range=RANGE
+DnD5e.spells.component=COMPONENTS
+DnD5e.spells.duration=DURATION
+
+

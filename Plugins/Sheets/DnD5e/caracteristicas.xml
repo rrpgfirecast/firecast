@@ -9,18 +9,18 @@
 				<flowPart class="tile" minWidth="320" maxWidth="1600" frameStyle="frames/banner/heroGroup.xml" height="175" vertAlign="center" avoidScale="true">							
 					<layout align="client">
 							<edit field="nome" class="transparente vcenter" fontSize="17" align="client"/>
-							<label align="bottom" text="NOME DO PERSONAGEM" class="tituloCampo" autoSize="true" margins="{left=3}"/>
+							<label align="bottom" text="@@DnD5e.features.nameCharacter" class="tituloCampo" autoSize="true" margins="{left=3}"/>
 					</layout>
 				</flowPart>				
 		
 				<!-- GRID DE INFORMACOES SUPERIORES DA FRENTE -->
 				<flowLayout class="tile"  minWidth="320" maxWidth="1600" name="fraUpperGridCaracteristicas" avoidScale="true" frameStyle="frames/upperInfoGrid/frame.xml" autoHeight="true" vertAlign="trailing" maxControlsPerLine="3">								
-						<upperGridCampo field="caracteristicas.idade" minWidth="100" titulo="IDADE"/>
-						<upperGridCampo field="caracteristicas.altura" titulo="ALTURA"/>
-						<upperGridCampo field="caracteristicas.peso" titulo="PESO"/>									
-						<upperGridCampo field="caracteristicas.olhos" minWidth="100" titulo="OLHOS"/>
-						<upperGridCampo field="caracteristicas.pele" titulo="PELE"/>
-						<upperGridCampo field="caracteristicas.cabelo" titulo="CABELO"/>
+						<upperGridCampo field="caracteristicas.idade" minWidth="100" titulo="@@DnD5e.features.age"/>
+						<upperGridCampo field="caracteristicas.altura" titulo="@@DnD5e.features.height"/>
+						<upperGridCampo field="caracteristicas.peso" titulo="@@DnD5e.features.weight"/>									
+						<upperGridCampo field="caracteristicas.olhos" minWidth="100" titulo="@@DnD5e.features.eyes"/>
+						<upperGridCampo field="caracteristicas.pele" titulo="@@DnD5e.features.skin"/>
+						<upperGridCampo field="caracteristicas.cabelo" titulo="@@DnD5e.features.hair"/>
 				</flowLayout>	
 			</flowLayout>			
 	
@@ -33,13 +33,13 @@
 					<!-- IMAGEM -->
 					<flowPart class="tileCarac" height="390" frameStyle="frames/panel5/frame.xml" margins="{left = 0, right = 4}">
 						<image align="client" style="autoFit" field="imagens.aparencia" class="transparente" margins="{top=2}" editable="true" animate="true"/>
-						<label align="bottom" autoSize="true" text="APARÊNCIA" fontSize="12" vertTextAlign="center" horzTextAlign="center" fontStyle="bold"/>
+						<label align="bottom" autoSize="true" text="@@DnD5e.features.appearance" fontSize="12" vertTextAlign="center" horzTextAlign="center" fontStyle="bold"/>
 					</flowPart>		
 					
 					<!-- IDIOMAS -->			
 					<flowPart class="tileCarac" height="115" frameStyle="frames/panel5/frame.xml" margins="{left = 4, right = 0}">
 						<textEditor align="client" field="idiomas" class="transparente" margins="{top=2}" fontSize="16"/>
-						<label align="bottom" autoSize="true" text="IDIOMAS" fontSize="12" vertTextAlign="center" horzTextAlign="center" fontStyle="bold"/>
+						<label align="bottom" autoSize="true" text="@@DnD5e.features.languages" fontSize="12" vertTextAlign="center" horzTextAlign="center" fontStyle="bold"/>
 					</flowPart>		
 				</flowLayout>
 			
@@ -49,33 +49,33 @@
 					<!-- TRAÇOS DE PERSONALIDADE -->				
 					<flowPart class="tileCarac" height="140" frameStyle="frames/panel5/topPanel.xml" margins="{left = 4, right = 4}">
 						<textEditor align="client" field="caracteristicas.tracosPersonalidade" class="transparente" margins="{top=2}" fontSize="16"/>
-						<label align="bottom" autoSize="true" text="TRAÇOS DE PERSONALIDADE" fontSize="12" vertTextAlign="center" horzTextAlign="center" fontStyle="bold"/>
+						<label align="bottom" autoSize="true" text="@@DnD5e.features.personalityTraits" fontSize="12" vertTextAlign="center" horzTextAlign="center" fontStyle="bold"/>
 					</flowPart>	
 					
 					<!-- IDEAIS -->				
 					<flowPart class="tileCarac" height="115" frameStyle="frames/panel5/centerPanel.xml" margins="{left = 4, right = 4}">
 						<textEditor align="client" field="caracteristicas.ideais" class="transparente" margins="{top=2}" fontSize="16"/>
-						<label align="bottom" autoSize="true" text="IDEAIS" fontSize="12" vertTextAlign="center" horzTextAlign="center" fontStyle="bold"/>
+						<label align="bottom" autoSize="true" text="@@DnD5e.features.ideals" fontSize="12" vertTextAlign="center" horzTextAlign="center" fontStyle="bold"/>
 					</flowPart>					
 					
 					<!-- IDEAIS -->				
 					<flowPart class="tileCarac" height="115" frameStyle="frames/panel5/centerPanel.xml" margins="{left = 4, right = 4}">
 						<textEditor align="client" field="caracteristicas.vinculos" class="transparente" margins="{top=2}" fontSize="16"/>
-						<label align="bottom" autoSize="true" text="VÍNCULOS" fontSize="12" vertTextAlign="center" horzTextAlign="center" fontStyle="bold"/>
+						<label align="bottom" autoSize="true" text="@@DnD5e.features.bonds" fontSize="12" vertTextAlign="center" horzTextAlign="center" fontStyle="bold"/>
 					</flowPart>			
 
 									
 					<!-- FRAQUEZAS -->				
 					<flowPart class="tileCarac" height="115" frameStyle="frames/panel5/bottomPanel.xml" margins="{left = 4, right = 4}">
 						<textEditor align="client" field="caracteristicas.fraquezas" class="transparente" margins="{top=2}" fontSize="16"/>
-						<label align="bottom" autoSize="true" text="FRAQUEZAS" fontSize="12" vertTextAlign="center" horzTextAlign="center" fontStyle="bold"/>
+						<label align="bottom" autoSize="true" text="@@DnD5e.features.weaknesses" fontSize="12" vertTextAlign="center" horzTextAlign="center" fontStyle="bold"/>
 					</flowPart>						
 				</flowLayout>		
 
 				<!-- CARACTERISTICAS E TRACOS -->			
 				<flowPart class="tileCarac" height="515" frameStyle="frames/panel5/frame.xml" margins="{left = 4, right = 4}">
 					<textEditor align="client" field="caracteristicas.caracteristicasETracoes" class="transparente" margins="{top=2}" fontSize="16"/>
-					<label align="bottom" autoSize="true" text="CARACTERÍSTICAS E TRAÇOS" fontSize="12" vertTextAlign="center" horzTextAlign="center" fontStyle="bold"/>
+					<label align="bottom" autoSize="true" text="@@DnD5e.features.featurestraits" fontSize="12" vertTextAlign="center" horzTextAlign="center" fontStyle="bold"/>
 				</flowPart>			
 			</flowLayout>
 			
@@ -102,23 +102,23 @@
 					</flowPart>	
 					
 					<flowPart name ="prtFaccao" class="halfTile" stepSizes="{260, 310}" maxScaledWidth="310" avoidScale="true" height="350" frameStyle="frames/panel4transp/frame.xml" margins="{left=4, right=4, bottom=4, top=4}">
-						<label align="top" horzTextAlign="leading" text="FACÇÃO" fontSize="11" fontColor="gray" margins="{left=4, right=4}"/>
+						<label align="top" horzTextAlign="leading" text="@@DnD5e.features.faction" fontSize="11" fontColor="gray" margins="{left=4, right=4}"/>
 						<edit align="top" field="aliados.faccao.nome" margins="{left=4, right=4}"/>
 						<image align="client" field="aliados.faccao.simbolo" editable="true" style="autoFit" margins="{left=4, right=4}"/>
-						<label align="bottom" autoSize="true" text="SÍMBOLO DA FACÇÃO" fontSize="12" vertTextAlign="center" horzTextAlign="center" fontStyle="bold"/>
+						<label align="bottom" autoSize="true" text="@@DnD5e.features.factionSymbol" fontSize="12" vertTextAlign="center" horzTextAlign="center" fontStyle="bold"/>
 					</flowPart>
 					
 					<flowLineBreak/>
 					
 					<flowPart minWidth="200" maxWidth="1800" height="16">
-						<label align="client" autoSize="true" text="ALIADOS E ORGANIZAÇÕES" fontSize="12" vertTextAlign="center" horzTextAlign="center" fontStyle="bold"/>
+						<label align="client" autoSize="true" text="@@DnD5e.features.alliesOrganizations" fontSize="12" vertTextAlign="center" horzTextAlign="center" fontStyle="bold"/>
 					</flowPart>
 				</flowLayout>				
 				
 				<!-- HISTÓRIA DO PERSONAGEM -->		
 				<flowPart class="tile" height="515" frameStyle="frames/panel5/frame.xml" margins="{left = 4, right = 4}" adjustHeightToLine="true">
 					<textEditor align="client" field="historia.texto" class="transparente" margins="{top=2}" fontSize="16"/>
-					<label align="bottom" autoSize="true" text="HISTÓRIA DO PERSONAGEM" fontSize="12" vertTextAlign="center" horzTextAlign="center" fontStyle="bold"/>
+					<label align="bottom" autoSize="true" text="@@DnD5e.features.characterStory" fontSize="12" vertTextAlign="center" horzTextAlign="center" fontStyle="bold"/>
 				</flowPart>	
 			</flowLayout>
 		</flowLayout>	

@@ -64,7 +64,7 @@ local function constructNew_frmEquipamentoItemDefesa()
     obj.btnApagar = GUI.fromHandle(_obj_newObject("button"));
     obj.btnApagar:setParent(obj.layMenu);
     obj.btnApagar:setAlign("top");
-    obj.btnApagar:setText("Apagar");
+    obj.btnApagar:setText("@@DnD5e.tab.equipament.btn.delete");
     obj.btnApagar:setName("btnApagar");
     obj.btnApagar:setMargins({bottom=6});
     obj.btnApagar:setHeight(32);
@@ -116,7 +116,7 @@ local function constructNew_frmEquipamentoItemDefesa()
     obj.labGridCampoSolido1:setParent(obj.GridCampoSolido1);
     obj.labGridCampoSolido1:setName("labGridCampoSolido1");
     obj.labGridCampoSolido1:setAlign("top");
-    obj.labGridCampoSolido1:setText("NOME");
+    obj.labGridCampoSolido1:setText("@@DnD5e.tab.equipament.defend.lab.name");
     obj.labGridCampoSolido1:setVertTextAlign("leading");
     obj.labGridCampoSolido1:setWordWrap(true);
     obj.labGridCampoSolido1:setTextTrimming("none");
@@ -154,7 +154,7 @@ local function constructNew_frmEquipamentoItemDefesa()
     obj.labGridCampoSolido2:setParent(obj.GridCampoSolido2);
     obj.labGridCampoSolido2:setName("labGridCampoSolido2");
     obj.labGridCampoSolido2:setAlign("top");
-    obj.labGridCampoSolido2:setText("PESO");
+    obj.labGridCampoSolido2:setText("@@DnD5e.tab.equipament.defend.lab.weight");
     obj.labGridCampoSolido2:setVertTextAlign("leading");
     obj.labGridCampoSolido2:setWordWrap(true);
     obj.labGridCampoSolido2:setTextTrimming("none");
@@ -192,7 +192,7 @@ local function constructNew_frmEquipamentoItemDefesa()
     obj.labGridCampoSolido3:setParent(obj.GridCampoSolido3);
     obj.labGridCampoSolido3:setName("labGridCampoSolido3");
     obj.labGridCampoSolido3:setAlign("top");
-    obj.labGridCampoSolido3:setText("TIPO");
+    obj.labGridCampoSolido3:setText("@@DnD5e.tab.equipament.defend.lab.type");
     obj.labGridCampoSolido3:setVertTextAlign("leading");
     obj.labGridCampoSolido3:setWordWrap(true);
     obj.labGridCampoSolido3:setTextTrimming("none");
@@ -230,7 +230,7 @@ local function constructNew_frmEquipamentoItemDefesa()
     obj.labGridCampoSolido4:setParent(obj.GridCampoSolido4);
     obj.labGridCampoSolido4:setName("labGridCampoSolido4");
     obj.labGridCampoSolido4:setAlign("top");
-    obj.labGridCampoSolido4:setText("CA BÔNUS");
+    obj.labGridCampoSolido4:setText("@@DnD5e.tab.equipament.defend.lab.ca");
     obj.labGridCampoSolido4:setVertTextAlign("leading");
     obj.labGridCampoSolido4:setWordWrap(true);
     obj.labGridCampoSolido4:setTextTrimming("none");
@@ -268,7 +268,7 @@ local function constructNew_frmEquipamentoItemDefesa()
     obj.labGridCampoSolido5:setParent(obj.GridCampoSolido5);
     obj.labGridCampoSolido5:setName("labGridCampoSolido5");
     obj.labGridCampoSolido5:setAlign("top");
-    obj.labGridCampoSolido5:setText("PEN");
+    obj.labGridCampoSolido5:setText("@@DnD5e.tab.equipament.btn.pen");
     obj.labGridCampoSolido5:setHorzTextAlign("center");
     obj.labGridCampoSolido5:setVertTextAlign("leading");
     obj.labGridCampoSolido5:setWordWrap(true);
@@ -307,7 +307,7 @@ local function constructNew_frmEquipamentoItemDefesa()
     obj.labGridCampoSolido6:setParent(obj.GridCampoSolido6);
     obj.labGridCampoSolido6:setName("labGridCampoSolido6");
     obj.labGridCampoSolido6:setAlign("top");
-    obj.labGridCampoSolido6:setText("PROPRIEDADES");
+    obj.labGridCampoSolido6:setText("@@DnD5e.tab.equipament.defend.lab.property");
     obj.labGridCampoSolido6:setVertTextAlign("leading");
     obj.labGridCampoSolido6:setWordWrap(true);
     obj.labGridCampoSolido6:setTextTrimming("none");

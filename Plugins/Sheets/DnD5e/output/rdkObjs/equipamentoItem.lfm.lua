@@ -97,7 +97,7 @@ local function constructNew_frmEquipamentoItem()
     obj.btnApagar = GUI.fromHandle(_obj_newObject("button"));
     obj.btnApagar:setParent(obj.layMenu);
     obj.btnApagar:setAlign("top");
-    obj.btnApagar:setText("Apagar");
+    obj.btnApagar:setText("@@DnD5e.tab.equipament.btn.delete");
     obj.btnApagar:setName("btnApagar");
     obj.btnApagar:setMargins({bottom=6});
     obj.btnApagar:setHeight(32);
@@ -106,7 +106,7 @@ local function constructNew_frmEquipamentoItem()
     obj.btnRolarAtaque:setParent(obj.layMenu);
     obj.btnRolarAtaque:setName("btnRolarAtaque");
     obj.btnRolarAtaque:setAlign("top");
-    obj.btnRolarAtaque:setText("Rolar");
+    obj.btnRolarAtaque:setText("@@DnD5e.tab.equipament.btn.roll");
     obj.btnRolarAtaque:setMargins({bottom=6});
     obj.btnRolarAtaque:setHeight(32);
 
@@ -157,7 +157,7 @@ local function constructNew_frmEquipamentoItem()
     obj.labGridCampoSolido1:setParent(obj.GridCampoSolido1);
     obj.labGridCampoSolido1:setName("labGridCampoSolido1");
     obj.labGridCampoSolido1:setAlign("top");
-    obj.labGridCampoSolido1:setText("NOME");
+    obj.labGridCampoSolido1:setText("@@DnD5e.tab.equipament.atack.lab.name");
     obj.labGridCampoSolido1:setVertTextAlign("leading");
     obj.labGridCampoSolido1:setWordWrap(true);
     obj.labGridCampoSolido1:setTextTrimming("none");
@@ -195,7 +195,7 @@ local function constructNew_frmEquipamentoItem()
     obj.labGridCampoSolido2:setParent(obj.GridCampoSolido2);
     obj.labGridCampoSolido2:setName("labGridCampoSolido2");
     obj.labGridCampoSolido2:setAlign("top");
-    obj.labGridCampoSolido2:setText("PESO");
+    obj.labGridCampoSolido2:setText("@@DnD5e.tab.equipament.atack.lab.weight");
     obj.labGridCampoSolido2:setVertTextAlign("leading");
     obj.labGridCampoSolido2:setWordWrap(true);
     obj.labGridCampoSolido2:setTextTrimming("none");
@@ -208,8 +208,8 @@ local function constructNew_frmEquipamentoItem()
     obj.GridCampoSolido3 = GUI.fromHandle(_obj_newObject("flowPart"));
     obj.GridCampoSolido3:setParent(obj.fraLayout);
     obj.GridCampoSolido3:setHeight(40);
-    obj.GridCampoSolido3:setMinScaledWidth(80);
-    obj.GridCampoSolido3:setMinWidth(80);
+    obj.GridCampoSolido3:setMinScaledWidth(190);
+    obj.GridCampoSolido3:setMinWidth(190);
     obj.GridCampoSolido3:setMaxWidth(233);
     obj.GridCampoSolido3:setMaxScaledWidth(233);
     obj.GridCampoSolido3:setAvoidScale(true);
@@ -233,7 +233,7 @@ local function constructNew_frmEquipamentoItem()
     obj.labGridCampoSolido3:setParent(obj.GridCampoSolido3);
     obj.labGridCampoSolido3:setName("labGridCampoSolido3");
     obj.labGridCampoSolido3:setAlign("top");
-    obj.labGridCampoSolido3:setText("ATAQUE");
+    obj.labGridCampoSolido3:setText("@@DnD5e.tab.equipament.atack.lab.attack");
     obj.labGridCampoSolido3:setVertTextAlign("leading");
     obj.labGridCampoSolido3:setWordWrap(true);
     obj.labGridCampoSolido3:setTextTrimming("none");
@@ -271,7 +271,7 @@ local function constructNew_frmEquipamentoItem()
     obj.labGridCampoSolido4:setParent(obj.GridCampoSolido4);
     obj.labGridCampoSolido4:setName("labGridCampoSolido4");
     obj.labGridCampoSolido4:setAlign("top");
-    obj.labGridCampoSolido4:setText("DANO");
+    obj.labGridCampoSolido4:setText("@@DnD5e.tab.equipament.atack.lab.damage");
     obj.labGridCampoSolido4:setVertTextAlign("leading");
     obj.labGridCampoSolido4:setWordWrap(true);
     obj.labGridCampoSolido4:setTextTrimming("none");
@@ -309,7 +309,7 @@ local function constructNew_frmEquipamentoItem()
     obj.labGridCampoSolido5:setParent(obj.GridCampoSolido5);
     obj.labGridCampoSolido5:setName("labGridCampoSolido5");
     obj.labGridCampoSolido5:setAlign("top");
-    obj.labGridCampoSolido5:setText("TIPO");
+    obj.labGridCampoSolido5:setText("@@DnD5e.tab.equipament.atack.lab.type");
     obj.labGridCampoSolido5:setVertTextAlign("leading");
     obj.labGridCampoSolido5:setWordWrap(true);
     obj.labGridCampoSolido5:setTextTrimming("none");
@@ -347,7 +347,7 @@ local function constructNew_frmEquipamentoItem()
     obj.labGridCampoSolido6:setParent(obj.GridCampoSolido6);
     obj.labGridCampoSolido6:setName("labGridCampoSolido6");
     obj.labGridCampoSolido6:setAlign("top");
-    obj.labGridCampoSolido6:setText("PROPRIEDADES");
+    obj.labGridCampoSolido6:setText("@@DnD5e.tab.equipament.atack.lab.property");
     obj.labGridCampoSolido6:setVertTextAlign("leading");
     obj.labGridCampoSolido6:setWordWrap(true);
     obj.labGridCampoSolido6:setTextTrimming("none");
@@ -385,7 +385,7 @@ local function constructNew_frmEquipamentoItem()
     obj.labGridCampoSolido7:setParent(obj.GridCampoSolido7);
     obj.labGridCampoSolido7:setName("labGridCampoSolido7");
     obj.labGridCampoSolido7:setAlign("top");
-    obj.labGridCampoSolido7:setText("ALCANCE");
+    obj.labGridCampoSolido7:setText("@@DnD5e.tab.equipament.atack.lab.range");
     obj.labGridCampoSolido7:setVertTextAlign("leading");
     obj.labGridCampoSolido7:setWordWrap(true);
     obj.labGridCampoSolido7:setTextTrimming("none");
@@ -423,7 +423,7 @@ local function constructNew_frmEquipamentoItem()
     obj.labGridCampoSolido8:setParent(obj.GridCampoSolido8);
     obj.labGridCampoSolido8:setName("labGridCampoSolido8");
     obj.labGridCampoSolido8:setAlign("top");
-    obj.labGridCampoSolido8:setText("MUNIÇÃO");
+    obj.labGridCampoSolido8:setText("@@DnD5e.tab.equipament.atack.lab.ammunition");
     obj.labGridCampoSolido8:setVertTextAlign("leading");
     obj.labGridCampoSolido8:setWordWrap(true);
     obj.labGridCampoSolido8:setTextTrimming("none");
@@ -461,7 +461,7 @@ local function constructNew_frmEquipamentoItem()
     obj.labGridCampoSolido9:setParent(obj.GridCampoSolido9);
     obj.labGridCampoSolido9:setName("labGridCampoSolido9");
     obj.labGridCampoSolido9:setAlign("top");
-    obj.labGridCampoSolido9:setText("QT MUN.");
+    obj.labGridCampoSolido9:setText("@@DnD5e.tab.equipament.atack.lab.ammunitionAmount");
     obj.labGridCampoSolido9:setVertTextAlign("leading");
     obj.labGridCampoSolido9:setWordWrap(true);
     obj.labGridCampoSolido9:setTextTrimming("none");

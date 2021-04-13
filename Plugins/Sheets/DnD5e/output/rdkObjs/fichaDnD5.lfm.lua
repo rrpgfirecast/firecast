@@ -28,7 +28,8 @@ local function constructNew_frmDnD5()
     obj:beginUpdate();
     obj:setDataType("br.com.rrpg.DnD5_S3");
     obj:setFormType("sheetTemplate");
-    obj:setTitle("D&D 5e");
+    obj:setTitle("@@dnd.edition");
+    obj:setDescription("@@dnd.sheet.description");
     obj:setName("frmDnD5");
     obj:setTheme("dark");
 
@@ -39,7 +40,7 @@ local function constructNew_frmDnD5()
 
     obj.tab1 = GUI.fromHandle(_obj_newObject("tab"));
     obj.tab1:setParent(obj.pgcPrincipal);
-    obj.tab1:setTitle("Frente");
+    obj.tab1:setTitle("@@DnD5e.tabControl.tab.front");
     obj.tab1:setName("tab1");
 
     obj.rectangle1 = GUI.fromHandle(_obj_newObject("rectangle"));
@@ -2877,7 +2878,7 @@ local function constructNew_frmDnD5()
 
     obj.tab2 = GUI.fromHandle(_obj_newObject("tab"));
     obj.tab2:setParent(obj.pgcPrincipal);
-    obj.tab2:setTitle("Caracteristicas");
+    obj.tab2:setTitle("@@DnD5e.tabControl.tab.feature");
     obj.tab2:setName("tab2");
 
     obj.rectangle2 = GUI.fromHandle(_obj_newObject("rectangle"));
@@ -2947,7 +2948,7 @@ local function constructNew_frmDnD5()
     obj.label75 = GUI.fromHandle(_obj_newObject("label"));
     obj.label75:setParent(obj.layout37);
     obj.label75:setAlign("bottom");
-    obj.label75:setText("NOME DO PERSONAGEM");
+    obj.label75:setText("@@DnD5e.features.nameCharacter");
     obj.label75:setAutoSize(true);
     obj.label75:setMargins({left=3});
     obj.label75:setName("label75");
@@ -3003,7 +3004,7 @@ local function constructNew_frmDnD5()
     obj.labUpperGridCampo7:setParent(obj.UpperGridCampo7);
     obj.labUpperGridCampo7:setName("labUpperGridCampo7");
     obj.labUpperGridCampo7:setAlign("top");
-    obj.labUpperGridCampo7:setText("IDADE");
+    obj.labUpperGridCampo7:setText("@@DnD5e.features.age");
     obj.labUpperGridCampo7:setVertTextAlign("leading");
     obj.labUpperGridCampo7:setWordWrap(true);
     obj.labUpperGridCampo7:setTextTrimming("none");
@@ -3048,7 +3049,7 @@ local function constructNew_frmDnD5()
     obj.labUpperGridCampo8:setParent(obj.UpperGridCampo8);
     obj.labUpperGridCampo8:setName("labUpperGridCampo8");
     obj.labUpperGridCampo8:setAlign("top");
-    obj.labUpperGridCampo8:setText("ALTURA");
+    obj.labUpperGridCampo8:setText("@@DnD5e.features.height");
     obj.labUpperGridCampo8:setVertTextAlign("leading");
     obj.labUpperGridCampo8:setWordWrap(true);
     obj.labUpperGridCampo8:setTextTrimming("none");
@@ -3093,7 +3094,7 @@ local function constructNew_frmDnD5()
     obj.labUpperGridCampo9:setParent(obj.UpperGridCampo9);
     obj.labUpperGridCampo9:setName("labUpperGridCampo9");
     obj.labUpperGridCampo9:setAlign("top");
-    obj.labUpperGridCampo9:setText("PESO");
+    obj.labUpperGridCampo9:setText("@@DnD5e.features.weight");
     obj.labUpperGridCampo9:setVertTextAlign("leading");
     obj.labUpperGridCampo9:setWordWrap(true);
     obj.labUpperGridCampo9:setTextTrimming("none");
@@ -3138,7 +3139,7 @@ local function constructNew_frmDnD5()
     obj.labUpperGridCampo10:setParent(obj.UpperGridCampo10);
     obj.labUpperGridCampo10:setName("labUpperGridCampo10");
     obj.labUpperGridCampo10:setAlign("top");
-    obj.labUpperGridCampo10:setText("OLHOS");
+    obj.labUpperGridCampo10:setText("@@DnD5e.features.eyes");
     obj.labUpperGridCampo10:setVertTextAlign("leading");
     obj.labUpperGridCampo10:setWordWrap(true);
     obj.labUpperGridCampo10:setTextTrimming("none");
@@ -3183,7 +3184,7 @@ local function constructNew_frmDnD5()
     obj.labUpperGridCampo11:setParent(obj.UpperGridCampo11);
     obj.labUpperGridCampo11:setName("labUpperGridCampo11");
     obj.labUpperGridCampo11:setAlign("top");
-    obj.labUpperGridCampo11:setText("PELE");
+    obj.labUpperGridCampo11:setText("@@DnD5e.features.skin");
     obj.labUpperGridCampo11:setVertTextAlign("leading");
     obj.labUpperGridCampo11:setWordWrap(true);
     obj.labUpperGridCampo11:setTextTrimming("none");
@@ -3228,7 +3229,7 @@ local function constructNew_frmDnD5()
     obj.labUpperGridCampo12:setParent(obj.UpperGridCampo12);
     obj.labUpperGridCampo12:setName("labUpperGridCampo12");
     obj.labUpperGridCampo12:setAlign("top");
-    obj.labUpperGridCampo12:setText("CABELO");
+    obj.labUpperGridCampo12:setText("@@DnD5e.features.hair");
     obj.labUpperGridCampo12:setVertTextAlign("leading");
     obj.labUpperGridCampo12:setWordWrap(true);
     obj.labUpperGridCampo12:setTextTrimming("none");
@@ -3292,7 +3293,7 @@ local function constructNew_frmDnD5()
     obj.label76:setParent(obj.flowPart41);
     obj.label76:setAlign("bottom");
     obj.label76:setAutoSize(true);
-    obj.label76:setText("APARÊNCIA");
+    obj.label76:setText("@@DnD5e.features.appearance");
     obj.label76:setFontSize(12);
     obj.label76:setVertTextAlign("center");
     obj.label76:setHorzTextAlign("center");
@@ -3325,7 +3326,7 @@ local function constructNew_frmDnD5()
     obj.label77:setParent(obj.flowPart42);
     obj.label77:setAlign("bottom");
     obj.label77:setAutoSize(true);
-    obj.label77:setText("IDIOMAS");
+    obj.label77:setText("@@DnD5e.features.languages");
     obj.label77:setFontSize(12);
     obj.label77:setVertTextAlign("center");
     obj.label77:setHorzTextAlign("center");
@@ -3371,7 +3372,7 @@ local function constructNew_frmDnD5()
     obj.label78:setParent(obj.flowPart43);
     obj.label78:setAlign("bottom");
     obj.label78:setAutoSize(true);
-    obj.label78:setText("TRAÇOS DE PERSONALIDADE");
+    obj.label78:setText("@@DnD5e.features.personalityTraits");
     obj.label78:setFontSize(12);
     obj.label78:setVertTextAlign("center");
     obj.label78:setHorzTextAlign("center");
@@ -3404,7 +3405,7 @@ local function constructNew_frmDnD5()
     obj.label79:setParent(obj.flowPart44);
     obj.label79:setAlign("bottom");
     obj.label79:setAutoSize(true);
-    obj.label79:setText("IDEAIS");
+    obj.label79:setText("@@DnD5e.features.ideals");
     obj.label79:setFontSize(12);
     obj.label79:setVertTextAlign("center");
     obj.label79:setHorzTextAlign("center");
@@ -3437,7 +3438,7 @@ local function constructNew_frmDnD5()
     obj.label80:setParent(obj.flowPart45);
     obj.label80:setAlign("bottom");
     obj.label80:setAutoSize(true);
-    obj.label80:setText("VÍNCULOS");
+    obj.label80:setText("@@DnD5e.features.bonds");
     obj.label80:setFontSize(12);
     obj.label80:setVertTextAlign("center");
     obj.label80:setHorzTextAlign("center");
@@ -3470,7 +3471,7 @@ local function constructNew_frmDnD5()
     obj.label81:setParent(obj.flowPart46);
     obj.label81:setAlign("bottom");
     obj.label81:setAutoSize(true);
-    obj.label81:setText("FRAQUEZAS");
+    obj.label81:setText("@@DnD5e.features.weaknesses");
     obj.label81:setFontSize(12);
     obj.label81:setVertTextAlign("center");
     obj.label81:setHorzTextAlign("center");
@@ -3503,7 +3504,7 @@ local function constructNew_frmDnD5()
     obj.label82:setParent(obj.flowPart47);
     obj.label82:setAlign("bottom");
     obj.label82:setAutoSize(true);
-    obj.label82:setText("CARACTERÍSTICAS E TRAÇOS");
+    obj.label82:setText("@@DnD5e.features.featurestraits");
     obj.label82:setFontSize(12);
     obj.label82:setVertTextAlign("center");
     obj.label82:setHorzTextAlign("center");
@@ -3573,7 +3574,7 @@ local function constructNew_frmDnD5()
     obj.label83:setParent(obj.prtFaccao);
     obj.label83:setAlign("top");
     obj.label83:setHorzTextAlign("leading");
-    obj.label83:setText("FACÇÃO");
+    obj.label83:setText("@@DnD5e.features.faction");
     obj.label83:setFontSize(11);
     obj.label83:setFontColor("gray");
     obj.label83:setMargins({left=4, right=4});
@@ -3601,7 +3602,7 @@ local function constructNew_frmDnD5()
     obj.label84:setParent(obj.prtFaccao);
     obj.label84:setAlign("bottom");
     obj.label84:setAutoSize(true);
-    obj.label84:setText("SÍMBOLO DA FACÇÃO");
+    obj.label84:setText("@@DnD5e.features.factionSymbol");
     obj.label84:setFontSize(12);
     obj.label84:setVertTextAlign("center");
     obj.label84:setHorzTextAlign("center");
@@ -3626,7 +3627,7 @@ local function constructNew_frmDnD5()
     obj.label85:setParent(obj.flowPart48);
     obj.label85:setAlign("client");
     obj.label85:setAutoSize(true);
-    obj.label85:setText("ALIADOS E ORGANIZAÇÕES");
+    obj.label85:setText("@@DnD5e.features.alliesOrganizations");
     obj.label85:setFontSize(12);
     obj.label85:setVertTextAlign("center");
     obj.label85:setHorzTextAlign("center");
@@ -3658,7 +3659,7 @@ local function constructNew_frmDnD5()
     obj.label86:setParent(obj.flowPart49);
     obj.label86:setAlign("bottom");
     obj.label86:setAutoSize(true);
-    obj.label86:setText("HISTÓRIA DO PERSONAGEM");
+    obj.label86:setText("@@DnD5e.features.characterStory");
     obj.label86:setFontSize(12);
     obj.label86:setVertTextAlign("center");
     obj.label86:setHorzTextAlign("center");
@@ -3668,7 +3669,7 @@ local function constructNew_frmDnD5()
 
     obj.tab3 = GUI.fromHandle(_obj_newObject("tab"));
     obj.tab3:setParent(obj.pgcPrincipal);
-    obj.tab3:setTitle("Equipamento");
+    obj.tab3:setTitle("@@DnD5e.tabControl.tab.equipment");
     obj.tab3:setName("tab3");
 
     obj.rectangle3 = GUI.fromHandle(_obj_newObject("rectangle"));
@@ -3727,7 +3728,7 @@ local function constructNew_frmDnD5()
     obj.labEquipAtackTit:setName("labEquipAtackTit");
     obj.labEquipAtackTit:setAlign("top");
     obj.labEquipAtackTit:setAutoSize(true);
-    obj.labEquipAtackTit:setText("EQUIPAMENTOS E ATAQUES");
+    obj.labEquipAtackTit:setText("@@DnD5e.tab.equipament.attack.title");
     obj.labEquipAtackTit:setFontSize(12);
     obj.labEquipAtackTit:setVertTextAlign("center");
     obj.labEquipAtackTit:setHorzTextAlign("center");
@@ -3755,7 +3756,7 @@ local function constructNew_frmDnD5()
     obj.btnEquipAtackNew:setParent(obj.layEquipAtackBottom);
     obj.btnEquipAtackNew:setName("btnEquipAtackNew");
     obj.btnEquipAtackNew:setAlign("left");
-    obj.btnEquipAtackNew:setText("Novo Item");
+    obj.btnEquipAtackNew:setText("@@DnD5e.tab.equipament.btn.newItem");
     obj.btnEquipAtackNew:setWidth(160);
     obj.btnEquipAtackNew:setMargins({top=4, bottom=4});
 
@@ -3778,7 +3779,7 @@ local function constructNew_frmDnD5()
     obj.labEquipDefense:setName("labEquipDefense");
     obj.labEquipDefense:setAlign("top");
     obj.labEquipDefense:setAutoSize(true);
-    obj.labEquipDefense:setText("EQUIPAMENTOS DE DEFESA");
+    obj.labEquipDefense:setText("@@DnD5e.tab.equipament.defend.title");
     obj.labEquipDefense:setFontSize(12);
     obj.labEquipDefense:setVertTextAlign("center");
     obj.labEquipDefense:setHorzTextAlign("center");
@@ -3806,7 +3807,7 @@ local function constructNew_frmDnD5()
     obj.btnEquipDefenseNew:setParent(obj.layEquipDefenseBottom);
     obj.btnEquipDefenseNew:setName("btnEquipDefenseNew");
     obj.btnEquipDefenseNew:setAlign("left");
-    obj.btnEquipDefenseNew:setText("Novo Item");
+    obj.btnEquipDefenseNew:setText("@@DnD5e.tab.equipament.btn.newItem");
     obj.btnEquipDefenseNew:setWidth(160);
     obj.btnEquipDefenseNew:setMargins({top=4, bottom=4});
 
@@ -3845,7 +3846,7 @@ local function constructNew_frmDnD5()
     obj.label87:setFrameRegion("RegiaoSmallTitulo");
     obj.label87:setHorzTextAlign("center");
     obj.label87:setVertTextAlign("center");
-    obj.label87:setText("PC");
+    obj.label87:setText("@@DnD5e.tab.equipament.lab.PC");
     obj.label87:setTextTrimming("none");
     obj.label87:setWordWrap(false);
     obj.label87:setName("label87");
@@ -3877,7 +3878,7 @@ local function constructNew_frmDnD5()
     obj.label88:setFrameRegion("RegiaoSmallTitulo");
     obj.label88:setHorzTextAlign("center");
     obj.label88:setVertTextAlign("center");
-    obj.label88:setText("PP");
+    obj.label88:setText("@@DnD5e.tab.equipament.lab.PP");
     obj.label88:setTextTrimming("none");
     obj.label88:setWordWrap(false);
     obj.label88:setName("label88");
@@ -3909,7 +3910,7 @@ local function constructNew_frmDnD5()
     obj.label89:setFrameRegion("RegiaoSmallTitulo");
     obj.label89:setHorzTextAlign("center");
     obj.label89:setVertTextAlign("center");
-    obj.label89:setText("PE");
+    obj.label89:setText("@@DnD5e.tab.equipament.lab.PE");
     obj.label89:setTextTrimming("none");
     obj.label89:setWordWrap(false);
     obj.label89:setName("label89");
@@ -3941,7 +3942,7 @@ local function constructNew_frmDnD5()
     obj.label90:setFrameRegion("RegiaoSmallTitulo");
     obj.label90:setHorzTextAlign("center");
     obj.label90:setVertTextAlign("center");
-    obj.label90:setText("PO");
+    obj.label90:setText("@@DnD5e.tab.equipament.lab.PO");
     obj.label90:setTextTrimming("none");
     obj.label90:setWordWrap(false);
     obj.label90:setName("label90");
@@ -3973,7 +3974,7 @@ local function constructNew_frmDnD5()
     obj.label91:setFrameRegion("RegiaoSmallTitulo");
     obj.label91:setHorzTextAlign("center");
     obj.label91:setVertTextAlign("center");
-    obj.label91:setText("PL");
+    obj.label91:setText("@@DnD5e.tab.equipament.lab.PL");
     obj.label91:setTextTrimming("none");
     obj.label91:setWordWrap(false);
     obj.label91:setName("label91");
@@ -4003,7 +4004,7 @@ local function constructNew_frmDnD5()
     obj.label92:setParent(obj.flowPart50);
     obj.label92:setAlign("bottom");
     obj.label92:setAutoSize(true);
-    obj.label92:setText("OUTROS EQUIPAMENTOS");
+    obj.label92:setText("@@DnD5e.tab.equipament.lab.extraEquip");
     obj.label92:setFontSize(12);
     obj.label92:setVertTextAlign("center");
     obj.label92:setHorzTextAlign("center");
@@ -4013,7 +4014,7 @@ local function constructNew_frmDnD5()
 
     obj.tab4 = GUI.fromHandle(_obj_newObject("tab"));
     obj.tab4:setParent(obj.pgcPrincipal);
-    obj.tab4:setTitle("Magias");
+    obj.tab4:setTitle("@@DnD5e.tabControl.tab.spells");
     obj.tab4:setName("tab4");
 
     obj.rectangle4 = GUI.fromHandle(_obj_newObject("rectangle"));
@@ -4065,7 +4066,7 @@ local function constructNew_frmDnD5()
     obj.label93:setParent(obj.flowPart51);
     obj.label93:setAlign("top");
     obj.label93:setFontSize(10);
-    obj.label93:setText("TEMPO FORMULAÇÃO");
+    obj.label93:setText("@@DnD5e.spells.formulationTime");
     obj.label93:setHorzTextAlign("center");
     obj.label93:setWordWrap(true);
     obj.label93:setTextTrimming("none");
@@ -4095,7 +4096,7 @@ local function constructNew_frmDnD5()
     obj.label94:setParent(obj.flowPart52);
     obj.label94:setAlign("top");
     obj.label94:setFontSize(10);
-    obj.label94:setText("ALCANCE");
+    obj.label94:setText("@@DnD5e.spells.range");
     obj.label94:setHorzTextAlign("center");
     obj.label94:setWordWrap(true);
     obj.label94:setTextTrimming("none");
@@ -4125,7 +4126,7 @@ local function constructNew_frmDnD5()
     obj.label95:setParent(obj.flowPart53);
     obj.label95:setAlign("top");
     obj.label95:setFontSize(10);
-    obj.label95:setText("COMPONENTES");
+    obj.label95:setText("@@DnD5e.spells.component");
     obj.label95:setHorzTextAlign("center");
     obj.label95:setWordWrap(true);
     obj.label95:setTextTrimming("none");
@@ -4155,7 +4156,7 @@ local function constructNew_frmDnD5()
     obj.label96:setParent(obj.flowPart54);
     obj.label96:setAlign("top");
     obj.label96:setFontSize(10);
-    obj.label96:setText("DURAÇÃO");
+    obj.label96:setText("@@DnD5e.spells.duration");
     obj.label96:setHorzTextAlign("center");
     obj.label96:setWordWrap(true);
     obj.label96:setTextTrimming("none");
@@ -4237,7 +4238,7 @@ local function constructNew_frmDnD5()
     obj.label97 = GUI.fromHandle(_obj_newObject("label"));
     obj.label97:setParent(obj.layout39);
     obj.label97:setAlign("bottom");
-    obj.label97:setText("CLASSE CONJURADORA");
+    obj.label97:setText("@@DnD5e.spells.spellcasterClass");
     obj.label97:setAutoSize(true);
     obj.label97:setMargins({left=3});
     obj.label97:setName("label97");
@@ -4305,7 +4306,7 @@ local function constructNew_frmDnD5()
     obj.labupperGridMagicBox1:setName("labupperGridMagicBox1");
     obj.labupperGridMagicBox1:setAlign("top");
     obj.labupperGridMagicBox1:setAutoSize(true);
-    obj.labupperGridMagicBox1:setText("HABILIDADE DE CONJURAÇÃO");
+    obj.labupperGridMagicBox1:setText("@@DnD5e.spells.spellcasterAbility");
     obj.labupperGridMagicBox1:setHorzTextAlign("center");
     obj.labupperGridMagicBox1:setVertTextAlign("leading");
     obj.labupperGridMagicBox1:setWordWrap(true);
@@ -4358,7 +4359,7 @@ self.upperGridMagicBox1._RecalcSize();
     obj.labupperGridMagicBox2:setName("labupperGridMagicBox2");
     obj.labupperGridMagicBox2:setAlign("top");
     obj.labupperGridMagicBox2:setAutoSize(true);
-    obj.labupperGridMagicBox2:setText("CD DA MAGIA");
+    obj.labupperGridMagicBox2:setText("@@DnD5e.spells.spellSaveDC");
     obj.labupperGridMagicBox2:setHorzTextAlign("center");
     obj.labupperGridMagicBox2:setVertTextAlign("leading");
     obj.labupperGridMagicBox2:setWordWrap(true);
@@ -4411,7 +4412,7 @@ self.upperGridMagicBox2._RecalcSize();
     obj.labupperGridMagicBox3:setName("labupperGridMagicBox3");
     obj.labupperGridMagicBox3:setAlign("top");
     obj.labupperGridMagicBox3:setAutoSize(true);
-    obj.labupperGridMagicBox3:setText("BÔNUS DE ATAQUE DE MAGIA");
+    obj.labupperGridMagicBox3:setText("@@DnD5e.spells.spellAttackBonus");
     obj.labupperGridMagicBox3:setHorzTextAlign("center");
     obj.labupperGridMagicBox3:setVertTextAlign("leading");
     obj.labupperGridMagicBox3:setWordWrap(true);
@@ -4465,7 +4466,7 @@ self.upperGridMagicBox3._RecalcSize();
     obj.labupperGridMagicEditBox1:setName("labupperGridMagicEditBox1");
     obj.labupperGridMagicEditBox1:setAlign("top");
     obj.labupperGridMagicEditBox1:setAutoSize(true);
-    obj.labupperGridMagicEditBox1:setText("SP/Ki");
+    obj.labupperGridMagicEditBox1:setText("@@DnD5e.spells.SP/Ki");
     obj.labupperGridMagicEditBox1:setHorzTextAlign("center");
     obj.labupperGridMagicEditBox1:setVertTextAlign("leading");
     obj.labupperGridMagicEditBox1:setWordWrap(true);
@@ -4535,7 +4536,7 @@ self.upperGridMagicEditBox1._RecalcSize();
     obj.label99 = GUI.fromHandle(_obj_newObject("label"));
     obj.label99:setParent(obj.flowPart56);
     obj.label99:setFrameRegion("RegiaoConteudo");
-    obj.label99:setText("PRECES E TRUQUES");
+    obj.label99:setText("@@DnD5e.spells.cantrip");
     obj.label99:setFontSize(15);
     obj.label99:setHorzTextAlign("center");
     obj.label99:setVertTextAlign("center");
@@ -4582,7 +4583,7 @@ self.upperGridMagicEditBox1._RecalcSize();
     obj.btnNovoflwMagicRecordList1:setParent(obj.layBottomflwMagicRecordList1);
     obj.btnNovoflwMagicRecordList1:setName("btnNovoflwMagicRecordList1");
     obj.btnNovoflwMagicRecordList1:setAlign("left");
-    obj.btnNovoflwMagicRecordList1:setText("Nova Magia");
+    obj.btnNovoflwMagicRecordList1:setText("@@DnD5e.spells.btn.newspell");
     obj.btnNovoflwMagicRecordList1:setWidth(160);
     obj.btnNovoflwMagicRecordList1:setMargins({top=4, bottom=4, left=48});
 
@@ -4686,7 +4687,7 @@ self.flwMagicRecordList1._recalcHeight();
     obj.btnNovoflwMagicRecordList2:setParent(obj.layBottomflwMagicRecordList2);
     obj.btnNovoflwMagicRecordList2:setName("btnNovoflwMagicRecordList2");
     obj.btnNovoflwMagicRecordList2:setAlign("left");
-    obj.btnNovoflwMagicRecordList2:setText("Nova Magia");
+    obj.btnNovoflwMagicRecordList2:setText("@@DnD5e.spells.btn.newspell");
     obj.btnNovoflwMagicRecordList2:setWidth(160);
     obj.btnNovoflwMagicRecordList2:setMargins({top=4, bottom=4, left=48});
 
@@ -4790,7 +4791,7 @@ self.flwMagicRecordList2._recalcHeight();
     obj.btnNovoflwMagicRecordList3:setParent(obj.layBottomflwMagicRecordList3);
     obj.btnNovoflwMagicRecordList3:setName("btnNovoflwMagicRecordList3");
     obj.btnNovoflwMagicRecordList3:setAlign("left");
-    obj.btnNovoflwMagicRecordList3:setText("Nova Magia");
+    obj.btnNovoflwMagicRecordList3:setText("@@DnD5e.spells.btn.newspell");
     obj.btnNovoflwMagicRecordList3:setWidth(160);
     obj.btnNovoflwMagicRecordList3:setMargins({top=4, bottom=4, left=48});
 
@@ -4894,7 +4895,7 @@ self.flwMagicRecordList3._recalcHeight();
     obj.btnNovoflwMagicRecordList4:setParent(obj.layBottomflwMagicRecordList4);
     obj.btnNovoflwMagicRecordList4:setName("btnNovoflwMagicRecordList4");
     obj.btnNovoflwMagicRecordList4:setAlign("left");
-    obj.btnNovoflwMagicRecordList4:setText("Nova Magia");
+    obj.btnNovoflwMagicRecordList4:setText("@@DnD5e.spells.btn.newspell");
     obj.btnNovoflwMagicRecordList4:setWidth(160);
     obj.btnNovoflwMagicRecordList4:setMargins({top=4, bottom=4, left=48});
 
@@ -4998,7 +4999,7 @@ self.flwMagicRecordList4._recalcHeight();
     obj.btnNovoflwMagicRecordList5:setParent(obj.layBottomflwMagicRecordList5);
     obj.btnNovoflwMagicRecordList5:setName("btnNovoflwMagicRecordList5");
     obj.btnNovoflwMagicRecordList5:setAlign("left");
-    obj.btnNovoflwMagicRecordList5:setText("Nova Magia");
+    obj.btnNovoflwMagicRecordList5:setText("@@DnD5e.spells.btn.newspell");
     obj.btnNovoflwMagicRecordList5:setWidth(160);
     obj.btnNovoflwMagicRecordList5:setMargins({top=4, bottom=4, left=48});
 
@@ -5102,7 +5103,7 @@ self.flwMagicRecordList5._recalcHeight();
     obj.btnNovoflwMagicRecordList6:setParent(obj.layBottomflwMagicRecordList6);
     obj.btnNovoflwMagicRecordList6:setName("btnNovoflwMagicRecordList6");
     obj.btnNovoflwMagicRecordList6:setAlign("left");
-    obj.btnNovoflwMagicRecordList6:setText("Nova Magia");
+    obj.btnNovoflwMagicRecordList6:setText("@@DnD5e.spells.btn.newspell");
     obj.btnNovoflwMagicRecordList6:setWidth(160);
     obj.btnNovoflwMagicRecordList6:setMargins({top=4, bottom=4, left=48});
 
@@ -5206,7 +5207,7 @@ self.flwMagicRecordList6._recalcHeight();
     obj.btnNovoflwMagicRecordList7:setParent(obj.layBottomflwMagicRecordList7);
     obj.btnNovoflwMagicRecordList7:setName("btnNovoflwMagicRecordList7");
     obj.btnNovoflwMagicRecordList7:setAlign("left");
-    obj.btnNovoflwMagicRecordList7:setText("Nova Magia");
+    obj.btnNovoflwMagicRecordList7:setText("@@DnD5e.spells.btn.newspell");
     obj.btnNovoflwMagicRecordList7:setWidth(160);
     obj.btnNovoflwMagicRecordList7:setMargins({top=4, bottom=4, left=48});
 
@@ -5310,7 +5311,7 @@ self.flwMagicRecordList7._recalcHeight();
     obj.btnNovoflwMagicRecordList8:setParent(obj.layBottomflwMagicRecordList8);
     obj.btnNovoflwMagicRecordList8:setName("btnNovoflwMagicRecordList8");
     obj.btnNovoflwMagicRecordList8:setAlign("left");
-    obj.btnNovoflwMagicRecordList8:setText("Nova Magia");
+    obj.btnNovoflwMagicRecordList8:setText("@@DnD5e.spells.btn.newspell");
     obj.btnNovoflwMagicRecordList8:setWidth(160);
     obj.btnNovoflwMagicRecordList8:setMargins({top=4, bottom=4, left=48});
 
@@ -5414,7 +5415,7 @@ self.flwMagicRecordList8._recalcHeight();
     obj.btnNovoflwMagicRecordList9:setParent(obj.layBottomflwMagicRecordList9);
     obj.btnNovoflwMagicRecordList9:setName("btnNovoflwMagicRecordList9");
     obj.btnNovoflwMagicRecordList9:setAlign("left");
-    obj.btnNovoflwMagicRecordList9:setText("Nova Magia");
+    obj.btnNovoflwMagicRecordList9:setText("@@DnD5e.spells.btn.newspell");
     obj.btnNovoflwMagicRecordList9:setWidth(160);
     obj.btnNovoflwMagicRecordList9:setMargins({top=4, bottom=4, left=48});
 
@@ -5518,7 +5519,7 @@ self.flwMagicRecordList9._recalcHeight();
     obj.btnNovoflwMagicRecordList10:setParent(obj.layBottomflwMagicRecordList10);
     obj.btnNovoflwMagicRecordList10:setName("btnNovoflwMagicRecordList10");
     obj.btnNovoflwMagicRecordList10:setAlign("left");
-    obj.btnNovoflwMagicRecordList10:setText("Nova Magia");
+    obj.btnNovoflwMagicRecordList10:setText("@@DnD5e.spells.btn.newspell");
     obj.btnNovoflwMagicRecordList10:setWidth(160);
     obj.btnNovoflwMagicRecordList10:setMargins({top=4, bottom=4, left=48});
 
@@ -5527,7 +5528,7 @@ self.flwMagicRecordList10._recalcHeight();
 
     obj.tab5 = GUI.fromHandle(_obj_newObject("tab"));
     obj.tab5:setParent(obj.pgcPrincipal);
-    obj.tab5:setTitle("Anotações");
+    obj.tab5:setTitle("@@DnD5e.tabControl.tab.annotations");
     obj.tab5:setName("tab5");
 
     obj.rectangle5 = GUI.fromHandle(_obj_newObject("rectangle"));
@@ -7727,8 +7728,8 @@ local _frmDnD5 = {
     dataType = "br.com.rrpg.DnD5_S3", 
     formType = "sheetTemplate", 
     formComponentName = "form", 
-    title = "D&D 5e", 
-    description=""};
+    title = "@@dnd.edition", 
+    description="@@dnd.sheet.description"};
 
 frmDnD5 = _frmDnD5;
 Firecast.registrarForm(_frmDnD5);
