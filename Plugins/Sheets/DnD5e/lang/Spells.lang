@@ -13,6 +13,7 @@ DnD5e.spells.formulationTime=TEMPO DE FORMULAÇÃO
 DnD5e.spells.range=ALCANCE
 DnD5e.spells.component=COMPONENTES	
 DnD5e.spells.duration=DURAÇÃO
+DnD5e.spells.btn.delete=Apagar
 
 [en]
 DnD5e.spells.spellcasterClass=SPELLCASTER CLASS
@@ -29,5 +30,5 @@ DnD5e.spells.formulationTime=FORMULATION TIME
 DnD5e.spells.range=RANGE
 DnD5e.spells.component=COMPONENTS
 DnD5e.spells.duration=DURATION
-
+DnD5e.spells.btn.delete=Delete
 

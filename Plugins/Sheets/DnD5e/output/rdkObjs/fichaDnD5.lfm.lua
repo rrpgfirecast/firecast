@@ -110,7 +110,7 @@ local function constructNew_frmDnD5()
     obj.labNome1:setMargins({left=3});
     obj.labNome1:setName("labNome1");
     obj.labNome1:setAlign("bottom");
-    obj.labNome1:setText("NOME DO PERSONAGEM");
+    obj.labNome1:setText("@@DnD5e.frente.lab.characterName");
     obj.labNome1:setAutoSize(true);
     obj.labNome1:setFontSize(12);
     obj.labNome1:setFontColor("#D0D0D0");
@@ -162,7 +162,7 @@ local function constructNew_frmDnD5()
     obj.labUpperGridCampo1:setParent(obj.UpperGridCampo1);
     obj.labUpperGridCampo1:setName("labUpperGridCampo1");
     obj.labUpperGridCampo1:setAlign("top");
-    obj.labUpperGridCampo1:setText("CLASSE E NIVEL");
+    obj.labUpperGridCampo1:setText("@@DnD5e.frente.lab.classaLevel");
     obj.labUpperGridCampo1:setVertTextAlign("leading");
     obj.labUpperGridCampo1:setWordWrap(true);
     obj.labUpperGridCampo1:setTextTrimming("none");
@@ -207,7 +207,7 @@ local function constructNew_frmDnD5()
     obj.labUpperGridCampo2:setParent(obj.UpperGridCampo2);
     obj.labUpperGridCampo2:setName("labUpperGridCampo2");
     obj.labUpperGridCampo2:setAlign("top");
-    obj.labUpperGridCampo2:setText("ANTECEDENTES");
+    obj.labUpperGridCampo2:setText("@@DnD5e.frente.lab.background");
     obj.labUpperGridCampo2:setVertTextAlign("leading");
     obj.labUpperGridCampo2:setWordWrap(true);
     obj.labUpperGridCampo2:setTextTrimming("none");
@@ -252,7 +252,7 @@ local function constructNew_frmDnD5()
     obj.labUpperGridCampo3:setParent(obj.UpperGridCampo3);
     obj.labUpperGridCampo3:setName("labUpperGridCampo3");
     obj.labUpperGridCampo3:setAlign("top");
-    obj.labUpperGridCampo3:setText("JOGADOR");
+    obj.labUpperGridCampo3:setText("@@DnD5e.frente.lab.player");
     obj.labUpperGridCampo3:setVertTextAlign("leading");
     obj.labUpperGridCampo3:setWordWrap(true);
     obj.labUpperGridCampo3:setTextTrimming("none");
@@ -297,7 +297,7 @@ local function constructNew_frmDnD5()
     obj.labUpperGridCampo4:setParent(obj.UpperGridCampo4);
     obj.labUpperGridCampo4:setName("labUpperGridCampo4");
     obj.labUpperGridCampo4:setAlign("top");
-    obj.labUpperGridCampo4:setText("RAÇA");
+    obj.labUpperGridCampo4:setText("@@DnD5e.frente.lab.race");
     obj.labUpperGridCampo4:setVertTextAlign("leading");
     obj.labUpperGridCampo4:setWordWrap(true);
     obj.labUpperGridCampo4:setTextTrimming("none");
@@ -342,7 +342,7 @@ local function constructNew_frmDnD5()
     obj.labUpperGridCampo5:setParent(obj.UpperGridCampo5);
     obj.labUpperGridCampo5:setName("labUpperGridCampo5");
     obj.labUpperGridCampo5:setAlign("top");
-    obj.labUpperGridCampo5:setText("TENDÊNCIA");
+    obj.labUpperGridCampo5:setText("@@DnD5e.frente.lab.trend");
     obj.labUpperGridCampo5:setVertTextAlign("leading");
     obj.labUpperGridCampo5:setWordWrap(true);
     obj.labUpperGridCampo5:setTextTrimming("none");
@@ -387,7 +387,7 @@ local function constructNew_frmDnD5()
     obj.labUpperGridCampo6:setParent(obj.UpperGridCampo6);
     obj.labUpperGridCampo6:setName("labUpperGridCampo6");
     obj.labUpperGridCampo6:setAlign("top");
-    obj.labUpperGridCampo6:setText("EXPERIÊNCIA");
+    obj.labUpperGridCampo6:setText("@@DnD5e.frente.lab.xp");
     obj.labUpperGridCampo6:setVertTextAlign("leading");
     obj.labUpperGridCampo6:setWordWrap(true);
     obj.labUpperGridCampo6:setTextTrimming("none");
@@ -437,7 +437,7 @@ local function constructNew_frmDnD5()
     obj.label1 = GUI.fromHandle(_obj_newObject("label"));
     obj.label1:setParent(obj.flowPart1);
     obj.label1:setAlign("client");
-    obj.label1:setText("INSPIRAÇÃO");
+    obj.label1:setText("@@DnD5e.frente.lab.inspiration");
     obj.label1:setMargins({left=10});
     obj.label1:setHorzTextAlign("center");
     obj.label1:setName("label1");
@@ -469,7 +469,7 @@ local function constructNew_frmDnD5()
     obj.label2 = GUI.fromHandle(_obj_newObject("label"));
     obj.label2:setParent(obj.flowPart2);
     obj.label2:setAlign("client");
-    obj.label2:setText("BONUS DE PROFICIÊNCIA");
+    obj.label2:setText("@@DnD5e.frente.lab.proficiencyBonus");
     obj.label2:setMargins({left=10});
     obj.label2:setHorzTextAlign("center");
     obj.label2:setName("label2");
@@ -501,7 +501,7 @@ local function constructNew_frmDnD5()
     obj.label3 = GUI.fromHandle(_obj_newObject("label"));
     obj.label3:setParent(obj.flowPart3);
     obj.label3:setAlign("client");
-    obj.label3:setText("SABEDORIA PASSIVA (PERCEPÇÃO)");
+    obj.label3:setText("@@DnD5e.frente.lab.passivawisdom");
     obj.label3:setTextTrimming("none");
     obj.label3:setWordWrap(true);
     obj.label3:setMargins({left=10});
@@ -592,7 +592,7 @@ local function constructNew_frmDnD5()
     obj.label5 = GUI.fromHandle(_obj_newObject("label"));
     obj.label5:setParent(obj.flowPart4);
     obj.label5:setFrameRegion("titulo");
-    obj.label5:setText("FORÇA");
+    obj.label5:setText("@@DnD5e.frente.box.strength");
     obj.label5:setVertTextAlign("center");
     obj.label5:setHorzTextAlign("center");
     obj.label5:setName("label5");
@@ -656,7 +656,7 @@ local function constructNew_frmDnD5()
     obj.label7 = GUI.fromHandle(_obj_newObject("label"));
     obj.label7:setParent(obj.flowPart5);
     obj.label7:setAlign("client");
-    obj.label7:setText("Teste de Resistência");
+    obj.label7:setText("@@DnD5e.frente.lab.savingtrows.resistTeste");
     obj.label7:setVertTextAlign("trailing");
     obj.label7:setMargins({left=5});
     obj.label7:setAutoSize(true);
@@ -717,7 +717,7 @@ local function constructNew_frmDnD5()
     obj.label9 = GUI.fromHandle(_obj_newObject("label"));
     obj.label9:setParent(obj.flowPart6);
     obj.label9:setAlign("client");
-    obj.label9:setText("Atletismo");
+    obj.label9:setText("@@DnD5e.frente.lab.savingtrows.strength");
     obj.label9:setVertTextAlign("trailing");
     obj.label9:setMargins({left=5});
     obj.label9:setAutoSize(true);
@@ -784,7 +784,7 @@ local function constructNew_frmDnD5()
     obj.label11 = GUI.fromHandle(_obj_newObject("label"));
     obj.label11:setParent(obj.flowPart7);
     obj.label11:setFrameRegion("titulo");
-    obj.label11:setText("DESTREZA");
+    obj.label11:setText("@@DnD5e.frente.box.dexterity");
     obj.label11:setVertTextAlign("center");
     obj.label11:setHorzTextAlign("center");
     obj.label11:setName("label11");
@@ -848,7 +848,7 @@ local function constructNew_frmDnD5()
     obj.label13 = GUI.fromHandle(_obj_newObject("label"));
     obj.label13:setParent(obj.flowPart8);
     obj.label13:setAlign("client");
-    obj.label13:setText("Teste de Resistência");
+    obj.label13:setText("@@DnD5e.frente.lab.savingtrows.resistTeste");
     obj.label13:setVertTextAlign("trailing");
     obj.label13:setMargins({left=5});
     obj.label13:setAutoSize(true);
@@ -1098,7 +1098,7 @@ local function constructNew_frmDnD5()
     obj.label21 = GUI.fromHandle(_obj_newObject("label"));
     obj.label21:setParent(obj.flowPart12);
     obj.label21:setFrameRegion("titulo");
-    obj.label21:setText("CONSTITUIÇÃO");
+    obj.label21:setText("@@DnD5e.frente.box.constitution");
     obj.label21:setVertTextAlign("center");
     obj.label21:setHorzTextAlign("center");
     obj.label21:setName("label21");
@@ -1162,7 +1162,7 @@ local function constructNew_frmDnD5()
     obj.label23 = GUI.fromHandle(_obj_newObject("label"));
     obj.label23:setParent(obj.flowPart13);
     obj.label23:setAlign("client");
-    obj.label23:setText("Teste de Resistência");
+    obj.label23:setText("@@DnD5e.frente.lab.savingtrows.resistTeste");
     obj.label23:setVertTextAlign("trailing");
     obj.label23:setMargins({left=5});
     obj.label23:setAutoSize(true);
@@ -1229,7 +1229,7 @@ local function constructNew_frmDnD5()
     obj.label25 = GUI.fromHandle(_obj_newObject("label"));
     obj.label25:setParent(obj.flowPart14);
     obj.label25:setFrameRegion("titulo");
-    obj.label25:setText("INTELIGÊNCIA");
+    obj.label25:setText("@@DnD5e.frente.box.intelligence");
     obj.label25:setVertTextAlign("center");
     obj.label25:setHorzTextAlign("center");
     obj.label25:setName("label25");
@@ -1293,7 +1293,7 @@ local function constructNew_frmDnD5()
     obj.label27 = GUI.fromHandle(_obj_newObject("label"));
     obj.label27:setParent(obj.flowPart15);
     obj.label27:setAlign("client");
-    obj.label27:setText("Teste de Resistência");
+    obj.label27:setText("@@DnD5e.frente.lab.savingtrows.resistTeste");
     obj.label27:setVertTextAlign("trailing");
     obj.label27:setMargins({left=5});
     obj.label27:setAutoSize(true);
@@ -1665,7 +1665,7 @@ local function constructNew_frmDnD5()
     obj.label39 = GUI.fromHandle(_obj_newObject("label"));
     obj.label39:setParent(obj.flowPart21);
     obj.label39:setFrameRegion("titulo");
-    obj.label39:setText("SABEDORIA");
+    obj.label39:setText("@@DnD5e.frente.box.wisdom");
     obj.label39:setVertTextAlign("center");
     obj.label39:setHorzTextAlign("center");
     obj.label39:setName("label39");
@@ -1729,7 +1729,7 @@ local function constructNew_frmDnD5()
     obj.label41 = GUI.fromHandle(_obj_newObject("label"));
     obj.label41:setParent(obj.flowPart22);
     obj.label41:setAlign("client");
-    obj.label41:setText("Teste de Resistência");
+    obj.label41:setText("@@DnD5e.frente.lab.savingtrows.resistTeste");
     obj.label41:setVertTextAlign("trailing");
     obj.label41:setMargins({left=5});
     obj.label41:setAutoSize(true);
@@ -2101,7 +2101,7 @@ local function constructNew_frmDnD5()
     obj.label53 = GUI.fromHandle(_obj_newObject("label"));
     obj.label53:setParent(obj.flowPart28);
     obj.label53:setFrameRegion("titulo");
-    obj.label53:setText("CARISMA");
+    obj.label53:setText("@@DnD5e.frente.box.charisma");
     obj.label53:setVertTextAlign("center");
     obj.label53:setHorzTextAlign("center");
     obj.label53:setName("label53");
@@ -2165,7 +2165,7 @@ local function constructNew_frmDnD5()
     obj.label55 = GUI.fromHandle(_obj_newObject("label"));
     obj.label55:setParent(obj.flowPart29);
     obj.label55:setAlign("client");
-    obj.label55:setText("Teste de Resistência");
+    obj.label55:setText("@@DnD5e.frente.lab.savingtrows.resistTeste");
     obj.label55:setVertTextAlign("trailing");
     obj.label55:setMargins({left=5});
     obj.label55:setAutoSize(true);
@@ -2459,7 +2459,7 @@ local function constructNew_frmDnD5()
     obj.label64 = GUI.fromHandle(_obj_newObject("label"));
     obj.label64:setParent(obj.flowPart34);
     obj.label64:setAlign("top");
-    obj.label64:setText("CLASSE DE ARMADURA");
+    obj.label64:setText("@@DnD5e.frente.lab.CA");
     obj.label64:setHeight(20);
     obj.label64:setFontSize(9);
     obj.label64:setWordWrap(true);
@@ -2492,7 +2492,7 @@ local function constructNew_frmDnD5()
     obj.label65 = GUI.fromHandle(_obj_newObject("label"));
     obj.label65:setParent(obj.flowPart35);
     obj.label65:setAlign("top");
-    obj.label65:setText("INICIATIVA");
+    obj.label65:setText("@@DnD5e.frente.lab.initiative");
     obj.label65:setHeight(20);
     obj.label65:setFontSize(9);
     obj.label65:setWordWrap(true);
@@ -2525,7 +2525,7 @@ local function constructNew_frmDnD5()
     obj.label66 = GUI.fromHandle(_obj_newObject("label"));
     obj.label66:setParent(obj.flowPart36);
     obj.label66:setAlign("top");
-    obj.label66:setText("DESLOCAMENTO");
+    obj.label66:setText("@@DnD5e.frente.lab.displacement");
     obj.label66:setHeight(20);
     obj.label66:setFontSize(9);
     obj.label66:setWordWrap(true);
@@ -2572,7 +2572,7 @@ local function constructNew_frmDnD5()
     obj.label67:setParent(obj.layout31);
     obj.label67:setAlign("left");
     obj.label67:setAutoSize(true);
-    obj.label67:setText("PONTOS DE VIDA MÁXIMO:");
+    obj.label67:setText("@@DnD5e.frente.lab.PVMax");
     obj.label67:setTextTrimming("none");
     obj.label67:setWordWrap(false);
     obj.label67:setFontSize(12);
@@ -2620,7 +2620,7 @@ local function constructNew_frmDnD5()
     obj.label68:setParent(obj.frame1);
     obj.label68:setAlign("bottom");
     obj.label68:setAutoSize(true);
-    obj.label68:setText("PONTOS DE VIDA ATUAL");
+    obj.label68:setText("@@DnD5e.frente.lab.PVCurrent");
     obj.label68:setFontSize(11);
     obj.label68:setVertTextAlign("center");
     obj.label68:setHorzTextAlign("center");
@@ -2653,7 +2653,7 @@ local function constructNew_frmDnD5()
     obj.label69:setParent(obj.frame2);
     obj.label69:setAlign("bottom");
     obj.label69:setAutoSize(true);
-    obj.label69:setText("PONTOS DE VIDA TEMPORÁRIOS");
+    obj.label69:setText("@@DnD5e.frente.lab.PVTemp");
     obj.label69:setFontSize(11);
     obj.label69:setVertTextAlign("center");
     obj.label69:setHorzTextAlign("center");
@@ -2691,7 +2691,7 @@ local function constructNew_frmDnD5()
     obj.label70:setParent(obj.layout33);
     obj.label70:setAlign("left");
     obj.label70:setAutoSize(true);
-    obj.label70:setText("TOTAL:");
+    obj.label70:setText("@@DnD5e.frente.lab.total");
     obj.label70:setTextTrimming("none");
     obj.label70:setWordWrap(false);
     obj.label70:setFontSize(10);
@@ -2738,7 +2738,7 @@ local function constructNew_frmDnD5()
     obj.label71:setParent(obj.flowPart38);
     obj.label71:setAlign("bottom");
     obj.label71:setAutoSize(true);
-    obj.label71:setText("DADOS DE VIDA");
+    obj.label71:setText("@@DnD5e.frente.lab.PVDice");
     obj.label71:setFontSize(11);
     obj.label71:setVertTextAlign("center");
     obj.label71:setHorzTextAlign("center");
@@ -2766,7 +2766,7 @@ local function constructNew_frmDnD5()
     obj.label72:setAlign("client");
     obj.label72:setAutoSize(true);
     obj.label72:setFontSize(10);
-    obj.label72:setText("SUCESSOS");
+    obj.label72:setText("@@DnD5e.frente.lab.sucess");
     obj.label72:setWordWrap(false);
     obj.label72:setVertTextAlign("center");
     obj.label72:setHorzTextAlign("trailing");
@@ -2822,7 +2822,7 @@ local function constructNew_frmDnD5()
     obj.label73:setAlign("client");
     obj.label73:setAutoSize(true);
     obj.label73:setFontSize(10);
-    obj.label73:setText("FALHAS");
+    obj.label73:setText("@@DnD5e.frente.lab.flaws");
     obj.label73:setVertTextAlign("center");
     obj.label73:setHorzTextAlign("trailing");
     obj.label73:setMargins({right=6});
@@ -2869,7 +2869,7 @@ local function constructNew_frmDnD5()
     obj.label74:setParent(obj.flowPart39);
     obj.label74:setAlign("bottom");
     obj.label74:setAutoSize(true);
-    obj.label74:setText("TESTE CONTRA MORTE");
+    obj.label74:setText("@@DnD5e.frente.lab.deathteste");
     obj.label74:setFontSize(11);
     obj.label74:setVertTextAlign("center");
     obj.label74:setHorzTextAlign("center");
@@ -4294,7 +4294,7 @@ local function constructNew_frmDnD5()
     obj.cmbupperGridMagicBox1:setName("cmbupperGridMagicBox1");
     obj.cmbupperGridMagicBox1:setFrameRegion("ContentRegion");
     obj.cmbupperGridMagicBox1:setField("magias.habilidadeDeConjuracao");
-    obj.cmbupperGridMagicBox1:setItems({'', 'INTELIGÊNCIA', 'SABEDORIA', 'CARISMA'});
+    obj.cmbupperGridMagicBox1:setItems({'', 'INTELIGENCIA', 'SABEDORIA', 'CARISMA'});
     obj.cmbupperGridMagicBox1:setValues({'', 'int', 'sab', 'car'});
     obj.cmbupperGridMagicBox1:setHorzTextAlign("center");
     obj.cmbupperGridMagicBox1:setVertTextAlign("center");

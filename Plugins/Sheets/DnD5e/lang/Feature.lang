@@ -33,6 +33,7 @@ DnD5e.features.bonds=BONDS
 DnD5e.features.flaws=FLAWS
 DnD5e.features.featurestraits=FEATURES & TRAITS
 DnD5e.features.languages=LANGUAGE
+DnD5e.features.faction=FACTION
 DnD5e.features.factionSymbol=FACTION SYMBOL
 DnD5e.features.alliesOrganizations=ALLIES AND ORGANIZATIONS
 DnD5e.features.characterStory=CHARACTER HISTORY

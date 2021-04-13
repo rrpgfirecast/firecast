@@ -95,7 +95,7 @@ local function constructNew_frmMagiaItemComCheckbox()
 
     obj.button2 = GUI.fromHandle(_obj_newObject("button"));
     obj.button2:setParent(obj.layout1);
-    obj.button2:setText("Apagar");
+    obj.button2:setText("@@DnD5e.spells.btn.delete");
     obj.button2:setAlign("right");
     obj.button2:setWidth(60);
     obj.button2:setMargins({left=4, right=4, top=2, bottom=2});

@@ -125,7 +125,7 @@
 				<!-- GRID DE INFORMACOES SUPERIORES DA FRENTE -->
 				<flowLayout class="halfTile2"  minWidth="320" maxWidth="1600" name="fraUpperGridMagias" avoidScale="true" frameStyle="frames/upperInfoGrid/frame.xml" autoHeight="true" vertAlign="trailing" 
 						maxControlsPerLine="2" horzAlign="center" lineSpacing="8">								
-					<upperGridMagicComboBox minWidth="145" field="magias.habilidadeDeConjuracao" titulo="@@DnD5e.spells.spellcasterAbility" items="{'', 'INTELIGÊNCIA', 'SABEDORIA', 'CARISMA'}" values="{'', 'int', 'sab', 'car'}"/>
+					<upperGridMagicComboBox minWidth="145" field="magias.habilidadeDeConjuracao" titulo="@@DnD5e.spells.spellcasterAbility" items="{'', '@@DnD5e.frente.box.intelligence', '@@DnD5e.frente.box.wisdom', '@@DnD5e.frente.box.charisma'}" values="{'', 'int', 'sab', 'car'}"/>
 					<upperGridMagicBox field="magias.cdDaMagia" titulo="@@DnD5e.spells.spellSaveDC"/>
 					<upperGridMagicBox field="magias.bonusAtaqueSTR" titulo="@@DnD5e.spells.spellAttackBonus"/>									
 					<upperGridMagicEditBox field="magias.spKi" titulo="@@DnD5e.spells.SP/Ki"/>					
