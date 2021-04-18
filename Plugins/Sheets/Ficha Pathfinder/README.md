@@ -1,10 +1,15 @@
 # Ficha Pathfinder
 Talentos para Verificar:
-* Ataque Poderoso
 * Tiro Multiplo
 * Especialização em Combate
-* Piranha Strike
 * Rajada de Golpes
+
+* Ver forma de por força adicional só pra carga
+* Ver bug das anotações
+
+Versão 0.10
+* Opção de bonus de força especifico para carga. 
+* Melhorias nos ataques avançados. Nova opções de bônus customizaveis. 
 
 Versão 0.9.2
 - Clicar para atacar automaticamente atualiza os campos de ataque. 

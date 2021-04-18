@@ -6,6 +6,10 @@ Proximas Versões
 + Campo de Magia para cristais/essencias.
 + Exportar ficha para texto (completo/simples).
 
+Versão 3.5
+* Opção de bonus de força especifico para carga. 
+* Melhorias nos ataques avançados. Nova opções de bônus customizaveis. 
+
 Versão 3.4
 * Nova aba de magias.  
 
