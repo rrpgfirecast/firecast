@@ -85,8 +85,26 @@
 				</rectangle>
 			</layout>
 			<layout align="top" height="200" margins="{bottom=5}">
-				<rectangle align="client" width="340" color="black" strokeColor="white" strokeSize="1" margins="{right=5}" padding="{top=5,bottom=5}">
+				<rectangle align="left" width="650" color="black" strokeColor="white" strokeSize="1" margins="{right=5}" padding="{top=5,bottom=5}">
 					<textEditor align="client" field="detalhes" margins="{left=5,right=5,top=0}"/>
+				</rectangle>
+				<rectangle align="left" width="105" color="black" strokeColor="white" strokeSize="1" margins="{right=5}" padding="{top=2.5,bottom=2.5}">
+					<layout align="top" height="50">
+						<layout align="left" width="5"/>
+						<VertCheckEditOrLLabel text="Valor" field="preco" width="95" fontSize="13" formatFloat=",0 C"/>
+					</layout>
+					<layout align="top" height="50">
+						<layout align="left" width="5"/>
+						<VertCheckEditOrLLabel text="Peso Máximo" field="peso" width="95" fontSize="12" formatFloat=",0.# Tons"/>
+					</layout>
+					<layout align="top" height="50">
+						<layout align="left" width="5"/>
+						<VertLabelEdit text="Volume" field="volume" width="95" fontSize="13"/>
+					</layout>
+					<layout align="top" height="50">
+						<layout align="left" width="5"/>
+						<VertLabelLabel text="Danos Críticos" field="danos" width="95" fontSize="11"/>
+					</layout>
 				</rectangle>
 			</layout>
 		</layout>
@@ -667,18 +685,56 @@
 			sheet.blocosMin = blocosMin*2;
 		</event>
 	</dataLink>
+	<dataLink fields="{'blocosMin','ranque','precoCheck','pesoCheck'}">
+		<event name="onChange">
+			if sheet==nil then return end;
+			local blocos = (tonumber(sheet.blocosMin) or 0);
+			local ranque = (tonumber(sheet.ranque) or 0);
+
+			if sheet.precoCheck then
+				sheet.preco = blocos*ranque*250;
+			end;
+			if sheet.pesoCheck then
+				sheet.peso = (blocos/5);
+			end;
+		</event>
+	</dataLink>
 	<dataLink fields="{'plataforma_tripMin','opt_trip','propulsor_tripMin','escudo_tripMin','deriva_tripMin','reator_tripMin','expansao_tripMin','weapon_tripMin'}">
 		<event name="onChange">
 			if sheet==nil then return end;
-			local tripMin = (tonumber(sheet.plataforma_tripMin) or 0);
+			local capitao = (tonumber(sheet.plataforma_tripMin) or 0);
+			local tripMin = capitao;
 
 			if sheet.opt_trip then
-				tripMin =   (tonumber(sheet.propulsor_tripMin) or 0) +
-							(tonumber(sheet.escudo_tripMin) or 0) +
-							(tonumber(sheet.deriva_tripMin) or 0) +
-							(tonumber(sheet.reator_tripMin) or 0) +
-							(tonumber(sheet.weapon_tripMin) or 0) +
-							(tonumber(sheet.expansao_tripMin) or 0) + tripMin
+				local propulsor = (tonumber(sheet.propulsor_tripMin) or 0);
+				local escudo = (tonumber(sheet.escudo_tripMin) or 0);
+				local deriva = (tonumber(sheet.deriva_tripMin) or 0);
+				local reator = (tonumber(sheet.reator_tripMin) or 0);
+				local weapon = (tonumber(sheet.weapon_tripMin) or 0);
+				local expansao = (tonumber(sheet.expansao_tripMin) or 0);
+				local pilotos = math.floor(propulsor/10);
+
+				local expansoes = {0,0,0,0,0,0,0};
+
+	            local nodes = NDB.getChildNodes(sheet.listaExpansao); 
+	            for i=1, #nodes, 1 do
+	                local trip = (tonumber(nodes[i].tripMin) or 0);
+	                local tipo = (tonumber(nodes[i].tripTipo) or 0);
+
+	                if tipo >=1 and tipo &lt;= 7 then
+	                	expansoes[tipo] = expansoes[tipo] + trip;
+	                end;
+	            end;
+
+				tripMin = tripMin + propulsor + escudo + deriva + reator + weapon + expansao;
+				sheet.trip_min1 = capitao + expansoes[1];
+				sheet.trip_min2 = weapon + expansoes[2];
+				sheet.trip_min3 = (propulsor - pilotos) + deriva + reator + expansoes[3];
+				sheet.trip_min4 = escudo + expansoes[4];
+				sheet.trip_min5 = pilotos + expansoes[5];
+				sheet.trip_min6 = expansoes[6];
+				sheet.trip_min7 = expansoes[7];
+
 			end;
 
 			sheet.tripulacaoMin = tripMin;
@@ -687,18 +743,54 @@
 	<dataLink fields="{'plataforma_tripMax','opt_trip','propulsor_tripMax','escudo_tripMax','deriva_tripMax','reator_tripMax','expansao_tripMax','weapon_tripMax'}">
 		<event name="onChange">
 			if sheet==nil then return end;
-			local tripMax = (tonumber(sheet.plataforma_tripMax) or 0);
+			local capitao = (tonumber(sheet.plataforma_tripMax) or 0);
+			local tripMax = capitao;
 
 			if sheet.opt_trip then
-				tripMax =   (tonumber(sheet.propulsor_tripMax) or 0) +
-							(tonumber(sheet.escudo_tripMax) or 0) +
-							(tonumber(sheet.deriva_tripMax) or 0) +
-							(tonumber(sheet.reator_tripMax) or 0) +
-							(tonumber(sheet.weapon_tripMax) or 0) +
-							(tonumber(sheet.expansao_tripMax) or 0) + tripMax
+				local propulsor = (tonumber(sheet.propulsor_tripMax) or 0);
+				local escudo = (tonumber(sheet.escudo_tripMax) or 0);
+				local deriva = (tonumber(sheet.deriva_tripMax) or 0);
+				local reator = (tonumber(sheet.reator_tripMax) or 0);
+				local weapon = (tonumber(sheet.weapon_tripMax) or 0);
+				local expansao = (tonumber(sheet.expansao_tripMax) or 0);
+				local pilotos = math.floor(propulsor/10);
+
+				local expansoes = {0,0,0,0,0,0,0};
+
+	            local nodes = NDB.getChildNodes(sheet.listaExpansao); 
+	            for i=1, #nodes, 1 do
+	                local trip = (tonumber(nodes[i].tripMax) or 0);
+	                local tipo = (tonumber(nodes[i].tripTipo) or 0);
+
+	                if tipo >=1 and tipo &lt;= 7 then
+	                	expansoes[tipo] = expansoes[tipo] + trip;
+	                end;
+	            end;
+
+				tripMax = tripMax + propulsor + escudo + deriva + reator + weapon + expansao;
+				sheet.trip_max1 = capitao + expansoes[1];
+				sheet.trip_max2 = weapon + expansoes[2];
+				sheet.trip_max3 = propulsor - pilotos + deriva + reator + expansoes[3];
+				sheet.trip_max4 = escudo + expansoes[4];
+				sheet.trip_max5 = pilotos + expansoes[5];
+				sheet.trip_max6 = expansoes[6];
+				sheet.trip_max7 = expansoes[7];
 			end;
 
 			sheet.tripulacaoMax = tripMax;
+		</event>
+	</dataLink>
+	<dataLink fields="{'status_vida','status_sensores','status_motores','status_reator','status_proa','status_popa','status_bombordo','status_estibordo'}">
+		<event name="onChange">
+			if sheet==nil then return end;
+			sheet.danos =   (tonumber(sheet.status_vida) or 0) +
+							(tonumber(sheet.status_sensores) or 0) +
+							(tonumber(sheet.status_motores) or 0) +
+							(tonumber(sheet.status_reator) or 0) +
+							(tonumber(sheet.status_proa) or 0) +
+							(tonumber(sheet.status_popa) or 0) +
+							(tonumber(sheet.status_bombordo) or 0) +
+							(tonumber(sheet.status_estibordo) or 0);
 		</event>
 	</dataLink>
 </form>

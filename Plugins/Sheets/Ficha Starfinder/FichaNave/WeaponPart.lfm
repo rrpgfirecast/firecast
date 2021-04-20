@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<form name="frmWeaponPart" width="465" height="25" theme="dark" margins="{top=1}">
+<form name="frmWeaponPart" width="400" height="25" theme="dark" margins="{top=1}">
 	<script> 
 		<![CDATA[			
 		local function askForDelete()
@@ -25,9 +25,11 @@
 	</script>
 	<edit align="client" field="nome" margins="{top=1,bottom=1}"/>
 
-	<layout align="right" width="50">
-		<button align="right" width="23" text="i" onClick="showPopup();" margins="{top=1,bottom=1}"/>
-		<button align="right" width="23" text="X" onClick="askForDelete();" margins="{top=1,bottom=1}"/>
+    <edit align="right" width="50" text="Dano" field="dano" margins="{top=1,bottom=1}"/>
+	<layout align="right" width="125" margins="{top=1,bottom=1}">
+        <comboBox align="left" field="categoria" width="75" items="{'-','Pessoal','Leve','Pesada','Capital'}" values="{'0','1','2','3','4'}"/>
+		<button align="right" width="23" text="i" onClick="showPopup();"/>
+		<button align="right" width="23" text="X" onClick="askForDelete();"/>
 	</layout>
     <dataLink field="tripTipo" defaultValue="Artilheiro"/>
 	<dataLink field="pf">
@@ -133,6 +135,24 @@
             end;
 
             node.weapon_blocos = blocos;
+        </event>
+    </dataLink>
+    <dataLink field="categoria">
+        <event name="onChange">
+            if sheet==nil then return end;
+            local categoria = tonumber(sheet.categoria) or 0;
+
+            sheet.tripMin = 0;
+
+            if categoria == 1 or categoria == 2 then
+                sheet.tripMax = 1;
+            elseif categoria == 3 then
+                sheet.tripMax = 5;
+            elseif categoria == 4 then
+                sheet.tripMax = 25;
+            else
+                sheet.tripMax = 0;
+            end;
         </event>
     </dataLink>
     <dataLink field="tripMin">

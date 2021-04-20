@@ -6,8 +6,8 @@
 				<layout align="top" height="50">
 					<layout align="left" width="5"/>
 					<VertLabelLabel text="Tipo" field="trip_tipo1" width="95" fontSize="13"/>
-					<VertLabelEdit text="Min" field="trip_min1" width="45" fontSize="13"/>
-					<VertLabelEdit text="Max" field="trip_max1" width="45" fontSize="13"/>
+					<VertLabelLabel text="Min" field="trip_min1" width="45" fontSize="13"/>
+					<VertLabelLabel text="Max" field="trip_max1" width="45" fontSize="13"/>
 					<VertLabelLabel text="Atual" field="trip_atual1" width="45" fontSize="13"/>
 				</layout>
 				<layout align="top" height="25">
@@ -15,8 +15,12 @@
 					<rectangle align="left" width="95" color="#F0FFFF" strokeColor="black" strokeSize="1" margins="{right=5}">
 		                <label align="client" field="trip_tipo2" horzTextAlign="center" vertTextAlign="center"/>
 		            </rectangle>
-		            <edit align="left" width="45" field="trip_min2" margins="{right=5}"/>
-		            <edit align="left" width="45" field="trip_max2" margins="{right=5}"/>
+					<rectangle align="left" width="45" color="#F0FFFF" strokeColor="black" strokeSize="1" margins="{right=5}">
+		                <label align="client" field="trip_min2" horzTextAlign="center" vertTextAlign="center"/>
+		            </rectangle>
+					<rectangle align="left" width="45" color="#F0FFFF" strokeColor="black" strokeSize="1" margins="{right=5}">
+		                <label align="client" field="trip_max2" horzTextAlign="center" vertTextAlign="center"/>
+		            </rectangle>
 					<rectangle align="left" width="45" color="#F0FFFF" strokeColor="black" strokeSize="1" margins="{right=5}">
 		                <label align="client" field="trip_atual2" horzTextAlign="center" vertTextAlign="center"/>
 		            </rectangle>
@@ -26,8 +30,12 @@
 					<rectangle align="left" width="95" color="#F0FFFF" strokeColor="black" strokeSize="1" margins="{right=5}">
 		                <label align="client" field="trip_tipo3" horzTextAlign="center" vertTextAlign="center"/>
 		            </rectangle>
-		            <edit align="left" width="45" field="trip_min3" margins="{right=5}"/>
-		            <edit align="left" width="45" field="trip_max3" margins="{right=5}"/>
+					<rectangle align="left" width="45" color="#F0FFFF" strokeColor="black" strokeSize="1" margins="{right=5}">
+		                <label align="client" field="trip_min3" horzTextAlign="center" vertTextAlign="center"/>
+		            </rectangle>
+					<rectangle align="left" width="45" color="#F0FFFF" strokeColor="black" strokeSize="1" margins="{right=5}">
+		                <label align="client" field="trip_max3" horzTextAlign="center" vertTextAlign="center"/>
+		            </rectangle>
 					<rectangle align="left" width="45" color="#F0FFFF" strokeColor="black" strokeSize="1" margins="{right=5}">
 		                <label align="client" field="trip_atual3" horzTextAlign="center" vertTextAlign="center"/>
 		            </rectangle>
@@ -37,8 +45,12 @@
 					<rectangle align="left" width="95" color="#F0FFFF" strokeColor="black" strokeSize="1" margins="{right=5}">
 		                <label align="client" field="trip_tipo4" horzTextAlign="center" vertTextAlign="center"/>
 		            </rectangle>
-		            <edit align="left" width="45" field="trip_min4" margins="{right=5}"/>
-		            <edit align="left" width="45" field="trip_max4" margins="{right=5}"/>
+					<rectangle align="left" width="45" color="#F0FFFF" strokeColor="black" strokeSize="1" margins="{right=5}">
+		                <label align="client" field="trip_min4" horzTextAlign="center" vertTextAlign="center"/>
+		            </rectangle>
+					<rectangle align="left" width="45" color="#F0FFFF" strokeColor="black" strokeSize="1" margins="{right=5}">
+		                <label align="client" field="trip_max4" horzTextAlign="center" vertTextAlign="center"/>
+		            </rectangle>
 					<rectangle align="left" width="45" color="#F0FFFF" strokeColor="black" strokeSize="1" margins="{right=5}">
 		                <label align="client" field="trip_atual4" horzTextAlign="center" vertTextAlign="center"/>
 		            </rectangle>
@@ -48,8 +60,12 @@
 					<rectangle align="left" width="95" color="#F0FFFF" strokeColor="black" strokeSize="1" margins="{right=5}">
 		                <label align="client" field="trip_tipo5" horzTextAlign="center" vertTextAlign="center"/>
 		            </rectangle>
-		            <edit align="left" width="45" field="trip_min5" margins="{right=5}"/>
-		            <edit align="left" width="45" field="trip_max5" margins="{right=5}"/>
+					<rectangle align="left" width="45" color="#F0FFFF" strokeColor="black" strokeSize="1" margins="{right=5}">
+		                <label align="client" field="trip_min5" horzTextAlign="center" vertTextAlign="center"/>
+		            </rectangle>
+					<rectangle align="left" width="45" color="#F0FFFF" strokeColor="black" strokeSize="1" margins="{right=5}">
+		                <label align="client" field="trip_max5" horzTextAlign="center" vertTextAlign="center"/>
+		            </rectangle>
 					<rectangle align="left" width="45" color="#F0FFFF" strokeColor="black" strokeSize="1" margins="{right=5}">
 		                <label align="client" field="trip_atual5" horzTextAlign="center" vertTextAlign="center"/>
 		            </rectangle>
@@ -59,8 +75,12 @@
 					<rectangle align="left" width="95" color="#F0FFFF" strokeColor="black" strokeSize="1" margins="{right=5}">
 		                <label align="client" field="trip_tipo6" horzTextAlign="center" vertTextAlign="center"/>
 		            </rectangle>
-		            <edit align="left" width="45" field="trip_min6" margins="{right=5}"/>
-		            <edit align="left" width="45" field="trip_max6" margins="{right=5}"/>
+					<rectangle align="left" width="45" color="#F0FFFF" strokeColor="black" strokeSize="1" margins="{right=5}">
+		                <label align="client" field="trip_min6" horzTextAlign="center" vertTextAlign="center"/>
+		            </rectangle>
+					<rectangle align="left" width="45" color="#F0FFFF" strokeColor="black" strokeSize="1" margins="{right=5}">
+		                <label align="client" field="trip_max6" horzTextAlign="center" vertTextAlign="center"/>
+		            </rectangle>
 					<rectangle align="left" width="45" color="#F0FFFF" strokeColor="black" strokeSize="1" margins="{right=5}">
 		                <label align="client" field="trip_atual6" horzTextAlign="center" vertTextAlign="center"/>
 		            </rectangle>
@@ -70,8 +90,12 @@
 					<rectangle align="left" width="95" color="#F0FFFF" strokeColor="black" strokeSize="1" margins="{right=5}">
 		                <label align="client" field="trip_tipo7" horzTextAlign="center" vertTextAlign="center"/>
 		            </rectangle>
-		            <edit align="left" width="45" field="trip_min7" margins="{right=5}"/>
-		            <edit align="left" width="45" field="trip_max7" margins="{right=5}"/>
+					<rectangle align="left" width="45" color="#F0FFFF" strokeColor="black" strokeSize="1" margins="{right=5}">
+		                <label align="client" field="trip_min7" horzTextAlign="center" vertTextAlign="center"/>
+		            </rectangle>
+					<rectangle align="left" width="45" color="#F0FFFF" strokeColor="black" strokeSize="1" margins="{right=5}">
+		                <label align="client" field="trip_max7" horzTextAlign="center" vertTextAlign="center"/>
+		            </rectangle>
 					<rectangle align="left" width="45" color="#F0FFFF" strokeColor="black" strokeSize="1" margins="{right=5}">
 		                <label align="client" field="trip_atual7" horzTextAlign="center" vertTextAlign="center"/>
 		            </rectangle>

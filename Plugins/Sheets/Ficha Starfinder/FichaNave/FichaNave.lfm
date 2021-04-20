@@ -51,6 +51,29 @@
             <edit top="20" field="$(field)" width="$(width)" height="25"/>
         </layout>
     </template> 
+    <template name="VertCheckEdit">
+        <layout align="left" width="$(width)" margins="{right=5}">
+            <checkBox text="$(text)" width="$(width)" field="$(field)Check" horzTextAlign="leading" fontSize="$(fontSize)"/>
+            <edit top="20" field="$(field)" width="$(width)" height="25"/>
+        </layout>
+    </template> 
+    <template name="VertCheckEditOrLLabel">
+        <layout align="left" width="$(width)" margins="{right=5}">
+            <checkBox text="$(text)" width="$(width)" field="$(field)Check" horzTextAlign="leading" fontSize="$(fontSize)"/>
+            <edit top="20" field="$(field)" width="$(width)" height="25" visible="false" name="$(field)Edit"/>
+            <rectangle top="20" height="25" width="$(width)" color="#F0FFFF" strokeColor="black" strokeSize="1" visible="false" name="$(field)Label">
+                <label align="client" field="$(field)" horzTextAlign="center" vertTextAlign="center" format="$(format)" formatFloat="$(formatFloat)"/>
+            </rectangle>
+        </layout>
+        <dataLink field="$(field)Check">
+            <event name="onChange">
+                if sheet==nil then return end;
+
+                self.$(field)Edit.visible = not sheet.$(field)Check;
+                self.$(field)Label.visible = sheet.$(field)Check;
+            </event>
+        </dataLink>
+    </template> 
     <template name="VertLabelLabelEdit">
         <layout align="left" width="$(width)" margins="{right=5}">
             <label text="$(text)" width="$(width)" horzTextAlign="leading" fontSize="$(fontSize)"/>
@@ -81,7 +104,6 @@
             </layout>
         </layout>
     </template> 
-
     <template name="VertLabelLabel">
         <layout align="left" width="$(width)" margins="{right=5}">
             <label text="$(text)" width="$(width)" horzTextAlign="leading" fontSize="$(fontSize)"/>
@@ -295,7 +317,7 @@
             <VertLabelLabel text="Tipo" field="tripTipo" width="75" fontSize="13"/>
         </layout>
     </popup>
-    <popup name="weaponPop" width="245" height="235" backOpacity="0.4" autoScopeNode="false" padding="{left=5,right=0,top=5,bottom=5}">
+    <popup name="weaponPop" width="245" height="300" backOpacity="0.4" autoScopeNode="false" padding="{left=5,right=0,top=5,bottom=5}">
         <layout align="top" height="50">
             <VertLabelEdit text="PF" field="pf" width="75" fontSize="13"/>
             <VertLabelEdit text="UNE" field="une" width="75" fontSize="13"/>
@@ -304,7 +326,7 @@
         <layout align="top" height="50">
             <VertLabelEdit text="Dano" field="dano" width="75" fontSize="13"/>
             <VertLabelEdit text="Tipo" field="tipo" width="75" fontSize="13"/>
-            <VertLabelCombo text="Tamanho" field="categoria" width="75" fontSize="13" items="{'Pessoal','Leve','Pesada','Capital'}" values="{'0','1','2','3'}"/>
+            <VertLabelCombo text="Tamanho" field="categoria" width="75" fontSize="13" items="{'-','Pessoal','Leve','Pesada','Capital'}" values="{'0','1','2','3','4'}"/>
         </layout>
         <layout align="top" height="50">
             <VertLabelEdit text="Alcance" field="alcance" width="75" fontSize="13"/>
@@ -313,10 +335,11 @@
         </layout>
         <label align="top" text="Tripulação" height="25" horzTextAlign="center"/>
         <layout align="top" height="50">
-            <VertLabelEdit text="Mínima" field="tripMin" width="75" fontSize="13"/>
-            <VertLabelEdit text="Máxima" field="tripMax" width="75" fontSize="13"/>
+            <VertLabelLabel text="Mínima" field="tripMin" width="75" fontSize="13"/>
+            <VertLabelLabel text="Máxima" field="tripMax" width="75" fontSize="13"/>
             <VertLabelLabel text="Tipo" field="tripTipo" width="75" fontSize="13"/>
         </layout>
+        <textEditor align="client" field="detalhes"/>
     </popup>
 
     <tabControl align="client">
