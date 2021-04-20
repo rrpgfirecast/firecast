@@ -99,9 +99,13 @@
 					local strokeColor = sheet.colorStroke or "#FFFFFF";
 
 		            local rectangles = findClass("rectangle");
+		            local horzLines = findClass("horzLine");
 
 					for i=1, #rectangles, 1 do 
 						rectangles[i].strokeColor = strokeColor;
+					end;
+					for i=1, #horzLines, 1 do 
+						horzLines[i].strokeColor = strokeColor;
 					end;
 		        </event>
 		    </dataLink>

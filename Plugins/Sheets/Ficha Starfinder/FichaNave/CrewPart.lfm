@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmCrewPart" width="500" height="25" theme="dark" margins="{top=1}">
+	<script> 
+		<![CDATA[			
+		local function askForDelete()
+			Dialogs.confirmYesNo("Deseja realmente apagar?",
+								 function (confirmado)
+									if confirmado then
+										NDB.deleteNode(sheet);
+									end;
+								 end);
+		end;
+
+        function recursiveEnumPersonagensEmBibItem(bibItem, dest, tipo)
+            if bibItem.tipo == "personagem" and tipo == "PJs" then
+                if bibItem.loginDono ~= nil and bibItem.loginDono ~= "" then
+                    dest[#dest + 1] = bibItem;
+                end;
+            elseif bibItem.tipo == "personagem" and tipo == "PdMs" then
+                if (bibItem.loginDono == nil) or (bibItem.loginDono == "") then
+                    dest[#dest + 1] = bibItem;
+                end;
+            else
+                local filhos = bibItem.filhos;
+                
+                for i = 1, #filhos, 1 do
+                    recursiveEnumPersonagensEmBibItem(filhos[i], dest, tipo);
+                end;
+            end;
+        end;
+
+        function self.listAllCharacters(tipo)
+            local mesa = Firecast.getMesaDe(sheet);
+
+            local personagens = {};
+            recursiveEnumPersonagensEmBibItem(mesa.biblioteca, personagens, tipo);
+            
+            table.sort(personagens,
+                function(left, right)
+                    return Utils.compareStringPtBr(left.nome, right.nome) < 0;
+                end);
+                
+            local nomes = {};
+            local valores = {};
+            
+            nomes[1] = "-";
+            valores[1] = "0";
+            local current = tonumber(sheet.ficha);
+            local nome = "";
+            
+            for i = 1, #personagens, 1 do
+                nomes[#nomes + 1] = personagens[i].nome;
+                valores[#valores + 1] = tostring(personagens[i].codigoInterno);
+                if personagens[i].codigoInterno == current then
+                    nome = personagens[i].nome;
+                end;
+            end;
+            
+            self.fichaComboBox.items = nomes;
+            self.fichaComboBox.values = valores;
+
+            if nome ~= "" then
+                sheet.ficha = current;
+                self.fichaComboBox.text = nome;
+            end;
+        end;
+        ]]>	
+	</script>
+    <comboBox align="left" width="100" field="funcao" name="funcao" margins="{top=1,bottom=1}" items="{'Capitão','Artilheiro','Engenheiro','Oficial','Piloto','Médico','Outro'}" values="{'1','2','3','4','5','6','7'}"/>
+    <comboBox align="left" width="75" field="tipo" name="tipo" margins="{top=1,bottom=1}" items="{'PJ','PdM','Generico'}" values="{'1','2','3'}"/>
+    <layout align="client">
+        <comboBox align="client" field="ficha" name="fichaComboBox" margins="{top=1,bottom=1}" items="{}" values="{}" visible="false"/>
+        <edit align="client" field="ficha" name="fichaEdit" margins="{top=1,bottom=1}" visible="false"/>
+    </layout>
+	<layout align="right" width="90">
+        <checkBox align="left" width="20" field="boss"/>
+        <edit align="client" field="qtd" margins="{top=1,bottom=1}"/>
+		<button align="right" width="23" text="X" onClick="askForDelete();" margins="{top=1,bottom=1}"/>
+	</layout>
+    <dataLink field="tipo">
+        <event name="onChange">
+            if sheet==nil then return end;
+            local tipo = tonumber(sheet.tipo) or 0;
+
+            if tipo == 1 then
+                self.fichaComboBox.visible = true;
+                self.fichaEdit.visible = false;
+                self.listAllCharacters("PJs");
+            elseif tipo == 2 then
+                self.fichaComboBox.visible = true;
+                self.fichaEdit.visible = false;
+                self.listAllCharacters("PdMs");
+            elseif tipo == 3 then
+                self.fichaComboBox.visible = false;
+                self.fichaEdit.visible = true;
+            end;
+            
+        </event>
+    </dataLink>
+
+	<dataLink fields="{'funcao','qtd'}">
+        <event name="onChange">
+        	if sheet==nil then return end;
+
+            local trips = {0,0,0,0,0,0,0};
+            local node = NDB.getParent(NDB.getParent(sheet));
+
+            local nodes = NDB.getChildNodes(node.listaTripulantes); 
+            for i=1, #nodes, 1 do
+                local funcao = tonumber(nodes[i].funcao) or 0;
+                local qtd = tonumber(nodes[i].qtd) or 0;
+
+                if funcao >= 1 and funcao &lt;= 7 then
+                    trips[funcao] = trips[funcao] + qtd;
+                end;
+            end;
+
+            node.trip_atual1 = trips[1];
+            node.trip_atual2 = trips[2];
+            node.trip_atual3 = trips[3];
+            node.trip_atual4 = trips[4];
+            node.trip_atual5 = trips[5];
+            node.trip_atual6 = trips[6];
+            node.trip_atual7 = trips[7];
+        </event>
+    </dataLink>
+</form>
