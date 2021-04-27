@@ -1,0 +1,430 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmPath1_svg" align="client" theme="light" margins="{top=1}">
+    <style>#frmPath1_svg path {color: black; strokeColor: black; mode: stretch;} &#xD;
+#frmPath1_svg label {fontColor: black; textTrimming: none; wordWrap: false; autoSize: true;}</style>
+    <scrollBox align="client">
+        <rectangle width="905" height="1175" color="white">&#xD;
+            <image left="0" top="0" width="905" height="1175" scale="1.0" src="images/1.png" style="stretch" optimize="true" compilerOrder="0"/>&#xD;
+			--------------- Character Info --------------------
+			<edit left="360" top="57" width="185" fontColor="black" transparent="true" field="Nome"/>
+			<edit left="560" top="57" width="60" fontColor="black" transparent="true" field="Tendencia"/>
+			<edit left="633" top="57" width="200" fontColor="black" transparent="true" field="Jogador"/>
+			<edit left="360" top="87" width="260" fontColor="black" transparent="true" field="ClasseNivel"/>
+			<edit left="633" top="87" width="115" fontColor="black" transparent="true" field="Divindade"/>
+			<edit left="753" top="87" width="80" fontColor="black" transparent="true" field="TerraNatal"/>
+			<edit left="360" top="115" width="120" fontColor="black" transparent="true" field="Raca"/>
+			<edit left="486" top="115" width="42" fontColor="black" transparent="true" field="Tamanho"/>
+			<edit left="538" top="115" width="42" fontColor="black" transparent="true" field="Sexo"/>
+			<edit left="588" top="115" width="38" fontColor="black" transparent="true" field="Idade"/>
+			<edit left="632" top="115" width="48" fontColor="black" transparent="true" field="Altura"/>
+			<edit left="688" top="115" width="50" fontColor="black" transparent="true" field="Peso"/>
+			<edit left="744" top="115" width="46" fontColor="black" transparent="true" field="Cabelo"/>
+			<edit left="795" top="115" width="44" fontColor="black" transparent="true" field="Olhos"/>
+			--------------------- Status ----------------------
+			<edit left="104" top="177" width="30" height="25" horzTextAlign="center" fontColor="black" type="number" transparent="true" field="ValorAtributoForca"/>
+			<edit left="146" top="177" width="30" height="25" horzTextAlign="center" fontColor="black" type="number" transparent="true" field="MODForca"/>
+			<edit left="188" top="177" width="30" height="25" horzTextAlign="center" fontColor="black" type="number" transparent="true" field="ValorTempForca"/>
+			<edit left="230" top="177" width="30" height="25" horzTextAlign="center" fontColor="black" type="number" transparent="true" field="ModTempForca"/>
+			
+			<edit left="104" top="204" width="30" height="25" horzTextAlign="center" fontColor="black" type="number" transparent="true" field="ValorAtributoDestreza"/>
+			<edit left="146" top="204" width="30" height="25" horzTextAlign="center" fontColor="black" type="number" transparent="true" field="MODDestreza"/>
+			<edit left="188" top="204" width="30" height="25" horzTextAlign="center" fontColor="black" type="number" transparent="true" field="ValorTempDestreza"/>
+			<edit left="230" top="204" width="30" height="25" horzTextAlign="center" fontColor="black" type="number" transparent="true" field="ModTempDestreza"/>
+			
+			<edit left="104" top="230" width="30" height="25" horzTextAlign="center" fontColor="black" type="number" transparent="true" field="ValorAtributoConstituicao"/>
+			<edit left="146" top="230" width="30" height="25" horzTextAlign="center" fontColor="black" type="number" transparent="true" field="MODConstituicao"/>
+			<edit left="188" top="230" width="30" height="25" horzTextAlign="center" fontColor="black" type="number" transparent="true" field="ValorTempConstituicao"/>
+			<edit left="230" top="230" width="30" height="25" horzTextAlign="center" fontColor="black" type="number" transparent="true" field="ModTempConstituicao"/>
+			
+			<edit left="104" top="256" width="30" height="25" horzTextAlign="center" fontColor="black" type="number" transparent="true" field="ValorAtributoInteligencia"/>
+			<edit left="146" top="256" width="30" height="25" horzTextAlign="center" fontColor="black" type="number" transparent="true" field="MODInteligencia"/>
+			<edit left="188" top="256" width="30" height="25" horzTextAlign="center" fontColor="black" type="number" transparent="true" field="ValorTempInteligencia"/>
+			<edit left="230" top="256" width="30" height="25" horzTextAlign="center" fontColor="black" type="number" transparent="true" field="ModTempInteligencia"/>
+			
+			<edit left="104" top="282" width="30" height="25" horzTextAlign="center" fontColor="black" type="number" transparent="true" field="ValorAtributoSabedoria"/>
+			<edit left="146" top="282" width="30" height="25" horzTextAlign="center" fontColor="black" type="number" transparent="true" field="MODSabedoria"/>
+			<edit left="188" top="282" width="30" height="25" horzTextAlign="center" fontColor="black" type="number" transparent="true" field="ValorTempSabedoria"/>
+			<edit left="230" top="282" width="30" height="25" horzTextAlign="center" fontColor="black" type="number" transparent="true" field="ModTempSabedoria"/>
+			
+			<edit left="104" top="308" width="30" height="25" horzTextAlign="center" fontColor="black" type="number" transparent="true" field="ValorAtributoCarisma"/>
+			<edit left="146" top="308" width="30" height="25" horzTextAlign="center" fontColor="black" type="number" transparent="true" field="MODCarisma"/>
+			<edit left="188" top="308" width="30" height="25" horzTextAlign="center" fontColor="black" type="number" transparent="true" field="ValorTempCarisma"/>
+			<edit left="230" top="308" width="30" height="25" horzTextAlign="center" fontColor="black" type="number" transparent="true" field="ModTempCarisma"/>
+			
+			<edit left="365" top="166" width="45" height="25" horzTextAlign="center" fontColor="black" type="number" transparent="true" field="PVTotal"/>
+			<edit left="433" top="166" width="35" height="25" horzTextAlign="center" fontColor="black" type="number" transparent="true" field="RD"/>
+			
+			<textEditor left="272" top="207" width="196" height="48" transparent="true" field="FerimentosPVS"/>
+			
+			<edit left="272" top="270" width="196" height="25" horzTextAlign="center" fontColor="black" type="number" transparent="true" field="DanoNaoLetal"/>
+			
+			<edit left="357" top="308" width="30" height="25" horzTextAlign="center" fontColor="black" type="number" transparent="true" field="Iniciativa"/>
+			<edit left="397" top="308" width="30" height="25" horzTextAlign="center" fontColor="black" type="number" transparent="true" field="IniciativaModDestreza"/>
+			<edit left="438" top="308" width="30" height="25" horzTextAlign="center" fontColor="black" type="number" transparent="true" field="IniciativaOutro"/>
+			
+			<edit left="104" top="350" width="30" height="25" horzTextAlign="center" fontColor="black" type="number" transparent="true" field="TotalCA"/>
+			<edit left="177" top="350" width="30" height="25" horzTextAlign="center" fontColor="black" type="number" transparent="true" field="BonusArmaduraCA"/>
+			<edit left="221" top="350" width="30" height="25" horzTextAlign="center" fontColor="black" type="number" transparent="true" field="BonusArmaduraEscudoCA"/>
+			<edit left="264" top="350" width="30" height="25" horzTextAlign="center" fontColor="black" type="number" transparent="true" field="MODDestrezaCA"/>
+			<edit left="307" top="350" width="30" height="25" horzTextAlign="center" fontColor="black" type="number" transparent="true" field="MODTamanhoCA"/>
+			<edit left="351" top="350" width="30" height="25" horzTextAlign="center" fontColor="black" type="number" transparent="true" field="ArmaduraNaturalCA"/>
+			<edit left="395" top="350" width="30" height="25" horzTextAlign="center" fontColor="black" type="number" transparent="true" field="MODDeflexaoCA"/>
+			<edit left="438" top="350" width="30" height="25" horzTextAlign="center" fontColor="black" type="number" transparent="true" field="OutroCA"/>
+			
+			<edit left="104" top="392" width="30" height="25" horzTextAlign="center" fontColor="black" type="number" transparent="true" field="ToqueCA"/>
+			<edit left="232" top="392" width="30" height="25" horzTextAlign="center" fontColor="black" type="number" transparent="true" field="DesprevenidoCA"/>
+			<label left="290" top="395" text="TOQUE" fontSize="6"/>
+			<label left="340" top="395" text="DESPREVENIDO" fontSize="6"/>			
+			<edit left="285" top="395" width="30" height="25" horzTextAlign="center" fontColor="black" type="number" fontSize="10" transparent="true" field="ToqueMOD"/>
+			<edit left="345" top="395" width="30" height="25" horzTextAlign="center" fontColor="black" type="number" fontSize="10" transparent="true" field="DesprevenidoMOD"/>
+			
+			<edit left="159" top="442" width="30" height="25" horzTextAlign="center" fontColor="black" type="number" fontSize="10" transparent="true" field="FortitudeTotal"/>
+			<edit left="201" top="442" width="30" height="25" horzTextAlign="center" fontColor="black" type="number" fontSize="10" transparent="true" field="FortitudeBonusBase"/>
+			<edit left="242" top="442" width="30" height="25" horzTextAlign="center" fontColor="black" type="number" fontSize="10" transparent="true" field="FortitudeMODAtributo"/>
+			<edit left="284" top="442" width="30" height="25" horzTextAlign="center" fontColor="black" type="number" fontSize="10" transparent="true" field="FortitudeMODMagia"/>
+			<edit left="326" top="442" width="30" height="25" horzTextAlign="center" fontColor="black" type="number" fontSize="10" transparent="true" field="FortitudeOutros"/>
+			<edit left="366" top="442" width="30" height="25" horzTextAlign="center" fontColor="black" type="number" fontSize="10" transparent="true" field="FortitudeMODTemporario"/>	
+			
+			<edit left="159" top="468" width="30" height="25" horzTextAlign="center" fontColor="black" type="number" fontSize="10" transparent="true" field="ReflexoTotal"/>
+			<edit left="201" top="468" width="30" height="25" horzTextAlign="center" fontColor="black" type="number" fontSize="10" transparent="true" field="ReflexoBonusBase"/>
+			<edit left="242" top="468" width="30" height="25" horzTextAlign="center" fontColor="black" type="number" fontSize="10" transparent="true" field="ReflexoMODAtributo"/>
+			<edit left="284" top="468" width="30" height="25" horzTextAlign="center" fontColor="black" type="number" fontSize="10" transparent="true" field="ReflexoMODMagia"/>
+			<edit left="326" top="468" width="30" height="25" horzTextAlign="center" fontColor="black" type="number" fontSize="10" transparent="true" field="ReflexoOutros"/>
+			<edit left="366" top="468" width="30" height="25" horzTextAlign="center" fontColor="black" type="number" fontSize="10" transparent="true" field="ReflexoMODTemporario"/>
+			
+			<edit left="159" top="493" width="30" height="25" horzTextAlign="center" fontColor="black" type="number" fontSize="10" transparent="true" field="VontadeTotal"/>
+			<edit left="201" top="493" width="30" height="25" horzTextAlign="center" fontColor="black" type="number" fontSize="10" transparent="true" field="VontadeBonusBase"/>
+			<edit left="242" top="493" width="30" height="25" horzTextAlign="center" fontColor="black" type="number" fontSize="10" transparent="true" field="VontadeMODAtributo"/>
+			<edit left="284" top="493" width="30" height="25" horzTextAlign="center" fontColor="black" type="number" fontSize="10" transparent="true" field="VontadeMODMagia"/>
+			<edit left="326" top="493" width="30" height="25" horzTextAlign="center" fontColor="black" type="number" fontSize="10" transparent="true" field="VontadeOutros"/>
+			<edit left="366" top="493" width="30" height="25" horzTextAlign="center" fontColor="black" type="number" fontSize="10" transparent="true" field="VontadeMODTemporario"/>
+			
+			<edit left="191" top="553" width="38" height="25" horzTextAlign="center" fontColor="black" type="number" fontSize="10" transparent="true" field="BMCTotal"/>
+			<edit left="244" top="553" width="30" height="25" horzTextAlign="center" fontColor="black" type="number" fontSize="10" transparent="true" field="BMCBBA"/>
+			<edit left="289" top="553" width="30" height="25" horzTextAlign="center" fontColor="black" type="number" fontSize="10" transparent="true" field="BMCMODForca"/>
+			<edit left="334" top="553" width="30" height="25" horzTextAlign="center" fontColor="black" type="number" fontSize="10" transparent="true" field="BMCMODTamanho"/>
+			
+			<edit left="191" top="594" width="38" height="25" horzTextAlign="center" fontColor="black" type="number" fontSize="10" transparent="true" field="DMCTotal"/>
+			<edit left="244" top="594" width="30" height="25" horzTextAlign="center" fontColor="black" type="number" fontSize="10" transparent="true" field="DMCBBA"/>
+			<edit left="289" top="594" width="30" height="25" horzTextAlign="center" fontColor="black" type="number" fontSize="10" transparent="true" field="DMCMODForca"/>
+			<edit left="334" top="594" width="30" height="25" horzTextAlign="center" fontColor="black" type="number" fontSize="10" transparent="true" field="DMCMODDestreza"/>
+			<edit left="381" top="594" width="30" height="25" horzTextAlign="center" fontColor="black" type="number" fontSize="10" transparent="true" field="DMCMODTamanho"/>
+			
+			<edit left="410" top="442" width="50" height="23" horzTextAlign="center" fontColor="black" type="number" fontSize="10" transparent="true" field="ModificadoresFortitude"/>
+			<edit left="410" top="468" width="50" height="23" horzTextAlign="center" fontColor="black" type="number" fontSize="10" transparent="true" field="ModificadoresReflexo"/>
+			<edit left="410" top="493" width="50" height="23" horzTextAlign="center" fontColor="black" type="number" fontSize="10" transparent="true" field="ModificadoresVontade"/>
+			
+			<edit left="43" top="660" width="270" height="23" horzTextAlign="center" fontColor="black" fontSize="10" transparent="false" field="Arma"/>
+			<edit left="317" top="660" width="93" height="23" horzTextAlign="center" fontColor="black" type="number" fontSize="10" transparent="false" field="ArmaBonusAtaque"/>
+			<edit left="415" top="660" width="50" height="23" horzTextAlign="center" fontColor="black" type="number" fontSize="10" transparent="false" field="ArmaCritico"/>
+			<edit left="43" top="698" width="47" height="23" horzTextAlign="center" fontColor="black" fontSize="10" transparent="false" field="ArmaTipo"/>
+			<edit left="93" top="698" width="67" height="23" horzTextAlign="center" fontColor="black" fontSize="10" transparent="false" field="ArmaAlcance"/>
+			<edit left="165" top="698" width="145" height="23" horzTextAlign="center" fontColor="black" type="number" fontSize="10" transparent="false" field="ArmaMunicao"/>
+			<edit left="317" top="698" width="150" height="23" horzTextAlign="center" fontColor="black" type="number" fontSize="10" transparent="false" field="ArmaDano"/>
+		
+			<edit left="43" top="755" width="270" height="23" horzTextAlign="center" fontColor="black" fontSize="10" transparent="false" field="Arma2"/>
+			<edit left="317" top="755" width="93" height="23" horzTextAlign="center" fontColor="black" type="number" fontSize="10" transparent="false" field="Arma2BonusAtaque"/>
+			<edit left="415" top="755" width="50" height="23" horzTextAlign="center" fontColor="black" type="number" fontSize="10" transparent="false" field="Arma2Critico"/>
+			<edit left="43" top="793" width="47" height="23" horzTextAlign="center" fontColor="black" fontSize="10" transparent="false" field="Arma2Tipo"/>
+			<edit left="93" top="793" width="67" height="23" horzTextAlign="center" fontColor="black" fontSize="10" transparent="false" field="Arma2Alcance"/>
+			<edit left="165" top="793" width="145" height="23" horzTextAlign="center" fontColor="black" type="number" fontSize="10" transparent="false" field="Arma2Municao"/>
+			<edit left="317" top="793" width="150" height="23" horzTextAlign="center" fontColor="black" type="number" fontSize="10" transparent="false" field="Arma2Dano"/>
+		
+			<edit left="43" top="850" width="270" height="23" horzTextAlign="center" fontColor="black" fontSize="10" transparent="false" field="Arma3"/>
+			<edit left="317" top="850" width="93" height="23" horzTextAlign="center" fontColor="black" type="number" fontSize="10" transparent="false" field="Arma3BonusAtaque"/>
+			<edit left="415" top="850" width="50" height="23" horzTextAlign="center" fontColor="black" type="number" fontSize="10" transparent="false" field="Arma3Critico"/>
+			<edit left="43" top="888" width="47" height="23" horzTextAlign="center" fontColor="black" fontSize="10" transparent="false" field="Arma3Tipo"/>
+			<edit left="93" top="888" width="67" height="23" horzTextAlign="center" fontColor="black" fontSize="10" transparent="false" field="Arma3Alcance"/>
+			<edit left="165" top="888" width="145" height="23" horzTextAlign="center" fontColor="black" type="number" fontSize="10" transparent="false" field="Arma3Municao"/>
+			<edit left="317" top="888" width="150" height="23" horzTextAlign="center" fontColor="black" type="number" fontSize="10" transparent="false" field="Arma3Dano"/>
+		
+			<edit left="43" top="944" width="270" height="23" horzTextAlign="center" fontColor="black" fontSize="10" transparent="false" field="Arma4"/>
+			<edit left="317" top="944" width="93" height="23" horzTextAlign="center" fontColor="black" type="number" fontSize="10" transparent="false" field="Arma4BonusAtaque"/>
+			<edit left="415" top="944" width="50" height="23" horzTextAlign="center" fontColor="black" type="number" fontSize="10" transparent="false" field="Arma4Critico"/>
+			<edit left="43" top="982" width="47" height="23" horzTextAlign="center" fontColor="black" fontSize="10" transparent="false" field="Arma4Tipo"/>
+			<edit left="93" top="982" width="67" height="23" horzTextAlign="center" fontColor="black" fontSize="10" transparent="false" field="Arma4Alcance"/>
+			<edit left="165" top="982" width="145" height="23" horzTextAlign="center" fontColor="black" type="number" fontSize="10" transparent="false" field="Arma4Municao"/>
+			<edit left="317" top="982" width="150" height="23" horzTextAlign="center" fontColor="black" type="number" fontSize="10" transparent="false" field="Arma4Dano"/>
+		
+			<edit left="43" top="1038" width="270" height="23" horzTextAlign="center" fontColor="black" fontSize="10" transparent="false" field="Arma5"/>
+			<edit left="317" top="1038" width="93" height="23" horzTextAlign="center" fontColor="black" type="number" fontSize="10" transparent="false" field="Arma5BonusAtaque"/>
+			<edit left="415" top="1038" width="50" height="23" horzTextAlign="center" fontColor="black" type="number" fontSize="10" transparent="false" field="Arma5Critico"/>
+			<edit left="43" top="1076" width="47" height="23" horzTextAlign="center" fontColor="black" fontSize="10" transparent="false" field="Arma5Tipo"/>
+			<edit left="93" top="1076" width="67" height="23" horzTextAlign="center" fontColor="black" fontSize="10" transparent="false" field="Arma5Alcance"/>
+			<edit left="165" top="1076" width="145" height="23" horzTextAlign="center" fontColor="black" type="number" fontSize="10" transparent="false" field="Arma5Municao"/>
+			<edit left="317" top="1076" width="150" height="23" horzTextAlign="center" fontColor="black" type="number" fontSize="10" transparent="false" field="Arma5Dano"/>
+			
+			<edit left="261" top="522" width="50" horzTextAlign="center" fontColor="black" transparent="true"/>	
+			<edit left="421" top="522" width="30" horzTextAlign="center" fontColor="black" transparent="true"/>
+			<edit left="375" top="560" width="92" horzTextAlign="center" fontColor="black" transparent="true"/>	
+			
+			<edit left="550" top="166" width="35" height="25" horzTextAlign="center" fontColor="black" type="number" transparent="true" field="RD"/>
+			<edit left="605" top="166" width="35" height="25" horzTextAlign="center" fontColor="black" type="number" transparent="true" field="RD"/>
+			<edit left="670" top="166" width="35" height="25" horzTextAlign="center" fontColor="black" type="number" transparent="true" field="RD"/>
+			<edit left="725" top="166" width="35" height="25" horzTextAlign="center" fontColor="black" type="number" transparent="true" field="RD"/>
+			
+			<edit left="490	" top="202" width="35" height="25" horzTextAlign="center" fontColor="black" type="number" transparent="true" field="RD"/>
+			<edit left="545" top="202" width="35" height="25" horzTextAlign="center" fontColor="black" type="number" transparent="true" field="RD"/>
+			
+			<edit left="600" top="202" width="35" height="25" horzTextAlign="center" fontColor="black" type="number" transparent="true" field="RD"/>
+			<edit left="660" top="202" width="35" height="25" horzTextAlign="center" fontColor="black" type="number" transparent="true" field="RD"/>
+			<edit left="725" top="202" width="35" height="25" horzTextAlign="center" fontColor="black" type="number" transparent="true" field="RD"/>
+
+			<edit left="786" top="202" width="65" height="25" horzTextAlign="center" fontColor="black" type="number" transparent="true" field="RD"/>
+			
+			
+			<checkBox left="475" top="285" field="PericiaAcrobacia"/>
+			<checkBox left="475" top="306" field="PericiaAdestrarAnimais"/>
+			<checkBox left="475" top="322" field="PericiaAdestrarAnimais"/>
+			<checkBox left="475" top="340" field="PericiaAdestrarAnimais"/>
+			<checkBox left="475" top="355" field="PericiaAdestrarAnimais"/>
+			<checkBox left="475" top="372" field="PericiaAdestrarAnimais"/>
+			<checkBox left="475" top="389" field="PericiaAdestrarAnimais"/>
+			<checkBox left="475" top="405" field="PericiaAdestrarAnimais"/>
+			<checkBox left="475" top="422" field="PericiaAdestrarAnimais"/>
+			<checkBox left="475" top="439" field="PericiaAdestrarAnimais"/>
+			<checkBox left="475" top="457" field="PericiaAdestrarAnimais"/>
+			<checkBox left="475" top="474" field="PericiaAdestrarAnimais"/>
+			<checkBox left="475" top="491" field="PericiaAdestrarAnimais"/>
+			<checkBox left="475" top="508" field="PericiaAdestrarAnimais"/>
+			<checkBox left="475" top="525" field="PericiaAdestrarAnimais"/>
+			<checkBox left="475" top="542" field="PericiaAdestrarAnimais"/>
+			<checkBox left="475" top="559" field="PericiaAdestrarAnimais"/>
+			<checkBox left="475" top="576" field="PericiaAdestrarAnimais"/>
+			<checkBox left="475" top="593" field="PericiaAdestrarAnimais"/>
+			<checkBox left="475" top="610" field="PericiaAdestrarAnimais"/>
+			<checkBox left="475" top="627" field="PericiaAdestrarAnimais"/>
+			<checkBox left="475" top="644" field="PericiaAdestrarAnimais"/>
+			<checkBox left="475" top="661" field="PericiaAdestrarAnimais"/>
+			<checkBox left="475" top="678" field="PericiaAdestrarAnimais"/>
+			<checkBox left="475" top="695" field="PericiaAdestrarAnimais"/>
+			<checkBox left="475" top="712" field="PericiaAdestrarAnimais"/>
+			<checkBox left="475" top="729" field="PericiaAdestrarAnimais"/>
+			<checkBox left="475" top="746" field="PericiaAdestrarAnimais"/>
+			<checkBox left="475" top="763" field="PericiaAdestrarAnimais"/>
+			<checkBox left="475" top="780" field="PericiaAdestrarAnimais"/>
+			<checkBox left="475" top="797" field="PericiaAdestrarAnimais"/>
+			<checkBox left="475" top="814" field="PericiaAdestrarAnimais"/>			
+			<checkBox left="475" top="831" field="PericiaAdestrarAnimais"/>
+			<checkBox left="475" top="848" field="PericiaAdestrarAnimais"/>
+			<checkBox left="475" top="865" field="PericiaAdestrarAnimais"/>
+			<checkBox left="475" top="882" field="PericiaAdestrarAnimais"/>
+			<checkBox left="475" top="899" field="PericiaAdestrarAnimais"/>
+			<checkBox left="475" top="916" field="PericiaAdestrarAnimais"/>
+			<checkBox left="475" top="933" field="PericiaAdestrarAnimais"/>
+			<checkBox left="475" top="950" field="PericiaAdestrarAnimais"/>
+			
+			<edit left="579" top="318" width="65" height="20" horzTextAlign="center" fontSize="10" fontColor="black" transparent="true" field="Apresentacao1"/>
+			<edit left="579" top="335" width="65" height="20" horzTextAlign="center" fontSize="10" fontColor="black" transparent="true" field="Apresentacao2"/>
+			<edit left="579" top="352" width="65" height="20" horzTextAlign="center" fontSize="10" fontColor="black" transparent="true" field="Apresentacao3"/>
+			
+			<edit left="537" top="763" width="109" height="20" horzTextAlign="center" fontSize="10" fontColor="black" transparent="true" field="Oficios1"/>
+			<edit left="537" top="780" width="109" height="20" horzTextAlign="center" fontSize="10" fontColor="black" transparent="true" field="Oficios2"/>
+			<edit left="537" top="797" width="109" height="20" horzTextAlign="center" fontSize="10" fontColor="black" transparent="true" field="Oficios3"/>
+			
+			<edit left="652" top="283" width="32" height="20" horzTextAlign="center" fontSize="10" fontColor="black" transparent="true" field="Apresentacao1"/>
+			<edit left="726" top="283" width="32" height="20" horzTextAlign="center" fontSize="10" fontColor="black" transparent="true" field="Apresentacao2"/>
+			<edit left="772" top="283" width="32" height="20" horzTextAlign="center" fontSize="10" fontColor="black" transparent="true" field="Apresentacao3"/>
+			<edit left="820" top="283" width="32" height="20" horzTextAlign="center" fontSize="10" fontColor="black" transparent="true" field="Apresentacao3"/>
+	
+			<edit left="652" top="301" width="32" height="20" horzTextAlign="center" fontSize="10" fontColor="black" transparent="true" field="Apresentacao1"/>
+			<edit left="726" top="301" width="32" height="20" horzTextAlign="center" fontSize="10" fontColor="black" transparent="true" field="Apresentacao2"/>
+			<edit left="772" top="301" width="32" height="20" horzTextAlign="center" fontSize="10" fontColor="black" transparent="true" field="Apresentacao3"/>
+			<edit left="820" top="301" width="32" height="20" horzTextAlign="center" fontSize="10" fontColor="black" transparent="true" field="Apresentacao3"/>
+			
+			<edit left="652" top="318" width="32" height="20" horzTextAlign="center" fontSize="10" fontColor="black" transparent="true" field="Apresentacao1"/>
+			<edit left="726" top="318" width="32" height="20" horzTextAlign="center" fontSize="10" fontColor="black" transparent="true" field="Apresentacao2"/>
+			<edit left="772" top="318" width="32" height="20" horzTextAlign="center" fontSize="10" fontColor="black" transparent="true" field="Apresentacao3"/>
+			<edit left="820" top="318" width="32" height="20" horzTextAlign="center" fontSize="10" fontColor="black" transparent="true" field="Apresentacao3"/>
+		
+			<edit left="652" top="335" width="32" height="20" horzTextAlign="center" fontSize="10" fontColor="black" transparent="true" field="Apresentacao1"/>
+			<edit left="726" top="335" width="32" height="20" horzTextAlign="center" fontSize="10" fontColor="black" transparent="true" field="Apresentacao2"/>
+			<edit left="772" top="335" width="32" height="20" horzTextAlign="center" fontSize="10" fontColor="black" transparent="true" field="Apresentacao3"/>
+			<edit left="820" top="335" width="32" height="20" horzTextAlign="center" fontSize="10" fontColor="black" transparent="true" field="Apresentacao3"/>
+			
+			<edit left="652" top="352" width="32" height="20" horzTextAlign="center" fontSize="10" fontColor="black" transparent="true" field="Apresentacao1"/>
+			<edit left="726" top="352" width="32" height="20" horzTextAlign="center" fontSize="10" fontColor="black" transparent="true" field="Apresentacao2"/>
+			<edit left="772" top="352" width="32" height="20" horzTextAlign="center" fontSize="10" fontColor="black" transparent="true" field="Apresentacao3"/>
+			<edit left="820" top="352" width="32" height="20" horzTextAlign="center" fontSize="10" fontColor="black" transparent="true" field="Apresentacao3"/>
+			
+			<edit left="652" top="369" width="32" height="20" horzTextAlign="center" fontSize="10" fontColor="black" transparent="true" field="Apresentacao1"/>
+			<edit left="726" top="369" width="32" height="20" horzTextAlign="center" fontSize="10" fontColor="black" transparent="true" field="Apresentacao2"/>
+			<edit left="772" top="369" width="32" height="20" horzTextAlign="center" fontSize="10" fontColor="black" transparent="true" field="Apresentacao3"/>
+			<edit left="820" top="369" width="32" height="20" horzTextAlign="center" fontSize="10" fontColor="black" transparent="true" field="Apresentacao3"/>
+			
+			<edit left="652" top="386" width="32" height="20" horzTextAlign="center" fontSize="10" fontColor="black" transparent="true" field="Apresentacao1"/>
+			<edit left="726" top="386" width="32" height="20" horzTextAlign="center" fontSize="10" fontColor="black" transparent="true" field="Apresentacao2"/>
+			<edit left="772" top="386" width="32" height="20" horzTextAlign="center" fontSize="10" fontColor="black" transparent="true" field="Apresentacao3"/>
+			<edit left="820" top="386" width="32" height="20" horzTextAlign="center" fontSize="10" fontColor="black" transparent="true" field="Apresentacao3"/>
+			
+			<edit left="652" top="403" width="32" height="20" horzTextAlign="center" fontSize="10" fontColor="black" transparent="true" field="Apresentacao1"/>
+			<edit left="726" top="403" width="32" height="20" horzTextAlign="center" fontSize="10" fontColor="black" transparent="true" field="Apresentacao2"/>
+			<edit left="772" top="403" width="32" height="20" horzTextAlign="center" fontSize="10" fontColor="black" transparent="true" field="Apresentacao3"/>
+			<edit left="820" top="403" width="32" height="20" horzTextAlign="center" fontSize="10" fontColor="black" transparent="true" field="Apresentacao3"/>
+			
+			<edit left="652" top="420" width="32" height="20" horzTextAlign="center" fontSize="10" fontColor="black" transparent="true" field="Apresentacao1"/>
+			<edit left="726" top="420" width="32" height="20" horzTextAlign="center" fontSize="10" fontColor="black" transparent="true" field="Apresentacao2"/>
+			<edit left="772" top="420" width="32" height="20" horzTextAlign="center" fontSize="10" fontColor="black" transparent="true" field="Apresentacao3"/>
+			<edit left="820" top="420" width="32" height="20" horzTextAlign="center" fontSize="10" fontColor="black" transparent="true" field="Apresentacao3"/>
+			
+			<edit left="652" top="437" width="32" height="20" horzTextAlign="center" fontSize="10" fontColor="black" transparent="true" field="Apresentacao1"/>
+			<edit left="726" top="437" width="32" height="20" horzTextAlign="center" fontSize="10" fontColor="black" transparent="true" field="Apresentacao2"/>
+			<edit left="772" top="437" width="32" height="20" horzTextAlign="center" fontSize="10" fontColor="black" transparent="true" field="Apresentacao3"/>
+			<edit left="820" top="437" width="32" height="20" horzTextAlign="center" fontSize="10" fontColor="black" transparent="true" field="Apresentacao3"/>
+			
+			<edit left="652" top="454" width="32" height="20" horzTextAlign="center" fontSize="10" fontColor="black" transparent="true" field="Apresentacao1"/>
+			<edit left="726" top="454" width="32" height="20" horzTextAlign="center" fontSize="10" fontColor="black" transparent="true" field="Apresentacao2"/>
+			<edit left="772" top="454" width="32" height="20" horzTextAlign="center" fontSize="10" fontColor="black" transparent="true" field="Apresentacao3"/>
+			<edit left="820" top="454" width="32" height="20" horzTextAlign="center" fontSize="10" fontColor="black" transparent="true" field="Apresentacao3"/>
+			
+			<edit left="652" top="471" width="32" height="20" horzTextAlign="center" fontSize="10" fontColor="black" transparent="true" field="Apresentacao1"/>
+			<edit left="726" top="471" width="32" height="20" horzTextAlign="center" fontSize="10" fontColor="black" transparent="true" field="Apresentacao2"/>
+			<edit left="772" top="471" width="32" height="20" horzTextAlign="center" fontSize="10" fontColor="black" transparent="true" field="Apresentacao3"/>
+			<edit left="820" top="471" width="32" height="20" horzTextAlign="center" fontSize="10" fontColor="black" transparent="true" field="Apresentacao3"/>
+			
+			<edit left="652" top="488" width="32" height="20" horzTextAlign="center" fontSize="10" fontColor="black" transparent="true" field="Apresentacao1"/>
+			<edit left="726" top="488" width="32" height="20" horzTextAlign="center" fontSize="10" fontColor="black" transparent="true" field="Apresentacao2"/>
+			<edit left="772" top="488" width="32" height="20" horzTextAlign="center" fontSize="10" fontColor="black" transparent="true" field="Apresentacao3"/>
+			<edit left="820" top="488" width="32" height="20" horzTextAlign="center" fontSize="10" fontColor="black" transparent="true" field="Apresentacao3"/>
+			
+			<edit left="652" top="505" width="32" height="20" horzTextAlign="center" fontSize="10" fontColor="black" transparent="true" field="Apresentacao1"/>
+			<edit left="726" top="505" width="32" height="20" horzTextAlign="center" fontSize="10" fontColor="black" transparent="true" field="Apresentacao2"/>
+			<edit left="772" top="505" width="32" height="20" horzTextAlign="center" fontSize="10" fontColor="black" transparent="true" field="Apresentacao3"/>
+			<edit left="820" top="505" width="32" height="20" horzTextAlign="center" fontSize="10" fontColor="black" transparent="true" field="Apresentacao3"/>
+			
+			<edit left="652" top="522" width="32" height="20" horzTextAlign="center" fontSize="10" fontColor="black" transparent="true" field="Apresentacao1"/>
+			<edit left="726" top="522" width="32" height="20" horzTextAlign="center" fontSize="10" fontColor="black" transparent="true" field="Apresentacao2"/>
+			<edit left="772" top="522" width="32" height="20" horzTextAlign="center" fontSize="10" fontColor="black" transparent="true" field="Apresentacao3"/>
+			<edit left="820" top="522" width="32" height="20" horzTextAlign="center" fontSize="10" fontColor="black" transparent="true" field="Apresentacao3"/>
+			
+			<edit left="652" top="539" width="32" height="20" horzTextAlign="center" fontSize="10" fontColor="black" transparent="true" field="Apresentacao1"/>
+			<edit left="726" top="539" width="32" height="20" horzTextAlign="center" fontSize="10" fontColor="black" transparent="true" field="Apresentacao2"/>
+			<edit left="772" top="539" width="32" height="20" horzTextAlign="center" fontSize="10" fontColor="black" transparent="true" field="Apresentacao3"/>
+			<edit left="820" top="539" width="32" height="20" horzTextAlign="center" fontSize="10" fontColor="black" transparent="true" field="Apresentacao3"/>
+			
+			<edit left="652" top="556" width="32" height="20" horzTextAlign="center" fontSize="10" fontColor="black" transparent="true" field="Apresentacao1"/>
+			<edit left="726" top="556" width="32" height="20" horzTextAlign="center" fontSize="10" fontColor="black" transparent="true" field="Apresentacao2"/>
+			<edit left="772" top="556" width="32" height="20" horzTextAlign="center" fontSize="10" fontColor="black" transparent="true" field="Apresentacao3"/>
+			<edit left="820" top="556" width="32" height="20" horzTextAlign="center" fontSize="10" fontColor="black" transparent="true" field="Apresentacao3"/>
+			
+			<edit left="652" top="573" width="32" height="20" horzTextAlign="center" fontSize="10" fontColor="black" transparent="true" field="Apresentacao1"/>
+			<edit left="726" top="573" width="32" height="20" horzTextAlign="center" fontSize="10" fontColor="black" transparent="true" field="Apresentacao2"/>
+			<edit left="772" top="573" width="32" height="20" horzTextAlign="center" fontSize="10" fontColor="black" transparent="true" field="Apresentacao3"/>
+			<edit left="820" top="573" width="32" height="20" horzTextAlign="center" fontSize="10" fontColor="black" transparent="true" field="Apresentacao3"/>
+			
+			<edit left="652" top="590" width="32" height="20" horzTextAlign="center" fontSize="10" fontColor="black" transparent="true" field="Apresentacao1"/>
+			<edit left="726" top="590" width="32" height="20" horzTextAlign="center" fontSize="10" fontColor="black" transparent="true" field="Apresentacao2"/>
+			<edit left="772" top="590" width="32" height="20" horzTextAlign="center" fontSize="10" fontColor="black" transparent="true" field="Apresentacao3"/>
+			<edit left="820" top="590" width="32" height="20" horzTextAlign="center" fontSize="10" fontColor="black" transparent="true" field="Apresentacao3"/>
+		
+			<edit left="652" top="607" width="32" height="20" horzTextAlign="center" fontSize="10" fontColor="black" transparent="true" field="Apresentacao1"/>
+			<edit left="726" top="607" width="32" height="20" horzTextAlign="center" fontSize="10" fontColor="black" transparent="true" field="Apresentacao2"/>
+			<edit left="772" top="607" width="32" height="20" horzTextAlign="center" fontSize="10" fontColor="black" transparent="true" field="Apresentacao3"/>
+			<edit left="820" top="607" width="32" height="20" horzTextAlign="center" fontSize="10" fontColor="black" transparent="true" field="Apresentacao3"/>
+			
+			<edit left="652" top="624" width="32" height="20" horzTextAlign="center" fontSize="10" fontColor="black" transparent="true" field="Apresentacao1"/>
+			<edit left="726" top="624" width="32" height="20" horzTextAlign="center" fontSize="10" fontColor="black" transparent="true" field="Apresentacao2"/>
+			<edit left="772" top="624" width="32" height="20" horzTextAlign="center" fontSize="10" fontColor="black" transparent="true" field="Apresentacao3"/>
+			<edit left="820" top="624" width="32" height="20" horzTextAlign="center" fontSize="10" fontColor="black" transparent="true" field="Apresentacao3"/>
+			
+			<edit left="652" top="641" width="32" height="20" horzTextAlign="center" fontSize="10" fontColor="black" transparent="true" field="Apresentacao1"/>
+			<edit left="726" top="641" width="32" height="20" horzTextAlign="center" fontSize="10" fontColor="black" transparent="true" field="Apresentacao2"/>
+			<edit left="772" top="641" width="32" height="20" horzTextAlign="center" fontSize="10" fontColor="black" transparent="true" field="Apresentacao3"/>
+			<edit left="820" top="641" width="32" height="20" horzTextAlign="center" fontSize="10" fontColor="black" transparent="true" field="Apresentacao3"/>
+			
+			<edit left="652" top="658" width="32" height="20" horzTextAlign="center" fontSize="10" fontColor="black" transparent="true" field="Apresentacao1"/>
+			<edit left="726" top="658" width="32" height="20" horzTextAlign="center" fontSize="10" fontColor="black" transparent="true" field="Apresentacao2"/>
+			<edit left="772" top="658" width="32" height="20" horzTextAlign="center" fontSize="10" fontColor="black" transparent="true" field="Apresentacao3"/>
+			<edit left="820" top="658" width="32" height="20" horzTextAlign="center" fontSize="10" fontColor="black" transparent="true" field="Apresentacao3"/>
+			
+			<edit left="652" top="675" width="32" height="20" horzTextAlign="center" fontSize="10" fontColor="black" transparent="true" field="Apresentacao1"/>
+			<edit left="726" top="675" width="32" height="20" horzTextAlign="center" fontSize="10" fontColor="black" transparent="true" field="Apresentacao2"/>
+			<edit left="772" top="675" width="32" height="20" horzTextAlign="center" fontSize="10" fontColor="black" transparent="true" field="Apresentacao3"/>
+			<edit left="820" top="675" width="32" height="20" horzTextAlign="center" fontSize="10" fontColor="black" transparent="true" field="Apresentacao3"/>
+			
+			<edit left="652" top="692" width="32" height="20" horzTextAlign="center" fontSize="10" fontColor="black" transparent="true" field="Apresentacao1"/>
+			<edit left="726" top="692" width="32" height="20" horzTextAlign="center" fontSize="10" fontColor="black" transparent="true" field="Apresentacao2"/>
+			<edit left="772" top="692" width="32" height="20" horzTextAlign="center" fontSize="10" fontColor="black" transparent="true" field="Apresentacao3"/>
+			<edit left="820" top="692" width="32" height="20" horzTextAlign="center" fontSize="10" fontColor="black" transparent="true" field="Apresentacao3"/>
+			
+			<edit left="652" top="709" width="32" height="20" horzTextAlign="center" fontSize="10" fontColor="black" transparent="true" field="Apresentacao1"/>
+			<edit left="726" top="709" width="32" height="20" horzTextAlign="center" fontSize="10" fontColor="black" transparent="true" field="Apresentacao2"/>
+			<edit left="772" top="709" width="32" height="20" horzTextAlign="center" fontSize="10" fontColor="black" transparent="true" field="Apresentacao3"/>
+			<edit left="820" top="709" width="32" height="20" horzTextAlign="center" fontSize="10" fontColor="black" transparent="true" field="Apresentacao3"/>
+			
+			<edit left="652" top="726" width="32" height="20" horzTextAlign="center" fontSize="10" fontColor="black" transparent="true" field="Apresentacao1"/>
+			<edit left="726" top="726" width="32" height="20" horzTextAlign="center" fontSize="10" fontColor="black" transparent="true" field="Apresentacao2"/>
+			<edit left="772" top="726" width="32" height="20" horzTextAlign="center" fontSize="10" fontColor="black" transparent="true" field="Apresentacao3"/>
+			<edit left="820" top="726" width="32" height="20" horzTextAlign="center" fontSize="10" fontColor="black" transparent="true" field="Apresentacao3"/>
+			
+			<edit left="652" top="743" width="32" height="20" horzTextAlign="center" fontSize="10" fontColor="black" transparent="true" field="Apresentacao1"/>
+			<edit left="726" top="743" width="32" height="20" horzTextAlign="center" fontSize="10" fontColor="black" transparent="true" field="Apresentacao2"/>
+			<edit left="772" top="743" width="32" height="20" horzTextAlign="center" fontSize="10" fontColor="black" transparent="true" field="Apresentacao3"/>
+			<edit left="820" top="743" width="32" height="20" horzTextAlign="center" fontSize="10" fontColor="black" transparent="true" field="Apresentacao3"/>
+			
+			<edit left="652" top="760" width="32" height="20" horzTextAlign="center" fontSize="10" fontColor="black" transparent="true" field="Apresentacao1"/>
+			<edit left="726" top="760" width="32" height="20" horzTextAlign="center" fontSize="10" fontColor="black" transparent="true" field="Apresentacao2"/>
+			<edit left="772" top="760" width="32" height="20" horzTextAlign="center" fontSize="10" fontColor="black" transparent="true" field="Apresentacao3"/>
+			<edit left="820" top="760" width="32" height="20" horzTextAlign="center" fontSize="10" fontColor="black" transparent="true" field="Apresentacao3"/>
+			
+			<edit left="652" top="777" width="32" height="20" horzTextAlign="center" fontSize="10" fontColor="black" transparent="true" field="Apresentacao1"/>
+			<edit left="726" top="777" width="32" height="20" horzTextAlign="center" fontSize="10" fontColor="black" transparent="true" field="Apresentacao2"/>
+			<edit left="772" top="777" width="32" height="20" horzTextAlign="center" fontSize="10" fontColor="black" transparent="true" field="Apresentacao3"/>
+			<edit left="820" top="777" width="32" height="20" horzTextAlign="center" fontSize="10" fontColor="black" transparent="true" field="Apresentacao3"/>
+			
+			<edit left="652" top="794" width="32" height="20" horzTextAlign="center" fontSize="10" fontColor="black" transparent="true" field="Apresentacao1"/>
+			<edit left="726" top="794" width="32" height="20" horzTextAlign="center" fontSize="10" fontColor="black" transparent="true" field="Apresentacao2"/>
+			<edit left="772" top="794" width="32" height="20" horzTextAlign="center" fontSize="10" fontColor="black" transparent="true" field="Apresentacao3"/>
+			<edit left="820" top="794" width="32" height="20" horzTextAlign="center" fontSize="10" fontColor="black" transparent="true" field="Apresentacao3"/>
+			
+			<edit left="652" top="811" width="32" height="20" horzTextAlign="center" fontSize="10" fontColor="black" transparent="true" field="Apresentacao1"/>
+			<edit left="726" top="811" width="32" height="20" horzTextAlign="center" fontSize="10" fontColor="black" transparent="true" field="Apresentacao2"/>
+			<edit left="772" top="811" width="32" height="20" horzTextAlign="center" fontSize="10" fontColor="black" transparent="true" field="Apresentacao3"/>
+			<edit left="820" top="811" width="32" height="20" horzTextAlign="center" fontSize="10" fontColor="black" transparent="true" field="Apresentacao3"/>
+			
+			<edit left="652" top="828" width="32" height="20" horzTextAlign="center" fontSize="10" fontColor="black" transparent="true" field="Apresentacao1"/>
+			<edit left="726" top="828" width="32" height="20" horzTextAlign="center" fontSize="10" fontColor="black" transparent="true" field="Apresentacao2"/>
+			<edit left="772" top="828" width="32" height="20" horzTextAlign="center" fontSize="10" fontColor="black" transparent="true" field="Apresentacao3"/>
+			<edit left="820" top="828" width="32" height="20" horzTextAlign="center" fontSize="10" fontColor="black" transparent="true" field="Apresentacao3"/>
+			
+			<edit left="652" top="845" width="32" height="20" horzTextAlign="center" fontSize="10" fontColor="black" transparent="true" field="Apresentacao1"/>
+			<edit left="726" top="845" width="32" height="20" horzTextAlign="center" fontSize="10" fontColor="black" transparent="true" field="Apresentacao2"/>
+			<edit left="772" top="845" width="32" height="20" horzTextAlign="center" fontSize="10" fontColor="black" transparent="true" field="Apresentacao3"/>
+			<edit left="820" top="845" width="32" height="20" horzTextAlign="center" fontSize="10" fontColor="black" transparent="true" field="Apresentacao3"/>
+			
+			<edit left="652" top="862" width="32" height="20" horzTextAlign="center" fontSize="10" fontColor="black" transparent="true" field="Apresentacao1"/>
+			<edit left="726" top="862" width="32" height="20" horzTextAlign="center" fontSize="10" fontColor="black" transparent="true" field="Apresentacao2"/>
+			<edit left="772" top="862" width="32" height="20" horzTextAlign="center" fontSize="10" fontColor="black" transparent="true" field="Apresentacao3"/>
+			<edit left="820" top="862" width="32" height="20" horzTextAlign="center" fontSize="10" fontColor="black" transparent="true" field="Apresentacao3"/>
+			
+			<edit left="652" top="879" width="32" height="20" horzTextAlign="center" fontSize="10" fontColor="black" transparent="true" field="Apresentacao1"/>
+			<edit left="726" top="879" width="32" height="20" horzTextAlign="center" fontSize="10" fontColor="black" transparent="true" field="Apresentacao2"/>
+			<edit left="772" top="879" width="32" height="20" horzTextAlign="center" fontSize="10" fontColor="black" transparent="true" field="Apresentacao3"/>
+			<edit left="820" top="879" width="32" height="20" horzTextAlign="center" fontSize="10" fontColor="black" transparent="true" field="Apresentacao3"/>
+			
+			<edit left="652" top="896" width="32" height="20" horzTextAlign="center" fontSize="10" fontColor="black" transparent="true" field="Apresentacao1"/>
+			<edit left="726" top="896" width="32" height="20" horzTextAlign="center" fontSize="10" fontColor="black" transparent="true" field="Apresentacao2"/>
+			<edit left="772" top="896" width="32" height="20" horzTextAlign="center" fontSize="10" fontColor="black" transparent="true" field="Apresentacao3"/>
+			<edit left="820" top="896" width="32" height="20" horzTextAlign="center" fontSize="10" fontColor="black" transparent="true" field="Apresentacao3"/>
+			
+			<edit left="652" top="913" width="32" height="20" horzTextAlign="center" fontSize="10" fontColor="black" transparent="true" field="Apresentacao1"/>
+			<edit left="726" top="913" width="32" height="20" horzTextAlign="center" fontSize="10" fontColor="black" transparent="true" field="Apresentacao2"/>
+			<edit left="772" top="913" width="32" height="20" horzTextAlign="center" fontSize="10" fontColor="black" transparent="true" field="Apresentacao3"/>
+			<edit left="820" top="913" width="32" height="20" horzTextAlign="center" fontSize="10" fontColor="black" transparent="true" field="Apresentacao3"/>
+			
+			<edit left="652" top="930" width="32" height="20" horzTextAlign="center" fontSize="10" fontColor="black" transparent="true" field="Apresentacao1"/>
+			<edit left="726" top="930" width="32" height="20" horzTextAlign="center" fontSize="10" fontColor="black" transparent="true" field="Apresentacao2"/>
+			<edit left="772" top="930" width="32" height="20" horzTextAlign="center" fontSize="10" fontColor="black" transparent="true" field="Apresentacao3"/>
+			<edit left="820" top="930" width="32" height="20" horzTextAlign="center" fontSize="10" fontColor="black" transparent="true" field="Apresentacao3"/>
+			
+			<edit left="652" top="947" width="32" height="20" horzTextAlign="center" fontSize="10" fontColor="black" transparent="true" field="Apresentacao1"/>
+			<edit left="726" top="947" width="32" height="20" horzTextAlign="center" fontSize="10" fontColor="black" transparent="true" field="Apresentacao2"/>
+			<edit left="772" top="947" width="32" height="20" horzTextAlign="center" fontSize="10" fontColor="black" transparent="true" field="Apresentacao3"/>
+			<edit left="820" top="947" width="32" height="20" horzTextAlign="center" fontSize="10" fontColor="black" transparent="true" field="Apresentacao3"/>
+			
+			<textEditor left="475" top="989" width="380" height="35" transparent="true" field="ModificadoresCondicionais"/>
+			<textEditor left="475" top="1049" width="380" height="50" transparent="true" field="ModificadoresCondicionais"/>
+			
+		</rectangle>
+    </scrollBox>
+</form>
