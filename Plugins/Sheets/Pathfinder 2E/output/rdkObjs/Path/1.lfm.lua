@@ -1712,7 +1712,7 @@ local function constructNew_frmPath1_svg()
     obj.edit125:setFontColor("black");
     obj.edit125:setType("number");
     obj.edit125:setTransparent(true);
-    obj.edit125:setField("RD");
+    obj.edit125:setField("DeslocamentoBasicoM");
     obj.edit125:setName("edit125");
 
     obj.edit126 = GUI.fromHandle(_obj_newObject("edit"));
@@ -1725,7 +1725,7 @@ local function constructNew_frmPath1_svg()
     obj.edit126:setFontColor("black");
     obj.edit126:setType("number");
     obj.edit126:setTransparent(true);
-    obj.edit126:setField("RD");
+    obj.edit126:setField("DeslocamentoBasicoQ");
     obj.edit126:setName("edit126");
 
     obj.edit127 = GUI.fromHandle(_obj_newObject("edit"));
@@ -1738,7 +1738,7 @@ local function constructNew_frmPath1_svg()
     obj.edit127:setFontColor("black");
     obj.edit127:setType("number");
     obj.edit127:setTransparent(true);
-    obj.edit127:setField("RD");
+    obj.edit127:setField("DeslocamentoArmaduraM");
     obj.edit127:setName("edit127");
 
     obj.edit128 = GUI.fromHandle(_obj_newObject("edit"));
@@ -1751,7 +1751,7 @@ local function constructNew_frmPath1_svg()
     obj.edit128:setFontColor("black");
     obj.edit128:setType("number");
     obj.edit128:setTransparent(true);
-    obj.edit128:setField("RD");
+    obj.edit128:setField("DeslocamentoArmaduraQ");
     obj.edit128:setName("edit128");
 
     obj.edit129 = GUI.fromHandle(_obj_newObject("edit"));
@@ -1764,7 +1764,7 @@ local function constructNew_frmPath1_svg()
     obj.edit129:setFontColor("black");
     obj.edit129:setType("number");
     obj.edit129:setTransparent(true);
-    obj.edit129:setField("RD");
+    obj.edit129:setField("Voo");
     obj.edit129:setName("edit129");
 
     obj.edit130 = GUI.fromHandle(_obj_newObject("edit"));
@@ -1777,7 +1777,7 @@ local function constructNew_frmPath1_svg()
     obj.edit130:setFontColor("black");
     obj.edit130:setType("number");
     obj.edit130:setTransparent(true);
-    obj.edit130:setField("RD");
+    obj.edit130:setField("Manobralidade");
     obj.edit130:setName("edit130");
 
     obj.edit131 = GUI.fromHandle(_obj_newObject("edit"));
@@ -1790,7 +1790,7 @@ local function constructNew_frmPath1_svg()
     obj.edit131:setFontColor("black");
     obj.edit131:setType("number");
     obj.edit131:setTransparent(true);
-    obj.edit131:setField("RD");
+    obj.edit131:setField("Nado");
     obj.edit131:setName("edit131");
 
     obj.edit132 = GUI.fromHandle(_obj_newObject("edit"));
@@ -1803,7 +1803,7 @@ local function constructNew_frmPath1_svg()
     obj.edit132:setFontColor("black");
     obj.edit132:setType("number");
     obj.edit132:setTransparent(true);
-    obj.edit132:setField("RD");
+    obj.edit132:setField("Escalada");
     obj.edit132:setName("edit132");
 
     obj.edit133 = GUI.fromHandle(_obj_newObject("edit"));
@@ -1816,7 +1816,7 @@ local function constructNew_frmPath1_svg()
     obj.edit133:setFontColor("black");
     obj.edit133:setType("number");
     obj.edit133:setTransparent(true);
-    obj.edit133:setField("RD");
+    obj.edit133:setField("Escavacao");
     obj.edit133:setName("edit133");
 
     obj.edit134 = GUI.fromHandle(_obj_newObject("edit"));
@@ -1829,7 +1829,7 @@ local function constructNew_frmPath1_svg()
     obj.edit134:setFontColor("black");
     obj.edit134:setType("number");
     obj.edit134:setTransparent(true);
-    obj.edit134:setField("RD");
+    obj.edit134:setField("ModificadoresTemporarios");
     obj.edit134:setName("edit134");
 
     obj.checkBox1 = GUI.fromHandle(_obj_newObject("checkBox"));
@@ -1850,266 +1850,266 @@ local function constructNew_frmPath1_svg()
     obj.checkBox3:setParent(obj.rectangle1);
     obj.checkBox3:setLeft(475);
     obj.checkBox3:setTop(322);
-    obj.checkBox3:setField("PericiaAdestrarAnimais");
+    obj.checkBox3:setField("PericiaApresentacao1");
     obj.checkBox3:setName("checkBox3");
 
     obj.checkBox4 = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox4:setParent(obj.rectangle1);
     obj.checkBox4:setLeft(475);
     obj.checkBox4:setTop(340);
-    obj.checkBox4:setField("PericiaAdestrarAnimais");
+    obj.checkBox4:setField("PericiaApresentacao2");
     obj.checkBox4:setName("checkBox4");
 
     obj.checkBox5 = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox5:setParent(obj.rectangle1);
     obj.checkBox5:setLeft(475);
     obj.checkBox5:setTop(355);
-    obj.checkBox5:setField("PericiaAdestrarAnimais");
+    obj.checkBox5:setField("PericiaApresentacao3");
     obj.checkBox5:setName("checkBox5");
 
     obj.checkBox6 = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox6:setParent(obj.rectangle1);
     obj.checkBox6:setLeft(475);
     obj.checkBox6:setTop(372);
-    obj.checkBox6:setField("PericiaAdestrarAnimais");
+    obj.checkBox6:setField("PericiaArtedaFuga");
     obj.checkBox6:setName("checkBox6");
 
     obj.checkBox7 = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox7:setParent(obj.rectangle1);
     obj.checkBox7:setLeft(475);
     obj.checkBox7:setTop(389);
-    obj.checkBox7:setField("PericiaAdestrarAnimais");
+    obj.checkBox7:setField("PericiaArtesMagicas");
     obj.checkBox7:setName("checkBox7");
 
     obj.checkBox8 = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox8:setParent(obj.rectangle1);
     obj.checkBox8:setLeft(475);
     obj.checkBox8:setTop(405);
-    obj.checkBox8:setField("PericiaAdestrarAnimais");
+    obj.checkBox8:setField("PericiaAvaliacao");
     obj.checkBox8:setName("checkBox8");
 
     obj.checkBox9 = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox9:setParent(obj.rectangle1);
     obj.checkBox9:setLeft(475);
     obj.checkBox9:setTop(422);
-    obj.checkBox9:setField("PericiaAdestrarAnimais");
+    obj.checkBox9:setField("PericiaBlefar");
     obj.checkBox9:setName("checkBox9");
 
     obj.checkBox10 = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox10:setParent(obj.rectangle1);
     obj.checkBox10:setLeft(475);
     obj.checkBox10:setTop(439);
-    obj.checkBox10:setField("PericiaAdestrarAnimais");
+    obj.checkBox10:setField("PericiaCavalgar");
     obj.checkBox10:setName("checkBox10");
 
     obj.checkBox11 = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox11:setParent(obj.rectangle1);
     obj.checkBox11:setLeft(475);
     obj.checkBox11:setTop(457);
-    obj.checkBox11:setField("PericiaAdestrarAnimais");
+    obj.checkBox11:setField("PericiaConhecimentoArcano");
     obj.checkBox11:setName("checkBox11");
 
     obj.checkBox12 = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox12:setParent(obj.rectangle1);
     obj.checkBox12:setLeft(475);
     obj.checkBox12:setTop(474);
-    obj.checkBox12:setField("PericiaAdestrarAnimais");
+    obj.checkBox12:setField("PericiaConhecimentoExploracao");
     obj.checkBox12:setName("checkBox12");
 
     obj.checkBox13 = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox13:setParent(obj.rectangle1);
     obj.checkBox13:setLeft(475);
     obj.checkBox13:setTop(491);
-    obj.checkBox13:setField("PericiaAdestrarAnimais");
+    obj.checkBox13:setField("PericiaConhecimentoEngenharia");
     obj.checkBox13:setName("checkBox13");
 
     obj.checkBox14 = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox14:setParent(obj.rectangle1);
     obj.checkBox14:setLeft(475);
     obj.checkBox14:setTop(508);
-    obj.checkBox14:setField("PericiaAdestrarAnimais");
+    obj.checkBox14:setField("PericiaConhecimentoGeografia");
     obj.checkBox14:setName("checkBox14");
 
     obj.checkBox15 = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox15:setParent(obj.rectangle1);
     obj.checkBox15:setLeft(475);
     obj.checkBox15:setTop(525);
-    obj.checkBox15:setField("PericiaAdestrarAnimais");
+    obj.checkBox15:setField("PericiaConhecimentoHistoria");
     obj.checkBox15:setName("checkBox15");
 
     obj.checkBox16 = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox16:setParent(obj.rectangle1);
     obj.checkBox16:setLeft(475);
     obj.checkBox16:setTop(542);
-    obj.checkBox16:setField("PericiaAdestrarAnimais");
+    obj.checkBox16:setField("PericiaConhecimentoLocal");
     obj.checkBox16:setName("checkBox16");
 
     obj.checkBox17 = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox17:setParent(obj.rectangle1);
     obj.checkBox17:setLeft(475);
     obj.checkBox17:setTop(559);
-    obj.checkBox17:setField("PericiaAdestrarAnimais");
+    obj.checkBox17:setField("PericiaConhecimentoNatureza");
     obj.checkBox17:setName("checkBox17");
 
     obj.checkBox18 = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox18:setParent(obj.rectangle1);
     obj.checkBox18:setLeft(475);
     obj.checkBox18:setTop(576);
-    obj.checkBox18:setField("PericiaAdestrarAnimais");
+    obj.checkBox18:setField("PericiaConhecimentoNobreza");
     obj.checkBox18:setName("checkBox18");
 
     obj.checkBox19 = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox19:setParent(obj.rectangle1);
     obj.checkBox19:setLeft(475);
     obj.checkBox19:setTop(593);
-    obj.checkBox19:setField("PericiaAdestrarAnimais");
+    obj.checkBox19:setField("PericiaConhecimentoPlanos");
     obj.checkBox19:setName("checkBox19");
 
     obj.checkBox20 = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox20:setParent(obj.rectangle1);
     obj.checkBox20:setLeft(475);
     obj.checkBox20:setTop(610);
-    obj.checkBox20:setField("PericiaAdestrarAnimais");
+    obj.checkBox20:setField("PericiaConhecimentoReligiao");
     obj.checkBox20:setName("checkBox20");
 
     obj.checkBox21 = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox21:setParent(obj.rectangle1);
     obj.checkBox21:setLeft(475);
     obj.checkBox21:setTop(627);
-    obj.checkBox21:setField("PericiaAdestrarAnimais");
+    obj.checkBox21:setField("PericiaCura");
     obj.checkBox21:setName("checkBox21");
 
     obj.checkBox22 = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox22:setParent(obj.rectangle1);
     obj.checkBox22:setLeft(475);
     obj.checkBox22:setTop(644);
-    obj.checkBox22:setField("PericiaAdestrarAnimais");
+    obj.checkBox22:setField("PericiaDiplomacia");
     obj.checkBox22:setName("checkBox22");
 
     obj.checkBox23 = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox23:setParent(obj.rectangle1);
     obj.checkBox23:setLeft(475);
     obj.checkBox23:setTop(661);
-    obj.checkBox23:setField("PericiaAdestrarAnimais");
+    obj.checkBox23:setField("PericiaDisfarce");
     obj.checkBox23:setName("checkBox23");
 
     obj.checkBox24 = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox24:setParent(obj.rectangle1);
     obj.checkBox24:setLeft(475);
     obj.checkBox24:setTop(678);
-    obj.checkBox24:setField("PericiaAdestrarAnimais");
+    obj.checkBox24:setField("PericiaEscalar");
     obj.checkBox24:setName("checkBox24");
 
     obj.checkBox25 = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox25:setParent(obj.rectangle1);
     obj.checkBox25:setLeft(475);
     obj.checkBox25:setTop(695);
-    obj.checkBox25:setField("PericiaAdestrarAnimais");
+    obj.checkBox25:setField("PericiaFurtividade");
     obj.checkBox25:setName("checkBox25");
 
     obj.checkBox26 = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox26:setParent(obj.rectangle1);
     obj.checkBox26:setLeft(475);
     obj.checkBox26:setTop(712);
-    obj.checkBox26:setField("PericiaAdestrarAnimais");
+    obj.checkBox26:setField("PericiaIntimidacao");
     obj.checkBox26:setName("checkBox26");
 
     obj.checkBox27 = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox27:setParent(obj.rectangle1);
     obj.checkBox27:setLeft(475);
     obj.checkBox27:setTop(729);
-    obj.checkBox27:setField("PericiaAdestrarAnimais");
+    obj.checkBox27:setField("PericiaLinguistica");
     obj.checkBox27:setName("checkBox27");
 
     obj.checkBox28 = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox28:setParent(obj.rectangle1);
     obj.checkBox28:setLeft(475);
     obj.checkBox28:setTop(746);
-    obj.checkBox28:setField("PericiaAdestrarAnimais");
+    obj.checkBox28:setField("PericiaNatacao");
     obj.checkBox28:setName("checkBox28");
 
     obj.checkBox29 = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox29:setParent(obj.rectangle1);
     obj.checkBox29:setLeft(475);
     obj.checkBox29:setTop(763);
-    obj.checkBox29:setField("PericiaAdestrarAnimais");
+    obj.checkBox29:setField("PericiaOficio1");
     obj.checkBox29:setName("checkBox29");
 
     obj.checkBox30 = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox30:setParent(obj.rectangle1);
     obj.checkBox30:setLeft(475);
     obj.checkBox30:setTop(780);
-    obj.checkBox30:setField("PericiaAdestrarAnimais");
+    obj.checkBox30:setField("PericiaOficio2");
     obj.checkBox30:setName("checkBox30");
 
     obj.checkBox31 = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox31:setParent(obj.rectangle1);
     obj.checkBox31:setLeft(475);
     obj.checkBox31:setTop(797);
-    obj.checkBox31:setField("PericiaAdestrarAnimais");
+    obj.checkBox31:setField("PericiaOficio3");
     obj.checkBox31:setName("checkBox31");
 
     obj.checkBox32 = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox32:setParent(obj.rectangle1);
     obj.checkBox32:setLeft(475);
     obj.checkBox32:setTop(814);
-    obj.checkBox32:setField("PericiaAdestrarAnimais");
+    obj.checkBox32:setField("PericiaOperarMecanismo");
     obj.checkBox32:setName("checkBox32");
 
     obj.checkBox33 = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox33:setParent(obj.rectangle1);
     obj.checkBox33:setLeft(475);
     obj.checkBox33:setTop(831);
-    obj.checkBox33:setField("PericiaAdestrarAnimais");
+    obj.checkBox33:setField("PericiaPercepcao");
     obj.checkBox33:setName("checkBox33");
 
     obj.checkBox34 = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox34:setParent(obj.rectangle1);
     obj.checkBox34:setLeft(475);
     obj.checkBox34:setTop(848);
-    obj.checkBox34:setField("PericiaAdestrarAnimais");
+    obj.checkBox34:setField("PericiaPrestidigitacao");
     obj.checkBox34:setName("checkBox34");
 
     obj.checkBox35 = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox35:setParent(obj.rectangle1);
     obj.checkBox35:setLeft(475);
     obj.checkBox35:setTop(865);
-    obj.checkBox35:setField("PericiaAdestrarAnimais");
+    obj.checkBox35:setField("PericiaProfissao1");
     obj.checkBox35:setName("checkBox35");
 
     obj.checkBox36 = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox36:setParent(obj.rectangle1);
     obj.checkBox36:setLeft(475);
     obj.checkBox36:setTop(882);
-    obj.checkBox36:setField("PericiaAdestrarAnimais");
+    obj.checkBox36:setField("PericiaProfissao2");
     obj.checkBox36:setName("checkBox36");
 
     obj.checkBox37 = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox37:setParent(obj.rectangle1);
     obj.checkBox37:setLeft(475);
     obj.checkBox37:setTop(899);
-    obj.checkBox37:setField("PericiaAdestrarAnimais");
+    obj.checkBox37:setField("PericiaSentirMotivacao");
     obj.checkBox37:setName("checkBox37");
 
     obj.checkBox38 = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox38:setParent(obj.rectangle1);
     obj.checkBox38:setLeft(475);
     obj.checkBox38:setTop(916);
-    obj.checkBox38:setField("PericiaAdestrarAnimais");
+    obj.checkBox38:setField("PericiaSobrevivencia");
     obj.checkBox38:setName("checkBox38");
 
     obj.checkBox39 = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox39:setParent(obj.rectangle1);
     obj.checkBox39:setLeft(475);
     obj.checkBox39:setTop(933);
-    obj.checkBox39:setField("PericiaAdestrarAnimais");
+    obj.checkBox39:setField("PericiaUsarInstrumentoMagicco");
     obj.checkBox39:setName("checkBox39");
 
     obj.checkBox40 = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox40:setParent(obj.rectangle1);
     obj.checkBox40:setLeft(475);
     obj.checkBox40:setTop(950);
-    obj.checkBox40:setField("PericiaAdestrarAnimais");
+    obj.checkBox40:setField("PericiaVoo");
     obj.checkBox40:setName("checkBox40");
 
     obj.edit135 = GUI.fromHandle(_obj_newObject("edit"));
@@ -2200,7 +2200,7 @@ local function constructNew_frmPath1_svg()
     obj.edit141:setFontSize(10);
     obj.edit141:setFontColor("black");
     obj.edit141:setTransparent(true);
-    obj.edit141:setField("Apresentacao1");
+    obj.edit141:setField("BonusAcrobacia");
     obj.edit141:setName("edit141");
 
     obj.edit142 = GUI.fromHandle(_obj_newObject("edit"));
@@ -2213,7 +2213,7 @@ local function constructNew_frmPath1_svg()
     obj.edit142:setFontSize(10);
     obj.edit142:setFontColor("black");
     obj.edit142:setTransparent(true);
-    obj.edit142:setField("Apresentacao2");
+    obj.edit142:setField("MODAtributoAcrobacia");
     obj.edit142:setName("edit142");
 
     obj.edit143 = GUI.fromHandle(_obj_newObject("edit"));
@@ -2226,7 +2226,7 @@ local function constructNew_frmPath1_svg()
     obj.edit143:setFontSize(10);
     obj.edit143:setFontColor("black");
     obj.edit143:setTransparent(true);
-    obj.edit143:setField("Apresentacao3");
+    obj.edit143:setField("GraduacaoAcrobacia");
     obj.edit143:setName("edit143");
 
     obj.edit144 = GUI.fromHandle(_obj_newObject("edit"));
@@ -2239,7 +2239,7 @@ local function constructNew_frmPath1_svg()
     obj.edit144:setFontSize(10);
     obj.edit144:setFontColor("black");
     obj.edit144:setTransparent(true);
-    obj.edit144:setField("Apresentacao3");
+    obj.edit144:setField("OutrosAcrobacia");
     obj.edit144:setName("edit144");
 
     obj.edit145 = GUI.fromHandle(_obj_newObject("edit"));
@@ -2252,7 +2252,7 @@ local function constructNew_frmPath1_svg()
     obj.edit145:setFontSize(10);
     obj.edit145:setFontColor("black");
     obj.edit145:setTransparent(true);
-    obj.edit145:setField("Apresentacao1");
+    obj.edit145:setField("BonusAdestrarAnimais");
     obj.edit145:setName("edit145");
 
     obj.edit146 = GUI.fromHandle(_obj_newObject("edit"));
@@ -2265,7 +2265,7 @@ local function constructNew_frmPath1_svg()
     obj.edit146:setFontSize(10);
     obj.edit146:setFontColor("black");
     obj.edit146:setTransparent(true);
-    obj.edit146:setField("Apresentacao2");
+    obj.edit146:setField("MODAtributoAdestrarAnimais");
     obj.edit146:setName("edit146");
 
     obj.edit147 = GUI.fromHandle(_obj_newObject("edit"));
@@ -2278,7 +2278,7 @@ local function constructNew_frmPath1_svg()
     obj.edit147:setFontSize(10);
     obj.edit147:setFontColor("black");
     obj.edit147:setTransparent(true);
-    obj.edit147:setField("Apresentacao3");
+    obj.edit147:setField("GraduacaoAdestrarAnimais");
     obj.edit147:setName("edit147");
 
     obj.edit148 = GUI.fromHandle(_obj_newObject("edit"));
@@ -2291,7 +2291,7 @@ local function constructNew_frmPath1_svg()
     obj.edit148:setFontSize(10);
     obj.edit148:setFontColor("black");
     obj.edit148:setTransparent(true);
-    obj.edit148:setField("Apresentacao3");
+    obj.edit148:setField("OutrosAnimais");
     obj.edit148:setName("edit148");
 
     obj.edit149 = GUI.fromHandle(_obj_newObject("edit"));
@@ -2304,7 +2304,7 @@ local function constructNew_frmPath1_svg()
     obj.edit149:setFontSize(10);
     obj.edit149:setFontColor("black");
     obj.edit149:setTransparent(true);
-    obj.edit149:setField("Apresentacao1");
+    obj.edit149:setField("BonusApresentacao1");
     obj.edit149:setName("edit149");
 
     obj.edit150 = GUI.fromHandle(_obj_newObject("edit"));
@@ -2317,7 +2317,7 @@ local function constructNew_frmPath1_svg()
     obj.edit150:setFontSize(10);
     obj.edit150:setFontColor("black");
     obj.edit150:setTransparent(true);
-    obj.edit150:setField("Apresentacao2");
+    obj.edit150:setField("MODAtributoApresentacao1");
     obj.edit150:setName("edit150");
 
     obj.edit151 = GUI.fromHandle(_obj_newObject("edit"));
@@ -2330,7 +2330,7 @@ local function constructNew_frmPath1_svg()
     obj.edit151:setFontSize(10);
     obj.edit151:setFontColor("black");
     obj.edit151:setTransparent(true);
-    obj.edit151:setField("Apresentacao3");
+    obj.edit151:setField("GraduacaoApresentacao1");
     obj.edit151:setName("edit151");
 
     obj.edit152 = GUI.fromHandle(_obj_newObject("edit"));
@@ -2343,7 +2343,7 @@ local function constructNew_frmPath1_svg()
     obj.edit152:setFontSize(10);
     obj.edit152:setFontColor("black");
     obj.edit152:setTransparent(true);
-    obj.edit152:setField("Apresentacao3");
+    obj.edit152:setField("OutrosApresentacao1");
     obj.edit152:setName("edit152");
 
     obj.edit153 = GUI.fromHandle(_obj_newObject("edit"));
@@ -2356,7 +2356,7 @@ local function constructNew_frmPath1_svg()
     obj.edit153:setFontSize(10);
     obj.edit153:setFontColor("black");
     obj.edit153:setTransparent(true);
-    obj.edit153:setField("Apresentacao1");
+    obj.edit153:setField("BonusApresetacao2");
     obj.edit153:setName("edit153");
 
     obj.edit154 = GUI.fromHandle(_obj_newObject("edit"));
@@ -2369,7 +2369,7 @@ local function constructNew_frmPath1_svg()
     obj.edit154:setFontSize(10);
     obj.edit154:setFontColor("black");
     obj.edit154:setTransparent(true);
-    obj.edit154:setField("Apresentacao2");
+    obj.edit154:setField("MODAtributoApresentacao2");
     obj.edit154:setName("edit154");
 
     obj.edit155 = GUI.fromHandle(_obj_newObject("edit"));
@@ -2382,7 +2382,7 @@ local function constructNew_frmPath1_svg()
     obj.edit155:setFontSize(10);
     obj.edit155:setFontColor("black");
     obj.edit155:setTransparent(true);
-    obj.edit155:setField("Apresentacao3");
+    obj.edit155:setField("GraduacaoApresentacao2");
     obj.edit155:setName("edit155");
 
     obj.edit156 = GUI.fromHandle(_obj_newObject("edit"));
@@ -2395,7 +2395,7 @@ local function constructNew_frmPath1_svg()
     obj.edit156:setFontSize(10);
     obj.edit156:setFontColor("black");
     obj.edit156:setTransparent(true);
-    obj.edit156:setField("Apresentacao3");
+    obj.edit156:setField("OutrosApresentacao2");
     obj.edit156:setName("edit156");
 
     obj.edit157 = GUI.fromHandle(_obj_newObject("edit"));
@@ -2408,7 +2408,7 @@ local function constructNew_frmPath1_svg()
     obj.edit157:setFontSize(10);
     obj.edit157:setFontColor("black");
     obj.edit157:setTransparent(true);
-    obj.edit157:setField("Apresentacao1");
+    obj.edit157:setField("BonusApresentacao3");
     obj.edit157:setName("edit157");
 
     obj.edit158 = GUI.fromHandle(_obj_newObject("edit"));
@@ -2421,7 +2421,7 @@ local function constructNew_frmPath1_svg()
     obj.edit158:setFontSize(10);
     obj.edit158:setFontColor("black");
     obj.edit158:setTransparent(true);
-    obj.edit158:setField("Apresentacao2");
+    obj.edit158:setField("MODAtributoApresentacao3");
     obj.edit158:setName("edit158");
 
     obj.edit159 = GUI.fromHandle(_obj_newObject("edit"));
@@ -2434,7 +2434,7 @@ local function constructNew_frmPath1_svg()
     obj.edit159:setFontSize(10);
     obj.edit159:setFontColor("black");
     obj.edit159:setTransparent(true);
-    obj.edit159:setField("Apresentacao3");
+    obj.edit159:setField("GraduacaoApresentacao3");
     obj.edit159:setName("edit159");
 
     obj.edit160 = GUI.fromHandle(_obj_newObject("edit"));
@@ -2447,7 +2447,7 @@ local function constructNew_frmPath1_svg()
     obj.edit160:setFontSize(10);
     obj.edit160:setFontColor("black");
     obj.edit160:setTransparent(true);
-    obj.edit160:setField("Apresentacao3");
+    obj.edit160:setField("OutrosApresentacao3");
     obj.edit160:setName("edit160");
 
     obj.edit161 = GUI.fromHandle(_obj_newObject("edit"));
@@ -2460,7 +2460,7 @@ local function constructNew_frmPath1_svg()
     obj.edit161:setFontSize(10);
     obj.edit161:setFontColor("black");
     obj.edit161:setTransparent(true);
-    obj.edit161:setField("Apresentacao1");
+    obj.edit161:setField("BonusArtedaFuga");
     obj.edit161:setName("edit161");
 
     obj.edit162 = GUI.fromHandle(_obj_newObject("edit"));
@@ -2473,7 +2473,7 @@ local function constructNew_frmPath1_svg()
     obj.edit162:setFontSize(10);
     obj.edit162:setFontColor("black");
     obj.edit162:setTransparent(true);
-    obj.edit162:setField("Apresentacao2");
+    obj.edit162:setField("MODAtributoArtedaFuga");
     obj.edit162:setName("edit162");
 
     obj.edit163 = GUI.fromHandle(_obj_newObject("edit"));
@@ -2486,7 +2486,7 @@ local function constructNew_frmPath1_svg()
     obj.edit163:setFontSize(10);
     obj.edit163:setFontColor("black");
     obj.edit163:setTransparent(true);
-    obj.edit163:setField("Apresentacao3");
+    obj.edit163:setField("GraduacaoArtedaFuga");
     obj.edit163:setName("edit163");
 
     obj.edit164 = GUI.fromHandle(_obj_newObject("edit"));
@@ -2499,7 +2499,7 @@ local function constructNew_frmPath1_svg()
     obj.edit164:setFontSize(10);
     obj.edit164:setFontColor("black");
     obj.edit164:setTransparent(true);
-    obj.edit164:setField("Apresentacao3");
+    obj.edit164:setField("OutrosArtedaFuga");
     obj.edit164:setName("edit164");
 
     obj.edit165 = GUI.fromHandle(_obj_newObject("edit"));
@@ -2512,7 +2512,7 @@ local function constructNew_frmPath1_svg()
     obj.edit165:setFontSize(10);
     obj.edit165:setFontColor("black");
     obj.edit165:setTransparent(true);
-    obj.edit165:setField("Apresentacao1");
+    obj.edit165:setField("BonusArtesMagicas");
     obj.edit165:setName("edit165");
 
     obj.edit166 = GUI.fromHandle(_obj_newObject("edit"));
@@ -2525,7 +2525,7 @@ local function constructNew_frmPath1_svg()
     obj.edit166:setFontSize(10);
     obj.edit166:setFontColor("black");
     obj.edit166:setTransparent(true);
-    obj.edit166:setField("Apresentacao2");
+    obj.edit166:setField("MODAtributoArtesMagicas");
     obj.edit166:setName("edit166");
 
     obj.edit167 = GUI.fromHandle(_obj_newObject("edit"));
@@ -2538,7 +2538,7 @@ local function constructNew_frmPath1_svg()
     obj.edit167:setFontSize(10);
     obj.edit167:setFontColor("black");
     obj.edit167:setTransparent(true);
-    obj.edit167:setField("Apresentacao3");
+    obj.edit167:setField("GraduacaoArtesMagicas");
     obj.edit167:setName("edit167");
 
     obj.edit168 = GUI.fromHandle(_obj_newObject("edit"));
@@ -2551,7 +2551,7 @@ local function constructNew_frmPath1_svg()
     obj.edit168:setFontSize(10);
     obj.edit168:setFontColor("black");
     obj.edit168:setTransparent(true);
-    obj.edit168:setField("Apresentacao3");
+    obj.edit168:setField("OutrosArtesMagicas");
     obj.edit168:setName("edit168");
 
     obj.edit169 = GUI.fromHandle(_obj_newObject("edit"));
@@ -2564,7 +2564,7 @@ local function constructNew_frmPath1_svg()
     obj.edit169:setFontSize(10);
     obj.edit169:setFontColor("black");
     obj.edit169:setTransparent(true);
-    obj.edit169:setField("Apresentacao1");
+    obj.edit169:setField("BonusAvaliacao");
     obj.edit169:setName("edit169");
 
     obj.edit170 = GUI.fromHandle(_obj_newObject("edit"));
@@ -2577,7 +2577,7 @@ local function constructNew_frmPath1_svg()
     obj.edit170:setFontSize(10);
     obj.edit170:setFontColor("black");
     obj.edit170:setTransparent(true);
-    obj.edit170:setField("Apresentacao2");
+    obj.edit170:setField("MODAtributoAvaliacao");
     obj.edit170:setName("edit170");
 
     obj.edit171 = GUI.fromHandle(_obj_newObject("edit"));
@@ -2590,7 +2590,7 @@ local function constructNew_frmPath1_svg()
     obj.edit171:setFontSize(10);
     obj.edit171:setFontColor("black");
     obj.edit171:setTransparent(true);
-    obj.edit171:setField("Apresentacao3");
+    obj.edit171:setField("GraduacaoAvaliacao");
     obj.edit171:setName("edit171");
 
     obj.edit172 = GUI.fromHandle(_obj_newObject("edit"));
@@ -2603,7 +2603,7 @@ local function constructNew_frmPath1_svg()
     obj.edit172:setFontSize(10);
     obj.edit172:setFontColor("black");
     obj.edit172:setTransparent(true);
-    obj.edit172:setField("Apresentacao3");
+    obj.edit172:setField("OutrosAvaliacao");
     obj.edit172:setName("edit172");
 
     obj.edit173 = GUI.fromHandle(_obj_newObject("edit"));
@@ -2616,7 +2616,7 @@ local function constructNew_frmPath1_svg()
     obj.edit173:setFontSize(10);
     obj.edit173:setFontColor("black");
     obj.edit173:setTransparent(true);
-    obj.edit173:setField("Apresentacao1");
+    obj.edit173:setField("BonusBlefar");
     obj.edit173:setName("edit173");
 
     obj.edit174 = GUI.fromHandle(_obj_newObject("edit"));
@@ -2629,7 +2629,7 @@ local function constructNew_frmPath1_svg()
     obj.edit174:setFontSize(10);
     obj.edit174:setFontColor("black");
     obj.edit174:setTransparent(true);
-    obj.edit174:setField("Apresentacao2");
+    obj.edit174:setField("MODAtributoBlefar");
     obj.edit174:setName("edit174");
 
     obj.edit175 = GUI.fromHandle(_obj_newObject("edit"));
@@ -2642,7 +2642,7 @@ local function constructNew_frmPath1_svg()
     obj.edit175:setFontSize(10);
     obj.edit175:setFontColor("black");
     obj.edit175:setTransparent(true);
-    obj.edit175:setField("Apresentacao3");
+    obj.edit175:setField("GraduacaoBlefar");
     obj.edit175:setName("edit175");
 
     obj.edit176 = GUI.fromHandle(_obj_newObject("edit"));
@@ -2655,7 +2655,7 @@ local function constructNew_frmPath1_svg()
     obj.edit176:setFontSize(10);
     obj.edit176:setFontColor("black");
     obj.edit176:setTransparent(true);
-    obj.edit176:setField("Apresentacao3");
+    obj.edit176:setField("OutrosBlefar");
     obj.edit176:setName("edit176");
 
     obj.edit177 = GUI.fromHandle(_obj_newObject("edit"));
@@ -2668,7 +2668,7 @@ local function constructNew_frmPath1_svg()
     obj.edit177:setFontSize(10);
     obj.edit177:setFontColor("black");
     obj.edit177:setTransparent(true);
-    obj.edit177:setField("Apresentacao1");
+    obj.edit177:setField("BonusCavalgar");
     obj.edit177:setName("edit177");
 
     obj.edit178 = GUI.fromHandle(_obj_newObject("edit"));
@@ -2681,7 +2681,7 @@ local function constructNew_frmPath1_svg()
     obj.edit178:setFontSize(10);
     obj.edit178:setFontColor("black");
     obj.edit178:setTransparent(true);
-    obj.edit178:setField("Apresentacao2");
+    obj.edit178:setField("MODAtributoCavalgar");
     obj.edit178:setName("edit178");
 
     obj.edit179 = GUI.fromHandle(_obj_newObject("edit"));
@@ -2694,7 +2694,7 @@ local function constructNew_frmPath1_svg()
     obj.edit179:setFontSize(10);
     obj.edit179:setFontColor("black");
     obj.edit179:setTransparent(true);
-    obj.edit179:setField("Apresentacao3");
+    obj.edit179:setField("GraduccaoCavalgar");
     obj.edit179:setName("edit179");
 
     obj.edit180 = GUI.fromHandle(_obj_newObject("edit"));
@@ -2707,7 +2707,7 @@ local function constructNew_frmPath1_svg()
     obj.edit180:setFontSize(10);
     obj.edit180:setFontColor("black");
     obj.edit180:setTransparent(true);
-    obj.edit180:setField("Apresentacao3");
+    obj.edit180:setField("OutrosCavalgar");
     obj.edit180:setName("edit180");
 
     obj.edit181 = GUI.fromHandle(_obj_newObject("edit"));
@@ -2720,7 +2720,7 @@ local function constructNew_frmPath1_svg()
     obj.edit181:setFontSize(10);
     obj.edit181:setFontColor("black");
     obj.edit181:setTransparent(true);
-    obj.edit181:setField("Apresentacao1");
+    obj.edit181:setField("BonusCArcano");
     obj.edit181:setName("edit181");
 
     obj.edit182 = GUI.fromHandle(_obj_newObject("edit"));
@@ -2733,7 +2733,7 @@ local function constructNew_frmPath1_svg()
     obj.edit182:setFontSize(10);
     obj.edit182:setFontColor("black");
     obj.edit182:setTransparent(true);
-    obj.edit182:setField("Apresentacao2");
+    obj.edit182:setField("MODAtributoCArcano");
     obj.edit182:setName("edit182");
 
     obj.edit183 = GUI.fromHandle(_obj_newObject("edit"));
@@ -2746,7 +2746,7 @@ local function constructNew_frmPath1_svg()
     obj.edit183:setFontSize(10);
     obj.edit183:setFontColor("black");
     obj.edit183:setTransparent(true);
-    obj.edit183:setField("Apresentacao3");
+    obj.edit183:setField("GraduacaoCArcano");
     obj.edit183:setName("edit183");
 
     obj.edit184 = GUI.fromHandle(_obj_newObject("edit"));
@@ -2759,7 +2759,7 @@ local function constructNew_frmPath1_svg()
     obj.edit184:setFontSize(10);
     obj.edit184:setFontColor("black");
     obj.edit184:setTransparent(true);
-    obj.edit184:setField("Apresentacao3");
+    obj.edit184:setField("OutrosCArcano");
     obj.edit184:setName("edit184");
 
     obj.edit185 = GUI.fromHandle(_obj_newObject("edit"));
@@ -2772,7 +2772,7 @@ local function constructNew_frmPath1_svg()
     obj.edit185:setFontSize(10);
     obj.edit185:setFontColor("black");
     obj.edit185:setTransparent(true);
-    obj.edit185:setField("Apresentacao1");
+    obj.edit185:setField("BonusCExploracao");
     obj.edit185:setName("edit185");
 
     obj.edit186 = GUI.fromHandle(_obj_newObject("edit"));
@@ -2785,7 +2785,7 @@ local function constructNew_frmPath1_svg()
     obj.edit186:setFontSize(10);
     obj.edit186:setFontColor("black");
     obj.edit186:setTransparent(true);
-    obj.edit186:setField("Apresentacao2");
+    obj.edit186:setField("MODAtributoCExploracao");
     obj.edit186:setName("edit186");
 
     obj.edit187 = GUI.fromHandle(_obj_newObject("edit"));
@@ -2798,7 +2798,7 @@ local function constructNew_frmPath1_svg()
     obj.edit187:setFontSize(10);
     obj.edit187:setFontColor("black");
     obj.edit187:setTransparent(true);
-    obj.edit187:setField("Apresentacao3");
+    obj.edit187:setField("GraduacaoCExploracao");
     obj.edit187:setName("edit187");
 
     obj.edit188 = GUI.fromHandle(_obj_newObject("edit"));
@@ -2811,7 +2811,7 @@ local function constructNew_frmPath1_svg()
     obj.edit188:setFontSize(10);
     obj.edit188:setFontColor("black");
     obj.edit188:setTransparent(true);
-    obj.edit188:setField("Apresentacao3");
+    obj.edit188:setField("OutrosCExploracao");
     obj.edit188:setName("edit188");
 
     obj.edit189 = GUI.fromHandle(_obj_newObject("edit"));
@@ -2824,7 +2824,7 @@ local function constructNew_frmPath1_svg()
     obj.edit189:setFontSize(10);
     obj.edit189:setFontColor("black");
     obj.edit189:setTransparent(true);
-    obj.edit189:setField("Apresentacao1");
+    obj.edit189:setField("BonusCEngenharia");
     obj.edit189:setName("edit189");
 
     obj.edit190 = GUI.fromHandle(_obj_newObject("edit"));
@@ -2837,7 +2837,7 @@ local function constructNew_frmPath1_svg()
     obj.edit190:setFontSize(10);
     obj.edit190:setFontColor("black");
     obj.edit190:setTransparent(true);
-    obj.edit190:setField("Apresentacao2");
+    obj.edit190:setField("MODAtributoCEngenharia");
     obj.edit190:setName("edit190");
 
     obj.edit191 = GUI.fromHandle(_obj_newObject("edit"));
@@ -2850,7 +2850,7 @@ local function constructNew_frmPath1_svg()
     obj.edit191:setFontSize(10);
     obj.edit191:setFontColor("black");
     obj.edit191:setTransparent(true);
-    obj.edit191:setField("Apresentacao3");
+    obj.edit191:setField("GraduacaoCEngenharia");
     obj.edit191:setName("edit191");
 
     obj.edit192 = GUI.fromHandle(_obj_newObject("edit"));
@@ -2863,7 +2863,7 @@ local function constructNew_frmPath1_svg()
     obj.edit192:setFontSize(10);
     obj.edit192:setFontColor("black");
     obj.edit192:setTransparent(true);
-    obj.edit192:setField("Apresentacao3");
+    obj.edit192:setField("OutrosCEngenharia");
     obj.edit192:setName("edit192");
 
     obj.edit193 = GUI.fromHandle(_obj_newObject("edit"));
@@ -2876,7 +2876,7 @@ local function constructNew_frmPath1_svg()
     obj.edit193:setFontSize(10);
     obj.edit193:setFontColor("black");
     obj.edit193:setTransparent(true);
-    obj.edit193:setField("Apresentacao1");
+    obj.edit193:setField("BonusCGeografia");
     obj.edit193:setName("edit193");
 
     obj.edit194 = GUI.fromHandle(_obj_newObject("edit"));
@@ -2889,7 +2889,7 @@ local function constructNew_frmPath1_svg()
     obj.edit194:setFontSize(10);
     obj.edit194:setFontColor("black");
     obj.edit194:setTransparent(true);
-    obj.edit194:setField("Apresentacao2");
+    obj.edit194:setField("MODAtributoCGeografia");
     obj.edit194:setName("edit194");
 
     obj.edit195 = GUI.fromHandle(_obj_newObject("edit"));
@@ -2902,7 +2902,7 @@ local function constructNew_frmPath1_svg()
     obj.edit195:setFontSize(10);
     obj.edit195:setFontColor("black");
     obj.edit195:setTransparent(true);
-    obj.edit195:setField("Apresentacao3");
+    obj.edit195:setField("GraduacaoCGeografia");
     obj.edit195:setName("edit195");
 
     obj.edit196 = GUI.fromHandle(_obj_newObject("edit"));
@@ -2915,7 +2915,7 @@ local function constructNew_frmPath1_svg()
     obj.edit196:setFontSize(10);
     obj.edit196:setFontColor("black");
     obj.edit196:setTransparent(true);
-    obj.edit196:setField("Apresentacao3");
+    obj.edit196:setField("OutrosCGeografia");
     obj.edit196:setName("edit196");
 
     obj.edit197 = GUI.fromHandle(_obj_newObject("edit"));
@@ -2928,7 +2928,7 @@ local function constructNew_frmPath1_svg()
     obj.edit197:setFontSize(10);
     obj.edit197:setFontColor("black");
     obj.edit197:setTransparent(true);
-    obj.edit197:setField("Apresentacao1");
+    obj.edit197:setField("BonusCHistoria");
     obj.edit197:setName("edit197");
 
     obj.edit198 = GUI.fromHandle(_obj_newObject("edit"));
@@ -2941,7 +2941,7 @@ local function constructNew_frmPath1_svg()
     obj.edit198:setFontSize(10);
     obj.edit198:setFontColor("black");
     obj.edit198:setTransparent(true);
-    obj.edit198:setField("Apresentacao2");
+    obj.edit198:setField("MODAtributoCHistoria");
     obj.edit198:setName("edit198");
 
     obj.edit199 = GUI.fromHandle(_obj_newObject("edit"));
@@ -2954,7 +2954,7 @@ local function constructNew_frmPath1_svg()
     obj.edit199:setFontSize(10);
     obj.edit199:setFontColor("black");
     obj.edit199:setTransparent(true);
-    obj.edit199:setField("Apresentacao3");
+    obj.edit199:setField("GraduacaoCHistoria");
     obj.edit199:setName("edit199");
 
     obj.edit200 = GUI.fromHandle(_obj_newObject("edit"));
@@ -2967,7 +2967,7 @@ local function constructNew_frmPath1_svg()
     obj.edit200:setFontSize(10);
     obj.edit200:setFontColor("black");
     obj.edit200:setTransparent(true);
-    obj.edit200:setField("Apresentacao3");
+    obj.edit200:setField("OutrosCHistoria");
     obj.edit200:setName("edit200");
 
     obj.edit201 = GUI.fromHandle(_obj_newObject("edit"));
@@ -2980,7 +2980,7 @@ local function constructNew_frmPath1_svg()
     obj.edit201:setFontSize(10);
     obj.edit201:setFontColor("black");
     obj.edit201:setTransparent(true);
-    obj.edit201:setField("Apresentacao1");
+    obj.edit201:setField("BonusCLocal");
     obj.edit201:setName("edit201");
 
     obj.edit202 = GUI.fromHandle(_obj_newObject("edit"));
@@ -2993,7 +2993,7 @@ local function constructNew_frmPath1_svg()
     obj.edit202:setFontSize(10);
     obj.edit202:setFontColor("black");
     obj.edit202:setTransparent(true);
-    obj.edit202:setField("Apresentacao2");
+    obj.edit202:setField("MODAtributoCLocal");
     obj.edit202:setName("edit202");
 
     obj.edit203 = GUI.fromHandle(_obj_newObject("edit"));
@@ -3006,7 +3006,7 @@ local function constructNew_frmPath1_svg()
     obj.edit203:setFontSize(10);
     obj.edit203:setFontColor("black");
     obj.edit203:setTransparent(true);
-    obj.edit203:setField("Apresentacao3");
+    obj.edit203:setField("GraduacaoCLocal");
     obj.edit203:setName("edit203");
 
     obj.edit204 = GUI.fromHandle(_obj_newObject("edit"));
@@ -3019,7 +3019,7 @@ local function constructNew_frmPath1_svg()
     obj.edit204:setFontSize(10);
     obj.edit204:setFontColor("black");
     obj.edit204:setTransparent(true);
-    obj.edit204:setField("Apresentacao3");
+    obj.edit204:setField("OutrosCLocal");
     obj.edit204:setName("edit204");
 
     obj.edit205 = GUI.fromHandle(_obj_newObject("edit"));
@@ -3032,7 +3032,7 @@ local function constructNew_frmPath1_svg()
     obj.edit205:setFontSize(10);
     obj.edit205:setFontColor("black");
     obj.edit205:setTransparent(true);
-    obj.edit205:setField("Apresentacao1");
+    obj.edit205:setField("BonusCNatureza");
     obj.edit205:setName("edit205");
 
     obj.edit206 = GUI.fromHandle(_obj_newObject("edit"));
@@ -3045,7 +3045,7 @@ local function constructNew_frmPath1_svg()
     obj.edit206:setFontSize(10);
     obj.edit206:setFontColor("black");
     obj.edit206:setTransparent(true);
-    obj.edit206:setField("Apresentacao2");
+    obj.edit206:setField("MODAtributoCNatureza");
     obj.edit206:setName("edit206");
 
     obj.edit207 = GUI.fromHandle(_obj_newObject("edit"));
@@ -3058,7 +3058,7 @@ local function constructNew_frmPath1_svg()
     obj.edit207:setFontSize(10);
     obj.edit207:setFontColor("black");
     obj.edit207:setTransparent(true);
-    obj.edit207:setField("Apresentacao3");
+    obj.edit207:setField("GraduacaoCNatureza");
     obj.edit207:setName("edit207");
 
     obj.edit208 = GUI.fromHandle(_obj_newObject("edit"));
@@ -3071,7 +3071,7 @@ local function constructNew_frmPath1_svg()
     obj.edit208:setFontSize(10);
     obj.edit208:setFontColor("black");
     obj.edit208:setTransparent(true);
-    obj.edit208:setField("Apresentacao3");
+    obj.edit208:setField("OutrosCNatureza");
     obj.edit208:setName("edit208");
 
     obj.edit209 = GUI.fromHandle(_obj_newObject("edit"));
@@ -3084,7 +3084,7 @@ local function constructNew_frmPath1_svg()
     obj.edit209:setFontSize(10);
     obj.edit209:setFontColor("black");
     obj.edit209:setTransparent(true);
-    obj.edit209:setField("Apresentacao1");
+    obj.edit209:setField("BonusCNobreza");
     obj.edit209:setName("edit209");
 
     obj.edit210 = GUI.fromHandle(_obj_newObject("edit"));
@@ -3097,7 +3097,7 @@ local function constructNew_frmPath1_svg()
     obj.edit210:setFontSize(10);
     obj.edit210:setFontColor("black");
     obj.edit210:setTransparent(true);
-    obj.edit210:setField("Apresentacao2");
+    obj.edit210:setField("MODAtributoCNobreza");
     obj.edit210:setName("edit210");
 
     obj.edit211 = GUI.fromHandle(_obj_newObject("edit"));
@@ -3110,7 +3110,7 @@ local function constructNew_frmPath1_svg()
     obj.edit211:setFontSize(10);
     obj.edit211:setFontColor("black");
     obj.edit211:setTransparent(true);
-    obj.edit211:setField("Apresentacao3");
+    obj.edit211:setField("GraduacaoCNobreza");
     obj.edit211:setName("edit211");
 
     obj.edit212 = GUI.fromHandle(_obj_newObject("edit"));
@@ -3123,7 +3123,7 @@ local function constructNew_frmPath1_svg()
     obj.edit212:setFontSize(10);
     obj.edit212:setFontColor("black");
     obj.edit212:setTransparent(true);
-    obj.edit212:setField("Apresentacao3");
+    obj.edit212:setField("OutrosCNobreza");
     obj.edit212:setName("edit212");
 
     obj.edit213 = GUI.fromHandle(_obj_newObject("edit"));
@@ -3136,7 +3136,7 @@ local function constructNew_frmPath1_svg()
     obj.edit213:setFontSize(10);
     obj.edit213:setFontColor("black");
     obj.edit213:setTransparent(true);
-    obj.edit213:setField("Apresentacao1");
+    obj.edit213:setField("BonusCPlanos");
     obj.edit213:setName("edit213");
 
     obj.edit214 = GUI.fromHandle(_obj_newObject("edit"));
@@ -3149,7 +3149,7 @@ local function constructNew_frmPath1_svg()
     obj.edit214:setFontSize(10);
     obj.edit214:setFontColor("black");
     obj.edit214:setTransparent(true);
-    obj.edit214:setField("Apresentacao2");
+    obj.edit214:setField("MODAtributoCPlanos");
     obj.edit214:setName("edit214");
 
     obj.edit215 = GUI.fromHandle(_obj_newObject("edit"));
@@ -3162,7 +3162,7 @@ local function constructNew_frmPath1_svg()
     obj.edit215:setFontSize(10);
     obj.edit215:setFontColor("black");
     obj.edit215:setTransparent(true);
-    obj.edit215:setField("Apresentacao3");
+    obj.edit215:setField("GraduacaoCPlanos");
     obj.edit215:setName("edit215");
 
     obj.edit216 = GUI.fromHandle(_obj_newObject("edit"));
@@ -3175,7 +3175,7 @@ local function constructNew_frmPath1_svg()
     obj.edit216:setFontSize(10);
     obj.edit216:setFontColor("black");
     obj.edit216:setTransparent(true);
-    obj.edit216:setField("Apresentacao3");
+    obj.edit216:setField("OutrosCPlanos");
     obj.edit216:setName("edit216");
 
     obj.edit217 = GUI.fromHandle(_obj_newObject("edit"));
@@ -3188,7 +3188,7 @@ local function constructNew_frmPath1_svg()
     obj.edit217:setFontSize(10);
     obj.edit217:setFontColor("black");
     obj.edit217:setTransparent(true);
-    obj.edit217:setField("Apresentacao1");
+    obj.edit217:setField("BonusCReligiao");
     obj.edit217:setName("edit217");
 
     obj.edit218 = GUI.fromHandle(_obj_newObject("edit"));
@@ -3201,7 +3201,7 @@ local function constructNew_frmPath1_svg()
     obj.edit218:setFontSize(10);
     obj.edit218:setFontColor("black");
     obj.edit218:setTransparent(true);
-    obj.edit218:setField("Apresentacao2");
+    obj.edit218:setField("MODAtributoCReligiao");
     obj.edit218:setName("edit218");
 
     obj.edit219 = GUI.fromHandle(_obj_newObject("edit"));
@@ -3214,7 +3214,7 @@ local function constructNew_frmPath1_svg()
     obj.edit219:setFontSize(10);
     obj.edit219:setFontColor("black");
     obj.edit219:setTransparent(true);
-    obj.edit219:setField("Apresentacao3");
+    obj.edit219:setField("GraduacaoCReligiao");
     obj.edit219:setName("edit219");
 
     obj.edit220 = GUI.fromHandle(_obj_newObject("edit"));
@@ -3227,7 +3227,7 @@ local function constructNew_frmPath1_svg()
     obj.edit220:setFontSize(10);
     obj.edit220:setFontColor("black");
     obj.edit220:setTransparent(true);
-    obj.edit220:setField("Apresentacao3");
+    obj.edit220:setField("OutrosCReligiao");
     obj.edit220:setName("edit220");
 
     obj.edit221 = GUI.fromHandle(_obj_newObject("edit"));
@@ -3240,7 +3240,7 @@ local function constructNew_frmPath1_svg()
     obj.edit221:setFontSize(10);
     obj.edit221:setFontColor("black");
     obj.edit221:setTransparent(true);
-    obj.edit221:setField("Apresentacao1");
+    obj.edit221:setField("BonusCura");
     obj.edit221:setName("edit221");
 
     obj.edit222 = GUI.fromHandle(_obj_newObject("edit"));
@@ -3253,7 +3253,7 @@ local function constructNew_frmPath1_svg()
     obj.edit222:setFontSize(10);
     obj.edit222:setFontColor("black");
     obj.edit222:setTransparent(true);
-    obj.edit222:setField("Apresentacao2");
+    obj.edit222:setField("MODAtributoCura");
     obj.edit222:setName("edit222");
 
     obj.edit223 = GUI.fromHandle(_obj_newObject("edit"));
@@ -3266,7 +3266,7 @@ local function constructNew_frmPath1_svg()
     obj.edit223:setFontSize(10);
     obj.edit223:setFontColor("black");
     obj.edit223:setTransparent(true);
-    obj.edit223:setField("Apresentacao3");
+    obj.edit223:setField("GraduacaoCura");
     obj.edit223:setName("edit223");
 
     obj.edit224 = GUI.fromHandle(_obj_newObject("edit"));
@@ -3279,7 +3279,7 @@ local function constructNew_frmPath1_svg()
     obj.edit224:setFontSize(10);
     obj.edit224:setFontColor("black");
     obj.edit224:setTransparent(true);
-    obj.edit224:setField("Apresentacao3");
+    obj.edit224:setField("OutrosCura");
     obj.edit224:setName("edit224");
 
     obj.edit225 = GUI.fromHandle(_obj_newObject("edit"));
@@ -3292,7 +3292,7 @@ local function constructNew_frmPath1_svg()
     obj.edit225:setFontSize(10);
     obj.edit225:setFontColor("black");
     obj.edit225:setTransparent(true);
-    obj.edit225:setField("Apresentacao1");
+    obj.edit225:setField("BonusDiplomacia");
     obj.edit225:setName("edit225");
 
     obj.edit226 = GUI.fromHandle(_obj_newObject("edit"));
@@ -3305,7 +3305,7 @@ local function constructNew_frmPath1_svg()
     obj.edit226:setFontSize(10);
     obj.edit226:setFontColor("black");
     obj.edit226:setTransparent(true);
-    obj.edit226:setField("Apresentacao2");
+    obj.edit226:setField("MODAtributoDiplomacia");
     obj.edit226:setName("edit226");
 
     obj.edit227 = GUI.fromHandle(_obj_newObject("edit"));
@@ -3318,7 +3318,7 @@ local function constructNew_frmPath1_svg()
     obj.edit227:setFontSize(10);
     obj.edit227:setFontColor("black");
     obj.edit227:setTransparent(true);
-    obj.edit227:setField("Apresentacao3");
+    obj.edit227:setField("GraduacaoDiplomacia");
     obj.edit227:setName("edit227");
 
     obj.edit228 = GUI.fromHandle(_obj_newObject("edit"));
@@ -3331,7 +3331,7 @@ local function constructNew_frmPath1_svg()
     obj.edit228:setFontSize(10);
     obj.edit228:setFontColor("black");
     obj.edit228:setTransparent(true);
-    obj.edit228:setField("Apresentacao3");
+    obj.edit228:setField("OutrosDiplomacia");
     obj.edit228:setName("edit228");
 
     obj.edit229 = GUI.fromHandle(_obj_newObject("edit"));
@@ -3344,7 +3344,7 @@ local function constructNew_frmPath1_svg()
     obj.edit229:setFontSize(10);
     obj.edit229:setFontColor("black");
     obj.edit229:setTransparent(true);
-    obj.edit229:setField("Apresentacao1");
+    obj.edit229:setField("BonusDisfarce");
     obj.edit229:setName("edit229");
 
     obj.edit230 = GUI.fromHandle(_obj_newObject("edit"));
@@ -3357,7 +3357,7 @@ local function constructNew_frmPath1_svg()
     obj.edit230:setFontSize(10);
     obj.edit230:setFontColor("black");
     obj.edit230:setTransparent(true);
-    obj.edit230:setField("Apresentacao2");
+    obj.edit230:setField("MODAtributoDisfarce");
     obj.edit230:setName("edit230");
 
     obj.edit231 = GUI.fromHandle(_obj_newObject("edit"));
@@ -3370,7 +3370,7 @@ local function constructNew_frmPath1_svg()
     obj.edit231:setFontSize(10);
     obj.edit231:setFontColor("black");
     obj.edit231:setTransparent(true);
-    obj.edit231:setField("Apresentacao3");
+    obj.edit231:setField("GraduacaoDisfarce");
     obj.edit231:setName("edit231");
 
     obj.edit232 = GUI.fromHandle(_obj_newObject("edit"));
@@ -3383,7 +3383,7 @@ local function constructNew_frmPath1_svg()
     obj.edit232:setFontSize(10);
     obj.edit232:setFontColor("black");
     obj.edit232:setTransparent(true);
-    obj.edit232:setField("Apresentacao3");
+    obj.edit232:setField("OutrosDisfarce");
     obj.edit232:setName("edit232");
 
     obj.edit233 = GUI.fromHandle(_obj_newObject("edit"));
@@ -3396,7 +3396,7 @@ local function constructNew_frmPath1_svg()
     obj.edit233:setFontSize(10);
     obj.edit233:setFontColor("black");
     obj.edit233:setTransparent(true);
-    obj.edit233:setField("Apresentacao1");
+    obj.edit233:setField("BonusEscalar");
     obj.edit233:setName("edit233");
 
     obj.edit234 = GUI.fromHandle(_obj_newObject("edit"));
@@ -3409,7 +3409,7 @@ local function constructNew_frmPath1_svg()
     obj.edit234:setFontSize(10);
     obj.edit234:setFontColor("black");
     obj.edit234:setTransparent(true);
-    obj.edit234:setField("Apresentacao2");
+    obj.edit234:setField("MODAtributoEscalar");
     obj.edit234:setName("edit234");
 
     obj.edit235 = GUI.fromHandle(_obj_newObject("edit"));
@@ -3422,7 +3422,7 @@ local function constructNew_frmPath1_svg()
     obj.edit235:setFontSize(10);
     obj.edit235:setFontColor("black");
     obj.edit235:setTransparent(true);
-    obj.edit235:setField("Apresentacao3");
+    obj.edit235:setField("GraduacaoEscalar");
     obj.edit235:setName("edit235");
 
     obj.edit236 = GUI.fromHandle(_obj_newObject("edit"));
@@ -3435,7 +3435,7 @@ local function constructNew_frmPath1_svg()
     obj.edit236:setFontSize(10);
     obj.edit236:setFontColor("black");
     obj.edit236:setTransparent(true);
-    obj.edit236:setField("Apresentacao3");
+    obj.edit236:setField("OutrosEscalar");
     obj.edit236:setName("edit236");
 
     obj.edit237 = GUI.fromHandle(_obj_newObject("edit"));
@@ -3448,7 +3448,7 @@ local function constructNew_frmPath1_svg()
     obj.edit237:setFontSize(10);
     obj.edit237:setFontColor("black");
     obj.edit237:setTransparent(true);
-    obj.edit237:setField("Apresentacao1");
+    obj.edit237:setField("BonusFurtividade");
     obj.edit237:setName("edit237");
 
     obj.edit238 = GUI.fromHandle(_obj_newObject("edit"));
@@ -3461,7 +3461,7 @@ local function constructNew_frmPath1_svg()
     obj.edit238:setFontSize(10);
     obj.edit238:setFontColor("black");
     obj.edit238:setTransparent(true);
-    obj.edit238:setField("Apresentacao2");
+    obj.edit238:setField("MODAtributoFurtividade");
     obj.edit238:setName("edit238");
 
     obj.edit239 = GUI.fromHandle(_obj_newObject("edit"));
@@ -3474,7 +3474,7 @@ local function constructNew_frmPath1_svg()
     obj.edit239:setFontSize(10);
     obj.edit239:setFontColor("black");
     obj.edit239:setTransparent(true);
-    obj.edit239:setField("Apresentacao3");
+    obj.edit239:setField("GraduacaoFurtividade");
     obj.edit239:setName("edit239");
 
     obj.edit240 = GUI.fromHandle(_obj_newObject("edit"));
@@ -3487,7 +3487,7 @@ local function constructNew_frmPath1_svg()
     obj.edit240:setFontSize(10);
     obj.edit240:setFontColor("black");
     obj.edit240:setTransparent(true);
-    obj.edit240:setField("Apresentacao3");
+    obj.edit240:setField("OutrosFurtividade");
     obj.edit240:setName("edit240");
 
     obj.edit241 = GUI.fromHandle(_obj_newObject("edit"));
@@ -3500,7 +3500,7 @@ local function constructNew_frmPath1_svg()
     obj.edit241:setFontSize(10);
     obj.edit241:setFontColor("black");
     obj.edit241:setTransparent(true);
-    obj.edit241:setField("Apresentacao1");
+    obj.edit241:setField("BonusIntimidacao");
     obj.edit241:setName("edit241");
 
     obj.edit242 = GUI.fromHandle(_obj_newObject("edit"));
@@ -3513,7 +3513,7 @@ local function constructNew_frmPath1_svg()
     obj.edit242:setFontSize(10);
     obj.edit242:setFontColor("black");
     obj.edit242:setTransparent(true);
-    obj.edit242:setField("Apresentacao2");
+    obj.edit242:setField("MODAtributoIntimidacaco");
     obj.edit242:setName("edit242");
 
     obj.edit243 = GUI.fromHandle(_obj_newObject("edit"));
@@ -3526,7 +3526,7 @@ local function constructNew_frmPath1_svg()
     obj.edit243:setFontSize(10);
     obj.edit243:setFontColor("black");
     obj.edit243:setTransparent(true);
-    obj.edit243:setField("Apresentacao3");
+    obj.edit243:setField("GraduacaoIntimidacao");
     obj.edit243:setName("edit243");
 
     obj.edit244 = GUI.fromHandle(_obj_newObject("edit"));
@@ -3539,7 +3539,7 @@ local function constructNew_frmPath1_svg()
     obj.edit244:setFontSize(10);
     obj.edit244:setFontColor("black");
     obj.edit244:setTransparent(true);
-    obj.edit244:setField("Apresentacao3");
+    obj.edit244:setField("OutrosIntimidacao");
     obj.edit244:setName("edit244");
 
     obj.edit245 = GUI.fromHandle(_obj_newObject("edit"));
@@ -3552,7 +3552,7 @@ local function constructNew_frmPath1_svg()
     obj.edit245:setFontSize(10);
     obj.edit245:setFontColor("black");
     obj.edit245:setTransparent(true);
-    obj.edit245:setField("Apresentacao1");
+    obj.edit245:setField("BonusLinguistica");
     obj.edit245:setName("edit245");
 
     obj.edit246 = GUI.fromHandle(_obj_newObject("edit"));
@@ -3565,7 +3565,7 @@ local function constructNew_frmPath1_svg()
     obj.edit246:setFontSize(10);
     obj.edit246:setFontColor("black");
     obj.edit246:setTransparent(true);
-    obj.edit246:setField("Apresentacao2");
+    obj.edit246:setField("MODAtributoLinguistica");
     obj.edit246:setName("edit246");
 
     obj.edit247 = GUI.fromHandle(_obj_newObject("edit"));
@@ -3578,7 +3578,7 @@ local function constructNew_frmPath1_svg()
     obj.edit247:setFontSize(10);
     obj.edit247:setFontColor("black");
     obj.edit247:setTransparent(true);
-    obj.edit247:setField("Apresentacao3");
+    obj.edit247:setField("GraduacaoLinguistica");
     obj.edit247:setName("edit247");
 
     obj.edit248 = GUI.fromHandle(_obj_newObject("edit"));
@@ -3591,7 +3591,7 @@ local function constructNew_frmPath1_svg()
     obj.edit248:setFontSize(10);
     obj.edit248:setFontColor("black");
     obj.edit248:setTransparent(true);
-    obj.edit248:setField("Apresentacao3");
+    obj.edit248:setField("OutrosLinguistica");
     obj.edit248:setName("edit248");
 
     obj.edit249 = GUI.fromHandle(_obj_newObject("edit"));
@@ -3604,7 +3604,7 @@ local function constructNew_frmPath1_svg()
     obj.edit249:setFontSize(10);
     obj.edit249:setFontColor("black");
     obj.edit249:setTransparent(true);
-    obj.edit249:setField("Apresentacao1");
+    obj.edit249:setField("BonusNatacao");
     obj.edit249:setName("edit249");
 
     obj.edit250 = GUI.fromHandle(_obj_newObject("edit"));
@@ -3617,7 +3617,7 @@ local function constructNew_frmPath1_svg()
     obj.edit250:setFontSize(10);
     obj.edit250:setFontColor("black");
     obj.edit250:setTransparent(true);
-    obj.edit250:setField("Apresentacao2");
+    obj.edit250:setField("MODAtributoNatacao");
     obj.edit250:setName("edit250");
 
     obj.edit251 = GUI.fromHandle(_obj_newObject("edit"));
@@ -3630,7 +3630,7 @@ local function constructNew_frmPath1_svg()
     obj.edit251:setFontSize(10);
     obj.edit251:setFontColor("black");
     obj.edit251:setTransparent(true);
-    obj.edit251:setField("Apresentacao3");
+    obj.edit251:setField("GraduacaoNatacao");
     obj.edit251:setName("edit251");
 
     obj.edit252 = GUI.fromHandle(_obj_newObject("edit"));
@@ -3643,7 +3643,7 @@ local function constructNew_frmPath1_svg()
     obj.edit252:setFontSize(10);
     obj.edit252:setFontColor("black");
     obj.edit252:setTransparent(true);
-    obj.edit252:setField("Apresentacao3");
+    obj.edit252:setField("OutrosNatacao");
     obj.edit252:setName("edit252");
 
     obj.edit253 = GUI.fromHandle(_obj_newObject("edit"));
@@ -3656,7 +3656,7 @@ local function constructNew_frmPath1_svg()
     obj.edit253:setFontSize(10);
     obj.edit253:setFontColor("black");
     obj.edit253:setTransparent(true);
-    obj.edit253:setField("Apresentacao1");
+    obj.edit253:setField("BonusOficio1");
     obj.edit253:setName("edit253");
 
     obj.edit254 = GUI.fromHandle(_obj_newObject("edit"));
@@ -3669,7 +3669,7 @@ local function constructNew_frmPath1_svg()
     obj.edit254:setFontSize(10);
     obj.edit254:setFontColor("black");
     obj.edit254:setTransparent(true);
-    obj.edit254:setField("Apresentacao2");
+    obj.edit254:setField("MODAtributoOficio1");
     obj.edit254:setName("edit254");
 
     obj.edit255 = GUI.fromHandle(_obj_newObject("edit"));
@@ -3682,7 +3682,7 @@ local function constructNew_frmPath1_svg()
     obj.edit255:setFontSize(10);
     obj.edit255:setFontColor("black");
     obj.edit255:setTransparent(true);
-    obj.edit255:setField("Apresentacao3");
+    obj.edit255:setField("GraduacaoOficio1");
     obj.edit255:setName("edit255");
 
     obj.edit256 = GUI.fromHandle(_obj_newObject("edit"));
@@ -3695,7 +3695,7 @@ local function constructNew_frmPath1_svg()
     obj.edit256:setFontSize(10);
     obj.edit256:setFontColor("black");
     obj.edit256:setTransparent(true);
-    obj.edit256:setField("Apresentacao3");
+    obj.edit256:setField("OutrosOficio1");
     obj.edit256:setName("edit256");
 
     obj.edit257 = GUI.fromHandle(_obj_newObject("edit"));
@@ -3708,7 +3708,7 @@ local function constructNew_frmPath1_svg()
     obj.edit257:setFontSize(10);
     obj.edit257:setFontColor("black");
     obj.edit257:setTransparent(true);
-    obj.edit257:setField("Apresentacao1");
+    obj.edit257:setField("BonusOficio2");
     obj.edit257:setName("edit257");
 
     obj.edit258 = GUI.fromHandle(_obj_newObject("edit"));
@@ -3721,7 +3721,7 @@ local function constructNew_frmPath1_svg()
     obj.edit258:setFontSize(10);
     obj.edit258:setFontColor("black");
     obj.edit258:setTransparent(true);
-    obj.edit258:setField("Apresentacao2");
+    obj.edit258:setField("MODAtributoOficio2");
     obj.edit258:setName("edit258");
 
     obj.edit259 = GUI.fromHandle(_obj_newObject("edit"));
@@ -3734,7 +3734,7 @@ local function constructNew_frmPath1_svg()
     obj.edit259:setFontSize(10);
     obj.edit259:setFontColor("black");
     obj.edit259:setTransparent(true);
-    obj.edit259:setField("Apresentacao3");
+    obj.edit259:setField("GraduacaoOficio2");
     obj.edit259:setName("edit259");
 
     obj.edit260 = GUI.fromHandle(_obj_newObject("edit"));
@@ -3747,7 +3747,7 @@ local function constructNew_frmPath1_svg()
     obj.edit260:setFontSize(10);
     obj.edit260:setFontColor("black");
     obj.edit260:setTransparent(true);
-    obj.edit260:setField("Apresentacao3");
+    obj.edit260:setField("OutrosOficio2");
     obj.edit260:setName("edit260");
 
     obj.edit261 = GUI.fromHandle(_obj_newObject("edit"));
@@ -3760,7 +3760,7 @@ local function constructNew_frmPath1_svg()
     obj.edit261:setFontSize(10);
     obj.edit261:setFontColor("black");
     obj.edit261:setTransparent(true);
-    obj.edit261:setField("Apresentacao1");
+    obj.edit261:setField("BonusOficio3");
     obj.edit261:setName("edit261");
 
     obj.edit262 = GUI.fromHandle(_obj_newObject("edit"));
@@ -3773,7 +3773,7 @@ local function constructNew_frmPath1_svg()
     obj.edit262:setFontSize(10);
     obj.edit262:setFontColor("black");
     obj.edit262:setTransparent(true);
-    obj.edit262:setField("Apresentacao2");
+    obj.edit262:setField("MODAtributoOficio3");
     obj.edit262:setName("edit262");
 
     obj.edit263 = GUI.fromHandle(_obj_newObject("edit"));
@@ -3786,7 +3786,7 @@ local function constructNew_frmPath1_svg()
     obj.edit263:setFontSize(10);
     obj.edit263:setFontColor("black");
     obj.edit263:setTransparent(true);
-    obj.edit263:setField("Apresentacao3");
+    obj.edit263:setField("GraduacaoOficio3");
     obj.edit263:setName("edit263");
 
     obj.edit264 = GUI.fromHandle(_obj_newObject("edit"));
@@ -3799,7 +3799,7 @@ local function constructNew_frmPath1_svg()
     obj.edit264:setFontSize(10);
     obj.edit264:setFontColor("black");
     obj.edit264:setTransparent(true);
-    obj.edit264:setField("Apresentacao3");
+    obj.edit264:setField("OutrosOficio3");
     obj.edit264:setName("edit264");
 
     obj.edit265 = GUI.fromHandle(_obj_newObject("edit"));
@@ -3812,7 +3812,7 @@ local function constructNew_frmPath1_svg()
     obj.edit265:setFontSize(10);
     obj.edit265:setFontColor("black");
     obj.edit265:setTransparent(true);
-    obj.edit265:setField("Apresentacao1");
+    obj.edit265:setField("BonusOperarMecanismo");
     obj.edit265:setName("edit265");
 
     obj.edit266 = GUI.fromHandle(_obj_newObject("edit"));
@@ -3825,7 +3825,7 @@ local function constructNew_frmPath1_svg()
     obj.edit266:setFontSize(10);
     obj.edit266:setFontColor("black");
     obj.edit266:setTransparent(true);
-    obj.edit266:setField("Apresentacao2");
+    obj.edit266:setField("MODAtributoOperarMecanismo");
     obj.edit266:setName("edit266");
 
     obj.edit267 = GUI.fromHandle(_obj_newObject("edit"));
@@ -3838,7 +3838,7 @@ local function constructNew_frmPath1_svg()
     obj.edit267:setFontSize(10);
     obj.edit267:setFontColor("black");
     obj.edit267:setTransparent(true);
-    obj.edit267:setField("Apresentacao3");
+    obj.edit267:setField("GraduacaoOperarMecanismo");
     obj.edit267:setName("edit267");
 
     obj.edit268 = GUI.fromHandle(_obj_newObject("edit"));
@@ -3851,7 +3851,7 @@ local function constructNew_frmPath1_svg()
     obj.edit268:setFontSize(10);
     obj.edit268:setFontColor("black");
     obj.edit268:setTransparent(true);
-    obj.edit268:setField("Apresentacao3");
+    obj.edit268:setField("OutrosOperarMecanismo");
     obj.edit268:setName("edit268");
 
     obj.edit269 = GUI.fromHandle(_obj_newObject("edit"));
@@ -3864,7 +3864,7 @@ local function constructNew_frmPath1_svg()
     obj.edit269:setFontSize(10);
     obj.edit269:setFontColor("black");
     obj.edit269:setTransparent(true);
-    obj.edit269:setField("Apresentacao1");
+    obj.edit269:setField("BonusPercepcão");
     obj.edit269:setName("edit269");
 
     obj.edit270 = GUI.fromHandle(_obj_newObject("edit"));
@@ -3877,7 +3877,7 @@ local function constructNew_frmPath1_svg()
     obj.edit270:setFontSize(10);
     obj.edit270:setFontColor("black");
     obj.edit270:setTransparent(true);
-    obj.edit270:setField("Apresentacao2");
+    obj.edit270:setField("MODAtributoPercepcao");
     obj.edit270:setName("edit270");
 
     obj.edit271 = GUI.fromHandle(_obj_newObject("edit"));
@@ -3890,7 +3890,7 @@ local function constructNew_frmPath1_svg()
     obj.edit271:setFontSize(10);
     obj.edit271:setFontColor("black");
     obj.edit271:setTransparent(true);
-    obj.edit271:setField("Apresentacao3");
+    obj.edit271:setField("GraduacaoPercepcao");
     obj.edit271:setName("edit271");
 
     obj.edit272 = GUI.fromHandle(_obj_newObject("edit"));
@@ -3903,7 +3903,7 @@ local function constructNew_frmPath1_svg()
     obj.edit272:setFontSize(10);
     obj.edit272:setFontColor("black");
     obj.edit272:setTransparent(true);
-    obj.edit272:setField("Apresentacao3");
+    obj.edit272:setField("OutrosPercepcao");
     obj.edit272:setName("edit272");
 
     obj.edit273 = GUI.fromHandle(_obj_newObject("edit"));
@@ -3916,7 +3916,7 @@ local function constructNew_frmPath1_svg()
     obj.edit273:setFontSize(10);
     obj.edit273:setFontColor("black");
     obj.edit273:setTransparent(true);
-    obj.edit273:setField("Apresentacao1");
+    obj.edit273:setField("BonusPrestidigitacao");
     obj.edit273:setName("edit273");
 
     obj.edit274 = GUI.fromHandle(_obj_newObject("edit"));
@@ -3929,7 +3929,7 @@ local function constructNew_frmPath1_svg()
     obj.edit274:setFontSize(10);
     obj.edit274:setFontColor("black");
     obj.edit274:setTransparent(true);
-    obj.edit274:setField("Apresentacao2");
+    obj.edit274:setField("MODAtributoPrestidigitacao");
     obj.edit274:setName("edit274");
 
     obj.edit275 = GUI.fromHandle(_obj_newObject("edit"));
@@ -3942,7 +3942,7 @@ local function constructNew_frmPath1_svg()
     obj.edit275:setFontSize(10);
     obj.edit275:setFontColor("black");
     obj.edit275:setTransparent(true);
-    obj.edit275:setField("Apresentacao3");
+    obj.edit275:setField("GraduacaoPrestidigitacao");
     obj.edit275:setName("edit275");
 
     obj.edit276 = GUI.fromHandle(_obj_newObject("edit"));
@@ -3955,7 +3955,7 @@ local function constructNew_frmPath1_svg()
     obj.edit276:setFontSize(10);
     obj.edit276:setFontColor("black");
     obj.edit276:setTransparent(true);
-    obj.edit276:setField("Apresentacao3");
+    obj.edit276:setField("OutrosPrestidigitacao");
     obj.edit276:setName("edit276");
 
     obj.edit277 = GUI.fromHandle(_obj_newObject("edit"));
@@ -3968,7 +3968,7 @@ local function constructNew_frmPath1_svg()
     obj.edit277:setFontSize(10);
     obj.edit277:setFontColor("black");
     obj.edit277:setTransparent(true);
-    obj.edit277:setField("Apresentacao1");
+    obj.edit277:setField("BonusProfissao1");
     obj.edit277:setName("edit277");
 
     obj.edit278 = GUI.fromHandle(_obj_newObject("edit"));
@@ -3981,7 +3981,7 @@ local function constructNew_frmPath1_svg()
     obj.edit278:setFontSize(10);
     obj.edit278:setFontColor("black");
     obj.edit278:setTransparent(true);
-    obj.edit278:setField("Apresentacao2");
+    obj.edit278:setField("MODAtributoProfissao1");
     obj.edit278:setName("edit278");
 
     obj.edit279 = GUI.fromHandle(_obj_newObject("edit"));
@@ -3994,7 +3994,7 @@ local function constructNew_frmPath1_svg()
     obj.edit279:setFontSize(10);
     obj.edit279:setFontColor("black");
     obj.edit279:setTransparent(true);
-    obj.edit279:setField("Apresentacao3");
+    obj.edit279:setField("GraduacaoProfissao1");
     obj.edit279:setName("edit279");
 
     obj.edit280 = GUI.fromHandle(_obj_newObject("edit"));
@@ -4007,7 +4007,7 @@ local function constructNew_frmPath1_svg()
     obj.edit280:setFontSize(10);
     obj.edit280:setFontColor("black");
     obj.edit280:setTransparent(true);
-    obj.edit280:setField("Apresentacao3");
+    obj.edit280:setField("OutrosProfissao1");
     obj.edit280:setName("edit280");
 
     obj.edit281 = GUI.fromHandle(_obj_newObject("edit"));
@@ -4020,7 +4020,7 @@ local function constructNew_frmPath1_svg()
     obj.edit281:setFontSize(10);
     obj.edit281:setFontColor("black");
     obj.edit281:setTransparent(true);
-    obj.edit281:setField("Apresentacao1");
+    obj.edit281:setField("BonusProfissao2");
     obj.edit281:setName("edit281");
 
     obj.edit282 = GUI.fromHandle(_obj_newObject("edit"));
@@ -4033,7 +4033,7 @@ local function constructNew_frmPath1_svg()
     obj.edit282:setFontSize(10);
     obj.edit282:setFontColor("black");
     obj.edit282:setTransparent(true);
-    obj.edit282:setField("Apresentacao2");
+    obj.edit282:setField("MODAtributoProfissao2");
     obj.edit282:setName("edit282");
 
     obj.edit283 = GUI.fromHandle(_obj_newObject("edit"));
@@ -4046,7 +4046,7 @@ local function constructNew_frmPath1_svg()
     obj.edit283:setFontSize(10);
     obj.edit283:setFontColor("black");
     obj.edit283:setTransparent(true);
-    obj.edit283:setField("Apresentacao3");
+    obj.edit283:setField("GraduacaoProfissao2");
     obj.edit283:setName("edit283");
 
     obj.edit284 = GUI.fromHandle(_obj_newObject("edit"));
@@ -4059,7 +4059,7 @@ local function constructNew_frmPath1_svg()
     obj.edit284:setFontSize(10);
     obj.edit284:setFontColor("black");
     obj.edit284:setTransparent(true);
-    obj.edit284:setField("Apresentacao3");
+    obj.edit284:setField("OutrosProfissao2");
     obj.edit284:setName("edit284");
 
     obj.edit285 = GUI.fromHandle(_obj_newObject("edit"));
@@ -4072,7 +4072,7 @@ local function constructNew_frmPath1_svg()
     obj.edit285:setFontSize(10);
     obj.edit285:setFontColor("black");
     obj.edit285:setTransparent(true);
-    obj.edit285:setField("Apresentacao1");
+    obj.edit285:setField("BonusSentirMotivacao");
     obj.edit285:setName("edit285");
 
     obj.edit286 = GUI.fromHandle(_obj_newObject("edit"));
@@ -4085,7 +4085,7 @@ local function constructNew_frmPath1_svg()
     obj.edit286:setFontSize(10);
     obj.edit286:setFontColor("black");
     obj.edit286:setTransparent(true);
-    obj.edit286:setField("Apresentacao2");
+    obj.edit286:setField("MODAtributoSentirMotivacao");
     obj.edit286:setName("edit286");
 
     obj.edit287 = GUI.fromHandle(_obj_newObject("edit"));
@@ -4098,7 +4098,7 @@ local function constructNew_frmPath1_svg()
     obj.edit287:setFontSize(10);
     obj.edit287:setFontColor("black");
     obj.edit287:setTransparent(true);
-    obj.edit287:setField("Apresentacao3");
+    obj.edit287:setField("GraduacaoSentirMotivacao");
     obj.edit287:setName("edit287");
 
     obj.edit288 = GUI.fromHandle(_obj_newObject("edit"));
@@ -4111,7 +4111,7 @@ local function constructNew_frmPath1_svg()
     obj.edit288:setFontSize(10);
     obj.edit288:setFontColor("black");
     obj.edit288:setTransparent(true);
-    obj.edit288:setField("Apresentacao3");
+    obj.edit288:setField("OutrosSentirMotivacao");
     obj.edit288:setName("edit288");
 
     obj.edit289 = GUI.fromHandle(_obj_newObject("edit"));
@@ -4124,7 +4124,7 @@ local function constructNew_frmPath1_svg()
     obj.edit289:setFontSize(10);
     obj.edit289:setFontColor("black");
     obj.edit289:setTransparent(true);
-    obj.edit289:setField("Apresentacao1");
+    obj.edit289:setField("BonusSobrevivencia");
     obj.edit289:setName("edit289");
 
     obj.edit290 = GUI.fromHandle(_obj_newObject("edit"));
@@ -4137,7 +4137,7 @@ local function constructNew_frmPath1_svg()
     obj.edit290:setFontSize(10);
     obj.edit290:setFontColor("black");
     obj.edit290:setTransparent(true);
-    obj.edit290:setField("Apresentacao2");
+    obj.edit290:setField("MODAtributoSobrevivencia");
     obj.edit290:setName("edit290");
 
     obj.edit291 = GUI.fromHandle(_obj_newObject("edit"));
@@ -4150,7 +4150,7 @@ local function constructNew_frmPath1_svg()
     obj.edit291:setFontSize(10);
     obj.edit291:setFontColor("black");
     obj.edit291:setTransparent(true);
-    obj.edit291:setField("Apresentacao3");
+    obj.edit291:setField("GraduacaoSobrevivencia");
     obj.edit291:setName("edit291");
 
     obj.edit292 = GUI.fromHandle(_obj_newObject("edit"));
@@ -4163,7 +4163,7 @@ local function constructNew_frmPath1_svg()
     obj.edit292:setFontSize(10);
     obj.edit292:setFontColor("black");
     obj.edit292:setTransparent(true);
-    obj.edit292:setField("Apresentacao3");
+    obj.edit292:setField("OutrosSobrevivencia");
     obj.edit292:setName("edit292");
 
     obj.edit293 = GUI.fromHandle(_obj_newObject("edit"));
@@ -4176,7 +4176,7 @@ local function constructNew_frmPath1_svg()
     obj.edit293:setFontSize(10);
     obj.edit293:setFontColor("black");
     obj.edit293:setTransparent(true);
-    obj.edit293:setField("Apresentacao1");
+    obj.edit293:setField("BonusuUsarInstrumentoMagico");
     obj.edit293:setName("edit293");
 
     obj.edit294 = GUI.fromHandle(_obj_newObject("edit"));
@@ -4189,7 +4189,7 @@ local function constructNew_frmPath1_svg()
     obj.edit294:setFontSize(10);
     obj.edit294:setFontColor("black");
     obj.edit294:setTransparent(true);
-    obj.edit294:setField("Apresentacao2");
+    obj.edit294:setField("MODAtributoUsarInstrumentoMagico");
     obj.edit294:setName("edit294");
 
     obj.edit295 = GUI.fromHandle(_obj_newObject("edit"));
@@ -4202,7 +4202,7 @@ local function constructNew_frmPath1_svg()
     obj.edit295:setFontSize(10);
     obj.edit295:setFontColor("black");
     obj.edit295:setTransparent(true);
-    obj.edit295:setField("Apresentacao3");
+    obj.edit295:setField("GraduacaoUsarInstrumentoMagico");
     obj.edit295:setName("edit295");
 
     obj.edit296 = GUI.fromHandle(_obj_newObject("edit"));
@@ -4215,7 +4215,7 @@ local function constructNew_frmPath1_svg()
     obj.edit296:setFontSize(10);
     obj.edit296:setFontColor("black");
     obj.edit296:setTransparent(true);
-    obj.edit296:setField("Apresentacao3");
+    obj.edit296:setField("OutrosUsarInstrumentoMagico");
     obj.edit296:setName("edit296");
 
     obj.edit297 = GUI.fromHandle(_obj_newObject("edit"));
@@ -4228,7 +4228,7 @@ local function constructNew_frmPath1_svg()
     obj.edit297:setFontSize(10);
     obj.edit297:setFontColor("black");
     obj.edit297:setTransparent(true);
-    obj.edit297:setField("Apresentacao1");
+    obj.edit297:setField("BonusVoo");
     obj.edit297:setName("edit297");
 
     obj.edit298 = GUI.fromHandle(_obj_newObject("edit"));
@@ -4241,7 +4241,7 @@ local function constructNew_frmPath1_svg()
     obj.edit298:setFontSize(10);
     obj.edit298:setFontColor("black");
     obj.edit298:setTransparent(true);
-    obj.edit298:setField("Apresentacao2");
+    obj.edit298:setField("MODAtributoVoo");
     obj.edit298:setName("edit298");
 
     obj.edit299 = GUI.fromHandle(_obj_newObject("edit"));
@@ -4254,7 +4254,7 @@ local function constructNew_frmPath1_svg()
     obj.edit299:setFontSize(10);
     obj.edit299:setFontColor("black");
     obj.edit299:setTransparent(true);
-    obj.edit299:setField("Apresentacao3");
+    obj.edit299:setField("GraduacaoVoo");
     obj.edit299:setName("edit299");
 
     obj.edit300 = GUI.fromHandle(_obj_newObject("edit"));
@@ -4267,7 +4267,7 @@ local function constructNew_frmPath1_svg()
     obj.edit300:setFontSize(10);
     obj.edit300:setFontColor("black");
     obj.edit300:setTransparent(true);
-    obj.edit300:setField("Apresentacao3");
+    obj.edit300:setField("OutrosVoo");
     obj.edit300:setName("edit300");
 
     obj.textEditor2 = GUI.fromHandle(_obj_newObject("textEditor"));
@@ -4287,7 +4287,7 @@ local function constructNew_frmPath1_svg()
     obj.textEditor3:setWidth(380);
     obj.textEditor3:setHeight(50);
     obj.textEditor3:setTransparent(true);
-    obj.textEditor3:setField("ModificadoresCondicionais");
+    obj.textEditor3:setField("Idiomas");
     obj.textEditor3:setName("textEditor3");
 
     function obj:_releaseEvents()

@@ -1731,7 +1731,7 @@ local function constructNew_frmPath()
     obj.edit125:setFontColor("black");
     obj.edit125:setType("number");
     obj.edit125:setTransparent(true);
-    obj.edit125:setField("RD");
+    obj.edit125:setField("DeslocamentoBasicoM");
     obj.edit125:setName("edit125");
 
     obj.edit126 = GUI.fromHandle(_obj_newObject("edit"));
@@ -1744,7 +1744,7 @@ local function constructNew_frmPath()
     obj.edit126:setFontColor("black");
     obj.edit126:setType("number");
     obj.edit126:setTransparent(true);
-    obj.edit126:setField("RD");
+    obj.edit126:setField("DeslocamentoBasicoQ");
     obj.edit126:setName("edit126");
 
     obj.edit127 = GUI.fromHandle(_obj_newObject("edit"));
@@ -1757,7 +1757,7 @@ local function constructNew_frmPath()
     obj.edit127:setFontColor("black");
     obj.edit127:setType("number");
     obj.edit127:setTransparent(true);
-    obj.edit127:setField("RD");
+    obj.edit127:setField("DeslocamentoArmaduraM");
     obj.edit127:setName("edit127");
 
     obj.edit128 = GUI.fromHandle(_obj_newObject("edit"));
@@ -1770,7 +1770,7 @@ local function constructNew_frmPath()
     obj.edit128:setFontColor("black");
     obj.edit128:setType("number");
     obj.edit128:setTransparent(true);
-    obj.edit128:setField("RD");
+    obj.edit128:setField("DeslocamentoArmaduraQ");
     obj.edit128:setName("edit128");
 
     obj.edit129 = GUI.fromHandle(_obj_newObject("edit"));
@@ -1783,7 +1783,7 @@ local function constructNew_frmPath()
     obj.edit129:setFontColor("black");
     obj.edit129:setType("number");
     obj.edit129:setTransparent(true);
-    obj.edit129:setField("RD");
+    obj.edit129:setField("Voo");
     obj.edit129:setName("edit129");
 
     obj.edit130 = GUI.fromHandle(_obj_newObject("edit"));
@@ -1796,7 +1796,7 @@ local function constructNew_frmPath()
     obj.edit130:setFontColor("black");
     obj.edit130:setType("number");
     obj.edit130:setTransparent(true);
-    obj.edit130:setField("RD");
+    obj.edit130:setField("Manobralidade");
     obj.edit130:setName("edit130");
 
     obj.edit131 = GUI.fromHandle(_obj_newObject("edit"));
@@ -1809,7 +1809,7 @@ local function constructNew_frmPath()
     obj.edit131:setFontColor("black");
     obj.edit131:setType("number");
     obj.edit131:setTransparent(true);
-    obj.edit131:setField("RD");
+    obj.edit131:setField("Nado");
     obj.edit131:setName("edit131");
 
     obj.edit132 = GUI.fromHandle(_obj_newObject("edit"));
@@ -1822,7 +1822,7 @@ local function constructNew_frmPath()
     obj.edit132:setFontColor("black");
     obj.edit132:setType("number");
     obj.edit132:setTransparent(true);
-    obj.edit132:setField("RD");
+    obj.edit132:setField("Escalada");
     obj.edit132:setName("edit132");
 
     obj.edit133 = GUI.fromHandle(_obj_newObject("edit"));
@@ -1835,7 +1835,7 @@ local function constructNew_frmPath()
     obj.edit133:setFontColor("black");
     obj.edit133:setType("number");
     obj.edit133:setTransparent(true);
-    obj.edit133:setField("RD");
+    obj.edit133:setField("Escavacao");
     obj.edit133:setName("edit133");
 
     obj.edit134 = GUI.fromHandle(_obj_newObject("edit"));
@@ -1848,7 +1848,7 @@ local function constructNew_frmPath()
     obj.edit134:setFontColor("black");
     obj.edit134:setType("number");
     obj.edit134:setTransparent(true);
-    obj.edit134:setField("RD");
+    obj.edit134:setField("ModificadoresTemporarios");
     obj.edit134:setName("edit134");
 
     obj.checkBox1 = GUI.fromHandle(_obj_newObject("checkBox"));
@@ -1869,266 +1869,266 @@ local function constructNew_frmPath()
     obj.checkBox3:setParent(obj.rectangle1);
     obj.checkBox3:setLeft(475);
     obj.checkBox3:setTop(322);
-    obj.checkBox3:setField("PericiaAdestrarAnimais");
+    obj.checkBox3:setField("PericiaApresentacao1");
     obj.checkBox3:setName("checkBox3");
 
     obj.checkBox4 = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox4:setParent(obj.rectangle1);
     obj.checkBox4:setLeft(475);
     obj.checkBox4:setTop(340);
-    obj.checkBox4:setField("PericiaAdestrarAnimais");
+    obj.checkBox4:setField("PericiaApresentacao2");
     obj.checkBox4:setName("checkBox4");
 
     obj.checkBox5 = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox5:setParent(obj.rectangle1);
     obj.checkBox5:setLeft(475);
     obj.checkBox5:setTop(355);
-    obj.checkBox5:setField("PericiaAdestrarAnimais");
+    obj.checkBox5:setField("PericiaApresentacao3");
     obj.checkBox5:setName("checkBox5");
 
     obj.checkBox6 = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox6:setParent(obj.rectangle1);
     obj.checkBox6:setLeft(475);
     obj.checkBox6:setTop(372);
-    obj.checkBox6:setField("PericiaAdestrarAnimais");
+    obj.checkBox6:setField("PericiaArtedaFuga");
     obj.checkBox6:setName("checkBox6");
 
     obj.checkBox7 = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox7:setParent(obj.rectangle1);
     obj.checkBox7:setLeft(475);
     obj.checkBox7:setTop(389);
-    obj.checkBox7:setField("PericiaAdestrarAnimais");
+    obj.checkBox7:setField("PericiaArtesMagicas");
     obj.checkBox7:setName("checkBox7");
 
     obj.checkBox8 = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox8:setParent(obj.rectangle1);
     obj.checkBox8:setLeft(475);
     obj.checkBox8:setTop(405);
-    obj.checkBox8:setField("PericiaAdestrarAnimais");
+    obj.checkBox8:setField("PericiaAvaliacao");
     obj.checkBox8:setName("checkBox8");
 
     obj.checkBox9 = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox9:setParent(obj.rectangle1);
     obj.checkBox9:setLeft(475);
     obj.checkBox9:setTop(422);
-    obj.checkBox9:setField("PericiaAdestrarAnimais");
+    obj.checkBox9:setField("PericiaBlefar");
     obj.checkBox9:setName("checkBox9");
 
     obj.checkBox10 = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox10:setParent(obj.rectangle1);
     obj.checkBox10:setLeft(475);
     obj.checkBox10:setTop(439);
-    obj.checkBox10:setField("PericiaAdestrarAnimais");
+    obj.checkBox10:setField("PericiaCavalgar");
     obj.checkBox10:setName("checkBox10");
 
     obj.checkBox11 = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox11:setParent(obj.rectangle1);
     obj.checkBox11:setLeft(475);
     obj.checkBox11:setTop(457);
-    obj.checkBox11:setField("PericiaAdestrarAnimais");
+    obj.checkBox11:setField("PericiaConhecimentoArcano");
     obj.checkBox11:setName("checkBox11");
 
     obj.checkBox12 = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox12:setParent(obj.rectangle1);
     obj.checkBox12:setLeft(475);
     obj.checkBox12:setTop(474);
-    obj.checkBox12:setField("PericiaAdestrarAnimais");
+    obj.checkBox12:setField("PericiaConhecimentoExploracao");
     obj.checkBox12:setName("checkBox12");
 
     obj.checkBox13 = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox13:setParent(obj.rectangle1);
     obj.checkBox13:setLeft(475);
     obj.checkBox13:setTop(491);
-    obj.checkBox13:setField("PericiaAdestrarAnimais");
+    obj.checkBox13:setField("PericiaConhecimentoEngenharia");
     obj.checkBox13:setName("checkBox13");
 
     obj.checkBox14 = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox14:setParent(obj.rectangle1);
     obj.checkBox14:setLeft(475);
     obj.checkBox14:setTop(508);
-    obj.checkBox14:setField("PericiaAdestrarAnimais");
+    obj.checkBox14:setField("PericiaConhecimentoGeografia");
     obj.checkBox14:setName("checkBox14");
 
     obj.checkBox15 = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox15:setParent(obj.rectangle1);
     obj.checkBox15:setLeft(475);
     obj.checkBox15:setTop(525);
-    obj.checkBox15:setField("PericiaAdestrarAnimais");
+    obj.checkBox15:setField("PericiaConhecimentoHistoria");
     obj.checkBox15:setName("checkBox15");
 
     obj.checkBox16 = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox16:setParent(obj.rectangle1);
     obj.checkBox16:setLeft(475);
     obj.checkBox16:setTop(542);
-    obj.checkBox16:setField("PericiaAdestrarAnimais");
+    obj.checkBox16:setField("PericiaConhecimentoLocal");
     obj.checkBox16:setName("checkBox16");
 
     obj.checkBox17 = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox17:setParent(obj.rectangle1);
     obj.checkBox17:setLeft(475);
     obj.checkBox17:setTop(559);
-    obj.checkBox17:setField("PericiaAdestrarAnimais");
+    obj.checkBox17:setField("PericiaConhecimentoNatureza");
     obj.checkBox17:setName("checkBox17");
 
     obj.checkBox18 = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox18:setParent(obj.rectangle1);
     obj.checkBox18:setLeft(475);
     obj.checkBox18:setTop(576);
-    obj.checkBox18:setField("PericiaAdestrarAnimais");
+    obj.checkBox18:setField("PericiaConhecimentoNobreza");
     obj.checkBox18:setName("checkBox18");
 
     obj.checkBox19 = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox19:setParent(obj.rectangle1);
     obj.checkBox19:setLeft(475);
     obj.checkBox19:setTop(593);
-    obj.checkBox19:setField("PericiaAdestrarAnimais");
+    obj.checkBox19:setField("PericiaConhecimentoPlanos");
     obj.checkBox19:setName("checkBox19");
 
     obj.checkBox20 = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox20:setParent(obj.rectangle1);
     obj.checkBox20:setLeft(475);
     obj.checkBox20:setTop(610);
-    obj.checkBox20:setField("PericiaAdestrarAnimais");
+    obj.checkBox20:setField("PericiaConhecimentoReligiao");
     obj.checkBox20:setName("checkBox20");
 
     obj.checkBox21 = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox21:setParent(obj.rectangle1);
     obj.checkBox21:setLeft(475);
     obj.checkBox21:setTop(627);
-    obj.checkBox21:setField("PericiaAdestrarAnimais");
+    obj.checkBox21:setField("PericiaCura");
     obj.checkBox21:setName("checkBox21");
 
     obj.checkBox22 = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox22:setParent(obj.rectangle1);
     obj.checkBox22:setLeft(475);
     obj.checkBox22:setTop(644);
-    obj.checkBox22:setField("PericiaAdestrarAnimais");
+    obj.checkBox22:setField("PericiaDiplomacia");
     obj.checkBox22:setName("checkBox22");
 
     obj.checkBox23 = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox23:setParent(obj.rectangle1);
     obj.checkBox23:setLeft(475);
     obj.checkBox23:setTop(661);
-    obj.checkBox23:setField("PericiaAdestrarAnimais");
+    obj.checkBox23:setField("PericiaDisfarce");
     obj.checkBox23:setName("checkBox23");
 
     obj.checkBox24 = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox24:setParent(obj.rectangle1);
     obj.checkBox24:setLeft(475);
     obj.checkBox24:setTop(678);
-    obj.checkBox24:setField("PericiaAdestrarAnimais");
+    obj.checkBox24:setField("PericiaEscalar");
     obj.checkBox24:setName("checkBox24");
 
     obj.checkBox25 = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox25:setParent(obj.rectangle1);
     obj.checkBox25:setLeft(475);
     obj.checkBox25:setTop(695);
-    obj.checkBox25:setField("PericiaAdestrarAnimais");
+    obj.checkBox25:setField("PericiaFurtividade");
     obj.checkBox25:setName("checkBox25");
 
     obj.checkBox26 = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox26:setParent(obj.rectangle1);
     obj.checkBox26:setLeft(475);
     obj.checkBox26:setTop(712);
-    obj.checkBox26:setField("PericiaAdestrarAnimais");
+    obj.checkBox26:setField("PericiaIntimidacao");
     obj.checkBox26:setName("checkBox26");
 
     obj.checkBox27 = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox27:setParent(obj.rectangle1);
     obj.checkBox27:setLeft(475);
     obj.checkBox27:setTop(729);
-    obj.checkBox27:setField("PericiaAdestrarAnimais");
+    obj.checkBox27:setField("PericiaLinguistica");
     obj.checkBox27:setName("checkBox27");
 
     obj.checkBox28 = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox28:setParent(obj.rectangle1);
     obj.checkBox28:setLeft(475);
     obj.checkBox28:setTop(746);
-    obj.checkBox28:setField("PericiaAdestrarAnimais");
+    obj.checkBox28:setField("PericiaNatacao");
     obj.checkBox28:setName("checkBox28");
 
     obj.checkBox29 = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox29:setParent(obj.rectangle1);
     obj.checkBox29:setLeft(475);
     obj.checkBox29:setTop(763);
-    obj.checkBox29:setField("PericiaAdestrarAnimais");
+    obj.checkBox29:setField("PericiaOficio1");
     obj.checkBox29:setName("checkBox29");
 
     obj.checkBox30 = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox30:setParent(obj.rectangle1);
     obj.checkBox30:setLeft(475);
     obj.checkBox30:setTop(780);
-    obj.checkBox30:setField("PericiaAdestrarAnimais");
+    obj.checkBox30:setField("PericiaOficio2");
     obj.checkBox30:setName("checkBox30");
 
     obj.checkBox31 = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox31:setParent(obj.rectangle1);
     obj.checkBox31:setLeft(475);
     obj.checkBox31:setTop(797);
-    obj.checkBox31:setField("PericiaAdestrarAnimais");
+    obj.checkBox31:setField("PericiaOficio3");
     obj.checkBox31:setName("checkBox31");
 
     obj.checkBox32 = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox32:setParent(obj.rectangle1);
     obj.checkBox32:setLeft(475);
     obj.checkBox32:setTop(814);
-    obj.checkBox32:setField("PericiaAdestrarAnimais");
+    obj.checkBox32:setField("PericiaOperarMecanismo");
     obj.checkBox32:setName("checkBox32");
 
     obj.checkBox33 = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox33:setParent(obj.rectangle1);
     obj.checkBox33:setLeft(475);
     obj.checkBox33:setTop(831);
-    obj.checkBox33:setField("PericiaAdestrarAnimais");
+    obj.checkBox33:setField("PericiaPercepcao");
     obj.checkBox33:setName("checkBox33");
 
     obj.checkBox34 = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox34:setParent(obj.rectangle1);
     obj.checkBox34:setLeft(475);
     obj.checkBox34:setTop(848);
-    obj.checkBox34:setField("PericiaAdestrarAnimais");
+    obj.checkBox34:setField("PericiaPrestidigitacao");
     obj.checkBox34:setName("checkBox34");
 
     obj.checkBox35 = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox35:setParent(obj.rectangle1);
     obj.checkBox35:setLeft(475);
     obj.checkBox35:setTop(865);
-    obj.checkBox35:setField("PericiaAdestrarAnimais");
+    obj.checkBox35:setField("PericiaProfissao1");
     obj.checkBox35:setName("checkBox35");
 
     obj.checkBox36 = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox36:setParent(obj.rectangle1);
     obj.checkBox36:setLeft(475);
     obj.checkBox36:setTop(882);
-    obj.checkBox36:setField("PericiaAdestrarAnimais");
+    obj.checkBox36:setField("PericiaProfissao2");
     obj.checkBox36:setName("checkBox36");
 
     obj.checkBox37 = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox37:setParent(obj.rectangle1);
     obj.checkBox37:setLeft(475);
     obj.checkBox37:setTop(899);
-    obj.checkBox37:setField("PericiaAdestrarAnimais");
+    obj.checkBox37:setField("PericiaSentirMotivacao");
     obj.checkBox37:setName("checkBox37");
 
     obj.checkBox38 = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox38:setParent(obj.rectangle1);
     obj.checkBox38:setLeft(475);
     obj.checkBox38:setTop(916);
-    obj.checkBox38:setField("PericiaAdestrarAnimais");
+    obj.checkBox38:setField("PericiaSobrevivencia");
     obj.checkBox38:setName("checkBox38");
 
     obj.checkBox39 = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox39:setParent(obj.rectangle1);
     obj.checkBox39:setLeft(475);
     obj.checkBox39:setTop(933);
-    obj.checkBox39:setField("PericiaAdestrarAnimais");
+    obj.checkBox39:setField("PericiaUsarInstrumentoMagicco");
     obj.checkBox39:setName("checkBox39");
 
     obj.checkBox40 = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox40:setParent(obj.rectangle1);
     obj.checkBox40:setLeft(475);
     obj.checkBox40:setTop(950);
-    obj.checkBox40:setField("PericiaAdestrarAnimais");
+    obj.checkBox40:setField("PericiaVoo");
     obj.checkBox40:setName("checkBox40");
 
     obj.edit135 = GUI.fromHandle(_obj_newObject("edit"));
@@ -2219,7 +2219,7 @@ local function constructNew_frmPath()
     obj.edit141:setFontSize(10);
     obj.edit141:setFontColor("black");
     obj.edit141:setTransparent(true);
-    obj.edit141:setField("Apresentacao1");
+    obj.edit141:setField("BonusAcrobacia");
     obj.edit141:setName("edit141");
 
     obj.edit142 = GUI.fromHandle(_obj_newObject("edit"));
@@ -2232,7 +2232,7 @@ local function constructNew_frmPath()
     obj.edit142:setFontSize(10);
     obj.edit142:setFontColor("black");
     obj.edit142:setTransparent(true);
-    obj.edit142:setField("Apresentacao2");
+    obj.edit142:setField("MODAtributoAcrobacia");
     obj.edit142:setName("edit142");
 
     obj.edit143 = GUI.fromHandle(_obj_newObject("edit"));
@@ -2245,7 +2245,7 @@ local function constructNew_frmPath()
     obj.edit143:setFontSize(10);
     obj.edit143:setFontColor("black");
     obj.edit143:setTransparent(true);
-    obj.edit143:setField("Apresentacao3");
+    obj.edit143:setField("GraduacaoAcrobacia");
     obj.edit143:setName("edit143");
 
     obj.edit144 = GUI.fromHandle(_obj_newObject("edit"));
@@ -2258,7 +2258,7 @@ local function constructNew_frmPath()
     obj.edit144:setFontSize(10);
     obj.edit144:setFontColor("black");
     obj.edit144:setTransparent(true);
-    obj.edit144:setField("Apresentacao3");
+    obj.edit144:setField("OutrosAcrobacia");
     obj.edit144:setName("edit144");
 
     obj.edit145 = GUI.fromHandle(_obj_newObject("edit"));
@@ -2271,7 +2271,7 @@ local function constructNew_frmPath()
     obj.edit145:setFontSize(10);
     obj.edit145:setFontColor("black");
     obj.edit145:setTransparent(true);
-    obj.edit145:setField("Apresentacao1");
+    obj.edit145:setField("BonusAdestrarAnimais");
     obj.edit145:setName("edit145");
 
     obj.edit146 = GUI.fromHandle(_obj_newObject("edit"));
@@ -2284,7 +2284,7 @@ local function constructNew_frmPath()
     obj.edit146:setFontSize(10);
     obj.edit146:setFontColor("black");
     obj.edit146:setTransparent(true);
-    obj.edit146:setField("Apresentacao2");
+    obj.edit146:setField("MODAtributoAdestrarAnimais");
     obj.edit146:setName("edit146");
 
     obj.edit147 = GUI.fromHandle(_obj_newObject("edit"));
@@ -2297,7 +2297,7 @@ local function constructNew_frmPath()
     obj.edit147:setFontSize(10);
     obj.edit147:setFontColor("black");
     obj.edit147:setTransparent(true);
-    obj.edit147:setField("Apresentacao3");
+    obj.edit147:setField("GraduacaoAdestrarAnimais");
     obj.edit147:setName("edit147");
 
     obj.edit148 = GUI.fromHandle(_obj_newObject("edit"));
@@ -2310,7 +2310,7 @@ local function constructNew_frmPath()
     obj.edit148:setFontSize(10);
     obj.edit148:setFontColor("black");
     obj.edit148:setTransparent(true);
-    obj.edit148:setField("Apresentacao3");
+    obj.edit148:setField("OutrosAnimais");
     obj.edit148:setName("edit148");
 
     obj.edit149 = GUI.fromHandle(_obj_newObject("edit"));
@@ -2323,7 +2323,7 @@ local function constructNew_frmPath()
     obj.edit149:setFontSize(10);
     obj.edit149:setFontColor("black");
     obj.edit149:setTransparent(true);
-    obj.edit149:setField("Apresentacao1");
+    obj.edit149:setField("BonusApresentacao1");
     obj.edit149:setName("edit149");
 
     obj.edit150 = GUI.fromHandle(_obj_newObject("edit"));
@@ -2336,7 +2336,7 @@ local function constructNew_frmPath()
     obj.edit150:setFontSize(10);
     obj.edit150:setFontColor("black");
     obj.edit150:setTransparent(true);
-    obj.edit150:setField("Apresentacao2");
+    obj.edit150:setField("MODAtributoApresentacao1");
     obj.edit150:setName("edit150");
 
     obj.edit151 = GUI.fromHandle(_obj_newObject("edit"));
@@ -2349,7 +2349,7 @@ local function constructNew_frmPath()
     obj.edit151:setFontSize(10);
     obj.edit151:setFontColor("black");
     obj.edit151:setTransparent(true);
-    obj.edit151:setField("Apresentacao3");
+    obj.edit151:setField("GraduacaoApresentacao1");
     obj.edit151:setName("edit151");
 
     obj.edit152 = GUI.fromHandle(_obj_newObject("edit"));
@@ -2362,7 +2362,7 @@ local function constructNew_frmPath()
     obj.edit152:setFontSize(10);
     obj.edit152:setFontColor("black");
     obj.edit152:setTransparent(true);
-    obj.edit152:setField("Apresentacao3");
+    obj.edit152:setField("OutrosApresentacao1");
     obj.edit152:setName("edit152");
 
     obj.edit153 = GUI.fromHandle(_obj_newObject("edit"));
@@ -2375,7 +2375,7 @@ local function constructNew_frmPath()
     obj.edit153:setFontSize(10);
     obj.edit153:setFontColor("black");
     obj.edit153:setTransparent(true);
-    obj.edit153:setField("Apresentacao1");
+    obj.edit153:setField("BonusApresetacao2");
     obj.edit153:setName("edit153");
 
     obj.edit154 = GUI.fromHandle(_obj_newObject("edit"));
@@ -2388,7 +2388,7 @@ local function constructNew_frmPath()
     obj.edit154:setFontSize(10);
     obj.edit154:setFontColor("black");
     obj.edit154:setTransparent(true);
-    obj.edit154:setField("Apresentacao2");
+    obj.edit154:setField("MODAtributoApresentacao2");
     obj.edit154:setName("edit154");
 
     obj.edit155 = GUI.fromHandle(_obj_newObject("edit"));
@@ -2401,7 +2401,7 @@ local function constructNew_frmPath()
     obj.edit155:setFontSize(10);
     obj.edit155:setFontColor("black");
     obj.edit155:setTransparent(true);
-    obj.edit155:setField("Apresentacao3");
+    obj.edit155:setField("GraduacaoApresentacao2");
     obj.edit155:setName("edit155");
 
     obj.edit156 = GUI.fromHandle(_obj_newObject("edit"));
@@ -2414,7 +2414,7 @@ local function constructNew_frmPath()
     obj.edit156:setFontSize(10);
     obj.edit156:setFontColor("black");
     obj.edit156:setTransparent(true);
-    obj.edit156:setField("Apresentacao3");
+    obj.edit156:setField("OutrosApresentacao2");
     obj.edit156:setName("edit156");
 
     obj.edit157 = GUI.fromHandle(_obj_newObject("edit"));
@@ -2427,7 +2427,7 @@ local function constructNew_frmPath()
     obj.edit157:setFontSize(10);
     obj.edit157:setFontColor("black");
     obj.edit157:setTransparent(true);
-    obj.edit157:setField("Apresentacao1");
+    obj.edit157:setField("BonusApresentacao3");
     obj.edit157:setName("edit157");
 
     obj.edit158 = GUI.fromHandle(_obj_newObject("edit"));
@@ -2440,7 +2440,7 @@ local function constructNew_frmPath()
     obj.edit158:setFontSize(10);
     obj.edit158:setFontColor("black");
     obj.edit158:setTransparent(true);
-    obj.edit158:setField("Apresentacao2");
+    obj.edit158:setField("MODAtributoApresentacao3");
     obj.edit158:setName("edit158");
 
     obj.edit159 = GUI.fromHandle(_obj_newObject("edit"));
@@ -2453,7 +2453,7 @@ local function constructNew_frmPath()
     obj.edit159:setFontSize(10);
     obj.edit159:setFontColor("black");
     obj.edit159:setTransparent(true);
-    obj.edit159:setField("Apresentacao3");
+    obj.edit159:setField("GraduacaoApresentacao3");
     obj.edit159:setName("edit159");
 
     obj.edit160 = GUI.fromHandle(_obj_newObject("edit"));
@@ -2466,7 +2466,7 @@ local function constructNew_frmPath()
     obj.edit160:setFontSize(10);
     obj.edit160:setFontColor("black");
     obj.edit160:setTransparent(true);
-    obj.edit160:setField("Apresentacao3");
+    obj.edit160:setField("OutrosApresentacao3");
     obj.edit160:setName("edit160");
 
     obj.edit161 = GUI.fromHandle(_obj_newObject("edit"));
@@ -2479,7 +2479,7 @@ local function constructNew_frmPath()
     obj.edit161:setFontSize(10);
     obj.edit161:setFontColor("black");
     obj.edit161:setTransparent(true);
-    obj.edit161:setField("Apresentacao1");
+    obj.edit161:setField("BonusArtedaFuga");
     obj.edit161:setName("edit161");
 
     obj.edit162 = GUI.fromHandle(_obj_newObject("edit"));
@@ -2492,7 +2492,7 @@ local function constructNew_frmPath()
     obj.edit162:setFontSize(10);
     obj.edit162:setFontColor("black");
     obj.edit162:setTransparent(true);
-    obj.edit162:setField("Apresentacao2");
+    obj.edit162:setField("MODAtributoArtedaFuga");
     obj.edit162:setName("edit162");
 
     obj.edit163 = GUI.fromHandle(_obj_newObject("edit"));
@@ -2505,7 +2505,7 @@ local function constructNew_frmPath()
     obj.edit163:setFontSize(10);
     obj.edit163:setFontColor("black");
     obj.edit163:setTransparent(true);
-    obj.edit163:setField("Apresentacao3");
+    obj.edit163:setField("GraduacaoArtedaFuga");
     obj.edit163:setName("edit163");
 
     obj.edit164 = GUI.fromHandle(_obj_newObject("edit"));
@@ -2518,7 +2518,7 @@ local function constructNew_frmPath()
     obj.edit164:setFontSize(10);
     obj.edit164:setFontColor("black");
     obj.edit164:setTransparent(true);
-    obj.edit164:setField("Apresentacao3");
+    obj.edit164:setField("OutrosArtedaFuga");
     obj.edit164:setName("edit164");
 
     obj.edit165 = GUI.fromHandle(_obj_newObject("edit"));
@@ -2531,7 +2531,7 @@ local function constructNew_frmPath()
     obj.edit165:setFontSize(10);
     obj.edit165:setFontColor("black");
     obj.edit165:setTransparent(true);
-    obj.edit165:setField("Apresentacao1");
+    obj.edit165:setField("BonusArtesMagicas");
     obj.edit165:setName("edit165");
 
     obj.edit166 = GUI.fromHandle(_obj_newObject("edit"));
@@ -2544,7 +2544,7 @@ local function constructNew_frmPath()
     obj.edit166:setFontSize(10);
     obj.edit166:setFontColor("black");
     obj.edit166:setTransparent(true);
-    obj.edit166:setField("Apresentacao2");
+    obj.edit166:setField("MODAtributoArtesMagicas");
     obj.edit166:setName("edit166");
 
     obj.edit167 = GUI.fromHandle(_obj_newObject("edit"));
@@ -2557,7 +2557,7 @@ local function constructNew_frmPath()
     obj.edit167:setFontSize(10);
     obj.edit167:setFontColor("black");
     obj.edit167:setTransparent(true);
-    obj.edit167:setField("Apresentacao3");
+    obj.edit167:setField("GraduacaoArtesMagicas");
     obj.edit167:setName("edit167");
 
     obj.edit168 = GUI.fromHandle(_obj_newObject("edit"));
@@ -2570,7 +2570,7 @@ local function constructNew_frmPath()
     obj.edit168:setFontSize(10);
     obj.edit168:setFontColor("black");
     obj.edit168:setTransparent(true);
-    obj.edit168:setField("Apresentacao3");
+    obj.edit168:setField("OutrosArtesMagicas");
     obj.edit168:setName("edit168");
 
     obj.edit169 = GUI.fromHandle(_obj_newObject("edit"));
@@ -2583,7 +2583,7 @@ local function constructNew_frmPath()
     obj.edit169:setFontSize(10);
     obj.edit169:setFontColor("black");
     obj.edit169:setTransparent(true);
-    obj.edit169:setField("Apresentacao1");
+    obj.edit169:setField("BonusAvaliacao");
     obj.edit169:setName("edit169");
 
     obj.edit170 = GUI.fromHandle(_obj_newObject("edit"));
@@ -2596,7 +2596,7 @@ local function constructNew_frmPath()
     obj.edit170:setFontSize(10);
     obj.edit170:setFontColor("black");
     obj.edit170:setTransparent(true);
-    obj.edit170:setField("Apresentacao2");
+    obj.edit170:setField("MODAtributoAvaliacao");
     obj.edit170:setName("edit170");
 
     obj.edit171 = GUI.fromHandle(_obj_newObject("edit"));
@@ -2609,7 +2609,7 @@ local function constructNew_frmPath()
     obj.edit171:setFontSize(10);
     obj.edit171:setFontColor("black");
     obj.edit171:setTransparent(true);
-    obj.edit171:setField("Apresentacao3");
+    obj.edit171:setField("GraduacaoAvaliacao");
     obj.edit171:setName("edit171");
 
     obj.edit172 = GUI.fromHandle(_obj_newObject("edit"));
@@ -2622,7 +2622,7 @@ local function constructNew_frmPath()
     obj.edit172:setFontSize(10);
     obj.edit172:setFontColor("black");
     obj.edit172:setTransparent(true);
-    obj.edit172:setField("Apresentacao3");
+    obj.edit172:setField("OutrosAvaliacao");
     obj.edit172:setName("edit172");
 
     obj.edit173 = GUI.fromHandle(_obj_newObject("edit"));
@@ -2635,7 +2635,7 @@ local function constructNew_frmPath()
     obj.edit173:setFontSize(10);
     obj.edit173:setFontColor("black");
     obj.edit173:setTransparent(true);
-    obj.edit173:setField("Apresentacao1");
+    obj.edit173:setField("BonusBlefar");
     obj.edit173:setName("edit173");
 
     obj.edit174 = GUI.fromHandle(_obj_newObject("edit"));
@@ -2648,7 +2648,7 @@ local function constructNew_frmPath()
     obj.edit174:setFontSize(10);
     obj.edit174:setFontColor("black");
     obj.edit174:setTransparent(true);
-    obj.edit174:setField("Apresentacao2");
+    obj.edit174:setField("MODAtributoBlefar");
     obj.edit174:setName("edit174");
 
     obj.edit175 = GUI.fromHandle(_obj_newObject("edit"));
@@ -2661,7 +2661,7 @@ local function constructNew_frmPath()
     obj.edit175:setFontSize(10);
     obj.edit175:setFontColor("black");
     obj.edit175:setTransparent(true);
-    obj.edit175:setField("Apresentacao3");
+    obj.edit175:setField("GraduacaoBlefar");
     obj.edit175:setName("edit175");
 
     obj.edit176 = GUI.fromHandle(_obj_newObject("edit"));
@@ -2674,7 +2674,7 @@ local function constructNew_frmPath()
     obj.edit176:setFontSize(10);
     obj.edit176:setFontColor("black");
     obj.edit176:setTransparent(true);
-    obj.edit176:setField("Apresentacao3");
+    obj.edit176:setField("OutrosBlefar");
     obj.edit176:setName("edit176");
 
     obj.edit177 = GUI.fromHandle(_obj_newObject("edit"));
@@ -2687,7 +2687,7 @@ local function constructNew_frmPath()
     obj.edit177:setFontSize(10);
     obj.edit177:setFontColor("black");
     obj.edit177:setTransparent(true);
-    obj.edit177:setField("Apresentacao1");
+    obj.edit177:setField("BonusCavalgar");
     obj.edit177:setName("edit177");
 
     obj.edit178 = GUI.fromHandle(_obj_newObject("edit"));
@@ -2700,7 +2700,7 @@ local function constructNew_frmPath()
     obj.edit178:setFontSize(10);
     obj.edit178:setFontColor("black");
     obj.edit178:setTransparent(true);
-    obj.edit178:setField("Apresentacao2");
+    obj.edit178:setField("MODAtributoCavalgar");
     obj.edit178:setName("edit178");
 
     obj.edit179 = GUI.fromHandle(_obj_newObject("edit"));
@@ -2713,7 +2713,7 @@ local function constructNew_frmPath()
     obj.edit179:setFontSize(10);
     obj.edit179:setFontColor("black");
     obj.edit179:setTransparent(true);
-    obj.edit179:setField("Apresentacao3");
+    obj.edit179:setField("GraduccaoCavalgar");
     obj.edit179:setName("edit179");
 
     obj.edit180 = GUI.fromHandle(_obj_newObject("edit"));
@@ -2726,7 +2726,7 @@ local function constructNew_frmPath()
     obj.edit180:setFontSize(10);
     obj.edit180:setFontColor("black");
     obj.edit180:setTransparent(true);
-    obj.edit180:setField("Apresentacao3");
+    obj.edit180:setField("OutrosCavalgar");
     obj.edit180:setName("edit180");
 
     obj.edit181 = GUI.fromHandle(_obj_newObject("edit"));
@@ -2739,7 +2739,7 @@ local function constructNew_frmPath()
     obj.edit181:setFontSize(10);
     obj.edit181:setFontColor("black");
     obj.edit181:setTransparent(true);
-    obj.edit181:setField("Apresentacao1");
+    obj.edit181:setField("BonusCArcano");
     obj.edit181:setName("edit181");
 
     obj.edit182 = GUI.fromHandle(_obj_newObject("edit"));
@@ -2752,7 +2752,7 @@ local function constructNew_frmPath()
     obj.edit182:setFontSize(10);
     obj.edit182:setFontColor("black");
     obj.edit182:setTransparent(true);
-    obj.edit182:setField("Apresentacao2");
+    obj.edit182:setField("MODAtributoCArcano");
     obj.edit182:setName("edit182");
 
     obj.edit183 = GUI.fromHandle(_obj_newObject("edit"));
@@ -2765,7 +2765,7 @@ local function constructNew_frmPath()
     obj.edit183:setFontSize(10);
     obj.edit183:setFontColor("black");
     obj.edit183:setTransparent(true);
-    obj.edit183:setField("Apresentacao3");
+    obj.edit183:setField("GraduacaoCArcano");
     obj.edit183:setName("edit183");
 
     obj.edit184 = GUI.fromHandle(_obj_newObject("edit"));
@@ -2778,7 +2778,7 @@ local function constructNew_frmPath()
     obj.edit184:setFontSize(10);
     obj.edit184:setFontColor("black");
     obj.edit184:setTransparent(true);
-    obj.edit184:setField("Apresentacao3");
+    obj.edit184:setField("OutrosCArcano");
     obj.edit184:setName("edit184");
 
     obj.edit185 = GUI.fromHandle(_obj_newObject("edit"));
@@ -2791,7 +2791,7 @@ local function constructNew_frmPath()
     obj.edit185:setFontSize(10);
     obj.edit185:setFontColor("black");
     obj.edit185:setTransparent(true);
-    obj.edit185:setField("Apresentacao1");
+    obj.edit185:setField("BonusCExploracao");
     obj.edit185:setName("edit185");
 
     obj.edit186 = GUI.fromHandle(_obj_newObject("edit"));
@@ -2804,7 +2804,7 @@ local function constructNew_frmPath()
     obj.edit186:setFontSize(10);
     obj.edit186:setFontColor("black");
     obj.edit186:setTransparent(true);
-    obj.edit186:setField("Apresentacao2");
+    obj.edit186:setField("MODAtributoCExploracao");
     obj.edit186:setName("edit186");
 
     obj.edit187 = GUI.fromHandle(_obj_newObject("edit"));
@@ -2817,7 +2817,7 @@ local function constructNew_frmPath()
     obj.edit187:setFontSize(10);
     obj.edit187:setFontColor("black");
     obj.edit187:setTransparent(true);
-    obj.edit187:setField("Apresentacao3");
+    obj.edit187:setField("GraduacaoCExploracao");
     obj.edit187:setName("edit187");
 
     obj.edit188 = GUI.fromHandle(_obj_newObject("edit"));
@@ -2830,7 +2830,7 @@ local function constructNew_frmPath()
     obj.edit188:setFontSize(10);
     obj.edit188:setFontColor("black");
     obj.edit188:setTransparent(true);
-    obj.edit188:setField("Apresentacao3");
+    obj.edit188:setField("OutrosCExploracao");
     obj.edit188:setName("edit188");
 
     obj.edit189 = GUI.fromHandle(_obj_newObject("edit"));
@@ -2843,7 +2843,7 @@ local function constructNew_frmPath()
     obj.edit189:setFontSize(10);
     obj.edit189:setFontColor("black");
     obj.edit189:setTransparent(true);
-    obj.edit189:setField("Apresentacao1");
+    obj.edit189:setField("BonusCEngenharia");
     obj.edit189:setName("edit189");
 
     obj.edit190 = GUI.fromHandle(_obj_newObject("edit"));
@@ -2856,7 +2856,7 @@ local function constructNew_frmPath()
     obj.edit190:setFontSize(10);
     obj.edit190:setFontColor("black");
     obj.edit190:setTransparent(true);
-    obj.edit190:setField("Apresentacao2");
+    obj.edit190:setField("MODAtributoCEngenharia");
     obj.edit190:setName("edit190");
 
     obj.edit191 = GUI.fromHandle(_obj_newObject("edit"));
@@ -2869,7 +2869,7 @@ local function constructNew_frmPath()
     obj.edit191:setFontSize(10);
     obj.edit191:setFontColor("black");
     obj.edit191:setTransparent(true);
-    obj.edit191:setField("Apresentacao3");
+    obj.edit191:setField("GraduacaoCEngenharia");
     obj.edit191:setName("edit191");
 
     obj.edit192 = GUI.fromHandle(_obj_newObject("edit"));
@@ -2882,7 +2882,7 @@ local function constructNew_frmPath()
     obj.edit192:setFontSize(10);
     obj.edit192:setFontColor("black");
     obj.edit192:setTransparent(true);
-    obj.edit192:setField("Apresentacao3");
+    obj.edit192:setField("OutrosCEngenharia");
     obj.edit192:setName("edit192");
 
     obj.edit193 = GUI.fromHandle(_obj_newObject("edit"));
@@ -2895,7 +2895,7 @@ local function constructNew_frmPath()
     obj.edit193:setFontSize(10);
     obj.edit193:setFontColor("black");
     obj.edit193:setTransparent(true);
-    obj.edit193:setField("Apresentacao1");
+    obj.edit193:setField("BonusCGeografia");
     obj.edit193:setName("edit193");
 
     obj.edit194 = GUI.fromHandle(_obj_newObject("edit"));
@@ -2908,7 +2908,7 @@ local function constructNew_frmPath()
     obj.edit194:setFontSize(10);
     obj.edit194:setFontColor("black");
     obj.edit194:setTransparent(true);
-    obj.edit194:setField("Apresentacao2");
+    obj.edit194:setField("MODAtributoCGeografia");
     obj.edit194:setName("edit194");
 
     obj.edit195 = GUI.fromHandle(_obj_newObject("edit"));
@@ -2921,7 +2921,7 @@ local function constructNew_frmPath()
     obj.edit195:setFontSize(10);
     obj.edit195:setFontColor("black");
     obj.edit195:setTransparent(true);
-    obj.edit195:setField("Apresentacao3");
+    obj.edit195:setField("GraduacaoCGeografia");
     obj.edit195:setName("edit195");
 
     obj.edit196 = GUI.fromHandle(_obj_newObject("edit"));
@@ -2934,7 +2934,7 @@ local function constructNew_frmPath()
     obj.edit196:setFontSize(10);
     obj.edit196:setFontColor("black");
     obj.edit196:setTransparent(true);
-    obj.edit196:setField("Apresentacao3");
+    obj.edit196:setField("OutrosCGeografia");
     obj.edit196:setName("edit196");
 
     obj.edit197 = GUI.fromHandle(_obj_newObject("edit"));
@@ -2947,7 +2947,7 @@ local function constructNew_frmPath()
     obj.edit197:setFontSize(10);
     obj.edit197:setFontColor("black");
     obj.edit197:setTransparent(true);
-    obj.edit197:setField("Apresentacao1");
+    obj.edit197:setField("BonusCHistoria");
     obj.edit197:setName("edit197");
 
     obj.edit198 = GUI.fromHandle(_obj_newObject("edit"));
@@ -2960,7 +2960,7 @@ local function constructNew_frmPath()
     obj.edit198:setFontSize(10);
     obj.edit198:setFontColor("black");
     obj.edit198:setTransparent(true);
-    obj.edit198:setField("Apresentacao2");
+    obj.edit198:setField("MODAtributoCHistoria");
     obj.edit198:setName("edit198");
 
     obj.edit199 = GUI.fromHandle(_obj_newObject("edit"));
@@ -2973,7 +2973,7 @@ local function constructNew_frmPath()
     obj.edit199:setFontSize(10);
     obj.edit199:setFontColor("black");
     obj.edit199:setTransparent(true);
-    obj.edit199:setField("Apresentacao3");
+    obj.edit199:setField("GraduacaoCHistoria");
     obj.edit199:setName("edit199");
 
     obj.edit200 = GUI.fromHandle(_obj_newObject("edit"));
@@ -2986,7 +2986,7 @@ local function constructNew_frmPath()
     obj.edit200:setFontSize(10);
     obj.edit200:setFontColor("black");
     obj.edit200:setTransparent(true);
-    obj.edit200:setField("Apresentacao3");
+    obj.edit200:setField("OutrosCHistoria");
     obj.edit200:setName("edit200");
 
     obj.edit201 = GUI.fromHandle(_obj_newObject("edit"));
@@ -2999,7 +2999,7 @@ local function constructNew_frmPath()
     obj.edit201:setFontSize(10);
     obj.edit201:setFontColor("black");
     obj.edit201:setTransparent(true);
-    obj.edit201:setField("Apresentacao1");
+    obj.edit201:setField("BonusCLocal");
     obj.edit201:setName("edit201");
 
     obj.edit202 = GUI.fromHandle(_obj_newObject("edit"));
@@ -3012,7 +3012,7 @@ local function constructNew_frmPath()
     obj.edit202:setFontSize(10);
     obj.edit202:setFontColor("black");
     obj.edit202:setTransparent(true);
-    obj.edit202:setField("Apresentacao2");
+    obj.edit202:setField("MODAtributoCLocal");
     obj.edit202:setName("edit202");
 
     obj.edit203 = GUI.fromHandle(_obj_newObject("edit"));
@@ -3025,7 +3025,7 @@ local function constructNew_frmPath()
     obj.edit203:setFontSize(10);
     obj.edit203:setFontColor("black");
     obj.edit203:setTransparent(true);
-    obj.edit203:setField("Apresentacao3");
+    obj.edit203:setField("GraduacaoCLocal");
     obj.edit203:setName("edit203");
 
     obj.edit204 = GUI.fromHandle(_obj_newObject("edit"));
@@ -3038,7 +3038,7 @@ local function constructNew_frmPath()
     obj.edit204:setFontSize(10);
     obj.edit204:setFontColor("black");
     obj.edit204:setTransparent(true);
-    obj.edit204:setField("Apresentacao3");
+    obj.edit204:setField("OutrosCLocal");
     obj.edit204:setName("edit204");
 
     obj.edit205 = GUI.fromHandle(_obj_newObject("edit"));
@@ -3051,7 +3051,7 @@ local function constructNew_frmPath()
     obj.edit205:setFontSize(10);
     obj.edit205:setFontColor("black");
     obj.edit205:setTransparent(true);
-    obj.edit205:setField("Apresentacao1");
+    obj.edit205:setField("BonusCNatureza");
     obj.edit205:setName("edit205");
 
     obj.edit206 = GUI.fromHandle(_obj_newObject("edit"));
@@ -3064,7 +3064,7 @@ local function constructNew_frmPath()
     obj.edit206:setFontSize(10);
     obj.edit206:setFontColor("black");
     obj.edit206:setTransparent(true);
-    obj.edit206:setField("Apresentacao2");
+    obj.edit206:setField("MODAtributoCNatureza");
     obj.edit206:setName("edit206");
 
     obj.edit207 = GUI.fromHandle(_obj_newObject("edit"));
@@ -3077,7 +3077,7 @@ local function constructNew_frmPath()
     obj.edit207:setFontSize(10);
     obj.edit207:setFontColor("black");
     obj.edit207:setTransparent(true);
-    obj.edit207:setField("Apresentacao3");
+    obj.edit207:setField("GraduacaoCNatureza");
     obj.edit207:setName("edit207");
 
     obj.edit208 = GUI.fromHandle(_obj_newObject("edit"));
@@ -3090,7 +3090,7 @@ local function constructNew_frmPath()
     obj.edit208:setFontSize(10);
     obj.edit208:setFontColor("black");
     obj.edit208:setTransparent(true);
-    obj.edit208:setField("Apresentacao3");
+    obj.edit208:setField("OutrosCNatureza");
     obj.edit208:setName("edit208");
 
     obj.edit209 = GUI.fromHandle(_obj_newObject("edit"));
@@ -3103,7 +3103,7 @@ local function constructNew_frmPath()
     obj.edit209:setFontSize(10);
     obj.edit209:setFontColor("black");
     obj.edit209:setTransparent(true);
-    obj.edit209:setField("Apresentacao1");
+    obj.edit209:setField("BonusCNobreza");
     obj.edit209:setName("edit209");
 
     obj.edit210 = GUI.fromHandle(_obj_newObject("edit"));
@@ -3116,7 +3116,7 @@ local function constructNew_frmPath()
     obj.edit210:setFontSize(10);
     obj.edit210:setFontColor("black");
     obj.edit210:setTransparent(true);
-    obj.edit210:setField("Apresentacao2");
+    obj.edit210:setField("MODAtributoCNobreza");
     obj.edit210:setName("edit210");
 
     obj.edit211 = GUI.fromHandle(_obj_newObject("edit"));
@@ -3129,7 +3129,7 @@ local function constructNew_frmPath()
     obj.edit211:setFontSize(10);
     obj.edit211:setFontColor("black");
     obj.edit211:setTransparent(true);
-    obj.edit211:setField("Apresentacao3");
+    obj.edit211:setField("GraduacaoCNobreza");
     obj.edit211:setName("edit211");
 
     obj.edit212 = GUI.fromHandle(_obj_newObject("edit"));
@@ -3142,7 +3142,7 @@ local function constructNew_frmPath()
     obj.edit212:setFontSize(10);
     obj.edit212:setFontColor("black");
     obj.edit212:setTransparent(true);
-    obj.edit212:setField("Apresentacao3");
+    obj.edit212:setField("OutrosCNobreza");
     obj.edit212:setName("edit212");
 
     obj.edit213 = GUI.fromHandle(_obj_newObject("edit"));
@@ -3155,7 +3155,7 @@ local function constructNew_frmPath()
     obj.edit213:setFontSize(10);
     obj.edit213:setFontColor("black");
     obj.edit213:setTransparent(true);
-    obj.edit213:setField("Apresentacao1");
+    obj.edit213:setField("BonusCPlanos");
     obj.edit213:setName("edit213");
 
     obj.edit214 = GUI.fromHandle(_obj_newObject("edit"));
@@ -3168,7 +3168,7 @@ local function constructNew_frmPath()
     obj.edit214:setFontSize(10);
     obj.edit214:setFontColor("black");
     obj.edit214:setTransparent(true);
-    obj.edit214:setField("Apresentacao2");
+    obj.edit214:setField("MODAtributoCPlanos");
     obj.edit214:setName("edit214");
 
     obj.edit215 = GUI.fromHandle(_obj_newObject("edit"));
@@ -3181,7 +3181,7 @@ local function constructNew_frmPath()
     obj.edit215:setFontSize(10);
     obj.edit215:setFontColor("black");
     obj.edit215:setTransparent(true);
-    obj.edit215:setField("Apresentacao3");
+    obj.edit215:setField("GraduacaoCPlanos");
     obj.edit215:setName("edit215");
 
     obj.edit216 = GUI.fromHandle(_obj_newObject("edit"));
@@ -3194,7 +3194,7 @@ local function constructNew_frmPath()
     obj.edit216:setFontSize(10);
     obj.edit216:setFontColor("black");
     obj.edit216:setTransparent(true);
-    obj.edit216:setField("Apresentacao3");
+    obj.edit216:setField("OutrosCPlanos");
     obj.edit216:setName("edit216");
 
     obj.edit217 = GUI.fromHandle(_obj_newObject("edit"));
@@ -3207,7 +3207,7 @@ local function constructNew_frmPath()
     obj.edit217:setFontSize(10);
     obj.edit217:setFontColor("black");
     obj.edit217:setTransparent(true);
-    obj.edit217:setField("Apresentacao1");
+    obj.edit217:setField("BonusCReligiao");
     obj.edit217:setName("edit217");
 
     obj.edit218 = GUI.fromHandle(_obj_newObject("edit"));
@@ -3220,7 +3220,7 @@ local function constructNew_frmPath()
     obj.edit218:setFontSize(10);
     obj.edit218:setFontColor("black");
     obj.edit218:setTransparent(true);
-    obj.edit218:setField("Apresentacao2");
+    obj.edit218:setField("MODAtributoCReligiao");
     obj.edit218:setName("edit218");
 
     obj.edit219 = GUI.fromHandle(_obj_newObject("edit"));
@@ -3233,7 +3233,7 @@ local function constructNew_frmPath()
     obj.edit219:setFontSize(10);
     obj.edit219:setFontColor("black");
     obj.edit219:setTransparent(true);
-    obj.edit219:setField("Apresentacao3");
+    obj.edit219:setField("GraduacaoCReligiao");
     obj.edit219:setName("edit219");
 
     obj.edit220 = GUI.fromHandle(_obj_newObject("edit"));
@@ -3246,7 +3246,7 @@ local function constructNew_frmPath()
     obj.edit220:setFontSize(10);
     obj.edit220:setFontColor("black");
     obj.edit220:setTransparent(true);
-    obj.edit220:setField("Apresentacao3");
+    obj.edit220:setField("OutrosCReligiao");
     obj.edit220:setName("edit220");
 
     obj.edit221 = GUI.fromHandle(_obj_newObject("edit"));
@@ -3259,7 +3259,7 @@ local function constructNew_frmPath()
     obj.edit221:setFontSize(10);
     obj.edit221:setFontColor("black");
     obj.edit221:setTransparent(true);
-    obj.edit221:setField("Apresentacao1");
+    obj.edit221:setField("BonusCura");
     obj.edit221:setName("edit221");
 
     obj.edit222 = GUI.fromHandle(_obj_newObject("edit"));
@@ -3272,7 +3272,7 @@ local function constructNew_frmPath()
     obj.edit222:setFontSize(10);
     obj.edit222:setFontColor("black");
     obj.edit222:setTransparent(true);
-    obj.edit222:setField("Apresentacao2");
+    obj.edit222:setField("MODAtributoCura");
     obj.edit222:setName("edit222");
 
     obj.edit223 = GUI.fromHandle(_obj_newObject("edit"));
@@ -3285,7 +3285,7 @@ local function constructNew_frmPath()
     obj.edit223:setFontSize(10);
     obj.edit223:setFontColor("black");
     obj.edit223:setTransparent(true);
-    obj.edit223:setField("Apresentacao3");
+    obj.edit223:setField("GraduacaoCura");
     obj.edit223:setName("edit223");
 
     obj.edit224 = GUI.fromHandle(_obj_newObject("edit"));
@@ -3298,7 +3298,7 @@ local function constructNew_frmPath()
     obj.edit224:setFontSize(10);
     obj.edit224:setFontColor("black");
     obj.edit224:setTransparent(true);
-    obj.edit224:setField("Apresentacao3");
+    obj.edit224:setField("OutrosCura");
     obj.edit224:setName("edit224");
 
     obj.edit225 = GUI.fromHandle(_obj_newObject("edit"));
@@ -3311,7 +3311,7 @@ local function constructNew_frmPath()
     obj.edit225:setFontSize(10);
     obj.edit225:setFontColor("black");
     obj.edit225:setTransparent(true);
-    obj.edit225:setField("Apresentacao1");
+    obj.edit225:setField("BonusDiplomacia");
     obj.edit225:setName("edit225");
 
     obj.edit226 = GUI.fromHandle(_obj_newObject("edit"));
@@ -3324,7 +3324,7 @@ local function constructNew_frmPath()
     obj.edit226:setFontSize(10);
     obj.edit226:setFontColor("black");
     obj.edit226:setTransparent(true);
-    obj.edit226:setField("Apresentacao2");
+    obj.edit226:setField("MODAtributoDiplomacia");
     obj.edit226:setName("edit226");
 
     obj.edit227 = GUI.fromHandle(_obj_newObject("edit"));
@@ -3337,7 +3337,7 @@ local function constructNew_frmPath()
     obj.edit227:setFontSize(10);
     obj.edit227:setFontColor("black");
     obj.edit227:setTransparent(true);
-    obj.edit227:setField("Apresentacao3");
+    obj.edit227:setField("GraduacaoDiplomacia");
     obj.edit227:setName("edit227");
 
     obj.edit228 = GUI.fromHandle(_obj_newObject("edit"));
@@ -3350,7 +3350,7 @@ local function constructNew_frmPath()
     obj.edit228:setFontSize(10);
     obj.edit228:setFontColor("black");
     obj.edit228:setTransparent(true);
-    obj.edit228:setField("Apresentacao3");
+    obj.edit228:setField("OutrosDiplomacia");
     obj.edit228:setName("edit228");
 
     obj.edit229 = GUI.fromHandle(_obj_newObject("edit"));
@@ -3363,7 +3363,7 @@ local function constructNew_frmPath()
     obj.edit229:setFontSize(10);
     obj.edit229:setFontColor("black");
     obj.edit229:setTransparent(true);
-    obj.edit229:setField("Apresentacao1");
+    obj.edit229:setField("BonusDisfarce");
     obj.edit229:setName("edit229");
 
     obj.edit230 = GUI.fromHandle(_obj_newObject("edit"));
@@ -3376,7 +3376,7 @@ local function constructNew_frmPath()
     obj.edit230:setFontSize(10);
     obj.edit230:setFontColor("black");
     obj.edit230:setTransparent(true);
-    obj.edit230:setField("Apresentacao2");
+    obj.edit230:setField("MODAtributoDisfarce");
     obj.edit230:setName("edit230");
 
     obj.edit231 = GUI.fromHandle(_obj_newObject("edit"));
@@ -3389,7 +3389,7 @@ local function constructNew_frmPath()
     obj.edit231:setFontSize(10);
     obj.edit231:setFontColor("black");
     obj.edit231:setTransparent(true);
-    obj.edit231:setField("Apresentacao3");
+    obj.edit231:setField("GraduacaoDisfarce");
     obj.edit231:setName("edit231");
 
     obj.edit232 = GUI.fromHandle(_obj_newObject("edit"));
@@ -3402,7 +3402,7 @@ local function constructNew_frmPath()
     obj.edit232:setFontSize(10);
     obj.edit232:setFontColor("black");
     obj.edit232:setTransparent(true);
-    obj.edit232:setField("Apresentacao3");
+    obj.edit232:setField("OutrosDisfarce");
     obj.edit232:setName("edit232");
 
     obj.edit233 = GUI.fromHandle(_obj_newObject("edit"));
@@ -3415,7 +3415,7 @@ local function constructNew_frmPath()
     obj.edit233:setFontSize(10);
     obj.edit233:setFontColor("black");
     obj.edit233:setTransparent(true);
-    obj.edit233:setField("Apresentacao1");
+    obj.edit233:setField("BonusEscalar");
     obj.edit233:setName("edit233");
 
     obj.edit234 = GUI.fromHandle(_obj_newObject("edit"));
@@ -3428,7 +3428,7 @@ local function constructNew_frmPath()
     obj.edit234:setFontSize(10);
     obj.edit234:setFontColor("black");
     obj.edit234:setTransparent(true);
-    obj.edit234:setField("Apresentacao2");
+    obj.edit234:setField("MODAtributoEscalar");
     obj.edit234:setName("edit234");
 
     obj.edit235 = GUI.fromHandle(_obj_newObject("edit"));
@@ -3441,7 +3441,7 @@ local function constructNew_frmPath()
     obj.edit235:setFontSize(10);
     obj.edit235:setFontColor("black");
     obj.edit235:setTransparent(true);
-    obj.edit235:setField("Apresentacao3");
+    obj.edit235:setField("GraduacaoEscalar");
     obj.edit235:setName("edit235");
 
     obj.edit236 = GUI.fromHandle(_obj_newObject("edit"));
@@ -3454,7 +3454,7 @@ local function constructNew_frmPath()
     obj.edit236:setFontSize(10);
     obj.edit236:setFontColor("black");
     obj.edit236:setTransparent(true);
-    obj.edit236:setField("Apresentacao3");
+    obj.edit236:setField("OutrosEscalar");
     obj.edit236:setName("edit236");
 
     obj.edit237 = GUI.fromHandle(_obj_newObject("edit"));
@@ -3467,7 +3467,7 @@ local function constructNew_frmPath()
     obj.edit237:setFontSize(10);
     obj.edit237:setFontColor("black");
     obj.edit237:setTransparent(true);
-    obj.edit237:setField("Apresentacao1");
+    obj.edit237:setField("BonusFurtividade");
     obj.edit237:setName("edit237");
 
     obj.edit238 = GUI.fromHandle(_obj_newObject("edit"));
@@ -3480,7 +3480,7 @@ local function constructNew_frmPath()
     obj.edit238:setFontSize(10);
     obj.edit238:setFontColor("black");
     obj.edit238:setTransparent(true);
-    obj.edit238:setField("Apresentacao2");
+    obj.edit238:setField("MODAtributoFurtividade");
     obj.edit238:setName("edit238");
 
     obj.edit239 = GUI.fromHandle(_obj_newObject("edit"));
@@ -3493,7 +3493,7 @@ local function constructNew_frmPath()
     obj.edit239:setFontSize(10);
     obj.edit239:setFontColor("black");
     obj.edit239:setTransparent(true);
-    obj.edit239:setField("Apresentacao3");
+    obj.edit239:setField("GraduacaoFurtividade");
     obj.edit239:setName("edit239");
 
     obj.edit240 = GUI.fromHandle(_obj_newObject("edit"));
@@ -3506,7 +3506,7 @@ local function constructNew_frmPath()
     obj.edit240:setFontSize(10);
     obj.edit240:setFontColor("black");
     obj.edit240:setTransparent(true);
-    obj.edit240:setField("Apresentacao3");
+    obj.edit240:setField("OutrosFurtividade");
     obj.edit240:setName("edit240");
 
     obj.edit241 = GUI.fromHandle(_obj_newObject("edit"));
@@ -3519,7 +3519,7 @@ local function constructNew_frmPath()
     obj.edit241:setFontSize(10);
     obj.edit241:setFontColor("black");
     obj.edit241:setTransparent(true);
-    obj.edit241:setField("Apresentacao1");
+    obj.edit241:setField("BonusIntimidacao");
     obj.edit241:setName("edit241");
 
     obj.edit242 = GUI.fromHandle(_obj_newObject("edit"));
@@ -3532,7 +3532,7 @@ local function constructNew_frmPath()
     obj.edit242:setFontSize(10);
     obj.edit242:setFontColor("black");
     obj.edit242:setTransparent(true);
-    obj.edit242:setField("Apresentacao2");
+    obj.edit242:setField("MODAtributoIntimidacaco");
     obj.edit242:setName("edit242");
 
     obj.edit243 = GUI.fromHandle(_obj_newObject("edit"));
@@ -3545,7 +3545,7 @@ local function constructNew_frmPath()
     obj.edit243:setFontSize(10);
     obj.edit243:setFontColor("black");
     obj.edit243:setTransparent(true);
-    obj.edit243:setField("Apresentacao3");
+    obj.edit243:setField("GraduacaoIntimidacao");
     obj.edit243:setName("edit243");
 
     obj.edit244 = GUI.fromHandle(_obj_newObject("edit"));
@@ -3558,7 +3558,7 @@ local function constructNew_frmPath()
     obj.edit244:setFontSize(10);
     obj.edit244:setFontColor("black");
     obj.edit244:setTransparent(true);
-    obj.edit244:setField("Apresentacao3");
+    obj.edit244:setField("OutrosIntimidacao");
     obj.edit244:setName("edit244");
 
     obj.edit245 = GUI.fromHandle(_obj_newObject("edit"));
@@ -3571,7 +3571,7 @@ local function constructNew_frmPath()
     obj.edit245:setFontSize(10);
     obj.edit245:setFontColor("black");
     obj.edit245:setTransparent(true);
-    obj.edit245:setField("Apresentacao1");
+    obj.edit245:setField("BonusLinguistica");
     obj.edit245:setName("edit245");
 
     obj.edit246 = GUI.fromHandle(_obj_newObject("edit"));
@@ -3584,7 +3584,7 @@ local function constructNew_frmPath()
     obj.edit246:setFontSize(10);
     obj.edit246:setFontColor("black");
     obj.edit246:setTransparent(true);
-    obj.edit246:setField("Apresentacao2");
+    obj.edit246:setField("MODAtributoLinguistica");
     obj.edit246:setName("edit246");
 
     obj.edit247 = GUI.fromHandle(_obj_newObject("edit"));
@@ -3597,7 +3597,7 @@ local function constructNew_frmPath()
     obj.edit247:setFontSize(10);
     obj.edit247:setFontColor("black");
     obj.edit247:setTransparent(true);
-    obj.edit247:setField("Apresentacao3");
+    obj.edit247:setField("GraduacaoLinguistica");
     obj.edit247:setName("edit247");
 
     obj.edit248 = GUI.fromHandle(_obj_newObject("edit"));
@@ -3610,7 +3610,7 @@ local function constructNew_frmPath()
     obj.edit248:setFontSize(10);
     obj.edit248:setFontColor("black");
     obj.edit248:setTransparent(true);
-    obj.edit248:setField("Apresentacao3");
+    obj.edit248:setField("OutrosLinguistica");
     obj.edit248:setName("edit248");
 
     obj.edit249 = GUI.fromHandle(_obj_newObject("edit"));
@@ -3623,7 +3623,7 @@ local function constructNew_frmPath()
     obj.edit249:setFontSize(10);
     obj.edit249:setFontColor("black");
     obj.edit249:setTransparent(true);
-    obj.edit249:setField("Apresentacao1");
+    obj.edit249:setField("BonusNatacao");
     obj.edit249:setName("edit249");
 
     obj.edit250 = GUI.fromHandle(_obj_newObject("edit"));
@@ -3636,7 +3636,7 @@ local function constructNew_frmPath()
     obj.edit250:setFontSize(10);
     obj.edit250:setFontColor("black");
     obj.edit250:setTransparent(true);
-    obj.edit250:setField("Apresentacao2");
+    obj.edit250:setField("MODAtributoNatacao");
     obj.edit250:setName("edit250");
 
     obj.edit251 = GUI.fromHandle(_obj_newObject("edit"));
@@ -3649,7 +3649,7 @@ local function constructNew_frmPath()
     obj.edit251:setFontSize(10);
     obj.edit251:setFontColor("black");
     obj.edit251:setTransparent(true);
-    obj.edit251:setField("Apresentacao3");
+    obj.edit251:setField("GraduacaoNatacao");
     obj.edit251:setName("edit251");
 
     obj.edit252 = GUI.fromHandle(_obj_newObject("edit"));
@@ -3662,7 +3662,7 @@ local function constructNew_frmPath()
     obj.edit252:setFontSize(10);
     obj.edit252:setFontColor("black");
     obj.edit252:setTransparent(true);
-    obj.edit252:setField("Apresentacao3");
+    obj.edit252:setField("OutrosNatacao");
     obj.edit252:setName("edit252");
 
     obj.edit253 = GUI.fromHandle(_obj_newObject("edit"));
@@ -3675,7 +3675,7 @@ local function constructNew_frmPath()
     obj.edit253:setFontSize(10);
     obj.edit253:setFontColor("black");
     obj.edit253:setTransparent(true);
-    obj.edit253:setField("Apresentacao1");
+    obj.edit253:setField("BonusOficio1");
     obj.edit253:setName("edit253");
 
     obj.edit254 = GUI.fromHandle(_obj_newObject("edit"));
@@ -3688,7 +3688,7 @@ local function constructNew_frmPath()
     obj.edit254:setFontSize(10);
     obj.edit254:setFontColor("black");
     obj.edit254:setTransparent(true);
-    obj.edit254:setField("Apresentacao2");
+    obj.edit254:setField("MODAtributoOficio1");
     obj.edit254:setName("edit254");
 
     obj.edit255 = GUI.fromHandle(_obj_newObject("edit"));
@@ -3701,7 +3701,7 @@ local function constructNew_frmPath()
     obj.edit255:setFontSize(10);
     obj.edit255:setFontColor("black");
     obj.edit255:setTransparent(true);
-    obj.edit255:setField("Apresentacao3");
+    obj.edit255:setField("GraduacaoOficio1");
     obj.edit255:setName("edit255");
 
     obj.edit256 = GUI.fromHandle(_obj_newObject("edit"));
@@ -3714,7 +3714,7 @@ local function constructNew_frmPath()
     obj.edit256:setFontSize(10);
     obj.edit256:setFontColor("black");
     obj.edit256:setTransparent(true);
-    obj.edit256:setField("Apresentacao3");
+    obj.edit256:setField("OutrosOficio1");
     obj.edit256:setName("edit256");
 
     obj.edit257 = GUI.fromHandle(_obj_newObject("edit"));
@@ -3727,7 +3727,7 @@ local function constructNew_frmPath()
     obj.edit257:setFontSize(10);
     obj.edit257:setFontColor("black");
     obj.edit257:setTransparent(true);
-    obj.edit257:setField("Apresentacao1");
+    obj.edit257:setField("BonusOficio2");
     obj.edit257:setName("edit257");
 
     obj.edit258 = GUI.fromHandle(_obj_newObject("edit"));
@@ -3740,7 +3740,7 @@ local function constructNew_frmPath()
     obj.edit258:setFontSize(10);
     obj.edit258:setFontColor("black");
     obj.edit258:setTransparent(true);
-    obj.edit258:setField("Apresentacao2");
+    obj.edit258:setField("MODAtributoOficio2");
     obj.edit258:setName("edit258");
 
     obj.edit259 = GUI.fromHandle(_obj_newObject("edit"));
@@ -3753,7 +3753,7 @@ local function constructNew_frmPath()
     obj.edit259:setFontSize(10);
     obj.edit259:setFontColor("black");
     obj.edit259:setTransparent(true);
-    obj.edit259:setField("Apresentacao3");
+    obj.edit259:setField("GraduacaoOficio2");
     obj.edit259:setName("edit259");
 
     obj.edit260 = GUI.fromHandle(_obj_newObject("edit"));
@@ -3766,7 +3766,7 @@ local function constructNew_frmPath()
     obj.edit260:setFontSize(10);
     obj.edit260:setFontColor("black");
     obj.edit260:setTransparent(true);
-    obj.edit260:setField("Apresentacao3");
+    obj.edit260:setField("OutrosOficio2");
     obj.edit260:setName("edit260");
 
     obj.edit261 = GUI.fromHandle(_obj_newObject("edit"));
@@ -3779,7 +3779,7 @@ local function constructNew_frmPath()
     obj.edit261:setFontSize(10);
     obj.edit261:setFontColor("black");
     obj.edit261:setTransparent(true);
-    obj.edit261:setField("Apresentacao1");
+    obj.edit261:setField("BonusOficio3");
     obj.edit261:setName("edit261");
 
     obj.edit262 = GUI.fromHandle(_obj_newObject("edit"));
@@ -3792,7 +3792,7 @@ local function constructNew_frmPath()
     obj.edit262:setFontSize(10);
     obj.edit262:setFontColor("black");
     obj.edit262:setTransparent(true);
-    obj.edit262:setField("Apresentacao2");
+    obj.edit262:setField("MODAtributoOficio3");
     obj.edit262:setName("edit262");
 
     obj.edit263 = GUI.fromHandle(_obj_newObject("edit"));
@@ -3805,7 +3805,7 @@ local function constructNew_frmPath()
     obj.edit263:setFontSize(10);
     obj.edit263:setFontColor("black");
     obj.edit263:setTransparent(true);
-    obj.edit263:setField("Apresentacao3");
+    obj.edit263:setField("GraduacaoOficio3");
     obj.edit263:setName("edit263");
 
     obj.edit264 = GUI.fromHandle(_obj_newObject("edit"));
@@ -3818,7 +3818,7 @@ local function constructNew_frmPath()
     obj.edit264:setFontSize(10);
     obj.edit264:setFontColor("black");
     obj.edit264:setTransparent(true);
-    obj.edit264:setField("Apresentacao3");
+    obj.edit264:setField("OutrosOficio3");
     obj.edit264:setName("edit264");
 
     obj.edit265 = GUI.fromHandle(_obj_newObject("edit"));
@@ -3831,7 +3831,7 @@ local function constructNew_frmPath()
     obj.edit265:setFontSize(10);
     obj.edit265:setFontColor("black");
     obj.edit265:setTransparent(true);
-    obj.edit265:setField("Apresentacao1");
+    obj.edit265:setField("BonusOperarMecanismo");
     obj.edit265:setName("edit265");
 
     obj.edit266 = GUI.fromHandle(_obj_newObject("edit"));
@@ -3844,7 +3844,7 @@ local function constructNew_frmPath()
     obj.edit266:setFontSize(10);
     obj.edit266:setFontColor("black");
     obj.edit266:setTransparent(true);
-    obj.edit266:setField("Apresentacao2");
+    obj.edit266:setField("MODAtributoOperarMecanismo");
     obj.edit266:setName("edit266");
 
     obj.edit267 = GUI.fromHandle(_obj_newObject("edit"));
@@ -3857,7 +3857,7 @@ local function constructNew_frmPath()
     obj.edit267:setFontSize(10);
     obj.edit267:setFontColor("black");
     obj.edit267:setTransparent(true);
-    obj.edit267:setField("Apresentacao3");
+    obj.edit267:setField("GraduacaoOperarMecanismo");
     obj.edit267:setName("edit267");
 
     obj.edit268 = GUI.fromHandle(_obj_newObject("edit"));
@@ -3870,7 +3870,7 @@ local function constructNew_frmPath()
     obj.edit268:setFontSize(10);
     obj.edit268:setFontColor("black");
     obj.edit268:setTransparent(true);
-    obj.edit268:setField("Apresentacao3");
+    obj.edit268:setField("OutrosOperarMecanismo");
     obj.edit268:setName("edit268");
 
     obj.edit269 = GUI.fromHandle(_obj_newObject("edit"));
@@ -3883,7 +3883,7 @@ local function constructNew_frmPath()
     obj.edit269:setFontSize(10);
     obj.edit269:setFontColor("black");
     obj.edit269:setTransparent(true);
-    obj.edit269:setField("Apresentacao1");
+    obj.edit269:setField("BonusPercepcão");
     obj.edit269:setName("edit269");
 
     obj.edit270 = GUI.fromHandle(_obj_newObject("edit"));
@@ -3896,7 +3896,7 @@ local function constructNew_frmPath()
     obj.edit270:setFontSize(10);
     obj.edit270:setFontColor("black");
     obj.edit270:setTransparent(true);
-    obj.edit270:setField("Apresentacao2");
+    obj.edit270:setField("MODAtributoPercepcao");
     obj.edit270:setName("edit270");
 
     obj.edit271 = GUI.fromHandle(_obj_newObject("edit"));
@@ -3909,7 +3909,7 @@ local function constructNew_frmPath()
     obj.edit271:setFontSize(10);
     obj.edit271:setFontColor("black");
     obj.edit271:setTransparent(true);
-    obj.edit271:setField("Apresentacao3");
+    obj.edit271:setField("GraduacaoPercepcao");
     obj.edit271:setName("edit271");
 
     obj.edit272 = GUI.fromHandle(_obj_newObject("edit"));
@@ -3922,7 +3922,7 @@ local function constructNew_frmPath()
     obj.edit272:setFontSize(10);
     obj.edit272:setFontColor("black");
     obj.edit272:setTransparent(true);
-    obj.edit272:setField("Apresentacao3");
+    obj.edit272:setField("OutrosPercepcao");
     obj.edit272:setName("edit272");
 
     obj.edit273 = GUI.fromHandle(_obj_newObject("edit"));
@@ -3935,7 +3935,7 @@ local function constructNew_frmPath()
     obj.edit273:setFontSize(10);
     obj.edit273:setFontColor("black");
     obj.edit273:setTransparent(true);
-    obj.edit273:setField("Apresentacao1");
+    obj.edit273:setField("BonusPrestidigitacao");
     obj.edit273:setName("edit273");
 
     obj.edit274 = GUI.fromHandle(_obj_newObject("edit"));
@@ -3948,7 +3948,7 @@ local function constructNew_frmPath()
     obj.edit274:setFontSize(10);
     obj.edit274:setFontColor("black");
     obj.edit274:setTransparent(true);
-    obj.edit274:setField("Apresentacao2");
+    obj.edit274:setField("MODAtributoPrestidigitacao");
     obj.edit274:setName("edit274");
 
     obj.edit275 = GUI.fromHandle(_obj_newObject("edit"));
@@ -3961,7 +3961,7 @@ local function constructNew_frmPath()
     obj.edit275:setFontSize(10);
     obj.edit275:setFontColor("black");
     obj.edit275:setTransparent(true);
-    obj.edit275:setField("Apresentacao3");
+    obj.edit275:setField("GraduacaoPrestidigitacao");
     obj.edit275:setName("edit275");
 
     obj.edit276 = GUI.fromHandle(_obj_newObject("edit"));
@@ -3974,7 +3974,7 @@ local function constructNew_frmPath()
     obj.edit276:setFontSize(10);
     obj.edit276:setFontColor("black");
     obj.edit276:setTransparent(true);
-    obj.edit276:setField("Apresentacao3");
+    obj.edit276:setField("OutrosPrestidigitacao");
     obj.edit276:setName("edit276");
 
     obj.edit277 = GUI.fromHandle(_obj_newObject("edit"));
@@ -3987,7 +3987,7 @@ local function constructNew_frmPath()
     obj.edit277:setFontSize(10);
     obj.edit277:setFontColor("black");
     obj.edit277:setTransparent(true);
-    obj.edit277:setField("Apresentacao1");
+    obj.edit277:setField("BonusProfissao1");
     obj.edit277:setName("edit277");
 
     obj.edit278 = GUI.fromHandle(_obj_newObject("edit"));
@@ -4000,7 +4000,7 @@ local function constructNew_frmPath()
     obj.edit278:setFontSize(10);
     obj.edit278:setFontColor("black");
     obj.edit278:setTransparent(true);
-    obj.edit278:setField("Apresentacao2");
+    obj.edit278:setField("MODAtributoProfissao1");
     obj.edit278:setName("edit278");
 
     obj.edit279 = GUI.fromHandle(_obj_newObject("edit"));
@@ -4013,7 +4013,7 @@ local function constructNew_frmPath()
     obj.edit279:setFontSize(10);
     obj.edit279:setFontColor("black");
     obj.edit279:setTransparent(true);
-    obj.edit279:setField("Apresentacao3");
+    obj.edit279:setField("GraduacaoProfissao1");
     obj.edit279:setName("edit279");
 
     obj.edit280 = GUI.fromHandle(_obj_newObject("edit"));
@@ -4026,7 +4026,7 @@ local function constructNew_frmPath()
     obj.edit280:setFontSize(10);
     obj.edit280:setFontColor("black");
     obj.edit280:setTransparent(true);
-    obj.edit280:setField("Apresentacao3");
+    obj.edit280:setField("OutrosProfissao1");
     obj.edit280:setName("edit280");
 
     obj.edit281 = GUI.fromHandle(_obj_newObject("edit"));
@@ -4039,7 +4039,7 @@ local function constructNew_frmPath()
     obj.edit281:setFontSize(10);
     obj.edit281:setFontColor("black");
     obj.edit281:setTransparent(true);
-    obj.edit281:setField("Apresentacao1");
+    obj.edit281:setField("BonusProfissao2");
     obj.edit281:setName("edit281");
 
     obj.edit282 = GUI.fromHandle(_obj_newObject("edit"));
@@ -4052,7 +4052,7 @@ local function constructNew_frmPath()
     obj.edit282:setFontSize(10);
     obj.edit282:setFontColor("black");
     obj.edit282:setTransparent(true);
-    obj.edit282:setField("Apresentacao2");
+    obj.edit282:setField("MODAtributoProfissao2");
     obj.edit282:setName("edit282");
 
     obj.edit283 = GUI.fromHandle(_obj_newObject("edit"));
@@ -4065,7 +4065,7 @@ local function constructNew_frmPath()
     obj.edit283:setFontSize(10);
     obj.edit283:setFontColor("black");
     obj.edit283:setTransparent(true);
-    obj.edit283:setField("Apresentacao3");
+    obj.edit283:setField("GraduacaoProfissao2");
     obj.edit283:setName("edit283");
 
     obj.edit284 = GUI.fromHandle(_obj_newObject("edit"));
@@ -4078,7 +4078,7 @@ local function constructNew_frmPath()
     obj.edit284:setFontSize(10);
     obj.edit284:setFontColor("black");
     obj.edit284:setTransparent(true);
-    obj.edit284:setField("Apresentacao3");
+    obj.edit284:setField("OutrosProfissao2");
     obj.edit284:setName("edit284");
 
     obj.edit285 = GUI.fromHandle(_obj_newObject("edit"));
@@ -4091,7 +4091,7 @@ local function constructNew_frmPath()
     obj.edit285:setFontSize(10);
     obj.edit285:setFontColor("black");
     obj.edit285:setTransparent(true);
-    obj.edit285:setField("Apresentacao1");
+    obj.edit285:setField("BonusSentirMotivacao");
     obj.edit285:setName("edit285");
 
     obj.edit286 = GUI.fromHandle(_obj_newObject("edit"));
@@ -4104,7 +4104,7 @@ local function constructNew_frmPath()
     obj.edit286:setFontSize(10);
     obj.edit286:setFontColor("black");
     obj.edit286:setTransparent(true);
-    obj.edit286:setField("Apresentacao2");
+    obj.edit286:setField("MODAtributoSentirMotivacao");
     obj.edit286:setName("edit286");
 
     obj.edit287 = GUI.fromHandle(_obj_newObject("edit"));
@@ -4117,7 +4117,7 @@ local function constructNew_frmPath()
     obj.edit287:setFontSize(10);
     obj.edit287:setFontColor("black");
     obj.edit287:setTransparent(true);
-    obj.edit287:setField("Apresentacao3");
+    obj.edit287:setField("GraduacaoSentirMotivacao");
     obj.edit287:setName("edit287");
 
     obj.edit288 = GUI.fromHandle(_obj_newObject("edit"));
@@ -4130,7 +4130,7 @@ local function constructNew_frmPath()
     obj.edit288:setFontSize(10);
     obj.edit288:setFontColor("black");
     obj.edit288:setTransparent(true);
-    obj.edit288:setField("Apresentacao3");
+    obj.edit288:setField("OutrosSentirMotivacao");
     obj.edit288:setName("edit288");
 
     obj.edit289 = GUI.fromHandle(_obj_newObject("edit"));
@@ -4143,7 +4143,7 @@ local function constructNew_frmPath()
     obj.edit289:setFontSize(10);
     obj.edit289:setFontColor("black");
     obj.edit289:setTransparent(true);
-    obj.edit289:setField("Apresentacao1");
+    obj.edit289:setField("BonusSobrevivencia");
     obj.edit289:setName("edit289");
 
     obj.edit290 = GUI.fromHandle(_obj_newObject("edit"));
@@ -4156,7 +4156,7 @@ local function constructNew_frmPath()
     obj.edit290:setFontSize(10);
     obj.edit290:setFontColor("black");
     obj.edit290:setTransparent(true);
-    obj.edit290:setField("Apresentacao2");
+    obj.edit290:setField("MODAtributoSobrevivencia");
     obj.edit290:setName("edit290");
 
     obj.edit291 = GUI.fromHandle(_obj_newObject("edit"));
@@ -4169,7 +4169,7 @@ local function constructNew_frmPath()
     obj.edit291:setFontSize(10);
     obj.edit291:setFontColor("black");
     obj.edit291:setTransparent(true);
-    obj.edit291:setField("Apresentacao3");
+    obj.edit291:setField("GraduacaoSobrevivencia");
     obj.edit291:setName("edit291");
 
     obj.edit292 = GUI.fromHandle(_obj_newObject("edit"));
@@ -4182,7 +4182,7 @@ local function constructNew_frmPath()
     obj.edit292:setFontSize(10);
     obj.edit292:setFontColor("black");
     obj.edit292:setTransparent(true);
-    obj.edit292:setField("Apresentacao3");
+    obj.edit292:setField("OutrosSobrevivencia");
     obj.edit292:setName("edit292");
 
     obj.edit293 = GUI.fromHandle(_obj_newObject("edit"));
@@ -4195,7 +4195,7 @@ local function constructNew_frmPath()
     obj.edit293:setFontSize(10);
     obj.edit293:setFontColor("black");
     obj.edit293:setTransparent(true);
-    obj.edit293:setField("Apresentacao1");
+    obj.edit293:setField("BonusuUsarInstrumentoMagico");
     obj.edit293:setName("edit293");
 
     obj.edit294 = GUI.fromHandle(_obj_newObject("edit"));
@@ -4208,7 +4208,7 @@ local function constructNew_frmPath()
     obj.edit294:setFontSize(10);
     obj.edit294:setFontColor("black");
     obj.edit294:setTransparent(true);
-    obj.edit294:setField("Apresentacao2");
+    obj.edit294:setField("MODAtributoUsarInstrumentoMagico");
     obj.edit294:setName("edit294");
 
     obj.edit295 = GUI.fromHandle(_obj_newObject("edit"));
@@ -4221,7 +4221,7 @@ local function constructNew_frmPath()
     obj.edit295:setFontSize(10);
     obj.edit295:setFontColor("black");
     obj.edit295:setTransparent(true);
-    obj.edit295:setField("Apresentacao3");
+    obj.edit295:setField("GraduacaoUsarInstrumentoMagico");
     obj.edit295:setName("edit295");
 
     obj.edit296 = GUI.fromHandle(_obj_newObject("edit"));
@@ -4234,7 +4234,7 @@ local function constructNew_frmPath()
     obj.edit296:setFontSize(10);
     obj.edit296:setFontColor("black");
     obj.edit296:setTransparent(true);
-    obj.edit296:setField("Apresentacao3");
+    obj.edit296:setField("OutrosUsarInstrumentoMagico");
     obj.edit296:setName("edit296");
 
     obj.edit297 = GUI.fromHandle(_obj_newObject("edit"));
@@ -4247,7 +4247,7 @@ local function constructNew_frmPath()
     obj.edit297:setFontSize(10);
     obj.edit297:setFontColor("black");
     obj.edit297:setTransparent(true);
-    obj.edit297:setField("Apresentacao1");
+    obj.edit297:setField("BonusVoo");
     obj.edit297:setName("edit297");
 
     obj.edit298 = GUI.fromHandle(_obj_newObject("edit"));
@@ -4260,7 +4260,7 @@ local function constructNew_frmPath()
     obj.edit298:setFontSize(10);
     obj.edit298:setFontColor("black");
     obj.edit298:setTransparent(true);
-    obj.edit298:setField("Apresentacao2");
+    obj.edit298:setField("MODAtributoVoo");
     obj.edit298:setName("edit298");
 
     obj.edit299 = GUI.fromHandle(_obj_newObject("edit"));
@@ -4273,7 +4273,7 @@ local function constructNew_frmPath()
     obj.edit299:setFontSize(10);
     obj.edit299:setFontColor("black");
     obj.edit299:setTransparent(true);
-    obj.edit299:setField("Apresentacao3");
+    obj.edit299:setField("GraduacaoVoo");
     obj.edit299:setName("edit299");
 
     obj.edit300 = GUI.fromHandle(_obj_newObject("edit"));
@@ -4286,7 +4286,7 @@ local function constructNew_frmPath()
     obj.edit300:setFontSize(10);
     obj.edit300:setFontColor("black");
     obj.edit300:setTransparent(true);
-    obj.edit300:setField("Apresentacao3");
+    obj.edit300:setField("OutrosVoo");
     obj.edit300:setName("edit300");
 
     obj.textEditor2 = GUI.fromHandle(_obj_newObject("textEditor"));
@@ -4306,7 +4306,7 @@ local function constructNew_frmPath()
     obj.textEditor3:setWidth(380);
     obj.textEditor3:setHeight(50);
     obj.textEditor3:setTransparent(true);
-    obj.textEditor3:setField("ModificadoresCondicionais");
+    obj.textEditor3:setField("Idiomas");
     obj.textEditor3:setName("textEditor3");
 
     obj.tab2 = GUI.fromHandle(_obj_newObject("tab"));
@@ -4344,6 +4344,2679 @@ local function constructNew_frmPath()
     obj.image2:setOptimize(true);
     obj.image2:setName("image2");
 
+    obj.edit301 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit301:setParent(obj.rectangle2);
+    obj.edit301:setLeft(53);
+    obj.edit301:setTop(85);
+    obj.edit301:setWidth(167);
+    obj.edit301:setHeight(30);
+    obj.edit301:setHorzTextAlign("center");
+    obj.edit301:setFontSize(14);
+    obj.edit301:setFontColor("black");
+    obj.edit301:setTransparent(true);
+    obj.edit301:setField("ItensDeProtecao1");
+    obj.edit301:setName("edit301");
+
+    obj.edit302 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit302:setParent(obj.rectangle2);
+    obj.edit302:setLeft(222);
+    obj.edit302:setTop(85);
+    obj.edit302:setWidth(47);
+    obj.edit302:setHeight(30);
+    obj.edit302:setHorzTextAlign("center");
+    obj.edit302:setFontSize(14);
+    obj.edit302:setFontColor("black");
+    obj.edit302:setTransparent(true);
+    obj.edit302:setField("ItemBonus1");
+    obj.edit302:setName("edit302");
+
+    obj.edit303 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit303:setParent(obj.rectangle2);
+    obj.edit303:setLeft(273);
+    obj.edit303:setTop(85);
+    obj.edit303:setWidth(69);
+    obj.edit303:setHeight(30);
+    obj.edit303:setHorzTextAlign("center");
+    obj.edit303:setFontSize(14);
+    obj.edit303:setFontColor("black");
+    obj.edit303:setTransparent(true);
+    obj.edit303:setField("ItemTipo1");
+    obj.edit303:setName("edit303");
+
+    obj.edit304 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit304:setParent(obj.rectangle2);
+    obj.edit304:setLeft(347);
+    obj.edit304:setTop(85);
+    obj.edit304:setWidth(69);
+    obj.edit304:setHeight(30);
+    obj.edit304:setHorzTextAlign("center");
+    obj.edit304:setFontSize(14);
+    obj.edit304:setFontColor("black");
+    obj.edit304:setTransparent(true);
+    obj.edit304:setField("ItemPenArmadura1");
+    obj.edit304:setName("edit304");
+
+    obj.edit305 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit305:setParent(obj.rectangle2);
+    obj.edit305:setLeft(420);
+    obj.edit305:setTop(85);
+    obj.edit305:setWidth(63);
+    obj.edit305:setHeight(30);
+    obj.edit305:setHorzTextAlign("center");
+    obj.edit305:setFontSize(14);
+    obj.edit305:setFontColor("black");
+    obj.edit305:setTransparent(true);
+    obj.edit305:setField("ItemFalhaMagia1");
+    obj.edit305:setName("edit305");
+
+    obj.edit306 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit306:setParent(obj.rectangle2);
+    obj.edit306:setLeft(485);
+    obj.edit306:setTop(85);
+    obj.edit306:setWidth(55);
+    obj.edit306:setHeight(30);
+    obj.edit306:setHorzTextAlign("center");
+    obj.edit306:setFontSize(14);
+    obj.edit306:setFontColor("black");
+    obj.edit306:setTransparent(true);
+    obj.edit306:setField("ItemPeso1");
+    obj.edit306:setName("edit306");
+
+    obj.edit307 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit307:setParent(obj.rectangle2);
+    obj.edit307:setLeft(543);
+    obj.edit307:setTop(85);
+    obj.edit307:setWidth(76);
+    obj.edit307:setHeight(30);
+    obj.edit307:setHorzTextAlign("center");
+    obj.edit307:setFontSize(14);
+    obj.edit307:setFontColor("black");
+    obj.edit307:setTransparent(true);
+    obj.edit307:setField("ItemPropriedade1");
+    obj.edit307:setName("edit307");
+
+    obj.edit308 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit308:setParent(obj.rectangle2);
+    obj.edit308:setLeft(53);
+    obj.edit308:setTop(113);
+    obj.edit308:setWidth(167);
+    obj.edit308:setHeight(30);
+    obj.edit308:setHorzTextAlign("center");
+    obj.edit308:setFontSize(14);
+    obj.edit308:setFontColor("black");
+    obj.edit308:setTransparent(true);
+    obj.edit308:setField("ItensDeProtecao2");
+    obj.edit308:setName("edit308");
+
+    obj.edit309 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit309:setParent(obj.rectangle2);
+    obj.edit309:setLeft(222);
+    obj.edit309:setTop(113);
+    obj.edit309:setWidth(47);
+    obj.edit309:setHeight(30);
+    obj.edit309:setHorzTextAlign("center");
+    obj.edit309:setFontSize(14);
+    obj.edit309:setFontColor("black");
+    obj.edit309:setTransparent(true);
+    obj.edit309:setField("ItemBonus2");
+    obj.edit309:setName("edit309");
+
+    obj.edit310 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit310:setParent(obj.rectangle2);
+    obj.edit310:setLeft(273);
+    obj.edit310:setTop(113);
+    obj.edit310:setWidth(69);
+    obj.edit310:setHeight(30);
+    obj.edit310:setHorzTextAlign("center");
+    obj.edit310:setFontSize(14);
+    obj.edit310:setFontColor("black");
+    obj.edit310:setTransparent(true);
+    obj.edit310:setField("ItemTipo2");
+    obj.edit310:setName("edit310");
+
+    obj.edit311 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit311:setParent(obj.rectangle2);
+    obj.edit311:setLeft(347);
+    obj.edit311:setTop(113);
+    obj.edit311:setWidth(69);
+    obj.edit311:setHeight(30);
+    obj.edit311:setHorzTextAlign("center");
+    obj.edit311:setFontSize(14);
+    obj.edit311:setFontColor("black");
+    obj.edit311:setTransparent(true);
+    obj.edit311:setField("ItemPenArmadura2");
+    obj.edit311:setName("edit311");
+
+    obj.edit312 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit312:setParent(obj.rectangle2);
+    obj.edit312:setLeft(420);
+    obj.edit312:setTop(113);
+    obj.edit312:setWidth(63);
+    obj.edit312:setHeight(30);
+    obj.edit312:setHorzTextAlign("center");
+    obj.edit312:setFontSize(14);
+    obj.edit312:setFontColor("black");
+    obj.edit312:setTransparent(true);
+    obj.edit312:setField("ItemFalhaMagia2");
+    obj.edit312:setName("edit312");
+
+    obj.edit313 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit313:setParent(obj.rectangle2);
+    obj.edit313:setLeft(485);
+    obj.edit313:setTop(113);
+    obj.edit313:setWidth(55);
+    obj.edit313:setHeight(30);
+    obj.edit313:setHorzTextAlign("center");
+    obj.edit313:setFontSize(14);
+    obj.edit313:setFontColor("black");
+    obj.edit313:setTransparent(true);
+    obj.edit313:setField("ItemPeso2");
+    obj.edit313:setName("edit313");
+
+    obj.edit314 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit314:setParent(obj.rectangle2);
+    obj.edit314:setLeft(543);
+    obj.edit314:setTop(113);
+    obj.edit314:setWidth(76);
+    obj.edit314:setHeight(30);
+    obj.edit314:setHorzTextAlign("center");
+    obj.edit314:setFontSize(14);
+    obj.edit314:setFontColor("black");
+    obj.edit314:setTransparent(true);
+    obj.edit314:setField("ItemPropriedade2");
+    obj.edit314:setName("edit314");
+
+    obj.edit315 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit315:setParent(obj.rectangle2);
+    obj.edit315:setLeft(53);
+    obj.edit315:setTop(140);
+    obj.edit315:setWidth(167);
+    obj.edit315:setHeight(30);
+    obj.edit315:setHorzTextAlign("center");
+    obj.edit315:setFontSize(14);
+    obj.edit315:setFontColor("black");
+    obj.edit315:setTransparent(true);
+    obj.edit315:setField("ItensDeProtecao3");
+    obj.edit315:setName("edit315");
+
+    obj.edit316 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit316:setParent(obj.rectangle2);
+    obj.edit316:setLeft(222);
+    obj.edit316:setTop(140);
+    obj.edit316:setWidth(47);
+    obj.edit316:setHeight(30);
+    obj.edit316:setHorzTextAlign("center");
+    obj.edit316:setFontSize(14);
+    obj.edit316:setFontColor("black");
+    obj.edit316:setTransparent(true);
+    obj.edit316:setField("ItemBonus3");
+    obj.edit316:setName("edit316");
+
+    obj.edit317 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit317:setParent(obj.rectangle2);
+    obj.edit317:setLeft(273);
+    obj.edit317:setTop(140);
+    obj.edit317:setWidth(69);
+    obj.edit317:setHeight(30);
+    obj.edit317:setHorzTextAlign("center");
+    obj.edit317:setFontSize(14);
+    obj.edit317:setFontColor("black");
+    obj.edit317:setTransparent(true);
+    obj.edit317:setField("ItemTipo3");
+    obj.edit317:setName("edit317");
+
+    obj.edit318 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit318:setParent(obj.rectangle2);
+    obj.edit318:setLeft(347);
+    obj.edit318:setTop(140);
+    obj.edit318:setWidth(69);
+    obj.edit318:setHeight(30);
+    obj.edit318:setHorzTextAlign("center");
+    obj.edit318:setFontSize(14);
+    obj.edit318:setFontColor("black");
+    obj.edit318:setTransparent(true);
+    obj.edit318:setField("ItemPenArmadura3");
+    obj.edit318:setName("edit318");
+
+    obj.edit319 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit319:setParent(obj.rectangle2);
+    obj.edit319:setLeft(420);
+    obj.edit319:setTop(140);
+    obj.edit319:setWidth(63);
+    obj.edit319:setHeight(30);
+    obj.edit319:setHorzTextAlign("center");
+    obj.edit319:setFontSize(14);
+    obj.edit319:setFontColor("black");
+    obj.edit319:setTransparent(true);
+    obj.edit319:setField("ItemFalhaMagia3");
+    obj.edit319:setName("edit319");
+
+    obj.edit320 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit320:setParent(obj.rectangle2);
+    obj.edit320:setLeft(485);
+    obj.edit320:setTop(140);
+    obj.edit320:setWidth(55);
+    obj.edit320:setHeight(30);
+    obj.edit320:setHorzTextAlign("center");
+    obj.edit320:setFontSize(14);
+    obj.edit320:setFontColor("black");
+    obj.edit320:setTransparent(true);
+    obj.edit320:setField("ItemPeso3");
+    obj.edit320:setName("edit320");
+
+    obj.edit321 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit321:setParent(obj.rectangle2);
+    obj.edit321:setLeft(543);
+    obj.edit321:setTop(140);
+    obj.edit321:setWidth(76);
+    obj.edit321:setHeight(30);
+    obj.edit321:setHorzTextAlign("center");
+    obj.edit321:setFontSize(14);
+    obj.edit321:setFontColor("black");
+    obj.edit321:setTransparent(true);
+    obj.edit321:setField("ItemPropriedade3");
+    obj.edit321:setName("edit321");
+
+    obj.edit322 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit322:setParent(obj.rectangle2);
+    obj.edit322:setLeft(53);
+    obj.edit322:setTop(168);
+    obj.edit322:setWidth(167);
+    obj.edit322:setHeight(30);
+    obj.edit322:setHorzTextAlign("center");
+    obj.edit322:setFontSize(14);
+    obj.edit322:setFontColor("black");
+    obj.edit322:setTransparent(true);
+    obj.edit322:setField("ItensDeProtecao4");
+    obj.edit322:setName("edit322");
+
+    obj.edit323 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit323:setParent(obj.rectangle2);
+    obj.edit323:setLeft(222);
+    obj.edit323:setTop(168);
+    obj.edit323:setWidth(47);
+    obj.edit323:setHeight(30);
+    obj.edit323:setHorzTextAlign("center");
+    obj.edit323:setFontSize(14);
+    obj.edit323:setFontColor("black");
+    obj.edit323:setTransparent(true);
+    obj.edit323:setField("ItemBonus4");
+    obj.edit323:setName("edit323");
+
+    obj.edit324 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit324:setParent(obj.rectangle2);
+    obj.edit324:setLeft(273);
+    obj.edit324:setTop(168);
+    obj.edit324:setWidth(69);
+    obj.edit324:setHeight(30);
+    obj.edit324:setHorzTextAlign("center");
+    obj.edit324:setFontSize(14);
+    obj.edit324:setFontColor("black");
+    obj.edit324:setTransparent(true);
+    obj.edit324:setField("ItemTipo4");
+    obj.edit324:setName("edit324");
+
+    obj.edit325 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit325:setParent(obj.rectangle2);
+    obj.edit325:setLeft(347);
+    obj.edit325:setTop(168);
+    obj.edit325:setWidth(69);
+    obj.edit325:setHeight(30);
+    obj.edit325:setHorzTextAlign("center");
+    obj.edit325:setFontSize(14);
+    obj.edit325:setFontColor("black");
+    obj.edit325:setTransparent(true);
+    obj.edit325:setField("ItemPenArmadura4");
+    obj.edit325:setName("edit325");
+
+    obj.edit326 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit326:setParent(obj.rectangle2);
+    obj.edit326:setLeft(420);
+    obj.edit326:setTop(168);
+    obj.edit326:setWidth(63);
+    obj.edit326:setHeight(30);
+    obj.edit326:setHorzTextAlign("center");
+    obj.edit326:setFontSize(14);
+    obj.edit326:setFontColor("black");
+    obj.edit326:setTransparent(true);
+    obj.edit326:setField("ItemFalhaMagia4");
+    obj.edit326:setName("edit326");
+
+    obj.edit327 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit327:setParent(obj.rectangle2);
+    obj.edit327:setLeft(485);
+    obj.edit327:setTop(168);
+    obj.edit327:setWidth(55);
+    obj.edit327:setHeight(30);
+    obj.edit327:setHorzTextAlign("center");
+    obj.edit327:setFontSize(14);
+    obj.edit327:setFontColor("black");
+    obj.edit327:setTransparent(true);
+    obj.edit327:setField("ItemPeso4");
+    obj.edit327:setName("edit327");
+
+    obj.edit328 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit328:setParent(obj.rectangle2);
+    obj.edit328:setLeft(543);
+    obj.edit328:setTop(168);
+    obj.edit328:setWidth(76);
+    obj.edit328:setHeight(30);
+    obj.edit328:setHorzTextAlign("center");
+    obj.edit328:setFontSize(14);
+    obj.edit328:setFontColor("black");
+    obj.edit328:setTransparent(true);
+    obj.edit328:setField("ItemPropriedade4");
+    obj.edit328:setName("edit328");
+
+    obj.edit329 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit329:setParent(obj.rectangle2);
+    obj.edit329:setLeft(53);
+    obj.edit329:setTop(196);
+    obj.edit329:setWidth(167);
+    obj.edit329:setHeight(30);
+    obj.edit329:setHorzTextAlign("center");
+    obj.edit329:setFontSize(14);
+    obj.edit329:setFontColor("black");
+    obj.edit329:setTransparent(true);
+    obj.edit329:setField("ItensDeProtecao5");
+    obj.edit329:setName("edit329");
+
+    obj.edit330 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit330:setParent(obj.rectangle2);
+    obj.edit330:setLeft(222);
+    obj.edit330:setTop(196);
+    obj.edit330:setWidth(47);
+    obj.edit330:setHeight(30);
+    obj.edit330:setHorzTextAlign("center");
+    obj.edit330:setFontSize(14);
+    obj.edit330:setFontColor("black");
+    obj.edit330:setTransparent(true);
+    obj.edit330:setField("ItemBonus5");
+    obj.edit330:setName("edit330");
+
+    obj.edit331 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit331:setParent(obj.rectangle2);
+    obj.edit331:setLeft(273);
+    obj.edit331:setTop(196);
+    obj.edit331:setWidth(69);
+    obj.edit331:setHeight(30);
+    obj.edit331:setHorzTextAlign("center");
+    obj.edit331:setFontSize(14);
+    obj.edit331:setFontColor("black");
+    obj.edit331:setTransparent(true);
+    obj.edit331:setField("ItemTipo5");
+    obj.edit331:setName("edit331");
+
+    obj.edit332 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit332:setParent(obj.rectangle2);
+    obj.edit332:setLeft(347);
+    obj.edit332:setTop(196);
+    obj.edit332:setWidth(69);
+    obj.edit332:setHeight(30);
+    obj.edit332:setHorzTextAlign("center");
+    obj.edit332:setFontSize(14);
+    obj.edit332:setFontColor("black");
+    obj.edit332:setTransparent(true);
+    obj.edit332:setField("ItemPenArmadura5");
+    obj.edit332:setName("edit332");
+
+    obj.edit333 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit333:setParent(obj.rectangle2);
+    obj.edit333:setLeft(420);
+    obj.edit333:setTop(196);
+    obj.edit333:setWidth(63);
+    obj.edit333:setHeight(30);
+    obj.edit333:setHorzTextAlign("center");
+    obj.edit333:setFontSize(14);
+    obj.edit333:setFontColor("black");
+    obj.edit333:setTransparent(true);
+    obj.edit333:setField("ItemFalhaMagia5");
+    obj.edit333:setName("edit333");
+
+    obj.edit334 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit334:setParent(obj.rectangle2);
+    obj.edit334:setLeft(485);
+    obj.edit334:setTop(196);
+    obj.edit334:setWidth(55);
+    obj.edit334:setHeight(30);
+    obj.edit334:setHorzTextAlign("center");
+    obj.edit334:setFontSize(14);
+    obj.edit334:setFontColor("black");
+    obj.edit334:setTransparent(true);
+    obj.edit334:setField("ItemPeso5");
+    obj.edit334:setName("edit334");
+
+    obj.edit335 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit335:setParent(obj.rectangle2);
+    obj.edit335:setLeft(543);
+    obj.edit335:setTop(196);
+    obj.edit335:setWidth(76);
+    obj.edit335:setHeight(30);
+    obj.edit335:setHorzTextAlign("center");
+    obj.edit335:setFontSize(14);
+    obj.edit335:setFontColor("black");
+    obj.edit335:setTransparent(true);
+    obj.edit335:setField("ItemPropriedade5");
+    obj.edit335:setName("edit335");
+
+    obj.edit336 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit336:setParent(obj.rectangle2);
+    obj.edit336:setLeft(222);
+    obj.edit336:setTop(224);
+    obj.edit336:setWidth(47);
+    obj.edit336:setHeight(30);
+    obj.edit336:setHorzTextAlign("center");
+    obj.edit336:setFontSize(14);
+    obj.edit336:setFontColor("black");
+    obj.edit336:setTransparent(true);
+    obj.edit336:setField("ItensDeProtecao6");
+    obj.edit336:setName("edit336");
+
+    obj.edit337 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit337:setParent(obj.rectangle2);
+    obj.edit337:setLeft(273);
+    obj.edit337:setTop(224);
+    obj.edit337:setWidth(69);
+    obj.edit337:setHeight(30);
+    obj.edit337:setHorzTextAlign("center");
+    obj.edit337:setFontSize(14);
+    obj.edit337:setFontColor("black");
+    obj.edit337:setTransparent(true);
+    obj.edit337:setField("ItemBonus6");
+    obj.edit337:setName("edit337");
+
+    obj.edit338 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit338:setParent(obj.rectangle2);
+    obj.edit338:setLeft(347);
+    obj.edit338:setTop(224);
+    obj.edit338:setWidth(69);
+    obj.edit338:setHeight(30);
+    obj.edit338:setHorzTextAlign("center");
+    obj.edit338:setFontSize(14);
+    obj.edit338:setFontColor("black");
+    obj.edit338:setTransparent(true);
+    obj.edit338:setField("ItemTipo6");
+    obj.edit338:setName("edit338");
+
+    obj.edit339 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit339:setParent(obj.rectangle2);
+    obj.edit339:setLeft(420);
+    obj.edit339:setTop(224);
+    obj.edit339:setWidth(63);
+    obj.edit339:setHeight(30);
+    obj.edit339:setHorzTextAlign("center");
+    obj.edit339:setFontSize(14);
+    obj.edit339:setFontColor("black");
+    obj.edit339:setTransparent(true);
+    obj.edit339:setField("ItemPenArmadura6");
+    obj.edit339:setName("edit339");
+
+    obj.edit340 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit340:setParent(obj.rectangle2);
+    obj.edit340:setLeft(485);
+    obj.edit340:setTop(224);
+    obj.edit340:setWidth(55);
+    obj.edit340:setHeight(30);
+    obj.edit340:setHorzTextAlign("center");
+    obj.edit340:setFontSize(14);
+    obj.edit340:setFontColor("black");
+    obj.edit340:setTransparent(true);
+    obj.edit340:setField("ItemPeso6");
+    obj.edit340:setName("edit340");
+
+    obj.edit341 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit341:setParent(obj.rectangle2);
+    obj.edit341:setLeft(543);
+    obj.edit341:setTop(224);
+    obj.edit341:setWidth(76);
+    obj.edit341:setHeight(30);
+    obj.edit341:setHorzTextAlign("center");
+    obj.edit341:setFontSize(14);
+    obj.edit341:setFontColor("black");
+    obj.edit341:setTransparent(true);
+    obj.edit341:setField("ItemPropriedade6");
+    obj.edit341:setName("edit341");
+
+    obj.edit342 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit342:setParent(obj.rectangle2);
+    obj.edit342:setLeft(53);
+    obj.edit342:setTop(300);
+    obj.edit342:setWidth(170);
+    obj.edit342:setHeight(20);
+    obj.edit342:setHorzTextAlign("center");
+    obj.edit342:setFontSize(14);
+    obj.edit342:setFontColor("black");
+    obj.edit342:setTransparent(true);
+    obj.edit342:setField("Equipamento1");
+    obj.edit342:setName("edit342");
+
+    obj.edit343 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit343:setParent(obj.rectangle2);
+    obj.edit343:setLeft(227);
+    obj.edit343:setTop(300);
+    obj.edit343:setWidth(23);
+    obj.edit343:setHeight(20);
+    obj.edit343:setHorzTextAlign("center");
+    obj.edit343:setFontSize(14);
+    obj.edit343:setFontColor("black");
+    obj.edit343:setTransparent(true);
+    obj.edit343:setField("Peso1");
+    obj.edit343:setName("edit343");
+
+    obj.edit344 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit344:setParent(obj.rectangle2);
+    obj.edit344:setLeft(53);
+    obj.edit344:setTop(322);
+    obj.edit344:setWidth(170);
+    obj.edit344:setHeight(20);
+    obj.edit344:setHorzTextAlign("center");
+    obj.edit344:setFontSize(14);
+    obj.edit344:setFontColor("black");
+    obj.edit344:setTransparent(true);
+    obj.edit344:setField("Equipamento2");
+    obj.edit344:setName("edit344");
+
+    obj.edit345 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit345:setParent(obj.rectangle2);
+    obj.edit345:setLeft(227);
+    obj.edit345:setTop(322);
+    obj.edit345:setWidth(23);
+    obj.edit345:setHeight(20);
+    obj.edit345:setHorzTextAlign("center");
+    obj.edit345:setFontSize(14);
+    obj.edit345:setFontColor("black");
+    obj.edit345:setTransparent(true);
+    obj.edit345:setField("Peso2");
+    obj.edit345:setName("edit345");
+
+    obj.edit346 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit346:setParent(obj.rectangle2);
+    obj.edit346:setLeft(53);
+    obj.edit346:setTop(344);
+    obj.edit346:setWidth(170);
+    obj.edit346:setHeight(20);
+    obj.edit346:setHorzTextAlign("center");
+    obj.edit346:setFontSize(14);
+    obj.edit346:setFontColor("black");
+    obj.edit346:setTransparent(true);
+    obj.edit346:setField("Equipamento3");
+    obj.edit346:setName("edit346");
+
+    obj.edit347 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit347:setParent(obj.rectangle2);
+    obj.edit347:setLeft(227);
+    obj.edit347:setTop(344);
+    obj.edit347:setWidth(23);
+    obj.edit347:setHeight(20);
+    obj.edit347:setHorzTextAlign("center");
+    obj.edit347:setFontSize(14);
+    obj.edit347:setFontColor("black");
+    obj.edit347:setTransparent(true);
+    obj.edit347:setField("Peso3");
+    obj.edit347:setName("edit347");
+
+    obj.edit348 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit348:setParent(obj.rectangle2);
+    obj.edit348:setLeft(53);
+    obj.edit348:setTop(366);
+    obj.edit348:setWidth(170);
+    obj.edit348:setHeight(20);
+    obj.edit348:setHorzTextAlign("center");
+    obj.edit348:setFontSize(14);
+    obj.edit348:setFontColor("black");
+    obj.edit348:setTransparent(true);
+    obj.edit348:setField("Equipamento4");
+    obj.edit348:setName("edit348");
+
+    obj.edit349 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit349:setParent(obj.rectangle2);
+    obj.edit349:setLeft(227);
+    obj.edit349:setTop(366);
+    obj.edit349:setWidth(23);
+    obj.edit349:setHeight(20);
+    obj.edit349:setHorzTextAlign("center");
+    obj.edit349:setFontSize(14);
+    obj.edit349:setFontColor("black");
+    obj.edit349:setTransparent(true);
+    obj.edit349:setField("Peso4");
+    obj.edit349:setName("edit349");
+
+    obj.edit350 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit350:setParent(obj.rectangle2);
+    obj.edit350:setLeft(53);
+    obj.edit350:setTop(388);
+    obj.edit350:setWidth(170);
+    obj.edit350:setHeight(20);
+    obj.edit350:setHorzTextAlign("center");
+    obj.edit350:setFontSize(14);
+    obj.edit350:setFontColor("black");
+    obj.edit350:setTransparent(true);
+    obj.edit350:setField("Equipamento5");
+    obj.edit350:setName("edit350");
+
+    obj.edit351 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit351:setParent(obj.rectangle2);
+    obj.edit351:setLeft(227);
+    obj.edit351:setTop(388);
+    obj.edit351:setWidth(23);
+    obj.edit351:setHeight(20);
+    obj.edit351:setHorzTextAlign("center");
+    obj.edit351:setFontSize(14);
+    obj.edit351:setFontColor("black");
+    obj.edit351:setTransparent(true);
+    obj.edit351:setField("Peso5");
+    obj.edit351:setName("edit351");
+
+    obj.edit352 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit352:setParent(obj.rectangle2);
+    obj.edit352:setLeft(53);
+    obj.edit352:setTop(410);
+    obj.edit352:setWidth(170);
+    obj.edit352:setHeight(20);
+    obj.edit352:setHorzTextAlign("center");
+    obj.edit352:setFontSize(14);
+    obj.edit352:setFontColor("black");
+    obj.edit352:setTransparent(true);
+    obj.edit352:setField("Equipamento6");
+    obj.edit352:setName("edit352");
+
+    obj.edit353 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit353:setParent(obj.rectangle2);
+    obj.edit353:setLeft(227);
+    obj.edit353:setTop(410);
+    obj.edit353:setWidth(23);
+    obj.edit353:setHeight(20);
+    obj.edit353:setHorzTextAlign("center");
+    obj.edit353:setFontSize(14);
+    obj.edit353:setFontColor("black");
+    obj.edit353:setTransparent(true);
+    obj.edit353:setField("Peso6");
+    obj.edit353:setName("edit353");
+
+    obj.edit354 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit354:setParent(obj.rectangle2);
+    obj.edit354:setLeft(53);
+    obj.edit354:setTop(432);
+    obj.edit354:setWidth(170);
+    obj.edit354:setHeight(20);
+    obj.edit354:setHorzTextAlign("center");
+    obj.edit354:setFontSize(14);
+    obj.edit354:setFontColor("black");
+    obj.edit354:setTransparent(true);
+    obj.edit354:setField("Equipamento7");
+    obj.edit354:setName("edit354");
+
+    obj.edit355 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit355:setParent(obj.rectangle2);
+    obj.edit355:setLeft(227);
+    obj.edit355:setTop(432);
+    obj.edit355:setWidth(23);
+    obj.edit355:setHeight(20);
+    obj.edit355:setHorzTextAlign("center");
+    obj.edit355:setFontSize(14);
+    obj.edit355:setFontColor("black");
+    obj.edit355:setTransparent(true);
+    obj.edit355:setField("Peso7");
+    obj.edit355:setName("edit355");
+
+    obj.edit356 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit356:setParent(obj.rectangle2);
+    obj.edit356:setLeft(53);
+    obj.edit356:setTop(454);
+    obj.edit356:setWidth(170);
+    obj.edit356:setHeight(20);
+    obj.edit356:setHorzTextAlign("center");
+    obj.edit356:setFontSize(14);
+    obj.edit356:setFontColor("black");
+    obj.edit356:setTransparent(true);
+    obj.edit356:setField("Equipamento8");
+    obj.edit356:setName("edit356");
+
+    obj.edit357 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit357:setParent(obj.rectangle2);
+    obj.edit357:setLeft(227);
+    obj.edit357:setTop(454);
+    obj.edit357:setWidth(23);
+    obj.edit357:setHeight(20);
+    obj.edit357:setHorzTextAlign("center");
+    obj.edit357:setFontSize(14);
+    obj.edit357:setFontColor("black");
+    obj.edit357:setTransparent(true);
+    obj.edit357:setField("Peso8");
+    obj.edit357:setName("edit357");
+
+    obj.edit358 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit358:setParent(obj.rectangle2);
+    obj.edit358:setLeft(53);
+    obj.edit358:setTop(476);
+    obj.edit358:setWidth(170);
+    obj.edit358:setHeight(20);
+    obj.edit358:setHorzTextAlign("center");
+    obj.edit358:setFontSize(14);
+    obj.edit358:setFontColor("black");
+    obj.edit358:setTransparent(true);
+    obj.edit358:setField("Equipamento9");
+    obj.edit358:setName("edit358");
+
+    obj.edit359 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit359:setParent(obj.rectangle2);
+    obj.edit359:setLeft(227);
+    obj.edit359:setTop(476);
+    obj.edit359:setWidth(23);
+    obj.edit359:setHeight(20);
+    obj.edit359:setHorzTextAlign("center");
+    obj.edit359:setFontSize(14);
+    obj.edit359:setFontColor("black");
+    obj.edit359:setTransparent(true);
+    obj.edit359:setField("Peso9");
+    obj.edit359:setName("edit359");
+
+    obj.edit360 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit360:setParent(obj.rectangle2);
+    obj.edit360:setLeft(53);
+    obj.edit360:setTop(497);
+    obj.edit360:setWidth(170);
+    obj.edit360:setHeight(20);
+    obj.edit360:setHorzTextAlign("center");
+    obj.edit360:setFontSize(14);
+    obj.edit360:setFontColor("black");
+    obj.edit360:setTransparent(true);
+    obj.edit360:setField("Equipamento10");
+    obj.edit360:setName("edit360");
+
+    obj.edit361 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit361:setParent(obj.rectangle2);
+    obj.edit361:setLeft(227);
+    obj.edit361:setTop(497);
+    obj.edit361:setWidth(23);
+    obj.edit361:setHeight(20);
+    obj.edit361:setHorzTextAlign("center");
+    obj.edit361:setFontSize(14);
+    obj.edit361:setFontColor("black");
+    obj.edit361:setTransparent(true);
+    obj.edit361:setField("Peso10");
+    obj.edit361:setName("edit361");
+
+    obj.edit362 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit362:setParent(obj.rectangle2);
+    obj.edit362:setLeft(53);
+    obj.edit362:setTop(518);
+    obj.edit362:setWidth(170);
+    obj.edit362:setHeight(20);
+    obj.edit362:setHorzTextAlign("center");
+    obj.edit362:setFontSize(14);
+    obj.edit362:setFontColor("black");
+    obj.edit362:setTransparent(true);
+    obj.edit362:setField("Equipamento11");
+    obj.edit362:setName("edit362");
+
+    obj.edit363 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit363:setParent(obj.rectangle2);
+    obj.edit363:setLeft(227);
+    obj.edit363:setTop(518);
+    obj.edit363:setWidth(23);
+    obj.edit363:setHeight(20);
+    obj.edit363:setHorzTextAlign("center");
+    obj.edit363:setFontSize(14);
+    obj.edit363:setFontColor("black");
+    obj.edit363:setTransparent(true);
+    obj.edit363:setField("Peso11");
+    obj.edit363:setName("edit363");
+
+    obj.edit364 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit364:setParent(obj.rectangle2);
+    obj.edit364:setLeft(53);
+    obj.edit364:setTop(540);
+    obj.edit364:setWidth(170);
+    obj.edit364:setHeight(20);
+    obj.edit364:setHorzTextAlign("center");
+    obj.edit364:setFontSize(14);
+    obj.edit364:setFontColor("black");
+    obj.edit364:setTransparent(true);
+    obj.edit364:setField("Equipamento12");
+    obj.edit364:setName("edit364");
+
+    obj.edit365 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit365:setParent(obj.rectangle2);
+    obj.edit365:setLeft(227);
+    obj.edit365:setTop(540);
+    obj.edit365:setWidth(23);
+    obj.edit365:setHeight(20);
+    obj.edit365:setHorzTextAlign("center");
+    obj.edit365:setFontSize(14);
+    obj.edit365:setFontColor("black");
+    obj.edit365:setTransparent(true);
+    obj.edit365:setField("Peso12");
+    obj.edit365:setName("edit365");
+
+    obj.edit366 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit366:setParent(obj.rectangle2);
+    obj.edit366:setLeft(53);
+    obj.edit366:setTop(564);
+    obj.edit366:setWidth(170);
+    obj.edit366:setHeight(20);
+    obj.edit366:setHorzTextAlign("center");
+    obj.edit366:setFontSize(14);
+    obj.edit366:setFontColor("black");
+    obj.edit366:setTransparent(true);
+    obj.edit366:setField("Equipamento13");
+    obj.edit366:setName("edit366");
+
+    obj.edit367 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit367:setParent(obj.rectangle2);
+    obj.edit367:setLeft(227);
+    obj.edit367:setTop(564);
+    obj.edit367:setWidth(23);
+    obj.edit367:setHeight(20);
+    obj.edit367:setHorzTextAlign("center");
+    obj.edit367:setFontSize(14);
+    obj.edit367:setFontColor("black");
+    obj.edit367:setTransparent(true);
+    obj.edit367:setField("Peso13");
+    obj.edit367:setName("edit367");
+
+    obj.edit368 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit368:setParent(obj.rectangle2);
+    obj.edit368:setLeft(53);
+    obj.edit368:setTop(586);
+    obj.edit368:setWidth(170);
+    obj.edit368:setHeight(20);
+    obj.edit368:setHorzTextAlign("center");
+    obj.edit368:setFontSize(14);
+    obj.edit368:setFontColor("black");
+    obj.edit368:setTransparent(true);
+    obj.edit368:setField("Equipamento14");
+    obj.edit368:setName("edit368");
+
+    obj.edit369 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit369:setParent(obj.rectangle2);
+    obj.edit369:setLeft(227);
+    obj.edit369:setTop(586);
+    obj.edit369:setWidth(23);
+    obj.edit369:setHeight(20);
+    obj.edit369:setHorzTextAlign("center");
+    obj.edit369:setFontSize(14);
+    obj.edit369:setFontColor("black");
+    obj.edit369:setTransparent(true);
+    obj.edit369:setField("Peso14");
+    obj.edit369:setName("edit369");
+
+    obj.edit370 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit370:setParent(obj.rectangle2);
+    obj.edit370:setLeft(53);
+    obj.edit370:setTop(608);
+    obj.edit370:setWidth(170);
+    obj.edit370:setHeight(20);
+    obj.edit370:setHorzTextAlign("center");
+    obj.edit370:setFontSize(14);
+    obj.edit370:setFontColor("black");
+    obj.edit370:setTransparent(true);
+    obj.edit370:setField("Equipamento15");
+    obj.edit370:setName("edit370");
+
+    obj.edit371 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit371:setParent(obj.rectangle2);
+    obj.edit371:setLeft(227);
+    obj.edit371:setTop(608);
+    obj.edit371:setWidth(23);
+    obj.edit371:setHeight(20);
+    obj.edit371:setHorzTextAlign("center");
+    obj.edit371:setFontSize(14);
+    obj.edit371:setFontColor("black");
+    obj.edit371:setTransparent(true);
+    obj.edit371:setField("Peso15");
+    obj.edit371:setName("edit371");
+
+    obj.edit372 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit372:setParent(obj.rectangle2);
+    obj.edit372:setLeft(53);
+    obj.edit372:setTop(630);
+    obj.edit372:setWidth(170);
+    obj.edit372:setHeight(20);
+    obj.edit372:setHorzTextAlign("center");
+    obj.edit372:setFontSize(14);
+    obj.edit372:setFontColor("black");
+    obj.edit372:setTransparent(true);
+    obj.edit372:setField("Equipamento16");
+    obj.edit372:setName("edit372");
+
+    obj.edit373 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit373:setParent(obj.rectangle2);
+    obj.edit373:setLeft(227);
+    obj.edit373:setTop(630);
+    obj.edit373:setWidth(23);
+    obj.edit373:setHeight(20);
+    obj.edit373:setHorzTextAlign("center");
+    obj.edit373:setFontSize(14);
+    obj.edit373:setFontColor("black");
+    obj.edit373:setTransparent(true);
+    obj.edit373:setField("Peso16");
+    obj.edit373:setName("edit373");
+
+    obj.edit374 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit374:setParent(obj.rectangle2);
+    obj.edit374:setLeft(53);
+    obj.edit374:setTop(652);
+    obj.edit374:setWidth(170);
+    obj.edit374:setHeight(20);
+    obj.edit374:setHorzTextAlign("center");
+    obj.edit374:setFontSize(14);
+    obj.edit374:setFontColor("black");
+    obj.edit374:setTransparent(true);
+    obj.edit374:setField("Equipamento17");
+    obj.edit374:setName("edit374");
+
+    obj.edit375 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit375:setParent(obj.rectangle2);
+    obj.edit375:setLeft(227);
+    obj.edit375:setTop(652);
+    obj.edit375:setWidth(23);
+    obj.edit375:setHeight(20);
+    obj.edit375:setHorzTextAlign("center");
+    obj.edit375:setFontSize(14);
+    obj.edit375:setFontColor("black");
+    obj.edit375:setTransparent(true);
+    obj.edit375:setField("Peso17");
+    obj.edit375:setName("edit375");
+
+    obj.edit376 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit376:setParent(obj.rectangle2);
+    obj.edit376:setLeft(53);
+    obj.edit376:setTop(674);
+    obj.edit376:setWidth(170);
+    obj.edit376:setHeight(20);
+    obj.edit376:setHorzTextAlign("center");
+    obj.edit376:setFontSize(14);
+    obj.edit376:setFontColor("black");
+    obj.edit376:setTransparent(true);
+    obj.edit376:setField("Equipamento18");
+    obj.edit376:setName("edit376");
+
+    obj.edit377 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit377:setParent(obj.rectangle2);
+    obj.edit377:setLeft(227);
+    obj.edit377:setTop(674);
+    obj.edit377:setWidth(23);
+    obj.edit377:setHeight(20);
+    obj.edit377:setHorzTextAlign("center");
+    obj.edit377:setFontSize(14);
+    obj.edit377:setFontColor("black");
+    obj.edit377:setTransparent(true);
+    obj.edit377:setField("Peso18");
+    obj.edit377:setName("edit377");
+
+    obj.edit378 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit378:setParent(obj.rectangle2);
+    obj.edit378:setLeft(53);
+    obj.edit378:setTop(696);
+    obj.edit378:setWidth(170);
+    obj.edit378:setHeight(20);
+    obj.edit378:setHorzTextAlign("center");
+    obj.edit378:setFontSize(14);
+    obj.edit378:setFontColor("black");
+    obj.edit378:setTransparent(true);
+    obj.edit378:setField("Equipamento19");
+    obj.edit378:setName("edit378");
+
+    obj.edit379 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit379:setParent(obj.rectangle2);
+    obj.edit379:setLeft(227);
+    obj.edit379:setTop(696);
+    obj.edit379:setWidth(23);
+    obj.edit379:setHeight(20);
+    obj.edit379:setHorzTextAlign("center");
+    obj.edit379:setFontSize(14);
+    obj.edit379:setFontColor("black");
+    obj.edit379:setTransparent(true);
+    obj.edit379:setField("Peso19");
+    obj.edit379:setName("edit379");
+
+    obj.edit380 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit380:setParent(obj.rectangle2);
+    obj.edit380:setLeft(53);
+    obj.edit380:setTop(718);
+    obj.edit380:setWidth(170);
+    obj.edit380:setHeight(20);
+    obj.edit380:setHorzTextAlign("center");
+    obj.edit380:setFontSize(14);
+    obj.edit380:setFontColor("black");
+    obj.edit380:setTransparent(true);
+    obj.edit380:setField("Equipamento20");
+    obj.edit380:setName("edit380");
+
+    obj.edit381 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit381:setParent(obj.rectangle2);
+    obj.edit381:setLeft(227);
+    obj.edit381:setTop(718);
+    obj.edit381:setWidth(23);
+    obj.edit381:setHeight(20);
+    obj.edit381:setHorzTextAlign("center");
+    obj.edit381:setFontSize(14);
+    obj.edit381:setFontColor("black");
+    obj.edit381:setTransparent(true);
+    obj.edit381:setField("Peso20");
+    obj.edit381:setName("edit381");
+
+    obj.edit382 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit382:setParent(obj.rectangle2);
+    obj.edit382:setLeft(53);
+    obj.edit382:setTop(740);
+    obj.edit382:setWidth(170);
+    obj.edit382:setHeight(20);
+    obj.edit382:setHorzTextAlign("center");
+    obj.edit382:setFontSize(14);
+    obj.edit382:setFontColor("black");
+    obj.edit382:setTransparent(true);
+    obj.edit382:setField("Equipamento21");
+    obj.edit382:setName("edit382");
+
+    obj.edit383 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit383:setParent(obj.rectangle2);
+    obj.edit383:setLeft(227);
+    obj.edit383:setTop(740);
+    obj.edit383:setWidth(23);
+    obj.edit383:setHeight(20);
+    obj.edit383:setHorzTextAlign("center");
+    obj.edit383:setFontSize(14);
+    obj.edit383:setFontColor("black");
+    obj.edit383:setTransparent(true);
+    obj.edit383:setField("Peso21");
+    obj.edit383:setName("edit383");
+
+    obj.edit384 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit384:setParent(obj.rectangle2);
+    obj.edit384:setLeft(53);
+    obj.edit384:setTop(762);
+    obj.edit384:setWidth(170);
+    obj.edit384:setHeight(20);
+    obj.edit384:setHorzTextAlign("center");
+    obj.edit384:setFontSize(14);
+    obj.edit384:setFontColor("black");
+    obj.edit384:setTransparent(true);
+    obj.edit384:setField("Equipamento22");
+    obj.edit384:setName("edit384");
+
+    obj.edit385 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit385:setParent(obj.rectangle2);
+    obj.edit385:setLeft(227);
+    obj.edit385:setTop(762);
+    obj.edit385:setWidth(23);
+    obj.edit385:setHeight(20);
+    obj.edit385:setHorzTextAlign("center");
+    obj.edit385:setFontSize(14);
+    obj.edit385:setFontColor("black");
+    obj.edit385:setTransparent(true);
+    obj.edit385:setField("Peso22");
+    obj.edit385:setName("edit385");
+
+    obj.edit386 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit386:setParent(obj.rectangle2);
+    obj.edit386:setLeft(53);
+    obj.edit386:setTop(784);
+    obj.edit386:setWidth(170);
+    obj.edit386:setHeight(20);
+    obj.edit386:setHorzTextAlign("center");
+    obj.edit386:setFontSize(14);
+    obj.edit386:setFontColor("black");
+    obj.edit386:setTransparent(true);
+    obj.edit386:setField("Equipamento23");
+    obj.edit386:setName("edit386");
+
+    obj.edit387 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit387:setParent(obj.rectangle2);
+    obj.edit387:setLeft(227);
+    obj.edit387:setTop(784);
+    obj.edit387:setWidth(23);
+    obj.edit387:setHeight(20);
+    obj.edit387:setHorzTextAlign("center");
+    obj.edit387:setFontSize(14);
+    obj.edit387:setFontColor("black");
+    obj.edit387:setTransparent(true);
+    obj.edit387:setField("Peso23");
+    obj.edit387:setName("edit387");
+
+    obj.edit388 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit388:setParent(obj.rectangle2);
+    obj.edit388:setLeft(53);
+    obj.edit388:setTop(805);
+    obj.edit388:setWidth(170);
+    obj.edit388:setHeight(20);
+    obj.edit388:setHorzTextAlign("center");
+    obj.edit388:setFontSize(14);
+    obj.edit388:setFontColor("black");
+    obj.edit388:setTransparent(true);
+    obj.edit388:setField("Equipamento24");
+    obj.edit388:setName("edit388");
+
+    obj.edit389 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit389:setParent(obj.rectangle2);
+    obj.edit389:setLeft(227);
+    obj.edit389:setTop(805);
+    obj.edit389:setWidth(23);
+    obj.edit389:setHeight(20);
+    obj.edit389:setHorzTextAlign("center");
+    obj.edit389:setFontSize(14);
+    obj.edit389:setFontColor("black");
+    obj.edit389:setTransparent(true);
+    obj.edit389:setField("Peso24");
+    obj.edit389:setName("edit389");
+
+    obj.edit390 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit390:setParent(obj.rectangle2);
+    obj.edit390:setLeft(53);
+    obj.edit390:setTop(826);
+    obj.edit390:setWidth(170);
+    obj.edit390:setHeight(20);
+    obj.edit390:setHorzTextAlign("center");
+    obj.edit390:setFontSize(14);
+    obj.edit390:setFontColor("black");
+    obj.edit390:setTransparent(true);
+    obj.edit390:setField("Equipamento25");
+    obj.edit390:setName("edit390");
+
+    obj.edit391 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit391:setParent(obj.rectangle2);
+    obj.edit391:setLeft(227);
+    obj.edit391:setTop(826);
+    obj.edit391:setWidth(23);
+    obj.edit391:setHeight(20);
+    obj.edit391:setHorzTextAlign("center");
+    obj.edit391:setFontSize(14);
+    obj.edit391:setFontColor("black");
+    obj.edit391:setTransparent(true);
+    obj.edit391:setField("Peso25");
+    obj.edit391:setName("edit391");
+
+    obj.edit392 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit392:setParent(obj.rectangle2);
+    obj.edit392:setLeft(53);
+    obj.edit392:setTop(847);
+    obj.edit392:setWidth(170);
+    obj.edit392:setHeight(20);
+    obj.edit392:setHorzTextAlign("center");
+    obj.edit392:setFontSize(14);
+    obj.edit392:setFontColor("black");
+    obj.edit392:setTransparent(true);
+    obj.edit392:setField("Equipamento26");
+    obj.edit392:setName("edit392");
+
+    obj.edit393 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit393:setParent(obj.rectangle2);
+    obj.edit393:setLeft(227);
+    obj.edit393:setTop(847);
+    obj.edit393:setWidth(23);
+    obj.edit393:setHeight(20);
+    obj.edit393:setHorzTextAlign("center");
+    obj.edit393:setFontSize(14);
+    obj.edit393:setFontColor("black");
+    obj.edit393:setTransparent(true);
+    obj.edit393:setField("Peso26");
+    obj.edit393:setName("edit393");
+
+    obj.edit394 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit394:setParent(obj.rectangle2);
+    obj.edit394:setLeft(227);
+    obj.edit394:setTop(869);
+    obj.edit394:setWidth(23);
+    obj.edit394:setHeight(20);
+    obj.edit394:setHorzTextAlign("center");
+    obj.edit394:setFontSize(14);
+    obj.edit394:setFontColor("black");
+    obj.edit394:setTransparent(true);
+    obj.edit394:setField("PesoTotal");
+    obj.edit394:setName("edit394");
+
+    obj.edit395 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit395:setParent(obj.rectangle2);
+    obj.edit395:setLeft(105);
+    obj.edit395:setTop(898);
+    obj.edit395:setWidth(35);
+    obj.edit395:setHeight(25);
+    obj.edit395:setHorzTextAlign("center");
+    obj.edit395:setFontSize(14);
+    obj.edit395:setFontColor("black");
+    obj.edit395:setTransparent(true);
+    obj.edit395:setField("CargaLeve");
+    obj.edit395:setName("edit395");
+
+    obj.edit396 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit396:setParent(obj.rectangle2);
+    obj.edit396:setLeft(211);
+    obj.edit396:setTop(898);
+    obj.edit396:setWidth(35);
+    obj.edit396:setHeight(25);
+    obj.edit396:setHorzTextAlign("center");
+    obj.edit396:setFontSize(14);
+    obj.edit396:setFontColor("black");
+    obj.edit396:setTransparent(true);
+    obj.edit396:setField("ErgueiSobreACabeca");
+    obj.edit396:setName("edit396");
+
+    obj.edit397 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit397:setParent(obj.rectangle2);
+    obj.edit397:setLeft(105);
+    obj.edit397:setTop(924);
+    obj.edit397:setWidth(35);
+    obj.edit397:setHeight(25);
+    obj.edit397:setHorzTextAlign("center");
+    obj.edit397:setFontSize(14);
+    obj.edit397:setFontColor("black");
+    obj.edit397:setTransparent(true);
+    obj.edit397:setField("CargaMedia");
+    obj.edit397:setName("edit397");
+
+    obj.edit398 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit398:setParent(obj.rectangle2);
+    obj.edit398:setLeft(211);
+    obj.edit398:setTop(924);
+    obj.edit398:setWidth(35);
+    obj.edit398:setHeight(25);
+    obj.edit398:setHorzTextAlign("center");
+    obj.edit398:setFontSize(14);
+    obj.edit398:setFontColor("black");
+    obj.edit398:setTransparent(true);
+    obj.edit398:setField("ErguerDoChao");
+    obj.edit398:setName("edit398");
+
+    obj.edit399 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit399:setParent(obj.rectangle2);
+    obj.edit399:setLeft(105);
+    obj.edit399:setTop(950);
+    obj.edit399:setWidth(35);
+    obj.edit399:setHeight(25);
+    obj.edit399:setHorzTextAlign("center");
+    obj.edit399:setFontSize(14);
+    obj.edit399:setFontColor("black");
+    obj.edit399:setTransparent(true);
+    obj.edit399:setField("CargaLeve");
+    obj.edit399:setName("edit399");
+
+    obj.edit400 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit400:setParent(obj.rectangle2);
+    obj.edit400:setLeft(211);
+    obj.edit400:setTop(950);
+    obj.edit400:setWidth(35);
+    obj.edit400:setHeight(25);
+    obj.edit400:setHorzTextAlign("center");
+    obj.edit400:setFontSize(14);
+    obj.edit400:setFontColor("black");
+    obj.edit400:setTransparent(true);
+    obj.edit400:setField("ArrastarPuxar");
+    obj.edit400:setName("edit400");
+
+    obj.edit401 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit401:setParent(obj.rectangle2);
+    obj.edit401:setLeft(80);
+    obj.edit401:setTop(1008);
+    obj.edit401:setWidth(170);
+    obj.edit401:setHeight(20);
+    obj.edit401:setHorzTextAlign("center");
+    obj.edit401:setFontSize(14);
+    obj.edit401:setFontColor("black");
+    obj.edit401:setTransparent(true);
+    obj.edit401:setField("PC");
+    obj.edit401:setName("edit401");
+
+    obj.edit402 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit402:setParent(obj.rectangle2);
+    obj.edit402:setLeft(80);
+    obj.edit402:setTop(1029);
+    obj.edit402:setWidth(170);
+    obj.edit402:setHeight(20);
+    obj.edit402:setHorzTextAlign("center");
+    obj.edit402:setFontSize(14);
+    obj.edit402:setFontColor("black");
+    obj.edit402:setTransparent(true);
+    obj.edit402:setField("PP");
+    obj.edit402:setName("edit402");
+
+    obj.edit403 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit403:setParent(obj.rectangle2);
+    obj.edit403:setLeft(80);
+    obj.edit403:setTop(1050);
+    obj.edit403:setWidth(170);
+    obj.edit403:setHeight(20);
+    obj.edit403:setHorzTextAlign("center");
+    obj.edit403:setFontSize(14);
+    obj.edit403:setFontColor("black");
+    obj.edit403:setTransparent(true);
+    obj.edit403:setField("PO");
+    obj.edit403:setName("edit403");
+
+    obj.edit404 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit404:setParent(obj.rectangle2);
+    obj.edit404:setLeft(80);
+    obj.edit404:setTop(1071);
+    obj.edit404:setWidth(170);
+    obj.edit404:setHeight(20);
+    obj.edit404:setHorzTextAlign("center");
+    obj.edit404:setFontSize(14);
+    obj.edit404:setFontColor("black");
+    obj.edit404:setTransparent(true);
+    obj.edit404:setField("PL");
+    obj.edit404:setName("edit404");
+
+    obj.textEditor4 = GUI.fromHandle(_obj_newObject("textEditor"));
+    obj.textEditor4:setParent(obj.rectangle2);
+    obj.textEditor4:setLeft(270);
+    obj.textEditor4:setTop(295);
+    obj.textEditor4:setWidth(360);
+    obj.textEditor4:setHeight(267);
+    obj.textEditor4:setFontSize(16);
+    obj.textEditor4:setTransparent(false);
+    obj.textEditor4:setField("Talentos");
+    obj.textEditor4:setName("textEditor4");
+
+    obj.textEditor5 = GUI.fromHandle(_obj_newObject("textEditor"));
+    obj.textEditor5:setParent(obj.rectangle2);
+    obj.textEditor5:setLeft(270);
+    obj.textEditor5:setTop(600);
+    obj.textEditor5:setWidth(360);
+    obj.textEditor5:setHeight(450);
+    obj.textEditor5:setFontSize(16);
+    obj.textEditor5:setTransparent(false);
+    obj.textEditor5:setField("HabilidadesEspeciais");
+    obj.textEditor5:setName("textEditor5");
+
+    obj.edit405 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit405:setParent(obj.rectangle2);
+    obj.edit405:setLeft(275);
+    obj.edit405:setTop(1071);
+    obj.edit405:setWidth(235);
+    obj.edit405:setHeight(30);
+    obj.edit405:setHorzTextAlign("center");
+    obj.edit405:setFontSize(14);
+    obj.edit405:setFontColor("black");
+    obj.edit405:setTransparent(true);
+    obj.edit405:setField("PontosExperiencia");
+    obj.edit405:setName("edit405");
+
+    obj.edit406 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit406:setParent(obj.rectangle2);
+    obj.edit406:setLeft(513);
+    obj.edit406:setTop(1071);
+    obj.edit406:setWidth(105);
+    obj.edit406:setHeight(30);
+    obj.edit406:setHorzTextAlign("center");
+    obj.edit406:setFontSize(14);
+    obj.edit406:setFontColor("black");
+    obj.edit406:setTransparent(true);
+    obj.edit406:setField("ProximoNivel");
+    obj.edit406:setName("edit406");
+
+    obj.edit407 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit407:setParent(obj.rectangle2);
+    obj.edit407:setLeft(645);
+    obj.edit407:setTop(125);
+    obj.edit407:setWidth(30);
+    obj.edit407:setHeight(20);
+    obj.edit407:setHorzTextAlign("center");
+    obj.edit407:setFontSize(14);
+    obj.edit407:setFontColor("black");
+    obj.edit407:setTransparent(true);
+    obj.edit407:setField("MagiasConhecidas0");
+    obj.edit407:setName("edit407");
+
+    obj.edit408 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit408:setParent(obj.rectangle2);
+    obj.edit408:setLeft(691);
+    obj.edit408:setTop(125);
+    obj.edit408:setWidth(30);
+    obj.edit408:setHeight(20);
+    obj.edit408:setHorzTextAlign("center");
+    obj.edit408:setFontSize(14);
+    obj.edit408:setFontColor("black");
+    obj.edit408:setTransparent(true);
+    obj.edit408:setField("CDResistMagia0");
+    obj.edit408:setName("edit408");
+
+    obj.edit409 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit409:setParent(obj.rectangle2);
+    obj.edit409:setLeft(783);
+    obj.edit409:setTop(125);
+    obj.edit409:setWidth(30);
+    obj.edit409:setHeight(20);
+    obj.edit409:setHorzTextAlign("center");
+    obj.edit409:setFontSize(14);
+    obj.edit409:setFontColor("black");
+    obj.edit409:setTransparent(true);
+    obj.edit409:setField("MagiaPorDia0");
+    obj.edit409:setName("edit409");
+
+    obj.edit410 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit410:setParent(obj.rectangle2);
+    obj.edit410:setLeft(645);
+    obj.edit410:setTop(150);
+    obj.edit410:setWidth(30);
+    obj.edit410:setHeight(20);
+    obj.edit410:setHorzTextAlign("center");
+    obj.edit410:setFontSize(14);
+    obj.edit410:setFontColor("black");
+    obj.edit410:setTransparent(true);
+    obj.edit410:setField("MagiasConhecidas1");
+    obj.edit410:setName("edit410");
+
+    obj.edit411 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit411:setParent(obj.rectangle2);
+    obj.edit411:setLeft(691);
+    obj.edit411:setTop(150);
+    obj.edit411:setWidth(30);
+    obj.edit411:setHeight(20);
+    obj.edit411:setHorzTextAlign("center");
+    obj.edit411:setFontSize(14);
+    obj.edit411:setFontColor("black");
+    obj.edit411:setTransparent(true);
+    obj.edit411:setField("CDResistMagia1");
+    obj.edit411:setName("edit411");
+
+    obj.edit412 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit412:setParent(obj.rectangle2);
+    obj.edit412:setLeft(783);
+    obj.edit412:setTop(150);
+    obj.edit412:setWidth(30);
+    obj.edit412:setHeight(20);
+    obj.edit412:setHorzTextAlign("center");
+    obj.edit412:setFontSize(14);
+    obj.edit412:setFontColor("black");
+    obj.edit412:setTransparent(true);
+    obj.edit412:setField("MagiaPorDia1");
+    obj.edit412:setName("edit412");
+
+    obj.edit413 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit413:setParent(obj.rectangle2);
+    obj.edit413:setLeft(831);
+    obj.edit413:setTop(150);
+    obj.edit413:setWidth(30);
+    obj.edit413:setHeight(20);
+    obj.edit413:setHorzTextAlign("center");
+    obj.edit413:setFontSize(14);
+    obj.edit413:setFontColor("black");
+    obj.edit413:setTransparent(true);
+    obj.edit413:setField("MagiaBonus1");
+    obj.edit413:setName("edit413");
+
+    obj.edit414 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit414:setParent(obj.rectangle2);
+    obj.edit414:setLeft(645);
+    obj.edit414:setTop(176);
+    obj.edit414:setWidth(30);
+    obj.edit414:setHeight(20);
+    obj.edit414:setHorzTextAlign("center");
+    obj.edit414:setFontSize(14);
+    obj.edit414:setFontColor("black");
+    obj.edit414:setTransparent(true);
+    obj.edit414:setField("MagiasConhecidas2");
+    obj.edit414:setName("edit414");
+
+    obj.edit415 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit415:setParent(obj.rectangle2);
+    obj.edit415:setLeft(691);
+    obj.edit415:setTop(176);
+    obj.edit415:setWidth(30);
+    obj.edit415:setHeight(20);
+    obj.edit415:setHorzTextAlign("center");
+    obj.edit415:setFontSize(14);
+    obj.edit415:setFontColor("black");
+    obj.edit415:setTransparent(true);
+    obj.edit415:setField("CDResistMagia2");
+    obj.edit415:setName("edit415");
+
+    obj.edit416 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit416:setParent(obj.rectangle2);
+    obj.edit416:setLeft(783);
+    obj.edit416:setTop(176);
+    obj.edit416:setWidth(30);
+    obj.edit416:setHeight(20);
+    obj.edit416:setHorzTextAlign("center");
+    obj.edit416:setFontSize(14);
+    obj.edit416:setFontColor("black");
+    obj.edit416:setTransparent(true);
+    obj.edit416:setField("MagiaPorDia2");
+    obj.edit416:setName("edit416");
+
+    obj.edit417 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit417:setParent(obj.rectangle2);
+    obj.edit417:setLeft(831);
+    obj.edit417:setTop(176);
+    obj.edit417:setWidth(30);
+    obj.edit417:setHeight(20);
+    obj.edit417:setHorzTextAlign("center");
+    obj.edit417:setFontSize(14);
+    obj.edit417:setFontColor("black");
+    obj.edit417:setTransparent(true);
+    obj.edit417:setField("MagiaBonus2");
+    obj.edit417:setName("edit417");
+
+    obj.edit418 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit418:setParent(obj.rectangle2);
+    obj.edit418:setLeft(645);
+    obj.edit418:setTop(202);
+    obj.edit418:setWidth(30);
+    obj.edit418:setHeight(20);
+    obj.edit418:setHorzTextAlign("center");
+    obj.edit418:setFontSize(14);
+    obj.edit418:setFontColor("black");
+    obj.edit418:setTransparent(true);
+    obj.edit418:setField("MagiasConhecidas3");
+    obj.edit418:setName("edit418");
+
+    obj.edit419 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit419:setParent(obj.rectangle2);
+    obj.edit419:setLeft(691);
+    obj.edit419:setTop(202);
+    obj.edit419:setWidth(30);
+    obj.edit419:setHeight(20);
+    obj.edit419:setHorzTextAlign("center");
+    obj.edit419:setFontSize(14);
+    obj.edit419:setFontColor("black");
+    obj.edit419:setTransparent(true);
+    obj.edit419:setField("CDResistMagia3");
+    obj.edit419:setName("edit419");
+
+    obj.edit420 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit420:setParent(obj.rectangle2);
+    obj.edit420:setLeft(783);
+    obj.edit420:setTop(202);
+    obj.edit420:setWidth(30);
+    obj.edit420:setHeight(20);
+    obj.edit420:setHorzTextAlign("center");
+    obj.edit420:setFontSize(14);
+    obj.edit420:setFontColor("black");
+    obj.edit420:setTransparent(true);
+    obj.edit420:setField("MagiaPorDia3");
+    obj.edit420:setName("edit420");
+
+    obj.edit421 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit421:setParent(obj.rectangle2);
+    obj.edit421:setLeft(831);
+    obj.edit421:setTop(202);
+    obj.edit421:setWidth(30);
+    obj.edit421:setHeight(20);
+    obj.edit421:setHorzTextAlign("center");
+    obj.edit421:setFontSize(14);
+    obj.edit421:setFontColor("black");
+    obj.edit421:setTransparent(true);
+    obj.edit421:setField("MagiaBonus3");
+    obj.edit421:setName("edit421");
+
+    obj.edit422 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit422:setParent(obj.rectangle2);
+    obj.edit422:setLeft(645);
+    obj.edit422:setTop(228);
+    obj.edit422:setWidth(30);
+    obj.edit422:setHeight(20);
+    obj.edit422:setHorzTextAlign("center");
+    obj.edit422:setFontSize(14);
+    obj.edit422:setFontColor("black");
+    obj.edit422:setTransparent(true);
+    obj.edit422:setField("MagiasConhecidas4");
+    obj.edit422:setName("edit422");
+
+    obj.edit423 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit423:setParent(obj.rectangle2);
+    obj.edit423:setLeft(691);
+    obj.edit423:setTop(228);
+    obj.edit423:setWidth(30);
+    obj.edit423:setHeight(20);
+    obj.edit423:setHorzTextAlign("center");
+    obj.edit423:setFontSize(14);
+    obj.edit423:setFontColor("black");
+    obj.edit423:setTransparent(true);
+    obj.edit423:setField("CDResistMagia4");
+    obj.edit423:setName("edit423");
+
+    obj.edit424 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit424:setParent(obj.rectangle2);
+    obj.edit424:setLeft(783);
+    obj.edit424:setTop(228);
+    obj.edit424:setWidth(30);
+    obj.edit424:setHeight(20);
+    obj.edit424:setHorzTextAlign("center");
+    obj.edit424:setFontSize(14);
+    obj.edit424:setFontColor("black");
+    obj.edit424:setTransparent(true);
+    obj.edit424:setField("MagiaPorDia4");
+    obj.edit424:setName("edit424");
+
+    obj.edit425 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit425:setParent(obj.rectangle2);
+    obj.edit425:setLeft(831);
+    obj.edit425:setTop(228);
+    obj.edit425:setWidth(30);
+    obj.edit425:setHeight(20);
+    obj.edit425:setHorzTextAlign("center");
+    obj.edit425:setFontSize(14);
+    obj.edit425:setFontColor("black");
+    obj.edit425:setTransparent(true);
+    obj.edit425:setField("MagiaBonus4");
+    obj.edit425:setName("edit425");
+
+    obj.edit426 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit426:setParent(obj.rectangle2);
+    obj.edit426:setLeft(645);
+    obj.edit426:setTop(254);
+    obj.edit426:setWidth(30);
+    obj.edit426:setHeight(20);
+    obj.edit426:setHorzTextAlign("center");
+    obj.edit426:setFontSize(14);
+    obj.edit426:setFontColor("black");
+    obj.edit426:setTransparent(true);
+    obj.edit426:setField("MagiasConhecidas5");
+    obj.edit426:setName("edit426");
+
+    obj.edit427 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit427:setParent(obj.rectangle2);
+    obj.edit427:setLeft(691);
+    obj.edit427:setTop(254);
+    obj.edit427:setWidth(30);
+    obj.edit427:setHeight(20);
+    obj.edit427:setHorzTextAlign("center");
+    obj.edit427:setFontSize(14);
+    obj.edit427:setFontColor("black");
+    obj.edit427:setTransparent(true);
+    obj.edit427:setField("CDResistMagia5");
+    obj.edit427:setName("edit427");
+
+    obj.edit428 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit428:setParent(obj.rectangle2);
+    obj.edit428:setLeft(783);
+    obj.edit428:setTop(254);
+    obj.edit428:setWidth(30);
+    obj.edit428:setHeight(20);
+    obj.edit428:setHorzTextAlign("center");
+    obj.edit428:setFontSize(14);
+    obj.edit428:setFontColor("black");
+    obj.edit428:setTransparent(true);
+    obj.edit428:setField("MagiaPorDia5");
+    obj.edit428:setName("edit428");
+
+    obj.edit429 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit429:setParent(obj.rectangle2);
+    obj.edit429:setLeft(831);
+    obj.edit429:setTop(254);
+    obj.edit429:setWidth(30);
+    obj.edit429:setHeight(20);
+    obj.edit429:setHorzTextAlign("center");
+    obj.edit429:setFontSize(14);
+    obj.edit429:setFontColor("black");
+    obj.edit429:setTransparent(true);
+    obj.edit429:setField("MagiaBonus5");
+    obj.edit429:setName("edit429");
+
+    obj.edit430 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit430:setParent(obj.rectangle2);
+    obj.edit430:setLeft(645);
+    obj.edit430:setTop(280);
+    obj.edit430:setWidth(30);
+    obj.edit430:setHeight(20);
+    obj.edit430:setHorzTextAlign("center");
+    obj.edit430:setFontSize(14);
+    obj.edit430:setFontColor("black");
+    obj.edit430:setTransparent(true);
+    obj.edit430:setField("MagiasConhecidas6");
+    obj.edit430:setName("edit430");
+
+    obj.edit431 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit431:setParent(obj.rectangle2);
+    obj.edit431:setLeft(691);
+    obj.edit431:setTop(280);
+    obj.edit431:setWidth(30);
+    obj.edit431:setHeight(20);
+    obj.edit431:setHorzTextAlign("center");
+    obj.edit431:setFontSize(14);
+    obj.edit431:setFontColor("black");
+    obj.edit431:setTransparent(true);
+    obj.edit431:setField("CDResistMagia6");
+    obj.edit431:setName("edit431");
+
+    obj.edit432 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit432:setParent(obj.rectangle2);
+    obj.edit432:setLeft(783);
+    obj.edit432:setTop(280);
+    obj.edit432:setWidth(30);
+    obj.edit432:setHeight(20);
+    obj.edit432:setHorzTextAlign("center");
+    obj.edit432:setFontSize(14);
+    obj.edit432:setFontColor("black");
+    obj.edit432:setTransparent(true);
+    obj.edit432:setField("MagiaPorDia6");
+    obj.edit432:setName("edit432");
+
+    obj.edit433 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit433:setParent(obj.rectangle2);
+    obj.edit433:setLeft(831);
+    obj.edit433:setTop(280);
+    obj.edit433:setWidth(30);
+    obj.edit433:setHeight(20);
+    obj.edit433:setHorzTextAlign("center");
+    obj.edit433:setFontSize(14);
+    obj.edit433:setFontColor("black");
+    obj.edit433:setTransparent(true);
+    obj.edit433:setField("MagiaBonus6");
+    obj.edit433:setName("edit433");
+
+    obj.edit434 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit434:setParent(obj.rectangle2);
+    obj.edit434:setLeft(645);
+    obj.edit434:setTop(306);
+    obj.edit434:setWidth(30);
+    obj.edit434:setHeight(20);
+    obj.edit434:setHorzTextAlign("center");
+    obj.edit434:setFontSize(14);
+    obj.edit434:setFontColor("black");
+    obj.edit434:setTransparent(true);
+    obj.edit434:setField("MagiasConhecidas7");
+    obj.edit434:setName("edit434");
+
+    obj.edit435 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit435:setParent(obj.rectangle2);
+    obj.edit435:setLeft(691);
+    obj.edit435:setTop(306);
+    obj.edit435:setWidth(30);
+    obj.edit435:setHeight(20);
+    obj.edit435:setHorzTextAlign("center");
+    obj.edit435:setFontSize(14);
+    obj.edit435:setFontColor("black");
+    obj.edit435:setTransparent(true);
+    obj.edit435:setField("CDResistMagia7");
+    obj.edit435:setName("edit435");
+
+    obj.edit436 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit436:setParent(obj.rectangle2);
+    obj.edit436:setLeft(783);
+    obj.edit436:setTop(306);
+    obj.edit436:setWidth(30);
+    obj.edit436:setHeight(20);
+    obj.edit436:setHorzTextAlign("center");
+    obj.edit436:setFontSize(14);
+    obj.edit436:setFontColor("black");
+    obj.edit436:setTransparent(true);
+    obj.edit436:setField("MagiaPorDia7");
+    obj.edit436:setName("edit436");
+
+    obj.edit437 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit437:setParent(obj.rectangle2);
+    obj.edit437:setLeft(831);
+    obj.edit437:setTop(306);
+    obj.edit437:setWidth(30);
+    obj.edit437:setHeight(20);
+    obj.edit437:setHorzTextAlign("center");
+    obj.edit437:setFontSize(14);
+    obj.edit437:setFontColor("black");
+    obj.edit437:setTransparent(true);
+    obj.edit437:setField("MagiaBonus7");
+    obj.edit437:setName("edit437");
+
+    obj.edit438 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit438:setParent(obj.rectangle2);
+    obj.edit438:setLeft(645);
+    obj.edit438:setTop(332);
+    obj.edit438:setWidth(30);
+    obj.edit438:setHeight(20);
+    obj.edit438:setHorzTextAlign("center");
+    obj.edit438:setFontSize(14);
+    obj.edit438:setFontColor("black");
+    obj.edit438:setTransparent(true);
+    obj.edit438:setField("MagiasConhecidas8");
+    obj.edit438:setName("edit438");
+
+    obj.edit439 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit439:setParent(obj.rectangle2);
+    obj.edit439:setLeft(691);
+    obj.edit439:setTop(332);
+    obj.edit439:setWidth(30);
+    obj.edit439:setHeight(20);
+    obj.edit439:setHorzTextAlign("center");
+    obj.edit439:setFontSize(14);
+    obj.edit439:setFontColor("black");
+    obj.edit439:setTransparent(true);
+    obj.edit439:setField("CDResistMagia8");
+    obj.edit439:setName("edit439");
+
+    obj.edit440 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit440:setParent(obj.rectangle2);
+    obj.edit440:setLeft(783);
+    obj.edit440:setTop(332);
+    obj.edit440:setWidth(30);
+    obj.edit440:setHeight(20);
+    obj.edit440:setHorzTextAlign("center");
+    obj.edit440:setFontSize(14);
+    obj.edit440:setFontColor("black");
+    obj.edit440:setTransparent(true);
+    obj.edit440:setField("MagiaPorDia8");
+    obj.edit440:setName("edit440");
+
+    obj.edit441 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit441:setParent(obj.rectangle2);
+    obj.edit441:setLeft(831);
+    obj.edit441:setTop(332);
+    obj.edit441:setWidth(30);
+    obj.edit441:setHeight(20);
+    obj.edit441:setHorzTextAlign("center");
+    obj.edit441:setFontSize(14);
+    obj.edit441:setFontColor("black");
+    obj.edit441:setTransparent(true);
+    obj.edit441:setField("MagiaBonus8");
+    obj.edit441:setName("edit441");
+
+    obj.edit442 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit442:setParent(obj.rectangle2);
+    obj.edit442:setLeft(645);
+    obj.edit442:setTop(358);
+    obj.edit442:setWidth(30);
+    obj.edit442:setHeight(20);
+    obj.edit442:setHorzTextAlign("center");
+    obj.edit442:setFontSize(14);
+    obj.edit442:setFontColor("black");
+    obj.edit442:setTransparent(true);
+    obj.edit442:setField("MagiasConhecidas9");
+    obj.edit442:setName("edit442");
+
+    obj.edit443 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit443:setParent(obj.rectangle2);
+    obj.edit443:setLeft(691);
+    obj.edit443:setTop(358);
+    obj.edit443:setWidth(30);
+    obj.edit443:setHeight(20);
+    obj.edit443:setHorzTextAlign("center");
+    obj.edit443:setFontSize(14);
+    obj.edit443:setFontColor("black");
+    obj.edit443:setTransparent(true);
+    obj.edit443:setField("CDResistMagia9");
+    obj.edit443:setName("edit443");
+
+    obj.edit444 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit444:setParent(obj.rectangle2);
+    obj.edit444:setLeft(783);
+    obj.edit444:setTop(358);
+    obj.edit444:setWidth(30);
+    obj.edit444:setHeight(20);
+    obj.edit444:setHorzTextAlign("center");
+    obj.edit444:setFontSize(14);
+    obj.edit444:setFontColor("black");
+    obj.edit444:setTransparent(true);
+    obj.edit444:setField("MagiaPorDia9");
+    obj.edit444:setName("edit444");
+
+    obj.edit445 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit445:setParent(obj.rectangle2);
+    obj.edit445:setLeft(831);
+    obj.edit445:setTop(358);
+    obj.edit445:setWidth(30);
+    obj.edit445:setHeight(20);
+    obj.edit445:setHorzTextAlign("center");
+    obj.edit445:setFontSize(14);
+    obj.edit445:setFontColor("black");
+    obj.edit445:setTransparent(true);
+    obj.edit445:setField("MagiaBonus9");
+    obj.edit445:setName("edit445");
+
+    obj.edit446 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit446:setParent(obj.rectangle2);
+    obj.edit446:setLeft(645);
+    obj.edit446:setTop(400);
+    obj.edit446:setWidth(215);
+    obj.edit446:setHeight(20);
+    obj.edit446:setHorzTextAlign("center");
+    obj.edit446:setFontSize(14);
+    obj.edit446:setFontColor("black");
+    obj.edit446:setTransparent(true);
+    obj.edit446:setField("ModificadoresCondicionaisMagia");
+    obj.edit446:setName("edit446");
+
+    obj.edit447 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit447:setParent(obj.rectangle2);
+    obj.edit447:setLeft(645);
+    obj.edit447:setTop(443);
+    obj.edit447:setWidth(215);
+    obj.edit447:setHeight(20);
+    obj.edit447:setHorzTextAlign("center");
+    obj.edit447:setFontSize(14);
+    obj.edit447:setFontColor("black");
+    obj.edit447:setTransparent(true);
+    obj.edit447:setField("DominiosEscolasEspecializada");
+    obj.edit447:setName("edit447");
+
+    obj.textEditor6 = GUI.fromHandle(_obj_newObject("textEditor"));
+    obj.textEditor6:setParent(obj.rectangle2);
+    obj.textEditor6:setLeft(645);
+    obj.textEditor6:setTop(485);
+    obj.textEditor6:setWidth(215);
+    obj.textEditor6:setHeight(80);
+    obj.textEditor6:setFontSize(13);
+    obj.textEditor6:setTransparent(false);
+    obj.textEditor6:setField("DEE0");
+    obj.textEditor6:setName("textEditor6");
+
+    obj.textEditor7 = GUI.fromHandle(_obj_newObject("textEditor"));
+    obj.textEditor7:setParent(obj.rectangle2);
+    obj.textEditor7:setLeft(645);
+    obj.textEditor7:setTop(580);
+    obj.textEditor7:setWidth(215);
+    obj.textEditor7:setHeight(80);
+    obj.textEditor7:setFontSize(13);
+    obj.textEditor7:setTransparent(false);
+    obj.textEditor7:setField("DEE1");
+    obj.textEditor7:setName("textEditor7");
+
+    obj.textEditor8 = GUI.fromHandle(_obj_newObject("textEditor"));
+    obj.textEditor8:setParent(obj.rectangle2);
+    obj.textEditor8:setLeft(645);
+    obj.textEditor8:setTop(675);
+    obj.textEditor8:setWidth(215);
+    obj.textEditor8:setHeight(66);
+    obj.textEditor8:setFontSize(13);
+    obj.textEditor8:setTransparent(false);
+    obj.textEditor8:setField("DEE2");
+    obj.textEditor8:setName("textEditor8");
+
+    obj.textEditor9 = GUI.fromHandle(_obj_newObject("textEditor"));
+    obj.textEditor9:setParent(obj.rectangle2);
+    obj.textEditor9:setLeft(645);
+    obj.textEditor9:setTop(755);
+    obj.textEditor9:setWidth(215);
+    obj.textEditor9:setHeight(60);
+    obj.textEditor9:setFontSize(13);
+    obj.textEditor9:setTransparent(false);
+    obj.textEditor9:setField("DEE3");
+    obj.textEditor9:setName("textEditor9");
+
+    obj.textEditor10 = GUI.fromHandle(_obj_newObject("textEditor"));
+    obj.textEditor10:setParent(obj.rectangle2);
+    obj.textEditor10:setLeft(645);
+    obj.textEditor10:setTop(830);
+    obj.textEditor10:setWidth(215);
+    obj.textEditor10:setHeight(47);
+    obj.textEditor10:setFontSize(13);
+    obj.textEditor10:setTransparent(false);
+    obj.textEditor10:setField("DEE4");
+    obj.textEditor10:setName("textEditor10");
+
+    obj.textEditor11 = GUI.fromHandle(_obj_newObject("textEditor"));
+    obj.textEditor11:setParent(obj.rectangle2);
+    obj.textEditor11:setLeft(645);
+    obj.textEditor11:setTop(890);
+    obj.textEditor11:setWidth(215);
+    obj.textEditor11:setHeight(37);
+    obj.textEditor11:setFontSize(13);
+    obj.textEditor11:setTransparent(false);
+    obj.textEditor11:setField("DEE5");
+    obj.textEditor11:setName("textEditor11");
+
+    obj.textEditor12 = GUI.fromHandle(_obj_newObject("textEditor"));
+    obj.textEditor12:setParent(obj.rectangle2);
+    obj.textEditor12:setLeft(645);
+    obj.textEditor12:setTop(940);
+    obj.textEditor12:setWidth(215);
+    obj.textEditor12:setHeight(38);
+    obj.textEditor12:setFontSize(13);
+    obj.textEditor12:setTransparent(false);
+    obj.textEditor12:setField("DEE6");
+    obj.textEditor12:setName("textEditor12");
+
+    obj.textEditor13 = GUI.fromHandle(_obj_newObject("textEditor"));
+    obj.textEditor13:setParent(obj.rectangle2);
+    obj.textEditor13:setLeft(645);
+    obj.textEditor13:setTop(993);
+    obj.textEditor13:setWidth(215);
+    obj.textEditor13:setHeight(37);
+    obj.textEditor13:setFontSize(13);
+    obj.textEditor13:setTransparent(false);
+    obj.textEditor13:setField("DEE7");
+    obj.textEditor13:setName("textEditor13");
+
+    obj.textEditor14 = GUI.fromHandle(_obj_newObject("textEditor"));
+    obj.textEditor14:setParent(obj.rectangle2);
+    obj.textEditor14:setLeft(645);
+    obj.textEditor14:setTop(1045);
+    obj.textEditor14:setWidth(215);
+    obj.textEditor14:setHeight(28);
+    obj.textEditor14:setFontSize(13);
+    obj.textEditor14:setTransparent(false);
+    obj.textEditor14:setField("DEE8");
+    obj.textEditor14:setName("textEditor14");
+
+    obj.textEditor15 = GUI.fromHandle(_obj_newObject("textEditor"));
+    obj.textEditor15:setParent(obj.rectangle2);
+    obj.textEditor15:setLeft(645);
+    obj.textEditor15:setTop(1087);
+    obj.textEditor15:setWidth(215);
+    obj.textEditor15:setHeight(28);
+    obj.textEditor15:setFontSize(13);
+    obj.textEditor15:setTransparent(false);
+    obj.textEditor15:setField("DEE9");
+    obj.textEditor15:setName("textEditor15");
+
+    obj.checkBox41 = GUI.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox41:setParent(obj.rectangle2);
+    obj.checkBox41:setLeft(658);
+    obj.checkBox41:setTop(468);
+    obj.checkBox41:setField("0Check1");
+    obj.checkBox41:setName("checkBox41");
+
+    obj.checkBox42 = GUI.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox42:setParent(obj.rectangle2);
+    obj.checkBox42:setLeft(670);
+    obj.checkBox42:setTop(468);
+    obj.checkBox42:setField("0Check2");
+    obj.checkBox42:setName("checkBox42");
+
+    obj.checkBox43 = GUI.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox43:setParent(obj.rectangle2);
+    obj.checkBox43:setLeft(682);
+    obj.checkBox43:setTop(468);
+    obj.checkBox43:setField("0Check3");
+    obj.checkBox43:setName("checkBox43");
+
+    obj.checkBox44 = GUI.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox44:setParent(obj.rectangle2);
+    obj.checkBox44:setLeft(694);
+    obj.checkBox44:setTop(468);
+    obj.checkBox44:setField("0Check4");
+    obj.checkBox44:setName("checkBox44");
+
+    obj.checkBox45 = GUI.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox45:setParent(obj.rectangle2);
+    obj.checkBox45:setLeft(706);
+    obj.checkBox45:setTop(468);
+    obj.checkBox45:setField("0Check5");
+    obj.checkBox45:setName("checkBox45");
+
+    obj.checkBox46 = GUI.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox46:setParent(obj.rectangle2);
+    obj.checkBox46:setLeft(718);
+    obj.checkBox46:setTop(468);
+    obj.checkBox46:setField("0Check6");
+    obj.checkBox46:setName("checkBox46");
+
+    obj.checkBox47 = GUI.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox47:setParent(obj.rectangle2);
+    obj.checkBox47:setLeft(730);
+    obj.checkBox47:setTop(468);
+    obj.checkBox47:setField("0Check7");
+    obj.checkBox47:setName("checkBox47");
+
+    obj.checkBox48 = GUI.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox48:setParent(obj.rectangle2);
+    obj.checkBox48:setLeft(742);
+    obj.checkBox48:setTop(468);
+    obj.checkBox48:setField("0Check8");
+    obj.checkBox48:setName("checkBox48");
+
+    obj.checkBox49 = GUI.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox49:setParent(obj.rectangle2);
+    obj.checkBox49:setLeft(754);
+    obj.checkBox49:setTop(468);
+    obj.checkBox49:setField("0Check9");
+    obj.checkBox49:setName("checkBox49");
+
+    obj.checkBox50 = GUI.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox50:setParent(obj.rectangle2);
+    obj.checkBox50:setLeft(658);
+    obj.checkBox50:setTop(563);
+    obj.checkBox50:setField("1Check1");
+    obj.checkBox50:setName("checkBox50");
+
+    obj.checkBox51 = GUI.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox51:setParent(obj.rectangle2);
+    obj.checkBox51:setLeft(670);
+    obj.checkBox51:setTop(563);
+    obj.checkBox51:setField("1Check2");
+    obj.checkBox51:setName("checkBox51");
+
+    obj.checkBox52 = GUI.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox52:setParent(obj.rectangle2);
+    obj.checkBox52:setLeft(682);
+    obj.checkBox52:setTop(563);
+    obj.checkBox52:setField("1Check3");
+    obj.checkBox52:setName("checkBox52");
+
+    obj.checkBox53 = GUI.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox53:setParent(obj.rectangle2);
+    obj.checkBox53:setLeft(694);
+    obj.checkBox53:setTop(563);
+    obj.checkBox53:setField("1Check4");
+    obj.checkBox53:setName("checkBox53");
+
+    obj.checkBox54 = GUI.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox54:setParent(obj.rectangle2);
+    obj.checkBox54:setLeft(706);
+    obj.checkBox54:setTop(563);
+    obj.checkBox54:setField("1Check5");
+    obj.checkBox54:setName("checkBox54");
+
+    obj.checkBox55 = GUI.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox55:setParent(obj.rectangle2);
+    obj.checkBox55:setLeft(718);
+    obj.checkBox55:setTop(563);
+    obj.checkBox55:setField("1Check6");
+    obj.checkBox55:setName("checkBox55");
+
+    obj.checkBox56 = GUI.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox56:setParent(obj.rectangle2);
+    obj.checkBox56:setLeft(730);
+    obj.checkBox56:setTop(563);
+    obj.checkBox56:setField("1Check7");
+    obj.checkBox56:setName("checkBox56");
+
+    obj.checkBox57 = GUI.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox57:setParent(obj.rectangle2);
+    obj.checkBox57:setLeft(742);
+    obj.checkBox57:setTop(563);
+    obj.checkBox57:setField("1Check8");
+    obj.checkBox57:setName("checkBox57");
+
+    obj.checkBox58 = GUI.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox58:setParent(obj.rectangle2);
+    obj.checkBox58:setLeft(754);
+    obj.checkBox58:setTop(563);
+    obj.checkBox58:setField("1Check9");
+    obj.checkBox58:setName("checkBox58");
+
+    obj.checkBox59 = GUI.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox59:setParent(obj.rectangle2);
+    obj.checkBox59:setLeft(658);
+    obj.checkBox59:setTop(657);
+    obj.checkBox59:setField("2Check1");
+    obj.checkBox59:setName("checkBox59");
+
+    obj.checkBox60 = GUI.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox60:setParent(obj.rectangle2);
+    obj.checkBox60:setLeft(670);
+    obj.checkBox60:setTop(657);
+    obj.checkBox60:setField("2Check2");
+    obj.checkBox60:setName("checkBox60");
+
+    obj.checkBox61 = GUI.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox61:setParent(obj.rectangle2);
+    obj.checkBox61:setLeft(682);
+    obj.checkBox61:setTop(657);
+    obj.checkBox61:setField("2Check3");
+    obj.checkBox61:setName("checkBox61");
+
+    obj.checkBox62 = GUI.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox62:setParent(obj.rectangle2);
+    obj.checkBox62:setLeft(694);
+    obj.checkBox62:setTop(657);
+    obj.checkBox62:setField("2Check4");
+    obj.checkBox62:setName("checkBox62");
+
+    obj.checkBox63 = GUI.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox63:setParent(obj.rectangle2);
+    obj.checkBox63:setLeft(706);
+    obj.checkBox63:setTop(657);
+    obj.checkBox63:setField("2Check5");
+    obj.checkBox63:setName("checkBox63");
+
+    obj.checkBox64 = GUI.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox64:setParent(obj.rectangle2);
+    obj.checkBox64:setLeft(718);
+    obj.checkBox64:setTop(657);
+    obj.checkBox64:setField("2Check6");
+    obj.checkBox64:setName("checkBox64");
+
+    obj.checkBox65 = GUI.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox65:setParent(obj.rectangle2);
+    obj.checkBox65:setLeft(730);
+    obj.checkBox65:setTop(657);
+    obj.checkBox65:setField("2Check7");
+    obj.checkBox65:setName("checkBox65");
+
+    obj.checkBox66 = GUI.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox66:setParent(obj.rectangle2);
+    obj.checkBox66:setLeft(742);
+    obj.checkBox66:setTop(657);
+    obj.checkBox66:setField("2Check8");
+    obj.checkBox66:setName("checkBox66");
+
+    obj.checkBox67 = GUI.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox67:setParent(obj.rectangle2);
+    obj.checkBox67:setLeft(754);
+    obj.checkBox67:setTop(657);
+    obj.checkBox67:setField("2Check9");
+    obj.checkBox67:setName("checkBox67");
+
+    obj.checkBox68 = GUI.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox68:setParent(obj.rectangle2);
+    obj.checkBox68:setLeft(658);
+    obj.checkBox68:setTop(739);
+    obj.checkBox68:setField("3Check1");
+    obj.checkBox68:setName("checkBox68");
+
+    obj.checkBox69 = GUI.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox69:setParent(obj.rectangle2);
+    obj.checkBox69:setLeft(670);
+    obj.checkBox69:setTop(739);
+    obj.checkBox69:setField("3Check2");
+    obj.checkBox69:setName("checkBox69");
+
+    obj.checkBox70 = GUI.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox70:setParent(obj.rectangle2);
+    obj.checkBox70:setLeft(682);
+    obj.checkBox70:setTop(739);
+    obj.checkBox70:setField("3Check3");
+    obj.checkBox70:setName("checkBox70");
+
+    obj.checkBox71 = GUI.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox71:setParent(obj.rectangle2);
+    obj.checkBox71:setLeft(694);
+    obj.checkBox71:setTop(739);
+    obj.checkBox71:setField("3Check4");
+    obj.checkBox71:setName("checkBox71");
+
+    obj.checkBox72 = GUI.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox72:setParent(obj.rectangle2);
+    obj.checkBox72:setLeft(706);
+    obj.checkBox72:setTop(739);
+    obj.checkBox72:setField("3Check5");
+    obj.checkBox72:setName("checkBox72");
+
+    obj.checkBox73 = GUI.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox73:setParent(obj.rectangle2);
+    obj.checkBox73:setLeft(718);
+    obj.checkBox73:setTop(739);
+    obj.checkBox73:setField("3Check6");
+    obj.checkBox73:setName("checkBox73");
+
+    obj.checkBox74 = GUI.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox74:setParent(obj.rectangle2);
+    obj.checkBox74:setLeft(730);
+    obj.checkBox74:setTop(739);
+    obj.checkBox74:setField("3Check7");
+    obj.checkBox74:setName("checkBox74");
+
+    obj.checkBox75 = GUI.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox75:setParent(obj.rectangle2);
+    obj.checkBox75:setLeft(742);
+    obj.checkBox75:setTop(739);
+    obj.checkBox75:setField("3Check8");
+    obj.checkBox75:setName("checkBox75");
+
+    obj.checkBox76 = GUI.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox76:setParent(obj.rectangle2);
+    obj.checkBox76:setLeft(754);
+    obj.checkBox76:setTop(739);
+    obj.checkBox76:setField("3Check9");
+    obj.checkBox76:setName("checkBox76");
+
+    obj.checkBox77 = GUI.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox77:setParent(obj.rectangle2);
+    obj.checkBox77:setLeft(658);
+    obj.checkBox77:setTop(812);
+    obj.checkBox77:setField("4check1");
+    obj.checkBox77:setName("checkBox77");
+
+    obj.checkBox78 = GUI.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox78:setParent(obj.rectangle2);
+    obj.checkBox78:setLeft(670);
+    obj.checkBox78:setTop(812);
+    obj.checkBox78:setField("4check2");
+    obj.checkBox78:setName("checkBox78");
+
+    obj.checkBox79 = GUI.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox79:setParent(obj.rectangle2);
+    obj.checkBox79:setLeft(682);
+    obj.checkBox79:setTop(812);
+    obj.checkBox79:setField("4check3");
+    obj.checkBox79:setName("checkBox79");
+
+    obj.checkBox80 = GUI.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox80:setParent(obj.rectangle2);
+    obj.checkBox80:setLeft(694);
+    obj.checkBox80:setTop(812);
+    obj.checkBox80:setField("4check4");
+    obj.checkBox80:setName("checkBox80");
+
+    obj.checkBox81 = GUI.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox81:setParent(obj.rectangle2);
+    obj.checkBox81:setLeft(706);
+    obj.checkBox81:setTop(812);
+    obj.checkBox81:setField("4check5");
+    obj.checkBox81:setName("checkBox81");
+
+    obj.checkBox82 = GUI.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox82:setParent(obj.rectangle2);
+    obj.checkBox82:setLeft(718);
+    obj.checkBox82:setTop(812);
+    obj.checkBox82:setField("4check6");
+    obj.checkBox82:setName("checkBox82");
+
+    obj.checkBox83 = GUI.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox83:setParent(obj.rectangle2);
+    obj.checkBox83:setLeft(730);
+    obj.checkBox83:setTop(812);
+    obj.checkBox83:setField("4check7");
+    obj.checkBox83:setName("checkBox83");
+
+    obj.checkBox84 = GUI.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox84:setParent(obj.rectangle2);
+    obj.checkBox84:setLeft(742);
+    obj.checkBox84:setTop(812);
+    obj.checkBox84:setField("4check8");
+    obj.checkBox84:setName("checkBox84");
+
+    obj.checkBox85 = GUI.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox85:setParent(obj.rectangle2);
+    obj.checkBox85:setLeft(754);
+    obj.checkBox85:setTop(812);
+    obj.checkBox85:setField("4check9");
+    obj.checkBox85:setName("checkBox85");
+
+    obj.checkBox86 = GUI.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox86:setParent(obj.rectangle2);
+    obj.checkBox86:setLeft(658);
+    obj.checkBox86:setTop(874);
+    obj.checkBox86:setField("5check1");
+    obj.checkBox86:setName("checkBox86");
+
+    obj.checkBox87 = GUI.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox87:setParent(obj.rectangle2);
+    obj.checkBox87:setLeft(670);
+    obj.checkBox87:setTop(874);
+    obj.checkBox87:setField("5check2");
+    obj.checkBox87:setName("checkBox87");
+
+    obj.checkBox88 = GUI.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox88:setParent(obj.rectangle2);
+    obj.checkBox88:setLeft(682);
+    obj.checkBox88:setTop(874);
+    obj.checkBox88:setField("5check3");
+    obj.checkBox88:setName("checkBox88");
+
+    obj.checkBox89 = GUI.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox89:setParent(obj.rectangle2);
+    obj.checkBox89:setLeft(694);
+    obj.checkBox89:setTop(874);
+    obj.checkBox89:setField("5check4");
+    obj.checkBox89:setName("checkBox89");
+
+    obj.checkBox90 = GUI.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox90:setParent(obj.rectangle2);
+    obj.checkBox90:setLeft(706);
+    obj.checkBox90:setTop(874);
+    obj.checkBox90:setField("5check5");
+    obj.checkBox90:setName("checkBox90");
+
+    obj.checkBox91 = GUI.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox91:setParent(obj.rectangle2);
+    obj.checkBox91:setLeft(718);
+    obj.checkBox91:setTop(874);
+    obj.checkBox91:setField("5check6");
+    obj.checkBox91:setName("checkBox91");
+
+    obj.checkBox92 = GUI.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox92:setParent(obj.rectangle2);
+    obj.checkBox92:setLeft(730);
+    obj.checkBox92:setTop(874);
+    obj.checkBox92:setField("5check7");
+    obj.checkBox92:setName("checkBox92");
+
+    obj.checkBox93 = GUI.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox93:setParent(obj.rectangle2);
+    obj.checkBox93:setLeft(742);
+    obj.checkBox93:setTop(874);
+    obj.checkBox93:setField("5check8");
+    obj.checkBox93:setName("checkBox93");
+
+    obj.checkBox94 = GUI.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox94:setParent(obj.rectangle2);
+    obj.checkBox94:setLeft(754);
+    obj.checkBox94:setTop(874);
+    obj.checkBox94:setField("5check9");
+    obj.checkBox94:setName("checkBox94");
+
+    obj.checkBox95 = GUI.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox95:setParent(obj.rectangle2);
+    obj.checkBox95:setLeft(658);
+    obj.checkBox95:setTop(924);
+    obj.checkBox95:setField("6check1");
+    obj.checkBox95:setName("checkBox95");
+
+    obj.checkBox96 = GUI.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox96:setParent(obj.rectangle2);
+    obj.checkBox96:setLeft(670);
+    obj.checkBox96:setTop(924);
+    obj.checkBox96:setField("6check2");
+    obj.checkBox96:setName("checkBox96");
+
+    obj.checkBox97 = GUI.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox97:setParent(obj.rectangle2);
+    obj.checkBox97:setLeft(682);
+    obj.checkBox97:setTop(924);
+    obj.checkBox97:setField("6check3");
+    obj.checkBox97:setName("checkBox97");
+
+    obj.checkBox98 = GUI.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox98:setParent(obj.rectangle2);
+    obj.checkBox98:setLeft(694);
+    obj.checkBox98:setTop(924);
+    obj.checkBox98:setField("6check4");
+    obj.checkBox98:setName("checkBox98");
+
+    obj.checkBox99 = GUI.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox99:setParent(obj.rectangle2);
+    obj.checkBox99:setLeft(706);
+    obj.checkBox99:setTop(924);
+    obj.checkBox99:setField("6check5");
+    obj.checkBox99:setName("checkBox99");
+
+    obj.checkBox100 = GUI.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox100:setParent(obj.rectangle2);
+    obj.checkBox100:setLeft(718);
+    obj.checkBox100:setTop(924);
+    obj.checkBox100:setField("6check6");
+    obj.checkBox100:setName("checkBox100");
+
+    obj.checkBox101 = GUI.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox101:setParent(obj.rectangle2);
+    obj.checkBox101:setLeft(730);
+    obj.checkBox101:setTop(924);
+    obj.checkBox101:setField("6check7");
+    obj.checkBox101:setName("checkBox101");
+
+    obj.checkBox102 = GUI.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox102:setParent(obj.rectangle2);
+    obj.checkBox102:setLeft(742);
+    obj.checkBox102:setTop(924);
+    obj.checkBox102:setField("6check8");
+    obj.checkBox102:setName("checkBox102");
+
+    obj.checkBox103 = GUI.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox103:setParent(obj.rectangle2);
+    obj.checkBox103:setLeft(754);
+    obj.checkBox103:setTop(924);
+    obj.checkBox103:setField("6check9");
+    obj.checkBox103:setName("checkBox103");
+
+    obj.checkBox104 = GUI.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox104:setParent(obj.rectangle2);
+    obj.checkBox104:setLeft(658);
+    obj.checkBox104:setTop(976);
+    obj.checkBox104:setField("7check1");
+    obj.checkBox104:setName("checkBox104");
+
+    obj.checkBox105 = GUI.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox105:setParent(obj.rectangle2);
+    obj.checkBox105:setLeft(670);
+    obj.checkBox105:setTop(976);
+    obj.checkBox105:setField("7check2");
+    obj.checkBox105:setName("checkBox105");
+
+    obj.checkBox106 = GUI.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox106:setParent(obj.rectangle2);
+    obj.checkBox106:setLeft(682);
+    obj.checkBox106:setTop(976);
+    obj.checkBox106:setField("7check3");
+    obj.checkBox106:setName("checkBox106");
+
+    obj.checkBox107 = GUI.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox107:setParent(obj.rectangle2);
+    obj.checkBox107:setLeft(694);
+    obj.checkBox107:setTop(976);
+    obj.checkBox107:setField("7check4");
+    obj.checkBox107:setName("checkBox107");
+
+    obj.checkBox108 = GUI.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox108:setParent(obj.rectangle2);
+    obj.checkBox108:setLeft(706);
+    obj.checkBox108:setTop(976);
+    obj.checkBox108:setField("7check5");
+    obj.checkBox108:setName("checkBox108");
+
+    obj.checkBox109 = GUI.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox109:setParent(obj.rectangle2);
+    obj.checkBox109:setLeft(718);
+    obj.checkBox109:setTop(976);
+    obj.checkBox109:setField("7check6");
+    obj.checkBox109:setName("checkBox109");
+
+    obj.checkBox110 = GUI.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox110:setParent(obj.rectangle2);
+    obj.checkBox110:setLeft(730);
+    obj.checkBox110:setTop(976);
+    obj.checkBox110:setField("7check7");
+    obj.checkBox110:setName("checkBox110");
+
+    obj.checkBox111 = GUI.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox111:setParent(obj.rectangle2);
+    obj.checkBox111:setLeft(742);
+    obj.checkBox111:setTop(976);
+    obj.checkBox111:setField("7check8");
+    obj.checkBox111:setName("checkBox111");
+
+    obj.checkBox112 = GUI.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox112:setParent(obj.rectangle2);
+    obj.checkBox112:setLeft(754);
+    obj.checkBox112:setTop(976);
+    obj.checkBox112:setField("7check9");
+    obj.checkBox112:setName("checkBox112");
+
+    obj.checkBox113 = GUI.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox113:setParent(obj.rectangle2);
+    obj.checkBox113:setLeft(658);
+    obj.checkBox113:setTop(1028);
+    obj.checkBox113:setField("8check1");
+    obj.checkBox113:setName("checkBox113");
+
+    obj.checkBox114 = GUI.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox114:setParent(obj.rectangle2);
+    obj.checkBox114:setLeft(670);
+    obj.checkBox114:setTop(1028);
+    obj.checkBox114:setField("8check2");
+    obj.checkBox114:setName("checkBox114");
+
+    obj.checkBox115 = GUI.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox115:setParent(obj.rectangle2);
+    obj.checkBox115:setLeft(682);
+    obj.checkBox115:setTop(1028);
+    obj.checkBox115:setField("8check3");
+    obj.checkBox115:setName("checkBox115");
+
+    obj.checkBox116 = GUI.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox116:setParent(obj.rectangle2);
+    obj.checkBox116:setLeft(694);
+    obj.checkBox116:setTop(1028);
+    obj.checkBox116:setField("8check4");
+    obj.checkBox116:setName("checkBox116");
+
+    obj.checkBox117 = GUI.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox117:setParent(obj.rectangle2);
+    obj.checkBox117:setLeft(706);
+    obj.checkBox117:setTop(1028);
+    obj.checkBox117:setField("8check5");
+    obj.checkBox117:setName("checkBox117");
+
+    obj.checkBox118 = GUI.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox118:setParent(obj.rectangle2);
+    obj.checkBox118:setLeft(718);
+    obj.checkBox118:setTop(1028);
+    obj.checkBox118:setField("8check6");
+    obj.checkBox118:setName("checkBox118");
+
+    obj.checkBox119 = GUI.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox119:setParent(obj.rectangle2);
+    obj.checkBox119:setLeft(730);
+    obj.checkBox119:setTop(1028);
+    obj.checkBox119:setField("8check7");
+    obj.checkBox119:setName("checkBox119");
+
+    obj.checkBox120 = GUI.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox120:setParent(obj.rectangle2);
+    obj.checkBox120:setLeft(742);
+    obj.checkBox120:setTop(1028);
+    obj.checkBox120:setField("8check8");
+    obj.checkBox120:setName("checkBox120");
+
+    obj.checkBox121 = GUI.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox121:setParent(obj.rectangle2);
+    obj.checkBox121:setLeft(754);
+    obj.checkBox121:setTop(1028);
+    obj.checkBox121:setField("8check9");
+    obj.checkBox121:setName("checkBox121");
+
+    obj.checkBox122 = GUI.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox122:setParent(obj.rectangle2);
+    obj.checkBox122:setLeft(658);
+    obj.checkBox122:setTop(1070);
+    obj.checkBox122:setField("8check1");
+    obj.checkBox122:setName("checkBox122");
+
+    obj.checkBox123 = GUI.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox123:setParent(obj.rectangle2);
+    obj.checkBox123:setLeft(670);
+    obj.checkBox123:setTop(1070);
+    obj.checkBox123:setField("8check2");
+    obj.checkBox123:setName("checkBox123");
+
+    obj.checkBox124 = GUI.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox124:setParent(obj.rectangle2);
+    obj.checkBox124:setLeft(682);
+    obj.checkBox124:setTop(1070);
+    obj.checkBox124:setField("8check3");
+    obj.checkBox124:setName("checkBox124");
+
+    obj.checkBox125 = GUI.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox125:setParent(obj.rectangle2);
+    obj.checkBox125:setLeft(694);
+    obj.checkBox125:setTop(1070);
+    obj.checkBox125:setField("8check4");
+    obj.checkBox125:setName("checkBox125");
+
+    obj.checkBox126 = GUI.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox126:setParent(obj.rectangle2);
+    obj.checkBox126:setLeft(706);
+    obj.checkBox126:setTop(1070);
+    obj.checkBox126:setField("8check5");
+    obj.checkBox126:setName("checkBox126");
+
+    obj.checkBox127 = GUI.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox127:setParent(obj.rectangle2);
+    obj.checkBox127:setLeft(718);
+    obj.checkBox127:setTop(1070);
+    obj.checkBox127:setField("8check6");
+    obj.checkBox127:setName("checkBox127");
+
+    obj.checkBox128 = GUI.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox128:setParent(obj.rectangle2);
+    obj.checkBox128:setLeft(730);
+    obj.checkBox128:setTop(1070);
+    obj.checkBox128:setField("8check7");
+    obj.checkBox128:setName("checkBox128");
+
+    obj.checkBox129 = GUI.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox129:setParent(obj.rectangle2);
+    obj.checkBox129:setLeft(742);
+    obj.checkBox129:setTop(1070);
+    obj.checkBox129:setField("8check8");
+    obj.checkBox129:setName("checkBox129");
+
+    obj.checkBox130 = GUI.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox130:setParent(obj.rectangle2);
+    obj.checkBox130:setLeft(754);
+    obj.checkBox130:setTop(1070);
+    obj.checkBox130:setField("8check9");
+    obj.checkBox130:setName("checkBox130");
+
     function obj:_releaseEvents()
     end;
 
@@ -4356,47 +7029,337 @@ local function constructNew_frmPath()
           self:setNodeDatabase(nil);
         end;
 
-        if self.edit213 ~= nil then self.edit213:destroy(); self.edit213 = nil; end;
-        if self.checkBox39 ~= nil then self.checkBox39:destroy(); self.checkBox39 = nil; end;
-        if self.edit150 ~= nil then self.edit150:destroy(); self.edit150 = nil; end;
         if self.edit273 ~= nil then self.edit273:destroy(); self.edit273 = nil; end;
-        if self.edit73 ~= nil then self.edit73:destroy(); self.edit73 = nil; end;
+        if self.edit150 ~= nil then self.edit150:destroy(); self.edit150 = nil; end;
+        if self.edit20 ~= nil then self.edit20:destroy(); self.edit20 = nil; end;
+        if self.edit396 ~= nil then self.edit396:destroy(); self.edit396 = nil; end;
+        if self.checkBox67 ~= nil then self.checkBox67:destroy(); self.checkBox67 = nil; end;
+        if self.checkBox85 ~= nil then self.checkBox85:destroy(); self.checkBox85 = nil; end;
         if self.edit64 ~= nil then self.edit64:destroy(); self.edit64 = nil; end;
-        if self.edit98 ~= nil then self.edit98:destroy(); self.edit98 = nil; end;
-        if self.edit222 ~= nil then self.edit222:destroy(); self.edit222 = nil; end;
-        if self.checkBox15 ~= nil then self.checkBox15:destroy(); self.checkBox15 = nil; end;
+        if self.edit233 ~= nil then self.edit233:destroy(); self.edit233 = nil; end;
         if self.edit226 ~= nil then self.edit226:destroy(); self.edit226 = nil; end;
         if self.edit41 ~= nil then self.edit41:destroy(); self.edit41 = nil; end;
         if self.edit172 ~= nil then self.edit172:destroy(); self.edit172 = nil; end;
-        if self.checkBox18 ~= nil then self.checkBox18:destroy(); self.checkBox18 = nil; end;
         if self.edit195 ~= nil then self.edit195:destroy(); self.edit195 = nil; end;
-        if self.edit233 ~= nil then self.edit233:destroy(); self.edit233 = nil; end;
+        if self.checkBox111 ~= nil then self.checkBox111:destroy(); self.checkBox111 = nil; end;
         if self.edit36 ~= nil then self.edit36:destroy(); self.edit36 = nil; end;
         if self.edit9 ~= nil then self.edit9:destroy(); self.edit9 = nil; end;
-        if self.edit185 ~= nil then self.edit185:destroy(); self.edit185 = nil; end;
         if self.edit33 ~= nil then self.edit33:destroy(); self.edit33 = nil; end;
         if self.edit29 ~= nil then self.edit29:destroy(); self.edit29 = nil; end;
-        if self.edit111 ~= nil then self.edit111:destroy(); self.edit111 = nil; end;
-        if self.edit28 ~= nil then self.edit28:destroy(); self.edit28 = nil; end;
+        if self.edit334 ~= nil then self.edit334:destroy(); self.edit334 = nil; end;
+        if self.edit430 ~= nil then self.edit430:destroy(); self.edit430 = nil; end;
         if self.edit262 ~= nil then self.edit262:destroy(); self.edit262 = nil; end;
         if self.checkBox29 ~= nil then self.checkBox29:destroy(); self.checkBox29 = nil; end;
+        if self.edit296 ~= nil then self.edit296:destroy(); self.edit296 = nil; end;
+        if self.edit76 ~= nil then self.edit76:destroy(); self.edit76 = nil; end;
+        if self.edit431 ~= nil then self.edit431:destroy(); self.edit431 = nil; end;
+        if self.edit265 ~= nil then self.edit265:destroy(); self.edit265 = nil; end;
+        if self.edit445 ~= nil then self.edit445:destroy(); self.edit445 = nil; end;
+        if self.checkBox68 ~= nil then self.checkBox68:destroy(); self.checkBox68 = nil; end;
+        if self.checkBox98 ~= nil then self.checkBox98:destroy(); self.checkBox98 = nil; end;
+        if self.edit236 ~= nil then self.edit236:destroy(); self.edit236 = nil; end;
+        if self.edit82 ~= nil then self.edit82:destroy(); self.edit82 = nil; end;
+        if self.edit386 ~= nil then self.edit386:destroy(); self.edit386 = nil; end;
+        if self.checkBox78 ~= nil then self.checkBox78:destroy(); self.checkBox78 = nil; end;
+        if self.edit412 ~= nil then self.edit412:destroy(); self.edit412 = nil; end;
+        if self.edit366 ~= nil then self.edit366:destroy(); self.edit366 = nil; end;
+        if self.edit297 ~= nil then self.edit297:destroy(); self.edit297 = nil; end;
+        if self.edit11 ~= nil then self.edit11:destroy(); self.edit11 = nil; end;
+        if self.edit429 ~= nil then self.edit429:destroy(); self.edit429 = nil; end;
+        if self.image1 ~= nil then self.image1:destroy(); self.image1 = nil; end;
+        if self.edit413 ~= nil then self.edit413:destroy(); self.edit413 = nil; end;
+        if self.checkBox79 ~= nil then self.checkBox79:destroy(); self.checkBox79 = nil; end;
+        if self.edit183 ~= nil then self.edit183:destroy(); self.edit183 = nil; end;
+        if self.checkBox124 ~= nil then self.checkBox124:destroy(); self.checkBox124 = nil; end;
+        if self.edit442 ~= nil then self.edit442:destroy(); self.edit442 = nil; end;
+        if self.checkBox56 ~= nil then self.checkBox56:destroy(); self.checkBox56 = nil; end;
+        if self.edit156 ~= nil then self.edit156:destroy(); self.edit156 = nil; end;
+        if self.edit245 ~= nil then self.edit245:destroy(); self.edit245 = nil; end;
+        if self.textEditor15 ~= nil then self.textEditor15:destroy(); self.textEditor15 = nil; end;
+        if self.edit267 ~= nil then self.edit267:destroy(); self.edit267 = nil; end;
+        if self.edit69 ~= nil then self.edit69:destroy(); self.edit69 = nil; end;
+        if self.checkBox49 ~= nil then self.checkBox49:destroy(); self.checkBox49 = nil; end;
+        if self.edit255 ~= nil then self.edit255:destroy(); self.edit255 = nil; end;
+        if self.edit228 ~= nil then self.edit228:destroy(); self.edit228 = nil; end;
+        if self.edit312 ~= nil then self.edit312:destroy(); self.edit312 = nil; end;
+        if self.edit115 ~= nil then self.edit115:destroy(); self.edit115 = nil; end;
+        if self.edit16 ~= nil then self.edit16:destroy(); self.edit16 = nil; end;
+        if self.edit400 ~= nil then self.edit400:destroy(); self.edit400 = nil; end;
+        if self.edit205 ~= nil then self.edit205:destroy(); self.edit205 = nil; end;
+        if self.checkBox102 ~= nil then self.checkBox102:destroy(); self.checkBox102 = nil; end;
+        if self.checkBox128 ~= nil then self.checkBox128:destroy(); self.checkBox128 = nil; end;
+        if self.edit116 ~= nil then self.edit116:destroy(); self.edit116 = nil; end;
+        if self.edit214 ~= nil then self.edit214:destroy(); self.edit214 = nil; end;
+        if self.edit77 ~= nil then self.edit77:destroy(); self.edit77 = nil; end;
+        if self.edit52 ~= nil then self.edit52:destroy(); self.edit52 = nil; end;
+        if self.edit196 ~= nil then self.edit196:destroy(); self.edit196 = nil; end;
+        if self.edit159 ~= nil then self.edit159:destroy(); self.edit159 = nil; end;
+        if self.edit260 ~= nil then self.edit260:destroy(); self.edit260 = nil; end;
+        if self.edit316 ~= nil then self.edit316:destroy(); self.edit316 = nil; end;
+        if self.edit339 ~= nil then self.edit339:destroy(); self.edit339 = nil; end;
+        if self.label1 ~= nil then self.label1:destroy(); self.label1 = nil; end;
+        if self.textEditor4 ~= nil then self.textEditor4:destroy(); self.textEditor4 = nil; end;
+        if self.edit220 ~= nil then self.edit220:destroy(); self.edit220 = nil; end;
+        if self.edit404 ~= nil then self.edit404:destroy(); self.edit404 = nil; end;
+        if self.checkBox55 ~= nil then self.checkBox55:destroy(); self.checkBox55 = nil; end;
+        if self.checkBox3 ~= nil then self.checkBox3:destroy(); self.checkBox3 = nil; end;
+        if self.edit58 ~= nil then self.edit58:destroy(); self.edit58 = nil; end;
+        if self.edit235 ~= nil then self.edit235:destroy(); self.edit235 = nil; end;
+        if self.edit441 ~= nil then self.edit441:destroy(); self.edit441 = nil; end;
+        if self.edit446 ~= nil then self.edit446:destroy(); self.edit446 = nil; end;
+        if self.edit423 ~= nil then self.edit423:destroy(); self.edit423 = nil; end;
+        if self.checkBox42 ~= nil then self.checkBox42:destroy(); self.checkBox42 = nil; end;
+        if self.edit66 ~= nil then self.edit66:destroy(); self.edit66 = nil; end;
+        if self.edit347 ~= nil then self.edit347:destroy(); self.edit347 = nil; end;
+        if self.edit343 ~= nil then self.edit343:destroy(); self.edit343 = nil; end;
+        if self.checkBox119 ~= nil then self.checkBox119:destroy(); self.checkBox119 = nil; end;
+        if self.checkBox115 ~= nil then self.checkBox115:destroy(); self.checkBox115 = nil; end;
+        if self.edit129 ~= nil then self.edit129:destroy(); self.edit129 = nil; end;
+        if self.edit142 ~= nil then self.edit142:destroy(); self.edit142 = nil; end;
+        if self.edit295 ~= nil then self.edit295:destroy(); self.edit295 = nil; end;
+        if self.checkBox63 ~= nil then self.checkBox63:destroy(); self.checkBox63 = nil; end;
+        if self.checkBox127 ~= nil then self.checkBox127:destroy(); self.checkBox127 = nil; end;
+        if self.edit251 ~= nil then self.edit251:destroy(); self.edit251 = nil; end;
+        if self.rectangle2 ~= nil then self.rectangle2:destroy(); self.rectangle2 = nil; end;
+        if self.checkBox50 ~= nil then self.checkBox50:destroy(); self.checkBox50 = nil; end;
+        if self.edit304 ~= nil then self.edit304:destroy(); self.edit304 = nil; end;
+        if self.tabControl1 ~= nil then self.tabControl1:destroy(); self.tabControl1 = nil; end;
+        if self.edit385 ~= nil then self.edit385:destroy(); self.edit385 = nil; end;
+        if self.edit99 ~= nil then self.edit99:destroy(); self.edit99 = nil; end;
+        if self.edit182 ~= nil then self.edit182:destroy(); self.edit182 = nil; end;
+        if self.edit401 ~= nil then self.edit401:destroy(); self.edit401 = nil; end;
+        if self.checkBox84 ~= nil then self.checkBox84:destroy(); self.checkBox84 = nil; end;
+        if self.edit309 ~= nil then self.edit309:destroy(); self.edit309 = nil; end;
+        if self.edit369 ~= nil then self.edit369:destroy(); self.edit369 = nil; end;
+        if self.edit67 ~= nil then self.edit67:destroy(); self.edit67 = nil; end;
+        if self.edit410 ~= nil then self.edit410:destroy(); self.edit410 = nil; end;
+        if self.edit324 ~= nil then self.edit324:destroy(); self.edit324 = nil; end;
+        if self.checkBox48 ~= nil then self.checkBox48:destroy(); self.checkBox48 = nil; end;
+        if self.checkBox53 ~= nil then self.checkBox53:destroy(); self.checkBox53 = nil; end;
+        if self.edit176 ~= nil then self.edit176:destroy(); self.edit176 = nil; end;
+        if self.edit440 ~= nil then self.edit440:destroy(); self.edit440 = nil; end;
+        if self.checkBox70 ~= nil then self.checkBox70:destroy(); self.checkBox70 = nil; end;
+        if self.edit420 ~= nil then self.edit420:destroy(); self.edit420 = nil; end;
+        if self.checkBox122 ~= nil then self.checkBox122:destroy(); self.checkBox122 = nil; end;
+        if self.checkBox95 ~= nil then self.checkBox95:destroy(); self.checkBox95 = nil; end;
+        if self.edit221 ~= nil then self.edit221:destroy(); self.edit221 = nil; end;
+        if self.checkBox23 ~= nil then self.checkBox23:destroy(); self.checkBox23 = nil; end;
+        if self.checkBox37 ~= nil then self.checkBox37:destroy(); self.checkBox37 = nil; end;
+        if self.edit258 ~= nil then self.edit258:destroy(); self.edit258 = nil; end;
+        if self.edit362 ~= nil then self.edit362:destroy(); self.edit362 = nil; end;
+        if self.checkBox40 ~= nil then self.checkBox40:destroy(); self.checkBox40 = nil; end;
+        if self.edit348 ~= nil then self.edit348:destroy(); self.edit348 = nil; end;
+        if self.checkBox28 ~= nil then self.checkBox28:destroy(); self.checkBox28 = nil; end;
+        if self.edit124 ~= nil then self.edit124:destroy(); self.edit124 = nil; end;
+        if self.checkBox125 ~= nil then self.checkBox125:destroy(); self.checkBox125 = nil; end;
+        if self.label2 ~= nil then self.label2:destroy(); self.label2 = nil; end;
+        if self.edit157 ~= nil then self.edit157:destroy(); self.edit157 = nil; end;
+        if self.edit301 ~= nil then self.edit301:destroy(); self.edit301 = nil; end;
+        if self.edit284 ~= nil then self.edit284:destroy(); self.edit284 = nil; end;
+        if self.edit83 ~= nil then self.edit83:destroy(); self.edit83 = nil; end;
+        if self.checkBox74 ~= nil then self.checkBox74:destroy(); self.checkBox74 = nil; end;
+        if self.checkBox86 ~= nil then self.checkBox86:destroy(); self.checkBox86 = nil; end;
+        if self.edit27 ~= nil then self.edit27:destroy(); self.edit27 = nil; end;
+        if self.checkBox100 ~= nil then self.checkBox100:destroy(); self.checkBox100 = nil; end;
+        if self.edit223 ~= nil then self.edit223:destroy(); self.edit223 = nil; end;
+        if self.edit161 ~= nil then self.edit161:destroy(); self.edit161 = nil; end;
+        if self.edit241 ~= nil then self.edit241:destroy(); self.edit241 = nil; end;
+        if self.edit62 ~= nil then self.edit62:destroy(); self.edit62 = nil; end;
+        if self.checkBox32 ~= nil then self.checkBox32:destroy(); self.checkBox32 = nil; end;
+        if self.edit74 ~= nil then self.edit74:destroy(); self.edit74 = nil; end;
+        if self.edit330 ~= nil then self.edit330:destroy(); self.edit330 = nil; end;
+        if self.edit388 ~= nil then self.edit388:destroy(); self.edit388 = nil; end;
+        if self.edit60 ~= nil then self.edit60:destroy(); self.edit60 = nil; end;
+        if self.edit247 ~= nil then self.edit247:destroy(); self.edit247 = nil; end;
+        if self.edit134 ~= nil then self.edit134:destroy(); self.edit134 = nil; end;
+        if self.edit419 ~= nil then self.edit419:destroy(); self.edit419 = nil; end;
+        if self.checkBox114 ~= nil then self.checkBox114:destroy(); self.checkBox114 = nil; end;
+        if self.edit435 ~= nil then self.edit435:destroy(); self.edit435 = nil; end;
+        if self.edit121 ~= nil then self.edit121:destroy(); self.edit121 = nil; end;
+        if self.textEditor9 ~= nil then self.textEditor9:destroy(); self.textEditor9 = nil; end;
+        if self.edit263 ~= nil then self.edit263:destroy(); self.edit263 = nil; end;
+        if self.edit163 ~= nil then self.edit163:destroy(); self.edit163 = nil; end;
+        if self.edit199 ~= nil then self.edit199:destroy(); self.edit199 = nil; end;
+        if self.edit360 ~= nil then self.edit360:destroy(); self.edit360 = nil; end;
+        if self.edit285 ~= nil then self.edit285:destroy(); self.edit285 = nil; end;
+        if self.edit373 ~= nil then self.edit373:destroy(); self.edit373 = nil; end;
+        if self.edit332 ~= nil then self.edit332:destroy(); self.edit332 = nil; end;
+        if self.textEditor3 ~= nil then self.textEditor3:destroy(); self.textEditor3 = nil; end;
+        if self.checkBox123 ~= nil then self.checkBox123:destroy(); self.checkBox123 = nil; end;
+        if self.checkBox89 ~= nil then self.checkBox89:destroy(); self.checkBox89 = nil; end;
+        if self.edit92 ~= nil then self.edit92:destroy(); self.edit92 = nil; end;
+        if self.edit409 ~= nil then self.edit409:destroy(); self.edit409 = nil; end;
+        if self.edit336 ~= nil then self.edit336:destroy(); self.edit336 = nil; end;
+        if self.edit313 ~= nil then self.edit313:destroy(); self.edit313 = nil; end;
+        if self.edit54 ~= nil then self.edit54:destroy(); self.edit54 = nil; end;
+        if self.edit100 ~= nil then self.edit100:destroy(); self.edit100 = nil; end;
+        if self.edit287 ~= nil then self.edit287:destroy(); self.edit287 = nil; end;
+        if self.edit61 ~= nil then self.edit61:destroy(); self.edit61 = nil; end;
+        if self.edit84 ~= nil then self.edit84:destroy(); self.edit84 = nil; end;
+        if self.edit224 ~= nil then self.edit224:destroy(); self.edit224 = nil; end;
+        if self.edit274 ~= nil then self.edit274:destroy(); self.edit274 = nil; end;
+        if self.edit289 ~= nil then self.edit289:destroy(); self.edit289 = nil; end;
+        if self.tab2 ~= nil then self.tab2:destroy(); self.tab2 = nil; end;
+        if self.edit24 ~= nil then self.edit24:destroy(); self.edit24 = nil; end;
+        if self.edit358 ~= nil then self.edit358:destroy(); self.edit358 = nil; end;
+        if self.edit59 ~= nil then self.edit59:destroy(); self.edit59 = nil; end;
+        if self.edit14 ~= nil then self.edit14:destroy(); self.edit14 = nil; end;
+        if self.edit249 ~= nil then self.edit249:destroy(); self.edit249 = nil; end;
+        if self.checkBox44 ~= nil then self.checkBox44:destroy(); self.checkBox44 = nil; end;
+        if self.edit252 ~= nil then self.edit252:destroy(); self.edit252 = nil; end;
+        if self.edit4 ~= nil then self.edit4:destroy(); self.edit4 = nil; end;
+        if self.edit198 ~= nil then self.edit198:destroy(); self.edit198 = nil; end;
+        if self.frmPath2_svg ~= nil then self.frmPath2_svg:destroy(); self.frmPath2_svg = nil; end;
+        if self.checkBox94 ~= nil then self.checkBox94:destroy(); self.checkBox94 = nil; end;
+        if self.edit128 ~= nil then self.edit128:destroy(); self.edit128 = nil; end;
+        if self.edit355 ~= nil then self.edit355:destroy(); self.edit355 = nil; end;
+        if self.textEditor11 ~= nil then self.textEditor11:destroy(); self.textEditor11 = nil; end;
+        if self.edit200 ~= nil then self.edit200:destroy(); self.edit200 = nil; end;
+        if self.checkBox109 ~= nil then self.checkBox109:destroy(); self.checkBox109 = nil; end;
+        if self.textEditor2 ~= nil then self.textEditor2:destroy(); self.textEditor2 = nil; end;
+        if self.edit187 ~= nil then self.edit187:destroy(); self.edit187 = nil; end;
+        if self.edit103 ~= nil then self.edit103:destroy(); self.edit103 = nil; end;
+        if self.checkBox17 ~= nil then self.checkBox17:destroy(); self.checkBox17 = nil; end;
+        if self.edit370 ~= nil then self.edit370:destroy(); self.edit370 = nil; end;
+        if self.edit424 ~= nil then self.edit424:destroy(); self.edit424 = nil; end;
+        if self.checkBox16 ~= nil then self.checkBox16:destroy(); self.checkBox16 = nil; end;
+        if self.checkBox110 ~= nil then self.checkBox110:destroy(); self.checkBox110 = nil; end;
+        if self.edit127 ~= nil then self.edit127:destroy(); self.edit127 = nil; end;
+        if self.edit218 ~= nil then self.edit218:destroy(); self.edit218 = nil; end;
+        if self.checkBox103 ~= nil then self.checkBox103:destroy(); self.checkBox103 = nil; end;
+        if self.edit165 ~= nil then self.edit165:destroy(); self.edit165 = nil; end;
+        if self.edit208 ~= nil then self.edit208:destroy(); self.edit208 = nil; end;
+        if self.edit378 ~= nil then self.edit378:destroy(); self.edit378 = nil; end;
+        if self.edit415 ~= nil then self.edit415:destroy(); self.edit415 = nil; end;
+        if self.edit45 ~= nil then self.edit45:destroy(); self.edit45 = nil; end;
+        if self.edit8 ~= nil then self.edit8:destroy(); self.edit8 = nil; end;
+        if self.checkBox9 ~= nil then self.checkBox9:destroy(); self.checkBox9 = nil; end;
+        if self.edit145 ~= nil then self.edit145:destroy(); self.edit145 = nil; end;
+        if self.edit387 ~= nil then self.edit387:destroy(); self.edit387 = nil; end;
+        if self.edit181 ~= nil then self.edit181:destroy(); self.edit181 = nil; end;
+        if self.edit323 ~= nil then self.edit323:destroy(); self.edit323 = nil; end;
+        if self.edit96 ~= nil then self.edit96:destroy(); self.edit96 = nil; end;
+        if self.edit2 ~= nil then self.edit2:destroy(); self.edit2 = nil; end;
+        if self.checkBox54 ~= nil then self.checkBox54:destroy(); self.checkBox54 = nil; end;
+        if self.checkBox108 ~= nil then self.checkBox108:destroy(); self.checkBox108 = nil; end;
+        if self.checkBox83 ~= nil then self.checkBox83:destroy(); self.checkBox83 = nil; end;
+        if self.edit109 ~= nil then self.edit109:destroy(); self.edit109 = nil; end;
+        if self.edit21 ~= nil then self.edit21:destroy(); self.edit21 = nil; end;
+        if self.edit302 ~= nil then self.edit302:destroy(); self.edit302 = nil; end;
+        if self.edit328 ~= nil then self.edit328:destroy(); self.edit328 = nil; end;
+        if self.edit390 ~= nil then self.edit390:destroy(); self.edit390 = nil; end;
+        if self.edit174 ~= nil then self.edit174:destroy(); self.edit174 = nil; end;
+        if self.checkBox14 ~= nil then self.checkBox14:destroy(); self.checkBox14 = nil; end;
+        if self.edit250 ~= nil then self.edit250:destroy(); self.edit250 = nil; end;
+        if self.edit418 ~= nil then self.edit418:destroy(); self.edit418 = nil; end;
+        if self.edit152 ~= nil then self.edit152:destroy(); self.edit152 = nil; end;
+        if self.edit261 ~= nil then self.edit261:destroy(); self.edit261 = nil; end;
+        if self.edit133 ~= nil then self.edit133:destroy(); self.edit133 = nil; end;
+        if self.checkBox60 ~= nil then self.checkBox60:destroy(); self.checkBox60 = nil; end;
+        if self.edit308 ~= nil then self.edit308:destroy(); self.edit308 = nil; end;
+        if self.edit93 ~= nil then self.edit93:destroy(); self.edit93 = nil; end;
+        if self.edit126 ~= nil then self.edit126:destroy(); self.edit126 = nil; end;
+        if self.edit300 ~= nil then self.edit300:destroy(); self.edit300 = nil; end;
+        if self.edit13 ~= nil then self.edit13:destroy(); self.edit13 = nil; end;
+        if self.edit225 ~= nil then self.edit225:destroy(); self.edit225 = nil; end;
+        if self.checkBox93 ~= nil then self.checkBox93:destroy(); self.checkBox93 = nil; end;
+        if self.edit81 ~= nil then self.edit81:destroy(); self.edit81 = nil; end;
+        if self.edit177 ~= nil then self.edit177:destroy(); self.edit177 = nil; end;
+        if self.edit166 ~= nil then self.edit166:destroy(); self.edit166 = nil; end;
+        if self.checkBox51 ~= nil then self.checkBox51:destroy(); self.checkBox51 = nil; end;
+        if self.checkBox75 ~= nil then self.checkBox75:destroy(); self.checkBox75 = nil; end;
+        if self.edit37 ~= nil then self.edit37:destroy(); self.edit37 = nil; end;
+        if self.checkBox12 ~= nil then self.checkBox12:destroy(); self.checkBox12 = nil; end;
+        if self.edit184 ~= nil then self.edit184:destroy(); self.edit184 = nil; end;
+        if self.checkBox31 ~= nil then self.checkBox31:destroy(); self.checkBox31 = nil; end;
+        if self.edit398 ~= nil then self.edit398:destroy(); self.edit398 = nil; end;
+        if self.edit389 ~= nil then self.edit389:destroy(); self.edit389 = nil; end;
+        if self.textEditor10 ~= nil then self.textEditor10:destroy(); self.textEditor10 = nil; end;
+        if self.checkBox62 ~= nil then self.checkBox62:destroy(); self.checkBox62 = nil; end;
+        if self.edit269 ~= nil then self.edit269:destroy(); self.edit269 = nil; end;
+        if self.edit314 ~= nil then self.edit314:destroy(); self.edit314 = nil; end;
+        if self.edit17 ~= nil then self.edit17:destroy(); self.edit17 = nil; end;
+        if self.edit170 ~= nil then self.edit170:destroy(); self.edit170 = nil; end;
+        if self.edit363 ~= nil then self.edit363:destroy(); self.edit363 = nil; end;
+        if self.checkBox22 ~= nil then self.checkBox22:destroy(); self.checkBox22 = nil; end;
+        if self.edit439 ~= nil then self.edit439:destroy(); self.edit439 = nil; end;
+        if self.edit155 ~= nil then self.edit155:destroy(); self.edit155 = nil; end;
+        if self.edit162 ~= nil then self.edit162:destroy(); self.edit162 = nil; end;
+        if self.edit194 ~= nil then self.edit194:destroy(); self.edit194 = nil; end;
+        if self.checkBox80 ~= nil then self.checkBox80:destroy(); self.checkBox80 = nil; end;
+        if self.edit87 ~= nil then self.edit87:destroy(); self.edit87 = nil; end;
+        if self.edit299 ~= nil then self.edit299:destroy(); self.edit299 = nil; end;
+        if self.edit113 ~= nil then self.edit113:destroy(); self.edit113 = nil; end;
+        if self.edit15 ~= nil then self.edit15:destroy(); self.edit15 = nil; end;
+        if self.checkBox19 ~= nil then self.checkBox19:destroy(); self.checkBox19 = nil; end;
+        if self.checkBox25 ~= nil then self.checkBox25:destroy(); self.checkBox25 = nil; end;
+        if self.checkBox35 ~= nil then self.checkBox35:destroy(); self.checkBox35 = nil; end;
+        if self.edit211 ~= nil then self.edit211:destroy(); self.edit211 = nil; end;
+        if self.edit240 ~= nil then self.edit240:destroy(); self.edit240 = nil; end;
+        if self.checkBox87 ~= nil then self.checkBox87:destroy(); self.checkBox87 = nil; end;
+        if self.edit379 ~= nil then self.edit379:destroy(); self.edit379 = nil; end;
+        if self.edit138 ~= nil then self.edit138:destroy(); self.edit138 = nil; end;
+        if self.checkBox26 ~= nil then self.checkBox26:destroy(); self.checkBox26 = nil; end;
+        if self.edit393 ~= nil then self.edit393:destroy(); self.edit393 = nil; end;
+        if self.checkBox73 ~= nil then self.checkBox73:destroy(); self.checkBox73 = nil; end;
+        if self.edit42 ~= nil then self.edit42:destroy(); self.edit42 = nil; end;
+        if self.edit209 ~= nil then self.edit209:destroy(); self.edit209 = nil; end;
+        if self.edit118 ~= nil then self.edit118:destroy(); self.edit118 = nil; end;
+        if self.checkBox10 ~= nil then self.checkBox10:destroy(); self.checkBox10 = nil; end;
+        if self.edit154 ~= nil then self.edit154:destroy(); self.edit154 = nil; end;
+        if self.edit254 ~= nil then self.edit254:destroy(); self.edit254 = nil; end;
+        if self.edit278 ~= nil then self.edit278:destroy(); self.edit278 = nil; end;
+        if self.edit432 ~= nil then self.edit432:destroy(); self.edit432 = nil; end;
+        if self.edit438 ~= nil then self.edit438:destroy(); self.edit438 = nil; end;
+        if self.edit281 ~= nil then self.edit281:destroy(); self.edit281 = nil; end;
+        if self.checkBox47 ~= nil then self.checkBox47:destroy(); self.checkBox47 = nil; end;
+        if self.checkBox130 ~= nil then self.checkBox130:destroy(); self.checkBox130 = nil; end;
+        if self.edit135 ~= nil then self.edit135:destroy(); self.edit135 = nil; end;
+        if self.edit191 ~= nil then self.edit191:destroy(); self.edit191 = nil; end;
+        if self.edit32 ~= nil then self.edit32:destroy(); self.edit32 = nil; end;
+        if self.tab1 ~= nil then self.tab1:destroy(); self.tab1 = nil; end;
+        if self.edit102 ~= nil then self.edit102:destroy(); self.edit102 = nil; end;
+        if self.edit178 ~= nil then self.edit178:destroy(); self.edit178 = nil; end;
+        if self.edit359 ~= nil then self.edit359:destroy(); self.edit359 = nil; end;
+        if self.checkBox90 ~= nil then self.checkBox90:destroy(); self.checkBox90 = nil; end;
+        if self.edit117 ~= nil then self.edit117:destroy(); self.edit117 = nil; end;
+        if self.edit286 ~= nil then self.edit286:destroy(); self.edit286 = nil; end;
+        if self.edit215 ~= nil then self.edit215:destroy(); self.edit215 = nil; end;
+        if self.edit216 ~= nil then self.edit216:destroy(); self.edit216 = nil; end;
+        if self.edit305 ~= nil then self.edit305:destroy(); self.edit305 = nil; end;
+        if self.checkBox41 ~= nil then self.checkBox41:destroy(); self.checkBox41 = nil; end;
+        if self.checkBox39 ~= nil then self.checkBox39:destroy(); self.checkBox39 = nil; end;
+        if self.checkBox71 ~= nil then self.checkBox71:destroy(); self.checkBox71 = nil; end;
+        if self.edit73 ~= nil then self.edit73:destroy(); self.edit73 = nil; end;
+        if self.edit222 ~= nil then self.edit222:destroy(); self.edit222 = nil; end;
+        if self.edit98 ~= nil then self.edit98:destroy(); self.edit98 = nil; end;
+        if self.edit310 ~= nil then self.edit310:destroy(); self.edit310 = nil; end;
+        if self.checkBox15 ~= nil then self.checkBox15:destroy(); self.checkBox15 = nil; end;
+        if self.edit333 ~= nil then self.edit333:destroy(); self.edit333 = nil; end;
+        if self.edit320 ~= nil then self.edit320:destroy(); self.edit320 = nil; end;
+        if self.checkBox18 ~= nil then self.checkBox18:destroy(); self.checkBox18 = nil; end;
+        if self.edit185 ~= nil then self.edit185:destroy(); self.edit185 = nil; end;
+        if self.edit335 ~= nil then self.edit335:destroy(); self.edit335 = nil; end;
+        if self.edit111 ~= nil then self.edit111:destroy(); self.edit111 = nil; end;
+        if self.edit28 ~= nil then self.edit28:destroy(); self.edit28 = nil; end;
         if self.edit71 ~= nil then self.edit71:destroy(); self.edit71 = nil; end;
+        if self.edit416 ~= nil then self.edit416:destroy(); self.edit416 = nil; end;
         if self.edit85 ~= nil then self.edit85:destroy(); self.edit85 = nil; end;
         if self.edit201 ~= nil then self.edit201:destroy(); self.edit201 = nil; end;
         if self.edit243 ~= nil then self.edit243:destroy(); self.edit243 = nil; end;
-        if self.edit296 ~= nil then self.edit296:destroy(); self.edit296 = nil; end;
+        if self.checkBox57 ~= nil then self.checkBox57:destroy(); self.checkBox57 = nil; end;
         if self.checkBox11 ~= nil then self.checkBox11:destroy(); self.checkBox11 = nil; end;
-        if self.edit76 ~= nil then self.edit76:destroy(); self.edit76 = nil; end;
         if self.edit192 ~= nil then self.edit192:destroy(); self.edit192 = nil; end;
-        if self.edit265 ~= nil then self.edit265:destroy(); self.edit265 = nil; end;
+        if self.edit447 ~= nil then self.edit447:destroy(); self.edit447 = nil; end;
+        if self.edit367 ~= nil then self.edit367:destroy(); self.edit367 = nil; end;
         if self.edit153 ~= nil then self.edit153:destroy(); self.edit153 = nil; end;
-        if self.edit236 ~= nil then self.edit236:destroy(); self.edit236 = nil; end;
-        if self.checkBox7 ~= nil then self.checkBox7:destroy(); self.checkBox7 = nil; end;
-        if self.edit82 ~= nil then self.edit82:destroy(); self.edit82 = nil; end;
-        if self.edit131 ~= nil then self.edit131:destroy(); self.edit131 = nil; end;
-        if self.edit47 ~= nil then self.edit47:destroy(); self.edit47 = nil; end;
         if self.edit246 ~= nil then self.edit246:destroy(); self.edit246 = nil; end;
+        if self.checkBox7 ~= nil then self.checkBox7:destroy(); self.checkBox7 = nil; end;
+        if self.edit131 ~= nil then self.edit131:destroy(); self.edit131 = nil; end;
+        if self.edit382 ~= nil then self.edit382:destroy(); self.edit382 = nil; end;
+        if self.edit47 ~= nil then self.edit47:destroy(); self.edit47 = nil; end;
         if self.edit298 ~= nil then self.edit298:destroy(); self.edit298 = nil; end;
+        if self.edit411 ~= nil then self.edit411:destroy(); self.edit411 = nil; end;
         if self.edit169 ~= nil then self.edit169:destroy(); self.edit169 = nil; end;
         if self.edit149 ~= nil then self.edit149:destroy(); self.edit149 = nil; end;
         if self.edit244 ~= nil then self.edit244:destroy(); self.edit244 = nil; end;
@@ -4404,314 +7367,273 @@ local function constructNew_frmPath()
         if self.edit120 ~= nil then self.edit120:destroy(); self.edit120 = nil; end;
         if self.edit26 ~= nil then self.edit26:destroy(); self.edit26 = nil; end;
         if self.edit112 ~= nil then self.edit112:destroy(); self.edit112 = nil; end;
-        if self.edit297 ~= nil then self.edit297:destroy(); self.edit297 = nil; end;
         if self.edit34 ~= nil then self.edit34:destroy(); self.edit34 = nil; end;
-        if self.edit11 ~= nil then self.edit11:destroy(); self.edit11 = nil; end;
+        if self.checkBox120 ~= nil then self.checkBox120:destroy(); self.checkBox120 = nil; end;
         if self.edit19 ~= nil then self.edit19:destroy(); self.edit19 = nil; end;
-        if self.image1 ~= nil then self.image1:destroy(); self.image1 = nil; end;
         if self.edit114 ~= nil then self.edit114:destroy(); self.edit114 = nil; end;
+        if self.edit397 ~= nil then self.edit397:destroy(); self.edit397 = nil; end;
+        if self.checkBox45 ~= nil then self.checkBox45:destroy(); self.checkBox45 = nil; end;
+        if self.edit422 ~= nil then self.edit422:destroy(); self.edit422 = nil; end;
+        if self.checkBox76 ~= nil then self.checkBox76:destroy(); self.checkBox76 = nil; end;
         if self.edit5 ~= nil then self.edit5:destroy(); self.edit5 = nil; end;
-        if self.edit183 ~= nil then self.edit183:destroy(); self.edit183 = nil; end;
         if self.edit204 ~= nil then self.edit204:destroy(); self.edit204 = nil; end;
         if self.edit210 ~= nil then self.edit210:destroy(); self.edit210 = nil; end;
+        if self.checkBox81 ~= nil then self.checkBox81:destroy(); self.checkBox81 = nil; end;
         if self.edit279 ~= nil then self.edit279:destroy(); self.edit279 = nil; end;
+        if self.checkBox121 ~= nil then self.checkBox121:destroy(); self.checkBox121 = nil; end;
         if self.scrollBox2 ~= nil then self.scrollBox2:destroy(); self.scrollBox2 = nil; end;
-        if self.edit156 ~= nil then self.edit156:destroy(); self.edit156 = nil; end;
-        if self.edit245 ~= nil then self.edit245:destroy(); self.edit245 = nil; end;
-        if self.edit267 ~= nil then self.edit267:destroy(); self.edit267 = nil; end;
+        if self.edit357 ~= nil then self.edit357:destroy(); self.edit357 = nil; end;
+        if self.edit365 ~= nil then self.edit365:destroy(); self.edit365 = nil; end;
         if self.edit68 ~= nil then self.edit68:destroy(); self.edit68 = nil; end;
         if self.edit72 ~= nil then self.edit72:destroy(); self.edit72 = nil; end;
         if self.edit179 ~= nil then self.edit179:destroy(); self.edit179 = nil; end;
         if self.edit294 ~= nil then self.edit294:destroy(); self.edit294 = nil; end;
-        if self.edit69 ~= nil then self.edit69:destroy(); self.edit69 = nil; end;
-        if self.edit255 ~= nil then self.edit255:destroy(); self.edit255 = nil; end;
-        if self.edit228 ~= nil then self.edit228:destroy(); self.edit228 = nil; end;
+        if self.checkBox104 ~= nil then self.checkBox104:destroy(); self.checkBox104 = nil; end;
+        if self.textEditor5 ~= nil then self.textEditor5:destroy(); self.textEditor5 = nil; end;
+        if self.checkBox96 ~= nil then self.checkBox96:destroy(); self.checkBox96 = nil; end;
+        if self.edit417 ~= nil then self.edit417:destroy(); self.edit417 = nil; end;
+        if self.edit391 ~= nil then self.edit391:destroy(); self.edit391 = nil; end;
+        if self.textEditor7 ~= nil then self.textEditor7:destroy(); self.textEditor7 = nil; end;
         if self.edit158 ~= nil then self.edit158:destroy(); self.edit158 = nil; end;
         if self.edit10 ~= nil then self.edit10:destroy(); self.edit10 = nil; end;
-        if self.edit16 ~= nil then self.edit16:destroy(); self.edit16 = nil; end;
-        if self.edit31 ~= nil then self.edit31:destroy(); self.edit31 = nil; end;
         if self.edit106 ~= nil then self.edit106:destroy(); self.edit106 = nil; end;
-        if self.edit1 ~= nil then self.edit1:destroy(); self.edit1 = nil; end;
-        if self.edit115 ~= nil then self.edit115:destroy(); self.edit115 = nil; end;
+        if self.edit31 ~= nil then self.edit31:destroy(); self.edit31 = nil; end;
         if self.edit125 ~= nil then self.edit125:destroy(); self.edit125 = nil; end;
-        if self.edit79 ~= nil then self.edit79:destroy(); self.edit79 = nil; end;
-        if self.edit116 ~= nil then self.edit116:destroy(); self.edit116 = nil; end;
-        if self.edit205 ~= nil then self.edit205:destroy(); self.edit205 = nil; end;
-        if self.edit77 ~= nil then self.edit77:destroy(); self.edit77 = nil; end;
-        if self.edit52 ~= nil then self.edit52:destroy(); self.edit52 = nil; end;
-        if self.edit196 ~= nil then self.edit196:destroy(); self.edit196 = nil; end;
-        if self.edit159 ~= nil then self.edit159:destroy(); self.edit159 = nil; end;
-        if self.edit214 ~= nil then self.edit214:destroy(); self.edit214 = nil; end;
+        if self.edit1 ~= nil then self.edit1:destroy(); self.edit1 = nil; end;
         if self.edit256 ~= nil then self.edit256:destroy(); self.edit256 = nil; end;
-        if self.edit260 ~= nil then self.edit260:destroy(); self.edit260 = nil; end;
-        if self.label1 ~= nil then self.label1:destroy(); self.label1 = nil; end;
-        if self.edit175 ~= nil then self.edit175:destroy(); self.edit175 = nil; end;
-        if self.edit220 ~= nil then self.edit220:destroy(); self.edit220 = nil; end;
+        if self.checkBox113 ~= nil then self.checkBox113:destroy(); self.checkBox113 = nil; end;
+        if self.edit79 ~= nil then self.edit79:destroy(); self.edit79 = nil; end;
+        if self.edit381 ~= nil then self.edit381:destroy(); self.edit381 = nil; end;
+        if self.checkBox43 ~= nil then self.checkBox43:destroy(); self.checkBox43 = nil; end;
         if self.edit283 ~= nil then self.edit283:destroy(); self.edit283 = nil; end;
-        if self.edit101 ~= nil then self.edit101:destroy(); self.edit101 = nil; end;
+        if self.checkBox64 ~= nil then self.checkBox64:destroy(); self.checkBox64 = nil; end;
+        if self.edit353 ~= nil then self.edit353:destroy(); self.edit353 = nil; end;
+        if self.edit175 ~= nil then self.edit175:destroy(); self.edit175 = nil; end;
         if self.edit291 ~= nil then self.edit291:destroy(); self.edit291 = nil; end;
-        if self.checkBox3 ~= nil then self.checkBox3:destroy(); self.checkBox3 = nil; end;
-        if self.edit58 ~= nil then self.edit58:destroy(); self.edit58 = nil; end;
+        if self.edit402 ~= nil then self.edit402:destroy(); self.edit402 = nil; end;
+        if self.edit101 ~= nil then self.edit101:destroy(); self.edit101 = nil; end;
+        if self.edit315 ~= nil then self.edit315:destroy(); self.edit315 = nil; end;
+        if self.edit349 ~= nil then self.edit349:destroy(); self.edit349 = nil; end;
+        if self.checkBox69 ~= nil then self.checkBox69:destroy(); self.checkBox69 = nil; end;
         if self.edit242 ~= nil then self.edit242:destroy(); self.edit242 = nil; end;
-        if self.edit235 ~= nil then self.edit235:destroy(); self.edit235 = nil; end;
+        if self.edit264 ~= nil then self.edit264:destroy(); self.edit264 = nil; end;
         if self.edit231 ~= nil then self.edit231:destroy(); self.edit231 = nil; end;
         if self.edit164 ~= nil then self.edit164:destroy(); self.edit164 = nil; end;
         if self.checkBox33 ~= nil then self.checkBox33:destroy(); self.checkBox33 = nil; end;
-        if self.edit264 ~= nil then self.edit264:destroy(); self.edit264 = nil; end;
-        if self.edit66 ~= nil then self.edit66:destroy(); self.edit66 = nil; end;
+        if self.edit326 ~= nil then self.edit326:destroy(); self.edit326 = nil; end;
+        if self.checkBox126 ~= nil then self.checkBox126:destroy(); self.checkBox126 = nil; end;
         if self.edit253 ~= nil then self.edit253:destroy(); self.edit253 = nil; end;
         if self.edit266 ~= nil then self.edit266:destroy(); self.edit266 = nil; end;
+        if self.edit437 ~= nil then self.edit437:destroy(); self.edit437 = nil; end;
         if self.edit23 ~= nil then self.edit23:destroy(); self.edit23 = nil; end;
-        if self.edit129 ~= nil then self.edit129:destroy(); self.edit129 = nil; end;
-        if self.edit142 ~= nil then self.edit142:destroy(); self.edit142 = nil; end;
-        if self.edit295 ~= nil then self.edit295:destroy(); self.edit295 = nil; end;
+        if self.edit327 ~= nil then self.edit327:destroy(); self.edit327 = nil; end;
+        if self.edit443 ~= nil then self.edit443:destroy(); self.edit443 = nil; end;
+        if self.checkBox61 ~= nil then self.checkBox61:destroy(); self.checkBox61 = nil; end;
+        if self.edit319 ~= nil then self.edit319:destroy(); self.edit319 = nil; end;
         if self.frmPath1_svg ~= nil then self.frmPath1_svg:destroy(); self.frmPath1_svg = nil; end;
         if self.edit280 ~= nil then self.edit280:destroy(); self.edit280 = nil; end;
+        if self.edit338 ~= nil then self.edit338:destroy(); self.edit338 = nil; end;
+        if self.edit433 ~= nil then self.edit433:destroy(); self.edit433 = nil; end;
         if self.edit139 ~= nil then self.edit139:destroy(); self.edit139 = nil; end;
-        if self.edit251 ~= nil then self.edit251:destroy(); self.edit251 = nil; end;
-        if self.rectangle2 ~= nil then self.rectangle2:destroy(); self.rectangle2 = nil; end;
+        if self.checkBox106 ~= nil then self.checkBox106:destroy(); self.checkBox106 = nil; end;
+        if self.edit354 ~= nil then self.edit354:destroy(); self.edit354 = nil; end;
         if self.edit122 ~= nil then self.edit122:destroy(); self.edit122 = nil; end;
         if self.edit40 ~= nil then self.edit40:destroy(); self.edit40 = nil; end;
         if self.edit293 ~= nil then self.edit293:destroy(); self.edit293 = nil; end;
-        if self.tabControl1 ~= nil then self.tabControl1:destroy(); self.tabControl1 = nil; end;
+        if self.textEditor6 ~= nil then self.textEditor6:destroy(); self.textEditor6 = nil; end;
         if self.edit110 ~= nil then self.edit110:destroy(); self.edit110 = nil; end;
-        if self.edit99 ~= nil then self.edit99:destroy(); self.edit99 = nil; end;
+        if self.textEditor12 ~= nil then self.textEditor12:destroy(); self.textEditor12 = nil; end;
         if self.edit86 ~= nil then self.edit86:destroy(); self.edit86 = nil; end;
-        if self.edit182 ~= nil then self.edit182:destroy(); self.edit182 = nil; end;
+        if self.edit325 ~= nil then self.edit325:destroy(); self.edit325 = nil; end;
         if self.edit38 ~= nil then self.edit38:destroy(); self.edit38 = nil; end;
         if self.edit123 ~= nil then self.edit123:destroy(); self.edit123 = nil; end;
-        if self.edit67 ~= nil then self.edit67:destroy(); self.edit67 = nil; end;
-        if self.checkBox24 ~= nil then self.checkBox24:destroy(); self.checkBox24 = nil; end;
         if self.edit143 ~= nil then self.edit143:destroy(); self.edit143 = nil; end;
-        if self.edit176 ~= nil then self.edit176:destroy(); self.edit176 = nil; end;
-        if self.edit105 ~= nil then self.edit105:destroy(); self.edit105 = nil; end;
+        if self.checkBox24 ~= nil then self.checkBox24:destroy(); self.checkBox24 = nil; end;
+        if self.edit322 ~= nil then self.edit322:destroy(); self.edit322 = nil; end;
         if self.edit206 ~= nil then self.edit206:destroy(); self.edit206 = nil; end;
-        if self.edit221 ~= nil then self.edit221:destroy(); self.edit221 = nil; end;
+        if self.edit105 ~= nil then self.edit105:destroy(); self.edit105 = nil; end;
+        if self.edit421 ~= nil then self.edit421:destroy(); self.edit421 = nil; end;
         if self.edit239 ~= nil then self.edit239:destroy(); self.edit239 = nil; end;
-        if self.checkBox23 ~= nil then self.checkBox23:destroy(); self.checkBox23 = nil; end;
+        if self.checkBox99 ~= nil then self.checkBox99:destroy(); self.checkBox99 = nil; end;
         if self.textEditor1 ~= nil then self.textEditor1:destroy(); self.textEditor1 = nil; end;
-        if self.checkBox37 ~= nil then self.checkBox37:destroy(); self.checkBox37 = nil; end;
         if self.edit137 ~= nil then self.edit137:destroy(); self.edit137 = nil; end;
         if self.edit146 ~= nil then self.edit146:destroy(); self.edit146 = nil; end;
+        if self.edit361 ~= nil then self.edit361:destroy(); self.edit361 = nil; end;
         if self.checkBox13 ~= nil then self.checkBox13:destroy(); self.checkBox13 = nil; end;
-        if self.checkBox40 ~= nil then self.checkBox40:destroy(); self.checkBox40 = nil; end;
-        if self.edit258 ~= nil then self.edit258:destroy(); self.edit258 = nil; end;
+        if self.checkBox88 ~= nil then self.checkBox88:destroy(); self.checkBox88 = nil; end;
+        if self.checkBox92 ~= nil then self.checkBox92:destroy(); self.checkBox92 = nil; end;
+        if self.checkBox107 ~= nil then self.checkBox107:destroy(); self.checkBox107 = nil; end;
         if self.edit6 ~= nil then self.edit6:destroy(); self.edit6 = nil; end;
-        if self.checkBox28 ~= nil then self.checkBox28:destroy(); self.checkBox28 = nil; end;
         if self.edit230 ~= nil then self.edit230:destroy(); self.edit230 = nil; end;
-        if self.edit124 ~= nil then self.edit124:destroy(); self.edit124 = nil; end;
+        if self.edit428 ~= nil then self.edit428:destroy(); self.edit428 = nil; end;
         if self.edit90 ~= nil then self.edit90:destroy(); self.edit90 = nil; end;
-        if self.label2 ~= nil then self.label2:destroy(); self.label2 = nil; end;
-        if self.edit157 ~= nil then self.edit157:destroy(); self.edit157 = nil; end;
-        if self.edit3 ~= nil then self.edit3:destroy(); self.edit3 = nil; end;
+        if self.textEditor8 ~= nil then self.textEditor8:destroy(); self.textEditor8 = nil; end;
         if self.edit238 ~= nil then self.edit238:destroy(); self.edit238 = nil; end;
-        if self.edit284 ~= nil then self.edit284:destroy(); self.edit284 = nil; end;
+        if self.edit3 ~= nil then self.edit3:destroy(); self.edit3 = nil; end;
+        if self.checkBox117 ~= nil then self.checkBox117:destroy(); self.checkBox117 = nil; end;
         if self.edit49 ~= nil then self.edit49:destroy(); self.edit49 = nil; end;
-        if self.edit83 ~= nil then self.edit83:destroy(); self.edit83 = nil; end;
-        if self.edit27 ~= nil then self.edit27:destroy(); self.edit27 = nil; end;
-        if self.edit223 ~= nil then self.edit223:destroy(); self.edit223 = nil; end;
+        if self.edit406 ~= nil then self.edit406:destroy(); self.edit406 = nil; end;
+        if self.edit329 ~= nil then self.edit329:destroy(); self.edit329 = nil; end;
+        if self.edit311 ~= nil then self.edit311:destroy(); self.edit311 = nil; end;
         if self.edit271 ~= nil then self.edit271:destroy(); self.edit271 = nil; end;
         if self.edit140 ~= nil then self.edit140:destroy(); self.edit140 = nil; end;
         if self.checkBox38 ~= nil then self.checkBox38:destroy(); self.checkBox38 = nil; end;
-        if self.edit161 ~= nil then self.edit161:destroy(); self.edit161 = nil; end;
-        if self.edit62 ~= nil then self.edit62:destroy(); self.edit62 = nil; end;
         if self.checkBox4 ~= nil then self.checkBox4:destroy(); self.checkBox4 = nil; end;
         if self.edit18 ~= nil then self.edit18:destroy(); self.edit18 = nil; end;
         if self.edit25 ~= nil then self.edit25:destroy(); self.edit25 = nil; end;
-        if self.edit74 ~= nil then self.edit74:destroy(); self.edit74 = nil; end;
-        if self.checkBox32 ~= nil then self.checkBox32:destroy(); self.checkBox32 = nil; end;
+        if self.checkBox118 ~= nil then self.checkBox118:destroy(); self.checkBox118 = nil; end;
         if self.scrollBox1 ~= nil then self.scrollBox1:destroy(); self.scrollBox1 = nil; end;
-        if self.edit241 ~= nil then self.edit241:destroy(); self.edit241 = nil; end;
-        if self.edit60 ~= nil then self.edit60:destroy(); self.edit60 = nil; end;
         if self.edit189 ~= nil then self.edit189:destroy(); self.edit189 = nil; end;
         if self.edit94 ~= nil then self.edit94:destroy(); self.edit94 = nil; end;
         if self.edit167 ~= nil then self.edit167:destroy(); self.edit167 = nil; end;
-        if self.edit247 ~= nil then self.edit247:destroy(); self.edit247 = nil; end;
-        if self.edit134 ~= nil then self.edit134:destroy(); self.edit134 = nil; end;
         if self.edit270 ~= nil then self.edit270:destroy(); self.edit270 = nil; end;
+        if self.checkBox65 ~= nil then self.checkBox65:destroy(); self.checkBox65 = nil; end;
+        if self.edit371 ~= nil then self.edit371:destroy(); self.edit371 = nil; end;
         if self.edit46 ~= nil then self.edit46:destroy(); self.edit46 = nil; end;
         if self.edit276 ~= nil then self.edit276:destroy(); self.edit276 = nil; end;
         if self.edit229 ~= nil then self.edit229:destroy(); self.edit229 = nil; end;
+        if self.edit426 ~= nil then self.edit426:destroy(); self.edit426 = nil; end;
+        if self.textEditor13 ~= nil then self.textEditor13:destroy(); self.textEditor13 = nil; end;
         if self.edit288 ~= nil then self.edit288:destroy(); self.edit288 = nil; end;
-        if self.edit121 ~= nil then self.edit121:destroy(); self.edit121 = nil; end;
-        if self.edit263 ~= nil then self.edit263:destroy(); self.edit263 = nil; end;
-        if self.edit163 ~= nil then self.edit163:destroy(); self.edit163 = nil; end;
-        if self.edit199 ~= nil then self.edit199:destroy(); self.edit199 = nil; end;
         if self.edit104 ~= nil then self.edit104:destroy(); self.edit104 = nil; end;
-        if self.edit285 ~= nil then self.edit285:destroy(); self.edit285 = nil; end;
         if self.edit207 ~= nil then self.edit207:destroy(); self.edit207 = nil; end;
+        if self.edit384 ~= nil then self.edit384:destroy(); self.edit384 = nil; end;
         if self.edit7 ~= nil then self.edit7:destroy(); self.edit7 = nil; end;
         if self.edit108 ~= nil then self.edit108:destroy(); self.edit108 = nil; end;
-        if self.textEditor3 ~= nil then self.textEditor3:destroy(); self.textEditor3 = nil; end;
         if self.edit12 ~= nil then self.edit12:destroy(); self.edit12 = nil; end;
         if self.edit80 ~= nil then self.edit80:destroy(); self.edit80 = nil; end;
         if self.edit95 ~= nil then self.edit95:destroy(); self.edit95 = nil; end;
+        if self.edit341 ~= nil then self.edit341:destroy(); self.edit341 = nil; end;
         if self.edit35 ~= nil then self.edit35:destroy(); self.edit35 = nil; end;
         if self.checkBox27 ~= nil then self.checkBox27:destroy(); self.checkBox27 = nil; end;
         if self.edit171 ~= nil then self.edit171:destroy(); self.edit171 = nil; end;
-        if self.edit92 ~= nil then self.edit92:destroy(); self.edit92 = nil; end;
+        if self.edit351 ~= nil then self.edit351:destroy(); self.edit351 = nil; end;
         if self.edit186 ~= nil then self.edit186:destroy(); self.edit186 = nil; end;
         if self.edit97 ~= nil then self.edit97:destroy(); self.edit97 = nil; end;
         if self.checkBox6 ~= nil then self.checkBox6:destroy(); self.checkBox6 = nil; end;
         if self.edit57 ~= nil then self.edit57:destroy(); self.edit57 = nil; end;
         if self.edit147 ~= nil then self.edit147:destroy(); self.edit147 = nil; end;
         if self.image2 ~= nil then self.image2:destroy(); self.image2 = nil; end;
-        if self.edit54 ~= nil then self.edit54:destroy(); self.edit54 = nil; end;
         if self.edit63 ~= nil then self.edit63:destroy(); self.edit63 = nil; end;
-        if self.edit100 ~= nil then self.edit100:destroy(); self.edit100 = nil; end;
         if self.checkBox8 ~= nil then self.checkBox8:destroy(); self.checkBox8 = nil; end;
-        if self.edit61 ~= nil then self.edit61:destroy(); self.edit61 = nil; end;
+        if self.edit342 ~= nil then self.edit342:destroy(); self.edit342 = nil; end;
         if self.rectangle1 ~= nil then self.rectangle1:destroy(); self.rectangle1 = nil; end;
         if self.edit50 ~= nil then self.edit50:destroy(); self.edit50 = nil; end;
-        if self.edit84 ~= nil then self.edit84:destroy(); self.edit84 = nil; end;
-        if self.edit224 ~= nil then self.edit224:destroy(); self.edit224 = nil; end;
-        if self.edit274 ~= nil then self.edit274:destroy(); self.edit274 = nil; end;
-        if self.edit24 ~= nil then self.edit24:destroy(); self.edit24 = nil; end;
+        if self.edit356 ~= nil then self.edit356:destroy(); self.edit356 = nil; end;
+        if self.edit425 ~= nil then self.edit425:destroy(); self.edit425 = nil; end;
+        if self.edit340 ~= nil then self.edit340:destroy(); self.edit340 = nil; end;
         if self.edit277 ~= nil then self.edit277:destroy(); self.edit277 = nil; end;
-        if self.edit59 ~= nil then self.edit59:destroy(); self.edit59 = nil; end;
-        if self.edit287 ~= nil then self.edit287:destroy(); self.edit287 = nil; end;
-        if self.edit14 ~= nil then self.edit14:destroy(); self.edit14 = nil; end;
-        if self.edit249 ~= nil then self.edit249:destroy(); self.edit249 = nil; end;
+        if self.edit344 ~= nil then self.edit344:destroy(); self.edit344 = nil; end;
+        if self.edit427 ~= nil then self.edit427:destroy(); self.edit427 = nil; end;
+        if self.checkBox112 ~= nil then self.checkBox112:destroy(); self.checkBox112 = nil; end;
         if self.edit88 ~= nil then self.edit88:destroy(); self.edit88 = nil; end;
-        if self.edit252 ~= nil then self.edit252:destroy(); self.edit252 = nil; end;
-        if self.edit4 ~= nil then self.edit4:destroy(); self.edit4 = nil; end;
         if self.edit44 ~= nil then self.edit44:destroy(); self.edit44 = nil; end;
-        if self.edit198 ~= nil then self.edit198:destroy(); self.edit198 = nil; end;
-        if self.edit289 ~= nil then self.edit289:destroy(); self.edit289 = nil; end;
         if self.edit89 ~= nil then self.edit89:destroy(); self.edit89 = nil; end;
-        if self.tab2 ~= nil then self.tab2:destroy(); self.tab2 = nil; end;
-        if self.edit128 ~= nil then self.edit128:destroy(); self.edit128 = nil; end;
-        if self.frmPath2_svg ~= nil then self.frmPath2_svg:destroy(); self.frmPath2_svg = nil; end;
-        if self.edit200 ~= nil then self.edit200:destroy(); self.edit200 = nil; end;
-        if self.textEditor2 ~= nil then self.textEditor2:destroy(); self.textEditor2 = nil; end;
-        if self.edit187 ~= nil then self.edit187:destroy(); self.edit187 = nil; end;
-        if self.edit103 ~= nil then self.edit103:destroy(); self.edit103 = nil; end;
-        if self.checkBox17 ~= nil then self.checkBox17:destroy(); self.checkBox17 = nil; end;
-        if self.checkBox16 ~= nil then self.checkBox16:destroy(); self.checkBox16 = nil; end;
-        if self.edit127 ~= nil then self.edit127:destroy(); self.edit127 = nil; end;
-        if self.edit218 ~= nil then self.edit218:destroy(); self.edit218 = nil; end;
+        if self.edit317 ~= nil then self.edit317:destroy(); self.edit317 = nil; end;
+        if self.checkBox77 ~= nil then self.checkBox77:destroy(); self.checkBox77 = nil; end;
+        if self.edit368 ~= nil then self.edit368:destroy(); self.edit368 = nil; end;
+        if self.edit318 ~= nil then self.edit318:destroy(); self.edit318 = nil; end;
+        if self.edit350 ~= nil then self.edit350:destroy(); self.edit350 = nil; end;
+        if self.checkBox91 ~= nil then self.checkBox91:destroy(); self.checkBox91 = nil; end;
+        if self.checkBox116 ~= nil then self.checkBox116:destroy(); self.checkBox116 = nil; end;
         if self.edit148 ~= nil then self.edit148:destroy(); self.edit148 = nil; end;
-        if self.edit165 ~= nil then self.edit165:destroy(); self.edit165 = nil; end;
-        if self.edit208 ~= nil then self.edit208:destroy(); self.edit208 = nil; end;
+        if self.edit414 ~= nil then self.edit414:destroy(); self.edit414 = nil; end;
+        if self.checkBox66 ~= nil then self.checkBox66:destroy(); self.checkBox66 = nil; end;
         if self.checkBox20 ~= nil then self.checkBox20:destroy(); self.checkBox20 = nil; end;
-        if self.edit45 ~= nil then self.edit45:destroy(); self.edit45 = nil; end;
-        if self.edit8 ~= nil then self.edit8:destroy(); self.edit8 = nil; end;
-        if self.checkBox9 ~= nil then self.checkBox9:destroy(); self.checkBox9 = nil; end;
+        if self.edit405 ~= nil then self.edit405:destroy(); self.edit405 = nil; end;
         if self.edit53 ~= nil then self.edit53:destroy(); self.edit53 = nil; end;
         if self.edit180 ~= nil then self.edit180:destroy(); self.edit180 = nil; end;
-        if self.edit145 ~= nil then self.edit145:destroy(); self.edit145 = nil; end;
-        if self.edit181 ~= nil then self.edit181:destroy(); self.edit181 = nil; end;
+        if self.edit364 ~= nil then self.edit364:destroy(); self.edit364 = nil; end;
         if self.edit232 ~= nil then self.edit232:destroy(); self.edit232 = nil; end;
-        if self.edit96 ~= nil then self.edit96:destroy(); self.edit96 = nil; end;
-        if self.edit2 ~= nil then self.edit2:destroy(); self.edit2 = nil; end;
+        if self.edit306 ~= nil then self.edit306:destroy(); self.edit306 = nil; end;
+        if self.edit408 ~= nil then self.edit408:destroy(); self.edit408 = nil; end;
         if self.edit107 ~= nil then self.edit107:destroy(); self.edit107 = nil; end;
         if self.edit217 ~= nil then self.edit217:destroy(); self.edit217 = nil; end;
         if self.edit234 ~= nil then self.edit234:destroy(); self.edit234 = nil; end;
         if self.edit272 ~= nil then self.edit272:destroy(); self.edit272 = nil; end;
         if self.edit237 ~= nil then self.edit237:destroy(); self.edit237 = nil; end;
-        if self.edit109 ~= nil then self.edit109:destroy(); self.edit109 = nil; end;
+        if self.edit383 ~= nil then self.edit383:destroy(); self.edit383 = nil; end;
+        if self.edit444 ~= nil then self.edit444:destroy(); self.edit444 = nil; end;
+        if self.edit321 ~= nil then self.edit321:destroy(); self.edit321 = nil; end;
         if self.edit30 ~= nil then self.edit30:destroy(); self.edit30 = nil; end;
-        if self.edit21 ~= nil then self.edit21:destroy(); self.edit21 = nil; end;
-        if self.edit56 ~= nil then self.edit56:destroy(); self.edit56 = nil; end;
         if self.checkBox5 ~= nil then self.checkBox5:destroy(); self.checkBox5 = nil; end;
+        if self.edit56 ~= nil then self.edit56:destroy(); self.edit56 = nil; end;
+        if self.edit331 ~= nil then self.edit331:destroy(); self.edit331 = nil; end;
+        if self.edit403 ~= nil then self.edit403:destroy(); self.edit403 = nil; end;
         if self.edit290 ~= nil then self.edit290:destroy(); self.edit290 = nil; end;
         if self.edit197 ~= nil then self.edit197:destroy(); self.edit197 = nil; end;
         if self.edit141 ~= nil then self.edit141:destroy(); self.edit141 = nil; end;
         if self.edit55 ~= nil then self.edit55:destroy(); self.edit55 = nil; end;
-        if self.checkBox14 ~= nil then self.checkBox14:destroy(); self.checkBox14 = nil; end;
+        if self.checkBox101 ~= nil then self.checkBox101:destroy(); self.checkBox101 = nil; end;
         if self.edit43 ~= nil then self.edit43:destroy(); self.edit43 = nil; end;
-        if self.edit152 ~= nil then self.edit152:destroy(); self.edit152 = nil; end;
-        if self.edit174 ~= nil then self.edit174:destroy(); self.edit174 = nil; end;
-        if self.edit133 ~= nil then self.edit133:destroy(); self.edit133 = nil; end;
+        if self.edit307 ~= nil then self.edit307:destroy(); self.edit307 = nil; end;
         if self.checkBox21 ~= nil then self.checkBox21:destroy(); self.checkBox21 = nil; end;
-        if self.edit250 ~= nil then self.edit250:destroy(); self.edit250 = nil; end;
-        if self.edit261 ~= nil then self.edit261:destroy(); self.edit261 = nil; end;
-        if self.edit75 ~= nil then self.edit75:destroy(); self.edit75 = nil; end;
         if self.edit275 ~= nil then self.edit275:destroy(); self.edit275 = nil; end;
+        if self.edit374 ~= nil then self.edit374:destroy(); self.edit374 = nil; end;
+        if self.edit75 ~= nil then self.edit75:destroy(); self.edit75 = nil; end;
         if self.edit193 ~= nil then self.edit193:destroy(); self.edit193 = nil; end;
         if self.edit65 ~= nil then self.edit65:destroy(); self.edit65 = nil; end;
-        if self.edit93 ~= nil then self.edit93:destroy(); self.edit93 = nil; end;
-        if self.edit126 ~= nil then self.edit126:destroy(); self.edit126 = nil; end;
-        if self.edit13 ~= nil then self.edit13:destroy(); self.edit13 = nil; end;
-        if self.edit39 ~= nil then self.edit39:destroy(); self.edit39 = nil; end;
         if self.edit130 ~= nil then self.edit130:destroy(); self.edit130 = nil; end;
-        if self.edit225 ~= nil then self.edit225:destroy(); self.edit225 = nil; end;
-        if self.edit300 ~= nil then self.edit300:destroy(); self.edit300 = nil; end;
-        if self.edit81 ~= nil then self.edit81:destroy(); self.edit81 = nil; end;
-        if self.edit177 ~= nil then self.edit177:destroy(); self.edit177 = nil; end;
+        if self.edit337 ~= nil then self.edit337:destroy(); self.edit337 = nil; end;
+        if self.edit39 ~= nil then self.edit39:destroy(); self.edit39 = nil; end;
+        if self.checkBox46 ~= nil then self.checkBox46:destroy(); self.checkBox46 = nil; end;
         if self.edit144 ~= nil then self.edit144:destroy(); self.edit144 = nil; end;
-        if self.edit166 ~= nil then self.edit166:destroy(); self.edit166 = nil; end;
+        if self.checkBox72 ~= nil then self.checkBox72:destroy(); self.checkBox72 = nil; end;
+        if self.edit346 ~= nil then self.edit346:destroy(); self.edit346 = nil; end;
         if self.edit203 ~= nil then self.edit203:destroy(); self.edit203 = nil; end;
         if self.edit292 ~= nil then self.edit292:destroy(); self.edit292 = nil; end;
-        if self.edit37 ~= nil then self.edit37:destroy(); self.edit37 = nil; end;
-        if self.checkBox12 ~= nil then self.checkBox12:destroy(); self.checkBox12 = nil; end;
+        if self.checkBox97 ~= nil then self.checkBox97:destroy(); self.checkBox97 = nil; end;
         if self.edit151 ~= nil then self.edit151:destroy(); self.edit151 = nil; end;
         if self.edit132 ~= nil then self.edit132:destroy(); self.edit132 = nil; end;
-        if self.checkBox31 ~= nil then self.checkBox31:destroy(); self.checkBox31 = nil; end;
-        if self.edit184 ~= nil then self.edit184:destroy(); self.edit184 = nil; end;
         if self.edit188 ~= nil then self.edit188:destroy(); self.edit188 = nil; end;
-        if self.edit269 ~= nil then self.edit269:destroy(); self.edit269 = nil; end;
+        if self.edit376 ~= nil then self.edit376:destroy(); self.edit376 = nil; end;
+        if self.edit399 ~= nil then self.edit399:destroy(); self.edit399 = nil; end;
+        if self.edit436 ~= nil then self.edit436:destroy(); self.edit436 = nil; end;
         if self.edit219 ~= nil then self.edit219:destroy(); self.edit219 = nil; end;
-        if self.edit17 ~= nil then self.edit17:destroy(); self.edit17 = nil; end;
         if self.edit51 ~= nil then self.edit51:destroy(); self.edit51 = nil; end;
         if self.edit119 ~= nil then self.edit119:destroy(); self.edit119 = nil; end;
-        if self.checkBox22 ~= nil then self.checkBox22:destroy(); self.checkBox22 = nil; end;
         if self.edit48 ~= nil then self.edit48:destroy(); self.edit48 = nil; end;
         if self.checkBox36 ~= nil then self.checkBox36:destroy(); self.checkBox36 = nil; end;
         if self.checkBox34 ~= nil then self.checkBox34:destroy(); self.checkBox34 = nil; end;
-        if self.edit155 ~= nil then self.edit155:destroy(); self.edit155 = nil; end;
-        if self.checkBox2 ~= nil then self.checkBox2:destroy(); self.checkBox2 = nil; end;
-        if self.edit87 ~= nil then self.edit87:destroy(); self.edit87 = nil; end;
-        if self.edit162 ~= nil then self.edit162:destroy(); self.edit162 = nil; end;
-        if self.edit168 ~= nil then self.edit168:destroy(); self.edit168 = nil; end;
-        if self.edit170 ~= nil then self.edit170:destroy(); self.edit170 = nil; end;
         if self.edit190 ~= nil then self.edit190:destroy(); self.edit190 = nil; end;
-        if self.edit194 ~= nil then self.edit194:destroy(); self.edit194 = nil; end;
-        if self.edit299 ~= nil then self.edit299:destroy(); self.edit299 = nil; end;
-        if self.edit113 ~= nil then self.edit113:destroy(); self.edit113 = nil; end;
-        if self.edit15 ~= nil then self.edit15:destroy(); self.edit15 = nil; end;
-        if self.checkBox19 ~= nil then self.checkBox19:destroy(); self.checkBox19 = nil; end;
-        if self.checkBox25 ~= nil then self.checkBox25:destroy(); self.checkBox25 = nil; end;
-        if self.checkBox35 ~= nil then self.checkBox35:destroy(); self.checkBox35 = nil; end;
-        if self.edit78 ~= nil then self.edit78:destroy(); self.edit78 = nil; end;
-        if self.edit211 ~= nil then self.edit211:destroy(); self.edit211 = nil; end;
+        if self.checkBox2 ~= nil then self.checkBox2:destroy(); self.checkBox2 = nil; end;
+        if self.edit168 ~= nil then self.edit168:destroy(); self.edit168 = nil; end;
+        if self.edit375 ~= nil then self.edit375:destroy(); self.edit375 = nil; end;
+        if self.edit392 ~= nil then self.edit392:destroy(); self.edit392 = nil; end;
+        if self.edit395 ~= nil then self.edit395:destroy(); self.edit395 = nil; end;
+        if self.edit345 ~= nil then self.edit345:destroy(); self.edit345 = nil; end;
+        if self.edit352 ~= nil then self.edit352:destroy(); self.edit352 = nil; end;
+        if self.textEditor14 ~= nil then self.textEditor14:destroy(); self.textEditor14 = nil; end;
         if self.edit257 ~= nil then self.edit257:destroy(); self.edit257 = nil; end;
-        if self.edit240 ~= nil then self.edit240:destroy(); self.edit240 = nil; end;
+        if self.edit380 ~= nil then self.edit380:destroy(); self.edit380 = nil; end;
+        if self.checkBox105 ~= nil then self.checkBox105:destroy(); self.checkBox105 = nil; end;
         if self.edit259 ~= nil then self.edit259:destroy(); self.edit259 = nil; end;
-        if self.edit138 ~= nil then self.edit138:destroy(); self.edit138 = nil; end;
+        if self.checkBox59 ~= nil then self.checkBox59:destroy(); self.checkBox59 = nil; end;
+        if self.edit78 ~= nil then self.edit78:destroy(); self.edit78 = nil; end;
+        if self.checkBox52 ~= nil then self.checkBox52:destroy(); self.checkBox52 = nil; end;
+        if self.checkBox129 ~= nil then self.checkBox129:destroy(); self.checkBox129 = nil; end;
+        if self.checkBox58 ~= nil then self.checkBox58:destroy(); self.checkBox58 = nil; end;
         if self.edit202 ~= nil then self.edit202:destroy(); self.edit202 = nil; end;
+        if self.edit303 ~= nil then self.edit303:destroy(); self.edit303 = nil; end;
         if self.edit91 ~= nil then self.edit91:destroy(); self.edit91 = nil; end;
         if self.edit70 ~= nil then self.edit70:destroy(); self.edit70 = nil; end;
-        if self.checkBox26 ~= nil then self.checkBox26:destroy(); self.checkBox26 = nil; end;
+        if self.edit372 ~= nil then self.edit372:destroy(); self.edit372 = nil; end;
         if self.edit268 ~= nil then self.edit268:destroy(); self.edit268 = nil; end;
+        if self.edit377 ~= nil then self.edit377:destroy(); self.edit377 = nil; end;
         if self.edit248 ~= nil then self.edit248:destroy(); self.edit248 = nil; end;
-        if self.edit42 ~= nil then self.edit42:destroy(); self.edit42 = nil; end;
+        if self.checkBox82 ~= nil then self.checkBox82:destroy(); self.checkBox82 = nil; end;
         if self.edit22 ~= nil then self.edit22:destroy(); self.edit22 = nil; end;
-        if self.edit118 ~= nil then self.edit118:destroy(); self.edit118 = nil; end;
-        if self.checkBox10 ~= nil then self.checkBox10:destroy(); self.checkBox10 = nil; end;
-        if self.edit154 ~= nil then self.edit154:destroy(); self.edit154 = nil; end;
-        if self.edit209 ~= nil then self.edit209:destroy(); self.edit209 = nil; end;
-        if self.edit254 ~= nil then self.edit254:destroy(); self.edit254 = nil; end;
-        if self.edit278 ~= nil then self.edit278:destroy(); self.edit278 = nil; end;
-        if self.edit281 ~= nil then self.edit281:destroy(); self.edit281 = nil; end;
         if self.edit282 ~= nil then self.edit282:destroy(); self.edit282 = nil; end;
-        if self.edit135 ~= nil then self.edit135:destroy(); self.edit135 = nil; end;
-        if self.edit191 ~= nil then self.edit191:destroy(); self.edit191 = nil; end;
+        if self.edit407 ~= nil then self.edit407:destroy(); self.edit407 = nil; end;
         if self.edit136 ~= nil then self.edit136:destroy(); self.edit136 = nil; end;
-        if self.edit32 ~= nil then self.edit32:destroy(); self.edit32 = nil; end;
-        if self.tab1 ~= nil then self.tab1:destroy(); self.tab1 = nil; end;
-        if self.edit102 ~= nil then self.edit102:destroy(); self.edit102 = nil; end;
-        if self.edit178 ~= nil then self.edit178:destroy(); self.edit178 = nil; end;
+        if self.edit434 ~= nil then self.edit434:destroy(); self.edit434 = nil; end;
+        if self.edit212 ~= nil then self.edit212:destroy(); self.edit212 = nil; end;
         if self.edit173 ~= nil then self.edit173:destroy(); self.edit173 = nil; end;
         if self.checkBox1 ~= nil then self.checkBox1:destroy(); self.checkBox1 = nil; end;
-        if self.edit212 ~= nil then self.edit212:destroy(); self.edit212 = nil; end;
-        if self.edit117 ~= nil then self.edit117:destroy(); self.edit117 = nil; end;
-        if self.edit286 ~= nil then self.edit286:destroy(); self.edit286 = nil; end;
         if self.checkBox30 ~= nil then self.checkBox30:destroy(); self.checkBox30 = nil; end;
-        if self.edit215 ~= nil then self.edit215:destroy(); self.edit215 = nil; end;
-        if self.edit216 ~= nil then self.edit216:destroy(); self.edit216 = nil; end;
         if self.edit227 ~= nil then self.edit227:destroy(); self.edit227 = nil; end;
-        if self.edit20 ~= nil then self.edit20:destroy(); self.edit20 = nil; end;
+        if self.edit394 ~= nil then self.edit394:destroy(); self.edit394 = nil; end;
+        if self.edit213 ~= nil then self.edit213:destroy(); self.edit213 = nil; end;
         self:_oldLFMDestroy();
     end;
 
