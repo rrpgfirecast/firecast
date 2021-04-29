@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmPATHFINDER1_svg" align="client" theme="light" margins="{top=1}">
+    <style>#frmPATHFINDER1_svg path {color: black; strokeColor: black; mode: stretch;} &#xD;
+#frmPATHFINDER1_svg label {fontColor: black; textTrimming: none; wordWrap: false; autoSize: true;}</style>
+    <scrollBox align="client">
+        <rectangle width="905" height="1175" color="white">&#xD;
+            <image left="0" top="0" width="905" height="1175" src="images/1.png" style="stretch" optimize="true" compilerOrder="0"/>&#xD;
+			---------------------------------- Area  do Personagem -----------------------------------
+			<edit left="210" top="50" width="295" height="35" horzTextAlign="center" fontColor="black" transparent="true" field="NomePersonagem"/>
+			<edit left="255" top="94" width="250" height="28" horzTextAlign="center" fontColor="black" transparent="true" field="NomeJogador"/>
+			<edit left="295" top="128" width="210" height="22" horzTextAlign="center" fontColor="black" transparent="true" field="PontosExperiencia"/>			
+			<edit left="515" top="35" width="275" height="18" horzTextAlign="center" fontColor="black" transparent="true" field="AcestralidadeHeranca"/>
+			<edit left="515" top="63" width="275" height="18" horzTextAlign="center" fontColor="black" transparent="true" field="Biografia"/>
+			<edit left="515" top="91" width="275" height="18" horzTextAlign="center" fontColor="black" transparent="true" field="Classe"/>			
+			<edit left="515" top="115" width="42" height="17" horzTextAlign="center" fontColor="black" fontSize="10" transparent="true" field="Tamanho"/>
+			<edit left="565" top="115" width="65" height="17" horzTextAlign="center" fontColor="black" fontSize="10" transparent="true" field="Tendencia"/>
+			<edit left="680" top="114" width="110" height="18" horzTextAlign="center" fontColor="black" fontSize="10" transparent="true" field="Tracos"/>			
+			<edit left="570" top="133" width="220" height="18" horzTextAlign="center" fontColor="black" transparent="true" field="Divindade"/>
+			<edit left="800" top="50" width="75" height="35" horzTextAlign="center" fontColor="black" fontSize="20" transparent="true" field="Nivel"/>
+			<edit left="812" top="112" width="55" height="35" horzTextAlign="center" fontColor="black" transparent="true" field="PontosHeroismo"/>
+
+			<edit left="35" top="183" width="43" height="32" horzTextAlign="center" fontColor="black" fontSize="14" transparent="false" field="MODForca"/>			
+			<edit left="35" top="224" width="43" height="32" horzTextAlign="center" fontColor="black" fontSize="14" transparent="false" field="MODDestreza"/>
+			<edit left="35" top="265" width="43" height="32" horzTextAlign="center" fontColor="black" fontSize="14" transparent="false" field="MODConstituicao"/>
+			<edit left="35" top="307" width="43" height="32" horzTextAlign="center" fontColor="black" fontSize="14" transparent="false" field="MODInteligencia"/>
+			<edit left="35" top="348" width="43" height="32" horzTextAlign="center" fontColor="black" fontSize="14" transparent="false" field="MODSabedoria"/>
+			<edit left="35" top="389" width="43" height="32" horzTextAlign="center" fontColor="black" fontSize="14" transparent="false" field="MODCarisma"/>
+			
+			<edit left="248" top="183" width="43" height="32" horzTextAlign="center" fontColor="black" fontSize="14" transparent="false" field="ValorForca"/>			
+			<edit left="248" top="224" width="43" height="32" horzTextAlign="center" fontColor="black" fontSize="14" transparent="false" field="ValorDestreza"/>
+			<edit left="248" top="265" width="43" height="32" horzTextAlign="center" fontColor="black" fontSize="14" transparent="false" field="ValorConstituicao"/>
+			<edit left="248" top="307" width="43" height="32" horzTextAlign="center" fontColor="black" fontSize="14" transparent="false" field="ValorInteligencia"/>
+			<edit left="248" top="348" width="43" height="32" horzTextAlign="center" fontColor="black" fontSize="14" transparent="false" field="ValorSabedoria"/>
+			<edit left="248" top="389" width="43" height="32" horzTextAlign="center" fontColor="black" fontSize="14" transparent="false" field="ValorCarisma"/>
+			
+			<edit left="35" top="450" width="43" height="32" horzTextAlign="center" fontColor="black" fontSize="14" transparent="false" field="CDBase"/>	   
+			<edit left="129" top="459" width="34" height="22" horzTextAlign="center" fontColor="black" fontSize="14" transparent="false" field="AtbChave"/>
+			<edit left="168" top="459" width="34" height="22" horzTextAlign="center" fontColor="black" fontSize="14" transparent="false" field="PROF"/>
+			<edit left="256" top="459" width="34" height="22" horzTextAlign="center" fontColor="black" fontSize="14" transparent="false" field="CDClasseItem"/>
+	   
+			<checkBox left="205" top="460" width="12" field="CDClasseTEML1"/>
+			<checkBox left="217" top="460" width="12" field="CDClasseTEML2"/>
+			<checkBox left="229" top="460" width="12" field="CDClasseTEML3"/>
+			<checkBox left="241" top="460" width="12" field="CDClasseTEML4"/>
+	   
+			<edit left="115" top="489" width="63" height="31" horzTextAlign="center" fontColor="black" fontSize="14" transparent="false" field="CDClasseVelocidade"/>	   
+			<edit left="233" top="499" width="230" height="22" horzTextAlign="center" fontColor="black" fontSize="14" transparent="false" field="CDClasseTipoMovimento"/>
+	   
+			<edit left="352" top="200" width="50" height="31" horzTextAlign="center" fontColor="black" fontSize="14" transparent="false" field="CA"/>	   
+			<edit left="457" top="193" width="30" height="24" horzTextAlign="center" fontColor="black" fontSize="14" transparent="false" field="CADes"/>	
+			<edit left="500" top="193" width="30" height="24" horzTextAlign="center" fontColor="black" fontSize="14" transparent="false" field="CALimite"/>
+			<edit left="536" top="193" width="30" height="24" horzTextAlign="center" fontColor="black" fontSize="14" transparent="false" field="CAProf"/>
+			<edit left="626" top="193" width="30" height="24" horzTextAlign="center" fontColor="black" fontSize="14" transparent="false" field="CAItem"/>
+	   
+			<checkBox left="571" top="196" width="12" field="CATEML1"/>
+			<checkBox left="583" top="196" width="12" field="CATEML2"/>
+			<checkBox left="595" top="196" width="12" field="CATEML3"/>
+			<checkBox left="607" top="196" width="12" field="CATEML4"/>
+			
+			<checkBox left="433" top="236" width="12" field="SemArmaduraTEML1"/>
+			<checkBox left="445" top="236" width="12" field="SemArmaduraTEML2"/>
+			<checkBox left="457" top="236" width="12" field="SemArmaduraTEML3"/>
+			<checkBox left="469" top="236" width="12" field="SemArmaduraTEML4"/>	
+		
+			<checkBox left="488" top="236" width="12" field="LeveTEML1"/>
+			<checkBox left="500" top="236" width="12" field="LeveTEML1"/>
+			<checkBox left="512" top="236" width="12" field="LeveTEML1"/>
+			<checkBox left="524" top="236" width="12" field="LeveTEML1"/>		
+			
+			<checkBox left="545" top="236" width="12" field="CAMediaTEML1"/>
+			<checkBox left="557" top="236" width="12" field="CAMediaTEML2"/>
+			<checkBox left="569" top="236" width="12" field="CAMediaTEML3"/>
+			<checkBox left="581" top="236" width="12" field="CAMediaTEML4"/>		
+			
+			<checkBox left="600" top="236" width="12" field="CAPesadaTEML1"/>
+			<checkBox left="612" top="236" width="12" field="CAPesadaTEML2"/>
+			<checkBox left="624" top="236" width="12" field="CAPesadaTEML3"/>
+			<checkBox left="636" top="236" width="12" field="CAPesadaTEML4"/>
+					
+			<edit left="467" top="265" width="25" height="22" horzTextAlign="center" fontColor="black" fontSize="14" transparent="false" field="CAEscudo"/>
+			<edit left="502" top="270" width="45" height="22" horzTextAlign="center" fontColor="black" fontSize="12" transparent="false" field="CADureza"/>
+			<edit left="559" top="270" width="30" height="22" horzTextAlign="center" fontColor="black" fontSize="12" transparent="false" field="CAPVMax"/>
+			<edit left="594" top="270" width="15" height="22" horzTextAlign="center" fontColor="black" fontSize="14" transparent="false" field="CALQ"/>
+			<edit left="622" top="270" width="47" height="22" horzTextAlign="center" fontColor="black" fontSize="14" transparent="false" field="CAPVAtuais"/>
+			
+			---------------------Jogadas de Salvamento 
+			Fortitude --------------------------------
+			
+			<edit left="355" top="343" width="45" height="22" horzTextAlign="center" fontColor="black" fontSize="14" transparent="false" field="Fortitude"/>
+			<edit left="335" top="383" width="32" height="22" horzTextAlign="center" fontColor="black" fontSize="14" transparent="false" field="FortitudeCon"/>
+			<edit left="382" top="383" width="32" height="22" horzTextAlign="center" fontColor="black" fontSize="14" transparent="false" field="FortitudeProf"/>
+			<edit left="335" top="420" width="32" height="22" horzTextAlign="center" fontColor="black" fontSize="14" transparent="false" field="FortitudeItem"/>
+			
+			<checkBox left="375" top="423" width="12" field="FortitudeTEML1"/>
+			<checkBox left="387" top="423" width="12" field="FortitudeTEML2"/>
+			<checkBox left="399" top="423" width="12" field="FortitudeTEML3"/>
+			<checkBox left="411" top="423" width="12" field="FortitudeTEML4"/>
+			
+			Reflexo --------------------------------
+			
+			
+			<edit left="476" top="343" width="45" height="22" horzTextAlign="center" fontColor="black" fontSize="14" transparent="false" field="Reflexo"/>
+			<edit left="456" top="383" width="32" height="22" horzTextAlign="center" fontColor="black" fontSize="14" transparent="false" field="FortitudeCon"/>
+			<edit left="503" top="383" width="32" height="22" horzTextAlign="center" fontColor="black" fontSize="14" transparent="false" field="FortitudeProf"/>
+			<edit left="456" top="420" width="32" height="22" horzTextAlign="center" fontColor="black" fontSize="14" transparent="false" field="FortitudeItem"/>
+			
+			<checkBox left="496" top="423" width="12" field="FortitudeTEML1"/>
+			<checkBox left="508" top="423" width="12" field="FortitudeTEML2"/>
+			<checkBox left="520" top="423" width="12" field="FortitudeTEML3"/>
+			<checkBox left="532" top="423" width="12" field="FortitudeTEML4"/>
+			
+			-------------------- usar a base para fazer os do lado ------------------------
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+	   
+	   
+	   
+	   
+	   
+	   
+	   
+	   
+	   
+	   
+	   
+	   
+	   
+	   
+	   
+	   </rectangle>
+    </scrollBox>
+</form>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmPATHFINDER" formType="sheetTemplate" dataType="PathFinder_Oficial" title="PathFinder 2E (Oficial)" align="client" theme="light">
+    <tabControl align="client">
+        <tab title="Página 1">
+            <import file="1.lfm"/>
+        </tab>
+        <tab title="Página 2">
+            <import file="2.lfm"/>
+        </tab>
+        <tab title="Página 3">
+            <import file="3.lfm"/>
+        </tab>
+        <tab title="Página 4">
+            <import file="4.lfm"/>
+        </tab>
+    </tabControl>
+</form>

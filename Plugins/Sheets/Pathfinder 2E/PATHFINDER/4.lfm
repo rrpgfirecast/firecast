@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmPATHFINDER4_svg" align="client" theme="light" margins="{top=1}">
+    <style>#frmPATHFINDER4_svg path {color: black; strokeColor: black; mode: stretch;} &#xD;
+#frmPATHFINDER4_svg label {fontColor: black; textTrimming: none; wordWrap: false; autoSize: true;}</style>
+    <scrollBox align="client">
+        <rectangle width="905" height="1175" color="white">&#xD;
+            <image left="0" top="0" width="905" height="1175" src="images/4.png" style="stretch" optimize="true" compilerOrder="0"/>&#xD;
+        </rectangle>
+    </scrollBox>
+</form>
