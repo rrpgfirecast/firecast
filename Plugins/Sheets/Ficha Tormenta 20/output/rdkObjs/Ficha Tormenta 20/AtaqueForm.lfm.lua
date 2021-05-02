@@ -45,7 +45,7 @@ local function constructNew_frmAtaqueForm()
 			local rolagem = Firecast.interpretarRolagem("1d20 + " .. mod);
 
 			local mesa = rrpg.getMesaDe(sheet);
-			mesa.chat:rolarDados(rolagem, "Ataque com " .. (atq or "arma") .. " de " .. (nome or "personagem") );
+			mesa.activeChat:rolarDados(rolagem, "Ataque com " .. (atq or "arma") .. " de " .. (nome or "personagem") );
         end;
         function self.rollDmg()
 			if sheet==nil then return end;
@@ -62,7 +62,7 @@ local function constructNew_frmAtaqueForm()
 			end;
 
 			local mesa = rrpg.getMesaDe(sheet);
-			mesa.chat:rolarDados(rolagem, "Dano de " .. (atq or "arma") .. " de " .. (nome or "personagem") );
+			mesa.activeChat:rolarDados(rolagem, "Dano de " .. (atq or "arma") .. " de " .. (nome or "personagem") );
         end;
         
 

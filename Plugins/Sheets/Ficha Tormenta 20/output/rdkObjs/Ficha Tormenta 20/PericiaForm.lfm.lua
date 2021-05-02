@@ -225,7 +225,7 @@ local function constructNew_frmRecordListForm()
             				local rolagem = Firecast.interpretarRolagem("1d20 + " .. mod);
             
             				local mesa = rrpg.getMesaDe(sheet);
-            				mesa.chat:rolarDados(rolagem, "Teste de " .. (per or "perícia") .. " de " .. (nome or "personagem") );
+            				mesa.activeChat:rolarDados(rolagem, "Teste de " .. (per or "perícia") .. " de " .. (nome or "personagem") );
         end, obj);
 
     obj._e_event4 = obj.button2:addEventListener("onClick",

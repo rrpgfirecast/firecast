@@ -42,7 +42,7 @@
 					local rolagem = Firecast.interpretarRolagem("1d20 + " .. mod);
 
 					local mesa = rrpg.getMesaDe(sheet);
-					mesa.chat:rolarDados(rolagem, "Teste de " .. (atr or "") .. " de " .. (nome or "personagem") );
+					mesa.activeChat:rolarDados(rolagem, "Teste de " .. (atr or "") .. " de " .. (nome or "personagem") );
 				</event>
 			</button>
 			<edit align="left" width="50" field="$(field)Atr" height="25" horzTextAlign="center" type="number"/>

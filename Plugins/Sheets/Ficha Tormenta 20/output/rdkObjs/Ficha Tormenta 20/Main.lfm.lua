@@ -1222,19 +1222,19 @@ local function constructNew_frmTemplate()
 			addSkill("Iniciativa", "desMod", false, false);
 			addSkill("Intimidação", "carMod", false, false);
 			addSkill("Intuição", "sabMod", false, false);
-			addSkill("Inestigação", "intMod", false, false);
+			addSkill("Investigação", "intMod", false, false);
 			addSkill("Jogatina", "carMod", false, false);
 			addSkill("Ladinagem", "desMod", true, true);
 			addSkill("Luta", "forMod", false, false);
 			addSkill("Misticismo", "intMod", true, false);
-			addSkill("Navegação", "sabMod", true, false);
+			addSkill("Pilotagem", "sabMod", true, false);
 			addSkill("Nobreza", "intMod", true, false);
 			addSkill("Ofício", "intMod", false, false);
 			addSkill("Percepção", "sabMod", false, false);
 			addSkill("Pontaria", "desMod", false, false);
 			addSkill("Reflexos", "desMod", false, false);
 			addSkill("Religião", "sabMod", true, false);
-			addSkill("Percepção", "sabMod", false, false);
+			addSkill("Sobrevivência", "sabMod", false, false);
 			addSkill("Vontade", "sabMod", false, false);
 		end
 
@@ -2517,7 +2517,7 @@ local function constructNew_frmTemplate()
             					local rolagem = Firecast.interpretarRolagem("1d20 + " .. mod);
             
             					local mesa = rrpg.getMesaDe(sheet);
-            					mesa.chat:rolarDados(rolagem, "Teste de " .. (atr or "") .. " de " .. (nome or "personagem") );
+            					mesa.activeChat:rolarDados(rolagem, "Teste de " .. (atr or "") .. " de " .. (nome or "personagem") );
         end, obj);
 
     obj._e_event2 = obj.dataLink1:addEventListener("onChange",
@@ -2538,7 +2538,7 @@ local function constructNew_frmTemplate()
             					local rolagem = Firecast.interpretarRolagem("1d20 + " .. mod);
             
             					local mesa = rrpg.getMesaDe(sheet);
-            					mesa.chat:rolarDados(rolagem, "Teste de " .. (atr or "") .. " de " .. (nome or "personagem") );
+            					mesa.activeChat:rolarDados(rolagem, "Teste de " .. (atr or "") .. " de " .. (nome or "personagem") );
         end, obj);
 
     obj._e_event4 = obj.dataLink2:addEventListener("onChange",
@@ -2559,7 +2559,7 @@ local function constructNew_frmTemplate()
             					local rolagem = Firecast.interpretarRolagem("1d20 + " .. mod);
             
             					local mesa = rrpg.getMesaDe(sheet);
-            					mesa.chat:rolarDados(rolagem, "Teste de " .. (atr or "") .. " de " .. (nome or "personagem") );
+            					mesa.activeChat:rolarDados(rolagem, "Teste de " .. (atr or "") .. " de " .. (nome or "personagem") );
         end, obj);
 
     obj._e_event6 = obj.dataLink3:addEventListener("onChange",
@@ -2580,7 +2580,7 @@ local function constructNew_frmTemplate()
             					local rolagem = Firecast.interpretarRolagem("1d20 + " .. mod);
             
             					local mesa = rrpg.getMesaDe(sheet);
-            					mesa.chat:rolarDados(rolagem, "Teste de " .. (atr or "") .. " de " .. (nome or "personagem") );
+            					mesa.activeChat:rolarDados(rolagem, "Teste de " .. (atr or "") .. " de " .. (nome or "personagem") );
         end, obj);
 
     obj._e_event8 = obj.dataLink4:addEventListener("onChange",
@@ -2601,7 +2601,7 @@ local function constructNew_frmTemplate()
             					local rolagem = Firecast.interpretarRolagem("1d20 + " .. mod);
             
             					local mesa = rrpg.getMesaDe(sheet);
-            					mesa.chat:rolarDados(rolagem, "Teste de " .. (atr or "") .. " de " .. (nome or "personagem") );
+            					mesa.activeChat:rolarDados(rolagem, "Teste de " .. (atr or "") .. " de " .. (nome or "personagem") );
         end, obj);
 
     obj._e_event10 = obj.dataLink5:addEventListener("onChange",
@@ -2622,7 +2622,7 @@ local function constructNew_frmTemplate()
             					local rolagem = Firecast.interpretarRolagem("1d20 + " .. mod);
             
             					local mesa = rrpg.getMesaDe(sheet);
-            					mesa.chat:rolarDados(rolagem, "Teste de " .. (atr or "") .. " de " .. (nome or "personagem") );
+            					mesa.activeChat:rolarDados(rolagem, "Teste de " .. (atr or "") .. " de " .. (nome or "personagem") );
         end, obj);
 
     obj._e_event12 = obj.dataLink6:addEventListener("onChange",

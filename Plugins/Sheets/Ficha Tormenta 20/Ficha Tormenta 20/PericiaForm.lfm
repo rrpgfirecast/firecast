@@ -65,7 +65,7 @@
 				local rolagem = Firecast.interpretarRolagem("1d20 + " .. mod);
 
 				local mesa = rrpg.getMesaDe(sheet);
-				mesa.chat:rolarDados(rolagem, "Teste de " .. (per or "perícia") .. " de " .. (nome or "personagem") );
+				mesa.activeChat:rolarDados(rolagem, "Teste de " .. (per or "perícia") .. " de " .. (nome or "personagem") );
 			</event>
 		</button>
 
