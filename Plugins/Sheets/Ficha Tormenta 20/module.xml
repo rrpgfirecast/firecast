@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <module sdkVersion="3.5">
 	<id>Ambesek.Tormenta20</id>
-	<version>0.1.1</version>
+	<version>0.2</version>
 	<name>Ficha Tormenta 20</name>
 	<description>Ficha para o cenario e sistema Tormenta 20. </description>
 	<author>Ambesek</author>
