@@ -816,7 +816,7 @@ local function constructNew_frmFichaRPGmeister2Aar_svg()
     obj.checkBox11 = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox11:setParent(obj.layout2);
     obj.checkBox11:setLeft(0);
-    obj.checkBox11:setTop(50);
+    obj.checkBox11:setTop(0);
     obj.checkBox11:setWidth(150);
     obj.checkBox11:setHeight(25);
     obj.checkBox11:setText("Dano por Energia");
@@ -827,7 +827,7 @@ local function constructNew_frmFichaRPGmeister2Aar_svg()
     obj.edit14 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit14:setParent(obj.layout2);
     obj.edit14:setLeft(150);
-    obj.edit14:setTop(50);
+    obj.edit14:setTop(0);
     obj.edit14:setWidth(40);
     obj.edit14:setHeight(25);
     obj.edit14:setField("energiaDano");
@@ -847,7 +847,7 @@ local function constructNew_frmFichaRPGmeister2Aar_svg()
     obj.edit15 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit15:setParent(obj.layout2);
     obj.edit15:setLeft(190);
-    obj.edit15:setTop(50);
+    obj.edit15:setTop(0);
     obj.edit15:setWidth(40);
     obj.edit15:setHeight(25);
     obj.edit15:setField("energiaCrit");
@@ -862,7 +862,7 @@ local function constructNew_frmFichaRPGmeister2Aar_svg()
     obj.checkBox12 = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox12:setParent(obj.layout2);
     obj.checkBox12:setLeft(0);
-    obj.checkBox12:setTop(0);
+    obj.checkBox12:setTop(25);
     obj.checkBox12:setWidth(150);
     obj.checkBox12:setHeight(25);
     obj.checkBox12:setText("Talentos");
@@ -873,7 +873,7 @@ local function constructNew_frmFichaRPGmeister2Aar_svg()
     obj.edit16 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit16:setParent(obj.layout2);
     obj.edit16:setLeft(150);
-    obj.edit16:setTop(0);
+    obj.edit16:setTop(25);
     obj.edit16:setWidth(40);
     obj.edit16:setHeight(25);
     obj.edit16:setField("talentosDano");
@@ -893,7 +893,7 @@ local function constructNew_frmFichaRPGmeister2Aar_svg()
     obj.edit17 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit17:setParent(obj.layout2);
     obj.edit17:setLeft(190);
-    obj.edit17:setTop(0);
+    obj.edit17:setTop(25);
     obj.edit17:setWidth(40);
     obj.edit17:setHeight(25);
     obj.edit17:setField("talentosCrit");
@@ -908,7 +908,7 @@ local function constructNew_frmFichaRPGmeister2Aar_svg()
     obj.edit18 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit18:setParent(obj.layout2);
     obj.edit18:setLeft(230);
-    obj.edit18:setTop(0);
+    obj.edit18:setTop(25);
     obj.edit18:setWidth(40);
     obj.edit18:setHeight(25);
     obj.edit18:setField("talentosAtaq");
