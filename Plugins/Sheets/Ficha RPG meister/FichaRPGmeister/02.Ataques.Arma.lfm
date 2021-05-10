@@ -91,6 +91,18 @@
     		if sheet.outros then
     			pen = pen + (tonumber(sheet.outrosAtaq) or 0);
     		end;
+            if sheet.outros1 then
+                pen = pen + (tonumber(sheet.outros1Ataq) or 0);
+            end;
+            if sheet.outros2 then
+                pen = pen + (tonumber(sheet.outros2Ataq) or 0);
+            end;
+            if sheet.outros3 then
+                pen = pen + (tonumber(sheet.outros3Ataq) or 0);
+            end;
+            if sheet.outros4 then
+                pen = pen + (tonumber(sheet.outros4Ataq) or 0);
+            end;
     		if sheet.itens then
     			pen = pen + (tonumber(sheet.itensAtaq) or 0);
     		end;
@@ -239,6 +251,42 @@
     				crit = crit .. (sheet.outrosCrit or "");
     			end;
     		end;
+            if sheet.outros1 then
+                if sheet.outros1Dano ~= "Dano" then
+                    dado = dado .. (sheet.outros1Dano or "");
+                    tiros = tiros .. (sheet.outros1Dano or "");
+                end;
+                if sheet.outros1Crit~="Crit" then
+                    crit = crit .. (sheet.outros1Crit or "");
+                end;
+            end;
+            if sheet.outros2 then
+                if sheet.outros2Dano ~= "Dano" then
+                    dado = dado .. (sheet.outros2Dano or "");
+                    tiros = tiros .. (sheet.outros2Dano or "");
+                end;
+                if sheet.outros2Crit~="Crit" then
+                    crit = crit .. (sheet.outros2Crit or "");
+                end;
+            end;
+            if sheet.outros3 then
+                if sheet.outros3Dano ~= "Dano" then
+                    dado = dado .. (sheet.outros3Dano or "");
+                    tiros = tiros .. (sheet.outros3Dano or "");
+                end;
+                if sheet.outros3Crit~="Crit" then
+                    crit = crit .. (sheet.outros3Crit or "");
+                end;
+            end;
+            if sheet.outros4 then
+                if sheet.outros4Dano ~= "Dano" then
+                    dado = dado .. (sheet.outros4Dano or "");
+                    tiros = tiros .. (sheet.outros4Dano or "");
+                end;
+                if sheet.outros4Crit~="Crit" then
+                    crit = crit .. (sheet.outros4Crit or "");
+                end;
+            end;
     		if node.buffDano~= nil then
     			dado = dado .. node.buffDano;
     			tiros = tiros .. node.buffDano;
@@ -328,7 +376,7 @@
     		sheet.decisivo = decisivo;
 		end;
 	</script>
-<template name="checkEdit">
+    <template name="checkEdit">
 		<checkBox left="0" top="$(top)" width="150" height="25" text="$(text)" field="$(field)" hint="$(hint)"/>
 		<edit  left="150" top="$(top)" width="40" height="25" field="$(field)$(prompt1)"/>
 		<dataLink field="$(field)$(prompt1)" defaultValue="$(prompt1)" />
@@ -344,6 +392,23 @@
 		<dataLink field="$(field)$(prompt3)" defaultValue="$(prompt3)" />
 		<!-- end; -->
 	</template>
+    <template name="checkEditCustom">
+        <checkBox left="0" top="$(top)" width="15" height="25" field="$(field)" hint="$(hint)"/>
+        <edit left="20" top="$(top)" width="125" height="25" field="$(field)Name)"/>
+        <edit left="150" top="$(top)" width="40" height="25" field="$(field)$(prompt1)"/>
+        <dataLink field="$(field)$(prompt1)" defaultValue="$(prompt1)" />
+        <script>
+            local num = tonumber($(num));
+        </script>
+        <!-- if tonumber(num) > 1 then -->
+        <edit left="190" top="$(top)" width="40" height="25"  field="$(field)$(prompt2)"/>
+        <dataLink field="$(field)$(prompt2)" defaultValue="$(prompt2)" />
+        <!-- end; -->
+        <!-- if tonumber(num) > 2 then -->
+        <edit left="230" top="$(top)" width="40" height="25"  field="$(field)$(prompt3)"/>
+        <dataLink field="$(field)$(prompt3)" defaultValue="$(prompt3)" />
+        <!-- end; -->
+    </template>
 
 	<rectangle align="client" color="black" strokeColor="white" strokeSize="1"/>
     
@@ -376,16 +441,20 @@
 			<checkEdit top="125" text="Composto" field="composto" num="1" prompt1="Lim" hint="Bônus minimo de força necessario para usar esse arco composto. Se não possuir força minima a penalidade já é aplicada. "/>
             <checkEdit top="150" text="Limite" field="limite" num="1" prompt1="Qtd" hint="Limita a quantidade de ataques usados em um ataque total. Util para caso o personagem não tenha todos talentos de combater com duas armas. "/>
 			<checkEdit top="175" text="Alcance" field="alcance" num="2" prompt1="Mult" prompt2="Pen" hint="Coloque no primeiro campo a quantidade de vezes que você deseja multiplicar o incremento de distancia (até 5 para armas de arremesso e até 10 para outros). No segundo a penalidade que você quer adicionar ao ataque por isso (normalmente -2/incremento)."/>
+            <checkEdit top="200" text="Rajada de Golpes" field="rajada" num="2" prompt1="Qtd" prompt2="Pen" hint="Quantos golpes serão feitos na rajada de golpes e a penalidade aplicada neles. "/>
+            <checkEdit top="225" text="Tamanho" field="tamanho" num="2" prompt1="Dado" prompt2="Pen" hint="Coloque aqui o novo dado de dano por aumento ou diminuição de tamanho do personagem e a penalidade ou bônus adequado. Se for em descrição e mudar o tamanho do personage a penalidade vai automaticamente. "/>
 		</layout>
 		<layout left="270" top="25" width="270" height="250">
-			<checkEdit top="0" text="Rajada de Golpes" field="rajada" num="2" prompt1="Qtd" prompt2="Pen" hint="Quantos golpes serão feitos na rajada de golpes e a penalidade aplicada neles. "/>
-			<checkEdit top="25" text="Tamanho" field="tamanho" num="2" prompt1="Dado" prompt2="Pen" hint="Coloque aqui o novo dado de dano por aumento ou diminuição de tamanho do personagem e a penalidade ou bônus adequado. Se for em descrição e mudar o tamanho do personage a penalidade vai automaticamente. "/>
-            <checkEdit top="50" text="Dano por Energia" field="energia" num="2" prompt1="Dano" prompt2="Crit" hint="Coloque aqui qualquer dano extra por energia da arma, assim como dano extra por energia em sucessos decisivos. Normalmente ganhos por armas flamejantes e da explosão flamejante, ou similares. "/>
-			<checkEdit top="75" text="Talentos" field="talentos" num="3" prompt1="Dano" prompt2="Crit" prompt3="Ataq" hint="Coloque aqui qualquer bônus no dano, no dano de sucesso decisivo ou no acerto ganho por talentos."/>
-			<checkEdit top="100" text="Itens" field="itens" num="3" prompt1="Dano" prompt2="Crit" prompt3="Ataq" hint="Coloque aqui qualquer bônus no dano, no dano de sucesso decisivo ou no acerto ganho por itens."/>
-			<checkEdit top="125" text="Magias" field="magias" num="3" prompt1="Dano" prompt2="Crit" prompt3="Ataq" hint="Coloque aqui qualquer bônus no dano, no dano de sucesso decisivo ou no acerto ganho por efeitos magicos."/>
-			<checkEdit top="150" text="Extra" field="extra" num="3" prompt1="Dano" prompt2="Crit" prompt3="Ataq" hint="Coloque aqui qualquer bônus no dano, no dano de sucesso decisivo ou no acerto ganho por razões diversas."/>
-			<checkEdit top="175" text="Outros" field="outros" num="3" prompt1="Dano" prompt2="Crit" prompt3="Ataq" hint="Coloque aqui qualquer bônus no dano, no dano de sucesso decisivo ou no acerto ganho por razões diversas."/>
+            <checkEdit top="0" text="Dano por Energia" field="energia" num="2" prompt1="Dano" prompt2="Crit" hint="Coloque aqui qualquer dano extra por energia da arma, assim como dano extra por energia em sucessos decisivos. Normalmente ganhos por armas flamejantes e da explosão flamejante, ou similares. "/>
+			<checkEdit top="25" text="Talentos" field="talentos" num="3" prompt1="Dano" prompt2="Crit" prompt3="Ataq" hint="Coloque aqui qualquer bônus no dano, no dano de sucesso decisivo ou no acerto ganho por talentos."/>
+			<checkEdit top="50" text="Itens" field="itens" num="3" prompt1="Dano" prompt2="Crit" prompt3="Ataq" hint="Coloque aqui qualquer bônus no dano, no dano de sucesso decisivo ou no acerto ganho por itens."/>
+			<checkEdit top="75" text="Magias" field="magias" num="3" prompt1="Dano" prompt2="Crit" prompt3="Ataq" hint="Coloque aqui qualquer bônus no dano, no dano de sucesso decisivo ou no acerto ganho por efeitos magicos."/>
+			<checkEditCustom top="100" field="extra" num="3" prompt1="Dano" prompt2="Crit" prompt3="Ataq" hint="Coloque aqui qualquer bônus no dano, no dano de sucesso decisivo ou no acerto ganho por razões diversas."/>
+			<checkEditCustom top="125" field="outros" num="3" prompt1="Dano" prompt2="Crit" prompt3="Ataq" hint="Coloque aqui qualquer bônus no dano, no dano de sucesso decisivo ou no acerto ganho por razões diversas."/>
+            <checkEditCustom top="150" field="outros1" num="3" prompt1="Dano" prompt2="Crit" prompt3="Ataq" hint="Coloque aqui qualquer bônus no dano, no dano de sucesso decisivo ou no acerto ganho por razões diversas."/>
+            <checkEditCustom top="175" field="outros2" num="3" prompt1="Dano" prompt2="Crit" prompt3="Ataq" hint="Coloque aqui qualquer bônus no dano, no dano de sucesso decisivo ou no acerto ganho por razões diversas."/>
+            <checkEditCustom top="200" field="outros3" num="3" prompt1="Dano" prompt2="Crit" prompt3="Ataq" hint="Coloque aqui qualquer bônus no dano, no dano de sucesso decisivo ou no acerto ganho por razões diversas."/>
+            <checkEditCustom top="225" field="outros4" num="3" prompt1="Dano" prompt2="Crit" prompt3="Ataq" hint="Coloque aqui qualquer bônus no dano, no dano de sucesso decisivo ou no acerto ganho por razões diversas."/>
 		</layout>
 		<layout left="570" top="25" width="150" height="250">
 			<checkBox left="0" top="0" width="150" height="25" text="Ambidestria" field="ambidestria" hint="Marque se possuir o talento ambidestria. Fazendo com que seus ataques com duas mãos adicionem o dobro da força no dano, ou que ataques com a arma secundaria adicionem a força sem reduzi-la a metade. "/>
@@ -506,7 +575,7 @@
 				</event>
 			</button>
 		</layout> 
-		<dataLink fields="{'furtivo', 'ataquePoderoso', 'especializacaoCombate', 'tiroMultiplo', 'ataqueMultiplo', 'alcance', 'composto', 'limite', 'energia', 'rajada', 'tamanho', 'talentos', 'itens', 'magias', 'extra', 'outros', 'ambidestria', 'combate2armas', 'combate2armasLeve', 'velocidade', 'tiroRapido', 'tiroRapidoAprimorado', 'perspicaz', 'ataqueMultiploApr', 'forma', 'empunhadura', 'mao', 'zen', 'flanquear','atualizar'}">
+		<dataLink fields="{'furtivo', 'ataquePoderoso', 'especializacaoCombate', 'tiroMultiplo', 'ataqueMultiplo', 'alcance', 'composto', 'limite', 'energia', 'rajada', 'tamanho', 'talentos', 'itens', 'magias', 'extra', 'outros', 'outros1', 'outros2', 'outros3', 'outros4', 'ambidestria', 'combate2armas', 'combate2armasLeve', 'velocidade', 'tiroRapido', 'tiroRapidoAprimorado', 'perspicaz', 'ataqueMultiploApr', 'forma', 'empunhadura', 'mao', 'zen', 'flanquear','atualizar'}">
 	        <event name="onChange">                
 	            updateAll();
 	        </event>

@@ -67,7 +67,8 @@ end
 -- Implementação dos comandos
 Firecast.Messaging.listen("HandleChatCommand", 
 	function (message)
-		if message.mesa ~= nil then initializeRoom(message.mesa) end;
+		if message.mesa == nil then return end;
+		initializeRoom(message.mesa);
 
 		if message.comando == "nicksaver" then
 			local cfgForm = getConfigWindow(message.mesa);
@@ -120,7 +121,8 @@ Firecast.Messaging.listen("HandleChatCommand",
 -- Escuta das mensagens de chat padrão
 Firecast.Messaging.listen("MesaJoined", 
 	function (message)
-		if message.mesa ~= nil then initializeRoom(message.mesa) end;
+		if message.mesa == nil then return end;
+		initializeRoom(message.mesa);
 		if message.eu and config.rooms[message.mesa.codigoInterno].nickSaved==true then
 
 			local nick = message.mesa.meuJogador.nick;
@@ -133,7 +135,8 @@ Firecast.Messaging.listen("MesaJoined",
 
 Firecast.listen('HandleChatTextInput',
 	function(message)
-		if message.mesa ~= nil then initializeRoom(message.mesa) end;
+		if message.mesa == nil then return end;
+		initializeRoom(message.mesa);
 		-- ignore if is a command 
 		if message.texto:sub(1, 1) == "/" then return end;
         if message.isCommand then return end;

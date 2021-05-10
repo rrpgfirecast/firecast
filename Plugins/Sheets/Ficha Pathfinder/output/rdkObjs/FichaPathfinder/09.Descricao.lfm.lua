@@ -307,7 +307,7 @@ local function constructNew_frmFichaRPGmeister9_svg()
 
     obj.dataLink1 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink1:setParent(obj.scrollBox1);
-    obj.dataLink1:setFields({'tamanho', 'quadrupede', 'efetFor'});
+    obj.dataLink1:setFields({'tamanho', 'quadrupede', 'efetFor', 'cargaForca'});
     obj.dataLink1:setName("dataLink1");
 
     obj.layout1 = GUI.fromHandle(_obj_newObject("layout"));
@@ -421,7 +421,7 @@ local function constructNew_frmFichaRPGmeister9_svg()
     obj._e_event0 = obj.dataLink1:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet~=nil then
-            					local str = tonumber(sheet.efetFor) or 1;
+            					local str = (tonumber(sheet.efetFor) or 1) + (tonumber(sheet.cargaForca) or 0);
             					local size = tonumber(sheet.tamanho) or 0;
             					local quad = sheet.quadrupede;
             

@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<form name="frmRecordListForm" width="525" height="25" margins="{right=5,bottom=5}" theme="light">
-
+<form name="frmRecordListForm" width="550" height="25" margins="{right=5,bottom=5}" theme="light">
 	<template name="VertLabelEdit">
 		<layout align="left" width="$(width)" margins="{right=5}">
 			<label text="$(text)" width="$(width)" horzTextAlign="leading" fontSize="$(fontSize)"/>
@@ -52,6 +51,23 @@
 	<rectangle width="525" height="25" color="#F0FFFF">
 		<checkBox align="left" width="15" text="" field="classe"/>
 		<edit align="left" width="100" field="nome" margins="{right=5}"/>
+
+		<button align="left" width="25" text="R" margins="{right=5}">
+			<event name="onClick">
+				if sheet==nil then return end;
+				local node = NDB.getRoot(sheet);
+				if node==nil then return end;
+
+				local mod = tonumber(sheet.total) or 0;
+				local per = sheet.nome;
+				local nome = node.nome;
+
+				local rolagem = Firecast.interpretarRolagem("1d20 + " .. mod);
+
+				local mesa = rrpg.getMesaDe(sheet);
+				mesa.activeChat:rolarDados(rolagem, "Teste de " .. (per or "perícia") .. " de " .. (nome or "personagem") );
+			</event>
+		</button>
 
 		<rectangle align="left" width="50" color="#F0FFFF" strokeColor="black" strokeSize="2" margins="{right=5}">
 			<label align="client" field="total" horzTextAlign="center" vertTextAlign="center"/>

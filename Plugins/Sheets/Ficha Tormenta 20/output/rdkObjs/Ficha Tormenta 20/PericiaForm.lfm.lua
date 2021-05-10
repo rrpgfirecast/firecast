@@ -27,7 +27,7 @@ local function constructNew_frmRecordListForm()
     _gui_assignInitialParentForForm(obj.handle);
     obj:beginUpdate();
     obj:setName("frmRecordListForm");
-    obj:setWidth(525);
+    obj:setWidth(550);
     obj:setHeight(25);
     obj:setMargins({right=5,bottom=5});
     obj:setTheme("light");
@@ -69,6 +69,14 @@ local function constructNew_frmRecordListForm()
     obj.edit1:setField("nome");
     obj.edit1:setMargins({right=5});
     obj.edit1:setName("edit1");
+
+    obj.button1 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button1:setParent(obj.rectangle1);
+    obj.button1:setAlign("left");
+    obj.button1:setWidth(25);
+    obj.button1:setText("R");
+    obj.button1:setMargins({right=5});
+    obj.button1:setName("button1");
 
     obj.rectangle2 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle2:setParent(obj.rectangle1);
@@ -158,13 +166,13 @@ local function constructNew_frmRecordListForm()
     obj.checkBox3:setFontSize(8);
     obj.checkBox3:setName("checkBox3");
 
-    obj.button1 = GUI.fromHandle(_obj_newObject("button"));
-    obj.button1:setParent(obj.rectangle1);
-    obj.button1:setAlign("left");
-    obj.button1:setWidth(25);
-    obj.button1:setText("X");
-    obj.button1:setMargins({left=5});
-    obj.button1:setName("button1");
+    obj.button2 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button2:setParent(obj.rectangle1);
+    obj.button2:setAlign("left");
+    obj.button2:setWidth(25);
+    obj.button2:setText("X");
+    obj.button2:setMargins({left=5});
+    obj.button2:setName("button2");
 
     obj._e_event0 = obj.dataLink1:addEventListener("onChange",
         function (_, field, oldValue, newValue)
@@ -206,6 +214,22 @@ local function constructNew_frmRecordListForm()
 
     obj._e_event3 = obj.button1:addEventListener("onClick",
         function (_)
+            if sheet==nil then return end;
+            				local node = NDB.getRoot(sheet);
+            				if node==nil then return end;
+            
+            				local mod = tonumber(sheet.total) or 0;
+            				local per = sheet.nome;
+            				local nome = node.nome;
+            
+            				local rolagem = Firecast.interpretarRolagem("1d20 + " .. mod);
+            
+            				local mesa = rrpg.getMesaDe(sheet);
+            				mesa.activeChat:rolarDados(rolagem, "Teste de " .. (per or "perícia") .. " de " .. (nome or "personagem") );
+        end, obj);
+
+    obj._e_event4 = obj.button2:addEventListener("onClick",
+        function (_)
             dialogs.confirmOkCancel("Tem certeza que quer apagar essa perícia?",
             					function (confirmado)
             						if confirmado then
@@ -215,6 +239,7 @@ local function constructNew_frmRecordListForm()
         end, obj);
 
     function obj:_releaseEvents()
+        __o_rrpgObjs.removeEventListenerById(self._e_event4);
         __o_rrpgObjs.removeEventListenerById(self._e_event3);
         __o_rrpgObjs.removeEventListenerById(self._e_event2);
         __o_rrpgObjs.removeEventListenerById(self._e_event1);
@@ -240,6 +265,7 @@ local function constructNew_frmRecordListForm()
         if self.rectangle3 ~= nil then self.rectangle3:destroy(); self.rectangle3 = nil; end;
         if self.label3 ~= nil then self.label3:destroy(); self.label3 = nil; end;
         if self.checkBox3 ~= nil then self.checkBox3:destroy(); self.checkBox3 = nil; end;
+        if self.button2 ~= nil then self.button2:destroy(); self.button2 = nil; end;
         if self.dataLink2 ~= nil then self.dataLink2:destroy(); self.dataLink2 = nil; end;
         if self.checkBox1 ~= nil then self.checkBox1:destroy(); self.checkBox1 = nil; end;
         if self.comboBox1 ~= nil then self.comboBox1:destroy(); self.comboBox1 = nil; end;

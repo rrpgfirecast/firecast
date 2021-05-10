@@ -29,7 +29,7 @@
 			<edit align="client" class="" field="$(field)" fontSize="12"/>
 		</flowPart>
 	</template>
-	   <template name="itemInfoFieldSmall">
+	<template name="itemInfoFieldSmall">
         <flowPart minWidth="90" maxWidth="100" height="35">
             <label align="top" class="tituloCampo" fontSize="10" text="$(text)" horzTextAlign="center" wordWrap="true" textTrimming="none" autoSize="true" hint="$(hint)" hitTest="true"/>
             <edit align="client" class="" field="$(field)" fontSize="12" type="float"/>

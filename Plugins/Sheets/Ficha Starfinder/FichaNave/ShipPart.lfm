@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmShipPart" width="465" height="25" theme="dark" margins="{top=1}">
+	<script> 
+		<![CDATA[			
+		local function askForDelete()
+			Dialogs.confirmYesNo("Deseja realmente apagar?",
+								 function (confirmado)
+									if confirmado then
+										NDB.deleteNode(sheet);
+									end;
+								 end);
+		end;
+
+		local function showPopup()
+			local pop = self:findControlByName("shipPartPop");
+				
+			if pop ~= nil then
+				pop:setNodeObject(self.sheet);
+				pop:showPopupEx("bottomCenter", self);
+			else
+				showMessage("Ops, bug.. nao encontrei o popup para exibir");
+			end;				
+		end;
+		]]>	
+	</script>
+	<edit align="client" field="nome" margins="{top=1,bottom=1}"/>
+
+	<edit align="right" width="45" field="qtd" margins="{top=1,bottom=1}"/>
+
+	<layout align="right" width="50">
+		<button align="right" width="23" text="i" onClick="showPopup();" margins="{top=1,bottom=1}"/>
+		<button align="right" width="23" text="X" onClick="askForDelete();" margins="{top=1,bottom=1}"/>
+	</layout>
+	<dataLink field="pf">
+        <event name="onChange">
+        	if sheet==nil then return end;
+
+            local pf = 0;
+            local node = NDB.getParent(NDB.getParent(sheet));
+
+            local nodes = NDB.getChildNodes(node.listaExpansao); 
+            for i=1, #nodes, 1 do
+                pf = pf + (tonumber(nodes[i].pf) or 0);
+            end;
+
+            node.expansao_pf = pf;
+        </event>
+    </dataLink>
+	<dataLink field="une">
+        <event name="onChange">
+        	if sheet==nil then return end;
+
+            local une = 0;
+            local node = NDB.getParent(NDB.getParent(sheet));
+
+            local nodes = NDB.getChildNodes(node.listaExpansao); 
+            for i=1, #nodes, 1 do
+                une = une + (tonumber(nodes[i].une) or 0);
+            end;
+
+            node.expansao_une = une;
+        </event>
+    </dataLink>
+	<dataLink field="blocos">
+        <event name="onChange">
+        	if sheet==nil then return end;
+
+            local blocos = 0;
+            local node = NDB.getParent(NDB.getParent(sheet));
+
+            local nodes = NDB.getChildNodes(node.listaExpansao); 
+            for i=1, #nodes, 1 do
+                blocos = blocos + ((tonumber(nodes[i].blocos) or 0) * (tonumber(nodes[i].qtd) or 1));
+            end;
+
+            node.expansao_blocos = blocos;
+        </event>
+    </dataLink>
+	<dataLink field="qtd">
+        <event name="onChange">
+        	if sheet==nil then return end;
+
+            local qtd = 0;
+            local node = NDB.getParent(NDB.getParent(sheet));
+
+            local nodes = NDB.getChildNodes(node.listaExpansao); 
+            for i=1, #nodes, 1 do
+                qtd = qtd + (tonumber(nodes[i].qtd) or 1);
+            end;
+
+            node.expansaoMin = qtd;
+        </event>
+    </dataLink>
+    <dataLink field="tripMin">
+        <event name="onChange">
+            if sheet==nil then return end;
+
+            local tripMin = 0;
+            local node = NDB.getParent(NDB.getParent(sheet));
+
+            local nodes = NDB.getChildNodes(node.listaExpansao); 
+            for i=1, #nodes, 1 do
+                tripMin = tripMin + (tonumber(nodes[i].tripMin) or 0);
+            end;
+
+            node.expansao_tripMin = tripMin;
+        </event>
+    </dataLink>
+    <dataLink field="tripMax">
+        <event name="onChange">
+            if sheet==nil then return end;
+
+            local tripMax = 0;
+            local node = NDB.getParent(NDB.getParent(sheet));
+
+            local nodes = NDB.getChildNodes(node.listaExpansao); 
+            for i=1, #nodes, 1 do
+                tripMax = tripMax + (tonumber(nodes[i].tripMax) or 0);
+            end;
+
+            node.expansao_tripMax = tripMax;
+        </event>
+    </dataLink>
+	
+</form>
