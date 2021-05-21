@@ -128,7 +128,7 @@
             if sheet.piloto == nil then return end;
             if sheet==nil then return end;
 
-            local armas = NDB.getChildNodes(sheet.listaAtaqs); 
+            local armas = NDB.getChildNodes(sheet.listaAtaqs);
             if #armas < 1 then return end;
             local atk = {};
             local index = 0;
@@ -293,6 +293,24 @@
             </rectangle>
         </layout>
     </template>
+    <template name="weaponInfoFieldSmallCenter">
+        <flowPart minWidth="90" maxWidth="100" height="35">
+            <label align="top" class="tituloCampo" fontSize="10" text="$(text)" horzTextAlign="center" wordWrap="true" textTrimming="none" autoSize="true" hint="$(hint)" hitTest="true"/>
+            <edit align="client" class="" field="$(field)" horzTextAlign="center" fontSize="12"/>
+        </flowPart>
+    </template>
+    <template name="weaponInfoFieldSmall">
+        <flowPart minWidth="90" maxWidth="100" height="35">
+            <label align="top" class="tituloCampo" fontSize="10" text="$(text)" horzTextAlign="center" wordWrap="true" textTrimming="none" autoSize="true" hint="$(hint)" hitTest="true"/>
+            <edit align="client" class="" field="$(field)" fontSize="12"/>
+        </flowPart>
+    </template>
+    <template name="itemInfoFieldSmall">
+        <flowPart minWidth="90" maxWidth="100" height="35">
+            <label align="top" class="tituloCampo" fontSize="10" text="$(text)" horzTextAlign="center" wordWrap="true" textTrimming="none" autoSize="true" hint="$(hint)" hitTest="true"/>
+            <edit align="client" class="" field="$(field)" fontSize="12" type="float"/>
+        </flowPart>
+    </template>
 
     <popup name="addPop" width="455" height="310" backOpacity="0.4" autoScopeNode="false" padding="{left=5,right=0,top=5,bottom=5}">
         <layout align="top" height="25">
@@ -404,6 +422,15 @@
             <VertLabelEdit text="Outros" field="pvOutros" width="60" fontSize="11"/>
             <VertLabelCombo text="Cobertura" field="cobertura" width="100" fontSize="13" items="{'Nenhuma', 'Parcial', 'Completa'}" values="{'25','50','75'}"/>
         </layout>
+    </popup>
+    <popup name="popEquip" width="200" height="250" backOpacity="0.4" autoScopeNode="false">
+        <flowLayout align="top" autoHeight="true" maxControlsPerLine="2" margins="{bottom=4}" horzAlign="center">
+            <weaponInfoFieldSmall text="NOME" field="nome"/>
+            <weaponInfoFieldSmall text="Nível" field="nivel"/>
+            <weaponInfoFieldSmall text="Vol" field="peso"/>
+            <weaponInfoFieldSmall text="$" field="preco"/>
+        </flowLayout>
+        <textEditor align="client" field="descricao" class=""/>
     </popup>
 
     <tabControl align="client">
@@ -741,10 +768,10 @@
 
                 if sheet.noUpdate==true then return end;
                 if myself~= nil and isNewVersion(myself.version, info.version) then
-                    Dialogs.choose("Há uma nova versão(" .. info.version .. ") da Ficha Pathfinder. Deseja instalar?",{"Sim", "Não", "Não perguntar novamente."},
+                    Dialogs.choose("Há uma nova versão(" .. info.version .. ") da Ficha Starfinder. Deseja instalar?",{"Sim", "Não", "Não perguntar novamente."},
                         function(selected, selectedIndex, selectedText)
                             if selected and selectedIndex == 1 then
-                                GUI.openInBrowser('https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20Pathfinder/output/Ficha%20Pathfinder.rpk?raw=true');
+                                GUI.openInBrowser('https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20Starfinder/output/Ficha%20Starfinder.rpk?raw=true');
                             elseif selected and selectedIndex == 3 then
                                 sheet.noUpdate = true;
                             end;

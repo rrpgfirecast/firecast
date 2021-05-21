@@ -29433,10 +29433,10 @@ local function constructNew_frmFichaStarfinder()
             
                             if sheet.noUpdate==true then return end;
                             if myself~= nil and isNewVersion(myself.version, info.version) then
-                                Dialogs.choose("Há uma nova versão(" .. info.version .. ") da Ficha Pathfinder. Deseja instalar?",{"Sim", "Não", "Não perguntar novamente."},
+                                Dialogs.choose("Há uma nova versão(" .. info.version .. ") da Ficha Starfinder. Deseja instalar?",{"Sim", "Não", "Não perguntar novamente."},
                                     function(selected, selectedIndex, selectedText)
                                         if selected and selectedIndex == 1 then
-                                            GUI.openInBrowser('https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20Pathfinder/output/Ficha%20Pathfinder.rpk?raw=true');
+                                            GUI.openInBrowser('https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20Starfinder/output/Ficha%20Starfinder.rpk?raw=true');
                                         elseif selected and selectedIndex == 3 then
                                             sheet.noUpdate = true;
                                         end;
@@ -37431,9 +37431,13 @@ local function constructNew_frmFichaStarfinder()
             					local strokeColor = sheet.colorStroke or "#FFFFFF";
             
             		            local rectangles = findClass("rectangle");
+            		            local horzLines = findClass("horzLine");
             
             					for i=1, #rectangles, 1 do 
             						rectangles[i].strokeColor = strokeColor;
+            					end;
+            					for i=1, #horzLines, 1 do 
+            						horzLines[i].strokeColor = strokeColor;
             					end;
         end, obj);
 

@@ -31,7 +31,20 @@
 
 	<template name="Atributo">
 		<layout align="top" height="25" margins="{right=5,left=5}">
-			<label  align="left" text="$(text)" width="50" horzTextAlign="center"/>
+			<button align="left" text="$(text)" width="50" horzTextAlign="center">
+				<event name="onClick">
+					if sheet==nil then return end;
+
+					local mod = tonumber(sheet.$(field)mod) or 0;
+					local atr = "$(text)";
+					local nome = sheet.nome;
+
+					local rolagem = Firecast.interpretarRolagem("1d20 + " .. mod);
+
+					local mesa = rrpg.getMesaDe(sheet);
+					mesa.activeChat:rolarDados(rolagem, "Teste de " .. (atr or "") .. " de " .. (nome or "personagem") );
+				</event>
+			</button>
 			<edit align="left" width="50" field="$(field)Atr" height="25" horzTextAlign="center" type="number"/>
 			<rectangle align="left" width="50" color="#F0FFFF" strokeColor="black" strokeSize="1">
 				<label align="client" field="$(field)Mod" horzTextAlign="center" vertTextAlign="center"/>
@@ -179,13 +192,7 @@
 
 
 			</rectangle>
-			<recordList align="left" width="600" name="rclAtaques" field="listaAtaques" templateForm="frmAtaqueForm" layout="vertical" selectable="true" minQt="3">
-				<event name="onCompare"><![CDATA[
-					-- Esse codigo organiza a ordem dos objetos da lista alfabeticamente. 
-			        return utils.compareStringPtBr(nodeA.nome, nodeB.nome);              
-			        ]]>
-				</event>
-			</recordList>
+			<recordList align="left" width="600" name="rclAtaques" field="listaAtaques" templateForm="frmAtaqueForm" layout="vertical" selectable="true" minQt="3"/>
 
         </layout>
 	</scrollBox>

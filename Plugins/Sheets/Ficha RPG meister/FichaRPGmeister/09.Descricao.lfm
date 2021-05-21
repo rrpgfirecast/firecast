@@ -28,11 +28,11 @@
 			<Descricao left1="910" left2="1000" top="75" text="REINO" field="reino"/>
 		</rectangle>
 
-		<dataLink fields="{'tamanho', 'quadrupede', 'efetFor'}">
+		<dataLink fields="{'tamanho', 'quadrupede', 'efetFor', 'cargaForca'}">
 			<event name="onChange">
 				<![CDATA[
 				if sheet~=nil then
-					local str = tonumber(sheet.efetFor) or 1;
+					local str = (tonumber(sheet.efetFor) or 1) + (tonumber(sheet.cargaForca) or 0);
 					local size = tonumber(sheet.tamanho) or 0;
 					local quad = sheet.quadrupede;
 
