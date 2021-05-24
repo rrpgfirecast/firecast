@@ -64,6 +64,34 @@
 			<textEditor left="459" top="857" width="410" height="32" horzTextAlign="center" fontColor="black" fontSize="14" transparent="false" field="AcoesAtividadeDescricao6"/>
 			
 			------------------------- AÇOES LIVRES E REACOES --------------------------------
+			
+			<edit left="33" top="940" width="140" height="20" horzTextAlign="center" fontColor="black" fontSize="14" transparent="true" field="AcoesLivresNome1"/>	
+			<checkBox left="172" top="927" field="chbAcoesLivres1"/>
+			<checkBox left="172" top="942" field="chbreacao1"/>
+			<edit left="238" top="940" width="153" height="20" horzTextAlign="center" fontColor="black" fontSize="14" transparent="true" field="AcoesLivresTracos1"/>
+			<edit left="397" top="940" width="50" height="20" horzTextAlign="center" fontColor="black" fontSize="14" transparent="true" field="AcoesLivresPagina1"/>
+			<textEditor left="33" top="992" width="413" height="37" horzTextAlign="center" fontColor="black" fontSize="14" transparent="true" field="AcoesLivresDescricao1"/>
+			
+			<edit left="33" top="1050" width="140" height="20" horzTextAlign="center" fontColor="black" fontSize="14" transparent="true" field="AcoesLivresNome2"/>	
+			<checkBox left="172" top="1037" field="chbAcoesLivres2"/>
+			<checkBox left="172" top="1052" field="chbreacao2"/>
+			<edit left="238" top="1050" width="153" height="20" horzTextAlign="center" fontColor="black" fontSize="14" transparent="true" field="AcoesLivresTracos2"/>
+			<edit left="397" top="1050" width="50" height="20" horzTextAlign="center" fontColor="black" fontSize="14" transparent="true" field="AcoesLivresPagina2"/>
+			<textEditor left="33" top="1102" width="413" height="37" horzTextAlign="center" fontColor="black" fontSize="14" transparent="true" field="AcoesLivresDescricao2"/>
+			
+			<edit left="459" top="940" width="140" height="20" horzTextAlign="center" fontColor="black" fontSize="14" transparent="true" field="AcoesLivresNome3"/>	
+			<checkBox left="598" top="927" field="chbAcoesLivres3"/>
+			<checkBox left="598" top="942" field="chbreacao3"/>
+			<edit left="664" top="940" width="153" height="20" horzTextAlign="center" fontColor="black" fontSize="14" transparent="true" field="AcoesLivresTracos3"/>
+			<edit left="822" top="940" width="50" height="20" horzTextAlign="center" fontColor="black" fontSize="14" transparent="true" field="AcoesLivresPagina3"/>
+			<textEditor left="459" top="992" width="413" height="37" horzTextAlign="center" fontColor="black" fontSize="14" transparent="true" field="AcoesLivresDescricao3"/>
+			
+			<edit left="459" top="1050" width="140" height="20" horzTextAlign="center" fontColor="black" fontSize="14" transparent="true" field="AcoesLivresNome4"/>	
+			<checkBox left="598" top="1037" field="chbAcoesLivres4"/>
+			<checkBox left="598" top="1052" field="chbreacao4"/>
+			<edit left="664" top="1050" width="153" height="20" horzTextAlign="center" fontColor="black" fontSize="14" transparent="true" field="AcoesLivresTracos4"/>
+			<edit left="822" top="1050" width="50" height="20" horzTextAlign="center" fontColor="black" fontSize="14" transparent="true" field="AcoesLivresPagina4"/>
+			<textEditor left="459" top="1102" width="413" height="37" horzTextAlign="center" fontColor="black" fontSize="14" transparent="true" field="AcoesLivresDescricao4"/>
 		</rectangle>
     </scrollBox>
 </form>
