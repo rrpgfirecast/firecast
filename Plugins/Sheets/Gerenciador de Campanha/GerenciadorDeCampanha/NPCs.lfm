@@ -897,7 +897,20 @@
 				</rectangle>
 
 				<rectangle left="210" top="5" width="300" height="300" color="black">
-					<imageCheckBox field="cbxFicha" left="0" top="2" width="20" height="20" checkedImage="images/visivel.png" uncheckedImage="images/invisivel.png" hint="Altera a visibilidade da ficha entre somente o mestre e todos. "/> 
+					<imageCheckBox field="cbxFicha" left="0" top="2" width="20" height="20" checkedImage="images/visivel.png" uncheckedImage="images/invisivel.png" hint="Muda o quanto da ficha do personagem o jogador tem acesso. "/>
+					<imageCheckBox field="playerView" left="25" top="2" width="20" height="20" checkedImage="images/organize.png" uncheckedImage="images/organize.png" hint="Muda pra versão de ficha para jogadores">
+						<event name="onClick">
+							mesa = rrpg.getMesaDe(sheet);
+							local pop = self:findControlByName("popupDetailsSmall");
+							
+							if pop ~= nil then
+								pop:setNodeObject(sheet);
+								pop:showPopupEx("center");
+							else
+								showMessage("Ops, bug... Nao encontrei o popup de detalhes para exibir");
+							end;
+						</event>
+					</imageCheckBox>
 					<label left="0" top="0" width="300" height="25" text="PERÍCIAS" horzTextAlign="center"/>
 					<textEditor left="5" top="30" width="290" height="265" field="periciasComp"/>
 				</rectangle>

@@ -193,7 +193,7 @@
 				</recordList>
 			</layout>
 
-			<rectangle left="405" top="30" width="310" height="185" color="#212121" strokeColor="white" strokeSize="1">
+			<rectangle left="405" top="30" width="310" height="210" color="#212121" strokeColor="white" strokeSize="1">
 				<label left="5" top="5" width="150" height="25" text="Presença" horzTextAlign="center" />
 				<label left="5" top="30" width="150" height="25" text="Atraso Justificado" horzTextAlign="center" />
 				<label left="5" top="55" width="150" height="25" text="Atraso" horzTextAlign="center" />
@@ -201,6 +201,7 @@
 				<label left="5" top="105" width="150" height="25" text="Falta" horzTextAlign="center" />
 				<label left="5" top="130" width="150" height="25" text="Uso" horzTextAlign="center" />
 				<label left="5" top="155" width="150" height="25" text="Desperdicio" horzTextAlign="center" />
+				<label left="5" top="180" width="150" height="25" text="Nível" horzTextAlign="center" />
 				
 				<edit left="155" top="5" width="50" height="25" field="presenca" />
 				<edit left="155" top="30" width="50" height="25" field="atrasoJustificado" />
@@ -209,6 +210,7 @@
 				<edit left="155" top="105" width="50" height="25" field="falta" />
 				<edit left="155" top="130" width="50" height="25" field="usos" />
 				<edit left="155" top="155" width="50" height="25" field="desperdicio" />
+				<edit left="155" top="180" width="50" height="25" field="nivel" />
 
 				<rectangle left="205" top="5" width="100" height="150" color="black" strokeColor="white" strokeSize="1"/>
 				<label left="205" top="35" width="100" height="25" text="PH" horzTextAlign="center" fontSize="30"/>
@@ -216,11 +218,12 @@
 				<horzLine left="230" top="105" width="50" strokeColor="white"/>
 				<label left="205" top="105" width="100" height="25" field="pontos" horzTextAlign="center"/>
 
-				<dataLink fields="{'presenca', 'atrasoJustificado', 'atraso', 'falta', 'usos', 'desperdicio'}"> 
+				<dataLink fields="{'presenca', 'atrasoJustificado', 'atraso', 'falta', 'usos', 'desperdicio','nivel'}"> 
 					<event name="onChange">
 						local mod = (tonumber(self.boxDetalhesDoItem.node.presenca) or 0)*4 + 
 										(tonumber(self.boxDetalhesDoItem.node.atrasoJustificado) or 0)*2 + 
-										(tonumber(self.boxDetalhesDoItem.node.atraso) or 0)*1 -   
+										(tonumber(self.boxDetalhesDoItem.node.atraso) or 0)*1 +
+										(tonumber(self.boxDetalhesDoItem.node.nivel) or 0)*10 -   
 										(tonumber(self.boxDetalhesDoItem.node.falta) or 0)*10 -  
 										(tonumber(self.boxDetalhesDoItem.node.usos) or 0)*10 - 
 										(tonumber(self.boxDetalhesDoItem.node.desperdicio) or 0);
@@ -234,7 +237,7 @@
 				</dataLink>
 			</rectangle>
 
-			<rectangle left="405" top="225" width="310" height="310" color="black" strokeColor="white" strokeSize="1">
+			<rectangle left="405" top="250" width="310" height="310" color="black" strokeColor="white" strokeSize="1">
 				<label left="0" top="145" width="310" height="20" text="Avatar" horzTextAlign="center"/>
 				<image align="client" field="avatar" editable="true" hitTest="true" style="autoFit" margins="{left=2, right=2, top=2, bottom=2}">
 					<event name="OnStartDrag">

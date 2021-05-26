@@ -2496,8 +2496,20 @@ local function constructNew_CaixaFichaNPC()
     obj.imageCheckBox1:setHeight(20);
     obj.imageCheckBox1:setImageChecked("/GerenciadorDeCampanha/images/visivel.png");
     obj.imageCheckBox1:setImageUnchecked("/GerenciadorDeCampanha/images/invisivel.png");
-    obj.imageCheckBox1:setHint("Altera a visibilidade da ficha entre somente o mestre e todos. ");
+    obj.imageCheckBox1:setHint("Muda o quanto da ficha do personagem o jogador tem acesso. ");
     obj.imageCheckBox1:setName("imageCheckBox1");
+
+    obj.imageCheckBox2 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox2:setParent(obj.rectangle43);
+    obj.imageCheckBox2:setField("playerView");
+    obj.imageCheckBox2:setLeft(25);
+    obj.imageCheckBox2:setTop(2);
+    obj.imageCheckBox2:setWidth(20);
+    obj.imageCheckBox2:setHeight(20);
+    obj.imageCheckBox2:setImageChecked("/GerenciadorDeCampanha/images/organize.png");
+    obj.imageCheckBox2:setImageUnchecked("/GerenciadorDeCampanha/images/organize.png");
+    obj.imageCheckBox2:setHint("Muda pra versão de ficha para jogadores");
+    obj.imageCheckBox2:setName("imageCheckBox2");
 
     obj.label39 = GUI.fromHandle(_obj_newObject("label"));
     obj.label39:setParent(obj.rectangle43);
@@ -2927,13 +2939,13 @@ local function constructNew_CaixaFichaNPC()
     obj.layout63:setWidth(64);
     obj.layout63:setName("layout63");
 
-    obj.imageCheckBox2 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
-    obj.imageCheckBox2:setParent(obj.layout63);
-    obj.imageCheckBox2:setAlign("client");
-    obj.imageCheckBox2:setName("imageCheckBox2");
+    obj.imageCheckBox3 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox3:setParent(obj.layout63);
+    obj.imageCheckBox3:setAlign("client");
+    obj.imageCheckBox3:setName("imageCheckBox3");
 
     obj.Barrinha1 = GUI.fromHandle(_obj_newObject("progressBar"));
-    obj.Barrinha1:setParent(obj.imageCheckBox2);
+    obj.Barrinha1:setParent(obj.imageCheckBox3);
     obj.Barrinha1:setColorMode("hl");
     obj.Barrinha1:setWidth(64);
     obj.Barrinha1:setHeight(8);
@@ -3008,13 +3020,13 @@ local function constructNew_CaixaFichaNPC()
     obj.layout64:setWidth(64);
     obj.layout64:setName("layout64");
 
-    obj.imageCheckBox3 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
-    obj.imageCheckBox3:setParent(obj.layout64);
-    obj.imageCheckBox3:setAlign("client");
-    obj.imageCheckBox3:setName("imageCheckBox3");
+    obj.imageCheckBox4 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox4:setParent(obj.layout64);
+    obj.imageCheckBox4:setAlign("client");
+    obj.imageCheckBox4:setName("imageCheckBox4");
 
     obj.Barrinha2 = GUI.fromHandle(_obj_newObject("progressBar"));
-    obj.Barrinha2:setParent(obj.imageCheckBox3);
+    obj.Barrinha2:setParent(obj.imageCheckBox4);
     obj.Barrinha2:setColorMode("hl");
     obj.Barrinha2:setWidth(64);
     obj.Barrinha2:setHeight(8);
@@ -3089,13 +3101,13 @@ local function constructNew_CaixaFichaNPC()
     obj.layout65:setWidth(64);
     obj.layout65:setName("layout65");
 
-    obj.imageCheckBox4 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
-    obj.imageCheckBox4:setParent(obj.layout65);
-    obj.imageCheckBox4:setAlign("client");
-    obj.imageCheckBox4:setName("imageCheckBox4");
+    obj.imageCheckBox5 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox5:setParent(obj.layout65);
+    obj.imageCheckBox5:setAlign("client");
+    obj.imageCheckBox5:setName("imageCheckBox5");
 
     obj.Barrinha3 = GUI.fromHandle(_obj_newObject("progressBar"));
-    obj.Barrinha3:setParent(obj.imageCheckBox4);
+    obj.Barrinha3:setParent(obj.imageCheckBox5);
     obj.Barrinha3:setColorMode("hl");
     obj.Barrinha3:setWidth(64);
     obj.Barrinha3:setHeight(8);
@@ -3170,13 +3182,13 @@ local function constructNew_CaixaFichaNPC()
     obj.layout66:setWidth(64);
     obj.layout66:setName("layout66");
 
-    obj.imageCheckBox5 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
-    obj.imageCheckBox5:setParent(obj.layout66);
-    obj.imageCheckBox5:setAlign("client");
-    obj.imageCheckBox5:setName("imageCheckBox5");
+    obj.imageCheckBox6 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox6:setParent(obj.layout66);
+    obj.imageCheckBox6:setAlign("client");
+    obj.imageCheckBox6:setName("imageCheckBox6");
 
     obj.Barrinha4 = GUI.fromHandle(_obj_newObject("progressBar"));
-    obj.Barrinha4:setParent(obj.imageCheckBox5);
+    obj.Barrinha4:setParent(obj.imageCheckBox6);
     obj.Barrinha4:setColorMode("hl");
     obj.Barrinha4:setWidth(64);
     obj.Barrinha4:setHeight(8);
@@ -3960,7 +3972,20 @@ local function constructNew_CaixaFichaNPC()
             							mesaDoPersonagem.activeChat:rolarDados(rolagem, "Teste de vontade de " .. (sheet.NomeGrande or "Companheiro"));
         end, obj);
 
-    obj._e_event58 = obj.button22:addEventListener("onClick",
+    obj._e_event58 = obj.imageCheckBox2:addEventListener("onClick",
+        function (_)
+            mesa = rrpg.getMesaDe(sheet);
+            							local pop = self:findControlByName("popupDetailsSmall");
+            							
+            							if pop ~= nil then
+            								pop:setNodeObject(sheet);
+            								pop:showPopupEx("center");
+            							else
+            								showMessage("Ops, bug... Nao encontrei o popup de detalhes para exibir");
+            							end;
+        end, obj);
+
+    obj._e_event59 = obj.button22:addEventListener("onClick",
         function (_)
             local macro = sheet.macro;
             							if macro~=nil then
@@ -3972,17 +3997,17 @@ local function constructNew_CaixaFichaNPC()
             							end;
         end, obj);
 
-    obj._e_event59 = obj.NomeGrandeBarrinha:addEventListener("onEnter",
+    obj._e_event60 = obj.NomeGrandeBarrinha:addEventListener("onEnter",
         function (_)
             self.NomeGrandeBarrinha.transparent = false;
         end, obj);
 
-    obj._e_event60 = obj.NomeGrandeBarrinha:addEventListener("onExit",
+    obj._e_event61 = obj.NomeGrandeBarrinha:addEventListener("onExit",
         function (_)
             self.NomeGrandeBarrinha.transparent = true;
         end, obj);
 
-    obj._e_event61 = obj.layout62:addEventListener("onClick",
+    obj._e_event62 = obj.layout62:addEventListener("onClick",
         function (_)
             if DonoMestre(sheet, false, "docksub6") then
             						if sheet.ModCor == "J" then
@@ -4000,7 +4025,7 @@ local function constructNew_CaixaFichaNPC()
             					end
         end, obj);
 
-    obj._e_event62 = obj.path2:addEventListener("onClick",
+    obj._e_event63 = obj.path2:addEventListener("onClick",
         function (_)
             if DonoMestre(sheet, false, "docksub6") then
             							if sheet.ModCor == "J" then
@@ -4018,7 +4043,7 @@ local function constructNew_CaixaFichaNPC()
             						end
         end, obj);
 
-    obj._e_event63 = obj.Barrinha1:addEventListener("onMouseEnter",
+    obj._e_event64 = obj.Barrinha1:addEventListener("onMouseEnter",
         function (_)
             self.CorBarrinha1.color = (sheet.CorBarrinha1 .. "AA");
             						self.ValoresBarrinha1.visible = true;
@@ -4026,12 +4051,12 @@ local function constructNew_CaixaFichaNPC()
             						self.InfoBarrinha1Oculto.visible = not (pegarJogador() or GetBarrinhaVisivel(sheet.ImagemBloqueada, 1));
         end, obj);
 
-    obj._e_event64 = obj.Barrinha1:addEventListener("onMouseLeave",
+    obj._e_event65 = obj.Barrinha1:addEventListener("onMouseLeave",
         function (_)
             self.ValoresBarrinha1.visible = false;
         end, obj);
 
-    obj._e_event65 = obj.Barrinha1:addEventListener("onDblClick",
+    obj._e_event66 = obj.Barrinha1:addEventListener("onDblClick",
         function (_)
             if pegarJogador() or true then
             							sheet.BarrinhaID = 1;
@@ -4050,22 +4075,22 @@ local function constructNew_CaixaFichaNPC()
             						end;
         end, obj);
 
-    obj._e_event66 = obj.InfoBarrinha1:addEventListener("onResize",
+    obj._e_event67 = obj.InfoBarrinha1:addEventListener("onResize",
         function (_)
             self.InfoBarrinha1.width = (self.ValoresBarrinha1.width - 4);
         end, obj);
 
-    obj._e_event67 = obj.dataLink17:addEventListener("onChange",
+    obj._e_event68 = obj.dataLink17:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             self.Barrinha1.visible = not sheet.Barrinha1Invisivel;
         end, obj);
 
-    obj._e_event68 = obj.dataLink18:addEventListener("onChange",
+    obj._e_event69 = obj.dataLink18:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             self.Barrinha1.color = sheet.CorBarrinha1;
         end, obj);
 
-    obj._e_event69 = obj.Barrinha2:addEventListener("onMouseEnter",
+    obj._e_event70 = obj.Barrinha2:addEventListener("onMouseEnter",
         function (_)
             self.CorBarrinha2.color = (sheet.CorBarrinha2 .. "AA");
             						self.ValoresBarrinha2.visible = true;
@@ -4073,12 +4098,12 @@ local function constructNew_CaixaFichaNPC()
             						self.InfoBarrinha2Oculto.visible = not (pegarJogador() or GetBarrinhaVisivel(sheet.ImagemBloqueada, 2));
         end, obj);
 
-    obj._e_event70 = obj.Barrinha2:addEventListener("onMouseLeave",
+    obj._e_event71 = obj.Barrinha2:addEventListener("onMouseLeave",
         function (_)
             self.ValoresBarrinha2.visible = false;
         end, obj);
 
-    obj._e_event71 = obj.Barrinha2:addEventListener("onDblClick",
+    obj._e_event72 = obj.Barrinha2:addEventListener("onDblClick",
         function (_)
             if pegarJogador() or true then
             							sheet.BarrinhaID = 2;
@@ -4097,22 +4122,22 @@ local function constructNew_CaixaFichaNPC()
             						end;
         end, obj);
 
-    obj._e_event72 = obj.InfoBarrinha2:addEventListener("onResize",
+    obj._e_event73 = obj.InfoBarrinha2:addEventListener("onResize",
         function (_)
             self.InfoBarrinha2.width = (self.ValoresBarrinha1.width - 4);
         end, obj);
 
-    obj._e_event73 = obj.dataLink19:addEventListener("onChange",
+    obj._e_event74 = obj.dataLink19:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             self.Barrinha2.visible = not sheet.Barrinha2Invisivel;
         end, obj);
 
-    obj._e_event74 = obj.dataLink20:addEventListener("onChange",
+    obj._e_event75 = obj.dataLink20:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             self.Barrinha2.color = sheet.CorBarrinha2;
         end, obj);
 
-    obj._e_event75 = obj.Barrinha3:addEventListener("onMouseEnter",
+    obj._e_event76 = obj.Barrinha3:addEventListener("onMouseEnter",
         function (_)
             self.CorBarrinha3.color = (sheet.CorBarrinha3 .. "AA");
             						self.ValoresBarrinha3.visible = true;
@@ -4120,12 +4145,12 @@ local function constructNew_CaixaFichaNPC()
             						self.InfoBarrinha3Oculto.visible = not (pegarJogador() or GetBarrinhaVisivel(sheet.ImagemBloqueada, 3));
         end, obj);
 
-    obj._e_event76 = obj.Barrinha3:addEventListener("onMouseLeave",
+    obj._e_event77 = obj.Barrinha3:addEventListener("onMouseLeave",
         function (_)
             self.ValoresBarrinha3.visible = false;
         end, obj);
 
-    obj._e_event77 = obj.Barrinha3:addEventListener("onDblClick",
+    obj._e_event78 = obj.Barrinha3:addEventListener("onDblClick",
         function (_)
             if pegarJogador() or true then
             							sheet.BarrinhaID = 3;
@@ -4144,22 +4169,22 @@ local function constructNew_CaixaFichaNPC()
             						end;
         end, obj);
 
-    obj._e_event78 = obj.InfoBarrinha3:addEventListener("onResize",
+    obj._e_event79 = obj.InfoBarrinha3:addEventListener("onResize",
         function (_)
             self.InfoBarrinha3.width = (self.ValoresBarrinha1.width - 4);
         end, obj);
 
-    obj._e_event79 = obj.dataLink21:addEventListener("onChange",
+    obj._e_event80 = obj.dataLink21:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             self.Barrinha3.visible = not sheet.Barrinha3Invisivel;
         end, obj);
 
-    obj._e_event80 = obj.dataLink22:addEventListener("onChange",
+    obj._e_event81 = obj.dataLink22:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             self.Barrinha3.color = sheet.CorBarrinha3;
         end, obj);
 
-    obj._e_event81 = obj.Barrinha4:addEventListener("onMouseEnter",
+    obj._e_event82 = obj.Barrinha4:addEventListener("onMouseEnter",
         function (_)
             self.CorBarrinha4.color = (sheet.CorBarrinha4 .. "AA");
             						self.ValoresBarrinha4.visible = true;
@@ -4167,12 +4192,12 @@ local function constructNew_CaixaFichaNPC()
             						self.InfoBarrinha4Oculto.visible = not (pegarJogador() or GetBarrinhaVisivel(sheet.ImagemBloqueada, 4));
         end, obj);
 
-    obj._e_event82 = obj.Barrinha4:addEventListener("onMouseLeave",
+    obj._e_event83 = obj.Barrinha4:addEventListener("onMouseLeave",
         function (_)
             self.ValoresBarrinha4.visible = false;
         end, obj);
 
-    obj._e_event83 = obj.Barrinha4:addEventListener("onDblClick",
+    obj._e_event84 = obj.Barrinha4:addEventListener("onDblClick",
         function (_)
             if pegarJogador() or true then
             							sheet.BarrinhaID = 4;
@@ -4191,42 +4216,43 @@ local function constructNew_CaixaFichaNPC()
             						end;
         end, obj);
 
-    obj._e_event84 = obj.InfoBarrinha4:addEventListener("onResize",
+    obj._e_event85 = obj.InfoBarrinha4:addEventListener("onResize",
         function (_)
             self.InfoBarrinha4.width = (self.ValoresBarrinha1.width - 4);
         end, obj);
 
-    obj._e_event85 = obj.dataLink23:addEventListener("onChange",
+    obj._e_event86 = obj.dataLink23:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             self.Barrinha4.visible = not sheet.Barrinha4Invisivel;
         end, obj);
 
-    obj._e_event86 = obj.dataLink24:addEventListener("onChange",
+    obj._e_event87 = obj.dataLink24:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             self.Barrinha4.color = sheet.CorBarrinha4;
         end, obj);
 
-    obj._e_event87 = obj.Linha1Barrinha:addEventListener("onEnter",
+    obj._e_event88 = obj.Linha1Barrinha:addEventListener("onEnter",
         function (_)
             self.Linha1Barrinha.transparent = false;
         end, obj);
 
-    obj._e_event88 = obj.Linha1Barrinha:addEventListener("onExit",
+    obj._e_event89 = obj.Linha1Barrinha:addEventListener("onExit",
         function (_)
             self.Linha1Barrinha.transparent = true;
         end, obj);
 
-    obj._e_event89 = obj.Linha2Barrinha:addEventListener("onEnter",
+    obj._e_event90 = obj.Linha2Barrinha:addEventListener("onEnter",
         function (_)
             self.Linha2Barrinha.transparent = false;
         end, obj);
 
-    obj._e_event90 = obj.Linha2Barrinha:addEventListener("onExit",
+    obj._e_event91 = obj.Linha2Barrinha:addEventListener("onExit",
         function (_)
             self.Linha2Barrinha.transparent = true;
         end, obj);
 
     function obj:_releaseEvents()
+        __o_rrpgObjs.removeEventListenerById(self._e_event91);
         __o_rrpgObjs.removeEventListenerById(self._e_event90);
         __o_rrpgObjs.removeEventListenerById(self._e_event89);
         __o_rrpgObjs.removeEventListenerById(self._e_event88);
@@ -4478,11 +4504,11 @@ local function constructNew_CaixaFichaNPC()
         if self.TextoMensagem ~= nil then self.TextoMensagem:destroy(); self.TextoMensagem = nil; end;
         if self.label30 ~= nil then self.label30:destroy(); self.label30 = nil; end;
         if self.dataLink2 ~= nil then self.dataLink2:destroy(); self.dataLink2 = nil; end;
-        if self.textEditor6 ~= nil then self.textEditor6:destroy(); self.textEditor6 = nil; end;
-        if self.textEditor12 ~= nil then self.textEditor12:destroy(); self.textEditor12 = nil; end;
-        if self.label19 ~= nil then self.label19:destroy(); self.label19 = nil; end;
-        if self.label51 ~= nil then self.label51:destroy(); self.label51 = nil; end;
         if self.imageCheckBox2 ~= nil then self.imageCheckBox2:destroy(); self.imageCheckBox2 = nil; end;
+        if self.textEditor6 ~= nil then self.textEditor6:destroy(); self.textEditor6 = nil; end;
+        if self.label19 ~= nil then self.label19:destroy(); self.label19 = nil; end;
+        if self.textEditor12 ~= nil then self.textEditor12:destroy(); self.textEditor12 = nil; end;
+        if self.label51 ~= nil then self.label51:destroy(); self.label51 = nil; end;
         if self.InfoBarrinha2 ~= nil then self.InfoBarrinha2:destroy(); self.InfoBarrinha2 = nil; end;
         if self.edit38 ~= nil then self.edit38:destroy(); self.edit38 = nil; end;
         if self.dataLink15 ~= nil then self.dataLink15:destroy(); self.dataLink15 = nil; end;
@@ -4499,6 +4525,7 @@ local function constructNew_CaixaFichaNPC()
         if self.edit6 ~= nil then self.edit6:destroy(); self.edit6 = nil; end;
         if self.ValoresBarrinha1 ~= nil then self.ValoresBarrinha1:destroy(); self.ValoresBarrinha1 = nil; end;
         if self.ValoresBarrinha2 ~= nil then self.ValoresBarrinha2:destroy(); self.ValoresBarrinha2 = nil; end;
+        if self.imageCheckBox6 ~= nil then self.imageCheckBox6:destroy(); self.imageCheckBox6 = nil; end;
         if self.label18 ~= nil then self.label18:destroy(); self.label18 = nil; end;
         if self.label2 ~= nil then self.label2:destroy(); self.label2 = nil; end;
         if self.textEditor8 ~= nil then self.textEditor8:destroy(); self.textEditor8 = nil; end;
@@ -4554,12 +4581,12 @@ local function constructNew_CaixaFichaNPC()
         if self.radioButton3 ~= nil then self.radioButton3:destroy(); self.radioButton3 = nil; end;
         if self.dataLink13 ~= nil then self.dataLink13:destroy(); self.dataLink13 = nil; end;
         if self.Cor_18 ~= nil then self.Cor_18:destroy(); self.Cor_18 = nil; end;
-        if self.layout65 ~= nil then self.layout65:destroy(); self.layout65 = nil; end;
+        if self.imageCheckBox4 ~= nil then self.imageCheckBox4:destroy(); self.imageCheckBox4 = nil; end;
         if self.dataLink10 ~= nil then self.dataLink10:destroy(); self.dataLink10 = nil; end;
         if self.label23 ~= nil then self.label23:destroy(); self.label23 = nil; end;
         if self.rectangle19 ~= nil then self.rectangle19:destroy(); self.rectangle19 = nil; end;
         if self.label32 ~= nil then self.label32:destroy(); self.label32 = nil; end;
-        if self.imageCheckBox4 ~= nil then self.imageCheckBox4:destroy(); self.imageCheckBox4 = nil; end;
+        if self.layout65 ~= nil then self.layout65:destroy(); self.layout65 = nil; end;
         if self.label24 ~= nil then self.label24:destroy(); self.label24 = nil; end;
         if self.layout3 ~= nil then self.layout3:destroy(); self.layout3 = nil; end;
         if self.dataLink5 ~= nil then self.dataLink5:destroy(); self.dataLink5 = nil; end;

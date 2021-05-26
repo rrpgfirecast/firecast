@@ -67,16 +67,43 @@ local function constructNew_frmGerenciador02_LUA()
     obj.edit3:setType("number");
     obj.edit3:setName("edit3");
 
+    obj.dataLink1 = GUI.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink1:setParent(obj.rectangle1);
+    obj.dataLink1:setFields({'lua_cheia','lua_minguante_convexo','lua_quarto_minguante','lua_minguante_concavo','lua_lua_nova','lua_crescente_concavo','lua_quarto_crescente','lua_crescente_convexo'});
+    obj.dataLink1:setDefaultValues({'Cheia','Minguante Convexo','Quarto Minguante','Minguante Concavo','Lua Nova','Crescente Concavo','Quarto Crescente','Crescente Convexo'});
+    obj.dataLink1:setName("dataLink1");
+
     obj.button1 = GUI.fromHandle(_obj_newObject("button"));
     obj.button1:setParent(obj.rectangle1);
     obj.button1:setLeft(195);
     obj.button1:setTop(0);
     obj.button1:setWidth(25);
     obj.button1:setHeight(25);
-    obj.button1:setText("X");
+    obj.button1:setText("i");
     obj.button1:setName("button1");
 
+    obj.button2 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button2:setParent(obj.rectangle1);
+    obj.button2:setLeft(220);
+    obj.button2:setTop(0);
+    obj.button2:setWidth(25);
+    obj.button2:setHeight(25);
+    obj.button2:setText("X");
+    obj.button2:setName("button2");
+
     obj._e_event0 = obj.button1:addEventListener("onClick",
+        function (_)
+            local pop = self:findControlByName("popMoon");
+            					
+            				if pop ~= nil then
+            					pop:setNodeObject(self.sheet);
+            					pop:showPopupEx("right", self);
+            				else
+            					showMessage("Ops, bug.. nao encontrei o popup para exibir");
+            				end;
+        end, obj);
+
+    obj._e_event1 = obj.button2:addEventListener("onClick",
         function (_)
             dialogs.confirmOkCancel("Tem certeza que quer apagar esse mês?",
             					function (confirmado)
@@ -87,6 +114,7 @@ local function constructNew_frmGerenciador02_LUA()
         end, obj);
 
     function obj:_releaseEvents()
+        __o_rrpgObjs.removeEventListenerById(self._e_event1);
         __o_rrpgObjs.removeEventListenerById(self._e_event0);
     end;
 
@@ -100,10 +128,12 @@ local function constructNew_frmGerenciador02_LUA()
         end;
 
         if self.edit3 ~= nil then self.edit3:destroy(); self.edit3 = nil; end;
-        if self.rectangle1 ~= nil then self.rectangle1:destroy(); self.rectangle1 = nil; end;
-        if self.edit1 ~= nil then self.edit1:destroy(); self.edit1 = nil; end;
         if self.edit2 ~= nil then self.edit2:destroy(); self.edit2 = nil; end;
         if self.button1 ~= nil then self.button1:destroy(); self.button1 = nil; end;
+        if self.rectangle1 ~= nil then self.rectangle1:destroy(); self.rectangle1 = nil; end;
+        if self.edit1 ~= nil then self.edit1:destroy(); self.edit1 = nil; end;
+        if self.button2 ~= nil then self.button2:destroy(); self.button2 = nil; end;
+        if self.dataLink1 ~= nil then self.dataLink1:destroy(); self.dataLink1 = nil; end;
         self:_oldLFMDestroy();
     end;
 
