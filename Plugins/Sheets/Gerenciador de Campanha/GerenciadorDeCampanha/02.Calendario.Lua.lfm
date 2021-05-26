@@ -5,7 +5,21 @@
 		<edit left="130" top="0" width="35" height="25" field="ciclo" type="number"/>
 		<edit left="165" top="0" width="30" height="25" field="desvio" type="number"/>
 
-		<button left="195" top="0" width="25" height="25" text="X">
+		<dataLink fields="{'lua_cheia','lua_minguante_convexo','lua_quarto_minguante','lua_minguante_concavo','lua_lua_nova','lua_crescente_concavo','lua_quarto_crescente','lua_crescente_convexo'}" defaultValues="{'Cheia','Minguante Convexo','Quarto Minguante','Minguante Concavo','Lua Nova','Crescente Concavo','Quarto Crescente','Crescente Convexo'}"/>
+
+		<button left="195" top="0" width="25" height="25" text="i">
+			<event name="onClick">
+				local pop = self:findControlByName("popMoon");
+					
+				if pop ~= nil then
+					pop:setNodeObject(self.sheet);
+					pop:showPopupEx("right", self);
+				else
+					showMessage("Ops, bug.. nao encontrei o popup para exibir");
+				end;
+			</event>
+		</button>
+		<button left="220" top="0" width="25" height="25" text="X">
 			<event name="onClick">
 				dialogs.confirmOkCancel("Tem certeza que quer apagar esse mês?",
 					function (confirmado)

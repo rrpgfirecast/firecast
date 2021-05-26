@@ -337,7 +337,7 @@ local function constructNew_frmJogadores()
     obj.rectangle9:setLeft(405);
     obj.rectangle9:setTop(30);
     obj.rectangle9:setWidth(310);
-    obj.rectangle9:setHeight(185);
+    obj.rectangle9:setHeight(210);
     obj.rectangle9:setColor("#212121");
     obj.rectangle9:setStrokeColor("white");
     obj.rectangle9:setStrokeSize(1);
@@ -413,6 +413,16 @@ local function constructNew_frmJogadores()
     obj.label16:setHorzTextAlign("center");
     obj.label16:setName("label16");
 
+    obj.label17 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label17:setParent(obj.rectangle9);
+    obj.label17:setLeft(5);
+    obj.label17:setTop(180);
+    obj.label17:setWidth(150);
+    obj.label17:setHeight(25);
+    obj.label17:setText("Nível");
+    obj.label17:setHorzTextAlign("center");
+    obj.label17:setName("label17");
+
     obj.edit3 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit3:setParent(obj.rectangle9);
     obj.edit3:setLeft(155);
@@ -476,6 +486,15 @@ local function constructNew_frmJogadores()
     obj.edit9:setField("desperdicio");
     obj.edit9:setName("edit9");
 
+    obj.edit10 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit10:setParent(obj.rectangle9);
+    obj.edit10:setLeft(155);
+    obj.edit10:setTop(180);
+    obj.edit10:setWidth(50);
+    obj.edit10:setHeight(25);
+    obj.edit10:setField("nivel");
+    obj.edit10:setName("edit10");
+
     obj.rectangle10 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle10:setParent(obj.rectangle9);
     obj.rectangle10:setLeft(205);
@@ -487,27 +506,27 @@ local function constructNew_frmJogadores()
     obj.rectangle10:setStrokeSize(1);
     obj.rectangle10:setName("rectangle10");
 
-    obj.label17 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label17:setParent(obj.rectangle9);
-    obj.label17:setLeft(205);
-    obj.label17:setTop(35);
-    obj.label17:setWidth(100);
-    obj.label17:setHeight(25);
-    obj.label17:setText("PH");
-    obj.label17:setHorzTextAlign("center");
-    obj.label17:setFontSize(30);
-    obj.label17:setName("label17");
-
     obj.label18 = GUI.fromHandle(_obj_newObject("label"));
     obj.label18:setParent(obj.rectangle9);
     obj.label18:setLeft(205);
-    obj.label18:setTop(70);
+    obj.label18:setTop(35);
     obj.label18:setWidth(100);
     obj.label18:setHeight(25);
-    obj.label18:setField("ph");
+    obj.label18:setText("PH");
     obj.label18:setHorzTextAlign("center");
     obj.label18:setFontSize(30);
     obj.label18:setName("label18");
+
+    obj.label19 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label19:setParent(obj.rectangle9);
+    obj.label19:setLeft(205);
+    obj.label19:setTop(70);
+    obj.label19:setWidth(100);
+    obj.label19:setHeight(25);
+    obj.label19:setField("ph");
+    obj.label19:setHorzTextAlign("center");
+    obj.label19:setFontSize(30);
+    obj.label19:setName("label19");
 
     obj.horzLine1 = GUI.fromHandle(_obj_newObject("horzLine"));
     obj.horzLine1:setParent(obj.rectangle9);
@@ -517,25 +536,25 @@ local function constructNew_frmJogadores()
     obj.horzLine1:setStrokeColor("white");
     obj.horzLine1:setName("horzLine1");
 
-    obj.label19 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label19:setParent(obj.rectangle9);
-    obj.label19:setLeft(205);
-    obj.label19:setTop(105);
-    obj.label19:setWidth(100);
-    obj.label19:setHeight(25);
-    obj.label19:setField("pontos");
-    obj.label19:setHorzTextAlign("center");
-    obj.label19:setName("label19");
+    obj.label20 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label20:setParent(obj.rectangle9);
+    obj.label20:setLeft(205);
+    obj.label20:setTop(105);
+    obj.label20:setWidth(100);
+    obj.label20:setHeight(25);
+    obj.label20:setField("pontos");
+    obj.label20:setHorzTextAlign("center");
+    obj.label20:setName("label20");
 
     obj.dataLink2 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink2:setParent(obj.rectangle9);
-    obj.dataLink2:setFields({'presenca', 'atrasoJustificado', 'atraso', 'falta', 'usos', 'desperdicio'});
+    obj.dataLink2:setFields({'presenca', 'atrasoJustificado', 'atraso', 'falta', 'usos', 'desperdicio','nivel'});
     obj.dataLink2:setName("dataLink2");
 
     obj.rectangle11 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle11:setParent(obj.boxDetalhesDoItem);
     obj.rectangle11:setLeft(405);
-    obj.rectangle11:setTop(225);
+    obj.rectangle11:setTop(250);
     obj.rectangle11:setWidth(310);
     obj.rectangle11:setHeight(310);
     obj.rectangle11:setColor("black");
@@ -543,15 +562,15 @@ local function constructNew_frmJogadores()
     obj.rectangle11:setStrokeSize(1);
     obj.rectangle11:setName("rectangle11");
 
-    obj.label20 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label20:setParent(obj.rectangle11);
-    obj.label20:setLeft(0);
-    obj.label20:setTop(145);
-    obj.label20:setWidth(310);
-    obj.label20:setHeight(20);
-    obj.label20:setText("Avatar");
-    obj.label20:setHorzTextAlign("center");
-    obj.label20:setName("label20");
+    obj.label21 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label21:setParent(obj.rectangle11);
+    obj.label21:setLeft(0);
+    obj.label21:setTop(145);
+    obj.label21:setWidth(310);
+    obj.label21:setHeight(20);
+    obj.label21:setText("Avatar");
+    obj.label21:setHorzTextAlign("center");
+    obj.label21:setName("label21");
 
     obj.image1 = GUI.fromHandle(_obj_newObject("image"));
     obj.image1:setParent(obj.rectangle11);
@@ -725,7 +744,8 @@ local function constructNew_frmJogadores()
         function (_, field, oldValue, newValue)
             local mod = (tonumber(self.boxDetalhesDoItem.node.presenca) or 0)*4 + 
             										(tonumber(self.boxDetalhesDoItem.node.atrasoJustificado) or 0)*2 + 
-            										(tonumber(self.boxDetalhesDoItem.node.atraso) or 0)*1 -   
+            										(tonumber(self.boxDetalhesDoItem.node.atraso) or 0)*1 +
+            										(tonumber(self.boxDetalhesDoItem.node.nivel) or 0)*10 -   
             										(tonumber(self.boxDetalhesDoItem.node.falta) or 0)*10 -  
             										(tonumber(self.boxDetalhesDoItem.node.usos) or 0)*10 - 
             										(tonumber(self.boxDetalhesDoItem.node.desperdicio) or 0);
@@ -783,6 +803,7 @@ local function constructNew_frmJogadores()
         if self.rectangle6 ~= nil then self.rectangle6:destroy(); self.rectangle6 = nil; end;
         if self.button2 ~= nil then self.button2:destroy(); self.button2 = nil; end;
         if self.rclDinheiro ~= nil then self.rclDinheiro:destroy(); self.rclDinheiro = nil; end;
+        if self.label21 ~= nil then self.label21:destroy(); self.label21 = nil; end;
         if self.layout3 ~= nil then self.layout3:destroy(); self.layout3 = nil; end;
         if self.label13 ~= nil then self.label13:destroy(); self.label13 = nil; end;
         if self.rectangle10 ~= nil then self.rectangle10:destroy(); self.rectangle10 = nil; end;
@@ -819,6 +840,7 @@ local function constructNew_frmJogadores()
         if self.edit2 ~= nil then self.edit2:destroy(); self.edit2 = nil; end;
         if self.label9 ~= nil then self.label9:destroy(); self.label9 = nil; end;
         if self.rectangle8 ~= nil then self.rectangle8:destroy(); self.rectangle8 = nil; end;
+        if self.edit10 ~= nil then self.edit10:destroy(); self.edit10 = nil; end;
         if self.scrollBox1 ~= nil then self.scrollBox1:destroy(); self.scrollBox1 = nil; end;
         if self.edit1 ~= nil then self.edit1:destroy(); self.edit1 = nil; end;
         if self.rclSelector ~= nil then self.rclSelector:destroy(); self.rclSelector = nil; end;
