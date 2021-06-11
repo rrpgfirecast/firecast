@@ -1,5 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <form name="frmGerenciador02" align="client" theme="dark" margins="{top=1}">
+	<script> 
+		<![CDATA[
+		local function write(str)
+            local mesa = Firecast.getMesaDe(sheet);
+            if str then
+                mesa.activeChat:escrever(str);
+            else
+                mesa.activeChat:escrever("String nula");
+            end;
+        end;
+		]]>	
+	</script>
     <scrollBox align="client">
     	<template name="shortTitleCenter">
 			<flowPart minWidth="20" maxWidth="50" height="15">
@@ -687,18 +699,18 @@
 							local maxTemp = 0;
 
 							 -- The average temperature
-							local temperatures = {tonumber(sheet.temperatura_1) or 0,tonumber(sheet.temperatura_2) or 0,tonumber(sheet.temperatura_3) or 0,tonumber(sheet.temperatura_4) or 0,tonumber(sheet.temperatura_5) or 0};
+							local temperatures = {tonumber(estacoes[estacao].temperatura_1) or 0,tonumber(estacoes[estacao].temperatura_2) or 0,tonumber(estacoes[estacao].temperatura_3) or 0,tonumber(estacoes[estacao].temperatura_4) or 0,tonumber(estacoes[estacao].temperatura_5) or 0};
 
 							 -- The temperature variance
-							local temperaturesVar = {tonumber(sheet.temperaturaVar_1) or 1,tonumber(sheet.temperaturaVar_2) or 1,tonumber(sheet.temperaturaVar_3) or 1,tonumber(sheet.temperaturaVar_4) or 1,tonumber(sheet.temperaturaVar_5) or 1};
+							local temperaturesVar = {tonumber(estacoes[estacao].temperaturaVar_1) or 1,tonumber(estacoes[estacao].temperaturaVar_2) or 1,tonumber(estacoes[estacao].temperaturaVar_3) or 1,tonumber(estacoes[estacao].temperaturaVar_4) or 1,tonumber(estacoes[estacao].temperaturaVar_5) or 1};
 
 							-- The temperature chance
-							local temperaturesChances = {tonumber(sheet.temperaturaChance_1) or 0,tonumber(sheet.temperaturaChance_2) or 0,tonumber(sheet.temperaturaChance_3) or 0,tonumber(sheet.temperaturaChance_4) or 0,tonumber(sheet.temperaturaChance_5) or 0};
+							local temperaturesChances = {tonumber(estacoes[estacao].temperaturaChance_1) or 0,tonumber(estacoes[estacao].temperaturaChance_2) or 0,tonumber(estacoes[estacao].temperaturaChance_3) or 0,tonumber(estacoes[estacao].temperaturaChance_4) or 0,tonumber(estacoes[estacao].temperaturaChance_5) or 0};
 							for i=2, 5, 1 do 
 								temperaturesChances[i] = temperaturesChances[i-1] + temperaturesChances[i];
 							end;
 
-							local MinMaxTemps = {tonumber(sheet.temperaturaMM_1) or 1,tonumber(sheet.temperaturaMM_2) or 1,tonumber(sheet.temperaturaMM_3) or 1,tonumber(sheet.temperaturaMM_4) or 1,tonumber(sheet.temperaturaMM_5) or 1};
+							local MinMaxTemps = {tonumber(estacoes[estacao].temperaturaMM_1) or 1,tonumber(estacoes[estacao].temperaturaMM_2) or 1,tonumber(estacoes[estacao].temperaturaMM_3) or 1,tonumber(estacoes[estacao].temperaturaMM_4) or 1,tonumber(estacoes[estacao].temperaturaMM_5) or 1};
 							local selected = 5;
 
 							-- Define temperature range to be used
@@ -746,7 +758,7 @@
 							local nevoa = false;
 
 							-- Define rain intensity chance
-							local intensidadeChance = {tonumber(sheet.chuvaChance_1) or 0,tonumber(sheet.chuvaChance_2) or 0,tonumber(sheet.chuvaChance_3) or 0,tonumber(sheet.chuvaChance_4) or 0,tonumber(sheet.chuvaChance_5) or 0,tonumber(sheet.chuvaChance_6) or 0};
+							local intensidadeChance = {tonumber(estacoes[estacao].chuvaChance_1) or 0,tonumber(estacoes[estacao].chuvaChance_2) or 0,tonumber(estacoes[estacao].chuvaChance_3) or 0,tonumber(estacoes[estacao].chuvaChance_4) or 0,tonumber(estacoes[estacao].chuvaChance_5) or 0,tonumber(estacoes[estacao].chuvaChance_6) or 0};
 							for i=2, 6, 1 do 
 								intensidadeChance[i] = intensidadeChance[i-1] + intensidadeChance[i];
 							end;
@@ -782,7 +794,7 @@
 							-- defining wind
 
 							-- define each wind intensity chance
-							local ventosChance = {tonumber(sheet.ventosChance_1) or 0,tonumber(sheet.ventosChance_2) or 0,tonumber(sheet.ventosChance_3) or 0,tonumber(sheet.ventosChance_4) or 0,tonumber(sheet.ventosChance_5) or 0,tonumber(sheet.ventosChance_6) or 0,tonumber(sheet.ventosChance_7) or 0,tonumber(sheet.ventosChance_8) or 0};
+							local ventosChance = {tonumber(estacoes[estacao].ventosChance_1) or 0,tonumber(estacoes[estacao].ventosChance_2) or 0,tonumber(estacoes[estacao].ventosChance_3) or 0,tonumber(estacoes[estacao].ventosChance_4) or 0,tonumber(estacoes[estacao].ventosChance_5) or 0,tonumber(estacoes[estacao].ventosChance_6) or 0,tonumber(estacoes[estacao].ventosChance_7) or 0,tonumber(estacoes[estacao].ventosChance_8) or 0};
 							for i=2, 8, 1 do 
 								ventosChance[i] = ventosChance[i-1] + ventosChance[i];
 							end;
@@ -832,8 +844,8 @@
 							-- Defining sandstorm
 
 							local areia = false;
-							local areiaMin = (tonumber(sheet.areiaMin) or 9)
-							if intensidade == 1 and ventos >= sheet.areiaMin then
+							local areiaMin = (tonumber(estacoes[estacao].areiaMin) or 9)
+							if intensidade == 1 and ventos >= estacoes[estacao].areiaMin then
 								areia = true;
 							end;
 

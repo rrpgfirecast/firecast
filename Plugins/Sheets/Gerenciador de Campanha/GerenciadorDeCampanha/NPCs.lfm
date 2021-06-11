@@ -84,7 +84,52 @@
 		end;
     </script> 
 
-    <template name="editableBar">
+	<template name="AtributoComp">
+					<button left="0" top="3" width="42" height="20" text="$(ATR)">
+						<event name="onClick">
+							local dado = "1d20 ";
+							local bonus = tonumber(sheet.$(atr)ModComp) or 0;
+							if bonus &gt;= 0 then
+								dado = "1d20 + ";
+							end;
+							local rolagem = rrpg.interpretarRolagem(dado .. bonus);
+							local mesaDoPersonagem = rrpg.getMesaDe(sheet);
+							mesaDoPersonagem.activeChat:rolarDados(rolagem, "Teste de $(nome) de " .. (sheet.NomeGrande or "Companheiro"));
+						</event>
+					</button>
+					<edit left="45" top="0" width="30" height="25" field="$(atr)Comp">
+						<event name="onChange">
+							if sheet~=nil then
+								local mod = (tonumber(sheet.$(atr)Comp) or 0);
+								mod = math.floor((mod-10)/2);
+								if mod &gt;=0 then
+									mod = "+" .. mod;
+								end;
+								sheet.$(atr)ModComp = mod;
+							end;
+						</event>
+					</edit>
+					<rectangle left="80" top="0" width="30" height="25" color="black" strokeColor="white" strokeSize="1"/>
+					<label left="80" top="0" width="30" height="25" field="$(atr)ModComp" horzTextAlign="center"/>
+					<edit left="115" top="0" width="75" height="25" field="$(atr)CompDesc"/>
+	</template>
+	<template name="TRComp">
+					<button left="0" top="3" width="42" height="20" text="$(ATR)">
+						<event name="onClick">
+							local dado = "1d20 ";
+							local bonus = tonumber(sheet.$(atr)Comp) or 0;
+							if bonus &gt;= 0 then
+								dado = "1d20 + ";
+							end;
+							local rolagem = rrpg.interpretarRolagem(dado .. bonus);
+							local mesaDoPersonagem = rrpg.getMesaDe(sheet);
+							mesaDoPersonagem.activeChat:rolarDados(rolagem, "Teste de $(nome) de " .. (sheet.NomeGrande or "Companheiro"));
+						</event>
+					</button>
+					<edit left="45" top="0" width="30" height="25" field="$(atr)Comp"/>
+					<edit left="80" top="0" width="110" height="25" field="$(atr)CompDesc"/>
+	</template>
+   <template name="editableBar">
 		<layout left="3" top="$(top1)" height="8" width="64">
 			<imageCheckBox align="client">
 				<progressBar colorMode="hl" width="64" height="8" hitTest="true" mouseGlow="true" color="#808080" name="Barrinha$(num)" field="Barrinha$(num)Valor" fieldMax="Barrinha$(num)ValorMax">
@@ -138,7 +183,6 @@
 			</event>
 		</dataLink>
 	</template>
-	
 	<template name="corzinha">
 		<layout align="top" margins="{top=2, left=2}" width="20" height="20">
 			<rectangle align="client" color="$(cor)" >
@@ -146,6 +190,236 @@
 			</rectangle>
 		 </layout>
 	</template>
+
+
+	<popup name="popupDetailsSmall" width="450" height="200" backOpacity="0.4" autoScopeNode="false">
+				<label left="10" top="0" width="150" height="25" text="Raça" horzTextAlign="center"/>
+				<label left="160" top="0" width="280" height="25" text="Classe" horzTextAlign="center"/>
+				
+				<label left="10" top="50" width="125" height="25" text="Atitude" horzTextAlign="center"/>
+				<label left="135" top="50" width="125" height="25" text="Relação" horzTextAlign="center"/>
+				<label left="260" top="50" width="175" height="25" text="Comentarios" horzTextAlign="center"/>
+				
+				<label left="10" top="100" width="250" height="25" text="Descrição" horzTextAlign="center"/>
+				
+				<edit left="10" top="25" width="150" height="25" field="raca" />
+				<edit left="160" top="25" width="280" height="25" field="classe" />
+				
+				<edit left="10" top="75" width="125" height="25" field="atitude" />
+				<edit left="135" top="75" width="125" height="25" field="relacao" />
+				<textEditor  left="260" top="75" width="175" height="120" field="comentarios" />
+				
+				<textEditor  left="10" top="125" width="250" height="70" field="descricao" />
+	</popup>
+
+	<popup name="popupDetails" align="client" backOpacity="0.4" autoScopeNode="false" margins="{left=0,right=0,top=50,bottom=0}">
+		<scrollBox align="client">
+			<rectangle left="5" top="5" width="200" height="185" color="black">
+				<label left="5" top="10" width="70" height="20" text="Raça"/>
+				<edit left="70" top="5" width="125" height="25" field="raca"/>
+				
+				<label left="5" top="35" width="70" height="20" text="Classe"/>
+				<edit left="70" top="30" width="125" height="25" field="classe"/>
+				
+				<label left="5" top="60" width="70" height="20" text="Tipo"/>
+				<edit left="70" top="55" width="125" height="25" field="tipoComp"/>
+				
+				<label left="5" top="85" width="70" height="20" text="Subtipos"/>
+				<edit left="70" top="80" width="125" height="25" field="subtiposComp"/>
+				
+				<label left="5" top="110" width="70" height="20" text="Tamanho"/>
+				<edit left="70" top="105" width="125" height="25" field="tamanhoComp"/>
+			</rectangle>
+
+			<rectangle left="5" top="143" width="200" height="110" color="black">
+				<label left="5" top="10" width="40" height="20" text="DVs"/>
+				<edit left="35" top="5" width="70" height="25" field="dvsComp"/>
+
+				<label left="110" top="8" width="40" height="20" text="PVs"/>
+				<edit left="140" top="5" width="55" height="25" field="pvsComp"/>
+
+				<label left="5" top="35" width="60" height="20" text="CA"/>
+				<edit left="70" top="30" width="35" height="25" field="caComp"/>
+
+				<label left="5" top="60" width="60" height="20" text="Toque"/>
+				<edit left="70" top="55" width="35" height="25" field="toqueComp"/>
+
+				<label left="5" top="85" width="60" height="20" text="Surpresa"/>
+				<edit left="70" top="80" width="35" height="25" field="surpresaComp"/>
+
+				<textEditor left="105" top="30" width="90" height="75" field="caCompDesc"/>
+			</rectangle>
+
+			<rectangle left="5" top="256" width="200" height="110" color="black">
+				<button left="5" top="8" width="70" height="20" text="Iniciativa">
+					<event name="onClick">
+						local rolagem = rrpg.interpretarRolagem("1d20 + " .. (sheet.iniciativaComp or 0));
+						local mesaDoPersonagem = rrpg.getMesaDe(sheet);
+						mesaDoPersonagem.activeChat:rolarDados(rolagem, "Teste de iniciativa de " .. (sheet.NomeGrande or "Companheiro"));
+					</event>
+				</button>
+				<edit left="80" top="5" width="30" height="25" field="iniciativaComp"/>
+				<edit left="110" top="5" width="85" height="25" field="iniciativaCompDesc"/>
+
+				<label left="2" top="35" width="85" height="20" text="Deslocamento" fontSize="12"/>
+				<edit left="80" top="30" width="115" height="25" field="deslocamentoComp"/>
+
+				<label left="5" top="60" width="40" height="20" text="BBA"/>
+				<edit left="35" top="55" width="55" height="25" field="bbaComp"/>
+
+				<button left="90" top="58" width="60" height="20" text="Agarrar">
+					<event name="onClick">
+						local rolagem = rrpg.interpretarRolagem("1d20 + " .. (sheet.agarrarComp or 0));
+						local mesaDoPersonagem = rrpg.getMesaDe(sheet);
+						mesaDoPersonagem.activeChat:rolarDados(rolagem, "Teste de agarrar de " .. (sheet.NomeGrande or "Companheiro"));
+					</event>
+				</button>
+				<edit left="150" top="55" width="45" height="25" field="agarrarComp"/>
+
+				<label left="5" top="85" width="40" height="20" text="Esp."/>
+				<edit left="35" top="80" width="35" height="25" field="esp1Comp"/>
+				<edit left="70" top="80" width="35" height="25" field="esp2Comp"/>
+
+				<label left="110" top="85" width="40" height="20" text="Alc."/>
+				<edit left="140" top="80" width="55" height="25" field="alcanceComp"/>
+			</rectangle>
+
+			<rectangle left="5" top="369" width="200" height="160" color="black">
+				<layout left="5" top="5" width="195" height="25">
+					<AtributoComp ATR="FOR" atr="for" nome="força"/>
+				</layout>
+				<layout left="5" top="30" width="195" height="25">
+					<AtributoComp ATR="DES" atr="des" nome="destreza"/>
+				</layout>
+				<layout left="5" top="55" width="195" height="25">
+					<AtributoComp ATR="CON" atr="con" nome="constituição"/>
+				</layout>
+				<layout left="5" top="80" width="195" height="25">
+					<AtributoComp ATR="INT" atr="int" nome="inteligência"/>
+				</layout>
+				<layout left="5" top="105" width="195" height="25">
+					<AtributoComp ATR="SAB" atr="sab" nome="sabedoria"/>
+				</layout>
+				<layout left="5" top="130" width="195" height="25">
+					<AtributoComp ATR="CAR" atr="car" nome="carisma"/>
+				</layout>
+			</rectangle>
+
+			<rectangle left="5" top="532" width="200" height="85" color="black">
+				<layout left="5" top="5" width="195" height="25">
+					<TRComp ATR="FORT" atr="fort" nome="fortitude"/>
+				</layout>
+				<layout left="5" top="30" width="195" height="25">
+					<TRComp ATR="REF" atr="ref" nome="reflexos"/>
+				</layout>
+				<layout left="5" top="55" width="195" height="25">
+					<TRComp ATR="VON" atr="von" nome="vontade"/>
+				</layout>
+			</rectangle>
+
+			<rectangle left="210" top="5" width="300" height="300" color="black">
+				<imageCheckBox field="cbxFicha" left="0" top="2" width="20" height="20" checkedImage="images/visivel.png" uncheckedImage="images/invisivel.png" hint="Muda o quanto da ficha do personagem o jogador tem acesso. "/>
+				<imageCheckBox field="playerView" left="25" top="2" width="20" height="20" checkedImage="images/organize.png" uncheckedImage="images/organize.png" hint="Muda pra versão de ficha para jogadores">
+					<event name="onClick">
+						mesa = rrpg.getMesaDe(sheet);
+						local pop = self:findControlByName("popupDetailsSmall");
+						
+						if pop ~= nil then
+							pop:setNodeObject(sheet);
+							pop:showPopupEx("center");
+						else
+							showMessage("Ops, bug... Nao encontrei o popup de detalhes para exibir");
+						end;
+					</event>
+				</imageCheckBox>
+				<imageCheckBox top="2" left="50" width="20" height="20" field="close" checkedImage="images/delete.png" uncheckedImage="images/delete.png" >
+					<event name="onClick">
+						local pop = self:findControlByName("popupDetails");
+						if pop~=nil then pop:close() end;
+					</event>
+				</imageCheckBox>
+
+				<label left="0" top="0" width="300" height="25" text="PERÍCIAS" horzTextAlign="center"/>
+				<textEditor left="5" top="30" width="290" height="265" field="periciasComp"/>
+			</rectangle>
+
+			<rectangle left="515" top="5" width="300" height="300" color="black">
+				<label left="0" top="0" width="300" height="25" text="TALENTOS" horzTextAlign="center"/>
+				<textEditor left="5" top="30" width="290" height="265" field="talentosComp"/>
+			</rectangle>
+
+			<rectangle left="820" top="5" width="300" height="300" color="black">
+				<label left="0" top="0" width="300" height="25" text="HABILIDADES" horzTextAlign="center"/>
+				<textEditor left="5" top="30" width="290" height="265" field="habilidadesComp"/>
+			</rectangle>
+
+			<rectangle left="210" top="310" width="300" height="300" color="black">
+				<label left="0" top="0" width="300" height="25" text="INVENTARIO" horzTextAlign="center"/>
+				<textEditor left="5" top="30" width="290" height="240" field="inventarioComp"/> 
+				<label left="55" top="275" width="50" height="20" text="PESO"/>
+				<edit left="95" top="270" width="70" height="25" field="pesoInventorioComp" vertTextAlign="center" horzTextAlign="center" />
+				<label left="175" top="275" width="50" height="20" text="PREÇO"/>
+				<edit left="225" top="270" width="70" height="25" field="precoInventorioComp" vertTextAlign="center" horzTextAlign="center" />
+			</rectangle>
+
+			<rectangle left="515" top="310" width="300" height="300" color="black">
+				<label left="0" top="0" width="300" height="25" text="ATAQUES" horzTextAlign="center"/>
+				<textEditor left="5" top="30" width="290" height="120" field="ataquesComp"/>
+				<label left="5" top="150" width="100" height="20" text="Macro"/>
+				<script>
+					local function lines(str)
+					   local t = {}
+					   local function helper(line)
+					      table.insert(t, line)
+					      return ""
+					   end
+					   helper((str:gsub("(.-)\r?\n", helper)))
+					   return t
+					end
+				</script>
+				<button left="55" top="150" width="50" height="20" hint="Envia tudo do segundo espaço para ataques no chat." text="Atacar">
+					<event name="onClick">
+						local macro = sheet.macro;
+						if macro~=nil then
+							local macros = lines(macro);
+							local mesaDoPersonagem = rrpg.getMesaDe(sheet);
+							for i=1, #macros, 1 do
+								mesaDoPersonagem.activeChat:enviarMensagem(macros[i]);
+							end;
+						end;
+					</event>
+				</button>
+				<textEditor left="5" top="170" width="290" height="120" field="macro"/>
+			</rectangle>
+
+			<rectangle left="820" top="310" width="300" height="300" color="black">
+				<label left="0" top="0" width="300" height="25" text="OUTROS" horzTextAlign="center"/>
+				<textEditor left="5" top="30" width="290" height="265" field="outrosComp"/>
+			</rectangle>
+
+			<layout left="1125" top="5" width="200" height="300">
+				<rectangle left="0" top="0" width="200" height="150" color="black"/>
+				<label left="0" top="0" width="200" height="25" text="Comentarios" horzTextAlign="center"/>
+				<textEditor left="5" top="25" width="190" height="125" field="comentarios" />
+
+				<rectangle left="0" top="155" width="200" height="145" color="black"/>
+				<label left="0" top="150" width="200" height="25" text="Descrição" horzTextAlign="center"/>
+				<textEditor left="5" top="175" width="190" height="125" field="descricao" />
+			</layout>
+
+			<layout left="1125" top="310" width="200" height="300">
+				<rectangle align="client" color="black"/>
+
+				<label left="5" top="5" width="190" height="20" text="Atitude" horzTextAlign="center"/>
+				<edit left="5" top="25" width="190" height="25" field="atitude"/>
+				<label left="5" top="55" width="190" height="20" text="Relação" horzTextAlign="center"/>
+				<edit left="5" top="75" width="190" height="25" field="relacao"/>
+				
+				<label left="0" top="100" width="200" height="25" text="Historia" horzTextAlign="center"/>
+				<textEditor left="5" top="125" width="190" height="175" field="historia" />
+			</layout>
+		</scrollBox>
+	</popup>
 	
 	<dataLink field="CorNha">
 		<event name="onChange">
@@ -386,7 +660,7 @@
 		
 			<layout align="top" height="128" margins="{top=4}">
 				<layout align="top" height="18" margins="{left=8}">
-					<label align="left" fontSize="12" fontStyle="bold" autoSize="true" text="Mensagem"/>
+					<label align="left" fontSize="12" fontStyle="bold" autoSize="true" field="NomeGrande"/>
 					<comboBox align="left" field="ShowNome" fontColor="white" fontSize="12" items="{'Texto', 'Narração', 'Avatar', 'Mostrar Nome', 'Nome e Avatar'}" values="{'0', '1', '2', '3', '4'}" text="Texto" width="118" vertTextAlign="trailing" margins="{left=10}"/>
 					
 					<layout align="left" width="132" margins="{left=6}">
@@ -725,272 +999,6 @@
 					RequestReload("end");
 				</event>
 			</dataLink>
-
-			<popup name="popupDetailsSmall" width="450" height="200" backOpacity="0.4" autoScopeNode="false">
-				<label left="10" top="0" width="150" height="25" text="Raça" horzTextAlign="center"/>
-				<label left="160" top="0" width="280" height="25" text="Classe" horzTextAlign="center"/>
-				
-				<label left="10" top="50" width="125" height="25" text="Atitude" horzTextAlign="center"/>
-				<label left="135" top="50" width="125" height="25" text="Relação" horzTextAlign="center"/>
-				<label left="260" top="50" width="175" height="25" text="Comentarios" horzTextAlign="center"/>
-				
-				<label left="10" top="100" width="250" height="25" text="Descrição" horzTextAlign="center"/>
-				
-				<edit left="10" top="25" width="150" height="25" field="raca" />
-				<edit left="160" top="25" width="280" height="25" field="classe" />
-				
-				<edit left="10" top="75" width="125" height="25" field="atitude" />
-				<edit left="135" top="75" width="125" height="25" field="relacao" />
-				<textEditor  left="260" top="75" width="175" height="120" field="comentarios" />
-				
-				<textEditor  left="10" top="125" width="250" height="70" field="descricao" />
-			</popup>
-
-			<popup name="popupDetails" width="1335" height="620" backOpacity="0.4" autoScopeNode="false">
-				<template name="AtributoComp">
-					<button left="0" top="3" width="42" height="20" text="$(ATR)">
-						<event name="onClick">
-							local dado = "1d20 ";
-							local bonus = tonumber(sheet.$(atr)ModComp) or 0;
-							if bonus &gt;= 0 then
-								dado = "1d20 + ";
-							end;
-							local rolagem = rrpg.interpretarRolagem(dado .. bonus);
-							local mesaDoPersonagem = rrpg.getMesaDe(sheet);
-							mesaDoPersonagem.activeChat:rolarDados(rolagem, "Teste de $(nome) de " .. (sheet.NomeGrande or "Companheiro"));
-						</event>
-					</button>
-					<edit left="45" top="0" width="30" height="25" field="$(atr)Comp">
-						<event name="onChange">
-							if sheet~=nil then
-								local mod = (tonumber(sheet.$(atr)Comp) or 0);
-								mod = math.floor((mod-10)/2);
-								if mod &gt;=0 then
-									mod = "+" .. mod;
-								end;
-								sheet.$(atr)ModComp = mod;
-							end;
-						</event>
-					</edit>
-					<rectangle left="80" top="0" width="30" height="25" color="black" strokeColor="white" strokeSize="1"/>
-					<label left="80" top="0" width="30" height="25" field="$(atr)ModComp" horzTextAlign="center"/>
-					<edit left="115" top="0" width="75" height="25" field="$(atr)CompDesc"/>
-				</template>
-				<template name="TRComp">
-					<button left="0" top="3" width="42" height="20" text="$(ATR)">
-						<event name="onClick">
-							local dado = "1d20 ";
-							local bonus = tonumber(sheet.$(atr)Comp) or 0;
-							if bonus &gt;= 0 then
-								dado = "1d20 + ";
-							end;
-							local rolagem = rrpg.interpretarRolagem(dado .. bonus);
-							local mesaDoPersonagem = rrpg.getMesaDe(sheet);
-							mesaDoPersonagem.activeChat:rolarDados(rolagem, "Teste de $(nome) de " .. (sheet.NomeGrande or "Companheiro"));
-						</event>
-					</button>
-					<edit left="45" top="0" width="30" height="25" field="$(atr)Comp"/>
-					<edit left="80" top="0" width="110" height="25" field="$(atr)CompDesc"/>
-				</template>
-
-				<rectangle left="5" top="5" width="200" height="185" color="black">
-					<label left="5" top="10" width="70" height="20" text="Raça"/>
-					<edit left="70" top="5" width="125" height="25" field="raca"/>
-					
-					<label left="5" top="35" width="70" height="20" text="Classe"/>
-					<edit left="70" top="30" width="125" height="25" field="classe"/>
-					
-					<label left="5" top="60" width="70" height="20" text="Tipo"/>
-					<edit left="70" top="55" width="125" height="25" field="tipoComp"/>
-					
-					<label left="5" top="85" width="70" height="20" text="Subtipos"/>
-					<edit left="70" top="80" width="125" height="25" field="subtiposComp"/>
-					
-					<label left="5" top="110" width="70" height="20" text="Tamanho"/>
-					<edit left="70" top="105" width="125" height="25" field="tamanhoComp"/>
-				</rectangle>
-
-				<rectangle left="5" top="143" width="200" height="110" color="black">
-					<label left="5" top="10" width="40" height="20" text="DVs"/>
-					<edit left="35" top="5" width="70" height="25" field="dvsComp"/>
-
-					<label left="110" top="8" width="40" height="20" text="PVs"/>
-					<edit left="140" top="5" width="55" height="25" field="pvsComp"/>
-
-					<label left="5" top="35" width="60" height="20" text="CA"/>
-					<edit left="70" top="30" width="35" height="25" field="caComp"/>
-
-					<label left="5" top="60" width="60" height="20" text="Toque"/>
-					<edit left="70" top="55" width="35" height="25" field="toqueComp"/>
-
-					<label left="5" top="85" width="60" height="20" text="Surpresa"/>
-					<edit left="70" top="80" width="35" height="25" field="surpresaComp"/>
-
-					<textEditor left="105" top="30" width="90" height="75" field="caCompDesc"/>
-				</rectangle>
-
-				<rectangle left="5" top="256" width="200" height="110" color="black">
-					<button left="5" top="8" width="70" height="20" text="Iniciativa">
-						<event name="onClick">
-							local rolagem = rrpg.interpretarRolagem("1d20 + " .. (sheet.iniciativaComp or 0));
-							local mesaDoPersonagem = rrpg.getMesaDe(sheet);
-							mesaDoPersonagem.activeChat:rolarDados(rolagem, "Teste de iniciativa de " .. (sheet.NomeGrande or "Companheiro"));
-						</event>
-					</button>
-					<edit left="80" top="5" width="30" height="25" field="iniciativaComp"/>
-					<edit left="110" top="5" width="85" height="25" field="iniciativaCompDesc"/>
-
-					<label left="2" top="35" width="85" height="20" text="Deslocamento" fontSize="12"/>
-					<edit left="80" top="30" width="115" height="25" field="deslocamentoComp"/>
-
-					<label left="5" top="60" width="40" height="20" text="BBA"/>
-					<edit left="35" top="55" width="55" height="25" field="bbaComp"/>
-
-					<button left="90" top="58" width="60" height="20" text="Agarrar">
-						<event name="onClick">
-							local rolagem = rrpg.interpretarRolagem("1d20 + " .. (sheet.agarrarComp or 0));
-							local mesaDoPersonagem = rrpg.getMesaDe(sheet);
-							mesaDoPersonagem.activeChat:rolarDados(rolagem, "Teste de agarrar de " .. (sheet.NomeGrande or "Companheiro"));
-						</event>
-					</button>
-					<edit left="150" top="55" width="45" height="25" field="agarrarComp"/>
-
-					<label left="5" top="85" width="40" height="20" text="Esp."/>
-					<edit left="35" top="80" width="35" height="25" field="esp1Comp"/>
-					<edit left="70" top="80" width="35" height="25" field="esp2Comp"/>
-
-					<label left="110" top="85" width="40" height="20" text="Alc."/>
-					<edit left="140" top="80" width="55" height="25" field="alcanceComp"/>
-				</rectangle>
-
-				<rectangle left="5" top="369" width="200" height="160" color="black">
-					<layout left="5" top="5" width="195" height="25">
-						<AtributoComp ATR="FOR" atr="for" nome="força"/>
-					</layout>
-					<layout left="5" top="30" width="195" height="25">
-						<AtributoComp ATR="DES" atr="des" nome="destreza"/>
-					</layout>
-					<layout left="5" top="55" width="195" height="25">
-						<AtributoComp ATR="CON" atr="con" nome="constituição"/>
-					</layout>
-					<layout left="5" top="80" width="195" height="25">
-						<AtributoComp ATR="INT" atr="int" nome="inteligência"/>
-					</layout>
-					<layout left="5" top="105" width="195" height="25">
-						<AtributoComp ATR="SAB" atr="sab" nome="sabedoria"/>
-					</layout>
-					<layout left="5" top="130" width="195" height="25">
-						<AtributoComp ATR="CAR" atr="car" nome="carisma"/>
-					</layout>
-				</rectangle>
-
-				<rectangle left="5" top="532" width="200" height="85" color="black">
-					<layout left="5" top="5" width="195" height="25">
-						<TRComp ATR="FORT" atr="fort" nome="fortitude"/>
-					</layout>
-					<layout left="5" top="30" width="195" height="25">
-						<TRComp ATR="REF" atr="ref" nome="reflexos"/>
-					</layout>
-					<layout left="5" top="55" width="195" height="25">
-						<TRComp ATR="VON" atr="von" nome="vontade"/>
-					</layout>
-				</rectangle>
-
-				<rectangle left="210" top="5" width="300" height="300" color="black">
-					<imageCheckBox field="cbxFicha" left="0" top="2" width="20" height="20" checkedImage="images/visivel.png" uncheckedImage="images/invisivel.png" hint="Muda o quanto da ficha do personagem o jogador tem acesso. "/>
-					<imageCheckBox field="playerView" left="25" top="2" width="20" height="20" checkedImage="images/organize.png" uncheckedImage="images/organize.png" hint="Muda pra versão de ficha para jogadores">
-						<event name="onClick">
-							mesa = rrpg.getMesaDe(sheet);
-							local pop = self:findControlByName("popupDetailsSmall");
-							
-							if pop ~= nil then
-								pop:setNodeObject(sheet);
-								pop:showPopupEx("center");
-							else
-								showMessage("Ops, bug... Nao encontrei o popup de detalhes para exibir");
-							end;
-						</event>
-					</imageCheckBox>
-					<label left="0" top="0" width="300" height="25" text="PERÍCIAS" horzTextAlign="center"/>
-					<textEditor left="5" top="30" width="290" height="265" field="periciasComp"/>
-				</rectangle>
-
-				<rectangle left="515" top="5" width="300" height="300" color="black">
-					<label left="0" top="0" width="300" height="25" text="TALENTOS" horzTextAlign="center"/>
-					<textEditor left="5" top="30" width="290" height="265" field="talentosComp"/>
-				</rectangle>
-
-				<rectangle left="820" top="5" width="300" height="300" color="black">
-					<label left="0" top="0" width="300" height="25" text="HABILIDADES" horzTextAlign="center"/>
-					<textEditor left="5" top="30" width="290" height="265" field="habilidadesComp"/>
-				</rectangle>
-
-				<rectangle left="210" top="310" width="300" height="300" color="black">
-					<label left="0" top="0" width="300" height="25" text="INVENTARIO" horzTextAlign="center"/>
-					<textEditor left="5" top="30" width="290" height="240" field="inventarioComp"/> 
-					<label left="55" top="275" width="50" height="20" text="PESO"/>
-					<edit left="95" top="270" width="70" height="25" field="pesoInventorioComp" vertTextAlign="center" horzTextAlign="center" />
-					<label left="175" top="275" width="50" height="20" text="PREÇO"/>
-					<edit left="225" top="270" width="70" height="25" field="precoInventorioComp" vertTextAlign="center" horzTextAlign="center" />
-				</rectangle>
-
-				<rectangle left="515" top="310" width="300" height="300" color="black">
-					<label left="0" top="0" width="300" height="25" text="ATAQUES" horzTextAlign="center"/>
-					<textEditor left="5" top="30" width="290" height="120" field="ataquesComp"/>
-					<label left="5" top="150" width="100" height="20" text="Macro"/>
-					<script>
-						local function lines(str)
-						   local t = {}
-						   local function helper(line)
-						      table.insert(t, line)
-						      return ""
-						   end
-						   helper((str:gsub("(.-)\r?\n", helper)))
-						   return t
-						end
-					</script>
-					<button left="55" top="150" width="50" height="20" hint="Envia tudo do segundo espaço para ataques no chat." text="Atacar">
-						<event name="onClick">
-							local macro = sheet.macro;
-							if macro~=nil then
-								local macros = lines(macro);
-								local mesaDoPersonagem = rrpg.getMesaDe(sheet);
-								for i=1, #macros, 1 do
-									mesaDoPersonagem.activeChat:enviarMensagem(macros[i]);
-								end;
-							end;
-						</event>
-					</button>
-					<textEditor left="5" top="170" width="290" height="120" field="macro"/>
-				</rectangle>
-
-				<rectangle left="820" top="310" width="300" height="300" color="black">
-					<label left="0" top="0" width="300" height="25" text="OUTROS" horzTextAlign="center"/>
-					<textEditor left="5" top="30" width="290" height="265" field="outrosComp"/>
-				</rectangle>
-
-				<layout left="1125" top="5" width="200" height="300">
-					<rectangle left="0" top="0" width="200" height="150" color="black"/>
-					<label left="0" top="0" width="200" height="25" text="Comentarios" horzTextAlign="center"/>
-					<textEditor left="5" top="25" width="190" height="125" field="comentarios" />
-
-					<rectangle left="0" top="155" width="200" height="145" color="black"/>
-					<label left="0" top="150" width="200" height="25" text="Descrição" horzTextAlign="center"/>
-					<textEditor left="5" top="175" width="190" height="125" field="descricao" />
-				</layout>
-
-				<layout left="1125" top="310" width="200" height="300">
-					<rectangle align="client" color="black"/>
-
-					<label left="5" top="5" width="190" height="20" text="Atitude" horzTextAlign="center"/>
-					<edit left="5" top="25" width="190" height="25" field="atitude"/>
-					<label left="5" top="55" width="190" height="20" text="Relação" horzTextAlign="center"/>
-					<edit left="5" top="75" width="190" height="25" field="relacao"/>
-					
-					<label left="0" top="100" width="200" height="25" text="Historia" horzTextAlign="center"/>
-					<textEditor left="5" top="125" width="190" height="175" field="historia" />
-				</layout>
-			</popup>
 			
 			<edit align="none" top="0" left="0" width="155" fontSize="11.5" height="18" fontStyle="bold" vertTextAlign="trailing" field="NomeGrande" transparent="true" name="NomeGrandeBarrinha">
 				<event name="onEnter">
