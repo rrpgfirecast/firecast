@@ -386,10 +386,20 @@
 					end;
 				end;
 			
-			self._observer.onFinalPermissionsCouldBeChanged();			
-			
-			local umDragger = getTracker():createDraggerForAtor(sheet);
-			setDraggerRecursivo(self, umDragger);
+			self._observer.onFinalPermissionsCouldBeChanged();	
+
+			setTimeout(
+				function()	
+					local aTracker = getTracker();
+
+					if (aTracker ~= nil) and (sheet ~= nil) then
+						local umDragger = aTracker:createDraggerForAtor(sheet);
+						setDraggerRecursivo(self, umDragger);
+					else
+						setDraggerRecursivo(self, nil);					
+					end;
+								
+				end, 100);			
 		else
 			setDraggerRecursivo(self, nil);
 		end;				
