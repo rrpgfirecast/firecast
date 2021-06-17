@@ -12,8 +12,6 @@ plugins.mgr.uninstallFailure=Não foi possível desinstalar o plugin
 plugins.mgr.authorLabel=Autor: 
 plugins.mgr.uninstall=Desinstalar
 
-combatTracker.title=Tracker de Combate
-
 
 [en]
 fc.BottomClosePopupPanel.close=Close
@@ -28,6 +26,3 @@ plugins.mgr.uninstallConfirmation=Do you really want to uninstall this plug-in?
 plugins.mgr.uninstallFailure=Unable to uninstall plugin
 plugins.mgr.authorLabel=Author: 
 plugins.mgr.uninstall=Uninstall
-
-
-combatTracker.title=Combat Tracker

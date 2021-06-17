@@ -19,14 +19,14 @@
 	]]>
 	</script>
 	
-	<image name="imgEfeito" align="left" src="images/effect.png" width="16" hitTest="true" hint="Um efeito/condição do ator"/>
+	<image name="imgEfeito" align="left" src="images/effect.png" width="16" hitTest="true" hint="@@combatTracker.actor.effects.singleEffect.hint"/>
 	
 	<edit name="edtDescricao" align="client" field="descricao" transparent="true" class="combatTrackerEdit" fontSize="10" margins="{right=2}">
 		<horzLine align="bottom" strokeSize="1" strokeColor="black" opacity="0.5"/>
 	</edit>
 	
 	<layout name="layDireita" align="right" width="40">
-		<edit name="edtDuracao" align="left" width="25" type="number" hint="Duração do efeito/condição (medido em Rodadas)" 
+		<edit name="edtDuracao" align="left" width="25" type="number" hint="@@combatTracker.actor.effects.duration.hint" 
 		      margins="{right=3, top=1, bottom=1}" horzTextAlign="center"
 			  class="combatTrackerEdit" fontSize="10" field="duracao" min="0"
 			  onUserChange="self:doUsuarioAlterouDuracao()">
