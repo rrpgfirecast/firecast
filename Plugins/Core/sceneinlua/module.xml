@@ -5,6 +5,10 @@
 	<!--version é a versão do seu plugin. Quando for lançar uma nova versão do seu módulo, altere aqui =) -->
 	<version>1.0</version>
 			
+	<settings>
+		<automaticStringLocalization>true</automaticStringLocalization>
+	</settings>				
+			
     <info lang="pt">
         <!--Informações do plugin na língua "pt". Você pode ter várias tags "info", uma para cada tradução que quiser.-->
         <name>Núcleo do Scene 3</name>

@@ -25,6 +25,7 @@ scene.fogOfWar.options.ambientLight.weak=Luz Fraca / Penumbra
 scene.fogOfWar.options.ambientLight.none=Nenhuma / Escuridão
 scene.fogOfWar.options.sharing.individual=Visão Individual
 scene.fogOfWar.options.sharing.group=Visão em Grupo
+scene.fogOfWar.aura.tabTitle=Aura
 
 scene.menu.sceneOptions.tabPrincipal=Layout
 
@@ -52,7 +53,7 @@ scene.FormaAura.URL=URL
 scene.FormaAura.ConeHorizontal=Cone Horizontal
 scene.FormaAura.SemiCirculo=Semi Circulo
 scene.FormaAura.CirculoPerfeito=Circulo Perfeito
-scene.FormaAura.PossuiAura=Possui Aura ?
+scene.FormaAura.PossuiAura=Possui aura
 
 [en]
 scene.fogOfWar=Fog of War
@@ -82,6 +83,7 @@ scene.fogOfWar.options.ambientLight.weak=Low Light / Penumbra
 scene.fogOfWar.options.ambientLight.none=None / Darkness
 scene.fogOfWar.options.sharing.individual=Individual Sight
 scene.fogOfWar.options.sharing.group=Group Sight
+scene.fogOfWar.aura.tabTitle=Aura
 
 scene.menu.sceneOptions.tabPrincipal=Layout
 
@@ -100,7 +102,7 @@ shapeMaker.ellipse=Ellipse
 
 scene.FacingMode.title=Facing Mode:
 scene.FacingMode.rotate=Rotate picture
-scene.FacingMode.arrow=Show a arrow
+scene.FacingMode.arrow=Show an arrow
 
 scene.FormaAura.Circulo=Circle
 scene.FormaAura.Quadrado=Square
@@ -109,4 +111,4 @@ scene.FormaAura.URL=URL
 scene.FormaAura.ConeHorizontal=Horizontal Cone
 scene.FormaAura.SemiCirculo=Half Circle
 scene.FormaAura.CirculoPerfeito=Perfect Circle
-scene.FormaAura.PossuiAura=Has Aura ?
+scene.FormaAura.PossuiAura=Have aura

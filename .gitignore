@@ -1,2 +1,3 @@
 *.cln
 Plugins/Core/rrpginlua/output/rdkObjs/
+Plugins/Core/sceneinlua/__history/

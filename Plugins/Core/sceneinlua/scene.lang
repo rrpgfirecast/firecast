@@ -2,6 +2,8 @@
 scene.arrowCursor=Selecionar/Movimentar
 scene.panCursor=Navegar
 scene.pointerClass=Ponteiro
+scene.angle.short.degrees=Graus
+
 scene.layer.tokens=Camada: Tokens
 scene.layer.objects=Camada: Objetos
 scene.layer.background=Camada: Fundo
@@ -116,7 +118,7 @@ scene.labCorAura.text=Cor da Aura
 scene.labAlturaAura.text=Altura da Aura
 scene.labLarguraAura.text=Largura da Aura
 scene.labCorAura.text=Cor da Aura
-scene.labFormaAura.text=Forma Aura
+scene.labFormaAura.text=Formato
 scene.labAuraURL.text=URL da Aura
 scene.labRaioAura.text=Diametro
 scene.labescolhaimg.text=click here to choose image
@@ -158,6 +160,8 @@ scene.gridFineTuning.offset=Mova a posição do grid
 scene.arrowCursor=Select/Move
 scene.panCursor=Pan
 scene.pointerClass=Pointer
+scene.angle.short.degrees=Deg.
+
 scene.layer.tokens=Layer: Tokens
 scene.layer.objects=Layer: Objects
 scene.layer.background=Layer: Background
@@ -271,7 +275,7 @@ scene.labCorAura.text=Aura Color
 scene.labAlturaAura.text=Aura height
 scene.labLarguraAura.text=Aura width
 scene.labCorAura.text=Aura Color
-scene.labFormaAura.text=Aura Form
+scene.labFormaAura.text=Shape
 scene.labAuraURL.text=Aura URL
 scene.labRaioAura.text=Diameter
 scene.labescolhaimg.text=Click to change the image
