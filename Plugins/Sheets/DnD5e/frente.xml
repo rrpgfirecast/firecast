@@ -58,38 +58,38 @@
 							lineSpacing="10" frameStyle="frames/panel1/frame.xml" 
 							margins="{left=2, top=2, right=16, bottom=4}" avoidScale="true">
 					<boxAtributo titulo="@@DnD5e.frente.box.strength" field="forca">		
-						{{"@@DnD5e.frente.lab.savingtrows.strength", "atletismo"}}
+						{{"@@DnD5e.skills.athletics", "atletismo"}}
 					</boxAtributo>
 					
 					<boxAtributo titulo="@@DnD5e.frente.box.dexterity" field="destreza">									
-						{{"Acrobacia", "acrobacia"}, 
-						 {"Furtividade", "furtividade"},
-						 {"Prestidigitação", "prestidigitacao"}}
+						{{"@@DnD5e.skills.acrobatics", "acrobacia"}, 
+						 {"@@DnD5e.skills.stealth", "furtividade"},
+						 {"@@DnD5e.skills.sleighthand", "prestidigitacao"}}
 					</boxAtributo>
 					
 					<boxAtributo titulo="@@DnD5e.frente.box.constitution" field="constituicao"/>								
 
 					<boxAtributo titulo="@@DnD5e.frente.box.intelligence" field="inteligencia">
-						{{"Arcanismo", "arcanismo"}, 
-						 {"História", "historia"},
-						 {"Investigação", "investigacao"},
-						 {"Natureza", "natureza"},
-						 {"Religião", "religiao"}}								
+						{{"@@DnD5e.skills.arcana", "arcanismo"}, 
+						 {"@@DnD5e.skills.history", "historia"},
+						 {"@@DnD5e.skills.investigation", "investigacao"},
+						 {"@@DnD5e.skills.nature", "natureza"},
+						 {"@@DnD5e.skills.religion", "religiao"}}								
 					</boxAtributo>
 					
 					<boxAtributo titulo="@@DnD5e.frente.box.wisdom" field="sabedoria">
-						{{"Adestrar Animais", "adestrarAnimais"}, 
-						 {"Intuição", "intuicao"},
-						 {"Medicina", "medicina"},
-						 {"Percepção", "percepcao"},
-						 {"Sobrevivência", "sobrevivencia"}}									
+						{{"@@DnD5e.skills.animalhandling", "adestrarAnimais"}, 
+						 {"@@DnD5e.skills.insight", "intuicao"},
+						 {"@@DnD5e.skills.medicine", "medicina"},
+						 {"@@DnD5e.skills.perception", "percepcao"},
+						 {"@@DnD5e.skills.survival", "sobrevivencia"}}									
 					</boxAtributo>
 					
 					<boxAtributo titulo="@@DnD5e.frente.box.charisma" field="carisma">
-						{{"Atuação", "atuacao"}, 
-						 {"Enganação", "enganacao"},
-						 {"Intimidação", "intimidacao"},
-						 {"Persuasão", "persuasao"}}									 
+						{{"@@DnD5e.skills.performance", "atuacao"}, 
+						 {"@@DnD5e.skills.deception", "enganacao"},
+						 {"@@DnD5e.skills.intimidation", "intimidacao"},
+						 {"@@DnD5e.skills.persuasion", "persuasao"}}									 
 					</boxAtributo>
 				</flowLayout>
 				

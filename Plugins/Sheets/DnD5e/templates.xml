@@ -194,7 +194,7 @@
 			<label frameRegion="titulo" text="$(titulo)" vertTextAlign="center" horzTextAlign="center"/>
 			
 			<flowLayout frameRegion="RegiaoDePericias" autoHeight="true" lineSpacing="0" horzAlign="leading">			
-				<boxPericia field="$('resistencias.' .. field)" fieldBonus="resistencias.bonus$(field)str" atributo="$(field)" titulo="@@DnD5e.frente.lab.savingtrows.resistTeste" losango="true"/>
+				<boxPericia field="$('resistencias.' .. field)" fieldBonus="resistencias.bonus$(field)str" atributo="$(field)" titulo="@@DnD5e.savingThrows.title" losango="true"/>
 				<dataLink fields="{'atributos.mod$(field)', 'bonusProficiencia', 'resistencias.$(field)'}">
 					<event name="onChange">
 							local modificador;
