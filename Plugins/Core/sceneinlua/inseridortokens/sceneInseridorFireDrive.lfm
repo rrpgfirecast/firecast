@@ -304,7 +304,7 @@
 						<label name="$(nomeLabel)" align="left" width="100" horzTextAlign="trailing" margins="{right=4}"/>	
 						
 						<edit left="105" top="0" width="30" height="28" name="$(nomeEdit)" type="float" min="1" max="360" decimalPlaces="1" field="$(field)"/>
-						<label left="138" top="3" width="50" height="28" name="$(nomeMetric)" text="graus" autoSize="true" margins="{left=4, right=2}"/>	
+						<label left="138" top="3" width="50" height="28" name="$(nomeMetric)" text="@@lowerCase(scene.angle.short.degrees)" autoSize="true" margins="{left=4, right=2}"/>	
 					</layout>
 					
 					<script>
@@ -361,7 +361,7 @@
 			<button width="80" horzTextAlign="center" class="rodapeButton tokenRodapeButton" onClick="self:import()" name="btnImport"/>
 			<button width="80" horzTextAlign="center" class="rodapeButton tokenRodapeButton" onClick="self:export()" name="btnExport"/>
 			<button width="80" horzTextAlign="center" class="rodapeButton tokenRodapeButton" onClick="self:processarOK()" name="btnInsert"/>
-			<button width="100" horzTextAlign="center" class="rodapeButton tokenRodapeButton" onClick="self:processarOkClose()" name="btnOkName"/>
+			<button width="110" horzTextAlign="center" class="rodapeButton tokenRodapeButton" onClick="self:processarOkClose()" name="btnOkName"/>
 			<button width="80" horzTextAlign="center" class="rodapeButton tokenRodapeButton" onClick="self:processarCancel()" name="btnCancelName"/>	
 		</flowLayout>
 
