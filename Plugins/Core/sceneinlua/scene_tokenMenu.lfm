@@ -68,7 +68,7 @@
 		local actUndo = macEdit:addActionButton("/icos/menuUndo.png", LANG("scene.menu.token.editCA.undo"));		
 		local actInvisible = macEdit:addCheckBoxAction("/icos/menuInvisible.png", LANG("scene.visibilityChange.ToGMOnly"));				
 		local actClearMovHist = macEdit:addActionButton("/icos/clearHistory.png", lang("scene.tokenMenu.clearHistMov"));				
-		local actClearMemory = macEdit:addActionButton("/icos/clearMemory.png", lang("scene.tokenMenu.clearHistMov"));				
+		local actClearMemory = macEdit:addActionButton("/icos/clearMemory.png", lang("scene.tokenMenu.clearMemory"));				
 							
 		local macOrganizar = newMultiActionMenuItem("", self.flaLayout, 5);
 		local actBringToFront = macOrganizar:addActionButton("/icos/bringToFront.png", LANG("scene.organization.bringToFront"));		
