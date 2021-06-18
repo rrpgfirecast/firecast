@@ -1,6 +1,53 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <rectangle class="fundo">
-	<scrollBox align="client">
+	<script>
+		<![CDATA[
+		require("locale.lua");
+	
+		function self:sortSkillBoxesOf(attrName)	
+			local sortData = self.__attrSortData;
+			
+			if sortData == nil then
+				return;
+			end;
+			
+			local attrSortData = sortData[attrName];
+			
+			if attrSortData == nil then
+				return;
+			end;
+			
+			table.sort(attrSortData,
+				function (left, right)
+					local leftStr = Locale.eval(left.title);
+					local rightStr = Locale.eval(right.title);				
+					return Utils.compareStringPtBr(leftStr, rightStr) < 0;
+				end);
+				
+			for i = 1, #attrSortData, 1 do
+				local ctrl = self:findControlByName(attrSortData[i].controlName);
+				
+				if ctrl ~= nil then
+					local previousParent = ctrl:getParent();
+					ctrl:setParent(nil);
+					ctrl:setParent(previousParent);				
+				end;
+			end;			
+		end;
+	
+		function self:sortFrontSkillBoxes()	
+			self:sortSkillBoxesOf("forca");
+			self:sortSkillBoxesOf("destreza");
+			self:sortSkillBoxesOf("constituicao");
+			self:sortSkillBoxesOf("inteligencia");
+			self:sortSkillBoxesOf("sabedoria");
+			self:sortSkillBoxesOf("carisma");
+		end;
+		
+		]]>
+	</script>
+
+	<scrollBox align="client">		
 		<flowLayout class="tile" align="top" height="500" margins="{left=10, right=10, top=10}" autoHeight="true" horzAlign="center" lineSpacing="2" name="fraFrenteLayout">
 			<!-- PARTE SUPERIOR DA FRENTE -->
 			<flowLayout class="oneLineTile" autoHeight="true" minScaledWidth="290" horzAlign="center">
@@ -92,6 +139,10 @@
 						 {"@@DnD5e.skills.persuasion", "persuasao"}}									 
 					</boxAtributo>
 				</flowLayout>
+				
+				<script>
+					self:sortFrontSkillBoxes();
+				</script>
 				
 				<!-- segunda coluna -->
 				
