@@ -34,7 +34,7 @@
 			end;
 			
 			local function askForDelete()
-				Dialogs.confirmYesNo("Deseja realmente apagar este item?",
+				Dialogs.confirmYesNo("@@DnD5e.generic.deleteConfirmation",
 									 function (confirmado)
 										if confirmado then
 											NDB.deleteNode(self.sheet);

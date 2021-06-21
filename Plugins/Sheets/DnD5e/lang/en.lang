@@ -1,27 +1,27 @@
 ﻿[en]
-DnD5e.tab.equipament.attack.title=EQUIPMENT AND ATTACKS
-DnD5e.tab.equipament.defend.title=EQUIPMENT AND DEFENSE
+DnD5e.tab.equipament.attack.title=ATTACK
+DnD5e.tab.equipament.defend.title=DEFENSE
 
 DnD5e.tab.equipament.btn.delete=Delete
 DnD5e.tab.equipament.btn.roll=Roll
 DnD5e.tab.equipament.btn.newItem=New Item
-DnD5e.tab.equipament.btn.pen=PEN
+DnD5e.tab.equipament.btn.pen=DIS.
 
 DnD5e.tab.equipament.atack.lab.name=NAME
 DnD5e.tab.equipament.atack.lab.weight=WEIGHT
 DnD5e.tab.equipament.atack.lab.attack=ATTACK
 DnD5e.tab.equipament.atack.lab.damage=DAMAGE
 DnD5e.tab.equipament.atack.lab.type=TYPE
-DnD5e.tab.equipament.atack.lab.property=PROPERTY
+DnD5e.tab.equipament.atack.lab.property=PROPERTIES
 DnD5e.tab.equipament.atack.lab.range=RANGE
-DnD5e.tab.equipament.atack.lab.ammunition=AMMUNITION
-DnD5e.tab.equipament.atack.lab.ammunitionAmount=AMOUNT
+DnD5e.tab.equipament.atack.lab.ammunition=AMMO
+DnD5e.tab.equipament.atack.lab.ammunitionAmount=AMMO QTY
 
 DnD5e.tab.equipament.defend.lab.name=NAME
 DnD5e.tab.equipament.defend.lab.weight=WEIGHT
 DnD5e.tab.equipament.defend.lab.type=TYPE
-DnD5e.tab.equipament.defend.lab.ca=AC
-DnD5e.tab.equipament.defend.lab.property=PROPERTY
+DnD5e.tab.equipament.defend.lab.ca=ARMOR CLASS
+DnD5e.tab.equipament.defend.lab.property=PROPERTIES
 
 DnD5e.tab.equipament.lab.extraEquip=OTHER EQUIPMENT
 
@@ -43,17 +43,17 @@ DnD5e.features.appearance=APPEARANCE
 DnD5e.features.personalityTraits=PERSONALITY TRAITS
 DnD5e.features.ideals=IDEALS
 DnD5e.features.bonds=BONDS
-DnD5e.features.flaws=FLAWS
+DnD5e.features.weaknesses=FLAWS
 DnD5e.features.featurestraits=FEATURES & TRAITS
-DnD5e.features.languages=LANGUAGE
+DnD5e.features.languages=LANGUAGES
 DnD5e.features.faction=FACTION
 DnD5e.features.factionSymbol=FACTION SYMBOL
-DnD5e.features.alliesOrganizations=ALLIES AND ORGANIZATIONS
-DnD5e.features.characterStory=CHARACTER HISTORY
+DnD5e.features.alliesOrganizations=ALLIES & ORGANIZATIONS
+DnD5e.features.characterStory=CHARACTER BACKSTORY
 
 
 DnD5e.tabControl.tab.front=Front
-DnD5e.tabControl.tab.feature=Features and Traits
+DnD5e.tabControl.tab.feature=Features & Traits
 DnD5e.tabControl.tab.equipment=Equipment
 DnD5e.tabControl.tab.spells=Spells
 DnD5e.tabControl.tab.annotations=Notes
@@ -87,7 +87,7 @@ DnD5e.frente.lab.PVTemp=TEMPORARY HIT POINTS
 
 DnD5e.frente.lab.total=TOTAL
 DnD5e.frente.lab.PVDice=HIT DICE
-DnD5e.frente.lab.sucess=SUCESSES
+DnD5e.frente.lab.sucess=SUCCESSES
 DnD5e.frente.lab.flaws=FAILURES
 DnD5e.frente.lab.deathteste=DEATH SAVES
 
@@ -113,8 +113,8 @@ DnD5e.skills.persuasion=Persuasion
 DnD5e.savingThrows.title=Saving Throw
 
 
-DnD5e.spells.spellcasterClass=SPELLCASTER CLASS
-DnD5e.spells.spellcasterAbility= SPELLCASTER ABILITY
+DnD5e.spells.spellcasterClass=SPELLCASTING CLASS
+DnD5e.spells.spellcasterAbility= SPELLCASTING ABILITY
 DnD5e.spells.spellSaveDC= SPELL SAVE DC
 DnD5e.spells.spellAttackBonus=SPELL ATTACK BONUS
 DnD5e.spells.SP/Ki=SP/Ki
@@ -128,3 +128,8 @@ DnD5e.spells.range=RANGE
 DnD5e.spells.component=COMPONENTS
 DnD5e.spells.duration=DURATION
 DnD5e.spells.btn.delete=Delete
+
+DnD5e.generic.deleteConfirmation=Do you really want to delete this item?
+DnD5e.generic.cantRoll=You cannot roll dice for this character.
+DnD5e.generic.attack=Attack
+DnD5e.generic.damage=Damage

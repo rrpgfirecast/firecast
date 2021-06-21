@@ -952,8 +952,8 @@ local function comboBoxFromHandle(handle)
 	function edit:getValue() return _obj_getProp(self.handle, "Value"); end;
 	function edit:setValue(v) _obj_setProp(self.handle, "Value", v) end;						
 				
-	function edit:getItems() return _obj_getProp(self.handle, "Items"); end;
-	function edit:setItems(v) _obj_setProp(self.handle, "Items", v) end;	
+	function edit:getItems() return _obj_getProp(self.handle, "ItemsI18N"); end;
+	function edit:setItems(v) _obj_setProp(self.handle, "ItemsI18N", v) end;	
 
 	function edit:getValues() return _obj_getProp(self.handle, "Values"); end;
 	function edit:setValues(v) _obj_setProp(self.handle, "Values", v) end;	

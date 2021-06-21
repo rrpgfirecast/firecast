@@ -1,18 +1,18 @@
 ﻿[pt]
-DnD5e.tab.equipament.attack.title=EQUIPAMENTO E ATAQUES
-DnD5e.tab.equipament.defend.title=EQUIPAMENTO E DEFESA
+DnD5e.tab.equipament.attack.title=ATAQUE
+DnD5e.tab.equipament.defend.title=DEFESA
 
 DnD5e.tab.equipament.btn.delete=Apagar
 DnD5e.tab.equipament.btn.roll=Rolar
 DnD5e.tab.equipament.btn.newItem=Novo Item
-DnD5e.tab.equipament.btn.pen=PEN
+DnD5e.tab.equipament.btn.pen=DESV.
 
 DnD5e.tab.equipament.atack.lab.name=NOME
 DnD5e.tab.equipament.atack.lab.weight=PESO
 DnD5e.tab.equipament.atack.lab.attack=ATAQUE
 DnD5e.tab.equipament.atack.lab.damage=DANO
 DnD5e.tab.equipament.atack.lab.type=TIPO
-DnD5e.tab.equipament.atack.lab.property=PROPRIEDADE
+DnD5e.tab.equipament.atack.lab.property=PROPRIEDADES
 DnD5e.tab.equipament.atack.lab.range=ALCANCE
 DnD5e.tab.equipament.atack.lab.ammunition=MUNIÇÃO
 DnD5e.tab.equipament.atack.lab.ammunitionAmount=QT MUN
@@ -20,8 +20,8 @@ DnD5e.tab.equipament.atack.lab.ammunitionAmount=QT MUN
 DnD5e.tab.equipament.defend.lab.name=NOME
 DnD5e.tab.equipament.defend.lab.weight=PESO
 DnD5e.tab.equipament.defend.lab.type=TIPO
-DnD5e.tab.equipament.defend.lab.ca=ALCANCE
-DnD5e.tab.equipament.defend.lab.property=PROPRIEDADE
+DnD5e.tab.equipament.defend.lab.ca=CLASSE DE ARMADURA
+DnD5e.tab.equipament.defend.lab.property=PROPRIEDADES
 
 DnD5e.tab.equipament.lab.extraEquip=OUTROS EQUIPAMENTOS
 
@@ -43,7 +43,7 @@ DnD5e.features.appearance=APARÊNCIA
 DnD5e.features.personalityTraits=TRAÇOS DE PERSONALIDADE
 DnD5e.features.ideals=IDEAIS
 DnD5e.features.bonds=VÍNCULOS
-DnD5e.features.weaknesses=FRAQUEZA
+DnD5e.features.weaknesses=FRAQUEZAS
 DnD5e.features.featurestraits=CARACTERÍSTICAS E TRAÇOS
 DnD5e.features.languages=IDIOMAS
 DnD5e.features.faction=FACÇÃO
@@ -126,3 +126,8 @@ DnD5e.spells.component=COMPONENTES
 DnD5e.spells.duration=DURAÇÃO
 DnD5e.spells.btn.delete=Apagar
 
+
+DnD5e.generic.deleteConfirmation=Deseja realmente apagar este item?
+DnD5e.generic.cantRoll=Você não pode rolar dados por este personagem
+DnD5e.generic.attack=Ataque
+DnD5e.generic.damage=Dano
