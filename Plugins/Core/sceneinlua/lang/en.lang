@@ -285,6 +285,8 @@ scene.windowTool.alternAsTab=Show as tab
 scene.windowTool.obrigatoryScene=Force everyone to open this board
 
 userDrawing.clearDrawings.players=Clear player's drawing
+userDrawing.textObject.prompt.title=Text
+userDrawing.textObject.promptText=Enter the text
 
 scene.help.category=Help
 scene.help.howTo=Help: How to use the board?

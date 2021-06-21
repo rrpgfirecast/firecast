@@ -351,6 +351,8 @@ scene.windowTool.alternAsTab=Exibir como aba
 scene.windowTool.obrigatoryScene=Forçar todos a abrirem este tabuleiro
 
 userDrawing.clearDrawings.players=Limpar desenhos dos +jogadores
+userDrawing.textObject.prompt.title=Texto
+userDrawing.textObject.promptText=Digite o texto
 
 scene.help.category=Ajuda
 scene.help.howTo=Ajuda: Como usar o tabuleiro?

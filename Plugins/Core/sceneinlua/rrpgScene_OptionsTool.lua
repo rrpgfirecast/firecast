@@ -64,7 +64,6 @@ SceneLib.registerPlugin(
 			elseif not scene.isGM and installed then
 				installed = false;
 				uninstallTools();
-				scene.viewport:closeForm(frmFineTuning);
 			end;
 			
 			if installed then
