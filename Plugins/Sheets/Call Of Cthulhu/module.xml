@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<module sdkVersion="3.5" compilationDate="15032016203158" sdkApiVersion="7" originalPluginFileName="CALL1.rpk">
-	<!--O id identifica seu plugin globalmente. Deve ser único, conter apenas caracteres alfanuméricos, underlines, pontos e deve conter ao menos 5 caracteres e um máximo de 40. Uma vez definido o ID, você não deve alterar ele ;) -->
-	<id>o_CHAMADO</id>
-	<!--version é a versão do seu plugin. Quando for lançar uma nova versão do seu módulo, altere aqui =) -->
-	<version>1.666</version>
-	<name>CALL OF CTHULHU</name>
-	<description>FICHA DE INVESTIGADOR PARA O CHAMADO DE CTHULHU</description>
-	<author>ALIPIO ARAUJO</author>
-	<site/>
-	<contact>www.facebook.com\OArqueiro</contact>
-	
+<module sdkVersion="3.5">
+    <!--The "id" identifies your plugin globally. Must be unique, must contain only alphanumeric characters, underlines and dots and must contain at least 5 characters and a maximum of 40. Once set the ID, you should not change it;)-->
+    <id>CthulhuSheet7e_byHelldemos</id>
+    <!--"version" is the version of your plugin. When you release a new version of your module, change here =)-->
+    <version>1.0</version>
+    <name>Ficha de Call of Cthulhu 7e</name>
+    <description>Ficha de Call of Cthulhu criada para o RRPG Firecast</description>
+    <author>helldemos (DaviCop)</author>
+    <site>http://www.twitter.com/Davi_1437</site>
+    <contact>dadaviviemanuel@gmail.com</contact>
 </module>
