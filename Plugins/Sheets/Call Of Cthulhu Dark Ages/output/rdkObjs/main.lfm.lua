@@ -4907,7 +4907,7 @@ local function constructNew_CthulhuSheet7eDarkAges_byHelldemos()
     obj.checkBox71:setWidth(17);
     obj.checkBox71:setAlign("left");
     obj.checkBox71:setMargins({right=2});
-    obj.checkBox71:setField("periciacheck.arma1");
+    obj.checkBox71:setField("periciacheck.mn1");
     obj.checkBox71:setName("checkBox71");
 
     obj.edit134 = GUI.fromHandle(_obj_newObject("edit"));
@@ -4916,7 +4916,7 @@ local function constructNew_CthulhuSheet7eDarkAges_byHelldemos()
     obj.edit134:setHorzTextAlign("trailing");
     obj.edit134:setFontSize(14);
     obj.edit134:setWidth(120);
-    obj.edit134:setField("pericia.nome.arma1");
+    obj.edit134:setField("pericia.nome.mn1");
     obj.edit134:setMargins({right=5});
     obj.edit134:setName("edit134");
 
@@ -4928,7 +4928,7 @@ local function constructNew_CthulhuSheet7eDarkAges_byHelldemos()
     obj.edit135:setHorzTextAlign("center");
     obj.edit135:setFontSize(14);
     obj.edit135:setWidth(50);
-    obj.edit135:setField("pericia.arma1");
+    obj.edit135:setField("pericia.mn1");
     obj.edit135:setName("edit135");
 
     obj.label155 = GUI.fromHandle(_obj_newObject("label"));
@@ -4960,7 +4960,7 @@ local function constructNew_CthulhuSheet7eDarkAges_byHelldemos()
     obj.checkBox72:setWidth(17);
     obj.checkBox72:setAlign("left");
     obj.checkBox72:setMargins({right=2});
-    obj.checkBox72:setField("periciacheck.arma2");
+    obj.checkBox72:setField("periciacheck.mn2");
     obj.checkBox72:setName("checkBox72");
 
     obj.edit136 = GUI.fromHandle(_obj_newObject("edit"));
@@ -4969,7 +4969,7 @@ local function constructNew_CthulhuSheet7eDarkAges_byHelldemos()
     obj.edit136:setHorzTextAlign("trailing");
     obj.edit136:setFontSize(14);
     obj.edit136:setWidth(120);
-    obj.edit136:setField("pericia.nome.arma2");
+    obj.edit136:setField("pericia.nome.mn2");
     obj.edit136:setMargins({right=5});
     obj.edit136:setName("edit136");
 
@@ -4981,7 +4981,7 @@ local function constructNew_CthulhuSheet7eDarkAges_byHelldemos()
     obj.edit137:setHorzTextAlign("center");
     obj.edit137:setFontSize(14);
     obj.edit137:setWidth(50);
-    obj.edit137:setField("pericia.arma2");
+    obj.edit137:setField("pericia.mn2");
     obj.edit137:setName("edit137");
 
     obj.label156 = GUI.fromHandle(_obj_newObject("label"));
@@ -5013,7 +5013,7 @@ local function constructNew_CthulhuSheet7eDarkAges_byHelldemos()
     obj.checkBox73:setWidth(17);
     obj.checkBox73:setAlign("left");
     obj.checkBox73:setMargins({right=2});
-    obj.checkBox73:setField("periciacheck.arma3");
+    obj.checkBox73:setField("periciacheck.mn3");
     obj.checkBox73:setName("checkBox73");
 
     obj.edit138 = GUI.fromHandle(_obj_newObject("edit"));
@@ -5022,7 +5022,7 @@ local function constructNew_CthulhuSheet7eDarkAges_byHelldemos()
     obj.edit138:setHorzTextAlign("trailing");
     obj.edit138:setFontSize(14);
     obj.edit138:setWidth(120);
-    obj.edit138:setField("pericia.nome.arma3");
+    obj.edit138:setField("pericia.nome.mn3");
     obj.edit138:setMargins({right=5});
     obj.edit138:setName("edit138");
 
@@ -5034,7 +5034,7 @@ local function constructNew_CthulhuSheet7eDarkAges_byHelldemos()
     obj.edit139:setHorzTextAlign("center");
     obj.edit139:setFontSize(14);
     obj.edit139:setWidth(50);
-    obj.edit139:setField("pericia.arma3");
+    obj.edit139:setField("pericia.mn3");
     obj.edit139:setName("edit139");
 
     obj.label157 = GUI.fromHandle(_obj_newObject("label"));
@@ -5737,51 +5737,43 @@ local function constructNew_CthulhuSheet7eDarkAges_byHelldemos()
     obj.layout133:setMargins({bottom=2, top=15});
     obj.layout133:setName("layout133");
 
-    obj.checkBox87 = GUI.fromHandle(_obj_newObject("checkBox"));
-    obj.checkBox87:setParent(obj.layout133);
-    obj.checkBox87:setWidth(17);
-    obj.checkBox87:setAlign("left");
-    obj.checkBox87:setMargins({right=2});
-    obj.checkBox87:setField("periciacheck.arma1");
-    obj.checkBox87:setName("checkBox87");
-
-    obj.edit153 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit153:setParent(obj.layout133);
-    obj.edit153:setAlign("left");
-    obj.edit153:setHorzTextAlign("trailing");
-    obj.edit153:setFontSize(14);
-    obj.edit153:setWidth(120);
-    obj.edit153:setField("pericia.nome.arma1");
-    obj.edit153:setMargins({right=5});
-    obj.edit153:setName("edit153");
-
-    obj.edit154 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit154:setParent(obj.layout133);
-    obj.edit154:setType("number");
-    obj.edit154:setMin(00);
-    obj.edit154:setAlign("left");
-    obj.edit154:setHorzTextAlign("center");
-    obj.edit154:setFontSize(14);
-    obj.edit154:setWidth(50);
-    obj.edit154:setField("pericia.arma1");
-    obj.edit154:setName("edit154");
-
     obj.label184 = GUI.fromHandle(_obj_newObject("label"));
     obj.label184:setParent(obj.layout133);
     obj.label184:setAlign("left");
-    obj.label184:setWidth(5);
-    obj.label184:setText("");
+    obj.label184:setWidth(14);
+    obj.label184:setText(" ");
     obj.label184:setHorzTextAlign("trailing");
     obj.label184:setMargins({right=5});
     obj.label184:setName("label184");
 
-    obj.button96 = GUI.fromHandle(_obj_newObject("button"));
-    obj.button96:setParent(obj.layout133);
-    obj.button96:setAlign("left");
-    obj.button96:setLeft(5);
-    obj.button96:setText("Rolar");
-    obj.button96:setWidth(50);
-    obj.button96:setName("button96");
+    obj.label185 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label185:setParent(obj.layout133);
+    obj.label185:setAlign("left");
+    obj.label185:setWidth(120);
+    obj.label185:setText("Ciência:");
+    obj.label185:setHorzTextAlign("trailing");
+    obj.label185:setMargins({right=5});
+    obj.label185:setName("label185");
+
+    obj.edit153 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit153:setParent(obj.layout133);
+    obj.edit153:setType("number");
+    obj.edit153:setAsNumber(01);
+    obj.edit153:setAlign("left");
+    obj.edit153:setHorzTextAlign("center");
+    obj.edit153:setFontSize(14);
+    obj.edit153:setWidth(50);
+    obj.edit153:setReadOnly(true);
+    obj.edit153:setName("edit153");
+
+    obj.label186 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label186:setParent(obj.layout133);
+    obj.label186:setAlign("left");
+    obj.label186:setWidth(5);
+    obj.label186:setText("");
+    obj.label186:setHorzTextAlign("trailing");
+    obj.label186:setMargins({right=5});
+    obj.label186:setName("label186");
 
     obj.layout134 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout134:setParent(obj.layout114);
@@ -5790,51 +5782,51 @@ local function constructNew_CthulhuSheet7eDarkAges_byHelldemos()
     obj.layout134:setMargins({bottom=2, top=15});
     obj.layout134:setName("layout134");
 
-    obj.checkBox88 = GUI.fromHandle(_obj_newObject("checkBox"));
-    obj.checkBox88:setParent(obj.layout134);
-    obj.checkBox88:setWidth(17);
-    obj.checkBox88:setAlign("left");
-    obj.checkBox88:setMargins({right=2});
-    obj.checkBox88:setField("periciacheck.arma2");
-    obj.checkBox88:setName("checkBox88");
+    obj.checkBox87 = GUI.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox87:setParent(obj.layout134);
+    obj.checkBox87:setWidth(17);
+    obj.checkBox87:setAlign("left");
+    obj.checkBox87:setMargins({right=2});
+    obj.checkBox87:setField("periciacheck.cie1");
+    obj.checkBox87:setName("checkBox87");
+
+    obj.edit154 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit154:setParent(obj.layout134);
+    obj.edit154:setAlign("left");
+    obj.edit154:setHorzTextAlign("trailing");
+    obj.edit154:setFontSize(14);
+    obj.edit154:setWidth(120);
+    obj.edit154:setField("pericia.nome.cie1");
+    obj.edit154:setMargins({right=5});
+    obj.edit154:setName("edit154");
 
     obj.edit155 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit155:setParent(obj.layout134);
+    obj.edit155:setType("number");
+    obj.edit155:setMin(1);
     obj.edit155:setAlign("left");
-    obj.edit155:setHorzTextAlign("trailing");
+    obj.edit155:setHorzTextAlign("center");
     obj.edit155:setFontSize(14);
-    obj.edit155:setWidth(120);
-    obj.edit155:setField("pericia.nome.arma2");
-    obj.edit155:setMargins({right=5});
+    obj.edit155:setWidth(50);
+    obj.edit155:setField("pericia.cie1");
     obj.edit155:setName("edit155");
 
-    obj.edit156 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit156:setParent(obj.layout134);
-    obj.edit156:setType("number");
-    obj.edit156:setMin(00);
-    obj.edit156:setAlign("left");
-    obj.edit156:setHorzTextAlign("center");
-    obj.edit156:setFontSize(14);
-    obj.edit156:setWidth(50);
-    obj.edit156:setField("pericia.arma2");
-    obj.edit156:setName("edit156");
+    obj.label187 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label187:setParent(obj.layout134);
+    obj.label187:setAlign("left");
+    obj.label187:setWidth(5);
+    obj.label187:setText("");
+    obj.label187:setHorzTextAlign("trailing");
+    obj.label187:setMargins({right=5});
+    obj.label187:setName("label187");
 
-    obj.label185 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label185:setParent(obj.layout134);
-    obj.label185:setAlign("left");
-    obj.label185:setWidth(5);
-    obj.label185:setText("");
-    obj.label185:setHorzTextAlign("trailing");
-    obj.label185:setMargins({right=5});
-    obj.label185:setName("label185");
-
-    obj.button97 = GUI.fromHandle(_obj_newObject("button"));
-    obj.button97:setParent(obj.layout134);
-    obj.button97:setAlign("left");
-    obj.button97:setLeft(5);
-    obj.button97:setText("Rolar");
-    obj.button97:setWidth(50);
-    obj.button97:setName("button97");
+    obj.button96 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button96:setParent(obj.layout134);
+    obj.button96:setAlign("left");
+    obj.button96:setLeft(5);
+    obj.button96:setText("Rolar");
+    obj.button96:setWidth(50);
+    obj.button96:setName("button96");
 
     obj.layout135 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout135:setParent(obj.layout114);
@@ -5843,51 +5835,51 @@ local function constructNew_CthulhuSheet7eDarkAges_byHelldemos()
     obj.layout135:setMargins({bottom=2, top=15});
     obj.layout135:setName("layout135");
 
-    obj.checkBox89 = GUI.fromHandle(_obj_newObject("checkBox"));
-    obj.checkBox89:setParent(obj.layout135);
-    obj.checkBox89:setWidth(17);
-    obj.checkBox89:setAlign("left");
-    obj.checkBox89:setMargins({right=2});
-    obj.checkBox89:setField("periciacheck.arma3");
-    obj.checkBox89:setName("checkBox89");
+    obj.checkBox88 = GUI.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox88:setParent(obj.layout135);
+    obj.checkBox88:setWidth(17);
+    obj.checkBox88:setAlign("left");
+    obj.checkBox88:setMargins({right=2});
+    obj.checkBox88:setField("periciacheck.cie2");
+    obj.checkBox88:setName("checkBox88");
+
+    obj.edit156 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit156:setParent(obj.layout135);
+    obj.edit156:setAlign("left");
+    obj.edit156:setHorzTextAlign("trailing");
+    obj.edit156:setFontSize(14);
+    obj.edit156:setWidth(120);
+    obj.edit156:setField("pericia.nome.cie2");
+    obj.edit156:setMargins({right=5});
+    obj.edit156:setName("edit156");
 
     obj.edit157 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit157:setParent(obj.layout135);
+    obj.edit157:setType("number");
+    obj.edit157:setMin(1);
     obj.edit157:setAlign("left");
-    obj.edit157:setHorzTextAlign("trailing");
+    obj.edit157:setHorzTextAlign("center");
     obj.edit157:setFontSize(14);
-    obj.edit157:setWidth(120);
-    obj.edit157:setField("pericia.nome.arma3");
-    obj.edit157:setMargins({right=5});
+    obj.edit157:setWidth(50);
+    obj.edit157:setField("pericia.cie2");
     obj.edit157:setName("edit157");
 
-    obj.edit158 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit158:setParent(obj.layout135);
-    obj.edit158:setType("number");
-    obj.edit158:setMin(00);
-    obj.edit158:setAlign("left");
-    obj.edit158:setHorzTextAlign("center");
-    obj.edit158:setFontSize(14);
-    obj.edit158:setWidth(50);
-    obj.edit158:setField("pericia.arma3");
-    obj.edit158:setName("edit158");
+    obj.label188 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label188:setParent(obj.layout135);
+    obj.label188:setAlign("left");
+    obj.label188:setWidth(5);
+    obj.label188:setText("");
+    obj.label188:setHorzTextAlign("trailing");
+    obj.label188:setMargins({right=5});
+    obj.label188:setName("label188");
 
-    obj.label186 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label186:setParent(obj.layout135);
-    obj.label186:setAlign("left");
-    obj.label186:setWidth(5);
-    obj.label186:setText("");
-    obj.label186:setHorzTextAlign("trailing");
-    obj.label186:setMargins({right=5});
-    obj.label186:setName("label186");
-
-    obj.button98 = GUI.fromHandle(_obj_newObject("button"));
-    obj.button98:setParent(obj.layout135);
-    obj.button98:setAlign("left");
-    obj.button98:setLeft(5);
-    obj.button98:setText("Rolar");
-    obj.button98:setWidth(50);
-    obj.button98:setName("button98");
+    obj.button97 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button97:setParent(obj.layout135);
+    obj.button97:setAlign("left");
+    obj.button97:setLeft(5);
+    obj.button97:setText("Rolar");
+    obj.button97:setWidth(50);
+    obj.button97:setName("button97");
 
     obj.layout136 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout136:setParent(obj.layout114);
@@ -5896,23 +5888,34 @@ local function constructNew_CthulhuSheet7eDarkAges_byHelldemos()
     obj.layout136:setMargins({bottom=2, top=15});
     obj.layout136:setName("layout136");
 
-    obj.label187 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label187:setParent(obj.layout136);
-    obj.label187:setAlign("left");
-    obj.label187:setWidth(14);
-    obj.label187:setText(" ");
-    obj.label187:setHorzTextAlign("trailing");
-    obj.label187:setMargins({right=5});
-    obj.label187:setName("label187");
+    obj.checkBox89 = GUI.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox89:setParent(obj.layout136);
+    obj.checkBox89:setWidth(17);
+    obj.checkBox89:setAlign("left");
+    obj.checkBox89:setMargins({right=2});
+    obj.checkBox89:setField("periciacheck.cie3");
+    obj.checkBox89:setName("checkBox89");
 
-    obj.label188 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label188:setParent(obj.layout136);
-    obj.label188:setAlign("left");
-    obj.label188:setWidth(120);
-    obj.label188:setText("Outros:");
-    obj.label188:setHorzTextAlign("trailing");
-    obj.label188:setMargins({right=5});
-    obj.label188:setName("label188");
+    obj.edit158 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit158:setParent(obj.layout136);
+    obj.edit158:setAlign("left");
+    obj.edit158:setHorzTextAlign("trailing");
+    obj.edit158:setFontSize(14);
+    obj.edit158:setWidth(120);
+    obj.edit158:setField("pericia.nome.cie3");
+    obj.edit158:setMargins({right=5});
+    obj.edit158:setName("edit158");
+
+    obj.edit159 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit159:setParent(obj.layout136);
+    obj.edit159:setType("number");
+    obj.edit159:setMin(1);
+    obj.edit159:setAlign("left");
+    obj.edit159:setHorzTextAlign("center");
+    obj.edit159:setFontSize(14);
+    obj.edit159:setWidth(50);
+    obj.edit159:setField("pericia.cie3");
+    obj.edit159:setName("edit159");
 
     obj.label189 = GUI.fromHandle(_obj_newObject("label"));
     obj.label189:setParent(obj.layout136);
@@ -5923,6 +5926,14 @@ local function constructNew_CthulhuSheet7eDarkAges_byHelldemos()
     obj.label189:setMargins({right=5});
     obj.label189:setName("label189");
 
+    obj.button98 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button98:setParent(obj.layout136);
+    obj.button98:setAlign("left");
+    obj.button98:setLeft(5);
+    obj.button98:setText("Rolar");
+    obj.button98:setWidth(50);
+    obj.button98:setName("button98");
+
     obj.layout137 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout137:setParent(obj.layout114);
     obj.layout137:setAlign("top");
@@ -5930,51 +5941,32 @@ local function constructNew_CthulhuSheet7eDarkAges_byHelldemos()
     obj.layout137:setMargins({bottom=2, top=15});
     obj.layout137:setName("layout137");
 
-    obj.checkBox90 = GUI.fromHandle(_obj_newObject("checkBox"));
-    obj.checkBox90:setParent(obj.layout137);
-    obj.checkBox90:setWidth(17);
-    obj.checkBox90:setAlign("left");
-    obj.checkBox90:setMargins({right=2});
-    obj.checkBox90:setField("periciacheck.outro22");
-    obj.checkBox90:setName("checkBox90");
-
-    obj.edit159 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit159:setParent(obj.layout137);
-    obj.edit159:setAlign("left");
-    obj.edit159:setHorzTextAlign("trailing");
-    obj.edit159:setFontSize(14);
-    obj.edit159:setWidth(120);
-    obj.edit159:setField("pericia.nome.outro22");
-    obj.edit159:setMargins({right=5});
-    obj.edit159:setName("edit159");
-
-    obj.edit160 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit160:setParent(obj.layout137);
-    obj.edit160:setType("number");
-    obj.edit160:setMin(00);
-    obj.edit160:setAlign("left");
-    obj.edit160:setHorzTextAlign("center");
-    obj.edit160:setFontSize(14);
-    obj.edit160:setWidth(50);
-    obj.edit160:setField("pericia.outro22");
-    obj.edit160:setName("edit160");
-
     obj.label190 = GUI.fromHandle(_obj_newObject("label"));
     obj.label190:setParent(obj.layout137);
     obj.label190:setAlign("left");
-    obj.label190:setWidth(5);
-    obj.label190:setText("");
+    obj.label190:setWidth(14);
+    obj.label190:setText(" ");
     obj.label190:setHorzTextAlign("trailing");
     obj.label190:setMargins({right=5});
     obj.label190:setName("label190");
 
-    obj.button99 = GUI.fromHandle(_obj_newObject("button"));
-    obj.button99:setParent(obj.layout137);
-    obj.button99:setAlign("left");
-    obj.button99:setLeft(5);
-    obj.button99:setText("Rolar");
-    obj.button99:setWidth(50);
-    obj.button99:setName("button99");
+    obj.label191 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label191:setParent(obj.layout137);
+    obj.label191:setAlign("left");
+    obj.label191:setWidth(120);
+    obj.label191:setText("Outros:");
+    obj.label191:setHorzTextAlign("trailing");
+    obj.label191:setMargins({right=5});
+    obj.label191:setName("label191");
+
+    obj.label192 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label192:setParent(obj.layout137);
+    obj.label192:setAlign("left");
+    obj.label192:setWidth(5);
+    obj.label192:setText("");
+    obj.label192:setHorzTextAlign("trailing");
+    obj.label192:setMargins({right=5});
+    obj.label192:setName("label192");
 
     obj.layout138 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout138:setParent(obj.layout114);
@@ -5983,51 +5975,51 @@ local function constructNew_CthulhuSheet7eDarkAges_byHelldemos()
     obj.layout138:setMargins({bottom=2, top=15});
     obj.layout138:setName("layout138");
 
-    obj.checkBox91 = GUI.fromHandle(_obj_newObject("checkBox"));
-    obj.checkBox91:setParent(obj.layout138);
-    obj.checkBox91:setWidth(17);
-    obj.checkBox91:setAlign("left");
-    obj.checkBox91:setMargins({right=2});
-    obj.checkBox91:setField("periciacheck.outro23");
-    obj.checkBox91:setName("checkBox91");
+    obj.checkBox90 = GUI.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox90:setParent(obj.layout138);
+    obj.checkBox90:setWidth(17);
+    obj.checkBox90:setAlign("left");
+    obj.checkBox90:setMargins({right=2});
+    obj.checkBox90:setField("periciacheck.outro23");
+    obj.checkBox90:setName("checkBox90");
+
+    obj.edit160 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit160:setParent(obj.layout138);
+    obj.edit160:setAlign("left");
+    obj.edit160:setHorzTextAlign("trailing");
+    obj.edit160:setFontSize(14);
+    obj.edit160:setWidth(120);
+    obj.edit160:setField("pericia.nome.outro23");
+    obj.edit160:setMargins({right=5});
+    obj.edit160:setName("edit160");
 
     obj.edit161 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit161:setParent(obj.layout138);
+    obj.edit161:setType("number");
+    obj.edit161:setMin(00);
     obj.edit161:setAlign("left");
-    obj.edit161:setHorzTextAlign("trailing");
+    obj.edit161:setHorzTextAlign("center");
     obj.edit161:setFontSize(14);
-    obj.edit161:setWidth(120);
-    obj.edit161:setField("pericia.nome.outro23");
-    obj.edit161:setMargins({right=5});
+    obj.edit161:setWidth(50);
+    obj.edit161:setField("pericia.outro23");
     obj.edit161:setName("edit161");
 
-    obj.edit162 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit162:setParent(obj.layout138);
-    obj.edit162:setType("number");
-    obj.edit162:setMin(00);
-    obj.edit162:setAlign("left");
-    obj.edit162:setHorzTextAlign("center");
-    obj.edit162:setFontSize(14);
-    obj.edit162:setWidth(50);
-    obj.edit162:setField("pericia.outro23");
-    obj.edit162:setName("edit162");
+    obj.label193 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label193:setParent(obj.layout138);
+    obj.label193:setAlign("left");
+    obj.label193:setWidth(5);
+    obj.label193:setText("");
+    obj.label193:setHorzTextAlign("trailing");
+    obj.label193:setMargins({right=5});
+    obj.label193:setName("label193");
 
-    obj.label191 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label191:setParent(obj.layout138);
-    obj.label191:setAlign("left");
-    obj.label191:setWidth(5);
-    obj.label191:setText("");
-    obj.label191:setHorzTextAlign("trailing");
-    obj.label191:setMargins({right=5});
-    obj.label191:setName("label191");
-
-    obj.button100 = GUI.fromHandle(_obj_newObject("button"));
-    obj.button100:setParent(obj.layout138);
-    obj.button100:setAlign("left");
-    obj.button100:setLeft(5);
-    obj.button100:setText("Rolar");
-    obj.button100:setWidth(50);
-    obj.button100:setName("button100");
+    obj.button99 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button99:setParent(obj.layout138);
+    obj.button99:setAlign("left");
+    obj.button99:setLeft(5);
+    obj.button99:setText("Rolar");
+    obj.button99:setWidth(50);
+    obj.button99:setName("button99");
 
     obj.layout139 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout139:setParent(obj.layout114);
@@ -6036,51 +6028,51 @@ local function constructNew_CthulhuSheet7eDarkAges_byHelldemos()
     obj.layout139:setMargins({bottom=2, top=15});
     obj.layout139:setName("layout139");
 
-    obj.checkBox92 = GUI.fromHandle(_obj_newObject("checkBox"));
-    obj.checkBox92:setParent(obj.layout139);
-    obj.checkBox92:setWidth(17);
-    obj.checkBox92:setAlign("left");
-    obj.checkBox92:setMargins({right=2});
-    obj.checkBox92:setField("periciacheck.outro24");
-    obj.checkBox92:setName("checkBox92");
+    obj.checkBox91 = GUI.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox91:setParent(obj.layout139);
+    obj.checkBox91:setWidth(17);
+    obj.checkBox91:setAlign("left");
+    obj.checkBox91:setMargins({right=2});
+    obj.checkBox91:setField("periciacheck.outro24");
+    obj.checkBox91:setName("checkBox91");
+
+    obj.edit162 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit162:setParent(obj.layout139);
+    obj.edit162:setAlign("left");
+    obj.edit162:setHorzTextAlign("trailing");
+    obj.edit162:setFontSize(14);
+    obj.edit162:setWidth(120);
+    obj.edit162:setField("pericia.nome.outro24");
+    obj.edit162:setMargins({right=5});
+    obj.edit162:setName("edit162");
 
     obj.edit163 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit163:setParent(obj.layout139);
+    obj.edit163:setType("number");
+    obj.edit163:setMin(00);
     obj.edit163:setAlign("left");
-    obj.edit163:setHorzTextAlign("trailing");
+    obj.edit163:setHorzTextAlign("center");
     obj.edit163:setFontSize(14);
-    obj.edit163:setWidth(120);
-    obj.edit163:setField("pericia.nome.outro24");
-    obj.edit163:setMargins({right=5});
+    obj.edit163:setWidth(50);
+    obj.edit163:setField("pericia.outro24");
     obj.edit163:setName("edit163");
 
-    obj.edit164 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit164:setParent(obj.layout139);
-    obj.edit164:setType("number");
-    obj.edit164:setMin(00);
-    obj.edit164:setAlign("left");
-    obj.edit164:setHorzTextAlign("center");
-    obj.edit164:setFontSize(14);
-    obj.edit164:setWidth(50);
-    obj.edit164:setField("pericia.outro24");
-    obj.edit164:setName("edit164");
+    obj.label194 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label194:setParent(obj.layout139);
+    obj.label194:setAlign("left");
+    obj.label194:setWidth(5);
+    obj.label194:setText("");
+    obj.label194:setHorzTextAlign("trailing");
+    obj.label194:setMargins({right=5});
+    obj.label194:setName("label194");
 
-    obj.label192 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label192:setParent(obj.layout139);
-    obj.label192:setAlign("left");
-    obj.label192:setWidth(5);
-    obj.label192:setText("");
-    obj.label192:setHorzTextAlign("trailing");
-    obj.label192:setMargins({right=5});
-    obj.label192:setName("label192");
-
-    obj.button101 = GUI.fromHandle(_obj_newObject("button"));
-    obj.button101:setParent(obj.layout139);
-    obj.button101:setAlign("left");
-    obj.button101:setLeft(5);
-    obj.button101:setText("Rolar");
-    obj.button101:setWidth(50);
-    obj.button101:setName("button101");
+    obj.button100 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button100:setParent(obj.layout139);
+    obj.button100:setAlign("left");
+    obj.button100:setLeft(5);
+    obj.button100:setText("Rolar");
+    obj.button100:setWidth(50);
+    obj.button100:setName("button100");
 
     obj.layout140 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout140:setParent(obj.scrollBox1);
@@ -6093,14 +6085,14 @@ local function constructNew_CthulhuSheet7eDarkAges_byHelldemos()
     obj.layout140:setMargins({left=30, right=10, bottom=10});
     obj.layout140:setName("layout140");
 
-    obj.label193 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label193:setParent(obj.layout140);
-    obj.label193:setText("Ataques");
-    obj.label193:setLeft(491);
-    lfm_setPropAsString(obj.label193, "fontStyle",  "bold italic");
-    obj.label193:setTop(9);
-    obj.label193:setWidth(1343);
-    obj.label193:setName("label193");
+    obj.label195 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label195:setParent(obj.layout140);
+    obj.label195:setText("Ataques");
+    obj.label195:setLeft(491);
+    lfm_setPropAsString(obj.label195, "fontStyle",  "bold italic");
+    obj.label195:setTop(9);
+    obj.label195:setWidth(1343);
+    obj.label195:setName("label195");
 
     obj.layout141 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout141:setParent(obj.layout140);
@@ -6117,33 +6109,33 @@ local function constructNew_CthulhuSheet7eDarkAges_byHelldemos()
     obj.layout142:setMargins({bottom=2, top=15});
     obj.layout142:setName("layout142");
 
-    obj.label194 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label194:setParent(obj.layout142);
-    obj.label194:setAlign("left");
-    obj.label194:setWidth(5);
-    obj.label194:setText("");
-    obj.label194:setHorzTextAlign("trailing");
-    obj.label194:setMargins({right=5});
-    obj.label194:setName("label194");
+    obj.label196 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label196:setParent(obj.layout142);
+    obj.label196:setAlign("left");
+    obj.label196:setWidth(5);
+    obj.label196:setText("");
+    obj.label196:setHorzTextAlign("trailing");
+    obj.label196:setMargins({right=5});
+    obj.label196:setName("label196");
 
-    obj.edit165 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit165:setParent(obj.layout142);
-    obj.edit165:setAlign("left");
-    obj.edit165:setHorzTextAlign("leading");
-    obj.edit165:setFontSize(14);
-    obj.edit165:setWidth(120);
-    obj.edit165:setField("ataque.nome.a1");
-    obj.edit165:setMargins({right=5});
-    obj.edit165:setName("edit165");
+    obj.edit164 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit164:setParent(obj.layout142);
+    obj.edit164:setAlign("left");
+    obj.edit164:setHorzTextAlign("leading");
+    obj.edit164:setFontSize(14);
+    obj.edit164:setWidth(120);
+    obj.edit164:setField("ataque.nome.a1");
+    obj.edit164:setMargins({right=5});
+    obj.edit164:setName("edit164");
 
-    obj.label195 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label195:setParent(obj.layout142);
-    obj.label195:setAlign("left");
-    obj.label195:setWidth(50);
-    obj.label195:setText("Tipo: ");
-    obj.label195:setHorzTextAlign("trailing");
-    obj.label195:setMargins({right=5});
-    obj.label195:setName("label195");
+    obj.label197 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label197:setParent(obj.layout142);
+    obj.label197:setAlign("left");
+    obj.label197:setWidth(50);
+    obj.label197:setText("Tipo: ");
+    obj.label197:setHorzTextAlign("trailing");
+    obj.label197:setMargins({right=5});
+    obj.label197:setName("label197");
 
     obj.comboBox1 = GUI.fromHandle(_obj_newObject("comboBox"));
     obj.comboBox1:setParent(obj.layout142);
@@ -6154,14 +6146,33 @@ local function constructNew_CthulhuSheet7eDarkAges_byHelldemos()
     obj.comboBox1:setField("ataque.tipo.a1");
     obj.comboBox1:setName("comboBox1");
 
-    obj.label196 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label196:setParent(obj.layout142);
-    obj.label196:setAlign("left");
-    obj.label196:setWidth(100);
-    obj.label196:setText("Nº de Ataques: ");
-    obj.label196:setHorzTextAlign("trailing");
-    obj.label196:setMargins({right=5});
-    obj.label196:setName("label196");
+    obj.label198 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label198:setParent(obj.layout142);
+    obj.label198:setAlign("left");
+    obj.label198:setWidth(100);
+    obj.label198:setText("Nº de Ataques: ");
+    obj.label198:setHorzTextAlign("trailing");
+    obj.label198:setMargins({right=5});
+    obj.label198:setName("label198");
+
+    obj.edit165 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit165:setParent(obj.layout142);
+    obj.edit165:setAlign("left");
+    obj.edit165:setHorzTextAlign("leading");
+    obj.edit165:setFontSize(14);
+    obj.edit165:setWidth(30);
+    obj.edit165:setField("ataque.quantidade.a1");
+    obj.edit165:setMargins({right=5});
+    obj.edit165:setName("edit165");
+
+    obj.label199 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label199:setParent(obj.layout142);
+    obj.label199:setAlign("left");
+    obj.label199:setWidth(60);
+    obj.label199:setText("Alcance: ");
+    obj.label199:setHorzTextAlign("trailing");
+    obj.label199:setMargins({right=5});
+    obj.label199:setName("label199");
 
     obj.edit166 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit166:setParent(obj.layout142);
@@ -6169,18 +6180,18 @@ local function constructNew_CthulhuSheet7eDarkAges_byHelldemos()
     obj.edit166:setHorzTextAlign("leading");
     obj.edit166:setFontSize(14);
     obj.edit166:setWidth(30);
-    obj.edit166:setField("ataque.quantidade.a1");
+    obj.edit166:setField("ataque.alcance.a1");
     obj.edit166:setMargins({right=5});
     obj.edit166:setName("edit166");
 
-    obj.label197 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label197:setParent(obj.layout142);
-    obj.label197:setAlign("left");
-    obj.label197:setWidth(60);
-    obj.label197:setText("Alcance: ");
-    obj.label197:setHorzTextAlign("trailing");
-    obj.label197:setMargins({right=5});
-    obj.label197:setName("label197");
+    obj.label200 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label200:setParent(obj.layout142);
+    obj.label200:setAlign("left");
+    obj.label200:setWidth(110);
+    obj.label200:setText("Munição na arma: ");
+    obj.label200:setHorzTextAlign("trailing");
+    obj.label200:setMargins({right=5});
+    obj.label200:setName("label200");
 
     obj.edit167 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit167:setParent(obj.layout142);
@@ -6188,84 +6199,65 @@ local function constructNew_CthulhuSheet7eDarkAges_byHelldemos()
     obj.edit167:setHorzTextAlign("leading");
     obj.edit167:setFontSize(14);
     obj.edit167:setWidth(30);
-    obj.edit167:setField("ataque.alcance.a1");
+    obj.edit167:setField("ataque.municao.a1");
     obj.edit167:setMargins({right=5});
     obj.edit167:setName("edit167");
-
-    obj.label198 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label198:setParent(obj.layout142);
-    obj.label198:setAlign("left");
-    obj.label198:setWidth(110);
-    obj.label198:setText("Munição na arma: ");
-    obj.label198:setHorzTextAlign("trailing");
-    obj.label198:setMargins({right=5});
-    obj.label198:setName("label198");
-
-    obj.edit168 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit168:setParent(obj.layout142);
-    obj.edit168:setAlign("left");
-    obj.edit168:setHorzTextAlign("leading");
-    obj.edit168:setFontSize(14);
-    obj.edit168:setWidth(30);
-    obj.edit168:setField("ataque.municao.a1");
-    obj.edit168:setMargins({right=5});
-    obj.edit168:setName("edit168");
-
-    obj.label199 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label199:setParent(obj.layout142);
-    obj.label199:setAlign("left");
-    obj.label199:setWidth(30);
-    obj.label199:setText("DEF: ");
-    obj.label199:setHorzTextAlign("trailing");
-    obj.label199:setMargins({right=5});
-    obj.label199:setName("label199");
-
-    obj.edit169 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit169:setParent(obj.layout142);
-    obj.edit169:setType("number");
-    obj.edit169:setAlign("left");
-    obj.edit169:setHorzTextAlign("leading");
-    obj.edit169:setFontSize(14);
-    obj.edit169:setWidth(25);
-    obj.edit169:setField("ataque.defeito.a1");
-    obj.edit169:setMargins({right=5});
-    obj.edit169:setName("edit169");
-
-    obj.label200 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label200:setParent(obj.layout142);
-    obj.label200:setAlign("left");
-    obj.label200:setWidth(50);
-    obj.label200:setText("Dano: ");
-    obj.label200:setHorzTextAlign("trailing");
-    obj.label200:setMargins({right=5});
-    obj.label200:setName("label200");
-
-    obj.edit170 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit170:setParent(obj.layout142);
-    obj.edit170:setAlign("left");
-    obj.edit170:setHorzTextAlign("leading");
-    obj.edit170:setFontSize(14);
-    obj.edit170:setWidth(55);
-    obj.edit170:setField("ataque.dano.a1");
-    obj.edit170:setMargins({right=5});
-    obj.edit170:setName("edit170");
 
     obj.label201 = GUI.fromHandle(_obj_newObject("label"));
     obj.label201:setParent(obj.layout142);
     obj.label201:setAlign("left");
-    obj.label201:setWidth(5);
-    obj.label201:setText("");
+    obj.label201:setWidth(30);
+    obj.label201:setText("DEF: ");
     obj.label201:setHorzTextAlign("trailing");
     obj.label201:setMargins({right=5});
     obj.label201:setName("label201");
 
-    obj.button102 = GUI.fromHandle(_obj_newObject("button"));
-    obj.button102:setParent(obj.layout142);
-    obj.button102:setAlign("left");
-    obj.button102:setLeft(5);
-    obj.button102:setText("Rolar");
-    obj.button102:setWidth(40);
-    obj.button102:setName("button102");
+    obj.edit168 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit168:setParent(obj.layout142);
+    obj.edit168:setType("number");
+    obj.edit168:setAlign("left");
+    obj.edit168:setHorzTextAlign("leading");
+    obj.edit168:setFontSize(14);
+    obj.edit168:setWidth(25);
+    obj.edit168:setField("ataque.defeito.a1");
+    obj.edit168:setMargins({right=5});
+    obj.edit168:setName("edit168");
+
+    obj.label202 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label202:setParent(obj.layout142);
+    obj.label202:setAlign("left");
+    obj.label202:setWidth(50);
+    obj.label202:setText("Dano: ");
+    obj.label202:setHorzTextAlign("trailing");
+    obj.label202:setMargins({right=5});
+    obj.label202:setName("label202");
+
+    obj.edit169 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit169:setParent(obj.layout142);
+    obj.edit169:setAlign("left");
+    obj.edit169:setHorzTextAlign("leading");
+    obj.edit169:setFontSize(14);
+    obj.edit169:setWidth(55);
+    obj.edit169:setField("ataque.dano.a1");
+    obj.edit169:setMargins({right=5});
+    obj.edit169:setName("edit169");
+
+    obj.label203 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label203:setParent(obj.layout142);
+    obj.label203:setAlign("left");
+    obj.label203:setWidth(5);
+    obj.label203:setText("");
+    obj.label203:setHorzTextAlign("trailing");
+    obj.label203:setMargins({right=5});
+    obj.label203:setName("label203");
+
+    obj.button101 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button101:setParent(obj.layout142);
+    obj.button101:setAlign("left");
+    obj.button101:setLeft(5);
+    obj.button101:setText("Rolar");
+    obj.button101:setWidth(40);
+    obj.button101:setName("button101");
 
     obj.layout143 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout143:setParent(obj.layout141);
@@ -6274,33 +6266,33 @@ local function constructNew_CthulhuSheet7eDarkAges_byHelldemos()
     obj.layout143:setMargins({bottom=2, top=15});
     obj.layout143:setName("layout143");
 
-    obj.label202 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label202:setParent(obj.layout143);
-    obj.label202:setAlign("left");
-    obj.label202:setWidth(5);
-    obj.label202:setText("");
-    obj.label202:setHorzTextAlign("trailing");
-    obj.label202:setMargins({right=5});
-    obj.label202:setName("label202");
+    obj.label204 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label204:setParent(obj.layout143);
+    obj.label204:setAlign("left");
+    obj.label204:setWidth(5);
+    obj.label204:setText("");
+    obj.label204:setHorzTextAlign("trailing");
+    obj.label204:setMargins({right=5});
+    obj.label204:setName("label204");
 
-    obj.edit171 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit171:setParent(obj.layout143);
-    obj.edit171:setAlign("left");
-    obj.edit171:setHorzTextAlign("leading");
-    obj.edit171:setFontSize(14);
-    obj.edit171:setWidth(120);
-    obj.edit171:setField("ataque.nome.a2");
-    obj.edit171:setMargins({right=5});
-    obj.edit171:setName("edit171");
+    obj.edit170 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit170:setParent(obj.layout143);
+    obj.edit170:setAlign("left");
+    obj.edit170:setHorzTextAlign("leading");
+    obj.edit170:setFontSize(14);
+    obj.edit170:setWidth(120);
+    obj.edit170:setField("ataque.nome.a2");
+    obj.edit170:setMargins({right=5});
+    obj.edit170:setName("edit170");
 
-    obj.label203 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label203:setParent(obj.layout143);
-    obj.label203:setAlign("left");
-    obj.label203:setWidth(50);
-    obj.label203:setText("Tipo: ");
-    obj.label203:setHorzTextAlign("trailing");
-    obj.label203:setMargins({right=5});
-    obj.label203:setName("label203");
+    obj.label205 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label205:setParent(obj.layout143);
+    obj.label205:setAlign("left");
+    obj.label205:setWidth(50);
+    obj.label205:setText("Tipo: ");
+    obj.label205:setHorzTextAlign("trailing");
+    obj.label205:setMargins({right=5});
+    obj.label205:setName("label205");
 
     obj.comboBox2 = GUI.fromHandle(_obj_newObject("comboBox"));
     obj.comboBox2:setParent(obj.layout143);
@@ -6311,14 +6303,33 @@ local function constructNew_CthulhuSheet7eDarkAges_byHelldemos()
     obj.comboBox2:setField("ataque.tipo.a2");
     obj.comboBox2:setName("comboBox2");
 
-    obj.label204 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label204:setParent(obj.layout143);
-    obj.label204:setAlign("left");
-    obj.label204:setWidth(100);
-    obj.label204:setText("Nº de Ataques: ");
-    obj.label204:setHorzTextAlign("trailing");
-    obj.label204:setMargins({right=5});
-    obj.label204:setName("label204");
+    obj.label206 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label206:setParent(obj.layout143);
+    obj.label206:setAlign("left");
+    obj.label206:setWidth(100);
+    obj.label206:setText("Nº de Ataques: ");
+    obj.label206:setHorzTextAlign("trailing");
+    obj.label206:setMargins({right=5});
+    obj.label206:setName("label206");
+
+    obj.edit171 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit171:setParent(obj.layout143);
+    obj.edit171:setAlign("left");
+    obj.edit171:setHorzTextAlign("leading");
+    obj.edit171:setFontSize(14);
+    obj.edit171:setWidth(30);
+    obj.edit171:setField("ataque.quantidade.a2");
+    obj.edit171:setMargins({right=5});
+    obj.edit171:setName("edit171");
+
+    obj.label207 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label207:setParent(obj.layout143);
+    obj.label207:setAlign("left");
+    obj.label207:setWidth(60);
+    obj.label207:setText("Alcance: ");
+    obj.label207:setHorzTextAlign("trailing");
+    obj.label207:setMargins({right=5});
+    obj.label207:setName("label207");
 
     obj.edit172 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit172:setParent(obj.layout143);
@@ -6326,18 +6337,18 @@ local function constructNew_CthulhuSheet7eDarkAges_byHelldemos()
     obj.edit172:setHorzTextAlign("leading");
     obj.edit172:setFontSize(14);
     obj.edit172:setWidth(30);
-    obj.edit172:setField("ataque.quantidade.a2");
+    obj.edit172:setField("ataque.alcance.a2");
     obj.edit172:setMargins({right=5});
     obj.edit172:setName("edit172");
 
-    obj.label205 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label205:setParent(obj.layout143);
-    obj.label205:setAlign("left");
-    obj.label205:setWidth(60);
-    obj.label205:setText("Alcance: ");
-    obj.label205:setHorzTextAlign("trailing");
-    obj.label205:setMargins({right=5});
-    obj.label205:setName("label205");
+    obj.label208 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label208:setParent(obj.layout143);
+    obj.label208:setAlign("left");
+    obj.label208:setWidth(110);
+    obj.label208:setText("Munição na arma: ");
+    obj.label208:setHorzTextAlign("trailing");
+    obj.label208:setMargins({right=5});
+    obj.label208:setName("label208");
 
     obj.edit173 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit173:setParent(obj.layout143);
@@ -6345,84 +6356,65 @@ local function constructNew_CthulhuSheet7eDarkAges_byHelldemos()
     obj.edit173:setHorzTextAlign("leading");
     obj.edit173:setFontSize(14);
     obj.edit173:setWidth(30);
-    obj.edit173:setField("ataque.alcance.a2");
+    obj.edit173:setField("ataque.municao.a2");
     obj.edit173:setMargins({right=5});
     obj.edit173:setName("edit173");
-
-    obj.label206 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label206:setParent(obj.layout143);
-    obj.label206:setAlign("left");
-    obj.label206:setWidth(110);
-    obj.label206:setText("Munição na arma: ");
-    obj.label206:setHorzTextAlign("trailing");
-    obj.label206:setMargins({right=5});
-    obj.label206:setName("label206");
-
-    obj.edit174 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit174:setParent(obj.layout143);
-    obj.edit174:setAlign("left");
-    obj.edit174:setHorzTextAlign("leading");
-    obj.edit174:setFontSize(14);
-    obj.edit174:setWidth(30);
-    obj.edit174:setField("ataque.municao.a2");
-    obj.edit174:setMargins({right=5});
-    obj.edit174:setName("edit174");
-
-    obj.label207 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label207:setParent(obj.layout143);
-    obj.label207:setAlign("left");
-    obj.label207:setWidth(30);
-    obj.label207:setText("DEF: ");
-    obj.label207:setHorzTextAlign("trailing");
-    obj.label207:setMargins({right=5});
-    obj.label207:setName("label207");
-
-    obj.edit175 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit175:setParent(obj.layout143);
-    obj.edit175:setType("number");
-    obj.edit175:setAlign("left");
-    obj.edit175:setHorzTextAlign("leading");
-    obj.edit175:setFontSize(14);
-    obj.edit175:setWidth(25);
-    obj.edit175:setField("ataque.defeito.a2");
-    obj.edit175:setMargins({right=5});
-    obj.edit175:setName("edit175");
-
-    obj.label208 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label208:setParent(obj.layout143);
-    obj.label208:setAlign("left");
-    obj.label208:setWidth(50);
-    obj.label208:setText("Dano: ");
-    obj.label208:setHorzTextAlign("trailing");
-    obj.label208:setMargins({right=5});
-    obj.label208:setName("label208");
-
-    obj.edit176 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit176:setParent(obj.layout143);
-    obj.edit176:setAlign("left");
-    obj.edit176:setHorzTextAlign("leading");
-    obj.edit176:setFontSize(14);
-    obj.edit176:setWidth(55);
-    obj.edit176:setField("ataque.dano.a2");
-    obj.edit176:setMargins({right=5});
-    obj.edit176:setName("edit176");
 
     obj.label209 = GUI.fromHandle(_obj_newObject("label"));
     obj.label209:setParent(obj.layout143);
     obj.label209:setAlign("left");
-    obj.label209:setWidth(5);
-    obj.label209:setText("");
+    obj.label209:setWidth(30);
+    obj.label209:setText("DEF: ");
     obj.label209:setHorzTextAlign("trailing");
     obj.label209:setMargins({right=5});
     obj.label209:setName("label209");
 
-    obj.button103 = GUI.fromHandle(_obj_newObject("button"));
-    obj.button103:setParent(obj.layout143);
-    obj.button103:setAlign("left");
-    obj.button103:setLeft(5);
-    obj.button103:setText("Rolar");
-    obj.button103:setWidth(40);
-    obj.button103:setName("button103");
+    obj.edit174 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit174:setParent(obj.layout143);
+    obj.edit174:setType("number");
+    obj.edit174:setAlign("left");
+    obj.edit174:setHorzTextAlign("leading");
+    obj.edit174:setFontSize(14);
+    obj.edit174:setWidth(25);
+    obj.edit174:setField("ataque.defeito.a2");
+    obj.edit174:setMargins({right=5});
+    obj.edit174:setName("edit174");
+
+    obj.label210 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label210:setParent(obj.layout143);
+    obj.label210:setAlign("left");
+    obj.label210:setWidth(50);
+    obj.label210:setText("Dano: ");
+    obj.label210:setHorzTextAlign("trailing");
+    obj.label210:setMargins({right=5});
+    obj.label210:setName("label210");
+
+    obj.edit175 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit175:setParent(obj.layout143);
+    obj.edit175:setAlign("left");
+    obj.edit175:setHorzTextAlign("leading");
+    obj.edit175:setFontSize(14);
+    obj.edit175:setWidth(55);
+    obj.edit175:setField("ataque.dano.a2");
+    obj.edit175:setMargins({right=5});
+    obj.edit175:setName("edit175");
+
+    obj.label211 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label211:setParent(obj.layout143);
+    obj.label211:setAlign("left");
+    obj.label211:setWidth(5);
+    obj.label211:setText("");
+    obj.label211:setHorzTextAlign("trailing");
+    obj.label211:setMargins({right=5});
+    obj.label211:setName("label211");
+
+    obj.button102 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button102:setParent(obj.layout143);
+    obj.button102:setAlign("left");
+    obj.button102:setLeft(5);
+    obj.button102:setText("Rolar");
+    obj.button102:setWidth(40);
+    obj.button102:setName("button102");
 
     obj.layout144 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout144:setParent(obj.layout141);
@@ -6431,33 +6423,33 @@ local function constructNew_CthulhuSheet7eDarkAges_byHelldemos()
     obj.layout144:setMargins({bottom=2, top=15});
     obj.layout144:setName("layout144");
 
-    obj.label210 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label210:setParent(obj.layout144);
-    obj.label210:setAlign("left");
-    obj.label210:setWidth(5);
-    obj.label210:setText("");
-    obj.label210:setHorzTextAlign("trailing");
-    obj.label210:setMargins({right=5});
-    obj.label210:setName("label210");
+    obj.label212 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label212:setParent(obj.layout144);
+    obj.label212:setAlign("left");
+    obj.label212:setWidth(5);
+    obj.label212:setText("");
+    obj.label212:setHorzTextAlign("trailing");
+    obj.label212:setMargins({right=5});
+    obj.label212:setName("label212");
 
-    obj.edit177 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit177:setParent(obj.layout144);
-    obj.edit177:setAlign("left");
-    obj.edit177:setHorzTextAlign("leading");
-    obj.edit177:setFontSize(14);
-    obj.edit177:setWidth(120);
-    obj.edit177:setField("ataque.nome.a3");
-    obj.edit177:setMargins({right=5});
-    obj.edit177:setName("edit177");
+    obj.edit176 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit176:setParent(obj.layout144);
+    obj.edit176:setAlign("left");
+    obj.edit176:setHorzTextAlign("leading");
+    obj.edit176:setFontSize(14);
+    obj.edit176:setWidth(120);
+    obj.edit176:setField("ataque.nome.a3");
+    obj.edit176:setMargins({right=5});
+    obj.edit176:setName("edit176");
 
-    obj.label211 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label211:setParent(obj.layout144);
-    obj.label211:setAlign("left");
-    obj.label211:setWidth(50);
-    obj.label211:setText("Tipo: ");
-    obj.label211:setHorzTextAlign("trailing");
-    obj.label211:setMargins({right=5});
-    obj.label211:setName("label211");
+    obj.label213 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label213:setParent(obj.layout144);
+    obj.label213:setAlign("left");
+    obj.label213:setWidth(50);
+    obj.label213:setText("Tipo: ");
+    obj.label213:setHorzTextAlign("trailing");
+    obj.label213:setMargins({right=5});
+    obj.label213:setName("label213");
 
     obj.comboBox3 = GUI.fromHandle(_obj_newObject("comboBox"));
     obj.comboBox3:setParent(obj.layout144);
@@ -6468,14 +6460,33 @@ local function constructNew_CthulhuSheet7eDarkAges_byHelldemos()
     obj.comboBox3:setField("ataque.tipo.a3");
     obj.comboBox3:setName("comboBox3");
 
-    obj.label212 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label212:setParent(obj.layout144);
-    obj.label212:setAlign("left");
-    obj.label212:setWidth(100);
-    obj.label212:setText("Nº de Ataques: ");
-    obj.label212:setHorzTextAlign("trailing");
-    obj.label212:setMargins({right=5});
-    obj.label212:setName("label212");
+    obj.label214 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label214:setParent(obj.layout144);
+    obj.label214:setAlign("left");
+    obj.label214:setWidth(100);
+    obj.label214:setText("Nº de Ataques: ");
+    obj.label214:setHorzTextAlign("trailing");
+    obj.label214:setMargins({right=5});
+    obj.label214:setName("label214");
+
+    obj.edit177 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit177:setParent(obj.layout144);
+    obj.edit177:setAlign("left");
+    obj.edit177:setHorzTextAlign("leading");
+    obj.edit177:setFontSize(14);
+    obj.edit177:setWidth(30);
+    obj.edit177:setField("ataque.quantidade.a3");
+    obj.edit177:setMargins({right=5});
+    obj.edit177:setName("edit177");
+
+    obj.label215 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label215:setParent(obj.layout144);
+    obj.label215:setAlign("left");
+    obj.label215:setWidth(60);
+    obj.label215:setText("Alcance: ");
+    obj.label215:setHorzTextAlign("trailing");
+    obj.label215:setMargins({right=5});
+    obj.label215:setName("label215");
 
     obj.edit178 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit178:setParent(obj.layout144);
@@ -6483,18 +6494,18 @@ local function constructNew_CthulhuSheet7eDarkAges_byHelldemos()
     obj.edit178:setHorzTextAlign("leading");
     obj.edit178:setFontSize(14);
     obj.edit178:setWidth(30);
-    obj.edit178:setField("ataque.quantidade.a3");
+    obj.edit178:setField("ataque.alcance.a3");
     obj.edit178:setMargins({right=5});
     obj.edit178:setName("edit178");
 
-    obj.label213 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label213:setParent(obj.layout144);
-    obj.label213:setAlign("left");
-    obj.label213:setWidth(60);
-    obj.label213:setText("Alcance: ");
-    obj.label213:setHorzTextAlign("trailing");
-    obj.label213:setMargins({right=5});
-    obj.label213:setName("label213");
+    obj.label216 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label216:setParent(obj.layout144);
+    obj.label216:setAlign("left");
+    obj.label216:setWidth(110);
+    obj.label216:setText("Munição na arma: ");
+    obj.label216:setHorzTextAlign("trailing");
+    obj.label216:setMargins({right=5});
+    obj.label216:setName("label216");
 
     obj.edit179 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit179:setParent(obj.layout144);
@@ -6502,84 +6513,65 @@ local function constructNew_CthulhuSheet7eDarkAges_byHelldemos()
     obj.edit179:setHorzTextAlign("leading");
     obj.edit179:setFontSize(14);
     obj.edit179:setWidth(30);
-    obj.edit179:setField("ataque.alcance.a3");
+    obj.edit179:setField("ataque.municao.a3");
     obj.edit179:setMargins({right=5});
     obj.edit179:setName("edit179");
-
-    obj.label214 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label214:setParent(obj.layout144);
-    obj.label214:setAlign("left");
-    obj.label214:setWidth(110);
-    obj.label214:setText("Munição na arma: ");
-    obj.label214:setHorzTextAlign("trailing");
-    obj.label214:setMargins({right=5});
-    obj.label214:setName("label214");
-
-    obj.edit180 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit180:setParent(obj.layout144);
-    obj.edit180:setAlign("left");
-    obj.edit180:setHorzTextAlign("leading");
-    obj.edit180:setFontSize(14);
-    obj.edit180:setWidth(30);
-    obj.edit180:setField("ataque.municao.a3");
-    obj.edit180:setMargins({right=5});
-    obj.edit180:setName("edit180");
-
-    obj.label215 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label215:setParent(obj.layout144);
-    obj.label215:setAlign("left");
-    obj.label215:setWidth(30);
-    obj.label215:setText("DEF: ");
-    obj.label215:setHorzTextAlign("trailing");
-    obj.label215:setMargins({right=5});
-    obj.label215:setName("label215");
-
-    obj.edit181 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit181:setParent(obj.layout144);
-    obj.edit181:setType("number");
-    obj.edit181:setAlign("left");
-    obj.edit181:setHorzTextAlign("leading");
-    obj.edit181:setFontSize(14);
-    obj.edit181:setWidth(25);
-    obj.edit181:setField("ataque.defeito.a3");
-    obj.edit181:setMargins({right=5});
-    obj.edit181:setName("edit181");
-
-    obj.label216 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label216:setParent(obj.layout144);
-    obj.label216:setAlign("left");
-    obj.label216:setWidth(50);
-    obj.label216:setText("Dano: ");
-    obj.label216:setHorzTextAlign("trailing");
-    obj.label216:setMargins({right=5});
-    obj.label216:setName("label216");
-
-    obj.edit182 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit182:setParent(obj.layout144);
-    obj.edit182:setAlign("left");
-    obj.edit182:setHorzTextAlign("leading");
-    obj.edit182:setFontSize(14);
-    obj.edit182:setWidth(55);
-    obj.edit182:setField("ataque.dano.a3");
-    obj.edit182:setMargins({right=5});
-    obj.edit182:setName("edit182");
 
     obj.label217 = GUI.fromHandle(_obj_newObject("label"));
     obj.label217:setParent(obj.layout144);
     obj.label217:setAlign("left");
-    obj.label217:setWidth(5);
-    obj.label217:setText("");
+    obj.label217:setWidth(30);
+    obj.label217:setText("DEF: ");
     obj.label217:setHorzTextAlign("trailing");
     obj.label217:setMargins({right=5});
     obj.label217:setName("label217");
 
-    obj.button104 = GUI.fromHandle(_obj_newObject("button"));
-    obj.button104:setParent(obj.layout144);
-    obj.button104:setAlign("left");
-    obj.button104:setLeft(5);
-    obj.button104:setText("Rolar");
-    obj.button104:setWidth(40);
-    obj.button104:setName("button104");
+    obj.edit180 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit180:setParent(obj.layout144);
+    obj.edit180:setType("number");
+    obj.edit180:setAlign("left");
+    obj.edit180:setHorzTextAlign("leading");
+    obj.edit180:setFontSize(14);
+    obj.edit180:setWidth(25);
+    obj.edit180:setField("ataque.defeito.a3");
+    obj.edit180:setMargins({right=5});
+    obj.edit180:setName("edit180");
+
+    obj.label218 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label218:setParent(obj.layout144);
+    obj.label218:setAlign("left");
+    obj.label218:setWidth(50);
+    obj.label218:setText("Dano: ");
+    obj.label218:setHorzTextAlign("trailing");
+    obj.label218:setMargins({right=5});
+    obj.label218:setName("label218");
+
+    obj.edit181 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit181:setParent(obj.layout144);
+    obj.edit181:setAlign("left");
+    obj.edit181:setHorzTextAlign("leading");
+    obj.edit181:setFontSize(14);
+    obj.edit181:setWidth(55);
+    obj.edit181:setField("ataque.dano.a3");
+    obj.edit181:setMargins({right=5});
+    obj.edit181:setName("edit181");
+
+    obj.label219 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label219:setParent(obj.layout144);
+    obj.label219:setAlign("left");
+    obj.label219:setWidth(5);
+    obj.label219:setText("");
+    obj.label219:setHorzTextAlign("trailing");
+    obj.label219:setMargins({right=5});
+    obj.label219:setName("label219");
+
+    obj.button103 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button103:setParent(obj.layout144);
+    obj.button103:setAlign("left");
+    obj.button103:setLeft(5);
+    obj.button103:setText("Rolar");
+    obj.button103:setWidth(40);
+    obj.button103:setName("button103");
 
     obj.layout145 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout145:setParent(obj.layout141);
@@ -6588,33 +6580,33 @@ local function constructNew_CthulhuSheet7eDarkAges_byHelldemos()
     obj.layout145:setMargins({bottom=2, top=15});
     obj.layout145:setName("layout145");
 
-    obj.label218 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label218:setParent(obj.layout145);
-    obj.label218:setAlign("left");
-    obj.label218:setWidth(5);
-    obj.label218:setText("");
-    obj.label218:setHorzTextAlign("trailing");
-    obj.label218:setMargins({right=5});
-    obj.label218:setName("label218");
+    obj.label220 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label220:setParent(obj.layout145);
+    obj.label220:setAlign("left");
+    obj.label220:setWidth(5);
+    obj.label220:setText("");
+    obj.label220:setHorzTextAlign("trailing");
+    obj.label220:setMargins({right=5});
+    obj.label220:setName("label220");
 
-    obj.edit183 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit183:setParent(obj.layout145);
-    obj.edit183:setAlign("left");
-    obj.edit183:setHorzTextAlign("leading");
-    obj.edit183:setFontSize(14);
-    obj.edit183:setWidth(120);
-    obj.edit183:setField("ataque.nome.a4");
-    obj.edit183:setMargins({right=5});
-    obj.edit183:setName("edit183");
+    obj.edit182 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit182:setParent(obj.layout145);
+    obj.edit182:setAlign("left");
+    obj.edit182:setHorzTextAlign("leading");
+    obj.edit182:setFontSize(14);
+    obj.edit182:setWidth(120);
+    obj.edit182:setField("ataque.nome.a4");
+    obj.edit182:setMargins({right=5});
+    obj.edit182:setName("edit182");
 
-    obj.label219 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label219:setParent(obj.layout145);
-    obj.label219:setAlign("left");
-    obj.label219:setWidth(50);
-    obj.label219:setText("Tipo: ");
-    obj.label219:setHorzTextAlign("trailing");
-    obj.label219:setMargins({right=5});
-    obj.label219:setName("label219");
+    obj.label221 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label221:setParent(obj.layout145);
+    obj.label221:setAlign("left");
+    obj.label221:setWidth(50);
+    obj.label221:setText("Tipo: ");
+    obj.label221:setHorzTextAlign("trailing");
+    obj.label221:setMargins({right=5});
+    obj.label221:setName("label221");
 
     obj.comboBox4 = GUI.fromHandle(_obj_newObject("comboBox"));
     obj.comboBox4:setParent(obj.layout145);
@@ -6625,14 +6617,33 @@ local function constructNew_CthulhuSheet7eDarkAges_byHelldemos()
     obj.comboBox4:setField("ataque.tipo.a4");
     obj.comboBox4:setName("comboBox4");
 
-    obj.label220 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label220:setParent(obj.layout145);
-    obj.label220:setAlign("left");
-    obj.label220:setWidth(100);
-    obj.label220:setText("Nº de Ataques: ");
-    obj.label220:setHorzTextAlign("trailing");
-    obj.label220:setMargins({right=5});
-    obj.label220:setName("label220");
+    obj.label222 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label222:setParent(obj.layout145);
+    obj.label222:setAlign("left");
+    obj.label222:setWidth(100);
+    obj.label222:setText("Nº de Ataques: ");
+    obj.label222:setHorzTextAlign("trailing");
+    obj.label222:setMargins({right=5});
+    obj.label222:setName("label222");
+
+    obj.edit183 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit183:setParent(obj.layout145);
+    obj.edit183:setAlign("left");
+    obj.edit183:setHorzTextAlign("leading");
+    obj.edit183:setFontSize(14);
+    obj.edit183:setWidth(30);
+    obj.edit183:setField("ataque.quantidade.a4");
+    obj.edit183:setMargins({right=5});
+    obj.edit183:setName("edit183");
+
+    obj.label223 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label223:setParent(obj.layout145);
+    obj.label223:setAlign("left");
+    obj.label223:setWidth(60);
+    obj.label223:setText("Alcance: ");
+    obj.label223:setHorzTextAlign("trailing");
+    obj.label223:setMargins({right=5});
+    obj.label223:setName("label223");
 
     obj.edit184 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit184:setParent(obj.layout145);
@@ -6640,18 +6651,18 @@ local function constructNew_CthulhuSheet7eDarkAges_byHelldemos()
     obj.edit184:setHorzTextAlign("leading");
     obj.edit184:setFontSize(14);
     obj.edit184:setWidth(30);
-    obj.edit184:setField("ataque.quantidade.a4");
+    obj.edit184:setField("ataque.alcance.a4");
     obj.edit184:setMargins({right=5});
     obj.edit184:setName("edit184");
 
-    obj.label221 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label221:setParent(obj.layout145);
-    obj.label221:setAlign("left");
-    obj.label221:setWidth(60);
-    obj.label221:setText("Alcance: ");
-    obj.label221:setHorzTextAlign("trailing");
-    obj.label221:setMargins({right=5});
-    obj.label221:setName("label221");
+    obj.label224 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label224:setParent(obj.layout145);
+    obj.label224:setAlign("left");
+    obj.label224:setWidth(110);
+    obj.label224:setText("Munição na arma: ");
+    obj.label224:setHorzTextAlign("trailing");
+    obj.label224:setMargins({right=5});
+    obj.label224:setName("label224");
 
     obj.edit185 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit185:setParent(obj.layout145);
@@ -6659,84 +6670,65 @@ local function constructNew_CthulhuSheet7eDarkAges_byHelldemos()
     obj.edit185:setHorzTextAlign("leading");
     obj.edit185:setFontSize(14);
     obj.edit185:setWidth(30);
-    obj.edit185:setField("ataque.alcance.a4");
+    obj.edit185:setField("ataque.municao.a4");
     obj.edit185:setMargins({right=5});
     obj.edit185:setName("edit185");
-
-    obj.label222 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label222:setParent(obj.layout145);
-    obj.label222:setAlign("left");
-    obj.label222:setWidth(110);
-    obj.label222:setText("Munição na arma: ");
-    obj.label222:setHorzTextAlign("trailing");
-    obj.label222:setMargins({right=5});
-    obj.label222:setName("label222");
-
-    obj.edit186 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit186:setParent(obj.layout145);
-    obj.edit186:setAlign("left");
-    obj.edit186:setHorzTextAlign("leading");
-    obj.edit186:setFontSize(14);
-    obj.edit186:setWidth(30);
-    obj.edit186:setField("ataque.municao.a4");
-    obj.edit186:setMargins({right=5});
-    obj.edit186:setName("edit186");
-
-    obj.label223 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label223:setParent(obj.layout145);
-    obj.label223:setAlign("left");
-    obj.label223:setWidth(30);
-    obj.label223:setText("DEF: ");
-    obj.label223:setHorzTextAlign("trailing");
-    obj.label223:setMargins({right=5});
-    obj.label223:setName("label223");
-
-    obj.edit187 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit187:setParent(obj.layout145);
-    obj.edit187:setType("number");
-    obj.edit187:setAlign("left");
-    obj.edit187:setHorzTextAlign("leading");
-    obj.edit187:setFontSize(14);
-    obj.edit187:setWidth(25);
-    obj.edit187:setField("ataque.defeito.a4");
-    obj.edit187:setMargins({right=5});
-    obj.edit187:setName("edit187");
-
-    obj.label224 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label224:setParent(obj.layout145);
-    obj.label224:setAlign("left");
-    obj.label224:setWidth(50);
-    obj.label224:setText("Dano: ");
-    obj.label224:setHorzTextAlign("trailing");
-    obj.label224:setMargins({right=5});
-    obj.label224:setName("label224");
-
-    obj.edit188 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit188:setParent(obj.layout145);
-    obj.edit188:setAlign("left");
-    obj.edit188:setHorzTextAlign("leading");
-    obj.edit188:setFontSize(14);
-    obj.edit188:setWidth(55);
-    obj.edit188:setField("ataque.dano.a4");
-    obj.edit188:setMargins({right=5});
-    obj.edit188:setName("edit188");
 
     obj.label225 = GUI.fromHandle(_obj_newObject("label"));
     obj.label225:setParent(obj.layout145);
     obj.label225:setAlign("left");
-    obj.label225:setWidth(5);
-    obj.label225:setText("");
+    obj.label225:setWidth(30);
+    obj.label225:setText("DEF: ");
     obj.label225:setHorzTextAlign("trailing");
     obj.label225:setMargins({right=5});
     obj.label225:setName("label225");
 
-    obj.button105 = GUI.fromHandle(_obj_newObject("button"));
-    obj.button105:setParent(obj.layout145);
-    obj.button105:setAlign("left");
-    obj.button105:setLeft(5);
-    obj.button105:setText("Rolar");
-    obj.button105:setWidth(40);
-    obj.button105:setName("button105");
+    obj.edit186 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit186:setParent(obj.layout145);
+    obj.edit186:setType("number");
+    obj.edit186:setAlign("left");
+    obj.edit186:setHorzTextAlign("leading");
+    obj.edit186:setFontSize(14);
+    obj.edit186:setWidth(25);
+    obj.edit186:setField("ataque.defeito.a4");
+    obj.edit186:setMargins({right=5});
+    obj.edit186:setName("edit186");
+
+    obj.label226 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label226:setParent(obj.layout145);
+    obj.label226:setAlign("left");
+    obj.label226:setWidth(50);
+    obj.label226:setText("Dano: ");
+    obj.label226:setHorzTextAlign("trailing");
+    obj.label226:setMargins({right=5});
+    obj.label226:setName("label226");
+
+    obj.edit187 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit187:setParent(obj.layout145);
+    obj.edit187:setAlign("left");
+    obj.edit187:setHorzTextAlign("leading");
+    obj.edit187:setFontSize(14);
+    obj.edit187:setWidth(55);
+    obj.edit187:setField("ataque.dano.a4");
+    obj.edit187:setMargins({right=5});
+    obj.edit187:setName("edit187");
+
+    obj.label227 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label227:setParent(obj.layout145);
+    obj.label227:setAlign("left");
+    obj.label227:setWidth(5);
+    obj.label227:setText("");
+    obj.label227:setHorzTextAlign("trailing");
+    obj.label227:setMargins({right=5});
+    obj.label227:setName("label227");
+
+    obj.button104 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button104:setParent(obj.layout145);
+    obj.button104:setAlign("left");
+    obj.button104:setLeft(5);
+    obj.button104:setText("Rolar");
+    obj.button104:setWidth(40);
+    obj.button104:setName("button104");
 
     obj.layout146 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout146:setParent(obj.layout141);
@@ -6745,33 +6737,33 @@ local function constructNew_CthulhuSheet7eDarkAges_byHelldemos()
     obj.layout146:setMargins({bottom=2, top=15});
     obj.layout146:setName("layout146");
 
-    obj.label226 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label226:setParent(obj.layout146);
-    obj.label226:setAlign("left");
-    obj.label226:setWidth(5);
-    obj.label226:setText("");
-    obj.label226:setHorzTextAlign("trailing");
-    obj.label226:setMargins({right=5});
-    obj.label226:setName("label226");
+    obj.label228 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label228:setParent(obj.layout146);
+    obj.label228:setAlign("left");
+    obj.label228:setWidth(5);
+    obj.label228:setText("");
+    obj.label228:setHorzTextAlign("trailing");
+    obj.label228:setMargins({right=5});
+    obj.label228:setName("label228");
 
-    obj.edit189 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit189:setParent(obj.layout146);
-    obj.edit189:setAlign("left");
-    obj.edit189:setHorzTextAlign("leading");
-    obj.edit189:setFontSize(14);
-    obj.edit189:setWidth(120);
-    obj.edit189:setField("ataque.nome.a5");
-    obj.edit189:setMargins({right=5});
-    obj.edit189:setName("edit189");
+    obj.edit188 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit188:setParent(obj.layout146);
+    obj.edit188:setAlign("left");
+    obj.edit188:setHorzTextAlign("leading");
+    obj.edit188:setFontSize(14);
+    obj.edit188:setWidth(120);
+    obj.edit188:setField("ataque.nome.a5");
+    obj.edit188:setMargins({right=5});
+    obj.edit188:setName("edit188");
 
-    obj.label227 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label227:setParent(obj.layout146);
-    obj.label227:setAlign("left");
-    obj.label227:setWidth(50);
-    obj.label227:setText("Tipo: ");
-    obj.label227:setHorzTextAlign("trailing");
-    obj.label227:setMargins({right=5});
-    obj.label227:setName("label227");
+    obj.label229 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label229:setParent(obj.layout146);
+    obj.label229:setAlign("left");
+    obj.label229:setWidth(50);
+    obj.label229:setText("Tipo: ");
+    obj.label229:setHorzTextAlign("trailing");
+    obj.label229:setMargins({right=5});
+    obj.label229:setName("label229");
 
     obj.comboBox5 = GUI.fromHandle(_obj_newObject("comboBox"));
     obj.comboBox5:setParent(obj.layout146);
@@ -6782,14 +6774,33 @@ local function constructNew_CthulhuSheet7eDarkAges_byHelldemos()
     obj.comboBox5:setField("ataque.tipo.a5");
     obj.comboBox5:setName("comboBox5");
 
-    obj.label228 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label228:setParent(obj.layout146);
-    obj.label228:setAlign("left");
-    obj.label228:setWidth(100);
-    obj.label228:setText("Nº de Ataques: ");
-    obj.label228:setHorzTextAlign("trailing");
-    obj.label228:setMargins({right=5});
-    obj.label228:setName("label228");
+    obj.label230 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label230:setParent(obj.layout146);
+    obj.label230:setAlign("left");
+    obj.label230:setWidth(100);
+    obj.label230:setText("Nº de Ataques: ");
+    obj.label230:setHorzTextAlign("trailing");
+    obj.label230:setMargins({right=5});
+    obj.label230:setName("label230");
+
+    obj.edit189 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit189:setParent(obj.layout146);
+    obj.edit189:setAlign("left");
+    obj.edit189:setHorzTextAlign("leading");
+    obj.edit189:setFontSize(14);
+    obj.edit189:setWidth(30);
+    obj.edit189:setField("ataque.quantidade.a5");
+    obj.edit189:setMargins({right=5});
+    obj.edit189:setName("edit189");
+
+    obj.label231 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label231:setParent(obj.layout146);
+    obj.label231:setAlign("left");
+    obj.label231:setWidth(60);
+    obj.label231:setText("Alcance: ");
+    obj.label231:setHorzTextAlign("trailing");
+    obj.label231:setMargins({right=5});
+    obj.label231:setName("label231");
 
     obj.edit190 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit190:setParent(obj.layout146);
@@ -6797,18 +6808,18 @@ local function constructNew_CthulhuSheet7eDarkAges_byHelldemos()
     obj.edit190:setHorzTextAlign("leading");
     obj.edit190:setFontSize(14);
     obj.edit190:setWidth(30);
-    obj.edit190:setField("ataque.quantidade.a5");
+    obj.edit190:setField("ataque.alcance.a5");
     obj.edit190:setMargins({right=5});
     obj.edit190:setName("edit190");
 
-    obj.label229 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label229:setParent(obj.layout146);
-    obj.label229:setAlign("left");
-    obj.label229:setWidth(60);
-    obj.label229:setText("Alcance: ");
-    obj.label229:setHorzTextAlign("trailing");
-    obj.label229:setMargins({right=5});
-    obj.label229:setName("label229");
+    obj.label232 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label232:setParent(obj.layout146);
+    obj.label232:setAlign("left");
+    obj.label232:setWidth(110);
+    obj.label232:setText("Munição na arma: ");
+    obj.label232:setHorzTextAlign("trailing");
+    obj.label232:setMargins({right=5});
+    obj.label232:setName("label232");
 
     obj.edit191 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit191:setParent(obj.layout146);
@@ -6816,84 +6827,65 @@ local function constructNew_CthulhuSheet7eDarkAges_byHelldemos()
     obj.edit191:setHorzTextAlign("leading");
     obj.edit191:setFontSize(14);
     obj.edit191:setWidth(30);
-    obj.edit191:setField("ataque.alcance.a5");
+    obj.edit191:setField("ataque.municao.a5");
     obj.edit191:setMargins({right=5});
     obj.edit191:setName("edit191");
-
-    obj.label230 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label230:setParent(obj.layout146);
-    obj.label230:setAlign("left");
-    obj.label230:setWidth(110);
-    obj.label230:setText("Munição na arma: ");
-    obj.label230:setHorzTextAlign("trailing");
-    obj.label230:setMargins({right=5});
-    obj.label230:setName("label230");
-
-    obj.edit192 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit192:setParent(obj.layout146);
-    obj.edit192:setAlign("left");
-    obj.edit192:setHorzTextAlign("leading");
-    obj.edit192:setFontSize(14);
-    obj.edit192:setWidth(30);
-    obj.edit192:setField("ataque.municao.a5");
-    obj.edit192:setMargins({right=5});
-    obj.edit192:setName("edit192");
-
-    obj.label231 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label231:setParent(obj.layout146);
-    obj.label231:setAlign("left");
-    obj.label231:setWidth(30);
-    obj.label231:setText("DEF: ");
-    obj.label231:setHorzTextAlign("trailing");
-    obj.label231:setMargins({right=5});
-    obj.label231:setName("label231");
-
-    obj.edit193 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit193:setParent(obj.layout146);
-    obj.edit193:setType("number");
-    obj.edit193:setAlign("left");
-    obj.edit193:setHorzTextAlign("leading");
-    obj.edit193:setFontSize(14);
-    obj.edit193:setWidth(25);
-    obj.edit193:setField("ataque.defeito.a5");
-    obj.edit193:setMargins({right=5});
-    obj.edit193:setName("edit193");
-
-    obj.label232 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label232:setParent(obj.layout146);
-    obj.label232:setAlign("left");
-    obj.label232:setWidth(50);
-    obj.label232:setText("Dano: ");
-    obj.label232:setHorzTextAlign("trailing");
-    obj.label232:setMargins({right=5});
-    obj.label232:setName("label232");
-
-    obj.edit194 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit194:setParent(obj.layout146);
-    obj.edit194:setAlign("left");
-    obj.edit194:setHorzTextAlign("leading");
-    obj.edit194:setFontSize(14);
-    obj.edit194:setWidth(55);
-    obj.edit194:setField("ataque.dano.a5");
-    obj.edit194:setMargins({right=5});
-    obj.edit194:setName("edit194");
 
     obj.label233 = GUI.fromHandle(_obj_newObject("label"));
     obj.label233:setParent(obj.layout146);
     obj.label233:setAlign("left");
-    obj.label233:setWidth(5);
-    obj.label233:setText("");
+    obj.label233:setWidth(30);
+    obj.label233:setText("DEF: ");
     obj.label233:setHorzTextAlign("trailing");
     obj.label233:setMargins({right=5});
     obj.label233:setName("label233");
 
-    obj.button106 = GUI.fromHandle(_obj_newObject("button"));
-    obj.button106:setParent(obj.layout146);
-    obj.button106:setAlign("left");
-    obj.button106:setLeft(5);
-    obj.button106:setText("Rolar");
-    obj.button106:setWidth(40);
-    obj.button106:setName("button106");
+    obj.edit192 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit192:setParent(obj.layout146);
+    obj.edit192:setType("number");
+    obj.edit192:setAlign("left");
+    obj.edit192:setHorzTextAlign("leading");
+    obj.edit192:setFontSize(14);
+    obj.edit192:setWidth(25);
+    obj.edit192:setField("ataque.defeito.a5");
+    obj.edit192:setMargins({right=5});
+    obj.edit192:setName("edit192");
+
+    obj.label234 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label234:setParent(obj.layout146);
+    obj.label234:setAlign("left");
+    obj.label234:setWidth(50);
+    obj.label234:setText("Dano: ");
+    obj.label234:setHorzTextAlign("trailing");
+    obj.label234:setMargins({right=5});
+    obj.label234:setName("label234");
+
+    obj.edit193 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit193:setParent(obj.layout146);
+    obj.edit193:setAlign("left");
+    obj.edit193:setHorzTextAlign("leading");
+    obj.edit193:setFontSize(14);
+    obj.edit193:setWidth(55);
+    obj.edit193:setField("ataque.dano.a5");
+    obj.edit193:setMargins({right=5});
+    obj.edit193:setName("edit193");
+
+    obj.label235 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label235:setParent(obj.layout146);
+    obj.label235:setAlign("left");
+    obj.label235:setWidth(5);
+    obj.label235:setText("");
+    obj.label235:setHorzTextAlign("trailing");
+    obj.label235:setMargins({right=5});
+    obj.label235:setName("label235");
+
+    obj.button105 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button105:setParent(obj.layout146);
+    obj.button105:setAlign("left");
+    obj.button105:setLeft(5);
+    obj.button105:setText("Rolar");
+    obj.button105:setWidth(40);
+    obj.button105:setName("button105");
 
     obj.layout147 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout147:setParent(obj.layout141);
@@ -6902,33 +6894,33 @@ local function constructNew_CthulhuSheet7eDarkAges_byHelldemos()
     obj.layout147:setMargins({bottom=2, top=15});
     obj.layout147:setName("layout147");
 
-    obj.label234 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label234:setParent(obj.layout147);
-    obj.label234:setAlign("left");
-    obj.label234:setWidth(5);
-    obj.label234:setText("");
-    obj.label234:setHorzTextAlign("trailing");
-    obj.label234:setMargins({right=5});
-    obj.label234:setName("label234");
+    obj.label236 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label236:setParent(obj.layout147);
+    obj.label236:setAlign("left");
+    obj.label236:setWidth(5);
+    obj.label236:setText("");
+    obj.label236:setHorzTextAlign("trailing");
+    obj.label236:setMargins({right=5});
+    obj.label236:setName("label236");
 
-    obj.edit195 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit195:setParent(obj.layout147);
-    obj.edit195:setAlign("left");
-    obj.edit195:setHorzTextAlign("leading");
-    obj.edit195:setFontSize(14);
-    obj.edit195:setWidth(120);
-    obj.edit195:setField("ataque.nome.a6");
-    obj.edit195:setMargins({right=5});
-    obj.edit195:setName("edit195");
+    obj.edit194 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit194:setParent(obj.layout147);
+    obj.edit194:setAlign("left");
+    obj.edit194:setHorzTextAlign("leading");
+    obj.edit194:setFontSize(14);
+    obj.edit194:setWidth(120);
+    obj.edit194:setField("ataque.nome.a6");
+    obj.edit194:setMargins({right=5});
+    obj.edit194:setName("edit194");
 
-    obj.label235 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label235:setParent(obj.layout147);
-    obj.label235:setAlign("left");
-    obj.label235:setWidth(50);
-    obj.label235:setText("Tipo: ");
-    obj.label235:setHorzTextAlign("trailing");
-    obj.label235:setMargins({right=5});
-    obj.label235:setName("label235");
+    obj.label237 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label237:setParent(obj.layout147);
+    obj.label237:setAlign("left");
+    obj.label237:setWidth(50);
+    obj.label237:setText("Tipo: ");
+    obj.label237:setHorzTextAlign("trailing");
+    obj.label237:setMargins({right=5});
+    obj.label237:setName("label237");
 
     obj.comboBox6 = GUI.fromHandle(_obj_newObject("comboBox"));
     obj.comboBox6:setParent(obj.layout147);
@@ -6939,14 +6931,33 @@ local function constructNew_CthulhuSheet7eDarkAges_byHelldemos()
     obj.comboBox6:setField("ataque.tipo.a6");
     obj.comboBox6:setName("comboBox6");
 
-    obj.label236 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label236:setParent(obj.layout147);
-    obj.label236:setAlign("left");
-    obj.label236:setWidth(100);
-    obj.label236:setText("Nº de Ataques: ");
-    obj.label236:setHorzTextAlign("trailing");
-    obj.label236:setMargins({right=5});
-    obj.label236:setName("label236");
+    obj.label238 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label238:setParent(obj.layout147);
+    obj.label238:setAlign("left");
+    obj.label238:setWidth(100);
+    obj.label238:setText("Nº de Ataques: ");
+    obj.label238:setHorzTextAlign("trailing");
+    obj.label238:setMargins({right=5});
+    obj.label238:setName("label238");
+
+    obj.edit195 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit195:setParent(obj.layout147);
+    obj.edit195:setAlign("left");
+    obj.edit195:setHorzTextAlign("leading");
+    obj.edit195:setFontSize(14);
+    obj.edit195:setWidth(30);
+    obj.edit195:setField("ataque.quantidade.a6");
+    obj.edit195:setMargins({right=5});
+    obj.edit195:setName("edit195");
+
+    obj.label239 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label239:setParent(obj.layout147);
+    obj.label239:setAlign("left");
+    obj.label239:setWidth(60);
+    obj.label239:setText("Alcance: ");
+    obj.label239:setHorzTextAlign("trailing");
+    obj.label239:setMargins({right=5});
+    obj.label239:setName("label239");
 
     obj.edit196 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit196:setParent(obj.layout147);
@@ -6954,18 +6965,18 @@ local function constructNew_CthulhuSheet7eDarkAges_byHelldemos()
     obj.edit196:setHorzTextAlign("leading");
     obj.edit196:setFontSize(14);
     obj.edit196:setWidth(30);
-    obj.edit196:setField("ataque.quantidade.a6");
+    obj.edit196:setField("ataque.alcance.a6");
     obj.edit196:setMargins({right=5});
     obj.edit196:setName("edit196");
 
-    obj.label237 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label237:setParent(obj.layout147);
-    obj.label237:setAlign("left");
-    obj.label237:setWidth(60);
-    obj.label237:setText("Alcance: ");
-    obj.label237:setHorzTextAlign("trailing");
-    obj.label237:setMargins({right=5});
-    obj.label237:setName("label237");
+    obj.label240 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label240:setParent(obj.layout147);
+    obj.label240:setAlign("left");
+    obj.label240:setWidth(110);
+    obj.label240:setText("Munição na arma: ");
+    obj.label240:setHorzTextAlign("trailing");
+    obj.label240:setMargins({right=5});
+    obj.label240:setName("label240");
 
     obj.edit197 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit197:setParent(obj.layout147);
@@ -6973,84 +6984,65 @@ local function constructNew_CthulhuSheet7eDarkAges_byHelldemos()
     obj.edit197:setHorzTextAlign("leading");
     obj.edit197:setFontSize(14);
     obj.edit197:setWidth(30);
-    obj.edit197:setField("ataque.alcance.a6");
+    obj.edit197:setField("ataque.municao.a6");
     obj.edit197:setMargins({right=5});
     obj.edit197:setName("edit197");
-
-    obj.label238 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label238:setParent(obj.layout147);
-    obj.label238:setAlign("left");
-    obj.label238:setWidth(110);
-    obj.label238:setText("Munição na arma: ");
-    obj.label238:setHorzTextAlign("trailing");
-    obj.label238:setMargins({right=5});
-    obj.label238:setName("label238");
-
-    obj.edit198 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit198:setParent(obj.layout147);
-    obj.edit198:setAlign("left");
-    obj.edit198:setHorzTextAlign("leading");
-    obj.edit198:setFontSize(14);
-    obj.edit198:setWidth(30);
-    obj.edit198:setField("ataque.municao.a6");
-    obj.edit198:setMargins({right=5});
-    obj.edit198:setName("edit198");
-
-    obj.label239 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label239:setParent(obj.layout147);
-    obj.label239:setAlign("left");
-    obj.label239:setWidth(30);
-    obj.label239:setText("DEF: ");
-    obj.label239:setHorzTextAlign("trailing");
-    obj.label239:setMargins({right=5});
-    obj.label239:setName("label239");
-
-    obj.edit199 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit199:setParent(obj.layout147);
-    obj.edit199:setType("number");
-    obj.edit199:setAlign("left");
-    obj.edit199:setHorzTextAlign("leading");
-    obj.edit199:setFontSize(14);
-    obj.edit199:setWidth(25);
-    obj.edit199:setField("ataque.defeito.a6");
-    obj.edit199:setMargins({right=5});
-    obj.edit199:setName("edit199");
-
-    obj.label240 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label240:setParent(obj.layout147);
-    obj.label240:setAlign("left");
-    obj.label240:setWidth(50);
-    obj.label240:setText("Dano: ");
-    obj.label240:setHorzTextAlign("trailing");
-    obj.label240:setMargins({right=5});
-    obj.label240:setName("label240");
-
-    obj.edit200 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit200:setParent(obj.layout147);
-    obj.edit200:setAlign("left");
-    obj.edit200:setHorzTextAlign("leading");
-    obj.edit200:setFontSize(14);
-    obj.edit200:setWidth(55);
-    obj.edit200:setField("ataque.dano.a6");
-    obj.edit200:setMargins({right=5});
-    obj.edit200:setName("edit200");
 
     obj.label241 = GUI.fromHandle(_obj_newObject("label"));
     obj.label241:setParent(obj.layout147);
     obj.label241:setAlign("left");
-    obj.label241:setWidth(5);
-    obj.label241:setText("");
+    obj.label241:setWidth(30);
+    obj.label241:setText("DEF: ");
     obj.label241:setHorzTextAlign("trailing");
     obj.label241:setMargins({right=5});
     obj.label241:setName("label241");
 
-    obj.button107 = GUI.fromHandle(_obj_newObject("button"));
-    obj.button107:setParent(obj.layout147);
-    obj.button107:setAlign("left");
-    obj.button107:setLeft(5);
-    obj.button107:setText("Rolar");
-    obj.button107:setWidth(40);
-    obj.button107:setName("button107");
+    obj.edit198 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit198:setParent(obj.layout147);
+    obj.edit198:setType("number");
+    obj.edit198:setAlign("left");
+    obj.edit198:setHorzTextAlign("leading");
+    obj.edit198:setFontSize(14);
+    obj.edit198:setWidth(25);
+    obj.edit198:setField("ataque.defeito.a6");
+    obj.edit198:setMargins({right=5});
+    obj.edit198:setName("edit198");
+
+    obj.label242 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label242:setParent(obj.layout147);
+    obj.label242:setAlign("left");
+    obj.label242:setWidth(50);
+    obj.label242:setText("Dano: ");
+    obj.label242:setHorzTextAlign("trailing");
+    obj.label242:setMargins({right=5});
+    obj.label242:setName("label242");
+
+    obj.edit199 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit199:setParent(obj.layout147);
+    obj.edit199:setAlign("left");
+    obj.edit199:setHorzTextAlign("leading");
+    obj.edit199:setFontSize(14);
+    obj.edit199:setWidth(55);
+    obj.edit199:setField("ataque.dano.a6");
+    obj.edit199:setMargins({right=5});
+    obj.edit199:setName("edit199");
+
+    obj.label243 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label243:setParent(obj.layout147);
+    obj.label243:setAlign("left");
+    obj.label243:setWidth(5);
+    obj.label243:setText("");
+    obj.label243:setHorzTextAlign("trailing");
+    obj.label243:setMargins({right=5});
+    obj.label243:setName("label243");
+
+    obj.button106 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button106:setParent(obj.layout147);
+    obj.button106:setAlign("left");
+    obj.button106:setLeft(5);
+    obj.button106:setText("Rolar");
+    obj.button106:setWidth(40);
+    obj.button106:setName("button106");
 
     obj.layout148 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout148:setParent(obj.layout141);
@@ -7059,33 +7051,33 @@ local function constructNew_CthulhuSheet7eDarkAges_byHelldemos()
     obj.layout148:setMargins({bottom=2, top=15});
     obj.layout148:setName("layout148");
 
-    obj.label242 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label242:setParent(obj.layout148);
-    obj.label242:setAlign("left");
-    obj.label242:setWidth(5);
-    obj.label242:setText("");
-    obj.label242:setHorzTextAlign("trailing");
-    obj.label242:setMargins({right=5});
-    obj.label242:setName("label242");
+    obj.label244 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label244:setParent(obj.layout148);
+    obj.label244:setAlign("left");
+    obj.label244:setWidth(5);
+    obj.label244:setText("");
+    obj.label244:setHorzTextAlign("trailing");
+    obj.label244:setMargins({right=5});
+    obj.label244:setName("label244");
 
-    obj.edit201 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit201:setParent(obj.layout148);
-    obj.edit201:setAlign("left");
-    obj.edit201:setHorzTextAlign("leading");
-    obj.edit201:setFontSize(14);
-    obj.edit201:setWidth(120);
-    obj.edit201:setField("ataque.nome.a7");
-    obj.edit201:setMargins({right=5});
-    obj.edit201:setName("edit201");
+    obj.edit200 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit200:setParent(obj.layout148);
+    obj.edit200:setAlign("left");
+    obj.edit200:setHorzTextAlign("leading");
+    obj.edit200:setFontSize(14);
+    obj.edit200:setWidth(120);
+    obj.edit200:setField("ataque.nome.a7");
+    obj.edit200:setMargins({right=5});
+    obj.edit200:setName("edit200");
 
-    obj.label243 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label243:setParent(obj.layout148);
-    obj.label243:setAlign("left");
-    obj.label243:setWidth(50);
-    obj.label243:setText("Tipo: ");
-    obj.label243:setHorzTextAlign("trailing");
-    obj.label243:setMargins({right=5});
-    obj.label243:setName("label243");
+    obj.label245 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label245:setParent(obj.layout148);
+    obj.label245:setAlign("left");
+    obj.label245:setWidth(50);
+    obj.label245:setText("Tipo: ");
+    obj.label245:setHorzTextAlign("trailing");
+    obj.label245:setMargins({right=5});
+    obj.label245:setName("label245");
 
     obj.comboBox7 = GUI.fromHandle(_obj_newObject("comboBox"));
     obj.comboBox7:setParent(obj.layout148);
@@ -7096,14 +7088,33 @@ local function constructNew_CthulhuSheet7eDarkAges_byHelldemos()
     obj.comboBox7:setField("ataque.tipo.a7");
     obj.comboBox7:setName("comboBox7");
 
-    obj.label244 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label244:setParent(obj.layout148);
-    obj.label244:setAlign("left");
-    obj.label244:setWidth(100);
-    obj.label244:setText("Nº de Ataques: ");
-    obj.label244:setHorzTextAlign("trailing");
-    obj.label244:setMargins({right=5});
-    obj.label244:setName("label244");
+    obj.label246 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label246:setParent(obj.layout148);
+    obj.label246:setAlign("left");
+    obj.label246:setWidth(100);
+    obj.label246:setText("Nº de Ataques: ");
+    obj.label246:setHorzTextAlign("trailing");
+    obj.label246:setMargins({right=5});
+    obj.label246:setName("label246");
+
+    obj.edit201 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit201:setParent(obj.layout148);
+    obj.edit201:setAlign("left");
+    obj.edit201:setHorzTextAlign("leading");
+    obj.edit201:setFontSize(14);
+    obj.edit201:setWidth(30);
+    obj.edit201:setField("ataque.quantidade.a7");
+    obj.edit201:setMargins({right=5});
+    obj.edit201:setName("edit201");
+
+    obj.label247 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label247:setParent(obj.layout148);
+    obj.label247:setAlign("left");
+    obj.label247:setWidth(60);
+    obj.label247:setText("Alcance: ");
+    obj.label247:setHorzTextAlign("trailing");
+    obj.label247:setMargins({right=5});
+    obj.label247:setName("label247");
 
     obj.edit202 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit202:setParent(obj.layout148);
@@ -7111,18 +7122,18 @@ local function constructNew_CthulhuSheet7eDarkAges_byHelldemos()
     obj.edit202:setHorzTextAlign("leading");
     obj.edit202:setFontSize(14);
     obj.edit202:setWidth(30);
-    obj.edit202:setField("ataque.quantidade.a7");
+    obj.edit202:setField("ataque.alcance.a7");
     obj.edit202:setMargins({right=5});
     obj.edit202:setName("edit202");
 
-    obj.label245 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label245:setParent(obj.layout148);
-    obj.label245:setAlign("left");
-    obj.label245:setWidth(60);
-    obj.label245:setText("Alcance: ");
-    obj.label245:setHorzTextAlign("trailing");
-    obj.label245:setMargins({right=5});
-    obj.label245:setName("label245");
+    obj.label248 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label248:setParent(obj.layout148);
+    obj.label248:setAlign("left");
+    obj.label248:setWidth(110);
+    obj.label248:setText("Munição na arma: ");
+    obj.label248:setHorzTextAlign("trailing");
+    obj.label248:setMargins({right=5});
+    obj.label248:setName("label248");
 
     obj.edit203 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit203:setParent(obj.layout148);
@@ -7130,84 +7141,65 @@ local function constructNew_CthulhuSheet7eDarkAges_byHelldemos()
     obj.edit203:setHorzTextAlign("leading");
     obj.edit203:setFontSize(14);
     obj.edit203:setWidth(30);
-    obj.edit203:setField("ataque.alcance.a7");
+    obj.edit203:setField("ataque.municao.a7");
     obj.edit203:setMargins({right=5});
     obj.edit203:setName("edit203");
-
-    obj.label246 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label246:setParent(obj.layout148);
-    obj.label246:setAlign("left");
-    obj.label246:setWidth(110);
-    obj.label246:setText("Munição na arma: ");
-    obj.label246:setHorzTextAlign("trailing");
-    obj.label246:setMargins({right=5});
-    obj.label246:setName("label246");
-
-    obj.edit204 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit204:setParent(obj.layout148);
-    obj.edit204:setAlign("left");
-    obj.edit204:setHorzTextAlign("leading");
-    obj.edit204:setFontSize(14);
-    obj.edit204:setWidth(30);
-    obj.edit204:setField("ataque.municao.a7");
-    obj.edit204:setMargins({right=5});
-    obj.edit204:setName("edit204");
-
-    obj.label247 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label247:setParent(obj.layout148);
-    obj.label247:setAlign("left");
-    obj.label247:setWidth(30);
-    obj.label247:setText("DEF: ");
-    obj.label247:setHorzTextAlign("trailing");
-    obj.label247:setMargins({right=5});
-    obj.label247:setName("label247");
-
-    obj.edit205 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit205:setParent(obj.layout148);
-    obj.edit205:setType("number");
-    obj.edit205:setAlign("left");
-    obj.edit205:setHorzTextAlign("leading");
-    obj.edit205:setFontSize(14);
-    obj.edit205:setWidth(25);
-    obj.edit205:setField("ataque.defeito.a7");
-    obj.edit205:setMargins({right=5});
-    obj.edit205:setName("edit205");
-
-    obj.label248 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label248:setParent(obj.layout148);
-    obj.label248:setAlign("left");
-    obj.label248:setWidth(50);
-    obj.label248:setText("Dano: ");
-    obj.label248:setHorzTextAlign("trailing");
-    obj.label248:setMargins({right=5});
-    obj.label248:setName("label248");
-
-    obj.edit206 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit206:setParent(obj.layout148);
-    obj.edit206:setAlign("left");
-    obj.edit206:setHorzTextAlign("leading");
-    obj.edit206:setFontSize(14);
-    obj.edit206:setWidth(55);
-    obj.edit206:setField("ataque.dano.a7");
-    obj.edit206:setMargins({right=5});
-    obj.edit206:setName("edit206");
 
     obj.label249 = GUI.fromHandle(_obj_newObject("label"));
     obj.label249:setParent(obj.layout148);
     obj.label249:setAlign("left");
-    obj.label249:setWidth(5);
-    obj.label249:setText("");
+    obj.label249:setWidth(30);
+    obj.label249:setText("DEF: ");
     obj.label249:setHorzTextAlign("trailing");
     obj.label249:setMargins({right=5});
     obj.label249:setName("label249");
 
-    obj.button108 = GUI.fromHandle(_obj_newObject("button"));
-    obj.button108:setParent(obj.layout148);
-    obj.button108:setAlign("left");
-    obj.button108:setLeft(5);
-    obj.button108:setText("Rolar");
-    obj.button108:setWidth(40);
-    obj.button108:setName("button108");
+    obj.edit204 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit204:setParent(obj.layout148);
+    obj.edit204:setType("number");
+    obj.edit204:setAlign("left");
+    obj.edit204:setHorzTextAlign("leading");
+    obj.edit204:setFontSize(14);
+    obj.edit204:setWidth(25);
+    obj.edit204:setField("ataque.defeito.a7");
+    obj.edit204:setMargins({right=5});
+    obj.edit204:setName("edit204");
+
+    obj.label250 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label250:setParent(obj.layout148);
+    obj.label250:setAlign("left");
+    obj.label250:setWidth(50);
+    obj.label250:setText("Dano: ");
+    obj.label250:setHorzTextAlign("trailing");
+    obj.label250:setMargins({right=5});
+    obj.label250:setName("label250");
+
+    obj.edit205 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit205:setParent(obj.layout148);
+    obj.edit205:setAlign("left");
+    obj.edit205:setHorzTextAlign("leading");
+    obj.edit205:setFontSize(14);
+    obj.edit205:setWidth(55);
+    obj.edit205:setField("ataque.dano.a7");
+    obj.edit205:setMargins({right=5});
+    obj.edit205:setName("edit205");
+
+    obj.label251 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label251:setParent(obj.layout148);
+    obj.label251:setAlign("left");
+    obj.label251:setWidth(5);
+    obj.label251:setText("");
+    obj.label251:setHorzTextAlign("trailing");
+    obj.label251:setMargins({right=5});
+    obj.label251:setName("label251");
+
+    obj.button107 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button107:setParent(obj.layout148);
+    obj.button107:setAlign("left");
+    obj.button107:setLeft(5);
+    obj.button107:setText("Rolar");
+    obj.button107:setWidth(40);
+    obj.button107:setName("button107");
 
     obj.layout149 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout149:setParent(obj.layout141);
@@ -7216,33 +7208,33 @@ local function constructNew_CthulhuSheet7eDarkAges_byHelldemos()
     obj.layout149:setMargins({bottom=2, top=15});
     obj.layout149:setName("layout149");
 
-    obj.label250 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label250:setParent(obj.layout149);
-    obj.label250:setAlign("left");
-    obj.label250:setWidth(5);
-    obj.label250:setText("");
-    obj.label250:setHorzTextAlign("trailing");
-    obj.label250:setMargins({right=5});
-    obj.label250:setName("label250");
+    obj.label252 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label252:setParent(obj.layout149);
+    obj.label252:setAlign("left");
+    obj.label252:setWidth(5);
+    obj.label252:setText("");
+    obj.label252:setHorzTextAlign("trailing");
+    obj.label252:setMargins({right=5});
+    obj.label252:setName("label252");
 
-    obj.edit207 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit207:setParent(obj.layout149);
-    obj.edit207:setAlign("left");
-    obj.edit207:setHorzTextAlign("leading");
-    obj.edit207:setFontSize(14);
-    obj.edit207:setWidth(120);
-    obj.edit207:setField("ataque.nome.a8");
-    obj.edit207:setMargins({right=5});
-    obj.edit207:setName("edit207");
+    obj.edit206 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit206:setParent(obj.layout149);
+    obj.edit206:setAlign("left");
+    obj.edit206:setHorzTextAlign("leading");
+    obj.edit206:setFontSize(14);
+    obj.edit206:setWidth(120);
+    obj.edit206:setField("ataque.nome.a8");
+    obj.edit206:setMargins({right=5});
+    obj.edit206:setName("edit206");
 
-    obj.label251 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label251:setParent(obj.layout149);
-    obj.label251:setAlign("left");
-    obj.label251:setWidth(50);
-    obj.label251:setText("Tipo: ");
-    obj.label251:setHorzTextAlign("trailing");
-    obj.label251:setMargins({right=5});
-    obj.label251:setName("label251");
+    obj.label253 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label253:setParent(obj.layout149);
+    obj.label253:setAlign("left");
+    obj.label253:setWidth(50);
+    obj.label253:setText("Tipo: ");
+    obj.label253:setHorzTextAlign("trailing");
+    obj.label253:setMargins({right=5});
+    obj.label253:setName("label253");
 
     obj.comboBox8 = GUI.fromHandle(_obj_newObject("comboBox"));
     obj.comboBox8:setParent(obj.layout149);
@@ -7253,14 +7245,33 @@ local function constructNew_CthulhuSheet7eDarkAges_byHelldemos()
     obj.comboBox8:setField("ataque.tipo.a8");
     obj.comboBox8:setName("comboBox8");
 
-    obj.label252 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label252:setParent(obj.layout149);
-    obj.label252:setAlign("left");
-    obj.label252:setWidth(100);
-    obj.label252:setText("Nº de Ataques: ");
-    obj.label252:setHorzTextAlign("trailing");
-    obj.label252:setMargins({right=5});
-    obj.label252:setName("label252");
+    obj.label254 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label254:setParent(obj.layout149);
+    obj.label254:setAlign("left");
+    obj.label254:setWidth(100);
+    obj.label254:setText("Nº de Ataques: ");
+    obj.label254:setHorzTextAlign("trailing");
+    obj.label254:setMargins({right=5});
+    obj.label254:setName("label254");
+
+    obj.edit207 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit207:setParent(obj.layout149);
+    obj.edit207:setAlign("left");
+    obj.edit207:setHorzTextAlign("leading");
+    obj.edit207:setFontSize(14);
+    obj.edit207:setWidth(30);
+    obj.edit207:setField("ataque.quantidade.a8");
+    obj.edit207:setMargins({right=5});
+    obj.edit207:setName("edit207");
+
+    obj.label255 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label255:setParent(obj.layout149);
+    obj.label255:setAlign("left");
+    obj.label255:setWidth(60);
+    obj.label255:setText("Alcance: ");
+    obj.label255:setHorzTextAlign("trailing");
+    obj.label255:setMargins({right=5});
+    obj.label255:setName("label255");
 
     obj.edit208 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit208:setParent(obj.layout149);
@@ -7268,18 +7279,18 @@ local function constructNew_CthulhuSheet7eDarkAges_byHelldemos()
     obj.edit208:setHorzTextAlign("leading");
     obj.edit208:setFontSize(14);
     obj.edit208:setWidth(30);
-    obj.edit208:setField("ataque.quantidade.a8");
+    obj.edit208:setField("ataque.alcance.a8");
     obj.edit208:setMargins({right=5});
     obj.edit208:setName("edit208");
 
-    obj.label253 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label253:setParent(obj.layout149);
-    obj.label253:setAlign("left");
-    obj.label253:setWidth(60);
-    obj.label253:setText("Alcance: ");
-    obj.label253:setHorzTextAlign("trailing");
-    obj.label253:setMargins({right=5});
-    obj.label253:setName("label253");
+    obj.label256 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label256:setParent(obj.layout149);
+    obj.label256:setAlign("left");
+    obj.label256:setWidth(110);
+    obj.label256:setText("Munição na arma: ");
+    obj.label256:setHorzTextAlign("trailing");
+    obj.label256:setMargins({right=5});
+    obj.label256:setName("label256");
 
     obj.edit209 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit209:setParent(obj.layout149);
@@ -7287,84 +7298,65 @@ local function constructNew_CthulhuSheet7eDarkAges_byHelldemos()
     obj.edit209:setHorzTextAlign("leading");
     obj.edit209:setFontSize(14);
     obj.edit209:setWidth(30);
-    obj.edit209:setField("ataque.alcance.a8");
+    obj.edit209:setField("ataque.municao.a8");
     obj.edit209:setMargins({right=5});
     obj.edit209:setName("edit209");
-
-    obj.label254 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label254:setParent(obj.layout149);
-    obj.label254:setAlign("left");
-    obj.label254:setWidth(110);
-    obj.label254:setText("Munição na arma: ");
-    obj.label254:setHorzTextAlign("trailing");
-    obj.label254:setMargins({right=5});
-    obj.label254:setName("label254");
-
-    obj.edit210 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit210:setParent(obj.layout149);
-    obj.edit210:setAlign("left");
-    obj.edit210:setHorzTextAlign("leading");
-    obj.edit210:setFontSize(14);
-    obj.edit210:setWidth(30);
-    obj.edit210:setField("ataque.municao.a8");
-    obj.edit210:setMargins({right=5});
-    obj.edit210:setName("edit210");
-
-    obj.label255 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label255:setParent(obj.layout149);
-    obj.label255:setAlign("left");
-    obj.label255:setWidth(30);
-    obj.label255:setText("DEF: ");
-    obj.label255:setHorzTextAlign("trailing");
-    obj.label255:setMargins({right=5});
-    obj.label255:setName("label255");
-
-    obj.edit211 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit211:setParent(obj.layout149);
-    obj.edit211:setType("number");
-    obj.edit211:setAlign("left");
-    obj.edit211:setHorzTextAlign("leading");
-    obj.edit211:setFontSize(14);
-    obj.edit211:setWidth(25);
-    obj.edit211:setField("ataque.defeito.a8");
-    obj.edit211:setMargins({right=5});
-    obj.edit211:setName("edit211");
-
-    obj.label256 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label256:setParent(obj.layout149);
-    obj.label256:setAlign("left");
-    obj.label256:setWidth(50);
-    obj.label256:setText("Dano: ");
-    obj.label256:setHorzTextAlign("trailing");
-    obj.label256:setMargins({right=5});
-    obj.label256:setName("label256");
-
-    obj.edit212 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit212:setParent(obj.layout149);
-    obj.edit212:setAlign("left");
-    obj.edit212:setHorzTextAlign("leading");
-    obj.edit212:setFontSize(14);
-    obj.edit212:setWidth(55);
-    obj.edit212:setField("ataque.dano.a8");
-    obj.edit212:setMargins({right=5});
-    obj.edit212:setName("edit212");
 
     obj.label257 = GUI.fromHandle(_obj_newObject("label"));
     obj.label257:setParent(obj.layout149);
     obj.label257:setAlign("left");
-    obj.label257:setWidth(5);
-    obj.label257:setText("");
+    obj.label257:setWidth(30);
+    obj.label257:setText("DEF: ");
     obj.label257:setHorzTextAlign("trailing");
     obj.label257:setMargins({right=5});
     obj.label257:setName("label257");
 
-    obj.button109 = GUI.fromHandle(_obj_newObject("button"));
-    obj.button109:setParent(obj.layout149);
-    obj.button109:setAlign("left");
-    obj.button109:setLeft(5);
-    obj.button109:setText("Rolar");
-    obj.button109:setWidth(40);
-    obj.button109:setName("button109");
+    obj.edit210 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit210:setParent(obj.layout149);
+    obj.edit210:setType("number");
+    obj.edit210:setAlign("left");
+    obj.edit210:setHorzTextAlign("leading");
+    obj.edit210:setFontSize(14);
+    obj.edit210:setWidth(25);
+    obj.edit210:setField("ataque.defeito.a8");
+    obj.edit210:setMargins({right=5});
+    obj.edit210:setName("edit210");
+
+    obj.label258 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label258:setParent(obj.layout149);
+    obj.label258:setAlign("left");
+    obj.label258:setWidth(50);
+    obj.label258:setText("Dano: ");
+    obj.label258:setHorzTextAlign("trailing");
+    obj.label258:setMargins({right=5});
+    obj.label258:setName("label258");
+
+    obj.edit211 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit211:setParent(obj.layout149);
+    obj.edit211:setAlign("left");
+    obj.edit211:setHorzTextAlign("leading");
+    obj.edit211:setFontSize(14);
+    obj.edit211:setWidth(55);
+    obj.edit211:setField("ataque.dano.a8");
+    obj.edit211:setMargins({right=5});
+    obj.edit211:setName("edit211");
+
+    obj.label259 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label259:setParent(obj.layout149);
+    obj.label259:setAlign("left");
+    obj.label259:setWidth(5);
+    obj.label259:setText("");
+    obj.label259:setHorzTextAlign("trailing");
+    obj.label259:setMargins({right=5});
+    obj.label259:setName("label259");
+
+    obj.button108 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button108:setParent(obj.layout149);
+    obj.button108:setAlign("left");
+    obj.button108:setLeft(5);
+    obj.button108:setText("Rolar");
+    obj.button108:setWidth(40);
+    obj.button108:setName("button108");
 
     obj.layout150 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout150:setParent(obj.scrollBox1);
@@ -7377,14 +7369,14 @@ local function constructNew_CthulhuSheet7eDarkAges_byHelldemos()
     obj.layout150:setMargins({left=30, right=10, bottom=10});
     obj.layout150:setName("layout150");
 
-    obj.label258 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label258:setParent(obj.layout150);
-    obj.label258:setText("Combate");
-    obj.label258:setLeft(132);
-    lfm_setPropAsString(obj.label258, "fontStyle",  "bold italic");
-    obj.label258:setTop(9);
-    obj.label258:setWidth(1343);
-    obj.label258:setName("label258");
+    obj.label260 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label260:setParent(obj.layout150);
+    obj.label260:setText("Combate");
+    obj.label260:setLeft(132);
+    lfm_setPropAsString(obj.label260, "fontStyle",  "bold italic");
+    obj.label260:setTop(9);
+    obj.label260:setWidth(1343);
+    obj.label260:setName("label260");
 
     obj.layout151 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout151:setParent(obj.layout150);
@@ -7401,32 +7393,32 @@ local function constructNew_CthulhuSheet7eDarkAges_byHelldemos()
     obj.layout152:setMargins({bottom=2, top=15});
     obj.layout152:setName("layout152");
 
-    obj.label259 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label259:setParent(obj.layout152);
-    obj.label259:setAlign("left");
-    obj.label259:setWidth(120);
-    obj.label259:setText("Bonus de Dano:");
-    obj.label259:setHorzTextAlign("trailing");
-    obj.label259:setMargins({right=5});
-    obj.label259:setName("label259");
+    obj.label261 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label261:setParent(obj.layout152);
+    obj.label261:setAlign("left");
+    obj.label261:setWidth(120);
+    obj.label261:setText("Bonus de Dano:");
+    obj.label261:setHorzTextAlign("trailing");
+    obj.label261:setMargins({right=5});
+    obj.label261:setName("label261");
 
-    obj.edit213 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit213:setParent(obj.layout152);
-    obj.edit213:setAlign("left");
-    obj.edit213:setHorzTextAlign("center");
-    obj.edit213:setFontSize(20);
-    obj.edit213:setHeight(30);
-    obj.edit213:setField("bonus.dano");
-    obj.edit213:setName("edit213");
+    obj.edit212 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit212:setParent(obj.layout152);
+    obj.edit212:setAlign("left");
+    obj.edit212:setHorzTextAlign("center");
+    obj.edit212:setFontSize(20);
+    obj.edit212:setHeight(30);
+    obj.edit212:setField("bonus.dano");
+    obj.edit212:setName("edit212");
 
-    obj.label260 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label260:setParent(obj.layout152);
-    obj.label260:setAlign("left");
-    obj.label260:setWidth(40);
-    obj.label260:setText(" ");
-    obj.label260:setHorzTextAlign("trailing");
-    obj.label260:setMargins({right=5});
-    obj.label260:setName("label260");
+    obj.label262 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label262:setParent(obj.layout152);
+    obj.label262:setAlign("left");
+    obj.label262:setWidth(40);
+    obj.label262:setText(" ");
+    obj.label262:setHorzTextAlign("trailing");
+    obj.label262:setMargins({right=5});
+    obj.label262:setName("label262");
 
     obj.layout153 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout153:setParent(obj.layout151);
@@ -7435,32 +7427,32 @@ local function constructNew_CthulhuSheet7eDarkAges_byHelldemos()
     obj.layout153:setMargins({bottom=2, top=15});
     obj.layout153:setName("layout153");
 
-    obj.label261 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label261:setParent(obj.layout153);
-    obj.label261:setAlign("left");
-    obj.label261:setWidth(120);
-    obj.label261:setText("Corpo:");
-    obj.label261:setHorzTextAlign("trailing");
-    obj.label261:setMargins({right=5});
-    obj.label261:setName("label261");
+    obj.label263 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label263:setParent(obj.layout153);
+    obj.label263:setAlign("left");
+    obj.label263:setWidth(120);
+    obj.label263:setText("Corpo:");
+    obj.label263:setHorzTextAlign("trailing");
+    obj.label263:setMargins({right=5});
+    obj.label263:setName("label263");
 
-    obj.edit214 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit214:setParent(obj.layout153);
-    obj.edit214:setAlign("left");
-    obj.edit214:setHorzTextAlign("center");
-    obj.edit214:setFontSize(20);
-    obj.edit214:setHeight(30);
-    obj.edit214:setField("bonus.corpo");
-    obj.edit214:setName("edit214");
+    obj.edit213 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit213:setParent(obj.layout153);
+    obj.edit213:setAlign("left");
+    obj.edit213:setHorzTextAlign("center");
+    obj.edit213:setFontSize(20);
+    obj.edit213:setHeight(30);
+    obj.edit213:setField("bonus.corpo");
+    obj.edit213:setName("edit213");
 
-    obj.label262 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label262:setParent(obj.layout153);
-    obj.label262:setAlign("left");
-    obj.label262:setWidth(40);
-    obj.label262:setText(" ");
-    obj.label262:setHorzTextAlign("trailing");
-    obj.label262:setMargins({right=5});
-    obj.label262:setName("label262");
+    obj.label264 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label264:setParent(obj.layout153);
+    obj.label264:setAlign("left");
+    obj.label264:setWidth(40);
+    obj.label264:setText(" ");
+    obj.label264:setHorzTextAlign("trailing");
+    obj.label264:setMargins({right=5});
+    obj.label264:setName("label264");
 
     obj.layout154 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout154:setParent(obj.layout151);
@@ -7470,41 +7462,41 @@ local function constructNew_CthulhuSheet7eDarkAges_byHelldemos()
     obj.layout154:setMargins({bottom=2, top=15});
     obj.layout154:setName("layout154");
 
-    obj.label263 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label263:setParent(obj.layout154);
-    obj.label263:setAlign("left");
-    obj.label263:setWidth(120);
-    obj.label263:setText("Esquiva:");
-    obj.label263:setHorzTextAlign("trailing");
-    obj.label263:setMargins({right=5});
-    obj.label263:setName("label263");
+    obj.label265 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label265:setParent(obj.layout154);
+    obj.label265:setAlign("left");
+    obj.label265:setWidth(120);
+    obj.label265:setText("Esquiva:");
+    obj.label265:setHorzTextAlign("trailing");
+    obj.label265:setMargins({right=5});
+    obj.label265:setName("label265");
 
-    obj.edit215 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit215:setParent(obj.layout154);
-    obj.edit215:setType("number");
-    obj.edit215:setMin(00);
-    obj.edit215:setAlign("left");
-    obj.edit215:setHorzTextAlign("center");
-    obj.edit215:setFontSize(20);
-    obj.edit215:setHeight(30);
-    obj.edit215:setField("pericia.esquiva");
-    obj.edit215:setName("edit215");
+    obj.edit214 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit214:setParent(obj.layout154);
+    obj.edit214:setType("number");
+    obj.edit214:setMin(00);
+    obj.edit214:setAlign("left");
+    obj.edit214:setHorzTextAlign("center");
+    obj.edit214:setFontSize(20);
+    obj.edit214:setHeight(30);
+    obj.edit214:setField("pericia.esquiva");
+    obj.edit214:setName("edit214");
 
-    obj.label264 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label264:setParent(obj.layout154);
-    obj.label264:setText("a");
-    obj.label264:setFontSize(0);
-    obj.label264:setWidth(7);
-    obj.label264:setLeft(7);
-    obj.label264:setName("label264");
+    obj.label266 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label266:setParent(obj.layout154);
+    obj.label266:setText("a");
+    obj.label266:setFontSize(0);
+    obj.label266:setWidth(7);
+    obj.label266:setLeft(7);
+    obj.label266:setName("label266");
 
-    obj.button110 = GUI.fromHandle(_obj_newObject("button"));
-    obj.button110:setParent(obj.layout154);
-    obj.button110:setAlign("left");
-    obj.button110:setLeft(5);
-    obj.button110:setText("Rolar");
-    obj.button110:setWidth(40);
-    obj.button110:setName("button110");
+    obj.button109 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button109:setParent(obj.layout154);
+    obj.button109:setAlign("left");
+    obj.button109:setLeft(5);
+    obj.button109:setText("Rolar");
+    obj.button109:setWidth(40);
+    obj.button109:setName("button109");
 
     obj.layout155 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout155:setParent(obj.layout151);
@@ -7515,30 +7507,30 @@ local function constructNew_CthulhuSheet7eDarkAges_byHelldemos()
     obj.layout155:setAlign("top");
     obj.layout155:setMargins({left=2, right=2, top=5});
 
-    obj.label265 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label265:setParent(obj.layout155);
-    obj.label265:setText("a");
-    obj.label265:setFontSize(0);
-    obj.label265:setWidth(80);
-    obj.label265:setLeft(120);
-    obj.label265:setName("label265");
-    obj.label265:setAlign("left");
-    obj.label265:setHorzTextAlign("leading");
-    obj.label265:setVertTextAlign("leading");
-    obj.label265:setAutoSize(true);
-    obj.label265:setTop(30);
+    obj.label267 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label267:setParent(obj.layout155);
+    obj.label267:setText("a");
+    obj.label267:setFontSize(0);
+    obj.label267:setWidth(80);
+    obj.label267:setLeft(120);
+    obj.label267:setName("label267");
+    obj.label267:setAlign("left");
+    obj.label267:setHorzTextAlign("leading");
+    obj.label267:setVertTextAlign("leading");
+    obj.label267:setAutoSize(true);
+    obj.label267:setTop(30);
 
-    obj.label266 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label266:setParent(obj.layout155);
-    obj.label266:setText("Armaduras e Escudos");
-    obj.label266:setWidth(140);
-    obj.label266:setLeft(120);
-    obj.label266:setName("label266");
-    obj.label266:setAlign("left");
-    obj.label266:setHorzTextAlign("leading");
-    obj.label266:setVertTextAlign("leading");
-    obj.label266:setAutoSize(true);
-    obj.label266:setTop(30);
+    obj.label268 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label268:setParent(obj.layout155);
+    obj.label268:setText("Armaduras e Escudos");
+    obj.label268:setWidth(140);
+    obj.label268:setLeft(120);
+    obj.label268:setName("label268");
+    obj.label268:setAlign("left");
+    obj.label268:setHorzTextAlign("leading");
+    obj.label268:setVertTextAlign("leading");
+    obj.label268:setAutoSize(true);
+    obj.label268:setTop(30);
 
     obj.layout156 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout156:setParent(obj.layout151);
@@ -7549,70 +7541,17 @@ local function constructNew_CthulhuSheet7eDarkAges_byHelldemos()
     obj.layout156:setAlign("top");
     obj.layout156:setMargins({left=2, right=2, top=5});
 
-    obj.edit216 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit216:setParent(obj.layout156);
-    obj.edit216:setField("bonus.armadura1.nome");
-    obj.edit216:setWidth(170);
-    obj.edit216:setName("edit216");
-    obj.edit216:setHeight(5);
-    obj.edit216:setFontSize(15);
-    obj.edit216:setAlign("left");
-
-    obj.label267 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label267:setParent(obj.layout156);
-    obj.label267:setText("a");
-    obj.label267:setFontSize(0);
-    obj.label267:setWidth(7);
-    obj.label267:setLeft(7);
-    obj.label267:setName("label267");
-    obj.label267:setAlign("left");
-    obj.label267:setHorzTextAlign("leading");
-    obj.label267:setVertTextAlign("leading");
-    obj.label267:setAutoSize(true);
-    obj.label267:setTop(30);
-
-    obj.edit217 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit217:setParent(obj.layout156);
-    obj.edit217:setField("bonus.armadura1");
-    obj.edit217:setWidth(60);
-    obj.edit217:setName("edit217");
-    obj.edit217:setHeight(5);
-    obj.edit217:setFontSize(15);
-    obj.edit217:setAlign("left");
-
-    obj.layout157 = GUI.fromHandle(_obj_newObject("layout"));
-    obj.layout157:setParent(obj.layout151);
-    obj.layout157:setName("layout157");
-    obj.layout157:setWidth(15);
-    obj.layout157:setTop(25);
-    obj.layout157:setHeight(25);
-    obj.layout157:setAlign("top");
-    obj.layout157:setMargins({left=2, right=2, top=5});
-
-    obj.label268 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label268:setParent(obj.layout157);
-    obj.label268:setText("a");
-    obj.label268:setFontSize(0);
-    obj.label268:setWidth(70);
-    obj.label268:setLeft(70);
-    obj.label268:setName("label268");
-    obj.label268:setAlign("left");
-    obj.label268:setHorzTextAlign("leading");
-    obj.label268:setVertTextAlign("leading");
-    obj.label268:setAutoSize(true);
-    obj.label268:setTop(30);
-
-    obj.edit218 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit218:setParent(obj.layout157);
-    obj.edit218:setField("bonus.armadura2.nome");
-    obj.edit218:setWidth(170);
-    obj.edit218:setName("edit218");
-    obj.edit218:setHeight(5);
-    obj.edit218:setFontSize(15);
-    obj.edit218:setAlign("left");
+    obj.edit215 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit215:setParent(obj.layout156);
+    obj.edit215:setField("bonus.armadura1.nome");
+    obj.edit215:setWidth(170);
+    obj.edit215:setName("edit215");
+    obj.edit215:setHeight(5);
+    obj.edit215:setFontSize(15);
+    obj.edit215:setAlign("left");
 
     obj.label269 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label269:setParent(obj.layout157);
+    obj.label269:setParent(obj.layout156);
     obj.label269:setText("a");
     obj.label269:setFontSize(0);
     obj.label269:setWidth(7);
@@ -7624,39 +7563,30 @@ local function constructNew_CthulhuSheet7eDarkAges_byHelldemos()
     obj.label269:setAutoSize(true);
     obj.label269:setTop(30);
 
-    obj.edit219 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit219:setParent(obj.layout157);
-    obj.edit219:setField("bonus.armadura2");
-    obj.edit219:setWidth(60);
-    obj.edit219:setName("edit219");
-    obj.edit219:setHeight(5);
-    obj.edit219:setFontSize(15);
-    obj.edit219:setAlign("left");
+    obj.edit216 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit216:setParent(obj.layout156);
+    obj.edit216:setField("bonus.armadura1");
+    obj.edit216:setWidth(60);
+    obj.edit216:setName("edit216");
+    obj.edit216:setHeight(5);
+    obj.edit216:setFontSize(15);
+    obj.edit216:setAlign("left");
 
-    obj.layout158 = GUI.fromHandle(_obj_newObject("layout"));
-    obj.layout158:setParent(obj.layout151);
-    obj.layout158:setName("layout158");
-    obj.layout158:setWidth(15);
-    obj.layout158:setTop(25);
-    obj.layout158:setHeight(25);
-    obj.layout158:setAlign("top");
-    obj.layout158:setMargins({left=2, right=2, top=5});
-
-    obj.edit220 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit220:setParent(obj.layout158);
-    obj.edit220:setField("bonus.Escudo1.nome");
-    obj.edit220:setWidth(170);
-    obj.edit220:setName("edit220");
-    obj.edit220:setHeight(5);
-    obj.edit220:setFontSize(15);
-    obj.edit220:setAlign("left");
+    obj.layout157 = GUI.fromHandle(_obj_newObject("layout"));
+    obj.layout157:setParent(obj.layout151);
+    obj.layout157:setName("layout157");
+    obj.layout157:setWidth(15);
+    obj.layout157:setTop(25);
+    obj.layout157:setHeight(25);
+    obj.layout157:setAlign("top");
+    obj.layout157:setMargins({left=2, right=2, top=5});
 
     obj.label270 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label270:setParent(obj.layout158);
+    obj.label270:setParent(obj.layout157);
     obj.label270:setText("a");
     obj.label270:setFontSize(0);
-    obj.label270:setWidth(7);
-    obj.label270:setLeft(7);
+    obj.label270:setWidth(70);
+    obj.label270:setLeft(70);
     obj.label270:setName("label270");
     obj.label270:setAlign("left");
     obj.label270:setHorzTextAlign("leading");
@@ -7664,35 +7594,17 @@ local function constructNew_CthulhuSheet7eDarkAges_byHelldemos()
     obj.label270:setAutoSize(true);
     obj.label270:setTop(30);
 
-    obj.edit221 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit221:setParent(obj.layout158);
-    obj.edit221:setField("bonus.Escudo1");
-    obj.edit221:setWidth(60);
-    obj.edit221:setName("edit221");
-    obj.edit221:setHeight(5);
-    obj.edit221:setFontSize(15);
-    obj.edit221:setAlign("left");
-
-    obj.layout159 = GUI.fromHandle(_obj_newObject("layout"));
-    obj.layout159:setParent(obj.layout151);
-    obj.layout159:setName("layout159");
-    obj.layout159:setWidth(15);
-    obj.layout159:setTop(25);
-    obj.layout159:setHeight(25);
-    obj.layout159:setAlign("top");
-    obj.layout159:setMargins({left=2, right=2, top=5});
-
-    obj.edit222 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit222:setParent(obj.layout159);
-    obj.edit222:setField("bonus.Escudo2.nome");
-    obj.edit222:setWidth(170);
-    obj.edit222:setName("edit222");
-    obj.edit222:setHeight(5);
-    obj.edit222:setFontSize(15);
-    obj.edit222:setAlign("left");
+    obj.edit217 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit217:setParent(obj.layout157);
+    obj.edit217:setField("bonus.armadura2.nome");
+    obj.edit217:setWidth(170);
+    obj.edit217:setName("edit217");
+    obj.edit217:setHeight(5);
+    obj.edit217:setFontSize(15);
+    obj.edit217:setAlign("left");
 
     obj.label271 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label271:setParent(obj.layout159);
+    obj.label271:setParent(obj.layout157);
     obj.label271:setText("a");
     obj.label271:setFontSize(0);
     obj.label271:setWidth(7);
@@ -7704,14 +7616,94 @@ local function constructNew_CthulhuSheet7eDarkAges_byHelldemos()
     obj.label271:setAutoSize(true);
     obj.label271:setTop(30);
 
-    obj.edit223 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit223:setParent(obj.layout159);
-    obj.edit223:setField("bonus.Escudo2");
-    obj.edit223:setWidth(60);
-    obj.edit223:setName("edit223");
-    obj.edit223:setHeight(5);
-    obj.edit223:setFontSize(15);
-    obj.edit223:setAlign("left");
+    obj.edit218 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit218:setParent(obj.layout157);
+    obj.edit218:setField("bonus.armadura2");
+    obj.edit218:setWidth(60);
+    obj.edit218:setName("edit218");
+    obj.edit218:setHeight(5);
+    obj.edit218:setFontSize(15);
+    obj.edit218:setAlign("left");
+
+    obj.layout158 = GUI.fromHandle(_obj_newObject("layout"));
+    obj.layout158:setParent(obj.layout151);
+    obj.layout158:setName("layout158");
+    obj.layout158:setWidth(15);
+    obj.layout158:setTop(25);
+    obj.layout158:setHeight(25);
+    obj.layout158:setAlign("top");
+    obj.layout158:setMargins({left=2, right=2, top=5});
+
+    obj.edit219 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit219:setParent(obj.layout158);
+    obj.edit219:setField("bonus.Escudo1.nome");
+    obj.edit219:setWidth(170);
+    obj.edit219:setName("edit219");
+    obj.edit219:setHeight(5);
+    obj.edit219:setFontSize(15);
+    obj.edit219:setAlign("left");
+
+    obj.label272 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label272:setParent(obj.layout158);
+    obj.label272:setText("a");
+    obj.label272:setFontSize(0);
+    obj.label272:setWidth(7);
+    obj.label272:setLeft(7);
+    obj.label272:setName("label272");
+    obj.label272:setAlign("left");
+    obj.label272:setHorzTextAlign("leading");
+    obj.label272:setVertTextAlign("leading");
+    obj.label272:setAutoSize(true);
+    obj.label272:setTop(30);
+
+    obj.edit220 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit220:setParent(obj.layout158);
+    obj.edit220:setField("bonus.Escudo1");
+    obj.edit220:setWidth(60);
+    obj.edit220:setName("edit220");
+    obj.edit220:setHeight(5);
+    obj.edit220:setFontSize(15);
+    obj.edit220:setAlign("left");
+
+    obj.layout159 = GUI.fromHandle(_obj_newObject("layout"));
+    obj.layout159:setParent(obj.layout151);
+    obj.layout159:setName("layout159");
+    obj.layout159:setWidth(15);
+    obj.layout159:setTop(25);
+    obj.layout159:setHeight(25);
+    obj.layout159:setAlign("top");
+    obj.layout159:setMargins({left=2, right=2, top=5});
+
+    obj.edit221 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit221:setParent(obj.layout159);
+    obj.edit221:setField("bonus.Escudo2.nome");
+    obj.edit221:setWidth(170);
+    obj.edit221:setName("edit221");
+    obj.edit221:setHeight(5);
+    obj.edit221:setFontSize(15);
+    obj.edit221:setAlign("left");
+
+    obj.label273 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label273:setParent(obj.layout159);
+    obj.label273:setText("a");
+    obj.label273:setFontSize(0);
+    obj.label273:setWidth(7);
+    obj.label273:setLeft(7);
+    obj.label273:setName("label273");
+    obj.label273:setAlign("left");
+    obj.label273:setHorzTextAlign("leading");
+    obj.label273:setVertTextAlign("leading");
+    obj.label273:setAutoSize(true);
+    obj.label273:setTop(30);
+
+    obj.edit222 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit222:setParent(obj.layout159);
+    obj.edit222:setField("bonus.Escudo2");
+    obj.edit222:setWidth(60);
+    obj.edit222:setName("edit222");
+    obj.edit222:setHeight(5);
+    obj.edit222:setFontSize(15);
+    obj.edit222:setAlign("left");
 
     obj.tab2 = GUI.fromHandle(_obj_newObject("tab"));
     obj.tab2:setParent(obj.tabControl1);
@@ -7734,13 +7726,13 @@ local function constructNew_CthulhuSheet7eDarkAges_byHelldemos()
     obj.layout160:setMargins({left=30, top=15, right=10, bottom=10});
     obj.layout160:setName("layout160");
 
-    obj.label272 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label272:setParent(obj.layout160);
-    obj.label272:setText("Antecedentes");
-    obj.label272:setLeft(625);
-    lfm_setPropAsString(obj.label272, "fontStyle",  "bold italic");
-    obj.label272:setTop(9);
-    obj.label272:setName("label272");
+    obj.label274 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label274:setParent(obj.layout160);
+    obj.label274:setText("Antecedentes");
+    obj.label274:setLeft(625);
+    lfm_setPropAsString(obj.label274, "fontStyle",  "bold italic");
+    obj.label274:setTop(9);
+    obj.label274:setName("label274");
 
     obj.layout161 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout161:setParent(obj.scrollBox2);
@@ -7762,13 +7754,13 @@ local function constructNew_CthulhuSheet7eDarkAges_byHelldemos()
     obj.textEditor1:setField("textEditor.desPessoal");
     obj.textEditor1:setName("textEditor1");
 
-    obj.label273 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label273:setParent(obj.layout161);
-    obj.label273:setText("Descrição Pessoal");
-    obj.label273:setLeft(280);
-    lfm_setPropAsString(obj.label273, "fontStyle",  "bold italic");
-    obj.label273:setTop(9);
-    obj.label273:setName("label273");
+    obj.label275 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label275:setParent(obj.layout161);
+    obj.label275:setText("Descrição Pessoal");
+    obj.label275:setLeft(280);
+    lfm_setPropAsString(obj.label275, "fontStyle",  "bold italic");
+    obj.label275:setTop(9);
+    obj.label275:setName("label275");
 
     obj.layout162 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout162:setParent(obj.scrollBox2);
@@ -7790,13 +7782,13 @@ local function constructNew_CthulhuSheet7eDarkAges_byHelldemos()
     obj.textEditor2:setField("textEditor.caracteristicas");
     obj.textEditor2:setName("textEditor2");
 
-    obj.label274 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label274:setParent(obj.layout162);
-    obj.label274:setText("Características");
-    obj.label274:setLeft(290);
-    lfm_setPropAsString(obj.label274, "fontStyle",  "bold italic");
-    obj.label274:setTop(9);
-    obj.label274:setName("label274");
+    obj.label276 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label276:setParent(obj.layout162);
+    obj.label276:setText("Características");
+    obj.label276:setLeft(290);
+    lfm_setPropAsString(obj.label276, "fontStyle",  "bold italic");
+    obj.label276:setTop(9);
+    obj.label276:setName("label276");
 
     obj.layout163 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout163:setParent(obj.scrollBox2);
@@ -7818,13 +7810,13 @@ local function constructNew_CthulhuSheet7eDarkAges_byHelldemos()
     obj.textEditor3:setField("textEditor.ideologiasC");
     obj.textEditor3:setName("textEditor3");
 
-    obj.label275 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label275:setParent(obj.layout163);
-    obj.label275:setText("Ideologias/Crenças");
-    obj.label275:setLeft(280);
-    lfm_setPropAsString(obj.label275, "fontStyle",  "bold italic");
-    obj.label275:setTop(9);
-    obj.label275:setName("label275");
+    obj.label277 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label277:setParent(obj.layout163);
+    obj.label277:setText("Ideologias/Crenças");
+    obj.label277:setLeft(280);
+    lfm_setPropAsString(obj.label277, "fontStyle",  "bold italic");
+    obj.label277:setTop(9);
+    obj.label277:setName("label277");
 
     obj.layout164 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout164:setParent(obj.scrollBox2);
@@ -7846,14 +7838,14 @@ local function constructNew_CthulhuSheet7eDarkAges_byHelldemos()
     obj.textEditor4:setField("textEditor.ferimentosC");
     obj.textEditor4:setName("textEditor4");
 
-    obj.label276 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label276:setParent(obj.layout164);
-    obj.label276:setText("Ferimentos e Cicatrizes");
-    obj.label276:setLeft(280);
-    obj.label276:setWidth(292);
-    lfm_setPropAsString(obj.label276, "fontStyle",  "bold italic");
-    obj.label276:setTop(9);
-    obj.label276:setName("label276");
+    obj.label278 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label278:setParent(obj.layout164);
+    obj.label278:setText("Ferimentos e Cicatrizes");
+    obj.label278:setLeft(280);
+    obj.label278:setWidth(292);
+    lfm_setPropAsString(obj.label278, "fontStyle",  "bold italic");
+    obj.label278:setTop(9);
+    obj.label278:setName("label278");
 
     obj.layout165 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout165:setParent(obj.scrollBox2);
@@ -7875,14 +7867,14 @@ local function constructNew_CthulhuSheet7eDarkAges_byHelldemos()
     obj.textEditor5:setField("textEditor.pessoasS");
     obj.textEditor5:setName("textEditor5");
 
-    obj.label277 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label277:setParent(obj.layout165);
-    obj.label277:setText("Pessosa Significativas");
-    obj.label277:setLeft(280);
-    obj.label277:setWidth(292);
-    lfm_setPropAsString(obj.label277, "fontStyle",  "bold italic");
-    obj.label277:setTop(9);
-    obj.label277:setName("label277");
+    obj.label279 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label279:setParent(obj.layout165);
+    obj.label279:setText("Pessosa Significativas");
+    obj.label279:setLeft(280);
+    obj.label279:setWidth(292);
+    lfm_setPropAsString(obj.label279, "fontStyle",  "bold italic");
+    obj.label279:setTop(9);
+    obj.label279:setName("label279");
 
     obj.layout166 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout166:setParent(obj.scrollBox2);
@@ -7904,14 +7896,14 @@ local function constructNew_CthulhuSheet7eDarkAges_byHelldemos()
     obj.textEditor6:setField("textEditor.fobiasM");
     obj.textEditor6:setName("textEditor6");
 
-    obj.label278 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label278:setParent(obj.layout166);
-    obj.label278:setText("Fobias/Manias");
-    obj.label278:setLeft(280);
-    obj.label278:setWidth(292);
-    lfm_setPropAsString(obj.label278, "fontStyle",  "bold italic");
-    obj.label278:setTop(9);
-    obj.label278:setName("label278");
+    obj.label280 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label280:setParent(obj.layout166);
+    obj.label280:setText("Fobias/Manias");
+    obj.label280:setLeft(280);
+    obj.label280:setWidth(292);
+    lfm_setPropAsString(obj.label280, "fontStyle",  "bold italic");
+    obj.label280:setTop(9);
+    obj.label280:setName("label280");
 
     obj.layout167 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout167:setParent(obj.scrollBox2);
@@ -7933,14 +7925,14 @@ local function constructNew_CthulhuSheet7eDarkAges_byHelldemos()
     obj.textEditor7:setField("textEditor.locaisIn");
     obj.textEditor7:setName("textEditor7");
 
-    obj.label279 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label279:setParent(obj.layout167);
-    obj.label279:setText("Locais Importantes");
-    obj.label279:setLeft(280);
-    obj.label279:setWidth(292);
-    lfm_setPropAsString(obj.label279, "fontStyle",  "bold italic");
-    obj.label279:setTop(9);
-    obj.label279:setName("label279");
+    obj.label281 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label281:setParent(obj.layout167);
+    obj.label281:setText("Locais Importantes");
+    obj.label281:setLeft(280);
+    obj.label281:setWidth(292);
+    lfm_setPropAsString(obj.label281, "fontStyle",  "bold italic");
+    obj.label281:setTop(9);
+    obj.label281:setName("label281");
 
     obj.layout168 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout168:setParent(obj.scrollBox2);
@@ -7962,14 +7954,14 @@ local function constructNew_CthulhuSheet7eDarkAges_byHelldemos()
     obj.textEditor8:setField("textEditor.tomosFei");
     obj.textEditor8:setName("textEditor8");
 
-    obj.label280 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label280:setParent(obj.layout168);
-    obj.label280:setText("Tomos Arcanos/Feitiços e Artefatos");
-    obj.label280:setLeft(220);
-    obj.label280:setWidth(292);
-    lfm_setPropAsString(obj.label280, "fontStyle",  "bold italic");
-    obj.label280:setTop(9);
-    obj.label280:setName("label280");
+    obj.label282 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label282:setParent(obj.layout168);
+    obj.label282:setText("Tomos Arcanos/Feitiços e Artefatos");
+    obj.label282:setLeft(220);
+    obj.label282:setWidth(292);
+    lfm_setPropAsString(obj.label282, "fontStyle",  "bold italic");
+    obj.label282:setTop(9);
+    obj.label282:setName("label282");
 
     obj.layout169 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout169:setParent(obj.scrollBox2);
@@ -7991,14 +7983,14 @@ local function constructNew_CthulhuSheet7eDarkAges_byHelldemos()
     obj.textEditor9:setField("textEditor.pertencesQue");
     obj.textEditor9:setName("textEditor9");
 
-    obj.label281 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label281:setParent(obj.layout169);
-    obj.label281:setText("Pertences Queridos");
-    obj.label281:setLeft(280);
-    obj.label281:setWidth(292);
-    lfm_setPropAsString(obj.label281, "fontStyle",  "bold italic");
-    obj.label281:setTop(9);
-    obj.label281:setName("label281");
+    obj.label283 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label283:setParent(obj.layout169);
+    obj.label283:setText("Pertences Queridos");
+    obj.label283:setLeft(280);
+    obj.label283:setWidth(292);
+    lfm_setPropAsString(obj.label283, "fontStyle",  "bold italic");
+    obj.label283:setTop(9);
+    obj.label283:setName("label283");
 
     obj.layout170 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout170:setParent(obj.scrollBox2);
@@ -8020,14 +8012,14 @@ local function constructNew_CthulhuSheet7eDarkAges_byHelldemos()
     obj.textEditor10:setField("textEditor.entidades");
     obj.textEditor10:setName("textEditor10");
 
-    obj.label282 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label282:setParent(obj.layout170);
-    obj.label282:setText("Encontros com Entidades Estranhas");
-    obj.label282:setLeft(220);
-    obj.label282:setWidth(292);
-    lfm_setPropAsString(obj.label282, "fontStyle",  "bold italic");
-    obj.label282:setTop(9);
-    obj.label282:setName("label282");
+    obj.label284 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label284:setParent(obj.layout170);
+    obj.label284:setText("Encontros com Entidades Estranhas");
+    obj.label284:setLeft(220);
+    obj.label284:setWidth(292);
+    lfm_setPropAsString(obj.label284, "fontStyle",  "bold italic");
+    obj.label284:setTop(9);
+    obj.label284:setName("label284");
 
     obj.tab3 = GUI.fromHandle(_obj_newObject("tab"));
     obj.tab3:setParent(obj.tabControl1);
@@ -8050,14 +8042,14 @@ local function constructNew_CthulhuSheet7eDarkAges_byHelldemos()
     obj.layout171:setMargins({left=30, top=15, right=10, bottom=10});
     obj.layout171:setName("layout171");
 
-    obj.label283 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label283:setParent(obj.layout171);
-    obj.label283:setText("Equipamentos e pertences / Dinheiro e Recursos");
-    obj.label283:setLeft(525);
-    obj.label283:setWidth(1329);
-    lfm_setPropAsString(obj.label283, "fontStyle",  "bold italic");
-    obj.label283:setTop(9);
-    obj.label283:setName("label283");
+    obj.label285 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label285:setParent(obj.layout171);
+    obj.label285:setText("Equipamentos e pertences / Dinheiro e Recursos");
+    obj.label285:setLeft(525);
+    obj.label285:setWidth(1329);
+    lfm_setPropAsString(obj.label285, "fontStyle",  "bold italic");
+    obj.label285:setTop(9);
+    obj.label285:setName("label285");
 
     obj.layout172 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout172:setParent(obj.scrollBox3);
@@ -8070,14 +8062,14 @@ local function constructNew_CthulhuSheet7eDarkAges_byHelldemos()
     obj.layout172:setMargins({left=30, top=15, right=10, bottom=10});
     obj.layout172:setName("layout172");
 
-    obj.label284 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label284:setParent(obj.layout172);
-    obj.label284:setText("Equipamentos e pertences");
-    obj.label284:setWidth(624);
-    obj.label284:setLeft(260);
-    lfm_setPropAsString(obj.label284, "fontStyle",  "bold italic");
-    obj.label284:setTop(9);
-    obj.label284:setName("label284");
+    obj.label286 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label286:setParent(obj.layout172);
+    obj.label286:setText("Equipamentos e pertences");
+    obj.label286:setWidth(624);
+    obj.label286:setLeft(260);
+    lfm_setPropAsString(obj.label286, "fontStyle",  "bold italic");
+    obj.label286:setTop(9);
+    obj.label286:setName("label286");
 
     obj.layout173 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout173:setParent(obj.layout172);
@@ -8087,13 +8079,13 @@ local function constructNew_CthulhuSheet7eDarkAges_byHelldemos()
     obj.layout173:setMargins({bottom=4});
     obj.layout173:setName("layout173");
 
-    obj.button111 = GUI.fromHandle(_obj_newObject("button"));
-    obj.button111:setParent(obj.layout173);
-    obj.button111:setText("Adicionar Novo Item");
-    obj.button111:setWidth(150);
-    obj.button111:setTop(45);
-    obj.button111:setAlign("left");
-    obj.button111:setName("button111");
+    obj.button110 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button110:setParent(obj.layout173);
+    obj.button110:setText("Adicionar Novo Item");
+    obj.button110:setWidth(150);
+    obj.button110:setTop(45);
+    obj.button110:setAlign("left");
+    obj.button110:setName("button110");
 
     obj.rclListaDosItens = GUI.fromHandle(_obj_newObject("recordList"));
     obj.rclListaDosItens:setParent(obj.layout172);
@@ -8133,26 +8125,26 @@ local function constructNew_CthulhuSheet7eDarkAges_byHelldemos()
     obj.layout174:setMargins({bottom=4});
     obj.layout174:setName("layout174");
 
-    obj.label285 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label285:setParent(obj.layout174);
-    obj.label285:setAlign("left");
-    obj.label285:setText("Titulo do Item:");
-    obj.label285:setAutoSize(true);
-    obj.label285:setName("label285");
+    obj.label287 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label287:setParent(obj.layout174);
+    obj.label287:setAlign("left");
+    obj.label287:setText("Titulo do Item:");
+    obj.label287:setAutoSize(true);
+    obj.label287:setName("label287");
 
-    obj.edit224 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit224:setParent(obj.layout174);
-    obj.edit224:setAlign("client");
-    obj.edit224:setField("campoTitulo");
-    obj.edit224:setName("edit224");
+    obj.edit223 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit223:setParent(obj.layout174);
+    obj.edit223:setAlign("client");
+    obj.edit223:setField("campoTitulo");
+    obj.edit223:setName("edit223");
 
-    obj.button112 = GUI.fromHandle(_obj_newObject("button"));
-    obj.button112:setParent(obj.layout174);
-    obj.button112:setAlign("right");
-    obj.button112:setText("Apagar!");
-    obj.button112:setMargins({left=4, right=4, top=2, bottom=2});
-    obj.button112:setWidth(150);
-    obj.button112:setName("button112");
+    obj.button111 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button111:setParent(obj.layout174);
+    obj.button111:setAlign("right");
+    obj.button111:setText("Apagar!");
+    obj.button111:setMargins({left=4, right=4, top=2, bottom=2});
+    obj.button111:setWidth(150);
+    obj.button111:setName("button111");
 
     obj.layout175 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout175:setParent(obj.rectangle1);
@@ -8175,12 +8167,12 @@ local function constructNew_CthulhuSheet7eDarkAges_byHelldemos()
     obj.layout176:setMargins({left=2});
     obj.layout176:setName("layout176");
 
-    obj.edit225 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit225:setParent(obj.layout176);
-    obj.edit225:setAlign("top");
-    obj.edit225:setField("campoSubTitulo");
-    obj.edit225:setHeight(30);
-    obj.edit225:setName("edit225");
+    obj.edit224 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit224:setParent(obj.layout176);
+    obj.edit224:setAlign("top");
+    obj.edit224:setField("campoSubTitulo");
+    obj.edit224:setHeight(30);
+    obj.edit224:setName("edit224");
 
     obj.textEditor11 = GUI.fromHandle(_obj_newObject("textEditor"));
     obj.textEditor11:setParent(obj.layout176);
@@ -8200,14 +8192,14 @@ local function constructNew_CthulhuSheet7eDarkAges_byHelldemos()
     obj.layout177:setMargins({left=30, top=15, right=10, bottom=10});
     obj.layout177:setName("layout177");
 
-    obj.label286 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label286:setParent(obj.layout177);
-    obj.label286:setText("Dinheiro e Recursos");
-    obj.label286:setWidth(624);
-    obj.label286:setLeft(270);
-    lfm_setPropAsString(obj.label286, "fontStyle",  "bold italic");
-    obj.label286:setTop(9);
-    obj.label286:setName("label286");
+    obj.label288 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label288:setParent(obj.layout177);
+    obj.label288:setText("Dinheiro e Recursos");
+    obj.label288:setWidth(624);
+    obj.label288:setLeft(270);
+    lfm_setPropAsString(obj.label288, "fontStyle",  "bold italic");
+    obj.label288:setTop(9);
+    obj.label288:setName("label288");
 
     obj.layout178 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout178:setParent(obj.layout177);
@@ -8226,24 +8218,24 @@ local function constructNew_CthulhuSheet7eDarkAges_byHelldemos()
     obj.layout179:setAlign("top");
     obj.layout179:setMargins({left=2, right=2, top=5});
 
-    obj.label287 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label287:setParent(obj.layout179);
-    obj.label287:setText("     Nivel de gastos:");
-    obj.label287:setName("label287");
-    obj.label287:setAlign("left");
-    obj.label287:setHorzTextAlign("leading");
-    obj.label287:setVertTextAlign("leading");
-    obj.label287:setAutoSize(true);
-    obj.label287:setTop(30);
+    obj.label289 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label289:setParent(obj.layout179);
+    obj.label289:setText("     Nivel de gastos:");
+    obj.label289:setName("label289");
+    obj.label289:setAlign("left");
+    obj.label289:setHorzTextAlign("leading");
+    obj.label289:setVertTextAlign("leading");
+    obj.label289:setAutoSize(true);
+    obj.label289:setTop(30);
 
-    obj.edit226 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit226:setParent(obj.layout179);
-    obj.edit226:setField("dinheiro.ng");
-    obj.edit226:setName("edit226");
-    obj.edit226:setHeight(5);
-    obj.edit226:setWidth(250);
-    obj.edit226:setFontSize(15);
-    obj.edit226:setAlign("left");
+    obj.edit225 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit225:setParent(obj.layout179);
+    obj.edit225:setField("dinheiro.ng");
+    obj.edit225:setName("edit225");
+    obj.edit225:setHeight(5);
+    obj.edit225:setWidth(250);
+    obj.edit225:setFontSize(15);
+    obj.edit225:setAlign("left");
 
     obj.layout180 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout180:setParent(obj.layout178);
@@ -8254,24 +8246,24 @@ local function constructNew_CthulhuSheet7eDarkAges_byHelldemos()
     obj.layout180:setAlign("top");
     obj.layout180:setMargins({left=2, right=2, top=5});
 
-    obj.label288 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label288:setParent(obj.layout180);
-    obj.label288:setText("     Dinheiro:");
-    obj.label288:setName("label288");
-    obj.label288:setAlign("left");
-    obj.label288:setHorzTextAlign("leading");
-    obj.label288:setVertTextAlign("leading");
-    obj.label288:setAutoSize(true);
-    obj.label288:setTop(30);
+    obj.label290 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label290:setParent(obj.layout180);
+    obj.label290:setText("     Dinheiro:");
+    obj.label290:setName("label290");
+    obj.label290:setAlign("left");
+    obj.label290:setHorzTextAlign("leading");
+    obj.label290:setVertTextAlign("leading");
+    obj.label290:setAutoSize(true);
+    obj.label290:setTop(30);
 
-    obj.edit227 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit227:setParent(obj.layout180);
-    obj.edit227:setField("dinheiro.dinheiro");
-    obj.edit227:setName("edit227");
-    obj.edit227:setHeight(5);
-    obj.edit227:setWidth(250);
-    obj.edit227:setFontSize(15);
-    obj.edit227:setAlign("left");
+    obj.edit226 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit226:setParent(obj.layout180);
+    obj.edit226:setField("dinheiro.dinheiro");
+    obj.edit226:setName("edit226");
+    obj.edit226:setHeight(5);
+    obj.edit226:setWidth(250);
+    obj.edit226:setFontSize(15);
+    obj.edit226:setAlign("left");
 
     obj.layout181 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout181:setParent(obj.layout178);
@@ -8282,24 +8274,24 @@ local function constructNew_CthulhuSheet7eDarkAges_byHelldemos()
     obj.layout181:setAlign("top");
     obj.layout181:setMargins({left=2, right=2, top=5});
 
-    obj.label289 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label289:setParent(obj.layout181);
-    obj.label289:setText("     Patrimônio:");
-    obj.label289:setName("label289");
-    obj.label289:setAlign("left");
-    obj.label289:setHorzTextAlign("leading");
-    obj.label289:setVertTextAlign("leading");
-    obj.label289:setAutoSize(true);
-    obj.label289:setTop(30);
+    obj.label291 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label291:setParent(obj.layout181);
+    obj.label291:setText("     Patrimônio:");
+    obj.label291:setName("label291");
+    obj.label291:setAlign("left");
+    obj.label291:setHorzTextAlign("leading");
+    obj.label291:setVertTextAlign("leading");
+    obj.label291:setAutoSize(true);
+    obj.label291:setTop(30);
 
-    obj.edit228 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit228:setParent(obj.layout181);
-    obj.edit228:setField("dinheiro.patrimonio");
-    obj.edit228:setName("edit228");
-    obj.edit228:setHeight(5);
-    obj.edit228:setWidth(250);
-    obj.edit228:setFontSize(15);
-    obj.edit228:setAlign("left");
+    obj.edit227 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit227:setParent(obj.layout181);
+    obj.edit227:setField("dinheiro.patrimonio");
+    obj.edit227:setName("edit227");
+    obj.edit227:setHeight(5);
+    obj.edit227:setWidth(250);
+    obj.edit227:setFontSize(15);
+    obj.edit227:setAlign("left");
 
     obj.textEditor12 = GUI.fromHandle(_obj_newObject("textEditor"));
     obj.textEditor12:setParent(obj.layout177);
@@ -10544,8 +10536,8 @@ local function constructNew_CthulhuSheet7eDarkAges_byHelldemos()
         function (_)
             local minhaMesa = Firecast.getMesaDe(sheet);
                                             local chat = minhaMesa.chat; 
-                                            local parameter = sheet.pericia.arma1
-                                            chat:enviarMensagem("[§K3]" .. sheet.pericia.nome.arma1 .. " [§B][§K1]" .. parameter);
+                                            local parameter = sheet.pericia.mn1
+                                            chat:enviarMensagem("[§K3]" .. sheet.pericia.nome.mn1 .. " [§B][§K1]" .. parameter);
                                             minhaMesa.chat:rolarDados("1d100", "Rolagem",
                                     function (rolado)
                                              
@@ -10572,8 +10564,8 @@ local function constructNew_CthulhuSheet7eDarkAges_byHelldemos()
         function (_)
             local minhaMesa = Firecast.getMesaDe(sheet);
                                             local chat = minhaMesa.chat; 
-                                            local parameter = sheet.pericia.arma2
-                                            chat:enviarMensagem("[§K3]" .. sheet.pericia.nome.arma2 .. " [§B][§K1]" .. parameter);
+                                            local parameter = sheet.pericia.mn2
+                                            chat:enviarMensagem("[§K3]" .. sheet.pericia.nome.mn2 .. " [§B][§K1]" .. parameter);
                                             minhaMesa.chat:rolarDados("1d100", "Rolagem",
                                     function (rolado)
                                              
@@ -10600,8 +10592,8 @@ local function constructNew_CthulhuSheet7eDarkAges_byHelldemos()
         function (_)
             local minhaMesa = Firecast.getMesaDe(sheet);
                                             local chat = minhaMesa.chat; 
-                                            local parameter = sheet.pericia.arma3
-                                            chat:enviarMensagem("[§K3]" .. sheet.pericia.nome.arma3 .. " [§B][§K1]" .. parameter);
+                                            local parameter = sheet.pericia.mn3
+                                            chat:enviarMensagem("[§K3]" .. sheet.pericia.nome.mn3 .. " [§B][§K1]" .. parameter);
                                             minhaMesa.chat:rolarDados("1d100", "Rolagem",
                                     function (rolado)
                                              
@@ -10992,8 +10984,8 @@ local function constructNew_CthulhuSheet7eDarkAges_byHelldemos()
         function (_)
             local minhaMesa = Firecast.getMesaDe(sheet);
                                             local chat = minhaMesa.chat; 
-                                            local parameter = sheet.pericia.arma1
-                                            chat:enviarMensagem("[§K3]" .. sheet.pericia.nome.arma1 .. " [§B][§K1]" .. parameter);
+                                            local parameter = sheet.pericia.cie1
+                                            chat:enviarMensagem("[§K3]" .. sheet.pericia.nome.cie1 .. " [§B][§K1]" .. parameter);
                                             minhaMesa.chat:rolarDados("1d100", "Rolagem",
                                     function (rolado)
                                              
@@ -11020,8 +11012,8 @@ local function constructNew_CthulhuSheet7eDarkAges_byHelldemos()
         function (_)
             local minhaMesa = Firecast.getMesaDe(sheet);
                                             local chat = minhaMesa.chat; 
-                                            local parameter = sheet.pericia.arma2
-                                            chat:enviarMensagem("[§K3]" .. sheet.pericia.nome.arma2 .. " [§B][§K1]" .. parameter);
+                                            local parameter = sheet.pericia.cie2
+                                            chat:enviarMensagem("[§K3]" .. sheet.pericia.nome.cie2 .. " [§B][§K1]" .. parameter);
                                             minhaMesa.chat:rolarDados("1d100", "Rolagem",
                                     function (rolado)
                                              
@@ -11048,8 +11040,8 @@ local function constructNew_CthulhuSheet7eDarkAges_byHelldemos()
         function (_)
             local minhaMesa = Firecast.getMesaDe(sheet);
                                             local chat = minhaMesa.chat; 
-                                            local parameter = sheet.pericia.arma3
-                                            chat:enviarMensagem("[§K3]" .. sheet.pericia.nome.arma3 .. " [§B][§K1]" .. parameter);
+                                            local parameter = sheet.pericia.cie3
+                                            chat:enviarMensagem("[§K3]" .. sheet.pericia.nome.cie3 .. " [§B][§K1]" .. parameter);
                                             minhaMesa.chat:rolarDados("1d100", "Rolagem",
                                     function (rolado)
                                              
@@ -11073,34 +11065,6 @@ local function constructNew_CthulhuSheet7eDarkAges_byHelldemos()
         end, obj);
 
     obj._e_event98 = obj.button99:addEventListener("onClick",
-        function (_)
-            local minhaMesa = Firecast.getMesaDe(sheet);
-                                            local chat = minhaMesa.chat; 
-                                            local parameter = sheet.pericia.outro22
-                                            chat:enviarMensagem("[§K3]" .. sheet.pericia.nome.outro22 .. " [§B][§K1]" .. parameter);
-                                            minhaMesa.chat:rolarDados("1d100", "Rolagem",
-                                    function (rolado)
-                                             
-                                            if rolado.resultado == 1 then
-                                                    chat:enviarMensagem("[§B][§K4]Acerto Critico!"); 
-                                            elseif parameter/5 >= rolado.resultado then
-                                                    chat:enviarMensagem("[§B][§K8]Acerto Extremo!"); 
-                                            elseif parameter/2 >= rolado.resultado then
-                                                    chat:enviarMensagem("[§B][§K8]Acerto Dificil!"); 
-                                            elseif parameter+0 >= rolado.resultado then
-                                                    chat:enviarMensagem("[§B][§K9]Acerto Normal!"); 
-                                            elseif rolado.resultado >= 96 then
-                                                    chat:enviarMensagem("[§B][§K4]Falha Critica!!!"); 
-                                            elseif rolado.resultado > parameter+0 then
-                                                    chat:enviarMensagem("[§B][§K4]Falha!"); 
-                                            else
-                                                    chat:enviarMensagem("[§B][§K4]Algo Errado não Está Certo!"); 
-                                            end;                                       
-            
-                                    end);
-        end, obj);
-
-    obj._e_event99 = obj.button100:addEventListener("onClick",
         function (_)
             local minhaMesa = Firecast.getMesaDe(sheet);
                                             local chat = minhaMesa.chat; 
@@ -11128,7 +11092,7 @@ local function constructNew_CthulhuSheet7eDarkAges_byHelldemos()
                                     end);
         end, obj);
 
-    obj._e_event100 = obj.button101:addEventListener("onClick",
+    obj._e_event99 = obj.button100:addEventListener("onClick",
         function (_)
             local minhaMesa = Firecast.getMesaDe(sheet);
                                             local chat = minhaMesa.chat; 
@@ -11156,7 +11120,7 @@ local function constructNew_CthulhuSheet7eDarkAges_byHelldemos()
                                     end);
         end, obj);
 
-    obj._e_event101 = obj.button102:addEventListener("onClick",
+    obj._e_event100 = obj.button101:addEventListener("onClick",
         function (_)
             local minhaMesa = Firecast.getMesaDe(sheet);
                                                     local chat = minhaMesa.chat; 
@@ -11242,7 +11206,7 @@ local function constructNew_CthulhuSheet7eDarkAges_byHelldemos()
                                             end);
         end, obj);
 
-    obj._e_event102 = obj.button103:addEventListener("onClick",
+    obj._e_event101 = obj.button102:addEventListener("onClick",
         function (_)
             local minhaMesa = Firecast.getMesaDe(sheet);
                                                     local chat = minhaMesa.chat; 
@@ -11328,7 +11292,7 @@ local function constructNew_CthulhuSheet7eDarkAges_byHelldemos()
                                             end);
         end, obj);
 
-    obj._e_event103 = obj.button104:addEventListener("onClick",
+    obj._e_event102 = obj.button103:addEventListener("onClick",
         function (_)
             local minhaMesa = Firecast.getMesaDe(sheet);
                                                     local chat = minhaMesa.chat; 
@@ -11414,7 +11378,7 @@ local function constructNew_CthulhuSheet7eDarkAges_byHelldemos()
                                             end);
         end, obj);
 
-    obj._e_event104 = obj.button105:addEventListener("onClick",
+    obj._e_event103 = obj.button104:addEventListener("onClick",
         function (_)
             local minhaMesa = Firecast.getMesaDe(sheet);
                                                     local chat = minhaMesa.chat; 
@@ -11500,7 +11464,7 @@ local function constructNew_CthulhuSheet7eDarkAges_byHelldemos()
                                             end);
         end, obj);
 
-    obj._e_event105 = obj.button106:addEventListener("onClick",
+    obj._e_event104 = obj.button105:addEventListener("onClick",
         function (_)
             local minhaMesa = Firecast.getMesaDe(sheet);
                                                     local chat = minhaMesa.chat; 
@@ -11586,7 +11550,7 @@ local function constructNew_CthulhuSheet7eDarkAges_byHelldemos()
                                             end);
         end, obj);
 
-    obj._e_event106 = obj.button107:addEventListener("onClick",
+    obj._e_event105 = obj.button106:addEventListener("onClick",
         function (_)
             local minhaMesa = Firecast.getMesaDe(sheet);
                                                     local chat = minhaMesa.chat; 
@@ -11672,7 +11636,7 @@ local function constructNew_CthulhuSheet7eDarkAges_byHelldemos()
                                             end);
         end, obj);
 
-    obj._e_event107 = obj.button108:addEventListener("onClick",
+    obj._e_event106 = obj.button107:addEventListener("onClick",
         function (_)
             local minhaMesa = Firecast.getMesaDe(sheet);
                                                     local chat = minhaMesa.chat; 
@@ -11758,7 +11722,7 @@ local function constructNew_CthulhuSheet7eDarkAges_byHelldemos()
                                             end);
         end, obj);
 
-    obj._e_event108 = obj.button109:addEventListener("onClick",
+    obj._e_event107 = obj.button108:addEventListener("onClick",
         function (_)
             local minhaMesa = Firecast.getMesaDe(sheet);
                                                     local chat = minhaMesa.chat; 
@@ -11844,7 +11808,7 @@ local function constructNew_CthulhuSheet7eDarkAges_byHelldemos()
                                             end);
         end, obj);
 
-    obj._e_event109 = obj.button110:addEventListener("onClick",
+    obj._e_event108 = obj.button109:addEventListener("onClick",
         function (_)
             local minhaMesa = Firecast.getMesaDe(sheet);
                                                     local chat = minhaMesa.chat; 
@@ -11872,14 +11836,14 @@ local function constructNew_CthulhuSheet7eDarkAges_byHelldemos()
                                             end);
         end, obj);
 
-    obj._e_event110 = obj.button111:addEventListener("onClick",
+    obj._e_event109 = obj.button110:addEventListener("onClick",
         function (_)
             -- Usuário clicou no botão de criar novo item.
                                             -- Vamos inserir um novo item no nosso recordList                              
                                             self.rclListaDosItens:append();
         end, obj);
 
-    obj._e_event111 = obj.rclListaDosItens:addEventListener("onSelect",
+    obj._e_event110 = obj.rclListaDosItens:addEventListener("onSelect",
         function (_)
             --[[
                                     Este evento é chamado quando o usuário selecionar/deselecionar itens da lista. Quando o usuário selecionar, vamos fazer nosso dataScopeBox (e todas as tag dentro dele) salvar e carregar dados no   objeto Nodo (NodeDatabase) do item selecionado.
@@ -11891,13 +11855,12 @@ local function constructNew_CthulhuSheet7eDarkAges_byHelldemos()
                                       self.boxDetalhesDoItem.visible = (node ~= nil);
         end, obj);
 
-    obj._e_event112 = obj.button112:addEventListener("onClick",
+    obj._e_event111 = obj.button111:addEventListener("onClick",
         function (_)
             NDB.deleteNode(self.boxDetalhesDoItem.node);
         end, obj);
 
     function obj:_releaseEvents()
-        __o_rrpgObjs.removeEventListenerById(self._e_event112);
         __o_rrpgObjs.removeEventListenerById(self._e_event111);
         __o_rrpgObjs.removeEventListenerById(self._e_event110);
         __o_rrpgObjs.removeEventListenerById(self._e_event109);
@@ -12345,7 +12308,6 @@ local function constructNew_CthulhuSheet7eDarkAges_byHelldemos()
         if self.checkBox24 ~= nil then self.checkBox24:destroy(); self.checkBox24 = nil; end;
         if self.layout129 ~= nil then self.layout129:destroy(); self.layout129 = nil; end;
         if self.edit105 ~= nil then self.edit105:destroy(); self.edit105 = nil; end;
-        if self.checkBox92 ~= nil then self.checkBox92:destroy(); self.checkBox92 = nil; end;
         if self.layout153 ~= nil then self.layout153:destroy(); self.layout153 = nil; end;
         if self.checkBox88 ~= nil then self.checkBox88:destroy(); self.checkBox88 = nil; end;
         if self.label202 ~= nil then self.label202:destroy(); self.label202 = nil; end;
@@ -12404,9 +12366,9 @@ local function constructNew_CthulhuSheet7eDarkAges_byHelldemos()
         if self.image2 ~= nil then self.image2:destroy(); self.image2 = nil; end;
         if self.layout122 ~= nil then self.layout122:destroy(); self.layout122 = nil; end;
         if self.label60 ~= nil then self.label60:destroy(); self.label60 = nil; end;
-        if self.rclListaDosItens ~= nil then self.rclListaDosItens:destroy(); self.rclListaDosItens = nil; end;
-        if self.layout77 ~= nil then self.layout77:destroy(); self.layout77 = nil; end;
         if self.label286 ~= nil then self.label286:destroy(); self.label286 = nil; end;
+        if self.layout77 ~= nil then self.layout77:destroy(); self.layout77 = nil; end;
+        if self.rclListaDosItens ~= nil then self.rclListaDosItens:destroy(); self.rclListaDosItens = nil; end;
         if self.edit88 ~= nil then self.edit88:destroy(); self.edit88 = nil; end;
         if self.layout56 ~= nil then self.layout56:destroy(); self.layout56 = nil; end;
         if self.edit44 ~= nil then self.edit44:destroy(); self.edit44 = nil; end;
@@ -12416,6 +12378,7 @@ local function constructNew_CthulhuSheet7eDarkAges_byHelldemos()
         if self.button63 ~= nil then self.button63:destroy(); self.button63 = nil; end;
         if self.label4 ~= nil then self.label4:destroy(); self.label4 = nil; end;
         if self.layout66 ~= nil then self.layout66:destroy(); self.layout66 = nil; end;
+        if self.label290 ~= nil then self.label290:destroy(); self.label290 = nil; end;
         if self.label189 ~= nil then self.label189:destroy(); self.label189 = nil; end;
         if self.label265 ~= nil then self.label265:destroy(); self.label265 = nil; end;
         if self.checkBox66 ~= nil then self.checkBox66:destroy(); self.checkBox66 = nil; end;
@@ -12451,6 +12414,7 @@ local function constructNew_CthulhuSheet7eDarkAges_byHelldemos()
         if self.edit144 ~= nil then self.edit144:destroy(); self.edit144 = nil; end;
         if self.label282 ~= nil then self.label282:destroy(); self.label282 = nil; end;
         if self.label187 ~= nil then self.label187:destroy(); self.label187 = nil; end;
+        if self.label291 ~= nil then self.label291:destroy(); self.label291 = nil; end;
         if self.edit219 ~= nil then self.edit219:destroy(); self.edit219 = nil; end;
         if self.edit51 ~= nil then self.edit51:destroy(); self.edit51 = nil; end;
         if self.button17 ~= nil then self.button17:destroy(); self.button17 = nil; end;
@@ -12525,7 +12489,6 @@ local function constructNew_CthulhuSheet7eDarkAges_byHelldemos()
         if self.layout141 ~= nil then self.layout141:destroy(); self.layout141 = nil; end;
         if self.label288 ~= nil then self.label288:destroy(); self.label288 = nil; end;
         if self.layout158 ~= nil then self.layout158:destroy(); self.layout158 = nil; end;
-        if self.edit228 ~= nil then self.edit228:destroy(); self.edit228 = nil; end;
         if self.edit16 ~= nil then self.edit16:destroy(); self.edit16 = nil; end;
         if self.label47 ~= nil then self.label47:destroy(); self.label47 = nil; end;
         if self.edit205 ~= nil then self.edit205:destroy(); self.edit205 = nil; end;
@@ -12670,7 +12633,6 @@ local function constructNew_CthulhuSheet7eDarkAges_byHelldemos()
         if self.button11 ~= nil then self.button11:destroy(); self.button11 = nil; end;
         if self.button58 ~= nil then self.button58:destroy(); self.button58 = nil; end;
         if self.layout97 ~= nil then self.layout97:destroy(); self.layout97 = nil; end;
-        if self.button112 ~= nil then self.button112:destroy(); self.button112 = nil; end;
         if self.button78 ~= nil then self.button78:destroy(); self.button78 = nil; end;
         if self.checkBox75 ~= nil then self.checkBox75:destroy(); self.checkBox75 = nil; end;
         if self.button5 ~= nil then self.button5:destroy(); self.button5 = nil; end;

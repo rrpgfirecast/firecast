@@ -1028,18 +1028,27 @@
                                 </button>
                         </layout>   
                         <layout align="top" height="20" margins="{bottom=2, top=15}">
-                                <checkBox width="17" align="left"  margins="{right=2}" field="periciacheck.sobrevivencia"/>
+                                <label align="left" width="14" text=" " 
+                                      horzTextAlign="trailing" margins="{right=5}"/>
                                 <label align="left" width="120" text="Sobrevivência:" 
                                       horzTextAlign="trailing" margins="{right=5}"/>
-                                <edit type="number" min="30" align="left" horzTextAlign="center" fontSize="14" width="50" field="pericia.sobrevivencia"/>
+                                <edit type="number" asNumber="10" align="left" horzTextAlign="center" fontSize="14" width="50" readOnly="true"/>
+                                <label align="left" width="5" text="" 
+                                      horzTextAlign="trailing" margins="{right=5}"/>
+                        </layout>
+                        <layout align="top" height="20" margins="{bottom=2, top=15}">
+                                <checkBox width="17" align="left"  margins="{right=2}" field="periciacheck.sobre1"/>
+                                <edit align="left" horzTextAlign="trailing" fontSize="14"  width="120" field="pericia.nome.sobre1" 
+                                        margins="{right=5}"/>
+                                <edit type="number" min="10" align="left" horzTextAlign="center" fontSize="14" width="50" field="pericia.sobre1"/>
                                 <label align="left" width="5" text="" 
                                       horzTextAlign="trailing" margins="{right=5}"/>
                                 <button align="left" left="5" text="Rolar" width="50">
                                         <event name="onClick">
                                                 local minhaMesa = Firecast.getMesaDe(sheet);
                                                 local chat = minhaMesa.chat; 
-                                                local parameter = sheet.pericia.sobrevivencia
-                                                chat:enviarMensagem("[§K3]Sobrevivência: [§B][§K1]" .. parameter);
+                                                local parameter = sheet.pericia.sobre1
+                                                chat:enviarMensagem("[§K3]" .. sheet.pericia.nome.sobre1 .. " [§B][§K1]" .. parameter);
                                                 minhaMesa.chat:rolarDados("1d100", "Rolagem",
                                         function (rolado)
                                                  
@@ -1064,7 +1073,83 @@
                                         
                                         </event>
                                 </button>
-                        </layout>   
+                        </layout> 
+                        <layout align="top" height="20" margins="{bottom=2, top=15}">
+                                <checkBox width="17" align="left"  margins="{right=2}" field="periciacheck.sobre2"/>
+                                <edit align="left" horzTextAlign="trailing" fontSize="14"  width="120" field="pericia.nome.sobre2" 
+                                        margins="{right=5}"/>
+                                <edit type="number" min="10" align="left" horzTextAlign="center" fontSize="14" width="50" field="pericia.sobre2"/>
+                                <label align="left" width="5" text="" 
+                                      horzTextAlign="trailing" margins="{right=5}"/>
+                                <button align="left" left="5" text="Rolar" width="50">
+                                        <event name="onClick">
+                                                local minhaMesa = Firecast.getMesaDe(sheet);
+                                                local chat = minhaMesa.chat; 
+                                                local parameter = sheet.pericia.sobre2
+                                                chat:enviarMensagem("[§K3]" .. sheet.pericia.nome.sobre2 .. " [§B][§K1]" .. parameter);
+                                                minhaMesa.chat:rolarDados("1d100", "Rolagem",
+                                        function (rolado)
+                                                 
+                                                if rolado.resultado == 1 then
+                                                        chat:enviarMensagem("[§B][§K4]Acerto Critico!"); 
+                                                elseif parameter/5 >= rolado.resultado then
+                                                        chat:enviarMensagem("[§B][§K8]Acerto Extremo!"); 
+                                                elseif parameter/2 >= rolado.resultado then
+                                                        chat:enviarMensagem("[§B][§K8]Acerto Dificil!"); 
+                                                elseif parameter+0 >= rolado.resultado then
+                                                        chat:enviarMensagem("[§B][§K9]Acerto Normal!"); 
+                                                elseif rolado.resultado >= 96 then
+                                                        chat:enviarMensagem("[§B][§K4]Falha Critica!!!"); 
+                                                elseif rolado.resultado > parameter+0 then
+                                                        chat:enviarMensagem("[§B][§K4]Falha!"); 
+                                                else
+                                                        chat:enviarMensagem("[§B][§K4]Algo Errado não Está Certo!"); 
+                                                end;                                       
+        
+                                        end); 
+                                                        
+                                        
+                                        </event>
+                                </button>
+                        </layout> 
+                        <layout align="top" height="20" margins="{bottom=2, top=15}">
+                                <checkBox width="17" align="left"  margins="{right=2}" field="periciacheck.sobre3"/>
+                                <edit align="left" horzTextAlign="trailing" fontSize="14"  width="120" field="pericia.nome.sobre3" 
+                                        margins="{right=5}"/>
+                                <edit type="number" min="10" align="left" horzTextAlign="center" fontSize="14" width="50" field="pericia.sobre3"/>
+                                <label align="left" width="5" text="" 
+                                      horzTextAlign="trailing" margins="{right=5}"/>
+                                <button align="left" left="5" text="Rolar" width="50">
+                                        <event name="onClick">
+                                                local minhaMesa = Firecast.getMesaDe(sheet);
+                                                local chat = minhaMesa.chat; 
+                                                local parameter = sheet.pericia.sobre3
+                                                chat:enviarMensagem("[§K3]" .. sheet.pericia.nome.sobre3 .. " [§B][§K1]" .. parameter);
+                                                minhaMesa.chat:rolarDados("1d100", "Rolagem",
+                                        function (rolado)
+                                                 
+                                                if rolado.resultado == 1 then
+                                                        chat:enviarMensagem("[§B][§K4]Acerto Critico!"); 
+                                                elseif parameter/5 >= rolado.resultado then
+                                                        chat:enviarMensagem("[§B][§K8]Acerto Extremo!"); 
+                                                elseif parameter/2 >= rolado.resultado then
+                                                        chat:enviarMensagem("[§B][§K8]Acerto Dificil!"); 
+                                                elseif parameter+0 >= rolado.resultado then
+                                                        chat:enviarMensagem("[§B][§K9]Acerto Normal!"); 
+                                                elseif rolado.resultado >= 96 then
+                                                        chat:enviarMensagem("[§B][§K4]Falha Critica!!!"); 
+                                                elseif rolado.resultado > parameter+0 then
+                                                        chat:enviarMensagem("[§B][§K4]Falha!"); 
+                                                else
+                                                        chat:enviarMensagem("[§B][§K4]Algo Errado não Está Certo!"); 
+                                                end;                                       
+        
+                                        end); 
+                                                        
+                                        
+                                        </event>
+                                </button>
+                        </layout> 
                         <layout align="top" height="20" margins="{bottom=2, top=15}">
                                 <checkBox width="17" align="left"  margins="{right=2}" field="periciacheck.usaBiblioteca"/>
                                 <label align="left" width="120" text="Usar Bibliotecas:" 
@@ -1149,120 +1234,6 @@
                                 <label align="left" width="5" text="" 
                                       horzTextAlign="trailing" margins="{right=5}"/>
                         </layout>
-                        <layout align="top" height="20" margins="{bottom=2, top=15}">
-                                <checkBox width="17" align="left"  margins="{right=2}" field="periciacheck.outro1"/>
-                                <edit align="left" horzTextAlign="trailing" fontSize="14"  width="120" field="pericia.nome.outro1" 
-                                        margins="{right=5}"/>
-                                <edit type="number" min="00" align="left" horzTextAlign="center" fontSize="14" width="50" field="pericia.outro1"/>
-                                <label align="left" width="5" text="" 
-                                      horzTextAlign="trailing" margins="{right=5}"/>
-                                <button align="left" left="5" text="Rolar" width="50">
-                                        <event name="onClick">
-                                                local minhaMesa = Firecast.getMesaDe(sheet);
-                                                local chat = minhaMesa.chat; 
-                                                local parameter = sheet.pericia.outro1
-                                                chat:enviarMensagem("[§K3]" .. sheet.pericia.nome.outro1 .. " [§B][§K1]" .. parameter);
-                                                minhaMesa.chat:rolarDados("1d100", "Rolagem",
-                                        function (rolado)
-                                                 
-                                                if rolado.resultado == 1 then
-                                                        chat:enviarMensagem("[§B][§K4]Acerto Critico!"); 
-                                                elseif parameter/5 >= rolado.resultado then
-                                                        chat:enviarMensagem("[§B][§K8]Acerto Extremo!"); 
-                                                elseif parameter/2 >= rolado.resultado then
-                                                        chat:enviarMensagem("[§B][§K8]Acerto Dificil!"); 
-                                                elseif parameter+0 >= rolado.resultado then
-                                                        chat:enviarMensagem("[§B][§K9]Acerto Normal!"); 
-                                                elseif rolado.resultado >= 96 then
-                                                        chat:enviarMensagem("[§B][§K4]Falha Critica!!!"); 
-                                                elseif rolado.resultado > parameter+0 then
-                                                        chat:enviarMensagem("[§B][§K4]Falha!"); 
-                                                else
-                                                        chat:enviarMensagem("[§B][§K4]Algo Errado não Está Certo!"); 
-                                                end;                                       
-        
-                                        end); 
-                                                        
-                                        
-                                        </event>
-                                </button>
-                        </layout> 
-                        <layout align="top" height="20" margins="{bottom=2, top=15}">
-                                <checkBox width="17" align="left"  margins="{right=2}" field="periciacheck.outro2"/>
-                                <edit align="left" horzTextAlign="trailing" fontSize="14"  width="120" field="pericia.nome.outro2" 
-                                        margins="{right=5}"/>
-                                <edit type="number" min="00" align="left" horzTextAlign="center" fontSize="14" width="50" field="pericia.outro2"/>
-                                <label align="left" width="5" text="" 
-                                      horzTextAlign="trailing" margins="{right=5}"/>
-                                <button align="left" left="5" text="Rolar" width="50">
-                                        <event name="onClick">
-                                                local minhaMesa = Firecast.getMesaDe(sheet);
-                                                local chat = minhaMesa.chat; 
-                                                local parameter = sheet.pericia.outro2
-                                                chat:enviarMensagem("[§K3]" .. sheet.pericia.nome.outro2 .. " [§B][§K1]" .. parameter);
-                                                minhaMesa.chat:rolarDados("1d100", "Rolagem",
-                                        function (rolado)
-                                                 
-                                                if rolado.resultado == 1 then
-                                                        chat:enviarMensagem("[§B][§K4]Acerto Critico!"); 
-                                                elseif parameter/5 >= rolado.resultado then
-                                                        chat:enviarMensagem("[§B][§K8]Acerto Extremo!"); 
-                                                elseif parameter/2 >= rolado.resultado then
-                                                        chat:enviarMensagem("[§B][§K8]Acerto Dificil!"); 
-                                                elseif parameter+0 >= rolado.resultado then
-                                                        chat:enviarMensagem("[§B][§K9]Acerto Normal!"); 
-                                                elseif rolado.resultado >= 96 then
-                                                        chat:enviarMensagem("[§B][§K4]Falha Critica!!!"); 
-                                                elseif rolado.resultado > parameter+0 then
-                                                        chat:enviarMensagem("[§B][§K4]Falha!"); 
-                                                else
-                                                        chat:enviarMensagem("[§B][§K4]Algo Errado não Está Certo!"); 
-                                                end;                                       
-        
-                                        end); 
-                                                        
-                                        
-                                        </event>
-                                </button>
-                        </layout> 
-                        <layout align="top" height="20" margins="{bottom=2, top=15}">
-                                <checkBox width="17" align="left"  margins="{right=2}" field="periciacheck.outro3"/>
-                                <edit align="left" horzTextAlign="trailing" fontSize="14"  width="120" field="pericia.nome.outro3" 
-                                        margins="{right=5}"/>
-                                <edit type="number" min="00" align="left" horzTextAlign="center" fontSize="14" width="50" field="pericia.outro3"/>
-                                <label align="left" width="5" text="" 
-                                      horzTextAlign="trailing" margins="{right=5}"/>
-                                <button align="left" left="5" text="Rolar" width="50">
-                                        <event name="onClick">
-                                                local minhaMesa = Firecast.getMesaDe(sheet);
-                                                local chat = minhaMesa.chat; 
-                                                local parameter = sheet.pericia.outro3
-                                                chat:enviarMensagem("[§K3]" .. sheet.pericia.nome.outro3 .. " [§B][§K1]" .. parameter);
-                                                minhaMesa.chat:rolarDados("1d100", "Rolagem",
-                                        function (rolado)
-                                                 
-                                                if rolado.resultado == 1 then
-                                                        chat:enviarMensagem("[§B][§K4]Acerto Critico!"); 
-                                                elseif parameter/5 >= rolado.resultado then
-                                                        chat:enviarMensagem("[§B][§K8]Acerto Extremo!"); 
-                                                elseif parameter/2 >= rolado.resultado then
-                                                        chat:enviarMensagem("[§B][§K8]Acerto Dificil!"); 
-                                                elseif parameter+0 >= rolado.resultado then
-                                                        chat:enviarMensagem("[§B][§K9]Acerto Normal!"); 
-                                                elseif rolado.resultado >= 96 then
-                                                        chat:enviarMensagem("[§B][§K4]Falha Critica!!!"); 
-                                                elseif rolado.resultado > parameter+0 then
-                                                        chat:enviarMensagem("[§B][§K4]Falha!"); 
-                                                else
-                                                        chat:enviarMensagem("[§B][§K4]Algo Errado não Está Certo!"); 
-                                                end;                                       
-        
-                                        end); 
-                                                        
-                                        
-                                        </event>
-                                </button>
-                        </layout> 
                         <layout align="top" height="20" margins="{bottom=2, top=15}">
                                 <checkBox width="17" align="left"  margins="{right=2}" field="periciacheck.outro4"/>
                                 <edit align="left" horzTextAlign="trailing" fontSize="14"  width="120" field="pericia.nome.outro4" 
@@ -1902,7 +1873,7 @@
                               horzTextAlign="trailing" margins="{right=5}"/>
                         <label align="left" width="120" text="Incomums:" 
                               horzTextAlign="trailing" margins="{right=5}"/>
-                        <edit type="number" asNumber="00" align="left" horzTextAlign="center" fontSize="14" width="50" readOnly="true"/>
+                        <edit type="number" asNumber="1" align="left" horzTextAlign="center" fontSize="14" width="50" readOnly="true"/>
                         <label align="left" width="5" text="" 
                               horzTextAlign="trailing" margins="{right=5}"/>
                 </layout>
@@ -1910,7 +1881,7 @@
                         <checkBox width="17" align="left"  margins="{right=2}" field="periciacheck.incomum1"/>
                         <edit align="left" horzTextAlign="trailing" fontSize="14"  width="120" field="pericia.nome.incomum1" 
                                 margins="{right=5}"/>
-                        <edit type="number" min="00" align="left" horzTextAlign="center" fontSize="14" width="50" field="pericia.incomum1"/>
+                        <edit type="number" min="1" align="left" horzTextAlign="center" fontSize="14" width="50" field="pericia.incomum1"/>
                         <label align="left" width="5" text="" 
                               horzTextAlign="trailing" margins="{right=5}"/>
                         <button align="left" left="5" text="Rolar" width="50">
@@ -1948,7 +1919,7 @@
                         <checkBox width="17" align="left"  margins="{right=2}" field="periciacheck.incomum2"/>
                         <edit align="left" horzTextAlign="trailing" fontSize="14"  width="120" field="pericia.nome.incomum2" 
                                 margins="{right=5}"/>
-                        <edit type="number" min="00" align="left" horzTextAlign="center" fontSize="14" width="50" field="pericia.incomum2"/>
+                        <edit type="number" min="1" align="left" horzTextAlign="center" fontSize="14" width="50" field="pericia.incomum2"/>
                         <label align="left" width="5" text="" 
                               horzTextAlign="trailing" margins="{right=5}"/>
                         <button align="left" left="5" text="Rolar" width="50">
@@ -1986,7 +1957,7 @@
                         <checkBox width="17" align="left"  margins="{right=2}" field="periciacheck.incomum3"/>
                         <edit align="left" horzTextAlign="trailing" fontSize="14"  width="120" field="pericia.nome.incomum3" 
                                 margins="{right=5}"/>
-                        <edit type="number" min="00" align="left" horzTextAlign="center" fontSize="14" width="50" field="pericia.incomum3"/>
+                        <edit type="number" min="1" align="left" horzTextAlign="center" fontSize="14" width="50" field="pericia.incomum3"/>
                         <label align="left" width="5" text="" 
                               horzTextAlign="trailing" margins="{right=5}"/>
                         <button align="left" left="5" text="Rolar" width="50">
@@ -2025,6 +1996,7 @@
                               horzTextAlign="trailing" margins="{right=5}"/>
                         <label align="left" width="120" text="Conhecimentos:" 
                               horzTextAlign="trailing" margins="{right=5}"/>
+                        <edit type="number" asNumber="1" align="left" horzTextAlign="center" fontSize="14" width="50" readOnly="true"/>
                         <label align="left" width="5" text="" 
                               horzTextAlign="trailing" margins="{right=5}"/>
                 </layout>
@@ -2032,7 +2004,7 @@
                         <checkBox width="17" align="left"  margins="{right=2}" field="periciacheck.outro8"/>
                         <edit align="left" horzTextAlign="trailing" fontSize="14"  width="120" field="pericia.nome.outro8" 
                                 margins="{right=5}"/>
-                        <edit type="number" min="00" align="left" horzTextAlign="center" fontSize="14" width="50" field="pericia.outro8"/>
+                        <edit type="number" min="1" align="left" horzTextAlign="center" fontSize="14" width="50" field="pericia.outro8"/>
                         <label align="left" width="5" text="" 
                               horzTextAlign="trailing" margins="{right=5}"/>
                         <button align="left" left="5" text="Rolar" width="50">
@@ -2070,7 +2042,7 @@
                         <checkBox width="17" align="left"  margins="{right=2}" field="periciacheck.outro9"/>
                         <edit align="left" horzTextAlign="trailing" fontSize="14"  width="120" field="pericia.nome.outro9" 
                                 margins="{right=5}"/>
-                        <edit type="number" min="00" align="left" horzTextAlign="center" fontSize="14" width="50" field="pericia.outro9"/>
+                        <edit type="number" min="1" align="left" horzTextAlign="center" fontSize="14" width="50" field="pericia.outro9"/>
                         <label align="left" width="5" text="" 
                               horzTextAlign="trailing" margins="{right=5}"/>
                         <button align="left" left="5" text="Rolar" width="50">
@@ -2108,7 +2080,7 @@
                         <checkBox width="17" align="left"  margins="{right=2}" field="periciacheck.outro10"/>
                         <edit align="left" horzTextAlign="trailing" fontSize="14"  width="120" field="pericia.nome.outro10" 
                                 margins="{right=5}"/>
-                        <edit type="number" min="00" align="left" horzTextAlign="center" fontSize="14" width="50" field="pericia.outro10"/>
+                        <edit type="number" min="1" align="left" horzTextAlign="center" fontSize="14" width="50" field="pericia.outro10"/>
                         <label align="left" width="5" text="" 
                               horzTextAlign="trailing" margins="{right=5}"/>
                         <button align="left" left="5" text="Rolar" width="50">
@@ -2143,42 +2115,12 @@
                         </button>
                 </layout>
                 <layout align="top" height="20" margins="{bottom=2, top=15}">
-                        <checkBox width="17" align="left"  margins="{right=2}" field="periciacheck.outro11"/>
-                        <edit align="left" horzTextAlign="trailing" fontSize="14"  width="120" field="pericia.nome.outro11" 
-                                margins="{right=5}"/>
-                        <edit type="number" min="00" align="left" horzTextAlign="center" fontSize="14" width="50" field="pericia.outro11"/>
+                        <label align="left" width="14" text=" " 
+                              horzTextAlign="trailing" margins="{right=5}"/>
+                        <label align="left" width="120" text="Outros:" 
+                              horzTextAlign="trailing" margins="{right=5}"/>
                         <label align="left" width="5" text="" 
                               horzTextAlign="trailing" margins="{right=5}"/>
-                        <button align="left" left="5" text="Rolar" width="50">
-                                <event name="onClick">
-                                        local minhaMesa = Firecast.getMesaDe(sheet);
-                                        local chat = minhaMesa.chat; 
-                                        local parameter = sheet.pericia.outro11
-                                        chat:enviarMensagem("[§K3]" .. sheet.pericia.nome.outro11 .. " [§B][§K1]" .. parameter);
-                                        minhaMesa.chat:rolarDados("1d100", "Rolagem",
-                                function (rolado)
-                                         
-                                        if rolado.resultado == 1 then
-                                                chat:enviarMensagem("[§B][§K4]Acerto Critico!"); 
-                                        elseif parameter/5 >= rolado.resultado then
-                                                chat:enviarMensagem("[§B][§K8]Acerto Extremo!"); 
-                                        elseif parameter/2 >= rolado.resultado then
-                                                chat:enviarMensagem("[§B][§K8]Acerto Dificil!"); 
-                                        elseif parameter+0 >= rolado.resultado then
-                                                chat:enviarMensagem("[§B][§K9]Acerto Normal!"); 
-                                        elseif rolado.resultado >= 96 then
-                                                chat:enviarMensagem("[§B][§K4]Falha Critica!!!"); 
-                                        elseif rolado.resultado > parameter+0 then
-                                                chat:enviarMensagem("[§B][§K4]Falha!"); 
-                                        else
-                                                chat:enviarMensagem("[§B][§K4]Algo Errado não Está Certo!"); 
-                                        end;                                       
-
-                                end); 
-                                                
-                                
-                                </event>
-                        </button>
                 </layout>
                 <layout align="top" height="20" margins="{bottom=2, top=15}">
                         <checkBox width="17" align="left"  margins="{right=2}" field="periciacheck.outro12"/>
@@ -3497,6 +3439,129 @@
                 </button>
         </layout>
         <layout align="top" height="20" margins="{bottom=2, top=15}">
+                <label align="left" width="14" text=" " 
+                      horzTextAlign="trailing" margins="{right=5}"/>
+                <label align="left" width="120" text="Ciências:" 
+                      horzTextAlign="trailing" margins="{right=5}"/>
+                <edit type="number" asNumber="1" align="left" horzTextAlign="center" fontSize="14" width="50" readOnly="true"/>
+                <label align="left" width="5" text="" 
+                      horzTextAlign="trailing" margins="{right=5}"/>
+        </layout>
+        <layout align="top" height="20" margins="{bottom=2, top=15}">
+                <checkBox width="17" align="left"  margins="{right=2}" field="periciacheck.ciee1"/>
+                <edit align="left" horzTextAlign="trailing" fontSize="14"  width="120" field="pericia.nome.ciee1" 
+                        margins="{right=5}"/>
+                <edit type="number" min="1" align="left" horzTextAlign="center" fontSize="14" width="50" field="pericia.ciee1"/>
+                <label align="left" width="5" text="" 
+                      horzTextAlign="trailing" margins="{right=5}"/>
+                <button align="left" left="5" text="Rolar" width="50">
+                        <event name="onClick">
+                                local minhaMesa = Firecast.getMesaDe(sheet);
+                                local chat = minhaMesa.chat; 
+                                local parameter = sheet.pericia.ciee1
+                                chat:enviarMensagem("[§K3]" .. sheet.pericia.nome.ciee1 .. " [§B][§K1]" .. parameter);
+                                minhaMesa.chat:rolarDados("1d100", "Rolagem",
+                        function (rolado)
+                                 
+                                if rolado.resultado == 1 then
+                                        chat:enviarMensagem("[§B][§K4]Acerto Critico!"); 
+                                elseif parameter/5 >= rolado.resultado then
+                                        chat:enviarMensagem("[§B][§K8]Acerto Extremo!"); 
+                                elseif parameter/2 >= rolado.resultado then
+                                        chat:enviarMensagem("[§B][§K8]Acerto Dificil!"); 
+                                elseif parameter+0 >= rolado.resultado then
+                                        chat:enviarMensagem("[§B][§K9]Acerto Normal!"); 
+                                elseif rolado.resultado >= 96 then
+                                        chat:enviarMensagem("[§B][§K4]Falha Critica!!!"); 
+                                elseif rolado.resultado > parameter+0 then
+                                        chat:enviarMensagem("[§B][§K4]Falha!"); 
+                                else
+                                        chat:enviarMensagem("[§B][§K4]Algo Errado não Está Certo!"); 
+                                end;                                       
+
+                        end); 
+                                        
+                        
+                        </event>
+                </button>
+        </layout>
+        <layout align="top" height="20" margins="{bottom=2, top=15}">
+                <checkBox width="17" align="left"  margins="{right=2}" field="periciacheck.ciee2"/>
+                <edit align="left" horzTextAlign="trailing" fontSize="14"  width="120" field="pericia.nome.ciee2" 
+                        margins="{right=5}"/>
+                <edit type="number" min="1" align="left" horzTextAlign="center" fontSize="14" width="50" field="pericia.ciee2"/>
+                <label align="left" width="5" text="" 
+                      horzTextAlign="trailing" margins="{right=5}"/>
+                <button align="left" left="5" text="Rolar" width="50">
+                        <event name="onClick">
+                                local minhaMesa = Firecast.getMesaDe(sheet);
+                                local chat = minhaMesa.chat; 
+                                local parameter = sheet.pericia.ciee2
+                                chat:enviarMensagem("[§K3]" .. sheet.pericia.nome.ciee2 .. " [§B][§K1]" .. parameter);
+                                minhaMesa.chat:rolarDados("1d100", "Rolagem",
+                        function (rolado)
+                                 
+                                if rolado.resultado == 1 then
+                                        chat:enviarMensagem("[§B][§K4]Acerto Critico!"); 
+                                elseif parameter/5 >= rolado.resultado then
+                                        chat:enviarMensagem("[§B][§K8]Acerto Extremo!"); 
+                                elseif parameter/2 >= rolado.resultado then
+                                        chat:enviarMensagem("[§B][§K8]Acerto Dificil!"); 
+                                elseif parameter+0 >= rolado.resultado then
+                                        chat:enviarMensagem("[§B][§K9]Acerto Normal!"); 
+                                elseif rolado.resultado >= 96 then
+                                        chat:enviarMensagem("[§B][§K4]Falha Critica!!!"); 
+                                elseif rolado.resultado > parameter+0 then
+                                        chat:enviarMensagem("[§B][§K4]Falha!"); 
+                                else
+                                        chat:enviarMensagem("[§B][§K4]Algo Errado não Está Certo!"); 
+                                end;                                       
+
+                        end); 
+                                        
+                        
+                        </event>
+                </button>
+        </layout>
+        <layout align="top" height="20" margins="{bottom=2, top=15}">
+                <checkBox width="17" align="left"  margins="{right=2}" field="periciacheck.ciee3"/>
+                <edit align="left" horzTextAlign="trailing" fontSize="14"  width="120" field="pericia.nome.ciee3" 
+                        margins="{right=5}"/>
+                <edit type="number" min="1" align="left" horzTextAlign="center" fontSize="14" width="50" field="pericia.ciee3"/>
+                <label align="left" width="5" text="" 
+                      horzTextAlign="trailing" margins="{right=5}"/>
+                <button align="left" left="5" text="Rolar" width="50">
+                        <event name="onClick">
+                                local minhaMesa = Firecast.getMesaDe(sheet);
+                                local chat = minhaMesa.chat; 
+                                local parameter = sheet.pericia.ciee3
+                                chat:enviarMensagem("[§K3]" .. sheet.pericia.nome.ciee3 .. " [§B][§K1]" .. parameter);
+                                minhaMesa.chat:rolarDados("1d100", "Rolagem",
+                        function (rolado)
+                                 
+                                if rolado.resultado == 1 then
+                                        chat:enviarMensagem("[§B][§K4]Acerto Critico!"); 
+                                elseif parameter/5 >= rolado.resultado then
+                                        chat:enviarMensagem("[§B][§K8]Acerto Extremo!"); 
+                                elseif parameter/2 >= rolado.resultado then
+                                        chat:enviarMensagem("[§B][§K8]Acerto Dificil!"); 
+                                elseif parameter+0 >= rolado.resultado then
+                                        chat:enviarMensagem("[§B][§K9]Acerto Normal!"); 
+                                elseif rolado.resultado >= 96 then
+                                        chat:enviarMensagem("[§B][§K4]Falha Critica!!!"); 
+                                elseif rolado.resultado > parameter+0 then
+                                        chat:enviarMensagem("[§B][§K4]Falha!"); 
+                                else
+                                        chat:enviarMensagem("[§B][§K4]Algo Errado não Está Certo!"); 
+                                end;                                       
+
+                        end); 
+                                        
+                        
+                        </event>
+                </button>
+        </layout>
+        <layout align="top" height="20" margins="{bottom=2, top=15}">
                 <checkBox width="17" align="left"  margins="{right=2}" field="periciacheck.arcos"/>
                 <label align="left" width="120" text="Arcos:" 
                       horzTextAlign="trailing" margins="{right=5}"/>
@@ -3883,158 +3948,6 @@
                       horzTextAlign="trailing" margins="{right=5}"/>
                 <label align="left" width="5" text="" 
                       horzTextAlign="trailing" margins="{right=5}"/>
-        </layout>
-        <layout align="top" height="20" margins="{bottom=2, top=15}">
-                <checkBox width="17" align="left"  margins="{right=2}" field="periciacheck.outro19"/>
-                <edit align="left" horzTextAlign="trailing" fontSize="14"  width="120" field="pericia.nome.outro19" 
-                        margins="{right=5}"/>
-                <edit type="number" min="00" align="left" horzTextAlign="center" fontSize="14" width="50" field="pericia.outro19"/>
-                <label align="left" width="5" text="" 
-                      horzTextAlign="trailing" margins="{right=5}"/>
-                <button align="left" left="5" text="Rolar" width="50">
-                        <event name="onClick">
-                                local minhaMesa = Firecast.getMesaDe(sheet);
-                                local chat = minhaMesa.chat; 
-                                local parameter = sheet.pericia.outro19
-                                chat:enviarMensagem("[§K3]" .. sheet.pericia.nome.outro19 .. " [§B][§K1]" .. parameter);
-                                minhaMesa.chat:rolarDados("1d100", "Rolagem",
-                        function (rolado)
-                                 
-                                if rolado.resultado == 1 then
-                                        chat:enviarMensagem("[§B][§K4]Acerto Critico!"); 
-                                elseif parameter/5 >= rolado.resultado then
-                                        chat:enviarMensagem("[§B][§K8]Acerto Extremo!"); 
-                                elseif parameter/2 >= rolado.resultado then
-                                        chat:enviarMensagem("[§B][§K8]Acerto Dificil!"); 
-                                elseif parameter+0 >= rolado.resultado then
-                                        chat:enviarMensagem("[§B][§K9]Acerto Normal!"); 
-                                elseif rolado.resultado >= 96 then
-                                        chat:enviarMensagem("[§B][§K4]Falha Critica!!!"); 
-                                elseif rolado.resultado > parameter+0 then
-                                        chat:enviarMensagem("[§B][§K4]Falha!"); 
-                                else
-                                        chat:enviarMensagem("[§B][§K4]Algo Errado não Está Certo!"); 
-                                end;                                       
-
-                        end); 
-                                        
-                        
-                        </event>
-                </button>
-        </layout>
-        <layout align="top" height="20" margins="{bottom=2, top=15}">
-                <checkBox width="17" align="left"  margins="{right=2}" field="periciacheck.outro20"/>
-                <edit align="left" horzTextAlign="trailing" fontSize="14"  width="120" field="pericia.nome.outro20" 
-                        margins="{right=5}"/>
-                <edit type="number" min="00" align="left" horzTextAlign="center" fontSize="14" width="50" field="pericia.outro20"/>
-                <label align="left" width="5" text="" 
-                      horzTextAlign="trailing" margins="{right=5}"/>
-                <button align="left" left="5" text="Rolar" width="50">
-                        <event name="onClick">
-                                local minhaMesa = Firecast.getMesaDe(sheet);
-                                local chat = minhaMesa.chat; 
-                                local parameter = sheet.pericia.outro20
-                                chat:enviarMensagem("[§K3]" .. sheet.pericia.nome.outro20 .. " [§B][§K1]" .. parameter);
-                                minhaMesa.chat:rolarDados("1d100", "Rolagem",
-                        function (rolado)
-                                 
-                                if rolado.resultado == 1 then
-                                        chat:enviarMensagem("[§B][§K4]Acerto Critico!"); 
-                                elseif parameter/5 >= rolado.resultado then
-                                        chat:enviarMensagem("[§B][§K8]Acerto Extremo!"); 
-                                elseif parameter/2 >= rolado.resultado then
-                                        chat:enviarMensagem("[§B][§K8]Acerto Dificil!"); 
-                                elseif parameter+0 >= rolado.resultado then
-                                        chat:enviarMensagem("[§B][§K9]Acerto Normal!"); 
-                                elseif rolado.resultado >= 96 then
-                                        chat:enviarMensagem("[§B][§K4]Falha Critica!!!"); 
-                                elseif rolado.resultado > parameter+0 then
-                                        chat:enviarMensagem("[§B][§K4]Falha!"); 
-                                else
-                                        chat:enviarMensagem("[§B][§K4]Algo Errado não Está Certo!"); 
-                                end;                                       
-
-                        end); 
-                                        
-                        
-                        </event>
-                </button>
-        </layout>
-        <layout align="top" height="20" margins="{bottom=2, top=15}">
-                <checkBox width="17" align="left"  margins="{right=2}" field="periciacheck.outro21"/>
-                <edit align="left" horzTextAlign="trailing" fontSize="14"  width="120" field="pericia.nome.outro21" 
-                        margins="{right=5}"/>
-                <edit type="number" min="00" align="left" horzTextAlign="center" fontSize="14" width="50" field="pericia.outro21"/>
-                <label align="left" width="5" text="" 
-                      horzTextAlign="trailing" margins="{right=5}"/>
-                <button align="left" left="5" text="Rolar" width="50">
-                        <event name="onClick">
-                                local minhaMesa = Firecast.getMesaDe(sheet);
-                                local chat = minhaMesa.chat; 
-                                local parameter = sheet.pericia.outro21
-                                chat:enviarMensagem("[§K3]" .. sheet.pericia.nome.outro21 .. " [§B][§K1]" .. parameter);
-                                minhaMesa.chat:rolarDados("1d100", "Rolagem",
-                        function (rolado)
-                                 
-                                if rolado.resultado == 1 then
-                                        chat:enviarMensagem("[§B][§K4]Acerto Critico!"); 
-                                elseif parameter/5 >= rolado.resultado then
-                                        chat:enviarMensagem("[§B][§K8]Acerto Extremo!"); 
-                                elseif parameter/2 >= rolado.resultado then
-                                        chat:enviarMensagem("[§B][§K8]Acerto Dificil!"); 
-                                elseif parameter+0 >= rolado.resultado then
-                                        chat:enviarMensagem("[§B][§K9]Acerto Normal!"); 
-                                elseif rolado.resultado >= 96 then
-                                        chat:enviarMensagem("[§B][§K4]Falha Critica!!!"); 
-                                elseif rolado.resultado > parameter+0 then
-                                        chat:enviarMensagem("[§B][§K4]Falha!"); 
-                                else
-                                        chat:enviarMensagem("[§B][§K4]Algo Errado não Está Certo!"); 
-                                end;                                       
-
-                        end); 
-                                        
-                        
-                        </event>
-                </button>
-        </layout>
-        <layout align="top" height="20" margins="{bottom=2, top=15}">
-                <checkBox width="17" align="left"  margins="{right=2}" field="periciacheck.outro22"/>
-                <edit align="left" horzTextAlign="trailing" fontSize="14"  width="120" field="pericia.nome.outro22" 
-                        margins="{right=5}"/>
-                <edit type="number" min="00" align="left" horzTextAlign="center" fontSize="14" width="50" field="pericia.outro22"/>
-                <label align="left" width="5" text="" 
-                      horzTextAlign="trailing" margins="{right=5}"/>
-                <button align="left" left="5" text="Rolar" width="50">
-                        <event name="onClick">
-                                local minhaMesa = Firecast.getMesaDe(sheet);
-                                local chat = minhaMesa.chat; 
-                                local parameter = sheet.pericia.outro22
-                                chat:enviarMensagem("[§K3]" .. sheet.pericia.nome.outro22 .. " [§B][§K1]" .. parameter);
-                                minhaMesa.chat:rolarDados("1d100", "Rolagem",
-                        function (rolado)
-                                 
-                                if rolado.resultado == 1 then
-                                        chat:enviarMensagem("[§B][§K4]Acerto Critico!"); 
-                                elseif parameter/5 >= rolado.resultado then
-                                        chat:enviarMensagem("[§B][§K8]Acerto Extremo!"); 
-                                elseif parameter/2 >= rolado.resultado then
-                                        chat:enviarMensagem("[§B][§K8]Acerto Dificil!"); 
-                                elseif parameter+0 >= rolado.resultado then
-                                        chat:enviarMensagem("[§B][§K9]Acerto Normal!"); 
-                                elseif rolado.resultado >= 96 then
-                                        chat:enviarMensagem("[§B][§K4]Falha Critica!!!"); 
-                                elseif rolado.resultado > parameter+0 then
-                                        chat:enviarMensagem("[§B][§K4]Falha!"); 
-                                else
-                                        chat:enviarMensagem("[§B][§K4]Algo Errado não Está Certo!"); 
-                                end;                                       
-
-                        end); 
-                                        
-                        
-                        </event>
-                </button>
         </layout>
         <layout align="top" height="20" margins="{bottom=2, top=15}">
                 <checkBox width="17" align="left"  margins="{right=2}" field="periciacheck.outro23"/>
