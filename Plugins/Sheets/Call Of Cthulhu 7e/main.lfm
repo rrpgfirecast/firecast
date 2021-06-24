@@ -2666,7 +2666,7 @@
                         <checkBox width="17" align="left"  margins="{right=2}" field="periciacheck.natacao"/>
                         <label align="left" width="120" text="Natação:" 
                               horzTextAlign="trailing" margins="{right=5}"/>
-                        <edit type="number" min="01" align="left" horzTextAlign="center" fontSize="14" width="50" field="pericia.natacao"/>
+                        <edit type="number" min="20" align="left" horzTextAlign="center" fontSize="14" width="50" field="pericia.natacao"/>
                         <label align="left" width="5" text="" 
                               horzTextAlign="trailing" margins="{right=5}"/>
                         <button align="left" left="5" text="Rolar" width="50">

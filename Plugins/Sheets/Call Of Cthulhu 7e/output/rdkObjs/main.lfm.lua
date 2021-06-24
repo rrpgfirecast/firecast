@@ -4124,7 +4124,7 @@ local function constructNew_CthulhuSheet7e_byHelldemos()
     obj.edit109 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit109:setParent(obj.layout100);
     obj.edit109:setType("number");
-    obj.edit109:setMin(01);
+    obj.edit109:setMin(20);
     obj.edit109:setAlign("left");
     obj.edit109:setHorzTextAlign("center");
     obj.edit109:setFontSize(14);
