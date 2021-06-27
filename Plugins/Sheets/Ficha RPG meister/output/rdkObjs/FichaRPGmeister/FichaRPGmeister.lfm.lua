@@ -29744,10 +29744,40 @@ local function constructNew_frmFichaRPGmeister()
 
 			local function recursiveFindControls(node, controlsList)
 				local children = node:getChildren();
+				if node:getClassName() == "recordList" then
+					children = rclKids(node);
+					--write(children[1]:getClassName());
+
+					children = rclKids(children[1]);
+				end;
 				for i=1, #children, 1 do
 					controlsList[#controlsList+1] = children[i];
 					recursiveFindControls(children[i], controlsList);
 				end;
+			end;
+
+			function rclKids(rcl)
+				local ret = {};
+				local i;
+				local childCount = _obj_getProp(rcl.handle, "ChildrenCount");
+				local child;
+				local childHandle;
+				local idxDest = 1;
+					
+				for i = 0, childCount - 1, 1 do
+					childHandle = _gui_getChild(rcl.handle, i);
+					
+					if (childHandle ~= nil) then							
+						child = gui.fromHandle(childHandle);
+						
+						if (type(child) == "table") then							
+							ret[idxDest] = child;
+							idxDest = idxDest + 1;
+						end
+					end;	
+				end
+				
+				return ret;
 			end;
 
 			local function findAllControls()
@@ -30845,17 +30875,22 @@ local function constructNew_frmFichaRPGmeister()
             						function (rolagem)
             							local maximo = 0;
             							local media = 0;
+            							local mult = 1;
             							for i = 1, #rolagem.ops, 1 do 
-            								local operacao = rolagem.ops[i]; 
+            								local operacao = rolagem.ops[i];
             								if operacao.tipo == "dado" then   
             									maximo = maximo + (operacao.quantidade * operacao.face);
             									media = media + (operacao.quantidade * (operacao.face+1)/2);
             									if i==1 then
             										media = media + ((operacao.face-1)/2);
             									end;
+            								elseif operacao.tipo == "subtracao" then
+            									mult = -1;
+            								elseif operacao.tipo == "soma" then
+            									mult = 1;
             								elseif operacao.tipo == "imediato" then
-            									maximo = maximo + operacao.valor;
-            									media = media + operacao.valor;
+            									maximo = maximo + (operacao.valor * mult);
+            									media = media + (operacao.valor * mult);
             								end;
             							end;
             							local mesaDoPersonagem = Firecast.getMesaDe(sheet);
@@ -36749,7 +36784,7 @@ local function constructNew_frmFichaRPGmeister()
 
     obj._e_event339 = obj.magicList2:addEventListener("onBeforeLayoutCalc",
         function (_)
-            self.magicList2.width = self.frmMagias.width - 400;
+            --self.magicList2.width = self.frmMagias.width - 400;
             		self.scrollPart.width = self.frmMagias.width - 365;
             		self.detailsPart.width = self.frmMagias.width - 365;
             
