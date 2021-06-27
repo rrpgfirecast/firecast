@@ -1,4 +1,9 @@
 -- bar <login ou nick> <bar #1-4> <op ++ -- += -= ==> <atual> <maximo[opcional]>
+-- ++ overflow da barra
+-- -- underflow da barra
+-- += soma ao atual
+-- -= subtrai do atual
+-- == atualiza o total
 local target = arg[1]
 local jogador = nil
 
@@ -52,18 +57,6 @@ end
 -- ACTION
 local currentValue, maxValue = jogador:getBarValue(bar)
 
-if op=="++" then
-	currentValue = maxValue + curr
-elseif op=="--"then
-	currentValue = 0 - curr
-elseif op=="+="then
-	currentValue = currentValue + curr
-elseif op=="-="then
-	currentValue = currentValue - curr
-elseif op=="=="then
-	currentValue = curr
-end
-
 if max ~= nil then
 	if op=="++" then
 		maxValue = maxValue + max
@@ -77,5 +70,17 @@ if max ~= nil then
 		maxValue = max
 	end
 end;
+
+if op=="++" then
+	currentValue = maxValue + curr
+elseif op=="--"then
+	currentValue = 0 - curr
+elseif op=="+="then
+	currentValue = currentValue + curr
+elseif op=="-="then
+	currentValue = currentValue - curr
+elseif op=="=="then
+	currentValue = curr
+end
 
 jogador:requestSetBarValue(bar, currentValue, maxValue)
