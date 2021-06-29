@@ -425,13 +425,45 @@
         <layout class="LayoutCampoAtributos2">
                 <edit type="number"  field="atributo.sorte"/>
                 <label text="Sorte"/>             
+                <button align="top" top="2" text="Rolar">
+                        <event name="onClick">
+                                local minhaMesa = Firecast.getMesaDe(sheet);
+                                local chat = minhaMesa.chat; 
+                                local parameter = sheet.atributo.sorte
+                                chat:enviarMensagem("[§K3]Sorte: [§B][§K1]" .. parameter);
+                                minhaMesa.chat:rolarDados("1d100", "Rolagem",
+                        function (rolado)
+                                 
+                                if rolado.resultado == 1 then
+                                        chat:enviarMensagem("[§B][§K4]Acerto Critico!"); 
+                                elseif parameter/5 >= rolado.resultado then
+                                        chat:enviarMensagem("[§B][§K8]Acerto Extremo!"); 
+                                elseif parameter/2 >= rolado.resultado then
+                                        chat:enviarMensagem("[§B][§K8]Acerto Dificil!"); 
+                                elseif parameter+0 >= rolado.resultado then
+                                        chat:enviarMensagem("[§B][§K9]Acerto Normal!"); 
+                                elseif rolado.resultado >= 96 then
+                                        chat:enviarMensagem("[§B][§K4]Falha Critica!!!"); 
+                                elseif rolado.resultado > parameter+0 then
+                                        chat:enviarMensagem("[§B][§K4]Falha!"); 
+                                else
+                                        chat:enviarMensagem("[§B][§K4]Algo Errado não Está Certo!"); 
+                                end;                                       
+
+                        end); 
+                                        
+                        
+                        </event>
+                </button>             
         </layout>
         <layout class="LayoutCampoAtributos2">
                 <edit type="number"  field="atributo.movimento"/>
                 <label text="Taxa de Movimento"/>             
         </layout>
         <layout class="LayoutCampoAtributos2">
-                <label text="  "/>             
+                <checkBox top="5" text="G. Ferido" field="estados.gravferido"/>
+                <checkBox top="25" text="T. Insano" field="estados.tempinsano"/>
+                <checkBox top="45" text="I. Insano" field="estados.indinsano"/>  
         </layout>
         <layout class="LayoutCampoAtributos2">
                 <edit type="number"  field="atributo.sanidadeatual"/>
@@ -487,6 +519,7 @@
         <layout align="none" left="5" height="35" width="1329" top="290" frameStyle="/frames/FrameRetangular.xml" 
         margins="{left=30, right=10, bottom=10}">
         <label text="Perícias do Investigador" left="625" fontStyle="bold italic" top="9" width="1343"/>
+        <label text="*Insira o valor 1 em todas as caixas de texto abaixo para carregar o valor minimo." fontSize="12" fontColor="Yellow" horzTextAlign="trailing" left="-50" fontStyle="italic" top="9" width="1343"/>
                 
         </layout>
 
@@ -496,7 +529,8 @@
                     
                 <layout left="20" top="25" width="270" height="984">
                         <layout align="top" height="20" margins="{bottom=2, top=15}">
-                                <checkBox width="17" align="left"  margins="{right=2}" field="periciacheck.Mythos"/>
+                                <label align="left" width="14" text=" " 
+                                horzTextAlign="trailing" margins="{right=5}"/>
                                 <label align="left" width="120" text="Mitos de Cthulhu:" 
                                       horzTextAlign="trailing" margins="{right=5}"/>
                                 <edit type="number" min="00" align="left" horzTextAlign="center" fontSize="14" width="50" field="pericia.Mythos"/>
@@ -534,7 +568,8 @@
                                 </button>
                         </layout>   
                         <layout align="top" height="20" margins="{bottom=2, top=15}">
-                                <checkBox width="17" align="left"  margins="{right=2}" field="periciacheck.credito"/>
+                                <label align="left" width="14" text=" " 
+                                horzTextAlign="trailing" margins="{right=5}"/>
                                 <label align="left" width="120" text="Status:" 
                                       horzTextAlign="trailing" margins="{right=5}"/>
                                 <edit type="number"  align="left" horzTextAlign="center" fontSize="14" width="50" field="pericia.credito"/>
@@ -4058,6 +4093,7 @@
         <layout align="none" left="5" height="332" width="996" top="1310" frameStyle="/frames/FrameRetangular.xml" 
         margins="{left=30, right=10, bottom=10}">
         <label text="Ataques" left="491" fontStyle="bold italic" top="9" width="1343"/>
+        <label text="*Todas as caixas de texto devem estar prenchidas antes de rolar o ataque. Use o valor -1 na munição para armas que não utilizam munição e DEF 101 para armas que não possuem Defeito." fontSize="10" fontColor="Yellow" horzTextAlign="trailing" left="-25" fontStyle="italic" top="22" width="996"/>
 
         <layout left="20" top="25" width="996" height="332">
                 <layout align="top" height="20" margins="{bottom=2, top=15}">
@@ -4069,7 +4105,7 @@
                                 horzTextAlign="trailing" margins="{right=5}"/>
                         <comboBox align="left" items="{'Lutar(Briga)', 'Lutar(Campo 1)', 'Lutar(Campo2)', 'Lutar(Campo3)', 'Machado', 'Mangual', 'Garrote', 'Lança de Cavalaria', 'Maça', 'Escudo', 'Lança', 'Bastão', 'Espada', 'Arco', 'Besta', 'Funda', 'Maquina de Guerra'}"
                                 values="{'LB', 'L1', 'L2', 'L3', 'Mch', 'Man', 'Gar', 'lanC', 'Mac', 'Esc', 'Lan', 'Bast', 'Esp', 'Arc', 'Bes', 'Fund', 'ArG'}" width="150" field="ataque.tipo.a1"/>
-                        <label align="left" width="100" text="Nº de Ataques: " 
+                        <label align="left" width="55" text="Ataques: " 
                                 horzTextAlign="trailing" margins="{right=5}"/>
                         <edit align="left" horzTextAlign="leading" fontSize="14"  width="30" field="ataque.quantidade.a1" 
                                   margins="{right=5}"/>
@@ -4179,6 +4215,116 @@
                                 
                                 </event>
                         </button>
+                        <button align="left" left="15" text="van/des" width="45" fontSize="9">
+                                <event name="onClick">
+                                        local minhaMesa = Firecast.getMesaDe(sheet);
+                                        local chat = minhaMesa.chat; 
+                                        local parameter = 0;
+                                        local tipoDeAtaque = sheet.ataque.tipo.a1;
+                                        
+                                        if sheet.ataque.municao.a1+0 == 0 then
+                                                chat:enviarMensagem("[§B][§K4]!!!Essa arma está sem munição!!!"); 
+                                        end; 
+        
+                                        if sheet.ataque.municao.a1+0 >= 1 then
+                                                sheet.ataque.municao.a1 = (sheet.ataque.municao.a1+0)-1;
+                                        end; 
+                                        
+        
+                                        if tipoDeAtaque == "LB" then
+                                                parameter = sheet.pericia.lutarB;
+                                        elseif tipoDeAtaque == "L1" then
+                                                parameter = sheet.pericia.Lutar1;
+                                        elseif tipoDeAtaque == "L2" then
+                                                parameter = sheet.pericia.Lutar2;
+                                        elseif tipoDeAtaque == "L3" then
+                                                parameter = sheet.pericia.Lutar3;
+                                        elseif tipoDeAtaque == "Arc" then
+                                                parameter = sheet.pericia.arcos;
+                                        elseif tipoDeAtaque == "AP" then
+                                                parameter = sheet.pericia.armasP;
+                                        elseif tipoDeAtaque == "Lc" then
+                                                parameter = sheet.pericia.lancaC;
+                                        elseif tipoDeAtaque == "M" then
+                                                parameter = sheet.pericia.metralhadora;
+                                        elseif tipoDeAtaque == "P" then
+                                                parameter = sheet.pericia.pistolas;
+                                        elseif tipoDeAtaque == "RE" then
+                                                parameter = sheet.pericia.riflesE;
+                                        elseif tipoDeAtaque == "S" then
+                                                parameter = sheet.pericia.submetralhadoras;
+                                        elseif tipoDeAtaque == "A1" then
+                                                parameter = sheet.pericia.arma1;
+                                        elseif tipoDeAtaque == "A2" then
+                                                parameter = sheet.pericia.arma2;
+                                        elseif tipoDeAtaque == "A3" then
+                                                parameter = sheet.pericia.arma3;
+                                        else
+                                                chat:enviarMensagem("[§B][§K4]Algo Errado não Está Certo!"); 
+                                        end;
+                                            
+                                        chat:enviarMensagem("[§K11]" .. sheet.ataque.nome.a1 .. " |[§K3] Alcance: [§K1]" .. sheet.ataque.alcance.a1 .. 
+                                                "[§K3] | Munição Restante: [§K1]" .. sheet.ataque.municao.a1 .. " |[§K3] Quantidade de ataques: [§K1]" .. sheet.ataque.quantidade.a1 .. " |[§K3] Pericia: [§B][§K1]" .. parameter);
+                                        minhaMesa.chat:rolarDados("1d100", "Rolagem",
+                                function (rolado)
+        
+                                        if rolado.resultado >= sheet.ataque.defeito.a1+0 then
+                                                chat:enviarMensagem("[§B][§K4]Essa arma apresentou defeito!!!"); 
+                                        end; 
+        
+                                        if rolado.resultado == 1 then
+                                                chat:enviarMensagem("[§B][§K4]Acerto Critico!"); 
+                                                chat:enviarMensagem("/r ".. sheet.ataque.dano.a1 .. ":Dano"); 
+                                        elseif parameter/5 >= rolado.resultado then
+                                                chat:enviarMensagem("[§B][§K8]Acerto Extremo!");
+                                                chat:enviarMensagem("/r ".. sheet.ataque.dano.a1 .. ":Dano");  
+                                        elseif parameter/2 >= rolado.resultado then
+                                                chat:enviarMensagem("[§B][§K8]Acerto Dificil!"); 
+                                                chat:enviarMensagem("/r ".. sheet.ataque.dano.a1  .. ":Dano"); 
+                                        elseif parameter+0 >= rolado.resultado then
+                                                chat:enviarMensagem("[§B][§K9]Acerto Normal!"); 
+                                                chat:enviarMensagem("/r " .. sheet.ataque.dano.a1 .. ":Dano"); 
+                                        elseif rolado.resultado >= 96 then
+                                                chat:enviarMensagem("[§B][§K4]Falha Critica!!!"); 
+                                        elseif rolado.resultado > parameter+0 then
+                                                chat:enviarMensagem("[§B][§K4]Falha!"); 
+                                        else
+                                                chat:enviarMensagem("[§B][§K4]Algo Errado não Está Certo!"); 
+                                        end;                                       
+        
+                                end); 
+                                        minhaMesa.chat:rolarDados("1d100", "Vantagem/Desvantagem",
+                                function (rolado)
+        
+                                        if rolado.resultado >= sheet.ataque.defeito.a1+0 then
+                                                chat:enviarMensagem("[§B][§K4]Essa arma apresentou defeito!!!"); 
+                                        end; 
+        
+                                        if rolado.resultado == 1 then
+                                                chat:enviarMensagem("[§B][§K4]Acerto Critico!"); 
+                                                chat:enviarMensagem("/r ".. sheet.ataque.dano.a1 .. ":Dano"); 
+                                        elseif parameter/5 >= rolado.resultado then
+                                                chat:enviarMensagem("[§B][§K8]Acerto Extremo!");
+                                                chat:enviarMensagem("/r ".. sheet.ataque.dano.a1 .. ":Dano");  
+                                        elseif parameter/2 >= rolado.resultado then
+                                                chat:enviarMensagem("[§B][§K8]Acerto Dificil!"); 
+                                                chat:enviarMensagem("/r ".. sheet.ataque.dano.a1  .. ":Dano"); 
+                                        elseif parameter+0 >= rolado.resultado then
+                                                chat:enviarMensagem("[§B][§K9]Acerto Normal!"); 
+                                                chat:enviarMensagem("/r " .. sheet.ataque.dano.a1 .. ":Dano"); 
+                                        elseif rolado.resultado >= 96 then
+                                                chat:enviarMensagem("[§B][§K4]Falha Critica!!!"); 
+                                        elseif rolado.resultado > parameter+0 then
+                                                chat:enviarMensagem("[§B][§K4]Falha!"); 
+                                        else
+                                                chat:enviarMensagem("[§B][§K4]Algo Errado não Está Certo!"); 
+                                        end;                                       
+        
+                                end); 
+                                                
+                                
+                                </event>
+                        </button>
                 </layout>
                 <layout align="top" height="20" margins="{bottom=2, top=15}">
                         <label align="left" width="5" text="" 
@@ -4189,7 +4335,7 @@
                                 horzTextAlign="trailing" margins="{right=5}"/>
                                 <comboBox align="left" items="{'Lutar(Briga)', 'Lutar(Campo 1)', 'Lutar(Campo2)', 'Lutar(Campo3)', 'Machado', 'Mangual', 'Garrote', 'Lança de Cavalaria', 'Maça', 'Escudo', 'Lança', 'Bastão', 'Espada', 'Arco', 'Besta', 'Funda', 'Maquina de Guerra'}"
                                 values="{'LB', 'L1', 'L2', 'L3', 'Mch', 'Man', 'Gar', 'lanC', 'Mac', 'Esc', 'Lan', 'Bast', 'Esp', 'Arc', 'Bes', 'Fund', 'ArG'}" width="150" field="ataque.tipo.a2"/>
-                        <label align="left" width="100" text="Nº de Ataques: " 
+                        <label align="left" width="55" text="Ataques: " 
                                 horzTextAlign="trailing" margins="{right=5}"/>
                         <edit align="left" horzTextAlign="leading" fontSize="14"  width="30" field="ataque.quantidade.a2" 
                                   margins="{right=5}"/>
@@ -4299,6 +4445,116 @@
                                 
                                 </event>
                         </button>
+                        <button align="left" left="15" text="van/des" width="45" fontSize="9">
+                                <event name="onClick">
+                                        local minhaMesa = Firecast.getMesaDe(sheet);
+                                        local chat = minhaMesa.chat; 
+                                        local parameter = 0;
+                                        local tipoDeAtaque = sheet.ataque.tipo.a2;
+                                        
+                                        if sheet.ataque.municao.a2+0 == 0 then
+                                                chat:enviarMensagem("[§B][§K4]!!!Essa arma está sem munição!!!"); 
+                                        end; 
+
+                                        if sheet.ataque.municao.a2+0 >= 1 then
+                                                sheet.ataque.municao.a2 = (sheet.ataque.municao.a2+0)-1;
+                                        end; 
+                                        
+
+                                        if tipoDeAtaque == "LB" then
+                                                parameter = sheet.pericia.lutarB;
+                                        elseif tipoDeAtaque == "L1" then
+                                                parameter = sheet.pericia.Lutar1;
+                                        elseif tipoDeAtaque == "L2" then
+                                                parameter = sheet.pericia.Lutar2;
+                                        elseif tipoDeAtaque == "L3" then
+                                                parameter = sheet.pericia.Lutar3;
+                                        elseif tipoDeAtaque == "Arc" then
+                                                parameter = sheet.pericia.arcos;
+                                        elseif tipoDeAtaque == "AP" then
+                                                parameter = sheet.pericia.armasP;
+                                        elseif tipoDeAtaque == "Lc" then
+                                                parameter = sheet.pericia.lancaC;
+                                        elseif tipoDeAtaque == "M" then
+                                                parameter = sheet.pericia.metralhadora;
+                                        elseif tipoDeAtaque == "P" then
+                                                parameter = sheet.pericia.pistolas;
+                                        elseif tipoDeAtaque == "RE" then
+                                                parameter = sheet.pericia.riflesE;
+                                        elseif tipoDeAtaque == "S" then
+                                                parameter = sheet.pericia.submetralhadoras;
+                                        elseif tipoDeAtaque == "A1" then
+                                                parameter = sheet.pericia.arma1;
+                                        elseif tipoDeAtaque == "A2" then
+                                                parameter = sheet.pericia.arma2;
+                                        elseif tipoDeAtaque == "A3" then
+                                                parameter = sheet.pericia.arma3;
+                                        else
+                                                chat:enviarMensagem("[§B][§K4]Algo Errado não Está Certo!"); 
+                                        end;
+                                            
+                                        chat:enviarMensagem("[§K11]" .. sheet.ataque.nome.a2 .. " |[§K3] Alcance: [§K1]" .. sheet.ataque.alcance.a2 .. 
+                                                "[§K3] | Munição Restante: [§K1]" .. sheet.ataque.municao.a2 .. " |[§K3] Quantidade de ataques: [§K1]" .. sheet.ataque.quantidade.a2 .. " |[§K3] Pericia: [§B][§K1]" .. parameter);
+                                        minhaMesa.chat:rolarDados("1d100", "Rolagem",
+                                function (rolado)
+
+                                        if rolado.resultado >= sheet.ataque.defeito.a2+0 then
+                                                chat:enviarMensagem("[§B][§K4]Essa arma apresentou defeito!!!"); 
+                                        end; 
+
+                                        if rolado.resultado == 1 then
+                                                chat:enviarMensagem("[§B][§K4]Acerto Critico!"); 
+                                                chat:enviarMensagem("/r ".. sheet.ataque.dano.a2 .. ":Dano"); 
+                                        elseif parameter/5 >= rolado.resultado then
+                                                chat:enviarMensagem("[§B][§K8]Acerto Extremo!");
+                                                chat:enviarMensagem("/r ".. sheet.ataque.dano.a2 .. ":Dano");  
+                                        elseif parameter/2 >= rolado.resultado then
+                                                chat:enviarMensagem("[§B][§K8]Acerto Dificil!"); 
+                                                chat:enviarMensagem("/r ".. sheet.ataque.dano.a2 .. ":Dano"); 
+                                        elseif parameter+0 >= rolado.resultado then
+                                                chat:enviarMensagem("[§B][§K9]Acerto Normal!"); 
+                                                chat:enviarMensagem("/r ".. sheet.ataque.dano.a2 .. ":Dano"); 
+                                        elseif rolado.resultado >= 96 then
+                                                chat:enviarMensagem("[§B][§K4]Falha Critica!!!"); 
+                                        elseif rolado.resultado > parameter+0 then
+                                                chat:enviarMensagem("[§B][§K4]Falha!"); 
+                                        else
+                                                chat:enviarMensagem("[§B][§K4]Algo Errado não Está Certo!"); 
+                                        end;                                       
+        
+                                end);
+                                        minhaMesa.chat:rolarDados("1d100", "Vantagem/Desvantagem",
+                                function (rolado)
+
+                                        if rolado.resultado >= sheet.ataque.defeito.a2+0 then
+                                                chat:enviarMensagem("[§B][§K4]Essa arma apresentou defeito!!!"); 
+                                        end; 
+
+                                        if rolado.resultado == 1 then
+                                                chat:enviarMensagem("[§B][§K4]Acerto Critico!"); 
+                                                chat:enviarMensagem("/r ".. sheet.ataque.dano.a2 .. ":Dano"); 
+                                        elseif parameter/5 >= rolado.resultado then
+                                                chat:enviarMensagem("[§B][§K8]Acerto Extremo!");
+                                                chat:enviarMensagem("/r ".. sheet.ataque.dano.a2 .. ":Dano");  
+                                        elseif parameter/2 >= rolado.resultado then
+                                                chat:enviarMensagem("[§B][§K8]Acerto Dificil!"); 
+                                                chat:enviarMensagem("/r ".. sheet.ataque.dano.a2 .. ":Dano"); 
+                                        elseif parameter+0 >= rolado.resultado then
+                                                chat:enviarMensagem("[§B][§K9]Acerto Normal!"); 
+                                                chat:enviarMensagem("/r ".. sheet.ataque.dano.a2 .. ":Dano"); 
+                                        elseif rolado.resultado >= 96 then
+                                                chat:enviarMensagem("[§B][§K4]Falha Critica!!!"); 
+                                        elseif rolado.resultado > parameter+0 then
+                                                chat:enviarMensagem("[§B][§K4]Falha!"); 
+                                        else
+                                                chat:enviarMensagem("[§B][§K4]Algo Errado não Está Certo!"); 
+                                        end;                                       
+        
+                                end);
+                                                
+                                
+                                </event>
+                        </button>
                 </layout>
                 <layout align="top" height="20" margins="{bottom=2, top=15}">
                         <label align="left" width="5" text="" 
@@ -4309,7 +4565,7 @@
                                 horzTextAlign="trailing" margins="{right=5}"/>
                                 <comboBox align="left" items="{'Lutar(Briga)', 'Lutar(Campo 1)', 'Lutar(Campo2)', 'Lutar(Campo3)', 'Machado', 'Mangual', 'Garrote', 'Lança de Cavalaria', 'Maça', 'Escudo', 'Lança', 'Bastão', 'Espada', 'Arco', 'Besta', 'Funda', 'Maquina de Guerra'}"
                                 values="{'LB', 'L1', 'L2', 'L3', 'Mch', 'Man', 'Gar', 'lanC', 'Mac', 'Esc', 'Lan', 'Bast', 'Esp', 'Arc', 'Bes', 'Fund', 'ArG'}" width="150" field="ataque.tipo.a3"/>
-                        <label align="left" width="100" text="Nº de Ataques: " 
+                        <label align="left" width="55" text="Ataques: " 
                                 horzTextAlign="trailing" margins="{right=5}"/>
                         <edit align="left" horzTextAlign="leading" fontSize="14"  width="30" field="ataque.quantidade.a3" 
                                   margins="{right=5}"/>
@@ -4419,6 +4675,122 @@
                                 
                                 </event>
                         </button>
+                        <button align="left" left="15" text="van/des" width="45" fontSize="9">
+                                <event name="onClick">
+                                        local minhaMesa = Firecast.getMesaDe(sheet);
+                                        local chat = minhaMesa.chat; 
+                                        local parameter = 0;
+                                        local tipoDeAtaque = sheet.ataque.tipo.a3;
+                                        
+                                        if sheet.ataque.municao.a3+0 == 0 then
+                                                chat:enviarMensagem("[§B][§K4]!!!Essa arma está sem munição!!!"); 
+                                        end; 
+            
+                                        if sheet.ataque.municao.a3+0 >= 1 then
+                                                sheet.ataque.municao.a3 = (sheet.ataque.municao.a3+0)-1;
+                                        end; 
+                                        
+            
+                                        if tipoDeAtaque == "LB" then
+                                                parameter = sheet.pericia.lutarB;
+                                        elseif tipoDeAtaque == "L1" then
+                                                parameter = sheet.pericia.Lutar1;
+                                        elseif tipoDeAtaque == "L2" then
+                                                parameter = sheet.pericia.Lutar2;
+                                        elseif tipoDeAtaque == "L3" then
+                                                parameter = sheet.pericia.Lutar3;
+                                        elseif tipoDeAtaque == "Mch" then
+                                                parameter = sheet.pericia.Machado;
+                                        elseif tipoDeAtaque == "Man" then
+                                                parameter = sheet.pericia.Mangual;
+                                        elseif tipoDeAtaque == "Gar" then
+                                                parameter = sheet.pericia.Garrote;
+                                        elseif tipoDeAtaque == "lanC" then
+                                                parameter = sheet.pericia.lancaCavalaria;
+                                        elseif tipoDeAtaque == "Mac" then
+                                                parameter = sheet.pericia.maca;
+                                        elseif tipoDeAtaque == "Esc" then
+                                                parameter = sheet.pericia.Escudo;
+                                        elseif tipoDeAtaque == "Lan" then
+                                                parameter = sheet.pericia.lanca;
+                                        elseif tipoDeAtaque == "Bast" then
+                                                parameter = sheet.pericia.bastao;
+                                        elseif tipoDeAtaque == "Esp" then
+                                                parameter = sheet.pericia.Espada;
+                                        elseif tipoDeAtaque == "Arc" then
+                                                parameter = sheet.pericia.Arcos;
+                                        elseif tipoDeAtaque == "Bes" then
+                                                parameter = sheet.pericia.Bestas;
+                                        elseif tipoDeAtaque == "Fund" then
+                                                parameter = sheet.pericia.Funda;
+                                        elseif tipoDeAtaque == "ArG" then
+                                                parameter = sheet.pericia.ArmasGue;
+                                        else
+                                                chat:enviarMensagem("[§B][§K4]Algo Errado não Está Certo!"); 
+                                        end;
+                                            
+                                        chat:enviarMensagem("[§K11]" .. sheet.ataque.nome.a3 .. " |[§K3] Alcance: [§K1]" .. sheet.ataque.alcance.a3 .. 
+                                                "[§K3] | Munição Restante: [§K1]" .. sheet.ataque.municao.a3 .. " |[§K3] Quantidade de ataques: [§K1]" .. sheet.ataque.quantidade.a3 .. " |[§K3] Pericia: [§B][§K1]" .. parameter);
+                                        minhaMesa.chat:rolarDados("1d100", "Rolagem",
+                                function (rolado)
+            
+                                        if rolado.resultado >= sheet.ataque.defeito.a3+0 then
+                                                chat:enviarMensagem("[§B][§K4]Essa arma apresentou defeito!!!"); 
+                                        end; 
+            
+                                        if rolado.resultado == 1 then
+                                                chat:enviarMensagem("[§B][§K4]Acerto Critico!"); 
+                                                chat:enviarMensagem("/r ".. sheet.ataque.dano.a3 .. ":Dano"); 
+                                        elseif parameter/5 >= rolado.resultado then
+                                                chat:enviarMensagem("[§B][§K8]Acerto Extremo!"); 
+                                                chat:enviarMensagem("/r ".. sheet.ataque.dano.a3 .. ":Dano"); 
+                                        elseif parameter/2 >= rolado.resultado then
+                                                chat:enviarMensagem("[§B][§K8]Acerto Dificil!"); 
+                                                chat:enviarMensagem("/r ".. sheet.ataque.dano.a3 .. ":Dano"); 
+                                        elseif parameter+0 >= rolado.resultado then
+                                                chat:enviarMensagem("[§B][§K9]Acerto Normal!"); 
+                                                chat:enviarMensagem("/r ".. sheet.ataque.dano.a3 .. ":Dano"); 
+                                        elseif rolado.resultado >= 96 then
+                                                chat:enviarMensagem("[§B][§K4]Falha Critica!!!"); 
+                                        elseif rolado.resultado > parameter+0 then
+                                                chat:enviarMensagem("[§B][§K4]Falha!"); 
+                                        else
+                                                chat:enviarMensagem("[§B][§K4]Algo Errado não Está Certo!"); 
+                                        end;                                       
+            
+                                end); 
+                                        minhaMesa.chat:rolarDados("1d100", "Vantagem/Desvantagem",
+                                function (rolado)
+            
+                                        if rolado.resultado >= sheet.ataque.defeito.a3+0 then
+                                                chat:enviarMensagem("[§B][§K4]Essa arma apresentou defeito!!!"); 
+                                        end; 
+            
+                                        if rolado.resultado == 1 then
+                                                chat:enviarMensagem("[§B][§K4]Acerto Critico!"); 
+                                                chat:enviarMensagem("/r ".. sheet.ataque.dano.a3 .. ":Dano"); 
+                                        elseif parameter/5 >= rolado.resultado then
+                                                chat:enviarMensagem("[§B][§K8]Acerto Extremo!"); 
+                                                chat:enviarMensagem("/r ".. sheet.ataque.dano.a3 .. ":Dano"); 
+                                        elseif parameter/2 >= rolado.resultado then
+                                                chat:enviarMensagem("[§B][§K8]Acerto Dificil!"); 
+                                                chat:enviarMensagem("/r ".. sheet.ataque.dano.a3 .. ":Dano"); 
+                                        elseif parameter+0 >= rolado.resultado then
+                                                chat:enviarMensagem("[§B][§K9]Acerto Normal!"); 
+                                                chat:enviarMensagem("/r ".. sheet.ataque.dano.a3 .. ":Dano"); 
+                                        elseif rolado.resultado >= 96 then
+                                                chat:enviarMensagem("[§B][§K4]Falha Critica!!!"); 
+                                        elseif rolado.resultado > parameter+0 then
+                                                chat:enviarMensagem("[§B][§K4]Falha!"); 
+                                        else
+                                                chat:enviarMensagem("[§B][§K4]Algo Errado não Está Certo!"); 
+                                        end;                                       
+            
+                                end); 
+                                                
+                                
+                                </event>
+                        </button>
                 </layout>
                 <layout align="top" height="20" margins="{bottom=2, top=15}">
                         <label align="left" width="5" text="" 
@@ -4429,7 +4801,7 @@
                                 horzTextAlign="trailing" margins="{right=5}"/>
                                 <comboBox align="left" items="{'Lutar(Briga)', 'Lutar(Campo 1)', 'Lutar(Campo2)', 'Lutar(Campo3)', 'Machado', 'Mangual', 'Garrote', 'Lança de Cavalaria', 'Maça', 'Escudo', 'Lança', 'Bastão', 'Espada', 'Arco', 'Besta', 'Funda', 'Maquina de Guerra'}"
                                 values="{'LB', 'L1', 'L2', 'L3', 'Mch', 'Man', 'Gar', 'lanC', 'Mac', 'Esc', 'Lan', 'Bast', 'Esp', 'Arc', 'Bes', 'Fund', 'ArG'}" width="150" field="ataque.tipo.a4"/>
-                        <label align="left" width="100" text="Nº de Ataques: " 
+                        <label align="left" width="55" text="Ataques: " 
                                 horzTextAlign="trailing" margins="{right=5}"/>
                         <edit align="left" horzTextAlign="leading" fontSize="14"  width="30" field="ataque.quantidade.a4" 
                                   margins="{right=5}"/>
@@ -4539,6 +4911,116 @@
                                 
                                 </event>
                         </button>
+                        <button align="left" left="15" text="van/des" width="45" fontSize="9">
+                                <event name="onClick">
+                                        local minhaMesa = Firecast.getMesaDe(sheet);
+                                        local chat = minhaMesa.chat; 
+                                        local parameter = 0;
+                                        local tipoDeAtaque = sheet.ataque.tipo.a4;
+                                        
+                                        if sheet.ataque.municao.a4+0 == 0 then
+                                                chat:enviarMensagem("[§B][§K4]!!!Essa arma está sem munição!!!"); 
+                                        end; 
+            
+                                        if sheet.ataque.municao.a4+0 >= 1 then
+                                                sheet.ataque.municao.a4 = (sheet.ataque.municao.a4+0)-1;
+                                        end; 
+                                        
+            
+                                        if tipoDeAtaque == "LB" then
+                                                parameter = sheet.pericia.lutarB;
+                                        elseif tipoDeAtaque == "L1" then
+                                                parameter = sheet.pericia.Lutar1;
+                                        elseif tipoDeAtaque == "L2" then
+                                                parameter = sheet.pericia.Lutar2;
+                                        elseif tipoDeAtaque == "L3" then
+                                                parameter = sheet.pericia.Lutar3;
+                                        elseif tipoDeAtaque == "Arc" then
+                                                parameter = sheet.pericia.arcos;
+                                        elseif tipoDeAtaque == "AP" then
+                                                parameter = sheet.pericia.armasP;
+                                        elseif tipoDeAtaque == "Lc" then
+                                                parameter = sheet.pericia.lancaC;
+                                        elseif tipoDeAtaque == "M" then
+                                                parameter = sheet.pericia.metralhadora;
+                                        elseif tipoDeAtaque == "P" then
+                                                parameter = sheet.pericia.pistolas;
+                                        elseif tipoDeAtaque == "RE" then
+                                                parameter = sheet.pericia.riflesE;
+                                        elseif tipoDeAtaque == "S" then
+                                                parameter = sheet.pericia.submetralhadoras;
+                                        elseif tipoDeAtaque == "A1" then
+                                                parameter = sheet.pericia.arma1;
+                                        elseif tipoDeAtaque == "A2" then
+                                                parameter = sheet.pericia.arma2;
+                                        elseif tipoDeAtaque == "A3" then
+                                                parameter = sheet.pericia.arma3;
+                                        else
+                                                chat:enviarMensagem("[§B][§K4]Algo Errado não Está Certo!"); 
+                                        end;
+                                            
+                                        chat:enviarMensagem("[§K11]" .. sheet.ataque.nome.a4 .. " |[§K3] Alcance: [§K1]" .. sheet.ataque.alcance.a4 .. 
+                                                "[§K3] | Munição Restante: [§K1]" .. sheet.ataque.municao.a4 .. " |[§K3] Quantidade de ataques: [§K1]" .. sheet.ataque.quantidade.a4 .. " |[§K3] Pericia: [§B][§K1]" .. parameter);
+                                        minhaMesa.chat:rolarDados("1d100", "Rolagem",
+                                function (rolado)
+            
+                                        if rolado.resultado >= sheet.ataque.defeito.a4+0 then
+                                                chat:enviarMensagem("[§B][§K4]Essa arma apresentou defeito!!!"); 
+                                        end; 
+            
+                                        if rolado.resultado == 1 then
+                                                chat:enviarMensagem("[§B][§K4]Acerto Critico!"); 
+                                                chat:enviarMensagem("/r ".. sheet.ataque.dano.a4 .. ":Dano"); 
+                                        elseif parameter/5 >= rolado.resultado then
+                                                chat:enviarMensagem("[§B][§K8]Acerto Extremo!"); 
+                                                chat:enviarMensagem("/r ".. sheet.ataque.dano.a4 .. ":Dano"); 
+                                        elseif parameter/2 >= rolado.resultado then
+                                                chat:enviarMensagem("[§B][§K8]Acerto Dificil!"); 
+                                                chat:enviarMensagem("/r ".. sheet.ataque.dano.a4 .. ":Dano"); 
+                                        elseif parameter+0 >= rolado.resultado then
+                                                chat:enviarMensagem("[§B][§K9]Acerto Normal!"); 
+                                                chat:enviarMensagem("/r ".. sheet.ataque.dano.a4 .. ":Dano"); 
+                                        elseif rolado.resultado >= 96 then
+                                                chat:enviarMensagem("[§B][§K4]Falha Critica!!!"); 
+                                        elseif rolado.resultado > parameter+0 then
+                                                chat:enviarMensagem("[§B][§K4]Falha!"); 
+                                        else
+                                                chat:enviarMensagem("[§B][§K4]Algo Errado não Está Certo!"); 
+                                        end;                                       
+            
+                                end); 
+                                        minhaMesa.chat:rolarDados("1d100", "Vantagem/Desvantagem",
+                                function (rolado)
+            
+                                        if rolado.resultado >= sheet.ataque.defeito.a4+0 then
+                                                chat:enviarMensagem("[§B][§K4]Essa arma apresentou defeito!!!"); 
+                                        end; 
+            
+                                        if rolado.resultado == 1 then
+                                                chat:enviarMensagem("[§B][§K4]Acerto Critico!"); 
+                                                chat:enviarMensagem("/r ".. sheet.ataque.dano.a4 .. ":Dano"); 
+                                        elseif parameter/5 >= rolado.resultado then
+                                                chat:enviarMensagem("[§B][§K8]Acerto Extremo!"); 
+                                                chat:enviarMensagem("/r ".. sheet.ataque.dano.a4 .. ":Dano"); 
+                                        elseif parameter/2 >= rolado.resultado then
+                                                chat:enviarMensagem("[§B][§K8]Acerto Dificil!"); 
+                                                chat:enviarMensagem("/r ".. sheet.ataque.dano.a4 .. ":Dano"); 
+                                        elseif parameter+0 >= rolado.resultado then
+                                                chat:enviarMensagem("[§B][§K9]Acerto Normal!"); 
+                                                chat:enviarMensagem("/r ".. sheet.ataque.dano.a4 .. ":Dano"); 
+                                        elseif rolado.resultado >= 96 then
+                                                chat:enviarMensagem("[§B][§K4]Falha Critica!!!"); 
+                                        elseif rolado.resultado > parameter+0 then
+                                                chat:enviarMensagem("[§B][§K4]Falha!"); 
+                                        else
+                                                chat:enviarMensagem("[§B][§K4]Algo Errado não Está Certo!"); 
+                                        end;                                       
+            
+                                end); 
+                                                
+                                
+                                </event>
+                        </button>
                 </layout>
                 <layout align="top" height="20" margins="{bottom=2, top=15}">
                         <label align="left" width="5" text="" 
@@ -4549,7 +5031,7 @@
                                 horzTextAlign="trailing" margins="{right=5}"/>
                                 <comboBox align="left" items="{'Lutar(Briga)', 'Lutar(Campo 1)', 'Lutar(Campo2)', 'Lutar(Campo3)', 'Machado', 'Mangual', 'Garrote', 'Lança de Cavalaria', 'Maça', 'Escudo', 'Lança', 'Bastão', 'Espada', 'Arco', 'Besta', 'Funda', 'Maquina de Guerra'}"
                                 values="{'LB', 'L1', 'L2', 'L3', 'Mch', 'Man', 'Gar', 'lanC', 'Mac', 'Esc', 'Lan', 'Bast', 'Esp', 'Arc', 'Bes', 'Fund', 'ArG'}" width="150" field="ataque.tipo.a5"/>
-                        <label align="left" width="100" text="Nº de Ataques: " 
+                        <label align="left" width="55" text="Ataques: " 
                                 horzTextAlign="trailing" margins="{right=5}"/>
                         <edit align="left" horzTextAlign="leading" fontSize="14"  width="30" field="ataque.quantidade.a5" 
                                   margins="{right=5}"/>
@@ -4659,6 +5141,116 @@
                                 
                                 </event>
                         </button>
+                        <button align="left" left="15" text="van/des" width="45" fontSize="9">
+                                <event name="onClick">
+                                        local minhaMesa = Firecast.getMesaDe(sheet);
+                                        local chat = minhaMesa.chat; 
+                                        local parameter = 0;
+                                        local tipoDeAtaque = sheet.ataque.tipo.a5;
+                                        
+                                        if sheet.ataque.municao.a5+0 == 0 then
+                                                chat:enviarMensagem("[§B][§K4]!!!Essa arma está sem munição!!!"); 
+                                        end; 
+            
+                                        if sheet.ataque.municao.a5+0 >= 1 then
+                                                sheet.ataque.municao.a5 = (sheet.ataque.municao.a5+0)-1;
+                                        end; 
+                                        
+            
+                                        if tipoDeAtaque == "LB" then
+                                                parameter = sheet.pericia.lutarB;
+                                        elseif tipoDeAtaque == "L1" then
+                                                parameter = sheet.pericia.Lutar1;
+                                        elseif tipoDeAtaque == "L2" then
+                                                parameter = sheet.pericia.Lutar2;
+                                        elseif tipoDeAtaque == "L3" then
+                                                parameter = sheet.pericia.Lutar3;
+                                        elseif tipoDeAtaque == "Arc" then
+                                                parameter = sheet.pericia.arcos;
+                                        elseif tipoDeAtaque == "AP" then
+                                                parameter = sheet.pericia.armasP;
+                                        elseif tipoDeAtaque == "Lc" then
+                                                parameter = sheet.pericia.lancaC;
+                                        elseif tipoDeAtaque == "M" then
+                                                parameter = sheet.pericia.metralhadora;
+                                        elseif tipoDeAtaque == "P" then
+                                                parameter = sheet.pericia.pistolas;
+                                        elseif tipoDeAtaque == "RE" then
+                                                parameter = sheet.pericia.riflesE;
+                                        elseif tipoDeAtaque == "S" then
+                                                parameter = sheet.pericia.submetralhadoras;
+                                        elseif tipoDeAtaque == "A1" then
+                                                parameter = sheet.pericia.arma1;
+                                        elseif tipoDeAtaque == "A2" then
+                                                parameter = sheet.pericia.arma2;
+                                        elseif tipoDeAtaque == "A3" then
+                                                parameter = sheet.pericia.arma3;
+                                        else
+                                                chat:enviarMensagem("[§B][§K4]Algo Errado não Está Certo!"); 
+                                        end;
+                                            
+                                        chat:enviarMensagem("[§K11]" .. sheet.ataque.nome.a5 .. " |[§K3] Alcance: [§K1]" .. sheet.ataque.alcance.a5 .. 
+                                                "[§K3] | Munição Restante: [§K1]" .. sheet.ataque.municao.a5 .. " |[§K3] Quantidade de ataques: [§K1]" .. sheet.ataque.quantidade.a5 .. " |[§K3] Pericia: [§B][§K1]" .. parameter);
+                                        minhaMesa.chat:rolarDados("1d100", "Rolagem",
+                                function (rolado)
+            
+                                        if rolado.resultado >= sheet.ataque.defeito.a5+0 then
+                                                chat:enviarMensagem("[§B][§K4]Essa arma apresentou defeito!!!"); 
+                                        end; 
+            
+                                        if rolado.resultado == 1 then
+                                                chat:enviarMensagem("[§B][§K4]Acerto Critico!"); 
+                                                chat:enviarMensagem("/r ".. sheet.ataque.dano.a5 .. ":Dano"); 
+                                        elseif parameter/5 >= rolado.resultado then
+                                                chat:enviarMensagem("[§B][§K8]Acerto Extremo!"); 
+                                                chat:enviarMensagem("/r ".. sheet.ataque.dano.a5 .. ":Dano"); 
+                                        elseif parameter/2 >= rolado.resultado then
+                                                chat:enviarMensagem("[§B][§K8]Acerto Dificil!"); 
+                                                chat:enviarMensagem("/r ".. sheet.ataque.dano.a5 .. ":Dano"); 
+                                        elseif parameter+0 >= rolado.resultado then
+                                                chat:enviarMensagem("[§B][§K9]Acerto Normal!"); 
+                                                chat:enviarMensagem("/r ".. sheet.ataque.dano.a5 .. ":Dano"); 
+                                        elseif rolado.resultado >= 96 then
+                                                chat:enviarMensagem("[§B][§K4]Falha Critica!!!"); 
+                                        elseif rolado.resultado > parameter+0 then
+                                                chat:enviarMensagem("[§B][§K4]Falha!"); 
+                                        else
+                                                chat:enviarMensagem("[§B][§K4]Algo Errado não Está Certo!"); 
+                                        end;                                       
+            
+                                end); 
+                                        minhaMesa.chat:rolarDados("1d100", "Vantagem/Desvantagem",
+                                function (rolado)
+            
+                                        if rolado.resultado >= sheet.ataque.defeito.a5+0 then
+                                                chat:enviarMensagem("[§B][§K4]Essa arma apresentou defeito!!!"); 
+                                        end; 
+            
+                                        if rolado.resultado == 1 then
+                                                chat:enviarMensagem("[§B][§K4]Acerto Critico!"); 
+                                                chat:enviarMensagem("/r ".. sheet.ataque.dano.a5 .. ":Dano"); 
+                                        elseif parameter/5 >= rolado.resultado then
+                                                chat:enviarMensagem("[§B][§K8]Acerto Extremo!"); 
+                                                chat:enviarMensagem("/r ".. sheet.ataque.dano.a5 .. ":Dano"); 
+                                        elseif parameter/2 >= rolado.resultado then
+                                                chat:enviarMensagem("[§B][§K8]Acerto Dificil!"); 
+                                                chat:enviarMensagem("/r ".. sheet.ataque.dano.a5 .. ":Dano"); 
+                                        elseif parameter+0 >= rolado.resultado then
+                                                chat:enviarMensagem("[§B][§K9]Acerto Normal!"); 
+                                                chat:enviarMensagem("/r ".. sheet.ataque.dano.a5 .. ":Dano"); 
+                                        elseif rolado.resultado >= 96 then
+                                                chat:enviarMensagem("[§B][§K4]Falha Critica!!!"); 
+                                        elseif rolado.resultado > parameter+0 then
+                                                chat:enviarMensagem("[§B][§K4]Falha!"); 
+                                        else
+                                                chat:enviarMensagem("[§B][§K4]Algo Errado não Está Certo!"); 
+                                        end;                                       
+            
+                                end); 
+                                                
+                                
+                                </event>
+                        </button>
                 </layout>
                 <layout align="top" height="20" margins="{bottom=2, top=15}">
                         <label align="left" width="5" text="" 
@@ -4669,7 +5261,7 @@
                                 horzTextAlign="trailing" margins="{right=5}"/>
                                 <comboBox align="left" items="{'Lutar(Briga)', 'Lutar(Campo 1)', 'Lutar(Campo2)', 'Lutar(Campo3)', 'Machado', 'Mangual', 'Garrote', 'Lança de Cavalaria', 'Maça', 'Escudo', 'Lança', 'Bastão', 'Espada', 'Arco', 'Besta', 'Funda', 'Maquina de Guerra'}"
                                 values="{'LB', 'L1', 'L2', 'L3', 'Mch', 'Man', 'Gar', 'lanC', 'Mac', 'Esc', 'Lan', 'Bast', 'Esp', 'Arc', 'Bes', 'Fund', 'ArG'}" width="150" field="ataque.tipo.a6"/>
-                        <label align="left" width="100" text="Nº de Ataques: " 
+                        <label align="left" width="55" text="Ataques: " 
                                 horzTextAlign="trailing" margins="{right=5}"/>
                         <edit align="left" horzTextAlign="leading" fontSize="14"  width="30" field="ataque.quantidade.a6" 
                                   margins="{right=5}"/>
@@ -4779,6 +5371,116 @@
                                 
                                 </event>
                         </button>
+                        <button align="left" left="15" text="van/des" width="45" fontSize="9">
+                                <event name="onClick">
+                                        local minhaMesa = Firecast.getMesaDe(sheet);
+                                        local chat = minhaMesa.chat; 
+                                        local parameter = 0;
+                                        local tipoDeAtaque = sheet.ataque.tipo.a6;
+                                        
+                                        if sheet.ataque.municao.a6+0 == 0 then
+                                                chat:enviarMensagem("[§B][§K4]!!!Essa arma está sem munição!!!"); 
+                                        end; 
+            
+                                        if sheet.ataque.municao.a6+0 >= 1 then
+                                                sheet.ataque.municao.a6 = (sheet.ataque.municao.a6+0)-1;
+                                        end; 
+                                        
+            
+                                        if tipoDeAtaque == "LB" then
+                                                parameter = sheet.pericia.lutarB;
+                                        elseif tipoDeAtaque == "L1" then
+                                                parameter = sheet.pericia.Lutar1;
+                                        elseif tipoDeAtaque == "L2" then
+                                                parameter = sheet.pericia.Lutar2;
+                                        elseif tipoDeAtaque == "L3" then
+                                                parameter = sheet.pericia.Lutar3;
+                                        elseif tipoDeAtaque == "Arc" then
+                                                parameter = sheet.pericia.arcos;
+                                        elseif tipoDeAtaque == "AP" then
+                                                parameter = sheet.pericia.armasP;
+                                        elseif tipoDeAtaque == "Lc" then
+                                                parameter = sheet.pericia.lancaC;
+                                        elseif tipoDeAtaque == "M" then
+                                                parameter = sheet.pericia.metralhadora;
+                                        elseif tipoDeAtaque == "P" then
+                                                parameter = sheet.pericia.pistolas;
+                                        elseif tipoDeAtaque == "RE" then
+                                                parameter = sheet.pericia.riflesE;
+                                        elseif tipoDeAtaque == "S" then
+                                                parameter = sheet.pericia.submetralhadoras;
+                                        elseif tipoDeAtaque == "A1" then
+                                                parameter = sheet.pericia.arma1;
+                                        elseif tipoDeAtaque == "A2" then
+                                                parameter = sheet.pericia.arma2;
+                                        elseif tipoDeAtaque == "A3" then
+                                                parameter = sheet.pericia.arma3;
+                                        else
+                                                chat:enviarMensagem("[§B][§K4]Algo Errado não Está Certo!"); 
+                                        end;
+                                            
+                                        chat:enviarMensagem("[§K11]" .. sheet.ataque.nome.a6 .. " |[§K3] Alcance: [§K1]" .. sheet.ataque.alcance.a6 .. 
+                                                "[§K3] | Munição Restante: [§K1]" .. sheet.ataque.municao.a6 .. " |[§K3] Quantidade de ataques: [§K1]" .. sheet.ataque.quantidade.a6 .. " |[§K3] Pericia: [§B][§K1]" .. parameter);
+                                        minhaMesa.chat:rolarDados("1d100", "Rolagem",
+                                function (rolado)
+            
+                                        if rolado.resultado >= sheet.ataque.defeito.a6+0 then
+                                                chat:enviarMensagem("[§B][§K4]Essa arma apresentou defeito!!!"); 
+                                        end; 
+            
+                                        if rolado.resultado == 1 then
+                                                chat:enviarMensagem("[§B][§K4]Acerto Critico!"); 
+                                                chat:enviarMensagem("/r ".. sheet.ataque.dano.a6 .. ":Dano"); 
+                                        elseif parameter/5 >= rolado.resultado then
+                                                chat:enviarMensagem("[§B][§K8]Acerto Extremo!"); 
+                                                chat:enviarMensagem("/r ".. sheet.ataque.dano.a6 .. ":Dano"); 
+                                        elseif parameter/2 >= rolado.resultado then
+                                                chat:enviarMensagem("[§B][§K8]Acerto Dificil!"); 
+                                                chat:enviarMensagem("/r ".. sheet.ataque.dano.a6 .. ":Dano"); 
+                                        elseif parameter+0 >= rolado.resultado then
+                                                chat:enviarMensagem("[§B][§K9]Acerto Normal!"); 
+                                                chat:enviarMensagem("/r ".. sheet.ataque.dano.a6 .. ":Dano"); 
+                                        elseif rolado.resultado >= 96 then
+                                                chat:enviarMensagem("[§B][§K4]Falha Critica!!!"); 
+                                        elseif rolado.resultado > parameter+0 then
+                                                chat:enviarMensagem("[§B][§K4]Falha!"); 
+                                        else
+                                                chat:enviarMensagem("[§B][§K4]Algo Errado não Está Certo!"); 
+                                        end;                                       
+            
+                                end); 
+                                        minhaMesa.chat:rolarDados("1d100", "Vantagem/Desvantagem",
+                                function (rolado)
+            
+                                        if rolado.resultado >= sheet.ataque.defeito.a6+0 then
+                                                chat:enviarMensagem("[§B][§K4]Essa arma apresentou defeito!!!"); 
+                                        end; 
+            
+                                        if rolado.resultado == 1 then
+                                                chat:enviarMensagem("[§B][§K4]Acerto Critico!"); 
+                                                chat:enviarMensagem("/r ".. sheet.ataque.dano.a6 .. ":Dano"); 
+                                        elseif parameter/5 >= rolado.resultado then
+                                                chat:enviarMensagem("[§B][§K8]Acerto Extremo!"); 
+                                                chat:enviarMensagem("/r ".. sheet.ataque.dano.a6 .. ":Dano"); 
+                                        elseif parameter/2 >= rolado.resultado then
+                                                chat:enviarMensagem("[§B][§K8]Acerto Dificil!"); 
+                                                chat:enviarMensagem("/r ".. sheet.ataque.dano.a6 .. ":Dano"); 
+                                        elseif parameter+0 >= rolado.resultado then
+                                                chat:enviarMensagem("[§B][§K9]Acerto Normal!"); 
+                                                chat:enviarMensagem("/r ".. sheet.ataque.dano.a6 .. ":Dano"); 
+                                        elseif rolado.resultado >= 96 then
+                                                chat:enviarMensagem("[§B][§K4]Falha Critica!!!"); 
+                                        elseif rolado.resultado > parameter+0 then
+                                                chat:enviarMensagem("[§B][§K4]Falha!"); 
+                                        else
+                                                chat:enviarMensagem("[§B][§K4]Algo Errado não Está Certo!"); 
+                                        end;                                       
+            
+                                end);
+                                                
+                                
+                                </event>
+                        </button>
                 </layout>
                 <layout align="top" height="20" margins="{bottom=2, top=15}">
                         <label align="left" width="5" text="" 
@@ -4789,7 +5491,7 @@
                                 horzTextAlign="trailing" margins="{right=5}"/>
                                 <comboBox align="left" items="{'Lutar(Briga)', 'Lutar(Campo 1)', 'Lutar(Campo2)', 'Lutar(Campo3)', 'Machado', 'Mangual', 'Garrote', 'Lança de Cavalaria', 'Maça', 'Escudo', 'Lança', 'Bastão', 'Espada', 'Arco', 'Besta', 'Funda', 'Maquina de Guerra'}"
                                 values="{'LB', 'L1', 'L2', 'L3', 'Mch', 'Man', 'Gar', 'lanC', 'Mac', 'Esc', 'Lan', 'Bast', 'Esp', 'Arc', 'Bes', 'Fund', 'ArG'}" width="150" field="ataque.tipo.a7"/>
-                        <label align="left" width="100" text="Nº de Ataques: " 
+                        <label align="left" width="55" text="Ataques: " 
                                 horzTextAlign="trailing" margins="{right=5}"/>
                         <edit align="left" horzTextAlign="leading" fontSize="14"  width="30" field="ataque.quantidade.a7" 
                                   margins="{right=5}"/>
@@ -4899,6 +5601,116 @@
                                 
                                 </event>
                         </button>
+                        <button align="left" left="15" text="van/des" width="45" fontSize="9">
+                                <event name="onClick">
+                                        local minhaMesa = Firecast.getMesaDe(sheet);
+                                        local chat = minhaMesa.chat; 
+                                        local parameter = 0;
+                                        local tipoDeAtaque = sheet.ataque.tipo.a7;
+                                        
+                                        if sheet.ataque.municao.a7+0 == 0 then
+                                                chat:enviarMensagem("[§B][§K4]!!!Essa arma está sem munição!!!"); 
+                                        end; 
+            
+                                        if sheet.ataque.municao.a7+0 >= 1 then
+                                                sheet.ataque.municao.a7 = (sheet.ataque.municao.a7+0)-1;
+                                        end; 
+                                        
+            
+                                        if tipoDeAtaque == "LB" then
+                                                parameter = sheet.pericia.lutarB;
+                                        elseif tipoDeAtaque == "L1" then
+                                                parameter = sheet.pericia.Lutar1;
+                                        elseif tipoDeAtaque == "L2" then
+                                                parameter = sheet.pericia.Lutar2;
+                                        elseif tipoDeAtaque == "L3" then
+                                                parameter = sheet.pericia.Lutar3;
+                                        elseif tipoDeAtaque == "Arc" then
+                                                parameter = sheet.pericia.arcos;
+                                        elseif tipoDeAtaque == "AP" then
+                                                parameter = sheet.pericia.armasP;
+                                        elseif tipoDeAtaque == "Lc" then
+                                                parameter = sheet.pericia.lancaC;
+                                        elseif tipoDeAtaque == "M" then
+                                                parameter = sheet.pericia.metralhadora;
+                                        elseif tipoDeAtaque == "P" then
+                                                parameter = sheet.pericia.pistolas;
+                                        elseif tipoDeAtaque == "RE" then
+                                                parameter = sheet.pericia.riflesE;
+                                        elseif tipoDeAtaque == "S" then
+                                                parameter = sheet.pericia.submetralhadoras;
+                                        elseif tipoDeAtaque == "A1" then
+                                                parameter = sheet.pericia.arma1;
+                                        elseif tipoDeAtaque == "A2" then
+                                                parameter = sheet.pericia.arma2;
+                                        elseif tipoDeAtaque == "A3" then
+                                                parameter = sheet.pericia.arma3;
+                                        else
+                                                chat:enviarMensagem("[§B][§K4]Algo Errado não Está Certo!"); 
+                                        end;
+                                            
+                                        chat:enviarMensagem("[§K11]" .. sheet.ataque.nome.a7 .. " |[§K3] Alcance: [§K1]" .. sheet.ataque.alcance.a7 .. 
+                                                "[§K3] | Munição Restante: [§K1]" .. sheet.ataque.municao.a7 .. " |[§K3] Quantidade de ataques: [§K1]" .. sheet.ataque.quantidade.a7 .. " |[§K3] Pericia: [§B][§K1]" .. parameter);
+                                        minhaMesa.chat:rolarDados("1d100", "Rolagem",
+                                function (rolado)
+            
+                                        if rolado.resultado >= sheet.ataque.defeito.a7+0 then
+                                                chat:enviarMensagem("[§B][§K4]Essa arma apresentou defeito!!!"); 
+                                        end; 
+            
+                                        if rolado.resultado == 1 then
+                                                chat:enviarMensagem("[§B][§K4]Acerto Critico!"); 
+                                                chat:enviarMensagem("/r ".. sheet.ataque.dano.a7 .. ":Dano"); 
+                                        elseif parameter/5 >= rolado.resultado then
+                                                chat:enviarMensagem("[§B][§K8]Acerto Extremo!"); 
+                                                chat:enviarMensagem("/r ".. sheet.ataque.dano.a7 .. ":Dano"); 
+                                        elseif parameter/2 >= rolado.resultado then
+                                                chat:enviarMensagem("[§B][§K8]Acerto Dificil!"); 
+                                                chat:enviarMensagem("/r ".. sheet.ataque.dano.a7 .. ":Dano"); 
+                                        elseif parameter+0 >= rolado.resultado then
+                                                chat:enviarMensagem("[§B][§K9]Acerto Normal!"); 
+                                                chat:enviarMensagem("/r ".. sheet.ataque.dano.a7 .. ":Dano"); 
+                                        elseif rolado.resultado >= 96 then
+                                                chat:enviarMensagem("[§B][§K4]Falha Critica!!!"); 
+                                        elseif rolado.resultado > parameter+0 then
+                                                chat:enviarMensagem("[§B][§K4]Falha!"); 
+                                        else
+                                                chat:enviarMensagem("[§B][§K4]Algo Errado não Está Certo!"); 
+                                        end;                                       
+            
+                                end); 
+                                        minhaMesa.chat:rolarDados("1d100", "Vantagem/Desvantagem",
+                                function (rolado)
+            
+                                        if rolado.resultado >= sheet.ataque.defeito.a7+0 then
+                                                chat:enviarMensagem("[§B][§K4]Essa arma apresentou defeito!!!"); 
+                                        end; 
+            
+                                        if rolado.resultado == 1 then
+                                                chat:enviarMensagem("[§B][§K4]Acerto Critico!"); 
+                                                chat:enviarMensagem("/r ".. sheet.ataque.dano.a7 .. ":Dano"); 
+                                        elseif parameter/5 >= rolado.resultado then
+                                                chat:enviarMensagem("[§B][§K8]Acerto Extremo!"); 
+                                                chat:enviarMensagem("/r ".. sheet.ataque.dano.a7 .. ":Dano"); 
+                                        elseif parameter/2 >= rolado.resultado then
+                                                chat:enviarMensagem("[§B][§K8]Acerto Dificil!"); 
+                                                chat:enviarMensagem("/r ".. sheet.ataque.dano.a7 .. ":Dano"); 
+                                        elseif parameter+0 >= rolado.resultado then
+                                                chat:enviarMensagem("[§B][§K9]Acerto Normal!"); 
+                                                chat:enviarMensagem("/r ".. sheet.ataque.dano.a7 .. ":Dano"); 
+                                        elseif rolado.resultado >= 96 then
+                                                chat:enviarMensagem("[§B][§K4]Falha Critica!!!"); 
+                                        elseif rolado.resultado > parameter+0 then
+                                                chat:enviarMensagem("[§B][§K4]Falha!"); 
+                                        else
+                                                chat:enviarMensagem("[§B][§K4]Algo Errado não Está Certo!"); 
+                                        end;                                       
+            
+                                end);
+                                                
+                                
+                                </event>
+                        </button>
                 </layout>
                 <layout align="top" height="20" margins="{bottom=2, top=15}">
                         <label align="left" width="5" text="" 
@@ -4909,7 +5721,7 @@
                                 horzTextAlign="trailing" margins="{right=5}"/>
                                 <comboBox align="left" items="{'Lutar(Briga)', 'Lutar(Campo 1)', 'Lutar(Campo2)', 'Lutar(Campo3)', 'Machado', 'Mangual', 'Garrote', 'Lança de Cavalaria', 'Maça', 'Escudo', 'Lança', 'Bastão', 'Espada', 'Arco', 'Besta', 'Funda', 'Maquina de Guerra'}"
                                 values="{'LB', 'L1', 'L2', 'L3', 'Mch', 'Man', 'Gar', 'lanC', 'Mac', 'Esc', 'Lan', 'Bast', 'Esp', 'Arc', 'Bes', 'Fund', 'ArG'}" width="150" field="ataque.tipo.a8"/>
-                        <label align="left" width="100" text="Nº de Ataques: " 
+                        <label align="left" width="55" text="Ataques: " 
                                 horzTextAlign="trailing" margins="{right=5}"/>
                         <edit align="left" horzTextAlign="leading" fontSize="14"  width="30" field="ataque.quantidade.a8" 
                                   margins="{right=5}"/>
@@ -5019,6 +5831,116 @@
                                 
                                 </event>
                         </button>
+                        <button align="left" left="15" text="van/des" width="45" fontSize="9">
+                                <event name="onClick">
+                                        local minhaMesa = Firecast.getMesaDe(sheet);
+                                        local chat = minhaMesa.chat; 
+                                        local parameter = 0;
+                                        local tipoDeAtaque = sheet.ataque.tipo.a8;
+                                        
+                                        if sheet.ataque.municao.a8+0 == 0 then
+                                                chat:enviarMensagem("[§B][§K4]!!!Essa arma está sem munição!!!"); 
+                                        end; 
+            
+                                        if sheet.ataque.municao.a8+0 >= 1 then
+                                                sheet.ataque.municao.a8 = (sheet.ataque.municao.a8+0)-1;
+                                        end; 
+                                        
+            
+                                        if tipoDeAtaque == "LB" then
+                                                parameter = sheet.pericia.lutarB;
+                                        elseif tipoDeAtaque == "L1" then
+                                                parameter = sheet.pericia.Lutar1;
+                                        elseif tipoDeAtaque == "L2" then
+                                                parameter = sheet.pericia.Lutar2;
+                                        elseif tipoDeAtaque == "L3" then
+                                                parameter = sheet.pericia.Lutar3;
+                                        elseif tipoDeAtaque == "Arc" then
+                                                parameter = sheet.pericia.arcos;
+                                        elseif tipoDeAtaque == "AP" then
+                                                parameter = sheet.pericia.armasP;
+                                        elseif tipoDeAtaque == "Lc" then
+                                                parameter = sheet.pericia.lancaC;
+                                        elseif tipoDeAtaque == "M" then
+                                                parameter = sheet.pericia.metralhadora;
+                                        elseif tipoDeAtaque == "P" then
+                                                parameter = sheet.pericia.pistolas;
+                                        elseif tipoDeAtaque == "RE" then
+                                                parameter = sheet.pericia.riflesE;
+                                        elseif tipoDeAtaque == "S" then
+                                                parameter = sheet.pericia.submetralhadoras;
+                                        elseif tipoDeAtaque == "A1" then
+                                                parameter = sheet.pericia.arma1;
+                                        elseif tipoDeAtaque == "A2" then
+                                                parameter = sheet.pericia.arma2;
+                                        elseif tipoDeAtaque == "A3" then
+                                                parameter = sheet.pericia.arma3;
+                                        else
+                                                chat:enviarMensagem("[§B][§K4]Algo Errado não Está Certo!"); 
+                                        end;
+                                            
+                                        chat:enviarMensagem("[§K11]" .. sheet.ataque.nome.a8 .. " |[§K3] Alcance: [§K1]" .. sheet.ataque.alcance.a8 .. 
+                                                "[§K3] | Munição Restante: [§K1]" .. sheet.ataque.municao.a8 .. " |[§K3] Quantidade de ataques: [§K1]" .. sheet.ataque.quantidade.a8 .. " |[§K3] Pericia: [§B][§K1]" .. parameter);
+                                        minhaMesa.chat:rolarDados("1d100", "Rolagem",
+                                function (rolado)
+            
+                                        if rolado.resultado >= sheet.ataque.defeito.a8+0 then
+                                                chat:enviarMensagem("[§B][§K4]Essa arma apresentou defeito!!!"); 
+                                        end; 
+            
+                                        if rolado.resultado == 1 then
+                                                chat:enviarMensagem("[§B][§K4]Acerto Critico!"); 
+                                                chat:enviarMensagem("/r ".. sheet.ataque.dano.a8 .. ":Dano"); 
+                                        elseif parameter/5 >= rolado.resultado then
+                                                chat:enviarMensagem("[§B][§K8]Acerto Extremo!"); 
+                                                chat:enviarMensagem("/r ".. sheet.ataque.dano.a8 .. ":Dano"); 
+                                        elseif parameter/2 >= rolado.resultado then
+                                                chat:enviarMensagem("[§B][§K8]Acerto Dificil!"); 
+                                                chat:enviarMensagem("/r ".. sheet.ataque.dano.a8 .. ":Dano"); 
+                                        elseif parameter+0 >= rolado.resultado then
+                                                chat:enviarMensagem("[§B][§K9]Acerto Normal!"); 
+                                                chat:enviarMensagem("/r ".. sheet.ataque.dano.a8 .. ":Dano"); 
+                                        elseif rolado.resultado >= 96 then
+                                                chat:enviarMensagem("[§B][§K4]Falha Critica!!!"); 
+                                        elseif rolado.resultado > parameter+0 then
+                                                chat:enviarMensagem("[§B][§K4]Falha!"); 
+                                        else
+                                                chat:enviarMensagem("[§B][§K4]Algo Errado não Está Certo!"); 
+                                        end;                                       
+            
+                                end); 
+                                        minhaMesa.chat:rolarDados("1d100", "Vantagem/Desvantagem",
+                                function (rolado)
+            
+                                        if rolado.resultado >= sheet.ataque.defeito.a8+0 then
+                                                chat:enviarMensagem("[§B][§K4]Essa arma apresentou defeito!!!"); 
+                                        end; 
+            
+                                        if rolado.resultado == 1 then
+                                                chat:enviarMensagem("[§B][§K4]Acerto Critico!"); 
+                                                chat:enviarMensagem("/r ".. sheet.ataque.dano.a8 .. ":Dano"); 
+                                        elseif parameter/5 >= rolado.resultado then
+                                                chat:enviarMensagem("[§B][§K8]Acerto Extremo!"); 
+                                                chat:enviarMensagem("/r ".. sheet.ataque.dano.a8 .. ":Dano"); 
+                                        elseif parameter/2 >= rolado.resultado then
+                                                chat:enviarMensagem("[§B][§K8]Acerto Dificil!"); 
+                                                chat:enviarMensagem("/r ".. sheet.ataque.dano.a8 .. ":Dano"); 
+                                        elseif parameter+0 >= rolado.resultado then
+                                                chat:enviarMensagem("[§B][§K9]Acerto Normal!"); 
+                                                chat:enviarMensagem("/r ".. sheet.ataque.dano.a8 .. ":Dano"); 
+                                        elseif rolado.resultado >= 96 then
+                                                chat:enviarMensagem("[§B][§K4]Falha Critica!!!"); 
+                                        elseif rolado.resultado > parameter+0 then
+                                                chat:enviarMensagem("[§B][§K4]Falha!"); 
+                                        else
+                                                chat:enviarMensagem("[§B][§K4]Algo Errado não Está Certo!"); 
+                                        end;                                       
+            
+                                end); 
+                                                
+                                
+                                </event>
+                        </button>
                 </layout>
         </layout>
         </layout>
@@ -5083,23 +6005,23 @@
                 <layout class="LayoutCampo" >
                         <edit  field="bonus.armadura1.nome" width="170"/>
                         <label text="a" fontSize="0" width="7" left="7"/>
-                        <edit  field="bonus.armadura1" width="60"/>         
+                        <edit  field="bonus.armadura1.valor" width="60"/>      
                 </layout>
                 <layout class="LayoutCampo" >
                         <label text="a" fontSize="0" width="70" left="70"/>
                         <edit  field="bonus.armadura2.nome" width="170"/>
                         <label text="a" fontSize="0" width="7" left="7"/>
-                        <edit  field="bonus.armadura2" width="60"/>                
+                        <edit  field="bonus.armadura2.valor" width="60"/>                
                 </layout>        
                 <layout class="LayoutCampo" >
                         <edit  field="bonus.Escudo1.nome" width="170"/>
                         <label text="a" fontSize="0" width="7" left="7"/>
-                        <edit  field="bonus.Escudo1" width="60"/>           
+                        <edit  field="bonus.armadura3.valor" width="60"/>           
                 </layout>
                 <layout class="LayoutCampo" >
                         <edit  field="bonus.Escudo2.nome" width="170"/>
                         <label text="a" fontSize="0" width="7" left="7"/>
-                        <edit  field="bonus.Escudo2" width="60"/>                 
+                        <edit  field="bonus.armadura4.valor" width="60"/>               
                 </layout>
         </layout>
         </layout>
@@ -5279,7 +6201,7 @@
                         <edit  field="dinheiro.ng"/>               
                 </layout>
                 <layout class="LayoutCampo23" >
-                        <label text="     Dinheiro:"/>  
+                        <label text="     Barter:"/>  
                         <edit  field="dinheiro.dinheiro"/>               
                 </layout>
                 <layout class="LayoutCampo23" >
@@ -5288,7 +6210,7 @@
                 </layout>
 
         </layout> 
-        <textEditor left="20" top="125" width="624" height="1521" field="textEditor.caracteristicas"/>
+        <textEditor left="20" top="125" width="624" height="1521" field="textEditor.patrimonio"/>
         </layout>
         </scrollBox>
         </tab>
