@@ -21,6 +21,7 @@ local function initializeRoom(mesa)
 		dealerDB.rooms[mesa.codigoInterno].deck = {};
 		dealerDB.rooms[mesa.codigoInterno].discard = {};
 		dealerDB.rooms[mesa.codigoInterno].numDiscard = 0;
+		dealerDB.rooms[mesa.codigoInterno].log = "";
 	end;
 end
 
@@ -38,12 +39,21 @@ local function send(chat,text)
 	chat:enviarMensagem(tryTranslate(text));
 end
 
+local function logText(dealer, text, user)
+	dealer.log = (dealer.log or "") .. "\n" .. tryTranslate(text) .. " <" .. (user or "user") .. ">"
+end
+
+local function write(chat,text)
+	chat:escrever(tryTranslate(text));
+end
+
 local function showDeck(deck, num, chat)
 	local text = "Cards: ";
 	for i=1,num,1 do
 		text = text .. (deck[i] or "UnamedCard") .. " ";
 	end
 	send(chat, text);
+	return text;
 end
 
 local function findId(deck, num, card)
@@ -70,10 +80,23 @@ local function shuffle(tbl, num)
   return tbl
 end
 
+local function getConfigWindow(mesa)
+	initializeRoom(mesa);
+
+	local cfgForm = GUI.newForm("dealerPopup");
+	cfgForm:setNodeObject(dealerDB.rooms[mesa.codigoInterno]);
+	cfgForm.title = "Dealer - " .. mesa.nome;
+	popup = cfgForm;
+	
+	return cfgForm;
+end
+
 -- LISTENER
 Firecast.Messaging.listen("ChatMessage",
 	function (message)
+		if message.mesa == nil then return end;
 		initializeRoom(message.mesa);
+
 		local txt =  Utils.removerFmtChat(message.texto, true);
 		local arg = {};
 		local numArgs = 0;
@@ -82,13 +105,14 @@ Firecast.Messaging.listen("ChatMessage",
    			numArgs = numArgs+1;
 		end
 
-		if arg[1]=="dealer" then
+		local dealer = dealerDB.rooms[message.mesa.codigoInterno];
+
+		if arg[1]=="dealer" and dealer.botEnabled then
 			local isMestre = message.jogador.isMestre;
 			local isJogador = message.jogador.isJogador;
 			local login = message.jogador.login;
 			local activeChat = message.chat;
 			local roomChat = message.mesa.chat;
-			local dealer = dealerDB.rooms[message.mesa.codigoInterno];
 
 			if checkCommand(arg[2], "help") then
 				send(activeChat,"All Dealer Commands");
@@ -96,9 +120,9 @@ Firecast.Messaging.listen("ChatMessage",
 				send(activeChat,"Players, send all your commands in private chat to your GM.");
 				send(activeChat,"> dealer help - shows commands");
 				send(activeChat,"> dealer showAll - show all hands, deck and discard [GM only]");
-				send(activeChat,"> dealer start tarot <cards> - initiates the deck with tarot cards plus card list separeted by space");
-				send(activeChat,"> dealer start french <cards> - initiates the deck with the standard 52 plus card list separeted by space");
-				send(activeChat,"> dealer start custom <cards> - initiates the deck with card list separeted by space");
+				send(activeChat,"> dealer start tarot <cards> - initiates the deck with tarot cards plus card list separated by space");
+				send(activeChat,"> dealer start french <cards> - initiates the deck with the standard 52 plus card list separated by space");
+				send(activeChat,"> dealer start custom <cards> - initiates the deck with card list separated by space");
 				send(activeChat,"> dealer draw - add 1 random card to your hand");
 				send(activeChat,"> dealer draw <number> - add number random cards to your hand");
 				send(activeChat,"> dealer hand - show your hand on active chat");
@@ -111,7 +135,9 @@ Firecast.Messaging.listen("ChatMessage",
 			elseif checkCommand(arg[2], "shuffle") then
 				if isMestre then
 					dealer.deck = shuffle(dealer.deck, dealer.numCards);
-					send(roomChat,"<Dealer>: Deck has been shuffled.");
+					local txt = "<Dealer>: Deck has been shuffled."
+					send(roomChat,txt);
+					logText(dealer, txt, login);
 				else
 					send(activeChat,"<Dealer>: Only GM can use this command.");
 				end
@@ -127,6 +153,7 @@ Firecast.Messaging.listen("ChatMessage",
 				dealer.hands = {};
 				dealer.discard = {};
 				dealer.numDiscard = 0;
+				dealer.log = ""
 
 				if checkCommand(arg[3], "tarot") then
 					dealer.deck = {"Magician", "High_Priestess", "Empress", "Emperor", "Hierophant", "Lovers", "Chariot", "Strength", "Hermit", "Wheel_of_Fortune", "Justice", "Hanged_Man", "Death", "Temperance", "Devil", "Tower", "Star", "Moon", "Sun", "Judgement", "World", "Fool"};
@@ -141,21 +168,34 @@ Firecast.Messaging.listen("ChatMessage",
 					dealer.deck[dealer.numCards] = arg[i];
 				end
 
-				send(roomChat,"<Dealer>: New deck created with " .. dealer.numCards .. " card(s).");
-				showDeck(dealer.deck, dealer.numCards, roomChat);
+				local txt = "<Dealer>: New deck created with " .. dealer.numCards .. " card(s).";
+				send(roomChat,txt);
+				logText(dealer, txt, login);
+
+				txt = showDeck(dealer.deck, dealer.numCards, roomChat);
 				dealer.deck = shuffle(dealer.deck, dealer.numCards);
-				send(roomChat,"<Dealer>: Deck has been shuffled.");
+				logText(dealer, txt, login);
+
+				txt = "<Dealer>: Deck has been shuffled."
+				send(roomChat,txt);
+				logText(dealer, txt, login);
+
 			elseif checkCommand(arg[2], "deck") then
-				send(activeChat,"<Dealer>: The deck has " .. dealer.numCards .. " card(s).");
+				local txt = "<Dealer>: The deck has " .. dealer.numCards .. " card(s)."
+				send(activeChat,txt);
+				logText(dealer, txt, login);
 				if isMestre then
-					showDeck(dealer.deck, dealer.numCards, activeChat);
+					local txt = showDeck(dealer.deck, dealer.numCards, activeChat);
+					logText(dealer, txt, login);
 				end
 			elseif checkCommand(arg[2], "draw") then
 				local qtd = tonumber(arg[3]) or 1;
 				if qtd < 1 then qtd = 1 end;
 
 				if qtd > dealer.numCards then
-					send(roomChat, "<Dealer>: Not enough cards in deck: " .. dealer.numCards);
+					local txt = "<Dealer>: Not enough cards in deck: " .. dealer.numCards
+					send(roomChat, txt);
+					logText(dealer, txt, login);
 					return;
 				end;
 
@@ -167,18 +207,30 @@ Firecast.Messaging.listen("ChatMessage",
 				for i=1,qtd,1 do
 					dealer.hands[login] = dealer.hands[login] + 1;
 					dealer.players[login][dealer.hands[login]] = dealer.deck[dealer.numCards];
-					send(activeChat, "<Dealer>: You drawn " .. dealer.deck[dealer.numCards]);
+
+					local txt = "<Dealer>: You drawn " .. dealer.deck[dealer.numCards]
+					send(activeChat, txt);
+					logText(dealer, txt, login);
+
 					dealer.deck[dealer.numCards] = nil;
 					dealer.numCards = dealer.numCards - 1;
 				end
-				send(roomChat, "<Dealer>: " .. login .. " drawn " .. qtd .. " card(s). He owns " .. dealer.hands[login] .. " card(s)");
+
+				local txt = "<Dealer>: " .. login .. " drawn " .. qtd .. " card(s). He owns " .. dealer.hands[login] .. " card(s)";
+				send(roomChat, txt);
+				logText(dealer, txt, login);
 			elseif checkCommand(arg[2], "hand") then
 				if dealer.players[login] == nil then
 					dealer.players[login] = {};
 					dealer.hands[login] = 0;
 				end;
-				send(activeChat, "<Dealer>: You have " .. dealer.hands[login] .. " card(s)");
-				showDeck(dealer.players[login], dealer.hands[login], activeChat);
+
+				local txt = "<Dealer>: You have " .. dealer.hands[login] .. " card(s)"
+				send(activeChat, txt);
+				logText(dealer, txt, login);
+
+				txt = showDeck(dealer.players[login], dealer.hands[login], activeChat);
+				logText(dealer, txt, login);
 			elseif checkCommand(arg[2], "discard") then
 				if dealer.players[login] == nil then
 					dealer.players[login] = {};
@@ -188,26 +240,39 @@ Firecast.Messaging.listen("ChatMessage",
 				local id = findId(dealer.players[login], dealer.hands[login], arg[3]);
 
 				if id == 0 then
-					send(activeChat, "<Dealer>: You don't have the card.");
+					local txt = "<Dealer>: You don't have the card."
+					send(activeChat, txt);
+					logText(dealer, txt, login);
 				else
 					sendIdToEnd(dealer.players[login], dealer.hands[login]);
 
 					dealer.numDiscard = dealer.numDiscard + 1;
 					dealer.discard[dealer.numDiscard] = arg[3];
-					send(roomChat, "<Dealer>: " .. login .. " discarded " .. arg[3]);
+
+					local txt = "<Dealer>: " .. login .. " discarded " .. arg[3]
+					send(roomChat, txt);
+					logText(dealer, txt, login);
+
 					dealer.players[login][dealer.hands[login]] = nil;
 					dealer.hands[login] = dealer.hands[login] - 1;
 				end;
 			elseif checkCommand(arg[2], "discarded") then
-				send(activeChat,"<Dealer>: The dicard pile has " .. dealer.numDiscard .. " card(s).");
-				showDeck(dealer.discard, dealer.numDiscard, activeChat);
+				local txt = "<Dealer>: The dicard pile has " .. dealer.numDiscard .. " card(s)."
+
+				send(activeChat, txt);
+				logText(dealer, txt, login);
+
+				txt = showDeck(dealer.discard, dealer.numDiscard, activeChat);
+				logText(dealer, txt, login);
 			elseif checkCommand(arg[2], "give") then
 				if dealer.players[login] == nil then
 					dealer.players[login] = {};
 					dealer.hands[login] = 0;
 				end;
 				if arg[4]==nil then
-					send(activeChat, "<Dealer>: I need the target login.");
+					local txt = "<Dealer>: I need the target login."
+					send(activeChat, txt);
+					logText(dealer, txt, login);
 					return;
 				end;
 				if dealer.players[arg[4]] == nil then
@@ -218,13 +283,19 @@ Firecast.Messaging.listen("ChatMessage",
 				local id = findId(dealer.players[login], dealer.hands[login], arg[3]);
 
 				if id == 0 then
-					send(activeChat, "<Dealer>: You don't have the card.");
+					local txt = "<Dealer>: You don't have the card."
+					send(activeChat, txt);
+					logText(dealer, txt, login);
 				else
 					sendIdToEnd(dealer.players[login], dealer.hands[login]);
 
 					dealer.hands[arg[4]] = dealer.hands[arg[4]] + 1;
 					dealer.players[arg[4]][dealer.hands[arg[4]]] = arg[3];
-					send(roomChat, "<Dealer>: " .. login .. " gave a card to " .. arg[4]);
+
+					local txt = "<Dealer>: " .. login .. " gave a card to " .. arg[4]
+					send(roomChat, txt);
+					logText(dealer, txt, login);
+
 					dealer.players[login][dealer.hands[login]] = nil;
 					dealer.hands[login] = dealer.hands[login] - 1;
 				end;
@@ -237,7 +308,9 @@ Firecast.Messaging.listen("ChatMessage",
 				local id = findId(dealer.players[login], dealer.hands[login], arg[3]);
 
 				if id == 0 then
-					send(activeChat, "<Dealer>: You don't have the card.");
+					local txt = "<Dealer>: You don't have the card."
+					send(activeChat, txt);
+					logText(dealer, txt, login);
 				else
 					sendIdToEnd(dealer.players[login], dealer.hands[login]);
 
@@ -248,7 +321,9 @@ Firecast.Messaging.listen("ChatMessage",
 
 					dealer.deck = shuffle(dealer.deck, dealer.numCards);
 
-					send(roomChat, "<Dealer>: " .. login .. " returned to the deck " .. arg[3] .. ", and shuffled it.");
+					local txt = "<Dealer>: " .. login .. " returned to the deck " .. arg[3] .. ", and shuffled it."
+					send(roomChat, txt);
+					logText(dealer, txt, login);
 				end;
 			elseif checkCommand(arg[2], "showAll") then
 				if not isMestre then
@@ -256,23 +331,63 @@ Firecast.Messaging.listen("ChatMessage",
 					return;
 				end
 
-				send(activeChat,"<Dealer>: The deck has " .. dealer.numCards .. " card(s).");
-				showDeck(dealer.deck, dealer.numCards, activeChat);
-				send(activeChat,"<Dealer>: The dicard pile has " .. dealer.numDiscard .. " card(s).");
-				showDeck(dealer.discard, dealer.numDiscard, activeChat);
+				local txt = "<Dealer>: The deck has " .. dealer.numCards .. " card(s)."
+				send(activeChat, txt);
+				logText(dealer, txt, login);
+
+				txt = showDeck(dealer.deck, dealer.numCards, activeChat);
+				logText(dealer, txt, login);
+
+				local txt = "<Dealer>: The dicard pile has " .. dealer.numDiscard .. " card(s)."
+				send(activeChat, txt);
+				logText(dealer, txt, login);
+
+				txt = showDeck(dealer.discard, dealer.numDiscard, activeChat);
+				logText(dealer, txt, login);
 
 				for k,v in pairs(dealer.players) do
-					send(activeChat,"<Dealer>: " .. k .." has " .. dealer.hands[k] .. " card(s).");
-					showDeck(dealer.players[k], dealer.hands[k], activeChat)
+					local txt = "<Dealer>: " .. k .." has " .. dealer.hands[k] .. " card(s)."
+					send(activeChat,txt);
+					logText(dealer, txt, login);
+
+					txt = showDeck(dealer.players[k], dealer.hands[k], activeChat)
+					logText(dealer, txt, login);
 				end;
 
-			else
+			elseif dealer.botEnabled then
 				send(activeChat, "<Dealer>: Unknown Command.");
 			end;
 		end;
 	end);
 
+
+Firecast.Messaging.listen("HandleChatCommand", 
+	function (message)
+		if message.mesa == nil then return end;
+		initializeRoom(message.mesa);
+
+		if message.comando == "dealer" then
+			local cfgForm = getConfigWindow(message.mesa);
+
+			if (cfgForm) then
+				cfgForm:show();
+			end;
+
+			message.response = {handled = true};
+		elseif message.comando == "dealerOn" then
+			dealerDB.rooms[message.mesa.codigoInterno].botEnabled = true;
+
+			message.response = {handled = true};
+		elseif message.comando == "dealerOff" then
+			dealerDB.rooms[message.mesa.codigoInterno].botEnabled = false;
+			message.response = {handled = true};
+		end;
+	end);
+
 Firecast.Messaging.listen("ListChatCommands",
     function(message)
-        message.response = {{comando="dealer help", descricao="Exibe os comandos do dealer."}};
+        message.response = {{comando="dealer help", descricao="Exibe os comandos do dealer."},
+        										{comando="/dealer", descricao="Abre o popup de configurações."},
+        										{comando="/dealerOn", descricao="Ativa o dealer nessa mesa."},
+        										{comando="/dealerOff", descricao="Delsiga o dealer nessa mesa."}};
     end);
