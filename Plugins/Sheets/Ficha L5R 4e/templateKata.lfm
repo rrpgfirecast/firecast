@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="templateKata" height="140" margins="{top=5,bottom=5}">  
+    <label text="Nome:" left="5" top="5" />
+    <edit left="50" field="aaa" height="25" width="160" margins="{right=2}"/>
+    
+    <label text="Tipo:" left="215" top="5" />
+
+    <label text="Anel:" left="15" top="33" />
+    <comboBox left="50" width="65" top="30" height="25" horzTextAlign="center" items="{'Água', 'Ar', 'Fogo', 'Terra', 'Vazio'}" field="elementoKata"
+                  values="{'Água', 'Ar', 'Fogo', 'Terra', 'Vazio'}"/>
+
+    <label text="Maestria:" left="123" top="33" /><edit left="183" top="30" field="abb" height="25" horzTextAlign="center" width="25" margins="{right=2}"/>
+
+    <comboBox left="215" width="105" top="30" height="25" horzTextAlign="center" items="{'Kata', 'Kiho Interno', 'Kiho Kármico', 'Kiho Marcial', 'Kiho Místico'}" field="tipoKata"
+                  values="{'Kata', 'Kiho Interno', 'Kiho Kármico', 'Kiho Marcial', 'Kiho Místico'}"/>
+
+    <button left="320" text="-" width='25' height='25'
+                onClick="NDB.deleteNode(sheet);"/>
+
+    <textEditor top="60" left="5" width="340" height="85"/>
+</form>

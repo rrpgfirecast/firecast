@@ -1,0 +1,381 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<group>
+	<!-- TEMPLATES -->
+	<template name="panAtribsEx">
+		<layout left="$(left)" top="$(top)" width="200" height="300">
+			<!--  
+				itens = totable(body);
+				
+				for k, v in pairs(itens) do
+					titulo = v;
+					fieldName = "atributos." .. removerAcentos(titulo);
+			-->			
+			
+			<layout class="painelatrib">			
+				<label text="$(titulo)"/>
+				<edit field="$(fieldName)"/>			
+			</layout>	
+			
+			<!-- end;-->
+		</layout>
+	</template>	
+		
+	<template name="upperGridCampo">
+		<!-- baseName = uniqueName("UpperGridCampo"); -->	
+	
+		<flowPart height="$(height or 50)" minScaledWidth="$(minScaledWidth or minWidth or 100)" 
+				  minWidth="$(minWidth or 100)" maxWidth="$(maxWidth or 233)" 
+				  maxScaledWidth="$(maxScaledWidth or maxWidth or 233)" avoidScale="true"
+				  name="$(baseName)">
+				  
+				<edit name="edt$(baseName)" align="top" class="infoNoTopo" field="$(field)" fontSize="13"/>
+				<horzLine name="lin$(baseName)" align="top" strokeColor="#FFFFFF50" strokeSize="1"/>
+				<label name="lab$(baseName)" align="top" class="tituloCampo" text="$(titulo)" vertTextAlign="leading" wordWrap="true" textTrimming="none"/>															
+				
+				<script>    self.$(baseName):setHeight(self.edt$(baseName):getHeight() + self.lab$(baseName):getHeight() + self.lin$(baseName):getHeight());</script>								
+			</flowPart>					
+	</template>	
+	
+	<template name="upperGridCampoSolido">
+		<!-- baseName = uniqueName("GridCampoSolido"); -->
+	
+		<flowPart height="$(height or 50)" minScaledWidth="$(minScaledWidth or minWidth or 100)" 
+				  minWidth="$(minWidth or 100)" maxWidth="$(maxWidth or 233)" 
+				  maxScaledWidth="$(maxScaledWidth or maxWidth or 233)" avoidScale="true"
+				  name="$(baseName)">
+				  
+				<edit name="edt$(baseName)" align="top" class="infoNoTopo" field="$(field)" fontSize="13" transparent="false" vertTextAlign="center"/>
+				<label name="lab$(baseName)" align="top" class="tituloCampo" text="$(titulo)" vertTextAlign="leading" wordWrap="true" textTrimming="none"/>															
+				
+				<script>    self.$(baseName):setHeight(self.edt$(baseName):getHeight() + self.lab$(baseName):getHeight());</script>				
+			</flowPart>					
+	</template>		
+	
+	<template name="upperGridCampoSolidoCheckBox">
+		<!-- baseName = uniqueName("GridCampoSolido"); -->
+	
+		<flowPart height="$(height or 50)" minScaledWidth="$(minScaledWidth or minWidth or 32)" 
+				  minWidth="$(minWidth or 32)" maxWidth="$(maxWidth or 32)" 
+				  maxScaledWidth="$(maxScaledWidth or maxWidth or 32)" avoidScale="true"
+				  name="$(baseName)">
+				  
+				<dndCheckBox name="cbx$(baseName)" align="top" field="$(field)" losango="true" height="32"/>				
+				<label name="lab$(baseName)" align="top" class="tituloCampo" text="$(titulo)" horzTextAlign="center" vertTextAlign="leading" wordWrap="true" textTrimming="none"/>															
+				
+				<script>    self.$(baseName):setHeight(self.cbx$(baseName):getHeight() + self.lab$(baseName):getHeight());</script>				
+			</flowPart>					
+	</template>	
+
+	<template name="upperGridMagicBox">
+		<!-- baseName = uniqueName("upperGridMagicBox"); -->
+	
+		<flowPart height="$(height or 50)" minScaledWidth="$(minScaledWidth or minWidth or 100)" 
+				  minWidth="$(minWidth or 100)" maxWidth="$(maxWidth or 160)" 
+				  maxScaledWidth="$(maxScaledWidth or maxWidth or 160)" avoidScale="true"
+				  name="$(baseName)" vertAlign="leading" margins="$(margins or '{left=5, right=5, top=5, bottom=5}')">			  
+				
+				<script>								
+					rawset(self.$(baseName), "_RecalcSize", 
+						function ()
+							self.$(baseName):setHeight(self.pan$(baseName):getHeight() + self.lab$(baseName):getHeight());
+						end);														
+				</script>				  
+				  
+				<frame name="pan$(baseName)" align="top" frameStyle="frames/panel6/panel6.xml" height="60">
+					<label name="lab$(baseName)val" frameRegion="ContentRegion" class="transparente" field="$(field)" fontSize="$(fontSize or 22)" vertTextAlign="center" horzTextAlign="center"/>	
+				</frame>
+				
+				<label name="lab$(baseName)" align="top" class="tituloCampo" autoSize="true" text="$(titulo)" horzTextAlign="center" vertTextAlign="leading" wordWrap="true" textTrimming="none"
+					   onResize="self.$(baseName)._RecalcSize();"/>												
+					   
+				<script>self.$(baseName)._RecalcSize();	</script>
+			</flowPart>					
+	</template>	
+	
+	<template name="upperGridMagicComboBox">
+		<!-- baseName = uniqueName("upperGridMagicBox"); -->
+	
+		<flowPart height="$(height or 50)" minScaledWidth="$(minScaledWidth or minWidth or 100)" 
+				  minWidth="$(minWidth or 100)" maxWidth="$(maxWidth or 160)" 
+				  maxScaledWidth="$(maxScaledWidth or maxWidth or 160)" avoidScale="true"
+				  name="$(baseName)" vertAlign="leading" margins="$(margins or '{left=5, right=5, top=5, bottom=5}')">			  
+				
+				<script>								
+					rawset(self.$(baseName), "_RecalcSize", 
+						function ()
+							self.$(baseName):setHeight(self.pan$(baseName):getHeight() + self.lab$(baseName):getHeight());
+						end);														
+				</script>				  
+				  
+				<frame name="pan$(baseName)" align="top" frameStyle="frames/panel6/panel6.xml" height="60">
+					<comboBox name="cmb$(baseName)" frameRegion="ContentRegion" class="transparente" field="$(field)" items="$(items or {})" values="$(values or {})" horzTextAlign="center" vertTextAlign="center" fontSize="13"/>	
+				</frame>
+				
+				<label name="lab$(baseName)" align="top" class="tituloCampo" autoSize="true" text="$(titulo)" horzTextAlign="center" vertTextAlign="leading" wordWrap="true" textTrimming="none"
+					   onResize="self.$(baseName)._RecalcSize();"/>												
+					   
+				<script>self.$(baseName)._RecalcSize();	</script>
+			</flowPart>					
+	</template>		
+	
+	<template name="upperGridMagicEditBox">
+		<!-- baseName = uniqueName("upperGridMagicEditBox"); -->
+	
+		<flowPart height="$(height or 50)" minScaledWidth="$(minScaledWidth or minWidth or 100)" 
+				  minWidth="$(minWidth or 100)" maxWidth="$(maxWidth or 160)" 
+				  maxScaledWidth="$(maxScaledWidth or maxWidth or 160)" avoidScale="true"
+				  name="$(baseName)" vertAlign="leading" margins="$(margins or '{left=5, right=5, top=5, bottom=5}')">			  
+				
+				<script>								
+					rawset(self.$(baseName), "_RecalcSize", 
+						function ()
+							self.$(baseName):setHeight(self.pan$(baseName):getHeight() + self.lab$(baseName):getHeight());
+						end);														
+				</script>				  
+				  
+				<frame name="pan$(baseName)" align="top" frameStyle="frames/panel6/panel6.xml" height="60">
+					<edit name="edt$(baseName)" frameRegion="ContentRegion" class="transparente" field="$(field)" fontSize="$(fontSize or 22)" vertTextAlign="center" horzTextAlign="center"/>	
+				</frame>
+				
+				<label name="lab$(baseName)" align="top" class="tituloCampo" autoSize="true" text="$(titulo)" horzTextAlign="center" vertTextAlign="leading" wordWrap="true" textTrimming="none"
+					   onResize="self.$(baseName)._RecalcSize();"/>												
+					   
+				<script>self.$(baseName)._RecalcSize();	</script>
+			</flowPart>					
+	</template>	
+		
+		
+	<template name="boxAtributo">
+		<!-- 
+			if (type(body) == "string") and (body ~= "") then
+				pericias = totable(body);
+			else
+				pericias = {};
+			end;
+		-->
+	
+		<dataLink field="atributos.$(field)">
+			<event name="onChange">		
+				local numAsStr = tostring(newValue);
+				local numero;
+				
+				if numAsStr ~= "" then
+					numero = tonumber(newValue);
+				else
+					numero = nil;
+				end;
+
+				if type(sheet.atributos) ~= 'table' then
+					sheet.atributos = {};
+				end;				
+				
+				if type(numero) == 'number' then
+					local modificador = math.floor(numero / 2) - 5;								
+					sheet.atributos.mod$(field) = modificador;	
+				
+					if modificador >= 0 then
+						sheet.atributos.mod$(field)str = "+" .. modificador;
+					else	
+						sheet.atributos.mod$(field)str = "-" .. math.abs(modificador);
+					end;	
+				else
+					sheet.atributos.mod$(field) = nil;
+					sheet.atributos.mod$(field)str = nil;
+				end;
+			</event>
+		</dataLink>
+		
+		<flowPart height="140" minWidth="320" maxWidth="420" minScaledWidth="305" frameStyle="frames/atributeFrame2/frame.xml">
+			<layout left="6" top="12" width="116" height="115">
+				<edit class="atributo"  align="top" margins="{left=30, right=30}" field="atributos.$(field)" height="30" type="number" min="0" max="99"/>								
+			</layout>
+			
+			<label frameRegion="modificador" field="atributos.mod$(field)str" horzTextAlign="center" vertTextAlign="center" fontSize="46" fontStyle="bold"/>
+			<label frameRegion="titulo" text="$(titulo)" vertTextAlign="center" horzTextAlign="center"/>
+			
+			<flowLayout frameRegion="RegiaoDePericias" autoHeight="true" lineSpacing="0" horzAlign="leading">			
+				<boxPericia field="$('resistencias.' .. field)" fieldBonus="resistencias.bonus$(field)str" atributo="$(field)" titulo="Teste de Resistência" losango="true"/>
+				<dataLink fields="{'atributos.mod$(field)', 'bonusProficiencia', 'resistencias.$(field)'}">
+					<event name="onChange">
+							local modificador;
+							local temResistencia;
+									
+							if sheet.atributos ~= nil then
+								modificador = sheet.atributos.mod$(field);
+								
+								if modificador ~= nil then
+									modificador = tonumber(modificador);
+								end;
+							else
+								modificador = nil;
+							end;
+							
+							if sheet.resistencias ~= nil then
+								temResistencia = sheet.resistencias.$(field) or false;
+							else
+								temResistencia = false;
+								sheet.resistencias = {};
+							end;
+													
+							
+							if modificador ~= nil then
+								local valor;
+							
+								if temResistencia then
+									valor = modificador	+ (tonumber(sheet.bonusProficiencia) or 0)						
+								else
+									valor = modificador;
+								end;								
+								
+								valor = math.tointeger(valor);
+								
+								sheet.resistencias.bonus$(field) = valor;
+								
+								if valor >= 0 then
+									sheet.resistencias.bonus$(field)str = "+" .. valor;
+								else
+									sheet.resistencias.bonus$(field)str = "-" .. math.abs(valor);
+								end;
+							else
+								sheet.resistencias.bonus$(field) = nil;
+								sheet.resistencias.bonus$(field)str = nil;
+							end;	
+					</event>		
+				</dataLink>
+			
+				<!-- for i = 1, #pericias, 1 do 
+						objPericia = pericias[i];
+						periciaTitulo = objPericia[1];
+						periciaField = objPericia[2];
+					-->								
+					<boxPericia field="$('pericias.' .. periciaField)" fieldBonus="pericias.bonus$(periciaField)str" atributo="$('atributos.' .. field)" titulo="$(periciaTitulo)"/>
+					<dataLink fields="{'atributos.mod$(field)', 'bonusProficiencia', 'pericias.$(periciaField)'}">
+						<event name="onChange">
+							local modificador;
+							local temPericia;
+									
+							if sheet.atributos ~= nil then
+								modificador = sheet.atributos.mod$(field);
+								
+								if modificador ~= nil then
+									modificador = tonumber(modificador);
+								end;
+							else
+								modificador = nil;
+							end;
+							
+							if sheet.pericias ~= nil then
+								temPericia = sheet.pericias.$(periciaField) or false;
+							else
+								temPericia = false;
+								sheet.pericias = {};
+							end;
+													
+							
+							if modificador ~= nil then
+								local valor;
+							
+								if temPericia then
+									valor = modificador	+ (tonumber(sheet.bonusProficiencia) or 0)						
+								else
+									valor = modificador;
+								end;								
+								
+								valor = math.tointeger(valor);
+								
+								sheet.pericias.bonus$(periciaField)	= valor;
+								
+								if valor >= 0 then
+									sheet.pericias.bonus$(periciaField)str = "+" .. valor;
+								else
+									sheet.pericias.bonus$(periciaField)str = "-" .. math.abs(valor);
+								end;
+							else
+								sheet.pericias.bonus$(periciaField) = nil;
+								sheet.pericias.bonus$(periciaField)str = nil;
+							end;
+						</event>
+					</dataLink>
+				<!-- end; -->
+			</flowLayout>
+		</flowPart>
+	</template>
+	
+	<template name="dndCheckBox">
+		<!-- 	
+			if (losango == "true") then			
+				urlImageChecked = "images/checkbox2_checked.png";
+				urlImageUnchecked = "images/checkbox2_unchecked.png";
+			else
+				urlImageChecked = "images/checkbox1_checked.png";
+				urlImageUnchecked = "images/checkbox1_unchecked.png";			
+			end;			
+		-->
+		<imageCheckBox align="$(align or 'none')" width="$(width or 20)" margins="$(margins or '{}')" field="$(field)"  optimize="false" imageChecked="$(urlImageChecked)"
+			imageUnchecked="$(urlImageUnchecked)" name="$(name or '')" height="$(height or 20)"/>
+		<!-- -->
+	</template>
+		
+	<template name="boxPericia">
+		<flowPart minWidth="206" maxWidth="250" height="17">			
+			<dndCheckBox align="left" field="$(field)" losango="$(losango)"/>
+			<layout align="left" width="26" margins="{left=2}">	
+				<label field="$(fieldBonus)" align="client" horzTextAlign="center" vertTextAlign="trailing" textTrimming="none"/>
+				<horzLine strokeColor="white" strokeSize="1" align="bottom"/>
+			</layout>
+			<label align="client" text="$(titulo)" vertTextAlign="trailing" margins="{left=5}" autoSize="true" wordWrap="false"/>			
+		</flowPart>
+	</template>			
+	
+	<template name="boxDinheiro">
+		<frame frameStyle="frames/dinheiro/pecaCobre.xml" width="$(width or 228)" height="$(height or 64)" align="$(align or 'none')" margins="$(margins or '{}')" >
+			<label class="tituloCampo" frameRegion="RegiaoSmallTitulo" horzTextAlign="center" vertTextAlign="center" text="$(text or 'PC')" textTrimming="none" wordWrap="false" />
+			<edit class="transparente" frameRegion="RegiaoValor" field="$(field)" vertTextAlign="center" horzTextAlign="center" fontSize="19"/>
+		</frame>
+	</template>
+	
+	<template name="magiaItemContentEditAndLine">
+		<edit name="edtNome" class="transparente" align="client" field="nome" margins="{left=4, right=4}" vertTextAlign="center"/>
+		<horzLine align="bottom" strokeColor="white"/>						
+		<button text="i" align="right" width="32" margins="{left=4, right=0, top=2, bottom=2}" onClick="showMagiaPopup();"/>		
+		<button text="Apagar" align="right" width="60" margins="{left=4, right=4, top=2, bottom=2}" onClick="askForDelete();"/>		
+	</template>
+	
+	<template name="magiaItemContent">
+		<script> 
+			<![CDATA[			
+			local function askForDelete()
+				Dialogs.confirmYesNo("Deseja realmente apagar este item?",
+									 function (confirmado)
+										if confirmado then
+											NDB.deleteNode(self.sheet);
+										end;
+									 end);
+			end;
+			local function showMagiaPopup()
+				local pop = self:findControlByName("popMagia");
+					
+				if pop ~= nil then
+					pop:setNodeObject(self.sheet);
+					pop:showPopupEx("bottomCenter", self.edtNome);
+				else
+					showMessage("Ops, bug.. nao encontrei o popup de magia para exibir");
+				end;				
+			end;
+			]]>		
+		</script>
+		
+		
+		
+		<!-- if (useCheckBox == "true") or (useCheckBox == true) then -->
+		<dndCheckBox align="left" field="marcacao" width="25"/>
+		<layout align="client">
+			<magiaItemContentEditAndLine/>			
+		</layout>		
+		<!-- else -->
+		<magiaItemContentEditAndLine/>
+		<!-- end; -->
+		
+		<script>self.height=32;</script>
+	</template>
+</group>
