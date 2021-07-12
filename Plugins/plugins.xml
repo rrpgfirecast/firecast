@@ -5,6 +5,21 @@
             <dataType id="ambesek.afkbot" title="AfkBot"/>
         </dataTypes>
     </element>
+    <element id="Ficha_de_L5R_4e_SDK_3.5" name="L5R 4e (Otimizado)" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20L5R%204e/output/Ficha%20L5R%204e.rpk?raw=true" fileName="Ficha L5R 4e.rpk" repositoryPath="Sheets/Ficha L5R 4e/" author="Gatan" description="Ficha com cálculos automáticos para L5R 4e" version="1.0" compilationDate="12072021014707" compilationDigest="c33a5c72d60c664f1e7df7ce1917d9b12c091b36">
+        <dataTypes>
+            <dataType id="L5R_4e_Otimizado" title="L5R 4e (Otimizado)"/>
+        </dataTypes>
+    </element>
+    <element id="CthulhuSheet7e_byHelldemos" name="Ficha de Call of Cthulhu 7e" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Call%20Of%20Cthulhu%207e/output/Call%20Of%20Cthulhu%207e.rpk?raw=true" fileName="Call Of Cthulhu 7e.rpk" repositoryPath="Sheets/Call Of Cthulhu 7e/" author="helldemos (DaviCop)" description="Ficha de Call of Cthulhu criada para o RRPG Firecast" version="1.1" compilationDate="28062021212127" compilationDigest="49dcaef53486866eeb723e9b5c3c3b13ebb96bc1">
+        <dataTypes>
+            <dataType id="CthulhuSheet7e_byHelldemos" title="Ficha de Call of Cthulhu 7e"/>
+        </dataTypes>
+    </element>
+    <element id="CthulhuSheet7eDarkAges_byHelldemos" name="Ficha de Call of Cthulhu Dark Ages" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Call%20Of%20Cthulhu%20Dark%20Ages/output/Call%20Of%20Cthulhu%20Dark%20Ages.rpk?raw=true" fileName="Call Of Cthulhu Dark Ages.rpk" repositoryPath="Sheets/Call Of Cthulhu Dark Ages/" author="helldemos (DaviCop)" description="Ficha de Call of Cthulhu Dark Ages criada para o RRPG Firecast" version="1.1" compilationDate="28062021213145" compilationDigest="94e1ad611d5ba1df09ba4a8fbdbc7d88f38635b1">
+        <dataTypes>
+            <dataType id="CthulhuSheet7eDarkAges_byHelldemos" title="Ficha de Call of Cthulhu Dark Ages"/>
+        </dataTypes>
+    </element>
     <element id="Autolog" name="Autolog" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/ChatMods/Autolog/output/Autolog.rpk?raw=true" fileName="Autolog.rpk" repositoryPath="ChatMods/Autolog/" author="Dniester &quot;Tyras&quot; Amorim de Aguiar" description="Salva automaticamente o log das mesas na pasta &quot;Documentos\RRPG\Complementos\Autolog\Logs&quot;" version="1.2.6" compilationDate="29062019194118" compilationDigest="8de0a3bf11210212b066cc6b0b1d413d5f10ba5c">
         <dataTypes>
             <dataType id="br.com.rrpg.Autolog" title="Autolog"/>
