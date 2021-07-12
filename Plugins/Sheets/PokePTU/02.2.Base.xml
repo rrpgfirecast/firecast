@@ -39,10 +39,21 @@
 	<layout left="005" top="10" width="800" height="560">
 		<rectangle left="00" top="00" width="30" height="30" color="gray"/>
 		<image left="00" top="00" width="30" height="30" editable="true" field="campoPokebola"/>   
-		<dataLink field="campoPokebola" defaultValue="https://cdn.bulbagarden.net/upload/9/93/Bag_Pok%C3%A9_Ball_Sprite.png" />
+		<dataLink field="campoPokebola" defaultValue="https://cdn2.bulbagarden.net/upload/9/93/Bag_Pok%C3%A9_Ball_Sprite.png" />
 		<rectangle left="35" top="00" width="160" height="160" color="gray" />
 		<image left="35" top="00" width="160" height="160" editable="true" field="campoPokemon" animate = "true"/>
-		<image left="000" top="45" width="30" height="30" field="basSEX" style="proportional" editable="false"/>	
+		
+		<image left="000" top="35" width="30" height="30" field="basSEX" style="proportional" editable="false"/>	
+		
+		<imageCheckBox left="00" top="70" height="30" width="30" field="PokShiny" hint="Padrão ou Shiny"
+			checkedImage="/img/Shiny_ON.png"
+			uncheckedImage="/img/Shiny_OFF.png"/>
+		<dataLink field="PokShiny" defaultValue="false" />
+		
+		<imageCheckBox left="000" top="105" height="30" width="30" field="PokTrain" hint="Verde = Aplicar treinamento automático"
+			checkedImage="/img/TrainON.jpg"
+			uncheckedImage="/img/TrainOFF.jpg"/>
+
 		<button left="0" top="140" width="15" height="20" text="E" hint = "Exportar uma ficha">
 			<event name="onClick">
 				local xml = NDB.exportXML(self.boxDetalhesDoItem.node);
@@ -70,10 +81,6 @@
 				</event>
 			</button>				
 		<dataLink field="active" defaultValue="true" />										
-			<imageCheckBox left="00" top="90" height="30" width="30" field="PokShiny" hint="Padrão ou Shiny"
-				checkedImage="/img/Shiny_ON.png"
-				uncheckedImage="/img/Shiny_OFF.png"/>
-		<dataLink field="PokShiny" defaultValue="false" />
 		</layout>    
 
 	<layout left="210" top="10" width="800" height="800">

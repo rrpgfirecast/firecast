@@ -321,7 +321,7 @@
             <dataType id="HITO_PLAYER_POKEPTAOLD" title="Hitoshura - Pokemon PTA (Antigo)"/>
         </dataTypes>
     </element>
-    <element id="ID_PLAYER_PokemonPTUHITO" name="Hito - Pokémon PTU" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/PokePTU/output/PokePTU.rpk?raw=true" fileName="PokePTU.rpk" repositoryPath="Sheets/PokePTU/" author="Hitoshura" description="Essa ficha permite fazer a ficha de jogador e pokémons no sistema Pokémon Tabletop United." version="4.0" compilationDate="31032021234529" compilationDigest="81a73225efa3feaddfb45652afee8291175da6a3">
+    <element id="ID_PLAYER_PokemonPTUHITO" name="Hito - Pokémon PTU" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/PokePTU/output/PokePTU.rpk?raw=true" fileName="PokePTU.rpk" repositoryPath="Sheets/PokePTU/" author="Hitoshura" description="Essa ficha permite fazer a ficha de jogador e pokémons no sistema Pokémon Tabletop United." version="5.0" compilationDate="31032021234529" compilationDigest="81a73225efa3feaddfb45652afee8291175da6a3">
         <dataTypes>
             <dataType id="HITO_PLAYER_POKEMONPTU" title="Hitoshura - Pokemon PTU"/>
         </dataTypes>

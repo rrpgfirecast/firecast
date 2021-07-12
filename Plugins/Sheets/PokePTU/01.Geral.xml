@@ -14,12 +14,17 @@
 		</template>	
 		
 	<template name="AttributeT">
-		<label left="000" top="$(Top)" height="20" width="100" text="$(Name)" horzTextAlign="center" autoSize="true" fontStyle="bold"/>
+		<label left="000" top="$(Top)" height="20" width="100" text="$(Name)" autoSize="true" fontStyle="bold"/>
         <edit left="105" top="$(Top)" height="20" width="30" field="$(Field)_val" horzTextAlign="center" type="number" />
-        <comboBox left="140" top="$(Top)" height="20" width="45" field="$(Field)_edc" horzTextAlign="center" items="{'-6', '-5', '-4', '-3', '-2', '-1', '0', '1', '2', '3', '4', '5', '6'}" values="{'1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13'}" />
-        <edit left="190" top="$(Top)" height="20" width="30" field="$(Field)_tot" horzTextAlign="center" type="number" enabled="false" />
+        <edit left="140" top="$(Top)" height="20" width="30" field="$(Field)_BF" horzTextAlign="center" type="number" hint = "Bônus de Feature/Classe"/>
+        <edit left="175" top="$(Top)" height="20" width="30" field="$(Field)_BI" horzTextAlign="center" type="number" hint ="Bônus de Item, NÃO entra no EdC"/>
+        <comboBox left="210" top="$(Top)" height="20" width="45" field="$(Field)_edc" horzTextAlign="center" items="{'-6', '-5', '-4', '-3', '-2', '-1', '0', '1', '2', '3', '4', '5', '6'}" values="{'1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13'}" />
+        <edit left="260" top="$(Top)" height="20" width="30" field="$(Field)_tot" horzTextAlign="center" type="number" enabled="false" />
         <dataLink field="$(Field)_val" defaultValue="5" />
-        <dataLink field="$(Field)_edc" defaultValue="7" />
+        <dataLink field="$(Field)_BF" defaultValue="0" />
+        <dataLink field="$(Field)_BI" defaultValue="0" />
+        <dataLink field="$(Field)_val" defaultValue="5" />		
+		<dataLink field="$(Field)_edc" defaultValue="7" />
 		</template>
 	
 	<template name="TotBon">
@@ -31,6 +36,11 @@
 	<template name="TotSolo">
 		<label left="000" top="$(Top)" height="20" width="80" text="$(Name)" autoSize="true" fontStyle="bold"/>
         <edit left="85" top="$(Top)" height="20" width="30" field="$(Field)" horzTextAlign="center" type="number"  enabled="false"/>
+		</template>
+		
+	<template name="TotSolo2">
+		<label left="000" top="$(Top)" height="20" width="80" text="$(Name)" autoSize="true" fontStyle="bold"/>
+        <edit left="85" top="$(Top)" height="20" width="30" field="$(Field)" horzTextAlign="center" type="number"  enabled="true"/>
 		</template>
 
 	<template name="Insignea">	
@@ -100,32 +110,53 @@
 		</layout>
 		
 	<layout left="305" top="160" height="260" width="800">
-		<campoAtuMax1 Top="000" Name="Hit Points" Field1="baseHPAtual" Field2 = "baseHPMAX"/>
-		<campoAtuMax1 Top="025" Name="Action P." Field1="baseAPAtual" Field2 = "baseAPMAX"/>
-		<dataLink field="baseAPAtual" defaultValue="5" />	
+		<campoAtuMax1 Top="000" Name="Action P." Field1="baseAPAtual" Field2 = "baseAPMAX"/>
+		<campoAtuMax1 Top="025" Name="Hit Points" Field1="baseHPAtual" Field2 = "baseHPMAX"/>
+		<dataLink field="baseAPAtual" defaultValue="5" />
+		<label left="085" top="050" height="20" width="35" text="100%" horzTextAlign="center" autoSize="true" />
+		<edit left="120" top="050" height="20" width="30" field="HP_100" horzTextAlign="center" type="number" enabled="false"/>
+		<label left="155" top="050" height="20" width="35" text="50%" horzTextAlign="center" autoSize="true" />
+		<edit left="190" top="050" height="20" width="30" field="HP_50" horzTextAlign="center" type="number" enabled="false"/>
+		<label left="225" top="050" height="20" width="35" text="10%" horzTextAlign="center" autoSize="true" />
+		<edit left="260" top="050" height="20" width="30" field="HP_10" horzTextAlign="center" type="number" enabled="false"/>
+
 		</layout>
 		
 	<layout left="10" top="225" height="320" width="420">
 		<label left="000" top="000" height="20" width="100" text="Atributo" horzTextAlign="center" autoSize="true" fontStyle="bold" />
-		<label left="105" top="000" height="20" width="30" text="Valor" autoSize="true" horzTextAlign="center"/>
-		<label left="140" top="000" height="20" width="45" text="Lesões" autoSize="true" horzTextAlign="center"/>
-		<label left="190" top="000" height="20" width="30" text="RD" autoSize="true" horzTextAlign="center"/>
-		<label left="190" top="050" height="20" width="30" text="Total" autoSize="true" horzTextAlign="center"/>
+		<label left="105" top="000" height="20" width="30" text="Base" autoSize="true" horzTextAlign="center" fontStyle="bold"/>		
+		<label left="140" top="000" height="20" width="30" text="BF" horzTextAlign="center" autoSize="true" fontStyle="bold"/>
+		<label left="175" top="000" height="20" width="30" text="BI" horzTextAlign="center" autoSize="true" fontStyle="bold"/>
+ 		<label left="258" top="000" height="20" width="34" text="Total" autoSize="true" horzTextAlign="center" fontStyle="bold"/>
+		<label left="210" top="000" height="20" width="45" text="Lesões" autoSize="true" horzTextAlign="center" fontStyle="bold"/>	
 		<label left="000" top="025" height="20" width="100" text="HP" horzTextAlign="center" autoSize="true" fontStyle="bold" />
 		<edit left="105" top="025" height="20" width="30" field="HP_val" horzTextAlign="center" type="number" />
+		<edit left="140" top="025" height="20" width="30" field="HP_BF" horzTextAlign="center" type="number" hint="Bônus de Feature/Classe"/>
+		<edit left="175" top="025" height="20" width="30" field="HP_BI" horzTextAlign="center" type="number" hint="Bônus de Item, NÃO entra no EdC"/>
+		<comboBox left="210" top="025" height="20" width="45" field="HP_Les" horzTextAlign="center" items="{'0', '1', '2', '3', '4', '5', '6', '7', '8', '9'}" values="{'0', '1', '2', '3', '4', '5', '6', '7', '8', '9'}" />
+		<edit left="260" top="025" height="20" width="30" field="HP_tot" horzTextAlign="center" type="number" enabled="false"/>
 		<dataLink field="HP_val" defaultValue="10" />
-		<comboBox left="140" top="025" height="20" width="45" field="HP_Les" horzTextAlign="center" items="{'0', '1', '2', '3', '4', '5', '6', '7', '8', '9'}" values="{'0', '1', '2', '3', '4', '5', '6', '7', '8', '9'}" />
-		<edit left="190" top="025" height="20" width="30" field="Red_Dano" horzTextAlign="center" type="number"/>
+		<dataLink field="HP_BF" defaultValue="0" />
+		<dataLink field="HP_BI" defaultValue="0" />
 		<dataLink field="HP_Les" defaultValue="0" />
-		<label left="140" top="050" height="20" width="30" text="EdC" autoSize="true" horzTextAlign="center"/>		
+			
+		<label left="000" top="050" height="20" width="100" text="Atributo" horzTextAlign="center" autoSize="true" fontStyle="bold"/>
+		<label left="105" top="050" height="20" width="30" text="Base" horzTextAlign="center" autoSize="true" fontStyle="bold"/>
+		<label left="140" top="050" height="20" width="30" text="BF" horzTextAlign="center" autoSize="true" fontStyle="bold"/>
+		<label left="175" top="050" height="20" width="30" text="BI" horzTextAlign="center" autoSize="true" fontStyle="bold"/>
+		<label left="210" top="050" height="20" width="45" text="EdC" horzTextAlign="center" autoSize="true" fontStyle="bold"/>
+ 		<label left="258" top="050" height="20" width="34" text="Total" autoSize="true" horzTextAlign="center" fontStyle="bold"/>	
 		<AttributeT Top="075" Field="ATK" Name="Ataque"/>
 		<AttributeT Top="100" Field="DEF" Name="Defesa"/>
 		<AttributeT Top="125" Field="SPATK" Name="Ataque Especial"/>
 		<AttributeT Top="150" Field="SPDEF" Name="Defesa Especial"/>
 		<AttributeT Top="175" Field="SPD" Name="Velocidade"/>
+		<edit left="105" top="200" height="20" width="30" field="AttTotAt" horzTextAlign="center" type="number" enabled="false"/>
+		<label left="135" top="200" height="20" width="5" text="/" horzTextAlign="center" autoSize="true" fontStyle="bold" />
+		<edit left="140" top="200" height="20" width="30" field="AttTotTe" horzTextAlign="center" type="number" enabled="false"/>
 		</layout>
 				
-	<layout left="285" top="250" height="320" width="420">
+	<layout left="315" top="250" height="320" width="420">
 		<label left="85" top="000" height="20" width="30" text="Tot." autoSize="true" horzTextAlign="center"/>
 		<label left="120" top="000" height="20" width="30" text="Bôn." autoSize="true" horzTextAlign="center"/>
 		<TotBon Top ="025" Name="Eva. Física" Field1 = "pers_EVAF" Field2 = "pers_bonEVAF"/>
@@ -134,6 +165,7 @@
 		<TotBon Top ="100" Name="Iniciativa" Field1 = "pers_INI" Field2 = "pers_bonINI"/>
 		<TotSolo Top = "125" Name="Força" Field = "DES_Forca"/>
 		<TotSolo Top = "150" Name="Arremesso" Field = "DES_ARREM"/>
+		<TotSolo2 Top = "175" Name="RD. Físico" Field = "Red_Dano"/>
 		</layout>
 		
 	<layout left="480" top="250" height="320" width="420">
@@ -144,6 +176,7 @@
 		<TotSolo Top="100" Name="Teleporte" Field = "DES_TELE"/>
 		<TotSolo Top="125" Name="Salto Ver." Field = "DES_SALV"/>
 		<TotSolo Top="150" Name="Salto Hor." Field = "DES_SALH"/>
+		<TotSolo2 Top = "175" Name="RD. Especial" Field = "Red_Dano2"/>
 		</layout>
 
 	<layout left="620" top="10" height="512" width="512">
@@ -151,9 +184,9 @@
 		<rectangle left="005" top="005" width="350" height="350" color="Black" strokeColor="black" strokeSize="4" />
 		<image left="005" top="005" width="350" height="350" field="basPERS" editable="true" style="proportional" animate="true" hint="350x350"/>
 		</layout>
-		
-	<layout left="680" top="395" height="512" width="512">
-		<button left="00" top="00" width="240" height="25" text="Contador de Iniciativas" fontStyle="bold" fontSize="15">
+
+	<layout left="630" top="380" height="80" width="80">
+		<button left="00" top="00" width="75" height="70" text="Iniciativas" fontStyle="bold" fontSize="12">
 			<event name="onClick">
 				if sheet == nil then 
 					return 
@@ -203,6 +236,61 @@
 			</button>
 		</layout>
 
+	<layout left="720" top="380" height="500" width="260">	
+		<label left="000" top="000" height="20" width="150" text="Dia do Treino:" autoSize="true"  fontStyle="bold"/>
+		<edit left="140" top="000" height="20" width="30" field="DTrain" horzTextAlign="center" type ="number"/>
+		<label left="000" top="025" height="20" width="150" text="Bônus de Experiência:" autoSize="true"  fontStyle="bold"/>
+		<edit left="140" top="025" height="20" width="30" field="BExp" horzTextAlign="center" type ="number"/>
+		<label left="000" top="050" height="20" width="150" text="Limite de Pokémons:" autoSize="true"  fontStyle="bold"/>
+		<edit left="140" top="050" height="20" width="30" field="LPok" horzTextAlign="center" type ="number"/>
+		<button left="175" top="000" width="75" height="70" text="Treinar" fontStyle="bold" fontSize="12">
+			<event name="onClick">
+				if sheet == nil then 
+					return 
+					end;
+				local mesa = Firecast.getMesaDe(sheet);
+				local xp = sheet.BExp or 0;
+				local dia = sheet.DTrain or 0;
+				local a = sheet.baseName;
+				local p =  ndb.getChildNodes(sheet.campoDosItens);
+				local Lim = tonumber(sheet.LPok) or 1;
+				local counter = 0;
+				mesa.activeChat:enviarMensagem ("Inicia-se o treino do dia [§B]"..dia);
+				for i = 1, #p, 1 do
+					local b = p[i].PokTrain or false;
+					local n = p[i].campoNome or " ";
+					if (counter >= Lim) then
+						mesa.activeChat:enviarMensagem ("Você atingiu o limite de treinos do dia "..dia);
+						break
+						end
+					counter = counter+1;
+					if (b) then
+						local atu = p[i].campoExpAt or 0;
+						local nex = p[i].nextLVEXP or 10;
+						local diatr = p[i].diaultimotreino or 0;
+						local lev = p[i].pokeLevel or 1;
+						if (diatr >= dia) then
+							mesa.activeChat:enviarMensagem ("[§B]" .. n .."[§B] já treinou hoje dia [§B]"..dia);
+						else
+							mesa.activeChat:enviarMensagem ("[§B]" .. n .."[§B] será treinado hoje");
+							p[i].diaultimotreino = dia;
+							lev = math.floor(lev/2) + xp;
+							p[i].campoExpAt = atu + lev;
+							mesa.activeChat:enviarMensagem("Ele recebeu: [§B]"..lev.."[§B] de XP");
+							if p[i].campoExpAt >= nex then
+								mesa.activeChat:enviarMensagem("[§B]" .. n .."[§B] [§K9]subiu[§K14] de nivel");
+								p[i].campoNome = '[LVUP]'..p[i].campoNome;
+								end
+							end
+						end
+					end
+
+				</event>
+			</button>
+		</layout>
+		
+
+
 	<layout left="990" top="13" height="800" width="100">
 		<Insignea num="1" Top="00" Top2="05"/>
 		<Insignea num="2" Top="45" Top2="50"/>
@@ -244,7 +332,8 @@
 		<PokeSlot num="6"/>
 		</layout>
 		
-	<dataLink fields="{	'HP_val','baseHPAtual','basLV', 'HP_Les','ATK_val','ATK_edc', 'DEF_edc', 'DEF_val', 'SPATK_edc','SPATK_val',
+	<dataLink fields="{	'HP_val','baseHPAtual','HP_BI','HP_BF','basLV', 'HP_Les','ATK_val','ATK_BF','ATK_BI','ATK_edc', 'DEF_edc','DEF_val', 'DEF_BF','DEF_BI',
+						'SPATK_edc','SPATK_val','SPATK_BF','SPATK_BI','SPDEF_BI','SPDEF_BF','SPD_BF','SPD_BI',
 						'SPDEF_edc', 'SPDEF_val', 'SPD_edc', 'SPD_val', 'bon_DES_TER', 'niv_ACRO', 'niv_ATLE', 'niv_COMB', 'bon_DES_NAT', 
 						'bon_DES_ARREM','bon_DES_SALH','bon_DES_SALV', 'bon_DES_FORCA', 'pers_bonEVAF', 'pers_bonEVAE', 'pers_bonEVAV', 'pers_bonINI',
 						'bas_DES_LEVI','bas_DES_TELE','bon_DES_LEVI','bon_DES_TELE','niv_SOBR','FlagTraveler',}">
@@ -254,7 +343,6 @@
 				end;
 			local Nivel = tonumber(sheet.basLV) or 1;
 			local Lesoes = tonumber(sheet.HP_Les) or 0;
-			local basHP = tonumber(sheet.HP_val) or 10;
 			local SPDedc = tonumber(sheet.SPD_edc) or 7;
 			if 1 &gt; SPDedc then 
 				SPDedc = 7 
@@ -263,12 +351,21 @@
 				SPDedc = 7 
 				end;
 			local HPAt = tonumber(sheet.baseHPAtual) or 0;
-			
-			sheet.baseHPMAX = math.floor((Nivel*2 + basHP*3 + 10)*((10-Lesoes)/10));
+
+			local HP = {}
+			HP.bas = tonumber(sheet.HP_val) or 10;
+			HP.BI = tonumber(sheet.HP_BI) or 0;
+			HP.BF = tonumber(sheet.HP_BF) or 0;
+			HP.tot = HP.bas + HP.BI + HP.BF;
+			sheet.HP_tot = HP.tot;
+			sheet.HP_100 = math.floor(Nivel*2 + HP.tot*3 + 10)		
+			sheet.baseHPMAX = math.floor(sheet.HP_100*((10-Lesoes)/10));
 			local HPMax = tonumber(sheet.baseHPMAX) or 0;			
 			if (HPAt &gt; HPMax) then 	
 				sheet.baseHPAtual = HPMax;
 				end
+			sheet.HP_50 = math.floor(sheet.HP_100/2)
+			sheet.HP_10 = math.floor(sheet.HP_100/10)
 
 			local SPDedcDES = {-3,-2,-2,-1,-1,0,0,0,1,1,2,2,3};
 			local spdBonEdC = SPDedcDES[SPDedc] or 0;
@@ -359,47 +456,81 @@
 					end
 				end
 
-			local basATK = tonumber(sheet.ATK_val) or 5;
-			local basDEF = tonumber(sheet.DEF_val) or 5;
-			local basAES = tonumber(sheet.SPATK_val) or 5;
-			local basDES = tonumber(sheet.SPDEF_val) or 5;
-			local basVEL = tonumber(sheet.SPD_val) or 5;
-			local edcATK = tonumber(sheet.ATK_edc) or 7;
-			if 1 &gt; edcATK then 
-				edcATK = 7 
-				end;
-			if edcATK &gt; 13 then 
-				edcATK = 7 
-				end;
-			local edcDEF = tonumber(sheet.DEF_edc) or 7;
-			if 1 &gt; edcDEF then 
-				edcDEF = 7 
-				end;
-			if edcDEF &gt; 13 then 
-				edcDEF = 7 
-				end;
-			local edcAES = tonumber(sheet.SPATK_edc) or 7;
-			if 1 &gt; edcAES then 
-				edcAES = 7 
-				end;
-			if edcAES &gt; 13 then 
-				edcAES = 7 
-				end;
-			local edcDES = tonumber(sheet.SPDEF_edc) or 7;
-			if 1 &gt; edcDES then 
-				edcDES = 7 
-				end;
-			if edcDES &gt; 13 then 
-				edcDES = 7 
-				end;			
 			local EdCtable = {0.4,0.5,0.6,0.7,0.8,0.9,1,1.2,1.4,1.6,1.8,2,2.2};
+
+			local ATK = {}
+			ATK.bas = tonumber(sheet.ATK_val) or 5;
+			ATK.BF = tonumber(sheet.ATK_BF) or 0;
+			ATK.BI = tonumber(sheet.ATK_BI) or 0;
+			ATK.EdC = tonumber(sheet.ATK_edc) or 7;
+			if 1 &gt; ATK.EdC then 
+				ATK.EdC = 7 
+				end;
+			if ATK.EdC &gt; 13 then 
+				ATK.EdC = 7 
+				end;
+			ATK.Temp = ATK.bas + ATK.BF;
+			sheet.ATK_tot = math.floor(EdCtable[ATK.EdC]*(ATK.Temp))+ATK.BI;	
+
+			local DEF = {}
+			DEF.bas = tonumber(sheet.DEF_val) or 5;
+			DEF.BF = tonumber(sheet.DEF_BF) or 0;
+			DEF.BI = tonumber(sheet.DEF_BI) or 0;
+			DEF.EdC = tonumber(sheet.DEF_edc) or 7;
+			if 1 &gt; DEF.EdC then 
+				DEF.EdC = 7 
+				end;
+			if DEF.EdC &gt; 13 then 
+				DEF.EdC = 7 
+				end;
+			DEF.Temp = DEF.bas + DEF.BF;
+			sheet.DEF_tot = math.floor(EdCtable[DEF.EdC]*(DEF.Temp))+DEF.BI;	
+
+			local SPATK = {}
+			SPATK.bas = tonumber(sheet.SPATK_val) or 5;
+			SPATK.BF = tonumber(sheet.SPATK_BF) or 0;
+			SPATK.BI = tonumber(sheet.SPATK_BI) or 0;
+			SPATK.EdC = tonumber(sheet.SPATK_edc) or 7;
+			if 1 &gt; SPATK.EdC then 
+				SPATK.EdC = 7 
+				end;
+			if SPATK.EdC &gt; 13 then 
+				SPATK.EdC = 7 
+				end;
+			SPATK.Temp = SPATK.bas + SPATK.BF;
+			sheet.SPATK_tot = math.floor(EdCtable[SPATK.EdC]*(SPATK.Temp))+SPATK.BI;
+
+			local SPDEF = {}
+			SPDEF.bas = tonumber(sheet.SPDEF_val) or 5;
+			SPDEF.BF = tonumber(sheet.SPDEF_BF) or 0;
+			SPDEF.BI = tonumber(sheet.SPDEF_BI) or 0;
+			SPDEF.EdC = tonumber(sheet.SPDEF_edc) or 7;
+			if 1 &gt; SPDEF.EdC then 
+				SPDEF.EdC = 7 
+				end;
+			if SPDEF.EdC &gt; 13 then 
+				SPDEF.EdC = 7 
+				end;
+			SPDEF.Temp = SPDEF.bas + SPDEF.BF;
+			sheet.SPDEF_tot = math.floor(EdCtable[SPDEF.EdC]*(SPDEF.Temp))+SPDEF.BI;	
+
+			local SPD = {}
+			SPD.bas = tonumber(sheet.SPD_val) or 5;
+			SPD.BF = tonumber(sheet.SPD_BF) or 0;
+			SPD.BI = tonumber(sheet.SPD_BI) or 0;
+			SPD.EdC = tonumber(sheet.SPD_edc) or 7;
+			if 1 &gt; SPD.EdC then 
+				SPD.EdC = 7 
+				end;
+			if SPD.EdC &gt; 13 then 
+				SPD.EdC = 7 
+				end;
+			SPD.Temp = SPD.bas + SPD.BF;						
+			sheet.SPD_tot = math.floor(EdCtable[SPD.EdC]*(SPD.Temp))+SPD.BI;
+
+			sheet.AttTotAt = HP.bas + ATK.bas + DEF.bas + SPATK.bas + SPDEF.bas + SPD.bas;
+			sheet.AttTotTe = 44 + Nivel;
 			
-			sheet.ATK_tot = math.floor(EdCtable[edcATK]*(basATK));	
-			sheet.DEF_tot = math.floor(EdCtable[edcDEF]*(basDEF));	
-			sheet.SPATK_tot = math.floor(EdCtable[edcAES]*(basAES));	
-			sheet.SPDEF_tot = math.floor(EdCtable[edcDES]*(basDES));				
-			sheet.SPD_tot = math.floor(EdCtable[SPDedc]*(basVEL));
-		
 			local Defesa = tonumber(sheet.DEF_tot) or 5;
 			local DefEsp = tonumber(sheet.SPDEF_tot) or 5
 			local BonINI = sheet.pers_bonINI or 0;

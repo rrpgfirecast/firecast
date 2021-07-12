@@ -32,15 +32,15 @@
 				</tab>
 				
             <tab title="Background">
-				<import file="08.Background.xml" />
+				<import file="09.Background.xml" />
 				</tab>
 				
             <tab title="Anotações">
-                <import file="09.Notes.xml" />
+                <import file="10.Notes.xml" />
 				</tab>
 				
             <tab title="Créditos">
-				<import file="10.Creditos.xml" />
+				<import file="11.Creditos.xml" />
 				</tab>
 				
 			</tabControl>

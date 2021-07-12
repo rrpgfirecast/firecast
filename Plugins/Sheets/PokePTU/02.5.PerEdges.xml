@@ -61,6 +61,10 @@
 		<PerPo Top="075" Field="FOCO" Name="Foco"/>		
 		<PerPo Top="100" Field="INTU" Name="Intuição"/>			
 		</layout>
+
+	<layout left="600" top="200" height="600" width="1000">
+		<checkBox left="000" top="000" height="20" width="115" text="Mixed Power" field="MIXPOW" fontStyle="bold" fontSize = "14"/>
+		</layout>
 		
 	<layout left="010" top="250" height="600" width="1000">
 		<rectangle left="000" top="000" width="280" height="250" color="darkred" strokeColor="black" strokeSize="5" />
