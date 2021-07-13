@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<form name="templateVantagens" height="20" margins="{top=5,bottom=5}">  
+<form name="templateDesVantagens" height="20" margins="{top=5,bottom=5}">  
     <edit field="aqq" left="5" width="200" height="25" margins="{right=2}"/>
-    <button text="i" width="25" left="210" height="25" name="labNome"
+        <button text="i" width="25" left="210" height="25" name="labNome"
                 >
                 <event name="onClick">
-                local pop = self:findControlByName("popVantagem");
+                local pop = self:findControlByName("popDesvantagem");
                 if pop ~= nil then
                 pop:setNodeObject(self.sheet);
                 pop:showPopupEx("right", self.labNome);
@@ -13,8 +13,8 @@
                 end;
                 </event>
     </button>
-                
-    <popup name="popVantagem" top="30" left="500" width="400" height="160" backOpacity="0.5" autoScopeNode="true">
+
+    <popup name="popDesvantagem" top="30" left="500" width="400" height="160" backOpacity="0.5" autoScopeNode="false">
                 <textEditor name="MinhaVant" field="infoVnt" align="client"/>             
         </popup>    
     <comboBox left="240" width="90" height="25" horzTextAlign="center" items="{'Espiritual', 'Física', 'Material', 'Mental', 'Mística', 'Social'}" field="atributoSkill"

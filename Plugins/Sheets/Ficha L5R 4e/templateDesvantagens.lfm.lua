@@ -7,7 +7,7 @@ require("ndb.lua");
 require("locale.lua");
 local __o_Utils = require("utils.lua");
 
-local function constructNew_templateVantagens()
+local function constructNew_templateDesVantagens()
     local obj = GUI.fromHandle(_obj_newObject("form"));
     local self = obj;
     local sheet = nil;
@@ -26,7 +26,7 @@ local function constructNew_templateVantagens()
 
     _gui_assignInitialParentForForm(obj.handle);
     obj:beginUpdate();
-    obj:setName("templateVantagens");
+    obj:setName("templateDesVantagens");
     obj:setHeight(20);
     obj:setMargins({top=5,bottom=5});
 
@@ -47,18 +47,18 @@ local function constructNew_templateVantagens()
     obj.labNome:setHeight(25);
     obj.labNome:setName("labNome");
 
-    obj.popVantagem = GUI.fromHandle(_obj_newObject("popup"));
-    obj.popVantagem:setParent(obj);
-    obj.popVantagem:setName("popVantagem");
-    obj.popVantagem:setTop(30);
-    obj.popVantagem:setLeft(500);
-    obj.popVantagem:setWidth(400);
-    obj.popVantagem:setHeight(160);
-    obj.popVantagem:setBackOpacity(0.5);
-    lfm_setPropAsString(obj.popVantagem, "autoScopeNode",  "true");
+    obj.popDesvantagem = GUI.fromHandle(_obj_newObject("popup"));
+    obj.popDesvantagem:setParent(obj);
+    obj.popDesvantagem:setName("popDesvantagem");
+    obj.popDesvantagem:setTop(30);
+    obj.popDesvantagem:setLeft(500);
+    obj.popDesvantagem:setWidth(400);
+    obj.popDesvantagem:setHeight(160);
+    obj.popDesvantagem:setBackOpacity(0.5);
+    lfm_setPropAsString(obj.popDesvantagem, "autoScopeNode",  "false");
 
     obj.MinhaVant = GUI.fromHandle(_obj_newObject("textEditor"));
-    obj.MinhaVant:setParent(obj.popVantagem);
+    obj.MinhaVant:setParent(obj.popDesvantagem);
     obj.MinhaVant:setName("MinhaVant");
     obj.MinhaVant:setField("infoVnt");
     obj.MinhaVant:setAlign("client");
@@ -94,7 +94,7 @@ local function constructNew_templateVantagens()
 
     obj._e_event0 = obj.labNome:addEventListener("onClick",
         function (_)
-            local pop = self:findControlByName("popVantagem");
+            local pop = self:findControlByName("popDesvantagem");
                             if pop ~= nil then
                             pop:setNodeObject(self.sheet);
                             pop:showPopupEx("right", self.labNome);
@@ -126,7 +126,7 @@ local function constructNew_templateVantagens()
         if self.edit2 ~= nil then self.edit2:destroy(); self.edit2 = nil; end;
         if self.comboBox1 ~= nil then self.comboBox1:destroy(); self.comboBox1 = nil; end;
         if self.button1 ~= nil then self.button1:destroy(); self.button1 = nil; end;
-        if self.popVantagem ~= nil then self.popVantagem:destroy(); self.popVantagem = nil; end;
+        if self.popDesvantagem ~= nil then self.popDesvantagem:destroy(); self.popDesvantagem = nil; end;
         if self.edit1 ~= nil then self.edit1:destroy(); self.edit1 = nil; end;
         if self.labNome ~= nil then self.labNome:destroy(); self.labNome = nil; end;
         self:_oldLFMDestroy();
@@ -137,13 +137,13 @@ local function constructNew_templateVantagens()
     return obj;
 end;
 
-function newtemplateVantagens()
+function newtemplateDesVantagens()
     local retObj = nil;
     __o_rrpgObjs.beginObjectsLoading();
 
     __o_Utils.tryFinally(
       function()
-        retObj = constructNew_templateVantagens();
+        retObj = constructNew_templateDesVantagens();
       end,
       function()
         __o_rrpgObjs.endObjectsLoading();
@@ -153,17 +153,17 @@ function newtemplateVantagens()
     return retObj;
 end;
 
-local _templateVantagens = {
-    newEditor = newtemplateVantagens, 
-    new = newtemplateVantagens, 
-    name = "templateVantagens", 
+local _templateDesVantagens = {
+    newEditor = newtemplateDesVantagens, 
+    new = newtemplateDesVantagens, 
+    name = "templateDesVantagens", 
     dataType = "", 
     formType = "undefined", 
     formComponentName = "form", 
     title = "", 
     description=""};
 
-templateVantagens = _templateVantagens;
-Firecast.registrarForm(_templateVantagens);
+templateDesVantagens = _templateDesVantagens;
+Firecast.registrarForm(_templateDesVantagens);
 
-return _templateVantagens;
+return _templateDesVantagens;

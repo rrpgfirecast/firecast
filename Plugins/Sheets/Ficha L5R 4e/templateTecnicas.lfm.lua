@@ -56,6 +56,7 @@ local function constructNew_templateTecnicas()
     obj.edit2 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit2:setParent(obj);
     obj.edit2:setLeft(350);
+    obj.edit2:setField("lvlEscola");
     obj.edit2:setHorzTextAlign("center");
     obj.edit2:setHeight(25);
     obj.edit2:setWidth(25);
@@ -84,6 +85,7 @@ local function constructNew_templateTecnicas()
     obj.comboBox1:setWidth(80);
     obj.comboBox1:setHeight(25);
     obj.comboBox1:setHorzTextAlign("center");
+    obj.comboBox1:setField("afini");
     obj.comboBox1:setItems({'Água', 'Ar', 'Fogo', 'Terra', 'Vazio', 'Maho', 'Nenhum', 'Wards'});
     obj.comboBox1:setName("comboBox1");
 
@@ -100,6 +102,7 @@ local function constructNew_templateTecnicas()
     obj.comboBox2:setWidth(80);
     obj.comboBox2:setHeight(25);
     obj.comboBox2:setHorzTextAlign("center");
+    obj.comboBox2:setField("def1");
     obj.comboBox2:setItems({'Água', 'Ar', 'Fogo', 'Terra', 'Vazio', 'Nenhum', 'Craft'});
     obj.comboBox2:setName("comboBox2");
 
@@ -109,6 +112,7 @@ local function constructNew_templateTecnicas()
     obj.comboBox3:setWidth(80);
     obj.comboBox3:setHeight(25);
     obj.comboBox3:setHorzTextAlign("center");
+    obj.comboBox3:setField("def2");
     obj.comboBox3:setItems({'Água', 'Ar', 'Fogo', 'Terra', 'Vazio', 'Nenhum', 'Travel'});
     obj.comboBox3:setName("comboBox3");
 
@@ -125,6 +129,7 @@ local function constructNew_templateTecnicas()
     obj.textEditor1:setTop(35);
     obj.textEditor1:setLeft(5);
     obj.textEditor1:setWidth(805);
+    obj.textEditor1:setField("descriEscola");
     obj.textEditor1:setHeight(85);
     obj.textEditor1:setName("textEditor1");
 

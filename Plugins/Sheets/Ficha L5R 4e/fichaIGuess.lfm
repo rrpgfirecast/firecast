@@ -5,16 +5,17 @@
 
 
         <!-- Máximo de ferimentos -->
-        <dataLink fields="{'BHealth', 'earth', 'PWound'}"> 
+        <dataLink fields="{'lastroTerra', 'BHealth', 'earth', 'PWound'}" defaultValue="2"> 
                 <event name="onChange">
                 if (sheet.earth ~= nil) then
                         local terr = sheet.earth;
+                        local lastro = sheet.lastroTerra;
 
                         if (sheet.BHealth == true) then
                                 terr = terr - 1;
                         end;
 
-                        local terra = terr*2;
+                        local terra = (terr) * (lastro);
 
                         sheet.Saud = terr*5;
                         sheet.Esco = terra;
@@ -61,10 +62,11 @@
         </dataLink>
 
         <!-- Atual de ferimentos -->
-        <dataLink fields="{'ferimentos', 'earth', 'PWound', 'BHealth'}">
+        <dataLink fields="{'ferimentos', 'earth', 'PWound', 'BHealth', 'lastroTerra', 'LEsco'}">
                 <event name="onChange">
                 if (sheet.earth ~= nil) then
                         local ferimentos = (tonumber(sheet.ferimentos) or 0);
+                        local lastro = sheet.lastroTerra;
 
                         if sheet.PWound == true then
                                 ferimentos = ferimentos + sheet.Saud;
@@ -76,7 +78,7 @@
                                 terr = terr - 1;
                         end;
 
-                        local terra = terr*2;
+                        local terra = (terr) * (lastro);
 
                         local FSaud = ferimentos;
 
@@ -360,21 +362,21 @@
 
                         <layout left="60" top="50" width="560" height="100" frameStyle="/Frames/frameFrenteDnD/frameFrente.xml"> <!-- PERSONAGEM -->
                 
-                        <label horzTextAlign="trailing" left="-55" top="20" text="Nome: "/><edit left="68" top="14" width="170" transparent="true"/><horzLine left="68" top="39" width="170" strokeColor="white"/>
-                        <label horzTextAlign="trailing" left="-55" top="40" text="Clã: "/><edit left="68" top="34" width="170" transparent="true"/><horzLine left="68" top="59" width="170" strokeColor="white"/>
-                        <label horzTextAlign="trailing" left="-55" top="60" text="Escola: "/><edit left="68" top="54" width="170" transparent="true"/><horzLine left="68" top="79" width="170" strokeColor="white"/>
+                        <label horzTextAlign="trailing" left="-55" top="20" text="Nome: "/><edit field="nomeChar" left="68" top="14" width="170" transparent="true"/><horzLine left="68" top="39" width="170" strokeColor="white"/>
+                        <label horzTextAlign="trailing" left="-55" top="40" text="Clã: "/><edit field="claChar" left="68" top="34" width="170" transparent="true"/><horzLine left="68" top="59" width="170" strokeColor="white"/>
+                        <label horzTextAlign="trailing" left="-55" top="60" text="Escola: "/><edit field="escolaChar" left="68" top="54" width="170" transparent="true"/><horzLine left="68" top="79" width="170" strokeColor="white"/>
                         <rectangle left="264" top="20" width="1" height="70" color="white"/>
 
                         <label horzTextAlign="trailing" left="229" top="20" text="Nível: "/><rectangle left="354" top="16" width="25" height="25" xradius="20" yradius="20" cornerType="round" color="#212121"/><label field="nivelSb" horzTextAlign="center" left="351" top="19" width="30"/>
-                        <label horzTextAlign="trailing" left="229" top="72" text="Experiência: "/><edit horzTextAlign="center" left="352" top="65" width="30" transparent="true" keyboardType="NumberPad"/><horzLine left="352" top="90" width="30" strokeColor="white"/>
+                        <label horzTextAlign="trailing" left="229" top="72" text="Experiência: "/><edit horzTextAlign="center" field="xpGastar" left="352" top="65" width="30" transparent="true" keyboardType="NumberPad"/><horzLine left="352" top="90" width="30" strokeColor="white"/>
                         <label horzTextAlign="trailing" left="229" top="40" text="Sabedoria: "/><rectangle left="354" top="40" width="25" height="25" xradius="15" yradius="20" cornerType="round" color="#212121"/><label field="sabedoria" horzTextAlign="center" left="351" top="43" width="30"/>
                         <label horzTextAlign="trailing" left="270" top="43" fontSize="10.0" text="+ "/><edit text="0" fontSize="10.0" horzTextAlign="center" left="380" top="45" width="30" height="15" keyboardType="NumberPad" transparent="true" field="maisSab"/>
                         <rectangle left="424" top="20" width="1" height="70" color="white"/>
 
-                        <label horzTextAlign="trailing" left="369" top="12" fontSize="12.0" text="Honra: "/><edit horzTextAlign="center" left="492" top="10" width="30" height="20" keyboardType="NumberPad" transparent="true"/><horzLine left="492" top="28" width="30" strokeColor="white"/>
-                        <label horzTextAlign="trailing" left="369" top="30" fontSize="12.0" text="Glória: "/><edit horzTextAlign="center" left="492" top="28" width="30" height="20" transparent="true" keyboardType="NumberPad"/><horzLine left="492" top="46" width="30" strokeColor="white"/>
-                        <label horzTextAlign="trailing" left="369" top="48" fontSize="12.0" text="Status: "/><edit horzTextAlign="center" left="492" top="46" width="30" height="20" transparent="true" keyboardType="NumberPad"/><horzLine left="492" top="64" width="30" strokeColor="white"/>
-                        <label horzTextAlign="trailing" left="369" top="66" fontSize="12.0" text="Mácula: "/><edit horzTextAlign="center" left="492" top="64" width="30" height="20" transparent="true" keyboardType="NumberPad"/><horzLine left="492" top="82" width="30" strokeColor="white"/>
+                        <label horzTextAlign="trailing" left="369" top="12" fontSize="12.0" text="Honra: "/><edit field="honra" horzTextAlign="center" left="492" top="10" width="30" height="20" keyboardType="NumberPad" transparent="true"/><horzLine left="492" top="28" width="30" strokeColor="white"/>
+                        <label horzTextAlign="trailing" left="369" top="30" fontSize="12.0" text="Glória: "/><edit field="gloria" horzTextAlign="center" left="492" top="28" width="30" height="20" transparent="true" keyboardType="NumberPad"/><horzLine left="492" top="46" width="30" strokeColor="white"/>
+                        <label horzTextAlign="trailing" left="369" top="48" fontSize="12.0" text="Status: "/><edit field="status" horzTextAlign="center" left="492" top="46" width="30" height="20" transparent="true" keyboardType="NumberPad"/><horzLine left="492" top="64" width="30" strokeColor="white"/>
+                        <label horzTextAlign="trailing" left="369" top="66" fontSize="12.0" text="Mácula: "/><edit field="macula" horzTextAlign="center" left="492" top="64" width="30" height="20" transparent="true" keyboardType="NumberPad"/><horzLine left="492" top="82" width="30" strokeColor="white"/>
 
                         </layout>
 
@@ -402,7 +404,7 @@
                         </layout>
 
                         <label top="520" left="255" text="0"/><label top="520" left="275" text="1"/><label top="520" left="295" text="2"/><label top="520" left="315" text="3"/><label top="520" left="335" text="4"/><label top="520" left="355" text="5"/><label top="520" left="375" text="6"/><label top="520" left="395" text="7"/>
-                        <radioButton groupName="VOIDGrupo" top="500" left="250" checked="true"/> <radioButton groupName="VOIDGrupo" top="500" left="270"/> <radioButton groupName="VOIDGrupo" top="500" left="290"/> <radioButton groupName="VOIDGrupo" top="500" left="310"/> <radioButton groupName="VOIDGrupo" top="500" left="330"/> <radioButton groupName="VOIDGrupo" top="500" left="350"/> <radioButton groupName="VOIDGrupo" top="500" left="370"/> <radioButton groupName="VOIDGrupo" top="500" left="390"/> 
+                        <radioButton field="VOIDescala" fieldValue="0void" groupName="VOIDGrupo" top="500" left="250" checked="true"/> <radioButton field="VOIDescala" fieldValue="1void" groupName="VOIDGrupo" top="500" left="270"/> <radioButton field="VOIDescala" fieldValue="2void" groupName="VOIDGrupo" top="500" left="290"/> <radioButton field="VOIDescala" fieldValue="3void" groupName="VOIDGrupo" top="500" left="310"/> <radioButton field="VOIDescala" fieldValue="4void" groupName="VOIDGrupo" top="500" left="330"/> <radioButton field="VOIDescala" fieldValue="5void" groupName="VOIDGrupo" top="500" left="350"/> <radioButton field="VOIDescala" fieldValue="6void" groupName="VOIDGrupo" top="500" left="370"/> <radioButton field="VOIDescala" fieldValue="7void" groupName="VOIDGrupo" top="500" left="390"/> 
                         <!-- INICIATIVA -->
                         <rectangle left="660" top="30" width="100" height="24" xradius="5" yradius="5" cornerType="round" color="#212121"/>
                         <label left="670" top="30" text="INICIATIVA"/>
@@ -420,9 +422,9 @@
                         <label left="880" top="30" text="ARMADURA"/>
   
                         <layout left="860" top="50" width="205" height="100" frameStyle="/Frames/frameFrenteDnD/frameFrente.xml">
-                        <label left="20" top="15" text="Tipo: "/><edit left="50" top="13" width="125" height="22" transparent="true"/><horzLine left="50" top="33" width="125" strokeColor="white"/>
+                        <label left="20" top="15" text="Tipo: "/><edit field="tipoArmadura" left="50" top="13" width="125" height="22" transparent="true"/><horzLine left="50" top="33" width="125" strokeColor="white"/>
                         <label left="20" top="35" text="Bônus: "/><edit left="60" top="35" width="30" height="20" transparent="true" text="0" field="bonusNA"/><horzLine left="60" top="53" width="30" strokeColor="white"/>
-                        <label left="100" top="35" text="Redução: "/><edit left="150" horzTextAlign="center" top="35" width="30" height="20" transparent="true"/><horzLine left="155" top="53" width="20" strokeColor="white"/>
+                        <label left="100" top="35" text="Redução: "/><edit field="Reducao" left="150" horzTextAlign="center" top="35" width="30" height="20" transparent="true"/><horzLine left="155" top="53" width="20" strokeColor="white"/>
                         <label left="20" top="65" text="NA Atual: "/><rectangle left="78" top="64" width="25" height="25" xradius="20" yradius="20" cornerType="round" color="#212121"/><label left="84" top="67" field="NA"/>
                         </layout>
 
@@ -436,8 +438,9 @@
                         <checkBox left="1010" top="260" text="Low Pain Threshold" field="LPThold"/>
                         <checkBox left="1010" top="280" text="Strength of the Earth" field="SotEarth"/>
                         <checkBox left="1010" top="300" text="Quick Healer" field="QHealer"/>
-                        <label left="1010" top="330" fontSize="15.0" text="Recuperação de"/><label left="1010" top="350" fontSize="15.0" text="Ferimentos:"/>
-                        <label left="1040" top="350" fontSize="15.0" horzTextAlign="center" field="RecuFerimento"/><label left="1115" top="350" fontSize="15.0" text="/  dia"/>
+                        <label left="1010" top="325" text="Recuperação de"/><label left="1010" top="340" text="Ferimentos:"/>
+                        <label left="1040" top="340" fontSize="15.0" horzTextAlign="center" field="RecuFerimento"/><label left="1115" top="340" fontSize="15.0" text="/  dia"/>
+                        <label left="1010" fontSize="10.0" top="365" text="Cálculos com Terra *"/><edit field="lastroTerra" horzTextAlign="center" left="1100" top="365" width="20" height="20" transparent="false"/>
 
                         <layout left="700" top="200" width="300" height="200" frameStyle="/Frames/frameFrenteDnD/frameFrente.xml">
                         <label left="25" top="10" fontSize="12.0" text="Nível"/><label left="105" top="10" fontSize="12.0" text="Pen.            Atual"/><label left="210" top="10" fontSize="12.0" text="       Total"/>
@@ -489,15 +492,12 @@
                         </layout>
 
                         <!-- PERÍCIAS-->
-                        <rectangle left="30" top="600" width="615" height="25" xradius="5" yradius="5" cornerType="round" color="#212121"/>
+                        <rectangle left="30" top="600" width="695" height="25" xradius="5" yradius="5" cornerType="round" color="#212121"/>
                         
                         <label left="100" top="603" text="PERÍCIAS"/><label left="260" top="603" text="TIPOS"/><label left="327" top="603" text="RANK"/><label left="380" top="603" text="ATRIBUTO"/>
-                        <label left="495" top="603" text="ÊNFASES"/>
-                        <button left="580" top="600" height="25" text="Nova Perícia" width="90" 
+                        <label left="475" top="603" text="ROLAGEM"/><label left="580" top="603" text="ÊNFASES"/>
+                        <button left="665" top="600" height="25" text="Nova Perícia" width="90" 
                         onClick='self.rclSkills:append();'/>
-
-                        
-
 
                         <recordList name="rclSkills" field="pericias" templateForm="templateSkills"
                         left="5" top="630" width="1080" autoHeight="true">
@@ -508,7 +508,7 @@
                         
 
 
-                <rectangle color="#212121" xradius="10" yradius="10" left="750"
+                <rectangle color="#212121" xradius="10" yradius="10" left="760"
                         width="160" top="20" height="20" padding="{top=3, left=3, right=3, bottom=3}">
                         <label left="10" text="Habilidades de Maestria" width="150"/>
                         <label left="10" top="20" text="Nível 3:"/><label left="10" top="90" text="Nível 5:"/><label left="10" top="160" text="Nível 7:"/>
@@ -549,7 +549,7 @@
                         <button left="795" top="10" height="25" text="+" width="25" 
                         onClick='self.rclDesVantagens:append();'/>
 
-                        <recordList name="rclDesVantagens" field="desvantagens" templateForm="templateVantagens"
+                        <recordList name="rclDesVantagens" field="desvantagens" templateForm="templateDesVantagens"
                         left="430" top="35" width="410" height="150">
                         
                         </recordList>
@@ -588,12 +588,12 @@
                         <rectangle left="850" top="430" width="340" height="25" xradius="5" yradius="5" cornerType="round" color="#212121">
                         <label left="5" top="5" text="ITEMS E POSSES"/>
                         <rectangle left="110" top="3" width="1" height="20" color="white"/>
-                        <label left="120" top="3" text="Koku:"/><edit left="155" horzTextAlign="center" top="2" height="20" width="35"/>
-                        <label left="200" top="3" text="Bu:"/><edit left="220" horzTextAlign="center" top="2" height="20" width="35"/>
-                        <label left="260" top="3" text="Zeni:"/><edit left="290" horzTextAlign="center" top="2" height="20" width="35"/>
+                        <label left="120" top="3" text="Koku:"/><edit left="155" field="koku" horzTextAlign="center" top="2" height="20" width="35"/>
+                        <label left="200" top="3" text="Bu:"/><edit left="220" field="bu" horzTextAlign="center" top="2" height="20" width="35"/>
+                        <label left="260" top="3" text="Zeni:"/><edit left="290" field="zeni" horzTextAlign="center" top="2" height="20" width="35"/>
                         
                         </rectangle>
-                        <textEditor left="850" top="460" width="340" height="200"/>
+                        <textEditor left="850" top="460" width="340" field="inventario" height="200"/>
 
 
         </scrollBox>
@@ -606,27 +606,27 @@
                         <layout left="10" top="30" width="850" height="40" frameStyle="/Frames/frameFrenteDnD/frameFrente.xml">
 
                         <image left="25" top="7" scale="0.25" src="/Frames/miniar.png"/><label left="55" fontSize="20.0" top="10" text="Ar:"/>
-                        <edit left="85" top="5" horzTextAlign="center" width="25" transparent="true" height="25" fontSize="23.0"/>
+                        <edit field="slotAr" left="85" top="5" horzTextAlign="center" width="25" transparent="true" height="25" fontSize="23.0"/>
                         <horzLine left="85" top="28" width="25" strokeColor="white"/>
                         <label left="115" fontSize="20.0" top="10" text="de"/><label left="145" top="5" width="25" height="25" fontSize="23.0" field="air"/>
 
                         <image left="170" top="7" scale="0.25" src="/Frames/miniterra.png"/><label left="200" fontSize="20.0" top="10" text="Terra:"/>
-                        <edit left="252" top="5" horzTextAlign="center" width="25" transparent="true" height="25" fontSize="23.0"/>
+                        <edit field="slotTerra" left="252" top="5" horzTextAlign="center" width="25" transparent="true" height="25" fontSize="23.0"/>
                         <horzLine left="252" top="28" width="25" strokeColor="white"/>
                         <label left="282" fontSize="20.0" top="10" text="de"/><label left="312" top="5" width="25" height="25" fontSize="23.0" field="earth"/>
 
                         <image left="337" top="7" scale="0.25" src="/Frames/minifogo.png"/><label left="367" autoSize="true" fontSize="20.0" top="5" text="Fogo:"/>
-                        <edit left="421" top="5" horzTextAlign="center" width="25" transparent="true" height="25" fontSize="23.0"/>
+                        <edit field="slotFogo" left="421" top="5" horzTextAlign="center" width="25" transparent="true" height="25" fontSize="23.0"/>
                         <horzLine left="421" top="28" width="25" strokeColor="white"/>
                         <label left="451" fontSize="20.0" top="10" text="de"/><label left="481" top="5" width="25" height="25" fontSize="23.0" field="fire"/>
 
                         <image left="505" top="7" scale="0.25" src="/Frames/miniagua.png"/><label left="535" autoSize="true" fontSize="20.0" top="5" text="Água:"/>
-                        <edit left="589" top="5" horzTextAlign="center" width="25" transparent="true" height="25" fontSize="23.0"/>
+                        <edit field="slotAgua" left="589" top="5" horzTextAlign="center" width="25" transparent="true" height="25" fontSize="23.0"/>
                         <horzLine left="589" top="28" width="25" strokeColor="white"/>
                         <label left="619" fontSize="20.0" top="10" text="de"/><label left="649" top="5" width="25" height="25" fontSize="23.0" field="water"/>
 
                         <image left="675" top="7" scale="0.25" src="/Frames/minivazio.png"/><label left="705" autoSize="true" fontSize="20.0" top="5" text="Vazio:"/>
-                        <edit left="760" top="5" horzTextAlign="center" transparent="true" width="25" height="25" fontSize="23.0"/>
+                        <edit field="slotVazio" left="760" top="5" horzTextAlign="center" transparent="true" width="25" height="25" fontSize="23.0"/>
                         <horzLine left="760" top="28" width="25" strokeColor="white"/>
                         <label left="790" fontSize="20.0" top="10" text="de"/><label left="820" top="5" width="25" height="25" fontSize="23.0" field="void"/>
 
@@ -648,38 +648,38 @@
                 <tab title="Características"><scrollBox align="client">
                 
                         <layout left="5" top="5" width="400" height="400" frameStyle="/Frames/frameFrenteDnD/frameFrente.xml">
-                        <image width="370" left="15" top="15" height="370" style="proportional"  animate="true" editable="true"/>
+                        <image width="370" left="15" top="15" height="370" style="proportional"  field="imgChar" animate="true" editable="true"/>
                         </layout>
 
                         <rectangle left="430" top="5" width="80" height="20" xradius="5" yradius="5" cornerType="round" color="#212121"/>
                         <label left="435" top="5" text="APARÊNCIA"/>
                         <layout left="415" top="25" width="400" height="170" frameStyle="/Frames/frameFrenteDnD/frameFrente.xml">
-                        <textEditor align="client" transparent="true"/>
+                        <textEditor align="client" field="aparencia"  transparent="true"/>
                         </layout>
 
                         <rectangle left="430" top="200" width="110" height="20" xradius="5" yradius="5" cornerType="round" color="#212121"/>
                         <label left="434" top="200" text="PERSONALIDADE"/>
                         <layout left="414" top="220" width="400" height="185" frameStyle="/Frames/frameFrenteDnD/frameFrente.xml">
-                        <textEditor align="client" transparent="true"/>
+                        <textEditor align="client" field="personalidade" transparent="true"/>
                         </layout>
 
                         <rectangle left="841" top="5" width="95" height="20" xradius="5" yradius="5" cornerType="round" color="#212121"/>
                         <label left="846" top="5" text="20 QUESTÕES"/>
                         <layout left="825" top="25" width="450" height="380" frameStyle="/Frames/frameFrenteDnD/frameFrente.xml">
-                        <textEditor align="client" transparent="true"/>
+                        <textEditor align="client" field="20questoes" transparent="true"/>
                         </layout>
 
                         <rectangle left="17" top="410" width="70" height="20" xradius="5" yradius="5" cornerType="round" color="#212121"/>
                         <label left="22" top="410" text="HISTÓRIA"/>
                         <layout left="5" top="430" width="1270" height="380" frameStyle="/Frames/frameFrenteDnD/frameFrente.xml">
-                        <richEdit align="client" backgroundColor="#404040" defaultFontColor="white"/>
+                        <richEdit align="client" field="background" backgroundColor="#404040" defaultFontColor="white"/>
                         </layout>
 
                         </scrollBox>
                 </tab>
 
                 <tab title="Anotações">
-                <richEdit align="client" backgroundColor="#404040" defaultFontColor="white" left="10" top="10">
+                <richEdit align="client" field="anotacao" backgroundColor="#404040" defaultFontColor="white" left="10" top="10">
                 </richEdit>
                 </tab>
 

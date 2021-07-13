@@ -115,6 +115,7 @@ local function constructNew_templateKata()
     obj.textEditor1:setTop(60);
     obj.textEditor1:setLeft(5);
     obj.textEditor1:setWidth(340);
+    obj.textEditor1:setField("descriKata");
     obj.textEditor1:setHeight(85);
     obj.textEditor1:setName("textEditor1");
 

@@ -43,6 +43,7 @@ local function constructNew_templateMagias()
     obj.edit1:setLeft(50);
     obj.edit1:setHeight(25);
     obj.edit1:setWidth(290);
+    obj.edit1:setField("nomeMagia");
     obj.edit1:setMargins({right=2});
     obj.edit1:setName("edit1");
 
@@ -59,6 +60,7 @@ local function constructNew_templateMagias()
     obj.comboBox1:setWidth(80);
     obj.comboBox1:setHeight(25);
     obj.comboBox1:setHorzTextAlign("center");
+    obj.comboBox1:setField("elemMagia");
     obj.comboBox1:setItems({'Água', 'Ar', 'Fogo', 'Terra', 'Vazio'});
     obj.comboBox1:setName("comboBox1");
 
@@ -74,6 +76,7 @@ local function constructNew_templateMagias()
     obj.edit2:setLeft(555);
     obj.edit2:setHeight(25);
     obj.edit2:setHorzTextAlign("center");
+    obj.edit2:setField("lvlMagia");
     obj.edit2:setWidth(25);
     obj.edit2:setMargins({right=2});
     obj.edit2:setName("edit2");
@@ -91,6 +94,7 @@ local function constructNew_templateMagias()
     obj.edit3:setTop(30);
     obj.edit3:setHeight(25);
     obj.edit3:setWidth(135);
+    obj.edit3:setField("tipoMagia");
     obj.edit3:setMargins({right=2});
     obj.edit3:setName("edit3");
 
@@ -107,6 +111,7 @@ local function constructNew_templateMagias()
     obj.edit4:setTop(30);
     obj.edit4:setHeight(25);
     obj.edit4:setWidth(100);
+    obj.edit4:setField("areaMagia");
     obj.edit4:setMargins({right=2});
     obj.edit4:setName("edit4");
 
@@ -123,6 +128,7 @@ local function constructNew_templateMagias()
     obj.edit5:setTop(30);
     obj.edit5:setHeight(25);
     obj.edit5:setWidth(50);
+    obj.edit5:setField("duraMagia");
     obj.edit5:setMargins({right=2});
     obj.edit5:setName("edit5");
 
@@ -139,6 +145,7 @@ local function constructNew_templateMagias()
     obj.edit6:setTop(30);
     obj.edit6:setHeight(25);
     obj.edit6:setWidth(90);
+    obj.edit6:setField("alcMagia");
     obj.edit6:setMargins({right=2});
     obj.edit6:setName("edit6");
 
@@ -155,6 +162,7 @@ local function constructNew_templateMagias()
     obj.edit7:setHeight(25);
     obj.edit7:setTop(60);
     obj.edit7:setWidth(560);
+    obj.edit7:setField("raiseMagia");
     obj.edit7:setMargins({right=2});
     obj.edit7:setName("edit7");
 
@@ -171,6 +179,7 @@ local function constructNew_templateMagias()
     obj.textEditor1:setTop(90);
     obj.textEditor1:setLeft(5);
     obj.textEditor1:setWidth(605);
+    obj.textEditor1:setField("descriMagia");
     obj.textEditor1:setHeight(200);
     obj.textEditor1:setName("textEditor1");
 

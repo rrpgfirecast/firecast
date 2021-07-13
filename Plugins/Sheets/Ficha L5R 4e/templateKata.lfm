@@ -17,5 +17,5 @@
     <button left="320" text="-" width='25' height='25'
                 onClick="NDB.deleteNode(sheet);"/>
 
-    <textEditor top="60" left="5" width="340" height="85"/>
+    <textEditor top="60" left="5" width="340" field="descriKata" height="85"/>
 </form>

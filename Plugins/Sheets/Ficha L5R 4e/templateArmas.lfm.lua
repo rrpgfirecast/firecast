@@ -40,6 +40,7 @@ local function constructNew_templateArmas()
     obj.edit1 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit1:setParent(obj);
     obj.edit1:setLeft(55);
+    obj.edit1:setField("nomeArma");
     obj.edit1:setHeight(25);
     obj.edit1:setWidth(115);
     obj.edit1:setMargins({right=2});
@@ -55,6 +56,7 @@ local function constructNew_templateArmas()
     obj.edit2 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit2:setParent(obj);
     obj.edit2:setLeft(220);
+    obj.edit2:setField("periArma");
     obj.edit2:setHeight(25);
     obj.edit2:setWidth(95);
     obj.edit2:setMargins({right=2});
@@ -71,6 +73,7 @@ local function constructNew_templateArmas()
     obj.edit3:setParent(obj);
     obj.edit3:setLeft(55);
     obj.edit3:setTop(30);
+    obj.edit3:setField("atkArma");
     obj.edit3:setHeight(25);
     obj.edit3:setWidth(80);
     obj.edit3:setMargins({right=2});
@@ -87,6 +90,7 @@ local function constructNew_templateArmas()
     obj.edit4:setParent(obj);
     obj.edit4:setLeft(182);
     obj.edit4:setTop(30);
+    obj.edit4:setField("danoArma");
     obj.edit4:setHeight(25);
     obj.edit4:setWidth(80);
     obj.edit4:setMargins({right=2});
@@ -103,6 +107,7 @@ local function constructNew_templateArmas()
     obj.edit5:setParent(obj);
     obj.edit5:setLeft(315);
     obj.edit5:setTop(30);
+    obj.edit5:setField("quantArma");
     obj.edit5:setHeight(25);
     obj.edit5:setHorzTextAlign("center");
     obj.edit5:setWidth(30);
@@ -121,6 +126,7 @@ local function constructNew_templateArmas()
     obj.textEditor1:setParent(obj);
     obj.textEditor1:setTop(60);
     obj.textEditor1:setLeft(5);
+    obj.textEditor1:setField("descriArma");
     obj.textEditor1:setWidth(340);
     obj.textEditor1:setHeight(25);
     obj.textEditor1:setName("textEditor1");

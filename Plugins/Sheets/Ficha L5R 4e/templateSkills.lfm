@@ -8,9 +8,10 @@
        <edit field="rankSkill" left="325" height="25" horzTextAlign="center" width="25" margins="{right=2}"/>
         <comboBox left="355" items="{'Stamina', 'Willpower', 'Strength', 'Perception', 'Reflexes', 'Awareness', 'Agility', 'Intelligence', 'Void'}" field="atributoSkill"
                   values="{'StaminON', 'WillpoweON', 'StrengtON', 'PerceptioON', 'ReflexeON', 'AwarenesON', 'AgilitON', 'IntelligencON', 'VoiON'}"/>
-        <edit field="enfasesSkill" left="460" height="25" width="110" margins="{right=2}"/>
+                  <edit left="460" field="ROLAGEM" height="25" width="80" margins="{right=2}"/>
+        <edit field="enfasesSkill" left="545" height="25" width="110" margins="{right=2}"/>
         
-        <button left="575" text="Apagar" width='90' height='25'
+        <button left="660" text="Apagar" width='90' height='25'
                 onClick="NDB.deleteNode(sheet);"/>
 
                 	<dataLink field="rankSkill">

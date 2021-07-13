@@ -73,16 +73,25 @@ local function constructNew_templateSkills()
 
     obj.edit4 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit4:setParent(obj);
-    obj.edit4:setField("enfasesSkill");
     obj.edit4:setLeft(460);
+    obj.edit4:setField("ROLAGEM");
     obj.edit4:setHeight(25);
-    obj.edit4:setWidth(110);
+    obj.edit4:setWidth(80);
     obj.edit4:setMargins({right=2});
     obj.edit4:setName("edit4");
 
+    obj.edit5 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit5:setParent(obj);
+    obj.edit5:setField("enfasesSkill");
+    obj.edit5:setLeft(545);
+    obj.edit5:setHeight(25);
+    obj.edit5:setWidth(110);
+    obj.edit5:setMargins({right=2});
+    obj.edit5:setName("edit5");
+
     obj.button1 = GUI.fromHandle(_obj_newObject("button"));
     obj.button1:setParent(obj);
-    obj.button1:setLeft(575);
+    obj.button1:setLeft(660);
     obj.button1:setText("Apagar");
     obj.button1:setWidth(90);
     obj.button1:setHeight(25);
@@ -128,6 +137,7 @@ local function constructNew_templateSkills()
         end;
 
         if self.edit3 ~= nil then self.edit3:destroy(); self.edit3 = nil; end;
+        if self.edit5 ~= nil then self.edit5:destroy(); self.edit5 = nil; end;
         if self.edit2 ~= nil then self.edit2:destroy(); self.edit2 = nil; end;
         if self.checkBox1 ~= nil then self.checkBox1:destroy(); self.checkBox1 = nil; end;
         if self.edit4 ~= nil then self.edit4:destroy(); self.edit4 = nil; end;
