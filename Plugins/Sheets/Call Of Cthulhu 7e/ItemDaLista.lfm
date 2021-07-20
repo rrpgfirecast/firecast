@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmItemDaLista" height="50" width="100">
+        <!-- O título do item que aparece na lista -->
+
+        <label align="client" text="Teste de label" field="campoTitulo" 
+              margins="{left=4, right=4, top=4, bottom=4}"/>       
+
+
+        <!-- Adicionar um valor padrão para o campoTitulo caso esteja vazio.
+                Isto é especialmente útil em novos itens -->
+        <dataLink field="campoTitulo" defaultValue="Titulo Aqui"/>
+</form>

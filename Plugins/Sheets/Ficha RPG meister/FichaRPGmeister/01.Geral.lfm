@@ -741,17 +741,22 @@
 						function (rolagem)
 							local maximo = 0;
 							local media = 0;
+							local mult = 1;
 							for i = 1, #rolagem.ops, 1 do 
-								local operacao = rolagem.ops[i]; 
+								local operacao = rolagem.ops[i];
 								if operacao.tipo == "dado" then   
 									maximo = maximo + (operacao.quantidade * operacao.face);
 									media = media + (operacao.quantidade * (operacao.face+1)/2);
 									if i==1 then
 										media = media + ((operacao.face-1)/2);
 									end;
+								elseif operacao.tipo == "subtracao" then
+									mult = -1;
+								elseif operacao.tipo == "soma" then
+									mult = 1;
 								elseif operacao.tipo == "imediato" then
-									maximo = maximo + operacao.valor;
-									media = media + operacao.valor;
+									maximo = maximo + (operacao.valor * mult);
+									media = media + (operacao.valor * mult);
 								end;
 							end;
 							local mesaDoPersonagem = Firecast.getMesaDe(sheet);

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<popupForm name="dealerPopup" formType="undefined" dataType="ambesek.dealer" title="Dealer" width="290" height ="500">
+	<script>
+		local function AddCards(deck, num, owner)
+			local num = tonumber(num) or 0
+			for i=1,num,1 do
+				local item = self.deckList:append()
+				if item ~= nil then
+					item.location = owner
+					item.card = deck[i] or "UnamedCard"
+					item.user = true;
+				end
+			end
+		end
+	</script>
+	<tabControl align="client">
+		<tab title="Opções">
+			<checkBox field="botEnabled" left="10" top="10" width="270" text="Habilitar Dealer"/>
+
+			<label left="10" top="40" width="65" text="Cartas: " horzTextAlign="trailing"/>
+			<label left="80" top="40" width="65" field="numCards"/>
+
+			<label left="145" top="40" width="65" text="Descarte: " horzTextAlign="trailing"/>
+			<label left="215" top="40" width="65" field="numDiscard"/>
+
+		</tab>
+		<tab title="Deck">
+			<recordList align="client" margins="{left=5,right=5,top=5,bottom=5}" field="deckList" name="deckList" templateForm="frmDeckItem">
+				<event name="onCompare">
+					if nodeA.user and not nodeB.user then
+						return 1
+					elseif nodeB.user and not nodeA.user then
+						return -1
+					end
+
+					local location = Utils.compareStringPtBr(nodeA.location, nodeB.location)
+					local card = Utils.compareStringPtBr(nodeA.card, nodeB.card)
+					
+					if location ~= 0 then
+						return location
+					end
+					return card
+	        	</event>
+			</recordList>
+		</tab>
+		<tab title="Log">
+			<textEditor align="client" margins="{left=5,right=5,top=5,bottom=5}" field="log"/>
+		</tab>
+	</tabControl>
+
+	<event name="onShow">
+		if sheet==nil then return end
+
+		local nodes = NDB.getChildNodes(sheet.deckList) 
+		for i=1, #nodes, 1 do
+			NDB.deleteNode(nodes[i])
+		end
+
+		local item = self.deckList:append()
+
+		AddCards(sheet.deck,sheet.numCards,"Deck");
+		AddCards(sheet.discard,sheet.numDiscard,"Discard");
+
+		for k,v in pairs(sheet.players) do
+			AddCards(sheet.players[k], sheet.hands[k], k)
+		end;
+	</event>
+</popupForm>

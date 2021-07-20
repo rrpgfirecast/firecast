@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmDeckItem" width="250" height="25" margins="{top=1}">	
+	<rectangle align="client" color="#212121">
+		<label align="left" width="100" name="location" field="location" horzTextAlign="center" hitTest="true"/>
+		<label align="client" name="card" field="card" horzTextAlign="center" hitTest="true"/>
+
+		<dataLink field="location" defaultValue="Owner">
+			<event name="onChange">
+				if sheet==nil then return end;
+				self.location.hint = sheet.location;
+			</event>
+		</dataLink>
+
+		<dataLink field="card" defaultValue="Card">
+			<event name="onChange">
+				if sheet==nil then return end;
+				self.card.hint = sheet.card;
+			</event>
+		</dataLink>
+	</rectangle>
+</form>

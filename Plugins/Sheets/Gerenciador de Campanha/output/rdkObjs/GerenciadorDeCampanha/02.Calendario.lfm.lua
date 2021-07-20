@@ -3099,29 +3099,29 @@ local function constructNew_frmGerenciador02()
             								end;
             
             								if porcentagemCiclo <= phases[1] then
-            									luasInfo = luasInfo .. luas[i].luas .. " em " .. luas[i].lua_cheia;
-            									luasLabel = luasLabel .. luas[i].luas .. " (" .. luas[i].lua_cheia .. ")";
+            									luasInfo = luasInfo .. luas[i].luas .. " em " .. (luas[i].lua_cheia or "");
+            									luasLabel = luasLabel .. luas[i].luas .. " (" .. (luas[i].lua_cheia or "") .. ")";
             								elseif porcentagemCiclo <= phases[2] then
-            									luasInfo = luasInfo .. luas[i].luas .. " em " .. luas[i].lua_minguante_convexo;
-            									luasLabel = luasLabel .. luas[i].luas .. " (" .. luas[i].lua_minguante_convexo .. ")";
+            									luasInfo = luasInfo .. luas[i].luas .. " em " .. (luas[i].lua_minguante_convexo or "");
+            									luasLabel = luasLabel .. luas[i].luas .. " (" .. (luas[i].lua_minguante_convexo or "") .. ")";
             								elseif porcentagemCiclo <= phases[3] then
-            									luasInfo = luasInfo .. luas[i].luas .. " em " .. luas[i].lua_quarto_minguante;
-            									luasLabel = luasLabel .. luas[i].luas .. " (" .. luas[i].lua_quarto_minguante .. ")";
+            									luasInfo = luasInfo .. luas[i].luas .. " em " .. (luas[i].lua_quarto_minguante or "");
+            									luasLabel = luasLabel .. luas[i].luas .. " (" .. (luas[i].lua_quarto_minguante or "") .. ")";
             								elseif porcentagemCiclo <= phases[4] then
-            									luasInfo = luasInfo .. luas[i].luas .. " em " .. luas[i].lua_minguante_concavo;
-            									luasLabel = luasLabel .. luas[i].luas .. " (" .. luas[i].lua_minguante_concavo .. ")";
+            									luasInfo = luasInfo .. luas[i].luas .. " em " .. (luas[i].lua_minguante_concavo or "");
+            									luasLabel = luasLabel .. luas[i].luas .. " (" .. (luas[i].lua_minguante_concavo or "") .. ")";
             								elseif porcentagemCiclo <= phases[5] then
-            									luasInfo = luasInfo .. luas[i].luas .. " em " .. luas[i].lua_lua_nova;
-            									luasLabel = luasLabel .. luas[i].luas .. " (" .. luas[i].lua_lua_nova .. ")";
+            									luasInfo = luasInfo .. luas[i].luas .. " em " .. (luas[i].lua_lua_nova or "");
+            									luasLabel = luasLabel .. luas[i].luas .. " (" .. (luas[i].lua_lua_nova or "") .. ")";
             								elseif porcentagemCiclo <= phases[6] then
-            									luasInfo = luasInfo .. luas[i].luas .. " em " .. luas[i].lua_crescente_concavo;
-            									luasLabel = luasLabel .. luas[i].luas .. " (" .. luas[i].lua_crescente_concavo .. ")";
+            									luasInfo = luasInfo .. luas[i].luas .. " em " .. (luas[i].lua_crescente_concavo or "");
+            									luasLabel = luasLabel .. luas[i].luas .. " (" .. (luas[i].lua_crescente_concavo or "") .. ")";
             								elseif porcentagemCiclo <= phases[7] then
-            									luasInfo = luasInfo .. luas[i].luas .. " em " .. luas[i].lua_quarto_crescente;
-            									luasLabel = luasLabel .. luas[i].luas .. " (" .. luas[i].lua_quarto_crescente .. ")";
+            									luasInfo = luasInfo .. luas[i].luas .. " em " .. (luas[i].lua_quarto_crescente or "");
+            									luasLabel = luasLabel .. luas[i].luas .. " (" .. (luas[i].lua_quarto_crescente or "") .. ")";
             								else
-            									luasInfo = luasInfo .. luas[i].luas .. " em " .. luas[i].lua_crescente_convexo;
-            									luasLabel = luasLabel .. luas[i].luas .. " (" .. luas[i].lua_crescente_convexo .. ")";
+            									luasInfo = luasInfo .. luas[i].luas .. " em " .. (luas[i].lua_crescente_convexo or "");
+            									luasLabel = luasLabel .. luas[i].luas .. " (" .. (luas[i].lua_crescente_convexo or "") .. ")";
             								end;
             
             								if i < #luas then

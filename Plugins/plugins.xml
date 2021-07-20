@@ -5,12 +5,27 @@
             <dataType id="ambesek.afkbot" title="AfkBot"/>
         </dataTypes>
     </element>
+    <element id="Ficha_de_L5R_4e_SDK_3.5" name="L5R 4e (Otimizado)" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20L5R%204e/output/L5R_4e_Calculos_Automaticos.rpk?raw=true" fileName="Ficha L5R 4e.rpk" repositoryPath="Sheets/Ficha L5R 4e/" author="Gatan" description="Ficha com cálculos automáticos para L5R 4e" version="1.1" compilationDate="12072021014707" compilationDigest="c33a5c72d60c664f1e7df7ce1917d9b12c091b36">
+        <dataTypes>
+            <dataType id="L5R_4e_Otimizado" title="L5R 4e (Otimizado)"/>
+        </dataTypes>
+    </element>
+    <element id="CthulhuSheet7e_byHelldemos" name="Ficha de Call of Cthulhu 7e" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Call%20Of%20Cthulhu%207e/output/Call%20Of%20Cthulhu%207e.rpk?raw=true" fileName="Call Of Cthulhu 7e.rpk" repositoryPath="Sheets/Call Of Cthulhu 7e/" author="helldemos (DaviCop)" description="Ficha de Call of Cthulhu criada para o RRPG Firecast" version="1.1" compilationDate="28062021212127" compilationDigest="49dcaef53486866eeb723e9b5c3c3b13ebb96bc1">
+        <dataTypes>
+            <dataType id="CthulhuSheet7e_byHelldemos" title="Ficha de Call of Cthulhu 7e"/>
+        </dataTypes>
+    </element>
+    <element id="CthulhuSheet7eDarkAges_byHelldemos" name="Ficha de Call of Cthulhu Dark Ages" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Call%20Of%20Cthulhu%20Dark%20Ages/output/Call%20Of%20Cthulhu%20Dark%20Ages.rpk?raw=true" fileName="Call Of Cthulhu Dark Ages.rpk" repositoryPath="Sheets/Call Of Cthulhu Dark Ages/" author="helldemos (DaviCop)" description="Ficha de Call of Cthulhu Dark Ages criada para o RRPG Firecast" version="1.1" compilationDate="28062021213145" compilationDigest="94e1ad611d5ba1df09ba4a8fbdbc7d88f38635b1">
+        <dataTypes>
+            <dataType id="CthulhuSheet7eDarkAges_byHelldemos" title="Ficha de Call of Cthulhu Dark Ages"/>
+        </dataTypes>
+    </element>
     <element id="Autolog" name="Autolog" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/ChatMods/Autolog/output/Autolog.rpk?raw=true" fileName="Autolog.rpk" repositoryPath="ChatMods/Autolog/" author="Dniester &quot;Tyras&quot; Amorim de Aguiar" description="Salva automaticamente o log das mesas na pasta &quot;Documentos\RRPG\Complementos\Autolog\Logs&quot;" version="1.2.6" compilationDate="29062019194118" compilationDigest="8de0a3bf11210212b066cc6b0b1d413d5f10ba5c">
         <dataTypes>
             <dataType id="br.com.rrpg.Autolog" title="Autolog"/>
         </dataTypes>
     </element>
-    <element id="Ambesek.Simple.Dealer" name="Card Dealer" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/ChatMods/Dealer/output/Dealer.rpk?raw=true" fileName="Dealer.rpk" repositoryPath="ChatMods/Dealer/" author="Ambesek" description="A simple card dealer for games that use decks of cards." version="0.1" compilationDate="16042020223007" compilationDigest="9f8aae414e4f3d679185e28d6ab6e38d84ff3f21"/>
+    <element id="Ambesek.Simple.Dealer" name="Card Dealer" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/ChatMods/Dealer/output/Dealer.rpk?raw=true" fileName="Dealer.rpk" repositoryPath="ChatMods/Dealer/" author="Ambesek" description="A simple card dealer for games that use decks of cards." version="0.2.1" compilationDate="16042020223007" compilationDigest="9f8aae414e4f3d679185e28d6ab6e38d84ff3f21"/>
     <element id="Ambesek.Macro.Buttons" name="Macro Buttons" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/ChatMods/MacroButtons/output/MacroButtons.rpk?raw=true" fileName="MacroButtons.rpk" repositoryPath="ChatMods/MacroButtons/" author="Ambesek" description="Adiciona alguns macros a barra de botões." version="0.1.2" compilationDate="26112019235847" compilationDigest="fdf7ba3892d2de22142f99386f5837c7cb9af780"/>
     <element id="MemesSaver" name="Memes Saver" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/ChatMods/Memes%20Saver/output/Memes%20Saver.rpk?raw=true" fileName="Memes Saver.rpk" repositoryPath="ChatMods/Memes Saver/" author="Vinny Ambesek" description="Permite criar e salvar seus proprios memes. Use /help para ver opções." version="0.3.1" compilationDate="26112019235847" compilationDigest="f9f81a7972d11cc4e2e1e3185cf1e6faa85dc73a">
         <dataTypes>
@@ -197,7 +212,7 @@
             <dataType id="Ambesek.Ragnarock" title="Ficha Ragnarok"/>
         </dataTypes>
     </element>
-    <element id="FICHA_RPG_MEISTER" name="Ficha RPG meister" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20RPG%20meister/output/Ficha%20RPG%20meister.rpk?raw=true" fileName="Ficha RPG meister.rpk" repositoryPath="Sheets/Ficha RPG meister/" author="Ambesek &amp; Nefertyne" description="Ficha feita para a mesa RPGmeister. Funciona normalmente para o sistema d20/D&amp;D3.5" version="3.5" compilationDate="27112019000129" compilationDigest="712f094108759251d79a8ef6f12e614c7908837e">
+    <element id="FICHA_RPG_MEISTER" name="Ficha RPG meister" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20RPG%20meister/output/Ficha%20RPG%20meister.rpk?raw=true" fileName="Ficha RPG meister.rpk" repositoryPath="Sheets/Ficha RPG meister/" author="Ambesek &amp; Nefertyne" description="Ficha feita para a mesa RPGmeister. Funciona normalmente para o sistema d20/D&amp;D3.5" version="3.5.1" compilationDate="27112019000129" compilationDigest="712f094108759251d79a8ef6f12e614c7908837e">
         <dataTypes>
             <dataType id="Alterar.DataType.FichaRPGmeister" title="Ficha RPGmeister"/>
         </dataTypes>
@@ -223,7 +238,7 @@
             <dataType id="fira.fire.now" title="Ficha Aleatória"/>
         </dataTypes>
     </element>
-    <element id="GerenciadorDeCampanha" name="Gerenciador de Campanha" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Gerenciador%20de%20Campanha/output/Gerenciador%20de%20Campanha.rpk?raw=true" fileName="Gerenciador de Campanha.rpk" repositoryPath="Sheets/Gerenciador de Campanha/" author="Ambesek" description="Ficha para gerenciar informaçes publicas e privadas de jogo, com visualizaçao seletiva entre jogadores e mestres." version="1.1.2" compilationDate="27112019000217" compilationDigest="df7cae33917e9c5c5182f5fd30ccebeaedfb8881">
+    <element id="GerenciadorDeCampanha" name="Gerenciador de Campanha" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Gerenciador%20de%20Campanha/output/Gerenciador%20de%20Campanha.rpk?raw=true" fileName="Gerenciador de Campanha.rpk" repositoryPath="Sheets/Gerenciador de Campanha/" author="Ambesek" description="Ficha para gerenciar informaçes publicas e privadas de jogo, com visualizaçao seletiva entre jogadores e mestres." version="1.1.3" compilationDate="27112019000217" compilationDigest="df7cae33917e9c5c5182f5fd30ccebeaedfb8881">
         <dataTypes>
             <dataType id="Ambesek.Gerenciador.RPGmeister" title="Gerenciador de Campanha"/>
         </dataTypes>
@@ -321,7 +336,7 @@
             <dataType id="HITO_PLAYER_POKEPTAOLD" title="Hitoshura - Pokemon PTA (Antigo)"/>
         </dataTypes>
     </element>
-    <element id="ID_PLAYER_PokemonPTUHITO" name="Hito - Pokémon PTU" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/PokePTU/output/PokePTU.rpk?raw=true" fileName="PokePTU.rpk" repositoryPath="Sheets/PokePTU/" author="Hitoshura" description="Essa ficha permite fazer a ficha de jogador e pokémons no sistema Pokémon Tabletop United." version="4.0" compilationDate="31032021234529" compilationDigest="81a73225efa3feaddfb45652afee8291175da6a3">
+    <element id="ID_PLAYER_PokemonPTUHITO" name="Hito - Pokémon PTU" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/PokePTU/output/PokePTU.rpk?raw=true" fileName="PokePTU.rpk" repositoryPath="Sheets/PokePTU/" author="Hitoshura" description="Essa ficha permite fazer a ficha de jogador e pokémons no sistema Pokémon Tabletop United." version="5.0" compilationDate="31032021234529" compilationDigest="81a73225efa3feaddfb45652afee8291175da6a3">
         <dataTypes>
             <dataType id="HITO_PLAYER_POKEMONPTU" title="Hitoshura - Pokemon PTU"/>
         </dataTypes>

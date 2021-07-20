@@ -240,8 +240,21 @@
 					local ATKESP = self.boxDetalhesDoItem.node.AtaqueEsp_Form1 or 0;
 					local ATK = {ATKFIS,ATKESP,0};
 					local BonusDamage = self.boxDetalhesDoItem.node.BonDMGP$(num) or 0;
+					
+					local MIXED = {}
+					MIXED.Flag = self.boxDetalhesDoItem.node.MIXPOW or false;
+					MIXED.Mul = 0;
+					MIXED.Msg = "";
+					if MIXED.Flag then
+						MIXED.Mul = 1;
+						MIXED.Msg = " (Mixed Power)"
+						end
+					MIXED.ATK = math.floor(ATKESP/2) or 0;
+					MIXED.SPATK = math.floor(ATKFIS/2) or 0;
+					MIXED.ATK = {MIXED.ATK,MIXED.SPATK,0};
+					local MIXFIN = MIXED.Mul*(MIXED.ATK[Attribute] or 0)
 					if (Attribute == 1 or Attribute == 2) then
-						mesaDoPersonagem.activeChat:rolarDados((DamageTable[BaseDamage] or "1d2") .. "+" .. (ATK[Attribute] or 0) .. "+" .. BonusDamage, "[§K14]Dano de " .. MSG_Color .. NomeGolpe .. "[§K14]" .. MSG_ATT .. MSG_Color .. "[§K14] usado por " .. NomeUser) 
+						mesaDoPersonagem.activeChat:rolarDados((DamageTable[BaseDamage] or "1d2") .. "+" .. (ATK[Attribute] or 0) .. "+" .. MIXFIN .. "+" .. BonusDamage, "[§K14]Dano de " .. MSG_Color .. NomeGolpe .. "[§K14]" .. MSG_ATT .. MIXED.Msg .. MSG_Color .. "[§K14] usado por " .. NomeUser) 
 						end
 					</event>
 			</button>
@@ -326,8 +339,20 @@
 					local ATKESP = self.boxDetalhesDoItem.node.AtaqueEsp_Form1 or 0;
 					local ATK = {ATKFIS,ATKESP,0};
 					local BonusDamage = self.boxDetalhesDoItem.node.BonDMGP$(num) or 0;
+					local MIXED = {}
+					MIXED.Flag = self.boxDetalhesDoItem.node.MIXPOW or false;
+					MIXED.Mul = 0;
+					MIXED.Msg = "";
+					if MIXED.Flag then
+						MIXED.Mul = 1;
+						MIXED.Msg = " (Mixed Power)"
+						end
+					MIXED.ATK = math.floor(ATKESP/2) or 0;
+					MIXED.SPATK = math.floor(ATKFIS/2) or 0;
+					MIXED.ATK = {MIXED.ATK,MIXED.SPATK,0};
+					local MIXFIN = MIXED.Mul*(MIXED.ATK[Attribute] or 0)
 					if (Attribute == 1 or Attribute == 2) then
-						mesaDoPersonagem.activeChat:rolarDados((DamageTable[BaseDamage] or "1d2") .. "+" .. (ATK[Attribute] or 0) .. "+" .. BonusDamage, "[§K14]Dano CRÍTICO de " .. MSG_Color .. NomeGolpe .. "[§K14]" .. MSG_ATT .. MSG_Color .. "[§K14] usado por " .. NomeUser) 
+						mesaDoPersonagem.activeChat:rolarDados((DamageTable[BaseDamage] or "1d2") .. "+" .. (ATK[Attribute] or 0) .. "+" .. MIXFIN .. "+" .. BonusDamage, "[§K14]Dano CRÍTICO de " .. MSG_Color .. NomeGolpe .. "[§K14]" .. MSG_ATT .. MIXED.Msg .. MSG_Color .. "[§K14] usado por " .. NomeUser) 
 						end
 					</event>
 			</button>
@@ -343,40 +368,51 @@
 			
 		</template>
 			
-		<layout left="0" top="0" width="864" height="953">
+		<layout left="0" top="0" width="864" height="1333">
 			<rectangle align="client" color="#0000007F" compilerOrder="0"/>
 			<layout left="2" top="2" width="880" height="92" compilerOrder="1">
 				<AtaquePoke num="1"/>
-			</layout>
+				</layout>
 			<layout left="2" top="97" width="880" height="92" compilerOrder="1">
 				<AtaquePoke num="2"/>
-			</layout>
+				</layout>
 			<layout left="2" top="192" width="880" height="92" compilerOrder="1">
 				<AtaquePoke num="3"/>
-			</layout>
+				</layout>
 			<layout left="2" top="288" width="880" height="92" compilerOrder="1">
 				<AtaquePoke num="4"/>
-			</layout>
+				</layout>
 			<layout left="2" top="383" width="880" height="92" compilerOrder="1">
 				<AtaquePoke num="5"/>
-			</layout>
+				</layout>
 			<layout left="2" top="478" width="880" height="92" compilerOrder="1">
 				<AtaquePoke num="6"/>
-			</layout>
+				</layout>
 			
 			<layout left="2" top="644" width="880" height="92" compilerOrder="1">
 				<label left="0" top="0" width="880" height="25" text="Struggle, Guidance, Advanced Connection, Cluster Mind e similares" fontStyle = "Bold" fontSize ="16" horzTextAlign ="center"/>
-			</layout>
-			
+				</layout>
 			<layout left="2" top="668" width="880" height="92" compilerOrder="1">
 				<AtaquePoke num="7"/>
-			</layout>
+				</layout>
 			<layout left="2" top="763" width="880" height="92" compilerOrder="1">
 				<AtaquePoke num="8"/>
-			</layout>
+				</layout>
 			<layout left="2" top="858" width="880" height="92" compilerOrder="1">
 				<AtaquePoke num="9"/>
-			</layout>
+				</layout>
+			<layout left="2" top="953" width="880" height="92" compilerOrder="1">
+				<AtaquePoke num="10"/>
+				</layout>
+			<layout left="2" top="1048" width="880" height="92" compilerOrder="1">
+				<AtaquePoke num="11"/>
+				</layout>
+			<layout left="2" top="1143" width="880" height="92" compilerOrder="1">
+				<AtaquePoke num="12"/>
+				</layout>
+			<layout left="2" top="1238" width="880" height="92" compilerOrder="1">
+				<AtaquePoke num="13"/>
+				</layout>
 		</layout>
 			
 	</scrollBox>

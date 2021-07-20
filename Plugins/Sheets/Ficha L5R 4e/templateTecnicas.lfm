@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="templateTecnicas" height="140" margins="{top=5,bottom=5}">  
+    <label text="Escola:" left="5" top="5" />
+    <edit left="50" field="nomeEscola" height="25" width="260" margins="{right=2}"/>
+    
+    <label text="Nível:" left="315" top="5" /><edit left="350" field="lvlEscola" horzTextAlign="center" height="25" width="25" margins="{right=2}"/>
+    <rectangle left="387" top="5" width="1" height="20" color="white"/>
+    <label text="Afinidade:" left="400" top="5" />
+    <comboBox left="462" width="80" height="25" horzTextAlign="center" field="afini" items="{'Água', 'Ar', 'Fogo', 'Terra', 'Vazio', 'Maho', 'Nenhum', 'Wards'}"/>
+
+    <label text="Deficiência:" left="550" top="5" />
+    <comboBox left="620" width="80" height="25" horzTextAlign="center"  field="def1" items="{'Água', 'Ar', 'Fogo', 'Terra', 'Vazio', 'Nenhum', 'Craft'}"/>
+    <comboBox left="700" width="80" height="25" horzTextAlign="center" field="def2" items="{'Água', 'Ar', 'Fogo', 'Terra', 'Vazio', 'Nenhum', 'Travel'}"/>
+
+    <button left="785" text="-" width='25' height='25'
+                onClick="NDB.deleteNode(sheet);"/>
+
+    <textEditor top="35" left="5" width="805" field="descriEscola" height="85"/>
+</form>

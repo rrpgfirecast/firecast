@@ -91,7 +91,8 @@ local function constructNew_frmMagiasSigno()
 
     obj.edit2 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit2:setParent(obj.layout2);
-    obj.edit2:setAlign("client");
+    obj.edit2:setAlign("left");
+    obj.edit2:setWidth(300);
     obj.edit2:setField("nomeMagia");
     obj.edit2:setName("edit2");
 

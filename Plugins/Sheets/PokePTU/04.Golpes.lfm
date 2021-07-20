@@ -88,7 +88,7 @@
 				<event name="onClick">
 					if sheet == nil then return end;
 					local mesaDoPersonagem = Firecast.getMesaDe(sheet)
-					local ATAQUE = tonumber(sheet.ataque$(num)) or 0;
+					local ATAQUE = (sheet.ataque$(num)) or 0;
 					local NomeGolpe = sheet.golpe$(num) or "Golpe"
 					local NomeUser = sheet.baseName or "Treinador"
 					local Accuracy = tonumber(sheet.AC$(num)) or "N/A"
@@ -142,13 +142,9 @@
 					if (Attribute == 3) then
 						MSG_ATT = " [§I http://blob.firecast.com.br/blobs/NVLBUHIV_1536933/other.png]"
 						end	
-					if (ATAQUE > 6) then
-						ATAQUE = 6;
-						end
-					if (-6 > ATAQUE) then
-						ATAQUE = -6;
-						end
-					mesaDoPersonagem.activeChat:rolarDados("1d20 + " .. ATAQUE, "[§K14]Acerto (AC = " .. Accuracy .. ") de " .. MSG_Color .. NomeGolpe .. MSG_ATT .. "[§K14] usado por " .. NomeUser) 					
+					local ROLL = Firecast.interpretarRolagem("1d20");
+						  ROLL:concatenar(ATAQUE);
+					mesaDoPersonagem.activeChat:rolarDados(ROLL, "[§K14]Acerto (AC = " .. Accuracy .. ") de " .. MSG_Color .. NomeGolpe .. MSG_ATT .. "[§K14] usado por " .. NomeUser) 					
 					</event>
 			</button>			
 	

@@ -83,7 +83,7 @@
             <import file="05.Magias.xml"/>
         </tab>
         <tab title="Equipamentos">
-            <import file="06.Equipamentos2.xml"/>
+            <import file="06.Equipamentos.xml"/>
         </tab>
         <tab title="Inventario">
             <import file="07.Inventario.xml"/>

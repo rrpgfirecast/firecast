@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="templateMagias" height="300" width="620" margins="{top=5,bottom=5}">  
+    <label text="Nome:" top="5" left="5" />
+    <edit left="50" height="25" width="290" field="nomeMagia" margins="{right=2}"/>
+    <label text="Elemento:" top="5"  left="345"/>
+    <comboBox left="407" width="80" height="25" horzTextAlign="center" field="elemMagia" items="{'Água', 'Ar', 'Fogo', 'Terra', 'Vazio'}"/>
+    <label text="Maestria:" top="5"  left="495" />
+    <edit left="555" height="25" horzTextAlign="center" field="lvlMagia" width="25" margins="{right=2}"/>
+    <label text="Keywords:" left="5" top="35" />
+    <edit left="68" top="30" height="25" width="135" field="tipoMagia" margins="{right=2}"/>
+    <label text="Área:" left="210" top="35" />
+    <edit left="245" top="30" height="25" width="100" field="areaMagia" margins="{right=2}"/>
+    <label text="Duração:" left="350" top="35" />
+    <edit left="410" top="30" height="25" width="50" field="duraMagia" margins="{right=2}"/>
+    <label text="Alcance:" left="465" top="35" />
+    <edit left="520" top="30" height="25" width="90" field="alcMagia" margins="{right=2}"/>
+
+    <label text="Raises:" top="65" left="5" />
+    <edit left="50" height="25" top="60" width="560" field="raiseMagia" margins="{right=2}"/>
+
+    <button left="585" text="-" width='25' height='25'
+                onClick="NDB.deleteNode(sheet);"/>
+
+    <textEditor top="90" left="5" width="605" field="descriMagia" height="200"/>
+</form>

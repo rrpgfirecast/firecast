@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<frame width="228" height="94" autoScaleY="true" autoScaleX="true">
+        <borders left="6" top="7" bottom="6" right="39" />
+        <draw>         
+                <!-- fundo -->
+               <image left="0" top="0" right="228" bottom="94" 
+                      overflowX="stretch" overflowY="stretch" zOrder="-1">
+                        <anchors left="true" top="true" bottom="true" right="true"/>
+                        <source url="pecaCobreBckBlack.png" left="0" right="228" top="0" bottom="94"/>
+                </image>                                       
+        </draw>       
+
+        <regions>
+                <region name="RegiaoSmallTitulo" left="15" top="30" right="45" bottom="64">
+                        <anchors left="true" top="true" bottom="true" right="true"/>                 
+               </region>               
+
+                <region name="RegiaoValor" left="85" top="7" right="187" bottom="89">
+                        <anchors left="true" top="true" bottom="true" right="true"/>
+                </region>      
+        </regions>     
+</frame>

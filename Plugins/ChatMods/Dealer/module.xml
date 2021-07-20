@@ -3,7 +3,7 @@
     <!--The "id" identifies your plugin globally. Must be unique, must contain only alphanumeric characters, underlines and dots and must contain at least 5 characters and a maximum of 40. Once set the ID, you should not change it;)-->
     <id>Ambesek.Simple.Dealer</id>
     <!--"version" is the version of your plugin. When you release a new version of your module, change here =)-->
-    <version>0.1</version>
+    <version>0.2.1</version>
     <name>Card Dealer</name>
     <description>A simple card dealer for games that use decks of cards. </description>
 	<author>Ambesek</author>

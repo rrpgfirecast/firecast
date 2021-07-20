@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="templateArmas" height="90" margins="{top=5,bottom=5}">  
+    <label text="Nome:" left="10" top="5" />
+    <edit left="55" field="nomeArma" height="25" width="115" margins="{right=2}"/>
+    
+    <label text="Perícia:" left="175" top="5" /><edit left="220" field="periArma" height="25" width="95" margins="{right=2}"/>
+
+    <label text="Ataque:" left="5" top="33" /><edit left="55" top="30" field="atkArma" height="25" width="80" margins="{right=2}"/>
+
+    <label text="Dano:" left="142" top="33" /><edit left="182" top="30" field="danoArma" height="25" width="80" margins="{right=2}"/>
+
+    <label text="Quant.:" left="270" top="33" /><edit left="315" top="30" field="quantArma" height="25" horzTextAlign="center" width="30" margins="{right=2}"/>
+
+    <button left="320" text="-" width='25' height='25'
+                onClick="NDB.deleteNode(sheet);"/>
+
+    <textEditor top="60" left="5" field="descriArma" width="340" height="25"/>
+</form>

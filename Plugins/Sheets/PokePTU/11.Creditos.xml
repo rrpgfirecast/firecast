@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmCreditos" align="client" theme="dark" margins="{top=1}">
+
+	<layout left="000" top="000" height="650" width="1100">
+		<image left="000" top="000" height="650" width="1100" src="/img/Pokeball.jpg" style="autoFIT" />
+		</layout>
+		
+	<layout left="100" top="150" height="600" width="465">
+		<label left="0" top="000" height="20" width="600" text="Hitoshura (Criador do Plugin)" autoSize="true" />
+		<label left="0" top="025" height="20" width="600" text="Shakerskj (Aba pokedéx)" autoSize="true" />
+		<label left="0" top="050" height="20" width="600" text="Dragontail (Testes e sugestões)" autoSize="true" />
+		<label left="0" top="075" height="20" width="600" text="Ambesek (Ajudou BASTANTE no Código)" autoSize="true" />
+		<label left="0" top="100" height="20" width="600" text="Mia (Ajudou no código)" autoSize="true" />
+		<label left="0" top="125" height="20" width="600" text="Bloody (Ajudou no código)" autoSize="true" />
+		<label left="0" top="150" height="20" width="600" text="Webrian (Dicas e sugestões)" autoSize="true" />
+		<label left="0" top="175" height="20" width="600" text="Lucasedu19 (Dicas e sugestões)" autoSize="true" />
+		<label left="0" top="200" height="20" width="600" text="Mordekainen (Dicas e sugestões)" autoSize="true" />
+		<label left="0" top="225" height="20" width="600" text="Zukigi (Dicas e sugestões)" autoSize="true" />
+		<label left="0" top="250" height="20" width="600" text="Gladistony (Dicas e programação)" autoSize="true" />
+		<label left="0" top="275" height="20" width="600" text="Ericribeiro (Dicas e edição de Imagens)" autoSize="true" />
+		</layout>
+
+	<layout left="400" top="150" height="600" width="665">
+		<label left="0" top="000" height="20" width="200" text="Materiais Oficiais:" autoSize="true" horzTextAlign="center"/>
+		<button left="000" top="025" height="20" width="200" text = "Pacote Oficial" hint ="Link para baixar" 
+			onClick="GUI.openInBrowser('https://mega.nz/#!5KBkUQhR!j6cWDEk9KdHOC9xlFs78_-L1j5X2HoSlxmf3O4P-z5I')">
+			</button>
+		<button left="000" top="050" height="20" width="200" text = "Pokédex Gen 7" hint ="Link para baixar"
+			onClick="GUI.openInBrowser('https://drive.google.com/file/d/1KT4puSsebrpA5Ja4bqSalJCXLu_lnAB2/view')">
+			</button>
+		<button left="000" top="075" height="20" width="200" text = "Referências Gen 7" hint ="Link para baixar"
+			onClick="GUI.openInBrowser('https://drive.google.com/file/d/1J0B6RPyeY3kD_g74FKvJqEoHxFfrR6a1/view')">
+			</button>
+		<button left="000" top="100" height="20" width="200" text = "Pokédex Gen 8" hint ="Link para baixar"
+			onClick="GUI.openInBrowser('https://drive.google.com/file/d/109iGEEkIkpHzgonOtXe5awDSeuD6K4Zd/view')">
+			</button>
+		<button left="000" top="125" height="20" width="200" text = "Referências Gen 8" hint ="Link para baixar"
+			onClick="GUI.openInBrowser('https://drive.google.com/file/d/1WnUYmaNzy_I6JSniortS3iPrfTA2D-9S/view')">
+			</button>
+		<label left="0" top="150" height="20" width="200" text="Traduções:" autoSize="true" horzTextAlign="center"/>
+		<button left="000" top="175" height="20" width="200" text = "KiritoAkira (Parcial)" hint ="Link para baixar"
+			onClick="GUI.openInBrowser('https://drive.google.com/drive/folders/1BziXbDNAYwr9O5yZp5iJU40NL1FQ-0IV')">
+			</button>
+		<label left="0" top="200" height="20" width="200" text="Geradores" autoSize="true" horzTextAlign="center"/>
+		<button left="000" top="225" height="20" width="200" text = "PokeGenesis [Pokémon]" hint ="Link para baixar"
+			onClick="GUI.openInBrowser('https://drive.google.com/drive/folders/1T2kgjRnloe6gu1TM23y0khEU9Q7VvFEy')">
+			</button>
+		<button left="000" top="250" height="20" width="200" text = "Panda [Pokémon, 1.04]" hint ="Link para baixar"
+			onClick="GUI.openInBrowser('http://www.ptu.panda-games.net/')">
+			</button>	
+		<button left="000" top="275" height="20" width="200" text = "PTU Exodus [Pokémon, 1.05]" hint ="Link para baixar"
+			onClick="GUI.openInBrowser('https://ptu-tools-308700.uc.r.appspot.com/')">
+			</button>
+		<button left="000" top="300" height="20" width="200" text = "The World of Pokémon [Lugares]" hint ="Link para baixar"
+			onClick="GUI.openInBrowser('https://www.theworldofpokemon.com/location-generator.html	')">
+			</button>	
+		<label left="0" top="325" height="20" width="200" text="Material Extra:" autoSize="true" horzTextAlign="center"/>		
+		<button left="000" top="350" height="20" width="200" text = "Pasta com Golpes Prontos" hint ="Link para baixar"
+			onClick="GUI.openInBrowser('http://blob.firecast.com.br/blobs/WPVRMSVC_1657574/Moves.rar')">
+			</button>
+		<button left="000" top="375" height="20" width="200" text = "Biblioteca com Erratas" hint ="Link para baixar"
+			onClick="GUI.openInBrowser('http://blob.firecast.com.br/blobs/RFTSMUWD_1310889/BibliotecaPTU.bib')">
+			</button>
+		</layout>
+		
+	<layout left="720" top="150" height="600" width="665">
+		<label left="0" top="000" height="20" width="200" text="Materiais Não-Oficiais: [Dataninja]" autoSize="true" horzTextAlign="center"/>
+		<button left="000" top="025" height="20" width="200" text = "Pokedex Final" hint ="Link para baixar"
+			onClick="GUI.openInBrowser('https://drive.google.com/file/d/1-1d4TzWJrW3bNRUDSIqp--wJ-K_eod-L/view')">
+			</button>
+		<button left="000" top="050" height="20" width="200" text = "Referências Final" hint ="Link para baixar"
+			onClick="GUI.openInBrowser('https://drive.google.com/file/d/1QYV263uB5v68WIfyBvXLCRfCUEqY2XIU/view')">
+			</button>
+		<button left="000" top="075" height="20" width="200" text = "Errata Final" hint ="Link para baixar"
+			onClick="GUI.openInBrowser('https://drive.google.com/file/d/1Dj3GHZZKuQvcFpWOQXwcer_Bmp3T9s13/view')">
+			</button>
+		<button left="000" top="100" height="20" width="200" text = "Pokédex Insurgence" hint ="Link para baixar" 
+			onClick="GUI.openInBrowser('https://drive.google.com/file/d/1esDm36iI-L-rK6yFFTdafUgooBysjg8N/view')">
+			</button>
+		<button left="000" top="125" height="20" width="200" text = "Pokédex Uranium" hint ="Link para baixar"
+			onClick="GUI.openInBrowser('https://drive.google.com/file/d/16U-8rNDHta2hoKl36nPQNWMBX6msKrtI/view')">
+			</button>
+		<button left="000" top="150" height="20" width="200" text = "Pokédex Sage" hint ="Link para baixar"
+			onClick="GUI.openInBrowser('https://drive.google.com/file/d/1e_3QTGghuyMKuVhTkTRmKcZhDBr5V1I6/view')">
+			</button>	
+		<button left="000" top="175" height="20" width="200" text = "Novas Eevoluções" hint ="Link para baixar"
+			onClick="GUI.openInBrowser('https://drive.google.com/file/d/1y8HqNt1I44hV6SXomGz4S_qEDrieFovF/view')">
+			</button>
+		<button left="000" top="200" height="20" width="200" text = "Mega para Todos" hint ="Link para baixar"
+			onClick="GUI.openInBrowser('https://drive.google.com/file/d/15jejsqr4gUDHXpd-Igv70mhS6KLbQXGL/view')">
+			</button>
+		<label left="0" top="225" height="20" width="200" text="Valazir: Sistema Rebalanceado" autoSize="true" horzTextAlign="center"/>					
+		<button left="000" top="250" height="20" width="200" text = "Valazir Reference Doc" hint ="Link para baixar"
+			onClick="GUI.openInBrowser('https://drive.google.com/open?id=1k9B6StDtkKaXTMeJ1b8R2siIFZyyXM9nrrtAOr6kWqY')">
+			</button>
+		<button left="000" top="275" height="20" width="200" text = "Valazir Class Doc" hint ="Link para baixar"
+			onClick="GUI.openInBrowser('https://drive.google.com/open?id=1NU2C7x3GuhU9oT3Bbx1eDjAUeZ5d02Qo')">
+			</button>
+		<button left="000" top="300" height="20" width="200" text = "Valazir Archetypes" hint ="Link para baixar"
+			onClick="GUI.openInBrowser('https://drive.google.com/open?id=1vgA3SI0AEFKmxvEx_79LhXYWEmW6z44yTk4BiU4NXWY')">
+			</button>
+		</layout>
+
+		
+	</form>
