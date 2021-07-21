@@ -51,7 +51,7 @@
 			<rectangle align="left" width="40" color="black" strokeColor="white" strokeSize="1" margins="{right=5}">
 				<label align="client" field="auditbonus$(field)" horzTextAlign="center"/>
 			</rectangle>
-			<edit align="left" width="40" field="auditxpcost$(field)" margins="{right=5}" type="float" decimalPlaces="1"/>
+			<edit align="left" width="40" field="auditxpcost$(field)" margins="{left=25,right=5}" type="float" decimalPlaces="1"/>
 			<rectangle align="left" width="40" color="black" strokeColor="white" strokeSize="1" margins="{right=5}">
 				<label align="client" field="auditxp$(field)" horzTextAlign="center"/>
 			</rectangle>
@@ -216,14 +216,15 @@
 			</event>
 		</button>
 
-		<layout left="760" top="260" width="315" height="295">
+		<layout left="760" top="260" width="340" height="295">
 			<rectangle align="client" color="black" xradius="15" yradius="15" cornerType="round" padding="{left=5,right=5,top=5,bottom=5}">
 
 				<layout align="top" height="25">
 					<label align="left" width="75" text="" margins="{right=5}"/>
 					<label align="left" width="40" text="Inic" margins="{right=5}" horzTextAlign="center"/>
 					<label align="left" width="85" text="Aprimoramento" margins="{right=5}" horzTextAlign="center" fontSize="11"/>
-					<label align="left" width="85" text="XP" margins="{right=5}" horzTextAlign="center"/>
+					<label align="left" width="40" text="Custo" margins="{left=25,right=5}" horzTextAlign="center"/>
+					<label align="left" width="40" text="XP" margins="{left=0,right=5}" horzTextAlign="center"/>
 				</layout>
 
 				<audit nome="Atr. Físico" field="_atrFis" bonuscost="3" xpcost="3"/>
@@ -238,7 +239,7 @@
 					<edit align="left" width="40" field="auditbonuscost_espec" margins="{right=5}"/>
 					<edit align="left" width="40" field="auditbonus_espec" margins="{right=5}"/>
 
-					<edit align="left" width="40" field="auditxpcost_espec" margins="{right=5}"/>
+					<edit align="left" width="40" field="auditxpcost_espec" margins="{left=25,right=5}"/>
 					<edit align="left" width="40" field="auditxp_espec"/>
 				</layout>
 				<audit nome="Historico" field="_hist" bonuscost="1" xpcost="2"/>
@@ -252,7 +253,7 @@
 					<edit align="left" width="40" field="auditbonuscost_extra" margins="{right=5}"/>
 					<edit align="left" width="40" field="auditbonus_extra" margins="{right=5}"/>
 
-					<edit align="left" width="40" field="auditxpcost_extra" margins="{right=5}"/>
+					<edit align="left" width="40" field="auditxpcost_extra" margins="{left=25,right=5}"/>
 					<edit align="left" width="40" field="auditxp_extra"/>
 				</layout>
 				<layout align="top" height="25">
@@ -266,7 +267,7 @@
 						<label align="client" field="auditbonus_total" horzTextAlign="center"/>
 					</rectangle>
 
-					<edit align="left" width="40" field="XP"/>
+					<edit align="left" width="40" field="XP" margins="{left=25}"/>
 
 					<rectangle align="left" width="40" color="black" strokeColor="white" strokeSize="1" margins="{right=5}">
 						<label align="client" field="auditxp_total" horzTextAlign="center"/>
