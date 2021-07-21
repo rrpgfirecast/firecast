@@ -24,14 +24,31 @@ function dump(o)
    end
 end
 
-local function downloadID(url, stream)
+local function tryTranslate(text)
+    local trans = Locale.tryLang(text);
+    if trans == nil then trans = text end;
+    return trans;
+end
+
+local function downloadID(url)
 	local install = true;
-	if stream ~= nil then
-		install = Firecast.Plugins.installPlugin(stream, true);
-	end;
-	if install == false or stream == nil then
-		GUI.openInBrowser(url);
-	end;
+	Internet.download(url,
+        function(stream, contentType)
+        	if stream ~= nil then
+				install = Firecast.Plugins.installPlugin(stream, true);
+			end;
+			if install == false or stream == nil then
+				GUI.openInBrowser(url);
+			end;
+        end,       
+        function (errorMsg)
+            --showMessage(errorMsg);
+        end,       
+        function (downloaded, total)
+            -- esta função será chamada constantemente.
+            -- dividir "downloaded" por "total" lhe dará uma porcentagem do download.
+        end,
+        "checkForModification");
 end
 
 local function findDataType(plugin, id)
@@ -65,18 +82,18 @@ local function tryInstall(id, chat)
 
                     updaterSheet.loaded = 0;
                     updaterSheet.toLoad = #list;
-                    updaterSheet.loading = "Carregando 0/" .. updaterSheet.toLoad;
+                    updaterSheet.loading = tryTranslate("loading") .. "0/" .. updaterSheet.toLoad;
 
                     for i=1, #list, 1 do
                         -- Verifica se tem updates em cada plugin
                         if lowercase(list[i].id) == lowercase(id) or lowercase(list[i].name) == lowercase(id) or findDataType(list[i], id) then
-                        	downloadID(list[i].url, nil);
+                        	downloadID(list[i].url);
                         	return;
                     	end;
                     end;
 
                     -- Avisa que não achou
-                    chat:escrever((id or "") .. " não foi encontrado.");
+                    chat:escrever((id or "") .. " " .. tryTranslate("notFound"));
                 end, 
                 1000
             );
@@ -84,7 +101,7 @@ local function tryInstall(id, chat)
         function (errorMsg)
             -- esta função será chamada quando ocorrer algum erro no download.
             -- errorMsg possui a msg de erro
-            showMessage("Não consegui pegar a lista de plugins do githut :/ \n" .. errorMsg);
+            showMessage(tryTranslate("error.load").."\n" .. errorMsg);
         end,       
         function (downloaded, total)
             -- esta função será chamada constantemente.
@@ -123,6 +140,6 @@ Firecast.Messaging.listen("HandleChatCommand",
 
 Firecast.Messaging.listen("ListChatCommands",
 		function(message)
-				message.response = {{comando="/autoupdater", descricao="Abre o pop up do Auto Updater. "},
-									{comando="/autoupdater <id|nome>", descricao="Procura o plugin com id|nome e o instala/baixa. "}};
+				message.response = {{comando="/autoupdater", descricao=tryTranslate("help.desc")},
+									{comando="/autoupdater <id|nome>", descricao=tryTranslate("help.download")}};
 		end);

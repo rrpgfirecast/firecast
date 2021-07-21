@@ -1,23 +1,39 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <form name="frmDownloadedPlugin" height="50" margins="{top=1}">
+	<script>
+        local function downloadID(url)
+            local install = true;
+            Internet.download(url,
+                function(stream, contentType)
+                    if stream ~= nil then
+                        install = Firecast.Plugins.installPlugin(stream, true);
+                    end;
+                    if install == false or stream == nil then
+                        GUI.openInBrowser(url);
+                    end;
+                end,       
+                function (errorMsg)
+                    --showMessage(errorMsg);
+                end,       
+                function (downloaded, total)
+                    -- esta função será chamada constantemente.
+                    -- dividir "downloaded" por "total" lhe dará uma porcentagem do download.
+                end,
+                "checkForModification");
+        end
+	</script>
 	<rectangle align="client" color="#212121">
 		<label align="left" field="name" horzTextAlign="center" textTrimming="none" wordWrap="true" name="pluginName" hitTest="true"/>
 		<label align="left" field="moduleId" horzTextAlign="center" textTrimming="none" wordWrap="true" name="moduleId" hitTest="true"/>
 		<label align="left" field="author" horzTextAlign="center" textTrimming="none" wordWrap="true" name="author" hitTest="true"/>
 		<label align="left" field="version" horzTextAlign="center" textTrimming="none" wordWrap="true"/>
-		<button align="right" width="25" name="downloadButton" visible="false" margins="{top = 12.5, bottom = 12.5, right = 5}">
+		<button align="right" width="25" name="downloadButton" visible="false" margins="{top = 12.5, bottom = 12.5, right = 5}" hint="@@hint.install">
 			<image align="client" showStyle="proportional" src="images/download.png"/>
 			<event name="onClick">
-				local install = true;
-				if sheet.stream ~= nil then
-					install = Firecast.Plugins.installPlugin(sheet.stream, true);
-				end;
-				if install == false or sheet.stream == nil then
-					GUI.openInBrowser(sheet.url);
-				end;
+				downloadID(sheet.url);
 			</event>
 		</button>
-		<button align="right" width="25" name="openButton" visible="false" margins="{top = 12.5, bottom = 12.5, right = 5}">
+		<button align="right" width="25" name="openButton" visible="false" margins="{top = 12.5, bottom = 12.5, right = 5}" hint="@@hint.github">
 			<image align="client" showStyle="proportional" src="images/www.png"/>
 			<event name="onClick">
 				local url = sheet.url;

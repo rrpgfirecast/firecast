@@ -47,6 +47,12 @@ local function constructNew_frmMainAutoupdater()
            end
         end
 
+        local function tryTranslate(text)
+            local trans = Locale.tryLang(text);
+            if trans == nil then trans = text end;
+            return trans;
+        end
+
         local function isNewVersion(installed, downloaded)
             local installedVersion = {};
             local installedIndex = 0;
@@ -87,7 +93,7 @@ local function constructNew_frmMainAutoupdater()
             end
 
             updaterSheet.loaded = updaterSheet.loaded + 1;
-            updaterSheet.loading = "Carregando " .. updaterSheet.loaded .. "/" .. updaterSheet.toLoad;
+            updaterSheet.loading = tryTranslate("loading") .. updaterSheet.loaded .. "/" .. updaterSheet.toLoad;
 
             if updaterSheet.toLoad <= updaterSheet.loaded then
                 self.loader.visible = false;
@@ -140,18 +146,18 @@ local function constructNew_frmMainAutoupdater()
             
             -- Adiciona o nome das colunas as listas.
             local item = self.installedPluginsList:append();
-            item.name = "Nome";
-            item.moduleId = "ID";
-            item.author = "Autor";
-            item.version = "Versão Instalada";
-            item.versionAvailable = "Versão Disponível";
+            item.name = tryTranslate("name")
+            item.moduleId = tryTranslate("id")
+            item.author = tryTranslate("author")
+            item.version = tryTranslate("installed")
+            item.versionAvailable = tryTranslate("available")
             item.enabled = false;
 
             local item = self.downloadedPluginsList:append();
-            item.name = "Nome";
-            item.moduleId = "ID";
-            item.author = "Autor";
-            item.version = "Versão Disponível";
+            item.name = tryTranslate("name")
+            item.moduleId = tryTranslate("id")
+            item.author = tryTranslate("author")
+            item.version = tryTranslate("installed")
             item.enabled = false;
 
             self.installedPluginsList:sort();
@@ -159,7 +165,7 @@ local function constructNew_frmMainAutoupdater()
             -- Inicia o download da lista de plugins do git
 
             self.loader.visible = true;
-            updaterSheet.loading = "Carregando ?/?";
+            updaterSheet.loading = tryTranslate("loading") .. "?/?";
             Internet.download("https://raw.githubusercontent.com/rrpgfirecast/firecast/master/Plugins/plugins.xml",
                 function(stream, contentType)
                     if VHD.fileExists("plugins.xml") then
@@ -176,7 +182,7 @@ local function constructNew_frmMainAutoupdater()
 
                             updaterSheet.loaded = 0;
                             updaterSheet.toLoad = #list;
-                            updaterSheet.loading = "Carregando 0/" .. updaterSheet.toLoad;
+                            updaterSheet.loading = tryTranslate("loading") .. "0/" .. updaterSheet.toLoad;
 
                             for i=1, #list, 1 do
                                 -- Verifica se tem updates em cada plugin
@@ -192,7 +198,7 @@ local function constructNew_frmMainAutoupdater()
                 function (errorMsg)
                     -- esta função será chamada quando ocorrer algum erro no download.
                     -- errorMsg possui a msg de erro
-                    showMessage("Não consegui pegar a lista de plugins do githut :/ \n" .. errorMsg);
+                    showMessage(tryTranslate("error.load").."\n" .. errorMsg);
                 end,       
                 function (downloaded, total)
                     -- esta função será chamada constantemente.
@@ -215,7 +221,7 @@ local function constructNew_frmMainAutoupdater()
 
     obj.tab1 = GUI.fromHandle(_obj_newObject("tab"));
     obj.tab1:setParent(obj.tabControl1);
-    obj.tab1:setTitle("Instalado");
+    obj.tab1:setTitle("@@hud.installed");
     obj.tab1:setName("tab1");
 
     obj.frmInstalled = GUI.fromHandle(_obj_newObject("form"));
@@ -237,7 +243,7 @@ local function constructNew_frmMainAutoupdater()
 
     obj.tab2 = GUI.fromHandle(_obj_newObject("tab"));
     obj.tab2:setParent(obj.tabControl1);
-    obj.tab2:setTitle("Disponível");
+    obj.tab2:setTitle("@@hud.avaialable");
     obj.tab2:setName("tab2");
 
     obj.frmAvailable = GUI.fromHandle(_obj_newObject("form"));
@@ -267,7 +273,7 @@ local function constructNew_frmMainAutoupdater()
 
     obj.tab3 = GUI.fromHandle(_obj_newObject("tab"));
     obj.tab3:setParent(obj.tabControl1);
-    obj.tab3:setTitle("Creditos");
+    obj.tab3:setTitle("@@hud.credits");
     obj.tab3:setName("tab3");
 
     obj.frmTemplateCreditos = GUI.fromHandle(_obj_newObject("form"));
@@ -292,7 +298,7 @@ local function constructNew_frmMainAutoupdater()
     obj.label1:setTop(10);
     obj.label1:setWidth(200);
     obj.label1:setHeight(20);
-    obj.label1:setText("Feito por: Vinny (Ambesek)");
+    obj.label1:setText("@@madeBy");
     obj.label1:setName("label1");
 
     obj.label2 = GUI.fromHandle(_obj_newObject("label"));
@@ -324,7 +330,7 @@ local function constructNew_frmMainAutoupdater()
     obj.checkBox1:setWidth(200);
     obj.checkBox1:setHeight(20);
     obj.checkBox1:setField("noUpdate");
-    obj.checkBox1:setText("Não pedir para atualizar.");
+    obj.checkBox1:setText("@@dontUpdate");
     obj.checkBox1:setName("checkBox1");
 
     obj.button1 = GUI.fromHandle(_obj_newObject("button"));
@@ -340,7 +346,7 @@ local function constructNew_frmMainAutoupdater()
     obj.button2:setLeft(5);
     obj.button2:setTop(135);
     obj.button2:setWidth(100);
-    obj.button2:setText("Atualizar");
+    obj.button2:setText("@@update");
     obj.button2:setName("button2");
 
     obj.label4 = GUI.fromHandle(_obj_newObject("label"));
@@ -349,7 +355,7 @@ local function constructNew_frmMainAutoupdater()
     obj.label4:setTop(160);
     obj.label4:setWidth(200);
     obj.label4:setHeight(20);
-    obj.label4:setText("Conheça a Mesa:");
+    obj.label4:setText("@@visit");
     obj.label4:setName("label4");
 
     obj.button3 = GUI.fromHandle(_obj_newObject("button"));
@@ -397,14 +403,14 @@ local function constructNew_frmMainAutoupdater()
             Internet.download("https://github.com/rrpgfirecast/firecast/blob/master/Plugins/TablesDock/AutoUpdater/output/AutoUpdater.rpk?raw=true",
                         function(stream, contentType)
                             local info = Firecast.Plugins.getRPKDetails(stream);
-                            updaterSheet.versionDownloaded = "VERSÃO DISPONÍVEL: " .. info.version;
+                            updaterSheet.versionDownloaded = tryTranslate("available")..": " .. info.version;
             
                             local installed = Firecast.Plugins.getInstalledPlugins();
                             local myself;
                             for i=1, #installed, 1 do
                                 if installed[i].moduleId == info.moduleId then
                                     myself = installed[i];
-                                    updaterSheet.versionInstalled = "VERSÃO INSTALADA: " .. installed[i].version;
+                                    updaterSheet.versionInstalled = tryTranslate("installed")..": " .. installed[i].version;
                                 end;
                             end;
             
@@ -412,7 +418,7 @@ local function constructNew_frmMainAutoupdater()
             
                             if updaterSheet.noUpdate==true then return end;
                             if myself~= nil and isNewVersion(myself.version, info.version) then
-                                Dialogs.choose("Há uma nova versão desse plugin. Deseja instalar?",{"Sim", "Não", "Não perguntar novamente."},
+                                Dialogs.choose(tryTranslate("newVersion"),{tryTranslate("yes"), tryTranslate("no"), tryTranslate("dontAsk")},
                                     function(selected, selectedIndex, selectedText)
                                         if selected and selectedIndex == 1 then
                                             local install = Firecast.Plugins.installPlugin(rawget(updaterSheet,"stream"), true);
