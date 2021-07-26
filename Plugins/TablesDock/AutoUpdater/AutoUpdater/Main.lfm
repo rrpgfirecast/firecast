@@ -15,6 +15,12 @@
            end
         end
 
+        local function tryTranslate(text)
+            local trans = Locale.tryLang(text);
+            if trans == nil then trans = text end;
+            return trans;
+        end
+
         local function isNewVersion(installed, downloaded)
             local installedVersion = {};
             local installedIndex = 0;
@@ -55,7 +61,7 @@
             end
 
             updaterSheet.loaded = updaterSheet.loaded + 1;
-            updaterSheet.loading = "Carregando " .. updaterSheet.loaded .. "/" .. updaterSheet.toLoad;
+            updaterSheet.loading = tryTranslate("loading") .. updaterSheet.loaded .. "/" .. updaterSheet.toLoad;
 
             if updaterSheet.toLoad <= updaterSheet.loaded then
                 self.loader.visible = false;
@@ -108,18 +114,18 @@
             
             -- Adiciona o nome das colunas as listas.
             local item = self.installedPluginsList:append();
-            item.name = "Nome";
-            item.moduleId = "ID";
-            item.author = "Autor";
-            item.version = "Versão Instalada";
-            item.versionAvailable = "Versão Disponível";
+            item.name = tryTranslate("name")
+            item.moduleId = tryTranslate("id")
+            item.author = tryTranslate("author")
+            item.version = tryTranslate("installed")
+            item.versionAvailable = tryTranslate("available")
             item.enabled = false;
 
             local item = self.downloadedPluginsList:append();
-            item.name = "Nome";
-            item.moduleId = "ID";
-            item.author = "Autor";
-            item.version = "Versão Disponível";
+            item.name = tryTranslate("name")
+            item.moduleId = tryTranslate("id")
+            item.author = tryTranslate("author")
+            item.version = tryTranslate("installed")
             item.enabled = false;
 
             self.installedPluginsList:sort();
@@ -127,7 +133,7 @@
             -- Inicia o download da lista de plugins do git
 
             self.loader.visible = true;
-            updaterSheet.loading = "Carregando ?/?";
+            updaterSheet.loading = tryTranslate("loading") .. "?/?";
             Internet.download("https://raw.githubusercontent.com/rrpgfirecast/firecast/master/Plugins/plugins.xml",
                 function(stream, contentType)
                     if VHD.fileExists("plugins.xml") then
@@ -144,7 +150,7 @@
 
                             updaterSheet.loaded = 0;
                             updaterSheet.toLoad = #list;
-                            updaterSheet.loading = "Carregando 0/" .. updaterSheet.toLoad;
+                            updaterSheet.loading = tryTranslate("loading") .. "0/" .. updaterSheet.toLoad;
 
                             for i=1, #list, 1 do
                                 -- Verifica se tem updates em cada plugin
@@ -160,7 +166,7 @@
                 function (errorMsg)
                     -- esta função será chamada quando ocorrer algum erro no download.
                     -- errorMsg possui a msg de erro
-                    showMessage("Não consegui pegar a lista de plugins do githut :/ \n" .. errorMsg);
+                    showMessage(tryTranslate("error.load").."\n" .. errorMsg);
                 end,       
                 function (downloaded, total)
                     -- esta função será chamada constantemente.
@@ -172,13 +178,13 @@
     </script>
     <dataScopeBox name="scope" align="client">
         <tabControl align="client">
-            <tab title="Instalado">
+            <tab title="@@hud.installed">
                 <import file="Installed.lfm"/>
             </tab>
-            <tab title="Disponível">
+            <tab title="@@hud.avaialable">
                 <import file="Available.lfm"/>
             </tab>
-    		<tab title="Creditos">
+    		<tab title="@@hud.credits">
                 <import file="Credits.lfm"/>
             </tab>
         </tabControl>
@@ -194,14 +200,14 @@
         Internet.download("https://github.com/rrpgfirecast/firecast/blob/master/Plugins/TablesDock/AutoUpdater/output/AutoUpdater.rpk?raw=true",
             function(stream, contentType)
                 local info = Firecast.Plugins.getRPKDetails(stream);
-                updaterSheet.versionDownloaded = "VERSÃO DISPONÍVEL: " .. info.version;
+                updaterSheet.versionDownloaded = tryTranslate("available")..": " .. info.version;
 
                 local installed = Firecast.Plugins.getInstalledPlugins();
                 local myself;
                 for i=1, #installed, 1 do
                     if installed[i].moduleId == info.moduleId then
                         myself = installed[i];
-                        updaterSheet.versionInstalled = "VERSÃO INSTALADA: " .. installed[i].version;
+                        updaterSheet.versionInstalled = tryTranslate("installed")..": " .. installed[i].version;
                     end;
                 end;
 
@@ -209,7 +215,7 @@
 
                 if updaterSheet.noUpdate==true then return end;
                 if myself~= nil and isNewVersion(myself.version, info.version) then
-                    Dialogs.choose("Há uma nova versão desse plugin. Deseja instalar?",{"Sim", "Não", "Não perguntar novamente."},
+                    Dialogs.choose(tryTranslate("newVersion"),{tryTranslate("yes"), tryTranslate("no"), tryTranslate("dontAsk")},
                         function(selected, selectedIndex, selectedText)
                             if selected and selectedIndex == 1 then
                                 local install = Firecast.Plugins.installPlugin(rawget(updaterSheet,"stream"), true);

@@ -1,0 +1,26 @@
+[en]
+yes=yes
+no=no
+dontAsk=Don't ask again
+dontUpdate=Don't ask to update
+update=Update
+newVersion=New version available. Do you wish to install?
+loading=Loading 
+name=Name
+id=ID
+author=Author
+installed=Installed Version
+available=Available Version
+error.load=Could not get plugin list from github :/
+hud.installed=Installed
+hud.avaialable=Available
+hud.credits=Credits
+visit=Visit the room:
+madeBy=Made by: Vinny (Ambesek)
+uninstall=Do you want to uninstall this plugin?
+hint.uninstall=Uninstall
+hint.github=Open page with code on github
+hint.install=Install/Update plugin
+notFound=Not found.
+help.desc=Open Auto Updater popup.
+help.download=Searchs for plugin with id|name and downloads/install.

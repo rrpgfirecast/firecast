@@ -1,0 +1,26 @@
+[pt]
+yes=sim
+no=não
+dontAsk=Não perguntar novamente
+dontUpdate=Não pedir para atualizar
+update=Atualizar
+newVersion=Há uma nova versão desse plugin. Deseja instalar?
+loading=Carregando 
+name=Nome
+id=ID
+author=Autor
+installed=Versão Instalada
+available=Versão Disponível
+error.load=Não consegui pegar a lista de plugins do githut :/ 
+hud.installed=Instalado
+hud.avaialable=Disponível
+hud.credits=Créditos
+visit=Conheça a Mesa:
+madeBy=Feito por: Vinny (Ambesek)
+uninstall=Deseja desinstalar esse plugin?
+hint.uninstall=Desinstalar
+hint.github=Abrir codigo do plugin no github
+hint.install=Instalar/Atualizar plugin
+notFound=Não foi encontrado.
+help.desc=Abre o pop up do Auto Updater.
+help.download=Procura o plugin com id|nome e o baixa/instala.

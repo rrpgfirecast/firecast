@@ -30,6 +30,30 @@ local function constructNew_frmDownloadedPlugin()
     obj:setHeight(50);
     obj:setMargins({top=1});
 
+
+        local function downloadID(url)
+            local install = true;
+            Internet.download(url,
+                function(stream, contentType)
+                    if stream ~= nil then
+                        install = Firecast.Plugins.installPlugin(stream, true);
+                    end;
+                    if install == false or stream == nil then
+                        GUI.openInBrowser(url);
+                    end;
+                end,       
+                function (errorMsg)
+                    --showMessage(errorMsg);
+                end,       
+                function (downloaded, total)
+                    -- esta função será chamada constantemente.
+                    -- dividir "downloaded" por "total" lhe dará uma porcentagem do download.
+                end,
+                "checkForModification");
+        end
+	
+
+
     obj.rectangle1 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle1:setParent(obj);
     obj.rectangle1:setAlign("client");
@@ -82,6 +106,7 @@ local function constructNew_frmDownloadedPlugin()
     obj.downloadButton:setName("downloadButton");
     obj.downloadButton:setVisible(false);
     obj.downloadButton:setMargins({top = 12.5, bottom = 12.5, right = 5});
+    obj.downloadButton:setHint("@@hint.install");
 
     obj.image1 = GUI.fromHandle(_obj_newObject("image"));
     obj.image1:setParent(obj.downloadButton);
@@ -97,6 +122,7 @@ local function constructNew_frmDownloadedPlugin()
     obj.openButton:setName("openButton");
     obj.openButton:setVisible(false);
     obj.openButton:setMargins({top = 12.5, bottom = 12.5, right = 5});
+    obj.openButton:setHint("@@hint.github");
 
     obj.image2 = GUI.fromHandle(_obj_newObject("image"));
     obj.image2:setParent(obj.openButton);
@@ -127,13 +153,7 @@ local function constructNew_frmDownloadedPlugin()
 
     obj._e_event0 = obj.downloadButton:addEventListener("onClick",
         function (_)
-            local install = true;
-            				if sheet.stream ~= nil then
-            					install = Firecast.Plugins.installPlugin(sheet.stream, true);
-            				end;
-            				if install == false or sheet.stream == nil then
-            					GUI.openInBrowser(sheet.url);
-            				end;
+            downloadID(sheet.url);
         end, obj);
 
     obj._e_event1 = obj.openButton:addEventListener("onClick",

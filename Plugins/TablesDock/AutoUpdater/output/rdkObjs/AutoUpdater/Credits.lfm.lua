@@ -46,7 +46,7 @@ local function constructNew_frmTemplateCreditos()
     obj.label1:setTop(10);
     obj.label1:setWidth(200);
     obj.label1:setHeight(20);
-    obj.label1:setText("Feito por: Vinny (Ambesek)");
+    obj.label1:setText("@@madeBy");
     obj.label1:setName("label1");
 
     obj.label2 = GUI.fromHandle(_obj_newObject("label"));
@@ -78,7 +78,7 @@ local function constructNew_frmTemplateCreditos()
     obj.checkBox1:setWidth(200);
     obj.checkBox1:setHeight(20);
     obj.checkBox1:setField("noUpdate");
-    obj.checkBox1:setText("Não pedir para atualizar.");
+    obj.checkBox1:setText("@@dontUpdate");
     obj.checkBox1:setName("checkBox1");
 
     obj.button1 = GUI.fromHandle(_obj_newObject("button"));
@@ -94,7 +94,7 @@ local function constructNew_frmTemplateCreditos()
     obj.button2:setLeft(5);
     obj.button2:setTop(135);
     obj.button2:setWidth(100);
-    obj.button2:setText("Atualizar");
+    obj.button2:setText("@@update");
     obj.button2:setName("button2");
 
     obj.label4 = GUI.fromHandle(_obj_newObject("label"));
@@ -103,7 +103,7 @@ local function constructNew_frmTemplateCreditos()
     obj.label4:setTop(160);
     obj.label4:setWidth(200);
     obj.label4:setHeight(20);
-    obj.label4:setText("Conheça a Mesa:");
+    obj.label4:setText("@@visit");
     obj.label4:setName("label4");
 
     obj.button3 = GUI.fromHandle(_obj_newObject("button"));
