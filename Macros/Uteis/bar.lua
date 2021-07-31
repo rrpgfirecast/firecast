@@ -32,6 +32,18 @@ end
 
 local bar = tonumber(arg[2])
 
+-- pegue a barra pelo nome
+if (bar == nil or bar < 1 or bar > 4) and arg[2] ~= nil then
+	local bars = {}
+	-- mude esses bar1-bar4 para o nome das barras de sua mesa
+	bars["bar1"] = 1
+	bars["bar2"] = 2
+	bars["bar3"] = 3
+	bars["bar4"] = 4
+
+	bar = bars[arg[2]]
+end
+
 if bar == nil or bar < 1 or bar > 4 then
 	local id = choose("Qual a barrinha?", {"1","2","3","4"}, 1)
 	bar = tonumber(id)
@@ -69,7 +81,7 @@ if max ~= nil then
 	elseif op=="=="then
 		maxValue = max
 	end
-end;
+end
 
 if op=="++" then
 	currentValue = maxValue + curr
