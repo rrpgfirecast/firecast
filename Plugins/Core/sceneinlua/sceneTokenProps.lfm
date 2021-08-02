@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<popupForm name="frmTokenProps" width="400" height="300" drawContainer="true" resizable="true" placement="center"
+<popupForm name="frmTokenProps" width="420" height="300" drawContainer="true" resizable="true" placement="center"
 		   cancelable="false">
  		   
 	<import file="interfaceUtils.xml"/>

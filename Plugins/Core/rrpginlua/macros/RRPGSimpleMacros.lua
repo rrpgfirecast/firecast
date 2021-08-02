@@ -259,7 +259,7 @@ Firecast.Messaging.listen("HandleChatCommand",
 
 Firecast.Messaging.listen("ListChatCommands",
 	function(message)
-		message.response = {{command="/macros", description=lang("macros.command.description")}};
+		message.response = {{command="/macros", description="@@macros.command.description"}};
 	end);
 
 local function desanexarMacrosDaMesa(mesa)
