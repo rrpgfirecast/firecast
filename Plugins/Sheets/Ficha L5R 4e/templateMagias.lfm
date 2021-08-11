@@ -1,20 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <form name="templateMagias" height="155" width="325" margins="{top=5,bottom=5}">  
     <rectangle width="320" height="160" xradius="5" yradius="5" cornerType="round" color="#212121"/>
+    <image top="5" left="5" scale="1" field="imagemMagia" name="imagMagia"></image>
     <label text="Nome:" top="10" left="5" />
-    <edit left="50" height="30" top="5" width="265" field="nomeMagia" margins="{right=2}"/>
+    <edit left="50" transparent="true" height="30" top="5" width="265" field="nomeMagia" margins="{right=2}"/>
+    <horzLine left="50" top="30" width="265" strokeColor="white"/>
     <label text="Elemento:" top="45"  left="5"/>
-    <comboBox left="67" top="40" width="100" height="25" horzTextAlign="center" field="elemMagia" items="{'Água', 'Ar', 'Fogo', 'Terra', 'Vazio', 'Universal'}"/>
+    <comboBox left="67" top="40" width="100" height="25" horzTextAlign="center" transparent="true" field="elemMagia" items="{'Água', 'Ar', 'Fogo', 'Terra', 'Vazio', 'Universal'}"
+    values="{'Water', 'Air', 'Fire', 'Earth', 'Void', 'Universal'}"/>
     <label text="Maestria:" top="45"  left="180" />
-    <edit left="240" top="40" height="25" horzTextAlign="center" field="lvlMagia" width="25" margins="{right=2}"/>
+    <edit left="240" transparent="true" top="40" height="25" horzTextAlign="center" field="lvlMagia" width="25" margins="{right=2}"/>
+    <horzLine left="240" top="65" width="25" strokeColor="white"/>
     <label text="Keywords:" left="5" top="105" />
-    <edit left="68" top="100" height="25" width="135" field="tipoMagia" margins="{right=2}"/>
+    <edit left="68" top="100" transparent="true" height="25" width="135" field="tipoMagia" margins="{right=2}"/>
+    <horzLine left="68" top="125" width="135" strokeColor="white"/>
     <label text="Área:" left="180" top="75" />
-    <edit left="215" top="70" height="25" width="100" field="areaMagia" margins="{right=2}"/>
+    <edit left="215" top="70" transparent="true" height="25" width="100" field="areaMagia" margins="{right=2}"/>
+    <horzLine left="215" top="95" width="100" strokeColor="white"/>
     <label text="Duração:" left="210" top="105" />
-    <edit left="265" top="100" height="25" width="50" field="duraMagia" margins="{right=2}"/>
+    <edit left="265" top="100" height="25" transparent="true" width="50" field="duraMagia" margins="{right=2}"/>
+    <horzLine left="265" top="125" width="50" strokeColor="white"/>
     <label text="Alcance:" left="5" top="75" />
-    <edit left="60" top="70" height="25" width="107" field="alcMagia" margins="{right=2}"/>
+    <edit left="60" top="70" height="25" transparent="true" width="107" field="alcMagia" margins="{right=2}"/>
+    <horzLine left="60" top="95" width="107" strokeColor="white"/>
 
     <button left="290" top="40" text="-" width='25' height='25'
                 onClick="NDB.deleteNode(sheet);"/>
@@ -37,5 +45,32 @@
     <edit left="50" height="25" top="5" width="425" field="raiseMagia"/>
                 <textEditor margins="{top = 30}" name="MinhaDescMag" field="descriMagia" align="client"/>             
     </popup>   
+
+    <dataLink fields="{'elemMagia'}"> 
+                <event name="onChange">
+                    if sheet ~= nil then
+                        local node = NDB.getRoot(sheet);
+                        local objetos = NDB.getChildNodes(node.magias);
+
+                        for i=1, #objetos, 1 do 
+                            if objetos[i].elemMagia == 'Water' then
+                                objetos[i].imagemMagia = 'http://blob.firecast.com.br/blobs/HGCVOFGV_1840554/Water.png';
+                            elseif objetos[i].elemMagia == 'Earth' then
+                                objetos[i].imagemMagia = 'http://blob.firecast.com.br/blobs/NVGJRJWF_1840560/Earth.png';
+                            elseif objetos[i].elemMagia == 'Air' then
+                                objetos[i].imagemMagia = 'http://blob.firecast.com.br/blobs/MDGKFTKT_1840555/Air.png';
+                            elseif objetos[i].elemMagia == 'Fire' then
+                                objetos[i].imagemMagia = 'http://blob.firecast.com.br/blobs/CUUULBSM_1840558/Fire.png';
+                            elseif objetos[i].elemMagia == 'Void' then
+                                objetos[i].imagemMagia = 'http://blob.firecast.com.br/blobs/ELMAJRDB_1840552/Void_1.png';
+                            elseif objetos[i].elemMagia == 'Universal' then
+                                objetos[i].imagemMagia = '0';
+                            end;
+                        end;
+
+                    end
+                </event>
+        </dataLink>
+	
 
 </form>

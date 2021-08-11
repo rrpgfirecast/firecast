@@ -1261,9 +1261,9 @@ local function constructNew_frmOurFichaL5R4e()
 
     obj.label57 = GUI.fromHandle(_obj_newObject("label"));
     obj.label57:setParent(obj.scrollBox1);
-    obj.label57:setLeft(1010);
+    obj.label57:setLeft(1060);
     obj.label57:setFontSize(10.0);
-    obj.label57:setTop(365);
+    obj.label57:setTop(385);
     obj.label57:setText("Cálculos com Terra *");
     obj.label57:setName("label57");
 
@@ -1271,8 +1271,8 @@ local function constructNew_frmOurFichaL5R4e()
     obj.edit25:setParent(obj.scrollBox1);
     obj.edit25:setField("lastroTerra");
     obj.edit25:setHorzTextAlign("center");
-    obj.edit25:setLeft(1100);
-    obj.edit25:setTop(365);
+    obj.edit25:setLeft(1150);
+    obj.edit25:setTop(385);
     obj.edit25:setWidth(20);
     obj.edit25:setHeight(20);
     obj.edit25:setTransparent(false);
@@ -1873,6 +1873,7 @@ local function constructNew_frmOurFichaL5R4e()
     obj.rclSkills:setTop(630);
     obj.rclSkills:setWidth(1080);
     obj.rclSkills:setAutoHeight(true);
+    obj.rclSkills:setMinQt(7);
 
     obj.boxDetalhesDoItem = GUI.fromHandle(_obj_newObject("dataScopeBox"));
     obj.boxDetalhesDoItem:setParent(obj.rclSkills);
@@ -2305,10 +2306,9 @@ local function constructNew_frmOurFichaL5R4e()
     obj.layout7 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout7:setParent(obj.scrollBox3);
     obj.layout7:setLeft(10);
-    obj.layout7:setTop(30);
+    obj.layout7:setTop(40);
     obj.layout7:setWidth(850);
     obj.layout7:setHeight(40);
-    obj.layout7:setFrameStyle("/Frames/frameFrenteDnD/frameFrente.xml");
     obj.layout7:setName("layout7");
 
     obj.image2 = GUI.fromHandle(_obj_newObject("image"));
@@ -2776,17 +2776,28 @@ local function constructNew_frmOurFichaL5R4e()
     obj.label160:setText("HISTÓRIA");
     obj.label160:setName("label160");
 
-    obj.layout12 = GUI.fromHandle(_obj_newObject("layout"));
-    obj.layout12:setParent(obj.scrollBox4);
-    obj.layout12:setLeft(5);
-    obj.layout12:setTop(430);
-    obj.layout12:setWidth(1270);
-    obj.layout12:setHeight(380);
-    obj.layout12:setFrameStyle("/Frames/frameFrenteDnD/frameFrente.xml");
-    obj.layout12:setName("layout12");
+    obj.flowLayout1 = GUI.fromHandle(_obj_newObject("flowLayout"));
+    obj.flowLayout1:setParent(obj.scrollBox4);
+    obj.flowLayout1:setLeft(5);
+    obj.flowLayout1:setTop(430);
+    obj.flowLayout1:setWidth(1270);
+    obj.flowLayout1:setMinScaledWidth(130);
+    obj.flowLayout1:setMinWidth(130);
+    obj.flowLayout1:setMaxWidth(1270);
+    obj.flowLayout1:setMaxScaledWidth(1270);
+    obj.flowLayout1:setHeight(380);
+    obj.flowLayout1:setFrameStyle("/Frames/frameFrenteDnD/frameFrente.xml");
+    obj.flowLayout1:setName("flowLayout1");
+
+    obj.flowPart1 = GUI.fromHandle(_obj_newObject("flowPart"));
+    obj.flowPart1:setParent(obj.flowLayout1);
+    obj.flowPart1:setMinWidth(130);
+    obj.flowPart1:setMaxWidth(1270);
+    obj.flowPart1:setHeight(360);
+    obj.flowPart1:setName("flowPart1");
 
     obj.richEdit1 = GUI.fromHandle(_obj_newObject("richEdit"));
-    obj.richEdit1:setParent(obj.layout12);
+    obj.richEdit1:setParent(obj.flowPart1);
     obj.richEdit1:setAlign("client");
     obj.richEdit1:setField("background");
     lfm_setPropAsString(obj.richEdit1, "backgroundColor",  "#404040");
@@ -3220,6 +3231,7 @@ local function constructNew_frmOurFichaL5R4e()
         if self.label92 ~= nil then self.label92:destroy(); self.label92 = nil; end;
         if self.edit33 ~= nil then self.edit33:destroy(); self.edit33 = nil; end;
         if self.image7 ~= nil then self.image7:destroy(); self.image7 = nil; end;
+        if self.flowLayout1 ~= nil then self.flowLayout1:destroy(); self.flowLayout1 = nil; end;
         if self.label71 ~= nil then self.label71:destroy(); self.label71 = nil; end;
         if self.radioButton7 ~= nil then self.radioButton7:destroy(); self.radioButton7 = nil; end;
         if self.label148 ~= nil then self.label148:destroy(); self.label148 = nil; end;
@@ -3244,6 +3256,7 @@ local function constructNew_frmOurFichaL5R4e()
         if self.rclDesVantagens ~= nil then self.rclDesVantagens:destroy(); self.rclDesVantagens = nil; end;
         if self.layout8 ~= nil then self.layout8:destroy(); self.layout8 = nil; end;
         if self.label122 ~= nil then self.label122:destroy(); self.label122 = nil; end;
+        if self.flowPart1 ~= nil then self.flowPart1:destroy(); self.flowPart1 = nil; end;
         if self.label67 ~= nil then self.label67:destroy(); self.label67 = nil; end;
         if self.rectangle5 ~= nil then self.rectangle5:destroy(); self.rectangle5 = nil; end;
         if self.button1 ~= nil then self.button1:destroy(); self.button1 = nil; end;
@@ -3423,7 +3436,6 @@ local function constructNew_frmOurFichaL5R4e()
         if self.image6 ~= nil then self.image6:destroy(); self.image6 = nil; end;
         if self.horzLine8 ~= nil then self.horzLine8:destroy(); self.horzLine8 = nil; end;
         if self.rectangle29 ~= nil then self.rectangle29:destroy(); self.rectangle29 = nil; end;
-        if self.layout12 ~= nil then self.layout12:destroy(); self.layout12 = nil; end;
         if self.label4 ~= nil then self.label4:destroy(); self.label4 = nil; end;
         if self.label6 ~= nil then self.label6:destroy(); self.label6 = nil; end;
         if self.label129 ~= nil then self.label129:destroy(); self.label129 = nil; end;
