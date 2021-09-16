@@ -17,7 +17,7 @@ for i=1, #jogadores, 1 do
 	users[i] = jogadores[i].nick
 
 	-- checa se o target bate com o nick ou login, removendo caracteres especiais
-	if target~=nil and (Utils.compareStringPtBr(Utils.removerFmtChat(jogadores[i].login), Utils.removerFmtChat(target))==0 or Utils.compareStringPtBr(Utils.removerFmtChat(jogadores[i].nick), Utils.removerFmtChat(target))==0) then
+	if target~=nil and (utils.compareStringPtBr(utils.removerFmtChat(jogadores[i].login), utils.removerFmtChat(target))==0 or utils.compareStringPtBr(utils.removerFmtChat(jogadores[i].nick), utils.removerFmtChat(target))==0) then
 		jogador = jogadores[i]
 	end
 end
@@ -29,12 +29,23 @@ if jogador == nil then
 end
 
 -- BARRINHA
+local bars = {}
+-- mude esses bar1-bar4 para o nome das barras de sua mesa
+bars["bar1"] = 1
+bars["bar2"] = 2
+bars["bar3"] = 3
+bars["bar4"] = 4
 
 local bar = tonumber(arg[2])
 
+-- pegue a barra pelo nome
+if (bar == nil or bar < 1 or bar > 4) and arg[2] ~= nil then
+	bar = bars[arg[2]]
+end
+
 if bar == nil or bar < 1 or bar > 4 then
-	local id = choose("Qual a barrinha?", {"1","2","3","4"}, 1)
-	bar = tonumber(id)
+	local id = choose("Qual a barrinha?", {"bar1","bar2","bar3","bar4"}, 1)
+	bar = bars[arg[2]]
 end
 
 -- OPERAÇÃO
@@ -69,7 +80,7 @@ if max ~= nil then
 	elseif op=="=="then
 		maxValue = max
 	end
-end;
+end
 
 if op=="++" then
 	currentValue = maxValue + curr

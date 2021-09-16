@@ -5,17 +5,18 @@
 
 
         <!-- Máximo de ferimentos -->
-        <dataLink fields="{'lastroTerra', 'BHealth', 'earth', 'PWound'}" defaultValue="2"> 
+        <dataLink fields="{'lastroTerra', 'extraFerimentos', 'BHealth', 'earth', 'PWound'}" defaultValues="{'2', '0'}"> 
                 <event name="onChange">
                 if (sheet.earth ~= nil) then
                         local terr = sheet.earth;
                         local lastro = sheet.lastroTerra;
+                        local extra = sheet.extraFerimentos;
 
                         if (sheet.BHealth == true) then
                                 terr = terr - 1;
                         end;
 
-                        local terra = (terr) * (lastro);
+                        local terra = (terr) * (lastro) + extra;
 
                         sheet.Saud = terr*5;
                         sheet.Esco = terra;
@@ -67,6 +68,7 @@
                 if (sheet.earth ~= nil) then
                         local ferimentos = (tonumber(sheet.ferimentos) or 0);
                         local lastro = sheet.lastroTerra;
+                        local extra = sheet.extraFerimentos;
 
                         if sheet.PWound == true then
                                 ferimentos = ferimentos + sheet.Saud;
@@ -78,7 +80,7 @@
                                 terr = terr - 1;
                         end;
 
-                        local terra = (terr) * (lastro);
+                        local terra = (terr) * (lastro) + extra;
 
                         local FSaud = ferimentos;
 
@@ -432,15 +434,16 @@
                         <rectangle left="710" top="180" width="120" height="24" xradius="5" yradius="5" cornerType="round" color="#212121"/>
                         <label left="720" top="180" text="FERIMENTOS:"/><edit left="800" horzTextAlign="center" top="180" width="30" height="20" transparent="false" field="ferimentos"/>
                         <rectangle left="700" top="200" width="300" height="30" xradius="25" yradius="25" cornerType="bevel" color="#212121"/>
-                        <rectangle left="990" top="213" width="180" height="174" color="#212121"/>
+                        <rectangle left="990" top="213" width="185" height="174" color="#212121"/>
                         <checkBox left="1010" top="220" text="Permanent Wound" field="PWound"/>
                         <checkBox left="1010" top="240" text="Bad Health" field="BHealth"/>
                         <checkBox left="1010" top="260" text="Low Pain Threshold" field="LPThold"/>
                         <checkBox left="1010" top="280" text="Strength of the Earth" field="SotEarth"/>
                         <checkBox left="1010" top="300" text="Quick Healer" field="QHealer"/>
                         <label left="1010" top="325" text="Recuperação de"/><label left="1010" top="340" text="Ferimentos:"/>
-                        <label left="1040" top="340" fontSize="15.0" horzTextAlign="center" field="RecuFerimento"/><label left="1115" top="340" fontSize="15.0" text="/  dia"/>
-                        <label left="1010" fontSize="10.0" top="365" text="Cálculos com Terra *"/><edit field="lastroTerra" horzTextAlign="center" left="1100" top="365" width="20" height="20" transparent="false"/>
+                        <label left="1025" top="340" horzTextAlign="center" field="RecuFerimento"/><label left="1095" top="340" text="/ dia"/>
+                        <label left="1010" top="360" width="200" text="Ferimentos a mais/nível:"/><edit field="extraFerimentos" horzTextAlign="center" left="1155" top="360" width="20" height="20" transparent="false"/>
+                        <label left="1060" fontSize="10.0" top="385" text="Cálculos com Terra *"/><edit field="lastroTerra" horzTextAlign="center" left="1155" top="385" width="20" height="20" transparent="false"/>
 
                         <layout left="700" top="200" width="300" height="200" frameStyle="/Frames/frameFrenteDnD/frameFrente.xml">
                         <label left="25" top="10" fontSize="12.0" text="Nível"/><label left="105" top="10" fontSize="12.0" text="Pen.            Atual"/><label left="210" top="10" fontSize="12.0" text="       Total"/>
@@ -500,13 +503,11 @@
                         onClick='self.rclSkills:append();'/>
 
                         <recordList name="rclSkills" field="pericias" templateForm="templateSkills"
-                        left="5" top="630" width="1080" autoHeight="true">
+                        left="5" top="630" width="1080" autoHeight="true" minQt="7">
                       
                          <dataScopeBox name="boxDetalhesDoItem" visible="false" 
-                     width="1800" height="600" top="-20" margins="{left=4, right=4}">
-                <!-- Faça um layout "bonito" para sua caixa de detalhes =). Utilize a propriedade "field" nas tags aqui dentro   -->      
+                     width="1800" height="600" top="-20" margins="{left=4, right=4}">    
                         
-
 
                 <rectangle color="#212121" xradius="10" yradius="10" left="760"
                         width="160" top="20" height="20" padding="{top=3, left=3, right=3, bottom=3}">
@@ -603,7 +604,7 @@
                         <!-- ESPAÇOS DE MAGIA -->
                         <rectangle left="25" top="10" width="127" height="24" xradius="5" yradius="5" cornerType="round" color="#212121"/>
                         <label left="30" top="12" text="ESPAÇOS DE MAGIA"/>
-                        <layout left="10" top="30" width="850" height="40" frameStyle="/Frames/frameFrenteDnD/frameFrente.xml">
+                        <layout left="10" top="40" width="850" height="40">
 
                         <image left="25" top="7" scale="0.25" src="/Frames/miniar.png"/><label left="55" fontSize="20.0" top="10" text="Ar:"/>
                         <edit field="slotAr" left="85" top="5" horzTextAlign="center" width="25" transparent="true" height="25" fontSize="23.0"/>
@@ -631,6 +632,8 @@
                         <label left="790" fontSize="20.0" top="10" text="de"/><label left="820" top="5" width="25" height="25" fontSize="23.0" field="void"/>
 
                         </layout>
+
+                        <!-- LISTA DE MAGIAS -->
 
                         <rectangle left="25" top="100" width="60" height="20" xradius="5" yradius="5" cornerType="round" color="#212121"/>
                         
@@ -671,9 +674,12 @@
 
                         <rectangle left="17" top="410" width="70" height="20" xradius="5" yradius="5" cornerType="round" color="#212121"/>
                         <label left="22" top="410" text="HISTÓRIA"/>
-                        <layout left="5" top="430" width="1270" height="380" frameStyle="/Frames/frameFrenteDnD/frameFrente.xml">
-                        <richEdit align="client" field="background" backgroundColor="#404040" defaultFontColor="white"/>
-                        </layout>
+                        
+                        <flowLayout left="5" top="430" width="1270" minScaledWidth="130" minWidth="130"  maxWidth="1270" maxScaledWidth="1270" height="380" frameStyle="/Frames/frameFrenteDnD/frameFrente.xml">
+                                <flowPart minWidth="130" maxWidth="1270" height="360">
+                                        <richEdit align="client" field="background" backgroundColor="#404040" defaultFontColor="white"/>
+                                </flowPart> 
+                        </flowLayout>
 
                         </scrollBox>
                 </tab>

@@ -41,6 +41,14 @@ local function constructNew_templateMagias()
     obj.rectangle1:setColor("#212121");
     obj.rectangle1:setName("rectangle1");
 
+    obj.imagMagia = GUI.fromHandle(_obj_newObject("image"));
+    obj.imagMagia:setParent(obj);
+    obj.imagMagia:setTop(5);
+    obj.imagMagia:setLeft(5);
+    obj.imagMagia:setScale(1);
+    obj.imagMagia:setField("imagemMagia");
+    obj.imagMagia:setName("imagMagia");
+
     obj.label1 = GUI.fromHandle(_obj_newObject("label"));
     obj.label1:setParent(obj);
     obj.label1:setText("Nome:");
@@ -51,12 +59,21 @@ local function constructNew_templateMagias()
     obj.edit1 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit1:setParent(obj);
     obj.edit1:setLeft(50);
+    obj.edit1:setTransparent(true);
     obj.edit1:setHeight(30);
     obj.edit1:setTop(5);
     obj.edit1:setWidth(265);
     obj.edit1:setField("nomeMagia");
     obj.edit1:setMargins({right=2});
     obj.edit1:setName("edit1");
+
+    obj.horzLine1 = GUI.fromHandle(_obj_newObject("horzLine"));
+    obj.horzLine1:setParent(obj);
+    obj.horzLine1:setLeft(50);
+    obj.horzLine1:setTop(30);
+    obj.horzLine1:setWidth(265);
+    obj.horzLine1:setStrokeColor("white");
+    obj.horzLine1:setName("horzLine1");
 
     obj.label2 = GUI.fromHandle(_obj_newObject("label"));
     obj.label2:setParent(obj);
@@ -72,8 +89,10 @@ local function constructNew_templateMagias()
     obj.comboBox1:setWidth(100);
     obj.comboBox1:setHeight(25);
     obj.comboBox1:setHorzTextAlign("center");
+    obj.comboBox1:setTransparent(true);
     obj.comboBox1:setField("elemMagia");
     obj.comboBox1:setItems({'Água', 'Ar', 'Fogo', 'Terra', 'Vazio', 'Universal'});
+    obj.comboBox1:setValues({'Water', 'Air', 'Fire', 'Earth', 'Void', 'Universal'});
     obj.comboBox1:setName("comboBox1");
 
     obj.label3 = GUI.fromHandle(_obj_newObject("label"));
@@ -86,6 +105,7 @@ local function constructNew_templateMagias()
     obj.edit2 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit2:setParent(obj);
     obj.edit2:setLeft(240);
+    obj.edit2:setTransparent(true);
     obj.edit2:setTop(40);
     obj.edit2:setHeight(25);
     obj.edit2:setHorzTextAlign("center");
@@ -93,6 +113,14 @@ local function constructNew_templateMagias()
     obj.edit2:setWidth(25);
     obj.edit2:setMargins({right=2});
     obj.edit2:setName("edit2");
+
+    obj.horzLine2 = GUI.fromHandle(_obj_newObject("horzLine"));
+    obj.horzLine2:setParent(obj);
+    obj.horzLine2:setLeft(240);
+    obj.horzLine2:setTop(65);
+    obj.horzLine2:setWidth(25);
+    obj.horzLine2:setStrokeColor("white");
+    obj.horzLine2:setName("horzLine2");
 
     obj.label4 = GUI.fromHandle(_obj_newObject("label"));
     obj.label4:setParent(obj);
@@ -105,11 +133,20 @@ local function constructNew_templateMagias()
     obj.edit3:setParent(obj);
     obj.edit3:setLeft(68);
     obj.edit3:setTop(100);
+    obj.edit3:setTransparent(true);
     obj.edit3:setHeight(25);
     obj.edit3:setWidth(135);
     obj.edit3:setField("tipoMagia");
     obj.edit3:setMargins({right=2});
     obj.edit3:setName("edit3");
+
+    obj.horzLine3 = GUI.fromHandle(_obj_newObject("horzLine"));
+    obj.horzLine3:setParent(obj);
+    obj.horzLine3:setLeft(68);
+    obj.horzLine3:setTop(125);
+    obj.horzLine3:setWidth(135);
+    obj.horzLine3:setStrokeColor("white");
+    obj.horzLine3:setName("horzLine3");
 
     obj.label5 = GUI.fromHandle(_obj_newObject("label"));
     obj.label5:setParent(obj);
@@ -122,11 +159,20 @@ local function constructNew_templateMagias()
     obj.edit4:setParent(obj);
     obj.edit4:setLeft(215);
     obj.edit4:setTop(70);
+    obj.edit4:setTransparent(true);
     obj.edit4:setHeight(25);
     obj.edit4:setWidth(100);
     obj.edit4:setField("areaMagia");
     obj.edit4:setMargins({right=2});
     obj.edit4:setName("edit4");
+
+    obj.horzLine4 = GUI.fromHandle(_obj_newObject("horzLine"));
+    obj.horzLine4:setParent(obj);
+    obj.horzLine4:setLeft(215);
+    obj.horzLine4:setTop(95);
+    obj.horzLine4:setWidth(100);
+    obj.horzLine4:setStrokeColor("white");
+    obj.horzLine4:setName("horzLine4");
 
     obj.label6 = GUI.fromHandle(_obj_newObject("label"));
     obj.label6:setParent(obj);
@@ -140,10 +186,19 @@ local function constructNew_templateMagias()
     obj.edit5:setLeft(265);
     obj.edit5:setTop(100);
     obj.edit5:setHeight(25);
+    obj.edit5:setTransparent(true);
     obj.edit5:setWidth(50);
     obj.edit5:setField("duraMagia");
     obj.edit5:setMargins({right=2});
     obj.edit5:setName("edit5");
+
+    obj.horzLine5 = GUI.fromHandle(_obj_newObject("horzLine"));
+    obj.horzLine5:setParent(obj);
+    obj.horzLine5:setLeft(265);
+    obj.horzLine5:setTop(125);
+    obj.horzLine5:setWidth(50);
+    obj.horzLine5:setStrokeColor("white");
+    obj.horzLine5:setName("horzLine5");
 
     obj.label7 = GUI.fromHandle(_obj_newObject("label"));
     obj.label7:setParent(obj);
@@ -157,10 +212,19 @@ local function constructNew_templateMagias()
     obj.edit6:setLeft(60);
     obj.edit6:setTop(70);
     obj.edit6:setHeight(25);
+    obj.edit6:setTransparent(true);
     obj.edit6:setWidth(107);
     obj.edit6:setField("alcMagia");
     obj.edit6:setMargins({right=2});
     obj.edit6:setName("edit6");
+
+    obj.horzLine6 = GUI.fromHandle(_obj_newObject("horzLine"));
+    obj.horzLine6:setParent(obj);
+    obj.horzLine6:setLeft(60);
+    obj.horzLine6:setTop(95);
+    obj.horzLine6:setWidth(107);
+    obj.horzLine6:setStrokeColor("white");
+    obj.horzLine6:setName("horzLine6");
 
     obj.button1 = GUI.fromHandle(_obj_newObject("button"));
     obj.button1:setParent(obj);
@@ -213,6 +277,11 @@ local function constructNew_templateMagias()
     obj.MinhaDescMag:setField("descriMagia");
     obj.MinhaDescMag:setAlign("client");
 
+    obj.dataLink1 = GUI.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink1:setParent(obj);
+    obj.dataLink1:setFields({'elemMagia'});
+    obj.dataLink1:setName("dataLink1");
+
     obj._e_event0 = obj.button1:addEventListener("onClick",
         function (_)
             NDB.deleteNode(sheet);
@@ -229,7 +298,33 @@ local function constructNew_templateMagias()
                             end;
         end, obj);
 
+    obj._e_event2 = obj.dataLink1:addEventListener("onChange",
+        function (_, field, oldValue, newValue)
+            if sheet ~= nil then
+                                    local node = NDB.getRoot(sheet);
+                                    local objetos = NDB.getChildNodes(node.magias);
+            
+                                    for i=1, #objetos, 1 do 
+                                        if objetos[i].elemMagia == 'Water' then
+                                            objetos[i].imagemMagia = 'http://blob.firecast.com.br/blobs/HGCVOFGV_1840554/Water.png';
+                                        elseif objetos[i].elemMagia == 'Earth' then
+                                            objetos[i].imagemMagia = 'http://blob.firecast.com.br/blobs/NVGJRJWF_1840560/Earth.png';
+                                        elseif objetos[i].elemMagia == 'Air' then
+                                            objetos[i].imagemMagia = 'http://blob.firecast.com.br/blobs/MDGKFTKT_1840555/Air.png';
+                                        elseif objetos[i].elemMagia == 'Fire' then
+                                            objetos[i].imagemMagia = 'http://blob.firecast.com.br/blobs/CUUULBSM_1840558/Fire.png';
+                                        elseif objetos[i].elemMagia == 'Void' then
+                                            objetos[i].imagemMagia = 'http://blob.firecast.com.br/blobs/ELMAJRDB_1840552/Void_1.png';
+                                        elseif objetos[i].elemMagia == 'Universal' then
+                                            objetos[i].imagemMagia = '0';
+                                        end;
+                                    end;
+            
+                                end
+        end, obj);
+
     function obj:_releaseEvents()
+        __o_rrpgObjs.removeEventListenerById(self._e_event2);
         __o_rrpgObjs.removeEventListenerById(self._e_event1);
         __o_rrpgObjs.removeEventListenerById(self._e_event0);
     end;
@@ -243,9 +338,6 @@ local function constructNew_templateMagias()
           self:setNodeDatabase(nil);
         end;
 
-        if self.edit3 ~= nil then self.edit3:destroy(); self.edit3 = nil; end;
-        if self.popMagia ~= nil then self.popMagia:destroy(); self.popMagia = nil; end;
-        if self.label5 ~= nil then self.label5:destroy(); self.label5 = nil; end;
         if self.button1 ~= nil then self.button1:destroy(); self.button1 = nil; end;
         if self.label1 ~= nil then self.label1:destroy(); self.label1 = nil; end;
         if self.edit4 ~= nil then self.edit4:destroy(); self.edit4 = nil; end;
@@ -254,16 +346,27 @@ local function constructNew_templateMagias()
         if self.label3 ~= nil then self.label3:destroy(); self.label3 = nil; end;
         if self.label4 ~= nil then self.label4:destroy(); self.label4 = nil; end;
         if self.label6 ~= nil then self.label6:destroy(); self.label6 = nil; end;
+        if self.horzLine3 ~= nil then self.horzLine3:destroy(); self.horzLine3 = nil; end;
+        if self.imagMagia ~= nil then self.imagMagia:destroy(); self.imagMagia = nil; end;
         if self.edit5 ~= nil then self.edit5:destroy(); self.edit5 = nil; end;
-        if self.edit2 ~= nil then self.edit2:destroy(); self.edit2 = nil; end;
+        if self.horzLine4 ~= nil then self.horzLine4:destroy(); self.horzLine4 = nil; end;
         if self.comboBox1 ~= nil then self.comboBox1:destroy(); self.comboBox1 = nil; end;
         if self.edit6 ~= nil then self.edit6:destroy(); self.edit6 = nil; end;
-        if self.edit1 ~= nil then self.edit1:destroy(); self.edit1 = nil; end;
-        if self.rectangle1 ~= nil then self.rectangle1:destroy(); self.rectangle1 = nil; end;
         if self.label7 ~= nil then self.label7:destroy(); self.label7 = nil; end;
         if self.edit7 ~= nil then self.edit7:destroy(); self.edit7 = nil; end;
-        if self.MinhaDescMag ~= nil then self.MinhaDescMag:destroy(); self.MinhaDescMag = nil; end;
         if self.label2 ~= nil then self.label2:destroy(); self.label2 = nil; end;
+        if self.dataLink1 ~= nil then self.dataLink1:destroy(); self.dataLink1 = nil; end;
+        if self.edit3 ~= nil then self.edit3:destroy(); self.edit3 = nil; end;
+        if self.horzLine5 ~= nil then self.horzLine5:destroy(); self.horzLine5 = nil; end;
+        if self.popMagia ~= nil then self.popMagia:destroy(); self.popMagia = nil; end;
+        if self.label5 ~= nil then self.label5:destroy(); self.label5 = nil; end;
+        if self.horzLine6 ~= nil then self.horzLine6:destroy(); self.horzLine6 = nil; end;
+        if self.horzLine1 ~= nil then self.horzLine1:destroy(); self.horzLine1 = nil; end;
+        if self.edit2 ~= nil then self.edit2:destroy(); self.edit2 = nil; end;
+        if self.horzLine2 ~= nil then self.horzLine2:destroy(); self.horzLine2 = nil; end;
+        if self.rectangle1 ~= nil then self.rectangle1:destroy(); self.rectangle1 = nil; end;
+        if self.edit1 ~= nil then self.edit1:destroy(); self.edit1 = nil; end;
+        if self.MinhaDescMag ~= nil then self.MinhaDescMag:destroy(); self.MinhaDescMag = nil; end;
         self:_oldLFMDestroy();
     end;
 
