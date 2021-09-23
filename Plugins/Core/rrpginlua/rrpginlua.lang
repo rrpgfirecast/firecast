@@ -12,6 +12,11 @@ plugins.mgr.uninstallFailure=Não foi possível desinstalar o plugin
 plugins.mgr.authorLabel=Autor: 
 plugins.mgr.uninstall=Desinstalar
 
+basicSheet.white.title=Ficha Básica do Firecast (Branca)
+basicSheet.white.description=Ficha Básica do Firecast (Branca)
+basicSheet.dark.title=Ficha Básica do Firecast
+basicSheet.dark.description=Ficha Básica do Firecast
+
 
 [en]
 fc.BottomClosePopupPanel.close=Close
@@ -26,3 +31,8 @@ plugins.mgr.uninstallConfirmation=Do you really want to uninstall this plug-in?
 plugins.mgr.uninstallFailure=Unable to uninstall plugin
 plugins.mgr.authorLabel=Author: 
 plugins.mgr.uninstall=Uninstall
+
+basicSheet.white.title=Firecast Basic Sheet (White)
+basicSheet.white.description=Firecast Basic Sheet (White)
+basicSheet.dark.title=Firecast Basic Sheet
+basicSheet.dark.description=Firecast Basic Sheet
