@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <root>
-    <element id="AfkBot" name="AfkBot" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/ChatMods/AfkBot/output/AfkBot.rpk?raw=true" fileName="AfkBot.rpk" repositoryPath="ChatMods/AfkBot/" author="Ambesek" description="Crie uma mensagem padrão para responder quando estiver ocupado. Também protege a mesa de flood de dados e /rir se configurado para tal. Use /afkbot para abrir o popup de configuração." version="1.3.3" compilationDate="08032021225710" compilationDigest="1c2e518b5768b3e7336d32cc1bc14723ab9c86e0">
+    <element id="AfkBot" name="AfkBot" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/ChatMods/AfkBot/output/AfkBot.rpk?raw=true" fileName="AfkBot.rpk" repositoryPath="ChatMods/AfkBot/" author="Ambesek" description="Crie uma mensagem padrão para responder quando estiver ocupado. Também protege a mesa de flood de dados e /rir se configurado para tal. Use /afkbot para abrir o popup de configuração." version="1.4" compilationDate="08032021225710" compilationDigest="1c2e518b5768b3e7336d32cc1bc14723ab9c86e0">
         <dataTypes>
             <dataType id="ambesek.afkbot" title="AfkBot"/>
         </dataTypes>
@@ -34,7 +34,7 @@
     </element>
     <element id="NickSaver" name="NickSaver" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/ChatMods/NickSaver/output/NickSaver.rpk?raw=true" fileName="NickSaver.rpk" repositoryPath="ChatMods/NickSaver/" author="Ambesek" description="Salva o nick e cor de fonte do usuario por mesa. Use /nicksaver para abrir o popup de configuração." version="1.1.1" compilationDate="26112019235847" compilationDigest="5a95d11389b7c4abfee5ceaa3dc66b69b2926a6c">
         <dataTypes>
-            <dataType id="ambesek.nicksaver" title="AfkBot"/>
+            <dataType id="ambesek.nicksaver" title="NickSaver"/>
         </dataTypes>
     </element>
     <element id="PokeIcons" name="PokeIcons" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/ChatMods/PokeIcons/output/PokeIcons.rpk?raw=true" fileName="PokeIcons.rpk" repositoryPath="ChatMods/PokeIcons/" author="Ambesek" description="Use comandos e atalhos /unown :numero: pra inserir pokémon no chat. Use /help para mais informações. Use /help para ver opções." version="0.5.1" compilationDate="26112019235848" compilationDigest="6f8586256cf957b627b21b5e04b91daea2ab798f"/>
