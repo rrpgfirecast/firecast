@@ -331,7 +331,7 @@ local function constructNew_afkbotPopup()
             					local addUser = tonumber(sheet.addUser) or 0;
             					if addUser>0 then
             						sheet.addUser = 0;
-            						local item = self.messagesList:append();
+            						local item = self.kickList:append();
             						sheet.newUser = item;
             					end;
         end, obj);
