@@ -143,6 +143,36 @@ local function findLogin(login, mesa)
 	return user;
 end
 
+local function DFFindBibItem(file, bibItem)
+	if bibItem== nil then return nil end;
+	if bibItem.nome == file then
+		return bibItem.codigoInterno;
+	else
+		for i=1, #bibItem.filhos do
+			local itemID = DFFindBibItem(file, bibItem.filhos[i]);
+			if itemID ~= nil then
+				return itemID;
+			end
+		end
+	end
+
+	return nil;
+end
+
+local function ShowBibItem(message, param)
+	if param ~= "" and param ~= nil then
+		local itemID = DFFindBibItem(param, message.mesa.biblioteca);
+
+		if itemID == nil then
+			message.chat:enviarMensagem("AfkBot: Arquivo invalido. Passe o nome do arquivo como parametro. ");
+		else
+			message.chat:enviarMensagem("AfkBot: firecast:/rooms/"..message.mesa.codigoInterno.."/library/"..itemID .. " [" .. param .. "]");
+		end
+	else
+		message.chat:enviarMensagem("AfkBot: Arquivo invalido. Passe o nome do arquivo como parametro. ");
+	end
+end
+
 function getConfigWindow(mesa)
 	initializeRoom(mesa);
 
@@ -227,10 +257,14 @@ Firecast.Messaging.listen("HandleChatCommand",
 			end;
 
 			message.response = {handled = true};
+		elseif message.comando == "show" then
+			ShowBibItem(message, message.parametro);
+
+			message.response = {handled = true};
 		end
 	end);
 
--- Escuta das mensagens de chat padrão 
+-- Escuta das mensagens de chat padrão e decide se deve ou não enviar o alerta por conta dessa mensagem
 Firecast.Messaging.listen("ChatMessage", 
 	function (message)
 		if message.mesa == nil then return end;
@@ -426,6 +460,13 @@ Firecast.Messaging.listen("ChatMessage",
 				-- poe o jogador no off chat
 			elseif (arg[2]=="math") then
 				-- faz calculo matematico
+			elseif (arg[2]=="show") then
+				local param = ""; 
+				if arg[3]~=nil then param = arg[3] end;
+				for i=4,#arg do
+					if arg[i] ~= nil then param = param .. " " .. arg[i] end;
+				end
+				ShowBibItem(message, param);
 			else
 				-- message.chat:enviarMensagem("AfkBot: Não posso. ");
 			end;
