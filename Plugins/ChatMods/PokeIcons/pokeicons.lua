@@ -36,9 +36,12 @@ local function isNewVersion(installed, downloaded)
 end;
 
 local pokeTable = {};
+local nameTable = {"Bulbasaur","Ivysaur","Venusaur","Charmander","Charmeleon","Charizard","Squirtle","Wartortle","Blastoise"};
 -- fill table with :x:, :0x: and :00x: varieties
 for i=1, 9 do
 	pokeTable[""..i] = "[§I http://www.serebii.net/pokedex-swsh/icon/00" .. i .. ".png]";
+	pokeTable[nameTable[i]] = "[§I http://www.serebii.net/pokedex-swsh/icon/00" .. i .. ".png]";
+	pokeTable[string.lower(nameTable[i])] = "[§I http://www.serebii.net/pokedex-swsh/icon/00" .. i .. ".png]";
 end
 for i=1, 9 do
 	pokeTable["0"..i] = "[§I http://www.serebii.net/pokedex-swsh/icon/00" .. i .. ".png]";
@@ -48,23 +51,32 @@ for i=1, 9 do
 end
 
 -- fill table with :xx: and :0xx: varieties
+nameTable = {"Caterpie","Metapod","Butterfree","Weedle","Kakuna","Beedrill","Pidgey","Pidgeotto","Pidgeot","Rattata","Raticate","Spearow","Fearow","Ekans","Arbok","Pikachu","Raichu","Sandshrew","Sandslash","Nidoran♀","Nidorina","Nidoqueen","Nidoran♂","Nidorino","Nidoking","Clefairy","Clefable","Vulpix","Ninetales","Jigglypuff","Wigglytuff","Zubat","Golbat","Oddish","Gloom","Vileplume","Paras","Parasect","Venonat","Venomoth","Diglett","Dugtrio","Meowth","Persian","Psyduck","Golduck","Mankey","Primeape","Growlithe","Arcanine","Poliwag","Poliwhirl","Poliwrath","Abra","Kadabra","Alakazam","Machop","Machoke","Machamp","Bellsprout","Weepinbell","Victreebel","Tentacool","Tentacruel","Geodude","Graveler","Golem","Ponyta","Rapidash","Slowpoke","Slowbro","Magnemite","Magneton","Farfetch'd","Doduo","Dodrio","Seel","Dewgong","Grimer","Muk","Shellder","Cloyster","Gastly","Haunter","Gengar","Onix","Drowzee","Hypno","Krabby","Kingler"};
 for i=10, 99 do
 	pokeTable[""..i] = "[§I http://www.serebii.net/pokedex-swsh/icon/0" .. i .. ".png]";
+	pokeTable[nameTable[i-9]] = "[§I http://www.serebii.net/pokedex-swsh/icon/0" .. i .. ".png]";
+	pokeTable[string.lower(nameTable[i-9])] = "[§I http://www.serebii.net/pokedex-swsh/icon/0" .. i .. ".png]";
 end
 for i=10, 99 do
 	pokeTable["0"..i] = "[§I http://www.serebii.net/pokedex-swsh/icon/0" .. i .. ".png]";
 end
 
 -- fill table with :xxx: varieties
+nameTable = {"Voltorb","Electrode","Exeggcute","Exeggutor","Cubone","Marowak","Hitmonlee","Hitmonchan","Lickitung","Koffing","Weezing","Rhyhorn","Rhydon","Chansey","Tangela","Kangaskhan","Horsea","Seadra","Goldeen","Seaking","Staryu","Starmie","Mr. Mime","Scyther","Jynx","Electabuzz","Magmar","Pinsir","Tauros","Magikarp","Gyarados","Lapras","Ditto","Eevee","Vaporeon","Jolteon","Flareon","Porygon","Omanyte","Omastar","Kabuto","Kabutops","Aerodactyl","Snorlax","Articuno","Zapdos","Moltres","Dratini","Dragonair","Dragonite","Mewtwo","Mew","Chikorita","Bayleef","Meganium","Cyndaquil","Quilava","Typhlosion","Totodile","Croconaw","Feraligatr","Sentret","Furret","Hoothoot","Noctowl","Ledyba","Ledian","Spinarak","Ariados","Crobat","Chinchou","Lanturn","Pichu","Cleffa","Igglybuff","Togepi","Togetic","Natu","Xatu","Mareep","Flaaffy","Ampharos","Bellossom","Marill","Azumarill","Sudowoodo","Politoed","Hoppip","Skiploom","Jumpluff","Aipom","Sunkern","Sunflora","Yanma","Wooper","Quagsire","Espeon","Umbreon","Murkrow","Slowking","Misdreavus","Unown","Wobbuffet","Girafarig","Pineco","Forretress","Dunsparce","Gligar","Steelix","Snubbull","Granbull","Qwilfish","Scizor","Shuckle","Heracross","Sneasel","Teddiursa","Ursaring","Slugma","Magcargo","Swinub","Piloswine","Corsola","Remoraid","Octillery","Delibird","Mantine","Skarmory","Houndour","Houndoom","Kingdra","Phanpy","Donphan","Porygon2","Stantler","Smeargle","Tyrogue","Hitmontop","Smoochum","Elekid","Magby","Miltank","Blissey","Raikou","Entei","Suicune","Larvitar","Pupitar","Tyranitar","Lugia","Ho-Oh","Celebi","Treecko","Grovyle","Sceptile","Torchic","Combusken","Blaziken","Mudkip","Marshtomp","Swampert","Poochyena","Mightyena","Zigzagoon","Linoone","Wurmple","Silcoon","Beautifly","Cascoon","Dustox","Lotad","Lombre","Ludicolo","Seedot","Nuzleaf","Shiftry","Taillow","Swellow","Wingull","Pelipper","Ralts","Kirlia","Gardevoir","Surskit","Masquerain","Shroomish","Breloom","Slakoth","Vigoroth","Slaking","Nincada","Ninjask","Shedinja","Whismur","Loudred","Exploud","Makuhita","Hariyama","Azurill","Nosepass","Skitty","Delcatty","Sableye","Mawile","Aron","Lairon","Aggron","Meditite","Medicham","Electrike","Manectric","Plusle","Minun","Volbeat","Illumise","Roselia","Gulpin","Swalot","Carvanha","Sharpedo","Wailmer","Wailord","Numel","Camerupt","Torkoal","Spoink","Grumpig","Spinda","Trapinch","Vibrava","Flygon","Cacnea","Cacturne","Swablu","Altaria","Zangoose","Seviper","Lunatone","Solrock","Barboach","Whiscash","Corphish","Crawdaunt","Baltoy","Claydol","Lileep","Cradily","Anorith","Armaldo","Feebas","Milotic","Castform","Kecleon","Shuppet","Banette","Duskull","Dusclops","Tropius","Chimecho","Absol","Wynaut","Snorunt","Glalie","Spheal","Sealeo","Walrein","Clamperl","Huntail","Gorebyss","Relicanth","Luvdisc","Bagon","Shelgon","Salamence","Beldum","Metang","Metagross","Regirock","Regice","Registeel","Latias","Latios","Kyogre","Groudon","Rayquaza","Jirachi","Deoxys","Turtwig","Grotle","Torterra","Chimchar","Monferno","Infernape","Piplup","Prinplup","Empoleon","Starly","Staravia","Staraptor","Bidoof","Bibarel","Kricketot","Kricketune","Shinx","Luxio","Luxray","Budew","Roserade","Cranidos","Rampardos","Shieldon","Bastiodon","Burmy","Wormadam","Mothim","Combee","Vespiquen","Pachirisu","Buizel","Floatzel","Cherubi","Cherrim","Shellos","Gastrodon","Ambipom","Drifloon","Drifblim","Buneary","Lopunny","Mismagius","Honchkrow","Glameow","Purugly","Chingling","Stunky","Skuntank","Bronzor","Bronzong","Bonsly","Mime Jr.","Happiny","Chatot","Spiritomb","Gible","Gabite","Garchomp","Munchlax","Riolu","Lucario","Hippopotas","Hippowdon","Skorupi","Drapion","Croagunk","Toxicroak","Carnivine","Finneon","Lumineon","Mantyke","Snover","Abomasnow","Weavile","Magnezone","Lickilicky","Rhyperior","Tangrowth","Electivire","Magmortar","Togekiss","Yanmega","Leafeon","Glaceon","Gliscor","Mamoswine","Porygon-Z","Gallade","Probopass","Dusknoir","Froslass","Rotom","Uxie","Mesprit","Azelf","Dialga","Palkia","Heatran","Regigigas","Giratina","Cresselia","Phione","Manaphy","Darkrai","Shaymin","Arceus","Victini","Snivy","Servine","Serperior","Tepig","Pignite","Emboar","Oshawott","Dewott","Samurott","Patrat","Watchog","Lillipup","Herdier","Stoutland","Purrloin","Liepard","Pansage","Simisage","Pansear","Simisear","Panpour","Simipour","Munna","Musharna","Pidove","Tranquill","Unfezant","Blitzle","Zebstrika","Roggenrola","Boldore","Gigalith","Woobat","Swoobat","Drilbur","Excadrill","Audino","Timburr","Gurdurr","Conkeldurr","Tympole","Palpitoad","Seismitoad","Throh","Sawk","Sewaddle","Swadloon","Leavanny","Venipede","Whirlipede","Scolipede","Cottonee","Whimsicott","Petilil","Lilligant","Basculin","Sandile","Krokorok","Krookodile","Darumaka","Darmanitan","Maractus","Dwebble","Crustle","Scraggy","Scrafty","Sigilyph","Yamask","Cofagrigus","Tirtouga","Carracosta","Archen","Archeops","Trubbish","Garbodor","Zorua","Zoroark","Minccino","Cinccino","Gothita","Gothorita","Gothitelle","Solosis","Duosion","Reuniclus","Ducklett","Swanna","Vanillite","Vanillish","Vanilluxe","Deerling","Sawsbuck","Emolga","Karrablast","Escavalier","Foongus","Amoonguss","Frillish","Jellicent","Alomomola","Joltik","Galvantula","Ferroseed","Ferrothorn","Klink","Klang","Klinklang","Tynamo","Eelektrik","Eelektross","Elgyem","Beheeyem","Litwick","Lampent","Chandelure","Axew","Fraxure","Haxorus","Cubchoo","Beartic","Cryogonal","Shelmet","Accelgor","Stunfisk","Mienfoo","Mienshao","Druddigon","Golett","Golurk","Pawniard","Bisharp","Bouffalant","Rufflet","Braviary","Vullaby","Mandibuzz","Heatmor","Durant","Deino","Zweilous","Hydreigon","Larvesta","Volcarona","Cobalion","Terrakion","Virizion","Tornadus","Thundurus","Reshiram","Zekrom","Landorus","Kyurem","Keldeo","Meloetta","Genesect","Chespin","Quilladin","Chesnaught","Fennekin","Braixen","Delphox","Froakie","Frogadier","Greninja","Bunnelby","Diggersby","Fletchling","Fletchinder","Talonflame","Scatterbug","Spewpa","Vivillon","Litleo","Pyroar","Flabébé","Floette","Florges","Skiddo","Gogoat","Pancham","Pangoro","Furfrou","Espurr","Meowstic","Honedge","Doublade","Aegislash","Spritzee","Aromatisse","Swirlix","Slurpuff","Inkay","Malamar","Binacle","Barbaracle","Skrelp","Dragalge","Clauncher","Clawitzer","Helioptile","Heliolisk","Tyrunt","Tyrantrum","Amaura","Aurorus","Sylveon","Hawlucha","Dedenne","Carbink","Goomy","Sliggoo","Goodra","Klefki","Phantump","Trevenant","Pumpkaboo","Gourgeist","Bergmite","Avalugg","Noibat","Noivern","Xerneas","Yveltal","Zygarde","Diancie","Hoopa","Volcanion","Rowlet","Dartrix","Decidueye","Litten","Torracat","Incineroar","Popplio","Brionne","Primarina","Pikipek","Trumbeak","Toucannon","Yungoos","Gumshoos","Grubbin","Charjabug","Vikavolt","Crabrawler","Crabominable","Oricorio","Cutiefly","Ribombee","Rockruff","Lycanroc","Wishiwashi","Mareanie","Toxapex","Mudbray","Mudsdale","Dewpider","Araquanid","Fomantis","Lurantis","Morelull","Shiinotic","Salandit","Salazzle","Stufful","Bewear","Bounsweet","Steenee","Tsareena","Comfey","Oranguru","Passimian","Wimpod","Golisopod","Sandygast","Palossand","Pyukumuku","Type: Null","Silvally","Minior","Komala","Turtonator","Togedemaru","Mimikyu","Bruxish","Drampa","Dhelmise","Jangmo-o","Hakamo-o","Kommo-o","Tapu Koko","Tapu Lele","Tapu Bulu","Tapu Fini","Cosmog","Cosmoem","Solgaleo","Lunala","Nihilego","Buzzwole","Pheromosa","Xurkitree","Celesteela","Kartana","Guzzlord","Necrozma","Magearna","Marshadow","Poipole","Naganadel","Stakataka","Blacephalon","Zeraora","Meltan","Melmetal","Grookey","Thwackey","Rillaboom","Scorbunny","Raboot","Cinderace","Sobble","Drizzile","Inteleon","Skwovet","Greedent","Rookidee","Corvisquire","Corviknight","Blipbug","Dottler","Orbeetle","Nickit","Thievul","Gossifleur","Eldegoss","Wooloo","Dubwool","Chewtle","Drednaw","Yamper","Boltund","Rolycoly","Carkol","Coalossal","Applin","Flapple","Appletun","Silicobra","Sandaconda","Cramorant","Arrokuda","Barraskewda","Toxel","Toxtricity","Sizzlipede","Centiskorch","Clobbopus","Grapploct","Sinistea","Polteageist","Hatenna","Hattrem","Hatterene","Impidimp","Morgrem","Grimmsnarl","Obstagoon","Perrserker","Cursola","Sirfetch'd","Mr. Rime","Runerigus","Milcery","Alcremie","Falinks","Pincurchin","Snom","Frosmoth","Stonjourner","Eiscue","Indeedee","Morpeko","Cufant","Copperajah","Dracozolt","Arctozolt","Dracovish","Arctovish","Duraludon","Dreepy","Drakloak","Dragapult","Zacian","Zamazenta","Eternatus","Kubfu","Urshifu","Zarude","Regieleki","Regidrago","Glastrier","Spectrier","Calyrex"};
 for i=100, 898 do
 	pokeTable[""..i] = "[§I http://www.serebii.net/pokedex-swsh/icon/" .. i .. ".png]";
+	pokeTable[nameTable[i-99]] = "[§I http://www.serebii.net/pokedex-swsh/icon/" .. i .. ".png]";
+	pokeTable[string.lower(nameTable[i-99])] = "[§I http://www.serebii.net/pokedex-swsh/icon/" .. i .. ".png]";
 end
 
 -- fill table with -m [mega] varieties
 local varieties = {"003", "009","065", "094", "115", "127", "130", "142", "181", "212", "214", "229", "248", "257", "282", "303", "306", "308", "310", "354", "359", "380", "381", "445", "448", "460", "015", "018", "080", "208", "254", "260", "302", "319", "323", "334", "362", "373", "376", "384", "428", "475", "531", "719", "800"}
+nameTable = {"Mega-Venusaur","Mega-Blastoise","Mega-Alakazam","Mega-Gengar","Mega-Kangaskhan","Mega-Pinsir","Mega-Gyarados","Mega-Aerodactyl","Mega-Ampharos","Mega-Scizor","Mega-Heracross","Mega-Houndoom","Mega-Tyranitar","Mega-Blaziken","Mega-Gardevoir","Mega-Mawile","Mega-Aggron","Mega-Medicham","Mega-Manectric","Mega-Banette","Mega-Absol","Mega-Latias","Mega-Latios","Mega-Garchomp","Mega-Lucario","Mega-Abomasnow","Mega-Beedrill","Mega-Pidgeot","Mega-Slowbro","Mega-Steelix","Mega-Sceptile","Mega-Swampert","Mega-Sableye","Mega-Sharpedo","Mega-Camerupt","Mega-Altaria","Mega-Glalie","Mega-Salamence","Mega-Metagross","Mega-Rayquaz","Mega-Lopunny","Mega-Gallade","Mega-Audino","Mega-Diancie","Ultra-Necrozma"}
 local var = "-m"
 for i=1, #varieties do
 	pokeTable[varieties[i]..var] = "[§I http://www.serebii.net/pokedex-swsh/icon/" .. varieties[i]..var .. ".png]";
+	pokeTable[nameTable[i]] = "[§I http://www.serebii.net/pokedex-swsh/icon/" .. varieties[i]..var .. ".png]";
+	pokeTable[string.lower(nameTable[i])] = "[§I http://www.serebii.net/pokedex-swsh/icon/" .. varieties[i]..var .. ".png]";
 end
 local varieties = {"03","09", "65", "94", "15", "18", "80"}
 for i=1, #varieties do
@@ -76,26 +88,35 @@ for i=1, #varieties do
 end
 -- fill table with -mx [mega-x] varieties
 local varieties = {"006", "150"}
+nameTable = {"Mega-Charizard-X","Mega-Mewtwo-X"};
 local var = "-mx"
 for i=1, #varieties do
 	pokeTable[varieties[i]..var] = "[§I http://www.serebii.net/pokedex-swsh/icon/" .. varieties[i]..var .. ".png]";
+	pokeTable[nameTable[i]] = "[§I http://www.serebii.net/pokedex-swsh/icon/" .. varieties[i]..var .. ".png]";
+	pokeTable[string.lower(nameTable[i])] = "[§I http://www.serebii.net/pokedex-swsh/icon/" .. varieties[i]..var .. ".png]";
 end
 pokeTable["6-mx"] = "[§I http://www.serebii.net/pokedex-swsh/icon/006-mx.png]";
 pokeTable["06-mx"] = "[§I http://www.serebii.net/pokedex-swsh/icon/006-mx.png]";
 -- fill table with -my [mega-y] varieties
 local varieties = {"006", "150"}
+nameTable = {"Mega-Charizard-Y","Mega-Mewtwo-Y"};
 local var = "-my"
 for i=1, #varieties do
 	pokeTable[varieties[i]..var] = "[§I http://www.serebii.net/pokedex-swsh/icon/" .. varieties[i]..var .. ".png]";
+	pokeTable[nameTable[i]] = "[§I http://www.serebii.net/pokedex-swsh/icon/" .. varieties[i]..var .. ".png]";
+	pokeTable[string.lower(nameTable[i])] = "[§I http://www.serebii.net/pokedex-swsh/icon/" .. varieties[i]..var .. ".png]";
 end
 pokeTable["6-my"] = "[§I http://www.serebii.net/pokedex-swsh/icon/006-my.png]";
 pokeTable["06-my"] = "[§I http://www.serebii.net/pokedex-swsh/icon/006-my.png]";
 
 -- fill table with -gi [gigantamax] varieties
 local varieties = {"003", "006", "009", "012","025","052","068","094","099", "131", "133", "143", "569", "809", "812", "815", "818", "823", "826", "834", "839", "841", "842", "844", "849", "851", "858", "861", "869", "879", "884", "892"}
+nameTable = {"Venusaur-Gigantamax", "Charizard-Gigantamax", "Blastoise-Gigantamax", "Butterfree-Gigantamax", "Pikachu-Gigantamax", "Meowth-Gigantamax", "Machamp-Gigantamax", "Gengar-Gigantamax", "Kingler-Gigantamax", "Lapras-Gigantamax", "Eevee-Gigantamax", "Snorlax-Gigantamax", "Garbodor-Gigantamax", "Melmetal-Gigantamax", "Rillaboom-Gigantamax", "Cinderace-Gigantamax", "Inteleon-Gigantamax", "Corviknight-Gigantamax", "Orbeetle-Gigantamax", "Drednaw-Gigantamax", "Coalossal-Gigantamax", "Flapple-Gigantamax", "Appletun-Gigantamax", "Sandaconda-Gigantamax", "Toxtricity-Gigantamax", "Centiskorch-Gigantamax", "Hatterene-Gigantamax", "Grimmsnarl-Gigantamax", "Alcremie-Gigantamax", "Copperajah-Gigantamax", "Duraludon-Gigantamax", "Urshifu-Gigantamax"}
 local var = "-gi"
 for i=1, #varieties do
 	pokeTable[varieties[i]..var] = "[§I http://www.serebii.net/pokedex-swsh/icon/" .. varieties[i]..var .. ".png]";
+	pokeTable[nameTable[i]] = "[§I http://www.serebii.net/pokedex-swsh/icon/" .. varieties[i]..var .. ".png]";
+	pokeTable[string.lower(nameTable[i])] = "[§I http://www.serebii.net/pokedex-swsh/icon/" .. varieties[i]..var .. ".png]";
 end
 local varieties = {"03", "06","09", "12", "25", "52", "68", "94", "99"}
 for i=1, #varieties do
@@ -115,9 +136,12 @@ end
 
 -- fill table with -a [alolan] varieties
 local varieties = {"019", "020", "026", "027", "028", "037", "038", "050", "051", "052", "053", "074", "075", "076", "088", "089", "103", "105"}
+nameTable = {"Rattata-Alolan","Raticate-Alolan","Raichu-Alolan","Sandshrew-Alolan","Sandslash-Alolan","Vulpix-Alolan","Ninetales-Alolan","Diglett-Alolan","Dugtrio-Alolan","Meowth-Alolan","Persian-Alolan","Geodude-Alolan","Graveler-Alolan","Golem-Alolan","Grimer-Alolan","Muk-Alolan","Exeggutor-Alolan","Marowak-Alolan"}
 local var = "-a"
 for i=1, #varieties do
 	pokeTable[varieties[i]..var] = "[§I http://www.serebii.net/pokedex-swsh/icon/" .. varieties[i]..var .. ".png]";
+	pokeTable[nameTable[i]] = "[§I http://www.serebii.net/pokedex-swsh/icon/" .. varieties[i]..var .. ".png]";
+	pokeTable[string.lower(nameTable[i])] = "[§I http://www.serebii.net/pokedex-swsh/icon/" .. varieties[i]..var .. ".png]";
 end
 local varieties = {"19", "20", "26", "27", "28", "37", "38", "50", "51", "52", "53", "74", "75", "76", "88", "89"}
 for i=1, #varieties do
@@ -126,9 +150,12 @@ end
 
 -- fill table with -g [galarian] varieties
 local varieties = {"052", "077", "078", "079", "080", "083", "110", "122", "144", "145", "146", "199", "222", "263", "264", "554", "562", "618"}
+nameTable = {"Meowth-Galarian","Ponyta-Galarian","Rapidash-Galarian","Slowpoke-Galarian","Slowbro-Galarian","Farfetch'd-Galarian","Weezing-Galarian","Mr. Mime-Galarian","Articuno-Galarian","Zapdos-Galarian","Moltres-Galarian","Slowking-Galarian","Corsola-Galarian","Zigzagoon-Galarian","Linoone-Galarian","Darumaka-Galarian","Darmanitan-Galarian","Darmanitan-Galarian","Yamask-Galarian","Stunfisk-Galarian"}
 local var = "-g"
 for i=1, #varieties do
 	pokeTable[varieties[i]..var] = "[§I http://www.serebii.net/pokedex-swsh/icon/" .. varieties[i]..var .. ".png]";
+	pokeTable[nameTable[i]] = "[§I http://www.serebii.net/pokedex-swsh/icon/" .. varieties[i]..var .. ".png]";
+	pokeTable[string.lower(nameTable[i])] = "[§I http://www.serebii.net/pokedex-swsh/icon/" .. varieties[i]..var .. ".png]";
 end
 local varieties = {"52", "77", "78", "79", "80", "83"}
 for i=1, #varieties do
@@ -138,16 +165,22 @@ end
 
 -- fill table with -s [therian] varieties
 local varieties = {"641","642","645"}
+nameTable = {"Tornadus-Therian","Thundurus-Therian","Landorus-Therian"}
 local var = "-s"
 for i=1, #varieties do
 	pokeTable[varieties[i]..var] = "[§I http://www.serebii.net/pokedex-swsh/icon/" .. varieties[i]..var .. ".png]";
+	pokeTable[nameTable[i]] = "[§I http://www.serebii.net/pokedex-swsh/icon/" .. varieties[i]..var .. ".png]";
+	pokeTable[string.lower(nameTable[i])] = "[§I http://www.serebii.net/pokedex-swsh/icon/" .. varieties[i]..var .. ".png]";
 end
 
 -- deoxys forms -a,-d,-s
 local varieties = {"-a","-d","-s"}
+nameTable = {"Deoxys-Attack","Deoxys-Defense","Deoxys-Speed"}
 local var = "386"
 for i=1, #varieties do
-	pokeTable[var..varieties[i]] = "[§I http://www.serebii.net/pokedex-swsh/icon/" .. var..varieties[i] .. ".png]";
+	pokeTable[var..varieties[i]] = "[§I http://www.serebii.net/pokedex-swsh/icon/" .. var .. varieties[i] .. ".png]";
+	pokeTable[nameTable[i]] = "[§I http://www.serebii.net/pokedex-swsh/icon/" .. var .. varieties[i] .. ".png]";
+	pokeTable[string.lower(nameTable[i])] = "[§I http://www.serebii.net/pokedex-swsh/icon/" .. var .. varieties[i] .. ".png]";
 end
 
 -- burmy forms -n,-t,-s
