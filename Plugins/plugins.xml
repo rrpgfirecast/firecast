@@ -32,7 +32,7 @@
             <dataType id="ambesek.memesaver" title="MemeSaver"/>
         </dataTypes>
     </element>
-    <element id="NickSaver" name="NickSaver" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/ChatMods/NickSaver/output/NickSaver.rpk?raw=true" fileName="NickSaver.rpk" repositoryPath="ChatMods/NickSaver/" author="Ambesek" description="Salva o nick e cor de fonte do usuario por mesa. Use /nicksaver para abrir o popup de configuração." version="1.1.1" compilationDate="26112019235847" compilationDigest="5a95d11389b7c4abfee5ceaa3dc66b69b2926a6c">
+    <element id="NickSaver" name="NickSaver" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/ChatMods/NickSaver/output/NickSaver.rpk?raw=true" fileName="NickSaver.rpk" repositoryPath="ChatMods/NickSaver/" author="Ambesek" description="Salva o nick e cor de fonte do usuario por mesa. Use /nicksaver para abrir o popup de configuração." version="1.2" compilationDate="26112019235847" compilationDigest="5a95d11389b7c4abfee5ceaa3dc66b69b2926a6c">
         <dataTypes>
             <dataType id="ambesek.nicksaver" title="NickSaver"/>
         </dataTypes>

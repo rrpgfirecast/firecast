@@ -2,6 +2,7 @@
 require("vhd.lua");
 require("utils.lua");
 require("internet.lua");
+require("dialogs.lua");
 
 local config = NDB.load("config.xml");
 
@@ -53,6 +54,24 @@ local function initializeRoom(mesa)
 		config.rooms[mesa.codigoInterno] = {};
 	end;
 end
+local function UseColor(text, colorPos, roomData)
+	local i, j = string.find(text, "]", colorPos+1);
+	local savedColors = NDB.getChildNodes(roomData.listaDeCores);
+	if i~=nil then
+		local token = string.sub(text, colorPos, i-1);
+		-- search for the color
+		for aux=1, #savedColors, 1 do
+			if token == "@"..(savedColors[aux].id or "") and savedColors[aux].colorID ~= nil then
+				text = string.gsub(text, token, savedColors[aux].colorID, 1);
+				break
+			end
+		end
+	end
+
+	return text, colorPos;
+end
+
+
 function getConfigWindow(mesa)
 	initializeRoom(mesa);
 
@@ -143,6 +162,8 @@ Firecast.listen('HandleChatTextInput',
 
 		local text = message.texto;
 		local altered = false;
+
+		-- CHECK FOR CHAT SIGNALS
 		if config.rooms[message.mesa.codigoInterno].colorBaseSaved == true then
 			altered = true;
 			text = "[§K" .. config.rooms[message.mesa.codigoInterno].colorBase .. "]" .. text;
@@ -164,6 +185,26 @@ Firecast.listen('HandleChatTextInput',
             altered = true;
             text = string.gsub(text, "\"", "[§K".. config.rooms[message.mesa.codigoInterno].colorThought .. "]\"");
         end;
+
+		-- CHECK FOR SAVED COLORS
+		if string.find(text, "%[§K@") ~= nil or string.find(text, "%[§K @") ~= nil then
+			local i = 0;
+			local j = 0;
+			while true do
+		      i,j = string.find(text, "%[§K@", j+1)
+		      if i == nil then break end
+		      text, j = UseColor(text, j, config.rooms[message.mesa.codigoInterno])
+		      altered = true;
+		    end
+			i = 0;
+			j = 0;
+			while true do
+		      i,j = string.find(text, "%[§K @", j+1)
+		      if i == nil then break end
+		      text, j = UseColor(text, j, config.rooms[message.mesa.codigoInterno])
+		      altered = true;
+		    end
+		end
 
 		if altered then
 			message.response = {newText = text};
