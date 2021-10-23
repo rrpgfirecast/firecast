@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmSODLFillable5_svg" align="client" theme="light" margins="{top=1}">
+    <style>#frmSODLFillable5_svg path {color: black; strokeColor: black; mode: stretch;} &#xD;
+#frmSODLFillable5_svg label {fontColor: black; textTrimming: none; wordWrap: false; autoSize: true;}</style>
+    <scrollBox align="client">
+        <rectangle width="881" height="1267" color="white">&#xD;
+            <image left="0" top="0" width="881" height="1267" src="images/5.png" style="stretch" optimize="true" compilerOrder="0"/>&#xD;
+            <layout left="0" top="0" width="881" height="1267">
+                <textEditor width="881" height="1267" fontColor="#000000" fontSize="18" transparent="true" field="Background"/>
+            </layout>
+        </rectangle>
+    </scrollBox>
+</form>
