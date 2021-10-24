@@ -193,11 +193,11 @@ local function constructNew_afkbotPopup()
 
     obj.checkBox8 = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox8:setParent(obj.tab1);
-    obj.checkBox8:setField("giveSheet");
+    obj.checkBox8:setField("passAction");
     obj.checkBox8:setLeft(10);
     obj.checkBox8:setTop(330);
     obj.checkBox8:setWidth(270);
-    obj.checkBox8:setText("Dar ficha aos jogadores.");
+    obj.checkBox8:setText("Permitir jogadores passarem seu turno.");
     obj.checkBox8:setName("checkBox8");
 
     obj.dataLink1 = GUI.fromHandle(_obj_newObject("dataLink"));
