@@ -76,23 +76,25 @@ if(arg[1] ~= nil and arg[2] ~= nil) then
 	-- TIMER
 	if(timer ~= interval) then
 		for i = 0, timer, interval do
-			if (timer-i>0) then
+			if (timer-i > 0) then
 				escrever("⏳ [§B][§K2]Tempo restante:[§B] [§K1]".. SecondsToClock((timer-i)/1000));
 			else
 				escrever("⏳ [§B][§K1]Tempo esgotado.");
-				enviar("/rir");
+				enviar("/rir"); 
 			end;
+			
 			if((timer - i) > interval) then
 				wait(interval);
 			else
 				wait(timer - i);
-				enviar("/rir");
+				enviar("/rir"); 
+				break;
 			end;
 		end;
 	else
 		escrever("⏳ [§B][§K2]Tempo restante:[§B] [§K1]".. SecondsToClock((timer)/1000));	
 		wait(interval);
-		enviar("/rir");
+		enviar("/rir"); 
 	end;
 else
 	escrever("[§K14][§B]Comando Inválido![§B] /[§K2][§B]timer[§K15][§B] <[§K14]Tempo[§K15]h/m/s> <[§K14]Intervalo de Avisos[§K15]h/m/s>.");
