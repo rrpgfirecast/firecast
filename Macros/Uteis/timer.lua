@@ -87,6 +87,7 @@ if(arg[1] ~= nil and arg[2] ~= nil) then
 				wait(interval);
 			else
 				wait(timer - i);
+				escrever("⏳ [§B][§K1]Tempo esgotado.");
 				enviar("/rir"); 
 				break;
 			end;
@@ -94,6 +95,7 @@ if(arg[1] ~= nil and arg[2] ~= nil) then
 	else
 		escrever("⏳ [§B][§K2]Tempo restante:[§B] [§K1]".. SecondsToClock((timer)/1000));	
 		wait(interval);
+		escrever("⏳ [§B][§K1]Tempo esgotado.");
 		enviar("/rir"); 
 	end;
 else
