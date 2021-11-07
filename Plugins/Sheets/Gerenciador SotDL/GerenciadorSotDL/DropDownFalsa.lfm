@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="OpcaoDaComboboxFalsa" height="24" align="top" theme="dark"> 
+	
+	 <imageCheckBox align="left" width="20" margins="{left=4, top=2, bottom=2}" name="imgApagar2" checkedImage="images/delete.png" uncheckedImage="images/delete.png" >
+				<event name="onClick">
+					if DonoMestre(sheet, false, "docksub10") then
+						dialogs.confirmYesNo("Deseja realmente apagar este item?",
+							function (confirmado)
+								if confirmado then
+										safeNodeDeletion(sheet);
+								else
+										
+								end;
+							end);
+					end;
+					</event>
+			</imageCheckBox>
+			
+	 <label align="client" field="NomeDaOpcao" margins="{left=4}" text="Título da Aba" />
+
+	<dataLink field="TipoOrganizar" defaultValue="Alfa"/>
+	
+	<dataLink field="NomeDaOpcao" defaultValue="Título da Aba">
+		<event name="onChange">
+			
+		</event>
+	</dataLink>
+	
+ </form>

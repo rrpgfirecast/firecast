@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmRecordListFormExperience" width="150" height="25" margins="{top=1}">
+	<rectangle align="client" color="#212121">
+		<edit left="0" top="0" width="30" height="25" field="contador" type="number">
+			<event name="onChange">
+				-- Atualiza a ordem lista a cada alteração
+				local rcl = self:findControlByName("rclExperience");
+				if rcl~=nil then
+					rcl:sort();
+				end;
+			</event>
+		</edit>
+		<edit left="30" top="0" width="95" height="25" field="valor" type="number"/>
+
+		<!-- Botão que apaga o objeto da lista -->
+		<button left="125" top="0" width="25" height="25" text="X">
+			<event name="onClick">
+				dialogs.confirmOkCancel("Tem certeza que quer apagar essa Experiência?",
+					function (confirmado)
+						if confirmado then
+							ndb.deleteNode(sheet);
+						end;
+				end);
+			</event>
+		</button>
+
+		<!-- Soma os contadores da lista -->
+		<dataLink field="valor">
+			<event name="onChange"><![CDATA[
+		        if sheet~= nil then
+		        	local box = self:findControlByName("boxDetalhesDoItem");
+					if box~=nil then
+						local node = box.node;
+					
+						local objetos = ndb.getChildNodes(node.listaDeExperiencia);
+						local soma = 0;
+
+						for i=1, #objetos, 1 do 
+							soma = soma + (tonumber(objetos[i].valor) or 0);
+						end;
+
+						local mod = "" .. soma;
+						
+						while true do  
+							mod, k = string.gsub(mod, "^(-?%d+)(%d%d%d)", '%1,%2')
+							if (k==0) then
+							  break
+							end
+						end
+						mod = string.gsub(mod, ",", ".");
+
+						node.XP = mod;
+					end;
+				end;
+		        ]]>
+			</event>
+		</dataLink>
+	</rectangle>
+</form>

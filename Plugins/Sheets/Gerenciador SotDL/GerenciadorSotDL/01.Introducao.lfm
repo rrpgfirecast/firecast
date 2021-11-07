@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmGerenciador01" align="client" theme="dark" margins="{top=1}">
+    <scrollBox align="client">		
+		<rectangle left="0" top="0" width="680" height="615" color="Black">
+			<label left="5" top="5" width="550" height="25" text="JOGADORES" horzTextAlign="center" />
+			
+			<label left="5" top="30" width="100" height="25" text="Jogador" horzTextAlign="center" />
+			<label left="105" top="30" width="100" height="25" text="Personagem" horzTextAlign="center" />
+			<label left="205" top="30" width="75" height="25" text="XP Inicial" horzTextAlign="center" />
+			<label left="280" top="30" width="75" height="25" text="XP Gasta" horzTextAlign="center" />
+			<label left="355" top="30" width="75" height="25" text="XP Total" horzTextAlign="center" />
+			<label left="430" top="30" width="25" height="25" text="NEP" horzTextAlign="center"/>
+			<label left="455" top="30" width="75" height="25" text="PO Inicial" horzTextAlign="center" />
+			<label left="530" top="30" width="75" height="25" text="PO Total" horzTextAlign="center" />
+			<label left="605" top="30" width="25" height="25" text="Nº" horzTextAlign="center" />
+			
+			<button left="600" top="5" width="25" height="25" text="V" hint="Dá voz a todos jogadores da lista, retira +Jogador dos outros e ativa mesa moderada. ">
+				<event name="onClick">
+					if sheet~=nil then
+						local jogadores = ndb.getChildNodes(sheet.jogadores);
+						local jogadoresNome = "";
+						local mesa = rrpg.getMesaDe(sheet);
+						local usuarios = mesa.jogadores;
+
+						mesa:requestSetModerada(true);
+						for i=1, #jogadores, 1 do
+							jogadoresNome = jogadoresNome .. jogadores[i].jogador .. " ";
+						end;
+
+						for i=1, #usuarios, 1 do 
+							if string.find(jogadoresNome, usuarios[i].login)== nil then
+								if not usuarios[i].isMestre then
+									usuarios[i]:requestSetJogador(false);
+									usuarios[i]:requestSetVoz(false);
+								end
+							else
+								usuarios[i]:requestSetJogador(true);
+								usuarios[i]:requestSetVoz(true);
+							end;
+						end;
+					end;
+				</event>
+			</button>
+			<button left="650" top="5" width="25" height="25" text="+" onClick="self.rclJogadores:append();" hint="Novo"/>
+			
+			<scrollBox left="0" top="55" width="680" height="440">
+				<recordList left="0" top="0" width="660" height="440" itemHeight="35" autoHeight="true" minQt="1" name="rclJogadores" field="jogadores" templateForm="frmGerenciador01_Jogadores">
+					<event name="onCompare">
+						local mod1 = nodeA.xp;
+						local mod2 = nodeB.xp;
+						if mod1==nil then
+							mod1 = "0";
+						end;
+						if mod2==nil then
+							mod2 = "0";
+						end;
+						return (utils.compareStringPtBr(mod1, mod2) * -1);
+					</event>
+					<event name="onEndEnumeration">
+					    if self.rclJogadores.selectedNode == nil and sheet ~= nil then
+					        local nodes = ndb.getChildNodes(sheet.jogadores);               
+
+					        if #nodes > 0 then
+					            self.rclJogadores.selectedNode = nodes[1];
+					        end;
+					    end;
+					</event>
+				</recordList>
+			</scrollBox>
+		</rectangle>
+		
+		
+          
+    </scrollBox>
+</form>

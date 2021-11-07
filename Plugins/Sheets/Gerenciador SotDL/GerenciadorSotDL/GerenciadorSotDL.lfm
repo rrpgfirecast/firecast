@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmGerenciadorSotDL" formType="sheetTemplate" dataType="Ambesek.Gerenciador.SotDL" title="Gerenciador SotDL" align="client" theme="dark">
+    <script>
+        <![CDATA[
+        local function isNewVersion(installed, downloaded)
+            local installedVersion = {};
+            local installedIndex = 0;
+            for i in string.gmatch(installed, "[^%.]+") do
+                installedIndex = installedIndex +1;
+                installedVersion[installedIndex] = i;
+            end
+
+            local downloadedVersion = {};
+            local downloadedIndex = 0;
+            for i in string.gmatch(downloaded, "[^%.]+") do
+                downloadedIndex = downloadedIndex +1;
+                downloadedVersion[downloadedIndex] = i;
+            end
+
+            for i=1, math.min(installedIndex, downloadedIndex), 1 do 
+                if (tonumber(installedVersion[i]) or 0) > (tonumber(downloadedVersion[i]) or 0) then
+                    return false;
+                elseif (tonumber(installedVersion[i]) or 0) < (tonumber(downloadedVersion[i]) or 0) then
+                    return true;
+                end;
+            end;
+
+            if downloadedIndex > installedIndex then
+                return true;
+            else
+                return false;
+            end;
+        end;
+        ]]> 
+    </script>
+	<tabControl align="client">
+		<tab title="Jogadores">
+			<import file="01.Jogadores.lfm"/>
+		</tab>
+		<tab title="Calendario">
+			<import file="02.Calendario.lfm"/>
+		</tab>
+		<tab title="NPCs">
+			<import file="MainDockNPCs.lfm"/>
+		</tab>
+		<tab title="Iniciativas">
+			<import file="CombatTrackerDock.lfm"/>
+		</tab>
+		<tab title="Aventuras">
+			<import file="03.aventuras.lfm"/>
+		</tab>
+		<tab title="Anotaçoes">
+			<import file="05.Anotacoes.lfm"/>
+		</tab>
+		<tab title="Creditos">
+			<import file="06.Creditos.lfm"/>
+		</tab>
+	</tabControl>
+    <event name="onNodeReady">
+        internet.download("https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Gerenciador%20de%20Campanha/output/Gerenciador%20de%20Campanha.rpk?raw=true",
+            function(stream, contentType)
+                local info = rrpg.plugins.getRPKDetails(stream);
+                sheet.versionDownloaded = "VERSÃO DISPONÍVEL: " .. info.version;
+
+                local installed = rrpg.plugins.getInstalledPlugins();
+                local myself;
+                for i=1, #installed, 1 do
+                    if installed[i].moduleId == info.moduleId then
+                        myself = installed[i];
+                        sheet.versionInstalled = "VERSÃO INSTALADA: " .. installed[i].version;
+                    end;
+                end;
+
+                if sheet.noUpdate==true then return end;
+                if myself~= nil and isNewVersion(myself.version, info.version) then
+                    Dialogs.choose("Há uma nova versão desse plugin. Deseja instalar?",{"Sim", "Não", "Não perguntar novamente."},
+                        function(selected, selectedIndex, selectedText)
+                            if selected and selectedIndex == 1 then
+                                gui.openInBrowser('https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Gerenciador%20de%20Campanha/output/Gerenciador%20de%20Campanha.rpk?raw=true');
+                            elseif selected and selectedIndex == 3 then
+                                sheet.noUpdate = true;
+                            end;
+                        end);
+                end;
+            end,       
+            function (errorMsg)
+                --showMessage(errorMsg);
+            end,       
+            function (downloaded, total)
+                -- esta função será chamada constantemente.
+                -- dividir "downloaded" por "total" lhe dará uma porcentagem do download.
+            end);
+    </event>
+</form>
