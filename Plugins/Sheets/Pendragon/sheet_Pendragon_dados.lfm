@@ -214,7 +214,7 @@
 		<layout align="top"><label align="left" text="☙ HABILIDADES" width="175" fontStyle="bold" fontColor="#0080ff" fontFamily="Palatino Linotype" fontSize="20" /><layout align="left" width="475"><rectangle height="2" width="475" top="25" color="#0080ff" /></layout></layout>
 			
 		<template name="Habilidade">
-			<layout class="LConjuntoH"><comboBox field="fldCBHab$(numero)" class="CHab" items="{' ', '♞', '⨉'}" values="{'N', 'C', 'X'}" value="$(valorInicial)" /><edit field="fldHab$(numero)" class="ELabel" /><layout align="left"><edit field="fldHabValor$(numero)" class="GEditH" type="number" min="0" max="99" /></layout></layout>
+			<layout class="LConjuntoH"><comboBox field="fldCBHab$(numero)" class="CHab" items="{' ', '♞', '⨉'}" values="{'N', 'C', 'X'}" value="$(valorInicial)" transparent="true" hint="Tipo de Habilidade" /><edit field="fldHab$(numero)" class="ELabel" /><layout align="left"><edit field="fldHabValor$(numero)" class="GEditH" type="number" min="0" max="99" /></layout></layout>
 			<dataLink field="fldHabValor$(numero)" defaultValue="0">
 				<event name="onChange">
 				<![CDATA[ 

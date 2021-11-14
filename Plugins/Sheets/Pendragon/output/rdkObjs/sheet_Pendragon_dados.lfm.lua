@@ -1376,6 +1376,8 @@ local function constructNew_frmDados()
     obj.comboBox1:setItems({' ', '♞', '⨉'});
     obj.comboBox1:setValues({'N', 'C', 'X'});
     obj.comboBox1:setValue("C");
+    obj.comboBox1:setTransparent(true);
+    obj.comboBox1:setHint("Tipo de Habilidade");
     obj.comboBox1:setName("comboBox1");
 
     obj.edit20 = GUI.fromHandle(_obj_newObject("edit"));
@@ -1418,6 +1420,8 @@ local function constructNew_frmDados()
     obj.comboBox2:setItems({' ', '♞', '⨉'});
     obj.comboBox2:setValues({'N', 'C', 'X'});
     obj.comboBox2:setValue("N");
+    obj.comboBox2:setTransparent(true);
+    obj.comboBox2:setHint("Tipo de Habilidade");
     obj.comboBox2:setName("comboBox2");
 
     obj.edit22 = GUI.fromHandle(_obj_newObject("edit"));
@@ -1460,6 +1464,8 @@ local function constructNew_frmDados()
     obj.comboBox3:setItems({' ', '♞', '⨉'});
     obj.comboBox3:setValues({'N', 'C', 'X'});
     obj.comboBox3:setValue("C");
+    obj.comboBox3:setTransparent(true);
+    obj.comboBox3:setHint("Tipo de Habilidade");
     obj.comboBox3:setName("comboBox3");
 
     obj.edit24 = GUI.fromHandle(_obj_newObject("edit"));
@@ -1502,6 +1508,8 @@ local function constructNew_frmDados()
     obj.comboBox4:setItems({' ', '♞', '⨉'});
     obj.comboBox4:setValues({'N', 'C', 'X'});
     obj.comboBox4:setValue("N");
+    obj.comboBox4:setTransparent(true);
+    obj.comboBox4:setHint("Tipo de Habilidade");
     obj.comboBox4:setName("comboBox4");
 
     obj.edit26 = GUI.fromHandle(_obj_newObject("edit"));
@@ -1544,6 +1552,8 @@ local function constructNew_frmDados()
     obj.comboBox5:setItems({' ', '♞', '⨉'});
     obj.comboBox5:setValues({'N', 'C', 'X'});
     obj.comboBox5:setValue("N");
+    obj.comboBox5:setTransparent(true);
+    obj.comboBox5:setHint("Tipo de Habilidade");
     obj.comboBox5:setName("comboBox5");
 
     obj.edit28 = GUI.fromHandle(_obj_newObject("edit"));
@@ -1590,6 +1600,8 @@ local function constructNew_frmDados()
     obj.comboBox6:setItems({' ', '♞', '⨉'});
     obj.comboBox6:setValues({'N', 'C', 'X'});
     obj.comboBox6:setValue("N");
+    obj.comboBox6:setTransparent(true);
+    obj.comboBox6:setHint("Tipo de Habilidade");
     obj.comboBox6:setName("comboBox6");
 
     obj.edit30 = GUI.fromHandle(_obj_newObject("edit"));
@@ -1632,6 +1644,8 @@ local function constructNew_frmDados()
     obj.comboBox7:setItems({' ', '♞', '⨉'});
     obj.comboBox7:setValues({'N', 'C', 'X'});
     obj.comboBox7:setValue("N");
+    obj.comboBox7:setTransparent(true);
+    obj.comboBox7:setHint("Tipo de Habilidade");
     obj.comboBox7:setName("comboBox7");
 
     obj.edit32 = GUI.fromHandle(_obj_newObject("edit"));
@@ -1674,6 +1688,8 @@ local function constructNew_frmDados()
     obj.comboBox8:setItems({' ', '♞', '⨉'});
     obj.comboBox8:setValues({'N', 'C', 'X'});
     obj.comboBox8:setValue("N");
+    obj.comboBox8:setTransparent(true);
+    obj.comboBox8:setHint("Tipo de Habilidade");
     obj.comboBox8:setName("comboBox8");
 
     obj.edit34 = GUI.fromHandle(_obj_newObject("edit"));
@@ -1716,6 +1732,8 @@ local function constructNew_frmDados()
     obj.comboBox9:setItems({' ', '♞', '⨉'});
     obj.comboBox9:setValues({'N', 'C', 'X'});
     obj.comboBox9:setValue("C");
+    obj.comboBox9:setTransparent(true);
+    obj.comboBox9:setHint("Tipo de Habilidade");
     obj.comboBox9:setName("comboBox9");
 
     obj.edit36 = GUI.fromHandle(_obj_newObject("edit"));
@@ -1758,6 +1776,8 @@ local function constructNew_frmDados()
     obj.comboBox10:setItems({' ', '♞', '⨉'});
     obj.comboBox10:setValues({'N', 'C', 'X'});
     obj.comboBox10:setValue("N");
+    obj.comboBox10:setTransparent(true);
+    obj.comboBox10:setHint("Tipo de Habilidade");
     obj.comboBox10:setName("comboBox10");
 
     obj.edit38 = GUI.fromHandle(_obj_newObject("edit"));
@@ -1804,6 +1824,8 @@ local function constructNew_frmDados()
     obj.comboBox11:setItems({' ', '♞', '⨉'});
     obj.comboBox11:setValues({'N', 'C', 'X'});
     obj.comboBox11:setValue("C");
+    obj.comboBox11:setTransparent(true);
+    obj.comboBox11:setHint("Tipo de Habilidade");
     obj.comboBox11:setName("comboBox11");
 
     obj.edit40 = GUI.fromHandle(_obj_newObject("edit"));
@@ -1846,6 +1868,8 @@ local function constructNew_frmDados()
     obj.comboBox12:setItems({' ', '♞', '⨉'});
     obj.comboBox12:setValues({'N', 'C', 'X'});
     obj.comboBox12:setValue("C");
+    obj.comboBox12:setTransparent(true);
+    obj.comboBox12:setHint("Tipo de Habilidade");
     obj.comboBox12:setName("comboBox12");
 
     obj.edit42 = GUI.fromHandle(_obj_newObject("edit"));
@@ -1888,6 +1912,8 @@ local function constructNew_frmDados()
     obj.comboBox13:setItems({' ', '♞', '⨉'});
     obj.comboBox13:setValues({'N', 'C', 'X'});
     obj.comboBox13:setValue("N");
+    obj.comboBox13:setTransparent(true);
+    obj.comboBox13:setHint("Tipo de Habilidade");
     obj.comboBox13:setName("comboBox13");
 
     obj.edit44 = GUI.fromHandle(_obj_newObject("edit"));
@@ -1930,6 +1956,8 @@ local function constructNew_frmDados()
     obj.comboBox14:setItems({' ', '♞', '⨉'});
     obj.comboBox14:setValues({'N', 'C', 'X'});
     obj.comboBox14:setValue("N");
+    obj.comboBox14:setTransparent(true);
+    obj.comboBox14:setHint("Tipo de Habilidade");
     obj.comboBox14:setName("comboBox14");
 
     obj.edit46 = GUI.fromHandle(_obj_newObject("edit"));
@@ -1972,6 +2000,8 @@ local function constructNew_frmDados()
     obj.comboBox15:setItems({' ', '♞', '⨉'});
     obj.comboBox15:setValues({'N', 'C', 'X'});
     obj.comboBox15:setValue("N");
+    obj.comboBox15:setTransparent(true);
+    obj.comboBox15:setHint("Tipo de Habilidade");
     obj.comboBox15:setName("comboBox15");
 
     obj.edit48 = GUI.fromHandle(_obj_newObject("edit"));
@@ -2025,6 +2055,8 @@ local function constructNew_frmDados()
     obj.comboBox16:setItems({' ', '♞', '⨉'});
     obj.comboBox16:setValues({'N', 'C', 'X'});
     obj.comboBox16:setValue("N");
+    obj.comboBox16:setTransparent(true);
+    obj.comboBox16:setHint("Tipo de Habilidade");
     obj.comboBox16:setName("comboBox16");
 
     obj.edit50 = GUI.fromHandle(_obj_newObject("edit"));
@@ -2067,6 +2099,8 @@ local function constructNew_frmDados()
     obj.comboBox17:setItems({' ', '♞', '⨉'});
     obj.comboBox17:setValues({'N', 'C', 'X'});
     obj.comboBox17:setValue("C");
+    obj.comboBox17:setTransparent(true);
+    obj.comboBox17:setHint("Tipo de Habilidade");
     obj.comboBox17:setName("comboBox17");
 
     obj.edit52 = GUI.fromHandle(_obj_newObject("edit"));
@@ -2109,6 +2143,8 @@ local function constructNew_frmDados()
     obj.comboBox18:setItems({' ', '♞', '⨉'});
     obj.comboBox18:setValues({'N', 'C', 'X'});
     obj.comboBox18:setValue("C");
+    obj.comboBox18:setTransparent(true);
+    obj.comboBox18:setHint("Tipo de Habilidade");
     obj.comboBox18:setName("comboBox18");
 
     obj.edit54 = GUI.fromHandle(_obj_newObject("edit"));
@@ -2151,6 +2187,8 @@ local function constructNew_frmDados()
     obj.comboBox19:setItems({' ', '♞', '⨉'});
     obj.comboBox19:setValues({'N', 'C', 'X'});
     obj.comboBox19:setValue("N");
+    obj.comboBox19:setTransparent(true);
+    obj.comboBox19:setHint("Tipo de Habilidade");
     obj.comboBox19:setName("comboBox19");
 
     obj.edit56 = GUI.fromHandle(_obj_newObject("edit"));
@@ -2193,6 +2231,8 @@ local function constructNew_frmDados()
     obj.comboBox20:setItems({' ', '♞', '⨉'});
     obj.comboBox20:setValues({'N', 'C', 'X'});
     obj.comboBox20:setValue("N");
+    obj.comboBox20:setTransparent(true);
+    obj.comboBox20:setHint("Tipo de Habilidade");
     obj.comboBox20:setName("comboBox20");
 
     obj.edit58 = GUI.fromHandle(_obj_newObject("edit"));
@@ -2235,6 +2275,8 @@ local function constructNew_frmDados()
     obj.comboBox21:setItems({' ', '♞', '⨉'});
     obj.comboBox21:setValues({'N', 'C', 'X'});
     obj.comboBox21:setValue("N");
+    obj.comboBox21:setTransparent(true);
+    obj.comboBox21:setHint("Tipo de Habilidade");
     obj.comboBox21:setName("comboBox21");
 
     obj.edit60 = GUI.fromHandle(_obj_newObject("edit"));
@@ -2277,6 +2319,8 @@ local function constructNew_frmDados()
     obj.comboBox22:setItems({' ', '♞', '⨉'});
     obj.comboBox22:setValues({'N', 'C', 'X'});
     obj.comboBox22:setValue("N");
+    obj.comboBox22:setTransparent(true);
+    obj.comboBox22:setHint("Tipo de Habilidade");
     obj.comboBox22:setName("comboBox22");
 
     obj.edit62 = GUI.fromHandle(_obj_newObject("edit"));
@@ -2319,6 +2363,8 @@ local function constructNew_frmDados()
     obj.comboBox23:setItems({' ', '♞', '⨉'});
     obj.comboBox23:setValues({'N', 'C', 'X'});
     obj.comboBox23:setValue("C");
+    obj.comboBox23:setTransparent(true);
+    obj.comboBox23:setHint("Tipo de Habilidade");
     obj.comboBox23:setName("comboBox23");
 
     obj.edit64 = GUI.fromHandle(_obj_newObject("edit"));
@@ -2361,6 +2407,8 @@ local function constructNew_frmDados()
     obj.comboBox24:setItems({' ', '♞', '⨉'});
     obj.comboBox24:setValues({'N', 'C', 'X'});
     obj.comboBox24:setValue("N");
+    obj.comboBox24:setTransparent(true);
+    obj.comboBox24:setHint("Tipo de Habilidade");
     obj.comboBox24:setName("comboBox24");
 
     obj.edit66 = GUI.fromHandle(_obj_newObject("edit"));
@@ -2403,6 +2451,8 @@ local function constructNew_frmDados()
     obj.comboBox25:setItems({' ', '♞', '⨉'});
     obj.comboBox25:setValues({'N', 'C', 'X'});
     obj.comboBox25:setValue("N");
+    obj.comboBox25:setTransparent(true);
+    obj.comboBox25:setHint("Tipo de Habilidade");
     obj.comboBox25:setName("comboBox25");
 
     obj.edit68 = GUI.fromHandle(_obj_newObject("edit"));
@@ -2449,6 +2499,8 @@ local function constructNew_frmDados()
     obj.comboBox26:setItems({' ', '♞', '⨉'});
     obj.comboBox26:setValues({'N', 'C', 'X'});
     obj.comboBox26:setValue("C");
+    obj.comboBox26:setTransparent(true);
+    obj.comboBox26:setHint("Tipo de Habilidade");
     obj.comboBox26:setName("comboBox26");
 
     obj.edit70 = GUI.fromHandle(_obj_newObject("edit"));
@@ -2491,6 +2543,8 @@ local function constructNew_frmDados()
     obj.comboBox27:setItems({' ', '♞', '⨉'});
     obj.comboBox27:setValues({'N', 'C', 'X'});
     obj.comboBox27:setValue("X");
+    obj.comboBox27:setTransparent(true);
+    obj.comboBox27:setHint("Tipo de Habilidade");
     obj.comboBox27:setName("comboBox27");
 
     obj.edit72 = GUI.fromHandle(_obj_newObject("edit"));
@@ -2533,6 +2587,8 @@ local function constructNew_frmDados()
     obj.comboBox28:setItems({' ', '♞', '⨉'});
     obj.comboBox28:setValues({'N', 'C', 'X'});
     obj.comboBox28:setValue("N");
+    obj.comboBox28:setTransparent(true);
+    obj.comboBox28:setHint("Tipo de Habilidade");
     obj.comboBox28:setName("comboBox28");
 
     obj.edit74 = GUI.fromHandle(_obj_newObject("edit"));
@@ -2575,6 +2631,8 @@ local function constructNew_frmDados()
     obj.comboBox29:setItems({' ', '♞', '⨉'});
     obj.comboBox29:setValues({'N', 'C', 'X'});
     obj.comboBox29:setValue("N");
+    obj.comboBox29:setTransparent(true);
+    obj.comboBox29:setHint("Tipo de Habilidade");
     obj.comboBox29:setName("comboBox29");
 
     obj.edit76 = GUI.fromHandle(_obj_newObject("edit"));
@@ -2617,6 +2675,8 @@ local function constructNew_frmDados()
     obj.comboBox30:setItems({' ', '♞', '⨉'});
     obj.comboBox30:setValues({'N', 'C', 'X'});
     obj.comboBox30:setValue("N");
+    obj.comboBox30:setTransparent(true);
+    obj.comboBox30:setHint("Tipo de Habilidade");
     obj.comboBox30:setName("comboBox30");
 
     obj.edit78 = GUI.fromHandle(_obj_newObject("edit"));
@@ -2659,6 +2719,8 @@ local function constructNew_frmDados()
     obj.comboBox31:setItems({' ', '♞', '⨉'});
     obj.comboBox31:setValues({'N', 'C', 'X'});
     obj.comboBox31:setValue("X");
+    obj.comboBox31:setTransparent(true);
+    obj.comboBox31:setHint("Tipo de Habilidade");
     obj.comboBox31:setName("comboBox31");
 
     obj.edit80 = GUI.fromHandle(_obj_newObject("edit"));
@@ -2701,6 +2763,8 @@ local function constructNew_frmDados()
     obj.comboBox32:setItems({' ', '♞', '⨉'});
     obj.comboBox32:setValues({'N', 'C', 'X'});
     obj.comboBox32:setValue("X");
+    obj.comboBox32:setTransparent(true);
+    obj.comboBox32:setHint("Tipo de Habilidade");
     obj.comboBox32:setName("comboBox32");
 
     obj.edit82 = GUI.fromHandle(_obj_newObject("edit"));
@@ -2743,6 +2807,8 @@ local function constructNew_frmDados()
     obj.comboBox33:setItems({' ', '♞', '⨉'});
     obj.comboBox33:setValues({'N', 'C', 'X'});
     obj.comboBox33:setValue("N");
+    obj.comboBox33:setTransparent(true);
+    obj.comboBox33:setHint("Tipo de Habilidade");
     obj.comboBox33:setName("comboBox33");
 
     obj.edit84 = GUI.fromHandle(_obj_newObject("edit"));
@@ -2785,6 +2851,8 @@ local function constructNew_frmDados()
     obj.comboBox34:setItems({' ', '♞', '⨉'});
     obj.comboBox34:setValues({'N', 'C', 'X'});
     obj.comboBox34:setValue("N");
+    obj.comboBox34:setTransparent(true);
+    obj.comboBox34:setHint("Tipo de Habilidade");
     obj.comboBox34:setName("comboBox34");
 
     obj.edit86 = GUI.fromHandle(_obj_newObject("edit"));
@@ -2827,6 +2895,8 @@ local function constructNew_frmDados()
     obj.comboBox35:setItems({' ', '♞', '⨉'});
     obj.comboBox35:setValues({'N', 'C', 'X'});
     obj.comboBox35:setValue("N");
+    obj.comboBox35:setTransparent(true);
+    obj.comboBox35:setHint("Tipo de Habilidade");
     obj.comboBox35:setName("comboBox35");
 
     obj.edit88 = GUI.fromHandle(_obj_newObject("edit"));
@@ -2873,6 +2943,8 @@ local function constructNew_frmDados()
     obj.comboBox36:setItems({' ', '♞', '⨉'});
     obj.comboBox36:setValues({'N', 'C', 'X'});
     obj.comboBox36:setValue("N");
+    obj.comboBox36:setTransparent(true);
+    obj.comboBox36:setHint("Tipo de Habilidade");
     obj.comboBox36:setName("comboBox36");
 
     obj.edit90 = GUI.fromHandle(_obj_newObject("edit"));
@@ -2915,6 +2987,8 @@ local function constructNew_frmDados()
     obj.comboBox37:setItems({' ', '♞', '⨉'});
     obj.comboBox37:setValues({'N', 'C', 'X'});
     obj.comboBox37:setValue("N");
+    obj.comboBox37:setTransparent(true);
+    obj.comboBox37:setHint("Tipo de Habilidade");
     obj.comboBox37:setName("comboBox37");
 
     obj.edit92 = GUI.fromHandle(_obj_newObject("edit"));
@@ -2957,6 +3031,8 @@ local function constructNew_frmDados()
     obj.comboBox38:setItems({' ', '♞', '⨉'});
     obj.comboBox38:setValues({'N', 'C', 'X'});
     obj.comboBox38:setValue("N");
+    obj.comboBox38:setTransparent(true);
+    obj.comboBox38:setHint("Tipo de Habilidade");
     obj.comboBox38:setName("comboBox38");
 
     obj.edit94 = GUI.fromHandle(_obj_newObject("edit"));
@@ -2999,6 +3075,8 @@ local function constructNew_frmDados()
     obj.comboBox39:setItems({' ', '♞', '⨉'});
     obj.comboBox39:setValues({'N', 'C', 'X'});
     obj.comboBox39:setValue("N");
+    obj.comboBox39:setTransparent(true);
+    obj.comboBox39:setHint("Tipo de Habilidade");
     obj.comboBox39:setName("comboBox39");
 
     obj.edit96 = GUI.fromHandle(_obj_newObject("edit"));
@@ -3041,6 +3119,8 @@ local function constructNew_frmDados()
     obj.comboBox40:setItems({' ', '♞', '⨉'});
     obj.comboBox40:setValues({'N', 'C', 'X'});
     obj.comboBox40:setValue("N");
+    obj.comboBox40:setTransparent(true);
+    obj.comboBox40:setHint("Tipo de Habilidade");
     obj.comboBox40:setName("comboBox40");
 
     obj.edit98 = GUI.fromHandle(_obj_newObject("edit"));
@@ -3083,6 +3163,8 @@ local function constructNew_frmDados()
     obj.comboBox41:setItems({' ', '♞', '⨉'});
     obj.comboBox41:setValues({'N', 'C', 'X'});
     obj.comboBox41:setValue("N");
+    obj.comboBox41:setTransparent(true);
+    obj.comboBox41:setHint("Tipo de Habilidade");
     obj.comboBox41:setName("comboBox41");
 
     obj.edit100 = GUI.fromHandle(_obj_newObject("edit"));
@@ -3125,6 +3207,8 @@ local function constructNew_frmDados()
     obj.comboBox42:setItems({' ', '♞', '⨉'});
     obj.comboBox42:setValues({'N', 'C', 'X'});
     obj.comboBox42:setValue("N");
+    obj.comboBox42:setTransparent(true);
+    obj.comboBox42:setHint("Tipo de Habilidade");
     obj.comboBox42:setName("comboBox42");
 
     obj.edit102 = GUI.fromHandle(_obj_newObject("edit"));
@@ -3167,6 +3251,8 @@ local function constructNew_frmDados()
     obj.comboBox43:setItems({' ', '♞', '⨉'});
     obj.comboBox43:setValues({'N', 'C', 'X'});
     obj.comboBox43:setValue("N");
+    obj.comboBox43:setTransparent(true);
+    obj.comboBox43:setHint("Tipo de Habilidade");
     obj.comboBox43:setName("comboBox43");
 
     obj.edit104 = GUI.fromHandle(_obj_newObject("edit"));
@@ -3209,6 +3295,8 @@ local function constructNew_frmDados()
     obj.comboBox44:setItems({' ', '♞', '⨉'});
     obj.comboBox44:setValues({'N', 'C', 'X'});
     obj.comboBox44:setValue("N");
+    obj.comboBox44:setTransparent(true);
+    obj.comboBox44:setHint("Tipo de Habilidade");
     obj.comboBox44:setName("comboBox44");
 
     obj.edit106 = GUI.fromHandle(_obj_newObject("edit"));
@@ -3251,6 +3339,8 @@ local function constructNew_frmDados()
     obj.comboBox45:setItems({' ', '♞', '⨉'});
     obj.comboBox45:setValues({'N', 'C', 'X'});
     obj.comboBox45:setValue("N");
+    obj.comboBox45:setTransparent(true);
+    obj.comboBox45:setHint("Tipo de Habilidade");
     obj.comboBox45:setName("comboBox45");
 
     obj.edit108 = GUI.fromHandle(_obj_newObject("edit"));
