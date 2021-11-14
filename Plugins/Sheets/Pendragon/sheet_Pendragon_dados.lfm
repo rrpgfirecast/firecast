@@ -1,0 +1,318 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmDados" onShow="if (sheet ~= nil) then CalcularGloriaAnual(); end;" align="client">
+	<rectangle class="RBackground">
+		<!-- DATALINKS DOS CAMPOS -->
+		<dataLink name="dLCabecalho" fields="{'fldNomePJ', 'fldJogador'}" defaultValues="{'NOME DO PERSONAGEM', 'Jogador'}" />
+		<dataLink name="dLDadosIniciais" fields="{'fldIdade', 'fldSuserano', 'fldFeudo', 'fldNascimento', 'fldClasseAtual', 'fldRiqueza', 'fldTerraNatal', 'fldClassePai', 'fldCaracteristica'}" defaultValues="{'00 anos', '—', '—', '0', '—', '—', '—', '—', '—'}" />
+		<dataLink name="dLDescCaracteristica" field="fldCarHabilidade" defaultValue="+00 HABILIDADE" />
+		<dataLink name="dLDadosAdicionais" fields="{'fldCultura', 'fldReligiao', 'fldGloria', 'fldNvGloria', 'fldGloriaAnual', 'fldSomaGloria'}" defaultValues="{'—', '—', '0', '0', '0', '0'}" />
+		<dataLink name="dLAtributosDerivados" fields="{'fldCarDistintiva', 'fldFerimentos'}" defaultValues="{'—', '—'}" />
+		<dataLink name= "dLUpgrades" fields="{'fldUpgradesGlor', 'fldUpgradesInv'}" defaultValues="{'—', '—'}" />
+		<!-- DATALINKS DAS HABILIDADES DE ARMAS -->
+		<dataLink field="fldHab01" defaultValue="Adaga" />
+		<dataLink field="fldHab02" defaultValue="Arco" />
+		<dataLink field="fldHab03" defaultValue="Batalha" />
+		<dataLink field="fldHab04" defaultValue="Besta" />
+		<dataLink field="fldHab05" defaultValue="Dardo" />
+		<dataLink field="fldHab06" defaultValue="Equitação" />
+		<dataLink field="fldHab07" defaultValue="Espada" />
+		<dataLink field="fldHab08" defaultValue="Grande Lança" />
+		<dataLink field="fldHab09" defaultValue="Grande Machado" />
+		<dataLink field="fldHab10" defaultValue="Lança" />
+		<dataLink field="fldHab11" defaultValue="Lança Montada" />
+		<dataLink field="fldHab12" defaultValue="Machado" />
+		<dataLink field="fldHab13" defaultValue="Maça" />
+		<dataLink field="fldHab14" defaultValue="—" />
+		<dataLink field="fldHab15" defaultValue="—" />
+		<!-- DATALINKS DAS HABILIDADES COMUNS -->
+		<dataLink field="fldHab16" defaultValue="Administração" />
+		<dataLink field="fldHab17" defaultValue="Atenção" />
+		<dataLink field="fldHab18" defaultValue="Canto" />
+		<dataLink field="fldHab19" defaultValue="Caça" />
+		<dataLink field="fldHab20" defaultValue="Cirurgia" />
+		<dataLink field="fldHab21" defaultValue="Composição" />
+		<dataLink field="fldHab22" defaultValue="Cortesia" />
+		<dataLink field="fldHab23" defaultValue="Dança" />
+		<dataLink field="fldHab24" defaultValue="Falcoaria" />
+		<dataLink field="fldHab25" defaultValue="Feerismo" />
+		<dataLink field="fldHab26" defaultValue="Flerte" />
+		<dataLink field="fldHab27" defaultValue="Folclore" />
+		<dataLink field="fldHab28" defaultValue="Heráldica" />
+		<dataLink field="fldHab29" defaultValue="Intriga" />
+		<dataLink field="fldHab30" defaultValue="Jogos" />
+		<dataLink field="fldHab31" defaultValue="Leitura (Língua)" />
+		<dataLink field="fldHab32" defaultValue="Moda" />
+		<dataLink field="fldHab33" defaultValue="Natação" />
+		<dataLink field="fldHab34" defaultValue="Navegação" />
+		<dataLink field="fldHab35" defaultValue="Ofícios" />
+		<dataLink field="fldHab36" defaultValue="Oratória" />
+		<dataLink field="fldHab37" defaultValue="Primeiros Socorros" />
+		<dataLink field="fldHab38" defaultValue="Reconhecimento" />
+		<dataLink field="fldHab39" defaultValue="Religião (Fé)" />
+		<dataLink field="fldHab40" defaultValue="Romance" />
+		<dataLink field="fldHab41" defaultValue="Tocar (Instrumento)" />
+		<dataLink field="fldHab42" defaultValue="Torneio" />
+		<dataLink field="fldHab43" defaultValue="—" />
+		<dataLink field="fldHab44" defaultValue="—" />
+		<dataLink field="fldHab45" defaultValue="—" />
+							
+		<!-- CABEÇALHO -->
+		<layout align="top" height="60">
+			<label text="☙" fontColor="#0080ff" fontFamily="Palatino Linotype" fontSize="28" top="7" />
+			<edit field="fldNomePJ" class="ENomePJ" />
+			<rectangle height="2" width="650" top="33" color="#0080ff" />
+			<edit field="fldJogador" class="EJogador" />
+		</layout>
+		
+		<!-- DADOS DO CABEÇALHO -->
+		<layout align="top" height="90" margins="{left = 40, top = 20}">
+			<template name="Dados">
+				<layout class="LConjunto" height="30"><label text="$(rotulo)" class="NLabel" width="$(larguraR)" /><layout align="left" width="$(larguraC)"><edit field="$(campo)" class="GEdit" width="$(larguraC)" /></layout></layout>
+			</template>
+			
+			<layout class="LColuna" height="90">
+				<Dados rotulo="Idade:" campo="fldIdade" larguraR="41" larguraC="159" />
+				<Dados rotulo="Suserano:" campo="fldSuserano" larguraR="64" larguraC="136" />
+				<Dados rotulo="Feudo:" campo="fldFeudo" larguraR="44" larguraC="156" />
+			</layout>
+			
+			<layout class="LColuna" height="90">
+				<Dados rotulo="Ordem de Nascimento:" campo="fldNascimento" larguraR="146" larguraC="54" />
+				<Dados rotulo="Classe:" campo="fldClasseAtual" larguraR="46" larguraC="154" />
+				<Dados rotulo="Riqueza:" campo="fldRiqueza" larguraR="57" larguraC="143" />
+			</layout>
+			
+			<layout class="LColuna3" height="90">
+				<Dados rotulo="Terra Natal:" campo="fldTerraNatal" larguraR="77" larguraC="173" />
+				<Dados rotulo="Classe do Pai:" campo="fldClassePai" larguraR="87" larguraC="163" />
+				<Dados rotulo="Característica:" campo="fldCaracteristica" larguraR="93" larguraC="157" />
+			</layout>
+		</layout>
+		<layout align="top" height="20"><edit field="fldCarHabilidade" fontColor="#858585" fontFamily="Palatino Linotype" fontSize="10" transparent="true" left="550" width="157" top="-10" /></layout>
+
+		<!-- IMAGEM DO BRASÃO -->
+		<layout align="top" height="500">
+			<image left="0" top="0" width="650" height="400" url="/images/shield-flare.png" style="proportional" center="true" />
+			<image field="fldBrasao" height="290" top="170" width="240" left="205" style="proportional" center="true" editable="true" hint="Alterar Brasão" />
+			<dataLink field="fldBrasao" defaultValue="/images/heraldry.png" />
+		</layout>
+		
+		<!-- DADOS ADICIONAIS CABEÇALHO -->
+		<layout align="top" height="60" margins="{left = 40, top = 25}">
+			<layout class="LColuna">
+				<Dados rotulo="Cultura:" campo="fldCultura" larguraR="52" larguraC="148" />
+			</layout>
+			
+			<layout class="LColuna">
+				<Dados rotulo="Religião:" campo="fldReligiao" larguraR="58" larguraC="142" />
+				<Dados rotulo="Glória" campo="fldGloria" larguraR="44" larguraC="156" />
+			</layout>
+			
+			<layout class="LColuna3">
+				<Dados rotulo="Níveis de Glória:" campo="fldNvGloria" larguraR="105" larguraC="145" />
+				<layout class="LConjunto"><label text="Glória Anual:" class="NLabel" width="85" /><layout align="left" width="40"><edit field="fldGloriaAnual" width="40" class="GEdit" /></layout>
+				<layout align="left" width="163"><label name="namSomaGloria" field="fldSomaGloria" class="NLabel" width="165" /></layout>
+				</layout>
+			</layout>
+		</layout>
+
+		<!-- ATRIBUTOS -->	
+		<layout align="top"><label align="left" text="☙ ATRIBUTOS" width="150" fontStyle="bold" fontColor="#0080ff" fontFamily="Palatino Linotype" fontSize="20" /><layout align="left" width="500"><rectangle height="2" width="500" top="25" color="#0080ff" /></layout></layout>
+		
+		<!-- ATRIBUTOS EM SI -->
+		<layout align="top" height="165">
+			<template name="Atributo">
+			<layout align="left" width="115" margins="{right=18}">
+				<layout align="top" height="30"><label text="$(abreviacao)" top="10" width="143" horzTextAlign="center" fontStyle="bold" fontColor="#858585" fontFamily="Cambria" fontSize="17" hint="$(nomeInteiro)" hitTest="true" /></layout>
+				<layout align="top" height="173"><image width="143" url="/images/shield.png" style="proportional"/></layout>
+				<layout width="143" top="55" left="38"><edit name="$(abreviacao)" field="fld$(nomeInteiroField)" class="EAtr" hint="$(nomeInteiro)" hitTest="true" /></layout>
+			</layout>
+			<dataLink field="fld$(nomeInteiroField)" defaultValue="0">
+				<event name="onChange">
+				<![CDATA[ 
+					if (sheet == nil) then return; end;
+					sheet.fld$(nomeInteiroField) = string.format("%02d", sheet.fld$(nomeInteiroField)); 
+				]]>
+				</event>
+			</dataLink>
+			</template>
+			
+			<Atributo abreviacao="TAM" nomeInteiro="Tamanho" nomeInteiroField="Tamanho" />
+			<Atributo abreviacao="DES" nomeInteiro="Destreza" nomeInteiroField="Destreza" />
+			<Atributo abreviacao="FOR" nomeInteiro="Força" nomeInteiroField="Forca" />
+			<Atributo abreviacao="CON" nomeInteiro="Constituição" nomeInteiroField="Constituicao" />
+			<Atributo abreviacao="APA" nomeInteiro="Aparência" nomeInteiroField="Aparencia" />
+		</layout>
+		
+		<!-- STATUS DERIVADOS -->
+		<layout align="top" margins="{left = 40, top = 0}">
+			<layout class="LColuna">
+				<layout class="LConjunto"><label text="Dano:" class="NLabel" width="40" hint="(FOR+TAM)/6" hitTest="true" /><label field="fldDano" class="NLabelG" hint="(FOR+TAM)/6" hitTest="true" /></layout>
+				<layout class="LConjunto"><label text="Movimento:" class="NLabel" width="80" hint="(FOR+DES)/10" hitTest="true" /><label  field="fldMovimento" class="NLabelG" hint="(FOR+DES)/10" hitTest="true" /></layout>
+			</layout>
+			
+			<layout class="LColuna">
+				<layout class="LConjunto"><label text="Regeneração:" class="NLabel" width="90" hint="(FOR+CON)/10" hitTest="true" /><label  field="fldRegen" class="NLabelG" hint="(FOR+CON)/10" hitTest="true" /></layout>
+				<layout class="LConjunto"><label text="HP:" class="NLabel" width="25" hint="TAM+CON" hitTest="true" /><label field="fldHP" class="NLabelG" hint="TAM+CON" hitTest="true" /></layout>
+			</layout>
+			
+			<layout class="LColuna">
+				<layout class="LConjunto"><label text="" class="NLabel" width="40" /><label text="" class="NLabelG" /></layout>
+				<layout class="LConjunto"><label text="Inconsciente:" class="NLabel" width="88" hint="HP/4" hitTest="true" /><label  field="fldInconsciente" class="NLabelG" hint="HP/4" hitTest="true" /></layout>
+			</layout>
+		</layout>
+		
+		<!--CÁLCULO DE STATUS DERIVADOS-->
+		<dataLink fields="{'fldTamanho', 'fldDestreza', 'fldForca', 'fldConstituicao'}">
+			<event name="onChange">  
+			<![CDATA[
+				if (sheet == nil) then return; end;
+				local TAM = (tonumber(sheet.fldTamanho) or 0);
+				local DES = (tonumber(sheet.fldDestreza) or 0);
+				local FOR = (tonumber(sheet.fldForca) or 0);
+				local CON = (tonumber(sheet.fldConstituicao) or 0);
+				
+				sheet.fldDano = tostring(math.floor(((TAM+FOR)/6)+0.5)) .. "d6";
+				sheet.fldMovimento = math.floor(((DES+FOR)/10)+0.5); 
+				sheet.fldRegen = math.floor(((CON+FOR)/10)+0.5); 
+				sheet.fldHP = CON+TAM;
+				sheet.fldInconsciente = math.floor((CON+TAM/4)+0.5);
+			]]>
+			</event>
+		</dataLink>
+		<dataLink field="fldAparencia">
+			<event name="onUserChange">
+			<![CDATA[
+				if (sheet == nil) then return; end;
+				if((tonumber(sheet.fldAparencia)) ~= 0) then
+					local APA = (tonumber(sheet.fldAparencia) or 0);
+					local DistinctFeature = 0;
+					
+					if (APA < 7) then DistinctFeature = 3;
+					elseif (APA > 6 and APA < 10) then DistinctFeature = 2; 
+					elseif (APA > 9 and APA < 13) then DistinctFeature = 1; 
+					elseif (APA > 12 and APA < 17) then DistinctFeature = 2; 
+					elseif (APA > 16) then DistinctFeature = 3; 
+					end;
+					
+					if(sheet.fldCarDistintiva == "" or sheet.fldCarDistintiva == "—") then
+						sheet.fldCarDistintiva = "Escolha " .. tostring(math.floor(DistinctFeature)) .. " característica(s).";
+					elseif(sheet.fldCarDistintiva == "Escolha 1 característica(s)." or sheet.fldCarDistintiva == "Escolha 2 característica(s)." or sheet.fldCarDistintiva == "Escolha 3 característica(s).") then
+						sheet.fldCarDistintiva = "Escolha " .. tostring(math.floor(DistinctFeature)) .. " característica(s).";
+					end;
+				end;
+			]]>
+			</event>
+		</dataLink>
+		
+		<layout align="top" margins="{left = 40, top = 25}" height="60">
+			<layout class="LConjunto"><label text="Características Distintas:" class="NLabel" width="164" /><layout align="left" width="486"><edit field="fldCarDistintiva" width="486" class="GEdit" /></layout></layout>
+			<layout class="LConjunto"><label text="Ferimentos:" class="NLabel" width="80" /><layout align="left" width="570"><edit field="fldFerimentos" width="570" class="GEdit" /></layout></layout>
+		</layout>
+		
+		<!-- HABILIDADES -->
+		<layout align="top"><label align="left" text="☙ HABILIDADES" width="175" fontStyle="bold" fontColor="#0080ff" fontFamily="Palatino Linotype" fontSize="20" /><layout align="left" width="475"><rectangle height="2" width="475" top="25" color="#0080ff" /></layout></layout>
+			
+		<template name="Habilidade">
+			<layout class="LConjuntoH"><comboBox field="fldCBHab$(numero)" class="CHab" items="{' ', '♞', '⨉'}" values="{'N', 'C', 'X'}" value="$(valorInicial)" /><edit field="fldHab$(numero)" class="ELabel" /><layout align="left"><edit field="fldHabValor$(numero)" class="GEditH" type="number" min="0" max="99" /></layout></layout>
+			<dataLink field="fldHabValor$(numero)" defaultValue="0">
+				<event name="onChange">
+				<![CDATA[ 
+					if (sheet == nil) then return; end;
+					CalcularGloriaAnual(); 
+					sheet.fldHabValor$(numero) = string.format("%02d", sheet.fldHabValor$(numero));
+				]]>
+				</event>
+			</dataLink>
+			<dataLink field="fldCBHab$(numero)" defaultValue="$(valorInicial)">
+				<event name="onChange">
+				<![CDATA[ 
+					if (sheet == nil) then return; end;
+					CalcularGloriaAnual(); 
+				]]>
+				</event>
+			</dataLink>
+		</template>
+		
+		<!-- HABILIDADES DE ARMAS -->
+		<layout align="top" height="150" margins="{left = 40, top = 0}">
+			<layout class="LColuna">
+				<Habilidade numero="01" valorInicial="C" />
+				<Habilidade numero="04" valorInicial="N" />
+				<Habilidade numero="07" valorInicial="C" />
+				<Habilidade numero="10" valorInicial="N" />
+				<Habilidade numero="13" valorInicial="N" />
+			</layout>
+			
+			<layout class="LColuna">
+				<Habilidade numero="02" valorInicial="N" />
+				<Habilidade numero="05" valorInicial="N" />
+				<Habilidade numero="08" valorInicial="N" />
+				<Habilidade numero="11" valorInicial="C" />
+				<Habilidade numero="14" valorInicial="N" />
+			</layout>
+			
+			<layout class="LColuna">
+				<Habilidade numero="03" valorInicial="C" />
+				<Habilidade numero="06" valorInicial="C" />
+				<Habilidade numero="09" valorInicial="N" />
+				<Habilidade numero="12" valorInicial="N" />
+				<Habilidade numero="15" valorInicial="N" />
+			</layout>
+		</layout>
+		
+		<!-- HABILIDADES GERAIS -->
+		<layout align="top" height="320" margins="{left = 40, top = 25}">
+			<layout class="LColuna">
+				<Habilidade numero="16" valorInicial="N" />
+				<Habilidade numero="19" valorInicial="C" />
+				<Habilidade numero="22" valorInicial="C" />
+				<Habilidade numero="25" valorInicial="N" />
+				<Habilidade numero="28" valorInicial="N" />
+				<Habilidade numero="31" valorInicial="N" />
+				<Habilidade numero="34" valorInicial="N" />
+				<Habilidade numero="37" valorInicial="C" />
+				<Habilidade numero="40" valorInicial="N" />
+				<Habilidade numero="43" valorInicial="N" />
+			</layout>
+			
+			<layout class="LColuna">
+				<Habilidade numero="17" valorInicial="C" />
+				<Habilidade numero="20" valorInicial="X" />
+				<Habilidade numero="23" valorInicial="N" />
+				<Habilidade numero="26" valorInicial="N" />
+				<Habilidade numero="29" valorInicial="N" />
+				<Habilidade numero="32" valorInicial="X" />
+				<Habilidade numero="35" valorInicial="X" />
+				<Habilidade numero="38" valorInicial="N" />
+				<Habilidade numero="41" valorInicial="N" />
+				<Habilidade numero="44" valorInicial="N" />
+			</layout>
+			
+			<layout class="LColuna">
+				<Habilidade numero="18" valorInicial="N" />
+				<Habilidade numero="21" valorInicial="N" />
+				<Habilidade numero="24" valorInicial="N" />
+				<Habilidade numero="27" valorInicial="N" />
+				<Habilidade numero="30" valorInicial="N" />
+				<Habilidade numero="33" valorInicial="N" />
+				<Habilidade numero="36" valorInicial="N" />
+				<Habilidade numero="39" valorInicial="N" />
+				<Habilidade numero="42" valorInicial="N" />
+				<Habilidade numero="45" valorInicial="N" />
+			</layout>
+		</layout>
+		
+		<!-- UPGRADES -->
+		<layout align="top" height="20" margins="{left = 40}">
+			<label align="left" width="180" text="UPGRADES POR GLÓRIA" fontStyle="bold" fontColor="#cdcdcd" fontFamily="Palatino Linotype" fontSize="14" />
+			<edit class="GEdit" width="470" field = "fldUpgradesGlor" align="left" fontColor="#858585" />
+		</layout>
+		
+		<layout align="top" height="20" margins="{left = 40}">
+			<label align="left" width="180" text="UPGRADES DE INVERNO" fontStyle="bold" fontColor="#cdcdcd" fontFamily="Palatino Linotype" fontSize="14" />
+			<edit class="GEdit" width="470" field = "fldUpgradesInv" align="left" fontColor="#858585" />
+		</layout>
+		
+	</rectangle>
+</form>
