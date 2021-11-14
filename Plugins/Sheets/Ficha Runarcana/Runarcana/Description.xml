@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmTemplateDescription" align="client">
+	<template name="Descricao">
+		<layout align="left" width="$(width)" margins="{right=10}">
+			<label align="left" width="90" text="$(text)" horzTextAlign="center"/>
+			<edit align="client" field="$(field)" vertTextAlign="center" />
+		</layout>
+	</template>
+	<scrollBox align="client">
+		
+		<rectangle left="0" top="0" width="1205" height="105" color="black">
+			<label align="top" height="20" text="DESCRIÇÃO"/>
+
+			<layout align="top" height="25">
+				<Descricao width="380" text="PASSADO" field="passado"/>
+				<Descricao width="380" text="IDADE" field="idade"/>
+				<Descricao width="380" text="OLHOS" field="aparenciaOlhos"/>
+			</layout>
+
+			<layout align="top" height="25">
+				<Descricao width="380" text="ALTURA" field="altura"/>
+				<Descricao width="380" text="GÊNERO" field="genero"/>
+				<Descricao width="380" text="PELE" field="pele"/>
+			</layout>
+
+			<layout align="top" height="25">
+				<Descricao width="380" text="PESO" field="peso"/>
+				<Descricao width="380" text="OUTROS" field="aparenciaOutros"/>
+				<Descricao width="380" text="CABELO" field="cabelo"/>
+			</layout>
+		</rectangle>
+		
+		<layout left="0" top="110" width="375" height="240">
+			<rectangle align="client" color="black"/>
+			<label left="5" top="1" width="100" height="20" text="APARÊNCIA"/>
+			<textEditor left="5" top="25" width="365" height="210" field="aparencia"/>
+		</layout>
+		<layout left="0" top="355" width="375" height="250">
+			<rectangle align="client" color="black"/>
+			<label left="5" top="1" width="100" height="20" text="PERSONALIDADE"/>
+			<textEditor left="5" top="25" width="365" height="220" field="personalidade"/>
+		</layout>
+		<layout left="380" top="110" width="825" height="495">
+			<rectangle align="client" color="black"/>
+			<label left="5" top="1" width="100" height="20" text="HISTORIA"/>
+			<richEdit left="5" top="25" width="815" height="465" field="background" backgroundColor="#333333" defaultFontSize="12" defaultFontColor="white"/>
+		</layout>
+	</scrollBox>
+</form>

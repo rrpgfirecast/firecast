@@ -1,0 +1,246 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmPrincipal" align="client">
+	<template name="Atributo">
+		<layout align="top" height="25">
+			<label align="left" width="40" text="$(text)" horzTextAlign="center"/>
+			<edit align="left" width="30" field="$(field)_total" vertTextAlign="center"/>
+			<rectangle align="left" width="30" color="black" strokeColor="white" strokeSize="1">
+				<label align="client" field="$(field)_mod" horzTextAlign="center" vertTextAlign="center"/>
+			</rectangle>
+		</layout>
+		<dataLink field="$(field)_total">
+			<event name="onChange">
+				if sheet==nil then return end;
+				sheet.$(field)_mod = math.floor((tonumber(sheet.$(field)_total) or 0)/2) - 5;
+
+				local nodes = NDB.getChildNodes(sheet.listaDePericias);
+				for i=1, #nodes, 1 do
+					nodes[i].$(field)_mod = sheet.$(field)_mod;
+				end;
+			</event>
+		</dataLink>
+	</template>
+
+	<template name="Salvaguarda">
+		<layout align="top" height="25">
+			<checkBox align="left" width="20" field="$(field)_svProf1" horzTextAlign="center"/>
+			<checkBox align="left" width="20" field="$(field)_svProf2" horzTextAlign="center"/>
+			<edit align="left" width="30" field="$(field)_svAdicional" vertTextAlign="center"/>
+			<rectangle align="left" width="30" color="black" strokeColor="white" strokeSize="1">
+				<label align="client" field="$(field)_svTotal" horzTextAlign="center" vertTextAlign="center"/>
+			</rectangle>
+		</layout>
+		<dataLink fields="{'$(field)_mod','proficiencia','$(field)_svProf1','$(field)_svProf2','$(field)_svAdicional'}">
+			<event name="onChange">
+				if sheet==nil then return end;
+				local prof = tonumber(sheet.proficiencia) or 0;
+				local total = (tonumber(sheet.$(field)_mod) or 0) + (tonumber(sheet.$(field)_svAdicional) or 0);
+				
+				if sheet.$(field)_svProf1 then total = total + prof end;
+				if sheet.$(field)_svProf2 then total = total + prof end;
+
+				sheet.$(field)_svTotal = total;
+			</event>
+		</dataLink>
+	</template>
+
+	<template name="LabelEdit">
+		<layout align="top" height="25">
+			<label align="left" text="$(text)" width="$(width)" horzTextAlign="center" fontSize="$(fontSize)"/>
+			<edit align="client" field="$(field)" vertTextAlign="center"/>
+		</layout>
+	</template>
+
+	<script>
+		function self:AddPericia(nome, key)
+			if sheet==nil then return end;
+			if self==nil then return end;
+			local rclItem = self.rclPericias:append();
+			if rclItem ~= nil then
+				rclItem.proficiencia = sheet.proficiencia;
+				rclItem.for_mod = sheet.for_mod;
+				rclItem.des_mod = sheet.des_mod;
+				rclItem.con_mod = sheet.con_mod;
+				rclItem.int_mod = sheet.int_mod;
+				rclItem.sab_mod = sheet.sab_mod;
+				rclItem.car_mod = sheet.car_mod;
+				rclItem.nome = nome;
+				rclItem.perKey = key;
+			end;
+		end;
+	</script>	
+
+	<scrollBox align="client">
+		<layout align="top" height="85" margins="{bottom=5}">
+			<rectangle align="left" width="1160" color="black" padding="{left=5,right=5,top=5,bottom=5}" margins="{right=5}">
+				<layout align="top" height="25">
+					<Descricao width="380" text="JOGADOR" field="jogador"/>
+					<Descricao width="380" text="PASSADO" field="passado"/>
+					<Descricao width="380" text="CLASSE" field="classe"/>
+				</layout>
+
+				<layout align="top" height="25">
+					<Descricao width="380" text="PERSONAGEM" field="personagem"/>
+					<Descricao width="380" text="ALINHAMENTO" field="alinhamento"/>
+					<Descricao width="380" text="NÍVEL" field="nivel"/>
+				</layout>
+
+				<layout align="top" height="25">
+					<Descricao width="380" text="ORIGEM" field="origem"/>
+					<Descricao width="380" text="REGIÃO" field="região"/>
+					<Descricao width="380" text="EXPERIÊNCIA" field="experiência"/>
+				</layout>
+			</rectangle>
+		</layout>
+
+		<layout align="top" height="185" margins="{bottom=5}">
+			<rectangle align="left" width="110" color="black" padding="{left=5,right=5,top=5,bottom=5}" margins="{right=5}">
+				<label align="top" height="25" text="Atributos" horzTextAlign="center"/>
+				<Atributo text="FOR" field="for"/>
+				<Atributo text="DES" field="des"/>
+				<Atributo text="CON" field="con"/>
+				<Atributo text="INT" field="int"/>
+				<Atributo text="SAB" field="sab"/>
+				<Atributo text="CAR" field="car"/>
+			</rectangle>
+
+			<rectangle align="left" width="110" color="black" padding="{left=5,right=5,top=5,bottom=5}" margins="{right=5}">
+				<label align="top" height="25" text="Salvaguarda" horzTextAlign="center"/>
+				<Salvaguarda text="FOR" field="for"/>
+				<Salvaguarda text="DES" field="des"/>
+				<Salvaguarda text="CON" field="con"/>
+				<Salvaguarda text="INT" field="int"/>
+				<Salvaguarda text="SAB" field="sab"/>
+				<Salvaguarda text="CAR" field="car"/>
+			</rectangle>
+
+			<rectangle align="left" width="160" color="black" padding="{left=5,right=5,top=5,bottom=5}" margins="{right=5}">
+				<label align="top" height="25" text="Salvaguarda Contra a Morte" horzTextAlign="center" fontSize="11"/>
+				<layout align="top" height="25">
+					<label align="left" text="Sucessos" width="70" horzTextAlign="center"/>
+					<checkBox align="left" width="20" field="svMorte_sucesso1" horzTextAlign="center"/>
+					<checkBox align="left" width="20" field="svMorte_sucesso2" horzTextAlign="center"/>
+					<checkBox align="left" width="20" field="svMorte_sucesso3" horzTextAlign="center"/>
+				</layout>
+				<layout align="top" height="25">
+					<label align="left" text="Falhas" width="70" horzTextAlign="center"/>
+					<checkBox align="left" width="20" field="svMorte_falha1" horzTextAlign="center"/>
+					<checkBox align="left" width="20" field="svMorte_falha2" horzTextAlign="center"/>
+					<checkBox align="left" width="20" field="svMorte_falha3" horzTextAlign="center"/>
+				</layout>
+				<label align="top" height="25" text="" horzTextAlign="center"/>
+				<label align="top" height="25" text="Níveis de Exaustão" horzTextAlign="center" fontSize="11"/>
+				<layout align="top" height="25">
+					<label align="left" text="" width="15" horzTextAlign="center"/>
+					<checkBox align="left" width="20" field="exaustao1" horzTextAlign="center"/>
+					<checkBox align="left" width="20" field="exaustao2" horzTextAlign="center"/>
+					<checkBox align="left" width="20" field="exaustao3" horzTextAlign="center"/>
+					<checkBox align="left" width="20" field="exaustao4" horzTextAlign="center"/>
+					<checkBox align="left" width="20" field="exaustao5" horzTextAlign="center"/>
+					<checkBox align="left" width="20" field="exaustao6" horzTextAlign="center"/>
+				</layout>
+			</rectangle>
+
+			<rectangle align="left" width="160" color="black" padding="{left=5,right=5,top=5,bottom=5}" margins="{right=5}">
+				<LabelEdit text="Proficiência" field="proficiencia" fontSize="13" width="100"/>
+				<LabelEdit text="Inspiração" field="inspiracao" fontSize="13" width="100"/>
+				<LabelEdit text="Classe de Armadura" field="ca_total" fontSize="10" width="100"/>
+				<LabelEdit text="Escudo" field="ca_escudo" fontSize="13" width="100"/>
+				<LabelEdit text="Redução Escudo" field="ca_reducao" fontSize="12" width="100"/>
+				<LabelEdit text="Iniciativa" field="iniciativa" fontSize="13" width="100"/>
+				<LabelEdit text="Deslocamento" field="deslocamento" fontSize="13" width="100"/>
+
+				<dataLink field="proficiencia">
+					<event name="onChange">
+						if sheet==nil then return end;
+						local nodes = NDB.getChildNodes(sheet.listaDePericias);
+						for i=1, #nodes, 1 do
+							nodes[i].proficiencia = sheet.proficiencia;
+						end;
+					</event>
+				</dataLink>
+			</rectangle>
+
+			<rectangle align="left" width="160" color="black" padding="{left=5,right=5,top=5,bottom=5}" margins="{right=5}">
+				<LabelEdit text="Percepção Passiva" field="percepcao" fontSize="11" width="100"/>
+				<LabelEdit text="Intuição Passiva" field="intuicao" fontSize="13" width="100"/>
+				<LabelEdit text="Mana" field="mana" fontSize="13" width="100"/>
+				<LabelEdit text="Energia" field="energia" fontSize="13" width="100"/>
+				<LabelEdit text="Ki" field="ki" fontSize="13" width="100"/>
+				<LabelEdit text="Pontos de Vida" field="pvs" fontSize="13" width="100"/>
+				<LabelEdit text="Dados de Vida" field="dvs" fontSize="13" width="100"/>
+			</rectangle>
+
+			<rectangle align="left" width="140" color="black" padding="{left=5,right=5,top=5,bottom=5}" margins="{right=5}">
+				<label align="top" height="25" text="Proficiências" horzTextAlign="center" fontSize="11"/>
+				<textEditor align="client" field="proficiencias_list"/>
+			</rectangle>
+
+			<rectangle align="left" width="140" color="black" padding="{left=5,right=5,top=5,bottom=5}" margins="{right=5}">
+				<label align="top" height="25" text="Heranças e Aprimoramento" horzTextAlign="center" fontSize="10"/>
+				<textEditor align="client" field="herancas_list"/>
+			</rectangle>
+
+			<rectangle align="left" width="140" color="black" padding="{left=5,right=5,top=5,bottom=5}" margins="{right=5}">
+				<label align="top" height="25" text="Idiomas e Oficios" horzTextAlign="center" fontSize="10"/>
+				<textEditor align="client" field="idiomas_list"/>
+			</rectangle>
+		</layout>
+
+		<layout align="top" height="360" margins="{bottom=5}">
+			<rectangle align="left" width="300" color="black" padding="{left=5,right=5,top=5,bottom=5}" margins="{right=5}">
+				<layout align="top" height="25">
+					<button align="left" width="25" text="+" onClick="self:AddPericia(&quot;&quot;,&quot;7&quot;);"/>
+					<label align="client" text="Perícias" horzTextAlign="center"/>
+				</layout>
+				
+				<recordList align="client" name="rclPericias" field="listaDePericias" templateForm="frmPericiaForm" layout="vertical">
+					<event name="onEndEnumeration">
+						if sheet==nil then return end;
+						local nodes = NDB.getChildNodes(sheet.listaDePericias);  
+						if #nodes == 0 then
+							-- Add default skills
+							self:AddPericia("Acrobacia","2");
+							self:AddPericia("Arcanismo","4");
+							self:AddPericia("Atletismo","1");
+							self:AddPericia("Atuação","6");
+							self:AddPericia("Enganação","6");
+							self:AddPericia("Furtividade","2");
+							self:AddPericia("Historia","4");
+							self:AddPericia("Intimidação","6");
+							self:AddPericia("Intuição","5");
+							self:AddPericia("Investigação","4");
+							self:AddPericia("Lidar com Animais","5");
+							self:AddPericia("Medicina","5");
+							self:AddPericia("Natureza","4");
+							self:AddPericia("Percepção","5");
+							self:AddPericia("Persuasão","6");
+							self:AddPericia("Prestidigitação","2");
+							self:AddPericia("Religião","4");
+							self:AddPericia("Sobrevivência","5");
+							self:AddPericia("Tecnologia","4");
+						end;
+					</event>
+					<event name="onCompare">
+						return Utils.compareStringPtBr(nodeA.nome, nodeB.nome);
+			        </event>
+				</recordList>
+			</rectangle>
+
+			<rectangle align="left" width="360" color="black" padding="{left=5,right=5,top=5,bottom=5}" margins="{right=5}">
+				<label align="client" text="Avatar" horzTextAlign="center" vertTextAlign="center">
+					<image align="client" field="avatar" editable="true" style="autoFit">
+						<event name="OnStartDrag">
+						    drag:addData("imageURL", sheet.avatar);
+						</event>
+					</image>
+				</label>
+			</rectangle>
+
+			<rectangle align="left" width="300" color="black" padding="{left=5,right=5,top=5,bottom=5}" margins="{right=5}">
+				<label align="top" height="25" text="Caracteristicas de Personagem" horzTextAlign="center" fontSize="11"/>
+				<textEditor align="client" field="caracteristicas"/>
+			</rectangle>
+		</layout>
+	</scrollBox>
+</form>

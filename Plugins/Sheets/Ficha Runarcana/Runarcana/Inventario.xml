@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmInventario" align="client">
+	<scrollBox align="client">
+		<layout align="top" height="25" margins="{bottom=5}">
+			<VertLabelEdit width="80" text="PC" field="inv_pc"/>
+			<VertLabelEdit width="80" text="PP" field="inv_pp"/>
+			<VertLabelEdit width="80" text="PE" field="inv_pe"/>
+			<VertLabelEdit width="80" text="PO" field="inv_po"/>
+			<VertLabelEdit width="80" text="PL" field="inv_pl"/>
+		</layout>
+
+		<layout align="client">
+			<layout align="left" width="300" margins="{right=10}">
+				<rectangle align="client" color="black" xradius="5" yradius="15" cornerType="round">
+		        	<label align="top" height="20" text="Pertences" horzTextAlign="center"/>
+					<textEditor align="client" field="inv_pertences" margins="{left=10,right=10,bottom=10}"/>
+				</rectangle>
+	        </layout>
+			
+			<layout align="left" width="300" margins="{right=10}">
+				<rectangle align="client" color="black" xradius="5" yradius="15" cornerType="round">
+		        	<label align="top" height="20" text="Equipamentos" horzTextAlign="center"/>
+					<textEditor align="client" field="inv_equipamentos" margins="{left=10,right=10,bottom=10}"/>
+				</rectangle>
+	        </layout>
+			
+			<layout align="left" width="300" margins="{right=10}">
+				<rectangle align="client" color="black" xradius="5" yradius="15" cornerType="round">
+		        	<label align="top" height="20" text="Mochila" horzTextAlign="center"/>
+					<textEditor align="client" field="inv_mochila" margins="{left=10,right=10,bottom=10}"/>
+				</rectangle>
+	        </layout>
+			
+			<layout align="left" width="300" margins="{right=10}">
+				<rectangle align="client" color="black" xradius="5" yradius="15" cornerType="round">
+		        	<label align="top" height="20" text="Outros" horzTextAlign="center"/>
+					<textEditor align="client" field="inv_outros" margins="{left=10,right=10,bottom=10}"/>
+				</rectangle>
+	        </layout>
+		</layout>
+	</scrollBox>
+</form>

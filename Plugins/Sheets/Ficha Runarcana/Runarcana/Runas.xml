@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmRunas" align="client">
+	<template name="VertLabelEdit">
+		<layout align="left" width="$(width)" margins="{right=10}">
+			<label align="left" width="50" text="$(text)" horzTextAlign="center"/>
+			<edit align="client" field="$(field)" vertTextAlign="center" />
+		</layout>
+	</template>
+
+	<scrollBox align="client">
+		<layout align="top" height="25" margins="{bottom=5}">
+			<Descricao width="190" text="Pulso Rúnico" field="runas_pulso"/>
+			<VertLabelEdit width="80" text="CD" field="runas_cd"/>
+			<VertLabelEdit width="80" text="Acerto" field="runas_acerto"/>
+		</layout>
+
+		<layout align="client">
+			<layout align="left" width="300" margins="{right=10}">
+				<rectangle align="client" color="black" xradius="5" yradius="15" cornerType="round">
+		        	<label align="top" height="20" text="Fagulha Rúnica" horzTextAlign="center"/>
+					<textEditor align="client" field="runas_fagulha" margins="{left=10,right=10,bottom=10}"/>
+				</rectangle>
+	        </layout>
+			
+			<layout align="left" width="300" margins="{right=10}">
+				<rectangle align="client" color="black" xradius="5" yradius="15" cornerType="round">
+		        	<label align="top" height="20" text="Vórtice Rúnico" horzTextAlign="center"/>
+					<textEditor align="client" field="runas_vortice" margins="{left=10,right=10,bottom=10}"/>
+				</rectangle>
+	        </layout>
+			
+			<layout align="left" width="300" margins="{right=10}">
+				<rectangle align="client" color="black" xradius="5" yradius="15" cornerType="round">
+		        	<label align="top" height="20" text="Fluxo Rúnico" horzTextAlign="center"/>
+					<textEditor align="client" field="runas_fluxo" margins="{left=10,right=10,bottom=10}"/>
+				</rectangle>
+	        </layout>
+			
+			<layout align="left" width="300" margins="{right=10}">
+				<rectangle align="client" color="black" xradius="5" yradius="15" cornerType="round">
+		        	<label align="top" height="20" text="Explosão Rúnica" horzTextAlign="center"/>
+					<textEditor align="client" field="runas_explosao" margins="{left=10,right=10,bottom=10}"/>
+				</rectangle>
+	        </layout>
+		</layout>
+	</scrollBox>
+</form>

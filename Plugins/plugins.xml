@@ -89,6 +89,11 @@
             <dataType id="br.com.rrpg.DnD5_S3" title="D&amp;D 5e"/>
         </dataTypes>
     </element>
+    <element id="Ambesek.Runarcana" name="Ficha Runarcana" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20Runarcana/output/Ficha%20Runarcana.rpk?raw=true" fileName="Ficha Runarcana.rpk" repositoryPath="Sheets/Ficha Runarcana/" author="Ambesek" description="Ficha para o sistema Runarcana, usando no cenario de League of Legends." version="1.0" compilationDate="1" compilationDigest="6500ca194b5a87b9be413d12f9b2a0f1bf6b317c">
+        <dataTypes>
+            <dataType id="Ambesek.Ficha.Runarcana" title="Ficha Runarcana"/>
+        </dataTypes>
+    </element>
     <element id="FichaSW5e" name="Ficha Star Wars 5e" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20Star%20Wars%205e/output/Ficha%20Star%20Wars%205e.rpk?raw=true" fileName="Ficha Star Wars 5e.rpk" repositoryPath="Sheets/Ficha Star Wars 5e/" author="Ambesek" description="Ficha feita para o sistema Star Wars 5e" version="0.1" compilationDate="26112019235928" compilationDigest="6500ca194b5a87b9be413d12f9b2a0f1bf6b317c">
         <dataTypes>
             <dataType id="Ambesek.FichaSW5e" title="Ficha Star Wars 5e"/>
