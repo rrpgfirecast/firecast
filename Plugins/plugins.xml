@@ -395,7 +395,7 @@
             <dataType id="Ambesek.Auto.Updater" title="Plugin Auto Updater"/>
         </dataTypes>
     </element>
-    <element id="Ambesek.Ferramentas.d20" name="Ferramentas RPGmeister" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/TablesDock/Ferramentas%20d20/output/Ferramentas%20d20.rpk?raw=true" fileName="Ferramentas d20.rpk" repositoryPath="TablesDock/Ferramentas d20/" author="Ambesek" description="Varias ferramentas para narradores de d20 system." version="0.4" compilationDate="27112019000334" compilationDigest="b49ad3dce901ca70386fbdee8274c5f377a85b95">
+    <element id="Ambesek.Ferramentas.d20" name="Ferramentas RPGmeister" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/TablesDock/Ferramentas%20d20/output/Ferramentas%20d20.rpk?raw=true" fileName="Ferramentas d20.rpk" repositoryPath="TablesDock/Ferramentas d20/" author="Ambesek" description="Varias ferramentas para narradores de d20 system." version="0.5" compilationDate="27112019000334" compilationDigest="b49ad3dce901ca70386fbdee8274c5f377a85b95">
         <dataTypes>
             <dataType id="Ambesek.Ferramentas.d20" title="Ferramentas RPGmeister"/>
         </dataTypes>

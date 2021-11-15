@@ -3,17 +3,7 @@
 	<script>
 		<![CDATA[
 		local magicListData = NDB.load("magicListData.xml");
-
-		-- lists
-		local schools = {"Abjuration","Conjuration","Calling","Creation","Healing","Summoning","Teleportation","Divination","Scrying","Enchantment","Charm","Compulsion","Evocation","Illusion","Figment","Glamer","Pattern","Phantasm","Shadow","Necromancy","Transmutation","Polymorph","Universal"};
-		local tags = {"Acid","Air","Chaotic","Cold","Darkness","Death","Earth","Electricity","Evil","Fear","Fire","Force","Good","Language-Dependent","Lawful","Light","Mind-Affecting","Sonic","Water"};
-		local components = {"V", "S", "M", "F", "DF", "XP"}
-		local ranges = {"3m", "6m", "9m", "12m", "15m", "18m", "Close", "Medium", "Long", "Personal", "Touch", "Special","Adjacent"};
-		local durations = {"Concentration", "Dismissible", "Instantaneous", "Rounds", "Minutes", "Hours", "Days", "Permanent", "Special"};
-		local targets = {"Area","Effect","Target","Burst","Cone","Cylinder","Emanation","Line","Ray","Sphere","Spread","Shapeable", "Special"};
-		local trs = {"Fortitude","Reflex","Will","None","Special"};
-		local srs = {"Yes", "No"};
-		local books = {"PHB","ELH","CAd","CAr","CD","CC","CM","CS","CW"};
+		local magicListDataPath = NDB.load("magicListDataPath.xml");
 
 		-- DEBUG FUNCTIONS
 
@@ -334,13 +324,23 @@
 			<tab title="XP">
 				<import file="XP.xml"/>
 			</tab>
-			<tab title="Magias">
+			<tab title="Magias D&amp;D3.5">
 				<tabControl align="client">
 					<tab title="Filtro">
 						<import file="SpellsFilter.xml"/>
 					</tab>
 					<tab title="Lista" name="spellListTab">
 						<import file="SpellsList.xml"/>
+					</tab>
+				</tabControl>
+			</tab>
+			<tab title="Magias Pathfinder">
+				<tabControl align="client">
+					<tab title="Filtro">
+						<import file="SpellsFilterPath.xml"/>
+					</tab>
+					<tab title="Lista" name="spellListTabPath">
+						<import file="SpellsListPath.xml"/>
 					</tab>
 				</tabControl>
 			</tab>
@@ -377,13 +377,13 @@
 
 		self.scope:setNodeObject(toolSheet);
 
-		--local json = VHD.openFile("spells.json");
+		--local json = VHD.openFile("spellsPathfinder.json");
 		--local file = {};
 		--json:read(file, json.remainingBytes);
 		--local str = Utils.binaryDecode(file, "utf8");
 
-		--local magicListData2 = NDB.load("magicListData2.xml");
-		--magicListData2.db = decode(str);
+		--local magicListDataPath = NDB.load("magicListDataPath.xml");
+		--magicListDataPath.db = decode(str);
 
 		--local spells = NDB.getChildNodes(toolSheet.spellList); 
 	</event>

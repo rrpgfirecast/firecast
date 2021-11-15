@@ -45,7 +45,7 @@ local function constructNew_frmSpellItem()
 
     obj.spellName = GUI.fromHandle(_obj_newObject("label"));
     obj.spellName:setParent(obj.layout1);
-    obj.spellName:setAlign("left");
+    obj.spellName:setAlign("client");
     obj.spellName:setWidth(375);
     obj.spellName:setField("name");
     obj.spellName:setName("spellName");
@@ -101,7 +101,7 @@ local function constructNew_frmSpellItem()
 
     obj.descriptor = GUI.fromHandle(_obj_newObject("label"));
     obj.descriptor:setParent(obj.layout3);
-    obj.descriptor:setAlign("left");
+    obj.descriptor:setAlign("client");
     obj.descriptor:setWidth(375);
     obj.descriptor:setField("descriptor");
     obj.descriptor:setName("descriptor");
@@ -116,7 +116,7 @@ local function constructNew_frmSpellItem()
 
     obj.level = GUI.fromHandle(_obj_newObject("label"));
     obj.level:setParent(obj.layout4);
-    obj.level:setAlign("left");
+    obj.level:setAlign("client");
     obj.level:setWidth(375);
     obj.level:setField("level");
     obj.level:setName("level");
@@ -131,7 +131,7 @@ local function constructNew_frmSpellItem()
 
     obj.components = GUI.fromHandle(_obj_newObject("label"));
     obj.components:setParent(obj.layout5);
-    obj.components:setAlign("left");
+    obj.components:setAlign("client");
     obj.components:setWidth(375);
     obj.components:setField("components");
     obj.components:setName("components");
@@ -161,6 +161,24 @@ local function constructNew_frmSpellItem()
     obj.aiming:setName("aiming");
     obj.aiming:setHorzTextAlign("center");
     obj.aiming:setHitTest(true);
+
+    obj.paizo = GUI.fromHandle(_obj_newObject("label"));
+    obj.paizo:setParent(obj.layout6);
+    obj.paizo:setAlign("left");
+    obj.paizo:setWidth(187);
+    obj.paizo:setField("paizo");
+    obj.paizo:setName("paizo");
+    obj.paizo:setHorzTextAlign("center");
+    obj.paizo:setHitTest(true);
+
+    obj.mythic = GUI.fromHandle(_obj_newObject("label"));
+    obj.mythic:setParent(obj.layout6);
+    obj.mythic:setAlign("left");
+    obj.mythic:setWidth(187);
+    obj.mythic:setField("mythic");
+    obj.mythic:setName("mythic");
+    obj.mythic:setHorzTextAlign("center");
+    obj.mythic:setHitTest(true);
 
     obj.layout7 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout7:setParent(obj.rectangle1);
@@ -203,7 +221,7 @@ local function constructNew_frmSpellItem()
 
     obj.book = GUI.fromHandle(_obj_newObject("label"));
     obj.book:setParent(obj.layout8);
-    obj.book:setAlign("left");
+    obj.book:setAlign("client");
     obj.book:setWidth(375);
     obj.book:setField("book");
     obj.book:setName("book");
@@ -456,6 +474,7 @@ local function constructNew_frmSpellItem()
         if self.dataLink7 ~= nil then self.dataLink7:destroy(); self.dataLink7 = nil; end;
         if self.dataLink13 ~= nil then self.dataLink13:destroy(); self.dataLink13 = nil; end;
         if self.dataLink10 ~= nil then self.dataLink10:destroy(); self.dataLink10 = nil; end;
+        if self.mythic ~= nil then self.mythic:destroy(); self.mythic = nil; end;
         if self.btDesc ~= nil then self.btDesc:destroy(); self.btDesc = nil; end;
         if self.components ~= nil then self.components:destroy(); self.components = nil; end;
         if self.layout3 ~= nil then self.layout3:destroy(); self.layout3 = nil; end;
@@ -464,6 +483,7 @@ local function constructNew_frmSpellItem()
         if self.layout8 ~= nil then self.layout8:destroy(); self.layout8 = nil; end;
         if self.dataLink6 ~= nil then self.dataLink6:destroy(); self.dataLink6 = nil; end;
         if self.layout1 ~= nil then self.layout1:destroy(); self.layout1 = nil; end;
+        if self.paizo ~= nil then self.paizo:destroy(); self.paizo = nil; end;
         if self.sr ~= nil then self.sr:destroy(); self.sr = nil; end;
         if self.rectangle1 ~= nil then self.rectangle1:destroy(); self.rectangle1 = nil; end;
         if self.layout2 ~= nil then self.layout2:destroy(); self.layout2 = nil; end;

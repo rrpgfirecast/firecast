@@ -2,6 +2,31 @@
 <form name="frmSpells" align="client">
 	<script>
         <![CDATA[
+			-- lists
+			local schools = {"Abjuration","Conjuration","Calling","Creation","Healing","Summoning","Teleportation","Divination","Scrying","Enchantment","Charm","Compulsion","Evocation","Illusion","Figment","Glamer","Pattern","Phantasm","Shadow","Necromancy","Transmutation","Polymorph","Universal"};
+			
+			local components = {"V", "S", "M", "F", "DF", "XP"}
+			
+			local ranges = {"3m", "6m", "9m", "12m", "15m", "18m", "Close", "Medium", "Long", "Personal", "Touch", "Special","Adjacent"};
+			local rangesAux = {"fixo3m", "fixo6m", "fixo9m", "fixo12m", "fixo15m", "fixo18m", "Close", "Medium", "Long", "Personal", "Touch", "Special","Adjacent"};
+			
+			local durations = {"Concentration", "Dismissible", "Instantaneous", "Rounds", "Minutes", "Hours", "Days", "Permanent", "Special"};
+			local durationsAux = {"Concentration", "Dismissible", "Instantaneous", "Rounds", "Minutes", "Hours", "Days", "Permanent", "SpecialDuration"};
+
+			local targets = {"Area","Effect","Target","Burst","Cone","Cylinder","Emanation","Line","Ray","Sphere","Spread","Shapeable", "Special"};
+			local targetsAux = {"Area","Effect","Target","Burst","Cone","Cylinder","Emanation","Line","Ray","Sphere","Spread","Shapeable", "SpecialTarget"};
+
+			local tags = {"Acid","Air","Chaotic","Cold","Darkness","Death","Earth","Electricity","Evil","Fear","Fire","Force","Good","Language-Dependent","Lawful","Light","Mind-Affecting","Sonic","Water"};
+
+			local trs = {"Fortitude","Reflex","Will","None","Special"};
+			local trsAux = {"fortitude","reflex","will","none","specialTR"};
+
+			local srs = {"Yes", "No"};
+			local books = {"PHB","ELH","CAd","CAr","CD","CC","CM","CS","CW"};
+			local levels = {"0","1","2","3","4","5","6","7","8","9"};
+			local jobs = {"bard","cleric","druid","paladin","ranger","sorcerer","wizard","adept","assassin","blackguard","shugenja","wu-jen","warmage","hexblade"};
+			local jobsAux = {"bard","cleric","druid","paladin","ranger","sorcerer","wizard","adept","assassin","blackguard","shugenja","wu_jen","warmage","hexblade"};
+
         	local function has_value (tab, val)
     			for k, v in pairs(tab) do
 			        if v == val then
@@ -26,23 +51,10 @@
 					ret = ret and spell.components==nil;
 				end;
 
-				if toolSheet.V then
-					ret = ret and array_contain(spell.components, components[1], #components);
-				end;
-				if toolSheet.S then
-					ret = ret and array_contain(spell.components, components[2], #components);
-				end;
-				if toolSheet.M then
-					ret = ret and array_contain(spell.components, components[3], #components);
-				end;
-				if toolSheet.F then
-					ret = ret and array_contain(spell.components, components[4], #components);
-				end;
-				if toolSheet.DF then
-					ret = ret and array_contain(spell.components, components[5], #components);
-				end;
-				if toolSheet.XP then
-					ret = ret and array_contain(spell.components, components[6], #components);
+				for i = 1, #components, 1 do
+					if toolSheet[components[i]] then
+						ret = ret and array_contain(spell.components, components[i], #components);
+					end;
 				end;
 
 				return ret;
@@ -52,23 +64,11 @@
 				if toolSheet.N and spell.components==nil then
 					return false;
 				end;
-				if toolSheet.V and array_contain(spell.components, components[1], #components) then
-					return false;
-				end;
-				if toolSheet.S and array_contain(spell.components, components[2], #components) then
-					return false;
-				end;
-				if toolSheet.M and array_contain(spell.components, components[3], #components) then
-					return false;
-				end;
-				if toolSheet.F and array_contain(spell.components, components[4], #components) then
-					return false;
-				end;
-				if toolSheet.DF and array_contain(spell.components, components[5], #components) then
-					return false;
-				end;
-				if toolSheet.XP and array_contain(spell.components, components[6], #components) then
-					return false;
+
+				for i = 1, #components, 1 do
+					if toolSheet[components[i]] and array_contain(spell.components, components[i], #components) then
+						return false;
+					end;
 				end;
 				return true;
 			end;
@@ -77,23 +77,11 @@
 				if toolSheet.N and spell.components==nil then
 					return true;
 				end;
-				if toolSheet.V and array_contain(spell.components, components[1], #components) then
-					return true;
-				end;
-				if toolSheet.S and array_contain(spell.components, components[2], #components) then
-					return true;
-				end;
-				if toolSheet.M and array_contain(spell.components, components[3], #components) then
-					return true;
-				end;
-				if toolSheet.F and array_contain(spell.components, components[4], #components) then
-					return true;
-				end;
-				if toolSheet.DF and array_contain(spell.components, components[5], #components) then
-					return true;
-				end;
-				if toolSheet.XP and array_contain(spell.components, components[6], #components) then
-					return true;
+
+				for i = 1, #components, 1 do
+					if toolSheet[components[i]] and array_contain(spell.components, components[i], #components) then
+						return true;
+					end;
 				end;
 				return false;
 			end;
@@ -114,169 +102,29 @@
 				elseif not toolSheet.None and spell.descriptor==nil then
 					return false;
 				end;
-				if toolSheet.Acid and array_contain(spell.descriptor, tags[1], #tags) then
-					return true;
-				end;
-				if toolSheet.Air and array_contain(spell.descriptor, tags[2], #tags) then
-					return true;
-				end;
-				if toolSheet.Chaotic and array_contain(spell.descriptor, tags[3], #tags) then
-					return true;
-				end;
-				if toolSheet.Cold and array_contain(spell.descriptor, tags[4], #tags) then
-					return true;
-				end;
-				if toolSheet.Darkness and array_contain(spell.descriptor, tags[5], #tags) then
-					return true;
-				end;
-				if toolSheet.Death and array_contain(spell.descriptor, tags[6], #tags) then
-					return true;
-				end;
-				if toolSheet.Earth and array_contain(spell.descriptor, tags[7], #tags) then
-					return true;
-				end;
-				if toolSheet.Electricity and array_contain(spell.descriptor, tags[8], #tags) then
-					return true;
-				end;
-				if toolSheet.Evil and array_contain(spell.descriptor, tags[9], #tags) then
-					return true;
-				end;
-				if toolSheet.Fear and array_contain(spell.descriptor, tags[10], #tags) then
-					return true;
-				end;
-				if toolSheet.Fire and array_contain(spell.descriptor, tags[11], #tags) then
-					return true;
-				end;
-				if toolSheet.Force and array_contain(spell.descriptor, tags[12], #tags) then
-					return true;
-				end;
-				if toolSheet.Good and array_contain(spell.descriptor, tags[13], #tags) then
-					return true;
-				end;
-				if toolSheet.Language_Dependent and array_contain(spell.descriptor, tags[14], #tags) then
-					return true;
-				end;
-				if toolSheet.Lawful and array_contain(spell.descriptor, tags[15], #tags) then
-					return true;
-				end;
-				if toolSheet.Light and array_contain(spell.descriptor, tags[16], #tags) then
-					return true;
-				end;
-				if toolSheet.Mind_Affecting and array_contain(spell.descriptor, tags[17], #tags) then
-					return true;
-				end;
-				if toolSheet.Sonic and array_contain(spell.descriptor, tags[18], #tags) then
-					return true;
-				end;
-				if toolSheet.Water and array_contain(spell.descriptor, tags[19], #tags) then
-					return true;
+
+				for i = 1, #tags, 1 do
+					if toolSheet[tags[i]] and array_contain(spell.descriptor, tags[i], #tags) then
+						return true;
+					end;
 				end;
 				return false;
 			end;
 
 			local function filterLevel(spell)
-				if toolSheet.lvl0 and has_value(spell.level, "0") then
-					return true;
-				end;
-				if toolSheet.lvl1 and has_value(spell.level, "1") then
-					return true;
-				end;
-				if toolSheet.lvl2 and has_value(spell.level, "2") then
-					return true;
-				end;
-				if toolSheet.lvl3 and has_value(spell.level, "3") then
-					return true;
-				end;
-				if toolSheet.lvl4 and has_value(spell.level, "4") then
-					return true;
-				end;
-				if toolSheet.lvl5 and has_value(spell.level, "5") then
-					return true;
-				end;
-				if toolSheet.lvl6 and has_value(spell.level, "6") then
-					return true;
-				end;
-				if toolSheet.lvl7 and has_value(spell.level, "7") then
-					return true;
-				end;
-				if toolSheet.lvl8 and has_value(spell.level, "8") then
-					return true;
-				end;
-				if toolSheet.lvl9 and has_value(spell.level, "9") then
-					return true;
+				for i = 1, #levels, 1 do
+					if toolSheet["lvl" .. levels[i]] and has_value(spell.level, levels[i]) then
+						return true;
+					end;
 				end;
 				return false;
 			end;
 
 			local function filterSchool(spell)
-				if self.scope.node.Abjuration and spell.school == schools[1] then
-					return true;
-				end;
-				if self.scope.node.Conjuration and spell.school == schools[2] then
-					return true;
-				end;
-				if self.scope.node.Calling and spell.subschool == schools[3] then
-					return true;
-				end;
-				if self.scope.node.Creation and spell.subschool == schools[4] then
-					return true;
-				end;
-				if self.scope.node.Healing and spell.subschool == schools[5] then
-					return true;
-				end;
-				if self.scope.node.Summoning and spell.subschool == schools[6] then
-					return true;
-				end;
-				if self.scope.node.Teleportation and spell.subschool == schools[7] then
-					return true;
-				end;
-				if self.scope.node.Divination and spell.school == schools[8] then
-					return true;
-				end;
-				if self.scope.node.Scrying and spell.subschool == schools[9] then
-					return true;
-				end;
-				if self.scope.node.Enchantment and spell.school == schools[10] then
-					return true;
-				end;
-				if self.scope.node.Charm and spell.subschool == schools[11] then
-					return true;
-				end;
-				if self.scope.node.Compulsion and spell.subschool == schools[12] then
-					return true;
-				end;
-				if self.scope.node.Evocation and spell.school == schools[13] then
-					return true;
-				end;
-				if self.scope.node.Illusion and spell.school == schools[14] then
-					return true;
-				end;
-				if self.scope.node.Figment and spell.subschool == schools[15] then
-					return true;
-				end;
-				if self.scope.node.Glamer and spell.subschool == schools[16] then
-					return true;
-				end;
-				if self.scope.node.Pattern and spell.subschool == schools[17] then
-					return true;
-				end;
-				if self.scope.node.Phantasm and spell.subschool == schools[18] then
-					return true;
-				end;
-				if self.scope.node.Shadow and spell.subschool == schools[19] then
-					return true;
-				end;
-				if self.scope.node.Necromancy and spell.school == schools[20] then
-					return true;
-				end;
-				if self.scope.node.Transmutation and spell.school == schools[21] then
-					return true;
-				end;
-				if self.scope.node.Polymorph and spell.subschool == schools[22] then
-					return true;
-				end;
-				if self.scope.node.Universal and spell.school == schools[23] then
-					return true;
+				for i = 1, #schools, 1 do
+					if toolSheet[schools[i]] and (spell.school == schools[i] or spell.subschool == schools[i]) then
+						return true;
+					end;
 				end;
 
 				return false;
@@ -284,47 +132,11 @@
 
 			local function filterClassAnd(spell)
 				local ret = true;
-				if toolSheet.bard then
-					ret = ret and spell.level.bard ~= nil;
-				end;
-				if toolSheet.cleric then
-					ret = ret and spell.level.cleric ~= nil;
-				end;
-				if toolSheet.druid then
-					ret = ret and spell.level.druid ~= nil;
-				end;
-				if toolSheet.paladin then
-					ret = ret and spell.level.paladin ~= nil;
-				end;
-				if toolSheet.ranger then
-					ret = ret and spell.level.ranger ~= nil;
-				end;
-				if toolSheet.sorcerer then
-					ret = ret and spell.level.sorcerer ~= nil;
-				end;
-				if toolSheet.wizard then
-					ret = ret and spell.level.wizard ~= nil;
-				end;
-				if toolSheet.adept then
-					ret = ret and spell.level.adept ~= nil;
-				end;
-				if toolSheet.assassin then
-					ret = ret and spell.level.assassin ~= nil;
-				end;
-				if toolSheet.blackguard then
-					ret = ret and spell.level.blackguard ~= nil;
-				end;
-				if toolSheet.shugenja ~= nil then
-					ret = ret  and spell.level.shugenja ~= nil;
-				end;
-				if toolSheet.wu_jen ~= nil then
-					ret = ret  and spell.level["wu-jen"] ~= nil;
-				end;
-				if toolSheet.warmage ~= nil then
-					ret = ret  and spell.level.warmage ~= nil;
-				end;
-				if toolSheet.hexblade ~= nil then
-					ret = ret  and spell.level.hexblade ~= nil;
+
+				for i = 1, #jobs, 1 do
+					if toolSheet[jobsAux[i]] then
+						ret = ret and spell.level[jobs[i]] ~= nil;
+					end;
 				end;
 				if toolSheet.domain then
 					ret = ret and (spell.level.air~=nil or spell.level.animal~=nil or spell.level.chaos~=nil or spell.level.death~=nil or spell.level.destruction~=nil or spell.level.earth~=nil or spell.level.evil~=nil or spell.level.fire~=nil or spell.level.good~=nil or spell.level.healing~=nil or spell.level.knowledge~=nil or spell.level.law~=nil or spell.level.luck~=nil or spell.level.magic~=nil or spell.level.plant~=nil or spell.level.protection~=nil or spell.level.strength~=nil or spell.level.sun~=nil or spell.level.travel~=nil or spell.level.trickery~=nil or spell.level.war~=nil or spell.level.water~=nil or spell.level.liberation ~= nil or spell.level.cold ~= nil or spell.level.creation ~= nil or spell.level.dream ~= nil or spell.level.mind ~= nil or spell.level.madness ~= nil or spell.level.domination ~= nil or spell.level.force ~= nil or spell.level.glory ~= nil or spell.level.purification ~= nil or spell.level.pact ~= nil or spell.level.pestilence ~= nil or spell.level.celerity ~= nil or spell.level.weather ~= nil or spell.level.courage ~= nil);
@@ -333,47 +145,10 @@
 			end;
 
 			local function filterClassOr(spell)
-				if toolSheet.bard and spell.level.bard ~= nil then
-					return true;
-				end;
-				if toolSheet.cleric and spell.level.cleric ~= nil then
-					return true;
-				end;
-				if toolSheet.druid and spell.level.druid ~= nil then
-					return true;
-				end;
-				if toolSheet.paladin and spell.level.paladin ~= nil then
-					return true;
-				end;
-				if toolSheet.ranger and spell.level.ranger ~= nil then
-					return true;
-				end;
-				if toolSheet.sorcerer and spell.level.sorcerer ~= nil then
-					return true;
-				end;
-				if toolSheet.wizard and spell.level.wizard ~= nil then
-					return true;
-				end;
-				if toolSheet.adept and spell.level.adept ~= nil then
-					return true;
-				end;
-				if toolSheet.assassin and spell.level.assassin ~= nil then
-					return true;
-				end;
-				if toolSheet.blackguard and spell.level.blackguard ~= nil then
-					return true;
-				end;
-				if toolSheet.shugenja and spell.level.shugenja ~= nil then
-					return true;
-				end;
-				if toolSheet.wu_jen and spell.level["wu-jen"] ~= nil then
-					return true;
-				end;
-				if toolSheet.warmage and spell.level.warmage ~= nil then
-					return true;
-				end;
-				if toolSheet.hexblade and spell.level.hexblade ~= nil then
-					return true;
+				for i = 1, #jobs, 1 do
+					if toolSheet[jobsAux[i]] and spell.level[jobs[i]]~=nil then
+						return true;
+					end;
 				end;
 				if toolSheet.domain then
 					return (spell.level.air~=nil or spell.level.animal~=nil or spell.level.chaos~=nil or spell.level.death~=nil or spell.level.destruction~=nil or spell.level.earth~=nil or spell.level.evil~=nil or spell.level.fire~=nil or spell.level.good~=nil or spell.level.healing~=nil or spell.level.knowledge~=nil or spell.level.law~=nil or spell.level.luck~=nil or spell.level.magic~=nil or spell.level.plant~=nil or spell.level.protection~=nil or spell.level.strength~=nil or spell.level.sun~=nil or spell.level.travel~=nil or spell.level.trickery~=nil or spell.level.war~=nil or spell.level.water~=nil or spell.level.liberation ~= nil or spell.level.cold ~= nil or spell.level.creation ~= nil or spell.level.dream ~= nil or spell.level.mind ~= nil or spell.level.madness ~= nil or spell.level.domination ~= nil or spell.level.force ~= nil or spell.level.glory ~= nil or spell.level.purification ~= nil or spell.level.pact ~= nil or spell.level.pestilence ~= nil or spell.level.celerity ~= nil or spell.level.weather ~= nil or spell.level.courage ~= nil);
@@ -390,172 +165,48 @@
 			end;
 
 			local function filterRange(spell)
-				if toolSheet.fixo3m and spell.range == ranges[1] then
-					return true;
-				end;
-				if toolSheet.fixo6m and spell.range == ranges[2] then
-					return true;
-				end;
-				if toolSheet.fixo9m and spell.range == ranges[3] then
-					return true;
-				end;
-				if toolSheet.fixo12m and spell.range == ranges[4] then
-					return true;
-				end;
-				if toolSheet.fixo15m and spell.range == ranges[5] then
-					return true;
-				end;
-				if toolSheet.fixo18m and spell.range == ranges[6] then
-					return true;
-				end;
-				if toolSheet.Close and spell.range == ranges[7] then
-					return true;
-				end;
-				if toolSheet.Medium and spell.range == ranges[8] then
-					return true;
-				end;
-				if toolSheet.Long and spell.range == ranges[9] then
-					return true;
-				end;
-				if toolSheet.Personal and spell.range == ranges[10] then
-					return true;
-				end;
-				if toolSheet.Touch and spell.range == ranges[11] then
-					return true;
-				end;
-				if toolSheet.Special and spell.range == ranges[12] then
-					return true;
-				end;
-				if toolSheet.Adjacent and spell.range == ranges[13] then
-					return true;
+				for i = 1, #ranges, 1 do
+					if toolSheet[rangesAux[i]] and spell.range == ranges[i] then
+						return true;
+					end;
 				end;
 				return false;
 			end;
 
 			local function filterDuration(spell)
-				if toolSheet.Concentration and array_contain(spell.duration, durations[1], #durations) then
-					return true;
-				end;
-				if toolSheet.Dismissible and array_contain(spell.duration, durations[2], #durations) then
-					return true;
-				end;
-				if toolSheet.Instantaneous and array_contain(spell.duration, durations[3], #durations) then
-					return true;
-				end;
-				if toolSheet.Rounds and array_contain(spell.duration, durations[4], #durations) then
-					return true;
-				end;
-				if toolSheet.Minutes and array_contain(spell.duration, durations[5], #durations) then
-					return true;
-				end;
-				if toolSheet.Hours and array_contain(spell.duration, durations[6], #durations) then
-					return true;
-				end;
-				if toolSheet.Days and array_contain(spell.duration, durations[7], #durations) then
-					return true;
-				end;
-				if toolSheet.Permanent and array_contain(spell.duration, durations[8], #durations) then
-					return true;
-				end;
-				if toolSheet.SpecialDuration and array_contain(spell.duration, durations[9], #durations) then
-					return true;
+				for i = 1, #durations, 1 do
+					if toolSheet[durationsAux[i]] and array_contain(spell.duration, durations[i], #durations) then
+						return true;
+					end;
 				end;
 
 				return false;
 			end
 
-
-
 			local function filterBook(spell)
-				if toolSheet.PHB and array_contain(spell.book, books[1], #books) then
-					return true;
-				end;
-				if toolSheet.ELH and array_contain(spell.book, books[2], #books) then
-					return true;
-				end;
-				if toolSheet.CAd and array_contain(spell.book, books[3], #books) then
-					return true;
-				end;
-				if toolSheet.CAr and array_contain(spell.book, books[4], #books) then
-					return true;
-				end;
-				if toolSheet.CD and array_contain(spell.book, books[5], #books) then
-					return true;
-				end;
-				if toolSheet.CC and array_contain(spell.book, books[6], #books) then
-					return true;
-				end;
-				if toolSheet.CM and array_contain(spell.book, books[7], #books) then
-					return true;
-				end;
-				if toolSheet.CS and array_contain(spell.book, books[8], #books) then
-					return true;
-				end;
-				if toolSheet.CW and array_contain(spell.book, books[9], #books) then
-					return true;
+				for i = 1, #books, 1 do
+					if toolSheet[books[i]] and array_contain(spell.book, books[i], #books) then
+						return true;
+					end;
 				end;
 
 				return false;
 			end
 
 			local function filterTarget(spell)
-				if toolSheet.Area and array_contain(spell.aiming, targets[1], #targets) then
-					return true;
-				end;
-				if toolSheet.Effect and array_contain(spell.aiming, targets[2], #targets) then
-					return true;
-				end;
-				if toolSheet.Target and array_contain(spell.aiming, targets[3], #targets) then
-					return true;
-				end;
-				if toolSheet.Burst and array_contain(spell.aiming, targets[4], #targets) then
-					return true;
-				end;
-				if toolSheet.Cone and array_contain(spell.aiming, targets[5], #targets) then
-					return true;
-				end;
-				if toolSheet.Cylinder and array_contain(spell.aiming, targets[6], #targets) then
-					return true;
-				end;
-				if toolSheet.Emanation and array_contain(spell.aiming, targets[7], #targets) then
-					return true;
-				end;
-				if toolSheet.Line and array_contain(spell.aiming, targets[8], #targets) then
-					return true;
-				end;
-				if toolSheet.Ray and array_contain(spell.aiming, targets[9], #targets) then
-					return true;
-				end;
-				if toolSheet.Sphere and array_contain(spell.aiming, targets[10], #targets) then
-					return true;
-				end;
-				if toolSheet.Spread and array_contain(spell.aiming, targets[11], #targets) then
-					return true;
-				end;
-				if toolSheet.Shapeable and array_contain(spell.aiming, targets[12], #targets) then
-					return true;
-				end;
-				if toolSheet.SpecialTarget and array_contain(spell.aiming, targets[13], #targets) then
-					return true;
+				for i = 1, #targets, 1 do
+					if toolSheet[targetsAux[i]] and array_contain(spell.aiming, targets[i], #targets) then
+						return true;
+					end;
 				end;
 				return false;
 			end;
 
 			local function filterSave(spell)
-				if toolSheet.fortitude and array_contain(spell.save, trs[1], #trs) then
-					return true;
-				end;
-				if toolSheet.reflex and array_contain(spell.save, trs[2], #trs) then
-					return true;
-				end;
-				if toolSheet.will and array_contain(spell.save, trs[3], #trs) then
-					return true;
-				end;
-				if toolSheet.none and array_contain(spell.save, trs[4], #trs) then
-					return true;
-				end;
-				if toolSheet.specialTR and array_contain(spell.save, trs[5], #trs) then
-					return true;
+				for i = 1, #trs, 1 do
+					if toolSheet[trsAux[i]] and array_contain(spell.save, trs[i], #trs) then
+						return true;
+					end;
 				end;
 				return false;
 			end;
@@ -806,7 +457,7 @@
 				<checkBox align="left" horzTextAlign="center" width="75" field="wu_jen" text="Wu-Jen"/>
 				<checkBox align="left" horzTextAlign="center" width="75" field="warmage" text="Mago de Guerra" fontSize="8"/>
 				<checkBox align="left" horzTextAlign="center" width="75" field="hexblade" text="Lâmina Maldita" fontSize="8"/>
-				<checkBox align="left" horzTextAlign="center" width="75" field="domain" text="Dominio"/>
+				<checkBox align="left" horzTextAlign="center" width="75" field="domain" text="Domínio"/>
 			</layout>
 			<layout align="top" height="25">
 				<button align="left" horzTextAlign="center" width="187" text="Marque Todas">
