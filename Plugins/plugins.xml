@@ -389,7 +389,7 @@
             <dataType id="DataType.Zombie.Survival" title="Zombie Survival"/>
         </dataTypes>
     </element>
-    <element id="PENDRAGON" name="Ficha Pendragon" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Pendragon/output/Pendragon.rpk?raw=true" fileName="Pendragon.rpk" repositoryPath="Pendragon/" author="thirteen" description="Ficha de Personagem do sistema King Arthur Pendragon edição 5.2." version="1.0" compilationDate="15112021020831" compilationDigest="421bf15889116ce4728c9c9082ddcbf1684e6116">
+    <element id="PENDRAGON" name="Ficha Pendragon" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Pendragon/output/Pendragon.rpk?raw=true" fileName="Pendragon.rpk" repositoryPath="Pendragon/" author="thirteen" description="Ficha de Personagem do sistema King Arthur Pendragon edição 5.2." version="1.0" compilationDate="15112021020831" compilationDigest="421bf15889116ce4728c9c9082ddcbf1684e6116">
         <dataTypes>
             <dataType id="thirteen.Pendragon" title="Pendragon 5.2"/>
         </dataTypes>
