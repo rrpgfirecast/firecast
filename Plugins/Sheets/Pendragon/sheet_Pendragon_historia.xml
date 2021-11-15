@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rectangle class="RBackground"  padding="{top = 10}">
+	
+	<layout align="top">
+		<!-- APARÊNCIA E HISTÓRIA -->	
+		<label align="left" text="☙ APARÊNCIA" width="150" fontStyle="bold" fontColor="#0080ff" fontFamily="Palatino Linotype" fontSize="20" /><layout align="left" width="500" margins="{right=20}"><rectangle height="2" width="535" top="25" color="#0080ff" /></layout>
+		<label align="left" text="☙ HISTÓRIA" width="133" fontStyle="bold" fontColor="#0080ff" fontFamily="Palatino Linotype" fontSize="20" /><layout align="client" ><rectangle height="2" width="3000" top="25" color="#0080ff" /></layout>
+		<rectangle align="right" width="10" color="#272727" />
+	</layout>
+
+	<!-- IMAGEM E FRAME -->	
+	<layout align="top" height="730">
+		<layout align="left" width="672">
+			<image top="110" left="155" width="354" height="580" style="autofit" editable="true" field="fldFotoPJ" hint="Alterar Aparência" />
+			<dataLink field="fldFotoPJ" defaultValue="/images/knight.png" />
+			<image height="900" width="670" url="/images/framec.png" style="proportional"/>
+		</layout>
+		
+		<!-- CAMPO DE TEXTO DA HISTÓRIA -->
+		<richEdit align="client" width="650" backgroundColor="#272727" defaultFontColor="#cdcdcd" field="historia" showToolbar="false" />
+	</layout>
+	
+	<!-- BACKGROUND -->	
+	<layout align="top">
+		<label align="left" text="☙ BACKGROUND" width="185" fontStyle="bold" fontColor="#0080ff" fontFamily="Palatino Linotype" fontSize="20" />
+		<layout align="client" ><rectangle height="2" width="3000" top="25" color="#0080ff" /></layout>
+		<rectangle align="right" width="10" color="#272727" />
+	</layout>
+	
+	<!-- CAMPO DO BACKGROUND -->
+	<richEdit align="client" width="650" backgroundColor="#272727" defaultFontColor="#cdcdcd" field="background" showToolbar="false" />
+</rectangle>

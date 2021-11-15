@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="equips" align="top" height="25" margins="{bottom=2}">      
+		<layout align="top" height="25" margins="{left=40}">
+			<!-- NOME DO EQUIPAMENTO -->
+			<edit align="left" field="nomeEquip" fontStyle="bold" fontColor="white" fontFamily="Cambria" fontSize="14" height="25" width="230" transparent="true" hint="Nome" />
+			<dataLink field="nomeEquip" defaultValue="—" />
+			
+			<!-- QUANTIDADE DO EQUIPAMENTO -->
+			<edit align="left" field="qntEquip" fontColor="#868686" fontFamily="Cambria" fontSize="14" height="25" width="50" transparent="true" hint="Quantidade" />
+			<dataLink field="qntEquip" defaultValue="0" />
+			
+			<!-- STATUS DO EQUIPAMENTO -->
+			<edit align="left" field="statusEquip" fontColor="#868686" fontFamily="Cambria" fontSize="14" height="25" width="255" transparent="true" hint="Status" />
+			<dataLink field="statusEquip" defaultValue="—" />
+			
+			<!-- VALOR DO EQUIPAMENTO -->
+			<edit align="left" field="valorEquip" fontColor="#868686" fontFamily="Cambria" fontSize="14" height="25" width="50" transparent="true" hint="Valor" />
+			<dataLink field="valorEquip" defaultValue="£ 0" />
+			
+			<!-- BOTÃO DE APAGAR -->
+			<button align="left" text="🞭" width="25" height="25" onClick="NDB.deleteNode(sheet);" hint="Apagar Equipamento" />
+		</layout>
+</form>

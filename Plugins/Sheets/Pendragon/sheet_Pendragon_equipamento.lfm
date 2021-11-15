@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmEquipamentos" align="client">
+	<rectangle class="RBackground" padding="{top = 10}">
+		<!-- EQUIPAMENTOS -->	
+		<layout align="top"><label align="left" text="☙ EQUIPAMENTOS" width="200" fontStyle="bold" fontColor="#0080ff" fontFamily="Palatino Linotype" fontSize="20" /><layout align="left" width="450"><rectangle height="2" width="535" top="25" color="#0080ff" /></layout></layout>
+
+		<!-- TABELA EQUIPAMENTOS -->	
+		<layout align="top" height="25" margins="{top = 10}">
+			<rectangle class="LConjuntoH">
+				<label align="left" width="230" text="ITEM" fontStyle="bold" fontColor="#cdcdcd" fontFamily="Palatino Linotype" fontSize="14" />
+				<label align="left" width="50" text="QNT." fontStyle="bold" fontColor="#cdcdcd" fontFamily="Palatino Linotype" fontSize="14" />			
+				<label align="left" width="255" text="STATUS" fontStyle="bold" fontColor="#cdcdcd" fontFamily="Palatino Linotype" fontSize="14" />
+				<label align="left" width="80" text="VALOR" fontStyle="bold" fontColor="#cdcdcd" fontFamily="Palatino Linotype" fontSize="14" />	
+			</rectangle>
+		</layout>
+		<layout align="left" width="650">
+		
+			<!-- LISTA DINÂMICA EQUIPAMENTOS -->	
+			<recordList align="top" minQt="4" layout="vertical" name="rclEquips" field="fldEquips" templateForm="equips" autoHeight="true" onItemRemoved="self.frmEquipamentos:needRepaint();" />
+			<layout align="top"><button left="625" height="25" top="1" text="🞦" width="25" onClick="self.rclEquips:append(); self.frmEquipamentos:needRepaint();" hint="Novo Equipamento" /></layout>
+		
+			<!-- ANIMAIS -->	
+			<layout align="top"><label align="left" text="☙ ANIMAIS" width="125" fontStyle="bold" fontColor="#0080ff" fontFamily="Palatino Linotype" fontSize="20" /><layout align="left" width="525"><rectangle height="2" width="535" top="25" color="#0080ff" /></layout></layout>
+
+			<!-- TABELA ANIMAIS -->
+			<layout align="top" height="25" margins="{top = 10}">
+				<rectangle class="LConjuntoH">
+					<label align="left" width="230" text="ANIMAL" fontStyle="bold" fontColor="#cdcdcd" fontFamily="Palatino Linotype" fontSize="14" />
+					<label align="left" width="50" text="QNT." fontStyle="bold" fontColor="#cdcdcd" fontFamily="Palatino Linotype" fontSize="14" />			
+					<label align="left" width="255" text="STATUS" fontStyle="bold" fontColor="#cdcdcd" fontFamily="Palatino Linotype" fontSize="14" />
+					<label align="left" width="80" text="VALOR" fontStyle="bold" fontColor="#cdcdcd" fontFamily="Palatino Linotype" fontSize="14" />	
+				</rectangle>
+			</layout>
+		
+			<!-- LISTA DINÂMICA ANIMAIS -->
+			<recordList align="top" minQt="4" layout="vertical" name="rclHorses" field="fldHorses" templateForm="equips" autoHeight="true" onItemRemoved="self.frmEquipamentos:needRepaint();" />
+			<layout align="top"><button left="625" height="25" top="1" text="🞦" width="25" onClick="self.rclHorses:append(); self.frmEquipamentos:needRepaint();" hint="Novo Animal" /></layout>
+			
+			<!-- DINHEIRO -->
+			<layout align="top">
+				<label margins="{left=40}" align="left" width="60" text="LIBRAS:" fontStyle="bold" fontColor="#cdcdcd" fontFamily="Palatino Linotype" fontSize="14" />
+				<label align="left" width="10" text="£" fontColor="white" fontFamily="Cambria" fontSize="14" />
+				<edit field="fldLibras" class="GEdit" align="left" width="30" />
+				
+				
+				<label margins="{left=50}" align="left" width="90" text="DENÁRIOS:" fontStyle="bold" fontColor="#cdcdcd" fontFamily="Palatino Linotype" fontSize="14" />
+				<edit field="fldDenarios" class="GEdit" align="left" width="30" />
+				<label align="left" width="12" text="d." fontColor="white" fontFamily="Cambria" fontSize="14" />
+				<dataLink fields="{'fldLibras', 'fldDenarios'}" defaultValues="{'—', '—'}" />
+			</layout>
+		</layout>
+	</rectangle>
+</form>
