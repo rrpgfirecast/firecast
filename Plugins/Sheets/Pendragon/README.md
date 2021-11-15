@@ -1,5 +1,5 @@
 
-⠀⠀![¡Mira el lomito blindado!](https://imgur.com/YCaWt4d.png)
+⠀⠀![¡Mira el lomito blindado!](https://imgur.com/YCaWt4d.png)  
 _⠀⠀Let us win glory for our king,_  
 _⠀⠀who will reward us with honors and lands;_  
 _⠀⠀and the devil take the hindermost!_  
