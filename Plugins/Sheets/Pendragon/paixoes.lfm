@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="paixoes" align="top" height="25" width="292" margins="{bottom=2}">       
+		<layout align="top" height="25" >
+			<!-- NOME DA PAIXÃO -->
+			<edit align="left" field="nomePX" fontStyle="bold" fontColor="white" fontFamily="Cambria" fontSize="14" height="25" width="217" transparent="true" />
+			<dataLink field="nomePX" defaultValue="—" />
+			
+			<!-- VALOR DA PAIXÃO -->
+			<edit align="left" field="valorPX" fontStyle="bold" fontColor="white" fontFamily="Cambria" fontSize="14" height="25" width="26" transparent="true" type="number" min="0" max="99" onExit="CalcularGloriaAnual();" />
+			<dataLink field="valorPX" defaultValue="0">
+				<event name="onChange">
+				<![CDATA[
+					ContabilizarPaixoes();
+		        ]]>
+				</event>
+			</dataLink>
+			<button align="left" text="🞭" width="25" height="25" onClick="NDB.deleteNode(sheet); CalcularGloriaAnual();" hint="Apagar Paixão" />
+		</layout>
+</form>
