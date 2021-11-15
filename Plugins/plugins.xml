@@ -389,6 +389,11 @@
             <dataType id="DataType.Zombie.Survival" title="Zombie Survival"/>
         </dataTypes>
     </element>
+    <element id="PENDRAGON" name="Ficha Pendragon" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Pendragon/output/Pendragon.rpk?raw=true" fileName="Pendragon.rpk" repositoryPath="Pendragon/" author="thirteen" description="Ficha de Personagem do sistema King Arthur Pendragon edição 5.2." version="1.0" compilationDate="15112021020831" compilationDigest="421bf15889116ce4728c9c9082ddcbf1684e6116">
+        <dataTypes>
+            <dataType id="thirteen.Pendragon" title="Pendragon 5.2"/>
+        </dataTypes>
+    </element>
     <element id="Ambesek.Auto.Updater" name="Plugin Auto Updater" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/TablesDock/AutoUpdater/output/AutoUpdater.rpk?raw=true" fileName="AutoUpdater.rpk" repositoryPath="TablesDock/AutoUpdater/" author="Ambesek" description="Verifica seus plugins e encontra quais tem atualizações disponíveis no git do firecast. Também permite acesso a plugins não instalados do git." version="1.0" compilationDate="27112019000332" compilationDigest="da678e4b86fe1ac6a36e7f190912c53747420cbb">
         <dataTypes>
             <dataType id="ambesek.autoupdater" title="Auto Updater"/>
