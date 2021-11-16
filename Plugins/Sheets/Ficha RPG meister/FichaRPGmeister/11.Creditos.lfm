@@ -85,8 +85,10 @@
 
 		<layout left="620" top="170" width="200" height="150">
 			<rectangle left="0" top="0" width="200" height="150" color="black" strokeColor="grey" strokeSize="1"/>
+			
 			<label left="0" top="10" width="80" height="20" text="Tema:" horzTextAlign="center"/>
-			<comboBox left="95" top="10" width="90" field="theme" fontColor="white" items="{'Escuro', 'Claro'}" horzTextAlign="center">
+			<comboBox left="95" top="10" width="90" field="theme" fontColor="white" items="{'Escuro', 'Claro'}" horzTextAlign="center"/>
+			<dataLink field="theme" defaultValue="Escuro">
 				<event name="onChange">
 					if sheet == nil then return end;
 					local theme = sheet.theme;
@@ -102,8 +104,7 @@
 						forms[i].theme = theme;
 					end;
 				</event>
-			</comboBox>
-			<dataLink field="theme" defaultValue="Escuro"/>
+			</dataLink>
 
 			<label left="0" top="35" width="90" height="20" text="Cores: " horzTextAlign="center"/>
 

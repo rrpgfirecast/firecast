@@ -2,28 +2,32 @@
 <form name="frmTemplateDescription" align="client">
 	<scrollBox align="client">
 		<template name="Descricao">
-			<label left="$(left1)" top="$(top)" width="90" height="20" text="$(text)" horzTextAlign="center"/>
-			<edit left="$(left2)" top="$(top)" width="200" height="25" field="$(field)" vertTextAlign="center" />
+			<layout align="left" width="380" margins="{right=10}">
+				<label align="left" width="90" text="$(text)" horzTextAlign="center"/>
+				<edit align="left" width="290" field="$(field)" vertTextAlign="center" />
+			</layout>
 		</template>
 		
 		<rectangle left="0" top="0" width="1205" height="105" color="black">
-			<label left="3" top="1" width="100" height="20" text="DESCRIÇÃO"/>
+			<label align="top" height="20" text="DESCRIÇÃO"/>
 
-			<Descricao left1="10" left2="100" top="25" text="TAMANHO" field="tamanho"/>
-			<Descricao left1="10" left2="100" top="50" text="ALTURA" field="altura"/>
-			<Descricao left1="10" left2="100" top="75" text="PESO" field="peso"/>
-			
-			<Descricao left1="310" left2="400" top="25" text="IDADE" field="idade"/>
-			<Descricao left1="310" left2="400" top="50" text="SEXO" field="sexo"/>
-			<Descricao left1="310" left2="400" top="75" text="OUTROS" field="aparenciaOutros"/>
-			
-			<Descricao left1="610" left2="700" top="25" text="OLHOS" field="aparenciaOlhos"/>
-			<Descricao left1="610" left2="700" top="50" text="PELE" field="pele"/>
-			<Descricao left1="610" left2="700" top="75" text="CABELO" field="cabelo"/>
-			
-			<Descricao left1="910" left2="1000" top="25" text="PLANO" field="plano"/>
-			<Descricao left1="910" left2="1000" top="50" text="REGIÃO" field="regiao"/>
-			<Descricao left1="910" left2="1000" top="75" text="REINO" field="reino"/>
+			<layout align="top" height="25">
+				<Descricao text="PASSADO" field="passado"/>
+				<Descricao text="IDADE" field="idade"/>
+				<Descricao text="OLHOS" field="aparenciaOlhos"/>
+			</layout>
+
+			<layout align="top" height="25">
+				<Descricao text="ALTURA" field="altura"/>
+				<Descricao text="GÊNERO" field="genero"/>
+				<Descricao text="PELE" field="pele"/>
+			</layout>
+
+			<layout align="top" height="25">
+				<Descricao text="PESO" field="peso"/>
+				<Descricao text="OUTROS" field="aparenciaOutros"/>
+				<Descricao text="CABELO" field="cabelo"/>
+			</layout>
 		</rectangle>
 		
 		<layout left="0" top="110" width="375" height="240">

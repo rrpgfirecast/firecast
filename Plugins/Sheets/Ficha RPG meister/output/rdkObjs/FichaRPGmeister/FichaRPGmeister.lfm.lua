@@ -38335,8 +38335,8 @@ local function constructNew_frmFichaRPGmeister()
             fullResize()
         end, obj);
 
-    obj._e_event516 = obj.comboBox19:addEventListener("onChange",
-        function (_)
+    obj._e_event516 = obj.dataLink147:addEventListener("onChange",
+        function (_, field, oldValue, newValue)
             if sheet == nil then return end;
             					local theme = sheet.theme;
             					if theme == "Claro" then

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <module sdkVersion="3.5">
 	<id>Ambesek.Starfinder</id>
-	<version>0.4</version>
+	<version>0.4.1</version>
 	<name>Ficha Starfinder</name>
 	<description>Ficha feita para o sistema Starfinder.</description>
 	<author>Ambesek</author>

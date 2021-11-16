@@ -7590,6 +7590,7 @@ local function constructNew_frmFichaRPGmeister1_svg()
             						function (rolagem)
             							local maximo = 0;
             							local media = 0;
+            							local mult = 1;
             							for i = 1, #rolagem.ops, 1 do 
             								local operacao = rolagem.ops[i]; 
             								if operacao.tipo == "dado" then   
@@ -7598,6 +7599,10 @@ local function constructNew_frmFichaRPGmeister1_svg()
             									if i==1 then
             										media = media + ((operacao.face-1)/2);
             									end;
+            								elseif operacao.tipo == "subtracao" then
+            									mult = -1;
+            								elseif operacao.tipo == "soma" then
+            									mult = 1;
             								elseif operacao.tipo == "imediato" then
             									maximo = maximo + operacao.valor;
             									media = media + operacao.valor;

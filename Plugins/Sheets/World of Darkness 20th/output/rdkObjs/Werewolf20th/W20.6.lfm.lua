@@ -33,10 +33,40 @@ local function constructNew_frmW20_6()
 
 			local function recursiveFindControls(node, controlsList)
 				local children = node:getChildren();
+				if node:getClassName() == "recordList" then
+					children = rclKids(node);
+					--write(children[1]:getClassName());
+
+					children = rclKids(children[1]);
+				end;
 				for i=1, #children, 1 do
 					controlsList[#controlsList+1] = children[i];
 					recursiveFindControls(children[i], controlsList);
 				end;
+			end;
+
+			function rclKids(rcl)
+				local ret = {};
+				local i;
+				local childCount = _obj_getProp(rcl.handle, "ChildrenCount");
+				local child;
+				local childHandle;
+				local idxDest = 1;
+					
+				for i = 0, childCount - 1, 1 do
+					childHandle = _gui_getChild(rcl.handle, i);
+					
+					if (childHandle ~= nil) then							
+						child = gui.fromHandle(childHandle);
+						
+						if (type(child) == "table") then							
+							ret[idxDest] = child;
+							idxDest = idxDest + 1;
+						end
+					end;	
+				end
+				
+				return ret;
 			end;
 
 			local function findAllControls()
@@ -71,7 +101,6 @@ local function constructNew_frmW20_6()
 				if trans == nil then return txt end;
 				return trans;
 			end;
-
 		
 
 
@@ -221,7 +250,7 @@ local function constructNew_frmW20_6()
     obj.label9:setTop(10);
     obj.label9:setWidth(80);
     obj.label9:setHeight(20);
-    obj.label9:setText("Theme");
+    obj.label9:setText("Tema:");
     obj.label9:setHorzTextAlign("center");
     obj.label9:setName("label9");
 
@@ -385,8 +414,8 @@ local function constructNew_frmW20_6()
     obj.button3:setText("RPGmeister");
     obj.button3:setName("button3");
 
-    obj._e_event0 = obj.comboBox1:addEventListener("onChange",
-        function (_)
+    obj._e_event0 = obj.dataLink1:addEventListener("onChange",
+        function (_, field, oldValue, newValue)
             if sheet == nil then return end;
             					local theme = sheet.theme;
             					if theme == "Claro" then
