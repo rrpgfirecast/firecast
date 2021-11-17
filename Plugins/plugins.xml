@@ -5,6 +5,11 @@
             <dataType id="ambesek.afkbot" title="AfkBot"/>
         </dataTypes>
     </element>
+    <element id="VaMv5" name="V:aM V5" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Vampire%20The%20Masquerade%205th/output/Vampire%20The%20Masquerade%205th.rpk?raw=true" fileName="Vampire The Masquerade 5th.rpk" repositoryPath="Sheets/Vampire The Masquerade 5th/" author="thirteen" description="Ficha de Personagem do sistema Vampiro: a Máscara, Quinta edição." version="1.0" compilationDate="17112021214613" compilationDigest="ac331ea04bd28aba6946ff849ad8a66d4cc35b00">
+        <dataTypes>
+            <dataType id="thirteen.VaMv5" title="V:aM V5"/>
+        </dataTypes>
+    </element>
     <element id="VALKSODL" name="SODL 5e Sheet" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Shadow%20of%20the%20Demon%20Lord/output/Shadow%20of%20the%20Demon%20Lord%20-%20Plugin.rpk?raw=true" fileName="Shadow of the Demon Lord - Plugin.rpk" repositoryPath="Sheets/Shadow of the Demon Lord - Plugin/" author="Valquíria Maia" description="Shadow of the Demon Lord Sheet" version="1.0" compilationDate="08032021225710" compilationDigest="1c2e518b5768b3e7336d32cc1bc14723ab9c86e0">
         <dataTypes>
             <dataType id="Valk_Data" title="SODLSheet"/>
