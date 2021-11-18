@@ -229,12 +229,12 @@ edit.EditBold{
 						
 						<flowLayout class="Tabela">
 						
-							<ColunaHab	n01="10" atr01="Atletismo"
-									n02="11" atr02="Armas Brancas"
-									n03="12" atr03="Armas de Fogo"
-									n04="13" atr04="Atletismo"
-									n05="14" atr05="Briga"
-									n06="15" atr06="Condução"
+							<ColunaHab	n01="10" atr01="Armas Brancas"
+									n02="11" atr02="Armas de Fogo"
+									n03="12" atr03="Atletismo"
+									n04="13" atr04="Briga"
+									n05="14" atr05="Condução"
+									n06="15" atr06="Furtividade"
 									n07="16" atr07="Ladroagem"
 									n08="17" atr08="Ofícios"
 									n09="18" atr09="Sobrevivência"/>
