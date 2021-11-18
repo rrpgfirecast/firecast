@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<popupForm name="dealerPopup" formType="undefined" dataType="ambesek.dealer" title="Dealer" width="290" height ="500">
+<popupForm name="dealerPopup" formType="undefined" dataType="ambesek.dealer" title="Dealer" width="315" height ="500">
 	<script>
-		local function AddCards(deck, num, owner)
+		local function AddCards(deck, num, owner, url)
 			local num = tonumber(num) or 0
 			for i=1,num,1 do
 				local item = self.deckList:append()
@@ -9,6 +9,7 @@
 					item.location = owner
 					item.card = deck[i] or "UnamedCard"
 					item.user = true;
+					if url ~= nil then item.url = url[deck[i]] end;
 				end
 			end
 		end
@@ -58,11 +59,11 @@
 
 		local item = self.deckList:append()
 
-		AddCards(sheet.deck,sheet.numCards,"Deck");
-		AddCards(sheet.discard,sheet.numDiscard,"Discard");
+		AddCards(sheet.deck,sheet.numCards,"Deck", sheet.deckURL);
+		AddCards(sheet.discard,sheet.numDiscard,"Discard", sheet.deckURL);
 
 		for k,v in pairs(sheet.players) do
-			AddCards(sheet.players[k], sheet.hands[k], k)
+			AddCards(sheet.players[k], sheet.hands[k], k, sheet.deckURL)
 		end;
 	</event>
 </popupForm>

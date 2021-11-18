@@ -27,7 +27,7 @@ local function constructNew_frmDeckItem()
     _gui_assignInitialParentForForm(obj.handle);
     obj:beginUpdate();
     obj:setName("frmDeckItem");
-    obj:setWidth(250);
+    obj:setWidth(275);
     obj:setHeight(25);
     obj:setMargins({top=1});
 
@@ -53,6 +53,22 @@ local function constructNew_frmDeckItem()
     obj.card:setField("card");
     obj.card:setHorzTextAlign("center");
     obj.card:setHitTest(true);
+
+    obj.rectangle2 = GUI.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle2:setParent(obj.rectangle1);
+    obj.rectangle2:setAlign("right");
+    obj.rectangle2:setWidth(25);
+    obj.rectangle2:setColor("#00000000");
+    obj.rectangle2:setStrokeColor("white");
+    obj.rectangle2:setStrokeSize(1);
+    obj.rectangle2:setName("rectangle2");
+
+    obj.image1 = GUI.fromHandle(_obj_newObject("image"));
+    obj.image1:setParent(obj.rectangle2);
+    obj.image1:setAlign("client");
+    obj.image1:setField("url");
+    obj.image1:setEditable(false);
+    obj.image1:setName("image1");
 
     obj.dataLink1 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink1:setParent(obj.rectangle1);
@@ -92,9 +108,11 @@ local function constructNew_frmDeckItem()
           self:setNodeDatabase(nil);
         end;
 
-        if self.rectangle1 ~= nil then self.rectangle1:destroy(); self.rectangle1 = nil; end;
-        if self.location ~= nil then self.location:destroy(); self.location = nil; end;
+        if self.image1 ~= nil then self.image1:destroy(); self.image1 = nil; end;
         if self.dataLink2 ~= nil then self.dataLink2:destroy(); self.dataLink2 = nil; end;
+        if self.rectangle1 ~= nil then self.rectangle1:destroy(); self.rectangle1 = nil; end;
+        if self.rectangle2 ~= nil then self.rectangle2:destroy(); self.rectangle2 = nil; end;
+        if self.location ~= nil then self.location:destroy(); self.location = nil; end;
         if self.card ~= nil then self.card:destroy(); self.card = nil; end;
         if self.dataLink1 ~= nil then self.dataLink1:destroy(); self.dataLink1 = nil; end;
         self:_oldLFMDestroy();
