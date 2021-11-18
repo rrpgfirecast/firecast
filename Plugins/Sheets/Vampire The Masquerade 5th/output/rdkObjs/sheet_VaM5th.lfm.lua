@@ -2591,7 +2591,7 @@ local function constructNew_frmVaMv5()
     obj.label30:setParent(obj.flowPart47);
     obj.label30:setAlign("left");
     obj.label30:setWidth(100);
-    obj.label30:setText("Atletismo");
+    obj.label30:setText("Armas Brancas");
     obj.label30:setName("label30");
     obj.label30:setFontSize(14);
     obj.label30:setFontColor("white");
@@ -2743,7 +2743,7 @@ local function constructNew_frmVaMv5()
     obj.label31:setParent(obj.flowPart48);
     obj.label31:setAlign("left");
     obj.label31:setWidth(100);
-    obj.label31:setText("Armas Brancas");
+    obj.label31:setText("Armas de Fogo");
     obj.label31:setName("label31");
     obj.label31:setFontSize(14);
     obj.label31:setFontColor("white");
@@ -2895,7 +2895,7 @@ local function constructNew_frmVaMv5()
     obj.label32:setParent(obj.flowPart49);
     obj.label32:setAlign("left");
     obj.label32:setWidth(100);
-    obj.label32:setText("Armas de Fogo");
+    obj.label32:setText("Atletismo");
     obj.label32:setName("label32");
     obj.label32:setFontSize(14);
     obj.label32:setFontColor("white");
@@ -3047,7 +3047,7 @@ local function constructNew_frmVaMv5()
     obj.label33:setParent(obj.flowPart50);
     obj.label33:setAlign("left");
     obj.label33:setWidth(100);
-    obj.label33:setText("Atletismo");
+    obj.label33:setText("Briga");
     obj.label33:setName("label33");
     obj.label33:setFontSize(14);
     obj.label33:setFontColor("white");
@@ -3199,7 +3199,7 @@ local function constructNew_frmVaMv5()
     obj.label34:setParent(obj.flowPart51);
     obj.label34:setAlign("left");
     obj.label34:setWidth(100);
-    obj.label34:setText("Briga");
+    obj.label34:setText("Condução");
     obj.label34:setName("label34");
     obj.label34:setFontSize(14);
     obj.label34:setFontColor("white");
@@ -3351,7 +3351,7 @@ local function constructNew_frmVaMv5()
     obj.label35:setParent(obj.flowPart52);
     obj.label35:setAlign("left");
     obj.label35:setWidth(100);
-    obj.label35:setText("Condução");
+    obj.label35:setText("Furtividade");
     obj.label35:setName("label35");
     obj.label35:setFontSize(14);
     obj.label35:setFontColor("white");
