@@ -33,19 +33,19 @@ local function constructNew_frmVaMv5()
     obj:setTheme("dark");
 
 
-	function CalcSangue()
+	local function CalcSangue()
 	local nivel = 1;
 	
-	if(sheet.fldCheckPotencia_01) then nivel = 2; end;
-	if(sheet.fldCheckPotencia_02) then nivel = 3; end;
-	if(sheet.fldCheckPotencia_03) then nivel = 4; end;
-	if(sheet.fldCheckPotencia_04) then nivel = 5; end;
-	if(sheet.fldCheckPotencia_05) then nivel = 6; end;
-	if(sheet.fldCheckPotencia_06) then nivel = 7; end;
-	if(sheet.fldCheckPotencia_07) then nivel = 8; end;
-	if(sheet.fldCheckPotencia_08) then nivel = 9; end;
-	if(sheet.fldCheckPotencia_09) then nivel = 10; end;
-	if(sheet.fldCheckPotencia_10) then nivel = 11; end;
+	if(sheet.fldCheckPotencia_01 or false) then nivel = 2; end;
+	if(sheet.fldCheckPotencia_02 or false) then nivel = 3; end;
+	if(sheet.fldCheckPotencia_03 or false) then nivel = 4; end;
+	if(sheet.fldCheckPotencia_04 or false) then nivel = 5; end;
+	if(sheet.fldCheckPotencia_05 or false) then nivel = 6; end;
+	if(sheet.fldCheckPotencia_06 or false) then nivel = 7; end;
+	if(sheet.fldCheckPotencia_07 or false) then nivel = 8; end;
+	if(sheet.fldCheckPotencia_08 or false) then nivel = 9; end;
+	if(sheet.fldCheckPotencia_09 or false) then nivel = 10; end;
+	if(sheet.fldCheckPotencia_10 or false) then nivel = 11; end;
 	
 	local tbBP ={
 		{"+1 dado", "1 de Dano Superficial", "—", "—", "00", "—"},
@@ -61,43 +61,55 @@ local function constructNew_frmVaMv5()
 		{"+6 dados", "5 de Dano Superficial", "+5 dados", "Abaixo do Nível 5", "06", "Sangue Animal ou Conservado não sacia Fome\n\nHumanos saciam -3 de Fome\n\nNecessário matar um mortal para reduzir Fome abaixo de 3"},
 	}; 
 	
-	self.sangSurto.text = tbBP[nivel][1]; 
-	self.sangRegen.text = tbBP[nivel][2];
-	self.sangBonus.text = tbBP[nivel][3];
-	self.sangReroll.text = tbBP[nivel][4];
-	self.sangBane.text = tbBP[nivel][5];
-	self.sangFeed.text = tbBP[nivel][6];
+	sheet.fldsangSurto	= tbBP[nivel][1]; 
+	sheet.fldsangRegen = tbBP[nivel][2];
+	sheet.fldsangBonus = tbBP[nivel][3];
+	sheet.fldsangReroll = tbBP[nivel][4];
+	sheet.fldsangBane = tbBP[nivel][5];
+	sheet.fldsangFeed = tbBP[nivel][6];
 	
 	end;
 	
-	function TrocarAba(a)
+	local function TrocarAba(a)
 		if(a == 'D') then
-			if(self.layFrente.visible) then
+			if(self.layFrente:isVisible()) then
 				self.layFrente.visible = false;
 				self.layVerso.visible = true;
+				self.layFrente:needRepaint();
+				self.layVerso:needRepaint();
 				
-			elseif(self.layVerso.visible) then
+			elseif(self.layVerso:isVisible()) then
 				self.layVerso.visible = false;
 				self.layNote.visible = true;
+				self.layVerso:needRepaint();
+				self.layNote:needRepaint();
 				
-			elseif(self.layNote.visible) then
+			elseif(self.layNote:isVisible()) then
 				self.layNote.visible = false;
 				self.layFrente.visible = true;
+				self.layNote:needRepaint();
+				self.layFrente:needRepaint();
 			end;
 		end;
 		
 		if(a == 'E') then
-			if(self.layFrente.visible) then
+			if(self.layFrente:isVisible()) then
 				self.layFrente.visible = false;
 				self.layNote.visible = true;
+				self.layFrente:needRepaint();
+				self.layNote:needRepaint();
 				
-			elseif(self.layVerso.visible) then
+			elseif(self.layVerso:isVisible()) then
 				self.layVerso.visible = false;
 				self.layFrente.visible = true;
+				self.layVerso:needRepaint();
+				self.layFrente:needRepaint();
 				
-			elseif(self.layNote.visible) then
+			elseif(self.layNote:isVisible()) then
 				self.layNote.visible = false;
 				self.layVerso.visible = true;
+				self.layNote:needRepaint();
+				self.layVerso:needRepaint();
 			end;
 		
 		end;
@@ -7433,13 +7445,19 @@ local function constructNew_frmVaMv5()
     obj.sangSurto = GUI.fromHandle(_obj_newObject("label"));
     obj.sangSurto:setParent(obj.flowPart100);
     obj.sangSurto:setAlign("top");
-    obj.sangSurto:setText("—");
+    obj.sangSurto:setField("fldsangSurto");
     obj.sangSurto:setName("sangSurto");
     obj.sangSurto:setFontSize(14);
     obj.sangSurto:setFontColor("white");
     lfm_setPropAsString(obj.sangSurto, "fontStyle",  "bold");
     obj.sangSurto:setTextTrimming("character");
     obj.sangSurto:setFontFamily("Constantia");
+
+    obj.dataLink63 = GUI.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink63:setParent(obj.flowPart100);
+    obj.dataLink63:setField("fldsangSurto");
+    obj.dataLink63:setDefaultValue("—");
+    obj.dataLink63:setName("dataLink63");
 
     obj.flowPart101 = GUI.fromHandle(_obj_newObject("flowPart"));
     obj.flowPart101:setParent(obj.flowLayout34);
@@ -7465,13 +7483,19 @@ local function constructNew_frmVaMv5()
     obj.sangRegen = GUI.fromHandle(_obj_newObject("label"));
     obj.sangRegen:setParent(obj.flowPart101);
     obj.sangRegen:setAlign("top");
-    obj.sangRegen:setText("—");
+    obj.sangRegen:setField("fldsangRegen");
     obj.sangRegen:setName("sangRegen");
     obj.sangRegen:setFontSize(14);
     obj.sangRegen:setFontColor("white");
     lfm_setPropAsString(obj.sangRegen, "fontStyle",  "bold");
     obj.sangRegen:setTextTrimming("character");
     obj.sangRegen:setFontFamily("Constantia");
+
+    obj.dataLink64 = GUI.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink64:setParent(obj.flowPart101);
+    obj.dataLink64:setField("fldsangRegen");
+    obj.dataLink64:setDefaultValue("—");
+    obj.dataLink64:setName("dataLink64");
 
     obj.flowPart102 = GUI.fromHandle(_obj_newObject("flowPart"));
     obj.flowPart102:setParent(obj.flowLayout34);
@@ -7497,13 +7521,19 @@ local function constructNew_frmVaMv5()
     obj.sangBonus = GUI.fromHandle(_obj_newObject("label"));
     obj.sangBonus:setParent(obj.flowPart102);
     obj.sangBonus:setAlign("top");
-    obj.sangBonus:setText("—");
+    obj.sangBonus:setField("fldsangBonus");
     obj.sangBonus:setName("sangBonus");
     obj.sangBonus:setFontSize(14);
     obj.sangBonus:setFontColor("white");
     lfm_setPropAsString(obj.sangBonus, "fontStyle",  "bold");
     obj.sangBonus:setTextTrimming("character");
     obj.sangBonus:setFontFamily("Constantia");
+
+    obj.dataLink65 = GUI.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink65:setParent(obj.flowPart102);
+    obj.dataLink65:setField("fldsangBonus");
+    obj.dataLink65:setDefaultValue("—");
+    obj.dataLink65:setName("dataLink65");
 
     obj.flowPart103 = GUI.fromHandle(_obj_newObject("flowPart"));
     obj.flowPart103:setParent(obj.flowLayout34);
@@ -7529,13 +7559,19 @@ local function constructNew_frmVaMv5()
     obj.sangReroll = GUI.fromHandle(_obj_newObject("label"));
     obj.sangReroll:setParent(obj.flowPart103);
     obj.sangReroll:setAlign("top");
-    obj.sangReroll:setText("—");
+    obj.sangReroll:setField("fldsangReroll");
     obj.sangReroll:setName("sangReroll");
     obj.sangReroll:setFontSize(14);
     obj.sangReroll:setFontColor("white");
     lfm_setPropAsString(obj.sangReroll, "fontStyle",  "bold");
     obj.sangReroll:setTextTrimming("character");
     obj.sangReroll:setFontFamily("Constantia");
+
+    obj.dataLink66 = GUI.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink66:setParent(obj.flowPart103);
+    obj.dataLink66:setField("fldsangReroll");
+    obj.dataLink66:setDefaultValue("—");
+    obj.dataLink66:setName("dataLink66");
 
     obj.flowPart104 = GUI.fromHandle(_obj_newObject("flowPart"));
     obj.flowPart104:setParent(obj.flowLayout34);
@@ -7561,13 +7597,19 @@ local function constructNew_frmVaMv5()
     obj.sangBane = GUI.fromHandle(_obj_newObject("label"));
     obj.sangBane:setParent(obj.flowPart104);
     obj.sangBane:setAlign("top");
-    obj.sangBane:setText("—");
+    obj.sangBane:setField("fldsangBane");
     obj.sangBane:setName("sangBane");
     obj.sangBane:setFontSize(14);
     obj.sangBane:setFontColor("white");
     lfm_setPropAsString(obj.sangBane, "fontStyle",  "bold");
     obj.sangBane:setTextTrimming("character");
     obj.sangBane:setFontFamily("Constantia");
+
+    obj.dataLink67 = GUI.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink67:setParent(obj.flowPart104);
+    obj.dataLink67:setField("fldsangBane");
+    obj.dataLink67:setDefaultValue("—");
+    obj.dataLink67:setName("dataLink67");
 
     obj.flowPart105 = GUI.fromHandle(_obj_newObject("flowPart"));
     obj.flowPart105:setParent(obj.flowLayout34);
@@ -7593,7 +7635,7 @@ local function constructNew_frmVaMv5()
     obj.sangFeed = GUI.fromHandle(_obj_newObject("label"));
     obj.sangFeed:setParent(obj.flowPart105);
     obj.sangFeed:setAlign("top");
-    obj.sangFeed:setText("—");
+    obj.sangFeed:setField("fldsangFeed");
     obj.sangFeed:setName("sangFeed");
     obj.sangFeed:setHeight(130);
     obj.sangFeed:setAutoSize(true);
@@ -7602,6 +7644,12 @@ local function constructNew_frmVaMv5()
     lfm_setPropAsString(obj.sangFeed, "fontStyle",  "bold");
     obj.sangFeed:setTextTrimming("character");
     obj.sangFeed:setFontFamily("Constantia");
+
+    obj.dataLink68 = GUI.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink68:setParent(obj.flowPart105);
+    obj.dataLink68:setField("fldsangFeed");
+    obj.dataLink68:setDefaultValue("—");
+    obj.dataLink68:setName("dataLink68");
 
     obj.layout72 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout72:setParent(obj.rectangle63);
@@ -7762,14 +7810,14 @@ local function constructNew_frmVaMv5()
     obj.nomeCheckPotencia_10:setMargins({left=3});
     obj.nomeCheckPotencia_10:setAutoChange(false);
 
-    obj.dataLink63 = GUI.fromHandle(_obj_newObject("dataLink"));
-    obj.dataLink63:setParent(obj.layout75);
-    obj.dataLink63:setFields({'fldCheckPotencia_01', 'fldCheckPotencia_02', 
+    obj.dataLink69 = GUI.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink69:setParent(obj.layout75);
+    obj.dataLink69:setFields({'fldCheckPotencia_01', 'fldCheckPotencia_02', 
 															   'fldCheckPotencia_03', 'fldCheckPotencia_04',
 															   'fldCheckPotencia_05', 'fldCheckPotencia_06',
 															   'fldCheckPotencia_07', 'fldCheckPotencia_08',
 															   'fldCheckPotencia_09', 'fldCheckPotencia_10',});
-    obj.dataLink63:setName("dataLink63");
+    obj.dataLink69:setName("dataLink69");
 
     obj.layNote = GUI.fromHandle(_obj_newObject("layout"));
     obj.layNote:setParent(obj.rectangle3);
@@ -7868,12 +7916,12 @@ local function constructNew_frmVaMv5()
 
     obj._e_event0 = obj.image3:addEventListener("onClick",
         function (_)
-            if(sheet==nil) then return end; CalcSangue(); TrocarAba('E');
+            if(sheet==nil) then return end; TrocarAba('E');
         end, obj);
 
     obj._e_event1 = obj.image4:addEventListener("onClick",
         function (_)
-            if(sheet==nil) then return end; CalcSangue(); TrocarAba('D');
+            if(sheet==nil) then return end; TrocarAba('D');
         end, obj);
 
     obj._e_event2 = obj.nomeCheck01_01:addEventListener("onClick",
@@ -12916,7 +12964,7 @@ local function constructNew_frmVaMv5()
             											
         end, obj);
 
-    obj._e_event310 = obj.dataLink63:addEventListener("onChange",
+    obj._e_event310 = obj.dataLink69:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if(sheet==nil) then return; end;
             													CalcSangue();
@@ -13279,6 +13327,7 @@ local function constructNew_frmVaMv5()
         if self.flowPart95 ~= nil then self.flowPart95:destroy(); self.flowPart95 = nil; end;
         if self.nomeCheck08_05 ~= nil then self.nomeCheck08_05:destroy(); self.nomeCheck08_05 = nil; end;
         if self.nomeCheck28_04 ~= nil then self.nomeCheck28_04:destroy(); self.nomeCheck28_04 = nil; end;
+        if self.dataLink68 ~= nil then self.dataLink68:destroy(); self.dataLink68 = nil; end;
         if self.label8 ~= nil then self.label8:destroy(); self.label8 = nil; end;
         if self.flowLayout16 ~= nil then self.flowLayout16:destroy(); self.flowLayout16 = nil; end;
         if self.flowPart51 ~= nil then self.flowPart51:destroy(); self.flowPart51 = nil; end;
@@ -13408,6 +13457,7 @@ local function constructNew_frmVaMv5()
         if self.dataLink35 ~= nil then self.dataLink35:destroy(); self.dataLink35 = nil; end;
         if self.flowPart71 ~= nil then self.flowPart71:destroy(); self.flowPart71 = nil; end;
         if self.nomeBut36B ~= nil then self.nomeBut36B:destroy(); self.nomeBut36B = nil; end;
+        if self.dataLink69 ~= nil then self.dataLink69:destroy(); self.dataLink69 = nil; end;
         if self.checkMulVit_Des_08_FdV ~= nil then self.checkMulVit_Des_08_FdV:destroy(); self.checkMulVit_Des_08_FdV = nil; end;
         if self.nomeBut36 ~= nil then self.nomeBut36:destroy(); self.nomeBut36 = nil; end;
         if self.dataLink22 ~= nil then self.dataLink22:destroy(); self.dataLink22 = nil; end;
@@ -13426,10 +13476,11 @@ local function constructNew_frmVaMv5()
         if self.label20 ~= nil then self.label20:destroy(); self.label20 = nil; end;
         if self.nomeBut28 ~= nil then self.nomeBut28:destroy(); self.nomeBut28 = nil; end;
         if self.rectangle36 ~= nil then self.rectangle36:destroy(); self.rectangle36 = nil; end;
+        if self.dataLink67 ~= nil then self.dataLink67:destroy(); self.dataLink67 = nil; end;
         if self.nomeCheckPotencia_09 ~= nil then self.nomeCheckPotencia_09:destroy(); self.nomeCheckPotencia_09 = nil; end;
-        if self.flowLayout36 ~= nil then self.flowLayout36:destroy(); self.flowLayout36 = nil; end;
         if self.flowPart37 ~= nil then self.flowPart37:destroy(); self.flowPart37 = nil; end;
         if self.flowPart45 ~= nil then self.flowPart45:destroy(); self.flowPart45 = nil; end;
+        if self.flowLayout36 ~= nil then self.flowLayout36:destroy(); self.flowLayout36 = nil; end;
         if self.label7 ~= nil then self.label7:destroy(); self.label7 = nil; end;
         if self.label50 ~= nil then self.label50:destroy(); self.label50 = nil; end;
         if self.dataLink57 ~= nil then self.dataLink57:destroy(); self.dataLink57 = nil; end;
@@ -13568,6 +13619,7 @@ local function constructNew_frmVaMv5()
         if self.label4 ~= nil then self.label4:destroy(); self.label4 = nil; end;
         if self.layout66 ~= nil then self.layout66:destroy(); self.layout66 = nil; end;
         if self.nomeCheck17_01 ~= nil then self.nomeCheck17_01:destroy(); self.nomeCheck17_01 = nil; end;
+        if self.dataLink65 ~= nil then self.dataLink65:destroy(); self.dataLink65 = nil; end;
         if self.nomeCheckPotencia_04 ~= nil then self.nomeCheckPotencia_04:destroy(); self.nomeCheckPotencia_04 = nil; end;
         if self.nomeCheck30_05 ~= nil then self.nomeCheck30_05:destroy(); self.nomeCheck30_05 = nil; end;
         if self.flowPart64 ~= nil then self.flowPart64:destroy(); self.flowPart64 = nil; end;
@@ -13789,6 +13841,7 @@ local function constructNew_frmVaMv5()
         if self.rectangle53 ~= nil then self.rectangle53:destroy(); self.rectangle53 = nil; end;
         if self.horzLine9 ~= nil then self.horzLine9:destroy(); self.horzLine9 = nil; end;
         if self.nomeCheck19_01 ~= nil then self.nomeCheck19_01:destroy(); self.nomeCheck19_01 = nil; end;
+        if self.dataLink64 ~= nil then self.dataLink64:destroy(); self.dataLink64 = nil; end;
         if self.nomeCheck32_02 ~= nil then self.nomeCheck32_02:destroy(); self.nomeCheck32_02 = nil; end;
         if self.dataLink54 ~= nil then self.dataLink54:destroy(); self.dataLink54 = nil; end;
         if self.dataLink24 ~= nil then self.dataLink24:destroy(); self.dataLink24 = nil; end;
@@ -13997,6 +14050,7 @@ local function constructNew_frmVaMv5()
         if self.label17 ~= nil then self.label17:destroy(); self.label17 = nil; end;
         if self.nomeVER_Cronica ~= nil then self.nomeVER_Cronica:destroy(); self.nomeVER_Cronica = nil; end;
         if self.nomeCheckPotencia_06 ~= nil then self.nomeCheckPotencia_06:destroy(); self.nomeCheckPotencia_06 = nil; end;
+        if self.dataLink66 ~= nil then self.dataLink66:destroy(); self.dataLink66 = nil; end;
         if self.nomeCheck02_01 ~= nil then self.nomeCheck02_01:destroy(); self.nomeCheck02_01 = nil; end;
         if self.layout53 ~= nil then self.layout53:destroy(); self.layout53 = nil; end;
         if self.flowPart63 ~= nil then self.flowPart63:destroy(); self.flowPart63 = nil; end;

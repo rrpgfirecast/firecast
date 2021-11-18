@@ -101,19 +101,19 @@ edit.EditBold{
 </style>
 <script>
 <![CDATA[
-	function CalcSangue()
+	local function CalcSangue()
 	local nivel = 1;
 	
-	if(sheet.fldCheckPotencia_01) then nivel = 2; end;
-	if(sheet.fldCheckPotencia_02) then nivel = 3; end;
-	if(sheet.fldCheckPotencia_03) then nivel = 4; end;
-	if(sheet.fldCheckPotencia_04) then nivel = 5; end;
-	if(sheet.fldCheckPotencia_05) then nivel = 6; end;
-	if(sheet.fldCheckPotencia_06) then nivel = 7; end;
-	if(sheet.fldCheckPotencia_07) then nivel = 8; end;
-	if(sheet.fldCheckPotencia_08) then nivel = 9; end;
-	if(sheet.fldCheckPotencia_09) then nivel = 10; end;
-	if(sheet.fldCheckPotencia_10) then nivel = 11; end;
+	if(sheet.fldCheckPotencia_01 or false) then nivel = 2; end;
+	if(sheet.fldCheckPotencia_02 or false) then nivel = 3; end;
+	if(sheet.fldCheckPotencia_03 or false) then nivel = 4; end;
+	if(sheet.fldCheckPotencia_04 or false) then nivel = 5; end;
+	if(sheet.fldCheckPotencia_05 or false) then nivel = 6; end;
+	if(sheet.fldCheckPotencia_06 or false) then nivel = 7; end;
+	if(sheet.fldCheckPotencia_07 or false) then nivel = 8; end;
+	if(sheet.fldCheckPotencia_08 or false) then nivel = 9; end;
+	if(sheet.fldCheckPotencia_09 or false) then nivel = 10; end;
+	if(sheet.fldCheckPotencia_10 or false) then nivel = 11; end;
 	
 	local tbBP ={
 		{"+1 dado", "1 de Dano Superficial", "—", "—", "00", "—"},
@@ -129,43 +129,55 @@ edit.EditBold{
 		{"+6 dados", "5 de Dano Superficial", "+5 dados", "Abaixo do Nível 5", "06", "Sangue Animal ou Conservado não sacia Fome\n\nHumanos saciam -3 de Fome\n\nNecessário matar um mortal para reduzir Fome abaixo de 3"},
 	}; 
 	
-	self.sangSurto.text = tbBP[nivel][1]; 
-	self.sangRegen.text = tbBP[nivel][2];
-	self.sangBonus.text = tbBP[nivel][3];
-	self.sangReroll.text = tbBP[nivel][4];
-	self.sangBane.text = tbBP[nivel][5];
-	self.sangFeed.text = tbBP[nivel][6];
+	sheet.fldsangSurto	= tbBP[nivel][1]; 
+	sheet.fldsangRegen = tbBP[nivel][2];
+	sheet.fldsangBonus = tbBP[nivel][3];
+	sheet.fldsangReroll = tbBP[nivel][4];
+	sheet.fldsangBane = tbBP[nivel][5];
+	sheet.fldsangFeed = tbBP[nivel][6];
 	
 	end;
 	
-	function TrocarAba(a)
+	local function TrocarAba(a)
 		if(a == 'D') then
-			if(self.layFrente.visible) then
+			if(self.layFrente:isVisible()) then
 				self.layFrente.visible = false;
 				self.layVerso.visible = true;
+				self.layFrente:needRepaint();
+				self.layVerso:needRepaint();
 				
-			elseif(self.layVerso.visible) then
+			elseif(self.layVerso:isVisible()) then
 				self.layVerso.visible = false;
 				self.layNote.visible = true;
+				self.layVerso:needRepaint();
+				self.layNote:needRepaint();
 				
-			elseif(self.layNote.visible) then
+			elseif(self.layNote:isVisible()) then
 				self.layNote.visible = false;
 				self.layFrente.visible = true;
+				self.layNote:needRepaint();
+				self.layFrente:needRepaint();
 			end;
 		end;
 		
 		if(a == 'E') then
-			if(self.layFrente.visible) then
+			if(self.layFrente:isVisible()) then
 				self.layFrente.visible = false;
 				self.layNote.visible = true;
+				self.layFrente:needRepaint();
+				self.layNote:needRepaint();
 				
-			elseif(self.layVerso.visible) then
+			elseif(self.layVerso:isVisible()) then
 				self.layVerso.visible = false;
 				self.layFrente.visible = true;
+				self.layVerso:needRepaint();
+				self.layFrente:needRepaint();
 				
-			elseif(self.layNote.visible) then
+			elseif(self.layNote:isVisible()) then
 				self.layNote.visible = false;
 				self.layVerso.visible = true;
+				self.layNote:needRepaint();
+				self.layVerso:needRepaint();
 			end;
 		
 		end;
@@ -184,8 +196,8 @@ edit.EditBold{
 				<rectangle class="Fundo">					
 					<image align="top" style="proportional" height="100" url="/images/logotype.png" margins="{top=40, left=40, right=40}" />
 					<layout align="top" height="25">
-						<image align="left" style="proportional" width="50" height="25" url="/images/left-arrow.png" hitTest="true" cursor="handPoint" hint="Trocar de Aba" onClick="if(sheet==nil) then return end; CalcSangue(); TrocarAba('E');" />
-						<image align="right" style="proportional" width="50" height="25" url="/images/right-arrow.png" hitTest="true" cursor="handPoint" hint="Trocar de Aba" onClick="if(sheet==nil) then return end; CalcSangue(); TrocarAba('D');" />
+						<image align="left" style="proportional" width="50" height="25" url="/images/left-arrow.png" hitTest="true" cursor="handPoint" hint="Trocar de Aba" onClick="if(sheet==nil) then return end; TrocarAba('E');" />
+						<image align="right" style="proportional" width="50" height="25" url="/images/right-arrow.png" hitTest="true" cursor="handPoint" hint="Trocar de Aba" onClick="if(sheet==nil) then return end; TrocarAba('D');" />
 					</layout>
 					<!-- FRENTE DA FICHA -->
 					<layout name="layFrente" align="client">	
@@ -328,7 +340,8 @@ edit.EditBold{
 									<template name="tbSangue">
 										<flowPart align="top" height="50" width="197.5" margins="{bottom=5}">
 											<label class="AtrClasse" horzTextAlign="leading" align="top" text="$(legenda)" fontColor="#6f6f6f" margins="{bottom=5}"/>
-											<label align="top" text="—" name="sang$(nome)" />
+											<label align="top" field="fldsang$(nome)" name="sang$(nome)" />
+											<dataLink field="fldsang$(nome)" defaultValue="—" />
 										</flowPart>
 									</template>
 									
@@ -339,7 +352,8 @@ edit.EditBold{
 									<tbSangue legenda="GRAVIDADE DA PERDIÇÃO" nome="Bane" />
 									<flowPart align="top" height="150" width="197.5" margins="{bottom=5}">
 										<label class="AtrClasse" horzTextAlign="leading" align="top" text="PENALIDADE DE ALIMENTAÇÃO" fontColor="#6f6f6f" margins="{bottom=5}" />
-										<label align="top" text="—" name="sangFeed" height="130" autoSize="true" />
+										<label align="top" field="fldsangFeed" name="sangFeed" height="130" autoSize="true" />
+										<dataLink field="fldsangFeed" defaultValue="—" />
 									</flowPart>
 									
 								</flowLayout>
