@@ -127,18 +127,16 @@
 	
 	<template name="imageCheckBoxMul">
 		<layout width="14" height="25" align="$(alinhamento)" margins="{$(margem)=3}">
-			<image name="checkMulVit_Des_$(id)" width="14" height="25" url="/images/checkBoxDes.png" style="proportional" visible="true" hitTest="true" cursor="handPoint" onClick="
-				self.checkMulVit_Des_$(id).visible = false;
-				self.checkMulVit_Atv_$(id).visible = true;
+			<image name="checkMulVit_Des_$(id)" width="14" height="25"  field="checkMulVit_Des_$(id)" style="proportional" visible="true" hitTest="true" cursor="handPoint" onClick="
+				if(sheet.checkMulVit_Des_$(id) == '/images/checkBoxDes.png') then
+					sheet.checkMulVit_Des_$(id) = '/images/checkBoxAtv.png';
+				elseif(sheet.checkMulVit_Des_$(id) == '/images/checkBoxAtv.png') then
+					sheet.checkMulVit_Des_$(id) = '/images/checkBoxAgr.png';
+				elseif(sheet.checkMulVit_Des_$(id) == '/images/checkBoxAgr.png') then
+					sheet.checkMulVit_Des_$(id) = '/images/checkBoxDes.png';
+				end;
 			" />
-			<image name="checkMulVit_Atv_$(id)" width="14" height="25" url="/images/checkBoxAtv.png" style="proportional" visible="false" hitTest="true" cursor="handPoint" onClick="
-				self.checkMulVit_Atv_$(id).visible = false;
-				self.checkMulVit_Agr_$(id).visible = true;
-			"/>
-			<image name="checkMulVit_Agr_$(id)" width="14" height="25" url="/images/checkBoxAgr.png" style="proportional" visible="false" hitTest="true" cursor="handPoint" onClick="
-				self.checkMulVit_Agr_$(id).visible = false;
-				self.checkMulVit_Des_$(id).visible = true;
-			"/>
+			<dataLink field="checkMulVit_Des_$(id)" defaultValue="/images/checkBoxDes.png" />
 		</layout>
 	</template>
 						
