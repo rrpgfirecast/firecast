@@ -33,7 +33,7 @@ local function constructNew_frmPendragon()
     obj:setTheme("dark");
 
 
-		function CalcularGloriaAnual()
+		local function CalcularGloriaAnual()
 			local node = NDB.getRoot(sheet);
 			local SomaHabs = 0;
 			local SomaVirts = 0;
@@ -131,7 +131,218 @@ local function constructNew_frmPendragon()
 			
 			-- APLICANDO VALOR AO CAMPO
 			sheet.fldSomaGloria = "+ " .. tostring(math.floor(SomaHabs + SomaVirts + SomaBonus));
-		end;	
+		end;
+
+		local function CalcularVirtude(a)
+			-- TRATANDO VARIÁVEIS
+			a = a or "";
+			-- FORÇANDO VÍCIOS A SOMAREM UM TOTAL DE 20 COM A VIRTUDE PREENCHIDA
+			if(a == "virtude") then
+				sheet.fldValLuxuria = string.format("%02d",(20 - tonumber(sheet.fldValCastidade)));
+				sheet.fldValPreguica = string.format("%02d",(20 - tonumber(sheet.fldValEnergia)));
+				sheet.fldValVinganca = string.format("%02d",(20 - tonumber(sheet.fldValPerdao)));
+				sheet.fldValEgoismo = string.format("%02d",(20 - tonumber(sheet.fldValGenerosidade)));
+				sheet.fldValMalicia = string.format("%02d",(20 - tonumber(sheet.fldValHonestidade)));
+				sheet.fldValArbitrariedade = string.format("%02d",(20 - tonumber(sheet.fldValJustica)));
+				sheet.fldValCrueldade = string.format("%02d",(20 - tonumber(sheet.fldValMisericordia)));
+				sheet.fldValOrgulho = string.format("%02d",(20 - tonumber(sheet.fldValModestia)));
+				sheet.fldValCinismo = string.format("%02d",(20 - tonumber(sheet.fldValEspiritualidade)));
+				sheet.fldValImprudencia = string.format("%02d",(20 - tonumber(sheet.fldValPrudencia)));
+				sheet.fldValIndulgencia = string.format("%02d",(20 - tonumber(sheet.fldValTemperanca)));
+				sheet.fldValDesconfianca = string.format("%02d",(20 - tonumber(sheet.fldValConfianca)));
+				sheet.fldValCovardia = string.format("%02d",(20 - tonumber(sheet.fldValCoragem)));
+				
+			-- FORÇANDO VIRTUDES A SOMAREM UM TOTAL DE 20 COM O VÍCIO PREENCHIDO
+			elseif(a == "vicio") then
+				sheet.fldValCastidade = string.format("%02d",(20 - tonumber(sheet.fldValLuxuria)));
+				sheet.fldValEnergia = string.format("%02d",(20 - tonumber(sheet.fldValPreguica)));
+				sheet.fldValPerdao = string.format("%02d",(20 - tonumber(sheet.fldValVinganca)));
+				sheet.fldValGenerosidade = string.format("%02d",(20 - tonumber(sheet.fldValEgoismo)));
+				sheet.fldValHonestidade = string.format("%02d",(20 - tonumber(sheet.fldValMalicia)));
+				sheet.fldValJustica = string.format("%02d",(20 - tonumber(sheet.fldValArbitrariedade)));
+				sheet.fldValMisericordia = string.format("%02d",(20 - tonumber(sheet.fldValCrueldade)));
+				sheet.fldValModestia = string.format("%02d",(20 - tonumber(sheet.fldValOrgulho)));
+				sheet.fldValEspiritualidade = string.format("%02d",(20 - tonumber(sheet.fldValCinismo)));
+				sheet.fldValPrudencia = string.format("%02d",(20 - tonumber(sheet.fldValImprudencia)));
+				sheet.fldValTemperanca = string.format("%02d",(20 - tonumber(sheet.fldValIndulgencia)));
+				sheet.fldValConfianca = string.format("%02d",(20 - tonumber(sheet.fldValDesconfianca)));
+				sheet.fldValCoragem = string.format("%02d",(20 - tonumber(sheet.fldValCovardia)));
+			end;
+			
+			-- FORMATANDO O TEXTO DOS TRAÇOS ACIMA DE 10
+			self.namCastidade.visible = tonumber(sheet.fldValCastidade) < 11;
+			self.namCastidadeB.visible = tonumber(sheet.fldValCastidade) > 10;
+			self.namLuxuria.visible = tonumber(sheet.fldValLuxuria) < 11;
+			self.namLuxuriaB.visible = tonumber(sheet.fldValLuxuria) > 10;
+			self.namEnergia.visible = tonumber(sheet.fldValEnergia) < 11;
+			self.namEnergiaB.visible = tonumber(sheet.fldValEnergia) > 10;
+			self.namPreguica.visible = tonumber(sheet.fldValPreguica) < 11;
+			self.namPreguicaB.visible = tonumber(sheet.fldValPreguica) > 10;
+			self.namPerdao.visible = tonumber(sheet.fldValPerdao) < 11;
+			self.namPerdaoB.visible = tonumber(sheet.fldValPerdao) > 10;
+			self.namVinganca.visible = tonumber(sheet.fldValVinganca) < 11;
+			self.namVingancaB.visible = tonumber(sheet.fldValVinganca) > 10;
+			self.namGenerosidade.visible = tonumber(sheet.fldValGenerosidade) < 11;
+			self.namGenerosidadeB.visible = tonumber(sheet.fldValGenerosidade) > 10;
+			self.namEgoismo.visible = tonumber(sheet.fldValEgoismo) < 11;
+			self.namEgoismoB.visible = tonumber(sheet.fldValEgoismo) > 10;
+			self.namHonestidade.visible = tonumber(sheet.fldValHonestidade) < 11;
+			self.namHonestidadeB.visible = tonumber(sheet.fldValHonestidade) > 10;
+			self.namMalicia.visible = tonumber(sheet.fldValMalicia) < 11;
+			self.namMaliciaB.visible = tonumber(sheet.fldValMalicia) > 10;
+			self.namJustica.visible = tonumber(sheet.fldValJustica) < 11;
+			self.namJusticaB.visible = tonumber(sheet.fldValJustica) > 10;
+			self.namArbitrariedade.visible = tonumber(sheet.fldValArbitrariedade) < 11;
+			self.namArbitrariedadeB.visible = tonumber(sheet.fldValArbitrariedade) > 10;
+			self.namMisericordia.visible = tonumber(sheet.fldValMisericordia) < 11;
+			self.namMisericordiaB.visible = tonumber(sheet.fldValMisericordia) > 10;
+			self.namCrueldade.visible = tonumber(sheet.fldValCrueldade) < 11;
+			self.namCrueldadeB.visible = tonumber(sheet.fldValCrueldade) > 10;
+			self.namModestia.visible = tonumber(sheet.fldValModestia) < 11;
+			self.namModestiaB.visible = tonumber(sheet.fldValModestia) > 10;
+			self.namOrgulho.visible = tonumber(sheet.fldValOrgulho) < 11;
+			self.namOrgulhoB.visible = tonumber(sheet.fldValOrgulho) > 10;
+			self.namEspiritualidade.visible = tonumber(sheet.fldValEspiritualidade) < 11;
+			self.namEspiritualidadeB.visible = tonumber(sheet.fldValEspiritualidade) > 10;
+			self.namCinismo.visible = tonumber(sheet.fldValCinismo) < 11;
+			self.namCinismoB.visible = tonumber(sheet.fldValCinismo) > 10;
+			self.namPrudencia.visible = tonumber(sheet.fldValPrudencia) < 11;
+			self.namPrudenciaB.visible = tonumber(sheet.fldValPrudencia) > 10;
+			self.namImprudencia.visible = tonumber(sheet.fldValImprudencia) < 11;
+			self.namImprudenciaB.visible = tonumber(sheet.fldValImprudencia) > 10;
+			self.namTemperanca.visible = tonumber(sheet.fldValTemperanca) < 11;
+			self.namTemperancaB.visible = tonumber(sheet.fldValTemperanca) > 10;
+			self.namIndulgencia.visible = tonumber(sheet.fldValIndulgencia) < 11;
+			self.namIndulgenciaB.visible = tonumber(sheet.fldValIndulgencia) > 10;
+			self.namConfianca.visible = tonumber(sheet.fldValConfianca) < 11;
+			self.namConfiancaB.visible = tonumber(sheet.fldValConfianca) > 10;
+			self.namDesconfianca.visible = tonumber(sheet.fldValDesconfianca) < 11;
+			self.namDesconfiancaB.visible = tonumber(sheet.fldValDesconfianca) > 10;
+			self.namCoragem.visible = tonumber(sheet.fldValCoragem) < 11;
+			self.namCoragemB.visible = tonumber(sheet.fldValCoragem) > 10;
+			self.namCovardia.visible = tonumber(sheet.fldValCovardia) < 11;
+			self.namCovardiaB.visible = tonumber(sheet.fldValCovardia) > 10;
+			
+			-- CAPTANDO SOMA DE BÔNUS
+			local node = NDB.getRoot(sheet);
+			local SomaRom = 0;
+			
+			-- CHECANDO QUANTAS VIRTUDES ACIMA DE 15
+			if(tonumber(sheet.fldValCastidade) > 15) then SomaRom = SomaRom + 1; end;
+			if(tonumber(sheet.fldValEnergia) > 15) then SomaRom = SomaRom + 1; end;
+			if(tonumber(sheet.fldValPerdao) > 15) then SomaRom = SomaRom + 1; end;
+			if(tonumber(sheet.fldValGenerosidade) > 15) then SomaRom = SomaRom + 1; end;
+			if(tonumber(sheet.fldValHonestidade) > 15) then SomaRom = SomaRom + 1; end;
+			if(tonumber(sheet.fldValJustica) > 15) then SomaRom = SomaRom + 1; end;
+			if(tonumber(sheet.fldValMisericordia) > 15) then SomaRom = SomaRom + 1; end;
+			if(tonumber(sheet.fldValModestia) > 15) then SomaRom = SomaRom + 1; end;
+			if(tonumber(sheet.fldValEspiritualidade) > 15) then SomaRom = SomaRom + 1; end;
+			if(tonumber(sheet.fldValPrudencia) > 15) then SomaRom = SomaRom + 1; end;
+			if(tonumber(sheet.fldValTemperanca) > 15) then SomaRom = SomaRom + 1; end;
+			if(tonumber(sheet.fldValConfianca) > 15) then SomaRom = SomaRom + 1; end;
+			if(tonumber(sheet.fldValCoragem) > 15) then SomaRom = SomaRom + 1; end;
+			
+			-- SOMANDO QUANTAS PAIXÕES ACIMA DE 15
+			SomaRom = SomaRom + node.countRom;
+			
+			-- LIMITANDO NÚMERO DE VIRTUDES E PAIXÕES ACIMA DE 15 PARA 3
+			if(SomaRom > 3) then SomaRom = 3; end;
+			
+			-- CHECANDO SE ALGUM VÍCIO ACIMA DE 15
+			if(tonumber(sheet.fldValCastidade) < 5
+			or tonumber(sheet.fldValEnergia) < 5 
+			or tonumber(sheet.fldValPerdao) < 5 
+			or tonumber(sheet.fldValGenerosidade) < 5 
+			or tonumber(sheet.fldValHonestidade) < 5 
+			or tonumber(sheet.fldValJustica) < 5 
+			or tonumber(sheet.fldValMisericordia) < 5 
+			or tonumber(sheet.fldValModestia) < 5 
+			or tonumber(sheet.fldValEspiritualidade) < 5 
+			or tonumber(sheet.fldValPrudencia) < 5 
+			or tonumber(sheet.fldValTemperanca) < 5 
+			or tonumber(sheet.fldValConfianca) < 5 
+			or tonumber(sheet.fldValCoragem) < 5) then 
+				SomaRom = SomaRom + 1; 
+			end;
+			
+			-- INICIALIZANDO VARIÁVEIS
+			local tbReligiao = {};
+			local SomaReligiao = 0;
+			
+			-- ADICIONANDO VIRTUDES MARCADAS COMO RELIGIOSAS
+			if(sheet.fldChCastidade == true) then table.insert(tbReligiao, sheet.fldValCastidade); end;
+			if(sheet.fldChEnergia == true) then table.insert(tbReligiao, sheet.fldValEnergia); end;
+			if(sheet.fldChPerdao == true) then table.insert(tbReligiao, sheet.fldValPerdao); end;
+			if(sheet.fldChGenerosidade == true) then table.insert(tbReligiao, sheet.fldValGenerosidade); end;
+			if(sheet.fldChHonestidade == true) then table.insert(tbReligiao, sheet.fldValHonestidade); end;
+			if(sheet.fldChJustica == true) then table.insert(tbReligiao, sheet.fldValJustica); end;
+			if(sheet.fldChMisericordia == true) then table.insert(tbReligiao, sheet.fldValMisericordia); end;
+			if(sheet.fldChModestia == true) then table.insert(tbReligiao, sheet.fldValModestia); end;
+			if(sheet.fldChEspiritualidade == true) then table.insert(tbReligiao, sheet.fldValEspiritualidade); end;
+			if(sheet.fldChPrudencia == true) then table.insert(tbReligiao, sheet.fldValPrudencia); end;
+			if(sheet.fldChTemperanca == true) then table.insert(tbReligiao, sheet.fldValTemperanca); end;
+			if(sheet.fldChConfianca == true) then table.insert(tbReligiao, sheet.fldValConfianca); end;
+			if(sheet.fldChCoragem == true) then table.insert(tbReligiao, sheet.fldValCoragem); end;
+			
+			-- ADICIONANDO VÍCIOS MARCADOS COMO RELIGIOSOS
+			if(sheet.fldChLuxuria == true) then table.insert(tbReligiao, sheet.fldValLuxuria); end;
+			if(sheet.fldChPreguica == true) then table.insert(tbReligiao, sheet.fldValPreguica); end;
+			if(sheet.fldChVinganca == true) then table.insert(tbReligiao, sheet.fldValVinganca); end;
+			if(sheet.fldChEgoismo == true) then table.insert(tbReligiao, sheet.fldValEgoismo); end;
+			if(sheet.fldChMalicia == true) then table.insert(tbReligiao, sheet.fldValMalicia); end;
+			if(sheet.fldChArbitrariedade == true) then table.insert(tbReligiao, sheet.fldValArbitrariedade); end;
+			if(sheet.fldChCrueldade == true) then table.insert(tbReligiao, sheet.fldValCrueldade); end;
+			if(sheet.fldChOrgulho == true) then table.insert(tbReligiao, sheet.fldValOrgulho); end;
+			if(sheet.fldChCinismo == true) then table.insert(tbReligiao, sheet.fldValCinismo); end;
+			if(sheet.fldChImprudencia == true) then table.insert(tbReligiao, sheet.fldValImprudencia); end;
+			if(sheet.fldChIndulgencia == true) then table.insert(tbReligiao, sheet.fldValIndulgencia); end;
+			if(sheet.fldChDesconfianca == true) then table.insert(tbReligiao, sheet.fldValDesconfianca); end;
+			if(sheet.fldChCovardia == true) then table.insert(tbReligiao, sheet.fldValCovardia); end;
+			
+			-- SOMANDO VALORES DE TRAÇOS RELIGIOSOS
+			for i = 1, #tbReligiao do
+				SomaReligiao = SomaReligiao + tbReligiao[i];
+			end;
+			
+			local SomaHonra = (tonumber(sheet.fldValEnergia) or 0) + (tonumber(sheet.fldValGenerosidade) or 0) + (tonumber(sheet.fldValJustica) or 0);
+			SomaHonra = SomaHonra + (tonumber(sheet.fldValMisericordia) or 0) + (tonumber(sheet.fldValModestia) or 0) + (tonumber(sheet.fldValCoragem) or 0);
+			
+			-- APLICANDO RESULTADO NA FICHA
+			sheet.fldSomaHonra = string.format("%02d", SomaHonra);
+			sheet.fldSomaReligiao = string.format("%02d", SomaReligiao);
+			sheet.fldSomaRomance = string.format("%02d", SomaRom);
+			
+			-- ALTERNANDO VISIBILIDADE DAS FLAGS DOS BÔNUS
+			self.flagRom.visible = SomaRom > 3;
+			self.flagHonra.visible = SomaHonra > 79;
+			self.flagReli.visible = SomaReligiao > 79;
+		end;
+		
+		local function ContabilizarPaixoes()
+			if (sheet ~= nil) then
+				-- INICIALIZANDO VARIÁVEIS
+				local node = NDB.getRoot(sheet);
+				local objetos = NDB.getChildNodes(node.fldPaixoes);
+				local soma = 0;
+				local flagSomaRom = 0;
+				
+				-- SOMANDO E CONTABILIZANDO PAIXÕES MAIORES DO QUE 15
+				for i =1 , #objetos do 
+					if(tonumber((objetos[i].valorPX) or 0) > 15) then
+						soma = soma + (tonumber(objetos[i].valorPX) or 0);
+						flagSomaRom = flagSomaRom + 1;
+					end;
+				end;
+				
+				-- ATRIBUINDO VALORES AO NDB
+				node.countSum = soma;
+				node.countRom = flagSomaRom;
+				
+				-- RECALCULANDO GLORIA
+				CalcularGloriaAnual();
+			end;
+		end;
+		
 	
 
 
@@ -435,13 +646,8 @@ local function constructNew_frmPendragon()
     obj.tab1:setTitle("Dados");
     obj.tab1:setName("tab1");
 
-    obj.frmDados = GUI.fromHandle(_obj_newObject("form"));
-    obj.frmDados:setParent(obj.tab1);
-    obj.frmDados:setName("frmDados");
-    obj.frmDados:setAlign("client");
-
     obj.rectangle2 = GUI.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle2:setParent(obj.frmDados);
+    obj.rectangle2:setParent(obj.tab1);
     obj.rectangle2:setName("rectangle2");
     obj.rectangle2:setAlign("client");
     obj.rectangle2:setColor("#272727");
@@ -4930,241 +5136,8 @@ local function constructNew_frmPendragon()
     obj.tab2:setTitle("Traços e Paixões");
     obj.tab2:setName("tab2");
 
-    obj.frmTeP = GUI.fromHandle(_obj_newObject("form"));
-    obj.frmTeP:setParent(obj.tab2);
-    obj.frmTeP:setName("frmTeP");
-    obj.frmTeP:setAlign("client");
-
-
-		function CalcularVirtude(a)
-			-- TRATANDO VARIÁVEIS
-			a = a or "";
-			CalibrarVirtudes(a);
-			
-			-- CAPTANDO SOMA DE BÔNUS
-			local SomaRom = CalcularRomance();
-			local SomaReligiao = SomarVirtudes();
-			local SomaHonra = (tonumber(sheet.fldValEnergia) or 0) + (tonumber(sheet.fldValGenerosidade) or 0) + (tonumber(sheet.fldValJustica) or 0);
-			SomaHonra = SomaHonra + (tonumber(sheet.fldValMisericordia) or 0) + (tonumber(sheet.fldValModestia) or 0) + (tonumber(sheet.fldValCoragem) or 0);
-			
-			-- APLICANDO RESULTADO NA FICHA
-			sheet.fldSomaHonra = string.format("%02d", SomaHonra);
-			sheet.fldSomaReligiao = string.format("%02d", SomaReligiao);
-			sheet.fldSomaRomance = string.format("%02d", SomaRom);
-			
-			-- ALTERNANDO VISIBILIDADE DAS FLAGS DOS BÔNUS
-			self.flagRom.visible = SomaRom > 3;
-			self.flagHonra.visible = SomaHonra > 79;
-			self.flagReli.visible = SomaReligiao > 79;
-		end;
-		
-		function CalcularRomance()
-			-- INICIALIZANDO VARIÁVEIS
-			local node = NDB.getRoot(sheet);
-			local somaRoman = 0;
-			
-			-- CHECANDO QUANTAS VIRTUDES ACIMA DE 15
-			if(tonumber(sheet.fldValCastidade) > 15) then somaRoman = somaRoman + 1; end;
-			if(tonumber(sheet.fldValEnergia) > 15) then somaRoman = somaRoman + 1; end;
-			if(tonumber(sheet.fldValPerdao) > 15) then somaRoman = somaRoman + 1; end;
-			if(tonumber(sheet.fldValGenerosidade) > 15) then somaRoman = somaRoman + 1; end;
-			if(tonumber(sheet.fldValHonestidade) > 15) then somaRoman = somaRoman + 1; end;
-			if(tonumber(sheet.fldValJustica) > 15) then somaRoman = somaRoman + 1; end;
-			if(tonumber(sheet.fldValMisericordia) > 15) then somaRoman = somaRoman + 1; end;
-			if(tonumber(sheet.fldValModestia) > 15) then somaRoman = somaRoman + 1; end;
-			if(tonumber(sheet.fldValEspiritualidade) > 15) then somaRoman = somaRoman + 1; end;
-			if(tonumber(sheet.fldValPrudencia) > 15) then somaRoman = somaRoman + 1; end;
-			if(tonumber(sheet.fldValTemperanca) > 15) then somaRoman = somaRoman + 1; end;
-			if(tonumber(sheet.fldValConfianca) > 15) then somaRoman = somaRoman + 1; end;
-			if(tonumber(sheet.fldValCoragem) > 15) then somaRoman = somaRoman + 1; end;
-			
-			-- SOMANDO QUANTAS PAIXÕES ACIMA DE 15
-			somaRoman = somaRoman + node.countRom;
-			
-			-- LIMITANDO NÚMERO DE VIRTUDES E PAIXÕES ACIMA DE 15 PARA 3
-			if(somaRoman > 3) then somaRoman = 3; end;
-			
-			-- CHECANDO SE ALGUM VÍCIO ACIMA DE 15
-			if(tonumber(sheet.fldValCastidade) < 5
-			or tonumber(sheet.fldValEnergia) < 5 
-			or tonumber(sheet.fldValPerdao) < 5 
-			or tonumber(sheet.fldValGenerosidade) < 5 
-			or tonumber(sheet.fldValHonestidade) < 5 
-			or tonumber(sheet.fldValJustica) < 5 
-			or tonumber(sheet.fldValMisericordia) < 5 
-			or tonumber(sheet.fldValModestia) < 5 
-			or tonumber(sheet.fldValEspiritualidade) < 5 
-			or tonumber(sheet.fldValPrudencia) < 5 
-			or tonumber(sheet.fldValTemperanca) < 5 
-			or tonumber(sheet.fldValConfianca) < 5 
-			or tonumber(sheet.fldValCoragem) < 5) then 
-				somaRoman = somaRoman + 1; 
-			end;
-			
-			return somaRoman;
-		end;
-		
-		function SomarVirtudes()
-			-- INICIALIZANDO VARIÁVEIS
-			local tbReligiao = {};
-			local a = 0;
-			
-			-- ADICIONANDO VIRTUDES MARCADAS COMO RELIGIOSAS
-			if(sheet.fldChCastidade == true) then table.insert(tbReligiao, sheet.fldValCastidade); end;
-			if(sheet.fldChEnergia == true) then table.insert(tbReligiao, sheet.fldValEnergia); end;
-			if(sheet.fldChPerdao == true) then table.insert(tbReligiao, sheet.fldValPerdao); end;
-			if(sheet.fldChGenerosidade == true) then table.insert(tbReligiao, sheet.fldValGenerosidade); end;
-			if(sheet.fldChHonestidade == true) then table.insert(tbReligiao, sheet.fldValHonestidade); end;
-			if(sheet.fldChJustica == true) then table.insert(tbReligiao, sheet.fldValJustica); end;
-			if(sheet.fldChMisericordia == true) then table.insert(tbReligiao, sheet.fldValMisericordia); end;
-			if(sheet.fldChModestia == true) then table.insert(tbReligiao, sheet.fldValModestia); end;
-			if(sheet.fldChEspiritualidade == true) then table.insert(tbReligiao, sheet.fldValEspiritualidade); end;
-			if(sheet.fldChPrudencia == true) then table.insert(tbReligiao, sheet.fldValPrudencia); end;
-			if(sheet.fldChTemperanca == true) then table.insert(tbReligiao, sheet.fldValTemperanca); end;
-			if(sheet.fldChConfianca == true) then table.insert(tbReligiao, sheet.fldValConfianca); end;
-			if(sheet.fldChCoragem == true) then table.insert(tbReligiao, sheet.fldValCoragem); end;
-			
-			-- ADICIONANDO VÍCIOS MARCADOS COMO RELIGIOSOS
-			if(sheet.fldChLuxuria == true) then table.insert(tbReligiao, sheet.fldValLuxuria); end;
-			if(sheet.fldChPreguica == true) then table.insert(tbReligiao, sheet.fldValPreguica); end;
-			if(sheet.fldChVinganca == true) then table.insert(tbReligiao, sheet.fldValVinganca); end;
-			if(sheet.fldChEgoismo == true) then table.insert(tbReligiao, sheet.fldValEgoismo); end;
-			if(sheet.fldChMalicia == true) then table.insert(tbReligiao, sheet.fldValMalicia); end;
-			if(sheet.fldChArbitrariedade == true) then table.insert(tbReligiao, sheet.fldValArbitrariedade); end;
-			if(sheet.fldChCrueldade == true) then table.insert(tbReligiao, sheet.fldValCrueldade); end;
-			if(sheet.fldChOrgulho == true) then table.insert(tbReligiao, sheet.fldValOrgulho); end;
-			if(sheet.fldChCinismo == true) then table.insert(tbReligiao, sheet.fldValCinismo); end;
-			if(sheet.fldChImprudencia == true) then table.insert(tbReligiao, sheet.fldValImprudencia); end;
-			if(sheet.fldChIndulgencia == true) then table.insert(tbReligiao, sheet.fldValIndulgencia); end;
-			if(sheet.fldChDesconfianca == true) then table.insert(tbReligiao, sheet.fldValDesconfianca); end;
-			if(sheet.fldChCovardia == true) then table.insert(tbReligiao, sheet.fldValCovardia); end;
-			
-			-- SOMANDO VALORES DE TRAÇOS RELIGIOSOS
-			for i = 1, #tbReligiao do
-				a = a + tbReligiao[i];
-			end;
-			
-			return a;
-		end;
-		
-		function CalibrarVirtudes(a)	
-			-- FORÇANDO VÍCIOS A SOMAREM UM TOTAL DE 20 COM A VIRTUDE PREENCHIDA
-			if(a == "virtude") then
-				sheet.fldValLuxuria = string.format("%02d",(20 - tonumber(sheet.fldValCastidade)));
-				sheet.fldValPreguica = string.format("%02d",(20 - tonumber(sheet.fldValEnergia)));
-				sheet.fldValVinganca = string.format("%02d",(20 - tonumber(sheet.fldValPerdao)));
-				sheet.fldValEgoismo = string.format("%02d",(20 - tonumber(sheet.fldValGenerosidade)));
-				sheet.fldValMalicia = string.format("%02d",(20 - tonumber(sheet.fldValHonestidade)));
-				sheet.fldValArbitrariedade = string.format("%02d",(20 - tonumber(sheet.fldValJustica)));
-				sheet.fldValCrueldade = string.format("%02d",(20 - tonumber(sheet.fldValMisericordia)));
-				sheet.fldValOrgulho = string.format("%02d",(20 - tonumber(sheet.fldValModestia)));
-				sheet.fldValCinismo = string.format("%02d",(20 - tonumber(sheet.fldValEspiritualidade)));
-				sheet.fldValImprudencia = string.format("%02d",(20 - tonumber(sheet.fldValPrudencia)));
-				sheet.fldValIndulgencia = string.format("%02d",(20 - tonumber(sheet.fldValTemperanca)));
-				sheet.fldValDesconfianca = string.format("%02d",(20 - tonumber(sheet.fldValConfianca)));
-				sheet.fldValCovardia = string.format("%02d",(20 - tonumber(sheet.fldValCoragem)));
-				
-			-- FORÇANDO VIRTUDES A SOMAREM UM TOTAL DE 20 COM O VÍCIO PREENCHIDO
-			elseif(a == "vicio") then
-				sheet.fldValCastidade = string.format("%02d",(20 - tonumber(sheet.fldValLuxuria)));
-				sheet.fldValEnergia = string.format("%02d",(20 - tonumber(sheet.fldValPreguica)));
-				sheet.fldValPerdao = string.format("%02d",(20 - tonumber(sheet.fldValVinganca)));
-				sheet.fldValGenerosidade = string.format("%02d",(20 - tonumber(sheet.fldValEgoismo)));
-				sheet.fldValHonestidade = string.format("%02d",(20 - tonumber(sheet.fldValMalicia)));
-				sheet.fldValJustica = string.format("%02d",(20 - tonumber(sheet.fldValArbitrariedade)));
-				sheet.fldValMisericordia = string.format("%02d",(20 - tonumber(sheet.fldValCrueldade)));
-				sheet.fldValModestia = string.format("%02d",(20 - tonumber(sheet.fldValOrgulho)));
-				sheet.fldValEspiritualidade = string.format("%02d",(20 - tonumber(sheet.fldValCinismo)));
-				sheet.fldValPrudencia = string.format("%02d",(20 - tonumber(sheet.fldValImprudencia)));
-				sheet.fldValTemperanca = string.format("%02d",(20 - tonumber(sheet.fldValIndulgencia)));
-				sheet.fldValConfianca = string.format("%02d",(20 - tonumber(sheet.fldValDesconfianca)));
-				sheet.fldValCoragem = string.format("%02d",(20 - tonumber(sheet.fldValCovardia)));
-			end;
-			
-			-- FORMATANDO O TEXTO DOS TRAÇOS ACIMA DE 10
-			self.namCastidade.visible = tonumber(sheet.fldValCastidade) < 11;
-			self.namCastidadeB.visible = tonumber(sheet.fldValCastidade) > 10;
-			self.namLuxuria.visible = tonumber(sheet.fldValLuxuria) < 11;
-			self.namLuxuriaB.visible = tonumber(sheet.fldValLuxuria) > 10;
-			self.namEnergia.visible = tonumber(sheet.fldValEnergia) < 11;
-			self.namEnergiaB.visible = tonumber(sheet.fldValEnergia) > 10;
-			self.namPreguica.visible = tonumber(sheet.fldValPreguica) < 11;
-			self.namPreguicaB.visible = tonumber(sheet.fldValPreguica) > 10;
-			self.namPerdao.visible = tonumber(sheet.fldValPerdao) < 11;
-			self.namPerdaoB.visible = tonumber(sheet.fldValPerdao) > 10;
-			self.namVinganca.visible = tonumber(sheet.fldValVinganca) < 11;
-			self.namVingancaB.visible = tonumber(sheet.fldValVinganca) > 10;
-			self.namGenerosidade.visible = tonumber(sheet.fldValGenerosidade) < 11;
-			self.namGenerosidadeB.visible = tonumber(sheet.fldValGenerosidade) > 10;
-			self.namEgoismo.visible = tonumber(sheet.fldValEgoismo) < 11;
-			self.namEgoismoB.visible = tonumber(sheet.fldValEgoismo) > 10;
-			self.namHonestidade.visible = tonumber(sheet.fldValHonestidade) < 11;
-			self.namHonestidadeB.visible = tonumber(sheet.fldValHonestidade) > 10;
-			self.namMalicia.visible = tonumber(sheet.fldValMalicia) < 11;
-			self.namMaliciaB.visible = tonumber(sheet.fldValMalicia) > 10;
-			self.namJustica.visible = tonumber(sheet.fldValJustica) < 11;
-			self.namJusticaB.visible = tonumber(sheet.fldValJustica) > 10;
-			self.namArbitrariedade.visible = tonumber(sheet.fldValArbitrariedade) < 11;
-			self.namArbitrariedadeB.visible = tonumber(sheet.fldValArbitrariedade) > 10;
-			self.namMisericordia.visible = tonumber(sheet.fldValMisericordia) < 11;
-			self.namMisericordiaB.visible = tonumber(sheet.fldValMisericordia) > 10;
-			self.namCrueldade.visible = tonumber(sheet.fldValCrueldade) < 11;
-			self.namCrueldadeB.visible = tonumber(sheet.fldValCrueldade) > 10;
-			self.namModestia.visible = tonumber(sheet.fldValModestia) < 11;
-			self.namModestiaB.visible = tonumber(sheet.fldValModestia) > 10;
-			self.namOrgulho.visible = tonumber(sheet.fldValOrgulho) < 11;
-			self.namOrgulhoB.visible = tonumber(sheet.fldValOrgulho) > 10;
-			self.namEspiritualidade.visible = tonumber(sheet.fldValEspiritualidade) < 11;
-			self.namEspiritualidadeB.visible = tonumber(sheet.fldValEspiritualidade) > 10;
-			self.namCinismo.visible = tonumber(sheet.fldValCinismo) < 11;
-			self.namCinismoB.visible = tonumber(sheet.fldValCinismo) > 10;
-			self.namPrudencia.visible = tonumber(sheet.fldValPrudencia) < 11;
-			self.namPrudenciaB.visible = tonumber(sheet.fldValPrudencia) > 10;
-			self.namImprudencia.visible = tonumber(sheet.fldValImprudencia) < 11;
-			self.namImprudenciaB.visible = tonumber(sheet.fldValImprudencia) > 10;
-			self.namTemperanca.visible = tonumber(sheet.fldValTemperanca) < 11;
-			self.namTemperancaB.visible = tonumber(sheet.fldValTemperanca) > 10;
-			self.namIndulgencia.visible = tonumber(sheet.fldValIndulgencia) < 11;
-			self.namIndulgenciaB.visible = tonumber(sheet.fldValIndulgencia) > 10;
-			self.namConfianca.visible = tonumber(sheet.fldValConfianca) < 11;
-			self.namConfiancaB.visible = tonumber(sheet.fldValConfianca) > 10;
-			self.namDesconfianca.visible = tonumber(sheet.fldValDesconfianca) < 11;
-			self.namDesconfiancaB.visible = tonumber(sheet.fldValDesconfianca) > 10;
-			self.namCoragem.visible = tonumber(sheet.fldValCoragem) < 11;
-			self.namCoragemB.visible = tonumber(sheet.fldValCoragem) > 10;
-			self.namCovardia.visible = tonumber(sheet.fldValCovardia) < 11;
-			self.namCovardiaB.visible = tonumber(sheet.fldValCovardia) > 10;
-		end;
-		
-		function ContabilizarPaixoes()
-			if (sheet ~= nil) then
-				-- INICIALIZANDO VARIÁVEIS
-				local node = NDB.getRoot(sheet);
-				local objetos = NDB.getChildNodes(node.fldPaixoes);
-				local soma = 0;
-				local flagSomaRom = 0;
-				
-				-- SOMANDO E CONTABILIZANDO PAIXÕES MAIORES DO QUE 15
-				for i =1 , #objetos do 
-					if(tonumber((objetos[i].valorPX) or 0) > 15) then
-						soma = soma + (tonumber(objetos[i].valorPX) or 0);
-						flagSomaRom = flagSomaRom + 1;
-					end;
-				end;
-				
-				-- ATRIBUINDO VALORES AO NDB
-				node.countSum = soma;
-				node.countRom = flagSomaRom;
-				
-				-- RECALCULANDO GLORIA
-				CalcularGloriaAnual();
-			end;
-		end;
-	
-
-
     obj.rectangle6 = GUI.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle6:setParent(obj.frmTeP);
+    obj.rectangle6:setParent(obj.tab2);
     obj.rectangle6:setPadding({top = 10});
     obj.rectangle6:setName("rectangle6");
     obj.rectangle6:setAlign("client");
@@ -8426,944 +8399,938 @@ local function constructNew_frmPendragon()
     obj.richEdit3:setField("anotacoes");
     obj.richEdit3:setName("richEdit3");
 
-    obj._e_event0 = obj.frmDados:addEventListener("onShow",
+    obj._e_event0 = obj.dataLink47:addEventListener("onChange",
+        function (_, field, oldValue, newValue)
+            if (sheet == nil) then return; end;
+            										sheet.fldTamanho = string.format("%02d", sheet.fldTamanho);
+        end, obj);
+
+    obj._e_event1 = obj.dataLink48:addEventListener("onChange",
+        function (_, field, oldValue, newValue)
+            if (sheet == nil) then return; end;
+            										sheet.fldDestreza = string.format("%02d", sheet.fldDestreza);
+        end, obj);
+
+    obj._e_event2 = obj.dataLink49:addEventListener("onChange",
+        function (_, field, oldValue, newValue)
+            if (sheet == nil) then return; end;
+            										sheet.fldForca = string.format("%02d", sheet.fldForca);
+        end, obj);
+
+    obj._e_event3 = obj.dataLink50:addEventListener("onChange",
+        function (_, field, oldValue, newValue)
+            if (sheet == nil) then return; end;
+            										sheet.fldConstituicao = string.format("%02d", sheet.fldConstituicao);
+        end, obj);
+
+    obj._e_event4 = obj.dataLink51:addEventListener("onChange",
+        function (_, field, oldValue, newValue)
+            if (sheet == nil) then return; end;
+            										sheet.fldAparencia = string.format("%02d", sheet.fldAparencia);
+        end, obj);
+
+    obj._e_event5 = obj.dataLink52:addEventListener("onChange",
+        function (_, field, oldValue, newValue)
+            if (sheet == nil) then return; end;
+            									local TAM = (tonumber(sheet.fldTamanho) or 0);
+            									local DES = (tonumber(sheet.fldDestreza) or 0);
+            									local FOR = (tonumber(sheet.fldForca) or 0);
+            									local CON = (tonumber(sheet.fldConstituicao) or 0);
+            									
+            									sheet.fldDano = tostring(math.floor(((TAM+FOR)/6)+0.5)) .. "d6";
+            									sheet.fldMovimento = math.floor(((DES+FOR)/10)+0.5); 
+            									sheet.fldRegen = math.floor(((CON+FOR)/10)+0.5); 
+            									sheet.fldHP = CON+TAM;
+            									sheet.fldInconsciente = math.floor((CON+TAM/4)+0.5);
+        end, obj);
+
+    obj._e_event6 = obj.dataLink53:addEventListener("onUserChange",
+        function (_, field, oldValue, newValue)
+            if (sheet == nil) then return; end;
+            									if((tonumber(sheet.fldAparencia)) ~= 0) then
+            										local APA = (tonumber(sheet.fldAparencia) or 0);
+            										local DistinctFeature = 0;
+            										
+            										if (APA < 7) then DistinctFeature = 3;
+            										elseif (APA > 6 and APA < 10) then DistinctFeature = 2; 
+            										elseif (APA > 9 and APA < 13) then DistinctFeature = 1; 
+            										elseif (APA > 12 and APA < 17) then DistinctFeature = 2; 
+            										elseif (APA > 16) then DistinctFeature = 3; 
+            										end;
+            										
+            										if(sheet.fldCarDistintiva == "" or sheet.fldCarDistintiva == "—") then
+            											sheet.fldCarDistintiva = "Escolha " .. tostring(math.floor(DistinctFeature)) .. " característica(s).";
+            										elseif(sheet.fldCarDistintiva == "Escolha 1 característica(s)." or sheet.fldCarDistintiva == "Escolha 2 característica(s)." or sheet.fldCarDistintiva == "Escolha 3 característica(s).") then
+            											sheet.fldCarDistintiva = "Escolha " .. tostring(math.floor(DistinctFeature)) .. " característica(s).";
+            										end;
+            									end;
+        end, obj);
+
+    obj._e_event7 = obj.dataLink54:addEventListener("onChange",
+        function (_, field, oldValue, newValue)
+            if (sheet == nil) then return; end;
+            										CalcularGloriaAnual(); 
+            										sheet.fldHabValor01 = string.format("%02d", sheet.fldHabValor01);
+        end, obj);
+
+    obj._e_event8 = obj.dataLink55:addEventListener("onChange",
+        function (_, field, oldValue, newValue)
+            if (sheet == nil) then return; end;
+            										CalcularGloriaAnual();
+        end, obj);
+
+    obj._e_event9 = obj.dataLink56:addEventListener("onChange",
+        function (_, field, oldValue, newValue)
+            if (sheet == nil) then return; end;
+            										CalcularGloriaAnual(); 
+            										sheet.fldHabValor04 = string.format("%02d", sheet.fldHabValor04);
+        end, obj);
+
+    obj._e_event10 = obj.dataLink57:addEventListener("onChange",
+        function (_, field, oldValue, newValue)
+            if (sheet == nil) then return; end;
+            										CalcularGloriaAnual();
+        end, obj);
+
+    obj._e_event11 = obj.dataLink58:addEventListener("onChange",
+        function (_, field, oldValue, newValue)
+            if (sheet == nil) then return; end;
+            										CalcularGloriaAnual(); 
+            										sheet.fldHabValor07 = string.format("%02d", sheet.fldHabValor07);
+        end, obj);
+
+    obj._e_event12 = obj.dataLink59:addEventListener("onChange",
+        function (_, field, oldValue, newValue)
+            if (sheet == nil) then return; end;
+            										CalcularGloriaAnual();
+        end, obj);
+
+    obj._e_event13 = obj.dataLink60:addEventListener("onChange",
+        function (_, field, oldValue, newValue)
+            if (sheet == nil) then return; end;
+            										CalcularGloriaAnual(); 
+            										sheet.fldHabValor10 = string.format("%02d", sheet.fldHabValor10);
+        end, obj);
+
+    obj._e_event14 = obj.dataLink61:addEventListener("onChange",
+        function (_, field, oldValue, newValue)
+            if (sheet == nil) then return; end;
+            										CalcularGloriaAnual();
+        end, obj);
+
+    obj._e_event15 = obj.dataLink62:addEventListener("onChange",
+        function (_, field, oldValue, newValue)
+            if (sheet == nil) then return; end;
+            										CalcularGloriaAnual(); 
+            										sheet.fldHabValor13 = string.format("%02d", sheet.fldHabValor13);
+        end, obj);
+
+    obj._e_event16 = obj.dataLink63:addEventListener("onChange",
+        function (_, field, oldValue, newValue)
+            if (sheet == nil) then return; end;
+            										CalcularGloriaAnual();
+        end, obj);
+
+    obj._e_event17 = obj.dataLink64:addEventListener("onChange",
+        function (_, field, oldValue, newValue)
+            if (sheet == nil) then return; end;
+            										CalcularGloriaAnual(); 
+            										sheet.fldHabValor02 = string.format("%02d", sheet.fldHabValor02);
+        end, obj);
+
+    obj._e_event18 = obj.dataLink65:addEventListener("onChange",
+        function (_, field, oldValue, newValue)
+            if (sheet == nil) then return; end;
+            										CalcularGloriaAnual();
+        end, obj);
+
+    obj._e_event19 = obj.dataLink66:addEventListener("onChange",
+        function (_, field, oldValue, newValue)
+            if (sheet == nil) then return; end;
+            										CalcularGloriaAnual(); 
+            										sheet.fldHabValor05 = string.format("%02d", sheet.fldHabValor05);
+        end, obj);
+
+    obj._e_event20 = obj.dataLink67:addEventListener("onChange",
+        function (_, field, oldValue, newValue)
+            if (sheet == nil) then return; end;
+            										CalcularGloriaAnual();
+        end, obj);
+
+    obj._e_event21 = obj.dataLink68:addEventListener("onChange",
+        function (_, field, oldValue, newValue)
+            if (sheet == nil) then return; end;
+            										CalcularGloriaAnual(); 
+            										sheet.fldHabValor08 = string.format("%02d", sheet.fldHabValor08);
+        end, obj);
+
+    obj._e_event22 = obj.dataLink69:addEventListener("onChange",
+        function (_, field, oldValue, newValue)
+            if (sheet == nil) then return; end;
+            										CalcularGloriaAnual();
+        end, obj);
+
+    obj._e_event23 = obj.dataLink70:addEventListener("onChange",
+        function (_, field, oldValue, newValue)
+            if (sheet == nil) then return; end;
+            										CalcularGloriaAnual(); 
+            										sheet.fldHabValor11 = string.format("%02d", sheet.fldHabValor11);
+        end, obj);
+
+    obj._e_event24 = obj.dataLink71:addEventListener("onChange",
+        function (_, field, oldValue, newValue)
+            if (sheet == nil) then return; end;
+            										CalcularGloriaAnual();
+        end, obj);
+
+    obj._e_event25 = obj.dataLink72:addEventListener("onChange",
+        function (_, field, oldValue, newValue)
+            if (sheet == nil) then return; end;
+            										CalcularGloriaAnual(); 
+            										sheet.fldHabValor14 = string.format("%02d", sheet.fldHabValor14);
+        end, obj);
+
+    obj._e_event26 = obj.dataLink73:addEventListener("onChange",
+        function (_, field, oldValue, newValue)
+            if (sheet == nil) then return; end;
+            										CalcularGloriaAnual();
+        end, obj);
+
+    obj._e_event27 = obj.dataLink74:addEventListener("onChange",
+        function (_, field, oldValue, newValue)
+            if (sheet == nil) then return; end;
+            										CalcularGloriaAnual(); 
+            										sheet.fldHabValor03 = string.format("%02d", sheet.fldHabValor03);
+        end, obj);
+
+    obj._e_event28 = obj.dataLink75:addEventListener("onChange",
+        function (_, field, oldValue, newValue)
+            if (sheet == nil) then return; end;
+            										CalcularGloriaAnual();
+        end, obj);
+
+    obj._e_event29 = obj.dataLink76:addEventListener("onChange",
+        function (_, field, oldValue, newValue)
+            if (sheet == nil) then return; end;
+            										CalcularGloriaAnual(); 
+            										sheet.fldHabValor06 = string.format("%02d", sheet.fldHabValor06);
+        end, obj);
+
+    obj._e_event30 = obj.dataLink77:addEventListener("onChange",
+        function (_, field, oldValue, newValue)
+            if (sheet == nil) then return; end;
+            										CalcularGloriaAnual();
+        end, obj);
+
+    obj._e_event31 = obj.dataLink78:addEventListener("onChange",
+        function (_, field, oldValue, newValue)
+            if (sheet == nil) then return; end;
+            										CalcularGloriaAnual(); 
+            										sheet.fldHabValor09 = string.format("%02d", sheet.fldHabValor09);
+        end, obj);
+
+    obj._e_event32 = obj.dataLink79:addEventListener("onChange",
+        function (_, field, oldValue, newValue)
+            if (sheet == nil) then return; end;
+            										CalcularGloriaAnual();
+        end, obj);
+
+    obj._e_event33 = obj.dataLink80:addEventListener("onChange",
+        function (_, field, oldValue, newValue)
+            if (sheet == nil) then return; end;
+            										CalcularGloriaAnual(); 
+            										sheet.fldHabValor12 = string.format("%02d", sheet.fldHabValor12);
+        end, obj);
+
+    obj._e_event34 = obj.dataLink81:addEventListener("onChange",
+        function (_, field, oldValue, newValue)
+            if (sheet == nil) then return; end;
+            										CalcularGloriaAnual();
+        end, obj);
+
+    obj._e_event35 = obj.dataLink82:addEventListener("onChange",
+        function (_, field, oldValue, newValue)
+            if (sheet == nil) then return; end;
+            										CalcularGloriaAnual(); 
+            										sheet.fldHabValor15 = string.format("%02d", sheet.fldHabValor15);
+        end, obj);
+
+    obj._e_event36 = obj.dataLink83:addEventListener("onChange",
+        function (_, field, oldValue, newValue)
+            if (sheet == nil) then return; end;
+            										CalcularGloriaAnual();
+        end, obj);
+
+    obj._e_event37 = obj.dataLink84:addEventListener("onChange",
+        function (_, field, oldValue, newValue)
+            if (sheet == nil) then return; end;
+            										CalcularGloriaAnual(); 
+            										sheet.fldHabValor16 = string.format("%02d", sheet.fldHabValor16);
+        end, obj);
+
+    obj._e_event38 = obj.dataLink85:addEventListener("onChange",
+        function (_, field, oldValue, newValue)
+            if (sheet == nil) then return; end;
+            										CalcularGloriaAnual();
+        end, obj);
+
+    obj._e_event39 = obj.dataLink86:addEventListener("onChange",
+        function (_, field, oldValue, newValue)
+            if (sheet == nil) then return; end;
+            										CalcularGloriaAnual(); 
+            										sheet.fldHabValor19 = string.format("%02d", sheet.fldHabValor19);
+        end, obj);
+
+    obj._e_event40 = obj.dataLink87:addEventListener("onChange",
+        function (_, field, oldValue, newValue)
+            if (sheet == nil) then return; end;
+            										CalcularGloriaAnual();
+        end, obj);
+
+    obj._e_event41 = obj.dataLink88:addEventListener("onChange",
+        function (_, field, oldValue, newValue)
+            if (sheet == nil) then return; end;
+            										CalcularGloriaAnual(); 
+            										sheet.fldHabValor22 = string.format("%02d", sheet.fldHabValor22);
+        end, obj);
+
+    obj._e_event42 = obj.dataLink89:addEventListener("onChange",
+        function (_, field, oldValue, newValue)
+            if (sheet == nil) then return; end;
+            										CalcularGloriaAnual();
+        end, obj);
+
+    obj._e_event43 = obj.dataLink90:addEventListener("onChange",
+        function (_, field, oldValue, newValue)
+            if (sheet == nil) then return; end;
+            										CalcularGloriaAnual(); 
+            										sheet.fldHabValor25 = string.format("%02d", sheet.fldHabValor25);
+        end, obj);
+
+    obj._e_event44 = obj.dataLink91:addEventListener("onChange",
+        function (_, field, oldValue, newValue)
+            if (sheet == nil) then return; end;
+            										CalcularGloriaAnual();
+        end, obj);
+
+    obj._e_event45 = obj.dataLink92:addEventListener("onChange",
+        function (_, field, oldValue, newValue)
+            if (sheet == nil) then return; end;
+            										CalcularGloriaAnual(); 
+            										sheet.fldHabValor28 = string.format("%02d", sheet.fldHabValor28);
+        end, obj);
+
+    obj._e_event46 = obj.dataLink93:addEventListener("onChange",
+        function (_, field, oldValue, newValue)
+            if (sheet == nil) then return; end;
+            										CalcularGloriaAnual();
+        end, obj);
+
+    obj._e_event47 = obj.dataLink94:addEventListener("onChange",
+        function (_, field, oldValue, newValue)
+            if (sheet == nil) then return; end;
+            										CalcularGloriaAnual(); 
+            										sheet.fldHabValor31 = string.format("%02d", sheet.fldHabValor31);
+        end, obj);
+
+    obj._e_event48 = obj.dataLink95:addEventListener("onChange",
+        function (_, field, oldValue, newValue)
+            if (sheet == nil) then return; end;
+            										CalcularGloriaAnual();
+        end, obj);
+
+    obj._e_event49 = obj.dataLink96:addEventListener("onChange",
+        function (_, field, oldValue, newValue)
+            if (sheet == nil) then return; end;
+            										CalcularGloriaAnual(); 
+            										sheet.fldHabValor34 = string.format("%02d", sheet.fldHabValor34);
+        end, obj);
+
+    obj._e_event50 = obj.dataLink97:addEventListener("onChange",
+        function (_, field, oldValue, newValue)
+            if (sheet == nil) then return; end;
+            										CalcularGloriaAnual();
+        end, obj);
+
+    obj._e_event51 = obj.dataLink98:addEventListener("onChange",
+        function (_, field, oldValue, newValue)
+            if (sheet == nil) then return; end;
+            										CalcularGloriaAnual(); 
+            										sheet.fldHabValor37 = string.format("%02d", sheet.fldHabValor37);
+        end, obj);
+
+    obj._e_event52 = obj.dataLink99:addEventListener("onChange",
+        function (_, field, oldValue, newValue)
+            if (sheet == nil) then return; end;
+            										CalcularGloriaAnual();
+        end, obj);
+
+    obj._e_event53 = obj.dataLink100:addEventListener("onChange",
+        function (_, field, oldValue, newValue)
+            if (sheet == nil) then return; end;
+            										CalcularGloriaAnual(); 
+            										sheet.fldHabValor40 = string.format("%02d", sheet.fldHabValor40);
+        end, obj);
+
+    obj._e_event54 = obj.dataLink101:addEventListener("onChange",
+        function (_, field, oldValue, newValue)
+            if (sheet == nil) then return; end;
+            										CalcularGloriaAnual();
+        end, obj);
+
+    obj._e_event55 = obj.dataLink102:addEventListener("onChange",
+        function (_, field, oldValue, newValue)
+            if (sheet == nil) then return; end;
+            										CalcularGloriaAnual(); 
+            										sheet.fldHabValor43 = string.format("%02d", sheet.fldHabValor43);
+        end, obj);
+
+    obj._e_event56 = obj.dataLink103:addEventListener("onChange",
+        function (_, field, oldValue, newValue)
+            if (sheet == nil) then return; end;
+            										CalcularGloriaAnual();
+        end, obj);
+
+    obj._e_event57 = obj.dataLink104:addEventListener("onChange",
+        function (_, field, oldValue, newValue)
+            if (sheet == nil) then return; end;
+            										CalcularGloriaAnual(); 
+            										sheet.fldHabValor17 = string.format("%02d", sheet.fldHabValor17);
+        end, obj);
+
+    obj._e_event58 = obj.dataLink105:addEventListener("onChange",
+        function (_, field, oldValue, newValue)
+            if (sheet == nil) then return; end;
+            										CalcularGloriaAnual();
+        end, obj);
+
+    obj._e_event59 = obj.dataLink106:addEventListener("onChange",
+        function (_, field, oldValue, newValue)
+            if (sheet == nil) then return; end;
+            										CalcularGloriaAnual(); 
+            										sheet.fldHabValor20 = string.format("%02d", sheet.fldHabValor20);
+        end, obj);
+
+    obj._e_event60 = obj.dataLink107:addEventListener("onChange",
+        function (_, field, oldValue, newValue)
+            if (sheet == nil) then return; end;
+            										CalcularGloriaAnual();
+        end, obj);
+
+    obj._e_event61 = obj.dataLink108:addEventListener("onChange",
+        function (_, field, oldValue, newValue)
+            if (sheet == nil) then return; end;
+            										CalcularGloriaAnual(); 
+            										sheet.fldHabValor23 = string.format("%02d", sheet.fldHabValor23);
+        end, obj);
+
+    obj._e_event62 = obj.dataLink109:addEventListener("onChange",
+        function (_, field, oldValue, newValue)
+            if (sheet == nil) then return; end;
+            										CalcularGloriaAnual();
+        end, obj);
+
+    obj._e_event63 = obj.dataLink110:addEventListener("onChange",
+        function (_, field, oldValue, newValue)
+            if (sheet == nil) then return; end;
+            										CalcularGloriaAnual(); 
+            										sheet.fldHabValor26 = string.format("%02d", sheet.fldHabValor26);
+        end, obj);
+
+    obj._e_event64 = obj.dataLink111:addEventListener("onChange",
+        function (_, field, oldValue, newValue)
+            if (sheet == nil) then return; end;
+            										CalcularGloriaAnual();
+        end, obj);
+
+    obj._e_event65 = obj.dataLink112:addEventListener("onChange",
+        function (_, field, oldValue, newValue)
+            if (sheet == nil) then return; end;
+            										CalcularGloriaAnual(); 
+            										sheet.fldHabValor29 = string.format("%02d", sheet.fldHabValor29);
+        end, obj);
+
+    obj._e_event66 = obj.dataLink113:addEventListener("onChange",
+        function (_, field, oldValue, newValue)
+            if (sheet == nil) then return; end;
+            										CalcularGloriaAnual();
+        end, obj);
+
+    obj._e_event67 = obj.dataLink114:addEventListener("onChange",
+        function (_, field, oldValue, newValue)
+            if (sheet == nil) then return; end;
+            										CalcularGloriaAnual(); 
+            										sheet.fldHabValor32 = string.format("%02d", sheet.fldHabValor32);
+        end, obj);
+
+    obj._e_event68 = obj.dataLink115:addEventListener("onChange",
+        function (_, field, oldValue, newValue)
+            if (sheet == nil) then return; end;
+            										CalcularGloriaAnual();
+        end, obj);
+
+    obj._e_event69 = obj.dataLink116:addEventListener("onChange",
+        function (_, field, oldValue, newValue)
+            if (sheet == nil) then return; end;
+            										CalcularGloriaAnual(); 
+            										sheet.fldHabValor35 = string.format("%02d", sheet.fldHabValor35);
+        end, obj);
+
+    obj._e_event70 = obj.dataLink117:addEventListener("onChange",
+        function (_, field, oldValue, newValue)
+            if (sheet == nil) then return; end;
+            										CalcularGloriaAnual();
+        end, obj);
+
+    obj._e_event71 = obj.dataLink118:addEventListener("onChange",
+        function (_, field, oldValue, newValue)
+            if (sheet == nil) then return; end;
+            										CalcularGloriaAnual(); 
+            										sheet.fldHabValor38 = string.format("%02d", sheet.fldHabValor38);
+        end, obj);
+
+    obj._e_event72 = obj.dataLink119:addEventListener("onChange",
+        function (_, field, oldValue, newValue)
+            if (sheet == nil) then return; end;
+            										CalcularGloriaAnual();
+        end, obj);
+
+    obj._e_event73 = obj.dataLink120:addEventListener("onChange",
+        function (_, field, oldValue, newValue)
+            if (sheet == nil) then return; end;
+            										CalcularGloriaAnual(); 
+            										sheet.fldHabValor41 = string.format("%02d", sheet.fldHabValor41);
+        end, obj);
+
+    obj._e_event74 = obj.dataLink121:addEventListener("onChange",
+        function (_, field, oldValue, newValue)
+            if (sheet == nil) then return; end;
+            										CalcularGloriaAnual();
+        end, obj);
+
+    obj._e_event75 = obj.dataLink122:addEventListener("onChange",
+        function (_, field, oldValue, newValue)
+            if (sheet == nil) then return; end;
+            										CalcularGloriaAnual(); 
+            										sheet.fldHabValor44 = string.format("%02d", sheet.fldHabValor44);
+        end, obj);
+
+    obj._e_event76 = obj.dataLink123:addEventListener("onChange",
+        function (_, field, oldValue, newValue)
+            if (sheet == nil) then return; end;
+            										CalcularGloriaAnual();
+        end, obj);
+
+    obj._e_event77 = obj.dataLink124:addEventListener("onChange",
+        function (_, field, oldValue, newValue)
+            if (sheet == nil) then return; end;
+            										CalcularGloriaAnual(); 
+            										sheet.fldHabValor18 = string.format("%02d", sheet.fldHabValor18);
+        end, obj);
+
+    obj._e_event78 = obj.dataLink125:addEventListener("onChange",
+        function (_, field, oldValue, newValue)
+            if (sheet == nil) then return; end;
+            										CalcularGloriaAnual();
+        end, obj);
+
+    obj._e_event79 = obj.dataLink126:addEventListener("onChange",
+        function (_, field, oldValue, newValue)
+            if (sheet == nil) then return; end;
+            										CalcularGloriaAnual(); 
+            										sheet.fldHabValor21 = string.format("%02d", sheet.fldHabValor21);
+        end, obj);
+
+    obj._e_event80 = obj.dataLink127:addEventListener("onChange",
+        function (_, field, oldValue, newValue)
+            if (sheet == nil) then return; end;
+            										CalcularGloriaAnual();
+        end, obj);
+
+    obj._e_event81 = obj.dataLink128:addEventListener("onChange",
+        function (_, field, oldValue, newValue)
+            if (sheet == nil) then return; end;
+            										CalcularGloriaAnual(); 
+            										sheet.fldHabValor24 = string.format("%02d", sheet.fldHabValor24);
+        end, obj);
+
+    obj._e_event82 = obj.dataLink129:addEventListener("onChange",
+        function (_, field, oldValue, newValue)
+            if (sheet == nil) then return; end;
+            										CalcularGloriaAnual();
+        end, obj);
+
+    obj._e_event83 = obj.dataLink130:addEventListener("onChange",
+        function (_, field, oldValue, newValue)
+            if (sheet == nil) then return; end;
+            										CalcularGloriaAnual(); 
+            										sheet.fldHabValor27 = string.format("%02d", sheet.fldHabValor27);
+        end, obj);
+
+    obj._e_event84 = obj.dataLink131:addEventListener("onChange",
+        function (_, field, oldValue, newValue)
+            if (sheet == nil) then return; end;
+            										CalcularGloriaAnual();
+        end, obj);
+
+    obj._e_event85 = obj.dataLink132:addEventListener("onChange",
+        function (_, field, oldValue, newValue)
+            if (sheet == nil) then return; end;
+            										CalcularGloriaAnual(); 
+            										sheet.fldHabValor30 = string.format("%02d", sheet.fldHabValor30);
+        end, obj);
+
+    obj._e_event86 = obj.dataLink133:addEventListener("onChange",
+        function (_, field, oldValue, newValue)
+            if (sheet == nil) then return; end;
+            										CalcularGloriaAnual();
+        end, obj);
+
+    obj._e_event87 = obj.dataLink134:addEventListener("onChange",
+        function (_, field, oldValue, newValue)
+            if (sheet == nil) then return; end;
+            										CalcularGloriaAnual(); 
+            										sheet.fldHabValor33 = string.format("%02d", sheet.fldHabValor33);
+        end, obj);
+
+    obj._e_event88 = obj.dataLink135:addEventListener("onChange",
+        function (_, field, oldValue, newValue)
+            if (sheet == nil) then return; end;
+            										CalcularGloriaAnual();
+        end, obj);
+
+    obj._e_event89 = obj.dataLink136:addEventListener("onChange",
+        function (_, field, oldValue, newValue)
+            if (sheet == nil) then return; end;
+            										CalcularGloriaAnual(); 
+            										sheet.fldHabValor36 = string.format("%02d", sheet.fldHabValor36);
+        end, obj);
+
+    obj._e_event90 = obj.dataLink137:addEventListener("onChange",
+        function (_, field, oldValue, newValue)
+            if (sheet == nil) then return; end;
+            										CalcularGloriaAnual();
+        end, obj);
+
+    obj._e_event91 = obj.dataLink138:addEventListener("onChange",
+        function (_, field, oldValue, newValue)
+            if (sheet == nil) then return; end;
+            										CalcularGloriaAnual(); 
+            										sheet.fldHabValor39 = string.format("%02d", sheet.fldHabValor39);
+        end, obj);
+
+    obj._e_event92 = obj.dataLink139:addEventListener("onChange",
+        function (_, field, oldValue, newValue)
+            if (sheet == nil) then return; end;
+            										CalcularGloriaAnual();
+        end, obj);
+
+    obj._e_event93 = obj.dataLink140:addEventListener("onChange",
+        function (_, field, oldValue, newValue)
+            if (sheet == nil) then return; end;
+            										CalcularGloriaAnual(); 
+            										sheet.fldHabValor42 = string.format("%02d", sheet.fldHabValor42);
+        end, obj);
+
+    obj._e_event94 = obj.dataLink141:addEventListener("onChange",
+        function (_, field, oldValue, newValue)
+            if (sheet == nil) then return; end;
+            										CalcularGloriaAnual();
+        end, obj);
+
+    obj._e_event95 = obj.dataLink142:addEventListener("onChange",
+        function (_, field, oldValue, newValue)
+            if (sheet == nil) then return; end;
+            										CalcularGloriaAnual(); 
+            										sheet.fldHabValor45 = string.format("%02d", sheet.fldHabValor45);
+        end, obj);
+
+    obj._e_event96 = obj.dataLink143:addEventListener("onChange",
+        function (_, field, oldValue, newValue)
+            if (sheet == nil) then return; end;
+            										CalcularGloriaAnual();
+        end, obj);
+
+    obj._e_event97 = obj.tab2:addEventListener("onClick",
         function (_)
-            if (sheet ~= nil) then CalcularGloriaAnual(); end;
+            if(sheet==nil) then return; end; CalcularVirtude('');
         end, obj);
 
-    obj._e_event1 = obj.dataLink47:addEventListener("onChange",
+    obj._e_event98 = obj.dataLink146:addEventListener("onUserChange",
         function (_, field, oldValue, newValue)
             if (sheet == nil) then return; end;
-            					sheet.fldTamanho = string.format("%02d", sheet.fldTamanho);
+            										CalcularVirtude("virtude"); CalcularGloriaAnual();
         end, obj);
 
-    obj._e_event2 = obj.dataLink48:addEventListener("onChange",
+    obj._e_event99 = obj.dataLink147:addEventListener("onUserChange",
         function (_, field, oldValue, newValue)
             if (sheet == nil) then return; end;
-            					sheet.fldDestreza = string.format("%02d", sheet.fldDestreza);
+            										CalcularVirtude("vicio"); CalcularGloriaAnual();
         end, obj);
 
-    obj._e_event3 = obj.dataLink49:addEventListener("onChange",
+    obj._e_event100 = obj.dataLink148:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if (sheet == nil) then return; end;
-            					sheet.fldForca = string.format("%02d", sheet.fldForca);
+            										CalcularVirtude(); CalcularGloriaAnual();
         end, obj);
 
-    obj._e_event4 = obj.dataLink50:addEventListener("onChange",
+    obj._e_event101 = obj.dataLink151:addEventListener("onUserChange",
         function (_, field, oldValue, newValue)
             if (sheet == nil) then return; end;
-            					sheet.fldConstituicao = string.format("%02d", sheet.fldConstituicao);
+            										CalcularVirtude("virtude"); CalcularGloriaAnual();
         end, obj);
 
-    obj._e_event5 = obj.dataLink51:addEventListener("onChange",
+    obj._e_event102 = obj.dataLink152:addEventListener("onUserChange",
         function (_, field, oldValue, newValue)
             if (sheet == nil) then return; end;
-            					sheet.fldAparencia = string.format("%02d", sheet.fldAparencia);
+            										CalcularVirtude("vicio"); CalcularGloriaAnual();
         end, obj);
 
-    obj._e_event6 = obj.dataLink52:addEventListener("onChange",
+    obj._e_event103 = obj.dataLink153:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if (sheet == nil) then return; end;
-            				local TAM = (tonumber(sheet.fldTamanho) or 0);
-            				local DES = (tonumber(sheet.fldDestreza) or 0);
-            				local FOR = (tonumber(sheet.fldForca) or 0);
-            				local CON = (tonumber(sheet.fldConstituicao) or 0);
-            				
-            				sheet.fldDano = tostring(math.floor(((TAM+FOR)/6)+0.5)) .. "d6";
-            				sheet.fldMovimento = math.floor(((DES+FOR)/10)+0.5); 
-            				sheet.fldRegen = math.floor(((CON+FOR)/10)+0.5); 
-            				sheet.fldHP = CON+TAM;
-            				sheet.fldInconsciente = math.floor((CON+TAM/4)+0.5);
+            										CalcularVirtude(); CalcularGloriaAnual();
         end, obj);
 
-    obj._e_event7 = obj.dataLink53:addEventListener("onUserChange",
+    obj._e_event104 = obj.dataLink156:addEventListener("onUserChange",
         function (_, field, oldValue, newValue)
             if (sheet == nil) then return; end;
-            				if((tonumber(sheet.fldAparencia)) ~= 0) then
-            					local APA = (tonumber(sheet.fldAparencia) or 0);
-            					local DistinctFeature = 0;
-            					
-            					if (APA < 7) then DistinctFeature = 3;
-            					elseif (APA > 6 and APA < 10) then DistinctFeature = 2; 
-            					elseif (APA > 9 and APA < 13) then DistinctFeature = 1; 
-            					elseif (APA > 12 and APA < 17) then DistinctFeature = 2; 
-            					elseif (APA > 16) then DistinctFeature = 3; 
-            					end;
-            					
-            					if(sheet.fldCarDistintiva == "" or sheet.fldCarDistintiva == "—") then
-            						sheet.fldCarDistintiva = "Escolha " .. tostring(math.floor(DistinctFeature)) .. " característica(s).";
-            					elseif(sheet.fldCarDistintiva == "Escolha 1 característica(s)." or sheet.fldCarDistintiva == "Escolha 2 característica(s)." or sheet.fldCarDistintiva == "Escolha 3 característica(s).") then
-            						sheet.fldCarDistintiva = "Escolha " .. tostring(math.floor(DistinctFeature)) .. " característica(s).";
-            					end;
-            				end;
+            										CalcularVirtude("virtude"); CalcularGloriaAnual();
         end, obj);
 
-    obj._e_event8 = obj.dataLink54:addEventListener("onChange",
+    obj._e_event105 = obj.dataLink157:addEventListener("onUserChange",
         function (_, field, oldValue, newValue)
             if (sheet == nil) then return; end;
-            					CalcularGloriaAnual(); 
-            					sheet.fldHabValor01 = string.format("%02d", sheet.fldHabValor01);
+            										CalcularVirtude("vicio"); CalcularGloriaAnual();
         end, obj);
 
-    obj._e_event9 = obj.dataLink55:addEventListener("onChange",
+    obj._e_event106 = obj.dataLink158:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if (sheet == nil) then return; end;
-            					CalcularGloriaAnual();
+            										CalcularVirtude(); CalcularGloriaAnual();
         end, obj);
 
-    obj._e_event10 = obj.dataLink56:addEventListener("onChange",
+    obj._e_event107 = obj.dataLink161:addEventListener("onUserChange",
         function (_, field, oldValue, newValue)
             if (sheet == nil) then return; end;
-            					CalcularGloriaAnual(); 
-            					sheet.fldHabValor04 = string.format("%02d", sheet.fldHabValor04);
+            										CalcularVirtude("virtude"); CalcularGloriaAnual();
         end, obj);
 
-    obj._e_event11 = obj.dataLink57:addEventListener("onChange",
+    obj._e_event108 = obj.dataLink162:addEventListener("onUserChange",
         function (_, field, oldValue, newValue)
             if (sheet == nil) then return; end;
-            					CalcularGloriaAnual();
+            										CalcularVirtude("vicio"); CalcularGloriaAnual();
         end, obj);
 
-    obj._e_event12 = obj.dataLink58:addEventListener("onChange",
+    obj._e_event109 = obj.dataLink163:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if (sheet == nil) then return; end;
-            					CalcularGloriaAnual(); 
-            					sheet.fldHabValor07 = string.format("%02d", sheet.fldHabValor07);
+            										CalcularVirtude(); CalcularGloriaAnual();
         end, obj);
 
-    obj._e_event13 = obj.dataLink59:addEventListener("onChange",
+    obj._e_event110 = obj.dataLink166:addEventListener("onUserChange",
         function (_, field, oldValue, newValue)
             if (sheet == nil) then return; end;
-            					CalcularGloriaAnual();
+            										CalcularVirtude("virtude"); CalcularGloriaAnual();
         end, obj);
 
-    obj._e_event14 = obj.dataLink60:addEventListener("onChange",
+    obj._e_event111 = obj.dataLink167:addEventListener("onUserChange",
         function (_, field, oldValue, newValue)
             if (sheet == nil) then return; end;
-            					CalcularGloriaAnual(); 
-            					sheet.fldHabValor10 = string.format("%02d", sheet.fldHabValor10);
+            										CalcularVirtude("vicio"); CalcularGloriaAnual();
         end, obj);
 
-    obj._e_event15 = obj.dataLink61:addEventListener("onChange",
+    obj._e_event112 = obj.dataLink168:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if (sheet == nil) then return; end;
-            					CalcularGloriaAnual();
+            										CalcularVirtude(); CalcularGloriaAnual();
         end, obj);
 
-    obj._e_event16 = obj.dataLink62:addEventListener("onChange",
+    obj._e_event113 = obj.dataLink171:addEventListener("onUserChange",
         function (_, field, oldValue, newValue)
             if (sheet == nil) then return; end;
-            					CalcularGloriaAnual(); 
-            					sheet.fldHabValor13 = string.format("%02d", sheet.fldHabValor13);
+            										CalcularVirtude("virtude"); CalcularGloriaAnual();
         end, obj);
 
-    obj._e_event17 = obj.dataLink63:addEventListener("onChange",
+    obj._e_event114 = obj.dataLink172:addEventListener("onUserChange",
         function (_, field, oldValue, newValue)
             if (sheet == nil) then return; end;
-            					CalcularGloriaAnual();
+            										CalcularVirtude("vicio"); CalcularGloriaAnual();
         end, obj);
 
-    obj._e_event18 = obj.dataLink64:addEventListener("onChange",
+    obj._e_event115 = obj.dataLink173:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if (sheet == nil) then return; end;
-            					CalcularGloriaAnual(); 
-            					sheet.fldHabValor02 = string.format("%02d", sheet.fldHabValor02);
+            										CalcularVirtude(); CalcularGloriaAnual();
         end, obj);
 
-    obj._e_event19 = obj.dataLink65:addEventListener("onChange",
+    obj._e_event116 = obj.dataLink176:addEventListener("onUserChange",
         function (_, field, oldValue, newValue)
             if (sheet == nil) then return; end;
-            					CalcularGloriaAnual();
+            										CalcularVirtude("virtude"); CalcularGloriaAnual();
         end, obj);
 
-    obj._e_event20 = obj.dataLink66:addEventListener("onChange",
+    obj._e_event117 = obj.dataLink177:addEventListener("onUserChange",
         function (_, field, oldValue, newValue)
             if (sheet == nil) then return; end;
-            					CalcularGloriaAnual(); 
-            					sheet.fldHabValor05 = string.format("%02d", sheet.fldHabValor05);
+            										CalcularVirtude("vicio"); CalcularGloriaAnual();
         end, obj);
 
-    obj._e_event21 = obj.dataLink67:addEventListener("onChange",
+    obj._e_event118 = obj.dataLink178:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if (sheet == nil) then return; end;
-            					CalcularGloriaAnual();
+            										CalcularVirtude(); CalcularGloriaAnual();
         end, obj);
 
-    obj._e_event22 = obj.dataLink68:addEventListener("onChange",
+    obj._e_event119 = obj.dataLink181:addEventListener("onUserChange",
         function (_, field, oldValue, newValue)
             if (sheet == nil) then return; end;
-            					CalcularGloriaAnual(); 
-            					sheet.fldHabValor08 = string.format("%02d", sheet.fldHabValor08);
+            										CalcularVirtude("virtude"); CalcularGloriaAnual();
         end, obj);
 
-    obj._e_event23 = obj.dataLink69:addEventListener("onChange",
+    obj._e_event120 = obj.dataLink182:addEventListener("onUserChange",
         function (_, field, oldValue, newValue)
             if (sheet == nil) then return; end;
-            					CalcularGloriaAnual();
+            										CalcularVirtude("vicio"); CalcularGloriaAnual();
         end, obj);
 
-    obj._e_event24 = obj.dataLink70:addEventListener("onChange",
+    obj._e_event121 = obj.dataLink183:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if (sheet == nil) then return; end;
-            					CalcularGloriaAnual(); 
-            					sheet.fldHabValor11 = string.format("%02d", sheet.fldHabValor11);
+            										CalcularVirtude(); CalcularGloriaAnual();
         end, obj);
 
-    obj._e_event25 = obj.dataLink71:addEventListener("onChange",
+    obj._e_event122 = obj.dataLink186:addEventListener("onUserChange",
         function (_, field, oldValue, newValue)
             if (sheet == nil) then return; end;
-            					CalcularGloriaAnual();
+            										CalcularVirtude("virtude"); CalcularGloriaAnual();
         end, obj);
 
-    obj._e_event26 = obj.dataLink72:addEventListener("onChange",
+    obj._e_event123 = obj.dataLink187:addEventListener("onUserChange",
         function (_, field, oldValue, newValue)
             if (sheet == nil) then return; end;
-            					CalcularGloriaAnual(); 
-            					sheet.fldHabValor14 = string.format("%02d", sheet.fldHabValor14);
+            										CalcularVirtude("vicio"); CalcularGloriaAnual();
         end, obj);
 
-    obj._e_event27 = obj.dataLink73:addEventListener("onChange",
+    obj._e_event124 = obj.dataLink188:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if (sheet == nil) then return; end;
-            					CalcularGloriaAnual();
+            										CalcularVirtude(); CalcularGloriaAnual();
         end, obj);
 
-    obj._e_event28 = obj.dataLink74:addEventListener("onChange",
+    obj._e_event125 = obj.dataLink191:addEventListener("onUserChange",
         function (_, field, oldValue, newValue)
             if (sheet == nil) then return; end;
-            					CalcularGloriaAnual(); 
-            					sheet.fldHabValor03 = string.format("%02d", sheet.fldHabValor03);
+            										CalcularVirtude("virtude"); CalcularGloriaAnual();
         end, obj);
 
-    obj._e_event29 = obj.dataLink75:addEventListener("onChange",
+    obj._e_event126 = obj.dataLink192:addEventListener("onUserChange",
         function (_, field, oldValue, newValue)
             if (sheet == nil) then return; end;
-            					CalcularGloriaAnual();
+            										CalcularVirtude("vicio"); CalcularGloriaAnual();
         end, obj);
 
-    obj._e_event30 = obj.dataLink76:addEventListener("onChange",
+    obj._e_event127 = obj.dataLink193:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if (sheet == nil) then return; end;
-            					CalcularGloriaAnual(); 
-            					sheet.fldHabValor06 = string.format("%02d", sheet.fldHabValor06);
+            										CalcularVirtude(); CalcularGloriaAnual();
         end, obj);
 
-    obj._e_event31 = obj.dataLink77:addEventListener("onChange",
+    obj._e_event128 = obj.dataLink196:addEventListener("onUserChange",
         function (_, field, oldValue, newValue)
             if (sheet == nil) then return; end;
-            					CalcularGloriaAnual();
+            										CalcularVirtude("virtude"); CalcularGloriaAnual();
         end, obj);
 
-    obj._e_event32 = obj.dataLink78:addEventListener("onChange",
+    obj._e_event129 = obj.dataLink197:addEventListener("onUserChange",
         function (_, field, oldValue, newValue)
             if (sheet == nil) then return; end;
-            					CalcularGloriaAnual(); 
-            					sheet.fldHabValor09 = string.format("%02d", sheet.fldHabValor09);
+            										CalcularVirtude("vicio"); CalcularGloriaAnual();
         end, obj);
 
-    obj._e_event33 = obj.dataLink79:addEventListener("onChange",
+    obj._e_event130 = obj.dataLink198:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if (sheet == nil) then return; end;
-            					CalcularGloriaAnual();
+            										CalcularVirtude(); CalcularGloriaAnual();
         end, obj);
 
-    obj._e_event34 = obj.dataLink80:addEventListener("onChange",
+    obj._e_event131 = obj.dataLink201:addEventListener("onUserChange",
         function (_, field, oldValue, newValue)
             if (sheet == nil) then return; end;
-            					CalcularGloriaAnual(); 
-            					sheet.fldHabValor12 = string.format("%02d", sheet.fldHabValor12);
+            										CalcularVirtude("virtude"); CalcularGloriaAnual();
         end, obj);
 
-    obj._e_event35 = obj.dataLink81:addEventListener("onChange",
+    obj._e_event132 = obj.dataLink202:addEventListener("onUserChange",
         function (_, field, oldValue, newValue)
             if (sheet == nil) then return; end;
-            					CalcularGloriaAnual();
+            										CalcularVirtude("vicio"); CalcularGloriaAnual();
         end, obj);
 
-    obj._e_event36 = obj.dataLink82:addEventListener("onChange",
+    obj._e_event133 = obj.dataLink203:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if (sheet == nil) then return; end;
-            					CalcularGloriaAnual(); 
-            					sheet.fldHabValor15 = string.format("%02d", sheet.fldHabValor15);
+            										CalcularVirtude(); CalcularGloriaAnual();
         end, obj);
 
-    obj._e_event37 = obj.dataLink83:addEventListener("onChange",
+    obj._e_event134 = obj.dataLink206:addEventListener("onUserChange",
         function (_, field, oldValue, newValue)
             if (sheet == nil) then return; end;
-            					CalcularGloriaAnual();
+            										CalcularVirtude("virtude"); CalcularGloriaAnual();
         end, obj);
 
-    obj._e_event38 = obj.dataLink84:addEventListener("onChange",
+    obj._e_event135 = obj.dataLink207:addEventListener("onUserChange",
         function (_, field, oldValue, newValue)
             if (sheet == nil) then return; end;
-            					CalcularGloriaAnual(); 
-            					sheet.fldHabValor16 = string.format("%02d", sheet.fldHabValor16);
+            										CalcularVirtude("vicio"); CalcularGloriaAnual();
         end, obj);
 
-    obj._e_event39 = obj.dataLink85:addEventListener("onChange",
+    obj._e_event136 = obj.dataLink208:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if (sheet == nil) then return; end;
-            					CalcularGloriaAnual();
+            										CalcularVirtude(); CalcularGloriaAnual();
         end, obj);
 
-    obj._e_event40 = obj.dataLink86:addEventListener("onChange",
-        function (_, field, oldValue, newValue)
-            if (sheet == nil) then return; end;
-            					CalcularGloriaAnual(); 
-            					sheet.fldHabValor19 = string.format("%02d", sheet.fldHabValor19);
-        end, obj);
-
-    obj._e_event41 = obj.dataLink87:addEventListener("onChange",
-        function (_, field, oldValue, newValue)
-            if (sheet == nil) then return; end;
-            					CalcularGloriaAnual();
-        end, obj);
-
-    obj._e_event42 = obj.dataLink88:addEventListener("onChange",
-        function (_, field, oldValue, newValue)
-            if (sheet == nil) then return; end;
-            					CalcularGloriaAnual(); 
-            					sheet.fldHabValor22 = string.format("%02d", sheet.fldHabValor22);
-        end, obj);
-
-    obj._e_event43 = obj.dataLink89:addEventListener("onChange",
-        function (_, field, oldValue, newValue)
-            if (sheet == nil) then return; end;
-            					CalcularGloriaAnual();
-        end, obj);
-
-    obj._e_event44 = obj.dataLink90:addEventListener("onChange",
-        function (_, field, oldValue, newValue)
-            if (sheet == nil) then return; end;
-            					CalcularGloriaAnual(); 
-            					sheet.fldHabValor25 = string.format("%02d", sheet.fldHabValor25);
-        end, obj);
-
-    obj._e_event45 = obj.dataLink91:addEventListener("onChange",
-        function (_, field, oldValue, newValue)
-            if (sheet == nil) then return; end;
-            					CalcularGloriaAnual();
-        end, obj);
-
-    obj._e_event46 = obj.dataLink92:addEventListener("onChange",
-        function (_, field, oldValue, newValue)
-            if (sheet == nil) then return; end;
-            					CalcularGloriaAnual(); 
-            					sheet.fldHabValor28 = string.format("%02d", sheet.fldHabValor28);
-        end, obj);
-
-    obj._e_event47 = obj.dataLink93:addEventListener("onChange",
-        function (_, field, oldValue, newValue)
-            if (sheet == nil) then return; end;
-            					CalcularGloriaAnual();
-        end, obj);
-
-    obj._e_event48 = obj.dataLink94:addEventListener("onChange",
-        function (_, field, oldValue, newValue)
-            if (sheet == nil) then return; end;
-            					CalcularGloriaAnual(); 
-            					sheet.fldHabValor31 = string.format("%02d", sheet.fldHabValor31);
-        end, obj);
-
-    obj._e_event49 = obj.dataLink95:addEventListener("onChange",
-        function (_, field, oldValue, newValue)
-            if (sheet == nil) then return; end;
-            					CalcularGloriaAnual();
-        end, obj);
-
-    obj._e_event50 = obj.dataLink96:addEventListener("onChange",
-        function (_, field, oldValue, newValue)
-            if (sheet == nil) then return; end;
-            					CalcularGloriaAnual(); 
-            					sheet.fldHabValor34 = string.format("%02d", sheet.fldHabValor34);
-        end, obj);
-
-    obj._e_event51 = obj.dataLink97:addEventListener("onChange",
-        function (_, field, oldValue, newValue)
-            if (sheet == nil) then return; end;
-            					CalcularGloriaAnual();
-        end, obj);
-
-    obj._e_event52 = obj.dataLink98:addEventListener("onChange",
-        function (_, field, oldValue, newValue)
-            if (sheet == nil) then return; end;
-            					CalcularGloriaAnual(); 
-            					sheet.fldHabValor37 = string.format("%02d", sheet.fldHabValor37);
-        end, obj);
-
-    obj._e_event53 = obj.dataLink99:addEventListener("onChange",
-        function (_, field, oldValue, newValue)
-            if (sheet == nil) then return; end;
-            					CalcularGloriaAnual();
-        end, obj);
-
-    obj._e_event54 = obj.dataLink100:addEventListener("onChange",
-        function (_, field, oldValue, newValue)
-            if (sheet == nil) then return; end;
-            					CalcularGloriaAnual(); 
-            					sheet.fldHabValor40 = string.format("%02d", sheet.fldHabValor40);
-        end, obj);
-
-    obj._e_event55 = obj.dataLink101:addEventListener("onChange",
-        function (_, field, oldValue, newValue)
-            if (sheet == nil) then return; end;
-            					CalcularGloriaAnual();
-        end, obj);
-
-    obj._e_event56 = obj.dataLink102:addEventListener("onChange",
-        function (_, field, oldValue, newValue)
-            if (sheet == nil) then return; end;
-            					CalcularGloriaAnual(); 
-            					sheet.fldHabValor43 = string.format("%02d", sheet.fldHabValor43);
-        end, obj);
-
-    obj._e_event57 = obj.dataLink103:addEventListener("onChange",
-        function (_, field, oldValue, newValue)
-            if (sheet == nil) then return; end;
-            					CalcularGloriaAnual();
-        end, obj);
-
-    obj._e_event58 = obj.dataLink104:addEventListener("onChange",
-        function (_, field, oldValue, newValue)
-            if (sheet == nil) then return; end;
-            					CalcularGloriaAnual(); 
-            					sheet.fldHabValor17 = string.format("%02d", sheet.fldHabValor17);
-        end, obj);
-
-    obj._e_event59 = obj.dataLink105:addEventListener("onChange",
-        function (_, field, oldValue, newValue)
-            if (sheet == nil) then return; end;
-            					CalcularGloriaAnual();
-        end, obj);
-
-    obj._e_event60 = obj.dataLink106:addEventListener("onChange",
-        function (_, field, oldValue, newValue)
-            if (sheet == nil) then return; end;
-            					CalcularGloriaAnual(); 
-            					sheet.fldHabValor20 = string.format("%02d", sheet.fldHabValor20);
-        end, obj);
-
-    obj._e_event61 = obj.dataLink107:addEventListener("onChange",
-        function (_, field, oldValue, newValue)
-            if (sheet == nil) then return; end;
-            					CalcularGloriaAnual();
-        end, obj);
-
-    obj._e_event62 = obj.dataLink108:addEventListener("onChange",
-        function (_, field, oldValue, newValue)
-            if (sheet == nil) then return; end;
-            					CalcularGloriaAnual(); 
-            					sheet.fldHabValor23 = string.format("%02d", sheet.fldHabValor23);
-        end, obj);
-
-    obj._e_event63 = obj.dataLink109:addEventListener("onChange",
-        function (_, field, oldValue, newValue)
-            if (sheet == nil) then return; end;
-            					CalcularGloriaAnual();
-        end, obj);
-
-    obj._e_event64 = obj.dataLink110:addEventListener("onChange",
-        function (_, field, oldValue, newValue)
-            if (sheet == nil) then return; end;
-            					CalcularGloriaAnual(); 
-            					sheet.fldHabValor26 = string.format("%02d", sheet.fldHabValor26);
-        end, obj);
-
-    obj._e_event65 = obj.dataLink111:addEventListener("onChange",
-        function (_, field, oldValue, newValue)
-            if (sheet == nil) then return; end;
-            					CalcularGloriaAnual();
-        end, obj);
-
-    obj._e_event66 = obj.dataLink112:addEventListener("onChange",
-        function (_, field, oldValue, newValue)
-            if (sheet == nil) then return; end;
-            					CalcularGloriaAnual(); 
-            					sheet.fldHabValor29 = string.format("%02d", sheet.fldHabValor29);
-        end, obj);
-
-    obj._e_event67 = obj.dataLink113:addEventListener("onChange",
-        function (_, field, oldValue, newValue)
-            if (sheet == nil) then return; end;
-            					CalcularGloriaAnual();
-        end, obj);
-
-    obj._e_event68 = obj.dataLink114:addEventListener("onChange",
-        function (_, field, oldValue, newValue)
-            if (sheet == nil) then return; end;
-            					CalcularGloriaAnual(); 
-            					sheet.fldHabValor32 = string.format("%02d", sheet.fldHabValor32);
-        end, obj);
-
-    obj._e_event69 = obj.dataLink115:addEventListener("onChange",
-        function (_, field, oldValue, newValue)
-            if (sheet == nil) then return; end;
-            					CalcularGloriaAnual();
-        end, obj);
-
-    obj._e_event70 = obj.dataLink116:addEventListener("onChange",
-        function (_, field, oldValue, newValue)
-            if (sheet == nil) then return; end;
-            					CalcularGloriaAnual(); 
-            					sheet.fldHabValor35 = string.format("%02d", sheet.fldHabValor35);
-        end, obj);
-
-    obj._e_event71 = obj.dataLink117:addEventListener("onChange",
-        function (_, field, oldValue, newValue)
-            if (sheet == nil) then return; end;
-            					CalcularGloriaAnual();
-        end, obj);
-
-    obj._e_event72 = obj.dataLink118:addEventListener("onChange",
-        function (_, field, oldValue, newValue)
-            if (sheet == nil) then return; end;
-            					CalcularGloriaAnual(); 
-            					sheet.fldHabValor38 = string.format("%02d", sheet.fldHabValor38);
-        end, obj);
-
-    obj._e_event73 = obj.dataLink119:addEventListener("onChange",
-        function (_, field, oldValue, newValue)
-            if (sheet == nil) then return; end;
-            					CalcularGloriaAnual();
-        end, obj);
-
-    obj._e_event74 = obj.dataLink120:addEventListener("onChange",
-        function (_, field, oldValue, newValue)
-            if (sheet == nil) then return; end;
-            					CalcularGloriaAnual(); 
-            					sheet.fldHabValor41 = string.format("%02d", sheet.fldHabValor41);
-        end, obj);
-
-    obj._e_event75 = obj.dataLink121:addEventListener("onChange",
-        function (_, field, oldValue, newValue)
-            if (sheet == nil) then return; end;
-            					CalcularGloriaAnual();
-        end, obj);
-
-    obj._e_event76 = obj.dataLink122:addEventListener("onChange",
-        function (_, field, oldValue, newValue)
-            if (sheet == nil) then return; end;
-            					CalcularGloriaAnual(); 
-            					sheet.fldHabValor44 = string.format("%02d", sheet.fldHabValor44);
-        end, obj);
-
-    obj._e_event77 = obj.dataLink123:addEventListener("onChange",
-        function (_, field, oldValue, newValue)
-            if (sheet == nil) then return; end;
-            					CalcularGloriaAnual();
-        end, obj);
-
-    obj._e_event78 = obj.dataLink124:addEventListener("onChange",
-        function (_, field, oldValue, newValue)
-            if (sheet == nil) then return; end;
-            					CalcularGloriaAnual(); 
-            					sheet.fldHabValor18 = string.format("%02d", sheet.fldHabValor18);
-        end, obj);
-
-    obj._e_event79 = obj.dataLink125:addEventListener("onChange",
-        function (_, field, oldValue, newValue)
-            if (sheet == nil) then return; end;
-            					CalcularGloriaAnual();
-        end, obj);
-
-    obj._e_event80 = obj.dataLink126:addEventListener("onChange",
-        function (_, field, oldValue, newValue)
-            if (sheet == nil) then return; end;
-            					CalcularGloriaAnual(); 
-            					sheet.fldHabValor21 = string.format("%02d", sheet.fldHabValor21);
-        end, obj);
-
-    obj._e_event81 = obj.dataLink127:addEventListener("onChange",
-        function (_, field, oldValue, newValue)
-            if (sheet == nil) then return; end;
-            					CalcularGloriaAnual();
-        end, obj);
-
-    obj._e_event82 = obj.dataLink128:addEventListener("onChange",
-        function (_, field, oldValue, newValue)
-            if (sheet == nil) then return; end;
-            					CalcularGloriaAnual(); 
-            					sheet.fldHabValor24 = string.format("%02d", sheet.fldHabValor24);
-        end, obj);
-
-    obj._e_event83 = obj.dataLink129:addEventListener("onChange",
-        function (_, field, oldValue, newValue)
-            if (sheet == nil) then return; end;
-            					CalcularGloriaAnual();
-        end, obj);
-
-    obj._e_event84 = obj.dataLink130:addEventListener("onChange",
-        function (_, field, oldValue, newValue)
-            if (sheet == nil) then return; end;
-            					CalcularGloriaAnual(); 
-            					sheet.fldHabValor27 = string.format("%02d", sheet.fldHabValor27);
-        end, obj);
-
-    obj._e_event85 = obj.dataLink131:addEventListener("onChange",
-        function (_, field, oldValue, newValue)
-            if (sheet == nil) then return; end;
-            					CalcularGloriaAnual();
-        end, obj);
-
-    obj._e_event86 = obj.dataLink132:addEventListener("onChange",
-        function (_, field, oldValue, newValue)
-            if (sheet == nil) then return; end;
-            					CalcularGloriaAnual(); 
-            					sheet.fldHabValor30 = string.format("%02d", sheet.fldHabValor30);
-        end, obj);
-
-    obj._e_event87 = obj.dataLink133:addEventListener("onChange",
-        function (_, field, oldValue, newValue)
-            if (sheet == nil) then return; end;
-            					CalcularGloriaAnual();
-        end, obj);
-
-    obj._e_event88 = obj.dataLink134:addEventListener("onChange",
-        function (_, field, oldValue, newValue)
-            if (sheet == nil) then return; end;
-            					CalcularGloriaAnual(); 
-            					sheet.fldHabValor33 = string.format("%02d", sheet.fldHabValor33);
-        end, obj);
-
-    obj._e_event89 = obj.dataLink135:addEventListener("onChange",
-        function (_, field, oldValue, newValue)
-            if (sheet == nil) then return; end;
-            					CalcularGloriaAnual();
-        end, obj);
-
-    obj._e_event90 = obj.dataLink136:addEventListener("onChange",
-        function (_, field, oldValue, newValue)
-            if (sheet == nil) then return; end;
-            					CalcularGloriaAnual(); 
-            					sheet.fldHabValor36 = string.format("%02d", sheet.fldHabValor36);
-        end, obj);
-
-    obj._e_event91 = obj.dataLink137:addEventListener("onChange",
-        function (_, field, oldValue, newValue)
-            if (sheet == nil) then return; end;
-            					CalcularGloriaAnual();
-        end, obj);
-
-    obj._e_event92 = obj.dataLink138:addEventListener("onChange",
-        function (_, field, oldValue, newValue)
-            if (sheet == nil) then return; end;
-            					CalcularGloriaAnual(); 
-            					sheet.fldHabValor39 = string.format("%02d", sheet.fldHabValor39);
-        end, obj);
-
-    obj._e_event93 = obj.dataLink139:addEventListener("onChange",
-        function (_, field, oldValue, newValue)
-            if (sheet == nil) then return; end;
-            					CalcularGloriaAnual();
-        end, obj);
-
-    obj._e_event94 = obj.dataLink140:addEventListener("onChange",
-        function (_, field, oldValue, newValue)
-            if (sheet == nil) then return; end;
-            					CalcularGloriaAnual(); 
-            					sheet.fldHabValor42 = string.format("%02d", sheet.fldHabValor42);
-        end, obj);
-
-    obj._e_event95 = obj.dataLink141:addEventListener("onChange",
-        function (_, field, oldValue, newValue)
-            if (sheet == nil) then return; end;
-            					CalcularGloriaAnual();
-        end, obj);
-
-    obj._e_event96 = obj.dataLink142:addEventListener("onChange",
-        function (_, field, oldValue, newValue)
-            if (sheet == nil) then return; end;
-            					CalcularGloriaAnual(); 
-            					sheet.fldHabValor45 = string.format("%02d", sheet.fldHabValor45);
-        end, obj);
-
-    obj._e_event97 = obj.dataLink143:addEventListener("onChange",
-        function (_, field, oldValue, newValue)
-            if (sheet == nil) then return; end;
-            					CalcularGloriaAnual();
-        end, obj);
-
-    obj._e_event98 = obj.frmTeP:addEventListener("onShow",
-        function (_)
-            if (sheet ~= nil) then CalcularVirtude('virtude'); end;
-        end, obj);
-
-    obj._e_event99 = obj.dataLink146:addEventListener("onUserChange",
-        function (_, field, oldValue, newValue)
-            if (sheet == nil) then return; end;
-            					CalcularVirtude("virtude"); CalcularGloriaAnual();
-        end, obj);
-
-    obj._e_event100 = obj.dataLink147:addEventListener("onUserChange",
-        function (_, field, oldValue, newValue)
-            if (sheet == nil) then return; end;
-            					CalcularVirtude("vicio"); CalcularGloriaAnual();
-        end, obj);
-
-    obj._e_event101 = obj.dataLink148:addEventListener("onChange",
-        function (_, field, oldValue, newValue)
-            if (sheet == nil) then return; end;
-            					CalcularVirtude(); CalcularGloriaAnual();
-        end, obj);
-
-    obj._e_event102 = obj.dataLink151:addEventListener("onUserChange",
-        function (_, field, oldValue, newValue)
-            if (sheet == nil) then return; end;
-            					CalcularVirtude("virtude"); CalcularGloriaAnual();
-        end, obj);
-
-    obj._e_event103 = obj.dataLink152:addEventListener("onUserChange",
-        function (_, field, oldValue, newValue)
-            if (sheet == nil) then return; end;
-            					CalcularVirtude("vicio"); CalcularGloriaAnual();
-        end, obj);
-
-    obj._e_event104 = obj.dataLink153:addEventListener("onChange",
-        function (_, field, oldValue, newValue)
-            if (sheet == nil) then return; end;
-            					CalcularVirtude(); CalcularGloriaAnual();
-        end, obj);
-
-    obj._e_event105 = obj.dataLink156:addEventListener("onUserChange",
-        function (_, field, oldValue, newValue)
-            if (sheet == nil) then return; end;
-            					CalcularVirtude("virtude"); CalcularGloriaAnual();
-        end, obj);
-
-    obj._e_event106 = obj.dataLink157:addEventListener("onUserChange",
-        function (_, field, oldValue, newValue)
-            if (sheet == nil) then return; end;
-            					CalcularVirtude("vicio"); CalcularGloriaAnual();
-        end, obj);
-
-    obj._e_event107 = obj.dataLink158:addEventListener("onChange",
-        function (_, field, oldValue, newValue)
-            if (sheet == nil) then return; end;
-            					CalcularVirtude(); CalcularGloriaAnual();
-        end, obj);
-
-    obj._e_event108 = obj.dataLink161:addEventListener("onUserChange",
-        function (_, field, oldValue, newValue)
-            if (sheet == nil) then return; end;
-            					CalcularVirtude("virtude"); CalcularGloriaAnual();
-        end, obj);
-
-    obj._e_event109 = obj.dataLink162:addEventListener("onUserChange",
-        function (_, field, oldValue, newValue)
-            if (sheet == nil) then return; end;
-            					CalcularVirtude("vicio"); CalcularGloriaAnual();
-        end, obj);
-
-    obj._e_event110 = obj.dataLink163:addEventListener("onChange",
-        function (_, field, oldValue, newValue)
-            if (sheet == nil) then return; end;
-            					CalcularVirtude(); CalcularGloriaAnual();
-        end, obj);
-
-    obj._e_event111 = obj.dataLink166:addEventListener("onUserChange",
-        function (_, field, oldValue, newValue)
-            if (sheet == nil) then return; end;
-            					CalcularVirtude("virtude"); CalcularGloriaAnual();
-        end, obj);
-
-    obj._e_event112 = obj.dataLink167:addEventListener("onUserChange",
-        function (_, field, oldValue, newValue)
-            if (sheet == nil) then return; end;
-            					CalcularVirtude("vicio"); CalcularGloriaAnual();
-        end, obj);
-
-    obj._e_event113 = obj.dataLink168:addEventListener("onChange",
-        function (_, field, oldValue, newValue)
-            if (sheet == nil) then return; end;
-            					CalcularVirtude(); CalcularGloriaAnual();
-        end, obj);
-
-    obj._e_event114 = obj.dataLink171:addEventListener("onUserChange",
-        function (_, field, oldValue, newValue)
-            if (sheet == nil) then return; end;
-            					CalcularVirtude("virtude"); CalcularGloriaAnual();
-        end, obj);
-
-    obj._e_event115 = obj.dataLink172:addEventListener("onUserChange",
-        function (_, field, oldValue, newValue)
-            if (sheet == nil) then return; end;
-            					CalcularVirtude("vicio"); CalcularGloriaAnual();
-        end, obj);
-
-    obj._e_event116 = obj.dataLink173:addEventListener("onChange",
-        function (_, field, oldValue, newValue)
-            if (sheet == nil) then return; end;
-            					CalcularVirtude(); CalcularGloriaAnual();
-        end, obj);
-
-    obj._e_event117 = obj.dataLink176:addEventListener("onUserChange",
-        function (_, field, oldValue, newValue)
-            if (sheet == nil) then return; end;
-            					CalcularVirtude("virtude"); CalcularGloriaAnual();
-        end, obj);
-
-    obj._e_event118 = obj.dataLink177:addEventListener("onUserChange",
-        function (_, field, oldValue, newValue)
-            if (sheet == nil) then return; end;
-            					CalcularVirtude("vicio"); CalcularGloriaAnual();
-        end, obj);
-
-    obj._e_event119 = obj.dataLink178:addEventListener("onChange",
-        function (_, field, oldValue, newValue)
-            if (sheet == nil) then return; end;
-            					CalcularVirtude(); CalcularGloriaAnual();
-        end, obj);
-
-    obj._e_event120 = obj.dataLink181:addEventListener("onUserChange",
-        function (_, field, oldValue, newValue)
-            if (sheet == nil) then return; end;
-            					CalcularVirtude("virtude"); CalcularGloriaAnual();
-        end, obj);
-
-    obj._e_event121 = obj.dataLink182:addEventListener("onUserChange",
-        function (_, field, oldValue, newValue)
-            if (sheet == nil) then return; end;
-            					CalcularVirtude("vicio"); CalcularGloriaAnual();
-        end, obj);
-
-    obj._e_event122 = obj.dataLink183:addEventListener("onChange",
-        function (_, field, oldValue, newValue)
-            if (sheet == nil) then return; end;
-            					CalcularVirtude(); CalcularGloriaAnual();
-        end, obj);
-
-    obj._e_event123 = obj.dataLink186:addEventListener("onUserChange",
-        function (_, field, oldValue, newValue)
-            if (sheet == nil) then return; end;
-            					CalcularVirtude("virtude"); CalcularGloriaAnual();
-        end, obj);
-
-    obj._e_event124 = obj.dataLink187:addEventListener("onUserChange",
-        function (_, field, oldValue, newValue)
-            if (sheet == nil) then return; end;
-            					CalcularVirtude("vicio"); CalcularGloriaAnual();
-        end, obj);
-
-    obj._e_event125 = obj.dataLink188:addEventListener("onChange",
-        function (_, field, oldValue, newValue)
-            if (sheet == nil) then return; end;
-            					CalcularVirtude(); CalcularGloriaAnual();
-        end, obj);
-
-    obj._e_event126 = obj.dataLink191:addEventListener("onUserChange",
-        function (_, field, oldValue, newValue)
-            if (sheet == nil) then return; end;
-            					CalcularVirtude("virtude"); CalcularGloriaAnual();
-        end, obj);
-
-    obj._e_event127 = obj.dataLink192:addEventListener("onUserChange",
-        function (_, field, oldValue, newValue)
-            if (sheet == nil) then return; end;
-            					CalcularVirtude("vicio"); CalcularGloriaAnual();
-        end, obj);
-
-    obj._e_event128 = obj.dataLink193:addEventListener("onChange",
-        function (_, field, oldValue, newValue)
-            if (sheet == nil) then return; end;
-            					CalcularVirtude(); CalcularGloriaAnual();
-        end, obj);
-
-    obj._e_event129 = obj.dataLink196:addEventListener("onUserChange",
-        function (_, field, oldValue, newValue)
-            if (sheet == nil) then return; end;
-            					CalcularVirtude("virtude"); CalcularGloriaAnual();
-        end, obj);
-
-    obj._e_event130 = obj.dataLink197:addEventListener("onUserChange",
-        function (_, field, oldValue, newValue)
-            if (sheet == nil) then return; end;
-            					CalcularVirtude("vicio"); CalcularGloriaAnual();
-        end, obj);
-
-    obj._e_event131 = obj.dataLink198:addEventListener("onChange",
-        function (_, field, oldValue, newValue)
-            if (sheet == nil) then return; end;
-            					CalcularVirtude(); CalcularGloriaAnual();
-        end, obj);
-
-    obj._e_event132 = obj.dataLink201:addEventListener("onUserChange",
-        function (_, field, oldValue, newValue)
-            if (sheet == nil) then return; end;
-            					CalcularVirtude("virtude"); CalcularGloriaAnual();
-        end, obj);
-
-    obj._e_event133 = obj.dataLink202:addEventListener("onUserChange",
-        function (_, field, oldValue, newValue)
-            if (sheet == nil) then return; end;
-            					CalcularVirtude("vicio"); CalcularGloriaAnual();
-        end, obj);
-
-    obj._e_event134 = obj.dataLink203:addEventListener("onChange",
-        function (_, field, oldValue, newValue)
-            if (sheet == nil) then return; end;
-            					CalcularVirtude(); CalcularGloriaAnual();
-        end, obj);
-
-    obj._e_event135 = obj.dataLink206:addEventListener("onUserChange",
-        function (_, field, oldValue, newValue)
-            if (sheet == nil) then return; end;
-            					CalcularVirtude("virtude"); CalcularGloriaAnual();
-        end, obj);
-
-    obj._e_event136 = obj.dataLink207:addEventListener("onUserChange",
-        function (_, field, oldValue, newValue)
-            if (sheet == nil) then return; end;
-            					CalcularVirtude("vicio"); CalcularGloriaAnual();
-        end, obj);
-
-    obj._e_event137 = obj.dataLink208:addEventListener("onChange",
-        function (_, field, oldValue, newValue)
-            if (sheet == nil) then return; end;
-            					CalcularVirtude(); CalcularGloriaAnual();
-        end, obj);
-
-    obj._e_event138 = obj.rclPaixoes:addEventListener("onSelect",
+    obj._e_event137 = obj.rclPaixoes:addEventListener("onSelect",
         function (_)
             self.rclPaixoes:sort();
         end, obj);
 
-    obj._e_event139 = obj.rclPaixoes:addEventListener("onCompare",
+    obj._e_event138 = obj.rclPaixoes:addEventListener("onCompare",
         function (_, nodeA, nodeB)
             return Utils.compareStringPtBr(nodeA.nomePX, nodeB.nomePX);
         end, obj);
 
-    obj._e_event140 = obj.rclPaixoes:addEventListener("onSelect",
+    obj._e_event139 = obj.rclPaixoes:addEventListener("onSelect",
         function (_)
             ContabilizarPaixoes();
         end, obj);
 
-    obj._e_event141 = obj.button1:addEventListener("onClick",
+    obj._e_event140 = obj.button1:addEventListener("onClick",
         function (_)
             self.rclPaixoes:append();
         end, obj);
 
-    obj._e_event142 = obj.rclEquips:addEventListener("onItemRemoved",
+    obj._e_event141 = obj.rclEquips:addEventListener("onItemRemoved",
         function (_, node, form)
             self.frmEquipamentos:needRepaint();
         end, obj);
 
-    obj._e_event143 = obj.button2:addEventListener("onClick",
+    obj._e_event142 = obj.button2:addEventListener("onClick",
         function (_)
             self.rclEquips:append(); self.frmEquipamentos:needRepaint();
         end, obj);
 
-    obj._e_event144 = obj.rclHorses:addEventListener("onItemRemoved",
+    obj._e_event143 = obj.rclHorses:addEventListener("onItemRemoved",
         function (_, node, form)
             self.frmEquipamentos:needRepaint();
         end, obj);
 
-    obj._e_event145 = obj.button3:addEventListener("onClick",
+    obj._e_event144 = obj.button3:addEventListener("onClick",
         function (_)
             self.rclHorses:append(); self.frmEquipamentos:needRepaint();
         end, obj);
 
     function obj:_releaseEvents()
-        __o_rrpgObjs.removeEventListenerById(self._e_event145);
         __o_rrpgObjs.removeEventListenerById(self._e_event144);
         __o_rrpgObjs.removeEventListenerById(self._e_event143);
         __o_rrpgObjs.removeEventListenerById(self._e_event142);
@@ -10308,18 +10275,16 @@ local function constructNew_frmPendragon()
         if self.image22 ~= nil then self.image22:destroy(); self.image22 = nil; end;
         if self.dataLink191 ~= nil then self.dataLink191:destroy(); self.dataLink191 = nil; end;
         if self.dataLink198 ~= nil then self.dataLink198:destroy(); self.dataLink198 = nil; end;
-        if self.frmTeP ~= nil then self.frmTeP:destroy(); self.frmTeP = nil; end;
+        if self.rclPaixoes ~= nil then self.rclPaixoes:destroy(); self.rclPaixoes = nil; end;
         if self.comboBox42 ~= nil then self.comboBox42:destroy(); self.comboBox42 = nil; end;
         if self.label54 ~= nil then self.label54:destroy(); self.label54 = nil; end;
-        if self.rclPaixoes ~= nil then self.rclPaixoes:destroy(); self.rclPaixoes = nil; end;
         if self.richEdit1 ~= nil then self.richEdit1:destroy(); self.richEdit1 = nil; end;
         if self.dataLink37 ~= nil then self.dataLink37:destroy(); self.dataLink37 = nil; end;
         if self.APA ~= nil then self.APA:destroy(); self.APA = nil; end;
         if self.edit137 ~= nil then self.edit137:destroy(); self.edit137 = nil; end;
-        if self.frmDados ~= nil then self.frmDados:destroy(); self.frmDados = nil; end;
         if self.comboBox41 ~= nil then self.comboBox41:destroy(); self.comboBox41 = nil; end;
-        if self.dataLink29 ~= nil then self.dataLink29:destroy(); self.dataLink29 = nil; end;
         if self.edit146 ~= nil then self.edit146:destroy(); self.edit146 = nil; end;
+        if self.dataLink29 ~= nil then self.dataLink29:destroy(); self.dataLink29 = nil; end;
         if self.edit6 ~= nil then self.edit6:destroy(); self.edit6 = nil; end;
         if self.layout179 ~= nil then self.layout179:destroy(); self.layout179 = nil; end;
         if self.imageCheckBox6 ~= nil then self.imageCheckBox6:destroy(); self.imageCheckBox6 = nil; end;
