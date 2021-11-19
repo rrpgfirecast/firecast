@@ -2,7 +2,7 @@
 <form formType="sheetTemplate" dataType="thirteen.Pendragon" title="Pendragon 5.2" name="frmPendragon" theme="dark">
 	<script>
 	<![CDATA[
-		function CalcularGloriaAnual()
+		local function CalcularGloriaAnual()
 			local node = NDB.getRoot(sheet);
 			local SomaHabs = 0;
 			local SomaVirts = 0;
@@ -100,9 +100,221 @@
 			
 			-- APLICANDO VALOR AO CAMPO
 			sheet.fldSomaGloria = "+ " .. tostring(math.floor(SomaHabs + SomaVirts + SomaBonus));
-		end;	
+		end;
+
+		local function CalcularVirtude(a)
+			-- TRATANDO VARIÁVEIS
+			a = a or "";
+			-- FORÇANDO VÍCIOS A SOMAREM UM TOTAL DE 20 COM A VIRTUDE PREENCHIDA
+			if(a == "virtude") then
+				sheet.fldValLuxuria = string.format("%02d",(20 - tonumber(sheet.fldValCastidade)));
+				sheet.fldValPreguica = string.format("%02d",(20 - tonumber(sheet.fldValEnergia)));
+				sheet.fldValVinganca = string.format("%02d",(20 - tonumber(sheet.fldValPerdao)));
+				sheet.fldValEgoismo = string.format("%02d",(20 - tonumber(sheet.fldValGenerosidade)));
+				sheet.fldValMalicia = string.format("%02d",(20 - tonumber(sheet.fldValHonestidade)));
+				sheet.fldValArbitrariedade = string.format("%02d",(20 - tonumber(sheet.fldValJustica)));
+				sheet.fldValCrueldade = string.format("%02d",(20 - tonumber(sheet.fldValMisericordia)));
+				sheet.fldValOrgulho = string.format("%02d",(20 - tonumber(sheet.fldValModestia)));
+				sheet.fldValCinismo = string.format("%02d",(20 - tonumber(sheet.fldValEspiritualidade)));
+				sheet.fldValImprudencia = string.format("%02d",(20 - tonumber(sheet.fldValPrudencia)));
+				sheet.fldValIndulgencia = string.format("%02d",(20 - tonumber(sheet.fldValTemperanca)));
+				sheet.fldValDesconfianca = string.format("%02d",(20 - tonumber(sheet.fldValConfianca)));
+				sheet.fldValCovardia = string.format("%02d",(20 - tonumber(sheet.fldValCoragem)));
+				
+			-- FORÇANDO VIRTUDES A SOMAREM UM TOTAL DE 20 COM O VÍCIO PREENCHIDO
+			elseif(a == "vicio") then
+				sheet.fldValCastidade = string.format("%02d",(20 - tonumber(sheet.fldValLuxuria)));
+				sheet.fldValEnergia = string.format("%02d",(20 - tonumber(sheet.fldValPreguica)));
+				sheet.fldValPerdao = string.format("%02d",(20 - tonumber(sheet.fldValVinganca)));
+				sheet.fldValGenerosidade = string.format("%02d",(20 - tonumber(sheet.fldValEgoismo)));
+				sheet.fldValHonestidade = string.format("%02d",(20 - tonumber(sheet.fldValMalicia)));
+				sheet.fldValJustica = string.format("%02d",(20 - tonumber(sheet.fldValArbitrariedade)));
+				sheet.fldValMisericordia = string.format("%02d",(20 - tonumber(sheet.fldValCrueldade)));
+				sheet.fldValModestia = string.format("%02d",(20 - tonumber(sheet.fldValOrgulho)));
+				sheet.fldValEspiritualidade = string.format("%02d",(20 - tonumber(sheet.fldValCinismo)));
+				sheet.fldValPrudencia = string.format("%02d",(20 - tonumber(sheet.fldValImprudencia)));
+				sheet.fldValTemperanca = string.format("%02d",(20 - tonumber(sheet.fldValIndulgencia)));
+				sheet.fldValConfianca = string.format("%02d",(20 - tonumber(sheet.fldValDesconfianca)));
+				sheet.fldValCoragem = string.format("%02d",(20 - tonumber(sheet.fldValCovardia)));
+			end;
+			
+			-- FORMATANDO O TEXTO DOS TRAÇOS ACIMA DE 10
+			self.namCastidade.visible = tonumber(sheet.fldValCastidade) < 11;
+			self.namCastidadeB.visible = tonumber(sheet.fldValCastidade) > 10;
+			self.namLuxuria.visible = tonumber(sheet.fldValLuxuria) < 11;
+			self.namLuxuriaB.visible = tonumber(sheet.fldValLuxuria) > 10;
+			self.namEnergia.visible = tonumber(sheet.fldValEnergia) < 11;
+			self.namEnergiaB.visible = tonumber(sheet.fldValEnergia) > 10;
+			self.namPreguica.visible = tonumber(sheet.fldValPreguica) < 11;
+			self.namPreguicaB.visible = tonumber(sheet.fldValPreguica) > 10;
+			self.namPerdao.visible = tonumber(sheet.fldValPerdao) < 11;
+			self.namPerdaoB.visible = tonumber(sheet.fldValPerdao) > 10;
+			self.namVinganca.visible = tonumber(sheet.fldValVinganca) < 11;
+			self.namVingancaB.visible = tonumber(sheet.fldValVinganca) > 10;
+			self.namGenerosidade.visible = tonumber(sheet.fldValGenerosidade) < 11;
+			self.namGenerosidadeB.visible = tonumber(sheet.fldValGenerosidade) > 10;
+			self.namEgoismo.visible = tonumber(sheet.fldValEgoismo) < 11;
+			self.namEgoismoB.visible = tonumber(sheet.fldValEgoismo) > 10;
+			self.namHonestidade.visible = tonumber(sheet.fldValHonestidade) < 11;
+			self.namHonestidadeB.visible = tonumber(sheet.fldValHonestidade) > 10;
+			self.namMalicia.visible = tonumber(sheet.fldValMalicia) < 11;
+			self.namMaliciaB.visible = tonumber(sheet.fldValMalicia) > 10;
+			self.namJustica.visible = tonumber(sheet.fldValJustica) < 11;
+			self.namJusticaB.visible = tonumber(sheet.fldValJustica) > 10;
+			self.namArbitrariedade.visible = tonumber(sheet.fldValArbitrariedade) < 11;
+			self.namArbitrariedadeB.visible = tonumber(sheet.fldValArbitrariedade) > 10;
+			self.namMisericordia.visible = tonumber(sheet.fldValMisericordia) < 11;
+			self.namMisericordiaB.visible = tonumber(sheet.fldValMisericordia) > 10;
+			self.namCrueldade.visible = tonumber(sheet.fldValCrueldade) < 11;
+			self.namCrueldadeB.visible = tonumber(sheet.fldValCrueldade) > 10;
+			self.namModestia.visible = tonumber(sheet.fldValModestia) < 11;
+			self.namModestiaB.visible = tonumber(sheet.fldValModestia) > 10;
+			self.namOrgulho.visible = tonumber(sheet.fldValOrgulho) < 11;
+			self.namOrgulhoB.visible = tonumber(sheet.fldValOrgulho) > 10;
+			self.namEspiritualidade.visible = tonumber(sheet.fldValEspiritualidade) < 11;
+			self.namEspiritualidadeB.visible = tonumber(sheet.fldValEspiritualidade) > 10;
+			self.namCinismo.visible = tonumber(sheet.fldValCinismo) < 11;
+			self.namCinismoB.visible = tonumber(sheet.fldValCinismo) > 10;
+			self.namPrudencia.visible = tonumber(sheet.fldValPrudencia) < 11;
+			self.namPrudenciaB.visible = tonumber(sheet.fldValPrudencia) > 10;
+			self.namImprudencia.visible = tonumber(sheet.fldValImprudencia) < 11;
+			self.namImprudenciaB.visible = tonumber(sheet.fldValImprudencia) > 10;
+			self.namTemperanca.visible = tonumber(sheet.fldValTemperanca) < 11;
+			self.namTemperancaB.visible = tonumber(sheet.fldValTemperanca) > 10;
+			self.namIndulgencia.visible = tonumber(sheet.fldValIndulgencia) < 11;
+			self.namIndulgenciaB.visible = tonumber(sheet.fldValIndulgencia) > 10;
+			self.namConfianca.visible = tonumber(sheet.fldValConfianca) < 11;
+			self.namConfiancaB.visible = tonumber(sheet.fldValConfianca) > 10;
+			self.namDesconfianca.visible = tonumber(sheet.fldValDesconfianca) < 11;
+			self.namDesconfiancaB.visible = tonumber(sheet.fldValDesconfianca) > 10;
+			self.namCoragem.visible = tonumber(sheet.fldValCoragem) < 11;
+			self.namCoragemB.visible = tonumber(sheet.fldValCoragem) > 10;
+			self.namCovardia.visible = tonumber(sheet.fldValCovardia) < 11;
+			self.namCovardiaB.visible = tonumber(sheet.fldValCovardia) > 10;
+			
+			-- CAPTANDO SOMA DE BÔNUS
+			local node = NDB.getRoot(sheet);
+			local SomaRom = 0;
+			
+			-- CHECANDO QUANTAS VIRTUDES ACIMA DE 15
+			if(tonumber(sheet.fldValCastidade) > 15) then SomaRom = SomaRom + 1; end;
+			if(tonumber(sheet.fldValEnergia) > 15) then SomaRom = SomaRom + 1; end;
+			if(tonumber(sheet.fldValPerdao) > 15) then SomaRom = SomaRom + 1; end;
+			if(tonumber(sheet.fldValGenerosidade) > 15) then SomaRom = SomaRom + 1; end;
+			if(tonumber(sheet.fldValHonestidade) > 15) then SomaRom = SomaRom + 1; end;
+			if(tonumber(sheet.fldValJustica) > 15) then SomaRom = SomaRom + 1; end;
+			if(tonumber(sheet.fldValMisericordia) > 15) then SomaRom = SomaRom + 1; end;
+			if(tonumber(sheet.fldValModestia) > 15) then SomaRom = SomaRom + 1; end;
+			if(tonumber(sheet.fldValEspiritualidade) > 15) then SomaRom = SomaRom + 1; end;
+			if(tonumber(sheet.fldValPrudencia) > 15) then SomaRom = SomaRom + 1; end;
+			if(tonumber(sheet.fldValTemperanca) > 15) then SomaRom = SomaRom + 1; end;
+			if(tonumber(sheet.fldValConfianca) > 15) then SomaRom = SomaRom + 1; end;
+			if(tonumber(sheet.fldValCoragem) > 15) then SomaRom = SomaRom + 1; end;
+			
+			-- SOMANDO QUANTAS PAIXÕES ACIMA DE 15
+			SomaRom = SomaRom + node.countRom;
+			
+			-- LIMITANDO NÚMERO DE VIRTUDES E PAIXÕES ACIMA DE 15 PARA 3
+			if(SomaRom > 3) then SomaRom = 3; end;
+			
+			-- CHECANDO SE ALGUM VÍCIO ACIMA DE 15
+			if(tonumber(sheet.fldValCastidade) < 5
+			or tonumber(sheet.fldValEnergia) < 5 
+			or tonumber(sheet.fldValPerdao) < 5 
+			or tonumber(sheet.fldValGenerosidade) < 5 
+			or tonumber(sheet.fldValHonestidade) < 5 
+			or tonumber(sheet.fldValJustica) < 5 
+			or tonumber(sheet.fldValMisericordia) < 5 
+			or tonumber(sheet.fldValModestia) < 5 
+			or tonumber(sheet.fldValEspiritualidade) < 5 
+			or tonumber(sheet.fldValPrudencia) < 5 
+			or tonumber(sheet.fldValTemperanca) < 5 
+			or tonumber(sheet.fldValConfianca) < 5 
+			or tonumber(sheet.fldValCoragem) < 5) then 
+				SomaRom = SomaRom + 1; 
+			end;
+			
+			-- INICIALIZANDO VARIÁVEIS
+			local tbReligiao = {};
+			local SomaReligiao = 0;
+			
+			-- ADICIONANDO VIRTUDES MARCADAS COMO RELIGIOSAS
+			if(sheet.fldChCastidade == true) then table.insert(tbReligiao, sheet.fldValCastidade); end;
+			if(sheet.fldChEnergia == true) then table.insert(tbReligiao, sheet.fldValEnergia); end;
+			if(sheet.fldChPerdao == true) then table.insert(tbReligiao, sheet.fldValPerdao); end;
+			if(sheet.fldChGenerosidade == true) then table.insert(tbReligiao, sheet.fldValGenerosidade); end;
+			if(sheet.fldChHonestidade == true) then table.insert(tbReligiao, sheet.fldValHonestidade); end;
+			if(sheet.fldChJustica == true) then table.insert(tbReligiao, sheet.fldValJustica); end;
+			if(sheet.fldChMisericordia == true) then table.insert(tbReligiao, sheet.fldValMisericordia); end;
+			if(sheet.fldChModestia == true) then table.insert(tbReligiao, sheet.fldValModestia); end;
+			if(sheet.fldChEspiritualidade == true) then table.insert(tbReligiao, sheet.fldValEspiritualidade); end;
+			if(sheet.fldChPrudencia == true) then table.insert(tbReligiao, sheet.fldValPrudencia); end;
+			if(sheet.fldChTemperanca == true) then table.insert(tbReligiao, sheet.fldValTemperanca); end;
+			if(sheet.fldChConfianca == true) then table.insert(tbReligiao, sheet.fldValConfianca); end;
+			if(sheet.fldChCoragem == true) then table.insert(tbReligiao, sheet.fldValCoragem); end;
+			
+			-- ADICIONANDO VÍCIOS MARCADOS COMO RELIGIOSOS
+			if(sheet.fldChLuxuria == true) then table.insert(tbReligiao, sheet.fldValLuxuria); end;
+			if(sheet.fldChPreguica == true) then table.insert(tbReligiao, sheet.fldValPreguica); end;
+			if(sheet.fldChVinganca == true) then table.insert(tbReligiao, sheet.fldValVinganca); end;
+			if(sheet.fldChEgoismo == true) then table.insert(tbReligiao, sheet.fldValEgoismo); end;
+			if(sheet.fldChMalicia == true) then table.insert(tbReligiao, sheet.fldValMalicia); end;
+			if(sheet.fldChArbitrariedade == true) then table.insert(tbReligiao, sheet.fldValArbitrariedade); end;
+			if(sheet.fldChCrueldade == true) then table.insert(tbReligiao, sheet.fldValCrueldade); end;
+			if(sheet.fldChOrgulho == true) then table.insert(tbReligiao, sheet.fldValOrgulho); end;
+			if(sheet.fldChCinismo == true) then table.insert(tbReligiao, sheet.fldValCinismo); end;
+			if(sheet.fldChImprudencia == true) then table.insert(tbReligiao, sheet.fldValImprudencia); end;
+			if(sheet.fldChIndulgencia == true) then table.insert(tbReligiao, sheet.fldValIndulgencia); end;
+			if(sheet.fldChDesconfianca == true) then table.insert(tbReligiao, sheet.fldValDesconfianca); end;
+			if(sheet.fldChCovardia == true) then table.insert(tbReligiao, sheet.fldValCovardia); end;
+			
+			-- SOMANDO VALORES DE TRAÇOS RELIGIOSOS
+			for i = 1, #tbReligiao do
+				SomaReligiao = SomaReligiao + tbReligiao[i];
+			end;
+			
+			local SomaHonra = (tonumber(sheet.fldValEnergia) or 0) + (tonumber(sheet.fldValGenerosidade) or 0) + (tonumber(sheet.fldValJustica) or 0);
+			SomaHonra = SomaHonra + (tonumber(sheet.fldValMisericordia) or 0) + (tonumber(sheet.fldValModestia) or 0) + (tonumber(sheet.fldValCoragem) or 0);
+			
+			-- APLICANDO RESULTADO NA FICHA
+			sheet.fldSomaHonra = string.format("%02d", SomaHonra);
+			sheet.fldSomaReligiao = string.format("%02d", SomaReligiao);
+			sheet.fldSomaRomance = string.format("%02d", SomaRom);
+			
+			-- ALTERNANDO VISIBILIDADE DAS FLAGS DOS BÔNUS
+			self.flagRom.visible = SomaRom > 3;
+			self.flagHonra.visible = SomaHonra > 79;
+			self.flagReli.visible = SomaReligiao > 79;
+		end;
+		
+		local function ContabilizarPaixoes()
+			if (sheet ~= nil) then
+				-- INICIALIZANDO VARIÁVEIS
+				local node = NDB.getRoot(sheet);
+				local objetos = NDB.getChildNodes(node.fldPaixoes);
+				local soma = 0;
+				local flagSomaRom = 0;
+				
+				-- SOMANDO E CONTABILIZANDO PAIXÕES MAIORES DO QUE 15
+				for i =1 , #objetos do 
+					if(tonumber((objetos[i].valorPX) or 0) > 15) then
+						soma = soma + (tonumber(objetos[i].valorPX) or 0);
+						flagSomaRom = flagSomaRom + 1;
+					end;
+				end;
+				
+				-- ATRIBUINDO VALORES AO NDB
+				node.countSum = soma;
+				node.countRom = flagSomaRom;
+				
+				-- RECALCULANDO GLORIA
+				CalcularGloriaAnual();
+			end;
+		end;
+		
 	]]>
 	</script>
+	
 	
 	<style>
 	label.NLabel {
@@ -280,12 +492,453 @@
 				
 					<!-- ABA DADOS -->
 					<tab title="Dados">
-						<import file="sheet_Pendragon_dados.lfm"/>
+						<rectangle class="RBackground">
+							<!-- DATALINKS DOS CAMPOS -->
+							<dataLink name="dLCabecalho" fields="{'fldNomePJ', 'fldJogador'}" defaultValues="{'NOME DO PERSONAGEM', 'Jogador'}" />
+							<dataLink name="dLDadosIniciais" fields="{'fldIdade', 'fldSuserano', 'fldFeudo', 'fldNascimento', 'fldClasseAtual', 'fldRiqueza', 'fldTerraNatal', 'fldClassePai', 'fldCaracteristica'}" defaultValues="{'00 anos', '—', '—', '0', '—', '—', '—', '—', '—'}" />
+							<dataLink name="dLDescCaracteristica" field="fldCarHabilidade" defaultValue="+00 HABILIDADE" />
+							<dataLink name="dLDadosAdicionais" fields="{'fldCultura', 'fldReligiao', 'fldGloria', 'fldNvGloria', 'fldGloriaAnual', 'fldSomaGloria'}" defaultValues="{'—', '—', '0', '0', '0', '0'}" />
+							<dataLink name="dLAtributosDerivados" fields="{'fldCarDistintiva', 'fldFerimentos'}" defaultValues="{'—', '—'}" />
+							<dataLink name= "dLUpgrades" fields="{'fldUpgradesGlor', 'fldUpgradesInv'}" defaultValues="{'—', '—'}" />
+							<!-- DATALINKS DAS HABILIDADES DE ARMAS -->
+							<dataLink field="fldHab01" defaultValue="Adaga" />
+							<dataLink field="fldHab02" defaultValue="Arco" />
+							<dataLink field="fldHab03" defaultValue="Batalha" />
+							<dataLink field="fldHab04" defaultValue="Besta" />
+							<dataLink field="fldHab05" defaultValue="Dardo" />
+							<dataLink field="fldHab06" defaultValue="Equitação" />
+							<dataLink field="fldHab07" defaultValue="Espada" />
+							<dataLink field="fldHab08" defaultValue="Grande Lança" />
+							<dataLink field="fldHab09" defaultValue="Grande Machado" />
+							<dataLink field="fldHab10" defaultValue="Lança" />
+							<dataLink field="fldHab11" defaultValue="Lança Montada" />
+							<dataLink field="fldHab12" defaultValue="Machado" />
+							<dataLink field="fldHab13" defaultValue="Maça" />
+							<dataLink field="fldHab14" defaultValue="—" />
+							<dataLink field="fldHab15" defaultValue="—" />
+							<!-- DATALINKS DAS HABILIDADES COMUNS -->
+							<dataLink field="fldHab16" defaultValue="Administração" />
+							<dataLink field="fldHab17" defaultValue="Atenção" />
+							<dataLink field="fldHab18" defaultValue="Canto" />
+							<dataLink field="fldHab19" defaultValue="Caça" />
+							<dataLink field="fldHab20" defaultValue="Cirurgia" />
+							<dataLink field="fldHab21" defaultValue="Composição" />
+							<dataLink field="fldHab22" defaultValue="Cortesia" />
+							<dataLink field="fldHab23" defaultValue="Dança" />
+							<dataLink field="fldHab24" defaultValue="Falcoaria" />
+							<dataLink field="fldHab25" defaultValue="Feerismo" />
+							<dataLink field="fldHab26" defaultValue="Flerte" />
+							<dataLink field="fldHab27" defaultValue="Folclore" />
+							<dataLink field="fldHab28" defaultValue="Heráldica" />
+							<dataLink field="fldHab29" defaultValue="Intriga" />
+							<dataLink field="fldHab30" defaultValue="Jogos" />
+							<dataLink field="fldHab31" defaultValue="Leitura (Língua)" />
+							<dataLink field="fldHab32" defaultValue="Moda" />
+							<dataLink field="fldHab33" defaultValue="Natação" />
+							<dataLink field="fldHab34" defaultValue="Navegação" />
+							<dataLink field="fldHab35" defaultValue="Ofícios" />
+							<dataLink field="fldHab36" defaultValue="Oratória" />
+							<dataLink field="fldHab37" defaultValue="Primeiros Socorros" />
+							<dataLink field="fldHab38" defaultValue="Reconhecimento" />
+							<dataLink field="fldHab39" defaultValue="Religião (Fé)" />
+							<dataLink field="fldHab40" defaultValue="Romance" />
+							<dataLink field="fldHab41" defaultValue="Tocar (Instrumento)" />
+							<dataLink field="fldHab42" defaultValue="Torneio" />
+							<dataLink field="fldHab43" defaultValue="—" />
+							<dataLink field="fldHab44" defaultValue="—" />
+							<dataLink field="fldHab45" defaultValue="—" />
+												
+							<!-- CABEÇALHO -->
+							<layout align="top" height="60">
+								<label text="☙" fontColor="#0080ff" fontFamily="Palatino Linotype" fontSize="28" top="7" />
+								<edit field="fldNomePJ" class="ENomePJ" />
+								<rectangle height="2" width="650" top="33" color="#0080ff" />
+								<edit field="fldJogador" class="EJogador" />
+							</layout>
+							
+							<!-- DADOS DO CABEÇALHO -->
+							<layout align="top" height="90" margins="{left = 40, top = 20}">
+								<template name="Dados">
+									<layout class="LConjunto" height="30"><label text="$(rotulo)" class="NLabel" width="$(larguraR)" /><layout align="left" width="$(larguraC)"><edit field="$(campo)" class="GEdit" width="$(larguraC)" /></layout></layout>
+								</template>
+								
+								<layout class="LColuna" height="90">
+									<Dados rotulo="Idade:" campo="fldIdade" larguraR="41" larguraC="159" />
+									<Dados rotulo="Suserano:" campo="fldSuserano" larguraR="64" larguraC="136" />
+									<Dados rotulo="Feudo:" campo="fldFeudo" larguraR="44" larguraC="156" />
+								</layout>
+								
+								<layout class="LColuna" height="90">
+									<Dados rotulo="Ordem de Nascimento:" campo="fldNascimento" larguraR="146" larguraC="54" />
+									<Dados rotulo="Classe:" campo="fldClasseAtual" larguraR="46" larguraC="154" />
+									<Dados rotulo="Riqueza:" campo="fldRiqueza" larguraR="57" larguraC="143" />
+								</layout>
+								
+								<layout class="LColuna3" height="90">
+									<Dados rotulo="Terra Natal:" campo="fldTerraNatal" larguraR="77" larguraC="173" />
+									<Dados rotulo="Classe do Pai:" campo="fldClassePai" larguraR="87" larguraC="163" />
+									<Dados rotulo="Característica:" campo="fldCaracteristica" larguraR="93" larguraC="157" />
+								</layout>
+							</layout>
+							<layout align="top" height="20"><edit field="fldCarHabilidade" fontColor="#858585" fontFamily="Palatino Linotype" fontSize="10" transparent="true" left="550" width="157" top="-10" /></layout>
+
+							<!-- IMAGEM DO BRASÃO -->
+							<layout align="top" height="500">
+								<image left="0" top="0" width="650" height="400" url="/images/shield-flare.png" style="proportional" center="true" />
+								<image field="fldBrasao" height="290" top="170" width="240" left="205" style="proportional" center="true" editable="true" hint="Alterar Brasão" />
+								<dataLink field="fldBrasao" defaultValue="/images/heraldry.png" />
+							</layout>
+							
+							<!-- DADOS ADICIONAIS CABEÇALHO -->
+							<layout align="top" height="60" margins="{left = 40, top = 25}">
+								<layout class="LColuna">
+									<Dados rotulo="Cultura:" campo="fldCultura" larguraR="52" larguraC="148" />
+								</layout>
+								
+								<layout class="LColuna">
+									<Dados rotulo="Religião:" campo="fldReligiao" larguraR="58" larguraC="142" />
+									<Dados rotulo="Glória" campo="fldGloria" larguraR="44" larguraC="156" />
+								</layout>
+								
+								<layout class="LColuna3">
+									<Dados rotulo="Níveis de Glória:" campo="fldNvGloria" larguraR="105" larguraC="145" />
+									<layout class="LConjunto"><label text="Glória Anual:" class="NLabel" width="85" /><layout align="left" width="40"><edit field="fldGloriaAnual" width="40" class="GEdit" /></layout>
+									<layout align="left" width="163"><label name="namSomaGloria" field="fldSomaGloria" class="NLabel" width="165" /></layout>
+									</layout>
+								</layout>
+							</layout>
+
+							<!-- ATRIBUTOS -->	
+							<layout align="top"><label align="left" text="☙ ATRIBUTOS" width="150" fontStyle="bold" fontColor="#0080ff" fontFamily="Palatino Linotype" fontSize="20" /><layout align="left" width="500"><rectangle height="2" width="500" top="25" color="#0080ff" /></layout></layout>
+							
+							<!-- ATRIBUTOS EM SI -->
+							<layout align="top" height="165">
+								<template name="Atributo">
+								<layout align="left" width="115" margins="{right=18}">
+									<layout align="top" height="30"><label text="$(abreviacao)" top="10" width="143" horzTextAlign="center" fontStyle="bold" fontColor="#858585" fontFamily="Cambria" fontSize="17" hint="$(nomeInteiro)" hitTest="true" /></layout>
+									<layout align="top" height="173"><image width="143" url="/images/shield.png" style="proportional"/></layout>
+									<layout width="143" top="55" left="38"><edit name="$(abreviacao)" field="fld$(nomeInteiroField)" class="EAtr" hint="$(nomeInteiro)" hitTest="true" /></layout>
+								</layout>
+								<dataLink field="fld$(nomeInteiroField)" defaultValue="0">
+									<event name="onChange">
+									<![CDATA[ 
+										if (sheet == nil) then return; end;
+										sheet.fld$(nomeInteiroField) = string.format("%02d", sheet.fld$(nomeInteiroField)); 
+									]]>
+									</event>
+								</dataLink>
+								</template>
+								
+								<Atributo abreviacao="TAM" nomeInteiro="Tamanho" nomeInteiroField="Tamanho" />
+								<Atributo abreviacao="DES" nomeInteiro="Destreza" nomeInteiroField="Destreza" />
+								<Atributo abreviacao="FOR" nomeInteiro="Força" nomeInteiroField="Forca" />
+								<Atributo abreviacao="CON" nomeInteiro="Constituição" nomeInteiroField="Constituicao" />
+								<Atributo abreviacao="APA" nomeInteiro="Aparência" nomeInteiroField="Aparencia" />
+							</layout>
+							
+							<!-- STATUS DERIVADOS -->
+							<layout align="top" margins="{left = 40, top = 0}">
+								<layout class="LColuna">
+									<layout class="LConjunto"><label text="Dano:" class="NLabel" width="40" hint="(FOR+TAM)/6" hitTest="true" /><label field="fldDano" class="NLabelG" hint="(FOR+TAM)/6" hitTest="true" /></layout>
+									<layout class="LConjunto"><label text="Movimento:" class="NLabel" width="80" hint="(FOR+DES)/10" hitTest="true" /><label  field="fldMovimento" class="NLabelG" hint="(FOR+DES)/10" hitTest="true" /></layout>
+								</layout>
+								
+								<layout class="LColuna">
+									<layout class="LConjunto"><label text="Regeneração:" class="NLabel" width="90" hint="(FOR+CON)/10" hitTest="true" /><label  field="fldRegen" class="NLabelG" hint="(FOR+CON)/10" hitTest="true" /></layout>
+									<layout class="LConjunto"><label text="HP:" class="NLabel" width="25" hint="TAM+CON" hitTest="true" /><label field="fldHP" class="NLabelG" hint="TAM+CON" hitTest="true" /></layout>
+								</layout>
+								
+								<layout class="LColuna">
+									<layout class="LConjunto"><label text="" class="NLabel" width="40" /><label text="" class="NLabelG" /></layout>
+									<layout class="LConjunto"><label text="Inconsciente:" class="NLabel" width="88" hint="HP/4" hitTest="true" /><label  field="fldInconsciente" class="NLabelG" hint="HP/4" hitTest="true" /></layout>
+								</layout>
+							</layout>
+							
+							<!--CÁLCULO DE STATUS DERIVADOS-->
+							<dataLink fields="{'fldTamanho', 'fldDestreza', 'fldForca', 'fldConstituicao'}">
+								<event name="onChange">  
+								<![CDATA[
+									if (sheet == nil) then return; end;
+									local TAM = (tonumber(sheet.fldTamanho) or 0);
+									local DES = (tonumber(sheet.fldDestreza) or 0);
+									local FOR = (tonumber(sheet.fldForca) or 0);
+									local CON = (tonumber(sheet.fldConstituicao) or 0);
+									
+									sheet.fldDano = tostring(math.floor(((TAM+FOR)/6)+0.5)) .. "d6";
+									sheet.fldMovimento = math.floor(((DES+FOR)/10)+0.5); 
+									sheet.fldRegen = math.floor(((CON+FOR)/10)+0.5); 
+									sheet.fldHP = CON+TAM;
+									sheet.fldInconsciente = math.floor((CON+TAM/4)+0.5);
+								]]>
+								</event>
+							</dataLink>
+							<dataLink field="fldAparencia">
+								<event name="onUserChange">
+								<![CDATA[
+									if (sheet == nil) then return; end;
+									if((tonumber(sheet.fldAparencia)) ~= 0) then
+										local APA = (tonumber(sheet.fldAparencia) or 0);
+										local DistinctFeature = 0;
+										
+										if (APA < 7) then DistinctFeature = 3;
+										elseif (APA > 6 and APA < 10) then DistinctFeature = 2; 
+										elseif (APA > 9 and APA < 13) then DistinctFeature = 1; 
+										elseif (APA > 12 and APA < 17) then DistinctFeature = 2; 
+										elseif (APA > 16) then DistinctFeature = 3; 
+										end;
+										
+										if(sheet.fldCarDistintiva == "" or sheet.fldCarDistintiva == "—") then
+											sheet.fldCarDistintiva = "Escolha " .. tostring(math.floor(DistinctFeature)) .. " característica(s).";
+										elseif(sheet.fldCarDistintiva == "Escolha 1 característica(s)." or sheet.fldCarDistintiva == "Escolha 2 característica(s)." or sheet.fldCarDistintiva == "Escolha 3 característica(s).") then
+											sheet.fldCarDistintiva = "Escolha " .. tostring(math.floor(DistinctFeature)) .. " característica(s).";
+										end;
+									end;
+								]]>
+								</event>
+							</dataLink>
+							
+							<layout align="top" margins="{left = 40, top = 25}" height="60">
+								<layout class="LConjunto"><label text="Características Distintas:" class="NLabel" width="164" /><layout align="left" width="486"><edit field="fldCarDistintiva" width="486" class="GEdit" /></layout></layout>
+								<layout class="LConjunto"><label text="Ferimentos:" class="NLabel" width="80" /><layout align="left" width="570"><edit field="fldFerimentos" width="570" class="GEdit" /></layout></layout>
+							</layout>
+							
+							<!-- HABILIDADES -->
+							<layout align="top"><label align="left" text="☙ HABILIDADES" width="175" fontStyle="bold" fontColor="#0080ff" fontFamily="Palatino Linotype" fontSize="20" /><layout align="left" width="475"><rectangle height="2" width="475" top="25" color="#0080ff" /></layout></layout>
+								
+							<template name="Habilidade">
+								<layout class="LConjuntoH"><comboBox field="fldCBHab$(numero)" class="CHab" items="{' ', '♞', '⨉'}" values="{'N', 'C', 'X'}" value="$(valorInicial)" transparent="true" hint="Tipo de Habilidade" /><edit field="fldHab$(numero)" class="ELabel" /><layout align="left"><edit field="fldHabValor$(numero)" class="GEditH" type="number" min="0" max="99" /></layout></layout>
+								<dataLink field="fldHabValor$(numero)" defaultValue="0">
+									<event name="onChange">
+									<![CDATA[ 
+										if (sheet == nil) then return; end;
+										CalcularGloriaAnual(); 
+										sheet.fldHabValor$(numero) = string.format("%02d", sheet.fldHabValor$(numero));
+									]]>
+									</event>
+								</dataLink>
+								<dataLink field="fldCBHab$(numero)" defaultValue="$(valorInicial)">
+									<event name="onChange">
+									<![CDATA[ 
+										if (sheet == nil) then return; end;
+										CalcularGloriaAnual(); 
+									]]>
+									</event>
+								</dataLink>
+							</template>
+							
+							<!-- HABILIDADES DE ARMAS -->
+							<layout align="top" height="150" margins="{left = 40, top = 0}">
+								<layout class="LColuna">
+									<Habilidade numero="01" valorInicial="C" />
+									<Habilidade numero="04" valorInicial="N" />
+									<Habilidade numero="07" valorInicial="C" />
+									<Habilidade numero="10" valorInicial="N" />
+									<Habilidade numero="13" valorInicial="N" />
+								</layout>
+								
+								<layout class="LColuna">
+									<Habilidade numero="02" valorInicial="N" />
+									<Habilidade numero="05" valorInicial="N" />
+									<Habilidade numero="08" valorInicial="N" />
+									<Habilidade numero="11" valorInicial="C" />
+									<Habilidade numero="14" valorInicial="N" />
+								</layout>
+								
+								<layout class="LColuna">
+									<Habilidade numero="03" valorInicial="C" />
+									<Habilidade numero="06" valorInicial="C" />
+									<Habilidade numero="09" valorInicial="N" />
+									<Habilidade numero="12" valorInicial="N" />
+									<Habilidade numero="15" valorInicial="N" />
+								</layout>
+							</layout>
+							
+							<!-- HABILIDADES GERAIS -->
+							<layout align="top" height="320" margins="{left = 40, top = 25}">
+								<layout class="LColuna">
+									<Habilidade numero="16" valorInicial="N" />
+									<Habilidade numero="19" valorInicial="C" />
+									<Habilidade numero="22" valorInicial="C" />
+									<Habilidade numero="25" valorInicial="N" />
+									<Habilidade numero="28" valorInicial="N" />
+									<Habilidade numero="31" valorInicial="N" />
+									<Habilidade numero="34" valorInicial="N" />
+									<Habilidade numero="37" valorInicial="C" />
+									<Habilidade numero="40" valorInicial="N" />
+									<Habilidade numero="43" valorInicial="N" />
+								</layout>
+								
+								<layout class="LColuna">
+									<Habilidade numero="17" valorInicial="C" />
+									<Habilidade numero="20" valorInicial="X" />
+									<Habilidade numero="23" valorInicial="N" />
+									<Habilidade numero="26" valorInicial="N" />
+									<Habilidade numero="29" valorInicial="N" />
+									<Habilidade numero="32" valorInicial="X" />
+									<Habilidade numero="35" valorInicial="X" />
+									<Habilidade numero="38" valorInicial="N" />
+									<Habilidade numero="41" valorInicial="N" />
+									<Habilidade numero="44" valorInicial="N" />
+								</layout>
+								
+								<layout class="LColuna">
+									<Habilidade numero="18" valorInicial="N" />
+									<Habilidade numero="21" valorInicial="N" />
+									<Habilidade numero="24" valorInicial="N" />
+									<Habilidade numero="27" valorInicial="N" />
+									<Habilidade numero="30" valorInicial="N" />
+									<Habilidade numero="33" valorInicial="N" />
+									<Habilidade numero="36" valorInicial="N" />
+									<Habilidade numero="39" valorInicial="N" />
+									<Habilidade numero="42" valorInicial="N" />
+									<Habilidade numero="45" valorInicial="N" />
+								</layout>
+							</layout>
+							
+							<!-- UPGRADES -->
+							<layout align="top" height="20" margins="{left = 40}">
+								<label align="left" width="180" text="UPGRADES POR GLÓRIA" fontStyle="bold" fontColor="#cdcdcd" fontFamily="Palatino Linotype" fontSize="14" />
+								<edit class="GEdit" width="470" field = "fldUpgradesGlor" align="left" fontColor="#858585" />
+							</layout>
+							
+							<layout align="top" height="20" margins="{left = 40}">
+								<label align="left" width="180" text="UPGRADES DE INVERNO" fontStyle="bold" fontColor="#cdcdcd" fontFamily="Palatino Linotype" fontSize="14" />
+								<edit class="GEdit" width="470" field = "fldUpgradesInv" align="left" fontColor="#858585" />
+							</layout>
+							
+						</rectangle>
 					</tab>
 					
 					<!-- ABA TRAÇOS E PAIXÕES -->
-					<tab title="Traços e Paixões">
-						<import file="sheet_Pendragon_tEp.lfm"/>
+					<tab title="Traços e Paixões" onClick="if(sheet==nil) then return; end; CalcularVirtude('');">
+						<rectangle class="RBackground" padding="{top = 10}">
+							<!-- TRAÇOS -->	
+							<layout align="top"><label align="left" text="☙ TRAÇOS" width="115" fontStyle="bold" fontColor="#0080ff" fontFamily="Palatino Linotype" fontSize="20" /><layout align="left" width="535"><rectangle height="2" width="535" top="25" color="#0080ff" /></layout></layout>
+
+							<!-- TEMPLATE VIRTUDES E VÍCIOS -->
+							<template name="Virtude">
+								<rectangle class="LConjuntoH" color="$(cor)">
+									<layout align="left" width="139">
+										<imageCheckBox field="fldCh$(virtude)" width="11" align="left" checkedImage="/images/cross-on.png" uncheckedImage="/images/$(imagem).png" margins="{right = 5}" hint="Traço Religioso" />
+										<label field="$(virtude)" name="nam$(virtude)" class="NLabelG" align="none" top="7" left="16" />
+										<label field="$(virtude)B" name="nam$(virtude)B" class="NLabel" align="none" top="7" left="16" />
+										<dataLink fields="'$(virtude)', '$(virtude)B'" defaultValues="'$(virtudeAc)', '$(virtudeAc)'" />
+									</layout>
+									<layout align="left" width="89">
+										<edit field="fldVal$(virtude)" class="GEditV" type="number" min="0" max="20" align="left" width="25" />
+											<label text="/" class="NLabelG" width="8" />
+										<edit field="fldVal$(vicio)" class="GEditV" type="number" min="0" max="20" align="left" width="25" />
+									</layout>
+									<layout align="left" width="422">
+										<imageCheckBox field="fldCh$(vicio)" width="11" align="left" checkedImage="/images/cross-on.png" uncheckedImage="/images/$(imagem).png" margins="{right = 5}" hint="Traço Religioso" />
+										<label field="$(vicio)" name="nam$(vicio)" class="NLabelG"  align="none" top="7" left="16" />
+										<label field="$(vicio)B" name="nam$(vicio)B" class="NLabel"  align="none" top="7" left="16" />
+										<dataLink fields="'$(vicio)', '$(vicio)B'" defaultValues="'$(vicioAc)', '$(vicioAc)'" />
+										<edit class="GEdit" width="246" text="—" align="left" fontColor="#858585" margins="{left=120}" />
+									</layout>
+								</rectangle >
+								<dataLink field="fldVal$(virtude)" defaultValue="10">
+									<event name="onUserChange">
+									<![CDATA[ 
+										if (sheet == nil) then return; end;
+										CalcularVirtude("virtude"); CalcularGloriaAnual(); 
+									]]>	
+									</event>
+								</dataLink>
+								<dataLink field="fldVal$(vicio)" defaultValue="10">
+									<event name="onUserChange">
+									<![CDATA[ 
+										if (sheet == nil) then return; end;
+										CalcularVirtude("vicio"); CalcularGloriaAnual();
+									]]>	
+									</event>
+								</dataLink>
+								<dataLink fields="{'fldCh$(virtude)', 'fldCh$(vicio)'}">
+									<event name="onChange">
+									<![CDATA[ 
+										if (sheet == nil) then return; end;
+										CalcularVirtude(); CalcularGloriaAnual(); 
+									]]>
+									</event>
+								</dataLink>
+							</template>
+							
+							<!-- LEGENDA DA TABELA -->
+							<layout width="650" height="600" top="70">
+								<rectangle class="LConjuntoH">
+									<label align="left" width="228" text="VIRTUDES" fontStyle="bold" fontColor="#cdcdcd" fontFamily="Palatino Linotype" fontSize="14" />
+									<label align="left" width="138" text="VÍCIOS" fontStyle="bold" fontColor="#cdcdcd" fontFamily="Palatino Linotype" fontSize="14" />			
+									<label align="left" width="422" text="CUSTOMIZADOS" fontStyle="bold" fontColor="#cdcdcd" fontFamily="Palatino Linotype" fontSize="14" />
+								</rectangle>
+								
+								<!-- VIRTUDES E VÍCIOS -->
+								<Virtude virtude="Castidade" vicio="Luxuria" virtudeAc="Castidade" vicioAc="Luxúria" numero="01" cor="transparent" imagem="cross-offd" />
+								<Virtude virtude="Energia" vicio="Preguica" virtudeAc="Energia ♞" vicioAc="Preguiça" numero="02" cor="#2E2E2E" imagem="cross-off" />
+								<Virtude virtude="Perdao" vicio="Vinganca" virtudeAc="Perdão" vicioAc="Vingança" numero="03" cor="transparent" imagem="cross-offd" />
+								<Virtude virtude="Generosidade" vicio="Egoismo" virtudeAc="Generosidade ♞" vicioAc="Egoísmo" numero="04" cor="#2E2E2E" imagem="cross-off" />
+								<Virtude virtude="Honestidade" vicio="Malicia" virtudeAc="Honestidade" vicioAc="Malícia" numero="05" cor="transparent" imagem="cross-offd" />
+								<Virtude virtude="Justica" vicio="Arbitrariedade" virtudeAc="Justiça ♞" vicioAc="Arbitrariedade" numero="06" cor="#2E2E2E" imagem="cross-off" />
+								<Virtude virtude="Misericordia" vicio="Crueldade" virtudeAc="Misericórdia ♞" vicioAc="Crueldade" numero="07" cor="transparent" imagem="cross-offd" />
+								<Virtude virtude="Modestia" vicio="Orgulho" virtudeAc="Modéstia ♞" vicioAc="Orgulho" numero="08" cor="#2E2E2E" imagem="cross-off" />
+								<Virtude virtude="Espiritualidade" vicio="Cinismo" virtudeAc="Espiritualidade" vicioAc="Cinismo" numero="09" cor="transparent" imagem="cross-offd" />
+								<Virtude virtude="Prudencia" vicio="Imprudencia" virtudeAc="Prudência" vicioAc="Imprudência" numero="10" cor="#2E2E2E" imagem="cross-off" />
+								<Virtude virtude="Temperanca" vicio="Indulgencia" virtudeAc="Temperança" vicioAc="Indulgência" numero="11" cor="transparent" imagem="cross-offd" />
+								<Virtude virtude="Confianca" vicio="Desconfianca" virtudeAc="Confiança" vicioAc="Desconfiança" numero="12" cor="#2E2E2E" imagem="cross-off" />
+								<Virtude virtude="Coragem" vicio="Covardia" virtudeAc="Coragem ♞" vicioAc="Covardia" numero="13" cor="transparent" imagem="cross-offd" />
+							</layout>
+							
+							<!-- TEMPLATE DE BÔNUS -->
+							<layout align="top" margins="{left = 40, top = 455}" height="90">
+							<template name="Bonus">
+								<layout class="LConjunto">
+									<label text="$(legenda)" class="NLabel" width="139" hitTest="true" hint="$(dica)" />
+									<layout align="left" width="89">
+										<label field="$(campo)" class="NLabelG" align="left" width="25" />
+										<label text="/" class="NLabelG" width="10" />
+										<label text="$(limite)" class="NLabel" align="left" width="25" />
+									</layout>
+									<label top="7" left="228" width="180" name="$(flag)" text="+100 GLÓRIA AO ANO" fontStyle="bold" fontColor="#cdcdcd" fontFamily="Palatino Linotype" fontSize="14" visible="false" />
+								</layout>
+							</template>
+							
+								<!-- BÔNUS DIVERSOS -->
+								<Bonus legenda="Bônus Honrado:" dica="+3 de Armadura" campo="fldSomaHonra" limite="80" flag="flagHonra" />
+								<Bonus legenda="Bônus Religioso:" dica="1 rerolagem por Aventura" campo="fldSomaReligiao" limite="80" flag="flagReli" />
+								<Bonus legenda="Bônus Romântico:" dica="Bônus de Paixões dobrados" campo="fldSomaRomance" limite="04" flag="flagRom" />
+								<dataLink fields="{'fldSomaHonra', 'fldSomaReligiao', 'fldSomaRomance'}" defaultValues="{'00', '00', '00'}" />
+							</layout>
+							
+							<!-- PAIXÕES -->	
+							<layout align="top" margins="{top=20}"><label align="left" text="☙ PAIXÕES" width="120" fontStyle="bold" fontColor="#0080ff" fontFamily="Palatino Linotype" fontSize="20" /><layout align="left" width="535"><rectangle height="2" width="530" top="25" color="#0080ff" /></layout></layout>
+							
+								<!-- LEGENDA DA TABELA -->
+								<rectangle class="LConjuntoH">
+									<label align="left" width="215" text="PAIXÃO" fontStyle="bold" fontColor="#cdcdcd" fontFamily="Palatino Linotype" fontSize="14" />
+									<label align="left" width="80" text="VALOR" fontStyle="bold" fontColor="#cdcdcd" fontFamily="Palatino Linotype" fontSize="14" />			
+									<label align="left" width="215" text="PAIXÃO" fontStyle="bold" fontColor="#cdcdcd" fontFamily="Palatino Linotype" fontSize="14" />
+									<label align="left" width="80" text="VALOR" fontStyle="bold" fontColor="#cdcdcd" fontFamily="Palatino Linotype" fontSize="14" />	
+								</rectangle>
+
+							<layout align="top" margins="{left = 40}" height="600">
+								<layout width="635" height="600">
+									<layout align="left" width="635">
+									
+										<!-- LISTA DINÂMICA DE PAIXÕES -->
+										<recordList width="635" minQt="4" layout="verticalTiles" name="rclPaixoes" field="fldPaixoes" templateForm="paixoes" autoHeight="true" onSelect="self.rclPaixoes:sort();">
+											<event name="onCompare">
+												return Utils.compareStringPtBr(nodeA.nomePX, nodeB.nomePX);
+											</event>
+											<event name="onSelect">
+											<![CDATA[
+												ContabilizarPaixoes();
+											]]>
+											</event>
+										</recordList>
+									</layout>
+									<layout align="right" height="600"><button height="25" text="🞦" width="25" onClick="self.rclPaixoes:append();" hint="Nova Paixão" /></layout>
+								</layout>
+							</layout>
+						</rectangle>
 					</tab>
 					
 					<!-- ABA EQUIPAMENTO -->

@@ -1,19 +1,232 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <form name="paixoes" align="top" height="25" width="292" margins="{bottom=2}">       
+	<script>
+	<![CDATA[
+		local function CalcularGloriaAnual()
+			local node = NDB.getRoot(sheet);
+			local SomaHabs = 0;
+			local SomaVirts = 0;
+			local SomaBonus = 0;
+			
+			-- INDEXANDO HABILIDADES
+			local tbHabilidades = {
+				{sheet.fldCBHab01, sheet.fldHabValor01},
+				{sheet.fldCBHab02, sheet.fldHabValor02},
+				{sheet.fldCBHab03, sheet.fldHabValor03},
+				{sheet.fldCBHab04, sheet.fldHabValor04},
+				{sheet.fldCBHab05, sheet.fldHabValor05},
+				{sheet.fldCBHab06, sheet.fldHabValor06},
+				{sheet.fldCBHab07, sheet.fldHabValor07},
+				{sheet.fldCBHab08, sheet.fldHabValor08},
+				{sheet.fldCBHab09, sheet.fldHabValor09},
+				{sheet.fldCBHab10, sheet.fldHabValor10},
+				{sheet.fldCBHab11, sheet.fldHabValor11},
+				{sheet.fldCBHab12, sheet.fldHabValor12},
+				{sheet.fldCBHab13, sheet.fldHabValor13},
+				{sheet.fldCBHab14, sheet.fldHabValor14},
+				{sheet.fldCBHab15, sheet.fldHabValor15},
+				{sheet.fldCBHab16, sheet.fldHabValor16},
+				{sheet.fldCBHab17, sheet.fldHabValor17},
+				{sheet.fldCBHab18, sheet.fldHabValor18},
+				{sheet.fldCBHab19, sheet.fldHabValor19},
+				{sheet.fldCBHab20, sheet.fldHabValor20},
+				{sheet.fldCBHab21, sheet.fldHabValor21},
+				{sheet.fldCBHab22, sheet.fldHabValor22},
+				{sheet.fldCBHab23, sheet.fldHabValor23},
+				{sheet.fldCBHab24, sheet.fldHabValor24},
+				{sheet.fldCBHab25, sheet.fldHabValor25},
+				{sheet.fldCBHab26, sheet.fldHabValor26},
+				{sheet.fldCBHab27, sheet.fldHabValor27},
+				{sheet.fldCBHab28, sheet.fldHabValor28},
+				{sheet.fldCBHab29, sheet.fldHabValor29},
+				{sheet.fldCBHab30, sheet.fldHabValor30},
+				{sheet.fldCBHab31, sheet.fldHabValor31},
+				{sheet.fldCBHab32, sheet.fldHabValor32},
+				{sheet.fldCBHab33, sheet.fldHabValor33},
+				{sheet.fldCBHab34, sheet.fldHabValor34},
+				{sheet.fldCBHab35, sheet.fldHabValor35},
+				{sheet.fldCBHab36, sheet.fldHabValor36},
+				{sheet.fldCBHab37, sheet.fldHabValor37},
+				{sheet.fldCBHab38, sheet.fldHabValor38},
+				{sheet.fldCBHab39, sheet.fldHabValor39}, 
+				{sheet.fldCBHab40, sheet.fldHabValor40}, 
+				{sheet.fldCBHab41, sheet.fldHabValor41}, 
+				{sheet.fldCBHab42, sheet.fldHabValor42}, 
+				{sheet.fldCBHab43, sheet.fldHabValor43}, 
+				{sheet.fldCBHab44, sheet.fldHabValor44}, 
+				{sheet.fldCBHab45, sheet.fldHabValor45} 
+			}
+			
+			-- INDEXANDO VIRTUDES
+			local tbVirtudes = {
+				sheet.fldValCastidade, sheet.fldValLuxuria,
+				sheet.fldValEnergia, sheet.fldValPreguica,
+				sheet.fldValPerdao, sheet.fldValVinganca,
+				sheet.fldValGenerosidade, sheet.fldValEgoismo,
+				sheet.fldValHonestidade, sheet.fldValMalicia,
+				sheet.fldValJustica, sheet.fldValArbitrariedade,
+				sheet.fldValMisericordia, sheet.fldValCrueldade,
+				sheet.fldValModestia, sheet.fldValOrgulho,
+				sheet.fldValEspiritualidade, sheet.fldValCinismo,
+				sheet.fldValPrudencia, sheet.fldValImprudencia,
+				sheet.fldValTemperanca, sheet.fldValIndulgencia,
+				sheet.fldValConfianca, sheet.fldValDesconfianca,
+				sheet.fldValCoragem, sheet.fldValCovardia
+			}
+			
+			-- SOMANDO HABILIDADES CAVALEIRESCAS
+			for i = 1, #tbHabilidades do
+				if(tbHabilidades[i][1] == "C" and tonumber(tbHabilidades[i][2]) > 15) then SomaHabs = SomaHabs + tbHabilidades[i][2]; end;
+			end;
+			
+			-- SOMANDO VIRTUDES ELEVADAS
+			for i = 1, #tbVirtudes do
+				if(tonumber((tbVirtudes[i]) or 0) > 15) then SomaVirts = SomaVirts + tonumber(tbVirtudes[i]); end;
+			end;
+			
+			-- CHECANDO BONUS DIVERSOS
+			local SomaHonra = (tonumber(sheet.fldValEnergia) or 0) + (tonumber(sheet.fldValGenerosidade) or 0) + (tonumber(sheet.fldValJustica) or 0);
+			SomaHonra = SomaHonra + (tonumber(sheet.fldValMisericordia) or 0) + (tonumber(sheet.fldValModestia) or 0) + (tonumber(sheet.fldValCoragem) or 0);
+			
+			-- INICIALIZANDO VARIÁVEIS
+			local tbReligiao = {};
+			local SomaReligiao = 0;
+			
+			-- ADICIONANDO VIRTUDES MARCADAS COMO RELIGIOSAS
+			if(sheet.fldChCastidade == true) then table.insert(tbReligiao, sheet.fldValCastidade); end;
+			if(sheet.fldChEnergia == true) then table.insert(tbReligiao, sheet.fldValEnergia); end;
+			if(sheet.fldChPerdao == true) then table.insert(tbReligiao, sheet.fldValPerdao); end;
+			if(sheet.fldChGenerosidade == true) then table.insert(tbReligiao, sheet.fldValGenerosidade); end;
+			if(sheet.fldChHonestidade == true) then table.insert(tbReligiao, sheet.fldValHonestidade); end;
+			if(sheet.fldChJustica == true) then table.insert(tbReligiao, sheet.fldValJustica); end;
+			if(sheet.fldChMisericordia == true) then table.insert(tbReligiao, sheet.fldValMisericordia); end;
+			if(sheet.fldChModestia == true) then table.insert(tbReligiao, sheet.fldValModestia); end;
+			if(sheet.fldChEspiritualidade == true) then table.insert(tbReligiao, sheet.fldValEspiritualidade); end;
+			if(sheet.fldChPrudencia == true) then table.insert(tbReligiao, sheet.fldValPrudencia); end;
+			if(sheet.fldChTemperanca == true) then table.insert(tbReligiao, sheet.fldValTemperanca); end;
+			if(sheet.fldChConfianca == true) then table.insert(tbReligiao, sheet.fldValConfianca); end;
+			if(sheet.fldChCoragem == true) then table.insert(tbReligiao, sheet.fldValCoragem); end;
+			
+			-- ADICIONANDO VÍCIOS MARCADOS COMO RELIGIOSOS
+			if(sheet.fldChLuxuria == true) then table.insert(tbReligiao, sheet.fldValLuxuria); end;
+			if(sheet.fldChPreguica == true) then table.insert(tbReligiao, sheet.fldValPreguica); end;
+			if(sheet.fldChVinganca == true) then table.insert(tbReligiao, sheet.fldValVinganca); end;
+			if(sheet.fldChEgoismo == true) then table.insert(tbReligiao, sheet.fldValEgoismo); end;
+			if(sheet.fldChMalicia == true) then table.insert(tbReligiao, sheet.fldValMalicia); end;
+			if(sheet.fldChArbitrariedade == true) then table.insert(tbReligiao, sheet.fldValArbitrariedade); end;
+			if(sheet.fldChCrueldade == true) then table.insert(tbReligiao, sheet.fldValCrueldade); end;
+			if(sheet.fldChOrgulho == true) then table.insert(tbReligiao, sheet.fldValOrgulho); end;
+			if(sheet.fldChCinismo == true) then table.insert(tbReligiao, sheet.fldValCinismo); end;
+			if(sheet.fldChImprudencia == true) then table.insert(tbReligiao, sheet.fldValImprudencia); end;
+			if(sheet.fldChIndulgencia == true) then table.insert(tbReligiao, sheet.fldValIndulgencia); end;
+			if(sheet.fldChDesconfianca == true) then table.insert(tbReligiao, sheet.fldValDesconfianca); end;
+			if(sheet.fldChCovardia == true) then table.insert(tbReligiao, sheet.fldValCovardia); end;
+			
+			-- SOMANDO VALORES DE TRAÇOS RELIGIOSOS
+			for i = 1, #tbReligiao do
+				SomaReligiao = SomaReligiao + tbReligiao[i];
+			end;
+			
+			-- CAPTANDO SOMA DE BÔNUS
+			local SomaRom = 0;
+			
+			-- CHECANDO QUANTAS VIRTUDES ACIMA DE 15
+			if((tonumber(sheet.fldValCastidade) or 0) > 15) then SomaRom = SomaRom + 1; end;
+			if((tonumber(sheet.fldValEnergia) or 0) > 15) then SomaRom = SomaRom + 1; end;
+			if((tonumber(sheet.fldValPerdao) or 0) > 15) then SomaRom = SomaRom + 1; end;
+			if((tonumber(sheet.fldValGenerosidade) or 0) > 15) then SomaRom = SomaRom + 1; end;
+			if((tonumber(sheet.fldValHonestidade) or 0) > 15) then SomaRom = SomaRom + 1; end;
+			if((tonumber(sheet.fldValJustica) or 0) > 15) then SomaRom = SomaRom + 1; end;
+			if((tonumber(sheet.fldValMisericordia) or 0) > 15) then SomaRom = SomaRom + 1; end;
+			if((tonumber(sheet.fldValModestia) or 0) > 15) then SomaRom = SomaRom + 1; end;
+			if((tonumber(sheet.fldValEspiritualidade) or 0) > 15) then SomaRom = SomaRom + 1; end;
+			if((tonumber(sheet.fldValPrudencia) or 0) > 15) then SomaRom = SomaRom + 1; end;
+			if((tonumber(sheet.fldValTemperanca) or 0) > 15) then SomaRom = SomaRom + 1; end;
+			if((tonumber(sheet.fldValConfianca) or 0) > 15) then SomaRom = SomaRom + 1; end;
+			if((tonumber(sheet.fldValCoragem) or 0) > 15) then SomaRom = SomaRom + 1; end;
+			
+			-- SOMANDO QUANTAS PAIXÕES ACIMA DE 15
+			SomaRom = SomaRom + node.countRom;
+			
+			-- LIMITANDO NÚMERO DE VIRTUDES E PAIXÕES ACIMA DE 15 PARA 3
+			if(SomaRom > 3) then SomaRom = 3; end;
+			
+			-- CHECANDO SE ALGUM VÍCIO ACIMA DE 15
+			if((tonumber(sheet.fldValCastidade) or 0) < 5
+			or (tonumber(sheet.fldValEnergia) or 0) < 5 
+			or (tonumber(sheet.fldValPerdao) or 0) < 5 
+			or (tonumber(sheet.fldValGenerosidade) or 0) < 5 
+			or (tonumber(sheet.fldValHonestidade) or 0) < 5 
+			or (tonumber(sheet.fldValJustica) or 0) < 5 
+			or (tonumber(sheet.fldValMisericordia) or 0) < 5 
+			or (tonumber(sheet.fldValModestia) or 0) < 5 
+			or (tonumber(sheet.fldValEspiritualidade) or 0) < 5 
+			or (tonumber(sheet.fldValPrudencia) or 0) < 5 
+			or (tonumber(sheet.fldValTemperanca) or 0) < 5 
+			or (tonumber(sheet.fldValConfianca) or 0) < 5 
+			or (tonumber(sheet.fldValCoragem) or 0) < 5) then 
+				SomaRom = SomaRom + 1; 
+			end;
+			
+			if(SomaHonra > 79) then
+				SomaBonus = SomaBonus + 100;
+			end;
+			if(SomaReligiao > 79) then
+				SomaBonus = SomaBonus + 100;
+			end;
+			if(SomaRom > 3) then
+				SomaBonus = SomaBonus + 100;
+			end;
+			
+			-- SOMANDO BONUS DIVERSOS
+			SomaBonus = SomaBonus + (tonumber(node.countSum) or 0);
+			
+			-- APLICANDO VALOR AO CAMPO
+			sheet.fldSomaGloria = "+ " .. tostring(math.floor(SomaHabs + SomaVirts + SomaBonus));
+		end;
+		
+		local function ContabilizarPaixoes()
+			if (sheet ~= nil) then
+				-- INICIALIZANDO VARIÁVEIS
+				local node = NDB.getRoot(sheet);
+				local objetos = NDB.getChildNodes(node.fldPaixoes);
+				local soma = 0;
+				local flagSomaRom = 0;
+				
+				-- SOMANDO E CONTABILIZANDO PAIXÕES MAIORES DO QUE 15
+				for i =1 , #objetos do 
+					if(tonumber((objetos[i].valorPX) or 0) > 15) then
+						soma = soma + (tonumber(objetos[i].valorPX) or 0);
+						flagSomaRom = flagSomaRom + 1;
+					end;
+				end;
+				
+				-- ATRIBUINDO VALORES AO NDB
+				node.countSum = soma;
+				node.countRom = flagSomaRom;
+				
+				-- RECALCULANDO GLORIA
+				CalcularGloriaAnual();
+			end;
+		end;
+		
+	]]>
+	</script>
 		<layout align="top" height="25" >
 			<!-- NOME DA PAIXÃO -->
 			<edit align="left" field="nomePX" fontStyle="bold" fontColor="white" fontFamily="Cambria" fontSize="14" height="25" width="217" transparent="true" />
 			<dataLink field="nomePX" defaultValue="—" />
 			
 			<!-- VALOR DA PAIXÃO -->
-			<edit align="left" field="valorPX" fontStyle="bold" fontColor="white" fontFamily="Cambria" fontSize="14" height="25" width="26" transparent="true" type="number" min="0" max="99" onExit="CalcularGloriaAnual();" />
+			<edit align="left" field="valorPX" fontStyle="bold" fontColor="white" fontFamily="Cambria" fontSize="14" height="25" width="26" transparent="true" type="number" min="0" max="99" onExit="if(sheet==nil) then return; end; CalcularGloriaAnual();" />
 			<dataLink field="valorPX" defaultValue="0">
 				<event name="onChange">
 				<![CDATA[
+					if(sheet==nil) then return; end; 
 					ContabilizarPaixoes();
 		        ]]>
 				</event>
 			</dataLink>
-			<button align="left" text="🞭" width="25" height="25" onClick="NDB.deleteNode(sheet); CalcularGloriaAnual();" hint="Apagar Paixão" />
+			<button align="left" text="🞭" width="25" height="25" onClick="NDB.deleteNode(sheet); if(sheet==nil) then return; end; CalcularGloriaAnual();" hint="Apagar Paixão" />
 		</layout>
 </form>
