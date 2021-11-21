@@ -231,7 +231,7 @@ edit.EditBold{
 						
 						<!-- ATRIBUTOS DERIVADOS -->
 						<flowLayout class="Tabela" margins="{left=20, top=10, bottom=30, right=20}">
-							<ColunaDez classAtr="V I T A L I D A D E" id="Vit" />
+							<ColunaQuinze classAtr="V I T A L I D A D E" id="Vit" />
 							<ColunaDez classAtr="H U M A N I D A D E" id="Hum" />
 							<ColunaDez classAtr="F O R Ç A   D E   V O N T A D E" id="FdV" />
 						</flowLayout>

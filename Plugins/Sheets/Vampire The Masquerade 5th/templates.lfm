@@ -126,7 +126,7 @@
 	</template>
 	
 	<template name="imageCheckBoxMul">
-		<layout width="14" height="25" align="$(alinhamento)" margins="{$(margem)=3}">
+		<layout width="14" height="25" align="$(alinhamento)" margins="{$(margem)}">
 			<image name="checkMulVit_Des_$(id)" width="14" height="25"  field="checkMulVit_Des_$(id)" style="proportional" visible="true" hitTest="true" cursor="handPoint" onClick="
 				if(sheet.checkMulVit_Des_$(id) == '/images/checkBoxDes.png') then
 					sheet.checkMulVit_Des_$(id) = '/images/checkBoxAtv.png';
@@ -145,17 +145,44 @@
 			<flowLayout orientation="vertical" width="220" autoHeight="true" maxColumns="1">
 				<flowPart class="flowCampo" height="15" margins="{bottom=5}"><label class="AtrClasse" text="$(classAtr)" /></flowPart>
 				<flowPart class="flowCampo" margins="{bottom=5}">
-					<imageCheckBoxMul alinhamento="left" margem="right" id="01_$(id)" />
-					<imageCheckBoxMul alinhamento="left" margem="right" id="02_$(id)" />
-					<imageCheckBoxMul alinhamento="left" margem="right" id="03_$(id)" />
-					<imageCheckBoxMul alinhamento="left" margem="right" id="04_$(id)" />
-					<imageCheckBoxMul alinhamento="left" margem="right" id="05_$(id)" />
+					<imageCheckBoxMul alinhamento="left" margem="right=3" id="01_$(id)" />
+					<imageCheckBoxMul alinhamento="left" margem="right=3" id="02_$(id)" />
+					<imageCheckBoxMul alinhamento="left" margem="right=3" id="03_$(id)" />
+					<imageCheckBoxMul alinhamento="left" margem="right=3" id="04_$(id)" />
+					<imageCheckBoxMul alinhamento="left" margem="right=3" id="05_$(id)" />
 					
-					<imageCheckBoxMul alinhamento="right" margem="left" id="06_$(id)" />
-					<imageCheckBoxMul alinhamento="right" margem="left" id="07_$(id)" />
-					<imageCheckBoxMul alinhamento="right" margem="left" id="08_$(id)" />
-					<imageCheckBoxMul alinhamento="right" margem="left" id="09_$(id)" />
-					<imageCheckBoxMul alinhamento="right" margem="right=10, left" id="10_$(id)" />
+					<imageCheckBoxMul alinhamento="right" margem="left=3" id="06_$(id)" />
+					<imageCheckBoxMul alinhamento="right" margem="left=3" id="07_$(id)" />
+					<imageCheckBoxMul alinhamento="right" margem="left=3" id="08_$(id)" />
+					<imageCheckBoxMul alinhamento="right" margem="left=3" id="09_$(id)" />
+					<imageCheckBoxMul alinhamento="right" margem="right=10, left=3" id="10_$(id)" />
+				</flowPart>
+			</flowLayout>
+		</flowPart>
+	</template>
+						
+	<template name="ColunaQuinze">
+		<flowPart class="flowCampo" height="45" minWidth="252" maxWidth="252" margins="{bottom=20, left=10, right=10}">
+			<flowLayout orientation="vertical" width="252" autoHeight="true" maxColumns="1">
+				<flowPart class="flowCampo" height="15" margins="{bottom=5}"><label class="AtrClasse" text="$(classAtr)" /></flowPart>
+				<flowPart class="flowCampo" margins="{bottom=5}" minWidth="252" maxWidth="252">
+					<imageCheckBoxMul alinhamento="left" margem="right=3" id="01_$(id)" />
+					<imageCheckBoxMul alinhamento="left" margem="right=3" id="02_$(id)" />
+					<imageCheckBoxMul alinhamento="left" margem="right=3" id="03_$(id)" />
+					<imageCheckBoxMul alinhamento="left" margem="right=3" id="04_$(id)" />
+					<imageCheckBoxMul alinhamento="left" margem="right=3" id="05_$(id)" />
+					<imageCheckBoxMul alinhamento="left" margem="right=3" id="06_$(id)" />
+					<imageCheckBoxMul alinhamento="left" margem="right=3" id="07_$(id)" />
+					
+					<imageCheckBoxMul alinhamento="left" margem="right=3" id="08_$(id)" />
+					
+					<imageCheckBoxMul alinhamento="right" margem="left=3" id="09_$(id)" />
+					<imageCheckBoxMul alinhamento="right" margem="left=3" id="10_$(id)" />
+					<imageCheckBoxMul alinhamento="right" margem="left=3" id="11_$(id)" />
+					<imageCheckBoxMul alinhamento="right" margem="left=3" id="12_$(id)" />
+					<imageCheckBoxMul alinhamento="right" margem="left=3" id="13_$(id)" />
+					<imageCheckBoxMul alinhamento="right" margem="left=3" id="14_$(id)" />
+					<imageCheckBoxMul alinhamento="right" margem="left=3" id="15_$(id)" />
 				</flowPart>
 			</flowLayout>
 		</flowPart>
