@@ -5,6 +5,11 @@
             <dataType id="ambesek.afkbot" title="AfkBot"/>
         </dataTypes>
     </element>
+    <element id="Game_of_Thrones" name="Game of Thrones" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Game%20of%20Thrones/output/Game%20of%20Thrones.rpk?raw=true" fileName="Game of Thrones.rpk" repositoryPath="Sheets/Game of Thrones/" author="thirteen" description="Ficha de Personagem do sistema Game of Thrones." version="1.0" compilationDate="21112021233549" compilationDigest="047c1f70c074329801387777fecd5b03e26d1196">
+        <dataTypes>
+            <dataType id="thirteen.GoT" title="Game of Thrones"/>
+        </dataTypes>
+    </element>
     <element id="VaMv5" name="V:aM V5" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Vampire%20The%20Masquerade%205th/output/Vampire%20The%20Masquerade%205th.rpk?raw=true" fileName="Vampire The Masquerade 5th.rpk" repositoryPath="Sheets/Vampire The Masquerade 5th/" author="thirteen" description="Ficha de Personagem do sistema Vampiro: a Máscara, Quinta edição." version="1.0.4" compilationDate="17112021214613" compilationDigest="ac331ea04bd28aba6946ff849ad8a66d4cc35b00">
         <dataTypes>
             <dataType id="thirteen.VaMv5" title="V:aM V5"/>
