@@ -219,10 +219,13 @@ edit.EditBold{
 				]]>
 				</event>
 			</button>
-			<popup name="popUp_$(n02)" width="300" height="200" backOpacity="0" drawContainer="false">
-				<rectangle align="client" color="#0e0e0e" padding="{top=5, left=5, bottom=5, right=5}" xradius= "5" yradius="5" cornerType="bevel">
-					<rectangle align="client" color="#0e0e0e"  padding="{top=5, left=5, bottom=5, right=5}" xradius= "3" yradius="3" strokeColor="#272727" strokeSize="1"  cornerType="bevel">
-						<textEditor align="client" transparent="true" field="fld$(n02)" name="nomeDis$(n02)" fontFamily="Constantia" fontSize="13"/>
+			<popup name="popUp_$(n02)" width="590" height="350" backOpacity="0" drawContainer="false">
+				<rectangle align="client" color="#0e0e0e" padding="{top=5, left=5, bottom=5, right=5}" xradius= "10" yradius="10" cornerType="bevel">
+					<rectangle align="client" color="#0e0e0e"  padding="{top=5, left=5, bottom=5, right=5}" xradius= "8" yradius="8" strokeColor="#272727" strokeSize="1"  cornerType="bevel">
+						<label field="fldDisPod_$(n02)" height="35" fontSize="30" align="top" margins="{top=5, left=10}" />
+						<label field="fldDis_Disc00" anchors="right top" right="0" top="25" horzTextAlign="trailing" />
+						<horzLine align="top" margins="{left=10, right=10, top=10}" />
+						<textEditor margins="{top=10, left=10, right=10, bottom=10}" align="client" transparent="true" fontColor="#cdcdcd" field="fld$(n02)" name="nomeDis$(n02)" fontFamily="Constantia" fontSize="15"/>
 						<dataLink field="fld$(n02)" defaultValue="Descrição do Poder">
 								<event name="onChange">
 								<![CDATA[

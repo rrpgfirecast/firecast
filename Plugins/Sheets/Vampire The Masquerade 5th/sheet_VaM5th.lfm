@@ -190,15 +190,14 @@ edit.EditBold{
 	<layout align="client" frameStyle="/frames/frameFundo.xml">
 	<scrollBox align="client">
 		<flowLayout autoHeight="true" align="top" horzAlign="center">
-		<flowPart align="client" height="1620" minWidth="400" maxWidth="1000">
+		<flowPart align="top" height="1620" minWidth="30" maxWidth="50">
+			<image align="client" style="proportional" url="/images/left-arrow.png" hitTest="true" cursor="handPoint" hint="Trocar de Aba" onClick="if(sheet==nil) then return end; TrocarAba('E');" />
+		</flowPart>
+		<flowPart align="top" height="1620" minWidth="400" maxWidth="1000">
 		<rectangle class="LinhaDeFora">
 			<rectangle class="LinhaDeDentro">
 				<rectangle class="Fundo">					
 					<image align="top" style="proportional" height="100" url="/images/logotype.png" margins="{top=40, left=40, right=40}" />
-					<layout align="top" height="25">
-						<image align="left" style="proportional" width="50" height="25" url="/images/left-arrow.png" hitTest="true" cursor="handPoint" hint="Trocar de Aba" onClick="if(sheet==nil) then return end; TrocarAba('E');" />
-						<image align="right" style="proportional" width="50" height="25" url="/images/right-arrow.png" hitTest="true" cursor="handPoint" hint="Trocar de Aba" onClick="if(sheet==nil) then return end; TrocarAba('D');" />
-					</layout>
 					<!-- FRENTE DA FICHA -->
 					<layout name="layFrente" align="client">	
 					
@@ -674,6 +673,9 @@ edit.EditBold{
 				</rectangle>
 			</rectangle>
 		</rectangle>
+		</flowPart>
+		<flowPart align="top" height="1620" minWidth="30" maxWidth="50">
+			<image align="client" style="proportional" url="/images/right-arrow.png" hitTest="true" cursor="handPoint" hint="Trocar de Aba" onClick="if(sheet==nil) then return end; TrocarAba('D');" />
 		</flowPart>
 		</flowLayout>
 	</scrollBox>
