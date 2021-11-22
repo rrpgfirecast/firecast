@@ -200,8 +200,8 @@ local function constructNew_disciplinas()
     obj.popUp_01 = GUI.fromHandle(_obj_newObject("popup"));
     obj.popUp_01:setParent(obj.flowPart3);
     obj.popUp_01:setName("popUp_01");
-    obj.popUp_01:setWidth(300);
-    obj.popUp_01:setHeight(200);
+    obj.popUp_01:setWidth(590);
+    obj.popUp_01:setHeight(350);
     obj.popUp_01:setBackOpacity(0);
     obj.popUp_01:setDrawContainer(false);
 
@@ -210,8 +210,8 @@ local function constructNew_disciplinas()
     obj.rectangle1:setAlign("client");
     obj.rectangle1:setColor("#0e0e0e");
     obj.rectangle1:setPadding({top=5, left=5, bottom=5, right=5});
-    obj.rectangle1:setXradius(5);
-    obj.rectangle1:setYradius(5);
+    obj.rectangle1:setXradius(10);
+    obj.rectangle1:setYradius(10);
     obj.rectangle1:setCornerType("bevel");
     obj.rectangle1:setName("rectangle1");
 
@@ -220,21 +220,57 @@ local function constructNew_disciplinas()
     obj.rectangle2:setAlign("client");
     obj.rectangle2:setColor("#0e0e0e");
     obj.rectangle2:setPadding({top=5, left=5, bottom=5, right=5});
-    obj.rectangle2:setXradius(3);
-    obj.rectangle2:setYradius(3);
+    obj.rectangle2:setXradius(8);
+    obj.rectangle2:setYradius(8);
     obj.rectangle2:setStrokeColor("#272727");
     obj.rectangle2:setStrokeSize(1);
     obj.rectangle2:setCornerType("bevel");
     obj.rectangle2:setName("rectangle2");
 
+    obj.label1 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label1:setParent(obj.rectangle2);
+    obj.label1:setField("fldDisPod_01");
+    obj.label1:setHeight(35);
+    obj.label1:setFontSize(30);
+    obj.label1:setAlign("top");
+    obj.label1:setMargins({top=5, left=10});
+    obj.label1:setName("label1");
+    obj.label1:setFontColor("white");
+    lfm_setPropAsString(obj.label1, "fontStyle",  "bold");
+    obj.label1:setTextTrimming("character");
+    obj.label1:setFontFamily("Constantia");
+
+    obj.label2 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label2:setParent(obj.rectangle2);
+    obj.label2:setField("fldDis_Disc00");
+    lfm_setPropAsString(obj.label2, "anchors",  "right top");
+    obj.label2:setRight(0);
+    obj.label2:setTop(25);
+    obj.label2:setHorzTextAlign("trailing");
+    obj.label2:setName("label2");
+    obj.label2:setFontSize(14);
+    obj.label2:setFontColor("white");
+    lfm_setPropAsString(obj.label2, "fontStyle",  "bold");
+    obj.label2:setTextTrimming("character");
+    obj.label2:setFontFamily("Constantia");
+
+    obj.horzLine2 = GUI.fromHandle(_obj_newObject("horzLine"));
+    obj.horzLine2:setParent(obj.rectangle2);
+    obj.horzLine2:setAlign("top");
+    obj.horzLine2:setMargins({left=10, right=10, top=10});
+    obj.horzLine2:setName("horzLine2");
+    obj.horzLine2:setStrokeColor("#424242");
+
     obj.nomeDis01 = GUI.fromHandle(_obj_newObject("textEditor"));
     obj.nomeDis01:setParent(obj.rectangle2);
+    obj.nomeDis01:setMargins({top=10, left=10, right=10, bottom=10});
     obj.nomeDis01:setAlign("client");
     obj.nomeDis01:setTransparent(true);
+    obj.nomeDis01:setFontColor("#cdcdcd");
     obj.nomeDis01:setField("fld01");
     obj.nomeDis01:setName("nomeDis01");
     obj.nomeDis01:setFontFamily("Constantia");
-    obj.nomeDis01:setFontSize(13);
+    obj.nomeDis01:setFontSize(15);
 
     obj.dataLink3 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink3:setParent(obj.rectangle2);
@@ -292,8 +328,8 @@ local function constructNew_disciplinas()
     obj.popUp_02 = GUI.fromHandle(_obj_newObject("popup"));
     obj.popUp_02:setParent(obj.flowPart4);
     obj.popUp_02:setName("popUp_02");
-    obj.popUp_02:setWidth(300);
-    obj.popUp_02:setHeight(200);
+    obj.popUp_02:setWidth(590);
+    obj.popUp_02:setHeight(350);
     obj.popUp_02:setBackOpacity(0);
     obj.popUp_02:setDrawContainer(false);
 
@@ -302,8 +338,8 @@ local function constructNew_disciplinas()
     obj.rectangle3:setAlign("client");
     obj.rectangle3:setColor("#0e0e0e");
     obj.rectangle3:setPadding({top=5, left=5, bottom=5, right=5});
-    obj.rectangle3:setXradius(5);
-    obj.rectangle3:setYradius(5);
+    obj.rectangle3:setXradius(10);
+    obj.rectangle3:setYradius(10);
     obj.rectangle3:setCornerType("bevel");
     obj.rectangle3:setName("rectangle3");
 
@@ -312,21 +348,57 @@ local function constructNew_disciplinas()
     obj.rectangle4:setAlign("client");
     obj.rectangle4:setColor("#0e0e0e");
     obj.rectangle4:setPadding({top=5, left=5, bottom=5, right=5});
-    obj.rectangle4:setXradius(3);
-    obj.rectangle4:setYradius(3);
+    obj.rectangle4:setXradius(8);
+    obj.rectangle4:setYradius(8);
     obj.rectangle4:setStrokeColor("#272727");
     obj.rectangle4:setStrokeSize(1);
     obj.rectangle4:setCornerType("bevel");
     obj.rectangle4:setName("rectangle4");
 
+    obj.label3 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label3:setParent(obj.rectangle4);
+    obj.label3:setField("fldDisPod_02");
+    obj.label3:setHeight(35);
+    obj.label3:setFontSize(30);
+    obj.label3:setAlign("top");
+    obj.label3:setMargins({top=5, left=10});
+    obj.label3:setName("label3");
+    obj.label3:setFontColor("white");
+    lfm_setPropAsString(obj.label3, "fontStyle",  "bold");
+    obj.label3:setTextTrimming("character");
+    obj.label3:setFontFamily("Constantia");
+
+    obj.label4 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label4:setParent(obj.rectangle4);
+    obj.label4:setField("fldDis_Disc00");
+    lfm_setPropAsString(obj.label4, "anchors",  "right top");
+    obj.label4:setRight(0);
+    obj.label4:setTop(25);
+    obj.label4:setHorzTextAlign("trailing");
+    obj.label4:setName("label4");
+    obj.label4:setFontSize(14);
+    obj.label4:setFontColor("white");
+    lfm_setPropAsString(obj.label4, "fontStyle",  "bold");
+    obj.label4:setTextTrimming("character");
+    obj.label4:setFontFamily("Constantia");
+
+    obj.horzLine3 = GUI.fromHandle(_obj_newObject("horzLine"));
+    obj.horzLine3:setParent(obj.rectangle4);
+    obj.horzLine3:setAlign("top");
+    obj.horzLine3:setMargins({left=10, right=10, top=10});
+    obj.horzLine3:setName("horzLine3");
+    obj.horzLine3:setStrokeColor("#424242");
+
     obj.nomeDis02 = GUI.fromHandle(_obj_newObject("textEditor"));
     obj.nomeDis02:setParent(obj.rectangle4);
+    obj.nomeDis02:setMargins({top=10, left=10, right=10, bottom=10});
     obj.nomeDis02:setAlign("client");
     obj.nomeDis02:setTransparent(true);
+    obj.nomeDis02:setFontColor("#cdcdcd");
     obj.nomeDis02:setField("fld02");
     obj.nomeDis02:setName("nomeDis02");
     obj.nomeDis02:setFontFamily("Constantia");
-    obj.nomeDis02:setFontSize(13);
+    obj.nomeDis02:setFontSize(15);
 
     obj.dataLink5 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink5:setParent(obj.rectangle4);
@@ -384,8 +456,8 @@ local function constructNew_disciplinas()
     obj.popUp_03 = GUI.fromHandle(_obj_newObject("popup"));
     obj.popUp_03:setParent(obj.flowPart5);
     obj.popUp_03:setName("popUp_03");
-    obj.popUp_03:setWidth(300);
-    obj.popUp_03:setHeight(200);
+    obj.popUp_03:setWidth(590);
+    obj.popUp_03:setHeight(350);
     obj.popUp_03:setBackOpacity(0);
     obj.popUp_03:setDrawContainer(false);
 
@@ -394,8 +466,8 @@ local function constructNew_disciplinas()
     obj.rectangle5:setAlign("client");
     obj.rectangle5:setColor("#0e0e0e");
     obj.rectangle5:setPadding({top=5, left=5, bottom=5, right=5});
-    obj.rectangle5:setXradius(5);
-    obj.rectangle5:setYradius(5);
+    obj.rectangle5:setXradius(10);
+    obj.rectangle5:setYradius(10);
     obj.rectangle5:setCornerType("bevel");
     obj.rectangle5:setName("rectangle5");
 
@@ -404,21 +476,57 @@ local function constructNew_disciplinas()
     obj.rectangle6:setAlign("client");
     obj.rectangle6:setColor("#0e0e0e");
     obj.rectangle6:setPadding({top=5, left=5, bottom=5, right=5});
-    obj.rectangle6:setXradius(3);
-    obj.rectangle6:setYradius(3);
+    obj.rectangle6:setXradius(8);
+    obj.rectangle6:setYradius(8);
     obj.rectangle6:setStrokeColor("#272727");
     obj.rectangle6:setStrokeSize(1);
     obj.rectangle6:setCornerType("bevel");
     obj.rectangle6:setName("rectangle6");
 
+    obj.label5 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label5:setParent(obj.rectangle6);
+    obj.label5:setField("fldDisPod_03");
+    obj.label5:setHeight(35);
+    obj.label5:setFontSize(30);
+    obj.label5:setAlign("top");
+    obj.label5:setMargins({top=5, left=10});
+    obj.label5:setName("label5");
+    obj.label5:setFontColor("white");
+    lfm_setPropAsString(obj.label5, "fontStyle",  "bold");
+    obj.label5:setTextTrimming("character");
+    obj.label5:setFontFamily("Constantia");
+
+    obj.label6 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label6:setParent(obj.rectangle6);
+    obj.label6:setField("fldDis_Disc00");
+    lfm_setPropAsString(obj.label6, "anchors",  "right top");
+    obj.label6:setRight(0);
+    obj.label6:setTop(25);
+    obj.label6:setHorzTextAlign("trailing");
+    obj.label6:setName("label6");
+    obj.label6:setFontSize(14);
+    obj.label6:setFontColor("white");
+    lfm_setPropAsString(obj.label6, "fontStyle",  "bold");
+    obj.label6:setTextTrimming("character");
+    obj.label6:setFontFamily("Constantia");
+
+    obj.horzLine4 = GUI.fromHandle(_obj_newObject("horzLine"));
+    obj.horzLine4:setParent(obj.rectangle6);
+    obj.horzLine4:setAlign("top");
+    obj.horzLine4:setMargins({left=10, right=10, top=10});
+    obj.horzLine4:setName("horzLine4");
+    obj.horzLine4:setStrokeColor("#424242");
+
     obj.nomeDis03 = GUI.fromHandle(_obj_newObject("textEditor"));
     obj.nomeDis03:setParent(obj.rectangle6);
+    obj.nomeDis03:setMargins({top=10, left=10, right=10, bottom=10});
     obj.nomeDis03:setAlign("client");
     obj.nomeDis03:setTransparent(true);
+    obj.nomeDis03:setFontColor("#cdcdcd");
     obj.nomeDis03:setField("fld03");
     obj.nomeDis03:setName("nomeDis03");
     obj.nomeDis03:setFontFamily("Constantia");
-    obj.nomeDis03:setFontSize(13);
+    obj.nomeDis03:setFontSize(15);
 
     obj.dataLink7 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink7:setParent(obj.rectangle6);
@@ -476,8 +584,8 @@ local function constructNew_disciplinas()
     obj.popUp_04 = GUI.fromHandle(_obj_newObject("popup"));
     obj.popUp_04:setParent(obj.flowPart6);
     obj.popUp_04:setName("popUp_04");
-    obj.popUp_04:setWidth(300);
-    obj.popUp_04:setHeight(200);
+    obj.popUp_04:setWidth(590);
+    obj.popUp_04:setHeight(350);
     obj.popUp_04:setBackOpacity(0);
     obj.popUp_04:setDrawContainer(false);
 
@@ -486,8 +594,8 @@ local function constructNew_disciplinas()
     obj.rectangle7:setAlign("client");
     obj.rectangle7:setColor("#0e0e0e");
     obj.rectangle7:setPadding({top=5, left=5, bottom=5, right=5});
-    obj.rectangle7:setXradius(5);
-    obj.rectangle7:setYradius(5);
+    obj.rectangle7:setXradius(10);
+    obj.rectangle7:setYradius(10);
     obj.rectangle7:setCornerType("bevel");
     obj.rectangle7:setName("rectangle7");
 
@@ -496,21 +604,57 @@ local function constructNew_disciplinas()
     obj.rectangle8:setAlign("client");
     obj.rectangle8:setColor("#0e0e0e");
     obj.rectangle8:setPadding({top=5, left=5, bottom=5, right=5});
-    obj.rectangle8:setXradius(3);
-    obj.rectangle8:setYradius(3);
+    obj.rectangle8:setXradius(8);
+    obj.rectangle8:setYradius(8);
     obj.rectangle8:setStrokeColor("#272727");
     obj.rectangle8:setStrokeSize(1);
     obj.rectangle8:setCornerType("bevel");
     obj.rectangle8:setName("rectangle8");
 
+    obj.label7 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label7:setParent(obj.rectangle8);
+    obj.label7:setField("fldDisPod_04");
+    obj.label7:setHeight(35);
+    obj.label7:setFontSize(30);
+    obj.label7:setAlign("top");
+    obj.label7:setMargins({top=5, left=10});
+    obj.label7:setName("label7");
+    obj.label7:setFontColor("white");
+    lfm_setPropAsString(obj.label7, "fontStyle",  "bold");
+    obj.label7:setTextTrimming("character");
+    obj.label7:setFontFamily("Constantia");
+
+    obj.label8 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label8:setParent(obj.rectangle8);
+    obj.label8:setField("fldDis_Disc00");
+    lfm_setPropAsString(obj.label8, "anchors",  "right top");
+    obj.label8:setRight(0);
+    obj.label8:setTop(25);
+    obj.label8:setHorzTextAlign("trailing");
+    obj.label8:setName("label8");
+    obj.label8:setFontSize(14);
+    obj.label8:setFontColor("white");
+    lfm_setPropAsString(obj.label8, "fontStyle",  "bold");
+    obj.label8:setTextTrimming("character");
+    obj.label8:setFontFamily("Constantia");
+
+    obj.horzLine5 = GUI.fromHandle(_obj_newObject("horzLine"));
+    obj.horzLine5:setParent(obj.rectangle8);
+    obj.horzLine5:setAlign("top");
+    obj.horzLine5:setMargins({left=10, right=10, top=10});
+    obj.horzLine5:setName("horzLine5");
+    obj.horzLine5:setStrokeColor("#424242");
+
     obj.nomeDis04 = GUI.fromHandle(_obj_newObject("textEditor"));
     obj.nomeDis04:setParent(obj.rectangle8);
+    obj.nomeDis04:setMargins({top=10, left=10, right=10, bottom=10});
     obj.nomeDis04:setAlign("client");
     obj.nomeDis04:setTransparent(true);
+    obj.nomeDis04:setFontColor("#cdcdcd");
     obj.nomeDis04:setField("fld04");
     obj.nomeDis04:setName("nomeDis04");
     obj.nomeDis04:setFontFamily("Constantia");
-    obj.nomeDis04:setFontSize(13);
+    obj.nomeDis04:setFontSize(15);
 
     obj.dataLink9 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink9:setParent(obj.rectangle8);
@@ -568,8 +712,8 @@ local function constructNew_disciplinas()
     obj.popUp_05 = GUI.fromHandle(_obj_newObject("popup"));
     obj.popUp_05:setParent(obj.flowPart7);
     obj.popUp_05:setName("popUp_05");
-    obj.popUp_05:setWidth(300);
-    obj.popUp_05:setHeight(200);
+    obj.popUp_05:setWidth(590);
+    obj.popUp_05:setHeight(350);
     obj.popUp_05:setBackOpacity(0);
     obj.popUp_05:setDrawContainer(false);
 
@@ -578,8 +722,8 @@ local function constructNew_disciplinas()
     obj.rectangle9:setAlign("client");
     obj.rectangle9:setColor("#0e0e0e");
     obj.rectangle9:setPadding({top=5, left=5, bottom=5, right=5});
-    obj.rectangle9:setXradius(5);
-    obj.rectangle9:setYradius(5);
+    obj.rectangle9:setXradius(10);
+    obj.rectangle9:setYradius(10);
     obj.rectangle9:setCornerType("bevel");
     obj.rectangle9:setName("rectangle9");
 
@@ -588,21 +732,57 @@ local function constructNew_disciplinas()
     obj.rectangle10:setAlign("client");
     obj.rectangle10:setColor("#0e0e0e");
     obj.rectangle10:setPadding({top=5, left=5, bottom=5, right=5});
-    obj.rectangle10:setXradius(3);
-    obj.rectangle10:setYradius(3);
+    obj.rectangle10:setXradius(8);
+    obj.rectangle10:setYradius(8);
     obj.rectangle10:setStrokeColor("#272727");
     obj.rectangle10:setStrokeSize(1);
     obj.rectangle10:setCornerType("bevel");
     obj.rectangle10:setName("rectangle10");
 
+    obj.label9 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label9:setParent(obj.rectangle10);
+    obj.label9:setField("fldDisPod_05");
+    obj.label9:setHeight(35);
+    obj.label9:setFontSize(30);
+    obj.label9:setAlign("top");
+    obj.label9:setMargins({top=5, left=10});
+    obj.label9:setName("label9");
+    obj.label9:setFontColor("white");
+    lfm_setPropAsString(obj.label9, "fontStyle",  "bold");
+    obj.label9:setTextTrimming("character");
+    obj.label9:setFontFamily("Constantia");
+
+    obj.label10 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label10:setParent(obj.rectangle10);
+    obj.label10:setField("fldDis_Disc00");
+    lfm_setPropAsString(obj.label10, "anchors",  "right top");
+    obj.label10:setRight(0);
+    obj.label10:setTop(25);
+    obj.label10:setHorzTextAlign("trailing");
+    obj.label10:setName("label10");
+    obj.label10:setFontSize(14);
+    obj.label10:setFontColor("white");
+    lfm_setPropAsString(obj.label10, "fontStyle",  "bold");
+    obj.label10:setTextTrimming("character");
+    obj.label10:setFontFamily("Constantia");
+
+    obj.horzLine6 = GUI.fromHandle(_obj_newObject("horzLine"));
+    obj.horzLine6:setParent(obj.rectangle10);
+    obj.horzLine6:setAlign("top");
+    obj.horzLine6:setMargins({left=10, right=10, top=10});
+    obj.horzLine6:setName("horzLine6");
+    obj.horzLine6:setStrokeColor("#424242");
+
     obj.nomeDis05 = GUI.fromHandle(_obj_newObject("textEditor"));
     obj.nomeDis05:setParent(obj.rectangle10);
+    obj.nomeDis05:setMargins({top=10, left=10, right=10, bottom=10});
     obj.nomeDis05:setAlign("client");
     obj.nomeDis05:setTransparent(true);
+    obj.nomeDis05:setFontColor("#cdcdcd");
     obj.nomeDis05:setField("fld05");
     obj.nomeDis05:setName("nomeDis05");
     obj.nomeDis05:setFontFamily("Constantia");
-    obj.nomeDis05:setFontSize(13);
+    obj.nomeDis05:setFontSize(15);
 
     obj.dataLink11 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink11:setParent(obj.rectangle10);
@@ -958,6 +1138,7 @@ local function constructNew_disciplinas()
         if self.nomeDis04 ~= nil then self.nomeDis04:destroy(); self.nomeDis04 = nil; end;
         if self.nomeDis_05 ~= nil then self.nomeDis_05:destroy(); self.nomeDis_05 = nil; end;
         if self.nomeCheckDisc00_04 ~= nil then self.nomeCheckDisc00_04:destroy(); self.nomeCheckDisc00_04 = nil; end;
+        if self.label1 ~= nil then self.label1:destroy(); self.label1 = nil; end;
         if self.rectangle7 ~= nil then self.rectangle7:destroy(); self.rectangle7 = nil; end;
         if self.flowPart8 ~= nil then self.flowPart8:destroy(); self.flowPart8 = nil; end;
         if self.nomeBut01B ~= nil then self.nomeBut01B:destroy(); self.nomeBut01B = nil; end;
@@ -972,12 +1153,12 @@ local function constructNew_disciplinas()
         if self.nomeBut02 ~= nil then self.nomeBut02:destroy(); self.nomeBut02 = nil; end;
         if self.dataLink3 ~= nil then self.dataLink3:destroy(); self.dataLink3 = nil; end;
         if self.dataLink7 ~= nil then self.dataLink7:destroy(); self.dataLink7 = nil; end;
-        if self.popUp_04 ~= nil then self.popUp_04:destroy(); self.popUp_04 = nil; end;
         if self.flowPart1 ~= nil then self.flowPart1:destroy(); self.flowPart1 = nil; end;
         if self.rectangle2 ~= nil then self.rectangle2:destroy(); self.rectangle2 = nil; end;
-        if self.nomeDis_01 ~= nil then self.nomeDis_01:destroy(); self.nomeDis_01 = nil; end;
         if self.rectangle3 ~= nil then self.rectangle3:destroy(); self.rectangle3 = nil; end;
+        if self.nomeDis_01 ~= nil then self.nomeDis_01:destroy(); self.nomeDis_01 = nil; end;
         if self.rectangle6 ~= nil then self.rectangle6:destroy(); self.rectangle6 = nil; end;
+        if self.popUp_04 ~= nil then self.popUp_04:destroy(); self.popUp_04 = nil; end;
         if self.flowPart2 ~= nil then self.flowPart2:destroy(); self.flowPart2 = nil; end;
         if self.dataLink10 ~= nil then self.dataLink10:destroy(); self.dataLink10 = nil; end;
         if self.nomeBut05 ~= nil then self.nomeBut05:destroy(); self.nomeBut05 = nil; end;
@@ -986,10 +1167,12 @@ local function constructNew_disciplinas()
         if self.dataLink5 ~= nil then self.dataLink5:destroy(); self.dataLink5 = nil; end;
         if self.horzLine1 ~= nil then self.horzLine1:destroy(); self.horzLine1 = nil; end;
         if self.dataLink2 ~= nil then self.dataLink2:destroy(); self.dataLink2 = nil; end;
-        if self.flowPart6 ~= nil then self.flowPart6:destroy(); self.flowPart6 = nil; end;
+        if self.horzLine2 ~= nil then self.horzLine2:destroy(); self.horzLine2 = nil; end;
         if self.layout1 ~= nil then self.layout1:destroy(); self.layout1 = nil; end;
-        if self.rectangle10 ~= nil then self.rectangle10:destroy(); self.rectangle10 = nil; end;
+        if self.flowPart6 ~= nil then self.flowPart6:destroy(); self.flowPart6 = nil; end;
         if self.rectangle1 ~= nil then self.rectangle1:destroy(); self.rectangle1 = nil; end;
+        if self.rectangle10 ~= nil then self.rectangle10:destroy(); self.rectangle10 = nil; end;
+        if self.label10 ~= nil then self.label10:destroy(); self.label10 = nil; end;
         if self.layout2 ~= nil then self.layout2:destroy(); self.layout2 = nil; end;
         if self.nomeBut04 ~= nil then self.nomeBut04:destroy(); self.nomeBut04 = nil; end;
         if self.rectangle5 ~= nil then self.rectangle5:destroy(); self.rectangle5 = nil; end;
@@ -998,16 +1181,26 @@ local function constructNew_disciplinas()
         if self.button1 ~= nil then self.button1:destroy(); self.button1 = nil; end;
         if self.dataLink8 ~= nil then self.dataLink8:destroy(); self.dataLink8 = nil; end;
         if self.nomeBut04B ~= nil then self.nomeBut04B:destroy(); self.nomeBut04B = nil; end;
+        if self.label8 ~= nil then self.label8:destroy(); self.label8 = nil; end;
         if self.popUp_01 ~= nil then self.popUp_01:destroy(); self.popUp_01 = nil; end;
-        if self.nomeBut03 ~= nil then self.nomeBut03:destroy(); self.nomeBut03 = nil; end;
+        if self.label3 ~= nil then self.label3:destroy(); self.label3 = nil; end;
+        if self.label4 ~= nil then self.label4:destroy(); self.label4 = nil; end;
         if self.nomeBut02B ~= nil then self.nomeBut02B:destroy(); self.nomeBut02B = nil; end;
         if self.popUp_02 ~= nil then self.popUp_02:destroy(); self.popUp_02 = nil; end;
+        if self.horzLine3 ~= nil then self.horzLine3:destroy(); self.horzLine3 = nil; end;
+        if self.nomeBut03 ~= nil then self.nomeBut03:destroy(); self.nomeBut03 = nil; end;
+        if self.label6 ~= nil then self.label6:destroy(); self.label6 = nil; end;
+        if self.horzLine4 ~= nil then self.horzLine4:destroy(); self.horzLine4 = nil; end;
         if self.nomeDis_03 ~= nil then self.nomeDis_03:destroy(); self.nomeDis_03 = nil; end;
         if self.dataLink9 ~= nil then self.dataLink9:destroy(); self.dataLink9 = nil; end;
+        if self.label7 ~= nil then self.label7:destroy(); self.label7 = nil; end;
         if self.nomeDis05 ~= nil then self.nomeDis05:destroy(); self.nomeDis05 = nil; end;
+        if self.label2 ~= nil then self.label2:destroy(); self.label2 = nil; end;
         if self.nomeCheckDisc00_02 ~= nil then self.nomeCheckDisc00_02:destroy(); self.nomeCheckDisc00_02 = nil; end;
         if self.popUp_03 ~= nil then self.popUp_03:destroy(); self.popUp_03 = nil; end;
         if self.nomeDis_04 ~= nil then self.nomeDis_04:destroy(); self.nomeDis_04 = nil; end;
+        if self.label5 ~= nil then self.label5:destroy(); self.label5 = nil; end;
+        if self.horzLine5 ~= nil then self.horzLine5:destroy(); self.horzLine5 = nil; end;
         if self.popUp_05 ~= nil then self.popUp_05:destroy(); self.popUp_05 = nil; end;
         if self.rectangle4 ~= nil then self.rectangle4:destroy(); self.rectangle4 = nil; end;
         if self.dataLink11 ~= nil then self.dataLink11:destroy(); self.dataLink11 = nil; end;
@@ -1016,7 +1209,9 @@ local function constructNew_disciplinas()
         if self.nomeBut03B ~= nil then self.nomeBut03B:destroy(); self.nomeBut03B = nil; end;
         if self.flowPart4 ~= nil then self.flowPart4:destroy(); self.flowPart4 = nil; end;
         if self.nomeCheckDisc00_01 ~= nil then self.nomeCheckDisc00_01:destroy(); self.nomeCheckDisc00_01 = nil; end;
+        if self.horzLine6 ~= nil then self.horzLine6:destroy(); self.horzLine6 = nil; end;
         if self.rectangle8 ~= nil then self.rectangle8:destroy(); self.rectangle8 = nil; end;
+        if self.label9 ~= nil then self.label9:destroy(); self.label9 = nil; end;
         if self.edit1 ~= nil then self.edit1:destroy(); self.edit1 = nil; end;
         if self.nomeDis03 ~= nil then self.nomeDis03:destroy(); self.nomeDis03 = nil; end;
         if self.nomeCheckDisc00_05 ~= nil then self.nomeCheckDisc00_05:destroy(); self.nomeCheckDisc00_05 = nil; end;

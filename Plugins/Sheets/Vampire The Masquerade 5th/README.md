@@ -12,4 +12,9 @@ No Mundo das Trevas, vampiros e seres estranhos se escondem entre a multidão in
 - Lista Expansiva de Vantagens e Disciplinas;
 - Espaço para Ênfases e Descrições de poderes colapsáveis;
 - Cálculo de bônus e poderes baseados em sua Potência Sanguínea automático;
-- Controles customizados para exibição de Vitalidade, Humanidade e Força de Vontade.
+- Controles customizados para exibição de Vitalidade, Humanidade e Força de Vontade.  
+
+**Versão 1.1**
+- Melhoria nas Pop-ups de poderes;
+- Expansão da barra de vitalidade;
+- Mudança da posição das setas de troca de aba.
