@@ -99,9 +99,9 @@ local function constructNew_frmGoT()
 					
 				elseif(self.layNote:isVisible()) then
 					self.layNote.visible = false;
-					self.laynote.visible = true;
+					self.layBG.visible = true;
 					self.layNote:needRepaint();
-					self.layNote:needRepaint();
+					self.layBG:needRepaint();
 				end;		
 			end;
 		end;
