@@ -60,10 +60,12 @@ Esses são plugins de fichas para diversos sistemas (Próprios e Comerciais) e s
 	- Ficha para descrição de Reinos e Cidades seguindo o padrão d20system do Livro do Mestre.  
 - [FichaAODD](https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/FichaAODD/output/FichaAODD.rpk?raw=true): AlvagorH e Hellzen
 - [Fira](https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Fira/output/fira.rpk?raw=true): Yiotoo
-- [GURPS Saint Seiya Forever](https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/GURPS%20Saint%20Seiya%20Forever/output/Ficha%20SSF.rpk?raw=true): Ambesek
-	- Ficha para o sistema GURPS adaptada para a mesa Saint Seiya Forever.
 - [Gerenciador de Campanha](https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Gerenciador%20de%20Campanha/output/Gerenciador%20de%20Campanha.rpk?raw=true): Ambesek
 	- Ficha para gerenciamento de campanhas. Experiencia, tesouros, aventuras, calendario e presenças. 
+- [Game of Thrones](https://github.com/rrpgfirecast/firecast/raw/master/Plugins/Sheets/Game%20of%20Thrones/output/Game%20of%20Thrones.rpk?raw=true): thirteen
+	- Ficha para Guerra dos Tronos RPG _(GdTRPG)_.
+- [GURPS Saint Seiya Forever](https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/GURPS%20Saint%20Seiya%20Forever/output/Ficha%20SSF.rpk?raw=true): Ambesek
+	- Ficha para o sistema GURPS adaptada para a mesa Saint Seiya Forever.
 - [Hora da Aventura](https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Hora%20da%20Aventura/output/Hora%20da%20Aventura.rpk?raw=true): LeandroBp
 - [Konoha Heroes](https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Konoha%20Heroes/output/Konoha%20Heroes.rpk?raw=true): HashBR
 	- Ficha para a mesa e sistema Konoha Heroes (Naruto).
@@ -77,12 +79,16 @@ Esses são plugins de fichas para diversos sistemas (Próprios e Comerciais) e s
 - [O Tomo](https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/O%20Tomo/output/O%20Tomo.rpk?raw=true): rafaelskate8
 - [Os Mundos dos Mortos](https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Os%20Mundos%20dos%20Mortos/output/Os%20Mundos%20dos%20Mortos.rpk?raw=true): Mestre_Stark
 - [Old Dragon](https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Old%20Dragon/output/Old%20Dragon.rpk?raw=true): Matheus Furtado
+- [Pendragon](https://github.com/rrpgfirecast/firecast/raw/master/Plugins/Sheets/Pendragon/output/Pendragon.rpk?raw=true): thirteen
+	- Ficha para King Arthur Pendragon _(Pendragon)_, edição 5.2.
 - [Pokemon D20](https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Pokemon%20D20/output/Ficha%20PKMN.rpk?raw=true): Ambesek
 	- Ficha incompleta para uma adaptação de Pokémon d20.
 - [Reinos de Ferro](https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Reinos%20de%20Ferro/output/Ficha%20RdF.rpk?raw=true): Ambesek
 	- Ficha para o cenario e sistema Reinos de Ferro. 
 - [Shadow of the Demon Lord](https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Shadow%20of%20the%20Demon%20Lord/output/Shadow%20of%20the%20Demon%20Lord%20-%20Plugin.rpk?raw=true)
 	- Ficha para Shadow of the Demon Lord.
+- [Vampire The Masquerade 5th](https://github.com/rrpgfirecast/firecast/raw/master/Plugins/Sheets/Vampire%20The%20Masquerade%205th/output/Vampire%20The%20Masquerade%205th.rpk?raw=true): thirteen
+	- Ficha para Vampiro: a Máscara _(V:aM)_, quinta edição.
 - [World of Darkness 20th](https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/World%20of%20Darkness%2020th/output/World%20of%20Darkness%2020th.rpk?raw=true): Ambesek
 	- Ficha para o Vampire the Dark Ages e Werewolf Apocalypse, edição de 20 anos. 
 - [Zombie Survival](https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Zombie%20Survival/output/Zombie%20Survival.rpk?raw=true): JuniorMW
