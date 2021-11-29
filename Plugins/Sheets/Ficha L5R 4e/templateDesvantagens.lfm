@@ -1,26 +1,53 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<form name="templateDesVantagens" height="20" margins="{top=5,bottom=5}">  
-    <edit field="aqq" left="5" width="200" height="25" margins="{right=2}"/>
-        <button text="i" width="25" left="210" height="25" name="labNome"
-                >
-                <event name="onClick">
-                local pop = self:findControlByName("popDesvantagem");
-                if pop ~= nil then
-                pop:setNodeObject(self.sheet);
-                pop:showPopupEx("right", self.labNome);
-                else
-                showMessage("Ops, bug... Nao encontrei o popup para exibir");
-                end;
-                </event>
-    </button>
+<form name="templateDesVantagens" height="30">    
+<style>
+comboBox{
+	fontFamily: Cambria;
+	transparent: true;
+	fontColor: #cdcdcd;
+}
+edit{
+	fontFamily: Cambria;
+	transparent: true;
+	fontColor: #cdcdcd;
+}
+label{
+	fontFamily: Cambria;
+	fontColor: #cdcdcd;
+}
+</style>
+	<layout align="top" height="30">
+		<edit fontColor="white" field="aqq" align="left" width="430" height="25" margins="{right=2}" fontStyle="bold"/>
+		<dataLink field="aqq" defaultValue="—" />
+		<button text="𝐢" width="30" align="left" name="labNome" margins="{right=2}">
+					<event name="onClick">
+					local pop = self:findControlByName("popDesvantagem");
+					if pop ~= nil then
+					pop:setNodeObject(self.sheet);
+					pop:showPopupEx("left", self.labNome);
+					else
+					showMessage("Ops, bug... Nao encontrei o popup para exibir");
+					end;
+					</event>
+		</button>
+					
+		<popup name="popDesvantagem" width="440" height="200" backOpacity="0" drawContainer="false" autoScopeNode="true">
+			<rectangle align="client" color="#0e0e0e" padding="{top=10, left=10, bottom=10, right=10}" xradius= "10" yradius="10" cornerType="bevel">
+				<label fontColor="white" align="top" field="aqq" margins="{bottom=5, right=100}" fontStyle="bold" fontFamily="Constantia" fontSize="26" height="30"/>
+				<label field="atributoSkill" anchors="top right" right="0" top="20" horzTextAlign="trailing" fontStyle="bold" />
+				<horzLine align="top" margins="{bottom=5}" strokeColor="#424242" />
+				<textEditor name="MinhaVant" field="infoVnt" align="client" fontFamily="Cambria" transparent="true" />
+				<dataLink field="infoVnt" defaultValue="—" />
+			</rectangle>
+		</popup>
+		
+		<rectangle color="#212121" align="left" width="90" margins="{right=2}">
+			<comboBox align="client" items="{'Espiritual', 'Física', 'Material', 'Mental', 'Mística', 'Social'}" field="atributoSkill" values="{'Espiritual', 'Física', 'Material', 'Mental', 'Mística', 'Social'}" margins="{right=2, left=2}"/>
+		</rectangle>
+		
+		<edit align="left" field="acc" horzTextAlign="center" width="25" type="number" margins="{right=2}"/>
+		<dataLink field="acc" defaultValue="0" />
 
-    <popup name="popDesvantagem" top="30" left="500" width="400" height="160" backOpacity="0.5" autoScopeNode="false">
-                <textEditor name="MinhaVant" field="infoVnt" align="client"/>             
-        </popup>    
-    <comboBox left="240" width="90" height="25" horzTextAlign="center" items="{'Espiritual', 'Física', 'Material', 'Mental', 'Mística', 'Social'}" field="atributoSkill"
-                  values="{'Espiritual', 'Física', 'Material', 'Mental', 'Mística', 'Social'}"/>
-    <edit left="335" field="acc" height="25" horzTextAlign="center" width="25" margins="{right=2}"/>
-
-    <button left="365" text="-" width='25' height='25'
-                onClick="NDB.deleteNode(sheet);"/>
+		<button align="right" text="🞭" width='30' onClick="NDB.deleteNode(sheet);"/>
+	</layout>
 </form>
