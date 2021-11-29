@@ -34,6 +34,8 @@ Esses são plugins de fichas para diversos sistemas (Próprios e Comerciais) e s
 	- Ficha feita para jogar campanhas de Súper-Herois usando o sistema d20/D&D3.5
 - [Ficha L5A](https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20L5A/output/Ficha%20L5A.rpk?raw=true): Ruteski
 	- Ficha para o sistema e cenario A Lenda dos Cinco Aneis. 
+- [Ficha L5R 4e](https://github.com/rrpgfirecast/firecast/raw/master/Plugins/Sheets/Ficha%20L5R%204e/output/Ficha%20L5R%204e.rpk?raw=true): Gatan e thirteen
+	- Ficha para o sistema e cenário A Lenda dos Cinco Anéis, quarta edição, com cálculos automáticos. 
 - [Ficha Mighty Blade 2e](https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20Mighty%20Blade%202e/output/MB%202e.rpk?raw=true): Gustavo Müller
 	- Ficha para o sistema Mighty Blade 2e (segunda edição).
 - [Ficha Mighty Blade 3e](https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20Mighty%20Blade%203e/output/MB%203e.rpk?raw=true): Gustavo Müller
