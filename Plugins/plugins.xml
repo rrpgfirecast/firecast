@@ -20,7 +20,7 @@
             <dataType id="Valk_Data" title="SODLSheet"/>
         </dataTypes>
     </element>
-    <element id="Ficha_de_L5R_4e_SDK_3.5" name="L5R 4e (Otimizado)" url="https://github.com/rrpgfirecast/firecast/raw/master/Plugins/Sheets/Ficha%20L5R%204e/output/Ficha%20L5R%204e.rpk?raw=true" fileName="Ficha L5R 4e.rpk" repositoryPath="Sheets/Ficha L5R 4e/" author="Gatan e thirteen" description="Ficha com cálculos automáticos para L5R 4e." version="2.0" compilationDate="12072021014707" compilationDigest="c33a5c72d60c664f1e7df7ce1917d9b12c091b36">
+    <element id="Ficha_de_L5R_4e_SDK_3.5" name="L5R 4e (Otimizado)" url="https://github.com/rrpgfirecast/firecast/raw/master/Plugins/Sheets/Ficha%20L5R%204e/output/Ficha%20L5R%204e.rpk?raw=true" fileName="Ficha L5R 4e.rpk" repositoryPath="Sheets/Ficha L5R 4e/" author="Gatan e thirteen" description="Ficha com cálculos automáticos para L5R 4e." version="2.0.1" compilationDate="12072021014707" compilationDigest="c33a5c72d60c664f1e7df7ce1917d9b12c091b36">
         <dataTypes>
             <dataType id="L5R_4e_Otimizado" title="L5R 4e (Otimizado)"/>
         </dataTypes>

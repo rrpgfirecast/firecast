@@ -48,9 +48,8 @@
 	<dataLink fields="{'QHealer', 'nivelSb', 'stamina'}"> 
 			<event name="onChange">
 			if (sheet.stamina ~= nil) and (sheet.nivelSb ~= nil) then
-			local RecuFerimento = (tonumber(sheet.RecuFerimento) or 0);
 
-			RecuFerimento = sheet.stamina * 2 + sheet.nivelSb;
+			local RecuFerimento = sheet.stamina * 2 + sheet.nivelSb;
 					if (sheet.QHealer == true) then
 					RecuFerimento = (sheet.stamina + 2) * 2 + sheet.nivelSb;
 					end;
@@ -141,17 +140,14 @@
 
 					if FSaud &lt; 0 then
 							sheet.FSaud = 0;
-							FSaud = 0;
 					end;
 
 					if (FEsco &lt; 0) then
 							sheet.FEsco = 0;
-							FSaud = 0;
 					end;
 
 					if (ferimentos &lt; sheet.Saud) then
 							sheet.FEsco = 0;
-							FEsco = 0;
 					end;
 
 					if (FMach &lt; 0) or (ferimentos &lt; sheet.Esco) then
@@ -378,7 +374,6 @@ label{
 	fontColor: white;
 	fontStyle: bold;
 	fontFamily: Cambria;
-	autoSize: true;
 }
 checkBox{
 	fontColor: white;
@@ -662,12 +657,16 @@ button.Tab{
 												<edit align="left" horzTextAlign="center" width="25" type="number" field="addRolaIni"/>
 												<label align="left" text="k" width="15" horzTextAlign="center"/>
 												<edit align="left" horzTextAlign="center" width="25" type="number" field="addMantemIni"/>
+												<label align="left" text="+" width="10"/>
+												<edit align="left" width="25" type="number" field="addMod"/><dataLink defaultValue="0" field="addMod"/> 
 											</layout>	
 											<layout align="top" height="30">	
 												<label align="left" text="Iniciativa Atual:" width="115"/>
 												<label align="left" horzTextAlign="center" width="25" field="rolaIni"/>
 												<label align="left" text="k" width="15" horzTextAlign="center"/>
 												<label align="left" horzTextAlign="center" width="25" field="mantemIni"/>
+												<label align="left" text="+" width="10"/>
+												<label align="left" width="25" field="addMod"/>
 											</layout>
 										</layout>
 									
@@ -720,7 +719,7 @@ button.Tab{
 														<layout align="top" height="30" margins="{top=15}">
 															<label align="left" width="190" text="Multiplicador do Anel de Terra:"/>
 															<edit field="lastroTerra" align="client" type="number"/>
-															<dataLink field="lastroTerra" defaultValue="0" />
+															<dataLink field="lastroTerra" defaultValue="2" />
 														</layout>
 														<layout align="top" height="30">
 															<label align="left" width="190" text="Ferimentos a mais por nível:"/>
@@ -737,7 +736,7 @@ button.Tab{
 												<label align="left" fontSize="16.0" field="FSaud" width="35" horzTextAlign="center"/>
 												<label align="left" text="de" fontStyle="" fontColor="#959595" horzTextAlign="center" width="40"/>
 												<label align="left" horzTextAlign="center" fontSize="16.0" field="Saud" width="30"/>
-												<label horzTextAlign="trailing" fontSize="12.0" fontStyle="" fontColor="#959595" top="18" left="157" field="LSaud"/>
+												<label horzTextAlign="trailing" fontSize="12.0" fontStyle="" fontColor="#959595" top="15" left="157" field="LSaud"/>
 												
 											</layout>
 											<layout align="top" height="30">
@@ -746,7 +745,7 @@ button.Tab{
 												<label align="left" fontSize="16.0" field="FEsco" width="35" horzTextAlign="center"/>
 												<label align="left" text="de" fontStyle="" fontColor="#959595" horzTextAlign="center" width="40"/>
 												<label align="left" horzTextAlign="center" fontSize="16.0" field="Esco" width="30"/>
-												<label horzTextAlign="trailing" fontSize="12.0" fontStyle="" fontColor="#959595" top="18" left="157" field="LEsco"/>
+												<label horzTextAlign="trailing" fontSize="12.0" fontStyle="" fontColor="#959595" top="15" left="157" field="LEsco"/>
 												
 											</layout>
 											<layout align="top" height="30">
@@ -755,7 +754,7 @@ button.Tab{
 												<label align="left" fontSize="16.0" field="FMach" width="35" horzTextAlign="center"/>
 												<label align="left" text="de" fontStyle="" fontColor="#959595" horzTextAlign="center" width="40"/>
 												<label align="left" horzTextAlign="center" fontSize="16.0" field="Mach" width="30"/>
-												<label horzTextAlign="trailing" fontSize="12.0" fontStyle="" fontColor="#959595" top="18" left="157" field="LMach"/>
+												<label horzTextAlign="trailing" fontSize="12.0" fontStyle="" fontColor="#959595" top="15" left="157" field="LMach"/>
 												
 											</layout>
 											<layout align="top" height="30">
@@ -764,7 +763,7 @@ button.Tab{
 												<label align="left" fontSize="16.0" field="FFeri" width="35" horzTextAlign="center"/>
 												<label align="left" text="de" fontStyle="" fontColor="#959595" horzTextAlign="center" width="40"/>
 												<label align="left" horzTextAlign="center" fontSize="16.0" field="Feri" width="30"/>
-												<label horzTextAlign="trailing" fontSize="12.0" fontStyle="" fontColor="#959595" top="18" left="157" field="LFeri"/>
+												<label horzTextAlign="trailing" fontSize="12.0" fontStyle="" fontColor="#959595" top="15" left="157" field="LFeri"/>
 												
 											</layout>
 											<layout align="top" height="30">
@@ -773,7 +772,7 @@ button.Tab{
 												<label align="left" fontSize="16.0" field="FSeri" width="35" horzTextAlign="center"/>
 												<label align="left" text="de" fontStyle="" fontColor="#959595" horzTextAlign="center" width="40"/>
 												<label align="left" horzTextAlign="center" fontSize="16.0" field="Seri" width="30"/>
-												<label horzTextAlign="trailing" fontSize="12.0" fontStyle="" fontColor="#959595" top="18" left="157" field="LSeri"/>
+												<label horzTextAlign="trailing" fontSize="12.0" fontStyle="" fontColor="#959595" top="15" left="157" field="LSeri"/>
 												
 											</layout>
 											<layout align="top" height="30">
@@ -782,7 +781,7 @@ button.Tab{
 												<label align="left" fontSize="16.0" field="FInca" width="35" horzTextAlign="center"/>
 												<label align="left" text="de" fontStyle="" fontColor="#959595" horzTextAlign="center" width="40"/>
 												<label align="left" horzTextAlign="center" fontSize="16.0" field="Inca" width="30"/>
-												<label horzTextAlign="trailing" fontSize="12.0" fontStyle="" fontColor="#959595" top="18" left="157" field="LInca"/>
+												<label horzTextAlign="trailing" fontSize="12.0" fontStyle="" fontColor="#959595" top="15" left="157" field="LInca"/>
 												
 											</layout>
 											<layout align="top" height="30">
@@ -791,7 +790,7 @@ button.Tab{
 												<label align="left" fontSize="16.0" field="FAbat" width="35" horzTextAlign="center"/>
 												<label align="left" text="de" fontStyle="" fontColor="#959595" horzTextAlign="center" width="40"/>
 												<label align="left" horzTextAlign="center" fontSize="16.0" field="Abat" width="30"/>
-												<label horzTextAlign="trailing" fontSize="12.0" fontStyle="" fontColor="#959595" top="18" left="157" field="LAbat"/>
+												<label horzTextAlign="trailing" fontSize="12.0" fontStyle="" fontColor="#959595" top="15" left="157" field="LAbat"/>
 												
 											</layout>
 											<layout align="top" height="30">
@@ -800,7 +799,7 @@ button.Tab{
 												<label align="left" fontSize="16.0" field="FInco" width="35" horzTextAlign="center"/>
 												<label align="left" text="de" fontStyle="" fontColor="#959595" horzTextAlign="center" width="40"/>
 												<label align="left" horzTextAlign="center" fontSize="16.0" field="Inco" width="30"/>
-												<label horzTextAlign="trailing" fontSize="12.0" fontStyle="" fontColor="#959595" top="18" left="157" field="LInco"/>
+												<label horzTextAlign="trailing" fontSize="12.0" fontStyle="" fontColor="#959595" top="15" left="157" field="LInco"/>
 												
 											</layout>
 											
@@ -955,7 +954,7 @@ button.Tab{
 									
 									<layout width="185" align="left">
 										<image align="left" style="proportional" width="25" src="/Frames/miniTerraI.png" margins="{right=7, top=2.5, bottom=2.5}"/>
-										<label align="left" text="TERRA:" margins="{right=2}" width="45"/>
+										<label align="left" text="TERRA:" margins="{right=2}" width="50"/>
 										<edit field="slotTerra" horzTextAlign="center" width="25" align="left" />
 										<dataLink defaultValue="0" field="slotTerra" />
 										<label align="left" width="10" text="/"/>
