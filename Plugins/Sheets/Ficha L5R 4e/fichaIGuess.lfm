@@ -954,7 +954,7 @@ button.Tab{
 									
 									<layout width="185" align="left">
 										<image align="left" style="proportional" width="25" src="/Frames/miniTerraI.png" margins="{right=7, top=2.5, bottom=2.5}"/>
-										<label align="left" text="TERRA:" margins="{right=2}" width="45"/>
+										<label align="left" text="TERRA:" margins="{right=2}" width="50"/>
 										<edit field="slotTerra" horzTextAlign="center" width="25" align="left" />
 										<dataLink defaultValue="0" field="slotTerra" />
 										<label align="left" width="10" text="/"/>

@@ -3739,7 +3739,7 @@ local function constructNew_frmOurFichaL5R4e()
     obj.label154:setAlign("left");
     obj.label154:setText("TERRA:");
     obj.label154:setMargins({right=2});
-    obj.label154:setWidth(45);
+    obj.label154:setWidth(50);
     obj.label154:setName("label154");
     obj.label154:setFontColor("white");
     lfm_setPropAsString(obj.label154, "fontStyle",  "bold");
