@@ -1,96 +1,80 @@
-# Sheets
-Esses são plugins de fichas para diversos sistemas (Próprios e Comerciais) e seus criadores. 
 
-- [AD&D 2e](https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/AD&D%202e/output/Ficha%20AD&D%202e.rpk?raw=true): Ambesek
-	- Ficha para o sistema Advanced Dungeons and Dragons 2º edição.
-- [Ao Cair da Noite](https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ao%20cair%20da%20noite/output/Ficha%20ACN.rpk?raw=true): Ambesek
-	- Ficha para o sistema Ao Cair da Noite.
-- [Arc Metal Zhuls](https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Arc%20Metal%20Zhuls/output/Ficha%20Arc%20Metal%20Zhuls.rpk?raw=true): Ambesek
-	- Ficha para o sistema próprio Arc Metal Zhuls.
-- [BibliotecaRPGmeister](https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/BibliotecaRPGmeister/output/BibliotecaRPGmeister.rpk?raw=true): Ambesek
-	- Conteudo da mesa RPGmeister para facil acesso.
-- [Call Of Cthulhu](https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Call%20Of%20Cthulhu/output/Call%20Of%20Cthulhu.rpk?raw=true): Alipio Araújo
-- [DnD5e](https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/DnD5e/output/DnD5e.rpk?raw=true): AlyssonRPG
-	- Ficha para o sistema Dungeons and Dragons Next.
-- [D&D 3.5](https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/D&D%203.5/output/D&D%203.5.rpk?raw=true): Filernall
-	- Ficha para o sistema D&D3.5
-- [FFRPG Mob Creator](https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/FFRPG%20Mob%20Creator/output/FFRPG%20Mob%20Creator.rpk?raw=true): Hitoshura
-	- Plugin que gera ficha para Mobs do sistema FFRPG.
-- [Ficha 13ª Era](https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%2013%C2%BA%20Era/output/Ficha%2013%C2%BA%20Era.rpk?raw=true): Ruteski
-	- Ficha para o sistema 3ª Era.
-- [Ficha 7º Sea](https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%207%C2%BA%20Mar/output/Ficha%207%C2%BA%20Mar.rpk?raw=true): Ruteski
-	- Ficha para o sistema 7º Sea.
-- [Ficha Anima RPG](https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20Anima%20RPG/output/Ficha%20Anima%20RPG.rpk?raw=true): Ambesek
-	- Ficha para o sistema Anima RPG (d20 system).
-- [Ficha 4D&T](https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%204D&T/output/Ficha%204D&T.rpk?raw=true): Ambesek
-	- Ficha para o sistema 4D&T.
-- [Ficha Avatar d20](https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20Avatar%20d20/output/Ficha%20Avatar%20d20.rpk?raw=true): Ambesek
-	- Ficha para a adaptação de Avatar para o sistema d20.
-- [Ficha Cyberpunk 2020](https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20Cyberpunk%202020/output/Ficha%20Cyberpunk%202020.rpk?raw=true): Ambesek
-	- Ficha para o cenario e sistema Cyberpunk 2020
-- [Ficha GURPS 4E](https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20GURPS%204E/output/Ficha%20GURPS%204E.rpk?raw=true): Ambesek
-	- Ficha feita para GURPS 4ª edição.
-- [Ficha Herois d20](https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20Herois%20d20/output/Ficha%20Avatar%20d20.rpk?raw=true): Ambesek
-	- Ficha feita para jogar campanhas de Súper-Herois usando o sistema d20/D&D3.5
-- [Ficha L5A](https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20L5A/output/Ficha%20L5A.rpk?raw=true): Ruteski
-	- Ficha para o sistema e cenario A Lenda dos Cinco Aneis. 
-- [Ficha L5R 4e](https://github.com/rrpgfirecast/firecast/raw/master/Plugins/Sheets/Ficha%20L5R%204e/output/Ficha%20L5R%204e.rpk?raw=true): Gatan e thirteen
-	- Ficha para o sistema e cenário A Lenda dos Cinco Anéis, quarta edição, com cálculos automáticos. 
-- [Ficha Mighty Blade 2e](https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20Mighty%20Blade%202e/output/MB%202e.rpk?raw=true): Gustavo Müller
-	- Ficha para o sistema Mighty Blade 2e (segunda edição).
-- [Ficha Mighty Blade 3e](https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20Mighty%20Blade%203e/output/MB%203e.rpk?raw=true): Gustavo Müller
-	- Ficha para o sistema Mighty Blade 3e (terceira edição). 
-- [Ficha Multiaba](https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20Multiaba/output/Ficha%20Multiaba.rpk?raw=true): Ambesek
-	- Ficha V3 com multiplas abas e de uso geral. 
-- [Ficha Numenéra](https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20Numenera/output/Ficha%20Numenera.rpk?raw=true): Ambesek
-	- Ficha para o cenario e sistema Numenéra.
-- [Ficha Pathfinder](https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20Pathfinder/output/Ficha%20Pathfinder.rpk?raw=true): Ambesek
-	- Ficha para o sistema Pathfinder.
-- [Ficha Pathfinder 2e](https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20Pathfinder%202e/output/Ficha%20Pathfinder%202e.rpk?raw=true): Ambesek
-	- Ficha para o sistema Pathfinder 2e.
-- [Ficha RPG meister](https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20RPG%20meister/output/Ficha%20RPG%20meister.rpk?raw=true): Ambesek
-	- Ficha para d20system. Usada por jogadores de D&D3.5 e outros derivados.
-- [Ficha Shadowrun 5e](https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20Shadowrun%205E/output/Ficha%20Shadowrun%205E.rpk?raw=true): Ambesek
-	- Para o sistema e cenario Shadowrun 5ª edição
-- [Ficha Star Wars 5e](https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20Star%20Wars%205e/output/Ficha%20Star%20Wars%205e.rpk?raw=true): Ambesek
-	- Ficha para Star Wars 5e.
-- [Ficha The Maze](https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20The%20Maze/output/Ficha%20The%20Maze.rpk?raw=true): Ambesek
-	- Ficha para o cenario e sistema The Maze.
-- [Ficha Tormenta Imperio De Jade](https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Arc%20Metal%20Zhuls/output/Arc%20Metal%20Zhuls.rpk?raw=true): Miguel "AJ" Carigo
-	- Ficha para Tormenta Imperio De Jade.
-- [Ficha Reinos d20](https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20de%20Reinos%20d20/output/Ficha%20de%20Reinos%20d20.rpk?raw=true): Ambesek
-	- Ficha para descrição de Reinos e Cidades seguindo o padrão d20system do Livro do Mestre.  
-- [FichaAODD](https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/FichaAODD/output/FichaAODD.rpk?raw=true): AlvagorH e Hellzen
-- [Fira](https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Fira/output/fira.rpk?raw=true): Yiotoo
-- [Gerenciador de Campanha](https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Gerenciador%20de%20Campanha/output/Gerenciador%20de%20Campanha.rpk?raw=true): Ambesek
-	- Ficha para gerenciamento de campanhas. Experiencia, tesouros, aventuras, calendario e presenças. 
-- [Game of Thrones](https://github.com/rrpgfirecast/firecast/raw/master/Plugins/Sheets/Game%20of%20Thrones/output/Game%20of%20Thrones.rpk?raw=true): thirteen
-	- Ficha para Guerra dos Tronos RPG _(GdTRPG)_.
-- [GURPS Saint Seiya Forever](https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/GURPS%20Saint%20Seiya%20Forever/output/Ficha%20SSF.rpk?raw=true): Ambesek
-	- Ficha para o sistema GURPS adaptada para a mesa Saint Seiya Forever.
-- [Hora da Aventura](https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Hora%20da%20Aventura/output/Hora%20da%20Aventura.rpk?raw=true): LeandroBp
-- [Konoha Heroes](https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Konoha%20Heroes/output/Konoha%20Heroes.rpk?raw=true): HashBR
-	- Ficha para a mesa e sistema Konoha Heroes (Naruto).
-- [Log Horizon](https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Log%20Horizon/output/Ficha%20LH.rpk?raw=true): Ambesek
-	- Ficha para o sistema proprio Log Horizon.
-- [Malditos Goblins](https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Malditos%20Goblins/output/mg.rpk?raw=true): Yiotoo
-	- Ficha para o sistema Malditos Goblins.
-- [Mighty Blade V6](https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/MightyBladeV6/output/MightyBladeV6.rpk?raw=true): DanielMartinsLF
-- [Mutante e Malfeitores 3e](https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Mutantes%20e%20Malfeitores%203e/output/MM3.rpk?raw=true): Janus71 e Gilgante
-	- Ficha para o sistema Mutantes e Malfeitores. 
-- [O Tomo](https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/O%20Tomo/output/O%20Tomo.rpk?raw=true): rafaelskate8
-- [Os Mundos dos Mortos](https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Os%20Mundos%20dos%20Mortos/output/Os%20Mundos%20dos%20Mortos.rpk?raw=true): Mestre_Stark
-- [Old Dragon](https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Old%20Dragon/output/Old%20Dragon.rpk?raw=true): Matheus Furtado
-- [Pendragon](https://github.com/rrpgfirecast/firecast/raw/master/Plugins/Sheets/Pendragon/output/Pendragon.rpk?raw=true): thirteen
-	- Ficha para King Arthur Pendragon _(Pendragon)_, edição 5.2.
-- [Pokemon D20](https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Pokemon%20D20/output/Ficha%20PKMN.rpk?raw=true): Ambesek
-	- Ficha incompleta para uma adaptação de Pokémon d20.
-- [Reinos de Ferro](https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Reinos%20de%20Ferro/output/Ficha%20RdF.rpk?raw=true): Ambesek
-	- Ficha para o cenario e sistema Reinos de Ferro. 
-- [Shadow of the Demon Lord](https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Shadow%20of%20the%20Demon%20Lord/output/Shadow%20of%20the%20Demon%20Lord%20-%20Plugin.rpk?raw=true)
-	- Ficha para Shadow of the Demon Lord.
-- [Vampire The Masquerade 5th](https://github.com/rrpgfirecast/firecast/raw/master/Plugins/Sheets/Vampire%20The%20Masquerade%205th/output/Vampire%20The%20Masquerade%205th.rpk?raw=true): thirteen
-	- Ficha para Vampiro: a Máscara _(V:aM)_, quinta edição.
-- [World of Darkness 20th](https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/World%20of%20Darkness%2020th/output/World%20of%20Darkness%2020th.rpk?raw=true): Ambesek
-	- Ficha para o Vampire the Dark Ages e Werewolf Apocalypse, edição de 20 anos. 
-- [Zombie Survival](https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Zombie%20Survival/output/Zombie%20Survival.rpk?raw=true): JuniorMW
+# Sheets
+Listados abaixo estão as fichas e seus autores para diversos sistemas de RPG, tanto comerciais quanto próprios.  Espera-se que os autores dos plugins ou responsáveis pelo upload atualizem essa lista em ordem alfabética para catalogação.  
+
+Vale a pena ressalvar que qualquer pasta neste repositório contém seu plugin correspondente, e caso não esteja listado abaixo, apenas abra a pasta do plugin desejado, em seguida abra a pasta output dentro da mesma, selecione o arquivo .rpk nesta pasta e clique nele. Um botão para download aparecerá na página seguinte.  
+
+| NOME DA FICHA | AUTOR | DESCRIÇÃO |
+| :--- | :--- |:--- |
+| [AD&D 2e](https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/AD&D%202e/output/Ficha%20AD&D%202e.rpk?raw=true) | Ambesek | Ficha para o sistema _Advanced Dungeons and Dragons_ 2ª edição. |
+| [Ao Cair da Noite](https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ao%20cair%20da%20noite/output/Ficha%20ACN.rpk?raw=true) | Ambesek | Ficha para o sistema Ao Cair da Noite. |
+| [Arc Metal Zhuls](https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Arc%20Metal%20Zhuls/output/Ficha%20Arc%20Metal%20Zhuls.rpk?raw=true) | Ambesek | Ficha para o sistema próprio _Arc Metal Zhuls_. |
+| [BibliotecaRPGmeister](https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/BibliotecaRPGmeister/output/BibliotecaRPGmeister.rpk?raw=true) | Ambesek | Conteúdo da mesa RPGmeister para fácil acesso. |
+| [Call Of Cthulhu 7e](https://github.com/rrpgfirecast/firecast/raw/master/Plugins/Sheets/Call%20Of%20Cthulhu%207e/output/Call%20Of%20Cthulhu%207e.rpk?raw=true) | helldemos | Ficha de _Call of Cthulhu_ 7ª edição. |
+| [Call Of Cthulhu Dark Ages](https://github.com/rrpgfirecast/firecast/raw/master/Plugins/Sheets/Call%20Of%20Cthulhu%20Dark%20Ages/output/Call%20Of%20Cthulhu%20Dark%20Ages.rpk?raw=true) | helldemos | Ficha de _Call of Cthulhu Dark Ages_. |
+| [Call Of Cthulhu](https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Call%20Of%20Cthulhu/output/Call%20Of%20Cthulhu.rpk?raw=true) | Alípio Araújo | Ficha de investigador para o Chamado de Cthulhu. |
+| [D&D 3.5](https://github.com/rrpgfirecast/firecast/raw/master/Plugins/Sheets/D%26D%203.5/output/D%26D%203.5.rpk?raw=true) | Filernall | Ficha para o sistema D&D 3.5. |
+| [DnD5e](https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/DnD5e/output/DnD5e.rpk?raw=true) | AlyssonRPG | Ficha D&D 5ª edição oficial do RRPG Firecast. |
+| [Ficha 13ª Era](https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%2013%C2%BA%20Era/output/Ficha%2013%C2%BA%20Era.rpk?raw=true) | Ruteski | Ficha para o sistema 13ª Era. |
+| [Ficha 4D&T](https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%204D&T/output/Ficha%204D&T.rpk?raw=true) | Ambesek | Ficha para o sistema 4D&T. |
+| [Ficha 7º Mar](https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%207%C2%BA%20Mar/output/Ficha%207%C2%BA%20Mar.rpk?raw=true) | Ruteski | Ficha para o sistema _7º Sea_. |
+| [Ficha A Odisseia do Dragão](https://github.com/rrpgfirecast/firecast/raw/master/Plugins/Sheets/Ficha%20A%20Odisseia%20do%20Drag%C3%A3o/output/Ficha%20Odisseia%20do%20Drag%C3%A3o.rpk?raw=true) | AlvagorH e Hellzen | Ficha para o sistema A Odisseia do Dragão. |
+| [Ficha Anima RPG](https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20Anima%20RPG/output/Ficha%20Anima%20RPG.rpk?raw=true) | Ambesek | Ficha para o sistema Anima RPG _(d20 system)_. |
+| [Ficha Avatar d20](https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20Avatar%20d20/output/Ficha%20Avatar%20d20.rpk?raw=true) | Ambesek | Ficha para a adaptação de Avatar para o sistema d20. |
+| [Ficha Cyberpunk 2020](https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20Cyberpunk%202020/output/Ficha%20Cyberpunk%202020.rpk?raw=true) | Ambesek | Ficha para o cenario e sistema _Cyberpunk 2020_. |
+| [Ficha D&D Next](https://github.com/rrpgfirecast/firecast/raw/master/Plugins/Sheets/Ficha%20D%26D%20Next/output/Ficha%20D%26D%20Next.rpk?raw=true) | Ambesek & Nefertyne | Ficha feita para o sistema D&D _Next_. |
+| [Ficha Demônio A Queda](https://github.com/rrpgfirecast/firecast/raw/master/Plugins/Sheets/Ficha%20Dem%C3%B4nio%20A%20Queda/output/Dem%C3%B4nio%20A%20Queda.rpk?raw=true) | AlvagorH | Ficha feita para o Demônio A Queda. |
+| [Ficha Exalted 3rd](https://github.com/rrpgfirecast/firecast/raw/master/Plugins/Sheets/Ficha%20Exalted%203rd/output/Ficha%20Exalted%203rd.rpk?raw=true) | Ambesek | Ficha feita para o sistema _Exalted_ 3ª edição. |
+| [Ficha GURPS 4E](https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20GURPS%204E/output/Ficha%20GURPS%204E.rpk?raw=true) | Ambesek | Ficha feita para GURPS 4ª edição. |
+| [Ficha Herois d20](https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20Herois%20d20/output/Ficha%20Avatar%20d20.rpk?raw=true) | Ambesek | Ficha feita para jogar campanhas de Super-Heróis usando o sistema d20/D&D3.5. |
+| [Ficha L5A](https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20L5A/output/Ficha%20L5A.rpk?raw=true) | Ruteski | Ficha para o sistema e cenário A Lenda dos Cinco Anéis. |
+| [Ficha L5R 4e](https://github.com/rrpgfirecast/firecast/raw/master/Plugins/Sheets/Ficha%20L5R%204e/output/Ficha%20L5R%204e.rpk?raw=true) | Gatan & thirteen | Ficha para o sistema e cenário A Lenda dos Cinco Anéis, 4ª edição, com cálculos automáticos. |
+| [Ficha Mighty Blade 2e](https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20Mighty%20Blade%202e/output/MB%202e.rpk?raw=true) | Gustavo Müller | Ficha para o sistema _Mighty Blade_ 2ª edição. |
+| [Ficha Mighty Blade 3e](https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20Mighty%20Blade%203e/output/MB%203e.rpk?raw=true) | Gustavo Müller | Ficha para o sistema _Mighty Blade_ 3ª edição. |
+| [Ficha Multiaba](https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20Multiaba/output/Ficha%20Multiaba.rpk?raw=true) | Ambesek | Ficha V3 com múltiplas abas e de uso geral. |
+| [Ficha Mundo Original](https://github.com/rrpgfirecast/firecast/raw/master/Plugins/Sheets/Ficha%20Mundo%20Original/output/Ficha%20Mundo%20Original.rpk?raw=true) | Ambesek | Ficha para o sistema Mundo Original. |
+| [Ficha Numenéra](https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20Numenera/output/Ficha%20Numenera.rpk?raw=true) | Ambesek | Ficha para o cenário e sistema Numenéra. |
+| [Ficha Pathfinder 2e](https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20Pathfinder%202e/output/Ficha%20Pathfinder%202e.rpk?raw=true) | Ambesek | Ficha para o sistema _Pathfinder_ 2ª edição. |
+| [Ficha Pathfinder](https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20Pathfinder/output/Ficha%20Pathfinder.rpk?raw=true) | Ambesek | Ficha para o sistema _Pathfinder_. |
+| [Ficha RPG meister](https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20RPG%20meister/output/Ficha%20RPG%20meister.rpk?raw=true) | Ambesek | Ficha para _d20system_. Usada por jogadores de D&D3.5 e outros derivados. |
+| [Ficha Ragnaröck](https://github.com/rrpgfirecast/firecast/raw/master/Plugins/Sheets/Ficha%20Ragnarock/output/Ficha%20Ragnarock.rpk?raw=true) | Ambesek | Ficha para um sistema próprio de _Ragnaröck_. |
+| [Ficha Runarcana](https://github.com/rrpgfirecast/firecast/raw/master/Plugins/Sheets/Ficha%20Runarcana/output/Ficha%20Runarcana.rpk?raw=true) | Ambesek | Ficha para o sistema Runarcana, usado no cenário de _League of Legends_. |
+| [Ficha Shadowrun 5e](https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20Shadowrun%205E/output/Ficha%20Shadowrun%205E.rpk?raw=true) | Ambesek | Para o sistema e cenário _Shadowrun_ 5ª edição. |
+| [Ficha Skullast](https://github.com/rrpgfirecast/firecast/raw/master/Plugins/Sheets/Ficha%20Skullast/output/Ficha%20Skullast.rpk?raw=true) | Ambesek | Ficha para um sistema próprio _Skullast_. |
+| [Ficha Star Wars 5e](https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20Star%20Wars%205e/output/Ficha%20Star%20Wars%205e.rpk?raw=true) | Ambesek | Ficha para _Star Wars_ 5ª edição. |
+| [Ficha Starfinder](https://github.com/rrpgfirecast/firecast/raw/master/Plugins/Sheets/Ficha%20Starfinder/output/Ficha%20Starfinder.rpk?raw=true) | Ambesek | Ficha feita para o sistema _Starfinder_. |
+| [Ficha The Maze](https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20The%20Maze/output/Ficha%20The%20Maze.rpk?raw=true) | Ambesek | Ficha para o cenário e sistema _The Maze_. |
+| [Ficha Tormenta 20](https://github.com/rrpgfirecast/firecast/raw/master/Plugins/Sheets/Ficha%20Tormenta%2020/output/Ficha%20Tormenta%2020.rpk?raw=true) | Ambesek | Ficha para o cenário e sistema Tormenta 20. |
+| [Ficha de Reinos d20](https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20de%20Reinos%20d20/output/Ficha%20de%20Reinos%20d20.rpk?raw=true) | Ambesek | Ficha para descrição de Reinos e Cidades seguindo o padrão _d20system_ do Livro do Mestre. |
+| [Fira](https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Fira/output/fira.rpk?raw=true) | Yiotoo | Ficha de personagem com elementos aleatórios e diversas ferramentas. |
+| [GURPS Saint Seiya Forever](https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/GURPS%20Saint%20Seiya%20Forever/output/Ficha%20SSF.rpk?raw=true) | Ambesek | Ficha para o sistema GURPS adaptada para a mesa _Saint Seiya Forever_. |
+| [Game of Thrones](https://github.com/rrpgfirecast/firecast/raw/master/Plugins/Sheets/Game%20of%20Thrones/output/Game%20of%20Thrones.rpk?raw=true) | thirteen | Ficha para Guerra dos Tronos RPG _(GdTRPG)_. |
+| [Gerenciador SotDL](https://github.com/rrpgfirecast/firecast/raw/master/Plugins/Sheets/Gerenciador%20SotDL/output/Gerenciador%20SotDL.rpk?raw=true) | Ambesek | Ficha para gerenciar informações públicas e privadas de jogo, com visualização seletiva entre jogadores e mestres para _Shadow of the Demon Lord_. |
+| [Gerenciador de Campanha](https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Gerenciador%20de%20Campanha/output/Gerenciador%20de%20Campanha.rpk?raw=true) | Ambesek | Ficha para gerenciamento de campanhas. Experiência, tesouros, aventuras, calendário e presenças. |
+| [Hora da Aventura](https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Hora%20da%20Aventura/output/Hora%20da%20Aventura.rpk?raw=true) | LeandroBp | Ficha do sistema Oficial de Hora de Aventura. |
+| [Konoha Heroes](https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Konoha%20Heroes/output/Konoha%20Heroes.rpk?raw=true) | HashBR | Ficha para a mesa e sistema _Konoha Heroes_ (Naruto). |
+| [Lobisomem O Apocalipse](https://github.com/rrpgfirecast/firecast/raw/master/Plugins/Sheets/Lobisomem%20O%20Apocalipse/output/Lobisomem%20O%20Apocalipse.rpk?raw=true) | AlvagorH | Ficha de Lobisomem: O Apocalipse 3ª edição. |
+| [Log Horizon](https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Log%20Horizon/output/Ficha%20LH.rpk?raw=true) | Ambesek | Ficha para o sistema próprio _Log Horizon_. |
+| [Malditos Goblins](https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Malditos%20Goblins/output/mg.rpk?raw=true) | Yiotoo | Ficha para o sistema Malditos Goblins. |
+| [MightyBladeV6](https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/MightyBladeV6/output/MightyBladeV6.rpk?raw=true) | DanielMartinsLF | Ficha MB 3.0. |
+| [MobsFFRPG](https://github.com/rrpgfirecast/firecast/raw/master/Plugins/Sheets/MobsFFRPG/output/MobsFFRPG.rpk?raw=true) | Hitoshura | Ficha de Monstros para o sistema FFRPG 3.5. |
+| [Mutante e Malfeitores 3e](https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Mutantes%20e%20Malfeitores%203e/output/MM3.rpk?raw=true) | Janus71 e Gilgante | Ficha para o sistema Mutantes e Malfeitores. |
+| [Naruto 5e](https://github.com/rrpgfirecast/firecast/raw/master/Plugins/Sheets/Naruto%205e/output/Naruto%205e.rpk?raw=true) | helldemos | Naruto 5ª edição. |
+| [O Tomo](https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/O%20Tomo/output/O%20Tomo.rpk?raw=true) | rafaelskate8 | Ficha O Tomo para ser usada no RRPG Firecast. |
+| [Old Dragon](https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Old%20Dragon/output/Old%20Dragon.rpk?raw=true) | Matheus Furtado | Ficha para _Old Dragon_. |
+| [Os Mundos dos Mortos](https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Os%20Mundos%20dos%20Mortos/output/Os%20Mundos%20dos%20Mortos.rpk?raw=true) | Mestre_Stark | Plugin de ficha Os mundos dos mortos. |
+| [Pack Old Dragon](https://github.com/rrpgfirecast/firecast/raw/master/Plugins/Sheets/Pack%20Old%20Dragon/output/Pack%20Old%20Dragon.rpk?raw=true) | AlvagorH | Pacote com fichas de _Old Dragon_ Aprimorado e suas expansões e cenários. |
+| [Pendragon](https://github.com/rrpgfirecast/firecast/raw/master/Plugins/Sheets/Pendragon/output/Pendragon.rpk?raw=true) | thirteen | Ficha para King Arthur Pendragon _(Pendragon)_, edição 5.2. |
+| [PlayerFFRPG](https://github.com/rrpgfirecast/firecast/raw/master/Plugins/Sheets/PlayerFFRPG/output/PlayerFFRPG.rpk?raw=true) | Hitoshura | Ficha de Jogador para o sistema FFRPG 3.5. |
+| [PokePTA](https://github.com/rrpgfirecast/firecast/raw/master/Plugins/Sheets/PokePTA/output/PokePTA.rpk?raw=true) | Hitoshura | Ficha de jogador e pokémons no sistema do Elfos e Arcanios. |
+| [PokePTAOLD](https://github.com/rrpgfirecast/firecast/raw/master/Plugins/Sheets/PokePTAOLD/output/PokePTAOLD.rpk?raw=true) | Hitoshura | Ficha de jogador no sistema _Pokémon PTA_ versão antiga. |
+| [PokePTU](https://github.com/rrpgfirecast/firecast/raw/master/Plugins/Sheets/PokePTU/output/PokePTU.rpk?raw=true) | Hitoshura | Ficha de jogador e pokémons no sistema _Pokémon Tabletop United_. |
+| [PokeRPG](https://github.com/rrpgfirecast/firecast/raw/master/Plugins/Sheets/PokeRPG/output/PokeRPG.rpk?raw=true) | Hitoshura | Ficha de jogador e pokémons no sistema _PokéRPG (Facebook)_. |
+| [Pokemon D20](https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Pokemon%20D20/output/Ficha%20PKMN.rpk?raw=true) | Ambesek | Ficha incompleta para uma adaptação de Pokémon d20. |
+| [RPGPokemon](https://github.com/rrpgfirecast/firecast/raw/master/Plugins/Sheets/RPGPokemon/output/RPGPokemon.rpk?raw=true) | Hitoshura | Ficha de jogador e pokémons no sistema _RPG Pokémon_. |
+| [Reinos de Ferro](https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Reinos%20de%20Ferro/output/Ficha%20RdF.rpk?raw=true) | Ambesek | Ficha para o cenário e sistema Reinos de Ferro. |
+| [Shadow of the Demon Lord](https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Shadow%20of%20the%20Demon%20Lord/output/Shadow%20of%20the%20Demon%20Lord%20-%20Plugin.rpk?raw=true) | Valquíria Maia | Ficha para _Shadow of the Demon Lord_. |
+| [Ficha Tormenta Imperio De Jade](https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Arc%20Metal%20Zhuls/output/Arc%20Metal%20Zhuls.rpk?raw=true) | Miguel "AJ" Carigo | Ficha para Tormenta Imperio De Jade. |
+| [Vampire The Masquerade 5th](https://github.com/rrpgfirecast/firecast/raw/master/Plugins/Sheets/Vampire%20The%20Masquerade%205th/output/Vampire%20The%20Masquerade%205th.rpk?raw=true) | thirteen | Ficha para Vampiro: a Máscara _(V:aM)_, 5ª edição. |
+| [World of Darkness 20th](https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/World%20of%20Darkness%2020th/output/World%20of%20Darkness%2020th.rpk?raw=true) | Ambesek | Ficha para o _Vampire the Dark Ages_ e _Werewolf Apocalypse_, edição de 20 anos. |
+| [Zombie Survival](https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Zombie%20Survival/output/Zombie%20Survival.rpk?raw=true) | JuniorMW | Ficha para o cenário Zombie Survival. |
