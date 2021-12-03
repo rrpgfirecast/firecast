@@ -14,7 +14,7 @@ Esse repositório foi criado com o intuito de armazenar o código de projetos re
 
 # Ferramentas
 
-- [**SDK**](http://www.rrpg.com.br/index.php/para-programadores/): Necessário instalar para poder compilar os projetos de plugin. No link há duas versões disponíveis, uma compatível com o RRPG antigo e mobile, o SDK 3.4b, e o mais atual, SDK 3.5.
+- [**SDK**](http://www.rrpg.com.br/index.php/para-programadores/): Necessário instalar para poder compilar os projetos de plugin. No link há duas versões disponíveis, uma compatível com o RRPG antigo e mobile, o [RDK3.4b](http://www.firecast.com.br/RDK3.4b.exe), e o mais atual, [RDK 3.5](https://firecast.app/downloads/RDK3.5.exe).
 - [**Sublime**](https://www.sublimetext.com/3): Um editor de texto, esse ou qualquer outro como [Notepad++](https://notepad-plus-plus.org/), que permita editar os arquivos do projeto. 
 - [**Souce Tree**](https://www.sourcetreeapp.com/): Uma ferramenta para uso do git com interface, essa ou qualquer outra, para facilitar o acesso ao Github. 
 
