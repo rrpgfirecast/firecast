@@ -309,7 +309,7 @@
             <dataType id="MOB_CREATOR_FFRPG" title="Hitoshura - FFRPG Mob Creator"/>
         </dataTypes>
     </element>
-    <element id="MM3e_RRPG_Gilgante_2_7" name="MM3e_2_7" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Mutantes%20e%20Malfeitores%203e/output/Mutantes%20e%20Malfeitores%203e.rpk?raw=true" fileName="Mutantes e Malfeitores 3e.rpk" repositoryPath="Sheets/Mutantes e Malfeitores 3e/" author="Janus e Gilgante" description="Ficha para Mutantes e Malfeitores 3a edicao com frente, verso, aba de pericias, aba de lista de poderes, rolagens de pericias, defesas, ataques e iniciativa." version="2.8.1" compilationDate="27112019000247" compilationDigest="120e73d35b64620ba95e1420ab4094c8028bf72f">
+    <element id="MM3e_RRPG_Gilgante_2_7" name="MM3e_2_7" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Mutantes%20e%20Malfeitores%203e/output/MM3%20-%203.0.rpk?raw=true" fileName="Mutantes e Malfeitores 3e.rpk" repositoryPath="Sheets/Mutantes e Malfeitores 3e/" author="Janus e Gilgante" description="Ficha para Mutantes e Malfeitores 3a edicao com frente, verso, aba de pericias, aba de lista de poderes, rolagens de pericias, defesas, ataques e iniciativa." version="2.8.1" compilationDate="27112019000247" compilationDigest="120e73d35b64620ba95e1420ab4094c8028bf72f">
         <dataTypes>
             <dataType id="Ficha_MM3e" title="M&amp;M3e"/>
         </dataTypes>
