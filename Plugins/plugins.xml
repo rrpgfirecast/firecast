@@ -145,7 +145,7 @@
             <dataType id="Ambesek.Nefertyne.Cyberpunk2020" title="Ficha Cyberpunk 2020"/>
         </dataTypes>
     </element>
-    <element id="FichaDnDNext" name="Ficha D&amp;D Next" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20D%26D%20Next/output/Ficha%20D%26D%20Next.rpk?raw=true" fileName="Ficha D&amp;D Next.rpk" repositoryPath="Sheets/Ficha D&amp;D Next/" author="Ambesek &amp; Nefertyne" description="Ficha feita para o sistema D&amp;D Next" version="0.4.2" compilationDate="27112019000017" compilationDigest="74d5723edf488e46171c8a4d03cb2dc663d36db3">
+    <element id="FichaDnDNext" name="Ficha D&amp;D Next" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20D%26D%20Next/output/Ficha%20D%26D%20Next.rpk?raw=true" fileName="Ficha D&amp;D Next.rpk" repositoryPath="Sheets/Ficha D&amp;D Next/" author="Ambesek &amp; Nefertyne" description="Ficha feita para o sistema D&amp;D Next" version="0.4.3" compilationDate="27112019000017" compilationDigest="74d5723edf488e46171c8a4d03cb2dc663d36db3">
         <dataTypes>
             <dataType id="Ambesek.FichaDnDNext" title="Ficha D&amp;D Next"/>
         </dataTypes>
