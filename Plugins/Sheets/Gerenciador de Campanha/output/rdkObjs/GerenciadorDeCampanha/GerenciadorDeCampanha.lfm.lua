@@ -7361,7 +7361,7 @@ local function constructNew_frmBibliotecaRPGmeister()
             local mesaDoPersonagem = rrpg.getMesaDe(sheet);
             
             				if not mesaDoPersonagem.meuJogador.isGold then
-            					shoMessage("Apenas para usuarios Gold!");
+            					showMessage("Apenas para usuarios Gold!");
             					return;
             				end;
             
@@ -7383,7 +7383,7 @@ local function constructNew_frmBibliotecaRPGmeister()
             				local mesaDoPersonagem = rrpg.getMesaDe(sheet);
             
             				if not mesaDoPersonagem.meuJogador.isGold then
-            					shoMessage("Apenas para usuarios Gold!");
+            					showMessage("Apenas para usuarios Gold!");
             					return;
             				end;
             
@@ -7406,7 +7406,7 @@ local function constructNew_frmBibliotecaRPGmeister()
             				local mesaDoPersonagem = rrpg.getMesaDe(sheet);
             
             				if not mesaDoPersonagem.meuJogador.isGold then
-            					shoMessage("Apenas para usuarios Gold!");
+            					showMessage("Apenas para usuarios Gold!");
             					return;
             				end;
             
