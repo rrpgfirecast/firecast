@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="templateSkills" height="30">   
+<style>
+comboBox{
+	fontFamily: Cambria;
+	transparent: true;
+	fontColor: #cdcdcd;
+}
+edit{
+	fontFamily: Cambria;
+	transparent: true;
+	fontColor: #cdcdcd;
+}
+</style>    
+	<layout align="top" height="30">
+		<checkBox field="MarcadorSkillEscola" align="left" width="20" margins="{left=23}" hint="Perícia de Escola" />
+		<dataLink field="MarcadorSkillEscola" defaultValue="false" />
+		
+		<edit field="nomeSkill" align="left" width="195" margins="{right=2}" fontStyle="bold" fontColor="white"/>
+		<dataLink defaultValue="—" field="nomeSkill" />
+		
+		<rectangle color="#212121" align="left" width="79" margins="{right=2}">
+			<comboBox align="client" field="tipoSkill" items="{'Alta', 'Baixa', 'Bugei', 'Mercante'}" values="{'Alta', 'Baixa', 'Bugei', 'Mercante'}" margins="{right=2, left=2}"/>
+		</rectangle>
+		
+		<edit field="rankSkill" align="left" width="42" margins="{right=2}" horzTextAlign="center" type="number" min="0" max="99" fontStyle="bold" fontColor="white"/>
+		<dataLink defaultValue="1" field="rankSkill" />
+		
+		<rectangle color="#212121" align="left" width="94" margins="{right=2}">
+			<comboBox align="client" margins="{right=2, left=2}" items="{'Vigor', 'Vontade', 'Força', 'Percepção', 'Reflexos', 'Astúcia', 'Agilidade', 'Inteligência', 'Vazio'}"
+			field="atributoSkill" values="{'StaminON', 'WillpoweON', 'StrengtON', 'PerceptioON', 'ReflexeON', 'AwarenesON', 'AgilitON', 'IntelligencON', 'VoiON'}"/>
+		</rectangle>
+		
+		<edit field="ROLAGEM" align="left" width="80" margins="{right=2}"/>
+		<dataLink defaultValue="xky" field="ROLAGEM" />
+		
+		<button top="0" left="541" text="𝐞" hint="Ênfases" name="btnEnfase1" width="30" height="30" fontColor="#272727">
+			<event name="onClick">
+			<![CDATA[
+				local pop = self:findControlByName("popUp_Enfases");
+				
+				if pop ~= nil then
+					pop:setNodeObject(sheet);
+					pop:showPopupEx("right", self.btnEnfase1);
+				else
+					showMessage("Ops, não encontrei o pop-up para exibir");
+				end;
+			]]>
+			</event>
+		</button>
+		<button top="0" left="541" text="𝐞" hint="Ênfases" name="btnEnfase2" width="30" height="30" visible="false">
+			<event name="onClick">
+			<![CDATA[
+				local pop = self:findControlByName("popUp_Enfases");
+				
+				if pop ~= nil then
+					pop:setNodeObject(sheet);
+					pop:showPopupEx("right", self.btnEnfase2);
+				else
+					showMessage("Ops, não encontrei o pop-up para exibir");
+				end;
+			]]>
+			</event>
+		</button>
+		<popup name="popUp_Enfases" width="200" height="150" backOpacity="0" drawContainer="false">
+			<rectangle align="client" color="#0e0e0e" padding="{top=10, left=10, bottom=10, right=10}" xradius= "10" yradius="10" cornerType="bevel">
+				<label align="top" text="Ê N F A S E S" margins="{bottom=5}" fontStyle="bold" fontFamily="Constantia"/>
+				<horzLine align="top" margins="{bottom=5}" strokeColor="#424242" />
+				<textEditor align="client" fontFamily="Cambria" transparent="true" field="enfasesSkill" />
+				<dataLink field="enfasesSkill" defaultValue="—">
+					<event name="onChange">
+					<![CDATA[
+						if(sheet == nil) then return; end;
+						if(sheet.enfasesSkill == nil or sheet.enfasesSkill == "—") then
+							self.btnEnfase1.visible = true;
+							self.btnEnfase2.visible = false;
+						else
+							self.btnEnfase2.visible = true;
+							self.btnEnfase1.visible = false;
+						end;
+					]]>
+					</event>
+				</dataLink>
+			</rectangle>
+		</popup>
+		
+		<button top="0" left="572" text="𝐌" hint="Maestrias" name="btnMaestria1" height='30' width='30' fontColor="#272727">
+			<event name="onClick">
+			<![CDATA[
+				local pop = self:findControlByName("popUp_Maestrias");
+				
+				if pop ~= nil then
+					pop:setNodeObject(sheet);
+					pop:showPopupEx("right", self.btnMaestria1);
+				else
+					showMessage("Ops, não encontrei o pop-up para exibir");
+				end;
+			]]>
+			</event>
+		</button>
+		<button top="0" left="572" text="𝐌" hint="Maestrias" name="btnMaestria2" height='30' width='30' visible="false">
+			<event name="onClick">
+			<![CDATA[
+				local pop = self:findControlByName("popUp_Maestrias");
+				
+				if pop ~= nil then
+					pop:setNodeObject(sheet);
+					pop:showPopupEx("right", self.btnMaestria2);
+				else
+					showMessage("Ops, não encontrei o pop-up para exibir");
+				end;
+			]]>
+			</event>
+		</button>
+		<popup name="popUp_Maestrias" width="385" height="350" backOpacity="0" drawContainer="false">
+			<rectangle align="client" color="#0e0e0e" padding="{top=5, left=5, bottom=5, right=5}" xradius= "10" yradius="10" cornerType="bevel">
+				<rectangle align="client" color="#0e0e0e"  padding="{top=10, left=10, bottom=10, right=10}" xradius= "8" yradius="8" strokeColor="#272727" strokeSize="1"  cornerType="bevel">
+					<label align="top" height="30" fontSize="25" margins="{bottom=10}" fontFamily="Constantia" text="HABILIDADES DE MAESTRIA" fontStyle="bold" />
+					
+					<label align="top" text="N Í V E L   3" margins="{bottom=5}" fontStyle="bold" fontFamily="Constantia"/>
+					<horzLine align="top" margins="{bottom=5}" strokeColor="#424242" />
+					<textEditor align="top" height="55" margins="{bottom=10}" fontFamily="Cambria" transparent="true" field="maestria3Skill" />
+					
+					<label align="top" text="N Í V E L   5" margins="{bottom=5}" fontStyle="bold" fontFamily="Constantia"/>
+					<horzLine align="top" margins="{bottom=5}" strokeColor="#424242" />
+					<textEditor align="top" height="55" margins="{bottom=10}" fontFamily="Cambria" transparent="true" field="maestria5Skill" />
+					
+					<label align="top" text="N Í V E L   7" margins="{bottom=5}" fontStyle="bold" fontFamily="Constantia"/>
+					<horzLine align="top" margins="{bottom=5}" strokeColor="#424242" />
+					<textEditor align="top" height="55" margins="{bottom=10}" fontFamily="Cambria" transparent="true" field="maestria7Skill" />
+					<dataLink fields="{'maestria3Skill', 'maestria5Skill', 'maestria7Skill'}" defaultValues="{'—', '—', '—'}">
+					<event name="onChange">
+						<![CDATA[
+							if(sheet == nil) then return; end;
+							if(	(sheet.maestria3Skill == nil or sheet.maestria3Skill == "—") and
+								(sheet.maestria5Skill == nil or sheet.maestria5Skill == "—") and
+								(sheet.maestria7Skill == nil or sheet.maestria7Skill == "—")) then
+								self.btnMaestria1.visible = true;
+								self.btnMaestria2.visible = false;
+							else
+								self.btnMaestria2.visible = true;
+								self.btnMaestria1.visible = false;
+							end;
+						]]>
+						</event>
+					</dataLink>
+					
+					<label top="50" left="53" width="300" horzTextAlign="trailing" field="nomeSkill" fontStyle="bold" fontFamily="Constantia" />
+				</rectangle>
+			</rectangle>
+		</popup>
+		
+		<button top="0" left="603" text="🞭" hint="Apagar Perícia" height='30' width='30' onClick="NDB.deleteNode(sheet);"/>
+		<dataLink field="rankSkill">
+			<event name="onChange">
+			<![CDATA[
+				if sheet ~= nil then
+					local node = NDB.getRoot(sheet);
+					local objetos = NDB.getChildNodes(node.pericias);
+					local soma = 0;
+
+					for i=1, #objetos, 1 do 
+						soma = soma + (tonumber(objetos[i].rankSkill) or 0);
+					end;
+
+					node.countSum = soma;
+				end;
+			]]>
+			</event>
+		</dataLink>
+	</layout>
+</form>
