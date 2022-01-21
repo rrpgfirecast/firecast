@@ -1,100 +1,101 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <form name="frmGeography" align="client">
 	<scrollBox align="client">
-		<rectangle left="0" top="0" width="200" height="600" color="black"/>
-		<!-- RecordList para seleção -->
-		<recordList left="0" top="0" width="200" height="595" name="rclDestalhesDaGeografia" field="listaDeDestalhesDaGeografia" templateForm="frmGeographySelection" layout="vertical" selectable="true">
-			<event name="onEndEnumeration"><![CDATA[
-				if sheet~= nil then
-					local lugares = ndb.getChildNodes(sheet.listaDeDestalhesDaGeografia);
-					local mapa = self:findControlByName("mapa");
+		<rectangle align="left" width="210" color="black" margins="{right=10}">
+			<!-- RecordList para seleção -->
+			<recordList align="client" margins="{top=5}" name="rclDestalhesDaGeografia" field="listaDeDestalhesDaGeografia" templateForm="frmGeographySelection" layout="vertical" selectable="true">
+				<event name="onEndEnumeration"><![CDATA[
+					if sheet~= nil then
+						local lugares = ndb.getChildNodes(sheet.listaDeDestalhesDaGeografia);
+						local mapa = self:findControlByName("mapa");
 
-					for i=1, #lugares, 1 do
-						local node = lugares[i];
+						for i=1, #lugares, 1 do
+							local node = lugares[i];
 
-						local altura2 = tonumber(sheet.altura2) or 30;
-						local largura2 = tonumber(sheet.largura2) or 30;
+							local altura2 = tonumber(sheet.altura2) or 30;
+							local largura2 = tonumber(sheet.largura2) or 30;
 
-						if node.name ~= nil then
-							local btn = self:findControlByName(node.name);
-							if btn == nil then
-								local btn = gui.newButton();
-								btn.parent = mapa;
-								btn.left = node.left;
-								btn.top = node.top;
-								btn.width = largura2;
-								btn.height = altura2;
-								btn.cursor = "handPoint";
-								btn.hint = node.nome;
-								btn.opacity = 0.35;
-								btn.name = node.name;
-								btn.text = "";
+							if node.name ~= nil then
+								local btn = self:findControlByName(node.name);
+								if btn == nil then
+									local btn = gui.newButton();
+									btn.parent = mapa;
+									btn.left = node.left;
+									btn.top = node.top;
+									btn.width = largura2;
+									btn.height = altura2;
+									btn.cursor = "handPoint";
+									btn.hint = node.nome;
+									btn.opacity = 0.35;
+									btn.name = node.name;
+									btn.text = "";
 
-								btn.onClick = function() 
-									if sheet.dragged then
-										sheet.dragged = false;
-										return;
-									end;
-									self.boxDetalhesDaGeografia.node = node; 
-									self.boxDetalhesDaGeografia.visible = (node ~= nil);
-									self.tabControl.tabIndex = 3;
-								end;
-
-								btn.onMouseDown = function(event) 
-									sheet.drag = true;
-									sheet.dragX = event.x;
-									sheet.dragY = event.y;
-								end;
-
-								btn.onMouseMove = function(event)
-									if sheet.drag~=true then return end;
-									sheet.dragged = true;
-
-									btn.top = btn.top + (event.y - sheet.dragY);
-									btn.left = btn.left + (event.x - sheet.dragX);
-								end;
-
-								btn.onMouseUp = function(event)
-									local mapImage = self:findControlByName("mapImage");
-									local scale = 1;
-									if mapImage.scale > 1 then
-										scale = 0.5;
+									btn.onClick = function() 
+										if sheet.dragged then
+											sheet.dragged = false;
+											return;
+										end;
+										self.boxDetalhesDaGeografia.node = node; 
+										self.boxDetalhesDaGeografia.visible = (node ~= nil);
+										self.tabControl.tabIndex = 3;
 									end;
 
-									sheet.drag = false;
-									node.left = btn.left*scale;
-									node.top = btn.top*scale;
+									btn.onMouseDown = function(event) 
+										sheet.drag = true;
+										sheet.dragX = event.x;
+										sheet.dragY = event.y;
+									end;
+
+									btn.onMouseMove = function(event)
+										if sheet.drag~=true then return end;
+										sheet.dragged = true;
+
+										btn.top = btn.top + (event.y - sheet.dragY);
+										btn.left = btn.left + (event.x - sheet.dragX);
+									end;
+
+									btn.onMouseUp = function(event)
+										local mapImage = self:findControlByName("mapImage");
+										local scale = 1;
+										if mapImage.scale > 1 then
+											scale = 0.5;
+										end;
+
+										sheet.drag = false;
+										node.left = btn.left*scale;
+										node.top = btn.top*scale;
+									end;
 								end;
 							end;
 						end;
-					end;
 
-					if self.rclDestalhesDaGeografia.selectedNode== nil and #lugares>0 then
-						self.rclDestalhesDaGeografia.selectedNode = lugares[1]; 
+						if self.rclDestalhesDaGeografia.selectedNode== nil and #lugares>0 then
+							self.rclDestalhesDaGeografia.selectedNode = lugares[1]; 
+						end;
 					end;
-				end;
-				]]>
-			</event>
-			<event name="onSelect"><![CDATA[
-					local node = self.rclDestalhesDaGeografia.selectedNode;
-					self.boxDetalhesDaGeografia.node = node; 
-					self.boxDetalhesDaGeografia.visible = (node ~= nil);
-				]]>
-			</event>
-			<event name="onCompare"><![CDATA[
-				-- Esse codigo organiza a ordem dos objetos da lista. 
-		        if (tonumber(nodeA.contador) or 0) < (tonumber(nodeB.contador) or 0) then
-		            return -1;
-		        elseif (tonumber(nodeA.contador) or 0) > (tonumber(nodeB.contador) or 0) then
-		            return 1;
-		        else   
-		            return 0;
-		        end;               
-		        ]]>
-			</event>
-		</recordList>
+					]]>
+				</event>
+				<event name="onSelect"><![CDATA[
+						local node = self.rclDestalhesDaGeografia.selectedNode;
+						self.boxDetalhesDaGeografia.node = node; 
+						self.boxDetalhesDaGeografia.visible = (node ~= nil);
+					]]>
+				</event>
+				<event name="onCompare"><![CDATA[
+					-- Esse codigo organiza a ordem dos objetos da lista. 
+			        if (tonumber(nodeA.contador) or 0) < (tonumber(nodeB.contador) or 0) then
+			            return -1;
+			        elseif (tonumber(nodeA.contador) or 0) > (tonumber(nodeB.contador) or 0) then
+			            return 1;
+			        else   
+			            return 0;
+			        end;               
+			        ]]>
+				</event>
+			</recordList>
+		</rectangle>
 		<!-- Info selecionada vai estar aqui -->
-		<dataScopeBox left="210" top="0" width="1030" height="600" name="boxDetalhesDaGeografia" visible="false">
+		<dataScopeBox align="client" name="boxDetalhesDaGeografia" visible="false">
 			<richEdit align="client" field="descricao" backgroundColor="#333333" defaultFontSize="12" defaultFontColor="white"/>
 		</dataScopeBox>
 	</scrollBox>

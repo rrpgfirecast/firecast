@@ -1,22 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <form name="frmTemplateNotes" align="client">
 	<scrollBox align="client">
-		<layout left="0" top="0" width="400" height="580">
-			<rectangle left="0" top="0" width="400" height="580" color="black" xradius="5" yradius="15" cornerType="round"/>
-	        <label left="0" top="0" width="400" height="20" text="Anotações" horzTextAlign="center"/>
-			<textEditor left="10" top="25" width="380" height="540" field="anotacoes1"/>
+		<layout align="left" width="400" margins="{right=10}">
+			<rectangle align="client" color="black" xradius="5" yradius="15" cornerType="round">
+	        	<label align="top" height="20" text="Anotações" horzTextAlign="center"/>
+				<textEditor align="client" field="anotacoes1" margins="{left=10,right=10,bottom=10}"/>
+			</rectangle>
         </layout>
 		
-		<layout left="410" top="0" width="400" height="580">
-			<rectangle left="0" top="0" width="400" height="580" color="black" xradius="5" yradius="15" cornerType="round"/>
-	        <label left="0" top="0" width="400" height="20" text="Anotações" horzTextAlign="center"/>
-			<textEditor left="10" top="25" width="380" height="540" field="anotacoes2"/>
+		<layout align="left" width="400" margins="{right=10}">
+			<rectangle align="client" color="black" xradius="5" yradius="15" cornerType="round">
+	        	<label align="top" height="20" text="Anotações" horzTextAlign="center"/>
+				<textEditor align="client" field="anotacoes2" margins="{left=10,right=10,bottom=10}"/>
+			</rectangle>
         </layout>
 		
-		<layout left="820" top="0" width="400" height="580">
-			<rectangle left="0" top="0" width="400" height="580" color="black" xradius="5" yradius="15" cornerType="round"/>
-	        <label left="0" top="0" width="400" height="20" text="Anotações" horzTextAlign="center"/>
-			<textEditor left="10" top="25" width="380" height="540" field="anotacoes3"/>
+		<layout align="left" width="400" margins="{right=10}">
+			<rectangle align="client" color="black" xradius="5" yradius="15" cornerType="round">
+	        	<label align="top" height="20" text="Anotações" horzTextAlign="center"/>
+				<textEditor align="client" field="anotacoes3" margins="{left=10,right=10,bottom=10}"/>
+			</rectangle>
         </layout>
 	</scrollBox>
 </form>
