@@ -25,7 +25,7 @@
 	<flowLineBreak/>
 
 	<flowPart minWidth="300" maxWidth="350" height="270">
-		<recordList align="client" margins="{left=5,right=5,bottom=5,top=5}" name="rclSigns" field="listaDeSignos" templateForm="frmRecordListForm" layout="vertical"/>
+		<recordList align="client" margins="{left=5,right=5,bottom=5,top=5}" name="rclSigns" field="campoDosSignos" templateForm="frmMagiasSignoSelector" layout="vertical"/>
 	</flowPart>
 
 	<flowLineBreak/>

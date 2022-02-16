@@ -13667,8 +13667,9 @@ local function constructNew_frmFichaRPGmeister()
 							local acertos = weapons[weaponID].acertos;
 							local decisivo = weapons[weaponID].decisivo;
 							local armamento = weapons[weaponID].nomeAtaque or "arma";
+							local conf = tonumber(weapons[weaponID].confirmacaoAtaq) or 0;
 							if dadoAtaques[ataquesFeitos+1]>=decisivo then
-								local confirmacao = Firecast.interpretarRolagem("1d20+" .. acertos[ataqueID]);
+								local confirmacao = Firecast.interpretarRolagem("1d20+" .. (acertos[ataqueID] + conf));
 								mesaDoPersonagem.activeChat:rolarDados(confirmacao, "Confirmação de Decisivo do ataque #" .. ataqueID .. " com " .. armamento .. " de " .. personagem, 
 									function (rolado)
 										proximaConfirmacao(rolado)
@@ -13732,8 +13733,9 @@ local function constructNew_frmFichaRPGmeister()
 							local acertos = weapons[weaponID].acertos;
 							local decisivo = weapons[weaponID].decisivo;
 							local armamento = weapons[weaponID].nomeAtaque or "arma";
+							local conf = tonumber(weapons[weaponID].confirmacaoAtaq) or 0;
 							if dadoAtaques[ataquesFeitos+1]>=decisivo then
-								local confirmacao = Firecast.interpretarRolagem("1d20+" .. acertos[ataqueID]);
+								local confirmacao = Firecast.interpretarRolagem("1d20+" .. (acertos[ataqueID]+conf));
 								mesaDoPersonagem.activeChat:rolarDados(confirmacao, "Confirmação de Decisivo do ataque #" .. ataqueID .. " com " .. armamento .. " de " .. personagem, 
 									function (rolado)
 										proximaConfirmacao(rolado)
@@ -13847,7 +13849,7 @@ local function constructNew_frmFichaRPGmeister()
     obj.rclListaDeArmas:setParent(obj.boxDetalhesDoAtaque);
     obj.rclListaDeArmas:setName("rclListaDeArmas");
     obj.rclListaDeArmas:setField("campoDeArmas");
-    obj.rclListaDeArmas:setTemplateForm("frmFichaRPGmeister2Aar_svg");
+    obj.rclListaDeArmas:setTemplateForm("frmWeaponConfig");
     obj.rclListaDeArmas:setAlign("client");
     obj.rclListaDeArmas:setLayout("vertical");
     obj.rclListaDeArmas:setMinQt(1);
@@ -13873,11 +13875,6 @@ local function constructNew_frmFichaRPGmeister()
     obj.scrollBox4:setAlign("client");
     obj.scrollBox4:setName("scrollBox4");
 
-
-			
-			local dnd = NDB.load("dndskills.xml");
-			local rpgmeister = NDB.load("rpgmeisterskills.xml");
-			local faroeste = NDB.load("faroesteskills.xml");
 
 			local function updateAtributes(num)
 				local atr = "" .. num;
@@ -13906,71 +13903,61 @@ local function constructNew_frmFichaRPGmeister()
 			end;
 
 			local function updatePenalty()
-				if sheet~=nil then
-					local nodes = NDB.getChildNodes(sheet.campoDasPericias); 
-					for i=1, #nodes, 1 do
-						if nodes[i].penalidadeArmadura or nodes[i].penalidadeArmadura2 then
-							local pen = (tonumber(sheet.penalidade) or 0)
+				if sheet==nil then return end;
 
-							local mod = 0;
-							mod =   (tonumber(nodes[i].atributoPericia) or 0) +
-									(tonumber(nodes[i].graduacaoPericia) or 0) +
-									(tonumber(nodes[i].penalidesPericia) or 0) +
-									(tonumber(nodes[i].racialPericia) or 0) +
-									(tonumber(nodes[i].sinergiaPericia) or 0) +
-									(tonumber(nodes[i].equipamentosPericia) or 0) +
-									(tonumber(nodes[i].magicoPericia) or 0) +
-									(tonumber(nodes[i].outrosPericia) or 0) + 
-									(tonumber(nodes[i].talentosPericia) or 0) +
-									(tonumber(nodes[i].classePericia) or 0);
-
-							if nodes[i].penalidadeArmadura then
-								mod = mod + pen;
-							end;
-							if nodes[i].penalidadeArmadura2 then
-								mod = mod + pen;
-							end;
-
-							nodes[i].totalPericia = mod;
-						end;
-					end;
+				local nodes = NDB.getChildNodes(sheet.campoDasPericias); 
+				for i=1, #nodes, 1 do
+					nodes[i].penalidade = sheet.penalidade;
 				end;
 			end;
 
-			local function fillSkills(list, limit)
-				local nodes = NDB.getChildNodes(sheet.campoDasPericias); 
-				for i=1, #nodes, 1 do
-					NDB.deleteNode(nodes[i]);
-				end
+			local function fillSkills(db)
+				Dialogs.confirmOkCancel("Vai apagar todas perícias atuais.",
+			        function (confirmado)
+			                if confirmado then
+			                    if sheet.campoDasPericias == nil then 
+									sheet.campoDasPericias = {}
+								end;
+								NDB.copy(sheet.campoDasPericias, db); 
 
-				for i=1, limit, 1 do
-					local pericia = self.rclListaDasPericias:append();
-					if pericia ~= nil then
-						pericia.nomePericia = list[i].nome;
-						pericia.chavePericia = list[i].chave;
-						pericia.exigeTreino = list[i].treino;
-						if list[i].armadura > 0 then
-							pericia.penalidadeArmadura2 = true;
-						end;
-						if list[i].armadura > 1 then
-							pericia.penalidadeArmadura = true;
-						end;
-					end;
-				end;
-
-				self.rclListaDasPericias:sort();
+								self.rclListaDasPericias:sort();
+			                else
+			                        -- usuário escolheu CANCEL
+			                        -- Do nothing
+			                end;
+			        end);
+				
 			end;
 
 			local function dndSkills()
-				fillSkills(dnd, 44);
+				local dnd = NDB.load("dndskills.xml");
+				fillSkills(dnd);
 			end;
 
 			local function rpgmeisterSkills()
-				fillSkills(rpgmeister, 41);
+				local rpgmeister = NDB.load("rpgmeisterskills.xml");
+				fillSkills(rpgmeister);
 			end;
 
 			local function faroesteSkills()
-				fillSkills(faroeste, 25);
+				local faroeste = NDB.load("faroesteskills.xml");
+				fillSkills(faroeste);
+			end;
+
+			local function exportSkills()
+				local xml = NDB.exportXML(sheet.campoDasPericias);
+
+				local export = {};
+				local bytes = Utils.binaryEncode(export, "utf8", xml);
+
+				local stream = Utils.newMemoryStream();
+				local bytes = stream:write(export);
+
+				Dialogs.saveFile("Salvar Ficha como XML", stream, "skills.xml", "application/xml",
+					function()
+						stream:close();
+						showMessage("Perícias Exportadas.");
+					end);
 			end;
 		
 
@@ -16088,8 +16075,8 @@ local function constructNew_frmFichaRPGmeister()
     obj.comboBox5 = GUI.fromHandle(_obj_newObject("comboBox"));
     obj.comboBox5:setParent(obj.flowPart260);
     obj.comboBox5:setAlign("client");
-    obj.comboBox5:setItems({'Lista Magias', 'Signos', 'Magias (OLD)', 'Magia Epica', 'Magias Aprimoradas'});
-    obj.comboBox5:setValues({'3', '2', '1', '7', '8'});
+    obj.comboBox5:setItems({'Lista Magias', 'Signos', 'Magia Epica', 'Magias Aprimoradas'});
+    obj.comboBox5:setValues({'3', '2', '7', '8'});
     obj.comboBox5:setValue("3");
     obj.comboBox5:setField("tipoMagia");
     obj.comboBox5:setFontColor("white");
@@ -17944,8 +17931,8 @@ local function constructNew_frmFichaRPGmeister()
     obj.rclSigns:setAlign("client");
     obj.rclSigns:setMargins({left=5,right=5,bottom=5,top=5});
     obj.rclSigns:setName("rclSigns");
-    obj.rclSigns:setField("listaDeSignos");
-    obj.rclSigns:setTemplateForm("frmRecordListForm");
+    obj.rclSigns:setField("campoDosSignos");
+    obj.rclSigns:setTemplateForm("frmMagiasSignoSelector");
     obj.rclSigns:setLayout("vertical");
 
     obj.flowLineBreak36 = GUI.fromHandle(_obj_newObject("flowLineBreak"));
