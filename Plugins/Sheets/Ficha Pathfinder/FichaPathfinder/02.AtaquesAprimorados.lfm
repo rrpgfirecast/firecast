@@ -87,8 +87,9 @@
 							local acertos = weapons[weaponID].acertos;
 							local decisivo = weapons[weaponID].decisivo;
 							local armamento = weapons[weaponID].nomeAtaque or "arma";
+							local conf = tonumber(weapons[weaponID].confirmacaoAtaq) or 0;
 							if dadoAtaques[ataquesFeitos+1]>=decisivo then
-								local confirmacao = Firecast.interpretarRolagem("1d20+" .. acertos[ataqueID]);
+								local confirmacao = Firecast.interpretarRolagem("1d20+" .. (acertos[ataqueID] + conf));
 								mesaDoPersonagem.activeChat:rolarDados(confirmacao, "Confirmação de Decisivo do ataque #" .. ataqueID .. " com " .. armamento .. " de " .. personagem, 
 									function (rolado)
 										proximaConfirmacao(rolado)
@@ -152,8 +153,9 @@
 							local acertos = weapons[weaponID].acertos;
 							local decisivo = weapons[weaponID].decisivo;
 							local armamento = weapons[weaponID].nomeAtaque or "arma";
+							local conf = tonumber(weapons[weaponID].confirmacaoAtaq) or 0;
 							if dadoAtaques[ataquesFeitos+1]>=decisivo then
-								local confirmacao = Firecast.interpretarRolagem("1d20+" .. acertos[ataqueID]);
+								local confirmacao = Firecast.interpretarRolagem("1d20+" .. (acertos[ataqueID]+conf));
 								mesaDoPersonagem.activeChat:rolarDados(confirmacao, "Confirmação de Decisivo do ataque #" .. ataqueID .. " com " .. armamento .. " de " .. personagem, 
 									function (rolado)
 										proximaConfirmacao(rolado)
@@ -275,7 +277,7 @@
 						</event>
 					</button>
 				</layout>
-				<recordList name="rclListaDeArmas" field="campoDeArmas" templateForm="frmFichaRPGmeister2Aar_svg" align="client" layout="vertical" minQt="1"/>
+				<recordList name="rclListaDeArmas" field="campoDeArmas" templateForm="frmWeaponConfig" align="client" layout="vertical" minQt="1"/>
 			</dataScopeBox>
 		</rectangle>
 	</scrollBox>

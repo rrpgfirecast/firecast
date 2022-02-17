@@ -42,9 +42,6 @@ local function constructNew_frmFichaRPGmeister3_svg()
     obj.scrollBox1:setName("scrollBox1");
 
 
-			
-			local path = NDB.load("pathskills.xml");
-
 			local function updateAtributes(num)
 				local atr = "" .. num;
 				local mod = 0;
@@ -106,25 +103,37 @@ local function constructNew_frmFichaRPGmeister3_svg()
 			end;
 
 			local function pathSkills()
-				local nodes = NDB.getChildNodes(sheet.campoDasPericias); 
-				for i=1, #nodes, 1 do
-					NDB.deleteNode(nodes[i]);
-				end
+				Dialogs.confirmOkCancel("Vai apagar todas perícias atuais.",
+			        function (confirmado)
+			                if confirmado then
+			                    if sheet.campoDasPericias == nil then 
+									sheet.campoDasPericias = {}
+								end;
+								local path = NDB.load("pathskills.xml");
+								NDB.copy(sheet.campoDasPericias, path); 
 
-				for i=1, 35, 1 do
-					local pericia = self.rclListaDasPericias:append();
-					if pericia~=nil then
-						pericia.nomePericia = path[i].nome;
-						pericia.chavePericia = path[i].chave;
-						pericia.exigeTreino = path[i].treino;
-						local armadura = tonumber(path[i].armadura) or 0;
-						if armadura > 0 then
-							pericia.penalidadeArmadura2 = true;
-						end;
-					end;
-				end;
+								self.rclListaDasPericias:sort();
+			                else
+			                        -- usuário escolheu CANCEL
+			                        -- Do nothing
+			                end;
+			        end);
+			end;
 
-				self.rclListaDasPericias:sort();
+			local function exportSkills()
+				local xml = NDB.exportXML(sheet.campoDasPericias);
+
+				local export = {};
+				local bytes = Utils.binaryEncode(export, "utf8", xml);
+
+				local stream = Utils.newMemoryStream();
+				local bytes = stream:write(export);
+
+				Dialogs.saveFile("Salvar Ficha como XML", stream, "skills.xml", "application/xml",
+					function()
+						stream:close();
+						showMessage("Perícias Exportadas.");
+					end);
 			end;
 		
 
@@ -797,6 +806,15 @@ local function constructNew_frmFichaRPGmeister3_svg()
     obj.button3:setHint("Vai apagar todas perícias atuais. ");
     obj.button3:setName("button3");
 
+    obj.button4 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button4:setParent(obj.layout4);
+    obj.button4:setText("Export");
+    obj.button4:setLeft(0);
+    obj.button4:setTop(150);
+    obj.button4:setWidth(125);
+    obj.button4:setHeight(25);
+    obj.button4:setName("button4");
+
     obj._e_event0 = obj.dataLink1:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet==nil then return end;
@@ -816,19 +834,27 @@ local function constructNew_frmFichaRPGmeister3_svg()
     obj._e_event2 = obj.rclListaDasPericias:addEventListener("onEndEnumeration",
         function (_)
             if sheet==nil then return end;
-            					local nodes = NDB.getChildNodes(sheet.campoDasPericias);               
-            					if #nodes == 0 then
-            						pathSkills();
-            					end;
+            					
+            					if sheet.campoDasPericias ~= nil then return end;
+            					
+            					sheet.campoDasPericias = {}
+            					local path = NDB.load("pathskills.xml");
+            					NDB.copy(sheet.campoDasPericias, path); 
+            
+            					self.rclListaDasPericias:sort();
         end, obj);
 
     obj._e_event3 = obj.rclListaDasPericias:addEventListener("onBeginEnumeration",
         function (_)
             if sheet==nil then return end;
-            					local nodes = NDB.getChildNodes(sheet.campoDasPericias);               
-            					if #nodes == 0 then
-            						pathSkills();
-            					end;
+            
+            					if sheet.campoDasPericias ~= nil then return end;
+            					
+            					sheet.campoDasPericias = {}
+            					local path = NDB.load("pathskills.xml");
+            					NDB.copy(sheet.campoDasPericias, path); 
+            
+            					self.rclListaDasPericias:sort();
         end, obj);
 
     obj._e_event4 = obj.rclListaDosIdiomas:addEventListener("onCompare",
@@ -853,7 +879,13 @@ local function constructNew_frmFichaRPGmeister3_svg()
             pathSkills();
         end, obj);
 
+    obj._e_event8 = obj.button4:addEventListener("onClick",
+        function (_)
+            exportSkills();
+        end, obj);
+
     function obj:_releaseEvents()
+        __o_rrpgObjs.removeEventListenerById(self._e_event8);
         __o_rrpgObjs.removeEventListenerById(self._e_event7);
         __o_rrpgObjs.removeEventListenerById(self._e_event6);
         __o_rrpgObjs.removeEventListenerById(self._e_event5);
@@ -874,6 +906,7 @@ local function constructNew_frmFichaRPGmeister3_svg()
         end;
 
         if self.rclListaDasPericias ~= nil then self.rclListaDasPericias:destroy(); self.rclListaDasPericias = nil; end;
+        if self.button4 ~= nil then self.button4:destroy(); self.button4 = nil; end;
         if self.checkBox5 ~= nil then self.checkBox5:destroy(); self.checkBox5 = nil; end;
         if self.label14 ~= nil then self.label14:destroy(); self.label14 = nil; end;
         if self.flowPart8 ~= nil then self.flowPart8:destroy(); self.flowPart8 = nil; end;

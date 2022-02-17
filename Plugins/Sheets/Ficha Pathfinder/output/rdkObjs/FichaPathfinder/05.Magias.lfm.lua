@@ -5994,8 +5994,8 @@ local function constructNew_frmFichaRPGmeister5M_svg()
     obj.comboBox8:setTop(50);
     obj.comboBox8:setWidth(110);
     obj.comboBox8:setHeight(25);
-    obj.comboBox8:setItems({'Lista Magias', 'Signos', 'Magias (OLD)', 'Magia Epica', 'Magias Aprimoradas'});
-    obj.comboBox8:setValues({'3', '2', '1', '7', '8'});
+    obj.comboBox8:setItems({'Lista Magias', 'Magia Epica', 'Magias Aprimoradas'});
+    obj.comboBox8:setValues({'3', '7', '8'});
     obj.comboBox8:setValue("3");
     obj.comboBox8:setField("tipoMagia");
     obj.comboBox8:setFontColor("white");
