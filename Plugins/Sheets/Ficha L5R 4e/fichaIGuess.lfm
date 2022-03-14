@@ -432,7 +432,7 @@ button.Tab{
 ]]>
 </script>
 
-	<image url="/Frames/blur.png" align="client" style="autofit" />
+	<image field="URLImagemFundo" align="client" style="autofit" src="/Frames/blur.png"/>
 	<scrollBox align="client">
 		<flowLayout align="top" autoHeight="true" horzAlign="center" maxControlsPerLine="3">
 			
@@ -636,7 +636,16 @@ button.Tab{
 									
 									<!-- INICIATIVA -->
 									<DivisorD texto="I N I C I A T I V A" largura="160" topo="60"/>
-										
+										<button name="btnImagemFundo" left="270" top="20" text="⚙" height="30" width="30" onClick="self.popImagemFundo:show('left', self.btnImagemFundo);"/>
+												
+												<popup name="popImagemFundo" width="260" height="80" backOpacity="0" drawContainer="false">
+													<rectangle align="client" color="#353535" padding="{top=10, left=10, bottom=10, right=10}" xradius= "10" yradius="10" cornerType="bevel">
+														<label align="top" text="I M A G E M  D E  F U N D O" margins="{bottom=5}" fontStyle="bold" fontFamily="Constantia"/>
+														<horzLine align="top" margins="{bottom=5}" strokeColor="#424242" />
+														<edit align="client" padding="{top=10, left=10, bottom=10, right=10}" transparent="false" field="URLImagemFundo" width="240"/>
+													</rectangle>
+												</popup>
+
 										<layout align="top" height="120" margins="{left=20}">
 											<layout align="top" height="30">
 												<rectangle top="2.5" left="0" width="25" height="25" xradius="20" yradius="20" cornerType="round" color="black">
