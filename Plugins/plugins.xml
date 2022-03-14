@@ -5,6 +5,11 @@
             <dataType id="ambesek.afkbot" title="AfkBot"/>
         </dataTypes>
     </element>
+    <element id="Ambesek.Mutantes.Malfeitores.3e" name="Ficha Mutantes e Malfeitores 3e" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20Mutantes%20e%20Malfeitores%203e/output/Ficha%20Mutantes%20e%20Malfeitores%203e.rpk?raw=true" fileName="Ficha Mutantes e Malfeitores 3e.rpk" repositoryPath="Sheets/Ficha Mutantes e Malfeitores 3e/" author="Ambesek" description="Ficha para o cenario e sistema Mutantes e Malfeitores 3e." version="1.0" compilationDate="14032022033148" compilationDigest="6de6aa2675214259a29fcc202c28ca74d06211c3">
+        <dataTypes>
+            <dataType id="Ambesek.Mutantes.Malfeitores.3e" title="Ficha Mutantes e Malfeitores 3e"/>
+        </dataTypes>
+    </element>
     <element id="Game_of_Thrones" name="Game of Thrones" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Game%20of%20Thrones/output/Game%20of%20Thrones.rpk?raw=true" fileName="Game of Thrones.rpk" repositoryPath="Sheets/Game of Thrones/" author="thirteen" description="Ficha de Personagem do sistema Game of Thrones." version="1.0" compilationDate="21112021233549" compilationDigest="047c1f70c074329801387777fecd5b03e26d1196">
         <dataTypes>
             <dataType id="thirteen.GoT" title="Game of Thrones"/>

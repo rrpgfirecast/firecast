@@ -3380,7 +3380,7 @@ local function constructNew_frmMM3()
 
     obj._e_event0 = obj:addEventListener("onNodeReady",
         function (_)
-            Internet.download("raw_download_link",
+            Internet.download("https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20Mutantes%20e%20Malfeitores%203e/output/Ficha%20Mutantes%20e%20Malfeitores%203e.rpk?raw=true",
                         function(stream, contentType)
                             local info = Firecast.Plugins.getRPKDetails(stream);
                             sheet.versionDownloaded = "VERSÃO DISPONÍVEL: " .. info.version;
@@ -3399,7 +3399,7 @@ local function constructNew_frmMM3()
                                 Dialogs.choose("Há uma nova versão desse plugin. Deseja instalar?",{"Sim", "Não", "Não perguntar novamente."},
                                     function(selected, selectedIndex, selectedText)
                                         if selected and selectedIndex == 1 then
-                                            GUI.openInBrowser('raw_download_link');
+                                            GUI.openInBrowser('https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20Mutantes%20e%20Malfeitores%203e/output/Ficha%20Mutantes%20e%20Malfeitores%203e.rpk?raw=true');
                                         elseif selected and selectedIndex == 3 then
                                             sheet.noUpdate = true;
                                         end;
@@ -3765,7 +3765,7 @@ local function constructNew_frmMM3()
             Dialogs.confirmOkCancel("Vai apagar todas perícias atuais.",
             						        function (confirmado)
             						                if confirmado then
-            						                    local dnd = NDB.load("defaultskills.xml");
+            						                    local db = NDB.load("defaultskills.xml");
             											NDB.copy(sheet.rclPericias, db); 
             
             											self.rclPericias:sort();
@@ -3867,12 +3867,12 @@ local function constructNew_frmMM3()
 
     obj._e_event42 = obj.button6:addEventListener("onClick",
         function (_)
-            GUI.openInBrowser('link_change_log')
+            GUI.openInBrowser('https://github.com/rrpgfirecast/firecast/tree/master/Plugins/Sheets/Ficha%20Mutantes%20e%20Malfeitores%203e')
         end, obj);
 
     obj._e_event43 = obj.button7:addEventListener("onClick",
         function (_)
-            GUI.openInBrowser('raw_download_link')
+            GUI.openInBrowser('https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20Mutantes%20e%20Malfeitores%203e/output/Ficha%20Mutantes%20e%20Malfeitores%203e.rpk?raw=true')
         end, obj);
 
     obj._e_event44 = obj.button8:addEventListener("onClick",

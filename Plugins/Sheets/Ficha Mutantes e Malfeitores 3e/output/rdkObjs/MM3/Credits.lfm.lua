@@ -453,12 +453,12 @@ local function constructNew_frmTemplateCreditos()
 
     obj._e_event4 = obj.button1:addEventListener("onClick",
         function (_)
-            GUI.openInBrowser('link_change_log')
+            GUI.openInBrowser('https://github.com/rrpgfirecast/firecast/tree/master/Plugins/Sheets/Ficha%20Mutantes%20e%20Malfeitores%203e')
         end, obj);
 
     obj._e_event5 = obj.button2:addEventListener("onClick",
         function (_)
-            GUI.openInBrowser('raw_download_link')
+            GUI.openInBrowser('https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20Mutantes%20e%20Malfeitores%203e/output/Ficha%20Mutantes%20e%20Malfeitores%203e.rpk?raw=true')
         end, obj);
 
     obj._e_event6 = obj.button3:addEventListener("onClick",

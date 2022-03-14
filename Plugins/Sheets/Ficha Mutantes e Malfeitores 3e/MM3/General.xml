@@ -318,7 +318,7 @@
 							Dialogs.confirmOkCancel("Vai apagar todas perícias atuais.",
 						        function (confirmado)
 						                if confirmado then
-						                    local dnd = NDB.load("defaultskills.xml");
+						                    local db = NDB.load("defaultskills.xml");
 											NDB.copy(sheet.rclPericias, db); 
 
 											self.rclPericias:sort();
