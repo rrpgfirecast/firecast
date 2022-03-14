@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmPoderes" align="client">
+	<template name="VertCombo">
+		<layout align="left" width="90">
+			<label align="top" height="25" text="$(text)" horzTextAlign="center"/>
+			<comboBox align="client" field="$(field)" items="$(items)"/>
+		</layout>
+	</template>
+	<template name="VertEdit">
+		<layout align="left" width="$(width)">
+			<label align="top" height="25" text="$(text)" horzTextAlign="center"/>
+			<edit align="client" field="$(field)"/>
+		</layout>
+	</template>
+
+	<popup name="popPoder" width="470" height="470" backOpacity="0.4" autoScopeNode="false" padding="{left=10,right=10,bottom=10,top=10}">
+		<layout align="top" height="50" margins="{left=5}">
+			<VertCombo text="Defesa" field="defesa" items="{'Esquiva', 'Aparar', 'Fortitude', 'Resistência', 'Vontade', 'Nenhum'}"/>
+			<VertCombo text="Ação" field="acao" items="{'Livre', 'Reação', 'Movimento', 'Padrão', 'Nenhum'}"/>
+			<VertEdit text="Alcance" field="alcance" width="90"/>
+			<VertEdit text="Duração" field="duracao" width="90"/>
+			<VertEdit text="Livro" field="livro" width="90"/>
+		</layout>
+		<textEditor align="client" field="efeitos" margins="{left=5,right=5,top=5,bottom=5}"/>
+		<textEditor align="bottom" height="100" field="notas" margins="{left=5,right=5,top=0,bottom=5}"/>
+
+		<layout align="bottom" height="50" margins="{left=5}">
+			<VertEdit text="Graduações" field="custoGrad" width="75"/>
+			<VertEdit text="Extras" field="custoExtra" width="75"/>
+			<VertEdit text="Falhas" field="custoFalha" width="75"/>
+			<VertEdit text="Custo" field="custoMult" width="75"/>
+			<VertEdit text="Extra Fixo" field="custoExtraFixo" width="75"/>
+			<VertEdit text="Falha Fixo" field="custoFalhaFixo" width="75"/>
+		</layout>
+	</popup>
+
+	<scrollBox align="client">
+		<rectangle align="left" width="600" color="black" strokeColor="white" strokeSize="1" margins="{right=5}">
+	    	<layout align="top" height="25" margins="{top=5}">
+				<button align="left" width="25" text="+" onClick="self.rclPoderes:append()" margins="{left=5}"/>
+				<label align="client" text="Poderes" horzTextAlign="center"/>
+			</layout>
+			<layout align="top" height="25">
+				<label align="client" text="" horzTextAlign="center"/>
+
+				<layout align="right" width="315">
+					<label align="left" width="200" text="Efeito" horzTextAlign="center"/>
+					<label align="left" width="50" text="Custo" horzTextAlign="center"/>
+					<label align="right" width="70" text="" horzTextAlign="center"/>
+				</layout>
+			</layout>
+
+			<recordList align="client" margins="{left=5,right=5,bottom=5,top=5}" name="rclPoderes" field="rclPoderes" templateForm="frmPoderItem" layout="vertical"/>
+		</rectangle>
+		
+		<rectangle align="left" width="600" color="black" strokeColor="white" strokeSize="1" margins="{right=5}">
+	    	<layout align="top" height="25" margins="{top=5}">
+				<button align="left" width="25" text="+" onClick="self.rclVantagens:append()" margins="{left=5}"/>
+				<label align="client" text="Vantagens" horzTextAlign="center"/>
+			</layout>
+			<layout align="top" height="25">
+				<label align="client" text="" horzTextAlign="center"/>
+
+				<layout align="right" width="290">
+					<label align="left" width="200" text="Efeito" horzTextAlign="center"/>
+					<label align="left" width="50" text="Custo" horzTextAlign="center"/>
+					<label align="right" width="45" text="" horzTextAlign="center"/>
+				</layout>
+			</layout>
+
+			<recordList align="client" margins="{left=5,right=5,bottom=5,top=5}" name="rclVantagens" field="rclVantagens" templateForm="frmVantagemItem" layout="vertical"/>
+		</rectangle>
+		
+	</scrollBox>
+</form>

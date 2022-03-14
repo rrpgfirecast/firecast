@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmAtaqueItem" width="110" height="25" margins="{top=1}">
+	<rectangle align="client" color="#212121">
+		<edit align="client" field="nome"/>
+
+		<edit align="right" width="40" field="ataque" horzTextAlign="center" type="number"/>
+		<edit align="right" width="40" field="dano" horzTextAlign="center" type="number"/>
+
+
+		<edit align="right" width="100" field="efeito"/>
+
+		<layout align="right" width="110">
+			<comboBox align="left" width="60" field="cd" items="{'-', 'Dano', 'Area', 'Efeito'}"/>
+			<button align="right" width="25" text="R">
+				<event name="onClick">
+					if sheet==nil then return end;
+					local mesa = Firecast.getMesaDe(sheet);
+					local rolagem = Firecast.interpretarRolagem("1d20 + " .. (sheet.ataque or 0));
+					local dano = tonumber(sheet.dano) or 0
+
+					mesa.activeChat:rolarDados(rolagem, (sheet.nome or "ataque") .. " - Efeito: " .. (sheet.efeito or "-") .. " Dano: " .. dano .. " - CD: " .. (dano+10))
+				</event>
+			</button>
+			<!-- Botão que apaga o objeto da lista -->
+			<button align="right" width="25" text="X">
+				<event name="onClick">
+					Dialogs.confirmOkCancel("Tem certeza que quer apagar esse ataque?",
+						function (confirmado)
+							if confirmado then
+								NDB.deleteNode(sheet);
+							end;
+					end);
+				</event>
+			</button>
+		</layout>
+	</rectangle>
+</form>
