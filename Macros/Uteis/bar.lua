@@ -67,6 +67,8 @@ end
 
 -- ACTION
 local currentValue, maxValue = jogador:getBarValue(bar)
+if currentValue==nil then currentValue=0 end
+if maxValue==nil then maxValue=0 end
 
 if max ~= nil then
 	if op=="++" then
