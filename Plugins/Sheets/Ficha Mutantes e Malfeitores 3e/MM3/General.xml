@@ -139,7 +139,7 @@
 
 			<layout align="left" width="350" margins="{right=5,left=5}">
 				<label align="left" text="Identidade" width="100" horzTextAlign="center"/>
-				<edit align="client" width="50" field="identidade" height="25" horzTextAlign="center" type="number"/>
+				<edit align="client" width="50" field="identidade" height="25" horzTextAlign="center"/>
 				<comboBox align="right" width="100" field="identidadeTipo" items="{'Secreta', 'Pública'}"/>
 			</layout>
 
@@ -186,7 +186,7 @@
 										(tonumber(sheet.intelectoBase) or 0) + 
 										(tonumber(sheet.presencaBase) or 0);
 
-						sheet.ppAtributo = total
+						sheet.ppAtributo = total * 2
 					</event>
 				</dataLink>
 			</rectangle>
@@ -318,6 +318,7 @@
 							Dialogs.confirmOkCancel("Vai apagar todas perícias atuais.",
 						        function (confirmado)
 						                if confirmado then
+						                	if sheet.rclPericias == nil then sheet.rclPericias = {} end
 						                    local db = NDB.load("defaultskills.xml");
 											NDB.copy(sheet.rclPericias, db); 
 

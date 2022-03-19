@@ -44,7 +44,7 @@
 				<label align="client" text="" horzTextAlign="center"/>
 
 				<layout align="right" width="315">
-					<label align="left" width="200" text="Efeito" horzTextAlign="center"/>
+					<label align="left" width="200" text="" horzTextAlign="center"/>
 					<label align="left" width="50" text="Custo" horzTextAlign="center"/>
 					<label align="right" width="70" text="" horzTextAlign="center"/>
 				</layout>
@@ -62,7 +62,7 @@
 				<label align="client" text="" horzTextAlign="center"/>
 
 				<layout align="right" width="290">
-					<label align="left" width="200" text="Efeito" horzTextAlign="center"/>
+					<label align="left" width="200" text="" horzTextAlign="center"/>
 					<label align="left" width="50" text="Custo" horzTextAlign="center"/>
 					<label align="right" width="45" text="" horzTextAlign="center"/>
 				</layout>
