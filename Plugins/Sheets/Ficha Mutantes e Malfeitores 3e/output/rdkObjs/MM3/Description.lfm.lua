@@ -126,13 +126,19 @@ local function constructNew_frmTemplateDescription()
 
     obj.layout5 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout5:setParent(obj.scrollBox1);
-    obj.layout5:setAlign("left");
-    obj.layout5:setWidth(375);
-    obj.layout5:setMargins({right=5});
+    obj.layout5:setAlign("top");
+    obj.layout5:setHeight(615);
     obj.layout5:setName("layout5");
 
+    obj.layout6 = GUI.fromHandle(_obj_newObject("layout"));
+    obj.layout6:setParent(obj.layout5);
+    obj.layout6:setAlign("left");
+    obj.layout6:setWidth(375);
+    obj.layout6:setMargins({right=5});
+    obj.layout6:setName("layout6");
+
     obj.rectangle2 = GUI.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle2:setParent(obj.layout5);
+    obj.rectangle2:setParent(obj.layout6);
     obj.rectangle2:setAlign("top");
     obj.rectangle2:setHeight(200);
     obj.rectangle2:setMargins({bottom=5});
@@ -155,7 +161,7 @@ local function constructNew_frmTemplateDescription()
     obj.textEditor1:setName("textEditor1");
 
     obj.rectangle3 = GUI.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle3:setParent(obj.layout5);
+    obj.rectangle3:setParent(obj.layout6);
     obj.rectangle3:setAlign("top");
     obj.rectangle3:setHeight(200);
     obj.rectangle3:setMargins({bottom=5});
@@ -178,7 +184,7 @@ local function constructNew_frmTemplateDescription()
     obj.textEditor2:setName("textEditor2");
 
     obj.rectangle4 = GUI.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle4:setParent(obj.layout5);
+    obj.rectangle4:setParent(obj.layout6);
     obj.rectangle4:setAlign("top");
     obj.rectangle4:setHeight(200);
     obj.rectangle4:setMargins({bottom=5});
@@ -201,7 +207,7 @@ local function constructNew_frmTemplateDescription()
     obj.textEditor3:setName("textEditor3");
 
     obj.rectangle5 = GUI.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle5:setParent(obj.scrollBox1);
+    obj.rectangle5:setParent(obj.layout5);
     obj.rectangle5:setAlign("client");
     obj.rectangle5:setColor("black");
     obj.rectangle5:setName("rectangle5");
@@ -250,6 +256,7 @@ local function constructNew_frmTemplateDescription()
         if self.textEditor3 ~= nil then self.textEditor3:destroy(); self.textEditor3 = nil; end;
         if self.label2 ~= nil then self.label2:destroy(); self.label2 = nil; end;
         if self.edit3 ~= nil then self.edit3:destroy(); self.edit3 = nil; end;
+        if self.layout6 ~= nil then self.layout6:destroy(); self.layout6 = nil; end;
         if self.label5 ~= nil then self.label5:destroy(); self.label5 = nil; end;
         if self.rectangle4 ~= nil then self.rectangle4:destroy(); self.rectangle4 = nil; end;
         if self.rectangle2 ~= nil then self.rectangle2:destroy(); self.rectangle2 = nil; end;

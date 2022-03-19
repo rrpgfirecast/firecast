@@ -18,25 +18,31 @@
 			</layout>
 		</rectangle>
 
-		<layout align="left" width="375" margins="{right=5}">
 		
-			<rectangle align="top" height="200" margins="{bottom=5}" color="black">
-				<label align="top" height="20" text="DESCRIÇÃO FÍSICA" margins="{left=5}"/>
-				<textEditor align="client" field="aparencia" margins="{left=5,right=5,bottom=5}"/>
-			</rectangle>
-			<rectangle align="top" height="200" margins="{bottom=5}" color="black">
-				<label align="top" height="20" text="PERSONALIDADE" margins="{left=5}"/>
-				<textEditor align="client" field="personalidade" margins="{left=5,right=5,bottom=5}"/>
-			</rectangle>
-			<rectangle align="top" height="200" margins="{bottom=5}" color="black">
-				<label align="top" height="20" text="COMPLICAÇÕES" margins="{left=5}"/>
-				<textEditor align="client" field="complicacoes" margins="{left=5,right=5,bottom=5}"/>
+
+		<layout align="top" height="615">
+
+			<layout align="left" width="375" margins="{right=5}">
+			
+				<rectangle align="top" height="200" margins="{bottom=5}" color="black">
+					<label align="top" height="20" text="DESCRIÇÃO FÍSICA" margins="{left=5}"/>
+					<textEditor align="client" field="aparencia" margins="{left=5,right=5,bottom=5}"/>
+				</rectangle>
+				<rectangle align="top" height="200" margins="{bottom=5}" color="black">
+					<label align="top" height="20" text="PERSONALIDADE" margins="{left=5}"/>
+					<textEditor align="client" field="personalidade" margins="{left=5,right=5,bottom=5}"/>
+				</rectangle>
+				<rectangle align="top" height="200" margins="{bottom=5}" color="black">
+					<label align="top" height="20" text="COMPLICAÇÕES" margins="{left=5}"/>
+					<textEditor align="client" field="complicacoes" margins="{left=5,right=5,bottom=5}"/>
+				</rectangle>
+
+			</layout>
+			<rectangle align="client" color="black">
+				<label align="top" text="HISTORIA" margins="{left=5}"/>
+				<richEdit align="client" field="background" backgroundColor="#333333" defaultFontSize="12" defaultFontColor="white" margins="{left=5,right=5,bottom=5}"/>
 			</rectangle>
 
 		</layout>
-		<rectangle align="client" color="black">
-			<label align="top" text="HISTORIA" margins="{left=5}"/>
-			<richEdit align="client" field="background" backgroundColor="#333333" defaultFontSize="12" defaultFontColor="white" margins="{left=5,right=5,bottom=5}"/>
-		</rectangle>
 	</scrollBox>
 </form>
