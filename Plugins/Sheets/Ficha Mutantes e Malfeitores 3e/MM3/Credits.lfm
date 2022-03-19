@@ -74,12 +74,16 @@
 
 	<scrollBox align="client">
 		<image left="0" top="0" width="500" height="250" style="autoFit" src="images/mm.jpg"/>
+		<image left="0" top="260" width="539" height="462" style="autoFit" src="images/mesa.png"/>
 		<image left="550" top="0" width="250" height="250" style="autoFit" src="images/RPGmeister.jpg"/>
 
 		<layout left="850" top="0" width="200" height="160">
 			<rectangle align="client" color="black" xradius="5" yradius="15" cornerType="round"/>
 			<label left="0" top="10" width="200" height="20" text="Programado por: " horzTextAlign="center"/>
 			<label left="0" top="35" width="200" height="20" text="Vinny (Ambesek)" horzTextAlign="center"/>
+			<label left="0" top="60" width="200" height="20" text="Consultor: " horzTextAlign="center"/>
+			<label left="0" top="85" width="200" height="20" text="James (valber)" horzTextAlign="center"/>
+			<label left="0" top="110" width="200" height="20" text="Will (BlackYep)" horzTextAlign="center"/>
 		</layout>
 
 		<layout left="850" top="200" width="200" height="150">
@@ -189,6 +193,7 @@
 		<label left="555" top="400" width="200" height="20" text="Conheça as Mesas:"/>
 		<button left="555" top="425" width="100" text="RPGmeister" onClick="GUI.openInBrowser('https://my.firecastrpg.com/a?a=pagRWEMesaInfo.actInfoMesa&amp;mesaid=64070');" />
 
+		<button left="660" top="425" width="100" text="Destiny's Chronicle" fontSize="10" onClick="GUI.openInBrowser('https://my.firecast.app/a?a=pagRWEMesaInfo.actInfoMesa&amp;mesaid=209065');" />
 		<!-- Combobox de exportar ficha -->
 		<button left="555" top="475" width="100" height="20" text="Exportar Ficha" >
 			<event name="onClick">
