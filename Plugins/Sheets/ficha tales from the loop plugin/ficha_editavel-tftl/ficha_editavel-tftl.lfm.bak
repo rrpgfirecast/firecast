@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmficha_editavel_tftl" formType="sheetTemplate" dataType="ficha_tftl" title="ficha_tfl_pt" align="client" theme="light">
+    <import file="1.lfm"/>
+</form>
