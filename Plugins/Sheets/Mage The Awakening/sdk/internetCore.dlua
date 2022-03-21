@@ -1,0 +1,166 @@
+﻿local objs = require("rrpgObjs.lua");
+local utils = require("rrpgUtil.lua");
+
+local lInternet = {};
+local _downloadIdGenerator = 1;
+local _downloads = {};
+local internet = lInternet;
+
+function internet.download(url, finishCallback, errorCallback, progressCallback, cacheMode)
+	local urlGetter = objs.objectFromHandle(_obj_newObject("TLuaURLGetter"));
+	
+	_downloadIdGenerator = _downloadIdGenerator + 1;
+	local idDownload = _downloadIdGenerator;
+	
+	objs.registerHandle(urlGetter.handle, urlGetter);
+	
+	urlGetter:addEventListener("OnDados",
+		function(streamObjectHandle, contentType)
+			_downloads[idDownload] = nil;	
+			local stream = utils.streamFromHandle(streamObjectHandle);
+			
+			if finishCallback ~= nil then			
+				finishCallback(stream, contentType);
+			end;
+		end);
+		
+	urlGetter:addEventListener("OnError",
+		function(errorMsg)
+			_downloads[idDownload] = nil;	
+			
+			if errorCallback ~= nil then
+				errorCallback(errorMsg);
+			end;
+		end);		
+		
+	urlGetter:addEventListener("OnProgress",
+		function(downloadedBytes, totalBytes)
+			
+			if progressCallback ~= nil then
+				local ret = progressCallback(downloadedBytes, totalBytes);
+				
+				if ret == false then
+					internet.stopDownload(idDownload);
+				end;
+			end;
+		end);		
+		
+	if type(cacheMode) == "string" then
+		_obj_setProp(urlGetter.handle, "CacheMode", cacheMode);
+	end;				
+		
+	_downloads[idDownload] = urlGetter;	
+	_obj_invoke(urlGetter.handle, "StartDownload", url);	
+	return idDownload;
+end;
+
+function internet.stopDownload(downloadId)
+	local urlGetter = _downloads[downloadId];
+	
+	if urlGetter ~= nil then
+		_obj_invoke(urlGetter.handle, "StopDownload");
+	end;
+end;
+
+local __requestsStrongReference = {};
+
+function internet.newHTTPRequest(method, url)
+	local r = objs.objectFromHandle(_obj_newObject("TLuaHTTPRequest"));
+	objs.registerHandle(r.handle, r);	
+
+	if r.props == nil then
+		r.props = {};
+	end;
+	
+	if r.eves == nil then	
+		r.eves = {};
+	end;
+	
+	if type(method) ~= "string" then
+		method = "GET";
+	end;
+	
+	function r:getUrl() return _obj_getProp(self.handle, "URL"); end;
+	function r:setUrl(v) _obj_setProp(self.handle, "URL", v); end;
+	
+	function r:getMethod() return _obj_getProp(self.handle, "HTTPMethod"); end;
+	function r:setMethod(v) _obj_setProp(self.handle, "HTTPMethod", v); end;	
+	
+	function r:setRequestHeader(header, value) _obj_invoke(self.handle, "SetRequestHeader", header, tostring(value or "")); end;
+	function r:getRequestHeader(header) return _obj_invoke(self.handle, "GetRequestHeader", header); end;
+	
+	function r:getResponseHeader(header) return _obj_invoke(self.handle, "GetResponseHeader", header); end;
+	function r:getAllResponseHeaders() return _obj_invoke(self.handle, "GetAllResponseHeaders"); end;
+	function r:getResponseText() return _obj_getProp(self.handle, "ResponseText");  end;
+	function r:getResponseStream() return utils.streamFromHandle(_obj_invokeEx(self.handle, "GetResponseStreamHandle")); end;
+	function r:getStatus() return _obj_getProp(self.handle, "Status"); end;
+	function r:getStatusText() return _obj_getProp(self.handle, "StatusText"); end;
+	
+	function r:open(openMethod, openURL)
+		self.method = openMethod;
+		self.url = openURL;
+	end;
+	
+	function r:send(body) 
+		__requestsStrongReference[self] = true; -- manter uma referência forte ate o fim da requisicao
+		local tBody = type(body);
+	
+		if tBody == "table" then
+			if body.handle == nil then
+				body = tableToStr(body);
+			end;
+		elseif body ~= nil then
+			body = tostring(body);
+		end;
+	
+		if self.__refResponseEventId == nil then
+			self.__refResponseEventId = self:addEventListener("onResponse",
+				function()
+					__requestsStrongReference[self] = nil;	 -- Remover referencia forte
+				end);
+		end;
+	
+		if self.__refOnErrorEventId == nil then
+			self.__refOnErrorEventId = self:addEventListener("onError",
+				function()
+					__requestsStrongReference[self] = nil;	 -- Remover referencia forte
+				end);
+		end;	
+	
+		_obj_invokeEx(self.handle, "Send", body);
+	end;	
+	
+	function r:abort() _obj_invoke(self.handle, "Abort"); end;
+		
+	r.props["url"] = {setter = "setUrl", getter = "getUrl", tipo = "string"};
+	r.props["method"] = {setter = "setMethod", getter = "getMethod", tipo = "string"};
+	
+	r.props["responseText"] = {getter = "getResponseText", tipo = "string"};
+	r.props["responseStream"] = {getter = "getResponseStream", tipo = "table"};	
+	r.props["status"] = {getter = "getStatus", tipo = "int"};		
+	r.props["statusText"] = {getter = "getStatusText", tipo = "string"};	
+	r.props["allResponseHeaders"] = {getter = "getAllResponseHeaders", tipo = "string"};	
+	
+	r.eves["onError"] = "errorMsg";
+	r.eves["onResponse"] = "";
+	r.eves["onSendProgress"] = "currentBytes, maxBytes";
+	r.eves["onReceiveProgress"] = "currentBytes, maxBytes";	
+	
+	r.method = method;
+	
+	if url ~= nil then
+		r.url = url;
+	end;
+	
+	return r;
+end;
+
+function internet.httpEncode(str)
+	return _internet_HTTPEncode(str);
+end;
+
+function internet.httpDecode(str)
+	return _internet_HTTPDecode(str);
+end;
+
+return lInternet;
