@@ -1,0 +1,1310 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmFicha_de_Mago1_svg" align="client" theme="dark" margins="{top=1}">
+    <style>#frmFicha_de_Mago1_svg path {color: black; strokeColor: black; mode: stretch;} &#xD;
+#frmFicha_de_Mago1_svg label {fontColor: black; textTrimming: none; wordWrap: false; autoSize: true;}</style>
+    <scrollBox align="client">
+        <rectangle width="1206" height="1566" color="white">&#xD;
+            <image left="0" top="0" width="1206" height="1566" src="images/1.png" style="stretch" optimize="true" compilerOrder="0"/>&#xD;
+            <layout left="271" top="163" width="210" height="31" compilerOrder="1">
+                <edit transparent="true" fontSize="19" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="210" height="32" field="name" compilerOrder="2"/>
+            </layout>&#xD;
+            <layout left="550" top="163" width="266" height="31" compilerOrder="7">
+                <edit transparent="true" fontSize="19" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="266" height="32" field="Virtue" compilerOrder="8"/>
+            </layout>&#xD;
+            <layout left="865" top="163" width="225" height="31" compilerOrder="13">
+                <edit transparent="true" fontSize="19" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="225" height="32" field="path" compilerOrder="14"/>
+            </layout>&#xD;
+            <layout left="183" top="195" width="298" height="31" compilerOrder="3">
+                <edit transparent="true" fontSize="19" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="298" height="32" field="player" compilerOrder="4"/>
+            </layout>&#xD;
+            <layout left="533" top="195" width="282" height="31" compilerOrder="9">
+                <edit transparent="true" fontSize="19" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="282" height="32" field="Vice" compilerOrder="10"/>
+            </layout>&#xD;
+            <layout left="882" top="195" width="208" height="31" compilerOrder="15">
+                <edit transparent="true" fontSize="19" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="208" height="32" field="order" compilerOrder="16"/>
+            </layout>&#xD;
+            <layout left="218" top="227" width="263" height="31" compilerOrder="5">
+                <edit transparent="true" fontSize="19" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="263" height="32" field="chronicle" compilerOrder="6"/>
+            </layout>&#xD;
+            <layout left="564" top="227" width="251" height="31" compilerOrder="11">
+                <edit transparent="true" fontSize="19" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="251" height="32" field="concept" compilerOrder="12"/>
+            </layout>&#xD;
+            <layout left="888" top="227" width="202" height="31" compilerOrder="17">
+                <edit transparent="true" fontSize="19" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="202" height="32" field="legacy" compilerOrder="18"/>
+            </layout>&#xD;
+            <layout left="410" top="318" width="19" height="23" compilerOrder="161">
+                <checkBox left="0" top="0" width="19" height="24" field="dot1" compilerOrder="162"/>
+            </layout>&#xD;
+            <layout left="426" top="318" width="20" height="23" compilerOrder="163">
+                <checkBox left="0" top="0" width="20" height="24" field="dot2" compilerOrder="164"/>
+            </layout>&#xD;
+            <layout left="444" top="318" width="20" height="23" compilerOrder="165">
+                <checkBox left="0" top="0" width="20" height="24" field="dot3" compilerOrder="166"/>
+            </layout>&#xD;
+            <layout left="460" top="318" width="20" height="23" compilerOrder="167">
+                <checkBox left="0" top="0" width="20" height="24" field="dot4" compilerOrder="168"/>
+            </layout>&#xD;
+            <layout left="478" top="318" width="20" height="23" compilerOrder="169">
+                <checkBox left="0" top="0" width="20" height="24" field="dot5" compilerOrder="170"/>
+            </layout>&#xD;
+            <layout left="702" top="318" width="19" height="23" compilerOrder="191">
+                <checkBox left="0" top="0" width="19" height="24" field="dot25" compilerOrder="192"/>
+            </layout>&#xD;
+            <layout left="718" top="318" width="20" height="23" compilerOrder="193">
+                <checkBox left="0" top="0" width="20" height="24" field="dot26" compilerOrder="194"/>
+            </layout>&#xD;
+            <layout left="736" top="318" width="20" height="23" compilerOrder="195">
+                <checkBox left="0" top="0" width="20" height="24" field="dot27" compilerOrder="196"/>
+            </layout>&#xD;
+            <layout left="752" top="318" width="20" height="23" compilerOrder="197">
+                <checkBox left="0" top="0" width="20" height="24" field="dot28" compilerOrder="198"/>
+            </layout>&#xD;
+            <layout left="770" top="318" width="20" height="23" compilerOrder="199">
+                <checkBox left="0" top="0" width="20" height="24" field="dot29" compilerOrder="200"/>
+            </layout>&#xD;
+            <layout left="998" top="318" width="19" height="23" compilerOrder="221">
+                <checkBox left="0" top="0" width="19" height="24" field="dot49" compilerOrder="222"/>
+            </layout>&#xD;
+            <layout left="1014" top="318" width="20" height="23" compilerOrder="223">
+                <checkBox left="0" top="0" width="20" height="24" field="dot50" compilerOrder="224"/>
+            </layout>&#xD;
+            <layout left="1032" top="318" width="20" height="23" compilerOrder="225">
+                <checkBox left="0" top="0" width="20" height="24" field="dot51" compilerOrder="226"/>
+            </layout>&#xD;
+            <layout left="1048" top="318" width="20" height="23" compilerOrder="227">
+                <checkBox left="0" top="0" width="20" height="24" field="dot52" compilerOrder="228"/>
+            </layout>&#xD;
+            <layout left="1066" top="318" width="20" height="23" compilerOrder="229">
+                <checkBox left="0" top="0" width="20" height="24" field="dot53" compilerOrder="230"/>
+            </layout>&#xD;
+            <layout left="410" top="362" width="20" height="23" compilerOrder="171">
+                <checkBox left="0" top="0" width="20" height="24" field="dot9" compilerOrder="172"/>
+            </layout>&#xD;
+            <layout left="426" top="362" width="20" height="23" compilerOrder="173">
+                <checkBox left="0" top="0" width="20" height="24" field="dot10" compilerOrder="174"/>
+            </layout>&#xD;
+            <layout left="444" top="362" width="20" height="23" compilerOrder="175">
+                <checkBox left="0" top="0" width="20" height="24" field="dot11" compilerOrder="176"/>
+            </layout>&#xD;
+            <layout left="460" top="362" width="20" height="23" compilerOrder="177">
+                <checkBox left="0" top="0" width="20" height="24" field="dot12" compilerOrder="178"/>
+            </layout>&#xD;
+            <layout left="478" top="362" width="20" height="23" compilerOrder="179">
+                <checkBox left="0" top="0" width="20" height="24" field="dot13" compilerOrder="180"/>
+            </layout>&#xD;
+            <layout left="702" top="362" width="19" height="23" compilerOrder="201">
+                <checkBox left="0" top="0" width="19" height="24" field="dot33" compilerOrder="202"/>
+            </layout>&#xD;
+            <layout left="718" top="362" width="20" height="23" compilerOrder="203">
+                <checkBox left="0" top="0" width="20" height="24" field="dot34" compilerOrder="204"/>
+            </layout>&#xD;
+            <layout left="736" top="362" width="20" height="23" compilerOrder="205">
+                <checkBox left="0" top="0" width="20" height="24" field="dot35" compilerOrder="206"/>
+            </layout>&#xD;
+            <layout left="752" top="362" width="20" height="23" compilerOrder="207">
+                <checkBox left="0" top="0" width="20" height="24" field="dot36" compilerOrder="208"/>
+            </layout>&#xD;
+            <layout left="770" top="362" width="20" height="23" compilerOrder="209">
+                <checkBox left="0" top="0" width="20" height="24" field="dot37" compilerOrder="210"/>
+            </layout>&#xD;
+            <layout left="998" top="362" width="19" height="23" compilerOrder="231">
+                <checkBox left="0" top="0" width="19" height="24" field="dot57" compilerOrder="232"/>
+            </layout>&#xD;
+            <layout left="1014" top="362" width="20" height="23" compilerOrder="233">
+                <checkBox left="0" top="0" width="20" height="24" field="dot58" compilerOrder="234"/>
+            </layout>&#xD;
+            <layout left="1032" top="362" width="20" height="23" compilerOrder="235">
+                <checkBox left="0" top="0" width="20" height="24" field="dot59" compilerOrder="236"/>
+            </layout>&#xD;
+            <layout left="1048" top="362" width="20" height="23" compilerOrder="237">
+                <checkBox left="0" top="0" width="20" height="24" field="dot60" compilerOrder="238"/>
+            </layout>&#xD;
+            <layout left="1066" top="362" width="20" height="23" compilerOrder="239">
+                <checkBox left="0" top="0" width="20" height="24" field="dot61" compilerOrder="240"/>
+            </layout>&#xD;
+            <layout left="410" top="410" width="20" height="23" compilerOrder="181">
+                <checkBox left="0" top="0" width="20" height="24" field="dot17" compilerOrder="182"/>
+            </layout>&#xD;
+            <layout left="426" top="410" width="20" height="23" compilerOrder="183">
+                <checkBox left="0" top="0" width="20" height="24" field="dot18" compilerOrder="184"/>
+            </layout>&#xD;
+            <layout left="444" top="410" width="20" height="23" compilerOrder="185">
+                <checkBox left="0" top="0" width="20" height="24" field="dot19" compilerOrder="186"/>
+            </layout>&#xD;
+            <layout left="460" top="410" width="20" height="23" compilerOrder="187">
+                <checkBox left="0" top="0" width="20" height="24" field="dot20" compilerOrder="188"/>
+            </layout>&#xD;
+            <layout left="478" top="410" width="20" height="23" compilerOrder="189">
+                <checkBox left="0" top="0" width="20" height="24" field="dot21" compilerOrder="190"/>
+            </layout>&#xD;
+            <layout left="702" top="410" width="19" height="23" compilerOrder="211">
+                <checkBox left="0" top="0" width="19" height="24" field="dot41" compilerOrder="212"/>
+            </layout>&#xD;
+            <layout left="718" top="410" width="20" height="23" compilerOrder="213">
+                <checkBox left="0" top="0" width="20" height="24" field="dot42" compilerOrder="214"/>
+            </layout>&#xD;
+            <layout left="736" top="410" width="20" height="23" compilerOrder="215">
+                <checkBox left="0" top="0" width="20" height="24" field="dot43" compilerOrder="216"/>
+            </layout>&#xD;
+            <layout left="752" top="410" width="20" height="23" compilerOrder="217">
+                <checkBox left="0" top="0" width="20" height="24" field="dot44" compilerOrder="218"/>
+            </layout>&#xD;
+            <layout left="770" top="410" width="20" height="23" compilerOrder="219">
+                <checkBox left="0" top="0" width="20" height="24" field="dot45" compilerOrder="220"/>
+            </layout>&#xD;
+            <layout left="998" top="410" width="19" height="23" compilerOrder="241">
+                <checkBox left="0" top="0" width="19" height="24" field="dot65" compilerOrder="242"/>
+            </layout>&#xD;
+            <layout left="1014" top="410" width="20" height="23" compilerOrder="243">
+                <checkBox left="0" top="0" width="20" height="24" field="dot66" compilerOrder="244"/>
+            </layout>&#xD;
+            <layout left="1032" top="410" width="20" height="23" compilerOrder="245">
+                <checkBox left="0" top="0" width="20" height="24" field="dot67" compilerOrder="246"/>
+            </layout>&#xD;
+            <layout left="1048" top="410" width="20" height="23" compilerOrder="247">
+                <checkBox left="0" top="0" width="20" height="24" field="dot68" compilerOrder="248"/>
+            </layout>&#xD;
+            <layout left="1066" top="410" width="20" height="23" compilerOrder="249">
+                <checkBox left="0" top="0" width="20" height="24" field="dot69" compilerOrder="250"/>
+            </layout>&#xD;
+            <layout left="517" top="556" width="145" height="24" compilerOrder="67">
+                <edit transparent="true" fontSize="15.8" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="145" height="25" field="arcana1" compilerOrder="68"/>
+            </layout>&#xD;
+            <layout left="660" top="559" width="19" height="23" compilerOrder="539">
+                <checkBox left="0" top="0" width="19" height="24" field="dot265" compilerOrder="540"/>
+            </layout>&#xD;
+            <layout left="677" top="559" width="20" height="23" compilerOrder="541">
+                <checkBox left="0" top="0" width="20" height="24" field="dot266" compilerOrder="542"/>
+            </layout>&#xD;
+            <layout left="694" top="559" width="20" height="23" compilerOrder="543">
+                <checkBox left="0" top="0" width="20" height="24" field="dot267" compilerOrder="544"/>
+            </layout>&#xD;
+            <layout left="711" top="559" width="20" height="23" compilerOrder="545">
+                <checkBox left="0" top="0" width="20" height="24" field="dot268" compilerOrder="546"/>
+            </layout>&#xD;
+            <layout left="728" top="559" width="20" height="23" compilerOrder="547">
+                <checkBox left="0" top="0" width="20" height="24" field="dot269" compilerOrder="548"/>
+            </layout>&#xD;
+            <layout left="827" top="559" width="26" height="29" compilerOrder="719">
+                <checkBox left="0" top="0" width="26" height="30" field="hdot1" compilerOrder="720"/>
+            </layout>&#xD;
+            <layout left="848" top="559" width="26" height="29" compilerOrder="721">
+                <checkBox left="0" top="0" width="26" height="30" field="hdot2" compilerOrder="722"/>
+            </layout>&#xD;
+            <layout left="869" top="559" width="26" height="29" compilerOrder="723">
+                <checkBox left="0" top="0" width="26" height="30" field="hdot3" compilerOrder="724"/>
+            </layout>&#xD;
+            <layout left="890" top="559" width="26" height="29" compilerOrder="725">
+                <checkBox left="0" top="0" width="26" height="30" field="hdot4" compilerOrder="726"/>
+            </layout>&#xD;
+            <layout left="911" top="559" width="26" height="29" compilerOrder="727">
+                <checkBox left="0" top="0" width="26" height="30" field="hdot5" compilerOrder="728"/>
+            </layout>&#xD;
+            <layout left="932" top="559" width="26" height="29" compilerOrder="729">
+                <checkBox left="0" top="0" width="26" height="30" field="hdot6" compilerOrder="730"/>
+            </layout>&#xD;
+            <layout left="952" top="559" width="26" height="29" compilerOrder="731">
+                <checkBox left="0" top="0" width="26" height="30" field="hdot7" compilerOrder="732"/>
+            </layout>&#xD;
+            <layout left="974" top="559" width="26" height="29" compilerOrder="733">
+                <checkBox left="0" top="0" width="26" height="30" field="hdot8" compilerOrder="734"/>
+            </layout>&#xD;
+            <layout left="994" top="559" width="26" height="29" compilerOrder="735">
+                <checkBox left="0" top="0" width="26" height="30" field="hdot9" compilerOrder="736"/>
+            </layout>&#xD;
+            <layout left="1016" top="559" width="26" height="29" compilerOrder="737">
+                <checkBox left="0" top="0" width="26" height="30" field="hdot10" compilerOrder="738"/>
+            </layout>&#xD;
+            <layout left="1036" top="559" width="26" height="29" compilerOrder="739">
+                <checkBox left="0" top="0" width="26" height="30" field="hdot11" compilerOrder="740"/>
+            </layout>&#xD;
+            <layout left="1057" top="559" width="26" height="29" compilerOrder="741">
+                <checkBox left="0" top="0" width="26" height="30" field="hdot12" compilerOrder="742"/>
+            </layout>&#xD;
+            <layout left="244" top="582" width="100" height="24" compilerOrder="19">
+                <edit transparent="true" fontSize="15.8" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="100" height="25" field="abilities1" compilerOrder="20"/>
+            </layout>&#xD;
+            <layout left="499" top="582" width="163" height="24" compilerOrder="69">
+                <edit transparent="true" fontSize="15.8" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="163" height="25" field="arcana2" compilerOrder="70"/>
+            </layout>&#xD;
+            <layout left="118" top="585" width="18" height="19" compilerOrder="491">
+                <checkBox left="0" top="0" width="18" height="20" field="rotecheck1" compilerOrder="492"/>
+            </layout>&#xD;
+            <layout left="342" top="585" width="20" height="23" compilerOrder="251">
+                <checkBox left="0" top="0" width="20" height="24" field="dot73" compilerOrder="252"/>
+            </layout>&#xD;
+            <layout left="359" top="585" width="20" height="23" compilerOrder="253">
+                <checkBox left="0" top="0" width="20" height="24" field="dot74" compilerOrder="254"/>
+            </layout>&#xD;
+            <layout left="376" top="585" width="20" height="23" compilerOrder="255">
+                <checkBox left="0" top="0" width="20" height="24" field="dot75" compilerOrder="256"/>
+            </layout>&#xD;
+            <layout left="393" top="585" width="20" height="23" compilerOrder="257">
+                <checkBox left="0" top="0" width="20" height="24" field="dot76" compilerOrder="258"/>
+            </layout>&#xD;
+            <layout left="410" top="585" width="20" height="23" compilerOrder="259">
+                <checkBox left="0" top="0" width="20" height="24" field="dot77" compilerOrder="260"/>
+            </layout>&#xD;
+            <layout left="660" top="585" width="19" height="23" compilerOrder="549">
+                <checkBox left="0" top="0" width="19" height="24" field="dot273" compilerOrder="550"/>
+            </layout>&#xD;
+            <layout left="677" top="585" width="20" height="23" compilerOrder="551">
+                <checkBox left="0" top="0" width="20" height="24" field="dot274" compilerOrder="552"/>
+            </layout>&#xD;
+            <layout left="694" top="585" width="20" height="23" compilerOrder="553">
+                <checkBox left="0" top="0" width="20" height="24" field="dot275" compilerOrder="554"/>
+            </layout>&#xD;
+            <layout left="711" top="585" width="20" height="23" compilerOrder="555">
+                <checkBox left="0" top="0" width="20" height="24" field="dot276" compilerOrder="556"/>
+            </layout>&#xD;
+            <layout left="728" top="585" width="20" height="23" compilerOrder="557">
+                <checkBox left="0" top="0" width="20" height="24" field="dot277" compilerOrder="558"/>
+            </layout>&#xD;
+            <layout left="833" top="587" width="16" height="17" compilerOrder="843">
+                <edit transparent="true" fontSize="10.5" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="16" height="18" field="hbox1" compilerOrder="844"/>
+            </layout>&#xD;
+            <layout left="854" top="587" width="16" height="17" compilerOrder="845">
+                <edit transparent="true" fontSize="10.5" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="16" height="18" field="hbox2" compilerOrder="846"/>
+            </layout>&#xD;
+            <layout left="875" top="587" width="16" height="17" compilerOrder="847">
+                <edit transparent="true" fontSize="10.5" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="16" height="18" field="hbox3" compilerOrder="848"/>
+            </layout>&#xD;
+            <layout left="896" top="587" width="16" height="17" compilerOrder="849">
+                <edit transparent="true" fontSize="10.5" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="16" height="18" field="hbox4" compilerOrder="850"/>
+            </layout>&#xD;
+            <layout left="917" top="587" width="16" height="17" compilerOrder="851">
+                <edit transparent="true" fontSize="10.5" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="16" height="18" field="hbox5" compilerOrder="852"/>
+            </layout>&#xD;
+            <layout left="938" top="587" width="16" height="17" compilerOrder="853">
+                <edit transparent="true" fontSize="10.5" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="16" height="18" field="hbox6" compilerOrder="854"/>
+            </layout>&#xD;
+            <layout left="980" top="587" width="16" height="17" compilerOrder="857">
+                <edit transparent="true" fontSize="10.5" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="16" height="18" field="hbox8" compilerOrder="858"/>
+            </layout>&#xD;
+            <layout left="1000" top="587" width="16" height="17" compilerOrder="859">
+                <edit transparent="true" fontSize="10.5" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="16" height="18" field="hbox9" compilerOrder="860"/>
+            </layout>&#xD;
+            <layout left="1021" top="587" width="16" height="17" compilerOrder="861">
+                <edit transparent="true" fontSize="10.5" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="16" height="18" field="hbox10" compilerOrder="862"/>
+            </layout>&#xD;
+            <layout left="1042" top="587" width="16" height="17" compilerOrder="863">
+                <edit transparent="true" fontSize="10.5" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="16" height="18" field="hbox11" compilerOrder="864"/>
+            </layout>&#xD;
+            <layout left="1063" top="587" width="16" height="17" compilerOrder="865">
+                <edit transparent="true" fontSize="10.5" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="16" height="18" field="hbox12" compilerOrder="866"/>
+            </layout>&#xD;
+            <layout left="959" top="588" width="16" height="17" compilerOrder="855">
+                <edit transparent="true" fontSize="10.5" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="16" height="18" field="hbox7" compilerOrder="856"/>
+            </layout>&#xD;
+            <layout left="240" top="608" width="104" height="24" compilerOrder="21">
+                <edit transparent="true" fontSize="15.8" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="104" height="25" field="abilities2" compilerOrder="22"/>
+            </layout>&#xD;
+            <layout left="519" top="608" width="143" height="24" compilerOrder="71">
+                <edit transparent="true" fontSize="15.8" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="143" height="25" field="arcana3" compilerOrder="72"/>
+            </layout>&#xD;
+            <layout left="118" top="611" width="18" height="19" compilerOrder="493">
+                <checkBox left="0" top="0" width="18" height="20" field="rotecheck2" compilerOrder="494"/>
+            </layout>&#xD;
+            <layout left="342" top="611" width="19" height="23" compilerOrder="261">
+                <checkBox left="0" top="0" width="19" height="24" field="dot81" compilerOrder="262"/>
+            </layout>&#xD;
+            <layout left="359" top="611" width="20" height="23" compilerOrder="263">
+                <checkBox left="0" top="0" width="20" height="24" field="dot82" compilerOrder="264"/>
+            </layout>&#xD;
+            <layout left="376" top="611" width="20" height="23" compilerOrder="265">
+                <checkBox left="0" top="0" width="20" height="24" field="dot83" compilerOrder="266"/>
+            </layout>&#xD;
+            <layout left="393" top="611" width="20" height="23" compilerOrder="267">
+                <checkBox left="0" top="0" width="20" height="24" field="dot84" compilerOrder="268"/>
+            </layout>&#xD;
+            <layout left="410" top="611" width="20" height="23" compilerOrder="269">
+                <checkBox left="0" top="0" width="20" height="24" field="dot85" compilerOrder="270"/>
+            </layout>&#xD;
+            <layout left="660" top="611" width="19" height="23" compilerOrder="559">
+                <checkBox left="0" top="0" width="19" height="24" field="dot281" compilerOrder="560"/>
+            </layout>&#xD;
+            <layout left="677" top="611" width="20" height="23" compilerOrder="561">
+                <checkBox left="0" top="0" width="20" height="24" field="dot282" compilerOrder="562"/>
+            </layout>&#xD;
+            <layout left="694" top="611" width="20" height="23" compilerOrder="563">
+                <checkBox left="0" top="0" width="20" height="24" field="dot283" compilerOrder="564"/>
+            </layout>&#xD;
+            <layout left="711" top="611" width="20" height="23" compilerOrder="565">
+                <checkBox left="0" top="0" width="20" height="24" field="dot284" compilerOrder="566"/>
+            </layout>&#xD;
+            <layout left="728" top="611" width="20" height="23" compilerOrder="567">
+                <checkBox left="0" top="0" width="20" height="24" field="dot285" compilerOrder="568"/>
+            </layout>&#xD;
+            <layout left="198" top="634" width="146" height="24" compilerOrder="23">
+                <edit transparent="true" fontSize="15.8" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="146" height="25" field="abilities3" compilerOrder="24"/>
+            </layout>&#xD;
+            <layout left="496" top="634" width="166" height="24" compilerOrder="73">
+                <edit transparent="true" fontSize="15.8" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="166" height="25" field="arcana4" compilerOrder="74"/>
+            </layout>&#xD;
+            <layout left="118" top="637" width="18" height="19" compilerOrder="495">
+                <checkBox left="0" top="0" width="18" height="20" field="rotecheck3" compilerOrder="496"/>
+            </layout>&#xD;
+            <layout left="342" top="637" width="19" height="23" compilerOrder="271">
+                <checkBox left="0" top="0" width="19" height="24" field="dot89" compilerOrder="272"/>
+            </layout>&#xD;
+            <layout left="359" top="637" width="20" height="23" compilerOrder="273">
+                <checkBox left="0" top="0" width="20" height="24" field="dot90" compilerOrder="274"/>
+            </layout>&#xD;
+            <layout left="376" top="637" width="20" height="23" compilerOrder="275">
+                <checkBox left="0" top="0" width="20" height="24" field="dot91" compilerOrder="276"/>
+            </layout>&#xD;
+            <layout left="393" top="637" width="20" height="23" compilerOrder="277">
+                <checkBox left="0" top="0" width="20" height="24" field="dot92" compilerOrder="278"/>
+            </layout>&#xD;
+            <layout left="410" top="637" width="20" height="23" compilerOrder="279">
+                <checkBox left="0" top="0" width="20" height="24" field="dot93" compilerOrder="280"/>
+            </layout>&#xD;
+            <layout left="660" top="637" width="19" height="23" compilerOrder="569">
+                <checkBox left="0" top="0" width="19" height="24" field="dot289" compilerOrder="570"/>
+            </layout>&#xD;
+            <layout left="677" top="637" width="20" height="23" compilerOrder="571">
+                <checkBox left="0" top="0" width="20" height="24" field="dot290" compilerOrder="572"/>
+            </layout>&#xD;
+            <layout left="694" top="637" width="20" height="23" compilerOrder="573">
+                <checkBox left="0" top="0" width="20" height="24" field="dot291" compilerOrder="574"/>
+            </layout>&#xD;
+            <layout left="711" top="637" width="20" height="23" compilerOrder="575">
+                <checkBox left="0" top="0" width="20" height="24" field="dot292" compilerOrder="576"/>
+            </layout>&#xD;
+            <layout left="728" top="637" width="20" height="23" compilerOrder="577">
+                <checkBox left="0" top="0" width="20" height="24" field="dot293" compilerOrder="578"/>
+            </layout>&#xD;
+            <layout left="850" top="651" width="26" height="29" compilerOrder="743">
+                <checkBox left="0" top="0" width="26" height="30" field="willdot1" compilerOrder="744"/>
+            </layout>&#xD;
+            <layout left="871" top="651" width="26" height="29" compilerOrder="745">
+                <checkBox left="0" top="0" width="26" height="30" field="willdot2" compilerOrder="746"/>
+            </layout>&#xD;
+            <layout left="892" top="651" width="26" height="29" compilerOrder="747">
+                <checkBox left="0" top="0" width="26" height="30" field="willdot3" compilerOrder="748"/>
+            </layout>&#xD;
+            <layout left="913" top="651" width="26" height="29" compilerOrder="749">
+                <checkBox left="0" top="0" width="26" height="30" field="willdot4" compilerOrder="750"/>
+            </layout>&#xD;
+            <layout left="934" top="651" width="26" height="29" compilerOrder="751">
+                <checkBox left="0" top="0" width="26" height="30" field="willdot5" compilerOrder="752"/>
+            </layout>&#xD;
+            <layout left="955" top="651" width="26" height="29" compilerOrder="753">
+                <checkBox left="0" top="0" width="26" height="30" field="willdot6" compilerOrder="754"/>
+            </layout>&#xD;
+            <layout left="976" top="651" width="26" height="29" compilerOrder="755">
+                <checkBox left="0" top="0" width="26" height="30" field="willdot7" compilerOrder="756"/>
+            </layout>&#xD;
+            <layout left="996" top="651" width="26" height="29" compilerOrder="757">
+                <checkBox left="0" top="0" width="26" height="30" field="willdot8" compilerOrder="758"/>
+            </layout>&#xD;
+            <layout left="1018" top="651" width="26" height="29" compilerOrder="759">
+                <checkBox left="0" top="0" width="26" height="30" field="willdot9" compilerOrder="760"/>
+            </layout>&#xD;
+            <layout left="1038" top="651" width="26" height="29" compilerOrder="761">
+                <checkBox left="0" top="0" width="26" height="30" field="willdot10" compilerOrder="762"/>
+            </layout>&#xD;
+            <layout left="264" top="660" width="80" height="24" compilerOrder="25">
+                <edit transparent="true" fontSize="15.8" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="80" height="25" field="abilities4" compilerOrder="26"/>
+            </layout>&#xD;
+            <layout left="524" top="660" width="138" height="24" compilerOrder="75">
+                <edit transparent="true" fontSize="15.8" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="138" height="25" field="arcana5" compilerOrder="76"/>
+            </layout>&#xD;
+            <layout left="118" top="663" width="18" height="19" compilerOrder="497">
+                <checkBox left="0" top="0" width="18" height="20" field="rotecheck4" compilerOrder="498"/>
+            </layout>&#xD;
+            <layout left="342" top="663" width="20" height="23" compilerOrder="281">
+                <checkBox left="0" top="0" width="20" height="24" field="dot97" compilerOrder="282"/>
+            </layout>&#xD;
+            <layout left="359" top="663" width="20" height="23" compilerOrder="283">
+                <checkBox left="0" top="0" width="20" height="24" field="dot98" compilerOrder="284"/>
+            </layout>&#xD;
+            <layout left="376" top="663" width="20" height="23" compilerOrder="285">
+                <checkBox left="0" top="0" width="20" height="24" field="dot99" compilerOrder="286"/>
+            </layout>&#xD;
+            <layout left="393" top="663" width="20" height="23" compilerOrder="287">
+                <checkBox left="0" top="0" width="20" height="24" field="dot100" compilerOrder="288"/>
+            </layout>&#xD;
+            <layout left="410" top="663" width="20" height="23" compilerOrder="289">
+                <checkBox left="0" top="0" width="20" height="24" field="dot101" compilerOrder="290"/>
+            </layout>&#xD;
+            <layout left="660" top="663" width="19" height="23" compilerOrder="579">
+                <checkBox left="0" top="0" width="19" height="24" field="dot297" compilerOrder="580"/>
+            </layout>&#xD;
+            <layout left="677" top="663" width="20" height="23" compilerOrder="581">
+                <checkBox left="0" top="0" width="20" height="24" field="dot298" compilerOrder="582"/>
+            </layout>&#xD;
+            <layout left="694" top="663" width="20" height="23" compilerOrder="583">
+                <checkBox left="0" top="0" width="20" height="24" field="dot299" compilerOrder="584"/>
+            </layout>&#xD;
+            <layout left="711" top="663" width="20" height="23" compilerOrder="585">
+                <checkBox left="0" top="0" width="20" height="24" field="dot300" compilerOrder="586"/>
+            </layout>&#xD;
+            <layout left="728" top="663" width="20" height="23" compilerOrder="587">
+                <checkBox left="0" top="0" width="20" height="24" field="dot301" compilerOrder="588"/>
+            </layout>&#xD;
+            <layout left="855" top="679" width="19" height="20" compilerOrder="763">
+                <checkBox left="0" top="0" width="19" height="21" field="check1" compilerOrder="764"/>
+            </layout>&#xD;
+            <layout left="876" top="679" width="19" height="20" compilerOrder="765">
+                <checkBox left="0" top="0" width="19" height="21" field="check2" compilerOrder="766"/>
+            </layout>&#xD;
+            <layout left="896" top="679" width="19" height="20" compilerOrder="767">
+                <checkBox left="0" top="0" width="19" height="21" field="check3" compilerOrder="768"/>
+            </layout>&#xD;
+            <layout left="918" top="679" width="19" height="20" compilerOrder="769">
+                <checkBox left="0" top="0" width="19" height="21" field="check4" compilerOrder="770"/>
+            </layout>&#xD;
+            <layout left="938" top="679" width="19" height="20" compilerOrder="771">
+                <checkBox left="0" top="0" width="19" height="21" field="check5" compilerOrder="772"/>
+            </layout>&#xD;
+            <layout left="959" top="679" width="19" height="20" compilerOrder="773">
+                <checkBox left="0" top="0" width="19" height="21" field="check6" compilerOrder="774"/>
+            </layout>&#xD;
+            <layout left="980" top="679" width="19" height="20" compilerOrder="775">
+                <checkBox left="0" top="0" width="19" height="21" field="check7" compilerOrder="776"/>
+            </layout>&#xD;
+            <layout left="1001" top="679" width="19" height="20" compilerOrder="777">
+                <checkBox left="0" top="0" width="19" height="21" field="check8" compilerOrder="778"/>
+            </layout>&#xD;
+            <layout left="1022" top="679" width="19" height="20" compilerOrder="779">
+                <checkBox left="0" top="0" width="19" height="21" field="check9" compilerOrder="780"/>
+            </layout>&#xD;
+            <layout left="1042" top="679" width="19" height="20" compilerOrder="781">
+                <checkBox left="0" top="0" width="19" height="21" field="check10" compilerOrder="782"/>
+            </layout>&#xD;
+            <layout left="230" top="686" width="114" height="24" compilerOrder="27">
+                <edit transparent="true" fontSize="15.8" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="114" height="25" field="abilities5" compilerOrder="28"/>
+            </layout>&#xD;
+            <layout left="512" top="686" width="150" height="24" compilerOrder="77">
+                <edit transparent="true" fontSize="15.8" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="150" height="25" field="arcana6" compilerOrder="78"/>
+            </layout>&#xD;
+            <layout left="118" top="689" width="18" height="19" compilerOrder="499">
+                <checkBox left="0" top="0" width="18" height="20" field="rotecheck5" compilerOrder="500"/>
+            </layout>&#xD;
+            <layout left="342" top="689" width="20" height="23" compilerOrder="291">
+                <checkBox left="0" top="0" width="20" height="24" field="dot105" compilerOrder="292"/>
+            </layout>&#xD;
+            <layout left="359" top="689" width="20" height="23" compilerOrder="293">
+                <checkBox left="0" top="0" width="20" height="24" field="dot106" compilerOrder="294"/>
+            </layout>&#xD;
+            <layout left="376" top="689" width="20" height="23" compilerOrder="295">
+                <checkBox left="0" top="0" width="20" height="24" field="dot107" compilerOrder="296"/>
+            </layout>&#xD;
+            <layout left="393" top="689" width="20" height="23" compilerOrder="297">
+                <checkBox left="0" top="0" width="20" height="24" field="dot108" compilerOrder="298"/>
+            </layout>&#xD;
+            <layout left="410" top="689" width="20" height="23" compilerOrder="299">
+                <checkBox left="0" top="0" width="20" height="24" field="dot109" compilerOrder="300"/>
+            </layout>&#xD;
+            <layout left="660" top="689" width="19" height="23" compilerOrder="589">
+                <checkBox left="0" top="0" width="19" height="24" field="dot305" compilerOrder="590"/>
+            </layout>&#xD;
+            <layout left="677" top="689" width="20" height="23" compilerOrder="591">
+                <checkBox left="0" top="0" width="20" height="24" field="dot306" compilerOrder="592"/>
+            </layout>&#xD;
+            <layout left="694" top="689" width="20" height="23" compilerOrder="593">
+                <checkBox left="0" top="0" width="20" height="24" field="dot307" compilerOrder="594"/>
+            </layout>&#xD;
+            <layout left="711" top="689" width="20" height="23" compilerOrder="595">
+                <checkBox left="0" top="0" width="20" height="24" field="dot308" compilerOrder="596"/>
+            </layout>&#xD;
+            <layout left="728" top="689" width="20" height="23" compilerOrder="597">
+                <checkBox left="0" top="0" width="20" height="24" field="dot309" compilerOrder="598"/>
+            </layout>&#xD;
+            <layout left="205" top="712" width="139" height="24" compilerOrder="29">
+                <edit transparent="true" fontSize="15.8" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="139" height="25" field="abilities6" compilerOrder="30"/>
+            </layout>&#xD;
+            <layout left="518" top="712" width="144" height="24" compilerOrder="79">
+                <edit transparent="true" fontSize="15.8" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="144" height="25" field="arcana7" compilerOrder="80"/>
+            </layout>&#xD;
+            <layout left="118" top="715" width="18" height="19" compilerOrder="501">
+                <checkBox left="0" top="0" width="18" height="20" field="rotecheck6" compilerOrder="502"/>
+            </layout>&#xD;
+            <layout left="342" top="715" width="20" height="23" compilerOrder="301">
+                <checkBox left="0" top="0" width="20" height="24" field="dot113" compilerOrder="302"/>
+            </layout>&#xD;
+            <layout left="359" top="715" width="20" height="23" compilerOrder="303">
+                <checkBox left="0" top="0" width="20" height="24" field="dot114" compilerOrder="304"/>
+            </layout>&#xD;
+            <layout left="376" top="715" width="20" height="23" compilerOrder="305">
+                <checkBox left="0" top="0" width="20" height="24" field="dot115" compilerOrder="306"/>
+            </layout>&#xD;
+            <layout left="393" top="715" width="20" height="23" compilerOrder="307">
+                <checkBox left="0" top="0" width="20" height="24" field="dot116" compilerOrder="308"/>
+            </layout>&#xD;
+            <layout left="410" top="715" width="20" height="23" compilerOrder="309">
+                <checkBox left="0" top="0" width="20" height="24" field="dot117" compilerOrder="310"/>
+            </layout>&#xD;
+            <layout left="660" top="715" width="19" height="23" compilerOrder="599">
+                <checkBox left="0" top="0" width="19" height="24" field="dot313" compilerOrder="600"/>
+            </layout>&#xD;
+            <layout left="677" top="715" width="20" height="23" compilerOrder="601">
+                <checkBox left="0" top="0" width="20" height="24" field="dot314" compilerOrder="602"/>
+            </layout>&#xD;
+            <layout left="694" top="715" width="20" height="23" compilerOrder="603">
+                <checkBox left="0" top="0" width="20" height="24" field="dot315" compilerOrder="604"/>
+            </layout>&#xD;
+            <layout left="711" top="715" width="20" height="23" compilerOrder="605">
+                <checkBox left="0" top="0" width="20" height="24" field="dot316" compilerOrder="606"/>
+            </layout>&#xD;
+            <layout left="728" top="715" width="20" height="23" compilerOrder="607">
+                <checkBox left="0" top="0" width="20" height="24" field="dot317" compilerOrder="608"/>
+            </layout>&#xD;
+            <layout left="212" top="738" width="132" height="24" compilerOrder="31">
+                <edit transparent="true" fontSize="15.8" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="132" height="25" field="abilities7" compilerOrder="32"/>
+            </layout>&#xD;
+            <layout left="512" top="738" width="150" height="24" compilerOrder="81">
+                <edit transparent="true" fontSize="15.8" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="150" height="25" field="arcana8" compilerOrder="82"/>
+            </layout>&#xD;
+            <layout left="852" top="739" width="26" height="29" compilerOrder="783">
+                <checkBox left="0" top="0" width="26" height="30" field="bpdot1" compilerOrder="784"/>
+            </layout>&#xD;
+            <layout left="873" top="739" width="26" height="29" compilerOrder="785">
+                <checkBox left="0" top="0" width="26" height="30" field="bpdot2" compilerOrder="786"/>
+            </layout>&#xD;
+            <layout left="894" top="739" width="26" height="29" compilerOrder="787">
+                <checkBox left="0" top="0" width="26" height="30" field="bpdot3" compilerOrder="788"/>
+            </layout>&#xD;
+            <layout left="915" top="739" width="26" height="29" compilerOrder="789">
+                <checkBox left="0" top="0" width="26" height="30" field="bpdot4" compilerOrder="790"/>
+            </layout>&#xD;
+            <layout left="936" top="739" width="26" height="29" compilerOrder="791">
+                <checkBox left="0" top="0" width="26" height="30" field="bpdot5" compilerOrder="792"/>
+            </layout>&#xD;
+            <layout left="957" top="739" width="26" height="29" compilerOrder="793">
+                <checkBox left="0" top="0" width="26" height="30" field="bpdot6" compilerOrder="794"/>
+            </layout>&#xD;
+            <layout left="978" top="739" width="26" height="29" compilerOrder="795">
+                <checkBox left="0" top="0" width="26" height="30" field="bpdot7" compilerOrder="796"/>
+            </layout>&#xD;
+            <layout left="999" top="739" width="26" height="29" compilerOrder="797">
+                <checkBox left="0" top="0" width="26" height="30" field="bpdot8" compilerOrder="798"/>
+            </layout>&#xD;
+            <layout left="1020" top="739" width="26" height="29" compilerOrder="799">
+                <checkBox left="0" top="0" width="26" height="30" field="bpdot9" compilerOrder="800"/>
+            </layout>&#xD;
+            <layout left="1041" top="739" width="26" height="29" compilerOrder="801">
+                <checkBox left="0" top="0" width="26" height="30" field="bpdot10" compilerOrder="802"/>
+            </layout>&#xD;
+            <layout left="118" top="741" width="18" height="19" compilerOrder="503">
+                <checkBox left="0" top="0" width="18" height="20" field="rotecheck7" compilerOrder="504"/>
+            </layout>&#xD;
+            <layout left="342" top="741" width="19" height="23" compilerOrder="311">
+                <checkBox left="0" top="0" width="19" height="24" field="dot121" compilerOrder="312"/>
+            </layout>&#xD;
+            <layout left="359" top="741" width="20" height="23" compilerOrder="313">
+                <checkBox left="0" top="0" width="20" height="24" field="dot122" compilerOrder="314"/>
+            </layout>&#xD;
+            <layout left="376" top="741" width="20" height="23" compilerOrder="315">
+                <checkBox left="0" top="0" width="20" height="24" field="dot123" compilerOrder="316"/>
+            </layout>&#xD;
+            <layout left="393" top="741" width="20" height="23" compilerOrder="317">
+                <checkBox left="0" top="0" width="20" height="24" field="dot124" compilerOrder="318"/>
+            </layout>&#xD;
+            <layout left="410" top="741" width="20" height="23" compilerOrder="319">
+                <checkBox left="0" top="0" width="20" height="24" field="dot125" compilerOrder="320"/>
+            </layout>&#xD;
+            <layout left="660" top="741" width="19" height="23" compilerOrder="609">
+                <checkBox left="0" top="0" width="19" height="24" field="dot321" compilerOrder="610"/>
+            </layout>&#xD;
+            <layout left="677" top="741" width="20" height="23" compilerOrder="611">
+                <checkBox left="0" top="0" width="20" height="24" field="dot322" compilerOrder="612"/>
+            </layout>&#xD;
+            <layout left="694" top="741" width="20" height="23" compilerOrder="613">
+                <checkBox left="0" top="0" width="20" height="24" field="dot323" compilerOrder="614"/>
+            </layout>&#xD;
+            <layout left="711" top="741" width="20" height="23" compilerOrder="615">
+                <checkBox left="0" top="0" width="20" height="24" field="dot324" compilerOrder="616"/>
+            </layout>&#xD;
+            <layout left="728" top="741" width="20" height="23" compilerOrder="617">
+                <checkBox left="0" top="0" width="20" height="24" field="dot325" compilerOrder="618"/>
+            </layout>&#xD;
+            <layout left="212" top="764" width="132" height="24" compilerOrder="33">
+                <edit transparent="true" fontSize="15.8" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="132" height="25" field="abilities8" compilerOrder="34"/>
+            </layout>&#xD;
+            <layout left="512" top="764" width="150" height="24" compilerOrder="83">
+                <edit transparent="true" fontSize="15.8" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="150" height="25" field="arcana9" compilerOrder="84"/>
+            </layout>&#xD;
+            <layout left="118" top="767" width="18" height="19" compilerOrder="505">
+                <checkBox left="0" top="0" width="18" height="20" field="rotecheck8" compilerOrder="506"/>
+            </layout>&#xD;
+            <layout left="342" top="767" width="19" height="23" compilerOrder="321">
+                <checkBox left="0" top="0" width="19" height="24" field="dot129" compilerOrder="322"/>
+            </layout>&#xD;
+            <layout left="359" top="767" width="20" height="23" compilerOrder="323">
+                <checkBox left="0" top="0" width="20" height="24" field="dot130" compilerOrder="324"/>
+            </layout>&#xD;
+            <layout left="376" top="767" width="20" height="23" compilerOrder="325">
+                <checkBox left="0" top="0" width="20" height="24" field="dot131" compilerOrder="326"/>
+            </layout>&#xD;
+            <layout left="393" top="767" width="20" height="23" compilerOrder="327">
+                <checkBox left="0" top="0" width="20" height="24" field="dot132" compilerOrder="328"/>
+            </layout>&#xD;
+            <layout left="410" top="767" width="20" height="23" compilerOrder="329">
+                <checkBox left="0" top="0" width="20" height="24" field="dot133" compilerOrder="330"/>
+            </layout>&#xD;
+            <layout left="660" top="767" width="19" height="23" compilerOrder="619">
+                <checkBox left="0" top="0" width="19" height="24" field="dot329" compilerOrder="620"/>
+            </layout>&#xD;
+            <layout left="677" top="767" width="20" height="23" compilerOrder="621">
+                <checkBox left="0" top="0" width="20" height="24" field="dot330" compilerOrder="622"/>
+            </layout>&#xD;
+            <layout left="694" top="767" width="20" height="23" compilerOrder="623">
+                <checkBox left="0" top="0" width="20" height="24" field="dot331" compilerOrder="624"/>
+            </layout>&#xD;
+            <layout left="711" top="767" width="20" height="23" compilerOrder="625">
+                <checkBox left="0" top="0" width="20" height="24" field="dot332" compilerOrder="626"/>
+            </layout>&#xD;
+            <layout left="728" top="767" width="20" height="23" compilerOrder="627">
+                <checkBox left="0" top="0" width="20" height="24" field="dot333" compilerOrder="628"/>
+            </layout>&#xD;
+            <layout left="510" top="790" width="152" height="24" compilerOrder="85">
+                <edit transparent="true" fontSize="15.8" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="152" height="25" field="arcana10" compilerOrder="86"/>
+            </layout>&#xD;
+            <layout left="660" top="793" width="19" height="23" compilerOrder="629">
+                <checkBox left="0" top="0" width="19" height="24" field="dot337" compilerOrder="630"/>
+            </layout>&#xD;
+            <layout left="677" top="793" width="20" height="23" compilerOrder="631">
+                <checkBox left="0" top="0" width="20" height="24" field="dot338" compilerOrder="632"/>
+            </layout>&#xD;
+            <layout left="694" top="793" width="20" height="23" compilerOrder="633">
+                <checkBox left="0" top="0" width="20" height="24" field="dot339" compilerOrder="634"/>
+            </layout>&#xD;
+            <layout left="711" top="793" width="20" height="23" compilerOrder="635">
+                <checkBox left="0" top="0" width="20" height="24" field="dot340" compilerOrder="636"/>
+            </layout>&#xD;
+            <layout left="728" top="793" width="20" height="23" compilerOrder="637">
+                <checkBox left="0" top="0" width="20" height="24" field="dot341" compilerOrder="638"/>
+            </layout>&#xD;
+            <layout left="858" top="806" width="90" height="25" compilerOrder="127">
+                <edit transparent="true" fontSize="16.5" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="90" height="26" field="mana1" compilerOrder="128"/>
+            </layout>&#xD;
+            <layout left="972" top="806" width="90" height="25" compilerOrder="129">
+                <edit transparent="true" fontSize="16.5" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="90" height="26" field="mana2" compilerOrder="130"/>
+            </layout>&#xD;
+            <layout left="458" top="867" width="204" height="25" compilerOrder="87">
+                <edit transparent="true" fontSize="16.5" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="204" height="26" field="merits1" compilerOrder="88"/>
+            </layout>&#xD;
+            <layout left="660" top="871" width="19" height="23" compilerOrder="639">
+                <checkBox left="0" top="0" width="19" height="24" field="dot345" compilerOrder="640"/>
+            </layout>&#xD;
+            <layout left="677" top="871" width="20" height="23" compilerOrder="641">
+                <checkBox left="0" top="0" width="20" height="24" field="dot346" compilerOrder="642"/>
+            </layout>&#xD;
+            <layout left="694" top="871" width="20" height="23" compilerOrder="643">
+                <checkBox left="0" top="0" width="20" height="24" field="dot347" compilerOrder="644"/>
+            </layout>&#xD;
+            <layout left="711" top="871" width="20" height="23" compilerOrder="645">
+                <checkBox left="0" top="0" width="20" height="24" field="dot348" compilerOrder="646"/>
+            </layout>&#xD;
+            <layout left="728" top="871" width="20" height="23" compilerOrder="647">
+                <checkBox left="0" top="0" width="20" height="24" field="dot349" compilerOrder="648"/>
+            </layout>&#xD;
+            <layout left="458" top="893" width="204" height="25" compilerOrder="89">
+                <edit transparent="true" fontSize="16.5" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="204" height="26" field="merits2" compilerOrder="90"/>
+            </layout>&#xD;
+            <layout left="852" top="893" width="26" height="29" compilerOrder="803">
+                <checkBox left="0" top="0" width="26" height="30" field="wisdot1" compilerOrder="804"/>
+            </layout>&#xD;
+            <layout left="873" top="893" width="26" height="29" compilerOrder="805">
+                <checkBox left="0" top="0" width="26" height="30" field="wisdot2" compilerOrder="806"/>
+            </layout>&#xD;
+            <layout left="894" top="893" width="26" height="29" compilerOrder="807">
+                <checkBox left="0" top="0" width="26" height="30" field="wisdot3" compilerOrder="808"/>
+            </layout>&#xD;
+            <layout left="915" top="893" width="26" height="29" compilerOrder="809">
+                <checkBox left="0" top="0" width="26" height="30" field="wisdot4" compilerOrder="810"/>
+            </layout>&#xD;
+            <layout left="936" top="893" width="26" height="29" compilerOrder="811">
+                <checkBox left="0" top="0" width="26" height="30" field="wisdot5" compilerOrder="812"/>
+            </layout>&#xD;
+            <layout left="957" top="893" width="26" height="29" compilerOrder="813">
+                <checkBox left="0" top="0" width="26" height="30" field="wisdot6" compilerOrder="814"/>
+            </layout>&#xD;
+            <layout left="978" top="893" width="26" height="29" compilerOrder="815">
+                <checkBox left="0" top="0" width="26" height="30" field="wisdot7" compilerOrder="816"/>
+            </layout>&#xD;
+            <layout left="999" top="893" width="26" height="29" compilerOrder="817">
+                <checkBox left="0" top="0" width="26" height="30" field="wisdot8" compilerOrder="818"/>
+            </layout>&#xD;
+            <layout left="1020" top="893" width="26" height="29" compilerOrder="819">
+                <checkBox left="0" top="0" width="26" height="30" field="wisdot9" compilerOrder="820"/>
+            </layout>&#xD;
+            <layout left="1041" top="893" width="26" height="29" compilerOrder="821">
+                <checkBox left="0" top="0" width="26" height="30" field="wisdot10" compilerOrder="822"/>
+            </layout>&#xD;
+            <layout left="660" top="897" width="19" height="23" compilerOrder="649">
+                <checkBox left="0" top="0" width="19" height="24" field="dot353" compilerOrder="650"/>
+            </layout>&#xD;
+            <layout left="677" top="897" width="20" height="23" compilerOrder="651">
+                <checkBox left="0" top="0" width="20" height="24" field="dot354" compilerOrder="652"/>
+            </layout>&#xD;
+            <layout left="694" top="897" width="20" height="23" compilerOrder="653">
+                <checkBox left="0" top="0" width="20" height="24" field="dot355" compilerOrder="654"/>
+            </layout>&#xD;
+            <layout left="711" top="897" width="20" height="23" compilerOrder="655">
+                <checkBox left="0" top="0" width="20" height="24" field="dot356" compilerOrder="656"/>
+            </layout>&#xD;
+            <layout left="728" top="897" width="20" height="23" compilerOrder="657">
+                <checkBox left="0" top="0" width="20" height="24" field="dot357" compilerOrder="658"/>
+            </layout>&#xD;
+            <layout left="458" top="919" width="204" height="25" compilerOrder="91">
+                <edit transparent="true" fontSize="16.5" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="204" height="26" field="merits3" compilerOrder="92"/>
+            </layout>&#xD;
+            <layout left="226" top="920" width="118" height="24" compilerOrder="35">
+                <edit transparent="true" fontSize="15.8" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="118" height="25" field="abilities9" compilerOrder="36"/>
+            </layout>&#xD;
+            <layout left="118" top="923" width="18" height="19" compilerOrder="507">
+                <checkBox left="0" top="0" width="18" height="20" field="rotecheck9" compilerOrder="508"/>
+            </layout>&#xD;
+            <layout left="342" top="923" width="20" height="23" compilerOrder="331">
+                <checkBox left="0" top="0" width="20" height="24" field="dot137" compilerOrder="332"/>
+            </layout>&#xD;
+            <layout left="359" top="923" width="20" height="23" compilerOrder="333">
+                <checkBox left="0" top="0" width="20" height="24" field="dot138" compilerOrder="334"/>
+            </layout>&#xD;
+            <layout left="376" top="923" width="20" height="23" compilerOrder="335">
+                <checkBox left="0" top="0" width="20" height="24" field="dot139" compilerOrder="336"/>
+            </layout>&#xD;
+            <layout left="393" top="923" width="20" height="23" compilerOrder="337">
+                <checkBox left="0" top="0" width="20" height="24" field="dot140" compilerOrder="338"/>
+            </layout>&#xD;
+            <layout left="410" top="923" width="20" height="23" compilerOrder="339">
+                <checkBox left="0" top="0" width="20" height="24" field="dot141" compilerOrder="340"/>
+            </layout>&#xD;
+            <layout left="660" top="923" width="19" height="23" compilerOrder="659">
+                <checkBox left="0" top="0" width="19" height="24" field="dot361" compilerOrder="660"/>
+            </layout>&#xD;
+            <layout left="677" top="923" width="20" height="23" compilerOrder="661">
+                <checkBox left="0" top="0" width="20" height="24" field="dot362" compilerOrder="662"/>
+            </layout>&#xD;
+            <layout left="694" top="923" width="20" height="23" compilerOrder="663">
+                <checkBox left="0" top="0" width="20" height="24" field="dot363" compilerOrder="664"/>
+            </layout>&#xD;
+            <layout left="711" top="923" width="20" height="23" compilerOrder="665">
+                <checkBox left="0" top="0" width="20" height="24" field="dot364" compilerOrder="666"/>
+            </layout>&#xD;
+            <layout left="728" top="923" width="20" height="23" compilerOrder="667">
+                <checkBox left="0" top="0" width="20" height="24" field="dot365" compilerOrder="668"/>
+            </layout>&#xD;
+            <layout left="458" top="945" width="204" height="25" compilerOrder="93">
+                <edit transparent="true" fontSize="16.5" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="204" height="26" field="merits4" compilerOrder="94"/>
+            </layout>&#xD;
+            <layout left="197" top="946" width="147" height="24" compilerOrder="37">
+                <edit transparent="true" fontSize="15.8" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="147" height="25" field="abilities10" compilerOrder="38"/>
+            </layout>&#xD;
+            <layout left="118" top="949" width="18" height="19" compilerOrder="509">
+                <checkBox left="0" top="0" width="18" height="20" field="rotecheck10" compilerOrder="510"/>
+            </layout>&#xD;
+            <layout left="342" top="949" width="20" height="23" compilerOrder="341">
+                <checkBox left="0" top="0" width="20" height="24" field="dot145" compilerOrder="342"/>
+            </layout>&#xD;
+            <layout left="359" top="949" width="20" height="23" compilerOrder="343">
+                <checkBox left="0" top="0" width="20" height="24" field="dot146" compilerOrder="344"/>
+            </layout>&#xD;
+            <layout left="376" top="949" width="20" height="23" compilerOrder="345">
+                <checkBox left="0" top="0" width="20" height="24" field="dot147" compilerOrder="346"/>
+            </layout>&#xD;
+            <layout left="393" top="949" width="20" height="23" compilerOrder="347">
+                <checkBox left="0" top="0" width="20" height="24" field="dot148" compilerOrder="348"/>
+            </layout>&#xD;
+            <layout left="410" top="949" width="20" height="23" compilerOrder="349">
+                <checkBox left="0" top="0" width="20" height="24" field="dot149" compilerOrder="350"/>
+            </layout>&#xD;
+            <layout left="660" top="949" width="19" height="23" compilerOrder="669">
+                <checkBox left="0" top="0" width="19" height="24" field="dot369" compilerOrder="670"/>
+            </layout>&#xD;
+            <layout left="677" top="949" width="20" height="23" compilerOrder="671">
+                <checkBox left="0" top="0" width="20" height="24" field="dot370" compilerOrder="672"/>
+            </layout>&#xD;
+            <layout left="694" top="949" width="20" height="23" compilerOrder="673">
+                <checkBox left="0" top="0" width="20" height="24" field="dot371" compilerOrder="674"/>
+            </layout>&#xD;
+            <layout left="711" top="949" width="20" height="23" compilerOrder="675">
+                <checkBox left="0" top="0" width="20" height="24" field="dot372" compilerOrder="676"/>
+            </layout>&#xD;
+            <layout left="728" top="949" width="20" height="23" compilerOrder="677">
+                <checkBox left="0" top="0" width="20" height="24" field="dot373" compilerOrder="678"/>
+            </layout>&#xD;
+            <layout left="841" top="969" width="231" height="25" compilerOrder="131">
+                <edit transparent="true" fontSize="16.5" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="231" height="26" field="conditions1" compilerOrder="132"/>
+            </layout>&#xD;
+            <layout left="458" top="971" width="204" height="25" compilerOrder="95">
+                <edit transparent="true" fontSize="16.5" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="204" height="26" field="merits5" compilerOrder="96"/>
+            </layout>&#xD;
+            <layout left="193" top="972" width="151" height="24" compilerOrder="39">
+                <edit transparent="true" fontSize="15.8" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="151" height="25" field="abilities11" compilerOrder="40"/>
+            </layout>&#xD;
+            <layout left="118" top="975" width="18" height="19" compilerOrder="511">
+                <checkBox left="0" top="0" width="18" height="20" field="rotecheck11" compilerOrder="512"/>
+            </layout>&#xD;
+            <layout left="342" top="975" width="19" height="23" compilerOrder="351">
+                <checkBox left="0" top="0" width="19" height="24" field="dot153" compilerOrder="352"/>
+            </layout>&#xD;
+            <layout left="359" top="975" width="20" height="23" compilerOrder="353">
+                <checkBox left="0" top="0" width="20" height="24" field="dot154" compilerOrder="354"/>
+            </layout>&#xD;
+            <layout left="376" top="975" width="20" height="23" compilerOrder="355">
+                <checkBox left="0" top="0" width="20" height="24" field="dot155" compilerOrder="356"/>
+            </layout>&#xD;
+            <layout left="393" top="975" width="20" height="23" compilerOrder="357">
+                <checkBox left="0" top="0" width="20" height="24" field="dot156" compilerOrder="358"/>
+            </layout>&#xD;
+            <layout left="410" top="975" width="20" height="23" compilerOrder="359">
+                <checkBox left="0" top="0" width="20" height="24" field="dot157" compilerOrder="360"/>
+            </layout>&#xD;
+            <layout left="660" top="975" width="19" height="23" compilerOrder="679">
+                <checkBox left="0" top="0" width="19" height="24" field="dot377" compilerOrder="680"/>
+            </layout>&#xD;
+            <layout left="677" top="975" width="20" height="23" compilerOrder="681">
+                <checkBox left="0" top="0" width="20" height="24" field="dot378" compilerOrder="682"/>
+            </layout>&#xD;
+            <layout left="694" top="975" width="20" height="23" compilerOrder="683">
+                <checkBox left="0" top="0" width="20" height="24" field="dot379" compilerOrder="684"/>
+            </layout>&#xD;
+            <layout left="711" top="975" width="20" height="23" compilerOrder="685">
+                <checkBox left="0" top="0" width="20" height="24" field="dot380" compilerOrder="686"/>
+            </layout>&#xD;
+            <layout left="728" top="975" width="20" height="23" compilerOrder="687">
+                <checkBox left="0" top="0" width="20" height="24" field="dot381" compilerOrder="688"/>
+            </layout>&#xD;
+            <layout left="841" top="995" width="231" height="25" compilerOrder="133">
+                <edit transparent="true" fontSize="16.5" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="231" height="26" field="conditions2" compilerOrder="134"/>
+            </layout>&#xD;
+            <layout left="458" top="997" width="204" height="25" compilerOrder="97">
+                <edit transparent="true" fontSize="16.5" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="204" height="26" field="merits6" compilerOrder="98"/>
+            </layout>&#xD;
+            <layout left="225" top="998" width="119" height="24" compilerOrder="41">
+                <edit transparent="true" fontSize="15.8" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="119" height="25" field="abilities12" compilerOrder="42"/>
+            </layout>&#xD;
+            <layout left="118" top="1001" width="18" height="19" compilerOrder="513">
+                <checkBox left="0" top="0" width="18" height="20" field="rotecheck12" compilerOrder="514"/>
+            </layout>&#xD;
+            <layout left="342" top="1001" width="19" height="23" compilerOrder="361">
+                <checkBox left="0" top="0" width="19" height="24" field="dot161" compilerOrder="362"/>
+            </layout>&#xD;
+            <layout left="359" top="1001" width="20" height="23" compilerOrder="363">
+                <checkBox left="0" top="0" width="20" height="24" field="dot162" compilerOrder="364"/>
+            </layout>&#xD;
+            <layout left="376" top="1001" width="20" height="23" compilerOrder="365">
+                <checkBox left="0" top="0" width="20" height="24" field="dot163" compilerOrder="366"/>
+            </layout>&#xD;
+            <layout left="393" top="1001" width="20" height="23" compilerOrder="367">
+                <checkBox left="0" top="0" width="20" height="24" field="dot164" compilerOrder="368"/>
+            </layout>&#xD;
+            <layout left="410" top="1001" width="20" height="23" compilerOrder="369">
+                <checkBox left="0" top="0" width="20" height="24" field="dot165" compilerOrder="370"/>
+            </layout>&#xD;
+            <layout left="660" top="1001" width="19" height="23" compilerOrder="689">
+                <checkBox left="0" top="0" width="19" height="24" field="dot385" compilerOrder="690"/>
+            </layout>&#xD;
+            <layout left="677" top="1001" width="20" height="23" compilerOrder="691">
+                <checkBox left="0" top="0" width="20" height="24" field="dot386" compilerOrder="692"/>
+            </layout>&#xD;
+            <layout left="694" top="1001" width="20" height="23" compilerOrder="693">
+                <checkBox left="0" top="0" width="20" height="24" field="dot387" compilerOrder="694"/>
+            </layout>&#xD;
+            <layout left="711" top="1001" width="20" height="23" compilerOrder="695">
+                <checkBox left="0" top="0" width="20" height="24" field="dot388" compilerOrder="696"/>
+            </layout>&#xD;
+            <layout left="728" top="1001" width="20" height="23" compilerOrder="697">
+                <checkBox left="0" top="0" width="20" height="24" field="dot389" compilerOrder="698"/>
+            </layout>&#xD;
+            <layout left="841" top="1021" width="231" height="25" compilerOrder="135">
+                <edit transparent="true" fontSize="16.5" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="231" height="26" field="conditions3" compilerOrder="136"/>
+            </layout>&#xD;
+            <layout left="458" top="1023" width="204" height="25" compilerOrder="99">
+                <edit transparent="true" fontSize="16.5" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="204" height="26" field="merits7" compilerOrder="100"/>
+            </layout>&#xD;
+            <layout left="216" top="1024" width="128" height="24" compilerOrder="43">
+                <edit transparent="true" fontSize="15.8" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="128" height="25" field="abilities13" compilerOrder="44"/>
+            </layout>&#xD;
+            <layout left="118" top="1027" width="18" height="19" compilerOrder="515">
+                <checkBox left="0" top="0" width="18" height="20" field="rotecheck13" compilerOrder="516"/>
+            </layout>&#xD;
+            <layout left="342" top="1027" width="19" height="23" compilerOrder="371">
+                <checkBox left="0" top="0" width="19" height="24" field="dot169" compilerOrder="372"/>
+            </layout>&#xD;
+            <layout left="359" top="1027" width="20" height="23" compilerOrder="373">
+                <checkBox left="0" top="0" width="20" height="24" field="dot170" compilerOrder="374"/>
+            </layout>&#xD;
+            <layout left="376" top="1027" width="20" height="23" compilerOrder="375">
+                <checkBox left="0" top="0" width="20" height="24" field="dot171" compilerOrder="376"/>
+            </layout>&#xD;
+            <layout left="393" top="1027" width="20" height="23" compilerOrder="377">
+                <checkBox left="0" top="0" width="20" height="24" field="dot172" compilerOrder="378"/>
+            </layout>&#xD;
+            <layout left="410" top="1027" width="20" height="23" compilerOrder="379">
+                <checkBox left="0" top="0" width="20" height="24" field="dot173" compilerOrder="380"/>
+            </layout>&#xD;
+            <layout left="660" top="1027" width="19" height="23" compilerOrder="699">
+                <checkBox left="0" top="0" width="19" height="24" field="dot393" compilerOrder="700"/>
+            </layout>&#xD;
+            <layout left="677" top="1027" width="20" height="23" compilerOrder="701">
+                <checkBox left="0" top="0" width="20" height="24" field="dot394" compilerOrder="702"/>
+            </layout>&#xD;
+            <layout left="694" top="1027" width="20" height="23" compilerOrder="703">
+                <checkBox left="0" top="0" width="20" height="24" field="dot395" compilerOrder="704"/>
+            </layout>&#xD;
+            <layout left="711" top="1027" width="20" height="23" compilerOrder="705">
+                <checkBox left="0" top="0" width="20" height="24" field="dot396" compilerOrder="706"/>
+            </layout>&#xD;
+            <layout left="728" top="1027" width="20" height="23" compilerOrder="707">
+                <checkBox left="0" top="0" width="20" height="24" field="dot397" compilerOrder="708"/>
+            </layout>&#xD;
+            <layout left="841" top="1047" width="231" height="25" compilerOrder="137">
+                <edit transparent="true" fontSize="16.5" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="231" height="26" field="conditions4" compilerOrder="138"/>
+            </layout>&#xD;
+            <layout left="458" top="1049" width="204" height="25" compilerOrder="101">
+                <edit transparent="true" fontSize="16.5" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="204" height="26" field="merits8" compilerOrder="102"/>
+            </layout>&#xD;
+            <layout left="207" top="1050" width="137" height="24" compilerOrder="45">
+                <edit transparent="true" fontSize="15.8" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="137" height="25" field="abilities14" compilerOrder="46"/>
+            </layout>&#xD;
+            <layout left="118" top="1053" width="18" height="19" compilerOrder="517">
+                <checkBox left="0" top="0" width="18" height="20" field="rotecheck14" compilerOrder="518"/>
+            </layout>&#xD;
+            <layout left="342" top="1053" width="19" height="23" compilerOrder="381">
+                <checkBox left="0" top="0" width="19" height="24" field="dot177" compilerOrder="382"/>
+            </layout>&#xD;
+            <layout left="359" top="1053" width="20" height="23" compilerOrder="383">
+                <checkBox left="0" top="0" width="20" height="24" field="dot178" compilerOrder="384"/>
+            </layout>&#xD;
+            <layout left="376" top="1053" width="20" height="23" compilerOrder="385">
+                <checkBox left="0" top="0" width="20" height="24" field="dot179" compilerOrder="386"/>
+            </layout>&#xD;
+            <layout left="393" top="1053" width="20" height="23" compilerOrder="387">
+                <checkBox left="0" top="0" width="20" height="24" field="dot180" compilerOrder="388"/>
+            </layout>&#xD;
+            <layout left="410" top="1053" width="20" height="23" compilerOrder="389">
+                <checkBox left="0" top="0" width="20" height="24" field="dot181" compilerOrder="390"/>
+            </layout>&#xD;
+            <layout left="660" top="1053" width="19" height="23" compilerOrder="709">
+                <checkBox left="0" top="0" width="19" height="24" field="dot401" compilerOrder="710"/>
+            </layout>&#xD;
+            <layout left="677" top="1053" width="20" height="23" compilerOrder="711">
+                <checkBox left="0" top="0" width="20" height="24" field="dot402" compilerOrder="712"/>
+            </layout>&#xD;
+            <layout left="694" top="1053" width="20" height="23" compilerOrder="713">
+                <checkBox left="0" top="0" width="20" height="24" field="dot403" compilerOrder="714"/>
+            </layout>&#xD;
+            <layout left="711" top="1053" width="20" height="23" compilerOrder="715">
+                <checkBox left="0" top="0" width="20" height="24" field="dot404" compilerOrder="716"/>
+            </layout>&#xD;
+            <layout left="728" top="1053" width="20" height="23" compilerOrder="717">
+                <checkBox left="0" top="0" width="20" height="24" field="dot405" compilerOrder="718"/>
+            </layout>&#xD;
+            <layout left="841" top="1073" width="231" height="25" compilerOrder="139">
+                <edit transparent="true" fontSize="16.5" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="231" height="26" field="conditions5" compilerOrder="140"/>
+            </layout>&#xD;
+            <layout left="218" top="1076" width="126" height="24" compilerOrder="47">
+                <edit transparent="true" fontSize="15.8" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="126" height="25" field="abilities15" compilerOrder="48"/>
+            </layout>&#xD;
+            <layout left="118" top="1079" width="18" height="19" compilerOrder="519">
+                <checkBox left="0" top="0" width="18" height="20" field="rotecheck15" compilerOrder="520"/>
+            </layout>&#xD;
+            <layout left="342" top="1079" width="19" height="23" compilerOrder="391">
+                <checkBox left="0" top="0" width="19" height="24" field="dot185" compilerOrder="392"/>
+            </layout>&#xD;
+            <layout left="359" top="1079" width="20" height="23" compilerOrder="393">
+                <checkBox left="0" top="0" width="20" height="24" field="dot186" compilerOrder="394"/>
+            </layout>&#xD;
+            <layout left="376" top="1079" width="20" height="23" compilerOrder="395">
+                <checkBox left="0" top="0" width="20" height="24" field="dot187" compilerOrder="396"/>
+            </layout>&#xD;
+            <layout left="393" top="1079" width="20" height="23" compilerOrder="397">
+                <checkBox left="0" top="0" width="20" height="24" field="dot188" compilerOrder="398"/>
+            </layout>&#xD;
+            <layout left="410" top="1079" width="20" height="23" compilerOrder="399">
+                <checkBox left="0" top="0" width="20" height="24" field="dot189" compilerOrder="400"/>
+            </layout>&#xD;
+            <layout left="240" top="1102" width="104" height="24" compilerOrder="49">
+                <edit transparent="true" fontSize="15.8" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="104" height="25" field="abilities16" compilerOrder="50"/>
+            </layout>&#xD;
+            <layout left="118" top="1105" width="18" height="19" compilerOrder="521">
+                <checkBox left="0" top="0" width="18" height="20" field="rotecheck16" compilerOrder="522"/>
+            </layout>&#xD;
+            <layout left="342" top="1105" width="19" height="23" compilerOrder="401">
+                <checkBox left="0" top="0" width="19" height="24" field="dot193" compilerOrder="402"/>
+            </layout>&#xD;
+            <layout left="359" top="1105" width="20" height="23" compilerOrder="403">
+                <checkBox left="0" top="0" width="20" height="24" field="dot194" compilerOrder="404"/>
+            </layout>&#xD;
+            <layout left="376" top="1105" width="20" height="23" compilerOrder="405">
+                <checkBox left="0" top="0" width="20" height="24" field="dot195" compilerOrder="406"/>
+            </layout>&#xD;
+            <layout left="393" top="1105" width="20" height="23" compilerOrder="407">
+                <checkBox left="0" top="0" width="20" height="24" field="dot196" compilerOrder="408"/>
+            </layout>&#xD;
+            <layout left="410" top="1105" width="20" height="23" compilerOrder="409">
+                <checkBox left="0" top="0" width="20" height="24" field="dot197" compilerOrder="410"/>
+            </layout>&#xD;
+            <layout left="458" top="1127" width="288" height="25" compilerOrder="103">
+                <edit transparent="true" fontSize="16.5" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="288" height="26" field="obsessions1" compilerOrder="104"/>
+            </layout>&#xD;
+            <layout left="841" top="1151" width="231" height="25" compilerOrder="141">
+                <edit transparent="true" fontSize="16.5" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="231" height="26" field="tilts1" compilerOrder="142"/>
+            </layout>&#xD;
+            <layout left="458" top="1153" width="288" height="25" compilerOrder="105">
+                <edit transparent="true" fontSize="16.5" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="288" height="26" field="obsessions2" compilerOrder="106"/>
+            </layout>&#xD;
+            <layout left="841" top="1177" width="231" height="25" compilerOrder="143">
+                <edit transparent="true" fontSize="16.5" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="231" height="26" field="tilts2" compilerOrder="144"/>
+            </layout>&#xD;
+            <layout left="458" top="1179" width="288" height="25" compilerOrder="107">
+                <edit transparent="true" fontSize="16.5" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="288" height="26" field="obsessions3" compilerOrder="108"/>
+            </layout>&#xD;
+            <layout left="841" top="1203" width="231" height="25" compilerOrder="145">
+                <edit transparent="true" fontSize="16.5" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="231" height="26" field="tilts3" compilerOrder="146"/>
+            </layout>&#xD;
+            <layout left="458" top="1205" width="288" height="25" compilerOrder="109">
+                <edit transparent="true" fontSize="16.5" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="288" height="26" field="obsessions4" compilerOrder="110"/>
+            </layout>&#xD;
+            <layout left="841" top="1229" width="231" height="25" compilerOrder="147">
+                <edit transparent="true" fontSize="16.5" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="231" height="26" field="tilts4" compilerOrder="148"/>
+            </layout>&#xD;
+            <layout left="458" top="1231" width="288" height="25" compilerOrder="111">
+                <edit transparent="true" fontSize="16.5" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="288" height="26" field="obsessions5" compilerOrder="112"/>
+            </layout>&#xD;
+            <layout left="841" top="1255" width="231" height="25" compilerOrder="149">
+                <edit transparent="true" fontSize="16.5" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="231" height="26" field="tilts5" compilerOrder="150"/>
+            </layout>&#xD;
+            <layout left="260" top="1258" width="84" height="24" compilerOrder="51">
+                <edit transparent="true" fontSize="15.8" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="84" height="25" field="abilities17" compilerOrder="52"/>
+            </layout>&#xD;
+            <layout left="118" top="1261" width="18" height="19" compilerOrder="523">
+                <checkBox left="0" top="0" width="18" height="20" field="rotecheck17" compilerOrder="524"/>
+            </layout>&#xD;
+            <layout left="342" top="1261" width="19" height="23" compilerOrder="411">
+                <checkBox left="0" top="0" width="19" height="24" field="dot201" compilerOrder="412"/>
+            </layout>&#xD;
+            <layout left="359" top="1261" width="20" height="23" compilerOrder="413">
+                <checkBox left="0" top="0" width="20" height="24" field="dot202" compilerOrder="414"/>
+            </layout>&#xD;
+            <layout left="376" top="1261" width="20" height="23" compilerOrder="415">
+                <checkBox left="0" top="0" width="20" height="24" field="dot203" compilerOrder="416"/>
+            </layout>&#xD;
+            <layout left="393" top="1261" width="20" height="23" compilerOrder="417">
+                <checkBox left="0" top="0" width="20" height="24" field="dot204" compilerOrder="418"/>
+            </layout>&#xD;
+            <layout left="410" top="1261" width="20" height="23" compilerOrder="419">
+                <checkBox left="0" top="0" width="20" height="24" field="dot205" compilerOrder="420"/>
+            </layout>&#xD;
+            <layout left="498" top="1283" width="94" height="25" compilerOrder="113">
+                <edit transparent="true" fontSize="16.5" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="94" height="26" field="size" compilerOrder="114"/>
+            </layout>&#xD;
+            <layout left="664" top="1283" width="81" height="25" compilerOrder="115">
+                <edit transparent="true" fontSize="16.5" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="81" height="26" field="speed" compilerOrder="116"/>
+            </layout>&#xD;
+            <layout left="227" top="1284" width="117" height="24" compilerOrder="53">
+                <edit transparent="true" fontSize="15.8" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="117" height="25" field="abilities18" compilerOrder="54"/>
+            </layout>&#xD;
+            <layout left="118" top="1287" width="18" height="19" compilerOrder="525">
+                <checkBox left="0" top="0" width="18" height="20" field="rotecheck18" compilerOrder="526"/>
+            </layout>&#xD;
+            <layout left="342" top="1287" width="19" height="23" compilerOrder="421">
+                <checkBox left="0" top="0" width="19" height="24" field="dot209" compilerOrder="422"/>
+            </layout>&#xD;
+            <layout left="359" top="1287" width="20" height="23" compilerOrder="423">
+                <checkBox left="0" top="0" width="20" height="24" field="dot210" compilerOrder="424"/>
+            </layout>&#xD;
+            <layout left="376" top="1287" width="20" height="23" compilerOrder="425">
+                <checkBox left="0" top="0" width="20" height="24" field="dot211" compilerOrder="426"/>
+            </layout>&#xD;
+            <layout left="393" top="1287" width="20" height="23" compilerOrder="427">
+                <checkBox left="0" top="0" width="20" height="24" field="dot212" compilerOrder="428"/>
+            </layout>&#xD;
+            <layout left="410" top="1287" width="20" height="23" compilerOrder="429">
+                <checkBox left="0" top="0" width="20" height="24" field="dot213" compilerOrder="430"/>
+            </layout>&#xD;
+            <layout left="536" top="1309" width="56" height="25" compilerOrder="117">
+                <edit transparent="true" fontSize="16.5" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="56" height="26" field="defense" compilerOrder="118"/>
+            </layout>&#xD;
+            <layout left="674" top="1309" width="72" height="25" compilerOrder="119">
+                <edit transparent="true" fontSize="16.5" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="72" height="26" field="armor" compilerOrder="120"/>
+            </layout>&#xD;
+            <layout left="246" top="1310" width="98" height="24" compilerOrder="55">
+                <edit transparent="true" fontSize="15.8" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="98" height="25" field="abilities19" compilerOrder="56"/>
+            </layout>&#xD;
+            <layout left="118" top="1313" width="18" height="19" compilerOrder="527">
+                <checkBox left="0" top="0" width="18" height="20" field="rotecheck19" compilerOrder="528"/>
+            </layout>&#xD;
+            <layout left="342" top="1313" width="19" height="23" compilerOrder="431">
+                <checkBox left="0" top="0" width="19" height="24" field="dot217" compilerOrder="432"/>
+            </layout>&#xD;
+            <layout left="359" top="1313" width="20" height="23" compilerOrder="433">
+                <checkBox left="0" top="0" width="20" height="24" field="dot218" compilerOrder="434"/>
+            </layout>&#xD;
+            <layout left="376" top="1313" width="20" height="23" compilerOrder="435">
+                <checkBox left="0" top="0" width="20" height="24" field="dot219" compilerOrder="436"/>
+            </layout>&#xD;
+            <layout left="393" top="1313" width="20" height="23" compilerOrder="437">
+                <checkBox left="0" top="0" width="20" height="24" field="dot220" compilerOrder="438"/>
+            </layout>&#xD;
+            <layout left="410" top="1313" width="20" height="23" compilerOrder="439">
+                <checkBox left="0" top="0" width="20" height="24" field="dot221" compilerOrder="440"/>
+            </layout>&#xD;
+            <layout left="841" top="1331" width="231" height="25" compilerOrder="151">
+                <edit transparent="true" fontSize="16.5" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="231" height="26" field="aspirations1" compilerOrder="152"/>
+            </layout>&#xD;
+            <layout left="603" top="1335" width="142" height="25" compilerOrder="121">
+                <edit transparent="true" fontSize="16.5" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="142" height="26" field="IM" compilerOrder="122"/>
+            </layout>&#xD;
+            <layout left="264" top="1336" width="80" height="24" compilerOrder="57">
+                <edit transparent="true" fontSize="15.8" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="80" height="25" field="abilities20" compilerOrder="58"/>
+            </layout>&#xD;
+            <layout left="118" top="1339" width="18" height="19" compilerOrder="529">
+                <checkBox left="0" top="0" width="18" height="20" field="rotecheck20" compilerOrder="530"/>
+            </layout>&#xD;
+            <layout left="342" top="1339" width="19" height="23" compilerOrder="441">
+                <checkBox left="0" top="0" width="19" height="24" field="dot225" compilerOrder="442"/>
+            </layout>&#xD;
+            <layout left="359" top="1339" width="20" height="23" compilerOrder="443">
+                <checkBox left="0" top="0" width="20" height="24" field="dot226" compilerOrder="444"/>
+            </layout>&#xD;
+            <layout left="376" top="1339" width="20" height="23" compilerOrder="445">
+                <checkBox left="0" top="0" width="20" height="24" field="dot227" compilerOrder="446"/>
+            </layout>&#xD;
+            <layout left="393" top="1339" width="20" height="23" compilerOrder="447">
+                <checkBox left="0" top="0" width="20" height="24" field="dot228" compilerOrder="448"/>
+            </layout>&#xD;
+            <layout left="410" top="1339" width="20" height="23" compilerOrder="449">
+                <checkBox left="0" top="0" width="20" height="24" field="dot229" compilerOrder="450"/>
+            </layout>&#xD;
+            <layout left="841" top="1357" width="231" height="25" compilerOrder="153">
+                <edit transparent="true" fontSize="16.5" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="231" height="26" field="aspirations2" compilerOrder="154"/>
+            </layout>&#xD;
+            <layout left="246" top="1362" width="98" height="24" compilerOrder="59">
+                <edit transparent="true" fontSize="15.8" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="98" height="25" field="abilities21" compilerOrder="60"/>
+            </layout>&#xD;
+            <layout left="118" top="1365" width="18" height="19" compilerOrder="531">
+                <checkBox left="0" top="0" width="18" height="20" field="rotecheck21" compilerOrder="532"/>
+            </layout>&#xD;
+            <layout left="342" top="1365" width="19" height="23" compilerOrder="451">
+                <checkBox left="0" top="0" width="19" height="24" field="dot233" compilerOrder="452"/>
+            </layout>&#xD;
+            <layout left="359" top="1365" width="20" height="23" compilerOrder="453">
+                <checkBox left="0" top="0" width="20" height="24" field="dot234" compilerOrder="454"/>
+            </layout>&#xD;
+            <layout left="376" top="1365" width="20" height="23" compilerOrder="455">
+                <checkBox left="0" top="0" width="20" height="24" field="dot235" compilerOrder="456"/>
+            </layout>&#xD;
+            <layout left="393" top="1365" width="20" height="23" compilerOrder="457">
+                <checkBox left="0" top="0" width="20" height="24" field="dot236" compilerOrder="458"/>
+            </layout>&#xD;
+            <layout left="410" top="1365" width="20" height="23" compilerOrder="459">
+                <checkBox left="0" top="0" width="20" height="24" field="dot237" compilerOrder="460"/>
+            </layout>&#xD;
+            <layout left="628" top="1368" width="17" height="17" compilerOrder="823">
+                <checkBox left="0" top="0" width="17" height="18" field="beats1" compilerOrder="824"/>
+            </layout>&#xD;
+            <layout left="653" top="1368" width="17" height="17" compilerOrder="825">
+                <checkBox left="0" top="0" width="17" height="18" field="beats2" compilerOrder="826"/>
+            </layout>&#xD;
+            <layout left="679" top="1368" width="17" height="17" compilerOrder="827">
+                <checkBox left="0" top="0" width="17" height="18" field="beats3" compilerOrder="828"/>
+            </layout>&#xD;
+            <layout left="705" top="1368" width="17" height="17" compilerOrder="829">
+                <checkBox left="0" top="0" width="17" height="18" field="beats4" compilerOrder="830"/>
+            </layout>&#xD;
+            <layout left="731" top="1368" width="17" height="17" compilerOrder="831">
+                <checkBox left="0" top="0" width="17" height="18" field="beats5" compilerOrder="832"/>
+            </layout>&#xD;
+            <layout left="841" top="1383" width="231" height="25" compilerOrder="155">
+                <edit transparent="true" fontSize="16.5" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="231" height="26" field="aspirations3" compilerOrder="156"/>
+            </layout>&#xD;
+            <layout left="570" top="1387" width="175" height="25" compilerOrder="123">
+                <edit transparent="true" fontSize="16.5" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="175" height="26" field="exp" compilerOrder="124"/>
+            </layout>&#xD;
+            <layout left="222" top="1388" width="122" height="24" compilerOrder="61">
+                <edit transparent="true" fontSize="15.8" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="122" height="25" field="abilities22" compilerOrder="62"/>
+            </layout>&#xD;
+            <layout left="118" top="1391" width="18" height="19" compilerOrder="533">
+                <checkBox left="0" top="0" width="18" height="20" field="rotecheck22" compilerOrder="534"/>
+            </layout>&#xD;
+            <layout left="342" top="1391" width="19" height="23" compilerOrder="461">
+                <checkBox left="0" top="0" width="19" height="24" field="dot241" compilerOrder="462"/>
+            </layout>&#xD;
+            <layout left="359" top="1391" width="20" height="23" compilerOrder="463">
+                <checkBox left="0" top="0" width="20" height="24" field="dot242" compilerOrder="464"/>
+            </layout>&#xD;
+            <layout left="376" top="1391" width="20" height="23" compilerOrder="465">
+                <checkBox left="0" top="0" width="20" height="24" field="dot243" compilerOrder="466"/>
+            </layout>&#xD;
+            <layout left="393" top="1391" width="20" height="23" compilerOrder="467">
+                <checkBox left="0" top="0" width="20" height="24" field="dot244" compilerOrder="468"/>
+            </layout>&#xD;
+            <layout left="410" top="1391" width="20" height="23" compilerOrder="469">
+                <checkBox left="0" top="0" width="20" height="24" field="dot245" compilerOrder="470"/>
+            </layout>&#xD;
+            <layout left="841" top="1409" width="231" height="25" compilerOrder="157">
+                <edit transparent="true" fontSize="16.5" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="231" height="26" field="aspirations4" compilerOrder="158"/>
+            </layout>&#xD;
+            <layout left="237" top="1414" width="107" height="24" compilerOrder="63">
+                <edit transparent="true" fontSize="15.8" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="107" height="25" field="abilities23" compilerOrder="64"/>
+            </layout>&#xD;
+            <layout left="118" top="1417" width="18" height="19" compilerOrder="535">
+                <checkBox left="0" top="0" width="18" height="20" field="rotecheck23" compilerOrder="536"/>
+            </layout>&#xD;
+            <layout left="342" top="1417" width="19" height="23" compilerOrder="471">
+                <checkBox left="0" top="0" width="19" height="24" field="dot249" compilerOrder="472"/>
+            </layout>&#xD;
+            <layout left="359" top="1417" width="20" height="23" compilerOrder="473">
+                <checkBox left="0" top="0" width="20" height="24" field="dot250" compilerOrder="474"/>
+            </layout>&#xD;
+            <layout left="376" top="1417" width="20" height="23" compilerOrder="475">
+                <checkBox left="0" top="0" width="20" height="24" field="dot251" compilerOrder="476"/>
+            </layout>&#xD;
+            <layout left="393" top="1417" width="20" height="23" compilerOrder="477">
+                <checkBox left="0" top="0" width="20" height="24" field="dot252" compilerOrder="478"/>
+            </layout>&#xD;
+            <layout left="410" top="1417" width="20" height="23" compilerOrder="479">
+                <checkBox left="0" top="0" width="20" height="24" field="dot253" compilerOrder="480"/>
+            </layout>&#xD;
+            <layout left="628" top="1420" width="17" height="17" compilerOrder="833">
+                <checkBox left="0" top="0" width="17" height="18" field="beats6" compilerOrder="834"/>
+            </layout>&#xD;
+            <layout left="653" top="1420" width="17" height="17" compilerOrder="835">
+                <checkBox left="0" top="0" width="17" height="18" field="beats7" compilerOrder="836"/>
+            </layout>&#xD;
+            <layout left="679" top="1420" width="17" height="17" compilerOrder="837">
+                <checkBox left="0" top="0" width="17" height="18" field="beats8" compilerOrder="838"/>
+            </layout>&#xD;
+            <layout left="705" top="1420" width="17" height="17" compilerOrder="839">
+                <checkBox left="0" top="0" width="17" height="18" field="beats9" compilerOrder="840"/>
+            </layout>&#xD;
+            <layout left="731" top="1420" width="17" height="17" compilerOrder="841">
+                <checkBox left="0" top="0" width="17" height="18" field="beats10" compilerOrder="842"/>
+            </layout>&#xD;
+            <layout left="841" top="1435" width="231" height="25" compilerOrder="159">
+                <edit transparent="true" fontSize="16.5" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="231" height="26" field="aspirations5" compilerOrder="160"/>
+            </layout>&#xD;
+            <layout left="645" top="1439" width="100" height="25" compilerOrder="125">
+                <edit transparent="true" fontSize="16.5" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="100" height="26" field="arexp" compilerOrder="126"/>
+            </layout>&#xD;
+            <layout left="246" top="1440" width="98" height="24" compilerOrder="65">
+                <edit transparent="true" fontSize="15.8" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="98" height="25" field="abilities24" compilerOrder="66"/>
+            </layout>&#xD;
+            <layout left="118" top="1443" width="18" height="19" compilerOrder="537">
+                <checkBox left="0" top="0" width="18" height="20" field="rotecheck24" compilerOrder="538"/>
+            </layout>&#xD;
+            <layout left="342" top="1443" width="19" height="23" compilerOrder="481">
+                <checkBox left="0" top="0" width="19" height="24" field="dot257" compilerOrder="482"/>
+            </layout>&#xD;
+            <layout left="359" top="1443" width="20" height="23" compilerOrder="483">
+                <checkBox left="0" top="0" width="20" height="24" field="dot258" compilerOrder="484"/>
+            </layout>&#xD;
+            <layout left="376" top="1443" width="20" height="23" compilerOrder="485">
+                <checkBox left="0" top="0" width="20" height="24" field="dot259" compilerOrder="486"/>
+            </layout>&#xD;
+            <layout left="393" top="1443" width="20" height="23" compilerOrder="487">
+                <checkBox left="0" top="0" width="20" height="24" field="dot260" compilerOrder="488"/>
+            </layout>&#xD;
+            <layout left="410" top="1443" width="20" height="23" compilerOrder="489">
+                <checkBox left="0" top="0" width="20" height="24" field="dot261" compilerOrder="490"/>
+            </layout>&#xD;
+        </rectangle>
+    </scrollBox>
+    <dataLink fields="{&apos;chronicle&apos;, &apos;legacy&apos;, &apos;player&apos;}" defaultValues="{&apos;Cidade Cinzenta&apos;, &apos;-&apos;, &apos;Narrador&apos;}"/>
+</form>
