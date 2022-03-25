@@ -55,6 +55,7 @@ Vale a pena ressalvar que qualquer pasta neste repositório contém seu plugin c
 | [Konoha Heroes](https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Konoha%20Heroes/output/Konoha%20Heroes.rpk?raw=true) | HashBR | Ficha para a mesa e sistema _Konoha Heroes_ (Naruto). |
 | [Lobisomem O Apocalipse](https://github.com/rrpgfirecast/firecast/raw/master/Plugins/Sheets/Lobisomem%20O%20Apocalipse/output/Lobisomem%20O%20Apocalipse.rpk?raw=true) | AlvagorH | Ficha de Lobisomem: O Apocalipse 3ª edição. |
 | [Log Horizon](https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Log%20Horizon/output/Ficha%20LH.rpk?raw=true) | Ambesek | Ficha para o sistema próprio _Log Horizon_. |
+| [Mage The Awakening](https://github.com/Aliortolan/firecast/blob/master/Plugins/Sheets/Mage%20The%20Awakening/output/Mage%20The%20Awakening%202e.rpk?raw=true) | Gatan | Mage: The Awakening gerada automaticamente. |
 | [Malditos Goblins](https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Malditos%20Goblins/output/mg.rpk?raw=true) | Yiotoo | Ficha para o sistema Malditos Goblins. |
 | [MightyBladeV6](https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/MightyBladeV6/output/MightyBladeV6.rpk?raw=true) | DanielMartinsLF | Ficha MB 3.0. |
 | [MobsFFRPG](https://github.com/rrpgfirecast/firecast/raw/master/Plugins/Sheets/MobsFFRPG/output/MobsFFRPG.rpk?raw=true) | Hitoshura | Ficha de Monstros para o sistema FFRPG 3.5. |
