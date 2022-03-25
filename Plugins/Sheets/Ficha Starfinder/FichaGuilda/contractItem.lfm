@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<form name="frmContractItemClosed" width="600" height="300" theme="dark" margins="{top=1}" padding="{top=5,bottom=5,left=5,right=5}">
+<form name="frmContractItem" width="600" height="300" theme="dark" margins="{top=1}" padding="{top=5,bottom=5,left=5,right=5}">
 	<script> 
 		<![CDATA[
 		local function askForDelete()
@@ -25,6 +25,24 @@
                                         NDB.deleteNode(sheet);
                                     end;
                                  end);
+        end;
+
+        local function toggleCheckbox(name, index)
+            if index < 1 or index > 5 then return end 
+            if sheet==nil then return end
+
+            local checkbox = sheet[name .. index]
+
+            if checkbox==true and index > 1 then
+                sheet[name .. (index-1)] = true
+            elseif checkbox==false and index < 5 then
+                sheet[name .. (index+1)] = false
+            end
+
+            if name=="d" then
+                if checkbox == true then sheet.dificuldade = index end 
+                if checkbox == false then sheet.dificuldade = (index-1) end 
+            end
         end;
         ]]>	
 	</script> 
@@ -69,6 +87,7 @@
             <label align="left" width="100" text="Contrato" horzTextAlign="center"/>
             <edit align="client" field="nome"/>
 
+            <button align="right" width="25" text="C" onClick="askForClose();"/>
             <button align="right" width="25" text="X" onClick="askForDelete();"/>
         </layout>
 
@@ -89,19 +108,19 @@
             <layout align="top" height="25">
                 <label align="left" width="75" text="Reputação" horzTextAlign="center"/>
                 <layout align="left" width="80">
-                    <checkBox align="left" width="16" field="r1"/>
-                    <checkBox align="left" width="16" field="r2"/>
-                    <checkBox align="left" width="16" field="r3"/>
-                    <checkBox align="left" width="16" field="r4"/>
-                    <checkBox align="left" width="16" field="r5"/>
+                    <checkBox align="left" width="16" field="r1" onChange="toggleCheckbox(&quot;r&quot;,1)"/>
+                    <checkBox align="left" width="16" field="r2" onChange="toggleCheckbox(&quot;r&quot;,2)"/>
+                    <checkBox align="left" width="16" field="r3" onChange="toggleCheckbox(&quot;r&quot;,3)"/>
+                    <checkBox align="left" width="16" field="r4" onChange="toggleCheckbox(&quot;r&quot;,4)"/>
+                    <checkBox align="left" width="16" field="r5" onChange="toggleCheckbox(&quot;r&quot;,5)"/>
                 </layout>
                 <label align="right" width="75" text="Dificuldade" horzTextAlign="center"/>
                 <layout align="right" width="80">
-                    <checkBox align="left" width="16" field="d1"/>
-                    <checkBox align="left" width="16" field="d2"/>
-                    <checkBox align="left" width="16" field="d3"/>
-                    <checkBox align="left" width="16" field="d4"/>
-                    <checkBox align="left" width="16" field="d5"/>
+                    <checkBox align="left" width="16" field="d1" onChange="toggleCheckbox(&quot;d&quot;,1)"/>
+                    <checkBox align="left" width="16" field="d2" onChange="toggleCheckbox(&quot;d&quot;,2)"/>
+                    <checkBox align="left" width="16" field="d3" onChange="toggleCheckbox(&quot;d&quot;,3)"/>
+                    <checkBox align="left" width="16" field="d4" onChange="toggleCheckbox(&quot;d&quot;,4)"/>
+                    <checkBox align="left" width="16" field="d5" onChange="toggleCheckbox(&quot;d&quot;,5)"/>
                 </layout>
             </layout>
 
@@ -132,7 +151,7 @@
 
             <layout align="top" height="25">
                 <label align="left" width="75" text="Negociação" horzTextAlign="center"/>
-                <rectangle  align="left" width="40" color="black" strokeColor="white" strokeSize="1" padding="{top=5,bottom=5,left=5,right=5}">
+                <rectangle align="left" width="40" color="black" strokeColor="white" strokeSize="1" padding="{top=5,bottom=5,left=5,right=5}">
                     <label align="client" field="negociacao"/>
                 </rectangle>
 
@@ -143,48 +162,6 @@
                         sheet.negociacao =  (tonumber(sheet.creditosMult) or 0) + 
                                             (tonumber(sheet.seguroMult) or 0) + 
                                             (tonumber(sheet.espoliosMult) or 0)
-                    </event>
-                </dataLink>
-            </layout>
-
-            <layout align="top" height="25">
-                <label align="left" width="75" text="Nota Contratante" horzTextAlign="center" fontSize="9"/>
-                <layout align="left" width="80">
-                    <checkBox align="left" width="16" field="n1"/>
-                    <checkBox align="left" width="16" field="n2"/>
-                    <checkBox align="left" width="16" field="n3"/>
-                    <checkBox align="left" width="16" field="n4"/>
-                    <checkBox align="left" width="16" field="n5"/>
-                </layout>
-                <label align="right" width="75" text="Avaliação do Time" horzTextAlign="center" fontSize="9"/>
-                <layout align="right" width="80">
-                    <checkBox align="left" width="16" field="a1"/>
-                    <checkBox align="left" width="16" field="a2"/>
-                    <checkBox align="left" width="16" field="a3"/>
-                    <checkBox align="left" width="16" field="a4"/>
-                    <checkBox align="left" width="16" field="a5"/>
-                </layout>
-
-                <dataLink fields="{'a1', 'a2', 'a3', 'a4', a5}">
-                    <event name="onChange">
-                        if sheet==nil then return end
-                        local node = NDB.getRoot(sheet);
-
-                        local contratos = NDB.getChildNodes(node.rclContratosFechados);
-                        if #contratos &lt; 10 then return end
-
-                        local stars = 0
-                        for i=1, #contratos, 1 do
-                            local contrato = contratos[i]
-                            if contrato.a1 then stars = stars + 1 end
-                            if contrato.a2 then stars = stars + 1 end
-                            if contrato.a3 then stars = stars + 1 end
-                            if contrato.a4 then stars = stars + 1 end
-                            if contrato.a5 then stars = stars + 1 end
-                        end
-
-                        local rep = math.floor((stars/#contratos) + 0.5)
-                        node.reputacao = rep .. "*"
                     </event>
                 </dataLink>
             </layout>

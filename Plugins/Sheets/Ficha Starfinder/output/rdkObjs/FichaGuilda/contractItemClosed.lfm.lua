@@ -58,6 +58,24 @@ local function constructNew_frmContractItemClosed()
                                     end;
                                  end);
         end;
+
+        local function toggleCheckbox(name, index)
+            if index < 1 or index > 5 then return end 
+            if sheet==nil then return end
+
+            local checkbox = sheet[name .. index]
+
+            if checkbox==true and index > 1 then
+                sheet[name .. (index-1)] = true
+            elseif checkbox==false and index < 5 then
+                sheet[name .. (index+1)] = false
+            end
+
+            if name=="d" then
+                if checkbox == true then sheet.dificuldade = index end 
+                if checkbox == false then sheet.dificuldade = (index-1) end 
+            end
+        end;
         
 
 
@@ -629,20 +647,70 @@ local function constructNew_frmContractItemClosed()
             askForDelete();
         end, obj);
 
-    obj._e_event1 = obj.creditosLabel:addEventListener("onClick",
+    obj._e_event1 = obj.checkBox1:addEventListener("onChange",
+        function (_)
+            toggleCheckbox("r",1)
+        end, obj);
+
+    obj._e_event2 = obj.checkBox2:addEventListener("onChange",
+        function (_)
+            toggleCheckbox("r",2)
+        end, obj);
+
+    obj._e_event3 = obj.checkBox3:addEventListener("onChange",
+        function (_)
+            toggleCheckbox("r",3)
+        end, obj);
+
+    obj._e_event4 = obj.checkBox4:addEventListener("onChange",
+        function (_)
+            toggleCheckbox("r",4)
+        end, obj);
+
+    obj._e_event5 = obj.checkBox5:addEventListener("onChange",
+        function (_)
+            toggleCheckbox("r",5)
+        end, obj);
+
+    obj._e_event6 = obj.checkBox6:addEventListener("onChange",
+        function (_)
+            toggleCheckbox("d",1)
+        end, obj);
+
+    obj._e_event7 = obj.checkBox7:addEventListener("onChange",
+        function (_)
+            toggleCheckbox("d",2)
+        end, obj);
+
+    obj._e_event8 = obj.checkBox8:addEventListener("onChange",
+        function (_)
+            toggleCheckbox("d",3)
+        end, obj);
+
+    obj._e_event9 = obj.checkBox9:addEventListener("onChange",
+        function (_)
+            toggleCheckbox("d",4)
+        end, obj);
+
+    obj._e_event10 = obj.checkBox10:addEventListener("onChange",
+        function (_)
+            toggleCheckbox("d",5)
+        end, obj);
+
+    obj._e_event11 = obj.creditosLabel:addEventListener("onClick",
         function (_)
             self.creditosLabel.visible = false;
                                 self.creditosEdit.visible = true;
                                 self.creditosEdit:setFocus();
         end, obj);
 
-    obj._e_event2 = obj.creditosEdit:addEventListener("onExit",
+    obj._e_event12 = obj.creditosEdit:addEventListener("onExit",
         function (_)
             self.creditosLabel.visible = true;
                                 self.creditosEdit.visible = false;
         end, obj);
 
-    obj._e_event3 = obj.dataLink1:addEventListener("onChange",
+    obj._e_event13 = obj.dataLink1:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet==nil then return end
             
@@ -656,20 +724,20 @@ local function constructNew_frmContractItemClosed()
                             end
         end, obj);
 
-    obj._e_event4 = obj.seguroLabel:addEventListener("onClick",
+    obj._e_event14 = obj.seguroLabel:addEventListener("onClick",
         function (_)
             self.seguroLabel.visible = false;
                                 self.seguroEdit.visible = true;
                                 self.seguroEdit:setFocus();
         end, obj);
 
-    obj._e_event5 = obj.seguroEdit:addEventListener("onExit",
+    obj._e_event15 = obj.seguroEdit:addEventListener("onExit",
         function (_)
             self.seguroLabel.visible = true;
                                 self.seguroEdit.visible = false;
         end, obj);
 
-    obj._e_event6 = obj.dataLink2:addEventListener("onChange",
+    obj._e_event16 = obj.dataLink2:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet==nil then return end
             
@@ -683,20 +751,20 @@ local function constructNew_frmContractItemClosed()
                             end
         end, obj);
 
-    obj._e_event7 = obj.espoliosLabel:addEventListener("onClick",
+    obj._e_event17 = obj.espoliosLabel:addEventListener("onClick",
         function (_)
             self.espoliosLabel.visible = false;
                                 self.espoliosEdit.visible = true;
                                 self.espoliosEdit:setFocus();
         end, obj);
 
-    obj._e_event8 = obj.espoliosEdit:addEventListener("onExit",
+    obj._e_event18 = obj.espoliosEdit:addEventListener("onExit",
         function (_)
             self.espoliosLabel.visible = true;
                                 self.espoliosEdit.visible = false;
         end, obj);
 
-    obj._e_event9 = obj.dataLink3:addEventListener("onChange",
+    obj._e_event19 = obj.dataLink3:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet==nil then return end
             
@@ -710,7 +778,7 @@ local function constructNew_frmContractItemClosed()
                             end
         end, obj);
 
-    obj._e_event10 = obj.dataLink4:addEventListener("onChange",
+    obj._e_event20 = obj.dataLink4:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet==nil then return end
             
@@ -719,7 +787,57 @@ local function constructNew_frmContractItemClosed()
                                                         (tonumber(sheet.espoliosMult) or 0)
         end, obj);
 
-    obj._e_event11 = obj.dataLink5:addEventListener("onChange",
+    obj._e_event21 = obj.checkBox11:addEventListener("onChange",
+        function (_)
+            toggleCheckbox("n",1)
+        end, obj);
+
+    obj._e_event22 = obj.checkBox12:addEventListener("onChange",
+        function (_)
+            toggleCheckbox("n",2)
+        end, obj);
+
+    obj._e_event23 = obj.checkBox13:addEventListener("onChange",
+        function (_)
+            toggleCheckbox("n",3)
+        end, obj);
+
+    obj._e_event24 = obj.checkBox14:addEventListener("onChange",
+        function (_)
+            toggleCheckbox("n",4)
+        end, obj);
+
+    obj._e_event25 = obj.checkBox15:addEventListener("onChange",
+        function (_)
+            toggleCheckbox("n",5)
+        end, obj);
+
+    obj._e_event26 = obj.checkBox16:addEventListener("onChange",
+        function (_)
+            toggleCheckbox("a",1)
+        end, obj);
+
+    obj._e_event27 = obj.checkBox17:addEventListener("onChange",
+        function (_)
+            toggleCheckbox("a",2)
+        end, obj);
+
+    obj._e_event28 = obj.checkBox18:addEventListener("onChange",
+        function (_)
+            toggleCheckbox("a",3)
+        end, obj);
+
+    obj._e_event29 = obj.checkBox19:addEventListener("onChange",
+        function (_)
+            toggleCheckbox("a",4)
+        end, obj);
+
+    obj._e_event30 = obj.checkBox20:addEventListener("onChange",
+        function (_)
+            toggleCheckbox("a",5)
+        end, obj);
+
+    obj._e_event31 = obj.dataLink5:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet==nil then return end
                                     local node = NDB.getRoot(sheet);
@@ -742,6 +860,26 @@ local function constructNew_frmContractItemClosed()
         end, obj);
 
     function obj:_releaseEvents()
+        __o_rrpgObjs.removeEventListenerById(self._e_event31);
+        __o_rrpgObjs.removeEventListenerById(self._e_event30);
+        __o_rrpgObjs.removeEventListenerById(self._e_event29);
+        __o_rrpgObjs.removeEventListenerById(self._e_event28);
+        __o_rrpgObjs.removeEventListenerById(self._e_event27);
+        __o_rrpgObjs.removeEventListenerById(self._e_event26);
+        __o_rrpgObjs.removeEventListenerById(self._e_event25);
+        __o_rrpgObjs.removeEventListenerById(self._e_event24);
+        __o_rrpgObjs.removeEventListenerById(self._e_event23);
+        __o_rrpgObjs.removeEventListenerById(self._e_event22);
+        __o_rrpgObjs.removeEventListenerById(self._e_event21);
+        __o_rrpgObjs.removeEventListenerById(self._e_event20);
+        __o_rrpgObjs.removeEventListenerById(self._e_event19);
+        __o_rrpgObjs.removeEventListenerById(self._e_event18);
+        __o_rrpgObjs.removeEventListenerById(self._e_event17);
+        __o_rrpgObjs.removeEventListenerById(self._e_event16);
+        __o_rrpgObjs.removeEventListenerById(self._e_event15);
+        __o_rrpgObjs.removeEventListenerById(self._e_event14);
+        __o_rrpgObjs.removeEventListenerById(self._e_event13);
+        __o_rrpgObjs.removeEventListenerById(self._e_event12);
         __o_rrpgObjs.removeEventListenerById(self._e_event11);
         __o_rrpgObjs.removeEventListenerById(self._e_event10);
         __o_rrpgObjs.removeEventListenerById(self._e_event9);

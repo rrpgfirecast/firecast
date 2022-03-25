@@ -1734,7 +1734,11 @@ local function constructNew_frmFichaContrato()
 
     obj._e_event4 = obj.rclContratosAbertos:addEventListener("onCompare",
         function (_, nodeA, nodeB)
-            return utils.compareStringPtBr(nodeA.nome, nodeB.nome);
+            local dif = ((tonumber(nodeA.dificuldade) or 0) - (tonumber(nodeB.dificuldade) or 0));
+            
+                                if dif~=0 then return dif end
+            
+                                return utils.compareStringPtBr(nodeA.nome, nodeB.nome);
         end, obj);
 
     obj._e_event5 = obj.button2:addEventListener("onClick",
@@ -1749,7 +1753,11 @@ local function constructNew_frmFichaContrato()
 
     obj._e_event7 = obj.rclContratosPrivados:addEventListener("onCompare",
         function (_, nodeA, nodeB)
-            return utils.compareStringPtBr(nodeA.nome, nodeB.nome);
+            local dif = ((tonumber(nodeA.dificuldade) or 0) - (tonumber(nodeB.dificuldade) or 0));
+            
+                                if dif~=0 then return dif end
+            
+                                return utils.compareStringPtBr(nodeA.nome, nodeB.nome);
         end, obj);
 
     obj._e_event8 = obj.button3:addEventListener("onClick",
@@ -1764,7 +1772,11 @@ local function constructNew_frmFichaContrato()
 
     obj._e_event10 = obj.rclContratosFechados:addEventListener("onCompare",
         function (_, nodeA, nodeB)
-            return utils.compareStringPtBr(nodeA.nome, nodeB.nome);
+            local dif = ((tonumber(nodeA.dificuldade) or 0) - (tonumber(nodeB.dificuldade) or 0));
+            
+                                if dif~=0 then return dif end
+            
+                                return utils.compareStringPtBr(nodeA.nome, nodeB.nome);
         end, obj);
 
     obj._e_event11 = obj.button4:addEventListener("onClick",
@@ -1802,7 +1814,11 @@ local function constructNew_frmFichaContrato()
 
     obj._e_event17 = obj.rclInventarioNaves:addEventListener("onCompare",
         function (_, nodeA, nodeB)
-            return utils.compareStringPtBr(nodeA.nome, nodeB.nome);
+            local dif = ((tonumber(nodeA.dificuldade) or 0) - (tonumber(nodeB.dificuldade) or 0));
+            
+                                if dif~=0 then return dif end
+            
+                                return utils.compareStringPtBr(nodeA.nome, nodeB.nome);
         end, obj);
 
     obj._e_event18 = obj.button6:addEventListener("onClick",
@@ -1817,7 +1833,11 @@ local function constructNew_frmFichaContrato()
 
     obj._e_event20 = obj.rclInventarioMechas:addEventListener("onCompare",
         function (_, nodeA, nodeB)
-            return utils.compareStringPtBr(nodeA.nome, nodeB.nome);
+            local dif = ((tonumber(nodeA.dificuldade) or 0) - (tonumber(nodeB.dificuldade) or 0));
+            
+                                if dif~=0 then return dif end
+            
+                                return utils.compareStringPtBr(nodeA.nome, nodeB.nome);
         end, obj);
 
     obj._e_event21 = obj.button7:addEventListener("onClick",
@@ -1832,7 +1852,11 @@ local function constructNew_frmFichaContrato()
 
     obj._e_event23 = obj.rclInventarioVeiculos:addEventListener("onCompare",
         function (_, nodeA, nodeB)
-            return utils.compareStringPtBr(nodeA.nome, nodeB.nome);
+            local dif = ((tonumber(nodeA.dificuldade) or 0) - (tonumber(nodeB.dificuldade) or 0));
+            
+                                if dif~=0 then return dif end
+            
+                                return utils.compareStringPtBr(nodeA.nome, nodeB.nome);
         end, obj);
 
     obj._e_event24 = obj.button8:addEventListener("onClick",
@@ -1847,7 +1871,11 @@ local function constructNew_frmFichaContrato()
 
     obj._e_event26 = obj.rclInventarioEquipamentos:addEventListener("onCompare",
         function (_, nodeA, nodeB)
-            return utils.compareStringPtBr(nodeA.nome, nodeB.nome);
+            local dif = ((tonumber(nodeA.dificuldade) or 0) - (tonumber(nodeB.dificuldade) or 0));
+            
+                                if dif~=0 then return dif end
+            
+                                return utils.compareStringPtBr(nodeA.nome, nodeB.nome);
         end, obj);
 
     obj._e_event27 = obj.button9:addEventListener("onClick",
@@ -1862,7 +1890,11 @@ local function constructNew_frmFichaContrato()
 
     obj._e_event29 = obj.rclInventarioArmas:addEventListener("onCompare",
         function (_, nodeA, nodeB)
-            return utils.compareStringPtBr(nodeA.nome, nodeB.nome);
+            local dif = ((tonumber(nodeA.dificuldade) or 0) - (tonumber(nodeB.dificuldade) or 0));
+            
+                                if dif~=0 then return dif end
+            
+                                return utils.compareStringPtBr(nodeA.nome, nodeB.nome);
         end, obj);
 
     obj._e_event30 = obj.button10:addEventListener("onClick",
@@ -1877,7 +1909,11 @@ local function constructNew_frmFichaContrato()
 
     obj._e_event32 = obj.rclInventarioMunicao:addEventListener("onCompare",
         function (_, nodeA, nodeB)
-            return utils.compareStringPtBr(nodeA.nome, nodeB.nome);
+            local dif = ((tonumber(nodeA.dificuldade) or 0) - (tonumber(nodeB.dificuldade) or 0));
+            
+                                if dif~=0 then return dif end
+            
+                                return utils.compareStringPtBr(nodeA.nome, nodeB.nome);
         end, obj);
 
     obj._e_event33 = obj.button11:addEventListener("onClick",
@@ -1892,7 +1928,11 @@ local function constructNew_frmFichaContrato()
 
     obj._e_event35 = obj.rclInventarioPecas:addEventListener("onCompare",
         function (_, nodeA, nodeB)
-            return utils.compareStringPtBr(nodeA.nome, nodeB.nome);
+            local dif = ((tonumber(nodeA.dificuldade) or 0) - (tonumber(nodeB.dificuldade) or 0));
+            
+                                if dif~=0 then return dif end
+            
+                                return utils.compareStringPtBr(nodeA.nome, nodeB.nome);
         end, obj);
 
     obj._e_event36 = obj.button12:addEventListener("onClick",
@@ -1907,7 +1947,11 @@ local function constructNew_frmFichaContrato()
 
     obj._e_event38 = obj.rclInventarioOutros:addEventListener("onCompare",
         function (_, nodeA, nodeB)
-            return utils.compareStringPtBr(nodeA.nome, nodeB.nome);
+            local dif = ((tonumber(nodeA.dificuldade) or 0) - (tonumber(nodeB.dificuldade) or 0));
+            
+                                if dif~=0 then return dif end
+            
+                                return utils.compareStringPtBr(nodeA.nome, nodeB.nome);
         end, obj);
 
     obj._e_event39 = obj.dataLink1:addEventListener("onChange",

@@ -63,6 +63,10 @@
 
             <recordList name="$(rclName)" field="$(rclField)" templateForm="$(frm)" align="top" layout="vertical" autoHeight="true" hitTest="false" onResize="self.$(rclName)Part._recalcHeight();" minQt="0">
                 <event name="onCompare">
+                    local dif = ((tonumber(nodeA.dificuldade) or 0) - (tonumber(nodeB.dificuldade) or 0));
+
+                    if dif~=0 then return dif end
+
                     return utils.compareStringPtBr(nodeA.nome, nodeB.nome);
                 </event>
             </recordList>
