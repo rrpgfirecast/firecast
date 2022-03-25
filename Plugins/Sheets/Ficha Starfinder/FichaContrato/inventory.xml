@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmInventory" align="client">
+	<scrollBox align="client">
+		<rectangle align="top" height="35" color="black" strokeColor="white" strokeSize="1" padding="{top=5,bottom=5,left=5,right=5}">
+			<layout align="left" width="300" margins="{right=5}">
+				<label align="left" width="100" horzTextAlign="center" text="Creditos"/>
+				<formatEdit field="creditos" unit="C"/>
+			</layout>
+
+			<layout align="left" width="300" margins="{right=5}">
+                <label align="left" width="100" text="Ativos" horzTextAlign="center"/>
+                <rectangle align="client" color="black" strokeColor="white" strokeSize="1" padding="{top=5,bottom=5,left=5,right=5}">
+                    <label align="client" field="recursosGastos" formatFloat=",0.## C"/>
+                </rectangle>
+			</layout>
+
+			<layout align="left" width="300" margins="{right=5}">
+                <label align="left" width="100" text="Caixa" horzTextAlign="center"/>
+                <rectangle align="client" color="black" strokeColor="white" strokeSize="1" padding="{top=5,bottom=5,left=5,right=5}">
+                    <label align="client" field="recursosLivres" formatFloat=",0.## C"/>
+                </rectangle>
+			</layout>
+		</rectangle>
+		<flowLayout align="top" autoHeight="true" maxColumns="3" horzAlign="center" orientation="vertical" avoidScale="true">
+			<ListaFlexivel nome="NAVES" rclName="rclInventarioNaves" rclField="rclInventarioNaves" frm="frmInventaryItem"/>
+			<ListaFlexivel nome="MECHAS" rclName="rclInventarioMechas" rclField="rclInventarioMechas" frm="frmInventaryItem"/>
+			<ListaFlexivel nome="VEICULOS" rclName="rclInventarioVeiculos" rclField="rclInventarioVeiculos" frm="frmInventaryItem"/>
+			<ListaFlexivel nome="EQUIPAMENTOS" rclName="rclInventarioEquipamentos" rclField="rclInventarioEquipamentos" frm="frmInventaryItem"/>
+			<ListaFlexivel nome="ARMAS" rclName="rclInventarioArmas" rclField="rclInventarioArmas" frm="frmInventaryItem"/>
+			<ListaFlexivel nome="MUNIÇÃO" rclName="rclInventarioMunicao" rclField="rclInventarioMunicao" frm="frmInventaryItem"/>
+			<ListaFlexivel nome="PEÇAS" rclName="rclInventarioPecas" rclField="rclInventarioPecas" frm="frmInventaryItem"/>
+			<ListaFlexivel nome="OUTROS" rclName="rclInventarioOutros" rclField="rclInventarioOutros" frm="frmInventaryItem"/>
+		</flowLayout>
+	</scrollBox>
+
+	<dataLink fields="{'creditos','recursosGastos'}">
+		<event name="onChange">
+			if sheet==nil then return end
+			local cred = (tonumber(sheet.creditos) or 0);
+			local gast = (tonumber(sheet.recursosGastos) or 0);
+
+			sheet.recursosLivres = cred - gast
+		</event>
+	</dataLink>
+</form>

@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmContractorItem" width="600" height="150" theme="dark" margins="{top=1}" padding="{top=5,bottom=5,left=5,right=5}">
+	<script> 
+		<![CDATA[
+		local function askForDelete()
+			Dialogs.confirmYesNo("Deseja realmente apagar esse contratante?",
+								 function (confirmado)
+									if confirmado then
+										NDB.deleteNode(sheet);
+									end;
+								 end);
+		end;
+        ]]>	
+	</script> 
+
+    <rectangle align="client" color="black" strokeColor="white" strokeSize="1" padding="{top=5,bottom=5,left=5,right=5}">
+        <layout align="top" height="25">
+            <label align="left" width="100" text="Contratante" horzTextAlign="center"/>
+            <edit align="client" field="nome"/>
+
+            <button align="right" width="25" text="X" onClick="askForDelete();"/>
+        </layout>
+
+        <layout align="left" width="250" margins="{right=5}">
+            <textEditor align="client" field="descricao"/>
+        </layout>
+
+        <layout align="client">
+            <layout align="top" height="25">
+                <label align="left" width="75" text="Relação" horzTextAlign="center"/>
+                <comboBox align="client" field="relacao" items="{'Hostil', 'Pouco Amistoso', 'Indiferente', 'Amistoso', 'Prestativo'}"/>
+            </layout>
+            <layout align="top" height="25">
+                <label align="left" width="75" text="Reputação Total" horzTextAlign="center" fontSize="9"/>
+                <rectangle align="left" width="80" color="black" strokeColor="white" strokeSize="1">
+                    <label align="client" field="reputacaoTotal" horzTextAlign="center"/>
+                </rectangle>
+                <label align="right" width="75" text="Contratos Totais" horzTextAlign="center" fontSize="9"/>
+                <rectangle align="right" width="80" color="black" strokeColor="white" strokeSize="1">
+                    <label align="client" field="contratosTotal" horzTextAlign="center"/>
+                </rectangle>
+            </layout>
+            <layout align="top" height="25">
+                <label align="left" width="75" text="Reputação Outros" horzTextAlign="center" fontSize="9"/>
+                <layout align="left" width="80">
+                    <edit align="client" field="reputacaoOutros"/>
+                </layout>
+                <label align="right" width="75" text="Contratos Outros" horzTextAlign="center" fontSize="9"/>
+                <layout align="right" width="80">
+                    <edit align="client" field="contratosOutros"/>
+                </layout>
+            </layout>
+            <layout align="top" height="25">
+                <label align="left" width="75" text="Reputação" horzTextAlign="center"/>
+                <layout align="left" width="80">
+                    <edit align="client" field="reputacao"/>
+                </layout>
+                <label align="right" width="75" text="Contratos" horzTextAlign="center"/>
+                <layout align="right" width="80">
+                    <edit align="client" field="contratos"/>
+                </layout>
+            </layout>
+
+            <dataLink fields="{'reputacaoOutros', 'contratosOutros', 'reputacao', 'contratos'}">
+                <event name="onChange">
+                    if sheet==nil then return end
+
+                    local repOut = tonumber(sheet.reputacaoOutros) or 0
+                    local conOut = tonumber(sheet.contratosOutros) or 1
+                    local rep = tonumber(sheet.reputacao) or 0
+                    local con = tonumber(sheet.contratos) or 1
+
+                    local conTot = conOut + con
+
+                    sheet.contratosTotal = conTot
+
+                    sheet.reputacaoTotal = math.floor(((repOut*conOut + rep*con)/conTot)+0.5) .. "*"
+                </event>
+            </dataLink>
+
+
+        </layout>
+    </rectangle>
+</form>

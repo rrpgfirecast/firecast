@@ -11,8 +11,8 @@
 
 	<flowPart minWidth="50" maxWidth="150" height="25"/>
 	<flowPart minWidth="50" maxWidth="150" height="25"/>
-	<ComboFlow items="{'FOR', 'DES', 'CON', 'INT', 'SAB', 'CAR'}" values="{'1', '2', '3', '4', '5', '6'}" field="atributoCD"/>
-	<ComboFlow items="{'FOR', 'DES', 'CON', 'INT', 'SAB', 'CAR'}" values="{'1', '2', '3', '4', '5', '6'}" field="atributoBonus"/>
+	<ComboFlow items="{'FOR', 'DES', 'CON', 'INT', 'SAB', 'CAR','-'}" values="{'1', '2', '3', '4', '5', '6','7'}" field="atributoCD"/>
+	<ComboFlow items="{'FOR', 'DES', 'CON', 'INT', 'SAB', 'CAR','-'}" values="{'1', '2', '3', '4', '5', '6','7'}" field="atributoBonus"/>
 	<LabelCenter field="grimorio"/>
 
 	<flowLineBreak/>
@@ -32,9 +32,6 @@
 	<magicLevel nivel="4"/>
 	<magicLevel nivel="5"/>
 	<magicLevel nivel="6"/>
-	<magicLevel nivel="7"/>
-	<magicLevel nivel="8"/>
-	<magicLevel nivel="9"/>
 
 	<flowLineBreak/>
 
@@ -81,9 +78,6 @@
 						self.boxDetalhesDaMagia.node.campoDasMagias4 = sheet.ieNode[5];
 						self.boxDetalhesDaMagia.node.campoDasMagias5 = sheet.ieNode[6];
 						self.boxDetalhesDaMagia.node.campoDasMagias6 = sheet.ieNode[7];
-						self.boxDetalhesDaMagia.node.campoDasMagias7 = sheet.ieNode[8];
-						self.boxDetalhesDaMagia.node.campoDasMagias8 = sheet.ieNode[9];
-						self.boxDetalhesDaMagia.node.campoDasMagias9 = sheet.ieNode[10];
 					end);
 			</event>
 		</button>
