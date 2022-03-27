@@ -17,7 +17,7 @@
 		<layout align="top" height="50" margins="{left=5}">
 			<VertCombo text="Defesa" field="defesa" items="{'Esquiva', 'Aparar', 'Fortitude', 'Resistência', 'Vontade', 'Nenhum'}" width="75"/>
 			<VertCombo text="Ação" field="acao" items="{'Livre', 'Reação', 'Movimento', 'Padrão', 'Nenhum'}" width="75"/>
-			<VertCombo text="Tipo" field="tipo" items="{'Simples', 'Dinâmico'}" width="75"/>
+			<VertCombo text="Tipo" field="tipo" items="{'Simples', 'Dinâmico', '-'}" width="75"/>
 			<VertEdit text="Alcance" field="alcance" width="75"/>
 			<VertEdit text="Duração" field="duracao" width="75"/>
 			<VertEdit text="Livro" field="livro" width="75"/>
@@ -67,7 +67,7 @@
 				<rectangle align="left" width="50" color="black" strokeColor="white" strokeSize="1">
 					<label align="client" field="custoArranjo" horzTextAlign="center" fontSize="12"/>
 				</rectangle>
-				<label align="client" text="Arranjo de Poderes" horzTextAlign="center"/>
+				<edit align="client" field="arranjo"/>
 			</layout>
 			<layout align="top" height="25">
 				<label align="client" text="" horzTextAlign="center"/>
@@ -75,7 +75,7 @@
 				<layout align="right" width="290">
 					<label align="left" width="200" text="" horzTextAlign="center"/>
 					<label align="left" width="50" text="Custo" horzTextAlign="center"/>
-					<label align="right" width="70" text="" horzTextAlign="center"/>
+					<label align="right" width="90" text="" horzTextAlign="center"/>
 				</layout>
 			</layout>
 			<recordList align="client" margins="{left=5,right=5,bottom=5,top=5}" name="rclSubPoderes" field="rclSubPoderes" templateForm="frmPoderItem" layout="vertical"/>

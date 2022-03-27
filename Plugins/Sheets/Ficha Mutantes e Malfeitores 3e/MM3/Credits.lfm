@@ -84,6 +84,7 @@
 			<label left="0" top="60" width="200" height="20" text="Consultor: " horzTextAlign="center"/>
 			<label left="0" top="85" width="200" height="20" text="James (valber)" horzTextAlign="center"/>
 			<label left="0" top="110" width="200" height="20" text="Will (BlackYep)" horzTextAlign="center"/>
+			<label left="0" top="135" width="200" height="20" text="Azai (michel32)" horzTextAlign="center"/>
 		</layout>
 
 		<layout left="850" top="200" width="200" height="150">

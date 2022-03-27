@@ -119,7 +119,7 @@ local function constructNew_frmPoderItem()
             							for i=1, #nodes, 1 do
             								if nodes[i].tipo == "Dinâmico" then
             									custo = custo + 2
-            								else
+            								elseif nodes[i].tipo == "Simples" then
             									custo = custo + 1
             								end
             							end

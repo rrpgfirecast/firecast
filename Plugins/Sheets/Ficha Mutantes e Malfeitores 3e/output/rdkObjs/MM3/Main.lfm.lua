@@ -2096,7 +2096,7 @@ local function constructNew_frmMM3()
     obj.comboBox4:setParent(obj.layout45);
     obj.comboBox4:setAlign("client");
     obj.comboBox4:setField("tipo");
-    obj.comboBox4:setItems({'Simples', 'Dinâmico'});
+    obj.comboBox4:setItems({'Simples', 'Dinâmico', '-'});
     obj.comboBox4:setName("comboBox4");
 
     obj.layout46 = GUI.fromHandle(_obj_newObject("layout"));
@@ -2605,12 +2605,11 @@ local function constructNew_frmMM3()
     obj.label112:setFontSize(12);
     obj.label112:setName("label112");
 
-    obj.label113 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label113:setParent(obj.layout71);
-    obj.label113:setAlign("client");
-    obj.label113:setText("Arranjo de Poderes");
-    obj.label113:setHorzTextAlign("center");
-    obj.label113:setName("label113");
+    obj.edit53 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit53:setParent(obj.layout71);
+    obj.edit53:setAlign("client");
+    obj.edit53:setField("arranjo");
+    obj.edit53:setName("edit53");
 
     obj.layout72 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout72:setParent(obj.layout70);
@@ -2618,12 +2617,12 @@ local function constructNew_frmMM3()
     obj.layout72:setHeight(25);
     obj.layout72:setName("layout72");
 
-    obj.label114 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label114:setParent(obj.layout72);
-    obj.label114:setAlign("client");
-    obj.label114:setText("");
-    obj.label114:setHorzTextAlign("center");
-    obj.label114:setName("label114");
+    obj.label113 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label113:setParent(obj.layout72);
+    obj.label113:setAlign("client");
+    obj.label113:setText("");
+    obj.label113:setHorzTextAlign("center");
+    obj.label113:setName("label113");
 
     obj.layout73 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout73:setParent(obj.layout72);
@@ -2631,29 +2630,29 @@ local function constructNew_frmMM3()
     obj.layout73:setWidth(290);
     obj.layout73:setName("layout73");
 
+    obj.label114 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label114:setParent(obj.layout73);
+    obj.label114:setAlign("left");
+    obj.label114:setWidth(200);
+    obj.label114:setText("");
+    obj.label114:setHorzTextAlign("center");
+    obj.label114:setName("label114");
+
     obj.label115 = GUI.fromHandle(_obj_newObject("label"));
     obj.label115:setParent(obj.layout73);
     obj.label115:setAlign("left");
-    obj.label115:setWidth(200);
-    obj.label115:setText("");
+    obj.label115:setWidth(50);
+    obj.label115:setText("Custo");
     obj.label115:setHorzTextAlign("center");
     obj.label115:setName("label115");
 
     obj.label116 = GUI.fromHandle(_obj_newObject("label"));
     obj.label116:setParent(obj.layout73);
-    obj.label116:setAlign("left");
-    obj.label116:setWidth(50);
-    obj.label116:setText("Custo");
+    obj.label116:setAlign("right");
+    obj.label116:setWidth(90);
+    obj.label116:setText("");
     obj.label116:setHorzTextAlign("center");
     obj.label116:setName("label116");
-
-    obj.label117 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label117:setParent(obj.layout73);
-    obj.label117:setAlign("right");
-    obj.label117:setWidth(70);
-    obj.label117:setText("");
-    obj.label117:setHorzTextAlign("center");
-    obj.label117:setName("label117");
 
     obj.rclSubPoderes = GUI.fromHandle(_obj_newObject("recordList"));
     obj.rclSubPoderes:setParent(obj.layout70);
@@ -2694,12 +2693,12 @@ local function constructNew_frmMM3()
     obj.button5:setMargins({left=5});
     obj.button5:setName("button5");
 
-    obj.label118 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label118:setParent(obj.layout74);
-    obj.label118:setAlign("client");
-    obj.label118:setText("Poderes");
-    obj.label118:setHorzTextAlign("center");
-    obj.label118:setName("label118");
+    obj.label117 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label117:setParent(obj.layout74);
+    obj.label117:setAlign("client");
+    obj.label117:setText("Poderes");
+    obj.label117:setHorzTextAlign("center");
+    obj.label117:setName("label117");
 
     obj.layout75 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout75:setParent(obj.rectangle42);
@@ -2707,12 +2706,12 @@ local function constructNew_frmMM3()
     obj.layout75:setHeight(25);
     obj.layout75:setName("layout75");
 
-    obj.label119 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label119:setParent(obj.layout75);
-    obj.label119:setAlign("client");
-    obj.label119:setText("");
-    obj.label119:setHorzTextAlign("center");
-    obj.label119:setName("label119");
+    obj.label118 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label118:setParent(obj.layout75);
+    obj.label118:setAlign("client");
+    obj.label118:setText("");
+    obj.label118:setHorzTextAlign("center");
+    obj.label118:setName("label118");
 
     obj.layout76 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout76:setParent(obj.layout75);
@@ -2720,29 +2719,29 @@ local function constructNew_frmMM3()
     obj.layout76:setWidth(315);
     obj.layout76:setName("layout76");
 
+    obj.label119 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label119:setParent(obj.layout76);
+    obj.label119:setAlign("left");
+    obj.label119:setWidth(200);
+    obj.label119:setText("");
+    obj.label119:setHorzTextAlign("center");
+    obj.label119:setName("label119");
+
     obj.label120 = GUI.fromHandle(_obj_newObject("label"));
     obj.label120:setParent(obj.layout76);
     obj.label120:setAlign("left");
-    obj.label120:setWidth(200);
-    obj.label120:setText("");
+    obj.label120:setWidth(50);
+    obj.label120:setText("Custo");
     obj.label120:setHorzTextAlign("center");
     obj.label120:setName("label120");
 
     obj.label121 = GUI.fromHandle(_obj_newObject("label"));
     obj.label121:setParent(obj.layout76);
-    obj.label121:setAlign("left");
-    obj.label121:setWidth(50);
-    obj.label121:setText("Custo");
+    obj.label121:setAlign("right");
+    obj.label121:setWidth(70);
+    obj.label121:setText("");
     obj.label121:setHorzTextAlign("center");
     obj.label121:setName("label121");
-
-    obj.label122 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label122:setParent(obj.layout76);
-    obj.label122:setAlign("right");
-    obj.label122:setWidth(70);
-    obj.label122:setText("");
-    obj.label122:setHorzTextAlign("center");
-    obj.label122:setName("label122");
 
     obj.rclPoderes = GUI.fromHandle(_obj_newObject("recordList"));
     obj.rclPoderes:setParent(obj.rectangle42);
@@ -2778,12 +2777,12 @@ local function constructNew_frmMM3()
     obj.button6:setMargins({left=5});
     obj.button6:setName("button6");
 
-    obj.label123 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label123:setParent(obj.layout77);
-    obj.label123:setAlign("client");
-    obj.label123:setText("Vantagens");
-    obj.label123:setHorzTextAlign("center");
-    obj.label123:setName("label123");
+    obj.label122 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label122:setParent(obj.layout77);
+    obj.label122:setAlign("client");
+    obj.label122:setText("Vantagens");
+    obj.label122:setHorzTextAlign("center");
+    obj.label122:setName("label122");
 
     obj.layout78 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout78:setParent(obj.rectangle43);
@@ -2791,12 +2790,12 @@ local function constructNew_frmMM3()
     obj.layout78:setHeight(25);
     obj.layout78:setName("layout78");
 
-    obj.label124 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label124:setParent(obj.layout78);
-    obj.label124:setAlign("client");
-    obj.label124:setText("");
-    obj.label124:setHorzTextAlign("center");
-    obj.label124:setName("label124");
+    obj.label123 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label123:setParent(obj.layout78);
+    obj.label123:setAlign("client");
+    obj.label123:setText("");
+    obj.label123:setHorzTextAlign("center");
+    obj.label123:setName("label123");
 
     obj.layout79 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout79:setParent(obj.layout78);
@@ -2804,29 +2803,29 @@ local function constructNew_frmMM3()
     obj.layout79:setWidth(290);
     obj.layout79:setName("layout79");
 
+    obj.label124 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label124:setParent(obj.layout79);
+    obj.label124:setAlign("left");
+    obj.label124:setWidth(200);
+    obj.label124:setText("");
+    obj.label124:setHorzTextAlign("center");
+    obj.label124:setName("label124");
+
     obj.label125 = GUI.fromHandle(_obj_newObject("label"));
     obj.label125:setParent(obj.layout79);
     obj.label125:setAlign("left");
-    obj.label125:setWidth(200);
-    obj.label125:setText("");
+    obj.label125:setWidth(50);
+    obj.label125:setText("Custo");
     obj.label125:setHorzTextAlign("center");
     obj.label125:setName("label125");
 
     obj.label126 = GUI.fromHandle(_obj_newObject("label"));
     obj.label126:setParent(obj.layout79);
-    obj.label126:setAlign("left");
-    obj.label126:setWidth(50);
-    obj.label126:setText("Custo");
+    obj.label126:setAlign("right");
+    obj.label126:setWidth(45);
+    obj.label126:setText("");
     obj.label126:setHorzTextAlign("center");
     obj.label126:setName("label126");
-
-    obj.label127 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label127:setParent(obj.layout79);
-    obj.label127:setAlign("right");
-    obj.label127:setWidth(45);
-    obj.label127:setText("");
-    obj.label127:setHorzTextAlign("center");
-    obj.label127:setName("label127");
 
     obj.rclVantagens = GUI.fromHandle(_obj_newObject("recordList"));
     obj.rclVantagens:setParent(obj.rectangle43);
@@ -2868,13 +2867,13 @@ local function constructNew_frmMM3()
     obj.rectangle44:setCornerType("round");
     obj.rectangle44:setName("rectangle44");
 
-    obj.label128 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label128:setParent(obj.rectangle44);
-    obj.label128:setAlign("top");
-    obj.label128:setHeight(20);
-    obj.label128:setText("Equipamentos");
-    obj.label128:setHorzTextAlign("center");
-    obj.label128:setName("label128");
+    obj.label127 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label127:setParent(obj.rectangle44);
+    obj.label127:setAlign("top");
+    obj.label127:setHeight(20);
+    obj.label127:setText("Equipamentos");
+    obj.label127:setHorzTextAlign("center");
+    obj.label127:setName("label127");
 
     obj.textEditor6 = GUI.fromHandle(_obj_newObject("textEditor"));
     obj.textEditor6:setParent(obj.rectangle44);
@@ -2899,13 +2898,13 @@ local function constructNew_frmMM3()
     obj.rectangle45:setCornerType("round");
     obj.rectangle45:setName("rectangle45");
 
-    obj.label129 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label129:setParent(obj.rectangle45);
-    obj.label129:setAlign("top");
-    obj.label129:setHeight(20);
-    obj.label129:setText("Veículos");
-    obj.label129:setHorzTextAlign("center");
-    obj.label129:setName("label129");
+    obj.label128 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label128:setParent(obj.rectangle45);
+    obj.label128:setAlign("top");
+    obj.label128:setHeight(20);
+    obj.label128:setText("Veículos");
+    obj.label128:setHorzTextAlign("center");
+    obj.label128:setName("label128");
 
     obj.textEditor7 = GUI.fromHandle(_obj_newObject("textEditor"));
     obj.textEditor7:setParent(obj.rectangle45);
@@ -2930,13 +2929,13 @@ local function constructNew_frmMM3()
     obj.rectangle46:setCornerType("round");
     obj.rectangle46:setName("rectangle46");
 
-    obj.label130 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label130:setParent(obj.rectangle46);
-    obj.label130:setAlign("top");
-    obj.label130:setHeight(20);
-    obj.label130:setText("Quartel General");
-    obj.label130:setHorzTextAlign("center");
-    obj.label130:setName("label130");
+    obj.label129 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label129:setParent(obj.rectangle46);
+    obj.label129:setAlign("top");
+    obj.label129:setHeight(20);
+    obj.label129:setText("Quartel General");
+    obj.label129:setHorzTextAlign("center");
+    obj.label129:setName("label129");
 
     obj.textEditor8 = GUI.fromHandle(_obj_newObject("textEditor"));
     obj.textEditor8:setParent(obj.rectangle46);
@@ -2968,12 +2967,12 @@ local function constructNew_frmMM3()
     obj.rectangle47:setMargins({bottom=5});
     obj.rectangle47:setName("rectangle47");
 
-    obj.label131 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label131:setParent(obj.rectangle47);
-    obj.label131:setAlign("top");
-    obj.label131:setHeight(20);
-    obj.label131:setText("DESCRIÇÃO");
-    obj.label131:setName("label131");
+    obj.label130 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label130:setParent(obj.rectangle47);
+    obj.label130:setAlign("top");
+    obj.label130:setHeight(20);
+    obj.label130:setText("DESCRIÇÃO");
+    obj.label130:setName("label130");
 
     obj.layout83 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout83:setParent(obj.rectangle47);
@@ -2988,21 +2987,21 @@ local function constructNew_frmMM3()
     obj.layout84:setMargins({right=10});
     obj.layout84:setName("layout84");
 
-    obj.label132 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label132:setParent(obj.layout84);
-    obj.label132:setAlign("left");
-    obj.label132:setWidth(90);
-    obj.label132:setText("ORIGEM");
-    obj.label132:setHorzTextAlign("center");
-    obj.label132:setName("label132");
+    obj.label131 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label131:setParent(obj.layout84);
+    obj.label131:setAlign("left");
+    obj.label131:setWidth(90);
+    obj.label131:setText("ORIGEM");
+    obj.label131:setHorzTextAlign("center");
+    obj.label131:setName("label131");
 
-    obj.edit53 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit53:setParent(obj.layout84);
-    obj.edit53:setAlign("left");
-    obj.edit53:setWidth(290);
-    obj.edit53:setField("nacionalidade");
-    obj.edit53:setVertTextAlign("center");
-    obj.edit53:setName("edit53");
+    obj.edit54 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit54:setParent(obj.layout84);
+    obj.edit54:setAlign("left");
+    obj.edit54:setWidth(290);
+    obj.edit54:setField("nacionalidade");
+    obj.edit54:setVertTextAlign("center");
+    obj.edit54:setName("edit54");
 
     obj.layout85 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout85:setParent(obj.layout83);
@@ -3011,21 +3010,21 @@ local function constructNew_frmMM3()
     obj.layout85:setMargins({right=10});
     obj.layout85:setName("layout85");
 
-    obj.label133 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label133:setParent(obj.layout85);
-    obj.label133:setAlign("left");
-    obj.label133:setWidth(90);
-    obj.label133:setText("IDADE");
-    obj.label133:setHorzTextAlign("center");
-    obj.label133:setName("label133");
+    obj.label132 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label132:setParent(obj.layout85);
+    obj.label132:setAlign("left");
+    obj.label132:setWidth(90);
+    obj.label132:setText("IDADE");
+    obj.label132:setHorzTextAlign("center");
+    obj.label132:setName("label132");
 
-    obj.edit54 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit54:setParent(obj.layout85);
-    obj.edit54:setAlign("left");
-    obj.edit54:setWidth(290);
-    obj.edit54:setField("idade");
-    obj.edit54:setVertTextAlign("center");
-    obj.edit54:setName("edit54");
+    obj.edit55 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit55:setParent(obj.layout85);
+    obj.edit55:setAlign("left");
+    obj.edit55:setWidth(290);
+    obj.edit55:setField("idade");
+    obj.edit55:setVertTextAlign("center");
+    obj.edit55:setName("edit55");
 
     obj.layout86 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout86:setParent(obj.layout83);
@@ -3034,21 +3033,21 @@ local function constructNew_frmMM3()
     obj.layout86:setMargins({right=10});
     obj.layout86:setName("layout86");
 
-    obj.label134 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label134:setParent(obj.layout86);
-    obj.label134:setAlign("left");
-    obj.label134:setWidth(90);
-    obj.label134:setText("GÊNERO");
-    obj.label134:setHorzTextAlign("center");
-    obj.label134:setName("label134");
+    obj.label133 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label133:setParent(obj.layout86);
+    obj.label133:setAlign("left");
+    obj.label133:setWidth(90);
+    obj.label133:setText("GÊNERO");
+    obj.label133:setHorzTextAlign("center");
+    obj.label133:setName("label133");
 
-    obj.edit55 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit55:setParent(obj.layout86);
-    obj.edit55:setAlign("left");
-    obj.edit55:setWidth(290);
-    obj.edit55:setField("genero");
-    obj.edit55:setVertTextAlign("center");
-    obj.edit55:setName("edit55");
+    obj.edit56 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit56:setParent(obj.layout86);
+    obj.edit56:setAlign("left");
+    obj.edit56:setWidth(290);
+    obj.edit56:setField("genero");
+    obj.edit56:setVertTextAlign("center");
+    obj.edit56:setName("edit56");
 
     obj.layout87 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout87:setParent(obj.scrollBox4);
@@ -3071,13 +3070,13 @@ local function constructNew_frmMM3()
     obj.rectangle48:setColor("black");
     obj.rectangle48:setName("rectangle48");
 
-    obj.label135 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label135:setParent(obj.rectangle48);
-    obj.label135:setAlign("top");
-    obj.label135:setHeight(20);
-    obj.label135:setText("DESCRIÇÃO FÍSICA");
-    obj.label135:setMargins({left=5});
-    obj.label135:setName("label135");
+    obj.label134 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label134:setParent(obj.rectangle48);
+    obj.label134:setAlign("top");
+    obj.label134:setHeight(20);
+    obj.label134:setText("DESCRIÇÃO FÍSICA");
+    obj.label134:setMargins({left=5});
+    obj.label134:setName("label134");
 
     obj.textEditor9 = GUI.fromHandle(_obj_newObject("textEditor"));
     obj.textEditor9:setParent(obj.rectangle48);
@@ -3094,13 +3093,13 @@ local function constructNew_frmMM3()
     obj.rectangle49:setColor("black");
     obj.rectangle49:setName("rectangle49");
 
-    obj.label136 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label136:setParent(obj.rectangle49);
-    obj.label136:setAlign("top");
-    obj.label136:setHeight(20);
-    obj.label136:setText("PERSONALIDADE");
-    obj.label136:setMargins({left=5});
-    obj.label136:setName("label136");
+    obj.label135 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label135:setParent(obj.rectangle49);
+    obj.label135:setAlign("top");
+    obj.label135:setHeight(20);
+    obj.label135:setText("PERSONALIDADE");
+    obj.label135:setMargins({left=5});
+    obj.label135:setName("label135");
 
     obj.textEditor10 = GUI.fromHandle(_obj_newObject("textEditor"));
     obj.textEditor10:setParent(obj.rectangle49);
@@ -3117,13 +3116,13 @@ local function constructNew_frmMM3()
     obj.rectangle50:setColor("black");
     obj.rectangle50:setName("rectangle50");
 
-    obj.label137 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label137:setParent(obj.rectangle50);
-    obj.label137:setAlign("top");
-    obj.label137:setHeight(20);
-    obj.label137:setText("COMPLICAÇÕES");
-    obj.label137:setMargins({left=5});
-    obj.label137:setName("label137");
+    obj.label136 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label136:setParent(obj.rectangle50);
+    obj.label136:setAlign("top");
+    obj.label136:setHeight(20);
+    obj.label136:setText("COMPLICAÇÕES");
+    obj.label136:setMargins({left=5});
+    obj.label136:setName("label136");
 
     obj.textEditor11 = GUI.fromHandle(_obj_newObject("textEditor"));
     obj.textEditor11:setParent(obj.rectangle50);
@@ -3138,12 +3137,12 @@ local function constructNew_frmMM3()
     obj.rectangle51:setColor("black");
     obj.rectangle51:setName("rectangle51");
 
-    obj.label138 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label138:setParent(obj.rectangle51);
-    obj.label138:setAlign("top");
-    obj.label138:setText("HISTORIA");
-    obj.label138:setMargins({left=5});
-    obj.label138:setName("label138");
+    obj.label137 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label137:setParent(obj.rectangle51);
+    obj.label137:setAlign("top");
+    obj.label137:setText("HISTORIA");
+    obj.label137:setMargins({left=5});
+    obj.label137:setName("label137");
 
     obj.richEdit1 = GUI.fromHandle(_obj_newObject("richEdit"));
     obj.richEdit1:setParent(obj.rectangle51);
@@ -3186,13 +3185,13 @@ local function constructNew_frmMM3()
     obj.rectangle52:setCornerType("round");
     obj.rectangle52:setName("rectangle52");
 
-    obj.label139 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label139:setParent(obj.rectangle52);
-    obj.label139:setAlign("top");
-    obj.label139:setHeight(20);
-    obj.label139:setText("Anotações");
-    obj.label139:setHorzTextAlign("center");
-    obj.label139:setName("label139");
+    obj.label138 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label138:setParent(obj.rectangle52);
+    obj.label138:setAlign("top");
+    obj.label138:setHeight(20);
+    obj.label138:setText("Anotações");
+    obj.label138:setHorzTextAlign("center");
+    obj.label138:setName("label138");
 
     obj.textEditor12 = GUI.fromHandle(_obj_newObject("textEditor"));
     obj.textEditor12:setParent(obj.rectangle52);
@@ -3217,13 +3216,13 @@ local function constructNew_frmMM3()
     obj.rectangle53:setCornerType("round");
     obj.rectangle53:setName("rectangle53");
 
-    obj.label140 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label140:setParent(obj.rectangle53);
-    obj.label140:setAlign("top");
-    obj.label140:setHeight(20);
-    obj.label140:setText("Anotações");
-    obj.label140:setHorzTextAlign("center");
-    obj.label140:setName("label140");
+    obj.label139 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label139:setParent(obj.rectangle53);
+    obj.label139:setAlign("top");
+    obj.label139:setHeight(20);
+    obj.label139:setText("Anotações");
+    obj.label139:setHorzTextAlign("center");
+    obj.label139:setName("label139");
 
     obj.textEditor13 = GUI.fromHandle(_obj_newObject("textEditor"));
     obj.textEditor13:setParent(obj.rectangle53);
@@ -3248,13 +3247,13 @@ local function constructNew_frmMM3()
     obj.rectangle54:setCornerType("round");
     obj.rectangle54:setName("rectangle54");
 
-    obj.label141 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label141:setParent(obj.rectangle54);
-    obj.label141:setAlign("top");
-    obj.label141:setHeight(20);
-    obj.label141:setText("Anotações");
-    obj.label141:setHorzTextAlign("center");
-    obj.label141:setName("label141");
+    obj.label140 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label140:setParent(obj.rectangle54);
+    obj.label140:setAlign("top");
+    obj.label140:setHeight(20);
+    obj.label140:setText("Anotações");
+    obj.label140:setHorzTextAlign("center");
+    obj.label140:setName("label140");
 
     obj.textEditor14 = GUI.fromHandle(_obj_newObject("textEditor"));
     obj.textEditor14:setParent(obj.rectangle54);
@@ -3391,53 +3390,63 @@ local function constructNew_frmMM3()
     obj.rectangle55:setCornerType("round");
     obj.rectangle55:setName("rectangle55");
 
+    obj.label141 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label141:setParent(obj.layout92);
+    obj.label141:setLeft(0);
+    obj.label141:setTop(10);
+    obj.label141:setWidth(200);
+    obj.label141:setHeight(20);
+    obj.label141:setText("Programado por: ");
+    obj.label141:setHorzTextAlign("center");
+    obj.label141:setName("label141");
+
     obj.label142 = GUI.fromHandle(_obj_newObject("label"));
     obj.label142:setParent(obj.layout92);
     obj.label142:setLeft(0);
-    obj.label142:setTop(10);
+    obj.label142:setTop(35);
     obj.label142:setWidth(200);
     obj.label142:setHeight(20);
-    obj.label142:setText("Programado por: ");
+    obj.label142:setText("Vinny (Ambesek)");
     obj.label142:setHorzTextAlign("center");
     obj.label142:setName("label142");
 
     obj.label143 = GUI.fromHandle(_obj_newObject("label"));
     obj.label143:setParent(obj.layout92);
     obj.label143:setLeft(0);
-    obj.label143:setTop(35);
+    obj.label143:setTop(60);
     obj.label143:setWidth(200);
     obj.label143:setHeight(20);
-    obj.label143:setText("Vinny (Ambesek)");
+    obj.label143:setText("Consultor: ");
     obj.label143:setHorzTextAlign("center");
     obj.label143:setName("label143");
 
     obj.label144 = GUI.fromHandle(_obj_newObject("label"));
     obj.label144:setParent(obj.layout92);
     obj.label144:setLeft(0);
-    obj.label144:setTop(60);
+    obj.label144:setTop(85);
     obj.label144:setWidth(200);
     obj.label144:setHeight(20);
-    obj.label144:setText("Consultor: ");
+    obj.label144:setText("James (valber)");
     obj.label144:setHorzTextAlign("center");
     obj.label144:setName("label144");
 
     obj.label145 = GUI.fromHandle(_obj_newObject("label"));
     obj.label145:setParent(obj.layout92);
     obj.label145:setLeft(0);
-    obj.label145:setTop(85);
+    obj.label145:setTop(110);
     obj.label145:setWidth(200);
     obj.label145:setHeight(20);
-    obj.label145:setText("James (valber)");
+    obj.label145:setText("Will (BlackYep)");
     obj.label145:setHorzTextAlign("center");
     obj.label145:setName("label145");
 
     obj.label146 = GUI.fromHandle(_obj_newObject("label"));
     obj.label146:setParent(obj.layout92);
     obj.label146:setLeft(0);
-    obj.label146:setTop(110);
+    obj.label146:setTop(135);
     obj.label146:setWidth(200);
     obj.label146:setHeight(20);
-    obj.label146:setText("Will (BlackYep)");
+    obj.label146:setText("Azai (michel32)");
     obj.label146:setHorzTextAlign("center");
     obj.label146:setName("label146");
 
@@ -4683,6 +4692,7 @@ local function constructNew_frmMM3()
         if self.layout74 ~= nil then self.layout74:destroy(); self.layout74 = nil; end;
         if self.edit30 ~= nil then self.edit30:destroy(); self.edit30 = nil; end;
         if self.tab4 ~= nil then self.tab4:destroy(); self.tab4 = nil; end;
+        if self.edit56 ~= nil then self.edit56:destroy(); self.edit56 = nil; end;
         if self.label137 ~= nil then self.label137:destroy(); self.label137 = nil; end;
         if self.label80 ~= nil then self.label80:destroy(); self.label80 = nil; end;
         if self.rclSubPoderes ~= nil then self.rclSubPoderes:destroy(); self.rclSubPoderes = nil; end;
