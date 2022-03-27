@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <root>
     <element id="Ambesek.HeightMarker" name="Height Marker" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Scene/HeightMarker/output/HeightMarker.rpk?raw=true" fileName="HeightMarker.rpk" repositoryPath="Scene/HeightMarker/" author="Ambesek" description="Allows for the creation of height marks on scene tokens." version="1.0" compilationDate="27032022175920" compilationDigest="02626d14d7b656e70c7f38f9b8c6937f39ea4275"/>
-    <element id="AfkBot" name="AfkBot" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/ChatMods/AfkBot/output/AfkBot.rpk?raw=true" fileName="AfkBot.rpk" repositoryPath="ChatMods/AfkBot/" author="Ambesek" description="Crie uma mensagem padrão para responder quando estiver ocupado. Também protege a mesa de flood de dados e /rir se configurado para tal. Use /afkbot para abrir o popup de configuração." version="1.5" compilationDate="08032021225710" compilationDigest="1c2e518b5768b3e7336d32cc1bc14723ab9c86e0">
+    <element id="AfkBot" name="AfkBot" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/ChatMods/AfkBot/output/AfkBot.rpk?raw=true" fileName="AfkBot.rpk" repositoryPath="ChatMods/AfkBot/" author="Ambesek" description="Crie uma mensagem padrão para responder quando estiver ocupado. Também protege a mesa de flood de dados e /rir se configurado para tal. Use /afkbot para abrir o popup de configuração." version="1.6" compilationDate="08032021225710" compilationDigest="1c2e518b5768b3e7336d32cc1bc14723ab9c86e0">
         <dataTypes>
             <dataType id="ambesek.afkbot" title="AfkBot"/>
         </dataTypes>

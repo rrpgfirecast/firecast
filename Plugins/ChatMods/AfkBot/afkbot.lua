@@ -385,6 +385,8 @@ Firecast.Messaging.listen("ChatMessage",
 		valid = valid and message.mesa.meuJogador.isMestre;
 		-- Ve se quem rolou o dado é espectador
 		valid = valid and message.jogador.isEspectador;
+		-- Ve se o mestre autorizou rolagens de espectadores preparando a ficha e esse player tem ficha
+		valid = valid and not (afkdb.config[message.mesa.codigoInterno].allowNewPlayer == true and message.jogador.personagemPrincipal ~= -1)
 
 		if valid then
 			initializeKickList(message.mesa);
