@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <form name="frmPoderes" align="client">
 	<template name="VertCombo">
-		<layout align="left" width="90">
+		<layout align="left" width="$(width)">
 			<label align="top" height="25" text="$(text)" horzTextAlign="center"/>
 			<comboBox align="client" field="$(field)" items="$(items)"/>
 		</layout>
@@ -15,11 +15,12 @@
 
 	<popup name="popPoder" width="470" height="470" backOpacity="0.4" autoScopeNode="false" padding="{left=10,right=10,bottom=10,top=10}">
 		<layout align="top" height="50" margins="{left=5}">
-			<VertCombo text="Defesa" field="defesa" items="{'Esquiva', 'Aparar', 'Fortitude', 'Resistência', 'Vontade', 'Nenhum'}"/>
-			<VertCombo text="Ação" field="acao" items="{'Livre', 'Reação', 'Movimento', 'Padrão', 'Nenhum'}"/>
-			<VertEdit text="Alcance" field="alcance" width="90"/>
-			<VertEdit text="Duração" field="duracao" width="90"/>
-			<VertEdit text="Livro" field="livro" width="90"/>
+			<VertCombo text="Defesa" field="defesa" items="{'Esquiva', 'Aparar', 'Fortitude', 'Resistência', 'Vontade', 'Nenhum'}" width="75"/>
+			<VertCombo text="Ação" field="acao" items="{'Livre', 'Reação', 'Movimento', 'Padrão', 'Nenhum'}" width="75"/>
+			<VertCombo text="Tipo" field="tipo" items="{'Simples', 'Dinâmico'}" width="75"/>
+			<VertEdit text="Alcance" field="alcance" width="75"/>
+			<VertEdit text="Duração" field="duracao" width="75"/>
+			<VertEdit text="Livro" field="livro" width="75"/>
 		</layout>
 		<textEditor align="client" field="efeitos" margins="{left=5,right=5,top=5,bottom=5}"/>
 		<textEditor align="bottom" height="100" field="notas" margins="{left=5,right=5,top=0,bottom=5}"/>
@@ -31,6 +32,53 @@
 			<VertEdit text="Custo" field="custoMult" width="75"/>
 			<VertEdit text="Extra Fixo" field="custoExtraFixo" width="75"/>
 			<VertEdit text="Falha Fixo" field="custoFalhaFixo" width="75"/>
+		</layout>
+	</popup>
+
+	<popup name="popPoderList" width="920" height="470" backOpacity="0.4" autoScopeNode="false" padding="{left=10,right=10,bottom=10,top=10}">
+		<layout align="left" width="450">
+			<layout align="top" height="50" margins="{left=5}">
+				<VertCombo text="Defesa" field="defesa" items="{'Esquiva', 'Aparar', 'Fortitude', 'Resistência', 'Vontade', 'Nenhum'}" width="90"/>
+				<VertCombo text="Ação" field="acao" items="{'Livre', 'Reação', 'Movimento', 'Padrão', 'Nenhum'}" width="90"/>
+				<VertEdit text="Alcance" field="alcance" width="90"/>
+				<VertEdit text="Duração" field="duracao" width="90"/>
+				<VertEdit text="Livro" field="livro" width="90"/>
+			</layout>
+			<textEditor align="client" field="efeitos" margins="{left=5,right=5,top=5,bottom=5}"/>
+			<textEditor align="bottom" height="100" field="notas" margins="{left=5,right=5,top=0,bottom=5}"/>
+
+			<layout align="bottom" height="50" margins="{left=5}">
+				<VertEdit text="Graduações" field="custoGrad" width="75"/>
+				<VertEdit text="Extras" field="custoExtra" width="75"/>
+				<VertEdit text="Falhas" field="custoFalha" width="75"/>
+				<VertEdit text="Custo" field="custoMult" width="75"/>
+				<VertEdit text="Extra Fixo" field="custoExtraFixo" width="75"/>
+				<VertEdit text="Falha Fixo" field="custoFalhaFixo" width="75"/>
+			</layout>
+		</layout>
+		<layout align="left" width="450">
+	    	<layout align="top" height="25" margins="{top=5}">
+				<button align="left" width="25" text="+" margins="{left=5}">
+					<event name="onClick">
+						local item = self.rclSubPoderes:append()
+						if item~=nil then item.internal = true end
+					</event>
+				</button>
+				<rectangle align="left" width="50" color="black" strokeColor="white" strokeSize="1">
+					<label align="client" field="custoArranjo" horzTextAlign="center" fontSize="12"/>
+				</rectangle>
+				<label align="client" text="Arranjo de Poderes" horzTextAlign="center"/>
+			</layout>
+			<layout align="top" height="25">
+				<label align="client" text="" horzTextAlign="center"/>
+
+				<layout align="right" width="290">
+					<label align="left" width="200" text="" horzTextAlign="center"/>
+					<label align="left" width="50" text="Custo" horzTextAlign="center"/>
+					<label align="right" width="70" text="" horzTextAlign="center"/>
+				</layout>
+			</layout>
+			<recordList align="client" margins="{left=5,right=5,bottom=5,top=5}" name="rclSubPoderes" field="rclSubPoderes" templateForm="frmPoderItem" layout="vertical"/>
 		</layout>
 	</popup>
 

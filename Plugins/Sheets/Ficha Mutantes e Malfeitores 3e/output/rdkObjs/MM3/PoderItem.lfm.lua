@@ -74,12 +74,12 @@ local function constructNew_frmPoderItem()
 
     obj.dataLink1 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink1:setParent(obj.layout2);
-    obj.dataLink1:setFields({'custo'});
+    obj.dataLink1:setFields({'custo','tipo','internal'});
     obj.dataLink1:setName("dataLink1");
 
     obj.dataLink2 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink2:setParent(obj.layout2);
-    obj.dataLink2:setFields({'custoGrad', 'custoExtra', 'custoFalha', 'custoMult', 'custoExtraFixo', 'custoFalhaFixo'});
+    obj.dataLink2:setFields({'custoGrad', 'custoExtra', 'custoFalha', 'custoMult', 'custoExtraFixo', 'custoFalhaFixo', 'ppPoderes'});
     obj.dataLink2:setName("dataLink2");
 
     obj.button1 = GUI.fromHandle(_obj_newObject("button"));
@@ -105,17 +105,35 @@ local function constructNew_frmPoderItem()
 
     obj._e_event0 = obj.dataLink1:addEventListener("onUserChange",
         function (_, field, oldValue, newValue)
-            if sheet~= nil then
-            							local node = NDB.getRoot(sheet);
+            if sheet== nil then return end
             
-            							local custo = 0;
-            							local nodes = NDB.getChildNodes(node.rclPoderes); 
+            						local node
+            						local custo = 0
+            						local nodes
+            
+            						if sheet.internal == true then
+            							-- Se é um sub poder, olhe não para a raiz, mas para o poder original
+            							node = NDB.getParent(NDB.getParent(sheet))
+            							nodes = NDB.getChildNodes(node.rclSubPoderes); 
+            
+            							for i=1, #nodes, 1 do
+            								if nodes[i].tipo == "Dinâmico" then
+            									custo = custo + 2
+            								else
+            									custo = custo + 1
+            								end
+            							end
+            						else
+            							-- Se é um poder olhe para a raiz
+            							node = NDB.getRoot(sheet);
+            							nodes = NDB.getChildNodes(node.rclPoderes); 
+            
             							for i=1, #nodes, 1 do
             								custo = custo + (tonumber(nodes[i].custo) or 0);
             							end
-            
-            							node.ppPoderes = custo
-            						end;
+            						end
+            	
+            						node.ppPoderes = custo
         end, obj);
 
     obj._e_event1 = obj.dataLink2:addEventListener("onUserChange",
@@ -130,15 +148,23 @@ local function constructNew_frmPoderItem()
             							local extraFixo = (tonumber(sheet.custoExtraFixo) or 0)
             							local falhaFixo = (tonumber(sheet.custoFalhaFixo) or 0)
             
+            							local ppPoderes = (tonumber(sheet.ppPoderes) or 0)
+            
             							local custo = (mult + extra - math.abs(falha)) * grad + extraFixo - math.abs(falhaFixo)
             
-            							sheet.custo = custo
+            							sheet.custo = custo + ppPoderes
+            							sheet.custoArranjo = custo
             						end;
         end, obj);
 
     obj._e_event2 = obj.button1:addEventListener("onClick",
         function (_)
-            local pop = self:findControlByName("popPoder");
+            local pop;
+            						if sheet.internal == true then
+            							pop = self:findControlByName("popPoder");
+            						else
+            							pop = self:findControlByName("popPoderList");
+            						end
             						
             						if pop ~= nil then
             							pop:setNodeObject(self.sheet);

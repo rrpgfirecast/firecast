@@ -6,7 +6,7 @@
             <dataType id="ambesek.afkbot" title="AfkBot"/>
         </dataTypes>
     </element>
-    <element id="Ambesek.Mutantes.Malfeitores.3e" name="Ficha Mutantes e Malfeitores 3e" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20Mutantes%20e%20Malfeitores%203e/output/Ficha%20Mutantes%20e%20Malfeitores%203e.rpk?raw=true" fileName="Ficha Mutantes e Malfeitores 3e.rpk" repositoryPath="Sheets/Ficha Mutantes e Malfeitores 3e/" author="Ambesek" description="Ficha para o cenario e sistema Mutantes e Malfeitores 3e." version="1.1.1" compilationDate="14032022033148" compilationDigest="6de6aa2675214259a29fcc202c28ca74d06211c3">
+    <element id="Ambesek.Mutantes.Malfeitores.3e" name="Ficha Mutantes e Malfeitores 3e" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20Mutantes%20e%20Malfeitores%203e/output/Ficha%20Mutantes%20e%20Malfeitores%203e.rpk?raw=true" fileName="Ficha Mutantes e Malfeitores 3e.rpk" repositoryPath="Sheets/Ficha Mutantes e Malfeitores 3e/" author="Ambesek" description="Ficha para o cenario e sistema Mutantes e Malfeitores 3e." version="1.2" compilationDate="14032022033148" compilationDigest="6de6aa2675214259a29fcc202c28ca74d06211c3">
         <dataTypes>
             <dataType id="Ambesek.Mutantes.Malfeitores.3e" title="Ficha Mutantes e Malfeitores 3e"/>
         </dataTypes>
