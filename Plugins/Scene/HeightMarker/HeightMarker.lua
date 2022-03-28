@@ -52,7 +52,7 @@ SceneLib.registerPlugin(
                             if opGrafica==nil then 
                                 opGrafica = objMouseDown.canvas:addText();
                                 opGrafica.name = "height"
-                                opGrafica.rot = "ignoreCanvasRot"
+                                opGrafica.rotMode = "ignoreCanvasRot"
                                 opGrafica.horzTextAlign = "center"
                                 opGrafica.outOfOrderMode = "afterOwnerLayer"
                                 opGrafica.fontStyle = {"bold", "italic"} 
@@ -110,7 +110,7 @@ SceneLib.registerPlugin(
                                             if iterationOpGrafica==nil then 
                                                 iterationOpGrafica = iterationUmToken.canvas:addText();
                                                 iterationOpGrafica.name = "height"
-                                                iterationOpGrafica.rot = "ignoreCanvasRot"
+                                                iterationOpGrafica.rotMode = "ignoreCanvasRot"
                                                 iterationOpGrafica.horzTextAlign = "center"
                                                 iterationOpGrafica.outOfOrderMode = "afterOwnerLayer"
                                                 iterationOpGrafica.fontStyle = {"bold", "italic"} 
