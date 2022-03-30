@@ -1,12 +1,13 @@
 require("scene.lua");
 
- 
-
 SceneLib.registerPlugin(
 
     function (scene, attachment)           
 
         scene.viewport:setupToolCategory("HeightMarker", LANG("scene.height"), -5);
+
+        local listenerMouseDown = nil;
+        local listenerMouseMove = nil;
 
         local currentHover = nil; -- token/graphic item com isHover true
         
