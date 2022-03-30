@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmMagiasPreparadas" height="25" width="330">
+     <import file="templates.xml"/>
+
+	 <script>
+		<![CDATA[
+		local function askForDelete()
+			Dialogs.confirmYesNo("Deseja realmente apagar essa magia?",
+								 function (confirmado)
+									if confirmado then
+										NDB.deleteNode(sheet);
+									end;
+								 end);
+		end;
+	    ]]>
+	</script>
+
+	<formatLabelEdit left="0" top="0" width="157" height="25" vertTextAlign="center" field="nomeMagiaPrep"/>
+	<formatNumEdit left="157" top="0" width="55" height="25" field="nivelMagiaPrep"/>
+	<formatNumEdit left="212" top="0" width="55" height="25" field="slotMagiaPrep"/>
+	<button left="267" top="1" width="23" height="23" text="X" onClick="askForDelete();"/>
+</form>

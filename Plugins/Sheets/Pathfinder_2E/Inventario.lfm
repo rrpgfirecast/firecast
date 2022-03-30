@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmInventario" width="465" height="25" theme="dark">
+    <import file="templates.xml"/>
+
+	<script> 
+		<![CDATA[			
+		local function askForDelete()
+			Dialogs.confirmYesNo("Deseja realmente apagar esse item?",
+								 function (confirmado)
+									if confirmado then
+										NDB.deleteNode(sheet);
+									end;
+								 end);
+		end;
+
+		local function showInvPopup()
+			local pop = self:findControlByName("popInv");
+				
+			if pop ~= nil then
+				pop:setNodeObject(self.sheet);
+				pop:show("bottomCenter", self.botaoItemInfo);
+			else
+				showMessage("Não encontrei o popup do item para exibir.");
+			end;
+		end;
+		]]>
+	</script>
+
+    <formatLabelEdit left="0" top="0" width="177" height="25" field="nomeItem"/>
+    <formatLabelEdit left="177" top="0" width="77" height="25" field="volumeItem"/>
+    <button name="botaoItemInfo" left="254" top="1" width="23" height="23" text="i" onClick="showInvPopup();"/>
+    <button left="277" top="1" width="23" height="23" text="X" onClick="askForDelete();"/>
+</form>

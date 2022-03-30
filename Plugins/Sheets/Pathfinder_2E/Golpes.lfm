@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmGolpes" height="80" width="380">
+     <import file="templates.xml"/>
+
+	 <script>
+		<![CDATA[
+		local function askForDelete()
+			Dialogs.confirmYesNo("Deseja realmente apagar esse golpe?",
+								 function (confirmado)
+									if confirmado then
+										NDB.deleteNode(sheet);
+									end;
+								 end);
+		end;
+	    ]]>
+	</script>
+
+    <rectangle  left="0" top="0" width="368" height="77" color="transparent" strokeColor="Gray" strokeSize="3" cornerType="round" xradius="5" yradius="5" margins="{left=6, right=6, top=6, bottom=6}">
+        <formatLabelEdit left="0" top="0" width="131" height="25" field="nomeGolpeEx"/>
+        <formatLabelEdit left="131" top="0" width="55" height="25" field="atrGolpeEx"/>
+        <formatLabelEdit left="186" top="0" width="55" height="25" field="profGolpeEx"/>
+        <formatLabelEdit left="241" top="0" width="55" height="25" field="outrosGolpeEx"/>
+
+        <rectangle left="296" top="0" width="72" height="25" color="transparent" strokeColor="Gray" strokeSize="3" visible="true" opacity="1" cornerType="round" xradius="5" yradius="5">
+            <label width="72" height="25" field="bonusGolpeEx" fontSize="16" fontStyle="bold" fontColor="Gray" vertTextAlign="center" horzTextAlign="center"/>
+        </rectangle>
+
+        <button left="0" top="25" width="55" height="25" text="Dano" fontFamily="Stencil">
+            <event name="onClick">
+                if sheet.danoGolpeEx == nil then
+                    showMessage("O ataque não possui dano.");
+                elseif sheet.bonusGolpeEx ~= nil then
+                    local mod = tonumber(sheet.bonusGolpeEx);
+                    local rolagem = Firecast.interpretarRolagem("1d20 + " .. mod or 0);
+                    local dano = Firecast.interpretarRolagem(sheet.danoGolpeEx);
+                    local mesa = Firecast.getMesaDe(sheet);
+                    mesa.activeChat:rolarDados(rolagem, (sheet.nomeGolpeEx or "Ataque"),
+                        function(rolado)
+                            mesa.activeChat:rolarDados(dano, "Primeiro Dano de " .. (sheet.nomeGolpeEx or "Ataque"))
+                        end);
+                elseif sheet.bonusGolpeEx == nil then
+                    local rolagem = Firecast.interpretarRolagem("1d20");
+                    local dano = Firecast.interpretarRolagem(sheet.danoGolpeEx);
+                    local mesa = Firecast.getMesaDe(sheet);
+                    mesa.activeChat:rolarDados(rolagem, (sheet.nomeGolpeEx or "Ataque"),
+                        function(rolado)
+                            mesa.activeChat:rolarDados(dano, "Primeiro Dano de " .. (sheet.nomeGolpeEx or "Ataque"))
+                        end);
+                end;
+            </event>
+        </button>
+        <formatLabelEdit left="55" top="25" width="83" height="25" field="danoGolpeEx"/>
+
+        <rectangle left="138" top="25" width="40" height="25" color="transparent" strokeColor="Gray" strokeSize="2" cornerType="innerRound" xradius="5" yradius="5">
+            <label  vertTextAlign="center" horzTextAlign="center" width="40" height="25" text="Pen" fontColor="Gray" fontFamily="Stencil"/>
+        </rectangle>
+
+        <button left="178" top="26" width="40" height="23" text="2º">
+            <event name="onClick">
+                if sheet.danoGolpeEx == nil then
+                    showMessage("O ataque não possui dano.");
+                elseif sheet.bonusGolpeEx ~= nil then
+                    local mod = tonumber(sheet.bonusGolpeEx) + tonumber(sheet.penSegundoEx);
+                    local rolagem = Firecast.interpretarRolagem("1d20 + " .. mod or 0);
+                    local dano = Firecast.interpretarRolagem(sheet.danoGolpeEx);
+                    local mesa = Firecast.getMesaDe(sheet);
+                    mesa.activeChat:rolarDados(rolagem, (sheet.nomeGolpeEx or "Ataque"),
+                        function(rolado)
+                            mesa.activeChat:rolarDados(dano, "Segundo Dano de " .. (sheet.nomeGolpeEx or "Ataque"))
+                        end);
+                elseif sheet.bonusGolpeEx == nil then
+                    local rolagem = Firecast.interpretarRolagem("1d20 + " .. (tonumber(sheet.penSegundoEx) or 0));
+                    local dano = Firecast.interpretarRolagem(sheet.danoGolpeEx);
+                    local mesa = Firecast.getMesaDe(sheet);
+                    mesa.activeChat:rolarDados(rolagem, (sheet.nomeGolpeEx or "Ataque"),
+                        function(rolado)
+                            mesa.activeChat:rolarDados(dano, "Segundo Dano de " .. (sheet.nomeGolpeEx or "Ataque"))
+                        end);
+                end;
+            </event>
+        </button>
+
+        <comboBox vertTextAlign="center" horzTextAlign="trailing" left="218" top="25" width="55" height="25" field="penSegundoEx" items="{'0', '-1', '-2', '-3', '-4', '-5', '-6', '-7', '-8', '-9', '-10'}" values="{'0', '-1', '-2', '-3', '-4', '-5', '-6', '-7', '-8', '-9', '-10'}" fontColor="white"/>
+
+        <button left="273" top="26" width="40" height="23" text="3º">
+            <event name="onClick">
+                if sheet.danoGolpeEx == nil then
+                    showMessage("O ataque não possui dano.");
+                elseif sheet.bonusGolpeEx ~= nil then
+                    local mod = tonumber(sheet.bonusGolpeEx) + tonumber(sheet.penTerceiroEx);
+                    local rolagem = Firecast.interpretarRolagem("1d20 + " .. mod or 0);
+                    local dano = Firecast.interpretarRolagem(sheet.danoGolpeEx);
+                    local mesa = Firecast.getMesaDe(sheet);
+                    mesa.activeChat:rolarDados(rolagem, (sheet.nomeGolpeEx or "Ataque"),
+                        function(rolado)
+                            mesa.activeChat:rolarDados(dano, "Terceiro Dano de " .. (sheet.nomeGolpeEx or "Ataque"))
+                        end);
+                elseif sheet.bonusGolpeEx == nil then
+                    local rolagem = Firecast.interpretarRolagem("1d20 + " .. (tonumber(sheet.penTerceiroEx) or 0));
+                    local dano = Firecast.interpretarRolagem(sheet.danoGolpeEx);
+                    local mesa = Firecast.getMesaDe(sheet);
+                    mesa.activeChat:rolarDados(rolagem, (sheet.nomeGolpeEx or "Ataque"),
+                        function(rolado)
+                            mesa.activeChat:rolarDados(dano, "Terceiro Dano de " .. (sheet.nomeGolpeEx or "Ataque"))
+                        end);
+                end;
+            </event>
+        </button>
+
+        <comboBox vertTextAlign="center" horzTextAlign="trailing" left="313" top="25" width="55" height="25" field="penTerceiroEx" items="{'0', '-1', '-2', '-3', '-4', '-5', '-6', '-7', '-8', '-9', '-10'}" values="{'0', '-1', '-2', '-3', '-4', '-5', '-6', '-7', '-8', '-9', '-10'}" fontColor="white"/>
+
+        <rectangle left="0" top="50" width="55" height="25" color="transparent" strokeColor="Gray" strokeSize="2" cornerType="innerRound" xradius="5" yradius="5">
+            <label  vertTextAlign="center" horzTextAlign="center" width="55" height="25" text="Traços" fontColor="Gray" fontFamily="Stencil"/>
+        </rectangle>
+        <formatLabelEdit left="55" top="50" width="232" height="25" field="tracosGolpeEx"/>
+
+        <comboBox vertTextAlign="center" horzTextAlign="trailing" left="287" top="50" width="55" height="25" field="tipoDanoEx" items="{'Cn', 'Ct', 'Pf'}" fontColor="white"/>
+
+        <button left="342" top="51" width="23" height="23" text="X" onClick="askForDelete();"/>
+
+        <dataLink fields="{'atrGolpeEx', 'profGolpeEx', 'outrosGolpeEx'}">
+               <event name="onChange"><![CDATA[
+                   if sheet == nil then return end;
+
+                   if (tonumber(sheet.profGolpeEx) or 0) > 0 then
+                       sheet.bonusGolpeEx = (tonumber(sheet.atrGolpeEx) or 0)+
+                                       (tonumber(sheet.profGolpeEx) or 0)+
+                                       (tonumber(sheet.outrosGolpeEx) or 0);
+                   else
+                       sheet.bonusGolpeEx = (tonumber(sheet.atrGolpeEx) or 0) + (tonumber(sheet.outrosGolpeEx) or 0);
+                   end;
+               ]]>
+               </event>
+        </dataLink>
+
+        <dataLink field="bonusGolpeEx">
+            <event name="onChange"><![CDATA[
+                if sheet == nil then return end;
+                local mod = (tonumber(sheet.bonusGolpeEx or 0));
+                if (mod >= 0) then
+                    sheet.bonusGolpeEx = "+" .. mod;
+                else
+                    sheet.bonusGolpeEx = mod;
+                end;
+            ]]>
+            </event>
+        </dataLink>
+    </rectangle>
+</form>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmAcoes" height="25" width="330">
+     <import file="templates.xml"/>
+
+	 <script>
+		<![CDATA[
+		local function askForDelete()
+			Dialogs.confirmYesNo("Deseja realmente apagar essa ação?",
+								 function (confirmado)
+									if confirmado then
+										NDB.deleteNode(sheet);
+									end;
+								 end);
+		end;
+
+		local function showAcaoInfoPopup()
+			local pop = self:findControlByName("popAcaoInfo");
+
+			if pop ~= nil then
+				pop:setNodeObject(self.sheet);
+				pop:showPopupEx("center", self.sheet);
+			else
+				showMessage("Não encontrei o popup de ações para exibir.");
+			end;
+		end;
+	    ]]>
+	</script>
+
+	<formatLabelEdit left="1" top="0" width="100" height="25" vertTextAlign="center" field="tipoAcao"/>
+	<formatLabelEdit left="101" top="0" width="221" height="25" vertTextAlign="center" field="nomeAcao"/>
+	<button left="322" top="1" width="23" height="23" text="i" onClick="showAcaoInfoPopup();"/>
+	<button left="345" top="1" width="23" height="23" text="X" onClick="askForDelete();"/>
+</form>
