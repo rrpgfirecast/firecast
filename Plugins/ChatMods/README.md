@@ -8,6 +8,8 @@ Esses plugins adicionam novas funções ou alteram funções do chat. Seja atrá
     - Salva automaticamente tudo que é dito nos chats das mesas enquanto o usuario está nelas em "Documentos\RRPG\Complementos\Autolog\Logs\".
 - [Dealer](https://github.com/rrpgfirecast/firecast/blob/master/Plugins/ChatMods/Dealer/output/Dealer.rpk?raw=true): Ambesek
     - Bot que controla baralhos de cartas. Use 'dealer ajuda' para ver os comandos, não use '/'.
+- [MacroButtons](https://github.com/rrpgfirecast/firecast/blob/master/Plugins/ChatMods/MacroButtons/output/MacroButtons.rpk?raw=true): Ambesek
+    - Adiciona botões ao chat do firecast, esses botões estão associados a macros e servem para invocar esses macros. 
 - [Memes Saver](https://github.com/rrpgfirecast/firecast/blob/master/Plugins/ChatMods/Memes%20Saver/output/Memes%20Saver.rpk?raw=true): Ambesek
    - Permite salvar imagens e associa-las a atalhos entre "::" para adiciona-las a mensagens de chat. Da mesma forma que os memes padrão do RRPG. 
 - [NickSaver](https://github.com/rrpgfirecast/firecast/blob/master/Plugins/ChatMods/NickSaver/output/NickSaver.rpk?raw=true): Ambesek
