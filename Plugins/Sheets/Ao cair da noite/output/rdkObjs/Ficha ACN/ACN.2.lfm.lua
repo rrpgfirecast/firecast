@@ -126,6 +126,7 @@ local function constructNew_frmACN2()
     obj.button1:setHeight(15);
     obj.button1:setWidth(15);
     obj.button1:setText("1");
+    obj.button1:setFontSize(9);
     obj.button1:setName("button1");
 
     obj.button2 = GUI.fromHandle(_obj_newObject("button"));
@@ -135,6 +136,7 @@ local function constructNew_frmACN2()
     obj.button2:setHeight(15);
     obj.button2:setWidth(15);
     obj.button2:setText("2");
+    obj.button2:setFontSize(9);
     obj.button2:setName("button2");
 
     obj.edit1 = GUI.fromHandle(_obj_newObject("edit"));
@@ -224,6 +226,7 @@ local function constructNew_frmACN2()
     obj.button3:setHeight(15);
     obj.button3:setWidth(15);
     obj.button3:setText("1");
+    obj.button3:setFontSize(9);
     obj.button3:setName("button3");
 
     obj.button4 = GUI.fromHandle(_obj_newObject("button"));
@@ -233,6 +236,7 @@ local function constructNew_frmACN2()
     obj.button4:setHeight(15);
     obj.button4:setWidth(15);
     obj.button4:setText("2");
+    obj.button4:setFontSize(9);
     obj.button4:setName("button4");
 
     obj.edit6 = GUI.fromHandle(_obj_newObject("edit"));
@@ -322,6 +326,7 @@ local function constructNew_frmACN2()
     obj.button5:setHeight(15);
     obj.button5:setWidth(15);
     obj.button5:setText("1");
+    obj.button5:setFontSize(9);
     obj.button5:setName("button5");
 
     obj.button6 = GUI.fromHandle(_obj_newObject("button"));
@@ -331,6 +336,7 @@ local function constructNew_frmACN2()
     obj.button6:setHeight(15);
     obj.button6:setWidth(15);
     obj.button6:setText("2");
+    obj.button6:setFontSize(9);
     obj.button6:setName("button6");
 
     obj.edit11 = GUI.fromHandle(_obj_newObject("edit"));
@@ -420,6 +426,7 @@ local function constructNew_frmACN2()
     obj.button7:setHeight(15);
     obj.button7:setWidth(15);
     obj.button7:setText("1");
+    obj.button7:setFontSize(9);
     obj.button7:setName("button7");
 
     obj.button8 = GUI.fromHandle(_obj_newObject("button"));
@@ -429,6 +436,7 @@ local function constructNew_frmACN2()
     obj.button8:setHeight(15);
     obj.button8:setWidth(15);
     obj.button8:setText("2");
+    obj.button8:setFontSize(9);
     obj.button8:setName("button8");
 
     obj.edit16 = GUI.fromHandle(_obj_newObject("edit"));
@@ -518,6 +526,7 @@ local function constructNew_frmACN2()
     obj.button9:setHeight(15);
     obj.button9:setWidth(15);
     obj.button9:setText("1");
+    obj.button9:setFontSize(9);
     obj.button9:setName("button9");
 
     obj.button10 = GUI.fromHandle(_obj_newObject("button"));
@@ -527,6 +536,7 @@ local function constructNew_frmACN2()
     obj.button10:setHeight(15);
     obj.button10:setWidth(15);
     obj.button10:setText("2");
+    obj.button10:setFontSize(9);
     obj.button10:setName("button10");
 
     obj.edit21 = GUI.fromHandle(_obj_newObject("edit"));
@@ -616,6 +626,7 @@ local function constructNew_frmACN2()
     obj.button11:setHeight(15);
     obj.button11:setWidth(15);
     obj.button11:setText("1");
+    obj.button11:setFontSize(9);
     obj.button11:setName("button11");
 
     obj.button12 = GUI.fromHandle(_obj_newObject("button"));
@@ -625,6 +636,7 @@ local function constructNew_frmACN2()
     obj.button12:setHeight(15);
     obj.button12:setWidth(15);
     obj.button12:setText("2");
+    obj.button12:setFontSize(9);
     obj.button12:setName("button12");
 
     obj.edit26 = GUI.fromHandle(_obj_newObject("edit"));
@@ -714,6 +726,7 @@ local function constructNew_frmACN2()
     obj.button13:setHeight(15);
     obj.button13:setWidth(15);
     obj.button13:setText("1");
+    obj.button13:setFontSize(9);
     obj.button13:setName("button13");
 
     obj.button14 = GUI.fromHandle(_obj_newObject("button"));
@@ -723,6 +736,7 @@ local function constructNew_frmACN2()
     obj.button14:setHeight(15);
     obj.button14:setWidth(15);
     obj.button14:setText("2");
+    obj.button14:setFontSize(9);
     obj.button14:setName("button14");
 
     obj.edit31 = GUI.fromHandle(_obj_newObject("edit"));
@@ -812,6 +826,7 @@ local function constructNew_frmACN2()
     obj.button15:setHeight(15);
     obj.button15:setWidth(15);
     obj.button15:setText("1");
+    obj.button15:setFontSize(9);
     obj.button15:setName("button15");
 
     obj.button16 = GUI.fromHandle(_obj_newObject("button"));
@@ -821,6 +836,7 @@ local function constructNew_frmACN2()
     obj.button16:setHeight(15);
     obj.button16:setWidth(15);
     obj.button16:setText("2");
+    obj.button16:setFontSize(9);
     obj.button16:setName("button16");
 
     obj.edit36 = GUI.fromHandle(_obj_newObject("edit"));
@@ -910,6 +926,7 @@ local function constructNew_frmACN2()
     obj.button17:setHeight(15);
     obj.button17:setWidth(15);
     obj.button17:setText("1");
+    obj.button17:setFontSize(9);
     obj.button17:setName("button17");
 
     obj.button18 = GUI.fromHandle(_obj_newObject("button"));
@@ -919,6 +936,7 @@ local function constructNew_frmACN2()
     obj.button18:setHeight(15);
     obj.button18:setWidth(15);
     obj.button18:setText("2");
+    obj.button18:setFontSize(9);
     obj.button18:setName("button18");
 
     obj.edit41 = GUI.fromHandle(_obj_newObject("edit"));
@@ -1008,6 +1026,7 @@ local function constructNew_frmACN2()
     obj.button19:setHeight(15);
     obj.button19:setWidth(15);
     obj.button19:setText("1");
+    obj.button19:setFontSize(9);
     obj.button19:setName("button19");
 
     obj.button20 = GUI.fromHandle(_obj_newObject("button"));
@@ -1017,6 +1036,7 @@ local function constructNew_frmACN2()
     obj.button20:setHeight(15);
     obj.button20:setWidth(15);
     obj.button20:setText("2");
+    obj.button20:setFontSize(9);
     obj.button20:setName("button20");
 
     obj.edit46 = GUI.fromHandle(_obj_newObject("edit"));
@@ -1106,6 +1126,7 @@ local function constructNew_frmACN2()
     obj.button21:setHeight(15);
     obj.button21:setWidth(15);
     obj.button21:setText("1");
+    obj.button21:setFontSize(9);
     obj.button21:setName("button21");
 
     obj.button22 = GUI.fromHandle(_obj_newObject("button"));
@@ -1115,6 +1136,7 @@ local function constructNew_frmACN2()
     obj.button22:setHeight(15);
     obj.button22:setWidth(15);
     obj.button22:setText("2");
+    obj.button22:setFontSize(9);
     obj.button22:setName("button22");
 
     obj.edit51 = GUI.fromHandle(_obj_newObject("edit"));
@@ -1204,6 +1226,7 @@ local function constructNew_frmACN2()
     obj.button23:setHeight(15);
     obj.button23:setWidth(15);
     obj.button23:setText("1");
+    obj.button23:setFontSize(9);
     obj.button23:setName("button23");
 
     obj.button24 = GUI.fromHandle(_obj_newObject("button"));
@@ -1213,6 +1236,7 @@ local function constructNew_frmACN2()
     obj.button24:setHeight(15);
     obj.button24:setWidth(15);
     obj.button24:setText("2");
+    obj.button24:setFontSize(9);
     obj.button24:setName("button24");
 
     obj.edit56 = GUI.fromHandle(_obj_newObject("edit"));
@@ -1377,6 +1401,7 @@ local function constructNew_frmACN2()
     obj.button25:setHeight(15);
     obj.button25:setWidth(15);
     obj.button25:setText("1");
+    obj.button25:setFontSize(9);
     obj.button25:setName("button25");
 
     obj.button26 = GUI.fromHandle(_obj_newObject("button"));
@@ -1386,6 +1411,7 @@ local function constructNew_frmACN2()
     obj.button26:setHeight(15);
     obj.button26:setWidth(15);
     obj.button26:setText("2");
+    obj.button26:setFontSize(9);
     obj.button26:setName("button26");
 
     obj.edit61 = GUI.fromHandle(_obj_newObject("edit"));
@@ -1475,6 +1501,7 @@ local function constructNew_frmACN2()
     obj.button27:setHeight(15);
     obj.button27:setWidth(15);
     obj.button27:setText("1");
+    obj.button27:setFontSize(9);
     obj.button27:setName("button27");
 
     obj.button28 = GUI.fromHandle(_obj_newObject("button"));
@@ -1484,6 +1511,7 @@ local function constructNew_frmACN2()
     obj.button28:setHeight(15);
     obj.button28:setWidth(15);
     obj.button28:setText("2");
+    obj.button28:setFontSize(9);
     obj.button28:setName("button28");
 
     obj.edit66 = GUI.fromHandle(_obj_newObject("edit"));
@@ -1573,6 +1601,7 @@ local function constructNew_frmACN2()
     obj.button29:setHeight(15);
     obj.button29:setWidth(15);
     obj.button29:setText("1");
+    obj.button29:setFontSize(9);
     obj.button29:setName("button29");
 
     obj.button30 = GUI.fromHandle(_obj_newObject("button"));
@@ -1582,6 +1611,7 @@ local function constructNew_frmACN2()
     obj.button30:setHeight(15);
     obj.button30:setWidth(15);
     obj.button30:setText("2");
+    obj.button30:setFontSize(9);
     obj.button30:setName("button30");
 
     obj.edit71 = GUI.fromHandle(_obj_newObject("edit"));
@@ -1671,6 +1701,7 @@ local function constructNew_frmACN2()
     obj.button31:setHeight(15);
     obj.button31:setWidth(15);
     obj.button31:setText("1");
+    obj.button31:setFontSize(9);
     obj.button31:setName("button31");
 
     obj.button32 = GUI.fromHandle(_obj_newObject("button"));
@@ -1680,6 +1711,7 @@ local function constructNew_frmACN2()
     obj.button32:setHeight(15);
     obj.button32:setWidth(15);
     obj.button32:setText("2");
+    obj.button32:setFontSize(9);
     obj.button32:setName("button32");
 
     obj.edit76 = GUI.fromHandle(_obj_newObject("edit"));
@@ -1769,6 +1801,7 @@ local function constructNew_frmACN2()
     obj.button33:setHeight(15);
     obj.button33:setWidth(15);
     obj.button33:setText("1");
+    obj.button33:setFontSize(9);
     obj.button33:setName("button33");
 
     obj.button34 = GUI.fromHandle(_obj_newObject("button"));
@@ -1778,6 +1811,7 @@ local function constructNew_frmACN2()
     obj.button34:setHeight(15);
     obj.button34:setWidth(15);
     obj.button34:setText("2");
+    obj.button34:setFontSize(9);
     obj.button34:setName("button34");
 
     obj.edit81 = GUI.fromHandle(_obj_newObject("edit"));
@@ -1867,6 +1901,7 @@ local function constructNew_frmACN2()
     obj.button35:setHeight(15);
     obj.button35:setWidth(15);
     obj.button35:setText("1");
+    obj.button35:setFontSize(9);
     obj.button35:setName("button35");
 
     obj.button36 = GUI.fromHandle(_obj_newObject("button"));
@@ -1876,6 +1911,7 @@ local function constructNew_frmACN2()
     obj.button36:setHeight(15);
     obj.button36:setWidth(15);
     obj.button36:setText("2");
+    obj.button36:setFontSize(9);
     obj.button36:setName("button36");
 
     obj.edit86 = GUI.fromHandle(_obj_newObject("edit"));
@@ -1965,6 +2001,7 @@ local function constructNew_frmACN2()
     obj.button37:setHeight(15);
     obj.button37:setWidth(15);
     obj.button37:setText("1");
+    obj.button37:setFontSize(9);
     obj.button37:setName("button37");
 
     obj.button38 = GUI.fromHandle(_obj_newObject("button"));
@@ -1974,6 +2011,7 @@ local function constructNew_frmACN2()
     obj.button38:setHeight(15);
     obj.button38:setWidth(15);
     obj.button38:setText("2");
+    obj.button38:setFontSize(9);
     obj.button38:setName("button38");
 
     obj.edit91 = GUI.fromHandle(_obj_newObject("edit"));
@@ -2063,6 +2101,7 @@ local function constructNew_frmACN2()
     obj.button39:setHeight(15);
     obj.button39:setWidth(15);
     obj.button39:setText("1");
+    obj.button39:setFontSize(9);
     obj.button39:setName("button39");
 
     obj.button40 = GUI.fromHandle(_obj_newObject("button"));
@@ -2072,6 +2111,7 @@ local function constructNew_frmACN2()
     obj.button40:setHeight(15);
     obj.button40:setWidth(15);
     obj.button40:setText("2");
+    obj.button40:setFontSize(9);
     obj.button40:setName("button40");
 
     obj.edit96 = GUI.fromHandle(_obj_newObject("edit"));
@@ -2161,6 +2201,7 @@ local function constructNew_frmACN2()
     obj.button41:setHeight(15);
     obj.button41:setWidth(15);
     obj.button41:setText("1");
+    obj.button41:setFontSize(9);
     obj.button41:setName("button41");
 
     obj.button42 = GUI.fromHandle(_obj_newObject("button"));
@@ -2170,6 +2211,7 @@ local function constructNew_frmACN2()
     obj.button42:setHeight(15);
     obj.button42:setWidth(15);
     obj.button42:setText("2");
+    obj.button42:setFontSize(9);
     obj.button42:setName("button42");
 
     obj.edit101 = GUI.fromHandle(_obj_newObject("edit"));
@@ -2259,6 +2301,7 @@ local function constructNew_frmACN2()
     obj.button43:setHeight(15);
     obj.button43:setWidth(15);
     obj.button43:setText("1");
+    obj.button43:setFontSize(9);
     obj.button43:setName("button43");
 
     obj.button44 = GUI.fromHandle(_obj_newObject("button"));
@@ -2268,6 +2311,7 @@ local function constructNew_frmACN2()
     obj.button44:setHeight(15);
     obj.button44:setWidth(15);
     obj.button44:setText("2");
+    obj.button44:setFontSize(9);
     obj.button44:setName("button44");
 
     obj.edit106 = GUI.fromHandle(_obj_newObject("edit"));
@@ -2357,6 +2401,7 @@ local function constructNew_frmACN2()
     obj.button45:setHeight(15);
     obj.button45:setWidth(15);
     obj.button45:setText("1");
+    obj.button45:setFontSize(9);
     obj.button45:setName("button45");
 
     obj.button46 = GUI.fromHandle(_obj_newObject("button"));
@@ -2366,6 +2411,7 @@ local function constructNew_frmACN2()
     obj.button46:setHeight(15);
     obj.button46:setWidth(15);
     obj.button46:setText("2");
+    obj.button46:setFontSize(9);
     obj.button46:setName("button46");
 
     obj.edit111 = GUI.fromHandle(_obj_newObject("edit"));
@@ -2455,6 +2501,7 @@ local function constructNew_frmACN2()
     obj.button47:setHeight(15);
     obj.button47:setWidth(15);
     obj.button47:setText("1");
+    obj.button47:setFontSize(9);
     obj.button47:setName("button47");
 
     obj.button48 = GUI.fromHandle(_obj_newObject("button"));
@@ -2464,6 +2511,7 @@ local function constructNew_frmACN2()
     obj.button48:setHeight(15);
     obj.button48:setWidth(15);
     obj.button48:setText("2");
+    obj.button48:setFontSize(9);
     obj.button48:setName("button48");
 
     obj.edit116 = GUI.fromHandle(_obj_newObject("edit"));
@@ -2628,6 +2676,7 @@ local function constructNew_frmACN2()
     obj.button49:setHeight(15);
     obj.button49:setWidth(15);
     obj.button49:setText("1");
+    obj.button49:setFontSize(9);
     obj.button49:setName("button49");
 
     obj.button50 = GUI.fromHandle(_obj_newObject("button"));
@@ -2637,6 +2686,7 @@ local function constructNew_frmACN2()
     obj.button50:setHeight(15);
     obj.button50:setWidth(15);
     obj.button50:setText("2");
+    obj.button50:setFontSize(9);
     obj.button50:setName("button50");
 
     obj.edit121 = GUI.fromHandle(_obj_newObject("edit"));
@@ -2726,6 +2776,7 @@ local function constructNew_frmACN2()
     obj.button51:setHeight(15);
     obj.button51:setWidth(15);
     obj.button51:setText("1");
+    obj.button51:setFontSize(9);
     obj.button51:setName("button51");
 
     obj.button52 = GUI.fromHandle(_obj_newObject("button"));
@@ -2735,6 +2786,7 @@ local function constructNew_frmACN2()
     obj.button52:setHeight(15);
     obj.button52:setWidth(15);
     obj.button52:setText("2");
+    obj.button52:setFontSize(9);
     obj.button52:setName("button52");
 
     obj.edit126 = GUI.fromHandle(_obj_newObject("edit"));
@@ -2824,6 +2876,7 @@ local function constructNew_frmACN2()
     obj.button53:setHeight(15);
     obj.button53:setWidth(15);
     obj.button53:setText("1");
+    obj.button53:setFontSize(9);
     obj.button53:setName("button53");
 
     obj.button54 = GUI.fromHandle(_obj_newObject("button"));
@@ -2833,6 +2886,7 @@ local function constructNew_frmACN2()
     obj.button54:setHeight(15);
     obj.button54:setWidth(15);
     obj.button54:setText("2");
+    obj.button54:setFontSize(9);
     obj.button54:setName("button54");
 
     obj.edit131 = GUI.fromHandle(_obj_newObject("edit"));
@@ -2922,6 +2976,7 @@ local function constructNew_frmACN2()
     obj.button55:setHeight(15);
     obj.button55:setWidth(15);
     obj.button55:setText("1");
+    obj.button55:setFontSize(9);
     obj.button55:setName("button55");
 
     obj.button56 = GUI.fromHandle(_obj_newObject("button"));
@@ -2931,6 +2986,7 @@ local function constructNew_frmACN2()
     obj.button56:setHeight(15);
     obj.button56:setWidth(15);
     obj.button56:setText("2");
+    obj.button56:setFontSize(9);
     obj.button56:setName("button56");
 
     obj.edit136 = GUI.fromHandle(_obj_newObject("edit"));
@@ -3020,6 +3076,7 @@ local function constructNew_frmACN2()
     obj.button57:setHeight(15);
     obj.button57:setWidth(15);
     obj.button57:setText("1");
+    obj.button57:setFontSize(9);
     obj.button57:setName("button57");
 
     obj.button58 = GUI.fromHandle(_obj_newObject("button"));
@@ -3029,6 +3086,7 @@ local function constructNew_frmACN2()
     obj.button58:setHeight(15);
     obj.button58:setWidth(15);
     obj.button58:setText("2");
+    obj.button58:setFontSize(9);
     obj.button58:setName("button58");
 
     obj.edit141 = GUI.fromHandle(_obj_newObject("edit"));
@@ -3118,6 +3176,7 @@ local function constructNew_frmACN2()
     obj.button59:setHeight(15);
     obj.button59:setWidth(15);
     obj.button59:setText("1");
+    obj.button59:setFontSize(9);
     obj.button59:setName("button59");
 
     obj.button60 = GUI.fromHandle(_obj_newObject("button"));
@@ -3127,6 +3186,7 @@ local function constructNew_frmACN2()
     obj.button60:setHeight(15);
     obj.button60:setWidth(15);
     obj.button60:setText("2");
+    obj.button60:setFontSize(9);
     obj.button60:setName("button60");
 
     obj.edit146 = GUI.fromHandle(_obj_newObject("edit"));
@@ -3216,6 +3276,7 @@ local function constructNew_frmACN2()
     obj.button61:setHeight(15);
     obj.button61:setWidth(15);
     obj.button61:setText("1");
+    obj.button61:setFontSize(9);
     obj.button61:setName("button61");
 
     obj.button62 = GUI.fromHandle(_obj_newObject("button"));
@@ -3225,6 +3286,7 @@ local function constructNew_frmACN2()
     obj.button62:setHeight(15);
     obj.button62:setWidth(15);
     obj.button62:setText("2");
+    obj.button62:setFontSize(9);
     obj.button62:setName("button62");
 
     obj.edit151 = GUI.fromHandle(_obj_newObject("edit"));
@@ -3314,6 +3376,7 @@ local function constructNew_frmACN2()
     obj.button63:setHeight(15);
     obj.button63:setWidth(15);
     obj.button63:setText("1");
+    obj.button63:setFontSize(9);
     obj.button63:setName("button63");
 
     obj.button64 = GUI.fromHandle(_obj_newObject("button"));
@@ -3323,6 +3386,7 @@ local function constructNew_frmACN2()
     obj.button64:setHeight(15);
     obj.button64:setWidth(15);
     obj.button64:setText("2");
+    obj.button64:setFontSize(9);
     obj.button64:setName("button64");
 
     obj.edit156 = GUI.fromHandle(_obj_newObject("edit"));
@@ -3412,6 +3476,7 @@ local function constructNew_frmACN2()
     obj.button65:setHeight(15);
     obj.button65:setWidth(15);
     obj.button65:setText("1");
+    obj.button65:setFontSize(9);
     obj.button65:setName("button65");
 
     obj.button66 = GUI.fromHandle(_obj_newObject("button"));
@@ -3421,6 +3486,7 @@ local function constructNew_frmACN2()
     obj.button66:setHeight(15);
     obj.button66:setWidth(15);
     obj.button66:setText("2");
+    obj.button66:setFontSize(9);
     obj.button66:setName("button66");
 
     obj.edit161 = GUI.fromHandle(_obj_newObject("edit"));
@@ -3510,6 +3576,7 @@ local function constructNew_frmACN2()
     obj.button67:setHeight(15);
     obj.button67:setWidth(15);
     obj.button67:setText("1");
+    obj.button67:setFontSize(9);
     obj.button67:setName("button67");
 
     obj.button68 = GUI.fromHandle(_obj_newObject("button"));
@@ -3519,6 +3586,7 @@ local function constructNew_frmACN2()
     obj.button68:setHeight(15);
     obj.button68:setWidth(15);
     obj.button68:setText("2");
+    obj.button68:setFontSize(9);
     obj.button68:setName("button68");
 
     obj.edit166 = GUI.fromHandle(_obj_newObject("edit"));
@@ -3608,6 +3676,7 @@ local function constructNew_frmACN2()
     obj.button69:setHeight(15);
     obj.button69:setWidth(15);
     obj.button69:setText("1");
+    obj.button69:setFontSize(9);
     obj.button69:setName("button69");
 
     obj.button70 = GUI.fromHandle(_obj_newObject("button"));
@@ -3617,6 +3686,7 @@ local function constructNew_frmACN2()
     obj.button70:setHeight(15);
     obj.button70:setWidth(15);
     obj.button70:setText("2");
+    obj.button70:setFontSize(9);
     obj.button70:setName("button70");
 
     obj.edit171 = GUI.fromHandle(_obj_newObject("edit"));
@@ -3706,6 +3776,7 @@ local function constructNew_frmACN2()
     obj.button71:setHeight(15);
     obj.button71:setWidth(15);
     obj.button71:setText("1");
+    obj.button71:setFontSize(9);
     obj.button71:setName("button71");
 
     obj.button72 = GUI.fromHandle(_obj_newObject("button"));
@@ -3715,6 +3786,7 @@ local function constructNew_frmACN2()
     obj.button72:setHeight(15);
     obj.button72:setWidth(15);
     obj.button72:setText("2");
+    obj.button72:setFontSize(9);
     obj.button72:setName("button72");
 
     obj.edit176 = GUI.fromHandle(_obj_newObject("edit"));
@@ -3879,6 +3951,7 @@ local function constructNew_frmACN2()
     obj.button73:setHeight(15);
     obj.button73:setWidth(15);
     obj.button73:setText("1");
+    obj.button73:setFontSize(9);
     obj.button73:setName("button73");
 
     obj.button74 = GUI.fromHandle(_obj_newObject("button"));
@@ -3888,6 +3961,7 @@ local function constructNew_frmACN2()
     obj.button74:setHeight(15);
     obj.button74:setWidth(15);
     obj.button74:setText("2");
+    obj.button74:setFontSize(9);
     obj.button74:setName("button74");
 
     obj.edit181 = GUI.fromHandle(_obj_newObject("edit"));
@@ -3977,6 +4051,7 @@ local function constructNew_frmACN2()
     obj.button75:setHeight(15);
     obj.button75:setWidth(15);
     obj.button75:setText("1");
+    obj.button75:setFontSize(9);
     obj.button75:setName("button75");
 
     obj.button76 = GUI.fromHandle(_obj_newObject("button"));
@@ -3986,6 +4061,7 @@ local function constructNew_frmACN2()
     obj.button76:setHeight(15);
     obj.button76:setWidth(15);
     obj.button76:setText("2");
+    obj.button76:setFontSize(9);
     obj.button76:setName("button76");
 
     obj.edit186 = GUI.fromHandle(_obj_newObject("edit"));
@@ -4075,6 +4151,7 @@ local function constructNew_frmACN2()
     obj.button77:setHeight(15);
     obj.button77:setWidth(15);
     obj.button77:setText("1");
+    obj.button77:setFontSize(9);
     obj.button77:setName("button77");
 
     obj.button78 = GUI.fromHandle(_obj_newObject("button"));
@@ -4084,6 +4161,7 @@ local function constructNew_frmACN2()
     obj.button78:setHeight(15);
     obj.button78:setWidth(15);
     obj.button78:setText("2");
+    obj.button78:setFontSize(9);
     obj.button78:setName("button78");
 
     obj.edit191 = GUI.fromHandle(_obj_newObject("edit"));
@@ -4173,6 +4251,7 @@ local function constructNew_frmACN2()
     obj.button79:setHeight(15);
     obj.button79:setWidth(15);
     obj.button79:setText("1");
+    obj.button79:setFontSize(9);
     obj.button79:setName("button79");
 
     obj.button80 = GUI.fromHandle(_obj_newObject("button"));
@@ -4182,6 +4261,7 @@ local function constructNew_frmACN2()
     obj.button80:setHeight(15);
     obj.button80:setWidth(15);
     obj.button80:setText("2");
+    obj.button80:setFontSize(9);
     obj.button80:setName("button80");
 
     obj.edit196 = GUI.fromHandle(_obj_newObject("edit"));
@@ -4271,6 +4351,7 @@ local function constructNew_frmACN2()
     obj.button81:setHeight(15);
     obj.button81:setWidth(15);
     obj.button81:setText("1");
+    obj.button81:setFontSize(9);
     obj.button81:setName("button81");
 
     obj.button82 = GUI.fromHandle(_obj_newObject("button"));
@@ -4280,6 +4361,7 @@ local function constructNew_frmACN2()
     obj.button82:setHeight(15);
     obj.button82:setWidth(15);
     obj.button82:setText("2");
+    obj.button82:setFontSize(9);
     obj.button82:setName("button82");
 
     obj.edit201 = GUI.fromHandle(_obj_newObject("edit"));
@@ -4369,6 +4451,7 @@ local function constructNew_frmACN2()
     obj.button83:setHeight(15);
     obj.button83:setWidth(15);
     obj.button83:setText("1");
+    obj.button83:setFontSize(9);
     obj.button83:setName("button83");
 
     obj.button84 = GUI.fromHandle(_obj_newObject("button"));
@@ -4378,6 +4461,7 @@ local function constructNew_frmACN2()
     obj.button84:setHeight(15);
     obj.button84:setWidth(15);
     obj.button84:setText("2");
+    obj.button84:setFontSize(9);
     obj.button84:setName("button84");
 
     obj.edit206 = GUI.fromHandle(_obj_newObject("edit"));
@@ -4467,6 +4551,7 @@ local function constructNew_frmACN2()
     obj.button85:setHeight(15);
     obj.button85:setWidth(15);
     obj.button85:setText("1");
+    obj.button85:setFontSize(9);
     obj.button85:setName("button85");
 
     obj.button86 = GUI.fromHandle(_obj_newObject("button"));
@@ -4476,6 +4561,7 @@ local function constructNew_frmACN2()
     obj.button86:setHeight(15);
     obj.button86:setWidth(15);
     obj.button86:setText("2");
+    obj.button86:setFontSize(9);
     obj.button86:setName("button86");
 
     obj.edit211 = GUI.fromHandle(_obj_newObject("edit"));
@@ -4565,6 +4651,7 @@ local function constructNew_frmACN2()
     obj.button87:setHeight(15);
     obj.button87:setWidth(15);
     obj.button87:setText("1");
+    obj.button87:setFontSize(9);
     obj.button87:setName("button87");
 
     obj.button88 = GUI.fromHandle(_obj_newObject("button"));
@@ -4574,6 +4661,7 @@ local function constructNew_frmACN2()
     obj.button88:setHeight(15);
     obj.button88:setWidth(15);
     obj.button88:setText("2");
+    obj.button88:setFontSize(9);
     obj.button88:setName("button88");
 
     obj.edit216 = GUI.fromHandle(_obj_newObject("edit"));
@@ -4663,6 +4751,7 @@ local function constructNew_frmACN2()
     obj.button89:setHeight(15);
     obj.button89:setWidth(15);
     obj.button89:setText("1");
+    obj.button89:setFontSize(9);
     obj.button89:setName("button89");
 
     obj.button90 = GUI.fromHandle(_obj_newObject("button"));
@@ -4672,6 +4761,7 @@ local function constructNew_frmACN2()
     obj.button90:setHeight(15);
     obj.button90:setWidth(15);
     obj.button90:setText("2");
+    obj.button90:setFontSize(9);
     obj.button90:setName("button90");
 
     obj.edit221 = GUI.fromHandle(_obj_newObject("edit"));
@@ -4761,6 +4851,7 @@ local function constructNew_frmACN2()
     obj.button91:setHeight(15);
     obj.button91:setWidth(15);
     obj.button91:setText("1");
+    obj.button91:setFontSize(9);
     obj.button91:setName("button91");
 
     obj.button92 = GUI.fromHandle(_obj_newObject("button"));
@@ -4770,6 +4861,7 @@ local function constructNew_frmACN2()
     obj.button92:setHeight(15);
     obj.button92:setWidth(15);
     obj.button92:setText("2");
+    obj.button92:setFontSize(9);
     obj.button92:setName("button92");
 
     obj.edit226 = GUI.fromHandle(_obj_newObject("edit"));
@@ -4859,6 +4951,7 @@ local function constructNew_frmACN2()
     obj.button93:setHeight(15);
     obj.button93:setWidth(15);
     obj.button93:setText("1");
+    obj.button93:setFontSize(9);
     obj.button93:setName("button93");
 
     obj.button94 = GUI.fromHandle(_obj_newObject("button"));
@@ -4868,6 +4961,7 @@ local function constructNew_frmACN2()
     obj.button94:setHeight(15);
     obj.button94:setWidth(15);
     obj.button94:setText("2");
+    obj.button94:setFontSize(9);
     obj.button94:setName("button94");
 
     obj.edit231 = GUI.fromHandle(_obj_newObject("edit"));
@@ -4957,6 +5051,7 @@ local function constructNew_frmACN2()
     obj.button95:setHeight(15);
     obj.button95:setWidth(15);
     obj.button95:setText("1");
+    obj.button95:setFontSize(9);
     obj.button95:setName("button95");
 
     obj.button96 = GUI.fromHandle(_obj_newObject("button"));
@@ -4966,6 +5061,7 @@ local function constructNew_frmACN2()
     obj.button96:setHeight(15);
     obj.button96:setWidth(15);
     obj.button96:setText("2");
+    obj.button96:setFontSize(9);
     obj.button96:setName("button96");
 
     obj.edit236 = GUI.fromHandle(_obj_newObject("edit"));

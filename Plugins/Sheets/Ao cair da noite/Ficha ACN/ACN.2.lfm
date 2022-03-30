@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <form name="frmACN2" align="client" theme="dark" margins="{top=1}">
     <template name="Aptidao">
-        <button left="0" top="0" height="15" width="15" text="1">
+        <button left="0" top="0" height="15" width="15" text="1" fontSize="9">
         	<event name="onClick">
 				if sheet==nil then return end;
 				sheet.field1 = true;
@@ -9,7 +9,7 @@
 				sheet.rollnome1 = sheet.nome$(field);
         	</event>
         </button>
-    	<button left="0" top="15" height="15" width="15" text="2">
+    	<button left="0" top="15" height="15" width="15" text="2" fontSize="9">
     		<event name="onClick">
 				if sheet==nil then return end;
 				sheet.field2 = true;

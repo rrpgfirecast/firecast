@@ -76,7 +76,7 @@
             <dataType id="Ambesek.Nefertyne.FichaADnD2e" title="Ficha AD&amp;D 2e"/>
         </dataTypes>
     </element>
-    <element id="FICHA_ACN" name="Ficha Ao Cair da Noite" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ao%20cair%20da%20noite/output/Ao%20cair%20da%20noite.rpk?raw=true" fileName="Ao cair da noite.rpk" repositoryPath="Sheets/Ao cair da noite/" author="Ambesek &amp; Nefertyne" description="Ficha feita para o sistema Ao Cair da Noite" version="0.6.4" compilationDate="26112019235907" compilationDigest="e4ed4c9f6d7c604d4aa401ee5cee699178421e75">
+    <element id="FICHA_ACN" name="Ficha Ao Cair da Noite" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ao%20cair%20da%20noite/output/Ao%20cair%20da%20noite.rpk?raw=true" fileName="Ao cair da noite.rpk" repositoryPath="Sheets/Ao cair da noite/" author="Ambesek &amp; Nefertyne" description="Ficha feita para o sistema Ao Cair da Noite" version="1.0" compilationDate="26112019235907" compilationDigest="e4ed4c9f6d7c604d4aa401ee5cee699178421e75">
         <dataTypes>
             <dataType id="Ambesek.Nefertyne.FichaACN" title="Ficha ACN"/>
         </dataTypes>

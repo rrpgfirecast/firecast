@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <module sdkVersion="3.5">
 	<id>FICHA_ACN</id>
-	<version>0.6.4</version>
+	<version>1.0</version>
 	<name>Ficha Ao Cair da Noite</name>
 	<description>Ficha feita para o sistema Ao Cair da Noite</description>
 	<author>Ambesek &amp; Nefertyne</author>
