@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <form name="frmACN1" align="client" theme="dark">
-	<popup name="popOther" width="400" height="650" backOpacity="0.4" autoScopeNode="false">
+	<popup name="popOther" width="400" height="550" backOpacity="0.4" autoScopeNode="false">
 		<flowLayout align="top" autoHeight="true" maxControlsPerLine="5" margins="{bottom=4}" horzAlign="center">
 			<otherSmallCenter text="Inicial" field="inicial"/>
 			<otherSmallCenter text="Apr." field="aprimoramento"/>
@@ -10,7 +10,7 @@
 		</flowLayout>
 		<textEditor align="client" field="descricao"/>
 	</popup>
-	<popup name="popHistorico" width="400" height="650" backOpacity="0.4" autoScopeNode="false">
+	<popup name="popHistorico" width="400" height="550" backOpacity="0.4" autoScopeNode="false">
 		<flowLayout align="top" autoHeight="true" maxControlsPerLine="5" margins="{bottom=4}" horzAlign="center">
 			<otherSmallCenter text="Inicial" field="historicoValor"/>
 			<otherSmallCenter text="Apr." field="historicoBonus"/>
@@ -69,22 +69,27 @@
         	</event>
     	</button>
 
-    	<edit left="20" top="0" width="150" height="25" field="historicoNome$(field)"/>
+    	<edit left="20" top="0" width="100" height="25" field="historicoNome$(field)"/>
 
-		<rectangle left="175" top="0" width="35" height="25" color="Black" strokeColor="white" strokeSize="1"/>
-        <label left="185" top="3" width="30" height="20" field="historicoTotal$(field)"/>
+		<rectangle left="125" top="0" width="35" height="25" color="Black" strokeColor="white" strokeSize="1"/>
+        <label left="135" top="3" width="30" height="20" field="historicoTotal$(field)"/>
 
-        <button left="215" top="0" width="25" height="25" text="i" name="histPop$(field)">
+        <edit left="165" top="0" width="25" height="25" field="historicoValor$(field)"/>
+        <edit left="190" top="0" width="25" height="25" field="historicoBonus$(field)"/>
+        <edit left="215" top="0" width="25" height="25" field="historicoXp$(field)"/>
+
+        <button left="240" top="0" width="25" height="25" text="i" name="histPop$(field)">
 			<event name="onClick">	
 				local pop = self:findControlByName("popHistorico");
 
 				if sheet.historicoNode$(field)== nil then
 					sheet.historicoNode$(field) = {}
 					sheet.historicoNode$(field).id = "$(field)"
-					sheet.historicoNode$(field).historicoValor = sheet.historicoValor$(field)
-					sheet.historicoNode$(field).historicoBonus = sheet.historicoBonus$(field)
-					sheet.historicoNode$(field).historicoXp = sheet.historicoXp$(field)
 				end
+
+				sheet.historicoNode$(field).historicoValor = sheet.historicoValor$(field)
+				sheet.historicoNode$(field).historicoBonus = sheet.historicoBonus$(field)
+				sheet.historicoNode$(field).historicoXp = sheet.historicoXp$(field)
 					
 				if pop ~= nil then
 					pop:setNodeObject(sheet.historicoNode$(field));
@@ -331,7 +336,10 @@
 			<label left="0" top="0" width="300" height="20" text="HISTORICOS" horzTextAlign="center"/>
 			
 			<label left="25" top="20" width="315" height="20" text=" Nome"/>
-			<label left="185" top="20" width="315" height="20" text="Total"/>
+			<label left="135" top="20" width="315" height="20" text="Total"/>
+			<label left="170" top="20" width="25" height="20" text="Ini" horzTextAlign="center"/>
+			<label left="195" top="20" width="25" height="20" text="Apr" horzTextAlign="center"/>
+			<label left="220" top="20" width="25" height="20" text="XP" horzTextAlign="center"/>
 			
 			<scrollBox left="0" top="40" width="295" height="260">
 				<layout left="5" top="0" width="270" height="35">

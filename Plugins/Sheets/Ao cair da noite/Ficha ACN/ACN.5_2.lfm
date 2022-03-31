@@ -1,24 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<form name="frmACN5" align="client">
+<form name="frmACN5_2" align="client">
 	<scrollBox align="client">
 		<layout align="left" width="400" margins="{right=10}">
 			<rectangle align="client" color="black" xradius="5" yradius="15" cornerType="round">
 	        	<label align="top" height="20" text="Anotações" horzTextAlign="center"/>
-				<textEditor align="client" field="anotacoes1" margins="{left=10,right=10,bottom=10}"/>
+				<textEditor align="client" field="anotacoes4" margins="{left=10,right=10,bottom=10}"/>
 			</rectangle>
       </layout>
 		
 		<layout align="left" width="400" margins="{right=10}">
 			<rectangle align="client" color="black" xradius="5" yradius="15" cornerType="round">
 	        	<label align="top" height="20" text="Anotações" horzTextAlign="center"/>
-				<textEditor align="client" field="anotacoes2" margins="{left=10,right=10,bottom=10}"/>
+				<textEditor align="client" field="anotacoes5" margins="{left=10,right=10,bottom=10}"/>
 			</rectangle>
       </layout>
 		
 		<layout align="left" width="400" margins="{right=10}">
 			<rectangle align="client" color="black" xradius="5" yradius="15" cornerType="round">
 	        	<label align="top" height="20" text="Anotações" horzTextAlign="center"/>
-				<textEditor align="client" field="anotacoes3" margins="{left=10,right=10,bottom=10}"/>
+				<textEditor align="client" field="anotacoes6" margins="{left=10,right=10,bottom=10}"/>
 			</rectangle>
       </layout>
 	</scrollBox>

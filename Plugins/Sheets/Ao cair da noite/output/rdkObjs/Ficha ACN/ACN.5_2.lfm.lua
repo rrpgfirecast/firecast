@@ -7,7 +7,7 @@ require("ndb.lua");
 require("locale.lua");
 local __o_Utils = require("utils.lua");
 
-local function constructNew_frmACN5()
+local function constructNew_frmACN5_2()
     local obj = GUI.fromHandle(_obj_newObject("form"));
     local self = obj;
     local sheet = nil;
@@ -26,7 +26,7 @@ local function constructNew_frmACN5()
 
     _gui_assignInitialParentForForm(obj.handle);
     obj:beginUpdate();
-    obj:setName("frmACN5");
+    obj:setName("frmACN5_2");
     obj:setAlign("client");
 
     obj.scrollBox1 = GUI.fromHandle(_obj_newObject("scrollBox"));
@@ -61,7 +61,7 @@ local function constructNew_frmACN5()
     obj.textEditor1 = GUI.fromHandle(_obj_newObject("textEditor"));
     obj.textEditor1:setParent(obj.rectangle1);
     obj.textEditor1:setAlign("client");
-    obj.textEditor1:setField("anotacoes1");
+    obj.textEditor1:setField("anotacoes4");
     obj.textEditor1:setMargins({left=10,right=10,bottom=10});
     obj.textEditor1:setName("textEditor1");
 
@@ -92,7 +92,7 @@ local function constructNew_frmACN5()
     obj.textEditor2 = GUI.fromHandle(_obj_newObject("textEditor"));
     obj.textEditor2:setParent(obj.rectangle2);
     obj.textEditor2:setAlign("client");
-    obj.textEditor2:setField("anotacoes2");
+    obj.textEditor2:setField("anotacoes5");
     obj.textEditor2:setMargins({left=10,right=10,bottom=10});
     obj.textEditor2:setName("textEditor2");
 
@@ -123,7 +123,7 @@ local function constructNew_frmACN5()
     obj.textEditor3 = GUI.fromHandle(_obj_newObject("textEditor"));
     obj.textEditor3:setParent(obj.rectangle3);
     obj.textEditor3:setAlign("client");
-    obj.textEditor3:setField("anotacoes3");
+    obj.textEditor3:setField("anotacoes6");
     obj.textEditor3:setMargins({left=10,right=10,bottom=10});
     obj.textEditor3:setName("textEditor3");
 
@@ -160,13 +160,13 @@ local function constructNew_frmACN5()
     return obj;
 end;
 
-function newfrmACN5()
+function newfrmACN5_2()
     local retObj = nil;
     __o_rrpgObjs.beginObjectsLoading();
 
     __o_Utils.tryFinally(
       function()
-        retObj = constructNew_frmACN5();
+        retObj = constructNew_frmACN5_2();
       end,
       function()
         __o_rrpgObjs.endObjectsLoading();
@@ -176,17 +176,17 @@ function newfrmACN5()
     return retObj;
 end;
 
-local _frmACN5 = {
-    newEditor = newfrmACN5, 
-    new = newfrmACN5, 
-    name = "frmACN5", 
+local _frmACN5_2 = {
+    newEditor = newfrmACN5_2, 
+    new = newfrmACN5_2, 
+    name = "frmACN5_2", 
     dataType = "", 
     formType = "undefined", 
     formComponentName = "form", 
     title = "", 
     description=""};
 
-frmACN5 = _frmACN5;
-Firecast.registrarForm(_frmACN5);
+frmACN5_2 = _frmACN5_2;
+Firecast.registrarForm(_frmACN5_2);
 
-return _frmACN5;
+return _frmACN5_2;

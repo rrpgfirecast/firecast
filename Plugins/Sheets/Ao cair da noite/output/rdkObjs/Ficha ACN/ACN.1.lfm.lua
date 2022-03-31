@@ -34,7 +34,7 @@ local function constructNew_frmACN1()
     obj.popOther:setParent(obj);
     obj.popOther:setName("popOther");
     obj.popOther:setWidth(400);
-    obj.popOther:setHeight(650);
+    obj.popOther:setHeight(550);
     obj.popOther:setBackOpacity(0.4);
     lfm_setPropAsString(obj.popOther, "autoScopeNode",  "false");
 
@@ -192,7 +192,7 @@ local function constructNew_frmACN1()
     obj.popHistorico:setParent(obj);
     obj.popHistorico:setName("popHistorico");
     obj.popHistorico:setWidth(400);
-    obj.popHistorico:setHeight(650);
+    obj.popHistorico:setHeight(550);
     obj.popHistorico:setBackOpacity(0.4);
     lfm_setPropAsString(obj.popHistorico, "autoScopeNode",  "false");
 
@@ -1863,12 +1863,42 @@ local function constructNew_frmACN1()
 
     obj.label60 = GUI.fromHandle(_obj_newObject("label"));
     obj.label60:setParent(obj.layout20);
-    obj.label60:setLeft(185);
+    obj.label60:setLeft(135);
     obj.label60:setTop(20);
     obj.label60:setWidth(315);
     obj.label60:setHeight(20);
     obj.label60:setText("Total");
     obj.label60:setName("label60");
+
+    obj.label61 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label61:setParent(obj.layout20);
+    obj.label61:setLeft(170);
+    obj.label61:setTop(20);
+    obj.label61:setWidth(25);
+    obj.label61:setHeight(20);
+    obj.label61:setText("Ini");
+    obj.label61:setHorzTextAlign("center");
+    obj.label61:setName("label61");
+
+    obj.label62 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label62:setParent(obj.layout20);
+    obj.label62:setLeft(195);
+    obj.label62:setTop(20);
+    obj.label62:setWidth(25);
+    obj.label62:setHeight(20);
+    obj.label62:setText("Apr");
+    obj.label62:setHorzTextAlign("center");
+    obj.label62:setName("label62");
+
+    obj.label63 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label63:setParent(obj.layout20);
+    obj.label63:setLeft(220);
+    obj.label63:setTop(20);
+    obj.label63:setWidth(25);
+    obj.label63:setHeight(20);
+    obj.label63:setText("XP");
+    obj.label63:setHorzTextAlign("center");
+    obj.label63:setName("label63");
 
     obj.scrollBox2 = GUI.fromHandle(_obj_newObject("scrollBox"));
     obj.scrollBox2:setParent(obj.layout20);
@@ -1910,14 +1940,14 @@ local function constructNew_frmACN1()
     obj.edit44:setParent(obj.layout21);
     obj.edit44:setLeft(20);
     obj.edit44:setTop(0);
-    obj.edit44:setWidth(150);
+    obj.edit44:setWidth(100);
     obj.edit44:setHeight(25);
     obj.edit44:setField("historicoNome1_1");
     obj.edit44:setName("edit44");
 
     obj.rectangle23 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle23:setParent(obj.layout21);
-    obj.rectangle23:setLeft(175);
+    obj.rectangle23:setLeft(125);
     obj.rectangle23:setTop(0);
     obj.rectangle23:setWidth(35);
     obj.rectangle23:setHeight(25);
@@ -1926,18 +1956,45 @@ local function constructNew_frmACN1()
     obj.rectangle23:setStrokeSize(1);
     obj.rectangle23:setName("rectangle23");
 
-    obj.label61 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label61:setParent(obj.layout21);
-    obj.label61:setLeft(185);
-    obj.label61:setTop(3);
-    obj.label61:setWidth(30);
-    obj.label61:setHeight(20);
-    obj.label61:setField("historicoTotal1_1");
-    obj.label61:setName("label61");
+    obj.label64 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label64:setParent(obj.layout21);
+    obj.label64:setLeft(135);
+    obj.label64:setTop(3);
+    obj.label64:setWidth(30);
+    obj.label64:setHeight(20);
+    obj.label64:setField("historicoTotal1_1");
+    obj.label64:setName("label64");
+
+    obj.edit45 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit45:setParent(obj.layout21);
+    obj.edit45:setLeft(165);
+    obj.edit45:setTop(0);
+    obj.edit45:setWidth(25);
+    obj.edit45:setHeight(25);
+    obj.edit45:setField("historicoValor1_1");
+    obj.edit45:setName("edit45");
+
+    obj.edit46 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit46:setParent(obj.layout21);
+    obj.edit46:setLeft(190);
+    obj.edit46:setTop(0);
+    obj.edit46:setWidth(25);
+    obj.edit46:setHeight(25);
+    obj.edit46:setField("historicoBonus1_1");
+    obj.edit46:setName("edit46");
+
+    obj.edit47 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit47:setParent(obj.layout21);
+    obj.edit47:setLeft(215);
+    obj.edit47:setTop(0);
+    obj.edit47:setWidth(25);
+    obj.edit47:setHeight(25);
+    obj.edit47:setField("historicoXp1_1");
+    obj.edit47:setName("edit47");
 
     obj.histPop1_1 = GUI.fromHandle(_obj_newObject("button"));
     obj.histPop1_1:setParent(obj.layout21);
-    obj.histPop1_1:setLeft(215);
+    obj.histPop1_1:setLeft(240);
     obj.histPop1_1:setTop(0);
     obj.histPop1_1:setWidth(25);
     obj.histPop1_1:setHeight(25);
@@ -1987,18 +2044,18 @@ local function constructNew_frmACN1()
     obj.button22:setFontSize(9);
     obj.button22:setName("button22");
 
-    obj.edit45 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit45:setParent(obj.layout22);
-    obj.edit45:setLeft(20);
-    obj.edit45:setTop(0);
-    obj.edit45:setWidth(150);
-    obj.edit45:setHeight(25);
-    obj.edit45:setField("historicoNome1_2");
-    obj.edit45:setName("edit45");
+    obj.edit48 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit48:setParent(obj.layout22);
+    obj.edit48:setLeft(20);
+    obj.edit48:setTop(0);
+    obj.edit48:setWidth(100);
+    obj.edit48:setHeight(25);
+    obj.edit48:setField("historicoNome1_2");
+    obj.edit48:setName("edit48");
 
     obj.rectangle24 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle24:setParent(obj.layout22);
-    obj.rectangle24:setLeft(175);
+    obj.rectangle24:setLeft(125);
     obj.rectangle24:setTop(0);
     obj.rectangle24:setWidth(35);
     obj.rectangle24:setHeight(25);
@@ -2007,18 +2064,45 @@ local function constructNew_frmACN1()
     obj.rectangle24:setStrokeSize(1);
     obj.rectangle24:setName("rectangle24");
 
-    obj.label62 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label62:setParent(obj.layout22);
-    obj.label62:setLeft(185);
-    obj.label62:setTop(3);
-    obj.label62:setWidth(30);
-    obj.label62:setHeight(20);
-    obj.label62:setField("historicoTotal1_2");
-    obj.label62:setName("label62");
+    obj.label65 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label65:setParent(obj.layout22);
+    obj.label65:setLeft(135);
+    obj.label65:setTop(3);
+    obj.label65:setWidth(30);
+    obj.label65:setHeight(20);
+    obj.label65:setField("historicoTotal1_2");
+    obj.label65:setName("label65");
+
+    obj.edit49 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit49:setParent(obj.layout22);
+    obj.edit49:setLeft(165);
+    obj.edit49:setTop(0);
+    obj.edit49:setWidth(25);
+    obj.edit49:setHeight(25);
+    obj.edit49:setField("historicoValor1_2");
+    obj.edit49:setName("edit49");
+
+    obj.edit50 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit50:setParent(obj.layout22);
+    obj.edit50:setLeft(190);
+    obj.edit50:setTop(0);
+    obj.edit50:setWidth(25);
+    obj.edit50:setHeight(25);
+    obj.edit50:setField("historicoBonus1_2");
+    obj.edit50:setName("edit50");
+
+    obj.edit51 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit51:setParent(obj.layout22);
+    obj.edit51:setLeft(215);
+    obj.edit51:setTop(0);
+    obj.edit51:setWidth(25);
+    obj.edit51:setHeight(25);
+    obj.edit51:setField("historicoXp1_2");
+    obj.edit51:setName("edit51");
 
     obj.histPop1_2 = GUI.fromHandle(_obj_newObject("button"));
     obj.histPop1_2:setParent(obj.layout22);
-    obj.histPop1_2:setLeft(215);
+    obj.histPop1_2:setLeft(240);
     obj.histPop1_2:setTop(0);
     obj.histPop1_2:setWidth(25);
     obj.histPop1_2:setHeight(25);
@@ -2068,18 +2152,18 @@ local function constructNew_frmACN1()
     obj.button24:setFontSize(9);
     obj.button24:setName("button24");
 
-    obj.edit46 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit46:setParent(obj.layout23);
-    obj.edit46:setLeft(20);
-    obj.edit46:setTop(0);
-    obj.edit46:setWidth(150);
-    obj.edit46:setHeight(25);
-    obj.edit46:setField("historicoNome1_3");
-    obj.edit46:setName("edit46");
+    obj.edit52 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit52:setParent(obj.layout23);
+    obj.edit52:setLeft(20);
+    obj.edit52:setTop(0);
+    obj.edit52:setWidth(100);
+    obj.edit52:setHeight(25);
+    obj.edit52:setField("historicoNome1_3");
+    obj.edit52:setName("edit52");
 
     obj.rectangle25 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle25:setParent(obj.layout23);
-    obj.rectangle25:setLeft(175);
+    obj.rectangle25:setLeft(125);
     obj.rectangle25:setTop(0);
     obj.rectangle25:setWidth(35);
     obj.rectangle25:setHeight(25);
@@ -2088,18 +2172,45 @@ local function constructNew_frmACN1()
     obj.rectangle25:setStrokeSize(1);
     obj.rectangle25:setName("rectangle25");
 
-    obj.label63 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label63:setParent(obj.layout23);
-    obj.label63:setLeft(185);
-    obj.label63:setTop(3);
-    obj.label63:setWidth(30);
-    obj.label63:setHeight(20);
-    obj.label63:setField("historicoTotal1_3");
-    obj.label63:setName("label63");
+    obj.label66 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label66:setParent(obj.layout23);
+    obj.label66:setLeft(135);
+    obj.label66:setTop(3);
+    obj.label66:setWidth(30);
+    obj.label66:setHeight(20);
+    obj.label66:setField("historicoTotal1_3");
+    obj.label66:setName("label66");
+
+    obj.edit53 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit53:setParent(obj.layout23);
+    obj.edit53:setLeft(165);
+    obj.edit53:setTop(0);
+    obj.edit53:setWidth(25);
+    obj.edit53:setHeight(25);
+    obj.edit53:setField("historicoValor1_3");
+    obj.edit53:setName("edit53");
+
+    obj.edit54 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit54:setParent(obj.layout23);
+    obj.edit54:setLeft(190);
+    obj.edit54:setTop(0);
+    obj.edit54:setWidth(25);
+    obj.edit54:setHeight(25);
+    obj.edit54:setField("historicoBonus1_3");
+    obj.edit54:setName("edit54");
+
+    obj.edit55 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit55:setParent(obj.layout23);
+    obj.edit55:setLeft(215);
+    obj.edit55:setTop(0);
+    obj.edit55:setWidth(25);
+    obj.edit55:setHeight(25);
+    obj.edit55:setField("historicoXp1_3");
+    obj.edit55:setName("edit55");
 
     obj.histPop1_3 = GUI.fromHandle(_obj_newObject("button"));
     obj.histPop1_3:setParent(obj.layout23);
-    obj.histPop1_3:setLeft(215);
+    obj.histPop1_3:setLeft(240);
     obj.histPop1_3:setTop(0);
     obj.histPop1_3:setWidth(25);
     obj.histPop1_3:setHeight(25);
@@ -2149,18 +2260,18 @@ local function constructNew_frmACN1()
     obj.button26:setFontSize(9);
     obj.button26:setName("button26");
 
-    obj.edit47 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit47:setParent(obj.layout24);
-    obj.edit47:setLeft(20);
-    obj.edit47:setTop(0);
-    obj.edit47:setWidth(150);
-    obj.edit47:setHeight(25);
-    obj.edit47:setField("historicoNome1_4");
-    obj.edit47:setName("edit47");
+    obj.edit56 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit56:setParent(obj.layout24);
+    obj.edit56:setLeft(20);
+    obj.edit56:setTop(0);
+    obj.edit56:setWidth(100);
+    obj.edit56:setHeight(25);
+    obj.edit56:setField("historicoNome1_4");
+    obj.edit56:setName("edit56");
 
     obj.rectangle26 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle26:setParent(obj.layout24);
-    obj.rectangle26:setLeft(175);
+    obj.rectangle26:setLeft(125);
     obj.rectangle26:setTop(0);
     obj.rectangle26:setWidth(35);
     obj.rectangle26:setHeight(25);
@@ -2169,18 +2280,45 @@ local function constructNew_frmACN1()
     obj.rectangle26:setStrokeSize(1);
     obj.rectangle26:setName("rectangle26");
 
-    obj.label64 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label64:setParent(obj.layout24);
-    obj.label64:setLeft(185);
-    obj.label64:setTop(3);
-    obj.label64:setWidth(30);
-    obj.label64:setHeight(20);
-    obj.label64:setField("historicoTotal1_4");
-    obj.label64:setName("label64");
+    obj.label67 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label67:setParent(obj.layout24);
+    obj.label67:setLeft(135);
+    obj.label67:setTop(3);
+    obj.label67:setWidth(30);
+    obj.label67:setHeight(20);
+    obj.label67:setField("historicoTotal1_4");
+    obj.label67:setName("label67");
+
+    obj.edit57 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit57:setParent(obj.layout24);
+    obj.edit57:setLeft(165);
+    obj.edit57:setTop(0);
+    obj.edit57:setWidth(25);
+    obj.edit57:setHeight(25);
+    obj.edit57:setField("historicoValor1_4");
+    obj.edit57:setName("edit57");
+
+    obj.edit58 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit58:setParent(obj.layout24);
+    obj.edit58:setLeft(190);
+    obj.edit58:setTop(0);
+    obj.edit58:setWidth(25);
+    obj.edit58:setHeight(25);
+    obj.edit58:setField("historicoBonus1_4");
+    obj.edit58:setName("edit58");
+
+    obj.edit59 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit59:setParent(obj.layout24);
+    obj.edit59:setLeft(215);
+    obj.edit59:setTop(0);
+    obj.edit59:setWidth(25);
+    obj.edit59:setHeight(25);
+    obj.edit59:setField("historicoXp1_4");
+    obj.edit59:setName("edit59");
 
     obj.histPop1_4 = GUI.fromHandle(_obj_newObject("button"));
     obj.histPop1_4:setParent(obj.layout24);
-    obj.histPop1_4:setLeft(215);
+    obj.histPop1_4:setLeft(240);
     obj.histPop1_4:setTop(0);
     obj.histPop1_4:setWidth(25);
     obj.histPop1_4:setHeight(25);
@@ -2230,18 +2368,18 @@ local function constructNew_frmACN1()
     obj.button28:setFontSize(9);
     obj.button28:setName("button28");
 
-    obj.edit48 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit48:setParent(obj.layout25);
-    obj.edit48:setLeft(20);
-    obj.edit48:setTop(0);
-    obj.edit48:setWidth(150);
-    obj.edit48:setHeight(25);
-    obj.edit48:setField("historicoNome1_5");
-    obj.edit48:setName("edit48");
+    obj.edit60 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit60:setParent(obj.layout25);
+    obj.edit60:setLeft(20);
+    obj.edit60:setTop(0);
+    obj.edit60:setWidth(100);
+    obj.edit60:setHeight(25);
+    obj.edit60:setField("historicoNome1_5");
+    obj.edit60:setName("edit60");
 
     obj.rectangle27 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle27:setParent(obj.layout25);
-    obj.rectangle27:setLeft(175);
+    obj.rectangle27:setLeft(125);
     obj.rectangle27:setTop(0);
     obj.rectangle27:setWidth(35);
     obj.rectangle27:setHeight(25);
@@ -2250,18 +2388,45 @@ local function constructNew_frmACN1()
     obj.rectangle27:setStrokeSize(1);
     obj.rectangle27:setName("rectangle27");
 
-    obj.label65 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label65:setParent(obj.layout25);
-    obj.label65:setLeft(185);
-    obj.label65:setTop(3);
-    obj.label65:setWidth(30);
-    obj.label65:setHeight(20);
-    obj.label65:setField("historicoTotal1_5");
-    obj.label65:setName("label65");
+    obj.label68 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label68:setParent(obj.layout25);
+    obj.label68:setLeft(135);
+    obj.label68:setTop(3);
+    obj.label68:setWidth(30);
+    obj.label68:setHeight(20);
+    obj.label68:setField("historicoTotal1_5");
+    obj.label68:setName("label68");
+
+    obj.edit61 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit61:setParent(obj.layout25);
+    obj.edit61:setLeft(165);
+    obj.edit61:setTop(0);
+    obj.edit61:setWidth(25);
+    obj.edit61:setHeight(25);
+    obj.edit61:setField("historicoValor1_5");
+    obj.edit61:setName("edit61");
+
+    obj.edit62 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit62:setParent(obj.layout25);
+    obj.edit62:setLeft(190);
+    obj.edit62:setTop(0);
+    obj.edit62:setWidth(25);
+    obj.edit62:setHeight(25);
+    obj.edit62:setField("historicoBonus1_5");
+    obj.edit62:setName("edit62");
+
+    obj.edit63 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit63:setParent(obj.layout25);
+    obj.edit63:setLeft(215);
+    obj.edit63:setTop(0);
+    obj.edit63:setWidth(25);
+    obj.edit63:setHeight(25);
+    obj.edit63:setField("historicoXp1_5");
+    obj.edit63:setName("edit63");
 
     obj.histPop1_5 = GUI.fromHandle(_obj_newObject("button"));
     obj.histPop1_5:setParent(obj.layout25);
-    obj.histPop1_5:setLeft(215);
+    obj.histPop1_5:setLeft(240);
     obj.histPop1_5:setTop(0);
     obj.histPop1_5:setWidth(25);
     obj.histPop1_5:setHeight(25);
@@ -2311,18 +2476,18 @@ local function constructNew_frmACN1()
     obj.button30:setFontSize(9);
     obj.button30:setName("button30");
 
-    obj.edit49 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit49:setParent(obj.layout26);
-    obj.edit49:setLeft(20);
-    obj.edit49:setTop(0);
-    obj.edit49:setWidth(150);
-    obj.edit49:setHeight(25);
-    obj.edit49:setField("historicoNome1_6");
-    obj.edit49:setName("edit49");
+    obj.edit64 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit64:setParent(obj.layout26);
+    obj.edit64:setLeft(20);
+    obj.edit64:setTop(0);
+    obj.edit64:setWidth(100);
+    obj.edit64:setHeight(25);
+    obj.edit64:setField("historicoNome1_6");
+    obj.edit64:setName("edit64");
 
     obj.rectangle28 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle28:setParent(obj.layout26);
-    obj.rectangle28:setLeft(175);
+    obj.rectangle28:setLeft(125);
     obj.rectangle28:setTop(0);
     obj.rectangle28:setWidth(35);
     obj.rectangle28:setHeight(25);
@@ -2331,18 +2496,45 @@ local function constructNew_frmACN1()
     obj.rectangle28:setStrokeSize(1);
     obj.rectangle28:setName("rectangle28");
 
-    obj.label66 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label66:setParent(obj.layout26);
-    obj.label66:setLeft(185);
-    obj.label66:setTop(3);
-    obj.label66:setWidth(30);
-    obj.label66:setHeight(20);
-    obj.label66:setField("historicoTotal1_6");
-    obj.label66:setName("label66");
+    obj.label69 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label69:setParent(obj.layout26);
+    obj.label69:setLeft(135);
+    obj.label69:setTop(3);
+    obj.label69:setWidth(30);
+    obj.label69:setHeight(20);
+    obj.label69:setField("historicoTotal1_6");
+    obj.label69:setName("label69");
+
+    obj.edit65 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit65:setParent(obj.layout26);
+    obj.edit65:setLeft(165);
+    obj.edit65:setTop(0);
+    obj.edit65:setWidth(25);
+    obj.edit65:setHeight(25);
+    obj.edit65:setField("historicoValor1_6");
+    obj.edit65:setName("edit65");
+
+    obj.edit66 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit66:setParent(obj.layout26);
+    obj.edit66:setLeft(190);
+    obj.edit66:setTop(0);
+    obj.edit66:setWidth(25);
+    obj.edit66:setHeight(25);
+    obj.edit66:setField("historicoBonus1_6");
+    obj.edit66:setName("edit66");
+
+    obj.edit67 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit67:setParent(obj.layout26);
+    obj.edit67:setLeft(215);
+    obj.edit67:setTop(0);
+    obj.edit67:setWidth(25);
+    obj.edit67:setHeight(25);
+    obj.edit67:setField("historicoXp1_6");
+    obj.edit67:setName("edit67");
 
     obj.histPop1_6 = GUI.fromHandle(_obj_newObject("button"));
     obj.histPop1_6:setParent(obj.layout26);
-    obj.histPop1_6:setLeft(215);
+    obj.histPop1_6:setLeft(240);
     obj.histPop1_6:setTop(0);
     obj.histPop1_6:setWidth(25);
     obj.histPop1_6:setHeight(25);
@@ -2392,18 +2584,18 @@ local function constructNew_frmACN1()
     obj.button32:setFontSize(9);
     obj.button32:setName("button32");
 
-    obj.edit50 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit50:setParent(obj.layout27);
-    obj.edit50:setLeft(20);
-    obj.edit50:setTop(0);
-    obj.edit50:setWidth(150);
-    obj.edit50:setHeight(25);
-    obj.edit50:setField("historicoNome2_1");
-    obj.edit50:setName("edit50");
+    obj.edit68 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit68:setParent(obj.layout27);
+    obj.edit68:setLeft(20);
+    obj.edit68:setTop(0);
+    obj.edit68:setWidth(100);
+    obj.edit68:setHeight(25);
+    obj.edit68:setField("historicoNome2_1");
+    obj.edit68:setName("edit68");
 
     obj.rectangle29 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle29:setParent(obj.layout27);
-    obj.rectangle29:setLeft(175);
+    obj.rectangle29:setLeft(125);
     obj.rectangle29:setTop(0);
     obj.rectangle29:setWidth(35);
     obj.rectangle29:setHeight(25);
@@ -2412,18 +2604,45 @@ local function constructNew_frmACN1()
     obj.rectangle29:setStrokeSize(1);
     obj.rectangle29:setName("rectangle29");
 
-    obj.label67 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label67:setParent(obj.layout27);
-    obj.label67:setLeft(185);
-    obj.label67:setTop(3);
-    obj.label67:setWidth(30);
-    obj.label67:setHeight(20);
-    obj.label67:setField("historicoTotal2_1");
-    obj.label67:setName("label67");
+    obj.label70 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label70:setParent(obj.layout27);
+    obj.label70:setLeft(135);
+    obj.label70:setTop(3);
+    obj.label70:setWidth(30);
+    obj.label70:setHeight(20);
+    obj.label70:setField("historicoTotal2_1");
+    obj.label70:setName("label70");
+
+    obj.edit69 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit69:setParent(obj.layout27);
+    obj.edit69:setLeft(165);
+    obj.edit69:setTop(0);
+    obj.edit69:setWidth(25);
+    obj.edit69:setHeight(25);
+    obj.edit69:setField("historicoValor2_1");
+    obj.edit69:setName("edit69");
+
+    obj.edit70 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit70:setParent(obj.layout27);
+    obj.edit70:setLeft(190);
+    obj.edit70:setTop(0);
+    obj.edit70:setWidth(25);
+    obj.edit70:setHeight(25);
+    obj.edit70:setField("historicoBonus2_1");
+    obj.edit70:setName("edit70");
+
+    obj.edit71 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit71:setParent(obj.layout27);
+    obj.edit71:setLeft(215);
+    obj.edit71:setTop(0);
+    obj.edit71:setWidth(25);
+    obj.edit71:setHeight(25);
+    obj.edit71:setField("historicoXp2_1");
+    obj.edit71:setName("edit71");
 
     obj.histPop2_1 = GUI.fromHandle(_obj_newObject("button"));
     obj.histPop2_1:setParent(obj.layout27);
-    obj.histPop2_1:setLeft(215);
+    obj.histPop2_1:setLeft(240);
     obj.histPop2_1:setTop(0);
     obj.histPop2_1:setWidth(25);
     obj.histPop2_1:setHeight(25);
@@ -2473,18 +2692,18 @@ local function constructNew_frmACN1()
     obj.button34:setFontSize(9);
     obj.button34:setName("button34");
 
-    obj.edit51 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit51:setParent(obj.layout28);
-    obj.edit51:setLeft(20);
-    obj.edit51:setTop(0);
-    obj.edit51:setWidth(150);
-    obj.edit51:setHeight(25);
-    obj.edit51:setField("historicoNome2_2");
-    obj.edit51:setName("edit51");
+    obj.edit72 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit72:setParent(obj.layout28);
+    obj.edit72:setLeft(20);
+    obj.edit72:setTop(0);
+    obj.edit72:setWidth(100);
+    obj.edit72:setHeight(25);
+    obj.edit72:setField("historicoNome2_2");
+    obj.edit72:setName("edit72");
 
     obj.rectangle30 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle30:setParent(obj.layout28);
-    obj.rectangle30:setLeft(175);
+    obj.rectangle30:setLeft(125);
     obj.rectangle30:setTop(0);
     obj.rectangle30:setWidth(35);
     obj.rectangle30:setHeight(25);
@@ -2493,18 +2712,45 @@ local function constructNew_frmACN1()
     obj.rectangle30:setStrokeSize(1);
     obj.rectangle30:setName("rectangle30");
 
-    obj.label68 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label68:setParent(obj.layout28);
-    obj.label68:setLeft(185);
-    obj.label68:setTop(3);
-    obj.label68:setWidth(30);
-    obj.label68:setHeight(20);
-    obj.label68:setField("historicoTotal2_2");
-    obj.label68:setName("label68");
+    obj.label71 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label71:setParent(obj.layout28);
+    obj.label71:setLeft(135);
+    obj.label71:setTop(3);
+    obj.label71:setWidth(30);
+    obj.label71:setHeight(20);
+    obj.label71:setField("historicoTotal2_2");
+    obj.label71:setName("label71");
+
+    obj.edit73 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit73:setParent(obj.layout28);
+    obj.edit73:setLeft(165);
+    obj.edit73:setTop(0);
+    obj.edit73:setWidth(25);
+    obj.edit73:setHeight(25);
+    obj.edit73:setField("historicoValor2_2");
+    obj.edit73:setName("edit73");
+
+    obj.edit74 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit74:setParent(obj.layout28);
+    obj.edit74:setLeft(190);
+    obj.edit74:setTop(0);
+    obj.edit74:setWidth(25);
+    obj.edit74:setHeight(25);
+    obj.edit74:setField("historicoBonus2_2");
+    obj.edit74:setName("edit74");
+
+    obj.edit75 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit75:setParent(obj.layout28);
+    obj.edit75:setLeft(215);
+    obj.edit75:setTop(0);
+    obj.edit75:setWidth(25);
+    obj.edit75:setHeight(25);
+    obj.edit75:setField("historicoXp2_2");
+    obj.edit75:setName("edit75");
 
     obj.histPop2_2 = GUI.fromHandle(_obj_newObject("button"));
     obj.histPop2_2:setParent(obj.layout28);
-    obj.histPop2_2:setLeft(215);
+    obj.histPop2_2:setLeft(240);
     obj.histPop2_2:setTop(0);
     obj.histPop2_2:setWidth(25);
     obj.histPop2_2:setHeight(25);
@@ -2554,18 +2800,18 @@ local function constructNew_frmACN1()
     obj.button36:setFontSize(9);
     obj.button36:setName("button36");
 
-    obj.edit52 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit52:setParent(obj.layout29);
-    obj.edit52:setLeft(20);
-    obj.edit52:setTop(0);
-    obj.edit52:setWidth(150);
-    obj.edit52:setHeight(25);
-    obj.edit52:setField("historicoNome2_3");
-    obj.edit52:setName("edit52");
+    obj.edit76 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit76:setParent(obj.layout29);
+    obj.edit76:setLeft(20);
+    obj.edit76:setTop(0);
+    obj.edit76:setWidth(100);
+    obj.edit76:setHeight(25);
+    obj.edit76:setField("historicoNome2_3");
+    obj.edit76:setName("edit76");
 
     obj.rectangle31 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle31:setParent(obj.layout29);
-    obj.rectangle31:setLeft(175);
+    obj.rectangle31:setLeft(125);
     obj.rectangle31:setTop(0);
     obj.rectangle31:setWidth(35);
     obj.rectangle31:setHeight(25);
@@ -2574,18 +2820,45 @@ local function constructNew_frmACN1()
     obj.rectangle31:setStrokeSize(1);
     obj.rectangle31:setName("rectangle31");
 
-    obj.label69 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label69:setParent(obj.layout29);
-    obj.label69:setLeft(185);
-    obj.label69:setTop(3);
-    obj.label69:setWidth(30);
-    obj.label69:setHeight(20);
-    obj.label69:setField("historicoTotal2_3");
-    obj.label69:setName("label69");
+    obj.label72 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label72:setParent(obj.layout29);
+    obj.label72:setLeft(135);
+    obj.label72:setTop(3);
+    obj.label72:setWidth(30);
+    obj.label72:setHeight(20);
+    obj.label72:setField("historicoTotal2_3");
+    obj.label72:setName("label72");
+
+    obj.edit77 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit77:setParent(obj.layout29);
+    obj.edit77:setLeft(165);
+    obj.edit77:setTop(0);
+    obj.edit77:setWidth(25);
+    obj.edit77:setHeight(25);
+    obj.edit77:setField("historicoValor2_3");
+    obj.edit77:setName("edit77");
+
+    obj.edit78 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit78:setParent(obj.layout29);
+    obj.edit78:setLeft(190);
+    obj.edit78:setTop(0);
+    obj.edit78:setWidth(25);
+    obj.edit78:setHeight(25);
+    obj.edit78:setField("historicoBonus2_3");
+    obj.edit78:setName("edit78");
+
+    obj.edit79 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit79:setParent(obj.layout29);
+    obj.edit79:setLeft(215);
+    obj.edit79:setTop(0);
+    obj.edit79:setWidth(25);
+    obj.edit79:setHeight(25);
+    obj.edit79:setField("historicoXp2_3");
+    obj.edit79:setName("edit79");
 
     obj.histPop2_3 = GUI.fromHandle(_obj_newObject("button"));
     obj.histPop2_3:setParent(obj.layout29);
-    obj.histPop2_3:setLeft(215);
+    obj.histPop2_3:setLeft(240);
     obj.histPop2_3:setTop(0);
     obj.histPop2_3:setWidth(25);
     obj.histPop2_3:setHeight(25);
@@ -2635,18 +2908,18 @@ local function constructNew_frmACN1()
     obj.button38:setFontSize(9);
     obj.button38:setName("button38");
 
-    obj.edit53 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit53:setParent(obj.layout30);
-    obj.edit53:setLeft(20);
-    obj.edit53:setTop(0);
-    obj.edit53:setWidth(150);
-    obj.edit53:setHeight(25);
-    obj.edit53:setField("historicoNome2_4");
-    obj.edit53:setName("edit53");
+    obj.edit80 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit80:setParent(obj.layout30);
+    obj.edit80:setLeft(20);
+    obj.edit80:setTop(0);
+    obj.edit80:setWidth(100);
+    obj.edit80:setHeight(25);
+    obj.edit80:setField("historicoNome2_4");
+    obj.edit80:setName("edit80");
 
     obj.rectangle32 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle32:setParent(obj.layout30);
-    obj.rectangle32:setLeft(175);
+    obj.rectangle32:setLeft(125);
     obj.rectangle32:setTop(0);
     obj.rectangle32:setWidth(35);
     obj.rectangle32:setHeight(25);
@@ -2655,18 +2928,45 @@ local function constructNew_frmACN1()
     obj.rectangle32:setStrokeSize(1);
     obj.rectangle32:setName("rectangle32");
 
-    obj.label70 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label70:setParent(obj.layout30);
-    obj.label70:setLeft(185);
-    obj.label70:setTop(3);
-    obj.label70:setWidth(30);
-    obj.label70:setHeight(20);
-    obj.label70:setField("historicoTotal2_4");
-    obj.label70:setName("label70");
+    obj.label73 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label73:setParent(obj.layout30);
+    obj.label73:setLeft(135);
+    obj.label73:setTop(3);
+    obj.label73:setWidth(30);
+    obj.label73:setHeight(20);
+    obj.label73:setField("historicoTotal2_4");
+    obj.label73:setName("label73");
+
+    obj.edit81 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit81:setParent(obj.layout30);
+    obj.edit81:setLeft(165);
+    obj.edit81:setTop(0);
+    obj.edit81:setWidth(25);
+    obj.edit81:setHeight(25);
+    obj.edit81:setField("historicoValor2_4");
+    obj.edit81:setName("edit81");
+
+    obj.edit82 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit82:setParent(obj.layout30);
+    obj.edit82:setLeft(190);
+    obj.edit82:setTop(0);
+    obj.edit82:setWidth(25);
+    obj.edit82:setHeight(25);
+    obj.edit82:setField("historicoBonus2_4");
+    obj.edit82:setName("edit82");
+
+    obj.edit83 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit83:setParent(obj.layout30);
+    obj.edit83:setLeft(215);
+    obj.edit83:setTop(0);
+    obj.edit83:setWidth(25);
+    obj.edit83:setHeight(25);
+    obj.edit83:setField("historicoXp2_4");
+    obj.edit83:setName("edit83");
 
     obj.histPop2_4 = GUI.fromHandle(_obj_newObject("button"));
     obj.histPop2_4:setParent(obj.layout30);
-    obj.histPop2_4:setLeft(215);
+    obj.histPop2_4:setLeft(240);
     obj.histPop2_4:setTop(0);
     obj.histPop2_4:setWidth(25);
     obj.histPop2_4:setHeight(25);
@@ -2716,18 +3016,18 @@ local function constructNew_frmACN1()
     obj.button40:setFontSize(9);
     obj.button40:setName("button40");
 
-    obj.edit54 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit54:setParent(obj.layout31);
-    obj.edit54:setLeft(20);
-    obj.edit54:setTop(0);
-    obj.edit54:setWidth(150);
-    obj.edit54:setHeight(25);
-    obj.edit54:setField("historicoNome2_5");
-    obj.edit54:setName("edit54");
+    obj.edit84 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit84:setParent(obj.layout31);
+    obj.edit84:setLeft(20);
+    obj.edit84:setTop(0);
+    obj.edit84:setWidth(100);
+    obj.edit84:setHeight(25);
+    obj.edit84:setField("historicoNome2_5");
+    obj.edit84:setName("edit84");
 
     obj.rectangle33 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle33:setParent(obj.layout31);
-    obj.rectangle33:setLeft(175);
+    obj.rectangle33:setLeft(125);
     obj.rectangle33:setTop(0);
     obj.rectangle33:setWidth(35);
     obj.rectangle33:setHeight(25);
@@ -2736,18 +3036,45 @@ local function constructNew_frmACN1()
     obj.rectangle33:setStrokeSize(1);
     obj.rectangle33:setName("rectangle33");
 
-    obj.label71 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label71:setParent(obj.layout31);
-    obj.label71:setLeft(185);
-    obj.label71:setTop(3);
-    obj.label71:setWidth(30);
-    obj.label71:setHeight(20);
-    obj.label71:setField("historicoTotal2_5");
-    obj.label71:setName("label71");
+    obj.label74 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label74:setParent(obj.layout31);
+    obj.label74:setLeft(135);
+    obj.label74:setTop(3);
+    obj.label74:setWidth(30);
+    obj.label74:setHeight(20);
+    obj.label74:setField("historicoTotal2_5");
+    obj.label74:setName("label74");
+
+    obj.edit85 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit85:setParent(obj.layout31);
+    obj.edit85:setLeft(165);
+    obj.edit85:setTop(0);
+    obj.edit85:setWidth(25);
+    obj.edit85:setHeight(25);
+    obj.edit85:setField("historicoValor2_5");
+    obj.edit85:setName("edit85");
+
+    obj.edit86 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit86:setParent(obj.layout31);
+    obj.edit86:setLeft(190);
+    obj.edit86:setTop(0);
+    obj.edit86:setWidth(25);
+    obj.edit86:setHeight(25);
+    obj.edit86:setField("historicoBonus2_5");
+    obj.edit86:setName("edit86");
+
+    obj.edit87 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit87:setParent(obj.layout31);
+    obj.edit87:setLeft(215);
+    obj.edit87:setTop(0);
+    obj.edit87:setWidth(25);
+    obj.edit87:setHeight(25);
+    obj.edit87:setField("historicoXp2_5");
+    obj.edit87:setName("edit87");
 
     obj.histPop2_5 = GUI.fromHandle(_obj_newObject("button"));
     obj.histPop2_5:setParent(obj.layout31);
-    obj.histPop2_5:setLeft(215);
+    obj.histPop2_5:setLeft(240);
     obj.histPop2_5:setTop(0);
     obj.histPop2_5:setWidth(25);
     obj.histPop2_5:setHeight(25);
@@ -2797,18 +3124,18 @@ local function constructNew_frmACN1()
     obj.button42:setFontSize(9);
     obj.button42:setName("button42");
 
-    obj.edit55 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit55:setParent(obj.layout32);
-    obj.edit55:setLeft(20);
-    obj.edit55:setTop(0);
-    obj.edit55:setWidth(150);
-    obj.edit55:setHeight(25);
-    obj.edit55:setField("historicoNome2_6");
-    obj.edit55:setName("edit55");
+    obj.edit88 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit88:setParent(obj.layout32);
+    obj.edit88:setLeft(20);
+    obj.edit88:setTop(0);
+    obj.edit88:setWidth(100);
+    obj.edit88:setHeight(25);
+    obj.edit88:setField("historicoNome2_6");
+    obj.edit88:setName("edit88");
 
     obj.rectangle34 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle34:setParent(obj.layout32);
-    obj.rectangle34:setLeft(175);
+    obj.rectangle34:setLeft(125);
     obj.rectangle34:setTop(0);
     obj.rectangle34:setWidth(35);
     obj.rectangle34:setHeight(25);
@@ -2817,18 +3144,45 @@ local function constructNew_frmACN1()
     obj.rectangle34:setStrokeSize(1);
     obj.rectangle34:setName("rectangle34");
 
-    obj.label72 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label72:setParent(obj.layout32);
-    obj.label72:setLeft(185);
-    obj.label72:setTop(3);
-    obj.label72:setWidth(30);
-    obj.label72:setHeight(20);
-    obj.label72:setField("historicoTotal2_6");
-    obj.label72:setName("label72");
+    obj.label75 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label75:setParent(obj.layout32);
+    obj.label75:setLeft(135);
+    obj.label75:setTop(3);
+    obj.label75:setWidth(30);
+    obj.label75:setHeight(20);
+    obj.label75:setField("historicoTotal2_6");
+    obj.label75:setName("label75");
+
+    obj.edit89 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit89:setParent(obj.layout32);
+    obj.edit89:setLeft(165);
+    obj.edit89:setTop(0);
+    obj.edit89:setWidth(25);
+    obj.edit89:setHeight(25);
+    obj.edit89:setField("historicoValor2_6");
+    obj.edit89:setName("edit89");
+
+    obj.edit90 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit90:setParent(obj.layout32);
+    obj.edit90:setLeft(190);
+    obj.edit90:setTop(0);
+    obj.edit90:setWidth(25);
+    obj.edit90:setHeight(25);
+    obj.edit90:setField("historicoBonus2_6");
+    obj.edit90:setName("edit90");
+
+    obj.edit91 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit91:setParent(obj.layout32);
+    obj.edit91:setLeft(215);
+    obj.edit91:setTop(0);
+    obj.edit91:setWidth(25);
+    obj.edit91:setHeight(25);
+    obj.edit91:setField("historicoXp2_6");
+    obj.edit91:setName("edit91");
 
     obj.histPop2_6 = GUI.fromHandle(_obj_newObject("button"));
     obj.histPop2_6:setParent(obj.layout32);
-    obj.histPop2_6:setLeft(215);
+    obj.histPop2_6:setLeft(240);
     obj.histPop2_6:setTop(0);
     obj.histPop2_6:setWidth(25);
     obj.histPop2_6:setHeight(25);
@@ -2878,18 +3232,18 @@ local function constructNew_frmACN1()
     obj.button44:setFontSize(9);
     obj.button44:setName("button44");
 
-    obj.edit56 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit56:setParent(obj.layout33);
-    obj.edit56:setLeft(20);
-    obj.edit56:setTop(0);
-    obj.edit56:setWidth(150);
-    obj.edit56:setHeight(25);
-    obj.edit56:setField("historicoNome3_1");
-    obj.edit56:setName("edit56");
+    obj.edit92 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit92:setParent(obj.layout33);
+    obj.edit92:setLeft(20);
+    obj.edit92:setTop(0);
+    obj.edit92:setWidth(100);
+    obj.edit92:setHeight(25);
+    obj.edit92:setField("historicoNome3_1");
+    obj.edit92:setName("edit92");
 
     obj.rectangle35 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle35:setParent(obj.layout33);
-    obj.rectangle35:setLeft(175);
+    obj.rectangle35:setLeft(125);
     obj.rectangle35:setTop(0);
     obj.rectangle35:setWidth(35);
     obj.rectangle35:setHeight(25);
@@ -2898,18 +3252,45 @@ local function constructNew_frmACN1()
     obj.rectangle35:setStrokeSize(1);
     obj.rectangle35:setName("rectangle35");
 
-    obj.label73 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label73:setParent(obj.layout33);
-    obj.label73:setLeft(185);
-    obj.label73:setTop(3);
-    obj.label73:setWidth(30);
-    obj.label73:setHeight(20);
-    obj.label73:setField("historicoTotal3_1");
-    obj.label73:setName("label73");
+    obj.label76 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label76:setParent(obj.layout33);
+    obj.label76:setLeft(135);
+    obj.label76:setTop(3);
+    obj.label76:setWidth(30);
+    obj.label76:setHeight(20);
+    obj.label76:setField("historicoTotal3_1");
+    obj.label76:setName("label76");
+
+    obj.edit93 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit93:setParent(obj.layout33);
+    obj.edit93:setLeft(165);
+    obj.edit93:setTop(0);
+    obj.edit93:setWidth(25);
+    obj.edit93:setHeight(25);
+    obj.edit93:setField("historicoValor3_1");
+    obj.edit93:setName("edit93");
+
+    obj.edit94 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit94:setParent(obj.layout33);
+    obj.edit94:setLeft(190);
+    obj.edit94:setTop(0);
+    obj.edit94:setWidth(25);
+    obj.edit94:setHeight(25);
+    obj.edit94:setField("historicoBonus3_1");
+    obj.edit94:setName("edit94");
+
+    obj.edit95 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit95:setParent(obj.layout33);
+    obj.edit95:setLeft(215);
+    obj.edit95:setTop(0);
+    obj.edit95:setWidth(25);
+    obj.edit95:setHeight(25);
+    obj.edit95:setField("historicoXp3_1");
+    obj.edit95:setName("edit95");
 
     obj.histPop3_1 = GUI.fromHandle(_obj_newObject("button"));
     obj.histPop3_1:setParent(obj.layout33);
-    obj.histPop3_1:setLeft(215);
+    obj.histPop3_1:setLeft(240);
     obj.histPop3_1:setTop(0);
     obj.histPop3_1:setWidth(25);
     obj.histPop3_1:setHeight(25);
@@ -2959,18 +3340,18 @@ local function constructNew_frmACN1()
     obj.button46:setFontSize(9);
     obj.button46:setName("button46");
 
-    obj.edit57 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit57:setParent(obj.layout34);
-    obj.edit57:setLeft(20);
-    obj.edit57:setTop(0);
-    obj.edit57:setWidth(150);
-    obj.edit57:setHeight(25);
-    obj.edit57:setField("historicoNome3_2");
-    obj.edit57:setName("edit57");
+    obj.edit96 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit96:setParent(obj.layout34);
+    obj.edit96:setLeft(20);
+    obj.edit96:setTop(0);
+    obj.edit96:setWidth(100);
+    obj.edit96:setHeight(25);
+    obj.edit96:setField("historicoNome3_2");
+    obj.edit96:setName("edit96");
 
     obj.rectangle36 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle36:setParent(obj.layout34);
-    obj.rectangle36:setLeft(175);
+    obj.rectangle36:setLeft(125);
     obj.rectangle36:setTop(0);
     obj.rectangle36:setWidth(35);
     obj.rectangle36:setHeight(25);
@@ -2979,18 +3360,45 @@ local function constructNew_frmACN1()
     obj.rectangle36:setStrokeSize(1);
     obj.rectangle36:setName("rectangle36");
 
-    obj.label74 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label74:setParent(obj.layout34);
-    obj.label74:setLeft(185);
-    obj.label74:setTop(3);
-    obj.label74:setWidth(30);
-    obj.label74:setHeight(20);
-    obj.label74:setField("historicoTotal3_2");
-    obj.label74:setName("label74");
+    obj.label77 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label77:setParent(obj.layout34);
+    obj.label77:setLeft(135);
+    obj.label77:setTop(3);
+    obj.label77:setWidth(30);
+    obj.label77:setHeight(20);
+    obj.label77:setField("historicoTotal3_2");
+    obj.label77:setName("label77");
+
+    obj.edit97 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit97:setParent(obj.layout34);
+    obj.edit97:setLeft(165);
+    obj.edit97:setTop(0);
+    obj.edit97:setWidth(25);
+    obj.edit97:setHeight(25);
+    obj.edit97:setField("historicoValor3_2");
+    obj.edit97:setName("edit97");
+
+    obj.edit98 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit98:setParent(obj.layout34);
+    obj.edit98:setLeft(190);
+    obj.edit98:setTop(0);
+    obj.edit98:setWidth(25);
+    obj.edit98:setHeight(25);
+    obj.edit98:setField("historicoBonus3_2");
+    obj.edit98:setName("edit98");
+
+    obj.edit99 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit99:setParent(obj.layout34);
+    obj.edit99:setLeft(215);
+    obj.edit99:setTop(0);
+    obj.edit99:setWidth(25);
+    obj.edit99:setHeight(25);
+    obj.edit99:setField("historicoXp3_2");
+    obj.edit99:setName("edit99");
 
     obj.histPop3_2 = GUI.fromHandle(_obj_newObject("button"));
     obj.histPop3_2:setParent(obj.layout34);
-    obj.histPop3_2:setLeft(215);
+    obj.histPop3_2:setLeft(240);
     obj.histPop3_2:setTop(0);
     obj.histPop3_2:setWidth(25);
     obj.histPop3_2:setHeight(25);
@@ -3040,18 +3448,18 @@ local function constructNew_frmACN1()
     obj.button48:setFontSize(9);
     obj.button48:setName("button48");
 
-    obj.edit58 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit58:setParent(obj.layout35);
-    obj.edit58:setLeft(20);
-    obj.edit58:setTop(0);
-    obj.edit58:setWidth(150);
-    obj.edit58:setHeight(25);
-    obj.edit58:setField("historicoNome3_3");
-    obj.edit58:setName("edit58");
+    obj.edit100 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit100:setParent(obj.layout35);
+    obj.edit100:setLeft(20);
+    obj.edit100:setTop(0);
+    obj.edit100:setWidth(100);
+    obj.edit100:setHeight(25);
+    obj.edit100:setField("historicoNome3_3");
+    obj.edit100:setName("edit100");
 
     obj.rectangle37 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle37:setParent(obj.layout35);
-    obj.rectangle37:setLeft(175);
+    obj.rectangle37:setLeft(125);
     obj.rectangle37:setTop(0);
     obj.rectangle37:setWidth(35);
     obj.rectangle37:setHeight(25);
@@ -3060,18 +3468,45 @@ local function constructNew_frmACN1()
     obj.rectangle37:setStrokeSize(1);
     obj.rectangle37:setName("rectangle37");
 
-    obj.label75 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label75:setParent(obj.layout35);
-    obj.label75:setLeft(185);
-    obj.label75:setTop(3);
-    obj.label75:setWidth(30);
-    obj.label75:setHeight(20);
-    obj.label75:setField("historicoTotal3_3");
-    obj.label75:setName("label75");
+    obj.label78 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label78:setParent(obj.layout35);
+    obj.label78:setLeft(135);
+    obj.label78:setTop(3);
+    obj.label78:setWidth(30);
+    obj.label78:setHeight(20);
+    obj.label78:setField("historicoTotal3_3");
+    obj.label78:setName("label78");
+
+    obj.edit101 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit101:setParent(obj.layout35);
+    obj.edit101:setLeft(165);
+    obj.edit101:setTop(0);
+    obj.edit101:setWidth(25);
+    obj.edit101:setHeight(25);
+    obj.edit101:setField("historicoValor3_3");
+    obj.edit101:setName("edit101");
+
+    obj.edit102 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit102:setParent(obj.layout35);
+    obj.edit102:setLeft(190);
+    obj.edit102:setTop(0);
+    obj.edit102:setWidth(25);
+    obj.edit102:setHeight(25);
+    obj.edit102:setField("historicoBonus3_3");
+    obj.edit102:setName("edit102");
+
+    obj.edit103 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit103:setParent(obj.layout35);
+    obj.edit103:setLeft(215);
+    obj.edit103:setTop(0);
+    obj.edit103:setWidth(25);
+    obj.edit103:setHeight(25);
+    obj.edit103:setField("historicoXp3_3");
+    obj.edit103:setName("edit103");
 
     obj.histPop3_3 = GUI.fromHandle(_obj_newObject("button"));
     obj.histPop3_3:setParent(obj.layout35);
-    obj.histPop3_3:setLeft(215);
+    obj.histPop3_3:setLeft(240);
     obj.histPop3_3:setTop(0);
     obj.histPop3_3:setWidth(25);
     obj.histPop3_3:setHeight(25);
@@ -3121,18 +3556,18 @@ local function constructNew_frmACN1()
     obj.button50:setFontSize(9);
     obj.button50:setName("button50");
 
-    obj.edit59 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit59:setParent(obj.layout36);
-    obj.edit59:setLeft(20);
-    obj.edit59:setTop(0);
-    obj.edit59:setWidth(150);
-    obj.edit59:setHeight(25);
-    obj.edit59:setField("historicoNome3_4");
-    obj.edit59:setName("edit59");
+    obj.edit104 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit104:setParent(obj.layout36);
+    obj.edit104:setLeft(20);
+    obj.edit104:setTop(0);
+    obj.edit104:setWidth(100);
+    obj.edit104:setHeight(25);
+    obj.edit104:setField("historicoNome3_4");
+    obj.edit104:setName("edit104");
 
     obj.rectangle38 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle38:setParent(obj.layout36);
-    obj.rectangle38:setLeft(175);
+    obj.rectangle38:setLeft(125);
     obj.rectangle38:setTop(0);
     obj.rectangle38:setWidth(35);
     obj.rectangle38:setHeight(25);
@@ -3141,18 +3576,45 @@ local function constructNew_frmACN1()
     obj.rectangle38:setStrokeSize(1);
     obj.rectangle38:setName("rectangle38");
 
-    obj.label76 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label76:setParent(obj.layout36);
-    obj.label76:setLeft(185);
-    obj.label76:setTop(3);
-    obj.label76:setWidth(30);
-    obj.label76:setHeight(20);
-    obj.label76:setField("historicoTotal3_4");
-    obj.label76:setName("label76");
+    obj.label79 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label79:setParent(obj.layout36);
+    obj.label79:setLeft(135);
+    obj.label79:setTop(3);
+    obj.label79:setWidth(30);
+    obj.label79:setHeight(20);
+    obj.label79:setField("historicoTotal3_4");
+    obj.label79:setName("label79");
+
+    obj.edit105 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit105:setParent(obj.layout36);
+    obj.edit105:setLeft(165);
+    obj.edit105:setTop(0);
+    obj.edit105:setWidth(25);
+    obj.edit105:setHeight(25);
+    obj.edit105:setField("historicoValor3_4");
+    obj.edit105:setName("edit105");
+
+    obj.edit106 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit106:setParent(obj.layout36);
+    obj.edit106:setLeft(190);
+    obj.edit106:setTop(0);
+    obj.edit106:setWidth(25);
+    obj.edit106:setHeight(25);
+    obj.edit106:setField("historicoBonus3_4");
+    obj.edit106:setName("edit106");
+
+    obj.edit107 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit107:setParent(obj.layout36);
+    obj.edit107:setLeft(215);
+    obj.edit107:setTop(0);
+    obj.edit107:setWidth(25);
+    obj.edit107:setHeight(25);
+    obj.edit107:setField("historicoXp3_4");
+    obj.edit107:setName("edit107");
 
     obj.histPop3_4 = GUI.fromHandle(_obj_newObject("button"));
     obj.histPop3_4:setParent(obj.layout36);
-    obj.histPop3_4:setLeft(215);
+    obj.histPop3_4:setLeft(240);
     obj.histPop3_4:setTop(0);
     obj.histPop3_4:setWidth(25);
     obj.histPop3_4:setHeight(25);
@@ -3202,18 +3664,18 @@ local function constructNew_frmACN1()
     obj.button52:setFontSize(9);
     obj.button52:setName("button52");
 
-    obj.edit60 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit60:setParent(obj.layout37);
-    obj.edit60:setLeft(20);
-    obj.edit60:setTop(0);
-    obj.edit60:setWidth(150);
-    obj.edit60:setHeight(25);
-    obj.edit60:setField("historicoNome3_5");
-    obj.edit60:setName("edit60");
+    obj.edit108 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit108:setParent(obj.layout37);
+    obj.edit108:setLeft(20);
+    obj.edit108:setTop(0);
+    obj.edit108:setWidth(100);
+    obj.edit108:setHeight(25);
+    obj.edit108:setField("historicoNome3_5");
+    obj.edit108:setName("edit108");
 
     obj.rectangle39 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle39:setParent(obj.layout37);
-    obj.rectangle39:setLeft(175);
+    obj.rectangle39:setLeft(125);
     obj.rectangle39:setTop(0);
     obj.rectangle39:setWidth(35);
     obj.rectangle39:setHeight(25);
@@ -3222,18 +3684,45 @@ local function constructNew_frmACN1()
     obj.rectangle39:setStrokeSize(1);
     obj.rectangle39:setName("rectangle39");
 
-    obj.label77 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label77:setParent(obj.layout37);
-    obj.label77:setLeft(185);
-    obj.label77:setTop(3);
-    obj.label77:setWidth(30);
-    obj.label77:setHeight(20);
-    obj.label77:setField("historicoTotal3_5");
-    obj.label77:setName("label77");
+    obj.label80 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label80:setParent(obj.layout37);
+    obj.label80:setLeft(135);
+    obj.label80:setTop(3);
+    obj.label80:setWidth(30);
+    obj.label80:setHeight(20);
+    obj.label80:setField("historicoTotal3_5");
+    obj.label80:setName("label80");
+
+    obj.edit109 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit109:setParent(obj.layout37);
+    obj.edit109:setLeft(165);
+    obj.edit109:setTop(0);
+    obj.edit109:setWidth(25);
+    obj.edit109:setHeight(25);
+    obj.edit109:setField("historicoValor3_5");
+    obj.edit109:setName("edit109");
+
+    obj.edit110 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit110:setParent(obj.layout37);
+    obj.edit110:setLeft(190);
+    obj.edit110:setTop(0);
+    obj.edit110:setWidth(25);
+    obj.edit110:setHeight(25);
+    obj.edit110:setField("historicoBonus3_5");
+    obj.edit110:setName("edit110");
+
+    obj.edit111 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit111:setParent(obj.layout37);
+    obj.edit111:setLeft(215);
+    obj.edit111:setTop(0);
+    obj.edit111:setWidth(25);
+    obj.edit111:setHeight(25);
+    obj.edit111:setField("historicoXp3_5");
+    obj.edit111:setName("edit111");
 
     obj.histPop3_5 = GUI.fromHandle(_obj_newObject("button"));
     obj.histPop3_5:setParent(obj.layout37);
-    obj.histPop3_5:setLeft(215);
+    obj.histPop3_5:setLeft(240);
     obj.histPop3_5:setTop(0);
     obj.histPop3_5:setWidth(25);
     obj.histPop3_5:setHeight(25);
@@ -3283,18 +3772,18 @@ local function constructNew_frmACN1()
     obj.button54:setFontSize(9);
     obj.button54:setName("button54");
 
-    obj.edit61 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit61:setParent(obj.layout38);
-    obj.edit61:setLeft(20);
-    obj.edit61:setTop(0);
-    obj.edit61:setWidth(150);
-    obj.edit61:setHeight(25);
-    obj.edit61:setField("historicoNome3_6");
-    obj.edit61:setName("edit61");
+    obj.edit112 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit112:setParent(obj.layout38);
+    obj.edit112:setLeft(20);
+    obj.edit112:setTop(0);
+    obj.edit112:setWidth(100);
+    obj.edit112:setHeight(25);
+    obj.edit112:setField("historicoNome3_6");
+    obj.edit112:setName("edit112");
 
     obj.rectangle40 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle40:setParent(obj.layout38);
-    obj.rectangle40:setLeft(175);
+    obj.rectangle40:setLeft(125);
     obj.rectangle40:setTop(0);
     obj.rectangle40:setWidth(35);
     obj.rectangle40:setHeight(25);
@@ -3303,18 +3792,45 @@ local function constructNew_frmACN1()
     obj.rectangle40:setStrokeSize(1);
     obj.rectangle40:setName("rectangle40");
 
-    obj.label78 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label78:setParent(obj.layout38);
-    obj.label78:setLeft(185);
-    obj.label78:setTop(3);
-    obj.label78:setWidth(30);
-    obj.label78:setHeight(20);
-    obj.label78:setField("historicoTotal3_6");
-    obj.label78:setName("label78");
+    obj.label81 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label81:setParent(obj.layout38);
+    obj.label81:setLeft(135);
+    obj.label81:setTop(3);
+    obj.label81:setWidth(30);
+    obj.label81:setHeight(20);
+    obj.label81:setField("historicoTotal3_6");
+    obj.label81:setName("label81");
+
+    obj.edit113 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit113:setParent(obj.layout38);
+    obj.edit113:setLeft(165);
+    obj.edit113:setTop(0);
+    obj.edit113:setWidth(25);
+    obj.edit113:setHeight(25);
+    obj.edit113:setField("historicoValor3_6");
+    obj.edit113:setName("edit113");
+
+    obj.edit114 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit114:setParent(obj.layout38);
+    obj.edit114:setLeft(190);
+    obj.edit114:setTop(0);
+    obj.edit114:setWidth(25);
+    obj.edit114:setHeight(25);
+    obj.edit114:setField("historicoBonus3_6");
+    obj.edit114:setName("edit114");
+
+    obj.edit115 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit115:setParent(obj.layout38);
+    obj.edit115:setLeft(215);
+    obj.edit115:setTop(0);
+    obj.edit115:setWidth(25);
+    obj.edit115:setHeight(25);
+    obj.edit115:setField("historicoXp3_6");
+    obj.edit115:setName("edit115");
 
     obj.histPop3_6 = GUI.fromHandle(_obj_newObject("button"));
     obj.histPop3_6:setParent(obj.layout38);
-    obj.histPop3_6:setLeft(215);
+    obj.histPop3_6:setLeft(240);
     obj.histPop3_6:setTop(0);
     obj.histPop3_6:setWidth(25);
     obj.histPop3_6:setHeight(25);
@@ -3353,15 +3869,15 @@ local function constructNew_frmACN1()
     obj.rectangle41:setCornerType("round");
     obj.rectangle41:setName("rectangle41");
 
-    obj.label79 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label79:setParent(obj.layout39);
-    obj.label79:setLeft(0);
-    obj.label79:setTop(5);
-    obj.label79:setWidth(300);
-    obj.label79:setHeight(20);
-    obj.label79:setText("OUTROS");
-    obj.label79:setHorzTextAlign("center");
-    obj.label79:setName("label79");
+    obj.label82 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label82:setParent(obj.layout39);
+    obj.label82:setLeft(0);
+    obj.label82:setTop(5);
+    obj.label82:setWidth(300);
+    obj.label82:setHeight(20);
+    obj.label82:setText("OUTROS");
+    obj.label82:setHorzTextAlign("center");
+    obj.label82:setName("label82");
 
     obj.button55 = GUI.fromHandle(_obj_newObject("button"));
     obj.button55:setParent(obj.layout39);
@@ -3406,15 +3922,15 @@ local function constructNew_frmACN1()
     obj.rectangle42:setCornerType("round");
     obj.rectangle42:setName("rectangle42");
 
-    obj.label80 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label80:setParent(obj.layout40);
-    obj.label80:setLeft(5);
-    obj.label80:setTop(0);
-    obj.label80:setWidth(210);
-    obj.label80:setHeight(20);
-    obj.label80:setText("SAÚDE");
-    obj.label80:setHorzTextAlign("center");
-    obj.label80:setName("label80");
+    obj.label83 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label83:setParent(obj.layout40);
+    obj.label83:setLeft(5);
+    obj.label83:setTop(0);
+    obj.label83:setWidth(210);
+    obj.label83:setHeight(20);
+    obj.label83:setText("SAÚDE");
+    obj.label83:setHorzTextAlign("center");
+    obj.label83:setName("label83");
 
     obj.horzLine3 = GUI.fromHandle(_obj_newObject("horzLine"));
     obj.horzLine3:setParent(obj.layout40);
@@ -3432,14 +3948,14 @@ local function constructNew_frmACN1()
     obj.layout41:setHeight(60);
     obj.layout41:setName("layout41");
 
-    obj.label81 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label81:setParent(obj.layout41);
-    obj.label81:setLeft(10);
-    obj.label81:setTop(0);
-    obj.label81:setWidth(95);
-    obj.label81:setHeight(20);
-    obj.label81:setText("LEVE");
-    obj.label81:setName("label81");
+    obj.label84 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label84:setParent(obj.layout41);
+    obj.label84:setLeft(10);
+    obj.label84:setTop(0);
+    obj.label84:setWidth(95);
+    obj.label84:setHeight(20);
+    obj.label84:setText("LEVE");
+    obj.label84:setName("label84");
 
     obj.flowLayout3 = GUI.fromHandle(_obj_newObject("flowLayout"));
     obj.flowLayout3:setParent(obj.layout41);
@@ -3524,14 +4040,14 @@ local function constructNew_frmACN1()
     obj.flowLineBreak3:setParent(obj.flowLayout3);
     obj.flowLineBreak3:setName("flowLineBreak3");
 
-    obj.edit62 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit62:setParent(obj.layout41);
-    obj.edit62:setLeft(170);
-    obj.edit62:setTop(0);
-    obj.edit62:setWidth(30);
-    obj.edit62:setHeight(25);
-    obj.edit62:setField("penalidade1");
-    obj.edit62:setName("edit62");
+    obj.edit116 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit116:setParent(obj.layout41);
+    obj.edit116:setLeft(170);
+    obj.edit116:setTop(0);
+    obj.edit116:setWidth(30);
+    obj.edit116:setHeight(25);
+    obj.edit116:setField("penalidade1");
+    obj.edit116:setName("edit116");
 
     obj.dataLink76 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink76:setParent(obj.layout41);
@@ -3576,14 +4092,14 @@ local function constructNew_frmACN1()
     obj.layout42:setHeight(40);
     obj.layout42:setName("layout42");
 
-    obj.label82 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label82:setParent(obj.layout42);
-    obj.label82:setLeft(10);
-    obj.label82:setTop(0);
-    obj.label82:setWidth(95);
-    obj.label82:setHeight(20);
-    obj.label82:setText("MEDIO");
-    obj.label82:setName("label82");
+    obj.label85 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label85:setParent(obj.layout42);
+    obj.label85:setLeft(10);
+    obj.label85:setTop(0);
+    obj.label85:setWidth(95);
+    obj.label85:setHeight(20);
+    obj.label85:setText("MEDIO");
+    obj.label85:setName("label85");
 
     obj.flowLayout4 = GUI.fromHandle(_obj_newObject("flowLayout"));
     obj.flowLayout4:setParent(obj.layout42);
@@ -3643,14 +4159,14 @@ local function constructNew_frmACN1()
     obj.flowLineBreak5:setParent(obj.flowLayout4);
     obj.flowLineBreak5:setName("flowLineBreak5");
 
-    obj.edit63 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit63:setParent(obj.layout42);
-    obj.edit63:setLeft(170);
-    obj.edit63:setTop(0);
-    obj.edit63:setWidth(30);
-    obj.edit63:setHeight(25);
-    obj.edit63:setField("penalidade2");
-    obj.edit63:setName("edit63");
+    obj.edit117 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit117:setParent(obj.layout42);
+    obj.edit117:setLeft(170);
+    obj.edit117:setTop(0);
+    obj.edit117:setWidth(30);
+    obj.edit117:setHeight(25);
+    obj.edit117:setField("penalidade2");
+    obj.edit117:setName("edit117");
 
     obj.dataLink77 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink77:setParent(obj.layout42);
@@ -3695,14 +4211,14 @@ local function constructNew_frmACN1()
     obj.layout43:setHeight(40);
     obj.layout43:setName("layout43");
 
-    obj.label83 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label83:setParent(obj.layout43);
-    obj.label83:setLeft(10);
-    obj.label83:setTop(0);
-    obj.label83:setWidth(95);
-    obj.label83:setHeight(20);
-    obj.label83:setText("SERIO");
-    obj.label83:setName("label83");
+    obj.label86 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label86:setParent(obj.layout43);
+    obj.label86:setLeft(10);
+    obj.label86:setTop(0);
+    obj.label86:setWidth(95);
+    obj.label86:setHeight(20);
+    obj.label86:setText("SERIO");
+    obj.label86:setName("label86");
 
     obj.flowLayout5 = GUI.fromHandle(_obj_newObject("flowLayout"));
     obj.flowLayout5:setParent(obj.layout43);
@@ -3762,14 +4278,14 @@ local function constructNew_frmACN1()
     obj.flowLineBreak7:setParent(obj.flowLayout5);
     obj.flowLineBreak7:setName("flowLineBreak7");
 
-    obj.edit64 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit64:setParent(obj.layout43);
-    obj.edit64:setLeft(170);
-    obj.edit64:setTop(0);
-    obj.edit64:setWidth(30);
-    obj.edit64:setHeight(25);
-    obj.edit64:setField("penalidade3");
-    obj.edit64:setName("edit64");
+    obj.edit118 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit118:setParent(obj.layout43);
+    obj.edit118:setLeft(170);
+    obj.edit118:setTop(0);
+    obj.edit118:setWidth(30);
+    obj.edit118:setHeight(25);
+    obj.edit118:setField("penalidade3");
+    obj.edit118:setName("edit118");
 
     obj.dataLink78 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink78:setParent(obj.layout43);
@@ -3814,14 +4330,14 @@ local function constructNew_frmACN1()
     obj.layout44:setHeight(40);
     obj.layout44:setName("layout44");
 
-    obj.label84 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label84:setParent(obj.layout44);
-    obj.label84:setLeft(10);
-    obj.label84:setTop(0);
-    obj.label84:setWidth(95);
-    obj.label84:setHeight(20);
-    obj.label84:setText("GRAVE");
-    obj.label84:setName("label84");
+    obj.label87 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label87:setParent(obj.layout44);
+    obj.label87:setLeft(10);
+    obj.label87:setTop(0);
+    obj.label87:setWidth(95);
+    obj.label87:setHeight(20);
+    obj.label87:setText("GRAVE");
+    obj.label87:setName("label87");
 
     obj.flowLayout6 = GUI.fromHandle(_obj_newObject("flowLayout"));
     obj.flowLayout6:setParent(obj.layout44);
@@ -3881,14 +4397,14 @@ local function constructNew_frmACN1()
     obj.flowLineBreak9:setParent(obj.flowLayout6);
     obj.flowLineBreak9:setName("flowLineBreak9");
 
-    obj.edit65 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit65:setParent(obj.layout44);
-    obj.edit65:setLeft(170);
-    obj.edit65:setTop(0);
-    obj.edit65:setWidth(30);
-    obj.edit65:setHeight(25);
-    obj.edit65:setField("penalidade4");
-    obj.edit65:setName("edit65");
+    obj.edit119 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit119:setParent(obj.layout44);
+    obj.edit119:setLeft(170);
+    obj.edit119:setTop(0);
+    obj.edit119:setWidth(30);
+    obj.edit119:setHeight(25);
+    obj.edit119:setField("penalidade4");
+    obj.edit119:setName("edit119");
 
     obj.dataLink79 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink79:setParent(obj.layout44);
@@ -3933,14 +4449,14 @@ local function constructNew_frmACN1()
     obj.layout45:setHeight(25);
     obj.layout45:setName("layout45");
 
-    obj.label85 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label85:setParent(obj.layout45);
-    obj.label85:setLeft(10);
-    obj.label85:setTop(0);
-    obj.label85:setWidth(95);
-    obj.label85:setHeight(20);
-    obj.label85:setText("INCAPACITADO");
-    obj.label85:setName("label85");
+    obj.label88 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label88:setParent(obj.layout45);
+    obj.label88:setLeft(10);
+    obj.label88:setTop(0);
+    obj.label88:setWidth(95);
+    obj.label88:setHeight(20);
+    obj.label88:setText("INCAPACITADO");
+    obj.label88:setName("label88");
 
     obj.flowLayout7 = GUI.fromHandle(_obj_newObject("flowLayout"));
     obj.flowLayout7:setParent(obj.layout45);
@@ -3975,14 +4491,14 @@ local function constructNew_frmACN1()
     obj.flowLineBreak10:setParent(obj.flowLayout7);
     obj.flowLineBreak10:setName("flowLineBreak10");
 
-    obj.edit66 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit66:setParent(obj.layout45);
-    obj.edit66:setLeft(170);
-    obj.edit66:setTop(0);
-    obj.edit66:setWidth(30);
-    obj.edit66:setHeight(25);
-    obj.edit66:setField("penalidade5");
-    obj.edit66:setName("edit66");
+    obj.edit120 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit120:setParent(obj.layout45);
+    obj.edit120:setLeft(170);
+    obj.edit120:setTop(0);
+    obj.edit120:setWidth(30);
+    obj.edit120:setHeight(25);
+    obj.edit120:setField("penalidade5");
+    obj.edit120:setName("edit120");
 
     obj.dataLink80 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink80:setParent(obj.layout45);
@@ -4027,14 +4543,14 @@ local function constructNew_frmACN1()
     obj.layout46:setHeight(100);
     obj.layout46:setName("layout46");
 
-    obj.label86 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label86:setParent(obj.layout46);
-    obj.label86:setLeft(10);
-    obj.label86:setTop(0);
-    obj.label86:setWidth(95);
-    obj.label86:setHeight(20);
-    obj.label86:setText("INCOSCIENTE");
-    obj.label86:setName("label86");
+    obj.label89 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label89:setParent(obj.layout46);
+    obj.label89:setLeft(10);
+    obj.label89:setTop(0);
+    obj.label89:setWidth(95);
+    obj.label89:setHeight(20);
+    obj.label89:setText("INCOSCIENTE");
+    obj.label89:setName("label89");
 
     obj.flowLayout8 = GUI.fromHandle(_obj_newObject("flowLayout"));
     obj.flowLayout8:setParent(obj.layout46);
@@ -4169,14 +4685,14 @@ local function constructNew_frmACN1()
     obj.flowLineBreak15:setParent(obj.flowLayout8);
     obj.flowLineBreak15:setName("flowLineBreak15");
 
-    obj.edit67 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit67:setParent(obj.layout46);
-    obj.edit67:setLeft(170);
-    obj.edit67:setTop(0);
-    obj.edit67:setWidth(30);
-    obj.edit67:setHeight(25);
-    obj.edit67:setField("penalidade6");
-    obj.edit67:setName("edit67");
+    obj.edit121 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit121:setParent(obj.layout46);
+    obj.edit121:setLeft(170);
+    obj.edit121:setTop(0);
+    obj.edit121:setWidth(30);
+    obj.edit121:setHeight(25);
+    obj.edit121:setField("penalidade6");
+    obj.edit121:setName("edit121");
 
     obj.dataLink81 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink81:setParent(obj.layout46);
@@ -4213,24 +4729,24 @@ local function constructNew_frmACN1()
     obj.horzLine9:setStrokeColor("white");
     obj.horzLine9:setName("horzLine9");
 
-    obj.label87 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label87:setParent(obj.layout40);
-    obj.label87:setLeft(5);
-    obj.label87:setTop(415);
-    obj.label87:setWidth(60);
-    obj.label87:setHeight(20);
-    obj.label87:setText("Absorção");
-    obj.label87:setName("label87");
+    obj.label90 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label90:setParent(obj.layout40);
+    obj.label90:setLeft(5);
+    obj.label90:setTop(415);
+    obj.label90:setWidth(60);
+    obj.label90:setHeight(20);
+    obj.label90:setText("Absorção");
+    obj.label90:setName("label90");
 
-    obj.label88 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label88:setParent(obj.layout40);
-    obj.label88:setLeft(65);
-    obj.label88:setTop(390);
-    obj.label88:setWidth(30);
-    obj.label88:setHeight(20);
-    obj.label88:setText("Total");
-    obj.label88:setHorzTextAlign("center");
-    obj.label88:setName("label88");
+    obj.label91 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label91:setParent(obj.layout40);
+    obj.label91:setLeft(65);
+    obj.label91:setTop(390);
+    obj.label91:setWidth(30);
+    obj.label91:setHeight(20);
+    obj.label91:setText("Total");
+    obj.label91:setHorzTextAlign("center");
+    obj.label91:setName("label91");
 
     obj.rectangle43 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle43:setParent(obj.layout40);
@@ -4243,25 +4759,25 @@ local function constructNew_frmACN1()
     obj.rectangle43:setStrokeSize(1);
     obj.rectangle43:setName("rectangle43");
 
-    obj.label89 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label89:setParent(obj.layout40);
-    obj.label89:setLeft(65);
-    obj.label89:setTop(415);
-    obj.label89:setWidth(30);
-    obj.label89:setHeight(25);
-    obj.label89:setField("absorcao");
-    obj.label89:setHorzTextAlign("center");
-    obj.label89:setName("label89");
+    obj.label92 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label92:setParent(obj.layout40);
+    obj.label92:setLeft(65);
+    obj.label92:setTop(415);
+    obj.label92:setWidth(30);
+    obj.label92:setHeight(25);
+    obj.label92:setField("absorcao");
+    obj.label92:setHorzTextAlign("center");
+    obj.label92:setName("label92");
 
-    obj.label90 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label90:setParent(obj.layout40);
-    obj.label90:setLeft(100);
-    obj.label90:setTop(390);
-    obj.label90:setWidth(30);
-    obj.label90:setHeight(20);
-    obj.label90:setText(" Res.");
-    obj.label90:setHorzTextAlign("center");
-    obj.label90:setName("label90");
+    obj.label93 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label93:setParent(obj.layout40);
+    obj.label93:setLeft(100);
+    obj.label93:setTop(390);
+    obj.label93:setWidth(30);
+    obj.label93:setHeight(20);
+    obj.label93:setText(" Res.");
+    obj.label93:setHorzTextAlign("center");
+    obj.label93:setName("label93");
 
     obj.rectangle44 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle44:setParent(obj.layout40);
@@ -4274,30 +4790,30 @@ local function constructNew_frmACN1()
     obj.rectangle44:setStrokeSize(1);
     obj.rectangle44:setName("rectangle44");
 
-    obj.label91 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label91:setParent(obj.layout40);
-    obj.label91:setLeft(100);
-    obj.label91:setTop(415);
-    obj.label91:setWidth(30);
-    obj.label91:setHeight(25);
-    obj.label91:setField("absRes");
-    obj.label91:setHorzTextAlign("center");
-    obj.label91:setName("label91");
+    obj.label94 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label94:setParent(obj.layout40);
+    obj.label94:setLeft(100);
+    obj.label94:setTop(415);
+    obj.label94:setWidth(30);
+    obj.label94:setHeight(25);
+    obj.label94:setField("absRes");
+    obj.label94:setHorzTextAlign("center");
+    obj.label94:setName("label94");
 
     obj.dataLink82 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink82:setParent(obj.layout40);
     obj.dataLink82:setField("totalresiliencia");
     obj.dataLink82:setName("dataLink82");
 
-    obj.label92 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label92:setParent(obj.layout40);
-    obj.label92:setLeft(135);
-    obj.label92:setTop(390);
-    obj.label92:setWidth(30);
-    obj.label92:setHeight(20);
-    obj.label92:setText("Arm");
-    obj.label92:setHorzTextAlign("center");
-    obj.label92:setName("label92");
+    obj.label95 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label95:setParent(obj.layout40);
+    obj.label95:setLeft(135);
+    obj.label95:setTop(390);
+    obj.label95:setWidth(30);
+    obj.label95:setHeight(20);
+    obj.label95:setText("Arm");
+    obj.label95:setHorzTextAlign("center");
+    obj.label95:setName("label95");
 
     obj.rectangle45 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle45:setParent(obj.layout40);
@@ -4310,35 +4826,35 @@ local function constructNew_frmACN1()
     obj.rectangle45:setStrokeSize(1);
     obj.rectangle45:setName("rectangle45");
 
-    obj.label93 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label93:setParent(obj.layout40);
-    obj.label93:setLeft(135);
-    obj.label93:setTop(415);
-    obj.label93:setWidth(30);
-    obj.label93:setHeight(25);
-    obj.label93:setField("indiceArmadura");
-    obj.label93:setHorzTextAlign("center");
-    obj.label93:setName("label93");
+    obj.label96 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label96:setParent(obj.layout40);
+    obj.label96:setLeft(135);
+    obj.label96:setTop(415);
+    obj.label96:setWidth(30);
+    obj.label96:setHeight(25);
+    obj.label96:setField("indiceArmadura");
+    obj.label96:setHorzTextAlign("center");
+    obj.label96:setName("label96");
 
-    obj.label94 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label94:setParent(obj.layout40);
-    obj.label94:setLeft(170);
-    obj.label94:setTop(390);
-    obj.label94:setWidth(30);
-    obj.label94:setHeight(20);
-    obj.label94:setText(" Out.");
-    obj.label94:setHorzTextAlign("center");
-    obj.label94:setName("label94");
+    obj.label97 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label97:setParent(obj.layout40);
+    obj.label97:setLeft(170);
+    obj.label97:setTop(390);
+    obj.label97:setWidth(30);
+    obj.label97:setHeight(20);
+    obj.label97:setText(" Out.");
+    obj.label97:setHorzTextAlign("center");
+    obj.label97:setName("label97");
 
-    obj.edit68 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit68:setParent(obj.layout40);
-    obj.edit68:setLeft(170);
-    obj.edit68:setTop(415);
-    obj.edit68:setWidth(30);
-    obj.edit68:setHeight(25);
-    obj.edit68:setType("number");
-    obj.edit68:setField("absOutros");
-    obj.edit68:setName("edit68");
+    obj.edit122 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit122:setParent(obj.layout40);
+    obj.edit122:setLeft(170);
+    obj.edit122:setTop(415);
+    obj.edit122:setWidth(30);
+    obj.edit122:setHeight(25);
+    obj.edit122:setType("number");
+    obj.edit122:setField("absOutros");
+    obj.edit122:setName("edit122");
 
     obj.dataLink83 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink83:setParent(obj.layout40);
@@ -4382,42 +4898,42 @@ local function constructNew_frmACN1()
     obj.rectangle47:setStrokeSize(1);
     obj.rectangle47:setName("rectangle47");
 
-    obj.label95 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label95:setParent(obj.layout47);
-    obj.label95:setLeft(100);
-    obj.label95:setTop(10);
-    obj.label95:setWidth(30);
-    obj.label95:setHeight(20);
-    obj.label95:setField("iniciativa");
-    obj.label95:setName("label95");
+    obj.label98 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label98:setParent(obj.layout47);
+    obj.label98:setLeft(100);
+    obj.label98:setTop(10);
+    obj.label98:setWidth(30);
+    obj.label98:setHeight(20);
+    obj.label98:setField("iniciativa");
+    obj.label98:setName("label98");
 
-    obj.edit69 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit69:setParent(obj.layout47);
-    obj.edit69:setLeft(135);
-    obj.edit69:setTop(10);
-    obj.edit69:setWidth(30);
-    obj.edit69:setHeight(25);
-    obj.edit69:setType("number");
-    obj.edit69:setField("iniciativaBonus");
-    obj.edit69:setName("edit69");
+    obj.edit123 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit123:setParent(obj.layout47);
+    obj.edit123:setLeft(135);
+    obj.edit123:setTop(10);
+    obj.edit123:setWidth(30);
+    obj.edit123:setHeight(25);
+    obj.edit123:setType("number");
+    obj.edit123:setField("iniciativaBonus");
+    obj.edit123:setName("edit123");
 
-    obj.label96 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label96:setParent(obj.layout47);
-    obj.label96:setLeft(190);
-    obj.label96:setTop(10);
-    obj.label96:setWidth(100);
-    obj.label96:setHeight(20);
-    obj.label96:setField("ms");
-    obj.label96:setName("label96");
+    obj.label99 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label99:setParent(obj.layout47);
+    obj.label99:setLeft(190);
+    obj.label99:setTop(10);
+    obj.label99:setWidth(100);
+    obj.label99:setHeight(20);
+    obj.label99:setField("ms");
+    obj.label99:setName("label99");
 
-    obj.label97 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label97:setParent(obj.layout47);
-    obj.label97:setLeft(10);
-    obj.label97:setTop(40);
-    obj.label97:setWidth(90);
-    obj.label97:setHeight(20);
-    obj.label97:setText("Velocidade");
-    obj.label97:setName("label97");
+    obj.label100 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label100:setParent(obj.layout47);
+    obj.label100:setLeft(10);
+    obj.label100:setTop(40);
+    obj.label100:setWidth(90);
+    obj.label100:setHeight(20);
+    obj.label100:setText("Velocidade");
+    obj.label100:setName("label100");
 
     obj.rectangle48 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle48:setParent(obj.layout47);
@@ -4430,33 +4946,33 @@ local function constructNew_frmACN1()
     obj.rectangle48:setStrokeSize(1);
     obj.rectangle48:setName("rectangle48");
 
-    obj.label98 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label98:setParent(obj.layout47);
-    obj.label98:setLeft(100);
-    obj.label98:setTop(40);
-    obj.label98:setWidth(30);
-    obj.label98:setHeight(20);
-    obj.label98:setField("velocidade");
-    obj.label98:setName("label98");
+    obj.label101 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label101:setParent(obj.layout47);
+    obj.label101:setLeft(100);
+    obj.label101:setTop(40);
+    obj.label101:setWidth(30);
+    obj.label101:setHeight(20);
+    obj.label101:setField("velocidade");
+    obj.label101:setName("label101");
 
-    obj.edit70 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit70:setParent(obj.layout47);
-    obj.edit70:setLeft(135);
-    obj.edit70:setTop(40);
-    obj.edit70:setWidth(30);
-    obj.edit70:setHeight(25);
-    obj.edit70:setType("number");
-    obj.edit70:setField("velocidadeBonus");
-    obj.edit70:setName("edit70");
+    obj.edit124 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit124:setParent(obj.layout47);
+    obj.edit124:setLeft(135);
+    obj.edit124:setTop(40);
+    obj.edit124:setWidth(30);
+    obj.edit124:setHeight(25);
+    obj.edit124:setType("number");
+    obj.edit124:setField("velocidadeBonus");
+    obj.edit124:setName("edit124");
 
-    obj.label99 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label99:setParent(obj.layout47);
-    obj.label99:setLeft(190);
-    obj.label99:setTop(40);
-    obj.label99:setWidth(100);
-    obj.label99:setHeight(20);
-    obj.label99:setField("kmh");
-    obj.label99:setName("label99");
+    obj.label102 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label102:setParent(obj.layout47);
+    obj.label102:setLeft(190);
+    obj.label102:setTop(40);
+    obj.label102:setWidth(100);
+    obj.label102:setHeight(20);
+    obj.label102:setField("kmh");
+    obj.label102:setName("label102");
 
     obj.dataLink84 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink84:setParent(obj.layout47);
@@ -4491,33 +5007,33 @@ local function constructNew_frmACN1()
     obj.rectangle50:setStrokeSize(1);
     obj.rectangle50:setName("rectangle50");
 
-    obj.label100 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label100:setParent(obj.layout48);
-    obj.label100:setLeft(5);
-    obj.label100:setTop(10);
-    obj.label100:setWidth(50);
-    obj.label100:setHeight(20);
-    obj.label100:setText("Dado 1");
-    obj.label100:setName("label100");
+    obj.label103 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label103:setParent(obj.layout48);
+    obj.label103:setLeft(5);
+    obj.label103:setTop(10);
+    obj.label103:setWidth(50);
+    obj.label103:setHeight(20);
+    obj.label103:setText("Dado 1");
+    obj.label103:setName("label103");
 
-    obj.label101 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label101:setParent(obj.layout48);
-    obj.label101:setLeft(20);
-    obj.label101:setTop(32);
-    obj.label101:setWidth(30);
-    obj.label101:setHeight(20);
-    obj.label101:setField("num1");
-    obj.label101:setText("val");
-    obj.label101:setName("label101");
+    obj.label104 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label104:setParent(obj.layout48);
+    obj.label104:setLeft(20);
+    obj.label104:setTop(32);
+    obj.label104:setWidth(30);
+    obj.label104:setHeight(20);
+    obj.label104:setField("num1");
+    obj.label104:setText("val");
+    obj.label104:setName("label104");
 
-    obj.label102 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label102:setParent(obj.layout48);
-    obj.label102:setLeft(46);
-    obj.label102:setTop(32);
-    obj.label102:setWidth(10);
-    obj.label102:setHeight(20);
-    obj.label102:setText("+");
-    obj.label102:setName("label102");
+    obj.label105 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label105:setParent(obj.layout48);
+    obj.label105:setLeft(46);
+    obj.label105:setTop(32);
+    obj.label105:setWidth(10);
+    obj.label105:setHeight(20);
+    obj.label105:setText("+");
+    obj.label105:setName("label105");
 
     obj.rectangle51 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle51:setParent(obj.layout48);
@@ -4530,24 +5046,24 @@ local function constructNew_frmACN1()
     obj.rectangle51:setStrokeSize(1);
     obj.rectangle51:setName("rectangle51");
 
-    obj.label103 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label103:setParent(obj.layout48);
-    obj.label103:setLeft(50);
-    obj.label103:setTop(10);
-    obj.label103:setWidth(50);
-    obj.label103:setHeight(20);
-    obj.label103:setText("Dado 2");
-    obj.label103:setName("label103");
+    obj.label106 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label106:setParent(obj.layout48);
+    obj.label106:setLeft(50);
+    obj.label106:setTop(10);
+    obj.label106:setWidth(50);
+    obj.label106:setHeight(20);
+    obj.label106:setText("Dado 2");
+    obj.label106:setName("label106");
 
-    obj.label104 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label104:setParent(obj.layout48);
-    obj.label104:setLeft(65);
-    obj.label104:setTop(32);
-    obj.label104:setWidth(30);
-    obj.label104:setHeight(20);
-    obj.label104:setField("num2");
-    obj.label104:setText("val");
-    obj.label104:setName("label104");
+    obj.label107 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label107:setParent(obj.layout48);
+    obj.label107:setLeft(65);
+    obj.label107:setTop(32);
+    obj.label107:setWidth(30);
+    obj.label107:setHeight(20);
+    obj.label107:setField("num2");
+    obj.label107:setText("val");
+    obj.label107:setName("label107");
 
     obj.button57 = GUI.fromHandle(_obj_newObject("button"));
     obj.button57:setParent(obj.layout48);
@@ -4559,54 +5075,54 @@ local function constructNew_frmACN1()
     obj.button57:setFontSize(10);
     obj.button57:setName("button57");
 
-    obj.label105 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label105:setParent(obj.layout48);
-    obj.label105:setLeft(105);
-    obj.label105:setTop(60);
-    obj.label105:setWidth(80);
-    obj.label105:setHeight(15);
-    obj.label105:setField("rollnome1");
-    obj.label105:setFontSize(11);
-    obj.label105:setHorzTextAlign("trailing");
-    obj.label105:setName("label105");
-
-    obj.label106 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label106:setParent(obj.layout48);
-    obj.label106:setLeft(185);
-    obj.label106:setTop(60);
-    obj.label106:setWidth(15);
-    obj.label106:setHeight(15);
-    obj.label106:setText("+");
-    obj.label106:setHorzTextAlign("center");
-    obj.label106:setName("label106");
-
-    obj.label107 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label107:setParent(obj.layout48);
-    obj.label107:setLeft(200);
-    obj.label107:setTop(60);
-    obj.label107:setWidth(80);
-    obj.label107:setHeight(15);
-    obj.label107:setField("rollnome2");
-    obj.label107:setFontSize(11);
-    obj.label107:setName("label107");
-
     obj.label108 = GUI.fromHandle(_obj_newObject("label"));
     obj.label108:setParent(obj.layout48);
-    obj.label108:setLeft(92);
-    obj.label108:setTop(32);
-    obj.label108:setWidth(10);
-    obj.label108:setHeight(20);
-    obj.label108:setText("+");
+    obj.label108:setLeft(105);
+    obj.label108:setTop(60);
+    obj.label108:setWidth(80);
+    obj.label108:setHeight(15);
+    obj.label108:setField("rollnome1");
+    obj.label108:setFontSize(11);
+    obj.label108:setHorzTextAlign("trailing");
     obj.label108:setName("label108");
 
     obj.label109 = GUI.fromHandle(_obj_newObject("label"));
     obj.label109:setParent(obj.layout48);
-    obj.label109:setLeft(105);
-    obj.label109:setTop(10);
-    obj.label109:setWidth(40);
-    obj.label109:setHeight(20);
-    obj.label109:setText("Especs");
+    obj.label109:setLeft(185);
+    obj.label109:setTop(60);
+    obj.label109:setWidth(15);
+    obj.label109:setHeight(15);
+    obj.label109:setText("+");
+    obj.label109:setHorzTextAlign("center");
     obj.label109:setName("label109");
+
+    obj.label110 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label110:setParent(obj.layout48);
+    obj.label110:setLeft(200);
+    obj.label110:setTop(60);
+    obj.label110:setWidth(80);
+    obj.label110:setHeight(15);
+    obj.label110:setField("rollnome2");
+    obj.label110:setFontSize(11);
+    obj.label110:setName("label110");
+
+    obj.label111 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label111:setParent(obj.layout48);
+    obj.label111:setLeft(92);
+    obj.label111:setTop(32);
+    obj.label111:setWidth(10);
+    obj.label111:setHeight(20);
+    obj.label111:setText("+");
+    obj.label111:setName("label111");
+
+    obj.label112 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label112:setParent(obj.layout48);
+    obj.label112:setLeft(105);
+    obj.label112:setTop(10);
+    obj.label112:setWidth(40);
+    obj.label112:setHeight(20);
+    obj.label112:setText("Especs");
+    obj.label112:setName("label112");
 
     obj.comboBox1 = GUI.fromHandle(_obj_newObject("comboBox"));
     obj.comboBox1:setParent(obj.layout48);
@@ -4619,42 +5135,42 @@ local function constructNew_frmACN1()
     obj.comboBox1:setField("especBonus");
     obj.comboBox1:setName("comboBox1");
 
-    obj.label110 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label110:setParent(obj.layout48);
-    obj.label110:setLeft(160);
-    obj.label110:setTop(10);
-    obj.label110:setWidth(40);
-    obj.label110:setHeight(20);
-    obj.label110:setText("Extra");
-    obj.label110:setName("label110");
+    obj.label113 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label113:setParent(obj.layout48);
+    obj.label113:setLeft(160);
+    obj.label113:setTop(10);
+    obj.label113:setWidth(40);
+    obj.label113:setHeight(20);
+    obj.label113:setText("Extra");
+    obj.label113:setName("label113");
 
-    obj.edit71 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit71:setParent(obj.layout48);
-    obj.edit71:setLeft(160);
-    obj.edit71:setTop(30);
-    obj.edit71:setWidth(30);
-    obj.edit71:setHeight(25);
-    obj.edit71:setField("extra");
-    obj.edit71:setName("edit71");
+    obj.edit125 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit125:setParent(obj.layout48);
+    obj.edit125:setLeft(160);
+    obj.edit125:setTop(30);
+    obj.edit125:setWidth(30);
+    obj.edit125:setHeight(25);
+    obj.edit125:setField("extra");
+    obj.edit125:setName("edit125");
 
-    obj.label111 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label111:setParent(obj.layout48);
-    obj.label111:setLeft(195);
-    obj.label111:setTop(10);
-    obj.label111:setWidth(40);
-    obj.label111:setHeight(20);
-    obj.label111:setText("Dific.");
-    obj.label111:setName("label111");
+    obj.label114 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label114:setParent(obj.layout48);
+    obj.label114:setLeft(195);
+    obj.label114:setTop(10);
+    obj.label114:setWidth(40);
+    obj.label114:setHeight(20);
+    obj.label114:setText("Dific.");
+    obj.label114:setName("label114");
 
-    obj.edit72 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit72:setParent(obj.layout48);
-    obj.edit72:setLeft(195);
-    obj.edit72:setTop(30);
-    obj.edit72:setWidth(30);
-    obj.edit72:setHeight(25);
-    obj.edit72:setField("dificuldade");
-    obj.edit72:setType("number");
-    obj.edit72:setName("edit72");
+    obj.edit126 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit126:setParent(obj.layout48);
+    obj.edit126:setLeft(195);
+    obj.edit126:setTop(30);
+    obj.edit126:setWidth(30);
+    obj.edit126:setHeight(25);
+    obj.edit126:setField("dificuldade");
+    obj.edit126:setType("number");
+    obj.edit126:setName("edit126");
 
     obj.button58 = GUI.fromHandle(_obj_newObject("button"));
     obj.button58:setParent(obj.layout48);
@@ -5152,10 +5668,11 @@ local function constructNew_frmACN1()
             				if sheet.historicoNode1_1== nil then
             					sheet.historicoNode1_1 = {}
             					sheet.historicoNode1_1.id = "1_1"
-            					sheet.historicoNode1_1.historicoValor = sheet.historicoValor1_1
-            					sheet.historicoNode1_1.historicoBonus = sheet.historicoBonus1_1
-            					sheet.historicoNode1_1.historicoXp = sheet.historicoXp1_1
             				end
+            
+            				sheet.historicoNode1_1.historicoValor = sheet.historicoValor1_1
+            				sheet.historicoNode1_1.historicoBonus = sheet.historicoBonus1_1
+            				sheet.historicoNode1_1.historicoXp = sheet.historicoXp1_1
             					
             				if pop ~= nil then
             					pop:setNodeObject(sheet.historicoNode1_1);
@@ -5212,10 +5729,11 @@ local function constructNew_frmACN1()
             				if sheet.historicoNode1_2== nil then
             					sheet.historicoNode1_2 = {}
             					sheet.historicoNode1_2.id = "1_2"
-            					sheet.historicoNode1_2.historicoValor = sheet.historicoValor1_2
-            					sheet.historicoNode1_2.historicoBonus = sheet.historicoBonus1_2
-            					sheet.historicoNode1_2.historicoXp = sheet.historicoXp1_2
             				end
+            
+            				sheet.historicoNode1_2.historicoValor = sheet.historicoValor1_2
+            				sheet.historicoNode1_2.historicoBonus = sheet.historicoBonus1_2
+            				sheet.historicoNode1_2.historicoXp = sheet.historicoXp1_2
             					
             				if pop ~= nil then
             					pop:setNodeObject(sheet.historicoNode1_2);
@@ -5272,10 +5790,11 @@ local function constructNew_frmACN1()
             				if sheet.historicoNode1_3== nil then
             					sheet.historicoNode1_3 = {}
             					sheet.historicoNode1_3.id = "1_3"
-            					sheet.historicoNode1_3.historicoValor = sheet.historicoValor1_3
-            					sheet.historicoNode1_3.historicoBonus = sheet.historicoBonus1_3
-            					sheet.historicoNode1_3.historicoXp = sheet.historicoXp1_3
             				end
+            
+            				sheet.historicoNode1_3.historicoValor = sheet.historicoValor1_3
+            				sheet.historicoNode1_3.historicoBonus = sheet.historicoBonus1_3
+            				sheet.historicoNode1_3.historicoXp = sheet.historicoXp1_3
             					
             				if pop ~= nil then
             					pop:setNodeObject(sheet.historicoNode1_3);
@@ -5332,10 +5851,11 @@ local function constructNew_frmACN1()
             				if sheet.historicoNode1_4== nil then
             					sheet.historicoNode1_4 = {}
             					sheet.historicoNode1_4.id = "1_4"
-            					sheet.historicoNode1_4.historicoValor = sheet.historicoValor1_4
-            					sheet.historicoNode1_4.historicoBonus = sheet.historicoBonus1_4
-            					sheet.historicoNode1_4.historicoXp = sheet.historicoXp1_4
             				end
+            
+            				sheet.historicoNode1_4.historicoValor = sheet.historicoValor1_4
+            				sheet.historicoNode1_4.historicoBonus = sheet.historicoBonus1_4
+            				sheet.historicoNode1_4.historicoXp = sheet.historicoXp1_4
             					
             				if pop ~= nil then
             					pop:setNodeObject(sheet.historicoNode1_4);
@@ -5392,10 +5912,11 @@ local function constructNew_frmACN1()
             				if sheet.historicoNode1_5== nil then
             					sheet.historicoNode1_5 = {}
             					sheet.historicoNode1_5.id = "1_5"
-            					sheet.historicoNode1_5.historicoValor = sheet.historicoValor1_5
-            					sheet.historicoNode1_5.historicoBonus = sheet.historicoBonus1_5
-            					sheet.historicoNode1_5.historicoXp = sheet.historicoXp1_5
             				end
+            
+            				sheet.historicoNode1_5.historicoValor = sheet.historicoValor1_5
+            				sheet.historicoNode1_5.historicoBonus = sheet.historicoBonus1_5
+            				sheet.historicoNode1_5.historicoXp = sheet.historicoXp1_5
             					
             				if pop ~= nil then
             					pop:setNodeObject(sheet.historicoNode1_5);
@@ -5452,10 +5973,11 @@ local function constructNew_frmACN1()
             				if sheet.historicoNode1_6== nil then
             					sheet.historicoNode1_6 = {}
             					sheet.historicoNode1_6.id = "1_6"
-            					sheet.historicoNode1_6.historicoValor = sheet.historicoValor1_6
-            					sheet.historicoNode1_6.historicoBonus = sheet.historicoBonus1_6
-            					sheet.historicoNode1_6.historicoXp = sheet.historicoXp1_6
             				end
+            
+            				sheet.historicoNode1_6.historicoValor = sheet.historicoValor1_6
+            				sheet.historicoNode1_6.historicoBonus = sheet.historicoBonus1_6
+            				sheet.historicoNode1_6.historicoXp = sheet.historicoXp1_6
             					
             				if pop ~= nil then
             					pop:setNodeObject(sheet.historicoNode1_6);
@@ -5512,10 +6034,11 @@ local function constructNew_frmACN1()
             				if sheet.historicoNode2_1== nil then
             					sheet.historicoNode2_1 = {}
             					sheet.historicoNode2_1.id = "2_1"
-            					sheet.historicoNode2_1.historicoValor = sheet.historicoValor2_1
-            					sheet.historicoNode2_1.historicoBonus = sheet.historicoBonus2_1
-            					sheet.historicoNode2_1.historicoXp = sheet.historicoXp2_1
             				end
+            
+            				sheet.historicoNode2_1.historicoValor = sheet.historicoValor2_1
+            				sheet.historicoNode2_1.historicoBonus = sheet.historicoBonus2_1
+            				sheet.historicoNode2_1.historicoXp = sheet.historicoXp2_1
             					
             				if pop ~= nil then
             					pop:setNodeObject(sheet.historicoNode2_1);
@@ -5572,10 +6095,11 @@ local function constructNew_frmACN1()
             				if sheet.historicoNode2_2== nil then
             					sheet.historicoNode2_2 = {}
             					sheet.historicoNode2_2.id = "2_2"
-            					sheet.historicoNode2_2.historicoValor = sheet.historicoValor2_2
-            					sheet.historicoNode2_2.historicoBonus = sheet.historicoBonus2_2
-            					sheet.historicoNode2_2.historicoXp = sheet.historicoXp2_2
             				end
+            
+            				sheet.historicoNode2_2.historicoValor = sheet.historicoValor2_2
+            				sheet.historicoNode2_2.historicoBonus = sheet.historicoBonus2_2
+            				sheet.historicoNode2_2.historicoXp = sheet.historicoXp2_2
             					
             				if pop ~= nil then
             					pop:setNodeObject(sheet.historicoNode2_2);
@@ -5632,10 +6156,11 @@ local function constructNew_frmACN1()
             				if sheet.historicoNode2_3== nil then
             					sheet.historicoNode2_3 = {}
             					sheet.historicoNode2_3.id = "2_3"
-            					sheet.historicoNode2_3.historicoValor = sheet.historicoValor2_3
-            					sheet.historicoNode2_3.historicoBonus = sheet.historicoBonus2_3
-            					sheet.historicoNode2_3.historicoXp = sheet.historicoXp2_3
             				end
+            
+            				sheet.historicoNode2_3.historicoValor = sheet.historicoValor2_3
+            				sheet.historicoNode2_3.historicoBonus = sheet.historicoBonus2_3
+            				sheet.historicoNode2_3.historicoXp = sheet.historicoXp2_3
             					
             				if pop ~= nil then
             					pop:setNodeObject(sheet.historicoNode2_3);
@@ -5692,10 +6217,11 @@ local function constructNew_frmACN1()
             				if sheet.historicoNode2_4== nil then
             					sheet.historicoNode2_4 = {}
             					sheet.historicoNode2_4.id = "2_4"
-            					sheet.historicoNode2_4.historicoValor = sheet.historicoValor2_4
-            					sheet.historicoNode2_4.historicoBonus = sheet.historicoBonus2_4
-            					sheet.historicoNode2_4.historicoXp = sheet.historicoXp2_4
             				end
+            
+            				sheet.historicoNode2_4.historicoValor = sheet.historicoValor2_4
+            				sheet.historicoNode2_4.historicoBonus = sheet.historicoBonus2_4
+            				sheet.historicoNode2_4.historicoXp = sheet.historicoXp2_4
             					
             				if pop ~= nil then
             					pop:setNodeObject(sheet.historicoNode2_4);
@@ -5752,10 +6278,11 @@ local function constructNew_frmACN1()
             				if sheet.historicoNode2_5== nil then
             					sheet.historicoNode2_5 = {}
             					sheet.historicoNode2_5.id = "2_5"
-            					sheet.historicoNode2_5.historicoValor = sheet.historicoValor2_5
-            					sheet.historicoNode2_5.historicoBonus = sheet.historicoBonus2_5
-            					sheet.historicoNode2_5.historicoXp = sheet.historicoXp2_5
             				end
+            
+            				sheet.historicoNode2_5.historicoValor = sheet.historicoValor2_5
+            				sheet.historicoNode2_5.historicoBonus = sheet.historicoBonus2_5
+            				sheet.historicoNode2_5.historicoXp = sheet.historicoXp2_5
             					
             				if pop ~= nil then
             					pop:setNodeObject(sheet.historicoNode2_5);
@@ -5812,10 +6339,11 @@ local function constructNew_frmACN1()
             				if sheet.historicoNode2_6== nil then
             					sheet.historicoNode2_6 = {}
             					sheet.historicoNode2_6.id = "2_6"
-            					sheet.historicoNode2_6.historicoValor = sheet.historicoValor2_6
-            					sheet.historicoNode2_6.historicoBonus = sheet.historicoBonus2_6
-            					sheet.historicoNode2_6.historicoXp = sheet.historicoXp2_6
             				end
+            
+            				sheet.historicoNode2_6.historicoValor = sheet.historicoValor2_6
+            				sheet.historicoNode2_6.historicoBonus = sheet.historicoBonus2_6
+            				sheet.historicoNode2_6.historicoXp = sheet.historicoXp2_6
             					
             				if pop ~= nil then
             					pop:setNodeObject(sheet.historicoNode2_6);
@@ -5872,10 +6400,11 @@ local function constructNew_frmACN1()
             				if sheet.historicoNode3_1== nil then
             					sheet.historicoNode3_1 = {}
             					sheet.historicoNode3_1.id = "3_1"
-            					sheet.historicoNode3_1.historicoValor = sheet.historicoValor3_1
-            					sheet.historicoNode3_1.historicoBonus = sheet.historicoBonus3_1
-            					sheet.historicoNode3_1.historicoXp = sheet.historicoXp3_1
             				end
+            
+            				sheet.historicoNode3_1.historicoValor = sheet.historicoValor3_1
+            				sheet.historicoNode3_1.historicoBonus = sheet.historicoBonus3_1
+            				sheet.historicoNode3_1.historicoXp = sheet.historicoXp3_1
             					
             				if pop ~= nil then
             					pop:setNodeObject(sheet.historicoNode3_1);
@@ -5932,10 +6461,11 @@ local function constructNew_frmACN1()
             				if sheet.historicoNode3_2== nil then
             					sheet.historicoNode3_2 = {}
             					sheet.historicoNode3_2.id = "3_2"
-            					sheet.historicoNode3_2.historicoValor = sheet.historicoValor3_2
-            					sheet.historicoNode3_2.historicoBonus = sheet.historicoBonus3_2
-            					sheet.historicoNode3_2.historicoXp = sheet.historicoXp3_2
             				end
+            
+            				sheet.historicoNode3_2.historicoValor = sheet.historicoValor3_2
+            				sheet.historicoNode3_2.historicoBonus = sheet.historicoBonus3_2
+            				sheet.historicoNode3_2.historicoXp = sheet.historicoXp3_2
             					
             				if pop ~= nil then
             					pop:setNodeObject(sheet.historicoNode3_2);
@@ -5992,10 +6522,11 @@ local function constructNew_frmACN1()
             				if sheet.historicoNode3_3== nil then
             					sheet.historicoNode3_3 = {}
             					sheet.historicoNode3_3.id = "3_3"
-            					sheet.historicoNode3_3.historicoValor = sheet.historicoValor3_3
-            					sheet.historicoNode3_3.historicoBonus = sheet.historicoBonus3_3
-            					sheet.historicoNode3_3.historicoXp = sheet.historicoXp3_3
             				end
+            
+            				sheet.historicoNode3_3.historicoValor = sheet.historicoValor3_3
+            				sheet.historicoNode3_3.historicoBonus = sheet.historicoBonus3_3
+            				sheet.historicoNode3_3.historicoXp = sheet.historicoXp3_3
             					
             				if pop ~= nil then
             					pop:setNodeObject(sheet.historicoNode3_3);
@@ -6052,10 +6583,11 @@ local function constructNew_frmACN1()
             				if sheet.historicoNode3_4== nil then
             					sheet.historicoNode3_4 = {}
             					sheet.historicoNode3_4.id = "3_4"
-            					sheet.historicoNode3_4.historicoValor = sheet.historicoValor3_4
-            					sheet.historicoNode3_4.historicoBonus = sheet.historicoBonus3_4
-            					sheet.historicoNode3_4.historicoXp = sheet.historicoXp3_4
             				end
+            
+            				sheet.historicoNode3_4.historicoValor = sheet.historicoValor3_4
+            				sheet.historicoNode3_4.historicoBonus = sheet.historicoBonus3_4
+            				sheet.historicoNode3_4.historicoXp = sheet.historicoXp3_4
             					
             				if pop ~= nil then
             					pop:setNodeObject(sheet.historicoNode3_4);
@@ -6112,10 +6644,11 @@ local function constructNew_frmACN1()
             				if sheet.historicoNode3_5== nil then
             					sheet.historicoNode3_5 = {}
             					sheet.historicoNode3_5.id = "3_5"
-            					sheet.historicoNode3_5.historicoValor = sheet.historicoValor3_5
-            					sheet.historicoNode3_5.historicoBonus = sheet.historicoBonus3_5
-            					sheet.historicoNode3_5.historicoXp = sheet.historicoXp3_5
             				end
+            
+            				sheet.historicoNode3_5.historicoValor = sheet.historicoValor3_5
+            				sheet.historicoNode3_5.historicoBonus = sheet.historicoBonus3_5
+            				sheet.historicoNode3_5.historicoXp = sheet.historicoXp3_5
             					
             				if pop ~= nil then
             					pop:setNodeObject(sheet.historicoNode3_5);
@@ -6172,10 +6705,11 @@ local function constructNew_frmACN1()
             				if sheet.historicoNode3_6== nil then
             					sheet.historicoNode3_6 = {}
             					sheet.historicoNode3_6.id = "3_6"
-            					sheet.historicoNode3_6.historicoValor = sheet.historicoValor3_6
-            					sheet.historicoNode3_6.historicoBonus = sheet.historicoBonus3_6
-            					sheet.historicoNode3_6.historicoXp = sheet.historicoXp3_6
             				end
+            
+            				sheet.historicoNode3_6.historicoValor = sheet.historicoValor3_6
+            				sheet.historicoNode3_6.historicoBonus = sheet.historicoBonus3_6
+            				sheet.historicoNode3_6.historicoXp = sheet.historicoXp3_6
             					
             				if pop ~= nil then
             					pop:setNodeObject(sheet.historicoNode3_6);
@@ -6464,10 +6998,12 @@ local function constructNew_frmACN1()
         if self.dataLink18 ~= nil then self.dataLink18:destroy(); self.dataLink18 = nil; end;
         if self.layout24 ~= nil then self.layout24:destroy(); self.layout24 = nil; end;
         if self.label70 ~= nil then self.label70:destroy(); self.label70 = nil; end;
+        if self.edit76 ~= nil then self.edit76:destroy(); self.edit76 = nil; end;
         if self.histPop3_5 ~= nil then self.histPop3_5:destroy(); self.histPop3_5 = nil; end;
-        if self.rectangle47 ~= nil then self.rectangle47:destroy(); self.rectangle47 = nil; end;
         if self.label35 ~= nil then self.label35:destroy(); self.label35 = nil; end;
+        if self.rectangle47 ~= nil then self.rectangle47:destroy(); self.rectangle47 = nil; end;
         if self.layout23 ~= nil then self.layout23:destroy(); self.layout23 = nil; end;
+        if self.edit82 ~= nil then self.edit82:destroy(); self.edit82 = nil; end;
         if self.rectangle5 ~= nil then self.rectangle5:destroy(); self.rectangle5 = nil; end;
         if self.button35 ~= nil then self.button35:destroy(); self.button35 = nil; end;
         if self.dataLink68 ~= nil then self.dataLink68:destroy(); self.dataLink68 = nil; end;
@@ -6496,12 +7032,15 @@ local function constructNew_frmACN1()
         if self.dataLink84 ~= nil then self.dataLink84:destroy(); self.dataLink84 = nil; end;
         if self.label52 ~= nil then self.label52:destroy(); self.label52 = nil; end;
         if self.button21 ~= nil then self.button21:destroy(); self.button21 = nil; end;
+        if self.edit115 ~= nil then self.edit115:destroy(); self.edit115 = nil; end;
         if self.edit16 ~= nil then self.edit16:destroy(); self.edit16 = nil; end;
         if self.label47 ~= nil then self.label47:destroy(); self.label47 = nil; end;
         if self.dataLink63 ~= nil then self.dataLink63:destroy(); self.dataLink63 = nil; end;
         if self.label48 ~= nil then self.label48:destroy(); self.label48 = nil; end;
         if self.button26 ~= nil then self.button26:destroy(); self.button26 = nil; end;
+        if self.edit116 ~= nil then self.edit116:destroy(); self.edit116 = nil; end;
         if self.label76 ~= nil then self.label76:destroy(); self.label76 = nil; end;
+        if self.edit77 ~= nil then self.edit77:destroy(); self.edit77 = nil; end;
         if self.button4 ~= nil then self.button4:destroy(); self.button4 = nil; end;
         if self.edit52 ~= nil then self.edit52:destroy(); self.edit52 = nil; end;
         if self.layout34 ~= nil then self.layout34:destroy(); self.layout34 = nil; end;
@@ -6538,6 +7077,7 @@ local function constructNew_frmACN1()
         if self.label30 ~= nil then self.label30:destroy(); self.label30 = nil; end;
         if self.label51 ~= nil then self.label51:destroy(); self.label51 = nil; end;
         if self.button45 ~= nil then self.button45:destroy(); self.button45 = nil; end;
+        if self.edit99 ~= nil then self.edit99:destroy(); self.edit99 = nil; end;
         if self.label19 ~= nil then self.label19:destroy(); self.label19 = nil; end;
         if self.rectangle52 ~= nil then self.rectangle52:destroy(); self.rectangle52 = nil; end;
         if self.edit67 ~= nil then self.edit67:destroy(); self.edit67 = nil; end;
@@ -6558,18 +7098,21 @@ local function constructNew_frmACN1()
         if self.rectangle14 ~= nil then self.rectangle14:destroy(); self.rectangle14 = nil; end;
         if self.checkBox28 ~= nil then self.checkBox28:destroy(); self.checkBox28 = nil; end;
         if self.dataLink81 ~= nil then self.dataLink81:destroy(); self.dataLink81 = nil; end;
+        if self.edit124 ~= nil then self.edit124:destroy(); self.edit124 = nil; end;
         if self.histPop1_1 ~= nil then self.histPop1_1:destroy(); self.histPop1_1 = nil; end;
         if self.label2 ~= nil then self.label2:destroy(); self.label2 = nil; end;
         if self.dataLink82 ~= nil then self.dataLink82:destroy(); self.dataLink82 = nil; end;
         if self.label89 ~= nil then self.label89:destroy(); self.label89 = nil; end;
         if self.label38 ~= nil then self.label38:destroy(); self.label38 = nil; end;
         if self.button33 ~= nil then self.button33:destroy(); self.button33 = nil; end;
+        if self.edit83 ~= nil then self.edit83:destroy(); self.edit83 = nil; end;
         if self.edit27 ~= nil then self.edit27:destroy(); self.edit27 = nil; end;
         if self.layout14 ~= nil then self.layout14:destroy(); self.layout14 = nil; end;
         if self.rectangle42 ~= nil then self.rectangle42:destroy(); self.rectangle42 = nil; end;
         if self.dataLink80 ~= nil then self.dataLink80:destroy(); self.dataLink80 = nil; end;
         if self.edit62 ~= nil then self.edit62:destroy(); self.edit62 = nil; end;
         if self.checkBox32 ~= nil then self.checkBox32:destroy(); self.checkBox32 = nil; end;
+        if self.edit74 ~= nil then self.edit74:destroy(); self.edit74 = nil; end;
         if self.flowLineBreak2 ~= nil then self.flowLineBreak2:destroy(); self.flowLineBreak2 = nil; end;
         if self.layout7 ~= nil then self.layout7:destroy(); self.layout7 = nil; end;
         if self.edit60 ~= nil then self.edit60:destroy(); self.edit60 = nil; end;
@@ -6578,6 +7121,7 @@ local function constructNew_frmACN1()
         if self.flowPart8 ~= nil then self.flowPart8:destroy(); self.flowPart8 = nil; end;
         if self.dataLink40 ~= nil then self.dataLink40:destroy(); self.dataLink40 = nil; end;
         if self.rectangle9 ~= nil then self.rectangle9:destroy(); self.rectangle9 = nil; end;
+        if self.edit121 ~= nil then self.edit121:destroy(); self.edit121 = nil; end;
         if self.button51 ~= nil then self.button51:destroy(); self.button51 = nil; end;
         if self.dataLink55 ~= nil then self.dataLink55:destroy(); self.dataLink55 = nil; end;
         if self.button28 ~= nil then self.button28:destroy(); self.button28 = nil; end;
@@ -6586,6 +7130,7 @@ local function constructNew_frmACN1()
         if self.histPop2_4 ~= nil then self.histPop2_4:destroy(); self.histPop2_4 = nil; end;
         if self.dataLink78 ~= nil then self.dataLink78:destroy(); self.dataLink78 = nil; end;
         if self.label73 ~= nil then self.label73:destroy(); self.label73 = nil; end;
+        if self.edit92 ~= nil then self.edit92:destroy(); self.edit92 = nil; end;
         if self.label23 ~= nil then self.label23:destroy(); self.label23 = nil; end;
         if self.label32 ~= nil then self.label32:destroy(); self.label32 = nil; end;
         if self.dataLink10 ~= nil then self.dataLink10:destroy(); self.dataLink10 = nil; end;
@@ -6598,8 +7143,10 @@ local function constructNew_frmACN1()
         if self.rectangle10 ~= nil then self.rectangle10:destroy(); self.rectangle10 = nil; end;
         if self.label61 ~= nil then self.label61:destroy(); self.label61 = nil; end;
         if self.layout1 ~= nil then self.layout1:destroy(); self.layout1 = nil; end;
-        if self.button30 ~= nil then self.button30:destroy(); self.button30 = nil; end;
         if self.edit61 ~= nil then self.edit61:destroy(); self.edit61 = nil; end;
+        if self.button30 ~= nil then self.button30:destroy(); self.button30 = nil; end;
+        if self.edit84 ~= nil then self.edit84:destroy(); self.edit84 = nil; end;
+        if self.edit100 ~= nil then self.edit100:destroy(); self.edit100 = nil; end;
         if self.label90 ~= nil then self.label90:destroy(); self.label90 = nil; end;
         if self.label93 ~= nil then self.label93:destroy(); self.label93 = nil; end;
         if self.edit24 ~= nil then self.edit24:destroy(); self.edit24 = nil; end;
@@ -6614,6 +7161,7 @@ local function constructNew_frmACN1()
         if self.label6 ~= nil then self.label6:destroy(); self.label6 = nil; end;
         if self.button13 ~= nil then self.button13:destroy(); self.button13 = nil; end;
         if self.textEditor2 ~= nil then self.textEditor2:destroy(); self.textEditor2 = nil; end;
+        if self.edit103 ~= nil then self.edit103:destroy(); self.edit103 = nil; end;
         if self.checkBox17 ~= nil then self.checkBox17:destroy(); self.checkBox17 = nil; end;
         if self.dataLink45 ~= nil then self.dataLink45:destroy(); self.dataLink45 = nil; end;
         if self.checkBox16 ~= nil then self.checkBox16:destroy(); self.checkBox16 = nil; end;
@@ -6632,9 +7180,11 @@ local function constructNew_frmACN1()
         if self.flowPart4 ~= nil then self.flowPart4:destroy(); self.flowPart4 = nil; end;
         if self.histPop3_1 ~= nil then self.histPop3_1:destroy(); self.histPop3_1 = nil; end;
         if self.label86 ~= nil then self.label86:destroy(); self.label86 = nil; end;
+        if self.edit96 ~= nil then self.edit96:destroy(); self.edit96 = nil; end;
         if self.edit2 ~= nil then self.edit2:destroy(); self.edit2 = nil; end;
         if self.label53 ~= nil then self.label53:destroy(); self.label53 = nil; end;
         if self.button27 ~= nil then self.button27:destroy(); self.button27 = nil; end;
+        if self.edit109 ~= nil then self.edit109:destroy(); self.edit109 = nil; end;
         if self.flowLineBreak13 ~= nil then self.flowLineBreak13:destroy(); self.flowLineBreak13 = nil; end;
         if self.flowLineBreak14 ~= nil then self.flowLineBreak14:destroy(); self.flowLineBreak14 = nil; end;
         if self.horzLine9 ~= nil then self.horzLine9:destroy(); self.horzLine9 = nil; end;
@@ -6646,12 +7196,15 @@ local function constructNew_frmACN1()
         if self.checkBox14 ~= nil then self.checkBox14:destroy(); self.checkBox14 = nil; end;
         if self.rectangle20 ~= nil then self.rectangle20:destroy(); self.rectangle20 = nil; end;
         if self.label102 ~= nil then self.label102:destroy(); self.label102 = nil; end;
+        if self.edit93 ~= nil then self.edit93:destroy(); self.edit93 = nil; end;
         if self.dataLink54 ~= nil then self.dataLink54:destroy(); self.dataLink54 = nil; end;
         if self.flowLayout4 ~= nil then self.flowLayout4:destroy(); self.flowLayout4 = nil; end;
         if self.edit13 ~= nil then self.edit13:destroy(); self.edit13 = nil; end;
         if self.dataLink24 ~= nil then self.dataLink24:destroy(); self.dataLink24 = nil; end;
         if self.dataLink35 ~= nil then self.dataLink35:destroy(); self.dataLink35 = nil; end;
         if self.dataLink69 ~= nil then self.dataLink69:destroy(); self.dataLink69 = nil; end;
+        if self.edit126 ~= nil then self.edit126:destroy(); self.edit126 = nil; end;
+        if self.edit81 ~= nil then self.edit81:destroy(); self.edit81 = nil; end;
         if self.button11 ~= nil then self.button11:destroy(); self.button11 = nil; end;
         if self.dataLink70 ~= nil then self.dataLink70:destroy(); self.dataLink70 = nil; end;
         if self.label81 ~= nil then self.label81:destroy(); self.label81 = nil; end;
@@ -6676,17 +7229,19 @@ local function constructNew_frmACN1()
         if self.rectangle30 ~= nil then self.rectangle30:destroy(); self.rectangle30 = nil; end;
         if self.button41 ~= nil then self.button41:destroy(); self.button41 = nil; end;
         if self.checkBox22 ~= nil then self.checkBox22:destroy(); self.checkBox22 = nil; end;
+        if self.edit87 ~= nil then self.edit87:destroy(); self.edit87 = nil; end;
         if self.label39 ~= nil then self.label39:destroy(); self.label39 = nil; end;
         if self.flowPart3 ~= nil then self.flowPart3:destroy(); self.flowPart3 = nil; end;
         if self.layout29 ~= nil then self.layout29:destroy(); self.layout29 = nil; end;
         if self.label79 ~= nil then self.label79:destroy(); self.label79 = nil; end;
-        if self.checkBox19 ~= nil then self.checkBox19:destroy(); self.checkBox19 = nil; end;
+        if self.edit113 ~= nil then self.edit113:destroy(); self.edit113 = nil; end;
         if self.label11 ~= nil then self.label11:destroy(); self.label11 = nil; end;
         if self.edit15 ~= nil then self.edit15:destroy(); self.edit15 = nil; end;
         if self.label3 ~= nil then self.label3:destroy(); self.label3 = nil; end;
         if self.label20 ~= nil then self.label20:destroy(); self.label20 = nil; end;
         if self.button54 ~= nil then self.button54:destroy(); self.button54 = nil; end;
         if self.rectangle40 ~= nil then self.rectangle40:destroy(); self.rectangle40 = nil; end;
+        if self.checkBox19 ~= nil then self.checkBox19:destroy(); self.checkBox19 = nil; end;
         if self.checkBox25 ~= nil then self.checkBox25:destroy(); self.checkBox25 = nil; end;
         if self.checkBox35 ~= nil then self.checkBox35:destroy(); self.checkBox35 = nil; end;
         if self.rectangle36 ~= nil then self.rectangle36:destroy(); self.rectangle36 = nil; end;
@@ -6701,6 +7256,7 @@ local function constructNew_frmACN1()
         if self.button18 ~= nil then self.button18:destroy(); self.button18 = nil; end;
         if self.dataLink57 ~= nil then self.dataLink57:destroy(); self.dataLink57 = nil; end;
         if self.edit42 ~= nil then self.edit42:destroy(); self.edit42 = nil; end;
+        if self.edit118 ~= nil then self.edit118:destroy(); self.edit118 = nil; end;
         if self.checkBox10 ~= nil then self.checkBox10:destroy(); self.checkBox10 = nil; end;
         if self.rectangle4 ~= nil then self.rectangle4:destroy(); self.rectangle4 = nil; end;
         if self.layout22 ~= nil then self.layout22:destroy(); self.layout22 = nil; end;
@@ -6708,12 +7264,16 @@ local function constructNew_frmACN1()
         if self.label84 ~= nil then self.label84:destroy(); self.label84 = nil; end;
         if self.edit32 ~= nil then self.edit32:destroy(); self.edit32 = nil; end;
         if self.dataLink38 ~= nil then self.dataLink38:destroy(); self.dataLink38 = nil; end;
+        if self.edit102 ~= nil then self.edit102:destroy(); self.edit102 = nil; end;
         if self.horzLine6 ~= nil then self.horzLine6:destroy(); self.horzLine6 = nil; end;
+        if self.edit117 ~= nil then self.edit117:destroy(); self.edit117 = nil; end;
         if self.rectangle34 ~= nil then self.rectangle34:destroy(); self.rectangle34 = nil; end;
         if self.dataLink12 ~= nil then self.dataLink12:destroy(); self.dataLink12 = nil; end;
         if self.checkBox39 ~= nil then self.checkBox39:destroy(); self.checkBox39 = nil; end;
         if self.checkBox41 ~= nil then self.checkBox41:destroy(); self.checkBox41 = nil; end;
         if self.label110 ~= nil then self.label110:destroy(); self.label110 = nil; end;
+        if self.edit73 ~= nil then self.edit73:destroy(); self.edit73 = nil; end;
+        if self.edit98 ~= nil then self.edit98:destroy(); self.edit98 = nil; end;
         if self.rectangle37 ~= nil then self.rectangle37:destroy(); self.rectangle37 = nil; end;
         if self.checkBox15 ~= nil then self.checkBox15:destroy(); self.checkBox15 = nil; end;
         if self.dataLink62 ~= nil then self.dataLink62:destroy(); self.dataLink62 = nil; end;
@@ -6722,6 +7282,7 @@ local function constructNew_frmACN1()
         if self.checkBox18 ~= nil then self.checkBox18:destroy(); self.checkBox18 = nil; end;
         if self.label40 ~= nil then self.label40:destroy(); self.label40 = nil; end;
         if self.dataLink4 ~= nil then self.dataLink4:destroy(); self.dataLink4 = nil; end;
+        if self.edit111 ~= nil then self.edit111:destroy(); self.edit111 = nil; end;
         if self.edit28 ~= nil then self.edit28:destroy(); self.edit28 = nil; end;
         if self.label57 ~= nil then self.label57:destroy(); self.label57 = nil; end;
         if self.dataLink73 ~= nil then self.dataLink73:destroy(); self.dataLink73 = nil; end;
@@ -6729,6 +7290,7 @@ local function constructNew_frmACN1()
         if self.label71 ~= nil then self.label71:destroy(); self.label71 = nil; end;
         if self.button47 ~= nil then self.button47:destroy(); self.button47 = nil; end;
         if self.layout41 ~= nil then self.layout41:destroy(); self.layout41 = nil; end;
+        if self.edit85 ~= nil then self.edit85:destroy(); self.edit85 = nil; end;
         if self.flowLineBreak7 ~= nil then self.flowLineBreak7:destroy(); self.flowLineBreak7 = nil; end;
         if self.checkBox11 ~= nil then self.checkBox11:destroy(); self.checkBox11 = nil; end;
         if self.button56 ~= nil then self.button56:destroy(); self.button56 = nil; end;
@@ -6752,12 +7314,15 @@ local function constructNew_frmACN1()
         if self.checkBox7 ~= nil then self.checkBox7:destroy(); self.checkBox7 = nil; end;
         if self.button53 ~= nil then self.button53:destroy(); self.button53 = nil; end;
         if self.button1 ~= nil then self.button1:destroy(); self.button1 = nil; end;
+        if self.edit120 ~= nil then self.edit120:destroy(); self.edit120 = nil; end;
         if self.edit26 ~= nil then self.edit26:destroy(); self.edit26 = nil; end;
         if self.label69 ~= nil then self.label69:destroy(); self.label69 = nil; end;
         if self.dataLink53 ~= nil then self.dataLink53:destroy(); self.dataLink53 = nil; end;
         if self.edit34 ~= nil then self.edit34:destroy(); self.edit34 = nil; end;
         if self.label31 ~= nil then self.label31:destroy(); self.label31 = nil; end;
         if self.edit19 ~= nil then self.edit19:destroy(); self.edit19 = nil; end;
+        if self.edit112 ~= nil then self.edit112:destroy(); self.edit112 = nil; end;
+        if self.edit114 ~= nil then self.edit114:destroy(); self.edit114 = nil; end;
         if self.checkBox45 ~= nil then self.checkBox45:destroy(); self.checkBox45 = nil; end;
         if self.label105 ~= nil then self.label105:destroy(); self.label105 = nil; end;
         if self.label34 ~= nil then self.label34:destroy(); self.label34 = nil; end;
@@ -6776,8 +7341,11 @@ local function constructNew_frmACN1()
         if self.label16 ~= nil then self.label16:destroy(); self.label16 = nil; end;
         if self.button29 ~= nil then self.button29:destroy(); self.button29 = nil; end;
         if self.edit10 ~= nil then self.edit10:destroy(); self.edit10 = nil; end;
+        if self.edit106 ~= nil then self.edit106:destroy(); self.edit106 = nil; end;
         if self.edit31 ~= nil then self.edit31:destroy(); self.edit31 = nil; end;
+        if self.edit125 ~= nil then self.edit125:destroy(); self.edit125 = nil; end;
         if self.edit1 ~= nil then self.edit1:destroy(); self.edit1 = nil; end;
+        if self.edit79 ~= nil then self.edit79:destroy(); self.edit79 = nil; end;
         if self.rectangle26 ~= nil then self.rectangle26:destroy(); self.rectangle26 = nil; end;
         if self.checkBox43 ~= nil then self.checkBox43:destroy(); self.checkBox43 = nil; end;
         if self.dataLink16 ~= nil then self.dataLink16:destroy(); self.dataLink16 = nil; end;
@@ -6785,11 +7353,13 @@ local function constructNew_frmACN1()
         if self.label101 ~= nil then self.label101:destroy(); self.label101 = nil; end;
         if self.layout4 ~= nil then self.layout4:destroy(); self.layout4 = nil; end;
         if self.histPop1_4 ~= nil then self.histPop1_4:destroy(); self.histPop1_4 = nil; end;
+        if self.edit101 ~= nil then self.edit101:destroy(); self.edit101 = nil; end;
         if self.checkBox33 ~= nil then self.checkBox33:destroy(); self.checkBox33 = nil; end;
         if self.label58 ~= nil then self.label58:destroy(); self.label58 = nil; end;
         if self.dataLink74 ~= nil then self.dataLink74:destroy(); self.dataLink74 = nil; end;
         if self.comboBox1 ~= nil then self.comboBox1:destroy(); self.comboBox1 = nil; end;
         if self.flowPart5 ~= nil then self.flowPart5:destroy(); self.flowPart5 = nil; end;
+        if self.label114 ~= nil then self.label114:destroy(); self.label114 = nil; end;
         if self.rectangle44 ~= nil then self.rectangle44:destroy(); self.rectangle44 = nil; end;
         if self.layout20 ~= nil then self.layout20:destroy(); self.layout20 = nil; end;
         if self.edit23 ~= nil then self.edit23:destroy(); self.edit23 = nil; end;
@@ -6799,14 +7369,19 @@ local function constructNew_frmACN1()
         if self.flowLineBreak15 ~= nil then self.flowLineBreak15:destroy(); self.flowLineBreak15 = nil; end;
         if self.label21 ~= nil then self.label21:destroy(); self.label21 = nil; end;
         if self.dataLink49 ~= nil then self.dataLink49:destroy(); self.dataLink49 = nil; end;
+        if self.edit122 ~= nil then self.edit122:destroy(); self.edit122 = nil; end;
         if self.edit40 ~= nil then self.edit40:destroy(); self.edit40 = nil; end;
+        if self.edit110 ~= nil then self.edit110:destroy(); self.edit110 = nil; end;
         if self.dataLink2 ~= nil then self.dataLink2:destroy(); self.dataLink2 = nil; end;
         if self.horzLine1 ~= nil then self.horzLine1:destroy(); self.horzLine1 = nil; end;
+        if self.edit86 ~= nil then self.edit86:destroy(); self.edit86 = nil; end;
         if self.flowLineBreak11 ~= nil then self.flowLineBreak11:destroy(); self.flowLineBreak11 = nil; end;
         if self.edit38 ~= nil then self.edit38:destroy(); self.edit38 = nil; end;
         if self.dataLink15 ~= nil then self.dataLink15:destroy(); self.dataLink15 = nil; end;
+        if self.edit123 ~= nil then self.edit123:destroy(); self.edit123 = nil; end;
         if self.checkBox24 ~= nil then self.checkBox24:destroy(); self.checkBox24 = nil; end;
         if self.label54 ~= nil then self.label54:destroy(); self.label54 = nil; end;
+        if self.edit105 ~= nil then self.edit105:destroy(); self.edit105 = nil; end;
         if self.dataLink37 ~= nil then self.dataLink37:destroy(); self.dataLink37 = nil; end;
         if self.scrollBox3 ~= nil then self.scrollBox3:destroy(); self.scrollBox3 = nil; end;
         if self.textEditor1 ~= nil then self.textEditor1:destroy(); self.textEditor1 = nil; end;
@@ -6816,6 +7391,7 @@ local function constructNew_frmACN1()
         if self.button9 ~= nil then self.button9:destroy(); self.button9 = nil; end;
         if self.edit6 ~= nil then self.edit6:destroy(); self.edit6 = nil; end;
         if self.flowLineBreak12 ~= nil then self.flowLineBreak12:destroy(); self.flowLineBreak12 = nil; end;
+        if self.edit90 ~= nil then self.edit90:destroy(); self.edit90 = nil; end;
         if self.label18 ~= nil then self.label18:destroy(); self.label18 = nil; end;
         if self.edit3 ~= nil then self.edit3:destroy(); self.edit3 = nil; end;
         if self.layout33 ~= nil then self.layout33:destroy(); self.layout33 = nil; end;
@@ -6833,6 +7409,7 @@ local function constructNew_frmACN1()
         if self.dataLink58 ~= nil then self.dataLink58:destroy(); self.dataLink58 = nil; end;
         if self.scrollBox1 ~= nil then self.scrollBox1:destroy(); self.scrollBox1 = nil; end;
         if self.dataLink25 ~= nil then self.dataLink25:destroy(); self.dataLink25 = nil; end;
+        if self.edit94 ~= nil then self.edit94:destroy(); self.edit94 = nil; end;
         if self.label33 ~= nil then self.label33:destroy(); self.label33 = nil; end;
         if self.rectangle11 ~= nil then self.rectangle11:destroy(); self.rectangle11 = nil; end;
         if self.dataLink31 ~= nil then self.dataLink31:destroy(); self.dataLink31 = nil; end;
@@ -6848,36 +7425,45 @@ local function constructNew_frmACN1()
         if self.button49 ~= nil then self.button49:destroy(); self.button49 = nil; end;
         if self.flowLayout3 ~= nil then self.flowLayout3:destroy(); self.flowLayout3 = nil; end;
         if self.label98 ~= nil then self.label98:destroy(); self.label98 = nil; end;
+        if self.edit104 ~= nil then self.edit104:destroy(); self.edit104 = nil; end;
+        if self.label113 ~= nil then self.label113:destroy(); self.label113 = nil; end;
         if self.flowPart7 ~= nil then self.flowPart7:destroy(); self.flowPart7 = nil; end;
         if self.edit7 ~= nil then self.edit7:destroy(); self.edit7 = nil; end;
+        if self.edit108 ~= nil then self.edit108:destroy(); self.edit108 = nil; end;
         if self.label55 ~= nil then self.label55:destroy(); self.label55 = nil; end;
         if self.edit12 ~= nil then self.edit12:destroy(); self.edit12 = nil; end;
         if self.rectangle21 ~= nil then self.rectangle21:destroy(); self.rectangle21 = nil; end;
         if self.label66 ~= nil then self.label66:destroy(); self.label66 = nil; end;
+        if self.edit80 ~= nil then self.edit80:destroy(); self.edit80 = nil; end;
         if self.edit35 ~= nil then self.edit35:destroy(); self.edit35 = nil; end;
-        if self.checkBox27 ~= nil then self.checkBox27:destroy(); self.checkBox27 = nil; end;
+        if self.edit95 ~= nil then self.edit95:destroy(); self.edit95 = nil; end;
         if self.label26 ~= nil then self.label26:destroy(); self.label26 = nil; end;
+        if self.checkBox27 ~= nil then self.checkBox27:destroy(); self.checkBox27 = nil; end;
         if self.dataLink13 ~= nil then self.dataLink13:destroy(); self.dataLink13 = nil; end;
         if self.dataLink59 ~= nil then self.dataLink59:destroy(); self.dataLink59 = nil; end;
+        if self.edit97 ~= nil then self.edit97:destroy(); self.edit97 = nil; end;
         if self.checkBox6 ~= nil then self.checkBox6:destroy(); self.checkBox6 = nil; end;
         if self.edit57 ~= nil then self.edit57:destroy(); self.edit57 = nil; end;
         if self.flowPart2 ~= nil then self.flowPart2:destroy(); self.flowPart2 = nil; end;
         if self.rectangle19 ~= nil then self.rectangle19:destroy(); self.rectangle19 = nil; end;
+        if self.label112 ~= nil then self.label112:destroy(); self.label112 = nil; end;
         if self.label65 ~= nil then self.label65:destroy(); self.label65 = nil; end;
         if self.layout3 ~= nil then self.layout3:destroy(); self.layout3 = nil; end;
         if self.rectangle22 ~= nil then self.rectangle22:destroy(); self.rectangle22 = nil; end;
+        if self.edit63 ~= nil then self.edit63:destroy(); self.edit63 = nil; end;
         if self.rectangle29 ~= nil then self.rectangle29:destroy(); self.rectangle29 = nil; end;
         if self.dataLink75 ~= nil then self.dataLink75:destroy(); self.dataLink75 = nil; end;
         if self.checkBox8 ~= nil then self.checkBox8:destroy(); self.checkBox8 = nil; end;
-        if self.edit63 ~= nil then self.edit63:destroy(); self.edit63 = nil; end;
         if self.rectangle1 ~= nil then self.rectangle1:destroy(); self.rectangle1 = nil; end;
         if self.edit50 ~= nil then self.edit50:destroy(); self.edit50 = nil; end;
         if self.layout45 ~= nil then self.layout45:destroy(); self.layout45 = nil; end;
         if self.label60 ~= nil then self.label60:destroy(); self.label60 = nil; end;
         if self.label64 ~= nil then self.label64:destroy(); self.label64 = nil; end;
+        if self.edit88 ~= nil then self.edit88:destroy(); self.edit88 = nil; end;
         if self.layout46 ~= nil then self.layout46:destroy(); self.layout46 = nil; end;
         if self.edit44 ~= nil then self.edit44:destroy(); self.edit44 = nil; end;
         if self.horzLine8 ~= nil then self.horzLine8:destroy(); self.horzLine8 = nil; end;
+        if self.edit89 ~= nil then self.edit89:destroy(); self.edit89 = nil; end;
         if self.dataLink14 ~= nil then self.dataLink14:destroy(); self.dataLink14 = nil; end;
         if self.label4 ~= nil then self.label4:destroy(); self.label4 = nil; end;
         if self.button34 ~= nil then self.button34:destroy(); self.button34 = nil; end;
@@ -6903,6 +7489,7 @@ local function constructNew_frmACN1()
         if self.label9 ~= nil then self.label9:destroy(); self.label9 = nil; end;
         if self.label28 ~= nil then self.label28:destroy(); self.label28 = nil; end;
         if self.rectangle8 ~= nil then self.rectangle8:destroy(); self.rectangle8 = nil; end;
+        if self.edit107 ~= nil then self.edit107:destroy(); self.edit107 = nil; end;
         if self.flowLineBreak1 ~= nil then self.flowLineBreak1:destroy(); self.flowLineBreak1 = nil; end;
         if self.button42 ~= nil then self.button42:destroy(); self.button42 = nil; end;
         if self.edit30 ~= nil then self.edit30:destroy(); self.edit30 = nil; end;
@@ -6916,9 +7503,10 @@ local function constructNew_frmACN1()
         if self.checkBox21 ~= nil then self.checkBox21:destroy(); self.checkBox21 = nil; end;
         if self.label17 ~= nil then self.label17:destroy(); self.label17 = nil; end;
         if self.label100 ~= nil then self.label100:destroy(); self.label100 = nil; end;
+        if self.edit75 ~= nil then self.edit75:destroy(); self.edit75 = nil; end;
         if self.button23 ~= nil then self.button23:destroy(); self.button23 = nil; end;
-        if self.dataLink66 ~= nil then self.dataLink66:destroy(); self.dataLink66 = nil; end;
         if self.edit65 ~= nil then self.edit65:destroy(); self.edit65 = nil; end;
+        if self.dataLink66 ~= nil then self.dataLink66:destroy(); self.dataLink66 = nil; end;
         if self.edit39 ~= nil then self.edit39:destroy(); self.edit39 = nil; end;
         if self.rectangle49 ~= nil then self.rectangle49:destroy(); self.rectangle49 = nil; end;
         if self.dataLink1 ~= nil then self.dataLink1:destroy(); self.dataLink1 = nil; end;
@@ -6930,6 +7518,7 @@ local function constructNew_frmACN1()
         if self.histPop2_6 ~= nil then self.histPop2_6:destroy(); self.histPop2_6 = nil; end;
         if self.dataLink26 ~= nil then self.dataLink26:destroy(); self.dataLink26 = nil; end;
         if self.edit51 ~= nil then self.edit51:destroy(); self.edit51 = nil; end;
+        if self.edit119 ~= nil then self.edit119:destroy(); self.edit119 = nil; end;
         if self.button17 ~= nil then self.button17:destroy(); self.button17 = nil; end;
         if self.edit48 ~= nil then self.edit48:destroy(); self.edit48 = nil; end;
         if self.label85 ~= nil then self.label85:destroy(); self.label85 = nil; end;
@@ -6943,10 +7532,12 @@ local function constructNew_frmACN1()
         if self.checkBox36 ~= nil then self.checkBox36:destroy(); self.checkBox36 = nil; end;
         if self.rectangle31 ~= nil then self.rectangle31:destroy(); self.rectangle31 = nil; end;
         if self.histPop1_3 ~= nil then self.histPop1_3:destroy(); self.histPop1_3 = nil; end;
+        if self.edit78 ~= nil then self.edit78:destroy(); self.edit78 = nil; end;
         if self.histPop2_3 ~= nil then self.histPop2_3:destroy(); self.histPop2_3 = nil; end;
         if self.layout40 ~= nil then self.layout40:destroy(); self.layout40 = nil; end;
         if self.label87 ~= nil then self.label87:destroy(); self.label87 = nil; end;
         if self.label104 ~= nil then self.label104:destroy(); self.label104 = nil; end;
+        if self.edit91 ~= nil then self.edit91:destroy(); self.edit91 = nil; end;
         if self.label25 ~= nil then self.label25:destroy(); self.label25 = nil; end;
         if self.edit70 ~= nil then self.edit70:destroy(); self.edit70 = nil; end;
         if self.button46 ~= nil then self.button46:destroy(); self.button46 = nil; end;
