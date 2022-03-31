@@ -369,7 +369,7 @@ local function constructNew_frmContractItem()
 
     obj.dataLink1 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink1:setParent(obj.layout12);
-    obj.dataLink1:setFields({'creditos', creditosMult});
+    obj.dataLink1:setFields({'creditos', 'creditosMult'});
     obj.dataLink1:setName("dataLink1");
 
     obj.edit4 = GUI.fromHandle(_obj_newObject("edit"));
@@ -431,7 +431,7 @@ local function constructNew_frmContractItem()
 
     obj.dataLink2 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink2:setParent(obj.layout14);
-    obj.dataLink2:setFields({'seguro', seguroMult});
+    obj.dataLink2:setFields({'seguro', 'seguroMult'});
     obj.dataLink2:setName("dataLink2");
 
     obj.edit5 = GUI.fromHandle(_obj_newObject("edit"));
@@ -493,7 +493,7 @@ local function constructNew_frmContractItem()
 
     obj.dataLink3 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink3:setParent(obj.layout16);
-    obj.dataLink3:setFields({'espolios', espoliosMult});
+    obj.dataLink3:setFields({'espolios', 'espoliosMult'});
     obj.dataLink3:setName("dataLink3");
 
     obj.edit6 = GUI.fromHandle(_obj_newObject("edit"));

@@ -64,7 +64,7 @@
             </edit>
         </layout>
 
-        <dataLink fields="{'$(field)', $(field)Mult}">
+        <dataLink fields="{'$(field)', '$(field)Mult'}">
             <event name="onChange">
                 if sheet==nil then return end
 
