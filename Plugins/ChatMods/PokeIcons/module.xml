@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <module sdkVersion="3.5" compilationDate="14082017003735" sdkApiVersion="28" originalPluginFileName="PokeIcons.rpk">
 	<id>PokeIcons</id>
-	<version>0.7</version>
+	<version>0.8</version>
 	<name>PokeIcons</name>
 	<description>Use comandos e atalhos /unown :numero: pra inserir pokémon no chat. Use /help para mais informações. Use /help para ver opções. </description>
 	<author>Ambesek</author>
