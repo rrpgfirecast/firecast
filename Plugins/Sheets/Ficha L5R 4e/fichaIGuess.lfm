@@ -498,7 +498,7 @@ button.Tab{
 											<layout align="top" height="30">
 												<label text="Experiência:" align="left" width="80" />
 												<edit field="xpGastar" align="client" type="number" min="0" max="999" />
-												<dataLink field="xpGastar" defaultValue="40" />
+												<dataLink field="xpGastar" defaultValue="0" />
 											</layout>
 											<layout align="top" height="30">
 												<label text="Karma:" align="left" width="80" />
