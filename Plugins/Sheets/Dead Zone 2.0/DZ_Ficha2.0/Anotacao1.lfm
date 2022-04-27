@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmAnotacao1" height="25" margins="{top=2,bottom=2}">  
+<style>.padraoEqui{ fontColor: #C0504D; fontSize: 20; horzTextAlign: leading; vertTextAlign: center; textTrimming: word; fontFamily: kalam; }</style>
+
+		<edit field="nomeanot1" left="30" width="145" class="padraoEqui" transparent="true"  />
+		<rectangle  width="180" top="24" sides="top" color="#00000000" strokeColor="black" strokeSize="1"> </rectangle>
+
+        <button left="1" text="X" width="20" height="20" class="padraoEqui" fontColor="white" >
+			<event name="onClick">
+					Dialogs.confirmOkCancel("Quer mesmo apagar essa Anotação?",
+						function (confirmado)
+							if confirmado then
+								NDB.deleteNode(sheet);
+							end;
+					end);
+			</event>
+		</button>
+		<button left="180" text="i" width="15" height="15" class="padraoEqui" fontColor="white" fontFamily="times new roman" onClick="self.PopAnotacaoLista:show('bottom', self.labNome);" />
+			<popup name="PopAnotacaoLista" width="680" height="640" backOpacity="0.5">
+			<image width="600" height="600" style="proportional" editable="true" showProgress="true" optimize="true"/>
+			<edit field="AnotacaoListaIILink" text="Link aqui" align="bottom" horzTextAlign="center" width="680" class="padraoEqui" transparent="false"  />
+			</popup>
+			
+</form>

@@ -1,0 +1,23 @@
+﻿local system = {};
+
+function system.setClipboardText(text)
+	return _system_setClipboardText(text);
+end;
+
+function system.getClipboardText()
+	return _system_getClipboardText();
+end;
+
+function system.getScreenSize()
+	return _system_getScreenSize();
+end;
+
+function system.isMobile()
+	return _system_isMobile();
+end;
+
+function system.getTickCount()
+	return _system_getTickCount();
+end;
+
+return system;
