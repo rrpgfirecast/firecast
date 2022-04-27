@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmDZ_NPC_svg" padding="{left=4, top=4, right=4, bottom=4}" height="600" width="1200" theme="light">
+<style>.NPC_B{ fontColor: #000000; fontSize: 20; horzTextAlign: center; vertTextAlign: center; fontStyle:bold; fontFamily: kalam; }</style>
+<style>.NPC_R{ fontColor: #C0504D; fontSize: 20; horzTextAlign: center; vertTextAlign: center; fontStyle:bold; fontFamily: kalam; }</style>
+<style>.NPC_Rp{ fontColor: #C0504D; fontSize: 15; horzTextAlign: center; vertTextAlign: center; fontStyle:bold; fontFamily: kalam; }</style>
+<style>.NPC_Bp{ fontColor: #548DD4; fontSize: 15; horzTextAlign: center; vertTextAlign: center; fontStyle:bold; fontFamily: kalam; }</style>
+        <layout align="top" height="30" margins="{bottom=4}">
+                <button text="Adicionar" width="120" align="left" class="NPC_B" >
+                        <event name="onClick">                            
+                                self.rclListaNPC:append();
+                        </event>
+                </button>
+        </layout>       
+
+        <recordList name="rclListaNPC" field="ListagemNPC" templateForm="frmListaNPC"
+                                align="client" selectable="true">                              
+
+                <event name="onSelect">                     
+                  local node = self.rclListaNPC.selectedNode; 
+                         self.boxDetalhesDoItem.node = node;                       
+                          self.boxDetalhesDoItem.visible = (node ~= nil);
+                </event>
+        </recordList>       
+        <dataScopeBox name="boxDetalhesDoItem" visible="false" align="right" width="900" margins="{left=4, right=4}">    
+			<rectangle width="900" height="600" color="Transparent" align="left" >
+					<image left="0" top="0" width="600" height="600" src="images/FichaNPC.png" style="proportional" optimize="true" align="left"/>
+					<image width="300" height="600" src="images/ImgSize_300x600.png" style="proportional" editable="true" showProgress="true" optimize="true" compilerOrder="1" align="left" field="NpcII" />
+					<edit transparent="true" class="NPC_R" fontSize="28" left="125" top="20" width="300" height="50" field="NPC_nick" horzTextAlign="leading" vertTextAlign="leading"/>
+					<edit transparent="true" class="NPC_R" fontSize="30" left="500" top="20" width="50" height="50" field="NPC_idade" horzTextAlign="leading" vertTextAlign="leading"/>
+					
+					<edit transparent="true" class="NPC_Rp" left="146" top="80" width="25" height="30" field="NPC_fisico" vertTextAlign="leading"/>
+					<edit transparent="true" class="NPC_Rp" left="146" top="105" width="25" height="30" field="NPC_social" vertTextAlign="leading"/>
+					<edit transparent="true" class="NPC_Rp" left="146" top="130" width="25" height="30" field="NPC_mental" vertTextAlign="leading"/>
+					<edit transparent="true" class="NPC_Rp" left="146" top="155" width="25" height="30" field="NPC_espiritual" vertTextAlign="leading"/>
+
+					<edit transparent="true" class="NPC_Rp" left="275" top="75" width="25" height="30" field="NPC_P1" vertTextAlign="leading"/>
+					<edit transparent="true" class="NPC_Rp" left="275" top="96" width="25" height="30" field="NPC_P2" vertTextAlign="leading"/>
+					<edit transparent="true" class="NPC_Rp" left="275" top="117" width="25" height="30" field="NPC_P3" vertTextAlign="leading"/>
+					<edit transparent="true" class="NPC_Rp" left="275" top="138" width="25" height="30" field="NPC_P4" vertTextAlign="leading"/>
+					<edit transparent="true" class="NPC_Rp" left="275" top="159" width="25" height="30" field="NPC_P5" vertTextAlign="leading"/>
+					<edit transparent="true" class="NPC_Rp" left="275" top="182" width="25" height="30" field="NPC_P6" vertTextAlign="leading"/>
+					<edit transparent="true" class="NPC_Rp" left="275" top="205" width="25" height="30" field="NPC_P7" vertTextAlign="leading"/>
+					<edit transparent="true" class="NPC_Rp" left="275" top="225" width="25" height="30" field="NPC_P8" vertTextAlign="leading"/>
+					<edit transparent="true" class="NPC_Rp" left="275" top="250" width="25" height="30" field="NPC_P9" vertTextAlign="leading"/>
+					<edit transparent="true" class="NPC_Rp" left="275" top="275" width="25" height="30" field="NPC_P10" vertTextAlign="leading"/>
+					
+					<edit transparent="true" class="NPC_Rp" left="315" top="100" width="25" height="30" field="NPC_Saude1" vertTextAlign="leading"/>
+					<edit transparent="true" class="NPC_Rp" left="340" top="100" width="25" height="30" field="NPC_Saude2" vertTextAlign="leading"/>
+					<edit transparent="true" class="NPC_Rp" left="365" top="100" width="25" height="30" field="NPC_Saude3" vertTextAlign="leading"/>	
+
+					<edit transparent="true" class="NPC_Rp" left="508" top="74" width="25" height="30" field="NPC_Moralidade" vertTextAlign="leading"/>
+					<comboBox left="420" top="100" width="100" height="25" field="NPC_MoralidadeS" items="{'Selvagem', 'Egoísta', 'Moralista', 'Honroso', 'Santo'}" values="{'Se', 'Eg', 'Mo', 'Ho', Sa}" class="NPC_Rp" transparent="true"/>
+					
+					<edit transparent="true" class="NPC_Rp" left="128" top="218" width="25" height="30" field="NPC_Iniciativa" vertTextAlign="leading"/>
+					<edit transparent="true" class="NPC_Rp" left="128" top="251" width="25" height="30" field="NPC_Imunidade" vertTextAlign="leading"/>
+					
+					<edit transparent="true" class="NPC_Rp" left="100" top="290" width="25" height="30" field="NPC_ATK" vertTextAlign="leading"/>
+					
+					<edit transparent="true" class="NPC_Rp" left="55" top="315" width="25" height="30" field="NPC_ATK1" vertTextAlign="leading"/>
+					<edit transparent="true" class="NPC_Rp" left="125" top="315" width="25" height="30" field="NPC_ATK2" vertTextAlign="leading"/>
+					<edit transparent="true" class="NPC_Rp" left="190" top="315" width="25" height="30" field="NPC_ATK3" vertTextAlign="leading"/>
+
+					<edit transparent="true" class="NPC_Rp" left="185" top="420" width="25" height="30" field="NPC_DEF" vertTextAlign="leading"/>
+					
+					<edit transparent="true" class="NPC_Rp" left="55" top="445" width="25" height="30" field="NPC_DEF1" vertTextAlign="leading"/>
+					<edit transparent="true" class="NPC_Rp" left="125" top="445" width="25" height="30" field="NPC_DEF2" vertTextAlign="leading"/>
+					<edit transparent="true" class="NPC_Rp" left="190" top="445" width="25" height="30" field="NPC_DEF3" vertTextAlign="leading"/>
+					
+					<layout left="40" top="350" width="200" height="75">
+						<textEditor fontFamily="kalam" width="200" height="75" fontSize="13" fontColor="#548DD4" field="NPC_DescATK" transparent="true" /></layout> 
+
+					<layout left="40" top="480" width="220" height="60">
+						<textEditor fontFamily="kalam" width="220" height="60" fontSize="13" fontColor="#548DD4" field="NPC_DescDEF" transparent="true" /></layout>
+						
+					<layout left="315" top="159" width="230" height="150">
+						<textEditor fontFamily="kalam" width="230" height="150" fontSize="13" fontColor="#548DD4" field="NPC_Equip" transparent="true" /></layout> 
+
+					<layout left="275" top="355" width="250" height="1800">
+						<textEditor fontFamily="kalam" width="250" height="180" fontSize="13" fontColor="#548DD4" field="NPC_Circunstancia" transparent="true" /></layout> 
+			</rectangle>
+        </dataScopeBox>
+</form>

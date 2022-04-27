@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmEquip" height="25" margins="{top=2,bottom=2}">  
+<style>.padraoEqui{ fontColor: #C0504D; fontSize: 20; horzTextAlign: center; vertTextAlign: center; textTrimming: word; fontFamily: kalam; }</style>
+        
+		<edit align="client" field="nome" class="padraoEqui" text="Escreva o item aqui!" transparent="true"  />
+		<rectangle height="2" width="400" top="24" sides="top" color="#00000000" strokeColor="black" strokeSize="1"> </rectangle>
+		
+		<edit align="right" field="peso" class="padraoEqui" text="00" width="50" transparent="true"  />
+		
+		
+        <button align="right" text="X" width="25" class="padraoEqui" fontColor="white" >
+			<event name="onClick">
+					Dialogs.confirmOkCancel("Quer mesmo apagar esse Equipamento?",
+						function (confirmado)
+							if confirmado then
+								NDB.deleteNode(sheet);
+							end;
+					end);
+			</event>
+		</button>
+</form>

@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmExpGS" height="20" > 
+	<label text="Exp ganha:" align="left" width="360" horzTextAlign="trailing" fontColor="#000000"/>
+	<edit field="ExpGS" align="left" horzTextAlign="trailing" width="50" transparent="true" fontColor="#000000" />
+</form>
