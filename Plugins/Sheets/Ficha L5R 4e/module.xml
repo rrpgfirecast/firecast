@@ -4,7 +4,7 @@
     <id>Ficha_de_L5R_4e_SDK_3.5</id>
     <!--"version" is the version of your plugin. When you release a new version of your module, change here =)-->
     <version>2.0.3</version>
-    <name>L5R 4e (Teste)</name>
+    <name>L5R 4e (Otimizado)</name>
     <description>Ficha com cálculos automáticos para L5R 4e.</description>
     <author>Gatan e thirteen</author>
     <site/>
