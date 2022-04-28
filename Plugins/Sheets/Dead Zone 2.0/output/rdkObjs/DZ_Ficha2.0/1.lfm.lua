@@ -600,16 +600,16 @@ local function constructNew_frmDZ_Ficha1_svg()
     obj.button7:setParent(obj.rectangle1);
     obj.button7:setLeft(274);
     obj.button7:setTop(505);
-    obj.button7:setWidth(14);
-    obj.button7:setHeight(14);
+    obj.button7:setWidth(16);
+    obj.button7:setHeight(16);
     obj.button7:setText("R");
     obj.button7:setHint("Desc...");
     obj.button7:setName("button7");
 
     obj.image8 = GUI.fromHandle(_obj_newObject("image"));
     obj.image8:setParent(obj.rectangle1);
-    obj.image8:setWidth(17);
-    obj.image8:setHeight(17);
+    obj.image8:setWidth(19);
+    obj.image8:setHeight(19);
     obj.image8:setLeft(272);
     obj.image8:setTop(505);
     obj.image8:setStyle("proportional");
@@ -644,16 +644,16 @@ local function constructNew_frmDZ_Ficha1_svg()
     obj.button8:setParent(obj.rectangle1);
     obj.button8:setLeft(274);
     obj.button8:setTop(541);
-    obj.button8:setWidth(14);
-    obj.button8:setHeight(14);
+    obj.button8:setWidth(16);
+    obj.button8:setHeight(16);
     obj.button8:setText("R");
     obj.button8:setHint("Desc...");
     obj.button8:setName("button8");
 
     obj.image9 = GUI.fromHandle(_obj_newObject("image"));
     obj.image9:setParent(obj.rectangle1);
-    obj.image9:setWidth(17);
-    obj.image9:setHeight(17);
+    obj.image9:setWidth(19);
+    obj.image9:setHeight(19);
     obj.image9:setLeft(272);
     obj.image9:setTop(541);
     obj.image9:setStyle("proportional");
@@ -6004,16 +6004,16 @@ local function constructNew_frmDZ_Ficha1_svg()
     obj.layout133:setHeight(160);
     obj.layout133:setName("layout133");
 
-    obj.textEditor21 = GUI.fromHandle(_obj_newObject("textEditor"));
-    obj.textEditor21:setParent(obj.layout133);
-    obj.textEditor21:setFontFamily("kalam");
-    obj.textEditor21:setWidth(230);
-    obj.textEditor21:setHeight(160);
-    obj.textEditor21:setFontSize(15);
-    obj.textEditor21:setFontColor("#548DD4");
-    obj.textEditor21:setField("Conducao_Equipamentos");
-    obj.textEditor21:setTransparent(true);
-    obj.textEditor21:setName("textEditor21");
+    obj.Conducao_Equipamentos = GUI.fromHandle(_obj_newObject("textEditor"));
+    obj.Conducao_Equipamentos:setParent(obj.layout133);
+    obj.Conducao_Equipamentos:setName("Conducao_Equipamentos");
+    obj.Conducao_Equipamentos:setFontFamily("kalam");
+    obj.Conducao_Equipamentos:setWidth(230);
+    obj.Conducao_Equipamentos:setHeight(160);
+    obj.Conducao_Equipamentos:setFontSize(15);
+    obj.Conducao_Equipamentos:setFontColor("#548DD4");
+    obj.Conducao_Equipamentos:setField("Conducao_Equipamentos");
+    obj.Conducao_Equipamentos:setTransparent(true);
 
     obj.label62 = GUI.fromHandle(_obj_newObject("label"));
     obj.label62:setParent(obj.layout132);
@@ -6040,16 +6040,16 @@ local function constructNew_frmDZ_Ficha1_svg()
     obj.layout134:setHeight(78);
     obj.layout134:setName("layout134");
 
-    obj.textEditor22 = GUI.fromHandle(_obj_newObject("textEditor"));
-    obj.textEditor22:setParent(obj.layout134);
-    obj.textEditor22:setFontFamily("kalam");
-    obj.textEditor22:setWidth(200);
-    obj.textEditor22:setHeight(80);
-    obj.textEditor22:setFontSize(15);
-    obj.textEditor22:setFontColor("#548DD4");
-    obj.textEditor22:setField("Conducao_Circunstancia");
-    obj.textEditor22:setTransparent(true);
-    obj.textEditor22:setName("textEditor22");
+    obj.Conducao_Circunstancia = GUI.fromHandle(_obj_newObject("textEditor"));
+    obj.Conducao_Circunstancia:setParent(obj.layout134);
+    obj.Conducao_Circunstancia:setName("Conducao_Circunstancia");
+    obj.Conducao_Circunstancia:setFontFamily("kalam");
+    obj.Conducao_Circunstancia:setWidth(200);
+    obj.Conducao_Circunstancia:setHeight(80);
+    obj.Conducao_Circunstancia:setFontSize(15);
+    obj.Conducao_Circunstancia:setFontColor("#548DD4");
+    obj.Conducao_Circunstancia:setField("Conducao_Circunstancia");
+    obj.Conducao_Circunstancia:setTransparent(true);
 
     obj.image58 = GUI.fromHandle(_obj_newObject("image"));
     obj.image58:setParent(obj.layout132);
@@ -6412,16 +6412,16 @@ local function constructNew_frmDZ_Ficha1_svg()
     obj.layout136:setHeight(160);
     obj.layout136:setName("layout136");
 
-    obj.textEditor23 = GUI.fromHandle(_obj_newObject("textEditor"));
-    obj.textEditor23:setParent(obj.layout136);
-    obj.textEditor23:setFontFamily("kalam");
-    obj.textEditor23:setWidth(230);
-    obj.textEditor23:setHeight(160);
-    obj.textEditor23:setFontSize(15);
-    obj.textEditor23:setFontColor("#548DD4");
-    obj.textEditor23:setField("Conducao2_Equipamentos");
-    obj.textEditor23:setTransparent(true);
-    obj.textEditor23:setName("textEditor23");
+    obj.Conducao2_Equipamentos = GUI.fromHandle(_obj_newObject("textEditor"));
+    obj.Conducao2_Equipamentos:setParent(obj.layout136);
+    obj.Conducao2_Equipamentos:setName("Conducao2_Equipamentos");
+    obj.Conducao2_Equipamentos:setFontFamily("kalam");
+    obj.Conducao2_Equipamentos:setWidth(230);
+    obj.Conducao2_Equipamentos:setHeight(160);
+    obj.Conducao2_Equipamentos:setFontSize(15);
+    obj.Conducao2_Equipamentos:setFontColor("#548DD4");
+    obj.Conducao2_Equipamentos:setField("Conducao2_Equipamentos");
+    obj.Conducao2_Equipamentos:setTransparent(true);
 
     obj.label73 = GUI.fromHandle(_obj_newObject("label"));
     obj.label73:setParent(obj.layout135);
@@ -6448,16 +6448,16 @@ local function constructNew_frmDZ_Ficha1_svg()
     obj.layout137:setHeight(78);
     obj.layout137:setName("layout137");
 
-    obj.textEditor24 = GUI.fromHandle(_obj_newObject("textEditor"));
-    obj.textEditor24:setParent(obj.layout137);
-    obj.textEditor24:setFontFamily("kalam");
-    obj.textEditor24:setWidth(200);
-    obj.textEditor24:setHeight(80);
-    obj.textEditor24:setFontSize(15);
-    obj.textEditor24:setFontColor("#548DD4");
-    obj.textEditor24:setField("Conducao2_Circunstancia");
-    obj.textEditor24:setTransparent(true);
-    obj.textEditor24:setName("textEditor24");
+    obj.Conducao2_Circunstancia = GUI.fromHandle(_obj_newObject("textEditor"));
+    obj.Conducao2_Circunstancia:setParent(obj.layout137);
+    obj.Conducao2_Circunstancia:setName("Conducao2_Circunstancia");
+    obj.Conducao2_Circunstancia:setFontFamily("kalam");
+    obj.Conducao2_Circunstancia:setWidth(200);
+    obj.Conducao2_Circunstancia:setHeight(80);
+    obj.Conducao2_Circunstancia:setFontSize(15);
+    obj.Conducao2_Circunstancia:setFontColor("#548DD4");
+    obj.Conducao2_Circunstancia:setField("Conducao2_Circunstancia");
+    obj.Conducao2_Circunstancia:setTransparent(true);
 
     obj.image60 = GUI.fromHandle(_obj_newObject("image"));
     obj.image60:setParent(obj.layout135);
@@ -7445,7 +7445,7 @@ local function constructNew_frmDZ_Ficha1_svg()
     obj.image67:setEditable(true);
     obj.image67:setShowProgress(true);
     obj.image67:setOptimize(true);
-    obj.image67:setAlign("left");
+    obj.image67:setAlign("right");
     obj.image67:setField("NpcII");
     obj.image67:setName("image67");
 
@@ -7967,16 +7967,16 @@ local function constructNew_frmDZ_Ficha1_svg()
     obj.layout141:setHeight(75);
     obj.layout141:setName("layout141");
 
-    obj.textEditor25 = GUI.fromHandle(_obj_newObject("textEditor"));
-    obj.textEditor25:setParent(obj.layout141);
-    obj.textEditor25:setFontFamily("kalam");
-    obj.textEditor25:setWidth(200);
-    obj.textEditor25:setHeight(75);
-    obj.textEditor25:setFontSize(13);
-    obj.textEditor25:setFontColor("#548DD4");
-    obj.textEditor25:setField("NPC_DescATK");
-    obj.textEditor25:setTransparent(true);
-    obj.textEditor25:setName("textEditor25");
+    obj.NPC_DescATK = GUI.fromHandle(_obj_newObject("textEditor"));
+    obj.NPC_DescATK:setParent(obj.layout141);
+    obj.NPC_DescATK:setName("NPC_DescATK");
+    obj.NPC_DescATK:setFontFamily("kalam");
+    obj.NPC_DescATK:setWidth(200);
+    obj.NPC_DescATK:setHeight(75);
+    obj.NPC_DescATK:setFontSize(13);
+    obj.NPC_DescATK:setFontColor("#548DD4");
+    obj.NPC_DescATK:setField("NPC_DescATK");
+    obj.NPC_DescATK:setTransparent(true);
 
     obj.layout142 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout142:setParent(obj.rectangle16);
@@ -7986,16 +7986,16 @@ local function constructNew_frmDZ_Ficha1_svg()
     obj.layout142:setHeight(60);
     obj.layout142:setName("layout142");
 
-    obj.textEditor26 = GUI.fromHandle(_obj_newObject("textEditor"));
-    obj.textEditor26:setParent(obj.layout142);
-    obj.textEditor26:setFontFamily("kalam");
-    obj.textEditor26:setWidth(220);
-    obj.textEditor26:setHeight(60);
-    obj.textEditor26:setFontSize(13);
-    obj.textEditor26:setFontColor("#548DD4");
-    obj.textEditor26:setField("NPC_DescDEF");
-    obj.textEditor26:setTransparent(true);
-    obj.textEditor26:setName("textEditor26");
+    obj.NPC_DescDEF = GUI.fromHandle(_obj_newObject("textEditor"));
+    obj.NPC_DescDEF:setParent(obj.layout142);
+    obj.NPC_DescDEF:setName("NPC_DescDEF");
+    obj.NPC_DescDEF:setFontFamily("kalam");
+    obj.NPC_DescDEF:setWidth(220);
+    obj.NPC_DescDEF:setHeight(60);
+    obj.NPC_DescDEF:setFontSize(13);
+    obj.NPC_DescDEF:setFontColor("#548DD4");
+    obj.NPC_DescDEF:setField("NPC_DescDEF");
+    obj.NPC_DescDEF:setTransparent(true);
 
     obj.layout143 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout143:setParent(obj.rectangle16);
@@ -8005,16 +8005,16 @@ local function constructNew_frmDZ_Ficha1_svg()
     obj.layout143:setHeight(150);
     obj.layout143:setName("layout143");
 
-    obj.textEditor27 = GUI.fromHandle(_obj_newObject("textEditor"));
-    obj.textEditor27:setParent(obj.layout143);
-    obj.textEditor27:setFontFamily("kalam");
-    obj.textEditor27:setWidth(230);
-    obj.textEditor27:setHeight(150);
-    obj.textEditor27:setFontSize(13);
-    obj.textEditor27:setFontColor("#548DD4");
-    obj.textEditor27:setField("NPC_Equip");
-    obj.textEditor27:setTransparent(true);
-    obj.textEditor27:setName("textEditor27");
+    obj.NPC_Equip = GUI.fromHandle(_obj_newObject("textEditor"));
+    obj.NPC_Equip:setParent(obj.layout143);
+    obj.NPC_Equip:setName("NPC_Equip");
+    obj.NPC_Equip:setFontFamily("kalam");
+    obj.NPC_Equip:setWidth(230);
+    obj.NPC_Equip:setHeight(150);
+    obj.NPC_Equip:setFontSize(13);
+    obj.NPC_Equip:setFontColor("#548DD4");
+    obj.NPC_Equip:setField("NPC_Equip");
+    obj.NPC_Equip:setTransparent(true);
 
     obj.layout144 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout144:setParent(obj.rectangle16);
@@ -8024,200 +8024,16 @@ local function constructNew_frmDZ_Ficha1_svg()
     obj.layout144:setHeight(1800);
     obj.layout144:setName("layout144");
 
-    obj.textEditor28 = GUI.fromHandle(_obj_newObject("textEditor"));
-    obj.textEditor28:setParent(obj.layout144);
-    obj.textEditor28:setFontFamily("kalam");
-    obj.textEditor28:setWidth(250);
-    obj.textEditor28:setHeight(180);
-    obj.textEditor28:setFontSize(13);
-    obj.textEditor28:setFontColor("#548DD4");
-    obj.textEditor28:setField("NPC_Circunstancia");
-    obj.textEditor28:setTransparent(true);
-    obj.textEditor28:setName("textEditor28");
-
-    obj.label76 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label76:setParent(obj.rectangle1);
-    obj.label76:setText("Anotação");
-    obj.label76:setWidth(50);
-    obj.label76:setHeight(30);
-    obj.label76:setTop(700);
-    obj.label76:setLeft(1222);
-    obj.label76:setFontSize(15);
-    obj.label76:setName("label76");
-    obj.label76:setFontColor("#000000");
-    obj.label76:setHorzTextAlign("center");
-    obj.label76:setVertTextAlign("center");
-    obj.label76:setFontFamily("kalam");
-    obj.label76:setTextTrimming("none");
-    obj.label76:setWordWrap(false);
-    obj.label76:setAutoSize(true);
-
-    obj.button80 = GUI.fromHandle(_obj_newObject("button"));
-    obj.button80:setParent(obj.rectangle1);
-    obj.button80:setWidth(100);
-    obj.button80:setHeight(100);
-    obj.button80:setLeft(1200);
-    obj.button80:setTop(720);
-    obj.button80:setName("button80");
-
-    obj.image69 = GUI.fromHandle(_obj_newObject("image"));
-    obj.image69:setParent(obj.rectangle1);
-    obj.image69:setWidth(100);
-    obj.image69:setHeight(100);
-    obj.image69:setLeft(1200);
-    obj.image69:setTop(720);
-    obj.image69:setStyle("proportional");
-    obj.image69:setCenter(true);
-    obj.image69:setSRC("/DZ_Ficha2.0/images/Note.png");
-    obj.image69:setName("image69");
-
-    obj.PopAnotacao = GUI.fromHandle(_obj_newObject("popup"));
-    obj.PopAnotacao:setParent(obj.rectangle1);
-    obj.PopAnotacao:setName("PopAnotacao");
-    obj.PopAnotacao:setWidth(1350);
-    obj.PopAnotacao:setHeight(600);
-    obj.PopAnotacao:setBackOpacity(0.5);
-
-    obj.scrollBox7 = GUI.fromHandle(_obj_newObject("scrollBox"));
-    obj.scrollBox7:setParent(obj.PopAnotacao);
-    obj.scrollBox7:setAlign("client");
-    obj.scrollBox7:setName("scrollBox7");
-
-    obj.frmAnotacao = GUI.fromHandle(_obj_newObject("form"));
-    obj.frmAnotacao:setParent(obj.scrollBox7);
-    obj.frmAnotacao:setName("frmAnotacao");
-    obj.frmAnotacao:setWidth(1300);
-    obj.frmAnotacao:setHeight(600);
-    obj.frmAnotacao:setTheme("dark");
-
-    obj.rectangle17 = GUI.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle17:setParent(obj.frmAnotacao);
-    obj.rectangle17:setWidth(1340);
-    obj.rectangle17:setHeight(600);
-    obj.rectangle17:setColor("white");
-    obj.rectangle17:setName("rectangle17");
-
-    obj.label77 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label77:setParent(obj.rectangle17);
-    obj.label77:setText("LISTA");
-    obj.label77:setLeft(950);
-    obj.label77:setWidth(220);
-    obj.label77:setHorzTextAlign("center");
-    obj.label77:setFontSize(30);
-    obj.label77:setName("label77");
-    obj.label77:setFontColor("black");
-    obj.label77:setTextTrimming("none");
-    obj.label77:setWordWrap(false);
-    obj.label77:setAutoSize(true);
-    obj.label77:setFontFamily("kalam");
-
-    obj.rectangle18 = GUI.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle18:setParent(obj.rectangle17);
-    obj.rectangle18:setLeft(900);
-    obj.rectangle18:setTop(35);
-    obj.rectangle18:setWidth(220);
-    obj.rectangle18:setHeight(400);
-    obj.rectangle18:setCornerType("round");
-    obj.rectangle18:setStrokeColor("black");
-    obj.rectangle18:setColor("white");
-    obj.rectangle18:setStrokeSize(2);
-    obj.rectangle18:setXradius(5);
-    obj.rectangle18:setYradius(5);
-    obj.rectangle18:setName("rectangle18");
-
-    obj.scrollBox8 = GUI.fromHandle(_obj_newObject("scrollBox"));
-    obj.scrollBox8:setParent(obj.rectangle18);
-    obj.scrollBox8:setAlign("client");
-    obj.scrollBox8:setName("scrollBox8");
-
-    obj.button81 = GUI.fromHandle(_obj_newObject("button"));
-    obj.button81:setParent(obj.scrollBox8);
-    obj.button81:setLeft(5);
-    obj.button81:setTop(1);
-    obj.button81:setWidth(15);
-    obj.button81:setHeight(15);
-    obj.button81:setText("+");
-    obj.button81:setFontFamily("kalam");
-    obj.button81:setName("button81");
-
-    obj.rclAnotacao1 = GUI.fromHandle(_obj_newObject("recordList"));
-    obj.rclAnotacao1:setParent(obj.scrollBox8);
-    obj.rclAnotacao1:setName("rclAnotacao1");
-    obj.rclAnotacao1:setField("Anotacaobloco02");
-    obj.rclAnotacao1:setTemplateForm("frmAnotacao1");
-    obj.rclAnotacao1:setLeft(1);
-    obj.rclAnotacao1:setTop(20);
-    obj.rclAnotacao1:setWidth(200);
-    obj.rclAnotacao1:setAutoHeight(true);
-
-    obj.label78 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label78:setParent(obj.rectangle17);
-    obj.label78:setText("DIÁRIO");
-    obj.label78:setLeft(325);
-    obj.label78:setWidth(400);
-    obj.label78:setHorzTextAlign("center");
-    obj.label78:setFontSize(30);
-    obj.label78:setName("label78");
-    obj.label78:setFontColor("black");
-    obj.label78:setTextTrimming("none");
-    obj.label78:setWordWrap(false);
-    obj.label78:setAutoSize(true);
-    obj.label78:setFontFamily("kalam");
-
-    obj.rectangle19 = GUI.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle19:setParent(obj.rectangle17);
-    obj.rectangle19:setLeft(1);
-    obj.rectangle19:setTop(35);
-    obj.rectangle19:setWidth(770);
-    obj.rectangle19:setHeight(550);
-    obj.rectangle19:setColor("white");
-    obj.rectangle19:setName("rectangle19");
-
-    obj.layout145 = GUI.fromHandle(_obj_newObject("layout"));
-    obj.layout145:setParent(obj.rectangle19);
-    obj.layout145:setLeft(5);
-    obj.layout145:setTop(5);
-    obj.layout145:setWidth(770);
-    obj.layout145:setHeight(550);
-    obj.layout145:setName("layout145");
-
-    obj.image70 = GUI.fromHandle(_obj_newObject("image"));
-    obj.image70:setParent(obj.layout145);
-    obj.image70:setLeft(0);
-    obj.image70:setTop(0);
-    obj.image70:setWidth(770);
-    obj.image70:setHeight(550);
-    obj.image70:setSRC("/DZ_Ficha2.0/images/diario2.png");
-    obj.image70:setStyle("proportional");
-    obj.image70:setOptimize(true);
-    obj.image70:setAlign("left");
-    obj.image70:setName("image70");
-
-    obj.textEditor29 = GUI.fromHandle(_obj_newObject("textEditor"));
-    obj.textEditor29:setParent(obj.layout145);
-    obj.textEditor29:setFontFamily("kalam");
-    obj.textEditor29:setWidth(320);
-    obj.textEditor29:setHeight(500);
-    obj.textEditor29:setLeft(50);
-    obj.textEditor29:setTop(20);
-    obj.textEditor29:setFontSize(15);
-    obj.textEditor29:setFontColor("black");
-    obj.textEditor29:setField("Anotacao1bloco02");
-    obj.textEditor29:setTransparent(true);
-    obj.textEditor29:setName("textEditor29");
-
-    obj.textEditor30 = GUI.fromHandle(_obj_newObject("textEditor"));
-    obj.textEditor30:setParent(obj.layout145);
-    obj.textEditor30:setFontFamily("kalam");
-    obj.textEditor30:setWidth(320);
-    obj.textEditor30:setHeight(500);
-    obj.textEditor30:setLeft(390);
-    obj.textEditor30:setTop(20);
-    obj.textEditor30:setFontSize(15);
-    obj.textEditor30:setFontColor("black");
-    obj.textEditor30:setField("Anotacao1bloco03");
-    obj.textEditor30:setTransparent(true);
-    obj.textEditor30:setName("textEditor30");
+    obj.NPC_Circunstancia = GUI.fromHandle(_obj_newObject("textEditor"));
+    obj.NPC_Circunstancia:setParent(obj.layout144);
+    obj.NPC_Circunstancia:setName("NPC_Circunstancia");
+    obj.NPC_Circunstancia:setFontFamily("kalam");
+    obj.NPC_Circunstancia:setWidth(250);
+    obj.NPC_Circunstancia:setHeight(180);
+    obj.NPC_Circunstancia:setFontSize(13);
+    obj.NPC_Circunstancia:setFontColor("#548DD4");
+    obj.NPC_Circunstancia:setField("NPC_Circunstancia");
+    obj.NPC_Circunstancia:setTransparent(true);
 
     obj._e_event0 = obj.button1:addEventListener("onClick",
         function (_)
@@ -8854,19 +8670,7 @@ local function constructNew_frmDZ_Ficha1_svg()
                                       self.boxDetalhesDoItem.visible = (node ~= nil);
         end, obj);
 
-    obj._e_event93 = obj.button80:addEventListener("onClick",
-        function (_)
-            self.PopAnotacao:show('bottom', self.labNome);
-        end, obj);
-
-    obj._e_event94 = obj.button81:addEventListener("onClick",
-        function (_)
-            self.rclAnotacao1:append();
-        end, obj);
-
     function obj:_releaseEvents()
-        __o_rrpgObjs.removeEventListenerById(self._e_event94);
-        __o_rrpgObjs.removeEventListenerById(self._e_event93);
         __o_rrpgObjs.removeEventListenerById(self._e_event92);
         __o_rrpgObjs.removeEventListenerById(self._e_event91);
         __o_rrpgObjs.removeEventListenerById(self._e_event90);
@@ -8991,7 +8795,6 @@ local function constructNew_frmDZ_Ficha1_svg()
         if self.label43 ~= nil then self.label43:destroy(); self.label43 = nil; end;
         if self.edit29 ~= nil then self.edit29:destroy(); self.edit29 = nil; end;
         if self.image51 ~= nil then self.image51:destroy(); self.image51 = nil; end;
-        if self.label77 ~= nil then self.label77:destroy(); self.label77 = nil; end;
         if self.layout17 ~= nil then self.layout17:destroy(); self.layout17 = nil; end;
         if self.layout94 ~= nil then self.layout94:destroy(); self.layout94 = nil; end;
         if self.label45 ~= nil then self.label45:destroy(); self.label45 = nil; end;
@@ -9014,7 +8817,6 @@ local function constructNew_frmDZ_Ficha1_svg()
         if self.layout125 ~= nil then self.layout125:destroy(); self.layout125 = nil; end;
         if self.label8 ~= nil then self.label8:destroy(); self.label8 = nil; end;
         if self.DescCircunstancia4 ~= nil then self.DescCircunstancia4:destroy(); self.DescCircunstancia4 = nil; end;
-        if self.image70 ~= nil then self.image70:destroy(); self.image70 = nil; end;
         if self.layout9 ~= nil then self.layout9:destroy(); self.layout9 = nil; end;
         if self.edit11 ~= nil then self.edit11:destroy(); self.edit11 = nil; end;
         if self.image1 ~= nil then self.image1:destroy(); self.image1 = nil; end;
@@ -9023,15 +8825,15 @@ local function constructNew_frmDZ_Ficha1_svg()
         if self.layout140 ~= nil then self.layout140:destroy(); self.layout140 = nil; end;
         if self.layout71 ~= nil then self.layout71:destroy(); self.layout71 = nil; end;
         if self.edit183 ~= nil then self.edit183:destroy(); self.edit183 = nil; end;
-        if self.rectangle17 ~= nil then self.rectangle17:destroy(); self.rectangle17 = nil; end;
+        if self.NPC_Circunstancia ~= nil then self.NPC_Circunstancia:destroy(); self.NPC_Circunstancia = nil; end;
         if self.dataLink9 ~= nil then self.dataLink9:destroy(); self.dataLink9 = nil; end;
         if self.label15 ~= nil then self.label15:destroy(); self.label15 = nil; end;
         if self.frmAnimal ~= nil then self.frmAnimal:destroy(); self.frmAnimal = nil; end;
         if self.image60 ~= nil then self.image60:destroy(); self.image60 = nil; end;
-        if self.textEditor27 ~= nil then self.textEditor27:destroy(); self.textEditor27 = nil; end;
         if self.layout32 ~= nil then self.layout32:destroy(); self.layout32 = nil; end;
         if self.label49 ~= nil then self.label49:destroy(); self.label49 = nil; end;
         if self.edit156 ~= nil then self.edit156:destroy(); self.edit156 = nil; end;
+        if self.NPC_DescDEF ~= nil then self.NPC_DescDEF:destroy(); self.NPC_DescDEF = nil; end;
         if self.layout37 ~= nil then self.layout37:destroy(); self.layout37 = nil; end;
         if self.textEditor15 ~= nil then self.textEditor15:destroy(); self.textEditor15 = nil; end;
         if self.button79 ~= nil then self.button79:destroy(); self.button79 = nil; end;
@@ -9070,7 +8872,6 @@ local function constructNew_frmDZ_Ficha1_svg()
         if self.edit159 ~= nil then self.edit159:destroy(); self.edit159 = nil; end;
         if self.edit196 ~= nil then self.edit196:destroy(); self.edit196 = nil; end;
         if self.edit220 ~= nil then self.edit220:destroy(); self.edit220 = nil; end;
-        if self.label76 ~= nil then self.label76:destroy(); self.label76 = nil; end;
         if self.button7 ~= nil then self.button7:destroy(); self.button7 = nil; end;
         if self.layout42 ~= nil then self.layout42:destroy(); self.layout42 = nil; end;
         if self.layout61 ~= nil then self.layout61:destroy(); self.layout61 = nil; end;
@@ -9113,7 +8914,6 @@ local function constructNew_frmDZ_Ficha1_svg()
         if self.image52 ~= nil then self.image52:destroy(); self.image52 = nil; end;
         if self.edit221 ~= nil then self.edit221:destroy(); self.edit221 = nil; end;
         if self.layout108 ~= nil then self.layout108:destroy(); self.layout108 = nil; end;
-        if self.rectangle18 ~= nil then self.rectangle18:destroy(); self.rectangle18 = nil; end;
         if self.rectangle14 ~= nil then self.rectangle14:destroy(); self.rectangle14 = nil; end;
         if self.edit124 ~= nil then self.edit124:destroy(); self.edit124 = nil; end;
         if self.label2 ~= nil then self.label2:destroy(); self.label2 = nil; end;
@@ -9137,7 +8937,6 @@ local function constructNew_frmDZ_Ficha1_svg()
         if self.layout7 ~= nil then self.layout7:destroy(); self.layout7 = nil; end;
         if self.edit60 ~= nil then self.edit60:destroy(); self.edit60 = nil; end;
         if self.layout132 ~= nil then self.layout132:destroy(); self.layout132 = nil; end;
-        if self.layout145 ~= nil then self.layout145:destroy(); self.layout145 = nil; end;
         if self.image34 ~= nil then self.image34:destroy(); self.image34 = nil; end;
         if self.edit134 ~= nil then self.edit134:destroy(); self.edit134 = nil; end;
         if self.layout39 ~= nil then self.layout39:destroy(); self.layout39 = nil; end;
@@ -9156,7 +8955,6 @@ local function constructNew_frmDZ_Ficha1_svg()
         if self.image64 ~= nil then self.image64:destroy(); self.image64 = nil; end;
         if self.DescCircunstancia7 ~= nil then self.DescCircunstancia7:destroy(); self.DescCircunstancia7 = nil; end;
         if self.layout30 ~= nil then self.layout30:destroy(); self.layout30 = nil; end;
-        if self.scrollBox7 ~= nil then self.scrollBox7:destroy(); self.scrollBox7 = nil; end;
         if self.layout135 ~= nil then self.layout135:destroy(); self.layout135 = nil; end;
         if self.layout60 ~= nil then self.layout60:destroy(); self.layout60 = nil; end;
         if self.textEditor3 ~= nil then self.textEditor3:destroy(); self.textEditor3 = nil; end;
@@ -9190,20 +8988,17 @@ local function constructNew_frmDZ_Ficha1_svg()
         if self.layout12 ~= nil then self.layout12:destroy(); self.layout12 = nil; end;
         if self.edit14 ~= nil then self.edit14:destroy(); self.edit14 = nil; end;
         if self.textEditor16 ~= nil then self.textEditor16:destroy(); self.textEditor16 = nil; end;
-        if self.textEditor22 ~= nil then self.textEditor22:destroy(); self.textEditor22 = nil; end;
+        if self.Conducao2_Circunstancia ~= nil then self.Conducao2_Circunstancia:destroy(); self.Conducao2_Circunstancia = nil; end;
         if self.dataLink8 ~= nil then self.dataLink8:destroy(); self.dataLink8 = nil; end;
         if self.edit4 ~= nil then self.edit4:destroy(); self.edit4 = nil; end;
         if self.layout25 ~= nil then self.layout25:destroy(); self.layout25 = nil; end;
         if self.edit198 ~= nil then self.edit198:destroy(); self.edit198 = nil; end;
         if self.edit224 ~= nil then self.edit224:destroy(); self.edit224 = nil; end;
-        if self.frmAnotacao ~= nil then self.frmAnotacao:destroy(); self.frmAnotacao = nil; end;
         if self.label6 ~= nil then self.label6:destroy(); self.label6 = nil; end;
         if self.textEditor11 ~= nil then self.textEditor11:destroy(); self.textEditor11 = nil; end;
         if self.edit128 ~= nil then self.edit128:destroy(); self.edit128 = nil; end;
         if self.image35 ~= nil then self.image35:destroy(); self.image35 = nil; end;
         if self.edit200 ~= nil then self.edit200:destroy(); self.edit200 = nil; end;
-        if self.rclAnotacao1 ~= nil then self.rclAnotacao1:destroy(); self.rclAnotacao1 = nil; end;
-        if self.textEditor30 ~= nil then self.textEditor30:destroy(); self.textEditor30 = nil; end;
         if self.button13 ~= nil then self.button13:destroy(); self.button13 = nil; end;
         if self.textEditor2 ~= nil then self.textEditor2:destroy(); self.textEditor2 = nil; end;
         if self.layout107 ~= nil then self.layout107:destroy(); self.layout107 = nil; end;
@@ -9224,7 +9019,6 @@ local function constructNew_frmDZ_Ficha1_svg()
         if self.edit8 ~= nil then self.edit8:destroy(); self.edit8 = nil; end;
         if self.button32 ~= nil then self.button32:destroy(); self.button32 = nil; end;
         if self.edit145 ~= nil then self.edit145:destroy(); self.edit145 = nil; end;
-        if self.PopAnotacao ~= nil then self.PopAnotacao:destroy(); self.PopAnotacao = nil; end;
         if self.edit181 ~= nil then self.edit181:destroy(); self.edit181 = nil; end;
         if self.edit96 ~= nil then self.edit96:destroy(); self.edit96 = nil; end;
         if self.edit2 ~= nil then self.edit2:destroy(); self.edit2 = nil; end;
@@ -9321,7 +9115,6 @@ local function constructNew_frmDZ_Ficha1_svg()
         if self.layout115 ~= nil then self.layout115:destroy(); self.layout115 = nil; end;
         if self.edit178 ~= nil then self.edit178:destroy(); self.edit178 = nil; end;
         if self.edit191 ~= nil then self.edit191:destroy(); self.edit191 = nil; end;
-        if self.textEditor25 ~= nil then self.textEditor25:destroy(); self.textEditor25 = nil; end;
         if self.edit117 ~= nil then self.edit117:destroy(); self.edit117 = nil; end;
         if self.layout75 ~= nil then self.layout75:destroy(); self.layout75 = nil; end;
         if self.image53 ~= nil then self.image53:destroy(); self.image53 = nil; end;
@@ -9398,6 +9191,7 @@ local function constructNew_frmDZ_Ficha1_svg()
         if self.layout50 ~= nil then self.layout50:destroy(); self.layout50 = nil; end;
         if self.frmCAR ~= nil then self.frmCAR:destroy(); self.frmCAR = nil; end;
         if self.label41 ~= nil then self.label41:destroy(); self.label41 = nil; end;
+        if self.Conducao_Circunstancia ~= nil then self.Conducao_Circunstancia:destroy(); self.Conducao_Circunstancia = nil; end;
         if self.scrollBox2 ~= nil then self.scrollBox2:destroy(); self.scrollBox2 = nil; end;
         if self.label72 ~= nil then self.label72:destroy(); self.label72 = nil; end;
         if self.image65 ~= nil then self.image65:destroy(); self.image65 = nil; end;
@@ -9426,14 +9220,11 @@ local function constructNew_frmDZ_Ficha1_svg()
         if self.textEditor17 ~= nil then self.textEditor17:destroy(); self.textEditor17 = nil; end;
         if self.edit158 ~= nil then self.edit158:destroy(); self.edit158 = nil; end;
         if self.image67 ~= nil then self.image67:destroy(); self.image67 = nil; end;
-        if self.label78 ~= nil then self.label78:destroy(); self.label78 = nil; end;
         if self.image27 ~= nil then self.image27:destroy(); self.image27 = nil; end;
         if self.edit175 ~= nil then self.edit175:destroy(); self.edit175 = nil; end;
         if self.layout4 ~= nil then self.layout4:destroy(); self.layout4 = nil; end;
         if self.button59 ~= nil then self.button59:destroy(); self.button59 = nil; end;
         if self.edit101 ~= nil then self.edit101:destroy(); self.edit101 = nil; end;
-        if self.button80 ~= nil then self.button80:destroy(); self.button80 = nil; end;
-        if self.textEditor29 ~= nil then self.textEditor29:destroy(); self.textEditor29 = nil; end;
         if self.image3 ~= nil then self.image3:destroy(); self.image3 = nil; end;
         if self.image28 ~= nil then self.image28:destroy(); self.image28 = nil; end;
         if self.edit164 ~= nil then self.edit164:destroy(); self.edit164 = nil; end;
@@ -9443,6 +9234,7 @@ local function constructNew_frmDZ_Ficha1_svg()
         if self.layout20 ~= nil then self.layout20:destroy(); self.layout20 = nil; end;
         if self.edit23 ~= nil then self.edit23:destroy(); self.edit23 = nil; end;
         if self.layout133 ~= nil then self.layout133:destroy(); self.layout133 = nil; end;
+        if self.NPC_Equip ~= nil then self.NPC_Equip:destroy(); self.NPC_Equip = nil; end;
         if self.layout18 ~= nil then self.layout18:destroy(); self.layout18 = nil; end;
         if self.PopCar ~= nil then self.PopCar:destroy(); self.PopCar = nil; end;
         if self.label56 ~= nil then self.label56:destroy(); self.label56 = nil; end;
@@ -9452,7 +9244,6 @@ local function constructNew_frmDZ_Ficha1_svg()
         if self.label21 ~= nil then self.label21:destroy(); self.label21 = nil; end;
         if self.edit122 ~= nil then self.edit122:destroy(); self.edit122 = nil; end;
         if self.edit40 ~= nil then self.edit40:destroy(); self.edit40 = nil; end;
-        if self.textEditor26 ~= nil then self.textEditor26:destroy(); self.textEditor26 = nil; end;
         if self.textEditor6 ~= nil then self.textEditor6:destroy(); self.textEditor6 = nil; end;
         if self.image47 ~= nil then self.image47:destroy(); self.image47 = nil; end;
         if self.dataLink2 ~= nil then self.dataLink2:destroy(); self.dataLink2 = nil; end;
@@ -9477,9 +9268,7 @@ local function constructNew_frmDZ_Ficha1_svg()
         if self.button9 ~= nil then self.button9:destroy(); self.button9 = nil; end;
         if self.textEditor20 ~= nil then self.textEditor20:destroy(); self.textEditor20 = nil; end;
         if self.edit6 ~= nil then self.edit6:destroy(); self.edit6 = nil; end;
-        if self.textEditor21 ~= nil then self.textEditor21:destroy(); self.textEditor21 = nil; end;
         if self.image55 ~= nil then self.image55:destroy(); self.image55 = nil; end;
-        if self.textEditor23 ~= nil then self.textEditor23:destroy(); self.textEditor23 = nil; end;
         if self.edit90 ~= nil then self.edit90:destroy(); self.edit90 = nil; end;
         if self.textEditor8 ~= nil then self.textEditor8:destroy(); self.textEditor8 = nil; end;
         if self.label18 ~= nil then self.label18:destroy(); self.label18 = nil; end;
@@ -9515,7 +9304,6 @@ local function constructNew_frmDZ_Ficha1_svg()
         if self.layout142 ~= nil then self.layout142:destroy(); self.layout142 = nil; end;
         if self.textEditor13 ~= nil then self.textEditor13:destroy(); self.textEditor13 = nil; end;
         if self.button49 ~= nil then self.button49:destroy(); self.button49 = nil; end;
-        if self.scrollBox8 ~= nil then self.scrollBox8:destroy(); self.scrollBox8 = nil; end;
         if self.layout80 ~= nil then self.layout80:destroy(); self.layout80 = nil; end;
         if self.edit104 ~= nil then self.edit104:destroy(); self.edit104 = nil; end;
         if self.edit207 ~= nil then self.edit207:destroy(); self.edit207 = nil; end;
@@ -9572,8 +9360,6 @@ local function constructNew_frmDZ_Ficha1_svg()
         if self.label4 ~= nil then self.label4:destroy(); self.label4 = nil; end;
         if self.button34 ~= nil then self.button34:destroy(); self.button34 = nil; end;
         if self.layout66 ~= nil then self.layout66:destroy(); self.layout66 = nil; end;
-        if self.textEditor24 ~= nil then self.textEditor24:destroy(); self.textEditor24 = nil; end;
-        if self.rectangle19 ~= nil then self.rectangle19:destroy(); self.rectangle19 = nil; end;
         if self.image39 ~= nil then self.image39:destroy(); self.image39 = nil; end;
         if self.PopExp ~= nil then self.PopExp:destroy(); self.PopExp = nil; end;
         if self.label74 ~= nil then self.label74:destroy(); self.label74 = nil; end;
@@ -9582,7 +9368,6 @@ local function constructNew_frmDZ_Ficha1_svg()
         if self.edit148 ~= nil then self.edit148:destroy(); self.edit148 = nil; end;
         if self.button69 ~= nil then self.button69:destroy(); self.button69 = nil; end;
         if self.button50 ~= nil then self.button50:destroy(); self.button50 = nil; end;
-        if self.image69 ~= nil then self.image69:destroy(); self.image69 = nil; end;
         if self.button22 ~= nil then self.button22:destroy(); self.button22 = nil; end;
         if self.button48 ~= nil then self.button48:destroy(); self.button48 = nil; end;
         if self.layout27 ~= nil then self.layout27:destroy(); self.layout27 = nil; end;
@@ -9611,6 +9396,7 @@ local function constructNew_frmDZ_Ficha1_svg()
         if self.edit55 ~= nil then self.edit55:destroy(); self.edit55 = nil; end;
         if self.edit43 ~= nil then self.edit43:destroy(); self.edit43 = nil; end;
         if self.label17 ~= nil then self.label17:destroy(); self.label17 = nil; end;
+        if self.NPC_DescATK ~= nil then self.NPC_DescATK:destroy(); self.NPC_DescATK = nil; end;
         if self.edit75 ~= nil then self.edit75:destroy(); self.edit75 = nil; end;
         if self.edit193 ~= nil then self.edit193:destroy(); self.edit193 = nil; end;
         if self.button23 ~= nil then self.button23:destroy(); self.button23 = nil; end;
@@ -9640,8 +9426,8 @@ local function constructNew_frmDZ_Ficha1_svg()
         if self.edit168 ~= nil then self.edit168:destroy(); self.edit168 = nil; end;
         if self.scrollBox6 ~= nil then self.scrollBox6:destroy(); self.scrollBox6 = nil; end;
         if self.textEditor14 ~= nil then self.textEditor14:destroy(); self.textEditor14 = nil; end;
+        if self.Conducao_Equipamentos ~= nil then self.Conducao_Equipamentos:destroy(); self.Conducao_Equipamentos = nil; end;
         if self.layout121 ~= nil then self.layout121:destroy(); self.layout121 = nil; end;
-        if self.button81 ~= nil then self.button81:destroy(); self.button81 = nil; end;
         if self.DescVanDes8 ~= nil then self.DescVanDes8:destroy(); self.DescVanDes8 = nil; end;
         if self.layout84 ~= nil then self.layout84:destroy(); self.layout84 = nil; end;
         if self.layout40 ~= nil then self.layout40:destroy(); self.layout40 = nil; end;
@@ -9656,7 +9442,6 @@ local function constructNew_frmDZ_Ficha1_svg()
         if self.edit70 ~= nil then self.edit70:destroy(); self.edit70 = nil; end;
         if self.label25 ~= nil then self.label25:destroy(); self.label25 = nil; end;
         if self.button46 ~= nil then self.button46:destroy(); self.button46 = nil; end;
-        if self.textEditor28 ~= nil then self.textEditor28:destroy(); self.textEditor28 = nil; end;
         if self.edit22 ~= nil then self.edit22:destroy(); self.edit22 = nil; end;
         if self.image23 ~= nil then self.image23:destroy(); self.image23 = nil; end;
         if self.image31 ~= nil then self.image31:destroy(); self.image31 = nil; end;
@@ -9667,6 +9452,7 @@ local function constructNew_frmDZ_Ficha1_svg()
         if self.rectangle13 ~= nil then self.rectangle13:destroy(); self.rectangle13 = nil; end;
         if self.textEditor18 ~= nil then self.textEditor18:destroy(); self.textEditor18 = nil; end;
         if self.button19 ~= nil then self.button19:destroy(); self.button19 = nil; end;
+        if self.Conducao2_Equipamentos ~= nil then self.Conducao2_Equipamentos:destroy(); self.Conducao2_Equipamentos = nil; end;
         if self.button14 ~= nil then self.button14:destroy(); self.button14 = nil; end;
         if self.edit136 ~= nil then self.edit136:destroy(); self.edit136 = nil; end;
         if self.layout86 ~= nil then self.layout86:destroy(); self.layout86 = nil; end;

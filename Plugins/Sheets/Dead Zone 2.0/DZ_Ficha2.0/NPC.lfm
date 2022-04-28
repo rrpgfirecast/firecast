@@ -24,7 +24,7 @@
         <dataScopeBox name="boxDetalhesDoItem" visible="false" align="right" width="900" margins="{left=4, right=4}">    
 			<rectangle width="900" height="600" color="Transparent" align="left" >
 					<image left="0" top="0" width="600" height="600" src="images/FichaNPC.png" style="proportional" optimize="true" align="left"/>
-					<image width="300" height="600" src="images/ImgSize_300x600.png" style="proportional" editable="true" showProgress="true" optimize="true" compilerOrder="1" align="left" field="NpcII" />
+					<image width="300" height="600" src="images/ImgSize_300x600.png" style="proportional" editable="true" showProgress="true" optimize="true" compilerOrder="1" align="right" field="NpcII" />
 					<edit transparent="true" class="NPC_R" fontSize="28" left="125" top="20" width="300" height="50" field="NPC_nick" horzTextAlign="leading" vertTextAlign="leading"/>
 					<edit transparent="true" class="NPC_R" fontSize="30" left="500" top="20" width="50" height="50" field="NPC_idade" horzTextAlign="leading" vertTextAlign="leading"/>
 					
@@ -67,16 +67,16 @@
 					<edit transparent="true" class="NPC_Rp" left="190" top="445" width="25" height="30" field="NPC_DEF3" vertTextAlign="leading"/>
 					
 					<layout left="40" top="350" width="200" height="75">
-						<textEditor fontFamily="kalam" width="200" height="75" fontSize="13" fontColor="#548DD4" field="NPC_DescATK" transparent="true" /></layout> 
+						<textEditor name="NPC_DescATK" fontFamily="kalam" width="200" height="75" fontSize="13" fontColor="#548DD4" field="NPC_DescATK" transparent="true" /></layout> 
 
 					<layout left="40" top="480" width="220" height="60">
-						<textEditor fontFamily="kalam" width="220" height="60" fontSize="13" fontColor="#548DD4" field="NPC_DescDEF" transparent="true" /></layout>
+						<textEditor name="NPC_DescDEF" fontFamily="kalam" width="220" height="60" fontSize="13" fontColor="#548DD4" field="NPC_DescDEF" transparent="true" /></layout>
 						
 					<layout left="315" top="159" width="230" height="150">
-						<textEditor fontFamily="kalam" width="230" height="150" fontSize="13" fontColor="#548DD4" field="NPC_Equip" transparent="true" /></layout> 
+						<textEditor name="NPC_Equip" fontFamily="kalam" width="230" height="150" fontSize="13" fontColor="#548DD4" field="NPC_Equip" transparent="true" /></layout> 
 
 					<layout left="275" top="355" width="250" height="1800">
-						<textEditor fontFamily="kalam" width="250" height="180" fontSize="13" fontColor="#548DD4" field="NPC_Circunstancia" transparent="true" /></layout> 
+						<textEditor	name="NPC_Circunstancia" fontFamily="kalam" width="250" height="180" fontSize="13" fontColor="#548DD4" field="NPC_Circunstancia" transparent="true" /></layout> 
 			</rectangle>
         </dataScopeBox>
 </form>

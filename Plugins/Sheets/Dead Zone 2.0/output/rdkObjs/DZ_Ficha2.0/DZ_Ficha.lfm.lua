@@ -619,16 +619,16 @@ local function constructNew_frmDZ_Ficha()
     obj.button7:setParent(obj.rectangle1);
     obj.button7:setLeft(274);
     obj.button7:setTop(505);
-    obj.button7:setWidth(14);
-    obj.button7:setHeight(14);
+    obj.button7:setWidth(16);
+    obj.button7:setHeight(16);
     obj.button7:setText("R");
     obj.button7:setHint("Desc...");
     obj.button7:setName("button7");
 
     obj.image8 = GUI.fromHandle(_obj_newObject("image"));
     obj.image8:setParent(obj.rectangle1);
-    obj.image8:setWidth(17);
-    obj.image8:setHeight(17);
+    obj.image8:setWidth(19);
+    obj.image8:setHeight(19);
     obj.image8:setLeft(272);
     obj.image8:setTop(505);
     obj.image8:setStyle("proportional");
@@ -663,16 +663,16 @@ local function constructNew_frmDZ_Ficha()
     obj.button8:setParent(obj.rectangle1);
     obj.button8:setLeft(274);
     obj.button8:setTop(541);
-    obj.button8:setWidth(14);
-    obj.button8:setHeight(14);
+    obj.button8:setWidth(16);
+    obj.button8:setHeight(16);
     obj.button8:setText("R");
     obj.button8:setHint("Desc...");
     obj.button8:setName("button8");
 
     obj.image9 = GUI.fromHandle(_obj_newObject("image"));
     obj.image9:setParent(obj.rectangle1);
-    obj.image9:setWidth(17);
-    obj.image9:setHeight(17);
+    obj.image9:setWidth(19);
+    obj.image9:setHeight(19);
     obj.image9:setLeft(272);
     obj.image9:setTop(541);
     obj.image9:setStyle("proportional");
@@ -6023,16 +6023,16 @@ local function constructNew_frmDZ_Ficha()
     obj.layout133:setHeight(160);
     obj.layout133:setName("layout133");
 
-    obj.textEditor21 = GUI.fromHandle(_obj_newObject("textEditor"));
-    obj.textEditor21:setParent(obj.layout133);
-    obj.textEditor21:setFontFamily("kalam");
-    obj.textEditor21:setWidth(230);
-    obj.textEditor21:setHeight(160);
-    obj.textEditor21:setFontSize(15);
-    obj.textEditor21:setFontColor("#548DD4");
-    obj.textEditor21:setField("Conducao_Equipamentos");
-    obj.textEditor21:setTransparent(true);
-    obj.textEditor21:setName("textEditor21");
+    obj.Conducao_Equipamentos = GUI.fromHandle(_obj_newObject("textEditor"));
+    obj.Conducao_Equipamentos:setParent(obj.layout133);
+    obj.Conducao_Equipamentos:setName("Conducao_Equipamentos");
+    obj.Conducao_Equipamentos:setFontFamily("kalam");
+    obj.Conducao_Equipamentos:setWidth(230);
+    obj.Conducao_Equipamentos:setHeight(160);
+    obj.Conducao_Equipamentos:setFontSize(15);
+    obj.Conducao_Equipamentos:setFontColor("#548DD4");
+    obj.Conducao_Equipamentos:setField("Conducao_Equipamentos");
+    obj.Conducao_Equipamentos:setTransparent(true);
 
     obj.label62 = GUI.fromHandle(_obj_newObject("label"));
     obj.label62:setParent(obj.layout132);
@@ -6059,16 +6059,16 @@ local function constructNew_frmDZ_Ficha()
     obj.layout134:setHeight(78);
     obj.layout134:setName("layout134");
 
-    obj.textEditor22 = GUI.fromHandle(_obj_newObject("textEditor"));
-    obj.textEditor22:setParent(obj.layout134);
-    obj.textEditor22:setFontFamily("kalam");
-    obj.textEditor22:setWidth(200);
-    obj.textEditor22:setHeight(80);
-    obj.textEditor22:setFontSize(15);
-    obj.textEditor22:setFontColor("#548DD4");
-    obj.textEditor22:setField("Conducao_Circunstancia");
-    obj.textEditor22:setTransparent(true);
-    obj.textEditor22:setName("textEditor22");
+    obj.Conducao_Circunstancia = GUI.fromHandle(_obj_newObject("textEditor"));
+    obj.Conducao_Circunstancia:setParent(obj.layout134);
+    obj.Conducao_Circunstancia:setName("Conducao_Circunstancia");
+    obj.Conducao_Circunstancia:setFontFamily("kalam");
+    obj.Conducao_Circunstancia:setWidth(200);
+    obj.Conducao_Circunstancia:setHeight(80);
+    obj.Conducao_Circunstancia:setFontSize(15);
+    obj.Conducao_Circunstancia:setFontColor("#548DD4");
+    obj.Conducao_Circunstancia:setField("Conducao_Circunstancia");
+    obj.Conducao_Circunstancia:setTransparent(true);
 
     obj.image58 = GUI.fromHandle(_obj_newObject("image"));
     obj.image58:setParent(obj.layout132);
@@ -6431,16 +6431,16 @@ local function constructNew_frmDZ_Ficha()
     obj.layout136:setHeight(160);
     obj.layout136:setName("layout136");
 
-    obj.textEditor23 = GUI.fromHandle(_obj_newObject("textEditor"));
-    obj.textEditor23:setParent(obj.layout136);
-    obj.textEditor23:setFontFamily("kalam");
-    obj.textEditor23:setWidth(230);
-    obj.textEditor23:setHeight(160);
-    obj.textEditor23:setFontSize(15);
-    obj.textEditor23:setFontColor("#548DD4");
-    obj.textEditor23:setField("Conducao2_Equipamentos");
-    obj.textEditor23:setTransparent(true);
-    obj.textEditor23:setName("textEditor23");
+    obj.Conducao2_Equipamentos = GUI.fromHandle(_obj_newObject("textEditor"));
+    obj.Conducao2_Equipamentos:setParent(obj.layout136);
+    obj.Conducao2_Equipamentos:setName("Conducao2_Equipamentos");
+    obj.Conducao2_Equipamentos:setFontFamily("kalam");
+    obj.Conducao2_Equipamentos:setWidth(230);
+    obj.Conducao2_Equipamentos:setHeight(160);
+    obj.Conducao2_Equipamentos:setFontSize(15);
+    obj.Conducao2_Equipamentos:setFontColor("#548DD4");
+    obj.Conducao2_Equipamentos:setField("Conducao2_Equipamentos");
+    obj.Conducao2_Equipamentos:setTransparent(true);
 
     obj.label73 = GUI.fromHandle(_obj_newObject("label"));
     obj.label73:setParent(obj.layout135);
@@ -6467,16 +6467,16 @@ local function constructNew_frmDZ_Ficha()
     obj.layout137:setHeight(78);
     obj.layout137:setName("layout137");
 
-    obj.textEditor24 = GUI.fromHandle(_obj_newObject("textEditor"));
-    obj.textEditor24:setParent(obj.layout137);
-    obj.textEditor24:setFontFamily("kalam");
-    obj.textEditor24:setWidth(200);
-    obj.textEditor24:setHeight(80);
-    obj.textEditor24:setFontSize(15);
-    obj.textEditor24:setFontColor("#548DD4");
-    obj.textEditor24:setField("Conducao2_Circunstancia");
-    obj.textEditor24:setTransparent(true);
-    obj.textEditor24:setName("textEditor24");
+    obj.Conducao2_Circunstancia = GUI.fromHandle(_obj_newObject("textEditor"));
+    obj.Conducao2_Circunstancia:setParent(obj.layout137);
+    obj.Conducao2_Circunstancia:setName("Conducao2_Circunstancia");
+    obj.Conducao2_Circunstancia:setFontFamily("kalam");
+    obj.Conducao2_Circunstancia:setWidth(200);
+    obj.Conducao2_Circunstancia:setHeight(80);
+    obj.Conducao2_Circunstancia:setFontSize(15);
+    obj.Conducao2_Circunstancia:setFontColor("#548DD4");
+    obj.Conducao2_Circunstancia:setField("Conducao2_Circunstancia");
+    obj.Conducao2_Circunstancia:setTransparent(true);
 
     obj.image60 = GUI.fromHandle(_obj_newObject("image"));
     obj.image60:setParent(obj.layout135);
@@ -7464,7 +7464,7 @@ local function constructNew_frmDZ_Ficha()
     obj.image67:setEditable(true);
     obj.image67:setShowProgress(true);
     obj.image67:setOptimize(true);
-    obj.image67:setAlign("left");
+    obj.image67:setAlign("right");
     obj.image67:setField("NpcII");
     obj.image67:setName("image67");
 
@@ -7986,16 +7986,16 @@ local function constructNew_frmDZ_Ficha()
     obj.layout141:setHeight(75);
     obj.layout141:setName("layout141");
 
-    obj.textEditor25 = GUI.fromHandle(_obj_newObject("textEditor"));
-    obj.textEditor25:setParent(obj.layout141);
-    obj.textEditor25:setFontFamily("kalam");
-    obj.textEditor25:setWidth(200);
-    obj.textEditor25:setHeight(75);
-    obj.textEditor25:setFontSize(13);
-    obj.textEditor25:setFontColor("#548DD4");
-    obj.textEditor25:setField("NPC_DescATK");
-    obj.textEditor25:setTransparent(true);
-    obj.textEditor25:setName("textEditor25");
+    obj.NPC_DescATK = GUI.fromHandle(_obj_newObject("textEditor"));
+    obj.NPC_DescATK:setParent(obj.layout141);
+    obj.NPC_DescATK:setName("NPC_DescATK");
+    obj.NPC_DescATK:setFontFamily("kalam");
+    obj.NPC_DescATK:setWidth(200);
+    obj.NPC_DescATK:setHeight(75);
+    obj.NPC_DescATK:setFontSize(13);
+    obj.NPC_DescATK:setFontColor("#548DD4");
+    obj.NPC_DescATK:setField("NPC_DescATK");
+    obj.NPC_DescATK:setTransparent(true);
 
     obj.layout142 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout142:setParent(obj.rectangle16);
@@ -8005,16 +8005,16 @@ local function constructNew_frmDZ_Ficha()
     obj.layout142:setHeight(60);
     obj.layout142:setName("layout142");
 
-    obj.textEditor26 = GUI.fromHandle(_obj_newObject("textEditor"));
-    obj.textEditor26:setParent(obj.layout142);
-    obj.textEditor26:setFontFamily("kalam");
-    obj.textEditor26:setWidth(220);
-    obj.textEditor26:setHeight(60);
-    obj.textEditor26:setFontSize(13);
-    obj.textEditor26:setFontColor("#548DD4");
-    obj.textEditor26:setField("NPC_DescDEF");
-    obj.textEditor26:setTransparent(true);
-    obj.textEditor26:setName("textEditor26");
+    obj.NPC_DescDEF = GUI.fromHandle(_obj_newObject("textEditor"));
+    obj.NPC_DescDEF:setParent(obj.layout142);
+    obj.NPC_DescDEF:setName("NPC_DescDEF");
+    obj.NPC_DescDEF:setFontFamily("kalam");
+    obj.NPC_DescDEF:setWidth(220);
+    obj.NPC_DescDEF:setHeight(60);
+    obj.NPC_DescDEF:setFontSize(13);
+    obj.NPC_DescDEF:setFontColor("#548DD4");
+    obj.NPC_DescDEF:setField("NPC_DescDEF");
+    obj.NPC_DescDEF:setTransparent(true);
 
     obj.layout143 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout143:setParent(obj.rectangle16);
@@ -8024,16 +8024,16 @@ local function constructNew_frmDZ_Ficha()
     obj.layout143:setHeight(150);
     obj.layout143:setName("layout143");
 
-    obj.textEditor27 = GUI.fromHandle(_obj_newObject("textEditor"));
-    obj.textEditor27:setParent(obj.layout143);
-    obj.textEditor27:setFontFamily("kalam");
-    obj.textEditor27:setWidth(230);
-    obj.textEditor27:setHeight(150);
-    obj.textEditor27:setFontSize(13);
-    obj.textEditor27:setFontColor("#548DD4");
-    obj.textEditor27:setField("NPC_Equip");
-    obj.textEditor27:setTransparent(true);
-    obj.textEditor27:setName("textEditor27");
+    obj.NPC_Equip = GUI.fromHandle(_obj_newObject("textEditor"));
+    obj.NPC_Equip:setParent(obj.layout143);
+    obj.NPC_Equip:setName("NPC_Equip");
+    obj.NPC_Equip:setFontFamily("kalam");
+    obj.NPC_Equip:setWidth(230);
+    obj.NPC_Equip:setHeight(150);
+    obj.NPC_Equip:setFontSize(13);
+    obj.NPC_Equip:setFontColor("#548DD4");
+    obj.NPC_Equip:setField("NPC_Equip");
+    obj.NPC_Equip:setTransparent(true);
 
     obj.layout144 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout144:setParent(obj.rectangle16);
@@ -8043,259 +8043,211 @@ local function constructNew_frmDZ_Ficha()
     obj.layout144:setHeight(1800);
     obj.layout144:setName("layout144");
 
-    obj.textEditor28 = GUI.fromHandle(_obj_newObject("textEditor"));
-    obj.textEditor28:setParent(obj.layout144);
-    obj.textEditor28:setFontFamily("kalam");
-    obj.textEditor28:setWidth(250);
-    obj.textEditor28:setHeight(180);
-    obj.textEditor28:setFontSize(13);
-    obj.textEditor28:setFontColor("#548DD4");
-    obj.textEditor28:setField("NPC_Circunstancia");
-    obj.textEditor28:setTransparent(true);
-    obj.textEditor28:setName("textEditor28");
+    obj.NPC_Circunstancia = GUI.fromHandle(_obj_newObject("textEditor"));
+    obj.NPC_Circunstancia:setParent(obj.layout144);
+    obj.NPC_Circunstancia:setName("NPC_Circunstancia");
+    obj.NPC_Circunstancia:setFontFamily("kalam");
+    obj.NPC_Circunstancia:setWidth(250);
+    obj.NPC_Circunstancia:setHeight(180);
+    obj.NPC_Circunstancia:setFontSize(13);
+    obj.NPC_Circunstancia:setFontColor("#548DD4");
+    obj.NPC_Circunstancia:setField("NPC_Circunstancia");
+    obj.NPC_Circunstancia:setTransparent(true);
 
-    obj.label76 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label76:setParent(obj.rectangle1);
-    obj.label76:setText("Anotação");
-    obj.label76:setWidth(50);
-    obj.label76:setHeight(30);
-    obj.label76:setTop(700);
-    obj.label76:setLeft(1222);
-    obj.label76:setFontSize(15);
-    obj.label76:setName("label76");
-    obj.label76:setFontColor("#000000");
-    obj.label76:setHorzTextAlign("center");
-    obj.label76:setVertTextAlign("center");
-    obj.label76:setFontFamily("kalam");
-    obj.label76:setTextTrimming("none");
-    obj.label76:setWordWrap(false);
-    obj.label76:setAutoSize(true);
+    obj.tab2 = GUI.fromHandle(_obj_newObject("tab"));
+    obj.tab2:setParent(obj.tabControl1);
+    obj.tab2:setTitle("Anotação");
+    obj.tab2:setName("tab2");
 
-    obj.button80 = GUI.fromHandle(_obj_newObject("button"));
-    obj.button80:setParent(obj.rectangle1);
-    obj.button80:setWidth(100);
-    obj.button80:setHeight(100);
-    obj.button80:setLeft(1200);
-    obj.button80:setTop(720);
-    obj.button80:setName("button80");
-
-    obj.image69 = GUI.fromHandle(_obj_newObject("image"));
-    obj.image69:setParent(obj.rectangle1);
-    obj.image69:setWidth(100);
-    obj.image69:setHeight(100);
-    obj.image69:setLeft(1200);
-    obj.image69:setTop(720);
-    obj.image69:setStyle("proportional");
-    obj.image69:setCenter(true);
-    obj.image69:setSRC("/DZ_Ficha2.0/images/Note.png");
-    obj.image69:setName("image69");
-
-    obj.PopAnotacao = GUI.fromHandle(_obj_newObject("popup"));
-    obj.PopAnotacao:setParent(obj.rectangle1);
-    obj.PopAnotacao:setName("PopAnotacao");
-    obj.PopAnotacao:setWidth(1350);
-    obj.PopAnotacao:setHeight(600);
-    obj.PopAnotacao:setBackOpacity(0.5);
+    obj.frmAnotacao = GUI.fromHandle(_obj_newObject("form"));
+    obj.frmAnotacao:setParent(obj.tab2);
+    obj.frmAnotacao:setName("frmAnotacao");
+    obj.frmAnotacao:setAlign("client");
+    obj.frmAnotacao:setMargins({top=1});
+    obj.frmAnotacao:setTheme("light");
 
     obj.scrollBox7 = GUI.fromHandle(_obj_newObject("scrollBox"));
-    obj.scrollBox7:setParent(obj.PopAnotacao);
+    obj.scrollBox7:setParent(obj.frmAnotacao);
     obj.scrollBox7:setAlign("client");
     obj.scrollBox7:setName("scrollBox7");
 
-    obj.frmAnotacao = GUI.fromHandle(_obj_newObject("form"));
-    obj.frmAnotacao:setParent(obj.scrollBox7);
-    obj.frmAnotacao:setName("frmAnotacao");
-    obj.frmAnotacao:setWidth(1300);
-    obj.frmAnotacao:setHeight(600);
-    obj.frmAnotacao:setTheme("dark");
-
     obj.rectangle17 = GUI.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle17:setParent(obj.frmAnotacao);
+    obj.rectangle17:setParent(obj.scrollBox7);
     obj.rectangle17:setWidth(1340);
-    obj.rectangle17:setHeight(600);
+    obj.rectangle17:setHeight(1500);
     obj.rectangle17:setColor("white");
     obj.rectangle17:setName("rectangle17");
 
-    obj.label77 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label77:setParent(obj.rectangle17);
-    obj.label77:setText("LISTA");
-    obj.label77:setLeft(950);
-    obj.label77:setWidth(220);
-    obj.label77:setHorzTextAlign("center");
-    obj.label77:setFontSize(30);
-    obj.label77:setName("label77");
-    obj.label77:setFontColor("black");
-    obj.label77:setTextTrimming("none");
-    obj.label77:setWordWrap(false);
-    obj.label77:setAutoSize(true);
-    obj.label77:setFontFamily("kalam");
-
     obj.rectangle18 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle18:setParent(obj.rectangle17);
-    obj.rectangle18:setLeft(900);
-    obj.rectangle18:setTop(35);
-    obj.rectangle18:setWidth(220);
-    obj.rectangle18:setHeight(400);
-    obj.rectangle18:setCornerType("round");
-    obj.rectangle18:setStrokeColor("black");
+    obj.rectangle18:setLeft(250);
+    obj.rectangle18:setTop(10);
+    obj.rectangle18:setWidth(800);
+    obj.rectangle18:setHeight(650);
     obj.rectangle18:setColor("white");
-    obj.rectangle18:setStrokeSize(2);
-    obj.rectangle18:setXradius(5);
-    obj.rectangle18:setYradius(5);
     obj.rectangle18:setName("rectangle18");
 
-    obj.scrollBox8 = GUI.fromHandle(_obj_newObject("scrollBox"));
-    obj.scrollBox8:setParent(obj.rectangle18);
-    obj.scrollBox8:setAlign("client");
-    obj.scrollBox8:setName("scrollBox8");
+    obj.label76 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label76:setParent(obj.rectangle18);
+    obj.label76:setText("DIÁRIO");
+    obj.label76:setHeight(30);
+    obj.label76:setWidth(770);
+    obj.label76:setHorzTextAlign("center");
+    obj.label76:setFontFamily("DK Umbilical Noose");
+    obj.label76:setFontColor("black");
+    obj.label76:setFontSize(30);
+    obj.label76:setName("label76");
 
-    obj.button81 = GUI.fromHandle(_obj_newObject("button"));
-    obj.button81:setParent(obj.scrollBox8);
-    obj.button81:setLeft(5);
-    obj.button81:setTop(1);
-    obj.button81:setWidth(15);
-    obj.button81:setHeight(15);
-    obj.button81:setText("+");
-    obj.button81:setFontFamily("kalam");
-    obj.button81:setName("button81");
+    obj.layout145 = GUI.fromHandle(_obj_newObject("layout"));
+    obj.layout145:setParent(obj.rectangle18);
+    obj.layout145:setLeft(5);
+    obj.layout145:setTop(30);
+    obj.layout145:setWidth(800);
+    obj.layout145:setHeight(580);
+    obj.layout145:setName("layout145");
 
-    obj.rclAnotacao1 = GUI.fromHandle(_obj_newObject("recordList"));
-    obj.rclAnotacao1:setParent(obj.scrollBox8);
-    obj.rclAnotacao1:setName("rclAnotacao1");
-    obj.rclAnotacao1:setField("Anotacaobloco02");
-    obj.rclAnotacao1:setTemplateForm("frmAnotacao1");
-    obj.rclAnotacao1:setLeft(1);
-    obj.rclAnotacao1:setTop(20);
-    obj.rclAnotacao1:setWidth(200);
-    obj.rclAnotacao1:setAutoHeight(true);
+    obj.image69 = GUI.fromHandle(_obj_newObject("image"));
+    obj.image69:setParent(obj.layout145);
+    obj.image69:setLeft(0);
+    obj.image69:setTop(0);
+    obj.image69:setWidth(770);
+    obj.image69:setHeight(550);
+    obj.image69:setSRC("/DZ_Ficha2.0/images/diario2.png");
+    obj.image69:setStyle("proportional");
+    obj.image69:setOptimize(true);
+    obj.image69:setAlign("left");
+    obj.image69:setName("image69");
 
-    obj.label78 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label78:setParent(obj.rectangle17);
-    obj.label78:setText("DIÁRIO");
-    obj.label78:setLeft(325);
-    obj.label78:setWidth(400);
-    obj.label78:setHorzTextAlign("center");
-    obj.label78:setFontSize(30);
-    obj.label78:setName("label78");
-    obj.label78:setFontColor("black");
-    obj.label78:setTextTrimming("none");
-    obj.label78:setWordWrap(false);
-    obj.label78:setAutoSize(true);
-    obj.label78:setFontFamily("kalam");
+    obj.textEditor21 = GUI.fromHandle(_obj_newObject("textEditor"));
+    obj.textEditor21:setParent(obj.layout145);
+    obj.textEditor21:setFontFamily("kalam");
+    obj.textEditor21:setWidth(320);
+    obj.textEditor21:setHeight(500);
+    obj.textEditor21:setLeft(50);
+    obj.textEditor21:setTop(20);
+    obj.textEditor21:setFontSize(15);
+    obj.textEditor21:setFontColor("black");
+    obj.textEditor21:setField("Anotacao1bloco02");
+    obj.textEditor21:setTransparent(true);
+    obj.textEditor21:setName("textEditor21");
+
+    obj.textEditor22 = GUI.fromHandle(_obj_newObject("textEditor"));
+    obj.textEditor22:setParent(obj.layout145);
+    obj.textEditor22:setFontFamily("kalam");
+    obj.textEditor22:setWidth(320);
+    obj.textEditor22:setHeight(500);
+    obj.textEditor22:setLeft(390);
+    obj.textEditor22:setTop(20);
+    obj.textEditor22:setFontSize(15);
+    obj.textEditor22:setFontColor("black");
+    obj.textEditor22:setField("Anotacao1bloco01");
+    obj.textEditor22:setTransparent(true);
+    obj.textEditor22:setName("textEditor22");
 
     obj.rectangle19 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle19:setParent(obj.rectangle17);
     obj.rectangle19:setLeft(1);
-    obj.rectangle19:setTop(35);
-    obj.rectangle19:setWidth(770);
-    obj.rectangle19:setHeight(550);
+    obj.rectangle19:setTop(680);
+    obj.rectangle19:setWidth(1340);
+    obj.rectangle19:setHeight(800);
+    obj.rectangle19:setCornerType("round");
+    obj.rectangle19:setStrokeColor("black");
     obj.rectangle19:setColor("white");
+    obj.rectangle19:setStrokeSize(2);
+    obj.rectangle19:setXradius(5);
+    obj.rectangle19:setYradius(5);
     obj.rectangle19:setName("rectangle19");
 
-    obj.layout145 = GUI.fromHandle(_obj_newObject("layout"));
-    obj.layout145:setParent(obj.rectangle19);
-    obj.layout145:setLeft(5);
-    obj.layout145:setTop(5);
-    obj.layout145:setWidth(770);
-    obj.layout145:setHeight(550);
-    obj.layout145:setName("layout145");
+    obj.label77 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label77:setParent(obj.rectangle19);
+    obj.label77:setText("LISTA");
+    obj.label77:setHeight(30);
+    obj.label77:setWidth(1340);
+    obj.label77:setHorzTextAlign("center");
+    obj.label77:setFontFamily("DK Umbilical Noose");
+    obj.label77:setFontColor("black");
+    obj.label77:setFontSize(30);
+    obj.label77:setName("label77");
 
-    obj.image70 = GUI.fromHandle(_obj_newObject("image"));
-    obj.image70:setParent(obj.layout145);
-    obj.image70:setLeft(0);
-    obj.image70:setTop(0);
-    obj.image70:setWidth(770);
-    obj.image70:setHeight(550);
-    obj.image70:setSRC("/DZ_Ficha2.0/images/diario2.png");
-    obj.image70:setStyle("proportional");
-    obj.image70:setOptimize(true);
-    obj.image70:setAlign("left");
-    obj.image70:setName("image70");
+    obj.button80 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button80:setParent(obj.rectangle19);
+    obj.button80:setLeft(2);
+    obj.button80:setTop(2);
+    obj.button80:setHeight(25);
+    obj.button80:setText("Nova");
+    obj.button80:setWidth(80);
+    obj.button80:setFontFamily("kalam");
+    obj.button80:setHint("Adicionar nova linha de anotação.");
+    obj.button80:setName("button80");
 
-    obj.textEditor29 = GUI.fromHandle(_obj_newObject("textEditor"));
-    obj.textEditor29:setParent(obj.layout145);
-    obj.textEditor29:setFontFamily("kalam");
-    obj.textEditor29:setWidth(320);
-    obj.textEditor29:setHeight(500);
-    obj.textEditor29:setLeft(50);
-    obj.textEditor29:setTop(20);
-    obj.textEditor29:setFontSize(15);
-    obj.textEditor29:setFontColor("black");
-    obj.textEditor29:setField("Anotacao1bloco02");
-    obj.textEditor29:setTransparent(true);
-    obj.textEditor29:setName("textEditor29");
+    obj.rclNote = GUI.fromHandle(_obj_newObject("recordList"));
+    obj.rclNote:setParent(obj.rectangle19);
+    obj.rclNote:setName("rclNote");
+    obj.rclNote:setField("NoteL");
+    obj.rclNote:setTemplateForm("frmListaNote");
+    obj.rclNote:setLeft(1);
+    obj.rclNote:setTop(100);
+    obj.rclNote:setWidth(400);
+    obj.rclNote:setAutoHeight(true);
 
-    obj.textEditor30 = GUI.fromHandle(_obj_newObject("textEditor"));
-    obj.textEditor30:setParent(obj.layout145);
-    obj.textEditor30:setFontFamily("kalam");
-    obj.textEditor30:setWidth(320);
-    obj.textEditor30:setHeight(500);
-    obj.textEditor30:setLeft(390);
-    obj.textEditor30:setTop(20);
-    obj.textEditor30:setFontSize(15);
-    obj.textEditor30:setFontColor("black");
-    obj.textEditor30:setField("Anotacao1bloco03");
-    obj.textEditor30:setTransparent(true);
-    obj.textEditor30:setName("textEditor30");
-
-    obj.tab2 = GUI.fromHandle(_obj_newObject("tab"));
-    obj.tab2:setParent(obj.tabControl1);
-    obj.tab2:setTitle("Historia");
-    obj.tab2:setName("tab2");
+    obj.tab3 = GUI.fromHandle(_obj_newObject("tab"));
+    obj.tab3:setParent(obj.tabControl1);
+    obj.tab3:setTitle("Historia");
+    obj.tab3:setName("tab3");
 
     obj.frmDZ_Ficha3_svg = GUI.fromHandle(_obj_newObject("form"));
-    obj.frmDZ_Ficha3_svg:setParent(obj.tab2);
+    obj.frmDZ_Ficha3_svg:setParent(obj.tab3);
     obj.frmDZ_Ficha3_svg:setName("frmDZ_Ficha3_svg");
     obj.frmDZ_Ficha3_svg:setAlign("client");
     obj.frmDZ_Ficha3_svg:setTheme("light");
     obj.frmDZ_Ficha3_svg:setMargins({top=1});
 
-    obj.scrollBox9 = GUI.fromHandle(_obj_newObject("scrollBox"));
-    obj.scrollBox9:setParent(obj.frmDZ_Ficha3_svg);
-    obj.scrollBox9:setAlign("client");
-    obj.scrollBox9:setName("scrollBox9");
+    obj.scrollBox8 = GUI.fromHandle(_obj_newObject("scrollBox"));
+    obj.scrollBox8:setParent(obj.frmDZ_Ficha3_svg);
+    obj.scrollBox8:setAlign("client");
+    obj.scrollBox8:setName("scrollBox8");
 
     obj.rectangle20 = GUI.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle20:setParent(obj.scrollBox9);
+    obj.rectangle20:setParent(obj.scrollBox8);
     obj.rectangle20:setWidth(1340);
-    obj.rectangle20:setHeight(600);
+    obj.rectangle20:setHeight(1188);
     obj.rectangle20:setColor("white");
     obj.rectangle20:setName("rectangle20");
 
-    obj.label79 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label79:setParent(obj.rectangle20);
-    obj.label79:setFontSize(60);
-    obj.label79:setFontColor("#000000");
-    obj.label79:setHorzTextAlign("center");
-    obj.label79:setVertTextAlign("center");
-    obj.label79:setLeft(500);
-    obj.label79:setTop(1);
-    obj.label79:setWidth(600);
-    obj.label79:setHeight(100);
-    obj.label79:setText("HISTORIA");
-    obj.label79:setFontFamily("DK Umbilical Noose");
-    obj.label79:setName("label79");
+    obj.label78 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label78:setParent(obj.rectangle20);
+    obj.label78:setFontSize(60);
+    obj.label78:setFontColor("#000000");
+    obj.label78:setHorzTextAlign("center");
+    obj.label78:setVertTextAlign("center");
+    obj.label78:setLeft(500);
+    obj.label78:setTop(1);
+    obj.label78:setWidth(600);
+    obj.label78:setHeight(100);
+    obj.label78:setText("HISTORIA");
+    obj.label78:setFontFamily("DK Umbilical Noose");
+    obj.label78:setName("label78");
 
-    obj.image71 = GUI.fromHandle(_obj_newObject("image"));
-    obj.image71:setParent(obj.rectangle20);
-    obj.image71:setLeft(1);
-    obj.image71:setTop(100);
-    obj.image71:setWidth(300);
-    obj.image71:setHeight(500);
-    obj.image71:setStyle("proportional");
-    obj.image71:setCenter(true);
-    obj.image71:setEditable(true);
-    obj.image71:setShowProgress(true);
-    obj.image71:setField("PlayerII");
-    obj.image71:setSRC("ImgSize_300x500");
-    obj.image71:setName("image71");
+    obj.image70 = GUI.fromHandle(_obj_newObject("image"));
+    obj.image70:setParent(obj.rectangle20);
+    obj.image70:setLeft(1);
+    obj.image70:setTop(100);
+    obj.image70:setWidth(300);
+    obj.image70:setHeight(500);
+    obj.image70:setStyle("proportional");
+    obj.image70:setCenter(true);
+    obj.image70:setEditable(true);
+    obj.image70:setShowProgress(true);
+    obj.image70:setField("PlayerII");
+    obj.image70:setSRC("ImgSize_300x500");
+    obj.image70:setName("image70");
 
     obj.layout146 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout146:setParent(obj.rectangle20);
     obj.layout146:setLeft(313);
     obj.layout146:setTop(100);
     obj.layout146:setWidth(1000);
-    obj.layout146:setHeight(500);
+    obj.layout146:setHeight(1188);
     obj.layout146:setName("layout146");
 
     obj.richEdit1 = GUI.fromHandle(_obj_newObject("richEdit"));
@@ -8307,47 +8259,85 @@ local function constructNew_frmDZ_Ficha()
     lfm_setPropAsString(obj.richEdit1, "hideSelection",  "false");
     obj.richEdit1:setName("richEdit1");
 
-    obj.tab3 = GUI.fromHandle(_obj_newObject("tab"));
-    obj.tab3:setParent(obj.tabControl1);
-    obj.tab3:setTitle("Creditos");
-    obj.tab3:setName("tab3");
+    obj.tab4 = GUI.fromHandle(_obj_newObject("tab"));
+    obj.tab4:setParent(obj.tabControl1);
+    obj.tab4:setTitle("Creditos");
+    obj.tab4:setName("tab4");
 
-    obj.frmFichaCreditos_svg = GUI.fromHandle(_obj_newObject("form"));
-    obj.frmFichaCreditos_svg:setParent(obj.tab3);
-    obj.frmFichaCreditos_svg:setName("frmFichaCreditos_svg");
-    obj.frmFichaCreditos_svg:setAlign("client");
-    obj.frmFichaCreditos_svg:setTheme("dark");
-    obj.frmFichaCreditos_svg:setMargins({top=1});
+    obj.frmFichaCreditos = GUI.fromHandle(_obj_newObject("form"));
+    obj.frmFichaCreditos:setParent(obj.tab4);
+    obj.frmFichaCreditos:setName("frmFichaCreditos");
+    obj.frmFichaCreditos:setAlign("client");
 
-    obj.scrollBox10 = GUI.fromHandle(_obj_newObject("scrollBox"));
-    obj.scrollBox10:setParent(obj.frmFichaCreditos_svg);
-    obj.scrollBox10:setAlign("client");
-    obj.scrollBox10:setName("scrollBox10");
+    obj.scrollBox9 = GUI.fromHandle(_obj_newObject("scrollBox"));
+    obj.scrollBox9:setParent(obj.frmFichaCreditos);
+    obj.scrollBox9:setAlign("client");
+    obj.scrollBox9:setName("scrollBox9");
+
+    obj.image71 = GUI.fromHandle(_obj_newObject("image"));
+    obj.image71:setParent(obj.scrollBox9);
+    obj.image71:setLeft(0);
+    obj.image71:setTop(0);
+    obj.image71:setWidth(500);
+    obj.image71:setHeight(500);
+    obj.image71:setStyle("autoFit");
+    obj.image71:setSRC("logo_mesa");
+    obj.image71:setName("image71");
+
+    obj.image72 = GUI.fromHandle(_obj_newObject("image"));
+    obj.image72:setParent(obj.scrollBox9);
+    obj.image72:setLeft(480);
+    obj.image72:setTop(0);
+    obj.image72:setWidth(350);
+    obj.image72:setHeight(125);
+    obj.image72:setStyle("autoFit");
+    obj.image72:setSRC("https://i.imgur.com/HNK29eO.png?1");
+    obj.image72:setName("image72");
+
+    obj.image73 = GUI.fromHandle(_obj_newObject("image"));
+    obj.image73:setParent(obj.scrollBox9);
+    obj.image73:setLeft(500);
+    obj.image73:setTop(125);
+    obj.image73:setWidth(350);
+    obj.image73:setHeight(125);
+    obj.image73:setStyle("autoFit");
+    obj.image73:setSRC("https://i.imgur.com/Xp12RUs.png");
+    obj.image73:setName("image73");
 
     obj.layout147 = GUI.fromHandle(_obj_newObject("layout"));
-    obj.layout147:setParent(obj.scrollBox10);
-    obj.layout147:setLeft(620);
-    obj.layout147:setTop(10);
-    obj.layout147:setWidth(500);
-    obj.layout147:setHeight(500);
+    obj.layout147:setParent(obj.scrollBox9);
+    obj.layout147:setLeft(560);
+    obj.layout147:setTop(290);
+    obj.layout147:setWidth(200);
+    obj.layout147:setHeight(160);
     obj.layout147:setName("layout147");
 
     obj.rectangle21 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle21:setParent(obj.layout147);
     obj.rectangle21:setAlign("client");
     obj.rectangle21:setColor("black");
-    obj.rectangle21:setXradius(15);
+    obj.rectangle21:setXradius(5);
     obj.rectangle21:setYradius(15);
     obj.rectangle21:setCornerType("round");
     obj.rectangle21:setName("rectangle21");
 
+    obj.label79 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label79:setParent(obj.layout147);
+    obj.label79:setLeft(0);
+    obj.label79:setTop(10);
+    obj.label79:setWidth(200);
+    obj.label79:setHeight(20);
+    obj.label79:setText("Ficha criada por ");
+    obj.label79:setHorzTextAlign("center");
+    obj.label79:setName("label79");
+
     obj.label80 = GUI.fromHandle(_obj_newObject("label"));
     obj.label80:setParent(obj.layout147);
     obj.label80:setLeft(0);
-    obj.label80:setTop(10);
-    obj.label80:setWidth(500);
+    obj.label80:setTop(35);
+    obj.label80:setWidth(200);
     obj.label80:setHeight(20);
-    obj.label80:setText("Programador: Samelfero 'Marcio'");
+    obj.label80:setText("Marcio F. (Samelfero)");
     obj.label80:setHorzTextAlign("center");
     obj.label80:setName("label80");
 
@@ -8355,21 +8345,57 @@ local function constructNew_frmDZ_Ficha()
     obj.label81:setParent(obj.layout147);
     obj.label81:setLeft(0);
     obj.label81:setTop(60);
-    obj.label81:setWidth(500);
+    obj.label81:setWidth(200);
     obj.label81:setHeight(20);
-    obj.label81:setText("Autor: allan_fns 'Allan'");
+    obj.label81:setText("para o sistema Dead de Zone");
     obj.label81:setHorzTextAlign("center");
     obj.label81:setName("label81");
 
     obj.label82 = GUI.fromHandle(_obj_newObject("label"));
     obj.label82:setParent(obj.layout147);
     obj.label82:setLeft(0);
-    obj.label82:setTop(110);
-    obj.label82:setWidth(500);
+    obj.label82:setTop(85);
+    obj.label82:setWidth(200);
     obj.label82:setHeight(20);
-    obj.label82:setText("Ficha criada para sistema Dead Zone.'");
+    obj.label82:setText("escrito por");
     obj.label82:setHorzTextAlign("center");
     obj.label82:setName("label82");
+
+    obj.label83 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label83:setParent(obj.layout147);
+    obj.label83:setLeft(0);
+    obj.label83:setTop(105);
+    obj.label83:setWidth(200);
+    obj.label83:setHeight(20);
+    obj.label83:setText("Allan (allan_fns)");
+    obj.label83:setHorzTextAlign("center");
+    obj.label83:setName("label83");
+
+    obj.label84 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label84:setParent(obj.scrollBox9);
+    obj.label84:setLeft(560);
+    obj.label84:setTop(480);
+    obj.label84:setWidth(210);
+    obj.label84:setHeight(20);
+    obj.label84:setText("Sua Versão: 2.1");
+    obj.label84:setHorzTextAlign("center");
+    obj.label84:setName("label84");
+
+    obj.button81 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button81:setParent(obj.scrollBox9);
+    obj.button81:setLeft(555);
+    obj.button81:setTop(500);
+    obj.button81:setWidth(100);
+    obj.button81:setText("Change Log");
+    obj.button81:setName("button81");
+
+    obj.button82 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button82:setParent(obj.scrollBox9);
+    obj.button82:setLeft(667);
+    obj.button82:setTop(500);
+    obj.button82:setWidth(100);
+    obj.button82:setText("Atualizar");
+    obj.button82:setName("button82");
 
     obj._e_event0 = obj.button1:addEventListener("onClick",
         function (_)
@@ -9008,15 +9034,21 @@ local function constructNew_frmDZ_Ficha()
 
     obj._e_event93 = obj.button80:addEventListener("onClick",
         function (_)
-            self.PopAnotacao:show('bottom', self.labNome);
+            self.rclNote:append();
         end, obj);
 
     obj._e_event94 = obj.button81:addEventListener("onClick",
         function (_)
-            self.rclAnotacao1:append();
+            GUI.openInBrowser('https://github.com/rrpgfirecast/firecast/tree/master/Plugins/Sheets/Dead%20Zone%202.0')
+        end, obj);
+
+    obj._e_event95 = obj.button82:addEventListener("onClick",
+        function (_)
+            GUI.openInBrowser('https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Dead%20Zone%202.0/output/DeadZone_Ficha%202.0.rpk?raw=true')
         end, obj);
 
     function obj:_releaseEvents()
+        __o_rrpgObjs.removeEventListenerById(self._e_event95);
         __o_rrpgObjs.removeEventListenerById(self._e_event94);
         __o_rrpgObjs.removeEventListenerById(self._e_event93);
         __o_rrpgObjs.removeEventListenerById(self._e_event92);
@@ -9175,16 +9207,17 @@ local function constructNew_frmDZ_Ficha()
         if self.layout140 ~= nil then self.layout140:destroy(); self.layout140 = nil; end;
         if self.layout71 ~= nil then self.layout71:destroy(); self.layout71 = nil; end;
         if self.edit183 ~= nil then self.edit183:destroy(); self.edit183 = nil; end;
+        if self.NPC_Circunstancia ~= nil then self.NPC_Circunstancia:destroy(); self.NPC_Circunstancia = nil; end;
         if self.rectangle17 ~= nil then self.rectangle17:destroy(); self.rectangle17 = nil; end;
         if self.dataLink9 ~= nil then self.dataLink9:destroy(); self.dataLink9 = nil; end;
         if self.label15 ~= nil then self.label15:destroy(); self.label15 = nil; end;
         if self.frmAnimal ~= nil then self.frmAnimal:destroy(); self.frmAnimal = nil; end;
         if self.image60 ~= nil then self.image60:destroy(); self.image60 = nil; end;
-        if self.textEditor27 ~= nil then self.textEditor27:destroy(); self.textEditor27 = nil; end;
+        if self.scrollBox9 ~= nil then self.scrollBox9:destroy(); self.scrollBox9 = nil; end;
         if self.layout32 ~= nil then self.layout32:destroy(); self.layout32 = nil; end;
         if self.label49 ~= nil then self.label49:destroy(); self.label49 = nil; end;
-        if self.scrollBox9 ~= nil then self.scrollBox9:destroy(); self.scrollBox9 = nil; end;
         if self.edit156 ~= nil then self.edit156:destroy(); self.edit156 = nil; end;
+        if self.NPC_DescDEF ~= nil then self.NPC_DescDEF:destroy(); self.NPC_DescDEF = nil; end;
         if self.layout37 ~= nil then self.layout37:destroy(); self.layout37 = nil; end;
         if self.textEditor15 ~= nil then self.textEditor15:destroy(); self.textEditor15 = nil; end;
         if self.button79 ~= nil then self.button79:destroy(); self.button79 = nil; end;
@@ -9347,21 +9380,20 @@ local function constructNew_frmDZ_Ficha()
         if self.layout12 ~= nil then self.layout12:destroy(); self.layout12 = nil; end;
         if self.edit14 ~= nil then self.edit14:destroy(); self.edit14 = nil; end;
         if self.textEditor16 ~= nil then self.textEditor16:destroy(); self.textEditor16 = nil; end;
-        if self.textEditor22 ~= nil then self.textEditor22:destroy(); self.textEditor22 = nil; end;
+        if self.Conducao2_Circunstancia ~= nil then self.Conducao2_Circunstancia:destroy(); self.Conducao2_Circunstancia = nil; end;
         if self.dataLink8 ~= nil then self.dataLink8:destroy(); self.dataLink8 = nil; end;
         if self.edit4 ~= nil then self.edit4:destroy(); self.edit4 = nil; end;
         if self.layout25 ~= nil then self.layout25:destroy(); self.layout25 = nil; end;
         if self.edit198 ~= nil then self.edit198:destroy(); self.edit198 = nil; end;
         if self.edit224 ~= nil then self.edit224:destroy(); self.edit224 = nil; end;
-        if self.frmAnotacao ~= nil then self.frmAnotacao:destroy(); self.frmAnotacao = nil; end;
         if self.tab2 ~= nil then self.tab2:destroy(); self.tab2 = nil; end;
+        if self.frmAnotacao ~= nil then self.frmAnotacao:destroy(); self.frmAnotacao = nil; end;
         if self.label6 ~= nil then self.label6:destroy(); self.label6 = nil; end;
         if self.textEditor11 ~= nil then self.textEditor11:destroy(); self.textEditor11 = nil; end;
         if self.edit128 ~= nil then self.edit128:destroy(); self.edit128 = nil; end;
         if self.image35 ~= nil then self.image35:destroy(); self.image35 = nil; end;
         if self.edit200 ~= nil then self.edit200:destroy(); self.edit200 = nil; end;
-        if self.rclAnotacao1 ~= nil then self.rclAnotacao1:destroy(); self.rclAnotacao1 = nil; end;
-        if self.textEditor30 ~= nil then self.textEditor30:destroy(); self.textEditor30 = nil; end;
+        if self.textEditor22 ~= nil then self.textEditor22:destroy(); self.textEditor22 = nil; end;
         if self.button13 ~= nil then self.button13:destroy(); self.button13 = nil; end;
         if self.textEditor2 ~= nil then self.textEditor2:destroy(); self.textEditor2 = nil; end;
         if self.layout107 ~= nil then self.layout107:destroy(); self.layout107 = nil; end;
@@ -9382,7 +9414,6 @@ local function constructNew_frmDZ_Ficha()
         if self.edit8 ~= nil then self.edit8:destroy(); self.edit8 = nil; end;
         if self.button32 ~= nil then self.button32:destroy(); self.button32 = nil; end;
         if self.edit145 ~= nil then self.edit145:destroy(); self.edit145 = nil; end;
-        if self.PopAnotacao ~= nil then self.PopAnotacao:destroy(); self.PopAnotacao = nil; end;
         if self.edit181 ~= nil then self.edit181:destroy(); self.edit181 = nil; end;
         if self.edit96 ~= nil then self.edit96:destroy(); self.edit96 = nil; end;
         if self.edit2 ~= nil then self.edit2:destroy(); self.edit2 = nil; end;
@@ -9402,6 +9433,7 @@ local function constructNew_frmDZ_Ficha()
         if self.rectangle20 ~= nil then self.rectangle20:destroy(); self.rectangle20 = nil; end;
         if self.image26 ~= nil then self.image26:destroy(); self.image26 = nil; end;
         if self.rclListaNPC ~= nil then self.rclListaNPC:destroy(); self.rclListaNPC = nil; end;
+        if self.image73 ~= nil then self.image73:destroy(); self.image73 = nil; end;
         if self.edit93 ~= nil then self.edit93:destroy(); self.edit93 = nil; end;
         if self.DescVanDes1 ~= nil then self.DescVanDes1:destroy(); self.DescVanDes1 = nil; end;
         if self.edit126 ~= nil then self.edit126:destroy(); self.edit126 = nil; end;
@@ -9420,9 +9452,8 @@ local function constructNew_frmDZ_Ficha()
         if self.edit166 ~= nil then self.edit166:destroy(); self.edit166 = nil; end;
         if self.button6 ~= nil then self.button6:destroy(); self.button6 = nil; end;
         if self.button78 ~= nil then self.button78:destroy(); self.button78 = nil; end;
-        if self.scrollBox10 ~= nil then self.scrollBox10:destroy(); self.scrollBox10 = nil; end;
-        if self.button5 ~= nil then self.button5:destroy(); self.button5 = nil; end;
         if self.label81 ~= nil then self.label81:destroy(); self.label81 = nil; end;
+        if self.button5 ~= nil then self.button5:destroy(); self.button5 = nil; end;
         if self.edit37 ~= nil then self.edit37:destroy(); self.edit37 = nil; end;
         if self.edit184 ~= nil then self.edit184:destroy(); self.edit184 = nil; end;
         if self.layout70 ~= nil then self.layout70:destroy(); self.layout70 = nil; end;
@@ -9444,7 +9475,7 @@ local function constructNew_frmDZ_Ficha()
         if self.edit162 ~= nil then self.edit162:destroy(); self.edit162 = nil; end;
         if self.edit170 ~= nil then self.edit170:destroy(); self.edit170 = nil; end;
         if self.edit194 ~= nil then self.edit194:destroy(); self.edit194 = nil; end;
-        if self.label79 ~= nil then self.label79:destroy(); self.label79 = nil; end;
+        if self.image72 ~= nil then self.image72:destroy(); self.image72 = nil; end;
         if self.edit113 ~= nil then self.edit113:destroy(); self.edit113 = nil; end;
         if self.edit15 ~= nil then self.edit15:destroy(); self.edit15 = nil; end;
         if self.button54 ~= nil then self.button54:destroy(); self.button54 = nil; end;
@@ -9454,6 +9485,7 @@ local function constructNew_frmDZ_Ficha()
         if self.label20 ~= nil then self.label20:destroy(); self.label20 = nil; end;
         if self.edit211 ~= nil then self.edit211:destroy(); self.edit211 = nil; end;
         if self.image71 ~= nil then self.image71:destroy(); self.image71 = nil; end;
+        if self.label79 ~= nil then self.label79:destroy(); self.label79 = nil; end;
         if self.edit138 ~= nil then self.edit138:destroy(); self.edit138 = nil; end;
         if self.button31 ~= nil then self.button31:destroy(); self.button31 = nil; end;
         if self.label7 ~= nil then self.label7:destroy(); self.label7 = nil; end;
@@ -9487,10 +9519,11 @@ local function constructNew_frmDZ_Ficha()
         if self.edit191 ~= nil then self.edit191:destroy(); self.edit191 = nil; end;
         if self.edit117 ~= nil then self.edit117:destroy(); self.edit117 = nil; end;
         if self.layout75 ~= nil then self.layout75:destroy(); self.layout75 = nil; end;
-        if self.textEditor25 ~= nil then self.textEditor25:destroy(); self.textEditor25 = nil; end;
+        if self.label84 ~= nil then self.label84:destroy(); self.label84 = nil; end;
         if self.image53 ~= nil then self.image53:destroy(); self.image53 = nil; end;
         if self.edit215 ~= nil then self.edit215:destroy(); self.edit215 = nil; end;
         if self.edit216 ~= nil then self.edit216:destroy(); self.edit216 = nil; end;
+        if self.button82 ~= nil then self.button82:destroy(); self.button82 = nil; end;
         if self.dataLink12 ~= nil then self.dataLink12:destroy(); self.dataLink12 = nil; end;
         if self.layout134 ~= nil then self.layout134:destroy(); self.layout134 = nil; end;
         if self.edit73 ~= nil then self.edit73:destroy(); self.edit73 = nil; end;
@@ -9562,6 +9595,7 @@ local function constructNew_frmDZ_Ficha()
         if self.layout50 ~= nil then self.layout50:destroy(); self.layout50 = nil; end;
         if self.frmCAR ~= nil then self.frmCAR:destroy(); self.frmCAR = nil; end;
         if self.label41 ~= nil then self.label41:destroy(); self.label41 = nil; end;
+        if self.Conducao_Circunstancia ~= nil then self.Conducao_Circunstancia:destroy(); self.Conducao_Circunstancia = nil; end;
         if self.scrollBox2 ~= nil then self.scrollBox2:destroy(); self.scrollBox2 = nil; end;
         if self.label72 ~= nil then self.label72:destroy(); self.label72 = nil; end;
         if self.image65 ~= nil then self.image65:destroy(); self.image65 = nil; end;
@@ -9571,7 +9605,6 @@ local function constructNew_frmDZ_Ficha()
         if self.edit72 ~= nil then self.edit72:destroy(); self.edit72 = nil; end;
         if self.image61 ~= nil then self.image61:destroy(); self.image61 = nil; end;
         if self.edit179 ~= nil then self.edit179:destroy(); self.edit179 = nil; end;
-        if self.frmFichaCreditos_svg ~= nil then self.frmFichaCreditos_svg:destroy(); self.frmFichaCreditos_svg = nil; end;
         if self.textEditor5 ~= nil then self.textEditor5:destroy(); self.textEditor5 = nil; end;
         if self.layout92 ~= nil then self.layout92:destroy(); self.layout92 = nil; end;
         if self.layout143 ~= nil then self.layout143:destroy(); self.layout143 = nil; end;
@@ -9598,7 +9631,6 @@ local function constructNew_frmDZ_Ficha()
         if self.button59 ~= nil then self.button59:destroy(); self.button59 = nil; end;
         if self.edit101 ~= nil then self.edit101:destroy(); self.edit101 = nil; end;
         if self.button80 ~= nil then self.button80:destroy(); self.button80 = nil; end;
-        if self.textEditor29 ~= nil then self.textEditor29:destroy(); self.textEditor29 = nil; end;
         if self.image3 ~= nil then self.image3:destroy(); self.image3 = nil; end;
         if self.image28 ~= nil then self.image28:destroy(); self.image28 = nil; end;
         if self.edit164 ~= nil then self.edit164:destroy(); self.edit164 = nil; end;
@@ -9609,6 +9641,7 @@ local function constructNew_frmDZ_Ficha()
         if self.layout20 ~= nil then self.layout20:destroy(); self.layout20 = nil; end;
         if self.edit23 ~= nil then self.edit23:destroy(); self.edit23 = nil; end;
         if self.layout133 ~= nil then self.layout133:destroy(); self.layout133 = nil; end;
+        if self.NPC_Equip ~= nil then self.NPC_Equip:destroy(); self.NPC_Equip = nil; end;
         if self.layout18 ~= nil then self.layout18:destroy(); self.layout18 = nil; end;
         if self.PopCar ~= nil then self.PopCar:destroy(); self.PopCar = nil; end;
         if self.label56 ~= nil then self.label56:destroy(); self.label56 = nil; end;
@@ -9618,7 +9651,6 @@ local function constructNew_frmDZ_Ficha()
         if self.label21 ~= nil then self.label21:destroy(); self.label21 = nil; end;
         if self.edit122 ~= nil then self.edit122:destroy(); self.edit122 = nil; end;
         if self.edit40 ~= nil then self.edit40:destroy(); self.edit40 = nil; end;
-        if self.textEditor26 ~= nil then self.textEditor26:destroy(); self.textEditor26 = nil; end;
         if self.textEditor6 ~= nil then self.textEditor6:destroy(); self.textEditor6 = nil; end;
         if self.image47 ~= nil then self.image47:destroy(); self.image47 = nil; end;
         if self.dataLink2 ~= nil then self.dataLink2:destroy(); self.dataLink2 = nil; end;
@@ -9636,6 +9668,7 @@ local function constructNew_frmDZ_Ficha()
         if self.edit206 ~= nil then self.edit206:destroy(); self.edit206 = nil; end;
         if self.edit105 ~= nil then self.edit105:destroy(); self.edit105 = nil; end;
         if self.label54 ~= nil then self.label54:destroy(); self.label54 = nil; end;
+        if self.rclNote ~= nil then self.rclNote:destroy(); self.rclNote = nil; end;
         if self.richEdit1 ~= nil then self.richEdit1:destroy(); self.richEdit1 = nil; end;
         if self.scrollBox3 ~= nil then self.scrollBox3:destroy(); self.scrollBox3 = nil; end;
         if self.textEditor1 ~= nil then self.textEditor1:destroy(); self.textEditor1 = nil; end;
@@ -9646,7 +9679,7 @@ local function constructNew_frmDZ_Ficha()
         if self.edit6 ~= nil then self.edit6:destroy(); self.edit6 = nil; end;
         if self.textEditor21 ~= nil then self.textEditor21:destroy(); self.textEditor21 = nil; end;
         if self.image55 ~= nil then self.image55:destroy(); self.image55 = nil; end;
-        if self.textEditor23 ~= nil then self.textEditor23:destroy(); self.textEditor23 = nil; end;
+        if self.frmFichaCreditos ~= nil then self.frmFichaCreditos:destroy(); self.frmFichaCreditos = nil; end;
         if self.edit90 ~= nil then self.edit90:destroy(); self.edit90 = nil; end;
         if self.textEditor8 ~= nil then self.textEditor8:destroy(); self.textEditor8 = nil; end;
         if self.label18 ~= nil then self.label18:destroy(); self.label18 = nil; end;
@@ -9682,6 +9715,7 @@ local function constructNew_frmDZ_Ficha()
         if self.PopAnimal ~= nil then self.PopAnimal:destroy(); self.PopAnimal = nil; end;
         if self.layout142 ~= nil then self.layout142:destroy(); self.layout142 = nil; end;
         if self.textEditor13 ~= nil then self.textEditor13:destroy(); self.textEditor13 = nil; end;
+        if self.label83 ~= nil then self.label83:destroy(); self.label83 = nil; end;
         if self.button49 ~= nil then self.button49:destroy(); self.button49 = nil; end;
         if self.scrollBox8 ~= nil then self.scrollBox8:destroy(); self.scrollBox8 = nil; end;
         if self.layout80 ~= nil then self.layout80:destroy(); self.layout80 = nil; end;
@@ -9740,11 +9774,10 @@ local function constructNew_frmDZ_Ficha()
         if self.label4 ~= nil then self.label4:destroy(); self.label4 = nil; end;
         if self.button34 ~= nil then self.button34:destroy(); self.button34 = nil; end;
         if self.layout66 ~= nil then self.layout66:destroy(); self.layout66 = nil; end;
-        if self.textEditor24 ~= nil then self.textEditor24:destroy(); self.textEditor24 = nil; end;
         if self.rectangle19 ~= nil then self.rectangle19:destroy(); self.rectangle19 = nil; end;
+        if self.rectangle21 ~= nil then self.rectangle21:destroy(); self.rectangle21 = nil; end;
         if self.image39 ~= nil then self.image39:destroy(); self.image39 = nil; end;
         if self.PopExp ~= nil then self.PopExp:destroy(); self.PopExp = nil; end;
-        if self.rectangle21 ~= nil then self.rectangle21:destroy(); self.rectangle21 = nil; end;
         if self.label74 ~= nil then self.label74:destroy(); self.label74 = nil; end;
         if self.image24 ~= nil then self.image24:destroy(); self.image24 = nil; end;
         if self.image66 ~= nil then self.image66:destroy(); self.image66 = nil; end;
@@ -9773,6 +9806,7 @@ local function constructNew_frmDZ_Ficha()
         if self.edit30 ~= nil then self.edit30:destroy(); self.edit30 = nil; end;
         if self.layout124 ~= nil then self.layout124:destroy(); self.layout124 = nil; end;
         if self.edit56 ~= nil then self.edit56:destroy(); self.edit56 = nil; end;
+        if self.tab4 ~= nil then self.tab4:destroy(); self.tab4 = nil; end;
         if self.button57 ~= nil then self.button57:destroy(); self.button57 = nil; end;
         if self.layout144 ~= nil then self.layout144:destroy(); self.layout144 = nil; end;
         if self.label80 ~= nil then self.label80:destroy(); self.label80 = nil; end;
@@ -9781,6 +9815,7 @@ local function constructNew_frmDZ_Ficha()
         if self.edit55 ~= nil then self.edit55:destroy(); self.edit55 = nil; end;
         if self.edit43 ~= nil then self.edit43:destroy(); self.edit43 = nil; end;
         if self.label17 ~= nil then self.label17:destroy(); self.label17 = nil; end;
+        if self.NPC_DescATK ~= nil then self.NPC_DescATK:destroy(); self.NPC_DescATK = nil; end;
         if self.edit75 ~= nil then self.edit75:destroy(); self.edit75 = nil; end;
         if self.edit193 ~= nil then self.edit193:destroy(); self.edit193 = nil; end;
         if self.button23 ~= nil then self.button23:destroy(); self.button23 = nil; end;
@@ -9811,6 +9846,7 @@ local function constructNew_frmDZ_Ficha()
         if self.edit168 ~= nil then self.edit168:destroy(); self.edit168 = nil; end;
         if self.scrollBox6 ~= nil then self.scrollBox6:destroy(); self.scrollBox6 = nil; end;
         if self.textEditor14 ~= nil then self.textEditor14:destroy(); self.textEditor14 = nil; end;
+        if self.Conducao_Equipamentos ~= nil then self.Conducao_Equipamentos:destroy(); self.Conducao_Equipamentos = nil; end;
         if self.layout121 ~= nil then self.layout121:destroy(); self.layout121 = nil; end;
         if self.button81 ~= nil then self.button81:destroy(); self.button81 = nil; end;
         if self.DescVanDes8 ~= nil then self.DescVanDes8:destroy(); self.DescVanDes8 = nil; end;
@@ -9827,7 +9863,6 @@ local function constructNew_frmDZ_Ficha()
         if self.edit70 ~= nil then self.edit70:destroy(); self.edit70 = nil; end;
         if self.label25 ~= nil then self.label25:destroy(); self.label25 = nil; end;
         if self.button46 ~= nil then self.button46:destroy(); self.button46 = nil; end;
-        if self.textEditor28 ~= nil then self.textEditor28:destroy(); self.textEditor28 = nil; end;
         if self.edit22 ~= nil then self.edit22:destroy(); self.edit22 = nil; end;
         if self.image23 ~= nil then self.image23:destroy(); self.image23 = nil; end;
         if self.image31 ~= nil then self.image31:destroy(); self.image31 = nil; end;
@@ -9838,6 +9873,7 @@ local function constructNew_frmDZ_Ficha()
         if self.rectangle13 ~= nil then self.rectangle13:destroy(); self.rectangle13 = nil; end;
         if self.textEditor18 ~= nil then self.textEditor18:destroy(); self.textEditor18 = nil; end;
         if self.button19 ~= nil then self.button19:destroy(); self.button19 = nil; end;
+        if self.Conducao2_Equipamentos ~= nil then self.Conducao2_Equipamentos:destroy(); self.Conducao2_Equipamentos = nil; end;
         if self.button14 ~= nil then self.button14:destroy(); self.button14 = nil; end;
         if self.edit136 ~= nil then self.edit136:destroy(); self.edit136 = nil; end;
         if self.layout86 ~= nil then self.layout86:destroy(); self.layout86 = nil; end;

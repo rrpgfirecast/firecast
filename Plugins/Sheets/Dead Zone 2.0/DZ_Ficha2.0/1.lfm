@@ -113,7 +113,7 @@
 			<image width="17" height="17" left="272" top="452" style="proportional" center="true" src="images/Dado.jpg"/>
 			
             <layout left="170" top="500" width="80" height="30"> <edit class="NUMEROS" width="40" height="30" field="DET"/> </layout>
-				<button left="274" top="505" width="14" height="14" text="R" hint="Desc...">
+				<button left="274" top="505" width="16" height="16" text="R" hint="Desc...">
 				<event name="onClick">
 					local rolagem = Firecast.interpretarRolagem(sheet.DET); 
 					if not rolagem.possuiAlgumDado then rolagem = Firecast.interpretarRolagem("1d10"):concatenar(rolagem); end; 
@@ -121,10 +121,10 @@
 					if mesaDoPersonagem ~= nil then mesaDoPersonagem.chat:rolarDados(rolagem,"[§B][§K10][ Atributo ] [§K14]Determinação de "..sheet.Nick_Personagem); end;									
 				</event>
 			</button>
-			<image width="17" height="17" left="272" top="505" style="proportional" center="true" src="images/Dado.jpg"/>
+			<image width="19" height="19" left="272" top="505" style="proportional" center="true" src="images/Dado.jpg"/>
 			
             <layout left="170" top="536" width="80" height="30"> <edit class="NUMEROS" width="40" height="30" field="SOR"/> </layout>
-				<button left="274" top="541" width="14" height="14" text="R" hint="Desc...">
+				<button left="274" top="541" width="16" height="16" text="R" hint="Desc...">
 				<event name="onClick">
 					local rolagem = Firecast.interpretarRolagem(sheet.SOR); 
 					if not rolagem.possuiAlgumDado then rolagem = Firecast.interpretarRolagem("1d10"):concatenar(rolagem); end; 
@@ -132,7 +132,7 @@
 					if mesaDoPersonagem ~= nil then mesaDoPersonagem.chat:rolarDados(rolagem,"[§B][§K10][ Atributo ] [§K14]Sorte de "..sheet.Nick_Personagem); end;							
 				</event>
 			</button>
-			<image width="17" height="17" left="272" top="541" style="proportional" center="true" src="images/Dado.jpg"/>
+			<image width="19" height="19" left="272" top="541" style="proportional" center="true" src="images/Dado.jpg"/>
 			
             <layout left="240" top="499" width="80" height="30">
                 <edit transparent="true" fontSize="18" fontColor="#C0504D" fontFamily="kalam" vertTextAlign="center" horzTextAlign="center" width="45" height="30" field="DETtemp"/> </layout> 
@@ -1023,12 +1023,6 @@
 			
 			<popup name="PopNPCfrente" width="1340" height="620" backOpacity="0.5"> <scrollBox align="client"> <import file="NPC.lfm"/> </scrollBox> </popup>
 ##------------ #### ------------ #### ------------ #### ------------ #### ------------ #### ------------ #### ------------ #### ------------ #### ------------ #### ------------ ####
-## Anotação ##
-			<label text="Anotação" width="50" height="30" top="700" left="1222" class="padrao2" fontSize="15" />
-			<button width="100" height="100" left="1200" top="720" onClick="self.PopAnotacao:show('bottom', self.labNome);" />
-			<image width="100" height="100" left="1200" top="720" style="proportional" center="true" src="images/Note.png"/>
-			
-			<popup name="PopAnotacao" width="1350" height="600" backOpacity="0.5">  <scrollBox align="client"> <import file="Anotacao.lfm"/>  </scrollBox> </popup>		
 ##------------ #### ------------ #### ------------ #### ------------ #### ------------ #### ------------ #### ------------ #### ------------ #### ------------ #### ------------ ####
         </rectangle>
     </scrollBox>

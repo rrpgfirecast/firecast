@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmListaNote" height="25" margins="{top=2,bottom=2}">  
+<style>.padraoEqui{ fontColor: #C0504D; fontSize: 20; horzTextAlign: center; vertTextAlign: center; textTrimming: word; fontFamily: kalam; }</style>
+ 
+		<edit align="client" field="nome" class="padraoEqui" hint="Anote aqui." transparent="true"  />
+		<rectangle height="2" width="400" top="24" sides="top" color="#00000000" strokeColor="black" strokeSize="1"> </rectangle>
+		
+			<popup name="Noteinfo" width="1200" height="500" backOpacity="0.5" autoScopeNode="true">	
+				<textEditor name="NoteinfoEditor" top="2" left="2" width="300" height="400" />
+			</popup> 	
+		
+        <button align="left" text="X" width="25" class="padraoEqui" fontColor="white" hint="Apagar a anotação.">
+			<event name="onClick">
+					Dialogs.confirmOkCancel("Quer mesmo apagar essa anotação?",
+						function (confirmado)
+							if confirmado then
+								NDB.deleteNode(sheet);
+							end;
+					end);
+			</event>
+		</button>
+</form>

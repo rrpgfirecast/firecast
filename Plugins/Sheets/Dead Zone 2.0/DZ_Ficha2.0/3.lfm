@@ -3,10 +3,10 @@
     <style>#frmDZ_Ficha4_svg path {color: black; strokeColor: black; mode: stretch;}
 #frmDZ_Ficha4_svg label {fontColor: black; textTrimming: none; wordWrap: false; autoSize: true; fontFamily: kalam;}</style>
     <scrollBox align="client">
-        <rectangle width="1340" height="600" color="white">
+        <rectangle width="1340" height="1188" color="white">
 			<label fontSize="60" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="500" top="1" width="600" height="100" text="HISTORIA" fontFamily="DK Umbilical Noose" />
 			<image left="1" top="100" width="300" height="500" style="proportional" center="true"  editable="true" showProgress="true" field="PlayerII" src="ImgSize_300x500"/>	  
-            <layout left="313" top="100" width="1000" height="500">
+            <layout left="313" top="100" width="1000" height="1188">
 				<richEdit align="client" backgroundColor="#00000000" defaultFontColor="black" field="HistoriaPG" hideSelection="false"/>
             </layout>
         </rectangle>

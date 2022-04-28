@@ -27,89 +27,48 @@ local function constructNew_frmAnotacao()
     _gui_assignInitialParentForForm(obj.handle);
     obj:beginUpdate();
     obj:setName("frmAnotacao");
-    obj:setWidth(1300);
-    obj:setHeight(600);
-    obj:setTheme("dark");
-
-    obj.rectangle1 = GUI.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle1:setParent(obj);
-    obj.rectangle1:setWidth(1340);
-    obj.rectangle1:setHeight(600);
-    obj.rectangle1:setColor("white");
-    obj.rectangle1:setName("rectangle1");
-
-    obj.label1 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label1:setParent(obj.rectangle1);
-    obj.label1:setText("LISTA");
-    obj.label1:setLeft(950);
-    obj.label1:setWidth(220);
-    obj.label1:setHorzTextAlign("center");
-    obj.label1:setFontSize(30);
-    obj.label1:setName("label1");
-
-    obj.rectangle2 = GUI.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle2:setParent(obj.rectangle1);
-    obj.rectangle2:setLeft(900);
-    obj.rectangle2:setTop(35);
-    obj.rectangle2:setWidth(220);
-    obj.rectangle2:setHeight(400);
-    obj.rectangle2:setCornerType("round");
-    obj.rectangle2:setStrokeColor("black");
-    obj.rectangle2:setColor("white");
-    obj.rectangle2:setStrokeSize(2);
-    obj.rectangle2:setXradius(5);
-    obj.rectangle2:setYradius(5);
-    obj.rectangle2:setName("rectangle2");
+    obj:setAlign("client");
+    obj:setMargins({top=1});
+    obj:setTheme("light");
 
     obj.scrollBox1 = GUI.fromHandle(_obj_newObject("scrollBox"));
-    obj.scrollBox1:setParent(obj.rectangle2);
+    obj.scrollBox1:setParent(obj);
     obj.scrollBox1:setAlign("client");
     obj.scrollBox1:setName("scrollBox1");
 
-    obj.button1 = GUI.fromHandle(_obj_newObject("button"));
-    obj.button1:setParent(obj.scrollBox1);
-    obj.button1:setLeft(5);
-    obj.button1:setTop(1);
-    obj.button1:setWidth(15);
-    obj.button1:setHeight(15);
-    obj.button1:setText("+");
-    obj.button1:setFontFamily("kalam");
-    obj.button1:setName("button1");
+    obj.rectangle1 = GUI.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle1:setParent(obj.scrollBox1);
+    obj.rectangle1:setWidth(1340);
+    obj.rectangle1:setHeight(1500);
+    obj.rectangle1:setColor("white");
+    obj.rectangle1:setName("rectangle1");
 
-    obj.rclAnotacao1 = GUI.fromHandle(_obj_newObject("recordList"));
-    obj.rclAnotacao1:setParent(obj.scrollBox1);
-    obj.rclAnotacao1:setName("rclAnotacao1");
-    obj.rclAnotacao1:setField("Anotacaobloco02");
-    obj.rclAnotacao1:setTemplateForm("frmAnotacao1");
-    obj.rclAnotacao1:setLeft(1);
-    obj.rclAnotacao1:setTop(20);
-    obj.rclAnotacao1:setWidth(200);
-    obj.rclAnotacao1:setAutoHeight(true);
+    obj.rectangle2 = GUI.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle2:setParent(obj.rectangle1);
+    obj.rectangle2:setLeft(250);
+    obj.rectangle2:setTop(10);
+    obj.rectangle2:setWidth(800);
+    obj.rectangle2:setHeight(650);
+    obj.rectangle2:setColor("white");
+    obj.rectangle2:setName("rectangle2");
 
-    obj.label2 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label2:setParent(obj.rectangle1);
-    obj.label2:setText("DIÁRIO");
-    obj.label2:setLeft(325);
-    obj.label2:setWidth(400);
-    obj.label2:setHorzTextAlign("center");
-    obj.label2:setFontSize(30);
-    obj.label2:setName("label2");
-
-    obj.rectangle3 = GUI.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle3:setParent(obj.rectangle1);
-    obj.rectangle3:setLeft(1);
-    obj.rectangle3:setTop(35);
-    obj.rectangle3:setWidth(770);
-    obj.rectangle3:setHeight(550);
-    obj.rectangle3:setColor("white");
-    obj.rectangle3:setName("rectangle3");
+    obj.label1 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label1:setParent(obj.rectangle2);
+    obj.label1:setText("DIÁRIO");
+    obj.label1:setHeight(30);
+    obj.label1:setWidth(770);
+    obj.label1:setHorzTextAlign("center");
+    obj.label1:setFontFamily("DK Umbilical Noose");
+    obj.label1:setFontColor("black");
+    obj.label1:setFontSize(30);
+    obj.label1:setName("label1");
 
     obj.layout1 = GUI.fromHandle(_obj_newObject("layout"));
-    obj.layout1:setParent(obj.rectangle3);
+    obj.layout1:setParent(obj.rectangle2);
     obj.layout1:setLeft(5);
-    obj.layout1:setTop(5);
-    obj.layout1:setWidth(770);
-    obj.layout1:setHeight(550);
+    obj.layout1:setTop(30);
+    obj.layout1:setWidth(800);
+    obj.layout1:setHeight(580);
     obj.layout1:setName("layout1");
 
     obj.image1 = GUI.fromHandle(_obj_newObject("image"));
@@ -146,13 +105,59 @@ local function constructNew_frmAnotacao()
     obj.textEditor2:setTop(20);
     obj.textEditor2:setFontSize(15);
     obj.textEditor2:setFontColor("black");
-    obj.textEditor2:setField("Anotacao1bloco03");
+    obj.textEditor2:setField("Anotacao1bloco01");
     obj.textEditor2:setTransparent(true);
     obj.textEditor2:setName("textEditor2");
 
+    obj.rectangle3 = GUI.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle3:setParent(obj.rectangle1);
+    obj.rectangle3:setLeft(1);
+    obj.rectangle3:setTop(680);
+    obj.rectangle3:setWidth(1340);
+    obj.rectangle3:setHeight(800);
+    obj.rectangle3:setCornerType("round");
+    obj.rectangle3:setStrokeColor("black");
+    obj.rectangle3:setColor("white");
+    obj.rectangle3:setStrokeSize(2);
+    obj.rectangle3:setXradius(5);
+    obj.rectangle3:setYradius(5);
+    obj.rectangle3:setName("rectangle3");
+
+    obj.label2 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label2:setParent(obj.rectangle3);
+    obj.label2:setText("LISTA");
+    obj.label2:setHeight(30);
+    obj.label2:setWidth(1340);
+    obj.label2:setHorzTextAlign("center");
+    obj.label2:setFontFamily("DK Umbilical Noose");
+    obj.label2:setFontColor("black");
+    obj.label2:setFontSize(30);
+    obj.label2:setName("label2");
+
+    obj.button1 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button1:setParent(obj.rectangle3);
+    obj.button1:setLeft(2);
+    obj.button1:setTop(2);
+    obj.button1:setHeight(25);
+    obj.button1:setText("Nova");
+    obj.button1:setWidth(80);
+    obj.button1:setFontFamily("kalam");
+    obj.button1:setHint("Adicionar nova linha de anotação.");
+    obj.button1:setName("button1");
+
+    obj.rclNote = GUI.fromHandle(_obj_newObject("recordList"));
+    obj.rclNote:setParent(obj.rectangle3);
+    obj.rclNote:setName("rclNote");
+    obj.rclNote:setField("NoteL");
+    obj.rclNote:setTemplateForm("frmListaNote");
+    obj.rclNote:setLeft(1);
+    obj.rclNote:setTop(100);
+    obj.rclNote:setWidth(400);
+    obj.rclNote:setAutoHeight(true);
+
     obj._e_event0 = obj.button1:addEventListener("onClick",
         function (_)
-            self.rclAnotacao1:append();
+            self.rclNote:append();
         end, obj);
 
     function obj:_releaseEvents()
@@ -168,18 +173,18 @@ local function constructNew_frmAnotacao()
           self:setNodeDatabase(nil);
         end;
 
-        if self.rclAnotacao1 ~= nil then self.rclAnotacao1:destroy(); self.rclAnotacao1 = nil; end;
-        if self.image1 ~= nil then self.image1:destroy(); self.image1 = nil; end;
-        if self.button1 ~= nil then self.button1:destroy(); self.button1 = nil; end;
+        if self.label2 ~= nil then self.label2:destroy(); self.label2 = nil; end;
+        if self.rclNote ~= nil then self.rclNote:destroy(); self.rclNote = nil; end;
         if self.textEditor2 ~= nil then self.textEditor2:destroy(); self.textEditor2 = nil; end;
+        if self.button1 ~= nil then self.button1:destroy(); self.button1 = nil; end;
         if self.label1 ~= nil then self.label1:destroy(); self.label1 = nil; end;
         if self.layout1 ~= nil then self.layout1:destroy(); self.layout1 = nil; end;
         if self.scrollBox1 ~= nil then self.scrollBox1:destroy(); self.scrollBox1 = nil; end;
-        if self.rectangle2 ~= nil then self.rectangle2:destroy(); self.rectangle2 = nil; end;
         if self.rectangle1 ~= nil then self.rectangle1:destroy(); self.rectangle1 = nil; end;
+        if self.rectangle2 ~= nil then self.rectangle2:destroy(); self.rectangle2 = nil; end;
         if self.rectangle3 ~= nil then self.rectangle3:destroy(); self.rectangle3 = nil; end;
         if self.textEditor1 ~= nil then self.textEditor1:destroy(); self.textEditor1 = nil; end;
-        if self.label2 ~= nil then self.label2:destroy(); self.label2 = nil; end;
+        if self.image1 ~= nil then self.image1:destroy(); self.image1 = nil; end;
         self:_oldLFMDestroy();
     end;
 

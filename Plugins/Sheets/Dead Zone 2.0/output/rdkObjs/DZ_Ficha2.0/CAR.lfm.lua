@@ -366,16 +366,16 @@ local function constructNew_frmCAR()
     obj.layout2:setHeight(160);
     obj.layout2:setName("layout2");
 
-    obj.textEditor1 = GUI.fromHandle(_obj_newObject("textEditor"));
-    obj.textEditor1:setParent(obj.layout2);
-    obj.textEditor1:setFontFamily("kalam");
-    obj.textEditor1:setWidth(230);
-    obj.textEditor1:setHeight(160);
-    obj.textEditor1:setFontSize(15);
-    obj.textEditor1:setFontColor("#548DD4");
-    obj.textEditor1:setField("Conducao_Equipamentos");
-    obj.textEditor1:setTransparent(true);
-    obj.textEditor1:setName("textEditor1");
+    obj.Conducao_Equipamentos = GUI.fromHandle(_obj_newObject("textEditor"));
+    obj.Conducao_Equipamentos:setParent(obj.layout2);
+    obj.Conducao_Equipamentos:setName("Conducao_Equipamentos");
+    obj.Conducao_Equipamentos:setFontFamily("kalam");
+    obj.Conducao_Equipamentos:setWidth(230);
+    obj.Conducao_Equipamentos:setHeight(160);
+    obj.Conducao_Equipamentos:setFontSize(15);
+    obj.Conducao_Equipamentos:setFontColor("#548DD4");
+    obj.Conducao_Equipamentos:setField("Conducao_Equipamentos");
+    obj.Conducao_Equipamentos:setTransparent(true);
 
     obj.label11 = GUI.fromHandle(_obj_newObject("label"));
     obj.label11:setParent(obj.layout1);
@@ -399,16 +399,16 @@ local function constructNew_frmCAR()
     obj.layout3:setHeight(78);
     obj.layout3:setName("layout3");
 
-    obj.textEditor2 = GUI.fromHandle(_obj_newObject("textEditor"));
-    obj.textEditor2:setParent(obj.layout3);
-    obj.textEditor2:setFontFamily("kalam");
-    obj.textEditor2:setWidth(200);
-    obj.textEditor2:setHeight(80);
-    obj.textEditor2:setFontSize(15);
-    obj.textEditor2:setFontColor("#548DD4");
-    obj.textEditor2:setField("Conducao_Circunstancia");
-    obj.textEditor2:setTransparent(true);
-    obj.textEditor2:setName("textEditor2");
+    obj.Conducao_Circunstancia = GUI.fromHandle(_obj_newObject("textEditor"));
+    obj.Conducao_Circunstancia:setParent(obj.layout3);
+    obj.Conducao_Circunstancia:setName("Conducao_Circunstancia");
+    obj.Conducao_Circunstancia:setFontFamily("kalam");
+    obj.Conducao_Circunstancia:setWidth(200);
+    obj.Conducao_Circunstancia:setHeight(80);
+    obj.Conducao_Circunstancia:setFontSize(15);
+    obj.Conducao_Circunstancia:setFontColor("#548DD4");
+    obj.Conducao_Circunstancia:setField("Conducao_Circunstancia");
+    obj.Conducao_Circunstancia:setTransparent(true);
 
     obj.image2 = GUI.fromHandle(_obj_newObject("image"));
     obj.image2:setParent(obj.layout1);
@@ -741,16 +741,16 @@ local function constructNew_frmCAR()
     obj.layout5:setHeight(160);
     obj.layout5:setName("layout5");
 
-    obj.textEditor3 = GUI.fromHandle(_obj_newObject("textEditor"));
-    obj.textEditor3:setParent(obj.layout5);
-    obj.textEditor3:setFontFamily("kalam");
-    obj.textEditor3:setWidth(230);
-    obj.textEditor3:setHeight(160);
-    obj.textEditor3:setFontSize(15);
-    obj.textEditor3:setFontColor("#548DD4");
-    obj.textEditor3:setField("Conducao2_Equipamentos");
-    obj.textEditor3:setTransparent(true);
-    obj.textEditor3:setName("textEditor3");
+    obj.Conducao2_Equipamentos = GUI.fromHandle(_obj_newObject("textEditor"));
+    obj.Conducao2_Equipamentos:setParent(obj.layout5);
+    obj.Conducao2_Equipamentos:setName("Conducao2_Equipamentos");
+    obj.Conducao2_Equipamentos:setFontFamily("kalam");
+    obj.Conducao2_Equipamentos:setWidth(230);
+    obj.Conducao2_Equipamentos:setHeight(160);
+    obj.Conducao2_Equipamentos:setFontSize(15);
+    obj.Conducao2_Equipamentos:setFontColor("#548DD4");
+    obj.Conducao2_Equipamentos:setField("Conducao2_Equipamentos");
+    obj.Conducao2_Equipamentos:setTransparent(true);
 
     obj.label22 = GUI.fromHandle(_obj_newObject("label"));
     obj.label22:setParent(obj.layout4);
@@ -774,16 +774,16 @@ local function constructNew_frmCAR()
     obj.layout6:setHeight(78);
     obj.layout6:setName("layout6");
 
-    obj.textEditor4 = GUI.fromHandle(_obj_newObject("textEditor"));
-    obj.textEditor4:setParent(obj.layout6);
-    obj.textEditor4:setFontFamily("kalam");
-    obj.textEditor4:setWidth(200);
-    obj.textEditor4:setHeight(80);
-    obj.textEditor4:setFontSize(15);
-    obj.textEditor4:setFontColor("#548DD4");
-    obj.textEditor4:setField("Conducao2_Circunstancia");
-    obj.textEditor4:setTransparent(true);
-    obj.textEditor4:setName("textEditor4");
+    obj.Conducao2_Circunstancia = GUI.fromHandle(_obj_newObject("textEditor"));
+    obj.Conducao2_Circunstancia:setParent(obj.layout6);
+    obj.Conducao2_Circunstancia:setName("Conducao2_Circunstancia");
+    obj.Conducao2_Circunstancia:setFontFamily("kalam");
+    obj.Conducao2_Circunstancia:setWidth(200);
+    obj.Conducao2_Circunstancia:setHeight(80);
+    obj.Conducao2_Circunstancia:setFontSize(15);
+    obj.Conducao2_Circunstancia:setFontColor("#548DD4");
+    obj.Conducao2_Circunstancia:setField("Conducao2_Circunstancia");
+    obj.Conducao2_Circunstancia:setTransparent(true);
 
     obj.image4 = GUI.fromHandle(_obj_newObject("image"));
     obj.image4:setParent(obj.layout4);
@@ -810,7 +810,6 @@ local function constructNew_frmCAR()
           self:setNodeDatabase(nil);
         end;
 
-        if self.textEditor4 ~= nil then self.textEditor4:destroy(); self.textEditor4 = nil; end;
         if self.label14 ~= nil then self.label14:destroy(); self.label14 = nil; end;
         if self.label1 ~= nil then self.label1:destroy(); self.label1 = nil; end;
         if self.layout4 ~= nil then self.layout4:destroy(); self.layout4 = nil; end;
@@ -820,13 +819,13 @@ local function constructNew_frmCAR()
         if self.edit13 ~= nil then self.edit13:destroy(); self.edit13 = nil; end;
         if self.layout5 ~= nil then self.layout5:destroy(); self.layout5 = nil; end;
         if self.edit7 ~= nil then self.edit7:destroy(); self.edit7 = nil; end;
-        if self.textEditor3 ~= nil then self.textEditor3:destroy(); self.textEditor3 = nil; end;
         if self.edit12 ~= nil then self.edit12:destroy(); self.edit12 = nil; end;
         if self.label21 ~= nil then self.label21:destroy(); self.label21 = nil; end;
         if self.label22 ~= nil then self.label22:destroy(); self.label22 = nil; end;
         if self.image2 ~= nil then self.image2:destroy(); self.image2 = nil; end;
         if self.layout3 ~= nil then self.layout3:destroy(); self.layout3 = nil; end;
         if self.label13 ~= nil then self.label13:destroy(); self.label13 = nil; end;
+        if self.Conducao2_Circunstancia ~= nil then self.Conducao2_Circunstancia:destroy(); self.Conducao2_Circunstancia = nil; end;
         if self.label10 ~= nil then self.label10:destroy(); self.label10 = nil; end;
         if self.edit17 ~= nil then self.edit17:destroy(); self.edit17 = nil; end;
         if self.layout1 ~= nil then self.layout1:destroy(); self.layout1 = nil; end;
@@ -835,6 +834,7 @@ local function constructNew_frmCAR()
         if self.label19 ~= nil then self.label19:destroy(); self.label19 = nil; end;
         if self.edit14 ~= nil then self.edit14:destroy(); self.edit14 = nil; end;
         if self.edit4 ~= nil then self.edit4:destroy(); self.edit4 = nil; end;
+        if self.Conducao_Equipamentos ~= nil then self.Conducao_Equipamentos:destroy(); self.Conducao_Equipamentos = nil; end;
         if self.label8 ~= nil then self.label8:destroy(); self.label8 = nil; end;
         if self.label11 ~= nil then self.label11:destroy(); self.label11 = nil; end;
         if self.edit15 ~= nil then self.edit15:destroy(); self.edit15 = nil; end;
@@ -842,23 +842,23 @@ local function constructNew_frmCAR()
         if self.label4 ~= nil then self.label4:destroy(); self.label4 = nil; end;
         if self.label6 ~= nil then self.label6:destroy(); self.label6 = nil; end;
         if self.image1 ~= nil then self.image1:destroy(); self.image1 = nil; end;
-        if self.textEditor1 ~= nil then self.textEditor1:destroy(); self.textEditor1 = nil; end;
         if self.edit11 ~= nil then self.edit11:destroy(); self.edit11 = nil; end;
         if self.edit19 ~= nil then self.edit19:destroy(); self.edit19 = nil; end;
         if self.label20 ~= nil then self.label20:destroy(); self.label20 = nil; end;
         if self.edit5 ~= nil then self.edit5:destroy(); self.edit5 = nil; end;
-        if self.textEditor2 ~= nil then self.textEditor2:destroy(); self.textEditor2 = nil; end;
         if self.edit6 ~= nil then self.edit6:destroy(); self.edit6 = nil; end;
         if self.label15 ~= nil then self.label15:destroy(); self.label15 = nil; end;
         if self.label7 ~= nil then self.label7:destroy(); self.label7 = nil; end;
-        if self.label18 ~= nil then self.label18:destroy(); self.label18 = nil; end;
+        if self.Conducao_Circunstancia ~= nil then self.Conducao_Circunstancia:destroy(); self.Conducao_Circunstancia = nil; end;
         if self.label2 ~= nil then self.label2:destroy(); self.label2 = nil; end;
+        if self.label18 ~= nil then self.label18:destroy(); self.label18 = nil; end;
         if self.edit3 ~= nil then self.edit3:destroy(); self.edit3 = nil; end;
         if self.label5 ~= nil then self.label5:destroy(); self.label5 = nil; end;
         if self.label12 ~= nil then self.label12:destroy(); self.label12 = nil; end;
         if self.layout6 ~= nil then self.layout6:destroy(); self.layout6 = nil; end;
         if self.edit8 ~= nil then self.edit8:destroy(); self.edit8 = nil; end;
         if self.image4 ~= nil then self.image4:destroy(); self.image4 = nil; end;
+        if self.Conducao2_Equipamentos ~= nil then self.Conducao2_Equipamentos:destroy(); self.Conducao2_Equipamentos = nil; end;
         if self.label16 ~= nil then self.label16:destroy(); self.label16 = nil; end;
         if self.edit18 ~= nil then self.edit18:destroy(); self.edit18 = nil; end;
         if self.edit2 ~= nil then self.edit2:destroy(); self.edit2 = nil; end;
