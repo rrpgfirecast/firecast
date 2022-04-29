@@ -12,6 +12,6 @@
 					end);
 				</event>
 				</button>
-                <label align="client" width="150" text="Preencha a ficha!" fontColor="#C0504D" field="NPC_nick" margins="{left=4}" class="NPC_B"/>
+                <label align="client" width="150" hint="Preencha a ficha!" fontColor="#C0504D" field="NPC_nick" margins="{left=4}" class="NPC_B"/>
         </layout>
 </form>

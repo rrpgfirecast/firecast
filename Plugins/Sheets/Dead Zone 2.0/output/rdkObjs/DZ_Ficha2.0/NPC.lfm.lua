@@ -85,7 +85,7 @@ local function constructNew_frmDZ_NPC_svg()
     obj.image1:setEditable(true);
     obj.image1:setShowProgress(true);
     obj.image1:setOptimize(true);
-    obj.image1:setAlign("left");
+    obj.image1:setAlign("right");
     obj.image1:setField("NpcII");
     obj.image1:setName("image1");
 
@@ -607,16 +607,16 @@ local function constructNew_frmDZ_NPC_svg()
     obj.layout2:setHeight(75);
     obj.layout2:setName("layout2");
 
-    obj.textEditor1 = GUI.fromHandle(_obj_newObject("textEditor"));
-    obj.textEditor1:setParent(obj.layout2);
-    obj.textEditor1:setFontFamily("kalam");
-    obj.textEditor1:setWidth(200);
-    obj.textEditor1:setHeight(75);
-    obj.textEditor1:setFontSize(13);
-    obj.textEditor1:setFontColor("#548DD4");
-    obj.textEditor1:setField("NPC_DescATK");
-    obj.textEditor1:setTransparent(true);
-    obj.textEditor1:setName("textEditor1");
+    obj.NPC_DescATK = GUI.fromHandle(_obj_newObject("textEditor"));
+    obj.NPC_DescATK:setParent(obj.layout2);
+    obj.NPC_DescATK:setName("NPC_DescATK");
+    obj.NPC_DescATK:setFontFamily("kalam");
+    obj.NPC_DescATK:setWidth(200);
+    obj.NPC_DescATK:setHeight(75);
+    obj.NPC_DescATK:setFontSize(13);
+    obj.NPC_DescATK:setFontColor("#548DD4");
+    obj.NPC_DescATK:setField("NPC_DescATK");
+    obj.NPC_DescATK:setTransparent(true);
 
     obj.layout3 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout3:setParent(obj.rectangle1);
@@ -626,16 +626,16 @@ local function constructNew_frmDZ_NPC_svg()
     obj.layout3:setHeight(60);
     obj.layout3:setName("layout3");
 
-    obj.textEditor2 = GUI.fromHandle(_obj_newObject("textEditor"));
-    obj.textEditor2:setParent(obj.layout3);
-    obj.textEditor2:setFontFamily("kalam");
-    obj.textEditor2:setWidth(220);
-    obj.textEditor2:setHeight(60);
-    obj.textEditor2:setFontSize(13);
-    obj.textEditor2:setFontColor("#548DD4");
-    obj.textEditor2:setField("NPC_DescDEF");
-    obj.textEditor2:setTransparent(true);
-    obj.textEditor2:setName("textEditor2");
+    obj.NPC_DescDEF = GUI.fromHandle(_obj_newObject("textEditor"));
+    obj.NPC_DescDEF:setParent(obj.layout3);
+    obj.NPC_DescDEF:setName("NPC_DescDEF");
+    obj.NPC_DescDEF:setFontFamily("kalam");
+    obj.NPC_DescDEF:setWidth(220);
+    obj.NPC_DescDEF:setHeight(60);
+    obj.NPC_DescDEF:setFontSize(13);
+    obj.NPC_DescDEF:setFontColor("#548DD4");
+    obj.NPC_DescDEF:setField("NPC_DescDEF");
+    obj.NPC_DescDEF:setTransparent(true);
 
     obj.layout4 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout4:setParent(obj.rectangle1);
@@ -645,16 +645,16 @@ local function constructNew_frmDZ_NPC_svg()
     obj.layout4:setHeight(150);
     obj.layout4:setName("layout4");
 
-    obj.textEditor3 = GUI.fromHandle(_obj_newObject("textEditor"));
-    obj.textEditor3:setParent(obj.layout4);
-    obj.textEditor3:setFontFamily("kalam");
-    obj.textEditor3:setWidth(230);
-    obj.textEditor3:setHeight(150);
-    obj.textEditor3:setFontSize(13);
-    obj.textEditor3:setFontColor("#548DD4");
-    obj.textEditor3:setField("NPC_Equip");
-    obj.textEditor3:setTransparent(true);
-    obj.textEditor3:setName("textEditor3");
+    obj.NPC_Equip = GUI.fromHandle(_obj_newObject("textEditor"));
+    obj.NPC_Equip:setParent(obj.layout4);
+    obj.NPC_Equip:setName("NPC_Equip");
+    obj.NPC_Equip:setFontFamily("kalam");
+    obj.NPC_Equip:setWidth(230);
+    obj.NPC_Equip:setHeight(150);
+    obj.NPC_Equip:setFontSize(13);
+    obj.NPC_Equip:setFontColor("#548DD4");
+    obj.NPC_Equip:setField("NPC_Equip");
+    obj.NPC_Equip:setTransparent(true);
 
     obj.layout5 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout5:setParent(obj.rectangle1);
@@ -664,16 +664,16 @@ local function constructNew_frmDZ_NPC_svg()
     obj.layout5:setHeight(1800);
     obj.layout5:setName("layout5");
 
-    obj.textEditor4 = GUI.fromHandle(_obj_newObject("textEditor"));
-    obj.textEditor4:setParent(obj.layout5);
-    obj.textEditor4:setFontFamily("kalam");
-    obj.textEditor4:setWidth(250);
-    obj.textEditor4:setHeight(180);
-    obj.textEditor4:setFontSize(13);
-    obj.textEditor4:setFontColor("#548DD4");
-    obj.textEditor4:setField("NPC_Circunstancia");
-    obj.textEditor4:setTransparent(true);
-    obj.textEditor4:setName("textEditor4");
+    obj.NPC_Circunstancia = GUI.fromHandle(_obj_newObject("textEditor"));
+    obj.NPC_Circunstancia:setParent(obj.layout5);
+    obj.NPC_Circunstancia:setName("NPC_Circunstancia");
+    obj.NPC_Circunstancia:setFontFamily("kalam");
+    obj.NPC_Circunstancia:setWidth(250);
+    obj.NPC_Circunstancia:setHeight(180);
+    obj.NPC_Circunstancia:setFontSize(13);
+    obj.NPC_Circunstancia:setFontColor("#548DD4");
+    obj.NPC_Circunstancia:setField("NPC_Circunstancia");
+    obj.NPC_Circunstancia:setTransparent(true);
 
     obj._e_event0 = obj.button1:addEventListener("onClick",
         function (_)
@@ -705,7 +705,6 @@ local function constructNew_frmDZ_NPC_svg()
         if self.edit30 ~= nil then self.edit30:destroy(); self.edit30 = nil; end;
         if self.edit21 ~= nil then self.edit21:destroy(); self.edit21 = nil; end;
         if self.edit14 ~= nil then self.edit14:destroy(); self.edit14 = nil; end;
-        if self.textEditor4 ~= nil then self.textEditor4:destroy(); self.textEditor4 = nil; end;
         if self.button1 ~= nil then self.button1:destroy(); self.button1 = nil; end;
         if self.edit4 ~= nil then self.edit4:destroy(); self.edit4 = nil; end;
         if self.layout4 ~= nil then self.layout4:destroy(); self.layout4 = nil; end;
@@ -714,11 +713,11 @@ local function constructNew_frmDZ_NPC_svg()
         if self.edit11 ~= nil then self.edit11:destroy(); self.edit11 = nil; end;
         if self.edit19 ~= nil then self.edit19:destroy(); self.edit19 = nil; end;
         if self.image1 ~= nil then self.image1:destroy(); self.image1 = nil; end;
-        if self.textEditor1 ~= nil then self.textEditor1:destroy(); self.textEditor1 = nil; end;
+        if self.NPC_Circunstancia ~= nil then self.NPC_Circunstancia:destroy(); self.NPC_Circunstancia = nil; end;
+        if self.NPC_DescATK ~= nil then self.NPC_DescATK:destroy(); self.NPC_DescATK = nil; end;
         if self.edit9 ~= nil then self.edit9:destroy(); self.edit9 = nil; end;
         if self.rclListaNPC ~= nil then self.rclListaNPC:destroy(); self.rclListaNPC = nil; end;
         if self.edit5 ~= nil then self.edit5:destroy(); self.edit5 = nil; end;
-        if self.textEditor2 ~= nil then self.textEditor2:destroy(); self.textEditor2 = nil; end;
         if self.comboBox1 ~= nil then self.comboBox1:destroy(); self.comboBox1 = nil; end;
         if self.edit6 ~= nil then self.edit6:destroy(); self.edit6 = nil; end;
         if self.edit29 ~= nil then self.edit29:destroy(); self.edit29 = nil; end;
@@ -727,10 +726,11 @@ local function constructNew_frmDZ_NPC_svg()
         if self.edit7 ~= nil then self.edit7:destroy(); self.edit7 = nil; end;
         if self.edit23 ~= nil then self.edit23:destroy(); self.edit23 = nil; end;
         if self.layout5 ~= nil then self.layout5:destroy(); self.layout5 = nil; end;
-        if self.textEditor3 ~= nil then self.textEditor3:destroy(); self.textEditor3 = nil; end;
         if self.edit22 ~= nil then self.edit22:destroy(); self.edit22 = nil; end;
         if self.edit3 ~= nil then self.edit3:destroy(); self.edit3 = nil; end;
         if self.edit12 ~= nil then self.edit12:destroy(); self.edit12 = nil; end;
+        if self.NPC_DescDEF ~= nil then self.NPC_DescDEF:destroy(); self.NPC_DescDEF = nil; end;
+        if self.NPC_Equip ~= nil then self.NPC_Equip:destroy(); self.NPC_Equip = nil; end;
         if self.boxDetalhesDoItem ~= nil then self.boxDetalhesDoItem:destroy(); self.boxDetalhesDoItem = nil; end;
         if self.edit8 ~= nil then self.edit8:destroy(); self.edit8 = nil; end;
         if self.edit27 ~= nil then self.edit27:destroy(); self.edit27 = nil; end;

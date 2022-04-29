@@ -52,7 +52,7 @@ local function constructNew_frmListaNPC()
     obj.label1:setParent(obj.layout1);
     obj.label1:setAlign("client");
     obj.label1:setWidth(150);
-    obj.label1:setText("Preencha a ficha!");
+    obj.label1:setHint("Preencha a ficha!");
     obj.label1:setFontColor("#C0504D");
     obj.label1:setField("NPC_nick");
     obj.label1:setMargins({left=4});

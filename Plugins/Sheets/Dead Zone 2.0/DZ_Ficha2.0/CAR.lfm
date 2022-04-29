@@ -36,11 +36,11 @@
 
 							<label text="Equipamentos:" fontSize="20" width="80" height="30" top="178" left="230" class="condu"/>
 							<layout left="230" top="208" width="230" height="160">
-								<textEditor fontFamily="kalam" width="230" height="160" fontSize="15" fontColor="#548DD4" field="Conducao_Equipamentos" transparent="true" /></layout> 
+								<textEditor name="Conducao_Equipamentos" fontFamily="kalam" width="230" height="160" fontSize="15" fontColor="#548DD4" field="Conducao_Equipamentos" transparent="true" /></layout> 
 
 							<label text="Circunstancia:" fontSize="20" width="80" height="30" top="260" left="40" class="condu"/>
 							<layout left="25" top="290" width="200" height="78">
-								<textEditor fontFamily="kalam" width="200" height="80" fontSize="15" fontColor="#548DD4" field="Conducao_Circunstancia" transparent="true" /></layout>
+								<textEditor name="Conducao_Circunstancia" fontFamily="kalam" width="200" height="80" fontSize="15" fontColor="#548DD4" field="Conducao_Circunstancia" transparent="true" /></layout>
 							<image width="500" height="250" left="0" top="385" style="proportional" center="true" editable="true" src="images/ImgSize_250x500.png" field="CarII"/>
 						</layout>
 			## Condução 02##						
@@ -75,11 +75,11 @@
 
 							<label text="Equipamentos:" fontSize="20" width="80" height="30" top="178" left="230" class="condu"/>
 							<layout left="230" top="208" width="230" height="160">
-								<textEditor fontFamily="kalam" width="230" height="160" fontSize="15" fontColor="#548DD4" field="Conducao2_Equipamentos" transparent="true" /></layout> 
+								<textEditor name="Conducao2_Equipamentos" fontFamily="kalam" width="230" height="160" fontSize="15" fontColor="#548DD4" field="Conducao2_Equipamentos" transparent="true" /></layout> 
 
 							<label text="Circunstancia:" fontSize="20" width="80" height="30" top="260" left="40" class="condu"/>
 							<layout left="25" top="290" width="200" height="78">
-								<textEditor fontFamily="kalam" width="200" height="80" fontSize="15" fontColor="#548DD4" field="Conducao2_Circunstancia" transparent="true" /></layout> 
+								<textEditor name="Conducao2_Circunstancia" fontFamily="kalam" width="200" height="80" fontSize="15" fontColor="#548DD4" field="Conducao2_Circunstancia" transparent="true" /></layout> 
 
 							<image width="500" height="250" left="0" top="385" style="proportional" center="true" editable="true" field="Car2II" src="images/ImgSize_250x500.png"/>
 						</layout>

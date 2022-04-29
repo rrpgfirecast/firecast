@@ -39,7 +39,7 @@ local function constructNew_frmDZ_Ficha3_svg()
     obj.rectangle1 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle1:setParent(obj.scrollBox1);
     obj.rectangle1:setWidth(1340);
-    obj.rectangle1:setHeight(600);
+    obj.rectangle1:setHeight(1188);
     obj.rectangle1:setColor("white");
     obj.rectangle1:setName("rectangle1");
 
@@ -76,7 +76,7 @@ local function constructNew_frmDZ_Ficha3_svg()
     obj.layout1:setLeft(313);
     obj.layout1:setTop(100);
     obj.layout1:setWidth(1000);
-    obj.layout1:setHeight(500);
+    obj.layout1:setHeight(1188);
     obj.layout1:setName("layout1");
 
     obj.richEdit1 = GUI.fromHandle(_obj_newObject("richEdit"));

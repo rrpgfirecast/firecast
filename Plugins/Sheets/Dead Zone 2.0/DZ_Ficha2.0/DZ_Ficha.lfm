@@ -4,6 +4,9 @@
         <tab title="Caracteristicas">
             <import file="1.lfm"/>
         </tab>
+        <tab title="Anotação">
+            <import file="Anotacao.lfm"/>
+        </tab>
         <tab title="Historia">
             <import file="3.lfm"/>
         </tab>
@@ -12,5 +15,3 @@
         </tab>
     </tabControl>
 </form>
-
-
