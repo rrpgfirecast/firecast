@@ -112,7 +112,7 @@
 			</button>
 			<image width="17" height="17" left="272" top="452" style="proportional" center="true" src="images/Dado.jpg"/>
 			
-            <layout left="170" top="500" width="80" height="30"> <edit class="NUMEROS" width="40" height="30" field="DET"/> </layout>
+            <layout left="178" top="500" width="80" height="30"> <edit class="NUMEROS" width="40" height="30" field="DET"/> </layout>
 				<button left="274" top="505" width="16" height="16" text="R" hint="Desc...">
 				<event name="onClick">
 					local rolagem = Firecast.interpretarRolagem(sheet.DET); 
@@ -123,7 +123,7 @@
 			</button>
 			<image width="19" height="19" left="272" top="505" style="proportional" center="true" src="images/Dado.jpg"/>
 			
-            <layout left="170" top="536" width="80" height="30"> <edit class="NUMEROS" width="40" height="30" field="SOR"/> </layout>
+            <layout left="178" top="536" width="80" height="30"> <edit class="NUMEROS" width="40" height="30" field="SOR"/> </layout>
 				<button left="274" top="541" width="16" height="16" text="R" hint="Desc...">
 				<event name="onClick">
 					local rolagem = Firecast.interpretarRolagem(sheet.SOR); 

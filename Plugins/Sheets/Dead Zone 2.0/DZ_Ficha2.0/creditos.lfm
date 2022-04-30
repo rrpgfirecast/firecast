@@ -17,7 +17,7 @@
 		
 		<label left="560" top="480" width="210" height="20" text="Sua Versão: 2.1" horzTextAlign="center" />
 			
-		<button left="555" top="500" width="100" text="Change Log" onClick="GUI.openInBrowser('https://github.com/rrpgfirecast/firecast/tree/master/Plugins/Sheets/Dead%20Zone%202.0')" />
+		<button left="555" top="500" width="100" text="Change Log" onClick="GUI.openInBrowser('https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Dead%20Zone%202.0/README.md')" />
 		<button left="667" top="500" width="100" text="Atualizar" onClick="GUI.openInBrowser('https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Dead%20Zone%202.0/output/DeadZone_Ficha%202.0.rpk?raw=true')" />
 		
 	</scrollBox>
