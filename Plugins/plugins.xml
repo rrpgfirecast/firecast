@@ -439,7 +439,7 @@
         </dataTypes>
     </element>
  </element>
-    <element id="DeadZoneRPG_2.0" name="Dead Zone 2.0" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Dead%20Zone%202.0/output/DeadZone_Ficha%202.0.rpk?raw=true" fileName="DeadZone_Ficha 2.0.rpk" repositoryPath="Sheets/Dead Zone 2.0/" author="Samelfero" description="Ficha para o cenario e sistema Dead Zone" version="2.1.0" compilationDate="14032022033148" compilationDigest="6de6aa2675214259a29fcc202c28ca74d06211c3">
+    <element id="DeadZoneRPG_2.0" name="Dead Zone 2.0" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Dead%20Zone%202.0/output/DeadZone_Ficha%202.0.rpk?raw=true" fileName="DeadZone_Ficha 2.0.rpk" repositoryPath="Sheets/Dead Zone 2.0/" author="Samelfero" description="Ficha para o cenario e sistema Dead Zone" version="2.1.1" compilationDate="14032022033148" compilationDigest="6de6aa2675214259a29fcc202c28ca74d06211c3">
         <dataTypes>
             <dataType id="DeadZoneRPG2.0" title="Ficha 2.0 Dead Zone"/>
         </dataTypes>
