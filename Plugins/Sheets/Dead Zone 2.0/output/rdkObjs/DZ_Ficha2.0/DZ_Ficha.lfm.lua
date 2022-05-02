@@ -594,7 +594,7 @@ local function constructNew_frmDZ_Ficha()
 
     obj.layout18 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout18:setParent(obj.rectangle1);
-    obj.layout18:setLeft(170);
+    obj.layout18:setLeft(178);
     obj.layout18:setTop(500);
     obj.layout18:setWidth(80);
     obj.layout18:setHeight(30);
@@ -638,7 +638,7 @@ local function constructNew_frmDZ_Ficha()
 
     obj.layout19 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout19:setParent(obj.rectangle1);
-    obj.layout19:setLeft(170);
+    obj.layout19:setLeft(178);
     obj.layout19:setTop(536);
     obj.layout19:setWidth(80);
     obj.layout19:setHeight(30);
@@ -9039,7 +9039,7 @@ local function constructNew_frmDZ_Ficha()
 
     obj._e_event94 = obj.button81:addEventListener("onClick",
         function (_)
-            GUI.openInBrowser('https://github.com/rrpgfirecast/firecast/tree/master/Plugins/Sheets/Dead%20Zone%202.0')
+            GUI.openInBrowser('https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Dead%20Zone%202.0/README.md')
         end, obj);
 
     obj._e_event95 = obj.button82:addEventListener("onClick",
