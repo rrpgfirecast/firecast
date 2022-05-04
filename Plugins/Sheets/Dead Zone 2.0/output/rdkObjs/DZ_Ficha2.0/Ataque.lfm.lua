@@ -152,31 +152,6 @@ local function constructNew_Ataque()
     obj.label2:setVertTextAlign("center");
     obj.label2:setFontFamily("kalam");
 
-    obj.button1 = GUI.fromHandle(_obj_newObject("button"));
-    obj.button1:setParent(obj.rectangle1);
-    obj.button1:setText("C");
-    obj.button1:setFontFamily("kalam");
-    obj.button1:setWidth(25);
-    obj.button1:setHeight(25);
-    obj.button1:setTop(60);
-    obj.button1:setLeft(200);
-    obj.button1:setName("button1");
-
-    obj.ConfigATK = GUI.fromHandle(_obj_newObject("popup"));
-    obj.ConfigATK:setParent(obj.rectangle1);
-    obj.ConfigATK:setName("ConfigATK");
-    obj.ConfigATK:setWidth(600);
-    obj.ConfigATK:setHeight(600);
-    obj.ConfigATK:setBackOpacity(0.5);
-
-    obj.layout1 = GUI.fromHandle(_obj_newObject("layout"));
-    obj.layout1:setParent(obj.ConfigATK);
-    obj.layout1:setLeft(20);
-    obj.layout1:setTop(20);
-    obj.layout1:setHeight(25);
-    obj.layout1:setWidth(300);
-    obj.layout1:setName("layout1");
-
     obj.rectangle5 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle5:setParent(obj.rectangle1);
     obj.rectangle5:setTop(109);
@@ -265,12 +240,24 @@ local function constructNew_Ataque()
     obj.label4:setVertTextAlign("center");
     obj.label4:setFontFamily("kalam");
 
+    obj.button1 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button1:setParent(obj.rectangle1);
+    obj.button1:setText("C");
+    obj.button1:setFontFamily("kalam");
+    obj.button1:setWidth(25);
+    obj.button1:setHeight(25);
+    obj.button1:setTop(60);
+    obj.button1:setLeft(200);
+    obj.button1:setHint("Configurações do ataque.");
+    obj.button1:setName("button1");
+
     obj.button2 = GUI.fromHandle(_obj_newObject("button"));
     obj.button2:setParent(obj.rectangle1);
     obj.button2:setFontFamily("kalam");
     obj.button2:setWidth(24);
     obj.button2:setHeight(25);
     obj.button2:setTop(110);
+    obj.button2:setHint("Executa a rolagem configurada.");
     obj.button2:setLeft(200);
     obj.button2:setName("button2");
 
@@ -381,6 +368,7 @@ local function constructNew_Ataque()
     obj.button3:setHeight(25);
     obj.button3:setTop(160);
     obj.button3:setLeft(200);
+    obj.button3:setHint("Apaga o ataque.");
     obj.button3:setName("button3");
 
     obj.image2 = GUI.fromHandle(_obj_newObject("image"));
@@ -422,16 +410,17 @@ local function constructNew_Ataque()
     obj.rectangle9:setYradius(8);
     obj.rectangle9:setName("rectangle9");
 
-    obj.layout2 = GUI.fromHandle(_obj_newObject("layout"));
-    obj.layout2:setParent(obj.rectangle1);
-    obj.layout2:setLeft(10);
-    obj.layout2:setTop(210);
-    obj.layout2:setWidth(210);
-    obj.layout2:setHeight(75);
-    obj.layout2:setName("layout2");
+    obj.layout1 = GUI.fromHandle(_obj_newObject("layout"));
+    obj.layout1:setParent(obj.rectangle1);
+    obj.layout1:setLeft(10);
+    obj.layout1:setTop(210);
+    obj.layout1:setWidth(210);
+    obj.layout1:setHeight(75);
+    obj.layout1:setName("layout1");
 
     obj.richEdit1 = GUI.fromHandle(_obj_newObject("richEdit"));
-    obj.richEdit1:setParent(obj.layout2);
+    obj.richEdit1:setParent(obj.layout1);
+    obj.richEdit1:setWidth(210);
     obj.richEdit1:setAlign("client");
     lfm_setPropAsString(obj.richEdit1, "backgroundColor",  "#00000000");
     lfm_setPropAsString(obj.richEdit1, "defaultFontColor",  "#C0504D");
@@ -444,15 +433,7 @@ local function constructNew_Ataque()
             self.ConfigATK:show('bottom', self.labNome);
         end, obj);
 
-    obj._e_event1 = obj.button2:addEventListener("onClick",
-        function (_)
-            local mesaDoPersonagem = Firecast.getMesaDe(sheet);				
-            					local rolagem = Firecast.interpretarRolagem(sheet.Peri15); 
-            					if not rolagem.possuiAlgumDado then rolagem = Firecast.interpretarRolagem("1d10"):concatenar(rolagem); end; 
-            					if mesaDoPersonagem ~= nil then mesaDoPersonagem.chat:rolarDados(rolagem,"[§B][§K8][ Pericia ] [§K14]Arma de fogo de "..sheet.ataque); end;
-        end, obj);
-
-    obj._e_event2 = obj.button3:addEventListener("onClick",
+    obj._e_event1 = obj.button3:addEventListener("onClick",
         function (_)
             Dialogs.confirmOkCancel("Quer mesmo apagar esse ataque?",
             						function (confirmado)
@@ -463,7 +444,6 @@ local function constructNew_Ataque()
         end, obj);
 
     function obj:_releaseEvents()
-        __o_rrpgObjs.removeEventListenerById(self._e_event2);
         __o_rrpgObjs.removeEventListenerById(self._e_event1);
         __o_rrpgObjs.removeEventListenerById(self._e_event0);
     end;
@@ -492,7 +472,6 @@ local function constructNew_Ataque()
         if self.edit5 ~= nil then self.edit5:destroy(); self.edit5 = nil; end;
         if self.edit6 ~= nil then self.edit6:destroy(); self.edit6 = nil; end;
         if self.label7 ~= nil then self.label7:destroy(); self.label7 = nil; end;
-        if self.ConfigATK ~= nil then self.ConfigATK:destroy(); self.ConfigATK = nil; end;
         if self.edit7 ~= nil then self.edit7:destroy(); self.edit7 = nil; end;
         if self.label2 ~= nil then self.label2:destroy(); self.label2 = nil; end;
         if self.edit3 ~= nil then self.edit3:destroy(); self.edit3 = nil; end;
@@ -508,7 +487,6 @@ local function constructNew_Ataque()
         if self.layout1 ~= nil then self.layout1:destroy(); self.layout1 = nil; end;
         if self.edit1 ~= nil then self.edit1:destroy(); self.edit1 = nil; end;
         if self.rectangle1 ~= nil then self.rectangle1:destroy(); self.rectangle1 = nil; end;
-        if self.layout2 ~= nil then self.layout2:destroy(); self.layout2 = nil; end;
         self:_oldLFMDestroy();
     end;
 

@@ -429,7 +429,7 @@ local function constructNew_frmDZ_NPC_svg()
     obj.comboBox1:setHeight(25);
     obj.comboBox1:setField("NPC_MoralidadeS");
     obj.comboBox1:setItems({'Selvagem', 'Egoísta', 'Moralista', 'Honroso', 'Santo'});
-    obj.comboBox1:setValues({'Se', 'Eg', 'Mo', 'Ho', Sa});
+    obj.comboBox1:setValues({'Se', 'Eg', 'Mo', 'Ho', 'Sa'});
     obj.comboBox1:setTransparent(true);
     obj.comboBox1:setName("comboBox1");
     obj.comboBox1:setFontColor("#C0504D");

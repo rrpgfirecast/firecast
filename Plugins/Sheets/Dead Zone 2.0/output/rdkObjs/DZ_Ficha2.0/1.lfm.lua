@@ -4810,6 +4810,7 @@ local function constructNew_frmDZ_Ficha1_svg()
     obj.button70:setTop(5);
     obj.button70:setWidth(25);
     obj.button70:setLeft(35);
+    obj.button70:setHint("Adiciona um novo ataque.");
     obj.button70:setName("button70");
 
     obj.label36 = GUI.fromHandle(_obj_newObject("label"));
@@ -7789,7 +7790,7 @@ local function constructNew_frmDZ_Ficha1_svg()
     obj.comboBox2:setHeight(25);
     obj.comboBox2:setField("NPC_MoralidadeS");
     obj.comboBox2:setItems({'Selvagem', 'Egoísta', 'Moralista', 'Honroso', 'Santo'});
-    obj.comboBox2:setValues({'Se', 'Eg', 'Mo', 'Ho', Sa});
+    obj.comboBox2:setValues({'Se', 'Eg', 'Mo', 'Ho', 'Sa'});
     obj.comboBox2:setTransparent(true);
     obj.comboBox2:setName("comboBox2");
     obj.comboBox2:setFontColor("#C0504D");
