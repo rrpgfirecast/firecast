@@ -34,6 +34,10 @@ local function constructNew_frmMainAutoupdater()
     obj:setTheme("dark");
 
 
+        
+
+
+
         local function dump(o)
            if type(o) == 'table' then
               local s = '{ '
@@ -216,6 +220,10 @@ local function constructNew_frmMainAutoupdater()
                 "alwaysDownload");
         end;
         
+
+
+ 
+    
 
 
     obj.scope = GUI.fromHandle(_obj_newObject("dataScopeBox"));

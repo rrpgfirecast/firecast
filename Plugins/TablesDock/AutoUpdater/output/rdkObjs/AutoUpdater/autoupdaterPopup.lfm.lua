@@ -43,6 +43,10 @@ local function constructNew_autoupdaterPopup()
     obj.frmMainAutoupdater:setTheme("dark");
 
 
+        
+
+
+
         local function dump(o)
            if type(o) == 'table' then
               local s = '{ '
@@ -225,6 +229,10 @@ local function constructNew_autoupdaterPopup()
                 "alwaysDownload");
         end;
         
+
+
+ 
+    
 
 
     obj.scope = GUI.fromHandle(_obj_newObject("dataScopeBox"));

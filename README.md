@@ -2,7 +2,7 @@
   <img src="https://firecast.app/wp-content/uploads/2021/03/logo1024x1024no_padding-300x300.png" />
 </p>
 
-# RRPG Firecast
+# Firecast
 
 Esse repositório foi criado com o intuito de armazenar o código de projetos relacionados ao Firecast, o maior programa para jogos online de mesa do Brasil.  
 
@@ -14,7 +14,7 @@ Esse repositório foi criado com o intuito de armazenar o código de projetos re
 
 # Ferramentas
 
-- [**SDK**](https://firecast.app/para-programadores/): Necessário instalar para poder compilar os projetos de plugin. No link há duas versões disponíveis, uma compatível com o RRPG antigo e mobile, o [RDK3.4b](http://www.firecast.com.br/RDK3.4b.exe), e o mais atual, [RDK 3.5](https://firecast.app/downloads/RDK3.5.exe).
+- [**SDK**](https://firecast.app/para-programadores/): Necessário instalar para poder compilar os projetos de plugin. No link há duas versões disponíveis, uma compatível com o RRPG antigo e mobile, o [RDK3.4b](http://www.firecast.com.br/RDK3.4b.exe), e o mais atual, [RDK 3.6](https://firecast.app/downloads/RDK3.6.exe).
 - [**Sublime**](https://www.sublimetext.com/3): Um editor de texto, esse ou qualquer outro como [Notepad++](https://notepad-plus-plus.org/), que permita editar os arquivos do projeto. 
 - [**Souce Tree**](https://www.sourcetreeapp.com/): Uma ferramenta para uso do git com interface, essa ou qualquer outra, para facilitar o acesso ao Github. 
 
