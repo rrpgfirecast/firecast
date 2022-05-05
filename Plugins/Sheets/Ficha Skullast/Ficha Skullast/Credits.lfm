@@ -4,10 +4,40 @@
 		<![CDATA[
 			local function recursiveFindControls(node, controlsList)
 				local children = node:getChildren();
+				if node:getClassName() == "recordList" then
+					children = rclKids(node);
+					--write(children[1]:getClassName());
+
+					children = rclKids(children[1]);
+				end;
 				for i=1, #children, 1 do
 					controlsList[#controlsList+1] = children[i];
 					recursiveFindControls(children[i], controlsList);
 				end;
+			end;
+
+			function rclKids(rcl)
+				local ret = {};
+				local i;
+				local childCount = _obj_getProp(rcl.handle, "ChildrenCount");
+				local child;
+				local childHandle;
+				local idxDest = 1;
+					
+				for i = 0, childCount - 1, 1 do
+					childHandle = _gui_getChild(rcl.handle, i);
+					
+					if (childHandle ~= nil) then							
+						child = gui.fromHandle(childHandle);
+						
+						if (type(child) == "table") then							
+							ret[idxDest] = child;
+							idxDest = idxDest + 1;
+						end
+					end;	
+				end
+				
+				return ret;
 			end;
 
 			local function findAllControls()
@@ -57,8 +87,10 @@
 
 		<layout left="850" top="200" width="200" height="150">
 			<rectangle left="0" top="0" width="200" height="150" color="black"/>
+			
 			<label left="0" top="10" width="80" height="20" text="Tema:" horzTextAlign="center"/>
-			<comboBox left="95" top="10" width="90" field="theme" fontColor="white" items="{'Escuro', 'Claro'}" horzTextAlign="center">
+			<comboBox left="95" top="10" width="90" field="theme" fontColor="white" items="{'Escuro', 'Claro'}" horzTextAlign="center"/>
+			<dataLink field="theme" defaultValue="Escuro">
 				<event name="onChange">
 					if sheet == nil then return end;
 					local theme = sheet.theme;
@@ -74,8 +106,7 @@
 						forms[i].theme = theme;
 					end;
 				</event>
-			</comboBox>
-			<dataLink field="theme" defaultValue="Escuro"/>
+			</dataLink>
 
 			<label left="0" top="35" width="90" height="20" text="Cores: " horzTextAlign="center"/>
 

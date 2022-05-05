@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmFichaCreditos" align="client">
+	<scrollBox align="client">
+		<image left="0" top="0" width="500" height="500" style="autoFit" src="logo_mesa"/>
+		
+		<image left="480" top="0" width="350" height="125" style="autoFit" src="https://i.imgur.com/HNK29eO.png?1"/>
+		<image left="500" top="125" width="350" height="125" style="autoFit" src="https://i.imgur.com/Xp12RUs.png"/>
+		
+		<layout left="560" top="290" width="200" height="160">
+			<rectangle align="client" color="black" xradius="5" yradius="15" cornerType="round"/>
+			<label left="0" top="10" width="200" height="20" text="Ficha criada por " horzTextAlign="center"/>
+			<label left="0" top="35" width="200" height="20" text="Marcio F. (Samelfero)" horzTextAlign="center"/>
+			<label left="0" top="60" width="200" height="20" text="para o sistema Dead de Zone" horzTextAlign="center"/>
+			<label left="0" top="85" width="200" height="20" text="escrito por" horzTextAlign="center"/>
+			<label left="0" top="105" width="200" height="20" text="Allan (allan_fns)" horzTextAlign="center"/>
+		</layout>
+		
+		<label left="560" top="480" width="210" height="20" text="Sua Versão: 2.1" horzTextAlign="center" />
+			
+		<button left="555" top="500" width="100" text="Change Log" onClick="GUI.openInBrowser('https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Dead%20Zone%202.0/README.md')" />
+		<button left="667" top="500" width="100" text="Atualizar" onClick="GUI.openInBrowser('https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Dead%20Zone%202.0/output/DeadZone_Ficha%202.0.rpk?raw=true')" />
+		
+	</scrollBox>
+</form>

@@ -17,9 +17,6 @@
 
 		<script> 
 		<![CDATA[
-			
-			local path = NDB.load("pathskills.xml");
-
 			local function updateAtributes(num)
 				local atr = "" .. num;
 				local mod = 0;
@@ -81,25 +78,37 @@
 			end;
 
 			local function pathSkills()
-				local nodes = NDB.getChildNodes(sheet.campoDasPericias); 
-				for i=1, #nodes, 1 do
-					NDB.deleteNode(nodes[i]);
-				end
+				Dialogs.confirmOkCancel("Vai apagar todas perícias atuais.",
+			        function (confirmado)
+			                if confirmado then
+			                    if sheet.campoDasPericias == nil then 
+									sheet.campoDasPericias = {}
+								end;
+								local path = NDB.load("pathskills.xml");
+								NDB.copy(sheet.campoDasPericias, path); 
 
-				for i=1, 35, 1 do
-					local pericia = self.rclListaDasPericias:append();
-					if pericia~=nil then
-						pericia.nomePericia = path[i].nome;
-						pericia.chavePericia = path[i].chave;
-						pericia.exigeTreino = path[i].treino;
-						local armadura = tonumber(path[i].armadura) or 0;
-						if armadura > 0 then
-							pericia.penalidadeArmadura2 = true;
-						end;
-					end;
-				end;
+								self.rclListaDasPericias:sort();
+			                else
+			                        -- usuário escolheu CANCEL
+			                        -- Do nothing
+			                end;
+			        end);
+			end;
 
-				self.rclListaDasPericias:sort();
+			local function exportSkills()
+				local xml = NDB.exportXML(sheet.campoDasPericias);
+
+				local export = {};
+				local bytes = Utils.binaryEncode(export, "utf8", xml);
+
+				local stream = Utils.newMemoryStream();
+				local bytes = stream:write(export);
+
+				Dialogs.saveFile("Salvar Ficha como XML", stream, "skills.xml", "application/xml",
+					function()
+						stream:close();
+						showMessage("Perícias Exportadas.");
+					end);
 			end;
 		]]>	
 		</script>
@@ -157,17 +166,25 @@
 			    </event>
 				<event name="onEndEnumeration">
 					if sheet==nil then return end;
-					local nodes = NDB.getChildNodes(sheet.campoDasPericias);               
-					if #nodes == 0 then
-						pathSkills();
-					end;
+					
+					if sheet.campoDasPericias ~= nil then return end;
+					
+					sheet.campoDasPericias = {}
+					local path = NDB.load("pathskills.xml");
+					NDB.copy(sheet.campoDasPericias, path); 
+
+					self.rclListaDasPericias:sort();
 				</event>
 				<event name="onBeginEnumeration">
 					if sheet==nil then return end;
-					local nodes = NDB.getChildNodes(sheet.campoDasPericias);               
-					if #nodes == 0 then
-						pathSkills();
-					end;
+
+					if sheet.campoDasPericias ~= nil then return end;
+					
+					sheet.campoDasPericias = {}
+					local path = NDB.load("pathskills.xml");
+					NDB.copy(sheet.campoDasPericias, path); 
+
+					self.rclListaDasPericias:sort();
 				</event>
 			</recordList>
 		</layout>
@@ -205,6 +222,8 @@
 				</event>
 			</button>
 			<button text="Pathfinder" left="0" top="50" width="125" height="25" onClick="pathSkills();" hint="Vai apagar todas perícias atuais. "/>
+			<!-- <button text="Export" left="0" top="150" width="125" height="25" onClick="exportSkills();"/> -->
+			<button text="Export" left="0" top="150" width="125" height="25" onClick="exportSkills();"/>
 		</layout>
 	</scrollBox>
 </form>

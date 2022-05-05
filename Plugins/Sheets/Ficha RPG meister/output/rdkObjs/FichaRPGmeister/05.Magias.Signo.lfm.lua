@@ -28,7 +28,7 @@ local function constructNew_frmMagiasSigno()
     obj:beginUpdate();
     obj:setName("frmMagiasSigno");
     obj:setWidth(400);
-    obj:setHeight(150);
+    obj:setHeight(200);
     obj:setMargins({bottom=3,right=3});
 
 			
@@ -55,7 +55,7 @@ local function constructNew_frmMagiasSigno()
     obj.layout1 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout1:setParent(obj);
     obj.layout1:setWidth(400);
-    obj.layout1:setHeight(150);
+    obj.layout1:setHeight(200);
     obj.layout1:setName("layout1");
 
     obj.layout2 = GUI.fromHandle(_obj_newObject("layout"));
@@ -99,7 +99,7 @@ local function constructNew_frmMagiasSigno()
     obj.textEditor1 = GUI.fromHandle(_obj_newObject("textEditor"));
     obj.textEditor1:setParent(obj.layout1);
     obj.textEditor1:setAlign("bottom");
-    obj.textEditor1:setHeight(125);
+    obj.textEditor1:setHeight(175);
     obj.textEditor1:setField("details");
     obj.textEditor1:setName("textEditor1");
 

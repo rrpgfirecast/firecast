@@ -33,10 +33,40 @@ local function constructNew_frmFichaRPGmeister11_svg()
 
 			local function recursiveFindControls(node, controlsList)
 				local children = node:getChildren();
+				if node:getClassName() == "recordList" then
+					children = rclKids(node);
+					--write(children[1]:getClassName());
+
+					children = rclKids(children[1]);
+				end;
 				for i=1, #children, 1 do
 					controlsList[#controlsList+1] = children[i];
 					recursiveFindControls(children[i], controlsList);
 				end;
+			end;
+
+			function rclKids(rcl)
+				local ret = {};
+				local i;
+				local childCount = _obj_getProp(rcl.handle, "ChildrenCount");
+				local child;
+				local childHandle;
+				local idxDest = 1;
+					
+				for i = 0, childCount - 1, 1 do
+					childHandle = _gui_getChild(rcl.handle, i);
+					
+					if (childHandle ~= nil) then							
+						child = gui.fromHandle(childHandle);
+						
+						if (type(child) == "table") then							
+							ret[idxDest] = child;
+							idxDest = idxDest + 1;
+						end
+					end;	
+				end
+				
+				return ret;
 			end;
 
 			local function findAllControls()
@@ -375,8 +405,8 @@ local function constructNew_frmFichaRPGmeister11_svg()
     obj.button7:setText("RPGmeister");
     obj.button7:setName("button7");
 
-    obj._e_event0 = obj.comboBox1:addEventListener("onChange",
-        function (_)
+    obj._e_event0 = obj.dataLink1:addEventListener("onChange",
+        function (_, field, oldValue, newValue)
             if sheet == nil then return end;
             					local theme = sheet.theme;
             					if theme == "Claro" then

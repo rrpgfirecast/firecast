@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmPericiaForm" width="110" height="25" margins="{top=1}">
+	<rectangle align="client" color="#212121">
+		<checkBox align="left" width="20" field="perProf1" horzTextAlign="center"/>
+		<checkBox align="left" width="20" field="perProf2" horzTextAlign="center"/>
+		<edit align="left" width="30" field="perAdicional" vertTextAlign="center"/>
+		<rectangle align="left" width="30" color="black" strokeColor="white" strokeSize="1">
+			<label align="client" field="total" horzTextAlign="center" vertTextAlign="center"/>
+		</rectangle>
+		<comboBox align="left" width="50" vertTextAlign="center" horzTextAlign="center" field="perKey" items="{'FOR', 'DES', 'CON', 'INT', 'SAB', 'CAR', '-'}" values="{'1', '2', '3', '4', '5', '6', '7'}" fontColor="white"/>
+
+		<edit align="client" field="nome"/>
+
+		<button align="right" width="25" text="X">
+			<event name="onClick">
+				Dialogs.confirmOkCancel("Tem certeza que quer apagar esse objeto?",
+					function (confirmado)
+						if confirmado then
+							NDB.deleteNode(sheet);
+						end;
+				end);
+			</event>
+		</button>
+
+		<dataLink fields="{'proficiencia','for_mod','des_mod','con_mod','int_mod','sab_mod','car_mod','perKey','perProf1','perProf2','perAdicional'}">
+			<event name="onChange">
+				if sheet==nil then return end;
+
+				local prof = sheet.proficiencia;
+
+				local values = {(tonumber(sheet.for_mod) or 0), (tonumber(sheet.des_mod) or 0), (tonumber(sheet.con_mod) or 0), (tonumber(sheet.int_mod) or 0), (tonumber(sheet.sab_mod) or 0), (tonumber(sheet.car_mod) or 0), 0}
+				local key = tonumber(sheet.perKey) or 7;
+
+				local total = values[key] + (tonumber(sheet.perAdicional) or 0);
+
+				if sheet.perProf1 then total = total + prof end;
+				if sheet.perProf2 then total = total + prof end;
+
+				sheet.total = total;
+			</event>
+		</dataLink>
+	</rectangle>
+</form>

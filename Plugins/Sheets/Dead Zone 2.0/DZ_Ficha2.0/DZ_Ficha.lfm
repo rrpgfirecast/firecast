@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmDZ_Ficha" formType="sheetTemplate" dataType="DeadZoneRPG2.0" title="Ficha 2.0 Dead Zone" align="client" theme="light">
+    <tabControl align="client">
+        <tab title="Caracteristicas">
+            <import file="1.lfm"/>
+        </tab>
+        <tab title="Anotação">
+            <import file="Anotacao.lfm"/>
+        </tab>
+        <tab title="Historia">
+            <import file="3.lfm"/>
+        </tab>
+        <tab title="Creditos">
+            <import file="creditos.lfm"/>
+        </tab>
+    </tabControl>
+</form>

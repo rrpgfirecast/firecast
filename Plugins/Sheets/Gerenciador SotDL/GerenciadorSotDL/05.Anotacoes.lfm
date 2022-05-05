@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmFichaRPGmeister10_svg" align="client" theme="dark" margins="{top=1}">
+    <scrollBox align="client">
+		<rectangle left="0" top="0" width="1210" height="20" color="Black">
+			<label left="0" top="0" width="1210" height="20" text="PAGINA EXCLUSIVA DO MESTRE" horzTextAlign="center" />
+			<button left="0" top="0" width="50" height="20" text="Exibir" onClick="secret();" hint="Exibe as Anotações do Mestre."/>
+		</rectangle>
+	
+	   <layout left="0" top="0" width="400" height="605" name="a1" visible="false" >
+			<rectangle align="client" color="black"/>
+			<label left="0" top="0" width="400" height="20" text="ANOTAÇÕES" horzTextAlign="center"/>
+			<textEditor left="10" top="25" width="380" height="575" field="anotacoes1"/>
+		</layout>
+		
+		<layout left="405" top="0" width="400" height="605" name="a2" visible="false" >
+			<rectangle align="client" color="black"/>
+			<label left="0" top="0" width="400" height="20" text="ANOTAÇÕES" horzTextAlign="center"/>
+			<textEditor left="10" top="25" width="380" height="575" field="anotacoes2"/>
+		</layout>
+		
+		<layout left="810" top="0" width="400" height="605" name="a3" visible="false">
+			<rectangle align="client" color="black"/>
+			<label left="0" top="0" width="400" height="20" text="ANOTAÇÕES" horzTextAlign="center"/>
+			<textEditor left="10" top="25" width="380" height="575" field="anotacoes3"/>
+		</layout>
+		
+		<script>
+			local function secret()
+				local mesa = rrpg.getMesaDe(sheet);
+				
+				if mesa.meuJogador.isMestre then
+					self.a1.visible = true;
+					self.a2.visible = true;
+					self.a3.visible = true;
+				else
+					self.a1.visible = false;
+					self.a2.visible = false;
+					self.a3.visible = false;
+				end;
+			end;
+		</script>
+    </scrollBox>
+</form>

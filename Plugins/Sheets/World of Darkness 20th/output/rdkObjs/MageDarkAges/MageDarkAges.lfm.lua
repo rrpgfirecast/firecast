@@ -9764,6 +9764,80 @@ local function constructNew_frmMageDarkAges()
     obj.frmMDA20_7:setAlign("client");
     obj.frmMDA20_7:setTheme("dark");
 
+
+			local function recursiveFindControls(node, controlsList)
+				local children = node:getChildren();
+				if node:getClassName() == "recordList" then
+					children = rclKids(node);
+					--write(children[1]:getClassName());
+
+					children = rclKids(children[1]);
+				end;
+				for i=1, #children, 1 do
+					controlsList[#controlsList+1] = children[i];
+					recursiveFindControls(children[i], controlsList);
+				end;
+			end;
+
+			function rclKids(rcl)
+				local ret = {};
+				local i;
+				local childCount = _obj_getProp(rcl.handle, "ChildrenCount");
+				local child;
+				local childHandle;
+				local idxDest = 1;
+					
+				for i = 0, childCount - 1, 1 do
+					childHandle = _gui_getChild(rcl.handle, i);
+					
+					if (childHandle ~= nil) then							
+						child = gui.fromHandle(childHandle);
+						
+						if (type(child) == "table") then							
+							ret[idxDest] = child;
+							idxDest = idxDest + 1;
+						end
+					end;	
+				end
+				
+				return ret;
+			end;
+
+			local function findAllControls()
+				local controlsList = {self};
+				recursiveFindControls(self, controlsList);
+				
+				return controlsList;
+			end;
+
+			local function filterByClass(className, controls)
+				local controlsFromClass = {};
+
+				for i=1, #controls, 1 do
+					if controls[i]:getClassName() == className then
+						controlsFromClass[#controlsFromClass + 1] = controls[i];
+					end;
+				end;
+
+				return controlsFromClass;
+			end;
+
+			local function findClass(className)
+				local controls = findAllControls();
+				return filterByClass(className, controls);
+			end;
+
+			local function tryTranslate(txt)
+				if txt==nil then return "" end;
+
+				local trans = Locale.tryLang("wod." .. txt);
+
+				if trans == nil then return txt end;
+				return trans;
+			end;
+		
+
+
     obj.scrollBox7 = GUI.fromHandle(_obj_newObject("scrollBox"));
     obj.scrollBox7:setParent(obj.frmMDA20_7);
     obj.scrollBox7:setAlign("client");
@@ -9774,9 +9848,9 @@ local function constructNew_frmMageDarkAges()
     obj.image11:setLeft(0);
     obj.image11:setTop(0);
     obj.image11:setWidth(500);
-    obj.image11:setHeight(152);
+    obj.image11:setHeight(175);
     obj.image11:setStyle("autoFit");
-    obj.image11:setSRC("/MageDarkAges/images/mage.png");
+    obj.image11:setSRC("images/werewolf.png");
     obj.image11:setName("image11");
 
     obj.image12 = GUI.fromHandle(_obj_newObject("image"));
@@ -9794,7 +9868,7 @@ local function constructNew_frmMageDarkAges()
     obj.layout190:setLeft(850);
     obj.layout190:setTop(0);
     obj.layout190:setWidth(200);
-    obj.layout190:setHeight(310);
+    obj.layout190:setHeight(250);
     obj.layout190:setName("layout190");
 
     obj.rectangle50 = GUI.fromHandle(_obj_newObject("rectangle"));
@@ -9887,15 +9961,137 @@ local function constructNew_frmMageDarkAges()
     obj.label128:setHorzTextAlign("center");
     obj.label128:setName("label128");
 
+    obj.layout191 = GUI.fromHandle(_obj_newObject("layout"));
+    obj.layout191:setParent(obj.scrollBox7);
+    obj.layout191:setLeft(850);
+    obj.layout191:setTop(260);
+    obj.layout191:setWidth(200);
+    obj.layout191:setHeight(150);
+    obj.layout191:setName("layout191");
+
+    obj.rectangle51 = GUI.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle51:setParent(obj.layout191);
+    obj.rectangle51:setAlign("client");
+    obj.rectangle51:setColor("black");
+    obj.rectangle51:setXradius(10);
+    obj.rectangle51:setYradius(10);
+    obj.rectangle51:setCornerType("innerLine");
+    obj.rectangle51:setName("rectangle51");
+
     obj.label129 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label129:setParent(obj.scrollBox7);
-    obj.label129:setLeft(555);
-    obj.label129:setTop(300);
-    obj.label129:setWidth(100);
+    obj.label129:setParent(obj.layout191);
+    obj.label129:setLeft(0);
+    obj.label129:setTop(10);
+    obj.label129:setWidth(80);
     obj.label129:setHeight(20);
-    obj.label129:setText("Versão Atual: ");
+    obj.label129:setText("Tema:");
     obj.label129:setHorzTextAlign("center");
     obj.label129:setName("label129");
+
+    obj.comboBox1 = GUI.fromHandle(_obj_newObject("comboBox"));
+    obj.comboBox1:setParent(obj.layout191);
+    obj.comboBox1:setLeft(95);
+    obj.comboBox1:setTop(10);
+    obj.comboBox1:setWidth(90);
+    obj.comboBox1:setField("theme");
+    obj.comboBox1:setFontColor("white");
+    obj.comboBox1:setItems({'Escuro', 'Claro'});
+    obj.comboBox1:setHorzTextAlign("center");
+    obj.comboBox1:setName("comboBox1");
+
+    obj.dataLink1 = GUI.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink1:setParent(obj.layout191);
+    obj.dataLink1:setField("theme");
+    obj.dataLink1:setDefaultValue("Escuro");
+    obj.dataLink1:setName("dataLink1");
+
+    obj.label130 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label130:setParent(obj.layout191);
+    obj.label130:setLeft(0);
+    obj.label130:setTop(35);
+    obj.label130:setWidth(90);
+    obj.label130:setHeight(20);
+    obj.label130:setText("Colors");
+    obj.label130:setHorzTextAlign("center");
+    obj.label130:setName("label130");
+
+    obj.label131 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label131:setParent(obj.layout191);
+    obj.label131:setLeft(0);
+    obj.label131:setTop(60);
+    obj.label131:setWidth(90);
+    obj.label131:setHeight(20);
+    obj.label131:setText("Background");
+    obj.label131:setHorzTextAlign("center");
+    obj.label131:setName("label131");
+
+    obj.comboBox2 = GUI.fromHandle(_obj_newObject("comboBox"));
+    obj.comboBox2:setParent(obj.layout191);
+    obj.comboBox2:setLeft(95);
+    obj.comboBox2:setTop(60);
+    obj.comboBox2:setWidth(90);
+    obj.comboBox2:setField("colorBackground");
+    obj.comboBox2:setItems({'AliceBlue', 'AntiqueWhite', 'Aqua', 'Aquamarine', 'Azure', 'Beige', 'Bisque', 'Black', 'BlanchedAlmond', 'Blue', 'BlueViolet', 'Brown', 'BurlyWood', 'CadetBlue', 'Chartreuse', 'Chocolate', 'Coral', 'CornflowerBlue', 'Cornsilk', 'Crimson', 'Cyan', 'DarkBlue', 'DarkCyan', 'DarkGoldenRod', 'DarkGray', 'DarkGreen', 'DarkKhaki', 'DarkMagenta', 'DarkOliveGreen', 'DarkOrange', 'DarkOrchid', 'DarkRed', 'DarkSalmon', 'DarkSeaGreen', 'DarkSlateBlue', 'DarkSlateGray', 'DarkTurquoise', 'DarkViolet', 'DeepPink', 'DeepSkyBlue', 'DimGray', 'DodgerBlue', 'FireBrick', 'FloralWhite', 'ForestGreen', 'Fuchsia', 'Gainsboro', 'GhostWhite', 'Gold', 'GoldenRod', 'Gray', 'Green', 'GreenYellow', 'HoneyDew', 'HotPink', 'IndianRed ', 'Indigo ', 'Ivory', 'Khaki', 'Lavender', 'LavenderBlush', 'LawnGreen', 'LemonChiffon', 'LightBlue', 'LightCoral', 'LightCyan', 'LightGoldenRodYellow', 'LightGray', 'LightGreen', 'LightPink', 'LightSalmon', 'LightSeaGreen', 'LightSkyBlue', 'LightSlateGray', 'LightSteelBlue', 'LightYellow', 'Lime', 'LimeGreen', 'Linen', 'Magenta', 'Maroon', 'MediumAquaMarine', 'MediumBlue', 'MediumOrchid', 'MediumPurple', 'MediumSeaGreen', 'MediumSlateBlue', 'MediumSpringGreen', 'MediumTurquoise', 'MediumVioletRed', 'MidnightBlue', 'MintCream', 'MistyRose', 'Moccasin', 'NavajoWhite', 'Navy', 'OldLace', 'Olive', 'OliveDrab', 'Orange', 'OrangeRed', 'Orchid', 'PaleGoldenRod', 'PaleGreen', 'PaleTurquoise', 'PaleVioletRed', 'PapayaWhip', 'PeachPuff', 'Peru', 'Pink', 'Plum', 'PowderBlue', 'Purple', 'RebeccaPurple', 'Red', 'RosyBrown', 'RoyalBlue', 'SaddleBrown', 'Salmon', 'SandyBrown', 'SeaGreen', 'SeaShell', 'Sienna', 'Silver', 'SkyBlue', 'SlateBlue', 'SlateGray', 'Snow', 'SpringGreen', 'SteelBlue', 'Tan', 'Teal', 'Thistle', 'Tomato', 'Turquoise', 'Violet', 'Wheat', 'White', 'WhiteSmoke', 'Yellow', 'YellowGreen'});
+    obj.comboBox2:setValues({'#F0F8FF', '#FAEBD7', '#00FFFF', '#7FFFD4', '#F0FFFF', '#F5F5DC', '#FFE4C4', '#000000', '#FFEBCD', '#0000FF', '#8A2BE2', '#A52A2A', '#DEB887', '#5F9EA0', '#7FFF00', '#D2691E', '#FF7F50', '#6495ED', '#FFF8DC', '#DC143C', '#00FFFF', '#00008B', '#008B8B', '#B8860B', '#A9A9A9', '#006400', '#BDB76B', '#8B008B', '#556B2F', '#FF8C00', '#9932CC', '#8B0000', '#E9967A', '#8FBC8F', '#483D8B', '#2F4F4F', '#00CED1', '#9400D3', '#FF1493', '#00BFFF', '#696969', '#1E90FF', '#B22222', '#FFFAF0', '#228B22', '#FF00FF', '#DCDCDC', '#F8F8FF', '#FFD700', '#DAA520', '#808080', '#008000', '#ADFF2F', '#F0FFF0', '#FF69B4', '#CD5C5C', '#4B0082', '#FFFFF0', '#F0E68C', '#E6E6FA', '#FFF0F5', '#7CFC00', '#FFFACD', '#ADD8E6', '#F08080', '#E0FFFF', '#FAFAD2', '#D3D3D3', '#90EE90', '#FFB6C1', '#FFA07A', '#20B2AA', '#87CEFA', '#778899', '#B0C4DE', '#FFFFE0', '#00FF00', '#32CD32', '#FAF0E6', '#FF00FF', '#800000', '#66CDAA', '#0000CD', '#BA55D3', '#9370DB', '#3CB371', '#7B68EE', '#00FA9A', '#48D1CC', '#C71585', '#191970', '#F5FFFA', '#FFE4E1', '#FFE4B5', '#FFDEAD', '#000080', '#FDF5E6', '#808000', '#6B8E23', '#FFA500', '#FF4500', '#DA70D6', '#EEE8AA', '#98FB98', '#AFEEEE', '#DB7093', '#FFEFD5', '#FFDAB9', '#CD853F', '#FFC0CB', '#DDA0DD', '#B0E0E6', '#800080', '#663399', '#FF0000', '#BC8F8F', '#4169E1', '#8B4513', '#FA8072', '#F4A460', '#2E8B57', '#FFF5EE', '#A0522D', '#C0C0C0', '#87CEEB', '#6A5ACD', '#708090', '#FFFAFA', '#00FF7F', '#4682B4', '#D2B48C', '#008080', '#D8BFD8', '#FF6347', '#40E0D0', '#EE82EE', '#F5DEB3', '#FFFFFF', '#F5F5F5', '#FFFF00', '#9ACD32'});
+    obj.comboBox2:setName("comboBox2");
+
+    obj.dataLink2 = GUI.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink2:setParent(obj.layout191);
+    obj.dataLink2:setField("colorBackground");
+    obj.dataLink2:setDefaultValue("#000000");
+    obj.dataLink2:setName("dataLink2");
+
+    obj.label132 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label132:setParent(obj.layout191);
+    obj.label132:setLeft(0);
+    obj.label132:setTop(85);
+    obj.label132:setWidth(90);
+    obj.label132:setHeight(20);
+    obj.label132:setText("Font");
+    obj.label132:setHorzTextAlign("center");
+    obj.label132:setName("label132");
+
+    obj.comboBox3 = GUI.fromHandle(_obj_newObject("comboBox"));
+    obj.comboBox3:setParent(obj.layout191);
+    obj.comboBox3:setLeft(95);
+    obj.comboBox3:setTop(85);
+    obj.comboBox3:setWidth(90);
+    obj.comboBox3:setField("colorFont");
+    obj.comboBox3:setItems({'AliceBlue', 'AntiqueWhite', 'Aqua', 'Aquamarine', 'Azure', 'Beige', 'Bisque', 'Black', 'BlanchedAlmond', 'Blue', 'BlueViolet', 'Brown', 'BurlyWood', 'CadetBlue', 'Chartreuse', 'Chocolate', 'Coral', 'CornflowerBlue', 'Cornsilk', 'Crimson', 'Cyan', 'DarkBlue', 'DarkCyan', 'DarkGoldenRod', 'DarkGray', 'DarkGreen', 'DarkKhaki', 'DarkMagenta', 'DarkOliveGreen', 'DarkOrange', 'DarkOrchid', 'DarkRed', 'DarkSalmon', 'DarkSeaGreen', 'DarkSlateBlue', 'DarkSlateGray', 'DarkTurquoise', 'DarkViolet', 'DeepPink', 'DeepSkyBlue', 'DimGray', 'DodgerBlue', 'FireBrick', 'FloralWhite', 'ForestGreen', 'Fuchsia', 'Gainsboro', 'GhostWhite', 'Gold', 'GoldenRod', 'Gray', 'Green', 'GreenYellow', 'HoneyDew', 'HotPink', 'IndianRed ', 'Indigo ', 'Ivory', 'Khaki', 'Lavender', 'LavenderBlush', 'LawnGreen', 'LemonChiffon', 'LightBlue', 'LightCoral', 'LightCyan', 'LightGoldenRodYellow', 'LightGray', 'LightGreen', 'LightPink', 'LightSalmon', 'LightSeaGreen', 'LightSkyBlue', 'LightSlateGray', 'LightSteelBlue', 'LightYellow', 'Lime', 'LimeGreen', 'Linen', 'Magenta', 'Maroon', 'MediumAquaMarine', 'MediumBlue', 'MediumOrchid', 'MediumPurple', 'MediumSeaGreen', 'MediumSlateBlue', 'MediumSpringGreen', 'MediumTurquoise', 'MediumVioletRed', 'MidnightBlue', 'MintCream', 'MistyRose', 'Moccasin', 'NavajoWhite', 'Navy', 'OldLace', 'Olive', 'OliveDrab', 'Orange', 'OrangeRed', 'Orchid', 'PaleGoldenRod', 'PaleGreen', 'PaleTurquoise', 'PaleVioletRed', 'PapayaWhip', 'PeachPuff', 'Peru', 'Pink', 'Plum', 'PowderBlue', 'Purple', 'RebeccaPurple', 'Red', 'RosyBrown', 'RoyalBlue', 'SaddleBrown', 'Salmon', 'SandyBrown', 'SeaGreen', 'SeaShell', 'Sienna', 'Silver', 'SkyBlue', 'SlateBlue', 'SlateGray', 'Snow', 'SpringGreen', 'SteelBlue', 'Tan', 'Teal', 'Thistle', 'Tomato', 'Turquoise', 'Violet', 'Wheat', 'White', 'WhiteSmoke', 'Yellow', 'YellowGreen'});
+    obj.comboBox3:setValues({'#F0F8FF', '#FAEBD7', '#00FFFF', '#7FFFD4', '#F0FFFF', '#F5F5DC', '#FFE4C4', '#000000', '#FFEBCD', '#0000FF', '#8A2BE2', '#A52A2A', '#DEB887', '#5F9EA0', '#7FFF00', '#D2691E', '#FF7F50', '#6495ED', '#FFF8DC', '#DC143C', '#00FFFF', '#00008B', '#008B8B', '#B8860B', '#A9A9A9', '#006400', '#BDB76B', '#8B008B', '#556B2F', '#FF8C00', '#9932CC', '#8B0000', '#E9967A', '#8FBC8F', '#483D8B', '#2F4F4F', '#00CED1', '#9400D3', '#FF1493', '#00BFFF', '#696969', '#1E90FF', '#B22222', '#FFFAF0', '#228B22', '#FF00FF', '#DCDCDC', '#F8F8FF', '#FFD700', '#DAA520', '#808080', '#008000', '#ADFF2F', '#F0FFF0', '#FF69B4', '#CD5C5C', '#4B0082', '#FFFFF0', '#F0E68C', '#E6E6FA', '#FFF0F5', '#7CFC00', '#FFFACD', '#ADD8E6', '#F08080', '#E0FFFF', '#FAFAD2', '#D3D3D3', '#90EE90', '#FFB6C1', '#FFA07A', '#20B2AA', '#87CEFA', '#778899', '#B0C4DE', '#FFFFE0', '#00FF00', '#32CD32', '#FAF0E6', '#FF00FF', '#800000', '#66CDAA', '#0000CD', '#BA55D3', '#9370DB', '#3CB371', '#7B68EE', '#00FA9A', '#48D1CC', '#C71585', '#191970', '#F5FFFA', '#FFE4E1', '#FFE4B5', '#FFDEAD', '#000080', '#FDF5E6', '#808000', '#6B8E23', '#FFA500', '#FF4500', '#DA70D6', '#EEE8AA', '#98FB98', '#AFEEEE', '#DB7093', '#FFEFD5', '#FFDAB9', '#CD853F', '#FFC0CB', '#DDA0DD', '#B0E0E6', '#800080', '#663399', '#FF0000', '#BC8F8F', '#4169E1', '#8B4513', '#FA8072', '#F4A460', '#2E8B57', '#FFF5EE', '#A0522D', '#C0C0C0', '#87CEEB', '#6A5ACD', '#708090', '#FFFAFA', '#00FF7F', '#4682B4', '#D2B48C', '#008080', '#D8BFD8', '#FF6347', '#40E0D0', '#EE82EE', '#F5DEB3', '#FFFFFF', '#F5F5F5', '#FFFF00', '#9ACD32'});
+    obj.comboBox3:setName("comboBox3");
+
+    obj.dataLink3 = GUI.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink3:setParent(obj.layout191);
+    obj.dataLink3:setField("colorFont");
+    obj.dataLink3:setDefaultValue("#FFFFFF");
+    obj.dataLink3:setName("dataLink3");
+
+    obj.checkBox38 = GUI.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox38:setParent(obj.layout191);
+    obj.checkBox38:setLeft(20);
+    obj.checkBox38:setTop(110);
+    obj.checkBox38:setWidth(160);
+    obj.checkBox38:setHeight(20);
+    obj.checkBox38:setField("localization");
+    obj.checkBox38:setText("Translate");
+    obj.checkBox38:setName("checkBox38");
+
+    obj.dataLink4 = GUI.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink4:setParent(obj.layout191);
+    obj.dataLink4:setField("localization");
+    obj.dataLink4:setDefaultValue("#FFFFFF");
+    obj.dataLink4:setName("dataLink4");
+
+    obj.label133 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label133:setParent(obj.scrollBox7);
+    obj.label133:setLeft(555);
+    obj.label133:setTop(300);
+    obj.label133:setWidth(100);
+    obj.label133:setHeight(20);
+    obj.label133:setText("Versão Atual: ");
+    obj.label133:setHorzTextAlign("center");
+    obj.label133:setName("label133");
 
     obj.image13 = GUI.fromHandle(_obj_newObject("image"));
     obj.image13:setParent(obj.scrollBox7);
@@ -9907,15 +10103,15 @@ local function constructNew_frmMageDarkAges()
     obj.image13:setSRC("http://www.cin.ufpe.br/~jvdl/Plugins/Version/versao04.png");
     obj.image13:setName("image13");
 
-    obj.label130 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label130:setParent(obj.scrollBox7);
-    obj.label130:setLeft(555);
-    obj.label130:setTop(325);
-    obj.label130:setWidth(100);
-    obj.label130:setHeight(20);
-    obj.label130:setText("Ultima Versão: ");
-    obj.label130:setHorzTextAlign("center");
-    obj.label130:setName("label130");
+    obj.label134 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label134:setParent(obj.scrollBox7);
+    obj.label134:setLeft(555);
+    obj.label134:setTop(325);
+    obj.label134:setWidth(100);
+    obj.label134:setHeight(20);
+    obj.label134:setText("Ultima Versão: ");
+    obj.label134:setHorzTextAlign("center");
+    obj.label134:setName("label134");
 
     obj.image14 = GUI.fromHandle(_obj_newObject("image"));
     obj.image14:setParent(obj.scrollBox7);
@@ -9943,14 +10139,14 @@ local function constructNew_frmMageDarkAges()
     obj.button4:setText("Atualizar");
     obj.button4:setName("button4");
 
-    obj.label131 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label131:setParent(obj.scrollBox7);
-    obj.label131:setLeft(555);
-    obj.label131:setTop(400);
-    obj.label131:setWidth(200);
-    obj.label131:setHeight(20);
-    obj.label131:setText("Conheça a Mesa:");
-    obj.label131:setName("label131");
+    obj.label135 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label135:setParent(obj.scrollBox7);
+    obj.label135:setLeft(555);
+    obj.label135:setTop(400);
+    obj.label135:setWidth(200);
+    obj.label135:setHeight(20);
+    obj.label135:setText("Conheça a Mesa:");
+    obj.label135:setName("label135");
 
     obj.button5 = GUI.fromHandle(_obj_newObject("button"));
     obj.button5:setParent(obj.scrollBox7);
@@ -9970,22 +10166,113 @@ local function constructNew_frmMageDarkAges()
             self.rclAides:append();
         end, obj);
 
-    obj._e_event2 = obj.button3:addEventListener("onClick",
+    obj._e_event2 = obj.dataLink1:addEventListener("onChange",
+        function (_, field, oldValue, newValue)
+            if sheet == nil then return end;
+            					local theme = sheet.theme;
+            					if theme == "Claro" then
+            						theme = "light";
+            					else
+            						theme = "dark";
+            					end;
+            
+            					local forms = findClass("form");
+            
+            					for i=1, #forms, 1 do 
+            						forms[i].theme = theme;
+            					end;
+        end, obj);
+
+    obj._e_event3 = obj.dataLink2:addEventListener("onChange",
+        function (_, field, oldValue, newValue)
+            if sheet==nil then return end;
+            					local color = sheet.colorBackground or "#000000";
+            
+            		            local rectangles = findClass("rectangle");
+            
+            					for i=1, #rectangles, 1 do 
+            						rectangles[i].color = color;
+            					end;
+        end, obj);
+
+    obj._e_event4 = obj.dataLink3:addEventListener("onChange",
+        function (_, field, oldValue, newValue)
+            if sheet==nil then return end;
+            					local fontColor = sheet.colorFont or "#FFFFFF";
+            
+            					local controls = findAllControls();
+            					
+            					local edits = filterByClass("edit", controls);
+            					for i=1, #edits, 1 do 
+            						edits[i].fontColor = fontColor;
+            					end;
+            
+            					local labels = filterByClass("label", controls);
+            					for i=1, #labels, 1 do 
+            						labels[i].fontColor = fontColor;
+            					end;
+            
+            					local comboBoxs = filterByClass("comboBox", controls);
+            					for i=1, #comboBoxs, 1 do 
+            						comboBoxs[i].fontColor = fontColor;
+            					end;
+            
+            					local textEditors = filterByClass("textEditor", controls);
+            					for i=1, #textEditors, 1 do 
+            						textEditors[i].fontColor = fontColor;
+            					end;
+            
+            					local checkBoxs = filterByClass("checkBox", controls);
+            					for i=1, #checkBoxs, 1 do 
+            						checkBoxs[i].fontColor = fontColor;
+            					end;
+            
+            					local buttons = filterByClass("button", controls);
+            					for i=1, #buttons, 1 do 
+            						buttons[i].fontColor = fontColor;
+            					end;
+        end, obj);
+
+    obj._e_event5 = obj.dataLink4:addEventListener("onChange",
+        function (_, field, oldValue, newValue)
+            if sheet==nil then return end;
+            		            if sheet.localization ~= true then return end;
+            
+            		            local labels = findClass("label");
+            
+            					for i=1, #labels, 1 do 
+            						local label = labels[i];
+            						label.text = tryTranslate(label.text or "");
+            					end;
+            
+            		            local radios = findClass("radioButton");
+            
+            					for i=1, #radios, 1 do 
+            						local radio = radios[i];
+            						radio.text = tryTranslate(radio.text or "");
+            					end;
+        end, obj);
+
+    obj._e_event6 = obj.button3:addEventListener("onClick",
         function (_)
             gui.openInBrowser('http://www.cin.ufpe.br/~jvdl/Plugins/WoD20th/Change%20Log.txt')
         end, obj);
 
-    obj._e_event3 = obj.button4:addEventListener("onClick",
+    obj._e_event7 = obj.button4:addEventListener("onClick",
         function (_)
             gui.openInBrowser('http://www.cin.ufpe.br/~jvdl/Plugins/WoD20th/World%20of%20Darkness%2020th.rpk')
         end, obj);
 
-    obj._e_event4 = obj.button5:addEventListener("onClick",
+    obj._e_event8 = obj.button5:addEventListener("onClick",
         function (_)
             gui.openInBrowser('http://firecast.rrpg.com.br:90/a?a=pagRWEMesaInfo.actInfoMesa&mesaid=64070');
         end, obj);
 
     function obj:_releaseEvents()
+        __o_rrpgObjs.removeEventListenerById(self._e_event8);
+        __o_rrpgObjs.removeEventListenerById(self._e_event7);
+        __o_rrpgObjs.removeEventListenerById(self._e_event6);
+        __o_rrpgObjs.removeEventListenerById(self._e_event5);
         __o_rrpgObjs.removeEventListenerById(self._e_event4);
         __o_rrpgObjs.removeEventListenerById(self._e_event3);
         __o_rrpgObjs.removeEventListenerById(self._e_event2);
@@ -10061,6 +10348,7 @@ local function constructNew_frmMageDarkAges()
         if self.edit115 ~= nil then self.edit115:destroy(); self.edit115 = nil; end;
         if self.layout174 ~= nil then self.layout174:destroy(); self.layout174 = nil; end;
         if self.label48 ~= nil then self.label48:destroy(); self.label48 = nil; end;
+        if self.comboBox2 ~= nil then self.comboBox2:destroy(); self.comboBox2 = nil; end;
         if self.imageCheckBox79 ~= nil then self.imageCheckBox79:destroy(); self.imageCheckBox79 = nil; end;
         if self.edit214 ~= nil then self.edit214:destroy(); self.edit214 = nil; end;
         if self.imageCheckBox150 ~= nil then self.imageCheckBox150:destroy(); self.imageCheckBox150 = nil; end;
@@ -10083,6 +10371,7 @@ local function constructNew_frmMageDarkAges()
         if self.imageCheckBox131 ~= nil then self.imageCheckBox131:destroy(); self.imageCheckBox131 = nil; end;
         if self.edit129 ~= nil then self.edit129:destroy(); self.edit129 = nil; end;
         if self.edit142 ~= nil then self.edit142:destroy(); self.edit142 = nil; end;
+        if self.dataLink3 ~= nil then self.dataLink3:destroy(); self.dataLink3 = nil; end;
         if self.rectangle2 ~= nil then self.rectangle2:destroy(); self.rectangle2 = nil; end;
         if self.layout78 ~= nil then self.layout78:destroy(); self.layout78 = nil; end;
         if self.label111 ~= nil then self.label111:destroy(); self.label111 = nil; end;
@@ -10100,6 +10389,7 @@ local function constructNew_frmMageDarkAges()
         if self.edit176 ~= nil then self.edit176:destroy(); self.edit176 = nil; end;
         if self.layout35 ~= nil then self.layout35:destroy(); self.layout35 = nil; end;
         if self.imageCheckBox285 ~= nil then self.imageCheckBox285:destroy(); self.imageCheckBox285 = nil; end;
+        if self.layout191 ~= nil then self.layout191:destroy(); self.layout191 = nil; end;
         if self.checkBox23 ~= nil then self.checkBox23:destroy(); self.checkBox23 = nil; end;
         if self.checkBox37 ~= nil then self.checkBox37:destroy(); self.checkBox37 = nil; end;
         if self.imageCheckBox117 ~= nil then self.imageCheckBox117:destroy(); self.imageCheckBox117 = nil; end;
@@ -10186,6 +10476,7 @@ local function constructNew_frmMageDarkAges()
         if self.imageCheckBox22 ~= nil then self.imageCheckBox22:destroy(); self.imageCheckBox22 = nil; end;
         if self.label53 ~= nil then self.label53:destroy(); self.label53 = nil; end;
         if self.imageCheckBox313 ~= nil then self.imageCheckBox313:destroy(); self.imageCheckBox313 = nil; end;
+        if self.label133 ~= nil then self.label133:destroy(); self.label133 = nil; end;
         if self.imageCheckBox339 ~= nil then self.imageCheckBox339:destroy(); self.imageCheckBox339 = nil; end;
         if self.edit21 ~= nil then self.edit21:destroy(); self.edit21 = nil; end;
         if self.label42 ~= nil then self.label42:destroy(); self.label42 = nil; end;
@@ -10369,6 +10660,7 @@ local function constructNew_frmMageDarkAges()
         if self.imageCheckBox102 ~= nil then self.imageCheckBox102:destroy(); self.imageCheckBox102 = nil; end;
         if self.layout21 ~= nil then self.layout21:destroy(); self.layout21 = nil; end;
         if self.edit140 ~= nil then self.edit140:destroy(); self.edit140 = nil; end;
+        if self.checkBox38 ~= nil then self.checkBox38:destroy(); self.checkBox38 = nil; end;
         if self.imageCheckBox163 ~= nil then self.imageCheckBox163:destroy(); self.imageCheckBox163 = nil; end;
         if self.imageCheckBox109 ~= nil then self.imageCheckBox109:destroy(); self.imageCheckBox109 = nil; end;
         if self.checkBox4 ~= nil then self.checkBox4:destroy(); self.checkBox4 = nil; end;
@@ -10472,6 +10764,7 @@ local function constructNew_frmMageDarkAges()
         if self.rectangle49 ~= nil then self.rectangle49:destroy(); self.rectangle49 = nil; end;
         if self.imageCheckBox299 ~= nil then self.imageCheckBox299:destroy(); self.imageCheckBox299 = nil; end;
         if self.imageCheckBox236 ~= nil then self.imageCheckBox236:destroy(); self.imageCheckBox236 = nil; end;
+        if self.dataLink1 ~= nil then self.dataLink1:destroy(); self.dataLink1 = nil; end;
         if self.edit144 ~= nil then self.edit144:destroy(); self.edit144 = nil; end;
         if self.imageCheckBox151 ~= nil then self.imageCheckBox151:destroy(); self.imageCheckBox151 = nil; end;
         if self.imageCheckBox16 ~= nil then self.imageCheckBox16:destroy(); self.imageCheckBox16 = nil; end;
@@ -10515,6 +10808,7 @@ local function constructNew_frmMageDarkAges()
         if self.edit212 ~= nil then self.edit212:destroy(); self.edit212 = nil; end;
         if self.imageCheckBox310 ~= nil then self.imageCheckBox310:destroy(); self.imageCheckBox310 = nil; end;
         if self.edit173 ~= nil then self.edit173:destroy(); self.edit173 = nil; end;
+        if self.label134 ~= nil then self.label134:destroy(); self.label134 = nil; end;
         if self.checkBox30 ~= nil then self.checkBox30:destroy(); self.checkBox30 = nil; end;
         if self.rectangle24 ~= nil then self.rectangle24:destroy(); self.rectangle24 = nil; end;
         if self.edit213 ~= nil then self.edit213:destroy(); self.edit213 = nil; end;
@@ -10572,6 +10866,7 @@ local function constructNew_frmMageDarkAges()
         if self.edit69 ~= nil then self.edit69:destroy(); self.edit69 = nil; end;
         if self.imageCheckBox63 ~= nil then self.imageCheckBox63:destroy(); self.imageCheckBox63 = nil; end;
         if self.layout119 ~= nil then self.layout119:destroy(); self.layout119 = nil; end;
+        if self.rectangle51 ~= nil then self.rectangle51:destroy(); self.rectangle51 = nil; end;
         if self.layout52 ~= nil then self.layout52:destroy(); self.layout52 = nil; end;
         if self.layout141 ~= nil then self.layout141:destroy(); self.layout141 = nil; end;
         if self.layout158 ~= nil then self.layout158:destroy(); self.layout158 = nil; end;
@@ -10711,6 +11006,7 @@ local function constructNew_frmMageDarkAges()
         if self.label102 ~= nil then self.label102:destroy(); self.label102 = nil; end;
         if self.edit93 ~= nil then self.edit93:destroy(); self.edit93 = nil; end;
         if self.edit126 ~= nil then self.edit126:destroy(); self.edit126 = nil; end;
+        if self.label132 ~= nil then self.label132:destroy(); self.label132 = nil; end;
         if self.layout128 ~= nil then self.layout128:destroy(); self.layout128 = nil; end;
         if self.edit177 ~= nil then self.edit177:destroy(); self.edit177 = nil; end;
         if self.layout97 ~= nil then self.layout97:destroy(); self.layout97 = nil; end;
@@ -10780,6 +11076,7 @@ local function constructNew_frmMageDarkAges()
         if self.checkBox18 ~= nil then self.checkBox18:destroy(); self.checkBox18 = nil; end;
         if self.imageCheckBox165 ~= nil then self.imageCheckBox165:destroy(); self.imageCheckBox165 = nil; end;
         if self.edit185 ~= nil then self.edit185:destroy(); self.edit185 = nil; end;
+        if self.dataLink4 ~= nil then self.dataLink4:destroy(); self.dataLink4 = nil; end;
         if self.layout63 ~= nil then self.layout63:destroy(); self.layout63 = nil; end;
         if self.edit111 ~= nil then self.edit111:destroy(); self.edit111 = nil; end;
         if self.layout188 ~= nil then self.layout188:destroy(); self.layout188 = nil; end;
@@ -10803,6 +11100,7 @@ local function constructNew_frmMageDarkAges()
         if self.layout160 ~= nil then self.layout160:destroy(); self.layout160 = nil; end;
         if self.edit149 ~= nil then self.edit149:destroy(); self.edit149 = nil; end;
         if self.button1 ~= nil then self.button1:destroy(); self.button1 = nil; end;
+        if self.comboBox3 ~= nil then self.comboBox3:destroy(); self.comboBox3 = nil; end;
         if self.edit160 ~= nil then self.edit160:destroy(); self.edit160 = nil; end;
         if self.imageCheckBox283 ~= nil then self.imageCheckBox283:destroy(); self.imageCheckBox283 = nil; end;
         if self.edit26 ~= nil then self.edit26:destroy(); self.edit26 = nil; end;
@@ -10854,7 +11152,9 @@ local function constructNew_frmMageDarkAges()
         if self.label114 ~= nil then self.label114:destroy(); self.label114 = nil; end;
         if self.layout167 ~= nil then self.layout167:destroy(); self.layout167 = nil; end;
         if self.layout147 ~= nil then self.layout147:destroy(); self.layout147 = nil; end;
+        if self.comboBox1 ~= nil then self.comboBox1:destroy(); self.comboBox1 = nil; end;
         if self.imageCheckBox24 ~= nil then self.imageCheckBox24:destroy(); self.imageCheckBox24 = nil; end;
+        if self.label135 ~= nil then self.label135:destroy(); self.label135 = nil; end;
         if self.edit23 ~= nil then self.edit23:destroy(); self.edit23 = nil; end;
         if self.layout133 ~= nil then self.layout133:destroy(); self.layout133 = nil; end;
         if self.imageCheckBox92 ~= nil then self.imageCheckBox92:destroy(); self.imageCheckBox92 = nil; end;
@@ -10881,6 +11181,7 @@ local function constructNew_frmMageDarkAges()
         if self.edit123 ~= nil then self.edit123:destroy(); self.edit123 = nil; end;
         if self.layout49 ~= nil then self.layout49:destroy(); self.layout49 = nil; end;
         if self.label130 ~= nil then self.label130:destroy(); self.label130 = nil; end;
+        if self.dataLink2 ~= nil then self.dataLink2:destroy(); self.dataLink2 = nil; end;
         if self.imageCheckBox146 ~= nil then self.imageCheckBox146:destroy(); self.imageCheckBox146 = nil; end;
         if self.edit206 ~= nil then self.edit206:destroy(); self.edit206 = nil; end;
         if self.label54 ~= nil then self.label54:destroy(); self.label54 = nil; end;

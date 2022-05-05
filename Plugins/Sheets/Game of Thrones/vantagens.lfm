@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="vantagens" height="25" width="680" margins="{bottom=10}">
+<style>
+	edit{
+	fontFamily: Palatino Linotype;
+	fontColor: #573c27;
+	height: 25;
+	fontSize: 15;
+	transparent: true;
+	}
+	textEditor{
+	fontFamily: Palatino Linotype;
+	fontColor: #573c27;
+	fontSize: 15;
+	transparent: true;
+	}
+</style>
+	<layout align="client">
+		<label text="🞭" width="25" onClick="NDB.deleteNode(sheet);" hint="Apagar Vantagem" align="left" margins="{right=10, bottom=3}" hitTest="true" fontSize="25" cursor="handPoint" fontColor="#a7754d" />
+		<rectangle name="DescVant" width="25" onClick="" hint="Descrição" align="left" margins="{right=10}" strokeColor="#a7754d" strokeSize="2" xradius="3" yradius="3" cornerType="round" color="transparent" cursor="handPoint" hitTest="true">
+			<label align="client" text="𝐢" fontSize="17" horzTextAlign="center" vertTextAlign="center" fontColor="#a7754d" />
+			<event name="onClick">
+			<![CDATA[
+				local pop = self:findControlByName("popUp_Vant");
+				
+				if pop ~= nil then
+					pop:setNodeObject(sheet);
+					pop:showPopupEx("right", self.DescVant);
+				else
+					showMessage("Ops, não encontrei o pop-up para exibir");
+				end;
+			]]>
+			</event>
+		</rectangle>
+		<popup name="popUp_Vant" width="590" height="350" backOpacity="0" drawContainer="false">
+			<rectangle align="client" color="#e2bc8f" strokeSize="4" strokeColor="#a7754d">
+				<rectangle align="client" color="#e2bc8f" strokeSize="2" strokeColor="#a7754d" margins="{top=6, right=6, left=6, bottom=6}">
+					<label field="nomeVant" align="top" fontFamily="Palatino Linotype" fontStyle="bold" fontColor="black" fontSize="25" margins="{top=20, left=20}" />
+					<label field="tipoVant" anchors="right top" fontFamily="Palatino Linotype" horzTextAlign="trailing" fontStyle="bold" fontColor="black" fontSize="15" top="25" right="0" />
+					<horzLine strokeSize="2" strokeColor="#a7754d" margins="{left=20, right=20, top=10, bottom=10}" align="top" />
+					<textEditor field="DescVant" align="client" margins="{top=10, right=20, left=20, bottom=20}" /><dataLink field="DescVant" defaultValue="—" />
+				</rectangle>
+			</rectangle>
+		</popup>
+		<edit field="nomeVant" align="left" width="300" margins="{right=10}" fontStyle="bold" fontColor="black" /><dataLink field="nomeVant" defaultValue="—" />
+		<edit field="tipoVant" align="left" width="150" /><dataLink field="tipoVant" defaultValue="—" />
+		
+	</layout>
+</form>

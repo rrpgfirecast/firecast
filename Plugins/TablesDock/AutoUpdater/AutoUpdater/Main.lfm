@@ -14,6 +14,15 @@
               return tostring(o)
            end
         end
+        
+        local function write(str)
+            local mesa = Firecast.getMesaDe(self);
+            if str then
+                mesa.activeChat:escrever(str);
+            else
+                mesa.activeChat:escrever("String nula");
+            end;
+        end;
 
         local function tryTranslate(text)
             local trans = Locale.tryLang(text);

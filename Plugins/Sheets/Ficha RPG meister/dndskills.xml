@@ -1,139 +1,136 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <database>
-    <__EHEX_31 armadura="0" chave="2" nome="Abrir Fechaduras" treino="True">
-        <__ndb__ id="2" t_armadura="6" t_chave="S" t_nome="S" t_treino="B" />
-    </__EHEX_31>
-    <__EHEX_32 armadura="1" chave="2" nome="Acrobacia" treino="True">
-        <__ndb__ id="3" t_armadura="6" t_chave="S" t_nome="S" t_treino="B" />
-    </__EHEX_32>
-    <__EHEX_33 armadura="0" chave="6" nome="Adestrar Animais" treino="True">
-        <__ndb__ id="4" t_armadura="6" t_chave="S" t_nome="S" t_treino="B" />
-    </__EHEX_33>
-    <__EHEX_34 armadura="1" chave="2" nome="Arte da Fuga" treino="False">
-        <__ndb__ id="5" t_armadura="6" t_chave="S" t_nome="S" t_treino="B" />
-    </__EHEX_34>
-    <__EHEX_35 armadura="0" chave="6" nome="Atuação" treino="False">
-        <__ndb__ id="6" t_armadura="6" t_chave="S" t_nome="S" t_treino="B" />
-    </__EHEX_35>
-    <__EHEX_36 armadura="0" chave="4" nome="Avaliação" treino="False">
-        <__ndb__ id="7" t_armadura="6" t_chave="S" t_nome="S" t_treino="B" />
-    </__EHEX_36>
-    <__EHEX_37 armadura="0" chave="6" nome="Blefar" treino="False">
-        <__ndb__ id="8" t_armadura="6" t_chave="S" t_nome="S" t_treino="B" />
-    </__EHEX_37>
-    <__EHEX_38 armadura="0" chave="2" nome="Cavalgar" treino="False">
-        <__ndb__ id="9" t_armadura="6" t_chave="S" t_nome="S" t_treino="B" />
-    </__EHEX_38>
-    <__EHEX_39 armadura="0" chave="3" nome="Concentração" treino="False">
-        <__ndb__ id="10" t_armadura="6" t_chave="S" t_nome="S" t_treino="B" />
-    </__EHEX_39>
-    <__EHEX_3130 armadura="0" chave="4" nome="Conhecimento Arcano" treino="True">
-        <__ndb__ id="11" t_armadura="6" t_chave="S" t_nome="S" t_treino="B" />
-    </__EHEX_3130>
-    <__EHEX_3131 armadura="0" chave="4" nome="Conhecimento Engenharia e Arquitetura" treino="True">
-        <__ndb__ id="12" t_armadura="6" t_chave="S" t_nome="S" t_treino="B" />
-    </__EHEX_3131>
-    <__EHEX_3132 armadura="0" chave="4" nome="Conhecimento Geografia" treino="True">
-        <__ndb__ id="13" t_armadura="6" t_chave="S" t_nome="S" t_treino="B" />
-    </__EHEX_3132>
-    <__EHEX_3133 armadura="0" chave="4" nome="Conhecimento Historia" treino="True">
-        <__ndb__ id="14" t_armadura="6" t_chave="S" t_nome="S" t_treino="B" />
-    </__EHEX_3133>
-    <__EHEX_3134 armadura="0" chave="4" nome="Conhecimento Local" treino="True">
-        <__ndb__ id="15" t_armadura="6" t_chave="S" t_nome="S" t_treino="B" />
-    </__EHEX_3134>
-    <__EHEX_3135 armadura="0" chave="4" nome="Conhecimento Masmorras" treino="True">
-        <__ndb__ id="16" t_armadura="6" t_chave="S" t_nome="S" t_treino="B" />
-    </__EHEX_3135>
-    <__EHEX_3136 armadura="0" chave="4" nome="Conhecimento Natureza" treino="True">
-        <__ndb__ id="17" t_armadura="6" t_chave="S" t_nome="S" t_treino="B" />
-    </__EHEX_3136>
-    <__EHEX_3137 armadura="0" chave="4" nome="Conhecimento Nobreza e Realeza" treino="True">
-        <__ndb__ id="18" t_armadura="6" t_chave="S" t_nome="S" t_treino="B" />
-    </__EHEX_3137>
-    <__EHEX_3138 armadura="0" chave="4" nome="Conhecimento Planos" treino="True">
-        <__ndb__ id="19" t_armadura="6" t_chave="S" t_nome="S" t_treino="B" />
-    </__EHEX_3138>
-    <__EHEX_3139 armadura="0" chave="4" nome="Conhecimento Religião" treino="True">
-        <__ndb__ id="20" t_armadura="6" t_chave="S" t_nome="S" t_treino="B" />
-    </__EHEX_3139>
-    <__EHEX_3230 armadura="0" chave="5" nome="Cura" treino="False">
-        <__ndb__ id="21" t_armadura="6" t_chave="S" t_nome="S" t_treino="B" />
-    </__EHEX_3230>
-    <__EHEX_3231 armadura="0" chave="4" nome="Decifrar Escrita" treino="True">
-        <__ndb__ id="22" t_armadura="6" t_chave="S" t_nome="S" t_treino="B" />
-    </__EHEX_3231>
-    <__EHEX_3232 armadura="0" chave="6" nome="Diplomacia" treino="False">
-        <__ndb__ id="23" t_armadura="6" t_chave="S" t_nome="S" t_treino="B" />
-    </__EHEX_3232>
-    <__EHEX_3233 armadura="0" chave="6" nome="Disfarces" treino="False">
-        <__ndb__ id="24" t_armadura="6" t_chave="S" t_nome="S" t_treino="B" />
-    </__EHEX_3233>
-    <__EHEX_3234 armadura="1" chave="2" nome="Equilibrio" treino="False">
-        <__ndb__ id="25" t_armadura="6" t_chave="S" t_nome="S" t_treino="B" />
-    </__EHEX_3234>
-    <__EHEX_3235 armadura="1" chave="1" nome="Escalar" treino="False">
-        <__ndb__ id="26" t_armadura="6" t_chave="S" t_nome="S" t_treino="B" />
-    </__EHEX_3235>
-    <__EHEX_3236 armadura="1" chave="2" nome="Esconder-se" treino="False">
-        <__ndb__ id="27" t_armadura="6" t_chave="S" t_nome="S" t_treino="B" />
-    </__EHEX_3236>
-    <__EHEX_3237 armadura="0" chave="4" nome="Falsificação" treino="False">
-        <__ndb__ id="28" t_armadura="6" t_chave="S" t_nome="S" t_treino="B" />
-    </__EHEX_3237>
-    <__EHEX_3238 armadura="1" chave="2" nome="Furtividade" treino="False">
-        <__ndb__ id="29" t_armadura="6" t_chave="S" t_nome="S" t_treino="B" />
-    </__EHEX_3238>
-    <__EHEX_3239 armadura="0" chave="4" nome="Identificar Magia" treino="True">
-        <__ndb__ id="30" t_armadura="6" t_chave="S" t_nome="S" t_treino="B" />
-    </__EHEX_3239>
-    <__EHEX_3330 armadura="0" chave="6" nome="Intimidação" treino="False">
-        <__ndb__ id="31" t_armadura="6" t_chave="S" t_nome="S" t_treino="B" />
-    </__EHEX_3330>
-    <__EHEX_3331 armadura="2" chave="1" nome="Natação" treino="False">
-        <__ndb__ id="32" t_armadura="6" t_chave="S" t_nome="S" t_treino="B" />
-    </__EHEX_3331>
-    <__EHEX_3332 armadura="0" chave="5" nome="Observar" treino="False">
-        <__ndb__ id="33" t_armadura="6" t_chave="S" t_nome="S" t_treino="B" />
-    </__EHEX_3332>
-    <__EHEX_3333 armadura="0" chave="6" nome="Obter Informação" treino="False">
-        <__ndb__ id="34" t_armadura="6" t_chave="S" t_nome="S" t_treino="B" />
-    </__EHEX_3333>
-    <__EHEX_3334 armadura="0" chave="4" nome="Oficios" treino="False">
-        <__ndb__ id="35" t_armadura="6" t_chave="S" t_nome="S" t_treino="B" />
-    </__EHEX_3334>
-    <__EHEX_3335 armadura="0" chave="4" nome="Operar Mecanismo" treino="True">
-        <__ndb__ id="36" t_armadura="6" t_chave="S" t_nome="S" t_treino="B" />
-    </__EHEX_3335>
-    <__EHEX_3336 armadura="0" chave="5" nome="Ouvir" treino="False">
-        <__ndb__ id="37" t_armadura="6" t_chave="S" t_nome="S" t_treino="B" />
-    </__EHEX_3336>
-    <__EHEX_3337 armadura="1" chave="2" nome="Prestidigitação" treino="True">
-        <__ndb__ id="38" t_armadura="6" t_chave="S" t_nome="S" t_treino="B" />
-    </__EHEX_3337>
-    <__EHEX_3338 armadura="0" chave="4" nome="Procurar" treino="False">
-        <__ndb__ id="39" t_armadura="6" t_chave="S" t_nome="S" t_treino="B" />
-    </__EHEX_3338>
-    <__EHEX_3339 armadura="0" chave="5" nome="Profissão" treino="True">
-        <__ndb__ id="40" t_armadura="6" t_chave="S" t_nome="S" t_treino="B" />
-    </__EHEX_3339>
-    <__EHEX_3430 armadura="1" chave="1" nome="Saltar" treino="False">
-        <__ndb__ id="41" t_armadura="6" t_chave="S" t_nome="S" t_treino="B" />
-    </__EHEX_3430>
-    <__EHEX_3431 armadura="0" chave="5" nome="Sentir Motivação" treino="False">
-        <__ndb__ id="42" t_armadura="6" t_chave="S" t_nome="S" t_treino="B" />
-    </__EHEX_3431>
-    <__EHEX_3432 armadura="0" chave="5" nome="Sobrevivência" treino="False">
-        <__ndb__ id="43" t_armadura="6" t_chave="S" t_nome="S" t_treino="B" />
-    </__EHEX_3432>
-    <__EHEX_3433 armadura="0" chave="2" nome="Usar Cordas" treino="False">
-        <__ndb__ id="44" t_armadura="6" t_chave="S" t_nome="S" t_treino="B" />
-    </__EHEX_3433>
-    <__EHEX_3434 armadura="0" chave="6" nome="Usar Instrumento Mágico" treino="True">
-        <__ndb__ id="45" t_armadura="6" t_chave="S" t_nome="S" t_treino="B" />
-    </__EHEX_3434>
-    <__EHEX_3435>
-        <__ndb__ id="46" />
-    </__EHEX_3435>
-    <__ndb__ id="1" idGenerator="46" />
+    <item chavePericia="2" exigeTreino="True" nomePericia="Abrir Fechaduras">
+        <__ndb__ id="2" t_chavePericia="S" t_exigeTreino="B" t_nomePericia="S"/>
+    </item>
+    <item chavePericia="2" exigeTreino="True" nomePericia="Acrobacia" penalidadeArmadura2="True">
+        <__ndb__ id="3" t_chavePericia="S" t_exigeTreino="B" t_nomePericia="S" t_penalidadeArmadura2="B"/>
+    </item>
+    <item chavePericia="6" exigeTreino="True" nomePericia="Adestrar Animais">
+        <__ndb__ id="4" t_chavePericia="S" t_exigeTreino="B" t_nomePericia="S"/>
+    </item>
+    <item chavePericia="2" exigeTreino="False" nomePericia="Arte da Fuga" penalidadeArmadura2="True">
+        <__ndb__ id="5" t_chavePericia="S" t_exigeTreino="B" t_nomePericia="S" t_penalidadeArmadura2="B"/>
+    </item>
+    <item chavePericia="6" exigeTreino="False" nomePericia="Atuação">
+        <__ndb__ id="6" t_chavePericia="S" t_exigeTreino="B" t_nomePericia="S"/>
+    </item>
+    <item chavePericia="4" exigeTreino="False" nomePericia="Avaliação">
+        <__ndb__ id="7" t_chavePericia="S" t_exigeTreino="B" t_nomePericia="S"/>
+    </item>
+    <item chavePericia="6" exigeTreino="False" nomePericia="Blefar">
+        <__ndb__ id="8" t_chavePericia="S" t_exigeTreino="B" t_nomePericia="S"/>
+    </item>
+    <item chavePericia="2" exigeTreino="False" nomePericia="Cavalgar">
+        <__ndb__ id="9" t_chavePericia="S" t_exigeTreino="B" t_nomePericia="S"/>
+    </item>
+    <item chavePericia="3" exigeTreino="False" nomePericia="Concentração">
+        <__ndb__ id="10" t_chavePericia="S" t_exigeTreino="B" t_nomePericia="S"/>
+    </item>
+    <item chavePericia="4" exigeTreino="True" nomePericia="Conhecimento Arcano">
+        <__ndb__ id="11" t_chavePericia="S" t_exigeTreino="B" t_nomePericia="S"/>
+    </item>
+    <item chavePericia="4" exigeTreino="True" nomePericia="Conhecimento Engenharia e Arquitetura">
+        <__ndb__ id="12" t_chavePericia="S" t_exigeTreino="B" t_nomePericia="S"/>
+    </item>
+    <item chavePericia="4" exigeTreino="True" nomePericia="Conhecimento Geografia">
+        <__ndb__ id="13" t_chavePericia="S" t_exigeTreino="B" t_nomePericia="S"/>
+    </item>
+    <item chavePericia="4" exigeTreino="True" nomePericia="Conhecimento Historia">
+        <__ndb__ id="14" t_chavePericia="S" t_exigeTreino="B" t_nomePericia="S"/>
+    </item>
+    <item chavePericia="4" exigeTreino="True" nomePericia="Conhecimento Local">
+        <__ndb__ id="15" t_chavePericia="S" t_exigeTreino="B" t_nomePericia="S"/>
+    </item>
+    <item chavePericia="4" exigeTreino="True" nomePericia="Conhecimento Masmorras">
+        <__ndb__ id="16" t_chavePericia="S" t_exigeTreino="B" t_nomePericia="S"/>
+    </item>
+    <item chavePericia="4" exigeTreino="True" nomePericia="Conhecimento Natureza">
+        <__ndb__ id="17" t_chavePericia="S" t_exigeTreino="B" t_nomePericia="S"/>
+    </item>
+    <item chavePericia="4" exigeTreino="True" nomePericia="Conhecimento Nobreza e Realeza">
+        <__ndb__ id="18" t_chavePericia="S" t_exigeTreino="B" t_nomePericia="S"/>
+    </item>
+    <item chavePericia="4" exigeTreino="True" nomePericia="Conhecimento Planos">
+        <__ndb__ id="19" t_chavePericia="S" t_exigeTreino="B" t_nomePericia="S"/>
+    </item>
+    <item chavePericia="4" exigeTreino="True" nomePericia="Conhecimento Religião">
+        <__ndb__ id="20" t_chavePericia="S" t_exigeTreino="B" t_nomePericia="S"/>
+    </item>
+    <item chavePericia="5" exigeTreino="False" nomePericia="Cura">
+        <__ndb__ id="21" t_chavePericia="S" t_exigeTreino="B" t_nomePericia="S"/>
+    </item>
+    <item chavePericia="4" exigeTreino="True" nomePericia="Decifrar Escrita">
+        <__ndb__ id="22" t_chavePericia="S" t_exigeTreino="B" t_nomePericia="S"/>
+    </item>
+    <item chavePericia="6" exigeTreino="False" nomePericia="Diplomacia">
+        <__ndb__ id="23" t_chavePericia="S" t_exigeTreino="B" t_nomePericia="S"/>
+    </item>
+    <item chavePericia="6" exigeTreino="False" nomePericia="Disfarces">
+        <__ndb__ id="24" t_chavePericia="S" t_exigeTreino="B" t_nomePericia="S"/>
+    </item>
+    <item chavePericia="2" exigeTreino="False" nomePericia="Equilibrio" penalidadeArmadura2="True">
+        <__ndb__ id="25" t_chavePericia="S" t_exigeTreino="B" t_nomePericia="S" t_penalidadeArmadura2="B"/>
+    </item>
+    <item chavePericia="1" exigeTreino="False" nomePericia="Escalar" penalidadeArmadura2="True">
+        <__ndb__ id="26" t_chavePericia="S" t_exigeTreino="B" t_nomePericia="S" t_penalidadeArmadura2="B"/>
+    </item>
+    <item chavePericia="2" exigeTreino="False" nomePericia="Esconder-se" penalidadeArmadura2="True">
+        <__ndb__ id="27" t_chavePericia="S" t_exigeTreino="B" t_nomePericia="S" t_penalidadeArmadura2="B"/>
+    </item>
+    <item chavePericia="4" exigeTreino="False" nomePericia="Falsificação">
+        <__ndb__ id="28" t_chavePericia="S" t_exigeTreino="B" t_nomePericia="S"/>
+    </item>
+    <item chavePericia="2" exigeTreino="False" nomePericia="Furtividade" penalidadeArmadura2="True">
+        <__ndb__ id="29" t_chavePericia="S" t_exigeTreino="B" t_nomePericia="S" t_penalidadeArmadura2="B"/>
+    </item>
+    <item chavePericia="4" exigeTreino="True" nomePericia="Identificar Magia">
+        <__ndb__ id="30" t_chavePericia="S" t_exigeTreino="B" t_nomePericia="S"/>
+    </item>
+    <item chavePericia="6" exigeTreino="False" nomePericia="Intimidação">
+        <__ndb__ id="31" t_chavePericia="S" t_exigeTreino="B" t_nomePericia="S"/>
+    </item>
+    <item chavePericia="1" exigeTreino="False" nomePericia="Natação" penalidadeArmadura="True" penalidadeArmadura2="True">
+        <__ndb__ id="32" t_chavePericia="S" t_exigeTreino="B" t_nomePericia="S" t_penalidadeArmadura="B" t_penalidadeArmadura2="B"/>
+    </item>
+    <item chavePericia="5" exigeTreino="False" nomePericia="Observar">
+        <__ndb__ id="33" t_chavePericia="S" t_exigeTreino="B" t_nomePericia="S"/>
+    </item>
+    <item chavePericia="6" exigeTreino="False" nomePericia="Obter Informação">
+        <__ndb__ id="34" t_chavePericia="S" t_exigeTreino="B" t_nomePericia="S"/>
+    </item>
+    <item chavePericia="4" exigeTreino="False" nomePericia="Oficios">
+        <__ndb__ id="35" t_chavePericia="S" t_exigeTreino="B" t_nomePericia="S"/>
+    </item>
+    <item chavePericia="4" exigeTreino="True" nomePericia="Operar Mecanismo">
+        <__ndb__ id="36" t_chavePericia="S" t_exigeTreino="B" t_nomePericia="S"/>
+    </item>
+    <item chavePericia="5" exigeTreino="False" nomePericia="Ouvir">
+        <__ndb__ id="37" t_chavePericia="S" t_exigeTreino="B" t_nomePericia="S"/>
+    </item>
+    <item chavePericia="2" exigeTreino="True" nomePericia="Prestidigitação" penalidadeArmadura2="True">
+        <__ndb__ id="38" t_chavePericia="S" t_exigeTreino="B" t_nomePericia="S" t_penalidadeArmadura2="B"/>
+    </item>
+    <item chavePericia="4" exigeTreino="False" nomePericia="Procurar">
+        <__ndb__ id="39" t_chavePericia="S" t_exigeTreino="B" t_nomePericia="S"/>
+    </item>
+    <item chavePericia="5" exigeTreino="True" nomePericia="Profissão">
+        <__ndb__ id="40" t_chavePericia="S" t_exigeTreino="B" t_nomePericia="S"/>
+    </item>
+    <item chavePericia="1" exigeTreino="False" nomePericia="Saltar" penalidadeArmadura2="True">
+        <__ndb__ id="41" t_chavePericia="S" t_exigeTreino="B" t_nomePericia="S" t_penalidadeArmadura2="B"/>
+    </item>
+    <item chavePericia="5" exigeTreino="False" nomePericia="Sentir Motivação">
+        <__ndb__ id="42" t_chavePericia="S" t_exigeTreino="B" t_nomePericia="S"/>
+    </item>
+    <item chavePericia="5" exigeTreino="False" nomePericia="Sobrevivência">
+        <__ndb__ id="43" t_chavePericia="S" t_exigeTreino="B" t_nomePericia="S"/>
+    </item>
+    <item chavePericia="2" exigeTreino="False" nomePericia="Usar Cordas">
+        <__ndb__ id="44" t_chavePericia="S" t_exigeTreino="B" t_nomePericia="S"/>
+    </item>
+    <item chavePericia="6" exigeTreino="True" nomePericia="Usar Instrumento Mágico">
+        <__ndb__ id="45" t_chavePericia="S" t_exigeTreino="B" t_nomePericia="S"/>
+    </item>
+    <__ndb__ id="1" idGenerator="45"/>
 </database>

@@ -9,70 +9,68 @@
 		</layout>
 	</template>
 	<template name="descriptionEdit">
-		<label left="0" top="5" width="$(width1)" height="20" text="$(text)" horzTextAlign="center"/>
-		<edit left="$(width1)" top="5" width="$(width2)" height="20" field="$(field)"/>
+		<layout align="left" width="$(width)">
+			<label align="left" top="5" width="$(width1)" height="20" text="$(text)" horzTextAlign="center"/>
+			<edit align="left" top="5" width="$(width2)" height="20" field="$(field)" margins="{top=2,bottom=2}"/>
+		</layout>
 	</template>
 	<template name="descriptionLabel">
-		<label left="0" top="5" width="$(width1)" height="20" text="$(text)" horzTextAlign="center"/>
-		<rectangle left="$(width1)" top="5" width="$(width2)" height="20" color="black" strokeColor="white" strokeSize="1"/>
-		<label left="$(width1)" top="5" width="$(width2)" height="20" field="$(field)" horzTextAlign="center"/>
+		<layout align="left" width="$(width)">
+			<label align="left" top="5" width="$(width1)" height="20" text="$(text)" horzTextAlign="center"/>
+			<rectangle align="left" top="5" width="$(width2)" height="20" color="black" strokeColor="white" strokeSize="1" margins="{top=2,bottom=2}">
+				<label align="client" field="$(field)" horzTextAlign="center"/>
+			</rectangle>
+		</layout>
 	</template>
 	<scrollBox align="client">
-		<layout left="0" top="0" width="1240" height="30">
-			<rectangle align="client" color="black"/>
-
-			<layout left="0" top="0" width="200" height="30">
-				<descriptionEdit width1="95" width2="100" text="Reino" field="reino"/>
-			</layout>
-			<layout left="210" top="0" width="200" height="30">
-				<descriptionLabel width1="95" width2="100" text="População" field="populacao"/>
-			</layout>
-			<layout left="420" top="0" width="200" height="30">
-				<descriptionLabel width1="95" width2="100" text="Riqueza" field="riqueza"/>
-			</layout>
-			<layout left="830" top="0" width="410" height="30">
-			</layout>
+		<layout align="top" height="30" margins="{bottom=5}">
+			<rectangle align="client" color="black">
+				<descriptionEdit width="300" width1="100" width2="200" text="Reino" field="reino"/>
+				<descriptionLabel width="300" width1="100" width2="200" text="População" field="populacao"/>
+				<descriptionLabel width="300" width1="100" width2="200" text="Riqueza" field="riqueza"/>
+			</rectangle>
 		</layout>
 
-		<rectangle left="0" top="35" width="200" height="275" color="black"/>
-		<!-- RecordList para seleção -->
-		<recordList left="0" top="35" width="200" height="270" name="rclDestalhesDoReino" field="listaDeDestalhesDoReino" templateForm="frmKingdomSelection" layout="vertical" selectable="true" minQt="9">
-			<event name="onEndEnumeration"><![CDATA[
-				if sheet~= nil then
-					local objetos = ndb.getChildNodes(sheet.listaDeDestalhesDoReino);
-					local nomes = {"Descrição","Cultura","Raças","Classes","Historia","Geografia","Clima", "Outros", "Religião"};
-					local indexes = {1,2,3,4,5,6,7,9,8};
-					for i=1, #objetos, 1 do
-						objetos[i].nome = nomes[i];
-						objetos[i].index = indexes[i];
-					end;
+		<rectangle align="left" width="200" color="black" margins="{right=5}">
+			<!-- RecordList para seleção -->
+			<recordList left="0" top="5" width="200" height="270" name="rclDestalhesDoReino" field="listaDeDestalhesDoReino" templateForm="frmKingdomSelection" layout="vertical" selectable="true" minQt="9">
+				<event name="onEndEnumeration"><![CDATA[
+					if sheet~= nil then
+						local objetos = ndb.getChildNodes(sheet.listaDeDestalhesDoReino);
+						local nomes = {"Descrição","Cultura","Raças","Classes","Historia","Geografia","Clima", "Outros", "Religião"};
+						local indexes = {1,2,3,4,5,6,7,9,8};
+						for i=1, #objetos, 1 do
+							objetos[i].nome = nomes[i];
+							objetos[i].index = indexes[i];
+						end;
 
-					if self.rclDestalhesDoReino.selectedNode== nil and #objetos>0 then
-						self.rclDestalhesDoReino.selectedNode = objetos[1]; 
+						if self.rclDestalhesDoReino.selectedNode== nil and #objetos>0 then
+							self.rclDestalhesDoReino.selectedNode = objetos[1]; 
+						end;
+						self.rclDestalhesDoReino:sort();
 					end;
-					self.rclDestalhesDoReino:sort();
-				end;
-				]]>
-			</event>
-			<event name="onSelect"><![CDATA[
-					local node = self.rclDestalhesDoReino.selectedNode;
-					self.boxDetalhesDoReino.node = node; 
-					self.boxDetalhesDoReino.visible = (node ~= nil);
-				]]>
-			</event>
-			<event name="onCompare"><![CDATA[			   
-				if (nodeA.index or 0) < (nodeB.index or 0) then
-					return -1;
-				elseif (nodeA.index or 0) > (nodeB.index or 0) then
-					return 1;
-				else   
-					return 0;
-				end;
-				]]>
-		</event>
-		</recordList>
+					]]>
+				</event>
+				<event name="onSelect"><![CDATA[
+						local node = self.rclDestalhesDoReino.selectedNode;
+						self.boxDetalhesDoReino.node = node; 
+						self.boxDetalhesDoReino.visible = (node ~= nil);
+					]]>
+				</event>
+				<event name="onCompare"><![CDATA[			   
+					if (nodeA.index or 0) < (nodeB.index or 0) then
+						return -1;
+					elseif (nodeA.index or 0) > (nodeB.index or 0) then
+						return 1;
+					else   
+						return 0;
+					end;
+					]]>
+				</event>
+			</recordList>
+		</rectangle>
 		<!-- Info selecionada vai estar aqui -->
-		<dataScopeBox left="210" top="35" width="1030" height="535" name="boxDetalhesDoReino" visible="false">
+		<dataScopeBox align="client" name="boxDetalhesDoReino" visible="false">
 			<richEdit align="client" field="$(field)" backgroundColor="#333333" defaultFontSize="12" defaultFontColor="white"/>
 		</dataScopeBox>
 	</scrollBox>

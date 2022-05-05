@@ -438,8 +438,8 @@ local function constructNew_frmFichaRPGmeister11_svg()
     obj.button7:setVisible(false);
     obj.button7:setName("button7");
 
-    obj._e_event0 = obj.comboBox1:addEventListener("onChange",
-        function (_)
+    obj._e_event0 = obj.dataLink1:addEventListener("onChange",
+        function (_, field, oldValue, newValue)
             if sheet == nil then return end;
             					local theme = sheet.theme;
             					if theme == "Claro" then

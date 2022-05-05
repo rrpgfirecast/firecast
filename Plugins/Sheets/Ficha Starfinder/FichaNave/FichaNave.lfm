@@ -60,7 +60,7 @@
     <template name="VertCheckEditOrLLabel">
         <layout align="left" width="$(width)" margins="{right=5}">
             <checkBox text="$(text)" width="$(width)" field="$(field)Check" horzTextAlign="leading" fontSize="$(fontSize)"/>
-            <edit top="20" field="$(field)" width="$(width)" height="25" visible="false" name="$(field)Edit"/>
+            <edit top="20" field="$(field)" width="$(width)" height="25" visible="true" name="$(field)Edit"/>
             <rectangle top="20" height="25" width="$(width)" color="#F0FFFF" strokeColor="black" strokeSize="1" visible="false" name="$(field)Label">
                 <label align="client" field="$(field)" horzTextAlign="center" vertTextAlign="center" format="$(format)" formatFloat="$(formatFloat)"/>
             </rectangle>

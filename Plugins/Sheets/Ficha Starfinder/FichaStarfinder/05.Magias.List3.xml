@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 
-<flowLayout autoHeight="true" maxColumns="5" horzAlign="center" orientation="vertical" name="magicList3" visible="false" padding="{left=5,right=5,top=5,bottom=5}" margins="{left=5,right=5,top=5,bottom=5}" avoidScale="false">
+<flowLayout autoHeight="true" maxColumns="5" horzAlign="center" orientation="vertical" name="magicList3" padding="{left=5,right=5,top=5,bottom=5}" margins="{left=5,right=5,top=5,bottom=5}" avoidScale="false">
 	<magicListFlow num="0"/>
 	<magicListFlow num="1"/>
 	<magicListFlow num="2"/>
@@ -8,9 +8,6 @@
 	<magicListFlow num="4"/>
 	<magicListFlow num="5"/>
 	<magicListFlow num="6"/>
-	<magicListFlow num="7"/>
-	<magicListFlow num="8"/>
-	<magicListFlow num="9"/>
 	<event name="onBeforeLayoutCalc">
 		self.magicList3.width = self.frmMagias.width - 400;
 		self.scrollPart.width = self.frmMagias.width - 365;

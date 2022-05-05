@@ -4,6 +4,7 @@ Plugins feitos com o SDK3. Para baixar apenas o plugin verifique a pasta output 
 ## Subpastas:
 - ChatMods: Plugins que alteram ou adicionam funcionalidades ao chat do firecast
 - Core: Plugins básicos do Firecast
+- Scene: Plugins que adicionam funções ao Tabuleiro de Combate
 - Sheets: Plugins de modelos de fichas
 - TablesDock: Plugins de janelas acopláveis 
 - Template: Template criado por Ambesek para criar plugins para o Firecast

@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmficha_editavel_tftl" formType="sheetTemplate" dataType="ficha_tftl" title="Ficha De RPG - Tales from the loop" align="client" theme="light">
+    <import file="1.lfm"/>
+</form>

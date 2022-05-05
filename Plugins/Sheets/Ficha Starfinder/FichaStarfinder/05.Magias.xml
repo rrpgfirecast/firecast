@@ -240,158 +240,17 @@
 		
 		<textEditor align="client" field="descricao" class=""/>
 	</popup>
-	<popup name="popMagiaEpica" width="500" height="500" backOpacity="0.4" autoScopeNode="false">
-		<flowLayout align="top" autoHeight="true" maxControlsPerLine="4" margins="{bottom=4}" horzAlign="center">
-			<magicInfoField text="NOME" field="nomeMagia"/>
-			<magicInfoField text="ESCOLA" field="escola"/>
-			<flowPart minWidth="30" maxWidth="35" height="35">
-				<button align="client" text="+" onClick="self.rclFactors:append();"/>
-			</flowPart>
-			<flowPart minWidth="30" maxWidth="35" height="35">
-				<button align="client" text="Exibir" fontSize="10">
-					<event name="onClick">
-						local txt = "\n";
-						local node = self.popMagiaEpica.node;
-						if (node.nomeMagia ~= nil) then txt = txt .. node.nomeMagia .. " CD: " .. (node.idMagia or "?") .. "\n"  end;
-						if (node.escola ~= nil) then txt = txt .. node.escola .. "\n" end;
-						if (node.componentes ~= nil) then txt = txt .. "Componentes: " .. node.componentes .. "\n" end;
-						if (node.execucao ~= nil) then txt = txt .. "Execução: " .. node.execucao .. "\n" end;
-						if (node.alcance ~= nil) then txt = txt .. "Alcance: " .. node.alcance .. "\n" end;
-						if (node.alvo ~= nil) then txt = txt .. "Alvo: " .. node.alvo .. "\n" end;
-						if (node.duracao ~= nil) then txt = txt .. "Duração: " .. node.duracao .. "\n" end;
-						if (node.tr ~= nil) then txt = txt .. "Teste de Resistência: " .. node.tr .. "\n" end;
-						if (node.rm ~= nil) then txt = txt .. "Resistência a Magia: " .. node.rm .. "\n" end;
-
-						-- Organize rcl in groups [seed, factor, mult, pen]
-						local factors = {};
-						factors[0] = "";
-						factors[1] = "";
-						factors[2] = "";
-						factors[3] = "";
-
-						local spells = NDB.getChildNodes(node.campoDosFatores); 
-						for i=1, #spells, 1 do
-							local spell = spells[i];
-							local txt = "" .. (spell.custo or "");
-							local tipo = string.sub(txt, 1, 1);
-
-							local index = 0;
-							if tipo=="+" then index = 1 end;
-							if tipo=="x" then index = 2 end;
-							if tipo=="-" then index = 3 end;
-
-							if factors[index] == "" then 
-								factors[index] = (spell.fator or "") .. " (CD " .. (spell.custo or 0) .. ")";
-							else 
-								factors[index] = factors[index] .. ", " .. (spell.fator or "") .. " (CD " .. (spell.custo or 0) .. ")";
-							end;
-						end;
-
-						if (factors[0] ~= "") then txt = txt .. "Palavras de Poder: " .. factors[0] .. ".\n" end;
-						if (factors[1] ~= "") then txt = txt .. "Fatores: " .. factors[1] .. ".\n" end;
-						if (factors[2] ~= "") then txt = txt .. "Multiplicadores: " .. factors[2] .. ".\n" end;
-						if (factors[3] ~= "") then txt = txt .. "Atenuadores: " .. factors[3] .. ".\n" end;
-
-						-- spell description
-						if (node.descricao ~= nil) then txt = txt .. node.descricao end;
-
-						local mesa = Firecast.getMesaDe(node);
-						if mesa ~= nil then
-							   mesa.activeChat:enviarMensagem(txt);
-						end;
-					</event>
-				</button>
-			</flowPart>
-			<flowLineBreak/>
-			<magicInfoField text="COMPONENTES" field="componentes"/>
-			<magicInfoField text="EXECUÇÃO" field="execucao"/>
-			<magicInfoField text="ALCANCE" field="alcance"/>
-			<magicInfoField text="ALVO" field="alvo"/>
-			<magicInfoField text="DURAÇÃO" field="duracao"/>
-			<magicInfoField text="TR" field="tr"/>
-			<magicInfoField text="RM" field="rm"/>
-			<magicInfoField text="CD + " field="myCD"/>
-			<magicInfoLabel text="ID. MAGIA" field="idMagia" format=",0"/>
-			<magicInfoLabel text="MULT" field="mult" format="x 0"/>
-			<magicInfoLabel text="PO" field="po" format=",0 PO"/>
-			<magicInfoLabel text="XP" field="xp" format=",0 XP"/>
-		</flowLayout>
-
-		<recordList name="rclFactors" field="campoDosFatores" templateForm="frmFator" align="top" height="200" layout="verticalTiles" hitTest="false" minQt="1">
-			<event name="onCompare"><![CDATA[ 
-				local txt = "" .. (nodeA.custo or "");
-				local tipoA = string.sub(txt, 1, 1);
-				local valueA = 15;
-				if tipoA=="x" then valueA = 10
-				elseif tipoA=="+" then valueA = 5
-				elseif tipoA=="-" then valueA = 0 end;
-
-				txt = "" .. (nodeB.custo or "");
-				local tipoB = string.sub(txt, 1, 1);
-				local valueB = 15;
-				if tipoB=="x" then valueB = 10
-				elseif tipoB=="+" then valueB = 5
-				elseif tipoB=="-" then valueB = 0 end;
-
-				local comp = valueB - valueA;
-
-				if comp~=0 then return comp end;
-			    return Utils.compareStringPtBr(nodeA.fator, nodeB.fator);         
-			    ]]>
-			</event>
-		</recordList>
-		
-		<textEditor align="client" field="descricao" class=""/>
-	</popup>
 
 	<script>
 		local function showHiddenLayouts()
 			if self.boxDetalhesDaMagia.node== nil then return end;
 
-			-- Tira todas visibilidades.
-			self.details3.visible = false;
-			self.details2.visible = false;
-			self.details1.visible = false;
-			self.details7.visible = false;
-			self.details8.visible = false;
-
-			self.magicList3.visible = false;
-			self.magicList2.visible = false;
-			self.magicList1.visible = false;
-			self.magicList7.visible = false;
-			self.magicList8.visible = false;
-
 			-- Recoloca as visibilidades.
-			local tipo = self.boxDetalhesDaMagia.node.tipoMagia or "";
-			if self["details" .. tipo] then 
-				self["details" .. tipo].visible = true 
-				self["details" .. tipo].left = 5;
-				self["details" .. tipo].top = 5;
-
-				if tipo == "7" then
-					self.epicDetails.left = 5;
-					self.epicDetails.top = 5;
-				end;
-			end;
-
 			if self["magicList" .. tipo] then 
 				self["magicList" .. tipo].visible = true;
 				self["magicList" .. tipo].width = self.magics.width - 350;
 				local height = self.magics.height - 50;
 				if self["magicList" .. tipo].height&lt;height then self["magicList" .. tipo].height = height end;
-
-				if tipo == "7" then
-					self.rclEpicMagicList.width = self.magics.width - 350;
-					self.rclEpicMagicList.height = self["magicList" .. tipo].height;
-				end;
-				if tipo == "2" then
-					self.rclSignDescList.width = self.magics.width - 350;
-					self.rclSignDescList.height = self["magicList" .. tipo].height;
-				end;
-				if tipo == "1" then
-					self.rclMagiasOld.width = self.magics.width - 350;
-					self.rclMagiasOld.height = self["magicList" .. tipo].height;
-				end;
 			end;
 
 			self.detailsPart.left = 0;
@@ -427,7 +286,7 @@
 					local node = self.rclListaDasClassesMagicas.selectedNode;
 					self.boxDetalhesDaMagia.node = node;
 					self.boxDetalhesDaMagia.visible = (node ~= nil);
-					showHiddenLayouts();
+					--showHiddenLayouts();
 				</event>
 				<event name="onEndEnumeration">
 					if self.rclListaDasClassesMagicas.selectedNode == nil and sheet ~= nil then
@@ -435,7 +294,7 @@
 						if #nodes > 0 then
 							--self.rclListaDasClassesMagicas.selectedNode = nodes[1];
 						end;
-						showHiddenLayouts();
+						--showHiddenLayouts();
 					end;
 				</event>
 			</recordList>
@@ -454,7 +313,7 @@
 				<rectangle align="left" width="350" strokeSize="1" name="listPart">
 					<flowLayout left="5" top="5" minWidth="300" maxWidth="350" width="340" height="540" autoHeight="true" adjustHeightToLine="true" maxColumns="5" name="detailsLayout">
 						<TitleCenter text="Classe"/>
-						<TitleCenter text="Tipo"/>
+						<TitleCenter text=""/>
 						<flowPart minWidth="50" maxWidth="50" height="15">
 							<button align="top" text="NC" height="15">
 								<event name="onClick">
@@ -470,11 +329,6 @@
 
 						<FieldCenter field="classeMagia"/>
 						<flowPart minWidth="75" maxWidth="150" height="25">
-							<comboBox align="client" items="{'Lista Magias', 'Signos', 'Magias (OLD)', 'Magia Epica', 'Magias Aprimoradas'}" values="{'3', '2', '1', '7', '8'}" value="3" field="tipoMagia" fontColor="white">
-								<event name="onChange">
-									showHiddenLayouts();
-								</event>
-							</comboBox>
 						</flowPart>
 						<smallFieldCenter field="NC"/>
 						<smallFieldCenter field="cd"/>
@@ -511,9 +365,6 @@
 								updateMagicCD(4);
 								updateMagicCD(5);
 								updateMagicCD(6);
-								updateMagicCD(7);
-								updateMagicCD(8);
-								updateMagicCD(9);
 
 								local nodes = NDB.getChildNodes(node.campoDasMagiasEpicas); 
 								for i=1, #nodes, 1 do
@@ -525,20 +376,8 @@
 						<flowLineBreak/>
 
 						<flowPart minWidth="150" maxWidth="340" height="400">
-							<rectangle align="client" strokeSize="1" padding="{left=5,right=5,top=5,bottom=5}" name="details3" visible="false">
+							<rectangle align="client" strokeSize="1" padding="{left=5,right=5,top=5,bottom=5}" name="details3">
 								<import file="05.Magias.Details3.xml"/>
-							</rectangle>
-							<rectangle align="client" strokeSize="1" padding="{left=5,right=5,top=5,bottom=5}" name="details2" visible="false">
-								<import file="05.Magias.Details2.xml"/>
-							</rectangle>
-							<rectangle align="client" strokeSize="1" padding="{left=5,right=5,top=5,bottom=5}" name="details1" visible="false">
-								<import file="05.Magias.Details1.xml"/>
-							</rectangle>
-							<rectangle align="client" strokeSize="1" padding="{left=5,right=5,top=5,bottom=5}" name="details7" visible="false">
-								<import file="05.Magias.Details7.xml"/>
-							</rectangle>
-							<rectangle align="client" strokeSize="1" padding="{left=5,right=5,top=5,bottom=5}" name="details8" visible="false">
-								<import file="05.Magias.Details8.xml"/>
 							</rectangle>
 						</flowPart>
 
@@ -592,10 +431,6 @@
 				<layout align="client" name="scrollPart" margins="{left=5}">
 					<scrollBox align="client" name="detailsPart" padding="{left=5,right=5,top=5,bottom=5}">
 						<import file="05.Magias.List3.xml"/>
-						<import file="05.Magias.List2.xml"/>
-						<import file="05.Magias.List1.xml"/>
-						<import file="05.Magias.List7.xml"/>
-						<import file="05.Magias.List8.xml"/>
 					</scrollBox>
 				</layout>
 			</rectangle>

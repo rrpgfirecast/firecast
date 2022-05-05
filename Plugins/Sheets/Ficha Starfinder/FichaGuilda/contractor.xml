@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmContractor" align="client">
+	<scrollBox align="client">
+		<button text="Novo" align="top" height="30" onClick="self.rclContractor:append();"/>
+        <recordList name="rclContractor" field="rclContractor" templateForm="frmContractorItem" align="top" layout="verticalTiles" autoHeight="true" hitTest="false" minQt="0">
+            <event name="onCompare">
+                return utils.compareStringPtBr(nodeA.nome, nodeB.nome);
+            </event>
+        </recordList>
+	</scrollBox>
+</form>

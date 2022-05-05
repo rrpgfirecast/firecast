@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmSODLFillable2_svg" align="client" theme="light" margins="{top=1}">
+    <style>#frmSODLFillable2_svg path {color: black; strokeColor: black; mode: stretch;} &#xD;
+#frmSODLFillable2_svg label {fontColor: black; textTrimming: none; wordWrap: false; autoSize: true;}</style>
+    <scrollBox align="client">
+        <rectangle width="893" height="1263" color="white">&#xD;
+            <image left="0" top="0" width="893" height="1263" src="images/2.png" style="stretch" optimize="true" compilerOrder="0"/>&#xD;
+            <layout left="0" top="0" width="447" height="1263">
+
+            <edit left ="80" top="36" width="160" height="30" fontSize="16" fontColor="#000000" transparent="true" field="magicName_0"/>
+            <edit left ="302" top="36" width="90" height="30" fontSize="16" fontColor="#000000" transparent="true" field="magicTrad_0"/>
+            <edit left ="406" top="66" width="90" height="30" fontSize="16" fontColor="#000000" transparent="true" field="magicLevel_0"/>
+            <edit left ="370" top="98" width="90" height="30" fontSize="16" fontColor="#000000" transparent="true" field="magicConj_0"/>
+            <layout left="73" top="66" width="200" height="20" >
+                <imageCheckBox left="0" top="0" width="20" height="20" uncheckedImage="images/checkboxUnchecked.png" checkedImage="images/checkboxChecked.png" field="magicCheck_00"/>
+                <imageCheckBox left="20" top="0" width="20" height="20" uncheckedImage="images/checkboxUnchecked.png" checkedImage="images/checkboxChecked.png" field="magicCheck_01"/>
+                <imageCheckBox left="40" top="0" width="20" height="20" uncheckedImage="images/checkboxUnchecked.png" checkedImage="images/checkboxChecked.png" field="magicCheck_02"/>
+                <imageCheckBox left="60" top="0" width="20" height="20" uncheckedImage="images/checkboxUnchecked.png" checkedImage="images/checkboxChecked.png" field="magicCheck_03"/>
+                <imageCheckBox left="80" top="0" width="20" height="20" uncheckedImage="images/checkboxUnchecked.png" checkedImage="images/checkboxChecked.png" field="magicCheck_04"/>
+                <imageCheckBox left="100" top="0" width="20" height="20" uncheckedImage="images/checkboxUnchecked.png" checkedImage="images/checkboxChecked.png" field="magicCheck_05"/>
+                <imageCheckBox left="120" top="0" width="20" height="20" uncheckedImage="images/checkboxUnchecked.png" checkedImage="images/checkboxChecked.png" field="magicCheck_06"/>
+                <imageCheckBox left="140" top="0" width="20" height="20" uncheckedImage="images/checkboxUnchecked.png" checkedImage="images/checkboxChecked.png" field="magicCheck_07"/>
+                <imageCheckBox left="160" top="0" width="20" height="20" uncheckedImage="images/checkboxUnchecked.png" checkedImage="images/checkboxChecked.png" field="magicCheck_08"/>
+                <imageCheckBox left="180" top="0" width="20" height="20" uncheckedImage="images/checkboxUnchecked.png" checkedImage="images/checkboxChecked.png" field="magicCheck_09"/>
+            </layout>
+            <textEditor left ="36" top="86" width="320" height="150" fontSize="14" fontColor="#000000" transparent="true" field="magicDesc_0"/>
+
+            <edit left ="80" top="242" width="160" height="30" fontSize="16" fontColor="#000000" transparent="true" field="magicName_1"/>
+            <edit left ="302" top="242" width="90" height="30" fontSize="16" fontColor="#000000" transparent="true" field="magicTrad_1"/>
+            <edit left ="406" top="272" width="90" height="30" fontSize="16" fontColor="#000000" transparent="true" field="magicLevel_1"/>
+            <edit left ="370" top="304" width="90" height="30" fontSize="16" fontColor="#000000" transparent="true" field="magicConj_1"/>
+
+            <layout left="73" top="272" width="200" height="20" >
+                <imageCheckBox left="0" top="0" width="20" height="20" uncheckedImage="images/checkboxUnchecked.png" checkedImage="images/checkboxChecked.png" field="magicCheck_10"/>
+                <imageCheckBox left="20" top="0" width="20" height="20" uncheckedImage="images/checkboxUnchecked.png" checkedImage="images/checkboxChecked.png" field="magicCheck_11"/>
+                <imageCheckBox left="40" top="0" width="20" height="20" uncheckedImage="images/checkboxUnchecked.png" checkedImage="images/checkboxChecked.png" field="magicCheck_12"/>
+                <imageCheckBox left="60" top="0" width="20" height="20" uncheckedImage="images/checkboxUnchecked.png" checkedImage="images/checkboxChecked.png" field="magicCheck_13"/>
+                <imageCheckBox left="80" top="0" width="20" height="20" uncheckedImage="images/checkboxUnchecked.png" checkedImage="images/checkboxChecked.png" field="magicCheck_14"/>
+                <imageCheckBox left="100" top="0" width="20" height="20" uncheckedImage="images/checkboxUnchecked.png" checkedImage="images/checkboxChecked.png" field="magicCheck_15"/>
+                <imageCheckBox left="120" top="0" width="20" height="20" uncheckedImage="images/checkboxUnchecked.png" checkedImage="images/checkboxChecked.png" field="magicCheck_16"/>
+                <imageCheckBox left="140" top="0" width="20" height="20" uncheckedImage="images/checkboxUnchecked.png" checkedImage="images/checkboxChecked.png" field="magicCheck_17"/>
+                <imageCheckBox left="160" top="0" width="20" height="20" uncheckedImage="images/checkboxUnchecked.png" checkedImage="images/checkboxChecked.png" field="magicCheck_18"/>
+                <imageCheckBox left="180" top="0" width="20" height="20" uncheckedImage="images/checkboxUnchecked.png" checkedImage="images/checkboxChecked.png" field="magicCheck_19"/>
+            </layout>
+            <textEditor left ="36" top="292" width="320" height="150" fontSize="14" fontColor="#000000" transparent="true" field="magicDesc_1"/>
+
+            <edit left ="80" top="448" width="160" height="30" fontSize="16" fontColor="#000000" transparent="true" field="magicName_2" />
+            <edit left ="302" top="448" width="90" height="30" fontSize="16" fontColor="#000000" transparent="true" field="magicTrad_2" />
+            <edit left ="406" top="478" width="90" height="30" fontSize="16" fontColor="#000000" transparent="true" field="magicLevel_2"/>
+            <edit left ="370" top="510" width="90" height="30" fontSize="16" fontColor="#000000" transparent="true" field="magicConj_2"/>
+            <layout left="73" top="478" width="200" height="20" >
+                <imageCheckBox left="0" top="0" width="20" height="20" uncheckedImage="images/checkboxUnchecked.png" checkedImage="images/checkboxChecked.png" field="magicCheck_20"/>
+                <imageCheckBox left="20" top="0" width="20" height="20" uncheckedImage="images/checkboxUnchecked.png" checkedImage="images/checkboxChecked.png" field="magicCheck_21"/>
+                <imageCheckBox left="40" top="0" width="20" height="20" uncheckedImage="images/checkboxUnchecked.png" checkedImage="images/checkboxChecked.png" field="magicCheck_22"/>
+                <imageCheckBox left="60" top="0" width="20" height="20" uncheckedImage="images/checkboxUnchecked.png" checkedImage="images/checkboxChecked.png" field="magicCheck_23"/>
+                <imageCheckBox left="80" top="0" width="20" height="20" uncheckedImage="images/checkboxUnchecked.png" checkedImage="images/checkboxChecked.png" field="magicCheck_24"/>
+                <imageCheckBox left="100" top="0" width="20" height="20" uncheckedImage="images/checkboxUnchecked.png" checkedImage="images/checkboxChecked.png" field="magicCheck_25"/>
+                <imageCheckBox left="120" top="0" width="20" height="20" uncheckedImage="images/checkboxUnchecked.png" checkedImage="images/checkboxChecked.png" field="magicCheck_26"/>
+                <imageCheckBox left="140" top="0" width="20" height="20" uncheckedImage="images/checkboxUnchecked.png" checkedImage="images/checkboxChecked.png" field="magicCheck_27"/>
+                <imageCheckBox left="160" top="0" width="20" height="20" uncheckedImage="images/checkboxUnchecked.png" checkedImage="images/checkboxChecked.png" field="magicCheck_28"/>
+                <imageCheckBox left="180" top="0" width="20" height="20" uncheckedImage="images/checkboxUnchecked.png" checkedImage="images/checkboxChecked.png" field="magicCheck_29"/>
+            </layout>
+            <textEditor left ="36" top="498" width="320" height="150" fontSize="14" fontColor="#000000" transparent="true" field="magicDesc_2"/>
+
+            <edit left ="80" top="670" width="160" height="30" fontSize="16" fontColor="#000000" transparent="true" field="magicName_4"/>
+            <edit left ="302" top="670" width="90" height="30" fontSize="16" fontColor="#000000" transparent="true" field="magicTrad_4"/>
+            <edit left ="406" top="700" width="90" height="30" fontSize="16" fontColor="#000000" transparent="true" field="magicLevel_4"/>
+            <edit left ="370" top="732" width="90" height="30" fontSize="16" fontColor="#000000" transparent="true" field="magicConj_4"/>
+            <layout left="73" top="700" width="200" height="20" >
+                <imageCheckBox left="0" top="0" width="20" height="20" uncheckedImage="images/checkboxUnchecked.png" checkedImage="images/checkboxChecked.png" field="magicCheck_30"/>
+                <imageCheckBox left="20" top="0" width="20" height="20" uncheckedImage="images/checkboxUnchecked.png" checkedImage="images/checkboxChecked.png" field="magicCheck_31"/>
+                <imageCheckBox left="40" top="0" width="20" height="20" uncheckedImage="images/checkboxUnchecked.png" checkedImage="images/checkboxChecked.png" field="magicCheck_32"/>
+                <imageCheckBox left="60" top="0" width="20" height="20" uncheckedImage="images/checkboxUnchecked.png" checkedImage="images/checkboxChecked.png" field="magicCheck_33"/>
+                <imageCheckBox left="80" top="0" width="20" height="20" uncheckedImage="images/checkboxUnchecked.png" checkedImage="images/checkboxChecked.png" field="magicCheck_34"/>
+                <imageCheckBox left="100" top="0" width="20" height="20" uncheckedImage="images/checkboxUnchecked.png" checkedImage="images/checkboxChecked.png" field="magicCheck_35"/>
+                <imageCheckBox left="120" top="0" width="20" height="20" uncheckedImage="images/checkboxUnchecked.png" checkedImage="images/checkboxChecked.png" field="magicCheck_36"/>
+                <imageCheckBox left="140" top="0" width="20" height="20" uncheckedImage="images/checkboxUnchecked.png" checkedImage="images/checkboxChecked.png" field="magicCheck_37"/>
+                <imageCheckBox left="160" top="0" width="20" height="20" uncheckedImage="images/checkboxUnchecked.png" checkedImage="images/checkboxChecked.png" field="magicCheck_38"/>
+                <imageCheckBox left="180" top="0" width="20" height="20" uncheckedImage="images/checkboxUnchecked.png" checkedImage="images/checkboxChecked.png" field="magicCheck_39"/>
+            </layout>
+            <textEditor left ="36" top="720" width="320" height="150" fontSize="14" fontColor="#000000" transparent="true" field="magicDesc_4"/>
+
+            <edit left ="80" top="856" width="160" height="30" fontSize="16" fontColor="#000000" transparent="true" field="magicName_5"/>
+            <edit left ="302" top="856" width="90" height="30" fontSize="16" fontColor="#000000" transparent="true" field="magicTrad_5"/>
+            <edit left ="406" top="886" width="90" height="30" fontSize="16" fontColor="#000000" transparent="true" field="magicLevel_5"/>
+            <edit left ="370" top="918" width="90" height="30" fontSize="16" fontColor="#000000" transparent="true" field="magicConj_5"/>
+            <layout left="73" top="886" width="200" height="20" >
+                <imageCheckBox left="0" top="0" width="20" height="20" uncheckedImage="images/checkboxUnchecked.png" checkedImage="images/checkboxChecked.png" field="magicCheck_40"/>
+                <imageCheckBox left="20" top="0" width="20" height="20" uncheckedImage="images/checkboxUnchecked.png" checkedImage="images/checkboxChecked.png" field="magicCheck_41"/>
+                <imageCheckBox left="40" top="0" width="20" height="20" uncheckedImage="images/checkboxUnchecked.png" checkedImage="images/checkboxChecked.png" field="magicCheck_42"/>
+                <imageCheckBox left="60" top="0" width="20" height="20" uncheckedImage="images/checkboxUnchecked.png" checkedImage="images/checkboxChecked.png" field="magicCheck_43"/>
+                <imageCheckBox left="80" top="0" width="20" height="20" uncheckedImage="images/checkboxUnchecked.png" checkedImage="images/checkboxChecked.png" field="magicCheck_44"/>
+                <imageCheckBox left="100" top="0" width="20" height="20" uncheckedImage="images/checkboxUnchecked.png" checkedImage="images/checkboxChecked.png" field="magicCheck_45"/>
+                <imageCheckBox left="120" top="0" width="20" height="20" uncheckedImage="images/checkboxUnchecked.png" checkedImage="images/checkboxChecked.png" field="magicCheck_46"/>
+                <imageCheckBox left="140" top="0" width="20" height="20" uncheckedImage="images/checkboxUnchecked.png" checkedImage="images/checkboxChecked.png" field="magicCheck_47"/>
+                <imageCheckBox left="160" top="0" width="20" height="20" uncheckedImage="images/checkboxUnchecked.png" checkedImage="images/checkboxChecked.png" field="magicCheck_48"/>
+                <imageCheckBox left="180" top="0" width="20" height="20" uncheckedImage="images/checkboxUnchecked.png" checkedImage="images/checkboxChecked.png" field="magicCheck_49"/>
+            </layout>
+            <textEditor left ="36" top="906" width="320" height="150" fontSize="14" fontColor="#000000" transparent="true" field="magicDesc_5"/>
+
+            <edit left ="80" top="1056" width="160" height="30" fontSize="16" fontColor="#000000" transparent="true" field="magicName_6"/>
+            <edit left ="302" top="1056" width="90" height="30" fontSize="16" fontColor="#000000" transparent="true" field="magicTrad_6"/>
+            <edit left ="406" top="1086" width="90" height="30" fontSize="16" fontColor="#000000" transparent="true" field="magicLevel_6"/>
+            <edit left ="370" top="1118" width="90" height="30" fontSize="16" fontColor="#000000" transparent="true" field="magicConj_6"/>
+            <layout left="73" top="1086" width="200" height="20" >
+                <imageCheckBox left="0" top="0" width="20" height="20" uncheckedImage="images/checkboxUnchecked.png" checkedImage="images/checkboxChecked.png" field="magicCheck_50"/>
+                <imageCheckBox left="20" top="0" width="20" height="20" uncheckedImage="images/checkboxUnchecked.png" checkedImage="images/checkboxChecked.png" field="magicCheck_51"/>
+                <imageCheckBox left="40" top="0" width="20" height="20" uncheckedImage="images/checkboxUnchecked.png" checkedImage="images/checkboxChecked.png" field="magicCheck_52"/>
+                <imageCheckBox left="60" top="0" width="20" height="20" uncheckedImage="images/checkboxUnchecked.png" checkedImage="images/checkboxChecked.png" field="magicCheck_53"/>
+                <imageCheckBox left="80" top="0" width="20" height="20" uncheckedImage="images/checkboxUnchecked.png" checkedImage="images/checkboxChecked.png" field="magicCheck_54"/>
+                <imageCheckBox left="100" top="0" width="20" height="20" uncheckedImage="images/checkboxUnchecked.png" checkedImage="images/checkboxChecked.png" field="magicCheck_55"/>
+                <imageCheckBox left="120" top="0" width="20" height="20" uncheckedImage="images/checkboxUnchecked.png" checkedImage="images/checkboxChecked.png" field="magicCheck_56"/>
+                <imageCheckBox left="140" top="0" width="20" height="20" uncheckedImage="images/checkboxUnchecked.png" checkedImage="images/checkboxChecked.png" field="magicCheck_57"/>
+                <imageCheckBox left="160" top="0" width="20" height="20" uncheckedImage="images/checkboxUnchecked.png" checkedImage="images/checkboxChecked.png" field="magicCheck_58"/>
+                <imageCheckBox left="180" top="0" width="20" height="20" uncheckedImage="images/checkboxUnchecked.png" checkedImage="images/checkboxChecked.png" field="magicCheck_59"/>
+            </layout>
+            <textEditor left ="36" top="1106" width="320" height="150" fontSize="14" fontColor="#000000" transparent="true" field="magicDesc_6"/>
+            </layout>
+
+            <layout left="427" top="0" width="447" height="1263" >
+            <edit left ="80" top="36" width="160" height="30" fontSize="16" fontColor="#000000" transparent="true" field="magicName_7"/>
+            <edit left ="302" top="36" width="90" height="30" fontSize="16" fontColor="#000000" transparent="true" field="magicTrad_7"/>
+            <edit left ="406" top="66" width="90" height="30" fontSize="16" fontColor="#000000" transparent="true" field="magicLevel_7"/>
+            <edit left ="370" top="98" width="90" height="30" fontSize="16" fontColor="#000000" transparent="true" field="magicConj_7"/>
+            <layout left="73" top="66" width="200" height="20" >
+                <imageCheckBox left="0" top="0" width="20" height="20" uncheckedImage="images/checkboxUnchecked.png" checkedImage="images/checkboxChecked.png" field="magicCheck_60"/>
+                <imageCheckBox left="20" top="0" width="20" height="20" uncheckedImage="images/checkboxUnchecked.png" checkedImage="images/checkboxChecked.png" field="magicCheck_61"/>
+                <imageCheckBox left="40" top="0" width="20" height="20" uncheckedImage="images/checkboxUnchecked.png" checkedImage="images/checkboxChecked.png" field="magicCheck_62"/>
+                <imageCheckBox left="60" top="0" width="20" height="20" uncheckedImage="images/checkboxUnchecked.png" checkedImage="images/checkboxChecked.png" field="magicCheck_63"/>
+                <imageCheckBox left="80" top="0" width="20" height="20" uncheckedImage="images/checkboxUnchecked.png" checkedImage="images/checkboxChecked.png" field="magicCheck_64"/>
+                <imageCheckBox left="100" top="0" width="20" height="20" uncheckedImage="images/checkboxUnchecked.png" checkedImage="images/checkboxChecked.png" field="magicCheck_65"/>
+                <imageCheckBox left="120" top="0" width="20" height="20" uncheckedImage="images/checkboxUnchecked.png" checkedImage="images/checkboxChecked.png" field="magicCheck_66"/>
+                <imageCheckBox left="140" top="0" width="20" height="20" uncheckedImage="images/checkboxUnchecked.png" checkedImage="images/checkboxChecked.png" field="magicCheck_67"/>
+                <imageCheckBox left="160" top="0" width="20" height="20" uncheckedImage="images/checkboxUnchecked.png" checkedImage="images/checkboxChecked.png" field="magicCheck_68"/>
+                <imageCheckBox left="180" top="0" width="20" height="20" uncheckedImage="images/checkboxUnchecked.png" checkedImage="images/checkboxChecked.png" field="magicCheck_69"/>
+            </layout>
+            <textEditor left ="36" top="86" width="320" height="150" fontSize="14" fontColor="#000000" transparent="true" field="magicDesc_7"/>
+
+            <edit left ="80" top="242" width="160" height="30" fontSize="16" fontColor="#000000" transparent="true" field="magicName_8"/>
+            <edit left ="302" top="242" width="90" height="30" fontSize="16" fontColor="#000000" transparent="true" field="magicTrad_8"/>
+            <edit left ="406" top="272" width="90" height="30" fontSize="16" fontColor="#000000" transparent="true" field="magicLevel_8"/>
+            <edit left ="370" top="304" width="90" height="30" fontSize="16" fontColor="#000000" transparent="true" field="magicConj_8"/>
+
+            <layout left="73" top="272" width="200" height="20" >
+                <imageCheckBox left="0" top="0" width="20" height="20" uncheckedImage="images/checkboxUnchecked.png" checkedImage="images/checkboxChecked.png" field="magicCheck_70"/>
+                <imageCheckBox left="20" top="0" width="20" height="20" uncheckedImage="images/checkboxUnchecked.png" checkedImage="images/checkboxChecked.png" field="magicCheck_71"/>
+                <imageCheckBox left="40" top="0" width="20" height="20" uncheckedImage="images/checkboxUnchecked.png" checkedImage="images/checkboxChecked.png" field="magicCheck_72"/>
+                <imageCheckBox left="60" top="0" width="20" height="20" uncheckedImage="images/checkboxUnchecked.png" checkedImage="images/checkboxChecked.png" field="magicCheck_73"/>
+                <imageCheckBox left="80" top="0" width="20" height="20" uncheckedImage="images/checkboxUnchecked.png" checkedImage="images/checkboxChecked.png" field="magicCheck_74"/>
+                <imageCheckBox left="100" top="0" width="20" height="20" uncheckedImage="images/checkboxUnchecked.png" checkedImage="images/checkboxChecked.png" field="magicCheck_75"/>
+                <imageCheckBox left="120" top="0" width="20" height="20" uncheckedImage="images/checkboxUnchecked.png" checkedImage="images/checkboxChecked.png" field="magicCheck_76"/>
+                <imageCheckBox left="140" top="0" width="20" height="20" uncheckedImage="images/checkboxUnchecked.png" checkedImage="images/checkboxChecked.png" field="magicCheck_77"/>
+                <imageCheckBox left="160" top="0" width="20" height="20" uncheckedImage="images/checkboxUnchecked.png" checkedImage="images/checkboxChecked.png" field="magicCheck_78"/>
+                <imageCheckBox left="180" top="0" width="20" height="20" uncheckedImage="images/checkboxUnchecked.png" checkedImage="images/checkboxChecked.png" field="magicCheck_79"/>
+            </layout>
+            <textEditor left ="36" top="292" width="320" height="150" fontSize="14" fontColor="#000000" transparent="true" field="magicDesc_8"/>
+
+            <edit left ="80" top="448" width="160" height="30" fontSize="16" fontColor="#000000" transparent="true" field="magicName_9"/>
+            <edit left ="302" top="448" width="90" height="30" fontSize="16" fontColor="#000000" transparent="true" field="magicTrad_9"/>
+            <edit left ="406" top="478" width="90" height="30" fontSize="16" fontColor="#000000" transparent="true" field="magicLevel_9"/>
+            <edit left ="370" top="510" width="90" height="30" fontSize="16" fontColor="#000000" transparent="true" field="magicConj_9"/>
+            <layout left="73" top="478" width="200" height="20" >
+                <imageCheckBox left="0" top="0" width="20" height="20" uncheckedImage="images/checkboxUnchecked.png" checkedImage="images/checkboxChecked.png" field="magicCheck_80"/>
+                <imageCheckBox left="20" top="0" width="20" height="20" uncheckedImage="images/checkboxUnchecked.png" checkedImage="images/checkboxChecked.png" field="magicCheck_81"/>
+                <imageCheckBox left="40" top="0" width="20" height="20" uncheckedImage="images/checkboxUnchecked.png" checkedImage="images/checkboxChecked.png" field="magicCheck_82"/>
+                <imageCheckBox left="60" top="0" width="20" height="20" uncheckedImage="images/checkboxUnchecked.png" checkedImage="images/checkboxChecked.png" field="magicCheck_83"/>
+                <imageCheckBox left="80" top="0" width="20" height="20" uncheckedImage="images/checkboxUnchecked.png" checkedImage="images/checkboxChecked.png" field="magicCheck_84"/>
+                <imageCheckBox left="100" top="0" width="20" height="20" uncheckedImage="images/checkboxUnchecked.png" checkedImage="images/checkboxChecked.png" field="magicCheck_85"/>
+                <imageCheckBox left="120" top="0" width="20" height="20" uncheckedImage="images/checkboxUnchecked.png" checkedImage="images/checkboxChecked.png" field="magicCheck_86"/>
+                <imageCheckBox left="140" top="0" width="20" height="20" uncheckedImage="images/checkboxUnchecked.png" checkedImage="images/checkboxChecked.png" field="magicCheck_87"/>
+                <imageCheckBox left="160" top="0" width="20" height="20" uncheckedImage="images/checkboxUnchecked.png" checkedImage="images/checkboxChecked.png" field="magicCheck_88"/>
+                <imageCheckBox left="180" top="0" width="20" height="20" uncheckedImage="images/checkboxUnchecked.png" checkedImage="images/checkboxChecked.png" field="magicCheck_89"/>
+            </layout>
+            <textEditor left ="36" top="498" width="320" height="150" fontSize="14" fontColor="#000000" transparent="true" field="magicDesc_9"/>
+
+            <edit left ="80" top="670" width="160" height="30" fontSize="16" fontColor="#000000" transparent="true" field="magicName_10"/>
+            <edit left ="302" top="670" width="90" height="30" fontSize="16" fontColor="#000000" transparent="true" field="magicTrad_10"/>
+            <edit left ="406" top="700" width="90" height="30" fontSize="16" fontColor="#000000" transparent="true" field="magicLevel_10"/>
+            <edit left ="370" top="732" width="90" height="30" fontSize="16" fontColor="#000000" transparent="true" field="magicConj_10"/>
+            <layout left="73" top="700" width="200" height="20" >
+                <imageCheckBox left="0" top="0" width="20" height="20" uncheckedImage="images/checkboxUnchecked.png" checkedImage="images/checkboxChecked.png" field="magicCheck_90"/>
+                <imageCheckBox left="20" top="0" width="20" height="20" uncheckedImage="images/checkboxUnchecked.png" checkedImage="images/checkboxChecked.png" field="magicCheck_91"/>
+                <imageCheckBox left="40" top="0" width="20" height="20" uncheckedImage="images/checkboxUnchecked.png" checkedImage="images/checkboxChecked.png" field="magicCheck_92"/>
+                <imageCheckBox left="60" top="0" width="20" height="20" uncheckedImage="images/checkboxUnchecked.png" checkedImage="images/checkboxChecked.png" field="magicCheck_93"/>
+                <imageCheckBox left="80" top="0" width="20" height="20" uncheckedImage="images/checkboxUnchecked.png" checkedImage="images/checkboxChecked.png" field="magicCheck_94"/>
+                <imageCheckBox left="100" top="0" width="20" height="20" uncheckedImage="images/checkboxUnchecked.png" checkedImage="images/checkboxChecked.png" field="magicCheck_95"/>
+                <imageCheckBox left="120" top="0" width="20" height="20" uncheckedImage="images/checkboxUnchecked.png" checkedImage="images/checkboxChecked.png" field="magicCheck_96"/>
+                <imageCheckBox left="140" top="0" width="20" height="20" uncheckedImage="images/checkboxUnchecked.png" checkedImage="images/checkboxChecked.png" field="magicCheck_97"/>
+                <imageCheckBox left="160" top="0" width="20" height="20" uncheckedImage="images/checkboxUnchecked.png" checkedImage="images/checkboxChecked.png" field="magicCheck_98"/>
+                <imageCheckBox left="180" top="0" width="20" height="20" uncheckedImage="images/checkboxUnchecked.png" checkedImage="images/checkboxChecked.png" field="magicCheck_99"/>
+            </layout>
+            <textEditor left ="36" top="720" width="320" height="150" fontSize="14" fontColor="#000000" transparent="true" field="magicDesc_10"/>
+
+            <edit left ="80" top="856" width="160" height="30" fontSize="16" fontColor="#000000" transparent="true" field="magicName_11"/>
+            <edit left ="302" top="856" width="90" height="30" fontSize="16" fontColor="#000000" transparent="true" field="magicTrad_11"/>
+            <edit left ="406" top="886" width="90" height="30" fontSize="16" fontColor="#000000" transparent="true" field="magicLevel_11"/>
+            <edit left ="370" top="918" width="90" height="30" fontSize="16" fontColor="#000000" transparent="true" field="magicConj_11"/>
+            <layout left="73" top="886" width="200" height="20" >
+                <imageCheckBox left="0" top="0" width="20" height="20" uncheckedImage="images/checkboxUnchecked.png" checkedImage="images/checkboxChecked.png" field="magicCheck_100"/>
+                <imageCheckBox left="20" top="0" width="20" height="20" uncheckedImage="images/checkboxUnchecked.png" checkedImage="images/checkboxChecked.png" field="magicCheck_101"/>
+                <imageCheckBox left="40" top="0" width="20" height="20" uncheckedImage="images/checkboxUnchecked.png" checkedImage="images/checkboxChecked.png" field="magicCheck_102"/>
+                <imageCheckBox left="60" top="0" width="20" height="20" uncheckedImage="images/checkboxUnchecked.png" checkedImage="images/checkboxChecked.png" field="magicCheck_103"/>
+                <imageCheckBox left="80" top="0" width="20" height="20" uncheckedImage="images/checkboxUnchecked.png" checkedImage="images/checkboxChecked.png" field="magicCheck_104"/>
+                <imageCheckBox left="100" top="0" width="20" height="20" uncheckedImage="images/checkboxUnchecked.png" checkedImage="images/checkboxChecked.png" field="magicCheck_105"/>
+                <imageCheckBox left="120" top="0" width="20" height="20" uncheckedImage="images/checkboxUnchecked.png" checkedImage="images/checkboxChecked.png" field="magicCheck_106"/>
+                <imageCheckBox left="140" top="0" width="20" height="20" uncheckedImage="images/checkboxUnchecked.png" checkedImage="images/checkboxChecked.png" field="magicCheck_107"/>
+                <imageCheckBox left="160" top="0" width="20" height="20" uncheckedImage="images/checkboxUnchecked.png" checkedImage="images/checkboxChecked.png" field="magicCheck_108"/>
+                <imageCheckBox left="180" top="0" width="20" height="20" uncheckedImage="images/checkboxUnchecked.png" checkedImage="images/checkboxChecked.png" field="magicCheck_109"/>
+            </layout>
+            <textEditor left ="36" top="906" width="320" height="150" fontSize="14" fontColor="#000000" transparent="true" field="magicDesc_11"/>
+
+            <edit left ="80" top="1056" width="160" height="30" fontSize="16" fontColor="#000000" transparent="true" field="magicName_12"/>
+            <edit left ="302" top="1056" width="90" height="30" fontSize="16" fontColor="#000000" transparent="true" field="magicTrad_12"/>
+            <edit left ="406" top="1086" width="90" height="30" fontSize="16" fontColor="#000000" transparent="true" field="magicLevel_12"/>
+            <edit left ="370" top="1118" width="90" height="30" fontSize="16" fontColor="#000000" transparent="true" field="magicConj_12"/>
+            <layout left="73" top="1086" width="200" height="20" >
+                <imageCheckBox left="0" top="0" width="20" height="20" uncheckedImage="images/checkboxUnchecked.png" checkedImage="images/checkboxChecked.png" field="magicCheck_110"/>
+                <imageCheckBox left="20" top="0" width="20" height="20" uncheckedImage="images/checkboxUnchecked.png" checkedImage="images/checkboxChecked.png" field="magicCheck_111"/>
+                <imageCheckBox left="40" top="0" width="20" height="20" uncheckedImage="images/checkboxUnchecked.png" checkedImage="images/checkboxChecked.png" field="magicCheck_112"/>
+                <imageCheckBox left="60" top="0" width="20" height="20" uncheckedImage="images/checkboxUnchecked.png" checkedImage="images/checkboxChecked.png" field="magicCheck_113"/>
+                <imageCheckBox left="80" top="0" width="20" height="20" uncheckedImage="images/checkboxUnchecked.png" checkedImage="images/checkboxChecked.png" field="magicCheck_114"/>
+                <imageCheckBox left="100" top="0" width="20" height="20" uncheckedImage="images/checkboxUnchecked.png" checkedImage="images/checkboxChecked.png" field="magicCheck_115"/>
+                <imageCheckBox left="120" top="0" width="20" height="20" uncheckedImage="images/checkboxUnchecked.png" checkedImage="images/checkboxChecked.png" field="magicCheck_116"/>
+                <imageCheckBox left="140" top="0" width="20" height="20" uncheckedImage="images/checkboxUnchecked.png" checkedImage="images/checkboxChecked.png" field="magicCheck_117"/>
+                <imageCheckBox left="160" top="0" width="20" height="20" uncheckedImage="images/checkboxUnchecked.png" checkedImage="images/checkboxChecked.png" field="magicCheck_118"/>
+                <imageCheckBox left="180" top="0" width="20" height="20" uncheckedImage="images/checkboxUnchecked.png" checkedImage="images/checkboxChecked.png" field="magicCheck_119"/>
+            </layout>
+            <textEditor left ="36" top="1106" width="320" height="150" fontSize="14" fontColor="#000000" transparent="true" field="magicDesc_12"/>
+
+
+            </layout>
+        </rectangle>
+    </scrollBox>
+</form>

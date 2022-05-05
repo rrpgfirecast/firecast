@@ -46,8 +46,11 @@
 		<tab title="Descrições">
             <import file="ACN.4.lfm"/>
         </tab>
-		<tab title="Anotações">
+		<tab title="Anotações A">
             <import file="ACN.5.lfm"/>
+        </tab>
+        <tab title="Anotações B">
+            <import file="ACN.5_2.lfm"/>
         </tab>
 		<tab title="Creditos">
             <import file="ACN.6.lfm"/>

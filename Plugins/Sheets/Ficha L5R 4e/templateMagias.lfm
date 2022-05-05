@@ -1,76 +1,112 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<form name="templateMagias" height="155" width="325" margins="{top=5,bottom=5}">  
-    <rectangle width="320" height="160" xradius="5" yradius="5" cornerType="round" color="#212121"/>
-    <image top="5" left="5" scale="1" field="imagemMagia" name="imagMagia"></image>
-    <label text="Nome:" top="10" left="5" />
-    <edit left="50" transparent="true" height="30" top="5" width="265" field="nomeMagia" margins="{right=2}"/>
-    <horzLine left="50" top="30" width="265" strokeColor="white"/>
-    <label text="Elemento:" top="45"  left="5"/>
-    <comboBox left="67" top="40" width="100" height="25" horzTextAlign="center" transparent="true" field="elemMagia" items="{'Água', 'Ar', 'Fogo', 'Terra', 'Vazio', 'Universal'}"
-    values="{'Water', 'Air', 'Fire', 'Earth', 'Void', 'Universal'}"/>
-    <label text="Maestria:" top="45"  left="180" />
-    <edit left="240" transparent="true" top="40" height="25" horzTextAlign="center" field="lvlMagia" width="25" margins="{right=2}"/>
-    <horzLine left="240" top="65" width="25" strokeColor="white"/>
-    <label text="Keywords:" left="5" top="105" />
-    <edit left="68" top="100" transparent="true" height="25" width="135" field="tipoMagia" margins="{right=2}"/>
-    <horzLine left="68" top="125" width="135" strokeColor="white"/>
-    <label text="Área:" left="180" top="75" />
-    <edit left="215" top="70" transparent="true" height="25" width="100" field="areaMagia" margins="{right=2}"/>
-    <horzLine left="215" top="95" width="100" strokeColor="white"/>
-    <label text="Duração:" left="210" top="105" />
-    <edit left="265" top="100" height="25" transparent="true" width="50" field="duraMagia" margins="{right=2}"/>
-    <horzLine left="265" top="125" width="50" strokeColor="white"/>
-    <label text="Alcance:" left="5" top="75" />
-    <edit left="60" top="70" height="25" transparent="true" width="107" field="alcMagia" margins="{right=2}"/>
-    <horzLine left="60" top="95" width="107" strokeColor="white"/>
+<form name="templateMagias" height="170" width="302.5" margins="{top=3, bottom=3, right=3, left=3}">  
+<style>
+comboBox{
+	fontFamily: Cambria;
+	transparent: true;
+	fontColor: #cdcdcd;
+}
+edit{
+	fontFamily: Cambria;
+	transparent: true;
+	fontColor: #cdcdcd;
+}
+label, button{
+	fontFamily: Cambria;
+	fontColor: white;
+	fontStyle: bold;
+}
+</style>
+<dataLink fields="{'elemMagia'}"> 
+	<event name="onChange">
+		if sheet ~= nil then
+			local node = NDB.getRoot(sheet);
+			local objetos = NDB.getChildNodes(node.magias);
 
-    <button left="290" top="40" text="-" width='25' height='25'
-                onClick="NDB.deleteNode(sheet);"/>
+			for i=1, #objetos, 1 do 
+				if objetos[i].elemMagia == 'Water' then
+					objetos[i].imagemMagia = '/Frames/bgWater.png';
+				elseif objetos[i].elemMagia == 'Earth' then
+					objetos[i].imagemMagia = '/Frames/bgEarth.png';
+				elseif objetos[i].elemMagia == 'Air' then
+					objetos[i].imagemMagia = '/Frames/bgAir.png';
+				elseif objetos[i].elemMagia == 'Fire' then
+					objetos[i].imagemMagia = '/Frames/bgFire.png';
+				elseif objetos[i].elemMagia == 'Void' then
+					objetos[i].imagemMagia = '/Frames/bgVoid.png';
+				elseif objetos[i].elemMagia == 'Universal' then
+					objetos[i].imagemMagia = '0';
+				end;
+			end;
 
-    <button text="Descrição" top="130" width="310" left="5" height="25" name="labDesc"
-                >
-                <event name="onClick">
-                local pop = self:findControlByName("popMagia");
-                if pop ~= nil then
-                pop:setNodeObject(self.sheet);
-                pop:showPopupEx("right", self.labDesc);
-                else
-                showMessage("Ops, bug... Nao encontrei o popup para exibir");
-                end;
-                </event>
-    </button>
+		end
+	</event>
+</dataLink>
 
-    <popup name="popMagia" top="30" left="500" width="480" height="160" backOpacity="0.5" autoScopeNode="true">
-                <label text="Raises:" top="10" left="5" />
-    <edit left="50" height="25" top="5" width="425" field="raiseMagia"/>
-                <textEditor margins="{top = 30}" name="MinhaDescMag" field="descriMagia" align="client"/>             
-    </popup>   
+    <rectangle align="client" xradius="5" yradius="5" cornerType="round" color="#202020">
+		<image field="imagemMagia" name="imagMagia" align="client" style="autofit" margins="{right=20, left=20}" opacity="0.2"/>
+		
+		<layout height="30" top="10" left="10" width="282.5">
+			<label text="Nome:" align="left" width="40" margins="{right=2}"/>
+			<button text="🞭" width='30' onClick="NDB.deleteNode(sheet);" align="right" margins="{left=2}"/>
+			<edit field="nomeMagia" align="client" fontStyle="bold"/>
+			<dataLink defaultValue="—" field="nomeMagia" />
+		</layout>
+		<layout height="30" top="40" left="10" width="282.5">
+			<label text="Keywords:" align="left" width="65" margins="{right=2}" />
+			<layout width="92" align="right">
+				<label text="Maestria:" align="left" width="60" margins="{right=2}"/>
+				<edit align="left" horzTextAlign="center" field="lvlMagia" width="30" type="number" margins="{right=2}"/>
+				<dataLink defaultValue="0" field="lvlMagia" />
+			</layout>
+			<edit align="client" field="tipoMagia" margins="{right=2}"/>
+			<dataLink defaultValue="—" field="tipoMagia" />
+		</layout>
+		<layout height="30" top="70" left="10" width="282.5">
+			<label text="Duração:" align="left" width="55" margins="{right=2}"/>
+			<edit align="left" width="83" field="duraMagia" margins="{right=2}"/>
+			<dataLink defaultValue="—" field="duraMagia" />
+			
+			<label text="Elemento:" align="left" width="65"/>
+			<comboBox align="left" width="75" field="elemMagia" items="{'Água', 'Ar', 'Fogo', 'Terra', 'Vazio', 'Universal'}" values="{'Water', 'Air', 'Fire', 'Earth', 'Void', 'Universal'}"/>
+			<dataLink field="elemMagia" defaultValue="Universal" />
+		</layout>
+		<layout height="30" top="100" left="10" width="282.5">
+			<label text="Área:" align="left" width="37" margins="{right=2}"/>
+			<edit align="left" width="100" field="areaMagia" margins="{right=2}"/>
+			<dataLink defaultValue="—" field="areaMagia" />
+			
+			<label text="Alcance:" align="left" width="55"/>
+			<edit align="left" width="107" field="alcMagia" />
+			<dataLink defaultValue="—" field="alcMagia" />
+		</layout>
 
-    <dataLink fields="{'elemMagia'}"> 
-                <event name="onChange">
-                    if sheet ~= nil then
-                        local node = NDB.getRoot(sheet);
-                        local objetos = NDB.getChildNodes(node.magias);
+		<button text="Descrição" top="130" left="10" width="282.5" height="30" name="labDesc">
+			<event name="onClick">
+			local pop = self:findControlByName("popMagia");
+			if pop ~= nil then
+			pop:setNodeObject(self.sheet);
+			pop:showPopupEx("bottom", self.labDesc);
+			else
+			showMessage("Ops, bug... Nao encontrei o popup para exibir");
+			end;
+			</event>
+		</button>
 
-                        for i=1, #objetos, 1 do 
-                            if objetos[i].elemMagia == 'Water' then
-                                objetos[i].imagemMagia = 'http://blob.firecast.com.br/blobs/HGCVOFGV_1840554/Water.png';
-                            elseif objetos[i].elemMagia == 'Earth' then
-                                objetos[i].imagemMagia = 'http://blob.firecast.com.br/blobs/NVGJRJWF_1840560/Earth.png';
-                            elseif objetos[i].elemMagia == 'Air' then
-                                objetos[i].imagemMagia = 'http://blob.firecast.com.br/blobs/MDGKFTKT_1840555/Air.png';
-                            elseif objetos[i].elemMagia == 'Fire' then
-                                objetos[i].imagemMagia = 'http://blob.firecast.com.br/blobs/CUUULBSM_1840558/Fire.png';
-                            elseif objetos[i].elemMagia == 'Void' then
-                                objetos[i].imagemMagia = 'http://blob.firecast.com.br/blobs/ELMAJRDB_1840552/Void_1.png';
-                            elseif objetos[i].elemMagia == 'Universal' then
-                                objetos[i].imagemMagia = '0';
-                            end;
-                        end;
-
-                    end
-                </event>
-        </dataLink>
-	
-
+		<popup name="popMagia" width="600" height="300" backOpacity="0" drawContainer="false" autoScopeNode="true">
+			<rectangle align="client" color="#0e0e0e" xradius= "10" yradius="10" cornerType="bevel">
+				<image field="imagemMagia" align="client" style="autofit" margins="{right=20, left=20}" opacity="0.1"/>
+				
+				<label fontColor="white" top="10" left="10" width="580" field="nomeMagia" margins="{bottom=5}" fontStyle="bold" fontFamily="Constantia" fontSize="26" height="30"/>
+				<horzLine top="45" left="10" width="580" strokeColor="#424242" />			
+				<layout  top="50" left="10" width="580" height="30">
+					<label text="Raises:" width="45" align="left" />
+					<edit align="client" field="raiseMagia"/>
+					<dataLink defaultValue="—" field="raiseMagia"/>
+				</layout>
+				<textEditor margins="{top=90, right=10, left=10, bottom=10}" name="MinhaDescMag" field="descriMagia" align="client" transparent="true" fontFamily="Cambria" fontColor="#cdcdcd"/>       
+				<dataLink defaultValue="Descrição." field="descriMagia" />
+			</rectangle>
+		</popup>
+	</rectangle>
 </form>

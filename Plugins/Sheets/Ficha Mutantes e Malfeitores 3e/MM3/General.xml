@@ -1,0 +1,356 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmGeneral" align="client">	
+	<template name="HorzLabelEdit">
+		<layout align="left" width="250" margins="{right=5,left=5}">
+			<label align="left" text="$(text)" width="100" horzTextAlign="center"/>
+			<edit align="client" width="50" field="$(field)" height="25" horzTextAlign="center"/>
+		</layout>
+	</template>
+	<template name="HorzLabelEdit2">
+		<layout align="top" height="25" margins="{right=5,left=5}">
+			<label align="left" text="$(text)" width="100" horzTextAlign="center"/>
+			<edit align="client" width="50" field="$(field)" height="25" horzTextAlign="center"/>
+		</layout>
+	</template>
+	<template name="HorzLabelRecLab">
+		<layout align="top" height="25" margins="{right=5,left=5}">
+			<label align="left" text="$(text)" width="100" horzTextAlign="center"/>
+			<rectangle align="client" color="black" strokeColor="white" strokeSize="1">
+				<label align="client" field="$(field)" horzTextAlign="center" fontSize="12"/>
+			</rectangle>
+		</layout>
+	</template>
+	<template name="Atribute">
+		<layout align="top" height="25" margins="{right=5,left=5}">
+			<label align="left" text="$(text)" width="100" horzTextAlign="center"/>
+			<rectangle align="client" color="black" strokeColor="white" strokeSize="1">
+				<label align="client" field="$(field)Total" horzTextAlign="center" fontSize="12"/>
+			</rectangle>
+			<edit align="right" width="40" field="$(field)Base" height="25" horzTextAlign="center" type="number"/>
+			<edit align="right" width="40" field="$(field)Bonus" height="25" horzTextAlign="center" type="number" fontSize="10"/>
+		</layout>
+
+		<dataLink fields="{'$(field)Base', '$(field)Bonus'}">
+			<event name="onChange">
+				if sheet==nil then return end
+
+				local total = (tonumber(sheet.$(field)Base) or 0) + (tonumber(sheet.$(field)Bonus) or 0)
+
+				sheet.$(field)Total = total
+			</event>
+		</dataLink>
+
+		<dataLink fields="{'$(field)Total'}">
+			<event name="onChange">
+				if sheet==nil then return end
+
+				local nodes = NDB.getChildNodes(sheet.rclPericias); 
+	            for i=1, #nodes, 1 do
+	                nodes[i].$(field) = sheet.$(field)Total;
+	            end
+			</event>
+		</dataLink>
+	</template>
+	<template name="Defense">
+		<layout align="top" height="25" margins="{right=5,left=5}">
+			<label align="left" text="$(text)" width="100" horzTextAlign="center"/>
+			<rectangle align="client" color="black" strokeColor="white" strokeSize="1">
+				<label align="client" field="$(field)Total" horzTextAlign="center" fontSize="12"/>
+			</rectangle>
+			<rectangle align="right" width="40" color="black" strokeColor="white" strokeSize="1">
+				<label align="client" field="$(atr)Total" horzTextAlign="center" fontSize="12"/>
+			</rectangle>
+			<edit align="right" width="40" field="$(field)Base" height="25" horzTextAlign="center" type="number"/>
+			<edit align="right" width="40" field="$(field)Bonus" height="25" horzTextAlign="center" type="number" fontSize="10"/>
+		</layout>
+
+		<dataLink fields="{'$(field)Base', '$(field)Bonus', $(atr)Total}">
+			<event name="onChange">
+				if sheet==nil then return end
+
+				local total = (tonumber(sheet.$(field)Base) or 0) + (tonumber(sheet.$(field)Bonus) or 0) + (tonumber(sheet.$(atr)Total) or 0)
+
+				sheet.$(field)Total = total
+			</event>
+		</dataLink>
+	</template>
+	<template name="DefenseSum">
+		<layout align="top" height="25" margins="{right=5,left=5}">
+			<label align="left" text="$(text)" width="150" horzTextAlign="center"/>
+			<rectangle align="left" width="40" color="black" strokeColor="white" strokeSize="1">
+				<label align="client" field="$(field)Total" horzTextAlign="center" fontSize="12"/>
+			</rectangle>
+			<rectangle align="left" width="40" color="black" strokeColor="white" strokeSize="1">
+				<label align="client" field="npMax" horzTextAlign="center" fontSize="12"/>
+			</rectangle>
+		</layout>
+
+		<dataLink fields="{'$(d1)Total', '$(d2)Total'}">
+			<event name="onChange">
+				if sheet==nil then return end
+
+				local total = (tonumber(sheet.$(d1)Total) or 0) + (tonumber(sheet.$(d2)Total) or 0)
+
+				sheet.$(field)Total = total
+			</event>
+		</dataLink>
+
+		<dataLink fields="{'np'}">
+			<event name="onChange">
+				if sheet==nil then return end
+
+				local total = (tonumber(sheet.np) or 0) * 2
+
+				sheet.npMax = total
+
+				local nodes = NDB.getChildNodes(sheet.rclPericias); 
+	            for i=1, #nodes, 1 do
+	                nodes[i].np = sheet.np;
+	            end
+			</event>
+		</dataLink>
+	</template>
+	<template name="SimpleSum">
+		<layout align="top" height="25" margins="{right=5,left=5}">
+			<label align="left" text="$(text)" width="100" horzTextAlign="center"/>
+			<rectangle align="client" color="black" strokeColor="white" strokeSize="1">
+				<label align="client" field="$(field)Total" horzTextAlign="center" fontSize="12"/>
+			</rectangle>
+			<rectangle align="right" width="40" color="black" strokeColor="white" strokeSize="1">
+				<label align="client" field="$(atr)Total" horzTextAlign="center" fontSize="12"/>
+			</rectangle>
+			<edit align="right" width="40" field="$(field)Bonus" height="25" horzTextAlign="center" type="number" fontSize="10"/>
+		</layout>
+
+		<dataLink fields="{'$(field)Bonus', '$(atr)Total'}">
+			<event name="onChange">
+				if sheet==nil then return end
+
+				local total = (tonumber(sheet.$(field)Bonus) or 0) + (tonumber(sheet.$(atr)Total) or 0)
+
+				sheet.$(field)Total = total
+			</event>
+		</dataLink>
+	</template>
+
+	<scrollBox align="client">
+		<rectangle align="top" height="35" color="black" strokeColor="white" strokeSize="1" margins="bottom=5" padding="{top=5,bottom=5}">
+			<HorzLabelEdit text="Herói" field="heroi"/>
+
+			<layout align="left" width="350" margins="{right=5,left=5}">
+				<label align="left" text="Identidade" width="100" horzTextAlign="center"/>
+				<edit align="client" width="50" field="identidade" height="25" horzTextAlign="center"/>
+				<comboBox align="right" width="100" field="identidadeTipo" items="{'Secreta', 'Pública'}"/>
+			</layout>
+
+			<HorzLabelEdit text="Grupo Afiliado" field="afiliado"/>
+			<HorzLabelEdit text="Base" field="baseOp"/>
+
+			<layout align="left" width="150" margins="{right=5,left=5}">
+				<label align="left" text="Nível de Poder" width="100" horzTextAlign="center"/>
+				<edit align="client" width="50" field="np" height="25" horzTextAlign="center" type="number"/>
+			</layout>
+		</rectangle>
+
+		<layout align="top" height="260" margins="bottom=5" padding="{top=5,bottom=5}">
+			<rectangle align="left" width="250" color="black" strokeColor="white" strokeSize="1" margins="right=5">
+				<label align="top" height="25" text="Atributos" horzTextAlign="center"/>
+
+
+				<layout align="top" height="25">
+					<label align="client" text="" horzTextAlign="center"/>
+
+					<label align="right" width="40" text="PP" horzTextAlign="center"/>
+					<label align="right" width="40" text="Out" horzTextAlign="center"/>				
+				</layout>
+
+				<Atribute text="Força" field="forca"/>
+				<Atribute text="Agilidade" field="agilidade"/>
+				<Atribute text="Luta" field="luta"/>
+				<Atribute text="Prontidão" field="prontidao"/>
+				<Atribute text="Vigor" field="vigor"/>
+				<Atribute text="Destreza" field="destreza"/>
+				<Atribute text="Intelecto" field="intelecto"/>
+				<Atribute text="Presença" field="presenca"/>
+
+				<dataLink fields="{'forcaBase', 'agilidadeBase', 'lutaBase', 'prontidaoBase', 'vigorBase', 'destrezaBase', 'intelectoBase', 'presencaBase'}">
+					<event name="onChange">
+						if sheet==nil then return end
+
+						local total = 	(tonumber(sheet.forcaBase) or 0) + 
+										(tonumber(sheet.agilidadeBase) or 0) + 
+										(tonumber(sheet.lutaBase) or 0) +
+										(tonumber(sheet.prontidaoBase) or 0) + 
+										(tonumber(sheet.vigorBase) or 0) +
+										(tonumber(sheet.destrezaBase) or 0) +
+										(tonumber(sheet.intelectoBase) or 0) + 
+										(tonumber(sheet.presencaBase) or 0);
+
+						sheet.ppAtributo = total * 2
+					</event>
+				</dataLink>
+			</rectangle>
+			<rectangle align="left" width="290" color="black" strokeColor="white" strokeSize="1" margins="right=5">
+				<label align="top" height="25" text="Defesas" horzTextAlign="center"/>
+
+
+				<layout align="top" height="25">
+					<label align="client" text="" horzTextAlign="center"/>
+
+					<label align="right" width="40" text="Atr" horzTextAlign="center"/>
+					<label align="right" width="40" text="PP" horzTextAlign="center"/>
+					<label align="right" width="40" text="Out" horzTextAlign="center"/>	
+				</layout>
+
+				<Defense text="Esquiva" field="esquiva" atr="agilidade"/>
+				<Defense text="Aparar" field="aparar" atr="luta"/>
+				<Defense text="Fortitude" field="fortitude" atr="vigor"/>
+				<Defense text="Resistência" field="resistencia" atr="vigor"/>
+				<Defense text="Vontade" field="vontade" atr="prontidao"/>
+
+				<DefenseSum text="Esquiva+Resistência" field="dfER" d1="esquiva" d2="resistencia"/>
+				<DefenseSum text="Aparar+Resistência" field="dfAR" d1="aparar" d2="resistencia"/>
+				<DefenseSum text="Fortitude+Vontade" field="dfFV" d1="fortitude" d2="vontade"/>
+
+				<dataLink fields="{'esquivaBase', 'apararBase', 'fortitudeBase', 'resistenciaBase', 'vontadeBase'}">
+					<event name="onChange">
+						if sheet==nil then return end
+
+						local total = 	(tonumber(sheet.esquivaBase) or 0) + 
+										(tonumber(sheet.apararBase) or 0) + 
+										(tonumber(sheet.fortitudeBase) or 0) + 
+										(tonumber(sheet.resistenciaBase) or 0) + 
+										(tonumber(sheet.vontadeBase) or 0);
+
+						sheet.ppDefesas = total
+					</event>
+				</dataLink>
+			</rectangle>
+			<rectangle align="left" width="250" color="black" strokeColor="white" strokeSize="1" margins="right=5">
+				<layout align="top" height="5"/>
+
+				<SimpleSum text="Iniciativa" field="iniciativa" atr="agilidade"/>
+
+				<layout align="top" height="10"/>
+
+				<HorzLabelEdit2 text="Pontos Heroicos" field="ph"/>
+
+				<textEditor align="client" field="anotacoes4" margins="{left=5,right=5,top=5,bottom=5}"/>
+			</rectangle>
+			<rectangle align="left" width="150" color="black" strokeColor="white" strokeSize="1" margins="right=5">
+				<label align="top" height="25" text="Pontos de Poder" horzTextAlign="center"/>
+
+				<HorzLabelEdit2 text="Total" field="ppTotal"/>
+				<HorzLabelRecLab text="Gastos" field="ppGasto"/>
+
+				<layout align="top" height="10"/>
+
+				<HorzLabelRecLab text="Atributos" field="ppAtributo"/>
+				<HorzLabelRecLab text="Poderes" field="ppPoderes"/>
+				<HorzLabelRecLab text="Vantagens" field="ppVantagens"/>
+				<HorzLabelRecLab text="Perícias" field="ppPericias"/>
+				<HorzLabelRecLab text="Defesas" field="ppDefesas"/>
+
+				<dataLink fields="{'ppAtributo', 'ppPoderes', 'ppVantagens', 'ppPericias', 'ppDefesas'}">
+					<event name="onChange">
+						if sheet==nil then return end
+
+						local total = 	(tonumber(sheet.ppAtributo) or 0) + 
+										(tonumber(sheet.ppPoderes) or 0) + 
+										(tonumber(sheet.ppVantagens) or 0) + 
+										(tonumber(sheet.ppPericias) or 0) + 
+										(tonumber(sheet.ppDefesas) or 0);
+
+						sheet.ppGasto = total
+					</event>
+				</dataLink>
+			</rectangle>
+			<rectangle align="left" width="260" color="black" strokeColor="white" strokeSize="1">
+				<label left="0" top="100" width="260" height="25" text="Avatar" horzTextAlign="center"/>
+				<image align="client" field="avatar" editable="true" style="autoFit" margins="{left=2, right=2, top=2, bottom=2}">
+					<event name="OnStartDrag">
+					    drag:addData("imageURL", sheet.avatar);
+					</event>
+				</image>
+			</rectangle>
+		</layout>
+
+		<layout align="top" height="300" margins="bottom=5" padding="{top=5,bottom=5}">
+			<rectangle align="left" width="600" color="black" strokeColor="white" strokeSize="1" margins="{right=5}">
+				<layout align="top" height="25" margins="{top=5}">
+					<button align="left" width="25" text="+" onClick="self.rclAtaques:append()" margins="{left=5}"/>
+					<label align="client" text="Ataques" horzTextAlign="center"/>
+				</layout>
+				<layout align="top" height="25">
+					<label align="client" text="" horzTextAlign="center"/>
+
+					<label align="right" width="40" text="Atq" horzTextAlign="center"/>
+					<label align="right" width="40" text="Dano" horzTextAlign="center"/>
+					<label align="right" width="100" text="Efeito" horzTextAlign="center"/>
+					<label align="right" width="115" text="" horzTextAlign="center"/>
+				</layout>
+
+				<recordList align="client" margins="{left=5,right=5,bottom=5,top=5}" name="rclAtaques" field="rclAtaques" templateForm="frmAtaqueItem" layout="vertical"/>
+			</rectangle>
+
+			<rectangle align="left" width="600" color="black" strokeColor="white" strokeSize="1" margins="{right=5}">
+				<layout align="top" height="25" margins="{top=5}">
+					<button align="left" width="25" text="+" margins="{left=5}">
+						<event name="onClick">
+							local item = self.rclPericias:append()
+
+							if item ~= nil then
+								item.np = sheet.np
+								item.forca = sheet.forcaTotal
+								item.agilidade = sheet.agilidadeTotal
+								item.luta = sheet.lutaTotal
+								item.prontidao = sheet.prontidaoTotal
+								item.vigor = sheet.vigorTotal
+								item.destreza = sheet.destrezaTotal
+								item.intelecto = sheet.intelectoTotal
+								item.presenca = sheet.presencaTotal
+							end
+						</event>
+					</button>
+					<!-- Combobox de importar ficha -->
+					<button align="left" width="150" text="Add Todas Perícias">
+						<event name="onClick">
+							Dialogs.confirmOkCancel("Vai apagar todas perícias atuais.",
+						        function (confirmado)
+						                if confirmado then
+						                	if sheet.rclPericias == nil then sheet.rclPericias = {} end
+						                    local db = NDB.load("defaultskills.xml");
+											NDB.copy(sheet.rclPericias, db); 
+
+											self.rclPericias:sort();
+						                else
+						                        -- usuário escolheu CANCEL
+						                        -- Do nothing
+						                end;
+						        end);
+							
+
+						</event>
+					</button>
+
+					<label align="client" text="Perícias" horzTextAlign="center"/>
+				</layout>
+				<layout align="top" height="25">
+					<label align="client" text="" horzTextAlign="center"/>
+
+					<label align="right" width="50" text="Total" horzTextAlign="center"/>
+					<label align="right" width="50" text="" horzTextAlign="center"/>
+					<label align="right" width="50" text="Atr" horzTextAlign="center"/>
+					<label align="right" width="50" text="Grads" horzTextAlign="center"/>
+					<label align="right" width="50" text="Out" horzTextAlign="center"/>
+					<label align="right" width="50" text="Max" horzTextAlign="center"/>
+					<label align="right" width="75" text="" horzTextAlign="center"/>					
+				</layout>
+
+				<recordList align="client" margins="{left=5,right=5,bottom=5,top=5}" name="rclPericias" field="rclPericias" templateForm="frmPericiaItem" layout="vertical"/>
+			</rectangle>
+		</layout>
+
+
+	</scrollBox>
+</form>

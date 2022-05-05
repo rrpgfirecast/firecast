@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmSpellsListPath" align="client">
+	<scrollBox align="client">
+		<recordList align="top" height="260" field="spellListPath" name="spellListPath" templateForm="frmSpellItem" autoHeight="true">
+			<event name="onCompare">
+				return Utils.compareStringPtBr(nodeA.name, nodeB.name);
+	    	</event>
+		</recordList>
+	</scrollBox>
+
+	<layout align="bottom" height="25">
+		<button align="left" horzTextAlign="center" width="150" text="Anterior">
+			<event name="onClick">
+				-- Verifica se ta na primeira pagina
+				if self.scope.node==nil then return end;
+				if toolSheet.SpellsPagePath==nil then return end;
+
+				if toolSheet.SpellsPagePath==1 then return end;
+
+				-- Apaga pagina atual
+				local toDelete = NDB.getChildNodes(toolSheet.spellListPath); 
+			    for i=1, #toDelete, 1 do
+			        NDB.deleteNode(toDelete[i]);
+			    end;
+
+				-- Passa para a pagina anterior
+				toolSheet.SpellsPagePath = toolSheet.SpellsPagePath - 1;
+
+				local first = ((toolSheet.SpellsPagePath-1)*50)+1;
+				local last = math.min(toolSheet.SpellsPagePath*50, toolSheet.numSpellsPath);
+
+				for i=first, last, 1 do
+					local spell = self.spellListPath:append();
+
+					if toolSheet.filteredSpellsPath[i].description then 
+						spell.description = toolSheet.filteredSpellsPath[i].description;
+					end;
+
+					spell.name = toolSheet.filteredSpellsPath[i].name;
+					local nome = tryLang(toolSheet.filteredSpellsPath[i].name);
+					if nome ~= nil then spell.name = spell.name .. " - " .. nome end;
+
+					spell.school = trans(toolSheet.filteredSpellsPath[i].school);
+					spell.subschool = trans(toolSheet.filteredSpellsPath[i].subschool);
+					spell.url = toolSheet.filteredSpellsPath[i].url;
+					spell.level = classToText(toolSheet.filteredSpellsPath[i].level);
+					spell.descriptor = "Descritores: " .. arrayToText(toolSheet.filteredSpellsPath[i].descriptor, #tags);
+					spell.components = "Componentes: " .. arrayToText(toolSheet.filteredSpellsPath[i].components, #components);
+					spell.range = "Alcance: " .. trans(toolSheet.filteredSpellsPath[i].range);
+					spell.duration = "Duração: " .. arrayToText(toolSheet.filteredSpellsPath[i].duration, #durations);
+					spell.aiming = "Alvo: " .. arrayToText(toolSheet.filteredSpellsPath[i].aiming, #targets);
+					spell.save = "Resistência: " .. arrayToText(toolSheet.filteredSpellsPath[i].save, #trs);
+					spell.sr = "RM: " .. arrayToText(toolSheet.filteredSpellsPath[i].sr, #srs);
+					spell.book = "Livro: " .. arrayToText(toolSheet.filteredSpellsPath[i].book, #books);
+				end;
+				self.spellListPath:sort();
+			</event>
+		</button>
+
+		<label align="left" field="SpellsPagePath" width="25" horzTextAlign="center"/>
+		<label align="left" text="/" width="25" horzTextAlign="center"/>
+		<label align="left" field="maxSpellPagesPath" width="25" horzTextAlign="center"/>
+
+		<button align="left" horzTextAlign="center" width="150" text="Proximo">
+			<event name="onClick">
+				-- Verifica se ta na ultima pagina
+				if self.scope.node==nil then return end;
+				if toolSheet.SpellsPagePath==nil then return end;
+
+				if toolSheet.SpellsPagePath>=toolSheet.maxSpellPagesPath then return end;
+
+				-- Apaga pagina atual
+				local toDelete = NDB.getChildNodes(toolSheet.spellListPath); 
+			    for i=1, #toDelete, 1 do
+			        NDB.deleteNode(toDelete[i]);
+			    end;
+
+				-- Passa para a proxima pagina
+				toolSheet.SpellsPagePath = toolSheet.SpellsPagePath + 1;
+
+				local first = ((toolSheet.SpellsPagePath-1)*50)+1;
+				local last = math.min(toolSheet.SpellsPagePath*50, toolSheet.numSpellsPath);
+
+				for i=first, last, 1 do
+					local spell = self.spellListPath:append();
+
+					if toolSheet.filteredSpellsPath[i].description then 
+						spell.description = toolSheet.filteredSpellsPath[i].description;
+					end;
+					
+					spell.name = toolSheet.filteredSpellsPath[i].name;
+					local nome = tryLang(toolSheet.filteredSpellsPath[i].name);
+					if nome ~= nil then spell.name = spell.name .. " - " .. nome end;
+
+					spell.school = trans(toolSheet.filteredSpellsPath[i].school);
+					spell.subschool = trans(toolSheet.filteredSpellsPath[i].subschool);
+					spell.url = toolSheet.filteredSpellsPath[i].url;
+					spell.level = classToText(toolSheet.filteredSpellsPath[i].level);
+					spell.descriptor = "Descritores: " .. arrayToText(toolSheet.filteredSpellsPath[i].descriptor, #tags);
+					spell.components = "Componentes: " .. arrayToText(toolSheet.filteredSpellsPath[i].components, #components);
+					spell.range = "Alcance: " .. trans(toolSheet.filteredSpellsPath[i].range);
+					spell.duration = "Duração: " .. arrayToText(toolSheet.filteredSpellsPath[i].duration, #durations);
+					spell.aiming = "Alvo: " .. arrayToText(toolSheet.filteredSpellsPath[i].aiming, #targets);
+					spell.save = "Resistência: " .. arrayToText(toolSheet.filteredSpellsPath[i].save, #trs);
+					spell.sr = "RM: " .. arrayToText(toolSheet.filteredSpellsPath[i].sr, #srs);
+					spell.book = "Livro: " .. arrayToText(toolSheet.filteredSpellsPath[i].book, #books);
+				end;
+				self.spellListPath:sort();
+
+				-- Atualiza o tamanho do rcl
+				local spells = NDB.getChildNodes(toolSheet.spellListPath); 
+        		self.spellListPath.height = #spells * 101;
+			</event>
+		</button>
+	</layout>
+</form>

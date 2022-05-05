@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmSkills" align="client">	
+	<scrollBox align="client">
+		<rectangle align="left" width="600" color="black" strokeColor="white" strokeSize="1" margins="{right=5}">
+			<layout align="top" height="25" margins="{top=5}">
+				<button align="left" width="25" text="+" margins="{left=5}">
+					<event name="onClick">
+						local item = self.rclPericias:append()
+
+						if item ~= nil then
+							item.np = sheet.np
+							item.forca = sheet.forcaTotal
+							item.agilidade = sheet.agilidadeTotal
+							item.luta = sheet.lutaTotal
+							item.prontidao = sheet.prontidaoTotal
+							item.vigor = sheet.vigorTotal
+							item.destreza = sheet.destrezaTotal
+							item.intelecto = sheet.intelectoTotal
+							item.presenca = sheet.presencaTotal
+						end
+					</event>
+				</button>
+				<!-- Combobox de importar ficha -->
+				<button align="left" width="150" text="Adicionar Perícias">
+					<event name="onClick">
+						Dialogs.confirmOkCancel("Vai apagar todas perícias atuais.",
+					        function (confirmado)
+					                if confirmado then
+					                    local db = NDB.load("defaultskills.xml");
+										NDB.copy(sheet.rclPericias, db); 
+
+										self.rclPericias:sort();
+					                else
+					                        -- usuário escolheu CANCEL
+					                        -- Do nothing
+					                end;
+					        end);
+						
+
+					</event>
+				</button>
+
+				<label align="client" text="Perícias" horzTextAlign="center"/>
+			</layout>
+			<layout align="top" height="25">
+				<label align="client" text="" horzTextAlign="center"/>
+
+				<label align="right" width="50" text="Total" horzTextAlign="center"/>
+				<label align="right" width="50" text="" horzTextAlign="center"/>
+				<label align="right" width="50" text="Atr" horzTextAlign="center"/>
+				<label align="right" width="50" text="Grads" horzTextAlign="center"/>
+				<label align="right" width="50" text="Out" horzTextAlign="center"/>
+				<label align="right" width="50" text="Max" horzTextAlign="center"/>
+				<label align="right" width="55" text="" horzTextAlign="center"/>					
+			</layout>
+
+			<recordList align="client" margins="{left=5,right=5,bottom=5,top=5}" name="rclPericias" field="rclPericias" templateForm="frmPericiaItem" layout="vertical"/>
+		</rectangle>
+	</scrollBox>
+</form>

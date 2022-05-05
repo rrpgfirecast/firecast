@@ -46,6 +46,15 @@ local function constructNew_frmMainAutoupdater()
               return tostring(o)
            end
         end
+        
+        local function write(str)
+            local mesa = Firecast.getMesaDe(self);
+            if str then
+                mesa.activeChat:escrever(str);
+            else
+                mesa.activeChat:escrever("String nula");
+            end;
+        end;
 
         local function tryTranslate(text)
             local trans = Locale.tryLang(text);
@@ -454,20 +463,19 @@ local function constructNew_frmMainAutoupdater()
 
     obj._e_event3 = obj.edit1:addEventListener("onChange",
         function (_)
-            if sheet == nil then return end;
+            --write(self.scope.node);
             				if self.scope.node == nil then return end;
             
-            
             				local nodes = NDB.getChildNodes(self.scope.node.downloadedPluginsList);
-            				local mesa = Firecast.getMesaDe(sheet);
-            				local login = mesa.meuJogador.login;
+            				--local mesa = Firecast.getMesaDe(self);
+            				--local login = mesa.meuJogador.login;
             				local filter = string.lower(Utils.removerAcentos(self.scope.node.filter));
             
             				-- Deixe todos visiveis 
             				if filter == nil or filter == "" then
             					for i = 1, #nodes, 1 do
             						nodes[i].priority = 0;
-            						NDB.setPermission(nodes[i], "user", login, "read", "allow");
+            						--NDB.setPermission(nodes[i], "user", login, "read", "allow");
             					end;
             				-- Deixe apenas os matchs visiveis
             				else
@@ -478,10 +486,10 @@ local function constructNew_frmMainAutoupdater()
             
             						if string.find(name, filter) or string.find(moduleId, filter) or string.find(author, filter) then
             							nodes[i].priority = 1;
-            							NDB.setPermission(nodes[i], "user", login, "read", "allow");
+            							--NDB.setPermission(nodes[i], "user", login, "read", "allow");
             						else
             							nodes[i].priority = -1;
-            							NDB.setPermission(nodes[i], "user", login, "read", "deny");
+            							--NDB.setPermission(nodes[i], "user", login, "read", "deny");
             							--showMessage(NDB.getPermission(nodes[i], "user", login, "read"));
             						end;
             					end;

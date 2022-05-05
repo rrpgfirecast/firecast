@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmListaNPC" height="30" theme="light" >
+<style>.NPC_B{ fontColor: #000000; fontSize: 20; horzTextAlign: center; vertTextAlign: center; fontFamily: kalam; }</style>
+        <layout align="client" margins="{left=4, right=4, top=4, bottom=4}">
+                <button align="left" width="25" text="X" class="NPC_B" >
+				<event name="onClick">
+					Dialogs.confirmOkCancel("Quer mesmo apagar esse NPC ?",
+						function (confirmado)
+							if confirmado then
+								NDB.deleteNode(sheet);
+							end;
+					end);
+				</event>
+				</button>
+                <label align="client" width="150" hint="Preencha a ficha!" fontColor="#C0504D" field="NPC_nick" margins="{left=4}" class="NPC_B"/>
+        </layout>
+</form>

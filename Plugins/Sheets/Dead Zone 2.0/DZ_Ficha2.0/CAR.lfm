@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmCAR" height="650" width="1010" theme="light"> 
+<style>.Condu{fontSize: 20; fontColor: #C0504D; horzTextAlign: leading; vertTextAlign: center; fontFamily: DK Umbilical Noose;} </style> 
+<style>.Condu2{fontSize: 20; fontColor: #C0504D; horzTextAlign: center; vertTextAlign: center; fontFamily: kalam; transparent: true;} </style> 
+				<rectangle width="1010" height="650" color="white" cornerType="round" strokeColor="black" strokeSize="2" xradius="8" yradius="8"> 
+					<scrollBox align="client">
+			## Condução 01##	
+						<layout left="0" top="0" width="500" height="650">
+							<image width="500" height="400" left="0" top="0" style="proportional" center="true" src="images/FichaCAR.png"/>
+
+							<label text="VEICULO" fontSize="30" width="200" height="30" top="45" left="70" class="condu"/>
+							<edit field="Conducao_Nick" width="250" horzTextAlign="leading" fontSize="30" fontStyle="bold" height="40" top="50" left="190" class="condu2"/>
+
+							<label text="Manobra" fontSize="20" width="60" height="30" top="110" left="70" class="condu"/>
+							<edit field="Conducao_Manobra" width="30" height="30" top="110" left="170" class="condu2"/>
+							
+							<label text="Blindagem" fontSize="20" fontColor="black" width="60" height="30" top="145" left="55" class="condu"/>
+							<edit field="Conducao_Blindagem" width="30" height="30" top="145" left="170" class="condu2"/>
+
+							<label text="Capacidade" fontSize="20" width="60" height="30" top="178" left="51" class="condu"/>
+							<edit field="Conducao_Capacidade" width="30" height="30" top="175" left="170" class="condu2"/>
+
+							<label text="CD" fontSize="20" fontColor="black" width="60" height="30" top="207" left="100" class="condu"/>
+							<edit field="Conducao_CD" width="30" height="30" top="207" left="170" class="condu2"/>
+
+							<label text="Integridade" fontSize="20" width="80" height="30" top="100" left="230" class="condu"/>
+							<edit field="Conducao_Integridade1" width="30" height="30" top="142" left="240" class="condu2"/>
+							<edit field="Conducao_Integridade2" width="30" height="30" top="142" left="275" class="condu2"/>
+							<edit field="Conducao_Integridade3" width="30" height="30" top="142" left="310" class="condu2"/>
+
+							<label text="Gasolina" fontSize="20" fontColor="black" width="80" height="30" top="100" left="370" class="condu"/>
+							<edit field="Conducao_Gasolina1" width="30" height="30" top="142" left="370" class="condu2"/>
+							<label text="Perm" fontSize="10" fontColor="#C0C0C0" width="30" height="45" top="130" left="375" class="condu"/>
+							<edit field="Conducao_Gasolina2" width="30" height="30" top="142" left="425" class="condu2"/>
+							<label text="Temp" fontSize="10" fontColor="#C0C0C0" width="30" height="45" top="130" left="430" class="condu"/>
+
+							<label text="Equipamentos:" fontSize="20" width="80" height="30" top="178" left="230" class="condu"/>
+							<layout left="230" top="208" width="230" height="160">
+								<textEditor name="Conducao_Equipamentos" fontFamily="kalam" width="230" height="160" fontSize="15" fontColor="#548DD4" field="Conducao_Equipamentos" transparent="true" /></layout> 
+
+							<label text="Circunstancia:" fontSize="20" width="80" height="30" top="260" left="40" class="condu"/>
+							<layout left="25" top="290" width="200" height="78">
+								<textEditor name="Conducao_Circunstancia" fontFamily="kalam" width="200" height="80" fontSize="15" fontColor="#548DD4" field="Conducao_Circunstancia" transparent="true" /></layout>
+							<image width="500" height="250" left="0" top="385" style="proportional" center="true" editable="true" src="images/ImgSize_250x500.png" field="CarII"/>
+						</layout>
+			## Condução 02##						
+						<layout left="500" top="0" width="500" height="650">
+							<image width="500" height="400" left="0" top="0" style="proportional" center="true" src="images/FichaCAR.png"/>
+
+							<label text="VEICULO" fontSize="30" width="200" height="30" top="45" left="70" class="condu"/>
+							<edit field="Conducao2_Nick" width="250" fontStyle="bold" fontSize="30" horzTextAlign="leading" height="40" top="50" left="190" class="condu2"/>
+
+							<label text="Manobra" fontSize="20" width="60" height="30" top="110" left="70" class="condu"/>
+							<edit field="Conducao2_Manobra" width="30" height="30" top="110" left="170" class="condu2"/>
+							
+							<label text="Blindagem" fontSize="20" fontColor="black" width="60" height="30" top="145" left="55" class="condu"/>
+							<edit field="Conducao2_Blindagem" width="30" height="30" top="145" left="170" class="condu2"/>
+
+							<label text="Capacidade" fontSize="20" width="60" height="30" top="178" left="51" class="condu"/>
+							<edit field="Conducao2_Capacidade" width="30" height="30" top="175" left="170" class="condu2"/>
+
+							<label text="CD" fontSize="20" fontColor="black" width="60" height="30" top="207" left="100" class="condu"/>
+							<edit field="Conducao2_CD" width="30" height="30" top="207" left="170" class="condu2"/>
+
+							<label text="Integridade" fontSize="20" width="80" height="30" top="100" left="230" class="condu"/>
+							<edit field="Conducao2_Integridade1" width="30" height="30" top="142" left="240" class="condu2"/>
+							<edit field="Conducao2_Integridade2" width="30" height="30" top="142" left="275" class="condu2"/>
+							<edit field="Conducao2_Integridade3" width="30" height="30" top="142" left="310" class="condu2"/>
+
+							<label text="Gasolina" fontSize="20" fontColor="black" width="80" height="30" top="100" left="370" class="condu"/>
+							<edit field="Conducao2_Gasolina1" width="30" height="30" top="142" left="370" class="condu2"/>
+							<label text="Perm" fontSize="10" fontColor="#C0C0C0" width="30" height="45" top="130" left="375" class="condu"/>
+							<edit field="Conducao2_Gasolina2" width="30" height="30" top="142" left="425" class="condu2"/>
+							<label text="Temp" fontSize="10" fontColor="#C0C0C0" width="30" height="45" top="130" left="430" class="condu"/>
+
+							<label text="Equipamentos:" fontSize="20" width="80" height="30" top="178" left="230" class="condu"/>
+							<layout left="230" top="208" width="230" height="160">
+								<textEditor name="Conducao2_Equipamentos" fontFamily="kalam" width="230" height="160" fontSize="15" fontColor="#548DD4" field="Conducao2_Equipamentos" transparent="true" /></layout> 
+
+							<label text="Circunstancia:" fontSize="20" width="80" height="30" top="260" left="40" class="condu"/>
+							<layout left="25" top="290" width="200" height="78">
+								<textEditor name="Conducao2_Circunstancia" fontFamily="kalam" width="200" height="80" fontSize="15" fontColor="#548DD4" field="Conducao2_Circunstancia" transparent="true" /></layout> 
+
+							<image width="500" height="250" left="0" top="385" style="proportional" center="true" editable="true" field="Car2II" src="images/ImgSize_250x500.png"/>
+						</layout>
+					</scrollBox>
+				</rectangle>
+</form>

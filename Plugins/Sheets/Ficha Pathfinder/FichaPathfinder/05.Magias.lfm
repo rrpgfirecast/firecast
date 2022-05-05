@@ -636,7 +636,7 @@
 				</layout>
 			</layout>
 			
-			<comboBox left="10" top="50" width="110" height="25" items="{'Lista Magias', 'Signos', 'Magias (OLD)', 'Magia Epica', 'Magias Aprimoradas'}" values="{'3', '2', '1', '7', '8'}" value="3" field="tipoMagia" fontColor="white">
+			<comboBox left="10" top="50" width="110" height="25" items="{'Lista Magias', 'Magia Epica', 'Magias Aprimoradas'}" values="{'3', '7', '8'}" value="3" field="tipoMagia" fontColor="white">
 				<event name="onChange">
 					limpar();
 				</event>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmMagiasConhecidas" height="25" width="330">
+     <import file="templates.xml"/>
+
+	 <script>
+		<![CDATA[
+		local function askForDelete()
+			Dialogs.confirmYesNo("Deseja realmente apagar essa magia?",
+								 function (confirmado)
+									if confirmado then
+										NDB.deleteNode(sheet);
+									end;
+								 end);
+		end;
+
+		local function showInfoMagiaPopup()
+			local pop = self:findControlByName("popInfoMagia");
+
+			if pop ~= nil then
+				pop:setNodeObject(self.sheet);
+				pop:show("bottomCenter", self.botaoMagiaInfo);
+			else
+				showMessage("Não encontrei o popup da magia para exibir.");
+			end;
+		end;
+	    ]]>
+	</script>
+
+	<formatNumEdit left="0" top="0" width="55" height="25" field="nivelMagiaConhec"/>
+	<formatLabelEdit left="55" top="0" width="189" height="25" vertTextAlign="center" field="nomeMagiaConhec"/>
+	<button name="botaoMagiaInfo" left="244" top="1" width="23" height="23" text="i" onClick="showInfoMagiaPopup();"/>
+	<button left="267" top="1" width="23" height="23" text="X" onClick="askForDelete();"/>
+</form>

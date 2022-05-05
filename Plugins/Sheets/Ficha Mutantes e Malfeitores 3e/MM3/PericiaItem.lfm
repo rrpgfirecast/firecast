@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmPericiaItem" width="110" height="25" margins="{top=1}">
+	<rectangle align="client" color="#212121">
+		<edit align="client" field="nome"/>
+
+		<rectangle align="right" width="50" color="black" strokeColor="white" strokeSize="1">
+			<label align="client" field="total" horzTextAlign="center" fontSize="12"/>
+		</rectangle>
+		<dataLink fields="{'atr', 'graduacao', 'outros'}">
+			<event name="onChange">
+				if sheet==nil then return end
+
+				local total = 	(tonumber(sheet.atr) or 0) + 
+								(tonumber(sheet.graduacao) or 0) + 
+								(tonumber(sheet.outros) or 0);
+
+				sheet.total = total
+			</event>
+		</dataLink>
+
+		<comboBox align="right" width="50" field="atrKey" items="{'FOR', 'AGI', 'LUT', 'PRO', 'BIG', 'DES', 'INT', 'PRE'}" values="{'forca', 'agilidade', 'luta', 'prontidao', 'vigor', 'destreza', 'intelecto', 'presenca'}"/>
+		<rectangle align="right" width="50" color="black" strokeColor="white" strokeSize="1">
+			<label align="client" field="atr" horzTextAlign="center" fontSize="12"/>
+		</rectangle>
+		<dataLink fields="{'atrKey'}">
+			<event name="onChange">
+				if sheet== nil then return end
+				sheet.atr = sheet[sheet.atrKey]
+			</event>
+		</dataLink>
+
+		<edit align="right" width="50" field="graduacao" horzTextAlign="center" type="number"/>	
+		<dataLink fields="{'graduacao'}">
+			<event name="onUserChange">
+				if sheet~= nil then
+					local node = NDB.getRoot(sheet);
+
+					local grads = 0;
+					local nodes = NDB.getChildNodes(node.rclPericias); 
+					for i=1, #nodes, 1 do
+						grads = grads + (tonumber(nodes[i].graduacao) or 0);
+					end
+
+					node.ppPericias = math.floor(grads/2)
+				end;
+			</event>
+		</dataLink>
+		<edit align="right" width="50" field="outros" horzTextAlign="center" type="number"/>
+
+		<layout align="right" width="50">
+			<edit align="right" width="25" field="maxBase"/>
+			<rectangle align="right" width="25" color="black" strokeColor="white" strokeSize="1">
+				<label align="client" field="max" horzTextAlign="center" fontSize="12"/>
+			</rectangle>
+			<dataLink fields="{'maxBase', 'np'}">
+				<event name="onChange">
+					if sheet==nil then return end
+
+					local base = (tonumber(sheet.maxBase) or 0)
+					local np = (tonumber(sheet.np) or 0)
+
+					local total = 0
+
+					if base==0 then
+						total = np * 2
+					else
+						total = base + np
+					end
+
+					sheet.max = total
+				</event>
+			</dataLink>
+		</layout>
+
+		<layout align="right" width="50">
+			<button align="right" width="25" text="R">
+				<event name="onClick">
+					if sheet==nil then return end;
+					local mesa = Firecast.getMesaDe(sheet);
+					local rolagem = Firecast.interpretarRolagem("1d20 + " .. (sheet.total or 0));
+
+					mesa.activeChat:rolarDados(rolagem, "Teste de " .. (sheet.nome or "Perícia"))
+				</event>
+			</button>
+			<!-- Botão que apaga o objeto da lista -->
+			<button align="right" width="25" text="X">
+				<event name="onClick">
+					Dialogs.confirmOkCancel("Tem certeza que quer apagar essa perícia?",
+						function (confirmado)
+							if confirmado then
+								NDB.deleteNode(sheet);
+							end;
+					end);
+				</event>
+			</button>
+		</layout>
+	</rectangle>
+</form>

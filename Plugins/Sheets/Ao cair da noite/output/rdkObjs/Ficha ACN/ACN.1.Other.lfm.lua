@@ -44,6 +44,7 @@ local function constructNew_frmOther()
     obj.button1:setHeight(15);
     obj.button1:setWidth(15);
     obj.button1:setText("1");
+    obj.button1:setFontSize(9);
     obj.button1:setName("button1");
 
     obj.button2 = GUI.fromHandle(_obj_newObject("button"));
@@ -53,6 +54,7 @@ local function constructNew_frmOther()
     obj.button2:setHeight(15);
     obj.button2:setWidth(15);
     obj.button2:setText("2");
+    obj.button2:setFontSize(9);
     obj.button2:setName("button2");
 
     obj.edit1 = GUI.fromHandle(_obj_newObject("edit"));

@@ -1,0 +1,602 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form formType="sheetTemplate" dataType="thirteen.GoT" title="Game of Thrones" name="frmGoT" theme="dark">
+<style>
+	edit{
+	fontFamily: Palatino Linotype;
+	fontColor: #573c27;
+	height: 25;
+	fontSize: 15;
+	transparent: true;
+	}
+	
+	label{
+	fontFamily: Palatino Linotype;
+	fontStyle: bold;
+	fontColor: black;
+	height: 25;
+	fontSize: 15;
+	}
+	
+	horzLine{
+	strokeColor: #a7754d;
+	align: top;
+	}
+	
+	textEditor{
+	fontFamily: Palatino Linotype;
+	fontColor: #573c27;
+	fontSize: 14;
+	transparent: true;
+	}
+	
+	imageCheckBox{
+	checkedImage: /images/checkBoxAtvo.png;
+	uncheckedImage: /images/checkBoxDesa.png;
+	height: 24;
+	width: 24;
+	align: left;
+	margins: {right=3};
+	autoChange: false;
+	}
+
+	image.BG{
+	align: client;
+	style: autofit;
+	url: /images/fundo.png;
+	}
+	
+	rectangle.MargemdeFora{
+	color: transparent; 
+	strokeColor: #a7754d; 
+	strokeSize: 3; 
+	align: client;
+	}
+	
+	rectangle.MargemdeDentro{
+	color: transparent; 
+	strokeColor: #a7754d; 
+	strokeSize: 1; 
+	align: client; 
+	margins: {top=5, right=5, bottom=5, left=5}; 
+	padding: {top=10, right=10, bottom=10, left=10};
+	}
+	
+	flowLayout.TabelaHabilidades{
+	align: top;  
+	horzAlign: center; 
+	orientation: horizontal; 
+	maxControlsPerLine: 1; 
+	margins: {top=30, bottom=20};
+	}
+</style>
+<script>
+<![CDATA[
+	local function calcExp()
+		local SomaXP = 0;
+		tbGrad = {(sheet.grad01 or 2), (sheet.grad02 or 2), (sheet.grad03 or 2), (sheet.grad04 or 2), (sheet.grad05 or 2), (sheet.grad06 or 2), (sheet.grad07 or 2), (sheet.grad08 or 2), (sheet.grad09 or 2), (sheet.grad10 or 2), 
+		(sheet.grad11 or 2), (sheet.grad12 or 2), (sheet.grad13 or 2), (sheet.grad14 or 2), (sheet.grad15 or 2), (sheet.grad16 or 2), (sheet.grad17 or 2), (sheet.grad18 or 2), (sheet.grad19 or 2)};
+		
+		for i = 1, #tbGrad do
+			if(tbGrad[i] == 1) then SomaXP = SomaXP - 50;
+			elseif(tbGrad[i] == 2) then SomaXP = SomaXP + 0;
+			elseif(tbGrad[i] == 3) then SomaXP = SomaXP + 10;
+			elseif(tbGrad[i] > 3) then SomaXP = SomaXP + ((30 * (tbGrad[i] - 3)) +10); end;
+		end;
+		
+		local Corrida = string.match((sheet.spec03 or ""), "Corrida%s(%d+)B");
+		if(Corrida == nil) then Corrida = string.match((sheet.spec03 or ""), "(%d+)B%sCorrida"); end;
+		if(Corrida == nil) then Corrida = string.match((sheet.spec03 or ""), "(%d+)B%scorrida"); end;
+		if(Corrida == nil) then Corrida = string.match((sheet.spec03 or ""), "corrida%s(%d+)B"); end;
+		if (Corrida == nil) then Corrida = 0; 
+		else Corrida = string.match(Corrida, "(%d+)"); end;
+		
+		sheet.dado13 = string.format("%02d", tbGrad[2] + tbGrad[13] + tbGrad[17]);
+		sheet.dado14 = string.format("%02d", tbGrad[1] + tbGrad[3] + tbGrad[13]);
+		sheet.dado15 = string.format("%02d", tbGrad[19] * 3);
+		sheet.dado16 = string.format("%02d", tbGrad[18] * 3);
+		sheet.dado17 = string.format("%02d",4 + math.floor(tonumber(Corrida) / 2)) .. "m";
+		sheet.dado18 = string.format("%02d", tonumber(string.match((sheet.dado17 or ""), "%d%d")) * 4) .. "m";
+		
+		sheet.somaExp = "EXP: " .. string.format("%03d", SomaXP) .. " pts.";
+	end;
+	
+		local function TrocarAba(a)
+			if(a == 'D') then
+				if(self.layFrente:isVisible()) then
+					self.layFrente.visible = false;
+					self.layBG.visible = true;
+					self.layFrente:needRepaint();
+					self.layBG:needRepaint();
+					
+				elseif(self.layBG:isVisible()) then
+					self.layBG.visible = false;
+					self.layNote.visible = true;
+					self.layBG:needRepaint();
+					self.layNote:needRepaint();
+					
+				elseif(self.layNote:isVisible()) then
+					self.layNote.visible = false;
+					self.layFrente.visible = true;
+					self.layNote:needRepaint();
+					self.layFrente:needRepaint();
+				end;
+			end;
+			
+			if(a == 'E') then
+				if(self.layFrente:isVisible()) then
+					self.layFrente.visible = false;
+					self.layNote.visible = true;
+					self.layFrente:needRepaint();
+					self.layNote:needRepaint();
+					
+				elseif(self.layBG:isVisible()) then
+					self.layBG.visible = false;
+					self.layFrente.visible = true;
+					self.layBG:needRepaint();
+					self.layFrente:needRepaint();
+					
+				elseif(self.layNote:isVisible()) then
+					self.layNote.visible = false;
+					self.layBG.visible = true;
+					self.layNote:needRepaint();
+					self.layBG:needRepaint();
+				end;		
+			end;
+		end;
+	
+]]>
+</script>
+
+	<image class="BG" />
+	<layout align="client" frameStyle="/frames/frameFundo.xml">
+	<scrollBox align="client">
+		<flowLayout align="top" autoHeight="true" horzAlign="center" orientation="horizontal" margins="{top=20, right=20, bottom=20, left=20}">
+			<!-- SETA ESQUERDA -->
+			<flowPart minWidth="50" maxWidth="110" height="1900">
+				<image margins="{right=10}" url="/images/arrow-l.png" style="proportional" align="client" cursor="handPoint" hitTest="true" onClick="if(sheet==nil) then return; end; TrocarAba('E');" />
+			</flowPart>
+			
+			<flowPart minWidth="400" maxWidth="1000" height="1900" margins="{bottom=20}">
+				<rectangle class="MargemdeFora">
+					<rectangle class="MargemdeDentro">
+					
+						<!-- FUNDO DE PAPIRO E COR POR TRÁS -->
+						<rectangle align="client" color="#e2bc8f" />
+						<layout align="client" frameStyle="/frames/framePapiro.xml">
+						<!-- BORDAS DO PAPIRO INTERNAS -->
+						<image url="/images/corner-top-left.png" style="proportional" height="200" width="200" anchors="top left" top="10" left="10" />
+						<image url="/images/corner-top-right.png" style="proportional" height="200" width="200" anchors="top right" top="10" right="10" />
+						<image url="/images/corner-bot-left.png" style="proportional" height="200" width="200" anchors="bottom left" bottom="10" left="10" />
+						<image url="/images/corner-bot-right.png" style="proportional" height="200" width="200" anchors="bottom right" bottom="10" right="10" />
+						<image url="/images/shields.png" style="proportional" height="40" width="200" align="bottom" margins="{bottom=30}" />
+						
+						<layout align="top" height="300" />
+						<!-- LAYOUT FRENTE -->
+						<layout align="client" name="layFrente">
+							<!-- DADOS PESSOAIS -->
+							<template name="Campo">
+								<flowPart minWidth="220" height="25" margins="{right=10, left=10}">
+									<label align="left" text="$(nome):" width="$(largura)" />
+									<edit align="client" field="dado$(numero)" hint="$(nome)" /><dataLink field="dado$(numero)" defaultValue="—" />
+								</flowPart>
+							</template>
+							<template name="CampoEst">
+								<flowPart minWidth="220" height="25" margins="{right=10, left=10}">
+									<label align="left" text="$(nome):" width="$(largura)" hitTest="true" hint="$(desc)" />
+									<label align="client" name="dado$(numero)" fontColor="#a7754d" fontFamily="Georgia" field="dado$(numero)" hitTest="true" hint="$(desc)" /><dataLink field="dado$(numero)" defaultValue="0" />
+								</flowPart>
+							</template>
+							
+							<flowLayout class="TabelaHabilidades" height="300" maxControlsPerLine="3" >
+								<flowPart minWidth="720" align="top" height="45">
+									<label text="DADOS PESSOAIS" margins="{left=20}" fontSize="30" height="45" align="top" vertTextAlign="leading" />
+								</flowPart><flowLineBreak />
+								<Campo nome="Nome" largura="48" numero="01" />
+								<Campo nome="Casa" largura="38" numero="02" />
+								<Campo nome="Armadura" largura="75" numero="03" />
+								<Campo nome="Sexo" largura="38" numero="04" />
+								<Campo nome="Idade" largura="45" numero="05" />
+								<Campo nome="Valor de Armadura" largura="135" numero="06" />
+								<Campo nome="Virtude" largura="58" numero="07" />
+								<Campo nome="Vício" largura="43" numero="08" />
+								<Campo nome="Penalidade de Agilidade" largura="172" numero="09" />							
+								<Campo nome="Objetivo" largura="67" numero="10" />
+								<Campo nome="Motivação" largura="78" numero="11" />
+								<Campo nome="Volume" largura="60" numero="12" />
+								
+								<flowLineBreak /> 
+								<flowPart minWidth="720" align="top" height="20" />
+								<flowLineBreak /> 
+								
+								<CampoEst nome="Defesa em Intriga" largura="130" desc="Astúcia + Percepção + Status" numero="13" />
+								<CampoEst nome="Defesa em Combate" largura="145" desc="Agilidade + Atletismo + Percepção" numero="14" />
+								<CampoEst nome="Compostura" largura="92" desc="Vontade x 3" numero="15" />
+								<CampoEst nome="Saúde" largura="50" desc="Vigor x 3" numero="16" />
+								<CampoEst nome="Movimento" largura="87" desc="4m + 1m/2B em Corrida" numero="17" />
+								<CampoEst nome="Corrida" largura="60" desc="Movimento x 4" numero="18" />
+								
+								<flowLineBreak /> 
+								<flowPart minWidth="700" align="top" height="20">
+									<horzLine margins="{top=10, left=10}" />
+								</flowPart>
+								<flowLineBreak /> 
+								
+								<template name="OitoChecks">
+									<imageCheckBox field="fldCheck$(id)_01" name="nomeCheck$(id)_01" onClick="
+										sheet.fldCheck$(id)_01 = not sheet.fldCheck$(id)_01;
+										
+										if(sheet.fldCheck$(id)_02) then 
+											sheet.fldCheck$(id)_01 = true; 
+											sheet.fldCheck$(id)_02 = false; 
+											sheet.fldCheck$(id)_03 = false; 
+											sheet.fldCheck$(id)_04 = false; 
+											sheet.fldCheck$(id)_05 = false; 
+											sheet.fldCheck$(id)_06 = false; 
+											sheet.fldCheck$(id)_07 = false; 
+											sheet.fldCheck$(id)_08 = false; 
+										end;
+									" />
+									<imageCheckBox field="fldCheck$(id)_02" name="nomeCheck$(id)_02" onClick="
+										sheet.fldCheck$(id)_02 = not sheet.fldCheck$(id)_02;
+										
+										if(sheet.fldCheck$(id)_02) then 
+											sheet.fldCheck$(id)_01 = true; 
+										else 
+											sheet.fldCheck$(id)_01 = false;
+										end;
+										
+										if(sheet.fldCheck$(id)_03) then 
+											sheet.fldCheck$(id)_01 = true; 
+											sheet.fldCheck$(id)_02 = true; 
+											sheet.fldCheck$(id)_03 = false; 
+											sheet.fldCheck$(id)_04 = false; 
+											sheet.fldCheck$(id)_05 = false;
+											sheet.fldCheck$(id)_06 = false; 
+											sheet.fldCheck$(id)_07 = false; 
+											sheet.fldCheck$(id)_08 = false;  
+										end;
+									" />
+									<imageCheckBox field="fldCheck$(id)_03" name="nomeCheck$(id)_03" onClick="
+										sheet.fldCheck$(id)_03 = not sheet.fldCheck$(id)_03;
+										
+										if(sheet.fldCheck$(id)_03) then 
+											sheet.fldCheck$(id)_01 = true; 
+											sheet.fldCheck$(id)_02 = true; 
+										else 
+											sheet.fldCheck$(id)_01 = false; 
+											sheet.fldCheck$(id)_02 = false; 
+										end;
+										
+										if(sheet.fldCheck$(id)_04) then 
+											sheet.fldCheck$(id)_01 = true; 
+											sheet.fldCheck$(id)_02 = true; 
+											sheet.fldCheck$(id)_03 = true; 
+											sheet.fldCheck$(id)_04 = false; 
+											sheet.fldCheck$(id)_05 = false;
+											sheet.fldCheck$(id)_06 = false; 
+											sheet.fldCheck$(id)_07 = false; 
+											sheet.fldCheck$(id)_08 = false;  
+										end;
+									" />
+									<imageCheckBox field="fldCheck$(id)_04" name="nomeCheck$(id)_04" onClick="
+										sheet.fldCheck$(id)_04 = not sheet.fldCheck$(id)_04;
+										
+										if(sheet.fldCheck$(id)_04) then 
+											sheet.fldCheck$(id)_01 = true; 
+											sheet.fldCheck$(id)_02 = true; 
+											sheet.fldCheck$(id)_03 = true; 
+										else 
+											sheet.fldCheck$(id)_01 = false; 
+											sheet.fldCheck$(id)_02 = false; 
+											sheet.fldCheck$(id)_03 = false; 
+										end;
+										
+										if(sheet.fldCheck$(id)_05) then 
+											sheet.fldCheck$(id)_01 = true; 
+											sheet.fldCheck$(id)_02 = true; 
+											sheet.fldCheck$(id)_03 = true; 
+											sheet.fldCheck$(id)_04 = true; 
+											sheet.fldCheck$(id)_05 = false; 
+											sheet.fldCheck$(id)_06 = false; 
+											sheet.fldCheck$(id)_07 = false; 
+											sheet.fldCheck$(id)_08 = false; 
+										end;
+									" />
+									<imageCheckBox field="fldCheck$(id)_05" name="nomeCheck$(id)_05" onClick="
+										sheet.fldCheck$(id)_05 = not sheet.fldCheck$(id)_05;
+										
+										if(sheet.fldCheck$(id)_05) then 
+											sheet.fldCheck$(id)_01 = true; 
+											sheet.fldCheck$(id)_02 = true; 
+											sheet.fldCheck$(id)_03 = true; 
+											sheet.fldCheck$(id)_04 = true; 
+										else 
+											sheet.fldCheck$(id)_01 = false; 
+											sheet.fldCheck$(id)_02 = false; 
+											sheet.fldCheck$(id)_03 = false; 
+											sheet.fldCheck$(id)_04 = false; 
+										end;
+										
+										if(sheet.fldCheck$(id)_06) then 
+											sheet.fldCheck$(id)_01 = true; 
+											sheet.fldCheck$(id)_02 = true; 
+											sheet.fldCheck$(id)_03 = true; 
+											sheet.fldCheck$(id)_04 = true; 
+											sheet.fldCheck$(id)_05 = true; 
+											sheet.fldCheck$(id)_06 = false; 
+											sheet.fldCheck$(id)_07 = false; 
+											sheet.fldCheck$(id)_08 = false;  
+										end;
+									" />
+									<imageCheckBox field="fldCheck$(id)_06" name="nomeCheck$(id)_06" onClick="
+										sheet.fldCheck$(id)_06 = not sheet.fldCheck$(id)_06;
+										
+										if(sheet.fldCheck$(id)_06) then 
+											sheet.fldCheck$(id)_01 = true; 
+											sheet.fldCheck$(id)_02 = true; 
+											sheet.fldCheck$(id)_03 = true; 
+											sheet.fldCheck$(id)_04 = true; 
+											sheet.fldCheck$(id)_05 = true; 
+										else 
+											sheet.fldCheck$(id)_01 = false; 
+											sheet.fldCheck$(id)_02 = false; 
+											sheet.fldCheck$(id)_03 = false; 
+											sheet.fldCheck$(id)_04 = false; 
+											sheet.fldCheck$(id)_05 = false; 
+										end;
+										
+										if(sheet.fldCheck$(id)_07) then 
+											sheet.fldCheck$(id)_01 = true; 
+											sheet.fldCheck$(id)_02 = true; 
+											sheet.fldCheck$(id)_03 = true; 
+											sheet.fldCheck$(id)_04 = true; 
+											sheet.fldCheck$(id)_05 = true; 
+											sheet.fldCheck$(id)_06 = true; 
+											sheet.fldCheck$(id)_07 = false; 
+											sheet.fldCheck$(id)_08 = false; 
+										end;
+									" />
+									<imageCheckBox field="fldCheck$(id)_07" name="nomeCheck$(id)_07" onClick="
+										sheet.fldCheck$(id)_07 = not sheet.fldCheck$(id)_07;
+										
+										if(sheet.fldCheck$(id)_07) then 
+											sheet.fldCheck$(id)_01 = true; 
+											sheet.fldCheck$(id)_02 = true; 
+											sheet.fldCheck$(id)_03 = true; 
+											sheet.fldCheck$(id)_04 = true; 
+											sheet.fldCheck$(id)_05 = true; 
+											sheet.fldCheck$(id)_06 = true; 
+										else 
+											sheet.fldCheck$(id)_01 = false; 
+											sheet.fldCheck$(id)_02 = false; 
+											sheet.fldCheck$(id)_03 = false; 
+											sheet.fldCheck$(id)_04 = false; 
+											sheet.fldCheck$(id)_05 = false; 
+											sheet.fldCheck$(id)_06 = false; 
+										end;
+										
+										if(sheet.fldCheck$(id)_08) then 
+											sheet.fldCheck$(id)_01 = true; 
+											sheet.fldCheck$(id)_02 = true; 
+											sheet.fldCheck$(id)_03 = true; 
+											sheet.fldCheck$(id)_04 = true; 
+											sheet.fldCheck$(id)_05 = true; 
+											sheet.fldCheck$(id)_06 = true; 
+											sheet.fldCheck$(id)_07 = true; 
+											sheet.fldCheck$(id)_08 = false; 
+										end;
+									" />
+									<imageCheckBox field="fldCheck$(id)_08" name="nomeCheck$(id)_08" onClick="
+										sheet.fldCheck$(id)_08 = not sheet.fldCheck$(id)_08;
+										
+										if(sheet.fldCheck$(id)_08) then 
+											sheet.fldCheck$(id)_01 = true; 
+											sheet.fldCheck$(id)_02 = true; 
+											sheet.fldCheck$(id)_03 = true; 
+											sheet.fldCheck$(id)_04 = true; 
+											sheet.fldCheck$(id)_05 = true; 
+											sheet.fldCheck$(id)_06 = true; 
+											sheet.fldCheck$(id)_07 = true; 
+										else 
+											sheet.fldCheck$(id)_01 = false; 
+											sheet.fldCheck$(id)_02 = false; 
+											sheet.fldCheck$(id)_03 = false; 
+											sheet.fldCheck$(id)_04 = false; 
+											sheet.fldCheck$(id)_05 = false; 
+											sheet.fldCheck$(id)_06 = false; 
+											sheet.fldCheck$(id)_07 = false; 
+										end;
+									" />
+								</template>
+								
+								<flowPart minWidth="220" height="60" margins="{right=10, left=10}">
+									<label align="top" text="FERIMENTOS" fontSize="10" />
+									<OitoChecks id="Ferimentos" />
+								</flowPart>
+								<flowPart minWidth="220" height="60" margins="{right=10, left=10}">
+									<label align="top" text="LESÕES" fontSize="10" />
+									<OitoChecks id="Lesoes" />
+								</flowPart>
+								<flowPart minWidth="220" height="60" margins="{right=10, left=10}">
+									<label align="top" text="DESTINO" fontSize="10" />
+									<OitoChecks id="DESTINO" />
+								</flowPart>
+								
+							</flowLayout>
+							
+							<image align="top" url="/images/divisor.png" style="proportional" height="30" />
+							
+							<!-- HABILIDADES -->
+							<template name="Habilidade">
+								<flowPart minWidth="680" align="top" height="25">
+								<flowLayout align="top" autoHeight="true" horzAlign="center" orientation="horizontal" maxControlsPerLine="3">
+									<flowPart  minWidth="70" height="25">
+										<label fontColor="#a7754d" align="left" width="15" text="❮" hitTest="true"  hint="$(nome)" cursor="handPoint" onClick="if(sheet==nil) then return; end; if(sheet.grad$(numero) > 1) then sheet.grad$(numero) = sheet.grad$(numero) - 1; end;" />
+										<edit field="grad$(numero)" horzTextAlign="center" hint="$(nome)" align="left" width="20" type="number" min="1" max="99" fontFamily="Georgia" fontStyle="bold" onChange="if(sheet==nil) then return; end; calcExp();" />
+										<label fontColor="#a7754d" align="left" width="15" horzTextAlign="trailing" text="❯" hitTest="true" cursor="handPoint" hint="$(nome)" onClick="if(sheet==nil) then return; end; sheet.grad$(numero) = sheet.grad$(numero) + 1;" />
+										<dataLink field="grad$(numero)" defaultValue="2" />
+									</flowPart>
+									<flowPart minWidth="200" height="25">
+										<label align="client" text="$(nome)" />
+									</flowPart>
+									<flowPart minWidth="400" height="25" margins="{left=10}">
+										<edit field="spec$(numero)" align="client" fontStyle="italic" />
+										<dataLink field="spec$(numero)" defaultValue="—" />
+									</flowPart>
+								</flowLayout>
+								</flowPart>
+							</template>
+							
+							<flowLayout class="TabelaHabilidades" height="615">
+								<flowPart minWidth="680" align="top" height="45">
+									<label text="HABILIDADES" fontSize="30" align="top" />
+								</flowPart><flowLineBreak />
+								<flowPart minWidth="680" align="top" height="35">
+									<label text="GRAD." fontColor="#a7754d" align="left" width="70" />
+									<label text="NOME DA HABILIDADE" fontColor="#a7754d" align="left" width="210" />
+									<label text="ESPECIALIDADES" fontColor="#a7754d" align="left" width="400" />
+								</flowPart><flowLineBreak /> 
+								<Habilidade nome="Agilidade" numero="01" />
+								<Habilidade nome="Astúcia" numero="02" />
+								<Habilidade nome="Atletismo" numero="03" /><dataLink field="spec03" onChange="if(sheet==nil) then return; end; calcExp();" />
+								<Habilidade nome="Conhecimento" numero="04" />
+								<Habilidade nome="Cura" numero="05" />
+								<Habilidade nome="Enganação" numero="06" />
+								<Habilidade nome="Furtividade" numero="07" />
+								<Habilidade nome="Guerra" numero="08" />
+								<Habilidade nome="Idioma" numero="09" />
+								<Habilidade nome="Ladinagem" numero="10" />
+								<Habilidade nome="Lidar com Animais" numero="11" />
+								<Habilidade nome="Luta" numero="12" />
+								<Habilidade nome="Percepção" numero="13" />
+								<Habilidade nome="Persuasão" numero="14" />
+								<Habilidade nome="Pontaria" numero="15" />
+								<Habilidade nome="Sobrevivência" numero="16" />
+								<Habilidade nome="Status" numero="17" />
+								<Habilidade nome="Vigor" numero="18" />
+								<Habilidade nome="Vontade" numero="19" />
+								<flowLineBreak /> 
+								<flowPart minWidth="680" align="top" height="45" margins="{top=10}">
+									<horzLine />
+									<label align="right" height="35" horzTextAlign="trailing" field="somaExp" fontFamily="Georgia" margins="{top=10}" fontColor="#573c27" />
+									<dataLink field="somaExp" defaultValue="EXP: 000" />
+								</flowPart>
+							</flowLayout>
+							
+							<image align="top" url="/images/divisor.png" style="proportional" height="30" />
+							
+							<!-- VANTAGENS -->
+							<flowLayout class="TabelaHabilidades" height="615">
+								<flowPart minWidth="680" align="top" height="45">
+									<label text="VANTAGENS" fontSize="30" align="top" />
+								</flowPart><flowLineBreak />
+								<flowPart minWidth="680" align="top" height="35">
+									<label margins="{left=70}" text="NOME DA VANTAGEM" fontColor="#a7754d" align="left" width="310" />
+									<label text="TIPO DE VANTAGEM" fontColor="#a7754d" align="left" width="200" />
+								</flowPart><flowLineBreak /> 
+								<flowPart minWidth="680" align="top" height="570">
+									<recordList width="680" align="client" minQt="1" layout="vertical" name="rclVantagens" field="fldVantagens" templateForm="vantagens" height="570" onSelect="self.rclVantagens:sort();">
+										<event name="onCompare">
+											return Utils.compareStringPtBr(nodeA.nomeVant, nodeB.nomeVant);
+										</event>
+									</recordList>
+								<layout align="right" width="25" ><button height="25" text="🞦" width="25" onClick="self.rclVantagens:append();" hint="Nova Vantagem"/></layout>
+								</flowPart>
+							</flowLayout>
+						</layout>
+						
+						<!-- LAYOUT BG -->
+						<layout align="client" name="layBG" visible="false">
+							<flowLayout class="TabelaHabilidades" height="645" maxControlsPerLine="3" >
+								<flowPart minWidth="335" align="top" height="45" margins="{right=5}">
+									<label text="APARÊNCIA" fontSize="30" height="45" align="top" vertTextAlign="leading" />
+								</flowPart>
+								<flowPart minWidth="335" align="top" height="45" margins="{left=5}">
+									<label text="HISTÓRIA" fontSize="30" height="45" align="top" vertTextAlign="leading" />
+								</flowPart>
+								
+								<flowLineBreak />
+								
+								<!-- FOTO DO PJ -->
+								<flowPart minWidth="400" height="600" margins="{right=5}">
+									<image style="autofit" height="511" width="325" top="40" left="49" editable="true" field="fldFotoPJ" hint="Alterar Aparência" />
+									<dataLink field="fldFotoPJ" defaultValue="/images/PJ.png" />
+									<image width="400" height="600" url="/images/framePic.png" style="proportional" top="-20" />
+								</flowPart>
+								
+								<!-- BG DO PJ -->
+								<flowPart minWidth="335" height="600" margins="{left=5}">
+									<textEditor align="client" field="HistoriaPJ" margins="{top=10, bottom=30}" /><dataLink field="HistoriaPJ" defaultValue="Escreva aqui." />
+								</flowPart>
+								<flowPart minWidth="70" height="503" />
+							</flowLayout>
+							
+							<image align="top" url="/images/divisor.png" style="proportional" height="30" />
+							
+							
+							<!-- EQUIPAMENTO -->
+							<flowLayout class="TabelaHabilidades" height="695">
+								<flowPart minWidth="680" align="top" height="45">
+									<label text="EQUIPAMENTOS" fontSize="30" align="top" />
+								</flowPart><flowLineBreak />
+								<flowPart minWidth="680" align="top" height="25">
+									<label align="left" text="DINHEIRO:" width="90"/>
+									<edit field="Dinheiro" align="client" /><dataLink field="Dinheiro" defaultValue="—" />
+									<layout align="right" width="25" ><button height="25" text="🞦" width="25" onClick="self.rclEquips:append();" hint="Novo Equipamento"/></layout>
+								</flowPart><flowLineBreak />
+								<flowPart minWidth="680" align="top" height="30">
+									<horzLine margins="{top=15}" />
+								</flowPart><flowLineBreak />
+								<flowPart minWidth="680" align="top" height="35">
+									<label margins="{left=70}" text="EQUIPAMENTO" fontColor="#a7754d" align="left" width="150" />
+									<label text="QT." fontColor="#a7754d" align="left" width="30" />
+									<label text="PREÇO" fontColor="#a7754d" align="left" width="110" />
+									<label margins="{left=50}" text="EQUIPAMENTO" fontColor="#a7754d" align="left" width="150" />
+									<label text="QT." fontColor="#a7754d" align="left" width="30" />
+									<label text="PREÇO" fontColor="#a7754d" align="left" width="110" />
+								</flowPart><flowLineBreak /> 
+								<flowPart minWidth="680" align="top" height="590">
+									<recordList width="680" align="client" minQt="1" layout="horizontalTiles" name="rclEquips" field="fldEquips" templateForm="equips" autoHeight="true" onSelect="self.rclEquips:sort();">
+										<event name="onCompare">
+											return Utils.compareStringPtBr(nodeA.nomeEquip, nodeB.nomeEquip);
+										</event>
+									</recordList>
+								</flowPart>
+							</flowLayout>
+						</layout>
+						
+						<!-- LAYOUT NOTE -->
+						<layout align="client" name="layNote" visible="false">
+							<!-- ANOTAÇÕES -->
+							<flowLayout class="TabelaHabilidades" height="1400">
+								<flowPart minWidth="680" align="top" height="45">
+									<label text="ANOTAÇÕES" fontSize="30" height="45" align="top" vertTextAlign="leading" />
+								</flowPart><flowLineBreak />
+								<flowPart minWidth="680" align="top" height="1400" margins="{bottom=30}">
+									<richEdit align="client" backgroundColor="transparent" defaultFontColor="#573c27" field="Anotacoes" />
+								</flowPart>
+							</flowLayout>
+						</layout>
+						
+						</layout>
+					</rectangle>
+				</rectangle>
+			</flowPart>
+			
+			<!-- SETA DIREITA -->
+			<flowPart minWidth="50" maxWidth="110" height="1900">
+				<image margins="{left=10}" url="/images/arrow-r.png" style="proportional" align="client" cursor="handPoint" hitTest="true" onClick="if(sheet==nil) then return; end; TrocarAba('D');" />
+			</flowPart>
+		</flowLayout>
+	
+		<!-- LOGO E BANNER NO TOPO -->
+		<flowLayout anchors="left top right" autoHeight="true" horzAlign="center" orientation="horizontal">
+			<flowPart width="450" height="370">
+				<image url="/images/banneret.png" style="proportional" height="370" width="450" />
+				<image url="/images/logo.png" style="proportional" height="350" width="450" />
+			</flowPart>
+		</flowLayout>
+		
+	</scrollBox>
+	</layout>
+</form>

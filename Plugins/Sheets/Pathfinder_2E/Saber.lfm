@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmSaber" width="400" height="25" theme="dark">
+    <import file="templates.xml"/>
+
+	<script>
+		<![CDATA[
+		local function askForDelete()
+			Dialogs.confirmYesNo("Deseja realmente apagar essa perícia?",
+								 function (confirmado)
+									if confirmado then
+										NDB.deleteNode(sheet);
+									end;
+								 end);
+		end;
+		]]>
+	</script>
+
+    <formatLabelEdit left="0" top="0" width="100" height="25" field="nomeSaberEx"/>
+    <formatLabelEdit left="100" top="0" width="55" height="25" field="atrSaberEx"/>
+    <formatLabelEdit left="155" top="0" width="55" height="25" field="profSaberEx"/>
+    <formatLabelEdit left="210" top="0" width="55" height="25" field="outrosSaberEx"/>
+
+    <rectangle left="265" top="0" width="79" height="25" color="transparent" strokeColor="Gray" strokeSize="3" visible="true" opacity="1" cornerType="round" xradius="5" yradius="5">
+        <label width="79" height="25" field="bonusSaberEx" fontSize="16" fontStyle="bold" fontColor="Gray" vertTextAlign="center" horzTextAlign="center"/>
+    </rectangle>
+
+    <button left="344" top="1" width="23" height="23" text="R">
+        <event name="onClick">
+                if sheet.bonusSaberEx ~= nil then
+                local mod = tonumber(sheet.bonusSaberEx);
+                local rolagem = Firecast.interpretarRolagem("1d20 + " .. mod or 0);
+                local mesa = Firecast.getMesaDe(sheet);
+                mesa.activeChat:rolarDados(rolagem, "Teste de Saber de " .. (sheet.nome or "Personagem"));
+                else
+                local rolagem = Firecast.interpretarRolagem("1d20");
+                local mesa = Firecast.getMesaDe(sheet);
+                mesa.activeChat:rolarDados(rolagem, "Teste de Saber de " .. (sheet.nome or "Personagem"));
+                end;
+        </event>
+    </button>
+
+	<button left="367" top="1" width="23" height="23" text="X" onClick="askForDelete();"/>
+
+    <dataLink fields="{'atrSaberEx', 'profSaberEx', 'outrosSaberEx'}">
+        <event name="onChange"><![CDATA[
+            if sheet == nil then return end;
+
+            sheet.bonusSaberEx = (tonumber(sheet.atrSaberEx) or 0)+
+                                   (tonumber(sheet.profSaberEx) or 0)+
+                                   (tonumber(sheet.outrosSaberEx) or 0);
+        ]]>
+        </event>
+    </dataLink>
+
+    <dataLink field="bonusSaberEx">
+        <event name="onChange"><![CDATA[
+            if sheet == nil then return end;
+            local mod = (tonumber(sheet.bonusSaberEx or 0));
+            if (mod >= 0) then
+                sheet.bonusSaberEx = "+" .. mod;
+            else
+                sheet.bonusSaberEx = mod;
+            end;
+        ]]>
+        </event>
+    </dataLink>
+</form>

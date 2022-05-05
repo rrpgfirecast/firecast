@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module sdkVersion="3.5">
+	<id>GerenciadorSotDL</id>
+	<version>1.0</version>
+	<name>Gerenciador SotDL</name>
+	<description>Ficha para gerenciar informaçes publicas e privadas de jogo, com visualizaçao seletiva entre jogadores e mestres para Shadow of the Demon Lord.</description>
+	<author>Ambesek</author>
+	<site>http://pt-br.rpgmeister.wikia.com/wiki/Main_Page</site>
+	<contact>vinnyrpgmeister@gmail.com</contact>
+</module>

@@ -470,7 +470,7 @@
 
 						<FieldCenter field="classeMagia"/>
 						<flowPart minWidth="75" maxWidth="150" height="25">
-							<comboBox align="client" items="{'Lista Magias', 'Signos', 'Magias (OLD)', 'Magia Epica', 'Magias Aprimoradas'}" values="{'3', '2', '1', '7', '8'}" value="3" field="tipoMagia" fontColor="white">
+							<comboBox align="client" items="{'Lista Magias', 'Signos', 'Magia Epica', 'Magias Aprimoradas'}" values="{'3', '2', '7', '8'}" value="3" field="tipoMagia" fontColor="white">
 								<event name="onChange">
 									showHiddenLayouts();
 								</event>

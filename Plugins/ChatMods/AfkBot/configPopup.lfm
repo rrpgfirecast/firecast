@@ -1,28 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <popupForm name="afkbotPopup" formType="undefined" dataType="ambesek.afkbot" title="AfkBot" width="290" height ="500">
 	<tabControl align="client">
-		<tab title="Opções"> 
-			<checkBox field="botEnabled" left="10" top="10" width="270" text="Habilitar AfkBot"/>
-			<checkBox field="autoEnable" left="10" top="35" width="270" text="Autoligar quando ausente"/>
-			<checkBox field="spectator" left="10" top="60" width="270" text="Alertar automaticamente espectadores"/>
-			<label left="10" top="85" width="190" text="Tempo entre mensagens (min)" horzTextAlign="center"/>
-			<edit left="200" top="85" width="50" height="25" field="delay" type="number" min="1" horzTextAlign="center"/>
-			<label left="10" top="110" width="270" field="lastAlert"/>
+		<tab title="Opções" padding="{left=10,right=10,top=10}"> 
+			<checkBox field="botEnabled" align="top" height="25" text="Habilitar AfkBot"/>
+			<checkBox field="autoEnable" align="top" height="25" text="Autoligar quando ausente"/>
+			<checkBox field="spectator" align="top" height="25" text="Alertar automaticamente espectadores"/>
+			<layout align="top" height="25">
+				<label align="left" width="190" text="Tempo entre mensagens (min)" horzTextAlign="center"/>
+				<edit align="left" width="50" height="25" field="delay" type="number" min="1" horzTextAlign="center"/>
+			</layout>
+			<label align="top" height="25" field="lastAlert"/>
 
-			<horzLine left="10" top="140" width="270"/>
+			<horzLine align="top" height="5"/>
 
-			<checkBox field="stopDice" left="10" top="145" width="270" text="Expulsar espectadores rolando dados."/>
-			<label left="10" top="170" width="190" text="Kickar na ocorrencia Nº" horzTextAlign="center"/>
-			<edit left="200" top="170" width="50" height="25" field="limitDice" type="number" min="1" horzTextAlign="center"/>
-			<checkBox field="stopLaugh" left="10" top="195" width="270" text="Expulsar espectadores rindo."/>
-			<label left="10" top="220" width="190" text="Kickar na ocorrencia Nº" horzTextAlign="center"/>
-			<edit left="200" top="220" width="50" height="25" field="limitLaugh" type="number" min="1" horzTextAlign="center"/>
-			<checkBox field="noVoice" left="10" top="240" width="270" text="Tirar voz de jogadores expulsos."/>
+			<checkBox align="top" height="25" field="stopDice" text="Expulsar espectadores rolando dados."/>
+			<checkBox align="top" height="25" field="allowNewPlayer" text="Não expulsar espectadores com ficha."/>
+			<layout align="top" height="25">
+				<label align="left" width="190" text="Kickar na ocorrencia Nº" horzTextAlign="center"/>
+				<edit align="left" width="50" field="limitDice" type="number" min="1" horzTextAlign="center"/>
+			</layout>
+			<checkBox align="top" height="25" text="Expulsar espectadores rindo." field="stopLaugh"/>
+			<layout align="top" height="25">
+				<label align="left" width="190" text="Kickar na ocorrencia Nº" horzTextAlign="center"/>
+				<edit align="left" width="50" field="limitLaugh" type="number" min="1" horzTextAlign="center"/>
+			</layout>
+			<checkBox align="top" height="25" text="Tirar voz de jogadores expulsos." field="noVoice"/>
 
-			<horzLine left="10" top="270" width="270"/>
+			<horzLine align="top" height="5"/>
 
-			<checkBox field="giveVoice" left="10" top="300" width="270" text="Dar voz aos jogadores."/>
-			<checkBox field="giveSheet" left="10" top="330" width="270" text="Dar ficha aos jogadores."/>
+			<checkBox align="top" height="25" text="Dar voz aos jogadores." field="giveVoice"/>
+			<checkBox align="top" height="25" text="Permitir jogadores passarem seu turno." field="passAction"/>
 
 			<dataLink fields="{'botEnabled','autoEnable'}">
 				<event name="OnChange">

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <form name="frmOther" width="110" height="35" margins="{top=1}">
 	<rectangle align="client" color="#212121">
-		<button left="0" top="2.5" height="15" width="15" text="1">
+		<button left="0" top="2.5" height="15" width="15" text="1" fontSize="9">
         	<event name="onClick">
 				if sheet==nil then return end;
 				local node = NDB.getRoot(sheet);
@@ -12,7 +12,7 @@
 				node.rollnome1 = "" .. (sheet.nome or "");
         	</event>
         </button>
-    	<button left="0" top="17.5" height="15" width="15" text="2">
+    	<button left="0" top="17.5" height="15" width="15" text="2" fontSize="9">
     		<event name="onClick">
 				if sheet==nil then return end;
 				local node = NDB.getRoot(sheet);

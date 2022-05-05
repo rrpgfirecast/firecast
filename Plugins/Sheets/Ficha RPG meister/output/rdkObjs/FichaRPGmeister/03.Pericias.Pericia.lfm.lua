@@ -195,7 +195,7 @@ local function constructNew_frmFichaRPGmeister3p_svg()
 
     obj.dataLink1 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink1:setParent(obj);
-    obj.dataLink1:setFields({'atributoPericia', 'graduacaoPericia', 'penalidesPericia', 'racialPericia', 'sinergiaPericia', 'equipamentosPericia', 'magicoPericia', 'outrosPericia', 'penalidadeArmadura', 'penalidadeArmadura2', 'talentosPericia', 'classePericia', 'condicionalPericia', 'competenciaPericia', 'intuicaoPericia', 'sortePericia','buffPericia'});
+    obj.dataLink1:setFields({'atributoPericia', 'graduacaoPericia', 'penalidesPericia', 'racialPericia', 'sinergiaPericia', 'equipamentosPericia', 'magicoPericia', 'outrosPericia', 'penalidadeArmadura', 'penalidadeArmadura2', 'talentosPericia', 'classePericia', 'condicionalPericia', 'competenciaPericia', 'intuicaoPericia', 'sortePericia','buffPericia', 'penalidade'});
     obj.dataLink1:setName("dataLink1");
 
     obj.dataLink2 = GUI.fromHandle(_obj_newObject("dataLink"));
@@ -251,36 +251,35 @@ local function constructNew_frmFichaRPGmeister3p_svg()
 
     obj._e_event5 = obj.dataLink1:addEventListener("onChange",
         function (_, field, oldValue, newValue)
-            if sheet~= nil then
-            				local node = NDB.getRoot(sheet);
-            				local pen = (tonumber(node.penalidade) or 0)
+            if sheet== nil then return end;
             
-            				local mod = 0;
-            				mod = (tonumber(sheet.atributoPericia) or 0) +
-            							(tonumber(sheet.graduacaoPericia) or 0) +
-            							(tonumber(sheet.penalidesPericia) or 0) +
-            							(tonumber(sheet.racialPericia) or 0) +
-            							(tonumber(sheet.sinergiaPericia) or 0) +
-            							(tonumber(sheet.equipamentosPericia) or 0) +
-            							(tonumber(sheet.magicoPericia) or 0) +
-            							(tonumber(sheet.outrosPericia) or 0) + 
-            							(tonumber(sheet.talentosPericia) or 0) +
-            							(tonumber(sheet.classePericia) or 0) +
-            							(tonumber(sheet.competenciaPericia) or 0) +
-            							(tonumber(sheet.intuicaoPericia) or 0) +
-            							(tonumber(sheet.sortePericia) or 0) +
-            							(tonumber(sheet.condicionalPericia) or 0) +
-            							(tonumber(sheet.buffPericia) or 0);
+            			local pen = (tonumber(sheet.penalidade) or 0)
             
-            				if sheet.penalidadeArmadura then
-            					mod = mod + pen;
-            				end;
-            				if sheet.penalidadeArmadura2 then
-            					mod = mod + pen;
-            				end;
+            			local mod = 0;
+            			mod = 	(tonumber(sheet.atributoPericia) or 0) +
+            					(tonumber(sheet.graduacaoPericia) or 0) +
+            					(tonumber(sheet.penalidesPericia) or 0) +
+            					(tonumber(sheet.racialPericia) or 0) +
+            					(tonumber(sheet.sinergiaPericia) or 0) +
+            					(tonumber(sheet.equipamentosPericia) or 0) +
+            					(tonumber(sheet.magicoPericia) or 0) +
+            					(tonumber(sheet.outrosPericia) or 0) + 
+            					(tonumber(sheet.talentosPericia) or 0) +
+            					(tonumber(sheet.classePericia) or 0) +
+            					(tonumber(sheet.competenciaPericia) or 0) +
+            					(tonumber(sheet.intuicaoPericia) or 0) +
+            					(tonumber(sheet.sortePericia) or 0) +
+            					(tonumber(sheet.condicionalPericia) or 0) +
+            					(tonumber(sheet.buffPericia) or 0);
             
-            				sheet.totalPericia = mod;
+            			if sheet.penalidadeArmadura then
+            				mod = mod + pen;
             			end;
+            			if sheet.penalidadeArmadura2 then
+            				mod = mod + pen;
+            			end;
+            
+            			sheet.totalPericia = mod;
         end, obj);
 
     obj._e_event6 = obj.dataLink2:addEventListener("onChange",

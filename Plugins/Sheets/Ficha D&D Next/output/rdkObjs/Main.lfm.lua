@@ -13705,7 +13705,7 @@ self.flwMagicRecordList10._recalcHeight();
             									sheet.xpAtual = 0;
             								end;
             
-            								local xpTable = {300, 900, 2700, 6500, 14000, 23000, 34000, 48000, 64000, 85000, 100000, 120000, 140000, 165000, 195000, 225000, 265000, 305000, 355000};
+            								local xpTable = {300, 900, 2700, 6500, 14000, 23000, 34000, 48000, 64000, 85000, 100000, 120000, 140000, 165000, 195000, 225000, 265000, 305000, 355000, 999999};
             
             								local myXP = sheet.xpAtual;
             								myXP = string.gsub(myXP, "X", "");
@@ -13715,11 +13715,11 @@ self.flwMagicRecordList10._recalcHeight();
             								myXP = string.gsub(myXP, "%.", "");
             								myXP = (tonumber(myXP) or 0);
             								local nextXP = xpTable[1];
-            								local level = 0;
+            								local level = 1;
             								local prof = 2;
             								while myXP>=nextXP and level<20 do
             									level = level+1;
-            									nextXP = xpTable[level+1];
+            									nextXP = xpTable[level];
             									if level>=17 then prof = 6 
             									elseif level>=13 then prof = 5
             									elseif level>=9 then prof = 4

@@ -1,0 +1,4 @@
+[pt]
+scene.follow=Seguir
+scene.nofollow=Parar de Seguir
+scene.follow.noconnection=Nenhum caminho encontrado

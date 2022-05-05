@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmPoderItem" width="110" height="125" margins="{top=1}">
+	<rectangle align="client" color="#212121">
+		<layout align="top" height="25">
+			<edit align="client" field="nome"/>
+
+			<layout align="right" width="100">
+				<rectangle align="left" width="50" color="black" strokeColor="white" strokeSize="1">
+					<label align="client" field="custo" horzTextAlign="center" fontSize="12"/>
+				</rectangle>
+				<dataLink fields="{'custo','tipo','internal'}">
+					<event name="onUserChange">
+						if sheet== nil then return end
+
+						local node
+						local custo = 0
+						local nodes
+
+						if sheet.internal == true then
+							-- Se é um sub poder, olhe não para a raiz, mas para o poder original
+							node = NDB.getParent(NDB.getParent(sheet))
+							nodes = NDB.getChildNodes(node.rclSubPoderes); 
+
+							for i=1, #nodes, 1 do
+								if nodes[i].tipo == "Dinâmico" then
+									custo = custo + 2
+								elseif nodes[i].tipo == "Simples" then
+									custo = custo + 1
+								end
+							end
+						else
+							-- Se é um poder olhe para a raiz
+							node = NDB.getRoot(sheet);
+							nodes = NDB.getChildNodes(node.rclPoderes); 
+
+							for i=1, #nodes, 1 do
+								custo = custo + (tonumber(nodes[i].custo) or 0);
+							end
+						end
+	
+						node.ppPoderes = custo
+						
+					</event>
+				</dataLink>
+				<dataLink fields="{'custoGrad', 'custoExtra', 'custoFalha', 'custoMult', 'custoExtraFixo', 'custoFalhaFixo', 'ppPoderes'}">
+					<event name="onUserChange">
+						if sheet~= nil then
+							local node = NDB.getRoot(sheet);
+							
+							local grad = (tonumber(sheet.custoGrad) or 0)
+							local extra = (tonumber(sheet.custoExtra) or 0)
+							local falha = (tonumber(sheet.custoFalha) or 0)
+							local mult = (tonumber(sheet.custoMult) or 0)
+							local extraFixo = (tonumber(sheet.custoExtraFixo) or 0)
+							local falhaFixo = (tonumber(sheet.custoFalhaFixo) or 0)
+
+							local ppPoderes = (tonumber(sheet.ppPoderes) or 0)
+
+							local custo = (mult + extra - math.abs(falha)) * grad + extraFixo - math.abs(falhaFixo)
+
+							sheet.custo = custo + ppPoderes
+							sheet.custoArranjo = custo
+						end;
+					</event>
+				</dataLink>
+
+				<button align="right" width="25" text="i">
+					<event name="onClick">
+						local pop;
+						if sheet.internal == true then
+							pop = self:findControlByName("popPoder");
+						else
+							pop = self:findControlByName("popPoderList");
+						end
+						
+						if pop ~= nil then
+							pop:setNodeObject(self.sheet);
+							pop:showPopupEx("right", self);
+						else
+							showMessage("Ops, bug.. nao encontrei o popup para exibir");
+						end;
+					</event>
+				</button>
+
+				<!-- Botão que apaga o objeto da lista -->
+				<button align="right" width="25" text="X">
+					<event name="onClick">
+						Dialogs.confirmOkCancel("Tem certeza que quer apagar essa vantagem?",
+							function (confirmado)
+								if confirmado then
+									NDB.deleteNode(sheet);
+								end;
+						end);
+					</event>
+				</button>
+			</layout>
+		</layout>
+		<textEditor align="client" field="efeitos" margins="{left=5,right=5,bottom=5}"/>
+	</rectangle>
+</form>

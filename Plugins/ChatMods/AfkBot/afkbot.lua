@@ -77,6 +77,15 @@ local function initializeClock(mesa)
 		afkdb.config[mesa.codigoInterno].clock = os.time() - (delay * 60);
 	end;
 end
+
+local function tryNPC(isMestre, chat, npc, msg)
+	if isMestre then
+		chat:enviarMensagemNPC(npc, msg);
+	else
+		chat:enviarMensagem("<" .. npc .. ">: " .. msg);
+	end
+end
+
 local function sendPersonalMessage(chat, mesa)
 	-- dia e hora atual
 	local date = os.date("*t");
@@ -105,10 +114,10 @@ local function sendPersonalMessage(chat, mesa)
 
 	-- Se tiver alguma mensagem envie
 	if message ~= "" then
-		chat:enviarNarracao(message);
+		tryNPC(true,chat,"AfkBot",message);
 	else
-		local info = "[§K1]AfkBot: Está é uma mensagem automatica de " .. mesa.meuJogador.nick .. "[§K1](" .. mesa.meuJogador.login .. ") que está ocupado e não pode responder.";
-		chat:enviarNarracao(info);
+		local info = "[§K1]Está é uma mensagem automatica de " .. mesa.meuJogador.nick .. "[§K1](" .. mesa.meuJogador.login .. ") que está ocupado e não pode responder.";
+		tryNPC(true,chat,"AfkBot",info);
 	end;
 end
 local function addUser(mesa)
@@ -164,12 +173,12 @@ local function ShowBibItem(message, param)
 		local itemID = DFFindBibItem(param, message.mesa.biblioteca);
 
 		if itemID == nil then
-			message.chat:enviarMensagem("AfkBot: Arquivo invalido. Passe o nome do arquivo como parametro. ");
+			tryNPC(message.mesa.meuJogador.isMestre, message.chat,"AfkBot","Arquivo invalido. Passe o nome do arquivo como parametro. ");
 		else
-			message.chat:enviarMensagem("AfkBot: firecast:/rooms/"..message.mesa.codigoInterno.."/library/"..itemID .. " [" .. param .. "]");
+			tryNPC(message.mesa.meuJogador.isMestre, message.chat,"AfkBot","firecast:/rooms/"..message.mesa.codigoInterno.."/library/"..itemID .. " [" .. param .. "]");
 		end
 	else
-		message.chat:enviarMensagem("AfkBot: Arquivo invalido. Passe o nome do arquivo como parametro. ");
+		tryNPC(message.mesa.meuJogador.isMestre, message.chat,"AfkBot","Arquivo invalido. Passe o nome do arquivo como parametro. ");
 	end
 end
 
@@ -376,6 +385,8 @@ Firecast.Messaging.listen("ChatMessage",
 		valid = valid and message.mesa.meuJogador.isMestre;
 		-- Ve se quem rolou o dado é espectador
 		valid = valid and message.jogador.isEspectador;
+		-- Ve se o mestre autorizou rolagens de espectadores preparando a ficha e esse player tem ficha
+		valid = valid and not (afkdb.config[message.mesa.codigoInterno].allowNewPlayer == true and message.jogador.personagemPrincipal ~= -1)
 
 		if valid then
 			initializeKickList(message.mesa);
@@ -460,6 +471,12 @@ Firecast.Messaging.listen("ChatMessage",
 				-- poe o jogador no off chat
 			elseif (arg[2]=="math") then
 				-- faz calculo matematico
+			elseif (arg[2]==">>" and message.jogador~=nil and message.jogador.isJogador and afkdb.config[message.mesa.codigoInterno].passAction) then
+				if Utils.removerFmtChat(message.jogador.nick) == afkdb.config[message.mesa.codigoInterno].actionOwner then
+					message.chat:enviarMensagem("/>>");
+				else
+					tryNPC(true,message.chat,"AfkBot","Não é sua vez \"" .. (Utils.removerFmtChat(message.jogador.nick) or "nil") .. "\", é a vez de \"" .. (afkdb.config[message.mesa.codigoInterno].actionOwner or "nil") .. "\".");
+				end
 			elseif (arg[2]=="show") then
 				local param = ""; 
 				if arg[3]~=nil then param = arg[3] end;
@@ -470,6 +487,9 @@ Firecast.Messaging.listen("ChatMessage",
 			else
 				-- message.chat:enviarMensagem("AfkBot: Não posso. ");
 			end;
+		elseif message.mine and string.sub(txt,1,string.len(" >> Turno de "))==" >> Turno de " then
+			afkdb.config[message.mesa.codigoInterno].actionOwner = string.sub(txt,string.len(" >> Turno de ")+1,-2);
+			--message.chat:escrever(string.sub(txt,string.len(" >> Turno de ")+1));
 		end;
 	end);
 

@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<group>
+    <template name="formatNumEdit">
+        <rectangle left="$(left)" top="$(top)" width="$(width)" height="$(height)" color="transparent" strokeColor="Gray" strokeSize="1" name="$(field)Label" visible="true" cornerType="round" xradius="5" yradius="5">
+            <label width="$(width)" height="$(height)" field="$(field)" fontSize="16" vertTextAlign="center" horzTextAlign="center" formatFloat="0.## $(unit)" fontStyle="bold" fontColor="Gray"/>
+            <event name="onClick">
+                self.$(field)Label.visible = false;
+                self.$(field)Edit.visible = true;
+                self.$(field)Edit:setFocus();
+            </event>
+        </rectangle>
+        <edit field="$(field)" left="$(left)" top="$(top)" width="$(width)" height="$(height)" type="float" name="$(field)Edit" visible="false" fontSize="16">
+            <event name="onExit">
+                self.$(field)Label.visible = true;
+                self.$(field)Edit.visible = false;
+            </event>
+        </edit>
+    </template>
+
+    <template name="formatLabelEdit">
+        <rectangle left="$(left)" top="$(top)" width="$(width)" height="$(height)" color="transparent" strokeColor="Gray" strokeSize="1" name="$(field)Label" visible="true" cornerType="round" xradius="5" yradius="5">
+            <label width="$(width)" height="$(height)" field="$(field)"  fontSize="16" vertTextAlign="center" horzTextAlign="center" fontStyle="bold" fontColor="Gray"/>
+            <event name="onClick">
+                self.$(field)Label.visible = false;
+                self.$(field)Edit.visible = true;
+                self.$(field)Edit:setFocus();
+            </event>
+        </rectangle>
+        <edit field="$(field)" left="$(left)" top="$(top)" width="$(width)" height="$(height)" name="$(field)Edit" visible="false" fontSize="16">
+            <event name="onExit">
+                self.$(field)Label.visible = true;
+                self.$(field)Edit.visible = false;
+            </event>
+        </edit>
+    </template>
+
+    <template name="formatTextEdit">
+        <rectangle  left="$(left)" top="$(top)" width="$(width)" height="$(height)" color="transparent" strokeColor="Gray" strokeSize="1" name="$(field)Label" visible="true" cornerType="round" xradius="10" yradius="10" margins="{left=6, right=6, top=6, bottom=6}">
+            <label align="client" field="$(field)" fontStyle="bold" fontSize="16" horzTextAlign="leading" vertTextAlign="leading" margins="{left=4, right=4, top=4, bottom=4}" fontColor="Gray"/>
+            <event name="onClick">
+                self.$(field)Label.visible = false;
+                self.$(field)Edit.visible = true;
+                self.$(field)Edit:setFocus();
+            </event>
+        </rectangle>
+        <textEditor field="$(field)"  left="$(left)" top="$(top)" width="$(width)" height="$(height)" name="$(field)Edit" visible="false" fontSize="16" margins="{left=6, right=6, top=6, bottom=6}">
+            <event name="onExit">
+                self.$(field)Label.visible = true;
+                self.$(field)Edit.visible = false;
+            </event>
+        </textEditor>
+    </template>
+
+    <template name="formatEdit">
+        <rectangle left="$(left)" top="$(top)" width="$(width)" height="$(height)" color="transparent" strokeColor="Gray" strokeSize="2" name="$(field)Label" cornerType="round" xradius="30" yradius="30">
+            <label width="$(width)" height="$(height)" field="$(field)" fontSize="18" vertTextAlign="center" horzTextAlign="center" formatFloat="0.## $(unit)" fontStyle="bold" fontColor="Gray"/>
+        </rectangle>
+    </template>
+
+    <template name="atributo">
+        <button left="5" top="1" width="55" text="$(atrU)" fontSize="16" vertTextAlign="center" horzTextAlign="center">
+            <event name="onClick">
+                if sheet.mod$(atr) ~= nil then
+                    local mod = tonumber(sheet.mod$(atr));
+                    local rolagem = Firecast.interpretarRolagem("1d20 + " .. mod or 0);
+                    local mesa = Firecast.getMesaDe(sheet);
+                    mesa.activeChat:rolarDados(rolagem, "Teste de $(atrN) de " .. (sheet.nome or "Personagem"));
+                else
+                    local rolagem = Firecast.interpretarRolagem("1d20");
+                    local mesa = Firecast.getMesaDe(sheet);
+                    mesa.activeChat:rolarDados(rolagem, "Teste de $(atrN) de " .. (sheet.nome or "Personagem"));
+                end;
+            </event>
+        </button>
+
+        <formatNumEdit left="60" top="0" width="55" height="25" field="$(atr)Base" fontStyle="bold"/>
+        <formatNumEdit left="115" top="0" width="55" height="25" field="$(atr)Raca" fontStyle="bold"/>
+        <formatNumEdit left="170" top="0" width="55" height="25" field="$(atr)Bio" fontStyle="bold"/>
+        <formatNumEdit left="225" top="0" width="55" height="25" field="$(atr)Classe" fontStyle="bold"/>
+        <formatNumEdit left="280" top="0" width="55" height="25" field="$(atr)Nivel" fontStyle="bold"/>
+        <formatNumEdit left="335" top="0" width="55" height="25" field="$(atr)Outros" fontStyle="bold"/>
+
+        <rectangle left="390" top="0" width="55" height="25" color="transparent" strokeColor="Gray" strokeSize="1" visible="true" opacity="1" cornerType="round" xradius="5" yradius="5">
+            <label width="55" height="25" field="$(atr)Total" fontSize="16" fontStyle="bold" fontColor="Gray" vertTextAlign="center" horzTextAlign="center"/>
+        </rectangle>
+        <rectangle left="445" top="0" width="55" height="25" color="transparent" strokeColor="Gray" strokeSize="3" visible="true" opacity="1" cornerType="round" xradius="5" yradius="5">
+            <label width="55" height="25" field="$(atr)bonus" fontSize="16" fontStyle="bold" fontColor="Gray" vertTextAlign="center" horzTextAlign="center"/>
+        </rectangle>
+
+        <dataLink fields="{'$(atr)Base', '$(atr)Raca', '$(atr)Bio', '$(atr)Classe', '$(atr)Nivel', '$(atr)Outros'}">
+            <event name="onChange"><![CDATA[
+                if sheet == nil then return end;
+                local resultado = math.floor((tonumber(sheet.$(atr)Base) or 0) +
+									(tonumber(sheet.$(atr)Raca) or 0) +
+									(tonumber(sheet.$(atr)Bio) or 0) +
+									(tonumber(sheet.$(atr)Classe) or 0) +
+									(tonumber(sheet.$(atr)Nivel) or 0) +
+									(tonumber(sheet.$(atr)Outros) or 0));
+			    sheet.$(atr)Total = resultado;
+            ]]>
+            </event>
+        </dataLink>
+
+        <dataLink field="$(atr)Total">
+            <event name="onChange"><![CDATA[
+                if sheet == nil then return end;
+                local mod = math.floor((tonumber(sheet.$(atr)Total or 0) - 10) / 2);
+                sheet.mod$(atr) = mod;
+				if (mod >= 0) then
+					sheet.$(atr)bonus = "+" .. mod;
+				else
+				    sheet.$(atr)bonus = mod;
+				end;
+            ]]>
+            </event>
+        </dataLink>
+    </template>
+
+    <template name="salvamento">
+        <button left="5" top="1" width="55" text="$(atrU)" fontSize="16" vertTextAlign="center" horzTextAlign="center">
+            <event name="onClick">
+                if sheet.mod$(atr) ~= nil then
+                local mod = tonumber(sheet.mod$(atr));
+                local rolagem = Firecast.interpretarRolagem("1d20 + " .. mod or 0);
+                local mesa = Firecast.getMesaDe(sheet);
+                mesa.activeChat:rolarDados(rolagem, "Teste de $(atrN) de " .. (sheet.nome or "Personagem"));
+                else
+                local rolagem = Firecast.interpretarRolagem("1d20");
+                local mesa = Firecast.getMesaDe(sheet);
+                mesa.activeChat:rolarDados(rolagem, "Teste de $(atrN) de " .. (sheet.nome or "Personagem"));
+                end;
+            </event>
+        </button>
+        <comboBox vertTextAlign="center" horzTextAlign="trailing" left="115" top="0" width="55" height="25" field="$(atr)Prof" items="{'D', 'T', 'E', 'M', 'L'}" values="{'0', '2', '4', '6', '8'}" fontColor="white"/>
+        <formatNumEdit left="170" top="0" width="55" height="25" field="$(atr)Outros" fontStyle="bold"/>
+
+        <rectangle left="225" top="0" width="55" height="25" color="transparent" strokeColor="Gray" strokeSize="3" visible="true" opacity="1" cornerType="round" xradius="5" yradius="5">
+            <label width="55" height="25" field="mod$(atr)" fontSize="16" fontStyle="bold" fontColor="Gray" vertTextAlign="center" horzTextAlign="center"/>
+        </rectangle>
+    </template>
+
+    <template name="pericia">
+        <button left="25" top="1" width="100" text="$(atrN)" fontSize="14" vertTextAlign="center" horzTextAlign="center">
+            <event name="onClick">
+                if sheet.mod$(atr) ~= nil then
+                    local mod = tonumber(sheet.mod$(atr));
+                    local rolagem = Firecast.interpretarRolagem("1d20 + " .. mod or 0);
+                    local mesa = Firecast.getMesaDe(sheet);
+                    mesa.activeChat:rolarDados(rolagem, "Teste de $(atrN) de " .. (sheet.nome or "Personagem"));
+                else
+                    local rolagem = Firecast.interpretarRolagem("1d20");
+                    local mesa = Firecast.getMesaDe(sheet);
+                    mesa.activeChat:rolarDados(rolagem, "Teste de $(atrN) de " .. (sheet.nome or "Personagem"));
+                end;
+            </event>
+        </button>
+
+        <rectangle left="125" top="0" width="55" height="25" color="transparent" strokeColor="Gray" strokeSize="1" visible="true" opacity="1" cornerType="round" xradius="5" yradius="5">
+            <label width="55" height="25" field="$(periciaAtr)" fontSize="16" fontStyle="bold" fontColor="Gray" vertTextAlign="center" horzTextAlign="center"/>
+        </rectangle>
+
+        <comboBox vertTextAlign="center" horzTextAlign="trailing" left="180" top="0" width="55" height="25" field="$(atr)Prof" items="{'D', 'T', 'E', 'M', 'L'}" values="{'0', '2', '4', '6', '8'}" fontColor="white"/>
+        <formatNumEdit left="235" top="0" width="55" height="25" field="$(atr)Outros" fontStyle="bold"/>
+
+        <rectangle left="290" top="0" width="55" height="25" color="transparent" strokeColor="Gray" strokeSize="3" visible="true" opacity="1" cornerType="round" xradius="5" yradius="5">
+            <label width="55" height="25" field="mod$(atr)" fontSize="16" fontStyle="bold" fontColor="Gray" vertTextAlign="center" horzTextAlign="center"/>
+        </rectangle>
+
+        <dataLink fields="{'nivel', '$(periciaAtr)', '$(atr)Prof', '$(atr)Outros'}">
+            <event name="onChange"><![CDATA[
+               if sheet == nil then return end;
+
+               if (tonumber(sheet.$(atr)Prof) or 0) > 0 then
+                   sheet.mod$(atr) = (tonumber(sheet.$(periciaAtr)) or 0)+
+                                   (tonumber(sheet.$(atr)Prof) or 0)+
+                                   (tonumber(sheet.$(atr)Outros) or 0)+
+                                   (tonumber(sheet.nivel) or 0);
+               else
+                   sheet.mod$(atr) = (tonumber(sheet.$(periciaAtr)) or 0) + (tonumber(sheet.$(atr)Outros) or 0);
+               end;
+            ]]>
+            </event>
+        </dataLink>
+
+        <dataLink field="mod$(atr)">
+            <event name="onChange"><![CDATA[
+                if sheet == nil then return end;
+                local mod = (tonumber(sheet.mod$(atr) or 0));
+                if (mod >= 0) then
+                    sheet.mod$(atr) = "+" .. mod;
+                else
+                    sheet.mod$(atr) = mod;
+                end;
+            ]]>
+            </event>
+        </dataLink>
+    </template>
+
+    <template name="CheckBox">
+        <imageCheckBox left="$(left)" top="$(top)" field="$(field)" width="25" height="25" checkedImage="/imagens/checked.png" uncheckedImage="/imagens/unchecked.png"/>
+    </template>
+
+    <template name="CondicaoBox">
+        <rectangle left="10" top="3" width="105" height="25" color="transparent" strokeColor="Gray" strokeSize="2" cornerType="bevel" xradius="5" yradius="5">
+            <label  vertTextAlign="center" horzTextAlign="center" width="105" height="25" text="$(text)" fontColor="Gray" fontFamily="Stencil"/>
+        </rectangle>
+        <rectangle left="105" top="0" width="109" height="32" color="Gray" cornerType="round" xradius="15" yradius="15">
+            <CheckBox left="7" top="3" field="$(field)1"/>
+            <CheckBox left="42" top="3" field="$(field)2"/>
+            <CheckBox left="77" top="3" field="$(field)3"/>
+        </rectangle>
+    </template>
+
+    <template name="MagiaSlot">
+        <rectangle left="63" top="$(top)" width="55" height="25" color="transparent" strokeColor="Gray" strokeSize="2" cornerType="round" xradius="5" yradius="5">
+            <label  vertTextAlign="center" horzTextAlign="center" width="55" height="25" text="$(nivelSlot)" fontColor="Gray" fontStyle="bold"/>
+        </rectangle>
+        <formatNumEdit left="118" top="$(top)" width="55" height="25" field="maxSlot$(nivelSlot)" fontStyle="bold"/>
+        <formatNumEdit left="173" top="$(top)" width="55" height="25" field="usadosSlot$(nivelSlot)" fontStyle="bold"/>
+    </template>
+</group>

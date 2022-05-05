@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module sdkVersion="3.5">
+	<id>Ambesek.Runarcana</id>
+	<version>1.0.1</version>
+	<name>Ficha Runarcana</name>
+	<description>Ficha para o sistema Runarcana, usado no cenario de League of Legends. </description>
+	<author>Ambesek</author>
+	<site/>
+	<contact>vinnyrpgmeister@gmail.com</contact>
+</module>

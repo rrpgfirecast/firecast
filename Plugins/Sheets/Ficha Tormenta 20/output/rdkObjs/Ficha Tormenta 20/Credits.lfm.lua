@@ -33,10 +33,40 @@ local function constructNew_frmTemplateCreditos()
 
 			local function recursiveFindControls(node, controlsList)
 				local children = node:getChildren();
+				if node:getClassName() == "recordList" then
+					children = rclKids(node);
+					--write(children[1]:getClassName());
+
+					children = rclKids(children[1]);
+				end;
 				for i=1, #children, 1 do
 					controlsList[#controlsList+1] = children[i];
 					recursiveFindControls(children[i], controlsList);
 				end;
+			end;
+
+			function rclKids(rcl)
+				local ret = {};
+				local i;
+				local childCount = _obj_getProp(rcl.handle, "ChildrenCount");
+				local child;
+				local childHandle;
+				local idxDest = 1;
+					
+				for i = 0, childCount - 1, 1 do
+					childHandle = _gui_getChild(rcl.handle, i);
+					
+					if (childHandle ~= nil) then							
+						child = gui.fromHandle(childHandle);
+						
+						if (type(child) == "table") then							
+							ret[idxDest] = child;
+							idxDest = idxDest + 1;
+						end
+					end;	
+				end
+				
+				return ret;
 			end;
 
 			local function findAllControls()
@@ -179,7 +209,7 @@ local function constructNew_frmTemplateCreditos()
     obj.dataLink1 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink1:setParent(obj.layout2);
     obj.dataLink1:setField("theme");
-    obj.dataLink1:setDefaultValue("Claro");
+    obj.dataLink1:setDefaultValue("Escuro");
     obj.dataLink1:setName("dataLink1");
 
     obj.label5 = GUI.fromHandle(_obj_newObject("label"));
@@ -343,14 +373,14 @@ local function constructNew_frmTemplateCreditos()
     obj.button4:setText("Fulgurante");
     obj.button4:setName("button4");
 
-    obj._e_event0 = obj.comboBox1:addEventListener("onChange",
-        function (_)
+    obj._e_event0 = obj.dataLink1:addEventListener("onChange",
+        function (_, field, oldValue, newValue)
             if sheet == nil then return end;
             					local theme = sheet.theme;
-            					if theme == "Escuro" then
-            						theme = "dark";
-            					else
+            					if theme == "Claro" then
             						theme = "light";
+            					else
+            						theme = "dark";
             					end;
             
             					local forms = findClass("form");

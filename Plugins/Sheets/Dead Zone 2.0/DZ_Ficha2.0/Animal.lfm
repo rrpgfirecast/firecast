@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmAnimal" height="800" width="1200" theme="light"> 
+
+					<rectangle width="1200" height="800" color="white" cornerType="round" strokeColor="black" strokeSize="2" xradius="8" yradius="8"> 
+						<layout left="0" top="0" width="600" height="800">
+							<image width="600" height="400" left="10" top="140" style="proportional" center="true" src="images/FichaPET.png"/>
+							<edit field="Pet_Nick" width="500" height="60" top="150" left="100" fontSize="30" horzTextAlign="leading" class="NPC_Rp"/>
+							<edit field="Pet_Fisico" width="40" height="30" top="208" left="180" class="NPC_Rp"/>
+							<edit field="Pet_Social" width="40" height="30" top="240" left="180" class="NPC_Rp"/>								
+							<edit field="Pet_Inteligencia" width="40" height="30" top="270" left="180" class="NPC_Rp"/>								
+							<edit field="Pet_Percep" width="40" height="30" top="310" left="180" class="NPC_Rp"/>								
+							<edit field="Pet_Espiritual" width="40" height="30" top="340" left="180" class="NPC_Rp"/>							
+							<edit field="Pet_Per1" width="40" height="30" top="208" left="325" class="NPC_Rp"/>
+							<edit field="Pet_Per2" width="40" height="30" top="240" left="325" class="NPC_Rp"/>								
+							<edit field="Pet_Per3" width="40" height="30" top="270" left="325" class="NPC_Rp"/>
+							<edit field="Pet_Per4" width="40" height="30" top="300" left="325" class="NPC_Rp"/>
+							<edit field="Pet_Per5" width="40" height="30" top="330" left="325" class="NPC_Rp"/>								
+							<edit field="Pet_Per6" width="40" height="30" top="360" left="325" class="NPC_Rp"/>	
+							<edit field="Pet_Per7" width="40" height="30" top="400" left="325" class="NPC_Rp"/>	
+							<edit field="Pet_Saude1" width="40" height="30" top="256" left="385" class="NPC_Rp"/>	
+							<edit field="Pet_Saude2" width="40" height="30" top="256" left="422" class="NPC_Rp"/>	
+							<edit field="Pet_Saude3" width="40" height="30" top="256" left="452" class="NPC_Rp"/>
+							<edit field="Pet_Iniciativa" width="40" height="30" top="325" left="470" class="NPC_Rp"/>	
+							<edit field="Pet_AtkNick" width="200" height="30" top="430" left="100" fontSize="20" class="NPC_Rp33"/>	
+							<edit field="Pet_AtkGolpe" width="200" height="30" top="458" left="200" fontColor="gray" horzTextAlign="leading" class="NPC_Rp33"/>					
+							<edit field="Pet_AtkDano" width="40" height="30" top="478" left="195" fontColor="gray" class="NPC_Rp33"/>
+							<edit field="Pet_AtkCD" width="40" height="30" top="478" left="270" class="NPC_Rp"/>
+							<edit field="Pet_Des" width="140" height="30" top="400" left="385" horzTextAlign="leading" class="NPC_Rp33"/>	
+							<edit field="Pet_Des2" width="140" height="30" top="420" left="385" horzTextAlign="leading" class="NPC_Rp33"/>	
+						<image width="400" height="300" left="100" top="505" src="images/ImgSize_400x300.png" style="proportional" editable="true" showProgress="true" optimize="true" field="PetII"/>
+						</layout>
+						
+						<layout left="600" top="0" width="600" height="800">
+							<image width="600" height="400" left="10" top="140" style="proportional" center="true" src="images/FichaPET.png"/>
+							<edit field="Pet2_Nick" width="500" height="60" top="150" left="100" fontSize="30" horzTextAlign="leading" class="NPC_Rp"/>
+							<edit field="Pet2_Fisico" width="40" height="30" top="208" left="180" class="NPC_Rp"/>
+							<edit field="Pet2_Social" width="40" height="30" top="240" left="180" class="NPC_Rp"/>								
+							<edit field="Pet2_Inteligencia" width="40" height="30" top="270" left="180" class="NPC_Rp"/>								
+							<edit field="Pet2_Percep" width="40" height="30" top="310" left="180" class="NPC_Rp"/>								
+							<edit field="Pet2_Espiritual" width="40" height="30" top="340" left="180" class="NPC_Rp"/>							
+							<edit field="Pet2_Per1" width="40" height="30" top="208" left="325" class="NPC_Rp"/>
+							<edit field="Pet2_Per2" width="40" height="30" top="240" left="325" class="NPC_Rp"/>								
+							<edit field="Pet2_Per3" width="40" height="30" top="270" left="325" class="NPC_Rp"/>
+							<edit field="Pet2_Per4" width="40" height="30" top="300" left="325" class="NPC_Rp"/>
+							<edit field="Pet2_Per5" width="40" height="30" top="330" left="325" class="NPC_Rp"/>								
+							<edit field="Pet2_Per6" width="40" height="30" top="360" left="325" class="NPC_Rp"/>	
+							<edit field="Pet2_Per7" width="40" height="30" top="400" left="325" class="NPC_Rp"/>	
+							<edit field="Pet2_Saude1" width="40" height="30" top="256" left="385" class="NPC_Rp"/>	
+							<edit field="Pet2_Saude2" width="40" height="30" top="256" left="422" class="NPC_Rp"/>	
+							<edit field="Pet2_Saude3" width="40" height="30" top="256" left="452" class="NPC_Rp"/>
+							<edit field="Pet2_Iniciativa" width="40" height="30" top="325" left="470" class="NPC_Rp"/>	
+							<edit field="Pet2_AtkNick" width="200" height="30" top="430" left="100" fontSize="20" class="NPC_Rp33"/>	
+							<edit field="Pet2_AtkGolpe" width="200" height="30" top="458" left="200" fontColor="gray" horzTextAlign="leading" class="NPC_Rp33"/>					
+							<edit field="Pet2_AtkDano" width="40" height="30" top="478" left="195" fontColor="gray" class="NPC_Rp33"/>
+							<edit field="Pet2_AtkCD" width="40" height="30" top="478" left="270" class="NPC_Rp"/>
+							<edit field="Pet2_Des" width="140" height="30" top="400" left="385" horzTextAlign="leading" class="NPC_Rp33"/>	
+							<edit field="Pet2_Des2" width="140" height="30" top="420" left="385" horzTextAlign="leading" class="NPC_Rp33"/>	
+						<image width="400" height="300" left="100" top="505" src="images/ImgSize_400x300.png" style="proportional" editable="true" showProgress="true" optimize="true" field="Pet2II"/>
+						</layout>
+					</rectangle>
+
+</form>

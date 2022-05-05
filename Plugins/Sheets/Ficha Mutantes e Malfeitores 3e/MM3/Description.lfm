@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmTemplateDescription" align="client">
+	<scrollBox align="client">
+		<template name="Descricao">
+			<layout align="left" width="380" margins="{right=10}">
+				<label align="left" width="90" text="$(text)" horzTextAlign="center"/>
+				<edit align="left" width="290" field="$(field)" vertTextAlign="center" />
+			</layout>
+		</template>
+		
+		<rectangle align="top" height="55" color="black" margins="{bottom=5}">
+			<label align="top" height="20" text="DESCRIÇÃO"/>
+
+			<layout align="top" height="25">
+				<Descricao text="ORIGEM" field="nacionalidade"/>
+				<Descricao text="IDADE" field="idade"/>
+				<Descricao text="GÊNERO" field="genero"/>
+			</layout>
+		</rectangle>
+
+		
+
+		<layout align="top" height="615">
+
+			<layout align="left" width="375" margins="{right=5}">
+			
+				<rectangle align="top" height="200" margins="{bottom=5}" color="black">
+					<label align="top" height="20" text="DESCRIÇÃO FÍSICA" margins="{left=5}"/>
+					<textEditor align="client" field="aparencia" margins="{left=5,right=5,bottom=5}"/>
+				</rectangle>
+				<rectangle align="top" height="200" margins="{bottom=5}" color="black">
+					<label align="top" height="20" text="PERSONALIDADE" margins="{left=5}"/>
+					<textEditor align="client" field="personalidade" margins="{left=5,right=5,bottom=5}"/>
+				</rectangle>
+				<rectangle align="top" height="200" margins="{bottom=5}" color="black">
+					<label align="top" height="20" text="COMPLICAÇÕES" margins="{left=5}"/>
+					<textEditor align="client" field="complicacoes" margins="{left=5,right=5,bottom=5}"/>
+				</rectangle>
+
+			</layout>
+			<rectangle align="client" color="black">
+				<label align="top" text="HISTORIA" margins="{left=5}"/>
+				<richEdit align="client" field="background" backgroundColor="#333333" defaultFontSize="12" defaultFontColor="white" margins="{left=5,right=5,bottom=5}"/>
+			</rectangle>
+
+		</layout>
+	</scrollBox>
+</form>

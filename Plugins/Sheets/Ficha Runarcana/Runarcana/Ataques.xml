@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmAtaques" align="client">
+	<scrollBox align="client">
+		<layout align="top" height="25">
+			<button align="left" width="25" text="+" onClick="self.rclAtaques:append();"/>
+			<label align="client" text="Ataques" margins="{left=5}"/>
+		</layout>
+		
+		<recordList align="client" name="rclAtaques" field="listaDeAtaques" templateForm="frmAtaqueForm" layout="verticalTiles">
+			<event name="onCompare">
+				return Utils.compareStringPtBr(nodeA.nome, nodeB.nome);
+		    </event>
+		</recordList>
+	</scrollBox>
+</form>

@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmInventaryItem" width="465" height="35" theme="dark" margins="{top=1}">
+	<script> 
+		<![CDATA[			
+		local function askForDelete()
+			Dialogs.confirmYesNo("Deseja realmente apagar esse equipamento?",
+								 function (confirmado)
+									if confirmado then
+										NDB.deleteNode(sheet);
+									end;
+								 end);
+		end;
+
+		local function equipPrice()
+			if sheet~= nil then
+				local node = NDB.getRoot(sheet);
+
+				local lists = {"rclInventarioNaves", "rclInventarioMechas", "rclInventarioVeiculos", "rclInventarioEquipamentos", "rclInventarioMunicao", "rclInventarioOutros", "rclInventarioArmas", "rclInventarioPecas"}
+				local preco = 0;
+
+				for j=1, #lists, 1 do
+					local nodes = NDB.getChildNodes(node[lists[j]]); 
+					for i=1, #nodes, 1 do
+						preco = preco + ((tonumber(nodes[i].preco) or 0) * (tonumber(nodes[i].qtd) or 1));
+					end
+				end
+
+				node.recursosGastos = preco;
+			end;
+		end;
+
+		]]>	
+	</script>
+
+
+    <template name="formatEdit">
+        <layout align="right" width="100">
+            <rectangle align="client" color="black" strokeColor="grey" strokeSize="1" name="$(field)Label" visible="true" opacity="0.75" cornerType="innerRound" xradius="5" yradius="5">
+                <label align="client" field="$(field)" horzTextAlign="center" fontSize="11" formatFloat=",0.## $(unit)"/>
+                <event name="onClick">
+                    self.$(field)Label.visible = false;
+                    self.$(field)Edit.visible = true;
+                    self.$(field)Edit:setFocus();
+                </event>
+            </rectangle>
+            <edit field="$(field)" align="client" type="float" fontSize="11" name="$(field)Edit" visible="false" onChange="equipPrice()">
+                <event name="onExit">
+                    self.$(field)Label.visible = true;
+                    self.$(field)Edit.visible = false;
+                </event>
+            </edit>
+        </layout>
+    </template>
+
+	<rectangle align="client" color="black" strokeColor="white" strokeSize="1" padding="{top=5,bottom=5,left=5,right=5}">
+		<edit align="client" field="name"/>
+		<formatEdit field="preco" unit="C"/>
+		<edit align="right" width="50" field="qtd" onChange="equipPrice()"/>
+	</rectangle>
+	<button align="right" width="25" text="X" onClick="askForDelete();"/>
+</form>

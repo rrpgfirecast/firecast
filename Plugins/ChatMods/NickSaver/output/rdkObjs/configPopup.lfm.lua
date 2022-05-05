@@ -31,10 +31,20 @@ local function constructNew_nicksaverPopup()
     obj:setDataType("ambesek.nicksaver");
     obj:setTitle("AfkBot");
     obj:setWidth(290);
-    obj:setHeight(300);
+    obj:setHeight(325);
+
+    obj.tabControl1 = GUI.fromHandle(_obj_newObject("tabControl"));
+    obj.tabControl1:setParent(obj);
+    obj.tabControl1:setAlign("client");
+    obj.tabControl1:setName("tabControl1");
+
+    obj.tab1 = GUI.fromHandle(_obj_newObject("tab"));
+    obj.tab1:setParent(obj.tabControl1);
+    obj.tab1:setTitle("Nick Saver");
+    obj.tab1:setName("tab1");
 
     obj.checkBox1 = GUI.fromHandle(_obj_newObject("checkBox"));
-    obj.checkBox1:setParent(obj);
+    obj.checkBox1:setParent(obj.tab1);
     obj.checkBox1:setField("nickSaved");
     obj.checkBox1:setLeft(10);
     obj.checkBox1:setTop(10);
@@ -44,7 +54,7 @@ local function constructNew_nicksaverPopup()
     obj.checkBox1:setName("checkBox1");
 
     obj.edit1 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit1:setParent(obj);
+    obj.edit1:setParent(obj.tab1);
     obj.edit1:setLeft(160);
     obj.edit1:setTop(10);
     obj.edit1:setWidth(120);
@@ -53,14 +63,14 @@ local function constructNew_nicksaverPopup()
     obj.edit1:setName("edit1");
 
     obj.horzLine1 = GUI.fromHandle(_obj_newObject("horzLine"));
-    obj.horzLine1:setParent(obj);
+    obj.horzLine1:setParent(obj.tab1);
     obj.horzLine1:setLeft(10);
     obj.horzLine1:setTop(40);
     obj.horzLine1:setWidth(270);
     obj.horzLine1:setName("horzLine1");
 
     obj.checkBox2 = GUI.fromHandle(_obj_newObject("checkBox"));
-    obj.checkBox2:setParent(obj);
+    obj.checkBox2:setParent(obj.tab1);
     obj.checkBox2:setField("colorBaseSaved");
     obj.checkBox2:setLeft(10);
     obj.checkBox2:setTop(45);
@@ -70,20 +80,18 @@ local function constructNew_nicksaverPopup()
     obj.checkBox2:setName("checkBox2");
 
     obj.edit2 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit2:setParent(obj);
+    obj.edit2:setParent(obj.tab1);
     obj.edit2:setLeft(160);
     obj.edit2:setTop(45);
-    obj.edit2:setWidth(50);
+    obj.edit2:setWidth(120);
     obj.edit2:setHeight(25);
     obj.edit2:setField("colorBase");
-    obj.edit2:setType("number");
     obj.edit2:setMin(0);
     obj.edit2:setMax(28);
-    obj.edit2:setHorzTextAlign("center");
     obj.edit2:setName("edit2");
 
     obj.checkBox3 = GUI.fromHandle(_obj_newObject("checkBox"));
-    obj.checkBox3:setParent(obj);
+    obj.checkBox3:setParent(obj.tab1);
     obj.checkBox3:setField("colorTalkSaved");
     obj.checkBox3:setLeft(10);
     obj.checkBox3:setTop(70);
@@ -93,20 +101,18 @@ local function constructNew_nicksaverPopup()
     obj.checkBox3:setName("checkBox3");
 
     obj.edit3 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit3:setParent(obj);
+    obj.edit3:setParent(obj.tab1);
     obj.edit3:setLeft(160);
     obj.edit3:setTop(70);
-    obj.edit3:setWidth(50);
+    obj.edit3:setWidth(120);
     obj.edit3:setHeight(25);
     obj.edit3:setField("colorTalk");
-    obj.edit3:setType("number");
     obj.edit3:setMin(0);
     obj.edit3:setMax(28);
-    obj.edit3:setHorzTextAlign("center");
     obj.edit3:setName("edit3");
 
     obj.checkBox4 = GUI.fromHandle(_obj_newObject("checkBox"));
-    obj.checkBox4:setParent(obj);
+    obj.checkBox4:setParent(obj.tab1);
     obj.checkBox4:setField("colorActSaved");
     obj.checkBox4:setLeft(10);
     obj.checkBox4:setTop(95);
@@ -116,20 +122,18 @@ local function constructNew_nicksaverPopup()
     obj.checkBox4:setName("checkBox4");
 
     obj.edit4 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit4:setParent(obj);
+    obj.edit4:setParent(obj.tab1);
     obj.edit4:setLeft(160);
     obj.edit4:setTop(95);
-    obj.edit4:setWidth(50);
+    obj.edit4:setWidth(120);
     obj.edit4:setHeight(25);
     obj.edit4:setField("colorAct");
-    obj.edit4:setType("number");
     obj.edit4:setMin(0);
     obj.edit4:setMax(28);
-    obj.edit4:setHorzTextAlign("center");
     obj.edit4:setName("edit4");
 
     obj.checkBox5 = GUI.fromHandle(_obj_newObject("checkBox"));
-    obj.checkBox5:setParent(obj);
+    obj.checkBox5:setParent(obj.tab1);
     obj.checkBox5:setField("colorThoughtSaved");
     obj.checkBox5:setLeft(10);
     obj.checkBox5:setTop(120);
@@ -139,27 +143,25 @@ local function constructNew_nicksaverPopup()
     obj.checkBox5:setName("checkBox5");
 
     obj.edit5 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit5:setParent(obj);
+    obj.edit5:setParent(obj.tab1);
     obj.edit5:setLeft(160);
     obj.edit5:setTop(120);
-    obj.edit5:setWidth(50);
+    obj.edit5:setWidth(120);
     obj.edit5:setHeight(25);
     obj.edit5:setField("colorThought");
-    obj.edit5:setType("number");
     obj.edit5:setMin(0);
     obj.edit5:setMax(28);
-    obj.edit5:setHorzTextAlign("center");
     obj.edit5:setName("edit5");
 
     obj.horzLine2 = GUI.fromHandle(_obj_newObject("horzLine"));
-    obj.horzLine2:setParent(obj);
+    obj.horzLine2:setParent(obj.tab1);
     obj.horzLine2:setLeft(10);
     obj.horzLine2:setTop(150);
     obj.horzLine2:setWidth(270);
     obj.horzLine2:setName("horzLine2");
 
     obj.rectangle1 = GUI.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle1:setParent(obj);
+    obj.rectangle1:setParent(obj.tab1);
     obj.rectangle1:setLeft(10);
     obj.rectangle1:setTop(155);
     obj.rectangle1:setWidth(20);
@@ -168,7 +170,7 @@ local function constructNew_nicksaverPopup()
     obj.rectangle1:setName("rectangle1");
 
     obj.label1 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label1:setParent(obj);
+    obj.label1:setParent(obj.tab1);
     obj.label1:setLeft(10);
     obj.label1:setTop(175);
     obj.label1:setWidth(20);
@@ -178,7 +180,7 @@ local function constructNew_nicksaverPopup()
     obj.label1:setName("label1");
 
     obj.rectangle2 = GUI.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle2:setParent(obj);
+    obj.rectangle2:setParent(obj.tab1);
     obj.rectangle2:setLeft(35);
     obj.rectangle2:setTop(155);
     obj.rectangle2:setWidth(20);
@@ -187,7 +189,7 @@ local function constructNew_nicksaverPopup()
     obj.rectangle2:setName("rectangle2");
 
     obj.label2 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label2:setParent(obj);
+    obj.label2:setParent(obj.tab1);
     obj.label2:setLeft(35);
     obj.label2:setTop(175);
     obj.label2:setWidth(20);
@@ -197,7 +199,7 @@ local function constructNew_nicksaverPopup()
     obj.label2:setName("label2");
 
     obj.rectangle3 = GUI.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle3:setParent(obj);
+    obj.rectangle3:setParent(obj.tab1);
     obj.rectangle3:setLeft(60);
     obj.rectangle3:setTop(155);
     obj.rectangle3:setWidth(20);
@@ -206,7 +208,7 @@ local function constructNew_nicksaverPopup()
     obj.rectangle3:setName("rectangle3");
 
     obj.label3 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label3:setParent(obj);
+    obj.label3:setParent(obj.tab1);
     obj.label3:setLeft(60);
     obj.label3:setTop(175);
     obj.label3:setWidth(20);
@@ -216,7 +218,7 @@ local function constructNew_nicksaverPopup()
     obj.label3:setName("label3");
 
     obj.rectangle4 = GUI.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle4:setParent(obj);
+    obj.rectangle4:setParent(obj.tab1);
     obj.rectangle4:setLeft(85);
     obj.rectangle4:setTop(155);
     obj.rectangle4:setWidth(20);
@@ -225,7 +227,7 @@ local function constructNew_nicksaverPopup()
     obj.rectangle4:setName("rectangle4");
 
     obj.label4 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label4:setParent(obj);
+    obj.label4:setParent(obj.tab1);
     obj.label4:setLeft(85);
     obj.label4:setTop(175);
     obj.label4:setWidth(20);
@@ -235,7 +237,7 @@ local function constructNew_nicksaverPopup()
     obj.label4:setName("label4");
 
     obj.rectangle5 = GUI.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle5:setParent(obj);
+    obj.rectangle5:setParent(obj.tab1);
     obj.rectangle5:setLeft(110);
     obj.rectangle5:setTop(155);
     obj.rectangle5:setWidth(20);
@@ -244,7 +246,7 @@ local function constructNew_nicksaverPopup()
     obj.rectangle5:setName("rectangle5");
 
     obj.label5 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label5:setParent(obj);
+    obj.label5:setParent(obj.tab1);
     obj.label5:setLeft(110);
     obj.label5:setTop(175);
     obj.label5:setWidth(20);
@@ -254,7 +256,7 @@ local function constructNew_nicksaverPopup()
     obj.label5:setName("label5");
 
     obj.rectangle6 = GUI.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle6:setParent(obj);
+    obj.rectangle6:setParent(obj.tab1);
     obj.rectangle6:setLeft(135);
     obj.rectangle6:setTop(155);
     obj.rectangle6:setWidth(20);
@@ -263,7 +265,7 @@ local function constructNew_nicksaverPopup()
     obj.rectangle6:setName("rectangle6");
 
     obj.label6 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label6:setParent(obj);
+    obj.label6:setParent(obj.tab1);
     obj.label6:setLeft(135);
     obj.label6:setTop(175);
     obj.label6:setWidth(20);
@@ -273,7 +275,7 @@ local function constructNew_nicksaverPopup()
     obj.label6:setName("label6");
 
     obj.rectangle7 = GUI.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle7:setParent(obj);
+    obj.rectangle7:setParent(obj.tab1);
     obj.rectangle7:setLeft(160);
     obj.rectangle7:setTop(155);
     obj.rectangle7:setWidth(20);
@@ -282,7 +284,7 @@ local function constructNew_nicksaverPopup()
     obj.rectangle7:setName("rectangle7");
 
     obj.label7 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label7:setParent(obj);
+    obj.label7:setParent(obj.tab1);
     obj.label7:setLeft(160);
     obj.label7:setTop(175);
     obj.label7:setWidth(20);
@@ -292,7 +294,7 @@ local function constructNew_nicksaverPopup()
     obj.label7:setName("label7");
 
     obj.rectangle8 = GUI.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle8:setParent(obj);
+    obj.rectangle8:setParent(obj.tab1);
     obj.rectangle8:setLeft(185);
     obj.rectangle8:setTop(155);
     obj.rectangle8:setWidth(20);
@@ -301,7 +303,7 @@ local function constructNew_nicksaverPopup()
     obj.rectangle8:setName("rectangle8");
 
     obj.label8 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label8:setParent(obj);
+    obj.label8:setParent(obj.tab1);
     obj.label8:setLeft(185);
     obj.label8:setTop(175);
     obj.label8:setWidth(20);
@@ -311,7 +313,7 @@ local function constructNew_nicksaverPopup()
     obj.label8:setName("label8");
 
     obj.rectangle9 = GUI.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle9:setParent(obj);
+    obj.rectangle9:setParent(obj.tab1);
     obj.rectangle9:setLeft(210);
     obj.rectangle9:setTop(155);
     obj.rectangle9:setWidth(20);
@@ -320,7 +322,7 @@ local function constructNew_nicksaverPopup()
     obj.rectangle9:setName("rectangle9");
 
     obj.label9 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label9:setParent(obj);
+    obj.label9:setParent(obj.tab1);
     obj.label9:setLeft(210);
     obj.label9:setTop(175);
     obj.label9:setWidth(20);
@@ -330,7 +332,7 @@ local function constructNew_nicksaverPopup()
     obj.label9:setName("label9");
 
     obj.rectangle10 = GUI.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle10:setParent(obj);
+    obj.rectangle10:setParent(obj.tab1);
     obj.rectangle10:setLeft(235);
     obj.rectangle10:setTop(155);
     obj.rectangle10:setWidth(20);
@@ -339,7 +341,7 @@ local function constructNew_nicksaverPopup()
     obj.rectangle10:setName("rectangle10");
 
     obj.label10 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label10:setParent(obj);
+    obj.label10:setParent(obj.tab1);
     obj.label10:setLeft(235);
     obj.label10:setTop(175);
     obj.label10:setWidth(20);
@@ -349,7 +351,7 @@ local function constructNew_nicksaverPopup()
     obj.label10:setName("label10");
 
     obj.rectangle11 = GUI.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle11:setParent(obj);
+    obj.rectangle11:setParent(obj.tab1);
     obj.rectangle11:setLeft(10);
     obj.rectangle11:setTop(200);
     obj.rectangle11:setWidth(20);
@@ -358,7 +360,7 @@ local function constructNew_nicksaverPopup()
     obj.rectangle11:setName("rectangle11");
 
     obj.label11 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label11:setParent(obj);
+    obj.label11:setParent(obj.tab1);
     obj.label11:setLeft(10);
     obj.label11:setTop(220);
     obj.label11:setWidth(20);
@@ -368,7 +370,7 @@ local function constructNew_nicksaverPopup()
     obj.label11:setName("label11");
 
     obj.rectangle12 = GUI.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle12:setParent(obj);
+    obj.rectangle12:setParent(obj.tab1);
     obj.rectangle12:setLeft(35);
     obj.rectangle12:setTop(200);
     obj.rectangle12:setWidth(20);
@@ -377,7 +379,7 @@ local function constructNew_nicksaverPopup()
     obj.rectangle12:setName("rectangle12");
 
     obj.label12 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label12:setParent(obj);
+    obj.label12:setParent(obj.tab1);
     obj.label12:setLeft(35);
     obj.label12:setTop(220);
     obj.label12:setWidth(20);
@@ -387,7 +389,7 @@ local function constructNew_nicksaverPopup()
     obj.label12:setName("label12");
 
     obj.rectangle13 = GUI.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle13:setParent(obj);
+    obj.rectangle13:setParent(obj.tab1);
     obj.rectangle13:setLeft(60);
     obj.rectangle13:setTop(200);
     obj.rectangle13:setWidth(20);
@@ -396,7 +398,7 @@ local function constructNew_nicksaverPopup()
     obj.rectangle13:setName("rectangle13");
 
     obj.label13 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label13:setParent(obj);
+    obj.label13:setParent(obj.tab1);
     obj.label13:setLeft(60);
     obj.label13:setTop(220);
     obj.label13:setWidth(20);
@@ -406,7 +408,7 @@ local function constructNew_nicksaverPopup()
     obj.label13:setName("label13");
 
     obj.rectangle14 = GUI.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle14:setParent(obj);
+    obj.rectangle14:setParent(obj.tab1);
     obj.rectangle14:setLeft(85);
     obj.rectangle14:setTop(200);
     obj.rectangle14:setWidth(20);
@@ -415,7 +417,7 @@ local function constructNew_nicksaverPopup()
     obj.rectangle14:setName("rectangle14");
 
     obj.label14 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label14:setParent(obj);
+    obj.label14:setParent(obj.tab1);
     obj.label14:setLeft(85);
     obj.label14:setTop(220);
     obj.label14:setWidth(20);
@@ -425,7 +427,7 @@ local function constructNew_nicksaverPopup()
     obj.label14:setName("label14");
 
     obj.rectangle15 = GUI.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle15:setParent(obj);
+    obj.rectangle15:setParent(obj.tab1);
     obj.rectangle15:setLeft(110);
     obj.rectangle15:setTop(200);
     obj.rectangle15:setWidth(20);
@@ -434,7 +436,7 @@ local function constructNew_nicksaverPopup()
     obj.rectangle15:setName("rectangle15");
 
     obj.label15 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label15:setParent(obj);
+    obj.label15:setParent(obj.tab1);
     obj.label15:setLeft(110);
     obj.label15:setTop(220);
     obj.label15:setWidth(20);
@@ -444,7 +446,7 @@ local function constructNew_nicksaverPopup()
     obj.label15:setName("label15");
 
     obj.rectangle16 = GUI.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle16:setParent(obj);
+    obj.rectangle16:setParent(obj.tab1);
     obj.rectangle16:setLeft(135);
     obj.rectangle16:setTop(200);
     obj.rectangle16:setWidth(20);
@@ -453,7 +455,7 @@ local function constructNew_nicksaverPopup()
     obj.rectangle16:setName("rectangle16");
 
     obj.label16 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label16:setParent(obj);
+    obj.label16:setParent(obj.tab1);
     obj.label16:setLeft(135);
     obj.label16:setTop(220);
     obj.label16:setWidth(20);
@@ -463,7 +465,7 @@ local function constructNew_nicksaverPopup()
     obj.label16:setName("label16");
 
     obj.rectangle17 = GUI.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle17:setParent(obj);
+    obj.rectangle17:setParent(obj.tab1);
     obj.rectangle17:setLeft(160);
     obj.rectangle17:setTop(200);
     obj.rectangle17:setWidth(20);
@@ -472,7 +474,7 @@ local function constructNew_nicksaverPopup()
     obj.rectangle17:setName("rectangle17");
 
     obj.label17 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label17:setParent(obj);
+    obj.label17:setParent(obj.tab1);
     obj.label17:setLeft(160);
     obj.label17:setTop(220);
     obj.label17:setWidth(20);
@@ -482,7 +484,7 @@ local function constructNew_nicksaverPopup()
     obj.label17:setName("label17");
 
     obj.rectangle18 = GUI.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle18:setParent(obj);
+    obj.rectangle18:setParent(obj.tab1);
     obj.rectangle18:setLeft(185);
     obj.rectangle18:setTop(200);
     obj.rectangle18:setWidth(20);
@@ -491,7 +493,7 @@ local function constructNew_nicksaverPopup()
     obj.rectangle18:setName("rectangle18");
 
     obj.label18 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label18:setParent(obj);
+    obj.label18:setParent(obj.tab1);
     obj.label18:setLeft(185);
     obj.label18:setTop(220);
     obj.label18:setWidth(20);
@@ -501,7 +503,7 @@ local function constructNew_nicksaverPopup()
     obj.label18:setName("label18");
 
     obj.rectangle19 = GUI.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle19:setParent(obj);
+    obj.rectangle19:setParent(obj.tab1);
     obj.rectangle19:setLeft(210);
     obj.rectangle19:setTop(200);
     obj.rectangle19:setWidth(20);
@@ -510,7 +512,7 @@ local function constructNew_nicksaverPopup()
     obj.rectangle19:setName("rectangle19");
 
     obj.label19 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label19:setParent(obj);
+    obj.label19:setParent(obj.tab1);
     obj.label19:setLeft(210);
     obj.label19:setTop(220);
     obj.label19:setWidth(20);
@@ -520,7 +522,7 @@ local function constructNew_nicksaverPopup()
     obj.label19:setName("label19");
 
     obj.rectangle20 = GUI.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle20:setParent(obj);
+    obj.rectangle20:setParent(obj.tab1);
     obj.rectangle20:setLeft(235);
     obj.rectangle20:setTop(200);
     obj.rectangle20:setWidth(20);
@@ -529,7 +531,7 @@ local function constructNew_nicksaverPopup()
     obj.rectangle20:setName("rectangle20");
 
     obj.label20 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label20:setParent(obj);
+    obj.label20:setParent(obj.tab1);
     obj.label20:setLeft(235);
     obj.label20:setTop(220);
     obj.label20:setWidth(20);
@@ -539,7 +541,7 @@ local function constructNew_nicksaverPopup()
     obj.label20:setName("label20");
 
     obj.rectangle21 = GUI.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle21:setParent(obj);
+    obj.rectangle21:setParent(obj.tab1);
     obj.rectangle21:setLeft(10);
     obj.rectangle21:setTop(245);
     obj.rectangle21:setWidth(20);
@@ -548,7 +550,7 @@ local function constructNew_nicksaverPopup()
     obj.rectangle21:setName("rectangle21");
 
     obj.label21 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label21:setParent(obj);
+    obj.label21:setParent(obj.tab1);
     obj.label21:setLeft(10);
     obj.label21:setTop(265);
     obj.label21:setWidth(20);
@@ -558,7 +560,7 @@ local function constructNew_nicksaverPopup()
     obj.label21:setName("label21");
 
     obj.rectangle22 = GUI.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle22:setParent(obj);
+    obj.rectangle22:setParent(obj.tab1);
     obj.rectangle22:setLeft(35);
     obj.rectangle22:setTop(245);
     obj.rectangle22:setWidth(20);
@@ -567,7 +569,7 @@ local function constructNew_nicksaverPopup()
     obj.rectangle22:setName("rectangle22");
 
     obj.label22 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label22:setParent(obj);
+    obj.label22:setParent(obj.tab1);
     obj.label22:setLeft(35);
     obj.label22:setTop(265);
     obj.label22:setWidth(20);
@@ -577,7 +579,7 @@ local function constructNew_nicksaverPopup()
     obj.label22:setName("label22");
 
     obj.rectangle23 = GUI.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle23:setParent(obj);
+    obj.rectangle23:setParent(obj.tab1);
     obj.rectangle23:setLeft(60);
     obj.rectangle23:setTop(245);
     obj.rectangle23:setWidth(20);
@@ -586,7 +588,7 @@ local function constructNew_nicksaverPopup()
     obj.rectangle23:setName("rectangle23");
 
     obj.label23 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label23:setParent(obj);
+    obj.label23:setParent(obj.tab1);
     obj.label23:setLeft(60);
     obj.label23:setTop(265);
     obj.label23:setWidth(20);
@@ -596,7 +598,7 @@ local function constructNew_nicksaverPopup()
     obj.label23:setName("label23");
 
     obj.rectangle24 = GUI.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle24:setParent(obj);
+    obj.rectangle24:setParent(obj.tab1);
     obj.rectangle24:setLeft(85);
     obj.rectangle24:setTop(245);
     obj.rectangle24:setWidth(20);
@@ -605,7 +607,7 @@ local function constructNew_nicksaverPopup()
     obj.rectangle24:setName("rectangle24");
 
     obj.label24 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label24:setParent(obj);
+    obj.label24:setParent(obj.tab1);
     obj.label24:setLeft(85);
     obj.label24:setTop(265);
     obj.label24:setWidth(20);
@@ -615,7 +617,7 @@ local function constructNew_nicksaverPopup()
     obj.label24:setName("label24");
 
     obj.rectangle25 = GUI.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle25:setParent(obj);
+    obj.rectangle25:setParent(obj.tab1);
     obj.rectangle25:setLeft(110);
     obj.rectangle25:setTop(245);
     obj.rectangle25:setWidth(20);
@@ -624,7 +626,7 @@ local function constructNew_nicksaverPopup()
     obj.rectangle25:setName("rectangle25");
 
     obj.label25 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label25:setParent(obj);
+    obj.label25:setParent(obj.tab1);
     obj.label25:setLeft(110);
     obj.label25:setTop(265);
     obj.label25:setWidth(20);
@@ -634,7 +636,7 @@ local function constructNew_nicksaverPopup()
     obj.label25:setName("label25");
 
     obj.rectangle26 = GUI.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle26:setParent(obj);
+    obj.rectangle26:setParent(obj.tab1);
     obj.rectangle26:setLeft(135);
     obj.rectangle26:setTop(245);
     obj.rectangle26:setWidth(20);
@@ -643,7 +645,7 @@ local function constructNew_nicksaverPopup()
     obj.rectangle26:setName("rectangle26");
 
     obj.label26 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label26:setParent(obj);
+    obj.label26:setParent(obj.tab1);
     obj.label26:setLeft(135);
     obj.label26:setTop(265);
     obj.label26:setWidth(20);
@@ -653,7 +655,7 @@ local function constructNew_nicksaverPopup()
     obj.label26:setName("label26");
 
     obj.rectangle27 = GUI.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle27:setParent(obj);
+    obj.rectangle27:setParent(obj.tab1);
     obj.rectangle27:setLeft(160);
     obj.rectangle27:setTop(245);
     obj.rectangle27:setWidth(20);
@@ -662,7 +664,7 @@ local function constructNew_nicksaverPopup()
     obj.rectangle27:setName("rectangle27");
 
     obj.label27 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label27:setParent(obj);
+    obj.label27:setParent(obj.tab1);
     obj.label27:setLeft(160);
     obj.label27:setTop(265);
     obj.label27:setWidth(20);
@@ -672,7 +674,7 @@ local function constructNew_nicksaverPopup()
     obj.label27:setName("label27");
 
     obj.rectangle28 = GUI.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle28:setParent(obj);
+    obj.rectangle28:setParent(obj.tab1);
     obj.rectangle28:setLeft(185);
     obj.rectangle28:setTop(245);
     obj.rectangle28:setWidth(20);
@@ -681,7 +683,7 @@ local function constructNew_nicksaverPopup()
     obj.rectangle28:setName("rectangle28");
 
     obj.label28 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label28:setParent(obj);
+    obj.label28:setParent(obj.tab1);
     obj.label28:setLeft(185);
     obj.label28:setTop(265);
     obj.label28:setWidth(20);
@@ -691,7 +693,7 @@ local function constructNew_nicksaverPopup()
     obj.label28:setName("label28");
 
     obj.rectangle29 = GUI.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle29:setParent(obj);
+    obj.rectangle29:setParent(obj.tab1);
     obj.rectangle29:setLeft(210);
     obj.rectangle29:setTop(245);
     obj.rectangle29:setWidth(20);
@@ -700,7 +702,7 @@ local function constructNew_nicksaverPopup()
     obj.rectangle29:setName("rectangle29");
 
     obj.label29 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label29:setParent(obj);
+    obj.label29:setParent(obj.tab1);
     obj.label29:setLeft(210);
     obj.label29:setTop(265);
     obj.label29:setWidth(20);
@@ -709,7 +711,40 @@ local function constructNew_nicksaverPopup()
     obj.label29:setHorzTextAlign("center");
     obj.label29:setName("label29");
 
+    obj.tab2 = GUI.fromHandle(_obj_newObject("tab"));
+    obj.tab2:setParent(obj.tabControl1);
+    obj.tab2:setTitle("Color Saver");
+    obj.tab2:setName("tab2");
+
+    obj.button1 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button1:setParent(obj.tab2);
+    obj.button1:setAlign("top");
+    obj.button1:setHeight(25);
+    obj.button1:setText("+");
+    obj.button1:setName("button1");
+
+    obj.rectangle30 = GUI.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle30:setParent(obj.tab2);
+    obj.rectangle30:setAlign("client");
+    obj.rectangle30:setColor("black");
+    obj.rectangle30:setName("rectangle30");
+
+    obj.rclColors = GUI.fromHandle(_obj_newObject("recordList"));
+    obj.rclColors:setParent(obj.rectangle30);
+    obj.rclColors:setAlign("client");
+    obj.rclColors:setMargins({left=5,right=5,bottom=5,top=5});
+    obj.rclColors:setName("rclColors");
+    obj.rclColors:setField("listaDeCores");
+    obj.rclColors:setTemplateForm("frmColorSaveItem");
+    obj.rclColors:setLayout("vertical");
+
+    obj._e_event0 = obj.button1:addEventListener("onClick",
+        function (_)
+            self.rclColors:append();
+        end, obj);
+
     function obj:_releaseEvents()
+        __o_rrpgObjs.removeEventListenerById(self._e_event0);
     end;
 
     obj._oldLFMDestroy = obj.destroy;
@@ -744,8 +779,8 @@ local function constructNew_nicksaverPopup()
         if self.label22 ~= nil then self.label22:destroy(); self.label22 = nil; end;
         if self.label23 ~= nil then self.label23:destroy(); self.label23 = nil; end;
         if self.label24 ~= nil then self.label24:destroy(); self.label24 = nil; end;
+        if self.tabControl1 ~= nil then self.tabControl1:destroy(); self.tabControl1 = nil; end;
         if self.rectangle22 ~= nil then self.rectangle22:destroy(); self.rectangle22 = nil; end;
-        if self.rectangle29 ~= nil then self.rectangle29:destroy(); self.rectangle29 = nil; end;
         if self.label13 ~= nil then self.label13:destroy(); self.label13 = nil; end;
         if self.horzLine1 ~= nil then self.horzLine1:destroy(); self.horzLine1 = nil; end;
         if self.horzLine2 ~= nil then self.horzLine2:destroy(); self.horzLine2 = nil; end;
@@ -754,9 +789,13 @@ local function constructNew_nicksaverPopup()
         if self.rectangle1 ~= nil then self.rectangle1:destroy(); self.rectangle1 = nil; end;
         if self.label19 ~= nil then self.label19:destroy(); self.label19 = nil; end;
         if self.label27 ~= nil then self.label27:destroy(); self.label27 = nil; end;
+        if self.rectangle29 ~= nil then self.rectangle29:destroy(); self.rectangle29 = nil; end;
+        if self.tab2 ~= nil then self.tab2:destroy(); self.tab2 = nil; end;
         if self.rectangle12 ~= nil then self.rectangle12:destroy(); self.rectangle12 = nil; end;
         if self.rectangle5 ~= nil then self.rectangle5:destroy(); self.rectangle5 = nil; end;
         if self.checkBox2 ~= nil then self.checkBox2:destroy(); self.checkBox2 = nil; end;
+        if self.rectangle30 ~= nil then self.rectangle30:destroy(); self.rectangle30 = nil; end;
+        if self.button1 ~= nil then self.button1:destroy(); self.button1 = nil; end;
         if self.edit4 ~= nil then self.edit4:destroy(); self.edit4 = nil; end;
         if self.label8 ~= nil then self.label8:destroy(); self.label8 = nil; end;
         if self.label11 ~= nil then self.label11:destroy(); self.label11 = nil; end;
@@ -764,6 +803,7 @@ local function constructNew_nicksaverPopup()
         if self.label4 ~= nil then self.label4:destroy(); self.label4 = nil; end;
         if self.label6 ~= nil then self.label6:destroy(); self.label6 = nil; end;
         if self.label20 ~= nil then self.label20:destroy(); self.label20 = nil; end;
+        if self.rclColors ~= nil then self.rclColors:destroy(); self.rclColors = nil; end;
         if self.rectangle17 ~= nil then self.rectangle17:destroy(); self.rectangle17 = nil; end;
         if self.edit5 ~= nil then self.edit5:destroy(); self.edit5 = nil; end;
         if self.rectangle18 ~= nil then self.rectangle18:destroy(); self.rectangle18 = nil; end;
@@ -781,6 +821,7 @@ local function constructNew_nicksaverPopup()
         if self.rectangle4 ~= nil then self.rectangle4:destroy(); self.rectangle4 = nil; end;
         if self.rectangle13 ~= nil then self.rectangle13:destroy(); self.rectangle13 = nil; end;
         if self.rectangle28 ~= nil then self.rectangle28:destroy(); self.rectangle28 = nil; end;
+        if self.tab1 ~= nil then self.tab1:destroy(); self.tab1 = nil; end;
         if self.label16 ~= nil then self.label16:destroy(); self.label16 = nil; end;
         if self.checkBox4 ~= nil then self.checkBox4:destroy(); self.checkBox4 = nil; end;
         if self.edit2 ~= nil then self.edit2:destroy(); self.edit2 = nil; end;

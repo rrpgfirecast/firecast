@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmAtaqueForm" width="435" height="60" margins="{left=5,right=5,top=5,bottom=5}">
+	<rectangle align="client" color="#212121">
+		<layout align="left" width="400" margins="{left=5}">
+			<layout align="top" height="25">
+				<label align="left" width="100" text="Nome" horzTextAlign="center"/>
+				<label align="left" width="100" text="Ataque" horzTextAlign="center"/>
+				<label align="left" width="100" text="Dano" horzTextAlign="center"/>
+				<label align="left" width="100" text="Tipo" horzTextAlign="center"/>
+			</layout>
+			<layout align="top" height="25">
+				<edit align="left" width="100" field="nome"/>
+				<edit align="left" width="100" field="ataque"/>
+				<edit align="left" width="100" field="dano"/>
+				<edit align="left" width="100" field="tipo"/>
+			</layout>
+		</layout>
+		<button align="right" width="25" text="X" margins="{right=5,top=5,bottom=5}">
+			<event name="onClick">
+				Dialogs.confirmOkCancel("Tem certeza que quer apagar esse objeto?",
+					function (confirmado)
+						if confirmado then
+							NDB.deleteNode(sheet);
+						end;
+				end);
+			</event>
+		</button>
+	</rectangle>
+</form>

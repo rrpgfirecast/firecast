@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmFichaContrato" formType="sheetTemplate" dataType="Ambesek.Starfinder.CompanhiaMercenaria" title="Ficha Starfinder (Companhia de Mercenarios)" align="client" theme="dark">
+    <script>
+        <![CDATA[
+        local function isNewVersion(installed, downloaded)
+            local installedVersion = {};
+            local installedIndex = 0;
+            for i in string.gmatch(installed, "[^%.]+") do
+                installedIndex = installedIndex +1;
+                installedVersion[installedIndex] = i;
+            end
+
+            local downloadedVersion = {};
+            local downloadedIndex = 0;
+            for i in string.gmatch(downloaded, "[^%.]+") do
+                downloadedIndex = downloadedIndex +1;
+                downloadedVersion[downloadedIndex] = i;
+            end
+
+            for i=1, math.min(installedIndex, downloadedIndex), 1 do 
+                if (tonumber(installedVersion[i]) or 0) > (tonumber(downloadedVersion[i]) or 0) then
+                    return false;
+                elseif (tonumber(installedVersion[i]) or 0) < (tonumber(downloadedVersion[i]) or 0) then
+                    return true;
+                end;
+            end;
+
+            if downloadedIndex > installedIndex then
+                return true;
+            else
+                return false;
+            end;
+        end;
+        local function findPopup(myPop)
+            local pop = self:findControlByName(myPop);
+                
+            if pop ~= nil and sheet ~= nil then
+                pop:setNodeObject(sheet);
+                pop:showPopupEx("center", self);
+            elseif pop == nil then
+                showMessage("Ops, bug.. nao encontrei o popup para exibir");
+            end;                
+        end;
+        ]]> 
+    </script>
+
+
+    <template name="ListaFlexivel">
+        <flowPart minWidth="300" maxWidth="600" height="25" minScaledWidth="280" name="$(rclName)Part" adjustHeightToLine="false" margins="{left=5}">
+            <script>
+                <![CDATA[
+                    rawset(self.$(rclName)Part, "_recalcHeight",                    
+                        function ()
+                            self.$(rclName)Part.height = self.$(rclName).height + 25;
+                        end);
+                ]]>
+            </script>
+
+            <layout align="top" height="25">
+                <button text="+" align="left" width="30" onClick="self.$(rclName):append();"/>
+                <label text="$(nome)" align="left" width="225" margins="{left=5}"/>
+            </layout>
+
+            <recordList name="$(rclName)" field="$(rclField)" templateForm="$(frm)" align="top" layout="vertical" autoHeight="true" hitTest="false" onResize="self.$(rclName)Part._recalcHeight();" minQt="0">
+                <event name="onCompare">
+                    local dif = ((tonumber(nodeA.dificuldade) or 0) - (tonumber(nodeB.dificuldade) or 0));
+
+                    if dif~=0 then return dif end
+
+                    return utils.compareStringPtBr(nodeA.nome, nodeB.nome);
+                </event>
+            </recordList>
+        </flowPart>
+    </template> 
+
+    <tabControl align="client">
+        <tab title="Companhia">
+            <import file="guild.xml"/>
+        </tab>
+        <tab title="Contratos">
+            <import file="contract.xml"/>
+        </tab>
+        <tab title="Contratantes">
+            <import file="contractor.xml"/>
+        </tab>
+        <tab title="Inventario">
+            <import file="inventory.xml"/>
+        </tab>
+        <tab title="Anotações">
+            <import file="../FichaStarfinder/10.Anotacoes.xml"/>
+        </tab>
+        <tab title="Creditos">
+            <import file="../FichaStarfinder/11.Creditos.xml"/>
+        </tab>
+    </tabControl>
+
+    <event name="onNodeReady">
+        Internet.download("https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20Starfinder/output/Ficha%20Starfinder.rpk?raw=true",
+            function(stream, contentType)
+                local info = Firecast.Plugins.getRPKDetails(stream);
+                sheet.versionDownloaded = "VERSÃO DISPONÍVEL: " .. info.version;
+
+                local installed = Firecast.Plugins.getInstalledPlugins();
+                local myself;
+                for i=1, #installed, 1 do
+                    if installed[i].moduleId == info.moduleId then
+                        myself = installed[i];
+                        sheet.versionInstalled = "VERSÃO INSTALADA: " .. installed[i].version;
+                    end;
+                end;
+
+                if sheet.noUpdate==true then return end;
+                if myself~= nil and isNewVersion(myself.version, info.version) then
+                    Dialogs.choose("Há uma nova versão(" .. info.version .. ") da Ficha Starfinder. Deseja instalar?",{"Sim", "Não", "Não perguntar novamente."},
+                        function(selected, selectedIndex, selectedText)
+                            if selected and selectedIndex == 1 then
+                                GUI.openInBrowser('https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20Starfinder/output/Ficha%20Starfinder.rpk?raw=true');
+                            elseif selected and selectedIndex == 3 then
+                                sheet.noUpdate = true;
+                            end;
+                        end);
+                end;
+            end,       
+            function (errorMsg)
+                --showMessage(errorMsg);
+            end,       
+            function (downloaded, total)
+                -- esta função será chamada constantemente.
+                -- dividir "downloaded" por "total" lhe dará uma porcentagem do download.
+            end,
+            "checkForModification");
+    </event>
+</form>

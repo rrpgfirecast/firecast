@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <module sdkVersion="3.4">
 	<id>Ambesek.Ragnarock</id>
-	<version>0.7</version>
+	<version>0.7.1</version>
 	<name>Plugin Ragnarök</name>
 	<description>Ficha para um sistema proprio de Ragnaröck.</description>
 	<author>Ambesek</author>

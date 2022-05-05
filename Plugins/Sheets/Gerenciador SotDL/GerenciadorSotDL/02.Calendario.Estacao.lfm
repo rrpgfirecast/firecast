@@ -1,0 +1,255 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmGerenciador02_ESTACAO" width="110" height="25" theme="dark" margins="{top=1}">
+	<rectangle align="client" color="#212121">
+		<edit left="0" top="0" width="30" height="25" field="ordem" type="number">
+			<event name="onChange">
+				local rcl = self:findControlByName("rclEstacoes");
+				if rcl~= nil then
+					rcl:sort();
+				end;
+			</event>
+		</edit>
+		<edit left="30" top="0" width="105" height="25" field="estacao"/>
+		<edit left="135" top="0" width="35" height="25" field="dias" type="number"/>
+
+		<button left="170" top="0" width="25" height="25" text="i" hint="Detalhes da Estação">
+			<event name="onClick">
+				local pop = self:findControlByName("popClima");
+				
+				if pop ~= nil then
+					pop:setNodeObject(self.sheet);
+					pop:showPopupEx("bottomCenter", self);
+				else
+					showMessage("Ops, bug.. nao encontrei o popup de climas para exibir");
+				end;
+			</event>
+		</button>
+		<button left="195" top="0" width="25" height="25" text="X">
+			<event name="onClick">
+				dialogs.confirmOkCancel("Tem certeza que quer apagar esse mês?",
+					function (confirmado)
+						if confirmado then
+							ndb.deleteNode(sheet);
+						end;
+				end);
+			</event>
+		</button>
+
+		<dataLink field="dias">
+			<event name="onChange"><![CDATA[
+		        if sheet~= nil then
+					local node = ndb.getRoot(sheet);
+					local mod = 0;
+					local nodes = ndb.getChildNodes(node.listaEstacoes); 
+					for i=1, #nodes, 1 do
+						nodes[i].cumulativo = mod;
+						mod = mod + (tonumber(nodes[i].dias) or 0);
+					end
+					node.duracaoEstacao = mod;
+				end;
+		        ]]>
+			</event>
+		</dataLink>
+
+		<dataLink field="temperatura">
+			<event name="onChange">
+				if sheet==nil then return end;
+
+				if sheet.temperatura ~= "Personalizado" then
+					sheet.temperaturaChance_1 = 5;
+					sheet.temperaturaChance_2 = 20;
+					sheet.temperaturaChance_3 = 50;
+					sheet.temperaturaChance_4 = 20;
+					sheet.temperaturaChance_5 = 5;
+					sheet.temperaturaMM_1 = 1;
+					sheet.temperaturaMM_2 = 2;
+					sheet.temperaturaMM_3 = 3;
+					sheet.temperaturaMM_4 = 4;
+					sheet.temperaturaMM_5 = 5;
+				end;
+
+				if sheet.temperatura == "Infernal" then
+					sheet.temperatura_1 = 31;
+					sheet.temperatura_2 = 35;
+					sheet.temperatura_3 = 41;
+					sheet.temperatura_4 = 49;
+					sheet.temperatura_5 = 57;
+					sheet.temperaturaVar_1 = 4;
+					sheet.temperaturaVar_2 = 6;
+					sheet.temperaturaVar_3 = 8;
+					sheet.temperaturaVar_4 = 8;
+					sheet.temperaturaVar_5 = 8;
+				elseif sheet.temperatura == "Quente" then
+					sheet.temperatura_1 = 25;
+					sheet.temperatura_2 = 27;
+					sheet.temperatura_3 = 29;
+					sheet.temperatura_4 = 33;
+					sheet.temperatura_5 = 39;
+					sheet.temperaturaVar_1 = 2;
+					sheet.temperaturaVar_2 = 2;
+					sheet.temperaturaVar_3 = 4;
+					sheet.temperaturaVar_4 = 6;
+					sheet.temperaturaVar_5 = 6;
+				elseif sheet.temperatura == "Morno" then
+					sheet.temperatura_1 = 20;
+					sheet.temperatura_2 = 22;
+					sheet.temperatura_3 = 24;
+					sheet.temperatura_4 = 26;
+					sheet.temperatura_5 = 30;
+					sheet.temperaturaVar_1 = 3;
+					sheet.temperaturaVar_2 = 2;
+					sheet.temperaturaVar_3 = 2;
+					sheet.temperaturaVar_4 = 4;
+					sheet.temperaturaVar_5 = 6;
+				elseif sheet.temperatura == "Temperado" then
+					sheet.temperatura_1 = 10;
+					sheet.temperatura_2 = 14;
+					sheet.temperatura_3 = 18;
+					sheet.temperatura_4 = 22;
+					sheet.temperatura_5 = 26;
+					sheet.temperaturaVar_1 = 4;
+					sheet.temperaturaVar_2 = 4;
+					sheet.temperaturaVar_3 = 4;
+					sheet.temperaturaVar_4 = 4;
+					sheet.temperaturaVar_5 = 4;
+				elseif sheet.temperatura == "Frio" then
+					sheet.temperatura_1 = -31;
+					sheet.temperatura_2 = -23;
+					sheet.temperatura_3 = -15;
+					sheet.temperatura_4 = -7;
+					sheet.temperatura_5 = 1;
+					sheet.temperaturaVar_1 = 8;
+					sheet.temperaturaVar_2 = 8;
+					sheet.temperaturaVar_3 = 8;
+					sheet.temperaturaVar_4 = 8;
+					sheet.temperaturaVar_5 = 8;
+				elseif sheet.temperatura == "Glacial" then
+					sheet.temperatura_1 = -46;
+					sheet.temperatura_2 = -36;
+					sheet.temperatura_3 = -26;
+					sheet.temperatura_4 = -16;
+					sheet.temperatura_5 = -6;
+					sheet.temperaturaVar_1 = 10;
+					sheet.temperaturaVar_2 = 10;
+					sheet.temperaturaVar_3 = 10;
+					sheet.temperaturaVar_4 = 10;
+					sheet.temperaturaVar_5 = 10;
+				end;
+			</event>
+		</dataLink>
+
+		<dataLink field="chuvas">
+			<event name="onChange">
+				if sheet==nil then return end;
+
+				if sheet.chuvas == "Nenhuma" then
+					sheet.chuvaChance_1 = 100;
+					sheet.chuvaChance_2 = 0;
+					sheet.chuvaChance_3 = 0;
+					sheet.chuvaChance_4 = 0;
+					sheet.chuvaChance_5 = 0;
+					sheet.chuvaChance_6 = 0;
+				elseif sheet.chuvas == "Pouca" then
+					sheet.chuvaChance_1 = 90;
+					sheet.chuvaChance_2 = 3;
+					sheet.chuvaChance_3 = 3;
+					sheet.chuvaChance_4 = 3;
+					sheet.chuvaChance_5 = 1;
+					sheet.chuvaChance_6 = 0;
+				elseif sheet.chuvas == "Razoável" then
+					sheet.chuvaChance_1 = 80;
+					sheet.chuvaChance_2 = 6;
+					sheet.chuvaChance_3 = 6;
+					sheet.chuvaChance_4 = 5;
+					sheet.chuvaChance_5 = 2;
+					sheet.chuvaChance_6 = 1;
+				elseif sheet.chuvas == "Muita" then
+					sheet.chuvaChance_1 = 60;
+					sheet.chuvaChance_2 = 13;
+					sheet.chuvaChance_3 = 10;
+					sheet.chuvaChance_4 = 9;
+					sheet.chuvaChance_5 = 5;
+					sheet.chuvaChance_6 = 3;
+				elseif sheet.chuvas == "Constante" then
+					sheet.chuvaChance_1 = 0;
+					sheet.chuvaChance_2 = 10;
+					sheet.chuvaChance_3 = 35;
+					sheet.chuvaChance_4 = 35;
+					sheet.chuvaChance_5 = 15;
+					sheet.chuvaChance_6 = 5;
+				end;
+			</event>
+		</dataLink>
+
+		<dataLink field="ventos">
+			<event name="onChange">
+				if sheet==nil then return end;
+
+				if sheet.ventos == "Nenhuma" then
+					sheet.ventosChance_1 = 100;
+					sheet.ventosChance_2 = 0;
+					sheet.ventosChance_3 = 0;
+					sheet.ventosChance_4 = 0;
+					sheet.ventosChance_5 = 0;
+					sheet.ventosChance_6 = 0;
+					sheet.ventosChance_7 = 0;
+					sheet.ventosChance_8 = 0;
+				elseif sheet.ventos == "Pouco" then
+					sheet.ventosChance_1 = 0;
+					sheet.ventosChance_2 = 89;
+					sheet.ventosChance_3 = 10;
+					sheet.ventosChance_4 = 1;
+					sheet.ventosChance_5 = 0;
+					sheet.ventosChance_6 = 0;
+					sheet.ventosChance_7 = 0;
+					sheet.ventosChance_8 = 0;
+				elseif sheet.ventos == "Razoável" then
+					sheet.ventosChance_1 = 0;
+					sheet.ventosChance_2 = 70;
+					sheet.ventosChance_3 = 15;
+					sheet.ventosChance_4 = 10;
+					sheet.ventosChance_5 = 4;
+					sheet.ventosChance_6 = 1;
+					sheet.ventosChance_7 = 0;
+					sheet.ventosChance_8 = 0;
+				elseif sheet.ventos == "Muito" then
+					sheet.ventosChance_1 = 0;
+					sheet.ventosChance_2 = 50;
+					sheet.ventosChance_3 = 20;
+					sheet.ventosChance_4 = 10;
+					sheet.ventosChance_5 = 10;
+					sheet.ventosChance_6 = 5;
+					sheet.ventosChance_7 = 4;
+					sheet.ventosChance_8 = 1;
+				elseif sheet.ventos == "Constante" then
+					sheet.ventosChance_1 = 0;
+					sheet.ventosChance_2 = 25;
+					sheet.ventosChance_3 = 25;
+					sheet.ventosChance_4 = 15;
+					sheet.ventosChance_5 = 15;
+					sheet.ventosChance_6 = 10;
+					sheet.ventosChance_7 = 8;
+					sheet.ventosChance_8 = 2;
+				end;
+			</event>
+		</dataLink>
+
+		<dataLink field="areia">
+			<event name="onChange">
+				if sheet==nil then return end;
+
+				if sheet.areia == "Nenhuma" then
+					sheet.areiaMin = 9;
+				elseif sheet.areia == "Pouca" then
+					sheet.areiaMin = 6;
+				elseif sheet.areia == "Razoável" then
+					sheet.areiaMin = 5;
+				elseif sheet.areia == "Muita" then
+					sheet.areiaMin = 4;
+				elseif sheet.areia == "Constante" then
+					sheet.areiaMin = 3;
+				end;
+			</event>
+		</dataLink>
+	</rectangle>
+</form>

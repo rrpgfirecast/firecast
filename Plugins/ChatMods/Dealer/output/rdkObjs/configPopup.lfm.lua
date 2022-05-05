@@ -30,11 +30,11 @@ local function constructNew_dealerPopup()
     obj:setFormType("undefined");
     obj:setDataType("ambesek.dealer");
     obj:setTitle("Dealer");
-    obj:setWidth(290);
+    obj:setWidth(315);
     obj:setHeight(500);
 
 
-		local function AddCards(deck, num, owner)
+		local function AddCards(deck, num, owner, url)
 			local num = tonumber(num) or 0
 			for i=1,num,1 do
 				local item = self.deckList:append()
@@ -42,6 +42,7 @@ local function constructNew_dealerPopup()
 					item.location = owner
 					item.card = deck[i] or "UnamedCard"
 					item.user = true;
+					if url ~= nil then item.url = url[deck[i]] end;
 				end
 			end
 		end
@@ -137,11 +138,11 @@ local function constructNew_dealerPopup()
             
             		local item = self.deckList:append()
             
-            		AddCards(sheet.deck,sheet.numCards,"Deck");
-            		AddCards(sheet.discard,sheet.numDiscard,"Discard");
+            		AddCards(sheet.deck,sheet.numCards,"Deck", sheet.deckURL);
+            		AddCards(sheet.discard,sheet.numDiscard,"Discard", sheet.deckURL);
             
             		for k,v in pairs(sheet.players) do
-            			AddCards(sheet.players[k], sheet.hands[k], k)
+            			AddCards(sheet.players[k], sheet.hands[k], k, sheet.deckURL)
             		end;
         end, obj);
 

@@ -144,8 +144,9 @@ local function constructNew_frmFichaRPGmeister2a_svg()
 							local acertos = weapons[weaponID].acertos;
 							local decisivo = weapons[weaponID].decisivo;
 							local armamento = weapons[weaponID].nomeAtaque or "arma";
+							local conf = tonumber(weapons[weaponID].confirmacaoAtaq) or 0;
 							if dadoAtaques[ataquesFeitos+1]>=decisivo then
-								local confirmacao = Firecast.interpretarRolagem("1d20+" .. acertos[ataqueID]);
+								local confirmacao = Firecast.interpretarRolagem("1d20+" .. (acertos[ataqueID] + conf));
 								mesaDoPersonagem.activeChat:rolarDados(confirmacao, "Confirmação de Decisivo do ataque #" .. ataqueID .. " com " .. armamento .. " de " .. personagem, 
 									function (rolado)
 										proximaConfirmacao(rolado)
@@ -209,8 +210,9 @@ local function constructNew_frmFichaRPGmeister2a_svg()
 							local acertos = weapons[weaponID].acertos;
 							local decisivo = weapons[weaponID].decisivo;
 							local armamento = weapons[weaponID].nomeAtaque or "arma";
+							local conf = tonumber(weapons[weaponID].confirmacaoAtaq) or 0;
 							if dadoAtaques[ataquesFeitos+1]>=decisivo then
-								local confirmacao = Firecast.interpretarRolagem("1d20+" .. acertos[ataqueID]);
+								local confirmacao = Firecast.interpretarRolagem("1d20+" .. (acertos[ataqueID]+conf));
 								mesaDoPersonagem.activeChat:rolarDados(confirmacao, "Confirmação de Decisivo do ataque #" .. ataqueID .. " com " .. armamento .. " de " .. personagem, 
 									function (rolado)
 										proximaConfirmacao(rolado)
@@ -324,7 +326,7 @@ local function constructNew_frmFichaRPGmeister2a_svg()
     obj.rclListaDeArmas:setParent(obj.boxDetalhesDoAtaque);
     obj.rclListaDeArmas:setName("rclListaDeArmas");
     obj.rclListaDeArmas:setField("campoDeArmas");
-    obj.rclListaDeArmas:setTemplateForm("frmFichaRPGmeister2Aar_svg");
+    obj.rclListaDeArmas:setTemplateForm("frmWeaponConfig");
     obj.rclListaDeArmas:setAlign("client");
     obj.rclListaDeArmas:setLayout("vertical");
     obj.rclListaDeArmas:setMinQt(1);

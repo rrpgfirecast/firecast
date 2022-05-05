@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<frame width="1300" height="1300">
+        <draw>
+                <!-- Imagem de fundo -->               
+
+                <image left="0" top="0" right="1300" bottom="1300" overflowX="tile" overflowY="tile">
+                        <anchors left="true" top="true" bottom="true" right="true"/>
+                        <source url="bgPapiro.png" left="0" right="1299" top="0" bottom="1299"/>
+                </image>                               
+        </draw>
+</frame>
