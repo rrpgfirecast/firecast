@@ -391,7 +391,7 @@ local function initBibPersonagemWrappedObjectFromHandle(handle)
 	local wObj = initBibliotecaItemWrappedObjectFromHandle(handle); 
 	local bibItem = wObj;
 	
-	function bibItem:getDataType() return rrpgWrappers.objectFromID(_obj_getProp(self.handle, "DataType")); end;
+	function bibItem:getDataType() return _obj_getProp(self.handle, "DataType"); end;
 	function bibItem:getEscritaBloqueada() return _obj_getProp(self.handle, "EscritaBloqueada"); end;	
 	
 	function bibItem:loadSheetNDB(callback)

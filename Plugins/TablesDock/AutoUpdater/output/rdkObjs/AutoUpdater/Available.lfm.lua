@@ -49,6 +49,27 @@ local function constructNew_frmAvailable()
     obj.downloadedPluginsList:setName("downloadedPluginsList");
     obj.downloadedPluginsList:setTemplateForm("frmDownloadedPlugin");
 
+    obj.layout1 = GUI.fromHandle(_obj_newObject("layout"));
+    obj.layout1:setParent(obj.scrollBox1);
+    obj.layout1:setAlign("bottom");
+    obj.layout1:setHeight(25);
+    obj.layout1:setName("layout1");
+
+    obj.label1 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label1:setParent(obj.layout1);
+    obj.label1:setAlign("left");
+    obj.label1:setWidth(350);
+    obj.label1:setField("selectedDataType");
+    obj.label1:setName("label1");
+
+    obj.progressBar1 = GUI.fromHandle(_obj_newObject("progressBar"));
+    obj.progressBar1:setParent(obj.layout1);
+    obj.progressBar1:setAlign("client");
+    obj.progressBar1:setField("downloadProgress");
+    obj.progressBar1:setMargins({left=5,right=5,top=5,bottom=5});
+    obj.progressBar1:setMax(1.0);
+    obj.progressBar1:setName("progressBar1");
+
     obj._e_event0 = obj.edit1:addEventListener("onChange",
         function (_)
             --write(self.scope.node);
@@ -115,9 +136,12 @@ local function constructNew_frmAvailable()
           self:setNodeDatabase(nil);
         end;
 
+        if self.layout1 ~= nil then self.layout1:destroy(); self.layout1 = nil; end;
         if self.scrollBox1 ~= nil then self.scrollBox1:destroy(); self.scrollBox1 = nil; end;
         if self.edit1 ~= nil then self.edit1:destroy(); self.edit1 = nil; end;
+        if self.progressBar1 ~= nil then self.progressBar1:destroy(); self.progressBar1 = nil; end;
         if self.downloadedPluginsList ~= nil then self.downloadedPluginsList:destroy(); self.downloadedPluginsList = nil; end;
+        if self.label1 ~= nil then self.label1:destroy(); self.label1 = nil; end;
         self:_oldLFMDestroy();
     end;
 

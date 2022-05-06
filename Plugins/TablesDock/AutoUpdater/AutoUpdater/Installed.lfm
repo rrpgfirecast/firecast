@@ -12,5 +12,9 @@
 				end;
         	</event>
 		</recordList>
+		<layout align="bottom" height="25">
+			<label align="left" width="350" field="selectedDataType"/>
+			<progressBar align="client" field="downloadProgress" margins="{left=5,right=5,top=5,bottom=5}" max="1.0"/>
+		</layout>
 	</scrollBox>
 </form>

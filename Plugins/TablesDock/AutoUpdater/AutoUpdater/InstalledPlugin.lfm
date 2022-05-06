@@ -1,33 +1,83 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <form name="frmInstalledPlugin" height="50" margins="{top=1}">
 	<script>
+        <![CDATA[
+        local function isNewVersion(installed, downloaded)
+            local installedVersion = {};
+            local installedIndex = 0;
+            for i in string.gmatch(installed, "[^%.]+") do
+                installedIndex = installedIndex +1;
+                installedVersion[installedIndex] = i;
+            end
+
+            local downloadedVersion = {};
+            local downloadedIndex = 0;
+            for i in string.gmatch(downloaded, "[^%.]+") do
+                downloadedIndex = downloadedIndex +1;
+                downloadedVersion[downloadedIndex] = i;
+            end
+
+            for i=1, math.min(installedIndex, downloadedIndex), 1 do 
+                if (tonumber(installedVersion[i]) or 0) > (tonumber(downloadedVersion[i]) or 0) then
+                    return false;
+                elseif (tonumber(installedVersion[i]) or 0) < (tonumber(downloadedVersion[i]) or 0) then
+                    return true;
+                end;
+            end;
+
+            if downloadedIndex > installedIndex then
+                return true;
+            else
+                return false;
+            end;
+        end;
+
+        local function tryTranslate(text)
+            local trans = Locale.tryLang(text);
+            if trans == nil then trans = text end;
+            return trans;
+        end
+
         local function downloadID(url)
             local install = true;
+            local node = NDB.getParent(NDB.getParent(sheet));
             Internet.download(url,
                 function(stream, contentType)
+                	node.selectedDataType = tryTranslate("download.status.installing") .. " " .. (sheet.moduleId or "");
+                	node.downloadProgress = 1;
                     if stream ~= nil then
                         install = Firecast.Plugins.installPlugin(stream, true);
                     end;
+
                     if install == false or stream == nil then
+                    	node.selectedDataType = tryTranslate("download.status.browser") .. " " .. (sheet.moduleId or "");
                         GUI.openInBrowser(url);
+                    else
+                    	node.selectedDataType = tryTranslate("download.status.success") .. " " .. (sheet.moduleId or "");
+
+                    	sheet.version = sheet.versionAvailable;
                     end;
                 end,       
                 function (errorMsg)
-                    --showMessage(errorMsg);
+                	node.selectedDataType = tryTranslate("download.status.error") .. " " .. (errorMsg or "");
+                	node.downloadProgress = 0;
                 end,       
                 function (downloaded, total)
                     -- esta função será chamada constantemente.
                     -- dividir "downloaded" por "total" lhe dará uma porcentagem do download.
+                    node.selectedDataType = tryTranslate("download.status.downloading") .. " " .. (sheet.moduleId or "");
+                    node.downloadProgress = downloaded/total;
                 end,
                 "checkForModification");
         end
+        ]]>
 	</script>
 	<rectangle align="client" color="#212121" hitTest="false">
 		<label align="left" field="name" horzTextAlign="center" textTrimming="none" wordWrap="true" name="pluginName" hitTest="true"/>
 		<label align="left" field="moduleId" horzTextAlign="center" textTrimming="none" wordWrap="true" name="moduleId" hitTest="true"/>
 		<label align="left" field="author" horzTextAlign="center" textTrimming="none" wordWrap="true" name="author" hitTest="true"/>
-		<label align="left" field="version" horzTextAlign="center" textTrimming="none" wordWrap="true"/>
-		<label align="left" field="versionAvailable" horzTextAlign="center" textTrimming="none" wordWrap="true"/>
+		<label align="left" field="version" horzTextAlign="center" textTrimming="none" wordWrap="true" name="version"/>
+		<label align="left" field="versionAvailable" horzTextAlign="center" textTrimming="none" wordWrap="true" name="versionAvailable"/>
 		<button align="right" width="25" name="downloadButton" visible="false" margins="{top = 12.5, bottom = 12.5, right = 5}" hint="@@hint.install">
 			<image align="client" showStyle="proportional" src="images/download.png"/>
 			<event name="onClick">
@@ -50,13 +100,48 @@
 				Dialogs.confirmOkCancel("@@uninstall",
 			        function (confirmado)
 			            if confirmado then
-			                Firecast.Plugins.uninstallPlugin(sheet.moduleId);
+			                local deleted = Firecast.Plugins.uninstallPlugin(sheet.moduleId);
+
+			                if deleted then
+            					local node = NDB.getParent(NDB.getParent(sheet));
+            					node.selectedDataType = tryTranslate("download.status.removed") .. " " .. (sheet.moduleId or "");
+
+		                    	local rcl = self:findControlByName("downloadedPluginsList");
+		                    	if rcl== nil then return end;
+
+		                        local item = rcl:append()
+		                        if item == nil then return end
+
+		                        NDB.copy(item, sheet)
+
+		                        rcl:sort()
+
+		                        NDB.deleteNode(sheet);
+			                end
 			            end;
 			        end);
 				
 			</event>
 		</button>
 	</rectangle>
+
+	<dataLink fields="{'version','versionAvailable'}">
+		<event name="onChange">
+			if sheet==nil then return end;
+			if sheet.version == nil then return end;
+			if sheet.versionAvailable == nil then return end;
+
+			if sheet.version == sheet.versionAvailable then return end;
+
+			if isNewVersion(sheet.version, sheet.versionAvailable) then
+				self.pluginName.fontColor = "Yellow";
+				self.moduleId.fontColor = "Yellow";
+				self.author.fontColor = "Yellow";
+				self.version.fontColor = "Yellow";
+				self.versionAvailable.fontColor = "Yellow";
+			end
+		</event>
+	</dataLink>
 
 	<dataLink fields="{'url'}">
 		<event name="onChange">

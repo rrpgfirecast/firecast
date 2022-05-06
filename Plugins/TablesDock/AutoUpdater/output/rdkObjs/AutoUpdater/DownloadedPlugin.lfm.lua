@@ -31,23 +31,50 @@ local function constructNew_frmDownloadedPlugin()
     obj:setMargins({top=1});
 
 
+        local function tryTranslate(text)
+            local trans = Locale.tryLang(text);
+            if trans == nil then trans = text end;
+            return trans;
+        end
+
         local function downloadID(url)
             local install = true;
+            local node = NDB.getParent(NDB.getParent(sheet));
             Internet.download(url,
                 function(stream, contentType)
+                	node.selectedDataType = tryTranslate("download.status.installing") .. " " .. (sheet.moduleId or "");
+                	node.downloadProgress = 1;
                     if stream ~= nil then
                         install = Firecast.Plugins.installPlugin(stream, true);
                     end;
+
                     if install == false or stream == nil then
+                    	node.selectedDataType = tryTranslate("download.status.browser") .. " " .. (sheet.moduleId or "");
                         GUI.openInBrowser(url);
+                    else
+                    	node.selectedDataType = tryTranslate("download.status.success") .. " " .. (sheet.moduleId or "");
+                    	local rcl = self:findControlByName("installedPluginsList");
+                    	if rcl== nil then return end;
+
+                        local item = rcl:append()
+                        if item == nil then return end
+
+                        NDB.copy(item, sheet)
+
+                        rcl:sort()
+
+                        NDB.deleteNode(sheet);
                     end;
                 end,       
                 function (errorMsg)
-                    --showMessage(errorMsg);
+                	node.selectedDataType = tryTranslate("download.status.error") .. " " .. (errorMsg or "");
+                	node.downloadProgress = 0;
                 end,       
                 function (downloaded, total)
                     -- esta função será chamada constantemente.
                     -- dividir "downloaded" por "total" lhe dará uma porcentagem do download.
+                    node.selectedDataType = tryTranslate("download.status.downloading") .. " " .. (sheet.moduleId or "");
+                    node.downloadProgress = downloaded/total;
                 end,
                 "checkForModification");
         end

@@ -31,26 +31,82 @@ local function constructNew_frmInstalledPlugin()
     obj:setMargins({top=1});
 
 
+        
+
+
+
+        local function isNewVersion(installed, downloaded)
+            local installedVersion = {};
+            local installedIndex = 0;
+            for i in string.gmatch(installed, "[^%.]+") do
+                installedIndex = installedIndex +1;
+                installedVersion[installedIndex] = i;
+            end
+
+            local downloadedVersion = {};
+            local downloadedIndex = 0;
+            for i in string.gmatch(downloaded, "[^%.]+") do
+                downloadedIndex = downloadedIndex +1;
+                downloadedVersion[downloadedIndex] = i;
+            end
+
+            for i=1, math.min(installedIndex, downloadedIndex), 1 do 
+                if (tonumber(installedVersion[i]) or 0) > (tonumber(downloadedVersion[i]) or 0) then
+                    return false;
+                elseif (tonumber(installedVersion[i]) or 0) < (tonumber(downloadedVersion[i]) or 0) then
+                    return true;
+                end;
+            end;
+
+            if downloadedIndex > installedIndex then
+                return true;
+            else
+                return false;
+            end;
+        end;
+
+        local function tryTranslate(text)
+            local trans = Locale.tryLang(text);
+            if trans == nil then trans = text end;
+            return trans;
+        end
+
         local function downloadID(url)
             local install = true;
+            local node = NDB.getParent(NDB.getParent(sheet));
             Internet.download(url,
                 function(stream, contentType)
+                	node.selectedDataType = tryTranslate("download.status.installing") .. " " .. (sheet.moduleId or "");
+                	node.downloadProgress = 1;
                     if stream ~= nil then
                         install = Firecast.Plugins.installPlugin(stream, true);
                     end;
+
                     if install == false or stream == nil then
+                    	node.selectedDataType = tryTranslate("download.status.browser") .. " " .. (sheet.moduleId or "");
                         GUI.openInBrowser(url);
+                    else
+                    	node.selectedDataType = tryTranslate("download.status.success") .. " " .. (sheet.moduleId or "");
+
+                    	sheet.version = sheet.versionAvailable;
                     end;
                 end,       
                 function (errorMsg)
-                    --showMessage(errorMsg);
+                	node.selectedDataType = tryTranslate("download.status.error") .. " " .. (errorMsg or "");
+                	node.downloadProgress = 0;
                 end,       
                 function (downloaded, total)
                     -- esta função será chamada constantemente.
                     -- dividir "downloaded" por "total" lhe dará uma porcentagem do download.
+                    node.selectedDataType = tryTranslate("download.status.downloading") .. " " .. (sheet.moduleId or "");
+                    node.downloadProgress = downloaded/total;
                 end,
                 "checkForModification");
         end
+        
+
+
+
 	
 
 
@@ -91,23 +147,23 @@ local function constructNew_frmInstalledPlugin()
     obj.author:setName("author");
     obj.author:setHitTest(true);
 
-    obj.label1 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label1:setParent(obj.rectangle1);
-    obj.label1:setAlign("left");
-    obj.label1:setField("version");
-    obj.label1:setHorzTextAlign("center");
-    obj.label1:setTextTrimming("none");
-    obj.label1:setWordWrap(true);
-    obj.label1:setName("label1");
+    obj.version = GUI.fromHandle(_obj_newObject("label"));
+    obj.version:setParent(obj.rectangle1);
+    obj.version:setAlign("left");
+    obj.version:setField("version");
+    obj.version:setHorzTextAlign("center");
+    obj.version:setTextTrimming("none");
+    obj.version:setWordWrap(true);
+    obj.version:setName("version");
 
-    obj.label2 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label2:setParent(obj.rectangle1);
-    obj.label2:setAlign("left");
-    obj.label2:setField("versionAvailable");
-    obj.label2:setHorzTextAlign("center");
-    obj.label2:setTextTrimming("none");
-    obj.label2:setWordWrap(true);
-    obj.label2:setName("label2");
+    obj.versionAvailable = GUI.fromHandle(_obj_newObject("label"));
+    obj.versionAvailable:setParent(obj.rectangle1);
+    obj.versionAvailable:setAlign("left");
+    obj.versionAvailable:setField("versionAvailable");
+    obj.versionAvailable:setHorzTextAlign("center");
+    obj.versionAvailable:setTextTrimming("none");
+    obj.versionAvailable:setWordWrap(true);
+    obj.versionAvailable:setName("versionAvailable");
 
     obj.downloadButton = GUI.fromHandle(_obj_newObject("button"));
     obj.downloadButton:setParent(obj.rectangle1);
@@ -158,23 +214,28 @@ local function constructNew_frmInstalledPlugin()
 
     obj.dataLink1 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink1:setParent(obj);
-    obj.dataLink1:setFields({'url'});
+    obj.dataLink1:setFields({'version','versionAvailable'});
     obj.dataLink1:setName("dataLink1");
 
     obj.dataLink2 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink2:setParent(obj);
-    obj.dataLink2:setFields({'enabled'});
+    obj.dataLink2:setFields({'url'});
     obj.dataLink2:setName("dataLink2");
 
     obj.dataLink3 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink3:setParent(obj);
-    obj.dataLink3:setFields({'description'});
+    obj.dataLink3:setFields({'enabled'});
     obj.dataLink3:setName("dataLink3");
 
     obj.dataLink4 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink4:setParent(obj);
-    obj.dataLink4:setFields({'contact'});
+    obj.dataLink4:setFields({'description'});
     obj.dataLink4:setName("dataLink4");
+
+    obj.dataLink5 = GUI.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink5:setParent(obj);
+    obj.dataLink5:setFields({'contact'});
+    obj.dataLink5:setName("dataLink5");
 
     obj._e_event0 = obj.downloadButton:addEventListener("onClick",
         function (_)
@@ -195,12 +256,46 @@ local function constructNew_frmInstalledPlugin()
             Dialogs.confirmOkCancel("@@uninstall",
             			        function (confirmado)
             			            if confirmado then
-            			                Firecast.Plugins.uninstallPlugin(sheet.moduleId);
+            			                local deleted = Firecast.Plugins.uninstallPlugin(sheet.moduleId);
+            
+            			                if deleted then
+                        					local node = NDB.getParent(NDB.getParent(sheet));
+                        					node.selectedDataType = tryTranslate("download.status.removed") .. " " .. (sheet.moduleId or "");
+            
+            		                    	local rcl = self:findControlByName("downloadedPluginsList");
+            		                    	if rcl== nil then return end;
+            
+            		                        local item = rcl:append()
+            		                        if item == nil then return end
+            
+            		                        NDB.copy(item, sheet)
+            
+            		                        rcl:sort()
+            
+            		                        NDB.deleteNode(sheet);
+            			                end
             			            end;
             			        end);
         end, obj);
 
     obj._e_event3 = obj.dataLink1:addEventListener("onChange",
+        function (_, field, oldValue, newValue)
+            if sheet==nil then return end;
+            			if sheet.version == nil then return end;
+            			if sheet.versionAvailable == nil then return end;
+            
+            			if sheet.version == sheet.versionAvailable then return end;
+            
+            			if isNewVersion(sheet.version, sheet.versionAvailable) then
+            				self.pluginName.fontColor = "Yellow";
+            				self.moduleId.fontColor = "Yellow";
+            				self.author.fontColor = "Yellow";
+            				self.version.fontColor = "Yellow";
+            				self.versionAvailable.fontColor = "Yellow";
+            			end
+        end, obj);
+
+    obj._e_event4 = obj.dataLink2:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet==nil then return end;
             
@@ -213,7 +308,7 @@ local function constructNew_frmInstalledPlugin()
             			end;
         end, obj);
 
-    obj._e_event4 = obj.dataLink2:addEventListener("onChange",
+    obj._e_event5 = obj.dataLink3:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet==nil then return end;
             
@@ -224,7 +319,7 @@ local function constructNew_frmInstalledPlugin()
             			end;
         end, obj);
 
-    obj._e_event5 = obj.dataLink3:addEventListener("onChange",
+    obj._e_event6 = obj.dataLink4:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet==nil then return end;
             
@@ -232,7 +327,7 @@ local function constructNew_frmInstalledPlugin()
             			self.moduleId.hint = sheet.description;
         end, obj);
 
-    obj._e_event6 = obj.dataLink4:addEventListener("onChange",
+    obj._e_event7 = obj.dataLink5:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet==nil then return end;
             
@@ -240,6 +335,7 @@ local function constructNew_frmInstalledPlugin()
         end, obj);
 
     function obj:_releaseEvents()
+        __o_rrpgObjs.removeEventListenerById(self._e_event7);
         __o_rrpgObjs.removeEventListenerById(self._e_event6);
         __o_rrpgObjs.removeEventListenerById(self._e_event5);
         __o_rrpgObjs.removeEventListenerById(self._e_event4);
@@ -258,22 +354,23 @@ local function constructNew_frmInstalledPlugin()
           self:setNodeDatabase(nil);
         end;
 
-        if self.dataLink1 ~= nil then self.dataLink1:destroy(); self.dataLink1 = nil; end;
         if self.dataLink3 ~= nil then self.dataLink3:destroy(); self.dataLink3 = nil; end;
-        if self.label1 ~= nil then self.label1:destroy(); self.label1 = nil; end;
+        if self.version ~= nil then self.version:destroy(); self.version = nil; end;
         if self.author ~= nil then self.author:destroy(); self.author = nil; end;
         if self.image1 ~= nil then self.image1:destroy(); self.image1 = nil; end;
         if self.image2 ~= nil then self.image2:destroy(); self.image2 = nil; end;
         if self.moduleId ~= nil then self.moduleId:destroy(); self.moduleId = nil; end;
         if self.pluginName ~= nil then self.pluginName:destroy(); self.pluginName = nil; end;
         if self.image3 ~= nil then self.image3:destroy(); self.image3 = nil; end;
+        if self.versionAvailable ~= nil then self.versionAvailable:destroy(); self.versionAvailable = nil; end;
         if self.dataLink2 ~= nil then self.dataLink2:destroy(); self.dataLink2 = nil; end;
         if self.dataLink4 ~= nil then self.dataLink4:destroy(); self.dataLink4 = nil; end;
+        if self.dataLink5 ~= nil then self.dataLink5:destroy(); self.dataLink5 = nil; end;
         if self.openButton ~= nil then self.openButton:destroy(); self.openButton = nil; end;
         if self.rectangle1 ~= nil then self.rectangle1:destroy(); self.rectangle1 = nil; end;
         if self.downloadButton ~= nil then self.downloadButton:destroy(); self.downloadButton = nil; end;
         if self.removeButton ~= nil then self.removeButton:destroy(); self.removeButton = nil; end;
-        if self.label2 ~= nil then self.label2:destroy(); self.label2 = nil; end;
+        if self.dataLink1 ~= nil then self.dataLink1:destroy(); self.dataLink1 = nil; end;
         self:_oldLFMDestroy();
     end;
 

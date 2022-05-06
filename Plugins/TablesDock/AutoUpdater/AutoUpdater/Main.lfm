@@ -86,6 +86,7 @@
                 item.moduleId = plugin.id;
                 item.author = plugin.author;
                 item.version = plugin.version;
+                item.versionAvailable = plugin.version;
                 item.url = plugin.url;
                 item.enabled = true;
                 item.description = plugin.description;
