@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmPATHFINDER2_svg" align="client" theme="light" margins="{top=1}">
+    <style>#frmPATHFINDER2_svg path {color: black; strokeColor: black; mode: stretch;} &#xD;
+#frmPATHFINDER2_svg label {fontColor: black; textTrimming: none; wordWrap: false; autoSize: true;}</style>
+    <scrollBox align="client">
+        <rectangle width="905" height="1175" color="white">&#xD;
+            <image left="0" top="0" width="905" height="1175" src="images/2.png" style="stretch" optimize="true" compilerOrder="0"/>&#xD;
+			------------------- Habilidades e Talentos de Acestralidade -------------------
+			<edit left="35" top="54" width="300" height="20" horzTextAlign="center" fontColor="black" fontSize="14" transparent="true" field="Especial1"/>
+			<edit left="35" top="83" width="300" height="20" horzTextAlign="center" fontColor="black" fontSize="14" transparent="true" field="Heranca1"/>
+			<edit left="35" top="112" width="300" height="20" horzTextAlign="center" fontColor="black" fontSize="14" transparent="true" field="Talento1"/>
+			<edit left="35" top="141" width="300" height="20" horzTextAlign="center" fontColor="black" fontSize="14" transparent="true" field="Talento5"/>
+			<edit left="35" top="170" width="300" height="20" horzTextAlign="center" fontColor="black" fontSize="14" transparent="true" field="Talento9"/>
+			<edit left="35" top="199" width="300" height="20" horzTextAlign="center" fontColor="black" fontSize="14" transparent="true" field="Talento13"/>
+			<edit left="35" top="228" width="300" height="20" horzTextAlign="center" fontColor="black" fontSize="14" transparent="true" field="Talento17"/>
+			------------------ Talento de Pericias --------------------
+			<edit left="35" top="287" width="300" height="20" horzTextAlign="center" fontColor="black" fontSize="14" transparent="true" field="Biografia"/>
+			<edit left="35" top="317" width="300" height="20" horzTextAlign="center" fontColor="black" fontSize="14" transparent="true" field="Biografia2"/>
+			<edit left="35" top="346" width="300" height="20" horzTextAlign="center" fontColor="black" fontSize="14" transparent="true" field="Biografia4"/>
+			<edit left="35" top="375" width="300" height="20" horzTextAlign="center" fontColor="black" fontSize="14" transparent="true" field="Biografia6"/>
+			<edit left="35" top="405" width="300" height="20" horzTextAlign="center" fontColor="black" fontSize="14" transparent="true" field="Biografia8"/>
+			<edit left="35" top="434" width="300" height="20" horzTextAlign="center" fontColor="black" fontSize="14" transparent="true" field="Biografia10"/>
+			<edit left="35" top="463" width="300" height="20" horzTextAlign="center" fontColor="black" fontSize="14" transparent="true" field="Biografia12"/>
+			<edit left="35" top="492" width="300" height="20" horzTextAlign="center" fontColor="black" fontSize="14" transparent="true" field="Biografia14"/>
+			<edit left="35" top="523" width="300" height="20" horzTextAlign="center" fontColor="black" fontSize="14" transparent="true" field="Biografia16"/>
+			<edit left="35" top="552" width="300" height="20" horzTextAlign="center" fontColor="black" fontSize="14" transparent="true" field="Biografia18"/>
+			<edit left="35" top="580" width="300" height="20" horzTextAlign="center" fontColor="black" fontSize="14" transparent="true" field="Biografia20"/>
+			-------------------- Talentos Gerais -------------------
+			<edit left="35" top="637" width="300" height="20" horzTextAlign="center" fontColor="black" fontSize="14" transparent="true" field="TalentosGerais3"/>			
+			<edit left="35" top="666" width="300" height="20" horzTextAlign="center" fontColor="black" fontSize="14" transparent="true" field="TalentosGerais7"/>
+			<edit left="35" top="695" width="300" height="20" horzTextAlign="center" fontColor="black" fontSize="14" transparent="true" field="TalentosGerais11"/>
+			<edit left="35" top="725" width="300" height="20" horzTextAlign="center" fontColor="black" fontSize="14" transparent="true" field="TalentosGerais15"/>
+			<edit left="35" top="755" width="300" height="20" horzTextAlign="center" fontColor="black" fontSize="14" transparent="true" field="TalentosGerais19"/>
+			-------------------- Habilidades e Talenos de  Classe -------------------
+			<edit left="462" top="54" width="280" height="20" horzTextAlign="center" fontColor="black" fontSize="14" transparent="true" field="HabilidadeTalentoCaracteristica1"/>
+			<edit left="462" top="83" width="280" height="20" horzTextAlign="center" fontColor="black" fontSize="14" transparent="true" field="HabilidadeTalentoCaracteristica2"/>
+			<edit left="462" top="112" width="280" height="20" horzTextAlign="center" fontColor="black" fontSize="14" transparent="true" field="HabilidadeTalento1"/>
+			<edit left="462" top="141" width="280" height="20" horzTextAlign="center" fontColor="black" fontSize="14" transparent="true" field="HabilidadeTalento2"/>
+			<edit left="462" top="170" width="280" height="20" horzTextAlign="center" fontColor="black" fontSize="14" transparent="true" field="HabilidadeTalentoCaracteristica3"/>
+			<edit left="462" top="199" width="280" height="20" horzTextAlign="center" fontColor="black" fontSize="14" transparent="true" field="HabilidadeTalento4"/>
+			<edit left="462" top="228" width="280" height="20" horzTextAlign="center" fontColor="black" fontSize="14" transparent="true" field="HabilidadeTalentoCaracteristica5"/>
+			<edit left="462" top="258" width="280" height="20" horzTextAlign="center" fontColor="black" fontSize="14" transparent="true" field="HabilidadeTalento6"/>
+			<edit left="462" top="287" width="280" height="20" horzTextAlign="center" fontColor="black" fontSize="14" transparent="true" field="HabilidadeTalentoCaracteristica7"/>
+			<edit left="462" top="316" width="280" height="20" horzTextAlign="center" fontColor="black" fontSize="14" transparent="true" field="HabilidadeTalento8"/>
+			<edit left="462" top="345" width="280" height="20" horzTextAlign="center" fontColor="black" fontSize="14" transparent="true" field="HabilidadeTalentoCaracteristica9"/>
+			<edit left="462" top="374" width="280" height="20" horzTextAlign="center" fontColor="black" fontSize="14" transparent="true" field="HabilidadeTalento10"/>
+			<edit left="462" top="404" width="280" height="20" horzTextAlign="center" fontColor="black" fontSize="14" transparent="true" field="HabilidadeTalentoCaracteristica11"/>
+			<edit left="462" top="433" width="280" height="20" horzTextAlign="center" fontColor="black" fontSize="14" transparent="true" field="HabilidadeTalento12"/>
+			<edit left="462" top="462" width="280" height="20" horzTextAlign="center" fontColor="black" fontSize="14" transparent="true" field="HabilidadeTalentoCaracteristica13"/>
+			<edit left="462" top="492" width="280" height="20" horzTextAlign="center" fontColor="black" fontSize="14" transparent="true" field="HabilidadeTalento14"/>
+			<edit left="462" top="522" width="280" height="20" horzTextAlign="center" fontColor="black" fontSize="14" transparent="true" field="HabilidadeTalentoCaracteristica15"/>
+			<edit left="462" top="551" width="280" height="20" horzTextAlign="center" fontColor="black" fontSize="14" transparent="true" field="HabilidadeTalento16"/>
+			<edit left="462" top="580" width="280" height="20" horzTextAlign="center" fontColor="black" fontSize="14" transparent="true" field="HabilidadeTalentoCaracteristica17"/>
+			<edit left="462" top="610" width="280" height="20" horzTextAlign="center" fontColor="black" fontSize="14" transparent="true" field="HabilidadeTalento18"/>
+			<edit left="462" top="639" width="280" height="20" horzTextAlign="center" fontColor="black" fontSize="14" transparent="true" field="HabilidadeTalentoCaracteristica19"/>
+			<edit left="462" top="668" width="280" height="20" horzTextAlign="center" fontColor="black" fontSize="14" transparent="true" field="HabilidadeTalento20"/>
+			------------------------ Talentos Bonus ---------------------
+			<edit left="462" top="725" width="405" height="20" horzTextAlign="center" fontColor="black" fontSize="14" transparent="true" field="TalentoBonus1"/>
+			<edit left="462" top="754" width="405" height="20" horzTextAlign="center" fontColor="black" fontSize="14" transparent="true" field="TalentoBonus2"/>
+			------------------- INVENTARIO ---------------------------
+			----- itens vestidos ------
+			<edit left="35" top="845" width="324" height="20" transparent="true" field="ItensVendidos1"/>
+			<edit left="361" top="845" width="37" height="20" transparent="true" field="ItensVendidosMax1"/>
+			<edit left="400" top="845" width="33" height="20" transparent="true" field="ItensVendidosVolume1"/>
+			
+			<edit left="35" top="867" width="324" height="20" transparent="true" field="ItensVendidos2"/>
+			<edit left="361" top="867" width="37" height="20" transparent="true" field="ItensVendidosMax2"/>
+			<edit left="400" top="867" width="33" height="20" transparent="true" field="ItensVendidosVolume2"/>
+			
+			<edit left="35" top="889" width="324" height="20" transparent="true" field="ItensVendidos3"/>
+			<edit left="361" top="889" width="37" height="20" transparent="true" field="ItensVendidosMax3"/>
+			<edit left="400" top="889" width="33" height="20" transparent="true" field="ItensVendidosVolume3"/>
+			
+			<edit left="35" top="911" width="324" height="20" transparent="true" field="ItensVendidos4"/>
+			<edit left="361" top="911" width="37" height="20" transparent="true" field="ItensVendidosMax4"/>
+			<edit left="400" top="911" width="33" height="20" transparent="true" field="ItensVendidosVolume4"/>
+			
+			<edit left="35" top="933" width="324" height="20" transparent="true" field="ItensVendidos5"/>
+			<edit left="361" top="933" width="37" height="20" transparent="true" field="ItensVendidosMax5"/>
+			<edit left="400" top="933" width="33" height="20" transparent="true" field="ItensVendidosVolume5"/>
+			
+			<edit left="35" top="955" width="324" height="20" transparent="true" field="ItensVendidos6"/>
+			<edit left="361" top="955" width="37" height="20" transparent="true" field="ItensVendidosMax6"/>
+			<edit left="400" top="955" width="33" height="20" transparent="true" field="ItensVendidosVolume6"/>
+			
+			<edit left="35" top="977" width="324" height="20" transparent="true" field="ItensVendidos7"/>
+			<edit left="361" top="977" width="37" height="20" transparent="true" field="ItensVendidosMax7"/>
+			<edit left="400" top="977" width="33" height="20" transparent="true" field="ItensVendidosVolume7"/>
+			
+			<edit left="35" top="999" width="324" height="20" transparent="true" field="ItensVendidos8"/>
+			<edit left="361" top="999" width="37" height="20" transparent="true" field="ItensVendidosMax8"/>
+			<edit left="400" top="999" width="33" height="20" transparent="true" field="ItensVendidosVolume8"/>
+			
+			<edit left="35" top="1021" width="324" height="20" transparent="true" field="ItensVendidos9"/>
+			<edit left="361" top="1021" width="37" height="20" transparent="true" field="ItensVendidosMax9"/>
+			<edit left="400" top="1021" width="33" height="20" transparent="true" field="ItensVendidosVolume9"/>
+			
+			<edit left="35" top="1043" width="324" height="20" transparent="true" field="ItensVendidos10"/>
+			<edit left="361" top="1043" width="37" height="20" transparent="true" field="ItensVendidosMax10"/>
+			<edit left="400" top="1043" width="33" height="20" transparent="true" field="ItensVendidosVolume10"/>
+			
+			<edit left="35" top="1065" width="324" height="20" transparent="true" field="ItensVendidos11"/>
+			<edit left="361" top="1065" width="37" height="20" transparent="true" field="ItensVendidosMax11"/>
+			<edit left="400" top="1065" width="33" height="20" transparent="true" field="ItensVendidosVolume11"/>
+			
+			<edit left="35" top="1087" width="324" height="20" transparent="true" field="ItensVendidos12"/>
+			<edit left="361" top="1087" width="37" height="20" transparent="true" field="ItensVendidosMax12"/>
+			<edit left="400" top="1087" width="33" height="20" transparent="true" field="ItensVendidosVolume12"/>
+			
+			<edit left="35" top="1109" width="324" height="20" transparent="true" field="ItensVendidos13"/>
+			<edit left="361" top="1109" width="37" height="20" transparent="true" field="ItensVendidosMax13"/>
+			<edit left="400" top="1109" width="33" height="20" transparent="true" field="ItensVendidosVolume13"/>
+			-------------- itens preparados----------------
+			<edit left="461" top="845" width="167" height="20" transparent="true" field="ItensPreparados1"/>
+			<edit left="631" top="845" width="31" height="20" transparent="true" field="ItensPreparadosVolume1"/>
+			
+			<edit left="461" top="867" width="167" height="20" transparent="true" field="ItensPreparados2"/>
+			<edit left="631" top="867" width="31" height="20" transparent="true" field="ItensPreparadosVolume2"/>
+			
+			<edit left="461" top="889" width="167" height="20" transparent="true" field="ItensPreparados3"/>
+			<edit left="631" top="889" width="31" height="20" transparent="true" field="ItensPreparadosVolume3"/>
+			
+			<edit left="461" top="911" width="167" height="20" transparent="true" field="ItensPreparados4"/>
+			<edit left="631" top="911" width="31" height="20" transparent="true" field="ItensPreparadosVolume4"/>
+			
+			<edit left="461" top="933" width="167" height="20" transparent="true" field="ItensPreparados5"/>
+			<edit left="631" top="933" width="31" height="20" transparent="true" field="ItensPreparadosVolume5"/>
+			
+			<edit left="461" top="955" width="167" height="20" transparent="true" field="ItensPreparados6"/>
+			<edit left="631" top="955" width="31" height="20" transparent="true" field="ItensPreparadosVolume6"/>
+			
+			<edit left="461" top="977" width="167" height="20" transparent="true" field="ItensPreparados7"/>
+			<edit left="631" top="977" width="31" height="20" transparent="true" field="ItensPreparadosVolume7"/>
+			
+			<edit left="461" top="999" width="167" height="20" transparent="true" field="ItensPreparados8"/>
+			<edit left="631" top="999" width="31" height="20" transparent="true" field="ItensPreparadosVolume8"/>
+			
+			<edit left="461" top="1021" width="167" height="20" transparent="true" field="ItensPreparados9	"/>
+			<edit left="631" top="1021" width="31" height="20" transparent="true" field="ItensPreparadosVolume9"/>
+			------------ outros itens -----------------
+			<edit left="669" top="845" width="167" height="20" transparent="true" field="OutrosItens1"/>
+			<edit left="839	" top="845" width="31" height="20" transparent="true" field="OutrosItensVolumes1"/>
+			
+			<edit left="669" top="867" width="167" height="20" transparent="true" field="OutrosItens2"/>
+			<edit left="839" top="867" width="31" height="20" transparent="true" field="OutrosItensVolumes2"/>
+			
+			<edit left="669" top="889" width="167" height="20" transparent="true" field="OutrosItens3"/>
+			<edit left="839" top="889" width="31" height="20" transparent="true" field="OutrosItensVolumes3"/>
+			
+			<edit left="669" top="911" width="167" height="20" transparent="true" field="OutrosItens4"/>
+			<edit left="839" top="911" width="31" height="20" transparent="true" field="OutrosItensVolumes4"/>
+			
+			<edit left="669" top="933" width="167" height="20" transparent="true" field="OutrosItens5"/>
+			<edit left="839" top="933" width="31" height="20" transparent="true" field="OutrosItensVolumes5"/>
+			
+			<edit left="669" top="955" width="167" height="20" transparent="true" field="OutrosItens6"/>
+			<edit left="839" top="955" width="31" height="20" transparent="true" field="OutrosItensVolumes6"/>
+			
+			<edit left="669" top="977" width="167" height="20" transparent="true" field="OutrosItens7"/>
+			<edit left="839" top="977" width="31" height="20" transparent="true" field="OutrosItensVolumes7"/>
+			
+			<edit left="669" top="999" width="167" height="20" transparent="true" field="OutrosItens8"/>
+			<edit left="839" top="999" width="31" height="20" transparent="true" field="OutrosItensVolumes8"/>
+			
+			<edit left="669" top="1021" width="167" height="20" transparent="true" field="OutrosItens9"/>
+			<edit left="839" top="1021" width="31" height="20" transparent="true" field="OutrosItensVolumes9"/>
+			
+			----------------------------- Iventario bag e Moedas -----------------------------\
+			
+			<edit left="473" top="1100" width="40" height="30" fontSize="18" horzTextAlign="center" transparent="true" field="OutrosItensVolumes9"/>
+			<edit left="545" top="1072" width="31" height="20" fontSize="14" horzTextAlign="center" transparent="true" field="OutrosItensVolumes9"/>
+			<edit left="545" top="1116" width="31" height="20" fontSize="14" horzTextAlign="center" transparent="true" field="OutrosItensVolumes9"/>
+			<edit left="621" top="1076" width="31" height="20" fontSize="14" horzTextAlign="center" transparent="true" field="OutrosItensVolumes9"/>
+			<edit left="621" top="1120" width="31" height="20" fontSize="14" horzTextAlign="center" transparent="true" field="OutrosItensVolumes9"/>
+			
+			<edit left="667" top="1075" width="45" height="33" horzTextAlign="center" fontSize="22" transparent="true" field="OutrosItensVolumes9"/>
+			<edit left="720" top="1075" width="45" height="33" horzTextAlign="center" fontSize="22" transparent="true" field="OutrosItensVolumes9"/>
+			<edit left="773" top="1075" width="45" height="33" horzTextAlign="center" fontSize="22" transparent="true" field="OutrosItensVolumes9"/>
+			<edit left="826" top="1075" width="45" height="33" horzTextAlign="center" fontSize="22" transparent="true" field="OutrosItensVolumes9"/>
+        </rectangle>
+    </scrollBox>
+</form>

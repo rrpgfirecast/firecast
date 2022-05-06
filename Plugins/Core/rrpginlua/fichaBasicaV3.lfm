@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<form name="frmFichaBasicaV3Rich" title="Ficha Básica do RRPG v3" description="Ficha Básica do RRPG v3" dataType="rrpg.com.br.FichaBasicaV3.DT" formType="sheetTemplate"
+<form name="frmFichaBasicaV3Rich" title="@@basicSheet.dark.title" description="@@basicSheet.dark.description" dataType="rrpg.com.br.FichaBasicaV3.DT" formType="sheetTemplate"
 	  theme="dark">
-	<richEdit align="client" backgroundColor="#363B45" defaultFontColor="white" field="txt" hideSelection="false" defaultFontSize="15" animateImages="true"/>
+	<richEdit align="client" backgroundColor="#36393E" defaultFontColor="white" field="txt" hideSelection="false" defaultFontSize="15" animateImages="true"/>
 </form>

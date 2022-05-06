@@ -19,24 +19,24 @@
 			if f == 1 then
 				-- Amigo				
 				self.rctFriendOrFoe.color = "lime";
-				self.rctFriendOrFoe.hint = "Amigável";
+				self.rctFriendOrFoe.hint = "@@combatTracker.actor.fof.friend";
 				self.rctOuter.color = "#00FF0016";
 				self.rctOuter.strokeColor = "#00FF00A0";				
 			elseif f == 2 then
 				-- Neutro
 				self.rctFriendOrFoe.color = "yellow";
-				self.rctFriendOrFoe.hint = "Neutro";
+				self.rctFriendOrFoe.hint = "@@combatTracker.actor.fof.neuter";
 				self.rctOuter.color = "#FFFF0016";
 				self.rctOuter.strokeColor = "#FFFF00A0";				
 			elseif f == 3 then
 				-- Inimigo
 				self.rctFriendOrFoe.color = "red";
-				self.rctFriendOrFoe.hint = "Hostil";
+				self.rctFriendOrFoe.hint = "@@combatTracker.actor.fof.foe";
 				self.rctOuter.color = "#FF000016";
 				self.rctOuter.strokeColor = "#FF0000B0";								
 			else
 				self.rctFriendOrFoe.color = "#00000000"; -- Transparente
-				self.rctFriendOrFoe.hint = "Amigável ou Hostil?";
+				self.rctFriendOrFoe.hint = "@@combatTracker.actor.fof.undefined";
 				self.rctOuter.color = "#00000000";
 				self.rctOuter.strokeColor = "#FFFFFFA0";								
 				-- Desconhecido
@@ -93,7 +93,7 @@
 		function self:apagarAtor()
 			local n = sheet;
 			
-			Dialogs.confirmYesNo("Deseja realmente apagar este ator?",
+			Dialogs.confirmYesNo("@@combatTracker.actor.delete.confirmMessage",
 				function(confirmado)
 					if confirmado then
 						if n.vez then
@@ -149,10 +149,10 @@
 			
 			if currViewState == ATOR_VIEW_STATE_INVISIVEL then
 				urlImg = "/turnos/images/invisivel.png";
-				hintAUsar = "Ator visível APENAS para mestres";
+				hintAUsar = "@@combatTracker.actor.visibility.private.hint";
 			elseif currViewState == ATOR_VIEW_STATE_PARC_VISIVEL then
 				urlImg = "/turnos/images/visivelParcial.png"
-				hintAUsar = "Ator visível a todos, porém anotações e efeitos escondidos";
+				hintAUsar = "@@combatTracker.actor.visibility.protected.hint";
 				
 				local mesa = Firecast.getMesaDe(sheet);
 				local meuJogador;
@@ -172,7 +172,7 @@
 				end;
 			else
 				urlImg = "/turnos/images/visivel.png";
-				hintAUsar = "Ator visível a todos";	
+				hintAUsar = "@@combatTracker.actor.visibility.public.hint";	
 			end;
 			
 			self.imgInvisivel.src = urlImg;
@@ -258,16 +258,16 @@
 		</layout>
 		
 		<layout name="laySegundaLinha" align="top" height="20" margins="{top=1, left=28, right=10}">						
-			<edit align="client" field="dadosSensiveis.notas" class="combatTrackerEdit" transparent="true" hint="Anotações" name="edtAnotacoes">			
+			<edit align="client" field="dadosSensiveis.notas" class="combatTrackerEdit" transparent="true" hint="@@combatTracker.actor.notes.hint" name="edtAnotacoes">			
 				<horzLine align="bottom" strokeColor="black" strokeSize="1"/>
 			</edit>
 			
 			<image align="right" name="imgInvisivel" width="14" 
-		    		hint="Ator visivel a todos" hitTest="true" cursor="handPoint"
+		    		hint="@@combatTracker.actor.visibility.public.hint" hitTest="true" cursor="handPoint"
 					src="images/visivel.png"
 					onMouseUp="if event.button =='left' then self:alternarVisibilidade(); end;"/>
 							
-			<image align="right" hitTest="true" src="images/addEffect.png" cursor="handPoint" hint="Adicionar um efeito a este ator" width="14" margins="{left=4}"
+			<image align="right" hitTest="true" src="images/addEffect.png" cursor="handPoint" hint="@@combatTracker.actor.effects.add.hint" width="14" margins="{left=4}"
 					name="imgAddEfeito" onMouseUp="if event.button =='left' then self:adicionarEfeito() end;"/>
 		</layout>	
 		
@@ -386,10 +386,20 @@
 					end;
 				end;
 			
-			self._observer.onFinalPermissionsCouldBeChanged();			
-			
-			local umDragger = getTracker():createDraggerForAtor(sheet);
-			setDraggerRecursivo(self, umDragger);
+			self._observer.onFinalPermissionsCouldBeChanged();	
+
+			setTimeout(
+				function()	
+					local aTracker = getTracker();
+
+					if (aTracker ~= nil) and (sheet ~= nil) then
+						local umDragger = aTracker:createDraggerForAtor(sheet);
+						setDraggerRecursivo(self, umDragger);
+					else
+						setDraggerRecursivo(self, nil);					
+					end;
+								
+				end, 100);			
 		else
 			setDraggerRecursivo(self, nil);
 		end;				

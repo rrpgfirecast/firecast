@@ -21,10 +21,10 @@ function KG.newPanel()
 	labInfo.parent = layCentro;
 	labInfo.margins = {top = 4};
 	
-	btnGoGold.text = "Conferir como o Gold é barato";	
+	btnGoGold.text = "@@knowGold.goGold";	
 	btnGoGold.margins = {top=10};
 	btnGoGold.parent = pan;
-	btnGoGold.width = 200;
+	btnGoGold.width = 250;
 	btnGoGold.height = 30;
 	
 	layCentro.parent = pan;
@@ -74,7 +74,7 @@ function KG.newPanel()
 		GUI.openInBrowser(url);
 	end;
 	
-	pan:setInfo("Recurso exclusivo para assinantes Gold");
+	pan:setInfo("@@knowGold.exclusiveForGoldFeature");
 	return pan;
 end;
 

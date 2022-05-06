@@ -98,9 +98,10 @@
 						
 			if (type(node.nome) == "string" and node.nome ~= "") and
                (not oldEstavaNaVez)	then
-				local headerTralha = "[§K15] >>";
+				local headerTralha = "[§K15] >> ";
 				local footerTralha = "";
-				local notificacaoDeTurno = "[§K1]" .. headerTralha .. "[§K1] Turno de " .. self:getNomeColoridoDe(node) .. "[§K1] " .. footerTralha;
+				local localizedStr = lang("combatTracker.turnPassFmt"):format(self:getNomeColoridoDe(node));
+				local notificacaoDeTurno = "[§K1]" .. headerTralha .. localizedStr .. "[§K1] " .. footerTralha;
 			
 				if (NDB.getPermission(node, "group", "espectadores", "read") ~= "deny") then			   
 					self:narrar(notificacaoDeTurno);
@@ -168,7 +169,9 @@
 								local enviarNarracao = (NDB.getPermission(ator, "group", "espectadores", "read") ~= "deny") and
 								                       (fof ~= 3) and (ator.visibilityState ~= ATOR_VIEW_STATE_PARC_VISIVEL); -- não é inimigo;
 													   
-								local notificacao = "[§K15] >> [§K1]O efeito [§K7]" .. nomeEfeito .. "[§K1] de " .. self:getNomeColoridoDe(ator) .. "[§K1] chegou ao fim";
+													   
+								local gSubParams = {effectName=nomeEfeito, actorName=self:getNomeColoridoDe(ator)};
+								local notificacao = lang("combatTracker.effectEndGSubPattern"):gsub("%$(%w+)%$", gSubParams);									
 								
 								if enviarNarracao then
 									self:narrar(notificacao);
@@ -291,7 +294,7 @@
 		function self:limpar()		
 			local n = sheet;
 			
-			Dialogs.confirmYesNo("Deseja realmente limpar o Tracker de Combate?",
+			Dialogs.confirmYesNo("@@combatTracker.clear.confirmMessage",
 				function(confirmado)
 					if confirmado then
 						n.atores = {};
@@ -337,7 +340,7 @@
 				self.listenerListChatCommands = Firecast.Messaging.listen("ListChatCommands", 
 					function(msg)
 						if self:souMestre() then
-							msg.response = {{comando="/>>", descricao="Iniciar o próximo turno (Tracker de Combate)"}};
+							msg.response = {{comando="/>>", descricao=lang("combatTracker.commandLine.passTurn.description")}};
 						end;						
 					end, {mesa = mesaAcoplada});					
 				

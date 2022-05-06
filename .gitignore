@@ -1,1 +1,5 @@
 *.cln
+Plugins/Core/rrpginlua/output/rdkObjs/
+Plugins/Core/sceneinlua/__history/
+Plugins/Core/sceneinlua/output/rdkObjs/
+Plugins/Sheets/DnD5e/output/rdkObjs/

@@ -34,7 +34,7 @@
 			end;
 			
 			local function askForDelete()
-				Dialogs.confirmYesNo("Deseja realmente apagar este item?",
+				Dialogs.confirmYesNo("@@DnD5e.generic.deleteConfirmation",
 									 function (confirmado)
 										if confirmado then
 											NDB.deleteNode(self.sheet);
@@ -52,8 +52,8 @@
 						-- rollar						
 						local rolagem = Firecast.interpretarRolagem(sheet.ataque);
 						local rolagemDano = Firecast.interpretarRolagem(sheet.dano);
-						local ataqueStr = "Ataque";
-						local danoStr = "Dano";
+						local ataqueStr = lang("DnD5e.generic.attack");
+						local danoStr = lang("DnD5e.generic.damage");
 						
 						if not rolagem.possuiAlgumDado then
 							rolagem = Firecast.interpretarRolagem("1d20"):concatenar(rolagem);
@@ -70,7 +70,7 @@
 							mesa.chat:rolarDados(rolagemDano, danoStr);
 						end;
 					else
-						showMessage("Você não pode rolar dados por este personagem");
+						showMessage("@@DnD5e.generic.cantRoll");
 					end;
 				end;
 			end;
@@ -79,8 +79,8 @@
 		</script>
 		
 		<layout align="left" width="64" margins="{top=10, left=3, bottom=10}" name="layMenu">
-			<button align="top" text="Apagar" name="btnApagar" onClick="askForDelete();"/>							
-			<button name="btnRolarAtaque" align="top" text="Rolar" onClick="rolarAtaque();"/>						
+			<button align="top" text="@@DnD5e.tab.equipament.btn.delete" name="btnApagar" onClick="askForDelete();"/>							
+			<button name="btnRolarAtaque" align="top" text="@@DnD5e.tab.equipament.btn.roll" onClick="rolarAtaque();"/>						
 		</layout>
 		
 		
@@ -90,16 +90,16 @@
 						lineSpacing="2" horzAlign="justify" onResize="atualizarDesiredHeight();">	
 						
 						
-					<upperGridCampoSolido height="40" field="nome" minWidth="190" maxWidth="400" titulo="NOME"/>
-					<upperGridCampoSolido height="40" field="peso" minWidth="50" maxWidth="200" titulo="PESO"/>				
-					<upperGridCampoSolido height="40" field="ataque" minWidth="80" titulo="ATAQUE"/>
-					<upperGridCampoSolido height="40" field="dano" minWidth="80" titulo="DANO"/>									
-					<upperGridCampoSolido height="40" field="tipo" minWidth="100" titulo="TIPO"/>
+					<upperGridCampoSolido height="40" field="nome" minWidth="190" maxWidth="400" titulo="@@DnD5e.tab.equipament.atack.lab.name"/>
+					<upperGridCampoSolido height="40" field="peso" minWidth="50" maxWidth="200" titulo="@@DnD5e.tab.equipament.atack.lab.weight"/>				
+					<upperGridCampoSolido height="40" field="ataque" minWidth="190" titulo="@@DnD5e.tab.equipament.atack.lab.attack"/>
+					<upperGridCampoSolido height="40" field="dano" minWidth="80" titulo="@@DnD5e.tab.equipament.atack.lab.damage"/>									
+					<upperGridCampoSolido height="40" field="tipo" minWidth="100" titulo="@@DnD5e.tab.equipament.atack.lab.type"/>
 
-					<upperGridCampoSolido height="40" field="propriedades" minWidth="150" maxWidth="360" titulo="PROPRIEDADES"/>
-					<upperGridCampoSolido height="40" field="alcance" titulo="ALCANCE"/>
-					<upperGridCampoSolido height="40" field="municao" titulo="MUNIÇÃO"/>
-					<upperGridCampoSolido height="40" field="qtMunicao" titulo="QT MUN." maxWidth="80" minWidth="50"/>
+					<upperGridCampoSolido height="40" field="propriedades" minWidth="150" maxWidth="360" titulo="@@DnD5e.tab.equipament.atack.lab.property"/>
+					<upperGridCampoSolido height="40" field="alcance" titulo="@@DnD5e.tab.equipament.atack.lab.range"/>
+					<upperGridCampoSolido height="40" field="municao" titulo="@@DnD5e.tab.equipament.atack.lab.ammunition"/>
+					<upperGridCampoSolido height="40" field="qtMunicao" titulo="@@DnD5e.tab.equipament.atack.lab.ammunitionAmount" maxWidth="80" minWidth="50"/>
 			</flowLayout>	
 		</layout>
 		

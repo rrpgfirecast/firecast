@@ -168,7 +168,7 @@
 
 	</tabControl>	
 	
-	<event name="onShow">
+	<event name="onShow">	
 		if globalSimpleMacrosNDB == nil then
 			globalSimpleMacrosNDB = NDB.load("simpleMacros.xml");
 		end;			

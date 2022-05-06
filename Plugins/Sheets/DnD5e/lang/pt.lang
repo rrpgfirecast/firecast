@@ -1,0 +1,133 @@
+﻿[pt]
+DnD5e.tab.equipament.attack.title=ATAQUE
+DnD5e.tab.equipament.defend.title=DEFESA
+
+DnD5e.tab.equipament.btn.delete=Apagar
+DnD5e.tab.equipament.btn.roll=Rolar
+DnD5e.tab.equipament.btn.newItem=Novo Item
+DnD5e.tab.equipament.btn.pen=DESV.
+
+DnD5e.tab.equipament.atack.lab.name=NOME
+DnD5e.tab.equipament.atack.lab.weight=PESO
+DnD5e.tab.equipament.atack.lab.attack=ATAQUE
+DnD5e.tab.equipament.atack.lab.damage=DANO
+DnD5e.tab.equipament.atack.lab.type=TIPO
+DnD5e.tab.equipament.atack.lab.property=PROPRIEDADES
+DnD5e.tab.equipament.atack.lab.range=ALCANCE
+DnD5e.tab.equipament.atack.lab.ammunition=MUNIÇÃO
+DnD5e.tab.equipament.atack.lab.ammunitionAmount=QT MUN
+
+DnD5e.tab.equipament.defend.lab.name=NOME
+DnD5e.tab.equipament.defend.lab.weight=PESO
+DnD5e.tab.equipament.defend.lab.type=TIPO
+DnD5e.tab.equipament.defend.lab.ca=CLASSE DE ARMADURA
+DnD5e.tab.equipament.defend.lab.property=PROPRIEDADES
+
+DnD5e.tab.equipament.lab.extraEquip=OUTROS EQUIPAMENTOS
+
+DnD5e.tab.equipament.lab.PC=PC
+DnD5e.tab.equipament.lab.PP=PP
+DnD5e.tab.equipament.lab.PE=PE
+DnD5e.tab.equipament.lab.PO=PO
+DnD5e.tab.equipament.lab.PL=PL
+
+
+DnD5e.features.nameCharacter=NOME DO PERSONAGEM
+DnD5e.features.age=IDADE
+DnD5e.features.height=ALTURA
+DnD5e.features.weight=PESO
+DnD5e.features.eyes=OLHOS
+DnD5e.features.skin=PELE
+DnD5e.features.hair=CABELO
+DnD5e.features.appearance=APARÊNCIA
+DnD5e.features.personalityTraits=TRAÇOS DE PERSONALIDADE
+DnD5e.features.ideals=IDEAIS
+DnD5e.features.bonds=VÍNCULOS
+DnD5e.features.weaknesses=FRAQUEZAS
+DnD5e.features.featurestraits=CARACTERÍSTICAS E TRAÇOS
+DnD5e.features.languages=IDIOMAS
+DnD5e.features.faction=FACÇÃO
+DnD5e.features.factionSymbol=SÍMBOLO DA FACÇÃO
+DnD5e.features.alliesOrganizations=ALIADOS E ORGANIZAÇÕES
+DnD5e.features.characterStory=HISTÓRIA DOS PERSONAGENS
+
+
+DnD5e.tabControl.tab.front=Frente
+DnD5e.tabControl.tab.feature=Caracteristicas e Talentos
+DnD5e.tabControl.tab.equipment=Equipamento
+DnD5e.tabControl.tab.spells=Magias
+DnD5e.tabControl.tab.annotations=Anotações
+
+DnD5e.frente.lab.characterName=NOME DO PERSONAGEM
+DnD5e.frente.lab.classaLevel=CLASSE E NIVEL
+DnD5e.frente.lab.background=ANTECEDENTES
+DnD5e.frente.lab.player=JOGADOR
+DnD5e.frente.lab.race=RAÇA
+DnD5e.frente.lab.trend=TENDÊNCIA
+DnD5e.frente.lab.xp=PTS. DE EXPERIÊNCIA
+DnD5e.frente.lab.inspiration=INSPIRAÇÃO
+DnD5e.frente.lab.proficiencyBonus=BONUS DE PROFICIÊNCIA
+DnD5e.frente.lab.passivawisdom=SABEDORIA PASSIVA (PERCEPÇÃO)
+
+DnD5e.frente.box.strength=FORÇA
+DnD5e.frente.box.dexterity=DESTREZA
+DnD5e.frente.box.constitution=CONSTITUIÇÃO
+DnD5e.frente.box.intelligence=INTELIGÊNCIA
+DnD5e.frente.box.wisdom=SABEDORIA
+DnD5e.frente.box.charisma=CARISMA
+
+DnD5e.frente.lab.CA=CLASSE DE ARMADURA
+DnD5e.frente.lab.initiative=INICIATIVA
+DnD5e.frente.lab.displacement=DESLOCAMENTO
+DnD5e.frente.lab.PVMax=PONTOS DE VIDA MÁXIMO
+DnD5e.frente.lab.PVCurrent=PONTOS DE VIDA ATUAL
+DnD5e.frente.lab.PVTemp=PONTOS DE VIDA TEMPORÁRIO
+
+
+DnD5e.frente.lab.total=TOTAL
+DnD5e.frente.lab.PVDice=DADOS DE VIDA
+DnD5e.frente.lab.sucess=SUCESSO
+DnD5e.frente.lab.flaws=FALHA
+DnD5e.frente.lab.deathteste=TESTE CONTRA MORTE
+
+DnD5e.skills.athletics=Atletismo
+DnD5e.skills.acrobatics=Acrobacia
+DnD5e.skills.stealth=Furtividade
+DnD5e.skills.sleighthand=Prestidigitaçào
+DnD5e.skills.arcana=Arcanismo
+DnD5e.skills.history=História
+DnD5e.skills.investigation=Investigação
+DnD5e.skills.nature=Natureza
+DnD5e.skills.religion=Religião
+DnD5e.skills.animalhandling=Adestrar Animais
+DnD5e.skills.insight=Intuição
+DnD5e.skills.medicine=Medicina
+DnD5e.skills.perception=Percepção
+DnD5e.skills.survival=Sobrevivência
+DnD5e.skills.performance=Atuação
+DnD5e.skills.deception=Enganação
+DnD5e.skills.intimidation=Intimidação
+DnD5e.skills.persuasion=Persuasão
+DnD5e.savingThrows.title=Teste de Resistencia
+
+DnD5e.spells.spellcasterClass=CLASSE CONJURADORA
+DnD5e.spells.spellcasterAbility= HABILIDADE DE CONJURAÇÃO
+DnD5e.spells.spellSaveDC= CD DA MAGIA
+DnD5e.spells.spellAttackBonus=BÔNUS DE ATAQUE DE MAGIA
+DnD5e.spells.SP/Ki=SP/Ki
+DnD5e.spells.cantrip=PRECES E TRUQUES
+DnD5e.spells.btn.newspell=Nova Magia
+DnD5e.spells.int=INTELIGÊNCIA
+DnD5e.spells.wis=SABEDORIA
+DnD5e.spells.char=CARISMA
+DnD5e.spells.formulationTime=TEMPO DE FORMULAÇÃO
+DnD5e.spells.range=ALCANCE
+DnD5e.spells.component=COMPONENTES	
+DnD5e.spells.duration=DURAÇÃO
+DnD5e.spells.btn.delete=Apagar
+
+
+DnD5e.generic.deleteConfirmation=Deseja realmente apagar este item?
+DnD5e.generic.cantRoll=Você não pode rolar dados por este personagem
+DnD5e.generic.attack=Ataque
+DnD5e.generic.damage=Dano

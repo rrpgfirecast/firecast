@@ -30,7 +30,7 @@
 	<template name="magicHeader0">
 		<flowPart class="magicHeader" frameStyle="frames/magicHeader/header0.xml">
 			<label frameRegion="RegiaoSmallTitulo" text="0" class="magicLevelNumber"/>
-			<label frameRegion="RegiaoConteudo" text="PRECES E TRUQUES" fontSize="15" horzTextAlign="center" vertTextAlign="center"/>
+			<label frameRegion="RegiaoConteudo" text="@@DnD5e.spells.cantrip" fontSize="15" horzTextAlign="center" vertTextAlign="center"/>
 		</flowPart>
 	</template>
 	
@@ -68,7 +68,7 @@
 						autoHeight="true" minHeight="5" onResize="self.$(baseName)._recalcHeight();" hitTest="false" margins="{left=10, right=10}"/>					
 						
 			<layout name="layBottom$(baseName)" align="top" height="36">			
-				<button name="btnNovo$(baseName)" align="left" onClick="self.rcl$(baseName):append();" text="Nova Magia" width="160" margins="{top=4, bottom=4, left=48}"/>								
+				<button name="btnNovo$(baseName)" align="left" onClick="self.rcl$(baseName):append();" text="@@DnD5e.spells.btn.newspell" width="160" margins="{top=4, bottom=4, left=48}"/>								
 			</layout>	
 			
 		</flowPart>
@@ -101,10 +101,10 @@
 		<edit align="top" class="" field="nome" textPrompt="NOME DA MAGIA" horzTextAlign="center"/>
 	
 		<flowLayout align="top" autoHeight="true" maxControlsPerLine="2" margins="{bottom=4}" horzAlign="center">
-			<magicInfoField text="TEMPO FORMULAÇÃO" field="tempoDeFormulacao"/>
-			<magicInfoField text="ALCANCE" field="alcance"/>
-			<magicInfoField text="COMPONENTES" field="componentes"/>
-			<magicInfoField text="DURAÇÃO" field="duracao"/>
+			<magicInfoField text="@@DnD5e.spells.formulationTime" field="tempoDeFormulacao"/>
+			<magicInfoField text="@@DnD5e.spells.range" field="alcance"/>
+			<magicInfoField text="@@DnD5e.spells.component" field="componentes"/>
+			<magicInfoField text="@@DnD5e.spells.duration" field="duracao"/>
 		</flowLayout>
 		
 		<textEditor align="client" field="descricao" class=""/>
@@ -118,17 +118,17 @@
 				<flowPart class="tile" minWidth="320" maxWidth="1600" frameStyle="frames/banner/magicGroup.xml" height="175" vertAlign="center" avoidScale="true">							
 					<layout align="client">
 							<edit field="magias.classeConjuradora" class="transparente vcenter" fontSize="17" align="client"/>
-							<label align="bottom" text="CLASSE CONJURADORA" class="tituloCampo" autoSize="true" margins="{left=3}"/>
+							<label align="bottom" text="@@DnD5e.spells.spellcasterClass" class="tituloCampo" autoSize="true" margins="{left=3}"/>
 					</layout>
 				</flowPart>				
 		
 				<!-- GRID DE INFORMACOES SUPERIORES DA FRENTE -->
 				<flowLayout class="halfTile2"  minWidth="320" maxWidth="1600" name="fraUpperGridMagias" avoidScale="true" frameStyle="frames/upperInfoGrid/frame.xml" autoHeight="true" vertAlign="trailing" 
 						maxControlsPerLine="2" horzAlign="center" lineSpacing="8">								
-					<upperGridMagicComboBox minWidth="145" field="magias.habilidadeDeConjuracao" titulo="HABILIDADE DE CONJURAÇÃO" items="{'', 'INTELIGÊNCIA', 'SABEDORIA', 'CARISMA'}" values="{'', 'int', 'sab', 'car'}"/>
-					<upperGridMagicBox field="magias.cdDaMagia" titulo="CD DA MAGIA"/>
-					<upperGridMagicBox field="magias.bonusAtaqueSTR" titulo="BÔNUS DE ATAQUE DE MAGIA"/>									
-					<upperGridMagicEditBox field="magias.spKi" titulo="SP/Ki"/>					
+					<upperGridMagicComboBox minWidth="145" field="magias.habilidadeDeConjuracao" titulo="@@DnD5e.spells.spellcasterAbility" items="{'', '@@DnD5e.frente.box.intelligence', '@@DnD5e.frente.box.wisdom', '@@DnD5e.frente.box.charisma'}" values="{'', 'int', 'sab', 'car'}"/>
+					<upperGridMagicBox field="magias.cdDaMagia" titulo="@@DnD5e.spells.spellSaveDC"/>
+					<upperGridMagicBox field="magias.bonusAtaqueSTR" titulo="@@DnD5e.spells.spellAttackBonus"/>									
+					<upperGridMagicEditBox field="magias.spKi" titulo="@@DnD5e.spells.SP/Ki"/>					
 				</flowLayout>	
 			</flowLayout>			
 	

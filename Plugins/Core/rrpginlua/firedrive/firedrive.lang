@@ -1,0 +1,47 @@
+﻿[pt]
+firedrive.newDirectory=Novo diretório
+firedrive.newDirectory.name=Nome do diretório
+firedrive.newDirectory.prompt=Nome do novo diretório
+
+firedrive.uploadFile=Fazer upload
+firedrive.uploadFile.prompt=Selecione arquivos para fazer upload
+firedrive.uploadFile.errorFmt=Erro ao fazer upload do arquivo '%s': %s
+
+firedrive.mgr.renameAction=Renomear...
+firedrive.mgr.renameAction.name=Novo nome
+firedrive.mgr.renameAction.prompt=Digite um novo nome
+
+firedrive.mgr.deleteAction=Excluir
+firedrive.mgr.deleteAction.promptFmt=Deseja realmente excluir '%s'?
+
+firedrive.mgr.copyURLAction=Copiar link de download
+
+firedrive.space.usedSpaceFmt=Usado: %2.2f / %1.1f %s
+
+firedrive.premium.goldExclusiveInfo=FireDrive é uma hospedagem de arquivos na internet exclusiva para assinantes Firecast Gold
+
+
+
+
+
+[en]
+firedrive.newDirectory=New directory
+firedrive.newDirectory.name=Directory name
+firedrive.newDirectory.prompt=New directory name
+
+firedrive.uploadFile=Upload
+firedrive.uploadFile.prompt=Select files to upload
+firedrive.uploadFile.errorFmt=Error uploading file '%s': %s
+
+firedrive.mgr.renameAction=Rename...
+firedrive.mgr.renameAction.name=New name
+firedrive.mgr.renameAction.prompt=Please enter a new name
+
+firedrive.mgr.deleteAction=Delete
+firedrive.mgr.deleteAction.promptFmt=Do you really want to delete '%s'?
+
+firedrive.mgr.copyURLAction=Copy download link
+
+firedrive.space.usedSpaceFmt=Used: %2.2f / %1.1f %s
+
+firedrive.premium.goldExclusiveInfo=FireDrive is an Internet file hosting exclusively for Firecast Gold subscribers

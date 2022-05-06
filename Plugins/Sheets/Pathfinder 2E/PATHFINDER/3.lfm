@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmPATHFINDER3_svg" align="client" theme="light" margins="{top=1}">
+    <style>#frmPATHFINDER3_svg path {color: black; strokeColor: black; mode: stretch;} &#xD;
+#frmPATHFINDER3_svg label {fontColor: black; textTrimming: none; wordWrap: false; autoSize: true;}</style>
+    <scrollBox align="client">
+        <rectangle width="905" height="1175" color="white">&#xD;
+            <image left="0" top="0" width="905" height="1175" src="images/3.png" style="stretch" optimize="true" compilerOrder="0"/>&#xD;
+			<image editable="true" style="autoFit"  left="33" top="52" width="300" height="293" field="RascunhodoPersonagem	"/>
+			<edit left="346" top="46" width="85" height="20" horzTextAlign="center" fontColor="black" fontSize="14" transparent="true" field="Etnia"/>
+			<edit left="437" top="46" width="85" height="20" horzTextAlign="center" fontColor="black" fontSize="14" transparent="true" field="Nacionalidade"/>
+			<edit left="527" top="46" width="105" height="20" horzTextAlign="center" fontColor="black" fontSize="14" transparent="true" field="LocaldeNascimento"/>
+			<edit left="637" top="46" width="38"	 height="20" horzTextAlign="center" fontColor="black" fontSize="14" transparent="true" field="Idade"/>
+			<edit left="679" top="46" width="106" height="20" horzTextAlign="center" fontColor="black" fontSize="14" transparent="true" field="GeneroePronomes"/>
+			<edit left="789" top="46" width="38" height="20" horzTextAlign="center" fontColor="black" fontSize="14" transparent="true" field="Altura"/>
+			<edit left="832" top="46" width="38" height="20" horzTextAlign="center" fontColor="black" fontSize="14" transparent="true" field="Peso"/>
+			<edit left="346" top="85" width="523" height="25" horzTextAlign="center" fontColor="black" fontSize="14" transparent="true" field="Aparencia"/>
+			<edit left="346" top="148" width="523" height="22" horzTextAlign="center" fontColor="black" fontSize="14" transparent="true" field="Atitude"/>
+			<edit left="346" top="193" width="523" height="28" horzTextAlign="center" fontColor="black" fontSize="14" transparent="true" field="Crencas"/>
+			<edit left="346" top="242" width="265" height="40" horzTextAlign="center" fontColor="black" fontSize="14" transparent="true" field="Gostos"/>
+			<edit left="620" top="242" width="248" height="40" horzTextAlign="center" fontColor="black" fontSize="14" transparent="true" field="Aversoes"/>
+			<edit left="346" top="300" width="523" height="45" horzTextAlign="center" fontColor="black" fontSize="14" transparent="true" field="Bordoes"/>
+			
+			<textEditor left="33" top="400" width="413" height="190" transparent="false" field="Anotacoes"/>
+			<textEditor left="460" top="400" width="410" height="45" transparent="false" field="Aliados"/>
+			<textEditor left="460" top="473" width="410" height="45" transparent="false" field="Inimigos"/>
+			<textEditor left="460" top="547" width="410" height="45" transparent="false" field="Oranizacao"/>
+			
+			------------------------- AÇOES E ATIVIDADES --------------------------------
+			
+			<edit left="33" top="643" width="145" height="20" horzTextAlign="center" fontColor="black" fontSize="14" transparent="false" field="AcoesAtividadeNome1"/>
+			<edit left="182" top="643" width="52" height="20" horzTextAlign="center" fontColor="black" fontSize="14" transparent="false" field="AcoesAtividadeAcoes1"/>
+			<edit left="238" top="643" width="153" height="20" horzTextAlign="center" fontColor="black" fontSize="14" transparent="false" field="AcoesAtividadeTracos1"/>
+			<edit left="397" top="643" width="50" height="20" horzTextAlign="center" fontColor="black" fontSize="14" transparent="false" field="AcoesAtividadePagina1"/>
+			<textEditor left="33" top="680" width="413" height="32" horzTextAlign="center" fontColor="black" fontSize="14" transparent="false" field="AcoesAtividadeDescricao1"/>
+			
+			<edit left="33" top="732" width="145" height="20" horzTextAlign="center" fontColor="black" fontSize="14" transparent="false" field="AcoesAtividadeNome2"/>
+			<edit left="182" top="732" width="52" height="20" horzTextAlign="center" fontColor="black" fontSize="14" transparent="false" field="AcoesAtividadeAcoes2"/>
+			<edit left="238" top="732" width="153" height="20" horzTextAlign="center" fontColor="black" fontSize="14" transparent="false" field="AcoesAtividadeTracos2"/>
+			<edit left="397" top="732" width="50" height="20" horzTextAlign="center" fontColor="black" fontSize="14" transparent="false" field="AcoesAtividadePagina2"/>
+			<textEditor left="33" top="769" width="413" height="32" horzTextAlign="center" fontColor="black" fontSize="14" transparent="false" field="AcoesAtividadeDescricao2"/>
+			
+			<edit left="33" top="820" width="145" height="20" horzTextAlign="center" fontColor="black" fontSize="14" transparent="false" field="AcoesAtividadeNome3"/>
+			<edit left="182" top="820" width="52" height="20" horzTextAlign="center" fontColor="black" fontSize="14" transparent="false" field="AcoesAtividadeAcoes3"/>
+			<edit left="238" top="820" width="153" height="20" horzTextAlign="center" fontColor="black" fontSize="14" transparent="false" field="AcoesAtividadeTracos3"/>
+			<edit left="397" top="820" width="50" height="20" horzTextAlign="center" fontColor="black" fontSize="14" transparent="false" field="AcoesAtividadePagina3"/>
+			<textEditor left="33" top="857" width="413" height="32" horzTextAlign="center" fontColor="black" fontSize="14" transparent="false" field="AcoesAtividadeDescricao3"/>
+        
+			<edit left="459" top="643" width="145" height="20" horzTextAlign="center" fontColor="black" fontSize="14" transparent="false" field="AcoesAtividadeNome4"/>
+			<edit left="607" top="643" width="52" height="20" horzTextAlign="center" fontColor="black" fontSize="14" transparent="false" field="AcoesAtividadeAcoes4"/>
+			<edit left="662" top="643" width="153" height="20" horzTextAlign="center" fontColor="black" fontSize="14" transparent="false" field="AcoesAtividadeTracos4"/>
+			<edit left="820" top="643" width="50" height="20" horzTextAlign="center" fontColor="black" fontSize="14" transparent="false" field="AcoesAtividadePagina4"/>
+			<textEditor left="459" top="680" width="410" height="32" horzTextAlign="center" fontColor="black" fontSize="14" transparent="false" field="AcoesAtividadeDescricao4"/>
+			
+			<edit left="459" top="732" width="145" height="20" horzTextAlign="center" fontColor="black" fontSize="14" transparent="false" field="AcoesAtividadeNome5"/>
+			<edit left="607" top="732" width="52" height="20" horzTextAlign="center" fontColor="black" fontSize="14" transparent="false" field="AcoesAtividadeAcoes5"/>
+			<edit left="662" top="732" width="153" height="20" horzTextAlign="center" fontColor="black" fontSize="14" transparent="false" field="AcoesAtividadeTracos5"/>
+			<edit left="820" top="732" width="50" height="20" horzTextAlign="center" fontColor="black" fontSize="14" transparent="false" field="AcoesAtividadePagina5"/>
+			<textEditor left="459" top="769" width="410" height="32" horzTextAlign="center" fontColor="black" fontSize="14" transparent="false" field="AcoesAtividadeDescricao5"/>
+			
+			<edit left="459" top="820" width="145" height="20" horzTextAlign="center" fontColor="black" fontSize="14" transparent="false" field="AcoesAtividadeNome6"/>
+			<edit left="607" top="820" width="52" height="20" horzTextAlign="center" fontColor="black" fontSize="14" transparent="false" field="AcoesAtividadeAcoes6"/>
+			<edit left="662" top="820" width="153" height="20" horzTextAlign="center" fontColor="black" fontSize="14" transparent="false" field="AcoesAtividadeTracos6"/>
+			<edit left="820" top="820" width="50" height="20" horzTextAlign="center" fontColor="black" fontSize="14" transparent="false" field="AcoesAtividadePagina6"/>
+			<textEditor left="459" top="857" width="410" height="32" horzTextAlign="center" fontColor="black" fontSize="14" transparent="false" field="AcoesAtividadeDescricao6"/>
+			
+			------------------------- AÇOES LIVRES E REACOES --------------------------------
+			
+			<edit left="33" top="940" width="140" height="20" horzTextAlign="center" fontColor="black" fontSize="14" transparent="true" field="AcoesLivresNome1"/>	
+			<checkBox left="172" top="927" field="chbAcoesLivres1"/>
+			<checkBox left="172" top="942" field="chbreacao1"/>
+			<edit left="238" top="940" width="153" height="20" horzTextAlign="center" fontColor="black" fontSize="14" transparent="true" field="AcoesLivresTracos1"/>
+			<edit left="397" top="940" width="50" height="20" horzTextAlign="center" fontColor="black" fontSize="14" transparent="true" field="AcoesLivresPagina1"/>
+			<textEditor left="33" top="992" width="413" height="37" horzTextAlign="center" fontColor="black" fontSize="14" transparent="true" field="AcoesLivresDescricao1"/>
+			
+			<edit left="33" top="1050" width="140" height="20" horzTextAlign="center" fontColor="black" fontSize="14" transparent="true" field="AcoesLivresNome2"/>	
+			<checkBox left="172" top="1037" field="chbAcoesLivres2"/>
+			<checkBox left="172" top="1052" field="chbreacao2"/>
+			<edit left="238" top="1050" width="153" height="20" horzTextAlign="center" fontColor="black" fontSize="14" transparent="true" field="AcoesLivresTracos2"/>
+			<edit left="397" top="1050" width="50" height="20" horzTextAlign="center" fontColor="black" fontSize="14" transparent="true" field="AcoesLivresPagina2"/>
+			<textEditor left="33" top="1102" width="413" height="37" horzTextAlign="center" fontColor="black" fontSize="14" transparent="true" field="AcoesLivresDescricao2"/>
+			
+			<edit left="459" top="940" width="140" height="20" horzTextAlign="center" fontColor="black" fontSize="14" transparent="true" field="AcoesLivresNome3"/>	
+			<checkBox left="598" top="927" field="chbAcoesLivres3"/>
+			<checkBox left="598" top="942" field="chbreacao3"/>
+			<edit left="664" top="940" width="153" height="20" horzTextAlign="center" fontColor="black" fontSize="14" transparent="true" field="AcoesLivresTracos3"/>
+			<edit left="822" top="940" width="50" height="20" horzTextAlign="center" fontColor="black" fontSize="14" transparent="true" field="AcoesLivresPagina3"/>
+			<textEditor left="459" top="992" width="413" height="37" horzTextAlign="center" fontColor="black" fontSize="14" transparent="true" field="AcoesLivresDescricao3"/>
+			
+			<edit left="459" top="1050" width="140" height="20" horzTextAlign="center" fontColor="black" fontSize="14" transparent="true" field="AcoesLivresNome4"/>	
+			<checkBox left="598" top="1037" field="chbAcoesLivres4"/>
+			<checkBox left="598" top="1052" field="chbreacao4"/>
+			<edit left="664" top="1050" width="153" height="20" horzTextAlign="center" fontColor="black" fontSize="14" transparent="true" field="AcoesLivresTracos4"/>
+			<edit left="822" top="1050" width="50" height="20" horzTextAlign="center" fontColor="black" fontSize="14" transparent="true" field="AcoesLivresPagina4"/>
+			<textEditor left="459" top="1102" width="413" height="37" horzTextAlign="center" fontColor="black" fontSize="14" transparent="true" field="AcoesLivresDescricao4"/>
+		</rectangle>
+    </scrollBox>
+</form>

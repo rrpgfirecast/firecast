@@ -1,0 +1,303 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmPath2_svg" align="client" theme="light" margins="{top=1}">
+    <style>#frmPath2_svg path {color: black; strokeColor: black; mode: stretch;} &#xD;
+#frmPath2_svg label {fontColor: black; textTrimming: none; wordWrap: false; autoSize: true;}</style>
+    <scrollBox align="client">
+        <rectangle width="905" height="1175" color="white">&#xD;
+            <image left="0" top="0" width="905" height="1175" src="images/2.png" style="stretch" optimize="true" compilerOrder="0"/>&#xD;
+			
+			
+			<edit left="53" top="85" width="167" height="30" horzTextAlign="center" fontSize="14" fontColor="black" transparent="true" field="ItensDeProtecao1"/>
+			<edit left="222" top="85" width="47" height="30" horzTextAlign="center" fontSize="14" fontColor="black" transparent="true" field="ItemBonus1"/>
+			<edit left="273" top="85" width="69" height="30" horzTextAlign="center" fontSize="14" fontColor="black" transparent="true" field="ItemTipo1"/>
+			<edit left="347" top="85" width="69" height="30" horzTextAlign="center" fontSize="14" fontColor="black" transparent="true" field="ItemPenArmadura1"/>
+			<edit left="420" top="85" width="63" height="30" horzTextAlign="center" fontSize="14" fontColor="black" transparent="true" field="ItemFalhaMagia1"/>
+			<edit left="485" top="85" width="55" height="30" horzTextAlign="center" fontSize="14" fontColor="black" transparent="true" field="ItemPeso1"/>
+			<edit left="543" top="85" width="76" height="30" horzTextAlign="center" fontSize="14" fontColor="black" transparent="true" field="ItemPropriedade1"/>
+			
+			<edit left="53" top="113" width="167" height="30" horzTextAlign="center" fontSize="14" fontColor="black" transparent="true" field="ItensDeProtecao2"/>
+			<edit left="222" top="113" width="47" height="30" horzTextAlign="center" fontSize="14" fontColor="black" transparent="true" field="ItemBonus2"/>
+			<edit left="273" top="113" width="69" height="30" horzTextAlign="center" fontSize="14" fontColor="black" transparent="true" field="ItemTipo2"/>
+			<edit left="347" top="113" width="69" height="30" horzTextAlign="center" fontSize="14" fontColor="black" transparent="true" field="ItemPenArmadura2"/>
+			<edit left="420" top="113" width="63" height="30" horzTextAlign="center" fontSize="14" fontColor="black" transparent="true" field="ItemFalhaMagia2"/>
+			<edit left="485" top="113" width="55" height="30" horzTextAlign="center" fontSize="14" fontColor="black" transparent="true" field="ItemPeso2"/>
+			<edit left="543" top="113" width="76" height="30" horzTextAlign="center" fontSize="14" fontColor="black" transparent="true" field="ItemPropriedade2"/>
+							
+			<edit left="53" top="140" width="167" height="30" horzTextAlign="center" fontSize="14" fontColor="black" transparent="true" field="ItensDeProtecao3"/>
+			<edit left="222" top="140" width="47" height="30" horzTextAlign="center" fontSize="14" fontColor="black" transparent="true" field="ItemBonus3"/>
+			<edit left="273" top="140" width="69" height="30" horzTextAlign="center" fontSize="14" fontColor="black" transparent="true" field="ItemTipo3"/>
+			<edit left="347" top="140" width="69" height="30" horzTextAlign="center" fontSize="14" fontColor="black" transparent="true" field="ItemPenArmadura3"/>
+			<edit left="420" top="140" width="63" height="30" horzTextAlign="center" fontSize="14" fontColor="black" transparent="true" field="ItemFalhaMagia3"/>
+			<edit left="485" top="140" width="55" height="30" horzTextAlign="center" fontSize="14" fontColor="black" transparent="true" field="ItemPeso3"/>
+			<edit left="543" top="140" width="76" height="30" horzTextAlign="center" fontSize="14" fontColor="black" transparent="true" field="ItemPropriedade3"/>			
+			
+			<edit left="53" top="168" width="167" height="30" horzTextAlign="center" fontSize="14" fontColor="black" transparent="true" field="ItensDeProtecao4"/>
+			<edit left="222" top="168" width="47" height="30" horzTextAlign="center" fontSize="14" fontColor="black" transparent="true" field="ItemBonus4"/>
+			<edit left="273" top="168" width="69" height="30" horzTextAlign="center" fontSize="14" fontColor="black" transparent="true" field="ItemTipo4"/>
+			<edit left="347" top="168" width="69" height="30" horzTextAlign="center" fontSize="14" fontColor="black" transparent="true" field="ItemPenArmadura4"/>
+			<edit left="420" top="168" width="63" height="30" horzTextAlign="center" fontSize="14" fontColor="black" transparent="true" field="ItemFalhaMagia4"/>
+			<edit left="485" top="168" width="55" height="30" horzTextAlign="center" fontSize="14" fontColor="black" transparent="true" field="ItemPeso4"/>
+			<edit left="543" top="168" width="76" height="30" horzTextAlign="center" fontSize="14" fontColor="black" transparent="true" field="ItemPropriedade4"/>
+			
+			<edit left="53" top="196" width="167" height="30" horzTextAlign="center" fontSize="14" fontColor="black" transparent="true" field="ItensDeProtecao5"/>
+			<edit left="222" top="196" width="47" height="30" horzTextAlign="center" fontSize="14" fontColor="black" transparent="true" field="ItemBonus5"/>
+			<edit left="273" top="196" width="69" height="30" horzTextAlign="center" fontSize="14" fontColor="black" transparent="true" field="ItemTipo5"/>
+			<edit left="347" top="196" width="69" height="30" horzTextAlign="center" fontSize="14" fontColor="black" transparent="true" field="ItemPenArmadura5"/>
+			<edit left="420" top="196" width="63" height="30" horzTextAlign="center" fontSize="14" fontColor="black" transparent="true" field="ItemFalhaMagia5"/>
+			<edit left="485" top="196" width="55" height="30" horzTextAlign="center" fontSize="14" fontColor="black" transparent="true" field="ItemPeso5"/>
+			<edit left="543" top="196" width="76" height="30" horzTextAlign="center" fontSize="14" fontColor="black" transparent="true" field="ItemPropriedade5"/>
+			
+			<edit left="222" top="224" width="47" height="30" horzTextAlign="center" fontSize="14" fontColor="black" transparent="true" field="ItensDeProtecao6"/>
+			<edit left="273" top="224" width="69" height="30" horzTextAlign="center" fontSize="14" fontColor="black" transparent="true" field="ItemBonus6"/>
+			<edit left="347" top="224" width="69" height="30" horzTextAlign="center" fontSize="14" fontColor="black" transparent="true" field="ItemTipo6"/>
+			<edit left="420" top="224" width="63" height="30" horzTextAlign="center" fontSize="14" fontColor="black" transparent="true" field="ItemPenArmadura6"/>
+			<edit left="485" top="224" width="55" height="30" horzTextAlign="center" fontSize="14" fontColor="black" transparent="true" field="ItemPeso6"/>
+			<edit left="543" top="224" width="76" height="30" horzTextAlign="center" fontSize="14" fontColor="black" transparent="true" field="ItemPropriedade6"/>
+			
+			<edit left="53" top="300" width="170" height="20" horzTextAlign="center" fontSize="14" fontColor="black" transparent="true" field="Equipamento1"/>
+			<edit left="227" top="300" width="23" height="20" horzTextAlign="center" fontSize="14" fontColor="black" transparent="true" field="Peso1"/>
+			<edit left="53" top="322" width="170" height="20" horzTextAlign="center" fontSize="14" fontColor="black" transparent="true" field="Equipamento2"/>
+			<edit left="227" top="322" width="23" height="20" horzTextAlign="center" fontSize="14" fontColor="black" transparent="true" field="Peso2"/>
+			<edit left="53" top="344" width="170" height="20" horzTextAlign="center" fontSize="14" fontColor="black" transparent="true" field="Equipamento3"/>
+			<edit left="227" top="344" width="23" height="20" horzTextAlign="center" fontSize="14" fontColor="black" transparent="true" field="Peso3"/>
+			<edit left="53" top="366" width="170" height="20" horzTextAlign="center" fontSize="14" fontColor="black" transparent="true" field="Equipamento4"/>
+			<edit left="227" top="366" width="23" height="20" horzTextAlign="center" fontSize="14" fontColor="black" transparent="true" field="Peso4"/>
+			<edit left="53" top="388" width="170" height="20" horzTextAlign="center" fontSize="14" fontColor="black" transparent="true" field="Equipamento5"/>
+			<edit left="227" top="388" width="23" height="20" horzTextAlign="center" fontSize="14" fontColor="black" transparent="true" field="Peso5"/>
+			<edit left="53" top="410" width="170" height="20" horzTextAlign="center" fontSize="14" fontColor="black" transparent="true" field="Equipamento6"/>
+			<edit left="227" top="410" width="23" height="20" horzTextAlign="center" fontSize="14" fontColor="black" transparent="true" field="Peso6"/>
+			<edit left="53" top="432" width="170" height="20" horzTextAlign="center" fontSize="14" fontColor="black" transparent="true" field="Equipamento7"/>
+			<edit left="227" top="432" width="23" height="20" horzTextAlign="center" fontSize="14" fontColor="black" transparent="true" field="Peso7"/>
+			<edit left="53" top="454" width="170" height="20" horzTextAlign="center" fontSize="14" fontColor="black" transparent="true" field="Equipamento8"/>
+			<edit left="227" top="454" width="23" height="20" horzTextAlign="center" fontSize="14" fontColor="black" transparent="true" field="Peso8"/>
+			<edit left="53" top="476" width="170" height="20" horzTextAlign="center" fontSize="14" fontColor="black" transparent="true" field="Equipamento9"/>
+			<edit left="227" top="476" width="23" height="20" horzTextAlign="center" fontSize="14" fontColor="black" transparent="true" field="Peso9"/>
+			<edit left="53" top="497" width="170" height="20" horzTextAlign="center" fontSize="14" fontColor="black" transparent="true" field="Equipamento10"/>
+			<edit left="227" top="497" width="23" height="20" horzTextAlign="center" fontSize="14" fontColor="black" transparent="true" field="Peso10"/>
+			<edit left="53" top="518" width="170" height="20" horzTextAlign="center" fontSize="14" fontColor="black" transparent="true" field="Equipamento11"/>
+			<edit left="227" top="518" width="23" height="20" horzTextAlign="center" fontSize="14" fontColor="black" transparent="true" field="Peso11"/>
+			<edit left="53" top="540" width="170" height="20" horzTextAlign="center" fontSize="14" fontColor="black" transparent="true" field="Equipamento12"/>
+			<edit left="227" top="540" width="23" height="20" horzTextAlign="center" fontSize="14" fontColor="black" transparent="true" field="Peso12"/>
+			<edit left="53" top="564" width="170" height="20" horzTextAlign="center" fontSize="14" fontColor="black" transparent="true" field="Equipamento13"/>
+			<edit left="227" top="564" width="23" height="20" horzTextAlign="center" fontSize="14" fontColor="black" transparent="true" field="Peso13"/>
+			<edit left="53" top="586" width="170" height="20" horzTextAlign="center" fontSize="14" fontColor="black" transparent="true" field="Equipamento14"/>
+			<edit left="227" top="586" width="23" height="20" horzTextAlign="center" fontSize="14" fontColor="black" transparent="true" field="Peso14"/>
+			<edit left="53" top="608" width="170" height="20" horzTextAlign="center" fontSize="14" fontColor="black" transparent="true" field="Equipamento15"/>
+			<edit left="227" top="608" width="23" height="20" horzTextAlign="center" fontSize="14" fontColor="black" transparent="true" field="Peso15"/>
+			<edit left="53" top="630" width="170" height="20" horzTextAlign="center" fontSize="14" fontColor="black" transparent="true" field="Equipamento16"/>
+			<edit left="227" top="630" width="23" height="20" horzTextAlign="center" fontSize="14" fontColor="black" transparent="true" field="Peso16"/>			
+			<edit left="53" top="652" width="170" height="20" horzTextAlign="center" fontSize="14" fontColor="black" transparent="true" field="Equipamento17"/>
+			<edit left="227" top="652" width="23" height="20" horzTextAlign="center" fontSize="14" fontColor="black" transparent="true" field="Peso17"/>			
+			<edit left="53" top="674" width="170" height="20" horzTextAlign="center" fontSize="14" fontColor="black" transparent="true" field="Equipamento18"/>
+			<edit left="227" top="674" width="23" height="20" horzTextAlign="center" fontSize="14" fontColor="black" transparent="true" field="Peso18"/>			
+			<edit left="53" top="696" width="170" height="20" horzTextAlign="center" fontSize="14" fontColor="black" transparent="true" field="Equipamento19"/>
+			<edit left="227" top="696" width="23" height="20" horzTextAlign="center" fontSize="14" fontColor="black" transparent="true" field="Peso19"/>			
+			<edit left="53" top="718" width="170" height="20" horzTextAlign="center" fontSize="14" fontColor="black" transparent="true" field="Equipamento20"/>
+			<edit left="227" top="718" width="23" height="20" horzTextAlign="center" fontSize="14" fontColor="black" transparent="true" field="Peso20"/>			
+			<edit left="53" top="740" width="170" height="20" horzTextAlign="center" fontSize="14" fontColor="black" transparent="true" field="Equipamento21"/>
+			<edit left="227" top="740" width="23" height="20" horzTextAlign="center" fontSize="14" fontColor="black" transparent="true" field="Peso21"/>			
+			<edit left="53" top="762" width="170" height="20" horzTextAlign="center" fontSize="14" fontColor="black" transparent="true" field="Equipamento22"/>
+			<edit left="227" top="762" width="23" height="20" horzTextAlign="center" fontSize="14" fontColor="black" transparent="true" field="Peso22"/>			
+			<edit left="53" top="784" width="170" height="20" horzTextAlign="center" fontSize="14" fontColor="black" transparent="true" field="Equipamento23"/>
+			<edit left="227" top="784" width="23" height="20" horzTextAlign="center" fontSize="14" fontColor="black" transparent="true" field="Peso23"/>			
+			<edit left="53" top="805" width="170" height="20" horzTextAlign="center" fontSize="14" fontColor="black" transparent="true" field="Equipamento24"/>
+			<edit left="227" top="805" width="23" height="20" horzTextAlign="center" fontSize="14" fontColor="black" transparent="true" field="Peso24"/>			
+			<edit left="53" top="826" width="170" height="20" horzTextAlign="center" fontSize="14" fontColor="black" transparent="true" field="Equipamento25"/>
+			<edit left="227" top="826" width="23" height="20" horzTextAlign="center" fontSize="14" fontColor="black" transparent="true" field="Peso25"/>			
+			<edit left="53" top="847" width="170" height="20" horzTextAlign="center" fontSize="14" fontColor="black" transparent="true" field="Equipamento26"/>
+			<edit left="227" top="847" width="23" height="20" horzTextAlign="center" fontSize="14" fontColor="black" transparent="true" field="Peso26"/>
+			<edit left="227" top="869" width="23" height="20" horzTextAlign="center" fontSize="14" fontColor="black" transparent="true" field="PesoTotal"/>
+		
+			<edit left="105" top="898" width="35" height="25" horzTextAlign="center" fontSize="14" fontColor="black" transparent="true" field="CargaLeve"/>
+			<edit left="211" top="898" width="35" height="25" horzTextAlign="center" fontSize="14" fontColor="black" transparent="true" field="ErgueiSobreACabeca"/>
+			
+			<edit left="105" top="924" width="35" height="25" horzTextAlign="center" fontSize="14" fontColor="black" transparent="true" field="CargaMedia"/>
+			<edit left="211" top="924" width="35" height="25" horzTextAlign="center" fontSize="14" fontColor="black" transparent="true" field="ErguerDoChao"/>
+			
+			<edit left="105" top="950" width="35" height="25" horzTextAlign="center" fontSize="14" fontColor="black" transparent="true" field="CargaLeve"/>
+			<edit left="211" top="950" width="35" height="25" horzTextAlign="center" fontSize="14" fontColor="black" transparent="true" field="ArrastarPuxar"/>
+			
+			<edit left="80" top="1008" width="170" height="20" horzTextAlign="center" fontSize="14" fontColor="black" transparent="true" field="PC"/>
+			<edit left="80" top="1029" width="170" height="20" horzTextAlign="center" fontSize="14" fontColor="black" transparent="true" field="PP"/>
+			<edit left="80" top="1050" width="170" height="20" horzTextAlign="center" fontSize="14" fontColor="black" transparent="true" field="PO"/>
+			<edit left="80" top="1071" width="170" height="20" horzTextAlign="center" fontSize="14" fontColor="black" transparent="true" field="PL"/>
+			
+			<textEditor left="270" top="295" width="360" height="267" fontSize="16" transparent="false" field="Talentos"/>
+			
+			<textEditor left="270" top="600" width="360" height="450" fontSize="16" transparent="false" field="HabilidadesEspeciais"/>
+			
+			
+			<edit left="275" top="1071" width="235" height="30" horzTextAlign="center" fontSize="14" fontColor="black" transparent="true" field="PontosExperiencia"/>
+			<edit left="513" top="1071" width="105" height="30" horzTextAlign="center" fontSize="14" fontColor="black" transparent="true" field="ProximoNivel"/>
+			
+			<edit left="645" top="125" width="30" height="20" horzTextAlign="center" fontSize="14" fontColor="black" transparent="true" field="MagiasConhecidas0"/>
+			<edit left="691" top="125" width="30" height="20" horzTextAlign="center" fontSize="14" fontColor="black" transparent="true" field="CDResistMagia0"/>
+			<edit left="783" top="125" width="30" height="20" horzTextAlign="center" fontSize="14" fontColor="black" transparent="true" field="MagiaPorDia0"/>
+			
+			<edit left="645" top="150" width="30" height="20" horzTextAlign="center" fontSize="14" fontColor="black" transparent="true" field="MagiasConhecidas1"/>
+			<edit left="691" top="150" width="30" height="20" horzTextAlign="center" fontSize="14" fontColor="black" transparent="true" field="CDResistMagia1"/>
+			<edit left="783" top="150" width="30" height="20" horzTextAlign="center" fontSize="14" fontColor="black" transparent="true" field="MagiaPorDia1"/>
+			<edit left="831" top="150" width="30" height="20" horzTextAlign="center" fontSize="14" fontColor="black" transparent="true" field="MagiaBonus1"/>
+			
+			<edit left="645" top="176" width="30" height="20" horzTextAlign="center" fontSize="14" fontColor="black" transparent="true" field="MagiasConhecidas2"/>
+			<edit left="691" top="176" width="30" height="20" horzTextAlign="center" fontSize="14" fontColor="black" transparent="true" field="CDResistMagia2"/>
+			<edit left="783" top="176" width="30" height="20" horzTextAlign="center" fontSize="14" fontColor="black" transparent="true" field="MagiaPorDia2"/>
+			<edit left="831" top="176" width="30" height="20" horzTextAlign="center" fontSize="14" fontColor="black" transparent="true" field="MagiaBonus2"/>
+			
+			<edit left="645" top="202" width="30" height="20" horzTextAlign="center" fontSize="14" fontColor="black" transparent="true" field="MagiasConhecidas3"/>
+			<edit left="691" top="202" width="30" height="20" horzTextAlign="center" fontSize="14" fontColor="black" transparent="true" field="CDResistMagia3"/>
+			<edit left="783" top="202" width="30" height="20" horzTextAlign="center" fontSize="14" fontColor="black" transparent="true" field="MagiaPorDia3"/>
+			<edit left="831" top="202" width="30" height="20" horzTextAlign="center" fontSize="14" fontColor="black" transparent="true" field="MagiaBonus3"/>
+			
+			<edit left="645" top="228" width="30" height="20" horzTextAlign="center" fontSize="14" fontColor="black" transparent="true" field="MagiasConhecidas4"/>
+			<edit left="691" top="228" width="30" height="20" horzTextAlign="center" fontSize="14" fontColor="black" transparent="true" field="CDResistMagia4"/>
+			<edit left="783" top="228" width="30" height="20" horzTextAlign="center" fontSize="14" fontColor="black" transparent="true" field="MagiaPorDia4"/>
+			<edit left="831" top="228" width="30" height="20" horzTextAlign="center" fontSize="14" fontColor="black" transparent="true" field="MagiaBonus4"/>
+			
+			<edit left="645" top="254" width="30" height="20" horzTextAlign="center" fontSize="14" fontColor="black" transparent="true" field="MagiasConhecidas5"/>
+			<edit left="691" top="254" width="30" height="20" horzTextAlign="center" fontSize="14" fontColor="black" transparent="true" field="CDResistMagia5"/>
+			<edit left="783" top="254" width="30" height="20" horzTextAlign="center" fontSize="14" fontColor="black" transparent="true" field="MagiaPorDia5"/>
+			<edit left="831" top="254" width="30" height="20" horzTextAlign="center" fontSize="14" fontColor="black" transparent="true" field="MagiaBonus5"/>
+			
+			<edit left="645" top="280" width="30" height="20" horzTextAlign="center" fontSize="14" fontColor="black" transparent="true" field="MagiasConhecidas6"/>
+			<edit left="691" top="280" width="30" height="20" horzTextAlign="center" fontSize="14" fontColor="black" transparent="true" field="CDResistMagia6"/>
+			<edit left="783" top="280" width="30" height="20" horzTextAlign="center" fontSize="14" fontColor="black" transparent="true" field="MagiaPorDia6"/>
+			<edit left="831" top="280" width="30" height="20" horzTextAlign="center" fontSize="14" fontColor="black" transparent="true" field="MagiaBonus6"/>
+			
+			<edit left="645" top="306" width="30" height="20" horzTextAlign="center" fontSize="14" fontColor="black" transparent="true" field="MagiasConhecidas7"/>
+			<edit left="691" top="306" width="30" height="20" horzTextAlign="center" fontSize="14" fontColor="black" transparent="true" field="CDResistMagia7"/>
+			<edit left="783" top="306" width="30" height="20" horzTextAlign="center" fontSize="14" fontColor="black" transparent="true" field="MagiaPorDia7"/>
+			<edit left="831" top="306" width="30" height="20" horzTextAlign="center" fontSize="14" fontColor="black" transparent="true" field="MagiaBonus7"/>
+			
+			<edit left="645" top="332" width="30" height="20" horzTextAlign="center" fontSize="14" fontColor="black" transparent="true" field="MagiasConhecidas8"/>
+			<edit left="691" top="332" width="30" height="20" horzTextAlign="center" fontSize="14" fontColor="black" transparent="true" field="CDResistMagia8"/>
+			<edit left="783" top="332" width="30" height="20" horzTextAlign="center" fontSize="14" fontColor="black" transparent="true" field="MagiaPorDia8"/>
+			<edit left="831" top="332" width="30" height="20" horzTextAlign="center" fontSize="14" fontColor="black" transparent="true" field="MagiaBonus8"/>
+			
+			<edit left="645" top="358" width="30" height="20" horzTextAlign="center" fontSize="14" fontColor="black" transparent="true" field="MagiasConhecidas9"/>
+			<edit left="691" top="358" width="30" height="20" horzTextAlign="center" fontSize="14" fontColor="black" transparent="true" field="CDResistMagia9"/>
+			<edit left="783" top="358" width="30" height="20" horzTextAlign="center" fontSize="14" fontColor="black" transparent="true" field="MagiaPorDia9"/>
+			<edit left="831" top="358" width="30" height="20" horzTextAlign="center" fontSize="14" fontColor="black" transparent="true" field="MagiaBonus9"/>
+			
+			<edit left="645" top="400" width="215" height="20" horzTextAlign="center" fontSize="14" fontColor="black" transparent="true" field="ModificadoresCondicionaisMagia"/>
+			<edit left="645" top="443" width="215" height="20" horzTextAlign="center" fontSize="14" fontColor="black" transparent="true" field="DominiosEscolasEspecializada"/>
+			
+			<textEditor left="645" top="485" width="215" height="80" fontSize="13" transparent="false" field="DEE0"/>
+			<textEditor left="645" top="580" width="215" height="80" fontSize="13" transparent="false" field="DEE1"/>
+			<textEditor left="645" top="675" width="215" height="66" fontSize="13" transparent="false" field="DEE2"/>
+			<textEditor left="645" top="755" width="215" height="60" fontSize="13" transparent="false" field="DEE3"/>
+			<textEditor left="645" top="830" width="215" height="47" fontSize="13" transparent="false" field="DEE4"/>
+			<textEditor left="645" top="890" width="215" height="37" fontSize="13" transparent="false" field="DEE5"/>
+			<textEditor left="645" top="940" width="215" height="38" fontSize="13" transparent="false" field="DEE6"/>
+			<textEditor left="645" top="993" width="215" height="37" fontSize="13" transparent="false" field="DEE7"/>
+			<textEditor left="645" top="1045" width="215" height="28" fontSize="13" transparent="false" field="DEE8"/>
+			<textEditor left="645" top="1087" width="215" height="28" fontSize="13" transparent="false" field="DEE9"/>
+			
+			--------------------- Aglomerado de CheckBox onde o primeiro numero 
+			representa qual o nivel de magia ele esta relacionado e o ultimo 
+			o numero que ele representa na linha de checkbo--------------
+			
+			<checkBox left="658" top="468" field="0Check1"/>
+			<checkBox left="670" top="468" field="0Check2"/>
+			<checkBox left="682" top="468" field="0Check3"/>
+			<checkBox left="694" top="468" field="0Check4"/>
+			<checkBox left="706" top="468" field="0Check5"/>
+			<checkBox left="718" top="468" field="0Check6"/>
+			<checkBox left="730" top="468" field="0Check7"/>
+			<checkBox left="742" top="468" field="0Check8"/>
+			<checkBox left="754" top="468" field="0Check9"/>
+			
+			<checkBox left="658" top="563" field="1Check1"/>
+			<checkBox left="670" top="563" field="1Check2"/>
+			<checkBox left="682" top="563" field="1Check3"/>
+			<checkBox left="694" top="563" field="1Check4"/>
+			<checkBox left="706" top="563" field="1Check5"/>
+			<checkBox left="718" top="563" field="1Check6"/>
+			<checkBox left="730" top="563" field="1Check7"/>
+			<checkBox left="742" top="563" field="1Check8"/>
+			<checkBox left="754" top="563" field="1Check9"/>
+			
+			<checkBox left="658" top="657" field="2Check1"/>
+			<checkBox left="670" top="657" field="2Check2"/>
+			<checkBox left="682" top="657" field="2Check3"/>
+			<checkBox left="694" top="657" field="2Check4"/>
+			<checkBox left="706" top="657" field="2Check5"/>
+			<checkBox left="718" top="657" field="2Check6"/>
+			<checkBox left="730" top="657" field="2Check7"/>
+			<checkBox left="742" top="657" field="2Check8"/>
+			<checkBox left="754" top="657" field="2Check9"/>
+			
+			<checkBox left="658" top="739" field="3Check1"/>
+			<checkBox left="670" top="739" field="3Check2"/>
+			<checkBox left="682" top="739" field="3Check3"/>
+			<checkBox left="694" top="739" field="3Check4"/>
+			<checkBox left="706" top="739" field="3Check5"/>
+			<checkBox left="718" top="739" field="3Check6"/>
+			<checkBox left="730" top="739" field="3Check7"/>
+			<checkBox left="742" top="739" field="3Check8"/>
+			<checkBox left="754" top="739" field="3Check9"/>
+			
+			<checkBox left="658" top="812" field="4check1"/>
+			<checkBox left="670" top="812" field="4check2"/>
+			<checkBox left="682" top="812" field="4check3"/>
+			<checkBox left="694" top="812" field="4check4"/>
+			<checkBox left="706" top="812" field="4check5"/>
+			<checkBox left="718" top="812" field="4check6"/>
+			<checkBox left="730" top="812" field="4check7"/>
+			<checkBox left="742" top="812" field="4check8"/>
+			<checkBox left="754" top="812" field="4check9"/>
+			
+			<checkBox left="658" top="874" field="5check1"/>
+			<checkBox left="670" top="874" field="5check2"/>
+			<checkBox left="682" top="874" field="5check3"/>
+			<checkBox left="694" top="874" field="5check4"/>
+			<checkBox left="706" top="874" field="5check5"/>
+			<checkBox left="718" top="874" field="5check6"/>
+			<checkBox left="730" top="874" field="5check7"/>
+			<checkBox left="742" top="874" field="5check8"/>
+			<checkBox left="754" top="874" field="5check9"/>
+			
+			<checkBox left="658" top="924" field="6check1"/>
+			<checkBox left="670" top="924" field="6check2"/>
+			<checkBox left="682" top="924" field="6check3"/>
+			<checkBox left="694" top="924" field="6check4"/>
+			<checkBox left="706" top="924" field="6check5"/>
+			<checkBox left="718" top="924" field="6check6"/>
+			<checkBox left="730" top="924" field="6check7"/>
+			<checkBox left="742" top="924" field="6check8"/>
+			<checkBox left="754" top="924" field="6check9"/>
+			
+			<checkBox left="658" top="976" field="7check1"/>
+			<checkBox left="670" top="976" field="7check2"/>
+			<checkBox left="682" top="976" field="7check3"/>
+			<checkBox left="694" top="976" field="7check4"/>
+			<checkBox left="706" top="976" field="7check5"/>
+			<checkBox left="718" top="976" field="7check6"/>
+			<checkBox left="730" top="976" field="7check7"/>
+			<checkBox left="742" top="976" field="7check8"/>
+			<checkBox left="754" top="976" field="7check9"/>
+			
+			<checkBox left="658" top="1028" field="8check1"/>
+			<checkBox left="670" top="1028" field="8check2"/>
+			<checkBox left="682" top="1028" field="8check3"/>
+			<checkBox left="694" top="1028" field="8check4"/>
+			<checkBox left="706" top="1028" field="8check5"/>
+			<checkBox left="718" top="1028" field="8check6"/>
+			<checkBox left="730" top="1028" field="8check7"/>
+			<checkBox left="742" top="1028" field="8check8"/>
+			<checkBox left="754" top="1028" field="8check9"/>
+			
+			<checkBox left="658" top="1070" field="8check1"/>
+			<checkBox left="670" top="1070" field="8check2"/>
+			<checkBox left="682" top="1070" field="8check3"/>
+			<checkBox left="694" top="1070" field="8check4"/>
+			<checkBox left="706" top="1070" field="8check5"/>
+			<checkBox left="718" top="1070" field="8check6"/>
+			<checkBox left="730" top="1070" field="8check7"/>
+			<checkBox left="742" top="1070" field="8check8"/>
+			<checkBox left="754" top="1070" field="8check9"/>
+			
+			
+		</rectangle>
+    </scrollBox>
+</form>

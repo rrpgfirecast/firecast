@@ -25,7 +25,7 @@ SceneLib.registerPlugin(
 		local defFillColor = "None";		
 		local defSnapToGrid = false;
 		
-		local function adicionarComPath(maker, pathData, minX, minY, maxX, maxY, ignoreAjustSize)
+		local function adicionarComPath(maker, pathData, minX, minY, maxX, maxY)
 			local _, aStroke, aFill;
 			_, _, _, aStroke = colorToRGBA(maker.strokeColor);
 			_, _, _, aFill = colorToRGBA(maker.fillColor);
@@ -42,6 +42,7 @@ SceneLib.registerPlugin(
 										
 					local largura = (maxX - minX);
 					local altura = (maxY - minY);	
+					local scale = viewport.scale;
 				
 					if altura < maker.strokeSize then
 						altura = maker.strokeSize;
@@ -50,31 +51,39 @@ SceneLib.registerPlugin(
 					if largura < maker.strokeSize then
 						largura = maker.strokeSize;
 					end;
+					
+					local aspectXFactor;
+					local aspectYFactor;
+					
+					if largura > altura then
+						aspectXFactor = 1.0;					
+						aspectYFactor = largura / altura;
+					else
+						aspectXFactor = altura / largura;		
+						aspectYFactor = 1.0;						
+					end;		
+
+					local avgWorldSizeAfterFactor = (largura * aspectXFactor + altura * aspectYFactor) / 2;
+					local strokeSizeAfterFactor = maker.strokeSize / avgWorldSizeAfterFactor;					
 							
-					if not ignoreAjustSize then
-						if largura > altura then
-							path.height = largura / altura;
-						else
-							path.width = altura / largura;
-						end;
-					end;
-									
-					path.strokeSize = maker.strokeSize / ((largura * path.width + altura * path.height) / 2);
+					path.x = -(aspectXFactor - 1) / 2;
+					path.y = -(aspectYFactor - 1) / 2;											
+					path.width = aspectXFactor;						
+					path.height = aspectYFactor;						
+															
+					path.strokeSize = strokeSizeAfterFactor;
 					path.strokeSizeMetric = "canvasMetric";
 					path.strokeCap = "round";
 					path.strokeJoin = "round";
 					path.color = maker.fillColor;
 					path.strokeColor = maker.strokeColor;
-					path.data = pathData;				
+					path.data = pathData;															
 																			
 					ud.x = minX;
 					ud.y = minY;
 					ud.width = largura;
-					ud.height = altura;	
+					ud.height = altura;
 					ud.snapToGrid = maker.snapToGrid;	
-
-					larguraGrid = ud.width;
-					alturaGrid = ud.height;
 				end);		
 		end;
 		
@@ -82,6 +91,7 @@ SceneLib.registerPlugin(
 			local pData = nil;
 			local minX, maxX, minY, maxY = nil, nil, nil, nil;
 			local scale = viewport.scale;
+				
 						
 			for i = 1, #pol, 1 do
 				local p = pol[i];
@@ -182,7 +192,7 @@ SceneLib.registerPlugin(
 				elseif shapeMaker.shape == SHAPE_TEXT_POINT then
 					local x3, y3 = shapeMaker:getPoint();
 					
-					Dialogs.inputQuery('Texto', 'Digite o texto', '', 
+					Dialogs.inputQuery('@@userDrawing.textObject.prompt.title', '@@userDrawing.textObject.promptText', '', 
 						function(texto)
 							adicionarTexto(shapeMaker, x3, y3, texto);						
 						end);

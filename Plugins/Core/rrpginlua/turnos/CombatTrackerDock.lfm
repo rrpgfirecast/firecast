@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<form name="frmCombatTracker" formType="tablesDock" dataType="RRPG.TB.COMBAT.TRACKER.v1" title="Tracker de Combate" height="300" width="300">
+<form name="frmCombatTracker" formType="tablesDock" dataType="RRPG.TB.COMBAT.TRACKER.v1" title="@@combatTracker.title" height="300" width="300">
 	<import file="combatTrackerGlobals.xml"/>
 	<import file="CombatTrackerScripts.xml"/>	
 
@@ -10,21 +10,25 @@
 	</script> -->
 	
 	<layout name="layTopTracker" align="top" height="18" margins="{left=2, right=2, top=2}">
-		<button name="btnAddAtor" text="" onClick="self:criarNovoAtor()" class="combatHeaderButton" hint="Adicionar um novo ator ao Tracker">
+		<button name="btnAddAtor" text="" onClick="self:criarNovoAtor()" class="combatHeaderButton" hint="@@combatTracker.actor.addButton.hint">
 			<image align="client" src="images/addIcon.png"/>
 		</button>
-		<button name="btnRoll" text="R" onClick="" class="combatHeaderButton" hint="Rola todas iniciativas">
+		<button name="btnRoll" text="@@combatTracker.initiative.rollButton.text" onClick="" class="combatHeaderButton" hint="@@combatTracker.initiative.rollButton.hint">
 			<event name="onClick">
 				local atores = NDB.getChildNodes(sheet.atores);
 				local mesa = Firecast.getMesaDe(self);
 
 				for i=1, #atores, 1 do 
-				local ator = atores[i];
+					local ator = atores[i];
+				
 					if ator.iniciativaRolagem~= nil then
 						local rolagem = Firecast.interpretarRolagem(ator.iniciativaRolagem);
 
 						if rolagem.possuiAlgumDado then
-							mesa.activeChat:rolarDados(rolagem, "Iniciativa de " .. (ator.nome or "ator"), 
+							local actorName = ator.nome or lang("combatTracker.actor.fallbackName");
+							local rollMsg = lang("combatTracker.initiative.rollMessageFmt"):format(actorName);
+						
+							mesa.activeChat:rolarDados(rolagem, rollMsg, 
 									function (rolado) 
 										ator.iniciativa = rolado.resultado;
 									end);
@@ -34,7 +38,7 @@
 
 			</event>
 		</button>
-		<button name="btnAddAll" text="T" onClick="" class="combatHeaderButton" hint="Rola Adiciona todos com +Jogador a lista">
+		<button name="btnAddAll" text="@@combatTracker.actor.addAllButton.text" onClick="" class="combatHeaderButton" hint="@@combatTracker.actor.addAllButton.hint">
 			<event name="onClick">
 				local mesa = Firecast.getMesaDe(self);
 				local jogadores = mesa.jogadores;
@@ -53,19 +57,19 @@
 		</button>
 
 		
-		<button name="btnLimpar" text="Limpar" class="combatHeaderButton" align="right" width="60" onClick="self:limpar();"/>
+		<button name="btnLimpar" text="@@combatTracker.clearButton.text" class="combatHeaderButton" align="right" width="60" onClick="self:limpar();"/>
 	</layout>
 	
 	<layout align="top" class="combatHeaderContentAlignedLayout combatHeader0_H" height="16" padding="{left=2, right=2}">
 		<layout name="layHeader0" class="combatHeader0">
 		</layout>
 		
-		<label class="combatHeaderTeste" text="Teste"/>		
-		<label class="combatHeaderNome" text="Nome"/>
+		<label class="combatHeaderTeste" text="@@combatTracker.header.teste"/>		
+		<label class="combatHeaderNome" text="@@combatTracker.header.nome"/>
 		
 		<layout name="layRightAlinedTitle" class="combateHeaderRightAlignedContent">
-			<label name="labTitIniciativa" class="combatHeaderIniciativa" text="Init" horzTextAlign="center"/>		
-			<label name="labTitFoF" class="combatHeaderFriendOrFoe" text="A/H" horzTextAlign="center"/>				
+			<label name="labTitIniciativa" class="combatHeaderIniciativa" text="@@combatTracker.header.initiative" horzTextAlign="center"/>		
+			<label name="labTitFoF" class="combatHeaderFriendOrFoe" text="@@combatTracker.header.friendOrFoe" horzTextAlign="center"/>				
 		</layout>
 	</layout>
 	
@@ -88,10 +92,10 @@
 	</recordList>
 	
 	<layout name="layTrackerBottom" align="bottom" height="28" margins="{top=2, left=2, bottom=2, right=2}">
-		<button text="Próx. turno" onClick="self:proximoTurno();" fontSize="11" width="70" align="left"/>
+		<button text="@@combatTracker.nextTurnButton.text" onClick="self:proximoTurno();" fontSize="11" width="70" align="left"/>
 		
 		<layout align="right" width="68">
-			<label align="left" autoSize="true" text="Rodada" wordWrap="false" fontSize="11"/>
+			<label align="left" autoSize="true" text="@@combatTracker.currentRound.title" wordWrap="false" fontSize="11"/>
 			<edit field="rodada" align="client" type="number" min="0" horzTextAlign="center" fontStyle="bold"/>			
 		</layout>
 	</layout>

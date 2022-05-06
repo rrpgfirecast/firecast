@@ -27,8 +27,8 @@ local function constructNew_frmFichaBasicaV3Rich()
     _gui_assignInitialParentForForm(obj.handle);
     obj:beginUpdate();
     obj:setName("frmFichaBasicaV3Rich");
-    obj:setTitle("Ficha Básica do RRPG v3");
-    obj:setDescription("Ficha Básica do RRPG v3");
+    obj:setTitle("@@basicSheet.dark.title");
+    obj:setDescription("@@basicSheet.dark.description");
     obj:setDataType("rrpg.com.br.FichaBasicaV3.DT");
     obj:setFormType("sheetTemplate");
     obj:setTheme("dark");
@@ -36,7 +36,7 @@ local function constructNew_frmFichaBasicaV3Rich()
     obj.richEdit1 = GUI.fromHandle(_obj_newObject("richEdit"));
     obj.richEdit1:setParent(obj);
     obj.richEdit1:setAlign("client");
-    lfm_setPropAsString(obj.richEdit1, "backgroundColor",  "#363B45");
+    lfm_setPropAsString(obj.richEdit1, "backgroundColor",  "#36393E");
     lfm_setPropAsString(obj.richEdit1, "defaultFontColor",  "white");
     obj.richEdit1:setField("txt");
     lfm_setPropAsString(obj.richEdit1, "hideSelection",  "false");
@@ -88,8 +88,8 @@ local _frmFichaBasicaV3Rich = {
     dataType = "rrpg.com.br.FichaBasicaV3.DT", 
     formType = "sheetTemplate", 
     formComponentName = "form", 
-    title = "Ficha Básica do RRPG v3", 
-    description="Ficha Básica do RRPG v3"};
+    title = "@@basicSheet.dark.title", 
+    description="@@basicSheet.dark.description"};
 
 frmFichaBasicaV3Rich = _frmFichaBasicaV3Rich;
 Firecast.registrarForm(_frmFichaBasicaV3Rich);

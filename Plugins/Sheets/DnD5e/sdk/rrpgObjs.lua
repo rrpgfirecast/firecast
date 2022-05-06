@@ -414,6 +414,7 @@ function objs.hierarchyObjectFromHandle(handle)
 	end;
 	
 	function obj:getParent() return gui.fromHandle(_gui_getParent(self.handle)) end
+	
 	function obj:setParent(parent) 
 		if (self._parent == parent) then
 			return;

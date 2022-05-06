@@ -1,0 +1,358 @@
+﻿[pt]
+scene.arrowCursor=Selecionar/Movimentar
+scene.panCursor=Navegar
+scene.pointerClass=Ponteiro
+scene.angle.short.degrees=Graus
+
+scene.layer.tokens=Camada: Tokens
+scene.layer.objects=Camada: Objetos
+scene.layer.background=Camada: Fundo
+scene.layer.tokens.noprefix=Tokens
+scene.layer.objects.noprefix=Objetos
+scene.layer.background.noprefix=Fundo
+scene.layer.categoryTitle=Camada
+
+
+scene.tokenMenu.addCondition=Marcadores de Condição >>
+scene.tokenMenu.changeLayer=Enviar para Camada >>
+scene.tokenMenu.properties=Propriedades...
+scene.tokenMenu.clearHistMov=Limpar Histórico de Movimentos
+scene.tokenMenu.clearMemory=Limpar Memória de Áreas Vistas pelo Token
+
+scene.menu.token.editCA=Editar:
+scene.menu.token.editCA.copy=Copiar
+scene.menu.token.editCA.paste=Colar
+scene.menu.token.editCA.undo=Desfazer
+
+scene.menu.backOption=<< Voltar
+scene.menu.sceneOptions=Propriedades do Tabuleiro
+cancelar=Cancelar
+Ok=Ok
+
+scene.title.bkgColor=Cor de Fundo
+scene.title.tamanho=Tamanho do Tabuleiro
+scene.largura=Largura
+scene.altura=Altura
+scene.cellSize=Tamanho da Célula
+
+metric.cm=cm
+metric.in=pol
+metric.m=m
+metric.ft=pés
+metric.km=km
+metric.mi=mi
+metric.anoluz=ano-luz
+
+scene.or=ou
+scene.dimensionsTitle=Dimensões do Tabuleiro
+scene.cells=células
+scene.cellType=Tipo de Célula
+scene.gridColor=Cor da Grid
+scene.grid=Grid
+scene.drawGrid=Exibir grid
+scene.gridOffset=Posição da Grid
+
+scene.toolcategory.settings=Configurações
+scene.toolcategory.tools=Ferramentas
+scene.toolcategory.movHistory=Histórico de Movimento
+scene.tool.movhist.showMovHist=Exibir Histórico de Movimentos
+
+scene.menu.measureDistance=Medir
+scene.squareDiagonals=Diagonais
+
+
+scene.diagonals.simplified=Distância Simplificada
+scene.diagonals.alternated=Distância Alternada
+scene.diagonals.manhattan=Distância Dobrada
+scene.diagonals.euclidean=Distância Real
+
+scene.remove.item=Remover...
+
+scene.ask.deleteOneItem=Deseja realmente apagar o item selecionado?
+scene.ask.deleteMultiItem=Deseja realmente apagar os %d itens selecionados?
+scene.visibilityChange.ToGMOnly=Esconder dos jogadores
+scene.visibilityChange.ToEveryone=Exibir aos jogadores
+
+scene.menu.tokenOptions=Propriedades do Token
+
+scene.tokenEdit.personagem=Personagem:
+scene.tokenEdit.semPersonagem=<<Sem Personagem>>
+scene.tokenEdit.snapToGrid=Agarrar ao grid
+scene.tokenEdit.propriedades=Propriedades
+
+scene.menu.token.imgOptions=Opções da Imagem >>
+scene.menu.token.imgFlipH=Espelhar na Horizontal
+scene.menu.token.imgFlipV=Espelhar na Vertical
+scene.menu.token.grayscale=Escala Cinzenta
+scene.menu.token.colorBlend=Cor de Tintura
+scene.menu.token.imgFlipMA=Espelhar:
+scene.menu.token.imgCoresMA=Cores:
+scene.menu.token.selCorTin=Cor de Tintura
+scene.menu.token.selCorTin.defineTitle=Utilizar uma Cor de Tintura
+
+scene.menu.token.imgFiltroMA=Filtro:
+scene.menu.token.imgFiltroMA.none=Nenhum Filtro
+scene.menu.token.imgFiltroMA.glow=Incandescência
+scene.menu.token.imgFiltroMA.innerGlow=Brilho interior
+scene.menu.token.imgFiltroMA.blur=Borrão
+
+scene.menu.token.selCorGlow=Cor de Incandescência
+scene.menu.token.selCorGlow.defineTitle=Utilizar uma Cor de Incandescência
+scene.menu.token.selCorInnerGlow=Cor de Brilho Interno
+scene.menu.token.selCorInnerGlow.defineTitle=Utilizar uma Cor de Brilho Interno
+
+scene.selectColor.title=Selecione uma cor
+scene.selectColor.defineColor=Definir uma cor
+
+scene.menu.token.imgFrameMA=Frame:
+scene.menu.token.imgFrameMA.none=Nenhum
+scene.menu.token.imgFrameMA.boton=Bóton Redondo
+
+scene.tokenEdit.nome=Nome
+scene.tokenEdit.barraPrefix=Barrinha
+
+scene.digiteUmValor=Digite um valor
+scene.valor=Valor
+
+scene.labCorAura.text=Cor da Aura
+scene.labAlturaAura.text=Altura da Aura
+scene.labLarguraAura.text=Largura da Aura
+scene.labCorAura.text=Cor da Aura
+scene.labFormaAura.text=Formato
+scene.labAuraURL.text=URL da Aura
+scene.labRaioAura.text=Diametro
+scene.labescolhaimg.text=click here to choose image
+scene.labUnidadeMedida.text=Unidade de Medida
+
+userDrawing.categoryTitle=Rabiscos
+userDrawing.freeHand=Desenho à mão livre
+userDrawing.rectangle=Desenho retangular
+userDrawing.circle=Desenho circular
+userDrawing.polygon=Desenho poligonal
+userDrawing.text=Escrever texto
+userDrawing.clearDrawings=Limpar desenhos
+userDrawing.stroke=Contorno
+userDrawing.fill=Preenchimento
+
+
+scene.organization.sendToBack=Enviar para trás
+scene.organization.bringToFront=Trazer para frente
+
+
+scene.zoom.category=Zoom
+scene.zoom.zoomIn=Zoom +
+scene.zoom.zoomOut=Zoom -
+
+scene.bkgImageTabTitle=Imagem de Fundo
+scene.bkgImageTabTitle.useThis=Usar esta imagem:
+scene.bkgImageTabTitle.guide=Clique para alterar a imagem
+
+scene.gridFineTuning.setup=Ajuste milimétrico do Grid
+scene.Synchronize.menu=Sincronizador de Grid
+scene.Synchronize.tip=Dica: Sincronize o grid do background com o grid do firecast marcando/desenhando 4 células diferentes que existem na imagem de fundo.
+scene.gridFineTuning.dimension=Dica: Ajuste a primeira célula do tabuleiro e em seguida ajuste a última célula do tabuleiro.
+scene.gridFineTuning.height=Altura
+scene.gridFineTuning.width=Largura
+scene.gridFineTuning.offset=Mova a posição do grid
+
+
+
+scene.menu.alert.maxConditions=Apenas 4 condições por Token!
+scene.menu.conditions.c1=Número 1
+scene.menu.conditions.c2=Número 2
+scene.menu.conditions.c3=Número 3
+scene.menu.conditions.c4=Número 4
+scene.menu.conditions.c5=Número 5
+scene.menu.conditions.c6=Número 6
+scene.menu.conditions.c7=Número 7
+scene.menu.conditions.c8=Número 8
+scene.menu.conditions.c9=Número 9
+scene.menu.conditions.c10=Número 0
+scene.menu.conditions.c11=Time Vermelho
+scene.menu.conditions.c12=Time Verde
+scene.menu.conditions.c13=Time Azul
+scene.menu.conditions.c14=Time Amarelo
+scene.menu.conditions.c15=Time Rosa
+scene.menu.conditions.c16=Time Marron
+scene.menu.conditions.c17=Time Laranja
+scene.menu.conditions.c18=Time Branco
+scene.menu.conditions.c19=Time Preto
+scene.menu.conditions.c20=Hipotermia
+scene.menu.conditions.c21=Enredado
+scene.menu.conditions.c22=Sangrando
+scene.menu.conditions.c23=Cego
+scene.menu.conditions.c24=Surdo
+scene.menu.conditions.c25=Rendeu-se
+scene.menu.conditions.c26=Veloz
+scene.menu.conditions.c27=Queimado
+scene.menu.conditions.c28=Confuso
+scene.menu.conditions.c29=Regenerando
+scene.menu.conditions.c30=Envenenado
+scene.menu.conditions.c31=Morto
+scene.menu.conditions.c32=Caido
+scene.menu.conditions.c33=Assustado
+scene.menu.conditions.c34=Atordoado
+scene.menu.conditions.c35=Paralisado
+scene.menu.conditions.c36=Agarrado
+scene.menu.conditions.c37=Adormecido
+scene.menu.conditions.c38=Fatigado
+scene.menu.conditions.c39=Enjoado
+scene.menu.conditions.c40=Petrificado
+scene.menu.conditions.c41=Incosciente
+scene.menu.conditions.c42=Lento
+scene.menu.conditions.c43=Voando
+scene.menu.conditions.c44=Mudo
+scene.menu.conditions.c45=Aleijado
+scene.menu.conditions.c46=Eletrocutado
+scene.menu.conditions.c47=Invisivel
+scene.menu.conditions.c48=Furtivo
+scene.menu.conditions.c49=Acorrentado
+scene.menu.conditions.c50=Trancado
+scene.menu.conditions.c51=Bebado
+scene.menu.conditions.c52=Vê Magia
+scene.menu.conditions.c53=Vê o Invisivel
+scene.menu.conditions.c54=Radioativo
+scene.menu.conditions.c55=Bloqueado
+scene.menu.conditions.c56=Silenciado
+scene.menu.conditions.c57=Toxico
+scene.menu.conditions.c58=Aura
+scene.menu.conditions.c59=Fortificado
+scene.menu.conditions.c60=Etereo
+scene.menu.conditions.c61=Personalizado1
+scene.menu.conditions.c62=Personalizado2
+scene.menu.conditions.c63=Personalizado3
+scene.menu.conditions.c64=Personalizado4
+
+scene.menu.conditions.link1=http://firecast.blob.core.windows.net/blobs/IAUQMVUR_386260.png
+scene.menu.conditions.link2=http://firecast.blob.core.windows.net/blobs/QNIIBIMV_386244.png
+scene.menu.conditions.link3=http://firecast.blob.core.windows.net/blobs/APKABCKF_386218.png
+scene.menu.conditions.link4=http://firecast.blob.core.windows.net/blobs/DFBFKPTH_386212.png
+scene.menu.conditions.link5=http://firecast.blob.core.windows.net/blobs/PPIRFSBI_386208.png
+scene.menu.conditions.link6=http://firecast.blob.core.windows.net/blobs/FGLDGNRW_386257.png
+scene.menu.conditions.link7=http://firecast.blob.core.windows.net/blobs/LFRIRPIW_386226.png
+scene.menu.conditions.link8=http://firecast.blob.core.windows.net/blobs/CEJAMDNT_386246.png
+scene.menu.conditions.link9=http://firecast.blob.core.windows.net/blobs/MKLJSRET_386230.png
+scene.menu.conditions.link10=http://firecast.blob.core.windows.net/blobs/KEMDMPRM_386214.png
+scene.menu.conditions.link11=http://firecast.blob.core.windows.net/blobs/GLFEGPKA_385944.png
+scene.menu.conditions.link12=http://firecast.blob.core.windows.net/blobs/BSTRKIPU_385929.png
+scene.menu.conditions.link13=http://firecast.blob.core.windows.net/blobs/TUKINWIK_385911.png
+scene.menu.conditions.link14=http://firecast.blob.core.windows.net/blobs/ADRUOVUU_385891.png
+scene.menu.conditions.link15=http://firecast.blob.core.windows.net/blobs/WOGEOQCJ_385951.png
+scene.menu.conditions.link16=http://firecast.blob.core.windows.net/blobs/AOTQWBQP_385926.png
+scene.menu.conditions.link17=http://firecast.blob.core.windows.net/blobs/SNGOWKKJ_385949.png
+scene.menu.conditions.link18=http://firecast.blob.core.windows.net/blobs/OFWDSOTC_385902.png
+scene.menu.conditions.link19=http://firecast.blob.core.windows.net/blobs/ODMDCGES_385886.png
+scene.menu.conditions.link20=http://firecast.blob.core.windows.net/blobs/QNOLDESA_386255.png
+scene.menu.conditions.link21=http://firecast.blob.core.windows.net/blobs/KELUNEJN_386240.png
+scene.menu.conditions.link22=http://firecast.blob.core.windows.net/blobs/TKTNQPFI_386227.png
+scene.menu.conditions.link23=http://firecast.blob.core.windows.net/blobs/GGKWFSUH_386234.png
+scene.menu.conditions.link24=http://firecast.blob.core.windows.net/blobs/CAIKOSIE_386264.png
+scene.menu.conditions.link25=http://firecast.blob.core.windows.net/blobs/AFRDLWGB_386252.png
+scene.menu.conditions.link26=http://firecast.blob.core.windows.net/blobs/THEGOUUV_386250.png
+scene.menu.conditions.link27=http://firecast.blob.core.windows.net/blobs/PMSIKDGW_386276.png
+scene.menu.conditions.link28=http://firecast.blob.core.windows.net/blobs/HQJTLWQN_386221.png
+scene.menu.conditions.link29=http://firecast.blob.core.windows.net/blobs/BNUEFEOQ_386262.png
+scene.menu.conditions.link30=http://firecast.blob.core.windows.net/blobs/IOQJUVWB_386278.png
+scene.menu.conditions.link31=http://firecast.blob.core.windows.net/blobs/FBUTWJKK_386198.png
+scene.menu.conditions.link32=http://firecast.blob.core.windows.net/blobs/PLGVIPJT_386209.png
+scene.menu.conditions.link33=http://firecast.blob.core.windows.net/blobs/KHNCORQS_386242.png
+scene.menu.conditions.link34=http://firecast.blob.core.windows.net/blobs/IMMTBLNC_386232.png
+scene.menu.conditions.link35=http://firecast.blob.core.windows.net/blobs/NWIMPVCU_386238.png
+scene.menu.conditions.link36=http://firecast.blob.core.windows.net/blobs/HRSHDWEW_386268.png
+scene.menu.conditions.link37=http://firecast.blob.core.windows.net/blobs/LPAJGCBI_386272.png
+scene.menu.conditions.link38=http://firecast.blob.core.windows.net/blobs/IWLDQWVF_386266.png
+scene.menu.conditions.link39=http://firecast.blob.core.windows.net/blobs/AOBFBURG_386254.png
+scene.menu.conditions.link40=http://firecast.blob.core.windows.net/blobs/WCTILJOL_386206.png
+scene.menu.conditions.link41=http://firecast.blob.core.windows.net/blobs/EOCELRGC_386204.png
+scene.menu.conditions.link42=http://firecast.blob.core.windows.net/blobs/UBFATIQK_386220.png
+scene.menu.conditions.link43=http://firecast.blob.core.windows.net/blobs/PCEGNCEI_386224.png
+scene.menu.conditions.link44=http://firecast.blob.core.windows.net/blobs/VCLTBBLV_386270.png
+scene.menu.conditions.link45=http://firecast.blob.core.windows.net/blobs/RTJUUCMB_386274.png
+scene.menu.conditions.link46=http://firecast.blob.core.windows.net/blobs/AEJDGQHL_386215.png
+scene.menu.conditions.link47=http://firecast.blob.core.windows.net/blobs/SHSWLTAV_386247.png
+scene.menu.conditions.link48=http://firecast.blob.core.windows.net/blobs/TPOIGRJR_386200.png
+scene.menu.conditions.link49=http://firecast.blob.core.windows.net/blobs/GQAQMOMW_386281.png
+scene.menu.conditions.link50=http://firecast.blob.core.windows.net/blobs/ACMVLKND_386236.png
+scene.menu.conditions.link51=http://firecast.blob.core.windows.net/blobs/GTQFIKUP_386280.png
+scene.menu.conditions.link52=http://firecast.blob.core.windows.net/blobs/KRLOLSNU_386287.png
+scene.menu.conditions.link53=http://firecast.blob.core.windows.net/blobs/OQPJDFVJ_386286.png
+scene.menu.conditions.link54=http://firecast.blob.core.windows.net/blobs/FPOOVLNN_386294.png
+scene.menu.conditions.link55=http://firecast.blob.core.windows.net/blobs/SROIHFLP_386290.png
+scene.menu.conditions.link56=http://firecast.blob.core.windows.net/blobs/KNIMVPKI_386284.png
+scene.menu.conditions.link57=http://firecast.blob.core.windows.net/blobs/NTUEUIHA_386291.png
+scene.menu.conditions.link58=http://firecast.blob.core.windows.net/blobs/SHMDIKIJ_386300.png
+scene.menu.conditions.link59=http://firecast.blob.core.windows.net/blobs/ONEUCNCH_386298.png
+scene.menu.conditions.link60=http://firecast.blob.core.windows.net/blobs/FAIETOJW_386296.png
+scene.menu.conditions.link61=userinput
+scene.menu.conditions.link62=userinput
+scene.menu.conditions.link63=userinput
+scene.menu.conditions.link64=userinput
+
+
+scene.fogOfWar=Névoa da Guerra
+scene.fogOfWar.tokenVision=Visão do Token
+scene.fogOfWar.tokenLight=Luz Emitida
+scene.fogOfWar.alcance.tokenVision=Alcance da Visão
+scene.fogOfWar.alcance.tokenLight=Alcance da Luz
+scene.fogOfWar.sobLuzIntensa=Sob luz intensa
+scene.fogOfWar.sobLuzFraca=Sob luz fraca
+scene.fogOfWar.sobEscuridao=Na escuridão
+scene.fogOfWar.luzIntensa=Luz intensa
+scene.fogOfWar.luzFraca=Luz fraca
+scene.fogOfWar.graus=graus
+scene.fogOfWar.angulo=Ângulo
+scene.fogOfWar.token.hasSight=Possui Visão
+
+scene.gm.categoryTitle=Ferramentas do Mestre
+scene.gm.viewAsPlayer=Visualizar como jogador
+scene.gm.editFow=Névoa de Guerra
+
+scene.fogOfWar.options.enabled=Névoa Ativada
+scene.fogOfWar.options.ambientLight=Luz Ambiente
+scene.fogOfWar.options.sharing=Compartilhamento
+scene.fogOfWar.options.ambientLight.intense=Luz Intensa / Sol
+scene.fogOfWar.options.ambientLight.weak=Luz Fraca / Penumbra
+scene.fogOfWar.options.ambientLight.none=Nenhuma / Escuridão
+scene.fogOfWar.options.sharing.individual=Visão Individual
+scene.fogOfWar.options.sharing.group=Visão em Grupo
+scene.fogOfWar.aura.tabTitle=Aura
+
+scene.menu.sceneOptions.tabPrincipal=Layout
+
+
+scene.fogOfWar.area.reveal=Áreas sempre visíveis
+scene.fogOfWar.area.hidden=Áreas sempre ocultas
+scene.fogOfWar.area.parcialRevealed=Áreas parcialmente visíveis
+scene.fogOfWar.area.explorable=Áreas à explorar
+scene.fogOfWar.area.wall=Adicionar paredes
+scene.fogOfWar.area.removeWall=Remover paredes
+shapeMaker.shape=Formato da área:
+shapeMaker.rectangle=Retangular
+shapeMaker.freeHand=Mão livre
+shapeMaker.polygon=Poligonal
+shapeMaker.ellipse=Circular
+
+scene.FacingMode.title=Direção:
+scene.FacingMode.rotate=Rotacionar imagem
+scene.FacingMode.arrow=Exibir uma seta
+
+scene.FormaAura.Circulo=Circulo
+scene.FormaAura.Quadrado=Quadrado
+scene.FormaAura.ConeDiagonal=Cone Diagonal
+scene.FormaAura.URL=URL
+scene.FormaAura.ConeHorizontal=Cone Horizontal
+scene.FormaAura.SemiCirculo=Semi Circulo
+scene.FormaAura.CirculoPerfeito=Circulo Perfeito
+scene.FormaAura.PossuiAura=Possui aura
+
+scene.windowTool.categoryTitle=Janela
+scene.windowTool.openPopupClone=Espelhar tabuleiro em uma nova janela
+scene.windowTool.alternAsTab=Exibir como aba
+scene.windowTool.obrigatoryScene=Forçar todos a abrirem este tabuleiro
+
+userDrawing.clearDrawings.players=Limpar desenhos dos +jogadores
+userDrawing.textObject.prompt.title=Texto
+userDrawing.textObject.promptText=Digite o texto
+
+scene.help.category=Ajuda
+scene.help.howTo=Ajuda: Como usar o tabuleiro?

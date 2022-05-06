@@ -151,7 +151,7 @@
 				pericias = totable(body);
 			else
 				pericias = {};
-			end;
+			end;				
 		-->
 	
 		<dataLink field="atributos.$(field)">
@@ -185,6 +185,14 @@
 			</event>
 		</dataLink>
 		
+		<script>
+			if self.__attrSortData == nil then
+				self.__attrSortData = {};
+			end;
+			
+			self.__attrSortData.$(field) = {};
+		</script>
+		
 		<flowPart height="140" minWidth="320" maxWidth="420" minScaledWidth="305" frameStyle="frames/atributeFrame2/frame.xml">
 			<layout left="6" top="12" width="116" height="115">
 				<edit class="atributo"  align="top" margins="{left=30, right=30}" field="atributos.$(field)" height="30" type="number" min="0" max="99"/>								
@@ -194,7 +202,7 @@
 			<label frameRegion="titulo" text="$(titulo)" vertTextAlign="center" horzTextAlign="center"/>
 			
 			<flowLayout frameRegion="RegiaoDePericias" autoHeight="true" lineSpacing="0" horzAlign="leading">			
-				<boxPericia field="$('resistencias.' .. field)" fieldBonus="resistencias.bonus$(field)str" atributo="$(field)" titulo="Teste de Resistência" losango="true"/>
+				<boxPericia field="$('resistencias.' .. field)" fieldBonus="resistencias.bonus$(field)str" atributo="$(field)" titulo="@@DnD5e.savingThrows.title" losango="true"/>
 				<dataLink fields="{'atributos.mod$(field)', 'bonusProficiencia', 'resistencias.$(field)'}">
 					<event name="onChange">
 							local modificador;
@@ -248,7 +256,7 @@
 						periciaTitulo = objPericia[1];
 						periciaField = objPericia[2];
 					-->								
-					<boxPericia field="$('pericias.' .. periciaField)" fieldBonus="pericias.bonus$(periciaField)str" atributo="$('atributos.' .. field)" titulo="$(periciaTitulo)"/>
+					<boxPericia field="$('pericias.' .. periciaField)" fieldBonus="pericias.bonus$(periciaField)str" atributo="$('atributos.' .. field)" titulo="$(periciaTitulo)" attrSortGroup="$(field)"/>
 					<dataLink fields="{'atributos.mod$(field)', 'bonusProficiencia', 'pericias.$(periciaField)'}">
 						<event name="onChange">
 							local modificador;
@@ -317,7 +325,9 @@
 	</template>
 		
 	<template name="boxPericia">
-		<flowPart minWidth="206" maxWidth="250" height="17">			
+		<!-- flowPartUniqueName = uniqueName("flpSkillFlowPart"); -->	
+	
+		<flowPart minWidth="206" maxWidth="250" height="17" name="$(flowPartUniqueName)">			
 			<dndCheckBox align="left" field="$(field)" losango="$(losango)"/>
 			<layout align="left" width="26" margins="{left=2}">	
 				<label field="$(fieldBonus)" align="client" horzTextAlign="center" vertTextAlign="trailing" textTrimming="none"/>
@@ -325,6 +335,16 @@
 			</layout>
 			<label align="client" text="$(titulo)" vertTextAlign="trailing" margins="{left=5}" autoSize="true" wordWrap="false"/>			
 		</flowPart>
+		
+		<!-- 	
+			if (attrSortGroup ~= nil) and (attrSortGroup ~= "") and (fieldBonus ~= "") then			
+		-->				
+			<script>
+				table.insert(self.__attrSortData.$(attrSortGroup), {title="$(titulo)", controlName="$(flowPartUniqueName)"});				
+			</script>
+		<!-- 							
+			end;			
+		-->		
 	</template>			
 	
 	<template name="boxDinheiro">
@@ -338,14 +358,14 @@
 		<edit name="edtNome" class="transparente" align="client" field="nome" margins="{left=4, right=4}" vertTextAlign="center"/>
 		<horzLine align="bottom" strokeColor="white"/>						
 		<button text="i" align="right" width="32" margins="{left=4, right=0, top=2, bottom=2}" onClick="showMagiaPopup();"/>		
-		<button text="Apagar" align="right" width="60" margins="{left=4, right=4, top=2, bottom=2}" onClick="askForDelete();"/>		
+		<button text="@@DnD5e.spells.btn.delete" align="right" width="60" margins="{left=4, right=4, top=2, bottom=2}" onClick="askForDelete();"/>		
 	</template>
 	
 	<template name="magiaItemContent">
 		<script> 
 			<![CDATA[			
 			local function askForDelete()
-				Dialogs.confirmYesNo("Deseja realmente apagar este item?",
+				Dialogs.confirmYesNo("@@DnD5e.generic.deleteConfirmation",
 									 function (confirmado)
 										if confirmado then
 											NDB.deleteNode(self.sheet);

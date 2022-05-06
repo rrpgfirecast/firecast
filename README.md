@@ -2,9 +2,9 @@
   <img src="https://firecast.app/wp-content/uploads/2021/03/logo1024x1024no_padding-300x300.png" />
 </p>
 
-# RRPG Firecast
+# Firecast
 
-Esse repositório foi criado com o intuito de armazenar o código de projetos relacionados ao RRPG Firecast, o maior programa para jogos online de mesa do Brasil.  
+Esse repositório foi criado com o intuito de armazenar o código de projetos relacionados ao Firecast, o maior programa para jogos online de mesa do Brasil.  
 
 **Subpastas:**
 - **Arts:** Imagens de uso geral para aplicações do firecast. 
@@ -14,7 +14,7 @@ Esse repositório foi criado com o intuito de armazenar o código de projetos re
 
 # Ferramentas
 
-- [**SDK**](http://www.rrpg.com.br/index.php/para-programadores/): Necessário instalar para poder compilar os projetos de plugin. No link há duas versões disponíveis, uma compatível com o RRPG antigo e mobile, o [RDK3.4b](http://www.firecast.com.br/RDK3.4b.exe), e o mais atual, [RDK 3.5](https://firecast.app/downloads/RDK3.5.exe).
+- [**SDK**](https://firecast.app/para-programadores/): Necessário instalar para poder compilar os projetos de plugin. No link há duas versões disponíveis, uma compatível com o RRPG antigo e mobile, o [RDK3.4b](http://www.firecast.com.br/RDK3.4b.exe), e o mais atual, [RDK 3.6](https://firecast.app/downloads/RDK3.6.exe).
 - [**Sublime**](https://www.sublimetext.com/3): Um editor de texto, esse ou qualquer outro como [Notepad++](https://notepad-plus-plus.org/), que permita editar os arquivos do projeto. 
 - [**Souce Tree**](https://www.sourcetreeapp.com/): Uma ferramenta para uso do git com interface, essa ou qualquer outra, para facilitar o acesso ao Github. 
 
@@ -34,5 +34,5 @@ Esse repositório foi criado com o intuito de armazenar o código de projetos re
 # Contato
 
 Se é novo por aqui e deseja conhecer o programa, visite o site do [**RRPG Firecast**](https://firecast.app/pt_br/).  
-Para ajuda com o funcionamento dos plugins, veja a documentação do [**RRPG SDK 3**](http://www.rrpg.com.br/sdk3/RRPG%20SDK%203.html?Introducao.html).  
+Para ajuda com o funcionamento dos plugins, veja a documentação do [**RRPG SDK 3**](https://firecast.app/sdk3/RRPG%20SDK%203.html?Introducao.html).  
 Para dúvidas e ajuda, visite a [**Wiki**](http://wiki.rrpg.com.br) do RPPG Firecast, o nosso grupo do [**Facebook**](https://www.facebook.com/groups/460782814000421/), ou o nosso servidor no [**Discord**](https://discord.gg/dqbJ66Gh95).  

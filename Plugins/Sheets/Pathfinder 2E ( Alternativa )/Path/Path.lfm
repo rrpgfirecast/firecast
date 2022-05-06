@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmPath" formType="sheetTemplate" dataType="br.com.rrpg.Pathfinder2E" title="Pathfinder 2E" align="client" theme="light">
+    <tabControl align="client">
+		<tab title="Frente">
+            <import file="1.lfm"/>
+        </tab>		
+		<tab title="Verso">
+            <import file="2.lfm"/>
+        </tab>
+    </tabControl>
+</form>

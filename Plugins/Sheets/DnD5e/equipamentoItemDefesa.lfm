@@ -34,7 +34,7 @@
 			end;
 			
 			local function askForDelete()
-				Dialogs.confirmYesNo("Deseja realmente apagar este item?",
+				Dialogs.confirmYesNo("@@DnD5e.generic.deleteConfirmation",
 									 function (confirmado)
 										if confirmado then
 											NDB.deleteNode(self.sheet);
@@ -46,7 +46,7 @@
 		</script>
 		
 		<layout align="left" width="64" margins="{top=10, left=3, bottom=10}" name="layMenu">		
-			<button align="top" text="Apagar" name="btnApagar" onClick="askForDelete();"/>							
+			<button align="top" text="@@DnD5e.tab.equipament.btn.delete" name="btnApagar" onClick="askForDelete();"/>							
 		</layout>
 		
 		
@@ -56,12 +56,12 @@
 						lineSpacing="2" horzAlign="justify" onResize="atualizarDesiredHeight();">	
 						
 						
-					<upperGridCampoSolido height="40" field="nome" minWidth="190" maxWidth="400" titulo="NOME"/>
-					<upperGridCampoSolido height="40" field="peso" minWidth="50" maxWidth="200" titulo="PESO"/>											
-					<upperGridCampoSolido height="40" field="tipo" minWidth="100" titulo="TIPO"/>				
-					<upperGridCampoSolido height="40" field="caBonus" titulo="CA BÔNUS"/>									
-					<upperGridCampoSolidoCheckBox height="40" field="penalidade" titulo="PEN"/>
-					<upperGridCampoSolido height="40" field="propriedades" minWidth="150" maxWidth="360" titulo="PROPRIEDADES"/>
+					<upperGridCampoSolido height="40" field="nome" minWidth="190" maxWidth="400" titulo="@@DnD5e.tab.equipament.defend.lab.name"/>
+					<upperGridCampoSolido height="40" field="peso" minWidth="50" maxWidth="200" titulo="@@DnD5e.tab.equipament.defend.lab.weight"/>											
+					<upperGridCampoSolido height="40" field="tipo" minWidth="100" titulo="@@DnD5e.tab.equipament.defend.lab.type"/>				
+					<upperGridCampoSolido height="40" field="caBonus" titulo="@@DnD5e.tab.equipament.defend.lab.ca"/>									
+					<upperGridCampoSolidoCheckBox height="40" field="penalidade" titulo="@@DnD5e.tab.equipament.btn.pen"/>
+					<upperGridCampoSolido height="40" field="propriedades" minWidth="150" maxWidth="360" titulo="@@DnD5e.tab.equipament.defend.lab.property"/>
 			</flowLayout>	
 		</layout>
 </form>

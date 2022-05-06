@@ -1,0 +1,19 @@
+﻿[pt]
+selimage.title=Imagem
+selimage.instructionTitle=Selecione uma imagem
+
+selimage.directURL=Uma imagem de um site
+selimage.directURL.imageURL=URL da imagem
+
+selimage.firedrive=Uma imagem do FireDrive
+
+
+
+[en]
+selimage.title=Image
+selimage.instructionTitle=Select an image
+
+selimage.directURL=A website image
+selimage.directURL.imageURL=Image URL
+
+selimage.firedrive=A FireDrive image

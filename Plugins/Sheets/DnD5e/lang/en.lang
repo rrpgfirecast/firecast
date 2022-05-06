@@ -1,0 +1,135 @@
+﻿[en]
+DnD5e.tab.equipament.attack.title=ATTACK
+DnD5e.tab.equipament.defend.title=DEFENSE
+
+DnD5e.tab.equipament.btn.delete=Delete
+DnD5e.tab.equipament.btn.roll=Roll
+DnD5e.tab.equipament.btn.newItem=New Item
+DnD5e.tab.equipament.btn.pen=DIS.
+
+DnD5e.tab.equipament.atack.lab.name=NAME
+DnD5e.tab.equipament.atack.lab.weight=WEIGHT
+DnD5e.tab.equipament.atack.lab.attack=ATTACK
+DnD5e.tab.equipament.atack.lab.damage=DAMAGE
+DnD5e.tab.equipament.atack.lab.type=TYPE
+DnD5e.tab.equipament.atack.lab.property=PROPERTIES
+DnD5e.tab.equipament.atack.lab.range=RANGE
+DnD5e.tab.equipament.atack.lab.ammunition=AMMO
+DnD5e.tab.equipament.atack.lab.ammunitionAmount=AMMO QTY
+
+DnD5e.tab.equipament.defend.lab.name=NAME
+DnD5e.tab.equipament.defend.lab.weight=WEIGHT
+DnD5e.tab.equipament.defend.lab.type=TYPE
+DnD5e.tab.equipament.defend.lab.ca=ARMOR CLASS
+DnD5e.tab.equipament.defend.lab.property=PROPERTIES
+
+DnD5e.tab.equipament.lab.extraEquip=OTHER EQUIPMENT
+
+DnD5e.tab.equipament.lab.PC=CP
+DnD5e.tab.equipament.lab.PP=SP
+DnD5e.tab.equipament.lab.PE=EP
+DnD5e.tab.equipament.lab.PO=GP
+DnD5e.tab.equipament.lab.PL=PP
+
+
+DnD5e.features.nameCharacter=CHARACTER NAME
+DnD5e.features.age=AGE
+DnD5e.features.height=HEIGHT
+DnD5e.features.weight=WEIGHT
+DnD5e.features.eyes=EYES
+DnD5e.features.skin=SKIN
+DnD5e.features.hair=HAIR
+DnD5e.features.appearance=APPEARANCE
+DnD5e.features.personalityTraits=PERSONALITY TRAITS
+DnD5e.features.ideals=IDEALS
+DnD5e.features.bonds=BONDS
+DnD5e.features.weaknesses=FLAWS
+DnD5e.features.featurestraits=FEATURES & TRAITS
+DnD5e.features.languages=LANGUAGES
+DnD5e.features.faction=FACTION
+DnD5e.features.factionSymbol=FACTION SYMBOL
+DnD5e.features.alliesOrganizations=ALLIES & ORGANIZATIONS
+DnD5e.features.characterStory=CHARACTER BACKSTORY
+
+
+DnD5e.tabControl.tab.front=Front
+DnD5e.tabControl.tab.feature=Features & Traits
+DnD5e.tabControl.tab.equipment=Equipment
+DnD5e.tabControl.tab.spells=Spells
+DnD5e.tabControl.tab.annotations=Notes
+
+
+
+DnD5e.frente.lab.characterName=CHARACTER NAME
+DnD5e.frente.lab.classaLevel=CLASS & LEVEL
+DnD5e.frente.lab.background=BACKGROUND
+DnD5e.frente.lab.player=PLAYER NAME
+DnD5e.frente.lab.race=RACE
+DnD5e.frente.lab.trend=ALIGNMENT
+DnD5e.frente.lab.xp=EXPERIENCE POINTS
+DnD5e.frente.lab.inspiration=INSPIRATION
+DnD5e.frente.lab.proficiencyBonus=PROFICIENCY BONUS
+DnD5e.frente.lab.passivawisdom=PASSIVE WISDOM (PERCEPTION)
+
+DnD5e.frente.box.strength=STRENGTH
+DnD5e.frente.box.dexterity=DEXTERITY
+DnD5e.frente.box.constitution=CONSTITUTION
+DnD5e.frente.box.intelligence=INTELLIGENCE
+DnD5e.frente.box.wisdom=WISDOM
+DnD5e.frente.box.charisma=CHARISMA
+
+DnD5e.frente.lab.CA=ARMOR CLASS
+DnD5e.frente.lab.initiative=INITIATIVE
+DnD5e.frente.lab.displacement=SPEED
+DnD5e.frente.lab.PVMax=HIT POINTS MAXIMUM
+DnD5e.frente.lab.PVCurrent=CURRENT HIT POINTS
+DnD5e.frente.lab.PVTemp=TEMPORARY HIT POINTS
+
+DnD5e.frente.lab.total=TOTAL
+DnD5e.frente.lab.PVDice=HIT DICE
+DnD5e.frente.lab.sucess=SUCCESSES
+DnD5e.frente.lab.flaws=FAILURES
+DnD5e.frente.lab.deathteste=DEATH SAVES
+
+
+DnD5e.skills.athletics=Athletics
+DnD5e.skills.acrobatics=Acrobatics
+DnD5e.skills.stealth=Stealth
+DnD5e.skills.sleighthand=Sleight of Hand
+DnD5e.skills.arcana=Arcana
+DnD5e.skills.history=History
+DnD5e.skills.investigation=Investigation
+DnD5e.skills.nature=Nature
+DnD5e.skills.religion=Religion
+DnD5e.skills.animalhandling=Animal Handling
+DnD5e.skills.insight=Insight
+DnD5e.skills.medicine=Medicine
+DnD5e.skills.perception=Perception
+DnD5e.skills.survival=Survival
+DnD5e.skills.performance=Performance
+DnD5e.skills.deception=Deception
+DnD5e.skills.intimidation=Intimidation
+DnD5e.skills.persuasion=Persuasion
+DnD5e.savingThrows.title=Saving Throw
+
+
+DnD5e.spells.spellcasterClass=SPELLCASTING CLASS
+DnD5e.spells.spellcasterAbility= SPELLCASTING ABILITY
+DnD5e.spells.spellSaveDC= SPELL SAVE DC
+DnD5e.spells.spellAttackBonus=SPELL ATTACK BONUS
+DnD5e.spells.SP/Ki=SP/Ki
+DnD5e.spells.cantrip=CANTRIPS
+DnD5e.spells.btn.newspell=New Spell
+DnD5e.spells.int=INTELECT
+DnD5e.spells.wis=WISDOM
+DnD5e.spells.char=CHARISM
+DnD5e.spells.formulationTime=CASTING TIME
+DnD5e.spells.range=RANGE
+DnD5e.spells.component=COMPONENTS
+DnD5e.spells.duration=DURATION
+DnD5e.spells.btn.delete=Delete
+
+DnD5e.generic.deleteConfirmation=Do you really want to delete this item?
+DnD5e.generic.cantRoll=You cannot roll dice for this character.
+DnD5e.generic.attack=Attack
+DnD5e.generic.damage=Damage

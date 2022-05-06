@@ -27,8 +27,8 @@ local function constructNew_frmFichaBasicaV3RichWhite()
     _gui_assignInitialParentForForm(obj.handle);
     obj:beginUpdate();
     obj:setName("frmFichaBasicaV3RichWhite");
-    obj:setTitle("Ficha Básica do RRPG v3 - Branca");
-    obj:setDescription("Ficha Básica do RRPG v3 - Branca");
+    obj:setTitle("@@basicSheet.white.title");
+    obj:setDescription("@@basicSheet.white.description");
     obj:setDataType("rrpg.com.br.FichaBasicaV3.DT.White");
     obj:setFormType("sheetTemplate");
     obj:setTheme("light");
@@ -88,8 +88,8 @@ local _frmFichaBasicaV3RichWhite = {
     dataType = "rrpg.com.br.FichaBasicaV3.DT.White", 
     formType = "sheetTemplate", 
     formComponentName = "form", 
-    title = "Ficha Básica do RRPG v3 - Branca", 
-    description="Ficha Básica do RRPG v3 - Branca"};
+    title = "@@basicSheet.white.title", 
+    description="@@basicSheet.white.description"};
 
 frmFichaBasicaV3RichWhite = _frmFichaBasicaV3RichWhite;
 Firecast.registrarForm(_frmFichaBasicaV3RichWhite);

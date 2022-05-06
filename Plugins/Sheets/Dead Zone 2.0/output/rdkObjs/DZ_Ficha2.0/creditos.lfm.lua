@@ -159,7 +159,7 @@ local function constructNew_frmFichaCreditos()
 
     obj._e_event0 = obj.button1:addEventListener("onClick",
         function (_)
-            GUI.openInBrowser('https://github.com/rrpgfirecast/firecast/tree/master/Plugins/Sheets/Dead%20Zone%202.0')
+            GUI.openInBrowser('https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Dead%20Zone%202.0/README.md')
         end, obj);
 
     obj._e_event1 = obj.button2:addEventListener("onClick",

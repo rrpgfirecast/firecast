@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<popupForm name="frmTokenProps" width="350" height="300" drawContainer="true" resizable="true" placement="center"
+<popupForm name="frmTokenProps" width="420" height="300" drawContainer="true" resizable="true" placement="center"
 		   cancelable="false">
  		   
 	<import file="interfaceUtils.xml"/>
@@ -13,7 +13,7 @@
 		
 		.itemTitle {
 			align: left;
-			width: 130;
+			width: 110;
 			autoSize: false;
 			horzTextAlign: trailing;	
 			vertTextAlign: center;
@@ -134,7 +134,7 @@
 			</scrollBox>		
 		</tab>
 		
-		<tab name="tabAura" title="Auras">
+		<tab name="tabAura" title="@@scene.fogOfWar.aura.tabTitle">
 			<scrollBox align="client">
 					
 				<flowLayout align="top" autoHeight="true" maxControlsPerLine="1" name="flaAura" margins="{left=10, right=10, top=10, bottom=2}">	
@@ -255,7 +255,7 @@
 			-->	 		
 		
 			<layout align="top" height="28" margins="{top=2}">
-				<label name="$(nomeLabel)" align="left" width="100" horzTextAlign="trailing" margins="{right=4}"/>	
+				<label name="$(nomeLabel)" align="left" width="110" horzTextAlign="trailing" margins="{right=4}" textTrimming="none"/>	
 				
 				<layout align="client">
 					<edit name="$(nomeEdit)" align="client" type="float" min="0" max="9999" decimalPlaces="1"/>
@@ -277,11 +277,11 @@
 			-->	 			
 		
 			<layout align="top" height="28" margins="{top=2}">
-				<label name="$(nomeLabel)" align="left" width="100" horzTextAlign="trailing" margins="{right=4}"/>	
+				<label name="$(nomeLabel)" align="left" width="110" horzTextAlign="trailing" margins="{right=4}"/>	
 				
 				<layout align="client">
 					<edit name="$(nomeEdit)" align="client" type="float" min="1" max="360" decimalPlaces="0"/>
-					<label text="graus" autoSize="true" align="right" margins="{left=4, right=2}"/>													
+					<label text="@@lowerCase(scene.angle.short.degrees)" autoSize="true" align="right" margins="{left=4, right=2}"/>													
 				</layout>
 			</layout>
 			

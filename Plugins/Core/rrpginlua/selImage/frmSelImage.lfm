@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<popupForm name="frmSelImagemURL" title="Imagem" height="300" width="300" resizable="true">
+<popupForm name="frmSelImagemURL" title="@@selimage.title" height="300" width="300" resizable="true">
 	<import file="../interfaceUtils.xml"/>
 
 	<script> <![CDATA[		
@@ -93,12 +93,12 @@
      ]]>		
 	</script>
 	
-	<label class="tituloForm" text="Selecione uma imagem"/>
+	<label class="tituloForm" text="@@selimage.instructionTitle"/>
 		
 	<flowLayout align="client" name="flwMain" class="conteudoForm">
 		<!-- Imagem de um site -->
 		<flowPart name="flpImgSite" height="20" minWidth="180" maxWidth="99999" margins="{top=10}">
-			<radioButton name="rdbURL" text="Uma imagem de um site " width="175" align="left" vertTextAlign="center"/>
+			<radioButton name="rdbURL" text="@@selimage.directURL " width="175" align="left" vertTextAlign="center"/>
 			<horzLine name="linha1" strokeColor="white"/>
 			
 			<event name="onResize">
@@ -110,7 +110,7 @@
 		<flowLineBreak/>
 		
 		<flowPart margins="{left=20, top=5}" minWidth="180" maxWidth="9999" height="30">
-			<label text="URL da imagem: " align="left" autoSize="true" wordWrap="false"/>
+			<label text="@@(selimage.directURL.imageURL): " align="left" autoSize="true" wordWrap="false"/>
 			<edit name="edtURL" align="client" margins="{left=4}" onEnter="self.rdbURL.checked = true;">
 				<event name="onKeyDown">
 					if event.keyCode == 13 or event.key == "\n" then
@@ -129,7 +129,7 @@
 		
 		<!-- Imagem do FireDrive -->
 		<flowPart name="flpImgFireDrive" height="20" minWidth="180" maxWidth="99999" margins="{top=25}">
-			<radioButton name="rdbFireDrive" text="Uma imagem do FireDrive " width="185" align="left" vertTextAlign="center"/>
+			<radioButton name="rdbFireDrive" text="@@selimage.firedrive " width="185" align="left" vertTextAlign="center"/>
 			<horzLine name="linha2" strokeColor="white"/>
 			
 			<event name="onResize">
@@ -187,7 +187,7 @@
 			local KG = require("/knowGold/knowGoldPanel.dlua");
 			
 			self.panKG = KG.newPanel();
-			self.panKG:setInfo("FireDrive é uma hospedagem de arquivos na internet exclusiva para assinantes RRPG Gold");
+			self.panKG:setInfo("@@firedrive.premium.goldExclusiveInfo");
 			self.panKG.parent = self.fireDriveNavigatorContent;
 		end;
 	</script>

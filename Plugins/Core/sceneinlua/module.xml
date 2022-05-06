@@ -1,12 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<module sdkVersion="3.5">
+<module sdkVersion="3.6">
 	<!--O id identifica seu plugin globalmente. Deve ser único, conter apenas caracteres alfanuméricos, underlines, pontos e deve conter ao menos 5 caracteres e um máximo de 40. Uma vez definido o ID, você não deve alterar ele ;) -->
 	<id>BR.COM.RRPG.SCENE3_IN_LUA</id>
 	<!--version é a versão do seu plugin. Quando for lançar uma nova versão do seu módulo, altere aqui =) -->
 	<version>1.0</version>
-	<name>Núcleo do Scene 3</name>
-	<description>Plug-in que possui funcionalidades básicas do Scene 3</description>
-	<author>AlyssonRPG</author>
-	<site>http://www.rrpg.com.br</site>
-	<contact>alyssonrpg@gmail.com</contact>
+			
+	<settings>
+		<automaticStringLocalization>true</automaticStringLocalization>
+	</settings>				
+			
+    <info lang="pt">
+        <!--Informações do plugin na língua "pt". Você pode ter várias tags "info", uma para cada tradução que quiser.-->
+        <name>Núcleo do Scene 3</name>
+        <description>Plug-in que possui funcionalidades básicas para o tabuleiro de combate, também conhecido como Scene 3</description>
+        <author>Firecast - AlyssonRPG</author>
+        <site>http://www.rrpg.com.br</site>
+        <contact>alyssonrpg@gmail.com</contact>
+    </info>
+	
+    <info lang="en">
+        <!--Informações do plugin na língua "en". Você pode ter várias tags "info", uma para cada tradução que quiser.-->
+        <name>Scene 3 Core</name>
+        <description>Plug-in that has basic features for the combat grid, also known as Scene 3</description>
+    </info>	
 </module>
