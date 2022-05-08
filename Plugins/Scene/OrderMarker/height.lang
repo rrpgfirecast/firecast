@@ -1,0 +1,7 @@
+[pt]
+scene.order=Ordem
+scene.order.selected=Ordenar Todos Selecionados
+scene.order.clean=Limpar Todos Selecionados
+scene.order.select=Selecionar
+scene.order.input=Digite a altura em quadrados
+scene.order.invalid=Valor Inválido
