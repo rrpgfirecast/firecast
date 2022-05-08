@@ -1536,8 +1536,8 @@ local function constructNew_CaixaFichaNPC()
     obj.imgInfo:setWidth(18);
     obj.imgInfo:setHeight(18);
     obj.imgInfo:setName("imgInfo");
-    obj.imgInfo:setImageChecked("/ListaNPCsDock/images/info.png");
-    obj.imgInfo:setImageUnchecked("/ListaNPCsDock/images/info.png");
+    obj.imgInfo:setImageChecked("/ListaNPCsDock/images/Info.png");
+    obj.imgInfo:setImageUnchecked("/ListaNPCsDock/images/Info.png");
 
     obj.dataLink16 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink16:setParent(obj.layout50);

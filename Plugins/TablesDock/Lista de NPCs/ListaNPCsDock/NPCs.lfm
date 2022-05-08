@@ -690,7 +690,7 @@
 					end;
 				</event>
 			</imageCheckBox>
-			<imageCheckBox top="32" left="142" width="18" height="18" name="imgInfo" checkedImage="images/info.png" uncheckedImage="images/info.png" >
+			<imageCheckBox top="32" left="142" width="18" height="18" name="imgInfo" checkedImage="images/Info.png" uncheckedImage="images/Info.png" >
 				<event name="onClick">
 					local pop = self:findControlByName("popupDetails");
 					if pop ~= nil then

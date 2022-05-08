@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <module sdkVersion="3.5" compilationDate="26042016182922" sdkApiVersion="10" originalPluginFileName="ListaNPC.rpk">
 	<id>LISTA_DE_NPC_RRPG</id>
-	<version>2.1</version>
+	<version>2.1.1</version>
 	<name>Lista de NPCs</name>
 	<description>Um plugin que em resumo, é uma tabela onde é possível inserir NPCs diversos. A configuração das barrinhas e linhas é similar à do RRPG, para o propósito de manter a interface limpa e homogênea.</description>
 	<author>Mia Alexandra (Mia)</author>
