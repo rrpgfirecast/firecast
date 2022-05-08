@@ -1,199 +1,166 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <form name="frmJogadores" align="client">
-	<scrollBox align="client">
-		<rectangle left="0" top="0" width="240" height="600" color="black"/>
-		<button left="0" top="0" width="25" height="25" text="+" onClick="self.rclSelector:append();" hint="Adicionar"/>
-		<button left="25" top="0" width="25" height="25" text="V" hint="Dá voz a todos jogadores da lista, retira +Jogador dos outros e ativa mesa moderada. ">
-			<event name="onClick">
-				if sheet~=nil then
-					local jogadores = rrpg.getMesaDe(sheet).jogadores;
-					local current = nil;
-					for i = 1, #jogadores, 1 do
-						if jogadores[i].login==rrpg.getCurrentUser().login then
-							current = jogadores[i];
-						end;
-					end;
-					if not current.isMestre then return end;
-
+    <script>
+        <![CDATA[
+        local function findPopup(myPop)
+            local pop = self:findControlByName(myPop);
+                
+            if pop ~= nil and sheet ~= nil then
+                pop:setNodeObject(sheet);
+                pop:showPopupEx("center", self);
+            elseif pop == nil then
+                showMessage("Ops, bug.. nao encontrei o popup para exibir");
+            end;                
+        end;
+        ]]> 
+    </script>
+	<popup name="xpAllPopup" width="175" height="225" backOpacity="0.4" autoScopeNode="false">
+			<label align="top" height="25" text="Da XP de acordo com o NEP"/>
+			<layout align="top" height="25">
+				<label align="left" width="75" text="Sessão Nº"/>
+				<edit align="left" width="50" field="xpAll_session"/>
+				<button align="right" width="25" text="+" onClick="self.rclXpAll:append();"/>
+			</layout>
+			<layout align="top" height="25">
+				<label align="left" width="75" text="XP"/>
+				<label align="left" width="50" text="NEP"/>
+			</layout>
+			<layout align="client">
+				<recordList align="client" name="rclXpAll" field="rclXpAll" templateForm="frmXpAllForm"/>
+			</layout>
+			<button align="bottom" height="25" text="Adicionar">
+				<event name="onClick">
 					local jogadores = ndb.getChildNodes(sheet.listaDeJogadores);
+					local xps = ndb.getChildNodes(sheet.rclXpAll);
 
-					local jogadoresNome = "";
-					local mesa = rrpg.getMesaDe(sheet);
-					local usuarios = mesa.jogadores;
+					for i=1, #jogadores, 1 do 
+						local jogador = jogadores[i];
+						self.boxDetalhesDoItem.node = jogador; 
+						self.boxDetalhesDoItem.visible = (jogador ~= nil);
 
-					mesa:requestSetModerada(true);
-					for i=1, #jogadores, 1 do
-						jogadoresNome = jogadoresNome .. jogadores[i].login .. " ";
-					end;
+						local nep = jogador.nep
+						local xp = 0
 
-					for i=1, #usuarios, 1 do 
-						if string.find(jogadoresNome, usuarios[i].login)== nil then
-							if not usuarios[i].isMestre then
-								usuarios[i]:requestSetJogador(false);
-								usuarios[i]:requestSetVoz(false);
+						for j=1, #xps, 1 do
+							if nep == xps[j].nep then
+								xp = xp + xps[j].xp;
 							end
-						else
-							usuarios[i]:requestSetJogador(true);
-							usuarios[i]:requestSetVoz(true);
-						end;
-					end;
-				end;
-			</event>
-		</button>
-		<recordList left="0" top="25" width="240" height="575" name="rclSelector" field="listaDeJogadores" templateForm="frmDataScopeSelectionForm" layout="vertical" selectable="true">
-			<event name="onCompare"><![CDATA[
-				-- Esse codigo organiza a ordem dos objetos da lista alfabeticamente. 
-				return utils.compareStringPtBr(nodeA.login, nodeB.login);			  
-				]]>
-			</event>
-			<event name="onSelect"><![CDATA[
-					local node = self.rclSelector.selectedNode;
-					self.boxDetalhesDoItem.node = node; 
-					self.boxDetalhesDoItem.visible = (node ~= nil);
-				]]>
-			</event>
-			<event name="onEndEnumeration">
-			    if self.rclSelector.selectedNode == nil and sheet ~= nil then
-			        local nodes = ndb.getChildNodes(sheet.listaDeJogadores);               
+						end
 
-			        if #nodes > 0 then
-			            self.rclSelector.selectedNode = nodes[1];
-			        end;
-			    end;
-			</event>
-		</recordList>
-		
-		<dataScopeBox left="250" top="0" width="1000" height="600" name="boxDetalhesDoItem" visible="false">
-			<rectangle align="client" color="black"/>
-			
-			<layout left="5" top="5" width="990" height="25">
-				<label left="0" top="5" width="70" height="20" text="Login" horzTextAlign="center"/>
-				<edit left="70" top="0" width="100" height="25" field="login"/>
-
-				<label left="200" top="5" width="70" height="20" text="Personagem" horzTextAlign="center" fontSize="12"/>
-				<edit left="275" top="0" width="100" height="25" field="personagem"/>
-			</layout>
-
-			<layout left="5" top="30" width="170" height="300">
-				<button left="0" top="0" width="25" height="25" text="+" hint="Adiciona objetos a lista com contador relativo ao ultimo objeto adicionado ">
-			    	<event name="onClick"><![CDATA[
-			    		-- Aumenta um contador enquanto adiciona um objeto
-						if self.boxDetalhesDoItem.node~=nil then
-							local objetos = ndb.getChildNodes(self.boxDetalhesDoItem.node.listaDeExperiencia);
-
+						if xp ~= 0 then
 							local node = self.rclExperience:append();
-							if node~=nil then
-								local contador = 0;
-								for i=1, #objetos, 1 do
-									local aux = tonumber(objetos[i].contador) or 0;
-									if aux > contador then
-										contador = aux;
-									end;
-								end;
-								node.contador = contador + 1;
-							end;
-
-							self.rclExperience:sort();
-						end;
-						]]>
-					</event>
-			    </button>
-				<label left="10" top="5" width="70" height="20" text="XP" horzTextAlign="center"/>
-				<rectangle left="70" top="0" width="100" height="25" color="black" strokeColor="white" strokeSize="1"/>
-				<label left="70" top="0" width="100" height="25" field="XP" horzTextAlign="center"/>
-				<dataLink field="XP">
-					<event name="onChange">
-						local mod = self.boxDetalhesDoItem.node.XP or "0";
-						mod = string.gsub(mod, "%.", "");
-						mod = (tonumber(mod) or 0);
-						local mod2 = 0;
-						local mod3 = 0;
-						while mod>=mod2 do
-							mod3 = mod3+1;
-							mod2 = mod2 + mod3*1000;
-						end
-						
-						while true do  
-							mod2, k = string.gsub(mod2, "^(-?%d+)(%d%d%d)", '%1,%2')
-							if (k==0) then
-							  break
+							if node~= nil then 
+								node.contador = sheet.xpAll_session;
+								node.valor = xp;
 							end
 						end
-						mod2 = string.gsub(mod2, ",", ".");
-						
-						self.boxDetalhesDoItem.node.nep = mod3;
-						self.boxDetalhesDoItem.node.alvo = mod2;
-					</event>
-				</dataLink>
+					end
 
-				<label left="0" top="30" width="35" height="20" text="NEP" horzTextAlign="center"/>
-				<rectangle left="35" top="25" width="25" height="25" color="black" strokeColor="white" strokeSize="1"/>
-				<label left="35" top="25" width="25" height="25" field="nep" horzTextAlign="center"/>
-
-				<rectangle left="70" top="25" width="100" height="25" color="black" strokeColor="white" strokeSize="1"/>
-				<label left="70" top="25" width="100" height="25" field="alvo" horzTextAlign="center"/>
-
-				<rectangle left="0" top="50" width="170" height="250" color="#191919"/>
-				<recordList left="0" top="50" width="170" height="250" name="rclExperience" field="listaDeExperiencia" templateForm="frmRecordListFormExperience" layout="vertical">
-					<event name="onCompare"><![CDATA[
-						-- Esse codigo organiza a ordem dos objetos da lista. 
-				        if (tonumber(nodeA.contador) or 0) > (tonumber(nodeB.contador) or 0) then
-				            return -1;
-				        elseif (tonumber(nodeA.contador) or 0) < (tonumber(nodeB.contador) or 0) then
-				            return 1;
-				        else   
-				            return 0;
-				        end;               
-				        ]]>
-					</event>
-				</recordList>
+					sheet.rclXpAll = {}
+					self.xpAllPopup:close();
+				</event>
+			</button>
+	</popup>
+	<popup name="poAllPopup" width="175" height="225" backOpacity="0.4" autoScopeNode="false">
+			<label align="top" height="25" text="Da PO de acordo com o NEP"/>
+			<layout align="top" height="25">
+				<label align="left" width="75" text="Sessão Nº"/>
+				<edit align="left" width="50" field="poAll_session"/>
+				<button align="right" width="25" text="+" onClick="self.rclPoAll:append();"/>
 			</layout>
+			<layout align="top" height="25">
+				<label align="left" width="75" text="PO"/>
+				<label align="left" width="50" text="NEP"/>
+			</layout>
+			<layout align="client">
+				<recordList align="client" name="rclPoAll" field="rclPoAll" templateForm="frmXpAllForm"/>
+			</layout>
+			<button align="bottom" height="25" text="Adicionar">
+				<event name="onClick">
+					local jogadores = ndb.getChildNodes(sheet.listaDeJogadores);
+					local pos = ndb.getChildNodes(sheet.rclPoAll);
 
-			<layout left="210" top="30" width="170" height="300">
-				<button left="0" top="0" width="25" height="25" text="+" hint="Adiciona objetos a lista com contador relativo ao ultimo objeto adicionado ">
-			    	<event name="onClick"><![CDATA[
-			    		-- Aumenta um contador enquanto adiciona um objeto
-						if self.boxDetalhesDoItem.node~=nil then
-							local objetos = ndb.getChildNodes(self.boxDetalhesDoItem.node.listaDeDinheiro);
+					for i=1, #jogadores, 1 do 
+						local jogador = jogadores[i];
+						self.boxDetalhesDoItem.node = jogador; 
+						self.boxDetalhesDoItem.visible = (jogador ~= nil);
 
+						local nep = jogador.nep
+						local po = 0
+
+						for j=1, #pos, 1 do
+							if nep == pos[j].nep then
+								po = po + pos[j].xp;
+							end
+						end
+
+						if po ~= 0 then
 							local node = self.rclDinheiro:append();
-							if node~=nil then
-								local contador = 0;
-								for i=1, #objetos, 1 do
-									local aux = tonumber(objetos[i].contador) or 0;
-									if aux > contador then
-										contador = aux;
-									end;
-								end;
-								node.contador = contador + 1;
-							end;
+							if node~= nil then 
+								node.contador = sheet.poAll_session;
+								node.valor = po;
+							end
+						end
+					end
 
-							self.rclDinheiro:sort();
-						end;
-						]]>
-					</event>
-			    </button>
-				<label left="10" top="5" width="70" height="20" text="PO" horzTextAlign="center"/>
-				<rectangle left="70" top="0" width="100" height="25" color="black" strokeColor="white" strokeSize="1"/>
-				<label left="70" top="0" width="100" height="25" field="PO" horzTextAlign="center"/>
-
-				<rectangle left="0" top="25" width="170" height="275" color="#191919"/>
-				<recordList left="0" top="25" width="170" height="275" name="rclDinheiro" field="listaDeDinheiro" templateForm="frmRecordListFormDinheiro" layout="vertical">
-					<event name="onCompare"><![CDATA[
-						-- Esse codigo organiza a ordem dos objetos da lista. 
-				        if (tonumber(nodeA.contador) or 0) > (tonumber(nodeB.contador) or 0) then
-				            return -1;
-				        elseif (tonumber(nodeA.contador) or 0) < (tonumber(nodeB.contador) or 0) then
-				            return 1;
-				        else   
-				            return 0;
-				        end;               
-				        ]]>
-					</event>
-				</recordList>
+					sheet.rclPoAll = {}
+					self.poAllPopup:close();
+				</event>
+			</button>
+	</popup>
+	<popup name="poSetTarget" width="175" height="225" backOpacity="0.4" autoScopeNode="false">
+			<label align="top" height="25" text="Define PO por NEP"/>
+			<layout align="top" height="25">
+				<label align="left" width="75" text="Sessão Nº"/>
+				<edit align="left" width="50" field="poSet_session"/>
+				<button align="right" width="25" text="+" onClick="self.rclPoSet:append();"/>
 			</layout>
+			<layout align="top" height="25">
+				<label align="left" width="75" text="PO"/>
+				<label align="left" width="50" text="NEP"/>
+			</layout>
+			<layout align="client">
+				<recordList align="client" name="rclPoSet" field="rclPoSet" templateForm="frmXpAllForm"/>
+			</layout>
+			<button align="bottom" height="25" text="Definir">
+				<event name="onClick">
+					local jogadores = ndb.getChildNodes(sheet.listaDeJogadores);
+					local pos = ndb.getChildNodes(sheet.rclPoSet);
 
-			<rectangle left="405" top="30" width="310" height="210" color="#212121" strokeColor="white" strokeSize="1">
+					for i=1, #jogadores, 1 do 
+						local jogador = jogadores[i];
+						self.boxDetalhesDoItem.node = jogador; 
+						self.boxDetalhesDoItem.visible = (jogador ~= nil);
+
+						local nep = jogador.nep
+						local po = 0
+
+						for j=1, #pos, 1 do
+							if nep == pos[j].nep then
+								po = pos[j].xp;
+							end
+						end
+
+						local currentPO = tonumber(jogador.PO) or 0
+
+						if po ~= 0 and po > currentPO then
+							local node = self.rclDinheiro:append();
+							if node~= nil then 
+								node.contador = sheet.poSet_session;
+								node.valor = po-currentPO;
+							end
+						end
+					end
+
+					sheet.rclPoSet = {}
+					self.poSetTarget:close();
+				</event>
+			</button>
+	</popup>
+	<popup name="phAllPopup" width="225" height="275" backOpacity="0.4" autoScopeNode="false">
+			<label align="top" height="25" text="Da PH a todos jogadores."/>
+
+			<rectangle align="client" color="#212121" strokeColor="white" strokeSize="1" margins="{left=0,top=5}">
 				<label left="5" top="5" width="150" height="25" text="Presença" horzTextAlign="center" />
 				<label left="5" top="30" width="150" height="25" text="Atraso Justificado" horzTextAlign="center" />
 				<label left="5" top="55" width="150" height="25" text="Atraso" horzTextAlign="center" />
@@ -211,39 +178,327 @@
 				<edit left="155" top="130" width="50" height="25" field="usos" />
 				<edit left="155" top="155" width="50" height="25" field="desperdicio" />
 				<edit left="155" top="180" width="50" height="25" field="nivel" />
-
-				<rectangle left="205" top="5" width="100" height="150" color="black" strokeColor="white" strokeSize="1"/>
-				<label left="205" top="35" width="100" height="25" text="PH" horzTextAlign="center" fontSize="30"/>
-				<label left="205" top="70" width="100" height="25" field="ph" horzTextAlign="center" fontSize="30"/>
-				<horzLine left="230" top="105" width="50" strokeColor="white"/>
-				<label left="205" top="105" width="100" height="25" field="pontos" horzTextAlign="center"/>
-
-				<dataLink fields="{'presenca', 'atrasoJustificado', 'atraso', 'falta', 'usos', 'desperdicio','nivel'}"> 
-					<event name="onChange">
-						local mod = (tonumber(self.boxDetalhesDoItem.node.presenca) or 0)*4 + 
-										(tonumber(self.boxDetalhesDoItem.node.atrasoJustificado) or 0)*2 + 
-										(tonumber(self.boxDetalhesDoItem.node.atraso) or 0)*1 +
-										(tonumber(self.boxDetalhesDoItem.node.nivel) or 0)*10 -   
-										(tonumber(self.boxDetalhesDoItem.node.falta) or 0)*10 -  
-										(tonumber(self.boxDetalhesDoItem.node.usos) or 0)*10 - 
-										(tonumber(self.boxDetalhesDoItem.node.desperdicio) or 0);
-						self.boxDetalhesDoItem.node.pontos = mod;								
-						self.boxDetalhesDoItem.node.ph = math.max(math.floor(mod/10), 0);
-
-						if mod > 40 then
-							self.boxDetalhesDoItem.node.desperdicio = (tonumber(self.boxDetalhesDoItem.node.desperdicio) or 0) + (mod - 40);
-						end;
-					</event>
-				</dataLink>
 			</rectangle>
 
-			<rectangle left="405" top="250" width="310" height="310" color="black" strokeColor="white" strokeSize="1">
-				<label left="0" top="145" width="310" height="20" text="Avatar" horzTextAlign="center"/>
-				<image align="client" field="avatar" editable="true" hitTest="true" style="autoFit" margins="{left=2, right=2, top=2, bottom=2}">
-					<event name="OnStartDrag">
-					    drag:addData("imageURL", sheet.avatar);
+			<button align="bottom" height="25" text="Adicionar" margins="{left=0,top=5}">
+				<event name="onClick">
+					local jogadores = ndb.getChildNodes(sheet.listaDeJogadores);
+
+					for i=1, #jogadores, 1 do 
+						local jogador = jogadores[i];
+						self.boxDetalhesDoItem.node = jogador; 
+						self.boxDetalhesDoItem.visible = (jogador ~= nil);
+
+						jogador.presenca = (tonumber(jogador.presenca) or 0) + (tonumber(sheet.presenca) or 0)
+						jogador.atrasoJustificado = (tonumber(jogador.atrasoJustificado) or 0) + (tonumber(sheet.atrasoJustificado) or 0)
+						jogador.atraso = (tonumber(jogador.atraso) or 0) + (tonumber(sheet.atraso) or 0)
+						jogador.faltaJustificada = (tonumber(jogador.faltaJustificada) or 0) + (tonumber(sheet.faltaJustificada) or 0)
+						jogador.falta = (tonumber(jogador.falta) or 0) + (tonumber(sheet.falta) or 0)
+						jogador.usos = (tonumber(jogador.usos) or 0) + (tonumber(sheet.usos) or 0)
+						jogador.desperdicio = (tonumber(jogador.desperdicio) or 0) + (tonumber(sheet.desperdicio) or 0)
+						jogador.nivel = (tonumber(jogador.nivel) or 0) + (tonumber(sheet.nivel) or 0)
+					end
+
+					sheet.presenca = 0
+					sheet.atrasoJustificado = 0
+					sheet.atraso = 0
+					sheet.faltaJustificada = 0
+					sheet.falta = 0
+					sheet.usos = 0
+					sheet.desperdicio = 0
+					sheet.nivel = 0
+
+					self.phAllPopup:close();
+				</event>
+			</button>
+	</popup>
+
+	<scrollBox align="client">
+		<rectangle align="left" width="240" height="600" color="black" margins="{right=5}">
+			<layout align="top" height="25">
+				<button align="left" width="80" text="+" onClick="self.rclSelector:append();" hint="Adicionar"/>
+				<button align="left" width="80" text="+Jogadores" hint="Adiciona todos Jogadores a lista.">
+					<event name="onClick">
+						local jogadoresOnline = rrpg.getMesaDe(sheet).jogadores;
+						local jogadores = ndb.getChildNodes(sheet.listaDeJogadores);
+
+						for i=1, #jogadoresOnline, 1 do
+							local jogadorOnline = jogadoresOnline[i]
+							local found = false
+
+							if jogadorOnline.isJogador then
+								for j=1, #jogadores, 1 do
+									local jogador = jogadores[j]
+
+									if jogador.login == jogadorOnline.login then
+										found = true
+										jogador.avatar = jogadorOnline.avatar
+									end
+								end
+
+								if not found then
+									local item = self.rclSelector:append()
+
+									if item ~= nil then
+										self.boxDetalhesDoItem.node = item
+										self.boxDetalhesDoItem.visible = (item ~= nil);
+
+										item.login = jogadorOnline.login
+										item.avatar = jogadorOnline.avatar
+										item.personagem = Utils.removerFmtChat(jogadorOnline.nick)
+									end
+								end
+							end
+						end
+
 					</event>
-				</image>
+				</button>
+				<button align="left" width="80" text="Voz" hint="Dá voz a todos jogadores da lista, retira +Jogador dos outros e ativa mesa moderada. ">
+					<event name="onClick">
+						if sheet~=nil then
+							local jogadores = rrpg.getMesaDe(sheet).jogadores;
+							local current = nil;
+							for i = 1, #jogadores, 1 do
+								if jogadores[i].login==rrpg.getCurrentUser().login then
+									current = jogadores[i];
+								end;
+							end;
+							if not current.isMestre then return end;
+
+							local jogadores = ndb.getChildNodes(sheet.listaDeJogadores);
+
+							local jogadoresNome = "";
+							local mesa = rrpg.getMesaDe(sheet);
+							local usuarios = mesa.jogadores;
+
+							mesa:requestSetModerada(true);
+							for i=1, #jogadores, 1 do
+								jogadoresNome = jogadoresNome .. jogadores[i].login .. " ";
+							end;
+
+							for i=1, #usuarios, 1 do 
+								if string.find(jogadoresNome, usuarios[i].login)== nil then
+									if not usuarios[i].isMestre then
+										usuarios[i]:requestSetJogador(false);
+										usuarios[i]:requestSetVoz(false);
+									end
+								else
+									usuarios[i]:requestSetJogador(true);
+									usuarios[i]:requestSetVoz(true);
+								end;
+							end;
+						end;
+					</event>
+				</button>
+			</layout>
+			<layout align="top" height="25">
+				<button align="left" width="60" text="+XP" hint="Da XP a todos jogadores" onClick="findPopup(&quot;xpAllPopup&quot;);"/>
+				<button align="left" width="60" text="+PO" hint="Da PO a todos jogadores" onClick="findPopup(&quot;poAllPopup&quot;);"/>
+				<button align="left" width="60" text="[PO]" hint="Faz todos jogadores terem esse valor em PO." onClick="findPopup(&quot;poSetTarget&quot;);"/>
+				<button align="left" width="60" text="+PH" hint="Da PH a todos jogadores" onClick="findPopup(&quot;phAllPopup&quot;);"/>
+			</layout>
+
+			<recordList align="client" name="rclSelector" field="listaDeJogadores" templateForm="frmDataScopeSelectionForm" layout="vertical" selectable="true">
+				<event name="onCompare"><![CDATA[
+					-- Esse codigo organiza a ordem dos objetos da lista alfabeticamente. 
+					return utils.compareStringPtBr(nodeA.login, nodeB.login);			  
+					]]>
+				</event>
+				<event name="onSelect"><![CDATA[
+						local node = self.rclSelector.selectedNode;
+						self.boxDetalhesDoItem.node = node; 
+						self.boxDetalhesDoItem.visible = (node ~= nil);
+					]]>
+				</event>
+				<event name="onEndEnumeration">
+				    if self.rclSelector.selectedNode == nil and sheet ~= nil then
+				        local nodes = ndb.getChildNodes(sheet.listaDeJogadores);               
+
+				        if #nodes > 0 then
+				            self.rclSelector.selectedNode = nodes[1];
+				        end;
+				    end;
+				</event>
+			</recordList>
+		</rectangle>
+		
+		<dataScopeBox align="client" name="boxDetalhesDoItem" visible="false">
+			<rectangle align="client" color="black">
+				<layout align="top" height="25" margins="{bottom=5}">
+					<layout align="left" width="170" margins="{left=5,right=35}">
+						<label align="left" width="70" height="25" text="Login" horzTextAlign="center"/>
+						<edit align="right" width="100" height="25" field="login"/>
+					</layout>
+
+					<layout align="left" width="170">
+						<label align="left" width="70" height="25" text="Personagem" horzTextAlign="center" fontSize="12"/>
+						<edit align="right" width="100" height="25" field="personagem"/>
+					</layout>
+				</layout>
+
+				<layout align="left" width="170" margins="{left=5,right=35}">
+					<button left="0" top="0" width="25" height="25" text="+" hint="Adiciona objetos a lista com contador relativo ao ultimo objeto adicionado ">
+				    	<event name="onClick"><![CDATA[
+				    		-- Aumenta um contador enquanto adiciona um objeto
+							if self.boxDetalhesDoItem.node~=nil then
+								local objetos = ndb.getChildNodes(self.boxDetalhesDoItem.node.listaDeExperiencia);
+
+								local node = self.rclExperience:append();
+								if node~=nil then
+									local contador = 0;
+									for i=1, #objetos, 1 do
+										local aux = tonumber(objetos[i].contador) or 0;
+										if aux > contador then
+											contador = aux;
+										end;
+									end;
+									node.contador = contador + 1;
+								end;
+
+								self.rclExperience:sort();
+							end;
+							]]>
+						</event>
+				    </button>
+					<label left="10" top="5" width="70" height="20" text="XP" horzTextAlign="center"/>
+					<rectangle left="70" top="0" width="100" height="25" color="black" strokeColor="white" strokeSize="1"/>
+					<label left="70" top="0" width="100" height="25" field="XP" horzTextAlign="center" formatFloat=",0.## XP"/>
+					<dataLink field="XP">
+						<event name="onChange">
+							local mod = (tonumber(self.boxDetalhesDoItem.node.XP) or 0);
+							local mod2 = 0;
+							local mod3 = 0;
+							while mod>=mod2 do
+								mod3 = mod3+1;
+								mod2 = mod2 + mod3*1000;
+							end
+							
+							self.boxDetalhesDoItem.node.nep = mod3;
+							self.boxDetalhesDoItem.node.alvo = mod2;
+						</event>
+					</dataLink>
+
+					<label left="0" top="30" width="35" height="20" text="NEP" horzTextAlign="center"/>
+					<rectangle left="35" top="25" width="25" height="25" color="black" strokeColor="white" strokeSize="1"/>
+					<label left="35" top="25" width="25" height="25" field="nep" horzTextAlign="center"/>
+
+					<rectangle left="70" top="25" width="100" height="25" color="black" strokeColor="white" strokeSize="1"/>
+					<label left="70" top="25" width="100" height="25" field="alvo" horzTextAlign="center" formatFloat=",0.## XP"/>
+
+					<rectangle left="0" top="50" width="170" height="250" color="#191919"/>
+					<recordList left="0" top="50" width="170" height="250" name="rclExperience" field="listaDeExperiencia" templateForm="frmRecordListFormExperience" layout="vertical">
+						<event name="onCompare"><![CDATA[
+							-- Esse codigo organiza a ordem dos objetos da lista. 
+					        if (tonumber(nodeA.contador) or 0) > (tonumber(nodeB.contador) or 0) then
+					            return -1;
+					        elseif (tonumber(nodeA.contador) or 0) < (tonumber(nodeB.contador) or 0) then
+					            return 1;
+					        else   
+					            return 0;
+					        end;               
+					        ]]>
+						</event>
+					</recordList>
+				</layout>
+
+				<layout align="left" width="170" margins="{left=0,right=30}">
+					<button left="0" top="0" width="25" height="25" text="+" hint="Adiciona objetos a lista com contador relativo ao ultimo objeto adicionado ">
+				    	<event name="onClick"><![CDATA[
+				    		-- Aumenta um contador enquanto adiciona um objeto
+							if self.boxDetalhesDoItem.node~=nil then
+								local objetos = ndb.getChildNodes(self.boxDetalhesDoItem.node.listaDeDinheiro);
+
+								local node = self.rclDinheiro:append();
+								if node~=nil then
+									local contador = 0;
+									for i=1, #objetos, 1 do
+										local aux = tonumber(objetos[i].contador) or 0;
+										if aux > contador then
+											contador = aux;
+										end;
+									end;
+									node.contador = contador + 1;
+								end;
+
+								self.rclDinheiro:sort();
+							end;
+							]]>
+						</event>
+				    </button>
+					<label left="10" top="5" width="70" height="20" text="PO" horzTextAlign="center"/>
+					<rectangle left="70" top="0" width="100" height="25" color="black" strokeColor="white" strokeSize="1"/>
+					<label left="70" top="0" width="100" height="25" field="PO" horzTextAlign="center" formatFloat=",0.## PO"/>
+
+					<rectangle left="0" top="25" width="170" height="275" color="#191919"/>
+					<recordList left="0" top="25" width="170" height="275" name="rclDinheiro" field="listaDeDinheiro" templateForm="frmRecordListFormDinheiro" layout="vertical">
+						<event name="onCompare"><![CDATA[
+							-- Esse codigo organiza a ordem dos objetos da lista. 
+					        if (tonumber(nodeA.contador) or 0) > (tonumber(nodeB.contador) or 0) then
+					            return -1;
+					        elseif (tonumber(nodeA.contador) or 0) < (tonumber(nodeB.contador) or 0) then
+					            return 1;
+					        else   
+					            return 0;
+					        end;               
+					        ]]>
+						</event>
+					</recordList>
+				</layout>
+
+				<layout align="left" width="310">
+					<rectangle align="top" height="210" color="#212121" strokeColor="white" strokeSize="1" margins="{left=0,top=5}">
+						<label left="5" top="5" width="150" height="25" text="Presença" horzTextAlign="center" />
+						<label left="5" top="30" width="150" height="25" text="Atraso Justificado" horzTextAlign="center" />
+						<label left="5" top="55" width="150" height="25" text="Atraso" horzTextAlign="center" />
+						<label left="5" top="80" width="150" height="25" text="Falta Justificada" horzTextAlign="center" />
+						<label left="5" top="105" width="150" height="25" text="Falta" horzTextAlign="center" />
+						<label left="5" top="130" width="150" height="25" text="Uso" horzTextAlign="center" />
+						<label left="5" top="155" width="150" height="25" text="Desperdicio" horzTextAlign="center" />
+						<label left="5" top="180" width="150" height="25" text="Nível" horzTextAlign="center" />
+						
+						<edit left="155" top="5" width="50" height="25" field="presenca" />
+						<edit left="155" top="30" width="50" height="25" field="atrasoJustificado" />
+						<edit left="155" top="55" width="50" height="25" field="atraso" />
+						<edit left="155" top="80" width="50" height="25" field="faltaJustificada" />
+						<edit left="155" top="105" width="50" height="25" field="falta" />
+						<edit left="155" top="130" width="50" height="25" field="usos" />
+						<edit left="155" top="155" width="50" height="25" field="desperdicio" />
+						<edit left="155" top="180" width="50" height="25" field="nivel" />
+
+						<rectangle left="205" top="5" width="100" height="150" color="black" strokeColor="white" strokeSize="1"/>
+						<label left="205" top="35" width="100" height="25" text="PH" horzTextAlign="center" fontSize="30"/>
+						<label left="205" top="70" width="100" height="25" field="ph" horzTextAlign="center" fontSize="30"/>
+						<horzLine left="230" top="105" width="50" strokeColor="white"/>
+						<label left="205" top="105" width="100" height="25" field="pontos" horzTextAlign="center"/>
+
+						<dataLink fields="{'presenca', 'atrasoJustificado', 'atraso', 'falta', 'usos', 'desperdicio','nivel'}"> 
+							<event name="onChange">
+								local mod = (tonumber(self.boxDetalhesDoItem.node.presenca) or 0)*4 + 
+												(tonumber(self.boxDetalhesDoItem.node.atrasoJustificado) or 0)*2 + 
+												(tonumber(self.boxDetalhesDoItem.node.atraso) or 0)*1 +
+												(tonumber(self.boxDetalhesDoItem.node.nivel) or 0)*10 -   
+												(tonumber(self.boxDetalhesDoItem.node.falta) or 0)*10 -  
+												(tonumber(self.boxDetalhesDoItem.node.usos) or 0)*10 - 
+												(tonumber(self.boxDetalhesDoItem.node.desperdicio) or 0);
+								self.boxDetalhesDoItem.node.pontos = mod;								
+								self.boxDetalhesDoItem.node.ph = math.max(math.floor(mod/10), 0);
+
+								if mod > 40 then
+									self.boxDetalhesDoItem.node.desperdicio = (tonumber(self.boxDetalhesDoItem.node.desperdicio) or 0) + (mod - 40);
+								end;
+							</event>
+						</dataLink>
+					</rectangle>
+
+					<rectangle align="top" height="310" color="black" strokeColor="white" strokeSize="1" margins="{left=0,top=5}">
+						<label left="0" top="145" width="310" height="20" text="Avatar" horzTextAlign="center"/>
+						<image align="client" field="avatar" editable="true" hitTest="true" style="autoFit" margins="{left=2, right=2, top=2, bottom=2}">
+							<event name="OnStartDrag">
+							    drag:addData("imageURL", sheet.avatar);
+							</event>
+						</image>
+					</rectangle>
+				</layout>
 			</rectangle>
 		</dataScopeBox>
 	</scrollBox>

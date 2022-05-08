@@ -481,7 +481,7 @@ Firecast.Messaging.listen("ChatMessage",
 			elseif (arg[2]=="math") then
 				-- faz calculo matematico
 			elseif (arg[2]==">>" and message.jogador~=nil and message.jogador.isJogador and afkdb.config[message.mesa.codigoInterno].passAction) then
-				if Utils.removerFmtChat(message.jogador.nick) == afkdb.config[message.mesa.codigoInterno].actionOwner then
+				if Utils.compareStringPtBr(Utils.removerFmtChat(message.jogador.nick), Utils.removerFmtChat(afkdb.config[message.mesa.codigoInterno].actionOwner)) == 0 then
 					message.chat:enviarMensagem("/>>");
 				else
 					tryNPC(true,message.chat,"AfkBot","Não é sua vez \"" .. (Utils.removerFmtChat(message.jogador.nick) or "nil") .. "\", é a vez de \"" .. (afkdb.config[message.mesa.codigoInterno].actionOwner or "nil") .. "\".");

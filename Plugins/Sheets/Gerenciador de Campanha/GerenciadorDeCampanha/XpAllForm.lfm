@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmXpAllForm" width="150" height="25" margins="{top=1}">
+	<rectangle align="client" color="#212121">
+		<edit align="left" width="75" height="25" field="xp" type="number"/>
+		<edit align="left" width="50" height="25" field="nep" type="number"/>
+
+		<!-- Botão que apaga o objeto da lista -->
+		<button align="left" width="25" text="X">
+			<event name="onClick">
+				dialogs.confirmOkCancel("Tem certeza que quer apagar esse item?",
+					function (confirmado)
+						if confirmado then
+							ndb.deleteNode(sheet);
+						end;
+				end);
+			</event>
+		</button>
+	</rectangle>
+</form>

@@ -105,17 +105,7 @@ local function constructNew_frmRecordListFormDinheiro()
             							soma = soma + (tonumber(objetos[i].valor) or 0);
             						end;
             
-            						local mod = "" .. soma;
-            						
-            						while true do  
-            							mod, k = string.gsub(mod, "^(-?%d+)(%d%d%d)", '%1,%2')
-            							if (k==0) then
-            							  break
-            							end
-            						end
-            						mod = string.gsub(mod, ",", ".");
-            
-            						node.PO = mod;
+            						node.PO = soma;
             					end;
             				end;
         end, obj);
