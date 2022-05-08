@@ -1,5 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <form name="frmContractItemClosed" width="600" height="300" theme="dark" margins="{top=1}" padding="{top=5,bottom=5,left=5,right=5}">
+    <event name="onScopeNodeChanged">
+        if self.observer ~= nil then   
+            self.observer.enabled = false;
+            self.observer = nil;
+        end;
+         
+        if sheet ~= nil then   
+            self.observer = NDB.newObserver(sheet);
+            self.observer.onPermissionListChanged =
+                function(node)                 
+                    self:atualizarCbxInvisivel();
+                end;                               
+            self.observer.onFinalPermissionsCouldBeChanged =
+                function(node)
+                    self:atualizarCbxInvisivel();
+                end;                               
+            self:atualizarCbxInvisivel();  
+        end;
+    </event>
 	<script> 
 		<![CDATA[
 		local function askForDelete()
@@ -40,9 +59,30 @@
             end
 
             if name=="d" then
-                if checkbox == true then sheet.dificuldade = index end 
-                if checkbox == false then sheet.dificuldade = (index-1) end 
+                sheet.dificuldade = (sheet.d1 and 1 or 0) + 
+                                    (sheet.d2 and 1 or 0) + 
+                                    (sheet.d3 and 1 or 0) + 
+                                    (sheet.d4 and 1 or 0) + 
+                                    (sheet.d5 and 1 or 0);
             end
+        end;
+
+        function self:alternarVisibilidade()
+            if sheet==nil then return end
+            if self.cbxInvisivel.checked then
+                NDB.setPermission(sheet, "group", "jogadores", "read", nil);
+                NDB.setPermission(sheet, "group", "espectadores", "read", nil);
+                sheet.visibilidade = 1
+            else
+                NDB.setPermission(sheet, "group", "jogadores", "read", "deny");
+                NDB.setPermission(sheet, "group", "espectadores", "read", "deny");
+                sheet.visibilidade = 0
+            end;
+        end; 
+        function self:atualizarCbxInvisivel()          
+            self.cbxInvisivel.checked = NDB.getPermission(sheet, "group", "espectadores", "read") == "deny" or
+                                        NDB.getPermission(sheet, "group", "jogadores", "read") == "deny"                                                                                    
+             self.cbxInvisivel.enabled = NDB.testPermission(sheet, "writePermissions");
         end;
         ]]>	
 	</script> 
@@ -76,8 +116,6 @@
                 elseif "$(type)"=="direct" then
                     sheet.$(field)Total = val + mult
                 end
-
-
             </event>
         </dataLink>
     </template>
@@ -88,6 +126,7 @@
             <edit align="client" field="nome"/>
 
             <button align="right" width="25" text="X" onClick="askForDelete();"/>
+            <imageCheckBox name="cbxInvisivel" field="cbxInvisivel" align="right" width="25" checkedImage="images/invisivel.png" uncheckedImage="images/visivel.png" autoChange="false" onClick="self:alternarVisibilidade();" hint="Altera a visibilidade entre somente o mestre e todos. "/> 
         </layout>
 
         <layout align="left" width="250" margins="{right=5}">
@@ -107,19 +146,29 @@
             <layout align="top" height="25">
                 <label align="left" width="75" text="Reputação" horzTextAlign="center"/>
                 <layout align="left" width="80">
-                    <checkBox align="left" width="16" field="r1" onChange="toggleCheckbox(&quot;r&quot;,1)"/>
-                    <checkBox align="left" width="16" field="r2" onChange="toggleCheckbox(&quot;r&quot;,2)"/>
-                    <checkBox align="left" width="16" field="r3" onChange="toggleCheckbox(&quot;r&quot;,3)"/>
-                    <checkBox align="left" width="16" field="r4" onChange="toggleCheckbox(&quot;r&quot;,4)"/>
-                    <checkBox align="left" width="16" field="r5" onChange="toggleCheckbox(&quot;r&quot;,5)"/>
+                    <checkBox align="left" width="16" field="r1"/>
+                    <dataLink field="r1" onUserChange="toggleCheckbox(&quot;r&quot;,1)"/>
+                    <checkBox align="left" width="16" field="r2"/>
+                    <dataLink field="r2" onUserChange="toggleCheckbox(&quot;r&quot;,2)"/>
+                    <checkBox align="left" width="16" field="r3"/>
+                    <dataLink field="r3" onUserChange="toggleCheckbox(&quot;r&quot;,3)"/>
+                    <checkBox align="left" width="16" field="r4"/>
+                    <dataLink field="r4" onUserChange="toggleCheckbox(&quot;r&quot;,4)"/>
+                    <checkBox align="left" width="16" field="r5"/>
+                    <dataLink field="r5" onUserChange="toggleCheckbox(&quot;r&quot;,5)"/>
                 </layout>
                 <label align="right" width="75" text="Dificuldade" horzTextAlign="center"/>
                 <layout align="right" width="80">
-                    <checkBox align="left" width="16" field="d1" onChange="toggleCheckbox(&quot;d&quot;,1)"/>
-                    <checkBox align="left" width="16" field="d2" onChange="toggleCheckbox(&quot;d&quot;,2)"/>
-                    <checkBox align="left" width="16" field="d3" onChange="toggleCheckbox(&quot;d&quot;,3)"/>
-                    <checkBox align="left" width="16" field="d4" onChange="toggleCheckbox(&quot;d&quot;,4)"/>
-                    <checkBox align="left" width="16" field="d5" onChange="toggleCheckbox(&quot;d&quot;,5)"/>
+                    <checkBox align="left" width="16" field="d1"/>
+                    <dataLink field="d1" onUserChange="toggleCheckbox(&quot;d&quot;,1)"/>
+                    <checkBox align="left" width="16" field="d2"/>
+                    <dataLink field="d2" onUserChange="toggleCheckbox(&quot;d&quot;,2)"/>
+                    <checkBox align="left" width="16" field="d3"/>
+                    <dataLink field="d3" onUserChange="toggleCheckbox(&quot;d&quot;,3)"/>
+                    <checkBox align="left" width="16" field="d4"/>
+                    <dataLink field="d4" onUserChange="toggleCheckbox(&quot;d&quot;,4)"/>
+                    <checkBox align="left" width="16" field="d5"/>
+                    <dataLink field="d5" onUserChange="toggleCheckbox(&quot;d&quot;,5)"/>
                 </layout>
             </layout>
 
@@ -168,19 +217,29 @@
             <layout align="top" height="25">
                 <label align="left" width="75" text="Nota Contratante" horzTextAlign="center" fontSize="9"/>
                 <layout align="left" width="80">
-                    <checkBox align="left" width="16" field="n1" onChange="toggleCheckbox(&quot;n&quot;,1)"/>
-                    <checkBox align="left" width="16" field="n2" onChange="toggleCheckbox(&quot;n&quot;,2)"/>
-                    <checkBox align="left" width="16" field="n3" onChange="toggleCheckbox(&quot;n&quot;,3)"/>
-                    <checkBox align="left" width="16" field="n4" onChange="toggleCheckbox(&quot;n&quot;,4)"/>
-                    <checkBox align="left" width="16" field="n5" onChange="toggleCheckbox(&quot;n&quot;,5)"/>
+                    <checkBox align="left" width="16" field="n1"/>
+                    <dataLink field="n1" onUserChange="toggleCheckbox(&quot;n&quot;,1)"/>
+                    <checkBox align="left" width="16" field="n2"/>
+                    <dataLink field="n2" onUserChange="toggleCheckbox(&quot;n&quot;,2)"/>
+                    <checkBox align="left" width="16" field="n3"/>
+                    <dataLink field="n3" onUserChange="toggleCheckbox(&quot;n&quot;,3)"/>
+                    <checkBox align="left" width="16" field="n4"/>
+                    <dataLink field="n4" onUserChange="toggleCheckbox(&quot;n&quot;,4)"/>
+                    <checkBox align="left" width="16" field="n5"/>
+                    <dataLink field="n5" onUserChange="toggleCheckbox(&quot;n&quot;,5)"/>
                 </layout>
                 <label align="right" width="75" text="Avaliação do Time" horzTextAlign="center" fontSize="9"/>
                 <layout align="right" width="80">
-                    <checkBox align="left" width="16" field="a1" onChange="toggleCheckbox(&quot;a&quot;,1)"/>
-                    <checkBox align="left" width="16" field="a2" onChange="toggleCheckbox(&quot;a&quot;,2)"/>
-                    <checkBox align="left" width="16" field="a3" onChange="toggleCheckbox(&quot;a&quot;,3)"/>
-                    <checkBox align="left" width="16" field="a4" onChange="toggleCheckbox(&quot;a&quot;,4)"/>
-                    <checkBox align="left" width="16" field="a5" onChange="toggleCheckbox(&quot;a&quot;,5)"/>
+                    <checkBox align="left" width="16" field="a1"/>
+                    <dataLink field="a1" onUserChange="toggleCheckbox(&quot;a&quot;,1)"/>
+                    <checkBox align="left" width="16" field="a2"/>
+                    <dataLink field="a2" onUserChange="toggleCheckbox(&quot;a&quot;,2)"/>
+                    <checkBox align="left" width="16" field="a3"/>
+                    <dataLink field="a3" onUserChange="toggleCheckbox(&quot;a&quot;,3)"/>
+                    <checkBox align="left" width="16" field="a4"/>
+                    <dataLink field="a4" onUserChange="toggleCheckbox(&quot;a&quot;,4)"/>
+                    <checkBox align="left" width="16" field="a5"/>
+                    <dataLink field="a5" onUserChange="toggleCheckbox(&quot;a&quot;,5)"/>
                 </layout>
 
                 <dataLink fields="{'a1', 'a2', 'a3', 'a4', a5}">

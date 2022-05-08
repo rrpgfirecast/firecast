@@ -273,7 +273,7 @@ local function constructNew_frmFichaContrato()
     obj.flowLayout1:setParent(obj.scrollBox2);
     obj.flowLayout1:setAlign("top");
     obj.flowLayout1:setAutoHeight(true);
-    obj.flowLayout1:setMaxColumns(3);
+    obj.flowLayout1:setMaxColumns(2);
     obj.flowLayout1:setHorzAlign("center");
     obj.flowLayout1:setOrientation("vertical");
     obj.flowLayout1:setAvoidScale(true);
@@ -288,6 +288,7 @@ local function constructNew_frmFichaContrato()
     obj.rclContratosAbertosPart:setName("rclContratosAbertosPart");
     obj.rclContratosAbertosPart:setAdjustHeightToLine(false);
     obj.rclContratosAbertosPart:setMargins({left=5});
+    obj.rclContratosAbertosPart:setAvoidScale(true);
 
 
                     rawset(self.rclContratosAbertosPart, "_recalcHeight",                    
@@ -338,6 +339,7 @@ local function constructNew_frmFichaContrato()
     obj.rclContratosPrivadosPart:setName("rclContratosPrivadosPart");
     obj.rclContratosPrivadosPart:setAdjustHeightToLine(false);
     obj.rclContratosPrivadosPart:setMargins({left=5});
+    obj.rclContratosPrivadosPart:setAvoidScale(true);
 
 
                     rawset(self.rclContratosPrivadosPart, "_recalcHeight",                    
@@ -388,6 +390,7 @@ local function constructNew_frmFichaContrato()
     obj.rclContratosFechadosPart:setName("rclContratosFechadosPart");
     obj.rclContratosFechadosPart:setAdjustHeightToLine(false);
     obj.rclContratosFechadosPart:setMargins({left=5});
+    obj.rclContratosFechadosPart:setAvoidScale(true);
 
 
                     rawset(self.rclContratosFechadosPart, "_recalcHeight",                    
@@ -619,6 +622,7 @@ local function constructNew_frmFichaContrato()
     obj.rclInventarioNavesPart:setName("rclInventarioNavesPart");
     obj.rclInventarioNavesPart:setAdjustHeightToLine(false);
     obj.rclInventarioNavesPart:setMargins({left=5});
+    obj.rclInventarioNavesPart:setAvoidScale(true);
 
 
                     rawset(self.rclInventarioNavesPart, "_recalcHeight",                    
@@ -669,6 +673,7 @@ local function constructNew_frmFichaContrato()
     obj.rclInventarioMechasPart:setName("rclInventarioMechasPart");
     obj.rclInventarioMechasPart:setAdjustHeightToLine(false);
     obj.rclInventarioMechasPart:setMargins({left=5});
+    obj.rclInventarioMechasPart:setAvoidScale(true);
 
 
                     rawset(self.rclInventarioMechasPart, "_recalcHeight",                    
@@ -719,6 +724,7 @@ local function constructNew_frmFichaContrato()
     obj.rclInventarioVeiculosPart:setName("rclInventarioVeiculosPart");
     obj.rclInventarioVeiculosPart:setAdjustHeightToLine(false);
     obj.rclInventarioVeiculosPart:setMargins({left=5});
+    obj.rclInventarioVeiculosPart:setAvoidScale(true);
 
 
                     rawset(self.rclInventarioVeiculosPart, "_recalcHeight",                    
@@ -769,6 +775,7 @@ local function constructNew_frmFichaContrato()
     obj.rclInventarioEquipamentosPart:setName("rclInventarioEquipamentosPart");
     obj.rclInventarioEquipamentosPart:setAdjustHeightToLine(false);
     obj.rclInventarioEquipamentosPart:setMargins({left=5});
+    obj.rclInventarioEquipamentosPart:setAvoidScale(true);
 
 
                     rawset(self.rclInventarioEquipamentosPart, "_recalcHeight",                    
@@ -819,6 +826,7 @@ local function constructNew_frmFichaContrato()
     obj.rclInventarioArmasPart:setName("rclInventarioArmasPart");
     obj.rclInventarioArmasPart:setAdjustHeightToLine(false);
     obj.rclInventarioArmasPart:setMargins({left=5});
+    obj.rclInventarioArmasPart:setAvoidScale(true);
 
 
                     rawset(self.rclInventarioArmasPart, "_recalcHeight",                    
@@ -869,6 +877,7 @@ local function constructNew_frmFichaContrato()
     obj.rclInventarioMunicaoPart:setName("rclInventarioMunicaoPart");
     obj.rclInventarioMunicaoPart:setAdjustHeightToLine(false);
     obj.rclInventarioMunicaoPart:setMargins({left=5});
+    obj.rclInventarioMunicaoPart:setAvoidScale(true);
 
 
                     rawset(self.rclInventarioMunicaoPart, "_recalcHeight",                    
@@ -919,6 +928,7 @@ local function constructNew_frmFichaContrato()
     obj.rclInventarioPecasPart:setName("rclInventarioPecasPart");
     obj.rclInventarioPecasPart:setAdjustHeightToLine(false);
     obj.rclInventarioPecasPart:setMargins({left=5});
+    obj.rclInventarioPecasPart:setAvoidScale(true);
 
 
                     rawset(self.rclInventarioPecasPart, "_recalcHeight",                    
@@ -969,6 +979,7 @@ local function constructNew_frmFichaContrato()
     obj.rclInventarioOutrosPart:setName("rclInventarioOutrosPart");
     obj.rclInventarioOutrosPart:setAdjustHeightToLine(false);
     obj.rclInventarioOutrosPart:setMargins({left=5});
+    obj.rclInventarioOutrosPart:setAvoidScale(true);
 
 
                     rawset(self.rclInventarioOutrosPart, "_recalcHeight",                    
@@ -1734,10 +1745,15 @@ local function constructNew_frmFichaContrato()
 
     obj._e_event4 = obj.rclContratosAbertos:addEventListener("onCompare",
         function (_, nodeA, nodeB)
-            local dif = ((tonumber(nodeA.dificuldade) or 0) - (tonumber(nodeB.dificuldade) or 0));
+            -- Jogue contratos invisiveis pro fim
+                                local vis = ((tonumber(nodeB.visibilidade) or 1) - (tonumber(nodeA.visibilidade) or 1));
+                                if vis~=0 then return vis end
             
+                                -- Ordene por dificuldade
+                                local dif = ((tonumber(nodeA.dificuldade) or 0) - (tonumber(nodeB.dificuldade) or 0));
                                 if dif~=0 then return dif end
             
+                                -- Ordene por nome
                                 return utils.compareStringPtBr(nodeA.nome, nodeB.nome);
         end, obj);
 
@@ -1753,10 +1769,15 @@ local function constructNew_frmFichaContrato()
 
     obj._e_event7 = obj.rclContratosPrivados:addEventListener("onCompare",
         function (_, nodeA, nodeB)
-            local dif = ((tonumber(nodeA.dificuldade) or 0) - (tonumber(nodeB.dificuldade) or 0));
+            -- Jogue contratos invisiveis pro fim
+                                local vis = ((tonumber(nodeB.visibilidade) or 1) - (tonumber(nodeA.visibilidade) or 1));
+                                if vis~=0 then return vis end
             
+                                -- Ordene por dificuldade
+                                local dif = ((tonumber(nodeA.dificuldade) or 0) - (tonumber(nodeB.dificuldade) or 0));
                                 if dif~=0 then return dif end
             
+                                -- Ordene por nome
                                 return utils.compareStringPtBr(nodeA.nome, nodeB.nome);
         end, obj);
 
@@ -1772,10 +1793,15 @@ local function constructNew_frmFichaContrato()
 
     obj._e_event10 = obj.rclContratosFechados:addEventListener("onCompare",
         function (_, nodeA, nodeB)
-            local dif = ((tonumber(nodeA.dificuldade) or 0) - (tonumber(nodeB.dificuldade) or 0));
+            -- Jogue contratos invisiveis pro fim
+                                local vis = ((tonumber(nodeB.visibilidade) or 1) - (tonumber(nodeA.visibilidade) or 1));
+                                if vis~=0 then return vis end
             
+                                -- Ordene por dificuldade
+                                local dif = ((tonumber(nodeA.dificuldade) or 0) - (tonumber(nodeB.dificuldade) or 0));
                                 if dif~=0 then return dif end
             
+                                -- Ordene por nome
                                 return utils.compareStringPtBr(nodeA.nome, nodeB.nome);
         end, obj);
 
@@ -1814,10 +1840,15 @@ local function constructNew_frmFichaContrato()
 
     obj._e_event17 = obj.rclInventarioNaves:addEventListener("onCompare",
         function (_, nodeA, nodeB)
-            local dif = ((tonumber(nodeA.dificuldade) or 0) - (tonumber(nodeB.dificuldade) or 0));
+            -- Jogue contratos invisiveis pro fim
+                                local vis = ((tonumber(nodeB.visibilidade) or 1) - (tonumber(nodeA.visibilidade) or 1));
+                                if vis~=0 then return vis end
             
+                                -- Ordene por dificuldade
+                                local dif = ((tonumber(nodeA.dificuldade) or 0) - (tonumber(nodeB.dificuldade) or 0));
                                 if dif~=0 then return dif end
             
+                                -- Ordene por nome
                                 return utils.compareStringPtBr(nodeA.nome, nodeB.nome);
         end, obj);
 
@@ -1833,10 +1864,15 @@ local function constructNew_frmFichaContrato()
 
     obj._e_event20 = obj.rclInventarioMechas:addEventListener("onCompare",
         function (_, nodeA, nodeB)
-            local dif = ((tonumber(nodeA.dificuldade) or 0) - (tonumber(nodeB.dificuldade) or 0));
+            -- Jogue contratos invisiveis pro fim
+                                local vis = ((tonumber(nodeB.visibilidade) or 1) - (tonumber(nodeA.visibilidade) or 1));
+                                if vis~=0 then return vis end
             
+                                -- Ordene por dificuldade
+                                local dif = ((tonumber(nodeA.dificuldade) or 0) - (tonumber(nodeB.dificuldade) or 0));
                                 if dif~=0 then return dif end
             
+                                -- Ordene por nome
                                 return utils.compareStringPtBr(nodeA.nome, nodeB.nome);
         end, obj);
 
@@ -1852,10 +1888,15 @@ local function constructNew_frmFichaContrato()
 
     obj._e_event23 = obj.rclInventarioVeiculos:addEventListener("onCompare",
         function (_, nodeA, nodeB)
-            local dif = ((tonumber(nodeA.dificuldade) or 0) - (tonumber(nodeB.dificuldade) or 0));
+            -- Jogue contratos invisiveis pro fim
+                                local vis = ((tonumber(nodeB.visibilidade) or 1) - (tonumber(nodeA.visibilidade) or 1));
+                                if vis~=0 then return vis end
             
+                                -- Ordene por dificuldade
+                                local dif = ((tonumber(nodeA.dificuldade) or 0) - (tonumber(nodeB.dificuldade) or 0));
                                 if dif~=0 then return dif end
             
+                                -- Ordene por nome
                                 return utils.compareStringPtBr(nodeA.nome, nodeB.nome);
         end, obj);
 
@@ -1871,10 +1912,15 @@ local function constructNew_frmFichaContrato()
 
     obj._e_event26 = obj.rclInventarioEquipamentos:addEventListener("onCompare",
         function (_, nodeA, nodeB)
-            local dif = ((tonumber(nodeA.dificuldade) or 0) - (tonumber(nodeB.dificuldade) or 0));
+            -- Jogue contratos invisiveis pro fim
+                                local vis = ((tonumber(nodeB.visibilidade) or 1) - (tonumber(nodeA.visibilidade) or 1));
+                                if vis~=0 then return vis end
             
+                                -- Ordene por dificuldade
+                                local dif = ((tonumber(nodeA.dificuldade) or 0) - (tonumber(nodeB.dificuldade) or 0));
                                 if dif~=0 then return dif end
             
+                                -- Ordene por nome
                                 return utils.compareStringPtBr(nodeA.nome, nodeB.nome);
         end, obj);
 
@@ -1890,10 +1936,15 @@ local function constructNew_frmFichaContrato()
 
     obj._e_event29 = obj.rclInventarioArmas:addEventListener("onCompare",
         function (_, nodeA, nodeB)
-            local dif = ((tonumber(nodeA.dificuldade) or 0) - (tonumber(nodeB.dificuldade) or 0));
+            -- Jogue contratos invisiveis pro fim
+                                local vis = ((tonumber(nodeB.visibilidade) or 1) - (tonumber(nodeA.visibilidade) or 1));
+                                if vis~=0 then return vis end
             
+                                -- Ordene por dificuldade
+                                local dif = ((tonumber(nodeA.dificuldade) or 0) - (tonumber(nodeB.dificuldade) or 0));
                                 if dif~=0 then return dif end
             
+                                -- Ordene por nome
                                 return utils.compareStringPtBr(nodeA.nome, nodeB.nome);
         end, obj);
 
@@ -1909,10 +1960,15 @@ local function constructNew_frmFichaContrato()
 
     obj._e_event32 = obj.rclInventarioMunicao:addEventListener("onCompare",
         function (_, nodeA, nodeB)
-            local dif = ((tonumber(nodeA.dificuldade) or 0) - (tonumber(nodeB.dificuldade) or 0));
+            -- Jogue contratos invisiveis pro fim
+                                local vis = ((tonumber(nodeB.visibilidade) or 1) - (tonumber(nodeA.visibilidade) or 1));
+                                if vis~=0 then return vis end
             
+                                -- Ordene por dificuldade
+                                local dif = ((tonumber(nodeA.dificuldade) or 0) - (tonumber(nodeB.dificuldade) or 0));
                                 if dif~=0 then return dif end
             
+                                -- Ordene por nome
                                 return utils.compareStringPtBr(nodeA.nome, nodeB.nome);
         end, obj);
 
@@ -1928,10 +1984,15 @@ local function constructNew_frmFichaContrato()
 
     obj._e_event35 = obj.rclInventarioPecas:addEventListener("onCompare",
         function (_, nodeA, nodeB)
-            local dif = ((tonumber(nodeA.dificuldade) or 0) - (tonumber(nodeB.dificuldade) or 0));
+            -- Jogue contratos invisiveis pro fim
+                                local vis = ((tonumber(nodeB.visibilidade) or 1) - (tonumber(nodeA.visibilidade) or 1));
+                                if vis~=0 then return vis end
             
+                                -- Ordene por dificuldade
+                                local dif = ((tonumber(nodeA.dificuldade) or 0) - (tonumber(nodeB.dificuldade) or 0));
                                 if dif~=0 then return dif end
             
+                                -- Ordene por nome
                                 return utils.compareStringPtBr(nodeA.nome, nodeB.nome);
         end, obj);
 
@@ -1947,10 +2008,15 @@ local function constructNew_frmFichaContrato()
 
     obj._e_event38 = obj.rclInventarioOutros:addEventListener("onCompare",
         function (_, nodeA, nodeB)
-            local dif = ((tonumber(nodeA.dificuldade) or 0) - (tonumber(nodeB.dificuldade) or 0));
+            -- Jogue contratos invisiveis pro fim
+                                local vis = ((tonumber(nodeB.visibilidade) or 1) - (tonumber(nodeA.visibilidade) or 1));
+                                if vis~=0 then return vis end
             
+                                -- Ordene por dificuldade
+                                local dif = ((tonumber(nodeA.dificuldade) or 0) - (tonumber(nodeB.dificuldade) or 0));
                                 if dif~=0 then return dif end
             
+                                -- Ordene por nome
                                 return utils.compareStringPtBr(nodeA.nome, nodeB.nome);
         end, obj);
 

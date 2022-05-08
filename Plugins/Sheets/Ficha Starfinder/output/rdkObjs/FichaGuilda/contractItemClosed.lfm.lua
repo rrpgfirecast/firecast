@@ -72,9 +72,30 @@ local function constructNew_frmContractItemClosed()
             end
 
             if name=="d" then
-                if checkbox == true then sheet.dificuldade = index end 
-                if checkbox == false then sheet.dificuldade = (index-1) end 
+                sheet.dificuldade = (sheet.d1 and 1 or 0) + 
+                                    (sheet.d2 and 1 or 0) + 
+                                    (sheet.d3 and 1 or 0) + 
+                                    (sheet.d4 and 1 or 0) + 
+                                    (sheet.d5 and 1 or 0);
             end
+        end;
+
+        function self:alternarVisibilidade()
+            if sheet==nil then return end
+            if self.cbxInvisivel.checked then
+                NDB.setPermission(sheet, "group", "jogadores", "read", nil);
+                NDB.setPermission(sheet, "group", "espectadores", "read", nil);
+                sheet.visibilidade = 1
+            else
+                NDB.setPermission(sheet, "group", "jogadores", "read", "deny");
+                NDB.setPermission(sheet, "group", "espectadores", "read", "deny");
+                sheet.visibilidade = 0
+            end;
+        end; 
+        function self:atualizarCbxInvisivel()          
+            self.cbxInvisivel.checked = NDB.getPermission(sheet, "group", "espectadores", "read") == "deny" or
+                                        NDB.getPermission(sheet, "group", "jogadores", "read") == "deny"                                                                                    
+             self.cbxInvisivel.enabled = NDB.testPermission(sheet, "writePermissions");
         end;
         
 
@@ -114,6 +135,17 @@ local function constructNew_frmContractItemClosed()
     obj.button1:setWidth(25);
     obj.button1:setText("X");
     obj.button1:setName("button1");
+
+    obj.cbxInvisivel = GUI.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.cbxInvisivel:setParent(obj.layout1);
+    obj.cbxInvisivel:setName("cbxInvisivel");
+    obj.cbxInvisivel:setField("cbxInvisivel");
+    obj.cbxInvisivel:setAlign("right");
+    obj.cbxInvisivel:setWidth(25);
+    obj.cbxInvisivel:setImageChecked("/FichaGuilda/images/invisivel.png");
+    obj.cbxInvisivel:setImageUnchecked("/FichaGuilda/images/visivel.png");
+    obj.cbxInvisivel:setAutoChange(false);
+    obj.cbxInvisivel:setHint("Altera a visibilidade entre somente o mestre e todos. ");
 
     obj.layout2 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout2:setParent(obj.rectangle1);
@@ -201,12 +233,22 @@ local function constructNew_frmContractItemClosed()
     obj.checkBox1:setField("r1");
     obj.checkBox1:setName("checkBox1");
 
+    obj.dataLink1 = GUI.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink1:setParent(obj.layout7);
+    obj.dataLink1:setField("r1");
+    obj.dataLink1:setName("dataLink1");
+
     obj.checkBox2 = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox2:setParent(obj.layout7);
     obj.checkBox2:setAlign("left");
     obj.checkBox2:setWidth(16);
     obj.checkBox2:setField("r2");
     obj.checkBox2:setName("checkBox2");
+
+    obj.dataLink2 = GUI.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink2:setParent(obj.layout7);
+    obj.dataLink2:setField("r2");
+    obj.dataLink2:setName("dataLink2");
 
     obj.checkBox3 = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox3:setParent(obj.layout7);
@@ -215,6 +257,11 @@ local function constructNew_frmContractItemClosed()
     obj.checkBox3:setField("r3");
     obj.checkBox3:setName("checkBox3");
 
+    obj.dataLink3 = GUI.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink3:setParent(obj.layout7);
+    obj.dataLink3:setField("r3");
+    obj.dataLink3:setName("dataLink3");
+
     obj.checkBox4 = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox4:setParent(obj.layout7);
     obj.checkBox4:setAlign("left");
@@ -222,12 +269,22 @@ local function constructNew_frmContractItemClosed()
     obj.checkBox4:setField("r4");
     obj.checkBox4:setName("checkBox4");
 
+    obj.dataLink4 = GUI.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink4:setParent(obj.layout7);
+    obj.dataLink4:setField("r4");
+    obj.dataLink4:setName("dataLink4");
+
     obj.checkBox5 = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox5:setParent(obj.layout7);
     obj.checkBox5:setAlign("left");
     obj.checkBox5:setWidth(16);
     obj.checkBox5:setField("r5");
     obj.checkBox5:setName("checkBox5");
+
+    obj.dataLink5 = GUI.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink5:setParent(obj.layout7);
+    obj.dataLink5:setField("r5");
+    obj.dataLink5:setName("dataLink5");
 
     obj.label5 = GUI.fromHandle(_obj_newObject("label"));
     obj.label5:setParent(obj.layout6);
@@ -250,12 +307,22 @@ local function constructNew_frmContractItemClosed()
     obj.checkBox6:setField("d1");
     obj.checkBox6:setName("checkBox6");
 
+    obj.dataLink6 = GUI.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink6:setParent(obj.layout8);
+    obj.dataLink6:setField("d1");
+    obj.dataLink6:setName("dataLink6");
+
     obj.checkBox7 = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox7:setParent(obj.layout8);
     obj.checkBox7:setAlign("left");
     obj.checkBox7:setWidth(16);
     obj.checkBox7:setField("d2");
     obj.checkBox7:setName("checkBox7");
+
+    obj.dataLink7 = GUI.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink7:setParent(obj.layout8);
+    obj.dataLink7:setField("d2");
+    obj.dataLink7:setName("dataLink7");
 
     obj.checkBox8 = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox8:setParent(obj.layout8);
@@ -264,6 +331,11 @@ local function constructNew_frmContractItemClosed()
     obj.checkBox8:setField("d3");
     obj.checkBox8:setName("checkBox8");
 
+    obj.dataLink8 = GUI.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink8:setParent(obj.layout8);
+    obj.dataLink8:setField("d3");
+    obj.dataLink8:setName("dataLink8");
+
     obj.checkBox9 = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox9:setParent(obj.layout8);
     obj.checkBox9:setAlign("left");
@@ -271,12 +343,22 @@ local function constructNew_frmContractItemClosed()
     obj.checkBox9:setField("d4");
     obj.checkBox9:setName("checkBox9");
 
+    obj.dataLink9 = GUI.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink9:setParent(obj.layout8);
+    obj.dataLink9:setField("d4");
+    obj.dataLink9:setName("dataLink9");
+
     obj.checkBox10 = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox10:setParent(obj.layout8);
     obj.checkBox10:setAlign("left");
     obj.checkBox10:setWidth(16);
     obj.checkBox10:setField("d5");
     obj.checkBox10:setName("checkBox10");
+
+    obj.dataLink10 = GUI.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink10:setParent(obj.layout8);
+    obj.dataLink10:setField("d5");
+    obj.dataLink10:setName("dataLink10");
 
     obj.layout9 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout9:setParent(obj.layout3);
@@ -360,10 +442,10 @@ local function constructNew_frmContractItemClosed()
     obj.creditosEdit:setName("creditosEdit");
     obj.creditosEdit:setVisible(false);
 
-    obj.dataLink1 = GUI.fromHandle(_obj_newObject("dataLink"));
-    obj.dataLink1:setParent(obj.layout12);
-    obj.dataLink1:setFields({'creditos', creditosMult});
-    obj.dataLink1:setName("dataLink1");
+    obj.dataLink11 = GUI.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink11:setParent(obj.layout12);
+    obj.dataLink11:setFields({'creditos', creditosMult});
+    obj.dataLink11:setName("dataLink11");
 
     obj.edit4 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit4:setParent(obj.layout12);
@@ -422,10 +504,10 @@ local function constructNew_frmContractItemClosed()
     obj.seguroEdit:setName("seguroEdit");
     obj.seguroEdit:setVisible(false);
 
-    obj.dataLink2 = GUI.fromHandle(_obj_newObject("dataLink"));
-    obj.dataLink2:setParent(obj.layout14);
-    obj.dataLink2:setFields({'seguro', seguroMult});
-    obj.dataLink2:setName("dataLink2");
+    obj.dataLink12 = GUI.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink12:setParent(obj.layout14);
+    obj.dataLink12:setFields({'seguro', seguroMult});
+    obj.dataLink12:setName("dataLink12");
 
     obj.edit5 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit5:setParent(obj.layout14);
@@ -484,10 +566,10 @@ local function constructNew_frmContractItemClosed()
     obj.espoliosEdit:setName("espoliosEdit");
     obj.espoliosEdit:setVisible(false);
 
-    obj.dataLink3 = GUI.fromHandle(_obj_newObject("dataLink"));
-    obj.dataLink3:setParent(obj.layout16);
-    obj.dataLink3:setFields({'espolios', espoliosMult});
-    obj.dataLink3:setName("dataLink3");
+    obj.dataLink13 = GUI.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink13:setParent(obj.layout16);
+    obj.dataLink13:setFields({'espolios', espoliosMult});
+    obj.dataLink13:setName("dataLink13");
 
     obj.edit6 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit6:setParent(obj.layout16);
@@ -526,10 +608,10 @@ local function constructNew_frmContractItemClosed()
     obj.label14:setField("negociacao");
     obj.label14:setName("label14");
 
-    obj.dataLink4 = GUI.fromHandle(_obj_newObject("dataLink"));
-    obj.dataLink4:setParent(obj.layout18);
-    obj.dataLink4:setFields({'creditosMult','seguroMult','espoliosMult'});
-    obj.dataLink4:setName("dataLink4");
+    obj.dataLink14 = GUI.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink14:setParent(obj.layout18);
+    obj.dataLink14:setFields({'creditosMult','seguroMult','espoliosMult'});
+    obj.dataLink14:setName("dataLink14");
 
     obj.layout19 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout19:setParent(obj.layout3);
@@ -559,12 +641,22 @@ local function constructNew_frmContractItemClosed()
     obj.checkBox11:setField("n1");
     obj.checkBox11:setName("checkBox11");
 
+    obj.dataLink15 = GUI.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink15:setParent(obj.layout20);
+    obj.dataLink15:setField("n1");
+    obj.dataLink15:setName("dataLink15");
+
     obj.checkBox12 = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox12:setParent(obj.layout20);
     obj.checkBox12:setAlign("left");
     obj.checkBox12:setWidth(16);
     obj.checkBox12:setField("n2");
     obj.checkBox12:setName("checkBox12");
+
+    obj.dataLink16 = GUI.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink16:setParent(obj.layout20);
+    obj.dataLink16:setField("n2");
+    obj.dataLink16:setName("dataLink16");
 
     obj.checkBox13 = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox13:setParent(obj.layout20);
@@ -573,6 +665,11 @@ local function constructNew_frmContractItemClosed()
     obj.checkBox13:setField("n3");
     obj.checkBox13:setName("checkBox13");
 
+    obj.dataLink17 = GUI.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink17:setParent(obj.layout20);
+    obj.dataLink17:setField("n3");
+    obj.dataLink17:setName("dataLink17");
+
     obj.checkBox14 = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox14:setParent(obj.layout20);
     obj.checkBox14:setAlign("left");
@@ -580,12 +677,22 @@ local function constructNew_frmContractItemClosed()
     obj.checkBox14:setField("n4");
     obj.checkBox14:setName("checkBox14");
 
+    obj.dataLink18 = GUI.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink18:setParent(obj.layout20);
+    obj.dataLink18:setField("n4");
+    obj.dataLink18:setName("dataLink18");
+
     obj.checkBox15 = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox15:setParent(obj.layout20);
     obj.checkBox15:setAlign("left");
     obj.checkBox15:setWidth(16);
     obj.checkBox15:setField("n5");
     obj.checkBox15:setName("checkBox15");
+
+    obj.dataLink19 = GUI.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink19:setParent(obj.layout20);
+    obj.dataLink19:setField("n5");
+    obj.dataLink19:setName("dataLink19");
 
     obj.label16 = GUI.fromHandle(_obj_newObject("label"));
     obj.label16:setParent(obj.layout19);
@@ -609,12 +716,22 @@ local function constructNew_frmContractItemClosed()
     obj.checkBox16:setField("a1");
     obj.checkBox16:setName("checkBox16");
 
+    obj.dataLink20 = GUI.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink20:setParent(obj.layout21);
+    obj.dataLink20:setField("a1");
+    obj.dataLink20:setName("dataLink20");
+
     obj.checkBox17 = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox17:setParent(obj.layout21);
     obj.checkBox17:setAlign("left");
     obj.checkBox17:setWidth(16);
     obj.checkBox17:setField("a2");
     obj.checkBox17:setName("checkBox17");
+
+    obj.dataLink21 = GUI.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink21:setParent(obj.layout21);
+    obj.dataLink21:setField("a2");
+    obj.dataLink21:setName("dataLink21");
 
     obj.checkBox18 = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox18:setParent(obj.layout21);
@@ -623,12 +740,22 @@ local function constructNew_frmContractItemClosed()
     obj.checkBox18:setField("a3");
     obj.checkBox18:setName("checkBox18");
 
+    obj.dataLink22 = GUI.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink22:setParent(obj.layout21);
+    obj.dataLink22:setField("a3");
+    obj.dataLink22:setName("dataLink22");
+
     obj.checkBox19 = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox19:setParent(obj.layout21);
     obj.checkBox19:setAlign("left");
     obj.checkBox19:setWidth(16);
     obj.checkBox19:setField("a4");
     obj.checkBox19:setName("checkBox19");
+
+    obj.dataLink23 = GUI.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink23:setParent(obj.layout21);
+    obj.dataLink23:setField("a4");
+    obj.dataLink23:setName("dataLink23");
 
     obj.checkBox20 = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox20:setParent(obj.layout21);
@@ -637,80 +764,111 @@ local function constructNew_frmContractItemClosed()
     obj.checkBox20:setField("a5");
     obj.checkBox20:setName("checkBox20");
 
-    obj.dataLink5 = GUI.fromHandle(_obj_newObject("dataLink"));
-    obj.dataLink5:setParent(obj.layout19);
-    obj.dataLink5:setFields({'a1', 'a2', 'a3', 'a4', a5});
-    obj.dataLink5:setName("dataLink5");
+    obj.dataLink24 = GUI.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink24:setParent(obj.layout21);
+    obj.dataLink24:setField("a5");
+    obj.dataLink24:setName("dataLink24");
 
-    obj._e_event0 = obj.button1:addEventListener("onClick",
+    obj.dataLink25 = GUI.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink25:setParent(obj.layout19);
+    obj.dataLink25:setFields({'a1', 'a2', 'a3', 'a4', a5});
+    obj.dataLink25:setName("dataLink25");
+
+    obj._e_event0 = obj:addEventListener("onScopeNodeChanged",
+        function (_)
+            if self.observer ~= nil then   
+                        self.observer.enabled = false;
+                        self.observer = nil;
+                    end;
+                     
+                    if sheet ~= nil then   
+                        self.observer = NDB.newObserver(sheet);
+                        self.observer.onPermissionListChanged =
+                            function(node)                 
+                                self:atualizarCbxInvisivel();
+                            end;                               
+                        self.observer.onFinalPermissionsCouldBeChanged =
+                            function(node)
+                                self:atualizarCbxInvisivel();
+                            end;                               
+                        self:atualizarCbxInvisivel();  
+                    end;
+        end, obj);
+
+    obj._e_event1 = obj.button1:addEventListener("onClick",
         function (_)
             askForDelete();
         end, obj);
 
-    obj._e_event1 = obj.checkBox1:addEventListener("onChange",
+    obj._e_event2 = obj.cbxInvisivel:addEventListener("onClick",
         function (_)
+            self:alternarVisibilidade();
+        end, obj);
+
+    obj._e_event3 = obj.dataLink1:addEventListener("onUserChange",
+        function (_, field, oldValue, newValue)
             toggleCheckbox("r",1)
         end, obj);
 
-    obj._e_event2 = obj.checkBox2:addEventListener("onChange",
-        function (_)
+    obj._e_event4 = obj.dataLink2:addEventListener("onUserChange",
+        function (_, field, oldValue, newValue)
             toggleCheckbox("r",2)
         end, obj);
 
-    obj._e_event3 = obj.checkBox3:addEventListener("onChange",
-        function (_)
+    obj._e_event5 = obj.dataLink3:addEventListener("onUserChange",
+        function (_, field, oldValue, newValue)
             toggleCheckbox("r",3)
         end, obj);
 
-    obj._e_event4 = obj.checkBox4:addEventListener("onChange",
-        function (_)
+    obj._e_event6 = obj.dataLink4:addEventListener("onUserChange",
+        function (_, field, oldValue, newValue)
             toggleCheckbox("r",4)
         end, obj);
 
-    obj._e_event5 = obj.checkBox5:addEventListener("onChange",
-        function (_)
+    obj._e_event7 = obj.dataLink5:addEventListener("onUserChange",
+        function (_, field, oldValue, newValue)
             toggleCheckbox("r",5)
         end, obj);
 
-    obj._e_event6 = obj.checkBox6:addEventListener("onChange",
-        function (_)
+    obj._e_event8 = obj.dataLink6:addEventListener("onUserChange",
+        function (_, field, oldValue, newValue)
             toggleCheckbox("d",1)
         end, obj);
 
-    obj._e_event7 = obj.checkBox7:addEventListener("onChange",
-        function (_)
+    obj._e_event9 = obj.dataLink7:addEventListener("onUserChange",
+        function (_, field, oldValue, newValue)
             toggleCheckbox("d",2)
         end, obj);
 
-    obj._e_event8 = obj.checkBox8:addEventListener("onChange",
-        function (_)
+    obj._e_event10 = obj.dataLink8:addEventListener("onUserChange",
+        function (_, field, oldValue, newValue)
             toggleCheckbox("d",3)
         end, obj);
 
-    obj._e_event9 = obj.checkBox9:addEventListener("onChange",
-        function (_)
+    obj._e_event11 = obj.dataLink9:addEventListener("onUserChange",
+        function (_, field, oldValue, newValue)
             toggleCheckbox("d",4)
         end, obj);
 
-    obj._e_event10 = obj.checkBox10:addEventListener("onChange",
-        function (_)
+    obj._e_event12 = obj.dataLink10:addEventListener("onUserChange",
+        function (_, field, oldValue, newValue)
             toggleCheckbox("d",5)
         end, obj);
 
-    obj._e_event11 = obj.creditosLabel:addEventListener("onClick",
+    obj._e_event13 = obj.creditosLabel:addEventListener("onClick",
         function (_)
             self.creditosLabel.visible = false;
                                 self.creditosEdit.visible = true;
                                 self.creditosEdit:setFocus();
         end, obj);
 
-    obj._e_event12 = obj.creditosEdit:addEventListener("onExit",
+    obj._e_event14 = obj.creditosEdit:addEventListener("onExit",
         function (_)
             self.creditosLabel.visible = true;
                                 self.creditosEdit.visible = false;
         end, obj);
 
-    obj._e_event13 = obj.dataLink1:addEventListener("onChange",
+    obj._e_event15 = obj.dataLink11:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet==nil then return end
             
@@ -724,20 +882,20 @@ local function constructNew_frmContractItemClosed()
                             end
         end, obj);
 
-    obj._e_event14 = obj.seguroLabel:addEventListener("onClick",
+    obj._e_event16 = obj.seguroLabel:addEventListener("onClick",
         function (_)
             self.seguroLabel.visible = false;
                                 self.seguroEdit.visible = true;
                                 self.seguroEdit:setFocus();
         end, obj);
 
-    obj._e_event15 = obj.seguroEdit:addEventListener("onExit",
+    obj._e_event17 = obj.seguroEdit:addEventListener("onExit",
         function (_)
             self.seguroLabel.visible = true;
                                 self.seguroEdit.visible = false;
         end, obj);
 
-    obj._e_event16 = obj.dataLink2:addEventListener("onChange",
+    obj._e_event18 = obj.dataLink12:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet==nil then return end
             
@@ -751,20 +909,20 @@ local function constructNew_frmContractItemClosed()
                             end
         end, obj);
 
-    obj._e_event17 = obj.espoliosLabel:addEventListener("onClick",
+    obj._e_event19 = obj.espoliosLabel:addEventListener("onClick",
         function (_)
             self.espoliosLabel.visible = false;
                                 self.espoliosEdit.visible = true;
                                 self.espoliosEdit:setFocus();
         end, obj);
 
-    obj._e_event18 = obj.espoliosEdit:addEventListener("onExit",
+    obj._e_event20 = obj.espoliosEdit:addEventListener("onExit",
         function (_)
             self.espoliosLabel.visible = true;
                                 self.espoliosEdit.visible = false;
         end, obj);
 
-    obj._e_event19 = obj.dataLink3:addEventListener("onChange",
+    obj._e_event21 = obj.dataLink13:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet==nil then return end
             
@@ -778,7 +936,7 @@ local function constructNew_frmContractItemClosed()
                             end
         end, obj);
 
-    obj._e_event20 = obj.dataLink4:addEventListener("onChange",
+    obj._e_event22 = obj.dataLink14:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet==nil then return end
             
@@ -787,57 +945,57 @@ local function constructNew_frmContractItemClosed()
                                                         (tonumber(sheet.espoliosMult) or 0)
         end, obj);
 
-    obj._e_event21 = obj.checkBox11:addEventListener("onChange",
-        function (_)
+    obj._e_event23 = obj.dataLink15:addEventListener("onUserChange",
+        function (_, field, oldValue, newValue)
             toggleCheckbox("n",1)
         end, obj);
 
-    obj._e_event22 = obj.checkBox12:addEventListener("onChange",
-        function (_)
+    obj._e_event24 = obj.dataLink16:addEventListener("onUserChange",
+        function (_, field, oldValue, newValue)
             toggleCheckbox("n",2)
         end, obj);
 
-    obj._e_event23 = obj.checkBox13:addEventListener("onChange",
-        function (_)
+    obj._e_event25 = obj.dataLink17:addEventListener("onUserChange",
+        function (_, field, oldValue, newValue)
             toggleCheckbox("n",3)
         end, obj);
 
-    obj._e_event24 = obj.checkBox14:addEventListener("onChange",
-        function (_)
+    obj._e_event26 = obj.dataLink18:addEventListener("onUserChange",
+        function (_, field, oldValue, newValue)
             toggleCheckbox("n",4)
         end, obj);
 
-    obj._e_event25 = obj.checkBox15:addEventListener("onChange",
-        function (_)
+    obj._e_event27 = obj.dataLink19:addEventListener("onUserChange",
+        function (_, field, oldValue, newValue)
             toggleCheckbox("n",5)
         end, obj);
 
-    obj._e_event26 = obj.checkBox16:addEventListener("onChange",
-        function (_)
+    obj._e_event28 = obj.dataLink20:addEventListener("onUserChange",
+        function (_, field, oldValue, newValue)
             toggleCheckbox("a",1)
         end, obj);
 
-    obj._e_event27 = obj.checkBox17:addEventListener("onChange",
-        function (_)
+    obj._e_event29 = obj.dataLink21:addEventListener("onUserChange",
+        function (_, field, oldValue, newValue)
             toggleCheckbox("a",2)
         end, obj);
 
-    obj._e_event28 = obj.checkBox18:addEventListener("onChange",
-        function (_)
+    obj._e_event30 = obj.dataLink22:addEventListener("onUserChange",
+        function (_, field, oldValue, newValue)
             toggleCheckbox("a",3)
         end, obj);
 
-    obj._e_event29 = obj.checkBox19:addEventListener("onChange",
-        function (_)
+    obj._e_event31 = obj.dataLink23:addEventListener("onUserChange",
+        function (_, field, oldValue, newValue)
             toggleCheckbox("a",4)
         end, obj);
 
-    obj._e_event30 = obj.checkBox20:addEventListener("onChange",
-        function (_)
+    obj._e_event32 = obj.dataLink24:addEventListener("onUserChange",
+        function (_, field, oldValue, newValue)
             toggleCheckbox("a",5)
         end, obj);
 
-    obj._e_event31 = obj.dataLink5:addEventListener("onChange",
+    obj._e_event33 = obj.dataLink25:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet==nil then return end
                                     local node = NDB.getRoot(sheet);
@@ -860,6 +1018,8 @@ local function constructNew_frmContractItemClosed()
         end, obj);
 
     function obj:_releaseEvents()
+        __o_rrpgObjs.removeEventListenerById(self._e_event33);
+        __o_rrpgObjs.removeEventListenerById(self._e_event32);
         __o_rrpgObjs.removeEventListenerById(self._e_event31);
         __o_rrpgObjs.removeEventListenerById(self._e_event30);
         __o_rrpgObjs.removeEventListenerById(self._e_event29);
@@ -903,85 +1063,106 @@ local function constructNew_frmContractItemClosed()
           self:setNodeDatabase(nil);
         end;
 
-        if self.checkBox5 ~= nil then self.checkBox5:destroy(); self.checkBox5 = nil; end;
         if self.label14 ~= nil then self.label14:destroy(); self.label14 = nil; end;
-        if self.label1 ~= nil then self.label1:destroy(); self.label1 = nil; end;
-        if self.layout4 ~= nil then self.layout4:destroy(); self.layout4 = nil; end;
-        if self.checkBox14 ~= nil then self.checkBox14:destroy(); self.checkBox14 = nil; end;
-        if self.layout15 ~= nil then self.layout15:destroy(); self.layout15 = nil; end;
         if self.checkBox15 ~= nil then self.checkBox15:destroy(); self.checkBox15 = nil; end;
-        if self.checkBox3 ~= nil then self.checkBox3:destroy(); self.checkBox3 = nil; end;
+        if self.layout15 ~= nil then self.layout15:destroy(); self.layout15 = nil; end;
         if self.layout10 ~= nil then self.layout10:destroy(); self.layout10 = nil; end;
         if self.checkBox18 ~= nil then self.checkBox18:destroy(); self.checkBox18 = nil; end;
-        if self.seguroEdit ~= nil then self.seguroEdit:destroy(); self.seguroEdit = nil; end;
         if self.dataLink4 ~= nil then self.dataLink4:destroy(); self.dataLink4 = nil; end;
-        if self.comboBox1 ~= nil then self.comboBox1:destroy(); self.comboBox1 = nil; end;
-        if self.layout5 ~= nil then self.layout5:destroy(); self.layout5 = nil; end;
         if self.layout17 ~= nil then self.layout17:destroy(); self.layout17 = nil; end;
-        if self.layout20 ~= nil then self.layout20:destroy(); self.layout20 = nil; end;
-        if self.dataLink1 ~= nil then self.dataLink1:destroy(); self.dataLink1 = nil; end;
-        if self.layout18 ~= nil then self.layout18:destroy(); self.layout18 = nil; end;
-        if self.dataLink3 ~= nil then self.dataLink3:destroy(); self.dataLink3 = nil; end;
-        if self.rectangle2 ~= nil then self.rectangle2:destroy(); self.rectangle2 = nil; end;
+        if self.dataLink13 ~= nil then self.dataLink13:destroy(); self.dataLink13 = nil; end;
         if self.checkBox11 ~= nil then self.checkBox11:destroy(); self.checkBox11 = nil; end;
         if self.checkBox6 ~= nil then self.checkBox6:destroy(); self.checkBox6 = nil; end;
-        if self.checkBox12 ~= nil then self.checkBox12:destroy(); self.checkBox12 = nil; end;
+        if self.dataLink10 ~= nil then self.dataLink10:destroy(); self.dataLink10 = nil; end;
+        if self.dataLink18 ~= nil then self.dataLink18:destroy(); self.dataLink18 = nil; end;
+        if self.dataLink21 ~= nil then self.dataLink21:destroy(); self.dataLink21 = nil; end;
         if self.layout13 ~= nil then self.layout13:destroy(); self.layout13 = nil; end;
         if self.layout3 ~= nil then self.layout3:destroy(); self.layout3 = nil; end;
-        if self.espoliosEdit ~= nil then self.espoliosEdit:destroy(); self.espoliosEdit = nil; end;
-        if self.dataLink2 ~= nil then self.dataLink2:destroy(); self.dataLink2 = nil; end;
+        if self.dataLink5 ~= nil then self.dataLink5:destroy(); self.dataLink5 = nil; end;
+        if self.label13 ~= nil then self.label13:destroy(); self.label13 = nil; end;
         if self.layout8 ~= nil then self.layout8:destroy(); self.layout8 = nil; end;
         if self.checkBox8 ~= nil then self.checkBox8:destroy(); self.checkBox8 = nil; end;
-        if self.label10 ~= nil then self.label10:destroy(); self.label10 = nil; end;
         if self.layout1 ~= nil then self.layout1:destroy(); self.layout1 = nil; end;
         if self.checkBox7 ~= nil then self.checkBox7:destroy(); self.checkBox7 = nil; end;
         if self.rectangle1 ~= nil then self.rectangle1:destroy(); self.rectangle1 = nil; end;
-        if self.layout2 ~= nil then self.layout2:destroy(); self.layout2 = nil; end;
-        if self.label13 ~= nil then self.label13:destroy(); self.label13 = nil; end;
-        if self.dataLink5 ~= nil then self.dataLink5:destroy(); self.dataLink5 = nil; end;
-        if self.checkBox2 ~= nil then self.checkBox2:destroy(); self.checkBox2 = nil; end;
+        if self.dataLink23 ~= nil then self.dataLink23:destroy(); self.dataLink23 = nil; end;
         if self.layout12 ~= nil then self.layout12:destroy(); self.layout12 = nil; end;
         if self.creditosEdit ~= nil then self.creditosEdit:destroy(); self.creditosEdit = nil; end;
         if self.button1 ~= nil then self.button1:destroy(); self.button1 = nil; end;
+        if self.dataLink8 ~= nil then self.dataLink8:destroy(); self.dataLink8 = nil; end;
         if self.edit4 ~= nil then self.edit4:destroy(); self.edit4 = nil; end;
-        if self.creditosLabel ~= nil then self.creditosLabel:destroy(); self.creditosLabel = nil; end;
-        if self.layout11 ~= nil then self.layout11:destroy(); self.layout11 = nil; end;
         if self.label8 ~= nil then self.label8:destroy(); self.label8 = nil; end;
-        if self.label3 ~= nil then self.label3:destroy(); self.label3 = nil; end;
+        if self.dataLink14 ~= nil then self.dataLink14:destroy(); self.dataLink14 = nil; end;
         if self.label4 ~= nil then self.label4:destroy(); self.label4 = nil; end;
-        if self.textEditor1 ~= nil then self.textEditor1:destroy(); self.textEditor1 = nil; end;
         if self.layout9 ~= nil then self.layout9:destroy(); self.layout9 = nil; end;
         if self.label6 ~= nil then self.label6:destroy(); self.label6 = nil; end;
-        if self.label11 ~= nil then self.label11:destroy(); self.label11 = nil; end;
-        if self.checkBox13 ~= nil then self.checkBox13:destroy(); self.checkBox13 = nil; end;
-        if self.checkBox19 ~= nil then self.checkBox19:destroy(); self.checkBox19 = nil; end;
         if self.edit5 ~= nil then self.edit5:destroy(); self.edit5 = nil; end;
-        if self.edit6 ~= nil then self.edit6:destroy(); self.edit6 = nil; end;
-        if self.label15 ~= nil then self.label15:destroy(); self.label15 = nil; end;
         if self.checkBox17 ~= nil then self.checkBox17:destroy(); self.checkBox17 = nil; end;
-        if self.label7 ~= nil then self.label7:destroy(); self.label7 = nil; end;
+        if self.dataLink9 ~= nil then self.dataLink9:destroy(); self.dataLink9 = nil; end;
+        if self.label15 ~= nil then self.label15:destroy(); self.label15 = nil; end;
         if self.checkBox16 ~= nil then self.checkBox16:destroy(); self.checkBox16 = nil; end;
+        if self.dataLink19 ~= nil then self.dataLink19:destroy(); self.dataLink19 = nil; end;
+        if self.espoliosLabel ~= nil then self.espoliosLabel:destroy(); self.espoliosLabel = nil; end;
+        if self.checkBox20 ~= nil then self.checkBox20:destroy(); self.checkBox20 = nil; end;
+        if self.label12 ~= nil then self.label12:destroy(); self.label12 = nil; end;
+        if self.checkBox9 ~= nil then self.checkBox9:destroy(); self.checkBox9 = nil; end;
+        if self.label16 ~= nil then self.label16:destroy(); self.label16 = nil; end;
+        if self.layout19 ~= nil then self.layout19:destroy(); self.layout19 = nil; end;
+        if self.edit2 ~= nil then self.edit2:destroy(); self.edit2 = nil; end;
+        if self.label9 ~= nil then self.label9:destroy(); self.label9 = nil; end;
+        if self.dataLink17 ~= nil then self.dataLink17:destroy(); self.dataLink17 = nil; end;
+        if self.edit1 ~= nil then self.edit1:destroy(); self.edit1 = nil; end;
+        if self.checkBox5 ~= nil then self.checkBox5:destroy(); self.checkBox5 = nil; end;
+        if self.dataLink16 ~= nil then self.dataLink16:destroy(); self.dataLink16 = nil; end;
+        if self.label1 ~= nil then self.label1:destroy(); self.label1 = nil; end;
+        if self.layout4 ~= nil then self.layout4:destroy(); self.layout4 = nil; end;
+        if self.checkBox14 ~= nil then self.checkBox14:destroy(); self.checkBox14 = nil; end;
+        if self.checkBox3 ~= nil then self.checkBox3:destroy(); self.checkBox3 = nil; end;
+        if self.seguroEdit ~= nil then self.seguroEdit:destroy(); self.seguroEdit = nil; end;
+        if self.comboBox1 ~= nil then self.comboBox1:destroy(); self.comboBox1 = nil; end;
+        if self.dataLink20 ~= nil then self.dataLink20:destroy(); self.dataLink20 = nil; end;
+        if self.dataLink24 ~= nil then self.dataLink24:destroy(); self.dataLink24 = nil; end;
+        if self.layout5 ~= nil then self.layout5:destroy(); self.layout5 = nil; end;
+        if self.layout20 ~= nil then self.layout20:destroy(); self.layout20 = nil; end;
+        if self.dataLink1 ~= nil then self.dataLink1:destroy(); self.dataLink1 = nil; end;
+        if self.layout18 ~= nil then self.layout18:destroy(); self.layout18 = nil; end;
+        if self.cbxInvisivel ~= nil then self.cbxInvisivel:destroy(); self.cbxInvisivel = nil; end;
+        if self.dataLink3 ~= nil then self.dataLink3:destroy(); self.dataLink3 = nil; end;
+        if self.dataLink22 ~= nil then self.dataLink22:destroy(); self.dataLink22 = nil; end;
+        if self.dataLink7 ~= nil then self.dataLink7:destroy(); self.dataLink7 = nil; end;
+        if self.rectangle2 ~= nil then self.rectangle2:destroy(); self.rectangle2 = nil; end;
+        if self.checkBox12 ~= nil then self.checkBox12:destroy(); self.checkBox12 = nil; end;
+        if self.dataLink6 ~= nil then self.dataLink6:destroy(); self.dataLink6 = nil; end;
+        if self.espoliosEdit ~= nil then self.espoliosEdit:destroy(); self.espoliosEdit = nil; end;
+        if self.dataLink2 ~= nil then self.dataLink2:destroy(); self.dataLink2 = nil; end;
+        if self.label10 ~= nil then self.label10:destroy(); self.label10 = nil; end;
+        if self.layout2 ~= nil then self.layout2:destroy(); self.layout2 = nil; end;
+        if self.dataLink15 ~= nil then self.dataLink15:destroy(); self.dataLink15 = nil; end;
+        if self.checkBox2 ~= nil then self.checkBox2:destroy(); self.checkBox2 = nil; end;
+        if self.creditosLabel ~= nil then self.creditosLabel:destroy(); self.creditosLabel = nil; end;
+        if self.layout11 ~= nil then self.layout11:destroy(); self.layout11 = nil; end;
+        if self.label11 ~= nil then self.label11:destroy(); self.label11 = nil; end;
+        if self.label3 ~= nil then self.label3:destroy(); self.label3 = nil; end;
+        if self.checkBox19 ~= nil then self.checkBox19:destroy(); self.checkBox19 = nil; end;
+        if self.textEditor1 ~= nil then self.textEditor1:destroy(); self.textEditor1 = nil; end;
+        if self.checkBox13 ~= nil then self.checkBox13:destroy(); self.checkBox13 = nil; end;
+        if self.edit6 ~= nil then self.edit6:destroy(); self.edit6 = nil; end;
+        if self.label7 ~= nil then self.label7:destroy(); self.label7 = nil; end;
         if self.label2 ~= nil then self.label2:destroy(); self.label2 = nil; end;
         if self.edit3 ~= nil then self.edit3:destroy(); self.edit3 = nil; end;
         if self.checkBox10 ~= nil then self.checkBox10:destroy(); self.checkBox10 = nil; end;
-        if self.espoliosLabel ~= nil then self.espoliosLabel:destroy(); self.espoliosLabel = nil; end;
         if self.layout6 ~= nil then self.layout6:destroy(); self.layout6 = nil; end;
         if self.label5 ~= nil then self.label5:destroy(); self.label5 = nil; end;
         if self.seguroLabel ~= nil then self.seguroLabel:destroy(); self.seguroLabel = nil; end;
-        if self.label12 ~= nil then self.label12:destroy(); self.label12 = nil; end;
-        if self.checkBox9 ~= nil then self.checkBox9:destroy(); self.checkBox9 = nil; end;
-        if self.checkBox20 ~= nil then self.checkBox20:destroy(); self.checkBox20 = nil; end;
+        if self.dataLink11 ~= nil then self.dataLink11:destroy(); self.dataLink11 = nil; end;
         if self.layout14 ~= nil then self.layout14:destroy(); self.layout14 = nil; end;
         if self.layout16 ~= nil then self.layout16:destroy(); self.layout16 = nil; end;
         if self.layout21 ~= nil then self.layout21:destroy(); self.layout21 = nil; end;
-        if self.label16 ~= nil then self.label16:destroy(); self.label16 = nil; end;
         if self.checkBox4 ~= nil then self.checkBox4:destroy(); self.checkBox4 = nil; end;
-        if self.layout19 ~= nil then self.layout19:destroy(); self.layout19 = nil; end;
-        if self.edit2 ~= nil then self.edit2:destroy(); self.edit2 = nil; end;
         if self.checkBox1 ~= nil then self.checkBox1:destroy(); self.checkBox1 = nil; end;
-        if self.label9 ~= nil then self.label9:destroy(); self.label9 = nil; end;
-        if self.edit1 ~= nil then self.edit1:destroy(); self.edit1 = nil; end;
+        if self.dataLink25 ~= nil then self.dataLink25:destroy(); self.dataLink25 = nil; end;
         if self.layout7 ~= nil then self.layout7:destroy(); self.layout7 = nil; end;
+        if self.dataLink12 ~= nil then self.dataLink12:destroy(); self.dataLink12 = nil; end;
         self:_oldLFMDestroy();
     end;
 

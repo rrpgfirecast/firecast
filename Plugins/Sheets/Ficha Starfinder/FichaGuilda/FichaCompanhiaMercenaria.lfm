@@ -46,7 +46,7 @@
 
 
     <template name="ListaFlexivel">
-        <flowPart minWidth="300" maxWidth="600" height="25" minScaledWidth="280" name="$(rclName)Part" adjustHeightToLine="false" margins="{left=5}">
+        <flowPart minWidth="300" maxWidth="600" height="25" minScaledWidth="280" name="$(rclName)Part" adjustHeightToLine="false" margins="{left=5}" avoidScale="true">
             <script>
                 <![CDATA[
                     rawset(self.$(rclName)Part, "_recalcHeight",                    
@@ -63,10 +63,15 @@
 
             <recordList name="$(rclName)" field="$(rclField)" templateForm="$(frm)" align="top" layout="vertical" autoHeight="true" hitTest="false" onResize="self.$(rclName)Part._recalcHeight();" minQt="0">
                 <event name="onCompare">
-                    local dif = ((tonumber(nodeA.dificuldade) or 0) - (tonumber(nodeB.dificuldade) or 0));
+                    -- Jogue contratos invisiveis pro fim
+                    local vis = ((tonumber(nodeB.visibilidade) or 1) - (tonumber(nodeA.visibilidade) or 1));
+                    if vis~=0 then return vis end
 
+                    -- Ordene por dificuldade
+                    local dif = ((tonumber(nodeA.dificuldade) or 0) - (tonumber(nodeB.dificuldade) or 0));
                     if dif~=0 then return dif end
 
+                    -- Ordene por nome
                     return utils.compareStringPtBr(nodeA.nome, nodeB.nome);
                 </event>
             </recordList>

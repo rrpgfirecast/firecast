@@ -166,6 +166,7 @@ local function constructNew_frmFichaVeiculos()
             local index = 0;
             local mesa = Firecast.getMesaDe(sheet);
 
+            -- Penalidades ou bonus por ataque em movimento vs parado
             local pen = 0;
             local ataquePen = tonumber(sheet.ataquePen) or 0;
             if sheet.atkTotal and ataquePen < 0 then
@@ -173,8 +174,10 @@ local function constructNew_frmFichaVeiculos()
             elseif not sheet.atkTotal and ataquePen > 0 then
                 pen = ataquePen;
             end;
+            -- Destreza do piloto
             local des = tonumber(sheet.piloto.efetModDes) or 0;
 
+            -- Penalides por dano na estrutura
             local qPen = 0;
             local qPenDano = "";
             if sheet.quebrado then
@@ -182,14 +185,17 @@ local function constructNew_frmFichaVeiculos()
                 qPenDano = "-2";
             end;
 
+            -- Bonus temporarios
+            local tempAtaq = tonumber(sheet.tempAtaque) or 0
+            local tempDano = sheet.tempDano or ""
 
             for i=1, #armas, 1 do
                 if armas[i].ativo then
                     index = index + 1;
                     atk[index] = {};
                     atk[index].mesa = mesa;
-                    atk[index].bonus = (tonumber(armas[i].ataque) or 0) + pen + des + qPen;
-                    atk[index].dano = (armas[i].dano or "1d1") .. qPenDano;
+                    atk[index].bonus = (tonumber(armas[i].ataque) or 0) + pen + des + qPen + tempAtaq;
+                    atk[index].dano = (armas[i].dano or "1d1") .. qPenDano .. tempDano;
                     atk[index].nome = armas[i].nome or "arma";
                     atk[index].margem = tonumber(armas[i].margem) or 20;
 
@@ -215,6 +221,7 @@ local function constructNew_frmFichaVeiculos()
                     dest[#dest + 1] = bibItem;
                 end;
             elseif bibItem.tipo == "personagem" then
+                --showMessage(bibItem.dataType)
                 if (bibItem.loginDono == dono.loginDono) and (bibItem.codigoInterno ~= dono.codigoInterno) then
                     dest[#dest + 1] = bibItem;
                 end;
@@ -230,6 +237,8 @@ local function constructNew_frmFichaVeiculos()
         function listAllCharacters()
             local mesa = Firecast.getMesaDe(sheet);
             local dono = Firecast.getPersonagemDe(sheet); -- Objeto Personagem
+            --showMessage(dono.dataType); -- Nil
+            --showMessage(dono.loginDono); -- ""
 
             local personagens = {};
             recursiveEnumPersonagensEmBibItem(mesa.biblioteca, personagens, dono);
@@ -2040,11 +2049,12 @@ local function constructNew_frmFichaVeiculos()
 
     obj.layout66 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout66:setParent(obj.scrollBox1);
-    obj.layout66:setHeight(610);
+    obj.layout66:setWidth(1275);
+    obj.layout66:setHeight(620);
     obj.layout66:setName("layout66");
 
     obj.layout67 = GUI.fromHandle(_obj_newObject("layout"));
-    obj.layout67:setParent(obj.scrollBox1);
+    obj.layout67:setParent(obj.layout66);
     obj.layout67:setAlign("left");
     obj.layout67:setWidth(765);
     obj.layout67:setMargins({bottom=5});
@@ -2754,22 +2764,104 @@ local function constructNew_frmFichaVeiculos()
     obj.label113:setFontSize(11);
     obj.label113:setName("label113");
 
-    obj.textEditor3 = GUI.fromHandle(_obj_newObject("textEditor"));
-    obj.textEditor3:setParent(obj.rectangle21);
-    obj.textEditor3:setAlign("client");
-    obj.textEditor3:setField("detalhes");
-    obj.textEditor3:setMargins({left=5,right=5,top=5});
-    obj.textEditor3:setName("textEditor3");
+    obj.label114 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label114:setParent(obj.rectangle21);
+    obj.label114:setAlign("top");
+    obj.label114:setHeight(25);
+    obj.label114:setText("Bônus Temporarios");
+    obj.label114:setMargins({left=5});
+    obj.label114:setName("label114");
 
     obj.layout97 = GUI.fromHandle(_obj_newObject("layout"));
-    obj.layout97:setParent(obj.layout67);
+    obj.layout97:setParent(obj.rectangle21);
     obj.layout97:setAlign("top");
-    obj.layout97:setHeight(200);
-    obj.layout97:setMargins({bottom=5});
+    obj.layout97:setHeight(50);
     obj.layout97:setName("layout97");
 
+    obj.layout98 = GUI.fromHandle(_obj_newObject("layout"));
+    obj.layout98:setParent(obj.layout97);
+    obj.layout98:setAlign("left");
+    obj.layout98:setWidth(5);
+    obj.layout98:setName("layout98");
+
+    obj.layout99 = GUI.fromHandle(_obj_newObject("layout"));
+    obj.layout99:setParent(obj.layout97);
+    obj.layout99:setAlign("left");
+    obj.layout99:setWidth(50);
+    obj.layout99:setMargins({right=5});
+    obj.layout99:setName("layout99");
+
+    obj.label115 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label115:setParent(obj.layout99);
+    obj.label115:setText("Ataque");
+    obj.label115:setWidth(50);
+    obj.label115:setHorzTextAlign("leading");
+    obj.label115:setFontSize(11);
+    obj.label115:setName("label115");
+
+    obj.edit44 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit44:setParent(obj.layout99);
+    obj.edit44:setTop(20);
+    obj.edit44:setField("tempAtaque");
+    obj.edit44:setWidth(50);
+    obj.edit44:setHeight(25);
+    obj.edit44:setName("edit44");
+
+    obj.layout100 = GUI.fromHandle(_obj_newObject("layout"));
+    obj.layout100:setParent(obj.layout97);
+    obj.layout100:setAlign("left");
+    obj.layout100:setWidth(100);
+    obj.layout100:setMargins({right=5});
+    obj.layout100:setName("layout100");
+
+    obj.label116 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label116:setParent(obj.layout100);
+    obj.label116:setText("Dano");
+    obj.label116:setWidth(100);
+    obj.label116:setHorzTextAlign("leading");
+    obj.label116:setFontSize(11);
+    obj.label116:setName("label116");
+
+    obj.edit45 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit45:setParent(obj.layout100);
+    obj.edit45:setTop(20);
+    obj.edit45:setField("tempDano");
+    obj.edit45:setWidth(100);
+    obj.edit45:setHeight(25);
+    obj.edit45:setName("edit45");
+
+    obj.layout101 = GUI.fromHandle(_obj_newObject("layout"));
+    obj.layout101:setParent(obj.layout97);
+    obj.layout101:setAlign("left");
+    obj.layout101:setWidth(50);
+    obj.layout101:setMargins({right=5});
+    obj.layout101:setName("layout101");
+
+    obj.label117 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label117:setParent(obj.layout101);
+    obj.label117:setText("CA");
+    obj.label117:setWidth(50);
+    obj.label117:setHorzTextAlign("leading");
+    obj.label117:setFontSize(11);
+    obj.label117:setName("label117");
+
+    obj.edit46 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit46:setParent(obj.layout101);
+    obj.edit46:setTop(20);
+    obj.edit46:setField("tempCA");
+    obj.edit46:setWidth(50);
+    obj.edit46:setHeight(25);
+    obj.edit46:setName("edit46");
+
+    obj.layout102 = GUI.fromHandle(_obj_newObject("layout"));
+    obj.layout102:setParent(obj.layout67);
+    obj.layout102:setAlign("top");
+    obj.layout102:setHeight(200);
+    obj.layout102:setMargins({bottom=5});
+    obj.layout102:setName("layout102");
+
     obj.rectangle32 = GUI.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle32:setParent(obj.layout97);
+    obj.rectangle32:setParent(obj.layout102);
     obj.rectangle32:setAlign("left");
     obj.rectangle32:setWidth(380);
     obj.rectangle32:setColor("black");
@@ -2779,14 +2871,14 @@ local function constructNew_frmFichaVeiculos()
     obj.rectangle32:setPadding({top=5,bottom=5});
     obj.rectangle32:setName("rectangle32");
 
-    obj.layout98 = GUI.fromHandle(_obj_newObject("layout"));
-    obj.layout98:setParent(obj.rectangle32);
-    obj.layout98:setAlign("top");
-    obj.layout98:setHeight(20);
-    obj.layout98:setName("layout98");
+    obj.layout103 = GUI.fromHandle(_obj_newObject("layout"));
+    obj.layout103:setParent(obj.rectangle32);
+    obj.layout103:setAlign("top");
+    obj.layout103:setHeight(20);
+    obj.layout103:setName("layout103");
 
     obj.button7 = GUI.fromHandle(_obj_newObject("button"));
-    obj.button7:setParent(obj.layout98);
+    obj.button7:setParent(obj.layout103);
     obj.button7:setAlign("left");
     obj.button7:setWidth(20);
     obj.button7:setHeight(20);
@@ -2794,13 +2886,13 @@ local function constructNew_frmFichaVeiculos()
     obj.button7:setMargins({left=5});
     obj.button7:setName("button7");
 
-    obj.label114 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label114:setParent(obj.layout98);
-    obj.label114:setAlign("left");
-    obj.label114:setText("Modificações");
-    obj.label114:setWidth(100);
-    obj.label114:setMargins({left=5});
-    obj.label114:setName("label114");
+    obj.label118 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label118:setParent(obj.layout103);
+    obj.label118:setAlign("left");
+    obj.label118:setText("Modificações");
+    obj.label118:setWidth(100);
+    obj.label118:setMargins({left=5});
+    obj.label118:setName("label118");
 
     obj.rclMods = GUI.fromHandle(_obj_newObject("recordList"));
     obj.rclMods:setParent(obj.rectangle32);
@@ -2814,7 +2906,7 @@ local function constructNew_frmFichaVeiculos()
     obj.rclMods:setMinQt(1);
 
     obj.rectangle33 = GUI.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle33:setParent(obj.layout97);
+    obj.rectangle33:setParent(obj.layout102);
     obj.rectangle33:setAlign("left");
     obj.rectangle33:setWidth(375);
     obj.rectangle33:setColor("black");
@@ -2824,14 +2916,14 @@ local function constructNew_frmFichaVeiculos()
     obj.rectangle33:setPadding({top=5,bottom=5});
     obj.rectangle33:setName("rectangle33");
 
-    obj.layout99 = GUI.fromHandle(_obj_newObject("layout"));
-    obj.layout99:setParent(obj.rectangle33);
-    obj.layout99:setAlign("top");
-    obj.layout99:setHeight(20);
-    obj.layout99:setName("layout99");
+    obj.layout104 = GUI.fromHandle(_obj_newObject("layout"));
+    obj.layout104:setParent(obj.rectangle33);
+    obj.layout104:setAlign("top");
+    obj.layout104:setHeight(20);
+    obj.layout104:setName("layout104");
 
     obj.button8 = GUI.fromHandle(_obj_newObject("button"));
-    obj.button8:setParent(obj.layout99);
+    obj.button8:setParent(obj.layout104);
     obj.button8:setAlign("left");
     obj.button8:setWidth(20);
     obj.button8:setHeight(20);
@@ -2839,13 +2931,13 @@ local function constructNew_frmFichaVeiculos()
     obj.button8:setMargins({left=5});
     obj.button8:setName("button8");
 
-    obj.label115 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label115:setParent(obj.layout99);
-    obj.label115:setAlign("left");
-    obj.label115:setText("Equipamentos");
-    obj.label115:setWidth(100);
-    obj.label115:setMargins({left=5});
-    obj.label115:setName("label115");
+    obj.label119 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label119:setParent(obj.layout104);
+    obj.label119:setAlign("left");
+    obj.label119:setText("Equipamentos");
+    obj.label119:setWidth(100);
+    obj.label119:setMargins({left=5});
+    obj.label119:setName("label119");
 
     obj.rclEquips = GUI.fromHandle(_obj_newObject("recordList"));
     obj.rclEquips:setParent(obj.rectangle33);
@@ -2858,15 +2950,15 @@ local function constructNew_frmFichaVeiculos()
     obj.rclEquips:setLayout("vertical");
     obj.rclEquips:setMinQt(1);
 
-    obj.layout100 = GUI.fromHandle(_obj_newObject("layout"));
-    obj.layout100:setParent(obj.layout67);
-    obj.layout100:setAlign("top");
-    obj.layout100:setHeight(200);
-    obj.layout100:setMargins({bottom=5});
-    obj.layout100:setName("layout100");
+    obj.layout105 = GUI.fromHandle(_obj_newObject("layout"));
+    obj.layout105:setParent(obj.layout67);
+    obj.layout105:setAlign("top");
+    obj.layout105:setHeight(200);
+    obj.layout105:setMargins({bottom=5});
+    obj.layout105:setName("layout105");
 
     obj.rectangle34 = GUI.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle34:setParent(obj.layout100);
+    obj.rectangle34:setParent(obj.layout105);
     obj.rectangle34:setAlign("client");
     obj.rectangle34:setWidth(340);
     obj.rectangle34:setColor("black");
@@ -2876,14 +2968,14 @@ local function constructNew_frmFichaVeiculos()
     obj.rectangle34:setPadding({top=5,bottom=5});
     obj.rectangle34:setName("rectangle34");
 
-    obj.layout101 = GUI.fromHandle(_obj_newObject("layout"));
-    obj.layout101:setParent(obj.rectangle34);
-    obj.layout101:setAlign("top");
-    obj.layout101:setHeight(20);
-    obj.layout101:setName("layout101");
+    obj.layout106 = GUI.fromHandle(_obj_newObject("layout"));
+    obj.layout106:setParent(obj.rectangle34);
+    obj.layout106:setAlign("top");
+    obj.layout106:setHeight(20);
+    obj.layout106:setName("layout106");
 
     obj.button9 = GUI.fromHandle(_obj_newObject("button"));
-    obj.button9:setParent(obj.layout101);
+    obj.button9:setParent(obj.layout106);
     obj.button9:setAlign("left");
     obj.button9:setWidth(20);
     obj.button9:setHeight(20);
@@ -2891,16 +2983,16 @@ local function constructNew_frmFichaVeiculos()
     obj.button9:setMargins({left=5});
     obj.button9:setName("button9");
 
-    obj.label116 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label116:setParent(obj.layout101);
-    obj.label116:setAlign("left");
-    obj.label116:setText("Ataques");
-    obj.label116:setWidth(50);
-    obj.label116:setMargins({left=5});
-    obj.label116:setName("label116");
+    obj.label120 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label120:setParent(obj.layout106);
+    obj.label120:setAlign("left");
+    obj.label120:setText("Ataques");
+    obj.label120:setWidth(50);
+    obj.label120:setMargins({left=5});
+    obj.label120:setName("label120");
 
     obj.button10 = GUI.fromHandle(_obj_newObject("button"));
-    obj.button10:setParent(obj.layout101);
+    obj.button10:setParent(obj.layout106);
     obj.button10:setAlign("left");
     obj.button10:setWidth(20);
     obj.button10:setHeight(20);
@@ -2908,76 +3000,76 @@ local function constructNew_frmFichaVeiculos()
     obj.button10:setMargins({left=5});
     obj.button10:setName("button10");
 
-    obj.label117 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label117:setParent(obj.layout101);
-    obj.label117:setAlign("right");
-    obj.label117:setText("Lugar");
-    obj.label117:setWidth(100);
-    obj.label117:setMargins({left=0});
-    obj.label117:setHorzTextAlign("center");
-    obj.label117:setName("label117");
-
-    obj.layout102 = GUI.fromHandle(_obj_newObject("layout"));
-    obj.layout102:setParent(obj.layout101);
-    obj.layout102:setAlign("right");
-    obj.layout102:setWidth(270);
-    obj.layout102:setName("layout102");
-
-    obj.label118 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label118:setParent(obj.layout102);
-    obj.label118:setAlign("right");
-    obj.label118:setText("Bônus");
-    obj.label118:setWidth(40);
-    obj.label118:setMargins({left=0});
-    obj.label118:setHorzTextAlign("center");
-    obj.label118:setName("label118");
-
-    obj.label119 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label119:setParent(obj.layout102);
-    obj.label119:setAlign("right");
-    obj.label119:setText("Dano");
-    obj.label119:setWidth(40);
-    obj.label119:setMargins({left=0});
-    obj.label119:setHorzTextAlign("center");
-    obj.label119:setName("label119");
-
-    obj.label120 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label120:setParent(obj.layout102);
-    obj.label120:setAlign("right");
-    obj.label120:setText("Crítico");
-    obj.label120:setWidth(40);
-    obj.label120:setMargins({left=0});
-    obj.label120:setHorzTextAlign("center");
-    obj.label120:setName("label120");
-
     obj.label121 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label121:setParent(obj.layout102);
+    obj.label121:setParent(obj.layout106);
     obj.label121:setAlign("right");
-    obj.label121:setText("Mult.");
-    obj.label121:setWidth(40);
+    obj.label121:setText("Lugar");
+    obj.label121:setWidth(100);
     obj.label121:setMargins({left=0});
     obj.label121:setHorzTextAlign("center");
     obj.label121:setName("label121");
 
+    obj.layout107 = GUI.fromHandle(_obj_newObject("layout"));
+    obj.layout107:setParent(obj.layout106);
+    obj.layout107:setAlign("right");
+    obj.layout107:setWidth(270);
+    obj.layout107:setName("layout107");
+
     obj.label122 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label122:setParent(obj.layout102);
+    obj.label122:setParent(obj.layout107);
     obj.label122:setAlign("right");
-    obj.label122:setText("Alcance");
+    obj.label122:setText("Bônus");
     obj.label122:setWidth(40);
     obj.label122:setMargins({left=0});
-    obj.label122:setFontSize(9);
     obj.label122:setHorzTextAlign("center");
     obj.label122:setName("label122");
 
     obj.label123 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label123:setParent(obj.layout102);
+    obj.label123:setParent(obj.layout107);
     obj.label123:setAlign("right");
-    obj.label123:setText("Munição");
+    obj.label123:setText("Dano");
     obj.label123:setWidth(40);
-    obj.label123:setMargins({left=0,right=30});
-    obj.label123:setFontSize(9);
+    obj.label123:setMargins({left=0});
     obj.label123:setHorzTextAlign("center");
     obj.label123:setName("label123");
+
+    obj.label124 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label124:setParent(obj.layout107);
+    obj.label124:setAlign("right");
+    obj.label124:setText("Crítico");
+    obj.label124:setWidth(40);
+    obj.label124:setMargins({left=0});
+    obj.label124:setHorzTextAlign("center");
+    obj.label124:setName("label124");
+
+    obj.label125 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label125:setParent(obj.layout107);
+    obj.label125:setAlign("right");
+    obj.label125:setText("Mult.");
+    obj.label125:setWidth(40);
+    obj.label125:setMargins({left=0});
+    obj.label125:setHorzTextAlign("center");
+    obj.label125:setName("label125");
+
+    obj.label126 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label126:setParent(obj.layout107);
+    obj.label126:setAlign("right");
+    obj.label126:setText("Alcance");
+    obj.label126:setWidth(40);
+    obj.label126:setMargins({left=0});
+    obj.label126:setFontSize(9);
+    obj.label126:setHorzTextAlign("center");
+    obj.label126:setName("label126");
+
+    obj.label127 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label127:setParent(obj.layout107);
+    obj.label127:setAlign("right");
+    obj.label127:setText("Munição");
+    obj.label127:setWidth(40);
+    obj.label127:setMargins({left=0,right=30});
+    obj.label127:setFontSize(9);
+    obj.label127:setHorzTextAlign("center");
+    obj.label127:setName("label127");
 
     obj.rclAtaqs = GUI.fromHandle(_obj_newObject("recordList"));
     obj.rclAtaqs:setParent(obj.rectangle34);
@@ -2990,22 +3082,22 @@ local function constructNew_frmFichaVeiculos()
     obj.rclAtaqs:setLayout("vertical");
     obj.rclAtaqs:setMinQt(1);
 
-    obj.layout103 = GUI.fromHandle(_obj_newObject("layout"));
-    obj.layout103:setParent(obj.scrollBox1);
-    obj.layout103:setAlign("left");
-    obj.layout103:setWidth(500);
-    obj.layout103:setMargins({bottom=5});
-    obj.layout103:setName("layout103");
+    obj.layout108 = GUI.fromHandle(_obj_newObject("layout"));
+    obj.layout108:setParent(obj.layout66);
+    obj.layout108:setAlign("left");
+    obj.layout108:setWidth(500);
+    obj.layout108:setMargins({bottom=5});
+    obj.layout108:setName("layout108");
 
-    obj.layout104 = GUI.fromHandle(_obj_newObject("layout"));
-    obj.layout104:setParent(obj.layout103);
-    obj.layout104:setAlign("top");
-    obj.layout104:setHeight(405);
-    obj.layout104:setMargins({bottom=5});
-    obj.layout104:setName("layout104");
+    obj.layout109 = GUI.fromHandle(_obj_newObject("layout"));
+    obj.layout109:setParent(obj.layout108);
+    obj.layout109:setAlign("top");
+    obj.layout109:setHeight(405);
+    obj.layout109:setMargins({bottom=5});
+    obj.layout109:setName("layout109");
 
     obj.rectangle35 = GUI.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle35:setParent(obj.layout104);
+    obj.rectangle35:setParent(obj.layout109);
     obj.rectangle35:setAlign("client");
     obj.rectangle35:setWidth(340);
     obj.rectangle35:setColor("black");
@@ -3015,6 +3107,14 @@ local function constructNew_frmFichaVeiculos()
     obj.rectangle35:setPadding({top=5,bottom=5});
     obj.rectangle35:setName("rectangle35");
 
+    obj.textEditor3 = GUI.fromHandle(_obj_newObject("textEditor"));
+    obj.textEditor3:setParent(obj.rectangle35);
+    obj.textEditor3:setAlign("top");
+    obj.textEditor3:setHeight(200);
+    obj.textEditor3:setField("detalhes");
+    obj.textEditor3:setMargins({left=5,right=5,bottom=5});
+    obj.textEditor3:setName("textEditor3");
+
     obj.textEditor4 = GUI.fromHandle(_obj_newObject("textEditor"));
     obj.textEditor4:setParent(obj.rectangle35);
     obj.textEditor4:setAlign("client");
@@ -3022,15 +3122,15 @@ local function constructNew_frmFichaVeiculos()
     obj.textEditor4:setMargins({left=5,right=5});
     obj.textEditor4:setName("textEditor4");
 
-    obj.layout105 = GUI.fromHandle(_obj_newObject("layout"));
-    obj.layout105:setParent(obj.layout103);
-    obj.layout105:setAlign("top");
-    obj.layout105:setHeight(200);
-    obj.layout105:setMargins({bottom=5});
-    obj.layout105:setName("layout105");
+    obj.layout110 = GUI.fromHandle(_obj_newObject("layout"));
+    obj.layout110:setParent(obj.layout108);
+    obj.layout110:setAlign("top");
+    obj.layout110:setHeight(200);
+    obj.layout110:setMargins({bottom=5});
+    obj.layout110:setName("layout110");
 
     obj.rectangle36 = GUI.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle36:setParent(obj.layout105);
+    obj.rectangle36:setParent(obj.layout110);
     obj.rectangle36:setAlign("client");
     obj.rectangle36:setWidth(340);
     obj.rectangle36:setColor("black");
@@ -3040,14 +3140,14 @@ local function constructNew_frmFichaVeiculos()
     obj.rectangle36:setPadding({top=5,bottom=5});
     obj.rectangle36:setName("rectangle36");
 
-    obj.layout106 = GUI.fromHandle(_obj_newObject("layout"));
-    obj.layout106:setParent(obj.rectangle36);
-    obj.layout106:setAlign("top");
-    obj.layout106:setHeight(20);
-    obj.layout106:setName("layout106");
+    obj.layout111 = GUI.fromHandle(_obj_newObject("layout"));
+    obj.layout111:setParent(obj.rectangle36);
+    obj.layout111:setAlign("top");
+    obj.layout111:setHeight(20);
+    obj.layout111:setName("layout111");
 
     obj.button11 = GUI.fromHandle(_obj_newObject("button"));
-    obj.button11:setParent(obj.layout106);
+    obj.button11:setParent(obj.layout111);
     obj.button11:setAlign("left");
     obj.button11:setWidth(20);
     obj.button11:setHeight(20);
@@ -3055,32 +3155,32 @@ local function constructNew_frmFichaVeiculos()
     obj.button11:setMargins({left=5});
     obj.button11:setName("button11");
 
-    obj.label124 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label124:setParent(obj.layout106);
-    obj.label124:setAlign("left");
-    obj.label124:setText("Inventario");
-    obj.label124:setWidth(100);
-    obj.label124:setMargins({left=5});
-    obj.label124:setName("label124");
+    obj.label128 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label128:setParent(obj.layout111);
+    obj.label128:setAlign("left");
+    obj.label128:setText("Inventario");
+    obj.label128:setWidth(100);
+    obj.label128:setMargins({left=5});
+    obj.label128:setName("label128");
 
-    obj.layout107 = GUI.fromHandle(_obj_newObject("layout"));
-    obj.layout107:setParent(obj.rectangle36);
-    obj.layout107:setAlign("bottom");
-    obj.layout107:setHeight(20);
-    obj.layout107:setMargins({top=5});
-    obj.layout107:setName("layout107");
+    obj.layout112 = GUI.fromHandle(_obj_newObject("layout"));
+    obj.layout112:setParent(obj.rectangle36);
+    obj.layout112:setAlign("bottom");
+    obj.layout112:setHeight(20);
+    obj.layout112:setMargins({top=5});
+    obj.layout112:setName("layout112");
 
-    obj.label125 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label125:setParent(obj.layout107);
-    obj.label125:setLeft(5);
-    obj.label125:setTop(0);
-    obj.label125:setWidth(50);
-    obj.label125:setHeight(20);
-    obj.label125:setText("Vol");
-    obj.label125:setName("label125");
+    obj.label129 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label129:setParent(obj.layout112);
+    obj.label129:setLeft(5);
+    obj.label129:setTop(0);
+    obj.label129:setWidth(50);
+    obj.label129:setHeight(20);
+    obj.label129:setText("Vol");
+    obj.label129:setName("label129");
 
     obj.rectangle37 = GUI.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle37:setParent(obj.layout107);
+    obj.rectangle37:setParent(obj.layout112);
     obj.rectangle37:setLeft(25);
     obj.rectangle37:setTop(0);
     obj.rectangle37:setWidth(70);
@@ -3090,29 +3190,29 @@ local function constructNew_frmFichaVeiculos()
     obj.rectangle37:setStrokeSize(1);
     obj.rectangle37:setName("rectangle37");
 
-    obj.label126 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label126:setParent(obj.layout107);
-    obj.label126:setVertTextAlign("center");
-    obj.label126:setHorzTextAlign("center");
-    obj.label126:setLeft(25);
-    obj.label126:setTop(0);
-    obj.label126:setWidth(70);
-    obj.label126:setHeight(20);
-    obj.label126:setField("pesoInv");
-    lfm_setPropAsString(obj.label126, "formatFloat",  ",0.##");
-    obj.label126:setName("label126");
+    obj.label130 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label130:setParent(obj.layout112);
+    obj.label130:setVertTextAlign("center");
+    obj.label130:setHorzTextAlign("center");
+    obj.label130:setLeft(25);
+    obj.label130:setTop(0);
+    obj.label130:setWidth(70);
+    obj.label130:setHeight(20);
+    obj.label130:setField("pesoInv");
+    lfm_setPropAsString(obj.label130, "formatFloat",  ",0.##");
+    obj.label130:setName("label130");
 
-    obj.label127 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label127:setParent(obj.layout107);
-    obj.label127:setLeft(105);
-    obj.label127:setTop(0);
-    obj.label127:setWidth(50);
-    obj.label127:setHeight(20);
-    obj.label127:setText("$");
-    obj.label127:setName("label127");
+    obj.label131 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label131:setParent(obj.layout112);
+    obj.label131:setLeft(105);
+    obj.label131:setTop(0);
+    obj.label131:setWidth(50);
+    obj.label131:setHeight(20);
+    obj.label131:setText("$");
+    obj.label131:setName("label131");
 
     obj.rectangle38 = GUI.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle38:setParent(obj.layout107);
+    obj.rectangle38:setParent(obj.layout112);
     obj.rectangle38:setLeft(120);
     obj.rectangle38:setTop(0);
     obj.rectangle38:setWidth(91);
@@ -3122,17 +3222,17 @@ local function constructNew_frmFichaVeiculos()
     obj.rectangle38:setStrokeSize(1);
     obj.rectangle38:setName("rectangle38");
 
-    obj.label128 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label128:setParent(obj.layout107);
-    obj.label128:setVertTextAlign("center");
-    obj.label128:setHorzTextAlign("center");
-    obj.label128:setLeft(120);
-    obj.label128:setTop(0);
-    obj.label128:setWidth(91);
-    obj.label128:setHeight(20);
-    obj.label128:setField("precoInv");
-    lfm_setPropAsString(obj.label128, "formatFloat",  ",0.## C");
-    obj.label128:setName("label128");
+    obj.label132 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label132:setParent(obj.layout112);
+    obj.label132:setVertTextAlign("center");
+    obj.label132:setHorzTextAlign("center");
+    obj.label132:setLeft(120);
+    obj.label132:setTop(0);
+    obj.label132:setWidth(91);
+    obj.label132:setHeight(20);
+    obj.label132:setField("precoInv");
+    lfm_setPropAsString(obj.label132, "formatFloat",  ",0.## C");
+    obj.label132:setName("label132");
 
     obj.rclInv = GUI.fromHandle(_obj_newObject("recordList"));
     obj.rclInv:setParent(obj.rectangle36);
@@ -3205,13 +3305,13 @@ local function constructNew_frmFichaVeiculos()
     obj.anotacoes1Part:setAdjustHeightToLine(false);
     obj.anotacoes1Part:setMargins({left=5});
 
-    obj.label129 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label129:setParent(obj.anotacoes1Part);
-    obj.label129:setAlign("top");
-    obj.label129:setHeight(25);
-    obj.label129:setText("ANOTAÇÕES");
-    obj.label129:setHorzTextAlign("center");
-    obj.label129:setName("label129");
+    obj.label133 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label133:setParent(obj.anotacoes1Part);
+    obj.label133:setAlign("top");
+    obj.label133:setHeight(25);
+    obj.label133:setText("ANOTAÇÕES");
+    obj.label133:setHorzTextAlign("center");
+    obj.label133:setName("label133");
 
     obj.anotacoes1 = GUI.fromHandle(_obj_newObject("textEditor"));
     obj.anotacoes1:setParent(obj.anotacoes1Part);
@@ -3229,13 +3329,13 @@ local function constructNew_frmFichaVeiculos()
     obj.anotacoes2Part:setAdjustHeightToLine(false);
     obj.anotacoes2Part:setMargins({left=5});
 
-    obj.label130 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label130:setParent(obj.anotacoes2Part);
-    obj.label130:setAlign("top");
-    obj.label130:setHeight(25);
-    obj.label130:setText("ANOTAÇÕES");
-    obj.label130:setHorzTextAlign("center");
-    obj.label130:setName("label130");
+    obj.label134 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label134:setParent(obj.anotacoes2Part);
+    obj.label134:setAlign("top");
+    obj.label134:setHeight(25);
+    obj.label134:setText("ANOTAÇÕES");
+    obj.label134:setHorzTextAlign("center");
+    obj.label134:setName("label134");
 
     obj.anotacoes2 = GUI.fromHandle(_obj_newObject("textEditor"));
     obj.anotacoes2:setParent(obj.anotacoes2Part);
@@ -3253,13 +3353,13 @@ local function constructNew_frmFichaVeiculos()
     obj.anotacoes3Part:setAdjustHeightToLine(false);
     obj.anotacoes3Part:setMargins({left=5});
 
-    obj.label131 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label131:setParent(obj.anotacoes3Part);
-    obj.label131:setAlign("top");
-    obj.label131:setHeight(25);
-    obj.label131:setText("ANOTAÇÕES");
-    obj.label131:setHorzTextAlign("center");
-    obj.label131:setName("label131");
+    obj.label135 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label135:setParent(obj.anotacoes3Part);
+    obj.label135:setAlign("top");
+    obj.label135:setHeight(25);
+    obj.label135:setText("ANOTAÇÕES");
+    obj.label135:setHorzTextAlign("center");
+    obj.label135:setName("label135");
 
     obj.anotacoes3 = GUI.fromHandle(_obj_newObject("textEditor"));
     obj.anotacoes3:setParent(obj.anotacoes3Part);
@@ -3277,13 +3377,13 @@ local function constructNew_frmFichaVeiculos()
     obj.anotacoes4Part:setAdjustHeightToLine(false);
     obj.anotacoes4Part:setMargins({left=5});
 
-    obj.label132 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label132:setParent(obj.anotacoes4Part);
-    obj.label132:setAlign("top");
-    obj.label132:setHeight(25);
-    obj.label132:setText("ANOTAÇÕES");
-    obj.label132:setHorzTextAlign("center");
-    obj.label132:setName("label132");
+    obj.label136 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label136:setParent(obj.anotacoes4Part);
+    obj.label136:setAlign("top");
+    obj.label136:setHeight(25);
+    obj.label136:setText("ANOTAÇÕES");
+    obj.label136:setHorzTextAlign("center");
+    obj.label136:setName("label136");
 
     obj.anotacoes4 = GUI.fromHandle(_obj_newObject("textEditor"));
     obj.anotacoes4:setParent(obj.anotacoes4Part);
@@ -3301,13 +3401,13 @@ local function constructNew_frmFichaVeiculos()
     obj.anotacoes5Part:setAdjustHeightToLine(false);
     obj.anotacoes5Part:setMargins({left=5});
 
-    obj.label133 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label133:setParent(obj.anotacoes5Part);
-    obj.label133:setAlign("top");
-    obj.label133:setHeight(25);
-    obj.label133:setText("ANOTAÇÕES");
-    obj.label133:setHorzTextAlign("center");
-    obj.label133:setName("label133");
+    obj.label137 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label137:setParent(obj.anotacoes5Part);
+    obj.label137:setAlign("top");
+    obj.label137:setHeight(25);
+    obj.label137:setText("ANOTAÇÕES");
+    obj.label137:setHorzTextAlign("center");
+    obj.label137:setName("label137");
 
     obj.anotacoes5 = GUI.fromHandle(_obj_newObject("textEditor"));
     obj.anotacoes5:setParent(obj.anotacoes5Part);
@@ -3325,13 +3425,13 @@ local function constructNew_frmFichaVeiculos()
     obj.anotacoes6Part:setAdjustHeightToLine(false);
     obj.anotacoes6Part:setMargins({left=5});
 
-    obj.label134 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label134:setParent(obj.anotacoes6Part);
-    obj.label134:setAlign("top");
-    obj.label134:setHeight(25);
-    obj.label134:setText("ANOTAÇÕES");
-    obj.label134:setHorzTextAlign("center");
-    obj.label134:setName("label134");
+    obj.label138 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label138:setParent(obj.anotacoes6Part);
+    obj.label138:setAlign("top");
+    obj.label138:setHeight(25);
+    obj.label138:setText("ANOTAÇÕES");
+    obj.label138:setHorzTextAlign("center");
+    obj.label138:setName("label138");
 
     obj.anotacoes6 = GUI.fromHandle(_obj_newObject("textEditor"));
     obj.anotacoes6:setParent(obj.anotacoes6Part);
@@ -3349,13 +3449,13 @@ local function constructNew_frmFichaVeiculos()
     obj.anotacoes7Part:setAdjustHeightToLine(false);
     obj.anotacoes7Part:setMargins({left=5});
 
-    obj.label135 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label135:setParent(obj.anotacoes7Part);
-    obj.label135:setAlign("top");
-    obj.label135:setHeight(25);
-    obj.label135:setText("ANOTAÇÕES");
-    obj.label135:setHorzTextAlign("center");
-    obj.label135:setName("label135");
+    obj.label139 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label139:setParent(obj.anotacoes7Part);
+    obj.label139:setAlign("top");
+    obj.label139:setHeight(25);
+    obj.label139:setText("ANOTAÇÕES");
+    obj.label139:setHorzTextAlign("center");
+    obj.label139:setName("label139");
 
     obj.anotacoes7 = GUI.fromHandle(_obj_newObject("textEditor"));
     obj.anotacoes7:setParent(obj.anotacoes7Part);
@@ -3373,13 +3473,13 @@ local function constructNew_frmFichaVeiculos()
     obj.anotacoes8Part:setAdjustHeightToLine(false);
     obj.anotacoes8Part:setMargins({left=5});
 
-    obj.label136 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label136:setParent(obj.anotacoes8Part);
-    obj.label136:setAlign("top");
-    obj.label136:setHeight(25);
-    obj.label136:setText("ANOTAÇÕES");
-    obj.label136:setHorzTextAlign("center");
-    obj.label136:setName("label136");
+    obj.label140 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label140:setParent(obj.anotacoes8Part);
+    obj.label140:setAlign("top");
+    obj.label140:setHeight(25);
+    obj.label140:setText("ANOTAÇÕES");
+    obj.label140:setHorzTextAlign("center");
+    obj.label140:setName("label140");
 
     obj.anotacoes8 = GUI.fromHandle(_obj_newObject("textEditor"));
     obj.anotacoes8:setParent(obj.anotacoes8Part);
@@ -3397,13 +3497,13 @@ local function constructNew_frmFichaVeiculos()
     obj.anotacoes9Part:setAdjustHeightToLine(false);
     obj.anotacoes9Part:setMargins({left=5});
 
-    obj.label137 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label137:setParent(obj.anotacoes9Part);
-    obj.label137:setAlign("top");
-    obj.label137:setHeight(25);
-    obj.label137:setText("ANOTAÇÕES");
-    obj.label137:setHorzTextAlign("center");
-    obj.label137:setName("label137");
+    obj.label141 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label141:setParent(obj.anotacoes9Part);
+    obj.label141:setAlign("top");
+    obj.label141:setHeight(25);
+    obj.label141:setText("ANOTAÇÕES");
+    obj.label141:setHorzTextAlign("center");
+    obj.label141:setName("label141");
 
     obj.anotacoes9 = GUI.fromHandle(_obj_newObject("textEditor"));
     obj.anotacoes9:setParent(obj.anotacoes9Part);
@@ -3505,16 +3605,16 @@ local function constructNew_frmFichaVeiculos()
     obj.image2:setOptimize(true);
     obj.image2:setName("image2");
 
-    obj.layout108 = GUI.fromHandle(_obj_newObject("layout"));
-    obj.layout108:setParent(obj.scrollBox2);
-    obj.layout108:setLeft(620);
-    obj.layout108:setTop(10);
-    obj.layout108:setWidth(200);
-    obj.layout108:setHeight(220);
-    obj.layout108:setName("layout108");
+    obj.layout113 = GUI.fromHandle(_obj_newObject("layout"));
+    obj.layout113:setParent(obj.scrollBox2);
+    obj.layout113:setLeft(620);
+    obj.layout113:setTop(10);
+    obj.layout113:setWidth(200);
+    obj.layout113:setHeight(220);
+    obj.layout113:setName("layout113");
 
     obj.rectangle39 = GUI.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle39:setParent(obj.layout108);
+    obj.rectangle39:setParent(obj.layout113);
     obj.rectangle39:setAlign("client");
     obj.rectangle39:setColor("black");
     obj.rectangle39:setXradius(15);
@@ -3522,46 +3622,46 @@ local function constructNew_frmFichaVeiculos()
     obj.rectangle39:setCornerType("round");
     obj.rectangle39:setName("rectangle39");
 
-    obj.label138 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label138:setParent(obj.layout108);
-    obj.label138:setLeft(0);
-    obj.label138:setTop(10);
-    obj.label138:setWidth(200);
-    obj.label138:setHeight(20);
-    obj.label138:setText("Programador: Vinny (Ambesek)");
-    obj.label138:setHorzTextAlign("center");
-    obj.label138:setName("label138");
+    obj.label142 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label142:setParent(obj.layout113);
+    obj.label142:setLeft(0);
+    obj.label142:setTop(10);
+    obj.label142:setWidth(200);
+    obj.label142:setHeight(20);
+    obj.label142:setText("Programador: Vinny (Ambesek)");
+    obj.label142:setHorzTextAlign("center");
+    obj.label142:setName("label142");
 
-    obj.label139 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label139:setParent(obj.layout108);
-    obj.label139:setLeft(0);
-    obj.label139:setTop(170);
-    obj.label139:setWidth(200);
-    obj.label139:setHeight(20);
-    obj.label139:setText("Ficha feita para a mesa: ");
-    obj.label139:setHorzTextAlign("center");
-    obj.label139:setName("label139");
+    obj.label143 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label143:setParent(obj.layout113);
+    obj.label143:setLeft(0);
+    obj.label143:setTop(170);
+    obj.label143:setWidth(200);
+    obj.label143:setHeight(20);
+    obj.label143:setText("Ficha feita para a mesa: ");
+    obj.label143:setHorzTextAlign("center");
+    obj.label143:setName("label143");
 
-    obj.label140 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label140:setParent(obj.layout108);
-    obj.label140:setLeft(0);
-    obj.label140:setTop(195);
-    obj.label140:setWidth(200);
-    obj.label140:setHeight(20);
-    obj.label140:setText("StarTech");
-    obj.label140:setHorzTextAlign("center");
-    obj.label140:setName("label140");
+    obj.label144 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label144:setParent(obj.layout113);
+    obj.label144:setLeft(0);
+    obj.label144:setTop(195);
+    obj.label144:setWidth(200);
+    obj.label144:setHeight(20);
+    obj.label144:setText("StarTech");
+    obj.label144:setHorzTextAlign("center");
+    obj.label144:setName("label144");
 
-    obj.layout109 = GUI.fromHandle(_obj_newObject("layout"));
-    obj.layout109:setParent(obj.scrollBox2);
-    obj.layout109:setLeft(620);
-    obj.layout109:setTop(240);
-    obj.layout109:setWidth(200);
-    obj.layout109:setHeight(150);
-    obj.layout109:setName("layout109");
+    obj.layout114 = GUI.fromHandle(_obj_newObject("layout"));
+    obj.layout114:setParent(obj.scrollBox2);
+    obj.layout114:setLeft(620);
+    obj.layout114:setTop(240);
+    obj.layout114:setWidth(200);
+    obj.layout114:setHeight(150);
+    obj.layout114:setName("layout114");
 
     obj.rectangle40 = GUI.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle40:setParent(obj.layout109);
+    obj.rectangle40:setParent(obj.layout114);
     obj.rectangle40:setLeft(0);
     obj.rectangle40:setTop(0);
     obj.rectangle40:setWidth(200);
@@ -3571,18 +3671,18 @@ local function constructNew_frmFichaVeiculos()
     obj.rectangle40:setStrokeSize(1);
     obj.rectangle40:setName("rectangle40");
 
-    obj.label141 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label141:setParent(obj.layout109);
-    obj.label141:setLeft(0);
-    obj.label141:setTop(10);
-    obj.label141:setWidth(80);
-    obj.label141:setHeight(20);
-    obj.label141:setText("Tema:");
-    obj.label141:setHorzTextAlign("center");
-    obj.label141:setName("label141");
+    obj.label145 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label145:setParent(obj.layout114);
+    obj.label145:setLeft(0);
+    obj.label145:setTop(10);
+    obj.label145:setWidth(80);
+    obj.label145:setHeight(20);
+    obj.label145:setText("Tema:");
+    obj.label145:setHorzTextAlign("center");
+    obj.label145:setName("label145");
 
     obj.comboBox1 = GUI.fromHandle(_obj_newObject("comboBox"));
-    obj.comboBox1:setParent(obj.layout109);
+    obj.comboBox1:setParent(obj.layout114);
     obj.comboBox1:setLeft(95);
     obj.comboBox1:setTop(10);
     obj.comboBox1:setWidth(90);
@@ -3593,33 +3693,33 @@ local function constructNew_frmFichaVeiculos()
     obj.comboBox1:setName("comboBox1");
 
     obj.dataLink2 = GUI.fromHandle(_obj_newObject("dataLink"));
-    obj.dataLink2:setParent(obj.layout109);
+    obj.dataLink2:setParent(obj.layout114);
     obj.dataLink2:setField("theme");
     obj.dataLink2:setDefaultValue("Escuro");
     obj.dataLink2:setName("dataLink2");
 
-    obj.label142 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label142:setParent(obj.layout109);
-    obj.label142:setLeft(0);
-    obj.label142:setTop(35);
-    obj.label142:setWidth(90);
-    obj.label142:setHeight(20);
-    obj.label142:setText("Cores: ");
-    obj.label142:setHorzTextAlign("center");
-    obj.label142:setName("label142");
+    obj.label146 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label146:setParent(obj.layout114);
+    obj.label146:setLeft(0);
+    obj.label146:setTop(35);
+    obj.label146:setWidth(90);
+    obj.label146:setHeight(20);
+    obj.label146:setText("Cores: ");
+    obj.label146:setHorzTextAlign("center");
+    obj.label146:setName("label146");
 
-    obj.label143 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label143:setParent(obj.layout109);
-    obj.label143:setLeft(0);
-    obj.label143:setTop(60);
-    obj.label143:setWidth(90);
-    obj.label143:setHeight(20);
-    obj.label143:setText("Fundo ");
-    obj.label143:setHorzTextAlign("center");
-    obj.label143:setName("label143");
+    obj.label147 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label147:setParent(obj.layout114);
+    obj.label147:setLeft(0);
+    obj.label147:setTop(60);
+    obj.label147:setWidth(90);
+    obj.label147:setHeight(20);
+    obj.label147:setText("Fundo ");
+    obj.label147:setHorzTextAlign("center");
+    obj.label147:setName("label147");
 
     obj.comboBox2 = GUI.fromHandle(_obj_newObject("comboBox"));
-    obj.comboBox2:setParent(obj.layout109);
+    obj.comboBox2:setParent(obj.layout114);
     obj.comboBox2:setLeft(95);
     obj.comboBox2:setTop(60);
     obj.comboBox2:setWidth(90);
@@ -3629,23 +3729,23 @@ local function constructNew_frmFichaVeiculos()
     obj.comboBox2:setName("comboBox2");
 
     obj.dataLink3 = GUI.fromHandle(_obj_newObject("dataLink"));
-    obj.dataLink3:setParent(obj.layout109);
+    obj.dataLink3:setParent(obj.layout114);
     obj.dataLink3:setField("colorBackground");
     obj.dataLink3:setDefaultValue("#000000");
     obj.dataLink3:setName("dataLink3");
 
-    obj.label144 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label144:setParent(obj.layout109);
-    obj.label144:setLeft(0);
-    obj.label144:setTop(85);
-    obj.label144:setWidth(90);
-    obj.label144:setHeight(20);
-    obj.label144:setText("Linhas ");
-    obj.label144:setHorzTextAlign("center");
-    obj.label144:setName("label144");
+    obj.label148 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label148:setParent(obj.layout114);
+    obj.label148:setLeft(0);
+    obj.label148:setTop(85);
+    obj.label148:setWidth(90);
+    obj.label148:setHeight(20);
+    obj.label148:setText("Linhas ");
+    obj.label148:setHorzTextAlign("center");
+    obj.label148:setName("label148");
 
     obj.comboBox3 = GUI.fromHandle(_obj_newObject("comboBox"));
-    obj.comboBox3:setParent(obj.layout109);
+    obj.comboBox3:setParent(obj.layout114);
     obj.comboBox3:setLeft(95);
     obj.comboBox3:setTop(85);
     obj.comboBox3:setWidth(90);
@@ -3655,23 +3755,23 @@ local function constructNew_frmFichaVeiculos()
     obj.comboBox3:setName("comboBox3");
 
     obj.dataLink4 = GUI.fromHandle(_obj_newObject("dataLink"));
-    obj.dataLink4:setParent(obj.layout109);
+    obj.dataLink4:setParent(obj.layout114);
     obj.dataLink4:setField("colorStroke");
     obj.dataLink4:setDefaultValue("#FFFFFF");
     obj.dataLink4:setName("dataLink4");
 
-    obj.label145 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label145:setParent(obj.layout109);
-    obj.label145:setLeft(0);
-    obj.label145:setTop(110);
-    obj.label145:setWidth(90);
-    obj.label145:setHeight(20);
-    obj.label145:setText("Fonte ");
-    obj.label145:setHorzTextAlign("center");
-    obj.label145:setName("label145");
+    obj.label149 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label149:setParent(obj.layout114);
+    obj.label149:setLeft(0);
+    obj.label149:setTop(110);
+    obj.label149:setWidth(90);
+    obj.label149:setHeight(20);
+    obj.label149:setText("Fonte ");
+    obj.label149:setHorzTextAlign("center");
+    obj.label149:setName("label149");
 
     obj.comboBox4 = GUI.fromHandle(_obj_newObject("comboBox"));
-    obj.comboBox4:setParent(obj.layout109);
+    obj.comboBox4:setParent(obj.layout114);
     obj.comboBox4:setLeft(95);
     obj.comboBox4:setTop(110);
     obj.comboBox4:setWidth(90);
@@ -3681,37 +3781,37 @@ local function constructNew_frmFichaVeiculos()
     obj.comboBox4:setName("comboBox4");
 
     obj.dataLink5 = GUI.fromHandle(_obj_newObject("dataLink"));
-    obj.dataLink5:setParent(obj.layout109);
+    obj.dataLink5:setParent(obj.layout114);
     obj.dataLink5:setField("colorFont");
     obj.dataLink5:setDefaultValue("#FFFFFF");
     obj.dataLink5:setName("dataLink5");
 
-    obj.layout110 = GUI.fromHandle(_obj_newObject("layout"));
-    obj.layout110:setParent(obj.scrollBox2);
-    obj.layout110:setLeft(830);
-    obj.layout110:setTop(0);
-    obj.layout110:setWidth(400);
-    obj.layout110:setHeight(350);
-    obj.layout110:setName("layout110");
+    obj.layout115 = GUI.fromHandle(_obj_newObject("layout"));
+    obj.layout115:setParent(obj.scrollBox2);
+    obj.layout115:setLeft(830);
+    obj.layout115:setTop(0);
+    obj.layout115:setWidth(400);
+    obj.layout115:setHeight(350);
+    obj.layout115:setName("layout115");
 
     obj.rectangle41 = GUI.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle41:setParent(obj.layout110);
+    obj.rectangle41:setParent(obj.layout115);
     obj.rectangle41:setAlign("client");
     obj.rectangle41:setColor("black");
     obj.rectangle41:setName("rectangle41");
 
-    obj.label146 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label146:setParent(obj.layout110);
-    obj.label146:setLeft(0);
-    obj.label146:setTop(0);
-    obj.label146:setWidth(400);
-    obj.label146:setHeight(20);
-    obj.label146:setText("ANOTAÇÕES DO MESTRE");
-    obj.label146:setHorzTextAlign("center");
-    obj.label146:setName("label146");
+    obj.label150 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label150:setParent(obj.layout115);
+    obj.label150:setLeft(0);
+    obj.label150:setTop(0);
+    obj.label150:setWidth(400);
+    obj.label150:setHeight(20);
+    obj.label150:setText("ANOTAÇÕES DO MESTRE");
+    obj.label150:setHorzTextAlign("center");
+    obj.label150:setName("label150");
 
     obj.textEditor5 = GUI.fromHandle(_obj_newObject("textEditor"));
-    obj.textEditor5:setParent(obj.layout110);
+    obj.textEditor5:setParent(obj.layout115);
     obj.textEditor5:setLeft(10);
     obj.textEditor5:setTop(25);
     obj.textEditor5:setWidth(380);
@@ -3719,25 +3819,25 @@ local function constructNew_frmFichaVeiculos()
     obj.textEditor5:setField("anotacoes_do_mestre");
     obj.textEditor5:setName("textEditor5");
 
-    obj.label147 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label147:setParent(obj.scrollBox2);
-    obj.label147:setLeft(630);
-    obj.label147:setTop(400);
-    obj.label147:setWidth(200);
-    obj.label147:setHeight(20);
-    obj.label147:setText("SUA VERSÃO:");
-    obj.label147:setField("versionInstalled");
-    obj.label147:setName("label147");
+    obj.label151 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label151:setParent(obj.scrollBox2);
+    obj.label151:setLeft(630);
+    obj.label151:setTop(400);
+    obj.label151:setWidth(200);
+    obj.label151:setHeight(20);
+    obj.label151:setText("SUA VERSÃO:");
+    obj.label151:setField("versionInstalled");
+    obj.label151:setName("label151");
 
-    obj.label148 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label148:setParent(obj.scrollBox2);
-    obj.label148:setLeft(630);
-    obj.label148:setTop(420);
-    obj.label148:setWidth(200);
-    obj.label148:setHeight(20);
-    obj.label148:setText("VERSÃO ATUAL:");
-    obj.label148:setField("versionDownloaded");
-    obj.label148:setName("label148");
+    obj.label152 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label152:setParent(obj.scrollBox2);
+    obj.label152:setLeft(630);
+    obj.label152:setTop(420);
+    obj.label152:setWidth(200);
+    obj.label152:setHeight(20);
+    obj.label152:setText("VERSÃO ATUAL:");
+    obj.label152:setField("versionDownloaded");
+    obj.label152:setName("label152");
 
     obj.checkBox3 = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox3:setParent(obj.scrollBox2);
@@ -3765,15 +3865,15 @@ local function constructNew_frmFichaVeiculos()
     obj.button13:setText("Atualizar");
     obj.button13:setName("button13");
 
-    obj.label149 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label149:setParent(obj.scrollBox2);
-    obj.label149:setLeft(620);
-    obj.label149:setTop(525);
-    obj.label149:setWidth(120);
-    obj.label149:setHeight(20);
-    obj.label149:setText("CONHEÇA A MESA:");
-    obj.label149:setFontSize(11);
-    obj.label149:setName("label149");
+    obj.label153 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label153:setParent(obj.scrollBox2);
+    obj.label153:setLeft(620);
+    obj.label153:setTop(525);
+    obj.label153:setWidth(120);
+    obj.label153:setHeight(20);
+    obj.label153:setText("CONHEÇA A MESA:");
+    obj.label153:setFontSize(11);
+    obj.label153:setName("label153");
 
     obj.button14 = GUI.fromHandle(_obj_newObject("button"));
     obj.button14:setParent(obj.scrollBox2);
@@ -3841,12 +3941,12 @@ local function constructNew_frmFichaVeiculos()
 
     obj.dataLink12 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink12:setParent(obj);
-    obj.dataLink12:setFields({'caeBase','caeAdd','caeMult','caeOutros','quebrado'});
+    obj.dataLink12:setFields({'caeBase','caeAdd','caeMult','caeOutros','quebrado', 'tamanho','tempCA'});
     obj.dataLink12:setName("dataLink12");
 
     obj.dataLink13 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink13:setParent(obj);
-    obj.dataLink13:setFields({'cacBase','cacAdd','cacMult','cacOutros','quebrado'});
+    obj.dataLink13:setFields({'cacBase','cacAdd','cacMult','cacOutros','quebrado','tamanho','tempCA'});
     obj.dataLink13:setName("dataLink13");
 
     obj.dataLink14 = GUI.fromHandle(_obj_newObject("dataLink"));
@@ -3915,27 +4015,27 @@ local function constructNew_frmFichaVeiculos()
     obj._e_event4 = obj.dataLink1:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet==nil then return end;
-                                                    if tonumber(sheet.cmbPersonagem) == 0 then return end;
+                                                        if tonumber(sheet.cmbPersonagem) == 0 then return end;
             
-                                                    local personagem;
-                                                    
-                                                    local mesa = Firecast.getMesaDe(sheet);
-                                                    local dono = Firecast.getPersonagemDe(sheet); -- Objeto Personagem
+                                                        local personagem;
+                                                        
+                                                        local mesa = Firecast.getMesaDe(sheet);
+                                                        local dono = Firecast.getPersonagemDe(sheet); -- Objeto Personagem
             
-                                                    local personagens = {};
-                                                    recursiveEnumPersonagensEmBibItem(mesa.biblioteca, personagens, dono);
+                                                        local personagens = {};
+                                                        recursiveEnumPersonagensEmBibItem(mesa.biblioteca, personagens, dono);
             
-                                                    for i = 1, #personagens, 1 do
-                                                        if personagens[i].codigoInterno == tonumber(sheet.cmbPersonagem) then
-                                                            personagem = personagens[i];
+                                                        for i = 1, #personagens, 1 do
+                                                            if personagens[i].codigoInterno == tonumber(sheet.cmbPersonagem) then
+                                                                personagem = personagens[i];
+                                                            end;
                                                         end;
-                                                    end;
-                                                    if personagem ~= nil then
-                                                        personagem:loadSheetNDB(
-                                                            function (piloto)
-                                                                sheet.piloto = piloto;
-                                                            end);
-                                                    end;
+                                                        if personagem ~= nil then
+                                                            personagem:loadSheetNDB(
+                                                                function (piloto)
+                                                                    sheet.piloto = piloto;
+                                                                end);
+                                                        end;
         end, obj);
 
     obj._e_event5 = obj.button2:addEventListener("onClick",
@@ -4405,10 +4505,15 @@ local function constructNew_frmFichaVeiculos()
                         local caeAdd = tonumber(sheet.caeAdd) or 0;
                         local caeMult = tonumber(sheet.caeMult) or 1;
                         local caeOutros = tonumber(sheet.caeOutros) or 0;
+                        local caTemp = tonumber(sheet.tempCA) or 0;
+            
+                        local tam = tonumber(sheet.tamanho) or 1
+                        local tamTable = {2,1,0,-1,-2,-4,-8}
+                        local tamanho = tamTable[tam]
             
                         if sheet.quebrado then caeMult = caeMult * 0.5 end;
             
-                        sheet.cae = math.floor((caeBase + caeAdd) * caeMult + caeOutros);
+                        sheet.cae = math.floor((caeBase + caeAdd) * caeMult + caeOutros + tamanho + caTemp);
         end, obj);
 
     obj._e_event69 = obj.dataLink13:addEventListener("onChange",
@@ -4419,10 +4524,15 @@ local function constructNew_frmFichaVeiculos()
                         local cacAdd = tonumber(sheet.cacAdd) or 0;
                         local cacMult = tonumber(sheet.cacMult) or 1;
                         local cacOutros = tonumber(sheet.cacOutros) or 0;
+                        local caTemp = tonumber(sheet.tempCA) or 0;
+            
+                        local tam = tonumber(sheet.tamanho) or 1
+                        local tamTable = {2,1,0,-1,-2,-4,-8}
+                        local tamanho = tamTable[tam]
             
                         if sheet.quebrado then cacMult = cacMult * 0.5 end;
             
-                        sheet.cac = math.floor((cacBase + cacAdd) * cacMult + cacOutros);
+                        sheet.cac = math.floor((cacBase + cacAdd) * cacMult + cacOutros + tamanho + caTemp);
         end, obj);
 
     obj._e_event70 = obj.dataLink14:addEventListener("onChange",
@@ -4685,6 +4795,7 @@ local function constructNew_frmFichaVeiculos()
         if self.layout1 ~= nil then self.layout1:destroy(); self.layout1 = nil; end;
         if self.tab2 ~= nil then self.tab2:destroy(); self.tab2 = nil; end;
         if self.label93 ~= nil then self.label93:destroy(); self.label93 = nil; end;
+        if self.layout111 ~= nil then self.layout111:destroy(); self.layout111 = nil; end;
         if self.edit24 ~= nil then self.edit24:destroy(); self.edit24 = nil; end;
         if self.layout12 ~= nil then self.layout12:destroy(); self.layout12 = nil; end;
         if self.edit14 ~= nil then self.edit14:destroy(); self.edit14 = nil; end;
@@ -4701,6 +4812,7 @@ local function constructNew_frmFichaVeiculos()
         if self.label37 ~= nil then self.label37:destroy(); self.label37 = nil; end;
         if self.layout26 ~= nil then self.layout26:destroy(); self.layout26 = nil; end;
         if self.layout101 ~= nil then self.layout101:destroy(); self.layout101 = nil; end;
+        if self.edit45 ~= nil then self.edit45:destroy(); self.edit45 = nil; end;
         if self.edit8 ~= nil then self.edit8:destroy(); self.edit8 = nil; end;
         if self.anotacoes9Part ~= nil then self.anotacoes9Part:destroy(); self.anotacoes9Part = nil; end;
         if self.flowPart4 ~= nil then self.flowPart4:destroy(); self.flowPart4 = nil; end;
@@ -4742,6 +4854,7 @@ local function constructNew_frmFichaVeiculos()
         if self.edit15 ~= nil then self.edit15:destroy(); self.edit15 = nil; end;
         if self.label3 ~= nil then self.label3:destroy(); self.label3 = nil; end;
         if self.label20 ~= nil then self.label20:destroy(); self.label20 = nil; end;
+        if self.layout113 ~= nil then self.layout113:destroy(); self.layout113 = nil; end;
         if self.rectangle40 ~= nil then self.rectangle40:destroy(); self.rectangle40 = nil; end;
         if self.label108 ~= nil then self.label108:destroy(); self.label108 = nil; end;
         if self.rectangle36 ~= nil then self.rectangle36:destroy(); self.rectangle36 = nil; end;
@@ -4761,18 +4874,21 @@ local function constructNew_frmFichaVeiculos()
         if self.label124 ~= nil then self.label124:destroy(); self.label124 = nil; end;
         if self.edit32 ~= nil then self.edit32:destroy(); self.edit32 = nil; end;
         if self.tab1 ~= nil then self.tab1:destroy(); self.tab1 = nil; end;
+        if self.layout115 ~= nil then self.layout115:destroy(); self.layout115 = nil; end;
         if self.layout75 ~= nil then self.layout75:destroy(); self.layout75 = nil; end;
         if self.rectangle34 ~= nil then self.rectangle34:destroy(); self.rectangle34 = nil; end;
         if self.dataLink12 ~= nil then self.dataLink12:destroy(); self.dataLink12 = nil; end;
         if self.label110 ~= nil then self.label110:destroy(); self.label110 = nil; end;
         if self.rectangle37 ~= nil then self.rectangle37:destroy(); self.rectangle37 = nil; end;
         if self.layout58 ~= nil then self.layout58:destroy(); self.layout58 = nil; end;
+        if self.label151 ~= nil then self.label151:destroy(); self.label151 = nil; end;
         if self.popEquip ~= nil then self.popEquip:destroy(); self.popEquip = nil; end;
         if self.label138 ~= nil then self.label138:destroy(); self.label138 = nil; end;
         if self.layout110 ~= nil then self.layout110:destroy(); self.layout110 = nil; end;
         if self.label40 ~= nil then self.label40:destroy(); self.label40 = nil; end;
         if self.dataLink4 ~= nil then self.dataLink4:destroy(); self.dataLink4 = nil; end;
         if self.layout63 ~= nil then self.layout63:destroy(); self.layout63 = nil; end;
+        if self.layout114 ~= nil then self.layout114:destroy(); self.layout114 = nil; end;
         if self.edit28 ~= nil then self.edit28:destroy(); self.edit28 = nil; end;
         if self.label57 ~= nil then self.label57:destroy(); self.label57 = nil; end;
         if self.label71 ~= nil then self.label71:destroy(); self.label71 = nil; end;
@@ -4793,8 +4909,8 @@ local function constructNew_frmFichaVeiculos()
         if self.layout68 ~= nil then self.layout68:destroy(); self.layout68 = nil; end;
         if self.layout105 ~= nil then self.layout105:destroy(); self.layout105 = nil; end;
         if self.button1 ~= nil then self.button1:destroy(); self.button1 = nil; end;
-        if self.frmFichaRPGmeister11_svg ~= nil then self.frmFichaRPGmeister11_svg:destroy(); self.frmFichaRPGmeister11_svg = nil; end;
         if self.label140 ~= nil then self.label140:destroy(); self.label140 = nil; end;
+        if self.frmFichaRPGmeister11_svg ~= nil then self.frmFichaRPGmeister11_svg:destroy(); self.frmFichaRPGmeister11_svg = nil; end;
         if self.comboBox3 ~= nil then self.comboBox3:destroy(); self.comboBox3 = nil; end;
         if self.edit26 ~= nil then self.edit26:destroy(); self.edit26 = nil; end;
         if self.label69 ~= nil then self.label69:destroy(); self.label69 = nil; end;
@@ -4842,6 +4958,7 @@ local function constructNew_frmFichaVeiculos()
         if self.edit23 ~= nil then self.edit23:destroy(); self.edit23 = nil; end;
         if self.layout18 ~= nil then self.layout18:destroy(); self.layout18 = nil; end;
         if self.label56 ~= nil then self.label56:destroy(); self.label56 = nil; end;
+        if self.layout112 ~= nil then self.layout112:destroy(); self.layout112 = nil; end;
         if self.rectangle6 ~= nil then self.rectangle6:destroy(); self.rectangle6 = nil; end;
         if self.label21 ~= nil then self.label21:destroy(); self.label21 = nil; end;
         if self.label120 ~= nil then self.label120:destroy(); self.label120 = nil; end;
@@ -4853,6 +4970,7 @@ local function constructNew_frmFichaVeiculos()
         if self.layout49 ~= nil then self.layout49:destroy(); self.layout49 = nil; end;
         if self.label54 ~= nil then self.label54:destroy(); self.label54 = nil; end;
         if self.textEditor1 ~= nil then self.textEditor1:destroy(); self.textEditor1 = nil; end;
+        if self.label152 ~= nil then self.label152:destroy(); self.label152 = nil; end;
         if self.button9 ~= nil then self.button9:destroy(); self.button9 = nil; end;
         if self.edit6 ~= nil then self.edit6:destroy(); self.edit6 = nil; end;
         if self.label18 ~= nil then self.label18:destroy(); self.label18 = nil; end;
@@ -4876,6 +4994,7 @@ local function constructNew_frmFichaVeiculos()
         if self.label44 ~= nil then self.label44:destroy(); self.label44 = nil; end;
         if self.layout43 ~= nil then self.layout43:destroy(); self.layout43 = nil; end;
         if self.label95 ~= nil then self.label95:destroy(); self.label95 = nil; end;
+        if self.edit46 ~= nil then self.edit46:destroy(); self.edit46 = nil; end;
         if self.label83 ~= nil then self.label83:destroy(); self.label83 = nil; end;
         if self.label98 ~= nil then self.label98:destroy(); self.label98 = nil; end;
         if self.layout80 ~= nil then self.layout80:destroy(); self.layout80 = nil; end;
@@ -4912,6 +5031,8 @@ local function constructNew_frmFichaVeiculos()
         if self.layout77 ~= nil then self.layout77:destroy(); self.layout77 = nil; end;
         if self.layout46 ~= nil then self.layout46:destroy(); self.layout46 = nil; end;
         if self.layout56 ~= nil then self.layout56:destroy(); self.layout56 = nil; end;
+        if self.edit44 ~= nil then self.edit44:destroy(); self.edit44 = nil; end;
+        if self.label150 ~= nil then self.label150:destroy(); self.label150 = nil; end;
         if self.dataLink14 ~= nil then self.dataLink14:destroy(); self.dataLink14 = nil; end;
         if self.label4 ~= nil then self.label4:destroy(); self.label4 = nil; end;
         if self.layout66 ~= nil then self.layout66:destroy(); self.layout66 = nil; end;
@@ -4952,6 +5073,7 @@ local function constructNew_frmFichaVeiculos()
         if self.checkBox2 ~= nil then self.checkBox2:destroy(); self.checkBox2 = nil; end;
         if self.cmbPersonagem ~= nil then self.cmbPersonagem:destroy(); self.cmbPersonagem = nil; end;
         if self.rectangle31 ~= nil then self.rectangle31:destroy(); self.rectangle31 = nil; end;
+        if self.label153 ~= nil then self.label153:destroy(); self.label153 = nil; end;
         if self.layout84 ~= nil then self.layout84:destroy(); self.layout84 = nil; end;
         if self.layout40 ~= nil then self.layout40:destroy(); self.layout40 = nil; end;
         if self.layout87 ~= nil then self.layout87:destroy(); self.layout87 = nil; end;

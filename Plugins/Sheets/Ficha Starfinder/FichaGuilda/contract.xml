@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <form name="frmContract" align="client">
 	<scrollBox align="client">
-		<flowLayout align="top" autoHeight="true" maxColumns="3" horzAlign="center" orientation="vertical" avoidScale="true">
+		<flowLayout align="top" autoHeight="true" maxColumns="2" horzAlign="center" orientation="vertical" avoidScale="true">
 			<ListaFlexivel nome="ABERTOS" rclName="rclContratosAbertos" rclField="rclContratosAbertos" frm="frmContractItem"/>
 			<ListaFlexivel nome="PRIVADOS" rclName="rclContratosPrivados" rclField="rclContratosPrivados" frm="frmContractItem"/>
 			<ListaFlexivel nome="FECHADOS" rclName="rclContratosFechados" rclField="rclContratosFechados" frm="frmContractItemClosed"/>
