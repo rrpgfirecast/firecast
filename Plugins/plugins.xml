@@ -207,12 +207,12 @@
             <dataType id="Ambesek.Nefertyne.Numenera" title="Ficha Numenéra"/>
         </dataTypes>
     </element>
-    <element id="FICHA_PATHFINDER" name="Ficha Pathfinder" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20Pathfinder/output/Ficha%20Pathfinder.rpk?raw=true" fileName="Ficha Pathfinder.rpk" repositoryPath="Sheets/Ficha Pathfinder/" author="Ambesek &amp; Nefertyne" description="Ficha feita para o sistema Pathfinder." version="0.11" compilationDate="11102019015525" compilationDigest="c1e9f4960b942650a4dcba1e5db472007df38d72">
+    <element id="FICHA_PATHFINDER" name="Ficha Pathfinder" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20Pathfinder/output/Ficha%20Pathfinder.rpk?raw=true" fileName="Ficha Pathfinder.rpk" repositoryPath="Sheets/Ficha Pathfinder/" author="Ambesek &amp; Nefertyne" description="Ficha feita para o sistema Pathfinder." version="0.11.2" compilationDate="11102019015525" compilationDigest="c1e9f4960b942650a4dcba1e5db472007df38d72">
         <dataTypes>
             <dataType id="Ambesek.Nefertyne.FichaPathfinder" title="Ficha Pathfinder"/>
         </dataTypes>
     </element>
-    <element id="Ambesek.Starfinder" name="Ficha Starfinder" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20Starfinder/output/Ficha%20Starfinder.rpk?raw=true" fileName="Ficha Starfinder.rpk" repositoryStar="Sheets/Ficha Starfinder/" author="Ambesek" description="Ficha feita para o sistema Starfinder." version="0.5.2" compilationDate="11102019015525" compilationDigest="c1e9f4960b942650a4dcba1e5db472007df38d72">
+    <element id="Ambesek.Starfinder" name="Ficha Starfinder" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20Starfinder/output/Ficha%20Starfinder.rpk?raw=true" fileName="Ficha Starfinder.rpk" repositoryStar="Sheets/Ficha Starfinder/" author="Ambesek" description="Ficha feita para o sistema Starfinder." version="0.6.4" compilationDate="11102019015525" compilationDigest="c1e9f4960b942650a4dcba1e5db472007df38d72">
         <dataTypes>
             <dataType id="Ambesek.FichaStarfinder" title="Ficha Starfinder"/>
             <dataType id="Ambesek.Starfinder.Veiculos" title="Ficha Starfinder (Veículos)"/>

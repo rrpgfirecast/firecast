@@ -1902,7 +1902,7 @@ local function constructNew_frmWeaponConfig()
 
     obj.dataLink50 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink50:setParent(obj.default);
-    obj.dataLink50:setFields({'furtivo', 'ataquePoderoso', 'especializacaoCombate', 'tiroMultiplo', 'ataqueMultiplo', 'alcance', 'composto', 'limite', 'energia', 'rajada', 'tamanho', 'talentos', 'itens', 'magias', 'extra', 'outros', 'outros1', 'outros2', 'outros3', 'outros4', 'combate2armas', 'combate2armasLeve', 'velocidade', 'tiroRapido', 'tiroRapidoAprimorado', 'flanquear','atualizar'});
+    obj.dataLink50:setFields({'furtivo', 'ataquePoderoso', 'especializacaoCombate', 'tiroMultiplo', 'ataqueMultiplo', 'alcance', 'composto', 'limite', 'energia', 'rajada', 'tamanho', 'talentos', 'itens', 'magias', 'extra', 'outros', 'outros1', 'outros2', 'outros3', 'outros4', 'combate2armas', 'combate2armasLeve', 'velocidade', 'tiroRapido', 'tiroRapidoAprimorado', 'flanquear','atualizar','useStr', 'multStr', 'useDex', 'multDex', 'useCon', 'multCon', 'useInt', 'multInt', 'useSab', 'multSab', 'useCar', 'multCar'});
     obj.dataLink50:setName("dataLink50");
 
     obj._e_event0 = obj.weaponType:addEventListener("onChange",
