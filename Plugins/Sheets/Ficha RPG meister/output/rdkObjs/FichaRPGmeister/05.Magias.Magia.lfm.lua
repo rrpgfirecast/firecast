@@ -134,7 +134,7 @@ local function constructNew_frmMagiasMagia()
             askForDelete();
         end, obj);
 
-    obj._e_event2 = obj.dataLink1:addEventListener("onChange",
+    obj._e_event2 = obj.dataLink1:addEventListener("onUserChange",
         function (_, field, oldValue, newValue)
             if sheet==nil then return end;
             			local id = sheet.id;
@@ -190,7 +190,7 @@ local function constructNew_frmMagiasMagia()
             			node["used" .. id] = usadas;
         end, obj);
 
-    obj._e_event3 = obj.dataLink2:addEventListener("onChange",
+    obj._e_event3 = obj.dataLink2:addEventListener("onUserChange",
         function (_, field, oldValue, newValue)
             if sheet==nil then return end;
             			local id = sheet.id;

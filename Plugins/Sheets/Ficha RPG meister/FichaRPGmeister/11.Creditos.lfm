@@ -226,6 +226,8 @@
 						local xml = Utils.binaryDecode(import, "utf8");
 
 						NDB.importXML(sheet, xml);
+
+						arq.stream:close()
 					end);
 			</event>
 		</button>

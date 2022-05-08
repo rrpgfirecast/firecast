@@ -2031,7 +2031,7 @@ local function constructNew_frmWeaponConfig()
                                     end);
         end, obj);
 
-    obj._e_event9 = obj.dataLink50:addEventListener("onChange",
+    obj._e_event9 = obj.dataLink50:addEventListener("onUserChange",
         function (_, field, oldValue, newValue)
             updateAll();
         end, obj);

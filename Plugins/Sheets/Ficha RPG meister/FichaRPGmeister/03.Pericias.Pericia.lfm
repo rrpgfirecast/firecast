@@ -45,15 +45,16 @@
 
 	<checkBox left="1" top="5" width="19" height="15" field="isClass"/>
 	<edit vertTextAlign="center" left="21" top="0" width="138" height="25" field="nomePericia">
-		<event name="onChange">
+		<event name="onUserChange">
 			local rcl = self:findControlByName("rclListaDasPericias");
 			if rcl~= nil then
 				rcl:sort();
 			end;
 		</event>
 	</edit>
-	<comboBox vertTextAlign="center" horzTextAlign="center" left="165" top="0" width="60" height="25" field="chavePericia" items="{'FOR', 'DES', 'CON', 'INT', 'SAB', 'CAR', '-'}" values="{'1', '2', '3', '4', '5', '6', '7'}" fontColor="white">
-		<event name="onChange">
+	<comboBox vertTextAlign="center" horzTextAlign="center" left="165" top="0" width="60" height="25" field="chavePericia" items="{'FOR', 'DES', 'CON', 'INT', 'SAB', 'CAR', '-'}" values="{'1', '2', '3', '4', '5', '6', '7'}" fontColor="white"/>
+	<dataLink field="chavePericia">
+		<event name="onUserChange">
 			if sheet~= nil then
 				local atributoPericia = 0;
 				local node = NDB.getRoot(sheet);
@@ -74,7 +75,7 @@
 				sheet.atributoPericia = atributoPericia;
 			end;
 		</event>
-	</comboBox>
+	</dataLink>
 	<rectangle left="240" top="0" width="35" height="25" color="black" strokeColor="white" strokeSize="1"/>
 	<label field="totalPericia" text="0" left="240" top="0" width="35" height="25" horzTextAlign="center"/>
 	<rectangle left="280" top="0" width="33" height="24" color="black" strokeColor="white" strokeSize="1"/>
@@ -88,7 +89,7 @@
 
 	<!-- Calcule o bonus de pericia-->
 	<dataLink fields="{'atributoPericia', 'graduacaoPericia', 'penalidesPericia', 'racialPericia', 'sinergiaPericia', 'equipamentosPericia', 'magicoPericia', 'outrosPericia', 'penalidadeArmadura', 'penalidadeArmadura2', 'talentosPericia', 'classePericia', 'condicionalPericia', 'competenciaPericia', 'intuicaoPericia', 'sortePericia','buffPericia', 'penalidade'}">
-		<event name="onChange">
+		<event name="onUserChange">
 			if sheet== nil then return end;
 
 			local pen = (tonumber(sheet.penalidade) or 0)
@@ -123,7 +124,7 @@
 
 	<!-- Calcule os pontos totais de pericia gastos-->
 	<dataLink fields="{'graduacaoPericia', 'isClass'}">
-		<event name="onChange">
+		<event name="onUserChange">
 			if sheet~= nil then
 				local node = NDB.getRoot(sheet);
 				local mod = tonumber(node.idiomasGrad) or 0;

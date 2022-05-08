@@ -54,7 +54,7 @@
 		<LabelCenter field="bonus$(nivel)"/>
 		<NumericFieldCenter field="conhecidas$(nivel)"/>
 		<dataLink fields="{'base$(nivel)', 'bonus$(nivel)'}">
-			<event name="onChange">
+			<event name="onUserChange">
 				local node = self.boxDetalhesDaMagia.node;
 				if node.base$(nivel)==nil then 
 					node.total$(nivel) = nil;
@@ -65,7 +65,7 @@
 			</event>
 		</dataLink>
 		<dataLink fields="{'atributoBonus', 'updatedATR'}">
-			<event name="onChange">
+			<event name="onUserChange">
 				if self.boxDetalhesDaMagia.node == nil then return end;
 				local resultado = 0;
 				local mod = 0;
@@ -101,7 +101,7 @@
 			</event>
 		</dataLink>
 		<dataLink fields="{'atributoCD', 'updatedATR'}">
-			<event name="onChange">
+			<event name="onUserChange">
 				if self.boxDetalhesDaMagia.node == nil then return end;
 				local mod = 0;
 				local node = self.boxDetalhesDaMagia.node;
@@ -194,6 +194,49 @@
 				    else
 				        return Utils.compareStringPtBr(nodeA.nomeMagia, nodeB.nomeMagia);
 				    end;               
+				    ]]>
+				</event>
+			</recordList>
+		</flowPart>
+	</template>
+	<template name="essenceListFlow">
+		<flowPart stepSizes="{300, 350, 400, 450, 500, 550, 600}" height="25" minScaledWidth="300"  maxScaledWidth="600" name="rclessenceList$(num)Part" adjustHeightToLine="true" margins="{left=5}">
+			<script>
+				<![CDATA[
+					rawset(self.rclessenceList$(num)Part, "_recalcHeight", 					
+						function ()
+							self.rclessenceList$(num)Part.height = self.rclessenceList$(num).height + 50;
+							
+							--self.boxDetalhesDaMagia.height = math.max(self.detalhesDaMagia.height, 550);
+						end);
+				]]>
+			</script>
+
+			<layout align="top" height="25">
+				<button text="+" align="left" width="30" onClick="">
+					<event name="onClick">
+						local item = self.rclessenceList$(num):append();
+						if item then item.id = $(num) end;
+					</event>
+				</button>
+				<label text="Nível $(num)" align="left" width="225" margins="{left=5}"/>
+			</layout>
+
+			<layout align="top" height="25">
+				<label text="1" align="right" width="25" horzTextAlign="center" fontSize="10"/>
+				<label text="2" align="right" width="25" horzTextAlign="center" fontSize="10"/>
+				<label text="3" align="right" width="25" horzTextAlign="center" fontSize="10"/>
+				<label text="4" align="right" width="25" horzTextAlign="center" fontSize="10"/>
+				<label text="5" align="right" width="25" horzTextAlign="center" fontSize="10"/>
+				<label text="6" align="right" width="25" horzTextAlign="center" fontSize="10"/>
+				<label text="CD" align="right" width="25" horzTextAlign="center" fontSize="10"/>
+				<label text="" align="right" width="25" horzTextAlign="center" fontSize="10"/>
+				<label text="" align="right" width="25" horzTextAlign="center" fontSize="10"/>
+			</layout>
+
+			<recordList name="rclessenceList$(num)" field="campoDasEssencias$(num)" templateForm="frmMagiasEssencia" align="top" layout="vertical" autoHeight="true" hitTest="false" onResize="self.rclessenceList$(num)Part._recalcHeight();" onEndEnumeration="self.rclessenceList$(num)Part._recalcHeight();" minQt="1">
+				<event name="onCompare"><![CDATA[ 
+				    return Utils.compareStringPtBr(nodeA.nomeMagia, nodeB.nomeMagia);              
 				    ]]>
 				</event>
 			</recordList>
@@ -351,13 +394,13 @@
 			-- Tira todas visibilidades.
 			self.details3.visible = false;
 			self.details2.visible = false;
-			self.details1.visible = false;
+			self.details4.visible = false;
 			self.details7.visible = false;
 			self.details8.visible = false;
 
 			self.magicList3.visible = false;
 			self.magicList2.visible = false;
-			self.magicList1.visible = false;
+			self.magicList4.visible = false;
 			self.magicList7.visible = false;
 			self.magicList8.visible = false;
 
@@ -442,7 +485,7 @@
 		</layout>
 
 		<dataLink fields="{'efetModFor', 'efetModDes', 'efetModCon', 'efetModInt', 'efetModSab', 'efetModCar'}">
-			<event name="onChange">
+			<event name="onUserChange">
 				local node = self.boxDetalhesDaMagia.node;
 				if node == nil then return end;
 				node.updatedATR = not node.updatedATR;
@@ -470,7 +513,7 @@
 
 						<FieldCenter field="classeMagia"/>
 						<flowPart minWidth="75" maxWidth="150" height="25">
-							<comboBox align="client" items="{'Lista Magias', 'Signos', 'Magia Epica', 'Magias Aprimoradas'}" values="{'3', '2', '7', '8'}" value="3" field="tipoMagia" fontColor="white">
+							<comboBox align="client" items="{'Lista Magias', 'Signos', 'Essencias', 'Magia Epica', 'Magias Aprimoradas'}" values="{'3', '2', '4', '7', '8'}" value="3" field="tipoMagia" fontColor="white">
 								<event name="onChange">
 									showHiddenLayouts();
 								</event>
@@ -480,7 +523,7 @@
 						<smallFieldCenter field="cd"/>
 
 						<dataLink fields="{'NC'}">
-							<event name="onChange">
+							<event name="onUserChange">
 								if self.boxDetalhesDaMagia.node== nil then return end;
 								local node = self.boxDetalhesDaMagia.node;
 
@@ -500,7 +543,7 @@
 							</event>
 						</dataLink>
 						<dataLink fields="{'cd'}">
-							<event name="onChange">
+							<event name="onUserChange">
 								if self.boxDetalhesDaMagia.node== nil then return end;
 								local node = self.boxDetalhesDaMagia.node;
 
@@ -521,6 +564,23 @@
 								end
 							</event>
 						</dataLink>
+						<dataLink fields="{'conhecidas0', 'conhecidas1', 'conhecidas2', 'conhecidas3', 'conhecidas4', 'conhecidas5', 'conhecidas6', 'conhecidas7', 'conhecidas8', 'conhecidas9'}">
+							<event name="onUserChange">
+								if self.boxDetalhesDaMagia.node== nil then return end;
+								local node = self.boxDetalhesDaMagia.node;
+
+								node.grimorio = (tonumber(node.conhecidas0) or 0) + 
+												(tonumber(node.conhecidas1) or 0) + 
+												(tonumber(node.conhecidas2) or 0)*2 + 
+												(tonumber(node.conhecidas3) or 0)*3 + 
+												(tonumber(node.conhecidas4) or 0)*4 + 
+												(tonumber(node.conhecidas5) or 0)*5 + 
+												(tonumber(node.conhecidas6) or 0)*6 + 
+												(tonumber(node.conhecidas7) or 0)*7 + 
+												(tonumber(node.conhecidas8) or 0)*8 + 
+												(tonumber(node.conhecidas9) or 0)*9;
+							</event>
+						</dataLink>
 
 						<flowLineBreak/>
 
@@ -531,8 +591,8 @@
 							<rectangle align="client" strokeSize="1" padding="{left=5,right=5,top=5,bottom=5}" name="details2" visible="false">
 								<import file="05.Magias.Details2.xml"/>
 							</rectangle>
-							<rectangle align="client" strokeSize="1" padding="{left=5,right=5,top=5,bottom=5}" name="details1" visible="false">
-								<import file="05.Magias.Details1.xml"/>
+							<rectangle align="client" strokeSize="1" padding="{left=5,right=5,top=5,bottom=5}" name="details4" visible="false">
+								<import file="05.Magias.Details4.xml"/>
 							</rectangle>
 							<rectangle align="client" strokeSize="1" padding="{left=5,right=5,top=5,bottom=5}" name="details7" visible="false">
 								<import file="05.Magias.Details7.xml"/>
@@ -551,7 +611,7 @@
 					<scrollBox align="client" name="detailsPart" padding="{left=5,right=5,top=5,bottom=5}">
 						<import file="05.Magias.List3.xml"/>
 						<import file="05.Magias.List2.xml"/>
-						<import file="05.Magias.List1.xml"/>
+						<import file="05.Magias.List4.xml"/>
 						<import file="05.Magias.List7.xml"/>
 						<import file="05.Magias.List8.xml"/>
 					</scrollBox>

@@ -117,7 +117,7 @@
 					self.boxDetalheDoEquipamento.visible = (node ~= nil);
 				]]>
 			</event>
-			<event name="onCompare"><![CDATA[			   
+			<event name="onCompare"><![CDATA[
 				if (nodeA.index or 0) < (nodeB.index or 0) then
 					return -1;
 				elseif (nodeA.index or 0) > (nodeB.index or 0) then
@@ -206,7 +206,7 @@
 				<edit vertTextAlign="center" left="290" top="5" width="50" height="25" field="melhoria"/>
 
 				<dataLink fields="{'melhoria','caBase'}">
-					<event name="onChange">
+					<event name="onUserChange">
 						if self.boxDetalheDoEquipamento.node==nil then return end;
 						if self.boxDetalheDoEquipamento.node.melhoria==nil then return end;
 						local melhoria = tonumber(self.boxDetalheDoEquipamento.node.melhoria) or 0;
@@ -225,10 +225,14 @@
 
 				<label left="5" top="55" width="95" height="20" text="Penalidade" horzTextAlign="center"/>
 				<edit vertTextAlign="center" left="100" top="55" width="50" height="25" field="pen">
-					<event name="onChange">
+					<event name="onUserChange">
 						if self.boxDetalheDoEquipamento.node==nil then return end;
-						if self.boxDetalheDoEquipamento.node.pen==nil then return end;
 						if self.boxDetalheDoEquipamento.node.index ~= 6 then return end;
+
+						if self.boxDetalheDoEquipamento.node.pen==nil then 
+							self.boxDetalheDoEquipamento.node.pen=0 
+						end;
+
 						sheet.equipamentoCorpoPen = self.boxDetalheDoEquipamento.node.pen;
 					</event>
 				</edit>
@@ -247,7 +251,7 @@
 			<layout left="145" top="550" width="390" height="25">
 				<layout height="15" width="120">
 					<imageCheckBox align="client">
-						<progressBar colorMode="hl" width="100" height="15" hitTest="true" mouseGlow="true" color="Green" name="Barrinha" field="BarrinhaValor" fieldMax="BarrinhaValorMax">
+						<progressBar colorMode="hl" width="100" height="15" hitTest="true" mouseGlow="true" color="Red" name="Barrinha" field="BarrinhaValor" fieldMax="BarrinhaValorMax">
 							<event name="onMouseEnter">
 								self.CorBarrinha.color = "Green";
 								self.ValoresBarrinha.visible = true;
@@ -284,8 +288,18 @@
 					</rectangle>
 				</layout>
 				<dataLink field="CorBarrinha" defaultValue="Green">
-					<event name="onChange">
+					<event name="onUserChange">
 						self.Barrinha.color = "Green";
+					</event>
+				</dataLink>
+				<dataLink field="BarrinhaValor">
+					<event name="onChange">
+						if sheet.BarrinhaValor==nil then return end;
+						if sheet.BarrinhaValor==0 then 
+							self.Barrinha.color = "Yellow";
+						else
+							self.Barrinha.color = "Green";
+						end;
 					</event>
 				</dataLink>
 			</layout>
@@ -319,6 +333,7 @@
 				end
 			</event>
 		</button>
+
 		<layout left="800" top="25" width="400" height="25">
 			<label left="20" top="0" width="175" height="25" text="Magia" horzTextAlign="center"/>
 			<label left="190" top="0" width="75" height="25" text="Duração" horzTextAlign="center"/>

@@ -89,7 +89,7 @@ local function constructNew_frmFichaRPGmeister4h_svg()
     obj.Barrinha:setMargins({top=5,bottom=5});
     obj.Barrinha:setHitTest(true);
     obj.Barrinha:setMouseGlow(true);
-    obj.Barrinha:setColor("Green");
+    obj.Barrinha:setColor("Red");
     obj.Barrinha:setName("Barrinha");
     obj.Barrinha:setField("BarrinhaValor");
     obj.Barrinha:setFieldMax("BarrinhaValorMax");
@@ -130,6 +130,11 @@ local function constructNew_frmFichaRPGmeister4h_svg()
     obj.dataLink1:setField("CorBarrinha");
     obj.dataLink1:setDefaultValue("Green");
     obj.dataLink1:setName("dataLink1");
+
+    obj.dataLink2 = GUI.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink2:setParent(obj.layout1);
+    obj.dataLink2:setField("BarrinhaValor");
+    obj.dataLink2:setName("dataLink2");
 
     obj.button1 = GUI.fromHandle(_obj_newObject("button"));
     obj.button1:setParent(obj);
@@ -192,22 +197,33 @@ local function constructNew_frmFichaRPGmeister4h_svg()
             self.InfoBarrinha.width = (self.ValoresBarrinha.width - 4);
         end, obj);
 
-    obj._e_event4 = obj.dataLink1:addEventListener("onChange",
+    obj._e_event4 = obj.dataLink1:addEventListener("onUserChange",
         function (_, field, oldValue, newValue)
             self.Barrinha.color = "Green";
         end, obj);
 
-    obj._e_event5 = obj.button1:addEventListener("onClick",
+    obj._e_event5 = obj.dataLink2:addEventListener("onChange",
+        function (_, field, oldValue, newValue)
+            if sheet.BarrinhaValor==nil then return end;
+            				if sheet.BarrinhaValor==0 then 
+            					self.Barrinha.color = "Yellow";
+            				else
+            					self.Barrinha.color = "Green";
+            				end;
+        end, obj);
+
+    obj._e_event6 = obj.button1:addEventListener("onClick",
         function (_)
             showHabilidadePopup();
         end, obj);
 
-    obj._e_event6 = obj.button2:addEventListener("onClick",
+    obj._e_event7 = obj.button2:addEventListener("onClick",
         function (_)
             askForDelete();
         end, obj);
 
     function obj:_releaseEvents()
+        __o_rrpgObjs.removeEventListenerById(self._e_event7);
         __o_rrpgObjs.removeEventListenerById(self._e_event6);
         __o_rrpgObjs.removeEventListenerById(self._e_event5);
         __o_rrpgObjs.removeEventListenerById(self._e_event4);
@@ -226,18 +242,19 @@ local function constructNew_frmFichaRPGmeister4h_svg()
           self:setNodeDatabase(nil);
         end;
 
-        if self.dataLink1 ~= nil then self.dataLink1:destroy(); self.dataLink1 = nil; end;
-        if self.button2 ~= nil then self.button2:destroy(); self.button2 = nil; end;
+        if self.Barrinha ~= nil then self.Barrinha:destroy(); self.Barrinha = nil; end;
         if self.button1 ~= nil then self.button1:destroy(); self.button1 = nil; end;
         if self.CorBarrinha ~= nil then self.CorBarrinha:destroy(); self.CorBarrinha = nil; end;
         if self.InfoBarrinha ~= nil then self.InfoBarrinha:destroy(); self.InfoBarrinha = nil; end;
-        if self.layout1 ~= nil then self.layout1:destroy(); self.layout1 = nil; end;
+        if self.ValoresBarrinha ~= nil then self.ValoresBarrinha:destroy(); self.ValoresBarrinha = nil; end;
+        if self.button2 ~= nil then self.button2:destroy(); self.button2 = nil; end;
+        if self.imageCheckBox1 ~= nil then self.imageCheckBox1:destroy(); self.imageCheckBox1 = nil; end;
+        if self.dataLink2 ~= nil then self.dataLink2:destroy(); self.dataLink2 = nil; end;
         if self.edit2 ~= nil then self.edit2:destroy(); self.edit2 = nil; end;
+        if self.layout1 ~= nil then self.layout1:destroy(); self.layout1 = nil; end;
         if self.edit1 ~= nil then self.edit1:destroy(); self.edit1 = nil; end;
         if self.layout2 ~= nil then self.layout2:destroy(); self.layout2 = nil; end;
-        if self.ValoresBarrinha ~= nil then self.ValoresBarrinha:destroy(); self.ValoresBarrinha = nil; end;
-        if self.imageCheckBox1 ~= nil then self.imageCheckBox1:destroy(); self.imageCheckBox1 = nil; end;
-        if self.Barrinha ~= nil then self.Barrinha:destroy(); self.Barrinha = nil; end;
+        if self.dataLink1 ~= nil then self.dataLink1:destroy(); self.dataLink1 = nil; end;
         self:_oldLFMDestroy();
     end;
 

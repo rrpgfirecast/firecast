@@ -25,7 +25,7 @@
 	</script>
 	<edit left="0" top="1" width="140" height="23" field="nomeMagia"/>
 	<edit left="140" top="1" width="30" height="23" field="dispMagia">
-		<event name="onChange">
+		<event name="onUserChange">
 			local rcl = self:findControlByName("rclListaDasMagias0");
 			if rcl~= nil then
 				rcl:sort();

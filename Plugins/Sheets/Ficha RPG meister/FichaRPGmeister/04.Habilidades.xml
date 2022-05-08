@@ -43,7 +43,7 @@
 			<habilidadeSmallCenter text="Página" field="paginaHabilidade"/>
 			<habilidadeLarge text="Livro" field="livroHabilidade"/>
 			<dataLink field="nivelHabilidade">
-				<event name="onChange">
+				<event name="onUserChange">
 					local rcl = self:findControlByName("rclListaDosTalentos");
 					if rcl~= nil then
 						rcl:sort();

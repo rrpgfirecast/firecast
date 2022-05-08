@@ -6318,7 +6318,7 @@ local function constructNew_frmFichaRPGmeister1_svg()
             						sheet.xpNova = "0";
         end, obj);
 
-    obj._e_event9 = obj.dataLink13:addEventListener("onChange",
+    obj._e_event9 = obj.dataLink13:addEventListener("onUserChange",
         function (_, field, oldValue, newValue)
             if sheet~= nil then
             						if sheet.xpAtual == nil then
@@ -6358,14 +6358,14 @@ local function constructNew_frmFichaRPGmeister1_svg()
             				mesaDoPersonagem.activeChat:rolarDados(rolagem, "Teste de Força de " .. (sheet.nome or "NOME"));
         end, obj);
 
-    obj._e_event11 = obj.dataLink14:addEventListener("onChange",
+    obj._e_event11 = obj.dataLink14:addEventListener("onUserChange",
         function (_, field, oldValue, newValue)
             if sheet ~= nil then
             					sheet.realModFor = getMOD(sheet.realFor);  
             				end;
         end, obj);
 
-    obj._e_event12 = obj.dataLink15:addEventListener("onChange",
+    obj._e_event12 = obj.dataLink15:addEventListener("onUserChange",
         function (_, field, oldValue, newValue)
             if sheet ~= nil then
             					sheet.efetModFor = getMOD(sheet.efetFor);
@@ -6380,14 +6380,14 @@ local function constructNew_frmFichaRPGmeister1_svg()
             				mesaDoPersonagem.activeChat:rolarDados(rolagem, "Teste de Destreza de " .. (sheet.nome or "NOME"));
         end, obj);
 
-    obj._e_event14 = obj.dataLink16:addEventListener("onChange",
+    obj._e_event14 = obj.dataLink16:addEventListener("onUserChange",
         function (_, field, oldValue, newValue)
             if sheet ~= nil then
             					sheet.realModDes = getMOD(sheet.realDes);  
             				end;
         end, obj);
 
-    obj._e_event15 = obj.dataLink17:addEventListener("onChange",
+    obj._e_event15 = obj.dataLink17:addEventListener("onUserChange",
         function (_, field, oldValue, newValue)
             if sheet ~= nil then
             					sheet.efetModDes = getMOD(sheet.efetDes);
@@ -6402,14 +6402,14 @@ local function constructNew_frmFichaRPGmeister1_svg()
             				mesaDoPersonagem.activeChat:rolarDados(rolagem, "Teste de Constituição de " .. (sheet.nome or "NOME"));
         end, obj);
 
-    obj._e_event17 = obj.dataLink18:addEventListener("onChange",
+    obj._e_event17 = obj.dataLink18:addEventListener("onUserChange",
         function (_, field, oldValue, newValue)
             if sheet ~= nil then
             					sheet.realModCon = getMOD(sheet.realCon);  
             				end;
         end, obj);
 
-    obj._e_event18 = obj.dataLink19:addEventListener("onChange",
+    obj._e_event18 = obj.dataLink19:addEventListener("onUserChange",
         function (_, field, oldValue, newValue)
             if sheet ~= nil then
             					sheet.efetModCon = getMOD(sheet.efetCon);
@@ -6424,14 +6424,14 @@ local function constructNew_frmFichaRPGmeister1_svg()
             				mesaDoPersonagem.activeChat:rolarDados(rolagem, "Teste de Inteligência de " .. (sheet.nome or "NOME"));
         end, obj);
 
-    obj._e_event20 = obj.dataLink20:addEventListener("onChange",
+    obj._e_event20 = obj.dataLink20:addEventListener("onUserChange",
         function (_, field, oldValue, newValue)
             if sheet ~= nil then
             					sheet.realModInt = getMOD(sheet.realInt);  
             				end;
         end, obj);
 
-    obj._e_event21 = obj.dataLink21:addEventListener("onChange",
+    obj._e_event21 = obj.dataLink21:addEventListener("onUserChange",
         function (_, field, oldValue, newValue)
             if sheet ~= nil then
             					sheet.efetModInt = getMOD(sheet.efetInt);
@@ -6446,14 +6446,14 @@ local function constructNew_frmFichaRPGmeister1_svg()
             				mesaDoPersonagem.activeChat:rolarDados(rolagem, "Teste de Sabedoria de " .. (sheet.nome or "NOME"));
         end, obj);
 
-    obj._e_event23 = obj.dataLink22:addEventListener("onChange",
+    obj._e_event23 = obj.dataLink22:addEventListener("onUserChange",
         function (_, field, oldValue, newValue)
             if sheet ~= nil then
             					sheet.realModSab = getMOD(sheet.realSab);  
             				end;
         end, obj);
 
-    obj._e_event24 = obj.dataLink23:addEventListener("onChange",
+    obj._e_event24 = obj.dataLink23:addEventListener("onUserChange",
         function (_, field, oldValue, newValue)
             if sheet ~= nil then
             					sheet.efetModSab = getMOD(sheet.efetSab);
@@ -6468,14 +6468,14 @@ local function constructNew_frmFichaRPGmeister1_svg()
             				mesaDoPersonagem.activeChat:rolarDados(rolagem, "Teste de Carisma de " .. (sheet.nome or "NOME"));
         end, obj);
 
-    obj._e_event26 = obj.dataLink24:addEventListener("onChange",
+    obj._e_event26 = obj.dataLink24:addEventListener("onUserChange",
         function (_, field, oldValue, newValue)
             if sheet ~= nil then
             					sheet.realModCar = getMOD(sheet.realCar);  
             				end;
         end, obj);
 
-    obj._e_event27 = obj.dataLink25:addEventListener("onChange",
+    obj._e_event27 = obj.dataLink25:addEventListener("onUserChange",
         function (_, field, oldValue, newValue)
             if sheet ~= nil then
             					sheet.efetModCar = getMOD(sheet.efetCar);
@@ -6508,7 +6508,7 @@ local function constructNew_frmFichaRPGmeister1_svg()
             				self.deslTerrestreEdit.visible = false;
         end, obj);
 
-    obj._e_event31 = obj.dataLink26:addEventListener("onChange",
+    obj._e_event31 = obj.dataLink26:addEventListener("onUserChange",
         function (_, field, oldValue, newValue)
             if sheet ~= nil and sheet.deslTerrestre ~= nil then
             
@@ -6534,7 +6534,7 @@ local function constructNew_frmFichaRPGmeister1_svg()
             				self.deslVooEdit.visible = false;
         end, obj);
 
-    obj._e_event34 = obj.dataLink27:addEventListener("onChange",
+    obj._e_event34 = obj.dataLink27:addEventListener("onUserChange",
         function (_, field, oldValue, newValue)
             if sheet ~= nil and sheet.deslVoo ~= nil then
             
@@ -6560,7 +6560,7 @@ local function constructNew_frmFichaRPGmeister1_svg()
             				self.deslNatacaoEdit.visible = false;
         end, obj);
 
-    obj._e_event37 = obj.dataLink28:addEventListener("onChange",
+    obj._e_event37 = obj.dataLink28:addEventListener("onUserChange",
         function (_, field, oldValue, newValue)
             if sheet ~= nil and sheet.deslNatacao ~= nil then
             
@@ -6586,7 +6586,7 @@ local function constructNew_frmFichaRPGmeister1_svg()
             				self.deslEscalarEdit.visible = false;
         end, obj);
 
-    obj._e_event40 = obj.dataLink29:addEventListener("onChange",
+    obj._e_event40 = obj.dataLink29:addEventListener("onUserChange",
         function (_, field, oldValue, newValue)
             if sheet ~= nil and sheet.deslEscalar ~= nil then
             
@@ -6612,7 +6612,7 @@ local function constructNew_frmFichaRPGmeister1_svg()
             				self.deslEscavarEdit.visible = false;
         end, obj);
 
-    obj._e_event43 = obj.dataLink30:addEventListener("onChange",
+    obj._e_event43 = obj.dataLink30:addEventListener("onUserChange",
         function (_, field, oldValue, newValue)
             if sheet ~= nil and sheet.deslEscavar ~= nil then
             
@@ -6632,7 +6632,7 @@ local function constructNew_frmFichaRPGmeister1_svg()
             					mesaDoPersonagem.activeChat:rolarDados(rolagem, "Teste de Iniciativa de " .. (sheet.nome or "PONHA UM NOME NO PERSONAGEM"));
         end, obj);
 
-    obj._e_event45 = obj.dataLink31:addEventListener("onChange",
+    obj._e_event45 = obj.dataLink31:addEventListener("onUserChange",
         function (_, field, oldValue, newValue)
             if sheet~= nil then
             						local mod = (tonumber(sheet.efetModDes) or 0) + (tonumber(sheet.iniVariado) or 0);
@@ -6662,7 +6662,7 @@ local function constructNew_frmFichaRPGmeister1_svg()
             					end;
         end, obj);
 
-    obj._e_event48 = obj.dataLink32:addEventListener("onChange",
+    obj._e_event48 = obj.dataLink32:addEventListener("onUserChange",
         function (_, field, oldValue, newValue)
             if sheet~= nil then
             						local armaduraCa = (tonumber(sheet.armaduraCa) or 0);
@@ -6753,7 +6753,7 @@ local function constructNew_frmFichaRPGmeister1_svg()
             					end;
         end, obj);
 
-    obj._e_event49 = obj.dataLink34:addEventListener("onChange",
+    obj._e_event49 = obj.dataLink34:addEventListener("onUserChange",
         function (_, field, oldValue, newValue)
             if sheet~=nil then
             						sheet.penalidade = (tonumber(sheet.equipamentoCorpoPen) or 0) + (tonumber(sheet.escudoPEn) or 0);
@@ -6761,7 +6761,7 @@ local function constructNew_frmFichaRPGmeister1_svg()
             					end;
         end, obj);
 
-    obj._e_event50 = obj.dataLink35:addEventListener("onChange",
+    obj._e_event50 = obj.dataLink35:addEventListener("onUserChange",
         function (_, field, oldValue, newValue)
             if sheet~=nil then
             						local equipamentoCorpoFalha = sheet.equipamentoCorpoFalha;
@@ -6810,7 +6810,7 @@ local function constructNew_frmFichaRPGmeister1_svg()
             						end);
         end, obj);
 
-    obj._e_event52 = obj.edit138:addEventListener("onChange",
+    obj._e_event52 = obj.edit138:addEventListener("onUserChange",
         function (_)
             if sheet~= nil then
             						local bba = tonumber(sheet.bba) or 0;
@@ -6844,7 +6844,7 @@ local function constructNew_frmFichaRPGmeister1_svg()
             						end;
         end, obj);
 
-    obj._e_event55 = obj.dataLink36:addEventListener("onChange",
+    obj._e_event55 = obj.dataLink36:addEventListener("onUserChange",
         function (_, field, oldValue, newValue)
             if sheet~= nil then
             							local agarrar = (tonumber(sheet.bba) or 0) + 
@@ -6862,7 +6862,7 @@ local function constructNew_frmFichaRPGmeister1_svg()
             				mesaDoPersonagem.activeChat:rolarDados(rolagem, "Teste de Fortitude de " .. (sheet.nome or "NOME"));
         end, obj);
 
-    obj._e_event57 = obj.dataLink37:addEventListener("onChange",
+    obj._e_event57 = obj.dataLink37:addEventListener("onUserChange",
         function (_, field, oldValue, newValue)
             if sheet~= nil then
             					local tr = (tonumber(sheet.baseFort) or 0) + 
@@ -6883,7 +6883,7 @@ local function constructNew_frmFichaRPGmeister1_svg()
             				mesaDoPersonagem.activeChat:rolarDados(rolagem, "Teste de Reflexos de " .. (sheet.nome or "NOME"));
         end, obj);
 
-    obj._e_event59 = obj.dataLink39:addEventListener("onChange",
+    obj._e_event59 = obj.dataLink39:addEventListener("onUserChange",
         function (_, field, oldValue, newValue)
             if sheet~= nil then
             					local tr = (tonumber(sheet.baseRef) or 0) + 
@@ -6904,7 +6904,7 @@ local function constructNew_frmFichaRPGmeister1_svg()
             				mesaDoPersonagem.activeChat:rolarDados(rolagem, "Teste de Vontade de " .. (sheet.nome or "NOME"));
         end, obj);
 
-    obj._e_event61 = obj.dataLink41:addEventListener("onChange",
+    obj._e_event61 = obj.dataLink41:addEventListener("onUserChange",
         function (_, field, oldValue, newValue)
             if sheet~= nil then
             					local tr = (tonumber(sheet.baseVon) or 0) + 
@@ -6918,7 +6918,7 @@ local function constructNew_frmFichaRPGmeister1_svg()
             				end;
         end, obj);
 
-    obj._e_event62 = obj.dataLink43:addEventListener("onChange",
+    obj._e_event62 = obj.dataLink43:addEventListener("onUserChange",
         function (_, field, oldValue, newValue)
             if sheet ~= nil then
             						local atrModFort = 0;

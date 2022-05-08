@@ -110,6 +110,11 @@ local function constructNew_frmFichaRPGmeister3p_svg()
     obj.comboBox1:setFontColor("white");
     obj.comboBox1:setName("comboBox1");
 
+    obj.dataLink1 = GUI.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink1:setParent(obj);
+    obj.dataLink1:setField("chavePericia");
+    obj.dataLink1:setName("dataLink1");
+
     obj.rectangle2 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle2:setParent(obj);
     obj.rectangle2:setLeft(240);
@@ -193,17 +198,17 @@ local function constructNew_frmFichaRPGmeister3p_svg()
     obj.button3:setText("X");
     obj.button3:setName("button3");
 
-    obj.dataLink1 = GUI.fromHandle(_obj_newObject("dataLink"));
-    obj.dataLink1:setParent(obj);
-    obj.dataLink1:setFields({'atributoPericia', 'graduacaoPericia', 'penalidesPericia', 'racialPericia', 'sinergiaPericia', 'equipamentosPericia', 'magicoPericia', 'outrosPericia', 'penalidadeArmadura', 'penalidadeArmadura2', 'talentosPericia', 'classePericia', 'condicionalPericia', 'competenciaPericia', 'intuicaoPericia', 'sortePericia','buffPericia', 'penalidade'});
-    obj.dataLink1:setName("dataLink1");
-
     obj.dataLink2 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink2:setParent(obj);
-    obj.dataLink2:setFields({'graduacaoPericia', 'isClass'});
+    obj.dataLink2:setFields({'atributoPericia', 'graduacaoPericia', 'penalidesPericia', 'racialPericia', 'sinergiaPericia', 'equipamentosPericia', 'magicoPericia', 'outrosPericia', 'penalidadeArmadura', 'penalidadeArmadura2', 'talentosPericia', 'classePericia', 'condicionalPericia', 'competenciaPericia', 'intuicaoPericia', 'sortePericia','buffPericia', 'penalidade'});
     obj.dataLink2:setName("dataLink2");
 
-    obj._e_event0 = obj.edit1:addEventListener("onChange",
+    obj.dataLink3 = GUI.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink3:setParent(obj);
+    obj.dataLink3:setFields({'graduacaoPericia', 'isClass'});
+    obj.dataLink3:setName("dataLink3");
+
+    obj._e_event0 = obj.edit1:addEventListener("onUserChange",
         function (_)
             local rcl = self:findControlByName("rclListaDasPericias");
             			if rcl~= nil then
@@ -211,8 +216,8 @@ local function constructNew_frmFichaRPGmeister3p_svg()
             			end;
         end, obj);
 
-    obj._e_event1 = obj.comboBox1:addEventListener("onChange",
-        function (_)
+    obj._e_event1 = obj.dataLink1:addEventListener("onUserChange",
+        function (_, field, oldValue, newValue)
             if sheet~= nil then
             				local atributoPericia = 0;
             				local node = NDB.getRoot(sheet);
@@ -249,7 +254,7 @@ local function constructNew_frmFichaRPGmeister3p_svg()
             askForDelete();
         end, obj);
 
-    obj._e_event5 = obj.dataLink1:addEventListener("onChange",
+    obj._e_event5 = obj.dataLink2:addEventListener("onUserChange",
         function (_, field, oldValue, newValue)
             if sheet== nil then return end;
             
@@ -282,7 +287,7 @@ local function constructNew_frmFichaRPGmeister3p_svg()
             			sheet.totalPericia = mod;
         end, obj);
 
-    obj._e_event6 = obj.dataLink2:addEventListener("onChange",
+    obj._e_event6 = obj.dataLink3:addEventListener("onUserChange",
         function (_, field, oldValue, newValue)
             if sheet~= nil then
             				local node = NDB.getRoot(sheet);
@@ -333,6 +338,7 @@ local function constructNew_frmFichaRPGmeister3p_svg()
         end;
 
         if self.dataLink1 ~= nil then self.dataLink1:destroy(); self.dataLink1 = nil; end;
+        if self.dataLink3 ~= nil then self.dataLink3:destroy(); self.dataLink3 = nil; end;
         if self.button1 ~= nil then self.button1:destroy(); self.button1 = nil; end;
         if self.button3 ~= nil then self.button3:destroy(); self.button3 = nil; end;
         if self.label1 ~= nil then self.label1:destroy(); self.label1 = nil; end;

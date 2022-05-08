@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmGeneratorFeatSelector" height="25" width="600" margins="{top=2}">
+	<label align="client" field="name" horzTextAlign="center"/>
+	<label align="right" width="100" field="book" horzTextAlign="center"/>
+	<button align="right" width="100" text="Selecionar" margins="{right=5}">
+		<event name="onClick">
+			featSelected.nomeHabilidade = sheet.name
+			featSelected.livroHabilidade = sheet.book
+
+			local pop = self:findControlByName("popFeatSelection");
+			pop:close()
+		</event>
+	</button>
+</form>

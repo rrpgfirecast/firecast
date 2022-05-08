@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmMagiasEssenciaSelector" align="client" height="25" margins="{top=1}">
+	<rectangle align="client" height="25" color="#212121">
+		<layout align="right" width="120">
+			<comboBox align="client" items="{'x0','x1','x2',x3}" values="{'0','1','2','3'}" field="mult" fontColor="white"/>
+			<edit align="left" width="30" field="atual" type="number"/>
+			<edit align="left" width="30" field="max" type="number"/>
+			<!-- Botão que apaga o objeto da lista -->
+			<button align="right" width="25" text="X">
+				<event name="onClick">
+					Dialogs.confirmOkCancel("Tem certeza que quer apagar esse objeto?",
+						function (confirmado)
+							if confirmado then
+								NDB.deleteNode(sheet);
+							end;
+					end);
+				</event>
+			</button>
+		</layout>
+		<edit align="client" field="nomeMagia"/>
+
+		<dataLink fields="{'max','mult'}">
+			<event name="onUserChange"><![CDATA[
+		        if sheet == nil then return end;
+
+				local node = NDB.getParent(NDB.getParent(sheet));
+				local essencias = NDB.getChildNodes(node.campoDasEssencias);
+				local soma = 0;
+
+				for i=1, #essencias, 1 do 
+					local mult = tonumber(essencias[i].mult) or 0
+					soma = soma + (tonumber(essencias[i].max ) or 0) * mult;
+				end;
+
+				node.sumEssencias = soma;
+		        ]]>
+			</event>
+		</dataLink>
+	</rectangle>
+</form>

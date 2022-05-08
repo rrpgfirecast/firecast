@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmGeneratorSkill" height="25" width="600" margins="{top=2}">
+	<checkBox align="left" width="20" field="isClass" margins="{left=5}"/>
+	<edit align="client" field="nomePericia" margins="{left=5}"/>
+	<edit align="right" width="50" field="graduacaoPericia" margins="{left=5}"/>
+	<label align="right" width="50" field="racialPericia" horzTextAlign="center" margins="{left=5}"/>
+
+	<button align="right" width="50" text="Max" margins="{left=5}">
+		<event name="onClick">
+			local pts = tonumber(generatorSheet.npc.pontosPericia) or 0
+			local max = tonumber(generatorSheet.npc.skillsMax) or 0
+			local lvl = tonumber(generatorSheet.npc.lvl) or 1
+
+			local pts = math.min((max-pts), lvl+3)
+			if not sheet.isClass then pts = math.floor(pts/2) end
+
+			if pts==0 then return end
+			
+			sheet.graduacaoPericia = pts
+		</event>
+	</button>
+	<button align="right" width="50" text="X" onClick="askForDelete();" margins="{left=5,right=5}"/>
+
+	<dataLink fields="{'nomePericia'}">
+		<event name="onChange">
+			if sheet==nil then return end
+			
+			local rcl = self:findControlByName("rclListaDasPericias");
+			if rcl~=nil then rcl:sort() end
+		</event>
+	</dataLink>
+	<dataLink fields="{'graduacaoPericia', 'isClass'}">
+		<event name="onChange">
+			if sheet== nil then return end
+			local nodes = NDB.getChildNodes(generatorSheet.npc.campoDasPericias); 
+			local pts = 0
+			--showMessage(#nodes);
+			for i=1, #nodes, 1 do
+				local mult = 1;
+				if not nodes[i].isClass then
+					mult = 2;
+				end;
+				pts = pts + (tonumber(nodes[i].graduacaoPericia) or 0) * mult;
+			end
+	
+			generatorSheet.npc.pontosPericia = pts;
+		</event>
+	</dataLink>
+
+	<script> 
+		<![CDATA[			
+			local function askForDelete()
+				Dialogs.confirmYesNo("Deseja realmente apagar essa perícia?",
+									 function (confirmado)
+										if confirmado then
+											NDB.deleteNode(sheet);
+										end;
+									 end);
+			end;		
+		]]>	
+	</script>
+</form>

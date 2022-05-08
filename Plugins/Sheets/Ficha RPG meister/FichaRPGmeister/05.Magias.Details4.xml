@@ -1,0 +1,98 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<flowLayout left="5" minWidth="300" maxWidth="350" width="330" height="400" autoHeight="true" adjustHeightToLine="true" maxColumns="6" padding="{left=5,right=5,top=5,bottom=5}" horzAlign="center">
+
+	<TitleCenter text="CD"/>
+	<TitleCenter text="Bônus"/>
+	<TitleCenter text="Usos"/>
+	<TitleCenter text="Essencias"/>
+	<flowPart minWidth="50" maxWidth="150" height="25"/>
+
+	<flowLineBreak/>
+
+	<ComboFlow items="{'FOR', 'DES', 'CON', 'INT', 'SAB', 'CAR', '-'}" values="{'1', '2', '3', '4', '5', '6', '7'}" field="atributoCD"/>
+	<ComboFlow items="{'FOR', 'DES', 'CON', 'INT', 'SAB', 'CAR', '-'}" values="{'1', '2', '3', '4', '5', '6', '7'}" field="atributoBonus"/>
+	<FieldCenter field="usosEssencias"/>
+	<LabelCenter field="sumEssencias"/>
+	<flowPart minWidth="50" maxWidth="150" height="25">
+		<button align="client" text="+">
+			<event name="onClick">
+				local listA = self.rclEssencia:append();
+			</event>
+		</button>
+	</flowPart>
+
+	<flowLineBreak/>
+
+	<flowPart minWidth="300" maxWidth="350" height="270">
+		<recordList align="client" margins="{left=5,right=5,bottom=5,top=5}" name="rclEssencia" field="campoDasEssencias" templateForm="frmMagiasEssenciaSelector" layout="vertical"/>
+	</flowPart>
+
+	<flowLineBreak/>
+
+	<flowPart minWidth="50" maxWidth="150" height="25">
+		<button align="client" text="Exportar Magias" >
+			<event name="onClick">
+				sheet.ieNode = {self.boxDetalhesDaMagia.node.campoDasEssencias,self.boxDetalhesDaMagia.node.campoDasEssencias1,self.boxDetalhesDaMagia.node.campoDasEssencias2,self.boxDetalhesDaMagia.node.campoDasEssencias3,self.boxDetalhesDaMagia.node.campoDasEssencias4,self.boxDetalhesDaMagia.node.campoDasEssencias5,self.boxDetalhesDaMagia.node.campoDasEssencias6,self.boxDetalhesDaMagia.node.campoDasEssencias7,self.boxDetalhesDaMagia.node.campoDasEssencias8,self.boxDetalhesDaMagia.node.campoDasEssencias9}
+
+				local xml = NDB.exportXML(sheet.ieNode);
+
+				local export = {};
+				local bytes = Utils.binaryEncode(export, "utf8", xml);
+
+				local stream = Utils.newMemoryStream();
+				local bytes = stream:write(export);
+
+				Dialogs.saveFile("Salvar Ficha como XML", stream, "magias.xml", "application/xml",
+					function()
+						stream:close();
+						showMessage("Lista Exportada.");
+					end);
+			</event>
+		</button>
+	</flowPart>
+	<flowPart minWidth="50" maxWidth="150" height="25">
+		<button align="client" text="Importar Magias" >
+			<event name="onClick">
+				Dialogs.openFile("Importar Ficha", "application/xml", false, 
+					function(arquivos)
+						local arq = arquivos[1];
+
+						local import = {};
+						local bytes = arq.stream:read(import, arq.stream.size);
+
+						local xml = Utils.binaryDecode(import, "utf8");
+
+						sheet.ieNode = {};
+						NDB.importXML(sheet.ieNode, xml);
+
+						self.boxDetalhesDaMagia.node.campoDasEssencias = sheet.ieNode[1];
+						self.boxDetalhesDaMagia.node.campoDasEssencias1 = sheet.ieNode[2];
+						self.boxDetalhesDaMagia.node.campoDasEssencias2 = sheet.ieNode[3];
+						self.boxDetalhesDaMagia.node.campoDasEssencias3 = sheet.ieNode[4];
+						self.boxDetalhesDaMagia.node.campoDasEssencias4 = sheet.ieNode[5];
+						self.boxDetalhesDaMagia.node.campoDasEssencias5 = sheet.ieNode[6];
+						self.boxDetalhesDaMagia.node.campoDasEssencias6 = sheet.ieNode[7];
+						self.boxDetalhesDaMagia.node.campoDasEssencias7 = sheet.ieNode[8];
+						self.boxDetalhesDaMagia.node.campoDasEssencias8 = sheet.ieNode[9];
+						self.boxDetalhesDaMagia.node.campoDasEssencias9 = sheet.ieNode[10];
+					end);
+			</event>
+		</button>
+	</flowPart>
+
+	<flowLineBreak/>
+
+	<TitleCenter text="Alcances"/>
+
+	<flowLineBreak/>
+
+	<TitleCenter text="Curto"/>
+	<TitleCenter text="Médio"/>
+	<TitleCenter text="Longo"/>
+
+	<flowLineBreak/>
+
+	<LabelCenter field="alcanceCurto"/>
+	<LabelCenter field="alcanceMedio"/>
+	<LabelCenter field="alcanceLongo"/>
+</flowLayout>

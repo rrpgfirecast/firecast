@@ -1205,7 +1205,7 @@ local function constructNew_frmFichaRPGmeister8_svg()
             					mesaDoPersonagem.activeChat:rolarDados(rolagem, "Teste de força de " .. (node.nomeComp or "Companheiro"));
         end, obj);
 
-    obj._e_event3 = obj.edit19:addEventListener("onChange",
+    obj._e_event3 = obj.edit19:addEventListener("onUserChange",
         function (_)
             local node = self.rclListaDosCompanheiros.selectedNode;
             					if node~=nil then
@@ -1231,7 +1231,7 @@ local function constructNew_frmFichaRPGmeister8_svg()
             					mesaDoPersonagem.activeChat:rolarDados(rolagem, "Teste de destreza de " .. (node.nomeComp or "Companheiro"));
         end, obj);
 
-    obj._e_event5 = obj.edit21:addEventListener("onChange",
+    obj._e_event5 = obj.edit21:addEventListener("onUserChange",
         function (_)
             local node = self.rclListaDosCompanheiros.selectedNode;
             					if node~=nil then
@@ -1257,7 +1257,7 @@ local function constructNew_frmFichaRPGmeister8_svg()
             					mesaDoPersonagem.activeChat:rolarDados(rolagem, "Teste de constituição de " .. (node.nomeComp or "Companheiro"));
         end, obj);
 
-    obj._e_event7 = obj.edit23:addEventListener("onChange",
+    obj._e_event7 = obj.edit23:addEventListener("onUserChange",
         function (_)
             local node = self.rclListaDosCompanheiros.selectedNode;
             					if node~=nil then
@@ -1283,7 +1283,7 @@ local function constructNew_frmFichaRPGmeister8_svg()
             					mesaDoPersonagem.activeChat:rolarDados(rolagem, "Teste de inteligência de " .. (node.nomeComp or "Companheiro"));
         end, obj);
 
-    obj._e_event9 = obj.edit25:addEventListener("onChange",
+    obj._e_event9 = obj.edit25:addEventListener("onUserChange",
         function (_)
             local node = self.rclListaDosCompanheiros.selectedNode;
             					if node~=nil then
@@ -1309,7 +1309,7 @@ local function constructNew_frmFichaRPGmeister8_svg()
             					mesaDoPersonagem.activeChat:rolarDados(rolagem, "Teste de sabedoria de " .. (node.nomeComp or "Companheiro"));
         end, obj);
 
-    obj._e_event11 = obj.edit27:addEventListener("onChange",
+    obj._e_event11 = obj.edit27:addEventListener("onUserChange",
         function (_)
             local node = self.rclListaDosCompanheiros.selectedNode;
             					if node~=nil then
@@ -1335,7 +1335,7 @@ local function constructNew_frmFichaRPGmeister8_svg()
             					mesaDoPersonagem.activeChat:rolarDados(rolagem, "Teste de carisma de " .. (node.nomeComp or "Companheiro"));
         end, obj);
 
-    obj._e_event13 = obj.edit29:addEventListener("onChange",
+    obj._e_event13 = obj.edit29:addEventListener("onUserChange",
         function (_)
             local node = self.rclListaDosCompanheiros.selectedNode;
             					if node~=nil then
@@ -1387,7 +1387,7 @@ local function constructNew_frmFichaRPGmeister8_svg()
             					mesaDoPersonagem.activeChat:rolarDados(rolagem, "Teste de vontade de " .. (node.nomeComp or "Companheiro"));
         end, obj);
 
-    obj._e_event17 = obj.dataLink1:addEventListener("onChange",
+    obj._e_event17 = obj.dataLink1:addEventListener("onUserChange",
         function (_, field, oldValue, newValue)
             if sheet==nil then return end;
             

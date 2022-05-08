@@ -566,6 +566,8 @@ local function constructNew_frmFichaRPGmeister11_svg()
             						local xml = Utils.binaryDecode(import, "utf8");
             
             						NDB.importXML(sheet, xml);
+            
+            						arq.stream:close()
             					end);
         end, obj);
 

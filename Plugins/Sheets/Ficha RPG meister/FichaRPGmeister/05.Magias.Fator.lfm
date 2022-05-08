@@ -29,7 +29,7 @@
 	<button align="right" width="25" text="X" onClick="askForDelete();"/>
 
 	<dataLink fields="{'custo','mult'}">
-		<event name="onChange">
+		<event name="onUserChange">
 			if sheet== nil then return end;
 
 			local pai = NDB.getParent(sheet);

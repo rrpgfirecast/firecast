@@ -145,7 +145,7 @@ local function constructNew_frmMagiasMagiaEpica()
             askForDelete();
         end, obj);
 
-    obj._e_event2 = obj.dataLink1:addEventListener("onChange",
+    obj._e_event2 = obj.dataLink1:addEventListener("onUserChange",
         function (_, field, oldValue, newValue)
             local cd = (tonumber(sheet.myCD) or 0) +
             						(tonumber(sheet.cdExtra) or 0) + 
@@ -153,7 +153,7 @@ local function constructNew_frmMagiasMagiaEpica()
             			sheet.cd = cd;
         end, obj);
 
-    obj._e_event3 = obj.dataLink2:addEventListener("onChange",
+    obj._e_event3 = obj.dataLink2:addEventListener("onUserChange",
         function (_, field, oldValue, newValue)
             if sheet== nil then return end;
             

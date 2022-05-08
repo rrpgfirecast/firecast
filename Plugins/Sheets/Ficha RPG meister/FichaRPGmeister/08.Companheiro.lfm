@@ -36,7 +36,7 @@
 				</event>
 			</button>
 			<edit left="45" top="0" width="30" height="25" field="$(atr)Comp">
-				<event name="onChange">
+				<event name="onUserChange">
 					local node = self.rclListaDosCompanheiros.selectedNode;
 					if node~=nil then
 						local mod = (tonumber(node.$(atr)Comp) or 0);
@@ -201,7 +201,7 @@
 			</rectangle>
 
 			<dataLink field="precoInventorioComp">
-				<event name="onChange">
+				<event name="onUserChange">
 					if sheet==nil then return end;
 
 					local nodes = NDB.getChildNodes(sheet.campoDosCompanheiros);   

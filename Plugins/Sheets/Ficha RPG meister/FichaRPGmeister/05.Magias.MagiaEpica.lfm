@@ -49,7 +49,7 @@
 	<edit align="client" field="nomeMagia"/>
 
 	<dataLink fields="{'myCD', 'atr', 'cdExtra'}">
-		<event name="onChange">
+		<event name="onUserChange">
 			local cd = (tonumber(sheet.myCD) or 0) +
 						(tonumber(sheet.cdExtra) or 0) + 
 						(tonumber(sheet.atr) or 0) + 20;
@@ -58,7 +58,7 @@
 	</dataLink>
 
 	<dataLink fields="{'used'}">
-		<event name="onChange">
+		<event name="onUserChange">
 			if sheet== nil then return end;
 
 			local pai = NDB.getParent(sheet);

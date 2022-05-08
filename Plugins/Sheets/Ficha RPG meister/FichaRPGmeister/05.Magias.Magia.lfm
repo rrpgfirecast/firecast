@@ -46,7 +46,7 @@
 	<edit align="client" field="nomeMagia"/>
 
 	<dataLink fields="{'dispMagia','prepMagia'}">
-		<event name="onChange">
+		<event name="onUserChange">
 			if sheet==nil then return end;
 			local id = sheet.id;
 			local box = self:findControlByName("boxDetalhesDaMagia");
@@ -103,7 +103,7 @@
 	</dataLink>
 
 	<dataLink fields="{'nomeMagia','myCD','updateCD'}">
-		<event name="onChange">
+		<event name="onUserChange">
 			if sheet==nil then return end;
 			local id = sheet.id;
 			local box = self:findControlByName("boxDetalhesDaMagia");

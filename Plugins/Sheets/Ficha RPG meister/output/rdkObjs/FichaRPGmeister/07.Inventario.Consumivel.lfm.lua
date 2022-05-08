@@ -136,7 +136,7 @@ local function constructNew_frmConsumiveis()
     obj.Barrinha:setMargins({top=5,bottom=5});
     obj.Barrinha:setHitTest(true);
     obj.Barrinha:setMouseGlow(true);
-    obj.Barrinha:setColor("Green");
+    obj.Barrinha:setColor("Red");
     obj.Barrinha:setName("Barrinha");
     obj.Barrinha:setField("BarrinhaValor");
     obj.Barrinha:setFieldMax("BarrinhaValorMax");
@@ -178,6 +178,11 @@ local function constructNew_frmConsumiveis()
     obj.dataLink1:setDefaultValue("Green");
     obj.dataLink1:setName("dataLink1");
 
+    obj.dataLink2 = GUI.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink2:setParent(obj.layout1);
+    obj.dataLink2:setField("BarrinhaValor");
+    obj.dataLink2:setName("dataLink2");
+
     obj.button2 = GUI.fromHandle(_obj_newObject("button"));
     obj.button2:setParent(obj.rectangle1);
     obj.button2:setAlign("right");
@@ -193,10 +198,10 @@ local function constructNew_frmConsumiveis()
     obj.button3:setWidth(25);
     obj.button3:setName("button3");
 
-    obj.dataLink2 = GUI.fromHandle(_obj_newObject("dataLink"));
-    obj.dataLink2:setParent(obj);
-    obj.dataLink2:setFields({'preco'});
-    obj.dataLink2:setName("dataLink2");
+    obj.dataLink3 = GUI.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink3:setParent(obj);
+    obj.dataLink3:setFields({'preco'});
+    obj.dataLink3:setName("dataLink3");
 
     obj._e_event0 = obj:addEventListener("onMouseEnter",
         function (_)
@@ -253,27 +258,38 @@ local function constructNew_frmConsumiveis()
             self.InfoBarrinha.width = (self.ValoresBarrinha.width - 4);
         end, obj);
 
-    obj._e_event7 = obj.dataLink1:addEventListener("onChange",
+    obj._e_event7 = obj.dataLink1:addEventListener("onUserChange",
         function (_, field, oldValue, newValue)
             self.Barrinha.color = "Green";
         end, obj);
 
-    obj._e_event8 = obj.button2:addEventListener("onClick",
+    obj._e_event8 = obj.dataLink2:addEventListener("onChange",
+        function (_, field, oldValue, newValue)
+            if sheet.BarrinhaValor==nil then return end;
+            					if sheet.BarrinhaValor==0 then 
+            						self.Barrinha.color = "Yellow";
+            					else
+            						self.Barrinha.color = "Green";
+            					end;
+        end, obj);
+
+    obj._e_event9 = obj.button2:addEventListener("onClick",
         function (_)
             showItemPopup()
         end, obj);
 
-    obj._e_event9 = obj.button3:addEventListener("onClick",
+    obj._e_event10 = obj.button3:addEventListener("onClick",
         function (_)
             askForDelete()
         end, obj);
 
-    obj._e_event10 = obj.dataLink2:addEventListener("onChange",
+    obj._e_event11 = obj.dataLink3:addEventListener("onUserChange",
         function (_, field, oldValue, newValue)
             itemPrice()
         end, obj);
 
     function obj:_releaseEvents()
+        __o_rrpgObjs.removeEventListenerById(self._e_event11);
         __o_rrpgObjs.removeEventListenerById(self._e_event10);
         __o_rrpgObjs.removeEventListenerById(self._e_event9);
         __o_rrpgObjs.removeEventListenerById(self._e_event8);
@@ -297,14 +313,15 @@ local function constructNew_frmConsumiveis()
         end;
 
         if self.Barrinha ~= nil then self.Barrinha:destroy(); self.Barrinha = nil; end;
+        if self.dataLink3 ~= nil then self.dataLink3:destroy(); self.dataLink3 = nil; end;
         if self.button1 ~= nil then self.button1:destroy(); self.button1 = nil; end;
         if self.CorBarrinha ~= nil then self.CorBarrinha:destroy(); self.CorBarrinha = nil; end;
         if self.label1 ~= nil then self.label1:destroy(); self.label1 = nil; end;
         if self.InfoBarrinha ~= nil then self.InfoBarrinha:destroy(); self.InfoBarrinha = nil; end;
         if self.button3 ~= nil then self.button3:destroy(); self.button3 = nil; end;
         if self.ValoresBarrinha ~= nil then self.ValoresBarrinha:destroy(); self.ValoresBarrinha = nil; end;
-        if self.button2 ~= nil then self.button2:destroy(); self.button2 = nil; end;
         if self.imageCheckBox1 ~= nil then self.imageCheckBox1:destroy(); self.imageCheckBox1 = nil; end;
+        if self.button2 ~= nil then self.button2:destroy(); self.button2 = nil; end;
         if self.dataLink2 ~= nil then self.dataLink2:destroy(); self.dataLink2 = nil; end;
         if self.layout1 ~= nil then self.layout1:destroy(); self.layout1 = nil; end;
         if self.rectangle1 ~= nil then self.rectangle1:destroy(); self.rectangle1 = nil; end;

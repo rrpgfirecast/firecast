@@ -19,7 +19,7 @@
 		<edit align="client" field="nomeMagia"/>
 
 		<dataLink field="nivel">
-			<event name="onChange"><![CDATA[
+			<event name="onUserChange"><![CDATA[
 		        if sheet == nil then return end;
 
 				local node = NDB.getParent(NDB.getParent(sheet));

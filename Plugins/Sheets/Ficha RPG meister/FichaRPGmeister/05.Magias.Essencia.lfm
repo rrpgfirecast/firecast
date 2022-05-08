@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmMagiasEssencia" width="250" height="25" margins="{top=1}">
+	<script> 
+		<![CDATA[			
+		local function askForDelete()
+			Dialogs.confirmYesNo("Deseja realmente apagar essa magia?",
+								 function (confirmado)
+									if confirmado then
+										NDB.deleteNode(sheet);
+									end;
+								 end);
+		end;
+
+		local function showMagiaPopup()
+			local pop = self:findControlByName("popMagia");
+				
+			if pop ~= nil then
+				pop:setNodeObject(self.sheet);
+				pop:showPopupEx("bottomCenter", self);
+			else
+				showMessage("Ops, bug.. nao encontrei o popup de magia para exibir");
+			end;				
+		end;
+
+		local function write(str)
+            local mesa = Firecast.getMesaDe(sheet);
+            if str then
+                mesa.activeChat:escrever(str);
+            else
+                mesa.activeChat:escrever("String nula");
+            end;
+        end;
+		]]>	
+	</script>
+
+	<edit align="right" width="25" field="essence_1"/>
+	<edit align="right" width="25" field="essence_2"/>
+	<edit align="right" width="25" field="essence_3"/>
+	<edit align="right" width="25" field="essence_4"/>
+	<edit align="right" width="25" field="essence_5"/>
+	<edit align="right" width="25" field="essence_6"/>
+
+	<rectangle align="right" width="25" color="black" strokeColor="white" strokeSize="1">
+		<label align="client" field="cd" horzTextAlign="center" fontSize="12"/>
+	</rectangle>
+
+	<button align="right" width="25" text="i" onClick="showMagiaPopup();"/>
+	<button align="right" width="25" text="X" onClick="askForDelete();"/>
+
+	<edit align="client" field="nomeMagia"/>
+
+	<dataLink fields="{'nomeMagia','myCD','updateCD'}">
+		<event name="onUserChange">
+			if sheet==nil then return end;
+			local id = sheet.id;
+			local box = self:findControlByName("boxDetalhesDaMagia");
+			local node = box.node;
+
+			if node == nil then return end;
+
+			-- Since last version did not store the id we will need to find it in old sheets.
+			if id==nil then 
+				local myRCLfield = NDB.getParent(sheet);
+				if node.campoDasEssencias1 == myRCLfield then sheet.id = 1
+				elseif node.campoDasEssencias2 == myRCLfield then sheet.id = 2
+				elseif node.campoDasEssencias3 == myRCLfield then sheet.id = 3
+				elseif node.campoDasEssencias4 == myRCLfield then sheet.id = 4
+				elseif node.campoDasEssencias5 == myRCLfield then sheet.id = 5
+				elseif node.campoDasEssencias6 == myRCLfield then sheet.id = 6
+				elseif node.campoDasEssencias7 == myRCLfield then sheet.id = 7
+				elseif node.campoDasEssencias8 == myRCLfield then sheet.id = 8
+				elseif node.campoDasEssencias9 == myRCLfield then sheet.id = 9
+				elseif node.campoDasEssencias10 == myRCLfield then sheet.id = 10
+				elseif node.campoDasEssencias11 == myRCLfield then sheet.id = 11
+				elseif node.campoDasEssencias12 == myRCLfield then sheet.id = 12
+				elseif node.campoDasEssencias13 == myRCLfield then sheet.id = 13
+				elseif node.campoDasEssencias14 == myRCLfield then sheet.id = 14
+				elseif node.campoDasEssencias15 == myRCLfield then sheet.id = 15
+				elseif node.campoDasEssencias16 == myRCLfield then sheet.id = 16
+				elseif node.campoDasEssencias17 == myRCLfield then sheet.id = 17
+				elseif node.campoDasEssencias18 == myRCLfield then sheet.id = 18
+				elseif node.campoDasEssencias19 == myRCLfield then sheet.id = 19 end;
+				id = sheet.id;
+
+				if id==nil then return end;
+			end;
+
+			local baseCD = tonumber(node["cd" .. id]) or 10;
+			local ajustCD = tonumber(node.cd) or 0;
+			local myCD = tonumber(sheet.myCD) or 0;
+
+			sheet.cd = baseCD + ajustCD + myCD;
+		</event>
+	</dataLink>
+</form>

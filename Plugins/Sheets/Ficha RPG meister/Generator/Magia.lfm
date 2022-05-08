@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmGeneratorMagia" height="75" width="600" margins="{top=2}">
+	<layout align="top" height="25">
+		<comboBox align="left" width="200" fontColor="white" field="tipoMagia" items="{'Lista de Magias', 'Signos', 'Essencias'}" values="{'3', '2', '4'}" margins="{left=5}"/>/>
+		<comboBox align="left" width="50" fontColor="white" field="atributoCD" items="{'FOR', 'DES', 'CON', 'INT', 'SAB', 'CAR', '-'}" values="{'1', '2', '3', '4', '5', '6', '7'}" margins="{left=5}"/>/>
+		<comboBox align="left" width="50" fontColor="white" field="atributoBonus" items="{'FOR', 'DES', 'CON', 'INT', 'SAB', 'CAR', '-'}" values="{'1', '2', '3', '4', '5', '6', '7'}" margins="{left=5}"/>/>
+	</layout>
+	<layout align="top" height="25">
+		<label align="left" width="75" text="Diarias" horzTextAlign="center" margins="{left=5}"/>
+		<label align="left" width="40" field="base0" horzTextAlign="center" margins="{left=5}"/>
+		<label align="left" width="40" field="base1" horzTextAlign="center" margins="{left=5}"/>
+		<label align="left" width="40" field="base2" horzTextAlign="center" margins="{left=5}"/>
+		<label align="left" width="40" field="base3" horzTextAlign="center" margins="{left=5}"/>
+		<label align="left" width="40" field="base4" horzTextAlign="center" margins="{left=5}"/>
+		<label align="left" width="40" field="base5" horzTextAlign="center" margins="{left=5}"/>
+		<label align="left" width="40" field="base6" horzTextAlign="center" margins="{left=5}"/>
+		<label align="left" width="40" field="base7" horzTextAlign="center" margins="{left=5}"/>
+		<label align="left" width="40" field="base8" horzTextAlign="center" margins="{left=5}"/>
+		<label align="left" width="40" field="base9" horzTextAlign="center" margins="{left=5,right=5}"/>
+	</layout>
+	<layout align="top" height="25">
+		<label align="left" width="75" text="Conhecidas" horzTextAlign="center" margins="{left=5}"/>
+		<label align="left" width="40" field="conhecidas0" horzTextAlign="center" margins="{left=5}"/>
+		<label align="left" width="40" field="conhecidas1" horzTextAlign="center" margins="{left=5}"/>
+		<label align="left" width="40" field="conhecidas2" horzTextAlign="center" margins="{left=5}"/>
+		<label align="left" width="40" field="conhecidas3" horzTextAlign="center" margins="{left=5}"/>
+		<label align="left" width="40" field="conhecidas4" horzTextAlign="center" margins="{left=5}"/>
+		<label align="left" width="40" field="conhecidas5" horzTextAlign="center" margins="{left=5}"/>
+		<label align="left" width="40" field="conhecidas6" horzTextAlign="center" margins="{left=5}"/>
+		<label align="left" width="40" field="conhecidas7" horzTextAlign="center" margins="{left=5}"/>
+		<label align="left" width="40" field="conhecidas8" horzTextAlign="center" margins="{left=5}"/>
+		<label align="left" width="40" field="conhecidas9" horzTextAlign="center" margins="{left=5,right=5}"/>
+	</layout>
+</form>

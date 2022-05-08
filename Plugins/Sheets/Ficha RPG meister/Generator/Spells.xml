@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmSpells" align="client">
+	<script>
+		<![CDATA[
+		]]> 
+	</script>
+
+	<layout align="left" width="650">
+		<scrollBox align="client">
+			<flowLayout align="top" autoHeight="true" maxColumns="3" horzAlign="center" orientation="vertical" avoidScale="true" margins="{top=5}">
+				<ListaFlexivel nome="MAGIAS" rclName="rclListaDasClassesMagicas" rclField="campoDosItens" frm="frmGeneratorMagia"/>
+			</flowLayout>
+		</scrollBox>
+	</layout>
+</form>

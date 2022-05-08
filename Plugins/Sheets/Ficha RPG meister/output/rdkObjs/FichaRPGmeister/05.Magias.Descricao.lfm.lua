@@ -99,7 +99,7 @@ local function constructNew_frmFichaRPGmeister5D_svg()
     obj.button2:setText("X");
     obj.button2:setName("button2");
 
-    obj._e_event0 = obj.edit2:addEventListener("onChange",
+    obj._e_event0 = obj.edit2:addEventListener("onUserChange",
         function (_)
             local rcl = self:findControlByName("rclListaDasMagias0");
             			if rcl~= nil then

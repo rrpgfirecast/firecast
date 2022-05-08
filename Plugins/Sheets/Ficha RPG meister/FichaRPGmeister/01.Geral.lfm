@@ -119,7 +119,7 @@
 		<rectangle left="80" top="0" width="35" height="25" color="black" strokeColor="white" strokeSize="1"/>
 		<label field="realMod$(atr)" text="0" left="80" top="3" width="35" horzTextAlign="center"/>
 		<dataLink field="real$(atr)">
-			<event name="onChange">
+			<event name="onUserChange">
 				if sheet ~= nil then
 					sheet.realMod$(atr) = getMOD(sheet.real$(atr));  
 				end;
@@ -131,7 +131,7 @@
 		<rectangle left="155" top="0" width="35" height="25" color="black" strokeColor="white" strokeSize="1"/>
 		<label field="efetMod$(atr)" text="0" left="155" top="3" width="35" horzTextAlign="center"/>
 		<dataLink field="efet$(atr)">
-			<event name="onChange">
+			<event name="onUserChange">
 				if sheet ~= nil then
 					sheet.efetMod$(atr) = getMOD(sheet.efet$(atr));
 					updateAtributes($(num));
@@ -170,7 +170,7 @@
 		<label  left="55" width="40" height="25" field="tr$(atr)" horzTextAlign="center"/>
 
 		<dataLink fields="{'base$(atr)', 'atrMod$(atr)', 'magia$(atr)', 'variavel$(atr)', 'temporario$(atr)', 'outros$(atr)','buffTR'}">
-			<event name="onChange"><![CDATA[
+			<event name="onUserChange"><![CDATA[
 				if sheet~= nil then
 					local tr = (tonumber(sheet.base$(atr)) or 0) + 
 									(tonumber(sheet.atrMod$(atr)) or 0) + 
@@ -192,7 +192,7 @@
 		<label left="155" top="0" width="60" height="20" field="desl$(mode)Quadrados" horzTextAlign="center"/>
 
 		<dataLink field="desl$(mode)">
-			<event name="onChange">
+			<event name="onUserChange">
 				if sheet ~= nil and sheet.desl$(mode) ~= nil then
 
 					local mod = sheet.desl$(mode);
@@ -419,7 +419,7 @@
 			<label field="xpNivel" left="890" top="80" width="210" height="25" horzTextAlign="center"/>
 
 			<dataLink field="xpAtual">
-				<event name="onChange">
+				<event name="onUserChange">
 					if sheet~= nil then
 						if sheet.xpAtual == nil then
 							sheet.xpAtual = 0;
@@ -541,7 +541,7 @@
 			<edit type="number" vertTextAlign="center" horzTextAlign="center" left="205" top="25" width="35" height="25" field="iniVariado" />
 
 			<dataLink fields="{'efetModDes', 'iniVariado'}">
-				<event name="onChange">
+				<event name="onUserChange">
 					if sheet~= nil then
 						local mod = (tonumber(sheet.efetModDes) or 0) + (tonumber(sheet.iniVariado) or 0);
 						if (mod >= 0) then
@@ -597,7 +597,7 @@
 			</button>
 
 			<dataLink fields="{'armaduraCa', 'escudoCa', 'efetModDes', 'tamanhoCa', 'naturalCa', 'deflexaoCa', 'esquivaCa', 'sorteCa', 'outrosCa', 'variadosCa', 'armaduraCaSurp', 'escudoCaSurp', 'destrezaCaSurp', 'tamanhoCaSurp', 'naturalCaSurp', 'deflexaoCaSurp', 'esquivaCaSurp', 'sorteCaSurp', 'outrosCaSurp', 'variadosCaSurp', 'armaduraCaToque', 'escudoCaToque', 'destrezaCaToque', 'tamanhoCaToque', 'naturalCaToque', 'deflexaoCaToque', 'esquivaCaToque', 'sorteCaToque', 'outrosCaToque', 'variadosCaToque','destrezaCALimit'}">
-				<event name="onChange"><![CDATA[
+				<event name="onUserChange"><![CDATA[
 					if sheet~= nil then
 						local armaduraCa = (tonumber(sheet.armaduraCa) or 0);
 						local escudoCa = (tonumber(sheet.escudoCa) or 0);
@@ -692,7 +692,7 @@
 			<dataLink fields="{'armaduraCaSurp', 'escudoCaSurp', 'tamanhoCaSurp', 'naturalCaSurp', 'deflexaoCaSurp', 'destrezaCaToque', 'tamanhoCaToque', 'deflexaoCaToque', 'esquivaCaToque'}" defaultValues="{'true', 'true', 'true', 'true', 'true', 'true', 'true', 'true', 'true'}"/>
 
 			<dataLink fields="{'equipamentoCorpoPen', 'escudoPen'}">
-				<event name="onChange"><![CDATA[
+				<event name="onUserChange"><![CDATA[
 					if sheet~=nil then
 						sheet.penalidade = (tonumber(sheet.equipamentoCorpoPen) or 0) + (tonumber(sheet.escudoPEn) or 0);
 						updatePenalty();
@@ -701,7 +701,7 @@
 				</event>
 			</dataLink>
 			<dataLink fields="{'equipamentoCorpoFalha', 'escudoFalha'}">
-				<event name="onChange"><![CDATA[
+				<event name="onUserChange"><![CDATA[
 					if sheet~=nil then
 						local equipamentoCorpoFalha = sheet.equipamentoCorpoFalha;
 						local escudoFalha = sheet.escudoFalha;
@@ -790,7 +790,7 @@
 			<label left="0" top="0" width="180" height="25" text="BBA" horzTextAlign="center"/>
 			
 			<edit left="5" top="25" width="40" height="25" type="number" horzTextAlign="center" field="bba">
-				<event name="onChange"><![CDATA[
+				<event name="onUserChange"><![CDATA[
 					if sheet~= nil then
 						local bba = tonumber(sheet.bba) or 0;
 						local text = "+" .. bba;
@@ -833,7 +833,7 @@
 				</button>
 
 				<dataLink fields="{'bba', 'efetModFor', 'agarrarTam', 'agarrarVar'}"> 
-					<event name="onChange">
+					<event name="onUserChange">
 						if sheet~= nil then
 							local agarrar = (tonumber(sheet.bba) or 0) + 
 										(tonumber(sheet.efetModFor) or 0) +  
@@ -863,7 +863,7 @@
 			</layout>
 
 			<dataLink fields="{'efetModFor', 'efetModDes', 'efetModCon', 'efetModInt', 'efetModSab', 'efetModCar', 'atrTrFort', 'atrTrRef', 'atrTrVon'}">
-				<event name="onChange">
+				<event name="onUserChange">
 					if sheet ~= nil then
 						local atrModFort = 0;
 						local atrModRef = 0;

@@ -83,7 +83,7 @@ local function constructNew_frmFator()
             askForDelete();
         end, obj);
 
-    obj._e_event1 = obj.dataLink1:addEventListener("onChange",
+    obj._e_event1 = obj.dataLink1:addEventListener("onUserChange",
         function (_, field, oldValue, newValue)
             if sheet== nil then return end;
             

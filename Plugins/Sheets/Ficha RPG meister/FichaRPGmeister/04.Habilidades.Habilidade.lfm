@@ -28,7 +28,7 @@
 	<layout align="right" width="75">
 		<layout top="5" height="15" width="45">
 			<imageCheckBox align="client">
-				<progressBar colorMode="hl" width="45" height="15" margins="{top=5,bottom=5}" hitTest="true" mouseGlow="true" color="Green" name="Barrinha" field="BarrinhaValor" fieldMax="BarrinhaValorMax">
+				<progressBar colorMode="hl" width="45" height="15" margins="{top=5,bottom=5}" hitTest="true" mouseGlow="true" color="Red" name="Barrinha" field="BarrinhaValor" fieldMax="BarrinhaValorMax">
 					<event name="onMouseEnter">
 						self.CorBarrinha.color = "Green";
 						self.ValoresBarrinha.visible = true;
@@ -71,8 +71,18 @@
 			</rectangle>
 		</layout>
 		<dataLink field="CorBarrinha" defaultValue="Green">
-			<event name="onChange">
+			<event name="onUserChange">
 				self.Barrinha.color = "Green";
+			</event>
+		</dataLink>
+		<dataLink field="BarrinhaValor">
+			<event name="onChange">
+				if sheet.BarrinhaValor==nil then return end;
+				if sheet.BarrinhaValor==0 then 
+					self.Barrinha.color = "Yellow";
+				else
+					self.Barrinha.color = "Green";
+				end;
 			</event>
 		</dataLink>
 	</layout>

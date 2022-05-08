@@ -597,7 +597,7 @@
                 </button>
             </layout> 
             <dataLink fields="{'furtivo', 'ataquePoderoso', 'especializacaoCombate', 'tiroMultiplo', 'ataqueMultiplo', 'alcance', 'composto', 'limite', 'energia', 'rajada', 'tamanho', 'talentos', 'itens', 'magias', 'extra', 'outros', 'outros1', 'outros2', 'outros3', 'outros4', 'combate2maos', 'combate2armas', 'combate2armasLeve', 'velocidade', 'tiroRapido', 'tiroRapidoAprimorado', 'flanquear', 'atualizar','useStr', 'multStr', 'useDex', 'multDex', 'useCon', 'multCon', 'useInt', 'multInt', 'useSab', 'multSab', 'useCar', 'multCar'}">
-                <event name="onChange">                
+                <event name="onUserChange">                
                     updateAll();
                 </event>
             </dataLink>

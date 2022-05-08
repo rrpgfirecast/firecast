@@ -1,0 +1,965 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmGeneratorRace" align="client">
+	<script>
+		<![CDATA[
+		local function filterRaces(filter)
+			local races = generatorSheet.db.races
+			local i = 0
+			local index = 0;
+			local raceList = {}
+			local raceId = {}
+			local raceWeight = {}
+			while races[i+1]~=nil do
+				-- next race on the list
+				i = i + 1
+
+				if races[i]["planes"][filter] > 0 then
+					-- next slot on the list for a valid race
+					index = index + 1
+
+					raceList[index] = races[i].name;
+					raceId[index] = i;
+					raceWeight[index] = (tonumber(raceWeight[index-1]) or 0) + races[i]["planes"][filter]
+				end
+			end
+
+			self.raceSelector.items = raceList
+			self.raceSelector.values = raceId
+
+			generatorSheet.raceWeight = raceWeight
+			generatorSheet.raceQtd = index
+		end
+
+		local function RngRace()
+			if generatorSheet.raceWeight == nil then return end;
+			local raceWeight = generatorSheet.raceWeight
+			local index = generatorSheet.raceQtd
+			local maxWeight = raceWeight[index]
+
+			local rng = math.random(maxWeight)
+			local selected = 1;
+
+			for i=2, index, 1 do
+				if rng > raceWeight[i-1] and rng <= raceWeight[i] then 
+					selected = i 
+				end
+			end;
+
+			generatorSheet.raceSelector = self.raceSelector.values[selected]
+			self.raceSelector.text = self.raceSelector.items[selected]
+		end
+
+		local function filterClasses(filter)
+			local classes = generatorSheet.db.classes
+			local i = 0
+			local index = 0;
+			local classeList = {}
+			local classeId = {}
+			local classeWeight = {}
+			while classes[i+1]~=nil do
+				-- next classe on the list
+				i = i + 1
+
+				if classes[i]["planes"][filter] > 0 then
+					-- next slot on the list for a valid classe
+					index = index + 1
+
+					classeList[index] = classes[i].name;
+					classeId[index] = i;
+					classeWeight[index] = (tonumber(classeWeight[index-1]) or 0) + classes[i]["planes"][filter]
+				end
+			end
+
+			self.classeSelector.items = classeList
+			self.classeSelector.values = classeId
+
+			generatorSheet.classeWeight = classeWeight
+			generatorSheet.classeQtd = index
+		end
+
+		local function RngClasse()
+			if generatorSheet.classeWeight == nil then return end;
+			local classeWeight = generatorSheet.classeWeight
+			local index = generatorSheet.classeQtd
+			local maxWeight = classeWeight[index]
+
+			local rng = math.random(maxWeight)
+			local selected = 1;
+
+			for i=2, index, 1 do
+				if rng > classeWeight[i-1] and rng <= classeWeight[i] then 
+					selected = i 
+				end
+			end;
+
+			generatorSheet.classeSelector = self.classeSelector.values[selected]
+			self.classeSelector.text = self.classeSelector.items[selected]
+		end
+
+		local function starts_with(str, start)
+			return Utils.compareStringPtBr(str:sub(1, #start), start) == 0
+		end
+
+		local function FindCC(cc)
+			local nodes = NDB.getChildNodes(generatorSheet.npc.campoDasCaracteristicasClasse);
+			for i=1, #nodes, 1 do
+                if starts_with(nodes[i].nomeHabilidade,cc) then
+                	return nodes[i]
+                end
+            end
+
+			return nil
+		end
+
+		local function FindSkill(skill)
+			local nodes = NDB.getChildNodes(generatorSheet.npc.campoDasPericias);
+			for i=1, #nodes, 1 do
+                if starts_with(nodes[i].nomePericia,skill) then
+                	return nodes[i]
+                end
+            end
+
+			return nil
+		end
+
+		local function UpdateMaxSkills(classe, lvl)
+			local int = tonumber(generatorSheet.npc.totalInt) or 0
+			local nepInt = tonumber(generatorSheet.npc.nepInt) or 0
+
+			local initInt = int - nepInt
+			local modInt = math.floor(initInt/2) - 5
+
+			local SP = (tonumber(generatorSheet.skills) or 0) + modInt + (tonumber(classe.skillsPoints) or 0)
+			SP = math.max(SP,1)
+			local basePt = SP * (lvl+3)
+
+			if lvl>= 4 and generatorSheet.npc.nv4 == "4" then
+				initInt = initInt + 1
+				if (math.floor(initInt/2) - 5) > modInt then 
+					modInt = modInt + 1
+					basePt = basePt + (lvl-3)
+				end
+			end
+			if lvl>= 8 and generatorSheet.npc.nv8 == "4" then
+				initInt = initInt + 1
+				if (math.floor(initInt/2) - 5) > modInt then 
+					modInt = modInt + 1
+					basePt = basePt + (lvl-7)
+				end
+			end
+			if lvl>= 12 and generatorSheet.npc.nv12 == "4" then
+				initInt = initInt + 1
+				if (math.floor(initInt/2) - 5) > modInt then 
+					modInt = modInt + 1
+					basePt = basePt + (lvl-11)
+				end
+			end
+			if lvl>= 16 and generatorSheet.npc.nv16 == "4" then
+				initInt = initInt + 1
+				if (math.floor(initInt/2) - 5) > modInt then 
+					modInt = modInt + 1
+					basePt = basePt + (lvl-15)
+				end
+			end
+			if lvl>= 20 and generatorSheet.npc.nv20 == "4" then
+				initInt = initInt + 1
+				if (math.floor(initInt/2) - 5) > modInt then 
+					modInt = modInt + 1
+					basePt = basePt + (lvl-19)
+				end
+			end
+
+			generatorSheet.npc.skillsMax = basePt
+		end
+
+		local function LevelUpdate()
+			local lvl = tonumber(generatorSheet.npc.lvl) or 1
+			lvl = lvl + 1
+			if lvl > 20 then return end
+			generatorSheet.npc.lvl = lvl
+
+			local ajuste = tonumber(generatorSheet.npc.ajuste) or 0
+			generatorSheet.npc.nep = ajuste+lvl
+			generatorSheet.npc.xpAtual = ((ajuste+lvl-1) + 1) * (ajuste+lvl-1) * 1000 / 2;
+
+			local index = tonumber(generatorSheet.npc.classeSelector) or 0
+			local classe = generatorSheet.db.classes[index]
+
+			generatorSheet.npc.classe1 = classe.name .. " " .. lvl
+
+			if classe.bba == 0 then
+				generatorSheet.npc.bba = math.floor(lvl/2)
+			elseif classe.bba == 1 then
+				generatorSheet.npc.bba = math.floor(lvl*3/4)
+			else
+				generatorSheet.npc.bba = lvl
+			end
+
+			if classe.fort == 0 then
+				generatorSheet.npc.baseFort = math.floor(lvl/3)
+			else
+				generatorSheet.npc.baseFort = 2 + math.floor(lvl/2)
+			end
+
+			if classe.ref == 0 then
+				generatorSheet.npc.baseRef = math.floor(lvl/3)
+			else
+				generatorSheet.npc.baseRef = 2 + math.floor(lvl/2)
+			end
+
+			if classe.will == 0 then
+				generatorSheet.npc.baseVon = math.floor(lvl/3)
+			else
+				generatorSheet.npc.baseVon = 2 + math.floor(lvl/2)
+			end
+
+			local con = tonumber(generatorSheet.npc.totalCon) or 0
+			con = math.floor(con/2) - 5
+			con = con * lvl
+
+			generatorSheet.npc.dvs = lvl .. "d" .. classe.hd .. "+" .. con
+			generatorSheet.npc.pvTotal = math.floor(classe.hd + (lvl-1)*((classe.hd/2) + 0.5) + con)
+
+			-- Adicionando caracteristicas de classe
+			local cc = classe.levels[lvl]
+
+			if lvl == 1 then
+				local rclItem = self.campoDasCaracteristicasClasse:append()
+				if rclItem ~= nil then
+					rclItem.nivelHabilidade = lvl
+					rclItem.nomeHabilidade = "Proficiências"
+					rclItem.obtencaoHabilidade = classe.name .. " " .. lvl
+					rclItem.descricao = classe.proficiency
+				end
+			end
+
+			local i = 1
+			while cc.unique ~= nil and cc.unique[i] ~= nil do
+				local rclItem = self.campoDasCaracteristicasClasse:append()
+				if rclItem ~= nil then
+					rclItem.nivelHabilidade = lvl
+					rclItem.nomeHabilidade = cc.unique[i]
+					rclItem.obtencaoHabilidade = classe.name .. " " .. lvl
+				end
+
+				i = i + 1
+			end
+
+			local i = 1
+			while cc.upgradeable ~= nil and cc.upgradeable[i] ~= nil do
+				local node = FindCC(cc.upgradeable[i][1])
+
+				if node == nil then
+					-- Add new item
+					local rclItem = self.campoDasCaracteristicasClasse:append()
+					if rclItem ~= nil then
+						rclItem.nivelHabilidade = lvl
+						rclItem.nomeHabilidade = cc.upgradeable[i][1] .. " " .. (cc.upgradeable[i][2] or "")
+						rclItem.obtencaoHabilidade = classe.name .. " " .. lvl
+					end
+				else
+					-- Update old item 
+					node.nivelHabilidade = lvl
+					node.nomeHabilidade = cc.upgradeable[i][1] .. " " .. (cc.upgradeable[i][2] or "")
+					node.obtencaoHabilidade = classe.name .. " " .. lvl
+				end
+				i = i + 1
+			end
+
+			local i = 1
+			while cc.cumulative ~= nil and cc.cumulative[i] ~= nil do
+				local node = FindCC(cc.cumulative[i][1])
+
+				if node == nil then
+					-- Add new item
+					local rclItem = self.campoDasCaracteristicasClasse:append()
+					if rclItem ~= nil then
+						rclItem.nivelHabilidade = lvl
+						rclItem.nomeHabilidade = cc.cumulative[i][1] .. ": " .. (cc.cumulative[i][2] or "")
+						rclItem.obtencaoHabilidade = classe.name .. " " .. lvl
+					end
+				else
+					-- Update old item 
+					node.nivelHabilidade = lvl
+					node.nomeHabilidade = node.nomeHabilidade .. ", " .. (cc.cumulative[i][2] or "")
+					node.obtencaoHabilidade = classe.name .. " " .. lvl
+				end
+				i = i + 1
+			end
+
+			-- TALENTOS
+
+			local feats = tonumber(cc.feats) or 0;
+
+			local i = 1
+			while cc.featForce ~= nil and cc.featForce[i] ~= nil do
+				local rclItem = self.campoDosTalentos:append()
+				if rclItem ~= nil then
+					rclItem.nivelHabilidade = lvl
+					rclItem.nomeHabilidade = cc.featForce[i]
+					rclItem.obtencaoHabilidade = classe.name .. " " .. lvl
+					rclItem.lock = true
+				end
+
+				feats = feats - 1
+				i = i + 1
+			end
+
+			for i=1, feats, 1 do 
+				local rclItem = self.campoDosTalentos:append()
+				if rclItem ~= nil then
+					rclItem.nivelHabilidade = lvl
+					rclItem.obtencaoHabilidade = classe.name .. " " .. lvl
+				end
+			end
+
+			if lvl == 1 or lvl%3 == 0 then 
+				local rclItem = self.campoDosTalentos:append()
+				if rclItem ~= nil then
+					rclItem.nivelHabilidade = lvl
+					rclItem.obtencaoHabilidade = "NEP " .. lvl
+				end
+			end
+
+			-- PERICIAS
+
+			InitSkills()
+
+			UpdateMaxSkills(classe, lvl)
+
+			-- MAGIAS
+
+			local spellItems = NDB.getChildNodes(generatorSheet.npc.campoDosItens)
+			local spellItem = nil
+			if #spellItems > 0 then 
+				spellItem = spellItems[1]
+				spellItem.NC = lvl
+			end
+
+			if classe.spellType == "3" and cc.spells ~= nil and spellItem ~= nil then 
+				local i = 1
+				local spellMin = tonumber(classe.spellMin) or 0
+
+				while cc.spells[i] ~= nil do 
+					spellItem["base" .. spellMin] = cc.spells[i]
+
+					spellMin = spellMin + 1
+					i = i + 1
+				end
+			end
+
+			if classe.spellType == "3" and cc.spellsKnown ~= nil and spellItem ~= nil then 
+				local i = 1
+				local spellMin = tonumber(classe.spellMin) or 0
+
+				while cc.spellsKnown[i] ~= nil do 
+					spellItem["conhecidas" .. spellMin] = cc.spellsKnown[i]
+					
+					spellMin = spellMin + 1
+					i = i + 1
+				end
+			end
+		end;
+
+		local function UpdateClassSkills()
+			local index = tonumber(generatorSheet.npc.raceSelector) or 0
+			local race = generatorSheet.db.races[index]
+
+			local index = tonumber(generatorSheet.npc.classeSelector) or 0
+			local classe = generatorSheet.db.classes[index]
+
+			local nodes = NDB.getChildNodes(generatorSheet.npc.campoDasPericias);
+			for i=1, #nodes, 1 do
+				nodes[i].racialPericia = nil
+				nodes[i].isClass = nil
+			end
+
+			if race~= nil then
+				local i = 1
+				while race.skillsClass~=nil and race.skillsClass[i]~=nil do
+					local skill = FindSkill(race.skillsClass[i])
+
+					if skill==nil then 
+						skill = self.rclListaDasPericias:append()
+					end
+
+					if skill~= nil then
+						skill.isClass = (tonumber(race.skillsRace[i]) or 0) >= 0
+						skill.nomePericia = race.skillsClass[i]
+
+						if race.skillsRace ~= nil and race.skillsRace[i]~= nil then
+							skill.racialPericia = race.skillsRace[i]
+						end
+
+						if race.skillsRaceOther ~= nil and race.skillsRaceOther[i]~= nil then
+							skill.descricao = race.skillsRaceOther[i]
+						end
+					end
+					i = i + 1
+				end
+			end
+
+			if classe~=nil then 
+				local i = 1
+				while classe.skillsClass~=nil and classe.skillsClass[i]~=nil do
+					local skill = FindSkill(classe.skillsClass[i])
+
+					if skill==nil then 
+						skill = self.rclListaDasPericias:append()
+					end
+
+					if skill~= nil then
+						skill.isClass = true
+						skill.nomePericia = classe.skillsClass[i]
+					end
+					i = i + 1
+				end
+			end
+		end
+		]]> 
+	</script>
+
+	<template name="Atribute">
+		<layout align="top" height="25">
+			<rectangle align="left" width="40" color="black" strokeColor="white" strokeSize="1" margins="{right=5}">
+				<label text="$(atr)" align="client" horzTextAlign="center"/>
+			</rectangle>
+			<rectangle align="left" width="40" color="black" strokeColor="white" strokeSize="1" margins="{right=5}">
+				<label field="total$(atr)" align="client" horzTextAlign="center"/>
+			</rectangle>
+
+			<edit field="inicial$(atr)" align="left" width="40" margins="{right=5}" type="number" min="1" max="18"/>
+
+			<rectangle align="left" width="40" color="black" strokeColor="white" strokeSize="1" margins="{right=5}">
+				<label field="nep$(atr)" align="client" horzTextAlign="center"/>
+			</rectangle>
+			<rectangle align="left" width="40" color="black" strokeColor="white" strokeSize="1" margins="{right=5}">
+				<label field="raca$(atr)" align="client" horzTextAlign="center"/>
+			</rectangle>
+
+			<edit field="extra$(atr)" align="left" width="40" margins="{right=5}"/>
+		</layout>
+		<dataLink fields="{'inicial$(atr)','nep$(atr)','raca$(atr)'}">
+			<event name="onChange">
+				if generatorSheet == nil then return end;
+
+				generatorSheet.npc.total$(atr) = 	(tonumber(generatorSheet.npc.inicial$(atr)) or 0) + 
+													(tonumber(generatorSheet.npc.nep$(atr)) or 0) + 
+													(tonumber(generatorSheet.npc.raca$(atr)) or 0);
+			</event>
+		</dataLink>
+		<dataLink fields="{'extra$(atr)'}">
+			<event name="onChange">
+				if generatorSheet == nil then return end;
+				local index = tonumber(generatorSheet.npc.raceSelector) or 0
+				local race = generatorSheet.db.races[index]
+
+				local atrs = {"For","Des","Con","Int","Sab","Car"}
+
+				generatorSheet.npc.raca$(atr) = race.attributes[$(id)] + (tonumber(generatorSheet.npc.extra$(atr)) or 0)
+
+				InitSkills()
+
+
+			</event>
+		</dataLink>
+	</template>
+	<template name="ListaFlexivel">
+		<flowPart minWidth="300" maxWidth="600" height="25" minScaledWidth="280" name="$(rclName)Part" adjustHeightToLine="false" margins="{left=5}">
+			<script>
+				<![CDATA[
+					rawset(self.$(rclName)Part, "_recalcHeight", 					
+						function ()
+							self.$(rclName)Part.height = self.$(rclName).height + 25;
+						end);
+				]]>
+			</script>
+
+			<rectangle align="client" color="black" strokeColor="white" strokeSize="1">
+				<layout align="top" height="25">
+					<label text="$(nome)" align="left" width="225" margins="{left=5}"/>
+				</layout>
+
+				<recordList name="$(rclName)" field="$(rclField)" templateForm="$(frm)" align="top" layout="vertical" autoHeight="true" hitTest="false" onResize="self.$(rclName)Part._recalcHeight();" minQt="0">
+					<event name="onCompare">
+				        if nodeA.nivelHabilidade~=nil then 
+				        	return ((tonumber(nodeA.nivelHabilidade) or 0) - (tonumber(nodeB.nivelHabilidade) or 0)) 
+				        end;
+				        if nodeA.nomePericia~=nil then 
+				        	return utils.compareStringPtBr(nodeA.nomePericia, nodeB.nomePericia) 
+				        end;
+
+				        return 0
+				    </event>
+				</recordList>
+			</rectangle>
+		</flowPart>
+	</template>	
+
+
+	<popup name="popFeatSelection" align="client" backOpacity="0.4" autoScopeNode="false" margins="{left=50,right=50,top=50,bottom=50}">
+		<scrollBox align="client">
+			<flowLayout align="top" autoHeight="true" maxColumns="4" horzAlign="center" orientation="vertical" avoidScale="true">
+				<ListaFlexivel nome="Classe" rclName="FeatClass" rclField="FeatClass" frm="frmGeneratorFeatSelector"/>
+				<ListaFlexivel nome="Combate" rclName="FeatCombat" rclField="FeatCombat" frm="frmGeneratorFeatSelector"/>
+				<ListaFlexivel nome="Conjuração" rclName="FeatCasting" rclField="FeatCasting" frm="frmGeneratorFeatSelector"/>
+				<ListaFlexivel nome="Criação de Item" rclName="FeatCreation" rclField="FeatCreation" frm="frmGeneratorFeatSelector"/>
+				<ListaFlexivel nome="Geral" rclName="FeatGeneral" rclField="FeatGeneral" frm="frmGeneratorFeatSelector"/>
+				<ListaFlexivel nome="Metamagico" rclName="FeatMetamagic" rclField="FeatMetamagic" frm="frmGeneratorFeatSelector"/>
+				<ListaFlexivel nome="Perícia" rclName="FeatSkill" rclField="FeatSkill" frm="frmGeneratorFeatSelector"/>
+				<ListaFlexivel nome="Raça" rclName="FeatRace" rclField="FeatRace" frm="frmGeneratorFeatSelector"/>
+			</flowLayout>
+		</scrollBox>
+
+		<event name="onNodeReady">
+			local nodes = NDB.getChildNodes(self.popFeatSelection.node.FeatCombat)
+			if #nodes > 0 then return end
+
+			local talentos = generatorSheet.db.talentos
+			local i = 1
+			while talentos ~= nil and talentos[i] ~= nil do
+				local talento = talentos[i]
+
+				local rclItem
+
+				if talento.type == "Classe" then
+					rclItem = self.FeatClass:append()
+				elseif talento.type == "Combate" then
+					rclItem = self.FeatCombat:append()
+				elseif talento.type == "Conjuração" then
+					rclItem = self.FeatCasting:append()
+				elseif talento.type == "Criação de Item" then
+					rclItem = self.FeatCreation:append()
+				elseif talento.type == "Geral" then
+					rclItem = self.FeatGeneral:append()
+				elseif talento.type == "Metamágico" then
+					rclItem = self.FeatMetamagic:append()
+				elseif talento.type == "Perícia" then
+					rclItem = self.FeatSkill:append()
+				elseif talento.type == "Raça" then
+					rclItem = self.FeatRace:append()
+				end
+
+				if rclItem ~= nil then 
+					rclItem.name = talento.name
+					rclItem.type = talento.type
+					rclItem.book = talento.book
+				end
+				i = i + 1
+			end
+		</event>
+	</popup>
+
+	<scrollBox align="client">
+		<layout align="top">
+			<button align="left" text="Geral" margins="{right=5}" onClick="filterRaces(&quot;Geral&quot;)"/>
+			<button align="left" text="Oficial" margins="{right=5}" onClick="filterRaces(&quot;Oficial&quot;)"/>
+			<button align="left" text="Paraiso" margins="{right=5}" onClick="filterRaces(&quot;Paraiso&quot;)"/>
+			<button align="left" text="Efíria" margins="{right=5}" onClick="filterRaces(&quot;Efíria&quot;)"/>
+			<button align="left" text="Centelha" margins="{right=5}" onClick="filterRaces(&quot;Centelha&quot;)"/>
+			<button align="left" text="SobAlec" margins="{right=5}" onClick="filterRaces(&quot;SobAlec&quot;)"/>
+			<button align="left" text="Ardeal" margins="{right=5}" onClick="filterRaces(&quot;Ardeal&quot;)"/>
+			<button align="left" text="Abismo" margins="{right=5}" onClick="filterRaces(&quot;Abismo&quot;)"/>
+			<button align="left" text="Diaféle" margins="{right=5}" onClick="filterRaces(&quot;Diaféle&quot;)"/>
+			<button align="left" text="Inferno" margins="{right=5}" onClick="filterRaces(&quot;Inferno&quot;)"/>
+		</layout>
+
+		<layout align="top" height="25" margins="{top=5}">
+			<label text="Raça" align="left" width="50" margins="{right=5}"/>
+			<button align="left" text="Aleatório" onClick="RngRace()" margins="{right=5}"/>
+			<comboBox align="client" name="raceSelector" field="raceSelector" items="{}" values="{}">
+				<event name="onChange">
+					if generatorSheet == nil then return end
+					local index = tonumber(generatorSheet.npc.raceSelector) or 0
+					local race = generatorSheet.db.races[index]
+					local atrs = {"For","Des","Con","Int","Sab","Car"}
+
+					if race == nil then return end;
+					if race.attributes ~= nil then
+						for i=1, 6, 1 do
+							generatorSheet.npc["raca" .. atrs[i]] = race.attributes[i] + (tonumber(generatorSheet.npc["extra" .. atrs[i]]) or 0)
+						end
+
+						local i = 6
+						local txt = ""
+						while race.attributes[i+1]~=nil do
+							i = i + 1
+							txt = txt .. race.attributes[i] .. " livre\n"
+						end
+						generatorSheet.npc.atributeExtra = txt
+					end
+
+					generatorSheet.npc.raca = race.name
+					generatorSheet.npc.tipo = race.type
+					generatorSheet.npc.subtipo = race.subtype
+					generatorSheet.npc.deslTerrestre = race.speed
+					generatorSheet.npc.deslVoo = race.fly
+					generatorSheet.npc.qualidadeVoo = race.flyType
+					generatorSheet.npc.deslNatacao = race.swin
+					generatorSheet.npc.deslEscalar = race.climb
+					generatorSheet.npc.deslEscavar = race.burrow
+					generatorSheet.npc.trCondicional = race.savesOther
+					generatorSheet.npc.ajuste = race.adjustment
+					generatorSheet.npc.tamanho = race.size
+
+					generatorSheet.npc.outrosFort = race.saves[1]
+					generatorSheet.npc.outrosRef = race.saves[2]
+					generatorSheet.npc.outrosVon = race.saves[3]
+
+					-- Limpar lista de habilidades de raça
+					generatorSheet.npc.campoDasRacas = {}
+
+					-- Vision
+					if race.visionLowLight == 2 then
+						local rclItem = self.campoDasRacas:append()
+						if rclItem ~= nil then
+							rclItem.nivelHabilidade = 1
+							rclItem.nomeHabilidade = "Visão da Penumbra"
+							rclItem.obtencaoHabilidade = race.name
+						end
+					elseif race.visionLowLight == 4 then
+						local rclItem = self.campoDasRacas:append()
+						if rclItem ~= nil then
+							rclItem.nivelHabilidade = 1
+							rclItem.nomeHabilidade = "Visão da Penumbra Maior"
+							rclItem.obtencaoHabilidade = race.name
+						end
+					end 
+
+					if race.visionDarkness ~= nil then
+						local rclItem = self.campoDasRacas:append()
+						if rclItem ~= nil then
+							rclItem.nivelHabilidade = 1
+							rclItem.nomeHabilidade = "Visão no Escuro " .. race.visionDarkness .. "m"
+							rclItem.obtencaoHabilidade = race.name
+						end
+					end
+
+					-- Imunidades
+
+					local i = 1;
+					while race.immunities~=nil and race.immunities[i] ~= nil do
+						local rclItem = self.campoDasRacas:append()
+						if rclItem ~= nil then
+							rclItem.nivelHabilidade = 1
+							rclItem.nomeHabilidade = "Imunidade a " .. race.immunities[i]
+							rclItem.obtencaoHabilidade = race.name
+						end
+
+						i = i + 1
+					end
+
+					while race.vulnerabilities~=nil and race.vulnerabilities[i] ~= nil do
+						local rclItem = self.campoDasRacas:append()
+						if rclItem ~= nil then
+							rclItem.nivelHabilidade = 1
+							rclItem.nomeHabilidade = "Vulnerabilidade a " .. race.vulnerabilities[i]
+							rclItem.obtencaoHabilidade = race.name
+						end
+
+						i = i + 1
+					end
+
+					local i = 1;
+					while race.other~=nil and race.other[i] ~= nil do
+						local rclItem = self.campoDasRacas:append()
+						if rclItem ~= nil then
+							rclItem.nivelHabilidade = 1
+							rclItem.nomeHabilidade = race.other[i]
+							rclItem.descricao = race.otherDetails[i]
+							rclItem.obtencaoHabilidade = race.name
+						end
+
+						i = i + 1
+					end
+
+					-- SKILLS
+
+					generatorSheet.skills = race.skills
+
+					UpdateClassSkills()
+
+					i = 1
+					while race.languages[i] ~= nil do
+						i = i + 1
+					end
+
+					generatorSheet.npc.languageInitial = "Inicial: " .. (i-1)
+
+					-- TALENTOS
+
+					local feats = tonumber(race.feats) or 0;
+
+					local i = 1
+					while race.featForce ~= nil and race.featForce[i] ~= nil do
+						local rclItem = self.campoDosTalentos:append()
+						if rclItem ~= nil then
+							rclItem.nivelHabilidade = 1
+							rclItem.nomeHabilidade = race.featForce[i]
+							rclItem.obtencaoHabilidade = race.name
+							rclItem.lock = true
+						end
+
+						feats = feats - 1
+						i = i + 1
+					end
+
+					for i=1, feats, 1 do 
+						local rclItem = self.campoDosTalentos:append()
+						if rclItem ~= nil then
+							rclItem.nivelHabilidade = 1
+							rclItem.obtencaoHabilidade = race.name
+						end
+					end
+				</event>
+			</comboBox>
+		</layout>
+
+		<layout align="top" margins="{top=5}">
+			<button align="left" text="Geral" margins="{right=5}" onClick="filterClasses(&quot;Geral&quot;)"/>
+			<button align="left" text="Oficial" margins="{right=5}" onClick="filterClasses(&quot;Oficial&quot;)"/>
+			<button align="left" text="Paraiso" margins="{right=5}" onClick="filterClasses(&quot;Paraiso&quot;)"/>
+			<button align="left" text="Efíria" margins="{right=5}" onClick="filterClasses(&quot;Efíria&quot;)"/>
+			<button align="left" text="Centelha" margins="{right=5}" onClick="filterClasses(&quot;Centelha&quot;)"/>
+			<button align="left" text="SobAlec" margins="{right=5}" onClick="filterClasses(&quot;SobAlec&quot;)"/>
+			<button align="left" text="Ardeal" margins="{right=5}" onClick="filterClasses(&quot;Ardeal&quot;)"/>
+			<button align="left" text="Abismo" margins="{right=5}" onClick="filterClasses(&quot;Abismo&quot;)"/>
+			<button align="left" text="Diaféle" margins="{right=5}" onClick="filterClasses(&quot;Diaféle&quot;)"/>
+			<button align="left" text="Inferno" margins="{right=5}" onClick="filterClasses(&quot;Inferno&quot;)"/>
+		</layout>
+
+		<layout align="top" height="25" margins="{top=5}">
+			<label text="Classe" align="left" width="50" margins="{right=5}"/>
+			<button align="left" text="Aleatório" onClick="RngClasse()" margins="{right=5}"/>
+			<comboBox align="client" name="classeSelector" field="classeSelector" items="{}" values="{}">
+				<event name="onChange">
+					if generatorSheet == nil then return end;
+					local index = tonumber(generatorSheet.npc.classeSelector) or 0
+					local classe = generatorSheet.db.classes[index]
+
+					local index = tonumber(generatorSheet.npc.raceSelector) or 0
+					local race = generatorSheet.db.races[index]
+
+					if classe == nil then return end;
+
+					generatorSheet.npc.classe1 = classe.name .. " 1"
+					
+					generatorSheet.npc.lvl = 0
+
+					-- Limpar lista de habilidades de classe
+					generatorSheet.npc.campoDasCaracteristicasClasse = {}
+					generatorSheet.npc.campoDosTalentos = {}
+
+					-- TALENTOS [re add race feats]
+					if race~= nil then
+						local feats = tonumber(race.feats) or 0;
+
+						local i = 1
+						while race.featForce ~= nil and race.featForce[i] ~= nil do
+							local rclItem = self.campoDosTalentos:append()
+							if rclItem ~= nil then
+								rclItem.nivelHabilidade = 1
+								rclItem.nomeHabilidade = race.featForce[i]
+								rclItem.obtencaoHabilidade = race.name
+								rclItem.lock = true
+							end
+
+							feats = feats - 1
+							i = i + 1
+						end
+
+						for i=1, feats, 1 do 
+							local rclItem = self.campoDosTalentos:append()
+							if rclItem ~= nil then
+								rclItem.nivelHabilidade = 1
+								rclItem.obtencaoHabilidade = race.name
+							end
+						end
+					end
+
+					UpdateClassSkills()
+
+					-- MAGIAS
+					generatorSheet.npc.campoDosItens = {}
+					if classe.spellType ~= nil then
+						local spellItem = self.rclListaDasClassesMagicas:append()
+						if spellItem ~= nil then
+							spellItem.tipoMagia = classe.spellType
+							spellItem.classeMagia = classe.name
+
+							spellItem.atributoCD = classe.spellCD
+							spellItem.atributoBonus = classe.spellExtra
+						end
+					end
+
+
+					LevelUpdate();
+				</event>
+			</comboBox>
+		</layout>
+
+		<layout align="top" height="175" margins="{top=5}">
+			<layout align="left" width="270">
+				<layout align="top" height="25">
+					<label align="left" text="" width="40" margins="{right=5}" horzTextAlign="center"/>
+					<label align="left" text="Total" width="40" margins="{right=5}" horzTextAlign="center"/>
+					<label align="left" text="Inicial" width="40" margins="{right=5}" horzTextAlign="center"/>
+					<label align="left" text="NEP" width="40" margins="{right=5}" horzTextAlign="center"/>
+					<label align="left" text="Raça" width="40" margins="{right=5}" horzTextAlign="center"/>
+					<label align="left" text="Extra" width="40" margins="{right=5}" horzTextAlign="center"/>
+				</layout>
+				<Atribute atr="For" id="1"/>
+				<Atribute atr="Des" id="2"/>
+				<Atribute atr="Con" id="3"/>
+				<Atribute atr="Int" id="4"/>
+				<Atribute atr="Sab" id="5"/>
+				<Atribute atr="Car" id="6"/>
+			</layout>
+			<textEditor align="left" width="150" field="atributeExtra" margins="{top=25}"/>
+			<layout align="left" width="100">
+				<label align="top" text="" height="25"/>
+				<layout align="top" height="25">
+					<label align="left" width="50" text="Nv. 4" horzTextAlign="center"/>
+					<comboBox align="client" fontColor="white" field="nv4" items="{'FOR', 'DES', 'CON', 'INT', 'SAB', 'CAR', '-'}" values="{'1', '2', '3', '4', '5', '6', '7'}"/>
+				</layout>
+				<layout align="top" height="25">
+					<label align="left" width="50" text="Nv. 8" horzTextAlign="center"/>
+					<comboBox align="client" fontColor="white" field="nv8" items="{'FOR', 'DES', 'CON', 'INT', 'SAB', 'CAR', '-'}" values="{'1', '2', '3', '4', '5', '6', '7'}"/>
+				</layout>
+				<layout align="top" height="25">
+					<label align="left" width="50" text="Nv. 12" horzTextAlign="center"/>
+					<comboBox align="client" fontColor="white" field="nv12" items="{'FOR', 'DES', 'CON', 'INT', 'SAB', 'CAR', '-'}" values="{'1', '2', '3', '4', '5', '6', '7'}"/>
+				</layout>
+				<layout align="top" height="25">
+					<label align="left" width="50" text="Nv. 16" horzTextAlign="center"/>
+					<comboBox align="client" fontColor="white" field="nv16" items="{'FOR', 'DES', 'CON', 'INT', 'SAB', 'CAR', '-'}" values="{'1', '2', '3', '4', '5', '6', '7'}"/>
+				</layout>
+				<layout align="top" height="25">
+					<label align="left" width="50" text="Nv. 20" horzTextAlign="center"/>
+					<comboBox align="client" fontColor="white" field="nv20" items="{'FOR', 'DES', 'CON', 'INT', 'SAB', 'CAR', '-'}" values="{'1', '2', '3', '4', '5', '6', '7'}"/>
+				</layout>
+
+				<dataLink fields="{'nv4','nv8','nv12','nv16','nv20','lvl'}">
+					<event name="onChange">
+						if generatorSheet==nil then return end
+
+						local lvl = tonumber(generatorSheet.npc.lvl) or 1
+						local atr = {0,0,0,0,0,0,0}
+
+						if lvl>=4 then
+							atr[(tonumber(generatorSheet.npc.nv4) or 7)] = atr[(tonumber(generatorSheet.npc.nv4) or 7)] + 1
+						end
+						if lvl>=8 then
+							atr[(tonumber(generatorSheet.npc.nv8) or 7)] = atr[(tonumber(generatorSheet.npc.nv8) or 7)] + 1
+						end
+						if lvl>=12 then
+							atr[(tonumber(generatorSheet.npc.nv12) or 7)] = atr[(tonumber(generatorSheet.npc.nv12) or 7)] + 1
+						end
+						if lvl>=16 then
+							atr[(tonumber(generatorSheet.npc.nv16) or 7)] = atr[(tonumber(generatorSheet.npc.nv16) or 7)] + 1
+						end
+						if lvl>=20 then
+							atr[(tonumber(generatorSheet.npc.nv20) or 7)] = atr[(tonumber(generatorSheet.npc.nv20) or 7)] + 1
+						end
+
+						generatorSheet.npc.nepFor = atr[1]
+						generatorSheet.npc.nepDes = atr[2]
+						generatorSheet.npc.nepCon = atr[3]
+						generatorSheet.npc.nepInt = atr[4]
+						generatorSheet.npc.nepSab = atr[5]
+						generatorSheet.npc.nepCar = atr[6]
+					</event>
+				</dataLink>
+			</layout>
+			<layout align="left" width="100">
+				<label align="top" text="" height="25"/>
+				<label align="top" field="atrPointBuy" height="25" horzTextAlign="center"/>
+				<label align="top" field="atrTotal" height="25" horzTextAlign="center"/>
+			</layout>
+			<layout align="left" width="150">
+				<label align="top" text="" height="25"/>
+				<layout align="top" height="25">
+					<label align="left" width="75" text="BBA" horzTextAlign="center"/>
+					<label align="left" width="75" field="bba"/>
+				</layout>
+				<layout align="top" height="25">
+					<label align="left" width="75" text="Fort" horzTextAlign="center"/>
+					<label align="left" width="75" field="baseFort"/>
+				</layout>
+				<layout align="top" height="25">
+					<label align="left" width="75" text="Ref" horzTextAlign="center"/>
+					<label align="left" width="75" field="baseRef"/>
+				</layout>
+				<layout align="top" height="25">
+					<label align="left" width="75" text="Von" horzTextAlign="center"/>
+					<label align="left" width="75" field="baseVon"/>
+				</layout>
+				<layout align="top" height="25">
+					<label align="left" width="75" text="DVs" horzTextAlign="center"/>
+					<label align="left" width="75" field="dvs"/>
+				</layout>
+			</layout>
+
+			<dataLink fields="{'inicialFor','inicialDes','inicialCon','inicialInt','inicialSab','inicialCar'}">
+				<event name="onChange">
+					if generatorSheet == nil then return end;
+
+					local pb = {0,0,0,0,0,0,0,0,1,2,3,4,5,6,8,10,13,16}
+					pb[0] = 0
+					local str = (tonumber(generatorSheet.npc.inicialFor) or 0)
+					local des = (tonumber(generatorSheet.npc.inicialDes) or 0)
+					local con = (tonumber(generatorSheet.npc.inicialCon) or 0)
+					local int = (tonumber(generatorSheet.npc.inicialInt) or 0)
+					local sab = (tonumber(generatorSheet.npc.inicialSab) or 0)
+					local car = (tonumber(generatorSheet.npc.inicialCar) or 0)
+
+					local atrPointBuy = pb[str] + pb[des] + pb[con] + pb[int] + pb[sab] + pb[car]
+					generatorSheet.npc.atrPointBuy = "Point Buy: " .. atrPointBuy
+
+					local atrTotal = str + des + con + int + sab + car
+
+					generatorSheet.npc.atrTotal = "Total: " .. atrTotal
+				</event>
+			</dataLink>
+
+			<dataLink fields="{'totalCon'}">
+				<event name="onChange">
+					if generatorSheet == nil then return end
+
+					local lvl = tonumber(generatorSheet.npc.lvl) or 1
+					local index = tonumber(generatorSheet.npc.classeSelector) or 0
+					local classe = generatorSheet.db.classes[index]
+
+					if classe==nil then return end
+
+					local con = tonumber(generatorSheet.npc.totalCon) or 0
+					con = math.floor(con/2) - 5
+					con = con * lvl
+
+					generatorSheet.npc.dvs = lvl .. "d" .. classe.hd .. "+" .. con
+					generatorSheet.npc.pvTotal = math.floor(classe.hd + (lvl-1)*((classe.hd/2) + 0.5) + con)
+				</event>
+			</dataLink>
+
+			<dataLink fields="{'totalInt'}">
+				<event name="onChange">
+					if generatorSheet == nil then return end
+
+					local lvl = tonumber(generatorSheet.npc.lvl) or 1
+					local index = tonumber(generatorSheet.npc.classeSelector) or 0
+					local classe = generatorSheet.db.classes[index]
+
+					if classe==nil then return end
+
+					UpdateMaxSkills(classe, lvl)
+				</event>
+			</dataLink>
+		</layout>
+
+		<flowLayout align="top" autoHeight="true" maxColumns="3" horzAlign="center" orientation="vertical" avoidScale="true" margins="{top=5}">
+			<ListaFlexivel nome="CARACTERISTICAS RACIAIS" rclName="campoDasRacas" rclField="campoDasRacas" frm="frmGeneratorAbility"/>
+			<ListaFlexivel nome="CARACTERISTICAS DE CLASSE" rclName="campoDasCaracteristicasClasse" rclField="campoDasCaracteristicasClasse" frm="frmGeneratorAbility"/>
+			<ListaFlexivel nome="TALENTOS" rclName="campoDosTalentos" rclField="campoDosTalentos" frm="frmGeneratorFeat"/>
+		</flowLayout>
+	</scrollBox>
+</form>

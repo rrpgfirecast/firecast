@@ -100,7 +100,7 @@ local function constructNew_frmFichaRPGmeister3i_svg()
     obj.button2:setText("X");
     obj.button2:setName("button2");
 
-    obj._e_event0 = obj.edit1:addEventListener("onChange",
+    obj._e_event0 = obj.edit1:addEventListener("onUserChange",
         function (_)
             local rcl = self:findControlByName("rclListaDosIdiomas");
             			if rcl~= nil then

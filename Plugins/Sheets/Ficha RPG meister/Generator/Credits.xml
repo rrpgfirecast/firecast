@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmGeneratorCreditos" align="client">
+	<scrollBox align="client">
+		<rectangle align="client" color="black"/>
+		<label left="5" top="10" width="200" height="20" text="Feito por: Vinny (Ambesek)"/>
+		
+		<label left="5" top="35" width="200" height="20" text="Versão Atual: " horzTextAlign="center" field="versionInstalled"/>
+		<label left="5" top="60" width="200" height="20" text="Sua Versão: " horzTextAlign="center" field="versionDownloaded"/>
+		<checkBox left="5" top="85" width="200" height="20" field="noUpdate" text="Não pedir para atualizar."/>
+			
+		<button left="5" top="110" width="100" text="Change Log" onClick="GUI.openInBrowser('https://github.com/rrpgfirecast/firecast/blob/master/Plugins/TablesDock/Ferramentas%20d20/README.md')">
+			<event name="onClick">
+                local install = Firecast.Plugins.installPlugin(rawget(toolSheet,"stream"), true);
+                if install==false then
+                    GUI.openInBrowser('https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20RPG%20meister/output/Ficha%20RPG%20meister.rpk?raw=true');
+                end;
+			</event>
+		</button>
+		<button left="5" top="135" width="100" text="Atualizar" onClick="GUI.openInBrowser('https://github.com/rrpgfirecast/firecast/blob/master/Plugins/TablesDock/Ferramentas%20d20/output/Ferramentas%20d20.rpk?raw=true')" />
+		
+		<label left="5" top="160" width="200" height="20" text="Conheça a Mesa:"/>
+		<button left="5" top="185" width="100" text="RPGmeister" onClick="GUI.openInBrowser('https://my.firecastrpg.com/a?a=pagRWEMesaInfo.actInfoMesa&amp;mesaid=64070');" />
+
+
+		<button left="5" top="210" width="100" height="20" text="Exportar Ficha" >
+			<event name="onClick">
+				generatorSheet.npc.listaDeEquipamentos = NDB.load("equips.xml");
+
+				local xml = NDB.exportXML(generatorSheet.npc);
+
+				local export = {};
+				local bytes = Utils.binaryEncode(export, "utf8", xml);
+
+				local stream = Utils.newMemoryStream();
+				local bytes = stream:write(export);
+
+				Dialogs.saveFile("Salvar Ficha como XML", stream, "ficha.xml", "application/xml",
+					function()
+						stream:close();
+						showMessage("Ficha Exportada.");
+					end);
+			</event>
+		</button>
+	</scrollBox>
+</form>

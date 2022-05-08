@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+
+<flowLayout autoHeight="true" maxColumns="3" horzAlign="center" orientation="vertical" name="magicList4" visible="false" padding="{left=5,right=5,top=5,bottom=5}" margins="{left=5,right=5,top=5,bottom=5}" avoidScale="false">
+	<essenceListFlow num="1"/>
+	<essenceListFlow num="2"/>
+	<essenceListFlow num="3"/>
+	<essenceListFlow num="4"/>
+	<essenceListFlow num="5"/>
+	<essenceListFlow num="6"/>
+	<essenceListFlow num="7"/>
+	<essenceListFlow num="8"/>
+	<essenceListFlow num="9"/>
+	<event name="onBeforeLayoutCalc">
+		self.magicList4.width = self.frmMagias.width - 400;
+		self.scrollPart.width = self.frmMagias.width - 365;
+		self.detailsPart.width = self.frmMagias.width - 365;
+
+		local txt = self.frmMagias.width;
+		local txt1 = self.magicList4.width;
+		local txt2 = self.scrollPart.width;
+		local txt3 = self.detailsPart.width;
+
+        local mesa = Firecast.getMesaDe(sheet);
+        --mesa.activeChat:escrever((txt or "null") .. " - " .. (txt1 or "null") .. " - " .. (txt2 or "null") .. " - " .. (txt3 or "null"));
+	</event>
+</flowLayout>

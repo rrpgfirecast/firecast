@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmGeneratorLanguage" height="25" width="450" margins="{top=2}">
+	<script> 
+		<![CDATA[			
+			local function askForDelete()
+				Dialogs.confirmYesNo("Deseja realmente apagar esse idioma?",
+									 function (confirmado)
+										if confirmado then
+											NDB.deleteNode(sheet);
+										end;
+									 end);
+			end;		
+		]]>	
+	</script>
+
+	<label align="left" width="100" field="nomeIdioma" horzTextAlign="center"/>
+	<label align="left" width="100" field="alfabetoIdioma" horzTextAlign="center"/>
+	<label align="client" horzTextAlign="center" field="regiaoIdioma"/>
+	<button align="right" width="100" text="Selecionar" margins="{right=5}">
+		<event name="onClick">
+			if sheet.lock then return end;
+
+			-- Show Feat Selection PopUp
+
+			local pop = self:findControlByName("popLanguageSelection");
+				
+			if generatorSheet.languages==nil then 
+				generatorSheet.languages = {}
+			end
+
+			languageSelected = sheet
+
+			if pop ~= nil then
+				pop:setNodeObject(generatorSheet.languages);
+				pop:showPopupEx("top", self);
+			else
+				showMessage("Ops, bug.. nao encontrei o popup de idiomas para exibir");
+			end;
+		</event>
+	</button>
+	<button align="right" width="50" text="X" onClick="askForDelete();" margins="{left=5,right=5}"/>
+
+</form>

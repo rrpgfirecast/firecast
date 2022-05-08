@@ -854,7 +854,7 @@ local function constructNew_frmFichaRPGmeister3_svg()
     obj.button5:setHint("Vai apagar todas perícias atuais. ");
     obj.button5:setName("button5");
 
-    obj._e_event0 = obj.dataLink1:addEventListener("onChange",
+    obj._e_event0 = obj.dataLink1:addEventListener("onUserChange",
         function (_, field, oldValue, newValue)
             if sheet==nil then return end;
                         local buffPericia = tonumber(sheet.buffPericia) or 0;

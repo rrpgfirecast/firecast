@@ -161,14 +161,16 @@
 			<rectangle width="70" height="20" left="80" top="91" color="black" strokeColor="white" strokeSize="1"/>
 			<label left="20" top="91" width="50" height="20" text="ERGUER"/>
 			<label field="cargaErguer" text="valor" width="70" height="20" left="80" top="91" horzTextAlign="center"  formatFloat=",0.## Kg"/>
+
 			<rectangle width="70" height="20" left="80" top="113" color="black" strokeColor="white" strokeSize="1"/>
 			<label left="10" top="113" width="70" height="20" text="EMPURRAR"/>
 			<label field="cargaLevantar" text="valor" width="70" height="20" left="80" top="113" horzTextAlign="center"  formatFloat=",0.## Kg"/>
+
 			<rectangle width="70" height="20" left="80" top="135" color="black" strokeColor="white" strokeSize="1"/>
 			<label left="10" top="135" width="65" height="20" text="LEVANTAR"/>
 			<label field="cargaEmpurrar" text="valor" width="70" height="20" left="80" top="135" horzTextAlign="center"  formatFloat=",0.## Kg"/>
-			<rectangle width="70" height="20" left="80" top="160" color="#404040"/>
 
+			<rectangle width="70" height="20" left="80" top="160" color="#404040"/>
 			<label left="20" top="160" width="65" height="20" text="ATUAL"/>
 			<label field="cargaAtual" width="70" height="20" left="80" top="160" horzTextAlign="center" fontColor="white"  formatFloat=",0.## Kg"/>
 
@@ -177,7 +179,7 @@
 		</layout>
 		
 		<dataLink field="cargaPesada">
-			<event name="onChange">
+			<event name="onUserChange">
 				if sheet~= nil then
 
 					local mod = (tonumber(sheet.cargaPesada) or 0);
@@ -188,7 +190,7 @@
 			</event>
 		</dataLink>
 		<dataLink fields="{'precoEquipamento', 'precoArmas', 'precoMochila', 'precoPermanencias', 'precoLivres', 'precoOutros', 'precoMunicoes', 'precoBolsos', 'precoImoveis', 'precoInventorioComp', 'dinheiroTotal', 'precoItens'}">
-			<event name="onChange">
+			<event name="onUserChange">
 				if sheet~= nil then
 
 					-- Calculando todos gastos
@@ -214,7 +216,7 @@
 			</event>
 		</dataLink>
 		<dataLink fields="{'pesoEquipamento', 'pesoArmas', 'pesoMochila', 'pesoPermanencias', 'pesoLivres', 'pesoOutros', 'pesoMunicoes', 'pesoBolsos', 'pesoImoveis', 'pesoInventorioComp'}">
-			<event name="onChange">
+			<event name="onUserChange">
 				if sheet~=nil then
 					local carga = (tonumber(sheet.pesoEquipamento) or 0) +
 								(tonumber(sheet.pesoArmas) or 0) +

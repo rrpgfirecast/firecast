@@ -2,7 +2,7 @@
 <form name="frmFichaRPGmeister3_svg" align="client" margins="{top=1}">
 
     <dataLink fields="{'buffPericia'}">
-        <event name="onChange">
+        <event name="onUserChange">
             if sheet==nil then return end;
             local buffPericia = tonumber(sheet.buffPericia) or 0;
 

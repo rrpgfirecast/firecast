@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmSkills" align="client">
+	<script>
+		<![CDATA[
+		]]> 
+	</script>
+
+	<popup name="popLanguageSelection" align="client" backOpacity="0.4" autoScopeNode="false" margins="{left=50,right=50,top=50,bottom=50}">
+		<scrollBox align="client">
+			<flowLayout align="top" autoHeight="true" maxColumns="4" horzAlign="center" orientation="vertical" avoidScale="true">
+				<ListaFlexivel nome="Paraiso" rclName="LanguageParaiso" rclField="LanguageParaiso" frm="frmGeneratorLanguageSelector"/>
+				<ListaFlexivel nome="Efiria" rclName="LanguageEfiria" rclField="LanguageEfiria" frm="frmGeneratorLanguageSelector"/>
+				<ListaFlexivel nome="Centelha" rclName="LanguageCentelha" rclField="LanguageCentelha" frm="frmGeneratorLanguageSelector"/>
+				<ListaFlexivel nome="SobAlec" rclName="LanguageSobAlec" rclField="LanguageSobAlec" frm="frmGeneratorLanguageSelector"/>
+				<ListaFlexivel nome="Ardeal" rclName="LanguageArdeal" rclField="LanguageArdeal" frm="frmGeneratorLanguageSelector"/>
+				<ListaFlexivel nome="Abismo" rclName="LanguageAbismo" rclField="LanguageAbismo" frm="frmGeneratorLanguageSelector"/>
+				<ListaFlexivel nome="Diafele" rclName="LanguageDiafele" rclField="LanguageDiafele" frm="frmGeneratorLanguageSelector"/>
+				<ListaFlexivel nome="Inferno" rclName="LanguageInferno" rclField="LanguageInferno" frm="frmGeneratorLanguageSelector"/>
+				<ListaFlexivel nome="Outros" rclName="LanguageOutros" rclField="LanguageOutros" frm="frmGeneratorLanguageSelector"/>
+			</flowLayout>
+		</scrollBox>
+
+		<event name="onNodeReady">
+			local nodes = NDB.getChildNodes(self.popLanguageSelection.node.LanguageParaiso)
+			if #nodes > 0 then return end
+
+			local idiomas = generatorSheet.db.idiomas
+			local i = 1
+			while idiomas ~= nil and idiomas[i] ~= nil do
+				local idioma = idiomas[i]
+
+				local rclItem
+
+				if idioma.type == "Paraiso" then
+					rclItem = self.LanguageParaiso:append()
+				elseif idioma.type == "Efiria" then
+					rclItem = self.LanguageEfiria:append()
+				elseif idioma.type == "Centelha" then
+					rclItem = self.LanguageCentelha:append()
+				elseif idioma.type == "SobAlec" then
+					rclItem = self.LanguageSobAlec:append()
+				elseif idioma.type == "Ardeal" then
+					rclItem = self.LanguageArdeal:append()
+				elseif idioma.type == "Abismo" then
+					rclItem = self.LanguageAbismo:append()
+				elseif idioma.type == "Diafele" then
+					rclItem = self.LanguageDiafele:append()
+				elseif idioma.type == "Inferno" then
+					rclItem = self.LanguageInferno:append()
+				elseif idioma.type == "Outros" then
+					rclItem = self.LanguageOutros:append()
+				end
+
+				if rclItem ~= nil then 
+					rclItem.name = idioma.name
+					rclItem.alphabet = idioma.alphabet
+					rclItem.region = idioma.region
+				end
+				i = i + 1
+			end
+		</event>
+	</popup>
+
+	<layout align="left" width="650">
+		<scrollBox align="client">
+			<layout align="top" height="25">
+				<button align="left" width="100" text="Add Perícia" onClick="self.rclListaDasPericias:append();"/>
+				<button align="left" width="100" text="Max Class">
+					<event name="onClick">
+						local nodes = NDB.getChildNodes(generatorSheet.npc.campoDasPericias);
+
+						local lvl = tonumber(generatorSheet.npc.lvl) or 1
+						local max = tonumber(generatorSheet.npc.skillsMax) or 0
+
+						local pts = tonumber(generatorSheet.npc.pontosPericia) or 0
+						local avail = max - pts
+						local ptsMax = math.min(avail, lvl+3)
+
+						local fail = 0
+
+						while avail > 0 and fail &lt; (#nodes*2) do
+							local rng = math.random(#nodes)
+
+							local grad = tonumber(nodes[rng].graduacaoPericia) or 0
+
+							if nodes[rng].isClass and grad&lt;ptsMax then
+								
+								nodes[rng].graduacaoPericia = ptsMax
+
+								avail = avail + grad - ptsMax
+
+								ptsMax = math.min(avail, lvl+3)
+							else
+								fail = fail +1
+							end
+						end
+					</event>
+				</button>
+				<button align="left" width="100" text="Aleatorio">
+					<event name="onClick">
+						local nodes = NDB.getChildNodes(generatorSheet.npc.campoDasPericias);
+
+						local lvl = tonumber(generatorSheet.npc.lvl) or 1
+						local max = tonumber(generatorSheet.npc.skillsMax) or 0
+
+						local pts = tonumber(generatorSheet.npc.pontosPericia) or 0
+						local avail = max - pts
+						local ptsMax = math.min(avail, lvl+3)
+
+						local fail = 0
+
+						while avail > 0 and fail &lt; (#nodes*2) do
+							local rng = math.random(#nodes)
+
+							local grad = tonumber(nodes[rng].graduacaoPericia) or 0
+
+							if nodes[rng].isClass and grad&lt;ptsMax then
+								nodes[rng].graduacaoPericia = ptsMax
+
+								avail = avail + grad - ptsMax
+
+								ptsMax = math.min(avail, lvl+3)
+							elseif not nodes[rng].isClass and grad&lt;math.floor(ptsMax/2) then
+								nodes[rng].graduacaoPericia = math.floor(ptsMax/2)
+
+								avail = avail + grad*2 - (math.floor(ptsMax/2)*2)
+
+								ptsMax = math.min(avail, lvl+3)
+							else
+								fail = fail +1
+							end
+						end
+					</event>
+				</button>
+				<button align="left" width="100" text="Limpar">
+					<event name="onClick">
+						local nodes = NDB.getChildNodes(generatorSheet.npc.campoDasPericias);
+						for i=1, #nodes, 1 do
+							nodes[i].graduacaoPericia = nil
+						end
+					</event>
+				</button>
+
+				<label align="left" width="100" text="Pontos: " horzTextAlign="center"/>
+				<label align="left" width="30" field="pontosPericia" horzTextAlign="center"/>
+				<label align="left" width="10" text="/" horzTextAlign="center"/>
+				<label align="left" width="30" field="skillsMax" horzTextAlign="center"/>
+			</layout>
+			<flowLayout align="top" autoHeight="true" maxColumns="3" horzAlign="center" orientation="vertical" avoidScale="true" margins="{top=5}">
+				<ListaFlexivel nome="PERÍCIAS" rclName="rclListaDasPericias" rclField="campoDasPericias" frm="frmGeneratorSkill"/>
+			</flowLayout>
+		</scrollBox>
+	</layout>
+
+	<layout align="left" width="500">
+		<scrollBox align="client">
+			<layout align="top" height="25">
+				<button align="left" width="100" text="Add Idioma" onClick="self.rclListaDosIdiomas:append();"/>
+				<label align="left" width="100" field="languageInitial"/>
+			</layout>
+			<flowLayout align="top" autoHeight="true" maxColumns="3" horzAlign="center" orientation="vertical" avoidScale="true" margins="{top=5}">
+				<ListaFlexivel nome="IDIOMAS" rclName="rclListaDosIdiomas" rclField="campoDosIdiomas" frm="frmGeneratorLanguage"/>
+			</flowLayout>
+		</scrollBox>
+	</layout>
+</form>

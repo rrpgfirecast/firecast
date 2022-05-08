@@ -29,7 +29,7 @@
 	<rectangle align="client" color="#202020" hitTest="false"/>
 
 	<edit vertTextAlign="center" left="0" top="0" width="110" height="25" field="nomeIdioma">
-		<event name="onChange">
+		<event name="onUserChange">
 			local rcl = self:findControlByName("rclListaDosIdiomas");
 			if rcl~= nil then
 				rcl:sort();

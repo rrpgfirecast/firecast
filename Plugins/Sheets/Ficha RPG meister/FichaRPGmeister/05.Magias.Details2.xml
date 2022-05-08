@@ -9,8 +9,8 @@
 
 	<flowLineBreak/>
 
-	<ComboFlow items="{'FOR', 'DES', 'CON', 'INT', 'SAB', 'CAR'}" values="{'1', '2', '3', '4', '5', '6'}" field="atributoCD"/>
-	<ComboFlow items="{'FOR', 'DES', 'CON', 'INT', 'SAB', 'CAR'}" values="{'1', '2', '3', '4', '5', '6'}" field="atributoBonus"/>
+	<ComboFlow items="{'FOR', 'DES', 'CON', 'INT', 'SAB', 'CAR', '-'}" values="{'1', '2', '3', '4', '5', '6', '7'}" field="atributoCD"/>
+	<ComboFlow items="{'FOR', 'DES', 'CON', 'INT', 'SAB', 'CAR', '-'}" values="{'1', '2', '3', '4', '5', '6', '7'}" field="atributoBonus"/>
 	<FieldCenter field="usosSignos"/>
 	<LabelCenter field="sumSignos"/>
 	<flowPart minWidth="50" maxWidth="150" height="25">
