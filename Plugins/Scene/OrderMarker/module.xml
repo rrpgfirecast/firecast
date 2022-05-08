@@ -4,7 +4,7 @@
     <id>Ambesek.OrderMarker</id>
     <!--"version" is the version of your plugin. When you release a new version of your module, change here =)-->
     <version>1.0</version>
-    <name>Height Marker</name>
+    <name>Order Marker</name>
     <description>Allows for the creation of order marks on scene tokens.</description>
     <author>Ambesek</author>
     <site/>
