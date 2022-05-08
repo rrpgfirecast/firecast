@@ -3,6 +3,7 @@ require("vhd.lua");
 require("utils.lua");
 require("ndb.lua");
 require("internet.lua");
+require("rrpgRequests.lua");   
 
 afkdb = NDB.load("afkData.xml");
 if afkdb.afkStatus==nil then
@@ -402,7 +403,7 @@ Firecast.Messaging.listen("ChatMessage",
 			user.dice = (user.dice or 0) + 1;
 
 			if user.dice < (tonumber(afkdb.config[message.mesa.codigoInterno].limitDice) or 4) then
-				message.chat:enviarNarracao("Por favor, pare de rolar dados. Ou irá ser expulso da mesa. Se quiser testar algo abra um pvt consigo mesmo. Esse é seu " .. user.dice .. "º aviso. ");
+				tryNPC(message.mesa.meuJogador.isMestre,message.chat,"AfkBot","Por favor, pare de rolar dados. Ou irá ser expulso da mesa. Se quiser testar algo abra um pvt consigo mesmo. Esse é seu " .. user.dice .. "º aviso. ")
 			else
 				message.chat:enviarNarracao("Você foi avisado. ");
 				message.jogador:requestKick();
@@ -441,7 +442,7 @@ Firecast.Messaging.listen("ChatMessage",
 			user.laugh = (user.laugh or 0) + 1;
 
 			if user.laugh < (tonumber(afkdb.config[message.mesa.codigoInterno].limitLaugh) or 2) then
-				message.chat:enviarNarracao("Por favor, pare de usar /rir na mesa. Ou irá ser expulso da mesa. Se quiser testar algo abra um pvt consigo mesmo. Esse é seu " .. user.laugh .. "º aviso. ");
+				tryNPC(message.mesa.meuJogador.isMestre,message.chat,"AfkBot","Por favor, pare de usar /rir na mesa. Ou irá ser expulso da mesa. Se quiser testar algo abra um pvt consigo mesmo. Esse é seu " .. user.laugh .. "º aviso. ");
 			else
 				message.chat:enviarNarracao("Você foi avisado. ");
 				message.jogador:requestKick();
@@ -462,11 +463,19 @@ Firecast.Messaging.listen("ChatMessage",
 		end
 
 		if arg[1]=="afkbot" then
+
+
 			-- give voice to players
 			if ((arg[2]=="voz" or arg[2]=="voice") and message.jogador~=nil and message.jogador.isJogador and message.mesa.isModerada and afkdb.config[message.mesa.codigoInterno].giveVoice) then
 				message.jogador:requestSetVoz(true);
-			elseif ((arg[2]=="ficha" or arg[2]=="sheet") and message.jogador~=nil and message.jogador.isJogador and afkdb.config[message.mesa.codigoInterno].giveSheet) then
-				-- da ficha aos jogadores
+			elseif ((arg[2]=="ficha" or arg[2]=="sheet") and afkdb.config[message.mesa.codigoInterno].giveSheet and message.jogador~= nil and message.jogador.personagemPrincipal==-1 and afkdb.config[message.mesa.codigoInterno].dataType~=nil) then 
+				Firecast.Requests.criarPersonagem(message.mesa.biblioteca, message.jogador.login, afkdb.config[message.mesa.codigoInterno].dataType, false, message.jogador,
+					function (sucess)
+						-- do nothing
+					end,
+					function (fail)
+						-- showMessage(fail)
+					end);
 			elseif (arg[2]=="off") then
 				-- poe o jogador no off chat
 			elseif (arg[2]=="math") then

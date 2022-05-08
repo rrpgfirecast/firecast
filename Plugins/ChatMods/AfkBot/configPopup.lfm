@@ -31,6 +31,14 @@
 			<checkBox align="top" height="25" text="Dar voz aos jogadores." field="giveVoice"/>
 			<checkBox align="top" height="25" text="Permitir jogadores passarem seu turno." field="passAction"/>
 
+			<horzLine align="top" height="5"/>
+
+			<checkBox align="top" height="25" text="Dar ficha aos jogadores." field="giveSheet"/>
+			<layout align="top" height="25">
+				<label align="left" width="90" text="DataType" horzTextAlign="center"/>
+				<edit align="left" width="150" field="dataType"/>
+			</layout>
+
 			<dataLink fields="{'botEnabled','autoEnable'}">
 				<event name="OnChange">
 					if sheet==nil then return end;

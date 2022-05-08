@@ -208,6 +208,41 @@ local function constructNew_afkbotPopup()
     obj.checkBox9:setField("passAction");
     obj.checkBox9:setName("checkBox9");
 
+    obj.horzLine3 = GUI.fromHandle(_obj_newObject("horzLine"));
+    obj.horzLine3:setParent(obj.tab1);
+    obj.horzLine3:setAlign("top");
+    obj.horzLine3:setHeight(5);
+    obj.horzLine3:setName("horzLine3");
+
+    obj.checkBox10 = GUI.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox10:setParent(obj.tab1);
+    obj.checkBox10:setAlign("top");
+    obj.checkBox10:setHeight(25);
+    obj.checkBox10:setText("Dar ficha aos jogadores.");
+    obj.checkBox10:setField("giveSheet");
+    obj.checkBox10:setName("checkBox10");
+
+    obj.layout4 = GUI.fromHandle(_obj_newObject("layout"));
+    obj.layout4:setParent(obj.tab1);
+    obj.layout4:setAlign("top");
+    obj.layout4:setHeight(25);
+    obj.layout4:setName("layout4");
+
+    obj.label5 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label5:setParent(obj.layout4);
+    obj.label5:setAlign("left");
+    obj.label5:setWidth(90);
+    obj.label5:setText("DataType");
+    obj.label5:setHorzTextAlign("center");
+    obj.label5:setName("label5");
+
+    obj.edit4 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit4:setParent(obj.layout4);
+    obj.edit4:setAlign("left");
+    obj.edit4:setWidth(150);
+    obj.edit4:setField("dataType");
+    obj.edit4:setName("edit4");
+
     obj.dataLink1 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink1:setParent(obj.tab1);
     obj.dataLink1:setFields({'botEnabled','autoEnable'});
@@ -394,15 +429,20 @@ local function constructNew_afkbotPopup()
         if self.tab3 ~= nil then self.tab3:destroy(); self.tab3 = nil; end;
         if self.dataLink5 ~= nil then self.dataLink5:destroy(); self.dataLink5 = nil; end;
         if self.label1 ~= nil then self.label1:destroy(); self.label1 = nil; end;
+        if self.layout4 ~= nil then self.layout4:destroy(); self.layout4 = nil; end;
+        if self.edit4 ~= nil then self.edit4:destroy(); self.edit4 = nil; end;
         if self.label3 ~= nil then self.label3:destroy(); self.label3 = nil; end;
         if self.checkBox3 ~= nil then self.checkBox3:destroy(); self.checkBox3 = nil; end;
         if self.label4 ~= nil then self.label4:destroy(); self.label4 = nil; end;
+        if self.horzLine3 ~= nil then self.horzLine3:destroy(); self.horzLine3 = nil; end;
         if self.dataLink4 ~= nil then self.dataLink4:destroy(); self.dataLink4 = nil; end;
         if self.kickList ~= nil then self.kickList:destroy(); self.kickList = nil; end;
-        if self.dataLink1 ~= nil then self.dataLink1:destroy(); self.dataLink1 = nil; end;
         if self.label2 ~= nil then self.label2:destroy(); self.label2 = nil; end;
+        if self.dataLink1 ~= nil then self.dataLink1:destroy(); self.dataLink1 = nil; end;
         if self.edit3 ~= nil then self.edit3:destroy(); self.edit3 = nil; end;
+        if self.checkBox10 ~= nil then self.checkBox10:destroy(); self.checkBox10 = nil; end;
         if self.messagesList ~= nil then self.messagesList:destroy(); self.messagesList = nil; end;
+        if self.label5 ~= nil then self.label5:destroy(); self.label5 = nil; end;
         if self.dataLink3 ~= nil then self.dataLink3:destroy(); self.dataLink3 = nil; end;
         if self.checkBox9 ~= nil then self.checkBox9:destroy(); self.checkBox9 = nil; end;
         if self.checkBox6 ~= nil then self.checkBox6:destroy(); self.checkBox6 = nil; end;
