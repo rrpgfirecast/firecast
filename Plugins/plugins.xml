@@ -432,7 +432,7 @@
             <dataType id="Ambesek.Ferramentas.d20" title="Ferramentas RPGmeister"/>
         </dataTypes>
     </element>
-    <element id="LISTA_DE_NPC_RRPG" name="Lista de NPCs" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/TablesDock/Lista%20de%20NPCs/output/Lista%20de%20NPCs.rpk?raw=true" fileName="Lista de NPCs.rpk" repositoryPath="TablesDock/Lista de NPCs/" author="Mia Alexandra (Mia)" description="Um plugin que em resumo, é uma tabela onde é possível inserir NPCs diversos. A configuração das barrinhas e linhas é similar à do RRPG, para o propósito de manter a interface limpa e homogênea." version="2.1" compilationDate="27112019000337" compilationDigest="c44d12bbfa1950d35be9e3aed3c077de5bb2d66a">
+    <element id="LISTA_DE_NPC_RRPG" name="Lista de NPCs" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/TablesDock/Lista%20de%20NPCs/output/Lista%20de%20NPCs.rpk?raw=true" fileName="Lista de NPCs.rpk" repositoryPath="TablesDock/Lista de NPCs/" author="Mia Alexandra (Mia)" description="Um plugin que em resumo, é uma tabela onde é possível inserir NPCs diversos. A configuração das barrinhas e linhas é similar à do RRPG, para o propósito de manter a interface limpa e homogênea." version="2.1.1" compilationDate="27112019000337" compilationDigest="c44d12bbfa1950d35be9e3aed3c077de5bb2d66a">
         <dataTypes>
             <dataType id="Lista.de.NPC" title="Lista de NPCs"/>
             <dataType id="Lista.de.NPC.Ficha" title="Lista de NPCs (Ficha)"/>
