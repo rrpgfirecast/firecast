@@ -76,6 +76,10 @@
         </tab>
     </tabControl>
     <event name="onNodeReady">
+        if sheet.campoDasPericias == nil then
+            sheet.campoDasPericias = {}
+            pathSkills()
+        end
         Internet.download("https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20Pathfinder%202e/output/Ficha%20Pathfinder%202e.rpk?raw=true",
             function(stream, contentType)
                 local info = Firecast.Plugins.getRPKDetails(stream);

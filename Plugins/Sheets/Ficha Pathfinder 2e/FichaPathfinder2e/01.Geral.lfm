@@ -782,7 +782,7 @@
 			<label text="PROF" left="350" top="1" width="40" height="20" horzTextAlign="center"/>
 			<label text="ITEM" left="395" top="1" width="40" height="20" horzTextAlign="center" fontSize="11"/>
 
-			<recordList name="rclPercepcao" field="campoPercepcao" templateForm="frmFichaRPGmeister3p_svg" left="30" top="25" width="405" height="60" layout="verticalTiles">
+			<recordList name="rclPercepcao" field="campoPercepcao" templateForm="frmFichaRPGmeister3p_svg" left="30" top="25" width="405" height="60" layout="vertical" minQt="2">
 				<event name="onEndEnumeration">
 					if sheet==nil then return end;
 					local nodes = NDB.getChildNodes(sheet.campoPercepcao);               
@@ -794,6 +794,18 @@
 						end;
 
 						local cd = self.rclPercepcao:append();
+						if cd~=nil then
+							cd.nomePericia = "CD de Classe";
+							cd.classePericia = 10;
+						end;
+					elseif #nodes == 2 and nodes[1].nomePericia == nil then
+						local pericia = nodes[1]
+						if pericia~=nil then
+							pericia.nomePericia = "Percepção";
+							pericia.chavePericia = '5';
+						end;
+
+						local cd = nodes[2]
 						if cd~=nil then
 							cd.nomePericia = "CD de Classe";
 							cd.classePericia = 10;

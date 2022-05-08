@@ -5779,7 +5779,8 @@ local function constructNew_frmPathfinder2e()
     obj.rclPercepcao:setTop(25);
     obj.rclPercepcao:setWidth(405);
     obj.rclPercepcao:setHeight(60);
-    obj.rclPercepcao:setLayout("verticalTiles");
+    obj.rclPercepcao:setLayout("vertical");
+    obj.rclPercepcao:setMinQt(2);
 
     obj.rectangle57 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle57:setParent(obj.scrollBox1);
@@ -21190,7 +21191,11 @@ local function constructNew_frmPathfinder2e()
 
     obj._e_event0 = obj:addEventListener("onNodeReady",
         function (_)
-            Internet.download("https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20Pathfinder%202e/output/Ficha%20Pathfinder%202e.rpk?raw=true",
+            if sheet.campoDasPericias == nil then
+                        sheet.campoDasPericias = {}
+                        pathSkills()
+                    end
+                    Internet.download("https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20Pathfinder%202e/output/Ficha%20Pathfinder%202e.rpk?raw=true",
                         function(stream, contentType)
                             local info = Firecast.Plugins.getRPKDetails(stream);
                             sheet.versionDownloaded = "VERSÃO DISPONÍVEL: " .. info.version;
@@ -22016,6 +22021,18 @@ local function constructNew_frmPathfinder2e()
             						end;
             
             						local cd = self.rclPercepcao:append();
+            						if cd~=nil then
+            							cd.nomePericia = "CD de Classe";
+            							cd.classePericia = 10;
+            						end;
+            					elseif #nodes == 2 and nodes[1].nomePericia == nil then
+            						local pericia = nodes[1]
+            						if pericia~=nil then
+            							pericia.nomePericia = "Percepção";
+            							pericia.chavePericia = '5';
+            						end;
+            
+            						local cd = nodes[2]
             						if cd~=nil then
             							cd.nomePericia = "CD de Classe";
             							cd.classePericia = 10;
