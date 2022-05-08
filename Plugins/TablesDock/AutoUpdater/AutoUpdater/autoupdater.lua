@@ -23,6 +23,15 @@ function dump(o)
       return tostring(o)
    end
 end
+        
+local function write(str, chat)
+    local mesa = Firecast.getMesaDe(self);
+    if str then
+        chat:escrever(str);
+    else
+        chat:escrever("String nula");
+    end;
+end;
 
 local function tryTranslate(text)
     local trans = Locale.tryLang(text);
@@ -30,7 +39,7 @@ local function tryTranslate(text)
     return trans;
 end
 
-local function downloadID(url)
+local function downloadID(url, id, chat)
 	local install = true;
 	Internet.download(url,
         function(stream, contentType)
@@ -39,10 +48,12 @@ local function downloadID(url)
 			end;
 			if install == false or stream == nil then
 				GUI.openInBrowser(url);
+            else
+                write(tryTranslate("download.status.success") .. " " .. tryTranslate("download.status.installing") .. " " .. (id or ""), chat);
 			end;
         end,       
         function (errorMsg)
-            --showMessage(errorMsg);
+            write(tryTranslate("download.status.error") .. " " .. tryTranslate("download.status.installing") .. " " .. (errorMsg or ""), chat);
         end,       
         function (downloaded, total)
             -- esta função será chamada constantemente.
@@ -87,7 +98,7 @@ local function tryInstall(id, chat)
                     for i=1, #list, 1 do
                         -- Verifica se tem updates em cada plugin
                         if lowercase(list[i].id) == lowercase(id) or lowercase(list[i].name) == lowercase(id) or findDataType(list[i], id) then
-                        	downloadID(list[i].url);
+                        	downloadID(list[i].url, id, chat);
                         	return;
                     	end;
                     end;
