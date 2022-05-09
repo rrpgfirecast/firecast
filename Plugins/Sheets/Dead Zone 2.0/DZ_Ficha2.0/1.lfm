@@ -889,7 +889,7 @@
 ## ATAQUES ##      
 		 <layout top="200" left="920" width="250" height="700" >
 				<scrollBox align="client">
-					<button height="25" fontFamily="kalam" text="+" top="5" width="25" left="35" onClick="self.rclAtaque:append(); "/>
+					<button height="25" fontFamily="kalam" text="+" top="5" width="25" left="35" hint="Adiciona um novo ataque." onClick="self.rclAtaque:append(); "/>
 					<label fontSize="25" fontColor="#000000" horzTextAlign="leading" vertTextAlign="trailing" left="60" top="0" width="170" height="30" text="ATAQUES" fontFamily="DK Umbilical Noose" />
 					<recordList name="rclAtaque" field="Ataque" templateForm="Ataque" top="50" width="230" height="600" autoHeight="true" />
 				</scrollBox>

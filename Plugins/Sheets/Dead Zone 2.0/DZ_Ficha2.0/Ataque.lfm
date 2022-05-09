@@ -14,12 +14,6 @@
 			<rectangle top="59" left="104" width="86" height="31" cornerType="round" color="#00000000" strokeColor="black" strokeSize="2" xradius="8" yradius="8"> </rectangle>
 			<edit field="ModAtaque" width="85"  height="30" top="60" left="105" class="padrao" />
 			<label text="Mod. Ataque" width="85" height="30" top="40" left="105" class="padrao2" />
-			
-			<button text="C" fontFamily="kalam" width="25" height="25" top="60" left="200" onClick="self.ConfigATK:show('bottom', self.labNome);"/>
-			<popup name="ConfigATK" width="600" height="600" backOpacity="0.5"> 
-				<layout left="20" top="20" height="25" width="300">        
-				</layout>
-			</popup>
 
 			<rectangle top="109" left="09" width="86" height="31" cornerType="round" color="#00000000" strokeColor="black" strokeSize="2" xradius="8" yradius="8"> </rectangle>
 			<edit field="Dano" width="85"  height="30" top="110" left="10" class="padrao" />
@@ -30,13 +24,11 @@
 			<edit field="CD" width="85"  height="30" top="110" left="105" class="padrao" />
 			<label text="CD" width="85" height="30" top="90" left="105" class="padrao2" />
 			
-			<button fontFamily="kalam" width="24" height="25" top="110" left="200">
-				<event name="onClick"> 
-					local mesaDoPersonagem = Firecast.getMesaDe(sheet);				
-					local rolagem = Firecast.interpretarRolagem(sheet.Peri15); 
-					if not rolagem.possuiAlgumDado then rolagem = Firecast.interpretarRolagem("1d10"):concatenar(rolagem); end; 
-					if mesaDoPersonagem ~= nil then mesaDoPersonagem.chat:rolarDados(rolagem,"[§B][§K8][ Pericia ] [§K14]Arma de fogo de "..sheet.ataque); end;										
-			</event> </button>
+			<button text="C" fontFamily="kalam" width="25" height="25" top="60" left="200" hint="Configurações do ataque." onClick="self.ConfigATK:show('bottom', self.labNome);"/>
+			
+			<button fontFamily="kalam" width="24" height="25" top="110" hint="Executa a rolagem configurada." left="200">
+			</button>
+
 			<image width="26" height="26" left="199" top="110" style="proportional" center="true" src="images/Dado.jpg"/>
 			
 			<rectangle top="159" left="09" width="86" height="31" cornerType="round" color="#00000000" strokeColor="black" strokeSize="2" xradius="8" yradius="8"> </rectangle>
@@ -47,7 +39,7 @@
 			<edit field="Penalidade" width="85"  height="30" top="160" left="105" class="padrao" />
 			<label text="PenalidadeATK" width="85" height="30" top="140" left="105"  class="padrao2"/>
 			
-			<button text="X" fontFamily="kalam" width="25" height="25" top="160" left="200" > 
+			<button text="X" fontFamily="kalam" width="25" height="25" top="160" left="200" hint="Apaga o ataque." > 
 				<event name="onClick">
 					Dialogs.confirmOkCancel("Quer mesmo apagar esse ataque?",
 						function (confirmado)
@@ -63,7 +55,8 @@
 			
 			<rectangle top="209" left="09" width="211" height="76" cornerType="round" color="#00000000" strokeColor="black" strokeSize="2" xradius="8" yradius="8" > </rectangle>
             <layout left="10" top="210" width="210" height="75" >
-				<richEdit align="client" backgroundColor="#00000000" defaultFontColor="#C0504D" field="NotasAtaque" showToolbar="false" />
+				<richEdit width="210" align="client" backgroundColor="#00000000" defaultFontColor="#C0504D" field="NotasAtaque" showToolbar="false" />
+				
             </layout>
 	</rectangle>
 </form>
