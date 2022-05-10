@@ -16,14 +16,14 @@ edit{
 		<checkBox field="MarcadorSkillEscola" align="left" width="20" margins="{left=23}" hint="Perícia de Escola" />
 		<dataLink field="MarcadorSkillEscola" defaultValue="false" />
 		
-		<edit field="nomeSkill" align="left" width="195" margins="{right=2}" fontStyle="bold" fontColor="white"/>
+		<edit field="nomeSkill" align="left" width="225" margins="{right=2}" fontColor="white" fontSize= "13"/>
 		<dataLink defaultValue="—" field="nomeSkill" />
 		
 		<rectangle color="#212121" align="left" width="79" margins="{right=2}">
 			<comboBox align="client" field="tipoSkill" items="{'Alta', 'Baixa', 'Bugei', 'Mercante'}" values="{'Alta', 'Baixa', 'Bugei', 'Mercante'}" margins="{right=2, left=2}"/>
 		</rectangle>
 		
-		<edit field="rankSkill" align="left" width="42" margins="{right=2}" horzTextAlign="center" type="number" min="0" max="99" fontStyle="bold" fontColor="white"/>
+		<edit field="rankSkill" align="left" width="42" margins="{right=2}" horzTextAlign="center" type="number" min="0" max="10" fontStyle="bold" fontColor="white"/>
 		<dataLink defaultValue="1" field="rankSkill" />
 		
 		<rectangle color="#212121" align="left" width="94" margins="{right=2}">
@@ -34,34 +34,6 @@ edit{
 		<edit field="ROLAGEM" align="left" width="80" margins="{right=2}"/>
 		<dataLink defaultValue="xky" field="ROLAGEM" />
 		
-		<button top="0" left="541" text="𝐞" hint="Ênfases" name="btnEnfase1" width="30" height="30" fontColor="#272727">
-			<event name="onClick">
-			<![CDATA[
-				local pop = self:findControlByName("popUp_Enfases");
-				
-				if pop ~= nil then
-					pop:setNodeObject(sheet);
-					pop:showPopupEx("right", self.btnEnfase1);
-				else
-					showMessage("Ops, não encontrei o pop-up para exibir");
-				end;
-			]]>
-			</event>
-		</button>
-		<button top="0" left="541" text="𝐞" hint="Ênfases" name="btnEnfase2" width="30" height="30" visible="false">
-			<event name="onClick">
-			<![CDATA[
-				local pop = self:findControlByName("popUp_Enfases");
-				
-				if pop ~= nil then
-					pop:setNodeObject(sheet);
-					pop:showPopupEx("right", self.btnEnfase2);
-				else
-					showMessage("Ops, não encontrei o pop-up para exibir");
-				end;
-			]]>
-			</event>
-		</button>
 		<popup name="popUp_Enfases" width="200" height="150" backOpacity="0" drawContainer="false">
 			<rectangle align="client" color="#0e0e0e" padding="{top=10, left=10, bottom=10, right=10}" xradius= "10" yradius="10" cornerType="bevel">
 				<label align="top" text="Ê N F A S E S" margins="{bottom=5}" fontStyle="bold" fontFamily="Constantia"/>

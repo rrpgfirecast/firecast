@@ -572,7 +572,7 @@ local function constructNew_frmOurFichaL5R4e()
     obj.dataLink18 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink18:setParent(obj.layout7);
     obj.dataLink18:setField("xpGastar");
-    obj.dataLink18:setDefaultValue("40");
+    obj.dataLink18:setDefaultValue("0");
     obj.dataLink18:setName("dataLink18");
 
     obj.layout8 = GUI.fromHandle(_obj_newObject("layout"));
@@ -1407,7 +1407,7 @@ local function constructNew_frmOurFichaL5R4e()
     obj.label38 = GUI.fromHandle(_obj_newObject("label"));
     obj.label38:setParent(obj.rectangle7);
     obj.label38:setAlign("left");
-    obj.label38:setWidth(214);
+    obj.label38:setWidth(254);
     obj.label38:setText("PERÍCIAS");
     obj.label38:setMargins({left=5});
     obj.label38:setName("label38");
@@ -1418,7 +1418,7 @@ local function constructNew_frmOurFichaL5R4e()
     obj.label39 = GUI.fromHandle(_obj_newObject("label"));
     obj.label39:setParent(obj.rectangle7);
     obj.label39:setAlign("left");
-    obj.label39:setWidth(75);
+    obj.label39:setWidth(70);
     obj.label39:setText("TIPOS");
     obj.label39:setName("label39");
     obj.label39:setFontColor("white");
@@ -1428,7 +1428,7 @@ local function constructNew_frmOurFichaL5R4e()
     obj.label40 = GUI.fromHandle(_obj_newObject("label"));
     obj.label40:setParent(obj.rectangle7);
     obj.label40:setAlign("left");
-    obj.label40:setWidth(52);
+    obj.label40:setWidth(57);
     obj.label40:setText("RANK");
     obj.label40:setName("label40");
     obj.label40:setFontColor("white");
@@ -1803,7 +1803,7 @@ local function constructNew_frmOurFichaL5R4e()
     obj.label57 = GUI.fromHandle(_obj_newObject("label"));
     obj.label57:setParent(obj.layout25);
     obj.label57:setAlign("left");
-    obj.label57:setText("+ ");
+    obj.label57:setText("+");
     obj.label57:setWidth(10);
     obj.label57:setName("label57");
     obj.label57:setFontColor("white");
@@ -3527,6 +3527,7 @@ local function constructNew_frmOurFichaL5R4e()
     obj.textEditor1:setFontColor("#cdcdcd");
     obj.textEditor1:setFontFamily("Cambria");
     obj.textEditor1:setTransparent(true);
+    obj.textEditor1:setFontSize(13);
     obj.textEditor1:setName("textEditor1");
 
     obj.image4 = GUI.fromHandle(_obj_newObject("image"));

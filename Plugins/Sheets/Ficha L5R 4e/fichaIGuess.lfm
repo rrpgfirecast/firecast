@@ -600,9 +600,9 @@ button.Tab{
 									
 									<layout align="top" height="1000">
 										<rectangle margins="{left=25, right=17}" align="top" height="30" xradius="5" yradius="5" cornerType="round" color="#212121">
-											<label align="left" width="214" text="PERÍCIAS" margins="{left=5}"/>
-											<label align="left" width="75" text="TIPOS"/>
-											<label align="left" width="52" text="RANK"/>
+											<label align="left" width="254" text="PERÍCIAS" margins="{left=5}"/>
+											<label align="left" width="70" text="TIPOS"/>
+											<label align="left" width="57" text="RANK"/>
 											<label align="left" width="90" text="ATRIBUTO"/>
 											<label align="left" width="105" text="ROLAGEM"/>
 											<button align="right" width="30" text="🞦" hint="Nova Perícia" onClick='self.rclSkills:append();'/>
@@ -926,7 +926,7 @@ button.Tab{
 											<dataLink defaultValue="0" field="zeni" />
 										</rectangle>
 										<rectangle align="client" margins="{left=10, top=10, right=20, bottom=50}" color="#272727" xradius="5" yradius="5" cornerType="round">
-											<textEditor align="client" margins="{left=5, top=5, right=5, bottom=5}" field="inventario" fontColor="#cdcdcd" fontFamily="Cambria" transparent="true"/>
+											<textEditor align="client" margins="{left=5, top=5, right=5, bottom=5}" field="inventario" fontColor="#cdcdcd" fontFamily="Cambria" transparent="true" fontSize="13"/>
 										</rectangle>
 										
 										<image url="/Frames/logo.png" height="135" style="proportional" align="bottom" margins="{bottom=80}"/>
