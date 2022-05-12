@@ -8,7 +8,7 @@
 		<edit align="right" field="peso" class="padraoEqui" text="00" width="50" transparent="true"  />
 		
 		
-        <button align="right" text="X" width="25" class="padraoEqui" fontColor="white" >
+        <button align="right" text="X" width="25" class="padraoEqui" hint="Deletar item" fontColor="white" >
 			<event name="onClick">
 					Dialogs.confirmOkCancel("Quer mesmo apagar esse Equipamento?",
 						function (confirmado)

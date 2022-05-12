@@ -125,7 +125,7 @@ local function constructNew_frmAnotacao()
 
     obj.label2 = GUI.fromHandle(_obj_newObject("label"));
     obj.label2:setParent(obj.rectangle3);
-    obj.label2:setText("LISTA");
+    obj.label2:setText("ANOTAÇÃO");
     obj.label2:setHeight(30);
     obj.label2:setWidth(1340);
     obj.label2:setHorzTextAlign("center");
@@ -145,6 +145,20 @@ local function constructNew_frmAnotacao()
     obj.button1:setHint("Adicionar nova linha de anotação.");
     obj.button1:setName("button1");
 
+    obj.rectangle4 = GUI.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle4:setParent(obj.rectangle3);
+    obj.rectangle4:setLeft(0);
+    obj.rectangle4:setTop(99);
+    obj.rectangle4:setWidth(401);
+    obj.rectangle4:setHeight(501);
+    obj.rectangle4:setCornerType("round");
+    obj.rectangle4:setStrokeColor("black");
+    obj.rectangle4:setColor("white");
+    obj.rectangle4:setStrokeSize(2);
+    obj.rectangle4:setXradius(5);
+    obj.rectangle4:setYradius(5);
+    obj.rectangle4:setName("rectangle4");
+
     obj.rclNote = GUI.fromHandle(_obj_newObject("recordList"));
     obj.rclNote:setParent(obj.rectangle3);
     obj.rclNote:setName("rclNote");
@@ -152,8 +166,62 @@ local function constructNew_frmAnotacao()
     obj.rclNote:setTemplateForm("frmListaNote");
     obj.rclNote:setLeft(1);
     obj.rclNote:setTop(100);
-    obj.rclNote:setWidth(400);
-    obj.rclNote:setAutoHeight(true);
+    obj.rclNote:setWidth(398);
+    obj.rclNote:setHeight(500);
+
+    obj.rectangle5 = GUI.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle5:setParent(obj.rectangle3);
+    obj.rectangle5:setLeft(449);
+    obj.rectangle5:setTop(99);
+    obj.rectangle5:setWidth(401);
+    obj.rectangle5:setHeight(501);
+    obj.rectangle5:setCornerType("round");
+    obj.rectangle5:setStrokeColor("black");
+    obj.rectangle5:setColor("white");
+    obj.rectangle5:setStrokeSize(2);
+    obj.rectangle5:setXradius(5);
+    obj.rectangle5:setYradius(5);
+    obj.rectangle5:setName("rectangle5");
+
+    obj.textEditor3 = GUI.fromHandle(_obj_newObject("textEditor"));
+    obj.textEditor3:setParent(obj.rectangle3);
+    obj.textEditor3:setFontFamily("kalam");
+    obj.textEditor3:setWidth(400);
+    obj.textEditor3:setHeight(500);
+    obj.textEditor3:setLeft(450);
+    obj.textEditor3:setTop(100);
+    obj.textEditor3:setFontSize(15);
+    obj.textEditor3:setFontColor("black");
+    obj.textEditor3:setField("Anotacao22");
+    obj.textEditor3:setTransparent(true);
+    obj.textEditor3:setName("textEditor3");
+
+    obj.rectangle6 = GUI.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle6:setParent(obj.rectangle3);
+    obj.rectangle6:setLeft(900);
+    obj.rectangle6:setTop(99);
+    obj.rectangle6:setWidth(401);
+    obj.rectangle6:setHeight(501);
+    obj.rectangle6:setCornerType("round");
+    obj.rectangle6:setStrokeColor("black");
+    obj.rectangle6:setColor("white");
+    obj.rectangle6:setStrokeSize(2);
+    obj.rectangle6:setXradius(5);
+    obj.rectangle6:setYradius(5);
+    obj.rectangle6:setName("rectangle6");
+
+    obj.textEditor4 = GUI.fromHandle(_obj_newObject("textEditor"));
+    obj.textEditor4:setParent(obj.rectangle3);
+    obj.textEditor4:setFontFamily("kalam");
+    obj.textEditor4:setWidth(400);
+    obj.textEditor4:setHeight(500);
+    obj.textEditor4:setLeft(900);
+    obj.textEditor4:setTop(100);
+    obj.textEditor4:setFontSize(15);
+    obj.textEditor4:setFontColor("black");
+    obj.textEditor4:setField("Anotacao33");
+    obj.textEditor4:setTransparent(true);
+    obj.textEditor4:setName("textEditor4");
 
     obj._e_event0 = obj.button1:addEventListener("onClick",
         function (_)
@@ -173,18 +241,23 @@ local function constructNew_frmAnotacao()
           self:setNodeDatabase(nil);
         end;
 
-        if self.label2 ~= nil then self.label2:destroy(); self.label2 = nil; end;
+        if self.rectangle5 ~= nil then self.rectangle5:destroy(); self.rectangle5 = nil; end;
+        if self.textEditor3 ~= nil then self.textEditor3:destroy(); self.textEditor3 = nil; end;
+        if self.textEditor4 ~= nil then self.textEditor4:destroy(); self.textEditor4 = nil; end;
         if self.rclNote ~= nil then self.rclNote:destroy(); self.rclNote = nil; end;
-        if self.textEditor2 ~= nil then self.textEditor2:destroy(); self.textEditor2 = nil; end;
         if self.button1 ~= nil then self.button1:destroy(); self.button1 = nil; end;
         if self.label1 ~= nil then self.label1:destroy(); self.label1 = nil; end;
+        if self.rectangle4 ~= nil then self.rectangle4:destroy(); self.rectangle4 = nil; end;
+        if self.rectangle2 ~= nil then self.rectangle2:destroy(); self.rectangle2 = nil; end;
+        if self.rectangle3 ~= nil then self.rectangle3:destroy(); self.rectangle3 = nil; end;
+        if self.rectangle6 ~= nil then self.rectangle6:destroy(); self.rectangle6 = nil; end;
+        if self.textEditor1 ~= nil then self.textEditor1:destroy(); self.textEditor1 = nil; end;
+        if self.image1 ~= nil then self.image1:destroy(); self.image1 = nil; end;
+        if self.textEditor2 ~= nil then self.textEditor2:destroy(); self.textEditor2 = nil; end;
         if self.layout1 ~= nil then self.layout1:destroy(); self.layout1 = nil; end;
         if self.scrollBox1 ~= nil then self.scrollBox1:destroy(); self.scrollBox1 = nil; end;
         if self.rectangle1 ~= nil then self.rectangle1:destroy(); self.rectangle1 = nil; end;
-        if self.rectangle2 ~= nil then self.rectangle2:destroy(); self.rectangle2 = nil; end;
-        if self.rectangle3 ~= nil then self.rectangle3:destroy(); self.rectangle3 = nil; end;
-        if self.textEditor1 ~= nil then self.textEditor1:destroy(); self.textEditor1 = nil; end;
-        if self.image1 ~= nil then self.image1:destroy(); self.image1 = nil; end;
+        if self.label2 ~= nil then self.label2:destroy(); self.label2 = nil; end;
         self:_oldLFMDestroy();
     end;
 

@@ -13,10 +13,18 @@
 			</rectangle>
 
 			<rectangle left="1" top="680" width="1340" height="800" cornerType="round" strokeColor="black" color="white" strokeSize="2" xradius="5" yradius="5">
-				<label text="LISTA" height="30" width="1340" horzTextAlign="center" fontFamily="DK Umbilical Noose" fontColor="black" fontSize="30" />
+				<label text="ANOTAÇÃO" height="30" width="1340" horzTextAlign="center" fontFamily="DK Umbilical Noose" fontColor="black" fontSize="30" />
 				<button left="2" top="2" height="25" text="Nova" width="80" fontFamily="kalam" hint="Adicionar nova linha de anotação." onClick="self.rclNote:append();"/>
-				<recordList name="rclNote" field="NoteL" templateForm="frmListaNote" left="1" top="100" width="400" autoHeight="true"/>
+				<rectangle left="0" top="99" width="401" height="501" cornerType="round" strokeColor="black" color="white" strokeSize="2" xradius="5" yradius="5"/>
+				<recordList name="rclNote" field="NoteL" templateForm="frmListaNote" left="1" top="100" width="398" height="500"/>
+				
+				<rectangle left="449" top="99" width="401" height="501" cornerType="round" strokeColor="black" color="white" strokeSize="2" xradius="5" yradius="5"/>
+				<textEditor fontFamily="kalam" width="400" height="500" left="450" top="100" fontSize="15" fontColor="black" field="Anotacao22" transparent="true" />	
+				
+				<rectangle left="900" top="99" width="401" height="501" cornerType="round" strokeColor="black" color="white" strokeSize="2" xradius="5" yradius="5"/>
+				<textEditor fontFamily="kalam" width="400" height="500" left="900" top="100" fontSize="15" fontColor="black" field="Anotacao33" transparent="true" />	
 			</rectangle>
+			
 			
 		</rectangle>
     </scrollBox >

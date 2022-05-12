@@ -75,6 +75,7 @@ local function constructNew_frmEquip()
     obj.button1:setAlign("right");
     obj.button1:setText("X");
     obj.button1:setWidth(25);
+    obj.button1:setHint("Deletar item");
     obj.button1:setFontColor("white");
     obj.button1:setName("button1");
     obj.button1:setFontSize(20);

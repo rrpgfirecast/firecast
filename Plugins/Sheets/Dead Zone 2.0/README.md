@@ -1,6 +1,11 @@
 # Ficha Dead Zone
 Ficha criada para o sistema Dead Zone. 
 
+04 de Maio de 2022
+Versão 2.2
+- Ajustes de otimização.
+- Anotações expandidas.
+
 30 de Abril de 2022
 Versão 2.1.1
 - Correções de erros advindos da ultima atualização.

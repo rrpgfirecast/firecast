@@ -107,7 +107,7 @@ local function constructNew_frmFichaCreditos()
     obj.label3:setTop(60);
     obj.label3:setWidth(200);
     obj.label3:setHeight(20);
-    obj.label3:setText("para o sistema Dead de Zone");
+    obj.label3:setText("para o sistema Dead Zone");
     obj.label3:setHorzTextAlign("center");
     obj.label3:setName("label3");
 
@@ -137,7 +137,7 @@ local function constructNew_frmFichaCreditos()
     obj.label6:setTop(480);
     obj.label6:setWidth(210);
     obj.label6:setHeight(20);
-    obj.label6:setText("Sua Versão: 2.1");
+    obj.label6:setText("Sua Versão: 2.2");
     obj.label6:setHorzTextAlign("center");
     obj.label6:setName("label6");
 
@@ -147,6 +147,7 @@ local function constructNew_frmFichaCreditos()
     obj.button1:setTop(500);
     obj.button1:setWidth(100);
     obj.button1:setText("Change Log");
+    obj.button1:setHint("Abre as notas de atualização da ficha");
     obj.button1:setName("button1");
 
     obj.button2 = GUI.fromHandle(_obj_newObject("button"));
@@ -155,6 +156,7 @@ local function constructNew_frmFichaCreditos()
     obj.button2:setTop(500);
     obj.button2:setWidth(100);
     obj.button2:setText("Atualizar");
+    obj.button2:setHint("Baixa a versão mais recente da ficha");
     obj.button2:setName("button2");
 
     obj._e_event0 = obj.button1:addEventListener("onClick",
