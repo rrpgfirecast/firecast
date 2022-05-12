@@ -2,7 +2,6 @@
 local SharedObjects = require("rrpgSharedObjects.lua");
 local rrpgWrappers = {};
 local localStrongRefContextoObjects = {};	
-local Locale = require("locale.lua");
 
 
 local SHARED_OBJECT_TYPE = "rrpgObject";
@@ -165,8 +164,7 @@ local function initMesaWrappedObjectFromHandle(handle)
 	function mesa:getPodeTablesDock() return _obj_getProp(self.handle, "PodeTablesDock"); end; 
     	
 	function mesa:requestSetModerada(moderada) 
-		moderada = Locale.autoEval(moderada);
-		__serverRequestQueue:addJob(function () _obj_invokeNoEval(self.handle, "RequestSetModerada", not (not moderada));	end); 
+		__serverRequestQueue:addJob(function () _obj_invoke(self.handle, "RequestSetModerada", not (not moderada));	end); 
 	end;
 	
 	function mesa:abrirNDBDeMesa(nome, callback, opcoes)
@@ -288,10 +286,8 @@ local function initJogadorWrappedObjectFromHandle(handle)
 	function jogador:getCodigoInterno() return _obj_getProp(self.handle, "CodigoInterno"); end;
 	
 	function jogador:__innerRequestSetMode(modo, ativar)
-		modo, ativar = Locale.autoEval(modo, ativar);
-	
 		__serverRequestQueue:addJob(function()
-				_obj_invokeNoEval(self.handle, "RequestSetMode", modo, not (not ativar));	
+				_obj_invoke(self.handle, "RequestSetMode", modo, not (not ativar));	
 			end);
 	end;
 	
@@ -301,18 +297,9 @@ local function initJogadorWrappedObjectFromHandle(handle)
 	function jogador:requestSetJogador(isJogador) self:__innerRequestSetMode("jogador", isJogador); end;
 	function jogador:requestKick() __serverRequestQueue:addJob(function() _obj_invoke(self.handle, "RequestKick", ""); end); end;	
 	function jogador:getBarValue(index) return _obj_invokeEx(self.handle, "LuaGetBarValue", index); end;
-	
-	function jogador:requestSetBarValue(index, currentValue, maxValue) 
-		index, currentValue, maxValue = Locale.autoEval(index, currentValue, maxValue); 
-		
-		__serverRequestQueue:addJob(
-			function() 
-				_obj_invokeExNoEval(self.handle, "LuaRequestSetBarValue", index, currentValue, maxValue); 
-			end); 
-	end;
-	
+	function jogador:requestSetBarValue(index, currentValue, maxValue) __serverRequestQueue:addJob(function() _obj_invokeEx(self.handle, "LuaRequestSetBarValue", index, currentValue, maxValue); end); end;
 	function jogador:getEditableLine(index) return _obj_invokeEx(self.handle, "LuaGetEditableLine", index); end;
-	function jogador:requestSetEditableLine(index, text) index, text = Locale.autoEval(index, text); __serverRequestQueue:addJob(function() _obj_invokeExNoEval(self.handle, "LuaRequestSetEditableLine", index, text); end); end;	
+	function jogador:requestSetEditableLine(index, text) __serverRequestQueue:addJob(function() _obj_invokeEx(self.handle, "LuaRequestSetEditableLine", index, text); end); end;	
 		
 	wObj.props["mesa"] = {getter = "getMesa", tipo = "table"};
 	wObj.props["nick"] = {getter = "getNick", tipo = "string"};
@@ -560,100 +547,69 @@ local function initBaseChatWrappedObjectFromHandle(handle)
 		end;
 	end;
 	
-	function wChat:enviarMensagem(msg, callback) 
-		msg = Locale.autoEval(tostring(msg));
-		
+	function wChat:enviarMensagem(msg) 
 		if msg ~= nil then	
 			local queue = self:_getTimedJobQueue()
-	
-	        function queuedSendTheMessage()
-				if self.handle ~= nil then							
-					_obj_invokeNoEval(wChat.handle, "EnviarMensagem", msg);
-					
-					if type(callback) == 'function' then
-						callback();
+		
+			queue:addJob(function()		
+					if self.handle ~= nil then							
+						_obj_invoke(wChat.handle, "EnviarMensagem", tostring(msg));
 					end;
-				end;
-			end;
-	        
-			queue:addJob(queuedSendTheMessage);		
+				end);		
 		end;
 	end;
 	
-	function wChat:enviarMensagemNPC(npc, msg, callback) 
-		npc, msg = Locale.autoEval(npc, msg);
-	
+	function wChat:enviarMensagemNPC(npc, msg) 
 		if msg ~= nil and npc ~= nil then	
 			local queue = self:_getTimedJobQueue()
 		
 			queue:addJob(function()		
 					if self.handle ~= nil then							
-						_obj_invokeNoEval(wChat.handle, "EnviarMensagemNPC", tostring(npc), tostring(msg));
-						
-						if type(callback) == 'function' then
-							callback();
-						end;
+						_obj_invoke(wChat.handle, "EnviarMensagemNPC", tostring(npc), tostring(msg));
 					end;
 				end);		
 		end;
 	end;	
 	
-	function wChat:enviarNarracao(msg, callback) 
-		msg = Locale.autoEval(msg);
-	
+	function wChat:enviarNarracao(msg) 
 		if msg ~= nil then	
 			local queue = self:_getTimedJobQueue()
 		
 			queue:addJob(function()		
 					if self.handle ~= nil then							
-						_obj_invokeNoEval(wChat.handle, "EnviarNarracao", tostring(msg));
-						
-						if type(callback) == 'function' then
-							callback();
-						end;
+						_obj_invoke(wChat.handle, "EnviarNarracao", tostring(msg));
 					end;
 				end);		
 		end;
 	end;	
 	
-	function wChat:enviarAcao(acao, callback) 
-		acao = Locale.autoEval(acao);
-	
+	function wChat:enviarAcao(acao) 
 		if acao ~= nil then	
 			local queue = self:_getTimedJobQueue()
 		
 			queue:addJob(function()		
 					if self.handle ~= nil then							
-						_obj_invokeNoEval(wChat.handle, "EnviarAcao", tostring(acao));
-						
-						if type(callback) == 'function' then
-							callback();
-						end;
+						_obj_invoke(wChat.handle, "EnviarAcao", tostring(acao));
 					end;
 				end);		
 		end;
 	end;	
 	
-	function wChat:enviarRisada(callback) 
+	function wChat:enviarRisada() 
 		local queue = self:_getTimedJobQueue()
 	
 		queue:addJob(function()		
 				if self.handle ~= nil then							
 					_obj_invoke(wChat.handle, "EnviarRisada");
-					
-					if type(callback) == 'function' then
-						callback();
-					end;
 				end;
 			end);		
 	end;		
 	
 	function wChat:rolarDados(rolagem, msg, callbackFunction) 
 		local rolAsStr;
-		msg = Locale.autoEval(msg);
 		
 		if type(rolagem) == "string" then
-			rolAsStr = Locale.autoEval(rolagem);
+			rolAsStr = rolagem;
 		elseif (type(rolagem) == "table") and (rolagem.getAsString ~= nil) then
 			rolAsStr = rolagem:getAsString();		
 		else
@@ -671,14 +627,14 @@ local function initBaseChatWrappedObjectFromHandle(handle)
 				queue:addJob(
 					function ()
 						if self.handle ~= nil then
-							return _obj_invokeNoEval(self.handle, "EnviarRolagemEx", rolAsStr, msg, idUnicaRolagem);
+							return _obj_invoke(self.handle, "EnviarRolagemEx", rolAsStr, msg, idUnicaRolagem);
 						end;
 					end);	
 			else
 				queue:addJob(
 					function ()
 						if self.handle ~= nil then
-							return _obj_invokeNoEval(self.handle, "EnviarRolagem", rolAsStr, msg);
+							return _obj_invoke(self.handle, "EnviarRolagem", rolAsStr, msg);
 						end;
 					end);								
 			end;

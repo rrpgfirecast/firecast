@@ -319,7 +319,6 @@ function rrpg.registrarForm(frm)
   if type(frm) == 'table' then	
 	if (frm.name ~= nil) then	
   		localRRPG.forms[frm.name] = frm;  
-		_rrpg_Forms_RegisterForm(frm);
   	end;	
   end;
 end;
@@ -343,11 +342,7 @@ function rrpg.registerChatToolButton(params)
 	regClass.eves = {};
 	regClass.eves["onCallback"] = "";
 	
-	
-	if params.hint ~= nil then
-		_obj_setProp(regClass.handle, "Hint", params.hint);
-	end;	
-		
+	_obj_setProp(regClass.handle, "Hint", params.hint);
 	_obj_setProp(regClass.handle, "IconURL", params.icon);
 	
 	local p = tonumber(params.priority);
