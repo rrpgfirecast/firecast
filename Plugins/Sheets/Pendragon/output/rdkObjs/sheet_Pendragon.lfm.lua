@@ -8441,7 +8441,7 @@ local function constructNew_frmPendragon()
             									sheet.fldMovimento = math.floor(((DES+FOR)/10)+0.5); 
             									sheet.fldRegen = math.floor(((CON+FOR)/10)+0.5); 
             									sheet.fldHP = CON+TAM;
-            									sheet.fldInconsciente = math.floor((CON+TAM/4)+0.5);
+            									sheet.fldInconsciente = math.floor((sheet.fldHP/4)+0.5);
         end, obj);
 
     obj._e_event6 = obj.dataLink53:addEventListener("onUserChange",
