@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmMagias" align="client">
+	<scrollBox align="client">
+		<rectangle align="left" width="250" color="black" strokeColor="white" strokeSize="1">
+			<button text="Novo Caminho" align="top" height="25" onClick="self.campoDasCaminhos:append();"/>
+			<scrollBox align="client">
+				<recordList name="campoDasCaminhos" field="campoDasCaminhos" templateForm="frmCaminhoItem" align="top" layout="vertical" autoHeight="true" hitTest="false" minQt="1" margins="{left=5,right=5,bottom=5}"/>
+			</scrollBox>
+		</rectangle>
+
+		<rectangle align="client" width="150" color="black" strokeColor="white" strokeSize="1" margins="{left=5}">
+			<button text="Nova Magia" align="top" height="25" onClick="self.campoDasMagias:append();"/>
+			<scrollBox align="client">
+				<recordList name="campoDasMagias" field="campoDasMagias" templateForm="frmMagiaItem" align="top" layout="verticalTiles" autoHeight="true" hitTest="false" minQt="1" margins="{left=5,right=5,bottom=5}"/>
+			</scrollBox>
+		</rectangle>
+	</scrollBox>
+</form>

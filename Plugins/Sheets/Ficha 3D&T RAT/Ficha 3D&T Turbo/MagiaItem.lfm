@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmMagiaItem" height="200" width="350" margins="{top=5,right=5}">
+	 <script> 
+		<![CDATA[			
+		local function askForDelete()
+			Dialogs.confirmYesNo("Deseja realmente apagar?",
+								 function (confirmado)
+									if confirmado then
+										NDB.deleteNode(sheet);
+									end;
+								 end);
+		end;
+	]]>
+	</script>
+
+	<rectangle align="client" color="black" strokeColor="white" strokeSize="1" padding="{left=5,right=5,bottom=5,top=5}">
+		<layout align="top" height="25" margins="{left=5,right=5,top=5}">
+			<edit align="client" vertTextAlign="center" field="nome"/>
+			<button align="right" width="25" text="X" onClick="askForDelete();"/>
+		</layout>
+
+		<textEditor align="client" field="detalhes" margins="{left=5,right=5,bottom=5}"/>
+	</rectangle>
+	
+</form>

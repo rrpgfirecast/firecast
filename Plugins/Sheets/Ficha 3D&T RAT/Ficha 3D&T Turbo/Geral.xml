@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmGeral" align="client">
+	<scrollBox align="client">
+		<rectangle align="top" height="65" color="black" strokeColor="white" strokeSize="1">
+			<rectangle align="right" width="55" color="black" strokeColor="white" strokeSize="1" margins="{top=5, bottom=5,right=5}">
+		        <label align="top" height="25" text="Pontos" margins="{left=5,right=5}"/>
+		        <edit align="top" height="25" field="pontos" margins="{left=5,right=5}"/>
+			</rectangle>
+			<rectangle align="right" width="55" color="black" strokeColor="white" strokeSize="1" margins="{top=5, bottom=5,right=5}">
+		        <label align="top" height="25" text="XP" margins="{left=5,right=5}"/>
+		        <edit align="top" height="25" field="experiencia" margins="{left=5,right=5}"/>
+			</rectangle>
+			<layout align="client">
+				<layout align="top" height="25" margins="{left=5,top=5}">
+					<Cabecalho text="Nome" field="nome"/>
+			        <layout align="left" width="300" margins="{left=5}">
+			            <label align="left" width="100" text="Kit"/>
+			            <edit align="client" field="kit"/>
+			            <edit align="right" width="30" field="kit_pts"/>
+			        </layout>
+				</layout>
+				<layout align="top" height="25" margins="{left=5,top=5}">
+					<Cabecalho text="Divindade" field="divindade"/>
+					<Cabecalho text="Raça" field="raca"/>
+				</layout>
+			</layout>
+		</rectangle>
+
+		<layout align="top" height="380">
+			<layout align="left" width="705">
+				<layout align="top" height="185" margins="{top=5}">
+					<rectangle align="left" width="230" color="black" strokeColor="white" strokeSize="1" padding="{left=5,right=5,bottom=5,top=5}">
+						<label align="top" height="25" text="Características"/>
+						<layout align="top" height="25">
+							<label align="left" width="100" text=""/>
+							<label align="left" width="30" text="Total" horzTextAlign="center" fontSize="11"/>
+							<label align="left" width="30" text="Inicial" horzTextAlign="center" fontSize="11"/>
+							<label align="left" width="30" text="XP" horzTextAlign="center" fontSize="11"/>
+							<label align="left" width="30" text="Outros" horzTextAlign="center" fontSize="9"/>
+						</layout>
+						<Atributo text="Força" field="for"/>
+						<Atributo text="Habilidade" field="hab"/>
+						<Atributo text="Armadura" field="arm"/>
+						<Atributo text="Resistência" field="res"/>
+						<Atributo text="Poder de Fogo" field="pdf"/>
+					</rectangle>
+
+					<rectangle align="left" width="230" color="black" strokeColor="white" strokeSize="1" margins="{left=5}" padding="{left=5,right=5,bottom=5,top=5}">
+						<layout align="top" height="25">
+							<label align="left" width="90" text="Iniciativa"/>
+							<rectangle align="left" width="30" color="black" strokeColor="white" strokeSize="1">
+		                		<label align="client" field="iniTotal" horzTextAlign="center"/>
+		            		</rectangle>
+							<rectangle align="left" width="30" color="black" strokeColor="white" strokeSize="1">
+		                		<label align="client" field="habTotal" horzTextAlign="center"/>
+		            		</rectangle>
+		            		<edit align="left" width="30" field="iniOutros"/>
+
+		            		<dataLink fields="{'habTotal', 'iniOutros'}">
+				            	<event name="onUserChange">
+				            		if sheet==nil then return end
+				                	sheet.iniTotal = 	(tonumber(sheet.habTotal) or 0) + 
+				                	                    (tonumber(sheet.iniOutros) or 0);
+				                </event>
+				            </dataLink>
+						</layout>
+						<Bar text="PVs" field="pvs"/>
+						<Bar text="PMs" field="pms"/>
+
+						<layout align="top" height="25">
+							<label align="left" width="50" text=""/>
+							<label align="left" width="30" text="Total" horzTextAlign="center" fontSize="11"/>
+							<label align="left" width="30" text="Hab" horzTextAlign="center" fontSize="11"/>
+							<label align="left" width="30" text="Atr" horzTextAlign="center" fontSize="11"/>
+							<label align="left" width="30" text="Bônus" horzTextAlign="center" fontSize="9"/>
+							<label align="left" width="30" text="Outros" horzTextAlign="center" fontSize="9"/>
+						</layout>
+						<Ataque text="FA F" field="fa" atr="for"/>
+						<Ataque text="FA PdF" field="fa" atr="pdf"/>
+						<Ataque text="FD" field="fd" atr="arm"/>
+					</rectangle>
+
+					<rectangle align="left" width="230" color="black" strokeColor="white" strokeSize="1" margins="{left=5}" padding="{left=5,right=5,bottom=5,top=5}">
+						<label align="top" height="25" text="Movimentação"/>
+						<LabelEdit text="Vel. Normal" field="movNormal"/>
+						<LabelEdit text="Vel. Máxima" field="movMaxima"/>
+						<LabelEdit text="Nadando" field="movNadando"/>
+						<LabelEdit text="Escalando" field="movEscalando"/>
+						<LabelEdit text="Voando" field="movVoando"/>
+					</rectangle>
+				</layout>
+
+				<layout align="top" height="185" margins="{top=5}">
+					<rectangle align="left" width="230" color="black" strokeColor="white" strokeSize="1" padding="{left=5,right=5,bottom=5,top=5}">
+						<label align="top" height="25" text="Tipo de Dano - Força"/>
+						<textEditor align="client" field="tipoForca" margins="{left=5,right=5,bottom=5}"/>
+					</rectangle>
+
+					<rectangle align="left" width="230" color="black" strokeColor="white" strokeSize="1" margins="{left=5}" padding="{left=5,right=5,bottom=5,top=5}">
+						<label align="top" height="25" text="Tipo de Dano - PdF"/>
+						<textEditor align="client" field="tipoPdF" margins="{left=5,right=5,bottom=5}"/>
+					</rectangle>
+
+					<rectangle align="left" width="230" color="black" strokeColor="white" strokeSize="1" margins="{left=5}" padding="{left=5,right=5,bottom=5,top=5}">
+						<label align="top" height="25" text="Outros"/>
+						<textEditor align="client" field="tipoOutros" margins="{left=5,right=5,bottom=5}"/>
+					</rectangle>
+				</layout>
+			</layout>
+
+			<rectangle align="left" width="375" color="black" strokeColor="white" strokeSize="1" margins="{top=5}">
+				<label left="0" top="180" width="375" height="20" text="Avatar" horzTextAlign="center"/>
+				<image align="client" field="avatar" editable="true" style="autoFit" margins="{left=2, right=2, top=2, bottom=2}">
+					<event name="OnStartDrag">
+					    drag:addData("imageURL", sheet.avatar);
+					</event>
+				</image>
+			</rectangle>
+		</layout>
+
+
+	</scrollBox>
+</form>

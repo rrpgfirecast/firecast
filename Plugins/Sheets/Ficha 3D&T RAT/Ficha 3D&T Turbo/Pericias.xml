@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmPericias" align="client">
+	<scrollBox align="client">
+		<button text="Nova Perícia" align="top" height="25" onClick="self.campoDasPericias:append();"/>
+		<layout align="top" height="25" margins="{right=25}">
+			<label align="client" vertTextAlign="center" text=""/>
+			<label align="right" width="50" text="Custo"/>
+	
+			<label align="right" width="100" text="Especialização 1"/>
+			<label align="right" width="100" text="Especialização 2"/>
+			<label align="right" width="100" text="Especialização 3"/>
+		</layout>
+		<recordList name="campoDasPericias" field="campoDasPericias" templateForm="frmPericiaItem" align="top" layout="vertical" autoHeight="true" hitTest="false" minQt="1"/>
+	</scrollBox>
+</form>

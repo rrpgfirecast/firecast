@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmVantagens" align="client">
+	<template name="ListaFlexivel">
+		<flowPart minWidth="300" maxWidth="600" height="25" minScaledWidth="280" name="$(rclName)Part" adjustHeightToLine="false" margins="{left=5}">
+			<script>
+				<![CDATA[
+					rawset(self.$(rclName)Part, "_recalcHeight", 					
+						function ()
+							self.$(rclName)Part.height = self.$(rclName).height + 25;
+						end);
+				]]>
+			</script>
+
+			<layout align="top" height="25">
+				<button text="+" align="left" width="30" onClick="self.$(rclName):append();"/>
+				<label text="$(nome)" align="left" width="225" margins="{left=5}"/>
+			</layout>
+
+			<recordList name="$(rclName)" field="$(rclField)" templateForm="frmVantagensItem" align="top" layout="vertical" autoHeight="true" hitTest="false" onResize="self.$(rclName)Part._recalcHeight();" minQt="1">
+				<event name="onCompare">
+			        return ((tonumber(nodeA.nivelHabilidade) or 0) - (tonumber(nodeB.nivelHabilidade) or 0));
+			    </event>
+			</recordList>
+		</flowPart>
+	</template>	
+
+	<scrollBox align="client">
+		<flowLayout align="top" autoHeight="true" maxColumns="3" horzAlign="center" orientation="vertical" avoidScale="true">
+			<ListaFlexivel nome="VANTAGENS ÚNICAS" rclName="campoDasVantagensUnicas" rclField="campoDasVantagensUnicas"/>
+			<ListaFlexivel nome="VANTAGENS" rclName="campoDasVantagens" rclField="campoDasVantagens"/>
+			<ListaFlexivel nome="DESVANTAGENS" rclName="campoDasDesvantagens" rclField="campoDasDesvantagens"/>
+			<ListaFlexivel nome="OUTROS" rclName="campoDeOutros" rclField="campoDeOutros"/>
+		</flowLayout>
+	</scrollBox>
+</form>

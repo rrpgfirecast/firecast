@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmInventario" align="client">
+	<template name="inventarioItem">
+		<rectangle align="left" width="300" color="black" strokeColor="white" strokeSize="1" margins="{right=5}">
+			<label align="top" height="25" text="$(text)" horzTextAlign="center"/>
+			<textEditor align="client" field="$(field)" margins="{left=5,right=5,bottom=5}"/>
+		</rectangle>
+	</template>
+	<scrollBox align="client">
+		<layout align="top" height="300" margins="{bottom=5}">
+			<inventarioItem text="Dinheiro" field="dinheiro"/>
+			<inventarioItem text="Mochila" field="mochila"/>
+			<inventarioItem text="Armas" field="armas"/>
+		</layout>
+		<layout align="top" height="300" margins="{bottom=5}">
+			<inventarioItem text="Consumiveis" field="consumiveis"/>
+			<inventarioItem text="Equipamentos" field="equipamentos"/>
+			<inventarioItem text="Outros" field="outros"/>
+		</layout>
+	</scrollBox>
+</form>
