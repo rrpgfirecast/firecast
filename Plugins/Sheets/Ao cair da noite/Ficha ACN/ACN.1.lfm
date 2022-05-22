@@ -1,5 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <form name="frmACN1" align="client" theme="dark">
+	<script>
+		local function ShowPopup(popup, bt)
+			local pop = self:findControlByName(popup);
+			
+			if pop ~= nil then
+				pop:setNodeObject(self.sheet);
+				pop:showPopupEx("rightCenter", self[bt]);
+			else
+				showMessage("Ops, bug.. nao encontrei o popup de atributos para exibir");
+			end;
+		end
+	</script>
+
 	<popup name="popOther" width="400" height="550" backOpacity="0.4" autoScopeNode="false">
 		<flowLayout align="top" autoHeight="true" maxControlsPerLine="5" margins="{bottom=4}" horzAlign="center">
 			<otherSmallCenter text="Inicial" field="inicial"/>
@@ -39,6 +52,90 @@
 				node["historicoXp"..id] = self.popHistorico.scopeNode.historicoXp
 			</event>
 		</dataLink>
+	</popup>
+	<popup name="popFisicos" width="260" height="120" backOpacity="0.4" autoScopeNode="false">
+		<flowLayout align="top" autoHeight="true" maxControlsPerLine="5" margins="{bottom=4}" horzAlign="center">
+
+			<flowPart minWidth="30" maxWidth="50" height="35">
+				<label align="client" class="tituloCampo" fontSize="10" text="Força" horzTextAlign="center" wordWrap="true" textTrimming="none" autoSize="true"/>
+			</flowPart>
+			<otherSmallCenter text="Inicial" field="inicialforca"/>
+			<otherSmallCenter text="Bonus" field="bonusforca"/>
+			<otherSmallCenter text="XP" field="xpforca"/>
+			<otherSmallCenter text="Outros" field="outroforca"/>
+
+			<flowPart minWidth="30" maxWidth="50" height="35">
+				<label align="client" class="tituloCampo" fontSize="10" text="Agilidade" horzTextAlign="center" wordWrap="true" textTrimming="none" autoSize="true"/>
+			</flowPart>
+			<otherSmallCenter text="Inicial" field="inicialagilidade"/>
+			<otherSmallCenter text="Bonus" field="bonusagilidade"/>
+			<otherSmallCenter text="XP" field="xpagilidade"/>
+			<otherSmallCenter text="Outros" field="outroagilidade"/>
+
+			<flowPart minWidth="30" maxWidth="50" height="35">
+				<label align="client" class="tituloCampo" fontSize="10" text="Resiliência" horzTextAlign="center" wordWrap="true" textTrimming="none" autoSize="true"/>
+			</flowPart>
+			<otherSmallCenter text="Inicial" field="inicialresiliencia"/>
+			<otherSmallCenter text="Bonus" field="bonusresiliencia"/>
+			<otherSmallCenter text="XP" field="xpresiliencia"/>
+			<otherSmallCenter text="Outros" field="outroresiliencia"/>
+		</flowLayout>
+	</popup>
+	<popup name="popMentais" width="260" height="120" backOpacity="0.4" autoScopeNode="false">
+		<flowLayout align="top" autoHeight="true" maxControlsPerLine="5" margins="{bottom=4}" horzAlign="center">
+
+			<flowPart minWidth="30" maxWidth="50" height="35">
+				<label align="client" class="tituloCampo" fontSize="10" text="Força" horzTextAlign="center" wordWrap="true" textTrimming="none" autoSize="true"/>
+			</flowPart>
+			<otherSmallCenter text="Inicial" field="inicialcarisma"/>
+			<otherSmallCenter text="Bonus" field="bonuscarisma"/>
+			<otherSmallCenter text="XP" field="xpcarisma"/>
+			<otherSmallCenter text="Outros" field="outrocarisma"/>
+
+			<flowPart minWidth="30" maxWidth="50" height="35">
+				<label align="client" class="tituloCampo" fontSize="10" text="Agilidade" horzTextAlign="center" wordWrap="true" textTrimming="none" autoSize="true"/>
+			</flowPart>
+			<otherSmallCenter text="Inicial" field="inicialpercepcao"/>
+			<otherSmallCenter text="Bonus" field="bonuspercepcao"/>
+			<otherSmallCenter text="XP" field="xppercepcao"/>
+			<otherSmallCenter text="Outros" field="outropercepcao"/>
+
+			<flowPart minWidth="30" maxWidth="50" height="35">
+				<label align="client" class="tituloCampo" fontSize="10" text="Resiliência" horzTextAlign="center" wordWrap="true" textTrimming="none" autoSize="true"/>
+			</flowPart>
+			<otherSmallCenter text="Inicial" field="inicialperspicacia"/>
+			<otherSmallCenter text="Bonus" field="bonusperspicacia"/>
+			<otherSmallCenter text="XP" field="xpperspicacia"/>
+			<otherSmallCenter text="Outros" field="outroperspicacia"/>
+		</flowLayout>
+	</popup>
+	<popup name="popAegis" width="260" height="120" backOpacity="0.4" autoScopeNode="false">
+		<flowLayout align="top" autoHeight="true" maxControlsPerLine="5" margins="{bottom=4}" horzAlign="center">
+
+			<flowPart minWidth="30" maxWidth="50" height="35">
+				<label align="client" class="tituloCampo" fontSize="10" text="Força" horzTextAlign="center" wordWrap="true" textTrimming="none" autoSize="true"/>
+			</flowPart>
+			<otherSmallCenter text="Inicial" field="inicialconsciencia"/>
+			<otherSmallCenter text="Bonus" field="bonusconsciencia"/>
+			<otherSmallCenter text="XP" field="xpconsciencia"/>
+			<otherSmallCenter text="Outros" field="outroconsciencia"/>
+
+			<flowPart minWidth="30" maxWidth="50" height="35">
+				<label align="client" class="tituloCampo" fontSize="10" text="Agilidade" horzTextAlign="center" wordWrap="true" textTrimming="none" autoSize="true"/>
+			</flowPart>
+			<otherSmallCenter text="Inicial" field="inicialespirito"/>
+			<otherSmallCenter text="Bonus" field="bonusespirito"/>
+			<otherSmallCenter text="XP" field="xpespirito"/>
+			<otherSmallCenter text="Outros" field="outroespirito"/>
+
+			<flowPart minWidth="30" maxWidth="50" height="35">
+				<label align="client" class="tituloCampo" fontSize="10" text="Resiliência" horzTextAlign="center" wordWrap="true" textTrimming="none" autoSize="true"/>
+			</flowPart>
+			<otherSmallCenter text="Inicial" field="inicialperseveranca"/>
+			<otherSmallCenter text="Bonus" field="bonusperseveranca"/>
+			<otherSmallCenter text="XP" field="xpperseveranca"/>
+			<otherSmallCenter text="Outros" field="outroperseveranca"/>
+		</flowLayout>
 	</popup>
 
 	<template name="otherSmallCenter">
@@ -145,23 +242,21 @@
 
         <label left="20" top="5" width="85" height="20" text="$(nome)"/>
 		
-		<rectangle left="100" top="0" width="40" height="25" color="black" strokeColor="white" strokeSize="1"/>
-        <label left="100" top="3" width="40" height="20" field="total$(field)" horzTextAlign="center"/>
+		<rectangle left="100" top="0" width="50" height="25" color="black" strokeColor="white" strokeSize="1"/>
+        <label left="100" top="3" width="50" height="20" field="total$(field)" horzTextAlign="center"/>
         
-        <rectangle left="145" top="0" width="30" height="25" color="black" strokeColor="white" strokeSize="1"/>
-		<label left="145" top="0" width="30" height="25" field="base$(field)" horzTextAlign="center" vertTextAlign="center"/>
+        <rectangle left="155" top="0" width="30" height="25" color="black" strokeColor="white" strokeSize="1"/>
+		<label left="155" top="0" width="30" height="25" field="base$(field)" horzTextAlign="center" vertTextAlign="center"/>
 		<dataLink field="base$(field)" defaultValue="$(minVal)"/>
-        <edit left="180" top="0" width="30" height="25" type="number" field="inicial$(field)"/>
-		<edit left="215" top="0" width="30" height="25" type="number" field="bonus$(field)"/>
-        <edit left="250" top="0" width="30" height="25" type="number" field="xp$(field)"/>
 		
-		<dataLink fields="{'base$(field)', 'inicial$(field)', 'bonus$(field)', 'xp$(field)', 'penalidadeEscudo', 'penalidadeArmadura'}">
+		<dataLink fields="{'base$(field)', 'inicial$(field)', 'bonus$(field)', 'xp$(field)', 'outro$(field)', 'penalidadeEscudo', 'penalidadeArmadura'}">
 			<event name="onChange">
 				if sheet==nil then return end;
 				local mod = (tonumber(sheet.base$(field)) or 0)+
 							(tonumber(sheet.inicial$(field)) or 0)+
 							(tonumber(sheet.bonus$(field)) or 0)+
-							(tonumber(sheet.xp$(field)) or 0);
+							(tonumber(sheet.xp$(field)) or 0) +
+							(tonumber(sheet.outro$(field)) or 0);
 				if $(fator) > 1 then
 					local pen = 0;
 					if "$(field)"=="agilidade" then
@@ -256,82 +351,115 @@
 			</layout>
 		</layout>
 		
-		<layout left="0" top="75" width="315" height="245">
+		<layout left="0" top="75" width="235" height="245">
 			<rectangle align="client" color="black" xradius="15" yradius="15" cornerType="round"/>
-			<label left="5" top="0" width="315" height="20" text="ATRIBUTOS" horzTextAlign="center"/>
-			<label left="250" top="80" width="100" height="20" text="Físicos" horzTextAlign="center" rotationAngle="90"/>
-			<label left="250" top="175" width="100" height="20" text="Mentais" horzTextAlign="center" rotationAngle="90"/>
+			<label left="5" top="0" width="235" height="20" text="ATRIBUTOS" horzTextAlign="center"/>
+			<button left="170" top="80" width="75" height="20" text="Físicos" horzTextAlign="center" rotationAngle="90" name="btFisicos" onClick="ShowPopup(&quot;popFisicos&quot;,&quot;btFisicos&quot;)"/>
+			<button left="170" top="185" width="75" height="20" text="Mentais" horzTextAlign="center" rotationAngle="90" name="btMentais" onClick="ShowPopup(&quot;popMentais&quot;,&quot;btMentais&quot;)"/>
 			
-			<label left="105" top="25" width="315" height="20" text=" Total"/>
-			<label left="150" top="25" width="315" height="20" text="Base"/>
-			<label left="185" top="25" width="315" height="20" text=" Inic"/>
-			<label left="220" top="25" width="315" height="20" text=" Apr."/>
-			<label left="255" top="25" width="315" height="20" text="  XP"/>
+			<label left="110" top="25" width="235" height="20" text=" Total"/>
+			<label left="160" top="25" width="235" height="20" text="Base"/>
 			
-			<layout left="5" top="50" width="315" height="30" >
+			<layout left="5" top="50" width="235" height="30" >
 				<Atributo field="forca" nome="Força" fator="2" minVal="3"/>
 			</layout>
-			<layout left="5" top="80" width="315" height="30" >
+			<layout left="5" top="80" width="235" height="30" >
 				<Atributo field="agilidade" nome="Agilidade" fator="2" minVal="3"/>
 			</layout>
-			<layout left="5" top="110" width="315" height="30" >
+			<layout left="5" top="110" width="235" height="30" >
 				<Atributo field="resiliencia" nome="Resiliência" fator="2" minVal="3"/>
 			</layout>
-			<horzLine left="0" top="145" width="315" strokeColor="white"/>
-			<layout left="5" top="150" width="315" height="30" >
+			<horzLine left="0" top="145" width="235" strokeColor="white"/>
+			<layout left="5" top="150" width="235" height="30" >
 				<Atributo field="carisma" nome="Carisma" fator="2" minVal="3"/>
 			</layout>
-			<layout left="5" top="180" width="315" height="30" >
+			<layout left="5" top="180" width="235" height="30" >
 				<Atributo field="percepcao" nome="Percepção" fator="2" minVal="3"/>
 			</layout>
-			<layout left="5" top="210" width="315" height="30" >
+			<layout left="5" top="210" width="235" height="30" >
 				<Atributo field="perspicacia" nome="Perspicácia" fator="2" minVal="3"/>
 			</layout>
 		</layout>
 		
-		<layout left="0" top="325" width="315" height="185">
+		<layout left="0" top="325" width="235" height="185">
 			<rectangle align="client" color="black" xradius="15" yradius="15" cornerType="round"/>
-			<label left="5" top="0" width="315" height="20" text="EIDOLON" horzTextAlign="center"/>
+			<label left="5" top="0" width="235" height="20" text="EIDOLON" horzTextAlign="center"/>
 			
-			<label left="105" top="25" width="315" height="20" text=" Total"/>
-			<label left="150" top="25" width="315" height="20" text="Base"/>
-			<label left="185" top="25" width="315" height="20" text=" Inic"/>
-			<label left="220" top="25" width="315" height="20" text=" Apr."/>
-			<label left="255" top="25" width="315" height="20" text="  XP"/>
+			<label left="110" top="25" width="235" height="20" text=" Total"/>
+			<label left="160" top="25" width="235" height="20" text="Base"/>
 			
-			<label left="250" top="80" width="100" height="20" text="Aegis" horzTextAlign="center" rotationAngle="90"/>
-			<layout left="5" top="50" width="315" height="30" >
+			<button left="170" top="80" width="75" height="20" text="Aegis" horzTextAlign="center" rotationAngle="90" name="btAegis" onClick="ShowPopup(&quot;popAegis&quot;,&quot;btAegis&quot;)"/>
+			<layout left="5" top="50" width="235" height="30" >
 				<Atributo field="consciencia" nome="Consciência" fator="1" minVal="1"/>
 			</layout>
-			<layout left="5" top="80" width="315" height="30" >
+			<layout left="5" top="80" width="235" height="30" >
 				<Atributo field="espirito" nome="Espírito" fator="1" minVal="1"/>
 			</layout>
-			<layout left="5" top="110" width="315" height="30" >
+			<layout left="5" top="110" width="235" height="30" >
 				<Atributo field="perseveranca" nome="Perseverança" fator="1" minVal="1"/>
 			</layout>
 			
-			<horzLine left="0" top="145" width="315" strokeColor="white"/>
-			<layout left="5" top="150" width="315" height="30" >
-				<label left="30" top="0" width="85" height="20" text="Gladius"/>
-				<edit left="175" top="0" width="30" height="25" type="number" field="gladiusMin">
+			<horzLine left="0" top="145" width="235" strokeColor="white"/>
+			<layout left="5" top="150" width="235" height="30" >
+				<label left="10" top="0" width="85" height="20" text="Gladius"/>
+				<progressBar left="70" top="5" width="65" height="15" color="blue" hitTest="true" max="1" field="gladius"/>
+				<edit left="150" top="0" width="30" height="25" type="number" field="gladiusMin">
 					<event name="onUserChange">
 						if sheet.gladiusMin~=nil and sheet.gladiusMax~=nil then
 							sheet.gladius = sheet.gladiusMin/sheet.gladiusMax;
 						end;
 					</event>
 				</edit>
-				<edit left="210" top="0" width="30" height="25" type="number" field="gladiusMax">
+				<edit left="180" top="0" width="30" height="25" type="number" field="gladiusMax">
 					<event name="onUserChange">
 						if sheet.gladiusMin~=nil and sheet.gladiusMax~=nil then
 							sheet.gladius = sheet.gladiusMin/sheet.gladiusMax;
 						end;
 					</event>
 				</edit>
-				<progressBar left="100" top="5" width="65" height="15" color="blue" hitTest="true" max="1" field="gladius"/>
 			</layout>
 		</layout>
+
+		<layout left="0" top="515" width="235" height="70">
+			<rectangle align="client" color="black" xradius="15" yradius="15" cornerType="round"/>
+			
+			<button left="10" top="10" width="70" height="20" text="Iniciativa">
+				 <event name="onClick">
+					local mesaDoPersonagem = rrpg.getMesaDe(sheet);
+					
+					rolagem = rrpg.interpretarRolagem("1d10 + " .. (sheet.iniciativa or 0));
+					mesaDoPersonagem.activeChat:rolarDados(rolagem, "Iniciativa de " .. (sheet.nome or 0));
+				 </event>
+			</button>
+			<rectangle left="90" top="10" width="35" height="25" color="Black" strokeColor="white" strokeSize="1"/>
+			<label left="100" top="10" width="30" height="20" field="iniciativa"/>
+			
+			<edit left="130" top="10" width="30" height="25" type="number" field="iniciativaBonus"/>
+			<label left="165" top="10" width="80" height="20" field="ms"/>
+			
+			<label left="10" top="40" width="90" height="20" text="Velocidade"/>
+			<rectangle left="90" top="40" width="35" height="25" color="Black" strokeColor="white" strokeSize="1"/>
+			<label left="100" top="40" width="30" height="20" field="velocidade"/>
+			
+			<edit left="130" top="40" width="30" height="25" type="number" field="velocidadeBonus"/>
+			<label left="165" top="40" width="80" height="20" field="kmh"/>
+			
+			
+			<dataLink fields="{'totalforca', 'totalagilidade', 'totalperspicacia', 'iniciativaBonus', 'velocidadeBonus'}">
+				<event name="onChange">
+					if sheet ~= nil then
+						sheet.iniciativa = ((tonumber(sheet.testeagilidade) or 0) + (tonumber(sheet.testeperspicacia) or 0)) * 2 + (tonumber(sheet.iniciativaBonus) or 0);
+						sheet.velocidade = ((tonumber(sheet.testeagilidade) or 0) + (tonumber(sheet.testeforca) or 0) + 2) * 2 + (tonumber(sheet.velocidadeBonus) or 0);
+						local mod = math.floor(((tonumber(sheet.velocidade) or 0)/3) * 100);
+						mod = mod / 100;
+						sheet.ms = mod .. "m/s";
+						sheet.kmh = ((tonumber(sheet.velocidade) or 0)*1.2) .. "Km/h";
+					end;
+				</event>
+			</dataLink>
+		</layout>
 		
-		<layout left="320" top="75" width="300" height="320">
+		<layout left="240" top="75" width="300" height="320">
 			<rectangle align="client" color="black" xradius="15" yradius="15" cornerType="round"/>
 			<label left="0" top="0" width="300" height="20" text="HISTORICOS" horzTextAlign="center"/>
 			
@@ -399,7 +527,7 @@
 			</scrollBox>
 		</layout>
 
-		<layout left="320" top="400" width="300" height="180">
+		<layout left="240" top="400" width="300" height="180">
 			<rectangle align="client" color="black" xradius="15" yradius="15" cornerType="round"/>
 			<label left="0" top="5" width="300" height="20" text="OUTROS" horzTextAlign="center"/>
 			<button text="+" left="100" top="5" width="20" height="20">
@@ -421,7 +549,7 @@
 			</scrollBox>
 		</layout>
 		
-		<layout left="625" top="75" width="210" height="450">
+		<layout left="545" top="75" width="210" height="450">
 			<rectangle align="client" color="black" xradius="15" yradius="15" cornerType="round"/>
 			<label left="5" top="0" width="210" height="20" text="SAÚDE" horzTextAlign="center"/>
 			
@@ -482,49 +610,9 @@
 					end;
 				</event>
 			</dataLink>
-			
 		</layout>
 		
-		<layout left="0" top="515" width="315" height="70">
-			<rectangle align="client" color="black" xradius="15" yradius="15" cornerType="round"/>
-			
-			<button left="10" top="10" width="70" height="20" text="Iniciativa">
-				 <event name="onClick">
-					local mesaDoPersonagem = rrpg.getMesaDe(sheet);
-					
-					rolagem = rrpg.interpretarRolagem("1d10 + " .. (sheet.iniciativa or 0));
-					mesaDoPersonagem.activeChat:rolarDados(rolagem, "Iniciativa de " .. (sheet.nome or 0));
-				 </event>
-			</button>
-			<rectangle left="90" top="10" width="35" height="25" color="Black" strokeColor="white" strokeSize="1"/>
-			<label left="100" top="10" width="30" height="20" field="iniciativa"/>
-			
-			<edit left="135" top="10" width="30" height="25" type="number" field="iniciativaBonus"/>
-			<label left="190" top="10" width="100" height="20" field="ms"/>
-			
-			<label left="10" top="40" width="90" height="20" text="Velocidade"/>
-			<rectangle left="90" top="40" width="35" height="25" color="Black" strokeColor="white" strokeSize="1"/>
-			<label left="100" top="40" width="30" height="20" field="velocidade"/>
-			
-			<edit left="135" top="40" width="30" height="25" type="number" field="velocidadeBonus"/>
-			<label left="190" top="40" width="100" height="20" field="kmh"/>
-			
-			
-			<dataLink fields="{'totalforca', 'totalagilidade', 'totalperspicacia', 'iniciativaBonus', 'velocidadeBonus'}">
-				<event name="onChange">
-					if sheet ~= nil then
-						sheet.iniciativa = ((tonumber(sheet.testeagilidade) or 0) + (tonumber(sheet.testeperspicacia) or 0)) * 2 + (tonumber(sheet.iniciativaBonus) or 0);
-						sheet.velocidade = ((tonumber(sheet.testeagilidade) or 0) + (tonumber(sheet.testeforca) or 0) + 2) * 2 + (tonumber(sheet.velocidadeBonus) or 0);
-						local mod = math.floor(((tonumber(sheet.velocidade) or 0)/3) * 100);
-						mod = mod / 100;
-						sheet.ms = mod .. "m/s";
-						sheet.kmh = ((tonumber(sheet.velocidade) or 0)*1.2) .. "Km/h";
-					end;
-				</event>
-			</dataLink>
-		</layout>
-		
-		<layout left="840" top="445" width="300" height="80">
+		<layout left="760" top="445" width="300" height="80">
 			<rectangle align="client" color="black" xradius="5" yradius="5" cornerType="round"/>
 			
 			<rectangle left="10" top="30" width="35" height="25" color="Black" strokeColor="white" strokeSize="1"/>
@@ -567,12 +655,11 @@
        		</button>
 		</layout>
 		
-		<rectangle left="840" top="90" width="350" height="350" color="DimGray" xradius="5" yradius="5" cornerType="innerLine"/>
-		<image left="840" top="90" width="350" height="350" field="avatar" editable="true" style="autoFit"/>
+		<rectangle left="760" top="90" width="350" height="350" color="DimGray" xradius="5" yradius="5" cornerType="innerLine"/>
+		<image left="760" top="90" width="350" height="350" field="avatar" editable="true" style="autoFit"/>
 	</scrollBox>
 
 	<script>
-
 		local function rolar()
 			local mesaDoPersonagem = rrpg.getMesaDe(sheet);
 			local num1 = (tonumber(sheet.num1) or 0);
