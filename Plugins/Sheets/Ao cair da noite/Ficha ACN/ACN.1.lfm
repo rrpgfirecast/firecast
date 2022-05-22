@@ -60,7 +60,7 @@
 				<label align="client" class="tituloCampo" fontSize="10" text="Força" horzTextAlign="center" wordWrap="true" textTrimming="none" autoSize="true"/>
 			</flowPart>
 			<otherSmallCenter text="Inicial" field="inicialforca"/>
-			<otherSmallCenter text="Bonus" field="bonusforca"/>
+			<otherSmallCenter text="Apr." field="bonusforca"/>
 			<otherSmallCenter text="XP" field="xpforca"/>
 			<otherSmallCenter text="Outros" field="outroforca"/>
 
@@ -68,7 +68,7 @@
 				<label align="client" class="tituloCampo" fontSize="10" text="Agilidade" horzTextAlign="center" wordWrap="true" textTrimming="none" autoSize="true"/>
 			</flowPart>
 			<otherSmallCenter text="Inicial" field="inicialagilidade"/>
-			<otherSmallCenter text="Bonus" field="bonusagilidade"/>
+			<otherSmallCenter text="Apr." field="bonusagilidade"/>
 			<otherSmallCenter text="XP" field="xpagilidade"/>
 			<otherSmallCenter text="Outros" field="outroagilidade"/>
 
@@ -76,7 +76,7 @@
 				<label align="client" class="tituloCampo" fontSize="10" text="Resiliência" horzTextAlign="center" wordWrap="true" textTrimming="none" autoSize="true"/>
 			</flowPart>
 			<otherSmallCenter text="Inicial" field="inicialresiliencia"/>
-			<otherSmallCenter text="Bonus" field="bonusresiliencia"/>
+			<otherSmallCenter text="Apr." field="bonusresiliencia"/>
 			<otherSmallCenter text="XP" field="xpresiliencia"/>
 			<otherSmallCenter text="Outros" field="outroresiliencia"/>
 		</flowLayout>
@@ -88,7 +88,7 @@
 				<label align="client" class="tituloCampo" fontSize="10" text="Força" horzTextAlign="center" wordWrap="true" textTrimming="none" autoSize="true"/>
 			</flowPart>
 			<otherSmallCenter text="Inicial" field="inicialcarisma"/>
-			<otherSmallCenter text="Bonus" field="bonuscarisma"/>
+			<otherSmallCenter text="Apr." field="bonuscarisma"/>
 			<otherSmallCenter text="XP" field="xpcarisma"/>
 			<otherSmallCenter text="Outros" field="outrocarisma"/>
 
@@ -96,7 +96,7 @@
 				<label align="client" class="tituloCampo" fontSize="10" text="Agilidade" horzTextAlign="center" wordWrap="true" textTrimming="none" autoSize="true"/>
 			</flowPart>
 			<otherSmallCenter text="Inicial" field="inicialpercepcao"/>
-			<otherSmallCenter text="Bonus" field="bonuspercepcao"/>
+			<otherSmallCenter text="Apr." field="bonuspercepcao"/>
 			<otherSmallCenter text="XP" field="xppercepcao"/>
 			<otherSmallCenter text="Outros" field="outropercepcao"/>
 
@@ -104,7 +104,7 @@
 				<label align="client" class="tituloCampo" fontSize="10" text="Resiliência" horzTextAlign="center" wordWrap="true" textTrimming="none" autoSize="true"/>
 			</flowPart>
 			<otherSmallCenter text="Inicial" field="inicialperspicacia"/>
-			<otherSmallCenter text="Bonus" field="bonusperspicacia"/>
+			<otherSmallCenter text="Apr." field="bonusperspicacia"/>
 			<otherSmallCenter text="XP" field="xpperspicacia"/>
 			<otherSmallCenter text="Outros" field="outroperspicacia"/>
 		</flowLayout>
@@ -116,7 +116,7 @@
 				<label align="client" class="tituloCampo" fontSize="10" text="Força" horzTextAlign="center" wordWrap="true" textTrimming="none" autoSize="true"/>
 			</flowPart>
 			<otherSmallCenter text="Inicial" field="inicialconsciencia"/>
-			<otherSmallCenter text="Bonus" field="bonusconsciencia"/>
+			<otherSmallCenter text="Apr." field="bonusconsciencia"/>
 			<otherSmallCenter text="XP" field="xpconsciencia"/>
 			<otherSmallCenter text="Outros" field="outroconsciencia"/>
 
@@ -124,7 +124,7 @@
 				<label align="client" class="tituloCampo" fontSize="10" text="Agilidade" horzTextAlign="center" wordWrap="true" textTrimming="none" autoSize="true"/>
 			</flowPart>
 			<otherSmallCenter text="Inicial" field="inicialespirito"/>
-			<otherSmallCenter text="Bonus" field="bonusespirito"/>
+			<otherSmallCenter text="Apr." field="bonusespirito"/>
 			<otherSmallCenter text="XP" field="xpespirito"/>
 			<otherSmallCenter text="Outros" field="outroespirito"/>
 
@@ -132,7 +132,7 @@
 				<label align="client" class="tituloCampo" fontSize="10" text="Resiliência" horzTextAlign="center" wordWrap="true" textTrimming="none" autoSize="true"/>
 			</flowPart>
 			<otherSmallCenter text="Inicial" field="inicialperseveranca"/>
-			<otherSmallCenter text="Bonus" field="bonusperseveranca"/>
+			<otherSmallCenter text="Apr." field="bonusperseveranca"/>
 			<otherSmallCenter text="XP" field="xpperseveranca"/>
 			<otherSmallCenter text="Outros" field="outroperseveranca"/>
 		</flowLayout>

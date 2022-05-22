@@ -5,9 +5,6 @@
 			<rectangle align="client" color="black" xradius="5" yradius="15" cornerType="round">
 	        	<label align="top" height="20" text="Anotações" horzTextAlign="center"/>
 				<textEditor align="client" field="anotacoes4" margins="{left=10,right=10,bottom=10}"/>
-				<rectangle align="bottom" height="380" color="DimGray" xradius="5" yradius="5" cornerType="innerLine" margins="{left=10,right=10,bottom=10}" strokeColor="white" strokeSize="1">
-					<image align="client" field="anotacoesPic4" editable="true" style="autoFit"/>
-				</rectangle>
 			</rectangle>
       </layout>
 		
@@ -15,9 +12,6 @@
 			<rectangle align="client" color="black" xradius="5" yradius="15" cornerType="round">
 	        	<label align="top" height="20" text="Anotações" horzTextAlign="center"/>
 				<textEditor align="client" field="anotacoes5" margins="{left=10,right=10,bottom=10}"/>
-				<rectangle align="bottom" height="380" color="DimGray" xradius="5" yradius="5" cornerType="innerLine" margins="{left=10,right=10,bottom=10}" strokeColor="white" strokeSize="1">
-					<image align="client" field="anotacoesPic5" editable="true" style="autoFit"/>
-				</rectangle>
 			</rectangle>
       </layout>
 		
