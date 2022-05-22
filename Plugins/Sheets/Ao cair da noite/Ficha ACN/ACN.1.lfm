@@ -53,84 +53,93 @@
 			</event>
 		</dataLink>
 	</popup>
-	<popup name="popFisicos" width="260" height="120" backOpacity="0.4" autoScopeNode="false">
-		<flowLayout align="top" autoHeight="true" maxControlsPerLine="5" margins="{bottom=4}" horzAlign="center">
+	<popup name="popFisicos" width="350" height="120" backOpacity="0.4" autoScopeNode="false">
+		<flowLayout align="top" autoHeight="true" maxControlsPerLine="6" margins="{bottom=4}" horzAlign="center">
 
-			<flowPart minWidth="30" maxWidth="50" height="35">
+			<flowPart minWidth="30" maxWidth="75" height="35">
 				<label align="client" class="tituloCampo" fontSize="10" text="Força" horzTextAlign="center" wordWrap="true" textTrimming="none" autoSize="true"/>
 			</flowPart>
+			<recLabelCenter text="Base" field="baseforca"/>
 			<otherSmallCenter text="Inicial" field="inicialforca"/>
 			<otherSmallCenter text="Apr." field="bonusforca"/>
 			<otherSmallCenter text="XP" field="xpforca"/>
 			<otherSmallCenter text="Outros" field="outroforca"/>
 
-			<flowPart minWidth="30" maxWidth="50" height="35">
+			<flowPart minWidth="30" maxWidth="75" height="35">
 				<label align="client" class="tituloCampo" fontSize="10" text="Agilidade" horzTextAlign="center" wordWrap="true" textTrimming="none" autoSize="true"/>
 			</flowPart>
+			<recLabelCenter text="Base" field="baseagilidade"/>
 			<otherSmallCenter text="Inicial" field="inicialagilidade"/>
 			<otherSmallCenter text="Apr." field="bonusagilidade"/>
 			<otherSmallCenter text="XP" field="xpagilidade"/>
 			<otherSmallCenter text="Outros" field="outroagilidade"/>
 
-			<flowPart minWidth="30" maxWidth="50" height="35">
+			<flowPart minWidth="30" maxWidth="75" height="35">
 				<label align="client" class="tituloCampo" fontSize="10" text="Resiliência" horzTextAlign="center" wordWrap="true" textTrimming="none" autoSize="true"/>
 			</flowPart>
+			<recLabelCenter text="Base" field="baseresiliencia"/>
 			<otherSmallCenter text="Inicial" field="inicialresiliencia"/>
 			<otherSmallCenter text="Apr." field="bonusresiliencia"/>
 			<otherSmallCenter text="XP" field="xpresiliencia"/>
 			<otherSmallCenter text="Outros" field="outroresiliencia"/>
 		</flowLayout>
 	</popup>
-	<popup name="popMentais" width="260" height="120" backOpacity="0.4" autoScopeNode="false">
-		<flowLayout align="top" autoHeight="true" maxControlsPerLine="5" margins="{bottom=4}" horzAlign="center">
+	<popup name="popMentais" width="350" height="120" backOpacity="0.4" autoScopeNode="false">
+		<flowLayout align="top" autoHeight="true" maxControlsPerLine="6" margins="{bottom=4}" horzAlign="center">
 
-			<flowPart minWidth="30" maxWidth="50" height="35">
-				<label align="client" class="tituloCampo" fontSize="10" text="Força" horzTextAlign="center" wordWrap="true" textTrimming="none" autoSize="true"/>
+			<flowPart minWidth="30" maxWidth="75" height="35">
+				<label align="client" class="tituloCampo" fontSize="10" text="Carisma" horzTextAlign="center" wordWrap="true" textTrimming="none" autoSize="true"/>
 			</flowPart>
+			<recLabelCenter text="Base" field="basecarisma"/>
 			<otherSmallCenter text="Inicial" field="inicialcarisma"/>
 			<otherSmallCenter text="Apr." field="bonuscarisma"/>
 			<otherSmallCenter text="XP" field="xpcarisma"/>
 			<otherSmallCenter text="Outros" field="outrocarisma"/>
 
-			<flowPart minWidth="30" maxWidth="50" height="35">
-				<label align="client" class="tituloCampo" fontSize="10" text="Agilidade" horzTextAlign="center" wordWrap="true" textTrimming="none" autoSize="true"/>
+			<flowPart minWidth="30" maxWidth="75" height="35">
+				<label align="client" class="tituloCampo" fontSize="10" text="Percepção" horzTextAlign="center" wordWrap="true" textTrimming="none" autoSize="true"/>
 			</flowPart>
+			<recLabelCenter text="Base" field="basepercepcao"/>
 			<otherSmallCenter text="Inicial" field="inicialpercepcao"/>
 			<otherSmallCenter text="Apr." field="bonuspercepcao"/>
 			<otherSmallCenter text="XP" field="xppercepcao"/>
 			<otherSmallCenter text="Outros" field="outropercepcao"/>
 
-			<flowPart minWidth="30" maxWidth="50" height="35">
-				<label align="client" class="tituloCampo" fontSize="10" text="Resiliência" horzTextAlign="center" wordWrap="true" textTrimming="none" autoSize="true"/>
+			<flowPart minWidth="30" maxWidth="75" height="35">
+				<label align="client" class="tituloCampo" fontSize="10" text="Perspicácia" horzTextAlign="center" wordWrap="true" textTrimming="none" autoSize="true"/>
 			</flowPart>
+			<recLabelCenter text="Base" field="baseperspicacia"/>
 			<otherSmallCenter text="Inicial" field="inicialperspicacia"/>
 			<otherSmallCenter text="Apr." field="bonusperspicacia"/>
 			<otherSmallCenter text="XP" field="xpperspicacia"/>
 			<otherSmallCenter text="Outros" field="outroperspicacia"/>
 		</flowLayout>
 	</popup>
-	<popup name="popAegis" width="260" height="120" backOpacity="0.4" autoScopeNode="false">
-		<flowLayout align="top" autoHeight="true" maxControlsPerLine="5" margins="{bottom=4}" horzAlign="center">
+	<popup name="popAegis" width="350" height="120" backOpacity="0.4" autoScopeNode="false">
+		<flowLayout align="top" autoHeight="true" maxControlsPerLine="6" margins="{bottom=4}" horzAlign="center">
 
-			<flowPart minWidth="30" maxWidth="50" height="35">
-				<label align="client" class="tituloCampo" fontSize="10" text="Força" horzTextAlign="center" wordWrap="true" textTrimming="none" autoSize="true"/>
+			<flowPart minWidth="30" maxWidth="75" height="35">
+				<label align="client" class="tituloCampo" fontSize="10" text="Consciência" horzTextAlign="center" wordWrap="true" textTrimming="none" autoSize="true"/>
 			</flowPart>
+			<recLabelCenter text="Base" field="baseconsciencia"/>
 			<otherSmallCenter text="Inicial" field="inicialconsciencia"/>
 			<otherSmallCenter text="Apr." field="bonusconsciencia"/>
 			<otherSmallCenter text="XP" field="xpconsciencia"/>
 			<otherSmallCenter text="Outros" field="outroconsciencia"/>
 
-			<flowPart minWidth="30" maxWidth="50" height="35">
-				<label align="client" class="tituloCampo" fontSize="10" text="Agilidade" horzTextAlign="center" wordWrap="true" textTrimming="none" autoSize="true"/>
+			<flowPart minWidth="30" maxWidth="75" height="35">
+				<label align="client" class="tituloCampo" fontSize="10" text="Espírito" horzTextAlign="center" wordWrap="true" textTrimming="none" autoSize="true"/>
 			</flowPart>
+			<recLabelCenter text="Base" field="baseespirito"/>
 			<otherSmallCenter text="Inicial" field="inicialespirito"/>
 			<otherSmallCenter text="Apr." field="bonusespirito"/>
 			<otherSmallCenter text="XP" field="xpespirito"/>
 			<otherSmallCenter text="Outros" field="outroespirito"/>
 
-			<flowPart minWidth="30" maxWidth="50" height="35">
-				<label align="client" class="tituloCampo" fontSize="10" text="Resiliência" horzTextAlign="center" wordWrap="true" textTrimming="none" autoSize="true"/>
+			<flowPart minWidth="30" maxWidth="75" height="35">
+				<label align="client" class="tituloCampo" fontSize="10" text="Perseverança" horzTextAlign="center" wordWrap="true" textTrimming="none" autoSize="true"/>
 			</flowPart>
+			<recLabelCenter text="Base" field="baseperseveranca"/>
 			<otherSmallCenter text="Inicial" field="inicialperseveranca"/>
 			<otherSmallCenter text="Apr." field="bonusperseveranca"/>
 			<otherSmallCenter text="XP" field="xpperseveranca"/>
@@ -138,6 +147,14 @@
 		</flowLayout>
 	</popup>
 
+	<template name="recLabelCenter">
+		<flowPart minWidth="30" maxWidth="50" height="35">
+			<label align="top" class="tituloCampo" fontSize="10" text="$(text)" horzTextAlign="center" wordWrap="true" textTrimming="none" autoSize="true"/>
+			<rectangle align="client" top="0" width="30" height="25" color="black" strokeColor="white" strokeSize="1">
+				<label align="client" top="0" width="30" height="25" field="$(field)" horzTextAlign="center" vertTextAlign="center"/>
+			</rectangle>
+		</flowPart>
+	</template>
 	<template name="otherSmallCenter">
 		<flowPart minWidth="30" maxWidth="50" height="35">
 			<label align="top" class="tituloCampo" fontSize="10" text="$(text)" horzTextAlign="center" wordWrap="true" textTrimming="none" autoSize="true"/>
@@ -245,8 +262,6 @@
 		<rectangle left="100" top="0" width="50" height="25" color="black" strokeColor="white" strokeSize="1"/>
         <label left="100" top="3" width="50" height="20" field="total$(field)" horzTextAlign="center"/>
         
-        <rectangle left="155" top="0" width="30" height="25" color="black" strokeColor="white" strokeSize="1"/>
-		<label left="155" top="0" width="30" height="25" field="base$(field)" horzTextAlign="center" vertTextAlign="center"/>
 		<dataLink field="base$(field)" defaultValue="$(minVal)"/>
 		
 		<dataLink fields="{'base$(field)', 'inicial$(field)', 'bonus$(field)', 'xp$(field)', 'outro$(field)', 'penalidadeEscudo', 'penalidadeArmadura'}">
@@ -354,11 +369,10 @@
 		<layout left="0" top="75" width="235" height="245">
 			<rectangle align="client" color="black" xradius="15" yradius="15" cornerType="round"/>
 			<label left="5" top="0" width="235" height="20" text="ATRIBUTOS" horzTextAlign="center"/>
-			<button left="170" top="80" width="75" height="20" text="Físicos" horzTextAlign="center" rotationAngle="90" name="btFisicos" onClick="ShowPopup(&quot;popFisicos&quot;,&quot;btFisicos&quot;)"/>
-			<button left="170" top="185" width="75" height="20" text="Mentais" horzTextAlign="center" rotationAngle="90" name="btMentais" onClick="ShowPopup(&quot;popMentais&quot;,&quot;btMentais&quot;)"/>
+			<button left="140" top="80" width="75" height="20" text="Físicos" horzTextAlign="center" rotationAngle="90" name="btFisicos" onClick="ShowPopup(&quot;popFisicos&quot;,&quot;btFisicos&quot;)"/>
+			<button left="140" top="185" width="75" height="20" text="Mentais" horzTextAlign="center" rotationAngle="90" name="btMentais" onClick="ShowPopup(&quot;popMentais&quot;,&quot;btMentais&quot;)"/>
 			
 			<label left="110" top="25" width="235" height="20" text=" Total"/>
-			<label left="160" top="25" width="235" height="20" text="Base"/>
 			
 			<layout left="5" top="50" width="235" height="30" >
 				<Atributo field="forca" nome="Força" fator="2" minVal="3"/>
@@ -388,7 +402,7 @@
 			<label left="110" top="25" width="235" height="20" text=" Total"/>
 			<label left="160" top="25" width="235" height="20" text="Base"/>
 			
-			<button left="170" top="80" width="75" height="20" text="Aegis" horzTextAlign="center" rotationAngle="90" name="btAegis" onClick="ShowPopup(&quot;popAegis&quot;,&quot;btAegis&quot;)"/>
+			<button left="140" top="80" width="75" height="20" text="Aegis" horzTextAlign="center" rotationAngle="90" name="btAegis" onClick="ShowPopup(&quot;popAegis&quot;,&quot;btAegis&quot;)"/>
 			<layout left="5" top="50" width="235" height="30" >
 				<Atributo field="consciencia" nome="Consciência" fator="1" minVal="1"/>
 			</layout>

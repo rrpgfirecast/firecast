@@ -1352,7 +1352,7 @@ local function constructNew_frmACN6()
 
     obj.dataLink21 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink21:setParent(obj.layout3);
-    obj.dataLink21:setFields({'xpforca', 'xpagilidade', 'xpresiliencia', 'testeforca', 'testeagilidade', 'testeresiliencia','auditxpcost_atrFis'});
+    obj.dataLink21:setFields({'xpforca', 'xpagilidade', 'xpresiliencia', 'testeforca', 'testeagilidade', 'testeresiliencia','auditxpcost_atrFis', 'outroforca', 'outroagilidade', 'outroresiliencia'});
     obj.dataLink21:setName("dataLink21");
 
     obj.dataLink22 = GUI.fromHandle(_obj_newObject("dataLink"));
@@ -1367,7 +1367,7 @@ local function constructNew_frmACN6()
 
     obj.dataLink24 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink24:setParent(obj.layout3);
-    obj.dataLink24:setFields({'xpcarisma', 'xppercepcao', 'xpperspicacia', 'testecarisma', 'testepercepcao', 'testeperspicacia','auditxpcost_atrMen'});
+    obj.dataLink24:setFields({'xpcarisma', 'xppercepcao', 'xpperspicacia', 'testecarisma', 'testepercepcao', 'testeperspicacia','auditxpcost_atrMen', 'outrocarisma', 'outropercepcao', 'outroperspicacia'});
     obj.dataLink24:setName("dataLink24");
 
     obj.dataLink25 = GUI.fromHandle(_obj_newObject("dataLink"));
@@ -1427,7 +1427,7 @@ local function constructNew_frmACN6()
 
     obj.dataLink36 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink36:setParent(obj.layout3);
-    obj.dataLink36:setFields({'xpconsciencia', 'xpespirito', 'xpperseveranca', 'testeconsciencia', 'testeespirito', 'testeperseveranca','auditxpcost_eido'});
+    obj.dataLink36:setFields({'xpconsciencia', 'xpespirito', 'xpperseveranca', 'testeconsciencia', 'testeespirito', 'testeperseveranca','auditxpcost_eido', 'outroconsciencia', 'outroespirito', 'outroperseveranca'});
     obj.dataLink36:setName("dataLink36");
 
     obj.dataLink37 = GUI.fromHandle(_obj_newObject("dataLink"));
@@ -1596,9 +1596,10 @@ local function constructNew_frmACN6()
             					local fisicos = 0;
             					local mult = (tonumber(sheet.auditxpcost_atrFis) or 1);
             
-            					local valores = {   ((tonumber(sheet.testeforca) or 0)*2 - (tonumber(sheet.xpforca) or 0)), 
-            										((tonumber(sheet.testeagilidade) or 0)*2 - (tonumber(sheet.xpagilidade) or 0)), 
-            										((tonumber(sheet.testeresiliencia) or 0)*2 - (tonumber(sheet.xpresiliencia) or 0)) };
+            					local valores = {
+            									((tonumber(sheet.testeforca) or 0)*2 - (tonumber(sheet.xpforca) or 0) - (tonumber(sheet.outroforca) or 0)), 
+            									((tonumber(sheet.testeagilidade) or 0)*2 - (tonumber(sheet.xpagilidade) or 0) - (tonumber(sheet.outroagilidade) or 0)), 
+            									((tonumber(sheet.testeresiliencia) or 0)*2 - (tonumber(sheet.xpresiliencia) or 0) - (tonumber(sheet.outroresiliencia) or 0)) };
             					
             					local limites = {	(tonumber(sheet.xpforca) or 0),
             										(tonumber(sheet.xpagilidade) or 0),
@@ -1639,9 +1640,9 @@ local function constructNew_frmACN6()
             					local mentais = 0;
             					local mult = (tonumber(sheet.auditxpcost_atrMen) or 1);
             
-            					local valores = {   ((tonumber(sheet.testecarisma) or 0)*2 - (tonumber(sheet.xpcarisma) or 0)), 
-            										((tonumber(sheet.testepercepcao) or 0)*2 - (tonumber(sheet.xppercepcao) or 0)),
-            										((tonumber(sheet.testeperspicacia) or 0)*2 - (tonumber(sheet.xpperspicacia) or 0)) };
+            					local valores = {   ((tonumber(sheet.testecarisma) or 0)*2 - (tonumber(sheet.xpcarisma) or 0) - (tonumber(sheet.outrocarisma) or 0)), 
+            										((tonumber(sheet.testepercepcao) or 0)*2 - (tonumber(sheet.xppercepcao) or 0) - (tonumber(sheet.outropercepcao) or 0)),
+            										((tonumber(sheet.testeperspicacia) or 0)*2 - (tonumber(sheet.xpperspicacia) or 0) - (tonumber(sheet.outroperspicacia) or 0)) };
             					
             					local limites = {	(tonumber(sheet.xpcarisma) or 0),
             										(tonumber(sheet.xppercepcao) or 0),
@@ -1910,9 +1911,9 @@ local function constructNew_frmACN6()
             					local aegis = 0;
             					local mult = (tonumber(sheet.auditxpcost_eido) or 1);
             
-            					local valores = {   ((tonumber(sheet.testeconsciencia) or 0) - (tonumber(sheet.xpconsciencia) or 0)), 
-            										((tonumber(sheet.testeespirito) or 0) - (tonumber(sheet.xpespirito) or 0)), 
-            										((tonumber(sheet.testeperseveranca) or 0) - (tonumber(sheet.xpperseveranca) or 0))};
+            					local valores = {   ((tonumber(sheet.testeconsciencia) or 0) - (tonumber(sheet.xpconsciencia) or 0) - (tonumber(sheet.outroconsciencia) or 0)), 
+            										((tonumber(sheet.testeespirito) or 0) - (tonumber(sheet.xpespirito) or 0) - (tonumber(sheet.outroespirito) or 0)), 
+            										((tonumber(sheet.testeperseveranca) or 0) - (tonumber(sheet.xpperseveranca) or 0) - (tonumber(sheet.outroperseveranca) or 0))};
             					
             					local limites = {	(tonumber(sheet.xpconsciencia) or 0),
             										(tonumber(sheet.xpespirito) or 0),
