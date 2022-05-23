@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmLH5_1" width="752" height="122" theme="dark">
+   <layout left="1" top="1" width="800" height="125">
+    		<rectangle align="client" color="0x202020" xradius="5" yradius="5" cornerType="round"/>
+
+    		<label left="5" top="0" width="100" height="25" text="Nome"/>
+			<edit left="50" top="0" width="220" height="25" field="nome_item"/>
+			
+			<label left="275" top="0" width="70" height="25" horzTextAlign="center" text="Quantidade"/>
+			<edit left="350" top="0" width="40" height="25" field="qtd_item"/>
+
+			<label left="395" top="0" width="70" height="25" text="Dano"/>
+			<edit left="435" top="0" width="160" height="25" field="dano_item"/>
+
+			<label left="585" top="0" width="70" height="25" text="Tempo" horzTextAlign="center"/>
+			<edit left="645" top="0" width="100" height="25" field="tempo_item"/>
+
+			<label left="5" top="30" width="795" height="25" horzTextAlign="center" text="Descrição"/>
+			<textEditor left="5" top="55" width="790" height="60" field="desc_item"/>
+
+			<button left="745" width="50" height="50" text="X">
+				<event name="onClick">
+					dialogs.confirmOkCancel("Tem certeza que quer apagar esse item?",
+						function (confirmado)
+							if confirmado then
+								ndb.deleteNode(sheet);
+							end;
+					end);
+				</event>
+			</button>
+		</layout>
+</form>

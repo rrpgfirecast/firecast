@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmLH7" align="client" theme="dark">
+    <scrollBox align="client">
+      <recordList name="rclAnotacoes" field="anotacoes" templateForm="frmLH7_1"
+                    left="5" top="0" height="565" width="810" minQt="1"/>
+    </scrollBox>
+</form>

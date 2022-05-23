@@ -1,0 +1,307 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmLH1" align="client" theme="dark">
+
+    <scrollBox align="client">
+
+
+		<template name="Cabecalho">
+        	<label left="0" top="5" width="90" height="20" text="$(nome)" horzTextAlign="center"/>
+        	<edit left="100" top="0" width="100" height="25" field="desc_$(field)" horzTextAlign="center"/>
+        </template>
+
+        <template name="Atributo">
+        	<label left="5" top="5" width="40" height="20" text="$(nome)"/>
+        	<edit left="40" top="0" width="40" height="25" horzTextAlign="center" field="$(field)_base">
+        		<event name="onChange">
+                	$(nome)();
+                </event>
+        	</edit>
+        	<edit left="85" top="0" width="35" height="25" horzTextAlign="center" field="$(field)_multi">
+        		<event name="onChange">
+                	$(nome)();
+                </event>
+        	</edit>
+        	<edit left="125" top="0" width="30" height="25" horzTextAlign="center" field="$(field)_outros">
+        		<event name="onChange">
+                	$(nome)();
+                </event>
+        	</edit>
+
+        	<rectangle left="160" top="0" width="50" height="25" color="Black" strokeColor="white" strokeSize="1"/>
+			<label left="160" top="0" width="50" height="25" field="$(field)_total" horzTextAlign="center"/>
+
+			<rectangle left="215" top="0" width="75" height="25" color="Black" strokeColor="white" strokeSize="1"/>
+			<label left="215" top="0" width="75" height="25" field="$(field)_teste" horzTextAlign="center"/>
+
+			<script>
+				<![CDATA[
+				local function $(nome)();
+					if sheet~=nil then
+						sheet.$(field)_total =  (tonumber(sheet.$(field)_base ) or 0) * 
+												(tonumber(sheet.$(field)_multi ) or 1) + 
+												(tonumber(sheet.$(field)_outros ) or 0);
+						rankstats = sheet.$(field)_total;
+						if rankstats<16 then
+							sheet.$(field)_teste = "Acadêmico";
+						elseif rankstats>=16 and rankstats<61 then
+							sheet.$(field)_teste = "Gennin";
+						elseif rankstats>=61 and rankstats<151 then
+							sheet.$(field)_teste = "Chuunin";
+						elseif rankstats>=151 and rankstats<271 then
+							sheet.$(field)_teste = "Jounnin";
+						elseif rankstats>=271 and rankstats<421 then
+							sheet.$(field)_teste = "ANBU";
+						else
+							sheet.$(field)_teste = "Kage";							
+						end;
+					end;
+				end;	
+				]]>
+			</script>
+        </template>
+
+		<script>
+			<![CDATA[
+			local function vida_status();
+				if sheet~=nil then
+					sheet.vida_total =  (tonumber(sheet.vida_base ) or 0) * 
+										(tonumber(sheet.vida_mult ) or 1);				
+				end;
+			end;
+			local function cha_status();
+				if sheet~=nil then
+					sheet.cha_total =  (tonumber(sheet.cha_base ) or 0) * 
+										(tonumber(sheet.cha_mult ) or 1);				
+				end;
+			end;
+			local function sta_status();
+				if sheet~=nil then
+					sheet.sta_total =  (tonumber(sheet.sta_base ) or 0) * 
+										(tonumber(sheet.sta_mult ) or 1);				
+				end;
+			end;	
+			]]>
+		</script>
+
+		<layout left="0" top="0" width="825" height="95">
+			<rectangle align="client" color="grey" xradius="10" yradius="10" cornerType="round"/>
+			<layout left="5" top="5" width="200" height="25" >
+				<Cabecalho field="clan" nome="Clan"/>
+			</layout>
+			<layout left="210" top="5" width="200" height="25" >
+				<Cabecalho field="nome" nome="Nome"/>
+			</layout>
+			<layout left="420" top="5" width="200" height="25" >
+				<Cabecalho field="rank" nome="Rank"/>
+			</layout>
+			<layout left="615" top="5" width="200" height="25" >
+				<Cabecalho field="raca" nome="Raça"/>
+			</layout>
+			<layout left="5" top="35" width="200" height="25" >
+				<Cabecalho field="vila_origem" nome="Vila de Origem"/>
+			</layout>
+			<layout left="210" top="35" width="200" height="25" >
+				<Cabecalho field="vila_atual" nome="Vila Atual"/>
+			</layout>
+			<layout left="420" top="35" width="200" height="25" >
+				<Cabecalho field="especializacao" nome="Especialização"/>
+			</layout>
+			<layout left="615" top="35" width="200" height="25" >
+				<Cabecalho field="classe" nome="Classe"/>
+			</layout>
+			<layout left="5" top="65" width="200" height="25" >
+				<Cabecalho field="dinheiro" nome="Dinheiro"/>
+			</layout>
+			<layout left="210" top="65" width="200" height="25" >
+				<Cabecalho field="Elemento Principal" nome="Elemento I"/>
+			</layout>
+			<layout left="420" top="65" width="200" height="25" >
+				<Cabecalho field="Elemento Secundario" nome="Elemento II"/>
+			</layout>
+			<layout left="615" top="65" width="200" height="25" >
+				<Cabecalho field="loginDono" nome="loginDono"/>
+			</layout>
+		</layout>
+
+		<layout left="0" top="100" width="300" height="230">
+			<rectangle align="client" color="black" xradius="5" yradius="5" cornerType="round"/>
+			<label left="5" top="5" width="290" height="20" text="ATRIBUTOS" horzTextAlign="center"/>
+			<layout left="5" top="0" width="300" height="215" name="atributos_todos" visible="false">				
+				<layout left="5" top="30" width="300" height="25">
+					<label left="50" top="0" width="35" height="25" text="Base" fontSize="11"/>
+					<label left="90" top="0" width="35" height="25" text="Multi" fontSize="11"/>
+					<label left="130" top="0" width="35" height="25" text="Extra" fontSize="11"/>
+					<label left="175" top="0" width="35" height="25" text="Total" fontSize="10"/>
+					<label left="235" top="0" width="35" height="25" text="Rank" fontSize="13"/>
+				</layout>
+				<layout left="5" top="55" width="300" height="25">
+					<Atributo nome="VDS" field="vds"/>
+				</layout>
+				<layout left="5" top="80" width="300" height="25">
+					<Atributo nome="AFE" field="afe"/>
+				</layout>
+				<layout left="5" top="110" width="300" height="25">
+					<Atributo nome="INT" field="int"/>
+				</layout>
+				<layout left="5" top="135" width="300" height="25">
+					<Atributo nome="CCH" field="cch"/>
+				</layout>
+				<layout left="5" top="165" width="300" height="25">
+					<Atributo nome="AGI" field="agi"/>
+				</layout>
+				<layout left="5" top="190" width="300" height="25">
+					<Atributo nome="FOR" field="for"/>
+				</layout>
+			</layout>
+		</layout>
+
+		<layout left="305" top="100" width="230" height="150">
+			<rectangle align="client" color="black" xradius="5" yradius="5" cornerType="round"/>
+			<label left="5" top="5" width="220" height="20" text="STATUS" horzTextAlign="center"/>
+			<label left="80" top="25" width="50" height="25" text="Base" horzTextAlign="center"/>
+			<label left="125" top="25" width="50" height="25" text="Multi" horzTextAlign="center"/>
+			<label left="170" top="25" width="50" height="25" text="Total" horzTextAlign="center"/>
+			<layout left="0" top="50" width="230" height="25">
+				<rectangle margins="{left = 5, right = 5}" align="client" color="DarkRed" opacity="0.5">
+					<rectangle margins="{left = 75" width="50" height="25" align="left" color="White" opacity="0.3"/>
+					<rectangle margins="{left = 5}" width="30" height="25" align="left" color="White" opacity="0.5"/>
+					<rectangle margins="{left = 5}" width="50" height="25" align="left" color="White" opacity="0.3"/>
+				</rectangle>
+				<label left="5" top="0" width="75" height="25" text="Vida" fontStyle="bold" horzTextAlign="center"/>
+				<edit left="85" top="0" width="40" height="25" field="vida_base" horzTextAlign="center" transparent="true">
+        		<event name="onChange">
+                	vida_status();
+                </event>
+        		</edit>
+				<edit left="135" top="0" width="30" height="25" field="vida_mult" horzTextAlign="center" transparent="true">
+				<event name="onChange">
+                	vida_status();
+                </event>
+        		</edit>
+				<label left="175" top="0" width="40" height="25" field="vida_total" horzTextAlign="center"/>
+			</layout>
+			<layout left="0" top="80" width="230" height="25">
+				<rectangle margins="{left = 5, right = 5}" align="client" color="DarkBlue" opacity="0.5">
+					<rectangle margins="{left = 75" width="50" height="25" align="left" color="White" opacity="0.3"/>
+					<rectangle margins="{left = 5}" width="30" height="25" align="left" color="White" opacity="0.5"/>
+					<rectangle margins="{left = 5}" width="50" height="25" align="left" color="White" opacity="0.3"/>
+				</rectangle>
+				<label left="5" top="0" width="75" height="25" text="Chakra" fontStyle="bold" horzTextAlign="center"/>
+				<edit left="85" top="0" width="40" height="25" field="cha_base" horzTextAlign="center" transparent="true">
+				<event name="onChange">
+                	cha_status();
+                </event>
+        		</edit>
+				<edit left="135" top="0" width="30" height="25" field="cha_mult" horzTextAlign="center" transparent="true">
+				<event name="onChange">
+                	cha_status();
+                </event>
+        		</edit>
+				<label left="175" top="0" width="40" height="25" field="cha_total" horzTextAlign="center"/>
+			</layout>
+			<layout left="0" top="110" width="230" height="25">
+				<rectangle margins="{left = 5, right = 5}" align="client" color="DarkGreen" opacity="0.5">
+					<rectangle margins="{left = 75" width="50" height="25" align="left" color="White" opacity="0.3"/>
+					<rectangle margins="{left = 5}" width="30" height="25" align="left" color="White" opacity="0.5"/>
+					<rectangle margins="{left = 5}" width="50" height="25" align="left" color="White" opacity="0.3"/>
+				</rectangle>
+				<label left="5" top="0" width="75" height="25" text="Stamina" fontStyle="bold" horzTextAlign="center"/>
+				<edit left="85" top="0" width="40" height="25" field="sta_base" horzTextAlign="center" transparent="true">
+				<event name="onChange">
+                	sta_status();
+                </event>
+        		</edit>
+				<edit left="135" top="0" width="30" height="25" field="sta_mult" horzTextAlign="center" transparent="true">
+				<event name="onChange">
+                	sta_status();
+                </event>
+        		</edit>
+				<label left="175" top="0" width="40" height="25" field="sta_total" horzTextAlign="center"/>
+			</layout>
+		</layout>
+
+		<layout left="305" top="255" width="230" height="75">
+			<rectangle align="client" color="black" xradius="5" yradius="5" cornerType="round"/>
+			<label top="0" width="220" height="20" text="Localização Atual" horzTextAlign="center"/>
+			<edit name="localizacao" visible="false" top="25" left="5" width="220" fontSize="18" height="40" horzTextAlign="center"/>
+		</layout>
+
+		<layout left="105" top="335" width="430" height="100">
+			<rectangle align="client" color="black" xradius="5" yradius="5" cornerType="round"/>
+			<label left="5" top="5" width="430" height="20" text="Bônus dos Atributos" horzTextAlign="center"/>
+
+			<textEditor name="buffatt" visible="false" left="5" top="30" width="420" height="60" field="efeitos"/>
+		</layout>
+
+		<imageCheckBox left="0" top="335" width="100" height="100" checkedImage="images/bad.jpg" uncheckedImage="images/good.jpg"/>
+
+		<layout left="0" top="440" width="530" height="260">
+			<button left="0" top="0" height="25" width="125" text="+ Vantagem" onClick="self.rclSelector:append();"/>
+			<button left="130" top="0" height="25" width="125" text="+ Desvantagem" onClick="self.rclSelector2:append();"/>
+			<!-- Marcador de tamanho da Lista de Objetos -->
+	    	<rectangle left="0" top="25" width="255" height="220" color="black"/>
+			<!-- RecordList para seleção -->
+			<recordList left="0" top="25" width="255" height="110" name="rclSelector" field="listaDeOpcoes" templateForm="frmDataScopeSelectionForm" layout="vertical" selectable="true">
+				<event name="onSelect"><![CDATA[
+						local node = self.rclSelector.selectedNode;
+						self.rclSelector2.selectedNode = nil;
+						self.boxDetalhesDoItem.node = node; 
+						
+					]]>
+				</event>
+			</recordList>
+			<recordList left="0" top="140" width="255" height="105" name="rclSelector2" field="listaDeOpcoes2" templateForm="frmDataScopeSelectionForm2" layout="vertical" selectable="true">
+				<event name="onSelect"><![CDATA[
+						local node = self.rclSelector2.selectedNode;
+						self.rclSelector.selectedNode = nil;
+						self.boxDetalhesDoItem.node = node; 
+					]]>
+				</event>
+			</recordList>			
+			<!-- Info selecionada vai estar aqui -->
+			<dataScopeBox left="255" top="25" width="280" height="220" name="boxDetalhesDoItem" visible="true">
+				<rectangle align="client" color="black"/>
+				<!-- O mesmo valor do edit nome vai estar no label do seletor pois tem o mesmo field -->
+				<edit left="5" top="5" width="265" height="25" field="nome"/>
+				<textEditor left="5" top="30" width="265" height="100" field="desc_vandes"/>
+				<label left="5" top="130" width="265" height="25" text="Efeito" horzTextAlign="center"/>
+				<textEditor left="5" top="155" width="265" height="55" field="efeito_vandes"/>
+
+			</dataScopeBox>
+		</layout>
+
+		<layout left="540" top="570" width="285" height="115">
+			<button align="left" width="285" fontSize="16" text="Mostrar Dados Ocultos!">
+                	<event name="onClick">
+						local mesa = rrpg.getMesaDe(sheet);
+						if (mesa.meuJogador.isMestre or mesa.meuJogador.login == sheet.desc_loginDono) then
+							self.inventario.visible = true;
+							self.atributos_todos.visible = true;
+							self.jutsusNINGENTAI.visible = true;
+							--self.jutsusOUTROS.visible = true;
+							--self.basicoclan.visible = true;
+							self.perso.visible = true;
+							self.hist.visible = true;
+							self.localizacao.visible = true;
+							self.anot.visible = true;
+							self.buffatt.visible = true;
+						else
+							self.inventario.visible = false;
+							self.atributos_todos.visible = false;
+							self.jutsusNINGENTAI.visible = false;
+							--self.jutsusOUTROS.visible = false;
+							--self.basicoclan.visible = false;
+							self.perso.visible = false;
+							self.hist.visible = false;
+							self.localizacao.visible = false;
+							self.anot.visible = false;
+							self.buffatt.visible = false;					
+							self.popMeuPopup:show('bottom', self.descricoes);
+						end;
+					</event>
+				</button>
+		</layout>		
+		<rectangle left="540" top="100" width="285" height="460" color="white" xradius="5" yradius="5" cornerType="innerLine"/>
+		<image left="540" top="100" width="285" height="460" field="avatar" editable="true" style="proportional"/>
+	</scrollBox>
+</form>

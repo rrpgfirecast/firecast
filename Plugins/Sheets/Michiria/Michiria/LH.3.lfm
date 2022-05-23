@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmLH3" theme="dark" width="710" padding="{left=4, top=4, right=4, bottom=4}">       
+    <scrollBox align="top" height="800" width="700">
+        <layout align="top" height="350" margins="{bottom=4}">
+            <rectangle align="top" color="grey" xradius="10" yradius="10"
+             height="350" padding="{top=3, left=3, right=3, bottom=3}">
+             <!-- Botão de inserir novo item à lista -->
+             <layout align="top" height="30" margins="{bottom=4}">
+                <button text="Adicionar Basico" width="270" align="left">
+                    <event name="onClick">
+                        -- Usuário clicou no botão de criar novo item.
+                        -- Vamos inserir um novo item no nosso recordList                              
+                        self.rclListaDosBasicos:append();
+                    </event>
+                </button>
+            </layout>       
+
+            <!-- recordList, representando a lista -->
+            <recordList name="rclListaDosBasicos" field="campoDosBasicos" templateForm="frmLH3_1"
+                align="client" height="300" selectable="true">
+
+                <event name="onSelect">
+                    --[[
+                    Este evento é chamado quando o usuário selecionar/deselecionar itens da lista. Quando o usuário selecionar, vamos fazer nosso dataScopeBox (e todas as tag dentro dele) salvar e carregar dados no   objeto Nodo (NodeDatabase) do item selecionado.
+
+                    --]]                      
+                    local node = self.rclListaDosBasicos.selectedNode;  
+                    self.boxDetalhesDoBasico.node = node;                       
+                    -- a caixa de detalhe só ficará visível se houver item selecionado
+                    self.boxDetalhesDoBasico.visible = (node ~= nil);
+                </event>
+
+            </recordList>       
+            <!-- dataScopeBox representando a nossa caixa de detalhes -->  
+            <dataScopeBox name="boxDetalhesDoBasico" visible="false" align="right" 
+               width="400" margins="{left=4, right=4}">
+               <!-- Faça um layout "bonito" para sua caixa de detalhes =). Utilize a propriedade "field" nas tags aqui dentro   -->       
+
+               <rectangle align="top" color="black" xradius="10" yradius="10"
+                 height="300" padding="{top=3, left=3, right=3, bottom=3}">
+
+
+                 <layout align="top" height="30" margins="{bottom=4}">
+                    <label align="left" text="Jutsu" width="100" autoSize="true" horzTextAlign="center"/>
+                    <edit align="client" field="campoBasico"></edit>
+                </layout>   
+
+                <layout align="top" height="30" margins="{bottom=4}">
+                    <label align="left" text="Gasto" width="100" autoSize="true" horzTextAlign="center"/>
+                    <edit align="client" field="campoGasto"></edit>
+                </layout>        
+
+                <layout align="top" height="30" margins="{bottom=4}">
+                    <label align="left" text="Quantidade" width="100" autoSize="true" horzTextAlign="center"/>
+                    <edit align="client" field="campoQuantidade"></edit>
+                </layout>                         
+
+                <layout align="top" height="30" margins="{bottom=4}">
+                    <label align="left" text="Alcance" width="100" autoSize="true" horzTextAlign="center"/>
+                    <edit align="client" field="campoAlcance"></edit>
+                </layout> 
+
+                <layout align="top" height="30" margins="{bottom=4}">
+                    <label align="left" text="Tempo" width="100" autoSize="true" horzTextAlign="center"/>
+                    <edit align="client" field="campoTempo"></edit>
+                </layout> 
+
+                <layout align="top" height="110">              
+                    <layout align="client" margins="{left=2}">
+                        <!--<edit align="top" field="campoSubTitulo" height="30"/>-->
+                        <textEditor align="top" field="campoTextoGrande" height="150"/>
+                    </layout>                      
+                </layout>
+            </rectangle>
+        </dataScopeBox>
+    </rectangle>
+</layout>
+
+<!-- GENJUTSUS -->
+<layout align="top" height="350" margins="{bottom=4}">
+    <rectangle align="top" color="grey" xradius="10" yradius="10"
+     height="350" padding="{top=3, left=3, right=3, bottom=3}">
+     <!-- Botão de inserir novo item à lista -->
+     <layout align="top" height="30" margins="{bottom=4}">
+        <button text="Adicionar Jutsu do Clan" width="270" align="left">
+            <event name="onClick">
+                -- Usuário clicou no botão de criar novo item.
+                -- Vamos inserir um novo item no nosso recordList                              
+                self.rclListaDosClans:append();
+            </event>
+        </button>
+    </layout>       
+
+    <!-- recordList, representando a lista -->
+    <recordList name="rclListaDosClans" field="campoDosClans" templateForm="frmLH3_2"
+        align="client" height="300" selectable="true">
+
+        <event name="onSelect">
+            --[[
+            Este evento é chamado quando o usuário selecionar/deselecionar itens da lista. Quando o usuário selecionar, vamos fazer nosso dataScopeBox (e todas as tag dentro dele) salvar e carregar dados no   objeto Nodo (NodeDatabase) do item selecionado.
+
+            --]]                      
+            local node = self.rclListaDosClans.selectedNode;  
+            self.boxDetalhesDoClan.node = node;                       
+            -- a caixa de detalhe só ficará visível se houver item selecionado
+            self.boxDetalhesDoClan.visible = (node ~= nil);
+        </event>
+
+    </recordList>       
+    <!-- dataScopeBox representando a nossa caixa de detalhes -->  
+    <dataScopeBox name="boxDetalhesDoClan" visible="false" align="right" 
+       width="400" margins="{left=4, right=4}">
+       <!-- Faça um layout "bonito" para sua caixa de detalhes =). Utilize a propriedade "field" nas tags aqui dentro   -->       
+
+       <rectangle align="top" color="black" xradius="10" yradius="10"
+         height="300" padding="{top=3, left=3, right=3, bottom=3}">
+
+
+         <layout align="top" height="30" margins="{bottom=4}">
+            <label align="left" text="Jutsu" width="100" autoSize="true" horzTextAlign="center"/>
+            <edit align="client" field="campoClan"></edit>
+        </layout>   
+
+        <layout align="top" height="30" margins="{bottom=4}">
+            <label align="left" text="Gasto" width="100" autoSize="true" horzTextAlign="center"/>
+            <edit align="client" field="campoGasto"></edit>
+        </layout>        
+
+        <layout align="top" height="30" margins="{bottom=4}">
+            <label align="left" text="Quantidade" width="100" autoSize="true" horzTextAlign="center"/>
+            <edit align="client" field="campoQuantidade"></edit>
+        </layout>                         
+
+        <layout align="top" height="30" margins="{bottom=4}">
+            <label align="left" text="Alcance" width="100" autoSize="true" horzTextAlign="center"/>
+            <edit align="client" field="campoAlcance"></edit>
+        </layout> 
+
+        <layout align="top" height="30" margins="{bottom=4}">
+            <label align="left" text="Tempo" width="100" autoSize="true" horzTextAlign="center"/>
+            <edit align="client" field="campoTempo"></edit>
+        </layout> 
+
+        <layout align="top" height="110">              
+            <layout align="client" margins="{left=2}">
+                <!--<edit align="top" field="campoSubTitulo" height="30"/>-->
+                <textEditor align="top" field="campoTextoGrande" height="150"/>
+            </layout>                      
+        </layout>
+    </rectangle>
+</dataScopeBox>
+</rectangle>
+</layout>
+
+<!-- TAIJUTSUS -->
+<layout align="top" height="350" margins="{bottom=4}">
+    <rectangle align="top" color="grey" xradius="10" yradius="10"
+     height="350" padding="{top=3, left=3, right=3, bottom=3}">
+     <!-- Botão de inserir novo item à lista -->
+     <layout align="top" height="30" margins="{bottom=4}">
+        <button text="Adicionar Informação do Kekkei Genkai" width="270" align="left">
+            <event name="onClick">
+                -- Usuário clicou no botão de criar novo item.
+                -- Vamos inserir um novo item no nosso recordList                              
+                self.rclListaDosKekkeis:append();
+            </event>
+        </button>
+    </layout>       
+
+    <!-- recordList, representando a lista -->
+    <recordList name="rclListaDosKekkeis" field="campoDosKekkeis" templateForm="frmLH3_3"
+        align="client" height="300" selectable="true">
+
+        <event name="onSelect">
+            --[[
+            Este evento é chamado quando o usuário selecionar/deselecionar itens da lista. Quando o usuário selecionar, vamos fazer nosso dataScopeBox (e todas as tag dentro dele) salvar e carregar dados no   objeto Nodo (NodeDatabase) do item selecionado.
+
+            --]]                      
+            local node = self.rclListaDosKekkeis.selectedNode;  
+            self.boxDetalhesDoKekkei.node = node;                       
+            -- a caixa de detalhe só ficará visível se houver item selecionado
+            self.boxDetalhesDoKekkei.visible = (node ~= nil);
+        </event>
+
+    </recordList>       
+    <!-- dataScopeBox representando a nossa caixa de detalhes -->  
+    <dataScopeBox name="boxDetalhesDoKekkei" visible="false" align="right" 
+       width="400" margins="{left=4, right=4}">
+       <!-- Faça um layout "bonito" para sua caixa de detalhes =). Utilize a propriedade "field" nas tags aqui dentro   -->       
+
+       <rectangle align="top" color="black" xradius="10" yradius="10"
+         height="300" padding="{top=3, left=3, right=3, bottom=3}">
+
+
+         <layout align="top" height="30" margins="{bottom=4}">
+            <label align="left" text="Nome" width="100" autoSize="true" horzTextAlign="center"/>
+            <edit align="client" field="campoKekkei"></edit>
+        </layout>   
+
+        <layout align="top" height="30" margins="{bottom=4}">
+            <label align="left" text="Descrição" width="395" autoSize="true" horzTextAlign="center"/>
+        </layout>        
+        <layout align="top" height="210">              
+            <layout align="client" margins="{left=2}">
+                <!--<edit align="top" field="campoSubTitulo" height="30"/>-->
+                <textEditor align="top" field="campoTextoGrande" height="250"/>
+            </layout>                      
+        </layout>
+    </rectangle>
+</dataScopeBox>
+</rectangle>
+</layout>
+</scrollBox>
+</form>

@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <root>
+    <element id="Ambesek.Michiria" name="Ficha Michiria" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Michiria/output/Michiria.rpk?raw=true" fileName="Michiria.rpk" repositoryPath="Sheets/Michiria/" author="Ambesek" description="Ficha feita para a mesa Michiria com base no sistema Konoha Heroes" version="1.0" compilationDate="23052022133756" compilationDigest="bc55fb6a55fc3b017005ad5caa9b9f10b4720374">
+        <dataTypes>
+            <dataType id="Ambesek.Michiria" title="Ficha Michiria"/>
+        </dataTypes>
+    </element>
     <element id="Ambesek.3DeT" name="Ficha 3D&amp;T RAT" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%203D%26T%20RAT/output/Ficha%203D%26T%20RAT.rpk?raw=true" fileName="Ficha 3D&amp;T RAT.rpk" repositoryPath="Sheets/Ficha 3D&amp;T RAT/" author="Ambesek" description="Ficha para Defensores de Toquio 3ª edição, revisado, ampliado e turbinado." version="1.0" compilationDate="22052022181512" compilationDigest="6a7708373499f4b55ec6f9fcc57e023c5f987cb9">
         <dataTypes>
             <dataType id="Ambesek.3DeT" title="Ficha 3D&amp;T Turbo"/>

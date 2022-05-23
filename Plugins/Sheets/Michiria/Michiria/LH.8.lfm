@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmLH8" align="client" theme="dark">
+	<script>
+		<![CDATA[
+			local function recursiveFindControls(node, controlsList)
+				local children = node:getChildren();
+				if node:getClassName() == "recordList" then
+					children = rclKids(node);
+					--write(children[1]:getClassName());
+
+					children = rclKids(children[1]);
+				end;
+				for i=1, #children, 1 do
+					controlsList[#controlsList+1] = children[i];
+					recursiveFindControls(children[i], controlsList);
+				end;
+			end;
+
+			function rclKids(rcl)
+				local ret = {};
+				local i;
+				local childCount = _obj_getProp(rcl.handle, "ChildrenCount");
+				local child;
+				local childHandle;
+				local idxDest = 1;
+					
+				for i = 0, childCount - 1, 1 do
+					childHandle = _gui_getChild(rcl.handle, i);
+					
+					if (childHandle ~= nil) then							
+						child = gui.fromHandle(childHandle);
+						
+						if (type(child) == "table") then							
+							ret[idxDest] = child;
+							idxDest = idxDest + 1;
+						end
+					end;	
+				end
+				
+				return ret;
+			end;
+
+			local function findAllControls()
+				local controlsList = {self};
+				recursiveFindControls(self, controlsList);
+				
+				return controlsList;
+			end;
+
+			local function filterByClass(className, controls)
+				local controlsFromClass = {};
+
+				for i=1, #controls, 1 do
+					if controls[i]:getClassName() == className then
+						controlsFromClass[#controlsFromClass + 1] = controls[i];
+					end;
+				end;
+
+				return controlsFromClass;
+			end;
+
+			local function findClass(className)
+				local controls = findAllControls();
+				return filterByClass(className, controls);
+			end;
+
+		]]>	
+	</script>
+
+	<template name="colorSelection">
+
+		<comboBox left="95" top="$(top)" width="90" field="$(field)" items="{'AliceBlue', 'AntiqueWhite', 'Aqua', 'Aquamarine', 'Azure', 'Beige', 'Bisque', 'Black', 'BlanchedAlmond', 'Blue', 'BlueViolet', 'Brown', 'BurlyWood', 'CadetBlue', 'Chartreuse', 'Chocolate', 'Coral', 'CornflowerBlue', 'Cornsilk', 'Crimson', 'Cyan', 'DarkBlue', 'DarkCyan', 'DarkGoldenRod', 'DarkGray', 'DarkGreen', 'DarkKhaki', 'DarkMagenta', 'DarkOliveGreen', 'DarkOrange', 'DarkOrchid', 'DarkRed', 'DarkSalmon', 'DarkSeaGreen', 'DarkSlateBlue', 'DarkSlateGray', 'DarkTurquoise', 'DarkViolet', 'DeepPink', 'DeepSkyBlue', 'DimGray', 'DodgerBlue', 'FireBrick', 'FloralWhite', 'ForestGreen', 'Fuchsia', 'Gainsboro', 'GhostWhite', 'Gold', 'GoldenRod', 'Gray', 'Green', 'GreenYellow', 'HoneyDew', 'HotPink', 'IndianRed ', 'Indigo ', 'Ivory', 'Khaki', 'Lavender', 'LavenderBlush', 'LawnGreen', 'LemonChiffon', 'LightBlue', 'LightCoral', 'LightCyan', 'LightGoldenRodYellow', 'LightGray', 'LightGreen', 'LightPink', 'LightSalmon', 'LightSeaGreen', 'LightSkyBlue', 'LightSlateGray', 'LightSteelBlue', 'LightYellow', 'Lime', 'LimeGreen', 'Linen', 'Magenta', 'Maroon', 'MediumAquaMarine', 'MediumBlue', 'MediumOrchid', 'MediumPurple', 'MediumSeaGreen', 'MediumSlateBlue', 'MediumSpringGreen', 'MediumTurquoise', 'MediumVioletRed', 'MidnightBlue', 'MintCream', 'MistyRose', 'Moccasin', 'NavajoWhite', 'Navy', 'OldLace', 'Olive', 'OliveDrab', 'Orange', 'OrangeRed', 'Orchid', 'PaleGoldenRod', 'PaleGreen', 'PaleTurquoise', 'PaleVioletRed', 'PapayaWhip', 'PeachPuff', 'Peru', 'Pink', 'Plum', 'PowderBlue', 'Purple', 'RebeccaPurple', 'Red', 'RosyBrown', 'RoyalBlue', 'SaddleBrown', 'Salmon', 'SandyBrown', 'SeaGreen', 'SeaShell', 'Sienna', 'Silver', 'SkyBlue', 'SlateBlue', 'SlateGray', 'Snow', 'SpringGreen', 'SteelBlue', 'Tan', 'Teal', 'Thistle', 'Tomato', 'Turquoise', 'Violet', 'Wheat', 'White', 'WhiteSmoke', 'Yellow', 'YellowGreen'}" values="{'#F0F8FF', '#FAEBD7', '#00FFFF', '#7FFFD4', '#F0FFFF', '#F5F5DC', '#FFE4C4', '#000000', '#FFEBCD', '#0000FF', '#8A2BE2', '#A52A2A', '#DEB887', '#5F9EA0', '#7FFF00', '#D2691E', '#FF7F50', '#6495ED', '#FFF8DC', '#DC143C', '#00FFFF', '#00008B', '#008B8B', '#B8860B', '#A9A9A9', '#006400', '#BDB76B', '#8B008B', '#556B2F', '#FF8C00', '#9932CC', '#8B0000', '#E9967A', '#8FBC8F', '#483D8B', '#2F4F4F', '#00CED1', '#9400D3', '#FF1493', '#00BFFF', '#696969', '#1E90FF', '#B22222', '#FFFAF0', '#228B22', '#FF00FF', '#DCDCDC', '#F8F8FF', '#FFD700', '#DAA520', '#808080', '#008000', '#ADFF2F', '#F0FFF0', '#FF69B4', '#CD5C5C', '#4B0082', '#FFFFF0', '#F0E68C', '#E6E6FA', '#FFF0F5', '#7CFC00', '#FFFACD', '#ADD8E6', '#F08080', '#E0FFFF', '#FAFAD2', '#D3D3D3', '#90EE90', '#FFB6C1', '#FFA07A', '#20B2AA', '#87CEFA', '#778899', '#B0C4DE', '#FFFFE0', '#00FF00', '#32CD32', '#FAF0E6', '#FF00FF', '#800000', '#66CDAA', '#0000CD', '#BA55D3', '#9370DB', '#3CB371', '#7B68EE', '#00FA9A', '#48D1CC', '#C71585', '#191970', '#F5FFFA', '#FFE4E1', '#FFE4B5', '#FFDEAD', '#000080', '#FDF5E6', '#808000', '#6B8E23', '#FFA500', '#FF4500', '#DA70D6', '#EEE8AA', '#98FB98', '#AFEEEE', '#DB7093', '#FFEFD5', '#FFDAB9', '#CD853F', '#FFC0CB', '#DDA0DD', '#B0E0E6', '#800080', '#663399', '#FF0000', '#BC8F8F', '#4169E1', '#8B4513', '#FA8072', '#F4A460', '#2E8B57', '#FFF5EE', '#A0522D', '#C0C0C0', '#87CEEB', '#6A5ACD', '#708090', '#FFFAFA', '#00FF7F', '#4682B4', '#D2B48C', '#008080', '#D8BFD8', '#FF6347', '#40E0D0', '#EE82EE', '#F5DEB3', '#FFFFFF', '#F5F5F5', '#FFFF00', '#9ACD32'}"/>	
+	</template>
+
+	<scrollBox align="client">
+		<image left="0" top="0" width="500" height="250" style="autoFit" src=""/>
+		<image left="0" top="0" width="350" height="350" style="autoFit" src="images/RPGmeister.jpg"/>
+
+		<layout left="360" top="0" width="200" height="275">
+			<rectangle align="client" color="black" xradius="15" yradius="15" cornerType="round"/>
+			<label left="0" top="10" width="200" height="20" text="Obrigado aos autores originais:" horzTextAlign="center"/>
+			<label left="0" top="35" width="200" height="20" text="Programador: Vinny (Ambesek)" horzTextAlign="center"/>
+			<label left="0" top="60" width="200" height="20" text="Arte: Nefer (Nefertyne)" horzTextAlign="center"/>
+			<label left="0" top="85" width="200" height="20" text="Consultor: Vinny (hellblackjack)" horzTextAlign="center"/>
+
+			<label left="0" top="120" width="200" height="20" text="Ficha modificada por:" horzTextAlign="center"/>
+			<label left="0" top="145" width="200" height="20" text="HashBR - Túlio" horzTextAlign="center"/>
+			<label left="0" top="170" width="200" height="20" text="Desenho: Átilla Gallio" horzTextAlign="center"/>
+
+			<label left="0" top="220" width="200" height="20" text="Ficha re-modificada por:" horzTextAlign="center"/>
+			<label left="0" top="245" width="200" height="20" text="Vinny (Ambesek)" horzTextAlign="center"/>
+		</layout>
+
+		<layout left="570" top="0" width="200" height="150">
+			<rectangle left="0" top="0" width="200" height="150" color="black"/>
+
+			<label left="0" top="10" width="80" height="20" text="Tema:" horzTextAlign="center"/>
+			<comboBox left="95" top="10" width="90" field="theme" fontColor="white" items="{'Escuro', 'Claro'}" horzTextAlign="center"/>
+			<dataLink field="theme" defaultValue="Escuro">
+				<event name="onChange">
+					if sheet == nil then return end;
+					local theme = sheet.theme;
+					if theme == "Claro" then
+						theme = "light";
+					else
+						theme = "dark";
+					end;
+
+					local forms = findClass("form");
+
+					for i=1, #forms, 1 do 
+						forms[i].theme = theme;
+					end;
+				</event>
+			</dataLink>
+
+			<label left="0" top="35" width="90" height="20" text="Cores: " horzTextAlign="center"/>
+
+			<label left="0" top="60" width="90" height="20" text="Fundo " horzTextAlign="center"/>
+			<colorSelection top="60" field="colorBackground"/>
+			<dataLink field="colorBackground" defaultValue="#000000">
+		        <event name="onChange">
+		            if sheet==nil then return end;
+					local color = sheet.colorBackground or "#000000";
+
+		            local rectangles = findClass("rectangle");
+
+					for i=1, #rectangles, 1 do 
+						rectangles[i].color = color;
+					end;
+		        </event>
+			</dataLink>
+
+			<label left="0" top="85" width="90" height="20" text="Linhas " horzTextAlign="center"/>
+			<colorSelection top="85" field="colorStroke"/>
+			<dataLink field="colorStroke" defaultValue="#FFFFFF">
+		        <event name="onChange">
+		            if sheet==nil then return end;
+					local strokeColor = sheet.colorStroke or "#FFFFFF";
+
+		            local rectangles = findClass("rectangle");
+
+					for i=1, #rectangles, 1 do 
+						rectangles[i].strokeColor = strokeColor;
+					end;
+		        </event>
+		    </dataLink>
+
+			<label left="0" top="110" width="90" height="20" text="Fonte " horzTextAlign="center"/>
+			<colorSelection top="110" field="colorFont"/>
+			<dataLink field="colorFont" defaultValue="#FFFFFF">
+		        <event name="onChange">
+		            if sheet==nil then return end;
+					local fontColor = sheet.colorFont or "#FFFFFF";
+
+					local controls = findAllControls();
+					
+					local edits = filterByClass("edit", controls);
+					for i=1, #edits, 1 do 
+						edits[i].fontColor = fontColor;
+					end;
+
+					local labels = filterByClass("label", controls);
+					for i=1, #labels, 1 do 
+						labels[i].fontColor = fontColor;
+					end;
+
+					local comboBoxs = filterByClass("comboBox", controls);
+					for i=1, #comboBoxs, 1 do 
+						comboBoxs[i].fontColor = fontColor;
+					end;
+
+					local textEditors = filterByClass("textEditor", controls);
+					for i=1, #textEditors, 1 do 
+						textEditors[i].fontColor = fontColor;
+					end;
+
+					local checkBoxs = filterByClass("checkBox", controls);
+					for i=1, #checkBoxs, 1 do 
+						checkBoxs[i].fontColor = fontColor;
+					end;
+
+					local buttons = filterByClass("button", controls);
+					for i=1, #buttons, 1 do 
+						buttons[i].fontColor = fontColor;
+					end;
+		        </event>
+		    </dataLink>
+		</layout>
+
+		<label left="570" top="175" width="200" height="20" text="Versão Atual: " horzTextAlign="center" field="versionInstalled"/>
+		<label left="570" top="200" width="200" height="20" text="Sua Versão: " horzTextAlign="center" field="versionDownloaded"/>
+		<checkBox left="570" top="225" width="200" height="20" field="noUpdate" text="Não pedir para atualizar."/>
+		<button left="570" top="250" width="100" text="Atualizar" onClick="GUI.openInBrowser('https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Michiria/output/Michiria.rpk?raw=true')" />
+
+		<button left="570" top="300" width="100" height="20" text="Exportar Ficha" >
+			<event name="onClick">
+				local xml = NDB.exportXML(sheet);
+
+				local export = {};
+				local bytes = Utils.binaryEncode(export, "utf8", xml);
+
+				local stream = Utils.newMemoryStream();
+				local bytes = stream:write(export);
+
+				Dialogs.saveFile("Salvar Ficha como XML", stream, "ficha.xml", "application/xml",
+					function()
+						stream:close();
+						showMessage("Ficha Exportada.");
+					end);
+			</event>
+		</button>
+		<button left="570" top="325" width="100" height="20" text="Importar Ficha" >
+			<event name="onClick">
+				Dialogs.openFile("Importar Ficha", "application/xml", false, 
+					function(arquivos)
+						local arq = arquivos[1];
+
+						local import = {};
+						local bytes = arq.stream:read(import, arq.stream.size);
+
+						local xml = Utils.binaryDecode(import, "utf8");
+
+						NDB.importXML(sheet, xml);
+					end);
+			</event>
+		</button>
+	</scrollBox>
+</form>

@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmLH6" align="client" theme="dark">
+	<scrollBox align="client">
+		<!-- Popup -->
+		<popup name="popMeuPopup" width="100" height="100" backOpacity="0.5" autoScopeNode="false">
+			<label align="client" horzTextAlign="center" text="Você não é o mestre ou o dono da ficha!" />
+		</popup>
+		<template name="Descricao">
+			<label left="0" top="5" width="100" height="20" text="$(nome)" horzTextAlign="trailing"/>
+			<edit left="110" top="0" width="200" height="25" field="desc_$(field)"/>
+		</template>
+		<layout left="0" top="0" width="960" height="70">
+			<rectangle  left="5" top="0" width="950" height="70" color="black" xradius="15" yradius="15" cornerType="round"/>
+			<layout left="5" top="5" width="310" height="25" >
+				<Descricao field="sexo" nome="Sexo"/>
+			</layout>
+			<layout left="320" top="5" width="310" height="25" >
+				<Descricao field="altura" nome="Altura"/>
+			</layout>
+			<layout left="585" top="5" width="310" height="25" >
+				<Descricao field="olhos" nome="Olhos"/>
+			</layout>
+			<layout left="5" top="35" width="310" height="25" >
+				<Descricao field="idade" nome="Idade"/>
+			</layout>
+			<layout left="320" top="35" width="310" height="25" >
+				<Descricao field="peso" nome="Peso"/>
+			</layout>
+			<layout left="585" top="35" width="310" height="25" >
+				<Descricao field="cabelo" nome="Cabelo"/>
+			</layout>
+		</layout>
+		<layout left="0" top="80" width="400" height="375">
+			<rectangle left="0" top="0" width="400" height="375" color="black" xradius="15" yradius="15" cornerType="round"/>
+			<label left="0" top="0" width="400" height="20" text="Aparencia" horzTextAlign="center"/>
+			<textEditor left="10" top="25" width="380" height="335" field="aparencia"/>
+		</layout>
+		<layout name="perso" visible="false" left="0" top="460" width="400" height="355">
+			<rectangle left="0" top="0" width="400" height="355" color="black" xradius="15" yradius="15" cornerType="round"/>
+			<label left="0" top="0" width="400" height="20" text="Personalidade" horzTextAlign="center"/>
+			<textEditor left="10" top="25" width="380" height="315" field="personalidade"/>
+		</layout>
+		<layout name="hist" visible="false" left="410" top="80" width="600" height="735">
+			<rectangle left="0" top="0" width="600" height="735" color="black" xradius="15" yradius="15" cornerType="round"/>
+			<label left="0" top="0" width="600" height="20" text="Historia" horzTextAlign="center"/>
+			<richEdit left="10" top="25" width="580" height="695" field="background" backgroundColor="#333333" defaultFontSize="12" defaultFontColor="white"/>
+		</layout>
+	</scrollBox>
+</form>

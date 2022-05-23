@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmLH2" align="client" theme="dark">
+    <script>
+        local function selectDetalheNode(node, lista)
+            if node==nil then return end
+
+            local listas = {"rclListaDosGenjutsus", "rclListaDosNinjutsus", "rclListaDosBasicos", "rclListaDosClans", "rclListaDosKekkeis", "rclListaDosPassivos", "rclListaDosKuchyoses", "rclListaDosEstLutas", "rclListaDasTransformacoes", "rclListaDosTaijutsus", "rclListaDosEspeciais", "rclListaDosEspeciais2", "rclListaDosPassivosNobres", "rclListaDosOutros", "rclListaDosOutros2"}
+
+            for i=1, #listas, 1 do
+                if listas[i] ~= lista then
+                    local rcl = self:findControlByName(listas[i]);
+                    if rcl~=nil then 
+                        rcl.selectedNode = nil 
+                    else
+                        --showMessage(listas[i] .. " was null.")
+                    end
+                elseif listas[i]==lista then
+                    --showMessage(lista .. " was ignored.")
+                end
+            end               
+            self.boxDetalhesDoJutsu.node = node; 
+        end
+    </script>
+    <template name="boxJutsu">
+        <layout align="left" width="200">
+            <rectangle align="left" color="grey" width="200" strokeColor="black" strokeSize="2">
+                <layout align="top" height="30" >
+                    <button text="Adicionar $(text)" width="200" align="client" margins="{left=2, right=2}">
+                        <event name="onClick">
+                            local item = self.$(field):append();
+                            if item~=nil then item.campoJutsu = "$(text)" end
+                        </event>
+                    </button>
+                </layout>
+                <layout align="top" height="170"  frameStyle="frames/ninjutsu.xml">
+                    <recordList name="$(field)" field="$(field)" templateForm="frmLH2_1" align="client" height="200" selectable="true">
+                        <event name="onSelect">
+                            selectDetalheNode(self.$(field).selectedNode, "$(field)")
+                        </event>
+                    </recordList>
+                </layout>
+            </rectangle>
+        </layout>
+    </template>
+    <scrollBox align="client">
+        <!-- Campos de informações -->
+        <layout align="top" height="205">
+            <!-- dataScopeBox representando a nossa caixa de detalhes -->  
+            <dataScopeBox name="boxDetalhesDoJutsu" visible="true" align="left" width="600">
+                <!-- Faça um layout "bonito" para sua caixa de detalhes =). Utilize a propriedade "field" nas tags aqui dentro   -->       
+                <rectangle align="top" color="black" xradius="10" yradius="10" height="205" width="590">
+                    <layout align="left" width="200" height="200" margins="{bottom=4, top=4, left=4, right=4}">
+                        <layout align="client" margins="{left=2}">
+                            <label align="top" text="Descrição" height="30" autoSize="true" horzTextAlign="center"/>
+                            <textEditor align="top" name="DescJutsu" field="campoTextoGrande2" height="150"/>
+                            <button align="top" text="Copiar informações (Ctrl+C)" height="30">
+                                <event name="onClick">
+                                    require("system.lua");
+                                    jutsu = (self.boxDetalhesDoJutsu.node.campoJutsu or "--//--");
+                                    desc = (self.boxDetalhesDoJutsu.node.campoTextoGrande2 or "--//--");
+                                    gasto = (self.boxDetalhesDoJutsu.node.campoGasto or "--//--");
+                                    quant = (self.boxDetalhesDoJutsu.node.campoQuantidade or "--//--");
+                                    alcan = (self.boxDetalhesDoJutsu.node.CampoAlcance or "--//--");
+                                    tempo = (self.boxDetalhesDoJutsu.node.CampoTempo or "--//--");
+                                    dano = (self.boxDetalhesDoJutsu.node.CampoDano or "--//--");
+                                    System.setClipboardText("Nome: " .. jutsu .. "\n"
+                                                         .. "Descrição: " .. desc .. "\n"
+                                                         .. "Gasto: " .. gasto .. "\n"
+                                                         .. "Quantidade: " .. quant .. "\n"
+                                                         .. "Alcance: " .. alcan .. "\n"
+                                                         .. "Tempo: " .. tempo .. "\n"
+                                                         .. "Dano: " .. dano);
+                                </event>
+                            </button>
+                        </layout>
+                    </layout>
+                    <layout align="left" width="380">
+                        <layout align="top" height="30" margins="{bottom=4, top=4 ,right=4}">
+                            <label align="left" text="Nome" width="100" autoSize="true" horzTextAlign="center"/>
+                            <edit align="client" field="campoJutsu"></edit>
+                        </layout>
+                        <layout align="top" height="30" margins="{bottom=4, right=4}">
+                            <label align="left" text="Gasto" width="100" autoSize="true" horzTextAlign="center"/>
+                            <edit align="client" field="campoGasto"></edit>
+                        </layout>
+                        <layout align="top" height="30" margins="{bottom=4, right=4}">
+                            <label align="left" text="Quantidade" width="100" autoSize="true" horzTextAlign="center"/>
+                            <edit align="client" field="campoQuantidade"></edit>
+                        </layout>
+                        <layout align="top" height="30" margins="{bottom=4, right=4}">
+                            <label align="left" text="Alcance" width="100" autoSize="true" horzTextAlign="center"/>
+                            <edit align="client" field="campoAlcance"></edit>
+                        </layout>
+                        <layout align="top" height="30" margins="{bottom=4, right=4}">
+                            <label align="left" text="Tempo" width="100" autoSize="true" horzTextAlign="center"/>
+                            <edit align="client" field="campoTempo"></edit>
+                        </layout>
+                        <layout align="top" height="30" margins="{bottom=4, right=4}">
+                            <label align="left" text="Dano" width="100" autoSize="true" horzTextAlign="center"/>
+                            <edit align="client" field="campoDano"></edit>
+                        </layout>
+                    </layout>
+                </rectangle>
+            </dataScopeBox>
+        </layout>
+
+        <!-- Grupo de Jutsus um -->
+        <layout align="top" height="200">
+            <!-- NINJUTSUS -->
+            <boxJutsu text="Ninjutsu" field="rclListaDosNinjutsus"/>
+            <!-- GENJUTSUS -->
+            <boxJutsu text="Genjutsu" field="rclListaDosGenjutsus"/>
+            <!-- TAIJUTSUS -->
+            <boxJutsu text="Taijutsu" field="rclListaDosTaijutsus"/>
+
+            <boxJutsu text="Especial" field="rclListaDosEspeciais"/>
+
+            <boxJutsu text="Especial 2" field="rclListaDosEspeciais2"/>
+        </layout>
+
+        <!-- Grupo de Jutsus dois -->
+        <layout align="top" height="200">
+            <!-- BASICOS -->
+            <boxJutsu text="Básicos" field="rclListaDosBasicos"/>
+            <!-- CLAN -->
+            <boxJutsu text="Jutsu do Clan" field="rclListaDosClans"/>
+            <!-- KEKKEI GENKAI -->
+            <boxJutsu text="Kekkei Genkai" field="rclListaDosKekkeis"/>
+            <!-- TRANSFORMAÇÔES -->
+            <boxJutsu text="Transformação" field="rclListaDasTransformacoes"/>
+
+            <boxJutsu text="Outro" field="rclListaDosOutros"/>
+        </layout>
+
+        <!-- Grupo de Jutsus tres -->
+        <layout align="top" height="200">
+            <!-- ESTILOS DE LUTA -->
+            <boxJutsu text="Estilo de Luta" field="rclListaDosEstLutas"/>
+            <!-- KUCHYOSES -->
+            <boxJutsu text="Kuchyose" field="rclListaDosKuchyoses"/>
+            
+            <boxJutsu text="Passivas" field="rclListaDosPassivos"/>
+            
+            <boxJutsu text="Passivas Nobres" field="rclListaDosPassivosNobres"/>
+
+            <boxJutsu text="Outro 2" field="rclListaDosOutros2"/>
+        </layout>
+    </scrollBox>
+</form>

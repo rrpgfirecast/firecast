@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmLH3_3" height="35" theme="dark"> 
+
+        <layout align="client" margins="{left=4, right=4, top=4, bottom=4}">
+                <!-- Botão para apagar o item da lista -->
+                <button align="left" width="32" text="X" onClick="ndb.deleteNode(sheet);"/>               
+                <!-- O título do item que aparece na lista -->
+                <label align="client" text="Teste de label" field="campoJutsu" margins="{left=4}"/>
+                <dataLink field="campoJutsu" defaultValue="Nome/Nível Kekkei Genkai"/>
+        </layout>
+</form>
