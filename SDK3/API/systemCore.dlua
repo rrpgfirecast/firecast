@@ -20,4 +20,20 @@ function system.getTickCount()
 	return _system_getTickCount();
 end;
 
+function system.checkAPIVersion(major, minor)
+	return system.getAPIVersion() >= system.makeAPIVersionNumber(major, minor);
+end;
+
+function system.getAPIVersion()
+	if _system_getAPIVersion ~= nil then
+		return _system_getAPIVersion();
+	else
+		return system.makeAPIVersionNumber(87, 0);
+	end;
+end;
+
+function system.makeAPIVersionNumber(major, minor)
+	return ((major or 0) << 16) | ((minor or 0) & 0xFFFF);
+end;
+
 return system;

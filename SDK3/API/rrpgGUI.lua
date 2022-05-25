@@ -1,5 +1,6 @@
 local objs = require("rrpgObjs.lua");
 local ndb = require("ndb.lua");
+local System = require("system.lua");
 
 gui = {}
 GUI = gui;
@@ -1327,6 +1328,31 @@ local function recordListFromHandle(handle)
 	
 	function ctrl:scrollToNode(node) _gui_recordListScrollToNodeHandle(self.handle, ndb.getNodeHandle(node)); end;
 	function ctrl:sort() _obj_invoke(self.handle, "ReorganizarItens"); end;
+	
+	if System.checkAPIVersion(87, 1) then
+		function ctrl:getChildren()
+			local ret = {};
+			local childCount = _obj_getProp(self.handle, "ChildFormCount");
+			local child;
+			local childHandle;
+			local idxDest = 1;
+				
+			for i = 0, childCount - 1, 1 do
+				childHandle = _gui_rcl_getChild(self.handle, i);
+				
+				if (childHandle ~= nil) then							
+					child = gui.fromHandle(childHandle);
+					
+					if (type(child) == "table") then							
+						ret[idxDest] = child;
+						idxDest = idxDest + 1;
+					end
+				end;	
+			end
+			
+			return ret;
+		end;
+	end;
 	
 	ctrl.props["field"] = {setter = "setField", getter = "getField", tipo = "string"};		
 	ctrl.props["templateForm"] = {setter = "setTemplateForm", getter = "getTemplateForm", tipo = "string"};				
