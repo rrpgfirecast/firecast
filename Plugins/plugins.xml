@@ -208,7 +208,7 @@
             <dataType id="datatype.mb.3.4.1.gustavo.muller" title="Mighty Blade 3e"/>
         </dataTypes>
     </element>
-    <element id="FichaMultiaba" name="Ficha Multiaba" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20Multiaba/output/Ficha%20Multiaba.rpk?raw=true" fileName="Ficha Multiaba.rpk" repositoryPath="Sheets/Ficha Multiaba/" author="Ambesek" description="Ficha com multiplas abas com o texto rico." version="0.6" compilationDate="27112019000058" compilationDigest="13af2273be4909319f4fb22ad5fcac050a175585">
+    <element id="FichaMultiaba" name="Ficha Multiaba" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20Multiaba/output/Ficha%20Multiaba.rpk?raw=true" fileName="Ficha Multiaba.rpk" repositoryPath="Sheets/Ficha Multiaba/" author="Ambesek" description="Ficha com multiplas abas com o texto rico." version="0.6.1" compilationDate="27112019000058" compilationDigest="13af2273be4909319f4fb22ad5fcac050a175585">
         <dataTypes>
             <dataType id="Ambesek.Nefertyne.FichaMultiaba" title="Ficha Multiaba"/>
         </dataTypes>

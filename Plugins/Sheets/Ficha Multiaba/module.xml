@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <module sdkVersion="3.5">
 	<id>FichaMultiaba</id>
-	<version>0.6</version>
+	<version>0.6.1</version>
 	<name>Ficha Multiaba</name>
 	<description>Ficha com multiplas abas com o texto rico.</description>
 	<author>Ambesek</author>

@@ -457,6 +457,7 @@ local function constructNew_frm_FM()
             
                     internet.download("https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20Multiaba/output/Ficha%20Multiaba.rpk?raw=true",
                         function(stream, contentType)
+                        	if sheet==nil then return end;
                             local info = rrpg.plugins.getRPKDetails(stream);
                             sheet.versionDownloaded = "VERSÃO DISPONÍVEL: " .. info.version;
             
