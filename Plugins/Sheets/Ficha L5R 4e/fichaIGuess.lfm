@@ -500,13 +500,18 @@ button.Tab{
 												<edit field="xpGastar" align="client" type="number" min="0" max="999" />
 												<dataLink field="xpGastar" defaultValue="0" />
 											</layout>
+											<layout align="top" height="30">
+												<label text="Karma:" align="left" width="80" />
+												<edit field="karma" align="client" type="number" min="0" max="999" />
+												<dataLink field="karma" defaultValue="0" />
+											</layout>
 								
 										</flowPart>
 										<flowPart maxWidth="150" minWidth="150" height="120">
 											<template name="CampoB">
 												<layout align="top" height="30" margins="{left=10}">
 													<label align="left" text="$(legenda):" width="$(largura)"/>
-													<edit horzTextAlign="center" field="$(campo)" align="client" margins="{right=10}" type="number" min="0" max="999" />
+													<edit horzTextAlign="center" field="$(campo)" align="client" margins="{right=10}" type="float" min="-999.0" max="999.0" />
 													<dataLink field="$(campo)" defaultValue="0" />
 												</layout>
 											</template>
@@ -536,23 +541,23 @@ button.Tab{
 										<label fontSize="16.0" text="Inteligência" left="523" top="185" />
 										
 										<!-- ATRIBUTOS -->
-										<edit horzTextAlign="center" width="30" fontSize="20.0" field="stamina" left="153" top="16" fontStyle="bold"/>
+										<edit horzTextAlign="center" width="30" fontSize="20.0" field="stamina" left="153" top="16" fontStyle="bold" type="number" min="0" max="10"/>
 										<dataLink defaultValue="2" field="stamina"/>
-										<edit horzTextAlign="center" width="30" fontSize="20.0" field="willpower" left="136" top="64" fontStyle="bold"/>
+										<edit horzTextAlign="center" width="30" fontSize="20.0" field="willpower" left="136" top="64" fontStyle="bold" type="number" min="0" max="10"/>
 										<dataLink defaultValue="2" field="willpower"/>
-										<edit horzTextAlign="center" width="30" fontSize="20.0" field="strength" left="115" top="133" fontStyle="bold"/>
+										<edit horzTextAlign="center" width="30" fontSize="20.0" field="strength" left="115" top="133" fontStyle="bold" type="number" min="0" max="10"/>
 										<dataLink defaultValue="2" field="strength"/>
-										<edit horzTextAlign="center" width="30" fontSize="20.0" field="perception" left="98" top="180" fontStyle="bold"/>
+										<edit horzTextAlign="center" width="30" fontSize="20.0" field="perception" left="98" top="180" fontStyle="bold" type="number" min="0" max="10"/>
 										<dataLink defaultValue="2" field="perception"/>
-										<edit horzTextAlign="center" width="30" fontSize="20.0" field="reflexes" left="428" top="16" fontStyle="bold"/>
+										<edit horzTextAlign="center" width="30" fontSize="20.0" field="reflexes" left="428" top="16" fontStyle="bold" type="number" min="0" max="10"/>
 										<dataLink defaultValue="2" field="reflexes"/>
-										<edit horzTextAlign="center" width="30" fontSize="20.0" field="awareness" left="445" top="64" fontStyle="bold"/>
+										<edit horzTextAlign="center" width="30" fontSize="20.0" field="awareness" left="445" top="64" fontStyle="bold" type="number" min="0" max="10"/>
 										<dataLink defaultValue="2" field="awareness"/>
-										<edit horzTextAlign="center" width="30" fontSize="20.0" field="agility" left="466" top="133" fontStyle="bold"/>
+										<edit horzTextAlign="center" width="30" fontSize="20.0" field="agility" left="466" top="133" fontStyle="bold" type="number" min="0" max="10"/>
 										<dataLink defaultValue="2" field="agility"/>
-										<edit horzTextAlign="center" width="30" fontSize="20.0" field="intelligence" left="483" top="180" fontStyle="bold"/>
+										<edit horzTextAlign="center" width="30" fontSize="20.0" field="intelligence" left="483" top="180" fontStyle="bold" type="number" min="0" max="10"/>
 										<dataLink defaultValue="2" field="intelligence"/>
-										<edit horzTextAlign="center" width="30" fontSize="20.0" field="void" left="290" top="164" fontStyle="bold"/>
+										<edit horzTextAlign="center" width="30" fontSize="20.0" field="void" left="290" top="164" fontStyle="bold" type="number" min="0" max="10"/>
 										<dataLink defaultValue="2" field="void"/>
 				
 										<label fontSize="20.0" left="324" top="94" height="30" field="air"/>
@@ -595,9 +600,9 @@ button.Tab{
 									
 									<layout align="top" height="1000">
 										<rectangle margins="{left=25, right=17}" align="top" height="30" xradius="5" yradius="5" cornerType="round" color="#212121">
-											<label align="left" width="214" text="PERÍCIAS" margins="{left=5}"/>
-											<label align="left" width="75" text="TIPOS"/>
-											<label align="left" width="52" text="RANK"/>
+											<label align="left" width="254" text="PERÍCIAS" margins="{left=5}"/>
+											<label align="left" width="70" text="TIPOS"/>
+											<label align="left" width="57" text="RANK"/>
 											<label align="left" width="90" text="ATRIBUTO"/>
 											<label align="left" width="105" text="ROLAGEM"/>
 											<button align="right" width="30" text="🞦" hint="Nova Perícia" onClick='self.rclSkills:append();'/>
@@ -921,7 +926,7 @@ button.Tab{
 											<dataLink defaultValue="0" field="zeni" />
 										</rectangle>
 										<rectangle align="client" margins="{left=10, top=10, right=20, bottom=50}" color="#272727" xradius="5" yradius="5" cornerType="round">
-											<textEditor align="client" margins="{left=5, top=5, right=5, bottom=5}" field="inventario" fontColor="#cdcdcd" fontFamily="Cambria" transparent="true"/>
+											<textEditor align="client" margins="{left=5, top=5, right=5, bottom=5}" field="inventario" fontColor="#cdcdcd" fontFamily="Cambria" transparent="true" fontSize="13"/>
 										</rectangle>
 										
 										<image url="/Frames/logo.png" height="135" style="proportional" align="bottom" margins="{bottom=80}"/>
