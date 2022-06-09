@@ -3,13 +3,11 @@
     <!--The "id" identifies your plugin globally. Must be unique, must contain only alphanumeric characters, underlines and dots and must contain at least 5 characters and a maximum of 40. Once set the ID, you should not change it;)-->
     <id>Ficha_de_L5R_4e_SDK_3.5</id>
     <!--"version" is the version of your plugin. When you release a new version of your module, change here =)-->
-    <version>2.0.2</version>
+    <version>2.0.3</version>
     <name>L5R 4e (Otimizado)</name>
     <description>Ficha com cálculos automáticos para L5R 4e.</description>
     <author>Gatan e thirteen</author>
     <site/>
     <contact>Username: Gatan</contact>
-    <dataTypes>
-        <dataType title="L5R 4e (Otimizado)" name="frmOurFichaL5R4e" lfmFile="fichaIGuess.lfm">L5R_4e_Otimizado</dataType>
-    </dataTypes>
+    
 </module>

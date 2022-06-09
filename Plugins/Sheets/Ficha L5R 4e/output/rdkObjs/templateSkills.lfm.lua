@@ -54,10 +54,10 @@ local function constructNew_templateSkills()
     obj.edit1:setParent(obj.layout1);
     obj.edit1:setField("nomeSkill");
     obj.edit1:setAlign("left");
-    obj.edit1:setWidth(195);
+    obj.edit1:setWidth(225);
     obj.edit1:setMargins({right=2});
-    lfm_setPropAsString(obj.edit1, "fontStyle",  "bold");
     obj.edit1:setFontColor("white");
+    obj.edit1:setFontSize(13);
     obj.edit1:setName("edit1");
     obj.edit1:setFontFamily("Cambria");
     obj.edit1:setTransparent(true);
@@ -97,7 +97,7 @@ local function constructNew_templateSkills()
     obj.edit2:setHorzTextAlign("center");
     obj.edit2:setType("number");
     obj.edit2:setMin(0);
-    obj.edit2:setMax(99);
+    obj.edit2:setMax(10);
     lfm_setPropAsString(obj.edit2, "fontStyle",  "bold");
     obj.edit2:setFontColor("white");
     obj.edit2:setName("edit2");
@@ -146,28 +146,6 @@ local function constructNew_templateSkills()
     obj.dataLink4:setDefaultValue("xky");
     obj.dataLink4:setField("ROLAGEM");
     obj.dataLink4:setName("dataLink4");
-
-    obj.btnEnfase1 = GUI.fromHandle(_obj_newObject("button"));
-    obj.btnEnfase1:setParent(obj.layout1);
-    obj.btnEnfase1:setTop(0);
-    obj.btnEnfase1:setLeft(541);
-    obj.btnEnfase1:setText("𝐞");
-    obj.btnEnfase1:setHint("Ênfases");
-    obj.btnEnfase1:setName("btnEnfase1");
-    obj.btnEnfase1:setWidth(30);
-    obj.btnEnfase1:setHeight(30);
-    obj.btnEnfase1:setFontColor("#272727");
-
-    obj.btnEnfase2 = GUI.fromHandle(_obj_newObject("button"));
-    obj.btnEnfase2:setParent(obj.layout1);
-    obj.btnEnfase2:setTop(0);
-    obj.btnEnfase2:setLeft(541);
-    obj.btnEnfase2:setText("𝐞");
-    obj.btnEnfase2:setHint("Ênfases");
-    obj.btnEnfase2:setName("btnEnfase2");
-    obj.btnEnfase2:setWidth(30);
-    obj.btnEnfase2:setHeight(30);
-    obj.btnEnfase2:setVisible(false);
 
     obj.popUp_Enfases = GUI.fromHandle(_obj_newObject("popup"));
     obj.popUp_Enfases:setParent(obj.layout1);
@@ -390,31 +368,7 @@ local function constructNew_templateSkills()
     obj.dataLink7:setField("rankSkill");
     obj.dataLink7:setName("dataLink7");
 
-    obj._e_event0 = obj.btnEnfase1:addEventListener("onClick",
-        function (_)
-            local pop = self:findControlByName("popUp_Enfases");
-            				
-            				if pop ~= nil then
-            					pop:setNodeObject(sheet);
-            					pop:showPopupEx("right", self.btnEnfase1);
-            				else
-            					showMessage("Ops, não encontrei o pop-up para exibir");
-            				end;
-        end, obj);
-
-    obj._e_event1 = obj.btnEnfase2:addEventListener("onClick",
-        function (_)
-            local pop = self:findControlByName("popUp_Enfases");
-            				
-            				if pop ~= nil then
-            					pop:setNodeObject(sheet);
-            					pop:showPopupEx("right", self.btnEnfase2);
-            				else
-            					showMessage("Ops, não encontrei o pop-up para exibir");
-            				end;
-        end, obj);
-
-    obj._e_event2 = obj.dataLink5:addEventListener("onChange",
+    obj._e_event0 = obj.dataLink5:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if(sheet == nil) then return; end;
             						if(sheet.enfasesSkill == nil or sheet.enfasesSkill == "—") then
@@ -426,7 +380,7 @@ local function constructNew_templateSkills()
             						end;
         end, obj);
 
-    obj._e_event3 = obj.btnMaestria1:addEventListener("onClick",
+    obj._e_event1 = obj.btnMaestria1:addEventListener("onClick",
         function (_)
             local pop = self:findControlByName("popUp_Maestrias");
             				
@@ -438,7 +392,7 @@ local function constructNew_templateSkills()
             				end;
         end, obj);
 
-    obj._e_event4 = obj.btnMaestria2:addEventListener("onClick",
+    obj._e_event2 = obj.btnMaestria2:addEventListener("onClick",
         function (_)
             local pop = self:findControlByName("popUp_Maestrias");
             				
@@ -450,7 +404,7 @@ local function constructNew_templateSkills()
             				end;
         end, obj);
 
-    obj._e_event5 = obj.dataLink6:addEventListener("onChange",
+    obj._e_event3 = obj.dataLink6:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if(sheet == nil) then return; end;
             							if(	(sheet.maestria3Skill == nil or sheet.maestria3Skill == "—") and
@@ -464,12 +418,12 @@ local function constructNew_templateSkills()
             							end;
         end, obj);
 
-    obj._e_event6 = obj.button1:addEventListener("onClick",
+    obj._e_event4 = obj.button1:addEventListener("onClick",
         function (_)
             NDB.deleteNode(sheet);
         end, obj);
 
-    obj._e_event7 = obj.dataLink7:addEventListener("onChange",
+    obj._e_event5 = obj.dataLink7:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet ~= nil then
             					local node = NDB.getRoot(sheet);
@@ -485,8 +439,6 @@ local function constructNew_templateSkills()
         end, obj);
 
     function obj:_releaseEvents()
-        __o_rrpgObjs.removeEventListenerById(self._e_event7);
-        __o_rrpgObjs.removeEventListenerById(self._e_event6);
         __o_rrpgObjs.removeEventListenerById(self._e_event5);
         __o_rrpgObjs.removeEventListenerById(self._e_event4);
         __o_rrpgObjs.removeEventListenerById(self._e_event3);
@@ -506,7 +458,6 @@ local function constructNew_templateSkills()
 
         if self.rectangle5 ~= nil then self.rectangle5:destroy(); self.rectangle5 = nil; end;
         if self.textEditor4 ~= nil then self.textEditor4:destroy(); self.textEditor4 = nil; end;
-        if self.btnEnfase2 ~= nil then self.btnEnfase2:destroy(); self.btnEnfase2 = nil; end;
         if self.button1 ~= nil then self.button1:destroy(); self.button1 = nil; end;
         if self.label1 ~= nil then self.label1:destroy(); self.label1 = nil; end;
         if self.label3 ~= nil then self.label3:destroy(); self.label3 = nil; end;
@@ -519,7 +470,6 @@ local function constructNew_templateSkills()
         if self.comboBox1 ~= nil then self.comboBox1:destroy(); self.comboBox1 = nil; end;
         if self.textEditor2 ~= nil then self.textEditor2:destroy(); self.textEditor2 = nil; end;
         if self.popUp_Maestrias ~= nil then self.popUp_Maestrias:destroy(); self.popUp_Maestrias = nil; end;
-        if self.btnEnfase1 ~= nil then self.btnEnfase1:destroy(); self.btnEnfase1 = nil; end;
         if self.horzLine4 ~= nil then self.horzLine4:destroy(); self.horzLine4 = nil; end;
         if self.dataLink1 ~= nil then self.dataLink1:destroy(); self.dataLink1 = nil; end;
         if self.label2 ~= nil then self.label2:destroy(); self.label2 = nil; end;
@@ -535,11 +485,11 @@ local function constructNew_templateSkills()
         if self.dataLink6 ~= nil then self.dataLink6:destroy(); self.dataLink6 = nil; end;
         if self.btnMaestria2 ~= nil then self.btnMaestria2:destroy(); self.btnMaestria2 = nil; end;
         if self.dataLink5 ~= nil then self.dataLink5:destroy(); self.dataLink5 = nil; end;
-        if self.horzLine1 ~= nil then self.horzLine1:destroy(); self.horzLine1 = nil; end;
         if self.dataLink2 ~= nil then self.dataLink2:destroy(); self.dataLink2 = nil; end;
         if self.checkBox1 ~= nil then self.checkBox1:destroy(); self.checkBox1 = nil; end;
-        if self.layout1 ~= nil then self.layout1:destroy(); self.layout1 = nil; end;
         if self.edit2 ~= nil then self.edit2:destroy(); self.edit2 = nil; end;
+        if self.layout1 ~= nil then self.layout1:destroy(); self.layout1 = nil; end;
+        if self.horzLine1 ~= nil then self.horzLine1:destroy(); self.horzLine1 = nil; end;
         if self.edit1 ~= nil then self.edit1:destroy(); self.edit1 = nil; end;
         if self.rectangle1 ~= nil then self.rectangle1:destroy(); self.rectangle1 = nil; end;
         if self.comboBox2 ~= nil then self.comboBox2:destroy(); self.comboBox2 = nil; end;
