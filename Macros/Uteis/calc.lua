@@ -33,7 +33,7 @@
 	parametro = parametro:gsub("+", " + ");
 	parametro = parametro:gsub("-", " - ");
 	parametro = parametro:gsub("%^", " ^ ");
-	parametro = parametro:gsub("  ", " ");
+	parametro = parametro:gsub("%s+", " ");
 
 	-- Impressão do Resultado
 	enviar("🎲 [§K2]"..meuJogador.nick .."[§R][§K1] rolou [§K2]‎" .. parametro .. " [§K1]= [§K3]" .. y .." [§K1]{[§K7]".. parametro .."[§K1]}");
