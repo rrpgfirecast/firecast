@@ -27,5 +27,9 @@
 	func = assert(load("return " .. x));
 	y = func();
 
+	-- Formatando asteriscos
+	parametro = parametro:gsub("%*", " * ");
+	parametro = parametro:gsub("  ", " ");
+
 	-- Impressão do Resultado
 	enviar("🎲 [§K2]"..meuJogador.nick .."[§R][§K1] rolou [§K2]‎" .. parametro .. " [§K1]= [§K3]" .. y .." [§K1]{[§K7]".. parametro .."[§K1]}");
