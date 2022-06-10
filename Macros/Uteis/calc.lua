@@ -27,9 +27,11 @@
 	func = assert(load("return " .. x));
 	y = func();
 
-	-- Formatando asteriscos
+	-- Formatando sinalizadores
 	parametro = parametro:gsub("%*", " * ");
 	parametro = parametro:gsub("/", " / ");
+	parametro = parametro:gsub("+", " + ");
+	parametro = parametro:gsub("-", " - ");
 	parametro = parametro:gsub("%^", " ^ ");
 	parametro = parametro:gsub("  ", " ");
 
