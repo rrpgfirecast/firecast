@@ -29,6 +29,8 @@
 
 	-- Formatando asteriscos
 	parametro = parametro:gsub("%*", " * ");
+	parametro = parametro:gsub("/", " / ");
+	parametro = parametro:gsub("%^", " ^ ");
 	parametro = parametro:gsub("  ", " ");
 
 	-- Impressão do Resultado
