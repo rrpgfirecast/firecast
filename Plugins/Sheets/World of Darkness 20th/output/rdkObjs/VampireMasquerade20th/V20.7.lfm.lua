@@ -7,7 +7,7 @@ require("ndb.lua");
 require("locale.lua");
 local __o_Utils = require("utils.lua");
 
-local function constructNew_frmVDA20_7()
+local function constructNew_frmVM20_7()
     local obj = GUI.fromHandle(_obj_newObject("form"));
     local self = obj;
     local sheet = nil;
@@ -26,7 +26,7 @@ local function constructNew_frmVDA20_7()
 
     _gui_assignInitialParentForForm(obj.handle);
     obj:beginUpdate();
-    obj:setName("frmVDA20_7");
+    obj:setName("frmVM20_7");
     obj:setAlign("client");
     obj:setTheme("dark");
 
@@ -116,7 +116,7 @@ local function constructNew_frmVDA20_7()
     obj.image1:setWidth(500);
     obj.image1:setHeight(175);
     obj.image1:setStyle("autoFit");
-    obj.image1:setSRC("/VampireDarkAges20th/images/Vampire20th.png");
+    obj.image1:setSRC("/VampireMasquerade20th/images/Vampire20th.png");
     obj.image1:setName("image1");
 
     obj.image2 = GUI.fromHandle(_obj_newObject("image"));
@@ -126,7 +126,7 @@ local function constructNew_frmVDA20_7()
     obj.image2:setWidth(250);
     obj.image2:setHeight(250);
     obj.image2:setStyle("autoFit");
-    obj.image2:setSRC("/VampireDarkAges20th/images/RPGmeister.jpg");
+    obj.image2:setSRC("/VampireMasquerade20th/images/RPGmeister.jpg");
     obj.image2:setName("image2");
 
     obj.layout1 = GUI.fromHandle(_obj_newObject("layout"));
@@ -577,13 +577,13 @@ local function constructNew_frmVDA20_7()
     return obj;
 end;
 
-function newfrmVDA20_7()
+function newfrmVM20_7()
     local retObj = nil;
     __o_rrpgObjs.beginObjectsLoading();
 
     __o_Utils.tryFinally(
       function()
-        retObj = constructNew_frmVDA20_7();
+        retObj = constructNew_frmVM20_7();
       end,
       function()
         __o_rrpgObjs.endObjectsLoading();
@@ -593,17 +593,17 @@ function newfrmVDA20_7()
     return retObj;
 end;
 
-local _frmVDA20_7 = {
-    newEditor = newfrmVDA20_7, 
-    new = newfrmVDA20_7, 
-    name = "frmVDA20_7", 
+local _frmVM20_7 = {
+    newEditor = newfrmVM20_7, 
+    new = newfrmVM20_7, 
+    name = "frmVM20_7", 
     dataType = "", 
     formType = "undefined", 
     formComponentName = "form", 
     title = "", 
     description=""};
 
-frmVDA20_7 = _frmVDA20_7;
-Firecast.registrarForm(_frmVDA20_7);
+frmVM20_7 = _frmVM20_7;
+Firecast.registrarForm(_frmVM20_7);
 
-return _frmVDA20_7;
+return _frmVM20_7;

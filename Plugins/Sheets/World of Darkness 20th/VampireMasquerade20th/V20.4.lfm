@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmVM20_4" align="client" theme="dark">
+	<scrollBox align="client">
+	   	<template name="Merit">
+			<edit left="0" top="0" width="200" height="24" field="merit_$(num)"/>
+			<edit left="200" top="0" width="100" height="24" field="type_$(num)"/>
+			<edit left="300" top="0" width="50" height="24" field="costy_$(num)"/>
+		</template>
+
+		<layout left="0" top="0" width="800" height="270">
+			<rectangle align="client" color="#FFFFFF00" strokeColor="black" strokeSize="1" xradius="10" yradius="10" cornerType="innerLine"/>
+			<label left="0" top="0" width="800" height="20" text="MERITS AND FLAWS" horzTextAlign="center"/>
+
+			<layout left="15" top="25" width="380" height="240">
+				<rectangle align="client" color="black" xradius="10" yradius="10" cornerType="innerLine"/>
+				<label left="15" top="0" width="200" height="20" text="Merit" horzTextAlign="center"/>
+				<label left="215" top="0" width="100" height="20" text="Type" horzTextAlign="center"/>
+				<label left="315" top="0" width="50" height="20" text="Cost" horzTextAlign="center"/>
+
+				<layout left="15" top="25" width="350" height="25" >
+					<Merit num="m1"/>
+				</layout>
+				<layout left="15" top="50" width="350" height="25" >
+					<Merit num="m2"/>
+				</layout>
+				<layout left="15" top="75" width="350" height="25" >
+					<Merit num="m3"/>
+				</layout>
+				<layout left="15" top="100" width="350" height="25" >
+					<Merit num="m4"/>
+				</layout>
+				<layout left="15" top="125" width="350" height="25" >
+					<Merit num="m5"/>
+				</layout>
+				<layout left="15" top="150" width="350" height="25" >
+					<Merit num="m6"/>
+				</layout>
+				<layout left="15" top="175" width="350" height="25" >
+					<Merit num="m7"/>
+				</layout>
+				<layout left="15" top="200" width="350" height="25" >
+					<Merit num="m8"/>
+				</layout>
+			</layout>
+
+			<layout left="405" top="25" width="380" height="240">
+				<rectangle align="client" color="black" xradius="10" yradius="10" cornerType="innerLine"/>
+				<label left="15" top="0" width="200" height="20" text="Flaw" horzTextAlign="center"/>
+				<label left="215" top="0" width="100" height="20" text="Type" horzTextAlign="center"/>
+				<label left="315" top="0" width="50" height="20" text="Cost" horzTextAlign="center"/>
+
+				<layout left="15" top="25" width="350" height="25" >
+					<Merit num="f1"/>
+				</layout>
+				<layout left="15" top="50" width="350" height="25" >
+					<Merit num="f2"/>
+				</layout>
+				<layout left="15" top="75" width="350" height="25" >
+					<Merit num="f3"/>
+				</layout>
+				<layout left="15" top="100" width="350" height="25" >
+					<Merit num="f4"/>
+				</layout>
+				<layout left="15" top="125" width="350" height="25" >
+					<Merit num="f5"/>
+				</layout>
+				<layout left="15" top="150" width="350" height="25" >
+					<Merit num="f6"/>
+				</layout>
+				<layout left="15" top="175" width="350" height="25" >
+					<Merit num="f7"/>
+				</layout>
+				<layout left="15" top="200" width="350" height="25" >
+					<Merit num="f8"/>
+				</layout>
+			</layout>
+		</layout>
+
+		<layout left="810" top="0" width="230" height="270">
+			<rectangle align="client" color="black" xradius="10" yradius="10" cornerType="innerLine"/>
+			<label left="0" top="0" width="230" height="20" text="EXPERIENCE" horzTextAlign="center"/>
+
+			<layout left="15" top="25" width="200" height="25" >
+				<label left="0" top="5" width="50" height="20" text="Total" horzTextAlign="trailing"/>
+        		<edit left="55" top="0" width="145" height="25" field="totalXP"/>
+			</layout>
+			<layout left="15" top="50" width="200" height="25" >
+				<label left="0" top="5" width="50" height="20" text="Spent" horzTextAlign="trailing"/>
+        		<edit left="55" top="0" width="145" height="25" field="spentXP"/>
+			</layout>
+			<textEditor left="15" top="75" width="200" height="170" field="xpList"/>
+		</layout>
+
+		<layout left="1050" top="0" width="230" height="270">
+			<rectangle align="client" color="black" xradius="10" yradius="10" cornerType="innerLine"/>
+			<label left="0" top="0" width="230" height="20" text="DERANGEMENTS" horzTextAlign="center"/>
+
+			<textEditor left="15" top="25" width="200" height="230" field="derangements"/>
+		</layout>
+
+		<layout left="0" top="280" width="240" height="165">
+			<rectangle align="client" color="black" xradius="10" yradius="10" cornerType="innerLine"/>
+			<label left="0" top="0" width="240" height="20" text="ALLIES" horzTextAlign="center"/>
+
+			<textEditor left="15" top="25" width="200" height="125" field="allies"/>
+		</layout>
+
+		<layout left="0" top="455" width="240" height="165">
+			<rectangle align="client" color="black" xradius="10" yradius="10" cornerType="innerLine"/>
+			<label left="0" top="0" width="240" height="20" text="MENTOR" horzTextAlign="center"/>
+
+			<textEditor left="15" top="25" width="200" height="125" field="mentor"/>
+		</layout>
+
+		<layout left="250" top="280" width="240" height="165">
+			<rectangle align="client" color="black" xradius="10" yradius="10" cornerType="innerLine"/>
+			<label left="0" top="0" width="240" height="20" text="CONTACTS" horzTextAlign="center"/>
+
+			<textEditor left="15" top="25" width="200" height="125" field="contacts"/>
+		</layout>
+
+		<layout left="250" top="455" width="240" height="165">
+			<rectangle align="client" color="black" xradius="10" yradius="10" cornerType="innerLine"/>
+			<label left="0" top="0" width="240" height="20" text="RESOURCES" horzTextAlign="center"/>
+
+			<textEditor left="15" top="25" width="200" height="125" field="resources"/>
+		</layout>
+
+		<layout left="500" top="280" width="240" height="165">
+			<rectangle align="client" color="black" xradius="10" yradius="10" cornerType="innerLine"/>
+			<label left="0" top="0" width="240" height="20" text="FAME" horzTextAlign="center"/>
+
+			<textEditor left="15" top="25" width="200" height="125" field="fame"/>
+		</layout>
+
+		<layout left="500" top="455" width="240" height="165">
+			<rectangle align="client" color="black" xradius="10" yradius="10" cornerType="innerLine"/>
+			<label left="0" top="0" width="240" height="20" text="RETAINERS" horzTextAlign="center"/>
+
+			<textEditor left="15" top="25" width="200" height="125" field="retainers"/>
+		</layout>
+
+		<layout left="750" top="280" width="240" height="165">
+			<rectangle align="client" color="black" xradius="10" yradius="10" cornerType="innerLine"/>
+			<label left="0" top="0" width="240" height="20" text="HERD" horzTextAlign="center"/>
+
+			<textEditor left="15" top="25" width="200" height="125" field="herd"/>
+		</layout>
+
+		<layout left="750" top="455" width="240" height="165">
+			<rectangle align="client" color="black" xradius="10" yradius="10" cornerType="innerLine"/>
+			<label left="0" top="0" width="240" height="20" text="STATUS" horzTextAlign="center"/>
+
+			<textEditor left="15" top="25" width="200" height="125" field="status"/>
+		</layout>
+
+		<layout left="1000" top="280" width="240" height="165">
+			<rectangle align="client" color="black" xradius="10" yradius="10" cornerType="innerLine"/>
+			<label left="0" top="0" width="240" height="20" text="INFLUENCE" horzTextAlign="center"/>
+
+			<textEditor left="15" top="25" width="200" height="125" field="influence"/>
+		</layout>
+
+		<layout left="1000" top="455" width="240" height="165">
+			<rectangle align="client" color="black" xradius="10" yradius="10" cornerType="innerLine"/>
+			<label left="0" top="0" width="240" height="20" text="OTHER" horzTextAlign="center"/>
+
+			<textEditor left="15" top="25" width="200" height="125" field="other"/>
+		</layout>
+
+
+	</scrollBox>
+</form>

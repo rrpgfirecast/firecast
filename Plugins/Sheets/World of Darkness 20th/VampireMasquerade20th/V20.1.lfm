@@ -1,0 +1,335 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmVM20_1" align="client" theme="dark">
+	<template name="Header">
+			<label left="0" top="5" width="80" height="20" text="$(nome)" horzTextAlign="trailing"/>
+        	<edit left="90" top="0" width="200" height="25" field="$(field)"/>
+	</template>
+	<template name="Attribute">
+			<label left="0" top="5" width="80" height="20" text="$(nome)"/>
+			<image left="80" top="0" width="25" height="25" style="autoFit" src="images/blood_on.png"/>
+			<imageCheckBox left="105" top="0" width="25" height="25" field="$(field)_2" checkedImage="images/blood_on.png" uncheckedImage="images/blood_off.png"/>
+			<imageCheckBox left="130" top="0" width="25" height="25" field="$(field)_3" checkedImage="images/blood_on.png" uncheckedImage="images/blood_off.png"/>
+			<imageCheckBox left="155" top="0" width="25" height="25" field="$(field)_4" checkedImage="images/blood_on.png" uncheckedImage="images/blood_off.png"/>
+			<imageCheckBox left="180" top="0" width="25" height="25" field="$(field)_5" checkedImage="images/blood_on.png" uncheckedImage="images/blood_off.png"/>
+			<imageCheckBox left="205" top="0" width="25" height="25" field="$(field)_6" checkedImage="images/blood_on.png" uncheckedImage="images/blood_off.png"/>
+			<imageCheckBox left="230" top="0" width="25" height="25" field="$(field)_7" checkedImage="images/blood_on.png" uncheckedImage="images/blood_off.png"/>
+			<imageCheckBox left="255" top="0" width="25" height="25" field="$(field)_8" checkedImage="images/blood_on.png" uncheckedImage="images/blood_off.png"/>
+			<imageCheckBox left="280" top="0" width="25" height="25" field="$(field)_9" checkedImage="images/blood_on.png" uncheckedImage="images/blood_off.png"/>
+	</template>
+	<template name="Discipline">
+			<edit left="0" top="5" width="75" height="20" field="$(field)" fontSize="12"/>
+			<imageCheckBox left="80" top="0" width="25" height="25" field="$(field)_1" checkedImage="images/blood_on.png" uncheckedImage="images/blood_off.png"/>
+			<imageCheckBox left="105" top="0" width="25" height="25" field="$(field)_2" checkedImage="images/blood_on.png" uncheckedImage="images/blood_off.png"/>
+			<imageCheckBox left="130" top="0" width="25" height="25" field="$(field)_3" checkedImage="images/blood_on.png" uncheckedImage="images/blood_off.png"/>
+			<imageCheckBox left="155" top="0" width="25" height="25" field="$(field)_4" checkedImage="images/blood_on.png" uncheckedImage="images/blood_off.png"/>
+			<imageCheckBox left="180" top="0" width="25" height="25" field="$(field)_5" checkedImage="images/blood_on.png" uncheckedImage="images/blood_off.png"/>
+			<imageCheckBox left="205" top="0" width="25" height="25" field="$(field)_6" checkedImage="images/blood_on.png" uncheckedImage="images/blood_off.png"/>
+			<imageCheckBox left="230" top="0" width="25" height="25" field="$(field)_7" checkedImage="images/blood_on.png" uncheckedImage="images/blood_off.png"/>
+			<imageCheckBox left="255" top="0" width="25" height="25" field="$(field)_8" checkedImage="images/blood_on.png" uncheckedImage="images/blood_off.png"/>
+			<imageCheckBox left="280" top="0" width="25" height="25" field="$(field)_9" checkedImage="images/blood_on.png" uncheckedImage="images/blood_off.png"/>
+	</template>
+	<template name="Virtue">
+			<label left="0" top="5" width="150" height="20" text="$(nome)"/>
+			<imageCheckBox left="160" top="0" width="25" height="25" field="$(field)_1" checkedImage="images/blood_on.png" uncheckedImage="images/blood_off.png"/>
+			<imageCheckBox left="185" top="0" width="25" height="25" field="$(field)_2" checkedImage="images/blood_on.png" uncheckedImage="images/blood_off.png"/>
+			<imageCheckBox left="210" top="0" width="25" height="25" field="$(field)_3" checkedImage="images/blood_on.png" uncheckedImage="images/blood_off.png"/>
+			<imageCheckBox left="235" top="0" width="25" height="25" field="$(field)_4" checkedImage="images/blood_on.png" uncheckedImage="images/blood_off.png"/>
+			<imageCheckBox left="260" top="0" width="25" height="25" field="$(field)_5" checkedImage="images/blood_on.png" uncheckedImage="images/blood_off.png"/>
+	</template>
+	<template name="Willpower">
+			<imageCheckBox left="0" top="0" width="25" height="25" field="$(field)_1" checkedImage="images/blood_on.png" uncheckedImage="images/blood_off.png"/>
+			<imageCheckBox left="25" top="0" width="25" height="25" field="$(field)_2" checkedImage="images/blood_on.png" uncheckedImage="images/blood_off.png"/>
+			<imageCheckBox left="50" top="0" width="25" height="25" field="$(field)_3" checkedImage="images/blood_on.png" uncheckedImage="images/blood_off.png"/>
+			<imageCheckBox left="75" top="0" width="25" height="25" field="$(field)_4" checkedImage="images/blood_on.png" uncheckedImage="images/blood_off.png"/>
+			<imageCheckBox left="100" top="0" width="25" height="25" field="$(field)_5" checkedImage="images/blood_on.png" uncheckedImage="images/blood_off.png"/>
+			<imageCheckBox left="125" top="0" width="25" height="25" field="$(field)_6" checkedImage="images/blood_on.png" uncheckedImage="images/blood_off.png"/>
+			<imageCheckBox left="150" top="0" width="25" height="25" field="$(field)_7" checkedImage="images/blood_on.png" uncheckedImage="images/blood_off.png"/>
+			<imageCheckBox left="175" top="0" width="25" height="25" field="$(field)_8" checkedImage="images/blood_on.png" uncheckedImage="images/blood_off.png"/>
+			<imageCheckBox left="200" top="0" width="25" height="25" field="$(field)_9" checkedImage="images/blood_on.png" uncheckedImage="images/blood_off.png"/>
+			<imageCheckBox left="225" top="0" width="25" height="25" field="$(field)_10" checkedImage="images/blood_on.png" uncheckedImage="images/blood_off.png"/>
+
+			<checkBox left="2" top="20" width="25" height="25" field="$(field)_c1"/>
+			<checkBox left="27" top="20" width="25" height="25" field="$(field)_c2"/>
+			<checkBox left="52" top="20" width="25" height="25" field="$(field)_c3"/>
+			<checkBox left="77" top="20" width="25" height="25" field="$(field)_c4"/>
+			<checkBox left="102" top="20" width="25" height="25" field="$(field)_c5"/>
+			<checkBox left="127" top="20" width="25" height="25" field="$(field)_c6"/>
+			<checkBox left="152" top="20" width="25" height="25" field="$(field)_c7"/>
+			<checkBox left="177" top="20" width="25" height="25" field="$(field)_c8"/>
+			<checkBox left="202" top="20" width="25" height="25" field="$(field)_c9"/>
+			<checkBox left="227" top="20" width="25" height="25" field="$(field)_c10"/>
+	</template>
+	<template name="Bloodpool">
+			<imageCheckBox left="0" top="0" width="25" height="25" field="$(field)_1" checkedImage="images/blood_on.png" uncheckedImage="images/blood_off.png"/>
+			<imageCheckBox left="25" top="0" width="25" height="25" field="$(field)_2" checkedImage="images/blood_on.png" uncheckedImage="images/blood_off.png"/>
+			<imageCheckBox left="50" top="0" width="25" height="25" field="$(field)_3" checkedImage="images/blood_on.png" uncheckedImage="images/blood_off.png"/>
+			<imageCheckBox left="75" top="0" width="25" height="25" field="$(field)_4" checkedImage="images/blood_on.png" uncheckedImage="images/blood_off.png"/>
+			<imageCheckBox left="100" top="0" width="25" height="25" field="$(field)_5" checkedImage="images/blood_on.png" uncheckedImage="images/blood_off.png"/>
+			<imageCheckBox left="125" top="0" width="25" height="25" field="$(field)_6" checkedImage="images/blood_on.png" uncheckedImage="images/blood_off.png"/>
+			<imageCheckBox left="150" top="0" width="25" height="25" field="$(field)_7" checkedImage="images/blood_on.png" uncheckedImage="images/blood_off.png"/>
+			<imageCheckBox left="175" top="0" width="25" height="25" field="$(field)_8" checkedImage="images/blood_on.png" uncheckedImage="images/blood_off.png"/>
+			<imageCheckBox left="200" top="0" width="25" height="25" field="$(field)_9" checkedImage="images/blood_on.png" uncheckedImage="images/blood_off.png"/>
+			<imageCheckBox left="225" top="0" width="25" height="25" field="$(field)_10" checkedImage="images/blood_on.png" uncheckedImage="images/blood_off.png"/>
+	</template>
+	<template name="Other">
+			<label left="0" top="5" width="80" height="20" text="$(nome)"/>
+			<imageCheckBox left="80" top="0" width="25" height="25" field="$(field)_1" checkedImage="images/blood_on.png" uncheckedImage="images/blood_off.png"/>
+			<imageCheckBox left="105" top="0" width="25" height="25" field="$(field)_2" checkedImage="images/blood_on.png" uncheckedImage="images/blood_off.png"/>
+			<imageCheckBox left="130" top="0" width="25" height="25" field="$(field)_3" checkedImage="images/blood_on.png" uncheckedImage="images/blood_off.png"/>
+			<imageCheckBox left="155" top="0" width="25" height="25" field="$(field)_4" checkedImage="images/blood_on.png" uncheckedImage="images/blood_off.png"/>
+			<imageCheckBox left="180" top="0" width="25" height="25" field="$(field)_5" checkedImage="images/blood_on.png" uncheckedImage="images/blood_off.png"/>
+			<imageCheckBox left="205" top="0" width="25" height="25" field="$(field)_6" checkedImage="images/blood_on.png" uncheckedImage="images/blood_off.png"/>
+			<imageCheckBox left="230" top="0" width="25" height="25" field="$(field)_7" checkedImage="images/blood_on.png" uncheckedImage="images/blood_off.png"/>
+			<imageCheckBox left="255" top="0" width="25" height="25" field="$(field)_8" checkedImage="images/blood_on.png" uncheckedImage="images/blood_off.png"/>
+			<imageCheckBox left="280" top="0" width="25" height="25" field="$(field)_9" checkedImage="images/blood_on.png" uncheckedImage="images/blood_off.png"/>
+	</template>
+
+	<scrollBox align="client">
+		<layout left="0" top="0" width="900" height="100">
+			<rectangle align="client" color="black" xradius="10" yradius="10" cornerType="innerLine"/>
+
+			<layout left="5" top="5" width="290" height="25" >
+				<Header field="name" nome="Name"/>
+			</layout>
+			<layout left="290" top="5" width="290" height="25" >
+				<Header field="nature" nome="Nature"/>
+			</layout>
+			<layout left="580" top="5" width="290" height="25" >
+				<Header field="clan" nome="Clan"/>
+			</layout>
+
+			<layout left="5" top="35" width="290" height="25" >
+				<Header field="player" nome="Player"/>
+			</layout>
+			<layout left="290" top="35" width="290" height="25" >
+				<Header field="demeanor" nome="Demeanor"/>
+			</layout>
+			<layout left="580" top="35" width="290" height="25" >
+				<Header field="generation" nome="Generation"/>
+			</layout>
+
+			<layout left="5" top="65" width="290" height="25" >
+				<Header field="chronicle" nome="Chronicle"/>
+			</layout>
+			<layout left="290" top="65" width="290" height="25" >
+				<Header field="concept" nome="Concept"/>
+			</layout>
+			<layout left="580" top="65" width="290" height="25" >
+				<Header field="sire" nome="Sire"/>
+			</layout>
+		</layout>
+
+		<layout left="0" top="110" width="370" height="285">
+			<rectangle align="client" color="black" xradius="10" yradius="10" cornerType="innerLine"/>
+			<label left="5" top="0" width="370" height="20" text="ATTRIBUTES" horzTextAlign="center"/>
+
+			<label left="-35" top="60" width="100" height="20" text="Physical" horzTextAlign="center" rotationAngle="270"/>
+
+			<layout left="50" top="25" width="305" height="25" >
+				<Attribute field="strength" nome="Strength"/>
+			</layout>
+			<layout left="50" top="50" width="305" height="25" >
+				<Attribute field="dexterity" nome="Dexterity"/>
+			</layout>
+			<layout left="50" top="75" width="305" height="25" >
+				<Attribute field="stamina" nome="Stamina"/>
+			</layout>
+
+			<horzLine left="5" top="105" width="355" strokeColor="white"/>
+
+			<label left="-35" top="145" width="100" height="20" text="Social" horzTextAlign="center" rotationAngle="270"/>
+
+			<layout left="50" top="110" width="305" height="25" >
+				<Attribute field="charisma" nome="Charisma"/>
+			</layout>
+			<layout left="50" top="135" width="305" height="25" >
+				<Attribute field="manipulation" nome="Manipulation"/>
+			</layout>
+			<layout left="50" top="160" width="305" height="25" >
+				<Attribute field="appearance" nome="Appearance"/>
+			</layout>
+
+			<horzLine left="5" top="190" width="355" strokeColor="white"/>
+
+			<label left="-35" top="230" width="100" height="20" text="Mental" horzTextAlign="center" rotationAngle="270"/>
+
+			<layout left="50" top="195" width="305" height="25" >
+				<Attribute field="perception" nome="Perception"/>
+			</layout>
+			<layout left="50" top="220" width="305" height="25" >
+				<Attribute field="inteligence" nome="Inteligence"/>
+			</layout>
+			<layout left="50" top="245" width="305" height="25" >
+				<Attribute field="wits" nome="Wits"/>
+			</layout>
+		</layout>
+
+		<layout left="380" top="110" width="335" height="285">
+			<rectangle align="client" color="black" xradius="10" yradius="10" cornerType="innerLine"/>
+			<label left="0" top="0" width="335" height="20" text="DISCIPLINES" horzTextAlign="center"/>
+
+			<layout left="15" top="25" width="305" height="25" >
+				<Discipline field="discipline_1"/>
+			</layout>
+			<layout left="15" top="50" width="305" height="25" >
+				<Discipline field="discipline_2"/>
+			</layout>
+			<layout left="15" top="75" width="305" height="25" >
+				<Discipline field="discipline_3"/>
+			</layout>
+			<layout left="15" top="100" width="305" height="25" >
+				<Discipline field="discipline_4"/>
+			</layout>
+			<layout left="15" top="125" width="305" height="25" >
+				<Discipline field="discipline_5"/>
+			</layout>
+			<layout left="15" top="150" width="305" height="25" >
+				<Discipline field="discipline_6"/>
+			</layout>
+			<layout left="15" top="175" width="305" height="25" >
+				<Discipline field="discipline_7"/>
+			</layout>
+			<layout left="15" top="200" width="305" height="25" >
+				<Discipline field="discipline_8"/>
+			</layout>
+			<layout left="15" top="225" width="305" height="25" >
+				<Discipline field="discipline_9"/>
+			</layout>
+			<layout left="15" top="250" width="305" height="25" >
+				<Discipline field="discipline_10"/>
+			</layout>
+		</layout>
+
+		<layout left="725" top="110" width="335" height="285">
+			<rectangle align="client" color="black" xradius="10" yradius="10" cornerType="innerLine"/>
+			<label left="0" top="0" width="335" height="20" text="BACKGROUNDS" horzTextAlign="center"/>
+
+			<layout left="15" top="25" width="305" height="25" >
+				<Discipline field="background_1"/>
+			</layout>
+			<layout left="15" top="50" width="305" height="25" >
+				<Discipline field="background_2"/>
+			</layout>
+			<layout left="15" top="75" width="305" height="25" >
+				<Discipline field="background_3"/>
+			</layout>
+			<layout left="15" top="100" width="305" height="25" >
+				<Discipline field="background_4"/>
+			</layout>
+			<layout left="15" top="125" width="305" height="25" >
+				<Discipline field="background_5"/>
+			</layout>
+			<layout left="15" top="150" width="305" height="25" >
+				<Discipline field="background_6"/>
+			</layout>
+			<layout left="15" top="175" width="305" height="25" >
+				<Discipline field="background_7"/>
+			</layout>
+			<layout left="15" top="200" width="305" height="25" >
+				<Discipline field="background_8"/>
+			</layout>
+			<layout left="15" top="225" width="305" height="25" >
+				<Discipline field="background_9"/>
+			</layout>
+			<layout left="15" top="250" width="305" height="25" >
+				<Discipline field="background_10"/>
+			</layout>
+		</layout>
+
+		<rectangle left="0" top="405" width="270" height="270" color="DimGray" xradius="5" yradius="5" cornerType="innerLine"/>
+		<image left="0" top="405" width="270" height="270" field="avatar" editable="true" style="autoFit"/>
+
+		<layout left="280" top="405" width="315" height="115">
+			<rectangle align="client" color="black" xradius="10" yradius="10" cornerType="innerLine"/>
+			<label left="0" top="0" width="315" height="20" text="VIRTUES" horzTextAlign="center"/>
+
+			<layout left="15" top="25" width="300" height="45" >
+				<Virtue field="conscience" nome="Conscience/Convicition"/>
+			</layout>
+			<layout left="15" top="50" width="300" height="45" >
+				<Virtue field="instinct" nome="Self-Control/Instinct"/>
+			</layout>
+			<layout left="15" top="75" width="300" height="45" >
+				<Virtue field="courage" nome="Courage"/>
+			</layout>
+		</layout>
+
+		<layout left="280" top="530" width="315" height="115">
+			<rectangle align="client" color="black" xradius="10" yradius="10" cornerType="innerLine"/>
+			<label left="0" top="0" width="315" height="20" text="HUMANITY/PATH" horzTextAlign="center"/>
+
+			<edit left="15" top="20" width="285" height="20" field="path"/>
+
+			<layout left="30" top="45" width="250" height="45" >
+				<imageCheckBox left="0" top="0" width="25" height="25" field="path_1" checkedImage="images/blood_on.png" uncheckedImage="images/blood_off.png"/>
+				<imageCheckBox left="25" top="0" width="25" height="25" field="path_2" checkedImage="images/blood_on.png" uncheckedImage="images/blood_off.png"/>
+				<imageCheckBox left="50" top="0" width="25" height="25" field="path_3" checkedImage="images/blood_on.png" uncheckedImage="images/blood_off.png"/>
+				<imageCheckBox left="75" top="0" width="25" height="25" field="path_4" checkedImage="images/blood_on.png" uncheckedImage="images/blood_off.png"/>
+				<imageCheckBox left="100" top="0" width="25" height="25" field="path_5" checkedImage="images/blood_on.png" uncheckedImage="images/blood_off.png"/>
+				<imageCheckBox left="125" top="0" width="25" height="25" field="path_6" checkedImage="images/blood_on.png" uncheckedImage="images/blood_off.png"/>
+				<imageCheckBox left="150" top="0" width="25" height="25" field="path_7" checkedImage="images/blood_on.png" uncheckedImage="images/blood_off.png"/>
+				<imageCheckBox left="175" top="0" width="25" height="25" field="path_8" checkedImage="images/blood_on.png" uncheckedImage="images/blood_off.png"/>
+				<imageCheckBox left="200" top="0" width="25" height="25" field="path_9" checkedImage="images/blood_on.png" uncheckedImage="images/blood_off.png"/>
+				<imageCheckBox left="225" top="0" width="25" height="25" field="path_10" checkedImage="images/blood_on.png" uncheckedImage="images/blood_off.png"/>
+			</layout>
+
+			<label left="15" top="75" width="50" height="20" text="Bearing"/>
+			<edit left="65" top="75" width="180" height="20" field="bearing"/>
+			<edit left="250" top="75" width="50" height="20" field="bearing2"/>
+		</layout>
+
+		<layout left="605" top="405" width="280" height="85">
+			<rectangle align="client" color="black" xradius="10" yradius="10" cornerType="innerLine"/>
+			<label left="0" top="0" width="280" height="20" text="WILLPOWER" horzTextAlign="center"/>
+			
+			<layout left="15" top="25" width="250" height="45" >
+				<Willpower field="willpower"/>
+			</layout>
+		</layout>
+
+		<layout left="605" top="500" width="280" height="165">
+			<rectangle align="client" color="black" xradius="10" yradius="10" cornerType="innerLine"/>
+			<label left="0" top="0" width="280" height="20" text="BLOOD POOL" horzTextAlign="center"/>
+			<edit left="185" top="1" width="30" height="20" field="bloodpool_turn" fontSize="11"/>
+			
+			<layout left="15" top="25" width="250" height="25" >
+				<Bloodpool field="bloodpool1"/>
+			</layout>
+			<layout left="15" top="50" width="250" height="25" >
+				<Bloodpool field="bloodpool2"/>
+			</layout>
+			<layout left="15" top="75" width="250" height="25" >
+				<Bloodpool field="bloodpool3"/>
+			</layout>
+			<layout left="15" top="100" width="250" height="25" >
+				<Bloodpool field="bloodpool4"/>
+			</layout>
+			<layout left="15" top="125" width="250" height="25" >
+				<Bloodpool field="bloodpool5"/>
+			</layout>
+		</layout>
+
+		<layout left="900" top="405" width="150" height="175">
+			<rectangle align="client" color="black" xradius="10" yradius="10" cornerType="innerLine"/>
+			<label left="0" top="0" width="150" height="20" text="HEALTH" horzTextAlign="center"/>
+
+			<checkBox left="20" top="25" width="125" height="20" field="bruised" text="Bruised"/>
+			<checkBox left="20" top="45" width="125" height="20" field="hurt" text="Hurt (-1)"/>
+			<checkBox left="20" top="65" width="125" height="20" field="injured" text="Injured (-1)"/>
+			<checkBox left="20" top="85" width="125" height="20" field="wounded" text="Wounded (-2)"/>
+			<checkBox left="20" top="105" width="125" height="20" field="mauled" text="Mauled (-2)"/>
+			<checkBox left="20" top="125" width="125" height="20" field="crippled" text="Crippled (-5)"/>
+			<checkBox left="20" top="145" width="125" height="20" field="incapacitated" text="Incapacitated"/>
+		</layout>
+
+	</scrollBox>
+</form>
+
+
+
+
+
+
+
+
+

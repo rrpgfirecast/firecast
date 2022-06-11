@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<form name="frmMage20th" formType="sheetTemplate" dataType="Ambesek.Mage.20th" title="Mage 20th Anniversary" align="client" theme="dark">
+<form name="frmVampireMasquerade20th" formType="sheetTemplate" dataType="Ambesek.VampireMasquerade.20th" title="Vampire The Masquerade 20th Anniversary" align="client" theme="dark">
     <script>
         <![CDATA[
         local function isNewVersion(installed, downloaded)
@@ -35,22 +35,25 @@
     </script>
 	<tabControl align="client">
 		<tab title="Main">
-			<import file="M20.1.lfm"/>
+			<import file="V20.1.lfm"/>
 		</tab>
-		<tab title="Traits">
-			<import file="M20.2.lfm"/>
+		<tab title="Abilities">
+			<import file="V20.2.lfm"/>
 		</tab>
 		<tab title="Inventory">
-			<import file="M20.3.lfm"/>
+			<import file="V20.3.lfm"/>
+		</tab>
+		<tab title="Descriptions">
+			<import file="V20.4.lfm"/>
 		</tab>
 		<tab title="Background">
-			<import file="M20.4.lfm"/>
+			<import file="V20.5.lfm"/>
 		</tab>
 		<tab title="Notes">
-			<import file="M20.5.lfm"/>
+			<import file="V20.6.lfm"/>
 		</tab>
 		<tab title="Credits">
-			<import file="M20.6.lfm"/>
+			<import file="V20.7.lfm"/>
 		</tab>
 	</tabControl>
     <event name="onNodeReady">

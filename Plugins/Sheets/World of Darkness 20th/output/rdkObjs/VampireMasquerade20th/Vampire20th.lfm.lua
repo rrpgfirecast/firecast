@@ -7,7 +7,7 @@ require("ndb.lua");
 require("locale.lua");
 local __o_Utils = require("utils.lua");
 
-local function constructNew_frmVampireDarkAges20th()
+local function constructNew_frmVampireMasquerade20th()
     local obj = GUI.fromHandle(_obj_newObject("form"));
     local self = obj;
     local sheet = nil;
@@ -26,10 +26,10 @@ local function constructNew_frmVampireDarkAges20th()
 
     _gui_assignInitialParentForForm(obj.handle);
     obj:beginUpdate();
-    obj:setName("frmVampireDarkAges20th");
+    obj:setName("frmVampireMasquerade20th");
     obj:setFormType("sheetTemplate");
-    obj:setDataType("Ambesek.VampireDarkAges.20th");
-    obj:setTitle("Vampire Dark Ages 20th Anniversary");
+    obj:setDataType("Ambesek.VampireMasquerade.20th");
+    obj:setTitle("Vampire The Masquerade 20th Anniversary");
     obj:setAlign("client");
     obj:setTheme("dark");
 
@@ -76,14 +76,14 @@ local function constructNew_frmVampireDarkAges20th()
     obj.tab1:setTitle("Main");
     obj.tab1:setName("tab1");
 
-    obj.frmVDA20_1 = GUI.fromHandle(_obj_newObject("form"));
-    obj.frmVDA20_1:setParent(obj.tab1);
-    obj.frmVDA20_1:setName("frmVDA20_1");
-    obj.frmVDA20_1:setAlign("client");
-    obj.frmVDA20_1:setTheme("dark");
+    obj.frmVM20_1 = GUI.fromHandle(_obj_newObject("form"));
+    obj.frmVM20_1:setParent(obj.tab1);
+    obj.frmVM20_1:setName("frmVM20_1");
+    obj.frmVM20_1:setAlign("client");
+    obj.frmVM20_1:setTheme("dark");
 
     obj.scrollBox1 = GUI.fromHandle(_obj_newObject("scrollBox"));
-    obj.scrollBox1:setParent(obj.frmVDA20_1);
+    obj.scrollBox1:setParent(obj.frmVM20_1);
     obj.scrollBox1:setAlign("client");
     obj.scrollBox1:setName("scrollBox1");
 
@@ -409,7 +409,7 @@ local function constructNew_frmVampireDarkAges20th()
     obj.image1:setWidth(25);
     obj.image1:setHeight(25);
     obj.image1:setStyle("autoFit");
-    obj.image1:setSRC("/VampireDarkAges20th/images/blood_on.png");
+    obj.image1:setSRC("/VampireMasquerade20th/images/blood_on.png");
     obj.image1:setName("image1");
 
     obj.imageCheckBox1 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -419,8 +419,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox1:setWidth(25);
     obj.imageCheckBox1:setHeight(25);
     obj.imageCheckBox1:setField("strength_2");
-    obj.imageCheckBox1:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox1:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox1:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox1:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox1:setName("imageCheckBox1");
 
     obj.imageCheckBox2 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -430,8 +430,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox2:setWidth(25);
     obj.imageCheckBox2:setHeight(25);
     obj.imageCheckBox2:setField("strength_3");
-    obj.imageCheckBox2:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox2:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox2:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox2:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox2:setName("imageCheckBox2");
 
     obj.imageCheckBox3 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -441,8 +441,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox3:setWidth(25);
     obj.imageCheckBox3:setHeight(25);
     obj.imageCheckBox3:setField("strength_4");
-    obj.imageCheckBox3:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox3:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox3:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox3:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox3:setName("imageCheckBox3");
 
     obj.imageCheckBox4 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -452,8 +452,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox4:setWidth(25);
     obj.imageCheckBox4:setHeight(25);
     obj.imageCheckBox4:setField("strength_5");
-    obj.imageCheckBox4:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox4:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox4:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox4:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox4:setName("imageCheckBox4");
 
     obj.imageCheckBox5 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -463,8 +463,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox5:setWidth(25);
     obj.imageCheckBox5:setHeight(25);
     obj.imageCheckBox5:setField("strength_6");
-    obj.imageCheckBox5:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox5:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox5:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox5:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox5:setName("imageCheckBox5");
 
     obj.imageCheckBox6 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -474,8 +474,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox6:setWidth(25);
     obj.imageCheckBox6:setHeight(25);
     obj.imageCheckBox6:setField("strength_7");
-    obj.imageCheckBox6:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox6:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox6:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox6:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox6:setName("imageCheckBox6");
 
     obj.imageCheckBox7 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -485,8 +485,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox7:setWidth(25);
     obj.imageCheckBox7:setHeight(25);
     obj.imageCheckBox7:setField("strength_8");
-    obj.imageCheckBox7:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox7:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox7:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox7:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox7:setName("imageCheckBox7");
 
     obj.imageCheckBox8 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -496,8 +496,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox8:setWidth(25);
     obj.imageCheckBox8:setHeight(25);
     obj.imageCheckBox8:setField("strength_9");
-    obj.imageCheckBox8:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox8:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox8:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox8:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox8:setName("imageCheckBox8");
 
     obj.layout13 = GUI.fromHandle(_obj_newObject("layout"));
@@ -524,7 +524,7 @@ local function constructNew_frmVampireDarkAges20th()
     obj.image2:setWidth(25);
     obj.image2:setHeight(25);
     obj.image2:setStyle("autoFit");
-    obj.image2:setSRC("/VampireDarkAges20th/images/blood_on.png");
+    obj.image2:setSRC("/VampireMasquerade20th/images/blood_on.png");
     obj.image2:setName("image2");
 
     obj.imageCheckBox9 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -534,8 +534,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox9:setWidth(25);
     obj.imageCheckBox9:setHeight(25);
     obj.imageCheckBox9:setField("dexterity_2");
-    obj.imageCheckBox9:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox9:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox9:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox9:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox9:setName("imageCheckBox9");
 
     obj.imageCheckBox10 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -545,8 +545,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox10:setWidth(25);
     obj.imageCheckBox10:setHeight(25);
     obj.imageCheckBox10:setField("dexterity_3");
-    obj.imageCheckBox10:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox10:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox10:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox10:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox10:setName("imageCheckBox10");
 
     obj.imageCheckBox11 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -556,8 +556,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox11:setWidth(25);
     obj.imageCheckBox11:setHeight(25);
     obj.imageCheckBox11:setField("dexterity_4");
-    obj.imageCheckBox11:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox11:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox11:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox11:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox11:setName("imageCheckBox11");
 
     obj.imageCheckBox12 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -567,8 +567,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox12:setWidth(25);
     obj.imageCheckBox12:setHeight(25);
     obj.imageCheckBox12:setField("dexterity_5");
-    obj.imageCheckBox12:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox12:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox12:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox12:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox12:setName("imageCheckBox12");
 
     obj.imageCheckBox13 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -578,8 +578,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox13:setWidth(25);
     obj.imageCheckBox13:setHeight(25);
     obj.imageCheckBox13:setField("dexterity_6");
-    obj.imageCheckBox13:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox13:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox13:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox13:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox13:setName("imageCheckBox13");
 
     obj.imageCheckBox14 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -589,8 +589,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox14:setWidth(25);
     obj.imageCheckBox14:setHeight(25);
     obj.imageCheckBox14:setField("dexterity_7");
-    obj.imageCheckBox14:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox14:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox14:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox14:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox14:setName("imageCheckBox14");
 
     obj.imageCheckBox15 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -600,8 +600,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox15:setWidth(25);
     obj.imageCheckBox15:setHeight(25);
     obj.imageCheckBox15:setField("dexterity_8");
-    obj.imageCheckBox15:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox15:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox15:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox15:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox15:setName("imageCheckBox15");
 
     obj.imageCheckBox16 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -611,8 +611,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox16:setWidth(25);
     obj.imageCheckBox16:setHeight(25);
     obj.imageCheckBox16:setField("dexterity_9");
-    obj.imageCheckBox16:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox16:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox16:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox16:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox16:setName("imageCheckBox16");
 
     obj.layout14 = GUI.fromHandle(_obj_newObject("layout"));
@@ -639,7 +639,7 @@ local function constructNew_frmVampireDarkAges20th()
     obj.image3:setWidth(25);
     obj.image3:setHeight(25);
     obj.image3:setStyle("autoFit");
-    obj.image3:setSRC("/VampireDarkAges20th/images/blood_on.png");
+    obj.image3:setSRC("/VampireMasquerade20th/images/blood_on.png");
     obj.image3:setName("image3");
 
     obj.imageCheckBox17 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -649,8 +649,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox17:setWidth(25);
     obj.imageCheckBox17:setHeight(25);
     obj.imageCheckBox17:setField("stamina_2");
-    obj.imageCheckBox17:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox17:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox17:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox17:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox17:setName("imageCheckBox17");
 
     obj.imageCheckBox18 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -660,8 +660,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox18:setWidth(25);
     obj.imageCheckBox18:setHeight(25);
     obj.imageCheckBox18:setField("stamina_3");
-    obj.imageCheckBox18:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox18:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox18:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox18:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox18:setName("imageCheckBox18");
 
     obj.imageCheckBox19 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -671,8 +671,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox19:setWidth(25);
     obj.imageCheckBox19:setHeight(25);
     obj.imageCheckBox19:setField("stamina_4");
-    obj.imageCheckBox19:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox19:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox19:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox19:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox19:setName("imageCheckBox19");
 
     obj.imageCheckBox20 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -682,8 +682,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox20:setWidth(25);
     obj.imageCheckBox20:setHeight(25);
     obj.imageCheckBox20:setField("stamina_5");
-    obj.imageCheckBox20:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox20:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox20:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox20:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox20:setName("imageCheckBox20");
 
     obj.imageCheckBox21 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -693,8 +693,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox21:setWidth(25);
     obj.imageCheckBox21:setHeight(25);
     obj.imageCheckBox21:setField("stamina_6");
-    obj.imageCheckBox21:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox21:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox21:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox21:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox21:setName("imageCheckBox21");
 
     obj.imageCheckBox22 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -704,8 +704,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox22:setWidth(25);
     obj.imageCheckBox22:setHeight(25);
     obj.imageCheckBox22:setField("stamina_7");
-    obj.imageCheckBox22:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox22:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox22:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox22:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox22:setName("imageCheckBox22");
 
     obj.imageCheckBox23 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -715,8 +715,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox23:setWidth(25);
     obj.imageCheckBox23:setHeight(25);
     obj.imageCheckBox23:setField("stamina_8");
-    obj.imageCheckBox23:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox23:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox23:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox23:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox23:setName("imageCheckBox23");
 
     obj.imageCheckBox24 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -726,8 +726,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox24:setWidth(25);
     obj.imageCheckBox24:setHeight(25);
     obj.imageCheckBox24:setField("stamina_9");
-    obj.imageCheckBox24:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox24:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox24:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox24:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox24:setName("imageCheckBox24");
 
     obj.horzLine1 = GUI.fromHandle(_obj_newObject("horzLine"));
@@ -773,7 +773,7 @@ local function constructNew_frmVampireDarkAges20th()
     obj.image4:setWidth(25);
     obj.image4:setHeight(25);
     obj.image4:setStyle("autoFit");
-    obj.image4:setSRC("/VampireDarkAges20th/images/blood_on.png");
+    obj.image4:setSRC("/VampireMasquerade20th/images/blood_on.png");
     obj.image4:setName("image4");
 
     obj.imageCheckBox25 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -783,8 +783,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox25:setWidth(25);
     obj.imageCheckBox25:setHeight(25);
     obj.imageCheckBox25:setField("charisma_2");
-    obj.imageCheckBox25:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox25:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox25:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox25:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox25:setName("imageCheckBox25");
 
     obj.imageCheckBox26 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -794,8 +794,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox26:setWidth(25);
     obj.imageCheckBox26:setHeight(25);
     obj.imageCheckBox26:setField("charisma_3");
-    obj.imageCheckBox26:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox26:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox26:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox26:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox26:setName("imageCheckBox26");
 
     obj.imageCheckBox27 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -805,8 +805,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox27:setWidth(25);
     obj.imageCheckBox27:setHeight(25);
     obj.imageCheckBox27:setField("charisma_4");
-    obj.imageCheckBox27:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox27:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox27:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox27:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox27:setName("imageCheckBox27");
 
     obj.imageCheckBox28 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -816,8 +816,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox28:setWidth(25);
     obj.imageCheckBox28:setHeight(25);
     obj.imageCheckBox28:setField("charisma_5");
-    obj.imageCheckBox28:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox28:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox28:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox28:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox28:setName("imageCheckBox28");
 
     obj.imageCheckBox29 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -827,8 +827,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox29:setWidth(25);
     obj.imageCheckBox29:setHeight(25);
     obj.imageCheckBox29:setField("charisma_6");
-    obj.imageCheckBox29:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox29:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox29:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox29:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox29:setName("imageCheckBox29");
 
     obj.imageCheckBox30 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -838,8 +838,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox30:setWidth(25);
     obj.imageCheckBox30:setHeight(25);
     obj.imageCheckBox30:setField("charisma_7");
-    obj.imageCheckBox30:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox30:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox30:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox30:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox30:setName("imageCheckBox30");
 
     obj.imageCheckBox31 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -849,8 +849,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox31:setWidth(25);
     obj.imageCheckBox31:setHeight(25);
     obj.imageCheckBox31:setField("charisma_8");
-    obj.imageCheckBox31:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox31:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox31:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox31:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox31:setName("imageCheckBox31");
 
     obj.imageCheckBox32 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -860,8 +860,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox32:setWidth(25);
     obj.imageCheckBox32:setHeight(25);
     obj.imageCheckBox32:setField("charisma_9");
-    obj.imageCheckBox32:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox32:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox32:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox32:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox32:setName("imageCheckBox32");
 
     obj.layout16 = GUI.fromHandle(_obj_newObject("layout"));
@@ -888,7 +888,7 @@ local function constructNew_frmVampireDarkAges20th()
     obj.image5:setWidth(25);
     obj.image5:setHeight(25);
     obj.image5:setStyle("autoFit");
-    obj.image5:setSRC("/VampireDarkAges20th/images/blood_on.png");
+    obj.image5:setSRC("/VampireMasquerade20th/images/blood_on.png");
     obj.image5:setName("image5");
 
     obj.imageCheckBox33 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -898,8 +898,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox33:setWidth(25);
     obj.imageCheckBox33:setHeight(25);
     obj.imageCheckBox33:setField("manipulation_2");
-    obj.imageCheckBox33:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox33:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox33:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox33:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox33:setName("imageCheckBox33");
 
     obj.imageCheckBox34 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -909,8 +909,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox34:setWidth(25);
     obj.imageCheckBox34:setHeight(25);
     obj.imageCheckBox34:setField("manipulation_3");
-    obj.imageCheckBox34:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox34:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox34:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox34:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox34:setName("imageCheckBox34");
 
     obj.imageCheckBox35 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -920,8 +920,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox35:setWidth(25);
     obj.imageCheckBox35:setHeight(25);
     obj.imageCheckBox35:setField("manipulation_4");
-    obj.imageCheckBox35:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox35:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox35:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox35:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox35:setName("imageCheckBox35");
 
     obj.imageCheckBox36 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -931,8 +931,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox36:setWidth(25);
     obj.imageCheckBox36:setHeight(25);
     obj.imageCheckBox36:setField("manipulation_5");
-    obj.imageCheckBox36:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox36:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox36:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox36:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox36:setName("imageCheckBox36");
 
     obj.imageCheckBox37 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -942,8 +942,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox37:setWidth(25);
     obj.imageCheckBox37:setHeight(25);
     obj.imageCheckBox37:setField("manipulation_6");
-    obj.imageCheckBox37:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox37:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox37:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox37:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox37:setName("imageCheckBox37");
 
     obj.imageCheckBox38 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -953,8 +953,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox38:setWidth(25);
     obj.imageCheckBox38:setHeight(25);
     obj.imageCheckBox38:setField("manipulation_7");
-    obj.imageCheckBox38:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox38:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox38:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox38:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox38:setName("imageCheckBox38");
 
     obj.imageCheckBox39 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -964,8 +964,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox39:setWidth(25);
     obj.imageCheckBox39:setHeight(25);
     obj.imageCheckBox39:setField("manipulation_8");
-    obj.imageCheckBox39:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox39:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox39:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox39:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox39:setName("imageCheckBox39");
 
     obj.imageCheckBox40 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -975,8 +975,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox40:setWidth(25);
     obj.imageCheckBox40:setHeight(25);
     obj.imageCheckBox40:setField("manipulation_9");
-    obj.imageCheckBox40:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox40:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox40:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox40:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox40:setName("imageCheckBox40");
 
     obj.layout17 = GUI.fromHandle(_obj_newObject("layout"));
@@ -1003,7 +1003,7 @@ local function constructNew_frmVampireDarkAges20th()
     obj.image6:setWidth(25);
     obj.image6:setHeight(25);
     obj.image6:setStyle("autoFit");
-    obj.image6:setSRC("/VampireDarkAges20th/images/blood_on.png");
+    obj.image6:setSRC("/VampireMasquerade20th/images/blood_on.png");
     obj.image6:setName("image6");
 
     obj.imageCheckBox41 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -1013,8 +1013,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox41:setWidth(25);
     obj.imageCheckBox41:setHeight(25);
     obj.imageCheckBox41:setField("appearance_2");
-    obj.imageCheckBox41:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox41:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox41:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox41:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox41:setName("imageCheckBox41");
 
     obj.imageCheckBox42 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -1024,8 +1024,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox42:setWidth(25);
     obj.imageCheckBox42:setHeight(25);
     obj.imageCheckBox42:setField("appearance_3");
-    obj.imageCheckBox42:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox42:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox42:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox42:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox42:setName("imageCheckBox42");
 
     obj.imageCheckBox43 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -1035,8 +1035,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox43:setWidth(25);
     obj.imageCheckBox43:setHeight(25);
     obj.imageCheckBox43:setField("appearance_4");
-    obj.imageCheckBox43:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox43:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox43:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox43:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox43:setName("imageCheckBox43");
 
     obj.imageCheckBox44 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -1046,8 +1046,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox44:setWidth(25);
     obj.imageCheckBox44:setHeight(25);
     obj.imageCheckBox44:setField("appearance_5");
-    obj.imageCheckBox44:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox44:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox44:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox44:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox44:setName("imageCheckBox44");
 
     obj.imageCheckBox45 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -1057,8 +1057,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox45:setWidth(25);
     obj.imageCheckBox45:setHeight(25);
     obj.imageCheckBox45:setField("appearance_6");
-    obj.imageCheckBox45:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox45:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox45:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox45:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox45:setName("imageCheckBox45");
 
     obj.imageCheckBox46 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -1068,8 +1068,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox46:setWidth(25);
     obj.imageCheckBox46:setHeight(25);
     obj.imageCheckBox46:setField("appearance_7");
-    obj.imageCheckBox46:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox46:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox46:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox46:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox46:setName("imageCheckBox46");
 
     obj.imageCheckBox47 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -1079,8 +1079,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox47:setWidth(25);
     obj.imageCheckBox47:setHeight(25);
     obj.imageCheckBox47:setField("appearance_8");
-    obj.imageCheckBox47:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox47:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox47:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox47:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox47:setName("imageCheckBox47");
 
     obj.imageCheckBox48 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -1090,8 +1090,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox48:setWidth(25);
     obj.imageCheckBox48:setHeight(25);
     obj.imageCheckBox48:setField("appearance_9");
-    obj.imageCheckBox48:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox48:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox48:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox48:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox48:setName("imageCheckBox48");
 
     obj.horzLine2 = GUI.fromHandle(_obj_newObject("horzLine"));
@@ -1137,7 +1137,7 @@ local function constructNew_frmVampireDarkAges20th()
     obj.image7:setWidth(25);
     obj.image7:setHeight(25);
     obj.image7:setStyle("autoFit");
-    obj.image7:setSRC("/VampireDarkAges20th/images/blood_on.png");
+    obj.image7:setSRC("/VampireMasquerade20th/images/blood_on.png");
     obj.image7:setName("image7");
 
     obj.imageCheckBox49 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -1147,8 +1147,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox49:setWidth(25);
     obj.imageCheckBox49:setHeight(25);
     obj.imageCheckBox49:setField("perception_2");
-    obj.imageCheckBox49:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox49:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox49:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox49:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox49:setName("imageCheckBox49");
 
     obj.imageCheckBox50 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -1158,8 +1158,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox50:setWidth(25);
     obj.imageCheckBox50:setHeight(25);
     obj.imageCheckBox50:setField("perception_3");
-    obj.imageCheckBox50:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox50:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox50:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox50:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox50:setName("imageCheckBox50");
 
     obj.imageCheckBox51 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -1169,8 +1169,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox51:setWidth(25);
     obj.imageCheckBox51:setHeight(25);
     obj.imageCheckBox51:setField("perception_4");
-    obj.imageCheckBox51:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox51:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox51:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox51:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox51:setName("imageCheckBox51");
 
     obj.imageCheckBox52 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -1180,8 +1180,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox52:setWidth(25);
     obj.imageCheckBox52:setHeight(25);
     obj.imageCheckBox52:setField("perception_5");
-    obj.imageCheckBox52:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox52:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox52:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox52:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox52:setName("imageCheckBox52");
 
     obj.imageCheckBox53 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -1191,8 +1191,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox53:setWidth(25);
     obj.imageCheckBox53:setHeight(25);
     obj.imageCheckBox53:setField("perception_6");
-    obj.imageCheckBox53:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox53:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox53:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox53:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox53:setName("imageCheckBox53");
 
     obj.imageCheckBox54 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -1202,8 +1202,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox54:setWidth(25);
     obj.imageCheckBox54:setHeight(25);
     obj.imageCheckBox54:setField("perception_7");
-    obj.imageCheckBox54:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox54:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox54:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox54:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox54:setName("imageCheckBox54");
 
     obj.imageCheckBox55 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -1213,8 +1213,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox55:setWidth(25);
     obj.imageCheckBox55:setHeight(25);
     obj.imageCheckBox55:setField("perception_8");
-    obj.imageCheckBox55:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox55:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox55:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox55:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox55:setName("imageCheckBox55");
 
     obj.imageCheckBox56 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -1224,8 +1224,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox56:setWidth(25);
     obj.imageCheckBox56:setHeight(25);
     obj.imageCheckBox56:setField("perception_9");
-    obj.imageCheckBox56:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox56:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox56:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox56:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox56:setName("imageCheckBox56");
 
     obj.layout19 = GUI.fromHandle(_obj_newObject("layout"));
@@ -1252,7 +1252,7 @@ local function constructNew_frmVampireDarkAges20th()
     obj.image8:setWidth(25);
     obj.image8:setHeight(25);
     obj.image8:setStyle("autoFit");
-    obj.image8:setSRC("/VampireDarkAges20th/images/blood_on.png");
+    obj.image8:setSRC("/VampireMasquerade20th/images/blood_on.png");
     obj.image8:setName("image8");
 
     obj.imageCheckBox57 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -1262,8 +1262,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox57:setWidth(25);
     obj.imageCheckBox57:setHeight(25);
     obj.imageCheckBox57:setField("inteligence_2");
-    obj.imageCheckBox57:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox57:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox57:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox57:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox57:setName("imageCheckBox57");
 
     obj.imageCheckBox58 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -1273,8 +1273,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox58:setWidth(25);
     obj.imageCheckBox58:setHeight(25);
     obj.imageCheckBox58:setField("inteligence_3");
-    obj.imageCheckBox58:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox58:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox58:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox58:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox58:setName("imageCheckBox58");
 
     obj.imageCheckBox59 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -1284,8 +1284,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox59:setWidth(25);
     obj.imageCheckBox59:setHeight(25);
     obj.imageCheckBox59:setField("inteligence_4");
-    obj.imageCheckBox59:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox59:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox59:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox59:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox59:setName("imageCheckBox59");
 
     obj.imageCheckBox60 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -1295,8 +1295,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox60:setWidth(25);
     obj.imageCheckBox60:setHeight(25);
     obj.imageCheckBox60:setField("inteligence_5");
-    obj.imageCheckBox60:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox60:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox60:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox60:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox60:setName("imageCheckBox60");
 
     obj.imageCheckBox61 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -1306,8 +1306,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox61:setWidth(25);
     obj.imageCheckBox61:setHeight(25);
     obj.imageCheckBox61:setField("inteligence_6");
-    obj.imageCheckBox61:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox61:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox61:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox61:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox61:setName("imageCheckBox61");
 
     obj.imageCheckBox62 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -1317,8 +1317,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox62:setWidth(25);
     obj.imageCheckBox62:setHeight(25);
     obj.imageCheckBox62:setField("inteligence_7");
-    obj.imageCheckBox62:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox62:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox62:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox62:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox62:setName("imageCheckBox62");
 
     obj.imageCheckBox63 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -1328,8 +1328,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox63:setWidth(25);
     obj.imageCheckBox63:setHeight(25);
     obj.imageCheckBox63:setField("inteligence_8");
-    obj.imageCheckBox63:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox63:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox63:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox63:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox63:setName("imageCheckBox63");
 
     obj.imageCheckBox64 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -1339,8 +1339,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox64:setWidth(25);
     obj.imageCheckBox64:setHeight(25);
     obj.imageCheckBox64:setField("inteligence_9");
-    obj.imageCheckBox64:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox64:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox64:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox64:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox64:setName("imageCheckBox64");
 
     obj.layout20 = GUI.fromHandle(_obj_newObject("layout"));
@@ -1367,7 +1367,7 @@ local function constructNew_frmVampireDarkAges20th()
     obj.image9:setWidth(25);
     obj.image9:setHeight(25);
     obj.image9:setStyle("autoFit");
-    obj.image9:setSRC("/VampireDarkAges20th/images/blood_on.png");
+    obj.image9:setSRC("/VampireMasquerade20th/images/blood_on.png");
     obj.image9:setName("image9");
 
     obj.imageCheckBox65 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -1377,8 +1377,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox65:setWidth(25);
     obj.imageCheckBox65:setHeight(25);
     obj.imageCheckBox65:setField("wits_2");
-    obj.imageCheckBox65:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox65:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox65:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox65:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox65:setName("imageCheckBox65");
 
     obj.imageCheckBox66 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -1388,8 +1388,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox66:setWidth(25);
     obj.imageCheckBox66:setHeight(25);
     obj.imageCheckBox66:setField("wits_3");
-    obj.imageCheckBox66:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox66:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox66:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox66:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox66:setName("imageCheckBox66");
 
     obj.imageCheckBox67 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -1399,8 +1399,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox67:setWidth(25);
     obj.imageCheckBox67:setHeight(25);
     obj.imageCheckBox67:setField("wits_4");
-    obj.imageCheckBox67:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox67:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox67:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox67:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox67:setName("imageCheckBox67");
 
     obj.imageCheckBox68 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -1410,8 +1410,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox68:setWidth(25);
     obj.imageCheckBox68:setHeight(25);
     obj.imageCheckBox68:setField("wits_5");
-    obj.imageCheckBox68:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox68:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox68:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox68:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox68:setName("imageCheckBox68");
 
     obj.imageCheckBox69 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -1421,8 +1421,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox69:setWidth(25);
     obj.imageCheckBox69:setHeight(25);
     obj.imageCheckBox69:setField("wits_6");
-    obj.imageCheckBox69:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox69:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox69:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox69:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox69:setName("imageCheckBox69");
 
     obj.imageCheckBox70 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -1432,8 +1432,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox70:setWidth(25);
     obj.imageCheckBox70:setHeight(25);
     obj.imageCheckBox70:setField("wits_7");
-    obj.imageCheckBox70:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox70:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox70:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox70:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox70:setName("imageCheckBox70");
 
     obj.imageCheckBox71 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -1443,8 +1443,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox71:setWidth(25);
     obj.imageCheckBox71:setHeight(25);
     obj.imageCheckBox71:setField("wits_8");
-    obj.imageCheckBox71:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox71:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox71:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox71:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox71:setName("imageCheckBox71");
 
     obj.imageCheckBox72 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -1454,8 +1454,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox72:setWidth(25);
     obj.imageCheckBox72:setHeight(25);
     obj.imageCheckBox72:setField("wits_9");
-    obj.imageCheckBox72:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox72:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox72:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox72:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox72:setName("imageCheckBox72");
 
     obj.layout21 = GUI.fromHandle(_obj_newObject("layout"));
@@ -1510,8 +1510,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox73:setWidth(25);
     obj.imageCheckBox73:setHeight(25);
     obj.imageCheckBox73:setField("discipline_1_1");
-    obj.imageCheckBox73:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox73:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox73:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox73:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox73:setName("imageCheckBox73");
 
     obj.imageCheckBox74 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -1521,8 +1521,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox74:setWidth(25);
     obj.imageCheckBox74:setHeight(25);
     obj.imageCheckBox74:setField("discipline_1_2");
-    obj.imageCheckBox74:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox74:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox74:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox74:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox74:setName("imageCheckBox74");
 
     obj.imageCheckBox75 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -1532,8 +1532,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox75:setWidth(25);
     obj.imageCheckBox75:setHeight(25);
     obj.imageCheckBox75:setField("discipline_1_3");
-    obj.imageCheckBox75:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox75:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox75:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox75:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox75:setName("imageCheckBox75");
 
     obj.imageCheckBox76 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -1543,8 +1543,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox76:setWidth(25);
     obj.imageCheckBox76:setHeight(25);
     obj.imageCheckBox76:setField("discipline_1_4");
-    obj.imageCheckBox76:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox76:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox76:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox76:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox76:setName("imageCheckBox76");
 
     obj.imageCheckBox77 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -1554,8 +1554,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox77:setWidth(25);
     obj.imageCheckBox77:setHeight(25);
     obj.imageCheckBox77:setField("discipline_1_5");
-    obj.imageCheckBox77:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox77:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox77:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox77:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox77:setName("imageCheckBox77");
 
     obj.imageCheckBox78 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -1565,8 +1565,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox78:setWidth(25);
     obj.imageCheckBox78:setHeight(25);
     obj.imageCheckBox78:setField("discipline_1_6");
-    obj.imageCheckBox78:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox78:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox78:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox78:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox78:setName("imageCheckBox78");
 
     obj.imageCheckBox79 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -1576,8 +1576,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox79:setWidth(25);
     obj.imageCheckBox79:setHeight(25);
     obj.imageCheckBox79:setField("discipline_1_7");
-    obj.imageCheckBox79:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox79:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox79:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox79:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox79:setName("imageCheckBox79");
 
     obj.imageCheckBox80 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -1587,8 +1587,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox80:setWidth(25);
     obj.imageCheckBox80:setHeight(25);
     obj.imageCheckBox80:setField("discipline_1_8");
-    obj.imageCheckBox80:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox80:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox80:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox80:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox80:setName("imageCheckBox80");
 
     obj.imageCheckBox81 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -1598,8 +1598,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox81:setWidth(25);
     obj.imageCheckBox81:setHeight(25);
     obj.imageCheckBox81:setField("discipline_1_9");
-    obj.imageCheckBox81:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox81:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox81:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox81:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox81:setName("imageCheckBox81");
 
     obj.layout23 = GUI.fromHandle(_obj_newObject("layout"));
@@ -1627,8 +1627,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox82:setWidth(25);
     obj.imageCheckBox82:setHeight(25);
     obj.imageCheckBox82:setField("discipline_2_1");
-    obj.imageCheckBox82:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox82:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox82:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox82:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox82:setName("imageCheckBox82");
 
     obj.imageCheckBox83 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -1638,8 +1638,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox83:setWidth(25);
     obj.imageCheckBox83:setHeight(25);
     obj.imageCheckBox83:setField("discipline_2_2");
-    obj.imageCheckBox83:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox83:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox83:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox83:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox83:setName("imageCheckBox83");
 
     obj.imageCheckBox84 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -1649,8 +1649,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox84:setWidth(25);
     obj.imageCheckBox84:setHeight(25);
     obj.imageCheckBox84:setField("discipline_2_3");
-    obj.imageCheckBox84:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox84:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox84:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox84:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox84:setName("imageCheckBox84");
 
     obj.imageCheckBox85 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -1660,8 +1660,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox85:setWidth(25);
     obj.imageCheckBox85:setHeight(25);
     obj.imageCheckBox85:setField("discipline_2_4");
-    obj.imageCheckBox85:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox85:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox85:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox85:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox85:setName("imageCheckBox85");
 
     obj.imageCheckBox86 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -1671,8 +1671,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox86:setWidth(25);
     obj.imageCheckBox86:setHeight(25);
     obj.imageCheckBox86:setField("discipline_2_5");
-    obj.imageCheckBox86:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox86:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox86:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox86:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox86:setName("imageCheckBox86");
 
     obj.imageCheckBox87 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -1682,8 +1682,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox87:setWidth(25);
     obj.imageCheckBox87:setHeight(25);
     obj.imageCheckBox87:setField("discipline_2_6");
-    obj.imageCheckBox87:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox87:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox87:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox87:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox87:setName("imageCheckBox87");
 
     obj.imageCheckBox88 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -1693,8 +1693,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox88:setWidth(25);
     obj.imageCheckBox88:setHeight(25);
     obj.imageCheckBox88:setField("discipline_2_7");
-    obj.imageCheckBox88:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox88:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox88:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox88:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox88:setName("imageCheckBox88");
 
     obj.imageCheckBox89 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -1704,8 +1704,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox89:setWidth(25);
     obj.imageCheckBox89:setHeight(25);
     obj.imageCheckBox89:setField("discipline_2_8");
-    obj.imageCheckBox89:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox89:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox89:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox89:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox89:setName("imageCheckBox89");
 
     obj.imageCheckBox90 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -1715,8 +1715,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox90:setWidth(25);
     obj.imageCheckBox90:setHeight(25);
     obj.imageCheckBox90:setField("discipline_2_9");
-    obj.imageCheckBox90:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox90:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox90:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox90:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox90:setName("imageCheckBox90");
 
     obj.layout24 = GUI.fromHandle(_obj_newObject("layout"));
@@ -1744,8 +1744,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox91:setWidth(25);
     obj.imageCheckBox91:setHeight(25);
     obj.imageCheckBox91:setField("discipline_3_1");
-    obj.imageCheckBox91:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox91:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox91:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox91:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox91:setName("imageCheckBox91");
 
     obj.imageCheckBox92 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -1755,8 +1755,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox92:setWidth(25);
     obj.imageCheckBox92:setHeight(25);
     obj.imageCheckBox92:setField("discipline_3_2");
-    obj.imageCheckBox92:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox92:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox92:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox92:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox92:setName("imageCheckBox92");
 
     obj.imageCheckBox93 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -1766,8 +1766,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox93:setWidth(25);
     obj.imageCheckBox93:setHeight(25);
     obj.imageCheckBox93:setField("discipline_3_3");
-    obj.imageCheckBox93:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox93:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox93:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox93:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox93:setName("imageCheckBox93");
 
     obj.imageCheckBox94 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -1777,8 +1777,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox94:setWidth(25);
     obj.imageCheckBox94:setHeight(25);
     obj.imageCheckBox94:setField("discipline_3_4");
-    obj.imageCheckBox94:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox94:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox94:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox94:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox94:setName("imageCheckBox94");
 
     obj.imageCheckBox95 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -1788,8 +1788,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox95:setWidth(25);
     obj.imageCheckBox95:setHeight(25);
     obj.imageCheckBox95:setField("discipline_3_5");
-    obj.imageCheckBox95:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox95:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox95:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox95:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox95:setName("imageCheckBox95");
 
     obj.imageCheckBox96 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -1799,8 +1799,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox96:setWidth(25);
     obj.imageCheckBox96:setHeight(25);
     obj.imageCheckBox96:setField("discipline_3_6");
-    obj.imageCheckBox96:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox96:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox96:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox96:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox96:setName("imageCheckBox96");
 
     obj.imageCheckBox97 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -1810,8 +1810,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox97:setWidth(25);
     obj.imageCheckBox97:setHeight(25);
     obj.imageCheckBox97:setField("discipline_3_7");
-    obj.imageCheckBox97:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox97:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox97:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox97:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox97:setName("imageCheckBox97");
 
     obj.imageCheckBox98 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -1821,8 +1821,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox98:setWidth(25);
     obj.imageCheckBox98:setHeight(25);
     obj.imageCheckBox98:setField("discipline_3_8");
-    obj.imageCheckBox98:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox98:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox98:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox98:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox98:setName("imageCheckBox98");
 
     obj.imageCheckBox99 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -1832,8 +1832,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox99:setWidth(25);
     obj.imageCheckBox99:setHeight(25);
     obj.imageCheckBox99:setField("discipline_3_9");
-    obj.imageCheckBox99:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox99:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox99:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox99:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox99:setName("imageCheckBox99");
 
     obj.layout25 = GUI.fromHandle(_obj_newObject("layout"));
@@ -1861,8 +1861,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox100:setWidth(25);
     obj.imageCheckBox100:setHeight(25);
     obj.imageCheckBox100:setField("discipline_4_1");
-    obj.imageCheckBox100:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox100:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox100:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox100:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox100:setName("imageCheckBox100");
 
     obj.imageCheckBox101 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -1872,8 +1872,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox101:setWidth(25);
     obj.imageCheckBox101:setHeight(25);
     obj.imageCheckBox101:setField("discipline_4_2");
-    obj.imageCheckBox101:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox101:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox101:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox101:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox101:setName("imageCheckBox101");
 
     obj.imageCheckBox102 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -1883,8 +1883,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox102:setWidth(25);
     obj.imageCheckBox102:setHeight(25);
     obj.imageCheckBox102:setField("discipline_4_3");
-    obj.imageCheckBox102:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox102:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox102:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox102:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox102:setName("imageCheckBox102");
 
     obj.imageCheckBox103 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -1894,8 +1894,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox103:setWidth(25);
     obj.imageCheckBox103:setHeight(25);
     obj.imageCheckBox103:setField("discipline_4_4");
-    obj.imageCheckBox103:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox103:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox103:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox103:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox103:setName("imageCheckBox103");
 
     obj.imageCheckBox104 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -1905,8 +1905,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox104:setWidth(25);
     obj.imageCheckBox104:setHeight(25);
     obj.imageCheckBox104:setField("discipline_4_5");
-    obj.imageCheckBox104:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox104:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox104:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox104:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox104:setName("imageCheckBox104");
 
     obj.imageCheckBox105 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -1916,8 +1916,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox105:setWidth(25);
     obj.imageCheckBox105:setHeight(25);
     obj.imageCheckBox105:setField("discipline_4_6");
-    obj.imageCheckBox105:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox105:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox105:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox105:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox105:setName("imageCheckBox105");
 
     obj.imageCheckBox106 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -1927,8 +1927,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox106:setWidth(25);
     obj.imageCheckBox106:setHeight(25);
     obj.imageCheckBox106:setField("discipline_4_7");
-    obj.imageCheckBox106:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox106:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox106:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox106:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox106:setName("imageCheckBox106");
 
     obj.imageCheckBox107 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -1938,8 +1938,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox107:setWidth(25);
     obj.imageCheckBox107:setHeight(25);
     obj.imageCheckBox107:setField("discipline_4_8");
-    obj.imageCheckBox107:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox107:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox107:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox107:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox107:setName("imageCheckBox107");
 
     obj.imageCheckBox108 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -1949,8 +1949,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox108:setWidth(25);
     obj.imageCheckBox108:setHeight(25);
     obj.imageCheckBox108:setField("discipline_4_9");
-    obj.imageCheckBox108:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox108:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox108:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox108:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox108:setName("imageCheckBox108");
 
     obj.layout26 = GUI.fromHandle(_obj_newObject("layout"));
@@ -1978,8 +1978,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox109:setWidth(25);
     obj.imageCheckBox109:setHeight(25);
     obj.imageCheckBox109:setField("discipline_5_1");
-    obj.imageCheckBox109:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox109:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox109:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox109:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox109:setName("imageCheckBox109");
 
     obj.imageCheckBox110 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -1989,8 +1989,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox110:setWidth(25);
     obj.imageCheckBox110:setHeight(25);
     obj.imageCheckBox110:setField("discipline_5_2");
-    obj.imageCheckBox110:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox110:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox110:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox110:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox110:setName("imageCheckBox110");
 
     obj.imageCheckBox111 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -2000,8 +2000,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox111:setWidth(25);
     obj.imageCheckBox111:setHeight(25);
     obj.imageCheckBox111:setField("discipline_5_3");
-    obj.imageCheckBox111:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox111:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox111:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox111:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox111:setName("imageCheckBox111");
 
     obj.imageCheckBox112 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -2011,8 +2011,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox112:setWidth(25);
     obj.imageCheckBox112:setHeight(25);
     obj.imageCheckBox112:setField("discipline_5_4");
-    obj.imageCheckBox112:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox112:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox112:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox112:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox112:setName("imageCheckBox112");
 
     obj.imageCheckBox113 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -2022,8 +2022,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox113:setWidth(25);
     obj.imageCheckBox113:setHeight(25);
     obj.imageCheckBox113:setField("discipline_5_5");
-    obj.imageCheckBox113:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox113:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox113:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox113:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox113:setName("imageCheckBox113");
 
     obj.imageCheckBox114 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -2033,8 +2033,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox114:setWidth(25);
     obj.imageCheckBox114:setHeight(25);
     obj.imageCheckBox114:setField("discipline_5_6");
-    obj.imageCheckBox114:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox114:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox114:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox114:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox114:setName("imageCheckBox114");
 
     obj.imageCheckBox115 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -2044,8 +2044,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox115:setWidth(25);
     obj.imageCheckBox115:setHeight(25);
     obj.imageCheckBox115:setField("discipline_5_7");
-    obj.imageCheckBox115:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox115:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox115:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox115:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox115:setName("imageCheckBox115");
 
     obj.imageCheckBox116 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -2055,8 +2055,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox116:setWidth(25);
     obj.imageCheckBox116:setHeight(25);
     obj.imageCheckBox116:setField("discipline_5_8");
-    obj.imageCheckBox116:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox116:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox116:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox116:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox116:setName("imageCheckBox116");
 
     obj.imageCheckBox117 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -2066,8 +2066,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox117:setWidth(25);
     obj.imageCheckBox117:setHeight(25);
     obj.imageCheckBox117:setField("discipline_5_9");
-    obj.imageCheckBox117:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox117:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox117:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox117:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox117:setName("imageCheckBox117");
 
     obj.layout27 = GUI.fromHandle(_obj_newObject("layout"));
@@ -2095,8 +2095,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox118:setWidth(25);
     obj.imageCheckBox118:setHeight(25);
     obj.imageCheckBox118:setField("discipline_6_1");
-    obj.imageCheckBox118:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox118:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox118:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox118:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox118:setName("imageCheckBox118");
 
     obj.imageCheckBox119 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -2106,8 +2106,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox119:setWidth(25);
     obj.imageCheckBox119:setHeight(25);
     obj.imageCheckBox119:setField("discipline_6_2");
-    obj.imageCheckBox119:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox119:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox119:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox119:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox119:setName("imageCheckBox119");
 
     obj.imageCheckBox120 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -2117,8 +2117,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox120:setWidth(25);
     obj.imageCheckBox120:setHeight(25);
     obj.imageCheckBox120:setField("discipline_6_3");
-    obj.imageCheckBox120:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox120:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox120:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox120:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox120:setName("imageCheckBox120");
 
     obj.imageCheckBox121 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -2128,8 +2128,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox121:setWidth(25);
     obj.imageCheckBox121:setHeight(25);
     obj.imageCheckBox121:setField("discipline_6_4");
-    obj.imageCheckBox121:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox121:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox121:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox121:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox121:setName("imageCheckBox121");
 
     obj.imageCheckBox122 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -2139,8 +2139,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox122:setWidth(25);
     obj.imageCheckBox122:setHeight(25);
     obj.imageCheckBox122:setField("discipline_6_5");
-    obj.imageCheckBox122:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox122:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox122:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox122:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox122:setName("imageCheckBox122");
 
     obj.imageCheckBox123 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -2150,8 +2150,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox123:setWidth(25);
     obj.imageCheckBox123:setHeight(25);
     obj.imageCheckBox123:setField("discipline_6_6");
-    obj.imageCheckBox123:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox123:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox123:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox123:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox123:setName("imageCheckBox123");
 
     obj.imageCheckBox124 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -2161,8 +2161,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox124:setWidth(25);
     obj.imageCheckBox124:setHeight(25);
     obj.imageCheckBox124:setField("discipline_6_7");
-    obj.imageCheckBox124:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox124:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox124:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox124:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox124:setName("imageCheckBox124");
 
     obj.imageCheckBox125 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -2172,8 +2172,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox125:setWidth(25);
     obj.imageCheckBox125:setHeight(25);
     obj.imageCheckBox125:setField("discipline_6_8");
-    obj.imageCheckBox125:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox125:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox125:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox125:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox125:setName("imageCheckBox125");
 
     obj.imageCheckBox126 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -2183,8 +2183,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox126:setWidth(25);
     obj.imageCheckBox126:setHeight(25);
     obj.imageCheckBox126:setField("discipline_6_9");
-    obj.imageCheckBox126:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox126:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox126:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox126:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox126:setName("imageCheckBox126");
 
     obj.layout28 = GUI.fromHandle(_obj_newObject("layout"));
@@ -2212,8 +2212,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox127:setWidth(25);
     obj.imageCheckBox127:setHeight(25);
     obj.imageCheckBox127:setField("discipline_7_1");
-    obj.imageCheckBox127:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox127:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox127:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox127:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox127:setName("imageCheckBox127");
 
     obj.imageCheckBox128 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -2223,8 +2223,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox128:setWidth(25);
     obj.imageCheckBox128:setHeight(25);
     obj.imageCheckBox128:setField("discipline_7_2");
-    obj.imageCheckBox128:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox128:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox128:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox128:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox128:setName("imageCheckBox128");
 
     obj.imageCheckBox129 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -2234,8 +2234,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox129:setWidth(25);
     obj.imageCheckBox129:setHeight(25);
     obj.imageCheckBox129:setField("discipline_7_3");
-    obj.imageCheckBox129:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox129:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox129:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox129:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox129:setName("imageCheckBox129");
 
     obj.imageCheckBox130 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -2245,8 +2245,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox130:setWidth(25);
     obj.imageCheckBox130:setHeight(25);
     obj.imageCheckBox130:setField("discipline_7_4");
-    obj.imageCheckBox130:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox130:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox130:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox130:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox130:setName("imageCheckBox130");
 
     obj.imageCheckBox131 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -2256,8 +2256,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox131:setWidth(25);
     obj.imageCheckBox131:setHeight(25);
     obj.imageCheckBox131:setField("discipline_7_5");
-    obj.imageCheckBox131:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox131:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox131:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox131:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox131:setName("imageCheckBox131");
 
     obj.imageCheckBox132 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -2267,8 +2267,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox132:setWidth(25);
     obj.imageCheckBox132:setHeight(25);
     obj.imageCheckBox132:setField("discipline_7_6");
-    obj.imageCheckBox132:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox132:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox132:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox132:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox132:setName("imageCheckBox132");
 
     obj.imageCheckBox133 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -2278,8 +2278,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox133:setWidth(25);
     obj.imageCheckBox133:setHeight(25);
     obj.imageCheckBox133:setField("discipline_7_7");
-    obj.imageCheckBox133:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox133:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox133:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox133:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox133:setName("imageCheckBox133");
 
     obj.imageCheckBox134 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -2289,8 +2289,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox134:setWidth(25);
     obj.imageCheckBox134:setHeight(25);
     obj.imageCheckBox134:setField("discipline_7_8");
-    obj.imageCheckBox134:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox134:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox134:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox134:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox134:setName("imageCheckBox134");
 
     obj.imageCheckBox135 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -2300,8 +2300,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox135:setWidth(25);
     obj.imageCheckBox135:setHeight(25);
     obj.imageCheckBox135:setField("discipline_7_9");
-    obj.imageCheckBox135:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox135:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox135:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox135:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox135:setName("imageCheckBox135");
 
     obj.layout29 = GUI.fromHandle(_obj_newObject("layout"));
@@ -2329,8 +2329,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox136:setWidth(25);
     obj.imageCheckBox136:setHeight(25);
     obj.imageCheckBox136:setField("discipline_8_1");
-    obj.imageCheckBox136:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox136:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox136:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox136:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox136:setName("imageCheckBox136");
 
     obj.imageCheckBox137 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -2340,8 +2340,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox137:setWidth(25);
     obj.imageCheckBox137:setHeight(25);
     obj.imageCheckBox137:setField("discipline_8_2");
-    obj.imageCheckBox137:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox137:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox137:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox137:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox137:setName("imageCheckBox137");
 
     obj.imageCheckBox138 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -2351,8 +2351,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox138:setWidth(25);
     obj.imageCheckBox138:setHeight(25);
     obj.imageCheckBox138:setField("discipline_8_3");
-    obj.imageCheckBox138:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox138:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox138:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox138:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox138:setName("imageCheckBox138");
 
     obj.imageCheckBox139 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -2362,8 +2362,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox139:setWidth(25);
     obj.imageCheckBox139:setHeight(25);
     obj.imageCheckBox139:setField("discipline_8_4");
-    obj.imageCheckBox139:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox139:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox139:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox139:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox139:setName("imageCheckBox139");
 
     obj.imageCheckBox140 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -2373,8 +2373,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox140:setWidth(25);
     obj.imageCheckBox140:setHeight(25);
     obj.imageCheckBox140:setField("discipline_8_5");
-    obj.imageCheckBox140:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox140:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox140:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox140:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox140:setName("imageCheckBox140");
 
     obj.imageCheckBox141 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -2384,8 +2384,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox141:setWidth(25);
     obj.imageCheckBox141:setHeight(25);
     obj.imageCheckBox141:setField("discipline_8_6");
-    obj.imageCheckBox141:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox141:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox141:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox141:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox141:setName("imageCheckBox141");
 
     obj.imageCheckBox142 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -2395,8 +2395,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox142:setWidth(25);
     obj.imageCheckBox142:setHeight(25);
     obj.imageCheckBox142:setField("discipline_8_7");
-    obj.imageCheckBox142:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox142:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox142:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox142:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox142:setName("imageCheckBox142");
 
     obj.imageCheckBox143 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -2406,8 +2406,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox143:setWidth(25);
     obj.imageCheckBox143:setHeight(25);
     obj.imageCheckBox143:setField("discipline_8_8");
-    obj.imageCheckBox143:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox143:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox143:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox143:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox143:setName("imageCheckBox143");
 
     obj.imageCheckBox144 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -2417,8 +2417,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox144:setWidth(25);
     obj.imageCheckBox144:setHeight(25);
     obj.imageCheckBox144:setField("discipline_8_9");
-    obj.imageCheckBox144:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox144:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox144:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox144:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox144:setName("imageCheckBox144");
 
     obj.layout30 = GUI.fromHandle(_obj_newObject("layout"));
@@ -2446,8 +2446,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox145:setWidth(25);
     obj.imageCheckBox145:setHeight(25);
     obj.imageCheckBox145:setField("discipline_9_1");
-    obj.imageCheckBox145:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox145:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox145:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox145:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox145:setName("imageCheckBox145");
 
     obj.imageCheckBox146 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -2457,8 +2457,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox146:setWidth(25);
     obj.imageCheckBox146:setHeight(25);
     obj.imageCheckBox146:setField("discipline_9_2");
-    obj.imageCheckBox146:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox146:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox146:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox146:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox146:setName("imageCheckBox146");
 
     obj.imageCheckBox147 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -2468,8 +2468,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox147:setWidth(25);
     obj.imageCheckBox147:setHeight(25);
     obj.imageCheckBox147:setField("discipline_9_3");
-    obj.imageCheckBox147:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox147:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox147:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox147:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox147:setName("imageCheckBox147");
 
     obj.imageCheckBox148 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -2479,8 +2479,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox148:setWidth(25);
     obj.imageCheckBox148:setHeight(25);
     obj.imageCheckBox148:setField("discipline_9_4");
-    obj.imageCheckBox148:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox148:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox148:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox148:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox148:setName("imageCheckBox148");
 
     obj.imageCheckBox149 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -2490,8 +2490,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox149:setWidth(25);
     obj.imageCheckBox149:setHeight(25);
     obj.imageCheckBox149:setField("discipline_9_5");
-    obj.imageCheckBox149:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox149:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox149:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox149:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox149:setName("imageCheckBox149");
 
     obj.imageCheckBox150 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -2501,8 +2501,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox150:setWidth(25);
     obj.imageCheckBox150:setHeight(25);
     obj.imageCheckBox150:setField("discipline_9_6");
-    obj.imageCheckBox150:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox150:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox150:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox150:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox150:setName("imageCheckBox150");
 
     obj.imageCheckBox151 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -2512,8 +2512,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox151:setWidth(25);
     obj.imageCheckBox151:setHeight(25);
     obj.imageCheckBox151:setField("discipline_9_7");
-    obj.imageCheckBox151:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox151:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox151:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox151:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox151:setName("imageCheckBox151");
 
     obj.imageCheckBox152 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -2523,8 +2523,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox152:setWidth(25);
     obj.imageCheckBox152:setHeight(25);
     obj.imageCheckBox152:setField("discipline_9_8");
-    obj.imageCheckBox152:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox152:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox152:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox152:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox152:setName("imageCheckBox152");
 
     obj.imageCheckBox153 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -2534,8 +2534,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox153:setWidth(25);
     obj.imageCheckBox153:setHeight(25);
     obj.imageCheckBox153:setField("discipline_9_9");
-    obj.imageCheckBox153:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox153:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox153:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox153:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox153:setName("imageCheckBox153");
 
     obj.layout31 = GUI.fromHandle(_obj_newObject("layout"));
@@ -2563,8 +2563,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox154:setWidth(25);
     obj.imageCheckBox154:setHeight(25);
     obj.imageCheckBox154:setField("discipline_10_1");
-    obj.imageCheckBox154:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox154:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox154:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox154:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox154:setName("imageCheckBox154");
 
     obj.imageCheckBox155 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -2574,8 +2574,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox155:setWidth(25);
     obj.imageCheckBox155:setHeight(25);
     obj.imageCheckBox155:setField("discipline_10_2");
-    obj.imageCheckBox155:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox155:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox155:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox155:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox155:setName("imageCheckBox155");
 
     obj.imageCheckBox156 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -2585,8 +2585,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox156:setWidth(25);
     obj.imageCheckBox156:setHeight(25);
     obj.imageCheckBox156:setField("discipline_10_3");
-    obj.imageCheckBox156:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox156:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox156:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox156:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox156:setName("imageCheckBox156");
 
     obj.imageCheckBox157 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -2596,8 +2596,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox157:setWidth(25);
     obj.imageCheckBox157:setHeight(25);
     obj.imageCheckBox157:setField("discipline_10_4");
-    obj.imageCheckBox157:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox157:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox157:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox157:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox157:setName("imageCheckBox157");
 
     obj.imageCheckBox158 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -2607,8 +2607,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox158:setWidth(25);
     obj.imageCheckBox158:setHeight(25);
     obj.imageCheckBox158:setField("discipline_10_5");
-    obj.imageCheckBox158:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox158:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox158:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox158:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox158:setName("imageCheckBox158");
 
     obj.imageCheckBox159 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -2618,8 +2618,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox159:setWidth(25);
     obj.imageCheckBox159:setHeight(25);
     obj.imageCheckBox159:setField("discipline_10_6");
-    obj.imageCheckBox159:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox159:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox159:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox159:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox159:setName("imageCheckBox159");
 
     obj.imageCheckBox160 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -2629,8 +2629,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox160:setWidth(25);
     obj.imageCheckBox160:setHeight(25);
     obj.imageCheckBox160:setField("discipline_10_7");
-    obj.imageCheckBox160:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox160:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox160:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox160:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox160:setName("imageCheckBox160");
 
     obj.imageCheckBox161 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -2640,8 +2640,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox161:setWidth(25);
     obj.imageCheckBox161:setHeight(25);
     obj.imageCheckBox161:setField("discipline_10_8");
-    obj.imageCheckBox161:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox161:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox161:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox161:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox161:setName("imageCheckBox161");
 
     obj.imageCheckBox162 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -2651,8 +2651,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox162:setWidth(25);
     obj.imageCheckBox162:setHeight(25);
     obj.imageCheckBox162:setField("discipline_10_9");
-    obj.imageCheckBox162:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox162:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox162:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox162:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox162:setName("imageCheckBox162");
 
     obj.layout32 = GUI.fromHandle(_obj_newObject("layout"));
@@ -2707,8 +2707,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox163:setWidth(25);
     obj.imageCheckBox163:setHeight(25);
     obj.imageCheckBox163:setField("background_1_1");
-    obj.imageCheckBox163:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox163:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox163:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox163:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox163:setName("imageCheckBox163");
 
     obj.imageCheckBox164 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -2718,8 +2718,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox164:setWidth(25);
     obj.imageCheckBox164:setHeight(25);
     obj.imageCheckBox164:setField("background_1_2");
-    obj.imageCheckBox164:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox164:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox164:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox164:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox164:setName("imageCheckBox164");
 
     obj.imageCheckBox165 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -2729,8 +2729,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox165:setWidth(25);
     obj.imageCheckBox165:setHeight(25);
     obj.imageCheckBox165:setField("background_1_3");
-    obj.imageCheckBox165:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox165:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox165:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox165:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox165:setName("imageCheckBox165");
 
     obj.imageCheckBox166 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -2740,8 +2740,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox166:setWidth(25);
     obj.imageCheckBox166:setHeight(25);
     obj.imageCheckBox166:setField("background_1_4");
-    obj.imageCheckBox166:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox166:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox166:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox166:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox166:setName("imageCheckBox166");
 
     obj.imageCheckBox167 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -2751,8 +2751,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox167:setWidth(25);
     obj.imageCheckBox167:setHeight(25);
     obj.imageCheckBox167:setField("background_1_5");
-    obj.imageCheckBox167:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox167:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox167:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox167:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox167:setName("imageCheckBox167");
 
     obj.imageCheckBox168 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -2762,8 +2762,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox168:setWidth(25);
     obj.imageCheckBox168:setHeight(25);
     obj.imageCheckBox168:setField("background_1_6");
-    obj.imageCheckBox168:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox168:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox168:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox168:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox168:setName("imageCheckBox168");
 
     obj.imageCheckBox169 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -2773,8 +2773,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox169:setWidth(25);
     obj.imageCheckBox169:setHeight(25);
     obj.imageCheckBox169:setField("background_1_7");
-    obj.imageCheckBox169:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox169:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox169:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox169:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox169:setName("imageCheckBox169");
 
     obj.imageCheckBox170 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -2784,8 +2784,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox170:setWidth(25);
     obj.imageCheckBox170:setHeight(25);
     obj.imageCheckBox170:setField("background_1_8");
-    obj.imageCheckBox170:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox170:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox170:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox170:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox170:setName("imageCheckBox170");
 
     obj.imageCheckBox171 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -2795,8 +2795,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox171:setWidth(25);
     obj.imageCheckBox171:setHeight(25);
     obj.imageCheckBox171:setField("background_1_9");
-    obj.imageCheckBox171:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox171:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox171:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox171:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox171:setName("imageCheckBox171");
 
     obj.layout34 = GUI.fromHandle(_obj_newObject("layout"));
@@ -2824,8 +2824,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox172:setWidth(25);
     obj.imageCheckBox172:setHeight(25);
     obj.imageCheckBox172:setField("background_2_1");
-    obj.imageCheckBox172:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox172:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox172:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox172:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox172:setName("imageCheckBox172");
 
     obj.imageCheckBox173 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -2835,8 +2835,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox173:setWidth(25);
     obj.imageCheckBox173:setHeight(25);
     obj.imageCheckBox173:setField("background_2_2");
-    obj.imageCheckBox173:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox173:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox173:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox173:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox173:setName("imageCheckBox173");
 
     obj.imageCheckBox174 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -2846,8 +2846,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox174:setWidth(25);
     obj.imageCheckBox174:setHeight(25);
     obj.imageCheckBox174:setField("background_2_3");
-    obj.imageCheckBox174:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox174:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox174:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox174:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox174:setName("imageCheckBox174");
 
     obj.imageCheckBox175 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -2857,8 +2857,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox175:setWidth(25);
     obj.imageCheckBox175:setHeight(25);
     obj.imageCheckBox175:setField("background_2_4");
-    obj.imageCheckBox175:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox175:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox175:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox175:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox175:setName("imageCheckBox175");
 
     obj.imageCheckBox176 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -2868,8 +2868,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox176:setWidth(25);
     obj.imageCheckBox176:setHeight(25);
     obj.imageCheckBox176:setField("background_2_5");
-    obj.imageCheckBox176:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox176:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox176:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox176:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox176:setName("imageCheckBox176");
 
     obj.imageCheckBox177 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -2879,8 +2879,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox177:setWidth(25);
     obj.imageCheckBox177:setHeight(25);
     obj.imageCheckBox177:setField("background_2_6");
-    obj.imageCheckBox177:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox177:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox177:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox177:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox177:setName("imageCheckBox177");
 
     obj.imageCheckBox178 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -2890,8 +2890,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox178:setWidth(25);
     obj.imageCheckBox178:setHeight(25);
     obj.imageCheckBox178:setField("background_2_7");
-    obj.imageCheckBox178:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox178:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox178:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox178:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox178:setName("imageCheckBox178");
 
     obj.imageCheckBox179 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -2901,8 +2901,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox179:setWidth(25);
     obj.imageCheckBox179:setHeight(25);
     obj.imageCheckBox179:setField("background_2_8");
-    obj.imageCheckBox179:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox179:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox179:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox179:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox179:setName("imageCheckBox179");
 
     obj.imageCheckBox180 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -2912,8 +2912,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox180:setWidth(25);
     obj.imageCheckBox180:setHeight(25);
     obj.imageCheckBox180:setField("background_2_9");
-    obj.imageCheckBox180:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox180:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox180:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox180:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox180:setName("imageCheckBox180");
 
     obj.layout35 = GUI.fromHandle(_obj_newObject("layout"));
@@ -2941,8 +2941,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox181:setWidth(25);
     obj.imageCheckBox181:setHeight(25);
     obj.imageCheckBox181:setField("background_3_1");
-    obj.imageCheckBox181:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox181:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox181:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox181:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox181:setName("imageCheckBox181");
 
     obj.imageCheckBox182 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -2952,8 +2952,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox182:setWidth(25);
     obj.imageCheckBox182:setHeight(25);
     obj.imageCheckBox182:setField("background_3_2");
-    obj.imageCheckBox182:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox182:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox182:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox182:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox182:setName("imageCheckBox182");
 
     obj.imageCheckBox183 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -2963,8 +2963,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox183:setWidth(25);
     obj.imageCheckBox183:setHeight(25);
     obj.imageCheckBox183:setField("background_3_3");
-    obj.imageCheckBox183:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox183:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox183:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox183:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox183:setName("imageCheckBox183");
 
     obj.imageCheckBox184 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -2974,8 +2974,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox184:setWidth(25);
     obj.imageCheckBox184:setHeight(25);
     obj.imageCheckBox184:setField("background_3_4");
-    obj.imageCheckBox184:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox184:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox184:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox184:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox184:setName("imageCheckBox184");
 
     obj.imageCheckBox185 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -2985,8 +2985,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox185:setWidth(25);
     obj.imageCheckBox185:setHeight(25);
     obj.imageCheckBox185:setField("background_3_5");
-    obj.imageCheckBox185:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox185:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox185:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox185:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox185:setName("imageCheckBox185");
 
     obj.imageCheckBox186 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -2996,8 +2996,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox186:setWidth(25);
     obj.imageCheckBox186:setHeight(25);
     obj.imageCheckBox186:setField("background_3_6");
-    obj.imageCheckBox186:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox186:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox186:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox186:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox186:setName("imageCheckBox186");
 
     obj.imageCheckBox187 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -3007,8 +3007,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox187:setWidth(25);
     obj.imageCheckBox187:setHeight(25);
     obj.imageCheckBox187:setField("background_3_7");
-    obj.imageCheckBox187:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox187:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox187:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox187:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox187:setName("imageCheckBox187");
 
     obj.imageCheckBox188 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -3018,8 +3018,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox188:setWidth(25);
     obj.imageCheckBox188:setHeight(25);
     obj.imageCheckBox188:setField("background_3_8");
-    obj.imageCheckBox188:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox188:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox188:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox188:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox188:setName("imageCheckBox188");
 
     obj.imageCheckBox189 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -3029,8 +3029,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox189:setWidth(25);
     obj.imageCheckBox189:setHeight(25);
     obj.imageCheckBox189:setField("background_3_9");
-    obj.imageCheckBox189:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox189:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox189:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox189:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox189:setName("imageCheckBox189");
 
     obj.layout36 = GUI.fromHandle(_obj_newObject("layout"));
@@ -3058,8 +3058,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox190:setWidth(25);
     obj.imageCheckBox190:setHeight(25);
     obj.imageCheckBox190:setField("background_4_1");
-    obj.imageCheckBox190:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox190:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox190:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox190:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox190:setName("imageCheckBox190");
 
     obj.imageCheckBox191 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -3069,8 +3069,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox191:setWidth(25);
     obj.imageCheckBox191:setHeight(25);
     obj.imageCheckBox191:setField("background_4_2");
-    obj.imageCheckBox191:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox191:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox191:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox191:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox191:setName("imageCheckBox191");
 
     obj.imageCheckBox192 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -3080,8 +3080,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox192:setWidth(25);
     obj.imageCheckBox192:setHeight(25);
     obj.imageCheckBox192:setField("background_4_3");
-    obj.imageCheckBox192:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox192:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox192:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox192:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox192:setName("imageCheckBox192");
 
     obj.imageCheckBox193 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -3091,8 +3091,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox193:setWidth(25);
     obj.imageCheckBox193:setHeight(25);
     obj.imageCheckBox193:setField("background_4_4");
-    obj.imageCheckBox193:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox193:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox193:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox193:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox193:setName("imageCheckBox193");
 
     obj.imageCheckBox194 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -3102,8 +3102,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox194:setWidth(25);
     obj.imageCheckBox194:setHeight(25);
     obj.imageCheckBox194:setField("background_4_5");
-    obj.imageCheckBox194:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox194:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox194:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox194:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox194:setName("imageCheckBox194");
 
     obj.imageCheckBox195 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -3113,8 +3113,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox195:setWidth(25);
     obj.imageCheckBox195:setHeight(25);
     obj.imageCheckBox195:setField("background_4_6");
-    obj.imageCheckBox195:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox195:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox195:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox195:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox195:setName("imageCheckBox195");
 
     obj.imageCheckBox196 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -3124,8 +3124,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox196:setWidth(25);
     obj.imageCheckBox196:setHeight(25);
     obj.imageCheckBox196:setField("background_4_7");
-    obj.imageCheckBox196:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox196:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox196:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox196:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox196:setName("imageCheckBox196");
 
     obj.imageCheckBox197 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -3135,8 +3135,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox197:setWidth(25);
     obj.imageCheckBox197:setHeight(25);
     obj.imageCheckBox197:setField("background_4_8");
-    obj.imageCheckBox197:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox197:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox197:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox197:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox197:setName("imageCheckBox197");
 
     obj.imageCheckBox198 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -3146,8 +3146,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox198:setWidth(25);
     obj.imageCheckBox198:setHeight(25);
     obj.imageCheckBox198:setField("background_4_9");
-    obj.imageCheckBox198:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox198:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox198:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox198:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox198:setName("imageCheckBox198");
 
     obj.layout37 = GUI.fromHandle(_obj_newObject("layout"));
@@ -3175,8 +3175,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox199:setWidth(25);
     obj.imageCheckBox199:setHeight(25);
     obj.imageCheckBox199:setField("background_5_1");
-    obj.imageCheckBox199:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox199:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox199:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox199:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox199:setName("imageCheckBox199");
 
     obj.imageCheckBox200 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -3186,8 +3186,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox200:setWidth(25);
     obj.imageCheckBox200:setHeight(25);
     obj.imageCheckBox200:setField("background_5_2");
-    obj.imageCheckBox200:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox200:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox200:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox200:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox200:setName("imageCheckBox200");
 
     obj.imageCheckBox201 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -3197,8 +3197,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox201:setWidth(25);
     obj.imageCheckBox201:setHeight(25);
     obj.imageCheckBox201:setField("background_5_3");
-    obj.imageCheckBox201:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox201:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox201:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox201:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox201:setName("imageCheckBox201");
 
     obj.imageCheckBox202 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -3208,8 +3208,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox202:setWidth(25);
     obj.imageCheckBox202:setHeight(25);
     obj.imageCheckBox202:setField("background_5_4");
-    obj.imageCheckBox202:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox202:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox202:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox202:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox202:setName("imageCheckBox202");
 
     obj.imageCheckBox203 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -3219,8 +3219,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox203:setWidth(25);
     obj.imageCheckBox203:setHeight(25);
     obj.imageCheckBox203:setField("background_5_5");
-    obj.imageCheckBox203:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox203:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox203:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox203:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox203:setName("imageCheckBox203");
 
     obj.imageCheckBox204 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -3230,8 +3230,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox204:setWidth(25);
     obj.imageCheckBox204:setHeight(25);
     obj.imageCheckBox204:setField("background_5_6");
-    obj.imageCheckBox204:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox204:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox204:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox204:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox204:setName("imageCheckBox204");
 
     obj.imageCheckBox205 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -3241,8 +3241,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox205:setWidth(25);
     obj.imageCheckBox205:setHeight(25);
     obj.imageCheckBox205:setField("background_5_7");
-    obj.imageCheckBox205:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox205:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox205:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox205:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox205:setName("imageCheckBox205");
 
     obj.imageCheckBox206 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -3252,8 +3252,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox206:setWidth(25);
     obj.imageCheckBox206:setHeight(25);
     obj.imageCheckBox206:setField("background_5_8");
-    obj.imageCheckBox206:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox206:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox206:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox206:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox206:setName("imageCheckBox206");
 
     obj.imageCheckBox207 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -3263,8 +3263,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox207:setWidth(25);
     obj.imageCheckBox207:setHeight(25);
     obj.imageCheckBox207:setField("background_5_9");
-    obj.imageCheckBox207:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox207:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox207:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox207:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox207:setName("imageCheckBox207");
 
     obj.layout38 = GUI.fromHandle(_obj_newObject("layout"));
@@ -3292,8 +3292,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox208:setWidth(25);
     obj.imageCheckBox208:setHeight(25);
     obj.imageCheckBox208:setField("background_6_1");
-    obj.imageCheckBox208:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox208:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox208:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox208:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox208:setName("imageCheckBox208");
 
     obj.imageCheckBox209 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -3303,8 +3303,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox209:setWidth(25);
     obj.imageCheckBox209:setHeight(25);
     obj.imageCheckBox209:setField("background_6_2");
-    obj.imageCheckBox209:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox209:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox209:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox209:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox209:setName("imageCheckBox209");
 
     obj.imageCheckBox210 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -3314,8 +3314,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox210:setWidth(25);
     obj.imageCheckBox210:setHeight(25);
     obj.imageCheckBox210:setField("background_6_3");
-    obj.imageCheckBox210:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox210:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox210:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox210:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox210:setName("imageCheckBox210");
 
     obj.imageCheckBox211 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -3325,8 +3325,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox211:setWidth(25);
     obj.imageCheckBox211:setHeight(25);
     obj.imageCheckBox211:setField("background_6_4");
-    obj.imageCheckBox211:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox211:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox211:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox211:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox211:setName("imageCheckBox211");
 
     obj.imageCheckBox212 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -3336,8 +3336,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox212:setWidth(25);
     obj.imageCheckBox212:setHeight(25);
     obj.imageCheckBox212:setField("background_6_5");
-    obj.imageCheckBox212:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox212:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox212:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox212:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox212:setName("imageCheckBox212");
 
     obj.imageCheckBox213 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -3347,8 +3347,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox213:setWidth(25);
     obj.imageCheckBox213:setHeight(25);
     obj.imageCheckBox213:setField("background_6_6");
-    obj.imageCheckBox213:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox213:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox213:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox213:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox213:setName("imageCheckBox213");
 
     obj.imageCheckBox214 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -3358,8 +3358,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox214:setWidth(25);
     obj.imageCheckBox214:setHeight(25);
     obj.imageCheckBox214:setField("background_6_7");
-    obj.imageCheckBox214:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox214:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox214:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox214:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox214:setName("imageCheckBox214");
 
     obj.imageCheckBox215 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -3369,8 +3369,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox215:setWidth(25);
     obj.imageCheckBox215:setHeight(25);
     obj.imageCheckBox215:setField("background_6_8");
-    obj.imageCheckBox215:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox215:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox215:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox215:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox215:setName("imageCheckBox215");
 
     obj.imageCheckBox216 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -3380,8 +3380,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox216:setWidth(25);
     obj.imageCheckBox216:setHeight(25);
     obj.imageCheckBox216:setField("background_6_9");
-    obj.imageCheckBox216:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox216:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox216:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox216:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox216:setName("imageCheckBox216");
 
     obj.layout39 = GUI.fromHandle(_obj_newObject("layout"));
@@ -3409,8 +3409,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox217:setWidth(25);
     obj.imageCheckBox217:setHeight(25);
     obj.imageCheckBox217:setField("background_7_1");
-    obj.imageCheckBox217:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox217:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox217:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox217:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox217:setName("imageCheckBox217");
 
     obj.imageCheckBox218 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -3420,8 +3420,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox218:setWidth(25);
     obj.imageCheckBox218:setHeight(25);
     obj.imageCheckBox218:setField("background_7_2");
-    obj.imageCheckBox218:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox218:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox218:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox218:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox218:setName("imageCheckBox218");
 
     obj.imageCheckBox219 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -3431,8 +3431,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox219:setWidth(25);
     obj.imageCheckBox219:setHeight(25);
     obj.imageCheckBox219:setField("background_7_3");
-    obj.imageCheckBox219:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox219:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox219:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox219:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox219:setName("imageCheckBox219");
 
     obj.imageCheckBox220 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -3442,8 +3442,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox220:setWidth(25);
     obj.imageCheckBox220:setHeight(25);
     obj.imageCheckBox220:setField("background_7_4");
-    obj.imageCheckBox220:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox220:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox220:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox220:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox220:setName("imageCheckBox220");
 
     obj.imageCheckBox221 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -3453,8 +3453,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox221:setWidth(25);
     obj.imageCheckBox221:setHeight(25);
     obj.imageCheckBox221:setField("background_7_5");
-    obj.imageCheckBox221:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox221:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox221:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox221:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox221:setName("imageCheckBox221");
 
     obj.imageCheckBox222 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -3464,8 +3464,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox222:setWidth(25);
     obj.imageCheckBox222:setHeight(25);
     obj.imageCheckBox222:setField("background_7_6");
-    obj.imageCheckBox222:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox222:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox222:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox222:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox222:setName("imageCheckBox222");
 
     obj.imageCheckBox223 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -3475,8 +3475,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox223:setWidth(25);
     obj.imageCheckBox223:setHeight(25);
     obj.imageCheckBox223:setField("background_7_7");
-    obj.imageCheckBox223:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox223:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox223:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox223:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox223:setName("imageCheckBox223");
 
     obj.imageCheckBox224 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -3486,8 +3486,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox224:setWidth(25);
     obj.imageCheckBox224:setHeight(25);
     obj.imageCheckBox224:setField("background_7_8");
-    obj.imageCheckBox224:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox224:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox224:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox224:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox224:setName("imageCheckBox224");
 
     obj.imageCheckBox225 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -3497,8 +3497,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox225:setWidth(25);
     obj.imageCheckBox225:setHeight(25);
     obj.imageCheckBox225:setField("background_7_9");
-    obj.imageCheckBox225:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox225:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox225:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox225:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox225:setName("imageCheckBox225");
 
     obj.layout40 = GUI.fromHandle(_obj_newObject("layout"));
@@ -3526,8 +3526,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox226:setWidth(25);
     obj.imageCheckBox226:setHeight(25);
     obj.imageCheckBox226:setField("background_8_1");
-    obj.imageCheckBox226:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox226:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox226:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox226:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox226:setName("imageCheckBox226");
 
     obj.imageCheckBox227 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -3537,8 +3537,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox227:setWidth(25);
     obj.imageCheckBox227:setHeight(25);
     obj.imageCheckBox227:setField("background_8_2");
-    obj.imageCheckBox227:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox227:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox227:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox227:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox227:setName("imageCheckBox227");
 
     obj.imageCheckBox228 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -3548,8 +3548,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox228:setWidth(25);
     obj.imageCheckBox228:setHeight(25);
     obj.imageCheckBox228:setField("background_8_3");
-    obj.imageCheckBox228:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox228:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox228:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox228:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox228:setName("imageCheckBox228");
 
     obj.imageCheckBox229 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -3559,8 +3559,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox229:setWidth(25);
     obj.imageCheckBox229:setHeight(25);
     obj.imageCheckBox229:setField("background_8_4");
-    obj.imageCheckBox229:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox229:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox229:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox229:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox229:setName("imageCheckBox229");
 
     obj.imageCheckBox230 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -3570,8 +3570,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox230:setWidth(25);
     obj.imageCheckBox230:setHeight(25);
     obj.imageCheckBox230:setField("background_8_5");
-    obj.imageCheckBox230:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox230:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox230:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox230:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox230:setName("imageCheckBox230");
 
     obj.imageCheckBox231 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -3581,8 +3581,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox231:setWidth(25);
     obj.imageCheckBox231:setHeight(25);
     obj.imageCheckBox231:setField("background_8_6");
-    obj.imageCheckBox231:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox231:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox231:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox231:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox231:setName("imageCheckBox231");
 
     obj.imageCheckBox232 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -3592,8 +3592,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox232:setWidth(25);
     obj.imageCheckBox232:setHeight(25);
     obj.imageCheckBox232:setField("background_8_7");
-    obj.imageCheckBox232:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox232:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox232:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox232:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox232:setName("imageCheckBox232");
 
     obj.imageCheckBox233 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -3603,8 +3603,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox233:setWidth(25);
     obj.imageCheckBox233:setHeight(25);
     obj.imageCheckBox233:setField("background_8_8");
-    obj.imageCheckBox233:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox233:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox233:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox233:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox233:setName("imageCheckBox233");
 
     obj.imageCheckBox234 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -3614,8 +3614,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox234:setWidth(25);
     obj.imageCheckBox234:setHeight(25);
     obj.imageCheckBox234:setField("background_8_9");
-    obj.imageCheckBox234:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox234:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox234:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox234:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox234:setName("imageCheckBox234");
 
     obj.layout41 = GUI.fromHandle(_obj_newObject("layout"));
@@ -3643,8 +3643,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox235:setWidth(25);
     obj.imageCheckBox235:setHeight(25);
     obj.imageCheckBox235:setField("background_9_1");
-    obj.imageCheckBox235:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox235:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox235:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox235:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox235:setName("imageCheckBox235");
 
     obj.imageCheckBox236 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -3654,8 +3654,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox236:setWidth(25);
     obj.imageCheckBox236:setHeight(25);
     obj.imageCheckBox236:setField("background_9_2");
-    obj.imageCheckBox236:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox236:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox236:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox236:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox236:setName("imageCheckBox236");
 
     obj.imageCheckBox237 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -3665,8 +3665,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox237:setWidth(25);
     obj.imageCheckBox237:setHeight(25);
     obj.imageCheckBox237:setField("background_9_3");
-    obj.imageCheckBox237:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox237:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox237:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox237:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox237:setName("imageCheckBox237");
 
     obj.imageCheckBox238 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -3676,8 +3676,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox238:setWidth(25);
     obj.imageCheckBox238:setHeight(25);
     obj.imageCheckBox238:setField("background_9_4");
-    obj.imageCheckBox238:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox238:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox238:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox238:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox238:setName("imageCheckBox238");
 
     obj.imageCheckBox239 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -3687,8 +3687,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox239:setWidth(25);
     obj.imageCheckBox239:setHeight(25);
     obj.imageCheckBox239:setField("background_9_5");
-    obj.imageCheckBox239:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox239:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox239:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox239:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox239:setName("imageCheckBox239");
 
     obj.imageCheckBox240 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -3698,8 +3698,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox240:setWidth(25);
     obj.imageCheckBox240:setHeight(25);
     obj.imageCheckBox240:setField("background_9_6");
-    obj.imageCheckBox240:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox240:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox240:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox240:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox240:setName("imageCheckBox240");
 
     obj.imageCheckBox241 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -3709,8 +3709,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox241:setWidth(25);
     obj.imageCheckBox241:setHeight(25);
     obj.imageCheckBox241:setField("background_9_7");
-    obj.imageCheckBox241:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox241:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox241:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox241:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox241:setName("imageCheckBox241");
 
     obj.imageCheckBox242 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -3720,8 +3720,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox242:setWidth(25);
     obj.imageCheckBox242:setHeight(25);
     obj.imageCheckBox242:setField("background_9_8");
-    obj.imageCheckBox242:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox242:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox242:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox242:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox242:setName("imageCheckBox242");
 
     obj.imageCheckBox243 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -3731,8 +3731,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox243:setWidth(25);
     obj.imageCheckBox243:setHeight(25);
     obj.imageCheckBox243:setField("background_9_9");
-    obj.imageCheckBox243:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox243:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox243:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox243:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox243:setName("imageCheckBox243");
 
     obj.layout42 = GUI.fromHandle(_obj_newObject("layout"));
@@ -3760,8 +3760,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox244:setWidth(25);
     obj.imageCheckBox244:setHeight(25);
     obj.imageCheckBox244:setField("background_10_1");
-    obj.imageCheckBox244:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox244:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox244:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox244:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox244:setName("imageCheckBox244");
 
     obj.imageCheckBox245 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -3771,8 +3771,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox245:setWidth(25);
     obj.imageCheckBox245:setHeight(25);
     obj.imageCheckBox245:setField("background_10_2");
-    obj.imageCheckBox245:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox245:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox245:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox245:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox245:setName("imageCheckBox245");
 
     obj.imageCheckBox246 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -3782,8 +3782,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox246:setWidth(25);
     obj.imageCheckBox246:setHeight(25);
     obj.imageCheckBox246:setField("background_10_3");
-    obj.imageCheckBox246:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox246:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox246:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox246:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox246:setName("imageCheckBox246");
 
     obj.imageCheckBox247 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -3793,8 +3793,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox247:setWidth(25);
     obj.imageCheckBox247:setHeight(25);
     obj.imageCheckBox247:setField("background_10_4");
-    obj.imageCheckBox247:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox247:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox247:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox247:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox247:setName("imageCheckBox247");
 
     obj.imageCheckBox248 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -3804,8 +3804,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox248:setWidth(25);
     obj.imageCheckBox248:setHeight(25);
     obj.imageCheckBox248:setField("background_10_5");
-    obj.imageCheckBox248:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox248:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox248:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox248:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox248:setName("imageCheckBox248");
 
     obj.imageCheckBox249 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -3815,8 +3815,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox249:setWidth(25);
     obj.imageCheckBox249:setHeight(25);
     obj.imageCheckBox249:setField("background_10_6");
-    obj.imageCheckBox249:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox249:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox249:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox249:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox249:setName("imageCheckBox249");
 
     obj.imageCheckBox250 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -3826,8 +3826,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox250:setWidth(25);
     obj.imageCheckBox250:setHeight(25);
     obj.imageCheckBox250:setField("background_10_7");
-    obj.imageCheckBox250:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox250:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox250:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox250:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox250:setName("imageCheckBox250");
 
     obj.imageCheckBox251 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -3837,8 +3837,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox251:setWidth(25);
     obj.imageCheckBox251:setHeight(25);
     obj.imageCheckBox251:setField("background_10_8");
-    obj.imageCheckBox251:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox251:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox251:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox251:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox251:setName("imageCheckBox251");
 
     obj.imageCheckBox252 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -3848,8 +3848,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox252:setWidth(25);
     obj.imageCheckBox252:setHeight(25);
     obj.imageCheckBox252:setField("background_10_9");
-    obj.imageCheckBox252:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox252:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox252:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox252:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox252:setName("imageCheckBox252");
 
     obj.rectangle5 = GUI.fromHandle(_obj_newObject("rectangle"));
@@ -3926,8 +3926,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox253:setWidth(25);
     obj.imageCheckBox253:setHeight(25);
     obj.imageCheckBox253:setField("conscience_1");
-    obj.imageCheckBox253:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox253:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox253:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox253:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox253:setName("imageCheckBox253");
 
     obj.imageCheckBox254 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -3937,8 +3937,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox254:setWidth(25);
     obj.imageCheckBox254:setHeight(25);
     obj.imageCheckBox254:setField("conscience_2");
-    obj.imageCheckBox254:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox254:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox254:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox254:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox254:setName("imageCheckBox254");
 
     obj.imageCheckBox255 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -3948,8 +3948,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox255:setWidth(25);
     obj.imageCheckBox255:setHeight(25);
     obj.imageCheckBox255:setField("conscience_3");
-    obj.imageCheckBox255:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox255:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox255:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox255:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox255:setName("imageCheckBox255");
 
     obj.imageCheckBox256 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -3959,8 +3959,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox256:setWidth(25);
     obj.imageCheckBox256:setHeight(25);
     obj.imageCheckBox256:setField("conscience_4");
-    obj.imageCheckBox256:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox256:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox256:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox256:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox256:setName("imageCheckBox256");
 
     obj.imageCheckBox257 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -3970,8 +3970,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox257:setWidth(25);
     obj.imageCheckBox257:setHeight(25);
     obj.imageCheckBox257:setField("conscience_5");
-    obj.imageCheckBox257:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox257:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox257:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox257:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox257:setName("imageCheckBox257");
 
     obj.layout45 = GUI.fromHandle(_obj_newObject("layout"));
@@ -3998,8 +3998,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox258:setWidth(25);
     obj.imageCheckBox258:setHeight(25);
     obj.imageCheckBox258:setField("instinct_1");
-    obj.imageCheckBox258:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox258:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox258:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox258:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox258:setName("imageCheckBox258");
 
     obj.imageCheckBox259 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -4009,8 +4009,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox259:setWidth(25);
     obj.imageCheckBox259:setHeight(25);
     obj.imageCheckBox259:setField("instinct_2");
-    obj.imageCheckBox259:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox259:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox259:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox259:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox259:setName("imageCheckBox259");
 
     obj.imageCheckBox260 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -4020,8 +4020,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox260:setWidth(25);
     obj.imageCheckBox260:setHeight(25);
     obj.imageCheckBox260:setField("instinct_3");
-    obj.imageCheckBox260:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox260:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox260:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox260:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox260:setName("imageCheckBox260");
 
     obj.imageCheckBox261 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -4031,8 +4031,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox261:setWidth(25);
     obj.imageCheckBox261:setHeight(25);
     obj.imageCheckBox261:setField("instinct_4");
-    obj.imageCheckBox261:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox261:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox261:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox261:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox261:setName("imageCheckBox261");
 
     obj.imageCheckBox262 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -4042,8 +4042,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox262:setWidth(25);
     obj.imageCheckBox262:setHeight(25);
     obj.imageCheckBox262:setField("instinct_5");
-    obj.imageCheckBox262:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox262:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox262:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox262:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox262:setName("imageCheckBox262");
 
     obj.layout46 = GUI.fromHandle(_obj_newObject("layout"));
@@ -4070,8 +4070,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox263:setWidth(25);
     obj.imageCheckBox263:setHeight(25);
     obj.imageCheckBox263:setField("courage_1");
-    obj.imageCheckBox263:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox263:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox263:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox263:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox263:setName("imageCheckBox263");
 
     obj.imageCheckBox264 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -4081,8 +4081,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox264:setWidth(25);
     obj.imageCheckBox264:setHeight(25);
     obj.imageCheckBox264:setField("courage_2");
-    obj.imageCheckBox264:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox264:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox264:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox264:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox264:setName("imageCheckBox264");
 
     obj.imageCheckBox265 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -4092,8 +4092,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox265:setWidth(25);
     obj.imageCheckBox265:setHeight(25);
     obj.imageCheckBox265:setField("courage_3");
-    obj.imageCheckBox265:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox265:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox265:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox265:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox265:setName("imageCheckBox265");
 
     obj.imageCheckBox266 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -4103,8 +4103,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox266:setWidth(25);
     obj.imageCheckBox266:setHeight(25);
     obj.imageCheckBox266:setField("courage_4");
-    obj.imageCheckBox266:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox266:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox266:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox266:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox266:setName("imageCheckBox266");
 
     obj.imageCheckBox267 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -4114,8 +4114,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox267:setWidth(25);
     obj.imageCheckBox267:setHeight(25);
     obj.imageCheckBox267:setField("courage_5");
-    obj.imageCheckBox267:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox267:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox267:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox267:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox267:setName("imageCheckBox267");
 
     obj.layout47 = GUI.fromHandle(_obj_newObject("layout"));
@@ -4141,7 +4141,7 @@ local function constructNew_frmVampireDarkAges20th()
     obj.label29:setTop(0);
     obj.label29:setWidth(315);
     obj.label29:setHeight(20);
-    obj.label29:setText("ROAD");
+    obj.label29:setText("HUMANITY/PATH");
     obj.label29:setHorzTextAlign("center");
     obj.label29:setName("label29");
 
@@ -4151,7 +4151,7 @@ local function constructNew_frmVampireDarkAges20th()
     obj.edit30:setTop(20);
     obj.edit30:setWidth(285);
     obj.edit30:setHeight(20);
-    obj.edit30:setField("road");
+    obj.edit30:setField("path");
     obj.edit30:setName("edit30");
 
     obj.layout48 = GUI.fromHandle(_obj_newObject("layout"));
@@ -4168,9 +4168,9 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox268:setTop(0);
     obj.imageCheckBox268:setWidth(25);
     obj.imageCheckBox268:setHeight(25);
-    obj.imageCheckBox268:setField("road_1");
-    obj.imageCheckBox268:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox268:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox268:setField("path_1");
+    obj.imageCheckBox268:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox268:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox268:setName("imageCheckBox268");
 
     obj.imageCheckBox269 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -4179,9 +4179,9 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox269:setTop(0);
     obj.imageCheckBox269:setWidth(25);
     obj.imageCheckBox269:setHeight(25);
-    obj.imageCheckBox269:setField("road_2");
-    obj.imageCheckBox269:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox269:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox269:setField("path_2");
+    obj.imageCheckBox269:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox269:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox269:setName("imageCheckBox269");
 
     obj.imageCheckBox270 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -4190,9 +4190,9 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox270:setTop(0);
     obj.imageCheckBox270:setWidth(25);
     obj.imageCheckBox270:setHeight(25);
-    obj.imageCheckBox270:setField("road_3");
-    obj.imageCheckBox270:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox270:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox270:setField("path_3");
+    obj.imageCheckBox270:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox270:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox270:setName("imageCheckBox270");
 
     obj.imageCheckBox271 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -4201,9 +4201,9 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox271:setTop(0);
     obj.imageCheckBox271:setWidth(25);
     obj.imageCheckBox271:setHeight(25);
-    obj.imageCheckBox271:setField("road_4");
-    obj.imageCheckBox271:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox271:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox271:setField("path_4");
+    obj.imageCheckBox271:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox271:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox271:setName("imageCheckBox271");
 
     obj.imageCheckBox272 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -4212,9 +4212,9 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox272:setTop(0);
     obj.imageCheckBox272:setWidth(25);
     obj.imageCheckBox272:setHeight(25);
-    obj.imageCheckBox272:setField("road_5");
-    obj.imageCheckBox272:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox272:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox272:setField("path_5");
+    obj.imageCheckBox272:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox272:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox272:setName("imageCheckBox272");
 
     obj.imageCheckBox273 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -4223,9 +4223,9 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox273:setTop(0);
     obj.imageCheckBox273:setWidth(25);
     obj.imageCheckBox273:setHeight(25);
-    obj.imageCheckBox273:setField("road_6");
-    obj.imageCheckBox273:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox273:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox273:setField("path_6");
+    obj.imageCheckBox273:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox273:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox273:setName("imageCheckBox273");
 
     obj.imageCheckBox274 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -4234,9 +4234,9 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox274:setTop(0);
     obj.imageCheckBox274:setWidth(25);
     obj.imageCheckBox274:setHeight(25);
-    obj.imageCheckBox274:setField("road_7");
-    obj.imageCheckBox274:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox274:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox274:setField("path_7");
+    obj.imageCheckBox274:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox274:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox274:setName("imageCheckBox274");
 
     obj.imageCheckBox275 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -4245,9 +4245,9 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox275:setTop(0);
     obj.imageCheckBox275:setWidth(25);
     obj.imageCheckBox275:setHeight(25);
-    obj.imageCheckBox275:setField("road_8");
-    obj.imageCheckBox275:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox275:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox275:setField("path_8");
+    obj.imageCheckBox275:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox275:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox275:setName("imageCheckBox275");
 
     obj.imageCheckBox276 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -4256,9 +4256,9 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox276:setTop(0);
     obj.imageCheckBox276:setWidth(25);
     obj.imageCheckBox276:setHeight(25);
-    obj.imageCheckBox276:setField("road_9");
-    obj.imageCheckBox276:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox276:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox276:setField("path_9");
+    obj.imageCheckBox276:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox276:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox276:setName("imageCheckBox276");
 
     obj.imageCheckBox277 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -4267,18 +4267,18 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox277:setTop(0);
     obj.imageCheckBox277:setWidth(25);
     obj.imageCheckBox277:setHeight(25);
-    obj.imageCheckBox277:setField("road_10");
-    obj.imageCheckBox277:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox277:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox277:setField("path_10");
+    obj.imageCheckBox277:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox277:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox277:setName("imageCheckBox277");
 
     obj.label30 = GUI.fromHandle(_obj_newObject("label"));
     obj.label30:setParent(obj.layout47);
-    obj.label30:setLeft(25);
+    obj.label30:setLeft(15);
     obj.label30:setTop(75);
     obj.label30:setWidth(50);
     obj.label30:setHeight(20);
-    obj.label30:setText("Aura");
+    obj.label30:setText("Bearing");
     obj.label30:setName("label30");
 
     obj.edit31 = GUI.fromHandle(_obj_newObject("edit"));
@@ -4287,7 +4287,7 @@ local function constructNew_frmVampireDarkAges20th()
     obj.edit31:setTop(75);
     obj.edit31:setWidth(180);
     obj.edit31:setHeight(20);
-    obj.edit31:setField("aura");
+    obj.edit31:setField("bearing");
     obj.edit31:setName("edit31");
 
     obj.edit32 = GUI.fromHandle(_obj_newObject("edit"));
@@ -4296,7 +4296,7 @@ local function constructNew_frmVampireDarkAges20th()
     obj.edit32:setTop(75);
     obj.edit32:setWidth(50);
     obj.edit32:setHeight(20);
-    obj.edit32:setField("aura2");
+    obj.edit32:setField("bearing2");
     obj.edit32:setName("edit32");
 
     obj.layout49 = GUI.fromHandle(_obj_newObject("layout"));
@@ -4341,8 +4341,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox278:setWidth(25);
     obj.imageCheckBox278:setHeight(25);
     obj.imageCheckBox278:setField("willpower_1");
-    obj.imageCheckBox278:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox278:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox278:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox278:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox278:setName("imageCheckBox278");
 
     obj.imageCheckBox279 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -4352,8 +4352,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox279:setWidth(25);
     obj.imageCheckBox279:setHeight(25);
     obj.imageCheckBox279:setField("willpower_2");
-    obj.imageCheckBox279:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox279:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox279:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox279:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox279:setName("imageCheckBox279");
 
     obj.imageCheckBox280 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -4363,8 +4363,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox280:setWidth(25);
     obj.imageCheckBox280:setHeight(25);
     obj.imageCheckBox280:setField("willpower_3");
-    obj.imageCheckBox280:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox280:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox280:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox280:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox280:setName("imageCheckBox280");
 
     obj.imageCheckBox281 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -4374,8 +4374,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox281:setWidth(25);
     obj.imageCheckBox281:setHeight(25);
     obj.imageCheckBox281:setField("willpower_4");
-    obj.imageCheckBox281:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox281:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox281:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox281:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox281:setName("imageCheckBox281");
 
     obj.imageCheckBox282 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -4385,8 +4385,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox282:setWidth(25);
     obj.imageCheckBox282:setHeight(25);
     obj.imageCheckBox282:setField("willpower_5");
-    obj.imageCheckBox282:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox282:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox282:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox282:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox282:setName("imageCheckBox282");
 
     obj.imageCheckBox283 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -4396,8 +4396,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox283:setWidth(25);
     obj.imageCheckBox283:setHeight(25);
     obj.imageCheckBox283:setField("willpower_6");
-    obj.imageCheckBox283:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox283:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox283:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox283:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox283:setName("imageCheckBox283");
 
     obj.imageCheckBox284 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -4407,8 +4407,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox284:setWidth(25);
     obj.imageCheckBox284:setHeight(25);
     obj.imageCheckBox284:setField("willpower_7");
-    obj.imageCheckBox284:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox284:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox284:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox284:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox284:setName("imageCheckBox284");
 
     obj.imageCheckBox285 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -4418,8 +4418,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox285:setWidth(25);
     obj.imageCheckBox285:setHeight(25);
     obj.imageCheckBox285:setField("willpower_8");
-    obj.imageCheckBox285:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox285:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox285:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox285:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox285:setName("imageCheckBox285");
 
     obj.imageCheckBox286 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -4429,8 +4429,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox286:setWidth(25);
     obj.imageCheckBox286:setHeight(25);
     obj.imageCheckBox286:setField("willpower_9");
-    obj.imageCheckBox286:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox286:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox286:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox286:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox286:setName("imageCheckBox286");
 
     obj.imageCheckBox287 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -4440,8 +4440,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox287:setWidth(25);
     obj.imageCheckBox287:setHeight(25);
     obj.imageCheckBox287:setField("willpower_10");
-    obj.imageCheckBox287:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox287:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox287:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox287:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox287:setName("imageCheckBox287");
 
     obj.checkBox1 = GUI.fromHandle(_obj_newObject("checkBox"));
@@ -4561,6 +4561,16 @@ local function constructNew_frmVampireDarkAges20th()
     obj.label32:setHorzTextAlign("center");
     obj.label32:setName("label32");
 
+    obj.edit33 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit33:setParent(obj.layout51);
+    obj.edit33:setLeft(185);
+    obj.edit33:setTop(1);
+    obj.edit33:setWidth(30);
+    obj.edit33:setHeight(20);
+    obj.edit33:setField("bloodpool_turn");
+    obj.edit33:setFontSize(11);
+    obj.edit33:setName("edit33");
+
     obj.layout52 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout52:setParent(obj.layout51);
     obj.layout52:setLeft(15);
@@ -4576,8 +4586,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox288:setWidth(25);
     obj.imageCheckBox288:setHeight(25);
     obj.imageCheckBox288:setField("bloodpool1_1");
-    obj.imageCheckBox288:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox288:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox288:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox288:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox288:setName("imageCheckBox288");
 
     obj.imageCheckBox289 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -4587,8 +4597,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox289:setWidth(25);
     obj.imageCheckBox289:setHeight(25);
     obj.imageCheckBox289:setField("bloodpool1_2");
-    obj.imageCheckBox289:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox289:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox289:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox289:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox289:setName("imageCheckBox289");
 
     obj.imageCheckBox290 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -4598,8 +4608,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox290:setWidth(25);
     obj.imageCheckBox290:setHeight(25);
     obj.imageCheckBox290:setField("bloodpool1_3");
-    obj.imageCheckBox290:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox290:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox290:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox290:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox290:setName("imageCheckBox290");
 
     obj.imageCheckBox291 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -4609,8 +4619,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox291:setWidth(25);
     obj.imageCheckBox291:setHeight(25);
     obj.imageCheckBox291:setField("bloodpool1_4");
-    obj.imageCheckBox291:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox291:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox291:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox291:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox291:setName("imageCheckBox291");
 
     obj.imageCheckBox292 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -4620,8 +4630,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox292:setWidth(25);
     obj.imageCheckBox292:setHeight(25);
     obj.imageCheckBox292:setField("bloodpool1_5");
-    obj.imageCheckBox292:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox292:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox292:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox292:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox292:setName("imageCheckBox292");
 
     obj.imageCheckBox293 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -4631,8 +4641,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox293:setWidth(25);
     obj.imageCheckBox293:setHeight(25);
     obj.imageCheckBox293:setField("bloodpool1_6");
-    obj.imageCheckBox293:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox293:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox293:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox293:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox293:setName("imageCheckBox293");
 
     obj.imageCheckBox294 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -4642,8 +4652,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox294:setWidth(25);
     obj.imageCheckBox294:setHeight(25);
     obj.imageCheckBox294:setField("bloodpool1_7");
-    obj.imageCheckBox294:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox294:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox294:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox294:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox294:setName("imageCheckBox294");
 
     obj.imageCheckBox295 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -4653,8 +4663,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox295:setWidth(25);
     obj.imageCheckBox295:setHeight(25);
     obj.imageCheckBox295:setField("bloodpool1_8");
-    obj.imageCheckBox295:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox295:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox295:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox295:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox295:setName("imageCheckBox295");
 
     obj.imageCheckBox296 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -4664,8 +4674,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox296:setWidth(25);
     obj.imageCheckBox296:setHeight(25);
     obj.imageCheckBox296:setField("bloodpool1_9");
-    obj.imageCheckBox296:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox296:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox296:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox296:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox296:setName("imageCheckBox296");
 
     obj.imageCheckBox297 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -4675,8 +4685,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox297:setWidth(25);
     obj.imageCheckBox297:setHeight(25);
     obj.imageCheckBox297:setField("bloodpool1_10");
-    obj.imageCheckBox297:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox297:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox297:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox297:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox297:setName("imageCheckBox297");
 
     obj.layout53 = GUI.fromHandle(_obj_newObject("layout"));
@@ -4694,8 +4704,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox298:setWidth(25);
     obj.imageCheckBox298:setHeight(25);
     obj.imageCheckBox298:setField("bloodpool2_1");
-    obj.imageCheckBox298:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox298:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox298:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox298:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox298:setName("imageCheckBox298");
 
     obj.imageCheckBox299 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -4705,8 +4715,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox299:setWidth(25);
     obj.imageCheckBox299:setHeight(25);
     obj.imageCheckBox299:setField("bloodpool2_2");
-    obj.imageCheckBox299:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox299:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox299:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox299:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox299:setName("imageCheckBox299");
 
     obj.imageCheckBox300 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -4716,8 +4726,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox300:setWidth(25);
     obj.imageCheckBox300:setHeight(25);
     obj.imageCheckBox300:setField("bloodpool2_3");
-    obj.imageCheckBox300:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox300:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox300:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox300:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox300:setName("imageCheckBox300");
 
     obj.imageCheckBox301 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -4727,8 +4737,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox301:setWidth(25);
     obj.imageCheckBox301:setHeight(25);
     obj.imageCheckBox301:setField("bloodpool2_4");
-    obj.imageCheckBox301:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox301:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox301:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox301:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox301:setName("imageCheckBox301");
 
     obj.imageCheckBox302 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -4738,8 +4748,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox302:setWidth(25);
     obj.imageCheckBox302:setHeight(25);
     obj.imageCheckBox302:setField("bloodpool2_5");
-    obj.imageCheckBox302:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox302:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox302:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox302:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox302:setName("imageCheckBox302");
 
     obj.imageCheckBox303 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -4749,8 +4759,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox303:setWidth(25);
     obj.imageCheckBox303:setHeight(25);
     obj.imageCheckBox303:setField("bloodpool2_6");
-    obj.imageCheckBox303:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox303:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox303:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox303:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox303:setName("imageCheckBox303");
 
     obj.imageCheckBox304 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -4760,8 +4770,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox304:setWidth(25);
     obj.imageCheckBox304:setHeight(25);
     obj.imageCheckBox304:setField("bloodpool2_7");
-    obj.imageCheckBox304:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox304:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox304:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox304:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox304:setName("imageCheckBox304");
 
     obj.imageCheckBox305 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -4771,8 +4781,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox305:setWidth(25);
     obj.imageCheckBox305:setHeight(25);
     obj.imageCheckBox305:setField("bloodpool2_8");
-    obj.imageCheckBox305:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox305:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox305:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox305:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox305:setName("imageCheckBox305");
 
     obj.imageCheckBox306 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -4782,8 +4792,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox306:setWidth(25);
     obj.imageCheckBox306:setHeight(25);
     obj.imageCheckBox306:setField("bloodpool2_9");
-    obj.imageCheckBox306:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox306:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox306:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox306:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox306:setName("imageCheckBox306");
 
     obj.imageCheckBox307 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -4793,8 +4803,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox307:setWidth(25);
     obj.imageCheckBox307:setHeight(25);
     obj.imageCheckBox307:setField("bloodpool2_10");
-    obj.imageCheckBox307:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox307:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox307:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox307:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox307:setName("imageCheckBox307");
 
     obj.layout54 = GUI.fromHandle(_obj_newObject("layout"));
@@ -4812,8 +4822,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox308:setWidth(25);
     obj.imageCheckBox308:setHeight(25);
     obj.imageCheckBox308:setField("bloodpool3_1");
-    obj.imageCheckBox308:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox308:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox308:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox308:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox308:setName("imageCheckBox308");
 
     obj.imageCheckBox309 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -4823,8 +4833,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox309:setWidth(25);
     obj.imageCheckBox309:setHeight(25);
     obj.imageCheckBox309:setField("bloodpool3_2");
-    obj.imageCheckBox309:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox309:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox309:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox309:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox309:setName("imageCheckBox309");
 
     obj.imageCheckBox310 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -4834,8 +4844,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox310:setWidth(25);
     obj.imageCheckBox310:setHeight(25);
     obj.imageCheckBox310:setField("bloodpool3_3");
-    obj.imageCheckBox310:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox310:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox310:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox310:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox310:setName("imageCheckBox310");
 
     obj.imageCheckBox311 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -4845,8 +4855,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox311:setWidth(25);
     obj.imageCheckBox311:setHeight(25);
     obj.imageCheckBox311:setField("bloodpool3_4");
-    obj.imageCheckBox311:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox311:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox311:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox311:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox311:setName("imageCheckBox311");
 
     obj.imageCheckBox312 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -4856,8 +4866,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox312:setWidth(25);
     obj.imageCheckBox312:setHeight(25);
     obj.imageCheckBox312:setField("bloodpool3_5");
-    obj.imageCheckBox312:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox312:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox312:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox312:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox312:setName("imageCheckBox312");
 
     obj.imageCheckBox313 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -4867,8 +4877,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox313:setWidth(25);
     obj.imageCheckBox313:setHeight(25);
     obj.imageCheckBox313:setField("bloodpool3_6");
-    obj.imageCheckBox313:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox313:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox313:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox313:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox313:setName("imageCheckBox313");
 
     obj.imageCheckBox314 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -4878,8 +4888,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox314:setWidth(25);
     obj.imageCheckBox314:setHeight(25);
     obj.imageCheckBox314:setField("bloodpool3_7");
-    obj.imageCheckBox314:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox314:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox314:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox314:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox314:setName("imageCheckBox314");
 
     obj.imageCheckBox315 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -4889,8 +4899,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox315:setWidth(25);
     obj.imageCheckBox315:setHeight(25);
     obj.imageCheckBox315:setField("bloodpool3_8");
-    obj.imageCheckBox315:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox315:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox315:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox315:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox315:setName("imageCheckBox315");
 
     obj.imageCheckBox316 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -4900,8 +4910,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox316:setWidth(25);
     obj.imageCheckBox316:setHeight(25);
     obj.imageCheckBox316:setField("bloodpool3_9");
-    obj.imageCheckBox316:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox316:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox316:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox316:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox316:setName("imageCheckBox316");
 
     obj.imageCheckBox317 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -4911,8 +4921,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox317:setWidth(25);
     obj.imageCheckBox317:setHeight(25);
     obj.imageCheckBox317:setField("bloodpool3_10");
-    obj.imageCheckBox317:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox317:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox317:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox317:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox317:setName("imageCheckBox317");
 
     obj.layout55 = GUI.fromHandle(_obj_newObject("layout"));
@@ -4930,8 +4940,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox318:setWidth(25);
     obj.imageCheckBox318:setHeight(25);
     obj.imageCheckBox318:setField("bloodpool4_1");
-    obj.imageCheckBox318:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox318:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox318:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox318:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox318:setName("imageCheckBox318");
 
     obj.imageCheckBox319 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -4941,8 +4951,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox319:setWidth(25);
     obj.imageCheckBox319:setHeight(25);
     obj.imageCheckBox319:setField("bloodpool4_2");
-    obj.imageCheckBox319:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox319:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox319:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox319:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox319:setName("imageCheckBox319");
 
     obj.imageCheckBox320 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -4952,8 +4962,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox320:setWidth(25);
     obj.imageCheckBox320:setHeight(25);
     obj.imageCheckBox320:setField("bloodpool4_3");
-    obj.imageCheckBox320:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox320:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox320:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox320:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox320:setName("imageCheckBox320");
 
     obj.imageCheckBox321 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -4963,8 +4973,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox321:setWidth(25);
     obj.imageCheckBox321:setHeight(25);
     obj.imageCheckBox321:setField("bloodpool4_4");
-    obj.imageCheckBox321:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox321:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox321:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox321:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox321:setName("imageCheckBox321");
 
     obj.imageCheckBox322 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -4974,8 +4984,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox322:setWidth(25);
     obj.imageCheckBox322:setHeight(25);
     obj.imageCheckBox322:setField("bloodpool4_5");
-    obj.imageCheckBox322:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox322:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox322:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox322:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox322:setName("imageCheckBox322");
 
     obj.imageCheckBox323 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -4985,8 +4995,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox323:setWidth(25);
     obj.imageCheckBox323:setHeight(25);
     obj.imageCheckBox323:setField("bloodpool4_6");
-    obj.imageCheckBox323:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox323:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox323:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox323:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox323:setName("imageCheckBox323");
 
     obj.imageCheckBox324 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -4996,8 +5006,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox324:setWidth(25);
     obj.imageCheckBox324:setHeight(25);
     obj.imageCheckBox324:setField("bloodpool4_7");
-    obj.imageCheckBox324:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox324:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox324:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox324:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox324:setName("imageCheckBox324");
 
     obj.imageCheckBox325 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -5007,8 +5017,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox325:setWidth(25);
     obj.imageCheckBox325:setHeight(25);
     obj.imageCheckBox325:setField("bloodpool4_8");
-    obj.imageCheckBox325:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox325:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox325:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox325:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox325:setName("imageCheckBox325");
 
     obj.imageCheckBox326 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -5018,8 +5028,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox326:setWidth(25);
     obj.imageCheckBox326:setHeight(25);
     obj.imageCheckBox326:setField("bloodpool4_9");
-    obj.imageCheckBox326:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox326:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox326:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox326:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox326:setName("imageCheckBox326");
 
     obj.imageCheckBox327 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -5029,8 +5039,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox327:setWidth(25);
     obj.imageCheckBox327:setHeight(25);
     obj.imageCheckBox327:setField("bloodpool4_10");
-    obj.imageCheckBox327:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox327:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox327:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox327:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox327:setName("imageCheckBox327");
 
     obj.layout56 = GUI.fromHandle(_obj_newObject("layout"));
@@ -5048,8 +5058,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox328:setWidth(25);
     obj.imageCheckBox328:setHeight(25);
     obj.imageCheckBox328:setField("bloodpool5_1");
-    obj.imageCheckBox328:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox328:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox328:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox328:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox328:setName("imageCheckBox328");
 
     obj.imageCheckBox329 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -5059,8 +5069,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox329:setWidth(25);
     obj.imageCheckBox329:setHeight(25);
     obj.imageCheckBox329:setField("bloodpool5_2");
-    obj.imageCheckBox329:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox329:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox329:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox329:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox329:setName("imageCheckBox329");
 
     obj.imageCheckBox330 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -5070,8 +5080,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox330:setWidth(25);
     obj.imageCheckBox330:setHeight(25);
     obj.imageCheckBox330:setField("bloodpool5_3");
-    obj.imageCheckBox330:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox330:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox330:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox330:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox330:setName("imageCheckBox330");
 
     obj.imageCheckBox331 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -5081,8 +5091,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox331:setWidth(25);
     obj.imageCheckBox331:setHeight(25);
     obj.imageCheckBox331:setField("bloodpool5_4");
-    obj.imageCheckBox331:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox331:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox331:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox331:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox331:setName("imageCheckBox331");
 
     obj.imageCheckBox332 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -5092,8 +5102,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox332:setWidth(25);
     obj.imageCheckBox332:setHeight(25);
     obj.imageCheckBox332:setField("bloodpool5_5");
-    obj.imageCheckBox332:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox332:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox332:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox332:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox332:setName("imageCheckBox332");
 
     obj.imageCheckBox333 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -5103,8 +5113,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox333:setWidth(25);
     obj.imageCheckBox333:setHeight(25);
     obj.imageCheckBox333:setField("bloodpool5_6");
-    obj.imageCheckBox333:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox333:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox333:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox333:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox333:setName("imageCheckBox333");
 
     obj.imageCheckBox334 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -5114,8 +5124,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox334:setWidth(25);
     obj.imageCheckBox334:setHeight(25);
     obj.imageCheckBox334:setField("bloodpool5_7");
-    obj.imageCheckBox334:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox334:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox334:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox334:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox334:setName("imageCheckBox334");
 
     obj.imageCheckBox335 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -5125,8 +5135,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox335:setWidth(25);
     obj.imageCheckBox335:setHeight(25);
     obj.imageCheckBox335:setField("bloodpool5_8");
-    obj.imageCheckBox335:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox335:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox335:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox335:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox335:setName("imageCheckBox335");
 
     obj.imageCheckBox336 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -5136,8 +5146,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox336:setWidth(25);
     obj.imageCheckBox336:setHeight(25);
     obj.imageCheckBox336:setField("bloodpool5_9");
-    obj.imageCheckBox336:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox336:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox336:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox336:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox336:setName("imageCheckBox336");
 
     obj.imageCheckBox337 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -5147,8 +5157,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox337:setWidth(25);
     obj.imageCheckBox337:setHeight(25);
     obj.imageCheckBox337:setField("bloodpool5_10");
-    obj.imageCheckBox337:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox337:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox337:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox337:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox337:setName("imageCheckBox337");
 
     obj.layout57 = GUI.fromHandle(_obj_newObject("layout"));
@@ -5253,14 +5263,14 @@ local function constructNew_frmVampireDarkAges20th()
     obj.tab2:setTitle("Abilities");
     obj.tab2:setName("tab2");
 
-    obj.frmVDA20_2 = GUI.fromHandle(_obj_newObject("form"));
-    obj.frmVDA20_2:setParent(obj.tab2);
-    obj.frmVDA20_2:setName("frmVDA20_2");
-    obj.frmVDA20_2:setAlign("client");
-    obj.frmVDA20_2:setTheme("dark");
+    obj.frmVM20_2 = GUI.fromHandle(_obj_newObject("form"));
+    obj.frmVM20_2:setParent(obj.tab2);
+    obj.frmVM20_2:setName("frmVM20_2");
+    obj.frmVM20_2:setAlign("client");
+    obj.frmVM20_2:setTheme("dark");
 
     obj.scrollBox2 = GUI.fromHandle(_obj_newObject("scrollBox"));
-    obj.scrollBox2:setParent(obj.frmVDA20_2);
+    obj.scrollBox2:setParent(obj.frmVM20_2);
     obj.scrollBox2:setAlign("client");
     obj.scrollBox2:setName("scrollBox2");
 
@@ -5315,8 +5325,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox338:setWidth(25);
     obj.imageCheckBox338:setHeight(25);
     obj.imageCheckBox338:setField("alertness_1");
-    obj.imageCheckBox338:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox338:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox338:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox338:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox338:setName("imageCheckBox338");
 
     obj.imageCheckBox339 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -5326,8 +5336,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox339:setWidth(25);
     obj.imageCheckBox339:setHeight(25);
     obj.imageCheckBox339:setField("alertness_2");
-    obj.imageCheckBox339:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox339:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox339:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox339:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox339:setName("imageCheckBox339");
 
     obj.imageCheckBox340 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -5337,8 +5347,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox340:setWidth(25);
     obj.imageCheckBox340:setHeight(25);
     obj.imageCheckBox340:setField("alertness_3");
-    obj.imageCheckBox340:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox340:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox340:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox340:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox340:setName("imageCheckBox340");
 
     obj.imageCheckBox341 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -5348,8 +5358,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox341:setWidth(25);
     obj.imageCheckBox341:setHeight(25);
     obj.imageCheckBox341:setField("alertness_4");
-    obj.imageCheckBox341:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox341:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox341:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox341:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox341:setName("imageCheckBox341");
 
     obj.imageCheckBox342 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -5359,8 +5369,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox342:setWidth(25);
     obj.imageCheckBox342:setHeight(25);
     obj.imageCheckBox342:setField("alertness_5");
-    obj.imageCheckBox342:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox342:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox342:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox342:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox342:setName("imageCheckBox342");
 
     obj.imageCheckBox343 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -5370,8 +5380,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox343:setWidth(25);
     obj.imageCheckBox343:setHeight(25);
     obj.imageCheckBox343:setField("alertness_6");
-    obj.imageCheckBox343:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox343:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox343:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox343:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox343:setName("imageCheckBox343");
 
     obj.imageCheckBox344 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -5381,8 +5391,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox344:setWidth(25);
     obj.imageCheckBox344:setHeight(25);
     obj.imageCheckBox344:setField("alertness_7");
-    obj.imageCheckBox344:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox344:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox344:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox344:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox344:setName("imageCheckBox344");
 
     obj.imageCheckBox345 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -5392,8 +5402,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox345:setWidth(25);
     obj.imageCheckBox345:setHeight(25);
     obj.imageCheckBox345:setField("alertness_8");
-    obj.imageCheckBox345:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox345:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox345:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox345:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox345:setName("imageCheckBox345");
 
     obj.imageCheckBox346 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -5403,8 +5413,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox346:setWidth(25);
     obj.imageCheckBox346:setHeight(25);
     obj.imageCheckBox346:setField("alertness_9");
-    obj.imageCheckBox346:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox346:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox346:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox346:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox346:setName("imageCheckBox346");
 
     obj.layout60 = GUI.fromHandle(_obj_newObject("layout"));
@@ -5431,8 +5441,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox347:setWidth(25);
     obj.imageCheckBox347:setHeight(25);
     obj.imageCheckBox347:setField("athetics_1");
-    obj.imageCheckBox347:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox347:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox347:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox347:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox347:setName("imageCheckBox347");
 
     obj.imageCheckBox348 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -5442,8 +5452,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox348:setWidth(25);
     obj.imageCheckBox348:setHeight(25);
     obj.imageCheckBox348:setField("athetics_2");
-    obj.imageCheckBox348:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox348:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox348:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox348:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox348:setName("imageCheckBox348");
 
     obj.imageCheckBox349 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -5453,8 +5463,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox349:setWidth(25);
     obj.imageCheckBox349:setHeight(25);
     obj.imageCheckBox349:setField("athetics_3");
-    obj.imageCheckBox349:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox349:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox349:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox349:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox349:setName("imageCheckBox349");
 
     obj.imageCheckBox350 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -5464,8 +5474,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox350:setWidth(25);
     obj.imageCheckBox350:setHeight(25);
     obj.imageCheckBox350:setField("athetics_4");
-    obj.imageCheckBox350:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox350:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox350:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox350:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox350:setName("imageCheckBox350");
 
     obj.imageCheckBox351 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -5475,8 +5485,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox351:setWidth(25);
     obj.imageCheckBox351:setHeight(25);
     obj.imageCheckBox351:setField("athetics_5");
-    obj.imageCheckBox351:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox351:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox351:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox351:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox351:setName("imageCheckBox351");
 
     obj.imageCheckBox352 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -5486,8 +5496,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox352:setWidth(25);
     obj.imageCheckBox352:setHeight(25);
     obj.imageCheckBox352:setField("athetics_6");
-    obj.imageCheckBox352:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox352:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox352:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox352:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox352:setName("imageCheckBox352");
 
     obj.imageCheckBox353 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -5497,8 +5507,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox353:setWidth(25);
     obj.imageCheckBox353:setHeight(25);
     obj.imageCheckBox353:setField("athetics_7");
-    obj.imageCheckBox353:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox353:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox353:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox353:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox353:setName("imageCheckBox353");
 
     obj.imageCheckBox354 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -5508,8 +5518,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox354:setWidth(25);
     obj.imageCheckBox354:setHeight(25);
     obj.imageCheckBox354:setField("athetics_8");
-    obj.imageCheckBox354:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox354:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox354:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox354:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox354:setName("imageCheckBox354");
 
     obj.imageCheckBox355 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -5519,8 +5529,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox355:setWidth(25);
     obj.imageCheckBox355:setHeight(25);
     obj.imageCheckBox355:setField("athetics_9");
-    obj.imageCheckBox355:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox355:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox355:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox355:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox355:setName("imageCheckBox355");
 
     obj.layout61 = GUI.fromHandle(_obj_newObject("layout"));
@@ -5547,8 +5557,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox356:setWidth(25);
     obj.imageCheckBox356:setHeight(25);
     obj.imageCheckBox356:setField("awareness_1");
-    obj.imageCheckBox356:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox356:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox356:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox356:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox356:setName("imageCheckBox356");
 
     obj.imageCheckBox357 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -5558,8 +5568,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox357:setWidth(25);
     obj.imageCheckBox357:setHeight(25);
     obj.imageCheckBox357:setField("awareness_2");
-    obj.imageCheckBox357:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox357:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox357:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox357:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox357:setName("imageCheckBox357");
 
     obj.imageCheckBox358 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -5569,8 +5579,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox358:setWidth(25);
     obj.imageCheckBox358:setHeight(25);
     obj.imageCheckBox358:setField("awareness_3");
-    obj.imageCheckBox358:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox358:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox358:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox358:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox358:setName("imageCheckBox358");
 
     obj.imageCheckBox359 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -5580,8 +5590,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox359:setWidth(25);
     obj.imageCheckBox359:setHeight(25);
     obj.imageCheckBox359:setField("awareness_4");
-    obj.imageCheckBox359:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox359:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox359:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox359:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox359:setName("imageCheckBox359");
 
     obj.imageCheckBox360 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -5591,8 +5601,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox360:setWidth(25);
     obj.imageCheckBox360:setHeight(25);
     obj.imageCheckBox360:setField("awareness_5");
-    obj.imageCheckBox360:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox360:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox360:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox360:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox360:setName("imageCheckBox360");
 
     obj.imageCheckBox361 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -5602,8 +5612,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox361:setWidth(25);
     obj.imageCheckBox361:setHeight(25);
     obj.imageCheckBox361:setField("awareness_6");
-    obj.imageCheckBox361:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox361:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox361:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox361:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox361:setName("imageCheckBox361");
 
     obj.imageCheckBox362 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -5613,8 +5623,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox362:setWidth(25);
     obj.imageCheckBox362:setHeight(25);
     obj.imageCheckBox362:setField("awareness_7");
-    obj.imageCheckBox362:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox362:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox362:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox362:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox362:setName("imageCheckBox362");
 
     obj.imageCheckBox363 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -5624,8 +5634,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox363:setWidth(25);
     obj.imageCheckBox363:setHeight(25);
     obj.imageCheckBox363:setField("awareness_8");
-    obj.imageCheckBox363:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox363:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox363:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox363:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox363:setName("imageCheckBox363");
 
     obj.imageCheckBox364 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -5635,8 +5645,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox364:setWidth(25);
     obj.imageCheckBox364:setHeight(25);
     obj.imageCheckBox364:setField("awareness_9");
-    obj.imageCheckBox364:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox364:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox364:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox364:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox364:setName("imageCheckBox364");
 
     obj.layout62 = GUI.fromHandle(_obj_newObject("layout"));
@@ -5663,8 +5673,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox365:setWidth(25);
     obj.imageCheckBox365:setHeight(25);
     obj.imageCheckBox365:setField("brawl_1");
-    obj.imageCheckBox365:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox365:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox365:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox365:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox365:setName("imageCheckBox365");
 
     obj.imageCheckBox366 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -5674,8 +5684,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox366:setWidth(25);
     obj.imageCheckBox366:setHeight(25);
     obj.imageCheckBox366:setField("brawl_2");
-    obj.imageCheckBox366:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox366:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox366:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox366:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox366:setName("imageCheckBox366");
 
     obj.imageCheckBox367 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -5685,8 +5695,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox367:setWidth(25);
     obj.imageCheckBox367:setHeight(25);
     obj.imageCheckBox367:setField("brawl_3");
-    obj.imageCheckBox367:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox367:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox367:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox367:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox367:setName("imageCheckBox367");
 
     obj.imageCheckBox368 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -5696,8 +5706,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox368:setWidth(25);
     obj.imageCheckBox368:setHeight(25);
     obj.imageCheckBox368:setField("brawl_4");
-    obj.imageCheckBox368:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox368:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox368:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox368:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox368:setName("imageCheckBox368");
 
     obj.imageCheckBox369 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -5707,8 +5717,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox369:setWidth(25);
     obj.imageCheckBox369:setHeight(25);
     obj.imageCheckBox369:setField("brawl_5");
-    obj.imageCheckBox369:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox369:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox369:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox369:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox369:setName("imageCheckBox369");
 
     obj.imageCheckBox370 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -5718,8 +5728,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox370:setWidth(25);
     obj.imageCheckBox370:setHeight(25);
     obj.imageCheckBox370:setField("brawl_6");
-    obj.imageCheckBox370:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox370:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox370:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox370:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox370:setName("imageCheckBox370");
 
     obj.imageCheckBox371 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -5729,8 +5739,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox371:setWidth(25);
     obj.imageCheckBox371:setHeight(25);
     obj.imageCheckBox371:setField("brawl_7");
-    obj.imageCheckBox371:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox371:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox371:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox371:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox371:setName("imageCheckBox371");
 
     obj.imageCheckBox372 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -5740,8 +5750,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox372:setWidth(25);
     obj.imageCheckBox372:setHeight(25);
     obj.imageCheckBox372:setField("brawl_8");
-    obj.imageCheckBox372:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox372:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox372:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox372:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox372:setName("imageCheckBox372");
 
     obj.imageCheckBox373 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -5751,8 +5761,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox373:setWidth(25);
     obj.imageCheckBox373:setHeight(25);
     obj.imageCheckBox373:setField("brawl_9");
-    obj.imageCheckBox373:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox373:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox373:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox373:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox373:setName("imageCheckBox373");
 
     obj.layout63 = GUI.fromHandle(_obj_newObject("layout"));
@@ -5779,8 +5789,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox374:setWidth(25);
     obj.imageCheckBox374:setHeight(25);
     obj.imageCheckBox374:setField("empathy_1");
-    obj.imageCheckBox374:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox374:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox374:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox374:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox374:setName("imageCheckBox374");
 
     obj.imageCheckBox375 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -5790,8 +5800,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox375:setWidth(25);
     obj.imageCheckBox375:setHeight(25);
     obj.imageCheckBox375:setField("empathy_2");
-    obj.imageCheckBox375:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox375:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox375:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox375:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox375:setName("imageCheckBox375");
 
     obj.imageCheckBox376 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -5801,8 +5811,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox376:setWidth(25);
     obj.imageCheckBox376:setHeight(25);
     obj.imageCheckBox376:setField("empathy_3");
-    obj.imageCheckBox376:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox376:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox376:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox376:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox376:setName("imageCheckBox376");
 
     obj.imageCheckBox377 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -5812,8 +5822,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox377:setWidth(25);
     obj.imageCheckBox377:setHeight(25);
     obj.imageCheckBox377:setField("empathy_4");
-    obj.imageCheckBox377:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox377:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox377:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox377:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox377:setName("imageCheckBox377");
 
     obj.imageCheckBox378 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -5823,8 +5833,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox378:setWidth(25);
     obj.imageCheckBox378:setHeight(25);
     obj.imageCheckBox378:setField("empathy_5");
-    obj.imageCheckBox378:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox378:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox378:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox378:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox378:setName("imageCheckBox378");
 
     obj.imageCheckBox379 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -5834,8 +5844,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox379:setWidth(25);
     obj.imageCheckBox379:setHeight(25);
     obj.imageCheckBox379:setField("empathy_6");
-    obj.imageCheckBox379:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox379:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox379:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox379:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox379:setName("imageCheckBox379");
 
     obj.imageCheckBox380 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -5845,8 +5855,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox380:setWidth(25);
     obj.imageCheckBox380:setHeight(25);
     obj.imageCheckBox380:setField("empathy_7");
-    obj.imageCheckBox380:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox380:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox380:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox380:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox380:setName("imageCheckBox380");
 
     obj.imageCheckBox381 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -5856,8 +5866,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox381:setWidth(25);
     obj.imageCheckBox381:setHeight(25);
     obj.imageCheckBox381:setField("empathy_8");
-    obj.imageCheckBox381:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox381:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox381:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox381:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox381:setName("imageCheckBox381");
 
     obj.imageCheckBox382 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -5867,8 +5877,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox382:setWidth(25);
     obj.imageCheckBox382:setHeight(25);
     obj.imageCheckBox382:setField("empathy_9");
-    obj.imageCheckBox382:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox382:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox382:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox382:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox382:setName("imageCheckBox382");
 
     obj.layout64 = GUI.fromHandle(_obj_newObject("layout"));
@@ -5895,8 +5905,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox383:setWidth(25);
     obj.imageCheckBox383:setHeight(25);
     obj.imageCheckBox383:setField("expression_1");
-    obj.imageCheckBox383:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox383:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox383:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox383:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox383:setName("imageCheckBox383");
 
     obj.imageCheckBox384 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -5906,8 +5916,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox384:setWidth(25);
     obj.imageCheckBox384:setHeight(25);
     obj.imageCheckBox384:setField("expression_2");
-    obj.imageCheckBox384:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox384:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox384:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox384:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox384:setName("imageCheckBox384");
 
     obj.imageCheckBox385 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -5917,8 +5927,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox385:setWidth(25);
     obj.imageCheckBox385:setHeight(25);
     obj.imageCheckBox385:setField("expression_3");
-    obj.imageCheckBox385:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox385:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox385:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox385:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox385:setName("imageCheckBox385");
 
     obj.imageCheckBox386 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -5928,8 +5938,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox386:setWidth(25);
     obj.imageCheckBox386:setHeight(25);
     obj.imageCheckBox386:setField("expression_4");
-    obj.imageCheckBox386:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox386:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox386:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox386:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox386:setName("imageCheckBox386");
 
     obj.imageCheckBox387 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -5939,8 +5949,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox387:setWidth(25);
     obj.imageCheckBox387:setHeight(25);
     obj.imageCheckBox387:setField("expression_5");
-    obj.imageCheckBox387:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox387:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox387:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox387:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox387:setName("imageCheckBox387");
 
     obj.imageCheckBox388 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -5950,8 +5960,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox388:setWidth(25);
     obj.imageCheckBox388:setHeight(25);
     obj.imageCheckBox388:setField("expression_6");
-    obj.imageCheckBox388:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox388:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox388:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox388:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox388:setName("imageCheckBox388");
 
     obj.imageCheckBox389 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -5961,8 +5971,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox389:setWidth(25);
     obj.imageCheckBox389:setHeight(25);
     obj.imageCheckBox389:setField("expression_7");
-    obj.imageCheckBox389:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox389:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox389:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox389:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox389:setName("imageCheckBox389");
 
     obj.imageCheckBox390 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -5972,8 +5982,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox390:setWidth(25);
     obj.imageCheckBox390:setHeight(25);
     obj.imageCheckBox390:setField("expression_8");
-    obj.imageCheckBox390:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox390:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox390:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox390:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox390:setName("imageCheckBox390");
 
     obj.imageCheckBox391 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -5983,8 +5993,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox391:setWidth(25);
     obj.imageCheckBox391:setHeight(25);
     obj.imageCheckBox391:setField("expression_9");
-    obj.imageCheckBox391:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox391:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox391:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox391:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox391:setName("imageCheckBox391");
 
     obj.layout65 = GUI.fromHandle(_obj_newObject("layout"));
@@ -6011,8 +6021,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox392:setWidth(25);
     obj.imageCheckBox392:setHeight(25);
     obj.imageCheckBox392:setField("intimidation_1");
-    obj.imageCheckBox392:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox392:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox392:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox392:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox392:setName("imageCheckBox392");
 
     obj.imageCheckBox393 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -6022,8 +6032,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox393:setWidth(25);
     obj.imageCheckBox393:setHeight(25);
     obj.imageCheckBox393:setField("intimidation_2");
-    obj.imageCheckBox393:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox393:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox393:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox393:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox393:setName("imageCheckBox393");
 
     obj.imageCheckBox394 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -6033,8 +6043,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox394:setWidth(25);
     obj.imageCheckBox394:setHeight(25);
     obj.imageCheckBox394:setField("intimidation_3");
-    obj.imageCheckBox394:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox394:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox394:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox394:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox394:setName("imageCheckBox394");
 
     obj.imageCheckBox395 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -6044,8 +6054,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox395:setWidth(25);
     obj.imageCheckBox395:setHeight(25);
     obj.imageCheckBox395:setField("intimidation_4");
-    obj.imageCheckBox395:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox395:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox395:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox395:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox395:setName("imageCheckBox395");
 
     obj.imageCheckBox396 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -6055,8 +6065,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox396:setWidth(25);
     obj.imageCheckBox396:setHeight(25);
     obj.imageCheckBox396:setField("intimidation_5");
-    obj.imageCheckBox396:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox396:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox396:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox396:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox396:setName("imageCheckBox396");
 
     obj.imageCheckBox397 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -6066,8 +6076,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox397:setWidth(25);
     obj.imageCheckBox397:setHeight(25);
     obj.imageCheckBox397:setField("intimidation_6");
-    obj.imageCheckBox397:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox397:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox397:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox397:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox397:setName("imageCheckBox397");
 
     obj.imageCheckBox398 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -6077,8 +6087,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox398:setWidth(25);
     obj.imageCheckBox398:setHeight(25);
     obj.imageCheckBox398:setField("intimidation_7");
-    obj.imageCheckBox398:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox398:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox398:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox398:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox398:setName("imageCheckBox398");
 
     obj.imageCheckBox399 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -6088,8 +6098,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox399:setWidth(25);
     obj.imageCheckBox399:setHeight(25);
     obj.imageCheckBox399:setField("intimidation_8");
-    obj.imageCheckBox399:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox399:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox399:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox399:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox399:setName("imageCheckBox399");
 
     obj.imageCheckBox400 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -6099,8 +6109,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox400:setWidth(25);
     obj.imageCheckBox400:setHeight(25);
     obj.imageCheckBox400:setField("intimidation_9");
-    obj.imageCheckBox400:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox400:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox400:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox400:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox400:setName("imageCheckBox400");
 
     obj.layout66 = GUI.fromHandle(_obj_newObject("layout"));
@@ -6127,8 +6137,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox401:setWidth(25);
     obj.imageCheckBox401:setHeight(25);
     obj.imageCheckBox401:setField("leadership_1");
-    obj.imageCheckBox401:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox401:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox401:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox401:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox401:setName("imageCheckBox401");
 
     obj.imageCheckBox402 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -6138,8 +6148,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox402:setWidth(25);
     obj.imageCheckBox402:setHeight(25);
     obj.imageCheckBox402:setField("leadership_2");
-    obj.imageCheckBox402:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox402:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox402:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox402:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox402:setName("imageCheckBox402");
 
     obj.imageCheckBox403 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -6149,8 +6159,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox403:setWidth(25);
     obj.imageCheckBox403:setHeight(25);
     obj.imageCheckBox403:setField("leadership_3");
-    obj.imageCheckBox403:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox403:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox403:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox403:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox403:setName("imageCheckBox403");
 
     obj.imageCheckBox404 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -6160,8 +6170,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox404:setWidth(25);
     obj.imageCheckBox404:setHeight(25);
     obj.imageCheckBox404:setField("leadership_4");
-    obj.imageCheckBox404:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox404:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox404:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox404:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox404:setName("imageCheckBox404");
 
     obj.imageCheckBox405 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -6171,8 +6181,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox405:setWidth(25);
     obj.imageCheckBox405:setHeight(25);
     obj.imageCheckBox405:setField("leadership_5");
-    obj.imageCheckBox405:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox405:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox405:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox405:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox405:setName("imageCheckBox405");
 
     obj.imageCheckBox406 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -6182,8 +6192,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox406:setWidth(25);
     obj.imageCheckBox406:setHeight(25);
     obj.imageCheckBox406:setField("leadership_6");
-    obj.imageCheckBox406:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox406:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox406:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox406:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox406:setName("imageCheckBox406");
 
     obj.imageCheckBox407 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -6193,8 +6203,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox407:setWidth(25);
     obj.imageCheckBox407:setHeight(25);
     obj.imageCheckBox407:setField("leadership_7");
-    obj.imageCheckBox407:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox407:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox407:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox407:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox407:setName("imageCheckBox407");
 
     obj.imageCheckBox408 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -6204,8 +6214,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox408:setWidth(25);
     obj.imageCheckBox408:setHeight(25);
     obj.imageCheckBox408:setField("leadership_8");
-    obj.imageCheckBox408:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox408:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox408:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox408:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox408:setName("imageCheckBox408");
 
     obj.imageCheckBox409 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -6215,8 +6225,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox409:setWidth(25);
     obj.imageCheckBox409:setHeight(25);
     obj.imageCheckBox409:setField("leadership_9");
-    obj.imageCheckBox409:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox409:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox409:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox409:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox409:setName("imageCheckBox409");
 
     obj.layout67 = GUI.fromHandle(_obj_newObject("layout"));
@@ -6233,7 +6243,7 @@ local function constructNew_frmVampireDarkAges20th()
     obj.label43:setTop(5);
     obj.label43:setWidth(80);
     obj.label43:setHeight(20);
-    obj.label43:setText("Legerdemain");
+    obj.label43:setText("Streetwise");
     obj.label43:setName("label43");
 
     obj.imageCheckBox410 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -6242,9 +6252,9 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox410:setTop(0);
     obj.imageCheckBox410:setWidth(25);
     obj.imageCheckBox410:setHeight(25);
-    obj.imageCheckBox410:setField("legerdemain_1");
-    obj.imageCheckBox410:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox410:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox410:setField("streetwise_1");
+    obj.imageCheckBox410:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox410:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox410:setName("imageCheckBox410");
 
     obj.imageCheckBox411 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -6253,9 +6263,9 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox411:setTop(0);
     obj.imageCheckBox411:setWidth(25);
     obj.imageCheckBox411:setHeight(25);
-    obj.imageCheckBox411:setField("legerdemain_2");
-    obj.imageCheckBox411:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox411:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox411:setField("streetwise_2");
+    obj.imageCheckBox411:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox411:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox411:setName("imageCheckBox411");
 
     obj.imageCheckBox412 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -6264,9 +6274,9 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox412:setTop(0);
     obj.imageCheckBox412:setWidth(25);
     obj.imageCheckBox412:setHeight(25);
-    obj.imageCheckBox412:setField("legerdemain_3");
-    obj.imageCheckBox412:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox412:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox412:setField("streetwise_3");
+    obj.imageCheckBox412:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox412:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox412:setName("imageCheckBox412");
 
     obj.imageCheckBox413 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -6275,9 +6285,9 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox413:setTop(0);
     obj.imageCheckBox413:setWidth(25);
     obj.imageCheckBox413:setHeight(25);
-    obj.imageCheckBox413:setField("legerdemain_4");
-    obj.imageCheckBox413:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox413:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox413:setField("streetwise_4");
+    obj.imageCheckBox413:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox413:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox413:setName("imageCheckBox413");
 
     obj.imageCheckBox414 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -6286,9 +6296,9 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox414:setTop(0);
     obj.imageCheckBox414:setWidth(25);
     obj.imageCheckBox414:setHeight(25);
-    obj.imageCheckBox414:setField("legerdemain_5");
-    obj.imageCheckBox414:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox414:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox414:setField("streetwise_5");
+    obj.imageCheckBox414:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox414:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox414:setName("imageCheckBox414");
 
     obj.imageCheckBox415 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -6297,9 +6307,9 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox415:setTop(0);
     obj.imageCheckBox415:setWidth(25);
     obj.imageCheckBox415:setHeight(25);
-    obj.imageCheckBox415:setField("legerdemain_6");
-    obj.imageCheckBox415:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox415:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox415:setField("streetwise_6");
+    obj.imageCheckBox415:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox415:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox415:setName("imageCheckBox415");
 
     obj.imageCheckBox416 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -6308,9 +6318,9 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox416:setTop(0);
     obj.imageCheckBox416:setWidth(25);
     obj.imageCheckBox416:setHeight(25);
-    obj.imageCheckBox416:setField("legerdemain_7");
-    obj.imageCheckBox416:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox416:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox416:setField("streetwise_7");
+    obj.imageCheckBox416:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox416:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox416:setName("imageCheckBox416");
 
     obj.imageCheckBox417 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -6319,9 +6329,9 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox417:setTop(0);
     obj.imageCheckBox417:setWidth(25);
     obj.imageCheckBox417:setHeight(25);
-    obj.imageCheckBox417:setField("legerdemain_8");
-    obj.imageCheckBox417:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox417:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox417:setField("streetwise_8");
+    obj.imageCheckBox417:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox417:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox417:setName("imageCheckBox417");
 
     obj.imageCheckBox418 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -6330,9 +6340,9 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox418:setTop(0);
     obj.imageCheckBox418:setWidth(25);
     obj.imageCheckBox418:setHeight(25);
-    obj.imageCheckBox418:setField("legerdemain_9");
-    obj.imageCheckBox418:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox418:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox418:setField("streetwise_9");
+    obj.imageCheckBox418:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox418:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox418:setName("imageCheckBox418");
 
     obj.layout68 = GUI.fromHandle(_obj_newObject("layout"));
@@ -6359,8 +6369,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox419:setWidth(25);
     obj.imageCheckBox419:setHeight(25);
     obj.imageCheckBox419:setField("subterfuge_1");
-    obj.imageCheckBox419:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox419:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox419:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox419:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox419:setName("imageCheckBox419");
 
     obj.imageCheckBox420 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -6370,8 +6380,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox420:setWidth(25);
     obj.imageCheckBox420:setHeight(25);
     obj.imageCheckBox420:setField("subterfuge_2");
-    obj.imageCheckBox420:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox420:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox420:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox420:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox420:setName("imageCheckBox420");
 
     obj.imageCheckBox421 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -6381,8 +6391,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox421:setWidth(25);
     obj.imageCheckBox421:setHeight(25);
     obj.imageCheckBox421:setField("subterfuge_3");
-    obj.imageCheckBox421:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox421:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox421:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox421:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox421:setName("imageCheckBox421");
 
     obj.imageCheckBox422 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -6392,8 +6402,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox422:setWidth(25);
     obj.imageCheckBox422:setHeight(25);
     obj.imageCheckBox422:setField("subterfuge_4");
-    obj.imageCheckBox422:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox422:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox422:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox422:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox422:setName("imageCheckBox422");
 
     obj.imageCheckBox423 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -6403,8 +6413,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox423:setWidth(25);
     obj.imageCheckBox423:setHeight(25);
     obj.imageCheckBox423:setField("subterfuge_5");
-    obj.imageCheckBox423:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox423:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox423:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox423:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox423:setName("imageCheckBox423");
 
     obj.imageCheckBox424 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -6414,8 +6424,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox424:setWidth(25);
     obj.imageCheckBox424:setHeight(25);
     obj.imageCheckBox424:setField("subterfuge_6");
-    obj.imageCheckBox424:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox424:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox424:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox424:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox424:setName("imageCheckBox424");
 
     obj.imageCheckBox425 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -6425,8 +6435,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox425:setWidth(25);
     obj.imageCheckBox425:setHeight(25);
     obj.imageCheckBox425:setField("subterfuge_7");
-    obj.imageCheckBox425:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox425:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox425:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox425:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox425:setName("imageCheckBox425");
 
     obj.imageCheckBox426 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -6436,8 +6446,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox426:setWidth(25);
     obj.imageCheckBox426:setHeight(25);
     obj.imageCheckBox426:setField("subterfuge_8");
-    obj.imageCheckBox426:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox426:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox426:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox426:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox426:setName("imageCheckBox426");
 
     obj.imageCheckBox427 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -6447,8 +6457,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox427:setWidth(25);
     obj.imageCheckBox427:setHeight(25);
     obj.imageCheckBox427:setField("subterfuge_9");
-    obj.imageCheckBox427:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox427:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox427:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox427:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox427:setName("imageCheckBox427");
 
     obj.layout69 = GUI.fromHandle(_obj_newObject("layout"));
@@ -6459,15 +6469,15 @@ local function constructNew_frmVampireDarkAges20th()
     obj.layout69:setHeight(25);
     obj.layout69:setName("layout69");
 
-    obj.edit33 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit33:setParent(obj.layout69);
-    obj.edit33:setLeft(0);
-    obj.edit33:setTop(5);
-    obj.edit33:setWidth(75);
-    obj.edit33:setHeight(20);
-    obj.edit33:setField("talent_11");
-    obj.edit33:setFontSize(12);
-    obj.edit33:setName("edit33");
+    obj.edit34 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit34:setParent(obj.layout69);
+    obj.edit34:setLeft(0);
+    obj.edit34:setTop(5);
+    obj.edit34:setWidth(75);
+    obj.edit34:setHeight(20);
+    obj.edit34:setField("talent_11");
+    obj.edit34:setFontSize(12);
+    obj.edit34:setName("edit34");
 
     obj.imageCheckBox428 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox428:setParent(obj.layout69);
@@ -6476,8 +6486,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox428:setWidth(25);
     obj.imageCheckBox428:setHeight(25);
     obj.imageCheckBox428:setField("talent_11_1");
-    obj.imageCheckBox428:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox428:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox428:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox428:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox428:setName("imageCheckBox428");
 
     obj.imageCheckBox429 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -6487,8 +6497,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox429:setWidth(25);
     obj.imageCheckBox429:setHeight(25);
     obj.imageCheckBox429:setField("talent_11_2");
-    obj.imageCheckBox429:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox429:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox429:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox429:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox429:setName("imageCheckBox429");
 
     obj.imageCheckBox430 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -6498,8 +6508,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox430:setWidth(25);
     obj.imageCheckBox430:setHeight(25);
     obj.imageCheckBox430:setField("talent_11_3");
-    obj.imageCheckBox430:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox430:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox430:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox430:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox430:setName("imageCheckBox430");
 
     obj.imageCheckBox431 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -6509,8 +6519,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox431:setWidth(25);
     obj.imageCheckBox431:setHeight(25);
     obj.imageCheckBox431:setField("talent_11_4");
-    obj.imageCheckBox431:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox431:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox431:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox431:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox431:setName("imageCheckBox431");
 
     obj.imageCheckBox432 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -6520,8 +6530,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox432:setWidth(25);
     obj.imageCheckBox432:setHeight(25);
     obj.imageCheckBox432:setField("talent_11_5");
-    obj.imageCheckBox432:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox432:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox432:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox432:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox432:setName("imageCheckBox432");
 
     obj.imageCheckBox433 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -6531,8 +6541,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox433:setWidth(25);
     obj.imageCheckBox433:setHeight(25);
     obj.imageCheckBox433:setField("talent_11_6");
-    obj.imageCheckBox433:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox433:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox433:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox433:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox433:setName("imageCheckBox433");
 
     obj.imageCheckBox434 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -6542,8 +6552,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox434:setWidth(25);
     obj.imageCheckBox434:setHeight(25);
     obj.imageCheckBox434:setField("talent_11_7");
-    obj.imageCheckBox434:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox434:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox434:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox434:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox434:setName("imageCheckBox434");
 
     obj.imageCheckBox435 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -6553,8 +6563,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox435:setWidth(25);
     obj.imageCheckBox435:setHeight(25);
     obj.imageCheckBox435:setField("talent_11_8");
-    obj.imageCheckBox435:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox435:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox435:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox435:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox435:setName("imageCheckBox435");
 
     obj.imageCheckBox436 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -6564,8 +6574,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox436:setWidth(25);
     obj.imageCheckBox436:setHeight(25);
     obj.imageCheckBox436:setField("talent_11_9");
-    obj.imageCheckBox436:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox436:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox436:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox436:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox436:setName("imageCheckBox436");
 
     obj.layout70 = GUI.fromHandle(_obj_newObject("layout"));
@@ -6576,15 +6586,15 @@ local function constructNew_frmVampireDarkAges20th()
     obj.layout70:setHeight(25);
     obj.layout70:setName("layout70");
 
-    obj.edit34 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit34:setParent(obj.layout70);
-    obj.edit34:setLeft(0);
-    obj.edit34:setTop(5);
-    obj.edit34:setWidth(75);
-    obj.edit34:setHeight(20);
-    obj.edit34:setField("talent_12");
-    obj.edit34:setFontSize(12);
-    obj.edit34:setName("edit34");
+    obj.edit35 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit35:setParent(obj.layout70);
+    obj.edit35:setLeft(0);
+    obj.edit35:setTop(5);
+    obj.edit35:setWidth(75);
+    obj.edit35:setHeight(20);
+    obj.edit35:setField("talent_12");
+    obj.edit35:setFontSize(12);
+    obj.edit35:setName("edit35");
 
     obj.imageCheckBox437 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox437:setParent(obj.layout70);
@@ -6593,8 +6603,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox437:setWidth(25);
     obj.imageCheckBox437:setHeight(25);
     obj.imageCheckBox437:setField("talent_12_1");
-    obj.imageCheckBox437:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox437:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox437:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox437:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox437:setName("imageCheckBox437");
 
     obj.imageCheckBox438 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -6604,8 +6614,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox438:setWidth(25);
     obj.imageCheckBox438:setHeight(25);
     obj.imageCheckBox438:setField("talent_12_2");
-    obj.imageCheckBox438:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox438:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox438:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox438:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox438:setName("imageCheckBox438");
 
     obj.imageCheckBox439 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -6615,8 +6625,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox439:setWidth(25);
     obj.imageCheckBox439:setHeight(25);
     obj.imageCheckBox439:setField("talent_12_3");
-    obj.imageCheckBox439:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox439:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox439:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox439:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox439:setName("imageCheckBox439");
 
     obj.imageCheckBox440 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -6626,8 +6636,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox440:setWidth(25);
     obj.imageCheckBox440:setHeight(25);
     obj.imageCheckBox440:setField("talent_12_4");
-    obj.imageCheckBox440:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox440:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox440:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox440:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox440:setName("imageCheckBox440");
 
     obj.imageCheckBox441 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -6637,8 +6647,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox441:setWidth(25);
     obj.imageCheckBox441:setHeight(25);
     obj.imageCheckBox441:setField("talent_12_5");
-    obj.imageCheckBox441:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox441:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox441:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox441:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox441:setName("imageCheckBox441");
 
     obj.imageCheckBox442 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -6648,8 +6658,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox442:setWidth(25);
     obj.imageCheckBox442:setHeight(25);
     obj.imageCheckBox442:setField("talent_12_6");
-    obj.imageCheckBox442:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox442:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox442:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox442:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox442:setName("imageCheckBox442");
 
     obj.imageCheckBox443 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -6659,8 +6669,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox443:setWidth(25);
     obj.imageCheckBox443:setHeight(25);
     obj.imageCheckBox443:setField("talent_12_7");
-    obj.imageCheckBox443:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox443:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox443:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox443:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox443:setName("imageCheckBox443");
 
     obj.imageCheckBox444 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -6670,8 +6680,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox444:setWidth(25);
     obj.imageCheckBox444:setHeight(25);
     obj.imageCheckBox444:setField("talent_12_8");
-    obj.imageCheckBox444:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox444:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox444:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox444:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox444:setName("imageCheckBox444");
 
     obj.imageCheckBox445 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -6681,8 +6691,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox445:setWidth(25);
     obj.imageCheckBox445:setHeight(25);
     obj.imageCheckBox445:setField("talent_12_9");
-    obj.imageCheckBox445:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox445:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox445:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox445:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox445:setName("imageCheckBox445");
 
     obj.layout71 = GUI.fromHandle(_obj_newObject("layout"));
@@ -6736,8 +6746,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox446:setWidth(25);
     obj.imageCheckBox446:setHeight(25);
     obj.imageCheckBox446:setField("animal_ken_1");
-    obj.imageCheckBox446:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox446:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox446:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox446:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox446:setName("imageCheckBox446");
 
     obj.imageCheckBox447 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -6747,8 +6757,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox447:setWidth(25);
     obj.imageCheckBox447:setHeight(25);
     obj.imageCheckBox447:setField("animal_ken_2");
-    obj.imageCheckBox447:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox447:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox447:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox447:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox447:setName("imageCheckBox447");
 
     obj.imageCheckBox448 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -6758,8 +6768,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox448:setWidth(25);
     obj.imageCheckBox448:setHeight(25);
     obj.imageCheckBox448:setField("animal_ken_3");
-    obj.imageCheckBox448:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox448:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox448:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox448:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox448:setName("imageCheckBox448");
 
     obj.imageCheckBox449 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -6769,8 +6779,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox449:setWidth(25);
     obj.imageCheckBox449:setHeight(25);
     obj.imageCheckBox449:setField("animal_ken_4");
-    obj.imageCheckBox449:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox449:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox449:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox449:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox449:setName("imageCheckBox449");
 
     obj.imageCheckBox450 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -6780,8 +6790,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox450:setWidth(25);
     obj.imageCheckBox450:setHeight(25);
     obj.imageCheckBox450:setField("animal_ken_5");
-    obj.imageCheckBox450:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox450:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox450:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox450:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox450:setName("imageCheckBox450");
 
     obj.imageCheckBox451 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -6791,8 +6801,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox451:setWidth(25);
     obj.imageCheckBox451:setHeight(25);
     obj.imageCheckBox451:setField("animal_ken_6");
-    obj.imageCheckBox451:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox451:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox451:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox451:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox451:setName("imageCheckBox451");
 
     obj.imageCheckBox452 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -6802,8 +6812,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox452:setWidth(25);
     obj.imageCheckBox452:setHeight(25);
     obj.imageCheckBox452:setField("animal_ken_7");
-    obj.imageCheckBox452:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox452:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox452:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox452:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox452:setName("imageCheckBox452");
 
     obj.imageCheckBox453 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -6813,8 +6823,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox453:setWidth(25);
     obj.imageCheckBox453:setHeight(25);
     obj.imageCheckBox453:setField("animal_ken_8");
-    obj.imageCheckBox453:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox453:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox453:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox453:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox453:setName("imageCheckBox453");
 
     obj.imageCheckBox454 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -6824,8 +6834,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox454:setWidth(25);
     obj.imageCheckBox454:setHeight(25);
     obj.imageCheckBox454:setField("animal_ken_9");
-    obj.imageCheckBox454:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox454:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox454:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox454:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox454:setName("imageCheckBox454");
 
     obj.layout73 = GUI.fromHandle(_obj_newObject("layout"));
@@ -6842,7 +6852,7 @@ local function constructNew_frmVampireDarkAges20th()
     obj.label47:setTop(5);
     obj.label47:setWidth(80);
     obj.label47:setHeight(20);
-    obj.label47:setText("Archery");
+    obj.label47:setText("Crafts");
     obj.label47:setName("label47");
 
     obj.imageCheckBox455 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -6851,9 +6861,9 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox455:setTop(0);
     obj.imageCheckBox455:setWidth(25);
     obj.imageCheckBox455:setHeight(25);
-    obj.imageCheckBox455:setField("Archery_1");
-    obj.imageCheckBox455:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox455:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox455:setField("crafts_1");
+    obj.imageCheckBox455:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox455:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox455:setName("imageCheckBox455");
 
     obj.imageCheckBox456 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -6862,9 +6872,9 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox456:setTop(0);
     obj.imageCheckBox456:setWidth(25);
     obj.imageCheckBox456:setHeight(25);
-    obj.imageCheckBox456:setField("Archery_2");
-    obj.imageCheckBox456:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox456:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox456:setField("crafts_2");
+    obj.imageCheckBox456:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox456:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox456:setName("imageCheckBox456");
 
     obj.imageCheckBox457 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -6873,9 +6883,9 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox457:setTop(0);
     obj.imageCheckBox457:setWidth(25);
     obj.imageCheckBox457:setHeight(25);
-    obj.imageCheckBox457:setField("Archery_3");
-    obj.imageCheckBox457:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox457:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox457:setField("crafts_3");
+    obj.imageCheckBox457:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox457:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox457:setName("imageCheckBox457");
 
     obj.imageCheckBox458 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -6884,9 +6894,9 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox458:setTop(0);
     obj.imageCheckBox458:setWidth(25);
     obj.imageCheckBox458:setHeight(25);
-    obj.imageCheckBox458:setField("Archery_4");
-    obj.imageCheckBox458:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox458:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox458:setField("crafts_4");
+    obj.imageCheckBox458:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox458:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox458:setName("imageCheckBox458");
 
     obj.imageCheckBox459 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -6895,9 +6905,9 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox459:setTop(0);
     obj.imageCheckBox459:setWidth(25);
     obj.imageCheckBox459:setHeight(25);
-    obj.imageCheckBox459:setField("Archery_5");
-    obj.imageCheckBox459:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox459:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox459:setField("crafts_5");
+    obj.imageCheckBox459:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox459:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox459:setName("imageCheckBox459");
 
     obj.imageCheckBox460 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -6906,9 +6916,9 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox460:setTop(0);
     obj.imageCheckBox460:setWidth(25);
     obj.imageCheckBox460:setHeight(25);
-    obj.imageCheckBox460:setField("Archery_6");
-    obj.imageCheckBox460:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox460:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox460:setField("crafts_6");
+    obj.imageCheckBox460:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox460:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox460:setName("imageCheckBox460");
 
     obj.imageCheckBox461 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -6917,9 +6927,9 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox461:setTop(0);
     obj.imageCheckBox461:setWidth(25);
     obj.imageCheckBox461:setHeight(25);
-    obj.imageCheckBox461:setField("Archery_7");
-    obj.imageCheckBox461:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox461:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox461:setField("crafts_7");
+    obj.imageCheckBox461:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox461:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox461:setName("imageCheckBox461");
 
     obj.imageCheckBox462 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -6928,9 +6938,9 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox462:setTop(0);
     obj.imageCheckBox462:setWidth(25);
     obj.imageCheckBox462:setHeight(25);
-    obj.imageCheckBox462:setField("Archery_8");
-    obj.imageCheckBox462:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox462:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox462:setField("crafts_8");
+    obj.imageCheckBox462:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox462:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox462:setName("imageCheckBox462");
 
     obj.imageCheckBox463 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -6939,9 +6949,9 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox463:setTop(0);
     obj.imageCheckBox463:setWidth(25);
     obj.imageCheckBox463:setHeight(25);
-    obj.imageCheckBox463:setField("Archery_9");
-    obj.imageCheckBox463:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox463:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox463:setField("crafts_9");
+    obj.imageCheckBox463:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox463:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox463:setName("imageCheckBox463");
 
     obj.layout74 = GUI.fromHandle(_obj_newObject("layout"));
@@ -6958,7 +6968,7 @@ local function constructNew_frmVampireDarkAges20th()
     obj.label48:setTop(5);
     obj.label48:setWidth(80);
     obj.label48:setHeight(20);
-    obj.label48:setText("Commerce");
+    obj.label48:setText("Drive");
     obj.label48:setName("label48");
 
     obj.imageCheckBox464 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -6967,9 +6977,9 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox464:setTop(0);
     obj.imageCheckBox464:setWidth(25);
     obj.imageCheckBox464:setHeight(25);
-    obj.imageCheckBox464:setField("commerce_1");
-    obj.imageCheckBox464:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox464:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox464:setField("drive_1");
+    obj.imageCheckBox464:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox464:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox464:setName("imageCheckBox464");
 
     obj.imageCheckBox465 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -6978,9 +6988,9 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox465:setTop(0);
     obj.imageCheckBox465:setWidth(25);
     obj.imageCheckBox465:setHeight(25);
-    obj.imageCheckBox465:setField("commerce_2");
-    obj.imageCheckBox465:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox465:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox465:setField("drive_2");
+    obj.imageCheckBox465:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox465:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox465:setName("imageCheckBox465");
 
     obj.imageCheckBox466 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -6989,9 +6999,9 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox466:setTop(0);
     obj.imageCheckBox466:setWidth(25);
     obj.imageCheckBox466:setHeight(25);
-    obj.imageCheckBox466:setField("commerce_3");
-    obj.imageCheckBox466:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox466:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox466:setField("drive_3");
+    obj.imageCheckBox466:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox466:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox466:setName("imageCheckBox466");
 
     obj.imageCheckBox467 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -7000,9 +7010,9 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox467:setTop(0);
     obj.imageCheckBox467:setWidth(25);
     obj.imageCheckBox467:setHeight(25);
-    obj.imageCheckBox467:setField("commerce_4");
-    obj.imageCheckBox467:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox467:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox467:setField("drive_4");
+    obj.imageCheckBox467:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox467:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox467:setName("imageCheckBox467");
 
     obj.imageCheckBox468 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -7011,9 +7021,9 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox468:setTop(0);
     obj.imageCheckBox468:setWidth(25);
     obj.imageCheckBox468:setHeight(25);
-    obj.imageCheckBox468:setField("commerce_5");
-    obj.imageCheckBox468:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox468:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox468:setField("drive_5");
+    obj.imageCheckBox468:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox468:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox468:setName("imageCheckBox468");
 
     obj.imageCheckBox469 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -7022,9 +7032,9 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox469:setTop(0);
     obj.imageCheckBox469:setWidth(25);
     obj.imageCheckBox469:setHeight(25);
-    obj.imageCheckBox469:setField("commerce_6");
-    obj.imageCheckBox469:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox469:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox469:setField("drive_6");
+    obj.imageCheckBox469:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox469:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox469:setName("imageCheckBox469");
 
     obj.imageCheckBox470 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -7033,9 +7043,9 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox470:setTop(0);
     obj.imageCheckBox470:setWidth(25);
     obj.imageCheckBox470:setHeight(25);
-    obj.imageCheckBox470:setField("commerce_7");
-    obj.imageCheckBox470:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox470:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox470:setField("drive_7");
+    obj.imageCheckBox470:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox470:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox470:setName("imageCheckBox470");
 
     obj.imageCheckBox471 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -7044,9 +7054,9 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox471:setTop(0);
     obj.imageCheckBox471:setWidth(25);
     obj.imageCheckBox471:setHeight(25);
-    obj.imageCheckBox471:setField("commerce_8");
-    obj.imageCheckBox471:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox471:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox471:setField("drive_8");
+    obj.imageCheckBox471:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox471:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox471:setName("imageCheckBox471");
 
     obj.imageCheckBox472 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -7055,9 +7065,9 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox472:setTop(0);
     obj.imageCheckBox472:setWidth(25);
     obj.imageCheckBox472:setHeight(25);
-    obj.imageCheckBox472:setField("commerce_9");
-    obj.imageCheckBox472:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox472:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox472:setField("drive_9");
+    obj.imageCheckBox472:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox472:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox472:setName("imageCheckBox472");
 
     obj.layout75 = GUI.fromHandle(_obj_newObject("layout"));
@@ -7074,7 +7084,7 @@ local function constructNew_frmVampireDarkAges20th()
     obj.label49:setTop(5);
     obj.label49:setWidth(80);
     obj.label49:setHeight(20);
-    obj.label49:setText("Crafts");
+    obj.label49:setText("Etiquette");
     obj.label49:setName("label49");
 
     obj.imageCheckBox473 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -7083,9 +7093,9 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox473:setTop(0);
     obj.imageCheckBox473:setWidth(25);
     obj.imageCheckBox473:setHeight(25);
-    obj.imageCheckBox473:setField("crafts_1");
-    obj.imageCheckBox473:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox473:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox473:setField("etiquette_1");
+    obj.imageCheckBox473:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox473:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox473:setName("imageCheckBox473");
 
     obj.imageCheckBox474 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -7094,9 +7104,9 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox474:setTop(0);
     obj.imageCheckBox474:setWidth(25);
     obj.imageCheckBox474:setHeight(25);
-    obj.imageCheckBox474:setField("crafts_2");
-    obj.imageCheckBox474:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox474:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox474:setField("etiquette_2");
+    obj.imageCheckBox474:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox474:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox474:setName("imageCheckBox474");
 
     obj.imageCheckBox475 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -7105,9 +7115,9 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox475:setTop(0);
     obj.imageCheckBox475:setWidth(25);
     obj.imageCheckBox475:setHeight(25);
-    obj.imageCheckBox475:setField("crafts_3");
-    obj.imageCheckBox475:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox475:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox475:setField("etiquette_3");
+    obj.imageCheckBox475:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox475:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox475:setName("imageCheckBox475");
 
     obj.imageCheckBox476 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -7116,9 +7126,9 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox476:setTop(0);
     obj.imageCheckBox476:setWidth(25);
     obj.imageCheckBox476:setHeight(25);
-    obj.imageCheckBox476:setField("crafts_4");
-    obj.imageCheckBox476:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox476:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox476:setField("etiquette_4");
+    obj.imageCheckBox476:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox476:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox476:setName("imageCheckBox476");
 
     obj.imageCheckBox477 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -7127,9 +7137,9 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox477:setTop(0);
     obj.imageCheckBox477:setWidth(25);
     obj.imageCheckBox477:setHeight(25);
-    obj.imageCheckBox477:setField("crafts_5");
-    obj.imageCheckBox477:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox477:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox477:setField("etiquette_5");
+    obj.imageCheckBox477:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox477:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox477:setName("imageCheckBox477");
 
     obj.imageCheckBox478 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -7138,9 +7148,9 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox478:setTop(0);
     obj.imageCheckBox478:setWidth(25);
     obj.imageCheckBox478:setHeight(25);
-    obj.imageCheckBox478:setField("crafts_6");
-    obj.imageCheckBox478:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox478:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox478:setField("etiquette_6");
+    obj.imageCheckBox478:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox478:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox478:setName("imageCheckBox478");
 
     obj.imageCheckBox479 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -7149,9 +7159,9 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox479:setTop(0);
     obj.imageCheckBox479:setWidth(25);
     obj.imageCheckBox479:setHeight(25);
-    obj.imageCheckBox479:setField("crafts_7");
-    obj.imageCheckBox479:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox479:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox479:setField("etiquette_7");
+    obj.imageCheckBox479:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox479:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox479:setName("imageCheckBox479");
 
     obj.imageCheckBox480 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -7160,9 +7170,9 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox480:setTop(0);
     obj.imageCheckBox480:setWidth(25);
     obj.imageCheckBox480:setHeight(25);
-    obj.imageCheckBox480:setField("crafts_8");
-    obj.imageCheckBox480:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox480:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox480:setField("etiquette_8");
+    obj.imageCheckBox480:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox480:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox480:setName("imageCheckBox480");
 
     obj.imageCheckBox481 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -7171,9 +7181,9 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox481:setTop(0);
     obj.imageCheckBox481:setWidth(25);
     obj.imageCheckBox481:setHeight(25);
-    obj.imageCheckBox481:setField("crafts_9");
-    obj.imageCheckBox481:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox481:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox481:setField("etiquette_9");
+    obj.imageCheckBox481:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox481:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox481:setName("imageCheckBox481");
 
     obj.layout76 = GUI.fromHandle(_obj_newObject("layout"));
@@ -7190,7 +7200,7 @@ local function constructNew_frmVampireDarkAges20th()
     obj.label50:setTop(5);
     obj.label50:setWidth(80);
     obj.label50:setHeight(20);
-    obj.label50:setText("Etiquette");
+    obj.label50:setText("Firearms");
     obj.label50:setName("label50");
 
     obj.imageCheckBox482 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -7199,9 +7209,9 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox482:setTop(0);
     obj.imageCheckBox482:setWidth(25);
     obj.imageCheckBox482:setHeight(25);
-    obj.imageCheckBox482:setField("etiquette_1");
-    obj.imageCheckBox482:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox482:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox482:setField("firearms_1");
+    obj.imageCheckBox482:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox482:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox482:setName("imageCheckBox482");
 
     obj.imageCheckBox483 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -7210,9 +7220,9 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox483:setTop(0);
     obj.imageCheckBox483:setWidth(25);
     obj.imageCheckBox483:setHeight(25);
-    obj.imageCheckBox483:setField("etiquette_2");
-    obj.imageCheckBox483:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox483:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox483:setField("firearms_2");
+    obj.imageCheckBox483:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox483:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox483:setName("imageCheckBox483");
 
     obj.imageCheckBox484 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -7221,9 +7231,9 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox484:setTop(0);
     obj.imageCheckBox484:setWidth(25);
     obj.imageCheckBox484:setHeight(25);
-    obj.imageCheckBox484:setField("etiquette_3");
-    obj.imageCheckBox484:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox484:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox484:setField("firearms_3");
+    obj.imageCheckBox484:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox484:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox484:setName("imageCheckBox484");
 
     obj.imageCheckBox485 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -7232,9 +7242,9 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox485:setTop(0);
     obj.imageCheckBox485:setWidth(25);
     obj.imageCheckBox485:setHeight(25);
-    obj.imageCheckBox485:setField("etiquette_4");
-    obj.imageCheckBox485:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox485:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox485:setField("firearms_4");
+    obj.imageCheckBox485:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox485:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox485:setName("imageCheckBox485");
 
     obj.imageCheckBox486 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -7243,9 +7253,9 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox486:setTop(0);
     obj.imageCheckBox486:setWidth(25);
     obj.imageCheckBox486:setHeight(25);
-    obj.imageCheckBox486:setField("etiquette_5");
-    obj.imageCheckBox486:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox486:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox486:setField("firearms_5");
+    obj.imageCheckBox486:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox486:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox486:setName("imageCheckBox486");
 
     obj.imageCheckBox487 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -7254,9 +7264,9 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox487:setTop(0);
     obj.imageCheckBox487:setWidth(25);
     obj.imageCheckBox487:setHeight(25);
-    obj.imageCheckBox487:setField("etiquette_6");
-    obj.imageCheckBox487:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox487:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox487:setField("firearms_6");
+    obj.imageCheckBox487:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox487:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox487:setName("imageCheckBox487");
 
     obj.imageCheckBox488 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -7265,9 +7275,9 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox488:setTop(0);
     obj.imageCheckBox488:setWidth(25);
     obj.imageCheckBox488:setHeight(25);
-    obj.imageCheckBox488:setField("etiquette_7");
-    obj.imageCheckBox488:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox488:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox488:setField("firearms_7");
+    obj.imageCheckBox488:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox488:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox488:setName("imageCheckBox488");
 
     obj.imageCheckBox489 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -7276,9 +7286,9 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox489:setTop(0);
     obj.imageCheckBox489:setWidth(25);
     obj.imageCheckBox489:setHeight(25);
-    obj.imageCheckBox489:setField("etiquette_8");
-    obj.imageCheckBox489:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox489:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox489:setField("firearms_8");
+    obj.imageCheckBox489:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox489:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox489:setName("imageCheckBox489");
 
     obj.imageCheckBox490 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -7287,9 +7297,9 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox490:setTop(0);
     obj.imageCheckBox490:setWidth(25);
     obj.imageCheckBox490:setHeight(25);
-    obj.imageCheckBox490:setField("etiquette_9");
-    obj.imageCheckBox490:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox490:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox490:setField("firearms_9");
+    obj.imageCheckBox490:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox490:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox490:setName("imageCheckBox490");
 
     obj.layout77 = GUI.fromHandle(_obj_newObject("layout"));
@@ -7306,7 +7316,7 @@ local function constructNew_frmVampireDarkAges20th()
     obj.label51:setTop(5);
     obj.label51:setWidth(80);
     obj.label51:setHeight(20);
-    obj.label51:setText("Melee");
+    obj.label51:setText("Larceny");
     obj.label51:setName("label51");
 
     obj.imageCheckBox491 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -7315,9 +7325,9 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox491:setTop(0);
     obj.imageCheckBox491:setWidth(25);
     obj.imageCheckBox491:setHeight(25);
-    obj.imageCheckBox491:setField("melee_1");
-    obj.imageCheckBox491:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox491:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox491:setField("larceny_1");
+    obj.imageCheckBox491:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox491:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox491:setName("imageCheckBox491");
 
     obj.imageCheckBox492 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -7326,9 +7336,9 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox492:setTop(0);
     obj.imageCheckBox492:setWidth(25);
     obj.imageCheckBox492:setHeight(25);
-    obj.imageCheckBox492:setField("melee_2");
-    obj.imageCheckBox492:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox492:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox492:setField("larceny_2");
+    obj.imageCheckBox492:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox492:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox492:setName("imageCheckBox492");
 
     obj.imageCheckBox493 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -7337,9 +7347,9 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox493:setTop(0);
     obj.imageCheckBox493:setWidth(25);
     obj.imageCheckBox493:setHeight(25);
-    obj.imageCheckBox493:setField("melee_3");
-    obj.imageCheckBox493:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox493:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox493:setField("larceny_3");
+    obj.imageCheckBox493:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox493:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox493:setName("imageCheckBox493");
 
     obj.imageCheckBox494 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -7348,9 +7358,9 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox494:setTop(0);
     obj.imageCheckBox494:setWidth(25);
     obj.imageCheckBox494:setHeight(25);
-    obj.imageCheckBox494:setField("melee_4");
-    obj.imageCheckBox494:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox494:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox494:setField("larceny_4");
+    obj.imageCheckBox494:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox494:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox494:setName("imageCheckBox494");
 
     obj.imageCheckBox495 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -7359,9 +7369,9 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox495:setTop(0);
     obj.imageCheckBox495:setWidth(25);
     obj.imageCheckBox495:setHeight(25);
-    obj.imageCheckBox495:setField("melee_5");
-    obj.imageCheckBox495:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox495:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox495:setField("larceny_5");
+    obj.imageCheckBox495:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox495:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox495:setName("imageCheckBox495");
 
     obj.imageCheckBox496 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -7370,9 +7380,9 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox496:setTop(0);
     obj.imageCheckBox496:setWidth(25);
     obj.imageCheckBox496:setHeight(25);
-    obj.imageCheckBox496:setField("melee_6");
-    obj.imageCheckBox496:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox496:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox496:setField("larceny_6");
+    obj.imageCheckBox496:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox496:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox496:setName("imageCheckBox496");
 
     obj.imageCheckBox497 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -7381,9 +7391,9 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox497:setTop(0);
     obj.imageCheckBox497:setWidth(25);
     obj.imageCheckBox497:setHeight(25);
-    obj.imageCheckBox497:setField("melee_7");
-    obj.imageCheckBox497:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox497:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox497:setField("larceny_7");
+    obj.imageCheckBox497:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox497:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox497:setName("imageCheckBox497");
 
     obj.imageCheckBox498 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -7392,9 +7402,9 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox498:setTop(0);
     obj.imageCheckBox498:setWidth(25);
     obj.imageCheckBox498:setHeight(25);
-    obj.imageCheckBox498:setField("melee_8");
-    obj.imageCheckBox498:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox498:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox498:setField("larceny_8");
+    obj.imageCheckBox498:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox498:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox498:setName("imageCheckBox498");
 
     obj.imageCheckBox499 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -7403,9 +7413,9 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox499:setTop(0);
     obj.imageCheckBox499:setWidth(25);
     obj.imageCheckBox499:setHeight(25);
-    obj.imageCheckBox499:setField("melee_9");
-    obj.imageCheckBox499:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox499:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox499:setField("larceny_9");
+    obj.imageCheckBox499:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox499:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox499:setName("imageCheckBox499");
 
     obj.layout78 = GUI.fromHandle(_obj_newObject("layout"));
@@ -7422,7 +7432,7 @@ local function constructNew_frmVampireDarkAges20th()
     obj.label52:setTop(5);
     obj.label52:setWidth(80);
     obj.label52:setHeight(20);
-    obj.label52:setText("Performance");
+    obj.label52:setText("Melee");
     obj.label52:setName("label52");
 
     obj.imageCheckBox500 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -7431,9 +7441,9 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox500:setTop(0);
     obj.imageCheckBox500:setWidth(25);
     obj.imageCheckBox500:setHeight(25);
-    obj.imageCheckBox500:setField("performance_1");
-    obj.imageCheckBox500:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox500:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox500:setField("melee_1");
+    obj.imageCheckBox500:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox500:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox500:setName("imageCheckBox500");
 
     obj.imageCheckBox501 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -7442,9 +7452,9 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox501:setTop(0);
     obj.imageCheckBox501:setWidth(25);
     obj.imageCheckBox501:setHeight(25);
-    obj.imageCheckBox501:setField("performance_2");
-    obj.imageCheckBox501:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox501:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox501:setField("melee_2");
+    obj.imageCheckBox501:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox501:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox501:setName("imageCheckBox501");
 
     obj.imageCheckBox502 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -7453,9 +7463,9 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox502:setTop(0);
     obj.imageCheckBox502:setWidth(25);
     obj.imageCheckBox502:setHeight(25);
-    obj.imageCheckBox502:setField("performance_3");
-    obj.imageCheckBox502:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox502:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox502:setField("melee_3");
+    obj.imageCheckBox502:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox502:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox502:setName("imageCheckBox502");
 
     obj.imageCheckBox503 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -7464,9 +7474,9 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox503:setTop(0);
     obj.imageCheckBox503:setWidth(25);
     obj.imageCheckBox503:setHeight(25);
-    obj.imageCheckBox503:setField("performance_4");
-    obj.imageCheckBox503:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox503:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox503:setField("melee_4");
+    obj.imageCheckBox503:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox503:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox503:setName("imageCheckBox503");
 
     obj.imageCheckBox504 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -7475,9 +7485,9 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox504:setTop(0);
     obj.imageCheckBox504:setWidth(25);
     obj.imageCheckBox504:setHeight(25);
-    obj.imageCheckBox504:setField("performance_5");
-    obj.imageCheckBox504:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox504:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox504:setField("melee_5");
+    obj.imageCheckBox504:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox504:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox504:setName("imageCheckBox504");
 
     obj.imageCheckBox505 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -7486,9 +7496,9 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox505:setTop(0);
     obj.imageCheckBox505:setWidth(25);
     obj.imageCheckBox505:setHeight(25);
-    obj.imageCheckBox505:setField("performance_6");
-    obj.imageCheckBox505:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox505:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox505:setField("melee_6");
+    obj.imageCheckBox505:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox505:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox505:setName("imageCheckBox505");
 
     obj.imageCheckBox506 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -7497,9 +7507,9 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox506:setTop(0);
     obj.imageCheckBox506:setWidth(25);
     obj.imageCheckBox506:setHeight(25);
-    obj.imageCheckBox506:setField("performance_7");
-    obj.imageCheckBox506:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox506:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox506:setField("melee_7");
+    obj.imageCheckBox506:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox506:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox506:setName("imageCheckBox506");
 
     obj.imageCheckBox507 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -7508,9 +7518,9 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox507:setTop(0);
     obj.imageCheckBox507:setWidth(25);
     obj.imageCheckBox507:setHeight(25);
-    obj.imageCheckBox507:setField("performance_8");
-    obj.imageCheckBox507:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox507:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox507:setField("melee_8");
+    obj.imageCheckBox507:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox507:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox507:setName("imageCheckBox507");
 
     obj.imageCheckBox508 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -7519,9 +7529,9 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox508:setTop(0);
     obj.imageCheckBox508:setWidth(25);
     obj.imageCheckBox508:setHeight(25);
-    obj.imageCheckBox508:setField("performance_9");
-    obj.imageCheckBox508:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox508:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox508:setField("melee_9");
+    obj.imageCheckBox508:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox508:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox508:setName("imageCheckBox508");
 
     obj.layout79 = GUI.fromHandle(_obj_newObject("layout"));
@@ -7538,7 +7548,7 @@ local function constructNew_frmVampireDarkAges20th()
     obj.label53:setTop(5);
     obj.label53:setWidth(80);
     obj.label53:setHeight(20);
-    obj.label53:setText("Ride");
+    obj.label53:setText("Performance");
     obj.label53:setName("label53");
 
     obj.imageCheckBox509 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -7547,9 +7557,9 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox509:setTop(0);
     obj.imageCheckBox509:setWidth(25);
     obj.imageCheckBox509:setHeight(25);
-    obj.imageCheckBox509:setField("ride_1");
-    obj.imageCheckBox509:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox509:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox509:setField("performance_1");
+    obj.imageCheckBox509:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox509:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox509:setName("imageCheckBox509");
 
     obj.imageCheckBox510 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -7558,9 +7568,9 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox510:setTop(0);
     obj.imageCheckBox510:setWidth(25);
     obj.imageCheckBox510:setHeight(25);
-    obj.imageCheckBox510:setField("ride_2");
-    obj.imageCheckBox510:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox510:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox510:setField("performance_2");
+    obj.imageCheckBox510:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox510:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox510:setName("imageCheckBox510");
 
     obj.imageCheckBox511 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -7569,9 +7579,9 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox511:setTop(0);
     obj.imageCheckBox511:setWidth(25);
     obj.imageCheckBox511:setHeight(25);
-    obj.imageCheckBox511:setField("ride_3");
-    obj.imageCheckBox511:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox511:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox511:setField("performance_3");
+    obj.imageCheckBox511:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox511:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox511:setName("imageCheckBox511");
 
     obj.imageCheckBox512 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -7580,9 +7590,9 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox512:setTop(0);
     obj.imageCheckBox512:setWidth(25);
     obj.imageCheckBox512:setHeight(25);
-    obj.imageCheckBox512:setField("ride_4");
-    obj.imageCheckBox512:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox512:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox512:setField("performance_4");
+    obj.imageCheckBox512:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox512:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox512:setName("imageCheckBox512");
 
     obj.imageCheckBox513 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -7591,9 +7601,9 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox513:setTop(0);
     obj.imageCheckBox513:setWidth(25);
     obj.imageCheckBox513:setHeight(25);
-    obj.imageCheckBox513:setField("ride_5");
-    obj.imageCheckBox513:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox513:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox513:setField("performance_5");
+    obj.imageCheckBox513:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox513:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox513:setName("imageCheckBox513");
 
     obj.imageCheckBox514 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -7602,9 +7612,9 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox514:setTop(0);
     obj.imageCheckBox514:setWidth(25);
     obj.imageCheckBox514:setHeight(25);
-    obj.imageCheckBox514:setField("ride_6");
-    obj.imageCheckBox514:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox514:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox514:setField("performance_6");
+    obj.imageCheckBox514:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox514:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox514:setName("imageCheckBox514");
 
     obj.imageCheckBox515 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -7613,9 +7623,9 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox515:setTop(0);
     obj.imageCheckBox515:setWidth(25);
     obj.imageCheckBox515:setHeight(25);
-    obj.imageCheckBox515:setField("ride_7");
-    obj.imageCheckBox515:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox515:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox515:setField("performance_7");
+    obj.imageCheckBox515:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox515:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox515:setName("imageCheckBox515");
 
     obj.imageCheckBox516 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -7624,9 +7634,9 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox516:setTop(0);
     obj.imageCheckBox516:setWidth(25);
     obj.imageCheckBox516:setHeight(25);
-    obj.imageCheckBox516:setField("ride_8");
-    obj.imageCheckBox516:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox516:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox516:setField("performance_8");
+    obj.imageCheckBox516:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox516:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox516:setName("imageCheckBox516");
 
     obj.imageCheckBox517 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -7635,9 +7645,9 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox517:setTop(0);
     obj.imageCheckBox517:setWidth(25);
     obj.imageCheckBox517:setHeight(25);
-    obj.imageCheckBox517:setField("ride_9");
-    obj.imageCheckBox517:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox517:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox517:setField("performance_9");
+    obj.imageCheckBox517:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox517:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox517:setName("imageCheckBox517");
 
     obj.layout80 = GUI.fromHandle(_obj_newObject("layout"));
@@ -7664,8 +7674,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox518:setWidth(25);
     obj.imageCheckBox518:setHeight(25);
     obj.imageCheckBox518:setField("stealth_1");
-    obj.imageCheckBox518:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox518:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox518:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox518:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox518:setName("imageCheckBox518");
 
     obj.imageCheckBox519 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -7675,8 +7685,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox519:setWidth(25);
     obj.imageCheckBox519:setHeight(25);
     obj.imageCheckBox519:setField("stealth_2");
-    obj.imageCheckBox519:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox519:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox519:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox519:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox519:setName("imageCheckBox519");
 
     obj.imageCheckBox520 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -7686,8 +7696,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox520:setWidth(25);
     obj.imageCheckBox520:setHeight(25);
     obj.imageCheckBox520:setField("stealth_3");
-    obj.imageCheckBox520:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox520:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox520:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox520:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox520:setName("imageCheckBox520");
 
     obj.imageCheckBox521 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -7697,8 +7707,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox521:setWidth(25);
     obj.imageCheckBox521:setHeight(25);
     obj.imageCheckBox521:setField("stealth_4");
-    obj.imageCheckBox521:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox521:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox521:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox521:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox521:setName("imageCheckBox521");
 
     obj.imageCheckBox522 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -7708,8 +7718,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox522:setWidth(25);
     obj.imageCheckBox522:setHeight(25);
     obj.imageCheckBox522:setField("stealth_5");
-    obj.imageCheckBox522:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox522:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox522:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox522:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox522:setName("imageCheckBox522");
 
     obj.imageCheckBox523 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -7719,8 +7729,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox523:setWidth(25);
     obj.imageCheckBox523:setHeight(25);
     obj.imageCheckBox523:setField("stealth_6");
-    obj.imageCheckBox523:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox523:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox523:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox523:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox523:setName("imageCheckBox523");
 
     obj.imageCheckBox524 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -7730,8 +7740,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox524:setWidth(25);
     obj.imageCheckBox524:setHeight(25);
     obj.imageCheckBox524:setField("stealth_7");
-    obj.imageCheckBox524:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox524:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox524:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox524:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox524:setName("imageCheckBox524");
 
     obj.imageCheckBox525 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -7741,8 +7751,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox525:setWidth(25);
     obj.imageCheckBox525:setHeight(25);
     obj.imageCheckBox525:setField("stealth_8");
-    obj.imageCheckBox525:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox525:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox525:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox525:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox525:setName("imageCheckBox525");
 
     obj.imageCheckBox526 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -7752,8 +7762,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox526:setWidth(25);
     obj.imageCheckBox526:setHeight(25);
     obj.imageCheckBox526:setField("stealth_9");
-    obj.imageCheckBox526:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox526:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox526:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox526:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox526:setName("imageCheckBox526");
 
     obj.layout81 = GUI.fromHandle(_obj_newObject("layout"));
@@ -7780,8 +7790,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox527:setWidth(25);
     obj.imageCheckBox527:setHeight(25);
     obj.imageCheckBox527:setField("survival_1");
-    obj.imageCheckBox527:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox527:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox527:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox527:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox527:setName("imageCheckBox527");
 
     obj.imageCheckBox528 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -7791,8 +7801,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox528:setWidth(25);
     obj.imageCheckBox528:setHeight(25);
     obj.imageCheckBox528:setField("survival_2");
-    obj.imageCheckBox528:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox528:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox528:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox528:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox528:setName("imageCheckBox528");
 
     obj.imageCheckBox529 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -7802,8 +7812,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox529:setWidth(25);
     obj.imageCheckBox529:setHeight(25);
     obj.imageCheckBox529:setField("survival_3");
-    obj.imageCheckBox529:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox529:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox529:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox529:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox529:setName("imageCheckBox529");
 
     obj.imageCheckBox530 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -7813,8 +7823,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox530:setWidth(25);
     obj.imageCheckBox530:setHeight(25);
     obj.imageCheckBox530:setField("survival_4");
-    obj.imageCheckBox530:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox530:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox530:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox530:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox530:setName("imageCheckBox530");
 
     obj.imageCheckBox531 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -7824,8 +7834,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox531:setWidth(25);
     obj.imageCheckBox531:setHeight(25);
     obj.imageCheckBox531:setField("survival_5");
-    obj.imageCheckBox531:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox531:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox531:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox531:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox531:setName("imageCheckBox531");
 
     obj.imageCheckBox532 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -7835,8 +7845,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox532:setWidth(25);
     obj.imageCheckBox532:setHeight(25);
     obj.imageCheckBox532:setField("survival_6");
-    obj.imageCheckBox532:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox532:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox532:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox532:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox532:setName("imageCheckBox532");
 
     obj.imageCheckBox533 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -7846,8 +7856,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox533:setWidth(25);
     obj.imageCheckBox533:setHeight(25);
     obj.imageCheckBox533:setField("survival_7");
-    obj.imageCheckBox533:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox533:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox533:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox533:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox533:setName("imageCheckBox533");
 
     obj.imageCheckBox534 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -7857,8 +7867,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox534:setWidth(25);
     obj.imageCheckBox534:setHeight(25);
     obj.imageCheckBox534:setField("survival_8");
-    obj.imageCheckBox534:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox534:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox534:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox534:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox534:setName("imageCheckBox534");
 
     obj.imageCheckBox535 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -7868,8 +7878,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox535:setWidth(25);
     obj.imageCheckBox535:setHeight(25);
     obj.imageCheckBox535:setField("survival_9");
-    obj.imageCheckBox535:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox535:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox535:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox535:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox535:setName("imageCheckBox535");
 
     obj.layout82 = GUI.fromHandle(_obj_newObject("layout"));
@@ -7880,15 +7890,15 @@ local function constructNew_frmVampireDarkAges20th()
     obj.layout82:setHeight(25);
     obj.layout82:setName("layout82");
 
-    obj.edit35 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit35:setParent(obj.layout82);
-    obj.edit35:setLeft(0);
-    obj.edit35:setTop(5);
-    obj.edit35:setWidth(75);
-    obj.edit35:setHeight(20);
-    obj.edit35:setField("skill_11");
-    obj.edit35:setFontSize(12);
-    obj.edit35:setName("edit35");
+    obj.edit36 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit36:setParent(obj.layout82);
+    obj.edit36:setLeft(0);
+    obj.edit36:setTop(5);
+    obj.edit36:setWidth(75);
+    obj.edit36:setHeight(20);
+    obj.edit36:setField("skill_11");
+    obj.edit36:setFontSize(12);
+    obj.edit36:setName("edit36");
 
     obj.imageCheckBox536 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox536:setParent(obj.layout82);
@@ -7897,8 +7907,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox536:setWidth(25);
     obj.imageCheckBox536:setHeight(25);
     obj.imageCheckBox536:setField("skill_11_1");
-    obj.imageCheckBox536:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox536:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox536:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox536:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox536:setName("imageCheckBox536");
 
     obj.imageCheckBox537 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -7908,8 +7918,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox537:setWidth(25);
     obj.imageCheckBox537:setHeight(25);
     obj.imageCheckBox537:setField("skill_11_2");
-    obj.imageCheckBox537:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox537:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox537:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox537:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox537:setName("imageCheckBox537");
 
     obj.imageCheckBox538 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -7919,8 +7929,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox538:setWidth(25);
     obj.imageCheckBox538:setHeight(25);
     obj.imageCheckBox538:setField("skill_11_3");
-    obj.imageCheckBox538:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox538:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox538:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox538:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox538:setName("imageCheckBox538");
 
     obj.imageCheckBox539 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -7930,8 +7940,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox539:setWidth(25);
     obj.imageCheckBox539:setHeight(25);
     obj.imageCheckBox539:setField("skill_11_4");
-    obj.imageCheckBox539:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox539:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox539:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox539:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox539:setName("imageCheckBox539");
 
     obj.imageCheckBox540 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -7941,8 +7951,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox540:setWidth(25);
     obj.imageCheckBox540:setHeight(25);
     obj.imageCheckBox540:setField("skill_11_5");
-    obj.imageCheckBox540:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox540:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox540:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox540:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox540:setName("imageCheckBox540");
 
     obj.imageCheckBox541 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -7952,8 +7962,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox541:setWidth(25);
     obj.imageCheckBox541:setHeight(25);
     obj.imageCheckBox541:setField("skill_11_6");
-    obj.imageCheckBox541:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox541:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox541:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox541:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox541:setName("imageCheckBox541");
 
     obj.imageCheckBox542 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -7963,8 +7973,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox542:setWidth(25);
     obj.imageCheckBox542:setHeight(25);
     obj.imageCheckBox542:setField("skill_11_7");
-    obj.imageCheckBox542:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox542:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox542:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox542:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox542:setName("imageCheckBox542");
 
     obj.imageCheckBox543 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -7974,8 +7984,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox543:setWidth(25);
     obj.imageCheckBox543:setHeight(25);
     obj.imageCheckBox543:setField("skill_11_8");
-    obj.imageCheckBox543:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox543:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox543:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox543:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox543:setName("imageCheckBox543");
 
     obj.imageCheckBox544 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -7985,8 +7995,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox544:setWidth(25);
     obj.imageCheckBox544:setHeight(25);
     obj.imageCheckBox544:setField("skill_11_9");
-    obj.imageCheckBox544:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox544:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox544:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox544:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox544:setName("imageCheckBox544");
 
     obj.layout83 = GUI.fromHandle(_obj_newObject("layout"));
@@ -7997,15 +8007,15 @@ local function constructNew_frmVampireDarkAges20th()
     obj.layout83:setHeight(25);
     obj.layout83:setName("layout83");
 
-    obj.edit36 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit36:setParent(obj.layout83);
-    obj.edit36:setLeft(0);
-    obj.edit36:setTop(5);
-    obj.edit36:setWidth(75);
-    obj.edit36:setHeight(20);
-    obj.edit36:setField("skill_12");
-    obj.edit36:setFontSize(12);
-    obj.edit36:setName("edit36");
+    obj.edit37 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit37:setParent(obj.layout83);
+    obj.edit37:setLeft(0);
+    obj.edit37:setTop(5);
+    obj.edit37:setWidth(75);
+    obj.edit37:setHeight(20);
+    obj.edit37:setField("skill_12");
+    obj.edit37:setFontSize(12);
+    obj.edit37:setName("edit37");
 
     obj.imageCheckBox545 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox545:setParent(obj.layout83);
@@ -8014,8 +8024,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox545:setWidth(25);
     obj.imageCheckBox545:setHeight(25);
     obj.imageCheckBox545:setField("skill_12_1");
-    obj.imageCheckBox545:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox545:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox545:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox545:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox545:setName("imageCheckBox545");
 
     obj.imageCheckBox546 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -8025,8 +8035,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox546:setWidth(25);
     obj.imageCheckBox546:setHeight(25);
     obj.imageCheckBox546:setField("skill_12_2");
-    obj.imageCheckBox546:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox546:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox546:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox546:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox546:setName("imageCheckBox546");
 
     obj.imageCheckBox547 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -8036,8 +8046,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox547:setWidth(25);
     obj.imageCheckBox547:setHeight(25);
     obj.imageCheckBox547:setField("skill_12_3");
-    obj.imageCheckBox547:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox547:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox547:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox547:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox547:setName("imageCheckBox547");
 
     obj.imageCheckBox548 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -8047,8 +8057,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox548:setWidth(25);
     obj.imageCheckBox548:setHeight(25);
     obj.imageCheckBox548:setField("skill_12_4");
-    obj.imageCheckBox548:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox548:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox548:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox548:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox548:setName("imageCheckBox548");
 
     obj.imageCheckBox549 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -8058,8 +8068,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox549:setWidth(25);
     obj.imageCheckBox549:setHeight(25);
     obj.imageCheckBox549:setField("skill_12_5");
-    obj.imageCheckBox549:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox549:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox549:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox549:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox549:setName("imageCheckBox549");
 
     obj.imageCheckBox550 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -8069,8 +8079,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox550:setWidth(25);
     obj.imageCheckBox550:setHeight(25);
     obj.imageCheckBox550:setField("skill_12_6");
-    obj.imageCheckBox550:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox550:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox550:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox550:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox550:setName("imageCheckBox550");
 
     obj.imageCheckBox551 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -8080,8 +8090,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox551:setWidth(25);
     obj.imageCheckBox551:setHeight(25);
     obj.imageCheckBox551:setField("skill_12_7");
-    obj.imageCheckBox551:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox551:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox551:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox551:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox551:setName("imageCheckBox551");
 
     obj.imageCheckBox552 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -8091,8 +8101,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox552:setWidth(25);
     obj.imageCheckBox552:setHeight(25);
     obj.imageCheckBox552:setField("skill_12_8");
-    obj.imageCheckBox552:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox552:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox552:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox552:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox552:setName("imageCheckBox552");
 
     obj.imageCheckBox553 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -8102,8 +8112,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox553:setWidth(25);
     obj.imageCheckBox553:setHeight(25);
     obj.imageCheckBox553:setField("skill_12_9");
-    obj.imageCheckBox553:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox553:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox553:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox553:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox553:setName("imageCheckBox553");
 
     obj.layout84 = GUI.fromHandle(_obj_newObject("layout"));
@@ -8157,8 +8167,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox554:setWidth(25);
     obj.imageCheckBox554:setHeight(25);
     obj.imageCheckBox554:setField("academics_1");
-    obj.imageCheckBox554:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox554:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox554:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox554:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox554:setName("imageCheckBox554");
 
     obj.imageCheckBox555 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -8168,8 +8178,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox555:setWidth(25);
     obj.imageCheckBox555:setHeight(25);
     obj.imageCheckBox555:setField("academics_2");
-    obj.imageCheckBox555:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox555:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox555:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox555:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox555:setName("imageCheckBox555");
 
     obj.imageCheckBox556 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -8179,8 +8189,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox556:setWidth(25);
     obj.imageCheckBox556:setHeight(25);
     obj.imageCheckBox556:setField("academics_3");
-    obj.imageCheckBox556:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox556:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox556:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox556:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox556:setName("imageCheckBox556");
 
     obj.imageCheckBox557 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -8190,8 +8200,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox557:setWidth(25);
     obj.imageCheckBox557:setHeight(25);
     obj.imageCheckBox557:setField("academics_4");
-    obj.imageCheckBox557:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox557:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox557:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox557:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox557:setName("imageCheckBox557");
 
     obj.imageCheckBox558 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -8201,8 +8211,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox558:setWidth(25);
     obj.imageCheckBox558:setHeight(25);
     obj.imageCheckBox558:setField("academics_5");
-    obj.imageCheckBox558:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox558:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox558:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox558:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox558:setName("imageCheckBox558");
 
     obj.imageCheckBox559 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -8212,8 +8222,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox559:setWidth(25);
     obj.imageCheckBox559:setHeight(25);
     obj.imageCheckBox559:setField("academics_6");
-    obj.imageCheckBox559:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox559:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox559:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox559:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox559:setName("imageCheckBox559");
 
     obj.imageCheckBox560 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -8223,8 +8233,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox560:setWidth(25);
     obj.imageCheckBox560:setHeight(25);
     obj.imageCheckBox560:setField("academics_7");
-    obj.imageCheckBox560:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox560:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox560:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox560:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox560:setName("imageCheckBox560");
 
     obj.imageCheckBox561 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -8234,8 +8244,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox561:setWidth(25);
     obj.imageCheckBox561:setHeight(25);
     obj.imageCheckBox561:setField("academics_8");
-    obj.imageCheckBox561:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox561:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox561:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox561:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox561:setName("imageCheckBox561");
 
     obj.imageCheckBox562 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -8245,8 +8255,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox562:setWidth(25);
     obj.imageCheckBox562:setHeight(25);
     obj.imageCheckBox562:setField("academics_9");
-    obj.imageCheckBox562:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox562:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox562:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox562:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox562:setName("imageCheckBox562");
 
     obj.layout86 = GUI.fromHandle(_obj_newObject("layout"));
@@ -8263,7 +8273,7 @@ local function constructNew_frmVampireDarkAges20th()
     obj.label58:setTop(5);
     obj.label58:setWidth(80);
     obj.label58:setHeight(20);
-    obj.label58:setText("Enigmas");
+    obj.label58:setText("Computer");
     obj.label58:setName("label58");
 
     obj.imageCheckBox563 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -8272,9 +8282,9 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox563:setTop(0);
     obj.imageCheckBox563:setWidth(25);
     obj.imageCheckBox563:setHeight(25);
-    obj.imageCheckBox563:setField("enigmas_1");
-    obj.imageCheckBox563:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox563:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox563:setField("computer_1");
+    obj.imageCheckBox563:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox563:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox563:setName("imageCheckBox563");
 
     obj.imageCheckBox564 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -8283,9 +8293,9 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox564:setTop(0);
     obj.imageCheckBox564:setWidth(25);
     obj.imageCheckBox564:setHeight(25);
-    obj.imageCheckBox564:setField("enigmas_2");
-    obj.imageCheckBox564:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox564:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox564:setField("computer_2");
+    obj.imageCheckBox564:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox564:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox564:setName("imageCheckBox564");
 
     obj.imageCheckBox565 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -8294,9 +8304,9 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox565:setTop(0);
     obj.imageCheckBox565:setWidth(25);
     obj.imageCheckBox565:setHeight(25);
-    obj.imageCheckBox565:setField("enigmas_3");
-    obj.imageCheckBox565:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox565:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox565:setField("computer_3");
+    obj.imageCheckBox565:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox565:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox565:setName("imageCheckBox565");
 
     obj.imageCheckBox566 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -8305,9 +8315,9 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox566:setTop(0);
     obj.imageCheckBox566:setWidth(25);
     obj.imageCheckBox566:setHeight(25);
-    obj.imageCheckBox566:setField("enigmas_4");
-    obj.imageCheckBox566:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox566:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox566:setField("computer_4");
+    obj.imageCheckBox566:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox566:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox566:setName("imageCheckBox566");
 
     obj.imageCheckBox567 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -8316,9 +8326,9 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox567:setTop(0);
     obj.imageCheckBox567:setWidth(25);
     obj.imageCheckBox567:setHeight(25);
-    obj.imageCheckBox567:setField("enigmas_5");
-    obj.imageCheckBox567:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox567:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox567:setField("computer_5");
+    obj.imageCheckBox567:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox567:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox567:setName("imageCheckBox567");
 
     obj.imageCheckBox568 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -8327,9 +8337,9 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox568:setTop(0);
     obj.imageCheckBox568:setWidth(25);
     obj.imageCheckBox568:setHeight(25);
-    obj.imageCheckBox568:setField("enigmas_6");
-    obj.imageCheckBox568:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox568:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox568:setField("computer_6");
+    obj.imageCheckBox568:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox568:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox568:setName("imageCheckBox568");
 
     obj.imageCheckBox569 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -8338,9 +8348,9 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox569:setTop(0);
     obj.imageCheckBox569:setWidth(25);
     obj.imageCheckBox569:setHeight(25);
-    obj.imageCheckBox569:setField("enigmas_7");
-    obj.imageCheckBox569:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox569:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox569:setField("computer_7");
+    obj.imageCheckBox569:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox569:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox569:setName("imageCheckBox569");
 
     obj.imageCheckBox570 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -8349,9 +8359,9 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox570:setTop(0);
     obj.imageCheckBox570:setWidth(25);
     obj.imageCheckBox570:setHeight(25);
-    obj.imageCheckBox570:setField("enigmas_8");
-    obj.imageCheckBox570:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox570:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox570:setField("computer_8");
+    obj.imageCheckBox570:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox570:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox570:setName("imageCheckBox570");
 
     obj.imageCheckBox571 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -8360,9 +8370,9 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox571:setTop(0);
     obj.imageCheckBox571:setWidth(25);
     obj.imageCheckBox571:setHeight(25);
-    obj.imageCheckBox571:setField("enigmas_9");
-    obj.imageCheckBox571:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox571:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox571:setField("computer_9");
+    obj.imageCheckBox571:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox571:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox571:setName("imageCheckBox571");
 
     obj.layout87 = GUI.fromHandle(_obj_newObject("layout"));
@@ -8379,7 +8389,7 @@ local function constructNew_frmVampireDarkAges20th()
     obj.label59:setTop(5);
     obj.label59:setWidth(80);
     obj.label59:setHeight(20);
-    obj.label59:setText("Hearth Wisdom");
+    obj.label59:setText("Finance");
     obj.label59:setName("label59");
 
     obj.imageCheckBox572 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -8388,9 +8398,9 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox572:setTop(0);
     obj.imageCheckBox572:setWidth(25);
     obj.imageCheckBox572:setHeight(25);
-    obj.imageCheckBox572:setField("hearth_wisdom_1");
-    obj.imageCheckBox572:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox572:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox572:setField("finance_1");
+    obj.imageCheckBox572:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox572:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox572:setName("imageCheckBox572");
 
     obj.imageCheckBox573 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -8399,9 +8409,9 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox573:setTop(0);
     obj.imageCheckBox573:setWidth(25);
     obj.imageCheckBox573:setHeight(25);
-    obj.imageCheckBox573:setField("hearth_wisdom_2");
-    obj.imageCheckBox573:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox573:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox573:setField("finance_2");
+    obj.imageCheckBox573:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox573:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox573:setName("imageCheckBox573");
 
     obj.imageCheckBox574 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -8410,9 +8420,9 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox574:setTop(0);
     obj.imageCheckBox574:setWidth(25);
     obj.imageCheckBox574:setHeight(25);
-    obj.imageCheckBox574:setField("hearth_wisdom_3");
-    obj.imageCheckBox574:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox574:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox574:setField("finance_3");
+    obj.imageCheckBox574:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox574:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox574:setName("imageCheckBox574");
 
     obj.imageCheckBox575 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -8421,9 +8431,9 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox575:setTop(0);
     obj.imageCheckBox575:setWidth(25);
     obj.imageCheckBox575:setHeight(25);
-    obj.imageCheckBox575:setField("hearth_wisdom_4");
-    obj.imageCheckBox575:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox575:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox575:setField("finance_4");
+    obj.imageCheckBox575:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox575:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox575:setName("imageCheckBox575");
 
     obj.imageCheckBox576 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -8432,9 +8442,9 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox576:setTop(0);
     obj.imageCheckBox576:setWidth(25);
     obj.imageCheckBox576:setHeight(25);
-    obj.imageCheckBox576:setField("hearth_wisdom_5");
-    obj.imageCheckBox576:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox576:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox576:setField("finance_5");
+    obj.imageCheckBox576:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox576:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox576:setName("imageCheckBox576");
 
     obj.imageCheckBox577 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -8443,9 +8453,9 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox577:setTop(0);
     obj.imageCheckBox577:setWidth(25);
     obj.imageCheckBox577:setHeight(25);
-    obj.imageCheckBox577:setField("hearth_wisdom_6");
-    obj.imageCheckBox577:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox577:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox577:setField("finance_6");
+    obj.imageCheckBox577:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox577:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox577:setName("imageCheckBox577");
 
     obj.imageCheckBox578 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -8454,9 +8464,9 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox578:setTop(0);
     obj.imageCheckBox578:setWidth(25);
     obj.imageCheckBox578:setHeight(25);
-    obj.imageCheckBox578:setField("hearth_wisdom_7");
-    obj.imageCheckBox578:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox578:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox578:setField("finance_7");
+    obj.imageCheckBox578:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox578:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox578:setName("imageCheckBox578");
 
     obj.imageCheckBox579 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -8465,9 +8475,9 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox579:setTop(0);
     obj.imageCheckBox579:setWidth(25);
     obj.imageCheckBox579:setHeight(25);
-    obj.imageCheckBox579:setField("hearth_wisdom_8");
-    obj.imageCheckBox579:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox579:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox579:setField("finance_8");
+    obj.imageCheckBox579:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox579:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox579:setName("imageCheckBox579");
 
     obj.imageCheckBox580 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -8476,9 +8486,9 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox580:setTop(0);
     obj.imageCheckBox580:setWidth(25);
     obj.imageCheckBox580:setHeight(25);
-    obj.imageCheckBox580:setField("hearth_wisdom_9");
-    obj.imageCheckBox580:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox580:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox580:setField("finance_9");
+    obj.imageCheckBox580:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox580:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox580:setName("imageCheckBox580");
 
     obj.layout88 = GUI.fromHandle(_obj_newObject("layout"));
@@ -8505,8 +8515,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox581:setWidth(25);
     obj.imageCheckBox581:setHeight(25);
     obj.imageCheckBox581:setField("investigation_1");
-    obj.imageCheckBox581:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox581:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox581:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox581:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox581:setName("imageCheckBox581");
 
     obj.imageCheckBox582 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -8516,8 +8526,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox582:setWidth(25);
     obj.imageCheckBox582:setHeight(25);
     obj.imageCheckBox582:setField("investigation_2");
-    obj.imageCheckBox582:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox582:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox582:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox582:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox582:setName("imageCheckBox582");
 
     obj.imageCheckBox583 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -8527,8 +8537,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox583:setWidth(25);
     obj.imageCheckBox583:setHeight(25);
     obj.imageCheckBox583:setField("investigation_3");
-    obj.imageCheckBox583:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox583:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox583:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox583:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox583:setName("imageCheckBox583");
 
     obj.imageCheckBox584 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -8538,8 +8548,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox584:setWidth(25);
     obj.imageCheckBox584:setHeight(25);
     obj.imageCheckBox584:setField("investigation_4");
-    obj.imageCheckBox584:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox584:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox584:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox584:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox584:setName("imageCheckBox584");
 
     obj.imageCheckBox585 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -8549,8 +8559,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox585:setWidth(25);
     obj.imageCheckBox585:setHeight(25);
     obj.imageCheckBox585:setField("investigation_5");
-    obj.imageCheckBox585:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox585:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox585:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox585:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox585:setName("imageCheckBox585");
 
     obj.imageCheckBox586 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -8560,8 +8570,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox586:setWidth(25);
     obj.imageCheckBox586:setHeight(25);
     obj.imageCheckBox586:setField("investigation_6");
-    obj.imageCheckBox586:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox586:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox586:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox586:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox586:setName("imageCheckBox586");
 
     obj.imageCheckBox587 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -8571,8 +8581,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox587:setWidth(25);
     obj.imageCheckBox587:setHeight(25);
     obj.imageCheckBox587:setField("investigation_7");
-    obj.imageCheckBox587:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox587:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox587:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox587:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox587:setName("imageCheckBox587");
 
     obj.imageCheckBox588 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -8582,8 +8592,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox588:setWidth(25);
     obj.imageCheckBox588:setHeight(25);
     obj.imageCheckBox588:setField("investigation_8");
-    obj.imageCheckBox588:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox588:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox588:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox588:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox588:setName("imageCheckBox588");
 
     obj.imageCheckBox589 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -8593,8 +8603,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox589:setWidth(25);
     obj.imageCheckBox589:setHeight(25);
     obj.imageCheckBox589:setField("investigation_9");
-    obj.imageCheckBox589:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox589:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox589:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox589:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox589:setName("imageCheckBox589");
 
     obj.layout89 = GUI.fromHandle(_obj_newObject("layout"));
@@ -8621,8 +8631,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox590:setWidth(25);
     obj.imageCheckBox590:setHeight(25);
     obj.imageCheckBox590:setField("law_1");
-    obj.imageCheckBox590:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox590:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox590:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox590:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox590:setName("imageCheckBox590");
 
     obj.imageCheckBox591 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -8632,8 +8642,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox591:setWidth(25);
     obj.imageCheckBox591:setHeight(25);
     obj.imageCheckBox591:setField("law_2");
-    obj.imageCheckBox591:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox591:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox591:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox591:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox591:setName("imageCheckBox591");
 
     obj.imageCheckBox592 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -8643,8 +8653,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox592:setWidth(25);
     obj.imageCheckBox592:setHeight(25);
     obj.imageCheckBox592:setField("law_3");
-    obj.imageCheckBox592:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox592:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox592:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox592:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox592:setName("imageCheckBox592");
 
     obj.imageCheckBox593 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -8654,8 +8664,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox593:setWidth(25);
     obj.imageCheckBox593:setHeight(25);
     obj.imageCheckBox593:setField("law_4");
-    obj.imageCheckBox593:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox593:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox593:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox593:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox593:setName("imageCheckBox593");
 
     obj.imageCheckBox594 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -8665,8 +8675,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox594:setWidth(25);
     obj.imageCheckBox594:setHeight(25);
     obj.imageCheckBox594:setField("law_5");
-    obj.imageCheckBox594:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox594:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox594:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox594:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox594:setName("imageCheckBox594");
 
     obj.imageCheckBox595 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -8676,8 +8686,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox595:setWidth(25);
     obj.imageCheckBox595:setHeight(25);
     obj.imageCheckBox595:setField("law_6");
-    obj.imageCheckBox595:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox595:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox595:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox595:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox595:setName("imageCheckBox595");
 
     obj.imageCheckBox596 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -8687,8 +8697,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox596:setWidth(25);
     obj.imageCheckBox596:setHeight(25);
     obj.imageCheckBox596:setField("law_7");
-    obj.imageCheckBox596:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox596:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox596:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox596:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox596:setName("imageCheckBox596");
 
     obj.imageCheckBox597 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -8698,8 +8708,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox597:setWidth(25);
     obj.imageCheckBox597:setHeight(25);
     obj.imageCheckBox597:setField("law_8");
-    obj.imageCheckBox597:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox597:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox597:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox597:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox597:setName("imageCheckBox597");
 
     obj.imageCheckBox598 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -8709,8 +8719,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox598:setWidth(25);
     obj.imageCheckBox598:setHeight(25);
     obj.imageCheckBox598:setField("law_9");
-    obj.imageCheckBox598:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox598:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox598:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox598:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox598:setName("imageCheckBox598");
 
     obj.layout90 = GUI.fromHandle(_obj_newObject("layout"));
@@ -8737,8 +8747,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox599:setWidth(25);
     obj.imageCheckBox599:setHeight(25);
     obj.imageCheckBox599:setField("medicine_1");
-    obj.imageCheckBox599:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox599:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox599:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox599:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox599:setName("imageCheckBox599");
 
     obj.imageCheckBox600 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -8748,8 +8758,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox600:setWidth(25);
     obj.imageCheckBox600:setHeight(25);
     obj.imageCheckBox600:setField("medicine_2");
-    obj.imageCheckBox600:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox600:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox600:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox600:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox600:setName("imageCheckBox600");
 
     obj.imageCheckBox601 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -8759,8 +8769,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox601:setWidth(25);
     obj.imageCheckBox601:setHeight(25);
     obj.imageCheckBox601:setField("medicine_3");
-    obj.imageCheckBox601:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox601:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox601:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox601:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox601:setName("imageCheckBox601");
 
     obj.imageCheckBox602 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -8770,8 +8780,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox602:setWidth(25);
     obj.imageCheckBox602:setHeight(25);
     obj.imageCheckBox602:setField("medicine_4");
-    obj.imageCheckBox602:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox602:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox602:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox602:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox602:setName("imageCheckBox602");
 
     obj.imageCheckBox603 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -8781,8 +8791,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox603:setWidth(25);
     obj.imageCheckBox603:setHeight(25);
     obj.imageCheckBox603:setField("medicine_5");
-    obj.imageCheckBox603:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox603:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox603:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox603:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox603:setName("imageCheckBox603");
 
     obj.imageCheckBox604 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -8792,8 +8802,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox604:setWidth(25);
     obj.imageCheckBox604:setHeight(25);
     obj.imageCheckBox604:setField("medicine_6");
-    obj.imageCheckBox604:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox604:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox604:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox604:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox604:setName("imageCheckBox604");
 
     obj.imageCheckBox605 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -8803,8 +8813,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox605:setWidth(25);
     obj.imageCheckBox605:setHeight(25);
     obj.imageCheckBox605:setField("medicine_7");
-    obj.imageCheckBox605:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox605:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox605:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox605:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox605:setName("imageCheckBox605");
 
     obj.imageCheckBox606 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -8814,8 +8824,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox606:setWidth(25);
     obj.imageCheckBox606:setHeight(25);
     obj.imageCheckBox606:setField("medicine_8");
-    obj.imageCheckBox606:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox606:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox606:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox606:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox606:setName("imageCheckBox606");
 
     obj.imageCheckBox607 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -8825,8 +8835,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox607:setWidth(25);
     obj.imageCheckBox607:setHeight(25);
     obj.imageCheckBox607:setField("medicine_9");
-    obj.imageCheckBox607:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox607:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox607:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox607:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox607:setName("imageCheckBox607");
 
     obj.layout91 = GUI.fromHandle(_obj_newObject("layout"));
@@ -8853,8 +8863,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox608:setWidth(25);
     obj.imageCheckBox608:setHeight(25);
     obj.imageCheckBox608:setField("occult_1");
-    obj.imageCheckBox608:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox608:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox608:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox608:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox608:setName("imageCheckBox608");
 
     obj.imageCheckBox609 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -8864,8 +8874,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox609:setWidth(25);
     obj.imageCheckBox609:setHeight(25);
     obj.imageCheckBox609:setField("occult_2");
-    obj.imageCheckBox609:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox609:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox609:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox609:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox609:setName("imageCheckBox609");
 
     obj.imageCheckBox610 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -8875,8 +8885,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox610:setWidth(25);
     obj.imageCheckBox610:setHeight(25);
     obj.imageCheckBox610:setField("occult_3");
-    obj.imageCheckBox610:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox610:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox610:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox610:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox610:setName("imageCheckBox610");
 
     obj.imageCheckBox611 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -8886,8 +8896,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox611:setWidth(25);
     obj.imageCheckBox611:setHeight(25);
     obj.imageCheckBox611:setField("occult_4");
-    obj.imageCheckBox611:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox611:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox611:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox611:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox611:setName("imageCheckBox611");
 
     obj.imageCheckBox612 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -8897,8 +8907,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox612:setWidth(25);
     obj.imageCheckBox612:setHeight(25);
     obj.imageCheckBox612:setField("occult_5");
-    obj.imageCheckBox612:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox612:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox612:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox612:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox612:setName("imageCheckBox612");
 
     obj.imageCheckBox613 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -8908,8 +8918,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox613:setWidth(25);
     obj.imageCheckBox613:setHeight(25);
     obj.imageCheckBox613:setField("occult_6");
-    obj.imageCheckBox613:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox613:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox613:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox613:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox613:setName("imageCheckBox613");
 
     obj.imageCheckBox614 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -8919,8 +8929,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox614:setWidth(25);
     obj.imageCheckBox614:setHeight(25);
     obj.imageCheckBox614:setField("occult_7");
-    obj.imageCheckBox614:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox614:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox614:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox614:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox614:setName("imageCheckBox614");
 
     obj.imageCheckBox615 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -8930,8 +8940,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox615:setWidth(25);
     obj.imageCheckBox615:setHeight(25);
     obj.imageCheckBox615:setField("occult_8");
-    obj.imageCheckBox615:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox615:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox615:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox615:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox615:setName("imageCheckBox615");
 
     obj.imageCheckBox616 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -8941,8 +8951,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox616:setWidth(25);
     obj.imageCheckBox616:setHeight(25);
     obj.imageCheckBox616:setField("occult_9");
-    obj.imageCheckBox616:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox616:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox616:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox616:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox616:setName("imageCheckBox616");
 
     obj.layout92 = GUI.fromHandle(_obj_newObject("layout"));
@@ -8969,8 +8979,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox617:setWidth(25);
     obj.imageCheckBox617:setHeight(25);
     obj.imageCheckBox617:setField("politics_1");
-    obj.imageCheckBox617:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox617:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox617:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox617:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox617:setName("imageCheckBox617");
 
     obj.imageCheckBox618 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -8980,8 +8990,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox618:setWidth(25);
     obj.imageCheckBox618:setHeight(25);
     obj.imageCheckBox618:setField("politics_2");
-    obj.imageCheckBox618:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox618:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox618:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox618:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox618:setName("imageCheckBox618");
 
     obj.imageCheckBox619 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -8991,8 +9001,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox619:setWidth(25);
     obj.imageCheckBox619:setHeight(25);
     obj.imageCheckBox619:setField("politics_3");
-    obj.imageCheckBox619:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox619:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox619:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox619:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox619:setName("imageCheckBox619");
 
     obj.imageCheckBox620 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -9002,8 +9012,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox620:setWidth(25);
     obj.imageCheckBox620:setHeight(25);
     obj.imageCheckBox620:setField("politics_4");
-    obj.imageCheckBox620:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox620:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox620:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox620:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox620:setName("imageCheckBox620");
 
     obj.imageCheckBox621 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -9013,8 +9023,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox621:setWidth(25);
     obj.imageCheckBox621:setHeight(25);
     obj.imageCheckBox621:setField("politics_5");
-    obj.imageCheckBox621:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox621:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox621:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox621:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox621:setName("imageCheckBox621");
 
     obj.imageCheckBox622 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -9024,8 +9034,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox622:setWidth(25);
     obj.imageCheckBox622:setHeight(25);
     obj.imageCheckBox622:setField("politics_6");
-    obj.imageCheckBox622:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox622:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox622:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox622:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox622:setName("imageCheckBox622");
 
     obj.imageCheckBox623 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -9035,8 +9045,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox623:setWidth(25);
     obj.imageCheckBox623:setHeight(25);
     obj.imageCheckBox623:setField("politics_7");
-    obj.imageCheckBox623:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox623:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox623:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox623:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox623:setName("imageCheckBox623");
 
     obj.imageCheckBox624 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -9046,8 +9056,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox624:setWidth(25);
     obj.imageCheckBox624:setHeight(25);
     obj.imageCheckBox624:setField("politics_8");
-    obj.imageCheckBox624:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox624:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox624:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox624:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox624:setName("imageCheckBox624");
 
     obj.imageCheckBox625 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -9057,8 +9067,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox625:setWidth(25);
     obj.imageCheckBox625:setHeight(25);
     obj.imageCheckBox625:setField("politics_9");
-    obj.imageCheckBox625:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox625:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox625:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox625:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox625:setName("imageCheckBox625");
 
     obj.layout93 = GUI.fromHandle(_obj_newObject("layout"));
@@ -9075,7 +9085,7 @@ local function constructNew_frmVampireDarkAges20th()
     obj.label65:setTop(5);
     obj.label65:setWidth(80);
     obj.label65:setHeight(20);
-    obj.label65:setText("Seneschal");
+    obj.label65:setText("Science");
     obj.label65:setName("label65");
 
     obj.imageCheckBox626 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -9084,9 +9094,9 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox626:setTop(0);
     obj.imageCheckBox626:setWidth(25);
     obj.imageCheckBox626:setHeight(25);
-    obj.imageCheckBox626:setField("seneschal_1");
-    obj.imageCheckBox626:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox626:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox626:setField("science_1");
+    obj.imageCheckBox626:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox626:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox626:setName("imageCheckBox626");
 
     obj.imageCheckBox627 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -9095,9 +9105,9 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox627:setTop(0);
     obj.imageCheckBox627:setWidth(25);
     obj.imageCheckBox627:setHeight(25);
-    obj.imageCheckBox627:setField("seneschal_2");
-    obj.imageCheckBox627:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox627:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox627:setField("science_2");
+    obj.imageCheckBox627:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox627:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox627:setName("imageCheckBox627");
 
     obj.imageCheckBox628 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -9106,9 +9116,9 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox628:setTop(0);
     obj.imageCheckBox628:setWidth(25);
     obj.imageCheckBox628:setHeight(25);
-    obj.imageCheckBox628:setField("seneschal_3");
-    obj.imageCheckBox628:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox628:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox628:setField("science_3");
+    obj.imageCheckBox628:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox628:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox628:setName("imageCheckBox628");
 
     obj.imageCheckBox629 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -9117,9 +9127,9 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox629:setTop(0);
     obj.imageCheckBox629:setWidth(25);
     obj.imageCheckBox629:setHeight(25);
-    obj.imageCheckBox629:setField("seneschal_4");
-    obj.imageCheckBox629:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox629:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox629:setField("science_4");
+    obj.imageCheckBox629:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox629:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox629:setName("imageCheckBox629");
 
     obj.imageCheckBox630 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -9128,9 +9138,9 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox630:setTop(0);
     obj.imageCheckBox630:setWidth(25);
     obj.imageCheckBox630:setHeight(25);
-    obj.imageCheckBox630:setField("seneschal_5");
-    obj.imageCheckBox630:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox630:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox630:setField("science_5");
+    obj.imageCheckBox630:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox630:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox630:setName("imageCheckBox630");
 
     obj.imageCheckBox631 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -9139,9 +9149,9 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox631:setTop(0);
     obj.imageCheckBox631:setWidth(25);
     obj.imageCheckBox631:setHeight(25);
-    obj.imageCheckBox631:setField("seneschal_6");
-    obj.imageCheckBox631:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox631:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox631:setField("science_6");
+    obj.imageCheckBox631:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox631:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox631:setName("imageCheckBox631");
 
     obj.imageCheckBox632 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -9150,9 +9160,9 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox632:setTop(0);
     obj.imageCheckBox632:setWidth(25);
     obj.imageCheckBox632:setHeight(25);
-    obj.imageCheckBox632:setField("seneschal_7");
-    obj.imageCheckBox632:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox632:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox632:setField("science_7");
+    obj.imageCheckBox632:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox632:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox632:setName("imageCheckBox632");
 
     obj.imageCheckBox633 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -9161,9 +9171,9 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox633:setTop(0);
     obj.imageCheckBox633:setWidth(25);
     obj.imageCheckBox633:setHeight(25);
-    obj.imageCheckBox633:setField("seneschal_8");
-    obj.imageCheckBox633:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox633:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox633:setField("science_8");
+    obj.imageCheckBox633:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox633:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox633:setName("imageCheckBox633");
 
     obj.imageCheckBox634 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -9172,9 +9182,9 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox634:setTop(0);
     obj.imageCheckBox634:setWidth(25);
     obj.imageCheckBox634:setHeight(25);
-    obj.imageCheckBox634:setField("seneschal_9");
-    obj.imageCheckBox634:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox634:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox634:setField("science_9");
+    obj.imageCheckBox634:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox634:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox634:setName("imageCheckBox634");
 
     obj.layout94 = GUI.fromHandle(_obj_newObject("layout"));
@@ -9201,8 +9211,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox635:setWidth(25);
     obj.imageCheckBox635:setHeight(25);
     obj.imageCheckBox635:setField("theology_1");
-    obj.imageCheckBox635:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox635:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox635:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox635:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox635:setName("imageCheckBox635");
 
     obj.imageCheckBox636 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -9212,8 +9222,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox636:setWidth(25);
     obj.imageCheckBox636:setHeight(25);
     obj.imageCheckBox636:setField("theology_2");
-    obj.imageCheckBox636:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox636:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox636:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox636:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox636:setName("imageCheckBox636");
 
     obj.imageCheckBox637 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -9223,8 +9233,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox637:setWidth(25);
     obj.imageCheckBox637:setHeight(25);
     obj.imageCheckBox637:setField("theology_3");
-    obj.imageCheckBox637:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox637:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox637:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox637:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox637:setName("imageCheckBox637");
 
     obj.imageCheckBox638 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -9234,8 +9244,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox638:setWidth(25);
     obj.imageCheckBox638:setHeight(25);
     obj.imageCheckBox638:setField("theology_4");
-    obj.imageCheckBox638:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox638:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox638:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox638:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox638:setName("imageCheckBox638");
 
     obj.imageCheckBox639 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -9245,8 +9255,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox639:setWidth(25);
     obj.imageCheckBox639:setHeight(25);
     obj.imageCheckBox639:setField("theology_5");
-    obj.imageCheckBox639:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox639:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox639:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox639:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox639:setName("imageCheckBox639");
 
     obj.imageCheckBox640 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -9256,8 +9266,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox640:setWidth(25);
     obj.imageCheckBox640:setHeight(25);
     obj.imageCheckBox640:setField("theology_6");
-    obj.imageCheckBox640:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox640:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox640:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox640:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox640:setName("imageCheckBox640");
 
     obj.imageCheckBox641 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -9267,8 +9277,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox641:setWidth(25);
     obj.imageCheckBox641:setHeight(25);
     obj.imageCheckBox641:setField("theology_7");
-    obj.imageCheckBox641:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox641:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox641:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox641:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox641:setName("imageCheckBox641");
 
     obj.imageCheckBox642 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -9278,8 +9288,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox642:setWidth(25);
     obj.imageCheckBox642:setHeight(25);
     obj.imageCheckBox642:setField("theology_8");
-    obj.imageCheckBox642:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox642:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox642:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox642:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox642:setName("imageCheckBox642");
 
     obj.imageCheckBox643 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -9289,8 +9299,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox643:setWidth(25);
     obj.imageCheckBox643:setHeight(25);
     obj.imageCheckBox643:setField("theology_9");
-    obj.imageCheckBox643:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox643:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox643:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox643:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox643:setName("imageCheckBox643");
 
     obj.layout95 = GUI.fromHandle(_obj_newObject("layout"));
@@ -9301,15 +9311,15 @@ local function constructNew_frmVampireDarkAges20th()
     obj.layout95:setHeight(25);
     obj.layout95:setName("layout95");
 
-    obj.edit37 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit37:setParent(obj.layout95);
-    obj.edit37:setLeft(0);
-    obj.edit37:setTop(5);
-    obj.edit37:setWidth(75);
-    obj.edit37:setHeight(20);
-    obj.edit37:setField("knowledge_11");
-    obj.edit37:setFontSize(12);
-    obj.edit37:setName("edit37");
+    obj.edit38 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit38:setParent(obj.layout95);
+    obj.edit38:setLeft(0);
+    obj.edit38:setTop(5);
+    obj.edit38:setWidth(75);
+    obj.edit38:setHeight(20);
+    obj.edit38:setField("knowledge_11");
+    obj.edit38:setFontSize(12);
+    obj.edit38:setName("edit38");
 
     obj.imageCheckBox644 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox644:setParent(obj.layout95);
@@ -9318,8 +9328,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox644:setWidth(25);
     obj.imageCheckBox644:setHeight(25);
     obj.imageCheckBox644:setField("knowledge_11_1");
-    obj.imageCheckBox644:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox644:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox644:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox644:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox644:setName("imageCheckBox644");
 
     obj.imageCheckBox645 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -9329,8 +9339,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox645:setWidth(25);
     obj.imageCheckBox645:setHeight(25);
     obj.imageCheckBox645:setField("knowledge_11_2");
-    obj.imageCheckBox645:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox645:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox645:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox645:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox645:setName("imageCheckBox645");
 
     obj.imageCheckBox646 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -9340,8 +9350,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox646:setWidth(25);
     obj.imageCheckBox646:setHeight(25);
     obj.imageCheckBox646:setField("knowledge_11_3");
-    obj.imageCheckBox646:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox646:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox646:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox646:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox646:setName("imageCheckBox646");
 
     obj.imageCheckBox647 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -9351,8 +9361,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox647:setWidth(25);
     obj.imageCheckBox647:setHeight(25);
     obj.imageCheckBox647:setField("knowledge_11_4");
-    obj.imageCheckBox647:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox647:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox647:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox647:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox647:setName("imageCheckBox647");
 
     obj.imageCheckBox648 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -9362,8 +9372,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox648:setWidth(25);
     obj.imageCheckBox648:setHeight(25);
     obj.imageCheckBox648:setField("knowledge_11_5");
-    obj.imageCheckBox648:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox648:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox648:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox648:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox648:setName("imageCheckBox648");
 
     obj.imageCheckBox649 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -9373,8 +9383,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox649:setWidth(25);
     obj.imageCheckBox649:setHeight(25);
     obj.imageCheckBox649:setField("knowledge_11_6");
-    obj.imageCheckBox649:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox649:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox649:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox649:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox649:setName("imageCheckBox649");
 
     obj.imageCheckBox650 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -9384,8 +9394,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox650:setWidth(25);
     obj.imageCheckBox650:setHeight(25);
     obj.imageCheckBox650:setField("knowledge_11_7");
-    obj.imageCheckBox650:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox650:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox650:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox650:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox650:setName("imageCheckBox650");
 
     obj.imageCheckBox651 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -9395,8 +9405,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox651:setWidth(25);
     obj.imageCheckBox651:setHeight(25);
     obj.imageCheckBox651:setField("knowledge_11_8");
-    obj.imageCheckBox651:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox651:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox651:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox651:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox651:setName("imageCheckBox651");
 
     obj.imageCheckBox652 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -9406,8 +9416,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox652:setWidth(25);
     obj.imageCheckBox652:setHeight(25);
     obj.imageCheckBox652:setField("knowledge_11_9");
-    obj.imageCheckBox652:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox652:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox652:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox652:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox652:setName("imageCheckBox652");
 
     obj.layout96 = GUI.fromHandle(_obj_newObject("layout"));
@@ -9418,15 +9428,15 @@ local function constructNew_frmVampireDarkAges20th()
     obj.layout96:setHeight(25);
     obj.layout96:setName("layout96");
 
-    obj.edit38 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit38:setParent(obj.layout96);
-    obj.edit38:setLeft(0);
-    obj.edit38:setTop(5);
-    obj.edit38:setWidth(75);
-    obj.edit38:setHeight(20);
-    obj.edit38:setField("knowledge_12");
-    obj.edit38:setFontSize(12);
-    obj.edit38:setName("edit38");
+    obj.edit39 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit39:setParent(obj.layout96);
+    obj.edit39:setLeft(0);
+    obj.edit39:setTop(5);
+    obj.edit39:setWidth(75);
+    obj.edit39:setHeight(20);
+    obj.edit39:setField("knowledge_12");
+    obj.edit39:setFontSize(12);
+    obj.edit39:setName("edit39");
 
     obj.imageCheckBox653 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox653:setParent(obj.layout96);
@@ -9435,8 +9445,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox653:setWidth(25);
     obj.imageCheckBox653:setHeight(25);
     obj.imageCheckBox653:setField("knowledge_12_1");
-    obj.imageCheckBox653:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox653:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox653:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox653:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox653:setName("imageCheckBox653");
 
     obj.imageCheckBox654 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -9446,8 +9456,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox654:setWidth(25);
     obj.imageCheckBox654:setHeight(25);
     obj.imageCheckBox654:setField("knowledge_12_2");
-    obj.imageCheckBox654:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox654:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox654:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox654:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox654:setName("imageCheckBox654");
 
     obj.imageCheckBox655 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -9457,8 +9467,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox655:setWidth(25);
     obj.imageCheckBox655:setHeight(25);
     obj.imageCheckBox655:setField("knowledge_12_3");
-    obj.imageCheckBox655:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox655:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox655:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox655:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox655:setName("imageCheckBox655");
 
     obj.imageCheckBox656 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -9468,8 +9478,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox656:setWidth(25);
     obj.imageCheckBox656:setHeight(25);
     obj.imageCheckBox656:setField("knowledge_12_4");
-    obj.imageCheckBox656:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox656:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox656:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox656:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox656:setName("imageCheckBox656");
 
     obj.imageCheckBox657 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -9479,8 +9489,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox657:setWidth(25);
     obj.imageCheckBox657:setHeight(25);
     obj.imageCheckBox657:setField("knowledge_12_5");
-    obj.imageCheckBox657:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox657:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox657:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox657:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox657:setName("imageCheckBox657");
 
     obj.imageCheckBox658 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -9490,8 +9500,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox658:setWidth(25);
     obj.imageCheckBox658:setHeight(25);
     obj.imageCheckBox658:setField("knowledge_12_6");
-    obj.imageCheckBox658:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox658:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox658:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox658:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox658:setName("imageCheckBox658");
 
     obj.imageCheckBox659 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -9501,8 +9511,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox659:setWidth(25);
     obj.imageCheckBox659:setHeight(25);
     obj.imageCheckBox659:setField("knowledge_12_7");
-    obj.imageCheckBox659:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox659:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox659:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox659:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox659:setName("imageCheckBox659");
 
     obj.imageCheckBox660 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -9512,8 +9522,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox660:setWidth(25);
     obj.imageCheckBox660:setHeight(25);
     obj.imageCheckBox660:setField("knowledge_12_8");
-    obj.imageCheckBox660:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox660:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox660:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox660:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox660:setName("imageCheckBox660");
 
     obj.imageCheckBox661 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -9523,8 +9533,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox661:setWidth(25);
     obj.imageCheckBox661:setHeight(25);
     obj.imageCheckBox661:setField("knowledge_12_9");
-    obj.imageCheckBox661:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox661:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox661:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox661:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox661:setName("imageCheckBox661");
 
     obj.layout97 = GUI.fromHandle(_obj_newObject("layout"));
@@ -9562,15 +9572,15 @@ local function constructNew_frmVampireDarkAges20th()
     obj.layout98:setHeight(25);
     obj.layout98:setName("layout98");
 
-    obj.edit39 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit39:setParent(obj.layout98);
-    obj.edit39:setLeft(0);
-    obj.edit39:setTop(5);
-    obj.edit39:setWidth(75);
-    obj.edit39:setHeight(20);
-    obj.edit39:setField("traits_1");
-    obj.edit39:setFontSize(12);
-    obj.edit39:setName("edit39");
+    obj.edit40 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit40:setParent(obj.layout98);
+    obj.edit40:setLeft(0);
+    obj.edit40:setTop(5);
+    obj.edit40:setWidth(75);
+    obj.edit40:setHeight(20);
+    obj.edit40:setField("traits_1");
+    obj.edit40:setFontSize(12);
+    obj.edit40:setName("edit40");
 
     obj.imageCheckBox662 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox662:setParent(obj.layout98);
@@ -9579,8 +9589,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox662:setWidth(25);
     obj.imageCheckBox662:setHeight(25);
     obj.imageCheckBox662:setField("traits_1_1");
-    obj.imageCheckBox662:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox662:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox662:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox662:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox662:setName("imageCheckBox662");
 
     obj.imageCheckBox663 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -9590,8 +9600,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox663:setWidth(25);
     obj.imageCheckBox663:setHeight(25);
     obj.imageCheckBox663:setField("traits_1_2");
-    obj.imageCheckBox663:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox663:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox663:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox663:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox663:setName("imageCheckBox663");
 
     obj.imageCheckBox664 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -9601,8 +9611,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox664:setWidth(25);
     obj.imageCheckBox664:setHeight(25);
     obj.imageCheckBox664:setField("traits_1_3");
-    obj.imageCheckBox664:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox664:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox664:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox664:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox664:setName("imageCheckBox664");
 
     obj.imageCheckBox665 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -9612,8 +9622,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox665:setWidth(25);
     obj.imageCheckBox665:setHeight(25);
     obj.imageCheckBox665:setField("traits_1_4");
-    obj.imageCheckBox665:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox665:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox665:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox665:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox665:setName("imageCheckBox665");
 
     obj.imageCheckBox666 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -9623,8 +9633,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox666:setWidth(25);
     obj.imageCheckBox666:setHeight(25);
     obj.imageCheckBox666:setField("traits_1_5");
-    obj.imageCheckBox666:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox666:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox666:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox666:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox666:setName("imageCheckBox666");
 
     obj.imageCheckBox667 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -9634,8 +9644,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox667:setWidth(25);
     obj.imageCheckBox667:setHeight(25);
     obj.imageCheckBox667:setField("traits_1_6");
-    obj.imageCheckBox667:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox667:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox667:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox667:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox667:setName("imageCheckBox667");
 
     obj.imageCheckBox668 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -9645,8 +9655,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox668:setWidth(25);
     obj.imageCheckBox668:setHeight(25);
     obj.imageCheckBox668:setField("traits_1_7");
-    obj.imageCheckBox668:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox668:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox668:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox668:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox668:setName("imageCheckBox668");
 
     obj.imageCheckBox669 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -9656,8 +9666,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox669:setWidth(25);
     obj.imageCheckBox669:setHeight(25);
     obj.imageCheckBox669:setField("traits_1_8");
-    obj.imageCheckBox669:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox669:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox669:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox669:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox669:setName("imageCheckBox669");
 
     obj.imageCheckBox670 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -9667,8 +9677,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox670:setWidth(25);
     obj.imageCheckBox670:setHeight(25);
     obj.imageCheckBox670:setField("traits_1_9");
-    obj.imageCheckBox670:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox670:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox670:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox670:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox670:setName("imageCheckBox670");
 
     obj.layout99 = GUI.fromHandle(_obj_newObject("layout"));
@@ -9679,15 +9689,15 @@ local function constructNew_frmVampireDarkAges20th()
     obj.layout99:setHeight(25);
     obj.layout99:setName("layout99");
 
-    obj.edit40 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit40:setParent(obj.layout99);
-    obj.edit40:setLeft(0);
-    obj.edit40:setTop(5);
-    obj.edit40:setWidth(75);
-    obj.edit40:setHeight(20);
-    obj.edit40:setField("traits_2");
-    obj.edit40:setFontSize(12);
-    obj.edit40:setName("edit40");
+    obj.edit41 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit41:setParent(obj.layout99);
+    obj.edit41:setLeft(0);
+    obj.edit41:setTop(5);
+    obj.edit41:setWidth(75);
+    obj.edit41:setHeight(20);
+    obj.edit41:setField("traits_2");
+    obj.edit41:setFontSize(12);
+    obj.edit41:setName("edit41");
 
     obj.imageCheckBox671 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox671:setParent(obj.layout99);
@@ -9696,8 +9706,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox671:setWidth(25);
     obj.imageCheckBox671:setHeight(25);
     obj.imageCheckBox671:setField("traits_2_1");
-    obj.imageCheckBox671:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox671:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox671:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox671:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox671:setName("imageCheckBox671");
 
     obj.imageCheckBox672 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -9707,8 +9717,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox672:setWidth(25);
     obj.imageCheckBox672:setHeight(25);
     obj.imageCheckBox672:setField("traits_2_2");
-    obj.imageCheckBox672:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox672:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox672:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox672:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox672:setName("imageCheckBox672");
 
     obj.imageCheckBox673 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -9718,8 +9728,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox673:setWidth(25);
     obj.imageCheckBox673:setHeight(25);
     obj.imageCheckBox673:setField("traits_2_3");
-    obj.imageCheckBox673:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox673:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox673:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox673:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox673:setName("imageCheckBox673");
 
     obj.imageCheckBox674 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -9729,8 +9739,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox674:setWidth(25);
     obj.imageCheckBox674:setHeight(25);
     obj.imageCheckBox674:setField("traits_2_4");
-    obj.imageCheckBox674:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox674:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox674:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox674:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox674:setName("imageCheckBox674");
 
     obj.imageCheckBox675 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -9740,8 +9750,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox675:setWidth(25);
     obj.imageCheckBox675:setHeight(25);
     obj.imageCheckBox675:setField("traits_2_5");
-    obj.imageCheckBox675:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox675:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox675:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox675:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox675:setName("imageCheckBox675");
 
     obj.imageCheckBox676 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -9751,8 +9761,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox676:setWidth(25);
     obj.imageCheckBox676:setHeight(25);
     obj.imageCheckBox676:setField("traits_2_6");
-    obj.imageCheckBox676:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox676:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox676:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox676:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox676:setName("imageCheckBox676");
 
     obj.imageCheckBox677 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -9762,8 +9772,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox677:setWidth(25);
     obj.imageCheckBox677:setHeight(25);
     obj.imageCheckBox677:setField("traits_2_7");
-    obj.imageCheckBox677:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox677:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox677:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox677:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox677:setName("imageCheckBox677");
 
     obj.imageCheckBox678 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -9773,8 +9783,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox678:setWidth(25);
     obj.imageCheckBox678:setHeight(25);
     obj.imageCheckBox678:setField("traits_2_8");
-    obj.imageCheckBox678:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox678:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox678:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox678:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox678:setName("imageCheckBox678");
 
     obj.imageCheckBox679 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -9784,8 +9794,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox679:setWidth(25);
     obj.imageCheckBox679:setHeight(25);
     obj.imageCheckBox679:setField("traits_2_9");
-    obj.imageCheckBox679:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox679:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox679:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox679:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox679:setName("imageCheckBox679");
 
     obj.layout100 = GUI.fromHandle(_obj_newObject("layout"));
@@ -9796,15 +9806,15 @@ local function constructNew_frmVampireDarkAges20th()
     obj.layout100:setHeight(25);
     obj.layout100:setName("layout100");
 
-    obj.edit41 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit41:setParent(obj.layout100);
-    obj.edit41:setLeft(0);
-    obj.edit41:setTop(5);
-    obj.edit41:setWidth(75);
-    obj.edit41:setHeight(20);
-    obj.edit41:setField("traits_3");
-    obj.edit41:setFontSize(12);
-    obj.edit41:setName("edit41");
+    obj.edit42 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit42:setParent(obj.layout100);
+    obj.edit42:setLeft(0);
+    obj.edit42:setTop(5);
+    obj.edit42:setWidth(75);
+    obj.edit42:setHeight(20);
+    obj.edit42:setField("traits_3");
+    obj.edit42:setFontSize(12);
+    obj.edit42:setName("edit42");
 
     obj.imageCheckBox680 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox680:setParent(obj.layout100);
@@ -9813,8 +9823,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox680:setWidth(25);
     obj.imageCheckBox680:setHeight(25);
     obj.imageCheckBox680:setField("traits_3_1");
-    obj.imageCheckBox680:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox680:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox680:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox680:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox680:setName("imageCheckBox680");
 
     obj.imageCheckBox681 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -9824,8 +9834,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox681:setWidth(25);
     obj.imageCheckBox681:setHeight(25);
     obj.imageCheckBox681:setField("traits_3_2");
-    obj.imageCheckBox681:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox681:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox681:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox681:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox681:setName("imageCheckBox681");
 
     obj.imageCheckBox682 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -9835,8 +9845,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox682:setWidth(25);
     obj.imageCheckBox682:setHeight(25);
     obj.imageCheckBox682:setField("traits_3_3");
-    obj.imageCheckBox682:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox682:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox682:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox682:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox682:setName("imageCheckBox682");
 
     obj.imageCheckBox683 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -9846,8 +9856,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox683:setWidth(25);
     obj.imageCheckBox683:setHeight(25);
     obj.imageCheckBox683:setField("traits_3_4");
-    obj.imageCheckBox683:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox683:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox683:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox683:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox683:setName("imageCheckBox683");
 
     obj.imageCheckBox684 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -9857,8 +9867,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox684:setWidth(25);
     obj.imageCheckBox684:setHeight(25);
     obj.imageCheckBox684:setField("traits_3_5");
-    obj.imageCheckBox684:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox684:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox684:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox684:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox684:setName("imageCheckBox684");
 
     obj.imageCheckBox685 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -9868,8 +9878,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox685:setWidth(25);
     obj.imageCheckBox685:setHeight(25);
     obj.imageCheckBox685:setField("traits_3_6");
-    obj.imageCheckBox685:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox685:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox685:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox685:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox685:setName("imageCheckBox685");
 
     obj.imageCheckBox686 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -9879,8 +9889,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox686:setWidth(25);
     obj.imageCheckBox686:setHeight(25);
     obj.imageCheckBox686:setField("traits_3_7");
-    obj.imageCheckBox686:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox686:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox686:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox686:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox686:setName("imageCheckBox686");
 
     obj.imageCheckBox687 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -9890,8 +9900,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox687:setWidth(25);
     obj.imageCheckBox687:setHeight(25);
     obj.imageCheckBox687:setField("traits_3_8");
-    obj.imageCheckBox687:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox687:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox687:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox687:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox687:setName("imageCheckBox687");
 
     obj.imageCheckBox688 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -9901,8 +9911,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox688:setWidth(25);
     obj.imageCheckBox688:setHeight(25);
     obj.imageCheckBox688:setField("traits_3_9");
-    obj.imageCheckBox688:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox688:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox688:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox688:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox688:setName("imageCheckBox688");
 
     obj.layout101 = GUI.fromHandle(_obj_newObject("layout"));
@@ -9913,15 +9923,15 @@ local function constructNew_frmVampireDarkAges20th()
     obj.layout101:setHeight(25);
     obj.layout101:setName("layout101");
 
-    obj.edit42 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit42:setParent(obj.layout101);
-    obj.edit42:setLeft(0);
-    obj.edit42:setTop(5);
-    obj.edit42:setWidth(75);
-    obj.edit42:setHeight(20);
-    obj.edit42:setField("traits_4");
-    obj.edit42:setFontSize(12);
-    obj.edit42:setName("edit42");
+    obj.edit43 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit43:setParent(obj.layout101);
+    obj.edit43:setLeft(0);
+    obj.edit43:setTop(5);
+    obj.edit43:setWidth(75);
+    obj.edit43:setHeight(20);
+    obj.edit43:setField("traits_4");
+    obj.edit43:setFontSize(12);
+    obj.edit43:setName("edit43");
 
     obj.imageCheckBox689 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox689:setParent(obj.layout101);
@@ -9930,8 +9940,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox689:setWidth(25);
     obj.imageCheckBox689:setHeight(25);
     obj.imageCheckBox689:setField("traits_4_1");
-    obj.imageCheckBox689:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox689:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox689:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox689:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox689:setName("imageCheckBox689");
 
     obj.imageCheckBox690 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -9941,8 +9951,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox690:setWidth(25);
     obj.imageCheckBox690:setHeight(25);
     obj.imageCheckBox690:setField("traits_4_2");
-    obj.imageCheckBox690:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox690:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox690:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox690:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox690:setName("imageCheckBox690");
 
     obj.imageCheckBox691 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -9952,8 +9962,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox691:setWidth(25);
     obj.imageCheckBox691:setHeight(25);
     obj.imageCheckBox691:setField("traits_4_3");
-    obj.imageCheckBox691:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox691:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox691:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox691:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox691:setName("imageCheckBox691");
 
     obj.imageCheckBox692 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -9963,8 +9973,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox692:setWidth(25);
     obj.imageCheckBox692:setHeight(25);
     obj.imageCheckBox692:setField("traits_4_4");
-    obj.imageCheckBox692:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox692:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox692:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox692:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox692:setName("imageCheckBox692");
 
     obj.imageCheckBox693 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -9974,8 +9984,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox693:setWidth(25);
     obj.imageCheckBox693:setHeight(25);
     obj.imageCheckBox693:setField("traits_4_5");
-    obj.imageCheckBox693:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox693:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox693:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox693:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox693:setName("imageCheckBox693");
 
     obj.imageCheckBox694 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -9985,8 +9995,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox694:setWidth(25);
     obj.imageCheckBox694:setHeight(25);
     obj.imageCheckBox694:setField("traits_4_6");
-    obj.imageCheckBox694:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox694:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox694:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox694:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox694:setName("imageCheckBox694");
 
     obj.imageCheckBox695 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -9996,8 +10006,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox695:setWidth(25);
     obj.imageCheckBox695:setHeight(25);
     obj.imageCheckBox695:setField("traits_4_7");
-    obj.imageCheckBox695:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox695:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox695:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox695:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox695:setName("imageCheckBox695");
 
     obj.imageCheckBox696 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -10007,8 +10017,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox696:setWidth(25);
     obj.imageCheckBox696:setHeight(25);
     obj.imageCheckBox696:setField("traits_4_8");
-    obj.imageCheckBox696:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox696:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox696:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox696:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox696:setName("imageCheckBox696");
 
     obj.imageCheckBox697 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -10018,8 +10028,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox697:setWidth(25);
     obj.imageCheckBox697:setHeight(25);
     obj.imageCheckBox697:setField("traits_4_9");
-    obj.imageCheckBox697:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox697:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox697:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox697:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox697:setName("imageCheckBox697");
 
     obj.layout102 = GUI.fromHandle(_obj_newObject("layout"));
@@ -10030,15 +10040,15 @@ local function constructNew_frmVampireDarkAges20th()
     obj.layout102:setHeight(25);
     obj.layout102:setName("layout102");
 
-    obj.edit43 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit43:setParent(obj.layout102);
-    obj.edit43:setLeft(0);
-    obj.edit43:setTop(5);
-    obj.edit43:setWidth(75);
-    obj.edit43:setHeight(20);
-    obj.edit43:setField("traits_5");
-    obj.edit43:setFontSize(12);
-    obj.edit43:setName("edit43");
+    obj.edit44 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit44:setParent(obj.layout102);
+    obj.edit44:setLeft(0);
+    obj.edit44:setTop(5);
+    obj.edit44:setWidth(75);
+    obj.edit44:setHeight(20);
+    obj.edit44:setField("traits_5");
+    obj.edit44:setFontSize(12);
+    obj.edit44:setName("edit44");
 
     obj.imageCheckBox698 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox698:setParent(obj.layout102);
@@ -10047,8 +10057,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox698:setWidth(25);
     obj.imageCheckBox698:setHeight(25);
     obj.imageCheckBox698:setField("traits_5_1");
-    obj.imageCheckBox698:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox698:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox698:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox698:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox698:setName("imageCheckBox698");
 
     obj.imageCheckBox699 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -10058,8 +10068,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox699:setWidth(25);
     obj.imageCheckBox699:setHeight(25);
     obj.imageCheckBox699:setField("traits_5_2");
-    obj.imageCheckBox699:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox699:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox699:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox699:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox699:setName("imageCheckBox699");
 
     obj.imageCheckBox700 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -10069,8 +10079,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox700:setWidth(25);
     obj.imageCheckBox700:setHeight(25);
     obj.imageCheckBox700:setField("traits_5_3");
-    obj.imageCheckBox700:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox700:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox700:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox700:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox700:setName("imageCheckBox700");
 
     obj.imageCheckBox701 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -10080,8 +10090,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox701:setWidth(25);
     obj.imageCheckBox701:setHeight(25);
     obj.imageCheckBox701:setField("traits_5_4");
-    obj.imageCheckBox701:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox701:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox701:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox701:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox701:setName("imageCheckBox701");
 
     obj.imageCheckBox702 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -10091,8 +10101,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox702:setWidth(25);
     obj.imageCheckBox702:setHeight(25);
     obj.imageCheckBox702:setField("traits_5_5");
-    obj.imageCheckBox702:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox702:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox702:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox702:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox702:setName("imageCheckBox702");
 
     obj.imageCheckBox703 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -10102,8 +10112,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox703:setWidth(25);
     obj.imageCheckBox703:setHeight(25);
     obj.imageCheckBox703:setField("traits_5_6");
-    obj.imageCheckBox703:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox703:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox703:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox703:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox703:setName("imageCheckBox703");
 
     obj.imageCheckBox704 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -10113,8 +10123,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox704:setWidth(25);
     obj.imageCheckBox704:setHeight(25);
     obj.imageCheckBox704:setField("traits_5_7");
-    obj.imageCheckBox704:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox704:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox704:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox704:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox704:setName("imageCheckBox704");
 
     obj.imageCheckBox705 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -10124,8 +10134,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox705:setWidth(25);
     obj.imageCheckBox705:setHeight(25);
     obj.imageCheckBox705:setField("traits_5_8");
-    obj.imageCheckBox705:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox705:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox705:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox705:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox705:setName("imageCheckBox705");
 
     obj.imageCheckBox706 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -10135,8 +10145,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox706:setWidth(25);
     obj.imageCheckBox706:setHeight(25);
     obj.imageCheckBox706:setField("traits_5_9");
-    obj.imageCheckBox706:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox706:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox706:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox706:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox706:setName("imageCheckBox706");
 
     obj.layout103 = GUI.fromHandle(_obj_newObject("layout"));
@@ -10147,15 +10157,15 @@ local function constructNew_frmVampireDarkAges20th()
     obj.layout103:setHeight(25);
     obj.layout103:setName("layout103");
 
-    obj.edit44 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit44:setParent(obj.layout103);
-    obj.edit44:setLeft(0);
-    obj.edit44:setTop(5);
-    obj.edit44:setWidth(75);
-    obj.edit44:setHeight(20);
-    obj.edit44:setField("traits_6");
-    obj.edit44:setFontSize(12);
-    obj.edit44:setName("edit44");
+    obj.edit45 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit45:setParent(obj.layout103);
+    obj.edit45:setLeft(0);
+    obj.edit45:setTop(5);
+    obj.edit45:setWidth(75);
+    obj.edit45:setHeight(20);
+    obj.edit45:setField("traits_6");
+    obj.edit45:setFontSize(12);
+    obj.edit45:setName("edit45");
 
     obj.imageCheckBox707 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox707:setParent(obj.layout103);
@@ -10164,8 +10174,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox707:setWidth(25);
     obj.imageCheckBox707:setHeight(25);
     obj.imageCheckBox707:setField("traits_6_1");
-    obj.imageCheckBox707:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox707:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox707:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox707:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox707:setName("imageCheckBox707");
 
     obj.imageCheckBox708 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -10175,8 +10185,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox708:setWidth(25);
     obj.imageCheckBox708:setHeight(25);
     obj.imageCheckBox708:setField("traits_6_2");
-    obj.imageCheckBox708:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox708:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox708:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox708:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox708:setName("imageCheckBox708");
 
     obj.imageCheckBox709 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -10186,8 +10196,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox709:setWidth(25);
     obj.imageCheckBox709:setHeight(25);
     obj.imageCheckBox709:setField("traits_6_3");
-    obj.imageCheckBox709:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox709:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox709:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox709:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox709:setName("imageCheckBox709");
 
     obj.imageCheckBox710 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -10197,8 +10207,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox710:setWidth(25);
     obj.imageCheckBox710:setHeight(25);
     obj.imageCheckBox710:setField("traits_6_4");
-    obj.imageCheckBox710:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox710:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox710:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox710:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox710:setName("imageCheckBox710");
 
     obj.imageCheckBox711 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -10208,8 +10218,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox711:setWidth(25);
     obj.imageCheckBox711:setHeight(25);
     obj.imageCheckBox711:setField("traits_6_5");
-    obj.imageCheckBox711:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox711:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox711:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox711:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox711:setName("imageCheckBox711");
 
     obj.imageCheckBox712 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -10219,8 +10229,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox712:setWidth(25);
     obj.imageCheckBox712:setHeight(25);
     obj.imageCheckBox712:setField("traits_6_6");
-    obj.imageCheckBox712:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox712:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox712:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox712:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox712:setName("imageCheckBox712");
 
     obj.imageCheckBox713 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -10230,8 +10240,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox713:setWidth(25);
     obj.imageCheckBox713:setHeight(25);
     obj.imageCheckBox713:setField("traits_6_7");
-    obj.imageCheckBox713:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox713:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox713:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox713:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox713:setName("imageCheckBox713");
 
     obj.imageCheckBox714 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -10241,8 +10251,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox714:setWidth(25);
     obj.imageCheckBox714:setHeight(25);
     obj.imageCheckBox714:setField("traits_6_8");
-    obj.imageCheckBox714:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox714:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox714:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox714:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox714:setName("imageCheckBox714");
 
     obj.imageCheckBox715 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -10252,8 +10262,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox715:setWidth(25);
     obj.imageCheckBox715:setHeight(25);
     obj.imageCheckBox715:setField("traits_6_9");
-    obj.imageCheckBox715:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox715:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox715:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox715:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox715:setName("imageCheckBox715");
 
     obj.layout104 = GUI.fromHandle(_obj_newObject("layout"));
@@ -10264,15 +10274,15 @@ local function constructNew_frmVampireDarkAges20th()
     obj.layout104:setHeight(25);
     obj.layout104:setName("layout104");
 
-    obj.edit45 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit45:setParent(obj.layout104);
-    obj.edit45:setLeft(0);
-    obj.edit45:setTop(5);
-    obj.edit45:setWidth(75);
-    obj.edit45:setHeight(20);
-    obj.edit45:setField("traits_7");
-    obj.edit45:setFontSize(12);
-    obj.edit45:setName("edit45");
+    obj.edit46 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit46:setParent(obj.layout104);
+    obj.edit46:setLeft(0);
+    obj.edit46:setTop(5);
+    obj.edit46:setWidth(75);
+    obj.edit46:setHeight(20);
+    obj.edit46:setField("traits_7");
+    obj.edit46:setFontSize(12);
+    obj.edit46:setName("edit46");
 
     obj.imageCheckBox716 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox716:setParent(obj.layout104);
@@ -10281,8 +10291,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox716:setWidth(25);
     obj.imageCheckBox716:setHeight(25);
     obj.imageCheckBox716:setField("traits_7_1");
-    obj.imageCheckBox716:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox716:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox716:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox716:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox716:setName("imageCheckBox716");
 
     obj.imageCheckBox717 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -10292,8 +10302,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox717:setWidth(25);
     obj.imageCheckBox717:setHeight(25);
     obj.imageCheckBox717:setField("traits_7_2");
-    obj.imageCheckBox717:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox717:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox717:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox717:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox717:setName("imageCheckBox717");
 
     obj.imageCheckBox718 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -10303,8 +10313,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox718:setWidth(25);
     obj.imageCheckBox718:setHeight(25);
     obj.imageCheckBox718:setField("traits_7_3");
-    obj.imageCheckBox718:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox718:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox718:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox718:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox718:setName("imageCheckBox718");
 
     obj.imageCheckBox719 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -10314,8 +10324,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox719:setWidth(25);
     obj.imageCheckBox719:setHeight(25);
     obj.imageCheckBox719:setField("traits_7_4");
-    obj.imageCheckBox719:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox719:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox719:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox719:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox719:setName("imageCheckBox719");
 
     obj.imageCheckBox720 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -10325,8 +10335,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox720:setWidth(25);
     obj.imageCheckBox720:setHeight(25);
     obj.imageCheckBox720:setField("traits_7_5");
-    obj.imageCheckBox720:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox720:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox720:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox720:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox720:setName("imageCheckBox720");
 
     obj.imageCheckBox721 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -10336,8 +10346,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox721:setWidth(25);
     obj.imageCheckBox721:setHeight(25);
     obj.imageCheckBox721:setField("traits_7_6");
-    obj.imageCheckBox721:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox721:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox721:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox721:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox721:setName("imageCheckBox721");
 
     obj.imageCheckBox722 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -10347,8 +10357,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox722:setWidth(25);
     obj.imageCheckBox722:setHeight(25);
     obj.imageCheckBox722:setField("traits_7_7");
-    obj.imageCheckBox722:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox722:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox722:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox722:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox722:setName("imageCheckBox722");
 
     obj.imageCheckBox723 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -10358,8 +10368,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox723:setWidth(25);
     obj.imageCheckBox723:setHeight(25);
     obj.imageCheckBox723:setField("traits_7_8");
-    obj.imageCheckBox723:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox723:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox723:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox723:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox723:setName("imageCheckBox723");
 
     obj.imageCheckBox724 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -10369,8 +10379,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox724:setWidth(25);
     obj.imageCheckBox724:setHeight(25);
     obj.imageCheckBox724:setField("traits_7_9");
-    obj.imageCheckBox724:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox724:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox724:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox724:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox724:setName("imageCheckBox724");
 
     obj.layout105 = GUI.fromHandle(_obj_newObject("layout"));
@@ -10381,15 +10391,15 @@ local function constructNew_frmVampireDarkAges20th()
     obj.layout105:setHeight(25);
     obj.layout105:setName("layout105");
 
-    obj.edit46 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit46:setParent(obj.layout105);
-    obj.edit46:setLeft(0);
-    obj.edit46:setTop(5);
-    obj.edit46:setWidth(75);
-    obj.edit46:setHeight(20);
-    obj.edit46:setField("traits_8");
-    obj.edit46:setFontSize(12);
-    obj.edit46:setName("edit46");
+    obj.edit47 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit47:setParent(obj.layout105);
+    obj.edit47:setLeft(0);
+    obj.edit47:setTop(5);
+    obj.edit47:setWidth(75);
+    obj.edit47:setHeight(20);
+    obj.edit47:setField("traits_8");
+    obj.edit47:setFontSize(12);
+    obj.edit47:setName("edit47");
 
     obj.imageCheckBox725 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox725:setParent(obj.layout105);
@@ -10398,8 +10408,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox725:setWidth(25);
     obj.imageCheckBox725:setHeight(25);
     obj.imageCheckBox725:setField("traits_8_1");
-    obj.imageCheckBox725:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox725:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox725:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox725:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox725:setName("imageCheckBox725");
 
     obj.imageCheckBox726 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -10409,8 +10419,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox726:setWidth(25);
     obj.imageCheckBox726:setHeight(25);
     obj.imageCheckBox726:setField("traits_8_2");
-    obj.imageCheckBox726:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox726:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox726:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox726:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox726:setName("imageCheckBox726");
 
     obj.imageCheckBox727 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -10420,8 +10430,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox727:setWidth(25);
     obj.imageCheckBox727:setHeight(25);
     obj.imageCheckBox727:setField("traits_8_3");
-    obj.imageCheckBox727:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox727:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox727:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox727:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox727:setName("imageCheckBox727");
 
     obj.imageCheckBox728 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -10431,8 +10441,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox728:setWidth(25);
     obj.imageCheckBox728:setHeight(25);
     obj.imageCheckBox728:setField("traits_8_4");
-    obj.imageCheckBox728:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox728:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox728:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox728:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox728:setName("imageCheckBox728");
 
     obj.imageCheckBox729 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -10442,8 +10452,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox729:setWidth(25);
     obj.imageCheckBox729:setHeight(25);
     obj.imageCheckBox729:setField("traits_8_5");
-    obj.imageCheckBox729:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox729:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox729:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox729:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox729:setName("imageCheckBox729");
 
     obj.imageCheckBox730 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -10453,8 +10463,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox730:setWidth(25);
     obj.imageCheckBox730:setHeight(25);
     obj.imageCheckBox730:setField("traits_8_6");
-    obj.imageCheckBox730:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox730:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox730:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox730:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox730:setName("imageCheckBox730");
 
     obj.imageCheckBox731 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -10464,8 +10474,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox731:setWidth(25);
     obj.imageCheckBox731:setHeight(25);
     obj.imageCheckBox731:setField("traits_8_7");
-    obj.imageCheckBox731:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox731:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox731:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox731:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox731:setName("imageCheckBox731");
 
     obj.imageCheckBox732 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -10475,8 +10485,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox732:setWidth(25);
     obj.imageCheckBox732:setHeight(25);
     obj.imageCheckBox732:setField("traits_8_8");
-    obj.imageCheckBox732:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox732:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox732:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox732:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox732:setName("imageCheckBox732");
 
     obj.imageCheckBox733 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -10486,8 +10496,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox733:setWidth(25);
     obj.imageCheckBox733:setHeight(25);
     obj.imageCheckBox733:setField("traits_8_9");
-    obj.imageCheckBox733:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox733:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox733:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox733:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox733:setName("imageCheckBox733");
 
     obj.layout106 = GUI.fromHandle(_obj_newObject("layout"));
@@ -10498,15 +10508,15 @@ local function constructNew_frmVampireDarkAges20th()
     obj.layout106:setHeight(25);
     obj.layout106:setName("layout106");
 
-    obj.edit47 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit47:setParent(obj.layout106);
-    obj.edit47:setLeft(0);
-    obj.edit47:setTop(5);
-    obj.edit47:setWidth(75);
-    obj.edit47:setHeight(20);
-    obj.edit47:setField("traits_9");
-    obj.edit47:setFontSize(12);
-    obj.edit47:setName("edit47");
+    obj.edit48 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit48:setParent(obj.layout106);
+    obj.edit48:setLeft(0);
+    obj.edit48:setTop(5);
+    obj.edit48:setWidth(75);
+    obj.edit48:setHeight(20);
+    obj.edit48:setField("traits_9");
+    obj.edit48:setFontSize(12);
+    obj.edit48:setName("edit48");
 
     obj.imageCheckBox734 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox734:setParent(obj.layout106);
@@ -10515,8 +10525,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox734:setWidth(25);
     obj.imageCheckBox734:setHeight(25);
     obj.imageCheckBox734:setField("traits_9_1");
-    obj.imageCheckBox734:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox734:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox734:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox734:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox734:setName("imageCheckBox734");
 
     obj.imageCheckBox735 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -10526,8 +10536,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox735:setWidth(25);
     obj.imageCheckBox735:setHeight(25);
     obj.imageCheckBox735:setField("traits_9_2");
-    obj.imageCheckBox735:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox735:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox735:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox735:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox735:setName("imageCheckBox735");
 
     obj.imageCheckBox736 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -10537,8 +10547,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox736:setWidth(25);
     obj.imageCheckBox736:setHeight(25);
     obj.imageCheckBox736:setField("traits_9_3");
-    obj.imageCheckBox736:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox736:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox736:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox736:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox736:setName("imageCheckBox736");
 
     obj.imageCheckBox737 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -10548,8 +10558,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox737:setWidth(25);
     obj.imageCheckBox737:setHeight(25);
     obj.imageCheckBox737:setField("traits_9_4");
-    obj.imageCheckBox737:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox737:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox737:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox737:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox737:setName("imageCheckBox737");
 
     obj.imageCheckBox738 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -10559,8 +10569,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox738:setWidth(25);
     obj.imageCheckBox738:setHeight(25);
     obj.imageCheckBox738:setField("traits_9_5");
-    obj.imageCheckBox738:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox738:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox738:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox738:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox738:setName("imageCheckBox738");
 
     obj.imageCheckBox739 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -10570,8 +10580,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox739:setWidth(25);
     obj.imageCheckBox739:setHeight(25);
     obj.imageCheckBox739:setField("traits_9_6");
-    obj.imageCheckBox739:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox739:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox739:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox739:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox739:setName("imageCheckBox739");
 
     obj.imageCheckBox740 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -10581,8 +10591,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox740:setWidth(25);
     obj.imageCheckBox740:setHeight(25);
     obj.imageCheckBox740:setField("traits_9_7");
-    obj.imageCheckBox740:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox740:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox740:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox740:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox740:setName("imageCheckBox740");
 
     obj.imageCheckBox741 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -10592,8 +10602,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox741:setWidth(25);
     obj.imageCheckBox741:setHeight(25);
     obj.imageCheckBox741:setField("traits_9_8");
-    obj.imageCheckBox741:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox741:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox741:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox741:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox741:setName("imageCheckBox741");
 
     obj.imageCheckBox742 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -10603,8 +10613,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox742:setWidth(25);
     obj.imageCheckBox742:setHeight(25);
     obj.imageCheckBox742:setField("traits_9_9");
-    obj.imageCheckBox742:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox742:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox742:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox742:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox742:setName("imageCheckBox742");
 
     obj.layout107 = GUI.fromHandle(_obj_newObject("layout"));
@@ -10615,15 +10625,15 @@ local function constructNew_frmVampireDarkAges20th()
     obj.layout107:setHeight(25);
     obj.layout107:setName("layout107");
 
-    obj.edit48 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit48:setParent(obj.layout107);
-    obj.edit48:setLeft(0);
-    obj.edit48:setTop(5);
-    obj.edit48:setWidth(75);
-    obj.edit48:setHeight(20);
-    obj.edit48:setField("traits_10");
-    obj.edit48:setFontSize(12);
-    obj.edit48:setName("edit48");
+    obj.edit49 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit49:setParent(obj.layout107);
+    obj.edit49:setLeft(0);
+    obj.edit49:setTop(5);
+    obj.edit49:setWidth(75);
+    obj.edit49:setHeight(20);
+    obj.edit49:setField("traits_10");
+    obj.edit49:setFontSize(12);
+    obj.edit49:setName("edit49");
 
     obj.imageCheckBox743 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox743:setParent(obj.layout107);
@@ -10632,8 +10642,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox743:setWidth(25);
     obj.imageCheckBox743:setHeight(25);
     obj.imageCheckBox743:setField("traits_10_1");
-    obj.imageCheckBox743:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox743:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox743:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox743:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox743:setName("imageCheckBox743");
 
     obj.imageCheckBox744 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -10643,8 +10653,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox744:setWidth(25);
     obj.imageCheckBox744:setHeight(25);
     obj.imageCheckBox744:setField("traits_10_2");
-    obj.imageCheckBox744:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox744:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox744:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox744:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox744:setName("imageCheckBox744");
 
     obj.imageCheckBox745 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -10654,8 +10664,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox745:setWidth(25);
     obj.imageCheckBox745:setHeight(25);
     obj.imageCheckBox745:setField("traits_10_3");
-    obj.imageCheckBox745:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox745:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox745:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox745:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox745:setName("imageCheckBox745");
 
     obj.imageCheckBox746 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -10665,8 +10675,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox746:setWidth(25);
     obj.imageCheckBox746:setHeight(25);
     obj.imageCheckBox746:setField("traits_10_4");
-    obj.imageCheckBox746:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox746:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox746:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox746:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox746:setName("imageCheckBox746");
 
     obj.imageCheckBox747 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -10676,8 +10686,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox747:setWidth(25);
     obj.imageCheckBox747:setHeight(25);
     obj.imageCheckBox747:setField("traits_10_5");
-    obj.imageCheckBox747:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox747:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox747:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox747:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox747:setName("imageCheckBox747");
 
     obj.imageCheckBox748 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -10687,8 +10697,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox748:setWidth(25);
     obj.imageCheckBox748:setHeight(25);
     obj.imageCheckBox748:setField("traits_10_6");
-    obj.imageCheckBox748:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox748:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox748:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox748:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox748:setName("imageCheckBox748");
 
     obj.imageCheckBox749 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -10698,8 +10708,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox749:setWidth(25);
     obj.imageCheckBox749:setHeight(25);
     obj.imageCheckBox749:setField("traits_10_7");
-    obj.imageCheckBox749:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox749:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox749:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox749:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox749:setName("imageCheckBox749");
 
     obj.imageCheckBox750 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -10709,8 +10719,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox750:setWidth(25);
     obj.imageCheckBox750:setHeight(25);
     obj.imageCheckBox750:setField("traits_10_8");
-    obj.imageCheckBox750:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox750:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox750:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox750:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox750:setName("imageCheckBox750");
 
     obj.imageCheckBox751 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -10720,8 +10730,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox751:setWidth(25);
     obj.imageCheckBox751:setHeight(25);
     obj.imageCheckBox751:setField("traits_10_9");
-    obj.imageCheckBox751:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox751:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox751:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox751:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox751:setName("imageCheckBox751");
 
     obj.layout108 = GUI.fromHandle(_obj_newObject("layout"));
@@ -10732,15 +10742,15 @@ local function constructNew_frmVampireDarkAges20th()
     obj.layout108:setHeight(25);
     obj.layout108:setName("layout108");
 
-    obj.edit49 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit49:setParent(obj.layout108);
-    obj.edit49:setLeft(0);
-    obj.edit49:setTop(5);
-    obj.edit49:setWidth(75);
-    obj.edit49:setHeight(20);
-    obj.edit49:setField("traits_11");
-    obj.edit49:setFontSize(12);
-    obj.edit49:setName("edit49");
+    obj.edit50 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit50:setParent(obj.layout108);
+    obj.edit50:setLeft(0);
+    obj.edit50:setTop(5);
+    obj.edit50:setWidth(75);
+    obj.edit50:setHeight(20);
+    obj.edit50:setField("traits_11");
+    obj.edit50:setFontSize(12);
+    obj.edit50:setName("edit50");
 
     obj.imageCheckBox752 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox752:setParent(obj.layout108);
@@ -10749,8 +10759,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox752:setWidth(25);
     obj.imageCheckBox752:setHeight(25);
     obj.imageCheckBox752:setField("traits_11_1");
-    obj.imageCheckBox752:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox752:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox752:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox752:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox752:setName("imageCheckBox752");
 
     obj.imageCheckBox753 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -10760,8 +10770,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox753:setWidth(25);
     obj.imageCheckBox753:setHeight(25);
     obj.imageCheckBox753:setField("traits_11_2");
-    obj.imageCheckBox753:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox753:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox753:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox753:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox753:setName("imageCheckBox753");
 
     obj.imageCheckBox754 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -10771,8 +10781,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox754:setWidth(25);
     obj.imageCheckBox754:setHeight(25);
     obj.imageCheckBox754:setField("traits_11_3");
-    obj.imageCheckBox754:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox754:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox754:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox754:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox754:setName("imageCheckBox754");
 
     obj.imageCheckBox755 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -10782,8 +10792,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox755:setWidth(25);
     obj.imageCheckBox755:setHeight(25);
     obj.imageCheckBox755:setField("traits_11_4");
-    obj.imageCheckBox755:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox755:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox755:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox755:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox755:setName("imageCheckBox755");
 
     obj.imageCheckBox756 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -10793,8 +10803,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox756:setWidth(25);
     obj.imageCheckBox756:setHeight(25);
     obj.imageCheckBox756:setField("traits_11_5");
-    obj.imageCheckBox756:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox756:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox756:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox756:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox756:setName("imageCheckBox756");
 
     obj.imageCheckBox757 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -10804,8 +10814,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox757:setWidth(25);
     obj.imageCheckBox757:setHeight(25);
     obj.imageCheckBox757:setField("traits_11_6");
-    obj.imageCheckBox757:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox757:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox757:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox757:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox757:setName("imageCheckBox757");
 
     obj.imageCheckBox758 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -10815,8 +10825,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox758:setWidth(25);
     obj.imageCheckBox758:setHeight(25);
     obj.imageCheckBox758:setField("traits_11_7");
-    obj.imageCheckBox758:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox758:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox758:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox758:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox758:setName("imageCheckBox758");
 
     obj.imageCheckBox759 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -10826,8 +10836,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox759:setWidth(25);
     obj.imageCheckBox759:setHeight(25);
     obj.imageCheckBox759:setField("traits_11_8");
-    obj.imageCheckBox759:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox759:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox759:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox759:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox759:setName("imageCheckBox759");
 
     obj.imageCheckBox760 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -10837,8 +10847,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox760:setWidth(25);
     obj.imageCheckBox760:setHeight(25);
     obj.imageCheckBox760:setField("traits_11_9");
-    obj.imageCheckBox760:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox760:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox760:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox760:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox760:setName("imageCheckBox760");
 
     obj.layout109 = GUI.fromHandle(_obj_newObject("layout"));
@@ -10849,15 +10859,15 @@ local function constructNew_frmVampireDarkAges20th()
     obj.layout109:setHeight(25);
     obj.layout109:setName("layout109");
 
-    obj.edit50 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit50:setParent(obj.layout109);
-    obj.edit50:setLeft(0);
-    obj.edit50:setTop(5);
-    obj.edit50:setWidth(75);
-    obj.edit50:setHeight(20);
-    obj.edit50:setField("traits_12");
-    obj.edit50:setFontSize(12);
-    obj.edit50:setName("edit50");
+    obj.edit51 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit51:setParent(obj.layout109);
+    obj.edit51:setLeft(0);
+    obj.edit51:setTop(5);
+    obj.edit51:setWidth(75);
+    obj.edit51:setHeight(20);
+    obj.edit51:setField("traits_12");
+    obj.edit51:setFontSize(12);
+    obj.edit51:setName("edit51");
 
     obj.imageCheckBox761 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox761:setParent(obj.layout109);
@@ -10866,8 +10876,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox761:setWidth(25);
     obj.imageCheckBox761:setHeight(25);
     obj.imageCheckBox761:setField("traits_12_1");
-    obj.imageCheckBox761:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox761:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox761:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox761:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox761:setName("imageCheckBox761");
 
     obj.imageCheckBox762 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -10877,8 +10887,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox762:setWidth(25);
     obj.imageCheckBox762:setHeight(25);
     obj.imageCheckBox762:setField("traits_12_2");
-    obj.imageCheckBox762:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox762:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox762:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox762:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox762:setName("imageCheckBox762");
 
     obj.imageCheckBox763 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -10888,8 +10898,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox763:setWidth(25);
     obj.imageCheckBox763:setHeight(25);
     obj.imageCheckBox763:setField("traits_12_3");
-    obj.imageCheckBox763:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox763:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox763:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox763:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox763:setName("imageCheckBox763");
 
     obj.imageCheckBox764 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -10899,8 +10909,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox764:setWidth(25);
     obj.imageCheckBox764:setHeight(25);
     obj.imageCheckBox764:setField("traits_12_4");
-    obj.imageCheckBox764:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox764:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox764:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox764:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox764:setName("imageCheckBox764");
 
     obj.imageCheckBox765 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -10910,8 +10920,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox765:setWidth(25);
     obj.imageCheckBox765:setHeight(25);
     obj.imageCheckBox765:setField("traits_12_5");
-    obj.imageCheckBox765:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox765:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox765:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox765:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox765:setName("imageCheckBox765");
 
     obj.imageCheckBox766 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -10921,8 +10931,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox766:setWidth(25);
     obj.imageCheckBox766:setHeight(25);
     obj.imageCheckBox766:setField("traits_12_6");
-    obj.imageCheckBox766:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox766:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox766:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox766:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox766:setName("imageCheckBox766");
 
     obj.imageCheckBox767 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -10932,8 +10942,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox767:setWidth(25);
     obj.imageCheckBox767:setHeight(25);
     obj.imageCheckBox767:setField("traits_12_7");
-    obj.imageCheckBox767:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox767:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox767:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox767:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox767:setName("imageCheckBox767");
 
     obj.imageCheckBox768 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -10943,8 +10953,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox768:setWidth(25);
     obj.imageCheckBox768:setHeight(25);
     obj.imageCheckBox768:setField("traits_12_8");
-    obj.imageCheckBox768:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox768:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox768:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox768:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox768:setName("imageCheckBox768");
 
     obj.imageCheckBox769 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -10954,8 +10964,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox769:setWidth(25);
     obj.imageCheckBox769:setHeight(25);
     obj.imageCheckBox769:setField("traits_12_9");
-    obj.imageCheckBox769:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox769:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox769:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox769:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox769:setName("imageCheckBox769");
 
     obj.layout110 = GUI.fromHandle(_obj_newObject("layout"));
@@ -10993,14 +11003,14 @@ local function constructNew_frmVampireDarkAges20th()
     obj.layout111:setHeight(25);
     obj.layout111:setName("layout111");
 
-    obj.edit51 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit51:setParent(obj.layout111);
-    obj.edit51:setLeft(0);
-    obj.edit51:setTop(5);
-    obj.edit51:setWidth(305);
-    obj.edit51:setHeight(20);
-    obj.edit51:setField("otherTraits_1");
-    obj.edit51:setName("edit51");
+    obj.edit52 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit52:setParent(obj.layout111);
+    obj.edit52:setLeft(0);
+    obj.edit52:setTop(5);
+    obj.edit52:setWidth(305);
+    obj.edit52:setHeight(20);
+    obj.edit52:setField("otherTraits_1");
+    obj.edit52:setName("edit52");
 
     obj.layout112 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout112:setParent(obj.layout110);
@@ -11010,14 +11020,14 @@ local function constructNew_frmVampireDarkAges20th()
     obj.layout112:setHeight(25);
     obj.layout112:setName("layout112");
 
-    obj.edit52 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit52:setParent(obj.layout112);
-    obj.edit52:setLeft(0);
-    obj.edit52:setTop(5);
-    obj.edit52:setWidth(305);
-    obj.edit52:setHeight(20);
-    obj.edit52:setField("otherTraits_2");
-    obj.edit52:setName("edit52");
+    obj.edit53 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit53:setParent(obj.layout112);
+    obj.edit53:setLeft(0);
+    obj.edit53:setTop(5);
+    obj.edit53:setWidth(305);
+    obj.edit53:setHeight(20);
+    obj.edit53:setField("otherTraits_2");
+    obj.edit53:setName("edit53");
 
     obj.layout113 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout113:setParent(obj.layout110);
@@ -11027,14 +11037,14 @@ local function constructNew_frmVampireDarkAges20th()
     obj.layout113:setHeight(25);
     obj.layout113:setName("layout113");
 
-    obj.edit53 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit53:setParent(obj.layout113);
-    obj.edit53:setLeft(0);
-    obj.edit53:setTop(5);
-    obj.edit53:setWidth(305);
-    obj.edit53:setHeight(20);
-    obj.edit53:setField("otherTraits_3");
-    obj.edit53:setName("edit53");
+    obj.edit54 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit54:setParent(obj.layout113);
+    obj.edit54:setLeft(0);
+    obj.edit54:setTop(5);
+    obj.edit54:setWidth(305);
+    obj.edit54:setHeight(20);
+    obj.edit54:setField("otherTraits_3");
+    obj.edit54:setName("edit54");
 
     obj.layout114 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout114:setParent(obj.layout110);
@@ -11044,14 +11054,14 @@ local function constructNew_frmVampireDarkAges20th()
     obj.layout114:setHeight(25);
     obj.layout114:setName("layout114");
 
-    obj.edit54 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit54:setParent(obj.layout114);
-    obj.edit54:setLeft(0);
-    obj.edit54:setTop(5);
-    obj.edit54:setWidth(305);
-    obj.edit54:setHeight(20);
-    obj.edit54:setField("otherTraits_4");
-    obj.edit54:setName("edit54");
+    obj.edit55 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit55:setParent(obj.layout114);
+    obj.edit55:setLeft(0);
+    obj.edit55:setTop(5);
+    obj.edit55:setWidth(305);
+    obj.edit55:setHeight(20);
+    obj.edit55:setField("otherTraits_4");
+    obj.edit55:setName("edit55");
 
     obj.layout115 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout115:setParent(obj.layout110);
@@ -11061,14 +11071,14 @@ local function constructNew_frmVampireDarkAges20th()
     obj.layout115:setHeight(25);
     obj.layout115:setName("layout115");
 
-    obj.edit55 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit55:setParent(obj.layout115);
-    obj.edit55:setLeft(0);
-    obj.edit55:setTop(5);
-    obj.edit55:setWidth(305);
-    obj.edit55:setHeight(20);
-    obj.edit55:setField("otherTraits_5");
-    obj.edit55:setName("edit55");
+    obj.edit56 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit56:setParent(obj.layout115);
+    obj.edit56:setLeft(0);
+    obj.edit56:setTop(5);
+    obj.edit56:setWidth(305);
+    obj.edit56:setHeight(20);
+    obj.edit56:setField("otherTraits_5");
+    obj.edit56:setName("edit56");
 
     obj.layout116 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout116:setParent(obj.layout110);
@@ -11078,14 +11088,14 @@ local function constructNew_frmVampireDarkAges20th()
     obj.layout116:setHeight(25);
     obj.layout116:setName("layout116");
 
-    obj.edit56 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit56:setParent(obj.layout116);
-    obj.edit56:setLeft(0);
-    obj.edit56:setTop(5);
-    obj.edit56:setWidth(305);
-    obj.edit56:setHeight(20);
-    obj.edit56:setField("otherTraits_6");
-    obj.edit56:setName("edit56");
+    obj.edit57 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit57:setParent(obj.layout116);
+    obj.edit57:setLeft(0);
+    obj.edit57:setTop(5);
+    obj.edit57:setWidth(305);
+    obj.edit57:setHeight(20);
+    obj.edit57:setField("otherTraits_6");
+    obj.edit57:setName("edit57");
 
     obj.layout117 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout117:setParent(obj.layout110);
@@ -11095,14 +11105,14 @@ local function constructNew_frmVampireDarkAges20th()
     obj.layout117:setHeight(25);
     obj.layout117:setName("layout117");
 
-    obj.edit57 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit57:setParent(obj.layout117);
-    obj.edit57:setLeft(0);
-    obj.edit57:setTop(5);
-    obj.edit57:setWidth(305);
-    obj.edit57:setHeight(20);
-    obj.edit57:setField("otherTraits_7");
-    obj.edit57:setName("edit57");
+    obj.edit58 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit58:setParent(obj.layout117);
+    obj.edit58:setLeft(0);
+    obj.edit58:setTop(5);
+    obj.edit58:setWidth(305);
+    obj.edit58:setHeight(20);
+    obj.edit58:setField("otherTraits_7");
+    obj.edit58:setName("edit58");
 
     obj.layout118 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout118:setParent(obj.layout110);
@@ -11112,14 +11122,14 @@ local function constructNew_frmVampireDarkAges20th()
     obj.layout118:setHeight(25);
     obj.layout118:setName("layout118");
 
-    obj.edit58 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit58:setParent(obj.layout118);
-    obj.edit58:setLeft(0);
-    obj.edit58:setTop(5);
-    obj.edit58:setWidth(305);
-    obj.edit58:setHeight(20);
-    obj.edit58:setField("otherTraits_8");
-    obj.edit58:setName("edit58");
+    obj.edit59 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit59:setParent(obj.layout118);
+    obj.edit59:setLeft(0);
+    obj.edit59:setTop(5);
+    obj.edit59:setWidth(305);
+    obj.edit59:setHeight(20);
+    obj.edit59:setField("otherTraits_8");
+    obj.edit59:setName("edit59");
 
     obj.layout119 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout119:setParent(obj.layout110);
@@ -11129,14 +11139,14 @@ local function constructNew_frmVampireDarkAges20th()
     obj.layout119:setHeight(25);
     obj.layout119:setName("layout119");
 
-    obj.edit59 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit59:setParent(obj.layout119);
-    obj.edit59:setLeft(0);
-    obj.edit59:setTop(5);
-    obj.edit59:setWidth(305);
-    obj.edit59:setHeight(20);
-    obj.edit59:setField("otherTraits_9");
-    obj.edit59:setName("edit59");
+    obj.edit60 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit60:setParent(obj.layout119);
+    obj.edit60:setLeft(0);
+    obj.edit60:setTop(5);
+    obj.edit60:setWidth(305);
+    obj.edit60:setHeight(20);
+    obj.edit60:setField("otherTraits_9");
+    obj.edit60:setName("edit60");
 
     obj.layout120 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout120:setParent(obj.layout110);
@@ -11146,14 +11156,14 @@ local function constructNew_frmVampireDarkAges20th()
     obj.layout120:setHeight(25);
     obj.layout120:setName("layout120");
 
-    obj.edit60 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit60:setParent(obj.layout120);
-    obj.edit60:setLeft(0);
-    obj.edit60:setTop(5);
-    obj.edit60:setWidth(305);
-    obj.edit60:setHeight(20);
-    obj.edit60:setField("gotherTraits10");
-    obj.edit60:setName("edit60");
+    obj.edit61 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit61:setParent(obj.layout120);
+    obj.edit61:setLeft(0);
+    obj.edit61:setTop(5);
+    obj.edit61:setWidth(305);
+    obj.edit61:setHeight(20);
+    obj.edit61:setField("gotherTraits10");
+    obj.edit61:setName("edit61");
 
     obj.layout121 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout121:setParent(obj.layout110);
@@ -11163,14 +11173,14 @@ local function constructNew_frmVampireDarkAges20th()
     obj.layout121:setHeight(25);
     obj.layout121:setName("layout121");
 
-    obj.edit61 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit61:setParent(obj.layout121);
-    obj.edit61:setLeft(0);
-    obj.edit61:setTop(5);
-    obj.edit61:setWidth(305);
-    obj.edit61:setHeight(20);
-    obj.edit61:setField("gotherTraits11");
-    obj.edit61:setName("edit61");
+    obj.edit62 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit62:setParent(obj.layout121);
+    obj.edit62:setLeft(0);
+    obj.edit62:setTop(5);
+    obj.edit62:setWidth(305);
+    obj.edit62:setHeight(20);
+    obj.edit62:setField("gotherTraits11");
+    obj.edit62:setName("edit62");
 
     obj.layout122 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout122:setParent(obj.layout110);
@@ -11180,14 +11190,14 @@ local function constructNew_frmVampireDarkAges20th()
     obj.layout122:setHeight(25);
     obj.layout122:setName("layout122");
 
-    obj.edit62 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit62:setParent(obj.layout122);
-    obj.edit62:setLeft(0);
-    obj.edit62:setTop(5);
-    obj.edit62:setWidth(305);
-    obj.edit62:setHeight(20);
-    obj.edit62:setField("gotherTraits12");
-    obj.edit62:setName("edit62");
+    obj.edit63 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit63:setParent(obj.layout122);
+    obj.edit63:setLeft(0);
+    obj.edit63:setTop(5);
+    obj.edit63:setWidth(305);
+    obj.edit63:setHeight(20);
+    obj.edit63:setField("gotherTraits12");
+    obj.edit63:setName("edit63");
 
     obj.layout123 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout123:setParent(obj.scrollBox2);
@@ -11224,15 +11234,15 @@ local function constructNew_frmVampireDarkAges20th()
     obj.layout124:setHeight(25);
     obj.layout124:setName("layout124");
 
-    obj.edit63 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit63:setParent(obj.layout124);
-    obj.edit63:setLeft(0);
-    obj.edit63:setTop(5);
-    obj.edit63:setWidth(95);
-    obj.edit63:setHeight(20);
-    obj.edit63:setField("path_1");
-    obj.edit63:setFontSize(12);
-    obj.edit63:setName("edit63");
+    obj.edit64 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit64:setParent(obj.layout124);
+    obj.edit64:setLeft(0);
+    obj.edit64:setTop(5);
+    obj.edit64:setWidth(95);
+    obj.edit64:setHeight(20);
+    obj.edit64:setField("path_1");
+    obj.edit64:setFontSize(12);
+    obj.edit64:setName("edit64");
 
     obj.imageCheckBox770 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox770:setParent(obj.layout124);
@@ -11241,8 +11251,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox770:setWidth(25);
     obj.imageCheckBox770:setHeight(25);
     obj.imageCheckBox770:setField("path_1_1");
-    obj.imageCheckBox770:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox770:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox770:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox770:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox770:setName("imageCheckBox770");
 
     obj.imageCheckBox771 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -11252,8 +11262,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox771:setWidth(25);
     obj.imageCheckBox771:setHeight(25);
     obj.imageCheckBox771:setField("path_1_2");
-    obj.imageCheckBox771:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox771:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox771:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox771:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox771:setName("imageCheckBox771");
 
     obj.imageCheckBox772 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -11263,8 +11273,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox772:setWidth(25);
     obj.imageCheckBox772:setHeight(25);
     obj.imageCheckBox772:setField("path_1_3");
-    obj.imageCheckBox772:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox772:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox772:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox772:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox772:setName("imageCheckBox772");
 
     obj.imageCheckBox773 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -11274,8 +11284,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox773:setWidth(25);
     obj.imageCheckBox773:setHeight(25);
     obj.imageCheckBox773:setField("path_1_4");
-    obj.imageCheckBox773:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox773:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox773:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox773:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox773:setName("imageCheckBox773");
 
     obj.imageCheckBox774 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -11285,8 +11295,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox774:setWidth(25);
     obj.imageCheckBox774:setHeight(25);
     obj.imageCheckBox774:setField("path_1_5");
-    obj.imageCheckBox774:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox774:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox774:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox774:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox774:setName("imageCheckBox774");
 
     obj.layout125 = GUI.fromHandle(_obj_newObject("layout"));
@@ -11297,15 +11307,15 @@ local function constructNew_frmVampireDarkAges20th()
     obj.layout125:setHeight(25);
     obj.layout125:setName("layout125");
 
-    obj.edit64 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit64:setParent(obj.layout125);
-    obj.edit64:setLeft(0);
-    obj.edit64:setTop(5);
-    obj.edit64:setWidth(95);
-    obj.edit64:setHeight(20);
-    obj.edit64:setField("path_2");
-    obj.edit64:setFontSize(12);
-    obj.edit64:setName("edit64");
+    obj.edit65 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit65:setParent(obj.layout125);
+    obj.edit65:setLeft(0);
+    obj.edit65:setTop(5);
+    obj.edit65:setWidth(95);
+    obj.edit65:setHeight(20);
+    obj.edit65:setField("path_2");
+    obj.edit65:setFontSize(12);
+    obj.edit65:setName("edit65");
 
     obj.imageCheckBox775 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox775:setParent(obj.layout125);
@@ -11314,8 +11324,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox775:setWidth(25);
     obj.imageCheckBox775:setHeight(25);
     obj.imageCheckBox775:setField("path_2_1");
-    obj.imageCheckBox775:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox775:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox775:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox775:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox775:setName("imageCheckBox775");
 
     obj.imageCheckBox776 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -11325,8 +11335,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox776:setWidth(25);
     obj.imageCheckBox776:setHeight(25);
     obj.imageCheckBox776:setField("path_2_2");
-    obj.imageCheckBox776:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox776:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox776:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox776:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox776:setName("imageCheckBox776");
 
     obj.imageCheckBox777 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -11336,8 +11346,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox777:setWidth(25);
     obj.imageCheckBox777:setHeight(25);
     obj.imageCheckBox777:setField("path_2_3");
-    obj.imageCheckBox777:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox777:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox777:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox777:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox777:setName("imageCheckBox777");
 
     obj.imageCheckBox778 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -11347,8 +11357,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox778:setWidth(25);
     obj.imageCheckBox778:setHeight(25);
     obj.imageCheckBox778:setField("path_2_4");
-    obj.imageCheckBox778:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox778:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox778:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox778:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox778:setName("imageCheckBox778");
 
     obj.imageCheckBox779 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -11358,8 +11368,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox779:setWidth(25);
     obj.imageCheckBox779:setHeight(25);
     obj.imageCheckBox779:setField("path_2_5");
-    obj.imageCheckBox779:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox779:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox779:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox779:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox779:setName("imageCheckBox779");
 
     obj.layout126 = GUI.fromHandle(_obj_newObject("layout"));
@@ -11370,15 +11380,15 @@ local function constructNew_frmVampireDarkAges20th()
     obj.layout126:setHeight(25);
     obj.layout126:setName("layout126");
 
-    obj.edit65 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit65:setParent(obj.layout126);
-    obj.edit65:setLeft(0);
-    obj.edit65:setTop(5);
-    obj.edit65:setWidth(95);
-    obj.edit65:setHeight(20);
-    obj.edit65:setField("path_3");
-    obj.edit65:setFontSize(12);
-    obj.edit65:setName("edit65");
+    obj.edit66 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit66:setParent(obj.layout126);
+    obj.edit66:setLeft(0);
+    obj.edit66:setTop(5);
+    obj.edit66:setWidth(95);
+    obj.edit66:setHeight(20);
+    obj.edit66:setField("path_3");
+    obj.edit66:setFontSize(12);
+    obj.edit66:setName("edit66");
 
     obj.imageCheckBox780 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox780:setParent(obj.layout126);
@@ -11387,8 +11397,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox780:setWidth(25);
     obj.imageCheckBox780:setHeight(25);
     obj.imageCheckBox780:setField("path_3_1");
-    obj.imageCheckBox780:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox780:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox780:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox780:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox780:setName("imageCheckBox780");
 
     obj.imageCheckBox781 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -11398,8 +11408,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox781:setWidth(25);
     obj.imageCheckBox781:setHeight(25);
     obj.imageCheckBox781:setField("path_3_2");
-    obj.imageCheckBox781:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox781:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox781:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox781:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox781:setName("imageCheckBox781");
 
     obj.imageCheckBox782 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -11409,8 +11419,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox782:setWidth(25);
     obj.imageCheckBox782:setHeight(25);
     obj.imageCheckBox782:setField("path_3_3");
-    obj.imageCheckBox782:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox782:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox782:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox782:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox782:setName("imageCheckBox782");
 
     obj.imageCheckBox783 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -11420,8 +11430,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox783:setWidth(25);
     obj.imageCheckBox783:setHeight(25);
     obj.imageCheckBox783:setField("path_3_4");
-    obj.imageCheckBox783:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox783:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox783:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox783:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox783:setName("imageCheckBox783");
 
     obj.imageCheckBox784 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -11431,8 +11441,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox784:setWidth(25);
     obj.imageCheckBox784:setHeight(25);
     obj.imageCheckBox784:setField("path_3_5");
-    obj.imageCheckBox784:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox784:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox784:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox784:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox784:setName("imageCheckBox784");
 
     obj.layout127 = GUI.fromHandle(_obj_newObject("layout"));
@@ -11443,15 +11453,15 @@ local function constructNew_frmVampireDarkAges20th()
     obj.layout127:setHeight(25);
     obj.layout127:setName("layout127");
 
-    obj.edit66 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit66:setParent(obj.layout127);
-    obj.edit66:setLeft(0);
-    obj.edit66:setTop(5);
-    obj.edit66:setWidth(95);
-    obj.edit66:setHeight(20);
-    obj.edit66:setField("path_4");
-    obj.edit66:setFontSize(12);
-    obj.edit66:setName("edit66");
+    obj.edit67 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit67:setParent(obj.layout127);
+    obj.edit67:setLeft(0);
+    obj.edit67:setTop(5);
+    obj.edit67:setWidth(95);
+    obj.edit67:setHeight(20);
+    obj.edit67:setField("path_4");
+    obj.edit67:setFontSize(12);
+    obj.edit67:setName("edit67");
 
     obj.imageCheckBox785 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox785:setParent(obj.layout127);
@@ -11460,8 +11470,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox785:setWidth(25);
     obj.imageCheckBox785:setHeight(25);
     obj.imageCheckBox785:setField("path_4_1");
-    obj.imageCheckBox785:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox785:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox785:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox785:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox785:setName("imageCheckBox785");
 
     obj.imageCheckBox786 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -11471,8 +11481,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox786:setWidth(25);
     obj.imageCheckBox786:setHeight(25);
     obj.imageCheckBox786:setField("path_4_2");
-    obj.imageCheckBox786:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox786:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox786:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox786:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox786:setName("imageCheckBox786");
 
     obj.imageCheckBox787 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -11482,8 +11492,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox787:setWidth(25);
     obj.imageCheckBox787:setHeight(25);
     obj.imageCheckBox787:setField("path_4_3");
-    obj.imageCheckBox787:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox787:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox787:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox787:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox787:setName("imageCheckBox787");
 
     obj.imageCheckBox788 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -11493,8 +11503,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox788:setWidth(25);
     obj.imageCheckBox788:setHeight(25);
     obj.imageCheckBox788:setField("path_4_4");
-    obj.imageCheckBox788:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox788:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox788:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox788:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox788:setName("imageCheckBox788");
 
     obj.imageCheckBox789 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -11504,8 +11514,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox789:setWidth(25);
     obj.imageCheckBox789:setHeight(25);
     obj.imageCheckBox789:setField("path_4_5");
-    obj.imageCheckBox789:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox789:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox789:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox789:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox789:setName("imageCheckBox789");
 
     obj.layout128 = GUI.fromHandle(_obj_newObject("layout"));
@@ -11516,15 +11526,15 @@ local function constructNew_frmVampireDarkAges20th()
     obj.layout128:setHeight(25);
     obj.layout128:setName("layout128");
 
-    obj.edit67 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit67:setParent(obj.layout128);
-    obj.edit67:setLeft(0);
-    obj.edit67:setTop(5);
-    obj.edit67:setWidth(95);
-    obj.edit67:setHeight(20);
-    obj.edit67:setField("path_5");
-    obj.edit67:setFontSize(12);
-    obj.edit67:setName("edit67");
+    obj.edit68 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit68:setParent(obj.layout128);
+    obj.edit68:setLeft(0);
+    obj.edit68:setTop(5);
+    obj.edit68:setWidth(95);
+    obj.edit68:setHeight(20);
+    obj.edit68:setField("path_5");
+    obj.edit68:setFontSize(12);
+    obj.edit68:setName("edit68");
 
     obj.imageCheckBox790 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox790:setParent(obj.layout128);
@@ -11533,8 +11543,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox790:setWidth(25);
     obj.imageCheckBox790:setHeight(25);
     obj.imageCheckBox790:setField("path_5_1");
-    obj.imageCheckBox790:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox790:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox790:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox790:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox790:setName("imageCheckBox790");
 
     obj.imageCheckBox791 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -11544,8 +11554,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox791:setWidth(25);
     obj.imageCheckBox791:setHeight(25);
     obj.imageCheckBox791:setField("path_5_2");
-    obj.imageCheckBox791:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox791:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox791:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox791:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox791:setName("imageCheckBox791");
 
     obj.imageCheckBox792 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -11555,8 +11565,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox792:setWidth(25);
     obj.imageCheckBox792:setHeight(25);
     obj.imageCheckBox792:setField("path_5_3");
-    obj.imageCheckBox792:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox792:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox792:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox792:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox792:setName("imageCheckBox792");
 
     obj.imageCheckBox793 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -11566,8 +11576,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox793:setWidth(25);
     obj.imageCheckBox793:setHeight(25);
     obj.imageCheckBox793:setField("path_5_4");
-    obj.imageCheckBox793:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox793:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox793:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox793:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox793:setName("imageCheckBox793");
 
     obj.imageCheckBox794 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -11577,8 +11587,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox794:setWidth(25);
     obj.imageCheckBox794:setHeight(25);
     obj.imageCheckBox794:setField("path_5_5");
-    obj.imageCheckBox794:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox794:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox794:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox794:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox794:setName("imageCheckBox794");
 
     obj.layout129 = GUI.fromHandle(_obj_newObject("layout"));
@@ -11589,15 +11599,15 @@ local function constructNew_frmVampireDarkAges20th()
     obj.layout129:setHeight(25);
     obj.layout129:setName("layout129");
 
-    obj.edit68 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit68:setParent(obj.layout129);
-    obj.edit68:setLeft(0);
-    obj.edit68:setTop(5);
-    obj.edit68:setWidth(95);
-    obj.edit68:setHeight(20);
-    obj.edit68:setField("path_6");
-    obj.edit68:setFontSize(12);
-    obj.edit68:setName("edit68");
+    obj.edit69 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit69:setParent(obj.layout129);
+    obj.edit69:setLeft(0);
+    obj.edit69:setTop(5);
+    obj.edit69:setWidth(95);
+    obj.edit69:setHeight(20);
+    obj.edit69:setField("path_6");
+    obj.edit69:setFontSize(12);
+    obj.edit69:setName("edit69");
 
     obj.imageCheckBox795 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox795:setParent(obj.layout129);
@@ -11606,8 +11616,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox795:setWidth(25);
     obj.imageCheckBox795:setHeight(25);
     obj.imageCheckBox795:setField("path_6_1");
-    obj.imageCheckBox795:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox795:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox795:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox795:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox795:setName("imageCheckBox795");
 
     obj.imageCheckBox796 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -11617,8 +11627,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox796:setWidth(25);
     obj.imageCheckBox796:setHeight(25);
     obj.imageCheckBox796:setField("path_6_2");
-    obj.imageCheckBox796:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox796:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox796:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox796:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox796:setName("imageCheckBox796");
 
     obj.imageCheckBox797 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -11628,8 +11638,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox797:setWidth(25);
     obj.imageCheckBox797:setHeight(25);
     obj.imageCheckBox797:setField("path_6_3");
-    obj.imageCheckBox797:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox797:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox797:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox797:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox797:setName("imageCheckBox797");
 
     obj.imageCheckBox798 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -11639,8 +11649,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox798:setWidth(25);
     obj.imageCheckBox798:setHeight(25);
     obj.imageCheckBox798:setField("path_6_4");
-    obj.imageCheckBox798:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox798:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox798:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox798:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox798:setName("imageCheckBox798");
 
     obj.imageCheckBox799 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -11650,8 +11660,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox799:setWidth(25);
     obj.imageCheckBox799:setHeight(25);
     obj.imageCheckBox799:setField("path_6_5");
-    obj.imageCheckBox799:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox799:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox799:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox799:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox799:setName("imageCheckBox799");
 
     obj.layout130 = GUI.fromHandle(_obj_newObject("layout"));
@@ -11662,15 +11672,15 @@ local function constructNew_frmVampireDarkAges20th()
     obj.layout130:setHeight(25);
     obj.layout130:setName("layout130");
 
-    obj.edit69 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit69:setParent(obj.layout130);
-    obj.edit69:setLeft(0);
-    obj.edit69:setTop(5);
-    obj.edit69:setWidth(95);
-    obj.edit69:setHeight(20);
-    obj.edit69:setField("path_7");
-    obj.edit69:setFontSize(12);
-    obj.edit69:setName("edit69");
+    obj.edit70 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit70:setParent(obj.layout130);
+    obj.edit70:setLeft(0);
+    obj.edit70:setTop(5);
+    obj.edit70:setWidth(95);
+    obj.edit70:setHeight(20);
+    obj.edit70:setField("path_7");
+    obj.edit70:setFontSize(12);
+    obj.edit70:setName("edit70");
 
     obj.imageCheckBox800 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox800:setParent(obj.layout130);
@@ -11679,8 +11689,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox800:setWidth(25);
     obj.imageCheckBox800:setHeight(25);
     obj.imageCheckBox800:setField("path_7_1");
-    obj.imageCheckBox800:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox800:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox800:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox800:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox800:setName("imageCheckBox800");
 
     obj.imageCheckBox801 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -11690,8 +11700,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox801:setWidth(25);
     obj.imageCheckBox801:setHeight(25);
     obj.imageCheckBox801:setField("path_7_2");
-    obj.imageCheckBox801:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox801:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox801:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox801:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox801:setName("imageCheckBox801");
 
     obj.imageCheckBox802 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -11701,8 +11711,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox802:setWidth(25);
     obj.imageCheckBox802:setHeight(25);
     obj.imageCheckBox802:setField("path_7_3");
-    obj.imageCheckBox802:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox802:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox802:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox802:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox802:setName("imageCheckBox802");
 
     obj.imageCheckBox803 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -11712,8 +11722,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox803:setWidth(25);
     obj.imageCheckBox803:setHeight(25);
     obj.imageCheckBox803:setField("path_7_4");
-    obj.imageCheckBox803:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox803:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox803:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox803:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox803:setName("imageCheckBox803");
 
     obj.imageCheckBox804 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -11723,8 +11733,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox804:setWidth(25);
     obj.imageCheckBox804:setHeight(25);
     obj.imageCheckBox804:setField("path_7_5");
-    obj.imageCheckBox804:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox804:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox804:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox804:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox804:setName("imageCheckBox804");
 
     obj.layout131 = GUI.fromHandle(_obj_newObject("layout"));
@@ -11735,15 +11745,15 @@ local function constructNew_frmVampireDarkAges20th()
     obj.layout131:setHeight(25);
     obj.layout131:setName("layout131");
 
-    obj.edit70 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit70:setParent(obj.layout131);
-    obj.edit70:setLeft(0);
-    obj.edit70:setTop(5);
-    obj.edit70:setWidth(95);
-    obj.edit70:setHeight(20);
-    obj.edit70:setField("path_8");
-    obj.edit70:setFontSize(12);
-    obj.edit70:setName("edit70");
+    obj.edit71 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit71:setParent(obj.layout131);
+    obj.edit71:setLeft(0);
+    obj.edit71:setTop(5);
+    obj.edit71:setWidth(95);
+    obj.edit71:setHeight(20);
+    obj.edit71:setField("path_8");
+    obj.edit71:setFontSize(12);
+    obj.edit71:setName("edit71");
 
     obj.imageCheckBox805 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox805:setParent(obj.layout131);
@@ -11752,8 +11762,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox805:setWidth(25);
     obj.imageCheckBox805:setHeight(25);
     obj.imageCheckBox805:setField("path_8_1");
-    obj.imageCheckBox805:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox805:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox805:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox805:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox805:setName("imageCheckBox805");
 
     obj.imageCheckBox806 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -11763,8 +11773,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox806:setWidth(25);
     obj.imageCheckBox806:setHeight(25);
     obj.imageCheckBox806:setField("path_8_2");
-    obj.imageCheckBox806:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox806:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox806:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox806:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox806:setName("imageCheckBox806");
 
     obj.imageCheckBox807 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -11774,8 +11784,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox807:setWidth(25);
     obj.imageCheckBox807:setHeight(25);
     obj.imageCheckBox807:setField("path_8_3");
-    obj.imageCheckBox807:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox807:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox807:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox807:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox807:setName("imageCheckBox807");
 
     obj.imageCheckBox808 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -11785,8 +11795,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox808:setWidth(25);
     obj.imageCheckBox808:setHeight(25);
     obj.imageCheckBox808:setField("path_8_4");
-    obj.imageCheckBox808:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox808:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox808:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox808:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox808:setName("imageCheckBox808");
 
     obj.imageCheckBox809 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -11796,8 +11806,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox809:setWidth(25);
     obj.imageCheckBox809:setHeight(25);
     obj.imageCheckBox809:setField("path_8_5");
-    obj.imageCheckBox809:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox809:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox809:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox809:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox809:setName("imageCheckBox809");
 
     obj.layout132 = GUI.fromHandle(_obj_newObject("layout"));
@@ -11808,15 +11818,15 @@ local function constructNew_frmVampireDarkAges20th()
     obj.layout132:setHeight(25);
     obj.layout132:setName("layout132");
 
-    obj.edit71 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit71:setParent(obj.layout132);
-    obj.edit71:setLeft(0);
-    obj.edit71:setTop(5);
-    obj.edit71:setWidth(95);
-    obj.edit71:setHeight(20);
-    obj.edit71:setField("path_9");
-    obj.edit71:setFontSize(12);
-    obj.edit71:setName("edit71");
+    obj.edit72 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit72:setParent(obj.layout132);
+    obj.edit72:setLeft(0);
+    obj.edit72:setTop(5);
+    obj.edit72:setWidth(95);
+    obj.edit72:setHeight(20);
+    obj.edit72:setField("path_9");
+    obj.edit72:setFontSize(12);
+    obj.edit72:setName("edit72");
 
     obj.imageCheckBox810 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox810:setParent(obj.layout132);
@@ -11825,8 +11835,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox810:setWidth(25);
     obj.imageCheckBox810:setHeight(25);
     obj.imageCheckBox810:setField("path_9_1");
-    obj.imageCheckBox810:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox810:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox810:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox810:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox810:setName("imageCheckBox810");
 
     obj.imageCheckBox811 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -11836,8 +11846,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox811:setWidth(25);
     obj.imageCheckBox811:setHeight(25);
     obj.imageCheckBox811:setField("path_9_2");
-    obj.imageCheckBox811:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox811:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox811:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox811:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox811:setName("imageCheckBox811");
 
     obj.imageCheckBox812 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -11847,8 +11857,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox812:setWidth(25);
     obj.imageCheckBox812:setHeight(25);
     obj.imageCheckBox812:setField("path_9_3");
-    obj.imageCheckBox812:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox812:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox812:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox812:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox812:setName("imageCheckBox812");
 
     obj.imageCheckBox813 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -11858,8 +11868,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox813:setWidth(25);
     obj.imageCheckBox813:setHeight(25);
     obj.imageCheckBox813:setField("path_9_4");
-    obj.imageCheckBox813:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox813:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox813:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox813:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox813:setName("imageCheckBox813");
 
     obj.imageCheckBox814 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -11869,8 +11879,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox814:setWidth(25);
     obj.imageCheckBox814:setHeight(25);
     obj.imageCheckBox814:setField("path_9_5");
-    obj.imageCheckBox814:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox814:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox814:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox814:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox814:setName("imageCheckBox814");
 
     obj.layout133 = GUI.fromHandle(_obj_newObject("layout"));
@@ -11881,15 +11891,15 @@ local function constructNew_frmVampireDarkAges20th()
     obj.layout133:setHeight(25);
     obj.layout133:setName("layout133");
 
-    obj.edit72 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit72:setParent(obj.layout133);
-    obj.edit72:setLeft(0);
-    obj.edit72:setTop(5);
-    obj.edit72:setWidth(95);
-    obj.edit72:setHeight(20);
-    obj.edit72:setField("path_10");
-    obj.edit72:setFontSize(12);
-    obj.edit72:setName("edit72");
+    obj.edit73 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit73:setParent(obj.layout133);
+    obj.edit73:setLeft(0);
+    obj.edit73:setTop(5);
+    obj.edit73:setWidth(95);
+    obj.edit73:setHeight(20);
+    obj.edit73:setField("path_10");
+    obj.edit73:setFontSize(12);
+    obj.edit73:setName("edit73");
 
     obj.imageCheckBox815 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox815:setParent(obj.layout133);
@@ -11898,8 +11908,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox815:setWidth(25);
     obj.imageCheckBox815:setHeight(25);
     obj.imageCheckBox815:setField("path_10_1");
-    obj.imageCheckBox815:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox815:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox815:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox815:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox815:setName("imageCheckBox815");
 
     obj.imageCheckBox816 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -11909,8 +11919,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox816:setWidth(25);
     obj.imageCheckBox816:setHeight(25);
     obj.imageCheckBox816:setField("path_10_2");
-    obj.imageCheckBox816:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox816:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox816:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox816:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox816:setName("imageCheckBox816");
 
     obj.imageCheckBox817 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -11920,8 +11930,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox817:setWidth(25);
     obj.imageCheckBox817:setHeight(25);
     obj.imageCheckBox817:setField("path_10_3");
-    obj.imageCheckBox817:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox817:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox817:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox817:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox817:setName("imageCheckBox817");
 
     obj.imageCheckBox818 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -11931,8 +11941,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox818:setWidth(25);
     obj.imageCheckBox818:setHeight(25);
     obj.imageCheckBox818:setField("path_10_4");
-    obj.imageCheckBox818:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox818:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox818:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox818:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox818:setName("imageCheckBox818");
 
     obj.imageCheckBox819 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -11942,8 +11952,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox819:setWidth(25);
     obj.imageCheckBox819:setHeight(25);
     obj.imageCheckBox819:setField("path_10_5");
-    obj.imageCheckBox819:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox819:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox819:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox819:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox819:setName("imageCheckBox819");
 
     obj.layout134 = GUI.fromHandle(_obj_newObject("layout"));
@@ -11954,15 +11964,15 @@ local function constructNew_frmVampireDarkAges20th()
     obj.layout134:setHeight(25);
     obj.layout134:setName("layout134");
 
-    obj.edit73 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit73:setParent(obj.layout134);
-    obj.edit73:setLeft(0);
-    obj.edit73:setTop(5);
-    obj.edit73:setWidth(95);
-    obj.edit73:setHeight(20);
-    obj.edit73:setField("path_11");
-    obj.edit73:setFontSize(12);
-    obj.edit73:setName("edit73");
+    obj.edit74 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit74:setParent(obj.layout134);
+    obj.edit74:setLeft(0);
+    obj.edit74:setTop(5);
+    obj.edit74:setWidth(95);
+    obj.edit74:setHeight(20);
+    obj.edit74:setField("path_11");
+    obj.edit74:setFontSize(12);
+    obj.edit74:setName("edit74");
 
     obj.imageCheckBox820 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox820:setParent(obj.layout134);
@@ -11971,8 +11981,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox820:setWidth(25);
     obj.imageCheckBox820:setHeight(25);
     obj.imageCheckBox820:setField("path_11_1");
-    obj.imageCheckBox820:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox820:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox820:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox820:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox820:setName("imageCheckBox820");
 
     obj.imageCheckBox821 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -11982,8 +11992,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox821:setWidth(25);
     obj.imageCheckBox821:setHeight(25);
     obj.imageCheckBox821:setField("path_11_2");
-    obj.imageCheckBox821:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox821:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox821:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox821:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox821:setName("imageCheckBox821");
 
     obj.imageCheckBox822 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -11993,8 +12003,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox822:setWidth(25);
     obj.imageCheckBox822:setHeight(25);
     obj.imageCheckBox822:setField("path_11_3");
-    obj.imageCheckBox822:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox822:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox822:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox822:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox822:setName("imageCheckBox822");
 
     obj.imageCheckBox823 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -12004,8 +12014,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox823:setWidth(25);
     obj.imageCheckBox823:setHeight(25);
     obj.imageCheckBox823:setField("path_11_4");
-    obj.imageCheckBox823:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox823:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox823:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox823:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox823:setName("imageCheckBox823");
 
     obj.imageCheckBox824 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -12015,8 +12025,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox824:setWidth(25);
     obj.imageCheckBox824:setHeight(25);
     obj.imageCheckBox824:setField("path_11_5");
-    obj.imageCheckBox824:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox824:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox824:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox824:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox824:setName("imageCheckBox824");
 
     obj.layout135 = GUI.fromHandle(_obj_newObject("layout"));
@@ -12027,15 +12037,15 @@ local function constructNew_frmVampireDarkAges20th()
     obj.layout135:setHeight(25);
     obj.layout135:setName("layout135");
 
-    obj.edit74 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit74:setParent(obj.layout135);
-    obj.edit74:setLeft(0);
-    obj.edit74:setTop(5);
-    obj.edit74:setWidth(95);
-    obj.edit74:setHeight(20);
-    obj.edit74:setField("path_12");
-    obj.edit74:setFontSize(12);
-    obj.edit74:setName("edit74");
+    obj.edit75 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit75:setParent(obj.layout135);
+    obj.edit75:setLeft(0);
+    obj.edit75:setTop(5);
+    obj.edit75:setWidth(95);
+    obj.edit75:setHeight(20);
+    obj.edit75:setField("path_12");
+    obj.edit75:setFontSize(12);
+    obj.edit75:setName("edit75");
 
     obj.imageCheckBox825 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox825:setParent(obj.layout135);
@@ -12044,8 +12054,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox825:setWidth(25);
     obj.imageCheckBox825:setHeight(25);
     obj.imageCheckBox825:setField("path_12_1");
-    obj.imageCheckBox825:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox825:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox825:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox825:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox825:setName("imageCheckBox825");
 
     obj.imageCheckBox826 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -12055,8 +12065,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox826:setWidth(25);
     obj.imageCheckBox826:setHeight(25);
     obj.imageCheckBox826:setField("path_12_2");
-    obj.imageCheckBox826:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox826:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox826:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox826:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox826:setName("imageCheckBox826");
 
     obj.imageCheckBox827 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -12066,8 +12076,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox827:setWidth(25);
     obj.imageCheckBox827:setHeight(25);
     obj.imageCheckBox827:setField("path_12_3");
-    obj.imageCheckBox827:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox827:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox827:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox827:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox827:setName("imageCheckBox827");
 
     obj.imageCheckBox828 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -12077,8 +12087,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox828:setWidth(25);
     obj.imageCheckBox828:setHeight(25);
     obj.imageCheckBox828:setField("path_12_4");
-    obj.imageCheckBox828:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox828:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox828:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox828:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox828:setName("imageCheckBox828");
 
     obj.imageCheckBox829 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -12088,8 +12098,8 @@ local function constructNew_frmVampireDarkAges20th()
     obj.imageCheckBox829:setWidth(25);
     obj.imageCheckBox829:setHeight(25);
     obj.imageCheckBox829:setField("path_12_5");
-    obj.imageCheckBox829:setImageChecked("/VampireDarkAges20th/images/blood_on.png");
-    obj.imageCheckBox829:setImageUnchecked("/VampireDarkAges20th/images/blood_off.png");
+    obj.imageCheckBox829:setImageChecked("/VampireMasquerade20th/images/blood_on.png");
+    obj.imageCheckBox829:setImageUnchecked("/VampireMasquerade20th/images/blood_off.png");
     obj.imageCheckBox829:setName("imageCheckBox829");
 
     obj.layout136 = GUI.fromHandle(_obj_newObject("layout"));
@@ -12155,25 +12165,25 @@ local function constructNew_frmVampireDarkAges20th()
     obj.layout138:setHeight(25);
     obj.layout138:setName("layout138");
 
-    obj.edit75 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit75:setParent(obj.layout138);
-    obj.edit75:setLeft(0);
-    obj.edit75:setTop(5);
-    obj.edit75:setWidth(150);
-    obj.edit75:setHeight(20);
-    obj.edit75:setField("ritual_1");
-    obj.edit75:setFontSize(12);
-    obj.edit75:setName("edit75");
-
     obj.edit76 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit76:setParent(obj.layout138);
-    obj.edit76:setLeft(150);
+    obj.edit76:setLeft(0);
     obj.edit76:setTop(5);
-    obj.edit76:setWidth(50);
+    obj.edit76:setWidth(150);
     obj.edit76:setHeight(20);
-    obj.edit76:setField("ritual_1_lvl");
+    obj.edit76:setField("ritual_1");
     obj.edit76:setFontSize(12);
     obj.edit76:setName("edit76");
+
+    obj.edit77 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit77:setParent(obj.layout138);
+    obj.edit77:setLeft(150);
+    obj.edit77:setTop(5);
+    obj.edit77:setWidth(50);
+    obj.edit77:setHeight(20);
+    obj.edit77:setField("ritual_1_lvl");
+    obj.edit77:setFontSize(12);
+    obj.edit77:setName("edit77");
 
     obj.layout139 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout139:setParent(obj.layout136);
@@ -12183,25 +12193,25 @@ local function constructNew_frmVampireDarkAges20th()
     obj.layout139:setHeight(25);
     obj.layout139:setName("layout139");
 
-    obj.edit77 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit77:setParent(obj.layout139);
-    obj.edit77:setLeft(0);
-    obj.edit77:setTop(5);
-    obj.edit77:setWidth(150);
-    obj.edit77:setHeight(20);
-    obj.edit77:setField("ritual_2");
-    obj.edit77:setFontSize(12);
-    obj.edit77:setName("edit77");
-
     obj.edit78 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit78:setParent(obj.layout139);
-    obj.edit78:setLeft(150);
+    obj.edit78:setLeft(0);
     obj.edit78:setTop(5);
-    obj.edit78:setWidth(50);
+    obj.edit78:setWidth(150);
     obj.edit78:setHeight(20);
-    obj.edit78:setField("ritual_2_lvl");
+    obj.edit78:setField("ritual_2");
     obj.edit78:setFontSize(12);
     obj.edit78:setName("edit78");
+
+    obj.edit79 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit79:setParent(obj.layout139);
+    obj.edit79:setLeft(150);
+    obj.edit79:setTop(5);
+    obj.edit79:setWidth(50);
+    obj.edit79:setHeight(20);
+    obj.edit79:setField("ritual_2_lvl");
+    obj.edit79:setFontSize(12);
+    obj.edit79:setName("edit79");
 
     obj.layout140 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout140:setParent(obj.layout136);
@@ -12211,25 +12221,25 @@ local function constructNew_frmVampireDarkAges20th()
     obj.layout140:setHeight(25);
     obj.layout140:setName("layout140");
 
-    obj.edit79 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit79:setParent(obj.layout140);
-    obj.edit79:setLeft(0);
-    obj.edit79:setTop(5);
-    obj.edit79:setWidth(150);
-    obj.edit79:setHeight(20);
-    obj.edit79:setField("ritual_3");
-    obj.edit79:setFontSize(12);
-    obj.edit79:setName("edit79");
-
     obj.edit80 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit80:setParent(obj.layout140);
-    obj.edit80:setLeft(150);
+    obj.edit80:setLeft(0);
     obj.edit80:setTop(5);
-    obj.edit80:setWidth(50);
+    obj.edit80:setWidth(150);
     obj.edit80:setHeight(20);
-    obj.edit80:setField("ritual_3_lvl");
+    obj.edit80:setField("ritual_3");
     obj.edit80:setFontSize(12);
     obj.edit80:setName("edit80");
+
+    obj.edit81 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit81:setParent(obj.layout140);
+    obj.edit81:setLeft(150);
+    obj.edit81:setTop(5);
+    obj.edit81:setWidth(50);
+    obj.edit81:setHeight(20);
+    obj.edit81:setField("ritual_3_lvl");
+    obj.edit81:setFontSize(12);
+    obj.edit81:setName("edit81");
 
     obj.layout141 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout141:setParent(obj.layout136);
@@ -12239,25 +12249,25 @@ local function constructNew_frmVampireDarkAges20th()
     obj.layout141:setHeight(25);
     obj.layout141:setName("layout141");
 
-    obj.edit81 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit81:setParent(obj.layout141);
-    obj.edit81:setLeft(0);
-    obj.edit81:setTop(5);
-    obj.edit81:setWidth(150);
-    obj.edit81:setHeight(20);
-    obj.edit81:setField("ritual_4");
-    obj.edit81:setFontSize(12);
-    obj.edit81:setName("edit81");
-
     obj.edit82 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit82:setParent(obj.layout141);
-    obj.edit82:setLeft(150);
+    obj.edit82:setLeft(0);
     obj.edit82:setTop(5);
-    obj.edit82:setWidth(50);
+    obj.edit82:setWidth(150);
     obj.edit82:setHeight(20);
-    obj.edit82:setField("ritual_4_lvl");
+    obj.edit82:setField("ritual_4");
     obj.edit82:setFontSize(12);
     obj.edit82:setName("edit82");
+
+    obj.edit83 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit83:setParent(obj.layout141);
+    obj.edit83:setLeft(150);
+    obj.edit83:setTop(5);
+    obj.edit83:setWidth(50);
+    obj.edit83:setHeight(20);
+    obj.edit83:setField("ritual_4_lvl");
+    obj.edit83:setFontSize(12);
+    obj.edit83:setName("edit83");
 
     obj.layout142 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout142:setParent(obj.layout136);
@@ -12267,25 +12277,25 @@ local function constructNew_frmVampireDarkAges20th()
     obj.layout142:setHeight(25);
     obj.layout142:setName("layout142");
 
-    obj.edit83 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit83:setParent(obj.layout142);
-    obj.edit83:setLeft(0);
-    obj.edit83:setTop(5);
-    obj.edit83:setWidth(150);
-    obj.edit83:setHeight(20);
-    obj.edit83:setField("ritual_5");
-    obj.edit83:setFontSize(12);
-    obj.edit83:setName("edit83");
-
     obj.edit84 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit84:setParent(obj.layout142);
-    obj.edit84:setLeft(150);
+    obj.edit84:setLeft(0);
     obj.edit84:setTop(5);
-    obj.edit84:setWidth(50);
+    obj.edit84:setWidth(150);
     obj.edit84:setHeight(20);
-    obj.edit84:setField("ritual_5_lvl");
+    obj.edit84:setField("ritual_5");
     obj.edit84:setFontSize(12);
     obj.edit84:setName("edit84");
+
+    obj.edit85 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit85:setParent(obj.layout142);
+    obj.edit85:setLeft(150);
+    obj.edit85:setTop(5);
+    obj.edit85:setWidth(50);
+    obj.edit85:setHeight(20);
+    obj.edit85:setField("ritual_5_lvl");
+    obj.edit85:setFontSize(12);
+    obj.edit85:setName("edit85");
 
     obj.layout143 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout143:setParent(obj.layout136);
@@ -12295,25 +12305,25 @@ local function constructNew_frmVampireDarkAges20th()
     obj.layout143:setHeight(25);
     obj.layout143:setName("layout143");
 
-    obj.edit85 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit85:setParent(obj.layout143);
-    obj.edit85:setLeft(0);
-    obj.edit85:setTop(5);
-    obj.edit85:setWidth(150);
-    obj.edit85:setHeight(20);
-    obj.edit85:setField("ritual_6");
-    obj.edit85:setFontSize(12);
-    obj.edit85:setName("edit85");
-
     obj.edit86 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit86:setParent(obj.layout143);
-    obj.edit86:setLeft(150);
+    obj.edit86:setLeft(0);
     obj.edit86:setTop(5);
-    obj.edit86:setWidth(50);
+    obj.edit86:setWidth(150);
     obj.edit86:setHeight(20);
-    obj.edit86:setField("ritual_6_lvl");
+    obj.edit86:setField("ritual_6");
     obj.edit86:setFontSize(12);
     obj.edit86:setName("edit86");
+
+    obj.edit87 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit87:setParent(obj.layout143);
+    obj.edit87:setLeft(150);
+    obj.edit87:setTop(5);
+    obj.edit87:setWidth(50);
+    obj.edit87:setHeight(20);
+    obj.edit87:setField("ritual_6_lvl");
+    obj.edit87:setFontSize(12);
+    obj.edit87:setName("edit87");
 
     obj.layout144 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout144:setParent(obj.layout136);
@@ -12323,25 +12333,25 @@ local function constructNew_frmVampireDarkAges20th()
     obj.layout144:setHeight(25);
     obj.layout144:setName("layout144");
 
-    obj.edit87 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit87:setParent(obj.layout144);
-    obj.edit87:setLeft(0);
-    obj.edit87:setTop(5);
-    obj.edit87:setWidth(150);
-    obj.edit87:setHeight(20);
-    obj.edit87:setField("ritual_7");
-    obj.edit87:setFontSize(12);
-    obj.edit87:setName("edit87");
-
     obj.edit88 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit88:setParent(obj.layout144);
-    obj.edit88:setLeft(150);
+    obj.edit88:setLeft(0);
     obj.edit88:setTop(5);
-    obj.edit88:setWidth(50);
+    obj.edit88:setWidth(150);
     obj.edit88:setHeight(20);
-    obj.edit88:setField("ritual_7_lvl");
+    obj.edit88:setField("ritual_7");
     obj.edit88:setFontSize(12);
     obj.edit88:setName("edit88");
+
+    obj.edit89 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit89:setParent(obj.layout144);
+    obj.edit89:setLeft(150);
+    obj.edit89:setTop(5);
+    obj.edit89:setWidth(50);
+    obj.edit89:setHeight(20);
+    obj.edit89:setField("ritual_7_lvl");
+    obj.edit89:setFontSize(12);
+    obj.edit89:setName("edit89");
 
     obj.layout145 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout145:setParent(obj.layout136);
@@ -12351,25 +12361,25 @@ local function constructNew_frmVampireDarkAges20th()
     obj.layout145:setHeight(25);
     obj.layout145:setName("layout145");
 
-    obj.edit89 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit89:setParent(obj.layout145);
-    obj.edit89:setLeft(0);
-    obj.edit89:setTop(5);
-    obj.edit89:setWidth(150);
-    obj.edit89:setHeight(20);
-    obj.edit89:setField("ritual_8");
-    obj.edit89:setFontSize(12);
-    obj.edit89:setName("edit89");
-
     obj.edit90 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit90:setParent(obj.layout145);
-    obj.edit90:setLeft(150);
+    obj.edit90:setLeft(0);
     obj.edit90:setTop(5);
-    obj.edit90:setWidth(50);
+    obj.edit90:setWidth(150);
     obj.edit90:setHeight(20);
-    obj.edit90:setField("ritual_8_lvl");
+    obj.edit90:setField("ritual_8");
     obj.edit90:setFontSize(12);
     obj.edit90:setName("edit90");
+
+    obj.edit91 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit91:setParent(obj.layout145);
+    obj.edit91:setLeft(150);
+    obj.edit91:setTop(5);
+    obj.edit91:setWidth(50);
+    obj.edit91:setHeight(20);
+    obj.edit91:setField("ritual_8_lvl");
+    obj.edit91:setFontSize(12);
+    obj.edit91:setName("edit91");
 
     obj.layout146 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout146:setParent(obj.layout136);
@@ -12379,25 +12389,25 @@ local function constructNew_frmVampireDarkAges20th()
     obj.layout146:setHeight(25);
     obj.layout146:setName("layout146");
 
-    obj.edit91 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit91:setParent(obj.layout146);
-    obj.edit91:setLeft(0);
-    obj.edit91:setTop(5);
-    obj.edit91:setWidth(150);
-    obj.edit91:setHeight(20);
-    obj.edit91:setField("ritual_9");
-    obj.edit91:setFontSize(12);
-    obj.edit91:setName("edit91");
-
     obj.edit92 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit92:setParent(obj.layout146);
-    obj.edit92:setLeft(150);
+    obj.edit92:setLeft(0);
     obj.edit92:setTop(5);
-    obj.edit92:setWidth(50);
+    obj.edit92:setWidth(150);
     obj.edit92:setHeight(20);
-    obj.edit92:setField("ritual_9_lvl");
+    obj.edit92:setField("ritual_9");
     obj.edit92:setFontSize(12);
     obj.edit92:setName("edit92");
+
+    obj.edit93 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit93:setParent(obj.layout146);
+    obj.edit93:setLeft(150);
+    obj.edit93:setTop(5);
+    obj.edit93:setWidth(50);
+    obj.edit93:setHeight(20);
+    obj.edit93:setField("ritual_9_lvl");
+    obj.edit93:setFontSize(12);
+    obj.edit93:setName("edit93");
 
     obj.layout147 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout147:setParent(obj.layout136);
@@ -12407,25 +12417,25 @@ local function constructNew_frmVampireDarkAges20th()
     obj.layout147:setHeight(25);
     obj.layout147:setName("layout147");
 
-    obj.edit93 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit93:setParent(obj.layout147);
-    obj.edit93:setLeft(0);
-    obj.edit93:setTop(5);
-    obj.edit93:setWidth(150);
-    obj.edit93:setHeight(20);
-    obj.edit93:setField("ritual_10");
-    obj.edit93:setFontSize(12);
-    obj.edit93:setName("edit93");
-
     obj.edit94 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit94:setParent(obj.layout147);
-    obj.edit94:setLeft(150);
+    obj.edit94:setLeft(0);
     obj.edit94:setTop(5);
-    obj.edit94:setWidth(50);
+    obj.edit94:setWidth(150);
     obj.edit94:setHeight(20);
-    obj.edit94:setField("ritual_10_lvl");
+    obj.edit94:setField("ritual_10");
     obj.edit94:setFontSize(12);
     obj.edit94:setName("edit94");
+
+    obj.edit95 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit95:setParent(obj.layout147);
+    obj.edit95:setLeft(150);
+    obj.edit95:setTop(5);
+    obj.edit95:setWidth(50);
+    obj.edit95:setHeight(20);
+    obj.edit95:setField("ritual_10_lvl");
+    obj.edit95:setFontSize(12);
+    obj.edit95:setName("edit95");
 
     obj.layout148 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout148:setParent(obj.layout136);
@@ -12435,39 +12445,39 @@ local function constructNew_frmVampireDarkAges20th()
     obj.layout148:setHeight(25);
     obj.layout148:setName("layout148");
 
-    obj.edit95 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit95:setParent(obj.layout148);
-    obj.edit95:setLeft(0);
-    obj.edit95:setTop(5);
-    obj.edit95:setWidth(150);
-    obj.edit95:setHeight(20);
-    obj.edit95:setField("ritual_11");
-    obj.edit95:setFontSize(12);
-    obj.edit95:setName("edit95");
-
     obj.edit96 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit96:setParent(obj.layout148);
-    obj.edit96:setLeft(150);
+    obj.edit96:setLeft(0);
     obj.edit96:setTop(5);
-    obj.edit96:setWidth(50);
+    obj.edit96:setWidth(150);
     obj.edit96:setHeight(20);
-    obj.edit96:setField("ritual_11_lvl");
+    obj.edit96:setField("ritual_11");
     obj.edit96:setFontSize(12);
     obj.edit96:setName("edit96");
+
+    obj.edit97 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit97:setParent(obj.layout148);
+    obj.edit97:setLeft(150);
+    obj.edit97:setTop(5);
+    obj.edit97:setWidth(50);
+    obj.edit97:setHeight(20);
+    obj.edit97:setField("ritual_11_lvl");
+    obj.edit97:setFontSize(12);
+    obj.edit97:setName("edit97");
 
     obj.tab3 = GUI.fromHandle(_obj_newObject("tab"));
     obj.tab3:setParent(obj.tabControl1);
     obj.tab3:setTitle("Inventory");
     obj.tab3:setName("tab3");
 
-    obj.frmVDA20_3 = GUI.fromHandle(_obj_newObject("form"));
-    obj.frmVDA20_3:setParent(obj.tab3);
-    obj.frmVDA20_3:setName("frmVDA20_3");
-    obj.frmVDA20_3:setAlign("client");
-    obj.frmVDA20_3:setTheme("dark");
+    obj.frmVM20_3 = GUI.fromHandle(_obj_newObject("form"));
+    obj.frmVM20_3:setParent(obj.tab3);
+    obj.frmVM20_3:setName("frmVM20_3");
+    obj.frmVM20_3:setAlign("client");
+    obj.frmVM20_3:setTheme("dark");
 
     obj.scrollBox3 = GUI.fromHandle(_obj_newObject("scrollBox"));
-    obj.scrollBox3:setParent(obj.frmVDA20_3);
+    obj.scrollBox3:setParent(obj.frmVM20_3);
     obj.scrollBox3:setAlign("client");
     obj.scrollBox3:setName("scrollBox3");
 
@@ -12515,77 +12525,77 @@ local function constructNew_frmVampireDarkAges20th()
     obj.layout150:setHeight(25);
     obj.layout150:setName("layout150");
 
-    obj.edit97 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit97:setParent(obj.layout150);
-    obj.edit97:setLeft(0);
-    obj.edit97:setTop(0);
-    obj.edit97:setWidth(200);
-    obj.edit97:setHeight(24);
-    obj.edit97:setField("attack_1");
-    obj.edit97:setName("edit97");
-
     obj.edit98 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit98:setParent(obj.layout150);
-    obj.edit98:setLeft(200);
+    obj.edit98:setLeft(0);
     obj.edit98:setTop(0);
-    obj.edit98:setWidth(100);
+    obj.edit98:setWidth(200);
     obj.edit98:setHeight(24);
-    obj.edit98:setField("roll_1");
+    obj.edit98:setField("attack_1");
     obj.edit98:setName("edit98");
 
     obj.edit99 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit99:setParent(obj.layout150);
-    obj.edit99:setLeft(300);
+    obj.edit99:setLeft(200);
     obj.edit99:setTop(0);
-    obj.edit99:setWidth(50);
+    obj.edit99:setWidth(100);
     obj.edit99:setHeight(24);
-    obj.edit99:setField("difficulty_1");
+    obj.edit99:setField("roll_1");
     obj.edit99:setName("edit99");
 
     obj.edit100 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit100:setParent(obj.layout150);
-    obj.edit100:setLeft(350);
+    obj.edit100:setLeft(300);
     obj.edit100:setTop(0);
     obj.edit100:setWidth(50);
     obj.edit100:setHeight(24);
-    obj.edit100:setField("damage_1");
+    obj.edit100:setField("difficulty_1");
     obj.edit100:setName("edit100");
 
     obj.edit101 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit101:setParent(obj.layout150);
-    obj.edit101:setLeft(400);
+    obj.edit101:setLeft(350);
     obj.edit101:setTop(0);
     obj.edit101:setWidth(50);
     obj.edit101:setHeight(24);
-    obj.edit101:setField("range_1");
+    obj.edit101:setField("damage_1");
     obj.edit101:setName("edit101");
 
     obj.edit102 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit102:setParent(obj.layout150);
-    obj.edit102:setLeft(450);
+    obj.edit102:setLeft(400);
     obj.edit102:setTop(0);
     obj.edit102:setWidth(50);
     obj.edit102:setHeight(24);
-    obj.edit102:setField("rate_1");
+    obj.edit102:setField("range_1");
     obj.edit102:setName("edit102");
 
     obj.edit103 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit103:setParent(obj.layout150);
-    obj.edit103:setLeft(500);
+    obj.edit103:setLeft(450);
     obj.edit103:setTop(0);
     obj.edit103:setWidth(50);
     obj.edit103:setHeight(24);
-    obj.edit103:setField("clip_1");
+    obj.edit103:setField("rate_1");
     obj.edit103:setName("edit103");
 
     obj.edit104 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit104:setParent(obj.layout150);
-    obj.edit104:setLeft(550);
+    obj.edit104:setLeft(500);
     obj.edit104:setTop(0);
     obj.edit104:setWidth(50);
     obj.edit104:setHeight(24);
-    obj.edit104:setField("conceal_1");
+    obj.edit104:setField("clip_1");
     obj.edit104:setName("edit104");
+
+    obj.edit105 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit105:setParent(obj.layout150);
+    obj.edit105:setLeft(550);
+    obj.edit105:setTop(0);
+    obj.edit105:setWidth(50);
+    obj.edit105:setHeight(24);
+    obj.edit105:setField("conceal_1");
+    obj.edit105:setName("edit105");
 
     obj.layout151 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout151:setParent(obj.layout149);
@@ -12595,77 +12605,77 @@ local function constructNew_frmVampireDarkAges20th()
     obj.layout151:setHeight(25);
     obj.layout151:setName("layout151");
 
-    obj.edit105 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit105:setParent(obj.layout151);
-    obj.edit105:setLeft(0);
-    obj.edit105:setTop(0);
-    obj.edit105:setWidth(200);
-    obj.edit105:setHeight(24);
-    obj.edit105:setField("attack_2");
-    obj.edit105:setName("edit105");
-
     obj.edit106 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit106:setParent(obj.layout151);
-    obj.edit106:setLeft(200);
+    obj.edit106:setLeft(0);
     obj.edit106:setTop(0);
-    obj.edit106:setWidth(100);
+    obj.edit106:setWidth(200);
     obj.edit106:setHeight(24);
-    obj.edit106:setField("roll_2");
+    obj.edit106:setField("attack_2");
     obj.edit106:setName("edit106");
 
     obj.edit107 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit107:setParent(obj.layout151);
-    obj.edit107:setLeft(300);
+    obj.edit107:setLeft(200);
     obj.edit107:setTop(0);
-    obj.edit107:setWidth(50);
+    obj.edit107:setWidth(100);
     obj.edit107:setHeight(24);
-    obj.edit107:setField("difficulty_2");
+    obj.edit107:setField("roll_2");
     obj.edit107:setName("edit107");
 
     obj.edit108 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit108:setParent(obj.layout151);
-    obj.edit108:setLeft(350);
+    obj.edit108:setLeft(300);
     obj.edit108:setTop(0);
     obj.edit108:setWidth(50);
     obj.edit108:setHeight(24);
-    obj.edit108:setField("damage_2");
+    obj.edit108:setField("difficulty_2");
     obj.edit108:setName("edit108");
 
     obj.edit109 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit109:setParent(obj.layout151);
-    obj.edit109:setLeft(400);
+    obj.edit109:setLeft(350);
     obj.edit109:setTop(0);
     obj.edit109:setWidth(50);
     obj.edit109:setHeight(24);
-    obj.edit109:setField("range_2");
+    obj.edit109:setField("damage_2");
     obj.edit109:setName("edit109");
 
     obj.edit110 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit110:setParent(obj.layout151);
-    obj.edit110:setLeft(450);
+    obj.edit110:setLeft(400);
     obj.edit110:setTop(0);
     obj.edit110:setWidth(50);
     obj.edit110:setHeight(24);
-    obj.edit110:setField("rate_2");
+    obj.edit110:setField("range_2");
     obj.edit110:setName("edit110");
 
     obj.edit111 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit111:setParent(obj.layout151);
-    obj.edit111:setLeft(500);
+    obj.edit111:setLeft(450);
     obj.edit111:setTop(0);
     obj.edit111:setWidth(50);
     obj.edit111:setHeight(24);
-    obj.edit111:setField("clip_2");
+    obj.edit111:setField("rate_2");
     obj.edit111:setName("edit111");
 
     obj.edit112 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit112:setParent(obj.layout151);
-    obj.edit112:setLeft(550);
+    obj.edit112:setLeft(500);
     obj.edit112:setTop(0);
     obj.edit112:setWidth(50);
     obj.edit112:setHeight(24);
-    obj.edit112:setField("conceal_2");
+    obj.edit112:setField("clip_2");
     obj.edit112:setName("edit112");
+
+    obj.edit113 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit113:setParent(obj.layout151);
+    obj.edit113:setLeft(550);
+    obj.edit113:setTop(0);
+    obj.edit113:setWidth(50);
+    obj.edit113:setHeight(24);
+    obj.edit113:setField("conceal_2");
+    obj.edit113:setName("edit113");
 
     obj.layout152 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout152:setParent(obj.layout149);
@@ -12675,77 +12685,77 @@ local function constructNew_frmVampireDarkAges20th()
     obj.layout152:setHeight(25);
     obj.layout152:setName("layout152");
 
-    obj.edit113 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit113:setParent(obj.layout152);
-    obj.edit113:setLeft(0);
-    obj.edit113:setTop(0);
-    obj.edit113:setWidth(200);
-    obj.edit113:setHeight(24);
-    obj.edit113:setField("attack_3");
-    obj.edit113:setName("edit113");
-
     obj.edit114 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit114:setParent(obj.layout152);
-    obj.edit114:setLeft(200);
+    obj.edit114:setLeft(0);
     obj.edit114:setTop(0);
-    obj.edit114:setWidth(100);
+    obj.edit114:setWidth(200);
     obj.edit114:setHeight(24);
-    obj.edit114:setField("roll_3");
+    obj.edit114:setField("attack_3");
     obj.edit114:setName("edit114");
 
     obj.edit115 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit115:setParent(obj.layout152);
-    obj.edit115:setLeft(300);
+    obj.edit115:setLeft(200);
     obj.edit115:setTop(0);
-    obj.edit115:setWidth(50);
+    obj.edit115:setWidth(100);
     obj.edit115:setHeight(24);
-    obj.edit115:setField("difficulty_3");
+    obj.edit115:setField("roll_3");
     obj.edit115:setName("edit115");
 
     obj.edit116 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit116:setParent(obj.layout152);
-    obj.edit116:setLeft(350);
+    obj.edit116:setLeft(300);
     obj.edit116:setTop(0);
     obj.edit116:setWidth(50);
     obj.edit116:setHeight(24);
-    obj.edit116:setField("damage_3");
+    obj.edit116:setField("difficulty_3");
     obj.edit116:setName("edit116");
 
     obj.edit117 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit117:setParent(obj.layout152);
-    obj.edit117:setLeft(400);
+    obj.edit117:setLeft(350);
     obj.edit117:setTop(0);
     obj.edit117:setWidth(50);
     obj.edit117:setHeight(24);
-    obj.edit117:setField("range_3");
+    obj.edit117:setField("damage_3");
     obj.edit117:setName("edit117");
 
     obj.edit118 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit118:setParent(obj.layout152);
-    obj.edit118:setLeft(450);
+    obj.edit118:setLeft(400);
     obj.edit118:setTop(0);
     obj.edit118:setWidth(50);
     obj.edit118:setHeight(24);
-    obj.edit118:setField("rate_3");
+    obj.edit118:setField("range_3");
     obj.edit118:setName("edit118");
 
     obj.edit119 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit119:setParent(obj.layout152);
-    obj.edit119:setLeft(500);
+    obj.edit119:setLeft(450);
     obj.edit119:setTop(0);
     obj.edit119:setWidth(50);
     obj.edit119:setHeight(24);
-    obj.edit119:setField("clip_3");
+    obj.edit119:setField("rate_3");
     obj.edit119:setName("edit119");
 
     obj.edit120 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit120:setParent(obj.layout152);
-    obj.edit120:setLeft(550);
+    obj.edit120:setLeft(500);
     obj.edit120:setTop(0);
     obj.edit120:setWidth(50);
     obj.edit120:setHeight(24);
-    obj.edit120:setField("conceal_3");
+    obj.edit120:setField("clip_3");
     obj.edit120:setName("edit120");
+
+    obj.edit121 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit121:setParent(obj.layout152);
+    obj.edit121:setLeft(550);
+    obj.edit121:setTop(0);
+    obj.edit121:setWidth(50);
+    obj.edit121:setHeight(24);
+    obj.edit121:setField("conceal_3");
+    obj.edit121:setName("edit121");
 
     obj.layout153 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout153:setParent(obj.layout149);
@@ -12755,77 +12765,77 @@ local function constructNew_frmVampireDarkAges20th()
     obj.layout153:setHeight(25);
     obj.layout153:setName("layout153");
 
-    obj.edit121 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit121:setParent(obj.layout153);
-    obj.edit121:setLeft(0);
-    obj.edit121:setTop(0);
-    obj.edit121:setWidth(200);
-    obj.edit121:setHeight(24);
-    obj.edit121:setField("attack_4");
-    obj.edit121:setName("edit121");
-
     obj.edit122 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit122:setParent(obj.layout153);
-    obj.edit122:setLeft(200);
+    obj.edit122:setLeft(0);
     obj.edit122:setTop(0);
-    obj.edit122:setWidth(100);
+    obj.edit122:setWidth(200);
     obj.edit122:setHeight(24);
-    obj.edit122:setField("roll_4");
+    obj.edit122:setField("attack_4");
     obj.edit122:setName("edit122");
 
     obj.edit123 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit123:setParent(obj.layout153);
-    obj.edit123:setLeft(300);
+    obj.edit123:setLeft(200);
     obj.edit123:setTop(0);
-    obj.edit123:setWidth(50);
+    obj.edit123:setWidth(100);
     obj.edit123:setHeight(24);
-    obj.edit123:setField("difficulty_4");
+    obj.edit123:setField("roll_4");
     obj.edit123:setName("edit123");
 
     obj.edit124 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit124:setParent(obj.layout153);
-    obj.edit124:setLeft(350);
+    obj.edit124:setLeft(300);
     obj.edit124:setTop(0);
     obj.edit124:setWidth(50);
     obj.edit124:setHeight(24);
-    obj.edit124:setField("damage_4");
+    obj.edit124:setField("difficulty_4");
     obj.edit124:setName("edit124");
 
     obj.edit125 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit125:setParent(obj.layout153);
-    obj.edit125:setLeft(400);
+    obj.edit125:setLeft(350);
     obj.edit125:setTop(0);
     obj.edit125:setWidth(50);
     obj.edit125:setHeight(24);
-    obj.edit125:setField("range_4");
+    obj.edit125:setField("damage_4");
     obj.edit125:setName("edit125");
 
     obj.edit126 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit126:setParent(obj.layout153);
-    obj.edit126:setLeft(450);
+    obj.edit126:setLeft(400);
     obj.edit126:setTop(0);
     obj.edit126:setWidth(50);
     obj.edit126:setHeight(24);
-    obj.edit126:setField("rate_4");
+    obj.edit126:setField("range_4");
     obj.edit126:setName("edit126");
 
     obj.edit127 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit127:setParent(obj.layout153);
-    obj.edit127:setLeft(500);
+    obj.edit127:setLeft(450);
     obj.edit127:setTop(0);
     obj.edit127:setWidth(50);
     obj.edit127:setHeight(24);
-    obj.edit127:setField("clip_4");
+    obj.edit127:setField("rate_4");
     obj.edit127:setName("edit127");
 
     obj.edit128 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit128:setParent(obj.layout153);
-    obj.edit128:setLeft(550);
+    obj.edit128:setLeft(500);
     obj.edit128:setTop(0);
     obj.edit128:setWidth(50);
     obj.edit128:setHeight(24);
-    obj.edit128:setField("conceal_4");
+    obj.edit128:setField("clip_4");
     obj.edit128:setName("edit128");
+
+    obj.edit129 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit129:setParent(obj.layout153);
+    obj.edit129:setLeft(550);
+    obj.edit129:setTop(0);
+    obj.edit129:setWidth(50);
+    obj.edit129:setHeight(24);
+    obj.edit129:setField("conceal_4");
+    obj.edit129:setName("edit129");
 
     obj.layout154 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout154:setParent(obj.layout149);
@@ -12835,77 +12845,77 @@ local function constructNew_frmVampireDarkAges20th()
     obj.layout154:setHeight(25);
     obj.layout154:setName("layout154");
 
-    obj.edit129 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit129:setParent(obj.layout154);
-    obj.edit129:setLeft(0);
-    obj.edit129:setTop(0);
-    obj.edit129:setWidth(200);
-    obj.edit129:setHeight(24);
-    obj.edit129:setField("attack_5");
-    obj.edit129:setName("edit129");
-
     obj.edit130 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit130:setParent(obj.layout154);
-    obj.edit130:setLeft(200);
+    obj.edit130:setLeft(0);
     obj.edit130:setTop(0);
-    obj.edit130:setWidth(100);
+    obj.edit130:setWidth(200);
     obj.edit130:setHeight(24);
-    obj.edit130:setField("roll_5");
+    obj.edit130:setField("attack_5");
     obj.edit130:setName("edit130");
 
     obj.edit131 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit131:setParent(obj.layout154);
-    obj.edit131:setLeft(300);
+    obj.edit131:setLeft(200);
     obj.edit131:setTop(0);
-    obj.edit131:setWidth(50);
+    obj.edit131:setWidth(100);
     obj.edit131:setHeight(24);
-    obj.edit131:setField("difficulty_5");
+    obj.edit131:setField("roll_5");
     obj.edit131:setName("edit131");
 
     obj.edit132 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit132:setParent(obj.layout154);
-    obj.edit132:setLeft(350);
+    obj.edit132:setLeft(300);
     obj.edit132:setTop(0);
     obj.edit132:setWidth(50);
     obj.edit132:setHeight(24);
-    obj.edit132:setField("damage_5");
+    obj.edit132:setField("difficulty_5");
     obj.edit132:setName("edit132");
 
     obj.edit133 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit133:setParent(obj.layout154);
-    obj.edit133:setLeft(400);
+    obj.edit133:setLeft(350);
     obj.edit133:setTop(0);
     obj.edit133:setWidth(50);
     obj.edit133:setHeight(24);
-    obj.edit133:setField("range_5");
+    obj.edit133:setField("damage_5");
     obj.edit133:setName("edit133");
 
     obj.edit134 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit134:setParent(obj.layout154);
-    obj.edit134:setLeft(450);
+    obj.edit134:setLeft(400);
     obj.edit134:setTop(0);
     obj.edit134:setWidth(50);
     obj.edit134:setHeight(24);
-    obj.edit134:setField("rate_5");
+    obj.edit134:setField("range_5");
     obj.edit134:setName("edit134");
 
     obj.edit135 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit135:setParent(obj.layout154);
-    obj.edit135:setLeft(500);
+    obj.edit135:setLeft(450);
     obj.edit135:setTop(0);
     obj.edit135:setWidth(50);
     obj.edit135:setHeight(24);
-    obj.edit135:setField("clip_5");
+    obj.edit135:setField("rate_5");
     obj.edit135:setName("edit135");
 
     obj.edit136 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit136:setParent(obj.layout154);
-    obj.edit136:setLeft(550);
+    obj.edit136:setLeft(500);
     obj.edit136:setTop(0);
     obj.edit136:setWidth(50);
     obj.edit136:setHeight(24);
-    obj.edit136:setField("conceal_5");
+    obj.edit136:setField("clip_5");
     obj.edit136:setName("edit136");
+
+    obj.edit137 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit137:setParent(obj.layout154);
+    obj.edit137:setLeft(550);
+    obj.edit137:setTop(0);
+    obj.edit137:setWidth(50);
+    obj.edit137:setHeight(24);
+    obj.edit137:setField("conceal_5");
+    obj.edit137:setName("edit137");
 
     obj.layout155 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout155:setParent(obj.layout149);
@@ -12915,77 +12925,77 @@ local function constructNew_frmVampireDarkAges20th()
     obj.layout155:setHeight(25);
     obj.layout155:setName("layout155");
 
-    obj.edit137 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit137:setParent(obj.layout155);
-    obj.edit137:setLeft(0);
-    obj.edit137:setTop(0);
-    obj.edit137:setWidth(200);
-    obj.edit137:setHeight(24);
-    obj.edit137:setField("attack_6");
-    obj.edit137:setName("edit137");
-
     obj.edit138 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit138:setParent(obj.layout155);
-    obj.edit138:setLeft(200);
+    obj.edit138:setLeft(0);
     obj.edit138:setTop(0);
-    obj.edit138:setWidth(100);
+    obj.edit138:setWidth(200);
     obj.edit138:setHeight(24);
-    obj.edit138:setField("roll_6");
+    obj.edit138:setField("attack_6");
     obj.edit138:setName("edit138");
 
     obj.edit139 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit139:setParent(obj.layout155);
-    obj.edit139:setLeft(300);
+    obj.edit139:setLeft(200);
     obj.edit139:setTop(0);
-    obj.edit139:setWidth(50);
+    obj.edit139:setWidth(100);
     obj.edit139:setHeight(24);
-    obj.edit139:setField("difficulty_6");
+    obj.edit139:setField("roll_6");
     obj.edit139:setName("edit139");
 
     obj.edit140 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit140:setParent(obj.layout155);
-    obj.edit140:setLeft(350);
+    obj.edit140:setLeft(300);
     obj.edit140:setTop(0);
     obj.edit140:setWidth(50);
     obj.edit140:setHeight(24);
-    obj.edit140:setField("damage_6");
+    obj.edit140:setField("difficulty_6");
     obj.edit140:setName("edit140");
 
     obj.edit141 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit141:setParent(obj.layout155);
-    obj.edit141:setLeft(400);
+    obj.edit141:setLeft(350);
     obj.edit141:setTop(0);
     obj.edit141:setWidth(50);
     obj.edit141:setHeight(24);
-    obj.edit141:setField("range_6");
+    obj.edit141:setField("damage_6");
     obj.edit141:setName("edit141");
 
     obj.edit142 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit142:setParent(obj.layout155);
-    obj.edit142:setLeft(450);
+    obj.edit142:setLeft(400);
     obj.edit142:setTop(0);
     obj.edit142:setWidth(50);
     obj.edit142:setHeight(24);
-    obj.edit142:setField("rate_6");
+    obj.edit142:setField("range_6");
     obj.edit142:setName("edit142");
 
     obj.edit143 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit143:setParent(obj.layout155);
-    obj.edit143:setLeft(500);
+    obj.edit143:setLeft(450);
     obj.edit143:setTop(0);
     obj.edit143:setWidth(50);
     obj.edit143:setHeight(24);
-    obj.edit143:setField("clip_6");
+    obj.edit143:setField("rate_6");
     obj.edit143:setName("edit143");
 
     obj.edit144 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit144:setParent(obj.layout155);
-    obj.edit144:setLeft(550);
+    obj.edit144:setLeft(500);
     obj.edit144:setTop(0);
     obj.edit144:setWidth(50);
     obj.edit144:setHeight(24);
-    obj.edit144:setField("conceal_6");
+    obj.edit144:setField("clip_6");
     obj.edit144:setName("edit144");
+
+    obj.edit145 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit145:setParent(obj.layout155);
+    obj.edit145:setLeft(550);
+    obj.edit145:setTop(0);
+    obj.edit145:setWidth(50);
+    obj.edit145:setHeight(24);
+    obj.edit145:setField("conceal_6");
+    obj.edit145:setName("edit145");
 
     obj.layout156 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout156:setParent(obj.layout149);
@@ -12995,77 +13005,77 @@ local function constructNew_frmVampireDarkAges20th()
     obj.layout156:setHeight(25);
     obj.layout156:setName("layout156");
 
-    obj.edit145 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit145:setParent(obj.layout156);
-    obj.edit145:setLeft(0);
-    obj.edit145:setTop(0);
-    obj.edit145:setWidth(200);
-    obj.edit145:setHeight(24);
-    obj.edit145:setField("attack_7");
-    obj.edit145:setName("edit145");
-
     obj.edit146 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit146:setParent(obj.layout156);
-    obj.edit146:setLeft(200);
+    obj.edit146:setLeft(0);
     obj.edit146:setTop(0);
-    obj.edit146:setWidth(100);
+    obj.edit146:setWidth(200);
     obj.edit146:setHeight(24);
-    obj.edit146:setField("roll_7");
+    obj.edit146:setField("attack_7");
     obj.edit146:setName("edit146");
 
     obj.edit147 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit147:setParent(obj.layout156);
-    obj.edit147:setLeft(300);
+    obj.edit147:setLeft(200);
     obj.edit147:setTop(0);
-    obj.edit147:setWidth(50);
+    obj.edit147:setWidth(100);
     obj.edit147:setHeight(24);
-    obj.edit147:setField("difficulty_7");
+    obj.edit147:setField("roll_7");
     obj.edit147:setName("edit147");
 
     obj.edit148 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit148:setParent(obj.layout156);
-    obj.edit148:setLeft(350);
+    obj.edit148:setLeft(300);
     obj.edit148:setTop(0);
     obj.edit148:setWidth(50);
     obj.edit148:setHeight(24);
-    obj.edit148:setField("damage_7");
+    obj.edit148:setField("difficulty_7");
     obj.edit148:setName("edit148");
 
     obj.edit149 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit149:setParent(obj.layout156);
-    obj.edit149:setLeft(400);
+    obj.edit149:setLeft(350);
     obj.edit149:setTop(0);
     obj.edit149:setWidth(50);
     obj.edit149:setHeight(24);
-    obj.edit149:setField("range_7");
+    obj.edit149:setField("damage_7");
     obj.edit149:setName("edit149");
 
     obj.edit150 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit150:setParent(obj.layout156);
-    obj.edit150:setLeft(450);
+    obj.edit150:setLeft(400);
     obj.edit150:setTop(0);
     obj.edit150:setWidth(50);
     obj.edit150:setHeight(24);
-    obj.edit150:setField("rate_7");
+    obj.edit150:setField("range_7");
     obj.edit150:setName("edit150");
 
     obj.edit151 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit151:setParent(obj.layout156);
-    obj.edit151:setLeft(500);
+    obj.edit151:setLeft(450);
     obj.edit151:setTop(0);
     obj.edit151:setWidth(50);
     obj.edit151:setHeight(24);
-    obj.edit151:setField("clip_7");
+    obj.edit151:setField("rate_7");
     obj.edit151:setName("edit151");
 
     obj.edit152 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit152:setParent(obj.layout156);
-    obj.edit152:setLeft(550);
+    obj.edit152:setLeft(500);
     obj.edit152:setTop(0);
     obj.edit152:setWidth(50);
     obj.edit152:setHeight(24);
-    obj.edit152:setField("conceal_7");
+    obj.edit152:setField("clip_7");
     obj.edit152:setName("edit152");
+
+    obj.edit153 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit153:setParent(obj.layout156);
+    obj.edit153:setLeft(550);
+    obj.edit153:setTop(0);
+    obj.edit153:setWidth(50);
+    obj.edit153:setHeight(24);
+    obj.edit153:setField("conceal_7");
+    obj.edit153:setName("edit153");
 
     obj.layout157 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout157:setParent(obj.layout149);
@@ -13075,77 +13085,77 @@ local function constructNew_frmVampireDarkAges20th()
     obj.layout157:setHeight(25);
     obj.layout157:setName("layout157");
 
-    obj.edit153 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit153:setParent(obj.layout157);
-    obj.edit153:setLeft(0);
-    obj.edit153:setTop(0);
-    obj.edit153:setWidth(200);
-    obj.edit153:setHeight(24);
-    obj.edit153:setField("attack_8");
-    obj.edit153:setName("edit153");
-
     obj.edit154 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit154:setParent(obj.layout157);
-    obj.edit154:setLeft(200);
+    obj.edit154:setLeft(0);
     obj.edit154:setTop(0);
-    obj.edit154:setWidth(100);
+    obj.edit154:setWidth(200);
     obj.edit154:setHeight(24);
-    obj.edit154:setField("roll_8");
+    obj.edit154:setField("attack_8");
     obj.edit154:setName("edit154");
 
     obj.edit155 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit155:setParent(obj.layout157);
-    obj.edit155:setLeft(300);
+    obj.edit155:setLeft(200);
     obj.edit155:setTop(0);
-    obj.edit155:setWidth(50);
+    obj.edit155:setWidth(100);
     obj.edit155:setHeight(24);
-    obj.edit155:setField("difficulty_8");
+    obj.edit155:setField("roll_8");
     obj.edit155:setName("edit155");
 
     obj.edit156 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit156:setParent(obj.layout157);
-    obj.edit156:setLeft(350);
+    obj.edit156:setLeft(300);
     obj.edit156:setTop(0);
     obj.edit156:setWidth(50);
     obj.edit156:setHeight(24);
-    obj.edit156:setField("damage_8");
+    obj.edit156:setField("difficulty_8");
     obj.edit156:setName("edit156");
 
     obj.edit157 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit157:setParent(obj.layout157);
-    obj.edit157:setLeft(400);
+    obj.edit157:setLeft(350);
     obj.edit157:setTop(0);
     obj.edit157:setWidth(50);
     obj.edit157:setHeight(24);
-    obj.edit157:setField("range_8");
+    obj.edit157:setField("damage_8");
     obj.edit157:setName("edit157");
 
     obj.edit158 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit158:setParent(obj.layout157);
-    obj.edit158:setLeft(450);
+    obj.edit158:setLeft(400);
     obj.edit158:setTop(0);
     obj.edit158:setWidth(50);
     obj.edit158:setHeight(24);
-    obj.edit158:setField("rate_8");
+    obj.edit158:setField("range_8");
     obj.edit158:setName("edit158");
 
     obj.edit159 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit159:setParent(obj.layout157);
-    obj.edit159:setLeft(500);
+    obj.edit159:setLeft(450);
     obj.edit159:setTop(0);
     obj.edit159:setWidth(50);
     obj.edit159:setHeight(24);
-    obj.edit159:setField("clip_8");
+    obj.edit159:setField("rate_8");
     obj.edit159:setName("edit159");
 
     obj.edit160 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit160:setParent(obj.layout157);
-    obj.edit160:setLeft(550);
+    obj.edit160:setLeft(500);
     obj.edit160:setTop(0);
     obj.edit160:setWidth(50);
     obj.edit160:setHeight(24);
-    obj.edit160:setField("conceal_8");
+    obj.edit160:setField("clip_8");
     obj.edit160:setName("edit160");
+
+    obj.edit161 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit161:setParent(obj.layout157);
+    obj.edit161:setLeft(550);
+    obj.edit161:setTop(0);
+    obj.edit161:setWidth(50);
+    obj.edit161:setHeight(24);
+    obj.edit161:setField("conceal_8");
+    obj.edit161:setName("edit161");
 
     obj.layout158 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout158:setParent(obj.layout149);
@@ -13155,77 +13165,77 @@ local function constructNew_frmVampireDarkAges20th()
     obj.layout158:setHeight(25);
     obj.layout158:setName("layout158");
 
-    obj.edit161 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit161:setParent(obj.layout158);
-    obj.edit161:setLeft(0);
-    obj.edit161:setTop(0);
-    obj.edit161:setWidth(200);
-    obj.edit161:setHeight(24);
-    obj.edit161:setField("attack_9");
-    obj.edit161:setName("edit161");
-
     obj.edit162 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit162:setParent(obj.layout158);
-    obj.edit162:setLeft(200);
+    obj.edit162:setLeft(0);
     obj.edit162:setTop(0);
-    obj.edit162:setWidth(100);
+    obj.edit162:setWidth(200);
     obj.edit162:setHeight(24);
-    obj.edit162:setField("roll_9");
+    obj.edit162:setField("attack_9");
     obj.edit162:setName("edit162");
 
     obj.edit163 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit163:setParent(obj.layout158);
-    obj.edit163:setLeft(300);
+    obj.edit163:setLeft(200);
     obj.edit163:setTop(0);
-    obj.edit163:setWidth(50);
+    obj.edit163:setWidth(100);
     obj.edit163:setHeight(24);
-    obj.edit163:setField("difficulty_9");
+    obj.edit163:setField("roll_9");
     obj.edit163:setName("edit163");
 
     obj.edit164 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit164:setParent(obj.layout158);
-    obj.edit164:setLeft(350);
+    obj.edit164:setLeft(300);
     obj.edit164:setTop(0);
     obj.edit164:setWidth(50);
     obj.edit164:setHeight(24);
-    obj.edit164:setField("damage_9");
+    obj.edit164:setField("difficulty_9");
     obj.edit164:setName("edit164");
 
     obj.edit165 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit165:setParent(obj.layout158);
-    obj.edit165:setLeft(400);
+    obj.edit165:setLeft(350);
     obj.edit165:setTop(0);
     obj.edit165:setWidth(50);
     obj.edit165:setHeight(24);
-    obj.edit165:setField("range_9");
+    obj.edit165:setField("damage_9");
     obj.edit165:setName("edit165");
 
     obj.edit166 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit166:setParent(obj.layout158);
-    obj.edit166:setLeft(450);
+    obj.edit166:setLeft(400);
     obj.edit166:setTop(0);
     obj.edit166:setWidth(50);
     obj.edit166:setHeight(24);
-    obj.edit166:setField("rate_9");
+    obj.edit166:setField("range_9");
     obj.edit166:setName("edit166");
 
     obj.edit167 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit167:setParent(obj.layout158);
-    obj.edit167:setLeft(500);
+    obj.edit167:setLeft(450);
     obj.edit167:setTop(0);
     obj.edit167:setWidth(50);
     obj.edit167:setHeight(24);
-    obj.edit167:setField("clip_9");
+    obj.edit167:setField("rate_9");
     obj.edit167:setName("edit167");
 
     obj.edit168 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit168:setParent(obj.layout158);
-    obj.edit168:setLeft(550);
+    obj.edit168:setLeft(500);
     obj.edit168:setTop(0);
     obj.edit168:setWidth(50);
     obj.edit168:setHeight(24);
-    obj.edit168:setField("conceal_9");
+    obj.edit168:setField("clip_9");
     obj.edit168:setName("edit168");
+
+    obj.edit169 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit169:setParent(obj.layout158);
+    obj.edit169:setLeft(550);
+    obj.edit169:setTop(0);
+    obj.edit169:setWidth(50);
+    obj.edit169:setHeight(24);
+    obj.edit169:setField("conceal_9");
+    obj.edit169:setName("edit169");
 
     obj.layout159 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout159:setParent(obj.layout149);
@@ -13235,77 +13245,77 @@ local function constructNew_frmVampireDarkAges20th()
     obj.layout159:setHeight(25);
     obj.layout159:setName("layout159");
 
-    obj.edit169 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit169:setParent(obj.layout159);
-    obj.edit169:setLeft(0);
-    obj.edit169:setTop(0);
-    obj.edit169:setWidth(200);
-    obj.edit169:setHeight(24);
-    obj.edit169:setField("attack_10");
-    obj.edit169:setName("edit169");
-
     obj.edit170 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit170:setParent(obj.layout159);
-    obj.edit170:setLeft(200);
+    obj.edit170:setLeft(0);
     obj.edit170:setTop(0);
-    obj.edit170:setWidth(100);
+    obj.edit170:setWidth(200);
     obj.edit170:setHeight(24);
-    obj.edit170:setField("roll_10");
+    obj.edit170:setField("attack_10");
     obj.edit170:setName("edit170");
 
     obj.edit171 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit171:setParent(obj.layout159);
-    obj.edit171:setLeft(300);
+    obj.edit171:setLeft(200);
     obj.edit171:setTop(0);
-    obj.edit171:setWidth(50);
+    obj.edit171:setWidth(100);
     obj.edit171:setHeight(24);
-    obj.edit171:setField("difficulty_10");
+    obj.edit171:setField("roll_10");
     obj.edit171:setName("edit171");
 
     obj.edit172 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit172:setParent(obj.layout159);
-    obj.edit172:setLeft(350);
+    obj.edit172:setLeft(300);
     obj.edit172:setTop(0);
     obj.edit172:setWidth(50);
     obj.edit172:setHeight(24);
-    obj.edit172:setField("damage_10");
+    obj.edit172:setField("difficulty_10");
     obj.edit172:setName("edit172");
 
     obj.edit173 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit173:setParent(obj.layout159);
-    obj.edit173:setLeft(400);
+    obj.edit173:setLeft(350);
     obj.edit173:setTop(0);
     obj.edit173:setWidth(50);
     obj.edit173:setHeight(24);
-    obj.edit173:setField("range_10");
+    obj.edit173:setField("damage_10");
     obj.edit173:setName("edit173");
 
     obj.edit174 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit174:setParent(obj.layout159);
-    obj.edit174:setLeft(450);
+    obj.edit174:setLeft(400);
     obj.edit174:setTop(0);
     obj.edit174:setWidth(50);
     obj.edit174:setHeight(24);
-    obj.edit174:setField("rate_10");
+    obj.edit174:setField("range_10");
     obj.edit174:setName("edit174");
 
     obj.edit175 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit175:setParent(obj.layout159);
-    obj.edit175:setLeft(500);
+    obj.edit175:setLeft(450);
     obj.edit175:setTop(0);
     obj.edit175:setWidth(50);
     obj.edit175:setHeight(24);
-    obj.edit175:setField("clip_10");
+    obj.edit175:setField("rate_10");
     obj.edit175:setName("edit175");
 
     obj.edit176 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit176:setParent(obj.layout159);
-    obj.edit176:setLeft(550);
+    obj.edit176:setLeft(500);
     obj.edit176:setTop(0);
     obj.edit176:setWidth(50);
     obj.edit176:setHeight(24);
-    obj.edit176:setField("conceal_10");
+    obj.edit176:setField("clip_10");
     obj.edit176:setName("edit176");
+
+    obj.edit177 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit177:setParent(obj.layout159);
+    obj.edit177:setLeft(550);
+    obj.edit177:setTop(0);
+    obj.edit177:setWidth(50);
+    obj.edit177:setHeight(24);
+    obj.edit177:setField("conceal_10");
+    obj.edit177:setName("edit177");
 
     obj.layout160 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout160:setParent(obj.scrollBox3);
@@ -13388,14 +13398,14 @@ local function constructNew_frmVampireDarkAges20th()
     obj.label77:setHorzTextAlign("trailing");
     obj.label77:setName("label77");
 
-    obj.edit177 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit177:setParent(obj.layout162);
-    obj.edit177:setLeft(55);
-    obj.edit177:setTop(0);
-    obj.edit177:setWidth(145);
-    obj.edit177:setHeight(25);
-    obj.edit177:setField("armorClass");
-    obj.edit177:setName("edit177");
+    obj.edit178 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit178:setParent(obj.layout162);
+    obj.edit178:setLeft(55);
+    obj.edit178:setTop(0);
+    obj.edit178:setWidth(145);
+    obj.edit178:setHeight(25);
+    obj.edit178:setField("armorClass");
+    obj.edit178:setName("edit178");
 
     obj.layout163 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout163:setParent(obj.layout161);
@@ -13415,14 +13425,14 @@ local function constructNew_frmVampireDarkAges20th()
     obj.label78:setHorzTextAlign("trailing");
     obj.label78:setName("label78");
 
-    obj.edit178 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit178:setParent(obj.layout163);
-    obj.edit178:setLeft(55);
-    obj.edit178:setTop(0);
-    obj.edit178:setWidth(145);
-    obj.edit178:setHeight(25);
-    obj.edit178:setField("armorRating");
-    obj.edit178:setName("edit178");
+    obj.edit179 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit179:setParent(obj.layout163);
+    obj.edit179:setLeft(55);
+    obj.edit179:setTop(0);
+    obj.edit179:setWidth(145);
+    obj.edit179:setHeight(25);
+    obj.edit179:setField("armorRating");
+    obj.edit179:setName("edit179");
 
     obj.layout164 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout164:setParent(obj.layout161);
@@ -13442,14 +13452,14 @@ local function constructNew_frmVampireDarkAges20th()
     obj.label79:setHorzTextAlign("trailing");
     obj.label79:setName("label79");
 
-    obj.edit179 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit179:setParent(obj.layout164);
-    obj.edit179:setLeft(55);
-    obj.edit179:setTop(0);
-    obj.edit179:setWidth(145);
-    obj.edit179:setHeight(25);
-    obj.edit179:setField("armorPenalty");
-    obj.edit179:setName("edit179");
+    obj.edit180 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit180:setParent(obj.layout164);
+    obj.edit180:setLeft(55);
+    obj.edit180:setTop(0);
+    obj.edit180:setWidth(145);
+    obj.edit180:setHeight(25);
+    obj.edit180:setField("armorPenalty");
+    obj.edit180:setName("edit180");
 
     obj.textEditor2 = GUI.fromHandle(_obj_newObject("textEditor"));
     obj.textEditor2:setParent(obj.layout161);
@@ -13609,14 +13619,14 @@ local function constructNew_frmVampireDarkAges20th()
     obj.tab4:setTitle("Descriptions");
     obj.tab4:setName("tab4");
 
-    obj.frmVDA20_4 = GUI.fromHandle(_obj_newObject("form"));
-    obj.frmVDA20_4:setParent(obj.tab4);
-    obj.frmVDA20_4:setName("frmVDA20_4");
-    obj.frmVDA20_4:setAlign("client");
-    obj.frmVDA20_4:setTheme("dark");
+    obj.frmVM20_4 = GUI.fromHandle(_obj_newObject("form"));
+    obj.frmVM20_4:setParent(obj.tab4);
+    obj.frmVM20_4:setName("frmVM20_4");
+    obj.frmVM20_4:setAlign("client");
+    obj.frmVM20_4:setTheme("dark");
 
     obj.scrollBox4 = GUI.fromHandle(_obj_newObject("scrollBox"));
-    obj.scrollBox4:setParent(obj.frmVDA20_4);
+    obj.scrollBox4:setParent(obj.frmVM20_4);
     obj.scrollBox4:setAlign("client");
     obj.scrollBox4:setName("scrollBox4");
 
@@ -13704,32 +13714,32 @@ local function constructNew_frmVampireDarkAges20th()
     obj.layout171:setHeight(25);
     obj.layout171:setName("layout171");
 
-    obj.edit180 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit180:setParent(obj.layout171);
-    obj.edit180:setLeft(0);
-    obj.edit180:setTop(0);
-    obj.edit180:setWidth(200);
-    obj.edit180:setHeight(24);
-    obj.edit180:setField("merit_m1");
-    obj.edit180:setName("edit180");
-
     obj.edit181 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit181:setParent(obj.layout171);
-    obj.edit181:setLeft(200);
+    obj.edit181:setLeft(0);
     obj.edit181:setTop(0);
-    obj.edit181:setWidth(100);
+    obj.edit181:setWidth(200);
     obj.edit181:setHeight(24);
-    obj.edit181:setField("type_m1");
+    obj.edit181:setField("merit_m1");
     obj.edit181:setName("edit181");
 
     obj.edit182 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit182:setParent(obj.layout171);
-    obj.edit182:setLeft(300);
+    obj.edit182:setLeft(200);
     obj.edit182:setTop(0);
-    obj.edit182:setWidth(50);
+    obj.edit182:setWidth(100);
     obj.edit182:setHeight(24);
-    obj.edit182:setField("costy_m1");
+    obj.edit182:setField("type_m1");
     obj.edit182:setName("edit182");
+
+    obj.edit183 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit183:setParent(obj.layout171);
+    obj.edit183:setLeft(300);
+    obj.edit183:setTop(0);
+    obj.edit183:setWidth(50);
+    obj.edit183:setHeight(24);
+    obj.edit183:setField("costy_m1");
+    obj.edit183:setName("edit183");
 
     obj.layout172 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout172:setParent(obj.layout170);
@@ -13739,32 +13749,32 @@ local function constructNew_frmVampireDarkAges20th()
     obj.layout172:setHeight(25);
     obj.layout172:setName("layout172");
 
-    obj.edit183 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit183:setParent(obj.layout172);
-    obj.edit183:setLeft(0);
-    obj.edit183:setTop(0);
-    obj.edit183:setWidth(200);
-    obj.edit183:setHeight(24);
-    obj.edit183:setField("merit_m2");
-    obj.edit183:setName("edit183");
-
     obj.edit184 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit184:setParent(obj.layout172);
-    obj.edit184:setLeft(200);
+    obj.edit184:setLeft(0);
     obj.edit184:setTop(0);
-    obj.edit184:setWidth(100);
+    obj.edit184:setWidth(200);
     obj.edit184:setHeight(24);
-    obj.edit184:setField("type_m2");
+    obj.edit184:setField("merit_m2");
     obj.edit184:setName("edit184");
 
     obj.edit185 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit185:setParent(obj.layout172);
-    obj.edit185:setLeft(300);
+    obj.edit185:setLeft(200);
     obj.edit185:setTop(0);
-    obj.edit185:setWidth(50);
+    obj.edit185:setWidth(100);
     obj.edit185:setHeight(24);
-    obj.edit185:setField("costy_m2");
+    obj.edit185:setField("type_m2");
     obj.edit185:setName("edit185");
+
+    obj.edit186 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit186:setParent(obj.layout172);
+    obj.edit186:setLeft(300);
+    obj.edit186:setTop(0);
+    obj.edit186:setWidth(50);
+    obj.edit186:setHeight(24);
+    obj.edit186:setField("costy_m2");
+    obj.edit186:setName("edit186");
 
     obj.layout173 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout173:setParent(obj.layout170);
@@ -13774,32 +13784,32 @@ local function constructNew_frmVampireDarkAges20th()
     obj.layout173:setHeight(25);
     obj.layout173:setName("layout173");
 
-    obj.edit186 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit186:setParent(obj.layout173);
-    obj.edit186:setLeft(0);
-    obj.edit186:setTop(0);
-    obj.edit186:setWidth(200);
-    obj.edit186:setHeight(24);
-    obj.edit186:setField("merit_m3");
-    obj.edit186:setName("edit186");
-
     obj.edit187 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit187:setParent(obj.layout173);
-    obj.edit187:setLeft(200);
+    obj.edit187:setLeft(0);
     obj.edit187:setTop(0);
-    obj.edit187:setWidth(100);
+    obj.edit187:setWidth(200);
     obj.edit187:setHeight(24);
-    obj.edit187:setField("type_m3");
+    obj.edit187:setField("merit_m3");
     obj.edit187:setName("edit187");
 
     obj.edit188 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit188:setParent(obj.layout173);
-    obj.edit188:setLeft(300);
+    obj.edit188:setLeft(200);
     obj.edit188:setTop(0);
-    obj.edit188:setWidth(50);
+    obj.edit188:setWidth(100);
     obj.edit188:setHeight(24);
-    obj.edit188:setField("costy_m3");
+    obj.edit188:setField("type_m3");
     obj.edit188:setName("edit188");
+
+    obj.edit189 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit189:setParent(obj.layout173);
+    obj.edit189:setLeft(300);
+    obj.edit189:setTop(0);
+    obj.edit189:setWidth(50);
+    obj.edit189:setHeight(24);
+    obj.edit189:setField("costy_m3");
+    obj.edit189:setName("edit189");
 
     obj.layout174 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout174:setParent(obj.layout170);
@@ -13809,32 +13819,32 @@ local function constructNew_frmVampireDarkAges20th()
     obj.layout174:setHeight(25);
     obj.layout174:setName("layout174");
 
-    obj.edit189 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit189:setParent(obj.layout174);
-    obj.edit189:setLeft(0);
-    obj.edit189:setTop(0);
-    obj.edit189:setWidth(200);
-    obj.edit189:setHeight(24);
-    obj.edit189:setField("merit_m4");
-    obj.edit189:setName("edit189");
-
     obj.edit190 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit190:setParent(obj.layout174);
-    obj.edit190:setLeft(200);
+    obj.edit190:setLeft(0);
     obj.edit190:setTop(0);
-    obj.edit190:setWidth(100);
+    obj.edit190:setWidth(200);
     obj.edit190:setHeight(24);
-    obj.edit190:setField("type_m4");
+    obj.edit190:setField("merit_m4");
     obj.edit190:setName("edit190");
 
     obj.edit191 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit191:setParent(obj.layout174);
-    obj.edit191:setLeft(300);
+    obj.edit191:setLeft(200);
     obj.edit191:setTop(0);
-    obj.edit191:setWidth(50);
+    obj.edit191:setWidth(100);
     obj.edit191:setHeight(24);
-    obj.edit191:setField("costy_m4");
+    obj.edit191:setField("type_m4");
     obj.edit191:setName("edit191");
+
+    obj.edit192 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit192:setParent(obj.layout174);
+    obj.edit192:setLeft(300);
+    obj.edit192:setTop(0);
+    obj.edit192:setWidth(50);
+    obj.edit192:setHeight(24);
+    obj.edit192:setField("costy_m4");
+    obj.edit192:setName("edit192");
 
     obj.layout175 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout175:setParent(obj.layout170);
@@ -13844,32 +13854,32 @@ local function constructNew_frmVampireDarkAges20th()
     obj.layout175:setHeight(25);
     obj.layout175:setName("layout175");
 
-    obj.edit192 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit192:setParent(obj.layout175);
-    obj.edit192:setLeft(0);
-    obj.edit192:setTop(0);
-    obj.edit192:setWidth(200);
-    obj.edit192:setHeight(24);
-    obj.edit192:setField("merit_m5");
-    obj.edit192:setName("edit192");
-
     obj.edit193 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit193:setParent(obj.layout175);
-    obj.edit193:setLeft(200);
+    obj.edit193:setLeft(0);
     obj.edit193:setTop(0);
-    obj.edit193:setWidth(100);
+    obj.edit193:setWidth(200);
     obj.edit193:setHeight(24);
-    obj.edit193:setField("type_m5");
+    obj.edit193:setField("merit_m5");
     obj.edit193:setName("edit193");
 
     obj.edit194 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit194:setParent(obj.layout175);
-    obj.edit194:setLeft(300);
+    obj.edit194:setLeft(200);
     obj.edit194:setTop(0);
-    obj.edit194:setWidth(50);
+    obj.edit194:setWidth(100);
     obj.edit194:setHeight(24);
-    obj.edit194:setField("costy_m5");
+    obj.edit194:setField("type_m5");
     obj.edit194:setName("edit194");
+
+    obj.edit195 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit195:setParent(obj.layout175);
+    obj.edit195:setLeft(300);
+    obj.edit195:setTop(0);
+    obj.edit195:setWidth(50);
+    obj.edit195:setHeight(24);
+    obj.edit195:setField("costy_m5");
+    obj.edit195:setName("edit195");
 
     obj.layout176 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout176:setParent(obj.layout170);
@@ -13879,32 +13889,32 @@ local function constructNew_frmVampireDarkAges20th()
     obj.layout176:setHeight(25);
     obj.layout176:setName("layout176");
 
-    obj.edit195 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit195:setParent(obj.layout176);
-    obj.edit195:setLeft(0);
-    obj.edit195:setTop(0);
-    obj.edit195:setWidth(200);
-    obj.edit195:setHeight(24);
-    obj.edit195:setField("merit_m6");
-    obj.edit195:setName("edit195");
-
     obj.edit196 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit196:setParent(obj.layout176);
-    obj.edit196:setLeft(200);
+    obj.edit196:setLeft(0);
     obj.edit196:setTop(0);
-    obj.edit196:setWidth(100);
+    obj.edit196:setWidth(200);
     obj.edit196:setHeight(24);
-    obj.edit196:setField("type_m6");
+    obj.edit196:setField("merit_m6");
     obj.edit196:setName("edit196");
 
     obj.edit197 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit197:setParent(obj.layout176);
-    obj.edit197:setLeft(300);
+    obj.edit197:setLeft(200);
     obj.edit197:setTop(0);
-    obj.edit197:setWidth(50);
+    obj.edit197:setWidth(100);
     obj.edit197:setHeight(24);
-    obj.edit197:setField("costy_m6");
+    obj.edit197:setField("type_m6");
     obj.edit197:setName("edit197");
+
+    obj.edit198 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit198:setParent(obj.layout176);
+    obj.edit198:setLeft(300);
+    obj.edit198:setTop(0);
+    obj.edit198:setWidth(50);
+    obj.edit198:setHeight(24);
+    obj.edit198:setField("costy_m6");
+    obj.edit198:setName("edit198");
 
     obj.layout177 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout177:setParent(obj.layout170);
@@ -13914,32 +13924,32 @@ local function constructNew_frmVampireDarkAges20th()
     obj.layout177:setHeight(25);
     obj.layout177:setName("layout177");
 
-    obj.edit198 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit198:setParent(obj.layout177);
-    obj.edit198:setLeft(0);
-    obj.edit198:setTop(0);
-    obj.edit198:setWidth(200);
-    obj.edit198:setHeight(24);
-    obj.edit198:setField("merit_m7");
-    obj.edit198:setName("edit198");
-
     obj.edit199 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit199:setParent(obj.layout177);
-    obj.edit199:setLeft(200);
+    obj.edit199:setLeft(0);
     obj.edit199:setTop(0);
-    obj.edit199:setWidth(100);
+    obj.edit199:setWidth(200);
     obj.edit199:setHeight(24);
-    obj.edit199:setField("type_m7");
+    obj.edit199:setField("merit_m7");
     obj.edit199:setName("edit199");
 
     obj.edit200 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit200:setParent(obj.layout177);
-    obj.edit200:setLeft(300);
+    obj.edit200:setLeft(200);
     obj.edit200:setTop(0);
-    obj.edit200:setWidth(50);
+    obj.edit200:setWidth(100);
     obj.edit200:setHeight(24);
-    obj.edit200:setField("costy_m7");
+    obj.edit200:setField("type_m7");
     obj.edit200:setName("edit200");
+
+    obj.edit201 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit201:setParent(obj.layout177);
+    obj.edit201:setLeft(300);
+    obj.edit201:setTop(0);
+    obj.edit201:setWidth(50);
+    obj.edit201:setHeight(24);
+    obj.edit201:setField("costy_m7");
+    obj.edit201:setName("edit201");
 
     obj.layout178 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout178:setParent(obj.layout170);
@@ -13949,32 +13959,32 @@ local function constructNew_frmVampireDarkAges20th()
     obj.layout178:setHeight(25);
     obj.layout178:setName("layout178");
 
-    obj.edit201 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit201:setParent(obj.layout178);
-    obj.edit201:setLeft(0);
-    obj.edit201:setTop(0);
-    obj.edit201:setWidth(200);
-    obj.edit201:setHeight(24);
-    obj.edit201:setField("merit_m8");
-    obj.edit201:setName("edit201");
-
     obj.edit202 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit202:setParent(obj.layout178);
-    obj.edit202:setLeft(200);
+    obj.edit202:setLeft(0);
     obj.edit202:setTop(0);
-    obj.edit202:setWidth(100);
+    obj.edit202:setWidth(200);
     obj.edit202:setHeight(24);
-    obj.edit202:setField("type_m8");
+    obj.edit202:setField("merit_m8");
     obj.edit202:setName("edit202");
 
     obj.edit203 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit203:setParent(obj.layout178);
-    obj.edit203:setLeft(300);
+    obj.edit203:setLeft(200);
     obj.edit203:setTop(0);
-    obj.edit203:setWidth(50);
+    obj.edit203:setWidth(100);
     obj.edit203:setHeight(24);
-    obj.edit203:setField("costy_m8");
+    obj.edit203:setField("type_m8");
     obj.edit203:setName("edit203");
+
+    obj.edit204 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit204:setParent(obj.layout178);
+    obj.edit204:setLeft(300);
+    obj.edit204:setTop(0);
+    obj.edit204:setWidth(50);
+    obj.edit204:setHeight(24);
+    obj.edit204:setField("costy_m8");
+    obj.edit204:setName("edit204");
 
     obj.layout179 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout179:setParent(obj.layout169);
@@ -14031,32 +14041,32 @@ local function constructNew_frmVampireDarkAges20th()
     obj.layout180:setHeight(25);
     obj.layout180:setName("layout180");
 
-    obj.edit204 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit204:setParent(obj.layout180);
-    obj.edit204:setLeft(0);
-    obj.edit204:setTop(0);
-    obj.edit204:setWidth(200);
-    obj.edit204:setHeight(24);
-    obj.edit204:setField("merit_f1");
-    obj.edit204:setName("edit204");
-
     obj.edit205 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit205:setParent(obj.layout180);
-    obj.edit205:setLeft(200);
+    obj.edit205:setLeft(0);
     obj.edit205:setTop(0);
-    obj.edit205:setWidth(100);
+    obj.edit205:setWidth(200);
     obj.edit205:setHeight(24);
-    obj.edit205:setField("type_f1");
+    obj.edit205:setField("merit_f1");
     obj.edit205:setName("edit205");
 
     obj.edit206 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit206:setParent(obj.layout180);
-    obj.edit206:setLeft(300);
+    obj.edit206:setLeft(200);
     obj.edit206:setTop(0);
-    obj.edit206:setWidth(50);
+    obj.edit206:setWidth(100);
     obj.edit206:setHeight(24);
-    obj.edit206:setField("costy_f1");
+    obj.edit206:setField("type_f1");
     obj.edit206:setName("edit206");
+
+    obj.edit207 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit207:setParent(obj.layout180);
+    obj.edit207:setLeft(300);
+    obj.edit207:setTop(0);
+    obj.edit207:setWidth(50);
+    obj.edit207:setHeight(24);
+    obj.edit207:setField("costy_f1");
+    obj.edit207:setName("edit207");
 
     obj.layout181 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout181:setParent(obj.layout179);
@@ -14066,32 +14076,32 @@ local function constructNew_frmVampireDarkAges20th()
     obj.layout181:setHeight(25);
     obj.layout181:setName("layout181");
 
-    obj.edit207 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit207:setParent(obj.layout181);
-    obj.edit207:setLeft(0);
-    obj.edit207:setTop(0);
-    obj.edit207:setWidth(200);
-    obj.edit207:setHeight(24);
-    obj.edit207:setField("merit_f2");
-    obj.edit207:setName("edit207");
-
     obj.edit208 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit208:setParent(obj.layout181);
-    obj.edit208:setLeft(200);
+    obj.edit208:setLeft(0);
     obj.edit208:setTop(0);
-    obj.edit208:setWidth(100);
+    obj.edit208:setWidth(200);
     obj.edit208:setHeight(24);
-    obj.edit208:setField("type_f2");
+    obj.edit208:setField("merit_f2");
     obj.edit208:setName("edit208");
 
     obj.edit209 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit209:setParent(obj.layout181);
-    obj.edit209:setLeft(300);
+    obj.edit209:setLeft(200);
     obj.edit209:setTop(0);
-    obj.edit209:setWidth(50);
+    obj.edit209:setWidth(100);
     obj.edit209:setHeight(24);
-    obj.edit209:setField("costy_f2");
+    obj.edit209:setField("type_f2");
     obj.edit209:setName("edit209");
+
+    obj.edit210 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit210:setParent(obj.layout181);
+    obj.edit210:setLeft(300);
+    obj.edit210:setTop(0);
+    obj.edit210:setWidth(50);
+    obj.edit210:setHeight(24);
+    obj.edit210:setField("costy_f2");
+    obj.edit210:setName("edit210");
 
     obj.layout182 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout182:setParent(obj.layout179);
@@ -14101,32 +14111,32 @@ local function constructNew_frmVampireDarkAges20th()
     obj.layout182:setHeight(25);
     obj.layout182:setName("layout182");
 
-    obj.edit210 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit210:setParent(obj.layout182);
-    obj.edit210:setLeft(0);
-    obj.edit210:setTop(0);
-    obj.edit210:setWidth(200);
-    obj.edit210:setHeight(24);
-    obj.edit210:setField("merit_f3");
-    obj.edit210:setName("edit210");
-
     obj.edit211 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit211:setParent(obj.layout182);
-    obj.edit211:setLeft(200);
+    obj.edit211:setLeft(0);
     obj.edit211:setTop(0);
-    obj.edit211:setWidth(100);
+    obj.edit211:setWidth(200);
     obj.edit211:setHeight(24);
-    obj.edit211:setField("type_f3");
+    obj.edit211:setField("merit_f3");
     obj.edit211:setName("edit211");
 
     obj.edit212 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit212:setParent(obj.layout182);
-    obj.edit212:setLeft(300);
+    obj.edit212:setLeft(200);
     obj.edit212:setTop(0);
-    obj.edit212:setWidth(50);
+    obj.edit212:setWidth(100);
     obj.edit212:setHeight(24);
-    obj.edit212:setField("costy_f3");
+    obj.edit212:setField("type_f3");
     obj.edit212:setName("edit212");
+
+    obj.edit213 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit213:setParent(obj.layout182);
+    obj.edit213:setLeft(300);
+    obj.edit213:setTop(0);
+    obj.edit213:setWidth(50);
+    obj.edit213:setHeight(24);
+    obj.edit213:setField("costy_f3");
+    obj.edit213:setName("edit213");
 
     obj.layout183 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout183:setParent(obj.layout179);
@@ -14136,32 +14146,32 @@ local function constructNew_frmVampireDarkAges20th()
     obj.layout183:setHeight(25);
     obj.layout183:setName("layout183");
 
-    obj.edit213 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit213:setParent(obj.layout183);
-    obj.edit213:setLeft(0);
-    obj.edit213:setTop(0);
-    obj.edit213:setWidth(200);
-    obj.edit213:setHeight(24);
-    obj.edit213:setField("merit_f4");
-    obj.edit213:setName("edit213");
-
     obj.edit214 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit214:setParent(obj.layout183);
-    obj.edit214:setLeft(200);
+    obj.edit214:setLeft(0);
     obj.edit214:setTop(0);
-    obj.edit214:setWidth(100);
+    obj.edit214:setWidth(200);
     obj.edit214:setHeight(24);
-    obj.edit214:setField("type_f4");
+    obj.edit214:setField("merit_f4");
     obj.edit214:setName("edit214");
 
     obj.edit215 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit215:setParent(obj.layout183);
-    obj.edit215:setLeft(300);
+    obj.edit215:setLeft(200);
     obj.edit215:setTop(0);
-    obj.edit215:setWidth(50);
+    obj.edit215:setWidth(100);
     obj.edit215:setHeight(24);
-    obj.edit215:setField("costy_f4");
+    obj.edit215:setField("type_f4");
     obj.edit215:setName("edit215");
+
+    obj.edit216 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit216:setParent(obj.layout183);
+    obj.edit216:setLeft(300);
+    obj.edit216:setTop(0);
+    obj.edit216:setWidth(50);
+    obj.edit216:setHeight(24);
+    obj.edit216:setField("costy_f4");
+    obj.edit216:setName("edit216");
 
     obj.layout184 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout184:setParent(obj.layout179);
@@ -14171,32 +14181,32 @@ local function constructNew_frmVampireDarkAges20th()
     obj.layout184:setHeight(25);
     obj.layout184:setName("layout184");
 
-    obj.edit216 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit216:setParent(obj.layout184);
-    obj.edit216:setLeft(0);
-    obj.edit216:setTop(0);
-    obj.edit216:setWidth(200);
-    obj.edit216:setHeight(24);
-    obj.edit216:setField("merit_f5");
-    obj.edit216:setName("edit216");
-
     obj.edit217 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit217:setParent(obj.layout184);
-    obj.edit217:setLeft(200);
+    obj.edit217:setLeft(0);
     obj.edit217:setTop(0);
-    obj.edit217:setWidth(100);
+    obj.edit217:setWidth(200);
     obj.edit217:setHeight(24);
-    obj.edit217:setField("type_f5");
+    obj.edit217:setField("merit_f5");
     obj.edit217:setName("edit217");
 
     obj.edit218 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit218:setParent(obj.layout184);
-    obj.edit218:setLeft(300);
+    obj.edit218:setLeft(200);
     obj.edit218:setTop(0);
-    obj.edit218:setWidth(50);
+    obj.edit218:setWidth(100);
     obj.edit218:setHeight(24);
-    obj.edit218:setField("costy_f5");
+    obj.edit218:setField("type_f5");
     obj.edit218:setName("edit218");
+
+    obj.edit219 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit219:setParent(obj.layout184);
+    obj.edit219:setLeft(300);
+    obj.edit219:setTop(0);
+    obj.edit219:setWidth(50);
+    obj.edit219:setHeight(24);
+    obj.edit219:setField("costy_f5");
+    obj.edit219:setName("edit219");
 
     obj.layout185 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout185:setParent(obj.layout179);
@@ -14206,32 +14216,32 @@ local function constructNew_frmVampireDarkAges20th()
     obj.layout185:setHeight(25);
     obj.layout185:setName("layout185");
 
-    obj.edit219 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit219:setParent(obj.layout185);
-    obj.edit219:setLeft(0);
-    obj.edit219:setTop(0);
-    obj.edit219:setWidth(200);
-    obj.edit219:setHeight(24);
-    obj.edit219:setField("merit_f6");
-    obj.edit219:setName("edit219");
-
     obj.edit220 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit220:setParent(obj.layout185);
-    obj.edit220:setLeft(200);
+    obj.edit220:setLeft(0);
     obj.edit220:setTop(0);
-    obj.edit220:setWidth(100);
+    obj.edit220:setWidth(200);
     obj.edit220:setHeight(24);
-    obj.edit220:setField("type_f6");
+    obj.edit220:setField("merit_f6");
     obj.edit220:setName("edit220");
 
     obj.edit221 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit221:setParent(obj.layout185);
-    obj.edit221:setLeft(300);
+    obj.edit221:setLeft(200);
     obj.edit221:setTop(0);
-    obj.edit221:setWidth(50);
+    obj.edit221:setWidth(100);
     obj.edit221:setHeight(24);
-    obj.edit221:setField("costy_f6");
+    obj.edit221:setField("type_f6");
     obj.edit221:setName("edit221");
+
+    obj.edit222 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit222:setParent(obj.layout185);
+    obj.edit222:setLeft(300);
+    obj.edit222:setTop(0);
+    obj.edit222:setWidth(50);
+    obj.edit222:setHeight(24);
+    obj.edit222:setField("costy_f6");
+    obj.edit222:setName("edit222");
 
     obj.layout186 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout186:setParent(obj.layout179);
@@ -14241,32 +14251,32 @@ local function constructNew_frmVampireDarkAges20th()
     obj.layout186:setHeight(25);
     obj.layout186:setName("layout186");
 
-    obj.edit222 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit222:setParent(obj.layout186);
-    obj.edit222:setLeft(0);
-    obj.edit222:setTop(0);
-    obj.edit222:setWidth(200);
-    obj.edit222:setHeight(24);
-    obj.edit222:setField("merit_f7");
-    obj.edit222:setName("edit222");
-
     obj.edit223 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit223:setParent(obj.layout186);
-    obj.edit223:setLeft(200);
+    obj.edit223:setLeft(0);
     obj.edit223:setTop(0);
-    obj.edit223:setWidth(100);
+    obj.edit223:setWidth(200);
     obj.edit223:setHeight(24);
-    obj.edit223:setField("type_f7");
+    obj.edit223:setField("merit_f7");
     obj.edit223:setName("edit223");
 
     obj.edit224 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit224:setParent(obj.layout186);
-    obj.edit224:setLeft(300);
+    obj.edit224:setLeft(200);
     obj.edit224:setTop(0);
-    obj.edit224:setWidth(50);
+    obj.edit224:setWidth(100);
     obj.edit224:setHeight(24);
-    obj.edit224:setField("costy_f7");
+    obj.edit224:setField("type_f7");
     obj.edit224:setName("edit224");
+
+    obj.edit225 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit225:setParent(obj.layout186);
+    obj.edit225:setLeft(300);
+    obj.edit225:setTop(0);
+    obj.edit225:setWidth(50);
+    obj.edit225:setHeight(24);
+    obj.edit225:setField("costy_f7");
+    obj.edit225:setName("edit225");
 
     obj.layout187 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout187:setParent(obj.layout179);
@@ -14276,32 +14286,32 @@ local function constructNew_frmVampireDarkAges20th()
     obj.layout187:setHeight(25);
     obj.layout187:setName("layout187");
 
-    obj.edit225 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit225:setParent(obj.layout187);
-    obj.edit225:setLeft(0);
-    obj.edit225:setTop(0);
-    obj.edit225:setWidth(200);
-    obj.edit225:setHeight(24);
-    obj.edit225:setField("merit_f8");
-    obj.edit225:setName("edit225");
-
     obj.edit226 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit226:setParent(obj.layout187);
-    obj.edit226:setLeft(200);
+    obj.edit226:setLeft(0);
     obj.edit226:setTop(0);
-    obj.edit226:setWidth(100);
+    obj.edit226:setWidth(200);
     obj.edit226:setHeight(24);
-    obj.edit226:setField("type_f8");
+    obj.edit226:setField("merit_f8");
     obj.edit226:setName("edit226");
 
     obj.edit227 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit227:setParent(obj.layout187);
-    obj.edit227:setLeft(300);
+    obj.edit227:setLeft(200);
     obj.edit227:setTop(0);
-    obj.edit227:setWidth(50);
+    obj.edit227:setWidth(100);
     obj.edit227:setHeight(24);
-    obj.edit227:setField("costy_f8");
+    obj.edit227:setField("type_f8");
     obj.edit227:setName("edit227");
+
+    obj.edit228 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit228:setParent(obj.layout187);
+    obj.edit228:setLeft(300);
+    obj.edit228:setTop(0);
+    obj.edit228:setWidth(50);
+    obj.edit228:setHeight(24);
+    obj.edit228:setField("costy_f8");
+    obj.edit228:setName("edit228");
 
     obj.layout188 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout188:setParent(obj.scrollBox4);
@@ -14348,14 +14358,14 @@ local function constructNew_frmVampireDarkAges20th()
     obj.label92:setHorzTextAlign("trailing");
     obj.label92:setName("label92");
 
-    obj.edit228 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit228:setParent(obj.layout189);
-    obj.edit228:setLeft(55);
-    obj.edit228:setTop(0);
-    obj.edit228:setWidth(145);
-    obj.edit228:setHeight(25);
-    obj.edit228:setField("totalXP");
-    obj.edit228:setName("edit228");
+    obj.edit229 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit229:setParent(obj.layout189);
+    obj.edit229:setLeft(55);
+    obj.edit229:setTop(0);
+    obj.edit229:setWidth(145);
+    obj.edit229:setHeight(25);
+    obj.edit229:setField("totalXP");
+    obj.edit229:setName("edit229");
 
     obj.layout190 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout190:setParent(obj.layout188);
@@ -14375,14 +14385,14 @@ local function constructNew_frmVampireDarkAges20th()
     obj.label93:setHorzTextAlign("trailing");
     obj.label93:setName("label93");
 
-    obj.edit229 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit229:setParent(obj.layout190);
-    obj.edit229:setLeft(55);
-    obj.edit229:setTop(0);
-    obj.edit229:setWidth(145);
-    obj.edit229:setHeight(25);
-    obj.edit229:setField("spentXP");
-    obj.edit229:setName("edit229");
+    obj.edit230 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit230:setParent(obj.layout190);
+    obj.edit230:setLeft(55);
+    obj.edit230:setTop(0);
+    obj.edit230:setWidth(145);
+    obj.edit230:setHeight(25);
+    obj.edit230:setField("spentXP");
+    obj.edit230:setName("edit230");
 
     obj.textEditor7 = GUI.fromHandle(_obj_newObject("textEditor"));
     obj.textEditor7:setParent(obj.layout188);
@@ -14794,14 +14804,14 @@ local function constructNew_frmVampireDarkAges20th()
     obj.tab5:setTitle("Background");
     obj.tab5:setName("tab5");
 
-    obj.frmVDA20_5 = GUI.fromHandle(_obj_newObject("form"));
-    obj.frmVDA20_5:setParent(obj.tab5);
-    obj.frmVDA20_5:setName("frmVDA20_5");
-    obj.frmVDA20_5:setAlign("client");
-    obj.frmVDA20_5:setTheme("dark");
+    obj.frmVM20_5 = GUI.fromHandle(_obj_newObject("form"));
+    obj.frmVM20_5:setParent(obj.tab5);
+    obj.frmVM20_5:setName("frmVM20_5");
+    obj.frmVM20_5:setAlign("client");
+    obj.frmVM20_5:setTheme("dark");
 
     obj.scrollBox5 = GUI.fromHandle(_obj_newObject("scrollBox"));
-    obj.scrollBox5:setParent(obj.frmVDA20_5);
+    obj.scrollBox5:setParent(obj.frmVM20_5);
     obj.scrollBox5:setAlign("client");
     obj.scrollBox5:setName("scrollBox5");
 
@@ -14840,14 +14850,14 @@ local function constructNew_frmVampireDarkAges20th()
     obj.label105:setHorzTextAlign("trailing");
     obj.label105:setName("label105");
 
-    obj.edit230 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit230:setParent(obj.layout203);
-    obj.edit230:setLeft(110);
-    obj.edit230:setTop(0);
-    obj.edit230:setWidth(200);
-    obj.edit230:setHeight(25);
-    obj.edit230:setField("desc_age");
-    obj.edit230:setName("edit230");
+    obj.edit231 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit231:setParent(obj.layout203);
+    obj.edit231:setLeft(110);
+    obj.edit231:setTop(0);
+    obj.edit231:setWidth(200);
+    obj.edit231:setHeight(25);
+    obj.edit231:setField("desc_age");
+    obj.edit231:setName("edit231");
 
     obj.layout204 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout204:setParent(obj.layout202);
@@ -14867,14 +14877,14 @@ local function constructNew_frmVampireDarkAges20th()
     obj.label106:setHorzTextAlign("trailing");
     obj.label106:setName("label106");
 
-    obj.edit231 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit231:setParent(obj.layout204);
-    obj.edit231:setLeft(110);
-    obj.edit231:setTop(0);
-    obj.edit231:setWidth(200);
-    obj.edit231:setHeight(25);
-    obj.edit231:setField("desc_hair");
-    obj.edit231:setName("edit231");
+    obj.edit232 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit232:setParent(obj.layout204);
+    obj.edit232:setLeft(110);
+    obj.edit232:setTop(0);
+    obj.edit232:setWidth(200);
+    obj.edit232:setHeight(25);
+    obj.edit232:setField("desc_hair");
+    obj.edit232:setName("edit232");
 
     obj.layout205 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout205:setParent(obj.layout202);
@@ -14894,14 +14904,14 @@ local function constructNew_frmVampireDarkAges20th()
     obj.label107:setHorzTextAlign("trailing");
     obj.label107:setName("label107");
 
-    obj.edit232 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit232:setParent(obj.layout205);
-    obj.edit232:setLeft(110);
-    obj.edit232:setTop(0);
-    obj.edit232:setWidth(200);
-    obj.edit232:setHeight(25);
-    obj.edit232:setField("desc_height");
-    obj.edit232:setName("edit232");
+    obj.edit233 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit233:setParent(obj.layout205);
+    obj.edit233:setLeft(110);
+    obj.edit233:setTop(0);
+    obj.edit233:setWidth(200);
+    obj.edit233:setHeight(25);
+    obj.edit233:setField("desc_height");
+    obj.edit233:setName("edit233");
 
     obj.layout206 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout206:setParent(obj.layout202);
@@ -14921,14 +14931,14 @@ local function constructNew_frmVampireDarkAges20th()
     obj.label108:setHorzTextAlign("trailing");
     obj.label108:setName("label108");
 
-    obj.edit233 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit233:setParent(obj.layout206);
-    obj.edit233:setLeft(110);
-    obj.edit233:setTop(0);
-    obj.edit233:setWidth(200);
-    obj.edit233:setHeight(25);
-    obj.edit233:setField("desc_apparentAge");
-    obj.edit233:setName("edit233");
+    obj.edit234 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit234:setParent(obj.layout206);
+    obj.edit234:setLeft(110);
+    obj.edit234:setTop(0);
+    obj.edit234:setWidth(200);
+    obj.edit234:setHeight(25);
+    obj.edit234:setField("desc_apparentAge");
+    obj.edit234:setName("edit234");
 
     obj.layout207 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout207:setParent(obj.layout202);
@@ -14948,14 +14958,14 @@ local function constructNew_frmVampireDarkAges20th()
     obj.label109:setHorzTextAlign("trailing");
     obj.label109:setName("label109");
 
-    obj.edit234 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit234:setParent(obj.layout207);
-    obj.edit234:setLeft(110);
-    obj.edit234:setTop(0);
-    obj.edit234:setWidth(200);
-    obj.edit234:setHeight(25);
-    obj.edit234:setField("desc_eyes");
-    obj.edit234:setName("edit234");
+    obj.edit235 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit235:setParent(obj.layout207);
+    obj.edit235:setLeft(110);
+    obj.edit235:setTop(0);
+    obj.edit235:setWidth(200);
+    obj.edit235:setHeight(25);
+    obj.edit235:setField("desc_eyes");
+    obj.edit235:setName("edit235");
 
     obj.layout208 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout208:setParent(obj.layout202);
@@ -14975,14 +14985,14 @@ local function constructNew_frmVampireDarkAges20th()
     obj.label110:setHorzTextAlign("trailing");
     obj.label110:setName("label110");
 
-    obj.edit235 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit235:setParent(obj.layout208);
-    obj.edit235:setLeft(110);
-    obj.edit235:setTop(0);
-    obj.edit235:setWidth(200);
-    obj.edit235:setHeight(25);
-    obj.edit235:setField("desc_weight");
-    obj.edit235:setName("edit235");
+    obj.edit236 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit236:setParent(obj.layout208);
+    obj.edit236:setLeft(110);
+    obj.edit236:setTop(0);
+    obj.edit236:setWidth(200);
+    obj.edit236:setHeight(25);
+    obj.edit236:setField("desc_weight");
+    obj.edit236:setName("edit236");
 
     obj.layout209 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout209:setParent(obj.layout202);
@@ -15002,14 +15012,14 @@ local function constructNew_frmVampireDarkAges20th()
     obj.label111:setHorzTextAlign("trailing");
     obj.label111:setName("label111");
 
-    obj.edit236 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit236:setParent(obj.layout209);
-    obj.edit236:setLeft(110);
-    obj.edit236:setTop(0);
-    obj.edit236:setWidth(200);
-    obj.edit236:setHeight(25);
-    obj.edit236:setField("desc_dateOfBirth");
-    obj.edit236:setName("edit236");
+    obj.edit237 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit237:setParent(obj.layout209);
+    obj.edit237:setLeft(110);
+    obj.edit237:setTop(0);
+    obj.edit237:setWidth(200);
+    obj.edit237:setHeight(25);
+    obj.edit237:setField("desc_dateOfBirth");
+    obj.edit237:setName("edit237");
 
     obj.layout210 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout210:setParent(obj.layout202);
@@ -15029,14 +15039,14 @@ local function constructNew_frmVampireDarkAges20th()
     obj.label112:setHorzTextAlign("trailing");
     obj.label112:setName("label112");
 
-    obj.edit237 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit237:setParent(obj.layout210);
-    obj.edit237:setLeft(110);
-    obj.edit237:setTop(0);
-    obj.edit237:setWidth(200);
-    obj.edit237:setHeight(25);
-    obj.edit237:setField("desc_race");
-    obj.edit237:setName("edit237");
+    obj.edit238 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit238:setParent(obj.layout210);
+    obj.edit238:setLeft(110);
+    obj.edit238:setTop(0);
+    obj.edit238:setWidth(200);
+    obj.edit238:setHeight(25);
+    obj.edit238:setField("desc_race");
+    obj.edit238:setName("edit238");
 
     obj.layout211 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout211:setParent(obj.layout202);
@@ -15056,14 +15066,14 @@ local function constructNew_frmVampireDarkAges20th()
     obj.label113:setHorzTextAlign("trailing");
     obj.label113:setName("label113");
 
-    obj.edit238 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit238:setParent(obj.layout211);
-    obj.edit238:setLeft(110);
-    obj.edit238:setTop(0);
-    obj.edit238:setWidth(200);
-    obj.edit238:setHeight(25);
-    obj.edit238:setField("desc_sex");
-    obj.edit238:setName("edit238");
+    obj.edit239 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit239:setParent(obj.layout211);
+    obj.edit239:setLeft(110);
+    obj.edit239:setTop(0);
+    obj.edit239:setWidth(200);
+    obj.edit239:setHeight(25);
+    obj.edit239:setField("desc_sex");
+    obj.edit239:setName("edit239");
 
     obj.layout212 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout212:setParent(obj.layout202);
@@ -15083,14 +15093,14 @@ local function constructNew_frmVampireDarkAges20th()
     obj.label114:setHorzTextAlign("trailing");
     obj.label114:setName("label114");
 
-    obj.edit239 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit239:setParent(obj.layout212);
-    obj.edit239:setLeft(110);
-    obj.edit239:setTop(0);
-    obj.edit239:setWidth(200);
-    obj.edit239:setHeight(25);
-    obj.edit239:setField("desc_rip");
-    obj.edit239:setName("edit239");
+    obj.edit240 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit240:setParent(obj.layout212);
+    obj.edit240:setLeft(110);
+    obj.edit240:setTop(0);
+    obj.edit240:setWidth(200);
+    obj.edit240:setHeight(25);
+    obj.edit240:setField("desc_rip");
+    obj.edit240:setName("edit240");
 
     obj.layout213 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout213:setParent(obj.layout202);
@@ -15110,14 +15120,14 @@ local function constructNew_frmVampireDarkAges20th()
     obj.label115:setHorzTextAlign("trailing");
     obj.label115:setName("label115");
 
-    obj.edit240 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit240:setParent(obj.layout213);
-    obj.edit240:setLeft(110);
-    obj.edit240:setTop(0);
-    obj.edit240:setWidth(200);
-    obj.edit240:setHeight(25);
-    obj.edit240:setField("desc_nationality");
-    obj.edit240:setName("edit240");
+    obj.edit241 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit241:setParent(obj.layout213);
+    obj.edit241:setLeft(110);
+    obj.edit241:setTop(0);
+    obj.edit241:setWidth(200);
+    obj.edit241:setHeight(25);
+    obj.edit241:setField("desc_nationality");
+    obj.edit241:setName("edit241");
 
     obj.layout214 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout214:setParent(obj.scrollBox5);
@@ -15263,28 +15273,31 @@ local function constructNew_frmVampireDarkAges20th()
     obj.label119:setHorzTextAlign("center");
     obj.label119:setName("label119");
 
-    obj.textEditor22 = GUI.fromHandle(_obj_newObject("textEditor"));
-    obj.textEditor22:setParent(obj.layout217);
-    obj.textEditor22:setLeft(10);
-    obj.textEditor22:setTop(25);
-    obj.textEditor22:setWidth(580);
-    obj.textEditor22:setHeight(465);
-    obj.textEditor22:setField("historia");
-    obj.textEditor22:setName("textEditor22");
+    obj.richEdit1 = GUI.fromHandle(_obj_newObject("richEdit"));
+    obj.richEdit1:setParent(obj.layout217);
+    obj.richEdit1:setLeft(10);
+    obj.richEdit1:setTop(25);
+    obj.richEdit1:setWidth(580);
+    obj.richEdit1:setHeight(465);
+    obj.richEdit1:setField("background");
+    lfm_setPropAsString(obj.richEdit1, "backgroundColor",  "#333333");
+    lfm_setPropAsString(obj.richEdit1, "defaultFontSize",  "12");
+    lfm_setPropAsString(obj.richEdit1, "defaultFontColor",  "white");
+    obj.richEdit1:setName("richEdit1");
 
     obj.tab6 = GUI.fromHandle(_obj_newObject("tab"));
     obj.tab6:setParent(obj.tabControl1);
     obj.tab6:setTitle("Notes");
     obj.tab6:setName("tab6");
 
-    obj.frmVDA20_6 = GUI.fromHandle(_obj_newObject("form"));
-    obj.frmVDA20_6:setParent(obj.tab6);
-    obj.frmVDA20_6:setName("frmVDA20_6");
-    obj.frmVDA20_6:setAlign("client");
-    obj.frmVDA20_6:setTheme("dark");
+    obj.frmVM20_6 = GUI.fromHandle(_obj_newObject("form"));
+    obj.frmVM20_6:setParent(obj.tab6);
+    obj.frmVM20_6:setName("frmVM20_6");
+    obj.frmVM20_6:setAlign("client");
+    obj.frmVM20_6:setTheme("dark");
 
     obj.scrollBox6 = GUI.fromHandle(_obj_newObject("scrollBox"));
-    obj.scrollBox6:setParent(obj.frmVDA20_6);
+    obj.scrollBox6:setParent(obj.frmVM20_6);
     obj.scrollBox6:setAlign("client");
     obj.scrollBox6:setName("scrollBox6");
 
@@ -15318,14 +15331,14 @@ local function constructNew_frmVampireDarkAges20th()
     obj.label120:setHorzTextAlign("center");
     obj.label120:setName("label120");
 
-    obj.textEditor23 = GUI.fromHandle(_obj_newObject("textEditor"));
-    obj.textEditor23:setParent(obj.layout218);
-    obj.textEditor23:setLeft(10);
-    obj.textEditor23:setTop(25);
-    obj.textEditor23:setWidth(380);
-    obj.textEditor23:setHeight(540);
-    obj.textEditor23:setField("anotacoes1");
-    obj.textEditor23:setName("textEditor23");
+    obj.textEditor22 = GUI.fromHandle(_obj_newObject("textEditor"));
+    obj.textEditor22:setParent(obj.layout218);
+    obj.textEditor22:setLeft(10);
+    obj.textEditor22:setTop(25);
+    obj.textEditor22:setWidth(380);
+    obj.textEditor22:setHeight(540);
+    obj.textEditor22:setField("anotacoes1");
+    obj.textEditor22:setName("textEditor22");
 
     obj.layout219 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout219:setParent(obj.scrollBox6);
@@ -15357,14 +15370,14 @@ local function constructNew_frmVampireDarkAges20th()
     obj.label121:setHorzTextAlign("center");
     obj.label121:setName("label121");
 
-    obj.textEditor24 = GUI.fromHandle(_obj_newObject("textEditor"));
-    obj.textEditor24:setParent(obj.layout219);
-    obj.textEditor24:setLeft(10);
-    obj.textEditor24:setTop(25);
-    obj.textEditor24:setWidth(380);
-    obj.textEditor24:setHeight(540);
-    obj.textEditor24:setField("anotacoes2");
-    obj.textEditor24:setName("textEditor24");
+    obj.textEditor23 = GUI.fromHandle(_obj_newObject("textEditor"));
+    obj.textEditor23:setParent(obj.layout219);
+    obj.textEditor23:setLeft(10);
+    obj.textEditor23:setTop(25);
+    obj.textEditor23:setWidth(380);
+    obj.textEditor23:setHeight(540);
+    obj.textEditor23:setField("anotacoes2");
+    obj.textEditor23:setName("textEditor23");
 
     obj.layout220 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout220:setParent(obj.scrollBox6);
@@ -15396,25 +15409,25 @@ local function constructNew_frmVampireDarkAges20th()
     obj.label122:setHorzTextAlign("center");
     obj.label122:setName("label122");
 
-    obj.textEditor25 = GUI.fromHandle(_obj_newObject("textEditor"));
-    obj.textEditor25:setParent(obj.layout220);
-    obj.textEditor25:setLeft(10);
-    obj.textEditor25:setTop(25);
-    obj.textEditor25:setWidth(380);
-    obj.textEditor25:setHeight(540);
-    obj.textEditor25:setField("anotacoes3");
-    obj.textEditor25:setName("textEditor25");
+    obj.textEditor24 = GUI.fromHandle(_obj_newObject("textEditor"));
+    obj.textEditor24:setParent(obj.layout220);
+    obj.textEditor24:setLeft(10);
+    obj.textEditor24:setTop(25);
+    obj.textEditor24:setWidth(380);
+    obj.textEditor24:setHeight(540);
+    obj.textEditor24:setField("anotacoes3");
+    obj.textEditor24:setName("textEditor24");
 
     obj.tab7 = GUI.fromHandle(_obj_newObject("tab"));
     obj.tab7:setParent(obj.tabControl1);
     obj.tab7:setTitle("Credits");
     obj.tab7:setName("tab7");
 
-    obj.frmVDA20_7 = GUI.fromHandle(_obj_newObject("form"));
-    obj.frmVDA20_7:setParent(obj.tab7);
-    obj.frmVDA20_7:setName("frmVDA20_7");
-    obj.frmVDA20_7:setAlign("client");
-    obj.frmVDA20_7:setTheme("dark");
+    obj.frmVM20_7 = GUI.fromHandle(_obj_newObject("form"));
+    obj.frmVM20_7:setParent(obj.tab7);
+    obj.frmVM20_7:setName("frmVM20_7");
+    obj.frmVM20_7:setAlign("client");
+    obj.frmVM20_7:setTheme("dark");
 
 
 			local function recursiveFindControls(node, controlsList)
@@ -15491,7 +15504,7 @@ local function constructNew_frmVampireDarkAges20th()
 
 
     obj.scrollBox7 = GUI.fromHandle(_obj_newObject("scrollBox"));
-    obj.scrollBox7:setParent(obj.frmVDA20_7);
+    obj.scrollBox7:setParent(obj.frmVM20_7);
     obj.scrollBox7:setAlign("client");
     obj.scrollBox7:setName("scrollBox7");
 
@@ -15502,7 +15515,7 @@ local function constructNew_frmVampireDarkAges20th()
     obj.image11:setWidth(500);
     obj.image11:setHeight(175);
     obj.image11:setStyle("autoFit");
-    obj.image11:setSRC("/VampireDarkAges20th/images/Vampire20th.png");
+    obj.image11:setSRC("/VampireMasquerade20th/images/Vampire20th.png");
     obj.image11:setName("image11");
 
     obj.image12 = GUI.fromHandle(_obj_newObject("image"));
@@ -15512,7 +15525,7 @@ local function constructNew_frmVampireDarkAges20th()
     obj.image12:setWidth(250);
     obj.image12:setHeight(250);
     obj.image12:setStyle("autoFit");
-    obj.image12:setSRC("/VampireDarkAges20th/images/RPGmeister.jpg");
+    obj.image12:setSRC("/VampireMasquerade20th/images/RPGmeister.jpg");
     obj.image12:setName("image12");
 
     obj.layout221 = GUI.fromHandle(_obj_newObject("layout"));
@@ -15993,6 +16006,7 @@ local function constructNew_frmVampireDarkAges20th()
         if self.imageCheckBox271 ~= nil then self.imageCheckBox271:destroy(); self.imageCheckBox271 = nil; end;
         if self.imageCheckBox429 ~= nil then self.imageCheckBox429:destroy(); self.imageCheckBox429 = nil; end;
         if self.imageCheckBox176 ~= nil then self.imageCheckBox176:destroy(); self.imageCheckBox176 = nil; end;
+        if self.frmVM20_5 ~= nil then self.frmVM20_5:destroy(); self.frmVM20_5 = nil; end;
         if self.layout194 ~= nil then self.layout194:destroy(); self.layout194 = nil; end;
         if self.textEditor15 ~= nil then self.textEditor15:destroy(); self.textEditor15 = nil; end;
         if self.imageCheckBox174 ~= nil then self.imageCheckBox174:destroy(); self.imageCheckBox174 = nil; end;
@@ -16007,7 +16021,6 @@ local function constructNew_frmVampireDarkAges20th()
         if self.layout174 ~= nil then self.layout174:destroy(); self.layout174 = nil; end;
         if self.imageCheckBox631 ~= nil then self.imageCheckBox631:destroy(); self.imageCheckBox631 = nil; end;
         if self.label48 ~= nil then self.label48:destroy(); self.label48 = nil; end;
-        if self.frmVDA20_5 ~= nil then self.frmVDA20_5:destroy(); self.frmVDA20_5 = nil; end;
         if self.imageCheckBox684 ~= nil then self.imageCheckBox684:destroy(); self.imageCheckBox684 = nil; end;
         if self.imageCheckBox136 ~= nil then self.imageCheckBox136:destroy(); self.imageCheckBox136 = nil; end;
         if self.textEditor4 ~= nil then self.textEditor4:destroy(); self.textEditor4 = nil; end;
@@ -16226,11 +16239,11 @@ local function constructNew_frmVampireDarkAges20th()
         if self.layout151 ~= nil then self.layout151:destroy(); self.layout151 = nil; end;
         if self.imageCheckBox816 ~= nil then self.imageCheckBox816:destroy(); self.imageCheckBox816 = nil; end;
         if self.edit143 ~= nil then self.edit143:destroy(); self.edit143 = nil; end;
-        if self.frmVDA20_6 ~= nil then self.frmVDA20_6:destroy(); self.frmVDA20_6 = nil; end;
         if self.imageCheckBox790 ~= nil then self.imageCheckBox790:destroy(); self.imageCheckBox790 = nil; end;
         if self.imageCheckBox690 ~= nil then self.imageCheckBox690:destroy(); self.imageCheckBox690 = nil; end;
         if self.imageCheckBox717 ~= nil then self.imageCheckBox717:destroy(); self.imageCheckBox717 = nil; end;
         if self.layout153 ~= nil then self.layout153:destroy(); self.layout153 = nil; end;
+        if self.frmVM20_3 ~= nil then self.frmVM20_3:destroy(); self.frmVM20_3 = nil; end;
         if self.imageCheckBox135 ~= nil then self.imageCheckBox135:destroy(); self.imageCheckBox135 = nil; end;
         if self.imageCheckBox206 ~= nil then self.imageCheckBox206:destroy(); self.imageCheckBox206 = nil; end;
         if self.edit230 ~= nil then self.edit230:destroy(); self.edit230 = nil; end;
@@ -16291,7 +16304,6 @@ local function constructNew_frmVampireDarkAges20th()
         if self.imageCheckBox281 ~= nil then self.imageCheckBox281:destroy(); self.imageCheckBox281 = nil; end;
         if self.imageCheckBox769 ~= nil then self.imageCheckBox769:destroy(); self.imageCheckBox769 = nil; end;
         if self.imageCheckBox52 ~= nil then self.imageCheckBox52:destroy(); self.imageCheckBox52 = nil; end;
-        if self.frmVDA20_4 ~= nil then self.frmVDA20_4:destroy(); self.frmVDA20_4 = nil; end;
         if self.imageCheckBox201 ~= nil then self.imageCheckBox201:destroy(); self.imageCheckBox201 = nil; end;
         if self.imageCheckBox18 ~= nil then self.imageCheckBox18:destroy(); self.imageCheckBox18 = nil; end;
         if self.imageCheckBox69 ~= nil then self.imageCheckBox69:destroy(); self.imageCheckBox69 = nil; end;
@@ -16428,6 +16440,7 @@ local function constructNew_frmVampireDarkAges20th()
         if self.imageCheckBox104 ~= nil then self.imageCheckBox104:destroy(); self.imageCheckBox104 = nil; end;
         if self.label94 ~= nil then self.label94:destroy(); self.label94 = nil; end;
         if self.imageCheckBox464 ~= nil then self.imageCheckBox464:destroy(); self.imageCheckBox464 = nil; end;
+        if self.frmVM20_7 ~= nil then self.frmVM20_7:destroy(); self.frmVM20_7 = nil; end;
         if self.label91 ~= nil then self.label91:destroy(); self.label91 = nil; end;
         if self.label30 ~= nil then self.label30:destroy(); self.label30 = nil; end;
         if self.tabControl1 ~= nil then self.tabControl1:destroy(); self.tabControl1 = nil; end;
@@ -16457,6 +16470,7 @@ local function constructNew_frmVampireDarkAges20th()
         if self.layout154 ~= nil then self.layout154:destroy(); self.layout154 = nil; end;
         if self.imageCheckBox612 ~= nil then self.imageCheckBox612:destroy(); self.imageCheckBox612 = nil; end;
         if self.imageCheckBox585 ~= nil then self.imageCheckBox585:destroy(); self.imageCheckBox585 = nil; end;
+        if self.frmVM20_4 ~= nil then self.frmVM20_4:destroy(); self.frmVM20_4 = nil; end;
         if self.rectangle9 ~= nil then self.rectangle9:destroy(); self.rectangle9 = nil; end;
         if self.imageCheckBox406 ~= nil then self.imageCheckBox406:destroy(); self.imageCheckBox406 = nil; end;
         if self.textEditor3 ~= nil then self.textEditor3:destroy(); self.textEditor3 = nil; end;
@@ -16488,6 +16502,7 @@ local function constructNew_frmVampireDarkAges20th()
         if self.textEditor2 ~= nil then self.textEditor2:destroy(); self.textEditor2 = nil; end;
         if self.layout107 ~= nil then self.layout107:destroy(); self.layout107 = nil; end;
         if self.label37 ~= nil then self.label37:destroy(); self.label37 = nil; end;
+        if self.frmVM20_2 ~= nil then self.frmVM20_2:destroy(); self.frmVM20_2 = nil; end;
         if self.imageCheckBox124 ~= nil then self.imageCheckBox124:destroy(); self.imageCheckBox124 = nil; end;
         if self.rectangle45 ~= nil then self.rectangle45:destroy(); self.rectangle45 = nil; end;
         if self.layout101 ~= nil then self.layout101:destroy(); self.layout101 = nil; end;
@@ -16555,7 +16570,6 @@ local function constructNew_frmVampireDarkAges20th()
         if self.imageCheckBox692 ~= nil then self.imageCheckBox692:destroy(); self.imageCheckBox692 = nil; end;
         if self.layout201 ~= nil then self.layout201:destroy(); self.layout201 = nil; end;
         if self.dataLink4 ~= nil then self.dataLink4:destroy(); self.dataLink4 = nil; end;
-        if self.frmVDA20_3 ~= nil then self.frmVDA20_3:destroy(); self.frmVDA20_3 = nil; end;
         if self.layout190 ~= nil then self.layout190:destroy(); self.layout190 = nil; end;
         if self.layout188 ~= nil then self.layout188:destroy(); self.layout188 = nil; end;
         if self.imageCheckBox308 ~= nil then self.imageCheckBox308:destroy(); self.imageCheckBox308 = nil; end;
@@ -16659,6 +16673,7 @@ local function constructNew_frmVampireDarkAges20th()
         if self.imageCheckBox259 ~= nil then self.imageCheckBox259:destroy(); self.imageCheckBox259 = nil; end;
         if self.layout43 ~= nil then self.layout43:destroy(); self.layout43 = nil; end;
         if self.edit229 ~= nil then self.edit229:destroy(); self.edit229 = nil; end;
+        if self.frmVM20_1 ~= nil then self.frmVM20_1:destroy(); self.frmVM20_1 = nil; end;
         if self.imageCheckBox424 ~= nil then self.imageCheckBox424:destroy(); self.imageCheckBox424 = nil; end;
         if self.edit104 ~= nil then self.edit104:destroy(); self.edit104 = nil; end;
         if self.label113 ~= nil then self.label113:destroy(); self.label113 = nil; end;
@@ -16851,7 +16866,7 @@ local function constructNew_frmVampireDarkAges20th()
         if self.imageCheckBox793 ~= nil then self.imageCheckBox793:destroy(); self.imageCheckBox793 = nil; end;
         if self.layout14 ~= nil then self.layout14:destroy(); self.layout14 = nil; end;
         if self.edit27 ~= nil then self.edit27:destroy(); self.edit27 = nil; end;
-        if self.frmVDA20_1 ~= nil then self.frmVDA20_1:destroy(); self.frmVDA20_1 = nil; end;
+        if self.edit241 ~= nil then self.edit241:destroy(); self.edit241 = nil; end;
         if self.imageCheckBox682 ~= nil then self.imageCheckBox682:destroy(); self.imageCheckBox682 = nil; end;
         if self.imageCheckBox12 ~= nil then self.imageCheckBox12:destroy(); self.imageCheckBox12 = nil; end;
         if self.imageCheckBox796 ~= nil then self.imageCheckBox796:destroy(); self.imageCheckBox796 = nil; end;
@@ -16884,6 +16899,7 @@ local function constructNew_frmVampireDarkAges20th()
         if self.imageCheckBox32 ~= nil then self.imageCheckBox32:destroy(); self.imageCheckBox32 = nil; end;
         if self.imageCheckBox205 ~= nil then self.imageCheckBox205:destroy(); self.imageCheckBox205 = nil; end;
         if self.imageCheckBox598 ~= nil then self.imageCheckBox598:destroy(); self.imageCheckBox598 = nil; end;
+        if self.frmVM20_6 ~= nil then self.frmVM20_6:destroy(); self.frmVM20_6 = nil; end;
         if self.imageCheckBox333 ~= nil then self.imageCheckBox333:destroy(); self.imageCheckBox333 = nil; end;
         if self.imageCheckBox546 ~= nil then self.imageCheckBox546:destroy(); self.imageCheckBox546 = nil; end;
         if self.layout200 ~= nil then self.layout200:destroy(); self.layout200 = nil; end;
@@ -17342,7 +17358,6 @@ local function constructNew_frmVampireDarkAges20th()
         if self.imageCheckBox158 ~= nil then self.imageCheckBox158:destroy(); self.imageCheckBox158 = nil; end;
         if self.imageCheckBox220 ~= nil then self.imageCheckBox220:destroy(); self.imageCheckBox220 = nil; end;
         if self.layout115 ~= nil then self.layout115:destroy(); self.layout115 = nil; end;
-        if self.textEditor25 ~= nil then self.textEditor25:destroy(); self.textEditor25 = nil; end;
         if self.edit117 ~= nil then self.edit117:destroy(); self.edit117 = nil; end;
         if self.imageCheckBox784 ~= nil then self.imageCheckBox784:destroy(); self.imageCheckBox784 = nil; end;
         if self.imageCheckBox204 ~= nil then self.imageCheckBox204:destroy(); self.imageCheckBox204 = nil; end;
@@ -17396,7 +17411,6 @@ local function constructNew_frmVampireDarkAges20th()
         if self.edit125 ~= nil then self.edit125:destroy(); self.edit125 = nil; end;
         if self.layout180 ~= nil then self.layout180:destroy(); self.layout180 = nil; end;
         if self.imageCheckBox80 ~= nil then self.imageCheckBox80:destroy(); self.imageCheckBox80 = nil; end;
-        if self.frmVDA20_7 ~= nil then self.frmVDA20_7:destroy(); self.frmVDA20_7 = nil; end;
         if self.imageCheckBox119 ~= nil then self.imageCheckBox119:destroy(); self.imageCheckBox119 = nil; end;
         if self.imageCheckBox442 ~= nil then self.imageCheckBox442:destroy(); self.imageCheckBox442 = nil; end;
         if self.imageCheckBox567 ~= nil then self.imageCheckBox567:destroy(); self.imageCheckBox567 = nil; end;
@@ -17421,6 +17435,7 @@ local function constructNew_frmVampireDarkAges20th()
         if self.textEditor12 ~= nil then self.textEditor12:destroy(); self.textEditor12 = nil; end;
         if self.edit38 ~= nil then self.edit38:destroy(); self.edit38 = nil; end;
         if self.label130 ~= nil then self.label130:destroy(); self.label130 = nil; end;
+        if self.richEdit1 ~= nil then self.richEdit1:destroy(); self.richEdit1 = nil; end;
         if self.imageCheckBox300 ~= nil then self.imageCheckBox300:destroy(); self.imageCheckBox300 = nil; end;
         if self.scrollBox3 ~= nil then self.scrollBox3:destroy(); self.scrollBox3 = nil; end;
         if self.imageCheckBox552 ~= nil then self.imageCheckBox552:destroy(); self.imageCheckBox552 = nil; end;
@@ -17488,7 +17503,6 @@ local function constructNew_frmVampireDarkAges20th()
         if self.imageCheckBox812 ~= nil then self.imageCheckBox812:destroy(); self.imageCheckBox812 = nil; end;
         if self.imageCheckBox42 ~= nil then self.imageCheckBox42:destroy(); self.imageCheckBox42 = nil; end;
         if self.imageCheckBox5 ~= nil then self.imageCheckBox5:destroy(); self.imageCheckBox5 = nil; end;
-        if self.frmVDA20_2 ~= nil then self.frmVDA20_2:destroy(); self.frmVDA20_2 = nil; end;
         if self.imageCheckBox413 ~= nil then self.imageCheckBox413:destroy(); self.imageCheckBox413 = nil; end;
         if self.layout161 ~= nil then self.layout161:destroy(); self.layout161 = nil; end;
         if self.layout131 ~= nil then self.layout131:destroy(); self.layout131 = nil; end;
@@ -17534,13 +17548,13 @@ local function constructNew_frmVampireDarkAges20th()
     return obj;
 end;
 
-function newfrmVampireDarkAges20th()
+function newfrmVampireMasquerade20th()
     local retObj = nil;
     __o_rrpgObjs.beginObjectsLoading();
 
     __o_Utils.tryFinally(
       function()
-        retObj = constructNew_frmVampireDarkAges20th();
+        retObj = constructNew_frmVampireMasquerade20th();
       end,
       function()
         __o_rrpgObjs.endObjectsLoading();
@@ -17550,18 +17564,18 @@ function newfrmVampireDarkAges20th()
     return retObj;
 end;
 
-local _frmVampireDarkAges20th = {
-    newEditor = newfrmVampireDarkAges20th, 
-    new = newfrmVampireDarkAges20th, 
-    name = "frmVampireDarkAges20th", 
-    dataType = "Ambesek.VampireDarkAges.20th", 
+local _frmVampireMasquerade20th = {
+    newEditor = newfrmVampireMasquerade20th, 
+    new = newfrmVampireMasquerade20th, 
+    name = "frmVampireMasquerade20th", 
+    dataType = "Ambesek.VampireMasquerade.20th", 
     formType = "sheetTemplate", 
     formComponentName = "form", 
-    title = "Vampire Dark Ages 20th Anniversary", 
+    title = "Vampire The Masquerade 20th Anniversary", 
     description=""};
 
-frmVampireDarkAges20th = _frmVampireDarkAges20th;
-Firecast.registrarForm(_frmVampireDarkAges20th);
-Firecast.registrarDataType(_frmVampireDarkAges20th);
+frmVampireMasquerade20th = _frmVampireMasquerade20th;
+Firecast.registrarForm(_frmVampireMasquerade20th);
+Firecast.registrarDataType(_frmVampireMasquerade20th);
 
-return _frmVampireDarkAges20th;
+return _frmVampireMasquerade20th;

@@ -1,0 +1,348 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmVM20_2" align="client" theme="dark">
+	<template name="Ability">
+			<label left="0" top="5" width="80" height="20" text="$(nome)"/>
+			<imageCheckBox left="80" top="0" width="25" height="25" field="$(field)_1" checkedImage="images/blood_on.png" uncheckedImage="images/blood_off.png"/>
+			<imageCheckBox left="105" top="0" width="25" height="25" field="$(field)_2" checkedImage="images/blood_on.png" uncheckedImage="images/blood_off.png"/>
+			<imageCheckBox left="130" top="0" width="25" height="25" field="$(field)_3" checkedImage="images/blood_on.png" uncheckedImage="images/blood_off.png"/>
+			<imageCheckBox left="155" top="0" width="25" height="25" field="$(field)_4" checkedImage="images/blood_on.png" uncheckedImage="images/blood_off.png"/>
+			<imageCheckBox left="180" top="0" width="25" height="25" field="$(field)_5" checkedImage="images/blood_on.png" uncheckedImage="images/blood_off.png"/>
+			<imageCheckBox left="205" top="0" width="25" height="25" field="$(field)_6" checkedImage="images/blood_on.png" uncheckedImage="images/blood_off.png"/>
+			<imageCheckBox left="230" top="0" width="25" height="25" field="$(field)_7" checkedImage="images/blood_on.png" uncheckedImage="images/blood_off.png"/>
+			<imageCheckBox left="255" top="0" width="25" height="25" field="$(field)_8" checkedImage="images/blood_on.png" uncheckedImage="images/blood_off.png"/>
+			<imageCheckBox left="280" top="0" width="25" height="25" field="$(field)_9" checkedImage="images/blood_on.png" uncheckedImage="images/blood_off.png"/>
+	</template>
+	<template name="OpenAbility">
+			<edit left="0" top="5" width="75" height="20" field="$(field)" fontSize="12"/>
+			<imageCheckBox left="80" top="0" width="25" height="25" field="$(field)_1" checkedImage="images/blood_on.png" uncheckedImage="images/blood_off.png"/>
+			<imageCheckBox left="105" top="0" width="25" height="25" field="$(field)_2" checkedImage="images/blood_on.png" uncheckedImage="images/blood_off.png"/>
+			<imageCheckBox left="130" top="0" width="25" height="25" field="$(field)_3" checkedImage="images/blood_on.png" uncheckedImage="images/blood_off.png"/>
+			<imageCheckBox left="155" top="0" width="25" height="25" field="$(field)_4" checkedImage="images/blood_on.png" uncheckedImage="images/blood_off.png"/>
+			<imageCheckBox left="180" top="0" width="25" height="25" field="$(field)_5" checkedImage="images/blood_on.png" uncheckedImage="images/blood_off.png"/>
+			<imageCheckBox left="205" top="0" width="25" height="25" field="$(field)_6" checkedImage="images/blood_on.png" uncheckedImage="images/blood_off.png"/>
+			<imageCheckBox left="230" top="0" width="25" height="25" field="$(field)_7" checkedImage="images/blood_on.png" uncheckedImage="images/blood_off.png"/>
+			<imageCheckBox left="255" top="0" width="25" height="25" field="$(field)_8" checkedImage="images/blood_on.png" uncheckedImage="images/blood_off.png"/>
+			<imageCheckBox left="280" top="0" width="25" height="25" field="$(field)_9" checkedImage="images/blood_on.png" uncheckedImage="images/blood_off.png"/>
+	</template>
+	<template name="Path">
+			<edit left="0" top="5" width="95" height="20" field="$(field)" fontSize="12"/>
+			<imageCheckBox left="100" top="0" width="25" height="25" field="$(field)_1" checkedImage="images/blood_on.png" uncheckedImage="images/blood_off.png"/>
+			<imageCheckBox left="125" top="0" width="25" height="25" field="$(field)_2" checkedImage="images/blood_on.png" uncheckedImage="images/blood_off.png"/>
+			<imageCheckBox left="150" top="0" width="25" height="25" field="$(field)_3" checkedImage="images/blood_on.png" uncheckedImage="images/blood_off.png"/>
+			<imageCheckBox left="175" top="0" width="25" height="25" field="$(field)_4" checkedImage="images/blood_on.png" uncheckedImage="images/blood_off.png"/>
+			<imageCheckBox left="200" top="0" width="25" height="25" field="$(field)_5" checkedImage="images/blood_on.png" uncheckedImage="images/blood_off.png"/>
+	</template>
+	<template name="Ritual">
+			<edit left="0" top="5" width="150" height="20" field="$(field)" fontSize="12"/>
+			<edit left="150" top="5" width="50" height="20" field="$(field)_lvl" fontSize="12"/>
+	</template>
+
+	<scrollBox align="client">
+		<layout left="0" top="0" width="335" height="340">
+			<rectangle align="client" color="black" xradius="10" yradius="10" cornerType="innerLine"/>
+			<label left="5" top="0" width="335" height="20" text="TALENTS" horzTextAlign="center"/>
+
+			<layout left="15" top="25" width="305" height="25" >
+				<Ability field="alertness" nome="Alertness"/>
+			</layout>
+			<layout left="15" top="50" width="305" height="25" >
+				<Ability field="athetics" nome="Athetics"/>
+			</layout>
+			<layout left="15" top="75" width="305" height="25" >
+				<Ability field="awareness" nome="Awareness"/>
+			</layout>
+			<layout left="15" top="100" width="305" height="25" >
+				<Ability field="brawl" nome="Brawl"/>
+			</layout>
+			<layout left="15" top="125" width="305" height="25" >
+				<Ability field="empathy" nome="Empathy"/>
+			</layout>
+			<layout left="15" top="150" width="305" height="25" >
+				<Ability field="expression" nome="Expression"/>
+			</layout>
+			<layout left="15" top="175" width="305" height="25" >
+				<Ability field="intimidation" nome="Intimidation"/>
+			</layout>
+			<layout left="15" top="200" width="305" height="25" >
+				<Ability field="leadership" nome="Leadership"/>
+			</layout>
+			<layout left="15" top="225" width="305" height="25" >
+				<Ability field="streetwise" nome="Streetwise"/>
+			</layout>
+			<layout left="15" top="250" width="305" height="25" >
+				<Ability field="subterfuge" nome="Subterfuge"/>
+			</layout>
+			<layout left="15" top="275" width="305" height="25" >
+				<OpenAbility field="talent_11"/>
+			</layout>
+			<layout left="15" top="300" width="305" height="25" >
+				<OpenAbility field="talent_12"/>
+			</layout>
+		</layout>
+
+		<layout left="345" top="0" width="335" height="340">
+			<rectangle align="client" color="black" xradius="10" yradius="10" cornerType="innerLine"/>
+			<label left="5" top="0" width="335" height="20" text="SKILLS" horzTextAlign="center"/>
+
+			<layout left="15" top="25" width="305" height="25" >
+				<Ability field="animal_ken" nome="Animal-Ken"/>
+			</layout>
+			<layout left="15" top="50" width="305" height="25" >
+				<Ability field="crafts" nome="Crafts"/>
+			</layout>
+			<layout left="15" top="75" width="305" height="25" >
+				<Ability field="drive" nome="Drive"/>
+			</layout>
+			<layout left="15" top="100" width="305" height="25" >
+				<Ability field="etiquette" nome="Etiquette"/>
+			</layout>
+			<layout left="15" top="125" width="305" height="25" >
+				<Ability field="firearms" nome="Firearms"/>
+			</layout>
+			<layout left="15" top="150" width="305" height="25" >
+				<Ability field="larceny" nome="Larceny"/>
+			</layout>
+			<layout left="15" top="175" width="305" height="25" >
+				<Ability field="melee" nome="Melee"/>
+			</layout>
+			<layout left="15" top="200" width="305" height="25" >
+				<Ability field="performance" nome="Performance"/>
+			</layout>
+			<layout left="15" top="225" width="305" height="25" >
+				<Ability field="stealth" nome="Stealth"/>
+			</layout>
+			<layout left="15" top="250" width="305" height="25" >
+				<Ability field="survival" nome="Survival"/>
+			</layout>
+			<layout left="15" top="275" width="305" height="25" >
+				<OpenAbility field="skill_11"/>
+			</layout>
+			<layout left="15" top="300" width="305" height="25" >
+				<OpenAbility field="skill_12"/>
+			</layout>
+		</layout>
+
+		<layout left="690" top="0" width="355" height="340">
+			<rectangle align="client" color="black" xradius="10" yradius="10" cornerType="innerLine"/>
+			<label left="5" top="0" width="355" height="20" text="KNOWLEDGES" horzTextAlign="center"/>
+
+			<layout left="15" top="25" width="305" height="25" >
+				<Ability field="academics" nome="Academics"/>
+			</layout>
+			<layout left="15" top="50" width="305" height="25" >
+				<Ability field="computer" nome="Computer"/>
+			</layout>
+			<layout left="15" top="75" width="305" height="25" >
+				<Ability field="finance" nome="Finance"/>
+			</layout>
+			<layout left="15" top="100" width="305" height="25" >
+				<Ability field="investigation" nome="Investigation"/>
+			</layout>
+			<layout left="15" top="125" width="305" height="25" >
+				<Ability field="law" nome="Law"/>
+			</layout>
+			<layout left="15" top="150" width="305" height="25" >
+				<Ability field="medicine" nome="Medicine"/>
+			</layout>
+			<layout left="15" top="175" width="305" height="25" >
+				<Ability field="occult" nome="Occult"/>
+			</layout>
+			<layout left="15" top="200" width="305" height="25" >
+				<Ability field="politics" nome="Politics"/>
+			</layout>
+			<layout left="15" top="225" width="305" height="25" >
+				<Ability field="science" nome="Science"/>
+			</layout>
+			<layout left="15" top="250" width="305" height="25" >
+				<Ability field="theology" nome="Theology"/>
+			</layout>
+			<layout left="15" top="275" width="305" height="25" >
+				<OpenAbility field="knowledge_11"/>
+			</layout>
+			<layout left="15" top="300" width="305" height="25" >
+				<OpenAbility field="knowledge_12"/>
+			</layout>
+		</layout>
+
+		<layout left="0" top="350" width="335" height="340">
+			<rectangle align="client" color="black" xradius="10" yradius="10" cornerType="innerLine"/>
+			<label left="5" top="0" width="335" height="20" text="TRAITS" horzTextAlign="center"/>
+
+			<layout left="15" top="25" width="305" height="25" >
+				<OpenAbility field="traits_1"/>
+			</layout>
+			<layout left="15" top="50" width="305" height="25" >
+				<OpenAbility field="traits_2"/>
+			</layout>
+			<layout left="15" top="75" width="305" height="25" >
+				<OpenAbility field="traits_3"/>
+			</layout>
+			<layout left="15" top="100" width="305" height="25" >
+				<OpenAbility field="traits_4"/>
+			</layout>
+			<layout left="15" top="125" width="305" height="25" >
+				<OpenAbility field="traits_5"/>
+			</layout>
+			<layout left="15" top="150" width="305" height="25" >
+				<OpenAbility field="traits_6"/>
+			</layout>
+			<layout left="15" top="175" width="305" height="25" >
+				<OpenAbility field="traits_7"/>
+			</layout>
+			<layout left="15" top="200" width="305" height="25" >
+				<OpenAbility field="traits_8"/>
+			</layout>
+			<layout left="15" top="225" width="305" height="25" >
+				<OpenAbility field="traits_9"/>
+			</layout>
+			<layout left="15" top="250" width="305" height="25" >
+				<OpenAbility field="traits_10"/>
+			</layout>
+			<layout left="15" top="275" width="305" height="25" >
+				<OpenAbility field="traits_11"/>
+			</layout>
+			<layout left="15" top="300" width="305" height="25" >
+				<OpenAbility field="traits_12"/>
+			</layout>
+		</layout>
+
+		<layout left="345" top="350" width="335" height="340">
+			<rectangle align="client" color="black" xradius="10" yradius="10" cornerType="innerLine"/>
+			<label left="5" top="0" width="335" height="20" text="OTHER TRAITS" horzTextAlign="center"/>
+
+			<layout left="15" top="25" width="305" height="25" >
+				<edit left="0" top="5" width="305" height="20" field="otherTraits_1"/>
+			</layout>
+			<layout left="15" top="50" width="305" height="25" >
+				<edit left="0" top="5" width="305" height="20" field="otherTraits_2"/>
+			</layout>
+			<layout left="15" top="75" width="305" height="25" >
+				<edit left="0" top="5" width="305" height="20" field="otherTraits_3"/>
+			</layout>
+			<layout left="15" top="100" width="305" height="25" >
+				<edit left="0" top="5" width="305" height="20" field="otherTraits_4"/>
+			</layout>
+			<layout left="15" top="125" width="305" height="25" >
+				<edit left="0" top="5" width="305" height="20" field="otherTraits_5"/>
+			</layout>
+			<layout left="15" top="150" width="305" height="25" >
+				<edit left="0" top="5" width="305" height="20" field="otherTraits_6"/>
+			</layout>
+			<layout left="15" top="175" width="305" height="25" >
+				<edit left="0" top="5" width="305" height="20" field="otherTraits_7"/>
+			</layout>
+			<layout left="15" top="200" width="305" height="25" >
+				<edit left="0" top="5" width="305" height="20" field="otherTraits_8"/>
+			</layout>
+			<layout left="15" top="225" width="305" height="25" >
+				<edit left="0" top="5" width="305" height="20" field="otherTraits_9"/>
+			</layout>
+			<layout left="15" top="250" width="305" height="25" >
+				<edit left="0" top="5" width="305" height="20" field="gotherTraits10"/>
+			</layout>
+			<layout left="15" top="275" width="305" height="25" >
+				<edit left="0" top="5" width="305" height="20" field="gotherTraits11"/>
+			</layout>
+			<layout left="15" top="300" width="305" height="25" >
+				<edit left="0" top="5" width="305" height="20" field="gotherTraits12"/>
+			</layout>
+		</layout>
+
+		<layout left="690" top="350" width="255" height="340">
+			<rectangle align="client" color="black" xradius="10" yradius="10" cornerType="innerLine"/>
+			<label left="5" top="0" width="255" height="20" text="PATHS" horzTextAlign="center"/>
+
+			<layout left="15" top="25" width="305" height="25" >
+				<Path field="path_1"/>
+			</layout>
+			<layout left="15" top="50" width="305" height="25" >
+				<Path field="path_2"/>
+			</layout>
+			<layout left="15" top="75" width="305" height="25" >
+				<Path field="path_3"/>
+			</layout>
+			<layout left="15" top="100" width="305" height="25" >
+				<Path field="path_4"/>
+			</layout>
+			<layout left="15" top="125" width="305" height="25" >
+				<Path field="path_5"/>
+			</layout>
+			<layout left="15" top="150" width="305" height="25" >
+				<Path field="path_6"/>
+			</layout>
+			<layout left="15" top="175" width="305" height="25" >
+				<Path field="path_7"/>
+			</layout>
+			<layout left="15" top="200" width="305" height="25" >
+				<Path field="path_8"/>
+			</layout>
+			<layout left="15" top="225" width="305" height="25" >
+				<Path field="path_9"/>
+			</layout>
+			<layout left="15" top="250" width="305" height="25" >
+				<Path field="path_10"/>
+			</layout>
+			<layout left="15" top="275" width="305" height="25" >
+				<Path field="path_11"/>
+			</layout>
+			<layout left="15" top="300" width="305" height="25" >
+				<Path field="path_12"/>
+			</layout>
+		</layout>
+
+		<layout left="960" top="350" width="230" height="340">
+			<rectangle align="client" color="black" xradius="10" yradius="10" cornerType="innerLine"/>
+			<label left="5" top="0" width="230" height="20" text="RITUALS" horzTextAlign="center"/>
+
+			<layout left="15" top="25" width="305" height="25" >
+				<label left="10" top="5" width="150" height="20" text="Name" fontSize="12"/>
+				<label left="160" top="5" width="150" height="20" text="Level" fontSize="12"/>
+			</layout>
+			<layout left="15" top="50" width="305" height="25" >
+				<Ritual field="ritual_1"/>
+			</layout>
+			<layout left="15" top="75" width="305" height="25" >
+				<Ritual field="ritual_2"/>
+			</layout>
+			<layout left="15" top="100" width="305" height="25" >
+				<Ritual field="ritual_3"/>
+			</layout>
+			<layout left="15" top="125" width="305" height="25" >
+				<Ritual field="ritual_4"/>
+			</layout>
+			<layout left="15" top="150" width="305" height="25" >
+				<Ritual field="ritual_5"/>
+			</layout>
+			<layout left="15" top="175" width="305" height="25" >
+				<Ritual field="ritual_6"/>
+			</layout>
+			<layout left="15" top="200" width="305" height="25" >
+				<Ritual field="ritual_7"/>
+			</layout>
+			<layout left="15" top="225" width="305" height="25" >
+				<Ritual field="ritual_8"/>
+			</layout>
+			<layout left="15" top="250" width="305" height="25" >
+				<Ritual field="ritual_9"/>
+			</layout>
+			<layout left="15" top="275" width="305" height="25" >
+				<Ritual field="ritual_10"/>
+			</layout>
+			<layout left="15" top="300" width="305" height="25" >
+				<Ritual field="ritual_11"/>
+			</layout>
+		</layout>
+
+	</scrollBox>
+</form>
+
+
+
+
+
+
+
+
+
+
+

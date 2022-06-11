@@ -116,7 +116,7 @@ local function constructNew_frmM20_6()
     obj.image1:setWidth(500);
     obj.image1:setHeight(175);
     obj.image1:setStyle("autoFit");
-    obj.image1:setSRC("images/werewolf.png");
+    obj.image1:setSRC("/Mage20th/images/mage.png");
     obj.image1:setName("image1");
 
     obj.image2 = GUI.fromHandle(_obj_newObject("image"));
@@ -352,42 +352,34 @@ local function constructNew_frmM20_6()
     obj.label13 = GUI.fromHandle(_obj_newObject("label"));
     obj.label13:setParent(obj.scrollBox1);
     obj.label13:setLeft(555);
-    obj.label13:setTop(300);
-    obj.label13:setWidth(100);
+    obj.label13:setTop(275);
+    obj.label13:setWidth(200);
     obj.label13:setHeight(20);
     obj.label13:setText("Versão Atual: ");
     obj.label13:setHorzTextAlign("center");
+    obj.label13:setField("versionInstalled");
     obj.label13:setName("label13");
-
-    obj.image3 = GUI.fromHandle(_obj_newObject("image"));
-    obj.image3:setParent(obj.scrollBox1);
-    obj.image3:setLeft(667);
-    obj.image3:setTop(300);
-    obj.image3:setWidth(100);
-    obj.image3:setHeight(20);
-    obj.image3:setStyle("autoFit");
-    obj.image3:setSRC("http://www.cin.ufpe.br/~jvdl/Plugins/Version/versao03.png");
-    obj.image3:setName("image3");
 
     obj.label14 = GUI.fromHandle(_obj_newObject("label"));
     obj.label14:setParent(obj.scrollBox1);
     obj.label14:setLeft(555);
-    obj.label14:setTop(325);
-    obj.label14:setWidth(100);
+    obj.label14:setTop(300);
+    obj.label14:setWidth(200);
     obj.label14:setHeight(20);
-    obj.label14:setText("Ultima Versão: ");
+    obj.label14:setText("Sua Versão: ");
     obj.label14:setHorzTextAlign("center");
+    obj.label14:setField("versionDownloaded");
     obj.label14:setName("label14");
 
-    obj.image4 = GUI.fromHandle(_obj_newObject("image"));
-    obj.image4:setParent(obj.scrollBox1);
-    obj.image4:setLeft(667);
-    obj.image4:setTop(325);
-    obj.image4:setWidth(100);
-    obj.image4:setHeight(20);
-    obj.image4:setStyle("autoFit");
-    obj.image4:setSRC("http://www.cin.ufpe.br/~jvdl/Plugins/WoD20th/release.png");
-    obj.image4:setName("image4");
+    obj.checkBox2 = GUI.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox2:setParent(obj.scrollBox1);
+    obj.checkBox2:setLeft(555);
+    obj.checkBox2:setTop(325);
+    obj.checkBox2:setWidth(200);
+    obj.checkBox2:setHeight(20);
+    obj.checkBox2:setField("noUpdate");
+    obj.checkBox2:setText("Não pedir para atualizar.");
+    obj.checkBox2:setName("checkBox2");
 
     obj.button1 = GUI.fromHandle(_obj_newObject("button"));
     obj.button1:setParent(obj.scrollBox1);
@@ -511,17 +503,17 @@ local function constructNew_frmM20_6()
 
     obj._e_event4 = obj.button1:addEventListener("onClick",
         function (_)
-            gui.openInBrowser('http://www.cin.ufpe.br/~jvdl/Plugins/WoD20th/Change%20Log.txt')
+            GUI.openInBrowser('https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/World%20of%20Darkness%2020th/README.md')
         end, obj);
 
     obj._e_event5 = obj.button2:addEventListener("onClick",
         function (_)
-            gui.openInBrowser('http://www.cin.ufpe.br/~jvdl/Plugins/WoD20th/World%20of%20Darkness%2020th.rpk')
+            GUI.openInBrowser('https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/World%20of%20Darkness%2020th/output/World%20of%20Darkness%2020th.rpk?raw=true')
         end, obj);
 
     obj._e_event6 = obj.button3:addEventListener("onClick",
         function (_)
-            gui.openInBrowser('http://firecast.rrpg.com.br:90/a?a=pagRWEMesaInfo.actInfoMesa&mesaid=64070');
+            GUI.openInBrowser('https://my.firecastrpg.com/a?a=pagRWEMesaInfo.actInfoMesa&mesaid=64070');
         end, obj);
 
     function obj:_releaseEvents()
@@ -543,6 +535,7 @@ local function constructNew_frmM20_6()
           self:setNodeDatabase(nil);
         end;
 
+        if self.checkBox2 ~= nil then self.checkBox2:destroy(); self.checkBox2 = nil; end;
         if self.label14 ~= nil then self.label14:destroy(); self.label14 = nil; end;
         if self.button1 ~= nil then self.button1:destroy(); self.button1 = nil; end;
         if self.comboBox3 ~= nil then self.comboBox3:destroy(); self.comboBox3 = nil; end;
@@ -554,7 +547,6 @@ local function constructNew_frmM20_6()
         if self.label4 ~= nil then self.label4:destroy(); self.label4 = nil; end;
         if self.label6 ~= nil then self.label6:destroy(); self.label6 = nil; end;
         if self.image1 ~= nil then self.image1:destroy(); self.image1 = nil; end;
-        if self.image3 ~= nil then self.image3:destroy(); self.image3 = nil; end;
         if self.dataLink4 ~= nil then self.dataLink4:destroy(); self.dataLink4 = nil; end;
         if self.comboBox1 ~= nil then self.comboBox1:destroy(); self.comboBox1 = nil; end;
         if self.label15 ~= nil then self.label15:destroy(); self.label15 = nil; end;
@@ -565,7 +557,6 @@ local function constructNew_frmM20_6()
         if self.label12 ~= nil then self.label12:destroy(); self.label12 = nil; end;
         if self.dataLink3 ~= nil then self.dataLink3:destroy(); self.dataLink3 = nil; end;
         if self.rectangle2 ~= nil then self.rectangle2:destroy(); self.rectangle2 = nil; end;
-        if self.image4 ~= nil then self.image4:destroy(); self.image4 = nil; end;
         if self.button2 ~= nil then self.button2:destroy(); self.button2 = nil; end;
         if self.image2 ~= nil then self.image2:destroy(); self.image2 = nil; end;
         if self.dataLink2 ~= nil then self.dataLink2:destroy(); self.dataLink2 = nil; end;

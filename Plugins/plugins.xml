@@ -414,11 +414,12 @@
             <dataType id="ImperioDeJade" title="Imperio De Jade"/>
         </dataTypes>
     </element>
-    <element id="Ambesek.WoD.20th" name="World of Darkness 20th Anniversary" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/World%20of%20Darkness%2020th/output/World%20of%20Darkness%2020th.rpk?raw=true" fileName="World of Darkness 20th.rpk" repositoryPath="Sheets/World of Darkness 20th/" author="Ambesek" description="Plugin de ficha para Werewolf the Apocalypse 20th Anniversary Edition, Vampíre the Dark Ages 20th Anniversary Edition e Mage the Ascension 20th Anniversary Edition" version="0.5.2" compilationDate="31032021234549" compilationDigest="3e6b54a15e06a4f80ab5046818ecb10cdafca79e">
+    <element id="Ambesek.WoD.20th" name="World of Darkness 20th Anniversary" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/World%20of%20Darkness%2020th/output/World%20of%20Darkness%2020th.rpk?raw=true" fileName="World of Darkness 20th.rpk" repositoryPath="Sheets/World of Darkness 20th/" author="Ambesek" description="Plugin de ficha para Werewolf the Apocalypse, Vampíre the Dark Ages, Vampire the Masquerade, Mage Dark Ages e Mage the Ascension of the 20th Anniversary Edition" version="0.6" compilationDate="31032021234549" compilationDigest="3e6b54a15e06a4f80ab5046818ecb10cdafca79e">
         <dataTypes>
             <dataType id="Ambesek.Mage.20th" title="Mage 20th Anniversary"/>
             <dataType id="Ambesek.Mage.DarkAges" title="Mage Dark Ages"/>
             <dataType id="Ambesek.VampireDarkAges.20th" title="Vampire Dark Ages 20th Anniversary"/>
+            <dataType id="Ambesek.VampireMasquerade.20th" title="Vampire The Masquerade 20th Anniversary"/>
             <dataType id="Ambesek.Werewolf.20th" title="Werewolf 20th Anniversary"/>
         </dataTypes>
     </element>

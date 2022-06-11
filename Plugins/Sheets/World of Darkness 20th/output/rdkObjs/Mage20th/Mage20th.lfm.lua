@@ -33,6 +33,39 @@ local function constructNew_frmMage20th()
     obj:setAlign("client");
     obj:setTheme("dark");
 
+
+        local function isNewVersion(installed, downloaded)
+            local installedVersion = {};
+            local installedIndex = 0;
+            for i in string.gmatch(installed, "[^%.]+") do
+                installedIndex = installedIndex +1;
+                installedVersion[installedIndex] = i;
+            end
+
+            local downloadedVersion = {};
+            local downloadedIndex = 0;
+            for i in string.gmatch(downloaded, "[^%.]+") do
+                downloadedIndex = downloadedIndex +1;
+                downloadedVersion[downloadedIndex] = i;
+            end
+
+            for i=1, math.min(installedIndex, downloadedIndex), 1 do 
+                if (tonumber(installedVersion[i]) or 0) > (tonumber(downloadedVersion[i]) or 0) then
+                    return false;
+                elseif (tonumber(installedVersion[i]) or 0) < (tonumber(downloadedVersion[i]) or 0) then
+                    return true;
+                end;
+            end;
+
+            if downloadedIndex > installedIndex then
+                return true;
+            else
+                return false;
+            end;
+        end;
+        
+
+
     obj.tabControl1 = GUI.fromHandle(_obj_newObject("tabControl"));
     obj.tabControl1:setParent(obj);
     obj.tabControl1:setAlign("client");
@@ -9490,7 +9523,7 @@ local function constructNew_frmMage20th()
     obj.image11:setWidth(500);
     obj.image11:setHeight(175);
     obj.image11:setStyle("autoFit");
-    obj.image11:setSRC("images/werewolf.png");
+    obj.image11:setSRC("/Mage20th/images/mage.png");
     obj.image11:setName("image11");
 
     obj.image12 = GUI.fromHandle(_obj_newObject("image"));
@@ -9726,42 +9759,34 @@ local function constructNew_frmMage20th()
     obj.label123 = GUI.fromHandle(_obj_newObject("label"));
     obj.label123:setParent(obj.scrollBox6);
     obj.label123:setLeft(555);
-    obj.label123:setTop(300);
-    obj.label123:setWidth(100);
+    obj.label123:setTop(275);
+    obj.label123:setWidth(200);
     obj.label123:setHeight(20);
     obj.label123:setText("Versão Atual: ");
     obj.label123:setHorzTextAlign("center");
+    obj.label123:setField("versionInstalled");
     obj.label123:setName("label123");
-
-    obj.image13 = GUI.fromHandle(_obj_newObject("image"));
-    obj.image13:setParent(obj.scrollBox6);
-    obj.image13:setLeft(667);
-    obj.image13:setTop(300);
-    obj.image13:setWidth(100);
-    obj.image13:setHeight(20);
-    obj.image13:setStyle("autoFit");
-    obj.image13:setSRC("http://www.cin.ufpe.br/~jvdl/Plugins/Version/versao03.png");
-    obj.image13:setName("image13");
 
     obj.label124 = GUI.fromHandle(_obj_newObject("label"));
     obj.label124:setParent(obj.scrollBox6);
     obj.label124:setLeft(555);
-    obj.label124:setTop(325);
-    obj.label124:setWidth(100);
+    obj.label124:setTop(300);
+    obj.label124:setWidth(200);
     obj.label124:setHeight(20);
-    obj.label124:setText("Ultima Versão: ");
+    obj.label124:setText("Sua Versão: ");
     obj.label124:setHorzTextAlign("center");
+    obj.label124:setField("versionDownloaded");
     obj.label124:setName("label124");
 
-    obj.image14 = GUI.fromHandle(_obj_newObject("image"));
-    obj.image14:setParent(obj.scrollBox6);
-    obj.image14:setLeft(667);
-    obj.image14:setTop(325);
-    obj.image14:setWidth(100);
-    obj.image14:setHeight(20);
-    obj.image14:setStyle("autoFit");
-    obj.image14:setSRC("http://www.cin.ufpe.br/~jvdl/Plugins/WoD20th/release.png");
-    obj.image14:setName("image14");
+    obj.checkBox19 = GUI.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox19:setParent(obj.scrollBox6);
+    obj.checkBox19:setLeft(555);
+    obj.checkBox19:setTop(325);
+    obj.checkBox19:setWidth(200);
+    obj.checkBox19:setHeight(20);
+    obj.checkBox19:setField("noUpdate");
+    obj.checkBox19:setText("Não pedir para atualizar.");
+    obj.checkBox19:setName("checkBox19");
 
     obj.button2 = GUI.fromHandle(_obj_newObject("button"));
     obj.button2:setParent(obj.scrollBox6);
@@ -9796,12 +9821,49 @@ local function constructNew_frmMage20th()
     obj.button4:setText("RPGmeister");
     obj.button4:setName("button4");
 
-    obj._e_event0 = obj.button1:addEventListener("onClick",
+    obj._e_event0 = obj:addEventListener("onNodeReady",
+        function (_)
+            Internet.download("https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/World%20of%20Darkness%2020th/output/World%20of%20Darkness%2020th.rpk?raw=true",
+                        function(stream, contentType)
+                            local info = Firecast.Plugins.getRPKDetails(stream);
+                            sheet.versionDownloaded = "VERSÃO DISPONÍVEL: " .. info.version;
+            
+                            local installed = Firecast.Plugins.getInstalledPlugins();
+                            local myself;
+                            for i=1, #installed, 1 do
+                                if installed[i].moduleId == info.moduleId then
+                                    myself = installed[i];
+                                    sheet.versionInstalled = "VERSÃO INSTALADA: " .. installed[i].version;
+                                end;
+                            end;
+            
+                            if sheet.noUpdate==true then return end;
+                            if myself~= nil and isNewVersion(myself.version, info.version) then
+                                Dialogs.choose("Há uma nova versão desse plugin. Deseja instalar?",{"Sim", "Não", "Não perguntar novamente."},
+                                    function(selected, selectedIndex, selectedText)
+                                        if selected and selectedIndex == 1 then
+                                            GUI.openInBrowser('https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/World%20of%20Darkness%2020th/output/World%20of%20Darkness%2020th.rpk?raw=true');
+                                        elseif selected and selectedIndex == 3 then
+                                            sheet.noUpdate = true;
+                                        end;
+                                    end);
+                            end;
+                        end,       
+                        function (errorMsg)
+                            --showMessage(errorMsg);
+                        end,       
+                        function (downloaded, total)
+                            -- esta função será chamada constantemente.
+                            -- dividir "downloaded" por "total" lhe dará uma porcentagem do download.
+                        end);
+        end, obj);
+
+    obj._e_event1 = obj.button1:addEventListener("onClick",
         function (_)
             self.rclWonders:append();
         end, obj);
 
-    obj._e_event1 = obj.dataLink1:addEventListener("onChange",
+    obj._e_event2 = obj.dataLink1:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet == nil then return end;
             					local theme = sheet.theme;
@@ -9818,7 +9880,7 @@ local function constructNew_frmMage20th()
             					end;
         end, obj);
 
-    obj._e_event2 = obj.dataLink2:addEventListener("onChange",
+    obj._e_event3 = obj.dataLink2:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet==nil then return end;
             					local color = sheet.colorBackground or "#000000";
@@ -9830,7 +9892,7 @@ local function constructNew_frmMage20th()
             					end;
         end, obj);
 
-    obj._e_event3 = obj.dataLink3:addEventListener("onChange",
+    obj._e_event4 = obj.dataLink3:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet==nil then return end;
             					local fontColor = sheet.colorFont or "#FFFFFF";
@@ -9868,7 +9930,7 @@ local function constructNew_frmMage20th()
             					end;
         end, obj);
 
-    obj._e_event4 = obj.dataLink4:addEventListener("onChange",
+    obj._e_event5 = obj.dataLink4:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet==nil then return end;
             		            if sheet.localization ~= true then return end;
@@ -9888,22 +9950,23 @@ local function constructNew_frmMage20th()
             					end;
         end, obj);
 
-    obj._e_event5 = obj.button2:addEventListener("onClick",
+    obj._e_event6 = obj.button2:addEventListener("onClick",
         function (_)
-            gui.openInBrowser('http://www.cin.ufpe.br/~jvdl/Plugins/WoD20th/Change%20Log.txt')
+            GUI.openInBrowser('https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/World%20of%20Darkness%2020th/README.md')
         end, obj);
 
-    obj._e_event6 = obj.button3:addEventListener("onClick",
+    obj._e_event7 = obj.button3:addEventListener("onClick",
         function (_)
-            gui.openInBrowser('http://www.cin.ufpe.br/~jvdl/Plugins/WoD20th/World%20of%20Darkness%2020th.rpk')
+            GUI.openInBrowser('https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/World%20of%20Darkness%2020th/output/World%20of%20Darkness%2020th.rpk?raw=true')
         end, obj);
 
-    obj._e_event7 = obj.button4:addEventListener("onClick",
+    obj._e_event8 = obj.button4:addEventListener("onClick",
         function (_)
-            gui.openInBrowser('http://firecast.rrpg.com.br:90/a?a=pagRWEMesaInfo.actInfoMesa&mesaid=64070');
+            GUI.openInBrowser('https://my.firecastrpg.com/a?a=pagRWEMesaInfo.actInfoMesa&mesaid=64070');
         end, obj);
 
     function obj:_releaseEvents()
+        __o_rrpgObjs.removeEventListenerById(self._e_event8);
         __o_rrpgObjs.removeEventListenerById(self._e_event7);
         __o_rrpgObjs.removeEventListenerById(self._e_event6);
         __o_rrpgObjs.removeEventListenerById(self._e_event5);
@@ -10310,7 +10373,6 @@ local function constructNew_frmMage20th()
         if self.imageCheckBox348 ~= nil then self.imageCheckBox348:destroy(); self.imageCheckBox348 = nil; end;
         if self.rectangle21 ~= nil then self.rectangle21:destroy(); self.rectangle21 = nil; end;
         if self.imageCheckBox276 ~= nil then self.imageCheckBox276:destroy(); self.imageCheckBox276 = nil; end;
-        if self.image14 ~= nil then self.image14:destroy(); self.image14 = nil; end;
         if self.edit186 ~= nil then self.edit186:destroy(); self.edit186 = nil; end;
         if self.imageCheckBox30 ~= nil then self.imageCheckBox30:destroy(); self.imageCheckBox30 = nil; end;
         if self.imageCheckBox75 ~= nil then self.imageCheckBox75:destroy(); self.imageCheckBox75 = nil; end;
@@ -10624,6 +10686,7 @@ local function constructNew_frmMage20th()
         if self.imageCheckBox142 ~= nil then self.imageCheckBox142:destroy(); self.imageCheckBox142 = nil; end;
         if self.layout164 ~= nil then self.layout164:destroy(); self.layout164 = nil; end;
         if self.imageCheckBox264 ~= nil then self.imageCheckBox264:destroy(); self.imageCheckBox264 = nil; end;
+        if self.checkBox19 ~= nil then self.checkBox19:destroy(); self.checkBox19 = nil; end;
         if self.label3 ~= nil then self.label3:destroy(); self.label3 = nil; end;
         if self.layout113 ~= nil then self.layout113:destroy(); self.layout113 = nil; end;
         if self.imageCheckBox180 ~= nil then self.imageCheckBox180:destroy(); self.imageCheckBox180 = nil; end;
@@ -10660,7 +10723,6 @@ local function constructNew_frmMage20th()
         if self.edit102 ~= nil then self.edit102:destroy(); self.edit102 = nil; end;
         if self.edit117 ~= nil then self.edit117:destroy(); self.edit117 = nil; end;
         if self.imageCheckBox204 ~= nil then self.imageCheckBox204:destroy(); self.imageCheckBox204 = nil; end;
-        if self.image13 ~= nil then self.image13:destroy(); self.image13 = nil; end;
         if self.frmM20_4 ~= nil then self.frmM20_4:destroy(); self.frmM20_4 = nil; end;
         if self.imageCheckBox197 ~= nil then self.imageCheckBox197:destroy(); self.imageCheckBox197 = nil; end;
         if self.imageCheckBox242 ~= nil then self.imageCheckBox242:destroy(); self.imageCheckBox242 = nil; end;

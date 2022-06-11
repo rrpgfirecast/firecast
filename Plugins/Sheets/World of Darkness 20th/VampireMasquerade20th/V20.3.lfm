@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmVM20_3" align="client" theme="dark">
+	<scrollBox align="client">
+		<template name="Attack">
+			<edit left="0" top="0" width="200" height="24" field="attack_$(num)"/>
+			<edit left="200" top="0" width="100" height="24" field="roll_$(num)"/>
+			<edit left="300" top="0" width="50" height="24" field="difficulty_$(num)"/>
+			<edit left="350" top="0" width="50" height="24" field="damage_$(num)"/>
+			<edit left="400" top="0" width="50" height="24" field="range_$(num)"/>
+			<edit left="450" top="0" width="50" height="24" field="rate_$(num)"/>
+			<edit left="500" top="0" width="50" height="24" field="clip_$(num)"/>
+			<edit left="550" top="0" width="50" height="24" field="conceal_$(num)"/>
+		</template>
+
+		<layout left="0" top="0" width="630" height="330">
+			<rectangle align="client" color="black" xradius="10" yradius="10" cornerType="innerLine"/>
+			<label left="0" top="0" width="630" height="20" text="COMBAT" horzTextAlign="center"/>
+
+			<label left="15" top="25" width="630" height="20" text="Weapon/Attack                                          Roll              Diff.    Damage   Range     Rate        Clip    Conceal"/>
+
+			<layout left="15" top="50" width="600" height="25" >
+				<Attack num="1"/>
+			</layout>
+			<layout left="15" top="75" width="600" height="25" >
+				<Attack num="2"/>
+			</layout>
+			<layout left="15" top="100" width="600" height="25" >
+				<Attack num="3"/>
+			</layout>
+			<layout left="15" top="125" width="600" height="25" >
+				<Attack num="4"/>
+			</layout>
+			<layout left="15" top="150" width="600" height="25" >
+				<Attack num="5"/>
+			</layout>
+			<layout left="15" top="175" width="600" height="25" >
+				<Attack num="6"/>
+			</layout>
+			<layout left="15" top="200" width="600" height="25" >
+				<Attack num="7"/>
+			</layout>
+			<layout left="15" top="225" width="600" height="25" >
+				<Attack num="8"/>
+			</layout>
+			<layout left="15" top="250" width="600" height="25" >
+				<Attack num="9"/>
+			</layout>
+			<layout left="15" top="275" width="600" height="25" >
+				<Attack num="10"/>
+			</layout>
+		</layout> 
+
+		<layout left="640" top="0" width="230" height="330">
+			<rectangle align="client" color="black" xradius="10" yradius="10" cornerType="innerLine"/>
+			
+			<label left="0" top="0" width="230" height="20" text="HAVEN" horzTextAlign="center"/>
+				
+			<textEditor left="15" top="25" width="200" height="290" field="haven"/>
+		</layout>
+
+		<layout left="880" top="0" width="230" height="230">
+			<rectangle align="client" color="black" xradius="10" yradius="10" cornerType="innerLine"/>
+			
+			<label left="0" top="0" width="230" height="20" text="ARMOR" horzTextAlign="center"/>
+				
+			<layout left="15" top="25" width="200" height="25" >
+				<label left="0" top="5" width="50" height="20" text="Class" horzTextAlign="trailing"/>
+        		<edit left="55" top="0" width="145" height="25" field="armorClass"/>
+			</layout>
+			<layout left="15" top="50" width="200" height="25" >
+				<label left="0" top="5" width="50" height="20" text="Rating" horzTextAlign="trailing"/>
+        		<edit left="55" top="0" width="145" height="25" field="armorRating"/>
+			</layout>
+			<layout left="15" top="75" width="600" height="25" >
+				<label left="0" top="5" width="50" height="20" text="Penalty" horzTextAlign="trailing"/>
+        		<edit left="55" top="0" width="145" height="25" field="armorPenalty"/>
+			</layout>
+			<textEditor left="15" top="100" width="200" height="115" field="armorDescription"/>
+		</layout>
+
+		<layout left="0" top="340" width="230" height="230">
+			<rectangle align="client" color="black" xradius="10" yradius="10" cornerType="innerLine"/>
+			<label left="0" top="0" width="230" height="20" text="GEAR (CARRIED)" horzTextAlign="center"/>
+
+			<textEditor left="15" top="25" width="200" height="190" field="gear"/>
+		</layout>
+
+		<layout left="240" top="340" width="230" height="230">
+			<rectangle align="client" color="black" xradius="10" yradius="10" cornerType="innerLine"/>
+			<label left="0" top="0" width="230" height="20" text="EQUIPMENT (OWNED)" horzTextAlign="center"/>
+
+			<textEditor left="15" top="25" width="200" height="190" field="equipment"/>
+		</layout>
+
+		<layout left="480" top="340" width="230" height="230">
+			<rectangle align="client" color="black" xradius="10" yradius="10" cornerType="innerLine"/>
+			<label left="0" top="0" width="230" height="20" text="TRANSPORTATION" horzTextAlign="center"/>
+
+			<textEditor left="15" top="25" width="200" height="190" field="transportation"/>
+		</layout>
+
+		<layout left="720" top="340" width="230" height="230">
+			<rectangle align="client" color="black" xradius="10" yradius="10" cornerType="innerLine"/>
+			<label left="0" top="0" width="230" height="20" text="FEEDING GROUNDS" horzTextAlign="center"/>
+
+			<textEditor left="15" top="25" width="200" height="190" field="feeding"/>
+		</layout>
+	</scrollBox>
+</form>
