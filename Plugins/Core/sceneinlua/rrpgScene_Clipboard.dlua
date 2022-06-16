@@ -335,6 +335,30 @@ function SC3CLIPBOARD_PastePacote(scene, pacote, pivo)
 end;
 
 function SC3CLIPBOARD_Paste(scene, pivo)
+	if pivo == nil then
+		pivo = {};				
+		local _lastMouseDown = rawget(scene, "_lastMouseDown");
+		
+		if _lastMouseDown ~= nil then
+			pivo.x = _lastMouseDown.x;
+			pivo.y = _lastMouseDown.y;
+		else
+			pivo.x = scene.viewport.worldX + scene.viewport.width / scene.viewport.scale;	
+			pivo.y = scene.viewport.worldX + scene.viewport.height / scene.viewport.scale;
+		end;		
+	end;	
+	
+	local screenX, screenY = scene.viewport:worldToScreen(pivo.x, pivo.y);
+
+	local hadMatch = System.readClipboardAsDragNDrop(screenX, screenY,
+		function (drop, x, y, drag)
+			SC3DRAGNDROP_FillDropData(scene, drop, x, y, drag);
+		end);
+
+	if hadMatch then
+		return;
+	end;
+
 	local pacote = SC3CLIPBOARD_Unpack(System.getClipboardText());
 	
 	if pacote ~= nil then
