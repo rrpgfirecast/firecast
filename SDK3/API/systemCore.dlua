@@ -8,12 +8,16 @@ function system.getClipboardText()
 	return _system_getClipboardText();
 end;
 
-function system.readClipboardAsDragNDrop(x, y, callback)
+function system.readClipboardAsDragNDrop(callback, options)
 	if (type(callback) ~= 'function') or not system.checkAPIVersion(87, 2) then
 		return false;
 	end;
+	
+	options = options or {};
+	options.x = tonumber(options.x) or 0;
+	options.y = tonumber(options.y) or 0;	
 
-	return _gui_readClipboardAsDragNDrop(tonumber(x), tonumber(y), callback);
+	return _gui_readClipboardAsDragNDrop(options.x, options.y, callback);
 end;
 
 function system.getScreenSize()

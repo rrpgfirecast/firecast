@@ -290,3 +290,5 @@ userDrawing.textObject.promptText=Enter the text
 
 scene.help.category=Help
 scene.help.howTo=Help: How to use the board?
+
+scene.image.upload.errorPrefix=Failed to upload image:

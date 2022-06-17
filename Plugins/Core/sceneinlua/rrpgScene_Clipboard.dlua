@@ -234,6 +234,10 @@ function SC3CLIPBOARD_Unpack(txt)
 		Serializer = require("utils.serializer.dlua");
 	end;
 
+	if type(txt) ~= 'string' then
+		return nil;
+	end;
+
 	local txtPacote = string.match(txt, SC3CLIBPOARD_TEXT_PATTERN);
 	
 	if txtPacote ~= nil then
@@ -335,6 +339,17 @@ function SC3CLIPBOARD_PastePacote(scene, pacote, pivo)
 end;
 
 function SC3CLIPBOARD_Paste(scene, pivo)
+	local pacote = SC3CLIPBOARD_Unpack(System.getClipboardText());
+	
+	if pacote ~= nil then
+		SC3UNDO_Capture(scene,
+			function ()
+				SC3CLIPBOARD_PastePacote(scene, pacote, pivo);
+			end);
+		
+		return;
+	end;	
+	
 	if pivo == nil then
 		pivo = {};				
 		local _lastMouseDown = rawget(scene, "_lastMouseDown");
@@ -346,26 +361,13 @@ function SC3CLIPBOARD_Paste(scene, pivo)
 			pivo.x = scene.viewport.worldX + scene.viewport.width / scene.viewport.scale;	
 			pivo.y = scene.viewport.worldX + scene.viewport.height / scene.viewport.scale;
 		end;		
-	end;	
+	end;		
 	
-	local screenX, screenY = scene.viewport:worldToScreen(pivo.x, pivo.y);
+	local dragOptions = {};
+	dragOptions.x, dragOptions.y = scene.viewport:worldToScreen(pivo.x, pivo.y);
 
-	local hadMatch = System.readClipboardAsDragNDrop(screenX, screenY,
+	System.readClipboardAsDragNDrop(
 		function (drop, x, y, drag)
 			SC3DRAGNDROP_FillDropData(scene, drop, x, y, drag);
-		end);
-
-	if hadMatch then
-		return;
-	end;
-
-	local pacote = SC3CLIPBOARD_Unpack(System.getClipboardText());
-	
-	if pacote ~= nil then
-		SC3UNDO_Capture(scene,
-			function ()
-				SC3CLIPBOARD_PastePacote(scene, pacote, pivo);
-			end);
-		
-	end;
+		end, dragOptions);
 end;

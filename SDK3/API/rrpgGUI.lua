@@ -1972,4 +1972,12 @@ function gui.openInBrowser(url)
 	end;
 end;
 
+function gui.toast(message)
+	if System.checkAPIVersion(87, 2)  then
+		return _gui_toast(message);
+	else	
+		require('dialogs.lua').showMessage(message);
+	end;
+end;
+
 return gui;

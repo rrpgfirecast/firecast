@@ -2,6 +2,7 @@
 local Dialogs = require("dialogs.lua");
 local NDB = require("ndb.lua");
 local Locale = require("locale.lua");
+local GUI = require("gui.lua");
 
 local macros = {};
 local _MACRO_CALL_CO_FUNCTION_RET = "CallSomeFunctionInMainThread";
@@ -426,6 +427,10 @@ local function createMacroEnvTable(chat)
 	
 	env.alert = function(msg)
 		coroutine.yield(_MACRO_CALL_CO_FUNCTION_RET, 'yAlert', msg);	
+	end;
+	
+	env.toast = function(msg)
+		Locale.withNoEval(GUI.toast, msg);		
 	end;
 	
 	env.confirmOkCancel = function(question)
