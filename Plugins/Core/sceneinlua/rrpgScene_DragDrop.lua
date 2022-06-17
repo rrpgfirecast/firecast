@@ -3,6 +3,7 @@ require("utils.lua");
 require("rrpgScene_Globals.lua");
 local Internet = require("internet.lua");
 require("rrpgScene_Undo.dlua");
+require('gui.lua');
 
 	
 -- Drag and Drop de Texto
@@ -23,12 +24,13 @@ local function strToProbableLink(str)
 	end;
 end;
 	
-local function adicionarUmTokenDeUmURL(scene, url, x, y, drag)
+local function adicionarUmTokenDeUmURL(scene, url, x, y, drag, autoPlace)
+	local token = nil;
+	
 	SC3UNDO_Capture(scene,
 		function()
-			local token = scene.items:addToken();
-			token:beginUpdate();	
-			
+			token = scene.items:addToken();
+			token:beginUpdate();				
 			
 			tryFinally(
 				function()	
@@ -37,6 +39,11 @@ local function adicionarUmTokenDeUmURL(scene, url, x, y, drag)
 					token.width = scene.grid.cellSize;
 					token.height = scene.grid.cellSize;			
 					local cx, cy = scene.viewport:screenToWorld(x, y);
+					
+					if autoPlace then
+						cx, cy = UTIL_BomLugarCenter(scene, cx, cy);
+					end;
+					
 					token:setCenter(cx, cy, true);
 					
 					if drag ~= nil then
@@ -61,10 +68,12 @@ local function adicionarUmTokenDeUmURL(scene, url, x, y, drag)
 					token:endUpdate();
 				end);
 		end);
+		
+	return token;
 end;
 	
-local function verificarLinkEAdicionarToken(scene, pLink, x, y, drag)	
-	adicionarUmTokenDeUmURL(scene, pLink, x, y, drag);
+local function verificarLinkEAdicionarToken(scene, pLink, x, y, drag, autoPlace)	
+	return adicionarUmTokenDeUmURL(scene, pLink, x, y, drag, autoPlace);
 end;
 
 local function adicionarUmTokenDeUmSceneUnitClass(scene, suc, x, y)
@@ -197,57 +206,96 @@ local function adicionarUmTokenDeUmJogador(scene, jogador, x, y, autoPlace)
 					token.selected = true;
 				end);
 end;	
+		
+local function adicionarUmTokenDeUmImageFile(scene, imageFile, x, y, autoPlace)
+	local fireDrive = require("fireDrive.lua");
+	local token = adicionarUmTokenDeUmURL(scene, 'plugin://BR.COM.RRPG.SCENE3_IN_LUA/images/loadingAnim.gif', x, y, nil, autoPlace);
+	
+	fireDrive.quickUpload(imageFile.name, imageFile.mimeType, imageFile.stream,
+		function(fdItem)
+			if token.isObjectAlive then
+				token.image.url = fdItem.url;			
+				scene:sendDelayedUpdates();					
+			end			
+		end,
+		
+		function(currentBytes, maxBytes)
+		end,
+		
+		function (failureReason)
+			if token.isObjectAlive then
+				token:delete();
+			end;
+		
+			GUI.toast('@@scene.image.upload.errorPrefix ' .. failureReason);
+		end	
+	);
+end;		
 	
 ---------- Ferramentas de Drag n Drop	
+
+function SC3DRAGNDROP_FillDropData(scene, drop, screenX, screenY, drag)
+	drop:addAction("imageFiles", 
+		function (value, rx, ry, rdrag)
+			for i = 1, #value, 1 do
+				adicionarUmTokenDeUmImageFile(scene, value[i], rx, ry, #value > 1);
+			end;
+		end);		
+
+	drop:addAction("imageFile", 
+		function (value, rx, ry, rdrag)
+			adicionarUmTokenDeUmImageFile(scene, value, rx, ry);
+		end);			
+
+	drop:addAction("characters",
+		function (value, rx, ry, rdrag)
+			for i = 1, #value, 1 do
+				adicionarUmTokenDeUmPersonagem(scene, value[i], rx, ry, #value > 1);
+			end;
+		end);					
+	
+	drop:addAction("character",
+		function (value, rx, ry, rdrag)
+			adicionarUmTokenDeUmPersonagem(scene, value, rx, ry);
+		end);			
+	
+	drop:addAction("sceneUnitClass", 
+					function(value, rx, ry, rdrag)								
+						adicionarUmTokenDeUmSceneUnitClass(scene, value, rx, ry);
+					end);
+							
+	drop:addAction("players",
+		function (value, rx, ry, rdrag)
+			for i = 1, #value, 1 do
+				adicionarUmTokenDeUmJogador(scene, value[i], rx, ry, #value > 1);
+			end;
+		end);																	
+							
+	drop:addAction("player",
+		function (value, rx, ry, rdrag)
+			adicionarUmTokenDeUmJogador(scene, value, rx, ry);
+		end);		
+							
+	drop:addAction("imageURL", 
+					function(value, rx, ry, rdrag)								
+						verificarLinkEAdicionarToken(scene, value, rx, ry, rdrag);
+					end);
+		
+	local pLink = strToProbableLink(drag:getData("text"));
+	
+	if pLink ~= nil then			
+		drop:addAction("text",
+			function(value, rx, ry, rdrag)
+				local rpLink = strToProbableLink(value);
+				verificarLinkEAdicionarToken(scene, rpLink, rx, ry, rdrag);						
+			end);
+	end;	
+end;
 	
 SceneLib.registerPlugin(
-	function (scene, attachment)							
-		local function doStartDrop(drop, x, y, drag)			
-			drop:addAction("characters",
-				function (value, rx, ry, rdrag)
-					for i = 1, #value, 1 do
-						adicionarUmTokenDeUmPersonagem(scene, value[i], rx, ry, #value > 1);
-					end;
-				end);					
-			
-			drop:addAction("character",
-				function (value, rx, ry, rdrag)
-					adicionarUmTokenDeUmPersonagem(scene, value, rx, ry);
-				end);			
-			
-			drop:addAction("sceneUnitClass", 
-							function(value, rx, ry, rdrag)								
-								adicionarUmTokenDeUmSceneUnitClass(scene, value, rx, ry);
-							end);
-									
-			drop:addAction("players",
-				function (value, rx, ry, rdrag)
-					for i = 1, #value, 1 do
-						adicionarUmTokenDeUmJogador(scene, value[i], rx, ry, #value > 1);
-					end;
-				end);																	
-									
-			drop:addAction("player",
-				function (value, rx, ry, rdrag)
-					adicionarUmTokenDeUmJogador(scene, value, rx, ry);
-				end);		
-									
-			drop:addAction("imageURL", 
-							function(value, rx, ry, rdrag)								
-								verificarLinkEAdicionarToken(scene, value, rx, ry, rdrag);
-							end);
-			
-			
-			local pLink = strToProbableLink(drag:getData("text"));
-			
-			if pLink ~= nil then			
-				drop:addAction("text",
-					function(value, rx, ry, rdrag)
-						local rpLink = strToProbableLink(value);
-						verificarLinkEAdicionarToken(scene, rpLink, rx, ry, rdrag);						
-					end);
-			end;		
-		end;
-				
-		scene.viewport:listen("onStartDrop", doStartDrop);
+	function (scene, attachment)									
+		scene.viewport:listen("onStartDrop", 
+			function (drop, x, y, drag)
+				SC3DRAGNDROP_FillDropData(scene, drop, x, y, drag);
+			end);
 	end);	

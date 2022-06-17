@@ -42,7 +42,6 @@ SceneLib.registerPlugin(
 										
 					local largura = (maxX - minX);
 					local altura = (maxY - minY);	
-					local scale = viewport.scale;
 				
 					if altura < maker.strokeSize then
 						altura = maker.strokeSize;

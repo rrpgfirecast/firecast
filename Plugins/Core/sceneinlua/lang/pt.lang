@@ -356,3 +356,5 @@ userDrawing.textObject.promptText=Digite o texto
 
 scene.help.category=Ajuda
 scene.help.howTo=Ajuda: Como usar o tabuleiro?
+
+scene.image.upload.errorPrefix=Falha ao fazer upload de imagem:
