@@ -137,7 +137,7 @@ local function constructNew_frmFichaCreditos()
     obj.label6:setTop(480);
     obj.label6:setWidth(210);
     obj.label6:setHeight(20);
-    obj.label6:setText("Sua Versão: 2.2");
+    obj.label6:setText("Sua Versão: 2.3");
     obj.label6:setHorzTextAlign("center");
     obj.label6:setName("label6");
 
@@ -166,7 +166,7 @@ local function constructNew_frmFichaCreditos()
 
     obj._e_event1 = obj.button2:addEventListener("onClick",
         function (_)
-            GUI.openInBrowser('https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Dead%20Zone%202.0/output/DeadZone_Ficha%202.0.rpk?raw=true')
+            GUI.openInBrowser('https://github.com/ooicram/DeadZoneRPG/raw/master/Plugins/Sheets/Dead%20Zone%202.0/output/Dead%20Zone%202.0.rpk')
         end, obj);
 
     function obj:_releaseEvents()

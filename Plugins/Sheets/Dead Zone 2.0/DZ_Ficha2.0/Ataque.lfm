@@ -2,6 +2,23 @@
 <form name="Ataque" height="350" width="230" theme="light">
 <style>.padrao{ fontColor: #C0504D; fontSize: 20; horzTextAlign: center; vertTextAlign: leading; fontStyle:bold; fontFamily: kalam; transparent: true; }</style>
 <style>.padrao2{ fontColor: #000000; fontSize: 10; horzTextAlign: center; vertTextAlign: center; fontFamily: kalam;}</style>
+
+	<script> 
+		<![CDATA[			
+
+			local function showItemPopup()
+				local pop = self:findControlByName("InfoATK");
+					
+				if pop ~= nil then
+					pop:setNodeObject(self.sheet);
+					pop:showPopupEx("bottom", self);
+					else
+						showMessage("Ops, bug.. nao encontrei o popup para exibir");
+					end;				
+				end;
+		]]>	
+	</script>
+
 	<rectangle width="230" height="350" color="#00000000">
 	
 			<rectangle top="1" left="0" width="200" height="30" sides="bottom" color="#00000000" strokeColor="black" strokeSize="1"> </rectangle>
@@ -19,16 +36,35 @@
 			<edit field="Dano" width="85"  height="30" top="110" left="10" class="padrao" />
 			<label text="Dano" width="85" height="30" top="90" left="10" class="padrao2" />
 			
-			
 			<rectangle top="109" left="104" width="86" height="31" cornerType="round" color="#00000000" strokeColor="black" strokeSize="2" xradius="8" yradius="8"> </rectangle>
 			<edit field="CD" width="85"  height="30" top="110" left="105" class="padrao" />
 			<label text="CD" width="85" height="30" top="90" left="105" class="padrao2" />
 			
-			<button text="C" fontFamily="kalam" width="25" height="25" top="60" left="200" hint="Configurações do ataque." onClick="self.ConfigATK:show('bottom', self.labNome);"/>
+			<button text="i" fontFamily="kalam" width="25" height="25" top="60" left="200" hint="Informações do ataque." onClick="showItemPopup();" />
 			
-			<button fontFamily="kalam" width="24" height="25" top="110" hint="Executa a rolagem configurada." left="200">
+			<image width="27" height="27" left="200" top="59" style="proportional" center="true" src="images/bala4.png"
+			/>
+			
+			<popup name="InfoATK" width="600" height="500" backOpacity="0.5" >
+			
+				<label field="ataque" width="600" height="30" top="1" class="padrao2" fontSize="20" fontStyle="underline" 
+				/>
+				
+				<image field="IconATK" width="600" height="150" top="30" editable="true" showProgress="true" style="proportional" optimize="true" hint="imagem da arma." src="images/ATKimage.png"
+				/>
+				
+				<comboBox field="AlcanceATK" left="33" top="200" width="200" height="30" items="{'Corpo a corpo', 'Curto', 'Medio', 'Longo'}" class="padrao2" fontSize="15" hint="Alcance do ataque." values="{'Cc', 'C', 'M', 'L'}"
+				/>
+				
+				<comboBox field="AtributoATK" left="33" top="240" width="200" height="30" items="{'Força', 'Destreza', 'Percepção', 'Inteligencia'}" class="padrao2" fontSize="15" hint="Atributo da rolagem do ataque." values="{'FOR', 'DES', 'PER', 'INT'}"
+				/>		
+				
+				<richEdit left="50" top="320" width="500" height="150" backgroundColor="gray" defaultFontColor="#C0504D" field="NotasAtaqueinfo" showToolbar="false" />			
+				
+			</popup> 	
+			
+			<button fontFamily="kalam" width="24" height="25" top="110" hint="Executa a rolagem configurada." left="200" >				
 			</button>
-
 			<image width="26" height="26" left="199" top="110" style="proportional" center="true" src="images/Dado.jpg"/>
 			
 			<rectangle top="159" left="09" width="86" height="31" cornerType="round" color="#00000000" strokeColor="black" strokeSize="2" xradius="8" yradius="8"> </rectangle>
