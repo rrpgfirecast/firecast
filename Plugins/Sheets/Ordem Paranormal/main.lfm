@@ -1,0 +1,1233 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+
+<form formType="sheetTemplate" dataType="OrdemParanormalS_byHelldemos" 
+        title="Ficha de Ordem Paranormal v0.55" name="OrdemParanormalS_byHelldemos">
+
+        <tabControl left="5" top="5" align="client">
+                <tab title="Atributos">
+                
+        <scrollBox align="client">
+        <layout align="none" height="255" width="400" top="15" left="5" frameStyle="/frames/FrameRetangular.xml" 
+               margins="{left=30, top=15, right=10, bottom=10}">
+
+               <label text="Identidade" left="175" fontStyle="bold italic" top="9"/>
+                <style>
+                        layout.LayoutCampo {
+                                width: 15;
+                                top: 25;
+                                height: 25;
+                                align: top;
+                                margins: {left=2, right=2, top=5};
+                        }              
+
+                        layout.LayoutCampo edit {
+                                height: 5;
+                                width: 250;
+                                fontSize: 15;
+                                align: left;
+                        }              
+
+                        layout.LayoutCampo label {
+                                align: left;
+                                horzTextAlign: leading;
+                                vertTextAlign: leading;
+                                autoSize: true;
+                                top: 30;
+
+                        }              
+                </style>                
+
+        <layout left="5" top="25" width="600" height="250">  
+                <layout class="LayoutCampo" >
+                        <label text="     Nome:"/>  
+                        <edit  field="identidade.nome"/>               
+                </layout>
+               
+                <layout class="LayoutCampo">
+                        <label text="     Origem:"/>  
+                        <edit  field="identidade.origem"/>       
+                </layout>              
+               
+                <layout class="LayoutCampo">
+                        <label text="     Classe:"/>  
+                        <edit  field="identidade.classe"/>           
+                </layout>
+
+                <layout class="LayoutCampo">
+                        <label text="     Elemento:"/>  
+                        <edit  field="identidade.elemento"/>           
+                </layout>
+
+                <layout class="LayoutCampo">
+                        <label text="     Trilha:"/>  
+                        <edit  field="identidade.trilha"/>           
+                </layout>
+
+                <layout class="LayoutCampo">
+                        <label text="     Patente:"/>  
+                        <edit  field="identidade.patente"/>           
+                </layout>     
+                
+                <layout class="LayoutCampo">
+                        <label text="     Sexo/Idade:"/>  
+                        <edit  field="identidade.sexoidade"/>           
+                </layout>                     
+        </layout>
+        </layout>
+
+     
+        <layout align="none" left="423" height="130" width="665" top="15" frameStyle="/frames/FrameRetangular.xml" 
+               margins="{left=30, top=15, right=10, bottom=10}">
+               <label text="Atributos" left="300" fontStyle="bold italic" top="15"/>
+               
+                <style>
+                        layout.LayoutCampoAtributosSpliter {
+                                width: 111;
+                                align: left;
+                                margins: {left=2, right=2};
+                        }
+
+                        layout.LayoutCampoAtributosSpliter image {
+                                height:30;
+                                align: top;
+                        }      
+
+                        layout.LayoutCampoAtributos {
+                                width: 74;
+                                align: left;
+                                margins: {left=2, right=2};
+                        }              
+
+                        layout.LayoutCampoAtributos edit {
+                                height:30;
+                                horzTextAlign: center;
+                                fontSize: 20;
+                                align: top;
+                        }              
+
+                        layout.LayoutCampoAtributos label {
+                                align: top;
+                                horzTextAlign: center;
+                                vertTextAlign: leading;
+                                autoSize: true;
+
+                        }              
+                </style>                
+
+        <layout left="20" top="42" width="700" height="250">  
+                <layout class="LayoutCampoAtributosSpliter">
+                        <image width="150" height="75" style="proportional"                
+                        src="https://media.discordapp.net/attachments/806112336577560576/994292340384596019/unknown.png"/>         
+                </layout>
+                <layout class="LayoutCampoAtributos">
+                        <edit type="number"  field="atributo.forca"/>
+                        <label text="Força"/>          
+                </layout>
+                <layout class="LayoutCampoAtributos">
+                        <edit type="number"  field="atributo.agilidade"/>
+                        <label text="Agilidade"/>          
+                </layout>
+                <layout class="LayoutCampoAtributos">
+                        <edit type="number"  field="atributo.vigor"/>
+                        <label text="Vigor"/>          
+                </layout>
+                <layout class="LayoutCampoAtributos">
+                        <edit type="number"  field="atributo.presenca"/>
+                        <label text="Presença"/>          
+                </layout>
+                <layout class="LayoutCampoAtributos">
+                        <edit type="number"  field="atributo.intelecto"/>
+                        <label text="Intelecto"/>          
+                </layout>
+                <layout class="LayoutCampoAtributosSpliter">
+                        <image width="150" height="75" style="proportional"                
+                        src="https://media.discordapp.net/attachments/806112336577560576/994292340384596019/unknown.png"/>         
+                </layout>
+               
+                
+                               
+        </layout>
+        </layout>
+        <layout align="none" left="423" height="130" width="665" top="138" frameStyle="/frames/FrameRetangular.xml" 
+               margins="{left=30, right=10, bottom=10}">
+               <style>
+                layout.LayoutCampoAtributos2 {
+                        width: 74;
+                        align: left;
+                        margins: {left=2, right=2};
+                }              
+
+                layout.LayoutCampoAtributos2 edit {
+                        height:30;
+                        horzTextAlign: center;
+                        fontSize: 20;
+                        align: top;
+                }              
+
+                layout.LayoutCampoAtributos2 label {
+                        align: top;
+                        horzTextAlign: center;
+                        vertTextAlign: leading;
+                        autoSize: true;
+
+                }              
+        </style>                
+
+        <layout left="20" top="40" width="700" height="250">  
+        <layout class="LayoutCampoAtributos2">
+                <edit field="atributo.hp"/>
+                <label text="Pontos De Vida"/>             
+        </layout>
+        <layout class="LayoutCampoAtributos2">
+                <edit field="atributo.mp"/>
+                <label text="Pontos de Esforço"/>             
+        </layout>
+        <layout class="LayoutCampoAtributos2">
+                <edit field="atributo.nex"/>
+                <label text="NEX%"/>                     
+        </layout>
+        <layout class="LayoutCampoAtributos2">
+                <edit type="number"  field="atributo.deslocamento"/>
+                <label text="Deslocamento"/>             
+        </layout>
+        <layout class="LayoutCampoAtributos2">
+                <edit type="number"  field="atributo.xp"/>
+                <label text="XP"/>             
+        </layout> 
+        <layout class="LayoutCampoAtributos2">
+                <edit type="number"  field="atributo.sanidadeatual"/>
+                <label text="Sanidade Atual"/>           
+        </layout> 
+        <layout class="LayoutCampoAtributos2">
+                <edit type="number"  field="atributo.sanidademaxima"/>
+                <label text="Sanidade Maxima"/>             
+        </layout> 
+        <layout class="LayoutCampoAtributos2">
+                <edit type="number"  field="atributo.pm"/>
+                <label text="PM"/>             
+        </layout> 
+        </layout>
+        </layout>
+        <layout align="none" left="1103" height="255" width="230" top="15" frameStyle="/frames/FrameRetangular.xml" 
+        margins="{left=30, right=10, bottom=10}">
+                <label text="Escolha Uma Imagem" left="55" top="19" width="200" height="215"/> 
+                <image field="imagemDoPersonagem" editable="true" style="autoFit" 
+                        left="15" top="19" width="200" height="215" />
+        </layout>
+
+        <layout align="none" left="5" height="35" width="1329" top="290" frameStyle="/frames/FrameRetangular.xml" 
+        margins="{left=30, right=10, bottom=10}">
+        <label text="Perícias e Proficiências" left="625" fontStyle="bold italic" top="9" width="1343"/>
+                
+        </layout>
+
+        <layout align="none" left="5" height="604" width="332" top="325" frameStyle="/frames/FrameRetangular.xml" 
+        margins="{left=30, right=10, bottom=10}">
+        <label text="Perícias Gerais" left="115" fontStyle="bold italic" top="9" width="1343"/>            
+                    
+                <layout left="20" top="25" width="270" height="604"> 
+                        <layout align="top" height="20" margins="{bottom=2, top=15}">
+                                <comboBox align="left" left="5" top="20" width="100" items="{'Destreinado', 'Treinado', 'Veterano', 'Expert'}"
+                                values="{'D', 'T', 'V', 'E'}" value="D" field="periciaselect.adestramento"/>
+                                <label align="left" width="120" text="Adestramento:" 
+                                      horzTextAlign="trailing" margins="{right=5}"/>
+                                <edit type="number"  align="left" horzTextAlign="center" fontSize="14" width="30" field="pericia.adestramento"/>
+                                <label align="left" width="5" text="" 
+                                      horzTextAlign="trailing" margins="{right=5}"/>
+                        </layout>   
+                        <layout align="top" height="20" margins="{bottom=2, top=15}">
+                                <comboBox align="left" left="5" top="20" width="100" items="{'Destreinado', 'Treinado', 'Veterano', 'Expert'}"
+                                values="{'D', 'T', 'V', 'E'}" value="D" field="periciaselect.atualidades"/>
+                                <label align="left" width="120" text="Atualidades:" 
+                                      horzTextAlign="trailing" margins="{right=5}"/>
+                                <edit type="number"  align="left" horzTextAlign="center" fontSize="14" width="30" field="pericia.atualidades"/>
+                                <label align="left" width="5" text="" 
+                                      horzTextAlign="trailing" margins="{right=5}"/>
+                        </layout>  
+                        <layout align="top" height="20" margins="{bottom=2, top=15}">
+                                <comboBox align="left" left="5" top="20" width="100" items="{'Destreinado', 'Treinado', 'Veterano', 'Expert'}"
+                                values="{'D', 'T', 'V', 'E'}" value="D" field="periciaselect.crime"/>
+                                <label align="left" width="120" text="Crime:" 
+                                      horzTextAlign="trailing" margins="{right=5}"/>
+                                <edit type="number"  align="left" horzTextAlign="center" fontSize="14" width="30" field="pericia.crime"/>
+                                <label align="left" width="5" text="" 
+                                      horzTextAlign="trailing" margins="{right=5}"/>
+                        </layout>  
+                        <layout align="top" height="20" margins="{bottom=2, top=15}">
+                                <comboBox align="left" left="5" top="20" width="100" items="{'Destreinado', 'Treinado', 'Veterano', 'Expert'}"
+                                values="{'D', 'T', 'V', 'E'}" value="D" field="periciaselect.iniciativa"/>
+                                <label align="left" width="120" text="Iniciativa:" 
+                                      horzTextAlign="trailing" margins="{right=5}"/>
+                                <edit type="number"  align="left" horzTextAlign="center" fontSize="14" width="30" field="pericia.iniciativa"/>
+                                <label align="left" width="5" text="" 
+                                      horzTextAlign="trailing" margins="{right=5}"/>
+                        </layout>  
+                        <layout align="top" height="20" margins="{bottom=2, top=15}">
+                                <comboBox align="left" left="5" top="20" width="100" items="{'Destreinado', 'Treinado', 'Veterano', 'Expert'}"
+                                values="{'D', 'T', 'V', 'E'}" value="D" field="periciaselect.investigacao"/>
+                                <label align="left" width="120" text="Investigação:" 
+                                      horzTextAlign="trailing" margins="{right=5}"/>
+                                <edit type="number"  align="left" horzTextAlign="center" fontSize="14" width="30" field="pericia.investigacao"/>
+                                <label align="left" width="5" text="" 
+                                      horzTextAlign="trailing" margins="{right=5}"/>
+                        </layout>  
+                        <layout align="top" height="20" margins="{bottom=2, top=15}">
+                                <comboBox align="left" left="5" top="20" width="100" items="{'Destreinado', 'Treinado', 'Veterano', 'Expert'}"
+                                values="{'D', 'T', 'V', 'E'}" value="D" field="periciaselect.ocultismo"/>
+                                <label align="left" width="120" text="Ocultismo:" 
+                                      horzTextAlign="trailing" margins="{right=5}"/>
+                                <edit type="number"  align="left" horzTextAlign="center" fontSize="14" width="30" field="pericia.ocultismo"/>
+                                <label align="left" width="5" text="" 
+                                      horzTextAlign="trailing" margins="{right=5}"/>
+                        </layout>  
+                        <layout align="top" height="20" margins="{bottom=2, top=15}">
+                                <comboBox align="left" left="5" top="20" width="100" items="{'Destreinado', 'Treinado', 'Veterano', 'Expert'}"
+                                values="{'D', 'T', 'V', 'E'}" value="D" field="periciaselect.pilotagem"/>
+                                <label align="left" width="120" text="Pilotagem:" 
+                                      horzTextAlign="trailing" margins="{right=5}"/>
+                                <edit type="number"  align="left" horzTextAlign="center" fontSize="14" width="30" field="pericia.pilotagem"/>
+                                <label align="left" width="5" text="" 
+                                      horzTextAlign="trailing" margins="{right=5}"/>
+                        </layout>  
+                        <layout align="top" height="20" margins="{bottom=2, top=15}">
+                                <comboBox align="left" left="5" top="20" width="100" items="{'Destreinado', 'Treinado', 'Veterano', 'Expert'}"
+                                values="{'D', 'T', 'V', 'E'}" value="D" field="periciaselect.pontaria"/>
+                                <label align="left" width="120" text="Pontaria:" 
+                                      horzTextAlign="trailing" margins="{right=5}"/>
+                                <edit type="number"  align="left" horzTextAlign="center" fontSize="14" width="30" field="pericia.pontaria"/>
+                                <label align="left" width="5" text="" 
+                                      horzTextAlign="trailing" margins="{right=5}"/>
+                        </layout>  
+                        <layout align="top" height="20" margins="{bottom=2, top=15}">
+                                <comboBox align="left" left="5" top="20" width="100" items="{'Destreinado', 'Treinado', 'Veterano', 'Expert'}"
+                                values="{'D', 'T', 'V', 'E'}" value="D" field="periciaselect.sobrevivencia"/>
+                                <label align="left" width="120" text="Sobrevivência:" 
+                                      horzTextAlign="trailing" margins="{right=5}"/>
+                                <edit type="number"  align="left" horzTextAlign="center" fontSize="14" width="30" field="pericia.sobrevivencia"/>
+                                <label align="left" width="5" text="" 
+                                      horzTextAlign="trailing" margins="{right=5}"/>
+                        </layout>  
+                        <layout align="top" height="20" margins="{bottom=2, top=15}">
+                                <comboBox align="left" left="5" top="20" width="100" items="{'Destreinado', 'Treinado', 'Veterano', 'Expert'}"
+                                values="{'D', 'T', 'V', 'E'}" value="D" field="periciaselect.tatica"/>
+                                <label align="left" width="120" text="Tática:" 
+                                      horzTextAlign="trailing" margins="{right=5}"/>
+                                <edit type="number"  align="left" horzTextAlign="center" fontSize="14" width="30" field="pericia.tatica"/>
+                                <label align="left" width="5" text="" 
+                                      horzTextAlign="trailing" margins="{right=5}"/>
+                        </layout>  
+                        <layout align="top" height="20" margins="{bottom=2, top=15}">
+                                <comboBox align="left" left="5" top="20" width="100" items="{'Destreinado', 'Treinado', 'Veterano', 'Expert'}"
+                                values="{'D', 'T', 'V', 'E'}" value="D" field="periciaselect.vontade"/>
+                                <label align="left" width="120" text="Vontade:" 
+                                      horzTextAlign="trailing" margins="{right=5}"/>
+                                <edit type="number"  align="left" horzTextAlign="center" fontSize="14" width="30" field="pericia.vontade"/>
+                                <label align="left" width="5" text="" 
+                                      horzTextAlign="trailing" margins="{right=5}"/>
+                        </layout>  
+                        <layout align="top" height="20" margins="{bottom=2, top=15}">
+                        <label align="left" width="14" text=" " 
+                              horzTextAlign="trailing" margins="{right=5}"/>
+                        <label align="left" width="120" text="Profissão:" 
+                              horzTextAlign="trailing" margins="{right=5}"/>
+                        <label align="left" width="5" text="" 
+                              horzTextAlign="trailing" margins="{right=5}"/>
+                        </layout>
+                        <layout align="top" height="20" margins="{bottom=2, top=15}">
+                        <comboBox align="left" left="5" top="20" width="100" items="{'Destreinado', 'Treinado', 'Veterano', 'Expert'}"
+                                values="{'D', 'T', 'V', 'E'}" value="D" field="periciaselect.prof1"/>
+                                <edit align="left" horzTextAlign="trailing" fontSize="14"  width="120" field="pericia.nome.prof1" 
+                                margins="{right=5}"/>
+                                <edit type="number"  align="left" horzTextAlign="center" fontSize="14" width="30" field="pericia.prof1"/>
+                                <label align="left" width="5" text="" 
+                              horzTextAlign="trailing" margins="{right=5}"/>
+                        </layout>  
+                        <layout align="top" height="20" margins="{bottom=2, top=15}">
+                        <comboBox align="left" left="5" top="20" width="100" items="{'Destreinado', 'Treinado', 'Veterano', 'Expert'}"
+                                values="{'D', 'T', 'V', 'E'}" value="D" field="periciaselect.prof2"/>
+                                <edit align="left" horzTextAlign="trailing" fontSize="14"  width="120" field="pericia.nome.prof2" 
+                                margins="{right=5}"/>
+                                <edit type="number"  align="left" horzTextAlign="center" fontSize="14" width="30" field="pericia.prof2"/>
+                                <label align="left" width="5" text="" 
+                              horzTextAlign="trailing" margins="{right=5}"/>
+                        </layout>  
+                        <layout align="top" height="20" margins="{bottom=2, top=15}">
+                        <comboBox align="left" left="5" top="20" width="100" items="{'Destreinado', 'Treinado', 'Veterano', 'Expert'}"
+                                values="{'D', 'T', 'V', 'E'}" value="D" field="periciaselect.prof3"/>
+                                <edit align="left" horzTextAlign="trailing" fontSize="14"  width="120" field="pericia.nome.prof3" 
+                                margins="{right=5}"/>
+                                <edit type="number"  align="left" horzTextAlign="center" fontSize="14" width="30" field="pericia.prof3"/>
+                                <label align="left" width="5" text="" 
+                              horzTextAlign="trailing" margins="{right=5}"/>
+                        </layout>  
+                </layout>
+        </layout>
+
+        <layout align="none" left="337" height="604" width="332" top="325" frameStyle="/frames/FrameRetangular.xml" 
+        margins="{left=30, right=10, bottom=10}">
+        <label text="Habilidades Acadêmicas" left="90" fontStyle="bold italic" top="9" width="1343"/> 
+        
+        <layout left="20" top="25" width="270" height="604">
+                <layout align="top" height="20" margins="{bottom=2, top=15}">
+                                <comboBox align="left" left="5" top="20" width="100" items="{'Destreinado', 'Treinado', 'Veterano', 'Expert'}"
+                                values="{'D', 'T', 'V', 'E'}" value="D" field="periciaselect.artes"/>
+                                <label align="left" width="120" text="Artes:" 
+                                      horzTextAlign="trailing" margins="{right=5}"/>
+                                <edit type="number"  align="left" horzTextAlign="center" fontSize="14" width="30" field="pericia.artes"/>
+                                <label align="left" width="5" text="" 
+                                      horzTextAlign="trailing" margins="{right=5}"/>
+                        </layout>  
+                        <layout align="top" height="20" margins="{bottom=2, top=15}">
+                                <comboBox align="left" left="5" top="20" width="100" items="{'Destreinado', 'Treinado', 'Veterano', 'Expert'}"
+                                values="{'D', 'T', 'V', 'E'}" value="D" field="periciaselect.ciencia"/>
+                                <label align="left" width="120" text="Ciência:" 
+                                      horzTextAlign="trailing" margins="{right=5}"/>
+                                <edit type="number"  align="left" horzTextAlign="center" fontSize="14" width="30" field="pericia.ciencia"/>
+                                <label align="left" width="5" text="" 
+                                      horzTextAlign="trailing" margins="{right=5}"/>
+                        </layout>
+                        <layout align="top" height="20" margins="{bottom=2, top=15}">
+                                <comboBox align="left" left="5" top="20" width="100" items="{'Destreinado', 'Treinado', 'Veterano', 'Expert'}"
+                                values="{'D', 'T', 'V', 'E'}" value="D" field="periciaselect.medicina"/>
+                                <label align="left" width="120" text="Medicina:" 
+                                      horzTextAlign="trailing" margins="{right=5}"/>
+                                <edit type="number"  align="left" horzTextAlign="center" fontSize="14" width="30" field="pericia.medicina"/>
+                                <label align="left" width="5" text="" 
+                                      horzTextAlign="trailing" margins="{right=5}"/>
+                        </layout>
+                        <layout align="top" height="20" margins="{bottom=2, top=15}">
+                                <comboBox align="left" left="5" top="20" width="100" items="{'Destreinado', 'Treinado', 'Veterano', 'Expert'}"
+                                values="{'D', 'T', 'V', 'E'}" value="D" field="periciaselect.religiao"/>
+                                <label align="left" width="120" text="Religião:" 
+                                      horzTextAlign="trailing" margins="{right=5}"/>
+                                <edit type="number"  align="left" horzTextAlign="center" fontSize="14" width="30" field="pericia.religiao"/>
+                                <label align="left" width="5" text="" 
+                                      horzTextAlign="trailing" margins="{right=5}"/>
+                        </layout>
+                        <layout align="top" height="20" margins="{bottom=2, top=15}">
+                                <comboBox align="left" left="5" top="20" width="100" items="{'Destreinado', 'Treinado', 'Veterano', 'Expert'}"
+                                values="{'D', 'T', 'V', 'E'}" value="D" field="periciaselect.tecnologia"/>
+                                <label align="left" width="120" text="Tecnologia:" 
+                                      horzTextAlign="trailing" margins="{right=5}"/>
+                                <edit type="number"  align="left" horzTextAlign="center" fontSize="14" width="30" field="pericia.tecnologia"/>
+                                <label align="left" width="5" text="" 
+                                      horzTextAlign="trailing" margins="{right=5}"/>
+                        </layout>
+                        <layout align="top" height="20" margins="{bottom=2, top=15}">
+                        <comboBox align="left" left="5" top="20" width="100" items="{'Destreinado', 'Treinado', 'Veterano', 'Expert'}"
+                                values="{'D', 'T', 'V', 'E'}" value="D" field="periciaselect.gen1"/>
+                                <edit align="left" horzTextAlign="trailing" fontSize="14"  width="120" field="pericia.nome.gen1" 
+                                margins="{right=5}"/>
+                                <edit type="number"  align="left" horzTextAlign="center" fontSize="14" width="30" field="pericia.gen1"/>
+                                <label align="left" width="5" text="" 
+                              horzTextAlign="trailing" margins="{right=5}"/>
+                        </layout>  
+                        <layout align="top" height="20" margins="{bottom=2, top=15}">
+                        <comboBox align="left" left="5" top="20" width="100" items="{'Destreinado', 'Treinado', 'Veterano', 'Expert'}"
+                                values="{'D', 'T', 'V', 'E'}" value="D" field="periciaselect.gen2"/>
+                                <edit align="left" horzTextAlign="trailing" fontSize="14"  width="120" field="pericia.nome.gen2" 
+                                margins="{right=5}"/>
+                                <edit type="number"  align="left" horzTextAlign="center" fontSize="14" width="30" field="pericia.gen2"/>
+                                <label align="left" width="5" text="" 
+                              horzTextAlign="trailing" margins="{right=5}"/>
+                        </layout>  
+                        <layout align="top" height="20" margins="{bottom=2, top=15}">
+                        <comboBox align="left" left="5" top="20" width="100" items="{'Destreinado', 'Treinado', 'Veterano', 'Expert'}"
+                                values="{'D', 'T', 'V', 'E'}" value="D" field="periciaselect.gen3"/>
+                                <edit align="left" horzTextAlign="trailing" fontSize="14"  width="120" field="pericia.nome.gen3" 
+                                margins="{right=5}"/>
+                                <edit type="number"  align="left" horzTextAlign="center" fontSize="14" width="30" field="pericia.gen3"/>
+                                <label align="left" width="5" text="" 
+                              horzTextAlign="trailing" margins="{right=5}"/>
+                        </layout>  
+                        <layout align="top" height="20" margins="{bottom=2, top=15}">
+                        <comboBox align="left" left="5" top="20" width="100" items="{'Destreinado', 'Treinado', 'Veterano', 'Expert'}"
+                                values="{'D', 'T', 'V', 'E'}" value="D" field="periciaselect.gen4"/>
+                                <edit align="left" horzTextAlign="trailing" fontSize="14"  width="120" field="pericia.nome.gen4" 
+                                margins="{right=5}"/>
+                                <edit type="number"  align="left" horzTextAlign="center" fontSize="14" width="30" field="pericia.gen4"/>
+                                <label align="left" width="5" text="" 
+                              horzTextAlign="trailing" margins="{right=5}"/>
+                        </layout>  
+                        <layout align="top" height="20" margins="{bottom=2, top=15}">
+                        <comboBox align="left" left="5" top="20" width="100" items="{'Destreinado', 'Treinado', 'Veterano', 'Expert'}"
+                                values="{'D', 'T', 'V', 'E'}" value="D" field="periciaselect.gen5"/>
+                                <edit align="left" horzTextAlign="trailing" fontSize="14"  width="120" field="pericia.nome.gen5" 
+                                margins="{right=5}"/>
+                                <edit type="number"  align="left" horzTextAlign="center" fontSize="14" width="30" field="pericia.gen5"/>
+                                <label align="left" width="5" text="" 
+                              horzTextAlign="trailing" margins="{right=5}"/>
+                        </layout>  
+                        <layout align="top" height="20" margins="{bottom=2, top=15}">
+                        <comboBox align="left" left="5" top="20" width="100" items="{'Destreinado', 'Treinado', 'Veterano', 'Expert'}"
+                                values="{'D', 'T', 'V', 'E'}" value="D" field="periciaselect.gen6"/>
+                                <edit align="left" horzTextAlign="trailing" fontSize="14"  width="120" field="pericia.nome.gen6" 
+                                margins="{right=5}"/>
+                                <edit type="number"  align="left" horzTextAlign="center" fontSize="14" width="30" field="pericia.gen6"/>
+                                <label align="left" width="5" text="" 
+                              horzTextAlign="trailing" margins="{right=5}"/>
+                        </layout>  
+                        <layout align="top" height="20" margins="{bottom=2, top=15}">
+                        <comboBox align="left" left="5" top="20" width="100" items="{'Destreinado', 'Treinado', 'Veterano', 'Expert'}"
+                                values="{'D', 'T', 'V', 'E'}" value="D" field="periciaselect.gen7"/>
+                                <edit align="left" horzTextAlign="trailing" fontSize="14"  width="120" field="pericia.nome.gen7" 
+                                margins="{right=5}"/>
+                                <edit type="number"  align="left" horzTextAlign="center" fontSize="14" width="30" field="pericia.gen7"/>
+                                <label align="left" width="5" text="" 
+                              horzTextAlign="trailing" margins="{right=5}"/>
+                        </layout>  
+                        <layout align="top" height="20" margins="{bottom=2, top=15}">
+                        <comboBox align="left" left="5" top="20" width="100" items="{'Destreinado', 'Treinado', 'Veterano', 'Expert'}"
+                                values="{'D', 'T', 'V', 'E'}" value="D" field="periciaselect.gen8"/>
+                                <edit align="left" horzTextAlign="trailing" fontSize="14"  width="120" field="pericia.nome.gen8" 
+                                margins="{right=5}"/>
+                                <edit type="number"  align="left" horzTextAlign="center" fontSize="14" width="30" field="pericia.gen8"/>
+                                <label align="left" width="5" text="" 
+                              horzTextAlign="trailing" margins="{right=5}"/>
+                        </layout>  
+                        <layout align="top" height="20" margins="{bottom=2, top=15}">
+                        <comboBox align="left" left="5" top="20" width="100" items="{'Destreinado', 'Treinado', 'Veterano', 'Expert'}"
+                                values="{'D', 'T', 'V', 'E'}" value="D" field="periciaselect.gen9"/>
+                                <edit align="left" horzTextAlign="trailing" fontSize="14"  width="120" field="pericia.nome.gen9" 
+                                margins="{right=5}"/>
+                                <edit type="number"  align="left" horzTextAlign="center" fontSize="14" width="30" field="pericia.gen9"/>
+                                <label align="left" width="5" text="" 
+                              horzTextAlign="trailing" margins="{right=5}"/>
+                        </layout>  
+                        <layout align="top" height="20" margins="{bottom=2, top=15}">
+                        <comboBox align="left" left="5" top="20" width="100" items="{'Destreinado', 'Treinado', 'Veterano', 'Expert'}"
+                                values="{'D', 'T', 'V', 'E'}" value="D" field="periciaselect.gen10"/>
+                                <edit align="left" horzTextAlign="trailing" fontSize="14"  width="120" field="pericia.nome.gen10" 
+                                margins="{right=5}"/>
+                                <edit type="number"  align="left" horzTextAlign="center" fontSize="14" width="30" field="pericia.gen10"/>
+                                <label align="left" width="5" text="" 
+                              horzTextAlign="trailing" margins="{right=5}"/>
+                        </layout>  
+                        
+                          
+                          
+                          
+                          
+                          
+                          
+                          
+                          
+                          
+
+        </layout>   
+        </layout>
+        <layout align="none" left="670" height="604" width="332" top="325" frameStyle="/frames/FrameRetangular.xml" 
+        margins="{left=30, right=10, bottom=10}">
+        <label text="Percepção/Habilidades Sociais e Fisicas" left="40" fontStyle="bold italic" top="9" width="1343"/> 
+        
+        <layout left="20" top="25" width="270" height="604">
+                        <layout align="top" height="20" margins="{bottom=2, top=15}">
+                                <comboBox align="left" left="5" top="20" width="100" items="{'Destreinado', 'Treinado', 'Veterano', 'Expert'}"
+                                values="{'D', 'T', 'V', 'E'}" value="D" field="periciaselect.acrobacia"/>
+                                <label align="left" width="120" text="Acrobacia:" 
+                                      horzTextAlign="trailing" margins="{right=5}"/>
+                                <edit type="number"  align="left" horzTextAlign="center" fontSize="14" width="30" field="pericia.acrobacia"/>
+                                <label align="left" width="5" text="" 
+                                      horzTextAlign="trailing" margins="{right=5}"/>
+                        </layout>
+                        <layout align="top" height="20" margins="{bottom=2, top=15}">
+                                <comboBox align="left" left="5" top="20" width="100" items="{'Destreinado', 'Treinado', 'Veterano', 'Expert'}"
+                                values="{'D', 'T', 'V', 'E'}" value="D" field="periciaselect.atletismo"/>
+                                <label align="left" width="120" text="Atletismo:" 
+                                      horzTextAlign="trailing" margins="{right=5}"/>
+                                <edit type="number"  align="left" horzTextAlign="center" fontSize="14" width="30" field="pericia.atletismo"/>
+                                <label align="left" width="5" text="" 
+                                      horzTextAlign="trailing" margins="{right=5}"/>
+                        </layout>
+                        <layout align="top" height="20" margins="{bottom=2, top=15}">
+                                <comboBox align="left" left="5" top="20" width="100" items="{'Destreinado', 'Treinado', 'Veterano', 'Expert'}"
+                                values="{'D', 'T', 'V', 'E'}" value="D" field="periciaselect.diplomacia"/>
+                                <label align="left" width="120" text="Diplomacia:" 
+                                      horzTextAlign="trailing" margins="{right=5}"/>
+                                <edit type="number"  align="left" horzTextAlign="center" fontSize="14" width="30" field="pericia.diplomacia"/>
+                                <label align="left" width="5" text="" 
+                                      horzTextAlign="trailing" margins="{right=5}"/>
+                        </layout>
+                        <layout align="top" height="20" margins="{bottom=2, top=15}">
+                                <comboBox align="left" left="5" top="20" width="100" items="{'Destreinado', 'Treinado', 'Veterano', 'Expert'}"
+                                values="{'D', 'T', 'V', 'E'}" value="D" field="periciaselect.enganacao"/>
+                                <label align="left" width="120" text="Enganação:" 
+                                      horzTextAlign="trailing" margins="{right=5}"/>
+                                <edit type="number"  align="left" horzTextAlign="center" fontSize="14" width="30" field="pericia.enganacao"/>
+                                <label align="left" width="5" text="" 
+                                      horzTextAlign="trailing" margins="{right=5}"/>
+                        </layout>
+                        <layout align="top" height="20" margins="{bottom=2, top=15}">
+                                <comboBox align="left" left="5" top="20" width="100" items="{'Destreinado', 'Treinado', 'Veterano', 'Expert'}"
+                                values="{'D', 'T', 'V', 'E'}" value="D" field="periciaselect.fortitude"/>
+                                <label align="left" width="120" text="Fortitude:" 
+                                      horzTextAlign="trailing" margins="{right=5}"/>
+                                <edit type="number"  align="left" horzTextAlign="center" fontSize="14" width="30" field="pericia.fortitude"/>
+                                <label align="left" width="5" text="" 
+                                      horzTextAlign="trailing" margins="{right=5}"/>
+                        </layout>
+                        <layout align="top" height="20" margins="{bottom=2, top=15}">
+                                <comboBox align="left" left="5" top="20" width="100" items="{'Destreinado', 'Treinado', 'Veterano', 'Expert'}"
+                                values="{'D', 'T', 'V', 'E'}" value="D" field="periciaselect.intimidacao"/>
+                                <label align="left" width="120" text="Intimidação:" 
+                                      horzTextAlign="trailing" margins="{right=5}"/>
+                                <edit type="number"  align="left" horzTextAlign="center" fontSize="14" width="30" field="pericia.intimidacao"/>
+                                <label align="left" width="5" text="" 
+                                      horzTextAlign="trailing" margins="{right=5}"/>
+                        </layout>
+                        <layout align="top" height="20" margins="{bottom=2, top=15}">
+                                <comboBox align="left" left="5" top="20" width="100" items="{'Destreinado', 'Treinado', 'Veterano', 'Expert'}"
+                                values="{'D', 'T', 'V', 'E'}" value="D" field="periciaselect.intuicao"/>
+                                <label align="left" width="120" text="Intuição:" 
+                                      horzTextAlign="trailing" margins="{right=5}"/>
+                                <edit type="number"  align="left" horzTextAlign="center" fontSize="14" width="30" field="pericia.intuicao"/>
+                                <label align="left" width="5" text="" 
+                                      horzTextAlign="trailing" margins="{right=5}"/>
+                        </layout>
+                        <layout align="top" height="20" margins="{bottom=2, top=15}">
+                                <comboBox align="left" left="5" top="20" width="100" items="{'Destreinado', 'Treinado', 'Veterano', 'Expert'}"
+                                values="{'D', 'T', 'V', 'E'}" value="D" field="periciaselect.luta"/>
+                                <label align="left" width="120" text="Luta:" 
+                                      horzTextAlign="trailing" margins="{right=5}"/>
+                                <edit type="number"  align="left" horzTextAlign="center" fontSize="14" width="30" field="pericia.luta"/>
+                                <label align="left" width="5" text="" 
+                                      horzTextAlign="trailing" margins="{right=5}"/>
+                        </layout>
+                        <layout align="top" height="20" margins="{bottom=2, top=15}">
+                                <comboBox align="left" left="5" top="20" width="100" items="{'Destreinado', 'Treinado', 'Veterano', 'Expert'}"
+                                values="{'D', 'T', 'V', 'E'}" value="D" field="periciaselect.percepcao"/>
+                                <label align="left" width="120" text="Percepção:" 
+                                      horzTextAlign="trailing" margins="{right=5}"/>
+                                <edit type="number"  align="left" horzTextAlign="center" fontSize="14" width="30" field="pericia.percepcao"/>
+                                <label align="left" width="5" text="" 
+                                      horzTextAlign="trailing" margins="{right=5}"/>
+                        </layout>
+                        <layout align="top" height="20" margins="{bottom=2, top=15}">
+                                <comboBox align="left" left="5" top="20" width="100" items="{'Destreinado', 'Treinado', 'Veterano', 'Expert'}"
+                                values="{'D', 'T', 'V', 'E'}" value="D" field="periciaselect.reflexos"/>
+                                <label align="left" width="120" text="Reflexos:" 
+                                      horzTextAlign="trailing" margins="{right=5}"/>
+                                <edit type="number"  align="left" horzTextAlign="center" fontSize="14" width="30" field="pericia.reflexos"/>
+                                <label align="left" width="5" text="" 
+                                      horzTextAlign="trailing" margins="{right=5}"/>
+                        </layout>
+                        <layout align="top" height="20" margins="{bottom=2, top=15}">
+                        <comboBox align="left" left="5" top="20" width="100" items="{'Destreinado', 'Treinado', 'Veterano', 'Expert'}"
+                                values="{'D', 'T', 'V', 'E'}" value="D" field="periciaselect.gen11"/>
+                                <edit align="left" horzTextAlign="trailing" fontSize="14"  width="120" field="pericia.nome.gen11" 
+                                margins="{right=5}"/>
+                                <edit type="number"  align="left" horzTextAlign="center" fontSize="14" width="30" field="pericia.gen11"/>
+                                <label align="left" width="5" text="" 
+                              horzTextAlign="trailing" margins="{right=5}"/>
+                        </layout>  
+                        <layout align="top" height="20" margins="{bottom=2, top=15}">
+                        <comboBox align="left" left="5" top="20" width="100" items="{'Destreinado', 'Treinado', 'Veterano', 'Expert'}"
+                                values="{'D', 'T', 'V', 'E'}" value="D" field="periciaselect.gen12"/>
+                                <edit align="left" horzTextAlign="trailing" fontSize="14"  width="120" field="pericia.nome.gen12" 
+                                margins="{right=5}"/>
+                                <edit type="number"  align="left" horzTextAlign="center" fontSize="14" width="30" field="pericia.gen12"/>
+                                <label align="left" width="5" text="" 
+                              horzTextAlign="trailing" margins="{right=5}"/>
+                        </layout>  
+                        <layout align="top" height="20" margins="{bottom=2, top=15}">
+                        <comboBox align="left" left="5" top="20" width="100" items="{'Destreinado', 'Treinado', 'Veterano', 'Expert'}"
+                                values="{'D', 'T', 'V', 'E'}" value="D" field="periciaselect.gen13"/>
+                                <edit align="left" horzTextAlign="trailing" fontSize="14"  width="120" field="pericia.nome.gen13" 
+                                margins="{right=5}"/>
+                                <edit type="number"  align="left" horzTextAlign="center" fontSize="14" width="30" field="pericia.gen13"/>
+                                <label align="left" width="5" text="" 
+                              horzTextAlign="trailing" margins="{right=5}"/>
+                        </layout>  
+                        <layout align="top" height="20" margins="{bottom=2, top=15}">
+                        <comboBox align="left" left="5" top="20" width="100" items="{'Destreinado', 'Treinado', 'Veterano', 'Expert'}"
+                                values="{'D', 'T', 'V', 'E'}" value="D" field="periciaselect.gen14"/>
+                                <edit align="left" horzTextAlign="trailing" fontSize="14"  width="120" field="pericia.nome.gen14" 
+                                margins="{right=5}"/>
+                                <edit type="number"  align="left" horzTextAlign="center" fontSize="14" width="30" field="pericia.gen14"/>
+                                <label align="left" width="5" text="" 
+                              horzTextAlign="trailing" margins="{right=5}"/>
+                        </layout>  
+                        <layout align="top" height="20" margins="{bottom=2, top=15}">
+                        <comboBox align="left" left="5" top="20" width="100" items="{'Destreinado', 'Treinado', 'Veterano', 'Expert'}"
+                                values="{'D', 'T', 'V', 'E'}" value="D" field="periciaselect.gen15"/>
+                                <edit align="left" horzTextAlign="trailing" fontSize="14"  width="120" field="pericia.nome.gen15" 
+                                margins="{right=5}"/>
+                                <edit type="number"  align="left" horzTextAlign="center" fontSize="14" width="30" field="pericia.gen15"/>
+                                <label align="left" width="5" text="" 
+                              horzTextAlign="trailing" margins="{right=5}"/>
+                        </layout>  
+        </layout> 
+        </layout>
+        <layout align="none" left="1002" height="604" width="332" top="325" frameStyle="/frames/FrameRetangular.xml" 
+        margins="{left=30, right=10, bottom=10}">
+        <label text="Proficiências" left="130" fontStyle="bold italic" top="9" width="1343"/> 
+        
+        <layout left="20" top="25" width="270" height="604">
+
+                        <layout align="top" height="20" margins="{bottom=2, top=15}">
+                                 <label align="left" width="20" text="" 
+                                      horzTextAlign="trailing" margins="{right=5}"/>
+                                <edit align="left" horzTextAlign="leading" fontSize="14"  width="240" field="pericia.nome.profc1" 
+                                margins="{right=5}"/>
+                        </layout>  
+                        <layout align="top" height="20" margins="{bottom=2, top=15}">
+                                 <label align="left" width="20" text="" 
+                                      horzTextAlign="trailing" margins="{right=5}"/>
+                                <edit align="left" horzTextAlign="leading" fontSize="14"  width="240" field="pericia.nome.profc2" 
+                                margins="{right=5}"/>
+                        </layout>  
+                        <layout align="top" height="20" margins="{bottom=2, top=15}">
+                                 <label align="left" width="20" text="" 
+                                      horzTextAlign="trailing" margins="{right=5}"/>
+                                <edit align="left" horzTextAlign="leading" fontSize="14"  width="240" field="pericia.nome.profc3" 
+                                margins="{right=5}"/>
+                        </layout>  
+                        <layout align="top" height="20" margins="{bottom=2, top=15}">
+                                 <label align="left" width="20" text="" 
+                                      horzTextAlign="trailing" margins="{right=5}"/>
+                                <edit align="left" horzTextAlign="leading" fontSize="14"  width="240" field="pericia.nome.profc4" 
+                                margins="{right=5}"/>
+                        </layout>  
+                        <layout align="top" height="20" margins="{bottom=2, top=15}">
+                                 <label align="left" width="20" text="" 
+                                      horzTextAlign="trailing" margins="{right=5}"/>
+                                <edit align="left" horzTextAlign="leading" fontSize="14"  width="240" field="pericia.nome.profc5" 
+                                margins="{right=5}"/>
+                        </layout>  
+                        <layout align="top" height="20" margins="{bottom=2, top=15}">
+                                 <label align="left" width="20" text="" 
+                                      horzTextAlign="trailing" margins="{right=5}"/>
+                                <edit align="left" horzTextAlign="leading" fontSize="14"  width="240" field="pericia.nome.profc6" 
+                                margins="{right=5}"/>
+                        </layout>  
+                        <layout align="top" height="20" margins="{bottom=2, top=15}">
+                                 <label align="left" width="20" text="" 
+                                      horzTextAlign="trailing" margins="{right=5}"/>
+                                <edit align="left" horzTextAlign="leading" fontSize="14"  width="240" field="pericia.nome.profc7" 
+                                margins="{right=5}"/>
+                        </layout>  
+                        <layout align="top" height="20" margins="{bottom=2, top=15}">
+                                 <label align="left" width="20" text="" 
+                                      horzTextAlign="trailing" margins="{right=5}"/>
+                                <edit align="left" horzTextAlign="leading" fontSize="14"  width="240" field="pericia.nome.profc8" 
+                                margins="{right=5}"/>
+                        </layout>  
+                        <layout align="top" height="20" margins="{bottom=2, top=15}">
+                                 <label align="left" width="20" text="" 
+                                      horzTextAlign="trailing" margins="{right=5}"/>
+                                <edit align="left" horzTextAlign="leading" fontSize="14"  width="240" field="pericia.nome.profc9" 
+                                margins="{right=5}"/>
+                        </layout> 
+                        <layout align="top" height="20" margins="{bottom=2, top=15}">
+                                 <label align="left" width="20" text="" 
+                                      horzTextAlign="trailing" margins="{right=5}"/>
+                                <edit align="left" horzTextAlign="leading" fontSize="14"  width="240" field="pericia.nome.profc10" 
+                                margins="{right=5}"/>
+                        </layout>   
+                        <layout align="top" height="20" margins="{bottom=2, top=15}">
+                                 <label align="left" width="20" text="" 
+                                      horzTextAlign="trailing" margins="{right=5}"/>
+                                <edit align="left" horzTextAlign="leading" fontSize="14"  width="240" field="pericia.nome.profc11" 
+                                margins="{right=5}"/>
+                        </layout>  
+                        <layout align="top" height="20" margins="{bottom=2, top=15}">
+                                 <label align="left" width="20" text="" 
+                                      horzTextAlign="trailing" margins="{right=5}"/>
+                                <edit align="left" horzTextAlign="leading" fontSize="14"  width="240" field="pericia.nome.profc12" 
+                                margins="{right=5}"/>
+                        </layout>  
+                        <layout align="top" height="20" margins="{bottom=2, top=15}">
+                                 <label align="left" width="20" text="" 
+                                      horzTextAlign="trailing" margins="{right=5}"/>
+                                <edit align="left" horzTextAlign="leading" fontSize="14"  width="240" field="pericia.nome.profc13" 
+                                margins="{right=5}"/>
+                        </layout>  
+                        <layout align="top" height="20" margins="{bottom=2, top=15}">
+                                 <label align="left" width="20" text="" 
+                                      horzTextAlign="trailing" margins="{right=5}"/>
+                                <edit align="left" horzTextAlign="leading" fontSize="14"  width="240" field="pericia.nome.profc14" 
+                                margins="{right=5}"/>
+                        </layout>  
+                        <layout align="top" height="20" margins="{bottom=2, top=15}">
+                                 <label align="left" width="20" text="" 
+                                      horzTextAlign="trailing" margins="{right=5}"/>
+                                <edit align="left" horzTextAlign="leading" fontSize="14"  width="240" field="pericia.nome.profc15" 
+                                margins="{right=5}"/>
+                        </layout>  
+        </layout>
+        </layout>
+        <layout align="none" left="5" height="332" width="996" top="930" frameStyle="/frames/FrameRetangular.xml" 
+        margins="{left=30, right=10, bottom=10}">
+        <label text="Ataques" left="491" fontStyle="bold italic" top="9" width="996"/>
+
+        <layout left="20" top="25" width="996" height="332">
+                <layout align="top" height="20" margins="{bottom=2, top=15}">
+                        <label align="left" width="5" text="" 
+                              horzTextAlign="trailing" margins="{right=5}"/>
+                        <label align="left" width="55" text="Nome: " 
+                                horzTextAlign="trailing" margins="{right=5}"/>
+                        <edit align="left" horzTextAlign="leading" fontSize="14"  width="120" field="ataque.nome.a1" 
+                                margins="{right=5}"/>
+                        <label align="left" width="55" text="Tipo: " 
+                                horzTextAlign="trailing" margins="{right=5}"/>
+                        <edit align="left" horzTextAlign="leading" fontSize="14"  width="60" field="ataque.tipo.a1" 
+                                margins="{right=5}"/>
+                        <label align="left" width="55" text="Ataque: " 
+                                horzTextAlign="trailing" margins="{right=5}"/>
+                        <edit align="left" horzTextAlign="leading" fontSize="14"  width="60" field="ataque.tipo.a1" 
+                                margins="{right=5}"/>
+                        <label align="left" width="55" text="Alcance: " 
+                                horzTextAlign="trailing" margins="{right=5}"/>
+                        <edit align="left" horzTextAlign="leading" fontSize="14"  width="60" field="ataque.alcance.a1" 
+                                margins="{right=5}"/>
+                        <label align="left" width="55" text="Dano: " 
+                                horzTextAlign="trailing" margins="{right=5}"/>
+                        <edit align="left" horzTextAlign="leading" fontSize="14"  width="60" field="ataque.dano.a1" 
+                                margins="{right=5}"/>
+                        <label align="left" width="55" text="Crítico: " 
+                                horzTextAlign="trailing" margins="{right=5}"/>
+                        <edit align="left" horzTextAlign="leading" fontSize="14"  width="60" field="ataque.critico.a1" 
+                                margins="{right=5}"/>
+                        <label align="left" width="5" text="" 
+                              horzTextAlign="trailing" margins="{right=5}"/>
+        </layout>
+        <layout align="top" height="20" margins="{bottom=2, top=15}">
+                        <label align="left" width="5" text="" 
+                              horzTextAlign="trailing" margins="{right=5}"/>
+                        <label align="left" width="55" text="Nome: " 
+                                horzTextAlign="trailing" margins="{right=5}"/>
+                        <edit align="left" horzTextAlign="leading" fontSize="14"  width="120" field="ataque.nome.a2" 
+                                margins="{right=5}"/>
+                        <label align="left" width="55" text="Tipo: " 
+                                horzTextAlign="trailing" margins="{right=5}"/>
+                        <edit align="left" horzTextAlign="leading" fontSize="14"  width="60" field="ataque.tipo.a2" 
+                                margins="{right=5}"/>
+                        <label align="left" width="55" text="Ataque: " 
+                                horzTextAlign="trailing" margins="{right=5}"/>
+                        <edit align="left" horzTextAlign="leading" fontSize="14"  width="60" field="ataque.tipo.a2" 
+                                margins="{right=5}"/>
+                        <label align="left" width="55" text="Alcance: " 
+                                horzTextAlign="trailing" margins="{right=5}"/>
+                        <edit align="left" horzTextAlign="leading" fontSize="14"  width="60" field="ataque.alcance.a2" 
+                                margins="{right=5}"/>
+                        <label align="left" width="55" text="Dano: " 
+                                horzTextAlign="trailing" margins="{right=5}"/>
+                        <edit align="left" horzTextAlign="leading" fontSize="14"  width="60" field="ataque.dano.a2" 
+                                margins="{right=5}"/>
+                        <label align="left" width="55" text="Crítico: " 
+                                horzTextAlign="trailing" margins="{right=5}"/>
+                        <edit align="left" horzTextAlign="leading" fontSize="14"  width="60" field="ataque.critico.a2" 
+                                margins="{right=5}"/>
+                        <label align="left" width="5" text="" 
+                              horzTextAlign="trailing" margins="{right=5}"/>
+        </layout>
+        <layout align="top" height="20" margins="{bottom=2, top=15}">
+                        <label align="left" width="5" text="" 
+                              horzTextAlign="trailing" margins="{right=5}"/>
+                        <label align="left" width="55" text="Nome: " 
+                                horzTextAlign="trailing" margins="{right=5}"/>
+                        <edit align="left" horzTextAlign="leading" fontSize="14"  width="120" field="ataque.nome.a3" 
+                                margins="{right=5}"/>
+                        <label align="left" width="55" text="Tipo: " 
+                                horzTextAlign="trailing" margins="{right=5}"/>
+                        <edit align="left" horzTextAlign="leading" fontSize="14"  width="60" field="ataque.tipo.a3" 
+                                margins="{right=5}"/>
+                        <label align="left" width="55" text="Ataque: " 
+                                horzTextAlign="trailing" margins="{right=5}"/>
+                        <edit align="left" horzTextAlign="leading" fontSize="14"  width="60" field="ataque.tipo.a3" 
+                                margins="{right=5}"/>
+                        <label align="left" width="55" text="Alcance: " 
+                                horzTextAlign="trailing" margins="{right=5}"/>
+                        <edit align="left" horzTextAlign="leading" fontSize="14"  width="60" field="ataque.alcance.a3" 
+                                margins="{right=5}"/>
+                        <label align="left" width="55" text="Dano: " 
+                                horzTextAlign="trailing" margins="{right=5}"/>
+                        <edit align="left" horzTextAlign="leading" fontSize="14"  width="60" field="ataque.dano.a3" 
+                                margins="{right=5}"/>
+                        <label align="left" width="55" text="Crítico: " 
+                                horzTextAlign="trailing" margins="{right=5}"/>
+                        <edit align="left" horzTextAlign="leading" fontSize="14"  width="60" field="ataque.critico.a3" 
+                                margins="{right=5}"/>
+                        <label align="left" width="5" text="" 
+                              horzTextAlign="trailing" margins="{right=5}"/>
+        </layout>
+        <layout align="top" height="20" margins="{bottom=2, top=15}">
+                        <label align="left" width="5" text="" 
+                              horzTextAlign="trailing" margins="{right=5}"/>
+                        <label align="left" width="55" text="Nome: " 
+                                horzTextAlign="trailing" margins="{right=5}"/>
+                        <edit align="left" horzTextAlign="leading" fontSize="14"  width="120" field="ataque.nome.a4" 
+                                margins="{right=5}"/>
+                        <label align="left" width="55" text="Tipo: " 
+                                horzTextAlign="trailing" margins="{right=5}"/>
+                        <edit align="left" horzTextAlign="leading" fontSize="14"  width="60" field="ataque.tipo.a4" 
+                                margins="{right=5}"/>
+                        <label align="left" width="55" text="Ataque: " 
+                                horzTextAlign="trailing" margins="{right=5}"/>
+                        <edit align="left" horzTextAlign="leading" fontSize="14"  width="60" field="ataque.tipo.a4" 
+                                margins="{right=5}"/>
+                        <label align="left" width="55" text="Alcance: " 
+                                horzTextAlign="trailing" margins="{right=5}"/>
+                        <edit align="left" horzTextAlign="leading" fontSize="14"  width="60" field="ataque.alcance.a4" 
+                                margins="{right=5}"/>
+                        <label align="left" width="55" text="Dano: " 
+                                horzTextAlign="trailing" margins="{right=5}"/>
+                        <edit align="left" horzTextAlign="leading" fontSize="14"  width="60" field="ataque.dano.a4" 
+                                margins="{right=5}"/>
+                        <label align="left" width="55" text="Crítico: " 
+                                horzTextAlign="trailing" margins="{right=5}"/>
+                        <edit align="left" horzTextAlign="leading" fontSize="14"  width="60" field="ataque.critico.a4" 
+                                margins="{right=5}"/>
+                        <label align="left" width="5" text="" 
+                              horzTextAlign="trailing" margins="{right=5}"/>
+        </layout>
+        <layout align="top" height="20" margins="{bottom=2, top=15}">
+                        <label align="left" width="5" text="" 
+                              horzTextAlign="trailing" margins="{right=5}"/>
+                        <label align="left" width="55" text="Nome: " 
+                                horzTextAlign="trailing" margins="{right=5}"/>
+                        <edit align="left" horzTextAlign="leading" fontSize="14"  width="120" field="ataque.nome.a5" 
+                                margins="{right=5}"/>
+                        <label align="left" width="55" text="Tipo: " 
+                                horzTextAlign="trailing" margins="{right=5}"/>
+                        <edit align="left" horzTextAlign="leading" fontSize="14"  width="60" field="ataque.tipo.a5" 
+                                margins="{right=5}"/>
+                        <label align="left" width="55" text="Ataque: " 
+                                horzTextAlign="trailing" margins="{right=5}"/>
+                        <edit align="left" horzTextAlign="leading" fontSize="14"  width="60" field="ataque.tipo.a5" 
+                                margins="{right=5}"/>
+                        <label align="left" width="55" text="Alcance: " 
+                                horzTextAlign="trailing" margins="{right=5}"/>
+                        <edit align="left" horzTextAlign="leading" fontSize="14"  width="60" field="ataque.alcance.a5" 
+                                margins="{right=5}"/>
+                        <label align="left" width="55" text="Dano: " 
+                                horzTextAlign="trailing" margins="{right=5}"/>
+                        <edit align="left" horzTextAlign="leading" fontSize="14"  width="60" field="ataque.dano.a5" 
+                                margins="{right=5}"/>
+                        <label align="left" width="55" text="Crítico: " 
+                                horzTextAlign="trailing" margins="{right=5}"/>
+                        <edit align="left" horzTextAlign="leading" fontSize="14"  width="60" field="ataque.critico.a5" 
+                                margins="{right=5}"/>
+                        <label align="left" width="5" text="" 
+                              horzTextAlign="trailing" margins="{right=5}"/>
+        </layout>
+        <layout align="top" height="20" margins="{bottom=2, top=15}">
+                        <label align="left" width="5" text="" 
+                              horzTextAlign="trailing" margins="{right=5}"/>
+                        <label align="left" width="55" text="Nome: " 
+                                horzTextAlign="trailing" margins="{right=5}"/>
+                        <edit align="left" horzTextAlign="leading" fontSize="14"  width="120" field="ataque.nome.a6" 
+                                margins="{right=5}"/>
+                        <label align="left" width="55" text="Tipo: " 
+                                horzTextAlign="trailing" margins="{right=5}"/>
+                        <edit align="left" horzTextAlign="leading" fontSize="14"  width="60" field="ataque.tipo.a6" 
+                                margins="{right=5}"/>
+                        <label align="left" width="55" text="Ataque: " 
+                                horzTextAlign="trailing" margins="{right=5}"/>
+                        <edit align="left" horzTextAlign="leading" fontSize="14"  width="60" field="ataque.tipo.a6" 
+                                margins="{right=5}"/>
+                        <label align="left" width="55" text="Alcance: " 
+                                horzTextAlign="trailing" margins="{right=5}"/>
+                        <edit align="left" horzTextAlign="leading" fontSize="14"  width="60" field="ataque.alcance.a6" 
+                                margins="{right=5}"/>
+                        <label align="left" width="55" text="Dano: " 
+                                horzTextAlign="trailing" margins="{right=5}"/>
+                        <edit align="left" horzTextAlign="leading" fontSize="14"  width="60" field="ataque.dano.a6" 
+                                margins="{right=5}"/>
+                        <label align="left" width="55" text="Crítico: " 
+                                horzTextAlign="trailing" margins="{right=5}"/>
+                        <edit align="left" horzTextAlign="leading" fontSize="14"  width="60" field="ataque.critico.a6" 
+                                margins="{right=5}"/>
+                        <label align="left" width="5" text="" 
+                              horzTextAlign="trailing" margins="{right=5}"/>
+        </layout>
+        <layout align="top" height="20" margins="{bottom=2, top=15}">
+                        <label align="left" width="5" text="" 
+                              horzTextAlign="trailing" margins="{right=5}"/>
+                        <label align="left" width="55" text="Nome: " 
+                                horzTextAlign="trailing" margins="{right=5}"/>
+                        <edit align="left" horzTextAlign="leading" fontSize="14"  width="120" field="ataque.nome.a7" 
+                                margins="{right=5}"/>
+                        <label align="left" width="55" text="Tipo: " 
+                                horzTextAlign="trailing" margins="{right=5}"/>
+                        <edit align="left" horzTextAlign="leading" fontSize="14"  width="60" field="ataque.tipo.a7" 
+                                margins="{right=5}"/>
+                        <label align="left" width="55" text="Ataque: " 
+                                horzTextAlign="trailing" margins="{right=5}"/>
+                        <edit align="left" horzTextAlign="leading" fontSize="14"  width="60" field="ataque.tipo.a7" 
+                                margins="{right=5}"/>
+                        <label align="left" width="55" text="Alcance: " 
+                                horzTextAlign="trailing" margins="{right=5}"/>
+                        <edit align="left" horzTextAlign="leading" fontSize="14"  width="60" field="ataque.alcance.a7" 
+                                margins="{right=5}"/>
+                        <label align="left" width="55" text="Dano: " 
+                                horzTextAlign="trailing" margins="{right=5}"/>
+                        <edit align="left" horzTextAlign="leading" fontSize="14"  width="60" field="ataque.dano.a7" 
+                                margins="{right=5}"/>
+                        <label align="left" width="55" text="Crítico: " 
+                                horzTextAlign="trailing" margins="{right=5}"/>
+                        <edit align="left" horzTextAlign="leading" fontSize="14"  width="60" field="ataque.critico.a7" 
+                                margins="{right=5}"/>
+                        <label align="left" width="5" text="" 
+                              horzTextAlign="trailing" margins="{right=5}"/>
+        </layout>
+        <layout align="top" height="20" margins="{bottom=2, top=15}">
+                        <label align="left" width="5" text="" 
+                              horzTextAlign="trailing" margins="{right=5}"/>
+                        <label align="left" width="55" text="Nome: " 
+                                horzTextAlign="trailing" margins="{right=5}"/>
+                        <edit align="left" horzTextAlign="leading" fontSize="14"  width="120" field="ataque.nome.a8" 
+                                margins="{right=5}"/>
+                        <label align="left" width="55" text="Tipo: " 
+                                horzTextAlign="trailing" margins="{right=5}"/>
+                        <edit align="left" horzTextAlign="leading" fontSize="14"  width="60" field="ataque.tipo.a8" 
+                                margins="{right=5}"/>
+                        <label align="left" width="55" text="Ataque: " 
+                                horzTextAlign="trailing" margins="{right=5}"/>
+                        <edit align="left" horzTextAlign="leading" fontSize="14"  width="60" field="ataque.tipo.a8" 
+                                margins="{right=5}"/>
+                        <label align="left" width="55" text="Alcance: " 
+                                horzTextAlign="trailing" margins="{right=5}"/>
+                        <edit align="left" horzTextAlign="leading" fontSize="14"  width="60" field="ataque.alcance.a8" 
+                                margins="{right=5}"/>
+                        <label align="left" width="55" text="Dano: " 
+                                horzTextAlign="trailing" margins="{right=5}"/>
+                        <edit align="left" horzTextAlign="leading" fontSize="14"  width="60" field="ataque.dano.a8" 
+                                margins="{right=5}"/>
+                        <label align="left" width="55" text="Crítico: " 
+                                horzTextAlign="trailing" margins="{right=5}"/>
+                        <edit align="left" horzTextAlign="leading" fontSize="14"  width="60" field="ataque.critico.a8" 
+                                margins="{right=5}"/>
+                        <label align="left" width="5" text="" 
+                              horzTextAlign="trailing" margins="{right=5}"/>
+        </layout>
+        </layout>
+        </layout>
+        <layout align="none" left="1002" height="332" width="332" top="930" frameStyle="/frames/FrameRetangular.xml" 
+        margins="{left=30, right=10, bottom=10}">
+        <label text="Combate" left="132" fontStyle="bold italic" top="9" width="1343"/> 
+        <layout left="20" top="25" width="270" height="984">
+                <layout align="top" height="50" margins="{bottom=2, top=15}">
+                        <label align="left" width="120" text="Defesa Passiva:" 
+                              horzTextAlign="trailing" margins="{right=5}"/>
+                        <edit align="left" horzTextAlign="center" fontSize="20" height="30" field="bonus.dpassiva"/>
+                </layout>
+                <layout align="top" height="50" margins="{bottom=2, top=15}">
+                        <label align="left" width="120" text="Esquiva:" 
+                              horzTextAlign="trailing" margins="{right=5}"/>
+                        <edit align="left" horzTextAlign="center" fontSize="20" height="30" field="bonus.esquiva"/>
+                </layout>
+                <layout align="top" height="15" margins="{bottom=2, top=15}">
+                <label align="left" width="60" text="           " 
+                              horzTextAlign="trailing" margins="{right=5}"/>
+                        <label align="left" width="120" text="Resistências a Dano:" 
+                              horzTextAlign="trailing" margins="{right=5}"/>
+                </layout>
+
+                <layout align="top" height="150" margins="{bottom=2, top=15}">
+                
+                              horzTextAlign="trailing" margins="{right=5}"/>
+                          <textEditor width="255" height="100" field="textEditor.defesas"/>
+                </layout>
+        </layout>
+        </layout>
+        </scrollBox>
+        </tab>
+        
+        <tab title="Antecedentes">      
+        <scrollBox align="client">
+        <layout align="none" height="35" width="1329" top="15" left="5" frameStyle="/frames/FrameRetangular.xml" 
+               margins="{left=30, top=15, right=10, bottom=10}">
+
+               <label text="Antecedentes" left="625" fontStyle="bold italic" top="9"/>
+        </layout>
+        <layout align="none" height="332" width="664" top="52" left="5" frameStyle="/frames/FrameRetangular.xml" 
+               margins="{left=30, top=15, right=10, bottom=10}">
+               <textEditor left="20" top="30" width="624" height="292" field="textEditor.desPessoal"/>
+
+               <label text="Descrição Pessoal" left="280" fontStyle="bold italic" top="9"/>
+        </layout>
+        <layout align="none" height="332" width="664" top="52" left="669" frameStyle="/frames/FrameRetangular.xml" 
+               margins="{left=30, top=15, right=10, bottom=10}">
+               <textEditor left="20" top="30" width="624" height="292" field="textEditor.caracteristicas"/>
+
+               <label text="Características" left="290" fontStyle="bold italic" top="9"/>
+        </layout>
+        <layout align="none" height="332" width="664" top="386" left="5" frameStyle="/frames/FrameRetangular.xml" 
+               margins="{left=30, top=15, right=10, bottom=10}">
+               <textEditor left="20" top="30" width="624" height="292" field="textEditor.ideologiasC"/>
+
+               <label text="Ideologias/Crenças" left="280" fontStyle="bold italic" top="9"/>
+        </layout>
+        <layout align="none" height="332" width="664" top="386" left="669" frameStyle="/frames/FrameRetangular.xml" 
+               margins="{left=30, top=15, right=10, bottom=10}">
+               <textEditor left="20" top="30" width="624" height="292" field="textEditor.ferimentosC"/>
+
+               <label text="Ferimentos e Cicatrizes" left="280" width="292" fontStyle="bold italic" top="9"/>
+        </layout>
+        <layout align="none" height="332" width="664" top="720" left="5" frameStyle="/frames/FrameRetangular.xml" 
+               margins="{left=30, top=15, right=10, bottom=10}">
+               <textEditor left="20" top="30" width="624" height="292" field="textEditor.pessoasS"/>
+
+               <label text="Pessosa Significativas" left="280" width="292" fontStyle="bold italic" top="9"/>
+        </layout>
+        <layout align="none" height="332" width="664" top="720" left="669" frameStyle="/frames/FrameRetangular.xml" 
+               margins="{left=30, top=15, right=10, bottom=10}">
+               <textEditor left="20" top="30" width="624" height="292" field="textEditor.fobiasM"/>
+
+               <label text="Fobias/Manias" left="280" width="292" fontStyle="bold italic" top="9"/>
+        </layout>
+        <layout align="none" height="332" width="664" top="1053" left="5" frameStyle="/frames/FrameRetangular.xml" 
+               margins="{left=30, top=15, right=10, bottom=10}">
+               <textEditor left="20" top="30" width="624" height="292" field="textEditor.habilits"/>
+
+               <label text="Habilidades" left="280" width="292" fontStyle="bold italic" top="9"/>
+        </layout>
+        <layout align="none" height="332" width="664" top="1053" left="669" frameStyle="/frames/FrameRetangular.xml" 
+               margins="{left=30, top=15, right=10, bottom=10}">
+               <textEditor left="20" top="30" width="624" height="292" field="textEditor.rituaCon"/>
+
+               <label text="Rituais Conhecidos" left="270" width="292" fontStyle="bold italic" top="9"/>
+        </layout>
+        <layout align="none" height="332" width="664" top="1386" left="5" frameStyle="/frames/FrameRetangular.xml" 
+               margins="{left=30, top=15, right=10, bottom=10}">
+               <textEditor left="20" top="30" width="624" height="292" field="textEditor.locaisimpw"/>
+
+               <label text="Locais Importantes" left="280" width="292" fontStyle="bold italic" top="9"/>
+        </layout>
+        <layout align="none" height="332" width="664" top="1386" left="669" frameStyle="/frames/FrameRetangular.xml" 
+               margins="{left=30, top=15, right=10, bottom=10}">
+               <textEditor left="20" top="30" width="624" height="292" field="textEditor.entidades"/>
+
+               <label text="Encontros com Entidades Estranhas" left="220" width="292" fontStyle="bold italic" top="9"/>
+        </layout>
+        </scrollBox>
+        </tab>
+        <tab title="Recursos">      
+        <scrollBox align="client">
+        <layout align="none" height="35" width="1329" top="15" left="5" frameStyle="/frames/FrameRetangular.xml" 
+        margins="{left=30, top=15, right=10, bottom=10}">
+                
+        <label text="Equipamentos e pertences / Dinheiro e Recursos" left="525" width="1329" fontStyle="bold italic" top="9"/>
+         </layout>
+         <layout align="none" height="1660" width="664" top="52" left="5" frameStyle="/frames/FrameRetangular.xml" 
+               margins="{left=30, top=15, right=10, bottom=10}">
+               <label text="Equipamentos e pertences" width="624" left="260" fontStyle="bold italic" top="9"/>
+               <layout align="top" height="30" top="25" margins="{bottom=4}">
+                <button text="Adicionar Novo Item" width="150" top="45" align="left">
+                        <event name="onClick">
+                                -- Usuário clicou no botão de criar novo item.
+                                -- Vamos inserir um novo item no nosso recordList                              
+                                self.rclListaDosItens:append();
+                        </event>
+                </button>
+        </layout>       
+
+        <!-- recordList, representando a lista -->
+        <recordList name="rclListaDosItens" field="campoDosItens" templateForm="frmItemDaLista" align="left" selectable="true" layout="vertical" top="40" height="80" width="150">                       
+
+                <event name="onSelect">
+                        --[[
+                        Este evento é chamado quando o usuário selecionar/deselecionar itens da lista. Quando o usuário selecionar, vamos fazer nosso dataScopeBox (e todas as tag dentro dele) salvar e carregar dados no   objeto Nodo (NodeDatabase) do item selecionado.
+
+                  --]]                      
+                  local node = self.rclListaDosItens.selectedNode; 
+                         self.boxDetalhesDoItem.node = node;                       
+                  -- a caixa de detalhe só ficará visível se houver item selecionado
+                          self.boxDetalhesDoItem.visible = (node ~= nil);
+               </event>
+        </recordList>                     
+
+        <!-- dataScopeBox representando a nossa caixa de detalhes -->  
+
+        <dataScopeBox name="boxDetalhesDoItem" visible="false" align="client"
+                      margins="{left=4, right=4, top=2}">
+                <!-- Faça um layout "bonito" para sua caixa de detalhes =). Utilize a propriedade "field" nas tags aqui dentro   -->      
+
+                <rectangle align="none" color="black" xradius="10" yradius="10" height="180" width="480"
+                           padding="{top=3, left=3, right=3, bottom=3}">                                   
+
+                         <layout align="top" top="15" height="30" margins="{bottom=4}">
+                                <label align="left" text="Titulo do Item:" autoSize="true"/>
+                                <edit align="client" field="campoTitulo"/>
+                                                               
+
+                               <!-- Botão de apagar o item -->
+                               <button align="right" text="Apagar!" 
+                                      margins="{left=4, right=4, top=2, bottom=2}" width="150"
+                                       onClick="NDB.deleteNode(self.boxDetalhesDoItem.node);" />
+
+                        </layout>                       
+
+                        <layout align="top" top="15" height="130">              
+                                <image align="left" editable="true" field="campoURLImagem" width="130"/>                               
+
+                                <layout align="client" margins="{left=2}">
+                                        <edit align="top" field="campoSubTitulo" height="30"/>
+                                        <textEditor align="top" field="campoTextoGrande" height="100"/>
+                                </layout>                      
+                        </layout>
+                </rectangle>
+        </dataScopeBox>
+
+               
+        </layout>
+        <layout align="none" height="1660" width="664" top="52" left="669" frameStyle="/frames/FrameRetangular.xml" 
+               margins="{left=30, top=15, right=10, bottom=10}">
+               <label text="Dinheiro e Recursos" width="624" left="270" fontStyle="bold italic" top="9"/>
+               
+               <style>
+                layout.LayoutCampo23 {
+                        width: 15;
+                        top: 25;
+                        height: 25;
+                        align: top;
+                        margins: {left=2, right=2, top=5};
+                }              
+
+                layout.LayoutCampo23 edit {
+                        height: 5;
+                        width: 250;
+                        fontSize: 15;
+                        align: left;
+                }              
+
+                layout.LayoutCampo23 label {
+                        align: left;
+                        horzTextAlign: leading;
+                        vertTextAlign: leading;
+                        autoSize: true;
+                        top: 30;
+
+                }              
+        </style>
+        <layout left="5" top="25" width="664" height="1660">
+               <layout class="LayoutCampo23" >
+                        <label text="     P. de Prest.:"/>  
+                        <edit  field="dinheiro.ng"/>               
+                </layout>
+                <layout class="LayoutCampo23" >
+                        <label text="     Patente:"/>  
+                        <edit  field="dinheiro.dinheiro"/>               
+                </layout>
+                <layout class="LayoutCampo23" >
+                        <label text="     Limite de Credito:"/>  
+                        <edit  field="dinheiro.patrimonio"/>               
+                </layout>
+
+        </layout> 
+        <textEditor left="20" top="125" width="624" height="1521" field="textEditor.patrimonio"/>
+        </layout>
+        </scrollBox>
+        </tab>
+        <tab title="Anotações">
+        <scrollBox align="client">
+                <richEdit align="client" backgroundColor="black" defaultFontColor="white" field="txt"/>
+        </scrollBox>
+        </tab>
+        </tabControl>
+
+        
+</form>
