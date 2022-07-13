@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module sdkVersion="3.5">
+    <!--The "id" identifies your plugin globally. Must be unique, must contain only alphanumeric characters, underlines and dots and must contain at least 5 characters and a maximum of 40. Once set the ID, you should not change it;)-->
+    <id>OrdemParanormalS_byHelldemos</id>
+    <!--"version" is the version of your plugin. When you release a new version of your module, change here =)-->
+    <version>0.55</version>
+    <name>Ficha de Ordem Paranormal v0.55</name>
+    <description>Ficha de Ordem Paranormal criada para o RRPG Firecast</description>
+    <author>helldemos (DaviCop)</author>
+    <site>http://www.twitter.com/Davi_1437</site>
+    <contact>dadaviviemanuel@gmail.com</contact>
+</module>
