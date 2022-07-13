@@ -24,7 +24,7 @@
         <dataScopeBox name="boxDetalhesDoItem" visible="false" align="right" width="900" margins="{left=4, right=4}">    
 			<rectangle width="900" height="600" color="Transparent" align="left" >
 					<image left="0" top="0" width="600" height="600" src="images/FichaNPC.png" style="proportional" optimize="true" align="left"/>
-					<image width="300" height="600" src="images/ImgSize_300x600.png" style="proportional" editable="true" showProgress="true" optimize="true" compilerOrder="1" align="right" field="NpcII" />
+					<image width="300" height="600" src="images/silhu.png" style="proportional" editable="true" showProgress="true" optimize="true" hint="O ideal é: 300x600 em png" align="right" field="NpcII" />
 					<edit transparent="true" class="NPC_R" fontSize="28" left="125" top="20" width="300" height="50" field="NPC_nick" horzTextAlign="leading" vertTextAlign="leading"/>
 					<edit transparent="true" class="NPC_R" fontSize="30" left="500" top="20" width="50" height="50" field="NPC_idade" horzTextAlign="leading" vertTextAlign="leading"/>
 					

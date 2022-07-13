@@ -7439,27 +7439,28 @@ local function constructNew_frmDZ_Ficha1_svg()
 
     obj.image67 = GUI.fromHandle(_obj_newObject("image"));
     obj.image67:setParent(obj.rectangle16);
-    obj.image67:setWidth(300);
+    obj.image67:setLeft(0);
+    obj.image67:setTop(0);
+    obj.image67:setWidth(600);
     obj.image67:setHeight(600);
-    obj.image67:setSRC("/DZ_Ficha2.0/images/ImgSize_300x600.png");
+    obj.image67:setSRC("/DZ_Ficha2.0/images/FichaNPC.png");
     obj.image67:setStyle("proportional");
-    obj.image67:setEditable(true);
-    obj.image67:setShowProgress(true);
     obj.image67:setOptimize(true);
-    obj.image67:setAlign("right");
-    obj.image67:setField("NpcII");
+    obj.image67:setAlign("left");
     obj.image67:setName("image67");
 
     obj.image68 = GUI.fromHandle(_obj_newObject("image"));
     obj.image68:setParent(obj.rectangle16);
-    obj.image68:setLeft(0);
-    obj.image68:setTop(0);
-    obj.image68:setWidth(600);
+    obj.image68:setWidth(300);
     obj.image68:setHeight(600);
-    obj.image68:setSRC("/DZ_Ficha2.0/images/FichaNPC.png");
+    obj.image68:setSRC("/DZ_Ficha2.0/images/silhu.png");
     obj.image68:setStyle("proportional");
+    obj.image68:setEditable(true);
+    obj.image68:setShowProgress(true);
     obj.image68:setOptimize(true);
-    obj.image68:setAlign("left");
+    obj.image68:setHint("O ideal é: 300x600 em png");
+    obj.image68:setAlign("right");
+    obj.image68:setField("NpcII");
     obj.image68:setName("image68");
 
     obj.edit197 = GUI.fromHandle(_obj_newObject("edit"));

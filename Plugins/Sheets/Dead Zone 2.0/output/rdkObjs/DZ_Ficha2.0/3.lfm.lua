@@ -69,7 +69,7 @@ local function constructNew_frmDZ_Ficha3_svg()
     obj.image1:setEditable(true);
     obj.image1:setShowProgress(true);
     obj.image1:setField("PlayerII");
-    obj.image1:setSRC("ImgSize_300x500");
+    obj.image1:setSRC("silhueta.png");
     obj.image1:setName("image1");
 
     obj.layout1 = GUI.fromHandle(_obj_newObject("layout"));

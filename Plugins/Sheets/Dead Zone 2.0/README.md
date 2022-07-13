@@ -1,6 +1,11 @@
 # Ficha Dead Zone
 Ficha criada para o sistema Dead Zone. 
 
+23 de Maio de 2022
+Versão 2.3
+- Adicionado botão "i" para os Ataques.
+- Ajustes de otimização.
+
 04 de Maio de 2022
 Versão 2.2
 - Ajustes de otimização.
