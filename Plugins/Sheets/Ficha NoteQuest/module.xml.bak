@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module sdkVersion="3.6c">
+    <!--"id" identifica seu plug-in de forma global. Deve ser exclusivo, conter apenas caracteres alfanuméricos, underlines, pontos e deve conter pelo menos 5 caracteres e um máximo de 40. Depois de definir o ID, você não deve alterá-lo ;)-->
+    <id>IDENTIFICADOR_UNICO_DO_PLUGIN</id>
+    <!--"version" é a versão do seu plugin. Quando você lança uma nova versão do seu módulo, altere aqui =)-->
+    <version>1.0</version>
+    <info lang="pt-BR">
+        <!--Informações do plugin na língua "pt-BR". Você pode ter várias tags "info", uma para cada tradução que quiser.-->
+        <name>Nome curto do seu plugin. Exemplo: DnD 5</name>
+        <description>Descrição do plugin aqui. Exemplo: Adiciona suporte a abas para o sistema ETC, com tais recursos, para tais propósitos ...</description>
+        <author>Seu nome aqui</author>
+        <site>http://www.seu.site.com.br</site>
+        <contact>Facebook? Twitter? E-Mail?</contact>
+    </info>
+</module>

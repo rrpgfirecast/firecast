@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmficha_NoteQuest" formType="sheetTemplate" dataType="Alterar.DataType.ficha_NoteQuest" title="ficha_NoteQuest (PDF)" align="client" theme="light">
+    <tabControl align="client">
+        <tab title="Frente">
+            <import file="1.lfm"/>
+        </tab>
+        <tab title="Verso">
+            <import file="2.lfm"/>
+        </tab>
+    </tabControl>
+</form>

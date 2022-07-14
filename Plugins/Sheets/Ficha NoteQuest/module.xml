@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module sdkVersion="3.6c" originalPluginFileName="ficha_NoteQuest.rpk" compilationDate="14072022041437" sdkApiVersion="87" compilationDigest="bdf0bb1494b01e34fae15b072aefe2d87b32620b">
+    <id>br_ficha.note.quest</id>
+    <version>1.0</version>
+    <info lang="pt-BR">
+        <!--Informações do plugin na língua "pt-BR". Você pode ter várias tags "info", uma para cada tradução que quiser.-->
+        <name>Ficha NoteQuest</name>
+        <description>Sistema de RPG criado por Tiago Junges.</description>
+        <author>Criador do plugin: KanZaw</author>
+        <site>https://kanzaw.itch.io/</site>
+        <contact>https://twitter.com/xavier_artpixel</contact>
+    </info>
+    <dataTypes>
+        <dataType title="Ficha NoteQuest" name="frmficha_NoteQuest" lfmFile="ficha_NoteQuest.lfm">br_ficha.note.quest</dataType>
+    </dataTypes>
+    <assembledFeatures>
+        <dataTypes>
+            <dataType id="br_ficha.note.quest" formType="sheetTemplate" lfmFile="ficha_NoteQuest.lfm" formName="frmficha_NoteQuest">
+                <info title="Ficha NoteQuest"/>
+            </dataType>
+        </dataTypes>
+    </assembledFeatures>
+    <name>Ficha NoteQuest</name>
+    <description>Sistema de RPG criado por Tiago Junges.</description>
+    <author>Criador do plugin: KanZaw</author>
+    <site>https://kanzaw.itch.io/</site>
+    <contact>https://twitter.com/xavier_artpixel</contact>
+</module>
