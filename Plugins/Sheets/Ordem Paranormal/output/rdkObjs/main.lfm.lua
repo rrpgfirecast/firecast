@@ -786,7 +786,7 @@ local function constructNew_OrdemParanormalS_byHelldemos()
     obj.label26:setParent(obj.layout33);
     obj.label26:setAlign("left");
     obj.label26:setWidth(120);
-    obj.label26:setText("Adestramento:");
+    obj.label26:setText("Adestrar (Trein.):");
     obj.label26:setHorzTextAlign("trailing");
     obj.label26:setMargins({right=5});
     obj.label26:setName("label26");
@@ -880,7 +880,7 @@ local function constructNew_OrdemParanormalS_byHelldemos()
     obj.label30:setParent(obj.layout35);
     obj.label30:setAlign("left");
     obj.label30:setWidth(120);
-    obj.label30:setText("Crime:");
+    obj.label30:setText("Crime (Trein.):");
     obj.label30:setHorzTextAlign("trailing");
     obj.label30:setMargins({right=5});
     obj.label30:setName("label30");
@@ -1021,7 +1021,7 @@ local function constructNew_OrdemParanormalS_byHelldemos()
     obj.label36:setParent(obj.layout38);
     obj.label36:setAlign("left");
     obj.label36:setWidth(120);
-    obj.label36:setText("Ocultismo:");
+    obj.label36:setText("Ocultismo (Trein.):");
     obj.label36:setHorzTextAlign("trailing");
     obj.label36:setMargins({right=5});
     obj.label36:setName("label36");
@@ -1068,7 +1068,7 @@ local function constructNew_OrdemParanormalS_byHelldemos()
     obj.label38:setParent(obj.layout39);
     obj.label38:setAlign("left");
     obj.label38:setWidth(120);
-    obj.label38:setText("Pilotagem:");
+    obj.label38:setText("Pilotagem (Trein.):");
     obj.label38:setHorzTextAlign("trailing");
     obj.label38:setMargins({right=5});
     obj.label38:setName("label38");
@@ -1209,7 +1209,7 @@ local function constructNew_OrdemParanormalS_byHelldemos()
     obj.label44:setParent(obj.layout42);
     obj.label44:setAlign("left");
     obj.label44:setWidth(120);
-    obj.label44:setText("Tática:");
+    obj.label44:setText("Tática (Trein.):");
     obj.label44:setHorzTextAlign("trailing");
     obj.label44:setMargins({right=5});
     obj.label44:setName("label44");
@@ -1509,7 +1509,7 @@ local function constructNew_OrdemParanormalS_byHelldemos()
     obj.label55:setParent(obj.layout50);
     obj.label55:setAlign("left");
     obj.label55:setWidth(120);
-    obj.label55:setText("Artes:");
+    obj.label55:setText("Artes (Trein.):");
     obj.label55:setHorzTextAlign("trailing");
     obj.label55:setMargins({right=5});
     obj.label55:setName("label55");
@@ -1556,7 +1556,7 @@ local function constructNew_OrdemParanormalS_byHelldemos()
     obj.label57:setParent(obj.layout51);
     obj.label57:setAlign("left");
     obj.label57:setWidth(120);
-    obj.label57:setText("Ciência:");
+    obj.label57:setText("Ciências (Trein.):");
     obj.label57:setHorzTextAlign("trailing");
     obj.label57:setMargins({right=5});
     obj.label57:setName("label57");
@@ -1603,7 +1603,7 @@ local function constructNew_OrdemParanormalS_byHelldemos()
     obj.label59:setParent(obj.layout52);
     obj.label59:setAlign("left");
     obj.label59:setWidth(120);
-    obj.label59:setText("Medicina:");
+    obj.label59:setText("Medicina (Trein.):");
     obj.label59:setHorzTextAlign("trailing");
     obj.label59:setMargins({right=5});
     obj.label59:setName("label59");
@@ -1650,7 +1650,7 @@ local function constructNew_OrdemParanormalS_byHelldemos()
     obj.label61:setParent(obj.layout53);
     obj.label61:setAlign("left");
     obj.label61:setWidth(120);
-    obj.label61:setText("Religião:");
+    obj.label61:setText("Religião (Trein.):");
     obj.label61:setHorzTextAlign("trailing");
     obj.label61:setMargins({right=5});
     obj.label61:setName("label61");
@@ -1697,7 +1697,7 @@ local function constructNew_OrdemParanormalS_byHelldemos()
     obj.label63:setParent(obj.layout54);
     obj.label63:setAlign("left");
     obj.label63:setWidth(120);
-    obj.label63:setText("Tecnologia:");
+    obj.label63:setText("Tecnologia (Trein.):");
     obj.label63:setHorzTextAlign("trailing");
     obj.label63:setMargins({right=5});
     obj.label63:setName("label63");
@@ -2715,37 +2715,36 @@ local function constructNew_OrdemParanormalS_byHelldemos()
     obj.comboBox40:setItems({'Destreinado', 'Treinado', 'Veterano', 'Expert'});
     obj.comboBox40:setValues({'D', 'T', 'V', 'E'});
     obj.comboBox40:setValue("D");
-    obj.comboBox40:setField("periciaselect.gen11");
+    obj.comboBox40:setField("periciaselect.furtividade");
     obj.comboBox40:setName("comboBox40");
-
-    obj.edit73 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit73:setParent(obj.layout77);
-    obj.edit73:setAlign("left");
-    obj.edit73:setHorzTextAlign("trailing");
-    obj.edit73:setFontSize(14);
-    obj.edit73:setWidth(120);
-    obj.edit73:setField("pericia.nome.gen11");
-    obj.edit73:setMargins({right=5});
-    obj.edit73:setName("edit73");
-
-    obj.edit74 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit74:setParent(obj.layout77);
-    obj.edit74:setType("number");
-    obj.edit74:setAlign("left");
-    obj.edit74:setHorzTextAlign("center");
-    obj.edit74:setFontSize(14);
-    obj.edit74:setWidth(30);
-    obj.edit74:setField("pericia.gen11");
-    obj.edit74:setName("edit74");
 
     obj.label96 = GUI.fromHandle(_obj_newObject("label"));
     obj.label96:setParent(obj.layout77);
     obj.label96:setAlign("left");
-    obj.label96:setWidth(5);
-    obj.label96:setText("");
+    obj.label96:setWidth(120);
+    obj.label96:setText("Furtividade:");
     obj.label96:setHorzTextAlign("trailing");
     obj.label96:setMargins({right=5});
     obj.label96:setName("label96");
+
+    obj.edit73 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit73:setParent(obj.layout77);
+    obj.edit73:setType("number");
+    obj.edit73:setAlign("left");
+    obj.edit73:setHorzTextAlign("center");
+    obj.edit73:setFontSize(14);
+    obj.edit73:setWidth(30);
+    obj.edit73:setField("pericia.furtividade");
+    obj.edit73:setName("edit73");
+
+    obj.label97 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label97:setParent(obj.layout77);
+    obj.label97:setAlign("left");
+    obj.label97:setWidth(5);
+    obj.label97:setText("");
+    obj.label97:setHorzTextAlign("trailing");
+    obj.label97:setMargins({right=5});
+    obj.label97:setName("label97");
 
     obj.layout78 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout78:setParent(obj.layout66);
@@ -2766,34 +2765,34 @@ local function constructNew_OrdemParanormalS_byHelldemos()
     obj.comboBox41:setField("periciaselect.gen12");
     obj.comboBox41:setName("comboBox41");
 
+    obj.edit74 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit74:setParent(obj.layout78);
+    obj.edit74:setAlign("left");
+    obj.edit74:setHorzTextAlign("trailing");
+    obj.edit74:setFontSize(14);
+    obj.edit74:setWidth(120);
+    obj.edit74:setField("pericia.nome.gen12");
+    obj.edit74:setMargins({right=5});
+    obj.edit74:setName("edit74");
+
     obj.edit75 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit75:setParent(obj.layout78);
+    obj.edit75:setType("number");
     obj.edit75:setAlign("left");
-    obj.edit75:setHorzTextAlign("trailing");
+    obj.edit75:setHorzTextAlign("center");
     obj.edit75:setFontSize(14);
-    obj.edit75:setWidth(120);
-    obj.edit75:setField("pericia.nome.gen12");
-    obj.edit75:setMargins({right=5});
+    obj.edit75:setWidth(30);
+    obj.edit75:setField("pericia.gen12");
     obj.edit75:setName("edit75");
 
-    obj.edit76 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit76:setParent(obj.layout78);
-    obj.edit76:setType("number");
-    obj.edit76:setAlign("left");
-    obj.edit76:setHorzTextAlign("center");
-    obj.edit76:setFontSize(14);
-    obj.edit76:setWidth(30);
-    obj.edit76:setField("pericia.gen12");
-    obj.edit76:setName("edit76");
-
-    obj.label97 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label97:setParent(obj.layout78);
-    obj.label97:setAlign("left");
-    obj.label97:setWidth(5);
-    obj.label97:setText("");
-    obj.label97:setHorzTextAlign("trailing");
-    obj.label97:setMargins({right=5});
-    obj.label97:setName("label97");
+    obj.label98 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label98:setParent(obj.layout78);
+    obj.label98:setAlign("left");
+    obj.label98:setWidth(5);
+    obj.label98:setText("");
+    obj.label98:setHorzTextAlign("trailing");
+    obj.label98:setMargins({right=5});
+    obj.label98:setName("label98");
 
     obj.layout79 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout79:setParent(obj.layout66);
@@ -2814,34 +2813,34 @@ local function constructNew_OrdemParanormalS_byHelldemos()
     obj.comboBox42:setField("periciaselect.gen13");
     obj.comboBox42:setName("comboBox42");
 
+    obj.edit76 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit76:setParent(obj.layout79);
+    obj.edit76:setAlign("left");
+    obj.edit76:setHorzTextAlign("trailing");
+    obj.edit76:setFontSize(14);
+    obj.edit76:setWidth(120);
+    obj.edit76:setField("pericia.nome.gen13");
+    obj.edit76:setMargins({right=5});
+    obj.edit76:setName("edit76");
+
     obj.edit77 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit77:setParent(obj.layout79);
+    obj.edit77:setType("number");
     obj.edit77:setAlign("left");
-    obj.edit77:setHorzTextAlign("trailing");
+    obj.edit77:setHorzTextAlign("center");
     obj.edit77:setFontSize(14);
-    obj.edit77:setWidth(120);
-    obj.edit77:setField("pericia.nome.gen13");
-    obj.edit77:setMargins({right=5});
+    obj.edit77:setWidth(30);
+    obj.edit77:setField("pericia.gen13");
     obj.edit77:setName("edit77");
 
-    obj.edit78 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit78:setParent(obj.layout79);
-    obj.edit78:setType("number");
-    obj.edit78:setAlign("left");
-    obj.edit78:setHorzTextAlign("center");
-    obj.edit78:setFontSize(14);
-    obj.edit78:setWidth(30);
-    obj.edit78:setField("pericia.gen13");
-    obj.edit78:setName("edit78");
-
-    obj.label98 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label98:setParent(obj.layout79);
-    obj.label98:setAlign("left");
-    obj.label98:setWidth(5);
-    obj.label98:setText("");
-    obj.label98:setHorzTextAlign("trailing");
-    obj.label98:setMargins({right=5});
-    obj.label98:setName("label98");
+    obj.label99 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label99:setParent(obj.layout79);
+    obj.label99:setAlign("left");
+    obj.label99:setWidth(5);
+    obj.label99:setText("");
+    obj.label99:setHorzTextAlign("trailing");
+    obj.label99:setMargins({right=5});
+    obj.label99:setName("label99");
 
     obj.layout80 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout80:setParent(obj.layout66);
@@ -2862,34 +2861,34 @@ local function constructNew_OrdemParanormalS_byHelldemos()
     obj.comboBox43:setField("periciaselect.gen14");
     obj.comboBox43:setName("comboBox43");
 
+    obj.edit78 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit78:setParent(obj.layout80);
+    obj.edit78:setAlign("left");
+    obj.edit78:setHorzTextAlign("trailing");
+    obj.edit78:setFontSize(14);
+    obj.edit78:setWidth(120);
+    obj.edit78:setField("pericia.nome.gen14");
+    obj.edit78:setMargins({right=5});
+    obj.edit78:setName("edit78");
+
     obj.edit79 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit79:setParent(obj.layout80);
+    obj.edit79:setType("number");
     obj.edit79:setAlign("left");
-    obj.edit79:setHorzTextAlign("trailing");
+    obj.edit79:setHorzTextAlign("center");
     obj.edit79:setFontSize(14);
-    obj.edit79:setWidth(120);
-    obj.edit79:setField("pericia.nome.gen14");
-    obj.edit79:setMargins({right=5});
+    obj.edit79:setWidth(30);
+    obj.edit79:setField("pericia.gen14");
     obj.edit79:setName("edit79");
 
-    obj.edit80 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit80:setParent(obj.layout80);
-    obj.edit80:setType("number");
-    obj.edit80:setAlign("left");
-    obj.edit80:setHorzTextAlign("center");
-    obj.edit80:setFontSize(14);
-    obj.edit80:setWidth(30);
-    obj.edit80:setField("pericia.gen14");
-    obj.edit80:setName("edit80");
-
-    obj.label99 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label99:setParent(obj.layout80);
-    obj.label99:setAlign("left");
-    obj.label99:setWidth(5);
-    obj.label99:setText("");
-    obj.label99:setHorzTextAlign("trailing");
-    obj.label99:setMargins({right=5});
-    obj.label99:setName("label99");
+    obj.label100 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label100:setParent(obj.layout80);
+    obj.label100:setAlign("left");
+    obj.label100:setWidth(5);
+    obj.label100:setText("");
+    obj.label100:setHorzTextAlign("trailing");
+    obj.label100:setMargins({right=5});
+    obj.label100:setName("label100");
 
     obj.layout81 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout81:setParent(obj.layout66);
@@ -2910,34 +2909,34 @@ local function constructNew_OrdemParanormalS_byHelldemos()
     obj.comboBox44:setField("periciaselect.gen15");
     obj.comboBox44:setName("comboBox44");
 
+    obj.edit80 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit80:setParent(obj.layout81);
+    obj.edit80:setAlign("left");
+    obj.edit80:setHorzTextAlign("trailing");
+    obj.edit80:setFontSize(14);
+    obj.edit80:setWidth(120);
+    obj.edit80:setField("pericia.nome.gen15");
+    obj.edit80:setMargins({right=5});
+    obj.edit80:setName("edit80");
+
     obj.edit81 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit81:setParent(obj.layout81);
+    obj.edit81:setType("number");
     obj.edit81:setAlign("left");
-    obj.edit81:setHorzTextAlign("trailing");
+    obj.edit81:setHorzTextAlign("center");
     obj.edit81:setFontSize(14);
-    obj.edit81:setWidth(120);
-    obj.edit81:setField("pericia.nome.gen15");
-    obj.edit81:setMargins({right=5});
+    obj.edit81:setWidth(30);
+    obj.edit81:setField("pericia.gen15");
     obj.edit81:setName("edit81");
 
-    obj.edit82 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit82:setParent(obj.layout81);
-    obj.edit82:setType("number");
-    obj.edit82:setAlign("left");
-    obj.edit82:setHorzTextAlign("center");
-    obj.edit82:setFontSize(14);
-    obj.edit82:setWidth(30);
-    obj.edit82:setField("pericia.gen15");
-    obj.edit82:setName("edit82");
-
-    obj.label100 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label100:setParent(obj.layout81);
-    obj.label100:setAlign("left");
-    obj.label100:setWidth(5);
-    obj.label100:setText("");
-    obj.label100:setHorzTextAlign("trailing");
-    obj.label100:setMargins({right=5});
-    obj.label100:setName("label100");
+    obj.label101 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label101:setParent(obj.layout81);
+    obj.label101:setAlign("left");
+    obj.label101:setWidth(5);
+    obj.label101:setText("");
+    obj.label101:setHorzTextAlign("trailing");
+    obj.label101:setMargins({right=5});
+    obj.label101:setName("label101");
 
     obj.layout82 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout82:setParent(obj.scrollBox1);
@@ -2950,14 +2949,14 @@ local function constructNew_OrdemParanormalS_byHelldemos()
     obj.layout82:setMargins({left=30, right=10, bottom=10});
     obj.layout82:setName("layout82");
 
-    obj.label101 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label101:setParent(obj.layout82);
-    obj.label101:setText("Proficiências");
-    obj.label101:setLeft(130);
-    lfm_setPropAsString(obj.label101, "fontStyle",  "bold italic");
-    obj.label101:setTop(9);
-    obj.label101:setWidth(1343);
-    obj.label101:setName("label101");
+    obj.label102 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label102:setParent(obj.layout82);
+    obj.label102:setText("Proficiências");
+    obj.label102:setLeft(130);
+    lfm_setPropAsString(obj.label102, "fontStyle",  "bold italic");
+    obj.label102:setTop(9);
+    obj.label102:setWidth(1343);
+    obj.label102:setName("label102");
 
     obj.layout83 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout83:setParent(obj.layout82);
@@ -2974,24 +2973,24 @@ local function constructNew_OrdemParanormalS_byHelldemos()
     obj.layout84:setMargins({bottom=2, top=15});
     obj.layout84:setName("layout84");
 
-    obj.label102 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label102:setParent(obj.layout84);
-    obj.label102:setAlign("left");
-    obj.label102:setWidth(20);
-    obj.label102:setText("");
-    obj.label102:setHorzTextAlign("trailing");
-    obj.label102:setMargins({right=5});
-    obj.label102:setName("label102");
+    obj.label103 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label103:setParent(obj.layout84);
+    obj.label103:setAlign("left");
+    obj.label103:setWidth(20);
+    obj.label103:setText("");
+    obj.label103:setHorzTextAlign("trailing");
+    obj.label103:setMargins({right=5});
+    obj.label103:setName("label103");
 
-    obj.edit83 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit83:setParent(obj.layout84);
-    obj.edit83:setAlign("left");
-    obj.edit83:setHorzTextAlign("leading");
-    obj.edit83:setFontSize(14);
-    obj.edit83:setWidth(240);
-    obj.edit83:setField("pericia.nome.profc1");
-    obj.edit83:setMargins({right=5});
-    obj.edit83:setName("edit83");
+    obj.edit82 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit82:setParent(obj.layout84);
+    obj.edit82:setAlign("left");
+    obj.edit82:setHorzTextAlign("leading");
+    obj.edit82:setFontSize(14);
+    obj.edit82:setWidth(240);
+    obj.edit82:setField("pericia.nome.profc1");
+    obj.edit82:setMargins({right=5});
+    obj.edit82:setName("edit82");
 
     obj.layout85 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout85:setParent(obj.layout83);
@@ -3000,24 +2999,24 @@ local function constructNew_OrdemParanormalS_byHelldemos()
     obj.layout85:setMargins({bottom=2, top=15});
     obj.layout85:setName("layout85");
 
-    obj.label103 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label103:setParent(obj.layout85);
-    obj.label103:setAlign("left");
-    obj.label103:setWidth(20);
-    obj.label103:setText("");
-    obj.label103:setHorzTextAlign("trailing");
-    obj.label103:setMargins({right=5});
-    obj.label103:setName("label103");
+    obj.label104 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label104:setParent(obj.layout85);
+    obj.label104:setAlign("left");
+    obj.label104:setWidth(20);
+    obj.label104:setText("");
+    obj.label104:setHorzTextAlign("trailing");
+    obj.label104:setMargins({right=5});
+    obj.label104:setName("label104");
 
-    obj.edit84 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit84:setParent(obj.layout85);
-    obj.edit84:setAlign("left");
-    obj.edit84:setHorzTextAlign("leading");
-    obj.edit84:setFontSize(14);
-    obj.edit84:setWidth(240);
-    obj.edit84:setField("pericia.nome.profc2");
-    obj.edit84:setMargins({right=5});
-    obj.edit84:setName("edit84");
+    obj.edit83 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit83:setParent(obj.layout85);
+    obj.edit83:setAlign("left");
+    obj.edit83:setHorzTextAlign("leading");
+    obj.edit83:setFontSize(14);
+    obj.edit83:setWidth(240);
+    obj.edit83:setField("pericia.nome.profc2");
+    obj.edit83:setMargins({right=5});
+    obj.edit83:setName("edit83");
 
     obj.layout86 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout86:setParent(obj.layout83);
@@ -3026,24 +3025,24 @@ local function constructNew_OrdemParanormalS_byHelldemos()
     obj.layout86:setMargins({bottom=2, top=15});
     obj.layout86:setName("layout86");
 
-    obj.label104 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label104:setParent(obj.layout86);
-    obj.label104:setAlign("left");
-    obj.label104:setWidth(20);
-    obj.label104:setText("");
-    obj.label104:setHorzTextAlign("trailing");
-    obj.label104:setMargins({right=5});
-    obj.label104:setName("label104");
+    obj.label105 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label105:setParent(obj.layout86);
+    obj.label105:setAlign("left");
+    obj.label105:setWidth(20);
+    obj.label105:setText("");
+    obj.label105:setHorzTextAlign("trailing");
+    obj.label105:setMargins({right=5});
+    obj.label105:setName("label105");
 
-    obj.edit85 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit85:setParent(obj.layout86);
-    obj.edit85:setAlign("left");
-    obj.edit85:setHorzTextAlign("leading");
-    obj.edit85:setFontSize(14);
-    obj.edit85:setWidth(240);
-    obj.edit85:setField("pericia.nome.profc3");
-    obj.edit85:setMargins({right=5});
-    obj.edit85:setName("edit85");
+    obj.edit84 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit84:setParent(obj.layout86);
+    obj.edit84:setAlign("left");
+    obj.edit84:setHorzTextAlign("leading");
+    obj.edit84:setFontSize(14);
+    obj.edit84:setWidth(240);
+    obj.edit84:setField("pericia.nome.profc3");
+    obj.edit84:setMargins({right=5});
+    obj.edit84:setName("edit84");
 
     obj.layout87 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout87:setParent(obj.layout83);
@@ -3052,24 +3051,24 @@ local function constructNew_OrdemParanormalS_byHelldemos()
     obj.layout87:setMargins({bottom=2, top=15});
     obj.layout87:setName("layout87");
 
-    obj.label105 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label105:setParent(obj.layout87);
-    obj.label105:setAlign("left");
-    obj.label105:setWidth(20);
-    obj.label105:setText("");
-    obj.label105:setHorzTextAlign("trailing");
-    obj.label105:setMargins({right=5});
-    obj.label105:setName("label105");
+    obj.label106 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label106:setParent(obj.layout87);
+    obj.label106:setAlign("left");
+    obj.label106:setWidth(20);
+    obj.label106:setText("");
+    obj.label106:setHorzTextAlign("trailing");
+    obj.label106:setMargins({right=5});
+    obj.label106:setName("label106");
 
-    obj.edit86 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit86:setParent(obj.layout87);
-    obj.edit86:setAlign("left");
-    obj.edit86:setHorzTextAlign("leading");
-    obj.edit86:setFontSize(14);
-    obj.edit86:setWidth(240);
-    obj.edit86:setField("pericia.nome.profc4");
-    obj.edit86:setMargins({right=5});
-    obj.edit86:setName("edit86");
+    obj.edit85 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit85:setParent(obj.layout87);
+    obj.edit85:setAlign("left");
+    obj.edit85:setHorzTextAlign("leading");
+    obj.edit85:setFontSize(14);
+    obj.edit85:setWidth(240);
+    obj.edit85:setField("pericia.nome.profc4");
+    obj.edit85:setMargins({right=5});
+    obj.edit85:setName("edit85");
 
     obj.layout88 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout88:setParent(obj.layout83);
@@ -3078,24 +3077,24 @@ local function constructNew_OrdemParanormalS_byHelldemos()
     obj.layout88:setMargins({bottom=2, top=15});
     obj.layout88:setName("layout88");
 
-    obj.label106 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label106:setParent(obj.layout88);
-    obj.label106:setAlign("left");
-    obj.label106:setWidth(20);
-    obj.label106:setText("");
-    obj.label106:setHorzTextAlign("trailing");
-    obj.label106:setMargins({right=5});
-    obj.label106:setName("label106");
+    obj.label107 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label107:setParent(obj.layout88);
+    obj.label107:setAlign("left");
+    obj.label107:setWidth(20);
+    obj.label107:setText("");
+    obj.label107:setHorzTextAlign("trailing");
+    obj.label107:setMargins({right=5});
+    obj.label107:setName("label107");
 
-    obj.edit87 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit87:setParent(obj.layout88);
-    obj.edit87:setAlign("left");
-    obj.edit87:setHorzTextAlign("leading");
-    obj.edit87:setFontSize(14);
-    obj.edit87:setWidth(240);
-    obj.edit87:setField("pericia.nome.profc5");
-    obj.edit87:setMargins({right=5});
-    obj.edit87:setName("edit87");
+    obj.edit86 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit86:setParent(obj.layout88);
+    obj.edit86:setAlign("left");
+    obj.edit86:setHorzTextAlign("leading");
+    obj.edit86:setFontSize(14);
+    obj.edit86:setWidth(240);
+    obj.edit86:setField("pericia.nome.profc5");
+    obj.edit86:setMargins({right=5});
+    obj.edit86:setName("edit86");
 
     obj.layout89 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout89:setParent(obj.layout83);
@@ -3104,24 +3103,24 @@ local function constructNew_OrdemParanormalS_byHelldemos()
     obj.layout89:setMargins({bottom=2, top=15});
     obj.layout89:setName("layout89");
 
-    obj.label107 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label107:setParent(obj.layout89);
-    obj.label107:setAlign("left");
-    obj.label107:setWidth(20);
-    obj.label107:setText("");
-    obj.label107:setHorzTextAlign("trailing");
-    obj.label107:setMargins({right=5});
-    obj.label107:setName("label107");
+    obj.label108 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label108:setParent(obj.layout89);
+    obj.label108:setAlign("left");
+    obj.label108:setWidth(20);
+    obj.label108:setText("");
+    obj.label108:setHorzTextAlign("trailing");
+    obj.label108:setMargins({right=5});
+    obj.label108:setName("label108");
 
-    obj.edit88 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit88:setParent(obj.layout89);
-    obj.edit88:setAlign("left");
-    obj.edit88:setHorzTextAlign("leading");
-    obj.edit88:setFontSize(14);
-    obj.edit88:setWidth(240);
-    obj.edit88:setField("pericia.nome.profc6");
-    obj.edit88:setMargins({right=5});
-    obj.edit88:setName("edit88");
+    obj.edit87 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit87:setParent(obj.layout89);
+    obj.edit87:setAlign("left");
+    obj.edit87:setHorzTextAlign("leading");
+    obj.edit87:setFontSize(14);
+    obj.edit87:setWidth(240);
+    obj.edit87:setField("pericia.nome.profc6");
+    obj.edit87:setMargins({right=5});
+    obj.edit87:setName("edit87");
 
     obj.layout90 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout90:setParent(obj.layout83);
@@ -3130,24 +3129,24 @@ local function constructNew_OrdemParanormalS_byHelldemos()
     obj.layout90:setMargins({bottom=2, top=15});
     obj.layout90:setName("layout90");
 
-    obj.label108 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label108:setParent(obj.layout90);
-    obj.label108:setAlign("left");
-    obj.label108:setWidth(20);
-    obj.label108:setText("");
-    obj.label108:setHorzTextAlign("trailing");
-    obj.label108:setMargins({right=5});
-    obj.label108:setName("label108");
+    obj.label109 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label109:setParent(obj.layout90);
+    obj.label109:setAlign("left");
+    obj.label109:setWidth(20);
+    obj.label109:setText("");
+    obj.label109:setHorzTextAlign("trailing");
+    obj.label109:setMargins({right=5});
+    obj.label109:setName("label109");
 
-    obj.edit89 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit89:setParent(obj.layout90);
-    obj.edit89:setAlign("left");
-    obj.edit89:setHorzTextAlign("leading");
-    obj.edit89:setFontSize(14);
-    obj.edit89:setWidth(240);
-    obj.edit89:setField("pericia.nome.profc7");
-    obj.edit89:setMargins({right=5});
-    obj.edit89:setName("edit89");
+    obj.edit88 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit88:setParent(obj.layout90);
+    obj.edit88:setAlign("left");
+    obj.edit88:setHorzTextAlign("leading");
+    obj.edit88:setFontSize(14);
+    obj.edit88:setWidth(240);
+    obj.edit88:setField("pericia.nome.profc7");
+    obj.edit88:setMargins({right=5});
+    obj.edit88:setName("edit88");
 
     obj.layout91 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout91:setParent(obj.layout83);
@@ -3156,24 +3155,24 @@ local function constructNew_OrdemParanormalS_byHelldemos()
     obj.layout91:setMargins({bottom=2, top=15});
     obj.layout91:setName("layout91");
 
-    obj.label109 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label109:setParent(obj.layout91);
-    obj.label109:setAlign("left");
-    obj.label109:setWidth(20);
-    obj.label109:setText("");
-    obj.label109:setHorzTextAlign("trailing");
-    obj.label109:setMargins({right=5});
-    obj.label109:setName("label109");
+    obj.label110 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label110:setParent(obj.layout91);
+    obj.label110:setAlign("left");
+    obj.label110:setWidth(20);
+    obj.label110:setText("");
+    obj.label110:setHorzTextAlign("trailing");
+    obj.label110:setMargins({right=5});
+    obj.label110:setName("label110");
 
-    obj.edit90 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit90:setParent(obj.layout91);
-    obj.edit90:setAlign("left");
-    obj.edit90:setHorzTextAlign("leading");
-    obj.edit90:setFontSize(14);
-    obj.edit90:setWidth(240);
-    obj.edit90:setField("pericia.nome.profc8");
-    obj.edit90:setMargins({right=5});
-    obj.edit90:setName("edit90");
+    obj.edit89 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit89:setParent(obj.layout91);
+    obj.edit89:setAlign("left");
+    obj.edit89:setHorzTextAlign("leading");
+    obj.edit89:setFontSize(14);
+    obj.edit89:setWidth(240);
+    obj.edit89:setField("pericia.nome.profc8");
+    obj.edit89:setMargins({right=5});
+    obj.edit89:setName("edit89");
 
     obj.layout92 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout92:setParent(obj.layout83);
@@ -3182,24 +3181,24 @@ local function constructNew_OrdemParanormalS_byHelldemos()
     obj.layout92:setMargins({bottom=2, top=15});
     obj.layout92:setName("layout92");
 
-    obj.label110 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label110:setParent(obj.layout92);
-    obj.label110:setAlign("left");
-    obj.label110:setWidth(20);
-    obj.label110:setText("");
-    obj.label110:setHorzTextAlign("trailing");
-    obj.label110:setMargins({right=5});
-    obj.label110:setName("label110");
+    obj.label111 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label111:setParent(obj.layout92);
+    obj.label111:setAlign("left");
+    obj.label111:setWidth(20);
+    obj.label111:setText("");
+    obj.label111:setHorzTextAlign("trailing");
+    obj.label111:setMargins({right=5});
+    obj.label111:setName("label111");
 
-    obj.edit91 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit91:setParent(obj.layout92);
-    obj.edit91:setAlign("left");
-    obj.edit91:setHorzTextAlign("leading");
-    obj.edit91:setFontSize(14);
-    obj.edit91:setWidth(240);
-    obj.edit91:setField("pericia.nome.profc9");
-    obj.edit91:setMargins({right=5});
-    obj.edit91:setName("edit91");
+    obj.edit90 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit90:setParent(obj.layout92);
+    obj.edit90:setAlign("left");
+    obj.edit90:setHorzTextAlign("leading");
+    obj.edit90:setFontSize(14);
+    obj.edit90:setWidth(240);
+    obj.edit90:setField("pericia.nome.profc9");
+    obj.edit90:setMargins({right=5});
+    obj.edit90:setName("edit90");
 
     obj.layout93 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout93:setParent(obj.layout83);
@@ -3208,24 +3207,24 @@ local function constructNew_OrdemParanormalS_byHelldemos()
     obj.layout93:setMargins({bottom=2, top=15});
     obj.layout93:setName("layout93");
 
-    obj.label111 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label111:setParent(obj.layout93);
-    obj.label111:setAlign("left");
-    obj.label111:setWidth(20);
-    obj.label111:setText("");
-    obj.label111:setHorzTextAlign("trailing");
-    obj.label111:setMargins({right=5});
-    obj.label111:setName("label111");
+    obj.label112 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label112:setParent(obj.layout93);
+    obj.label112:setAlign("left");
+    obj.label112:setWidth(20);
+    obj.label112:setText("");
+    obj.label112:setHorzTextAlign("trailing");
+    obj.label112:setMargins({right=5});
+    obj.label112:setName("label112");
 
-    obj.edit92 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit92:setParent(obj.layout93);
-    obj.edit92:setAlign("left");
-    obj.edit92:setHorzTextAlign("leading");
-    obj.edit92:setFontSize(14);
-    obj.edit92:setWidth(240);
-    obj.edit92:setField("pericia.nome.profc10");
-    obj.edit92:setMargins({right=5});
-    obj.edit92:setName("edit92");
+    obj.edit91 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit91:setParent(obj.layout93);
+    obj.edit91:setAlign("left");
+    obj.edit91:setHorzTextAlign("leading");
+    obj.edit91:setFontSize(14);
+    obj.edit91:setWidth(240);
+    obj.edit91:setField("pericia.nome.profc10");
+    obj.edit91:setMargins({right=5});
+    obj.edit91:setName("edit91");
 
     obj.layout94 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout94:setParent(obj.layout83);
@@ -3234,24 +3233,24 @@ local function constructNew_OrdemParanormalS_byHelldemos()
     obj.layout94:setMargins({bottom=2, top=15});
     obj.layout94:setName("layout94");
 
-    obj.label112 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label112:setParent(obj.layout94);
-    obj.label112:setAlign("left");
-    obj.label112:setWidth(20);
-    obj.label112:setText("");
-    obj.label112:setHorzTextAlign("trailing");
-    obj.label112:setMargins({right=5});
-    obj.label112:setName("label112");
+    obj.label113 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label113:setParent(obj.layout94);
+    obj.label113:setAlign("left");
+    obj.label113:setWidth(20);
+    obj.label113:setText("");
+    obj.label113:setHorzTextAlign("trailing");
+    obj.label113:setMargins({right=5});
+    obj.label113:setName("label113");
 
-    obj.edit93 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit93:setParent(obj.layout94);
-    obj.edit93:setAlign("left");
-    obj.edit93:setHorzTextAlign("leading");
-    obj.edit93:setFontSize(14);
-    obj.edit93:setWidth(240);
-    obj.edit93:setField("pericia.nome.profc11");
-    obj.edit93:setMargins({right=5});
-    obj.edit93:setName("edit93");
+    obj.edit92 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit92:setParent(obj.layout94);
+    obj.edit92:setAlign("left");
+    obj.edit92:setHorzTextAlign("leading");
+    obj.edit92:setFontSize(14);
+    obj.edit92:setWidth(240);
+    obj.edit92:setField("pericia.nome.profc11");
+    obj.edit92:setMargins({right=5});
+    obj.edit92:setName("edit92");
 
     obj.layout95 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout95:setParent(obj.layout83);
@@ -3260,24 +3259,24 @@ local function constructNew_OrdemParanormalS_byHelldemos()
     obj.layout95:setMargins({bottom=2, top=15});
     obj.layout95:setName("layout95");
 
-    obj.label113 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label113:setParent(obj.layout95);
-    obj.label113:setAlign("left");
-    obj.label113:setWidth(20);
-    obj.label113:setText("");
-    obj.label113:setHorzTextAlign("trailing");
-    obj.label113:setMargins({right=5});
-    obj.label113:setName("label113");
+    obj.label114 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label114:setParent(obj.layout95);
+    obj.label114:setAlign("left");
+    obj.label114:setWidth(20);
+    obj.label114:setText("");
+    obj.label114:setHorzTextAlign("trailing");
+    obj.label114:setMargins({right=5});
+    obj.label114:setName("label114");
 
-    obj.edit94 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit94:setParent(obj.layout95);
-    obj.edit94:setAlign("left");
-    obj.edit94:setHorzTextAlign("leading");
-    obj.edit94:setFontSize(14);
-    obj.edit94:setWidth(240);
-    obj.edit94:setField("pericia.nome.profc12");
-    obj.edit94:setMargins({right=5});
-    obj.edit94:setName("edit94");
+    obj.edit93 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit93:setParent(obj.layout95);
+    obj.edit93:setAlign("left");
+    obj.edit93:setHorzTextAlign("leading");
+    obj.edit93:setFontSize(14);
+    obj.edit93:setWidth(240);
+    obj.edit93:setField("pericia.nome.profc12");
+    obj.edit93:setMargins({right=5});
+    obj.edit93:setName("edit93");
 
     obj.layout96 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout96:setParent(obj.layout83);
@@ -3286,24 +3285,24 @@ local function constructNew_OrdemParanormalS_byHelldemos()
     obj.layout96:setMargins({bottom=2, top=15});
     obj.layout96:setName("layout96");
 
-    obj.label114 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label114:setParent(obj.layout96);
-    obj.label114:setAlign("left");
-    obj.label114:setWidth(20);
-    obj.label114:setText("");
-    obj.label114:setHorzTextAlign("trailing");
-    obj.label114:setMargins({right=5});
-    obj.label114:setName("label114");
+    obj.label115 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label115:setParent(obj.layout96);
+    obj.label115:setAlign("left");
+    obj.label115:setWidth(20);
+    obj.label115:setText("");
+    obj.label115:setHorzTextAlign("trailing");
+    obj.label115:setMargins({right=5});
+    obj.label115:setName("label115");
 
-    obj.edit95 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit95:setParent(obj.layout96);
-    obj.edit95:setAlign("left");
-    obj.edit95:setHorzTextAlign("leading");
-    obj.edit95:setFontSize(14);
-    obj.edit95:setWidth(240);
-    obj.edit95:setField("pericia.nome.profc13");
-    obj.edit95:setMargins({right=5});
-    obj.edit95:setName("edit95");
+    obj.edit94 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit94:setParent(obj.layout96);
+    obj.edit94:setAlign("left");
+    obj.edit94:setHorzTextAlign("leading");
+    obj.edit94:setFontSize(14);
+    obj.edit94:setWidth(240);
+    obj.edit94:setField("pericia.nome.profc13");
+    obj.edit94:setMargins({right=5});
+    obj.edit94:setName("edit94");
 
     obj.layout97 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout97:setParent(obj.layout83);
@@ -3312,24 +3311,24 @@ local function constructNew_OrdemParanormalS_byHelldemos()
     obj.layout97:setMargins({bottom=2, top=15});
     obj.layout97:setName("layout97");
 
-    obj.label115 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label115:setParent(obj.layout97);
-    obj.label115:setAlign("left");
-    obj.label115:setWidth(20);
-    obj.label115:setText("");
-    obj.label115:setHorzTextAlign("trailing");
-    obj.label115:setMargins({right=5});
-    obj.label115:setName("label115");
+    obj.label116 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label116:setParent(obj.layout97);
+    obj.label116:setAlign("left");
+    obj.label116:setWidth(20);
+    obj.label116:setText("");
+    obj.label116:setHorzTextAlign("trailing");
+    obj.label116:setMargins({right=5});
+    obj.label116:setName("label116");
 
-    obj.edit96 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit96:setParent(obj.layout97);
-    obj.edit96:setAlign("left");
-    obj.edit96:setHorzTextAlign("leading");
-    obj.edit96:setFontSize(14);
-    obj.edit96:setWidth(240);
-    obj.edit96:setField("pericia.nome.profc14");
-    obj.edit96:setMargins({right=5});
-    obj.edit96:setName("edit96");
+    obj.edit95 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit95:setParent(obj.layout97);
+    obj.edit95:setAlign("left");
+    obj.edit95:setHorzTextAlign("leading");
+    obj.edit95:setFontSize(14);
+    obj.edit95:setWidth(240);
+    obj.edit95:setField("pericia.nome.profc14");
+    obj.edit95:setMargins({right=5});
+    obj.edit95:setName("edit95");
 
     obj.layout98 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout98:setParent(obj.layout83);
@@ -3338,24 +3337,24 @@ local function constructNew_OrdemParanormalS_byHelldemos()
     obj.layout98:setMargins({bottom=2, top=15});
     obj.layout98:setName("layout98");
 
-    obj.label116 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label116:setParent(obj.layout98);
-    obj.label116:setAlign("left");
-    obj.label116:setWidth(20);
-    obj.label116:setText("");
-    obj.label116:setHorzTextAlign("trailing");
-    obj.label116:setMargins({right=5});
-    obj.label116:setName("label116");
+    obj.label117 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label117:setParent(obj.layout98);
+    obj.label117:setAlign("left");
+    obj.label117:setWidth(20);
+    obj.label117:setText("");
+    obj.label117:setHorzTextAlign("trailing");
+    obj.label117:setMargins({right=5});
+    obj.label117:setName("label117");
 
-    obj.edit97 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit97:setParent(obj.layout98);
-    obj.edit97:setAlign("left");
-    obj.edit97:setHorzTextAlign("leading");
-    obj.edit97:setFontSize(14);
-    obj.edit97:setWidth(240);
-    obj.edit97:setField("pericia.nome.profc15");
-    obj.edit97:setMargins({right=5});
-    obj.edit97:setName("edit97");
+    obj.edit96 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit96:setParent(obj.layout98);
+    obj.edit96:setAlign("left");
+    obj.edit96:setHorzTextAlign("leading");
+    obj.edit96:setFontSize(14);
+    obj.edit96:setWidth(240);
+    obj.edit96:setField("pericia.nome.profc15");
+    obj.edit96:setMargins({right=5});
+    obj.edit96:setName("edit96");
 
     obj.layout99 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout99:setParent(obj.scrollBox1);
@@ -3368,14 +3367,14 @@ local function constructNew_OrdemParanormalS_byHelldemos()
     obj.layout99:setMargins({left=30, right=10, bottom=10});
     obj.layout99:setName("layout99");
 
-    obj.label117 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label117:setParent(obj.layout99);
-    obj.label117:setText("Ataques");
-    obj.label117:setLeft(491);
-    lfm_setPropAsString(obj.label117, "fontStyle",  "bold italic");
-    obj.label117:setTop(9);
-    obj.label117:setWidth(996);
-    obj.label117:setName("label117");
+    obj.label118 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label118:setParent(obj.layout99);
+    obj.label118:setText("Ataques");
+    obj.label118:setLeft(491);
+    lfm_setPropAsString(obj.label118, "fontStyle",  "bold italic");
+    obj.label118:setTop(9);
+    obj.label118:setWidth(996);
+    obj.label118:setName("label118");
 
     obj.layout100 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout100:setParent(obj.layout99);
@@ -3392,42 +3391,61 @@ local function constructNew_OrdemParanormalS_byHelldemos()
     obj.layout101:setMargins({bottom=2, top=15});
     obj.layout101:setName("layout101");
 
-    obj.label118 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label118:setParent(obj.layout101);
-    obj.label118:setAlign("left");
-    obj.label118:setWidth(5);
-    obj.label118:setText("");
-    obj.label118:setHorzTextAlign("trailing");
-    obj.label118:setMargins({right=5});
-    obj.label118:setName("label118");
-
     obj.label119 = GUI.fromHandle(_obj_newObject("label"));
     obj.label119:setParent(obj.layout101);
     obj.label119:setAlign("left");
-    obj.label119:setWidth(55);
-    obj.label119:setText("Nome: ");
+    obj.label119:setWidth(5);
+    obj.label119:setText("");
     obj.label119:setHorzTextAlign("trailing");
     obj.label119:setMargins({right=5});
     obj.label119:setName("label119");
+
+    obj.label120 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label120:setParent(obj.layout101);
+    obj.label120:setAlign("left");
+    obj.label120:setWidth(55);
+    obj.label120:setText("Nome: ");
+    obj.label120:setHorzTextAlign("trailing");
+    obj.label120:setMargins({right=5});
+    obj.label120:setName("label120");
+
+    obj.edit97 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit97:setParent(obj.layout101);
+    obj.edit97:setAlign("left");
+    obj.edit97:setHorzTextAlign("leading");
+    obj.edit97:setFontSize(14);
+    obj.edit97:setWidth(120);
+    obj.edit97:setField("ataque.nome.a1");
+    obj.edit97:setMargins({right=5});
+    obj.edit97:setName("edit97");
+
+    obj.label121 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label121:setParent(obj.layout101);
+    obj.label121:setAlign("left");
+    obj.label121:setWidth(55);
+    obj.label121:setText("Tipo: ");
+    obj.label121:setHorzTextAlign("trailing");
+    obj.label121:setMargins({right=5});
+    obj.label121:setName("label121");
 
     obj.edit98 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit98:setParent(obj.layout101);
     obj.edit98:setAlign("left");
     obj.edit98:setHorzTextAlign("leading");
     obj.edit98:setFontSize(14);
-    obj.edit98:setWidth(120);
-    obj.edit98:setField("ataque.nome.a1");
+    obj.edit98:setWidth(60);
+    obj.edit98:setField("ataque.tipo.a1");
     obj.edit98:setMargins({right=5});
     obj.edit98:setName("edit98");
 
-    obj.label120 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label120:setParent(obj.layout101);
-    obj.label120:setAlign("left");
-    obj.label120:setWidth(55);
-    obj.label120:setText("Tipo: ");
-    obj.label120:setHorzTextAlign("trailing");
-    obj.label120:setMargins({right=5});
-    obj.label120:setName("label120");
+    obj.label122 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label122:setParent(obj.layout101);
+    obj.label122:setAlign("left");
+    obj.label122:setWidth(55);
+    obj.label122:setText("Ataque: ");
+    obj.label122:setHorzTextAlign("trailing");
+    obj.label122:setMargins({right=5});
+    obj.label122:setName("label122");
 
     obj.edit99 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit99:setParent(obj.layout101);
@@ -3435,18 +3453,18 @@ local function constructNew_OrdemParanormalS_byHelldemos()
     obj.edit99:setHorzTextAlign("leading");
     obj.edit99:setFontSize(14);
     obj.edit99:setWidth(60);
-    obj.edit99:setField("ataque.tipo.a1");
+    obj.edit99:setField("ataque.ataque.a1");
     obj.edit99:setMargins({right=5});
     obj.edit99:setName("edit99");
 
-    obj.label121 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label121:setParent(obj.layout101);
-    obj.label121:setAlign("left");
-    obj.label121:setWidth(55);
-    obj.label121:setText("Ataque: ");
-    obj.label121:setHorzTextAlign("trailing");
-    obj.label121:setMargins({right=5});
-    obj.label121:setName("label121");
+    obj.label123 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label123:setParent(obj.layout101);
+    obj.label123:setAlign("left");
+    obj.label123:setWidth(55);
+    obj.label123:setText("Alcance: ");
+    obj.label123:setHorzTextAlign("trailing");
+    obj.label123:setMargins({right=5});
+    obj.label123:setName("label123");
 
     obj.edit100 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit100:setParent(obj.layout101);
@@ -3454,18 +3472,18 @@ local function constructNew_OrdemParanormalS_byHelldemos()
     obj.edit100:setHorzTextAlign("leading");
     obj.edit100:setFontSize(14);
     obj.edit100:setWidth(60);
-    obj.edit100:setField("ataque.tipo.a1");
+    obj.edit100:setField("ataque.alcance.a1");
     obj.edit100:setMargins({right=5});
     obj.edit100:setName("edit100");
 
-    obj.label122 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label122:setParent(obj.layout101);
-    obj.label122:setAlign("left");
-    obj.label122:setWidth(55);
-    obj.label122:setText("Alcance: ");
-    obj.label122:setHorzTextAlign("trailing");
-    obj.label122:setMargins({right=5});
-    obj.label122:setName("label122");
+    obj.label124 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label124:setParent(obj.layout101);
+    obj.label124:setAlign("left");
+    obj.label124:setWidth(55);
+    obj.label124:setText("Dano: ");
+    obj.label124:setHorzTextAlign("trailing");
+    obj.label124:setMargins({right=5});
+    obj.label124:setName("label124");
 
     obj.edit101 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit101:setParent(obj.layout101);
@@ -3473,18 +3491,18 @@ local function constructNew_OrdemParanormalS_byHelldemos()
     obj.edit101:setHorzTextAlign("leading");
     obj.edit101:setFontSize(14);
     obj.edit101:setWidth(60);
-    obj.edit101:setField("ataque.alcance.a1");
+    obj.edit101:setField("ataque.dano.a1");
     obj.edit101:setMargins({right=5});
     obj.edit101:setName("edit101");
 
-    obj.label123 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label123:setParent(obj.layout101);
-    obj.label123:setAlign("left");
-    obj.label123:setWidth(55);
-    obj.label123:setText("Dano: ");
-    obj.label123:setHorzTextAlign("trailing");
-    obj.label123:setMargins({right=5});
-    obj.label123:setName("label123");
+    obj.label125 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label125:setParent(obj.layout101);
+    obj.label125:setAlign("left");
+    obj.label125:setWidth(55);
+    obj.label125:setText("Munição: ");
+    obj.label125:setHorzTextAlign("trailing");
+    obj.label125:setMargins({right=5});
+    obj.label125:setName("label125");
 
     obj.edit102 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit102:setParent(obj.layout101);
@@ -3492,18 +3510,18 @@ local function constructNew_OrdemParanormalS_byHelldemos()
     obj.edit102:setHorzTextAlign("leading");
     obj.edit102:setFontSize(14);
     obj.edit102:setWidth(60);
-    obj.edit102:setField("ataque.dano.a1");
+    obj.edit102:setField("ataque.municao.a1");
     obj.edit102:setMargins({right=5});
     obj.edit102:setName("edit102");
 
-    obj.label124 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label124:setParent(obj.layout101);
-    obj.label124:setAlign("left");
-    obj.label124:setWidth(55);
-    obj.label124:setText("Crítico: ");
-    obj.label124:setHorzTextAlign("trailing");
-    obj.label124:setMargins({right=5});
-    obj.label124:setName("label124");
+    obj.label126 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label126:setParent(obj.layout101);
+    obj.label126:setAlign("left");
+    obj.label126:setWidth(55);
+    obj.label126:setText("Crítico: ");
+    obj.label126:setHorzTextAlign("trailing");
+    obj.label126:setMargins({right=5});
+    obj.label126:setName("label126");
 
     obj.edit103 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit103:setParent(obj.layout101);
@@ -3515,14 +3533,14 @@ local function constructNew_OrdemParanormalS_byHelldemos()
     obj.edit103:setMargins({right=5});
     obj.edit103:setName("edit103");
 
-    obj.label125 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label125:setParent(obj.layout101);
-    obj.label125:setAlign("left");
-    obj.label125:setWidth(5);
-    obj.label125:setText("");
-    obj.label125:setHorzTextAlign("trailing");
-    obj.label125:setMargins({right=5});
-    obj.label125:setName("label125");
+    obj.label127 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label127:setParent(obj.layout101);
+    obj.label127:setAlign("left");
+    obj.label127:setWidth(5);
+    obj.label127:setText("");
+    obj.label127:setHorzTextAlign("trailing");
+    obj.label127:setMargins({right=5});
+    obj.label127:setName("label127");
 
     obj.layout102 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout102:setParent(obj.layout100);
@@ -3531,23 +3549,23 @@ local function constructNew_OrdemParanormalS_byHelldemos()
     obj.layout102:setMargins({bottom=2, top=15});
     obj.layout102:setName("layout102");
 
-    obj.label126 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label126:setParent(obj.layout102);
-    obj.label126:setAlign("left");
-    obj.label126:setWidth(5);
-    obj.label126:setText("");
-    obj.label126:setHorzTextAlign("trailing");
-    obj.label126:setMargins({right=5});
-    obj.label126:setName("label126");
+    obj.label128 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label128:setParent(obj.layout102);
+    obj.label128:setAlign("left");
+    obj.label128:setWidth(5);
+    obj.label128:setText("");
+    obj.label128:setHorzTextAlign("trailing");
+    obj.label128:setMargins({right=5});
+    obj.label128:setName("label128");
 
-    obj.label127 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label127:setParent(obj.layout102);
-    obj.label127:setAlign("left");
-    obj.label127:setWidth(55);
-    obj.label127:setText("Nome: ");
-    obj.label127:setHorzTextAlign("trailing");
-    obj.label127:setMargins({right=5});
-    obj.label127:setName("label127");
+    obj.label129 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label129:setParent(obj.layout102);
+    obj.label129:setAlign("left");
+    obj.label129:setWidth(55);
+    obj.label129:setText("Nome: ");
+    obj.label129:setHorzTextAlign("trailing");
+    obj.label129:setMargins({right=5});
+    obj.label129:setName("label129");
 
     obj.edit104 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit104:setParent(obj.layout102);
@@ -3559,14 +3577,14 @@ local function constructNew_OrdemParanormalS_byHelldemos()
     obj.edit104:setMargins({right=5});
     obj.edit104:setName("edit104");
 
-    obj.label128 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label128:setParent(obj.layout102);
-    obj.label128:setAlign("left");
-    obj.label128:setWidth(55);
-    obj.label128:setText("Tipo: ");
-    obj.label128:setHorzTextAlign("trailing");
-    obj.label128:setMargins({right=5});
-    obj.label128:setName("label128");
+    obj.label130 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label130:setParent(obj.layout102);
+    obj.label130:setAlign("left");
+    obj.label130:setWidth(55);
+    obj.label130:setText("Tipo: ");
+    obj.label130:setHorzTextAlign("trailing");
+    obj.label130:setMargins({right=5});
+    obj.label130:setName("label130");
 
     obj.edit105 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit105:setParent(obj.layout102);
@@ -3578,14 +3596,14 @@ local function constructNew_OrdemParanormalS_byHelldemos()
     obj.edit105:setMargins({right=5});
     obj.edit105:setName("edit105");
 
-    obj.label129 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label129:setParent(obj.layout102);
-    obj.label129:setAlign("left");
-    obj.label129:setWidth(55);
-    obj.label129:setText("Ataque: ");
-    obj.label129:setHorzTextAlign("trailing");
-    obj.label129:setMargins({right=5});
-    obj.label129:setName("label129");
+    obj.label131 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label131:setParent(obj.layout102);
+    obj.label131:setAlign("left");
+    obj.label131:setWidth(55);
+    obj.label131:setText("Ataque: ");
+    obj.label131:setHorzTextAlign("trailing");
+    obj.label131:setMargins({right=5});
+    obj.label131:setName("label131");
 
     obj.edit106 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit106:setParent(obj.layout102);
@@ -3593,18 +3611,18 @@ local function constructNew_OrdemParanormalS_byHelldemos()
     obj.edit106:setHorzTextAlign("leading");
     obj.edit106:setFontSize(14);
     obj.edit106:setWidth(60);
-    obj.edit106:setField("ataque.tipo.a2");
+    obj.edit106:setField("ataque.ataque.a2");
     obj.edit106:setMargins({right=5});
     obj.edit106:setName("edit106");
 
-    obj.label130 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label130:setParent(obj.layout102);
-    obj.label130:setAlign("left");
-    obj.label130:setWidth(55);
-    obj.label130:setText("Alcance: ");
-    obj.label130:setHorzTextAlign("trailing");
-    obj.label130:setMargins({right=5});
-    obj.label130:setName("label130");
+    obj.label132 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label132:setParent(obj.layout102);
+    obj.label132:setAlign("left");
+    obj.label132:setWidth(55);
+    obj.label132:setText("Alcance: ");
+    obj.label132:setHorzTextAlign("trailing");
+    obj.label132:setMargins({right=5});
+    obj.label132:setName("label132");
 
     obj.edit107 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit107:setParent(obj.layout102);
@@ -3616,14 +3634,14 @@ local function constructNew_OrdemParanormalS_byHelldemos()
     obj.edit107:setMargins({right=5});
     obj.edit107:setName("edit107");
 
-    obj.label131 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label131:setParent(obj.layout102);
-    obj.label131:setAlign("left");
-    obj.label131:setWidth(55);
-    obj.label131:setText("Dano: ");
-    obj.label131:setHorzTextAlign("trailing");
-    obj.label131:setMargins({right=5});
-    obj.label131:setName("label131");
+    obj.label133 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label133:setParent(obj.layout102);
+    obj.label133:setAlign("left");
+    obj.label133:setWidth(55);
+    obj.label133:setText("Dano: ");
+    obj.label133:setHorzTextAlign("trailing");
+    obj.label133:setMargins({right=5});
+    obj.label133:setName("label133");
 
     obj.edit108 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit108:setParent(obj.layout102);
@@ -3635,14 +3653,14 @@ local function constructNew_OrdemParanormalS_byHelldemos()
     obj.edit108:setMargins({right=5});
     obj.edit108:setName("edit108");
 
-    obj.label132 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label132:setParent(obj.layout102);
-    obj.label132:setAlign("left");
-    obj.label132:setWidth(55);
-    obj.label132:setText("Crítico: ");
-    obj.label132:setHorzTextAlign("trailing");
-    obj.label132:setMargins({right=5});
-    obj.label132:setName("label132");
+    obj.label134 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label134:setParent(obj.layout102);
+    obj.label134:setAlign("left");
+    obj.label134:setWidth(55);
+    obj.label134:setText("Munição: ");
+    obj.label134:setHorzTextAlign("trailing");
+    obj.label134:setMargins({right=5});
+    obj.label134:setName("label134");
 
     obj.edit109 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit109:setParent(obj.layout102);
@@ -3650,18 +3668,37 @@ local function constructNew_OrdemParanormalS_byHelldemos()
     obj.edit109:setHorzTextAlign("leading");
     obj.edit109:setFontSize(14);
     obj.edit109:setWidth(60);
-    obj.edit109:setField("ataque.critico.a2");
+    obj.edit109:setField("ataque.municao.a2");
     obj.edit109:setMargins({right=5});
     obj.edit109:setName("edit109");
 
-    obj.label133 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label133:setParent(obj.layout102);
-    obj.label133:setAlign("left");
-    obj.label133:setWidth(5);
-    obj.label133:setText("");
-    obj.label133:setHorzTextAlign("trailing");
-    obj.label133:setMargins({right=5});
-    obj.label133:setName("label133");
+    obj.label135 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label135:setParent(obj.layout102);
+    obj.label135:setAlign("left");
+    obj.label135:setWidth(55);
+    obj.label135:setText("Crítico: ");
+    obj.label135:setHorzTextAlign("trailing");
+    obj.label135:setMargins({right=5});
+    obj.label135:setName("label135");
+
+    obj.edit110 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit110:setParent(obj.layout102);
+    obj.edit110:setAlign("left");
+    obj.edit110:setHorzTextAlign("leading");
+    obj.edit110:setFontSize(14);
+    obj.edit110:setWidth(60);
+    obj.edit110:setField("ataque.critico.a2");
+    obj.edit110:setMargins({right=5});
+    obj.edit110:setName("edit110");
+
+    obj.label136 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label136:setParent(obj.layout102);
+    obj.label136:setAlign("left");
+    obj.label136:setWidth(5);
+    obj.label136:setText("");
+    obj.label136:setHorzTextAlign("trailing");
+    obj.label136:setMargins({right=5});
+    obj.label136:setName("label136");
 
     obj.layout103 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout103:setParent(obj.layout100);
@@ -3670,61 +3707,42 @@ local function constructNew_OrdemParanormalS_byHelldemos()
     obj.layout103:setMargins({bottom=2, top=15});
     obj.layout103:setName("layout103");
 
-    obj.label134 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label134:setParent(obj.layout103);
-    obj.label134:setAlign("left");
-    obj.label134:setWidth(5);
-    obj.label134:setText("");
-    obj.label134:setHorzTextAlign("trailing");
-    obj.label134:setMargins({right=5});
-    obj.label134:setName("label134");
+    obj.label137 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label137:setParent(obj.layout103);
+    obj.label137:setAlign("left");
+    obj.label137:setWidth(5);
+    obj.label137:setText("");
+    obj.label137:setHorzTextAlign("trailing");
+    obj.label137:setMargins({right=5});
+    obj.label137:setName("label137");
 
-    obj.label135 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label135:setParent(obj.layout103);
-    obj.label135:setAlign("left");
-    obj.label135:setWidth(55);
-    obj.label135:setText("Nome: ");
-    obj.label135:setHorzTextAlign("trailing");
-    obj.label135:setMargins({right=5});
-    obj.label135:setName("label135");
-
-    obj.edit110 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit110:setParent(obj.layout103);
-    obj.edit110:setAlign("left");
-    obj.edit110:setHorzTextAlign("leading");
-    obj.edit110:setFontSize(14);
-    obj.edit110:setWidth(120);
-    obj.edit110:setField("ataque.nome.a3");
-    obj.edit110:setMargins({right=5});
-    obj.edit110:setName("edit110");
-
-    obj.label136 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label136:setParent(obj.layout103);
-    obj.label136:setAlign("left");
-    obj.label136:setWidth(55);
-    obj.label136:setText("Tipo: ");
-    obj.label136:setHorzTextAlign("trailing");
-    obj.label136:setMargins({right=5});
-    obj.label136:setName("label136");
+    obj.label138 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label138:setParent(obj.layout103);
+    obj.label138:setAlign("left");
+    obj.label138:setWidth(55);
+    obj.label138:setText("Nome: ");
+    obj.label138:setHorzTextAlign("trailing");
+    obj.label138:setMargins({right=5});
+    obj.label138:setName("label138");
 
     obj.edit111 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit111:setParent(obj.layout103);
     obj.edit111:setAlign("left");
     obj.edit111:setHorzTextAlign("leading");
     obj.edit111:setFontSize(14);
-    obj.edit111:setWidth(60);
-    obj.edit111:setField("ataque.tipo.a3");
+    obj.edit111:setWidth(120);
+    obj.edit111:setField("ataque.nome.a3");
     obj.edit111:setMargins({right=5});
     obj.edit111:setName("edit111");
 
-    obj.label137 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label137:setParent(obj.layout103);
-    obj.label137:setAlign("left");
-    obj.label137:setWidth(55);
-    obj.label137:setText("Ataque: ");
-    obj.label137:setHorzTextAlign("trailing");
-    obj.label137:setMargins({right=5});
-    obj.label137:setName("label137");
+    obj.label139 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label139:setParent(obj.layout103);
+    obj.label139:setAlign("left");
+    obj.label139:setWidth(55);
+    obj.label139:setText("Tipo: ");
+    obj.label139:setHorzTextAlign("trailing");
+    obj.label139:setMargins({right=5});
+    obj.label139:setName("label139");
 
     obj.edit112 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit112:setParent(obj.layout103);
@@ -3736,14 +3754,14 @@ local function constructNew_OrdemParanormalS_byHelldemos()
     obj.edit112:setMargins({right=5});
     obj.edit112:setName("edit112");
 
-    obj.label138 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label138:setParent(obj.layout103);
-    obj.label138:setAlign("left");
-    obj.label138:setWidth(55);
-    obj.label138:setText("Alcance: ");
-    obj.label138:setHorzTextAlign("trailing");
-    obj.label138:setMargins({right=5});
-    obj.label138:setName("label138");
+    obj.label140 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label140:setParent(obj.layout103);
+    obj.label140:setAlign("left");
+    obj.label140:setWidth(55);
+    obj.label140:setText("Ataque: ");
+    obj.label140:setHorzTextAlign("trailing");
+    obj.label140:setMargins({right=5});
+    obj.label140:setName("label140");
 
     obj.edit113 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit113:setParent(obj.layout103);
@@ -3751,18 +3769,18 @@ local function constructNew_OrdemParanormalS_byHelldemos()
     obj.edit113:setHorzTextAlign("leading");
     obj.edit113:setFontSize(14);
     obj.edit113:setWidth(60);
-    obj.edit113:setField("ataque.alcance.a3");
+    obj.edit113:setField("ataque.ataque.a3");
     obj.edit113:setMargins({right=5});
     obj.edit113:setName("edit113");
 
-    obj.label139 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label139:setParent(obj.layout103);
-    obj.label139:setAlign("left");
-    obj.label139:setWidth(55);
-    obj.label139:setText("Dano: ");
-    obj.label139:setHorzTextAlign("trailing");
-    obj.label139:setMargins({right=5});
-    obj.label139:setName("label139");
+    obj.label141 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label141:setParent(obj.layout103);
+    obj.label141:setAlign("left");
+    obj.label141:setWidth(55);
+    obj.label141:setText("Alcance: ");
+    obj.label141:setHorzTextAlign("trailing");
+    obj.label141:setMargins({right=5});
+    obj.label141:setName("label141");
 
     obj.edit114 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit114:setParent(obj.layout103);
@@ -3770,18 +3788,18 @@ local function constructNew_OrdemParanormalS_byHelldemos()
     obj.edit114:setHorzTextAlign("leading");
     obj.edit114:setFontSize(14);
     obj.edit114:setWidth(60);
-    obj.edit114:setField("ataque.dano.a3");
+    obj.edit114:setField("ataque.alcance.a3");
     obj.edit114:setMargins({right=5});
     obj.edit114:setName("edit114");
 
-    obj.label140 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label140:setParent(obj.layout103);
-    obj.label140:setAlign("left");
-    obj.label140:setWidth(55);
-    obj.label140:setText("Crítico: ");
-    obj.label140:setHorzTextAlign("trailing");
-    obj.label140:setMargins({right=5});
-    obj.label140:setName("label140");
+    obj.label142 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label142:setParent(obj.layout103);
+    obj.label142:setAlign("left");
+    obj.label142:setWidth(55);
+    obj.label142:setText("Dano: ");
+    obj.label142:setHorzTextAlign("trailing");
+    obj.label142:setMargins({right=5});
+    obj.label142:setName("label142");
 
     obj.edit115 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit115:setParent(obj.layout103);
@@ -3789,18 +3807,56 @@ local function constructNew_OrdemParanormalS_byHelldemos()
     obj.edit115:setHorzTextAlign("leading");
     obj.edit115:setFontSize(14);
     obj.edit115:setWidth(60);
-    obj.edit115:setField("ataque.critico.a3");
+    obj.edit115:setField("ataque.dano.a3");
     obj.edit115:setMargins({right=5});
     obj.edit115:setName("edit115");
 
-    obj.label141 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label141:setParent(obj.layout103);
-    obj.label141:setAlign("left");
-    obj.label141:setWidth(5);
-    obj.label141:setText("");
-    obj.label141:setHorzTextAlign("trailing");
-    obj.label141:setMargins({right=5});
-    obj.label141:setName("label141");
+    obj.label143 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label143:setParent(obj.layout103);
+    obj.label143:setAlign("left");
+    obj.label143:setWidth(55);
+    obj.label143:setText("Munição: ");
+    obj.label143:setHorzTextAlign("trailing");
+    obj.label143:setMargins({right=5});
+    obj.label143:setName("label143");
+
+    obj.edit116 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit116:setParent(obj.layout103);
+    obj.edit116:setAlign("left");
+    obj.edit116:setHorzTextAlign("leading");
+    obj.edit116:setFontSize(14);
+    obj.edit116:setWidth(60);
+    obj.edit116:setField("ataque.municao.a3");
+    obj.edit116:setMargins({right=5});
+    obj.edit116:setName("edit116");
+
+    obj.label144 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label144:setParent(obj.layout103);
+    obj.label144:setAlign("left");
+    obj.label144:setWidth(55);
+    obj.label144:setText("Crítico: ");
+    obj.label144:setHorzTextAlign("trailing");
+    obj.label144:setMargins({right=5});
+    obj.label144:setName("label144");
+
+    obj.edit117 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit117:setParent(obj.layout103);
+    obj.edit117:setAlign("left");
+    obj.edit117:setHorzTextAlign("leading");
+    obj.edit117:setFontSize(14);
+    obj.edit117:setWidth(60);
+    obj.edit117:setField("ataque.critico.a3");
+    obj.edit117:setMargins({right=5});
+    obj.edit117:setName("edit117");
+
+    obj.label145 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label145:setParent(obj.layout103);
+    obj.label145:setAlign("left");
+    obj.label145:setWidth(5);
+    obj.label145:setText("");
+    obj.label145:setHorzTextAlign("trailing");
+    obj.label145:setMargins({right=5});
+    obj.label145:setName("label145");
 
     obj.layout104 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout104:setParent(obj.layout100);
@@ -3809,80 +3865,42 @@ local function constructNew_OrdemParanormalS_byHelldemos()
     obj.layout104:setMargins({bottom=2, top=15});
     obj.layout104:setName("layout104");
 
-    obj.label142 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label142:setParent(obj.layout104);
-    obj.label142:setAlign("left");
-    obj.label142:setWidth(5);
-    obj.label142:setText("");
-    obj.label142:setHorzTextAlign("trailing");
-    obj.label142:setMargins({right=5});
-    obj.label142:setName("label142");
+    obj.label146 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label146:setParent(obj.layout104);
+    obj.label146:setAlign("left");
+    obj.label146:setWidth(5);
+    obj.label146:setText("");
+    obj.label146:setHorzTextAlign("trailing");
+    obj.label146:setMargins({right=5});
+    obj.label146:setName("label146");
 
-    obj.label143 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label143:setParent(obj.layout104);
-    obj.label143:setAlign("left");
-    obj.label143:setWidth(55);
-    obj.label143:setText("Nome: ");
-    obj.label143:setHorzTextAlign("trailing");
-    obj.label143:setMargins({right=5});
-    obj.label143:setName("label143");
-
-    obj.edit116 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit116:setParent(obj.layout104);
-    obj.edit116:setAlign("left");
-    obj.edit116:setHorzTextAlign("leading");
-    obj.edit116:setFontSize(14);
-    obj.edit116:setWidth(120);
-    obj.edit116:setField("ataque.nome.a4");
-    obj.edit116:setMargins({right=5});
-    obj.edit116:setName("edit116");
-
-    obj.label144 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label144:setParent(obj.layout104);
-    obj.label144:setAlign("left");
-    obj.label144:setWidth(55);
-    obj.label144:setText("Tipo: ");
-    obj.label144:setHorzTextAlign("trailing");
-    obj.label144:setMargins({right=5});
-    obj.label144:setName("label144");
-
-    obj.edit117 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit117:setParent(obj.layout104);
-    obj.edit117:setAlign("left");
-    obj.edit117:setHorzTextAlign("leading");
-    obj.edit117:setFontSize(14);
-    obj.edit117:setWidth(60);
-    obj.edit117:setField("ataque.tipo.a4");
-    obj.edit117:setMargins({right=5});
-    obj.edit117:setName("edit117");
-
-    obj.label145 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label145:setParent(obj.layout104);
-    obj.label145:setAlign("left");
-    obj.label145:setWidth(55);
-    obj.label145:setText("Ataque: ");
-    obj.label145:setHorzTextAlign("trailing");
-    obj.label145:setMargins({right=5});
-    obj.label145:setName("label145");
+    obj.label147 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label147:setParent(obj.layout104);
+    obj.label147:setAlign("left");
+    obj.label147:setWidth(55);
+    obj.label147:setText("Nome: ");
+    obj.label147:setHorzTextAlign("trailing");
+    obj.label147:setMargins({right=5});
+    obj.label147:setName("label147");
 
     obj.edit118 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit118:setParent(obj.layout104);
     obj.edit118:setAlign("left");
     obj.edit118:setHorzTextAlign("leading");
     obj.edit118:setFontSize(14);
-    obj.edit118:setWidth(60);
-    obj.edit118:setField("ataque.tipo.a4");
+    obj.edit118:setWidth(120);
+    obj.edit118:setField("ataque.nome.a4");
     obj.edit118:setMargins({right=5});
     obj.edit118:setName("edit118");
 
-    obj.label146 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label146:setParent(obj.layout104);
-    obj.label146:setAlign("left");
-    obj.label146:setWidth(55);
-    obj.label146:setText("Alcance: ");
-    obj.label146:setHorzTextAlign("trailing");
-    obj.label146:setMargins({right=5});
-    obj.label146:setName("label146");
+    obj.label148 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label148:setParent(obj.layout104);
+    obj.label148:setAlign("left");
+    obj.label148:setWidth(55);
+    obj.label148:setText("Tipo: ");
+    obj.label148:setHorzTextAlign("trailing");
+    obj.label148:setMargins({right=5});
+    obj.label148:setName("label148");
 
     obj.edit119 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit119:setParent(obj.layout104);
@@ -3890,18 +3908,18 @@ local function constructNew_OrdemParanormalS_byHelldemos()
     obj.edit119:setHorzTextAlign("leading");
     obj.edit119:setFontSize(14);
     obj.edit119:setWidth(60);
-    obj.edit119:setField("ataque.alcance.a4");
+    obj.edit119:setField("ataque.tipo.a4");
     obj.edit119:setMargins({right=5});
     obj.edit119:setName("edit119");
 
-    obj.label147 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label147:setParent(obj.layout104);
-    obj.label147:setAlign("left");
-    obj.label147:setWidth(55);
-    obj.label147:setText("Dano: ");
-    obj.label147:setHorzTextAlign("trailing");
-    obj.label147:setMargins({right=5});
-    obj.label147:setName("label147");
+    obj.label149 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label149:setParent(obj.layout104);
+    obj.label149:setAlign("left");
+    obj.label149:setWidth(55);
+    obj.label149:setText("Ataque: ");
+    obj.label149:setHorzTextAlign("trailing");
+    obj.label149:setMargins({right=5});
+    obj.label149:setName("label149");
 
     obj.edit120 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit120:setParent(obj.layout104);
@@ -3909,18 +3927,18 @@ local function constructNew_OrdemParanormalS_byHelldemos()
     obj.edit120:setHorzTextAlign("leading");
     obj.edit120:setFontSize(14);
     obj.edit120:setWidth(60);
-    obj.edit120:setField("ataque.dano.a4");
+    obj.edit120:setField("ataque.ataque.a4");
     obj.edit120:setMargins({right=5});
     obj.edit120:setName("edit120");
 
-    obj.label148 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label148:setParent(obj.layout104);
-    obj.label148:setAlign("left");
-    obj.label148:setWidth(55);
-    obj.label148:setText("Crítico: ");
-    obj.label148:setHorzTextAlign("trailing");
-    obj.label148:setMargins({right=5});
-    obj.label148:setName("label148");
+    obj.label150 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label150:setParent(obj.layout104);
+    obj.label150:setAlign("left");
+    obj.label150:setWidth(55);
+    obj.label150:setText("Alcance: ");
+    obj.label150:setHorzTextAlign("trailing");
+    obj.label150:setMargins({right=5});
+    obj.label150:setName("label150");
 
     obj.edit121 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit121:setParent(obj.layout104);
@@ -3928,18 +3946,75 @@ local function constructNew_OrdemParanormalS_byHelldemos()
     obj.edit121:setHorzTextAlign("leading");
     obj.edit121:setFontSize(14);
     obj.edit121:setWidth(60);
-    obj.edit121:setField("ataque.critico.a4");
+    obj.edit121:setField("ataque.alcance.a4");
     obj.edit121:setMargins({right=5});
     obj.edit121:setName("edit121");
 
-    obj.label149 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label149:setParent(obj.layout104);
-    obj.label149:setAlign("left");
-    obj.label149:setWidth(5);
-    obj.label149:setText("");
-    obj.label149:setHorzTextAlign("trailing");
-    obj.label149:setMargins({right=5});
-    obj.label149:setName("label149");
+    obj.label151 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label151:setParent(obj.layout104);
+    obj.label151:setAlign("left");
+    obj.label151:setWidth(55);
+    obj.label151:setText("Dano: ");
+    obj.label151:setHorzTextAlign("trailing");
+    obj.label151:setMargins({right=5});
+    obj.label151:setName("label151");
+
+    obj.edit122 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit122:setParent(obj.layout104);
+    obj.edit122:setAlign("left");
+    obj.edit122:setHorzTextAlign("leading");
+    obj.edit122:setFontSize(14);
+    obj.edit122:setWidth(60);
+    obj.edit122:setField("ataque.dano.a4");
+    obj.edit122:setMargins({right=5});
+    obj.edit122:setName("edit122");
+
+    obj.label152 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label152:setParent(obj.layout104);
+    obj.label152:setAlign("left");
+    obj.label152:setWidth(55);
+    obj.label152:setText("Munição: ");
+    obj.label152:setHorzTextAlign("trailing");
+    obj.label152:setMargins({right=5});
+    obj.label152:setName("label152");
+
+    obj.edit123 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit123:setParent(obj.layout104);
+    obj.edit123:setAlign("left");
+    obj.edit123:setHorzTextAlign("leading");
+    obj.edit123:setFontSize(14);
+    obj.edit123:setWidth(60);
+    obj.edit123:setField("ataque.municao.a4");
+    obj.edit123:setMargins({right=5});
+    obj.edit123:setName("edit123");
+
+    obj.label153 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label153:setParent(obj.layout104);
+    obj.label153:setAlign("left");
+    obj.label153:setWidth(55);
+    obj.label153:setText("Crítico: ");
+    obj.label153:setHorzTextAlign("trailing");
+    obj.label153:setMargins({right=5});
+    obj.label153:setName("label153");
+
+    obj.edit124 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit124:setParent(obj.layout104);
+    obj.edit124:setAlign("left");
+    obj.edit124:setHorzTextAlign("leading");
+    obj.edit124:setFontSize(14);
+    obj.edit124:setWidth(60);
+    obj.edit124:setField("ataque.critico.a4");
+    obj.edit124:setMargins({right=5});
+    obj.edit124:setName("edit124");
+
+    obj.label154 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label154:setParent(obj.layout104);
+    obj.label154:setAlign("left");
+    obj.label154:setWidth(5);
+    obj.label154:setText("");
+    obj.label154:setHorzTextAlign("trailing");
+    obj.label154:setMargins({right=5});
+    obj.label154:setName("label154");
 
     obj.layout105 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout105:setParent(obj.layout100);
@@ -3948,99 +4023,42 @@ local function constructNew_OrdemParanormalS_byHelldemos()
     obj.layout105:setMargins({bottom=2, top=15});
     obj.layout105:setName("layout105");
 
-    obj.label150 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label150:setParent(obj.layout105);
-    obj.label150:setAlign("left");
-    obj.label150:setWidth(5);
-    obj.label150:setText("");
-    obj.label150:setHorzTextAlign("trailing");
-    obj.label150:setMargins({right=5});
-    obj.label150:setName("label150");
+    obj.label155 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label155:setParent(obj.layout105);
+    obj.label155:setAlign("left");
+    obj.label155:setWidth(5);
+    obj.label155:setText("");
+    obj.label155:setHorzTextAlign("trailing");
+    obj.label155:setMargins({right=5});
+    obj.label155:setName("label155");
 
-    obj.label151 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label151:setParent(obj.layout105);
-    obj.label151:setAlign("left");
-    obj.label151:setWidth(55);
-    obj.label151:setText("Nome: ");
-    obj.label151:setHorzTextAlign("trailing");
-    obj.label151:setMargins({right=5});
-    obj.label151:setName("label151");
-
-    obj.edit122 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit122:setParent(obj.layout105);
-    obj.edit122:setAlign("left");
-    obj.edit122:setHorzTextAlign("leading");
-    obj.edit122:setFontSize(14);
-    obj.edit122:setWidth(120);
-    obj.edit122:setField("ataque.nome.a5");
-    obj.edit122:setMargins({right=5});
-    obj.edit122:setName("edit122");
-
-    obj.label152 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label152:setParent(obj.layout105);
-    obj.label152:setAlign("left");
-    obj.label152:setWidth(55);
-    obj.label152:setText("Tipo: ");
-    obj.label152:setHorzTextAlign("trailing");
-    obj.label152:setMargins({right=5});
-    obj.label152:setName("label152");
-
-    obj.edit123 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit123:setParent(obj.layout105);
-    obj.edit123:setAlign("left");
-    obj.edit123:setHorzTextAlign("leading");
-    obj.edit123:setFontSize(14);
-    obj.edit123:setWidth(60);
-    obj.edit123:setField("ataque.tipo.a5");
-    obj.edit123:setMargins({right=5});
-    obj.edit123:setName("edit123");
-
-    obj.label153 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label153:setParent(obj.layout105);
-    obj.label153:setAlign("left");
-    obj.label153:setWidth(55);
-    obj.label153:setText("Ataque: ");
-    obj.label153:setHorzTextAlign("trailing");
-    obj.label153:setMargins({right=5});
-    obj.label153:setName("label153");
-
-    obj.edit124 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit124:setParent(obj.layout105);
-    obj.edit124:setAlign("left");
-    obj.edit124:setHorzTextAlign("leading");
-    obj.edit124:setFontSize(14);
-    obj.edit124:setWidth(60);
-    obj.edit124:setField("ataque.tipo.a5");
-    obj.edit124:setMargins({right=5});
-    obj.edit124:setName("edit124");
-
-    obj.label154 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label154:setParent(obj.layout105);
-    obj.label154:setAlign("left");
-    obj.label154:setWidth(55);
-    obj.label154:setText("Alcance: ");
-    obj.label154:setHorzTextAlign("trailing");
-    obj.label154:setMargins({right=5});
-    obj.label154:setName("label154");
+    obj.label156 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label156:setParent(obj.layout105);
+    obj.label156:setAlign("left");
+    obj.label156:setWidth(55);
+    obj.label156:setText("Nome: ");
+    obj.label156:setHorzTextAlign("trailing");
+    obj.label156:setMargins({right=5});
+    obj.label156:setName("label156");
 
     obj.edit125 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit125:setParent(obj.layout105);
     obj.edit125:setAlign("left");
     obj.edit125:setHorzTextAlign("leading");
     obj.edit125:setFontSize(14);
-    obj.edit125:setWidth(60);
-    obj.edit125:setField("ataque.alcance.a5");
+    obj.edit125:setWidth(120);
+    obj.edit125:setField("ataque.nome.a5");
     obj.edit125:setMargins({right=5});
     obj.edit125:setName("edit125");
 
-    obj.label155 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label155:setParent(obj.layout105);
-    obj.label155:setAlign("left");
-    obj.label155:setWidth(55);
-    obj.label155:setText("Dano: ");
-    obj.label155:setHorzTextAlign("trailing");
-    obj.label155:setMargins({right=5});
-    obj.label155:setName("label155");
+    obj.label157 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label157:setParent(obj.layout105);
+    obj.label157:setAlign("left");
+    obj.label157:setWidth(55);
+    obj.label157:setText("Tipo: ");
+    obj.label157:setHorzTextAlign("trailing");
+    obj.label157:setMargins({right=5});
+    obj.label157:setName("label157");
 
     obj.edit126 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit126:setParent(obj.layout105);
@@ -4048,18 +4066,18 @@ local function constructNew_OrdemParanormalS_byHelldemos()
     obj.edit126:setHorzTextAlign("leading");
     obj.edit126:setFontSize(14);
     obj.edit126:setWidth(60);
-    obj.edit126:setField("ataque.dano.a5");
+    obj.edit126:setField("ataque.tipo.a5");
     obj.edit126:setMargins({right=5});
     obj.edit126:setName("edit126");
 
-    obj.label156 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label156:setParent(obj.layout105);
-    obj.label156:setAlign("left");
-    obj.label156:setWidth(55);
-    obj.label156:setText("Crítico: ");
-    obj.label156:setHorzTextAlign("trailing");
-    obj.label156:setMargins({right=5});
-    obj.label156:setName("label156");
+    obj.label158 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label158:setParent(obj.layout105);
+    obj.label158:setAlign("left");
+    obj.label158:setWidth(55);
+    obj.label158:setText("Ataque: ");
+    obj.label158:setHorzTextAlign("trailing");
+    obj.label158:setMargins({right=5});
+    obj.label158:setName("label158");
 
     obj.edit127 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit127:setParent(obj.layout105);
@@ -4067,18 +4085,94 @@ local function constructNew_OrdemParanormalS_byHelldemos()
     obj.edit127:setHorzTextAlign("leading");
     obj.edit127:setFontSize(14);
     obj.edit127:setWidth(60);
-    obj.edit127:setField("ataque.critico.a5");
+    obj.edit127:setField("ataque.ataque.a5");
     obj.edit127:setMargins({right=5});
     obj.edit127:setName("edit127");
 
-    obj.label157 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label157:setParent(obj.layout105);
-    obj.label157:setAlign("left");
-    obj.label157:setWidth(5);
-    obj.label157:setText("");
-    obj.label157:setHorzTextAlign("trailing");
-    obj.label157:setMargins({right=5});
-    obj.label157:setName("label157");
+    obj.label159 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label159:setParent(obj.layout105);
+    obj.label159:setAlign("left");
+    obj.label159:setWidth(55);
+    obj.label159:setText("Alcance: ");
+    obj.label159:setHorzTextAlign("trailing");
+    obj.label159:setMargins({right=5});
+    obj.label159:setName("label159");
+
+    obj.edit128 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit128:setParent(obj.layout105);
+    obj.edit128:setAlign("left");
+    obj.edit128:setHorzTextAlign("leading");
+    obj.edit128:setFontSize(14);
+    obj.edit128:setWidth(60);
+    obj.edit128:setField("ataque.alcance.a5");
+    obj.edit128:setMargins({right=5});
+    obj.edit128:setName("edit128");
+
+    obj.label160 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label160:setParent(obj.layout105);
+    obj.label160:setAlign("left");
+    obj.label160:setWidth(55);
+    obj.label160:setText("Dano: ");
+    obj.label160:setHorzTextAlign("trailing");
+    obj.label160:setMargins({right=5});
+    obj.label160:setName("label160");
+
+    obj.edit129 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit129:setParent(obj.layout105);
+    obj.edit129:setAlign("left");
+    obj.edit129:setHorzTextAlign("leading");
+    obj.edit129:setFontSize(14);
+    obj.edit129:setWidth(60);
+    obj.edit129:setField("ataque.dano.a5");
+    obj.edit129:setMargins({right=5});
+    obj.edit129:setName("edit129");
+
+    obj.label161 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label161:setParent(obj.layout105);
+    obj.label161:setAlign("left");
+    obj.label161:setWidth(55);
+    obj.label161:setText("Munição: ");
+    obj.label161:setHorzTextAlign("trailing");
+    obj.label161:setMargins({right=5});
+    obj.label161:setName("label161");
+
+    obj.edit130 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit130:setParent(obj.layout105);
+    obj.edit130:setAlign("left");
+    obj.edit130:setHorzTextAlign("leading");
+    obj.edit130:setFontSize(14);
+    obj.edit130:setWidth(60);
+    obj.edit130:setField("ataque.municao.a5");
+    obj.edit130:setMargins({right=5});
+    obj.edit130:setName("edit130");
+
+    obj.label162 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label162:setParent(obj.layout105);
+    obj.label162:setAlign("left");
+    obj.label162:setWidth(55);
+    obj.label162:setText("Crítico: ");
+    obj.label162:setHorzTextAlign("trailing");
+    obj.label162:setMargins({right=5});
+    obj.label162:setName("label162");
+
+    obj.edit131 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit131:setParent(obj.layout105);
+    obj.edit131:setAlign("left");
+    obj.edit131:setHorzTextAlign("leading");
+    obj.edit131:setFontSize(14);
+    obj.edit131:setWidth(60);
+    obj.edit131:setField("ataque.critico.a5");
+    obj.edit131:setMargins({right=5});
+    obj.edit131:setName("edit131");
+
+    obj.label163 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label163:setParent(obj.layout105);
+    obj.label163:setAlign("left");
+    obj.label163:setWidth(5);
+    obj.label163:setText("");
+    obj.label163:setHorzTextAlign("trailing");
+    obj.label163:setMargins({right=5});
+    obj.label163:setName("label163");
 
     obj.layout106 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout106:setParent(obj.layout100);
@@ -4087,118 +4181,42 @@ local function constructNew_OrdemParanormalS_byHelldemos()
     obj.layout106:setMargins({bottom=2, top=15});
     obj.layout106:setName("layout106");
 
-    obj.label158 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label158:setParent(obj.layout106);
-    obj.label158:setAlign("left");
-    obj.label158:setWidth(5);
-    obj.label158:setText("");
-    obj.label158:setHorzTextAlign("trailing");
-    obj.label158:setMargins({right=5});
-    obj.label158:setName("label158");
+    obj.label164 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label164:setParent(obj.layout106);
+    obj.label164:setAlign("left");
+    obj.label164:setWidth(5);
+    obj.label164:setText("");
+    obj.label164:setHorzTextAlign("trailing");
+    obj.label164:setMargins({right=5});
+    obj.label164:setName("label164");
 
-    obj.label159 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label159:setParent(obj.layout106);
-    obj.label159:setAlign("left");
-    obj.label159:setWidth(55);
-    obj.label159:setText("Nome: ");
-    obj.label159:setHorzTextAlign("trailing");
-    obj.label159:setMargins({right=5});
-    obj.label159:setName("label159");
-
-    obj.edit128 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit128:setParent(obj.layout106);
-    obj.edit128:setAlign("left");
-    obj.edit128:setHorzTextAlign("leading");
-    obj.edit128:setFontSize(14);
-    obj.edit128:setWidth(120);
-    obj.edit128:setField("ataque.nome.a6");
-    obj.edit128:setMargins({right=5});
-    obj.edit128:setName("edit128");
-
-    obj.label160 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label160:setParent(obj.layout106);
-    obj.label160:setAlign("left");
-    obj.label160:setWidth(55);
-    obj.label160:setText("Tipo: ");
-    obj.label160:setHorzTextAlign("trailing");
-    obj.label160:setMargins({right=5});
-    obj.label160:setName("label160");
-
-    obj.edit129 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit129:setParent(obj.layout106);
-    obj.edit129:setAlign("left");
-    obj.edit129:setHorzTextAlign("leading");
-    obj.edit129:setFontSize(14);
-    obj.edit129:setWidth(60);
-    obj.edit129:setField("ataque.tipo.a6");
-    obj.edit129:setMargins({right=5});
-    obj.edit129:setName("edit129");
-
-    obj.label161 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label161:setParent(obj.layout106);
-    obj.label161:setAlign("left");
-    obj.label161:setWidth(55);
-    obj.label161:setText("Ataque: ");
-    obj.label161:setHorzTextAlign("trailing");
-    obj.label161:setMargins({right=5});
-    obj.label161:setName("label161");
-
-    obj.edit130 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit130:setParent(obj.layout106);
-    obj.edit130:setAlign("left");
-    obj.edit130:setHorzTextAlign("leading");
-    obj.edit130:setFontSize(14);
-    obj.edit130:setWidth(60);
-    obj.edit130:setField("ataque.tipo.a6");
-    obj.edit130:setMargins({right=5});
-    obj.edit130:setName("edit130");
-
-    obj.label162 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label162:setParent(obj.layout106);
-    obj.label162:setAlign("left");
-    obj.label162:setWidth(55);
-    obj.label162:setText("Alcance: ");
-    obj.label162:setHorzTextAlign("trailing");
-    obj.label162:setMargins({right=5});
-    obj.label162:setName("label162");
-
-    obj.edit131 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit131:setParent(obj.layout106);
-    obj.edit131:setAlign("left");
-    obj.edit131:setHorzTextAlign("leading");
-    obj.edit131:setFontSize(14);
-    obj.edit131:setWidth(60);
-    obj.edit131:setField("ataque.alcance.a6");
-    obj.edit131:setMargins({right=5});
-    obj.edit131:setName("edit131");
-
-    obj.label163 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label163:setParent(obj.layout106);
-    obj.label163:setAlign("left");
-    obj.label163:setWidth(55);
-    obj.label163:setText("Dano: ");
-    obj.label163:setHorzTextAlign("trailing");
-    obj.label163:setMargins({right=5});
-    obj.label163:setName("label163");
+    obj.label165 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label165:setParent(obj.layout106);
+    obj.label165:setAlign("left");
+    obj.label165:setWidth(55);
+    obj.label165:setText("Nome: ");
+    obj.label165:setHorzTextAlign("trailing");
+    obj.label165:setMargins({right=5});
+    obj.label165:setName("label165");
 
     obj.edit132 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit132:setParent(obj.layout106);
     obj.edit132:setAlign("left");
     obj.edit132:setHorzTextAlign("leading");
     obj.edit132:setFontSize(14);
-    obj.edit132:setWidth(60);
-    obj.edit132:setField("ataque.dano.a6");
+    obj.edit132:setWidth(120);
+    obj.edit132:setField("ataque.nome.a6");
     obj.edit132:setMargins({right=5});
     obj.edit132:setName("edit132");
 
-    obj.label164 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label164:setParent(obj.layout106);
-    obj.label164:setAlign("left");
-    obj.label164:setWidth(55);
-    obj.label164:setText("Crítico: ");
-    obj.label164:setHorzTextAlign("trailing");
-    obj.label164:setMargins({right=5});
-    obj.label164:setName("label164");
+    obj.label166 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label166:setParent(obj.layout106);
+    obj.label166:setAlign("left");
+    obj.label166:setWidth(55);
+    obj.label166:setText("Tipo: ");
+    obj.label166:setHorzTextAlign("trailing");
+    obj.label166:setMargins({right=5});
+    obj.label166:setName("label166");
 
     obj.edit133 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit133:setParent(obj.layout106);
@@ -4206,18 +4224,113 @@ local function constructNew_OrdemParanormalS_byHelldemos()
     obj.edit133:setHorzTextAlign("leading");
     obj.edit133:setFontSize(14);
     obj.edit133:setWidth(60);
-    obj.edit133:setField("ataque.critico.a6");
+    obj.edit133:setField("ataque.tipo.a6");
     obj.edit133:setMargins({right=5});
     obj.edit133:setName("edit133");
 
-    obj.label165 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label165:setParent(obj.layout106);
-    obj.label165:setAlign("left");
-    obj.label165:setWidth(5);
-    obj.label165:setText("");
-    obj.label165:setHorzTextAlign("trailing");
-    obj.label165:setMargins({right=5});
-    obj.label165:setName("label165");
+    obj.label167 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label167:setParent(obj.layout106);
+    obj.label167:setAlign("left");
+    obj.label167:setWidth(55);
+    obj.label167:setText("Ataque: ");
+    obj.label167:setHorzTextAlign("trailing");
+    obj.label167:setMargins({right=5});
+    obj.label167:setName("label167");
+
+    obj.edit134 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit134:setParent(obj.layout106);
+    obj.edit134:setAlign("left");
+    obj.edit134:setHorzTextAlign("leading");
+    obj.edit134:setFontSize(14);
+    obj.edit134:setWidth(60);
+    obj.edit134:setField("ataque.ataque.a6");
+    obj.edit134:setMargins({right=5});
+    obj.edit134:setName("edit134");
+
+    obj.label168 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label168:setParent(obj.layout106);
+    obj.label168:setAlign("left");
+    obj.label168:setWidth(55);
+    obj.label168:setText("Alcance: ");
+    obj.label168:setHorzTextAlign("trailing");
+    obj.label168:setMargins({right=5});
+    obj.label168:setName("label168");
+
+    obj.edit135 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit135:setParent(obj.layout106);
+    obj.edit135:setAlign("left");
+    obj.edit135:setHorzTextAlign("leading");
+    obj.edit135:setFontSize(14);
+    obj.edit135:setWidth(60);
+    obj.edit135:setField("ataque.alcance.a6");
+    obj.edit135:setMargins({right=5});
+    obj.edit135:setName("edit135");
+
+    obj.label169 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label169:setParent(obj.layout106);
+    obj.label169:setAlign("left");
+    obj.label169:setWidth(55);
+    obj.label169:setText("Dano: ");
+    obj.label169:setHorzTextAlign("trailing");
+    obj.label169:setMargins({right=5});
+    obj.label169:setName("label169");
+
+    obj.edit136 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit136:setParent(obj.layout106);
+    obj.edit136:setAlign("left");
+    obj.edit136:setHorzTextAlign("leading");
+    obj.edit136:setFontSize(14);
+    obj.edit136:setWidth(60);
+    obj.edit136:setField("ataque.dano.a6");
+    obj.edit136:setMargins({right=5});
+    obj.edit136:setName("edit136");
+
+    obj.label170 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label170:setParent(obj.layout106);
+    obj.label170:setAlign("left");
+    obj.label170:setWidth(55);
+    obj.label170:setText("Munição: ");
+    obj.label170:setHorzTextAlign("trailing");
+    obj.label170:setMargins({right=5});
+    obj.label170:setName("label170");
+
+    obj.edit137 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit137:setParent(obj.layout106);
+    obj.edit137:setAlign("left");
+    obj.edit137:setHorzTextAlign("leading");
+    obj.edit137:setFontSize(14);
+    obj.edit137:setWidth(60);
+    obj.edit137:setField("ataque.municao.a6");
+    obj.edit137:setMargins({right=5});
+    obj.edit137:setName("edit137");
+
+    obj.label171 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label171:setParent(obj.layout106);
+    obj.label171:setAlign("left");
+    obj.label171:setWidth(55);
+    obj.label171:setText("Crítico: ");
+    obj.label171:setHorzTextAlign("trailing");
+    obj.label171:setMargins({right=5});
+    obj.label171:setName("label171");
+
+    obj.edit138 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit138:setParent(obj.layout106);
+    obj.edit138:setAlign("left");
+    obj.edit138:setHorzTextAlign("leading");
+    obj.edit138:setFontSize(14);
+    obj.edit138:setWidth(60);
+    obj.edit138:setField("ataque.critico.a6");
+    obj.edit138:setMargins({right=5});
+    obj.edit138:setName("edit138");
+
+    obj.label172 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label172:setParent(obj.layout106);
+    obj.label172:setAlign("left");
+    obj.label172:setWidth(5);
+    obj.label172:setText("");
+    obj.label172:setHorzTextAlign("trailing");
+    obj.label172:setMargins({right=5});
+    obj.label172:setName("label172");
 
     obj.layout107 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout107:setParent(obj.layout100);
@@ -4225,129 +4338,6 @@ local function constructNew_OrdemParanormalS_byHelldemos()
     obj.layout107:setHeight(20);
     obj.layout107:setMargins({bottom=2, top=15});
     obj.layout107:setName("layout107");
-
-    obj.label166 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label166:setParent(obj.layout107);
-    obj.label166:setAlign("left");
-    obj.label166:setWidth(5);
-    obj.label166:setText("");
-    obj.label166:setHorzTextAlign("trailing");
-    obj.label166:setMargins({right=5});
-    obj.label166:setName("label166");
-
-    obj.label167 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label167:setParent(obj.layout107);
-    obj.label167:setAlign("left");
-    obj.label167:setWidth(55);
-    obj.label167:setText("Nome: ");
-    obj.label167:setHorzTextAlign("trailing");
-    obj.label167:setMargins({right=5});
-    obj.label167:setName("label167");
-
-    obj.edit134 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit134:setParent(obj.layout107);
-    obj.edit134:setAlign("left");
-    obj.edit134:setHorzTextAlign("leading");
-    obj.edit134:setFontSize(14);
-    obj.edit134:setWidth(120);
-    obj.edit134:setField("ataque.nome.a7");
-    obj.edit134:setMargins({right=5});
-    obj.edit134:setName("edit134");
-
-    obj.label168 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label168:setParent(obj.layout107);
-    obj.label168:setAlign("left");
-    obj.label168:setWidth(55);
-    obj.label168:setText("Tipo: ");
-    obj.label168:setHorzTextAlign("trailing");
-    obj.label168:setMargins({right=5});
-    obj.label168:setName("label168");
-
-    obj.edit135 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit135:setParent(obj.layout107);
-    obj.edit135:setAlign("left");
-    obj.edit135:setHorzTextAlign("leading");
-    obj.edit135:setFontSize(14);
-    obj.edit135:setWidth(60);
-    obj.edit135:setField("ataque.tipo.a7");
-    obj.edit135:setMargins({right=5});
-    obj.edit135:setName("edit135");
-
-    obj.label169 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label169:setParent(obj.layout107);
-    obj.label169:setAlign("left");
-    obj.label169:setWidth(55);
-    obj.label169:setText("Ataque: ");
-    obj.label169:setHorzTextAlign("trailing");
-    obj.label169:setMargins({right=5});
-    obj.label169:setName("label169");
-
-    obj.edit136 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit136:setParent(obj.layout107);
-    obj.edit136:setAlign("left");
-    obj.edit136:setHorzTextAlign("leading");
-    obj.edit136:setFontSize(14);
-    obj.edit136:setWidth(60);
-    obj.edit136:setField("ataque.tipo.a7");
-    obj.edit136:setMargins({right=5});
-    obj.edit136:setName("edit136");
-
-    obj.label170 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label170:setParent(obj.layout107);
-    obj.label170:setAlign("left");
-    obj.label170:setWidth(55);
-    obj.label170:setText("Alcance: ");
-    obj.label170:setHorzTextAlign("trailing");
-    obj.label170:setMargins({right=5});
-    obj.label170:setName("label170");
-
-    obj.edit137 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit137:setParent(obj.layout107);
-    obj.edit137:setAlign("left");
-    obj.edit137:setHorzTextAlign("leading");
-    obj.edit137:setFontSize(14);
-    obj.edit137:setWidth(60);
-    obj.edit137:setField("ataque.alcance.a7");
-    obj.edit137:setMargins({right=5});
-    obj.edit137:setName("edit137");
-
-    obj.label171 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label171:setParent(obj.layout107);
-    obj.label171:setAlign("left");
-    obj.label171:setWidth(55);
-    obj.label171:setText("Dano: ");
-    obj.label171:setHorzTextAlign("trailing");
-    obj.label171:setMargins({right=5});
-    obj.label171:setName("label171");
-
-    obj.edit138 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit138:setParent(obj.layout107);
-    obj.edit138:setAlign("left");
-    obj.edit138:setHorzTextAlign("leading");
-    obj.edit138:setFontSize(14);
-    obj.edit138:setWidth(60);
-    obj.edit138:setField("ataque.dano.a7");
-    obj.edit138:setMargins({right=5});
-    obj.edit138:setName("edit138");
-
-    obj.label172 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label172:setParent(obj.layout107);
-    obj.label172:setAlign("left");
-    obj.label172:setWidth(55);
-    obj.label172:setText("Crítico: ");
-    obj.label172:setHorzTextAlign("trailing");
-    obj.label172:setMargins({right=5});
-    obj.label172:setName("label172");
-
-    obj.edit139 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit139:setParent(obj.layout107);
-    obj.edit139:setAlign("left");
-    obj.edit139:setHorzTextAlign("leading");
-    obj.edit139:setFontSize(14);
-    obj.edit139:setWidth(60);
-    obj.edit139:setField("ataque.critico.a7");
-    obj.edit139:setMargins({right=5});
-    obj.edit139:setName("edit139");
 
     obj.label173 = GUI.fromHandle(_obj_newObject("label"));
     obj.label173:setParent(obj.layout107);
@@ -4358,119 +4348,122 @@ local function constructNew_OrdemParanormalS_byHelldemos()
     obj.label173:setMargins({right=5});
     obj.label173:setName("label173");
 
-    obj.layout108 = GUI.fromHandle(_obj_newObject("layout"));
-    obj.layout108:setParent(obj.layout100);
-    obj.layout108:setAlign("top");
-    obj.layout108:setHeight(20);
-    obj.layout108:setMargins({bottom=2, top=15});
-    obj.layout108:setName("layout108");
-
     obj.label174 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label174:setParent(obj.layout108);
+    obj.label174:setParent(obj.layout107);
     obj.label174:setAlign("left");
-    obj.label174:setWidth(5);
-    obj.label174:setText("");
+    obj.label174:setWidth(55);
+    obj.label174:setText("Nome: ");
     obj.label174:setHorzTextAlign("trailing");
     obj.label174:setMargins({right=5});
     obj.label174:setName("label174");
 
+    obj.edit139 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit139:setParent(obj.layout107);
+    obj.edit139:setAlign("left");
+    obj.edit139:setHorzTextAlign("leading");
+    obj.edit139:setFontSize(14);
+    obj.edit139:setWidth(120);
+    obj.edit139:setField("ataque.nome.a7");
+    obj.edit139:setMargins({right=5});
+    obj.edit139:setName("edit139");
+
     obj.label175 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label175:setParent(obj.layout108);
+    obj.label175:setParent(obj.layout107);
     obj.label175:setAlign("left");
     obj.label175:setWidth(55);
-    obj.label175:setText("Nome: ");
+    obj.label175:setText("Tipo: ");
     obj.label175:setHorzTextAlign("trailing");
     obj.label175:setMargins({right=5});
     obj.label175:setName("label175");
 
     obj.edit140 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit140:setParent(obj.layout108);
+    obj.edit140:setParent(obj.layout107);
     obj.edit140:setAlign("left");
     obj.edit140:setHorzTextAlign("leading");
     obj.edit140:setFontSize(14);
-    obj.edit140:setWidth(120);
-    obj.edit140:setField("ataque.nome.a8");
+    obj.edit140:setWidth(60);
+    obj.edit140:setField("ataque.tipo.a7");
     obj.edit140:setMargins({right=5});
     obj.edit140:setName("edit140");
 
     obj.label176 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label176:setParent(obj.layout108);
+    obj.label176:setParent(obj.layout107);
     obj.label176:setAlign("left");
     obj.label176:setWidth(55);
-    obj.label176:setText("Tipo: ");
+    obj.label176:setText("Ataque: ");
     obj.label176:setHorzTextAlign("trailing");
     obj.label176:setMargins({right=5});
     obj.label176:setName("label176");
 
     obj.edit141 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit141:setParent(obj.layout108);
+    obj.edit141:setParent(obj.layout107);
     obj.edit141:setAlign("left");
     obj.edit141:setHorzTextAlign("leading");
     obj.edit141:setFontSize(14);
     obj.edit141:setWidth(60);
-    obj.edit141:setField("ataque.tipo.a8");
+    obj.edit141:setField("ataque.ataque.a7");
     obj.edit141:setMargins({right=5});
     obj.edit141:setName("edit141");
 
     obj.label177 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label177:setParent(obj.layout108);
+    obj.label177:setParent(obj.layout107);
     obj.label177:setAlign("left");
     obj.label177:setWidth(55);
-    obj.label177:setText("Ataque: ");
+    obj.label177:setText("Alcance: ");
     obj.label177:setHorzTextAlign("trailing");
     obj.label177:setMargins({right=5});
     obj.label177:setName("label177");
 
     obj.edit142 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit142:setParent(obj.layout108);
+    obj.edit142:setParent(obj.layout107);
     obj.edit142:setAlign("left");
     obj.edit142:setHorzTextAlign("leading");
     obj.edit142:setFontSize(14);
     obj.edit142:setWidth(60);
-    obj.edit142:setField("ataque.tipo.a8");
+    obj.edit142:setField("ataque.alcance.a7");
     obj.edit142:setMargins({right=5});
     obj.edit142:setName("edit142");
 
     obj.label178 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label178:setParent(obj.layout108);
+    obj.label178:setParent(obj.layout107);
     obj.label178:setAlign("left");
     obj.label178:setWidth(55);
-    obj.label178:setText("Alcance: ");
+    obj.label178:setText("Dano: ");
     obj.label178:setHorzTextAlign("trailing");
     obj.label178:setMargins({right=5});
     obj.label178:setName("label178");
 
     obj.edit143 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit143:setParent(obj.layout108);
+    obj.edit143:setParent(obj.layout107);
     obj.edit143:setAlign("left");
     obj.edit143:setHorzTextAlign("leading");
     obj.edit143:setFontSize(14);
     obj.edit143:setWidth(60);
-    obj.edit143:setField("ataque.alcance.a8");
+    obj.edit143:setField("ataque.dano.a7");
     obj.edit143:setMargins({right=5});
     obj.edit143:setName("edit143");
 
     obj.label179 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label179:setParent(obj.layout108);
+    obj.label179:setParent(obj.layout107);
     obj.label179:setAlign("left");
     obj.label179:setWidth(55);
-    obj.label179:setText("Dano: ");
+    obj.label179:setText("Munição: ");
     obj.label179:setHorzTextAlign("trailing");
     obj.label179:setMargins({right=5});
     obj.label179:setName("label179");
 
     obj.edit144 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit144:setParent(obj.layout108);
+    obj.edit144:setParent(obj.layout107);
     obj.edit144:setAlign("left");
     obj.edit144:setHorzTextAlign("leading");
     obj.edit144:setFontSize(14);
     obj.edit144:setWidth(60);
-    obj.edit144:setField("ataque.dano.a8");
+    obj.edit144:setField("ataque.municao.a7");
     obj.edit144:setMargins({right=5});
     obj.edit144:setName("edit144");
 
     obj.label180 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label180:setParent(obj.layout108);
+    obj.label180:setParent(obj.layout107);
     obj.label180:setAlign("left");
     obj.label180:setWidth(55);
     obj.label180:setText("Crítico: ");
@@ -4479,23 +4472,181 @@ local function constructNew_OrdemParanormalS_byHelldemos()
     obj.label180:setName("label180");
 
     obj.edit145 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit145:setParent(obj.layout108);
+    obj.edit145:setParent(obj.layout107);
     obj.edit145:setAlign("left");
     obj.edit145:setHorzTextAlign("leading");
     obj.edit145:setFontSize(14);
     obj.edit145:setWidth(60);
-    obj.edit145:setField("ataque.critico.a8");
+    obj.edit145:setField("ataque.critico.a7");
     obj.edit145:setMargins({right=5});
     obj.edit145:setName("edit145");
 
     obj.label181 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label181:setParent(obj.layout108);
+    obj.label181:setParent(obj.layout107);
     obj.label181:setAlign("left");
     obj.label181:setWidth(5);
     obj.label181:setText("");
     obj.label181:setHorzTextAlign("trailing");
     obj.label181:setMargins({right=5});
     obj.label181:setName("label181");
+
+    obj.layout108 = GUI.fromHandle(_obj_newObject("layout"));
+    obj.layout108:setParent(obj.layout100);
+    obj.layout108:setAlign("top");
+    obj.layout108:setHeight(20);
+    obj.layout108:setMargins({bottom=2, top=15});
+    obj.layout108:setName("layout108");
+
+    obj.label182 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label182:setParent(obj.layout108);
+    obj.label182:setAlign("left");
+    obj.label182:setWidth(5);
+    obj.label182:setText("");
+    obj.label182:setHorzTextAlign("trailing");
+    obj.label182:setMargins({right=5});
+    obj.label182:setName("label182");
+
+    obj.label183 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label183:setParent(obj.layout108);
+    obj.label183:setAlign("left");
+    obj.label183:setWidth(55);
+    obj.label183:setText("Nome: ");
+    obj.label183:setHorzTextAlign("trailing");
+    obj.label183:setMargins({right=5});
+    obj.label183:setName("label183");
+
+    obj.edit146 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit146:setParent(obj.layout108);
+    obj.edit146:setAlign("left");
+    obj.edit146:setHorzTextAlign("leading");
+    obj.edit146:setFontSize(14);
+    obj.edit146:setWidth(120);
+    obj.edit146:setField("ataque.nome.a8");
+    obj.edit146:setMargins({right=5});
+    obj.edit146:setName("edit146");
+
+    obj.label184 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label184:setParent(obj.layout108);
+    obj.label184:setAlign("left");
+    obj.label184:setWidth(55);
+    obj.label184:setText("Tipo: ");
+    obj.label184:setHorzTextAlign("trailing");
+    obj.label184:setMargins({right=5});
+    obj.label184:setName("label184");
+
+    obj.edit147 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit147:setParent(obj.layout108);
+    obj.edit147:setAlign("left");
+    obj.edit147:setHorzTextAlign("leading");
+    obj.edit147:setFontSize(14);
+    obj.edit147:setWidth(60);
+    obj.edit147:setField("ataque.tipo.a8");
+    obj.edit147:setMargins({right=5});
+    obj.edit147:setName("edit147");
+
+    obj.label185 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label185:setParent(obj.layout108);
+    obj.label185:setAlign("left");
+    obj.label185:setWidth(55);
+    obj.label185:setText("Ataque: ");
+    obj.label185:setHorzTextAlign("trailing");
+    obj.label185:setMargins({right=5});
+    obj.label185:setName("label185");
+
+    obj.edit148 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit148:setParent(obj.layout108);
+    obj.edit148:setAlign("left");
+    obj.edit148:setHorzTextAlign("leading");
+    obj.edit148:setFontSize(14);
+    obj.edit148:setWidth(60);
+    obj.edit148:setField("ataque.ataque.a8");
+    obj.edit148:setMargins({right=5});
+    obj.edit148:setName("edit148");
+
+    obj.label186 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label186:setParent(obj.layout108);
+    obj.label186:setAlign("left");
+    obj.label186:setWidth(55);
+    obj.label186:setText("Alcance: ");
+    obj.label186:setHorzTextAlign("trailing");
+    obj.label186:setMargins({right=5});
+    obj.label186:setName("label186");
+
+    obj.edit149 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit149:setParent(obj.layout108);
+    obj.edit149:setAlign("left");
+    obj.edit149:setHorzTextAlign("leading");
+    obj.edit149:setFontSize(14);
+    obj.edit149:setWidth(60);
+    obj.edit149:setField("ataque.alcance.a8");
+    obj.edit149:setMargins({right=5});
+    obj.edit149:setName("edit149");
+
+    obj.label187 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label187:setParent(obj.layout108);
+    obj.label187:setAlign("left");
+    obj.label187:setWidth(55);
+    obj.label187:setText("Dano: ");
+    obj.label187:setHorzTextAlign("trailing");
+    obj.label187:setMargins({right=5});
+    obj.label187:setName("label187");
+
+    obj.edit150 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit150:setParent(obj.layout108);
+    obj.edit150:setAlign("left");
+    obj.edit150:setHorzTextAlign("leading");
+    obj.edit150:setFontSize(14);
+    obj.edit150:setWidth(60);
+    obj.edit150:setField("ataque.dano.a8");
+    obj.edit150:setMargins({right=5});
+    obj.edit150:setName("edit150");
+
+    obj.label188 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label188:setParent(obj.layout108);
+    obj.label188:setAlign("left");
+    obj.label188:setWidth(55);
+    obj.label188:setText("Munição: ");
+    obj.label188:setHorzTextAlign("trailing");
+    obj.label188:setMargins({right=5});
+    obj.label188:setName("label188");
+
+    obj.edit151 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit151:setParent(obj.layout108);
+    obj.edit151:setAlign("left");
+    obj.edit151:setHorzTextAlign("leading");
+    obj.edit151:setFontSize(14);
+    obj.edit151:setWidth(60);
+    obj.edit151:setField("ataque.municao.a8");
+    obj.edit151:setMargins({right=5});
+    obj.edit151:setName("edit151");
+
+    obj.label189 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label189:setParent(obj.layout108);
+    obj.label189:setAlign("left");
+    obj.label189:setWidth(55);
+    obj.label189:setText("Crítico: ");
+    obj.label189:setHorzTextAlign("trailing");
+    obj.label189:setMargins({right=5});
+    obj.label189:setName("label189");
+
+    obj.edit152 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit152:setParent(obj.layout108);
+    obj.edit152:setAlign("left");
+    obj.edit152:setHorzTextAlign("leading");
+    obj.edit152:setFontSize(14);
+    obj.edit152:setWidth(60);
+    obj.edit152:setField("ataque.critico.a8");
+    obj.edit152:setMargins({right=5});
+    obj.edit152:setName("edit152");
+
+    obj.label190 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label190:setParent(obj.layout108);
+    obj.label190:setAlign("left");
+    obj.label190:setWidth(5);
+    obj.label190:setText("");
+    obj.label190:setHorzTextAlign("trailing");
+    obj.label190:setMargins({right=5});
+    obj.label190:setName("label190");
 
     obj.layout109 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout109:setParent(obj.scrollBox1);
@@ -4508,14 +4659,14 @@ local function constructNew_OrdemParanormalS_byHelldemos()
     obj.layout109:setMargins({left=30, right=10, bottom=10});
     obj.layout109:setName("layout109");
 
-    obj.label182 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label182:setParent(obj.layout109);
-    obj.label182:setText("Combate");
-    obj.label182:setLeft(132);
-    lfm_setPropAsString(obj.label182, "fontStyle",  "bold italic");
-    obj.label182:setTop(9);
-    obj.label182:setWidth(1343);
-    obj.label182:setName("label182");
+    obj.label191 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label191:setParent(obj.layout109);
+    obj.label191:setText("Combate");
+    obj.label191:setLeft(132);
+    lfm_setPropAsString(obj.label191, "fontStyle",  "bold italic");
+    obj.label191:setTop(9);
+    obj.label191:setWidth(1343);
+    obj.label191:setName("label191");
 
     obj.layout110 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout110:setParent(obj.layout109);
@@ -4532,23 +4683,23 @@ local function constructNew_OrdemParanormalS_byHelldemos()
     obj.layout111:setMargins({bottom=2, top=15});
     obj.layout111:setName("layout111");
 
-    obj.label183 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label183:setParent(obj.layout111);
-    obj.label183:setAlign("left");
-    obj.label183:setWidth(120);
-    obj.label183:setText("Defesa Passiva:");
-    obj.label183:setHorzTextAlign("trailing");
-    obj.label183:setMargins({right=5});
-    obj.label183:setName("label183");
+    obj.label192 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label192:setParent(obj.layout111);
+    obj.label192:setAlign("left");
+    obj.label192:setWidth(120);
+    obj.label192:setText("Defesa Passiva:");
+    obj.label192:setHorzTextAlign("trailing");
+    obj.label192:setMargins({right=5});
+    obj.label192:setName("label192");
 
-    obj.edit146 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit146:setParent(obj.layout111);
-    obj.edit146:setAlign("left");
-    obj.edit146:setHorzTextAlign("center");
-    obj.edit146:setFontSize(20);
-    obj.edit146:setHeight(30);
-    obj.edit146:setField("bonus.dpassiva");
-    obj.edit146:setName("edit146");
+    obj.edit153 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit153:setParent(obj.layout111);
+    obj.edit153:setAlign("left");
+    obj.edit153:setHorzTextAlign("center");
+    obj.edit153:setFontSize(20);
+    obj.edit153:setHeight(30);
+    obj.edit153:setField("bonus.dpassiva");
+    obj.edit153:setName("edit153");
 
     obj.layout112 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout112:setParent(obj.layout110);
@@ -4557,23 +4708,23 @@ local function constructNew_OrdemParanormalS_byHelldemos()
     obj.layout112:setMargins({bottom=2, top=15});
     obj.layout112:setName("layout112");
 
-    obj.label184 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label184:setParent(obj.layout112);
-    obj.label184:setAlign("left");
-    obj.label184:setWidth(120);
-    obj.label184:setText("Esquiva:");
-    obj.label184:setHorzTextAlign("trailing");
-    obj.label184:setMargins({right=5});
-    obj.label184:setName("label184");
+    obj.label193 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label193:setParent(obj.layout112);
+    obj.label193:setAlign("left");
+    obj.label193:setWidth(120);
+    obj.label193:setText("Esquiva:");
+    obj.label193:setHorzTextAlign("trailing");
+    obj.label193:setMargins({right=5});
+    obj.label193:setName("label193");
 
-    obj.edit147 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit147:setParent(obj.layout112);
-    obj.edit147:setAlign("left");
-    obj.edit147:setHorzTextAlign("center");
-    obj.edit147:setFontSize(20);
-    obj.edit147:setHeight(30);
-    obj.edit147:setField("bonus.esquiva");
-    obj.edit147:setName("edit147");
+    obj.edit154 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit154:setParent(obj.layout112);
+    obj.edit154:setAlign("left");
+    obj.edit154:setHorzTextAlign("center");
+    obj.edit154:setFontSize(20);
+    obj.edit154:setHeight(30);
+    obj.edit154:setField("bonus.esquiva");
+    obj.edit154:setName("edit154");
 
     obj.layout113 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout113:setParent(obj.layout110);
@@ -4582,23 +4733,23 @@ local function constructNew_OrdemParanormalS_byHelldemos()
     obj.layout113:setMargins({bottom=2, top=15});
     obj.layout113:setName("layout113");
 
-    obj.label185 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label185:setParent(obj.layout113);
-    obj.label185:setAlign("left");
-    obj.label185:setWidth(60);
-    obj.label185:setText("           ");
-    obj.label185:setHorzTextAlign("trailing");
-    obj.label185:setMargins({right=5});
-    obj.label185:setName("label185");
+    obj.label194 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label194:setParent(obj.layout113);
+    obj.label194:setAlign("left");
+    obj.label194:setWidth(60);
+    obj.label194:setText("           ");
+    obj.label194:setHorzTextAlign("trailing");
+    obj.label194:setMargins({right=5});
+    obj.label194:setName("label194");
 
-    obj.label186 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label186:setParent(obj.layout113);
-    obj.label186:setAlign("left");
-    obj.label186:setWidth(120);
-    obj.label186:setText("Resistências a Dano:");
-    obj.label186:setHorzTextAlign("trailing");
-    obj.label186:setMargins({right=5});
-    obj.label186:setName("label186");
+    obj.label195 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label195:setParent(obj.layout113);
+    obj.label195:setAlign("left");
+    obj.label195:setWidth(120);
+    obj.label195:setText("Resistências a Dano:");
+    obj.label195:setHorzTextAlign("trailing");
+    obj.label195:setMargins({right=5});
+    obj.label195:setName("label195");
 
     obj.layout114 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout114:setParent(obj.layout110);
@@ -4635,13 +4786,13 @@ local function constructNew_OrdemParanormalS_byHelldemos()
     obj.layout115:setMargins({left=30, top=15, right=10, bottom=10});
     obj.layout115:setName("layout115");
 
-    obj.label187 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label187:setParent(obj.layout115);
-    obj.label187:setText("Antecedentes");
-    obj.label187:setLeft(625);
-    lfm_setPropAsString(obj.label187, "fontStyle",  "bold italic");
-    obj.label187:setTop(9);
-    obj.label187:setName("label187");
+    obj.label196 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label196:setParent(obj.layout115);
+    obj.label196:setText("Antecedentes");
+    obj.label196:setLeft(625);
+    lfm_setPropAsString(obj.label196, "fontStyle",  "bold italic");
+    obj.label196:setTop(9);
+    obj.label196:setName("label196");
 
     obj.layout116 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout116:setParent(obj.scrollBox2);
@@ -4663,13 +4814,13 @@ local function constructNew_OrdemParanormalS_byHelldemos()
     obj.textEditor2:setField("textEditor.desPessoal");
     obj.textEditor2:setName("textEditor2");
 
-    obj.label188 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label188:setParent(obj.layout116);
-    obj.label188:setText("Descrição Pessoal");
-    obj.label188:setLeft(280);
-    lfm_setPropAsString(obj.label188, "fontStyle",  "bold italic");
-    obj.label188:setTop(9);
-    obj.label188:setName("label188");
+    obj.label197 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label197:setParent(obj.layout116);
+    obj.label197:setText("Descrição Pessoal");
+    obj.label197:setLeft(280);
+    lfm_setPropAsString(obj.label197, "fontStyle",  "bold italic");
+    obj.label197:setTop(9);
+    obj.label197:setName("label197");
 
     obj.layout117 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout117:setParent(obj.scrollBox2);
@@ -4691,13 +4842,13 @@ local function constructNew_OrdemParanormalS_byHelldemos()
     obj.textEditor3:setField("textEditor.caracteristicas");
     obj.textEditor3:setName("textEditor3");
 
-    obj.label189 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label189:setParent(obj.layout117);
-    obj.label189:setText("Características");
-    obj.label189:setLeft(290);
-    lfm_setPropAsString(obj.label189, "fontStyle",  "bold italic");
-    obj.label189:setTop(9);
-    obj.label189:setName("label189");
+    obj.label198 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label198:setParent(obj.layout117);
+    obj.label198:setText("Características");
+    obj.label198:setLeft(290);
+    lfm_setPropAsString(obj.label198, "fontStyle",  "bold italic");
+    obj.label198:setTop(9);
+    obj.label198:setName("label198");
 
     obj.layout118 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout118:setParent(obj.scrollBox2);
@@ -4719,13 +4870,13 @@ local function constructNew_OrdemParanormalS_byHelldemos()
     obj.textEditor4:setField("textEditor.ideologiasC");
     obj.textEditor4:setName("textEditor4");
 
-    obj.label190 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label190:setParent(obj.layout118);
-    obj.label190:setText("Ideologias/Crenças");
-    obj.label190:setLeft(280);
-    lfm_setPropAsString(obj.label190, "fontStyle",  "bold italic");
-    obj.label190:setTop(9);
-    obj.label190:setName("label190");
+    obj.label199 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label199:setParent(obj.layout118);
+    obj.label199:setText("Ideologias/Crenças");
+    obj.label199:setLeft(280);
+    lfm_setPropAsString(obj.label199, "fontStyle",  "bold italic");
+    obj.label199:setTop(9);
+    obj.label199:setName("label199");
 
     obj.layout119 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout119:setParent(obj.scrollBox2);
@@ -4747,14 +4898,14 @@ local function constructNew_OrdemParanormalS_byHelldemos()
     obj.textEditor5:setField("textEditor.ferimentosC");
     obj.textEditor5:setName("textEditor5");
 
-    obj.label191 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label191:setParent(obj.layout119);
-    obj.label191:setText("Ferimentos e Cicatrizes");
-    obj.label191:setLeft(280);
-    obj.label191:setWidth(292);
-    lfm_setPropAsString(obj.label191, "fontStyle",  "bold italic");
-    obj.label191:setTop(9);
-    obj.label191:setName("label191");
+    obj.label200 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label200:setParent(obj.layout119);
+    obj.label200:setText("Ferimentos e Cicatrizes");
+    obj.label200:setLeft(280);
+    obj.label200:setWidth(292);
+    lfm_setPropAsString(obj.label200, "fontStyle",  "bold italic");
+    obj.label200:setTop(9);
+    obj.label200:setName("label200");
 
     obj.layout120 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout120:setParent(obj.scrollBox2);
@@ -4776,14 +4927,14 @@ local function constructNew_OrdemParanormalS_byHelldemos()
     obj.textEditor6:setField("textEditor.pessoasS");
     obj.textEditor6:setName("textEditor6");
 
-    obj.label192 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label192:setParent(obj.layout120);
-    obj.label192:setText("Pessosa Significativas");
-    obj.label192:setLeft(280);
-    obj.label192:setWidth(292);
-    lfm_setPropAsString(obj.label192, "fontStyle",  "bold italic");
-    obj.label192:setTop(9);
-    obj.label192:setName("label192");
+    obj.label201 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label201:setParent(obj.layout120);
+    obj.label201:setText("Pessosa Significativas");
+    obj.label201:setLeft(280);
+    obj.label201:setWidth(292);
+    lfm_setPropAsString(obj.label201, "fontStyle",  "bold italic");
+    obj.label201:setTop(9);
+    obj.label201:setName("label201");
 
     obj.layout121 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout121:setParent(obj.scrollBox2);
@@ -4805,14 +4956,14 @@ local function constructNew_OrdemParanormalS_byHelldemos()
     obj.textEditor7:setField("textEditor.fobiasM");
     obj.textEditor7:setName("textEditor7");
 
-    obj.label193 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label193:setParent(obj.layout121);
-    obj.label193:setText("Fobias/Manias");
-    obj.label193:setLeft(280);
-    obj.label193:setWidth(292);
-    lfm_setPropAsString(obj.label193, "fontStyle",  "bold italic");
-    obj.label193:setTop(9);
-    obj.label193:setName("label193");
+    obj.label202 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label202:setParent(obj.layout121);
+    obj.label202:setText("Fobias/Manias");
+    obj.label202:setLeft(280);
+    obj.label202:setWidth(292);
+    lfm_setPropAsString(obj.label202, "fontStyle",  "bold italic");
+    obj.label202:setTop(9);
+    obj.label202:setName("label202");
 
     obj.layout122 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout122:setParent(obj.scrollBox2);
@@ -4834,14 +4985,14 @@ local function constructNew_OrdemParanormalS_byHelldemos()
     obj.textEditor8:setField("textEditor.habilits");
     obj.textEditor8:setName("textEditor8");
 
-    obj.label194 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label194:setParent(obj.layout122);
-    obj.label194:setText("Habilidades");
-    obj.label194:setLeft(280);
-    obj.label194:setWidth(292);
-    lfm_setPropAsString(obj.label194, "fontStyle",  "bold italic");
-    obj.label194:setTop(9);
-    obj.label194:setName("label194");
+    obj.label203 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label203:setParent(obj.layout122);
+    obj.label203:setText("Casos Paranormais Investigados");
+    obj.label203:setLeft(230);
+    obj.label203:setWidth(292);
+    lfm_setPropAsString(obj.label203, "fontStyle",  "bold italic");
+    obj.label203:setTop(9);
+    obj.label203:setName("label203");
 
     obj.layout123 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout123:setParent(obj.scrollBox2);
@@ -4863,14 +5014,14 @@ local function constructNew_OrdemParanormalS_byHelldemos()
     obj.textEditor9:setField("textEditor.rituaCon");
     obj.textEditor9:setName("textEditor9");
 
-    obj.label195 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label195:setParent(obj.layout123);
-    obj.label195:setText("Rituais Conhecidos");
-    obj.label195:setLeft(270);
-    obj.label195:setWidth(292);
-    lfm_setPropAsString(obj.label195, "fontStyle",  "bold italic");
-    obj.label195:setTop(9);
-    obj.label195:setName("label195");
+    obj.label204 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label204:setParent(obj.layout123);
+    obj.label204:setText("Experiencias Paranormais");
+    obj.label204:setLeft(250);
+    obj.label204:setWidth(292);
+    lfm_setPropAsString(obj.label204, "fontStyle",  "bold italic");
+    obj.label204:setTop(9);
+    obj.label204:setName("label204");
 
     obj.layout124 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout124:setParent(obj.scrollBox2);
@@ -4892,14 +5043,14 @@ local function constructNew_OrdemParanormalS_byHelldemos()
     obj.textEditor10:setField("textEditor.locaisimpw");
     obj.textEditor10:setName("textEditor10");
 
-    obj.label196 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label196:setParent(obj.layout124);
-    obj.label196:setText("Locais Importantes");
-    obj.label196:setLeft(280);
-    obj.label196:setWidth(292);
-    lfm_setPropAsString(obj.label196, "fontStyle",  "bold italic");
-    obj.label196:setTop(9);
-    obj.label196:setName("label196");
+    obj.label205 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label205:setParent(obj.layout124);
+    obj.label205:setText("Locais Importantes");
+    obj.label205:setLeft(280);
+    obj.label205:setWidth(292);
+    lfm_setPropAsString(obj.label205, "fontStyle",  "bold italic");
+    obj.label205:setTop(9);
+    obj.label205:setName("label205");
 
     obj.layout125 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout125:setParent(obj.scrollBox2);
@@ -4921,14 +5072,14 @@ local function constructNew_OrdemParanormalS_byHelldemos()
     obj.textEditor11:setField("textEditor.entidades");
     obj.textEditor11:setName("textEditor11");
 
-    obj.label197 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label197:setParent(obj.layout125);
-    obj.label197:setText("Encontros com Entidades Estranhas");
-    obj.label197:setLeft(220);
-    obj.label197:setWidth(292);
-    lfm_setPropAsString(obj.label197, "fontStyle",  "bold italic");
-    obj.label197:setTop(9);
-    obj.label197:setName("label197");
+    obj.label206 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label206:setParent(obj.layout125);
+    obj.label206:setText("Encontros com Criaturas Paranormais");
+    obj.label206:setLeft(220);
+    obj.label206:setWidth(292);
+    lfm_setPropAsString(obj.label206, "fontStyle",  "bold italic");
+    obj.label206:setTop(9);
+    obj.label206:setName("label206");
 
     obj.tab3 = GUI.fromHandle(_obj_newObject("tab"));
     obj.tab3:setParent(obj.tabControl1);
@@ -4951,14 +5102,14 @@ local function constructNew_OrdemParanormalS_byHelldemos()
     obj.layout126:setMargins({left=30, top=15, right=10, bottom=10});
     obj.layout126:setName("layout126");
 
-    obj.label198 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label198:setParent(obj.layout126);
-    obj.label198:setText("Equipamentos e pertences / Dinheiro e Recursos");
-    obj.label198:setLeft(525);
-    obj.label198:setWidth(1329);
-    lfm_setPropAsString(obj.label198, "fontStyle",  "bold italic");
-    obj.label198:setTop(9);
-    obj.label198:setName("label198");
+    obj.label207 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label207:setParent(obj.layout126);
+    obj.label207:setText("Equipamentos e pertences / Dinheiro e Recursos");
+    obj.label207:setLeft(525);
+    obj.label207:setWidth(1329);
+    lfm_setPropAsString(obj.label207, "fontStyle",  "bold italic");
+    obj.label207:setTop(9);
+    obj.label207:setName("label207");
 
     obj.layout127 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout127:setParent(obj.scrollBox3);
@@ -4971,14 +5122,14 @@ local function constructNew_OrdemParanormalS_byHelldemos()
     obj.layout127:setMargins({left=30, top=15, right=10, bottom=10});
     obj.layout127:setName("layout127");
 
-    obj.label199 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label199:setParent(obj.layout127);
-    obj.label199:setText("Equipamentos e pertences");
-    obj.label199:setWidth(624);
-    obj.label199:setLeft(260);
-    lfm_setPropAsString(obj.label199, "fontStyle",  "bold italic");
-    obj.label199:setTop(9);
-    obj.label199:setName("label199");
+    obj.label208 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label208:setParent(obj.layout127);
+    obj.label208:setText("Equipamentos e pertences");
+    obj.label208:setWidth(624);
+    obj.label208:setLeft(260);
+    lfm_setPropAsString(obj.label208, "fontStyle",  "bold italic");
+    obj.label208:setTop(9);
+    obj.label208:setName("label208");
 
     obj.layout128 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout128:setParent(obj.layout127);
@@ -5034,18 +5185,18 @@ local function constructNew_OrdemParanormalS_byHelldemos()
     obj.layout129:setMargins({bottom=4});
     obj.layout129:setName("layout129");
 
-    obj.label200 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label200:setParent(obj.layout129);
-    obj.label200:setAlign("left");
-    obj.label200:setText("Titulo do Item:");
-    obj.label200:setAutoSize(true);
-    obj.label200:setName("label200");
+    obj.label209 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label209:setParent(obj.layout129);
+    obj.label209:setAlign("left");
+    obj.label209:setText("Titulo do Item:");
+    obj.label209:setAutoSize(true);
+    obj.label209:setName("label209");
 
-    obj.edit148 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit148:setParent(obj.layout129);
-    obj.edit148:setAlign("client");
-    obj.edit148:setField("campoTitulo");
-    obj.edit148:setName("edit148");
+    obj.edit155 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit155:setParent(obj.layout129);
+    obj.edit155:setAlign("client");
+    obj.edit155:setField("campoTitulo");
+    obj.edit155:setName("edit155");
 
     obj.button2 = GUI.fromHandle(_obj_newObject("button"));
     obj.button2:setParent(obj.layout129);
@@ -5076,12 +5227,12 @@ local function constructNew_OrdemParanormalS_byHelldemos()
     obj.layout131:setMargins({left=2});
     obj.layout131:setName("layout131");
 
-    obj.edit149 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit149:setParent(obj.layout131);
-    obj.edit149:setAlign("top");
-    obj.edit149:setField("campoSubTitulo");
-    obj.edit149:setHeight(30);
-    obj.edit149:setName("edit149");
+    obj.edit156 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit156:setParent(obj.layout131);
+    obj.edit156:setAlign("top");
+    obj.edit156:setField("campoSubTitulo");
+    obj.edit156:setHeight(30);
+    obj.edit156:setName("edit156");
 
     obj.textEditor12 = GUI.fromHandle(_obj_newObject("textEditor"));
     obj.textEditor12:setParent(obj.layout131);
@@ -5101,14 +5252,14 @@ local function constructNew_OrdemParanormalS_byHelldemos()
     obj.layout132:setMargins({left=30, top=15, right=10, bottom=10});
     obj.layout132:setName("layout132");
 
-    obj.label201 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label201:setParent(obj.layout132);
-    obj.label201:setText("Dinheiro e Recursos");
-    obj.label201:setWidth(624);
-    obj.label201:setLeft(270);
-    lfm_setPropAsString(obj.label201, "fontStyle",  "bold italic");
-    obj.label201:setTop(9);
-    obj.label201:setName("label201");
+    obj.label210 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label210:setParent(obj.layout132);
+    obj.label210:setText("Dinheiro e Recursos");
+    obj.label210:setWidth(624);
+    obj.label210:setLeft(270);
+    lfm_setPropAsString(obj.label210, "fontStyle",  "bold italic");
+    obj.label210:setTop(9);
+    obj.label210:setName("label210");
 
     obj.layout133 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout133:setParent(obj.layout132);
@@ -5127,24 +5278,24 @@ local function constructNew_OrdemParanormalS_byHelldemos()
     obj.layout134:setAlign("top");
     obj.layout134:setMargins({left=2, right=2, top=5});
 
-    obj.label202 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label202:setParent(obj.layout134);
-    obj.label202:setText("     P. de Prest.:");
-    obj.label202:setName("label202");
-    obj.label202:setAlign("left");
-    obj.label202:setHorzTextAlign("leading");
-    obj.label202:setVertTextAlign("leading");
-    obj.label202:setAutoSize(true);
-    obj.label202:setTop(30);
+    obj.label211 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label211:setParent(obj.layout134);
+    obj.label211:setText("     P. de Prest.:");
+    obj.label211:setName("label211");
+    obj.label211:setAlign("left");
+    obj.label211:setHorzTextAlign("leading");
+    obj.label211:setVertTextAlign("leading");
+    obj.label211:setAutoSize(true);
+    obj.label211:setTop(30);
 
-    obj.edit150 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit150:setParent(obj.layout134);
-    obj.edit150:setField("dinheiro.ng");
-    obj.edit150:setName("edit150");
-    obj.edit150:setHeight(5);
-    obj.edit150:setWidth(250);
-    obj.edit150:setFontSize(15);
-    obj.edit150:setAlign("left");
+    obj.edit157 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit157:setParent(obj.layout134);
+    obj.edit157:setField("dinheiro.ng");
+    obj.edit157:setName("edit157");
+    obj.edit157:setHeight(5);
+    obj.edit157:setWidth(250);
+    obj.edit157:setFontSize(15);
+    obj.edit157:setAlign("left");
 
     obj.layout135 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout135:setParent(obj.layout133);
@@ -5155,24 +5306,24 @@ local function constructNew_OrdemParanormalS_byHelldemos()
     obj.layout135:setAlign("top");
     obj.layout135:setMargins({left=2, right=2, top=5});
 
-    obj.label203 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label203:setParent(obj.layout135);
-    obj.label203:setText("     Patente:");
-    obj.label203:setName("label203");
-    obj.label203:setAlign("left");
-    obj.label203:setHorzTextAlign("leading");
-    obj.label203:setVertTextAlign("leading");
-    obj.label203:setAutoSize(true);
-    obj.label203:setTop(30);
+    obj.label212 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label212:setParent(obj.layout135);
+    obj.label212:setText("     Patente:");
+    obj.label212:setName("label212");
+    obj.label212:setAlign("left");
+    obj.label212:setHorzTextAlign("leading");
+    obj.label212:setVertTextAlign("leading");
+    obj.label212:setAutoSize(true);
+    obj.label212:setTop(30);
 
-    obj.edit151 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit151:setParent(obj.layout135);
-    obj.edit151:setField("dinheiro.dinheiro");
-    obj.edit151:setName("edit151");
-    obj.edit151:setHeight(5);
-    obj.edit151:setWidth(250);
-    obj.edit151:setFontSize(15);
-    obj.edit151:setAlign("left");
+    obj.edit158 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit158:setParent(obj.layout135);
+    obj.edit158:setField("dinheiro.dinheiro");
+    obj.edit158:setName("edit158");
+    obj.edit158:setHeight(5);
+    obj.edit158:setWidth(250);
+    obj.edit158:setFontSize(15);
+    obj.edit158:setAlign("left");
 
     obj.layout136 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout136:setParent(obj.layout133);
@@ -5183,24 +5334,24 @@ local function constructNew_OrdemParanormalS_byHelldemos()
     obj.layout136:setAlign("top");
     obj.layout136:setMargins({left=2, right=2, top=5});
 
-    obj.label204 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label204:setParent(obj.layout136);
-    obj.label204:setText("     Limite de Credito:");
-    obj.label204:setName("label204");
-    obj.label204:setAlign("left");
-    obj.label204:setHorzTextAlign("leading");
-    obj.label204:setVertTextAlign("leading");
-    obj.label204:setAutoSize(true);
-    obj.label204:setTop(30);
+    obj.label213 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label213:setParent(obj.layout136);
+    obj.label213:setText("     Limite de Credito:");
+    obj.label213:setName("label213");
+    obj.label213:setAlign("left");
+    obj.label213:setHorzTextAlign("leading");
+    obj.label213:setVertTextAlign("leading");
+    obj.label213:setAutoSize(true);
+    obj.label213:setTop(30);
 
-    obj.edit152 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit152:setParent(obj.layout136);
-    obj.edit152:setField("dinheiro.patrimonio");
-    obj.edit152:setName("edit152");
-    obj.edit152:setHeight(5);
-    obj.edit152:setWidth(250);
-    obj.edit152:setFontSize(15);
-    obj.edit152:setAlign("left");
+    obj.edit159 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit159:setParent(obj.layout136);
+    obj.edit159:setField("dinheiro.patrimonio");
+    obj.edit159:setName("edit159");
+    obj.edit159:setHeight(5);
+    obj.edit159:setWidth(250);
+    obj.edit159:setFontSize(15);
+    obj.edit159:setAlign("left");
 
     obj.textEditor13 = GUI.fromHandle(_obj_newObject("textEditor"));
     obj.textEditor13:setParent(obj.layout132);
@@ -5213,7 +5364,7 @@ local function constructNew_OrdemParanormalS_byHelldemos()
 
     obj.tab4 = GUI.fromHandle(_obj_newObject("tab"));
     obj.tab4:setParent(obj.tabControl1);
-    obj.tab4:setTitle("Anotações");
+    obj.tab4:setTitle("Rituais e Habilidades");
     obj.tab4:setName("tab4");
 
     obj.scrollBox4 = GUI.fromHandle(_obj_newObject("scrollBox"));
@@ -5221,8 +5372,289 @@ local function constructNew_OrdemParanormalS_byHelldemos()
     obj.scrollBox4:setAlign("client");
     obj.scrollBox4:setName("scrollBox4");
 
+    obj.layout137 = GUI.fromHandle(_obj_newObject("layout"));
+    obj.layout137:setParent(obj.scrollBox4);
+    obj.layout137:setAlign("none");
+    obj.layout137:setHeight(35);
+    obj.layout137:setWidth(1329);
+    obj.layout137:setTop(15);
+    obj.layout137:setLeft(5);
+    obj.layout137:setFrameStyle("/frames/FrameRetangular.xml");
+    obj.layout137:setMargins({left=30, top=15, right=10, bottom=10});
+    obj.layout137:setName("layout137");
+
+    obj.label214 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label214:setParent(obj.layout137);
+    obj.label214:setText("Rituais / Habilidades");
+    obj.label214:setLeft(525);
+    obj.label214:setWidth(1329);
+    lfm_setPropAsString(obj.label214, "fontStyle",  "bold italic");
+    obj.label214:setTop(9);
+    obj.label214:setName("label214");
+
+    obj.layout138 = GUI.fromHandle(_obj_newObject("layout"));
+    obj.layout138:setParent(obj.scrollBox4);
+    obj.layout138:setAlign("none");
+    obj.layout138:setHeight(1660);
+    obj.layout138:setWidth(664);
+    obj.layout138:setTop(52);
+    obj.layout138:setLeft(5);
+    obj.layout138:setFrameStyle("/frames/FrameRetangular.xml");
+    obj.layout138:setMargins({left=30, top=15, right=10, bottom=10});
+    obj.layout138:setName("layout138");
+
+    obj.label215 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label215:setParent(obj.layout138);
+    obj.label215:setText("Rituais");
+    obj.label215:setWidth(624);
+    obj.label215:setLeft(290);
+    lfm_setPropAsString(obj.label215, "fontStyle",  "bold italic");
+    obj.label215:setTop(9);
+    obj.label215:setName("label215");
+
+    obj.layout139 = GUI.fromHandle(_obj_newObject("layout"));
+    obj.layout139:setParent(obj.layout138);
+    obj.layout139:setAlign("top");
+    obj.layout139:setHeight(30);
+    obj.layout139:setTop(25);
+    obj.layout139:setMargins({bottom=4});
+    obj.layout139:setName("layout139");
+
+    obj.button3 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button3:setParent(obj.layout139);
+    obj.button3:setText("Adicionar Novo Ritual");
+    obj.button3:setWidth(150);
+    obj.button3:setTop(45);
+    obj.button3:setAlign("left");
+    obj.button3:setName("button3");
+
+    obj.rclListaDosItens2 = GUI.fromHandle(_obj_newObject("recordList"));
+    obj.rclListaDosItens2:setParent(obj.layout138);
+    obj.rclListaDosItens2:setName("rclListaDosItens2");
+    obj.rclListaDosItens2:setField("campoDosItens2");
+    obj.rclListaDosItens2:setTemplateForm("frmItemDaLista");
+    obj.rclListaDosItens2:setAlign("left");
+    obj.rclListaDosItens2:setSelectable(true);
+    obj.rclListaDosItens2:setLayout("vertical");
+    obj.rclListaDosItens2:setTop(40);
+    obj.rclListaDosItens2:setHeight(80);
+    obj.rclListaDosItens2:setWidth(150);
+
+    obj.boxDetalhesDoItem2 = GUI.fromHandle(_obj_newObject("dataScopeBox"));
+    obj.boxDetalhesDoItem2:setParent(obj.layout138);
+    obj.boxDetalhesDoItem2:setName("boxDetalhesDoItem2");
+    obj.boxDetalhesDoItem2:setVisible(false);
+    obj.boxDetalhesDoItem2:setAlign("client");
+    obj.boxDetalhesDoItem2:setMargins({left=4, right=4, top=2});
+
+    obj.rectangle2 = GUI.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle2:setParent(obj.boxDetalhesDoItem2);
+    obj.rectangle2:setAlign("none");
+    obj.rectangle2:setColor("black");
+    obj.rectangle2:setXradius(10);
+    obj.rectangle2:setYradius(10);
+    obj.rectangle2:setHeight(180);
+    obj.rectangle2:setWidth(480);
+    obj.rectangle2:setPadding({top=3, left=3, right=3, bottom=3});
+    obj.rectangle2:setName("rectangle2");
+
+    obj.layout140 = GUI.fromHandle(_obj_newObject("layout"));
+    obj.layout140:setParent(obj.rectangle2);
+    obj.layout140:setAlign("top");
+    obj.layout140:setTop(15);
+    obj.layout140:setHeight(30);
+    obj.layout140:setMargins({bottom=4});
+    obj.layout140:setName("layout140");
+
+    obj.label216 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label216:setParent(obj.layout140);
+    obj.label216:setAlign("left");
+    obj.label216:setText("Nome do Ritual:");
+    obj.label216:setAutoSize(true);
+    obj.label216:setName("label216");
+
+    obj.edit160 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit160:setParent(obj.layout140);
+    obj.edit160:setAlign("client");
+    obj.edit160:setField("campoTitulo");
+    obj.edit160:setName("edit160");
+
+    obj.button4 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button4:setParent(obj.layout140);
+    obj.button4:setAlign("right");
+    obj.button4:setText("Apagar!");
+    obj.button4:setMargins({left=4, right=4, top=2, bottom=2});
+    obj.button4:setWidth(150);
+    obj.button4:setName("button4");
+
+    obj.layout141 = GUI.fromHandle(_obj_newObject("layout"));
+    obj.layout141:setParent(obj.rectangle2);
+    obj.layout141:setAlign("top");
+    obj.layout141:setTop(15);
+    obj.layout141:setHeight(130);
+    obj.layout141:setName("layout141");
+
+    obj.image5 = GUI.fromHandle(_obj_newObject("image"));
+    obj.image5:setParent(obj.layout141);
+    obj.image5:setAlign("left");
+    obj.image5:setEditable(true);
+    obj.image5:setField("campoURLImagem2");
+    obj.image5:setWidth(130);
+    obj.image5:setName("image5");
+
+    obj.layout142 = GUI.fromHandle(_obj_newObject("layout"));
+    obj.layout142:setParent(obj.layout141);
+    obj.layout142:setAlign("client");
+    obj.layout142:setMargins({left=2});
+    obj.layout142:setName("layout142");
+
+    obj.edit161 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit161:setParent(obj.layout142);
+    obj.edit161:setAlign("top");
+    obj.edit161:setField("campoSubTitulo2");
+    obj.edit161:setHeight(30);
+    obj.edit161:setName("edit161");
+
+    obj.textEditor14 = GUI.fromHandle(_obj_newObject("textEditor"));
+    obj.textEditor14:setParent(obj.layout142);
+    obj.textEditor14:setAlign("top");
+    obj.textEditor14:setField("campoTextoGrande2");
+    obj.textEditor14:setHeight(100);
+    obj.textEditor14:setName("textEditor14");
+
+    obj.layout143 = GUI.fromHandle(_obj_newObject("layout"));
+    obj.layout143:setParent(obj.scrollBox4);
+    obj.layout143:setAlign("none");
+    obj.layout143:setHeight(1660);
+    obj.layout143:setWidth(664);
+    obj.layout143:setTop(52);
+    obj.layout143:setLeft(669);
+    obj.layout143:setFrameStyle("/frames/FrameRetangular.xml");
+    obj.layout143:setMargins({left=30, top=15, right=10, bottom=10});
+    obj.layout143:setName("layout143");
+
+    obj.label217 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label217:setParent(obj.layout143);
+    obj.label217:setText("Habilidades");
+    obj.label217:setWidth(624);
+    obj.label217:setLeft(290);
+    lfm_setPropAsString(obj.label217, "fontStyle",  "bold italic");
+    obj.label217:setTop(9);
+    obj.label217:setName("label217");
+
+    obj.layout144 = GUI.fromHandle(_obj_newObject("layout"));
+    obj.layout144:setParent(obj.layout143);
+    obj.layout144:setLeft(5);
+    obj.layout144:setTop(25);
+    obj.layout144:setWidth(664);
+    obj.layout144:setHeight(1660);
+    obj.layout144:setName("layout144");
+
+    obj.layout145 = GUI.fromHandle(_obj_newObject("layout"));
+    obj.layout145:setParent(obj.layout144);
+    obj.layout145:setName("layout145");
+    obj.layout145:setWidth(15);
+    obj.layout145:setTop(25);
+    obj.layout145:setHeight(25);
+    obj.layout145:setAlign("top");
+    obj.layout145:setMargins({left=2, right=2, top=5});
+
+    obj.label218 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label218:setParent(obj.layout145);
+    obj.label218:setText("     Classe:");
+    obj.label218:setName("label218");
+    obj.label218:setAlign("left");
+    obj.label218:setHorzTextAlign("leading");
+    obj.label218:setVertTextAlign("leading");
+    obj.label218:setAutoSize(true);
+    obj.label218:setTop(30);
+
+    obj.edit162 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit162:setParent(obj.layout145);
+    obj.edit162:setField("identidade.classe");
+    obj.edit162:setName("edit162");
+    obj.edit162:setHeight(5);
+    obj.edit162:setWidth(250);
+    obj.edit162:setFontSize(15);
+    obj.edit162:setAlign("left");
+
+    obj.layout146 = GUI.fromHandle(_obj_newObject("layout"));
+    obj.layout146:setParent(obj.layout144);
+    obj.layout146:setName("layout146");
+    obj.layout146:setWidth(15);
+    obj.layout146:setTop(25);
+    obj.layout146:setHeight(25);
+    obj.layout146:setAlign("top");
+    obj.layout146:setMargins({left=2, right=2, top=5});
+
+    obj.label219 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label219:setParent(obj.layout146);
+    obj.label219:setText("     Elemento:");
+    obj.label219:setName("label219");
+    obj.label219:setAlign("left");
+    obj.label219:setHorzTextAlign("leading");
+    obj.label219:setVertTextAlign("leading");
+    obj.label219:setAutoSize(true);
+    obj.label219:setTop(30);
+
+    obj.edit163 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit163:setParent(obj.layout146);
+    obj.edit163:setField("identidade.elemento");
+    obj.edit163:setName("edit163");
+    obj.edit163:setHeight(5);
+    obj.edit163:setWidth(250);
+    obj.edit163:setFontSize(15);
+    obj.edit163:setAlign("left");
+
+    obj.layout147 = GUI.fromHandle(_obj_newObject("layout"));
+    obj.layout147:setParent(obj.layout144);
+    obj.layout147:setName("layout147");
+    obj.layout147:setWidth(15);
+    obj.layout147:setTop(25);
+    obj.layout147:setHeight(25);
+    obj.layout147:setAlign("top");
+    obj.layout147:setMargins({left=2, right=2, top=5});
+
+    obj.label220 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label220:setParent(obj.layout147);
+    obj.label220:setText("     Trilha:");
+    obj.label220:setName("label220");
+    obj.label220:setAlign("left");
+    obj.label220:setHorzTextAlign("leading");
+    obj.label220:setVertTextAlign("leading");
+    obj.label220:setAutoSize(true);
+    obj.label220:setTop(30);
+
+    obj.edit164 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit164:setParent(obj.layout147);
+    obj.edit164:setField("identidade.trilha");
+    obj.edit164:setName("edit164");
+    obj.edit164:setHeight(5);
+    obj.edit164:setWidth(250);
+    obj.edit164:setFontSize(15);
+    obj.edit164:setAlign("left");
+
+    obj.textEditor15 = GUI.fromHandle(_obj_newObject("textEditor"));
+    obj.textEditor15:setParent(obj.layout143);
+    obj.textEditor15:setLeft(20);
+    obj.textEditor15:setTop(125);
+    obj.textEditor15:setWidth(624);
+    obj.textEditor15:setHeight(1521);
+    obj.textEditor15:setField("textEditor.habilidades");
+    obj.textEditor15:setName("textEditor15");
+
+    obj.tab5 = GUI.fromHandle(_obj_newObject("tab"));
+    obj.tab5:setParent(obj.tabControl1);
+    obj.tab5:setTitle("Anotações");
+    obj.tab5:setName("tab5");
+
+    obj.scrollBox5 = GUI.fromHandle(_obj_newObject("scrollBox"));
+    obj.scrollBox5:setParent(obj.tab5);
+    obj.scrollBox5:setAlign("client");
+    obj.scrollBox5:setName("scrollBox5");
+
     obj.richEdit1 = GUI.fromHandle(_obj_newObject("richEdit"));
-    obj.richEdit1:setParent(obj.scrollBox4);
+    obj.richEdit1:setParent(obj.scrollBox5);
     obj.richEdit1:setAlign("client");
     lfm_setPropAsString(obj.richEdit1, "backgroundColor",  "black");
     lfm_setPropAsString(obj.richEdit1, "defaultFontColor",  "white");
@@ -5253,7 +5685,34 @@ local function constructNew_OrdemParanormalS_byHelldemos()
             NDB.deleteNode(self.boxDetalhesDoItem.node);
         end, obj);
 
+    obj._e_event3 = obj.button3:addEventListener("onClick",
+        function (_)
+            -- Usuário clicou no botão de criar novo item.
+                                            -- Vamos inserir um novo item no nosso recordList                              
+                                            self.rclListaDosItens2:append();
+        end, obj);
+
+    obj._e_event4 = obj.rclListaDosItens2:addEventListener("onSelect",
+        function (_)
+            --[[
+                                    Este evento é chamado quando o usuário selecionar/deselecionar itens da lista. Quando o usuário selecionar, vamos fazer nosso dataScopeBox (e todas as tag dentro dele) salvar e carregar dados no   objeto Nodo (NodeDatabase) do item selecionado.
+            
+                              --]]                      
+                              local node = self.rclListaDosItens2.selectedNode; 
+                                     self.boxDetalhesDoItem2.node = node;                       
+                              -- a caixa de detalhe só ficará visível se houver item selecionado
+                                      self.boxDetalhesDoItem2.visible = (node ~= nil);
+        end, obj);
+
+    obj._e_event5 = obj.button4:addEventListener("onClick",
+        function (_)
+            NDB.deleteNode(self.boxDetalhesDoItem2.node);
+        end, obj);
+
     function obj:_releaseEvents()
+        __o_rrpgObjs.removeEventListenerById(self._e_event5);
+        __o_rrpgObjs.removeEventListenerById(self._e_event4);
+        __o_rrpgObjs.removeEventListenerById(self._e_event3);
         __o_rrpgObjs.removeEventListenerById(self._e_event2);
         __o_rrpgObjs.removeEventListenerById(self._e_event1);
         __o_rrpgObjs.removeEventListenerById(self._e_event0);
@@ -5303,6 +5762,7 @@ local function constructNew_OrdemParanormalS_byHelldemos()
         if self.label35 ~= nil then self.label35:destroy(); self.label35 = nil; end;
         if self.comboBox22 ~= nil then self.comboBox22:destroy(); self.comboBox22 = nil; end;
         if self.layout123 ~= nil then self.layout123:destroy(); self.layout123 = nil; end;
+        if self.boxDetalhesDoItem2 ~= nil then self.boxDetalhesDoItem2:destroy(); self.boxDetalhesDoItem2 = nil; end;
         if self.layout23 ~= nil then self.layout23:destroy(); self.layout23 = nil; end;
         if self.edit82 ~= nil then self.edit82:destroy(); self.edit82 = nil; end;
         if self.label164 ~= nil then self.label164:destroy(); self.label164 = nil; end;
@@ -5319,6 +5779,7 @@ local function constructNew_OrdemParanormalS_byHelldemos()
         if self.edit11 ~= nil then self.edit11:destroy(); self.edit11 = nil; end;
         if self.image1 ~= nil then self.image1:destroy(); self.image1 = nil; end;
         if self.layout88 ~= nil then self.layout88:destroy(); self.layout88 = nil; end;
+        if self.layout140 ~= nil then self.layout140:destroy(); self.layout140 = nil; end;
         if self.layout71 ~= nil then self.layout71:destroy(); self.layout71 = nil; end;
         if self.label15 ~= nil then self.label15:destroy(); self.label15 = nil; end;
         if self.comboBox28 ~= nil then self.comboBox28:destroy(); self.comboBox28 = nil; end;
@@ -5332,13 +5793,17 @@ local function constructNew_OrdemParanormalS_byHelldemos()
         if self.label163 ~= nil then self.label163:destroy(); self.label163 = nil; end;
         if self.layout37 ~= nil then self.layout37:destroy(); self.layout37 = nil; end;
         if self.label195 ~= nil then self.label195:destroy(); self.label195 = nil; end;
+        if self.edit156 ~= nil then self.edit156:destroy(); self.edit156 = nil; end;
         if self.label82 ~= nil then self.label82:destroy(); self.label82 = nil; end;
+        if self.textEditor15 ~= nil then self.textEditor15:destroy(); self.textEditor15 = nil; end;
         if self.label162 ~= nil then self.label162:destroy(); self.label162 = nil; end;
         if self.layout36 ~= nil then self.layout36:destroy(); self.layout36 = nil; end;
+        if self.label220 ~= nil then self.label220:destroy(); self.label220 = nil; end;
         if self.edit69 ~= nil then self.edit69:destroy(); self.edit69 = nil; end;
         if self.layout119 ~= nil then self.layout119:destroy(); self.layout119 = nil; end;
         if self.layout52 ~= nil then self.layout52:destroy(); self.layout52 = nil; end;
         if self.label52 ~= nil then self.label52:destroy(); self.label52 = nil; end;
+        if self.layout141 ~= nil then self.layout141:destroy(); self.layout141 = nil; end;
         if self.edit115 ~= nil then self.edit115:destroy(); self.edit115 = nil; end;
         if self.edit16 ~= nil then self.edit16:destroy(); self.edit16 = nil; end;
         if self.label47 ~= nil then self.label47:destroy(); self.label47 = nil; end;
@@ -5351,6 +5816,8 @@ local function constructNew_OrdemParanormalS_byHelldemos()
         if self.edit52 ~= nil then self.edit52:destroy(); self.edit52 = nil; end;
         if self.textEditor4 ~= nil then self.textEditor4:destroy(); self.textEditor4 = nil; end;
         if self.layout34 ~= nil then self.layout34:destroy(); self.layout34 = nil; end;
+        if self.edit159 ~= nil then self.edit159:destroy(); self.edit159 = nil; end;
+        if self.button4 ~= nil then self.button4:destroy(); self.button4 = nil; end;
         if self.layout106 ~= nil then self.layout106:destroy(); self.layout106 = nil; end;
         if self.label1 ~= nil then self.label1:destroy(); self.label1 = nil; end;
         if self.comboBox35 ~= nil then self.comboBox35:destroy(); self.comboBox35 = nil; end;
@@ -5366,11 +5833,14 @@ local function constructNew_OrdemParanormalS_byHelldemos()
         if self.layout126 ~= nil then self.layout126:destroy(); self.layout126 = nil; end;
         if self.layout5 ~= nil then self.layout5:destroy(); self.layout5 = nil; end;
         if self.label94 ~= nil then self.label94:destroy(); self.label94 = nil; end;
+        if self.label212 ~= nil then self.label212:destroy(); self.label212 = nil; end;
         if self.layout55 ~= nil then self.layout55:destroy(); self.layout55 = nil; end;
         if self.edit129 ~= nil then self.edit129:destroy(); self.edit129 = nil; end;
         if self.edit142 ~= nil then self.edit142:destroy(); self.edit142 = nil; end;
         if self.label29 ~= nil then self.label29:destroy(); self.label29 = nil; end;
+        if self.layout137 ~= nil then self.layout137:destroy(); self.layout137 = nil; end;
         if self.layout78 ~= nil then self.layout78:destroy(); self.layout78 = nil; end;
+        if self.rectangle2 ~= nil then self.rectangle2:destroy(); self.rectangle2 = nil; end;
         if self.label111 ~= nil then self.label111:destroy(); self.label111 = nil; end;
         if self.label91 ~= nil then self.label91:destroy(); self.label91 = nil; end;
         if self.label30 ~= nil then self.label30:destroy(); self.label30 = nil; end;
@@ -5389,6 +5859,7 @@ local function constructNew_OrdemParanormalS_byHelldemos()
         if self.edit124 ~= nil then self.edit124:destroy(); self.edit124 = nil; end;
         if self.label184 ~= nil then self.label184:destroy(); self.label184 = nil; end;
         if self.label2 ~= nil then self.label2:destroy(); self.label2 = nil; end;
+        if self.edit157 ~= nil then self.edit157:destroy(); self.edit157 = nil; end;
         if self.label89 ~= nil then self.label89:destroy(); self.label89 = nil; end;
         if self.label38 ~= nil then self.label38:destroy(); self.label38 = nil; end;
         if self.edit83 ~= nil then self.edit83:destroy(); self.edit83 = nil; end;
@@ -5397,6 +5868,8 @@ local function constructNew_OrdemParanormalS_byHelldemos()
         if self.edit27 ~= nil then self.edit27:destroy(); self.edit27 = nil; end;
         if self.label115 ~= nil then self.label115:destroy(); self.label115 = nil; end;
         if self.label159 ~= nil then self.label159:destroy(); self.label159 = nil; end;
+        if self.scrollBox5 ~= nil then self.scrollBox5:destroy(); self.scrollBox5 = nil; end;
+        if self.edit161 ~= nil then self.edit161:destroy(); self.edit161 = nil; end;
         if self.layout51 ~= nil then self.layout51:destroy(); self.layout51 = nil; end;
         if self.edit62 ~= nil then self.edit62:destroy(); self.edit62 = nil; end;
         if self.edit74 ~= nil then self.edit74:destroy(); self.edit74 = nil; end;
@@ -5409,14 +5882,18 @@ local function constructNew_OrdemParanormalS_byHelldemos()
         if self.edit134 ~= nil then self.edit134:destroy(); self.edit134 = nil; end;
         if self.label194 ~= nil then self.label194:destroy(); self.label194 = nil; end;
         if self.label142 ~= nil then self.label142:destroy(); self.label142 = nil; end;
-        if self.layout132 ~= nil then self.layout132:destroy(); self.layout132 = nil; end;
+        if self.label206 ~= nil then self.label206:destroy(); self.label206 = nil; end;
         if self.layout39 ~= nil then self.layout39:destroy(); self.layout39 = nil; end;
         if self.tab3 ~= nil then self.tab3:destroy(); self.tab3 = nil; end;
         if self.label200 ~= nil then self.label200:destroy(); self.label200 = nil; end;
+        if self.layout132 ~= nil then self.layout132:destroy(); self.layout132 = nil; end;
         if self.layout136 ~= nil then self.layout136:destroy(); self.layout136 = nil; end;
+        if self.layout145 ~= nil then self.layout145:destroy(); self.layout145 = nil; end;
+        if self.layout146 ~= nil then self.layout146:destroy(); self.layout146 = nil; end;
         if self.layout69 ~= nil then self.layout69:destroy(); self.layout69 = nil; end;
         if self.edit121 ~= nil then self.edit121:destroy(); self.edit121 = nil; end;
         if self.textEditor9 ~= nil then self.textEditor9:destroy(); self.textEditor9 = nil; end;
+        if self.edit163 ~= nil then self.edit163:destroy(); self.edit163 = nil; end;
         if self.label198 ~= nil then self.label198:destroy(); self.label198 = nil; end;
         if self.layout30 ~= nil then self.layout30:destroy(); self.layout30 = nil; end;
         if self.layout135 ~= nil then self.layout135:destroy(); self.layout135 = nil; end;
@@ -5447,6 +5924,7 @@ local function constructNew_OrdemParanormalS_byHelldemos()
         if self.edit59 ~= nil then self.edit59:destroy(); self.edit59 = nil; end;
         if self.layout12 ~= nil then self.layout12:destroy(); self.layout12 = nil; end;
         if self.edit14 ~= nil then self.edit14:destroy(); self.edit14 = nil; end;
+        if self.label216 ~= nil then self.label216:destroy(); self.label216 = nil; end;
         if self.edit4 ~= nil then self.edit4:destroy(); self.edit4 = nil; end;
         if self.layout25 ~= nil then self.layout25:destroy(); self.layout25 = nil; end;
         if self.label6 ~= nil then self.label6:destroy(); self.label6 = nil; end;
@@ -5460,7 +5938,9 @@ local function constructNew_OrdemParanormalS_byHelldemos()
         if self.label37 ~= nil then self.label37:destroy(); self.label37 = nil; end;
         if self.edit127 ~= nil then self.edit127:destroy(); self.edit127 = nil; end;
         if self.layout26 ~= nil then self.layout26:destroy(); self.layout26 = nil; end;
+        if self.label214 ~= nil then self.label214:destroy(); self.label214 = nil; end;
         if self.layout101 ~= nil then self.layout101:destroy(); self.layout101 = nil; end;
+        if self.label215 ~= nil then self.label215:destroy(); self.label215 = nil; end;
         if self.edit45 ~= nil then self.edit45:destroy(); self.edit45 = nil; end;
         if self.edit8 ~= nil then self.edit8:destroy(); self.edit8 = nil; end;
         if self.label196 ~= nil then self.label196:destroy(); self.label196 = nil; end;
@@ -5475,6 +5955,7 @@ local function constructNew_OrdemParanormalS_byHelldemos()
         if self.label133 ~= nil then self.label133:destroy(); self.label133 = nil; end;
         if self.label201 ~= nil then self.label201:destroy(); self.label201 = nil; end;
         if self.edit21 ~= nil then self.edit21:destroy(); self.edit21 = nil; end;
+        if self.button3 ~= nil then self.button3:destroy(); self.button3 = nil; end;
         if self.label42 ~= nil then self.label42:destroy(); self.label42 = nil; end;
         if self.layout76 ~= nil then self.layout76:destroy(); self.layout76 = nil; end;
         if self.comboBox21 ~= nil then self.comboBox21:destroy(); self.comboBox21 = nil; end;
@@ -5502,7 +5983,9 @@ local function constructNew_OrdemParanormalS_byHelldemos()
         if self.label175 ~= nil then self.label175:destroy(); self.label175 = nil; end;
         if self.layout2 ~= nil then self.layout2:destroy(); self.layout2 = nil; end;
         if self.layout120 ~= nil then self.layout120:destroy(); self.layout120 = nil; end;
+        if self.edit155 ~= nil then self.edit155:destroy(); self.edit155 = nil; end;
         if self.layout67 ~= nil then self.layout67:destroy(); self.layout67 = nil; end;
+        if self.edit162 ~= nil then self.edit162:destroy(); self.edit162 = nil; end;
         if self.edit87 ~= nil then self.edit87:destroy(); self.edit87 = nil; end;
         if self.layout29 ~= nil then self.layout29:destroy(); self.layout29 = nil; end;
         if self.label39 ~= nil then self.label39:destroy(); self.label39 = nil; end;
@@ -5521,6 +6004,7 @@ local function constructNew_OrdemParanormalS_byHelldemos()
         if self.comboBox27 ~= nil then self.comboBox27:destroy(); self.comboBox27 = nil; end;
         if self.edit118 ~= nil then self.edit118:destroy(); self.edit118 = nil; end;
         if self.layout109 ~= nil then self.layout109:destroy(); self.layout109 = nil; end;
+        if self.edit154 ~= nil then self.edit154:destroy(); self.edit154 = nil; end;
         if self.layout98 ~= nil then self.layout98:destroy(); self.layout98 = nil; end;
         if self.layout22 ~= nil then self.layout22:destroy(); self.layout22 = nil; end;
         if self.layout48 ~= nil then self.layout48:destroy(); self.layout48 = nil; end;
@@ -5533,7 +6017,9 @@ local function constructNew_OrdemParanormalS_byHelldemos()
         if self.edit32 ~= nil then self.edit32:destroy(); self.edit32 = nil; end;
         if self.tab1 ~= nil then self.tab1:destroy(); self.tab1 = nil; end;
         if self.edit102 ~= nil then self.edit102:destroy(); self.edit102 = nil; end;
+        if self.label207 ~= nil then self.label207:destroy(); self.label207 = nil; end;
         if self.layout115 ~= nil then self.layout115:destroy(); self.layout115 = nil; end;
+        if self.label209 ~= nil then self.label209:destroy(); self.label209 = nil; end;
         if self.edit117 ~= nil then self.edit117:destroy(); self.edit117 = nil; end;
         if self.layout75 ~= nil then self.layout75:destroy(); self.layout75 = nil; end;
         if self.comboBox24 ~= nil then self.comboBox24:destroy(); self.comboBox24 = nil; end;
@@ -5555,6 +6041,7 @@ local function constructNew_OrdemParanormalS_byHelldemos()
         if self.edit28 ~= nil then self.edit28:destroy(); self.edit28 = nil; end;
         if self.label57 ~= nil then self.label57:destroy(); self.label57 = nil; end;
         if self.label188 ~= nil then self.label188:destroy(); self.label188 = nil; end;
+        if self.image5 ~= nil then self.image5:destroy(); self.image5 = nil; end;
         if self.edit71 ~= nil then self.edit71:destroy(); self.edit71 = nil; end;
         if self.label71 ~= nil then self.label71:destroy(); self.label71 = nil; end;
         if self.layout41 ~= nil then self.layout41:destroy(); self.layout41 = nil; end;
@@ -5569,6 +6056,7 @@ local function constructNew_OrdemParanormalS_byHelldemos()
         if self.label144 ~= nil then self.label144:destroy(); self.label144 = nil; end;
         if self.label13 ~= nil then self.label13:destroy(); self.label13 = nil; end;
         if self.layout8 ~= nil then self.layout8:destroy(); self.layout8 = nil; end;
+        if self.edit153 ~= nil then self.edit153:destroy(); self.edit153 = nil; end;
         if self.label27 ~= nil then self.label27:destroy(); self.label27 = nil; end;
         if self.label59 ~= nil then self.label59:destroy(); self.label59 = nil; end;
         if self.label68 ~= nil then self.label68:destroy(); self.label68 = nil; end;
@@ -5598,6 +6086,7 @@ local function constructNew_OrdemParanormalS_byHelldemos()
         if self.comboBox12 ~= nil then self.comboBox12:destroy(); self.comboBox12 = nil; end;
         if self.label126 ~= nil then self.label126:destroy(); self.label126 = nil; end;
         if self.label203 ~= nil then self.label203:destroy(); self.label203 = nil; end;
+        if self.edit160 ~= nil then self.edit160:destroy(); self.edit160 = nil; end;
         if self.layout127 ~= nil then self.layout127:destroy(); self.layout127 = nil; end;
         if self.layout50 ~= nil then self.layout50:destroy(); self.layout50 = nil; end;
         if self.label41 ~= nil then self.label41:destroy(); self.label41 = nil; end;
@@ -5605,15 +6094,18 @@ local function constructNew_OrdemParanormalS_byHelldemos()
         if self.scrollBox2 ~= nil then self.scrollBox2:destroy(); self.scrollBox2 = nil; end;
         if self.label72 ~= nil then self.label72:destroy(); self.label72 = nil; end;
         if self.label88 ~= nil then self.label88:destroy(); self.label88 = nil; end;
+        if self.tab5 ~= nil then self.tab5:destroy(); self.tab5 = nil; end;
         if self.label12 ~= nil then self.label12:destroy(); self.label12 = nil; end;
         if self.label190 ~= nil then self.label190:destroy(); self.label190 = nil; end;
         if self.edit68 ~= nil then self.edit68:destroy(); self.edit68 = nil; end;
         if self.edit72 ~= nil then self.edit72:destroy(); self.edit72 = nil; end;
         if self.layout92 ~= nil then self.layout92:destroy(); self.layout92 = nil; end;
         if self.textEditor5 ~= nil then self.textEditor5:destroy(); self.textEditor5 = nil; end;
+        if self.layout143 ~= nil then self.layout143:destroy(); self.layout143 = nil; end;
         if self.label131 ~= nil then self.label131:destroy(); self.label131 = nil; end;
         if self.label16 ~= nil then self.label16:destroy(); self.label16 = nil; end;
         if self.textEditor7 ~= nil then self.textEditor7:destroy(); self.textEditor7 = nil; end;
+        if self.edit158 ~= nil then self.edit158:destroy(); self.edit158 = nil; end;
         if self.edit10 ~= nil then self.edit10:destroy(); self.edit10 = nil; end;
         if self.edit106 ~= nil then self.edit106:destroy(); self.edit106 = nil; end;
         if self.edit31 ~= nil then self.edit31:destroy(); self.edit31 = nil; end;
@@ -5623,15 +6115,18 @@ local function constructNew_OrdemParanormalS_byHelldemos()
         if self.comboBox14 ~= nil then self.comboBox14:destroy(); self.comboBox14 = nil; end;
         if self.label78 ~= nil then self.label78:destroy(); self.label78 = nil; end;
         if self.label101 ~= nil then self.label101:destroy(); self.label101 = nil; end;
+        if self.label211 ~= nil then self.label211:destroy(); self.label211 = nil; end;
         if self.layout4 ~= nil then self.layout4:destroy(); self.layout4 = nil; end;
         if self.edit101 ~= nil then self.edit101:destroy(); self.edit101 = nil; end;
         if self.label167 ~= nil then self.label167:destroy(); self.label167 = nil; end;
         if self.image3 ~= nil then self.image3:destroy(); self.image3 = nil; end;
+        if self.edit164 ~= nil then self.edit164:destroy(); self.edit164 = nil; end;
         if self.label58 ~= nil then self.label58:destroy(); self.label58 = nil; end;
         if self.comboBox1 ~= nil then self.comboBox1:destroy(); self.comboBox1 = nil; end;
         if self.comboBox18 ~= nil then self.comboBox18:destroy(); self.comboBox18 = nil; end;
         if self.label114 ~= nil then self.label114:destroy(); self.label114 = nil; end;
         if self.label197 ~= nil then self.label197:destroy(); self.label197 = nil; end;
+        if self.layout147 ~= nil then self.layout147:destroy(); self.layout147 = nil; end;
         if self.label135 ~= nil then self.label135:destroy(); self.label135 = nil; end;
         if self.layout20 ~= nil then self.layout20:destroy(); self.layout20 = nil; end;
         if self.edit23 ~= nil then self.edit23:destroy(); self.edit23 = nil; end;
@@ -5642,6 +6137,7 @@ local function constructNew_OrdemParanormalS_byHelldemos()
         if self.layout112 ~= nil then self.layout112:destroy(); self.layout112 = nil; end;
         if self.comboBox29 ~= nil then self.comboBox29:destroy(); self.comboBox29 = nil; end;
         if self.edit139 ~= nil then self.edit139:destroy(); self.edit139 = nil; end;
+        if self.rclListaDosItens2 ~= nil then self.rclListaDosItens2:destroy(); self.rclListaDosItens2 = nil; end;
         if self.label21 ~= nil then self.label21:destroy(); self.label21 = nil; end;
         if self.label120 ~= nil then self.label120:destroy(); self.label120 = nil; end;
         if self.edit122 ~= nil then self.edit122:destroy(); self.edit122 = nil; end;
@@ -5649,6 +6145,7 @@ local function constructNew_OrdemParanormalS_byHelldemos()
         if self.textEditor6 ~= nil then self.textEditor6:destroy(); self.textEditor6 = nil; end;
         if self.edit110 ~= nil then self.edit110:destroy(); self.edit110 = nil; end;
         if self.textEditor12 ~= nil then self.textEditor12:destroy(); self.textEditor12 = nil; end;
+        if self.layout138 ~= nil then self.layout138:destroy(); self.layout138 = nil; end;
         if self.edit86 ~= nil then self.edit86:destroy(); self.edit86 = nil; end;
         if self.edit38 ~= nil then self.edit38:destroy(); self.edit38 = nil; end;
         if self.edit123 ~= nil then self.edit123:destroy(); self.edit123 = nil; end;
@@ -5671,6 +6168,7 @@ local function constructNew_OrdemParanormalS_byHelldemos()
         if self.label182 ~= nil then self.label182:destroy(); self.label182 = nil; end;
         if self.label202 ~= nil then self.label202:destroy(); self.label202 = nil; end;
         if self.edit6 ~= nil then self.edit6:destroy(); self.edit6 = nil; end;
+        if self.label205 ~= nil then self.label205:destroy(); self.label205 = nil; end;
         if self.edit90 ~= nil then self.edit90:destroy(); self.edit90 = nil; end;
         if self.label18 ~= nil then self.label18:destroy(); self.label18 = nil; end;
         if self.textEditor8 ~= nil then self.textEditor8:destroy(); self.textEditor8 = nil; end;
@@ -5682,6 +6180,7 @@ local function constructNew_OrdemParanormalS_byHelldemos()
         if self.edit49 ~= nil then self.edit49:destroy(); self.edit49 = nil; end;
         if self.label117 ~= nil then self.label117:destroy(); self.label117 = nil; end;
         if self.boxDetalhesDoItem ~= nil then self.boxDetalhesDoItem:destroy(); self.boxDetalhesDoItem = nil; end;
+        if self.label210 ~= nil then self.label210:destroy(); self.label210 = nil; end;
         if self.layout16 ~= nil then self.layout16:destroy(); self.layout16 = nil; end;
         if self.layout21 ~= nil then self.layout21:destroy(); self.layout21 = nil; end;
         if self.layout102 ~= nil then self.layout102:destroy(); self.layout102 = nil; end;
@@ -5702,6 +6201,7 @@ local function constructNew_OrdemParanormalS_byHelldemos()
         if self.edit46 ~= nil then self.edit46:destroy(); self.edit46 = nil; end;
         if self.label95 ~= nil then self.label95:destroy(); self.label95 = nil; end;
         if self.label179 ~= nil then self.label179:destroy(); self.label179 = nil; end;
+        if self.layout142 ~= nil then self.layout142:destroy(); self.layout142 = nil; end;
         if self.textEditor13 ~= nil then self.textEditor13:destroy(); self.textEditor13 = nil; end;
         if self.label83 ~= nil then self.label83:destroy(); self.label83 = nil; end;
         if self.label165 ~= nil then self.label165:destroy(); self.label165 = nil; end;
@@ -5710,6 +6210,7 @@ local function constructNew_OrdemParanormalS_byHelldemos()
         if self.layout80 ~= nil then self.layout80:destroy(); self.layout80 = nil; end;
         if self.label113 ~= nil then self.label113:destroy(); self.label113 = nil; end;
         if self.edit104 ~= nil then self.edit104:destroy(); self.edit104 = nil; end;
+        if self.layout139 ~= nil then self.layout139:destroy(); self.layout139 = nil; end;
         if self.edit7 ~= nil then self.edit7:destroy(); self.edit7 = nil; end;
         if self.layout57 ~= nil then self.layout57:destroy(); self.layout57 = nil; end;
         if self.layout82 ~= nil then self.layout82:destroy(); self.layout82 = nil; end;
@@ -5745,6 +6246,7 @@ local function constructNew_OrdemParanormalS_byHelldemos()
         if self.layout122 ~= nil then self.layout122:destroy(); self.layout122 = nil; end;
         if self.rclListaDosItens ~= nil then self.rclListaDosItens:destroy(); self.rclListaDosItens = nil; end;
         if self.rectangle1 ~= nil then self.rectangle1:destroy(); self.rectangle1 = nil; end;
+        if self.label213 ~= nil then self.label213:destroy(); self.label213 = nil; end;
         if self.layout46 ~= nil then self.layout46:destroy(); self.layout46 = nil; end;
         if self.layout56 ~= nil then self.layout56:destroy(); self.layout56 = nil; end;
         if self.edit44 ~= nil then self.edit44:destroy(); self.edit44 = nil; end;
@@ -5752,6 +6254,7 @@ local function constructNew_OrdemParanormalS_byHelldemos()
         if self.label150 ~= nil then self.label150:destroy(); self.label150 = nil; end;
         if self.label173 ~= nil then self.label173:destroy(); self.label173 = nil; end;
         if self.edit89 ~= nil then self.edit89:destroy(); self.edit89 = nil; end;
+        if self.label217 ~= nil then self.label217:destroy(); self.label217 = nil; end;
         if self.label4 ~= nil then self.label4:destroy(); self.label4 = nil; end;
         if self.layout66 ~= nil then self.layout66:destroy(); self.layout66 = nil; end;
         if self.label136 ~= nil then self.label136:destroy(); self.label136 = nil; end;
@@ -5771,6 +6274,8 @@ local function constructNew_OrdemParanormalS_byHelldemos()
         if self.label28 ~= nil then self.label28:destroy(); self.label28 = nil; end;
         if self.edit107 ~= nil then self.edit107:destroy(); self.edit107 = nil; end;
         if self.label157 ~= nil then self.label157:destroy(); self.label157 = nil; end;
+        if self.label219 ~= nil then self.label219:destroy(); self.label219 = nil; end;
+        if self.label208 ~= nil then self.label208:destroy(); self.label208 = nil; end;
         if self.layout74 ~= nil then self.layout74:destroy(); self.layout74 = nil; end;
         if self.layout104 ~= nil then self.layout104:destroy(); self.layout104 = nil; end;
         if self.edit30 ~= nil then self.edit30:destroy(); self.edit30 = nil; end;
@@ -5780,6 +6285,7 @@ local function constructNew_OrdemParanormalS_byHelldemos()
         if self.label80 ~= nil then self.label80:destroy(); self.label80 = nil; end;
         if self.comboBox33 ~= nil then self.comboBox33:destroy(); self.comboBox33 = nil; end;
         if self.tab4 ~= nil then self.tab4:destroy(); self.tab4 = nil; end;
+        if self.layout144 ~= nil then self.layout144:destroy(); self.layout144 = nil; end;
         if self.comboBox25 ~= nil then self.comboBox25:destroy(); self.comboBox25 = nil; end;
         if self.edit55 ~= nil then self.edit55:destroy(); self.edit55 = nil; end;
         if self.comboBox5 ~= nil then self.comboBox5:destroy(); self.comboBox5 = nil; end;
@@ -5807,9 +6313,11 @@ local function constructNew_OrdemParanormalS_byHelldemos()
         if self.comboBox8 ~= nil then self.comboBox8:destroy(); self.comboBox8 = nil; end;
         if self.edit51 ~= nil then self.edit51:destroy(); self.edit51 = nil; end;
         if self.edit119 ~= nil then self.edit119:destroy(); self.edit119 = nil; end;
+        if self.label218 ~= nil then self.label218:destroy(); self.label218 = nil; end;
         if self.edit48 ~= nil then self.edit48:destroy(); self.edit48 = nil; end;
         if self.label85 ~= nil then self.label85:destroy(); self.label85 = nil; end;
         if self.label46 ~= nil then self.label46:destroy(); self.label46 = nil; end;
+        if self.textEditor14 ~= nil then self.textEditor14:destroy(); self.textEditor14 = nil; end;
         if self.label183 ~= nil then self.label183:destroy(); self.label183 = nil; end;
         if self.layout121 ~= nil then self.layout121:destroy(); self.layout121 = nil; end;
         if self.label153 ~= nil then self.label153:destroy(); self.label153 = nil; end;
