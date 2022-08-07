@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<popupForm name="frmInseriorFireDrive" width="520" height="300" drawContainer="true" resizable="true" placement="center"
+<popupForm name="frmInseriorFireDrive" width="580" height="300" drawContainer="true" resizable="true" placement="center"
 		   cancelable="false">
  		   
 	<import file="../interfaceUtils.xml"/>
@@ -134,8 +134,9 @@
 		require("dialogs.lua");
 		require("fireDrive.lua");
 		require("rrpgScene_Globals.lua");
-		local scene = nil;	
-		
+
+		local scene = nil;
+
 		if not System.isMobile() then
 			self.height = 485;
 		end;
@@ -144,7 +145,7 @@
 			local selected = self.rclListaDosTokens.selectedNode;  			
 			local mustBeVisible = selected ~= nil;
 			
-			self.dsbToken.visible = mustBeVisible;
+			self.dsbToken.visible = mustBeVisible and not self.rclListaDosTokens.selectedNode.directory;
 			self.layInfoSelectOrCreateToken.visible = not mustBeVisible; 
 			self.btnInsert.enabled = mustBeVisible;
 			self.btnOkName.enabled = mustBeVisible;
@@ -164,32 +165,161 @@
 	</script>
 	
 	<scrollBox align="client">
-		<layout width="190" align="left" margins="{left=5, bottom=2, top=2}">
+		<layout align="client" margins="{left=5, bottom=2, top=2}">
 			<flowLayout align="top" autoHeight="true" >
-				<button width="60" horzTextAlign="center" class="rodapeButton tokenRodapeButton" margins="{left=0, top=2, bottom=2, right=2}" onClick="self:processarNew()" name="btnNew"/>		
+				<button width="60" horzTextAlign="center" class="rodapeButton tokenRodapeButton" margins="{left=0, top=2, bottom=2, right=2}" onClick="self:processarNew(false)" name="btnNew"/>
+				<button width="60" horzTextAlign="center" class="rodapeButton tokenRodapeButton" margins="{left=0, top=2, bottom=2, right=2}" onClick="self:processarNew(true)" name="btnDir" text="@@scene.inseridor.buttons.dir"/>		
 				<button width="60" class="rodapeButton tokenRodapeButton" margins="{left=0, top=2, bottom=2, right=2}" name="delete" onClick="self:deleteToken()"/>
 
 				<button width="60" class="rodapeButton tokenRodapeButton" margins="{left=0, top=2, bottom=2}" name="btnMany" onClick="showPopupMany();"/>
 			</flowLayout>		
 		
 			<rectangle align="client" color="#707070" strokeSize="1" strokeColor="#70707080">
-				<recordList align="client" name="rclListaDosTokens" field="tokensSalvos" templateForm="rclPlayer_svg" selectable="true">
-					<event name="onSelect">							
-						self.dsbToken.node = self.rclListaDosTokens.selectedNode;													
-						self:checkVisibilityOfTabControl();						
+				<recordList align="client" name="rclListaDosTokens" field="tokensSalvos" templateForm="rclItem" selectable="true" autoHeight="false">
+					<event name="onSelect">
+						if self.rclListaDosTokens.selectedNode == nil then 
+							self:checkVisibilityOfTabControl();
+							return 
+						end;
+
+						if self.rclListaDosTokens.selectedNode.directory == true then 
+							-- open/close folder
+							self.rclListaDosTokens:beginUpdate();
+							self.rclListaDosTokens.selectedNode.dirOpen = not self.rclListaDosTokens.selectedNode.dirOpen
+
+							if self.rclListaDosTokens.selectedNode.dirOpen then
+								-- Show kids of opened folder
+								local kids = self:getKidsOf(self.rclListaDosTokens.selectedNode.id)
+								for i,v in ipairs(kids) do
+									v.dirVisible = true
+								end
+							else
+								-- Hide all descendents of opened folder
+								local desc = self:getDescendentsOf(self.rclListaDosTokens.selectedNode.id)
+								for i,v in ipairs(desc) do
+									if v.directory then
+										v.dirOpen = false
+									end
+									v.dirVisible = false
+								end
+							end
+
+							self.rclListaDosTokens.selectedNode = nil
+						else
+							-- Use item as a token
+							self.dsbToken.node = self.rclListaDosTokens.selectedNode;
+						end
+
+						self.rclListaDosTokens:endUpdate();
+						self:checkVisibilityOfTabControl();
 					</event>
-					<event name="onCompare">               
-							return Utils.compareStringPtBr(nodeA.name, nodeB.name);
+					<event name="onCompare">
+							if nodeA.id == nil then
+								nodeA.id = Utils.generateUniqueString();
+							end;
+							if nodeB.id == nil then
+								nodeB.id = Utils.generateUniqueString();
+							end;
+							if nodeA.dirLevel == nil then
+								nodeA.dirLevel = 0
+							end;
+							if nodeB.dirLevel == nil then
+								nodeB.dirLevel = 0
+							end;
+
+							while (true) do
+								if nodeA == nil then 
+									--showMessage("ops");
+									return 1 
+								end;
+								if nodeB == nil then 
+									--showMessage("ops");
+									return -1 
+								end;
+
+								-- verify if father
+								if nodeB.father == nodeA.id then
+									-- A is father of B
+									--showMessage("Compare " .. nodeA.name .. " to " .. nodeB.name .. " father -1");
+									return -1
+								end
+								if nodeA.father == nodeB.id then
+									-- B is father of A
+									--showMessage("Compare " .. nodeA.name .. " to " .. nodeB.name .. " son 1");
+									return 1
+								end
+								if nodeA.father == nodeB.father then
+									-- A is sibling of B
+
+									-- put directory in front of token
+									if nodeA.directory and not nodeB.directory then 
+										--showMessage("Compare " .. nodeA.name .. " to " .. nodeB.name .. " folder -1");
+										return -1 
+									end;
+									if not nodeA.directory and nodeB.directory then 
+										--showMessage("Compare " .. nodeA.name .. " to " .. nodeB.name .. " token 1");
+										return 1 
+									end;
+
+									-- organize by name
+									--showMessage("Compare " .. nodeA.name .. " to " .. nodeB.name .. " name");
+									return Utils.compareStringPtBr(nodeA.name, nodeB.name);
+								end
+
+								-- verify directory level
+								if (tonumber(nodeA.dirLevel) or 0) > (tonumber(nodeB.dirLevel) or 0) then
+									-- compare NodeB to father of A
+									--showMessage("Compare " .. nodeA.name .. " to " .. nodeB.name .. " A up");
+									nodeA = self:findItemById(nodeA.father)
+								elseif (tonumber(nodeB.dirLevel) or 0) > (tonumber(nodeA.dirLevel) or 0) then
+									--compare nodeA to father of B
+									--showMessage("Compare " .. nodeA.name .. " to " .. nodeB.name .. " B up");
+								 	nodeB = self:findItemById(nodeB.father)
+								else
+								 	--they are on the same level, compare both of their fathers
+								 	--showMessage("Compare " .. nodeA.name .. " to " .. nodeB.name .. " AB up");
+								 	nodeB = self:findItemById(nodeB.father)
+									nodeA = self:findItemById(nodeA.father)
+								end;
+							end;
+
+							return 0
 					</event>
 				</recordList>
 			</rectangle>
+
+			<dataLink field="newItemType">
+				<event name="onChange">
+					if sheet==nil then return end;
+					if sheet.newItemType == nil then return end;
+
+					self:processarNew(sheet.newItemType, sheet.newItemParent, sheet.newItemDirLevel)
+					sheet.newItemParent = nil
+					sheet.newItemType = nil
+					sheet.newItemDirLevel = nil
+				</event>
+			</dataLink>
+
+			<dataLink field="deletedFather">
+				<event name="onChange">
+					if sheet==nil then return end;
+					if sheet.deletedFather == nil then return end;
+
+					local orphans = self:getDescendentsOf(sheet.deletedFather)
+					for i,v in ipairs(orphans) do
+						NDB.deleteNode(v);
+					end
+
+					sheet.deletedFather = nil
+				</event>
+			</dataLink>
 		</layout>
 		
 		<layout visible="false" name="layInfoSelectOrCreateToken" align="client" margins="{left=2, right=2, top=2, bottom=2}">
 			<label name="labSelectTokenInfo" align="client" vertTextAlign="center" horzTextAlign="center" wordWrap="true"/>
 		</layout>
 		
-		<dataScopeBox align="client" name="dsbToken">
+		<dataScopeBox align="right" width="320" name="dsbToken">
 			<tabControl align="client" margins="{left=5, bottom=2, top=2, right=5}" name="tabCtrlDados">
 				<tab name="tabPrincipal">
 					<scrollBox align="client">
@@ -451,6 +581,57 @@
 			self:checkVisibilityOfTabControl();			
 		end;
 
+		function self:findItemById(id)
+			local tokens = NDB.getChildNodes(sheet.tokensSalvos);
+			for i,v in ipairs(tokens) do
+				if v.id == id then
+					return v
+				end
+			end
+			return nil
+		end
+
+		function self:getKidsOf(id)
+			local kids = {};
+			local index = 0;
+
+			local tokens = NDB.getChildNodes(sheet.tokensSalvos);
+			local found = true;
+
+			for i,v in ipairs(tokens) do
+				if v.father == id then
+					index = index + 1;
+					kids[index] = v
+				end
+			end
+
+			return kids;
+		end
+
+		function self:getDescendentsOf(id)
+			local descendents = {};
+			local index = 0;
+			local dept = 0;
+
+			local tokens = NDB.getChildNodes(sheet.tokensSalvos);
+			local found = true;
+
+			while dept <= index do
+				for i,v in ipairs(tokens) do
+					if v.father == id then
+						index = index + 1;
+						descendents[index] = v
+					end
+				end
+				dept = dept + 1
+				if descendents[dept] ~= nil then
+					id = descendents[dept].id
+				end
+			end
+
+			return descendents;
+		end
+
 		function self:listAllCharacters()
 			local mesa = Firecast.getMesaDe(scene);
 
@@ -524,10 +705,18 @@
 			local nodeToDelete = self.rclListaDosTokens.selectedNode;
 			
 			if nodeToDelete ~= nil then
+
+				local prompt = lang('scene.inseridor.labels.deleteConfirm');
+				if nodeToDelete.directory == true then
+					prompt = lang('scene.inseridor.labels.deleteConfirm2');
+				end
 		
-				Dialogs.confirmYesNo(lang('scene.inseridor.labels.deleteConfirm'),
+				Dialogs.confirmYesNo(prompt,
 					function (confirmado)
-						if confirmado then				
+						if confirmado then	
+							if nodeToDelete.directory then
+                            	sheet.deletedFather = nodeToDelete.id
+                            end
 							NDB.deleteNode(nodeToDelete);
 							self:checkVisibilityOfTabControl();
 						end;
@@ -608,11 +797,24 @@
 		end;
 
 		
-		function self:processarNew()
+		function self:processarNew(dir, father, dirLevel)
 			local newNode = self.rclListaDosTokens:append();
 			
-			if newNode ~= nil then
+			if newNode == nil then return end;
+
+			newNode.id = Utils.generateUniqueString();
+			newNode.father = father;
+			newNode.dirLevel = tonumber(dirLevel) or 0;
+
+			if dir then
+				newNode.directory = true;
+				newNode.dirOpen = true;
+				newNode.name = lang("scene.inseridor.buttons.dir");
+				newNode.icon = "https://github.com/rrpgfirecast/firecast/blob/master/Arts/Icons/folderOpen.png?raw=true";
+			else
+				newNode.directory = false;
 				newNode.name = lang("scene.inseridor.nameYourToken");
+				newNode.icon = "https://github.com/rrpgfirecast/firecast/blob/master/Arts/Icons/player.png?raw=true";
 				newNode.width = 1;
 				newNode.height = 1;
 				newNode.angle = 0;	
@@ -634,7 +836,9 @@
 				self:checkVisibilityOfTabControl();				
 				self.tabCtrlDados.tabIndex = 0;
 				self.labelVal:setFocus();
-			end;		
+			end;
+
+			self.rclListaDosTokens:sort();
 		end;
 
 		function self:processarOK()	

@@ -1,6 +1,147 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<form name="rclPlayer_svg" width="150" height="30" theme="dark">
-	<!-- <rectangle left="0" top="1" width="130" height="28" color="black" hitTest="false"/> -->
-    <label left="5" top="5" width="125" height="20" field="name"/>
-    <!-- <dataLink field="name" defaultValue="Token"/> -->
+<form name="rclItem" width="150" height="30" theme="dark" onMenu="ExibirMenu()" padding="{left=0}">
+    <script>
+        local function ExibirMenu()
+            if sheet==nil then return end;
+
+            local pop = self.tokenMenu;
+            if sheet.directory then
+                pop = self.folderMenu;
+            end
+
+            if pop ~= nil then
+                pop:setNodeObject(self.sheet);
+                pop:showPopupEx("mouseCenter", self);
+            else
+                --showMessage("Popup não encontrado.");
+            end;
+        end
+
+        local function delete()
+            local prompt = lang('scene.inseridor.labels.deleteConfirm');
+            if sheet.directory == true then
+                prompt = lang('scene.inseridor.labels.deleteConfirm2');
+            end
+        
+            Dialogs.confirmYesNo(prompt,
+                function (confirmado)
+                    if confirmado then
+                        if sheet.directory then
+                            self.folderMenu:close();
+
+                            local node = NDB.getParent(NDB.getParent(sheet))
+                            node.deletedFather = sheet.id
+                        else
+                            self.tokenMenu:close();
+                        end
+                        NDB.deleteNode(sheet);
+                    end;
+                end);
+        end
+
+        local function OpenClose()
+            if sheet==nil then return end;
+
+            if sheet.directory then
+                sheet.dirOpen = not sheet.dirOpen
+            end;
+        end
+
+        local function UpdateIcon()
+            if sheet.directory then
+                if sheet.dirOpen then
+                    sheet.icon = "https://github.com/rrpgfirecast/firecast/blob/master/Arts/Icons/folderOpen.png?raw=true"
+                else
+                    sheet.icon = "https://github.com/rrpgfirecast/firecast/blob/master/Arts/Icons/folderClosed.png?raw=true"
+                end
+            else
+                sheet.icon = "https://github.com/rrpgfirecast/firecast/blob/master/Arts/Icons/player.png?raw=true"
+            end
+        end
+
+        local function processarNew(dir)
+            if sheet==nil then return end;
+
+            if sheet.id == nil then
+                sheet.id = Utils.generateUniqueString();
+            end
+
+            local node = NDB.getParent(NDB.getParent(sheet))
+
+            node.newItemParent = sheet.id
+            node.newItemDirLevel = (tonumber(sheet.dirLevel) or 0) + 1
+            node.newItemType = dir
+
+            if sheet.directory then
+                self.folderMenu:close();
+            else
+                self.tokenMenu:close();
+            end
+        end
+
+        local function AddPadding()
+            if sheet==nil then return end;
+            if sheet.dirLevel==nil then return end;
+
+            local pad = 20 * (tonumber(sheet.dirLevel) or 0)
+
+            self.leftSpace.width = pad
+        end
+
+
+    </script>
+    <popup name="tokenMenu" width="100" height="30" backOpacity="0" autoScopeNode="false" padding="{top=5,bottom=5,left=5,right=5}">
+        <button align="top" height="20" text="@@scene.inseridor.labels.delete" onClick="delete();"/>
+    </popup>
+    <popup name="folderMenu" width="100" height="90" backOpacity="0" autoScopeNode="false" padding="{top=5,bottom=5,left=5,right=5}">
+        <button align="top" height="20" text="@@scene.inseridor.buttons.rename">
+            <event name="onClick">
+                Dialogs.inputQuery("", "", (sheet.name or ""),
+                    function (value)
+                        sheet.name = value
+                    end);
+                self.folderMenu:close();
+            </event>
+        </button>
+        <button align="top" height="20" text="@@scene.inseridor.buttons.token" onClick="processarNew(false)"/>
+        <button align="top" height="20" text="@@scene.inseridor.buttons.newdir" onClick="processarNew(true)"/>
+        <button align="top" height="20" text="@@scene.inseridor.labels.delete" onClick="delete();"/>
+    </popup>
+
+    <layout align="top" height="30">
+        <layout align="left" name="leftSpace" width="0"/>
+        <layout align="client">
+            
+            <image align="left" width="20" margins="{top=5,bottom=5,left=5,right=5}" field="icon" onMenu="ExibirMenu()"/>
+            <dataLink field="icon" defaultValue="https://github.com/rrpgfirecast/firecast/blob/master/Arts/Icons/player.png?raw=true"/>
+            <label align="client" margins="{top=5,bottom=5,left=0,right=5}" field="name" onMenu="ExibirMenu()"/>
+        </layout>
+        
+    </layout>
+
+    <dataLink field="dirOpen">
+        <event name="onChange">
+            UpdateIcon();
+        </event>
+    </dataLink>
+
+    <dataLink field="dirVisible">
+        <event name="onChange">
+            if sheet==nil then return end;
+            self.visible = sheet.dirVisible
+
+            if sheet.dirVisible then
+                self.height = 30
+            else
+                self.height = 0
+            end
+        </event>
+    </dataLink>
+
+
+    <dataLink field="dirLevel">
+        <event name="onChange">
+            AddPadding();
+        </event>
+    </dataLink>
 </form>

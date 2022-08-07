@@ -22,5 +22,5 @@
         <!--Informações do plugin na língua "en". Você pode ter várias tags "info", uma para cada tradução que quiser.-->
         <name>Scene 3 Core</name>
         <description>Plug-in that has basic features for the combat grid, also known as Scene 3</description>
-    </info>	
+    </info>
 </module>
