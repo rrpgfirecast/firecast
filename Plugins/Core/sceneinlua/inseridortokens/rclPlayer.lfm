@@ -87,8 +87,6 @@
 
             self.leftSpace.width = pad
         end
-
-
     </script>
     <popup name="tokenMenu" width="100" height="30" backOpacity="0" autoScopeNode="false" padding="{top=5,bottom=5,left=5,right=5}">
         <button align="top" height="20" text="@@scene.inseridor.labels.delete" onClick="delete();"/>
@@ -138,10 +136,39 @@
         </event>
     </dataLink>
 
-
     <dataLink field="dirLevel">
         <event name="onChange">
             AddPadding();
         </event>
     </dataLink>
+
+    <event name="OnStartDrag">
+        if sheet.id == nil then
+            sheet.id = Utils.Utils.generateUniqueString();
+        end;
+        if sheet.dirLevel == nil then
+            sheet.dirLevel = 0
+        end
+        drag:addData("id", sheet.id);
+    </event>
+
+    <event name="OnStartDrop">
+        drop:addAction("id",
+                function(value)
+                    if sheet.directory then
+                        --showMessage("ID: " .. (value or "nil"));
+                        local node = NDB.getParent(NDB.getParent(sheet))
+
+                        if sheet.id == nil then
+                            sheet.id = Utils.Utils.generateUniqueString();
+                        end;
+                        if sheet.dirLevel == nil then
+                            sheet.dirLevel = 0
+                        end
+                        node.adoptionFather = sheet.id
+                        node.adoptionLevel = sheet.dirLevel
+                        node.adoptionTarget = value
+                    end
+                end);
+    </event>
 </form>

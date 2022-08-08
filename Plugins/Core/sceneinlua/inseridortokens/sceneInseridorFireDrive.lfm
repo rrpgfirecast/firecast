@@ -160,8 +160,31 @@
 			end;				
 		end;
 	</script>
+
+	<event name="OnStartDrop">
+	    drop:addAction("id",
+	        function(value)
+	            --showMessage("ID: " .. (value or "nil"));
+
+	            sheet.adoptionFather = nil
+	            sheet.adoptionLevel = -1
+	            sheet.adoptionTarget = value
+	        end);
+	</event>
 	
 	<scrollBox align="client">
+
+
+		<event name="OnStartDrop">
+		    drop:addAction("id",
+		        function(value)
+		            --showMessage("ID: " .. (value or "nil"));
+
+		            sheet.adoptionFather = nil
+		            sheet.adoptionLevel = -1
+		            sheet.adoptionTarget = value
+		        end);
+		</event>
 		<layout align="client" margins="{left=5, bottom=2, top=2}">
 			<flowLayout align="top" autoHeight="true" >
 				<button width="60" horzTextAlign="center" class="rodapeButton tokenRodapeButton" margins="{left=0, top=2, bottom=2, right=2}" onClick="self:processarNew(false)" name="btnNew" text="@@scene.inseridor.buttons.new"/>
@@ -308,6 +331,42 @@
 					end
 
 					sheet.deletedFather = nil
+				</event>
+			</dataLink>
+
+			<dataLink field="adoptionTarget">
+				<event name="onChange">
+					if sheet==nil then return end;
+					if sheet.adoptionLevel == nil then return end;
+					if sheet.adoptionTarget == nil then return end;
+
+
+					local target = self:findItemById(sheet.adoptionTarget);
+					if target== nil then 
+						return
+					end
+					if target.dirLevel == nil then
+                        target.dirLevel = 0
+                    end
+
+                    -- dir level difference
+					local lvlDiff = 1 + (tonumber(sheet.adoptionLevel) or 0) - (tonumber(target.dirLevel) or 0);
+					target.dirLevel = (tonumber(target.dirLevel) or 0) + lvlDiff
+
+					-- adoptive father
+					target.father = sheet.adoptionFather
+
+					-- update descendents dirLevel
+					local desc = self:getDescendentsOf(sheet.adoptionTarget)
+					for i,v in ipairs(desc) do
+						v.dirLevel = (tonumber(v.dirLevel) or 0) + lvlDiff
+					end
+
+					sheet.adoptionFather = nil
+					sheet.adoptionLevel = nil
+					sheet.adoptionTarget = nil
+
+					self.rclListaDosTokens:sort()
 				</event>
 			</dataLink>
 		</layout>
@@ -485,7 +544,7 @@
 			<button width="80" horzTextAlign="center" class="rodapeButton tokenRodapeButton" onClick="self:export()" name="btnExport" text="@@scene.inseridor.buttons.export"/>
 			<button width="80" horzTextAlign="center" class="rodapeButton tokenRodapeButton" onClick="self:processarOK()" name="btnInsert" text="@@scene.inseridor.buttons.insert"/>
 			<button width="110" horzTextAlign="center" class="rodapeButton tokenRodapeButton" onClick="self:processarOkClose()" name="btnOkName" text="@@scene.inseridor.buttons.insertClose"/>
-			<button width="80" horzTextAlign="center" class="rodapeButton tokenRodapeButton" onClick="self:processarCancel()" name="btnCancelName" text="@@scene.inseridor.buttons.Close"/>	
+			<button width="80" horzTextAlign="center" class="rodapeButton tokenRodapeButton" onClick="self:processarCancel()" name="btnCancelName" text="@@scene.inseridor.buttons.Close"/>
 		</flowLayout>
 	</layout>
 	
