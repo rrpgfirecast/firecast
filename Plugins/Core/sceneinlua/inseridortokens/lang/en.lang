@@ -64,3 +64,7 @@ scene.inseridor.noplayers=There are no players in the room!
 scene.inseridor.selectOrCreateToken=Select or create a new token
 scene.inseridor.nameYourToken=Token Name
 scene.inseridor.alert.gm.only=Only the GM can access this feature
+
+scene.inseridor.import=Import Tokens
+scene.inseridor.export=Export Tokens to XML
+scene.inseridor.exported=Tokens Exported

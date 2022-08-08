@@ -45,13 +45,9 @@
 			end; -->	 
 	
 		<flowPart class="optionPart">
-			<label name="$(nomeLabel)" class="groupTitle"/>
+			<label name="$(nomeLabel)" text="@@$(text)" class="groupTitle"/>
 			<horzLine align="bottom" strokeColor="#FFCC6670" margins="{left=10}"/>			
 		</flowPart>
-		
-		<script>
-			self.$(nomeLabel).text = lang("$(text)");
-		</script>
 	</template>
 
 	<template name="EdicaoBarrinha">
@@ -72,8 +68,8 @@
 	</template>
 
 	<popup name="popMany" width="400" height="250" backOpacity="0.4" autoScopeNode="false">
-		<label name="manyDialog" align="top" height="25" text=""/>
-		<label name="manyInstructions" align="top" height="25" text=""/>
+		<label name="manyDialog" text="@@scene.inseridor.dialog.manyDialog" align="top" height="25"/>
+		<label name="manyInstructions" text="@@scene.inseridor.dialog.manyInstructions" align="top" height="25"/>
 		<button align="bottom" height="25" text="Ok">
 			<event name="onClick">
 				local s = sheet.input or "";
@@ -86,9 +82,15 @@
 
 				for i=1, size, 2 do
 					local newNode = self.rclListaDosTokens:append();
-			
+
 					if newNode ~= nil then
+						newNode.id = Utils.generateUniqueString();
+						newNode.father = nil;
+						newNode.dirLevel = 0;
+
+						newNode.directory = false;
 						newNode.name = t[i];
+						newNode.icon = "https://github.com/rrpgfirecast/firecast/blob/master/Arts/Icons/player.png?raw=true";
 						newNode.image = t[i+1];	
 						newNode.width = 1;
 						newNode.height = 1;
@@ -121,11 +123,6 @@
 			</event>
 		</button>
 		<textEditor align="client" field="input"/>
-
-		<script>
-			self.manyDialog.text = lang('scene.inseridor.dialog.manyDialog');
-			self.manyInstructions.text = lang('scene.inseridor.dialog.manyInstructions');
-		</script>
 	</popup>
 			
 	<script>
@@ -167,11 +164,11 @@
 	<scrollBox align="client">
 		<layout align="client" margins="{left=5, bottom=2, top=2}">
 			<flowLayout align="top" autoHeight="true" >
-				<button width="60" horzTextAlign="center" class="rodapeButton tokenRodapeButton" margins="{left=0, top=2, bottom=2, right=2}" onClick="self:processarNew(false)" name="btnNew"/>
+				<button width="60" horzTextAlign="center" class="rodapeButton tokenRodapeButton" margins="{left=0, top=2, bottom=2, right=2}" onClick="self:processarNew(false)" name="btnNew" text="@@scene.inseridor.buttons.new"/>
 				<button width="60" horzTextAlign="center" class="rodapeButton tokenRodapeButton" margins="{left=0, top=2, bottom=2, right=2}" onClick="self:processarNew(true)" name="btnDir" text="@@scene.inseridor.buttons.dir"/>		
-				<button width="60" class="rodapeButton tokenRodapeButton" margins="{left=0, top=2, bottom=2, right=2}" name="delete" onClick="self:deleteToken()"/>
+				<button width="60" class="rodapeButton tokenRodapeButton" margins="{left=0, top=2, bottom=2, right=2}" name="delete" text="@@scene.inseridor.labels.delete" onClick="self:deleteToken()"/>
 
-				<button width="60" class="rodapeButton tokenRodapeButton" margins="{left=0, top=2, bottom=2}" name="btnMany" onClick="showPopupMany();"/>
+				<button width="60" class="rodapeButton tokenRodapeButton" margins="{left=0, top=2, bottom=2}" name="btnMany" onClick="showPopupMany();" text="@@scene.inseridor.buttons.many"/>
 			</flowLayout>		
 		
 			<rectangle align="client" color="#707070" strokeSize="1" strokeColor="#70707080">
@@ -316,42 +313,42 @@
 		</layout>
 		
 		<layout visible="false" name="layInfoSelectOrCreateToken" align="client" margins="{left=2, right=2, top=2, bottom=2}">
-			<label name="labSelectTokenInfo" align="client" vertTextAlign="center" horzTextAlign="center" wordWrap="true"/>
+			<label name="labSelectTokenInfo" align="client" vertTextAlign="center" horzTextAlign="center" wordWrap="true" text="@@scene.inseridor.selectOrCreateToken"/>
 		</layout>
 		
 		<dataScopeBox align="right" width="320" name="dsbToken">
 			<tabControl align="client" margins="{left=5, bottom=2, top=2, right=5}" name="tabCtrlDados">
-				<tab name="tabPrincipal">
+				<tab name="tabPrincipal" text="@@scene.tokenEdit.propriedades">
 					<scrollBox align="client">
 						<flowLayout align="top" autoHeight="true" maxControlsPerLine="1" name="flaContent">		
 							<GroupHeader text="scene.menu.tokenOptions"/>			
 								
 							<!-- Personagem -->
 							<flowPart class="optionPart">	
-								<label name="labPersonagem" class="itemTitle"/>
+								<label name="labPersonagem" class="itemTitle" text="@@scene.tokenEdit.personagem"/>
 								<comboBox name="cmbPersonagem" class="itemContent" field="character"/>
 							</flowPart>	
 							
 							<!-- Nome -->
 							<flowPart class="optionPart">	
-								<label name="labelText" class="itemTitle"/>
+								<label name="labelText" text="@@scene.inseridor.labels.label" class="itemTitle"/>
 								<edit name="labelVal" class="itemContent" field="name" onUserChange="self.rclListaDosTokens:sort()"/>
 							</flowPart>						
 							
 							<!-- Agarrar ao Grid -->
 							<flowPart class="optionPart">	
 								<label name="labSnapToGrid" class="itemTitle"/>
-								<checkBox name="cbxSnapToGrid" class="itemContent" field="snapToGrid"/>
+								<checkBox name="cbxSnapToGrid" class="itemContent" field="snapToGrid" text="@@scene.tokenEdit.snapToGrid"/>
 							</flowPart>					
 							
 							<!-- Facing Mode -->
 							<flowPart class="optionPart">	
-								<label name="labFacingMode" class="itemTitle"/>
+								<label name="labFacingMode" text="@@scene.FacingMode.title" class="itemTitle"/>
 								<comboBox name="cmbFacingMode" class="itemContent" values="{'rotate', 'drawArrow'}" field="facingMode"/>
 							</flowPart>									
 
 							<flowPart class="optionPart">
-								<label name="layerText" class="itemTitle"/>
+								<label name="layerText" text="@@scene.inseridor.labels.layer" class="itemTitle"/>
 								<comboBox name="layerVal" class="itemContent" field="layer"/>	
 							</flowPart>								
 							
@@ -360,41 +357,37 @@
 							<EdicaoBarrinha indice="3" field="bar3"/>
 
 							<flowPart class="optionPart">
-								<label left="55" top="5" width="60" height="20" name="widthText" horzTextAlign="center"/>
+								<label left="55" top="5" width="60" height="20" name="widthText" text="@@scene.inseridor.labels.width" horzTextAlign="center"/>
 								<edit left="115" top="5" width="50" height="25" name="widthVal" type="number" field="width"/>
-								<label left="170" top="5" width="60" height="20" name="widthCell"/>
+								<label left="170" top="5" width="60" height="20" name="widthCell" text="@@scene.inseridor.labels.cell"/>
 							</flowPart>	
 
 							<flowPart class="optionPart">
-								<label left="55" top="5" width="60" height="20" name="heightText" horzTextAlign="center"/>
+								<label left="55" top="5" width="60" height="20" name="heightText" text="@@scene.inseridor.labels.height" horzTextAlign="center"/>
 								<edit left="115" top="5" width="50" height="25" name="heightVal" type="number" field="height"/>
-								<label left="170" top="5" width="60" height="20" name="heightCell"/>
+								<label left="170" top="5" width="60" height="20" name="heightCell" text="@@scene.inseridor.labels.cell"/>
 							</flowPart>	
 
 							<flowPart class="optionPart">
-								<label left="55" top="5" width="60" height="20" name="angleText" horzTextAlign="center"/>
+								<label left="55" top="5" width="60" height="20" name="angleText" text="@@scene.inseridor.labels.angle" horzTextAlign="center"/>
 								<edit left="115" top="5" width="50" height="25" name="angleVal" type="float" min="0" max="360" decimalPlaces="1" field="angle"/>
-								<label left="170" top="5" width="60" height="20" name="angleDegree"/>
+								<label left="170" top="5" width="60" height="20" name="angleDegree" text="@@scene.inseridor.labels.degree"/>
 							</flowPart>	
 
 						</flowLayout>
 					</scrollBox>		
 				</tab>
 
-				<tab name="tabImagem">
-					<label name="labTitle" left="10" top="0" width="100" height="28" horzTextAlign="leading" vertTextAlign="center" fontSize="15" fontColor="#FFCC66"/>
-					<horzLine left="10" top="30" width="290" strokeColor="#FFCC6670" margins="{left=10}"/>			
-					
-					<script>
-						self.labTitle.text = lang("scene.inseridor.tab.imagem");
-					</script>
+				<tab name="tabImagem" text="@@scene.inseridor.tab.imagem">
+					<label name="labTitle" left="10" top="0" width="100" height="28" horzTextAlign="leading" vertTextAlign="center" fontSize="15" fontColor="#FFCC66" text="@@scene.inseridor.tab.imagem"/>
+					<horzLine left="10" top="30" width="290" strokeColor="#FFCC6670" margins="{left=10}"/>
 
 					<layout left="0" top="30" width="300" height="270">
 						<rectangle left="45" top="5" width="200" height="200" strokeColor="white" color="black"/>
-						<label left="45" top="95" width="200" height="20" fontSize="11" name="click" horzTextAlign="center"/>
+						<label left="45" top="95" width="200" height="20" fontSize="11" name="click" text="@@scene.inseridor.image.click" horzTextAlign="center"/>
 						<image left="45" top="5" width="200" height="200" style="autoFit" editable="true" name="image" field="image"/>
 						
-						<button left="55" top="215" width="185" height="25" name="input" onClick="self:openFile()"/>
+						<button left="55" top="215" width="185" height="25" name="input" text="@@scene.inseridor.labels.input" onClick="self:openFile()"/>
 					</layout>
 				</tab>
 
@@ -442,17 +435,17 @@
 					</script>			
 				</template>		
 
-				<tab name="tabFOW">
+				<tab name="tabFOW" text="@@scene.fogOfWar">
 					<scrollBox align="client">
 						<flowLayout align="top" autoHeight="true" maxControlsPerLine="1" name="flaContentFOW">			
 							<GroupHeader text="scene.fogOfWar.tokenVision"/>		
 							
 							<flowPart class="optionPart" height="150">	
-								<label name="labCampoDeVisao" class="itemTitle"/>				
+								<label name="labCampoDeVisao" class="itemTitle" text="@@scene.fogOfWar.alcance.tokenVision"/>				
 								<layout class="itemContent">
 									<!-- Possui visao -->
 									<layout align="top" height="28" margins="{top=2}">
-										<label name="labHasVision" align="left" width="100" horzTextAlign="trailing" margins="{right=4}"/>
+										<label name="labHasVision" align="left" width="100" horzTextAlign="trailing" margins="{right=4}" text="@@scene.fogOfWar.token.hasSight"/>
 										<checkBox name="visionHave" align="client" class="itemContent" margins="{top=2}" field="hasSight"/>
 									</layout>						
 									
@@ -466,7 +459,7 @@
 							<GroupHeader text="scene.fogOfWar.tokenLight"/>														
 
 							<flowPart class="optionPart" height="90">	
-								<label name="labLuz" class="itemTitle"/>				
+								<label name="labLuz" class="itemTitle" text="@@scene.fogOfWar.alcance.tokenLight"/>				
 								<layout class="itemContent">
 									<ComponenteDeLuz title="scene.fogOfWar.luzIntensa" nomeMetric="labMetricLI" nomeEdit="lightIntense" field="lightIntense"/>
 									<ComponenteDeLuz title="scene.fogOfWar.luzFraca" nomeMetric="labMetricLF" nomeEdit="lightWeak" field="lightWeak"/>
@@ -488,22 +481,12 @@
 				}
 			</style>
 		
-			<button width="80" horzTextAlign="center" class="rodapeButton tokenRodapeButton" onClick="self:import()" name="btnImport"/>
-			<button width="80" horzTextAlign="center" class="rodapeButton tokenRodapeButton" onClick="self:export()" name="btnExport"/>
-			<button width="80" horzTextAlign="center" class="rodapeButton tokenRodapeButton" onClick="self:processarOK()" name="btnInsert"/>
-			<button width="110" horzTextAlign="center" class="rodapeButton tokenRodapeButton" onClick="self:processarOkClose()" name="btnOkName"/>
-			<button width="80" horzTextAlign="center" class="rodapeButton tokenRodapeButton" onClick="self:processarCancel()" name="btnCancelName"/>	
+			<button width="80" horzTextAlign="center" class="rodapeButton tokenRodapeButton" onClick="self:import()" name="btnImport" text="@@scene.inseridor.buttons.import"/>
+			<button width="80" horzTextAlign="center" class="rodapeButton tokenRodapeButton" onClick="self:export()" name="btnExport" text="@@scene.inseridor.buttons.export"/>
+			<button width="80" horzTextAlign="center" class="rodapeButton tokenRodapeButton" onClick="self:processarOK()" name="btnInsert" text="@@scene.inseridor.buttons.insert"/>
+			<button width="110" horzTextAlign="center" class="rodapeButton tokenRodapeButton" onClick="self:processarOkClose()" name="btnOkName" text="@@scene.inseridor.buttons.insertClose"/>
+			<button width="80" horzTextAlign="center" class="rodapeButton tokenRodapeButton" onClick="self:processarCancel()" name="btnCancelName" text="@@scene.inseridor.buttons.Close"/>	
 		</flowLayout>
-
-		<script>
-			self.btnNew.text = lang('scene.inseridor.buttons.new');
-			self.btnMany.text = lang('scene.inseridor.buttons.many');
-			self.btnImport.text = lang('scene.inseridor.buttons.import');
-			self.btnExport.text = lang('scene.inseridor.buttons.export');
-			self.btnInsert.text = lang('scene.inseridor.buttons.insert');
-			self.btnOkName.text = lang('scene.inseridor.buttons.insertClose');
-			self.btnCancelName.text = lang('scene.inseridor.buttons.Close');
-		</script>
 	</layout>
 	
 	<script><![CDATA[
@@ -515,29 +498,10 @@
 			node.heightVal = 1;
 		end;
 
-		self.labSelectTokenInfo.text = lang('scene.inseridor.selectOrCreateToken');
-		self.tabImagem.text = lang('scene.inseridor.tab.imagem');
-		self.tabPrincipal.text = lang('scene.tokenEdit.propriedades');
-		self.tabFOW.text = lang('scene.fogOfWar');
-
-		self.labPersonagem.text = lang('scene.tokenEdit.personagem');
-		self.cbxSnapToGrid.text = lang('scene.tokenEdit.snapToGrid');
-
-		self.labCampoDeVisao.text = lang('scene.fogOfWar.alcance.tokenVision');
-		self.labLuz.text = lang('scene.fogOfWar.alcance.tokenLight');
-		self.labHasVision.text = lang('scene.fogOfWar.token.hasSight');
-
-		self.click.text = lang('scene.inseridor.image.click');
 		self.image.url = "";
-		self.widthText.text = lang('scene.inseridor.labels.width');
-		self.widthCell.text = lang('scene.inseridor.labels.cell');
 		self.widthVal.text = node.widthVal;
-		self.heightText.text = lang('scene.inseridor.labels.height');
-		self.heightCell.text = lang('scene.inseridor.labels.cell');
 		self.heightVal.text = node.heightVal;
-		self.angleText.text = lang('scene.inseridor.labels.angle');
 		self.angleVal.text = node.angleVal;
-		self.angleDegree.text = lang('scene.inseridor.labels.degree');
 
 		self.cbxSnapToGrid.checked = node.snapToGrid;
 
@@ -564,14 +528,9 @@
 		self.lightWeak.text = node.lightWeak;
 		self.lightAngle.text = node.lightAngle;
 
-		self.labelText.text = lang('scene.inseridor.labels.label');
-		self.input.text = lang('scene.inseridor.labels.input');
-		self.delete.text = lang('scene.inseridor.labels.delete');
-		self.layerText.text = lang('scene.inseridor.labels.layer');
 		self.layerVal.items = {lang("scene.inseridor.labels.layer1"), lang("scene.inseridor.labels.layer2"), lang("scene.inseridor.labels.layer3")};
 		self.layerVal.values = {'B', 'O', 'T'};
 		
-		self.labFacingMode.text = lang('scene.FacingMode.title');
 		self.cmbFacingMode.items = {lang('scene.FacingMode.rotate'), lang('scene.FacingMode.arrow')};		
 
 		function self:prepareForShow(oScene)
@@ -725,7 +684,7 @@
 		end;
 
 		function self:import()
-			Dialogs.openFile("Importar Ficha", "application/xml", false, 
+			Dialogs.openFile(lang("scene.inseridor.import"), "application/xml", false, 
 				function(arquivos)
 					local arq = arquivos[1];
 
@@ -734,45 +693,8 @@
 
 					local xml = Utils.binaryDecode(import, "utf8");
 
-					local node = NDB.newMemNodeDatabase();
-					NDB.importXML(node, xml);
-
-					local tokens = NDB.getChildNodes(node.tokensSalvos);
-					for i=1, #tokens, 1 do
-						local newNode = self.rclListaDosTokens:append();
-			
-						if newNode ~= nil then
-							newNode.angle = tokens[i].angle;
-							newNode.bar1 = tokens[i].bar1;
-							newNode.bar1Color = tokens[i].bar1Color;
-							newNode.bar1Max = tokens[i].bar1Max;
-							newNode.bar2 = tokens[i].bar2;
-							newNode.bar2Color = tokens[i].bar2Color;
-							newNode.bar2Max = tokens[i].bar2Max;
-							newNode.bar3 = tokens[i].bar3;
-							newNode.bar3Color = tokens[i].bar3Color;
-							newNode.bar3Max = tokens[i].bar3Max;
-							newNode.character = tokens[i].character;
-							newNode.facingMode = tokens[i].facingMode;
-							newNode.hasSight = tokens[i].hasSight;
-							newNode.height = tokens[i].height;
-							newNode.image = tokens[i].image;
-							newNode.layer = tokens[i].layer;
-							newNode.lightAngle = tokens[i].lightAngle;
-							newNode.lightIntense = tokens[i].lightIntense;
-							newNode.lightWeak = tokens[i].lightWeak;
-							newNode.name = tokens[i].name;
-							newNode.snapToGrid = tokens[i].snapToGrid;
-							newNode.visionAngle = tokens[i].visionAngle;
-							newNode.visionDark = tokens[i].visionDark;
-							newNode.visionIntense = tokens[i].visionIntense;
-							newNode.visionWeak = tokens[i].visionWeak;
-							newNode.width = tokens[i].width;
-						end;
-					end;
-					self.rclListaDosTokens:sort();
+					NDB.importXML(sheet, xml);
 				end);
-
 		end;
 
 		function self:export()
@@ -784,10 +706,10 @@
 			local stream = Utils.newMemoryStream();
 			local bytes = stream:write(export);
 
-			Dialogs.saveFile("Salvar Ficha como XML", stream, "tokens.xml", "application/xml",
+			Dialogs.saveFile(lang("scene.inseridor.export"), stream, "tokens.xml", "application/xml",
 				function()
 					stream:close();
-					showMessage("Ficha Exportada.");
+					showMessage(lang("scene.inseridor.exported"));
 				end);
 		end;
 

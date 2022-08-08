@@ -65,3 +65,7 @@ scene.inseridor.noplayers=Não tem jogadores na mesa!
 scene.inseridor.selectOrCreateToken=Selecione ou crie um novo token
 scene.inseridor.nameYourToken=Nome do Token
 scene.inseridor.alert.gm.only=Apenas o mestre pode acessar esta funcionalidade.
+
+scene.inseridor.import=Importar Tokens
+scene.inseridor.export=Exportar Tokens para XML
+scene.inseridor.exported=Tokens Exportados
