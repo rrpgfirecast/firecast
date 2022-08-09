@@ -83,10 +83,10 @@
 									GENERICItem_SendToBack(theScene, self.theSelection);
 									self:close();
 								  end;				
-		
-		local btnApagar = newMenuItem(lang("scene.remove.item"), self.flaLayout);				
+
+		local btnCast = newMenuItem(lang("scene.tokenMenu.cast"), self.flaLayout);
+		local btnApagar = newMenuItem(lang("scene.remove.item"), self.flaLayout);	
 		local btnProps = newMenuItem(lang("scene.tokenMenu.properties"), self.flaLayout);				
-		
 		
 		-- Menu Camadas
 				
@@ -326,6 +326,29 @@
 							 self:close();
 							 frm:show();
 						   end;
+
+		btnCast.onClick = function ()
+							if not theScene.isGM then
+								showMessage(lang("scene.inseridor.alert.gm.only"));
+								return;
+							end;
+
+							-- Pass owner info
+							local frm = GUI.newForm("frmMagicTokens");
+							local node = {};
+							local theToken;
+							if #(self.theSelection) > 0 then
+								theToken = theSelection[1];
+							end;
+							if theToken~=nil then
+								node.character = theToken.ownerCharacter;
+							end
+							frm:setNodeObject(node);
+
+							frm:prepareForShow(theScene);
+							self:close();
+							frm:show();
+						end;
 		
 		
 		function self:setActiveMenu(menu)

@@ -18,6 +18,7 @@ scene.tokenMenu.changeLayer=Send to Layer >>
 scene.tokenMenu.properties=Properties...
 scene.tokenMenu.clearHistMov=Clear Movement History
 scene.tokenMenu.clearMemory=Clear Token's View Memory
+scene.tokenMenu.cast=Cast Spell...
 scene.menu.token.editCA=Edit:
 scene.menu.token.editCA.copy=Copy
 scene.menu.token.editCA.paste=Paste

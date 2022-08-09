@@ -18,6 +18,7 @@ scene.tokenMenu.changeLayer=Enviar para Camada >>
 scene.tokenMenu.properties=Propriedades...
 scene.tokenMenu.clearHistMov=Limpar Histórico de Movimentos
 scene.tokenMenu.clearMemory=Limpar Memória de Áreas Vistas pelo Token
+scene.tokenMenu.cast=Conjurar Magia...
 
 scene.menu.token.editCA=Editar:
 scene.menu.token.editCA.copy=Copiar

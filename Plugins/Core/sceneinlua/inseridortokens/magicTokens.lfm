@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<popupForm name="frmMagicTokens" width="250" height="200" drawContainer="true" resizable="true" placement="center"
+<popupForm name="frmMagicTokens" width="250" height="215" drawContainer="true" resizable="true" placement="center"
 		   cancelable="false">
  		   
 	<import file="../interfaceUtils.xml"/>
@@ -73,7 +73,13 @@
 	
 	<scrollBox align="client">
 		<flowLayout align="top" autoHeight="true" maxControlsPerLine="1" name="flaContent">		
-			<GroupHeader text="scene.magic.title"/>			
+			<GroupHeader text="scene.magic.title"/>
+
+			<!-- Personagem -->
+			<flowPart class="optionPart">	
+				<label name="labPersonagem" class="itemTitle" text="@@scene.tokenEdit.personagem"/>
+				<comboBox name="cmbPersonagem" class="itemContent" field="character"/>
+			</flowPart>		
 			
 			<flowPart class="optionPart">
 				<label name="areaLabel" class="itemTitle"/>
@@ -120,6 +126,49 @@
 
 		function self:prepareForShow(oScene)
 			scene = oScene;
+
+			self:listAllCharacters();
+			if sheet~=nil then self.cmbPersonagem.value = tostring(sheet.character) or "0" end;
+		end;
+
+		function self:listAllCharacters()
+			local mesa = Firecast.getMesaDe(scene);
+
+			local personagens = {};
+			recursiveEnumPersonagensEmBibItem(mesa.biblioteca, personagens);
+			
+			table.sort(personagens,
+				function(left, right)
+					return Utils.compareStringPtBr(left.nome, right.nome) < 0;
+				end);
+				
+			local nomes = {};
+			local valores = {};
+			
+			nomes[1] = LANG("scene.tokenEdit.semPersonagem");
+			valores[1] = "0";
+			
+			for i = 1, #personagens, 1 do
+				nomes[#nomes + 1] = personagens[i].nome;
+				valores[#valores + 1] = tostring(personagens[i].codigoInterno);
+			end;
+			
+			self.cmbPersonagem.items = nomes;
+			self.cmbPersonagem.values = valores;
+		end;
+
+		function recursiveEnumPersonagensEmBibItem(bibItem, dest)
+			if bibItem.tipo == "personagem" then
+				if (bibItem.loginDono ~= nil) and (bibItem.loginDono ~= "") then
+					dest[#dest + 1] = bibItem;
+				end;
+			else
+				local filhos = bibItem.filhos;
+				
+				for i = 1, #filhos, 1 do
+					recursiveEnumPersonagensEmBibItem(filhos[i], dest);
+				end;
+			end;
 		end;
 
 		function self:createConeDiagonally()
@@ -568,6 +617,13 @@
 			token.width = reach * size * multx;
 			token.height = reach * size * multy;
 			token.name = self.areaType.value .. " de " .. reach .. " " .. lang("scene.magic.square") .. ".";
+
+			local ownerCharID = tonumber(self.cmbPersonagem.value) or 0;
+			if ownerCharID > 0 then
+				token.ownerCharacter = ownerCharID;
+			else
+				token.ownerCharacter = 0;
+			end;
 
 			opGrafica = token.canvas:addPath();
 			opGrafica.name = self.areaType.value .. " de " .. reach .. " " .. lang("scene.magic.square") .. ".";
