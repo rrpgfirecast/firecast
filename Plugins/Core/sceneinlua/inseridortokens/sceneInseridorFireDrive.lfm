@@ -94,16 +94,17 @@
 						newNode.image = t[i+1];	
 						newNode.width = 1;
 						newNode.height = 1;
-						newNode.angle = 0;	
-						newNode.snapToGrid = true;				
-						newNode.bar1Color = "Indianred";
-						newNode.bar2Color = "Lightskyblue";
-						newNode.bar3Color = "Limegreen";	
-						newNode.visionIntense = 102;
-						newNode.visionWeak = 1.5;
-						newNode.visionDark = 0;
-						newNode.visionAngle = 360;
-						newNode.hasSight = false;
+						newNode.angle = 0;
+						newNode.facingMode = sheet.defaults_facingMode or nil;
+						newNode.snapToGrid = sheet.defaults_snapToGrid;
+						newNode.bar1Color = sheet.defaults_bar1Color or "Indianred";
+						newNode.bar2Color = sheet.defaults_bar2Color or "Lightskyblue";
+						newNode.bar3Color = sheet.defaults_bar3Color or "Limegreen";	
+						newNode.visionIntense = sheet.defaults_visionIntense or 102;
+						newNode.visionWeak = sheet.defaults_visionWeak or 1.5;
+						newNode.visionDark = sheet.defaults_visionDark or 0;
+						newNode.visionAngle = sheet.defaults_visionAngle or 360;
+						newNode.hasSight = sheet.defaults_hasSight or false;
 						newNode.lightIntense = 0;
 						newNode.lightWeak = 0;
 						newNode.lightAngle = 360;
@@ -123,6 +124,77 @@
 			</event>
 		</button>
 		<textEditor align="client" field="input"/>
+	</popup>
+
+	<popup name="popConfig" width="320" height="400" backOpacity="0.4" autoScopeNode="false">
+		<flowLayout align="top" autoHeight="true" maxControlsPerLine="1">
+							
+			<!-- Agarrar ao Grid -->
+			<flowPart class="optionPart">	
+				<label name="defaults_labSnapToGrid" class="itemTitle"/>
+				<checkBox name="defaults_cbxSnapToGrid" class="itemContent" field="defaults_snapToGrid" text="@@scene.tokenEdit.snapToGrid"/>
+			</flowPart>
+			
+			<!-- Facing Mode -->
+			<flowPart class="optionPart">	
+				<label name="defaults_labFacingMode" text="@@scene.FacingMode.title" class="itemTitle"/>
+				<comboBox name="defaults_cmbFacingMode" class="itemContent" values="{'rotate', 'drawArrow'}" field="defaults_facingMode"/>
+			</flowPart>
+
+			<!-- Bars -->
+			<flowPart class="optionPart">
+				<label name="defaults_labBar1" align="client" class="itemTitle" fontColor="white"/>
+				<colorComboBox name="defaults_cmbCorBar1" align="right" width="50" useAlpha="false" margins="{left=8, right=8}" field="defaults_bar1Color"/>
+			</flowPart>
+			<flowPart class="optionPart">
+				<label name="defaults_labBar2" align="client" class="itemTitle" fontColor="white"/>
+				<colorComboBox name="defaults_cmbCorBar2" align="right" width="50" useAlpha="false" margins="{left=8, right=8}" field="defaults_bar2Color"/>
+			</flowPart>
+			<flowPart class="optionPart">
+				<label name="defaults_labBar3" align="client" class="itemTitle" fontColor="white"/>
+				<colorComboBox name="defaults_cmbCorBar3" align="right" width="50" useAlpha="false" margins="{left=8, right=8}" field="defaults_bar3Color"/>
+			</flowPart>	
+
+			<!-- Vision -->
+			<flowPart class="optionPart" height="150">	
+				<label name="defaults_labCampoDeVisao" class="itemTitle" text="@@scene.fogOfWar.alcance.tokenVision"/>				
+				<layout class="itemContent">
+					<!-- Possui visao -->
+					<layout align="top" height="28" margins="{top=2}">
+						<label name="defaults_labHasVision" align="left" width="100" horzTextAlign="trailing" margins="{right=4}" text="@@scene.fogOfWar.token.hasSight"/>
+						<checkBox name="defaults_visionHave" align="client" class="itemContent" margins="{top=2}" field="defaults_hasSight"/>
+					</layout>						
+					
+					<ComponenteDeLuz title="scene.fogOfWar.sobLuzIntensa" nomeMetric="defaults_labMetricVLI" nomeEdit="defaults_visionIntense" field="defaults_visionIntense"/>
+					<ComponenteDeLuz title="scene.fogOfWar.sobLuzFraca" nomeMetric="defaults_labMetricVLF" nomeEdit="defaults_visionWeak" field="defaults_visionWeak"/>
+					<ComponenteDeLuz title="scene.fogOfWar.sobEscuridao" nomeMetric="defaults_labMetricVLE" nomeEdit="defaults_visionDark" field="defaults_visionDark"/>
+					<ComponenteDeAngulo title="scene.fogOfWar.angulo" nomeEdit="defaults_visionAngle" field="defaults_visionAngle"/>
+				</layout>			
+			</flowPart>	
+		</flowLayout>
+
+		<event name="onNodeReady">
+			<![CDATA[
+			self.defaults_cmbFacingMode.items = {lang('scene.FacingMode.rotate'), lang('scene.FacingMode.arrow')};
+			if self.defaults_cmbFacingMode.text == "" then
+				self.defaults_cmbFacingMode.text = sheet.defaults_facingMode
+			end;
+
+			self.defaults_labBar1.text = LANG('scene.tokenEdit.barraPrefix') .. " 1:";
+			self.defaults_cmbCorBar1.color = sheet.defaults_bar1Color or "Indianred";
+	
+			self.defaults_labBar2.text = LANG('scene.tokenEdit.barraPrefix') .. " 2:";
+			self.defaults_cmbCorBar2.color = sheet.defaults_bar2Color or "Lightskyblue";
+	
+			self.defaults_labBar3.text = LANG('scene.tokenEdit.barraPrefix') .. " 3:";
+			self.defaults_cmbCorBar3.color = sheet.defaults_bar3Color or "Limegreen";
+
+			sheet.defaults_visionIntense = sheet.defaults_visionIntense or 102;
+			sheet.defaults_visionWeak = sheet.defaults_visionWeak or 1.5;
+			sheet.defaults_visionDark = sheet.defaults_visionDark or 0;
+			sheet.defaults_visionAngle = sheet.defaults_visionAngle or 360;
+			]]>
+		</event>
 	</popup>
 			
 	<script>
@@ -159,6 +231,17 @@
 				showMessage("Ops, bug.. nao encontrei o popup para exibir");
 			end;				
 		end;
+
+		local function showPopupConfig()
+			local pop = self:findControlByName("popConfig");
+				
+			if pop ~= nil then
+				pop:setNodeObject(self.sheet);
+				pop:showPopupEx("right", self);
+			else
+				showMessage("Ops, bug.. nao encontrei o popup para exibir");
+			end;				
+		end;
 	</script>
 
 	<event name="OnStartDrop">
@@ -173,8 +256,6 @@
 	</event>
 	
 	<scrollBox align="client">
-
-
 		<event name="OnStartDrop">
 		    drop:addAction("id",
 		        function(value)
@@ -371,7 +452,7 @@
 			</dataLink>
 		</layout>
 		
-		<layout visible="false" name="layInfoSelectOrCreateToken" align="client" margins="{left=2, right=2, top=2, bottom=2}">
+		<layout visible="false" name="layInfoSelectOrCreateToken" align="right" width="320" margins="{left=2, right=2, top=2, bottom=2}">
 			<label name="labSelectTokenInfo" align="client" vertTextAlign="center" horzTextAlign="center" wordWrap="true" text="@@scene.inseridor.selectOrCreateToken"/>
 		</layout>
 		
@@ -392,19 +473,19 @@
 							<flowPart class="optionPart">	
 								<label name="labelText" text="@@scene.inseridor.labels.label" class="itemTitle"/>
 								<edit name="labelVal" class="itemContent" field="name" onUserChange="self.rclListaDosTokens:sort()"/>
-							</flowPart>						
+							</flowPart>
 							
 							<!-- Agarrar ao Grid -->
 							<flowPart class="optionPart">	
 								<label name="labSnapToGrid" class="itemTitle"/>
 								<checkBox name="cbxSnapToGrid" class="itemContent" field="snapToGrid" text="@@scene.tokenEdit.snapToGrid"/>
-							</flowPart>					
+							</flowPart>
 							
 							<!-- Facing Mode -->
 							<flowPart class="optionPart">	
 								<label name="labFacingMode" text="@@scene.FacingMode.title" class="itemTitle"/>
 								<comboBox name="cmbFacingMode" class="itemContent" values="{'rotate', 'drawArrow'}" field="facingMode"/>
-							</flowPart>									
+							</flowPart>
 
 							<flowPart class="optionPart">
 								<label name="layerText" text="@@scene.inseridor.labels.layer" class="itemTitle"/>
@@ -539,7 +620,8 @@
 					height: 35; 
 				}
 			</style>
-		
+
+			<button width="80" class="rodapeButton tokenRodapeButton" name="btnConfig" onClick="showPopupConfig();" text="@@scene.inseridor.buttons.config" fontSize="11"/>
 			<button width="80" horzTextAlign="center" class="rodapeButton tokenRodapeButton" onClick="self:import()" name="btnImport" text="@@scene.inseridor.buttons.import"/>
 			<button width="80" horzTextAlign="center" class="rodapeButton tokenRodapeButton" onClick="self:export()" name="btnExport" text="@@scene.inseridor.buttons.export"/>
 			<button width="80" horzTextAlign="center" class="rodapeButton tokenRodapeButton" onClick="self:processarOK()" name="btnInsert" text="@@scene.inseridor.buttons.insert"/>
@@ -590,7 +672,7 @@
 		self.layerVal.items = {lang("scene.inseridor.labels.layer1"), lang("scene.inseridor.labels.layer2"), lang("scene.inseridor.labels.layer3")};
 		self.layerVal.values = {'B', 'O', 'T'};
 		
-		self.cmbFacingMode.items = {lang('scene.FacingMode.rotate'), lang('scene.FacingMode.arrow')};		
+		self.cmbFacingMode.items = {lang('scene.FacingMode.rotate'), lang('scene.FacingMode.arrow')};
 
 		function self:prepareForShow(oScene)
 			scene = oScene;
@@ -799,15 +881,16 @@
 				newNode.width = 1;
 				newNode.height = 1;
 				newNode.angle = 0;	
-				newNode.snapToGrid = true;				
-				newNode.bar1Color = "Indianred";
-				newNode.bar2Color = "Lightskyblue";
-				newNode.bar3Color = "Limegreen";	
-				newNode.visionIntense = 102;
-				newNode.visionWeak = 1.5;
-				newNode.visionDark = 0;
-				newNode.visionAngle = 360;
-				newNode.hasSight = false;
+				newNode.facingMode = sheet.defaults_facingMode or nil;
+				newNode.snapToGrid = sheet.defaults_snapToGrid;
+				newNode.bar1Color = sheet.defaults_bar1Color or "Indianred";
+				newNode.bar2Color = sheet.defaults_bar2Color or "Lightskyblue";
+				newNode.bar3Color = sheet.defaults_bar3Color or "Limegreen";	
+				newNode.visionIntense = sheet.defaults_visionIntense or 102;
+				newNode.visionWeak = sheet.defaults_visionWeak or 1.5;
+				newNode.visionDark = sheet.defaults_visionDark or 0;
+				newNode.visionAngle = sheet.defaults_visionAngle or 360;
+				newNode.hasSight = sheet.defaults_hasSight or false;
 				newNode.lightIntense = 0;
 				newNode.lightWeak = 0;
 				newNode.lightAngle = 360;

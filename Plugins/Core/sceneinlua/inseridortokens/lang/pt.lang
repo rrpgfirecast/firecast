@@ -11,8 +11,6 @@ scene.magic.reachLabel=Tamanho
 scene.magic.square=quadrados
 scene.magic.colorLabel=Cor
 
-
-
 scene.inseridor.image.click=Escolha a Imagem
 scene.inseridor.url=Cole o URL da imagem
 scene.inseridor.tab.imagem=Imagem
@@ -50,6 +48,7 @@ scene.inseridor.buttons.export=Exportar
 scene.inseridor.buttons.new=Novo
 scene.inseridor.buttons.dir=Pasta
 scene.inseridor.buttons.many=Vários
+scene.inseridor.buttons.config=Configuração
 scene.inseridor.buttons.save=Salvar
 scene.inseridor.buttons.rename=Renomear
 scene.inseridor.buttons.token=Novo Token
