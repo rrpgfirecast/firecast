@@ -155,6 +155,8 @@
     <event name="OnStartDrop">
         drop:addAction("id",
                 function(value)
+                    -- ignore drop de objeto nele mesmo
+                    if sheet.id == value then return end;
                     if sheet.directory then
                         --showMessage("ID: " .. (value or "nil"));
                         local node = NDB.getParent(NDB.getParent(sheet))

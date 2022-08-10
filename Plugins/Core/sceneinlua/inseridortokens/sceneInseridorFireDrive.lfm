@@ -423,6 +423,7 @@
 
 
 					local target = self:findItemById(sheet.adoptionTarget);
+					local father = self:findItemById(sheet.adoptionFather);
 					if target== nil then 
 						return
 					end
@@ -437,10 +438,35 @@
 					-- adoptive father
 					target.father = sheet.adoptionFather
 
+					-- Update target visibility
+					--showMessage("Father: " .. (father or "nil"))
+					if father~= nil then
+						if target.directory then
+							target.dirOpen = father.dirOpen
+							target.dirVisible = father.dirOpen
+							--showMessage("Folder: ".. target.dirOpen .. "-" .. target.dirVisible .. " - " .. father.dirOpen)
+						else
+							target.dirVisible = father.dirOpen
+							--showMessage("Token: ".. target.dirVisible .. " - " .. father.dirOpen)
+						end
+					end
+
 					-- update descendents dirLevel
 					local desc = self:getDescendentsOf(sheet.adoptionTarget)
 					for i,v in ipairs(desc) do
 						v.dirLevel = (tonumber(v.dirLevel) or 0) + lvlDiff
+
+						-- Update descendents visibility
+						if father~= nil then
+							if v.directory then
+								v.dirOpen = father.dirOpen
+								v.dirVisible = father.dirOpen
+								--showMessage("Folder: ".. v.dirOpen .. "-" .. v.dirVisible .. " - " .. father.dirOpen)
+							else
+								v.dirVisible = father.dirOpen
+								--showMessage("Token: ".. v.dirVisible .. " - " .. father.dirOpen)
+							end
+						end
 					end
 
 					sheet.adoptionFather = nil
