@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<popupForm name="frmMagicTokens" width="250" height="215" drawContainer="true" resizable="true" placement="center"
+<popupForm name="frmMagicTokens" width="320" height="255" drawContainer="true" resizable="true" placement="center"
 		   cancelable="false">
  		   
 	<import file="../interfaceUtils.xml"/>
@@ -79,11 +79,72 @@
 			<flowPart class="optionPart">	
 				<label name="labPersonagem" class="itemTitle" text="@@scene.tokenEdit.personagem"/>
 				<comboBox name="cmbPersonagem" class="itemContent" field="character"/>
+			</flowPart>	
+
+			<!-- Tipo de célula -->
+			<flowPart class="optionPart" name="partTipoCelula">	
+				<label name="labTipoDeCelula" class="itemTitle" text="@@scene.cellType"/>
+				<flowLayout name="flaTipoDeCelula" class="itemContent" onAfterLayoutCalc="self.partTipoCelula.height = math.max(30, self.flaTipoDeCelula.contentHeight)">
+					<style>
+						flowPart.cellTypePart {
+							minWidth: 50;
+							maxWidth: 50;
+							height: 30;
+							margins: {left=3, right=3, top=3, bottom=3};
+							hitTest: true;
+						}
+						
+						radioButton.cellType {
+							align: left;
+							width: 20;
+							groupName: sceneCellType;
+						}
+						
+						image.cellType {
+							align: client;
+						}
+						
+						path.cellType {
+							align: client;
+							mode: fit;
+							color: #00000000;
+							strokeColor: white;
+							strokeSize: 1.0;
+							hitTest: false;
+							roundToPixel: true;
+						}
+					</style>
+					
+					<flowPart class="cellTypePart" onClick="self.rbtCellTypeQuad.checked = true">
+						<radioButton name="rbtCellTypeQuad" class="cellType" checked="true"/>
+						<path class="cellType" data="M 0 0 L 1 0 L 1 1 L 0 1 z"/>
+					</flowPart>
+					
+					<flowPart class="cellTypePart" onClick="self.rbtCellTypeVertHex.checked = true">
+						<radioButton name="rbtCellTypeVertHex" class="cellType"/>
+						<path class="cellType" data="M 84 0 L 168 50 L 168 140 L 84 190 L 0 140 L 0 50 z"/>
+					</flowPart>
+					
+					<flowPart class="cellTypePart" onClick="self.rbtCellTypeHorzHex.checked = true">
+						<radioButton name="rbtCellTypeHorzHex" class="cellType"/>
+						<path class="cellType" data="M 0 84 L 50 0 L 140 0 L 190 84 L 140 168 L 50 168 Z" />
+					</flowPart>									
+				</flowLayout>
 			</flowPart>		
 			
 			<flowPart class="optionPart">
 				<label name="areaLabel" class="itemTitle"/>
-				<comboBox name="areaType" class="itemContent"/>	
+				<comboBox name="areaType" class="itemContent">
+					<event name="onChange">
+					local opt = self.areaType.value;
+
+					if opt == lang("scene.magic.areaType3") then
+						self.rbtCellTypeQuad.checked = true
+					elseif opt == lang("scene.magic.areaType5") then
+						self.rbtCellTypeQuad.checked = true
+					end;
+					</event>
+				</comboBox>	
 			</flowPart>	
 			
 			<flowPart class="optionPart">	
@@ -172,6 +233,15 @@
 		end;
 
 		function self:createConeDiagonally()
+			if self.rbtCellTypeVertHex.checked or self.rbtCellTypeHorzHex.checked then
+				self:createConeHex()
+			else
+				self:createConeDiagonallyQuad()
+			end
+			
+		end
+
+		function self:createConeDiagonallyQuad()
 			local reach = tonumber(self.reachVal.text) or 1;
 			local path = "M 0 0 h " .. reach;
 
@@ -211,6 +281,54 @@
 		end;
 
 		function self:createConeHorizontally()
+			if self.rbtCellTypeVertHex.checked or self.rbtCellTypeHorzHex.checked then
+				multy = 1
+				self:createConeHex()
+			else
+				self:createConeHorizontallyQuad()
+			end
+		end
+
+		function self:createConeHex()
+			local reach = tonumber(self.reachVal.text) or 1;
+			local path = "M 0 0"
+			local posH = 0
+			local posV = 0
+
+			-- draw waves until right
+			for i=1, reach+1, 1 do 
+				posH = posH + 84
+				posV = posV + 50
+				path = path .. " L " .. posH .. " " .. posV
+				posH = posH + 84
+				posV = posV - 50
+				path = path .. " L " .. posH .. " " .. posV
+			end
+
+			-- draw double lines until bottom
+			for i=1, reach+1, 1 do 
+				posV = posV - 90
+				path = path .. " L "  .. posH .. " " .. posV
+				posH = posH - 84
+				posV = posV - 50
+				path = path .. " L " .. posH .. " " .. posV
+			end
+
+			-- draw double lines until left
+			for i=1, reach+1, 1 do 
+				posH = posH - 84
+				posV = posV + 50
+				path = path .. " L " .. posH .. " " .. posV
+				posV = posV + 90
+				path = path .. " L "  .. posH .. " " .. posV
+			end
+
+			path = path .. " Z";
+
+			self:createToken(path);
+		end
+
+		function self:createConeHorizontallyQuad()
 			local reach = tonumber(self.reachVal.text) or 1;
 			local path = "M 0 0";
 			local height = math.ceil(reach*multy/2);
@@ -329,6 +447,84 @@
 		end;
 
 		function self:createCircle()
+			if self.rbtCellTypeVertHex.checked or self.rbtCellTypeHorzHex.checked then
+				self:createCircleHex()
+			else
+				self:createCircleQuad()
+			end
+		end;
+
+		function self:createCircleHex()
+			local reach = tonumber(self.reachVal.text) or 1;
+			-- local path = "M 84 0 L 168 50 L 168 140 L 84 190 L 0 140 L 0 50 z"
+			local posH = (168*(reach+1))
+			local posV = 50
+			-- go to hex point 2 [right bottom]
+			local path = "M " .. posH .. " 50";
+
+			-- draw double lines until top
+			for i=1, reach+1, 1 do 
+				posV = posV + 90
+				path = path .. " L "  .. posH .. " " .. posV
+				posH = posH - 84
+				posV = posV + 50
+				path = path .. " L " .. posH .. " " .. posV
+			end
+
+			-- draw waves until left
+			for i=1, reach, 1 do 
+				posH = posH - 84
+				posV = posV - 50
+				path = path .. " L " .. posH .. " " .. posV
+				posH = posH - 84
+				posV = posV + 50
+				path = path .. " L " .. posH .. " " .. posV
+			end
+
+			-- draw double lines until left bottom
+			for i=1, reach+1, 1 do 
+				posH = posH - 84
+				posV = posV - 50
+				path = path .. " L " .. posH .. " " .. posV
+				posV = posV - 90
+				path = path .. " L "  .. posH .. " " .. posV
+			end
+
+			-- draw double lines until bottom
+			for i=1, reach, 1 do 
+				posH = posH + 84
+				posV = posV - 50
+				path = path .. " L " .. posH .. " " .. posV
+				posV = posV - 90
+				path = path .. " L "  .. posH .. " " .. posV
+			end
+
+			-- draw waves until right
+
+			for i=1, reach+1, 1 do 
+				posH = posH + 84
+				posV = posV - 50
+				path = path .. " L " .. posH .. " " .. posV
+				posH = posH + 84
+				posV = posV + 50
+				path = path .. " L " .. posH .. " " .. posV
+			end
+
+			-- draw double lines until right bottom
+			for i=1, reach, 1 do 
+				posV = posV + 90
+				path = path .. " L "  .. posH .. " " .. posV
+				posH = posH + 84
+				posV = posV + 50
+				path = path .. " L " .. posH .. " " .. posV
+			end
+
+			path = path .. " Z";
+
+			self:createToken(path);
+		end
+
+		function self:createCircleQuad()
 			local reach = tonumber(self.reachVal.text) or 1;
 			local path = "M " .. reach .. " 0";
 
@@ -464,6 +660,16 @@
 		end;
 
 		function self:createEmanacao()
+			if self.rbtCellTypeVertHex.checked or self.rbtCellTypeHorzHex.checked then
+				multx = 2;
+				multy = 2;
+				self:createCircleHex()
+			else
+				self:createEmanacaoQuad()
+			end
+		end;
+
+		function self:createEmanacaoQuad()
 			local reach = tonumber(self.reachVal.text) or 1;
 			local path = "M " .. reach .. " 0";
 
@@ -616,6 +822,11 @@
 			token.y = y * size + scene.grid.offsetY;
 			token.width = reach * size * multx;
 			token.height = reach * size * multy;
+			if self.rbtCellTypeVertHex.checked or self.rbtCellTypeHorzHex.checked then
+				token.width = token.width + 1
+				token.height = token.height + 1
+			end
+			token.snapToGrid = self.rbtCellTypeQuad.checked;
 			token.name = self.areaType.value .. " de " .. reach .. " " .. lang("scene.magic.square") .. ".";
 
 			local ownerCharID = tonumber(self.cmbPersonagem.value) or 0;
@@ -635,6 +846,9 @@
 			opGrafica.color = self.colorBox.color;
             opGrafica.strokeSize = 1;
             opGrafica.pathData = path;
+            if self.rbtCellTypeHorzHex.checked then
+            	opGrafica.rotation = 90;
+            end
 			
 			scene.items:clearSelection();			
 			token.selected = true;			

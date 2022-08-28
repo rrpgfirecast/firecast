@@ -240,7 +240,19 @@
 				</flowLayout>								
 			</scrollBox>				
 		 </tab>	
+ 
+		<tab name="tabImagem" text="@@scene.inseridor.tab.imagem">
+			<label name="labTitle" left="10" top="0" width="100" height="28" horzTextAlign="leading" vertTextAlign="center" fontSize="15" fontColor="#FFCC66" text="@@scene.inseridor.tab.imagem"/>
+			<horzLine left="10" top="30" width="290" strokeColor="#FFCC6670" margins="{left=10}"/>
 
+			<layout left="0" top="30" width="300" height="270">
+				<rectangle left="45" top="5" width="200" height="200" strokeColor="white" color="black"/>
+				<label left="45" top="95" width="200" height="20" fontSize="11" name="click" text="@@scene.inseridor.image.click" horzTextAlign="center"/>
+				<image left="45" top="5" width="200" height="200" style="autoFit" hitTest="true" editable="true" name="image" field="image"/>
+				
+				<button left="55" top="215" width="185" height="25" name="input" text="@@scene.inseridor.labels.input" onClick="self:openFile()"/>
+			</layout>
+		</tab>
 		 
 		<template name="ComponenteDeLuz">
 			<!-- nomeLabel = uniqueName("labCompLuz");
@@ -374,6 +386,27 @@
 				end;
 			end; 
 		end;
+
+		function self:openFile()
+			Dialogs.openFile("Selecione o arquivo de imagem", "image/*", false,
+		        function(arquivos)
+		                local arq = arquivos[1];
+		                -- arq.name possui o nome do arquivo
+		                -- arq.stream possui o objeto stream do conteúdo 
+
+		                FireDrive.createDirectory("/uploads");
+
+		                local date_table = os.date("*t")
+				        local subfolder = date_table.year .. date_table.month;
+
+				        FireDrive.createDirectory("/uploads/" .. subfolder);
+				        
+		                FireDrive.upload("/uploads/" .. subfolder .. "/" .. arq.name, arq.stream,
+		                	function(fditem)
+								self.image.url = fditem.url;	                		
+		                	end);
+		        end);
+		end;
 		
 		function self:listarPersonagens(mesa)
 			local personagens = {};
@@ -453,7 +486,11 @@
 				self.edtAnguloVisao.asNumber = theToken.visionAngle;
 				self.edtAnguloLuz.asNumber = theToken.lightAngle;
 				self.cbxHasVision.checked = theToken.visionHaveVision;							
-				self.cmbFacingMode.value = theToken.facingMode;		
+				self.cmbFacingMode.value = theToken.facingMode;	
+
+				-- Carregar Imagem 
+
+				self.image.url = theToken.image.url;	
 				
 				-- Carregar Dados de Aura		
 				
@@ -521,6 +558,10 @@
 									theToken["barColor" .. i] = self["cmbCorBar" .. i].color;
 								end;										
 							end;
+
+							-- Atualizar Imagem
+
+							theToken.image.url = self.image.url;
                            						   						   
 							-- Salvar Aura
 							

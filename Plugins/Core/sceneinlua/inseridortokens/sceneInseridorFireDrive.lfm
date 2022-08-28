@@ -554,6 +554,7 @@
 						<image left="45" top="5" width="200" height="200" style="autoFit" editable="true" name="image" field="image"/>
 						
 						<button left="55" top="215" width="185" height="25" name="input" text="@@scene.inseridor.labels.input" onClick="self:openFile()"/>
+						<button left="55" top="245" width="185" height="25" name="adjust" text="@@scene.inseridor.labels.adjust" onClick="self:adjustPic()"/>
 					</layout>
 				</tab>
 
@@ -825,6 +826,22 @@
 								end;		                		
 		                	end);          
 		        end);
+		end;
+
+		function self:adjustPic()
+			local width = self.image.naturalWidth;
+			local height = self.image.naturalHeight;
+
+			if width < height then
+				self.dsbToken.node.width = 1;
+				self.dsbToken.node.height = math.floor((height/width) +0.5)
+			elseif height < width then
+				self.dsbToken.node.width = math.floor((width/height) +0.5)
+				self.dsbToken.node.height = 1;
+			else
+				self.dsbToken.node.width = 1;
+				self.dsbToken.node.height = 1;
+			end
 		end;
 
 		function self:deleteToken()

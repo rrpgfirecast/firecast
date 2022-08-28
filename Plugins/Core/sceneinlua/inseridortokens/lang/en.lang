@@ -25,6 +25,7 @@ scene.inseridor.labels.degree=degrees
 scene.inseridor.labels.position=Position
 scene.inseridor.labels.label=Name
 scene.inseridor.labels.input=Image from my computer
+scene.inseridor.labels.adjust=Automatic Fit
 scene.inseridor.labels.delete=Delete
 scene.inseridor.labels.deleteConfirm=Do you really want to delete this token?
 scene.inseridor.labels.deleteConfirm2=Do you really want to delete this folder?

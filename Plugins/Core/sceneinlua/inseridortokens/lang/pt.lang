@@ -24,6 +24,7 @@ scene.inseridor.labels.degree=Graus
 scene.inseridor.labels.position=Posição
 scene.inseridor.labels.label=Nome
 scene.inseridor.labels.input=Imagem do meu computador
+scene.inseridor.labels.adjust=Ajuste Automático
 scene.inseridor.labels.delete=Excluir
 scene.inseridor.labels.deleteConfirm=Deseja realmente excluir este token?
 scene.inseridor.labels.deleteConfirm2=Deseja realmente excluir esta pasta?
