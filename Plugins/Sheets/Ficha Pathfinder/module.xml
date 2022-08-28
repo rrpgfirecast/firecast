@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <module sdkVersion="3.5">
 	<id>FICHA_PATHFINDER</id>
-	<version>0.11.3</version>
+	<version>0.11.4</version>
 	<name>Ficha Pathfinder</name>
 	<description>Ficha feita para o sistema Pathfinder.</description>
 	<author>Ambesek &amp; Nefertyne</author>

@@ -1,6 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <form name="frmFichaRPGmeister3_svg" align="client" theme="dark" margins="{top=1}">
-
 	<dataLink fields="{'buffPericia'}">
 		<event name="onChange">
 			if sheet==nil then return end;
@@ -14,7 +13,6 @@
 	</dataLink>
 
 	<scrollBox align="client">
-
 		<script> 
 		<![CDATA[
 			local function updateAtributes(num)
@@ -167,9 +165,13 @@
 				<event name="onEndEnumeration">
 					if sheet==nil then return end;
 					
-					if sheet.campoDasPericias ~= nil then return end;
-					
-					sheet.campoDasPericias = {}
+					if sheet.campoDasPericias == nil then
+						sheet.campoDasPericias = {}
+					end
+
+					local nodes = NDB.getChildNodes(sheet.campoDasPericias); 
+					if #nodes > 0 then return end;
+
 					local path = NDB.load("pathskills.xml");
 					NDB.copy(sheet.campoDasPericias, path); 
 
@@ -177,10 +179,14 @@
 				</event>
 				<event name="onBeginEnumeration">
 					if sheet==nil then return end;
-
-					if sheet.campoDasPericias ~= nil then return end;
 					
-					sheet.campoDasPericias = {}
+					if sheet.campoDasPericias == nil then
+						sheet.campoDasPericias = {}
+					end
+
+					local nodes = NDB.getChildNodes(sheet.campoDasPericias); 
+					if #nodes > 0 then return end;
+
 					local path = NDB.load("pathskills.xml");
 					NDB.copy(sheet.campoDasPericias, path); 
 
@@ -223,7 +229,6 @@
 			</button>
 			<button text="Pathfinder" left="0" top="50" width="125" height="25" onClick="pathSkills();" hint="Vai apagar todas perícias atuais. "/>
 			<!-- <button text="Export" left="0" top="150" width="125" height="25" onClick="exportSkills();"/> -->
-			<button text="Export" left="0" top="150" width="125" height="25" onClick="exportSkills();"/>
 		</layout>
 	</scrollBox>
 </form>

@@ -15402,15 +15402,6 @@ local function constructNew_frmFichaRPGmeister()
     obj.button101:setHint("Vai apagar todas perícias atuais. ");
     obj.button101:setName("button101");
 
-    obj.button102 = GUI.fromHandle(_obj_newObject("button"));
-    obj.button102:setParent(obj.layout49);
-    obj.button102:setText("Export");
-    obj.button102:setLeft(0);
-    obj.button102:setTop(150);
-    obj.button102:setWidth(125);
-    obj.button102:setHeight(25);
-    obj.button102:setName("button102");
-
     obj.tab6 = GUI.fromHandle(_obj_newObject("tab"));
     obj.tab6:setParent(obj.tabControl1);
     obj.tab6:setTitle("Habilidades");
@@ -15592,12 +15583,12 @@ local function constructNew_frmFichaRPGmeister()
     obj.layout50:setHeight(25);
     obj.layout50:setName("layout50");
 
-    obj.button103 = GUI.fromHandle(_obj_newObject("button"));
-    obj.button103:setParent(obj.layout50);
-    obj.button103:setText("+");
-    obj.button103:setAlign("left");
-    obj.button103:setWidth(30);
-    obj.button103:setName("button103");
+    obj.button102 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button102:setParent(obj.layout50);
+    obj.button102:setText("+");
+    obj.button102:setAlign("left");
+    obj.button102:setWidth(30);
+    obj.button102:setName("button102");
 
     obj.label393 = GUI.fromHandle(_obj_newObject("label"));
     obj.label393:setParent(obj.layout50);
@@ -15642,12 +15633,12 @@ local function constructNew_frmFichaRPGmeister()
     obj.layout51:setHeight(25);
     obj.layout51:setName("layout51");
 
-    obj.button104 = GUI.fromHandle(_obj_newObject("button"));
-    obj.button104:setParent(obj.layout51);
-    obj.button104:setText("+");
-    obj.button104:setAlign("left");
-    obj.button104:setWidth(30);
-    obj.button104:setName("button104");
+    obj.button103 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button103:setParent(obj.layout51);
+    obj.button103:setText("+");
+    obj.button103:setAlign("left");
+    obj.button103:setWidth(30);
+    obj.button103:setName("button103");
 
     obj.label394 = GUI.fromHandle(_obj_newObject("label"));
     obj.label394:setParent(obj.layout51);
@@ -15692,12 +15683,12 @@ local function constructNew_frmFichaRPGmeister()
     obj.layout52:setHeight(25);
     obj.layout52:setName("layout52");
 
-    obj.button105 = GUI.fromHandle(_obj_newObject("button"));
-    obj.button105:setParent(obj.layout52);
-    obj.button105:setText("+");
-    obj.button105:setAlign("left");
-    obj.button105:setWidth(30);
-    obj.button105:setName("button105");
+    obj.button104 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button104:setParent(obj.layout52);
+    obj.button104:setText("+");
+    obj.button104:setAlign("left");
+    obj.button104:setWidth(30);
+    obj.button104:setName("button104");
 
     obj.label395 = GUI.fromHandle(_obj_newObject("label"));
     obj.label395:setParent(obj.layout52);
@@ -15742,12 +15733,12 @@ local function constructNew_frmFichaRPGmeister()
     obj.layout53:setHeight(25);
     obj.layout53:setName("layout53");
 
-    obj.button106 = GUI.fromHandle(_obj_newObject("button"));
-    obj.button106:setParent(obj.layout53);
-    obj.button106:setText("+");
-    obj.button106:setAlign("left");
-    obj.button106:setWidth(30);
-    obj.button106:setName("button106");
+    obj.button105 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button105:setParent(obj.layout53);
+    obj.button105:setText("+");
+    obj.button105:setAlign("left");
+    obj.button105:setWidth(30);
+    obj.button105:setName("button105");
 
     obj.label396 = GUI.fromHandle(_obj_newObject("label"));
     obj.label396:setParent(obj.layout53);
@@ -15792,12 +15783,12 @@ local function constructNew_frmFichaRPGmeister()
     obj.layout54:setHeight(25);
     obj.layout54:setName("layout54");
 
-    obj.button107 = GUI.fromHandle(_obj_newObject("button"));
-    obj.button107:setParent(obj.layout54);
-    obj.button107:setText("+");
-    obj.button107:setAlign("left");
-    obj.button107:setWidth(30);
-    obj.button107:setName("button107");
+    obj.button106 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button106:setParent(obj.layout54);
+    obj.button106:setText("+");
+    obj.button106:setAlign("left");
+    obj.button106:setWidth(30);
+    obj.button106:setName("button106");
 
     obj.label397 = GUI.fromHandle(_obj_newObject("label"));
     obj.label397:setParent(obj.layout54);
@@ -15842,12 +15833,12 @@ local function constructNew_frmFichaRPGmeister()
     obj.layout55:setHeight(25);
     obj.layout55:setName("layout55");
 
-    obj.button108 = GUI.fromHandle(_obj_newObject("button"));
-    obj.button108:setParent(obj.layout55);
-    obj.button108:setText("+");
-    obj.button108:setAlign("left");
-    obj.button108:setWidth(30);
-    obj.button108:setName("button108");
+    obj.button107 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button107:setParent(obj.layout55);
+    obj.button107:setText("+");
+    obj.button107:setAlign("left");
+    obj.button107:setWidth(30);
+    obj.button107:setName("button107");
 
     obj.label398 = GUI.fromHandle(_obj_newObject("label"));
     obj.label398:setParent(obj.layout55);
@@ -15974,12 +15965,12 @@ local function constructNew_frmFichaRPGmeister()
     obj.layout58:setHeight(25);
     obj.layout58:setName("layout58");
 
-    obj.button109 = GUI.fromHandle(_obj_newObject("button"));
-    obj.button109:setParent(obj.layout58);
-    obj.button109:setText("+");
-    obj.button109:setAlign("left");
-    obj.button109:setWidth(30);
-    obj.button109:setName("button109");
+    obj.button108 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button108:setParent(obj.layout58);
+    obj.button108:setText("+");
+    obj.button108:setAlign("left");
+    obj.button108:setWidth(30);
+    obj.button108:setName("button108");
 
     obj.label401 = GUI.fromHandle(_obj_newObject("label"));
     obj.label401:setParent(obj.layout58);
@@ -16024,12 +16015,12 @@ local function constructNew_frmFichaRPGmeister()
     obj.layout59:setHeight(25);
     obj.layout59:setName("layout59");
 
-    obj.button110 = GUI.fromHandle(_obj_newObject("button"));
-    obj.button110:setParent(obj.layout59);
-    obj.button110:setText("+");
-    obj.button110:setAlign("left");
-    obj.button110:setWidth(30);
-    obj.button110:setName("button110");
+    obj.button109 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button109:setParent(obj.layout59);
+    obj.button109:setText("+");
+    obj.button109:setAlign("left");
+    obj.button109:setWidth(30);
+    obj.button109:setName("button109");
 
     obj.label402 = GUI.fromHandle(_obj_newObject("label"));
     obj.label402:setParent(obj.layout59);
@@ -16074,12 +16065,12 @@ local function constructNew_frmFichaRPGmeister()
     obj.layout60:setHeight(25);
     obj.layout60:setName("layout60");
 
-    obj.button111 = GUI.fromHandle(_obj_newObject("button"));
-    obj.button111:setParent(obj.layout60);
-    obj.button111:setText("+");
-    obj.button111:setAlign("left");
-    obj.button111:setWidth(30);
-    obj.button111:setName("button111");
+    obj.button110 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button110:setParent(obj.layout60);
+    obj.button110:setText("+");
+    obj.button110:setAlign("left");
+    obj.button110:setWidth(30);
+    obj.button110:setName("button110");
 
     obj.label403 = GUI.fromHandle(_obj_newObject("label"));
     obj.label403:setParent(obj.layout60);
@@ -16417,12 +16408,12 @@ local function constructNew_frmFichaRPGmeister()
     obj.edit568:setFontSize(12);
     obj.edit568:setName("edit568");
 
-    obj.button112 = GUI.fromHandle(_obj_newObject("button"));
-    obj.button112:setParent(obj.popMagia);
-    obj.button112:setAlign("top");
-    obj.button112:setHeight(25);
-    obj.button112:setText("Exibir");
-    obj.button112:setName("button112");
+    obj.button111 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button111:setParent(obj.popMagia);
+    obj.button111:setAlign("top");
+    obj.button111:setHeight(25);
+    obj.button111:setText("Exibir");
+    obj.button111:setName("button111");
 
     obj.textEditor7 = GUI.fromHandle(_obj_newObject("textEditor"));
     obj.textEditor7:setParent(obj.popMagia);
@@ -16506,11 +16497,11 @@ local function constructNew_frmFichaRPGmeister()
     obj.flowPart274:setHeight(35);
     obj.flowPart274:setName("flowPart274");
 
-    obj.button113 = GUI.fromHandle(_obj_newObject("button"));
-    obj.button113:setParent(obj.flowPart274);
-    obj.button113:setAlign("client");
-    obj.button113:setText("+");
-    obj.button113:setName("button113");
+    obj.button112 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button112:setParent(obj.flowPart274);
+    obj.button112:setAlign("client");
+    obj.button112:setText("+");
+    obj.button112:setName("button112");
 
     obj.flowPart275 = GUI.fromHandle(_obj_newObject("flowPart"));
     obj.flowPart275:setParent(obj.flowLayout21);
@@ -16519,12 +16510,12 @@ local function constructNew_frmFichaRPGmeister()
     obj.flowPart275:setHeight(35);
     obj.flowPart275:setName("flowPart275");
 
-    obj.button114 = GUI.fromHandle(_obj_newObject("button"));
-    obj.button114:setParent(obj.flowPart275);
-    obj.button114:setAlign("client");
-    obj.button114:setText("Exibir");
-    obj.button114:setFontSize(10);
-    obj.button114:setName("button114");
+    obj.button113 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button113:setParent(obj.flowPart275);
+    obj.button113:setAlign("client");
+    obj.button113:setText("Exibir");
+    obj.button113:setFontSize(10);
+    obj.button113:setName("button113");
 
     obj.flowLineBreak17 = GUI.fromHandle(_obj_newObject("flowLineBreak"));
     obj.flowLineBreak17:setParent(obj.flowLayout21);
@@ -16978,12 +16969,12 @@ local function constructNew_frmFichaRPGmeister()
     obj.layout61:setHeight(50);
     obj.layout61:setName("layout61");
 
-    obj.button115 = GUI.fromHandle(_obj_newObject("button"));
-    obj.button115:setParent(obj.layout61);
-    obj.button115:setText("+");
-    obj.button115:setWidth(30);
-    obj.button115:setAlign("left");
-    obj.button115:setName("button115");
+    obj.button114 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button114:setParent(obj.layout61);
+    obj.button114:setText("+");
+    obj.button114:setWidth(30);
+    obj.button114:setAlign("left");
+    obj.button114:setName("button114");
 
     obj.rclListaDasClassesMagicas = GUI.fromHandle(_obj_newObject("recordList"));
     obj.rclListaDasClassesMagicas:setParent(obj.layout61);
@@ -17076,12 +17067,12 @@ local function constructNew_frmFichaRPGmeister()
     obj.flowPart290:setHeight(15);
     obj.flowPart290:setName("flowPart290");
 
-    obj.button116 = GUI.fromHandle(_obj_newObject("button"));
-    obj.button116:setParent(obj.flowPart290);
-    obj.button116:setAlign("top");
-    obj.button116:setText("NC");
-    obj.button116:setHeight(15);
-    obj.button116:setName("button116");
+    obj.button115 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button115:setParent(obj.flowPart290);
+    obj.button115:setAlign("top");
+    obj.button115:setText("NC");
+    obj.button115:setHeight(15);
+    obj.button115:setName("button115");
 
     obj.flowPart291 = GUI.fromHandle(_obj_newObject("flowPart"));
     obj.flowPart291:setParent(obj.detailsLayout);
@@ -18610,11 +18601,11 @@ local function constructNew_frmFichaRPGmeister()
     obj.flowPart362:setHeight(25);
     obj.flowPart362:setName("flowPart362");
 
-    obj.button117 = GUI.fromHandle(_obj_newObject("button"));
-    obj.button117:setParent(obj.flowPart362);
-    obj.button117:setAlign("client");
-    obj.button117:setText("Exportar Magias");
-    obj.button117:setName("button117");
+    obj.button116 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button116:setParent(obj.flowPart362);
+    obj.button116:setAlign("client");
+    obj.button116:setText("Exportar Magias");
+    obj.button116:setName("button116");
 
     obj.flowPart363 = GUI.fromHandle(_obj_newObject("flowPart"));
     obj.flowPart363:setParent(obj.flowLayout22);
@@ -18623,11 +18614,11 @@ local function constructNew_frmFichaRPGmeister()
     obj.flowPart363:setHeight(25);
     obj.flowPart363:setName("flowPart363");
 
-    obj.button118 = GUI.fromHandle(_obj_newObject("button"));
-    obj.button118:setParent(obj.flowPart363);
-    obj.button118:setAlign("client");
-    obj.button118:setText("Importar Magias");
-    obj.button118:setName("button118");
+    obj.button117 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button117:setParent(obj.flowPart363);
+    obj.button117:setAlign("client");
+    obj.button117:setText("Importar Magias");
+    obj.button117:setName("button117");
 
     obj.flowLineBreak34 = GUI.fromHandle(_obj_newObject("flowLineBreak"));
     obj.flowLineBreak34:setParent(obj.flowLayout22);
@@ -18963,11 +18954,11 @@ local function constructNew_frmFichaRPGmeister()
     obj.flowPart380:setHeight(25);
     obj.flowPart380:setName("flowPart380");
 
-    obj.button119 = GUI.fromHandle(_obj_newObject("button"));
-    obj.button119:setParent(obj.flowPart380);
-    obj.button119:setAlign("client");
-    obj.button119:setText("+");
-    obj.button119:setName("button119");
+    obj.button118 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button118:setParent(obj.flowPart380);
+    obj.button118:setAlign("client");
+    obj.button118:setText("+");
+    obj.button118:setName("button118");
 
     obj.flowLineBreak38 = GUI.fromHandle(_obj_newObject("flowLineBreak"));
     obj.flowLineBreak38:setParent(obj.flowLayout23);
@@ -19000,11 +18991,11 @@ local function constructNew_frmFichaRPGmeister()
     obj.flowPart382:setHeight(25);
     obj.flowPart382:setName("flowPart382");
 
-    obj.button120 = GUI.fromHandle(_obj_newObject("button"));
-    obj.button120:setParent(obj.flowPart382);
-    obj.button120:setAlign("client");
-    obj.button120:setText("Exportar Magias");
-    obj.button120:setName("button120");
+    obj.button119 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button119:setParent(obj.flowPart382);
+    obj.button119:setAlign("client");
+    obj.button119:setText("Exportar Magias");
+    obj.button119:setName("button119");
 
     obj.flowPart383 = GUI.fromHandle(_obj_newObject("flowPart"));
     obj.flowPart383:setParent(obj.flowLayout23);
@@ -19013,11 +19004,11 @@ local function constructNew_frmFichaRPGmeister()
     obj.flowPart383:setHeight(25);
     obj.flowPart383:setName("flowPart383");
 
-    obj.button121 = GUI.fromHandle(_obj_newObject("button"));
-    obj.button121:setParent(obj.flowPart383);
-    obj.button121:setAlign("client");
-    obj.button121:setText("Importar Magias");
-    obj.button121:setName("button121");
+    obj.button120 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button120:setParent(obj.flowPart383);
+    obj.button120:setAlign("client");
+    obj.button120:setText("Importar Magias");
+    obj.button120:setName("button120");
 
     obj.flowLineBreak40 = GUI.fromHandle(_obj_newObject("flowLineBreak"));
     obj.flowLineBreak40:setParent(obj.flowLayout23);
@@ -19279,11 +19270,11 @@ local function constructNew_frmFichaRPGmeister()
     obj.flowPart397:setHeight(25);
     obj.flowPart397:setName("flowPart397");
 
-    obj.button122 = GUI.fromHandle(_obj_newObject("button"));
-    obj.button122:setParent(obj.flowPart397);
-    obj.button122:setAlign("client");
-    obj.button122:setText("+");
-    obj.button122:setName("button122");
+    obj.button121 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button121:setParent(obj.flowPart397);
+    obj.button121:setAlign("client");
+    obj.button121:setText("+");
+    obj.button121:setName("button121");
 
     obj.flowPart398 = GUI.fromHandle(_obj_newObject("flowPart"));
     obj.flowPart398:setParent(obj.flowLayout24);
@@ -20599,11 +20590,11 @@ local function constructNew_frmFichaRPGmeister()
     obj.flowPart456:setHeight(25);
     obj.flowPart456:setName("flowPart456");
 
-    obj.button123 = GUI.fromHandle(_obj_newObject("button"));
-    obj.button123:setParent(obj.flowPart456);
-    obj.button123:setAlign("client");
-    obj.button123:setText("Exportar Magias");
-    obj.button123:setName("button123");
+    obj.button122 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button122:setParent(obj.flowPart456);
+    obj.button122:setAlign("client");
+    obj.button122:setText("Exportar Magias");
+    obj.button122:setName("button122");
 
     obj.flowPart457 = GUI.fromHandle(_obj_newObject("flowPart"));
     obj.flowPart457:setParent(obj.flowLayout24);
@@ -20612,11 +20603,11 @@ local function constructNew_frmFichaRPGmeister()
     obj.flowPart457:setHeight(25);
     obj.flowPart457:setName("flowPart457");
 
-    obj.button124 = GUI.fromHandle(_obj_newObject("button"));
-    obj.button124:setParent(obj.flowPart457);
-    obj.button124:setAlign("client");
-    obj.button124:setText("Importar Magias");
-    obj.button124:setName("button124");
+    obj.button123 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button123:setParent(obj.flowPart457);
+    obj.button123:setAlign("client");
+    obj.button123:setText("Importar Magias");
+    obj.button123:setName("button123");
 
     obj.flowLineBreak57 = GUI.fromHandle(_obj_newObject("flowLineBreak"));
     obj.flowLineBreak57:setParent(obj.flowLayout24);
@@ -20800,11 +20791,11 @@ local function constructNew_frmFichaRPGmeister()
     obj.flowPart465:setHeight(25);
     obj.flowPart465:setName("flowPart465");
 
-    obj.button125 = GUI.fromHandle(_obj_newObject("button"));
-    obj.button125:setParent(obj.flowPart465);
-    obj.button125:setAlign("client");
-    obj.button125:setText("+");
-    obj.button125:setName("button125");
+    obj.button124 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button124:setParent(obj.flowPart465);
+    obj.button124:setAlign("client");
+    obj.button124:setText("+");
+    obj.button124:setName("button124");
 
     obj.flowLineBreak60 = GUI.fromHandle(_obj_newObject("flowLineBreak"));
     obj.flowLineBreak60:setParent(obj.epicDetails);
@@ -20960,11 +20951,11 @@ local function constructNew_frmFichaRPGmeister()
     obj.flowPart476:setHeight(25);
     obj.flowPart476:setName("flowPart476");
 
-    obj.button126 = GUI.fromHandle(_obj_newObject("button"));
-    obj.button126:setParent(obj.flowPart476);
-    obj.button126:setAlign("client");
-    obj.button126:setText("Exportar Magias");
-    obj.button126:setName("button126");
+    obj.button125 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button125:setParent(obj.flowPart476);
+    obj.button125:setAlign("client");
+    obj.button125:setText("Exportar Magias");
+    obj.button125:setName("button125");
 
     obj.flowPart477 = GUI.fromHandle(_obj_newObject("flowPart"));
     obj.flowPart477:setParent(obj.epicDetails);
@@ -20973,11 +20964,11 @@ local function constructNew_frmFichaRPGmeister()
     obj.flowPart477:setHeight(25);
     obj.flowPart477:setName("flowPart477");
 
-    obj.button127 = GUI.fromHandle(_obj_newObject("button"));
-    obj.button127:setParent(obj.flowPart477);
-    obj.button127:setAlign("client");
-    obj.button127:setText("Importar Magias");
-    obj.button127:setName("button127");
+    obj.button126 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button126:setParent(obj.flowPart477);
+    obj.button126:setAlign("client");
+    obj.button126:setText("Importar Magias");
+    obj.button126:setName("button126");
 
     obj.flowLineBreak63 = GUI.fromHandle(_obj_newObject("flowLineBreak"));
     obj.flowLineBreak63:setParent(obj.epicDetails);
@@ -22684,11 +22675,11 @@ local function constructNew_frmFichaRPGmeister()
     obj.flowPart556:setHeight(25);
     obj.flowPart556:setName("flowPart556");
 
-    obj.button128 = GUI.fromHandle(_obj_newObject("button"));
-    obj.button128:setParent(obj.flowPart556);
-    obj.button128:setAlign("client");
-    obj.button128:setText("Exportar Magias");
-    obj.button128:setName("button128");
+    obj.button127 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button127:setParent(obj.flowPart556);
+    obj.button127:setAlign("client");
+    obj.button127:setText("Exportar Magias");
+    obj.button127:setName("button127");
 
     obj.flowPart557 = GUI.fromHandle(_obj_newObject("flowPart"));
     obj.flowPart557:setParent(obj.flowLayout25);
@@ -22697,11 +22688,11 @@ local function constructNew_frmFichaRPGmeister()
     obj.flowPart557:setHeight(25);
     obj.flowPart557:setName("flowPart557");
 
-    obj.button129 = GUI.fromHandle(_obj_newObject("button"));
-    obj.button129:setParent(obj.flowPart557);
-    obj.button129:setAlign("client");
-    obj.button129:setText("Importar Magias");
-    obj.button129:setName("button129");
+    obj.button128 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button128:setParent(obj.flowPart557);
+    obj.button128:setAlign("client");
+    obj.button128:setText("Importar Magias");
+    obj.button128:setName("button128");
 
     obj.flowLineBreak82 = GUI.fromHandle(_obj_newObject("flowLineBreak"));
     obj.flowLineBreak82:setParent(obj.flowLayout25);
@@ -22875,16 +22866,16 @@ local function constructNew_frmFichaRPGmeister()
     obj.layout62:setWidth(340);
     obj.layout62:setName("layout62");
 
-    obj.button130 = GUI.fromHandle(_obj_newObject("button"));
-    obj.button130:setParent(obj.layout62);
-    obj.button130:setVertTextAlign("center");
-    obj.button130:setLeft(0);
-    obj.button130:setTop(0);
-    obj.button130:setWidth(100);
-    obj.button130:setHeight(25);
-    obj.button130:setText("Concentração");
-    obj.button130:setFontSize(11);
-    obj.button130:setName("button130");
+    obj.button129 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button129:setParent(obj.layout62);
+    obj.button129:setVertTextAlign("center");
+    obj.button129:setLeft(0);
+    obj.button129:setTop(0);
+    obj.button129:setWidth(100);
+    obj.button129:setHeight(25);
+    obj.button129:setText("Concentração");
+    obj.button129:setFontSize(11);
+    obj.button129:setName("button129");
 
     obj.rectangle204 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle204:setParent(obj.layout62);
@@ -22987,12 +22978,12 @@ local function constructNew_frmFichaRPGmeister()
     obj.layout63:setHeight(25);
     obj.layout63:setName("layout63");
 
-    obj.button131 = GUI.fromHandle(_obj_newObject("button"));
-    obj.button131:setParent(obj.layout63);
-    obj.button131:setText("+");
-    obj.button131:setAlign("left");
-    obj.button131:setWidth(30);
-    obj.button131:setName("button131");
+    obj.button130 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button130:setParent(obj.layout63);
+    obj.button130:setText("+");
+    obj.button130:setAlign("left");
+    obj.button130:setWidth(30);
+    obj.button130:setName("button130");
 
     obj.label604 = GUI.fromHandle(_obj_newObject("label"));
     obj.label604:setParent(obj.layout63);
@@ -23144,12 +23135,12 @@ local function constructNew_frmFichaRPGmeister()
     obj.layout65:setHeight(25);
     obj.layout65:setName("layout65");
 
-    obj.button132 = GUI.fromHandle(_obj_newObject("button"));
-    obj.button132:setParent(obj.layout65);
-    obj.button132:setText("+");
-    obj.button132:setAlign("left");
-    obj.button132:setWidth(30);
-    obj.button132:setName("button132");
+    obj.button131 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button131:setParent(obj.layout65);
+    obj.button131:setText("+");
+    obj.button131:setAlign("left");
+    obj.button131:setWidth(30);
+    obj.button131:setName("button131");
 
     obj.label616 = GUI.fromHandle(_obj_newObject("label"));
     obj.label616:setParent(obj.layout65);
@@ -23301,12 +23292,12 @@ local function constructNew_frmFichaRPGmeister()
     obj.layout67:setHeight(25);
     obj.layout67:setName("layout67");
 
-    obj.button133 = GUI.fromHandle(_obj_newObject("button"));
-    obj.button133:setParent(obj.layout67);
-    obj.button133:setText("+");
-    obj.button133:setAlign("left");
-    obj.button133:setWidth(30);
-    obj.button133:setName("button133");
+    obj.button132 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button132:setParent(obj.layout67);
+    obj.button132:setText("+");
+    obj.button132:setAlign("left");
+    obj.button132:setWidth(30);
+    obj.button132:setName("button132");
 
     obj.label628 = GUI.fromHandle(_obj_newObject("label"));
     obj.label628:setParent(obj.layout67);
@@ -23458,12 +23449,12 @@ local function constructNew_frmFichaRPGmeister()
     obj.layout69:setHeight(25);
     obj.layout69:setName("layout69");
 
-    obj.button134 = GUI.fromHandle(_obj_newObject("button"));
-    obj.button134:setParent(obj.layout69);
-    obj.button134:setText("+");
-    obj.button134:setAlign("left");
-    obj.button134:setWidth(30);
-    obj.button134:setName("button134");
+    obj.button133 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button133:setParent(obj.layout69);
+    obj.button133:setText("+");
+    obj.button133:setAlign("left");
+    obj.button133:setWidth(30);
+    obj.button133:setName("button133");
 
     obj.label640 = GUI.fromHandle(_obj_newObject("label"));
     obj.label640:setParent(obj.layout69);
@@ -23615,12 +23606,12 @@ local function constructNew_frmFichaRPGmeister()
     obj.layout71:setHeight(25);
     obj.layout71:setName("layout71");
 
-    obj.button135 = GUI.fromHandle(_obj_newObject("button"));
-    obj.button135:setParent(obj.layout71);
-    obj.button135:setText("+");
-    obj.button135:setAlign("left");
-    obj.button135:setWidth(30);
-    obj.button135:setName("button135");
+    obj.button134 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button134:setParent(obj.layout71);
+    obj.button134:setText("+");
+    obj.button134:setAlign("left");
+    obj.button134:setWidth(30);
+    obj.button134:setName("button134");
 
     obj.label652 = GUI.fromHandle(_obj_newObject("label"));
     obj.label652:setParent(obj.layout71);
@@ -23772,12 +23763,12 @@ local function constructNew_frmFichaRPGmeister()
     obj.layout73:setHeight(25);
     obj.layout73:setName("layout73");
 
-    obj.button136 = GUI.fromHandle(_obj_newObject("button"));
-    obj.button136:setParent(obj.layout73);
-    obj.button136:setText("+");
-    obj.button136:setAlign("left");
-    obj.button136:setWidth(30);
-    obj.button136:setName("button136");
+    obj.button135 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button135:setParent(obj.layout73);
+    obj.button135:setText("+");
+    obj.button135:setAlign("left");
+    obj.button135:setWidth(30);
+    obj.button135:setName("button135");
 
     obj.label664 = GUI.fromHandle(_obj_newObject("label"));
     obj.label664:setParent(obj.layout73);
@@ -23929,12 +23920,12 @@ local function constructNew_frmFichaRPGmeister()
     obj.layout75:setHeight(25);
     obj.layout75:setName("layout75");
 
-    obj.button137 = GUI.fromHandle(_obj_newObject("button"));
-    obj.button137:setParent(obj.layout75);
-    obj.button137:setText("+");
-    obj.button137:setAlign("left");
-    obj.button137:setWidth(30);
-    obj.button137:setName("button137");
+    obj.button136 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button136:setParent(obj.layout75);
+    obj.button136:setText("+");
+    obj.button136:setAlign("left");
+    obj.button136:setWidth(30);
+    obj.button136:setName("button136");
 
     obj.label676 = GUI.fromHandle(_obj_newObject("label"));
     obj.label676:setParent(obj.layout75);
@@ -24086,12 +24077,12 @@ local function constructNew_frmFichaRPGmeister()
     obj.layout77:setHeight(25);
     obj.layout77:setName("layout77");
 
-    obj.button138 = GUI.fromHandle(_obj_newObject("button"));
-    obj.button138:setParent(obj.layout77);
-    obj.button138:setText("+");
-    obj.button138:setAlign("left");
-    obj.button138:setWidth(30);
-    obj.button138:setName("button138");
+    obj.button137 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button137:setParent(obj.layout77);
+    obj.button137:setText("+");
+    obj.button137:setAlign("left");
+    obj.button137:setWidth(30);
+    obj.button137:setName("button137");
 
     obj.label688 = GUI.fromHandle(_obj_newObject("label"));
     obj.label688:setParent(obj.layout77);
@@ -24243,12 +24234,12 @@ local function constructNew_frmFichaRPGmeister()
     obj.layout79:setHeight(25);
     obj.layout79:setName("layout79");
 
-    obj.button139 = GUI.fromHandle(_obj_newObject("button"));
-    obj.button139:setParent(obj.layout79);
-    obj.button139:setText("+");
-    obj.button139:setAlign("left");
-    obj.button139:setWidth(30);
-    obj.button139:setName("button139");
+    obj.button138 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button138:setParent(obj.layout79);
+    obj.button138:setText("+");
+    obj.button138:setAlign("left");
+    obj.button138:setWidth(30);
+    obj.button138:setName("button138");
 
     obj.label700 = GUI.fromHandle(_obj_newObject("label"));
     obj.label700:setParent(obj.layout79);
@@ -24400,12 +24391,12 @@ local function constructNew_frmFichaRPGmeister()
     obj.layout81:setHeight(25);
     obj.layout81:setName("layout81");
 
-    obj.button140 = GUI.fromHandle(_obj_newObject("button"));
-    obj.button140:setParent(obj.layout81);
-    obj.button140:setText("+");
-    obj.button140:setAlign("left");
-    obj.button140:setWidth(30);
-    obj.button140:setName("button140");
+    obj.button139 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button139:setParent(obj.layout81);
+    obj.button139:setText("+");
+    obj.button139:setAlign("left");
+    obj.button139:setWidth(30);
+    obj.button139:setName("button139");
 
     obj.label712 = GUI.fromHandle(_obj_newObject("label"));
     obj.label712:setParent(obj.layout81);
@@ -24638,12 +24629,12 @@ local function constructNew_frmFichaRPGmeister()
     obj.layout83:setHeight(25);
     obj.layout83:setName("layout83");
 
-    obj.button141 = GUI.fromHandle(_obj_newObject("button"));
-    obj.button141:setParent(obj.layout83);
-    obj.button141:setText("+");
-    obj.button141:setAlign("left");
-    obj.button141:setWidth(30);
-    obj.button141:setName("button141");
+    obj.button140 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button140:setParent(obj.layout83);
+    obj.button140:setText("+");
+    obj.button140:setAlign("left");
+    obj.button140:setWidth(30);
+    obj.button140:setName("button140");
 
     obj.label724 = GUI.fromHandle(_obj_newObject("label"));
     obj.label724:setParent(obj.layout83);
@@ -24795,12 +24786,12 @@ local function constructNew_frmFichaRPGmeister()
     obj.layout85:setHeight(25);
     obj.layout85:setName("layout85");
 
-    obj.button142 = GUI.fromHandle(_obj_newObject("button"));
-    obj.button142:setParent(obj.layout85);
-    obj.button142:setText("+");
-    obj.button142:setAlign("left");
-    obj.button142:setWidth(30);
-    obj.button142:setName("button142");
+    obj.button141 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button141:setParent(obj.layout85);
+    obj.button141:setText("+");
+    obj.button141:setAlign("left");
+    obj.button141:setWidth(30);
+    obj.button141:setName("button141");
 
     obj.label736 = GUI.fromHandle(_obj_newObject("label"));
     obj.label736:setParent(obj.layout85);
@@ -24952,12 +24943,12 @@ local function constructNew_frmFichaRPGmeister()
     obj.layout87:setHeight(25);
     obj.layout87:setName("layout87");
 
-    obj.button143 = GUI.fromHandle(_obj_newObject("button"));
-    obj.button143:setParent(obj.layout87);
-    obj.button143:setText("+");
-    obj.button143:setAlign("left");
-    obj.button143:setWidth(30);
-    obj.button143:setName("button143");
+    obj.button142 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button142:setParent(obj.layout87);
+    obj.button142:setText("+");
+    obj.button142:setAlign("left");
+    obj.button142:setWidth(30);
+    obj.button142:setName("button142");
 
     obj.label748 = GUI.fromHandle(_obj_newObject("label"));
     obj.label748:setParent(obj.layout87);
@@ -25109,12 +25100,12 @@ local function constructNew_frmFichaRPGmeister()
     obj.layout89:setHeight(25);
     obj.layout89:setName("layout89");
 
-    obj.button144 = GUI.fromHandle(_obj_newObject("button"));
-    obj.button144:setParent(obj.layout89);
-    obj.button144:setText("+");
-    obj.button144:setAlign("left");
-    obj.button144:setWidth(30);
-    obj.button144:setName("button144");
+    obj.button143 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button143:setParent(obj.layout89);
+    obj.button143:setText("+");
+    obj.button143:setAlign("left");
+    obj.button143:setWidth(30);
+    obj.button143:setName("button143");
 
     obj.label760 = GUI.fromHandle(_obj_newObject("label"));
     obj.label760:setParent(obj.layout89);
@@ -25266,12 +25257,12 @@ local function constructNew_frmFichaRPGmeister()
     obj.layout91:setHeight(25);
     obj.layout91:setName("layout91");
 
-    obj.button145 = GUI.fromHandle(_obj_newObject("button"));
-    obj.button145:setParent(obj.layout91);
-    obj.button145:setText("+");
-    obj.button145:setAlign("left");
-    obj.button145:setWidth(30);
-    obj.button145:setName("button145");
+    obj.button144 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button144:setParent(obj.layout91);
+    obj.button144:setText("+");
+    obj.button144:setAlign("left");
+    obj.button144:setWidth(30);
+    obj.button144:setName("button144");
 
     obj.label772 = GUI.fromHandle(_obj_newObject("label"));
     obj.label772:setParent(obj.layout91);
@@ -25423,12 +25414,12 @@ local function constructNew_frmFichaRPGmeister()
     obj.layout93:setHeight(25);
     obj.layout93:setName("layout93");
 
-    obj.button146 = GUI.fromHandle(_obj_newObject("button"));
-    obj.button146:setParent(obj.layout93);
-    obj.button146:setText("+");
-    obj.button146:setAlign("left");
-    obj.button146:setWidth(30);
-    obj.button146:setName("button146");
+    obj.button145 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button145:setParent(obj.layout93);
+    obj.button145:setText("+");
+    obj.button145:setAlign("left");
+    obj.button145:setWidth(30);
+    obj.button145:setName("button145");
 
     obj.label784 = GUI.fromHandle(_obj_newObject("label"));
     obj.label784:setParent(obj.layout93);
@@ -25580,12 +25571,12 @@ local function constructNew_frmFichaRPGmeister()
     obj.layout95:setHeight(25);
     obj.layout95:setName("layout95");
 
-    obj.button147 = GUI.fromHandle(_obj_newObject("button"));
-    obj.button147:setParent(obj.layout95);
-    obj.button147:setText("+");
-    obj.button147:setAlign("left");
-    obj.button147:setWidth(30);
-    obj.button147:setName("button147");
+    obj.button146 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button146:setParent(obj.layout95);
+    obj.button146:setText("+");
+    obj.button146:setAlign("left");
+    obj.button146:setWidth(30);
+    obj.button146:setName("button146");
 
     obj.label796 = GUI.fromHandle(_obj_newObject("label"));
     obj.label796:setParent(obj.layout95);
@@ -25737,12 +25728,12 @@ local function constructNew_frmFichaRPGmeister()
     obj.layout97:setHeight(25);
     obj.layout97:setName("layout97");
 
-    obj.button148 = GUI.fromHandle(_obj_newObject("button"));
-    obj.button148:setParent(obj.layout97);
-    obj.button148:setText("+");
-    obj.button148:setAlign("left");
-    obj.button148:setWidth(30);
-    obj.button148:setName("button148");
+    obj.button147 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button147:setParent(obj.layout97);
+    obj.button147:setText("+");
+    obj.button147:setAlign("left");
+    obj.button147:setWidth(30);
+    obj.button147:setName("button147");
 
     obj.label808 = GUI.fromHandle(_obj_newObject("label"));
     obj.label808:setParent(obj.layout97);
@@ -25894,12 +25885,12 @@ local function constructNew_frmFichaRPGmeister()
     obj.layout99:setHeight(25);
     obj.layout99:setName("layout99");
 
-    obj.button149 = GUI.fromHandle(_obj_newObject("button"));
-    obj.button149:setParent(obj.layout99);
-    obj.button149:setText("+");
-    obj.button149:setAlign("left");
-    obj.button149:setWidth(30);
-    obj.button149:setName("button149");
+    obj.button148 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button148:setParent(obj.layout99);
+    obj.button148:setText("+");
+    obj.button148:setAlign("left");
+    obj.button148:setWidth(30);
+    obj.button148:setName("button148");
 
     obj.label820 = GUI.fromHandle(_obj_newObject("label"));
     obj.label820:setParent(obj.layout99);
@@ -26051,12 +26042,12 @@ local function constructNew_frmFichaRPGmeister()
     obj.layout101:setHeight(25);
     obj.layout101:setName("layout101");
 
-    obj.button150 = GUI.fromHandle(_obj_newObject("button"));
-    obj.button150:setParent(obj.layout101);
-    obj.button150:setText("+");
-    obj.button150:setAlign("left");
-    obj.button150:setWidth(30);
-    obj.button150:setName("button150");
+    obj.button149 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button149:setParent(obj.layout101);
+    obj.button149:setText("+");
+    obj.button149:setAlign("left");
+    obj.button149:setWidth(30);
+    obj.button149:setName("button149");
 
     obj.label832 = GUI.fromHandle(_obj_newObject("label"));
     obj.label832:setParent(obj.layout101);
@@ -26806,35 +26797,35 @@ local function constructNew_frmFichaRPGmeister()
     obj.image22:setOptimize(true);
     obj.image22:setName("image22");
 
+    obj.button150 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button150:setParent(obj.scrollBox7);
+    obj.button150:setText("+");
+    obj.button150:setLeft(800);
+    obj.button150:setTop(0);
+    obj.button150:setWidth(200);
+    obj.button150:setHeight(25);
+    obj.button150:setHint("");
+    obj.button150:setName("button150");
+
     obj.button151 = GUI.fromHandle(_obj_newObject("button"));
     obj.button151:setParent(obj.scrollBox7);
-    obj.button151:setText("+");
-    obj.button151:setLeft(800);
+    obj.button151:setText("Organizar");
+    obj.button151:setLeft(1000);
     obj.button151:setTop(0);
-    obj.button151:setWidth(200);
+    obj.button151:setWidth(100);
     obj.button151:setHeight(25);
     obj.button151:setHint("");
     obj.button151:setName("button151");
 
     obj.button152 = GUI.fromHandle(_obj_newObject("button"));
     obj.button152:setParent(obj.scrollBox7);
-    obj.button152:setText("Organizar");
-    obj.button152:setLeft(1000);
+    obj.button152:setText("Exibir");
+    obj.button152:setLeft(1100);
     obj.button152:setTop(0);
     obj.button152:setWidth(100);
     obj.button152:setHeight(25);
     obj.button152:setHint("");
     obj.button152:setName("button152");
-
-    obj.button153 = GUI.fromHandle(_obj_newObject("button"));
-    obj.button153:setParent(obj.scrollBox7);
-    obj.button153:setText("Exibir");
-    obj.button153:setLeft(1100);
-    obj.button153:setTop(0);
-    obj.button153:setWidth(100);
-    obj.button153:setHeight(25);
-    obj.button153:setHint("");
-    obj.button153:setName("button153");
 
     obj.layout108 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout108:setParent(obj.scrollBox7);
@@ -27588,14 +27579,14 @@ local function constructNew_frmFichaRPGmeister()
     obj.rectangle210:setColor("black");
     obj.rectangle210:setName("rectangle210");
 
-    obj.button154 = GUI.fromHandle(_obj_newObject("button"));
-    obj.button154:setParent(obj.layout109);
-    obj.button154:setText("+");
-    obj.button154:setLeft(5);
-    obj.button154:setTop(5);
-    obj.button154:setWidth(20);
-    obj.button154:setHeight(20);
-    obj.button154:setName("button154");
+    obj.button153 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button153:setParent(obj.layout109);
+    obj.button153:setText("+");
+    obj.button153:setLeft(5);
+    obj.button153:setTop(5);
+    obj.button153:setWidth(20);
+    obj.button153:setHeight(20);
+    obj.button153:setName("button153");
 
     obj.label891 = GUI.fromHandle(_obj_newObject("label"));
     obj.label891:setParent(obj.layout109);
@@ -28580,14 +28571,14 @@ local function constructNew_frmFichaRPGmeister()
     obj.rectangle220:setStrokeSize(1);
     obj.rectangle220:setName("rectangle220");
 
-    obj.button155 = GUI.fromHandle(_obj_newObject("button"));
-    obj.button155:setParent(obj.layout117);
-    obj.button155:setLeft(5);
-    obj.button155:setTop(5);
-    obj.button155:setHeight(20);
-    obj.button155:setWidth(305);
-    obj.button155:setText("Novo Item");
-    obj.button155:setName("button155");
+    obj.button154 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button154:setParent(obj.layout117);
+    obj.button154:setLeft(5);
+    obj.button154:setTop(5);
+    obj.button154:setHeight(20);
+    obj.button154:setWidth(305);
+    obj.button154:setText("Novo Item");
+    obj.button154:setName("button154");
 
     obj.rclConsumiveis = GUI.fromHandle(_obj_newObject("recordList"));
     obj.rclConsumiveis:setParent(obj.layout117);
@@ -29285,14 +29276,14 @@ local function constructNew_frmFichaRPGmeister()
     obj.rectangle234:setColor("black");
     obj.rectangle234:setName("rectangle234");
 
-    obj.button156 = GUI.fromHandle(_obj_newObject("button"));
-    obj.button156:setParent(obj.rectangle234);
-    obj.button156:setLeft(5);
-    obj.button156:setTop(8);
-    obj.button156:setWidth(70);
-    obj.button156:setHeight(20);
-    obj.button156:setText("Iniciativa");
-    obj.button156:setName("button156");
+    obj.button155 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button155:setParent(obj.rectangle234);
+    obj.button155:setLeft(5);
+    obj.button155:setTop(8);
+    obj.button155:setWidth(70);
+    obj.button155:setHeight(20);
+    obj.button155:setText("Iniciativa");
+    obj.button155:setName("button155");
 
     obj.edit686 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit686:setParent(obj.rectangle234);
@@ -29349,14 +29340,14 @@ local function constructNew_frmFichaRPGmeister()
     obj.edit689:setField("bbaComp");
     obj.edit689:setName("edit689");
 
-    obj.button157 = GUI.fromHandle(_obj_newObject("button"));
-    obj.button157:setParent(obj.rectangle234);
-    obj.button157:setLeft(90);
-    obj.button157:setTop(58);
-    obj.button157:setWidth(60);
-    obj.button157:setHeight(20);
-    obj.button157:setText("BMC");
-    obj.button157:setName("button157");
+    obj.button156 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button156:setParent(obj.rectangle234);
+    obj.button156:setLeft(90);
+    obj.button156:setTop(58);
+    obj.button156:setWidth(60);
+    obj.button156:setHeight(20);
+    obj.button156:setText("BMC");
+    obj.button156:setName("button156");
 
     obj.edit690 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit690:setParent(obj.rectangle234);
@@ -29429,14 +29420,14 @@ local function constructNew_frmFichaRPGmeister()
     obj.layout120:setHeight(25);
     obj.layout120:setName("layout120");
 
-    obj.button158 = GUI.fromHandle(_obj_newObject("button"));
-    obj.button158:setParent(obj.layout120);
-    obj.button158:setLeft(0);
-    obj.button158:setTop(3);
-    obj.button158:setWidth(42);
-    obj.button158:setHeight(20);
-    obj.button158:setText("FOR");
-    obj.button158:setName("button158");
+    obj.button157 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button157:setParent(obj.layout120);
+    obj.button157:setLeft(0);
+    obj.button157:setTop(3);
+    obj.button157:setWidth(42);
+    obj.button157:setHeight(20);
+    obj.button157:setText("FOR");
+    obj.button157:setName("button157");
 
     obj.edit694 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit694:setParent(obj.layout120);
@@ -29485,14 +29476,14 @@ local function constructNew_frmFichaRPGmeister()
     obj.layout121:setHeight(25);
     obj.layout121:setName("layout121");
 
-    obj.button159 = GUI.fromHandle(_obj_newObject("button"));
-    obj.button159:setParent(obj.layout121);
-    obj.button159:setLeft(0);
-    obj.button159:setTop(3);
-    obj.button159:setWidth(42);
-    obj.button159:setHeight(20);
-    obj.button159:setText("DES");
-    obj.button159:setName("button159");
+    obj.button158 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button158:setParent(obj.layout121);
+    obj.button158:setLeft(0);
+    obj.button158:setTop(3);
+    obj.button158:setWidth(42);
+    obj.button158:setHeight(20);
+    obj.button158:setText("DES");
+    obj.button158:setName("button158");
 
     obj.edit696 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit696:setParent(obj.layout121);
@@ -29541,14 +29532,14 @@ local function constructNew_frmFichaRPGmeister()
     obj.layout122:setHeight(25);
     obj.layout122:setName("layout122");
 
-    obj.button160 = GUI.fromHandle(_obj_newObject("button"));
-    obj.button160:setParent(obj.layout122);
-    obj.button160:setLeft(0);
-    obj.button160:setTop(3);
-    obj.button160:setWidth(42);
-    obj.button160:setHeight(20);
-    obj.button160:setText("CON");
-    obj.button160:setName("button160");
+    obj.button159 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button159:setParent(obj.layout122);
+    obj.button159:setLeft(0);
+    obj.button159:setTop(3);
+    obj.button159:setWidth(42);
+    obj.button159:setHeight(20);
+    obj.button159:setText("CON");
+    obj.button159:setName("button159");
 
     obj.edit698 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit698:setParent(obj.layout122);
@@ -29597,14 +29588,14 @@ local function constructNew_frmFichaRPGmeister()
     obj.layout123:setHeight(25);
     obj.layout123:setName("layout123");
 
-    obj.button161 = GUI.fromHandle(_obj_newObject("button"));
-    obj.button161:setParent(obj.layout123);
-    obj.button161:setLeft(0);
-    obj.button161:setTop(3);
-    obj.button161:setWidth(42);
-    obj.button161:setHeight(20);
-    obj.button161:setText("INT");
-    obj.button161:setName("button161");
+    obj.button160 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button160:setParent(obj.layout123);
+    obj.button160:setLeft(0);
+    obj.button160:setTop(3);
+    obj.button160:setWidth(42);
+    obj.button160:setHeight(20);
+    obj.button160:setText("INT");
+    obj.button160:setName("button160");
 
     obj.edit700 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit700:setParent(obj.layout123);
@@ -29653,14 +29644,14 @@ local function constructNew_frmFichaRPGmeister()
     obj.layout124:setHeight(25);
     obj.layout124:setName("layout124");
 
-    obj.button162 = GUI.fromHandle(_obj_newObject("button"));
-    obj.button162:setParent(obj.layout124);
-    obj.button162:setLeft(0);
-    obj.button162:setTop(3);
-    obj.button162:setWidth(42);
-    obj.button162:setHeight(20);
-    obj.button162:setText("SAB");
-    obj.button162:setName("button162");
+    obj.button161 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button161:setParent(obj.layout124);
+    obj.button161:setLeft(0);
+    obj.button161:setTop(3);
+    obj.button161:setWidth(42);
+    obj.button161:setHeight(20);
+    obj.button161:setText("SAB");
+    obj.button161:setName("button161");
 
     obj.edit702 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit702:setParent(obj.layout124);
@@ -29709,14 +29700,14 @@ local function constructNew_frmFichaRPGmeister()
     obj.layout125:setHeight(25);
     obj.layout125:setName("layout125");
 
-    obj.button163 = GUI.fromHandle(_obj_newObject("button"));
-    obj.button163:setParent(obj.layout125);
-    obj.button163:setLeft(0);
-    obj.button163:setTop(3);
-    obj.button163:setWidth(42);
-    obj.button163:setHeight(20);
-    obj.button163:setText("CAR");
-    obj.button163:setName("button163");
+    obj.button162 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button162:setParent(obj.layout125);
+    obj.button162:setLeft(0);
+    obj.button162:setTop(3);
+    obj.button162:setWidth(42);
+    obj.button162:setHeight(20);
+    obj.button162:setText("CAR");
+    obj.button162:setName("button162");
 
     obj.edit704 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit704:setParent(obj.layout125);
@@ -29774,14 +29765,14 @@ local function constructNew_frmFichaRPGmeister()
     obj.layout126:setHeight(25);
     obj.layout126:setName("layout126");
 
-    obj.button164 = GUI.fromHandle(_obj_newObject("button"));
-    obj.button164:setParent(obj.layout126);
-    obj.button164:setLeft(0);
-    obj.button164:setTop(3);
-    obj.button164:setWidth(42);
-    obj.button164:setHeight(20);
-    obj.button164:setText("FORT");
-    obj.button164:setName("button164");
+    obj.button163 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button163:setParent(obj.layout126);
+    obj.button163:setLeft(0);
+    obj.button163:setTop(3);
+    obj.button163:setWidth(42);
+    obj.button163:setHeight(20);
+    obj.button163:setText("FORT");
+    obj.button163:setName("button163");
 
     obj.edit706 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit706:setParent(obj.layout126);
@@ -29809,14 +29800,14 @@ local function constructNew_frmFichaRPGmeister()
     obj.layout127:setHeight(25);
     obj.layout127:setName("layout127");
 
-    obj.button165 = GUI.fromHandle(_obj_newObject("button"));
-    obj.button165:setParent(obj.layout127);
-    obj.button165:setLeft(0);
-    obj.button165:setTop(3);
-    obj.button165:setWidth(42);
-    obj.button165:setHeight(20);
-    obj.button165:setText("REF");
-    obj.button165:setName("button165");
+    obj.button164 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button164:setParent(obj.layout127);
+    obj.button164:setLeft(0);
+    obj.button164:setTop(3);
+    obj.button164:setWidth(42);
+    obj.button164:setHeight(20);
+    obj.button164:setText("REF");
+    obj.button164:setName("button164");
 
     obj.edit708 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit708:setParent(obj.layout127);
@@ -29844,14 +29835,14 @@ local function constructNew_frmFichaRPGmeister()
     obj.layout128:setHeight(25);
     obj.layout128:setName("layout128");
 
-    obj.button166 = GUI.fromHandle(_obj_newObject("button"));
-    obj.button166:setParent(obj.layout128);
-    obj.button166:setLeft(0);
-    obj.button166:setTop(3);
-    obj.button166:setWidth(42);
-    obj.button166:setHeight(20);
-    obj.button166:setText("VON");
-    obj.button166:setName("button166");
+    obj.button165 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button165:setParent(obj.layout128);
+    obj.button165:setLeft(0);
+    obj.button165:setTop(3);
+    obj.button165:setWidth(42);
+    obj.button165:setHeight(20);
+    obj.button165:setText("VON");
+    obj.button165:setName("button165");
 
     obj.edit710 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit710:setParent(obj.layout128);
@@ -30078,15 +30069,15 @@ local function constructNew_frmFichaRPGmeister()
 				
 
 
-    obj.button167 = GUI.fromHandle(_obj_newObject("button"));
-    obj.button167:setParent(obj.rectangle247);
-    obj.button167:setLeft(55);
-    obj.button167:setTop(150);
-    obj.button167:setWidth(50);
-    obj.button167:setHeight(20);
-    obj.button167:setHint("Envia tudo do segundo espaço para ataques no chat.");
-    obj.button167:setText("Atacar");
-    obj.button167:setName("button167");
+    obj.button166 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button166:setParent(obj.rectangle247);
+    obj.button166:setLeft(55);
+    obj.button166:setTop(150);
+    obj.button166:setWidth(50);
+    obj.button166:setHeight(20);
+    obj.button166:setHint("Envia tudo do segundo espaço para ataques no chat.");
+    obj.button166:setText("Atacar");
+    obj.button166:setName("button166");
 
     obj.textEditor27 = GUI.fromHandle(_obj_newObject("textEditor"));
     obj.textEditor27:setParent(obj.rectangle247);
@@ -30147,14 +30138,14 @@ local function constructNew_frmFichaRPGmeister()
     obj.image23:setStyle("autoFit");
     obj.image23:setName("image23");
 
-    obj.button168 = GUI.fromHandle(_obj_newObject("button"));
-    obj.button168:setParent(obj.scrollBox9);
-    obj.button168:setText("Novo Companheiro");
-    obj.button168:setLeft(1140);
-    obj.button168:setTop(206);
-    obj.button168:setWidth(160);
-    obj.button168:setHeight(20);
-    obj.button168:setName("button168");
+    obj.button167 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button167:setParent(obj.scrollBox9);
+    obj.button167:setText("Novo Companheiro");
+    obj.button167:setLeft(1140);
+    obj.button167:setTop(206);
+    obj.button167:setWidth(160);
+    obj.button167:setHeight(20);
+    obj.button167:setName("button167");
 
     obj.rectangle250 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle250:setParent(obj.scrollBox9);
@@ -30557,14 +30548,14 @@ local function constructNew_frmFichaRPGmeister()
     obj.label998:setText("HISTORIA");
     obj.label998:setName("label998");
 
-    obj.button169 = GUI.fromHandle(_obj_newObject("button"));
-    obj.button169:setParent(obj.layout131);
-    obj.button169:setLeft(720);
-    obj.button169:setTop(1);
-    obj.button169:setWidth(100);
-    obj.button169:setHeight(20);
-    obj.button169:setText("Copiar Antigo");
-    obj.button169:setName("button169");
+    obj.button168 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button168:setParent(obj.layout131);
+    obj.button168:setLeft(720);
+    obj.button168:setTop(1);
+    obj.button168:setWidth(100);
+    obj.button168:setHeight(20);
+    obj.button168:setText("Copiar Antigo");
+    obj.button168:setName("button168");
 
     obj.richEdit1 = GUI.fromHandle(_obj_newObject("richEdit"));
     obj.richEdit1:setParent(obj.layout131);
@@ -31232,29 +31223,29 @@ local function constructNew_frmFichaRPGmeister()
     obj.checkBox54:setText("Não pedir para atualizar.");
     obj.checkBox54:setName("checkBox54");
 
+    obj.button169 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button169:setParent(obj.scrollBox11);
+    obj.button169:setLeft(620);
+    obj.button169:setTop(475);
+    obj.button169:setWidth(100);
+    obj.button169:setText("Change Log");
+    obj.button169:setName("button169");
+
     obj.button170 = GUI.fromHandle(_obj_newObject("button"));
     obj.button170:setParent(obj.scrollBox11);
-    obj.button170:setLeft(620);
+    obj.button170:setLeft(730);
     obj.button170:setTop(475);
     obj.button170:setWidth(100);
-    obj.button170:setText("Change Log");
+    obj.button170:setText("Atualizar");
     obj.button170:setName("button170");
 
     obj.button171 = GUI.fromHandle(_obj_newObject("button"));
     obj.button171:setParent(obj.scrollBox11);
-    obj.button171:setLeft(730);
+    obj.button171:setLeft(840);
     obj.button171:setTop(475);
     obj.button171:setWidth(100);
-    obj.button171:setText("Atualizar");
+    obj.button171:setText("Tutorial");
     obj.button171:setName("button171");
-
-    obj.button172 = GUI.fromHandle(_obj_newObject("button"));
-    obj.button172:setParent(obj.scrollBox11);
-    obj.button172:setLeft(840);
-    obj.button172:setTop(475);
-    obj.button172:setWidth(100);
-    obj.button172:setText("Tutorial");
-    obj.button172:setName("button172");
 
     obj.label1024 = GUI.fromHandle(_obj_newObject("label"));
     obj.label1024:setParent(obj.scrollBox11);
@@ -31266,31 +31257,31 @@ local function constructNew_frmFichaRPGmeister()
     obj.label1024:setFontSize(11);
     obj.label1024:setName("label1024");
 
+    obj.button172 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button172:setParent(obj.scrollBox11);
+    obj.button172:setLeft(730);
+    obj.button172:setTop(525);
+    obj.button172:setWidth(100);
+    obj.button172:setText("RPGmeister");
+    obj.button172:setName("button172");
+
     obj.button173 = GUI.fromHandle(_obj_newObject("button"));
     obj.button173:setParent(obj.scrollBox11);
-    obj.button173:setLeft(730);
+    obj.button173:setLeft(840);
     obj.button173:setTop(525);
     obj.button173:setWidth(100);
-    obj.button173:setText("RPGmeister");
+    obj.button173:setHeight(20);
+    obj.button173:setText("Exportar Ficha");
     obj.button173:setName("button173");
 
     obj.button174 = GUI.fromHandle(_obj_newObject("button"));
     obj.button174:setParent(obj.scrollBox11);
-    obj.button174:setLeft(840);
+    obj.button174:setLeft(950);
     obj.button174:setTop(525);
     obj.button174:setWidth(100);
     obj.button174:setHeight(20);
-    obj.button174:setText("Exportar Ficha");
+    obj.button174:setText("Importar Ficha");
     obj.button174:setName("button174");
-
-    obj.button175 = GUI.fromHandle(_obj_newObject("button"));
-    obj.button175:setParent(obj.scrollBox11);
-    obj.button175:setLeft(950);
-    obj.button175:setTop(525);
-    obj.button175:setWidth(100);
-    obj.button175:setHeight(20);
-    obj.button175:setText("Importar Ficha");
-    obj.button175:setName("button175");
 
     obj._e_event0 = obj:addEventListener("onNodeReady",
         function (_)
@@ -31330,7 +31321,24 @@ local function constructNew_frmFichaRPGmeister()
                         "checkForModification");
         end, obj);
 
-    obj._e_event1 = obj.dataLink2:addEventListener("onChange",
+    obj._e_event1 = obj:addEventListener("onNodeReady",
+        function (_)
+            if sheet==nil then return end;
+                    
+                    if sheet.campoDasPericias == nil then
+                        sheet.campoDasPericias = {}
+                    end
+            
+                    local nodes = NDB.getChildNodes(sheet.campoDasPericias); 
+                    if #nodes > 0 then return end;
+            
+                    local path = NDB.load("pathskills.xml");
+                    NDB.copy(sheet.campoDasPericias, path); 
+            
+                    self.rclListaDasPericias:sort();
+        end, obj);
+
+    obj._e_event2 = obj.dataLink2:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet~= nil then
             					local real = 	(tonumber(sheet.inicialFor) or 0) + 
@@ -31363,7 +31371,7 @@ local function constructNew_frmFichaRPGmeister()
             				end;
         end, obj);
 
-    obj._e_event2 = obj.dataLink4:addEventListener("onChange",
+    obj._e_event3 = obj.dataLink4:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet~= nil then
             					local real = 	(tonumber(sheet.inicialDes) or 0) + 
@@ -31396,7 +31404,7 @@ local function constructNew_frmFichaRPGmeister()
             				end;
         end, obj);
 
-    obj._e_event3 = obj.dataLink6:addEventListener("onChange",
+    obj._e_event4 = obj.dataLink6:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet~= nil then
             					local real = 	(tonumber(sheet.inicialCon) or 0) + 
@@ -31429,7 +31437,7 @@ local function constructNew_frmFichaRPGmeister()
             				end;
         end, obj);
 
-    obj._e_event4 = obj.dataLink8:addEventListener("onChange",
+    obj._e_event5 = obj.dataLink8:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet~= nil then
             					local real = 	(tonumber(sheet.inicialInt) or 0) + 
@@ -31462,7 +31470,7 @@ local function constructNew_frmFichaRPGmeister()
             				end;
         end, obj);
 
-    obj._e_event5 = obj.dataLink10:addEventListener("onChange",
+    obj._e_event6 = obj.dataLink10:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet~= nil then
             					local real = 	(tonumber(sheet.inicialSab) or 0) + 
@@ -31495,7 +31503,7 @@ local function constructNew_frmFichaRPGmeister()
             				end;
         end, obj);
 
-    obj._e_event6 = obj.dataLink12:addEventListener("onChange",
+    obj._e_event7 = obj.dataLink12:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet~= nil then
             					local real = 	(tonumber(sheet.inicialCar) or 0) + 
@@ -31528,20 +31536,20 @@ local function constructNew_frmFichaRPGmeister()
             				end;
         end, obj);
 
-    obj._e_event7 = obj.xpAtualLabel:addEventListener("onClick",
+    obj._e_event8 = obj.xpAtualLabel:addEventListener("onClick",
         function (_)
             self.xpAtualLabel.visible = false;
             				self.xpAtualEdit.visible = true;
             				self.xpAtualEdit:setFocus();
         end, obj);
 
-    obj._e_event8 = obj.xpAtualEdit:addEventListener("onExit",
+    obj._e_event9 = obj.xpAtualEdit:addEventListener("onExit",
         function (_)
             self.xpAtualLabel.visible = true;
             				self.xpAtualEdit.visible = false;
         end, obj);
 
-    obj._e_event9 = obj.button1:addEventListener("onClick",
+    obj._e_event10 = obj.button1:addEventListener("onClick",
         function (_)
             local xp = (tonumber(sheet.xpAtual) or 0) + (tonumber(sheet.xpNova) or 0);
             						
@@ -31549,7 +31557,7 @@ local function constructNew_frmFichaRPGmeister()
             						sheet.xpNova = "0";
         end, obj);
 
-    obj._e_event10 = obj.dataLink13:addEventListener("onChange",
+    obj._e_event11 = obj.dataLink13:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet~= nil then
             
@@ -31601,21 +31609,21 @@ local function constructNew_frmFichaRPGmeister()
             					end;
         end, obj);
 
-    obj._e_event11 = obj.button2:addEventListener("onClick",
+    obj._e_event12 = obj.button2:addEventListener("onClick",
         function (_)
             local rolagem = Firecast.interpretarRolagem("1d20 " .. (sheet.efetModFor) or 0);
             				local mesa = Firecast.getMesaDe(sheet);
             				mesa.activeChat:rolarDados(rolagem, "Teste de Força de " .. (sheet.nome or "NOME"));
         end, obj);
 
-    obj._e_event12 = obj.dataLink14:addEventListener("onChange",
+    obj._e_event13 = obj.dataLink14:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet ~= nil then
             					sheet.realModFor = getMOD(sheet.realFor);  
             				end;
         end, obj);
 
-    obj._e_event13 = obj.dataLink15:addEventListener("onChange",
+    obj._e_event14 = obj.dataLink15:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet ~= nil then
             					sheet.efetModFor = getMOD(sheet.efetFor);
@@ -31623,21 +31631,21 @@ local function constructNew_frmFichaRPGmeister()
             				end;
         end, obj);
 
-    obj._e_event14 = obj.button3:addEventListener("onClick",
+    obj._e_event15 = obj.button3:addEventListener("onClick",
         function (_)
             local rolagem = Firecast.interpretarRolagem("1d20 " .. (sheet.efetModDes) or 0);
             				local mesa = Firecast.getMesaDe(sheet);
             				mesa.activeChat:rolarDados(rolagem, "Teste de Destreza de " .. (sheet.nome or "NOME"));
         end, obj);
 
-    obj._e_event15 = obj.dataLink16:addEventListener("onChange",
+    obj._e_event16 = obj.dataLink16:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet ~= nil then
             					sheet.realModDes = getMOD(sheet.realDes);  
             				end;
         end, obj);
 
-    obj._e_event16 = obj.dataLink17:addEventListener("onChange",
+    obj._e_event17 = obj.dataLink17:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet ~= nil then
             					sheet.efetModDes = getMOD(sheet.efetDes);
@@ -31645,21 +31653,21 @@ local function constructNew_frmFichaRPGmeister()
             				end;
         end, obj);
 
-    obj._e_event17 = obj.button4:addEventListener("onClick",
+    obj._e_event18 = obj.button4:addEventListener("onClick",
         function (_)
             local rolagem = Firecast.interpretarRolagem("1d20 " .. (sheet.efetModCon) or 0);
             				local mesa = Firecast.getMesaDe(sheet);
             				mesa.activeChat:rolarDados(rolagem, "Teste de Constituição de " .. (sheet.nome or "NOME"));
         end, obj);
 
-    obj._e_event18 = obj.dataLink18:addEventListener("onChange",
+    obj._e_event19 = obj.dataLink18:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet ~= nil then
             					sheet.realModCon = getMOD(sheet.realCon);  
             				end;
         end, obj);
 
-    obj._e_event19 = obj.dataLink19:addEventListener("onChange",
+    obj._e_event20 = obj.dataLink19:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet ~= nil then
             					sheet.efetModCon = getMOD(sheet.efetCon);
@@ -31667,21 +31675,21 @@ local function constructNew_frmFichaRPGmeister()
             				end;
         end, obj);
 
-    obj._e_event20 = obj.button5:addEventListener("onClick",
+    obj._e_event21 = obj.button5:addEventListener("onClick",
         function (_)
             local rolagem = Firecast.interpretarRolagem("1d20 " .. (sheet.efetModInt) or 0);
             				local mesa = Firecast.getMesaDe(sheet);
             				mesa.activeChat:rolarDados(rolagem, "Teste de Inteligência de " .. (sheet.nome or "NOME"));
         end, obj);
 
-    obj._e_event21 = obj.dataLink20:addEventListener("onChange",
+    obj._e_event22 = obj.dataLink20:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet ~= nil then
             					sheet.realModInt = getMOD(sheet.realInt);  
             				end;
         end, obj);
 
-    obj._e_event22 = obj.dataLink21:addEventListener("onChange",
+    obj._e_event23 = obj.dataLink21:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet ~= nil then
             					sheet.efetModInt = getMOD(sheet.efetInt);
@@ -31689,21 +31697,21 @@ local function constructNew_frmFichaRPGmeister()
             				end;
         end, obj);
 
-    obj._e_event23 = obj.button6:addEventListener("onClick",
+    obj._e_event24 = obj.button6:addEventListener("onClick",
         function (_)
             local rolagem = Firecast.interpretarRolagem("1d20 " .. (sheet.efetModSab) or 0);
             				local mesa = Firecast.getMesaDe(sheet);
             				mesa.activeChat:rolarDados(rolagem, "Teste de Sabedoria de " .. (sheet.nome or "NOME"));
         end, obj);
 
-    obj._e_event24 = obj.dataLink22:addEventListener("onChange",
+    obj._e_event25 = obj.dataLink22:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet ~= nil then
             					sheet.realModSab = getMOD(sheet.realSab);  
             				end;
         end, obj);
 
-    obj._e_event25 = obj.dataLink23:addEventListener("onChange",
+    obj._e_event26 = obj.dataLink23:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet ~= nil then
             					sheet.efetModSab = getMOD(sheet.efetSab);
@@ -31711,21 +31719,21 @@ local function constructNew_frmFichaRPGmeister()
             				end;
         end, obj);
 
-    obj._e_event26 = obj.button7:addEventListener("onClick",
+    obj._e_event27 = obj.button7:addEventListener("onClick",
         function (_)
             local rolagem = Firecast.interpretarRolagem("1d20 " .. (sheet.efetModCar) or 0);
             				local mesa = Firecast.getMesaDe(sheet);
             				mesa.activeChat:rolarDados(rolagem, "Teste de Carisma de " .. (sheet.nome or "NOME"));
         end, obj);
 
-    obj._e_event27 = obj.dataLink24:addEventListener("onChange",
+    obj._e_event28 = obj.dataLink24:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet ~= nil then
             					sheet.realModCar = getMOD(sheet.realCar);  
             				end;
         end, obj);
 
-    obj._e_event28 = obj.dataLink25:addEventListener("onChange",
+    obj._e_event29 = obj.dataLink25:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet ~= nil then
             					sheet.efetModCar = getMOD(sheet.efetCar);
@@ -31733,7 +31741,7 @@ local function constructNew_frmFichaRPGmeister()
             				end;
         end, obj);
 
-    obj._e_event29 = obj.AtrBut:addEventListener("onClick",
+    obj._e_event30 = obj.AtrBut:addEventListener("onClick",
         function (_)
             local pop = self:findControlByName("popAtributo");
             				
@@ -31745,20 +31753,20 @@ local function constructNew_frmFichaRPGmeister()
             					end;
         end, obj);
 
-    obj._e_event30 = obj.deslTerrestreLabel:addEventListener("onClick",
+    obj._e_event31 = obj.deslTerrestreLabel:addEventListener("onClick",
         function (_)
             self.deslTerrestreLabel.visible = false;
             				self.deslTerrestreEdit.visible = true;
             				self.deslTerrestreEdit:setFocus();
         end, obj);
 
-    obj._e_event31 = obj.deslTerrestreEdit:addEventListener("onExit",
+    obj._e_event32 = obj.deslTerrestreEdit:addEventListener("onExit",
         function (_)
             self.deslTerrestreLabel.visible = true;
             				self.deslTerrestreEdit.visible = false;
         end, obj);
 
-    obj._e_event32 = obj.dataLink26:addEventListener("onChange",
+    obj._e_event33 = obj.dataLink26:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet ~= nil and sheet.deslTerrestre ~= nil then
             
@@ -31771,20 +31779,20 @@ local function constructNew_frmFichaRPGmeister()
             				end;
         end, obj);
 
-    obj._e_event33 = obj.deslVooLabel:addEventListener("onClick",
+    obj._e_event34 = obj.deslVooLabel:addEventListener("onClick",
         function (_)
             self.deslVooLabel.visible = false;
             				self.deslVooEdit.visible = true;
             				self.deslVooEdit:setFocus();
         end, obj);
 
-    obj._e_event34 = obj.deslVooEdit:addEventListener("onExit",
+    obj._e_event35 = obj.deslVooEdit:addEventListener("onExit",
         function (_)
             self.deslVooLabel.visible = true;
             				self.deslVooEdit.visible = false;
         end, obj);
 
-    obj._e_event35 = obj.dataLink27:addEventListener("onChange",
+    obj._e_event36 = obj.dataLink27:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet ~= nil and sheet.deslVoo ~= nil then
             
@@ -31797,20 +31805,20 @@ local function constructNew_frmFichaRPGmeister()
             				end;
         end, obj);
 
-    obj._e_event36 = obj.deslNatacaoLabel:addEventListener("onClick",
+    obj._e_event37 = obj.deslNatacaoLabel:addEventListener("onClick",
         function (_)
             self.deslNatacaoLabel.visible = false;
             				self.deslNatacaoEdit.visible = true;
             				self.deslNatacaoEdit:setFocus();
         end, obj);
 
-    obj._e_event37 = obj.deslNatacaoEdit:addEventListener("onExit",
+    obj._e_event38 = obj.deslNatacaoEdit:addEventListener("onExit",
         function (_)
             self.deslNatacaoLabel.visible = true;
             				self.deslNatacaoEdit.visible = false;
         end, obj);
 
-    obj._e_event38 = obj.dataLink28:addEventListener("onChange",
+    obj._e_event39 = obj.dataLink28:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet ~= nil and sheet.deslNatacao ~= nil then
             
@@ -31823,20 +31831,20 @@ local function constructNew_frmFichaRPGmeister()
             				end;
         end, obj);
 
-    obj._e_event39 = obj.deslEscalarLabel:addEventListener("onClick",
+    obj._e_event40 = obj.deslEscalarLabel:addEventListener("onClick",
         function (_)
             self.deslEscalarLabel.visible = false;
             				self.deslEscalarEdit.visible = true;
             				self.deslEscalarEdit:setFocus();
         end, obj);
 
-    obj._e_event40 = obj.deslEscalarEdit:addEventListener("onExit",
+    obj._e_event41 = obj.deslEscalarEdit:addEventListener("onExit",
         function (_)
             self.deslEscalarLabel.visible = true;
             				self.deslEscalarEdit.visible = false;
         end, obj);
 
-    obj._e_event41 = obj.dataLink29:addEventListener("onChange",
+    obj._e_event42 = obj.dataLink29:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet ~= nil and sheet.deslEscalar ~= nil then
             
@@ -31849,20 +31857,20 @@ local function constructNew_frmFichaRPGmeister()
             				end;
         end, obj);
 
-    obj._e_event42 = obj.deslEscavarLabel:addEventListener("onClick",
+    obj._e_event43 = obj.deslEscavarLabel:addEventListener("onClick",
         function (_)
             self.deslEscavarLabel.visible = false;
             				self.deslEscavarEdit.visible = true;
             				self.deslEscavarEdit:setFocus();
         end, obj);
 
-    obj._e_event43 = obj.deslEscavarEdit:addEventListener("onExit",
+    obj._e_event44 = obj.deslEscavarEdit:addEventListener("onExit",
         function (_)
             self.deslEscavarLabel.visible = true;
             				self.deslEscavarEdit.visible = false;
         end, obj);
 
-    obj._e_event44 = obj.dataLink30:addEventListener("onChange",
+    obj._e_event45 = obj.dataLink30:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet ~= nil and sheet.deslEscavar ~= nil then
             
@@ -31875,14 +31883,14 @@ local function constructNew_frmFichaRPGmeister()
             				end;
         end, obj);
 
-    obj._e_event45 = obj.button8:addEventListener("onClick",
+    obj._e_event46 = obj.button8:addEventListener("onClick",
         function (_)
             local rolagem = Firecast.interpretarRolagem("1d20 " .. (sheet.iniciativa or "+0"));
             					local mesa = Firecast.getMesaDe(sheet);
             					mesa.activeChat:rolarDados(rolagem, "Teste de Iniciativa de " .. (sheet.nome or "PONHA UM NOME NO PERSONAGEM"));
         end, obj);
 
-    obj._e_event46 = obj.dataLink31:addEventListener("onChange",
+    obj._e_event47 = obj.dataLink31:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet~= nil then
             						local mod = (tonumber(sheet.efetModDes) or 0) + (tonumber(sheet.iniVariado) or 0);
@@ -31893,14 +31901,14 @@ local function constructNew_frmFichaRPGmeister()
             					end;
         end, obj);
 
-    obj._e_event47 = obj.button9:addEventListener("onClick",
+    obj._e_event48 = obj.button9:addEventListener("onClick",
         function (_)
             local rolagem = Firecast.interpretarRolagem("1d100");
             						local mesa = Firecast.getMesaDe(sheet);
             						mesa.activeChat:rolarDados(rolagem, "Teste de Falha Arcana (" .. (sheet.falha or "0%").. ") de " .. (sheet.nome or "NOME"));
         end, obj);
 
-    obj._e_event48 = obj.caDetails:addEventListener("onClick",
+    obj._e_event49 = obj.caDetails:addEventListener("onClick",
         function (_)
             local pop = self:findControlByName("popCA");
             					
@@ -31912,7 +31920,7 @@ local function constructNew_frmFichaRPGmeister()
             					end;
         end, obj);
 
-    obj._e_event49 = obj.dataLink32:addEventListener("onChange",
+    obj._e_event50 = obj.dataLink32:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet~= nil then
             						local armaduraCa = (tonumber(sheet.armaduraCa) or 0);
@@ -32003,7 +32011,7 @@ local function constructNew_frmFichaRPGmeister()
             					end;
         end, obj);
 
-    obj._e_event50 = obj.dataLink34:addEventListener("onChange",
+    obj._e_event51 = obj.dataLink34:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet~=nil then
             						sheet.penalidade = (tonumber(sheet.equipamentoCorpoPen) or 0) + (tonumber(sheet.escudoPEn) or 0);
@@ -32011,7 +32019,7 @@ local function constructNew_frmFichaRPGmeister()
             					end;
         end, obj);
 
-    obj._e_event51 = obj.dataLink35:addEventListener("onChange",
+    obj._e_event52 = obj.dataLink35:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet~=nil then
             						local equipamentoCorpoFalha = sheet.equipamentoCorpoFalha;
@@ -32028,7 +32036,7 @@ local function constructNew_frmFichaRPGmeister()
             					end;
         end, obj);
 
-    obj._e_event52 = obj.button10:addEventListener("onClick",
+    obj._e_event53 = obj.button10:addEventListener("onClick",
         function (_)
             local mesa = Firecast.getMesaDe(sheet);
             					sheet.modificador = sheet.modificador or 0;
@@ -32060,7 +32068,7 @@ local function constructNew_frmFichaRPGmeister()
             						end);
         end, obj);
 
-    obj._e_event53 = obj.edit158:addEventListener("onChange",
+    obj._e_event54 = obj.edit158:addEventListener("onChange",
         function (_)
             if sheet~= nil then
             						local bba = tonumber(sheet.bba) or 0;
@@ -32075,14 +32083,14 @@ local function constructNew_frmFichaRPGmeister()
             					end;
         end, obj);
 
-    obj._e_event54 = obj.button11:addEventListener("onClick",
+    obj._e_event55 = obj.button11:addEventListener("onClick",
         function (_)
             local rolagem = Firecast.interpretarRolagem("1d20 + " .. (sheet.bmc or "0"));
             						local mesa = Firecast.getMesaDe(sheet);
             						mesa.activeChat:rolarDados(rolagem, "Teste de BMC de " .. (sheet.nome or "NOME"));
         end, obj);
 
-    obj._e_event55 = obj.ManeuverBt:addEventListener("onClick",
+    obj._e_event56 = obj.ManeuverBt:addEventListener("onClick",
         function (_)
             local pop = self:findControlByName("popManeuver");
             					
@@ -32094,7 +32102,7 @@ local function constructNew_frmFichaRPGmeister()
             						end;
         end, obj);
 
-    obj._e_event56 = obj.dataLink36:addEventListener("onChange",
+    obj._e_event57 = obj.dataLink36:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet~= nil then
             							local bba = tonumber(sheet.bba) or 0;
@@ -32186,14 +32194,14 @@ local function constructNew_frmFichaRPGmeister()
             						end;
         end, obj);
 
-    obj._e_event57 = obj.button12:addEventListener("onClick",
+    obj._e_event58 = obj.button12:addEventListener("onClick",
         function (_)
             local rolagem = Firecast.interpretarRolagem("1d20 +" .. (sheet.trFort) or "0");
             				local mesa = Firecast.getMesaDe(sheet);
             				mesa.activeChat:rolarDados(rolagem, "Teste de Fortitude de " .. (sheet.nome or "NOME"));
         end, obj);
 
-    obj._e_event58 = obj.dataLink37:addEventListener("onChange",
+    obj._e_event59 = obj.dataLink37:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet~= nil then
             					local tr = (tonumber(sheet.baseFort) or 0) + 
@@ -32207,14 +32215,14 @@ local function constructNew_frmFichaRPGmeister()
             				end;
         end, obj);
 
-    obj._e_event59 = obj.button13:addEventListener("onClick",
+    obj._e_event60 = obj.button13:addEventListener("onClick",
         function (_)
             local rolagem = Firecast.interpretarRolagem("1d20 +" .. (sheet.trRef) or "0");
             				local mesa = Firecast.getMesaDe(sheet);
             				mesa.activeChat:rolarDados(rolagem, "Teste de Reflexos de " .. (sheet.nome or "NOME"));
         end, obj);
 
-    obj._e_event60 = obj.dataLink39:addEventListener("onChange",
+    obj._e_event61 = obj.dataLink39:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet~= nil then
             					local tr = (tonumber(sheet.baseRef) or 0) + 
@@ -32228,14 +32236,14 @@ local function constructNew_frmFichaRPGmeister()
             				end;
         end, obj);
 
-    obj._e_event61 = obj.button14:addEventListener("onClick",
+    obj._e_event62 = obj.button14:addEventListener("onClick",
         function (_)
             local rolagem = Firecast.interpretarRolagem("1d20 +" .. (sheet.trVon) or "0");
             				local mesa = Firecast.getMesaDe(sheet);
             				mesa.activeChat:rolarDados(rolagem, "Teste de Vontade de " .. (sheet.nome or "NOME"));
         end, obj);
 
-    obj._e_event62 = obj.dataLink41:addEventListener("onChange",
+    obj._e_event63 = obj.dataLink41:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet~= nil then
             					local tr = (tonumber(sheet.baseVon) or 0) + 
@@ -32249,7 +32257,7 @@ local function constructNew_frmFichaRPGmeister()
             				end;
         end, obj);
 
-    obj._e_event63 = obj.dataLink43:addEventListener("onChange",
+    obj._e_event64 = obj.dataLink43:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet ~= nil then
             						local atrModFort = 0;
@@ -32310,7 +32318,7 @@ local function constructNew_frmFichaRPGmeister()
             					end;
         end, obj);
 
-    obj._e_event64 = obj.TrBut:addEventListener("onClick",
+    obj._e_event65 = obj.TrBut:addEventListener("onClick",
         function (_)
             local pop = self:findControlByName("popResistencia");
             				
@@ -32322,12 +32330,12 @@ local function constructNew_frmFichaRPGmeister()
             					end;
         end, obj);
 
-    obj._e_event65 = obj.image1:addEventListener("onStartDrag",
+    obj._e_event66 = obj.image1:addEventListener("onStartDrag",
         function (_, drag, x, y)
             drag:addData("imageURL", sheet.avatar);
         end, obj);
 
-    obj._e_event66 = obj.button15:addEventListener("onClick",
+    obj._e_event67 = obj.button15:addEventListener("onClick",
         function (_)
             i = 1;
             				max = 1;
@@ -32378,7 +32386,7 @@ local function constructNew_frmFichaRPGmeister()
             				end;
         end, obj);
 
-    obj._e_event67 = obj.button16:addEventListener("onClick",
+    obj._e_event68 = obj.button16:addEventListener("onClick",
         function (_)
             local mesa = Firecast.getMesaDe(sheet);
             				local dano = sheet.dano1 or "1d1";
@@ -32394,7 +32402,7 @@ local function constructNew_frmFichaRPGmeister()
             				mesa.activeChat:rolarDados(dano, "Dano com " .. armamento .. " de " .. (sheet.nome or "NOME"));
         end, obj);
 
-    obj._e_event68 = obj.button17:addEventListener("onClick",
+    obj._e_event69 = obj.button17:addEventListener("onClick",
         function (_)
             local mesa = Firecast.getMesaDe(sheet);
             				local danoCritico = sheet.danoCritico1 or "1d1";
@@ -32410,7 +32418,7 @@ local function constructNew_frmFichaRPGmeister()
             				mesa.activeChat:rolarDados(danoCritico, "Dano Critico com " .. armamento .. " de " .. (sheet.nome or "NOME"));
         end, obj);
 
-    obj._e_event69 = obj.button18:addEventListener("onClick",
+    obj._e_event70 = obj.button18:addEventListener("onClick",
         function (_)
             Dialogs.confirmYesNo("Deseja realmente apagar esse ataque?",
             					function (confirmado)
@@ -32439,7 +32447,7 @@ local function constructNew_frmFichaRPGmeister()
             					end);
         end, obj);
 
-    obj._e_event70 = obj.button19:addEventListener("onClick",
+    obj._e_event71 = obj.button19:addEventListener("onClick",
         function (_)
             i = 1;
             				max = 1;
@@ -32490,7 +32498,7 @@ local function constructNew_frmFichaRPGmeister()
             				end;
         end, obj);
 
-    obj._e_event71 = obj.button20:addEventListener("onClick",
+    obj._e_event72 = obj.button20:addEventListener("onClick",
         function (_)
             local mesa = Firecast.getMesaDe(sheet);
             				local dano = sheet.dano2 or "1d1";
@@ -32506,7 +32514,7 @@ local function constructNew_frmFichaRPGmeister()
             				mesa.activeChat:rolarDados(dano, "Dano com " .. armamento .. " de " .. (sheet.nome or "NOME"));
         end, obj);
 
-    obj._e_event72 = obj.button21:addEventListener("onClick",
+    obj._e_event73 = obj.button21:addEventListener("onClick",
         function (_)
             local mesa = Firecast.getMesaDe(sheet);
             				local danoCritico = sheet.danoCritico2 or "1d1";
@@ -32522,7 +32530,7 @@ local function constructNew_frmFichaRPGmeister()
             				mesa.activeChat:rolarDados(danoCritico, "Dano Critico com " .. armamento .. " de " .. (sheet.nome or "NOME"));
         end, obj);
 
-    obj._e_event73 = obj.button22:addEventListener("onClick",
+    obj._e_event74 = obj.button22:addEventListener("onClick",
         function (_)
             Dialogs.confirmYesNo("Deseja realmente apagar esse ataque?",
             					function (confirmado)
@@ -32551,7 +32559,7 @@ local function constructNew_frmFichaRPGmeister()
             					end);
         end, obj);
 
-    obj._e_event74 = obj.button23:addEventListener("onClick",
+    obj._e_event75 = obj.button23:addEventListener("onClick",
         function (_)
             i = 1;
             				max = 1;
@@ -32602,7 +32610,7 @@ local function constructNew_frmFichaRPGmeister()
             				end;
         end, obj);
 
-    obj._e_event75 = obj.button24:addEventListener("onClick",
+    obj._e_event76 = obj.button24:addEventListener("onClick",
         function (_)
             local mesa = Firecast.getMesaDe(sheet);
             				local dano = sheet.dano3 or "1d1";
@@ -32618,7 +32626,7 @@ local function constructNew_frmFichaRPGmeister()
             				mesa.activeChat:rolarDados(dano, "Dano com " .. armamento .. " de " .. (sheet.nome or "NOME"));
         end, obj);
 
-    obj._e_event76 = obj.button25:addEventListener("onClick",
+    obj._e_event77 = obj.button25:addEventListener("onClick",
         function (_)
             local mesa = Firecast.getMesaDe(sheet);
             				local danoCritico = sheet.danoCritico3 or "1d1";
@@ -32634,7 +32642,7 @@ local function constructNew_frmFichaRPGmeister()
             				mesa.activeChat:rolarDados(danoCritico, "Dano Critico com " .. armamento .. " de " .. (sheet.nome or "NOME"));
         end, obj);
 
-    obj._e_event77 = obj.button26:addEventListener("onClick",
+    obj._e_event78 = obj.button26:addEventListener("onClick",
         function (_)
             Dialogs.confirmYesNo("Deseja realmente apagar esse ataque?",
             					function (confirmado)
@@ -32663,7 +32671,7 @@ local function constructNew_frmFichaRPGmeister()
             					end);
         end, obj);
 
-    obj._e_event78 = obj.button27:addEventListener("onClick",
+    obj._e_event79 = obj.button27:addEventListener("onClick",
         function (_)
             i = 1;
             				max = 1;
@@ -32714,7 +32722,7 @@ local function constructNew_frmFichaRPGmeister()
             				end;
         end, obj);
 
-    obj._e_event79 = obj.button28:addEventListener("onClick",
+    obj._e_event80 = obj.button28:addEventListener("onClick",
         function (_)
             local mesa = Firecast.getMesaDe(sheet);
             				local dano = sheet.dano4 or "1d1";
@@ -32730,7 +32738,7 @@ local function constructNew_frmFichaRPGmeister()
             				mesa.activeChat:rolarDados(dano, "Dano com " .. armamento .. " de " .. (sheet.nome or "NOME"));
         end, obj);
 
-    obj._e_event80 = obj.button29:addEventListener("onClick",
+    obj._e_event81 = obj.button29:addEventListener("onClick",
         function (_)
             local mesa = Firecast.getMesaDe(sheet);
             				local danoCritico = sheet.danoCritico4 or "1d1";
@@ -32746,7 +32754,7 @@ local function constructNew_frmFichaRPGmeister()
             				mesa.activeChat:rolarDados(danoCritico, "Dano Critico com " .. armamento .. " de " .. (sheet.nome or "NOME"));
         end, obj);
 
-    obj._e_event81 = obj.button30:addEventListener("onClick",
+    obj._e_event82 = obj.button30:addEventListener("onClick",
         function (_)
             Dialogs.confirmYesNo("Deseja realmente apagar esse ataque?",
             					function (confirmado)
@@ -32775,7 +32783,7 @@ local function constructNew_frmFichaRPGmeister()
             					end);
         end, obj);
 
-    obj._e_event82 = obj.button31:addEventListener("onClick",
+    obj._e_event83 = obj.button31:addEventListener("onClick",
         function (_)
             i = 1;
             				max = 1;
@@ -32826,7 +32834,7 @@ local function constructNew_frmFichaRPGmeister()
             				end;
         end, obj);
 
-    obj._e_event83 = obj.button32:addEventListener("onClick",
+    obj._e_event84 = obj.button32:addEventListener("onClick",
         function (_)
             local mesa = Firecast.getMesaDe(sheet);
             				local dano = sheet.dano5 or "1d1";
@@ -32842,7 +32850,7 @@ local function constructNew_frmFichaRPGmeister()
             				mesa.activeChat:rolarDados(dano, "Dano com " .. armamento .. " de " .. (sheet.nome or "NOME"));
         end, obj);
 
-    obj._e_event84 = obj.button33:addEventListener("onClick",
+    obj._e_event85 = obj.button33:addEventListener("onClick",
         function (_)
             local mesa = Firecast.getMesaDe(sheet);
             				local danoCritico = sheet.danoCritico5 or "1d1";
@@ -32858,7 +32866,7 @@ local function constructNew_frmFichaRPGmeister()
             				mesa.activeChat:rolarDados(danoCritico, "Dano Critico com " .. armamento .. " de " .. (sheet.nome or "NOME"));
         end, obj);
 
-    obj._e_event85 = obj.button34:addEventListener("onClick",
+    obj._e_event86 = obj.button34:addEventListener("onClick",
         function (_)
             Dialogs.confirmYesNo("Deseja realmente apagar esse ataque?",
             					function (confirmado)
@@ -32887,7 +32895,7 @@ local function constructNew_frmFichaRPGmeister()
             					end);
         end, obj);
 
-    obj._e_event86 = obj.button35:addEventListener("onClick",
+    obj._e_event87 = obj.button35:addEventListener("onClick",
         function (_)
             i = 1;
             				max = 1;
@@ -32938,7 +32946,7 @@ local function constructNew_frmFichaRPGmeister()
             				end;
         end, obj);
 
-    obj._e_event87 = obj.button36:addEventListener("onClick",
+    obj._e_event88 = obj.button36:addEventListener("onClick",
         function (_)
             local mesa = Firecast.getMesaDe(sheet);
             				local dano = sheet.dano6 or "1d1";
@@ -32954,7 +32962,7 @@ local function constructNew_frmFichaRPGmeister()
             				mesa.activeChat:rolarDados(dano, "Dano com " .. armamento .. " de " .. (sheet.nome or "NOME"));
         end, obj);
 
-    obj._e_event88 = obj.button37:addEventListener("onClick",
+    obj._e_event89 = obj.button37:addEventListener("onClick",
         function (_)
             local mesa = Firecast.getMesaDe(sheet);
             				local danoCritico = sheet.danoCritico6 or "1d1";
@@ -32970,7 +32978,7 @@ local function constructNew_frmFichaRPGmeister()
             				mesa.activeChat:rolarDados(danoCritico, "Dano Critico com " .. armamento .. " de " .. (sheet.nome or "NOME"));
         end, obj);
 
-    obj._e_event89 = obj.button38:addEventListener("onClick",
+    obj._e_event90 = obj.button38:addEventListener("onClick",
         function (_)
             Dialogs.confirmYesNo("Deseja realmente apagar esse ataque?",
             					function (confirmado)
@@ -32999,7 +33007,7 @@ local function constructNew_frmFichaRPGmeister()
             					end);
         end, obj);
 
-    obj._e_event90 = obj.button39:addEventListener("onClick",
+    obj._e_event91 = obj.button39:addEventListener("onClick",
         function (_)
             i = 1;
             				max = 1;
@@ -33050,7 +33058,7 @@ local function constructNew_frmFichaRPGmeister()
             				end;
         end, obj);
 
-    obj._e_event91 = obj.button40:addEventListener("onClick",
+    obj._e_event92 = obj.button40:addEventListener("onClick",
         function (_)
             local mesa = Firecast.getMesaDe(sheet);
             				local dano = sheet.dano7 or "1d1";
@@ -33066,7 +33074,7 @@ local function constructNew_frmFichaRPGmeister()
             				mesa.activeChat:rolarDados(dano, "Dano com " .. armamento .. " de " .. (sheet.nome or "NOME"));
         end, obj);
 
-    obj._e_event92 = obj.button41:addEventListener("onClick",
+    obj._e_event93 = obj.button41:addEventListener("onClick",
         function (_)
             local mesa = Firecast.getMesaDe(sheet);
             				local danoCritico = sheet.danoCritico7 or "1d1";
@@ -33082,7 +33090,7 @@ local function constructNew_frmFichaRPGmeister()
             				mesa.activeChat:rolarDados(danoCritico, "Dano Critico com " .. armamento .. " de " .. (sheet.nome or "NOME"));
         end, obj);
 
-    obj._e_event93 = obj.button42:addEventListener("onClick",
+    obj._e_event94 = obj.button42:addEventListener("onClick",
         function (_)
             Dialogs.confirmYesNo("Deseja realmente apagar esse ataque?",
             					function (confirmado)
@@ -33111,7 +33119,7 @@ local function constructNew_frmFichaRPGmeister()
             					end);
         end, obj);
 
-    obj._e_event94 = obj.button43:addEventListener("onClick",
+    obj._e_event95 = obj.button43:addEventListener("onClick",
         function (_)
             i = 1;
             				max = 1;
@@ -33162,7 +33170,7 @@ local function constructNew_frmFichaRPGmeister()
             				end;
         end, obj);
 
-    obj._e_event95 = obj.button44:addEventListener("onClick",
+    obj._e_event96 = obj.button44:addEventListener("onClick",
         function (_)
             local mesa = Firecast.getMesaDe(sheet);
             				local dano = sheet.dano8 or "1d1";
@@ -33178,7 +33186,7 @@ local function constructNew_frmFichaRPGmeister()
             				mesa.activeChat:rolarDados(dano, "Dano com " .. armamento .. " de " .. (sheet.nome or "NOME"));
         end, obj);
 
-    obj._e_event96 = obj.button45:addEventListener("onClick",
+    obj._e_event97 = obj.button45:addEventListener("onClick",
         function (_)
             local mesa = Firecast.getMesaDe(sheet);
             				local danoCritico = sheet.danoCritico8 or "1d1";
@@ -33194,7 +33202,7 @@ local function constructNew_frmFichaRPGmeister()
             				mesa.activeChat:rolarDados(danoCritico, "Dano Critico com " .. armamento .. " de " .. (sheet.nome or "NOME"));
         end, obj);
 
-    obj._e_event97 = obj.button46:addEventListener("onClick",
+    obj._e_event98 = obj.button46:addEventListener("onClick",
         function (_)
             Dialogs.confirmYesNo("Deseja realmente apagar esse ataque?",
             					function (confirmado)
@@ -33223,7 +33231,7 @@ local function constructNew_frmFichaRPGmeister()
             					end);
         end, obj);
 
-    obj._e_event98 = obj.button47:addEventListener("onClick",
+    obj._e_event99 = obj.button47:addEventListener("onClick",
         function (_)
             i = 1;
             				max = 1;
@@ -33274,7 +33282,7 @@ local function constructNew_frmFichaRPGmeister()
             				end;
         end, obj);
 
-    obj._e_event99 = obj.button48:addEventListener("onClick",
+    obj._e_event100 = obj.button48:addEventListener("onClick",
         function (_)
             local mesa = Firecast.getMesaDe(sheet);
             				local dano = sheet.dano9 or "1d1";
@@ -33290,7 +33298,7 @@ local function constructNew_frmFichaRPGmeister()
             				mesa.activeChat:rolarDados(dano, "Dano com " .. armamento .. " de " .. (sheet.nome or "NOME"));
         end, obj);
 
-    obj._e_event100 = obj.button49:addEventListener("onClick",
+    obj._e_event101 = obj.button49:addEventListener("onClick",
         function (_)
             local mesa = Firecast.getMesaDe(sheet);
             				local danoCritico = sheet.danoCritico9 or "1d1";
@@ -33306,7 +33314,7 @@ local function constructNew_frmFichaRPGmeister()
             				mesa.activeChat:rolarDados(danoCritico, "Dano Critico com " .. armamento .. " de " .. (sheet.nome or "NOME"));
         end, obj);
 
-    obj._e_event101 = obj.button50:addEventListener("onClick",
+    obj._e_event102 = obj.button50:addEventListener("onClick",
         function (_)
             Dialogs.confirmYesNo("Deseja realmente apagar esse ataque?",
             					function (confirmado)
@@ -33335,7 +33343,7 @@ local function constructNew_frmFichaRPGmeister()
             					end);
         end, obj);
 
-    obj._e_event102 = obj.button51:addEventListener("onClick",
+    obj._e_event103 = obj.button51:addEventListener("onClick",
         function (_)
             i = 1;
             				max = 1;
@@ -33386,7 +33394,7 @@ local function constructNew_frmFichaRPGmeister()
             				end;
         end, obj);
 
-    obj._e_event103 = obj.button52:addEventListener("onClick",
+    obj._e_event104 = obj.button52:addEventListener("onClick",
         function (_)
             local mesa = Firecast.getMesaDe(sheet);
             				local dano = sheet.dano10 or "1d1";
@@ -33402,7 +33410,7 @@ local function constructNew_frmFichaRPGmeister()
             				mesa.activeChat:rolarDados(dano, "Dano com " .. armamento .. " de " .. (sheet.nome or "NOME"));
         end, obj);
 
-    obj._e_event104 = obj.button53:addEventListener("onClick",
+    obj._e_event105 = obj.button53:addEventListener("onClick",
         function (_)
             local mesa = Firecast.getMesaDe(sheet);
             				local danoCritico = sheet.danoCritico10 or "1d1";
@@ -33418,7 +33426,7 @@ local function constructNew_frmFichaRPGmeister()
             				mesa.activeChat:rolarDados(danoCritico, "Dano Critico com " .. armamento .. " de " .. (sheet.nome or "NOME"));
         end, obj);
 
-    obj._e_event105 = obj.button54:addEventListener("onClick",
+    obj._e_event106 = obj.button54:addEventListener("onClick",
         function (_)
             Dialogs.confirmYesNo("Deseja realmente apagar esse ataque?",
             					function (confirmado)
@@ -33447,7 +33455,7 @@ local function constructNew_frmFichaRPGmeister()
             					end);
         end, obj);
 
-    obj._e_event106 = obj.button55:addEventListener("onClick",
+    obj._e_event107 = obj.button55:addEventListener("onClick",
         function (_)
             i = 1;
             				max = 1;
@@ -33498,7 +33506,7 @@ local function constructNew_frmFichaRPGmeister()
             				end;
         end, obj);
 
-    obj._e_event107 = obj.button56:addEventListener("onClick",
+    obj._e_event108 = obj.button56:addEventListener("onClick",
         function (_)
             local mesa = Firecast.getMesaDe(sheet);
             				local dano = sheet.dano11 or "1d1";
@@ -33514,7 +33522,7 @@ local function constructNew_frmFichaRPGmeister()
             				mesa.activeChat:rolarDados(dano, "Dano com " .. armamento .. " de " .. (sheet.nome or "NOME"));
         end, obj);
 
-    obj._e_event108 = obj.button57:addEventListener("onClick",
+    obj._e_event109 = obj.button57:addEventListener("onClick",
         function (_)
             local mesa = Firecast.getMesaDe(sheet);
             				local danoCritico = sheet.danoCritico11 or "1d1";
@@ -33530,7 +33538,7 @@ local function constructNew_frmFichaRPGmeister()
             				mesa.activeChat:rolarDados(danoCritico, "Dano Critico com " .. armamento .. " de " .. (sheet.nome or "NOME"));
         end, obj);
 
-    obj._e_event109 = obj.button58:addEventListener("onClick",
+    obj._e_event110 = obj.button58:addEventListener("onClick",
         function (_)
             Dialogs.confirmYesNo("Deseja realmente apagar esse ataque?",
             					function (confirmado)
@@ -33559,7 +33567,7 @@ local function constructNew_frmFichaRPGmeister()
             					end);
         end, obj);
 
-    obj._e_event110 = obj.button59:addEventListener("onClick",
+    obj._e_event111 = obj.button59:addEventListener("onClick",
         function (_)
             i = 1;
             				max = 1;
@@ -33610,7 +33618,7 @@ local function constructNew_frmFichaRPGmeister()
             				end;
         end, obj);
 
-    obj._e_event111 = obj.button60:addEventListener("onClick",
+    obj._e_event112 = obj.button60:addEventListener("onClick",
         function (_)
             local mesa = Firecast.getMesaDe(sheet);
             				local dano = sheet.dano12 or "1d1";
@@ -33626,7 +33634,7 @@ local function constructNew_frmFichaRPGmeister()
             				mesa.activeChat:rolarDados(dano, "Dano com " .. armamento .. " de " .. (sheet.nome or "NOME"));
         end, obj);
 
-    obj._e_event112 = obj.button61:addEventListener("onClick",
+    obj._e_event113 = obj.button61:addEventListener("onClick",
         function (_)
             local mesa = Firecast.getMesaDe(sheet);
             				local danoCritico = sheet.danoCritico12 or "1d1";
@@ -33642,7 +33650,7 @@ local function constructNew_frmFichaRPGmeister()
             				mesa.activeChat:rolarDados(danoCritico, "Dano Critico com " .. armamento .. " de " .. (sheet.nome or "NOME"));
         end, obj);
 
-    obj._e_event113 = obj.button62:addEventListener("onClick",
+    obj._e_event114 = obj.button62:addEventListener("onClick",
         function (_)
             Dialogs.confirmYesNo("Deseja realmente apagar esse ataque?",
             					function (confirmado)
@@ -33671,7 +33679,7 @@ local function constructNew_frmFichaRPGmeister()
             					end);
         end, obj);
 
-    obj._e_event114 = obj.button63:addEventListener("onClick",
+    obj._e_event115 = obj.button63:addEventListener("onClick",
         function (_)
             i = 1;
             				max = 1;
@@ -33722,7 +33730,7 @@ local function constructNew_frmFichaRPGmeister()
             				end;
         end, obj);
 
-    obj._e_event115 = obj.button64:addEventListener("onClick",
+    obj._e_event116 = obj.button64:addEventListener("onClick",
         function (_)
             local mesa = Firecast.getMesaDe(sheet);
             				local dano = sheet.dano13 or "1d1";
@@ -33738,7 +33746,7 @@ local function constructNew_frmFichaRPGmeister()
             				mesa.activeChat:rolarDados(dano, "Dano com " .. armamento .. " de " .. (sheet.nome or "NOME"));
         end, obj);
 
-    obj._e_event116 = obj.button65:addEventListener("onClick",
+    obj._e_event117 = obj.button65:addEventListener("onClick",
         function (_)
             local mesa = Firecast.getMesaDe(sheet);
             				local danoCritico = sheet.danoCritico13 or "1d1";
@@ -33754,7 +33762,7 @@ local function constructNew_frmFichaRPGmeister()
             				mesa.activeChat:rolarDados(danoCritico, "Dano Critico com " .. armamento .. " de " .. (sheet.nome or "NOME"));
         end, obj);
 
-    obj._e_event117 = obj.button66:addEventListener("onClick",
+    obj._e_event118 = obj.button66:addEventListener("onClick",
         function (_)
             Dialogs.confirmYesNo("Deseja realmente apagar esse ataque?",
             					function (confirmado)
@@ -33783,7 +33791,7 @@ local function constructNew_frmFichaRPGmeister()
             					end);
         end, obj);
 
-    obj._e_event118 = obj.button67:addEventListener("onClick",
+    obj._e_event119 = obj.button67:addEventListener("onClick",
         function (_)
             i = 1;
             				max = 1;
@@ -33834,7 +33842,7 @@ local function constructNew_frmFichaRPGmeister()
             				end;
         end, obj);
 
-    obj._e_event119 = obj.button68:addEventListener("onClick",
+    obj._e_event120 = obj.button68:addEventListener("onClick",
         function (_)
             local mesa = Firecast.getMesaDe(sheet);
             				local dano = sheet.dano14 or "1d1";
@@ -33850,7 +33858,7 @@ local function constructNew_frmFichaRPGmeister()
             				mesa.activeChat:rolarDados(dano, "Dano com " .. armamento .. " de " .. (sheet.nome or "NOME"));
         end, obj);
 
-    obj._e_event120 = obj.button69:addEventListener("onClick",
+    obj._e_event121 = obj.button69:addEventListener("onClick",
         function (_)
             local mesa = Firecast.getMesaDe(sheet);
             				local danoCritico = sheet.danoCritico14 or "1d1";
@@ -33866,7 +33874,7 @@ local function constructNew_frmFichaRPGmeister()
             				mesa.activeChat:rolarDados(danoCritico, "Dano Critico com " .. armamento .. " de " .. (sheet.nome or "NOME"));
         end, obj);
 
-    obj._e_event121 = obj.button70:addEventListener("onClick",
+    obj._e_event122 = obj.button70:addEventListener("onClick",
         function (_)
             Dialogs.confirmYesNo("Deseja realmente apagar esse ataque?",
             					function (confirmado)
@@ -33895,7 +33903,7 @@ local function constructNew_frmFichaRPGmeister()
             					end);
         end, obj);
 
-    obj._e_event122 = obj.button71:addEventListener("onClick",
+    obj._e_event123 = obj.button71:addEventListener("onClick",
         function (_)
             i = 1;
             				max = 1;
@@ -33946,7 +33954,7 @@ local function constructNew_frmFichaRPGmeister()
             				end;
         end, obj);
 
-    obj._e_event123 = obj.button72:addEventListener("onClick",
+    obj._e_event124 = obj.button72:addEventListener("onClick",
         function (_)
             local mesa = Firecast.getMesaDe(sheet);
             				local dano = sheet.dano15 or "1d1";
@@ -33962,7 +33970,7 @@ local function constructNew_frmFichaRPGmeister()
             				mesa.activeChat:rolarDados(dano, "Dano com " .. armamento .. " de " .. (sheet.nome or "NOME"));
         end, obj);
 
-    obj._e_event124 = obj.button73:addEventListener("onClick",
+    obj._e_event125 = obj.button73:addEventListener("onClick",
         function (_)
             local mesa = Firecast.getMesaDe(sheet);
             				local danoCritico = sheet.danoCritico15 or "1d1";
@@ -33978,7 +33986,7 @@ local function constructNew_frmFichaRPGmeister()
             				mesa.activeChat:rolarDados(danoCritico, "Dano Critico com " .. armamento .. " de " .. (sheet.nome or "NOME"));
         end, obj);
 
-    obj._e_event125 = obj.button74:addEventListener("onClick",
+    obj._e_event126 = obj.button74:addEventListener("onClick",
         function (_)
             Dialogs.confirmYesNo("Deseja realmente apagar esse ataque?",
             					function (confirmado)
@@ -34007,7 +34015,7 @@ local function constructNew_frmFichaRPGmeister()
             					end);
         end, obj);
 
-    obj._e_event126 = obj.button75:addEventListener("onClick",
+    obj._e_event127 = obj.button75:addEventListener("onClick",
         function (_)
             i = 1;
             				max = 1;
@@ -34058,7 +34066,7 @@ local function constructNew_frmFichaRPGmeister()
             				end;
         end, obj);
 
-    obj._e_event127 = obj.button76:addEventListener("onClick",
+    obj._e_event128 = obj.button76:addEventListener("onClick",
         function (_)
             local mesa = Firecast.getMesaDe(sheet);
             				local dano = sheet.dano16 or "1d1";
@@ -34074,7 +34082,7 @@ local function constructNew_frmFichaRPGmeister()
             				mesa.activeChat:rolarDados(dano, "Dano com " .. armamento .. " de " .. (sheet.nome or "NOME"));
         end, obj);
 
-    obj._e_event128 = obj.button77:addEventListener("onClick",
+    obj._e_event129 = obj.button77:addEventListener("onClick",
         function (_)
             local mesa = Firecast.getMesaDe(sheet);
             				local danoCritico = sheet.danoCritico16 or "1d1";
@@ -34090,7 +34098,7 @@ local function constructNew_frmFichaRPGmeister()
             				mesa.activeChat:rolarDados(danoCritico, "Dano Critico com " .. armamento .. " de " .. (sheet.nome or "NOME"));
         end, obj);
 
-    obj._e_event129 = obj.button78:addEventListener("onClick",
+    obj._e_event130 = obj.button78:addEventListener("onClick",
         function (_)
             Dialogs.confirmYesNo("Deseja realmente apagar esse ataque?",
             					function (confirmado)
@@ -34119,7 +34127,7 @@ local function constructNew_frmFichaRPGmeister()
             					end);
         end, obj);
 
-    obj._e_event130 = obj.button79:addEventListener("onClick",
+    obj._e_event131 = obj.button79:addEventListener("onClick",
         function (_)
             i = 1;
             				max = 1;
@@ -34170,7 +34178,7 @@ local function constructNew_frmFichaRPGmeister()
             				end;
         end, obj);
 
-    obj._e_event131 = obj.button80:addEventListener("onClick",
+    obj._e_event132 = obj.button80:addEventListener("onClick",
         function (_)
             local mesa = Firecast.getMesaDe(sheet);
             				local dano = sheet.dano17 or "1d1";
@@ -34186,7 +34194,7 @@ local function constructNew_frmFichaRPGmeister()
             				mesa.activeChat:rolarDados(dano, "Dano com " .. armamento .. " de " .. (sheet.nome or "NOME"));
         end, obj);
 
-    obj._e_event132 = obj.button81:addEventListener("onClick",
+    obj._e_event133 = obj.button81:addEventListener("onClick",
         function (_)
             local mesa = Firecast.getMesaDe(sheet);
             				local danoCritico = sheet.danoCritico17 or "1d1";
@@ -34202,7 +34210,7 @@ local function constructNew_frmFichaRPGmeister()
             				mesa.activeChat:rolarDados(danoCritico, "Dano Critico com " .. armamento .. " de " .. (sheet.nome or "NOME"));
         end, obj);
 
-    obj._e_event133 = obj.button82:addEventListener("onClick",
+    obj._e_event134 = obj.button82:addEventListener("onClick",
         function (_)
             Dialogs.confirmYesNo("Deseja realmente apagar esse ataque?",
             					function (confirmado)
@@ -34231,7 +34239,7 @@ local function constructNew_frmFichaRPGmeister()
             					end);
         end, obj);
 
-    obj._e_event134 = obj.button83:addEventListener("onClick",
+    obj._e_event135 = obj.button83:addEventListener("onClick",
         function (_)
             i = 1;
             				max = 1;
@@ -34282,7 +34290,7 @@ local function constructNew_frmFichaRPGmeister()
             				end;
         end, obj);
 
-    obj._e_event135 = obj.button84:addEventListener("onClick",
+    obj._e_event136 = obj.button84:addEventListener("onClick",
         function (_)
             local mesa = Firecast.getMesaDe(sheet);
             				local dano = sheet.dano18 or "1d1";
@@ -34298,7 +34306,7 @@ local function constructNew_frmFichaRPGmeister()
             				mesa.activeChat:rolarDados(dano, "Dano com " .. armamento .. " de " .. (sheet.nome or "NOME"));
         end, obj);
 
-    obj._e_event136 = obj.button85:addEventListener("onClick",
+    obj._e_event137 = obj.button85:addEventListener("onClick",
         function (_)
             local mesa = Firecast.getMesaDe(sheet);
             				local danoCritico = sheet.danoCritico18 or "1d1";
@@ -34314,7 +34322,7 @@ local function constructNew_frmFichaRPGmeister()
             				mesa.activeChat:rolarDados(danoCritico, "Dano Critico com " .. armamento .. " de " .. (sheet.nome or "NOME"));
         end, obj);
 
-    obj._e_event137 = obj.button86:addEventListener("onClick",
+    obj._e_event138 = obj.button86:addEventListener("onClick",
         function (_)
             Dialogs.confirmYesNo("Deseja realmente apagar esse ataque?",
             					function (confirmado)
@@ -34343,7 +34351,7 @@ local function constructNew_frmFichaRPGmeister()
             					end);
         end, obj);
 
-    obj._e_event138 = obj.button87:addEventListener("onClick",
+    obj._e_event139 = obj.button87:addEventListener("onClick",
         function (_)
             i = 1;
             				max = 1;
@@ -34394,7 +34402,7 @@ local function constructNew_frmFichaRPGmeister()
             				end;
         end, obj);
 
-    obj._e_event139 = obj.button88:addEventListener("onClick",
+    obj._e_event140 = obj.button88:addEventListener("onClick",
         function (_)
             local mesa = Firecast.getMesaDe(sheet);
             				local dano = sheet.dano19 or "1d1";
@@ -34410,7 +34418,7 @@ local function constructNew_frmFichaRPGmeister()
             				mesa.activeChat:rolarDados(dano, "Dano com " .. armamento .. " de " .. (sheet.nome or "NOME"));
         end, obj);
 
-    obj._e_event140 = obj.button89:addEventListener("onClick",
+    obj._e_event141 = obj.button89:addEventListener("onClick",
         function (_)
             local mesa = Firecast.getMesaDe(sheet);
             				local danoCritico = sheet.danoCritico19 or "1d1";
@@ -34426,7 +34434,7 @@ local function constructNew_frmFichaRPGmeister()
             				mesa.activeChat:rolarDados(danoCritico, "Dano Critico com " .. armamento .. " de " .. (sheet.nome or "NOME"));
         end, obj);
 
-    obj._e_event141 = obj.button90:addEventListener("onClick",
+    obj._e_event142 = obj.button90:addEventListener("onClick",
         function (_)
             Dialogs.confirmYesNo("Deseja realmente apagar esse ataque?",
             					function (confirmado)
@@ -34455,7 +34463,7 @@ local function constructNew_frmFichaRPGmeister()
             					end);
         end, obj);
 
-    obj._e_event142 = obj.button91:addEventListener("onClick",
+    obj._e_event143 = obj.button91:addEventListener("onClick",
         function (_)
             i = 1;
             				max = 1;
@@ -34506,7 +34514,7 @@ local function constructNew_frmFichaRPGmeister()
             				end;
         end, obj);
 
-    obj._e_event143 = obj.button92:addEventListener("onClick",
+    obj._e_event144 = obj.button92:addEventListener("onClick",
         function (_)
             local mesa = Firecast.getMesaDe(sheet);
             				local dano = sheet.dano20 or "1d1";
@@ -34522,7 +34530,7 @@ local function constructNew_frmFichaRPGmeister()
             				mesa.activeChat:rolarDados(dano, "Dano com " .. armamento .. " de " .. (sheet.nome or "NOME"));
         end, obj);
 
-    obj._e_event144 = obj.button93:addEventListener("onClick",
+    obj._e_event145 = obj.button93:addEventListener("onClick",
         function (_)
             local mesa = Firecast.getMesaDe(sheet);
             				local danoCritico = sheet.danoCritico20 or "1d1";
@@ -34538,7 +34546,7 @@ local function constructNew_frmFichaRPGmeister()
             				mesa.activeChat:rolarDados(danoCritico, "Dano Critico com " .. armamento .. " de " .. (sheet.nome or "NOME"));
         end, obj);
 
-    obj._e_event145 = obj.button94:addEventListener("onClick",
+    obj._e_event146 = obj.button94:addEventListener("onClick",
         function (_)
             Dialogs.confirmYesNo("Deseja realmente apagar esse ataque?",
             					function (confirmado)
@@ -34567,19 +34575,19 @@ local function constructNew_frmFichaRPGmeister()
             					end);
         end, obj);
 
-    obj._e_event146 = obj.button95:addEventListener("onClick",
+    obj._e_event147 = obj.button95:addEventListener("onClick",
         function (_)
             self.rclListaDosAtaques:append();
         end, obj);
 
-    obj._e_event147 = obj.rclListaDosAtaques:addEventListener("onSelect",
+    obj._e_event148 = obj.rclListaDosAtaques:addEventListener("onSelect",
         function (_)
             local node = self.rclListaDosAtaques.selectedNode;
             						self.boxDetalhesDoAtaque.node = node;
             						self.boxDetalhesDoAtaque.visible = (node ~= nil);
         end, obj);
 
-    obj._e_event148 = obj.rclListaDosAtaques:addEventListener("onEndEnumeration",
+    obj._e_event149 = obj.rclListaDosAtaques:addEventListener("onEndEnumeration",
         function (_)
             if self.rclListaDosAtaques.selectedNode == nil and sheet ~= nil then
             							local nodes = NDB.getChildNodes(sheet.campoDosAtaques);               
@@ -34589,12 +34597,12 @@ local function constructNew_frmFichaRPGmeister()
             						end;
         end, obj);
 
-    obj._e_event149 = obj.button96:addEventListener("onClick",
+    obj._e_event150 = obj.button96:addEventListener("onClick",
         function (_)
             self.rclListaDeArmas:append();
         end, obj);
 
-    obj._e_event150 = obj.button97:addEventListener("onClick",
+    obj._e_event151 = obj.button97:addEventListener("onClick",
         function (_)
             if sheet==nil then
             								return;
@@ -34644,12 +34652,12 @@ local function constructNew_frmFichaRPGmeister()
             							end);
         end, obj);
 
-    obj._e_event151 = obj.button98:addEventListener("onClick",
+    obj._e_event152 = obj.button98:addEventListener("onClick",
         function (_)
             rolando =false;
         end, obj);
 
-    obj._e_event152 = obj.dataLink44:addEventListener("onChange",
+    obj._e_event153 = obj.dataLink44:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet==nil then return end;
             			local buffPericia = tonumber(sheet.buffPericia) or 0;
@@ -34660,62 +34668,65 @@ local function constructNew_frmFichaRPGmeister()
             			end
         end, obj);
 
-    obj._e_event153 = obj.rclListaDasPericias:addEventListener("onCompare",
+    obj._e_event154 = obj.rclListaDasPericias:addEventListener("onCompare",
         function (_, nodeA, nodeB)
             return Utils.compareStringPtBr(nodeA.nomePericia, nodeB.nomePericia);
         end, obj);
 
-    obj._e_event154 = obj.rclListaDasPericias:addEventListener("onEndEnumeration",
+    obj._e_event155 = obj.rclListaDasPericias:addEventListener("onEndEnumeration",
         function (_)
             if sheet==nil then return end;
             					
-            					if sheet.campoDasPericias ~= nil then return end;
-            					
-            					sheet.campoDasPericias = {}
+            					if sheet.campoDasPericias == nil then
+            						sheet.campoDasPericias = {}
+            					end
+            
+            					local nodes = NDB.getChildNodes(sheet.campoDasPericias); 
+            					if #nodes > 0 then return end;
+            
             					local path = NDB.load("pathskills.xml");
             					NDB.copy(sheet.campoDasPericias, path); 
             
             					self.rclListaDasPericias:sort();
         end, obj);
 
-    obj._e_event155 = obj.rclListaDasPericias:addEventListener("onBeginEnumeration",
+    obj._e_event156 = obj.rclListaDasPericias:addEventListener("onBeginEnumeration",
         function (_)
             if sheet==nil then return end;
-            
-            					if sheet.campoDasPericias ~= nil then return end;
             					
-            					sheet.campoDasPericias = {}
+            					if sheet.campoDasPericias == nil then
+            						sheet.campoDasPericias = {}
+            					end
+            
+            					local nodes = NDB.getChildNodes(sheet.campoDasPericias); 
+            					if #nodes > 0 then return end;
+            
             					local path = NDB.load("pathskills.xml");
             					NDB.copy(sheet.campoDasPericias, path); 
             
             					self.rclListaDasPericias:sort();
         end, obj);
 
-    obj._e_event156 = obj.rclListaDosIdiomas:addEventListener("onCompare",
+    obj._e_event157 = obj.rclListaDosIdiomas:addEventListener("onCompare",
         function (_, nodeA, nodeB)
             return Utils.compareStringPtBr(nodeA.nomeIdioma, nodeB.nomeIdioma);
         end, obj);
 
-    obj._e_event157 = obj.button99:addEventListener("onClick",
+    obj._e_event158 = obj.button99:addEventListener("onClick",
         function (_)
             self.rclListaDasPericias:append();
         end, obj);
 
-    obj._e_event158 = obj.button100:addEventListener("onClick",
+    obj._e_event159 = obj.button100:addEventListener("onClick",
         function (_)
             local idioma = self.rclListaDosIdiomas:append();
             					idioma.conversarIdioma = true;
             					idioma.escritaIdioma = true;
         end, obj);
 
-    obj._e_event159 = obj.button101:addEventListener("onClick",
+    obj._e_event160 = obj.button101:addEventListener("onClick",
         function (_)
             pathSkills();
-        end, obj);
-
-    obj._e_event160 = obj.button102:addEventListener("onClick",
-        function (_)
-            exportSkills();
         end, obj);
 
     obj._e_event161 = obj.dataLink45:addEventListener("onChange",
@@ -34738,7 +34749,7 @@ local function constructNew_frmFichaRPGmeister()
             						end;
         end, obj);
 
-    obj._e_event162 = obj.button103:addEventListener("onClick",
+    obj._e_event162 = obj.button102:addEventListener("onClick",
         function (_)
             self.campoDosTalentos:append();
         end, obj);
@@ -34753,7 +34764,7 @@ local function constructNew_frmFichaRPGmeister()
             return ((tonumber(nodeA.nivelHabilidade) or 0) - (tonumber(nodeB.nivelHabilidade) or 0));
         end, obj);
 
-    obj._e_event165 = obj.button104:addEventListener("onClick",
+    obj._e_event165 = obj.button103:addEventListener("onClick",
         function (_)
             self.campoDasProezas:append();
         end, obj);
@@ -34768,7 +34779,7 @@ local function constructNew_frmFichaRPGmeister()
             return ((tonumber(nodeA.nivelHabilidade) or 0) - (tonumber(nodeB.nivelHabilidade) or 0));
         end, obj);
 
-    obj._e_event168 = obj.button105:addEventListener("onClick",
+    obj._e_event168 = obj.button104:addEventListener("onClick",
         function (_)
             self.campoDosOutros:append();
         end, obj);
@@ -34783,7 +34794,7 @@ local function constructNew_frmFichaRPGmeister()
             return ((tonumber(nodeA.nivelHabilidade) or 0) - (tonumber(nodeB.nivelHabilidade) or 0));
         end, obj);
 
-    obj._e_event171 = obj.button106:addEventListener("onClick",
+    obj._e_event171 = obj.button105:addEventListener("onClick",
         function (_)
             self.campoDosTracos:append();
         end, obj);
@@ -34798,7 +34809,7 @@ local function constructNew_frmFichaRPGmeister()
             return ((tonumber(nodeA.nivelHabilidade) or 0) - (tonumber(nodeB.nivelHabilidade) or 0));
         end, obj);
 
-    obj._e_event174 = obj.button107:addEventListener("onClick",
+    obj._e_event174 = obj.button106:addEventListener("onClick",
         function (_)
             self.campoDasRacas:append();
         end, obj);
@@ -34813,7 +34824,7 @@ local function constructNew_frmFichaRPGmeister()
             return ((tonumber(nodeA.nivelHabilidade) or 0) - (tonumber(nodeB.nivelHabilidade) or 0));
         end, obj);
 
-    obj._e_event177 = obj.button108:addEventListener("onClick",
+    obj._e_event177 = obj.button107:addEventListener("onClick",
         function (_)
             self.campoDasCaracteristicasClasse:append();
         end, obj);
@@ -34828,7 +34839,7 @@ local function constructNew_frmFichaRPGmeister()
             return ((tonumber(nodeA.nivelHabilidade) or 0) - (tonumber(nodeB.nivelHabilidade) or 0));
         end, obj);
 
-    obj._e_event180 = obj.button109:addEventListener("onClick",
+    obj._e_event180 = obj.button108:addEventListener("onClick",
         function (_)
             self.campoDasHabilidadesMiticas:append();
         end, obj);
@@ -34843,7 +34854,7 @@ local function constructNew_frmFichaRPGmeister()
             return ((tonumber(nodeA.nivelHabilidade) or 0) - (tonumber(nodeB.nivelHabilidade) or 0));
         end, obj);
 
-    obj._e_event183 = obj.button110:addEventListener("onClick",
+    obj._e_event183 = obj.button109:addEventListener("onClick",
         function (_)
             self.campoDosCaminhosMiticos:append();
         end, obj);
@@ -34858,7 +34869,7 @@ local function constructNew_frmFichaRPGmeister()
             return ((tonumber(nodeA.nivelHabilidade) or 0) - (tonumber(nodeB.nivelHabilidade) or 0));
         end, obj);
 
-    obj._e_event186 = obj.button111:addEventListener("onClick",
+    obj._e_event186 = obj.button110:addEventListener("onClick",
         function (_)
             self.campoDosTalentosMiticos:append();
         end, obj);
@@ -34873,7 +34884,7 @@ local function constructNew_frmFichaRPGmeister()
             return ((tonumber(nodeA.nivelHabilidade) or 0) - (tonumber(nodeB.nivelHabilidade) or 0));
         end, obj);
 
-    obj._e_event189 = obj.button112:addEventListener("onClick",
+    obj._e_event189 = obj.button111:addEventListener("onClick",
         function (_)
             local txt = "\n";
             				local node = self.popMagia.node;
@@ -34895,12 +34906,12 @@ local function constructNew_frmFichaRPGmeister()
             				end;
         end, obj);
 
-    obj._e_event190 = obj.button113:addEventListener("onClick",
+    obj._e_event190 = obj.button112:addEventListener("onClick",
         function (_)
             self.rclFactors:append();
         end, obj);
 
-    obj._e_event191 = obj.button114:addEventListener("onClick",
+    obj._e_event191 = obj.button113:addEventListener("onClick",
         function (_)
             local txt = "\n";
             						local node = self.popMagiaEpica.node;
@@ -34975,7 +34986,7 @@ local function constructNew_frmFichaRPGmeister()
             			    return Utils.compareStringPtBr(nodeA.fator, nodeB.fator);
         end, obj);
 
-    obj._e_event193 = obj.button115:addEventListener("onClick",
+    obj._e_event193 = obj.button114:addEventListener("onClick",
         function (_)
             self.rclListaDasClassesMagicas:append();
         end, obj);
@@ -35006,7 +35017,7 @@ local function constructNew_frmFichaRPGmeister()
             				node.updatedATR = not node.updatedATR;
         end, obj);
 
-    obj._e_event197 = obj.button116:addEventListener("onClick",
+    obj._e_event197 = obj.button115:addEventListener("onClick",
         function (_)
             local rolagem = Firecast.interpretarRolagem("1d20 +" .. (self.boxDetalhesDaMagia.node.NC or "0"));
             									local mesa = Firecast.getMesaDe(sheet);
@@ -35869,7 +35880,7 @@ local function constructNew_frmFichaRPGmeister()
             				updateMagicCD(9);
         end, obj);
 
-    obj._e_event231 = obj.button117:addEventListener("onClick",
+    obj._e_event231 = obj.button116:addEventListener("onClick",
         function (_)
             sheet.ieNode = {self.boxDetalhesDaMagia.node.campoDasMagias0,self.boxDetalhesDaMagia.node.campoDasMagias1,self.boxDetalhesDaMagia.node.campoDasMagias2,self.boxDetalhesDaMagia.node.campoDasMagias3,self.boxDetalhesDaMagia.node.campoDasMagias4,self.boxDetalhesDaMagia.node.campoDasMagias5,self.boxDetalhesDaMagia.node.campoDasMagias6,self.boxDetalhesDaMagia.node.campoDasMagias7,self.boxDetalhesDaMagia.node.campoDasMagias8,self.boxDetalhesDaMagia.node.campoDasMagias9}
             
@@ -35888,7 +35899,7 @@ local function constructNew_frmFichaRPGmeister()
             					end);
         end, obj);
 
-    obj._e_event232 = obj.button118:addEventListener("onClick",
+    obj._e_event232 = obj.button117:addEventListener("onClick",
         function (_)
             Dialogs.openFile("Importar Ficha", "application/xml", false, 
             					function(arquivos)
@@ -35915,13 +35926,13 @@ local function constructNew_frmFichaRPGmeister()
             					end);
         end, obj);
 
-    obj._e_event233 = obj.button119:addEventListener("onClick",
+    obj._e_event233 = obj.button118:addEventListener("onClick",
         function (_)
             local listA = self.rclSigns:append();
             				local listB = self.rclSignDescList:append();
         end, obj);
 
-    obj._e_event234 = obj.button120:addEventListener("onClick",
+    obj._e_event234 = obj.button119:addEventListener("onClick",
         function (_)
             sheet.ieNode = {self.boxDetalhesDaMagia.node.campoDosSignos,self.boxDetalhesDaMagia.node.listaDeSignos}
             
@@ -35940,7 +35951,7 @@ local function constructNew_frmFichaRPGmeister()
             					end);
         end, obj);
 
-    obj._e_event235 = obj.button121:addEventListener("onClick",
+    obj._e_event235 = obj.button120:addEventListener("onClick",
         function (_)
             Dialogs.openFile("Importar Ficha", "application/xml", false, 
             					function(arquivos)
@@ -35959,7 +35970,7 @@ local function constructNew_frmFichaRPGmeister()
             					end);
         end, obj);
 
-    obj._e_event236 = obj.button122:addEventListener("onClick",
+    obj._e_event236 = obj.button121:addEventListener("onClick",
         function (_)
             local listA = self.rclMagiasOld:append();
         end, obj);
@@ -36774,7 +36785,7 @@ local function constructNew_frmFichaRPGmeister()
             				updateMagicCD(9);
         end, obj);
 
-    obj._e_event267 = obj.button123:addEventListener("onClick",
+    obj._e_event267 = obj.button122:addEventListener("onClick",
         function (_)
             sheet.ieNode = {self.boxDetalhesDaMagia.node.campoDasMagiasOld}
             
@@ -36793,7 +36804,7 @@ local function constructNew_frmFichaRPGmeister()
             					end);
         end, obj);
 
-    obj._e_event268 = obj.button124:addEventListener("onClick",
+    obj._e_event268 = obj.button123:addEventListener("onClick",
         function (_)
             Dialogs.openFile("Importar Ficha", "application/xml", false, 
             					function(arquivos)
@@ -36811,12 +36822,12 @@ local function constructNew_frmFichaRPGmeister()
             					end);
         end, obj);
 
-    obj._e_event269 = obj.button125:addEventListener("onClick",
+    obj._e_event269 = obj.button124:addEventListener("onClick",
         function (_)
             self.rclEpicMagicList:append();
         end, obj);
 
-    obj._e_event270 = obj.button126:addEventListener("onClick",
+    obj._e_event270 = obj.button125:addEventListener("onClick",
         function (_)
             sheet.ieNode = {self.boxDetalhesDaMagia.node.rclEpicMagicList}
             
@@ -36835,7 +36846,7 @@ local function constructNew_frmFichaRPGmeister()
             					end);
         end, obj);
 
-    obj._e_event271 = obj.button127:addEventListener("onClick",
+    obj._e_event271 = obj.button126:addEventListener("onClick",
         function (_)
             Dialogs.openFile("Importar Ficha", "application/xml", false, 
             					function(arquivos)
@@ -37663,7 +37674,7 @@ local function constructNew_frmFichaRPGmeister()
             				updateMagicCD(19);
         end, obj);
 
-    obj._e_event302 = obj.button128:addEventListener("onClick",
+    obj._e_event302 = obj.button127:addEventListener("onClick",
         function (_)
             sheet.ieNode = {self.boxDetalhesDaMagia.node.campoDasMagias10,self.boxDetalhesDaMagia.node.campoDasMagias11,self.boxDetalhesDaMagia.node.campoDasMagias12,self.boxDetalhesDaMagia.node.campoDasMagias13,self.boxDetalhesDaMagia.node.campoDasMagias14,self.boxDetalhesDaMagia.node.campoDasMagias15,self.boxDetalhesDaMagia.node.campoDasMagias16,self.boxDetalhesDaMagia.node.campoDasMagias17,self.boxDetalhesDaMagia.node.campoDasMagias18,self.boxDetalhesDaMagia.node.campoDasMagias19}
             
@@ -37682,7 +37693,7 @@ local function constructNew_frmFichaRPGmeister()
             					end);
         end, obj);
 
-    obj._e_event303 = obj.button129:addEventListener("onClick",
+    obj._e_event303 = obj.button128:addEventListener("onClick",
         function (_)
             Dialogs.openFile("Importar Ficha", "application/xml", false, 
             					function(arquivos)
@@ -37709,7 +37720,7 @@ local function constructNew_frmFichaRPGmeister()
             					end);
         end, obj);
 
-    obj._e_event304 = obj.button130:addEventListener("onClick",
+    obj._e_event304 = obj.button129:addEventListener("onClick",
         function (_)
             local concentracao = (tonumber(self.boxDetalhesDaMagia.node.concentracao) or 0);
             
@@ -37756,11 +37767,11 @@ local function constructNew_frmFichaRPGmeister()
                     --mesa.activeChat:escrever((txt or "null") .. " - " .. (txt1 or "null") .. " - " .. (txt2 or "null") .. " - " .. (txt3 or "null"));
         end, obj);
 
-    obj._e_event307 = obj.button131:addEventListener("onClick",
+    obj._e_event307 = obj.button130:addEventListener("onClick",
         function (_)
         end, obj);
 
-    obj._e_event308 = obj.button131:addEventListener("onClick",
+    obj._e_event308 = obj.button130:addEventListener("onClick",
         function (_)
             local item = self.rclmagicList0:append();
             						if item then item.id = 0 end;
@@ -37796,11 +37807,11 @@ local function constructNew_frmFichaRPGmeister()
             				    end;
         end, obj);
 
-    obj._e_event312 = obj.button132:addEventListener("onClick",
+    obj._e_event312 = obj.button131:addEventListener("onClick",
         function (_)
         end, obj);
 
-    obj._e_event313 = obj.button132:addEventListener("onClick",
+    obj._e_event313 = obj.button131:addEventListener("onClick",
         function (_)
             local item = self.rclmagicList1:append();
             						if item then item.id = 1 end;
@@ -37836,11 +37847,11 @@ local function constructNew_frmFichaRPGmeister()
             				    end;
         end, obj);
 
-    obj._e_event317 = obj.button133:addEventListener("onClick",
+    obj._e_event317 = obj.button132:addEventListener("onClick",
         function (_)
         end, obj);
 
-    obj._e_event318 = obj.button133:addEventListener("onClick",
+    obj._e_event318 = obj.button132:addEventListener("onClick",
         function (_)
             local item = self.rclmagicList2:append();
             						if item then item.id = 2 end;
@@ -37876,11 +37887,11 @@ local function constructNew_frmFichaRPGmeister()
             				    end;
         end, obj);
 
-    obj._e_event322 = obj.button134:addEventListener("onClick",
+    obj._e_event322 = obj.button133:addEventListener("onClick",
         function (_)
         end, obj);
 
-    obj._e_event323 = obj.button134:addEventListener("onClick",
+    obj._e_event323 = obj.button133:addEventListener("onClick",
         function (_)
             local item = self.rclmagicList3:append();
             						if item then item.id = 3 end;
@@ -37916,11 +37927,11 @@ local function constructNew_frmFichaRPGmeister()
             				    end;
         end, obj);
 
-    obj._e_event327 = obj.button135:addEventListener("onClick",
+    obj._e_event327 = obj.button134:addEventListener("onClick",
         function (_)
         end, obj);
 
-    obj._e_event328 = obj.button135:addEventListener("onClick",
+    obj._e_event328 = obj.button134:addEventListener("onClick",
         function (_)
             local item = self.rclmagicList4:append();
             						if item then item.id = 4 end;
@@ -37956,11 +37967,11 @@ local function constructNew_frmFichaRPGmeister()
             				    end;
         end, obj);
 
-    obj._e_event332 = obj.button136:addEventListener("onClick",
+    obj._e_event332 = obj.button135:addEventListener("onClick",
         function (_)
         end, obj);
 
-    obj._e_event333 = obj.button136:addEventListener("onClick",
+    obj._e_event333 = obj.button135:addEventListener("onClick",
         function (_)
             local item = self.rclmagicList5:append();
             						if item then item.id = 5 end;
@@ -37996,11 +38007,11 @@ local function constructNew_frmFichaRPGmeister()
             				    end;
         end, obj);
 
-    obj._e_event337 = obj.button137:addEventListener("onClick",
+    obj._e_event337 = obj.button136:addEventListener("onClick",
         function (_)
         end, obj);
 
-    obj._e_event338 = obj.button137:addEventListener("onClick",
+    obj._e_event338 = obj.button136:addEventListener("onClick",
         function (_)
             local item = self.rclmagicList6:append();
             						if item then item.id = 6 end;
@@ -38036,11 +38047,11 @@ local function constructNew_frmFichaRPGmeister()
             				    end;
         end, obj);
 
-    obj._e_event342 = obj.button138:addEventListener("onClick",
+    obj._e_event342 = obj.button137:addEventListener("onClick",
         function (_)
         end, obj);
 
-    obj._e_event343 = obj.button138:addEventListener("onClick",
+    obj._e_event343 = obj.button137:addEventListener("onClick",
         function (_)
             local item = self.rclmagicList7:append();
             						if item then item.id = 7 end;
@@ -38076,11 +38087,11 @@ local function constructNew_frmFichaRPGmeister()
             				    end;
         end, obj);
 
-    obj._e_event347 = obj.button139:addEventListener("onClick",
+    obj._e_event347 = obj.button138:addEventListener("onClick",
         function (_)
         end, obj);
 
-    obj._e_event348 = obj.button139:addEventListener("onClick",
+    obj._e_event348 = obj.button138:addEventListener("onClick",
         function (_)
             local item = self.rclmagicList8:append();
             						if item then item.id = 8 end;
@@ -38116,11 +38127,11 @@ local function constructNew_frmFichaRPGmeister()
             				    end;
         end, obj);
 
-    obj._e_event352 = obj.button140:addEventListener("onClick",
+    obj._e_event352 = obj.button139:addEventListener("onClick",
         function (_)
         end, obj);
 
-    obj._e_event353 = obj.button140:addEventListener("onClick",
+    obj._e_event353 = obj.button139:addEventListener("onClick",
         function (_)
             local item = self.rclmagicList9:append();
             						if item then item.id = 9 end;
@@ -38223,11 +38234,11 @@ local function constructNew_frmFichaRPGmeister()
                     --mesa.activeChat:escrever((txt or "null") .. " - " .. (txt1 or "null") .. " - " .. (txt2 or "null") .. " - " .. (txt3 or "null"));
         end, obj);
 
-    obj._e_event363 = obj.button141:addEventListener("onClick",
+    obj._e_event363 = obj.button140:addEventListener("onClick",
         function (_)
         end, obj);
 
-    obj._e_event364 = obj.button141:addEventListener("onClick",
+    obj._e_event364 = obj.button140:addEventListener("onClick",
         function (_)
             local item = self.rclmagicList10:append();
             						if item then item.id = 10 end;
@@ -38263,11 +38274,11 @@ local function constructNew_frmFichaRPGmeister()
             				    end;
         end, obj);
 
-    obj._e_event368 = obj.button142:addEventListener("onClick",
+    obj._e_event368 = obj.button141:addEventListener("onClick",
         function (_)
         end, obj);
 
-    obj._e_event369 = obj.button142:addEventListener("onClick",
+    obj._e_event369 = obj.button141:addEventListener("onClick",
         function (_)
             local item = self.rclmagicList11:append();
             						if item then item.id = 11 end;
@@ -38303,11 +38314,11 @@ local function constructNew_frmFichaRPGmeister()
             				    end;
         end, obj);
 
-    obj._e_event373 = obj.button143:addEventListener("onClick",
+    obj._e_event373 = obj.button142:addEventListener("onClick",
         function (_)
         end, obj);
 
-    obj._e_event374 = obj.button143:addEventListener("onClick",
+    obj._e_event374 = obj.button142:addEventListener("onClick",
         function (_)
             local item = self.rclmagicList12:append();
             						if item then item.id = 12 end;
@@ -38343,11 +38354,11 @@ local function constructNew_frmFichaRPGmeister()
             				    end;
         end, obj);
 
-    obj._e_event378 = obj.button144:addEventListener("onClick",
+    obj._e_event378 = obj.button143:addEventListener("onClick",
         function (_)
         end, obj);
 
-    obj._e_event379 = obj.button144:addEventListener("onClick",
+    obj._e_event379 = obj.button143:addEventListener("onClick",
         function (_)
             local item = self.rclmagicList13:append();
             						if item then item.id = 13 end;
@@ -38383,11 +38394,11 @@ local function constructNew_frmFichaRPGmeister()
             				    end;
         end, obj);
 
-    obj._e_event383 = obj.button145:addEventListener("onClick",
+    obj._e_event383 = obj.button144:addEventListener("onClick",
         function (_)
         end, obj);
 
-    obj._e_event384 = obj.button145:addEventListener("onClick",
+    obj._e_event384 = obj.button144:addEventListener("onClick",
         function (_)
             local item = self.rclmagicList14:append();
             						if item then item.id = 14 end;
@@ -38423,11 +38434,11 @@ local function constructNew_frmFichaRPGmeister()
             				    end;
         end, obj);
 
-    obj._e_event388 = obj.button146:addEventListener("onClick",
+    obj._e_event388 = obj.button145:addEventListener("onClick",
         function (_)
         end, obj);
 
-    obj._e_event389 = obj.button146:addEventListener("onClick",
+    obj._e_event389 = obj.button145:addEventListener("onClick",
         function (_)
             local item = self.rclmagicList15:append();
             						if item then item.id = 15 end;
@@ -38463,11 +38474,11 @@ local function constructNew_frmFichaRPGmeister()
             				    end;
         end, obj);
 
-    obj._e_event393 = obj.button147:addEventListener("onClick",
+    obj._e_event393 = obj.button146:addEventListener("onClick",
         function (_)
         end, obj);
 
-    obj._e_event394 = obj.button147:addEventListener("onClick",
+    obj._e_event394 = obj.button146:addEventListener("onClick",
         function (_)
             local item = self.rclmagicList16:append();
             						if item then item.id = 16 end;
@@ -38503,11 +38514,11 @@ local function constructNew_frmFichaRPGmeister()
             				    end;
         end, obj);
 
-    obj._e_event398 = obj.button148:addEventListener("onClick",
+    obj._e_event398 = obj.button147:addEventListener("onClick",
         function (_)
         end, obj);
 
-    obj._e_event399 = obj.button148:addEventListener("onClick",
+    obj._e_event399 = obj.button147:addEventListener("onClick",
         function (_)
             local item = self.rclmagicList17:append();
             						if item then item.id = 17 end;
@@ -38543,11 +38554,11 @@ local function constructNew_frmFichaRPGmeister()
             				    end;
         end, obj);
 
-    obj._e_event403 = obj.button149:addEventListener("onClick",
+    obj._e_event403 = obj.button148:addEventListener("onClick",
         function (_)
         end, obj);
 
-    obj._e_event404 = obj.button149:addEventListener("onClick",
+    obj._e_event404 = obj.button148:addEventListener("onClick",
         function (_)
             local item = self.rclmagicList18:append();
             						if item then item.id = 18 end;
@@ -38583,11 +38594,11 @@ local function constructNew_frmFichaRPGmeister()
             				    end;
         end, obj);
 
-    obj._e_event408 = obj.button150:addEventListener("onClick",
+    obj._e_event408 = obj.button149:addEventListener("onClick",
         function (_)
         end, obj);
 
-    obj._e_event409 = obj.button150:addEventListener("onClick",
+    obj._e_event409 = obj.button149:addEventListener("onClick",
         function (_)
             local item = self.rclmagicList19:append();
             						if item then item.id = 19 end;
@@ -38852,17 +38863,17 @@ local function constructNew_frmFichaRPGmeister()
             					end;
         end, obj);
 
-    obj._e_event433 = obj.button151:addEventListener("onClick",
+    obj._e_event433 = obj.button150:addEventListener("onClick",
         function (_)
             self.rclBuffs:append();
         end, obj);
 
-    obj._e_event434 = obj.button152:addEventListener("onClick",
+    obj._e_event434 = obj.button151:addEventListener("onClick",
         function (_)
             self.rclBuffs:sort();
         end, obj);
 
-    obj._e_event435 = obj.button153:addEventListener("onClick",
+    obj._e_event435 = obj.button152:addEventListener("onClick",
         function (_)
             local nodes = NDB.getChildNodes(sheet.listaDeBuffs);
             				local chat = Firecast.getMesaDe(sheet).activeChat;
@@ -38892,7 +38903,7 @@ local function constructNew_frmFichaRPGmeister()
             				end;
         end, obj);
 
-    obj._e_event437 = obj.button154:addEventListener("onClick",
+    obj._e_event437 = obj.button153:addEventListener("onClick",
         function (_)
             self.rclListaDasArmas:append();
         end, obj);
@@ -39079,7 +39090,7 @@ local function constructNew_frmFichaRPGmeister()
             				self.precoImoveisEdit.visible = false;
         end, obj);
 
-    obj._e_event466 = obj.button155:addEventListener("onClick",
+    obj._e_event466 = obj.button154:addEventListener("onClick",
         function (_)
             self.rclConsumiveis:append();
         end, obj);
@@ -39150,7 +39161,7 @@ local function constructNew_frmFichaRPGmeister()
             				end;
         end, obj);
 
-    obj._e_event472 = obj.button156:addEventListener("onClick",
+    obj._e_event472 = obj.button155:addEventListener("onClick",
         function (_)
             local node = self.rclListaDosCompanheiros.selectedNode;
             						local rolagem = Firecast.interpretarRolagem("1d20 + " .. (node.iniciativaComp or 0));
@@ -39158,7 +39169,7 @@ local function constructNew_frmFichaRPGmeister()
             						mesaDoPersonagem.activeChat:rolarDados(rolagem, "Teste de iniciativa de " .. (node.nomeComp or "Companheiro"));
         end, obj);
 
-    obj._e_event473 = obj.button157:addEventListener("onClick",
+    obj._e_event473 = obj.button156:addEventListener("onClick",
         function (_)
             local node = self.rclListaDosCompanheiros.selectedNode;
             						local rolagem = Firecast.interpretarRolagem("1d20 + " .. (node.agarrarComp or 0));
@@ -39166,7 +39177,7 @@ local function constructNew_frmFichaRPGmeister()
             						mesaDoPersonagem.activeChat:rolarDados(rolagem, "Teste de agarrar de " .. (node.nomeComp or "Companheiro"));
         end, obj);
 
-    obj._e_event474 = obj.button158:addEventListener("onClick",
+    obj._e_event474 = obj.button157:addEventListener("onClick",
         function (_)
             local node = self.rclListaDosCompanheiros.selectedNode;
             					local dado = "1d20 ";
@@ -39192,7 +39203,7 @@ local function constructNew_frmFichaRPGmeister()
             					end;
         end, obj);
 
-    obj._e_event476 = obj.button159:addEventListener("onClick",
+    obj._e_event476 = obj.button158:addEventListener("onClick",
         function (_)
             local node = self.rclListaDosCompanheiros.selectedNode;
             					local dado = "1d20 ";
@@ -39218,7 +39229,7 @@ local function constructNew_frmFichaRPGmeister()
             					end;
         end, obj);
 
-    obj._e_event478 = obj.button160:addEventListener("onClick",
+    obj._e_event478 = obj.button159:addEventListener("onClick",
         function (_)
             local node = self.rclListaDosCompanheiros.selectedNode;
             					local dado = "1d20 ";
@@ -39244,7 +39255,7 @@ local function constructNew_frmFichaRPGmeister()
             					end;
         end, obj);
 
-    obj._e_event480 = obj.button161:addEventListener("onClick",
+    obj._e_event480 = obj.button160:addEventListener("onClick",
         function (_)
             local node = self.rclListaDosCompanheiros.selectedNode;
             					local dado = "1d20 ";
@@ -39270,7 +39281,7 @@ local function constructNew_frmFichaRPGmeister()
             					end;
         end, obj);
 
-    obj._e_event482 = obj.button162:addEventListener("onClick",
+    obj._e_event482 = obj.button161:addEventListener("onClick",
         function (_)
             local node = self.rclListaDosCompanheiros.selectedNode;
             					local dado = "1d20 ";
@@ -39296,7 +39307,7 @@ local function constructNew_frmFichaRPGmeister()
             					end;
         end, obj);
 
-    obj._e_event484 = obj.button163:addEventListener("onClick",
+    obj._e_event484 = obj.button162:addEventListener("onClick",
         function (_)
             local node = self.rclListaDosCompanheiros.selectedNode;
             					local dado = "1d20 ";
@@ -39322,7 +39333,7 @@ local function constructNew_frmFichaRPGmeister()
             					end;
         end, obj);
 
-    obj._e_event486 = obj.button164:addEventListener("onClick",
+    obj._e_event486 = obj.button163:addEventListener("onClick",
         function (_)
             local node = self.rclListaDosCompanheiros.selectedNode;
             					local dado = "1d20 ";
@@ -39335,7 +39346,7 @@ local function constructNew_frmFichaRPGmeister()
             					mesaDoPersonagem.activeChat:rolarDados(rolagem, "Teste de fortitude de " .. (node.nomeComp or "Companheiro"));
         end, obj);
 
-    obj._e_event487 = obj.button165:addEventListener("onClick",
+    obj._e_event487 = obj.button164:addEventListener("onClick",
         function (_)
             local node = self.rclListaDosCompanheiros.selectedNode;
             					local dado = "1d20 ";
@@ -39348,7 +39359,7 @@ local function constructNew_frmFichaRPGmeister()
             					mesaDoPersonagem.activeChat:rolarDados(rolagem, "Teste de reflexos de " .. (node.nomeComp or "Companheiro"));
         end, obj);
 
-    obj._e_event488 = obj.button166:addEventListener("onClick",
+    obj._e_event488 = obj.button165:addEventListener("onClick",
         function (_)
             local node = self.rclListaDosCompanheiros.selectedNode;
             					local dado = "1d20 ";
@@ -39373,7 +39384,7 @@ local function constructNew_frmFichaRPGmeister()
             					sheet.precoInventorioComp = total;
         end, obj);
 
-    obj._e_event490 = obj.button167:addEventListener("onClick",
+    obj._e_event490 = obj.button166:addEventListener("onClick",
         function (_)
             local macro = self.boxDetalhesDoCompanheiro.node.macro;
             						if macro~=nil then
@@ -39390,7 +39401,7 @@ local function constructNew_frmFichaRPGmeister()
             drag:addData("imageURL", self.rclListaDosCompanheiros.selectedNode.avatarComp);
         end, obj);
 
-    obj._e_event492 = obj.button168:addEventListener("onClick",
+    obj._e_event492 = obj.button167:addEventListener("onClick",
         function (_)
             self.rclListaDosCompanheiros:append();
         end, obj);
@@ -39519,7 +39530,7 @@ local function constructNew_frmFichaRPGmeister()
             				end;
         end, obj);
 
-    obj._e_event496 = obj.button169:addEventListener("onClick",
+    obj._e_event496 = obj.button168:addEventListener("onClick",
         function (_)
             System.setClipboardText(sheet.historia);
         end, obj);
@@ -39788,27 +39799,27 @@ local function constructNew_frmFichaRPGmeister()
             					end;
         end, obj);
 
-    obj._e_event538 = obj.button170:addEventListener("onClick",
+    obj._e_event538 = obj.button169:addEventListener("onClick",
         function (_)
             GUI.openInBrowser('https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20Pathfinder/README.md')
         end, obj);
 
-    obj._e_event539 = obj.button171:addEventListener("onClick",
+    obj._e_event539 = obj.button170:addEventListener("onClick",
         function (_)
             GUI.openInBrowser('https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20Pathfinder/output/Ficha%20Pathfinder.rpk?raw=true')
         end, obj);
 
-    obj._e_event540 = obj.button172:addEventListener("onClick",
+    obj._e_event540 = obj.button171:addEventListener("onClick",
         function (_)
             GUI.openInBrowser('https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20Pathfinder/__Tutorial/Ficha%20RPG%20meister%20-%20Tutorial.docx?raw=true')
         end, obj);
 
-    obj._e_event541 = obj.button173:addEventListener("onClick",
+    obj._e_event541 = obj.button172:addEventListener("onClick",
         function (_)
             GUI.openInBrowser('https://my.firecastrpg.com/a?a=pagRWEMesaInfo.actInfoMesa&mesaid=64070');
         end, obj);
 
-    obj._e_event542 = obj.button174:addEventListener("onClick",
+    obj._e_event542 = obj.button173:addEventListener("onClick",
         function (_)
             local xml = NDB.exportXML(sheet);
             
@@ -39825,7 +39836,7 @@ local function constructNew_frmFichaRPGmeister()
             					end);
         end, obj);
 
-    obj._e_event543 = obj.button175:addEventListener("onClick",
+    obj._e_event543 = obj.button174:addEventListener("onClick",
         function (_)
             Dialogs.openFile("Importar Ficha", "application/xml", false, 
             					function(arquivos)
@@ -43043,7 +43054,6 @@ local function constructNew_frmFichaRPGmeister()
         if self.edit514 ~= nil then self.edit514:destroy(); self.edit514 = nil; end;
         if self.flowPart171 ~= nil then self.flowPart171:destroy(); self.flowPart171 = nil; end;
         if self.label589 ~= nil then self.label589:destroy(); self.label589 = nil; end;
-        if self.button175 ~= nil then self.button175:destroy(); self.button175 = nil; end;
         if self.label590 ~= nil then self.label590:destroy(); self.label590 = nil; end;
         if self.label539 ~= nil then self.label539:destroy(); self.label539 = nil; end;
         if self.edit78 ~= nil then self.edit78:destroy(); self.edit78 = nil; end;

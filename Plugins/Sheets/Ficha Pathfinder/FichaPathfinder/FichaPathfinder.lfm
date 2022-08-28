@@ -115,4 +115,19 @@
             end,
             "checkForModification");
     </event>
+    <event name="onNodeReady">
+        if sheet==nil then return end;
+        
+        if sheet.campoDasPericias == nil then
+            sheet.campoDasPericias = {}
+        end
+
+        local nodes = NDB.getChildNodes(sheet.campoDasPericias); 
+        if #nodes > 0 then return end;
+
+        local path = NDB.load("pathskills.xml");
+        NDB.copy(sheet.campoDasPericias, path); 
+
+        self.rclListaDasPericias:sort();
+    </event>
 </form>

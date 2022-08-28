@@ -81,8 +81,8 @@
     <item chavePericia="2" exigeTreino="True" nomePericia="Operar Mecanismos">
         <__ndb__ id="28" t_chavePericia="S" t_exigeTreino="B" t_nomePericia="S"/>
     </item>
-    <item chavePericia="5" exigeTreino="False" nomePericia="Percepção" racialPericia="2">
-        <__ndb__ id="29" t_chavePericia="S" t_exigeTreino="B" t_nomePericia="S" t_racialPericia="I"/>
+    <item chavePericia="5" exigeTreino="False" nomePericia="Percepção">
+        <__ndb__ id="29" t_chavePericia="S" t_exigeTreino="B" t_nomePericia="S"/>
     </item>
     <item chavePericia="2" exigeTreino="True" nomePericia="Prestidigitação" penalidadeArmadura2="True">
         <__ndb__ id="30" t_chavePericia="S" t_exigeTreino="B" t_nomePericia="S" t_penalidadeArmadura2="B"/>
