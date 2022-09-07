@@ -632,9 +632,9 @@ local function constructNew_frmSODLSheet()
     obj.comboBox1:setFontSize(14);
     obj.comboBox1:setFontColor("#a83232");
     obj.comboBox1:setTransparent(false);
-    obj.comboBox1:setItems({'Strength','Agility'});
-    obj.comboBox1:setValues({'Strength','Agility'});
-    obj.comboBox1:setValue("{'Strength','Agility'}");
+    obj.comboBox1:setItems({'Strength','Agility','Intellect','Will'});
+    obj.comboBox1:setValues({'Strength','Agility','Intellect','Will'});
+    obj.comboBox1:setValue("{'Strength','Agility','Intellect','Will'}");
     obj.comboBox1:setField("Attribute_1");
     obj.comboBox1:setName("comboBox1");
 
@@ -646,9 +646,9 @@ local function constructNew_frmSODLSheet()
     obj.comboBox2:setFontSize(14);
     obj.comboBox2:setFontColor("#a83232");
     obj.comboBox2:setTransparent(false);
-    obj.comboBox2:setItems({'Strength','Agility'});
-    obj.comboBox2:setValues({'Strength','Agility'});
-    obj.comboBox2:setValue("{'Strength','Agility'}");
+    obj.comboBox2:setItems({'Strength','Agility','Intellect','Will'});
+    obj.comboBox2:setValues({'Strength','Agility','Intellect','Will'});
+    obj.comboBox2:setValue("{'Strength','Agility','Intellect','Will'}");
     obj.comboBox2:setField("Attribute_2");
     obj.comboBox2:setName("comboBox2");
 
@@ -660,9 +660,9 @@ local function constructNew_frmSODLSheet()
     obj.comboBox3:setFontSize(14);
     obj.comboBox3:setFontColor("#a83232");
     obj.comboBox3:setTransparent(false);
-    obj.comboBox3:setItems({'Strength','Agility'});
-    obj.comboBox3:setValues({'Strength','Agility'});
-    obj.comboBox3:setValue("{'Strength','Agility'}");
+    obj.comboBox3:setItems({'Strength','Agility','Intellect','Will'});
+    obj.comboBox3:setValues({'Strength','Agility','Intellect','Will'});
+    obj.comboBox3:setValue("{'Strength','Agility','Intellect','Will'}");
     obj.comboBox3:setField("Attribute_3");
     obj.comboBox3:setName("comboBox3");
 
@@ -674,9 +674,9 @@ local function constructNew_frmSODLSheet()
     obj.comboBox4:setFontSize(14);
     obj.comboBox4:setFontColor("#a83232");
     obj.comboBox4:setTransparent(false);
-    obj.comboBox4:setItems({'Strength','Agility'});
-    obj.comboBox4:setValues({'Strength','Agility'});
-    obj.comboBox4:setValue("{'Strength','Agility'}");
+    obj.comboBox4:setItems({'Strength','Agility','Intellect','Will'});
+    obj.comboBox4:setValues({'Strength','Agility','Intellect','Will'});
+    obj.comboBox4:setValue("{'Strength','Agility','Intellect','Will'}");
     obj.comboBox4:setField("Attribute_4");
     obj.comboBox4:setName("comboBox4");
 
@@ -688,9 +688,9 @@ local function constructNew_frmSODLSheet()
     obj.comboBox5:setFontSize(14);
     obj.comboBox5:setFontColor("#a83232");
     obj.comboBox5:setTransparent(false);
-    obj.comboBox5:setItems({'Strength','Agility'});
-    obj.comboBox5:setValues({'Strength','Agility'});
-    obj.comboBox5:setValue("{'Strength','Agility'}");
+    obj.comboBox5:setItems({'Strength','Agility','Intellect','Will'});
+    obj.comboBox5:setValues({'Strength','Agility','Intellect','Will'});
+    obj.comboBox5:setValue("{'Strength','Agility','Intellect','Will'}");
     obj.comboBox5:setField("Attribute_5");
     obj.comboBox5:setName("comboBox5");
 
@@ -702,9 +702,9 @@ local function constructNew_frmSODLSheet()
     obj.comboBox6:setFontSize(14);
     obj.comboBox6:setFontColor("#a83232");
     obj.comboBox6:setTransparent(false);
-    obj.comboBox6:setItems({'Strength','Agility'});
-    obj.comboBox6:setValues({'Strength','Agility'});
-    obj.comboBox6:setValue("{'Strength','Agility'}");
+    obj.comboBox6:setItems({'Strength','Agility','Intellect','Will'});
+    obj.comboBox6:setValues({'Strength','Agility','Intellect','Will'});
+    obj.comboBox6:setValue("{'Strength','Agility','Intellect','Will'}");
     obj.comboBox6:setField("Attribute_6");
     obj.comboBox6:setName("comboBox6");
 
@@ -13508,7 +13508,7 @@ local function constructNew_frmSODLSheet()
     obj._e_event0 = obj.button1:addEventListener("onClick",
         function (_)
             local weaponName = sheet.Weapon_1;
-                                    local attribute;
+                                    local attribute = sheet.Attribute_1;
             						local attackRoll = Firecast.interpretarRolagem("1d20");
                                     local boonBaneLocalRoll = 0;
                                     local characterTable = Firecast.getMesaDe(sheet);
@@ -13517,20 +13517,23 @@ local function constructNew_frmSODLSheet()
                                     local boonOrBane;
             
                                     if sheet.BoonsBanes == '0' or sheet.BoonsBanes == nil then 
-                                        if sheet.Attribute_1 == 'Strength' then
+                                        if attribute == 'Strength' then
                                             attackRoll = Firecast.interpretarRolagem(sheet.Strength_Modifier):concatenar(attackRoll);
-                                        elseif sheet.Attribute_1 == 'Agility' then
+                                        elseif attribute == 'Agility' then
                                             attackRoll = Firecast.interpretarRolagem(sheet.Agility_Modifier):concatenar(attackRoll);
+                                        elseif attribute == 'Intellect' then
+                                            attackRoll = Firecast.interpretarRolagem(sheet.Intellect_Modifier):concatenar(attackRoll);
+                                        elseif attribute == 'Will' then
+                                            attackRoll = Firecast.interpretarRolagem(sheet.Will_Modifier):concatenar(attackRoll);
                                         else 
                                             characterTable.chat:enviarMensagem("Escolha um atributo para a rolagem de ataque");
                                             return;
                                         end;
             
-                                        if weaponName == '' then
+                                        if weaponName == nil then
                                             weaponName = "Arma sem nome"
                                         end;
                                         
-                                
                                         if characterTable ~= nil then
                                             characterTable.chat:rolarDados(attackRoll, "Atacou com " .. weaponName);
                                         end;
@@ -13618,7 +13621,7 @@ local function constructNew_frmSODLSheet()
     obj._e_event2 = obj.button3:addEventListener("onClick",
         function (_)
             local weaponName = sheet.Weapon_2;
-                                    local attribute;
+                                    local attribute = sheet.Attribute_2;
             						local attackRoll = Firecast.interpretarRolagem("1d20");
                                     local boonBaneLocalRoll = 0;
                                     local characterTable = Firecast.getMesaDe(sheet);
@@ -13627,17 +13630,21 @@ local function constructNew_frmSODLSheet()
                                     local boonOrBane;
             
                                     if sheet.BoonsBanes == '0' or sheet.BoonsBanes == nil then 
-                                        if sheet.Attribute_2 == 'Strength' then
+                                        if attribute == 'Strength' then
                                             attackRoll = Firecast.interpretarRolagem(sheet.Strength_Modifier):concatenar(attackRoll);
-                                        elseif sheet.Attribute_2 == 'Agility' then
+                                        elseif attribute == 'Agility' then
                                             attackRoll = Firecast.interpretarRolagem(sheet.Agility_Modifier):concatenar(attackRoll);
+                                        elseif attribute == 'Intellect' then
+                                            attackRoll = Firecast.interpretarRolagem(sheet.Intellect_Modifier):concatenar(attackRoll);
+                                        elseif attribute == 'Will' then
+                                            attackRoll = Firecast.interpretarRolagem(sheet.Will_Modifier):concatenar(attackRoll);
                                         else 
                                             characterTable.chat:enviarMensagem("Escolha um atributo para a rolagem de ataque.");
                                             return;
                                         end;
             
-                                        if weaponName == '' then
-                                            weaponName = "Arma sem nome"
+                                        if weaponName == nil then
+                                            weaponName = "Arma sem nome";
                                         end;
                                 
                                         if characterTable ~= nil then
@@ -13727,7 +13734,7 @@ local function constructNew_frmSODLSheet()
     obj._e_event4 = obj.button5:addEventListener("onClick",
         function (_)
             local weaponName = sheet.Weapon_3;
-                                    local attribute;
+                                    local attribute = sheet.Attribute_3;
             						local attackRoll = Firecast.interpretarRolagem("1d20");
                                     local boonBaneLocalRoll = 0;
                                     local characterTable = Firecast.getMesaDe(sheet);
@@ -13736,16 +13743,20 @@ local function constructNew_frmSODLSheet()
                                     local boonOrBane;
             
                                     if sheet.BoonsBanes == '0' or sheet.BoonsBanes == nil then 
-                                        if sheet.Attribute_3 == 'Strength' then
+                                        if attribute == 'Strength' then
                                             attackRoll = Firecast.interpretarRolagem(sheet.Strength_Modifier):concatenar(attackRoll);
-                                        elseif sheet.Attribute_3 == 'Agility' then
+                                        elseif attribute == 'Agility' then
                                             attackRoll = Firecast.interpretarRolagem(sheet.Agility_Modifier):concatenar(attackRoll);
+                                        elseif attribute == 'Intellect' then
+                                            attackRoll = Firecast.interpretarRolagem(sheet.Intellect_Modifier):concatenar(attackRoll);
+                                        elseif attribute == 'Will' then
+                                            attackRoll = Firecast.interpretarRolagem(sheet.Will_Modifier):concatenar(attackRoll);
                                         else 
                                             characterTable.chat:enviarMensagem("Escolha um atributo para a rolagem de ataque.");
                                             return;
                                         end;
             
-                                        if weaponName == '' then
+                                        if weaponName == nil then
                                             weaponName = "Arma sem nome"
                                         end;
                                 
@@ -13785,6 +13796,8 @@ local function constructNew_frmSODLSheet()
                                                     attributeModifier = sheet.Strength_Modifier;
                                                 elseif sheet.Attribute_3 == 'Agility' then
                                                     attributeModifier = sheet.Agility_Modifier;
+                                                elseif sheet.Attribute_3 == 'Intellect' then
+                                                    attackRoll = Firecast.interpretarRolagem(sheet.Intellect_Modifier):concatenar(attackRoll);
                                                 else 
                                                     characterTable.chat:enviarMensagem("Escolha um atributo para a rolagem de ataque.");
                                                     return;
@@ -13836,7 +13849,7 @@ local function constructNew_frmSODLSheet()
     obj._e_event6 = obj.button7:addEventListener("onClick",
         function (_)
             local weaponName = sheet.Weapon_4;
-                                    local attribute;
+                                    local attribute = sheet.Attribute_4;
             						local attackRoll = Firecast.interpretarRolagem("1d20");
                                     local boonBaneLocalRoll = 0;
                                     local characterTable = Firecast.getMesaDe(sheet);
@@ -13845,16 +13858,20 @@ local function constructNew_frmSODLSheet()
                                     local boonOrBane;
             
                                     if sheet.BoonsBanes == '0' or sheet.BoonsBanes == nil then 
-                                        if sheet.Attribute_4 == 'Strength' then
+                                        if attribute == 'Strength' then
                                             attackRoll = Firecast.interpretarRolagem(sheet.Strength_Modifier):concatenar(attackRoll);
-                                        elseif sheet.Attribute_4 == 'Agility' then
+                                        elseif attribute == 'Agility' then
                                             attackRoll = Firecast.interpretarRolagem(sheet.Agility_Modifier):concatenar(attackRoll);
+                                        elseif attribute == 'Intellect' then
+                                            attackRoll = Firecast.interpretarRolagem(sheet.Intellect_Modifier):concatenar(attackRoll);
+                                        elseif attribute == 'Will' then
+                                            attackRoll = Firecast.interpretarRolagem(sheet.Will_Modifier):concatenar(attackRoll);   
                                         else 
                                             characterTable.chat:enviarMensagem("Escolha um atributo para a rolagem de ataque.");
                                             return;
                                         end;
             
-                                        if weaponName == '' then
+                                        if weaponName == nil then
                                             weaponName = "Arma sem nome"
                                         end;
                                 
@@ -13915,7 +13932,7 @@ local function constructNew_frmSODLSheet()
                                                 end;
                                         
                                                 if characterTable ~= nil then
-                                                    characterTable.chat:rolarDados(attackRoll,'Ataque de ' .. weaponName);
+                                                    characterTable.chat:rolarDados(attackRoll,'Atacou com '..weaponName);
                                                 end;
                                         end);
                                     end;
@@ -13953,23 +13970,27 @@ local function constructNew_frmSODLSheet()
             						local operation;
                                     local boonOrBane;
             
-                                    if sheet.BoonsBanes == '0' then 
+                                    if sheet.BoonsBanes == '0' or sheet.BoonsBanes == nil then 
             
                                         if attribute == 'Strength' then
                                             attackRoll = Firecast.interpretarRolagem(sheet.Strength_Modifier):concatenar(attackRoll);
                                         elseif attribute == 'Agility' then
                                             attackRoll = Firecast.interpretarRolagem(sheet.Agility_Modifier):concatenar(attackRoll);
+                                        elseif attribute == 'Intellect' then
+                                            attackRoll = Firecast.interpretarRolagem(sheet.Intellect_Modifier):concatenar(attackRoll);
+                                        elseif attribute == 'Will' then
+                                            attackRoll = Firecast.interpretarRolagem(sheet.Will_Modifier):concatenar(attackRoll);
                                         else 
                                             characterTable.chat:enviarMensagem("Escolha um atributo para a rolagem de ataque.");
                                             return;
                                         end;
             
-                                        if weaponName == '' then
+                                        if weaponName == nil then
                                             weaponName = "Arma sem nome"
                                         end;
                                 
                                         if characterTable ~= nil then
-                                            characterTable.chat:rolarDados(attackRoll, "Atacou com " .. weaponName);
+                                            characterTable.chat:rolarDados(attackRoll,"Atacou com "..weaponName);
                                         end;
             
                                     else
@@ -14064,23 +14085,24 @@ local function constructNew_frmSODLSheet()
             						local operation;
                                     local boonOrBane;
             
-                                    if sheet.BoonsBanes == '0' then 
-            
+                                    if sheet.BoonsBanes == '0' or sheet.BoonsBanes == nil then 
                                         if attribute == 'Strength' then
                                             attackRoll = Firecast.interpretarRolagem(sheet.Strength_Modifier):concatenar(attackRoll);
                                         elseif attribute == 'Agility' then
                                             attackRoll = Firecast.interpretarRolagem(sheet.Agility_Modifier):concatenar(attackRoll);
+                                         elseif attribute == 'Intellect' then
+                                            attackRoll = Firecast.interpretarRolagem(sheet.Intellect_Modifier):concatenar(attackRoll);
                                         else 
                                             characterTable.chat:enviarMensagem("Escolha um atributo para a rolagem de ataque.");
                                             return;
                                         end;
             
-                                        if weaponName == '' then
+                                        if weaponName == nil then
                                             weaponName = "Arma sem nome"
                                         end;
                                 
                                         if characterTable ~= nil then
-                                            characterTable.chat:rolarDados(attackRoll, "Atacou com " .. weaponName);
+                                            characterTable.chat:rolarDados(attackRoll, "Atacou com "..weaponName);
                                         end;
             
                                     else
@@ -14137,7 +14159,7 @@ local function constructNew_frmSODLSheet()
                                                 end;
                                         
                                                 if characterTable ~= nil then
-                                                    characterTable.chat:rolarDados(attackRoll,'Ataque de ' .. weaponName);
+                                                    characterTable.chat:rolarDados(attackRoll,'Ataque com '..weaponName);
                                                 end;
                                         end);
             

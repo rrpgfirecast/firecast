@@ -111,12 +111,12 @@
                 <edit left="0" top="128" width="140" height="31" fontSize="14" fontColor="#000000" field="Weapon_5" transparent="false" hint="Nome"/>
 				<edit left="0" top="160" width="140" height="31" fontSize="14" fontColor="#000000" field="Weapon_6" transparent="false" hint="Nome"/>
 				
-				<comboBox left="140" top="0" width="90" fontSize="14" fontColor="#a83232" transparent="false" items="{'Strength','Agility'}" values="{'Strength','Agility'}" value="{'Strength','Agility'}" field="Attribute_1"/>
-				<comboBox left="140" top="32" width="90" fontSize="14" fontColor="#a83232" transparent="false" items="{'Strength','Agility'}" values="{'Strength','Agility'}" value="{'Strength','Agility'}" field="Attribute_2"/>
-				<comboBox left="140" top="64" width="90" fontSize="14" fontColor="#a83232" transparent="false" items="{'Strength','Agility'}" values="{'Strength','Agility'}" value="{'Strength','Agility'}" field="Attribute_3"/>
-				<comboBox left="140" top="96" width="90" fontSize="14" fontColor="#a83232" transparent="false" items="{'Strength','Agility'}" values="{'Strength','Agility'}" value="{'Strength','Agility'}" field="Attribute_4"/>
-				<comboBox left="140" top="128" width="90" fontSize="14" fontColor="#a83232" transparent="false" items="{'Strength','Agility'}" values="{'Strength','Agility'}" value="{'Strength','Agility'}" field="Attribute_5"/>
-				<comboBox left="140" top="160" width="90" fontSize="14" fontColor="#a83232" transparent="false" items="{'Strength','Agility'}" values="{'Strength','Agility'}" value="{'Strength','Agility'}" field="Attribute_6"/>
+				<comboBox left="140" top="0" width="90" fontSize="14" fontColor="#a83232" transparent="false" items="{'Strength','Agility','Intellect','Will'}" values="{'Strength','Agility','Intellect','Will'}" value="{'Strength','Agility','Intellect','Will'}" field="Attribute_1"/>
+				<comboBox left="140" top="32" width="90" fontSize="14" fontColor="#a83232" transparent="false" items="{'Strength','Agility','Intellect','Will'}" values="{'Strength','Agility','Intellect','Will'}" value="{'Strength','Agility','Intellect','Will'}" field="Attribute_2"/>
+				<comboBox left="140" top="64" width="90" fontSize="14" fontColor="#a83232" transparent="false" items="{'Strength','Agility','Intellect','Will'}" values="{'Strength','Agility','Intellect','Will'}" value="{'Strength','Agility','Intellect','Will'}" field="Attribute_3"/>
+				<comboBox left="140" top="96" width="90" fontSize="14" fontColor="#a83232" transparent="false" items="{'Strength','Agility','Intellect','Will'}" values="{'Strength','Agility','Intellect','Will'}" value="{'Strength','Agility','Intellect','Will'}" field="Attribute_4"/>
+				<comboBox left="140" top="128" width="90" fontSize="14" fontColor="#a83232" transparent="false" items="{'Strength','Agility','Intellect','Will'}" values="{'Strength','Agility','Intellect','Will'}" value="{'Strength','Agility','Intellect','Will'}" field="Attribute_5"/>
+				<comboBox left="140" top="160" width="90" fontSize="14" fontColor="#a83232" transparent="false" items="{'Strength','Agility','Intellect','Will'}" values="{'Strength','Agility','Intellect','Will'}" value="{'Strength','Agility','Intellect','Will'}" field="Attribute_6"/>
 				
                 <edit left="230" top="0" width="60" height="31" fontSize="14" fontColor="#000000" field="Damageroll_1" transparent="false" hint="Dano"/>
                 <edit left="230" top="32" width="60" height="31" fontSize="14" fontColor="#000000" field="Damageroll_2" transparent="false" hint="Dano"/>
@@ -128,7 +128,7 @@
                 <button left="290" top="0" width="30" height="30" fontSize="10" text="Atk">
 					<event name="onClick">
                         local weaponName = sheet.Weapon_1;
-                        local attribute;
+                        local attribute = sheet.Attribute_1;
 						local attackRoll = Firecast.interpretarRolagem("1d20");
                         local boonBaneLocalRoll = 0;
                         local characterTable = Firecast.getMesaDe(sheet);
@@ -137,20 +137,23 @@
                         local boonOrBane;
 
                         if sheet.BoonsBanes == '0' or sheet.BoonsBanes == nil then 
-                            if sheet.Attribute_1 == 'Strength' then
+                            if attribute == 'Strength' then
                                 attackRoll = Firecast.interpretarRolagem(sheet.Strength_Modifier):concatenar(attackRoll);
-                            elseif sheet.Attribute_1 == 'Agility' then
+                            elseif attribute == 'Agility' then
                                 attackRoll = Firecast.interpretarRolagem(sheet.Agility_Modifier):concatenar(attackRoll);
+                            elseif attribute == 'Intellect' then
+                                attackRoll = Firecast.interpretarRolagem(sheet.Intellect_Modifier):concatenar(attackRoll);
+                            elseif attribute == 'Will' then
+                                attackRoll = Firecast.interpretarRolagem(sheet.Will_Modifier):concatenar(attackRoll);
                             else 
                                 characterTable.chat:enviarMensagem("Escolha um atributo para a rolagem de ataque");
                                 return;
                             end;
 
-                            if weaponName == '' then
+                            if weaponName == nil then
                                 weaponName = "Arma sem nome"
                             end;
                             
-                    
                             if characterTable ~= nil then
                                 characterTable.chat:rolarDados(attackRoll, "Atacou com " .. weaponName);
                             end;
@@ -239,7 +242,7 @@
 				<button left="290" top="32" width="30" height="30" fontSize="10" text="Atk">
 					<event name="onClick">
 						local weaponName = sheet.Weapon_2;
-                        local attribute;
+                        local attribute = sheet.Attribute_2;
 						local attackRoll = Firecast.interpretarRolagem("1d20");
                         local boonBaneLocalRoll = 0;
                         local characterTable = Firecast.getMesaDe(sheet);
@@ -248,17 +251,21 @@
                         local boonOrBane;
 
                         if sheet.BoonsBanes == '0' or sheet.BoonsBanes == nil then 
-                            if sheet.Attribute_2 == 'Strength' then
+                            if attribute == 'Strength' then
                                 attackRoll = Firecast.interpretarRolagem(sheet.Strength_Modifier):concatenar(attackRoll);
-                            elseif sheet.Attribute_2 == 'Agility' then
+                            elseif attribute == 'Agility' then
                                 attackRoll = Firecast.interpretarRolagem(sheet.Agility_Modifier):concatenar(attackRoll);
+                            elseif attribute == 'Intellect' then
+                                attackRoll = Firecast.interpretarRolagem(sheet.Intellect_Modifier):concatenar(attackRoll);
+                            elseif attribute == 'Will' then
+                                attackRoll = Firecast.interpretarRolagem(sheet.Will_Modifier):concatenar(attackRoll);
                             else 
                                 characterTable.chat:enviarMensagem("Escolha um atributo para a rolagem de ataque.");
                                 return;
                             end;
 
-                            if weaponName == '' then
-                                weaponName = "Arma sem nome"
+                            if weaponName == nil then
+                                weaponName = "Arma sem nome";
                             end;
                     
                             if characterTable ~= nil then
@@ -349,7 +356,7 @@
                 <button left="290" top="64" width="30" height="30" fontSize="10" text="Atk">
 					<event name="onClick"> 
 						local weaponName = sheet.Weapon_3;
-                        local attribute;
+                        local attribute = sheet.Attribute_3;
 						local attackRoll = Firecast.interpretarRolagem("1d20");
                         local boonBaneLocalRoll = 0;
                         local characterTable = Firecast.getMesaDe(sheet);
@@ -358,16 +365,20 @@
                         local boonOrBane;
 
                         if sheet.BoonsBanes == '0' or sheet.BoonsBanes == nil then 
-                            if sheet.Attribute_3 == 'Strength' then
+                            if attribute == 'Strength' then
                                 attackRoll = Firecast.interpretarRolagem(sheet.Strength_Modifier):concatenar(attackRoll);
-                            elseif sheet.Attribute_3 == 'Agility' then
+                            elseif attribute == 'Agility' then
                                 attackRoll = Firecast.interpretarRolagem(sheet.Agility_Modifier):concatenar(attackRoll);
+                            elseif attribute == 'Intellect' then
+                                attackRoll = Firecast.interpretarRolagem(sheet.Intellect_Modifier):concatenar(attackRoll);
+                            elseif attribute == 'Will' then
+                                attackRoll = Firecast.interpretarRolagem(sheet.Will_Modifier):concatenar(attackRoll);
                             else 
                                 characterTable.chat:enviarMensagem("Escolha um atributo para a rolagem de ataque.");
                                 return;
                             end;
 
-                            if weaponName == '' then
+                            if weaponName == nil then
                                 weaponName = "Arma sem nome"
                             end;
                     
@@ -407,6 +418,8 @@
                                         attributeModifier = sheet.Strength_Modifier;
                                     elseif sheet.Attribute_3 == 'Agility' then
                                         attributeModifier = sheet.Agility_Modifier;
+                                    elseif sheet.Attribute_3 == 'Intellect' then
+                                        attackRoll = Firecast.interpretarRolagem(sheet.Intellect_Modifier):concatenar(attackRoll);
                                     else 
                                         characterTable.chat:enviarMensagem("Escolha um atributo para a rolagem de ataque.");
                                         return;
@@ -458,7 +471,7 @@
                 <button left="290" top="96" width="30" height="30" fontSize="10" text="Atk">
 					<event name="onClick"> 
 						local weaponName = sheet.Weapon_4;
-                        local attribute;
+                        local attribute = sheet.Attribute_4;
 						local attackRoll = Firecast.interpretarRolagem("1d20");
                         local boonBaneLocalRoll = 0;
                         local characterTable = Firecast.getMesaDe(sheet);
@@ -467,16 +480,20 @@
                         local boonOrBane;
 
                         if sheet.BoonsBanes == '0' or sheet.BoonsBanes == nil then 
-                            if sheet.Attribute_4 == 'Strength' then
+                            if attribute == 'Strength' then
                                 attackRoll = Firecast.interpretarRolagem(sheet.Strength_Modifier):concatenar(attackRoll);
-                            elseif sheet.Attribute_4 == 'Agility' then
+                            elseif attribute == 'Agility' then
                                 attackRoll = Firecast.interpretarRolagem(sheet.Agility_Modifier):concatenar(attackRoll);
+                            elseif attribute == 'Intellect' then
+                                attackRoll = Firecast.interpretarRolagem(sheet.Intellect_Modifier):concatenar(attackRoll);
+                            elseif attribute == 'Will' then
+                                attackRoll = Firecast.interpretarRolagem(sheet.Will_Modifier):concatenar(attackRoll);   
                             else 
                                 characterTable.chat:enviarMensagem("Escolha um atributo para a rolagem de ataque.");
                                 return;
                             end;
 
-                            if weaponName == '' then
+                            if weaponName == nil then
                                 weaponName = "Arma sem nome"
                             end;
                     
@@ -537,7 +554,7 @@
                                     end;
                             
                                     if characterTable ~= nil then
-                                        characterTable.chat:rolarDados(attackRoll,'Ataque de ' .. weaponName);
+                                        characterTable.chat:rolarDados(attackRoll,'Atacou com '..weaponName);
                                     end;
                             end);
                         end;
@@ -564,6 +581,7 @@
                         end;
                     </event>
                 </button>
+                
                 <button left="290" top="128" width="30" height="30" fontSize="10" text="Atk">
 					<event name="onClick"> 
 					    local weaponName = sheet.Weapon_5;
@@ -575,23 +593,27 @@
 						local operation;
                         local boonOrBane;
 
-                        if sheet.BoonsBanes == '0' then 
+                        if sheet.BoonsBanes == '0' or sheet.BoonsBanes == nil then 
 
                             if attribute == 'Strength' then
                                 attackRoll = Firecast.interpretarRolagem(sheet.Strength_Modifier):concatenar(attackRoll);
                             elseif attribute == 'Agility' then
                                 attackRoll = Firecast.interpretarRolagem(sheet.Agility_Modifier):concatenar(attackRoll);
+                            elseif attribute == 'Intellect' then
+                                attackRoll = Firecast.interpretarRolagem(sheet.Intellect_Modifier):concatenar(attackRoll);
+                            elseif attribute == 'Will' then
+                                attackRoll = Firecast.interpretarRolagem(sheet.Will_Modifier):concatenar(attackRoll);
                             else 
                                 characterTable.chat:enviarMensagem("Escolha um atributo para a rolagem de ataque.");
                                 return;
                             end;
 
-                            if weaponName == '' then
+                            if weaponName == nil then
                                 weaponName = "Arma sem nome"
                             end;
                     
                             if characterTable ~= nil then
-                                characterTable.chat:rolarDados(attackRoll, "Atacou com " .. weaponName);
+                                characterTable.chat:rolarDados(attackRoll,"Atacou com "..weaponName);
                             end;
 
                         else
@@ -687,23 +709,24 @@
 						local operation;
                         local boonOrBane;
 
-                        if sheet.BoonsBanes == '0' then 
-
+                        if sheet.BoonsBanes == '0' or sheet.BoonsBanes == nil then 
                             if attribute == 'Strength' then
                                 attackRoll = Firecast.interpretarRolagem(sheet.Strength_Modifier):concatenar(attackRoll);
                             elseif attribute == 'Agility' then
                                 attackRoll = Firecast.interpretarRolagem(sheet.Agility_Modifier):concatenar(attackRoll);
+                             elseif attribute == 'Intellect' then
+                                attackRoll = Firecast.interpretarRolagem(sheet.Intellect_Modifier):concatenar(attackRoll);
                             else 
                                 characterTable.chat:enviarMensagem("Escolha um atributo para a rolagem de ataque.");
                                 return;
                             end;
 
-                            if weaponName == '' then
+                            if weaponName == nil then
                                 weaponName = "Arma sem nome"
                             end;
                     
                             if characterTable ~= nil then
-                                characterTable.chat:rolarDados(attackRoll, "Atacou com " .. weaponName);
+                                characterTable.chat:rolarDados(attackRoll, "Atacou com "..weaponName);
                             end;
 
                         else
@@ -760,7 +783,7 @@
                                     end;
                             
                                     if characterTable ~= nil then
-                                        characterTable.chat:rolarDados(attackRoll,'Ataque de ' .. weaponName);
+                                        characterTable.chat:rolarDados(attackRoll,'Ataque com '..weaponName);
                                     end;
                             end);
 
