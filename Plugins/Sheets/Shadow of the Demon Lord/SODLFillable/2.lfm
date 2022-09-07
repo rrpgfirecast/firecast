@@ -4,7 +4,7 @@
 #frmSODLFillable2_svg label {fontColor: black; textTrimming: none; wordWrap: false; autoSize: true;}</style>
     <scrollBox align="client">
         <rectangle width="893" height="1263" color="white">&#xD;
-            <image left="0" top="0" width="893" height="1263" src="images/2.png" style="stretch" optimize="true" compilerOrder="0"/>&#xD;
+            <image left="0" top="0" width="893" height="1263" src="images/magias.png" style="stretch" optimize="true" compilerOrder="0"/>&#xD;
             <layout left="0" top="0" width="447" height="1263">
 
             <edit left ="80" top="36" width="160" height="30" fontSize="16" fontColor="#000000" transparent="true" field="magicName_0"/>

@@ -4,17 +4,26 @@
         <tab title="Página 1">
             <import file="1.lfm"/>
         </tab>
-        <tab title="Página 2">
+        <tab title="Magias 1">
             <import file="2.lfm"/>
         </tab>
-        <tab title="Página 3">
+        <tab title="Magias 2">
             <import file="3.lfm"/>
         </tab>
-        <tab title="Página 4">
+        <tab title="Magias 3">
             <import file="4.lfm"/>
         </tab>
-		<tab title="Página 5">
+		<tab title="Magias 4">
             <import file="5.lfm"/>
         </tab>
+        <tab title="Habilidades 1">
+            <import file="6.lfm"/>
+        </tab>
+        <tab title="Habilidades 2">
+                    <import file="7.lfm"/>
+                </tab>
+        <tab title="Anotações">
+                <import file="8.lfm"/>
+            </tab>
     </tabControl>
 </form>

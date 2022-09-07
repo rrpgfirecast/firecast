@@ -1,0 +1,1987 @@
+require("firecast.lua");
+local __o_rrpgObjs = require("rrpgObjs.lua");
+require("rrpgGUI.lua");
+require("rrpgDialogs.lua");
+require("rrpgLFM.lua");
+require("ndb.lua");
+require("locale.lua");
+local __o_Utils = require("utils.lua");
+
+local function constructNew_frmSODLFillable7_svg()
+    local obj = GUI.fromHandle(_obj_newObject("form"));
+    local self = obj;
+    local sheet = nil;
+
+    rawset(obj, "_oldSetNodeObjectFunction", rawget(obj, "setNodeObject"));
+
+    function obj:setNodeObject(nodeObject)
+        sheet = nodeObject;
+        self.sheet = nodeObject;
+        self:_oldSetNodeObjectFunction(nodeObject);
+    end;
+
+    function obj:setNodeDatabase(nodeObject)
+        self:setNodeObject(nodeObject);
+    end;
+
+    _gui_assignInitialParentForForm(obj.handle);
+    obj:beginUpdate();
+    obj:setName("frmSODLFillable7_svg");
+    obj:setAlign("client");
+    obj:setTheme("light");
+    obj:setMargins({top=1});
+
+    obj.scrollBox1 = GUI.fromHandle(_obj_newObject("scrollBox"));
+    obj.scrollBox1:setParent(obj);
+    obj.scrollBox1:setAlign("client");
+    obj.scrollBox1:setName("scrollBox1");
+
+    obj.rectangle1 = GUI.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle1:setParent(obj.scrollBox1);
+    obj.rectangle1:setWidth(893);
+    obj.rectangle1:setHeight(1263);
+    obj.rectangle1:setColor("white");
+    obj.rectangle1:setName("rectangle1");
+
+    obj.image1 = GUI.fromHandle(_obj_newObject("image"));
+    obj.image1:setParent(obj.rectangle1);
+    obj.image1:setLeft(0);
+    obj.image1:setTop(0);
+    obj.image1:setWidth(893);
+    obj.image1:setHeight(1263);
+    obj.image1:setSRC("/SODLFillable/images/habilidades.png");
+    obj.image1:setStyle("stretch");
+    obj.image1:setOptimize(true);
+    obj.image1:setName("image1");
+
+    obj.layout1 = GUI.fromHandle(_obj_newObject("layout"));
+    obj.layout1:setParent(obj.rectangle1);
+    obj.layout1:setLeft(0);
+    obj.layout1:setTop(0);
+    obj.layout1:setWidth(447);
+    obj.layout1:setHeight(1263);
+    obj.layout1:setName("layout1");
+
+    obj.edit1 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit1:setParent(obj.layout1);
+    obj.edit1:setLeft(110);
+    obj.edit1:setTop(36);
+    obj.edit1:setWidth(200);
+    obj.edit1:setHeight(30);
+    obj.edit1:setFontSize(16);
+    obj.edit1:setFontColor("#000000");
+    obj.edit1:setTransparent(true);
+    obj.edit1:setField("skillName_13");
+    obj.edit1:setName("edit1");
+
+    obj.layout2 = GUI.fromHandle(_obj_newObject("layout"));
+    obj.layout2:setParent(obj.layout1);
+    obj.layout2:setLeft(73);
+    obj.layout2:setTop(66);
+    obj.layout2:setWidth(200);
+    obj.layout2:setHeight(20);
+    obj.layout2:setName("layout2");
+
+    obj.imageCheckBox1 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox1:setParent(obj.layout2);
+    obj.imageCheckBox1:setLeft(0);
+    obj.imageCheckBox1:setTop(0);
+    obj.imageCheckBox1:setWidth(20);
+    obj.imageCheckBox1:setHeight(20);
+    obj.imageCheckBox1:setImageUnchecked("/SODLFillable/images/checkboxUnchecked.png");
+    obj.imageCheckBox1:setImageChecked("/SODLFillable/images/checkboxChecked.png");
+    obj.imageCheckBox1:setField("skillCheck_120");
+    obj.imageCheckBox1:setName("imageCheckBox1");
+
+    obj.imageCheckBox2 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox2:setParent(obj.layout2);
+    obj.imageCheckBox2:setLeft(20);
+    obj.imageCheckBox2:setTop(0);
+    obj.imageCheckBox2:setWidth(20);
+    obj.imageCheckBox2:setHeight(20);
+    obj.imageCheckBox2:setImageUnchecked("/SODLFillable/images/checkboxUnchecked.png");
+    obj.imageCheckBox2:setImageChecked("/SODLFillable/images/checkboxChecked.png");
+    obj.imageCheckBox2:setField("skillCheck_121");
+    obj.imageCheckBox2:setName("imageCheckBox2");
+
+    obj.imageCheckBox3 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox3:setParent(obj.layout2);
+    obj.imageCheckBox3:setLeft(40);
+    obj.imageCheckBox3:setTop(0);
+    obj.imageCheckBox3:setWidth(20);
+    obj.imageCheckBox3:setHeight(20);
+    obj.imageCheckBox3:setImageUnchecked("/SODLFillable/images/checkboxUnchecked.png");
+    obj.imageCheckBox3:setImageChecked("/SODLFillable/images/checkboxChecked.png");
+    obj.imageCheckBox3:setField("skillCheck_122");
+    obj.imageCheckBox3:setName("imageCheckBox3");
+
+    obj.imageCheckBox4 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox4:setParent(obj.layout2);
+    obj.imageCheckBox4:setLeft(60);
+    obj.imageCheckBox4:setTop(0);
+    obj.imageCheckBox4:setWidth(20);
+    obj.imageCheckBox4:setHeight(20);
+    obj.imageCheckBox4:setImageUnchecked("/SODLFillable/images/checkboxUnchecked.png");
+    obj.imageCheckBox4:setImageChecked("/SODLFillable/images/checkboxChecked.png");
+    obj.imageCheckBox4:setField("skillCheck_123");
+    obj.imageCheckBox4:setName("imageCheckBox4");
+
+    obj.imageCheckBox5 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox5:setParent(obj.layout2);
+    obj.imageCheckBox5:setLeft(80);
+    obj.imageCheckBox5:setTop(0);
+    obj.imageCheckBox5:setWidth(20);
+    obj.imageCheckBox5:setHeight(20);
+    obj.imageCheckBox5:setImageUnchecked("/SODLFillable/images/checkboxUnchecked.png");
+    obj.imageCheckBox5:setImageChecked("/SODLFillable/images/checkboxChecked.png");
+    obj.imageCheckBox5:setField("skillCheck_124");
+    obj.imageCheckBox5:setName("imageCheckBox5");
+
+    obj.imageCheckBox6 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox6:setParent(obj.layout2);
+    obj.imageCheckBox6:setLeft(100);
+    obj.imageCheckBox6:setTop(0);
+    obj.imageCheckBox6:setWidth(20);
+    obj.imageCheckBox6:setHeight(20);
+    obj.imageCheckBox6:setImageUnchecked("/SODLFillable/images/checkboxUnchecked.png");
+    obj.imageCheckBox6:setImageChecked("/SODLFillable/images/checkboxChecked.png");
+    obj.imageCheckBox6:setField("skillCheck_125");
+    obj.imageCheckBox6:setName("imageCheckBox6");
+
+    obj.imageCheckBox7 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox7:setParent(obj.layout2);
+    obj.imageCheckBox7:setLeft(120);
+    obj.imageCheckBox7:setTop(0);
+    obj.imageCheckBox7:setWidth(20);
+    obj.imageCheckBox7:setHeight(20);
+    obj.imageCheckBox7:setImageUnchecked("/SODLFillable/images/checkboxUnchecked.png");
+    obj.imageCheckBox7:setImageChecked("/SODLFillable/images/checkboxChecked.png");
+    obj.imageCheckBox7:setField("skillCheck_126");
+    obj.imageCheckBox7:setName("imageCheckBox7");
+
+    obj.imageCheckBox8 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox8:setParent(obj.layout2);
+    obj.imageCheckBox8:setLeft(140);
+    obj.imageCheckBox8:setTop(0);
+    obj.imageCheckBox8:setWidth(20);
+    obj.imageCheckBox8:setHeight(20);
+    obj.imageCheckBox8:setImageUnchecked("/SODLFillable/images/checkboxUnchecked.png");
+    obj.imageCheckBox8:setImageChecked("/SODLFillable/images/checkboxChecked.png");
+    obj.imageCheckBox8:setField("skillCheck_127");
+    obj.imageCheckBox8:setName("imageCheckBox8");
+
+    obj.imageCheckBox9 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox9:setParent(obj.layout2);
+    obj.imageCheckBox9:setLeft(160);
+    obj.imageCheckBox9:setTop(0);
+    obj.imageCheckBox9:setWidth(20);
+    obj.imageCheckBox9:setHeight(20);
+    obj.imageCheckBox9:setImageUnchecked("/SODLFillable/images/checkboxUnchecked.png");
+    obj.imageCheckBox9:setImageChecked("/SODLFillable/images/checkboxChecked.png");
+    obj.imageCheckBox9:setField("skillCheck_128");
+    obj.imageCheckBox9:setName("imageCheckBox9");
+
+    obj.imageCheckBox10 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox10:setParent(obj.layout2);
+    obj.imageCheckBox10:setLeft(180);
+    obj.imageCheckBox10:setTop(0);
+    obj.imageCheckBox10:setWidth(20);
+    obj.imageCheckBox10:setHeight(20);
+    obj.imageCheckBox10:setImageUnchecked("/SODLFillable/images/checkboxUnchecked.png");
+    obj.imageCheckBox10:setImageChecked("/SODLFillable/images/checkboxChecked.png");
+    obj.imageCheckBox10:setField("skillCheck_129");
+    obj.imageCheckBox10:setName("imageCheckBox10");
+
+    obj.textEditor1 = GUI.fromHandle(_obj_newObject("textEditor"));
+    obj.textEditor1:setParent(obj.layout1);
+    obj.textEditor1:setLeft(36);
+    obj.textEditor1:setTop(86);
+    obj.textEditor1:setWidth(320);
+    obj.textEditor1:setHeight(150);
+    obj.textEditor1:setFontSize(14);
+    obj.textEditor1:setFontColor("#000000");
+    obj.textEditor1:setTransparent(true);
+    obj.textEditor1:setField("skillDesc_13");
+    obj.textEditor1:setName("textEditor1");
+
+    obj.edit2 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit2:setParent(obj.layout1);
+    obj.edit2:setLeft(110);
+    obj.edit2:setTop(242);
+    obj.edit2:setWidth(200);
+    obj.edit2:setHeight(30);
+    obj.edit2:setFontSize(16);
+    obj.edit2:setFontColor("#000000");
+    obj.edit2:setTransparent(true);
+    obj.edit2:setField("skillName_14");
+    obj.edit2:setName("edit2");
+
+    obj.layout3 = GUI.fromHandle(_obj_newObject("layout"));
+    obj.layout3:setParent(obj.layout1);
+    obj.layout3:setLeft(73);
+    obj.layout3:setTop(272);
+    obj.layout3:setWidth(200);
+    obj.layout3:setHeight(20);
+    obj.layout3:setName("layout3");
+
+    obj.imageCheckBox11 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox11:setParent(obj.layout3);
+    obj.imageCheckBox11:setLeft(0);
+    obj.imageCheckBox11:setTop(0);
+    obj.imageCheckBox11:setWidth(20);
+    obj.imageCheckBox11:setHeight(20);
+    obj.imageCheckBox11:setImageUnchecked("/SODLFillable/images/checkboxUnchecked.png");
+    obj.imageCheckBox11:setImageChecked("/SODLFillable/images/checkboxChecked.png");
+    obj.imageCheckBox11:setField("skillCheck_130");
+    obj.imageCheckBox11:setName("imageCheckBox11");
+
+    obj.imageCheckBox12 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox12:setParent(obj.layout3);
+    obj.imageCheckBox12:setLeft(20);
+    obj.imageCheckBox12:setTop(0);
+    obj.imageCheckBox12:setWidth(20);
+    obj.imageCheckBox12:setHeight(20);
+    obj.imageCheckBox12:setImageUnchecked("/SODLFillable/images/checkboxUnchecked.png");
+    obj.imageCheckBox12:setImageChecked("/SODLFillable/images/checkboxChecked.png");
+    obj.imageCheckBox12:setField("skillCheck_131");
+    obj.imageCheckBox12:setName("imageCheckBox12");
+
+    obj.imageCheckBox13 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox13:setParent(obj.layout3);
+    obj.imageCheckBox13:setLeft(40);
+    obj.imageCheckBox13:setTop(0);
+    obj.imageCheckBox13:setWidth(20);
+    obj.imageCheckBox13:setHeight(20);
+    obj.imageCheckBox13:setImageUnchecked("/SODLFillable/images/checkboxUnchecked.png");
+    obj.imageCheckBox13:setImageChecked("/SODLFillable/images/checkboxChecked.png");
+    obj.imageCheckBox13:setField("skillCheck_132");
+    obj.imageCheckBox13:setName("imageCheckBox13");
+
+    obj.imageCheckBox14 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox14:setParent(obj.layout3);
+    obj.imageCheckBox14:setLeft(60);
+    obj.imageCheckBox14:setTop(0);
+    obj.imageCheckBox14:setWidth(20);
+    obj.imageCheckBox14:setHeight(20);
+    obj.imageCheckBox14:setImageUnchecked("/SODLFillable/images/checkboxUnchecked.png");
+    obj.imageCheckBox14:setImageChecked("/SODLFillable/images/checkboxChecked.png");
+    obj.imageCheckBox14:setField("skillCheck_133");
+    obj.imageCheckBox14:setName("imageCheckBox14");
+
+    obj.imageCheckBox15 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox15:setParent(obj.layout3);
+    obj.imageCheckBox15:setLeft(80);
+    obj.imageCheckBox15:setTop(0);
+    obj.imageCheckBox15:setWidth(20);
+    obj.imageCheckBox15:setHeight(20);
+    obj.imageCheckBox15:setImageUnchecked("/SODLFillable/images/checkboxUnchecked.png");
+    obj.imageCheckBox15:setImageChecked("/SODLFillable/images/checkboxChecked.png");
+    obj.imageCheckBox15:setField("skillCheck_134");
+    obj.imageCheckBox15:setName("imageCheckBox15");
+
+    obj.imageCheckBox16 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox16:setParent(obj.layout3);
+    obj.imageCheckBox16:setLeft(100);
+    obj.imageCheckBox16:setTop(0);
+    obj.imageCheckBox16:setWidth(20);
+    obj.imageCheckBox16:setHeight(20);
+    obj.imageCheckBox16:setImageUnchecked("/SODLFillable/images/checkboxUnchecked.png");
+    obj.imageCheckBox16:setImageChecked("/SODLFillable/images/checkboxChecked.png");
+    obj.imageCheckBox16:setField("skillCheck_135");
+    obj.imageCheckBox16:setName("imageCheckBox16");
+
+    obj.imageCheckBox17 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox17:setParent(obj.layout3);
+    obj.imageCheckBox17:setLeft(120);
+    obj.imageCheckBox17:setTop(0);
+    obj.imageCheckBox17:setWidth(20);
+    obj.imageCheckBox17:setHeight(20);
+    obj.imageCheckBox17:setImageUnchecked("/SODLFillable/images/checkboxUnchecked.png");
+    obj.imageCheckBox17:setImageChecked("/SODLFillable/images/checkboxChecked.png");
+    obj.imageCheckBox17:setField("skillCheck_136");
+    obj.imageCheckBox17:setName("imageCheckBox17");
+
+    obj.imageCheckBox18 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox18:setParent(obj.layout3);
+    obj.imageCheckBox18:setLeft(140);
+    obj.imageCheckBox18:setTop(0);
+    obj.imageCheckBox18:setWidth(20);
+    obj.imageCheckBox18:setHeight(20);
+    obj.imageCheckBox18:setImageUnchecked("/SODLFillable/images/checkboxUnchecked.png");
+    obj.imageCheckBox18:setImageChecked("/SODLFillable/images/checkboxChecked.png");
+    obj.imageCheckBox18:setField("skillCheck_137");
+    obj.imageCheckBox18:setName("imageCheckBox18");
+
+    obj.imageCheckBox19 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox19:setParent(obj.layout3);
+    obj.imageCheckBox19:setLeft(160);
+    obj.imageCheckBox19:setTop(0);
+    obj.imageCheckBox19:setWidth(20);
+    obj.imageCheckBox19:setHeight(20);
+    obj.imageCheckBox19:setImageUnchecked("/SODLFillable/images/checkboxUnchecked.png");
+    obj.imageCheckBox19:setImageChecked("/SODLFillable/images/checkboxChecked.png");
+    obj.imageCheckBox19:setField("skillCheck_138");
+    obj.imageCheckBox19:setName("imageCheckBox19");
+
+    obj.imageCheckBox20 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox20:setParent(obj.layout3);
+    obj.imageCheckBox20:setLeft(180);
+    obj.imageCheckBox20:setTop(0);
+    obj.imageCheckBox20:setWidth(20);
+    obj.imageCheckBox20:setHeight(20);
+    obj.imageCheckBox20:setImageUnchecked("/SODLFillable/images/checkboxUnchecked.png");
+    obj.imageCheckBox20:setImageChecked("/SODLFillable/images/checkboxChecked.png");
+    obj.imageCheckBox20:setField("skillCheck_139");
+    obj.imageCheckBox20:setName("imageCheckBox20");
+
+    obj.textEditor2 = GUI.fromHandle(_obj_newObject("textEditor"));
+    obj.textEditor2:setParent(obj.layout1);
+    obj.textEditor2:setLeft(36);
+    obj.textEditor2:setTop(292);
+    obj.textEditor2:setWidth(320);
+    obj.textEditor2:setHeight(150);
+    obj.textEditor2:setFontSize(14);
+    obj.textEditor2:setFontColor("#000000");
+    obj.textEditor2:setTransparent(true);
+    obj.textEditor2:setField("skillDesc_14");
+    obj.textEditor2:setName("textEditor2");
+
+    obj.edit3 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit3:setParent(obj.layout1);
+    obj.edit3:setLeft(110);
+    obj.edit3:setTop(448);
+    obj.edit3:setWidth(200);
+    obj.edit3:setHeight(30);
+    obj.edit3:setFontSize(16);
+    obj.edit3:setFontColor("#000000");
+    obj.edit3:setTransparent(true);
+    obj.edit3:setField("skillName_15");
+    obj.edit3:setName("edit3");
+
+    obj.layout4 = GUI.fromHandle(_obj_newObject("layout"));
+    obj.layout4:setParent(obj.layout1);
+    obj.layout4:setLeft(73);
+    obj.layout4:setTop(478);
+    obj.layout4:setWidth(200);
+    obj.layout4:setHeight(20);
+    obj.layout4:setName("layout4");
+
+    obj.imageCheckBox21 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox21:setParent(obj.layout4);
+    obj.imageCheckBox21:setLeft(0);
+    obj.imageCheckBox21:setTop(0);
+    obj.imageCheckBox21:setWidth(20);
+    obj.imageCheckBox21:setHeight(20);
+    obj.imageCheckBox21:setImageUnchecked("/SODLFillable/images/checkboxUnchecked.png");
+    obj.imageCheckBox21:setImageChecked("/SODLFillable/images/checkboxChecked.png");
+    obj.imageCheckBox21:setField("skillCheck_140");
+    obj.imageCheckBox21:setName("imageCheckBox21");
+
+    obj.imageCheckBox22 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox22:setParent(obj.layout4);
+    obj.imageCheckBox22:setLeft(20);
+    obj.imageCheckBox22:setTop(0);
+    obj.imageCheckBox22:setWidth(20);
+    obj.imageCheckBox22:setHeight(20);
+    obj.imageCheckBox22:setImageUnchecked("/SODLFillable/images/checkboxUnchecked.png");
+    obj.imageCheckBox22:setImageChecked("/SODLFillable/images/checkboxChecked.png");
+    obj.imageCheckBox22:setField("skillCheck_141");
+    obj.imageCheckBox22:setName("imageCheckBox22");
+
+    obj.imageCheckBox23 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox23:setParent(obj.layout4);
+    obj.imageCheckBox23:setLeft(40);
+    obj.imageCheckBox23:setTop(0);
+    obj.imageCheckBox23:setWidth(20);
+    obj.imageCheckBox23:setHeight(20);
+    obj.imageCheckBox23:setImageUnchecked("/SODLFillable/images/checkboxUnchecked.png");
+    obj.imageCheckBox23:setImageChecked("/SODLFillable/images/checkboxChecked.png");
+    obj.imageCheckBox23:setField("skillCheck_142");
+    obj.imageCheckBox23:setName("imageCheckBox23");
+
+    obj.imageCheckBox24 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox24:setParent(obj.layout4);
+    obj.imageCheckBox24:setLeft(60);
+    obj.imageCheckBox24:setTop(0);
+    obj.imageCheckBox24:setWidth(20);
+    obj.imageCheckBox24:setHeight(20);
+    obj.imageCheckBox24:setImageUnchecked("/SODLFillable/images/checkboxUnchecked.png");
+    obj.imageCheckBox24:setImageChecked("/SODLFillable/images/checkboxChecked.png");
+    obj.imageCheckBox24:setField("skillCheck_143");
+    obj.imageCheckBox24:setName("imageCheckBox24");
+
+    obj.imageCheckBox25 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox25:setParent(obj.layout4);
+    obj.imageCheckBox25:setLeft(80);
+    obj.imageCheckBox25:setTop(0);
+    obj.imageCheckBox25:setWidth(20);
+    obj.imageCheckBox25:setHeight(20);
+    obj.imageCheckBox25:setImageUnchecked("/SODLFillable/images/checkboxUnchecked.png");
+    obj.imageCheckBox25:setImageChecked("/SODLFillable/images/checkboxChecked.png");
+    obj.imageCheckBox25:setField("skillCheck_144");
+    obj.imageCheckBox25:setName("imageCheckBox25");
+
+    obj.imageCheckBox26 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox26:setParent(obj.layout4);
+    obj.imageCheckBox26:setLeft(100);
+    obj.imageCheckBox26:setTop(0);
+    obj.imageCheckBox26:setWidth(20);
+    obj.imageCheckBox26:setHeight(20);
+    obj.imageCheckBox26:setImageUnchecked("/SODLFillable/images/checkboxUnchecked.png");
+    obj.imageCheckBox26:setImageChecked("/SODLFillable/images/checkboxChecked.png");
+    obj.imageCheckBox26:setField("skillCheck_145");
+    obj.imageCheckBox26:setName("imageCheckBox26");
+
+    obj.imageCheckBox27 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox27:setParent(obj.layout4);
+    obj.imageCheckBox27:setLeft(120);
+    obj.imageCheckBox27:setTop(0);
+    obj.imageCheckBox27:setWidth(20);
+    obj.imageCheckBox27:setHeight(20);
+    obj.imageCheckBox27:setImageUnchecked("/SODLFillable/images/checkboxUnchecked.png");
+    obj.imageCheckBox27:setImageChecked("/SODLFillable/images/checkboxChecked.png");
+    obj.imageCheckBox27:setField("skillCheck_146");
+    obj.imageCheckBox27:setName("imageCheckBox27");
+
+    obj.imageCheckBox28 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox28:setParent(obj.layout4);
+    obj.imageCheckBox28:setLeft(140);
+    obj.imageCheckBox28:setTop(0);
+    obj.imageCheckBox28:setWidth(20);
+    obj.imageCheckBox28:setHeight(20);
+    obj.imageCheckBox28:setImageUnchecked("/SODLFillable/images/checkboxUnchecked.png");
+    obj.imageCheckBox28:setImageChecked("/SODLFillable/images/checkboxChecked.png");
+    obj.imageCheckBox28:setField("skillCheck_147");
+    obj.imageCheckBox28:setName("imageCheckBox28");
+
+    obj.imageCheckBox29 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox29:setParent(obj.layout4);
+    obj.imageCheckBox29:setLeft(160);
+    obj.imageCheckBox29:setTop(0);
+    obj.imageCheckBox29:setWidth(20);
+    obj.imageCheckBox29:setHeight(20);
+    obj.imageCheckBox29:setImageUnchecked("/SODLFillable/images/checkboxUnchecked.png");
+    obj.imageCheckBox29:setImageChecked("/SODLFillable/images/checkboxChecked.png");
+    obj.imageCheckBox29:setField("skillCheck_148");
+    obj.imageCheckBox29:setName("imageCheckBox29");
+
+    obj.imageCheckBox30 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox30:setParent(obj.layout4);
+    obj.imageCheckBox30:setLeft(180);
+    obj.imageCheckBox30:setTop(0);
+    obj.imageCheckBox30:setWidth(20);
+    obj.imageCheckBox30:setHeight(20);
+    obj.imageCheckBox30:setImageUnchecked("/SODLFillable/images/checkboxUnchecked.png");
+    obj.imageCheckBox30:setImageChecked("/SODLFillable/images/checkboxChecked.png");
+    obj.imageCheckBox30:setField("skillCheck_149");
+    obj.imageCheckBox30:setName("imageCheckBox30");
+
+    obj.textEditor3 = GUI.fromHandle(_obj_newObject("textEditor"));
+    obj.textEditor3:setParent(obj.layout1);
+    obj.textEditor3:setLeft(36);
+    obj.textEditor3:setTop(498);
+    obj.textEditor3:setWidth(320);
+    obj.textEditor3:setHeight(150);
+    obj.textEditor3:setFontSize(14);
+    obj.textEditor3:setFontColor("#000000");
+    obj.textEditor3:setTransparent(true);
+    obj.textEditor3:setField("skillDesc_15");
+    obj.textEditor3:setName("textEditor3");
+
+    obj.edit4 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit4:setParent(obj.layout1);
+    obj.edit4:setLeft(110);
+    obj.edit4:setTop(670);
+    obj.edit4:setWidth(200);
+    obj.edit4:setHeight(30);
+    obj.edit4:setFontSize(16);
+    obj.edit4:setFontColor("#000000");
+    obj.edit4:setTransparent(true);
+    obj.edit4:setField("skillName_16");
+    obj.edit4:setName("edit4");
+
+    obj.layout5 = GUI.fromHandle(_obj_newObject("layout"));
+    obj.layout5:setParent(obj.layout1);
+    obj.layout5:setLeft(73);
+    obj.layout5:setTop(700);
+    obj.layout5:setWidth(200);
+    obj.layout5:setHeight(20);
+    obj.layout5:setName("layout5");
+
+    obj.imageCheckBox31 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox31:setParent(obj.layout5);
+    obj.imageCheckBox31:setLeft(0);
+    obj.imageCheckBox31:setTop(0);
+    obj.imageCheckBox31:setWidth(20);
+    obj.imageCheckBox31:setHeight(20);
+    obj.imageCheckBox31:setImageUnchecked("/SODLFillable/images/checkboxUnchecked.png");
+    obj.imageCheckBox31:setImageChecked("/SODLFillable/images/checkboxChecked.png");
+    obj.imageCheckBox31:setField("skillCheck_150");
+    obj.imageCheckBox31:setName("imageCheckBox31");
+
+    obj.imageCheckBox32 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox32:setParent(obj.layout5);
+    obj.imageCheckBox32:setLeft(20);
+    obj.imageCheckBox32:setTop(0);
+    obj.imageCheckBox32:setWidth(20);
+    obj.imageCheckBox32:setHeight(20);
+    obj.imageCheckBox32:setImageUnchecked("/SODLFillable/images/checkboxUnchecked.png");
+    obj.imageCheckBox32:setImageChecked("/SODLFillable/images/checkboxChecked.png");
+    obj.imageCheckBox32:setField("skillCheck_151");
+    obj.imageCheckBox32:setName("imageCheckBox32");
+
+    obj.imageCheckBox33 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox33:setParent(obj.layout5);
+    obj.imageCheckBox33:setLeft(40);
+    obj.imageCheckBox33:setTop(0);
+    obj.imageCheckBox33:setWidth(20);
+    obj.imageCheckBox33:setHeight(20);
+    obj.imageCheckBox33:setImageUnchecked("/SODLFillable/images/checkboxUnchecked.png");
+    obj.imageCheckBox33:setImageChecked("/SODLFillable/images/checkboxChecked.png");
+    obj.imageCheckBox33:setField("skillCheck_152");
+    obj.imageCheckBox33:setName("imageCheckBox33");
+
+    obj.imageCheckBox34 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox34:setParent(obj.layout5);
+    obj.imageCheckBox34:setLeft(60);
+    obj.imageCheckBox34:setTop(0);
+    obj.imageCheckBox34:setWidth(20);
+    obj.imageCheckBox34:setHeight(20);
+    obj.imageCheckBox34:setImageUnchecked("/SODLFillable/images/checkboxUnchecked.png");
+    obj.imageCheckBox34:setImageChecked("/SODLFillable/images/checkboxChecked.png");
+    obj.imageCheckBox34:setField("skillCheck_153");
+    obj.imageCheckBox34:setName("imageCheckBox34");
+
+    obj.imageCheckBox35 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox35:setParent(obj.layout5);
+    obj.imageCheckBox35:setLeft(80);
+    obj.imageCheckBox35:setTop(0);
+    obj.imageCheckBox35:setWidth(20);
+    obj.imageCheckBox35:setHeight(20);
+    obj.imageCheckBox35:setImageUnchecked("/SODLFillable/images/checkboxUnchecked.png");
+    obj.imageCheckBox35:setImageChecked("/SODLFillable/images/checkboxChecked.png");
+    obj.imageCheckBox35:setField("skillCheck_154");
+    obj.imageCheckBox35:setName("imageCheckBox35");
+
+    obj.imageCheckBox36 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox36:setParent(obj.layout5);
+    obj.imageCheckBox36:setLeft(100);
+    obj.imageCheckBox36:setTop(0);
+    obj.imageCheckBox36:setWidth(20);
+    obj.imageCheckBox36:setHeight(20);
+    obj.imageCheckBox36:setImageUnchecked("/SODLFillable/images/checkboxUnchecked.png");
+    obj.imageCheckBox36:setImageChecked("/SODLFillable/images/checkboxChecked.png");
+    obj.imageCheckBox36:setField("skillCheck_155");
+    obj.imageCheckBox36:setName("imageCheckBox36");
+
+    obj.imageCheckBox37 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox37:setParent(obj.layout5);
+    obj.imageCheckBox37:setLeft(120);
+    obj.imageCheckBox37:setTop(0);
+    obj.imageCheckBox37:setWidth(20);
+    obj.imageCheckBox37:setHeight(20);
+    obj.imageCheckBox37:setImageUnchecked("/SODLFillable/images/checkboxUnchecked.png");
+    obj.imageCheckBox37:setImageChecked("/SODLFillable/images/checkboxChecked.png");
+    obj.imageCheckBox37:setField("skillCheck_156");
+    obj.imageCheckBox37:setName("imageCheckBox37");
+
+    obj.imageCheckBox38 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox38:setParent(obj.layout5);
+    obj.imageCheckBox38:setLeft(140);
+    obj.imageCheckBox38:setTop(0);
+    obj.imageCheckBox38:setWidth(20);
+    obj.imageCheckBox38:setHeight(20);
+    obj.imageCheckBox38:setImageUnchecked("/SODLFillable/images/checkboxUnchecked.png");
+    obj.imageCheckBox38:setImageChecked("/SODLFillable/images/checkboxChecked.png");
+    obj.imageCheckBox38:setField("skillCheck_157");
+    obj.imageCheckBox38:setName("imageCheckBox38");
+
+    obj.imageCheckBox39 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox39:setParent(obj.layout5);
+    obj.imageCheckBox39:setLeft(160);
+    obj.imageCheckBox39:setTop(0);
+    obj.imageCheckBox39:setWidth(20);
+    obj.imageCheckBox39:setHeight(20);
+    obj.imageCheckBox39:setImageUnchecked("/SODLFillable/images/checkboxUnchecked.png");
+    obj.imageCheckBox39:setImageChecked("/SODLFillable/images/checkboxChecked.png");
+    obj.imageCheckBox39:setField("skillCheck_158");
+    obj.imageCheckBox39:setName("imageCheckBox39");
+
+    obj.imageCheckBox40 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox40:setParent(obj.layout5);
+    obj.imageCheckBox40:setLeft(180);
+    obj.imageCheckBox40:setTop(0);
+    obj.imageCheckBox40:setWidth(20);
+    obj.imageCheckBox40:setHeight(20);
+    obj.imageCheckBox40:setImageUnchecked("/SODLFillable/images/checkboxUnchecked.png");
+    obj.imageCheckBox40:setImageChecked("/SODLFillable/images/checkboxChecked.png");
+    obj.imageCheckBox40:setField("skillCheck_159");
+    obj.imageCheckBox40:setName("imageCheckBox40");
+
+    obj.textEditor4 = GUI.fromHandle(_obj_newObject("textEditor"));
+    obj.textEditor4:setParent(obj.layout1);
+    obj.textEditor4:setLeft(36);
+    obj.textEditor4:setTop(720);
+    obj.textEditor4:setWidth(320);
+    obj.textEditor4:setHeight(150);
+    obj.textEditor4:setFontSize(14);
+    obj.textEditor4:setFontColor("#000000");
+    obj.textEditor4:setTransparent(true);
+    obj.textEditor4:setField("skillDesc_16");
+    obj.textEditor4:setName("textEditor4");
+
+    obj.edit5 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit5:setParent(obj.layout1);
+    obj.edit5:setLeft(110);
+    obj.edit5:setTop(856);
+    obj.edit5:setWidth(200);
+    obj.edit5:setHeight(30);
+    obj.edit5:setFontSize(16);
+    obj.edit5:setFontColor("#000000");
+    obj.edit5:setTransparent(true);
+    obj.edit5:setField("skillName_17");
+    obj.edit5:setName("edit5");
+
+    obj.layout6 = GUI.fromHandle(_obj_newObject("layout"));
+    obj.layout6:setParent(obj.layout1);
+    obj.layout6:setLeft(73);
+    obj.layout6:setTop(886);
+    obj.layout6:setWidth(200);
+    obj.layout6:setHeight(20);
+    obj.layout6:setName("layout6");
+
+    obj.imageCheckBox41 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox41:setParent(obj.layout6);
+    obj.imageCheckBox41:setLeft(0);
+    obj.imageCheckBox41:setTop(0);
+    obj.imageCheckBox41:setWidth(20);
+    obj.imageCheckBox41:setHeight(20);
+    obj.imageCheckBox41:setImageUnchecked("/SODLFillable/images/checkboxUnchecked.png");
+    obj.imageCheckBox41:setImageChecked("/SODLFillable/images/checkboxChecked.png");
+    obj.imageCheckBox41:setField("skillCheck_160");
+    obj.imageCheckBox41:setName("imageCheckBox41");
+
+    obj.imageCheckBox42 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox42:setParent(obj.layout6);
+    obj.imageCheckBox42:setLeft(20);
+    obj.imageCheckBox42:setTop(0);
+    obj.imageCheckBox42:setWidth(20);
+    obj.imageCheckBox42:setHeight(20);
+    obj.imageCheckBox42:setImageUnchecked("/SODLFillable/images/checkboxUnchecked.png");
+    obj.imageCheckBox42:setImageChecked("/SODLFillable/images/checkboxChecked.png");
+    obj.imageCheckBox42:setField("skillCheck_161");
+    obj.imageCheckBox42:setName("imageCheckBox42");
+
+    obj.imageCheckBox43 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox43:setParent(obj.layout6);
+    obj.imageCheckBox43:setLeft(40);
+    obj.imageCheckBox43:setTop(0);
+    obj.imageCheckBox43:setWidth(20);
+    obj.imageCheckBox43:setHeight(20);
+    obj.imageCheckBox43:setImageUnchecked("/SODLFillable/images/checkboxUnchecked.png");
+    obj.imageCheckBox43:setImageChecked("/SODLFillable/images/checkboxChecked.png");
+    obj.imageCheckBox43:setField("skillCheck_162");
+    obj.imageCheckBox43:setName("imageCheckBox43");
+
+    obj.imageCheckBox44 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox44:setParent(obj.layout6);
+    obj.imageCheckBox44:setLeft(60);
+    obj.imageCheckBox44:setTop(0);
+    obj.imageCheckBox44:setWidth(20);
+    obj.imageCheckBox44:setHeight(20);
+    obj.imageCheckBox44:setImageUnchecked("/SODLFillable/images/checkboxUnchecked.png");
+    obj.imageCheckBox44:setImageChecked("/SODLFillable/images/checkboxChecked.png");
+    obj.imageCheckBox44:setField("skillCheck_163");
+    obj.imageCheckBox44:setName("imageCheckBox44");
+
+    obj.imageCheckBox45 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox45:setParent(obj.layout6);
+    obj.imageCheckBox45:setLeft(80);
+    obj.imageCheckBox45:setTop(0);
+    obj.imageCheckBox45:setWidth(20);
+    obj.imageCheckBox45:setHeight(20);
+    obj.imageCheckBox45:setImageUnchecked("/SODLFillable/images/checkboxUnchecked.png");
+    obj.imageCheckBox45:setImageChecked("/SODLFillable/images/checkboxChecked.png");
+    obj.imageCheckBox45:setField("skillCheck_164");
+    obj.imageCheckBox45:setName("imageCheckBox45");
+
+    obj.imageCheckBox46 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox46:setParent(obj.layout6);
+    obj.imageCheckBox46:setLeft(100);
+    obj.imageCheckBox46:setTop(0);
+    obj.imageCheckBox46:setWidth(20);
+    obj.imageCheckBox46:setHeight(20);
+    obj.imageCheckBox46:setImageUnchecked("/SODLFillable/images/checkboxUnchecked.png");
+    obj.imageCheckBox46:setImageChecked("/SODLFillable/images/checkboxChecked.png");
+    obj.imageCheckBox46:setField("skillCheck_165");
+    obj.imageCheckBox46:setName("imageCheckBox46");
+
+    obj.imageCheckBox47 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox47:setParent(obj.layout6);
+    obj.imageCheckBox47:setLeft(120);
+    obj.imageCheckBox47:setTop(0);
+    obj.imageCheckBox47:setWidth(20);
+    obj.imageCheckBox47:setHeight(20);
+    obj.imageCheckBox47:setImageUnchecked("/SODLFillable/images/checkboxUnchecked.png");
+    obj.imageCheckBox47:setImageChecked("/SODLFillable/images/checkboxChecked.png");
+    obj.imageCheckBox47:setField("skillCheck_166");
+    obj.imageCheckBox47:setName("imageCheckBox47");
+
+    obj.imageCheckBox48 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox48:setParent(obj.layout6);
+    obj.imageCheckBox48:setLeft(140);
+    obj.imageCheckBox48:setTop(0);
+    obj.imageCheckBox48:setWidth(20);
+    obj.imageCheckBox48:setHeight(20);
+    obj.imageCheckBox48:setImageUnchecked("/SODLFillable/images/checkboxUnchecked.png");
+    obj.imageCheckBox48:setImageChecked("/SODLFillable/images/checkboxChecked.png");
+    obj.imageCheckBox48:setField("skillCheck_167");
+    obj.imageCheckBox48:setName("imageCheckBox48");
+
+    obj.imageCheckBox49 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox49:setParent(obj.layout6);
+    obj.imageCheckBox49:setLeft(160);
+    obj.imageCheckBox49:setTop(0);
+    obj.imageCheckBox49:setWidth(20);
+    obj.imageCheckBox49:setHeight(20);
+    obj.imageCheckBox49:setImageUnchecked("/SODLFillable/images/checkboxUnchecked.png");
+    obj.imageCheckBox49:setImageChecked("/SODLFillable/images/checkboxChecked.png");
+    obj.imageCheckBox49:setField("skillCheck_168");
+    obj.imageCheckBox49:setName("imageCheckBox49");
+
+    obj.imageCheckBox50 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox50:setParent(obj.layout6);
+    obj.imageCheckBox50:setLeft(180);
+    obj.imageCheckBox50:setTop(0);
+    obj.imageCheckBox50:setWidth(20);
+    obj.imageCheckBox50:setHeight(20);
+    obj.imageCheckBox50:setImageUnchecked("/SODLFillable/images/checkboxUnchecked.png");
+    obj.imageCheckBox50:setImageChecked("/SODLFillable/images/checkboxChecked.png");
+    obj.imageCheckBox50:setField("skillCheck_169");
+    obj.imageCheckBox50:setName("imageCheckBox50");
+
+    obj.textEditor5 = GUI.fromHandle(_obj_newObject("textEditor"));
+    obj.textEditor5:setParent(obj.layout1);
+    obj.textEditor5:setLeft(36);
+    obj.textEditor5:setTop(906);
+    obj.textEditor5:setWidth(320);
+    obj.textEditor5:setHeight(150);
+    obj.textEditor5:setFontSize(14);
+    obj.textEditor5:setFontColor("#000000");
+    obj.textEditor5:setTransparent(true);
+    obj.textEditor5:setField("skillDesc_17");
+    obj.textEditor5:setName("textEditor5");
+
+    obj.edit6 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit6:setParent(obj.layout1);
+    obj.edit6:setLeft(110);
+    obj.edit6:setTop(1056);
+    obj.edit6:setWidth(200);
+    obj.edit6:setHeight(30);
+    obj.edit6:setFontSize(16);
+    obj.edit6:setFontColor("#000000");
+    obj.edit6:setTransparent(true);
+    obj.edit6:setField("skillName_18");
+    obj.edit6:setName("edit6");
+
+    obj.layout7 = GUI.fromHandle(_obj_newObject("layout"));
+    obj.layout7:setParent(obj.layout1);
+    obj.layout7:setLeft(73);
+    obj.layout7:setTop(1086);
+    obj.layout7:setWidth(200);
+    obj.layout7:setHeight(20);
+    obj.layout7:setName("layout7");
+
+    obj.imageCheckBox51 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox51:setParent(obj.layout7);
+    obj.imageCheckBox51:setLeft(0);
+    obj.imageCheckBox51:setTop(0);
+    obj.imageCheckBox51:setWidth(20);
+    obj.imageCheckBox51:setHeight(20);
+    obj.imageCheckBox51:setImageUnchecked("/SODLFillable/images/checkboxUnchecked.png");
+    obj.imageCheckBox51:setImageChecked("/SODLFillable/images/checkboxChecked.png");
+    obj.imageCheckBox51:setField("skillCheck_170");
+    obj.imageCheckBox51:setName("imageCheckBox51");
+
+    obj.imageCheckBox52 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox52:setParent(obj.layout7);
+    obj.imageCheckBox52:setLeft(20);
+    obj.imageCheckBox52:setTop(0);
+    obj.imageCheckBox52:setWidth(20);
+    obj.imageCheckBox52:setHeight(20);
+    obj.imageCheckBox52:setImageUnchecked("/SODLFillable/images/checkboxUnchecked.png");
+    obj.imageCheckBox52:setImageChecked("/SODLFillable/images/checkboxChecked.png");
+    obj.imageCheckBox52:setField("skillCheck_171");
+    obj.imageCheckBox52:setName("imageCheckBox52");
+
+    obj.imageCheckBox53 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox53:setParent(obj.layout7);
+    obj.imageCheckBox53:setLeft(40);
+    obj.imageCheckBox53:setTop(0);
+    obj.imageCheckBox53:setWidth(20);
+    obj.imageCheckBox53:setHeight(20);
+    obj.imageCheckBox53:setImageUnchecked("/SODLFillable/images/checkboxUnchecked.png");
+    obj.imageCheckBox53:setImageChecked("/SODLFillable/images/checkboxChecked.png");
+    obj.imageCheckBox53:setField("skillCheck_172");
+    obj.imageCheckBox53:setName("imageCheckBox53");
+
+    obj.imageCheckBox54 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox54:setParent(obj.layout7);
+    obj.imageCheckBox54:setLeft(60);
+    obj.imageCheckBox54:setTop(0);
+    obj.imageCheckBox54:setWidth(20);
+    obj.imageCheckBox54:setHeight(20);
+    obj.imageCheckBox54:setImageUnchecked("/SODLFillable/images/checkboxUnchecked.png");
+    obj.imageCheckBox54:setImageChecked("/SODLFillable/images/checkboxChecked.png");
+    obj.imageCheckBox54:setField("skillCheck_173");
+    obj.imageCheckBox54:setName("imageCheckBox54");
+
+    obj.imageCheckBox55 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox55:setParent(obj.layout7);
+    obj.imageCheckBox55:setLeft(80);
+    obj.imageCheckBox55:setTop(0);
+    obj.imageCheckBox55:setWidth(20);
+    obj.imageCheckBox55:setHeight(20);
+    obj.imageCheckBox55:setImageUnchecked("/SODLFillable/images/checkboxUnchecked.png");
+    obj.imageCheckBox55:setImageChecked("/SODLFillable/images/checkboxChecked.png");
+    obj.imageCheckBox55:setField("skillCheck_174");
+    obj.imageCheckBox55:setName("imageCheckBox55");
+
+    obj.imageCheckBox56 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox56:setParent(obj.layout7);
+    obj.imageCheckBox56:setLeft(100);
+    obj.imageCheckBox56:setTop(0);
+    obj.imageCheckBox56:setWidth(20);
+    obj.imageCheckBox56:setHeight(20);
+    obj.imageCheckBox56:setImageUnchecked("/SODLFillable/images/checkboxUnchecked.png");
+    obj.imageCheckBox56:setImageChecked("/SODLFillable/images/checkboxChecked.png");
+    obj.imageCheckBox56:setField("skillCheck_175");
+    obj.imageCheckBox56:setName("imageCheckBox56");
+
+    obj.imageCheckBox57 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox57:setParent(obj.layout7);
+    obj.imageCheckBox57:setLeft(120);
+    obj.imageCheckBox57:setTop(0);
+    obj.imageCheckBox57:setWidth(20);
+    obj.imageCheckBox57:setHeight(20);
+    obj.imageCheckBox57:setImageUnchecked("/SODLFillable/images/checkboxUnchecked.png");
+    obj.imageCheckBox57:setImageChecked("/SODLFillable/images/checkboxChecked.png");
+    obj.imageCheckBox57:setField("skillCheck_176");
+    obj.imageCheckBox57:setName("imageCheckBox57");
+
+    obj.imageCheckBox58 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox58:setParent(obj.layout7);
+    obj.imageCheckBox58:setLeft(140);
+    obj.imageCheckBox58:setTop(0);
+    obj.imageCheckBox58:setWidth(20);
+    obj.imageCheckBox58:setHeight(20);
+    obj.imageCheckBox58:setImageUnchecked("/SODLFillable/images/checkboxUnchecked.png");
+    obj.imageCheckBox58:setImageChecked("/SODLFillable/images/checkboxChecked.png");
+    obj.imageCheckBox58:setField("skillCheck_178");
+    obj.imageCheckBox58:setName("imageCheckBox58");
+
+    obj.imageCheckBox59 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox59:setParent(obj.layout7);
+    obj.imageCheckBox59:setLeft(160);
+    obj.imageCheckBox59:setTop(0);
+    obj.imageCheckBox59:setWidth(20);
+    obj.imageCheckBox59:setHeight(20);
+    obj.imageCheckBox59:setImageUnchecked("/SODLFillable/images/checkboxUnchecked.png");
+    obj.imageCheckBox59:setImageChecked("/SODLFillable/images/checkboxChecked.png");
+    obj.imageCheckBox59:setField("skillCheck_179");
+    obj.imageCheckBox59:setName("imageCheckBox59");
+
+    obj.imageCheckBox60 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox60:setParent(obj.layout7);
+    obj.imageCheckBox60:setLeft(180);
+    obj.imageCheckBox60:setTop(0);
+    obj.imageCheckBox60:setWidth(20);
+    obj.imageCheckBox60:setHeight(20);
+    obj.imageCheckBox60:setImageUnchecked("/SODLFillable/images/checkboxUnchecked.png");
+    obj.imageCheckBox60:setImageChecked("/SODLFillable/images/checkboxChecked.png");
+    obj.imageCheckBox60:setField("skillCheck_180");
+    obj.imageCheckBox60:setName("imageCheckBox60");
+
+    obj.textEditor6 = GUI.fromHandle(_obj_newObject("textEditor"));
+    obj.textEditor6:setParent(obj.layout1);
+    obj.textEditor6:setLeft(36);
+    obj.textEditor6:setTop(1106);
+    obj.textEditor6:setWidth(320);
+    obj.textEditor6:setHeight(150);
+    obj.textEditor6:setFontSize(14);
+    obj.textEditor6:setFontColor("#000000");
+    obj.textEditor6:setTransparent(true);
+    obj.textEditor6:setField("skillDesc_18");
+    obj.textEditor6:setName("textEditor6");
+
+    obj.layout8 = GUI.fromHandle(_obj_newObject("layout"));
+    obj.layout8:setParent(obj.rectangle1);
+    obj.layout8:setLeft(427);
+    obj.layout8:setTop(0);
+    obj.layout8:setWidth(447);
+    obj.layout8:setHeight(1263);
+    obj.layout8:setName("layout8");
+
+    obj.edit7 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit7:setParent(obj.layout8);
+    obj.edit7:setLeft(110);
+    obj.edit7:setTop(36);
+    obj.edit7:setWidth(200);
+    obj.edit7:setHeight(30);
+    obj.edit7:setFontSize(16);
+    obj.edit7:setFontColor("#000000");
+    obj.edit7:setTransparent(true);
+    obj.edit7:setField("skillName_19");
+    obj.edit7:setName("edit7");
+
+    obj.layout9 = GUI.fromHandle(_obj_newObject("layout"));
+    obj.layout9:setParent(obj.layout8);
+    obj.layout9:setLeft(73);
+    obj.layout9:setTop(66);
+    obj.layout9:setWidth(200);
+    obj.layout9:setHeight(20);
+    obj.layout9:setName("layout9");
+
+    obj.imageCheckBox61 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox61:setParent(obj.layout9);
+    obj.imageCheckBox61:setLeft(0);
+    obj.imageCheckBox61:setTop(0);
+    obj.imageCheckBox61:setWidth(20);
+    obj.imageCheckBox61:setHeight(20);
+    obj.imageCheckBox61:setImageUnchecked("/SODLFillable/images/checkboxUnchecked.png");
+    obj.imageCheckBox61:setImageChecked("/SODLFillable/images/checkboxChecked.png");
+    obj.imageCheckBox61:setField("skillCheck_181");
+    obj.imageCheckBox61:setName("imageCheckBox61");
+
+    obj.imageCheckBox62 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox62:setParent(obj.layout9);
+    obj.imageCheckBox62:setLeft(20);
+    obj.imageCheckBox62:setTop(0);
+    obj.imageCheckBox62:setWidth(20);
+    obj.imageCheckBox62:setHeight(20);
+    obj.imageCheckBox62:setImageUnchecked("/SODLFillable/images/checkboxUnchecked.png");
+    obj.imageCheckBox62:setImageChecked("/SODLFillable/images/checkboxChecked.png");
+    obj.imageCheckBox62:setField("skillCheck_182");
+    obj.imageCheckBox62:setName("imageCheckBox62");
+
+    obj.imageCheckBox63 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox63:setParent(obj.layout9);
+    obj.imageCheckBox63:setLeft(40);
+    obj.imageCheckBox63:setTop(0);
+    obj.imageCheckBox63:setWidth(20);
+    obj.imageCheckBox63:setHeight(20);
+    obj.imageCheckBox63:setImageUnchecked("/SODLFillable/images/checkboxUnchecked.png");
+    obj.imageCheckBox63:setImageChecked("/SODLFillable/images/checkboxChecked.png");
+    obj.imageCheckBox63:setField("skillCheck_183");
+    obj.imageCheckBox63:setName("imageCheckBox63");
+
+    obj.imageCheckBox64 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox64:setParent(obj.layout9);
+    obj.imageCheckBox64:setLeft(60);
+    obj.imageCheckBox64:setTop(0);
+    obj.imageCheckBox64:setWidth(20);
+    obj.imageCheckBox64:setHeight(20);
+    obj.imageCheckBox64:setImageUnchecked("/SODLFillable/images/checkboxUnchecked.png");
+    obj.imageCheckBox64:setImageChecked("/SODLFillable/images/checkboxChecked.png");
+    obj.imageCheckBox64:setField("skillCheck_184");
+    obj.imageCheckBox64:setName("imageCheckBox64");
+
+    obj.imageCheckBox65 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox65:setParent(obj.layout9);
+    obj.imageCheckBox65:setLeft(80);
+    obj.imageCheckBox65:setTop(0);
+    obj.imageCheckBox65:setWidth(20);
+    obj.imageCheckBox65:setHeight(20);
+    obj.imageCheckBox65:setImageUnchecked("/SODLFillable/images/checkboxUnchecked.png");
+    obj.imageCheckBox65:setImageChecked("/SODLFillable/images/checkboxChecked.png");
+    obj.imageCheckBox65:setField("skillCheck_185");
+    obj.imageCheckBox65:setName("imageCheckBox65");
+
+    obj.imageCheckBox66 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox66:setParent(obj.layout9);
+    obj.imageCheckBox66:setLeft(100);
+    obj.imageCheckBox66:setTop(0);
+    obj.imageCheckBox66:setWidth(20);
+    obj.imageCheckBox66:setHeight(20);
+    obj.imageCheckBox66:setImageUnchecked("/SODLFillable/images/checkboxUnchecked.png");
+    obj.imageCheckBox66:setImageChecked("/SODLFillable/images/checkboxChecked.png");
+    obj.imageCheckBox66:setField("skillCheck_186");
+    obj.imageCheckBox66:setName("imageCheckBox66");
+
+    obj.imageCheckBox67 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox67:setParent(obj.layout9);
+    obj.imageCheckBox67:setLeft(120);
+    obj.imageCheckBox67:setTop(0);
+    obj.imageCheckBox67:setWidth(20);
+    obj.imageCheckBox67:setHeight(20);
+    obj.imageCheckBox67:setImageUnchecked("/SODLFillable/images/checkboxUnchecked.png");
+    obj.imageCheckBox67:setImageChecked("/SODLFillable/images/checkboxChecked.png");
+    obj.imageCheckBox67:setField("skillCheck_187");
+    obj.imageCheckBox67:setName("imageCheckBox67");
+
+    obj.imageCheckBox68 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox68:setParent(obj.layout9);
+    obj.imageCheckBox68:setLeft(140);
+    obj.imageCheckBox68:setTop(0);
+    obj.imageCheckBox68:setWidth(20);
+    obj.imageCheckBox68:setHeight(20);
+    obj.imageCheckBox68:setImageUnchecked("/SODLFillable/images/checkboxUnchecked.png");
+    obj.imageCheckBox68:setImageChecked("/SODLFillable/images/checkboxChecked.png");
+    obj.imageCheckBox68:setField("skillCheck_188");
+    obj.imageCheckBox68:setName("imageCheckBox68");
+
+    obj.imageCheckBox69 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox69:setParent(obj.layout9);
+    obj.imageCheckBox69:setLeft(160);
+    obj.imageCheckBox69:setTop(0);
+    obj.imageCheckBox69:setWidth(20);
+    obj.imageCheckBox69:setHeight(20);
+    obj.imageCheckBox69:setImageUnchecked("/SODLFillable/images/checkboxUnchecked.png");
+    obj.imageCheckBox69:setImageChecked("/SODLFillable/images/checkboxChecked.png");
+    obj.imageCheckBox69:setField("skillCheck_189");
+    obj.imageCheckBox69:setName("imageCheckBox69");
+
+    obj.imageCheckBox70 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox70:setParent(obj.layout9);
+    obj.imageCheckBox70:setLeft(180);
+    obj.imageCheckBox70:setTop(0);
+    obj.imageCheckBox70:setWidth(20);
+    obj.imageCheckBox70:setHeight(20);
+    obj.imageCheckBox70:setImageUnchecked("/SODLFillable/images/checkboxUnchecked.png");
+    obj.imageCheckBox70:setImageChecked("/SODLFillable/images/checkboxChecked.png");
+    obj.imageCheckBox70:setField("skillCheck_200");
+    obj.imageCheckBox70:setName("imageCheckBox70");
+
+    obj.textEditor7 = GUI.fromHandle(_obj_newObject("textEditor"));
+    obj.textEditor7:setParent(obj.layout8);
+    obj.textEditor7:setLeft(36);
+    obj.textEditor7:setTop(86);
+    obj.textEditor7:setWidth(320);
+    obj.textEditor7:setHeight(150);
+    obj.textEditor7:setFontSize(14);
+    obj.textEditor7:setFontColor("#000000");
+    obj.textEditor7:setTransparent(true);
+    obj.textEditor7:setField("skillDesc_19");
+    obj.textEditor7:setName("textEditor7");
+
+    obj.edit8 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit8:setParent(obj.layout8);
+    obj.edit8:setLeft(110);
+    obj.edit8:setTop(242);
+    obj.edit8:setWidth(200);
+    obj.edit8:setHeight(30);
+    obj.edit8:setFontSize(16);
+    obj.edit8:setFontColor("#000000");
+    obj.edit8:setTransparent(true);
+    obj.edit8:setField("skillName_20");
+    obj.edit8:setName("edit8");
+
+    obj.layout10 = GUI.fromHandle(_obj_newObject("layout"));
+    obj.layout10:setParent(obj.layout8);
+    obj.layout10:setLeft(73);
+    obj.layout10:setTop(272);
+    obj.layout10:setWidth(200);
+    obj.layout10:setHeight(20);
+    obj.layout10:setName("layout10");
+
+    obj.imageCheckBox71 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox71:setParent(obj.layout10);
+    obj.imageCheckBox71:setLeft(0);
+    obj.imageCheckBox71:setTop(0);
+    obj.imageCheckBox71:setWidth(20);
+    obj.imageCheckBox71:setHeight(20);
+    obj.imageCheckBox71:setImageUnchecked("/SODLFillable/images/checkboxUnchecked.png");
+    obj.imageCheckBox71:setImageChecked("/SODLFillable/images/checkboxChecked.png");
+    obj.imageCheckBox71:setField("skillCheck_201");
+    obj.imageCheckBox71:setName("imageCheckBox71");
+
+    obj.imageCheckBox72 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox72:setParent(obj.layout10);
+    obj.imageCheckBox72:setLeft(20);
+    obj.imageCheckBox72:setTop(0);
+    obj.imageCheckBox72:setWidth(20);
+    obj.imageCheckBox72:setHeight(20);
+    obj.imageCheckBox72:setImageUnchecked("/SODLFillable/images/checkboxUnchecked.png");
+    obj.imageCheckBox72:setImageChecked("/SODLFillable/images/checkboxChecked.png");
+    obj.imageCheckBox72:setField("skillCheck_202");
+    obj.imageCheckBox72:setName("imageCheckBox72");
+
+    obj.imageCheckBox73 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox73:setParent(obj.layout10);
+    obj.imageCheckBox73:setLeft(40);
+    obj.imageCheckBox73:setTop(0);
+    obj.imageCheckBox73:setWidth(20);
+    obj.imageCheckBox73:setHeight(20);
+    obj.imageCheckBox73:setImageUnchecked("/SODLFillable/images/checkboxUnchecked.png");
+    obj.imageCheckBox73:setImageChecked("/SODLFillable/images/checkboxChecked.png");
+    obj.imageCheckBox73:setField("skillCheck_203");
+    obj.imageCheckBox73:setName("imageCheckBox73");
+
+    obj.imageCheckBox74 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox74:setParent(obj.layout10);
+    obj.imageCheckBox74:setLeft(60);
+    obj.imageCheckBox74:setTop(0);
+    obj.imageCheckBox74:setWidth(20);
+    obj.imageCheckBox74:setHeight(20);
+    obj.imageCheckBox74:setImageUnchecked("/SODLFillable/images/checkboxUnchecked.png");
+    obj.imageCheckBox74:setImageChecked("/SODLFillable/images/checkboxChecked.png");
+    obj.imageCheckBox74:setField("skillCheck_204");
+    obj.imageCheckBox74:setName("imageCheckBox74");
+
+    obj.imageCheckBox75 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox75:setParent(obj.layout10);
+    obj.imageCheckBox75:setLeft(80);
+    obj.imageCheckBox75:setTop(0);
+    obj.imageCheckBox75:setWidth(20);
+    obj.imageCheckBox75:setHeight(20);
+    obj.imageCheckBox75:setImageUnchecked("/SODLFillable/images/checkboxUnchecked.png");
+    obj.imageCheckBox75:setImageChecked("/SODLFillable/images/checkboxChecked.png");
+    obj.imageCheckBox75:setField("skillCheck_205");
+    obj.imageCheckBox75:setName("imageCheckBox75");
+
+    obj.imageCheckBox76 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox76:setParent(obj.layout10);
+    obj.imageCheckBox76:setLeft(100);
+    obj.imageCheckBox76:setTop(0);
+    obj.imageCheckBox76:setWidth(20);
+    obj.imageCheckBox76:setHeight(20);
+    obj.imageCheckBox76:setImageUnchecked("/SODLFillable/images/checkboxUnchecked.png");
+    obj.imageCheckBox76:setImageChecked("/SODLFillable/images/checkboxChecked.png");
+    obj.imageCheckBox76:setField("skillCheck_206");
+    obj.imageCheckBox76:setName("imageCheckBox76");
+
+    obj.imageCheckBox77 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox77:setParent(obj.layout10);
+    obj.imageCheckBox77:setLeft(120);
+    obj.imageCheckBox77:setTop(0);
+    obj.imageCheckBox77:setWidth(20);
+    obj.imageCheckBox77:setHeight(20);
+    obj.imageCheckBox77:setImageUnchecked("/SODLFillable/images/checkboxUnchecked.png");
+    obj.imageCheckBox77:setImageChecked("/SODLFillable/images/checkboxChecked.png");
+    obj.imageCheckBox77:setField("skillCheck_207");
+    obj.imageCheckBox77:setName("imageCheckBox77");
+
+    obj.imageCheckBox78 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox78:setParent(obj.layout10);
+    obj.imageCheckBox78:setLeft(140);
+    obj.imageCheckBox78:setTop(0);
+    obj.imageCheckBox78:setWidth(20);
+    obj.imageCheckBox78:setHeight(20);
+    obj.imageCheckBox78:setImageUnchecked("/SODLFillable/images/checkboxUnchecked.png");
+    obj.imageCheckBox78:setImageChecked("/SODLFillable/images/checkboxChecked.png");
+    obj.imageCheckBox78:setField("skillCheck_208");
+    obj.imageCheckBox78:setName("imageCheckBox78");
+
+    obj.imageCheckBox79 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox79:setParent(obj.layout10);
+    obj.imageCheckBox79:setLeft(160);
+    obj.imageCheckBox79:setTop(0);
+    obj.imageCheckBox79:setWidth(20);
+    obj.imageCheckBox79:setHeight(20);
+    obj.imageCheckBox79:setImageUnchecked("/SODLFillable/images/checkboxUnchecked.png");
+    obj.imageCheckBox79:setImageChecked("/SODLFillable/images/checkboxChecked.png");
+    obj.imageCheckBox79:setField("skillCheck_209");
+    obj.imageCheckBox79:setName("imageCheckBox79");
+
+    obj.imageCheckBox80 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox80:setParent(obj.layout10);
+    obj.imageCheckBox80:setLeft(180);
+    obj.imageCheckBox80:setTop(0);
+    obj.imageCheckBox80:setWidth(20);
+    obj.imageCheckBox80:setHeight(20);
+    obj.imageCheckBox80:setImageUnchecked("/SODLFillable/images/checkboxUnchecked.png");
+    obj.imageCheckBox80:setImageChecked("/SODLFillable/images/checkboxChecked.png");
+    obj.imageCheckBox80:setField("skillCheck_210");
+    obj.imageCheckBox80:setName("imageCheckBox80");
+
+    obj.textEditor8 = GUI.fromHandle(_obj_newObject("textEditor"));
+    obj.textEditor8:setParent(obj.layout8);
+    obj.textEditor8:setLeft(36);
+    obj.textEditor8:setTop(292);
+    obj.textEditor8:setWidth(320);
+    obj.textEditor8:setHeight(150);
+    obj.textEditor8:setFontSize(14);
+    obj.textEditor8:setFontColor("#000000");
+    obj.textEditor8:setTransparent(true);
+    obj.textEditor8:setField("skillDesc_20");
+    obj.textEditor8:setName("textEditor8");
+
+    obj.edit9 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit9:setParent(obj.layout8);
+    obj.edit9:setLeft(110);
+    obj.edit9:setTop(448);
+    obj.edit9:setWidth(200);
+    obj.edit9:setHeight(30);
+    obj.edit9:setFontSize(16);
+    obj.edit9:setFontColor("#000000");
+    obj.edit9:setTransparent(true);
+    obj.edit9:setField("skillName_21");
+    obj.edit9:setName("edit9");
+
+    obj.layout11 = GUI.fromHandle(_obj_newObject("layout"));
+    obj.layout11:setParent(obj.layout8);
+    obj.layout11:setLeft(73);
+    obj.layout11:setTop(478);
+    obj.layout11:setWidth(200);
+    obj.layout11:setHeight(20);
+    obj.layout11:setName("layout11");
+
+    obj.imageCheckBox81 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox81:setParent(obj.layout11);
+    obj.imageCheckBox81:setLeft(0);
+    obj.imageCheckBox81:setTop(0);
+    obj.imageCheckBox81:setWidth(20);
+    obj.imageCheckBox81:setHeight(20);
+    obj.imageCheckBox81:setImageUnchecked("/SODLFillable/images/checkboxUnchecked.png");
+    obj.imageCheckBox81:setImageChecked("/SODLFillable/images/checkboxChecked.png");
+    obj.imageCheckBox81:setField("skillCheck_211");
+    obj.imageCheckBox81:setName("imageCheckBox81");
+
+    obj.imageCheckBox82 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox82:setParent(obj.layout11);
+    obj.imageCheckBox82:setLeft(20);
+    obj.imageCheckBox82:setTop(0);
+    obj.imageCheckBox82:setWidth(20);
+    obj.imageCheckBox82:setHeight(20);
+    obj.imageCheckBox82:setImageUnchecked("/SODLFillable/images/checkboxUnchecked.png");
+    obj.imageCheckBox82:setImageChecked("/SODLFillable/images/checkboxChecked.png");
+    obj.imageCheckBox82:setField("skillCheck_212");
+    obj.imageCheckBox82:setName("imageCheckBox82");
+
+    obj.imageCheckBox83 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox83:setParent(obj.layout11);
+    obj.imageCheckBox83:setLeft(40);
+    obj.imageCheckBox83:setTop(0);
+    obj.imageCheckBox83:setWidth(20);
+    obj.imageCheckBox83:setHeight(20);
+    obj.imageCheckBox83:setImageUnchecked("/SODLFillable/images/checkboxUnchecked.png");
+    obj.imageCheckBox83:setImageChecked("/SODLFillable/images/checkboxChecked.png");
+    obj.imageCheckBox83:setField("skillCheck_213");
+    obj.imageCheckBox83:setName("imageCheckBox83");
+
+    obj.imageCheckBox84 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox84:setParent(obj.layout11);
+    obj.imageCheckBox84:setLeft(60);
+    obj.imageCheckBox84:setTop(0);
+    obj.imageCheckBox84:setWidth(20);
+    obj.imageCheckBox84:setHeight(20);
+    obj.imageCheckBox84:setImageUnchecked("/SODLFillable/images/checkboxUnchecked.png");
+    obj.imageCheckBox84:setImageChecked("/SODLFillable/images/checkboxChecked.png");
+    obj.imageCheckBox84:setField("skillCheck_214");
+    obj.imageCheckBox84:setName("imageCheckBox84");
+
+    obj.imageCheckBox85 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox85:setParent(obj.layout11);
+    obj.imageCheckBox85:setLeft(80);
+    obj.imageCheckBox85:setTop(0);
+    obj.imageCheckBox85:setWidth(20);
+    obj.imageCheckBox85:setHeight(20);
+    obj.imageCheckBox85:setImageUnchecked("/SODLFillable/images/checkboxUnchecked.png");
+    obj.imageCheckBox85:setImageChecked("/SODLFillable/images/checkboxChecked.png");
+    obj.imageCheckBox85:setField("skillCheck_215");
+    obj.imageCheckBox85:setName("imageCheckBox85");
+
+    obj.imageCheckBox86 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox86:setParent(obj.layout11);
+    obj.imageCheckBox86:setLeft(100);
+    obj.imageCheckBox86:setTop(0);
+    obj.imageCheckBox86:setWidth(20);
+    obj.imageCheckBox86:setHeight(20);
+    obj.imageCheckBox86:setImageUnchecked("/SODLFillable/images/checkboxUnchecked.png");
+    obj.imageCheckBox86:setImageChecked("/SODLFillable/images/checkboxChecked.png");
+    obj.imageCheckBox86:setField("skillCheck_216");
+    obj.imageCheckBox86:setName("imageCheckBox86");
+
+    obj.imageCheckBox87 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox87:setParent(obj.layout11);
+    obj.imageCheckBox87:setLeft(120);
+    obj.imageCheckBox87:setTop(0);
+    obj.imageCheckBox87:setWidth(20);
+    obj.imageCheckBox87:setHeight(20);
+    obj.imageCheckBox87:setImageUnchecked("/SODLFillable/images/checkboxUnchecked.png");
+    obj.imageCheckBox87:setImageChecked("/SODLFillable/images/checkboxChecked.png");
+    obj.imageCheckBox87:setField("skillCheck_217");
+    obj.imageCheckBox87:setName("imageCheckBox87");
+
+    obj.imageCheckBox88 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox88:setParent(obj.layout11);
+    obj.imageCheckBox88:setLeft(140);
+    obj.imageCheckBox88:setTop(0);
+    obj.imageCheckBox88:setWidth(20);
+    obj.imageCheckBox88:setHeight(20);
+    obj.imageCheckBox88:setImageUnchecked("/SODLFillable/images/checkboxUnchecked.png");
+    obj.imageCheckBox88:setImageChecked("/SODLFillable/images/checkboxChecked.png");
+    obj.imageCheckBox88:setField("skillCheck_218");
+    obj.imageCheckBox88:setName("imageCheckBox88");
+
+    obj.imageCheckBox89 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox89:setParent(obj.layout11);
+    obj.imageCheckBox89:setLeft(160);
+    obj.imageCheckBox89:setTop(0);
+    obj.imageCheckBox89:setWidth(20);
+    obj.imageCheckBox89:setHeight(20);
+    obj.imageCheckBox89:setImageUnchecked("/SODLFillable/images/checkboxUnchecked.png");
+    obj.imageCheckBox89:setImageChecked("/SODLFillable/images/checkboxChecked.png");
+    obj.imageCheckBox89:setField("skillCheck_219");
+    obj.imageCheckBox89:setName("imageCheckBox89");
+
+    obj.imageCheckBox90 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox90:setParent(obj.layout11);
+    obj.imageCheckBox90:setLeft(180);
+    obj.imageCheckBox90:setTop(0);
+    obj.imageCheckBox90:setWidth(20);
+    obj.imageCheckBox90:setHeight(20);
+    obj.imageCheckBox90:setImageUnchecked("/SODLFillable/images/checkboxUnchecked.png");
+    obj.imageCheckBox90:setImageChecked("/SODLFillable/images/checkboxChecked.png");
+    obj.imageCheckBox90:setField("skillCheck_220");
+    obj.imageCheckBox90:setName("imageCheckBox90");
+
+    obj.textEditor9 = GUI.fromHandle(_obj_newObject("textEditor"));
+    obj.textEditor9:setParent(obj.layout8);
+    obj.textEditor9:setLeft(36);
+    obj.textEditor9:setTop(498);
+    obj.textEditor9:setWidth(320);
+    obj.textEditor9:setHeight(150);
+    obj.textEditor9:setFontSize(14);
+    obj.textEditor9:setFontColor("#000000");
+    obj.textEditor9:setTransparent(true);
+    obj.textEditor9:setField("skillDesc_21");
+    obj.textEditor9:setName("textEditor9");
+
+    obj.edit10 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit10:setParent(obj.layout8);
+    obj.edit10:setLeft(110);
+    obj.edit10:setTop(670);
+    obj.edit10:setWidth(200);
+    obj.edit10:setHeight(30);
+    obj.edit10:setFontSize(16);
+    obj.edit10:setFontColor("#000000");
+    obj.edit10:setTransparent(true);
+    obj.edit10:setField("skillName_22");
+    obj.edit10:setName("edit10");
+
+    obj.layout12 = GUI.fromHandle(_obj_newObject("layout"));
+    obj.layout12:setParent(obj.layout8);
+    obj.layout12:setLeft(73);
+    obj.layout12:setTop(700);
+    obj.layout12:setWidth(200);
+    obj.layout12:setHeight(20);
+    obj.layout12:setName("layout12");
+
+    obj.imageCheckBox91 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox91:setParent(obj.layout12);
+    obj.imageCheckBox91:setLeft(0);
+    obj.imageCheckBox91:setTop(0);
+    obj.imageCheckBox91:setWidth(20);
+    obj.imageCheckBox91:setHeight(20);
+    obj.imageCheckBox91:setImageUnchecked("/SODLFillable/images/checkboxUnchecked.png");
+    obj.imageCheckBox91:setImageChecked("/SODLFillable/images/checkboxChecked.png");
+    obj.imageCheckBox91:setField("skillCheck_221");
+    obj.imageCheckBox91:setName("imageCheckBox91");
+
+    obj.imageCheckBox92 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox92:setParent(obj.layout12);
+    obj.imageCheckBox92:setLeft(20);
+    obj.imageCheckBox92:setTop(0);
+    obj.imageCheckBox92:setWidth(20);
+    obj.imageCheckBox92:setHeight(20);
+    obj.imageCheckBox92:setImageUnchecked("/SODLFillable/images/checkboxUnchecked.png");
+    obj.imageCheckBox92:setImageChecked("/SODLFillable/images/checkboxChecked.png");
+    obj.imageCheckBox92:setField("skillCheck_222");
+    obj.imageCheckBox92:setName("imageCheckBox92");
+
+    obj.imageCheckBox93 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox93:setParent(obj.layout12);
+    obj.imageCheckBox93:setLeft(40);
+    obj.imageCheckBox93:setTop(0);
+    obj.imageCheckBox93:setWidth(20);
+    obj.imageCheckBox93:setHeight(20);
+    obj.imageCheckBox93:setImageUnchecked("/SODLFillable/images/checkboxUnchecked.png");
+    obj.imageCheckBox93:setImageChecked("/SODLFillable/images/checkboxChecked.png");
+    obj.imageCheckBox93:setField("skillCheck_223");
+    obj.imageCheckBox93:setName("imageCheckBox93");
+
+    obj.imageCheckBox94 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox94:setParent(obj.layout12);
+    obj.imageCheckBox94:setLeft(60);
+    obj.imageCheckBox94:setTop(0);
+    obj.imageCheckBox94:setWidth(20);
+    obj.imageCheckBox94:setHeight(20);
+    obj.imageCheckBox94:setImageUnchecked("/SODLFillable/images/checkboxUnchecked.png");
+    obj.imageCheckBox94:setImageChecked("/SODLFillable/images/checkboxChecked.png");
+    obj.imageCheckBox94:setField("skillCheck_224");
+    obj.imageCheckBox94:setName("imageCheckBox94");
+
+    obj.imageCheckBox95 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox95:setParent(obj.layout12);
+    obj.imageCheckBox95:setLeft(80);
+    obj.imageCheckBox95:setTop(0);
+    obj.imageCheckBox95:setWidth(20);
+    obj.imageCheckBox95:setHeight(20);
+    obj.imageCheckBox95:setImageUnchecked("/SODLFillable/images/checkboxUnchecked.png");
+    obj.imageCheckBox95:setImageChecked("/SODLFillable/images/checkboxChecked.png");
+    obj.imageCheckBox95:setField("skillCheck_225");
+    obj.imageCheckBox95:setName("imageCheckBox95");
+
+    obj.imageCheckBox96 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox96:setParent(obj.layout12);
+    obj.imageCheckBox96:setLeft(100);
+    obj.imageCheckBox96:setTop(0);
+    obj.imageCheckBox96:setWidth(20);
+    obj.imageCheckBox96:setHeight(20);
+    obj.imageCheckBox96:setImageUnchecked("/SODLFillable/images/checkboxUnchecked.png");
+    obj.imageCheckBox96:setImageChecked("/SODLFillable/images/checkboxChecked.png");
+    obj.imageCheckBox96:setField("skillCheck_226");
+    obj.imageCheckBox96:setName("imageCheckBox96");
+
+    obj.imageCheckBox97 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox97:setParent(obj.layout12);
+    obj.imageCheckBox97:setLeft(120);
+    obj.imageCheckBox97:setTop(0);
+    obj.imageCheckBox97:setWidth(20);
+    obj.imageCheckBox97:setHeight(20);
+    obj.imageCheckBox97:setImageUnchecked("/SODLFillable/images/checkboxUnchecked.png");
+    obj.imageCheckBox97:setImageChecked("/SODLFillable/images/checkboxChecked.png");
+    obj.imageCheckBox97:setField("skillCheck_227");
+    obj.imageCheckBox97:setName("imageCheckBox97");
+
+    obj.imageCheckBox98 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox98:setParent(obj.layout12);
+    obj.imageCheckBox98:setLeft(140);
+    obj.imageCheckBox98:setTop(0);
+    obj.imageCheckBox98:setWidth(20);
+    obj.imageCheckBox98:setHeight(20);
+    obj.imageCheckBox98:setImageUnchecked("/SODLFillable/images/checkboxUnchecked.png");
+    obj.imageCheckBox98:setImageChecked("/SODLFillable/images/checkboxChecked.png");
+    obj.imageCheckBox98:setField("skillCheck_228");
+    obj.imageCheckBox98:setName("imageCheckBox98");
+
+    obj.imageCheckBox99 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox99:setParent(obj.layout12);
+    obj.imageCheckBox99:setLeft(160);
+    obj.imageCheckBox99:setTop(0);
+    obj.imageCheckBox99:setWidth(20);
+    obj.imageCheckBox99:setHeight(20);
+    obj.imageCheckBox99:setImageUnchecked("/SODLFillable/images/checkboxUnchecked.png");
+    obj.imageCheckBox99:setImageChecked("/SODLFillable/images/checkboxChecked.png");
+    obj.imageCheckBox99:setField("skillCheck_229");
+    obj.imageCheckBox99:setName("imageCheckBox99");
+
+    obj.imageCheckBox100 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox100:setParent(obj.layout12);
+    obj.imageCheckBox100:setLeft(180);
+    obj.imageCheckBox100:setTop(0);
+    obj.imageCheckBox100:setWidth(20);
+    obj.imageCheckBox100:setHeight(20);
+    obj.imageCheckBox100:setImageUnchecked("/SODLFillable/images/checkboxUnchecked.png");
+    obj.imageCheckBox100:setImageChecked("/SODLFillable/images/checkboxChecked.png");
+    obj.imageCheckBox100:setField("skillCheck_230");
+    obj.imageCheckBox100:setName("imageCheckBox100");
+
+    obj.textEditor10 = GUI.fromHandle(_obj_newObject("textEditor"));
+    obj.textEditor10:setParent(obj.layout8);
+    obj.textEditor10:setLeft(36);
+    obj.textEditor10:setTop(720);
+    obj.textEditor10:setWidth(320);
+    obj.textEditor10:setHeight(150);
+    obj.textEditor10:setFontSize(14);
+    obj.textEditor10:setFontColor("#000000");
+    obj.textEditor10:setTransparent(true);
+    obj.textEditor10:setField("skillDesc_22");
+    obj.textEditor10:setName("textEditor10");
+
+    obj.edit11 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit11:setParent(obj.layout8);
+    obj.edit11:setLeft(110);
+    obj.edit11:setTop(856);
+    obj.edit11:setWidth(200);
+    obj.edit11:setHeight(30);
+    obj.edit11:setFontSize(16);
+    obj.edit11:setFontColor("#000000");
+    obj.edit11:setTransparent(true);
+    obj.edit11:setField("skillName_23");
+    obj.edit11:setName("edit11");
+
+    obj.layout13 = GUI.fromHandle(_obj_newObject("layout"));
+    obj.layout13:setParent(obj.layout8);
+    obj.layout13:setLeft(73);
+    obj.layout13:setTop(886);
+    obj.layout13:setWidth(200);
+    obj.layout13:setHeight(20);
+    obj.layout13:setName("layout13");
+
+    obj.imageCheckBox101 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox101:setParent(obj.layout13);
+    obj.imageCheckBox101:setLeft(0);
+    obj.imageCheckBox101:setTop(0);
+    obj.imageCheckBox101:setWidth(20);
+    obj.imageCheckBox101:setHeight(20);
+    obj.imageCheckBox101:setImageUnchecked("/SODLFillable/images/checkboxUnchecked.png");
+    obj.imageCheckBox101:setImageChecked("/SODLFillable/images/checkboxChecked.png");
+    obj.imageCheckBox101:setField("skillCheck_231");
+    obj.imageCheckBox101:setName("imageCheckBox101");
+
+    obj.imageCheckBox102 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox102:setParent(obj.layout13);
+    obj.imageCheckBox102:setLeft(20);
+    obj.imageCheckBox102:setTop(0);
+    obj.imageCheckBox102:setWidth(20);
+    obj.imageCheckBox102:setHeight(20);
+    obj.imageCheckBox102:setImageUnchecked("/SODLFillable/images/checkboxUnchecked.png");
+    obj.imageCheckBox102:setImageChecked("/SODLFillable/images/checkboxChecked.png");
+    obj.imageCheckBox102:setField("skillCheck_232");
+    obj.imageCheckBox102:setName("imageCheckBox102");
+
+    obj.imageCheckBox103 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox103:setParent(obj.layout13);
+    obj.imageCheckBox103:setLeft(40);
+    obj.imageCheckBox103:setTop(0);
+    obj.imageCheckBox103:setWidth(20);
+    obj.imageCheckBox103:setHeight(20);
+    obj.imageCheckBox103:setImageUnchecked("/SODLFillable/images/checkboxUnchecked.png");
+    obj.imageCheckBox103:setImageChecked("/SODLFillable/images/checkboxChecked.png");
+    obj.imageCheckBox103:setField("skillCheck_233");
+    obj.imageCheckBox103:setName("imageCheckBox103");
+
+    obj.imageCheckBox104 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox104:setParent(obj.layout13);
+    obj.imageCheckBox104:setLeft(60);
+    obj.imageCheckBox104:setTop(0);
+    obj.imageCheckBox104:setWidth(20);
+    obj.imageCheckBox104:setHeight(20);
+    obj.imageCheckBox104:setImageUnchecked("/SODLFillable/images/checkboxUnchecked.png");
+    obj.imageCheckBox104:setImageChecked("/SODLFillable/images/checkboxChecked.png");
+    obj.imageCheckBox104:setField("skillCheck_234");
+    obj.imageCheckBox104:setName("imageCheckBox104");
+
+    obj.imageCheckBox105 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox105:setParent(obj.layout13);
+    obj.imageCheckBox105:setLeft(80);
+    obj.imageCheckBox105:setTop(0);
+    obj.imageCheckBox105:setWidth(20);
+    obj.imageCheckBox105:setHeight(20);
+    obj.imageCheckBox105:setImageUnchecked("/SODLFillable/images/checkboxUnchecked.png");
+    obj.imageCheckBox105:setImageChecked("/SODLFillable/images/checkboxChecked.png");
+    obj.imageCheckBox105:setField("skillCheck_235");
+    obj.imageCheckBox105:setName("imageCheckBox105");
+
+    obj.imageCheckBox106 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox106:setParent(obj.layout13);
+    obj.imageCheckBox106:setLeft(100);
+    obj.imageCheckBox106:setTop(0);
+    obj.imageCheckBox106:setWidth(20);
+    obj.imageCheckBox106:setHeight(20);
+    obj.imageCheckBox106:setImageUnchecked("/SODLFillable/images/checkboxUnchecked.png");
+    obj.imageCheckBox106:setImageChecked("/SODLFillable/images/checkboxChecked.png");
+    obj.imageCheckBox106:setField("skillCheck_236");
+    obj.imageCheckBox106:setName("imageCheckBox106");
+
+    obj.imageCheckBox107 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox107:setParent(obj.layout13);
+    obj.imageCheckBox107:setLeft(120);
+    obj.imageCheckBox107:setTop(0);
+    obj.imageCheckBox107:setWidth(20);
+    obj.imageCheckBox107:setHeight(20);
+    obj.imageCheckBox107:setImageUnchecked("/SODLFillable/images/checkboxUnchecked.png");
+    obj.imageCheckBox107:setImageChecked("/SODLFillable/images/checkboxChecked.png");
+    obj.imageCheckBox107:setField("skillCheck_237");
+    obj.imageCheckBox107:setName("imageCheckBox107");
+
+    obj.imageCheckBox108 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox108:setParent(obj.layout13);
+    obj.imageCheckBox108:setLeft(140);
+    obj.imageCheckBox108:setTop(0);
+    obj.imageCheckBox108:setWidth(20);
+    obj.imageCheckBox108:setHeight(20);
+    obj.imageCheckBox108:setImageUnchecked("/SODLFillable/images/checkboxUnchecked.png");
+    obj.imageCheckBox108:setImageChecked("/SODLFillable/images/checkboxChecked.png");
+    obj.imageCheckBox108:setField("skillCheck_238");
+    obj.imageCheckBox108:setName("imageCheckBox108");
+
+    obj.imageCheckBox109 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox109:setParent(obj.layout13);
+    obj.imageCheckBox109:setLeft(160);
+    obj.imageCheckBox109:setTop(0);
+    obj.imageCheckBox109:setWidth(20);
+    obj.imageCheckBox109:setHeight(20);
+    obj.imageCheckBox109:setImageUnchecked("/SODLFillable/images/checkboxUnchecked.png");
+    obj.imageCheckBox109:setImageChecked("/SODLFillable/images/checkboxChecked.png");
+    obj.imageCheckBox109:setField("skillCheck_239");
+    obj.imageCheckBox109:setName("imageCheckBox109");
+
+    obj.imageCheckBox110 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox110:setParent(obj.layout13);
+    obj.imageCheckBox110:setLeft(180);
+    obj.imageCheckBox110:setTop(0);
+    obj.imageCheckBox110:setWidth(20);
+    obj.imageCheckBox110:setHeight(20);
+    obj.imageCheckBox110:setImageUnchecked("/SODLFillable/images/checkboxUnchecked.png");
+    obj.imageCheckBox110:setImageChecked("/SODLFillable/images/checkboxChecked.png");
+    obj.imageCheckBox110:setField("skillCheck_240");
+    obj.imageCheckBox110:setName("imageCheckBox110");
+
+    obj.textEditor11 = GUI.fromHandle(_obj_newObject("textEditor"));
+    obj.textEditor11:setParent(obj.layout8);
+    obj.textEditor11:setLeft(36);
+    obj.textEditor11:setTop(906);
+    obj.textEditor11:setWidth(320);
+    obj.textEditor11:setHeight(150);
+    obj.textEditor11:setFontSize(14);
+    obj.textEditor11:setFontColor("#000000");
+    obj.textEditor11:setTransparent(true);
+    obj.textEditor11:setField("skillDesc_23");
+    obj.textEditor11:setName("textEditor11");
+
+    obj.edit12 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit12:setParent(obj.layout8);
+    obj.edit12:setLeft(110);
+    obj.edit12:setTop(1056);
+    obj.edit12:setWidth(200);
+    obj.edit12:setHeight(30);
+    obj.edit12:setFontSize(16);
+    obj.edit12:setFontColor("#000000");
+    obj.edit12:setTransparent(true);
+    obj.edit12:setField("skillName_24");
+    obj.edit12:setName("edit12");
+
+    obj.layout14 = GUI.fromHandle(_obj_newObject("layout"));
+    obj.layout14:setParent(obj.layout8);
+    obj.layout14:setLeft(73);
+    obj.layout14:setTop(1086);
+    obj.layout14:setWidth(200);
+    obj.layout14:setHeight(20);
+    obj.layout14:setName("layout14");
+
+    obj.imageCheckBox111 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox111:setParent(obj.layout14);
+    obj.imageCheckBox111:setLeft(0);
+    obj.imageCheckBox111:setTop(0);
+    obj.imageCheckBox111:setWidth(20);
+    obj.imageCheckBox111:setHeight(20);
+    obj.imageCheckBox111:setImageUnchecked("/SODLFillable/images/checkboxUnchecked.png");
+    obj.imageCheckBox111:setImageChecked("/SODLFillable/images/checkboxChecked.png");
+    obj.imageCheckBox111:setField("skillCheck_241");
+    obj.imageCheckBox111:setName("imageCheckBox111");
+
+    obj.imageCheckBox112 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox112:setParent(obj.layout14);
+    obj.imageCheckBox112:setLeft(20);
+    obj.imageCheckBox112:setTop(0);
+    obj.imageCheckBox112:setWidth(20);
+    obj.imageCheckBox112:setHeight(20);
+    obj.imageCheckBox112:setImageUnchecked("/SODLFillable/images/checkboxUnchecked.png");
+    obj.imageCheckBox112:setImageChecked("/SODLFillable/images/checkboxChecked.png");
+    obj.imageCheckBox112:setField("skillCheck_242");
+    obj.imageCheckBox112:setName("imageCheckBox112");
+
+    obj.imageCheckBox113 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox113:setParent(obj.layout14);
+    obj.imageCheckBox113:setLeft(40);
+    obj.imageCheckBox113:setTop(0);
+    obj.imageCheckBox113:setWidth(20);
+    obj.imageCheckBox113:setHeight(20);
+    obj.imageCheckBox113:setImageUnchecked("/SODLFillable/images/checkboxUnchecked.png");
+    obj.imageCheckBox113:setImageChecked("/SODLFillable/images/checkboxChecked.png");
+    obj.imageCheckBox113:setField("skillCheck_243");
+    obj.imageCheckBox113:setName("imageCheckBox113");
+
+    obj.imageCheckBox114 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox114:setParent(obj.layout14);
+    obj.imageCheckBox114:setLeft(60);
+    obj.imageCheckBox114:setTop(0);
+    obj.imageCheckBox114:setWidth(20);
+    obj.imageCheckBox114:setHeight(20);
+    obj.imageCheckBox114:setImageUnchecked("/SODLFillable/images/checkboxUnchecked.png");
+    obj.imageCheckBox114:setImageChecked("/SODLFillable/images/checkboxChecked.png");
+    obj.imageCheckBox114:setField("skillCheck_244");
+    obj.imageCheckBox114:setName("imageCheckBox114");
+
+    obj.imageCheckBox115 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox115:setParent(obj.layout14);
+    obj.imageCheckBox115:setLeft(80);
+    obj.imageCheckBox115:setTop(0);
+    obj.imageCheckBox115:setWidth(20);
+    obj.imageCheckBox115:setHeight(20);
+    obj.imageCheckBox115:setImageUnchecked("/SODLFillable/images/checkboxUnchecked.png");
+    obj.imageCheckBox115:setImageChecked("/SODLFillable/images/checkboxChecked.png");
+    obj.imageCheckBox115:setField("skillCheck_245");
+    obj.imageCheckBox115:setName("imageCheckBox115");
+
+    obj.imageCheckBox116 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox116:setParent(obj.layout14);
+    obj.imageCheckBox116:setLeft(100);
+    obj.imageCheckBox116:setTop(0);
+    obj.imageCheckBox116:setWidth(20);
+    obj.imageCheckBox116:setHeight(20);
+    obj.imageCheckBox116:setImageUnchecked("/SODLFillable/images/checkboxUnchecked.png");
+    obj.imageCheckBox116:setImageChecked("/SODLFillable/images/checkboxChecked.png");
+    obj.imageCheckBox116:setField("skillCheck_246");
+    obj.imageCheckBox116:setName("imageCheckBox116");
+
+    obj.imageCheckBox117 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox117:setParent(obj.layout14);
+    obj.imageCheckBox117:setLeft(120);
+    obj.imageCheckBox117:setTop(0);
+    obj.imageCheckBox117:setWidth(20);
+    obj.imageCheckBox117:setHeight(20);
+    obj.imageCheckBox117:setImageUnchecked("/SODLFillable/images/checkboxUnchecked.png");
+    obj.imageCheckBox117:setImageChecked("/SODLFillable/images/checkboxChecked.png");
+    obj.imageCheckBox117:setField("skillCheck_247");
+    obj.imageCheckBox117:setName("imageCheckBox117");
+
+    obj.imageCheckBox118 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox118:setParent(obj.layout14);
+    obj.imageCheckBox118:setLeft(140);
+    obj.imageCheckBox118:setTop(0);
+    obj.imageCheckBox118:setWidth(20);
+    obj.imageCheckBox118:setHeight(20);
+    obj.imageCheckBox118:setImageUnchecked("/SODLFillable/images/checkboxUnchecked.png");
+    obj.imageCheckBox118:setImageChecked("/SODLFillable/images/checkboxChecked.png");
+    obj.imageCheckBox118:setField("skillCheck_248");
+    obj.imageCheckBox118:setName("imageCheckBox118");
+
+    obj.imageCheckBox119 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox119:setParent(obj.layout14);
+    obj.imageCheckBox119:setLeft(160);
+    obj.imageCheckBox119:setTop(0);
+    obj.imageCheckBox119:setWidth(20);
+    obj.imageCheckBox119:setHeight(20);
+    obj.imageCheckBox119:setImageUnchecked("/SODLFillable/images/checkboxUnchecked.png");
+    obj.imageCheckBox119:setImageChecked("/SODLFillable/images/checkboxChecked.png");
+    obj.imageCheckBox119:setField("skillCheck_249");
+    obj.imageCheckBox119:setName("imageCheckBox119");
+
+    obj.imageCheckBox120 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox120:setParent(obj.layout14);
+    obj.imageCheckBox120:setLeft(180);
+    obj.imageCheckBox120:setTop(0);
+    obj.imageCheckBox120:setWidth(20);
+    obj.imageCheckBox120:setHeight(20);
+    obj.imageCheckBox120:setImageUnchecked("/SODLFillable/images/checkboxUnchecked.png");
+    obj.imageCheckBox120:setImageChecked("/SODLFillable/images/checkboxChecked.png");
+    obj.imageCheckBox120:setField("skillCheck_250");
+    obj.imageCheckBox120:setName("imageCheckBox120");
+
+    obj.textEditor12 = GUI.fromHandle(_obj_newObject("textEditor"));
+    obj.textEditor12:setParent(obj.layout8);
+    obj.textEditor12:setLeft(36);
+    obj.textEditor12:setTop(1106);
+    obj.textEditor12:setWidth(320);
+    obj.textEditor12:setHeight(150);
+    obj.textEditor12:setFontSize(14);
+    obj.textEditor12:setFontColor("#000000");
+    obj.textEditor12:setTransparent(true);
+    obj.textEditor12:setField("skillDesc_24");
+    obj.textEditor12:setName("textEditor12");
+
+    function obj:_releaseEvents()
+    end;
+
+    obj._oldLFMDestroy = obj.destroy;
+
+    function obj:destroy() 
+        self:_releaseEvents();
+
+        if (self.handle ~= 0) and (self.setNodeDatabase ~= nil) then
+          self:setNodeDatabase(nil);
+        end;
+
+        if self.imageCheckBox111 ~= nil then self.imageCheckBox111:destroy(); self.imageCheckBox111 = nil; end;
+        if self.imageCheckBox8 ~= nil then self.imageCheckBox8:destroy(); self.imageCheckBox8 = nil; end;
+        if self.imageCheckBox65 ~= nil then self.imageCheckBox65:destroy(); self.imageCheckBox65 = nil; end;
+        if self.imageCheckBox73 ~= nil then self.imageCheckBox73:destroy(); self.imageCheckBox73 = nil; end;
+        if self.imageCheckBox88 ~= nil then self.imageCheckBox88:destroy(); self.imageCheckBox88 = nil; end;
+        if self.layout10 ~= nil then self.layout10:destroy(); self.layout10 = nil; end;
+        if self.imageCheckBox96 ~= nil then self.imageCheckBox96:destroy(); self.imageCheckBox96 = nil; end;
+        if self.imageCheckBox59 ~= nil then self.imageCheckBox59:destroy(); self.imageCheckBox59 = nil; end;
+        if self.imageCheckBox114 ~= nil then self.imageCheckBox114:destroy(); self.imageCheckBox114 = nil; end;
+        if self.textEditor9 ~= nil then self.textEditor9:destroy(); self.textEditor9 = nil; end;
+        if self.edit9 ~= nil then self.edit9:destroy(); self.edit9 = nil; end;
+        if self.imageCheckBox90 ~= nil then self.imageCheckBox90:destroy(); self.imageCheckBox90 = nil; end;
+        if self.imageCheckBox105 ~= nil then self.imageCheckBox105:destroy(); self.imageCheckBox105 = nil; end;
+        if self.imageCheckBox20 ~= nil then self.imageCheckBox20:destroy(); self.imageCheckBox20 = nil; end;
+        if self.imageCheckBox43 ~= nil then self.imageCheckBox43:destroy(); self.imageCheckBox43 = nil; end;
+        if self.edit7 ~= nil then self.edit7:destroy(); self.edit7 = nil; end;
+        if self.imageCheckBox76 ~= nil then self.imageCheckBox76:destroy(); self.imageCheckBox76 = nil; end;
+        if self.imageCheckBox93 ~= nil then self.imageCheckBox93:destroy(); self.imageCheckBox93 = nil; end;
+        if self.imageCheckBox4 ~= nil then self.imageCheckBox4:destroy(); self.imageCheckBox4 = nil; end;
+        if self.textEditor3 ~= nil then self.textEditor3:destroy(); self.textEditor3 = nil; end;
+        if self.edit12 ~= nil then self.edit12:destroy(); self.edit12 = nil; end;
+        if self.imageCheckBox58 ~= nil then self.imageCheckBox58:destroy(); self.imageCheckBox58 = nil; end;
+        if self.imageCheckBox39 ~= nil then self.imageCheckBox39:destroy(); self.imageCheckBox39 = nil; end;
+        if self.imageCheckBox7 ~= nil then self.imageCheckBox7:destroy(); self.imageCheckBox7 = nil; end;
+        if self.imageCheckBox50 ~= nil then self.imageCheckBox50:destroy(); self.imageCheckBox50 = nil; end;
+        if self.imageCheckBox30 ~= nil then self.imageCheckBox30:destroy(); self.imageCheckBox30 = nil; end;
+        if self.imageCheckBox61 ~= nil then self.imageCheckBox61:destroy(); self.imageCheckBox61 = nil; end;
+        if self.imageCheckBox75 ~= nil then self.imageCheckBox75:destroy(); self.imageCheckBox75 = nil; end;
+        if self.layout13 ~= nil then self.layout13:destroy(); self.layout13 = nil; end;
+        if self.layout3 ~= nil then self.layout3:destroy(); self.layout3 = nil; end;
+        if self.imageCheckBox51 ~= nil then self.imageCheckBox51:destroy(); self.imageCheckBox51 = nil; end;
+        if self.imageCheckBox44 ~= nil then self.imageCheckBox44:destroy(); self.imageCheckBox44 = nil; end;
+        if self.layout8 ~= nil then self.layout8:destroy(); self.layout8 = nil; end;
+        if self.layout1 ~= nil then self.layout1:destroy(); self.layout1 = nil; end;
+        if self.imageCheckBox115 ~= nil then self.imageCheckBox115:destroy(); self.imageCheckBox115 = nil; end;
+        if self.rectangle1 ~= nil then self.rectangle1:destroy(); self.rectangle1 = nil; end;
+        if self.imageCheckBox38 ~= nil then self.imageCheckBox38:destroy(); self.imageCheckBox38 = nil; end;
+        if self.imageCheckBox55 ~= nil then self.imageCheckBox55:destroy(); self.imageCheckBox55 = nil; end;
+        if self.imageCheckBox64 ~= nil then self.imageCheckBox64:destroy(); self.imageCheckBox64 = nil; end;
+        if self.imageCheckBox67 ~= nil then self.imageCheckBox67:destroy(); self.imageCheckBox67 = nil; end;
+        if self.layout12 ~= nil then self.layout12:destroy(); self.layout12 = nil; end;
+        if self.imageCheckBox36 ~= nil then self.imageCheckBox36:destroy(); self.imageCheckBox36 = nil; end;
+        if self.imageCheckBox106 ~= nil then self.imageCheckBox106:destroy(); self.imageCheckBox106 = nil; end;
+        if self.imageCheckBox32 ~= nil then self.imageCheckBox32:destroy(); self.imageCheckBox32 = nil; end;
+        if self.edit4 ~= nil then self.edit4:destroy(); self.edit4 = nil; end;
+        if self.imageCheckBox45 ~= nil then self.imageCheckBox45:destroy(); self.imageCheckBox45 = nil; end;
+        if self.imageCheckBox83 ~= nil then self.imageCheckBox83:destroy(); self.imageCheckBox83 = nil; end;
+        if self.layout9 ~= nil then self.layout9:destroy(); self.layout9 = nil; end;
+        if self.edit11 ~= nil then self.edit11:destroy(); self.edit11 = nil; end;
+        if self.image1 ~= nil then self.image1:destroy(); self.image1 = nil; end;
+        if self.textEditor11 ~= nil then self.textEditor11:destroy(); self.textEditor11 = nil; end;
+        if self.imageCheckBox107 ~= nil then self.imageCheckBox107:destroy(); self.imageCheckBox107 = nil; end;
+        if self.imageCheckBox23 ~= nil then self.imageCheckBox23:destroy(); self.imageCheckBox23 = nil; end;
+        if self.edit5 ~= nil then self.edit5:destroy(); self.edit5 = nil; end;
+        if self.textEditor2 ~= nil then self.textEditor2:destroy(); self.textEditor2 = nil; end;
+        if self.imageCheckBox52 ~= nil then self.imageCheckBox52:destroy(); self.imageCheckBox52 = nil; end;
+        if self.imageCheckBox60 ~= nil then self.imageCheckBox60:destroy(); self.imageCheckBox60 = nil; end;
+        if self.imageCheckBox77 ~= nil then self.imageCheckBox77:destroy(); self.imageCheckBox77 = nil; end;
+        if self.imageCheckBox41 ~= nil then self.imageCheckBox41:destroy(); self.imageCheckBox41 = nil; end;
+        if self.imageCheckBox62 ~= nil then self.imageCheckBox62:destroy(); self.imageCheckBox62 = nil; end;
+        if self.imageCheckBox113 ~= nil then self.imageCheckBox113:destroy(); self.imageCheckBox113 = nil; end;
+        if self.imageCheckBox89 ~= nil then self.imageCheckBox89:destroy(); self.imageCheckBox89 = nil; end;
+        if self.imageCheckBox18 ~= nil then self.imageCheckBox18:destroy(); self.imageCheckBox18 = nil; end;
+        if self.edit8 ~= nil then self.edit8:destroy(); self.edit8 = nil; end;
+        if self.imageCheckBox69 ~= nil then self.imageCheckBox69:destroy(); self.imageCheckBox69 = nil; end;
+        if self.imageCheckBox99 ~= nil then self.imageCheckBox99:destroy(); self.imageCheckBox99 = nil; end;
+        if self.imageCheckBox13 ~= nil then self.imageCheckBox13:destroy(); self.imageCheckBox13 = nil; end;
+        if self.imageCheckBox63 ~= nil then self.imageCheckBox63:destroy(); self.imageCheckBox63 = nil; end;
+        if self.imageCheckBox34 ~= nil then self.imageCheckBox34:destroy(); self.imageCheckBox34 = nil; end;
+        if self.textEditor5 ~= nil then self.textEditor5:destroy(); self.textEditor5 = nil; end;
+        if self.imageCheckBox94 ~= nil then self.imageCheckBox94:destroy(); self.imageCheckBox94 = nil; end;
+        if self.imageCheckBox10 ~= nil then self.imageCheckBox10:destroy(); self.imageCheckBox10 = nil; end;
+        if self.imageCheckBox46 ~= nil then self.imageCheckBox46:destroy(); self.imageCheckBox46 = nil; end;
+        if self.imageCheckBox22 ~= nil then self.imageCheckBox22:destroy(); self.imageCheckBox22 = nil; end;
+        if self.textEditor7 ~= nil then self.textEditor7:destroy(); self.textEditor7 = nil; end;
+        if self.edit2 ~= nil then self.edit2:destroy(); self.edit2 = nil; end;
+        if self.edit10 ~= nil then self.edit10:destroy(); self.edit10 = nil; end;
+        if self.imageCheckBox101 ~= nil then self.imageCheckBox101:destroy(); self.imageCheckBox101 = nil; end;
+        if self.imageCheckBox110 ~= nil then self.imageCheckBox110:destroy(); self.imageCheckBox110 = nil; end;
+        if self.imageCheckBox19 ~= nil then self.imageCheckBox19:destroy(); self.imageCheckBox19 = nil; end;
+        if self.edit1 ~= nil then self.edit1:destroy(); self.edit1 = nil; end;
+        if self.imageCheckBox79 ~= nil then self.imageCheckBox79:destroy(); self.imageCheckBox79 = nil; end;
+        if self.imageCheckBox71 ~= nil then self.imageCheckBox71:destroy(); self.imageCheckBox71 = nil; end;
+        if self.imageCheckBox25 ~= nil then self.imageCheckBox25:destroy(); self.imageCheckBox25 = nil; end;
+        if self.imageCheckBox14 ~= nil then self.imageCheckBox14:destroy(); self.imageCheckBox14 = nil; end;
+        if self.textEditor4 ~= nil then self.textEditor4:destroy(); self.textEditor4 = nil; end;
+        if self.imageCheckBox97 ~= nil then self.imageCheckBox97:destroy(); self.imageCheckBox97 = nil; end;
+        if self.imageCheckBox100 ~= nil then self.imageCheckBox100:destroy(); self.imageCheckBox100 = nil; end;
+        if self.layout4 ~= nil then self.layout4:destroy(); self.layout4 = nil; end;
+        if self.imageCheckBox78 ~= nil then self.imageCheckBox78:destroy(); self.imageCheckBox78 = nil; end;
+        if self.imageCheckBox80 ~= nil then self.imageCheckBox80:destroy(); self.imageCheckBox80 = nil; end;
+        if self.imageCheckBox119 ~= nil then self.imageCheckBox119:destroy(); self.imageCheckBox119 = nil; end;
+        if self.imageCheckBox54 ~= nil then self.imageCheckBox54:destroy(); self.imageCheckBox54 = nil; end;
+        if self.imageCheckBox81 ~= nil then self.imageCheckBox81:destroy(); self.imageCheckBox81 = nil; end;
+        if self.imageCheckBox103 ~= nil then self.imageCheckBox103:destroy(); self.imageCheckBox103 = nil; end;
+        if self.imageCheckBox37 ~= nil then self.imageCheckBox37:destroy(); self.imageCheckBox37 = nil; end;
+        if self.imageCheckBox24 ~= nil then self.imageCheckBox24:destroy(); self.imageCheckBox24 = nil; end;
+        if self.imageCheckBox5 ~= nil then self.imageCheckBox5:destroy(); self.imageCheckBox5 = nil; end;
+        if self.layout5 ~= nil then self.layout5:destroy(); self.layout5 = nil; end;
+        if self.imageCheckBox42 ~= nil then self.imageCheckBox42:destroy(); self.imageCheckBox42 = nil; end;
+        if self.imageCheckBox104 ~= nil then self.imageCheckBox104:destroy(); self.imageCheckBox104 = nil; end;
+        if self.imageCheckBox31 ~= nil then self.imageCheckBox31:destroy(); self.imageCheckBox31 = nil; end;
+        if self.imageCheckBox92 ~= nil then self.imageCheckBox92:destroy(); self.imageCheckBox92 = nil; end;
+        if self.imageCheckBox29 ~= nil then self.imageCheckBox29:destroy(); self.imageCheckBox29 = nil; end;
+        if self.imageCheckBox16 ~= nil then self.imageCheckBox16:destroy(); self.imageCheckBox16 = nil; end;
+        if self.imageCheckBox49 ~= nil then self.imageCheckBox49:destroy(); self.imageCheckBox49 = nil; end;
+        if self.imageCheckBox9 ~= nil then self.imageCheckBox9:destroy(); self.imageCheckBox9 = nil; end;
+        if self.imageCheckBox87 ~= nil then self.imageCheckBox87:destroy(); self.imageCheckBox87 = nil; end;
+        if self.imageCheckBox68 ~= nil then self.imageCheckBox68:destroy(); self.imageCheckBox68 = nil; end;
+        if self.imageCheckBox1 ~= nil then self.imageCheckBox1:destroy(); self.imageCheckBox1 = nil; end;
+        if self.imageCheckBox17 ~= nil then self.imageCheckBox17:destroy(); self.imageCheckBox17 = nil; end;
+        if self.imageCheckBox27 ~= nil then self.imageCheckBox27:destroy(); self.imageCheckBox27 = nil; end;
+        if self.imageCheckBox21 ~= nil then self.imageCheckBox21:destroy(); self.imageCheckBox21 = nil; end;
+        if self.imageCheckBox70 ~= nil then self.imageCheckBox70:destroy(); self.imageCheckBox70 = nil; end;
+        if self.textEditor6 ~= nil then self.textEditor6:destroy(); self.textEditor6 = nil; end;
+        if self.imageCheckBox26 ~= nil then self.imageCheckBox26:destroy(); self.imageCheckBox26 = nil; end;
+        if self.imageCheckBox2 ~= nil then self.imageCheckBox2:destroy(); self.imageCheckBox2 = nil; end;
+        if self.imageCheckBox53 ~= nil then self.imageCheckBox53:destroy(); self.imageCheckBox53 = nil; end;
+        if self.imageCheckBox56 ~= nil then self.imageCheckBox56:destroy(); self.imageCheckBox56 = nil; end;
+        if self.imageCheckBox66 ~= nil then self.imageCheckBox66:destroy(); self.imageCheckBox66 = nil; end;
+        if self.imageCheckBox82 ~= nil then self.imageCheckBox82:destroy(); self.imageCheckBox82 = nil; end;
+        if self.imageCheckBox57 ~= nil then self.imageCheckBox57:destroy(); self.imageCheckBox57 = nil; end;
+        if self.layout2 ~= nil then self.layout2:destroy(); self.layout2 = nil; end;
+        if self.imageCheckBox74 ~= nil then self.imageCheckBox74:destroy(); self.imageCheckBox74 = nil; end;
+        if self.textEditor10 ~= nil then self.textEditor10:destroy(); self.textEditor10 = nil; end;
+        if self.textEditor12 ~= nil then self.textEditor12:destroy(); self.textEditor12 = nil; end;
+        if self.imageCheckBox84 ~= nil then self.imageCheckBox84:destroy(); self.imageCheckBox84 = nil; end;
+        if self.imageCheckBox3 ~= nil then self.imageCheckBox3:destroy(); self.imageCheckBox3 = nil; end;
+        if self.layout11 ~= nil then self.layout11:destroy(); self.layout11 = nil; end;
+        if self.imageCheckBox95 ~= nil then self.imageCheckBox95:destroy(); self.imageCheckBox95 = nil; end;
+        if self.imageCheckBox108 ~= nil then self.imageCheckBox108:destroy(); self.imageCheckBox108 = nil; end;
+        if self.textEditor1 ~= nil then self.textEditor1:destroy(); self.textEditor1 = nil; end;
+        if self.imageCheckBox117 ~= nil then self.imageCheckBox117:destroy(); self.imageCheckBox117 = nil; end;
+        if self.imageCheckBox28 ~= nil then self.imageCheckBox28:destroy(); self.imageCheckBox28 = nil; end;
+        if self.imageCheckBox85 ~= nil then self.imageCheckBox85:destroy(); self.imageCheckBox85 = nil; end;
+        if self.edit6 ~= nil then self.edit6:destroy(); self.edit6 = nil; end;
+        if self.imageCheckBox6 ~= nil then self.imageCheckBox6:destroy(); self.imageCheckBox6 = nil; end;
+        if self.imageCheckBox112 ~= nil then self.imageCheckBox112:destroy(); self.imageCheckBox112 = nil; end;
+        if self.imageCheckBox120 ~= nil then self.imageCheckBox120:destroy(); self.imageCheckBox120 = nil; end;
+        if self.imageCheckBox48 ~= nil then self.imageCheckBox48:destroy(); self.imageCheckBox48 = nil; end;
+        if self.imageCheckBox33 ~= nil then self.imageCheckBox33:destroy(); self.imageCheckBox33 = nil; end;
+        if self.textEditor8 ~= nil then self.textEditor8:destroy(); self.textEditor8 = nil; end;
+        if self.edit3 ~= nil then self.edit3:destroy(); self.edit3 = nil; end;
+        if self.imageCheckBox15 ~= nil then self.imageCheckBox15:destroy(); self.imageCheckBox15 = nil; end;
+        if self.layout6 ~= nil then self.layout6:destroy(); self.layout6 = nil; end;
+        if self.imageCheckBox11 ~= nil then self.imageCheckBox11:destroy(); self.imageCheckBox11 = nil; end;
+        if self.imageCheckBox47 ~= nil then self.imageCheckBox47:destroy(); self.imageCheckBox47 = nil; end;
+        if self.imageCheckBox116 ~= nil then self.imageCheckBox116:destroy(); self.imageCheckBox116 = nil; end;
+        if self.imageCheckBox91 ~= nil then self.imageCheckBox91:destroy(); self.imageCheckBox91 = nil; end;
+        if self.imageCheckBox102 ~= nil then self.imageCheckBox102:destroy(); self.imageCheckBox102 = nil; end;
+        if self.imageCheckBox72 ~= nil then self.imageCheckBox72:destroy(); self.imageCheckBox72 = nil; end;
+        if self.imageCheckBox86 ~= nil then self.imageCheckBox86:destroy(); self.imageCheckBox86 = nil; end;
+        if self.layout14 ~= nil then self.layout14:destroy(); self.layout14 = nil; end;
+        if self.imageCheckBox118 ~= nil then self.imageCheckBox118:destroy(); self.imageCheckBox118 = nil; end;
+        if self.imageCheckBox98 ~= nil then self.imageCheckBox98:destroy(); self.imageCheckBox98 = nil; end;
+        if self.imageCheckBox109 ~= nil then self.imageCheckBox109:destroy(); self.imageCheckBox109 = nil; end;
+        if self.imageCheckBox40 ~= nil then self.imageCheckBox40:destroy(); self.imageCheckBox40 = nil; end;
+        if self.imageCheckBox12 ~= nil then self.imageCheckBox12:destroy(); self.imageCheckBox12 = nil; end;
+        if self.scrollBox1 ~= nil then self.scrollBox1:destroy(); self.scrollBox1 = nil; end;
+        if self.imageCheckBox35 ~= nil then self.imageCheckBox35:destroy(); self.imageCheckBox35 = nil; end;
+        if self.layout7 ~= nil then self.layout7:destroy(); self.layout7 = nil; end;
+        self:_oldLFMDestroy();
+    end;
+
+    obj:endUpdate();
+
+    return obj;
+end;
+
+function newfrmSODLFillable7_svg()
+    local retObj = nil;
+    __o_rrpgObjs.beginObjectsLoading();
+
+    __o_Utils.tryFinally(
+      function()
+        retObj = constructNew_frmSODLFillable7_svg();
+      end,
+      function()
+        __o_rrpgObjs.endObjectsLoading();
+      end);
+
+    assert(retObj ~= nil);
+    return retObj;
+end;
+
+local _frmSODLFillable7_svg = {
+    newEditor = newfrmSODLFillable7_svg, 
+    new = newfrmSODLFillable7_svg, 
+    name = "frmSODLFillable7_svg", 
+    dataType = "", 
+    formType = "undefined", 
+    formComponentName = "form", 
+    title = "", 
+    description=""};
+
+frmSODLFillable7_svg = _frmSODLFillable7_svg;
+Firecast.registrarForm(_frmSODLFillable7_svg);
+
+return _frmSODLFillable7_svg;

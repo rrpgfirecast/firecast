@@ -49,7 +49,7 @@ local function constructNew_frmSODLFillable1_svg()
     obj.image1:setTop(0);
     obj.image1:setWidth(918);
     obj.image1:setHeight(1188);
-    obj.image1:setSRC("/SODLFillable/images/1.png");
+    obj.image1:setSRC("/SODLFillable/images/atributos.png");
     obj.image1:setStyle("stretch");
     obj.image1:setOptimize(true);
     obj.image1:setName("image1");
@@ -531,7 +531,7 @@ local function constructNew_frmSODLFillable1_svg()
     obj.edit16:setParent(obj.layout22);
     obj.edit16:setLeft(0);
     obj.edit16:setTop(0);
-    obj.edit16:setWidth(100);
+    obj.edit16:setWidth(140);
     obj.edit16:setHeight(31);
     obj.edit16:setFontSize(14);
     obj.edit16:setFontColor("#000000");
@@ -544,7 +544,7 @@ local function constructNew_frmSODLFillable1_svg()
     obj.edit17:setParent(obj.layout22);
     obj.edit17:setLeft(0);
     obj.edit17:setTop(32);
-    obj.edit17:setWidth(100);
+    obj.edit17:setWidth(140);
     obj.edit17:setHeight(31);
     obj.edit17:setFontSize(14);
     obj.edit17:setFontColor("#000000");
@@ -557,7 +557,7 @@ local function constructNew_frmSODLFillable1_svg()
     obj.edit18:setParent(obj.layout22);
     obj.edit18:setLeft(0);
     obj.edit18:setTop(64);
-    obj.edit18:setWidth(100);
+    obj.edit18:setWidth(140);
     obj.edit18:setHeight(31);
     obj.edit18:setFontSize(14);
     obj.edit18:setFontColor("#000000");
@@ -570,7 +570,7 @@ local function constructNew_frmSODLFillable1_svg()
     obj.edit19:setParent(obj.layout22);
     obj.edit19:setLeft(0);
     obj.edit19:setTop(96);
-    obj.edit19:setWidth(100);
+    obj.edit19:setWidth(140);
     obj.edit19:setHeight(31);
     obj.edit19:setFontSize(14);
     obj.edit19:setFontColor("#000000");
@@ -583,7 +583,7 @@ local function constructNew_frmSODLFillable1_svg()
     obj.edit20:setParent(obj.layout22);
     obj.edit20:setLeft(0);
     obj.edit20:setTop(128);
-    obj.edit20:setWidth(100);
+    obj.edit20:setWidth(140);
     obj.edit20:setHeight(31);
     obj.edit20:setFontSize(14);
     obj.edit20:setFontColor("#000000");
@@ -596,7 +596,7 @@ local function constructNew_frmSODLFillable1_svg()
     obj.edit21:setParent(obj.layout22);
     obj.edit21:setLeft(0);
     obj.edit21:setTop(160);
-    obj.edit21:setWidth(100);
+    obj.edit21:setWidth(140);
     obj.edit21:setHeight(31);
     obj.edit21:setFontSize(14);
     obj.edit21:setFontColor("#000000");
@@ -607,7 +607,7 @@ local function constructNew_frmSODLFillable1_svg()
 
     obj.comboBox1 = GUI.fromHandle(_obj_newObject("comboBox"));
     obj.comboBox1:setParent(obj.layout22);
-    obj.comboBox1:setLeft(100);
+    obj.comboBox1:setLeft(140);
     obj.comboBox1:setTop(0);
     obj.comboBox1:setWidth(90);
     obj.comboBox1:setFontSize(14);
@@ -621,7 +621,7 @@ local function constructNew_frmSODLFillable1_svg()
 
     obj.comboBox2 = GUI.fromHandle(_obj_newObject("comboBox"));
     obj.comboBox2:setParent(obj.layout22);
-    obj.comboBox2:setLeft(100);
+    obj.comboBox2:setLeft(140);
     obj.comboBox2:setTop(32);
     obj.comboBox2:setWidth(90);
     obj.comboBox2:setFontSize(14);
@@ -635,7 +635,7 @@ local function constructNew_frmSODLFillable1_svg()
 
     obj.comboBox3 = GUI.fromHandle(_obj_newObject("comboBox"));
     obj.comboBox3:setParent(obj.layout22);
-    obj.comboBox3:setLeft(100);
+    obj.comboBox3:setLeft(140);
     obj.comboBox3:setTop(64);
     obj.comboBox3:setWidth(90);
     obj.comboBox3:setFontSize(14);
@@ -649,7 +649,7 @@ local function constructNew_frmSODLFillable1_svg()
 
     obj.comboBox4 = GUI.fromHandle(_obj_newObject("comboBox"));
     obj.comboBox4:setParent(obj.layout22);
-    obj.comboBox4:setLeft(100);
+    obj.comboBox4:setLeft(140);
     obj.comboBox4:setTop(96);
     obj.comboBox4:setWidth(90);
     obj.comboBox4:setFontSize(14);
@@ -663,7 +663,7 @@ local function constructNew_frmSODLFillable1_svg()
 
     obj.comboBox5 = GUI.fromHandle(_obj_newObject("comboBox"));
     obj.comboBox5:setParent(obj.layout22);
-    obj.comboBox5:setLeft(100);
+    obj.comboBox5:setLeft(140);
     obj.comboBox5:setTop(128);
     obj.comboBox5:setWidth(90);
     obj.comboBox5:setFontSize(14);
@@ -677,7 +677,7 @@ local function constructNew_frmSODLFillable1_svg()
 
     obj.comboBox6 = GUI.fromHandle(_obj_newObject("comboBox"));
     obj.comboBox6:setParent(obj.layout22);
-    obj.comboBox6:setLeft(100);
+    obj.comboBox6:setLeft(140);
     obj.comboBox6:setTop(160);
     obj.comboBox6:setWidth(90);
     obj.comboBox6:setFontSize(14);
@@ -691,7 +691,7 @@ local function constructNew_frmSODLFillable1_svg()
 
     obj.edit22 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit22:setParent(obj.layout22);
-    obj.edit22:setLeft(190);
+    obj.edit22:setLeft(230);
     obj.edit22:setTop(0);
     obj.edit22:setWidth(60);
     obj.edit22:setHeight(31);
@@ -704,7 +704,7 @@ local function constructNew_frmSODLFillable1_svg()
 
     obj.edit23 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit23:setParent(obj.layout22);
-    obj.edit23:setLeft(190);
+    obj.edit23:setLeft(230);
     obj.edit23:setTop(32);
     obj.edit23:setWidth(60);
     obj.edit23:setHeight(31);
@@ -717,7 +717,7 @@ local function constructNew_frmSODLFillable1_svg()
 
     obj.edit24 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit24:setParent(obj.layout22);
-    obj.edit24:setLeft(190);
+    obj.edit24:setLeft(230);
     obj.edit24:setTop(64);
     obj.edit24:setWidth(60);
     obj.edit24:setHeight(31);
@@ -730,7 +730,7 @@ local function constructNew_frmSODLFillable1_svg()
 
     obj.edit25 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit25:setParent(obj.layout22);
-    obj.edit25:setLeft(190);
+    obj.edit25:setLeft(230);
     obj.edit25:setTop(96);
     obj.edit25:setWidth(60);
     obj.edit25:setHeight(31);
@@ -743,7 +743,7 @@ local function constructNew_frmSODLFillable1_svg()
 
     obj.edit26 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit26:setParent(obj.layout22);
-    obj.edit26:setLeft(190);
+    obj.edit26:setLeft(230);
     obj.edit26:setTop(128);
     obj.edit26:setWidth(60);
     obj.edit26:setHeight(31);
@@ -756,7 +756,7 @@ local function constructNew_frmSODLFillable1_svg()
 
     obj.edit27 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit27:setParent(obj.layout22);
-    obj.edit27:setLeft(190);
+    obj.edit27:setLeft(230);
     obj.edit27:setTop(160);
     obj.edit27:setWidth(60);
     obj.edit27:setHeight(31);
@@ -1197,11 +1197,12 @@ local function constructNew_frmSODLFillable1_svg()
                                         end;
             
                                         if weaponName == '' then
-                                            weaponName = "Weapon without name"
+                                            weaponName = "Arma sem nome"
                                         end;
+                                        
                                 
                                         if characterTable ~= nil then
-                                            characterTable.chat:rolarDados(attackRoll, weaponName);
+                                            characterTable.chat:rolarDados(attackRoll, "Atacou com " .. weaponName);
                                         end;
             
                                     else
@@ -1306,11 +1307,11 @@ local function constructNew_frmSODLFillable1_svg()
                                         end;
             
                                         if weaponName == '' then
-                                            weaponName = "Weapon without name"
+                                            weaponName = "Arma sem nome"
                                         end;
                                 
                                         if characterTable ~= nil then
-                                            characterTable.chat:rolarDados(attackRoll, weaponName);
+                                            characterTable.chat:rolarDados(attackRoll, "Atacou com " .. weaponName);
                                         end;
             
                                     else
@@ -1415,11 +1416,11 @@ local function constructNew_frmSODLFillable1_svg()
                                         end;
             
                                         if weaponName == '' then
-                                            weaponName = "Weapon without name"
+                                            weaponName = "Arma sem nome"
                                         end;
                                 
                                         if characterTable ~= nil then
-                                            characterTable.chat:rolarDados(attackRoll, weaponName);
+                                            characterTable.chat:rolarDados(attackRoll, "Atacou com " .. weaponName);
                                         end;
             
                                     else
@@ -1524,11 +1525,11 @@ local function constructNew_frmSODLFillable1_svg()
                                         end;
             
                                         if weaponName == '' then
-                                            weaponName = "Weapon without name"
+                                            weaponName = "Arma sem nome"
                                         end;
                                 
                                         if characterTable ~= nil then
-                                            characterTable.chat:rolarDados(attackRoll, weaponName);
+                                            characterTable.chat:rolarDados(attackRoll, "Atacou com " .. weaponName);
                                         end;
             
                                     else
@@ -1634,11 +1635,11 @@ local function constructNew_frmSODLFillable1_svg()
                                         end;
             
                                         if weaponName == '' then
-                                            weaponName = "Weapon without name"
+                                            weaponName = "Arma sem nome"
                                         end;
                                 
                                         if characterTable ~= nil then
-                                            characterTable.chat:rolarDados(attackRoll, weaponName);
+                                            characterTable.chat:rolarDados(attackRoll, "Atacou com " .. weaponName);
                                         end;
             
                                     else
@@ -1745,11 +1746,11 @@ local function constructNew_frmSODLFillable1_svg()
                                         end;
             
                                         if weaponName == '' then
-                                            weaponName = "Weapon without name"
+                                            weaponName = "Arma sem nome"
                                         end;
                                 
                                         if characterTable ~= nil then
-                                            characterTable.chat:rolarDados(attackRoll, weaponName);
+                                            characterTable.chat:rolarDados(attackRoll, "Atacou com " .. weaponName);
                                         end;
             
                                     else

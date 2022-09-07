@@ -49,7 +49,7 @@ local function constructNew_frmSODLFillable4_svg()
     obj.image1:setTop(0);
     obj.image1:setWidth(893);
     obj.image1:setHeight(1263);
-    obj.image1:setSRC("/SODLFillable/images/2.png");
+    obj.image1:setSRC("/SODLFillable/images/magias.png");
     obj.image1:setStyle("stretch");
     obj.image1:setOptimize(true);
     obj.image1:setName("image1");
@@ -71,7 +71,7 @@ local function constructNew_frmSODLFillable4_svg()
     obj.edit1:setFontSize(16);
     obj.edit1:setFontColor("#000000");
     obj.edit1:setTransparent(true);
-    obj.edit1:setField("magicName_20");
+    obj.edit1:setField("magicName_25");
     obj.edit1:setName("edit1");
 
     obj.edit2 = GUI.fromHandle(_obj_newObject("edit"));
@@ -83,7 +83,7 @@ local function constructNew_frmSODLFillable4_svg()
     obj.edit2:setFontSize(16);
     obj.edit2:setFontColor("#000000");
     obj.edit2:setTransparent(true);
-    obj.edit2:setField("magicTrad_20");
+    obj.edit2:setField("magicTrad_25");
     obj.edit2:setName("edit2");
 
     obj.edit3 = GUI.fromHandle(_obj_newObject("edit"));
@@ -95,7 +95,7 @@ local function constructNew_frmSODLFillable4_svg()
     obj.edit3:setFontSize(16);
     obj.edit3:setFontColor("#000000");
     obj.edit3:setTransparent(true);
-    obj.edit3:setField("magicLevel_20");
+    obj.edit3:setField("magicLevel_25");
     obj.edit3:setName("edit3");
 
     obj.edit4 = GUI.fromHandle(_obj_newObject("edit"));
@@ -107,7 +107,7 @@ local function constructNew_frmSODLFillable4_svg()
     obj.edit4:setFontSize(16);
     obj.edit4:setFontColor("#000000");
     obj.edit4:setTransparent(true);
-    obj.edit4:setField("magicConj_20");
+    obj.edit4:setField("magicConj_25");
     obj.edit4:setName("edit4");
 
     obj.layout2 = GUI.fromHandle(_obj_newObject("layout"));
@@ -126,7 +126,7 @@ local function constructNew_frmSODLFillable4_svg()
     obj.imageCheckBox1:setHeight(20);
     obj.imageCheckBox1:setImageUnchecked("/SODLFillable/images/checkboxUnchecked.png");
     obj.imageCheckBox1:setImageChecked("/SODLFillable/images/checkboxChecked.png");
-    obj.imageCheckBox1:setField("magicCheck_200");
+    obj.imageCheckBox1:setField("magicCheck_251");
     obj.imageCheckBox1:setName("imageCheckBox1");
 
     obj.imageCheckBox2 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -137,7 +137,7 @@ local function constructNew_frmSODLFillable4_svg()
     obj.imageCheckBox2:setHeight(20);
     obj.imageCheckBox2:setImageUnchecked("/SODLFillable/images/checkboxUnchecked.png");
     obj.imageCheckBox2:setImageChecked("/SODLFillable/images/checkboxChecked.png");
-    obj.imageCheckBox2:setField("magicCheck_201");
+    obj.imageCheckBox2:setField("magicCheck_252");
     obj.imageCheckBox2:setName("imageCheckBox2");
 
     obj.imageCheckBox3 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -148,7 +148,7 @@ local function constructNew_frmSODLFillable4_svg()
     obj.imageCheckBox3:setHeight(20);
     obj.imageCheckBox3:setImageUnchecked("/SODLFillable/images/checkboxUnchecked.png");
     obj.imageCheckBox3:setImageChecked("/SODLFillable/images/checkboxChecked.png");
-    obj.imageCheckBox3:setField("magicCheck_202");
+    obj.imageCheckBox3:setField("magicCheck_253");
     obj.imageCheckBox3:setName("imageCheckBox3");
 
     obj.imageCheckBox4 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -159,7 +159,7 @@ local function constructNew_frmSODLFillable4_svg()
     obj.imageCheckBox4:setHeight(20);
     obj.imageCheckBox4:setImageUnchecked("/SODLFillable/images/checkboxUnchecked.png");
     obj.imageCheckBox4:setImageChecked("/SODLFillable/images/checkboxChecked.png");
-    obj.imageCheckBox4:setField("magicCheck_203");
+    obj.imageCheckBox4:setField("magicCheck_254");
     obj.imageCheckBox4:setName("imageCheckBox4");
 
     obj.imageCheckBox5 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -170,7 +170,7 @@ local function constructNew_frmSODLFillable4_svg()
     obj.imageCheckBox5:setHeight(20);
     obj.imageCheckBox5:setImageUnchecked("/SODLFillable/images/checkboxUnchecked.png");
     obj.imageCheckBox5:setImageChecked("/SODLFillable/images/checkboxChecked.png");
-    obj.imageCheckBox5:setField("magicCheck_204");
+    obj.imageCheckBox5:setField("magicCheck_255");
     obj.imageCheckBox5:setName("imageCheckBox5");
 
     obj.imageCheckBox6 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -181,7 +181,7 @@ local function constructNew_frmSODLFillable4_svg()
     obj.imageCheckBox6:setHeight(20);
     obj.imageCheckBox6:setImageUnchecked("/SODLFillable/images/checkboxUnchecked.png");
     obj.imageCheckBox6:setImageChecked("/SODLFillable/images/checkboxChecked.png");
-    obj.imageCheckBox6:setField("magicCheck_205");
+    obj.imageCheckBox6:setField("magicCheck_256");
     obj.imageCheckBox6:setName("imageCheckBox6");
 
     obj.imageCheckBox7 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -192,7 +192,7 @@ local function constructNew_frmSODLFillable4_svg()
     obj.imageCheckBox7:setHeight(20);
     obj.imageCheckBox7:setImageUnchecked("/SODLFillable/images/checkboxUnchecked.png");
     obj.imageCheckBox7:setImageChecked("/SODLFillable/images/checkboxChecked.png");
-    obj.imageCheckBox7:setField("magicCheck_206");
+    obj.imageCheckBox7:setField("magicCheck_257");
     obj.imageCheckBox7:setName("imageCheckBox7");
 
     obj.imageCheckBox8 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -203,7 +203,7 @@ local function constructNew_frmSODLFillable4_svg()
     obj.imageCheckBox8:setHeight(20);
     obj.imageCheckBox8:setImageUnchecked("/SODLFillable/images/checkboxUnchecked.png");
     obj.imageCheckBox8:setImageChecked("/SODLFillable/images/checkboxChecked.png");
-    obj.imageCheckBox8:setField("magicCheck_207");
+    obj.imageCheckBox8:setField("magicCheck_258");
     obj.imageCheckBox8:setName("imageCheckBox8");
 
     obj.imageCheckBox9 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -214,7 +214,7 @@ local function constructNew_frmSODLFillable4_svg()
     obj.imageCheckBox9:setHeight(20);
     obj.imageCheckBox9:setImageUnchecked("/SODLFillable/images/checkboxUnchecked.png");
     obj.imageCheckBox9:setImageChecked("/SODLFillable/images/checkboxChecked.png");
-    obj.imageCheckBox9:setField("magicCheck_208");
+    obj.imageCheckBox9:setField("magicCheck_259");
     obj.imageCheckBox9:setName("imageCheckBox9");
 
     obj.imageCheckBox10 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -225,7 +225,7 @@ local function constructNew_frmSODLFillable4_svg()
     obj.imageCheckBox10:setHeight(20);
     obj.imageCheckBox10:setImageUnchecked("/SODLFillable/images/checkboxUnchecked.png");
     obj.imageCheckBox10:setImageChecked("/SODLFillable/images/checkboxChecked.png");
-    obj.imageCheckBox10:setField("magicCheck_209");
+    obj.imageCheckBox10:setField("magicCheck_260");
     obj.imageCheckBox10:setName("imageCheckBox10");
 
     obj.textEditor1 = GUI.fromHandle(_obj_newObject("textEditor"));
@@ -237,7 +237,7 @@ local function constructNew_frmSODLFillable4_svg()
     obj.textEditor1:setFontSize(14);
     obj.textEditor1:setFontColor("#000000");
     obj.textEditor1:setTransparent(true);
-    obj.textEditor1:setField("magicDesc_20");
+    obj.textEditor1:setField("magicDesc_25");
     obj.textEditor1:setName("textEditor1");
 
     obj.edit5 = GUI.fromHandle(_obj_newObject("edit"));
@@ -249,7 +249,7 @@ local function constructNew_frmSODLFillable4_svg()
     obj.edit5:setFontSize(16);
     obj.edit5:setFontColor("#000000");
     obj.edit5:setTransparent(true);
-    obj.edit5:setField("magicName_21");
+    obj.edit5:setField("magicName_26");
     obj.edit5:setName("edit5");
 
     obj.edit6 = GUI.fromHandle(_obj_newObject("edit"));
@@ -261,7 +261,7 @@ local function constructNew_frmSODLFillable4_svg()
     obj.edit6:setFontSize(16);
     obj.edit6:setFontColor("#000000");
     obj.edit6:setTransparent(true);
-    obj.edit6:setField("magicTrad_21");
+    obj.edit6:setField("magicTrad_26");
     obj.edit6:setName("edit6");
 
     obj.edit7 = GUI.fromHandle(_obj_newObject("edit"));
@@ -273,7 +273,7 @@ local function constructNew_frmSODLFillable4_svg()
     obj.edit7:setFontSize(16);
     obj.edit7:setFontColor("#000000");
     obj.edit7:setTransparent(true);
-    obj.edit7:setField("magicLevel_21");
+    obj.edit7:setField("magicLevel_26");
     obj.edit7:setName("edit7");
 
     obj.edit8 = GUI.fromHandle(_obj_newObject("edit"));
@@ -285,7 +285,7 @@ local function constructNew_frmSODLFillable4_svg()
     obj.edit8:setFontSize(16);
     obj.edit8:setFontColor("#000000");
     obj.edit8:setTransparent(true);
-    obj.edit8:setField("magicConj_21");
+    obj.edit8:setField("magicConj_26");
     obj.edit8:setName("edit8");
 
     obj.layout3 = GUI.fromHandle(_obj_newObject("layout"));
@@ -304,7 +304,7 @@ local function constructNew_frmSODLFillable4_svg()
     obj.imageCheckBox11:setHeight(20);
     obj.imageCheckBox11:setImageUnchecked("/SODLFillable/images/checkboxUnchecked.png");
     obj.imageCheckBox11:setImageChecked("/SODLFillable/images/checkboxChecked.png");
-    obj.imageCheckBox11:setField("magicCheck_210");
+    obj.imageCheckBox11:setField("magicCheck_261");
     obj.imageCheckBox11:setName("imageCheckBox11");
 
     obj.imageCheckBox12 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -315,7 +315,7 @@ local function constructNew_frmSODLFillable4_svg()
     obj.imageCheckBox12:setHeight(20);
     obj.imageCheckBox12:setImageUnchecked("/SODLFillable/images/checkboxUnchecked.png");
     obj.imageCheckBox12:setImageChecked("/SODLFillable/images/checkboxChecked.png");
-    obj.imageCheckBox12:setField("magicCheck_211");
+    obj.imageCheckBox12:setField("magicCheck_262");
     obj.imageCheckBox12:setName("imageCheckBox12");
 
     obj.imageCheckBox13 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -326,7 +326,7 @@ local function constructNew_frmSODLFillable4_svg()
     obj.imageCheckBox13:setHeight(20);
     obj.imageCheckBox13:setImageUnchecked("/SODLFillable/images/checkboxUnchecked.png");
     obj.imageCheckBox13:setImageChecked("/SODLFillable/images/checkboxChecked.png");
-    obj.imageCheckBox13:setField("magicCheck_212");
+    obj.imageCheckBox13:setField("magicCheck_263");
     obj.imageCheckBox13:setName("imageCheckBox13");
 
     obj.imageCheckBox14 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -337,7 +337,7 @@ local function constructNew_frmSODLFillable4_svg()
     obj.imageCheckBox14:setHeight(20);
     obj.imageCheckBox14:setImageUnchecked("/SODLFillable/images/checkboxUnchecked.png");
     obj.imageCheckBox14:setImageChecked("/SODLFillable/images/checkboxChecked.png");
-    obj.imageCheckBox14:setField("magicCheck_213");
+    obj.imageCheckBox14:setField("magicCheck_264");
     obj.imageCheckBox14:setName("imageCheckBox14");
 
     obj.imageCheckBox15 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -348,7 +348,7 @@ local function constructNew_frmSODLFillable4_svg()
     obj.imageCheckBox15:setHeight(20);
     obj.imageCheckBox15:setImageUnchecked("/SODLFillable/images/checkboxUnchecked.png");
     obj.imageCheckBox15:setImageChecked("/SODLFillable/images/checkboxChecked.png");
-    obj.imageCheckBox15:setField("magicCheck_214");
+    obj.imageCheckBox15:setField("magicCheck_265");
     obj.imageCheckBox15:setName("imageCheckBox15");
 
     obj.imageCheckBox16 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -359,7 +359,7 @@ local function constructNew_frmSODLFillable4_svg()
     obj.imageCheckBox16:setHeight(20);
     obj.imageCheckBox16:setImageUnchecked("/SODLFillable/images/checkboxUnchecked.png");
     obj.imageCheckBox16:setImageChecked("/SODLFillable/images/checkboxChecked.png");
-    obj.imageCheckBox16:setField("magicCheck_215");
+    obj.imageCheckBox16:setField("magicCheck_266");
     obj.imageCheckBox16:setName("imageCheckBox16");
 
     obj.imageCheckBox17 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -370,7 +370,7 @@ local function constructNew_frmSODLFillable4_svg()
     obj.imageCheckBox17:setHeight(20);
     obj.imageCheckBox17:setImageUnchecked("/SODLFillable/images/checkboxUnchecked.png");
     obj.imageCheckBox17:setImageChecked("/SODLFillable/images/checkboxChecked.png");
-    obj.imageCheckBox17:setField("magicCheck_216");
+    obj.imageCheckBox17:setField("magicCheck_267");
     obj.imageCheckBox17:setName("imageCheckBox17");
 
     obj.imageCheckBox18 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -381,7 +381,7 @@ local function constructNew_frmSODLFillable4_svg()
     obj.imageCheckBox18:setHeight(20);
     obj.imageCheckBox18:setImageUnchecked("/SODLFillable/images/checkboxUnchecked.png");
     obj.imageCheckBox18:setImageChecked("/SODLFillable/images/checkboxChecked.png");
-    obj.imageCheckBox18:setField("magicCheck_217");
+    obj.imageCheckBox18:setField("magicCheck_268");
     obj.imageCheckBox18:setName("imageCheckBox18");
 
     obj.imageCheckBox19 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -392,7 +392,7 @@ local function constructNew_frmSODLFillable4_svg()
     obj.imageCheckBox19:setHeight(20);
     obj.imageCheckBox19:setImageUnchecked("/SODLFillable/images/checkboxUnchecked.png");
     obj.imageCheckBox19:setImageChecked("/SODLFillable/images/checkboxChecked.png");
-    obj.imageCheckBox19:setField("magicCheck_218");
+    obj.imageCheckBox19:setField("magicCheck_269");
     obj.imageCheckBox19:setName("imageCheckBox19");
 
     obj.imageCheckBox20 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -403,7 +403,7 @@ local function constructNew_frmSODLFillable4_svg()
     obj.imageCheckBox20:setHeight(20);
     obj.imageCheckBox20:setImageUnchecked("/SODLFillable/images/checkboxUnchecked.png");
     obj.imageCheckBox20:setImageChecked("/SODLFillable/images/checkboxChecked.png");
-    obj.imageCheckBox20:setField("magicCheck_219");
+    obj.imageCheckBox20:setField("magicCheck_270");
     obj.imageCheckBox20:setName("imageCheckBox20");
 
     obj.textEditor2 = GUI.fromHandle(_obj_newObject("textEditor"));
@@ -415,7 +415,7 @@ local function constructNew_frmSODLFillable4_svg()
     obj.textEditor2:setFontSize(14);
     obj.textEditor2:setFontColor("#000000");
     obj.textEditor2:setTransparent(true);
-    obj.textEditor2:setField("magicDesc_21");
+    obj.textEditor2:setField("magicDesc_26");
     obj.textEditor2:setName("textEditor2");
 
     obj.edit9 = GUI.fromHandle(_obj_newObject("edit"));
@@ -427,7 +427,7 @@ local function constructNew_frmSODLFillable4_svg()
     obj.edit9:setFontSize(16);
     obj.edit9:setFontColor("#000000");
     obj.edit9:setTransparent(true);
-    obj.edit9:setField("magicName_22");
+    obj.edit9:setField("magicName_27");
     obj.edit9:setName("edit9");
 
     obj.edit10 = GUI.fromHandle(_obj_newObject("edit"));
@@ -439,7 +439,7 @@ local function constructNew_frmSODLFillable4_svg()
     obj.edit10:setFontSize(16);
     obj.edit10:setFontColor("#000000");
     obj.edit10:setTransparent(true);
-    obj.edit10:setField("magicTrad_22");
+    obj.edit10:setField("magicTrad_27");
     obj.edit10:setName("edit10");
 
     obj.edit11 = GUI.fromHandle(_obj_newObject("edit"));
@@ -451,7 +451,7 @@ local function constructNew_frmSODLFillable4_svg()
     obj.edit11:setFontSize(16);
     obj.edit11:setFontColor("#000000");
     obj.edit11:setTransparent(true);
-    obj.edit11:setField("magicLevel_22");
+    obj.edit11:setField("magicLevel_27");
     obj.edit11:setName("edit11");
 
     obj.edit12 = GUI.fromHandle(_obj_newObject("edit"));
@@ -463,7 +463,7 @@ local function constructNew_frmSODLFillable4_svg()
     obj.edit12:setFontSize(16);
     obj.edit12:setFontColor("#000000");
     obj.edit12:setTransparent(true);
-    obj.edit12:setField("magicConj_22");
+    obj.edit12:setField("magicConj_27");
     obj.edit12:setName("edit12");
 
     obj.layout4 = GUI.fromHandle(_obj_newObject("layout"));
@@ -482,7 +482,7 @@ local function constructNew_frmSODLFillable4_svg()
     obj.imageCheckBox21:setHeight(20);
     obj.imageCheckBox21:setImageUnchecked("/SODLFillable/images/checkboxUnchecked.png");
     obj.imageCheckBox21:setImageChecked("/SODLFillable/images/checkboxChecked.png");
-    obj.imageCheckBox21:setField("magicCheck_220");
+    obj.imageCheckBox21:setField("magicCheck_271");
     obj.imageCheckBox21:setName("imageCheckBox21");
 
     obj.imageCheckBox22 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -493,7 +493,7 @@ local function constructNew_frmSODLFillable4_svg()
     obj.imageCheckBox22:setHeight(20);
     obj.imageCheckBox22:setImageUnchecked("/SODLFillable/images/checkboxUnchecked.png");
     obj.imageCheckBox22:setImageChecked("/SODLFillable/images/checkboxChecked.png");
-    obj.imageCheckBox22:setField("magicCheck_221");
+    obj.imageCheckBox22:setField("magicCheck_272");
     obj.imageCheckBox22:setName("imageCheckBox22");
 
     obj.imageCheckBox23 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -504,7 +504,7 @@ local function constructNew_frmSODLFillable4_svg()
     obj.imageCheckBox23:setHeight(20);
     obj.imageCheckBox23:setImageUnchecked("/SODLFillable/images/checkboxUnchecked.png");
     obj.imageCheckBox23:setImageChecked("/SODLFillable/images/checkboxChecked.png");
-    obj.imageCheckBox23:setField("magicCheck_222");
+    obj.imageCheckBox23:setField("magicCheck_273");
     obj.imageCheckBox23:setName("imageCheckBox23");
 
     obj.imageCheckBox24 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -515,7 +515,7 @@ local function constructNew_frmSODLFillable4_svg()
     obj.imageCheckBox24:setHeight(20);
     obj.imageCheckBox24:setImageUnchecked("/SODLFillable/images/checkboxUnchecked.png");
     obj.imageCheckBox24:setImageChecked("/SODLFillable/images/checkboxChecked.png");
-    obj.imageCheckBox24:setField("magicCheck_223");
+    obj.imageCheckBox24:setField("magicCheck_274");
     obj.imageCheckBox24:setName("imageCheckBox24");
 
     obj.imageCheckBox25 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -526,7 +526,7 @@ local function constructNew_frmSODLFillable4_svg()
     obj.imageCheckBox25:setHeight(20);
     obj.imageCheckBox25:setImageUnchecked("/SODLFillable/images/checkboxUnchecked.png");
     obj.imageCheckBox25:setImageChecked("/SODLFillable/images/checkboxChecked.png");
-    obj.imageCheckBox25:setField("magicCheck_224");
+    obj.imageCheckBox25:setField("magicCheck_275");
     obj.imageCheckBox25:setName("imageCheckBox25");
 
     obj.imageCheckBox26 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -537,7 +537,7 @@ local function constructNew_frmSODLFillable4_svg()
     obj.imageCheckBox26:setHeight(20);
     obj.imageCheckBox26:setImageUnchecked("/SODLFillable/images/checkboxUnchecked.png");
     obj.imageCheckBox26:setImageChecked("/SODLFillable/images/checkboxChecked.png");
-    obj.imageCheckBox26:setField("magicCheck_225");
+    obj.imageCheckBox26:setField("magicCheck_276");
     obj.imageCheckBox26:setName("imageCheckBox26");
 
     obj.imageCheckBox27 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -548,7 +548,7 @@ local function constructNew_frmSODLFillable4_svg()
     obj.imageCheckBox27:setHeight(20);
     obj.imageCheckBox27:setImageUnchecked("/SODLFillable/images/checkboxUnchecked.png");
     obj.imageCheckBox27:setImageChecked("/SODLFillable/images/checkboxChecked.png");
-    obj.imageCheckBox27:setField("magicCheck_226");
+    obj.imageCheckBox27:setField("magicCheck_278");
     obj.imageCheckBox27:setName("imageCheckBox27");
 
     obj.imageCheckBox28 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -559,7 +559,7 @@ local function constructNew_frmSODLFillable4_svg()
     obj.imageCheckBox28:setHeight(20);
     obj.imageCheckBox28:setImageUnchecked("/SODLFillable/images/checkboxUnchecked.png");
     obj.imageCheckBox28:setImageChecked("/SODLFillable/images/checkboxChecked.png");
-    obj.imageCheckBox28:setField("magicCheck_227");
+    obj.imageCheckBox28:setField("magicCheck_279");
     obj.imageCheckBox28:setName("imageCheckBox28");
 
     obj.imageCheckBox29 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -570,7 +570,7 @@ local function constructNew_frmSODLFillable4_svg()
     obj.imageCheckBox29:setHeight(20);
     obj.imageCheckBox29:setImageUnchecked("/SODLFillable/images/checkboxUnchecked.png");
     obj.imageCheckBox29:setImageChecked("/SODLFillable/images/checkboxChecked.png");
-    obj.imageCheckBox29:setField("magicCheck_228");
+    obj.imageCheckBox29:setField("magicCheck_280");
     obj.imageCheckBox29:setName("imageCheckBox29");
 
     obj.imageCheckBox30 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -581,7 +581,7 @@ local function constructNew_frmSODLFillable4_svg()
     obj.imageCheckBox30:setHeight(20);
     obj.imageCheckBox30:setImageUnchecked("/SODLFillable/images/checkboxUnchecked.png");
     obj.imageCheckBox30:setImageChecked("/SODLFillable/images/checkboxChecked.png");
-    obj.imageCheckBox30:setField("magicCheck_229");
+    obj.imageCheckBox30:setField("magicCheck_281");
     obj.imageCheckBox30:setName("imageCheckBox30");
 
     obj.textEditor3 = GUI.fromHandle(_obj_newObject("textEditor"));
@@ -593,7 +593,7 @@ local function constructNew_frmSODLFillable4_svg()
     obj.textEditor3:setFontSize(14);
     obj.textEditor3:setFontColor("#000000");
     obj.textEditor3:setTransparent(true);
-    obj.textEditor3:setField("magicDesc_22");
+    obj.textEditor3:setField("magicDesc_27");
     obj.textEditor3:setName("textEditor3");
 
     obj.edit13 = GUI.fromHandle(_obj_newObject("edit"));
@@ -605,7 +605,7 @@ local function constructNew_frmSODLFillable4_svg()
     obj.edit13:setFontSize(16);
     obj.edit13:setFontColor("#000000");
     obj.edit13:setTransparent(true);
-    obj.edit13:setField("magicName_24");
+    obj.edit13:setField("magicName_28");
     obj.edit13:setName("edit13");
 
     obj.edit14 = GUI.fromHandle(_obj_newObject("edit"));
@@ -617,7 +617,7 @@ local function constructNew_frmSODLFillable4_svg()
     obj.edit14:setFontSize(16);
     obj.edit14:setFontColor("#000000");
     obj.edit14:setTransparent(true);
-    obj.edit14:setField("magicTrad_24");
+    obj.edit14:setField("magicTrad_28");
     obj.edit14:setName("edit14");
 
     obj.edit15 = GUI.fromHandle(_obj_newObject("edit"));
@@ -629,7 +629,7 @@ local function constructNew_frmSODLFillable4_svg()
     obj.edit15:setFontSize(16);
     obj.edit15:setFontColor("#000000");
     obj.edit15:setTransparent(true);
-    obj.edit15:setField("magicLevel_24");
+    obj.edit15:setField("magicLevel_28");
     obj.edit15:setName("edit15");
 
     obj.edit16 = GUI.fromHandle(_obj_newObject("edit"));
@@ -641,7 +641,7 @@ local function constructNew_frmSODLFillable4_svg()
     obj.edit16:setFontSize(16);
     obj.edit16:setFontColor("#000000");
     obj.edit16:setTransparent(true);
-    obj.edit16:setField("magicConj_24");
+    obj.edit16:setField("magicConj_28");
     obj.edit16:setName("edit16");
 
     obj.layout5 = GUI.fromHandle(_obj_newObject("layout"));
@@ -660,7 +660,7 @@ local function constructNew_frmSODLFillable4_svg()
     obj.imageCheckBox31:setHeight(20);
     obj.imageCheckBox31:setImageUnchecked("/SODLFillable/images/checkboxUnchecked.png");
     obj.imageCheckBox31:setImageChecked("/SODLFillable/images/checkboxChecked.png");
-    obj.imageCheckBox31:setField("magicCheck_230");
+    obj.imageCheckBox31:setField("magicCheck_282");
     obj.imageCheckBox31:setName("imageCheckBox31");
 
     obj.imageCheckBox32 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -671,7 +671,7 @@ local function constructNew_frmSODLFillable4_svg()
     obj.imageCheckBox32:setHeight(20);
     obj.imageCheckBox32:setImageUnchecked("/SODLFillable/images/checkboxUnchecked.png");
     obj.imageCheckBox32:setImageChecked("/SODLFillable/images/checkboxChecked.png");
-    obj.imageCheckBox32:setField("magicCheck_231");
+    obj.imageCheckBox32:setField("magicCheck_283");
     obj.imageCheckBox32:setName("imageCheckBox32");
 
     obj.imageCheckBox33 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -682,7 +682,7 @@ local function constructNew_frmSODLFillable4_svg()
     obj.imageCheckBox33:setHeight(20);
     obj.imageCheckBox33:setImageUnchecked("/SODLFillable/images/checkboxUnchecked.png");
     obj.imageCheckBox33:setImageChecked("/SODLFillable/images/checkboxChecked.png");
-    obj.imageCheckBox33:setField("magicCheck_232");
+    obj.imageCheckBox33:setField("magicCheck_284");
     obj.imageCheckBox33:setName("imageCheckBox33");
 
     obj.imageCheckBox34 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -693,7 +693,7 @@ local function constructNew_frmSODLFillable4_svg()
     obj.imageCheckBox34:setHeight(20);
     obj.imageCheckBox34:setImageUnchecked("/SODLFillable/images/checkboxUnchecked.png");
     obj.imageCheckBox34:setImageChecked("/SODLFillable/images/checkboxChecked.png");
-    obj.imageCheckBox34:setField("magicCheck_233");
+    obj.imageCheckBox34:setField("magicCheck_285");
     obj.imageCheckBox34:setName("imageCheckBox34");
 
     obj.imageCheckBox35 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -704,7 +704,7 @@ local function constructNew_frmSODLFillable4_svg()
     obj.imageCheckBox35:setHeight(20);
     obj.imageCheckBox35:setImageUnchecked("/SODLFillable/images/checkboxUnchecked.png");
     obj.imageCheckBox35:setImageChecked("/SODLFillable/images/checkboxChecked.png");
-    obj.imageCheckBox35:setField("magicCheck_234");
+    obj.imageCheckBox35:setField("magicCheck_286");
     obj.imageCheckBox35:setName("imageCheckBox35");
 
     obj.imageCheckBox36 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -715,7 +715,7 @@ local function constructNew_frmSODLFillable4_svg()
     obj.imageCheckBox36:setHeight(20);
     obj.imageCheckBox36:setImageUnchecked("/SODLFillable/images/checkboxUnchecked.png");
     obj.imageCheckBox36:setImageChecked("/SODLFillable/images/checkboxChecked.png");
-    obj.imageCheckBox36:setField("magicCheck_235");
+    obj.imageCheckBox36:setField("magicCheck_287");
     obj.imageCheckBox36:setName("imageCheckBox36");
 
     obj.imageCheckBox37 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -726,7 +726,7 @@ local function constructNew_frmSODLFillable4_svg()
     obj.imageCheckBox37:setHeight(20);
     obj.imageCheckBox37:setImageUnchecked("/SODLFillable/images/checkboxUnchecked.png");
     obj.imageCheckBox37:setImageChecked("/SODLFillable/images/checkboxChecked.png");
-    obj.imageCheckBox37:setField("magicCheck_236");
+    obj.imageCheckBox37:setField("magicCheck_288");
     obj.imageCheckBox37:setName("imageCheckBox37");
 
     obj.imageCheckBox38 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -737,7 +737,7 @@ local function constructNew_frmSODLFillable4_svg()
     obj.imageCheckBox38:setHeight(20);
     obj.imageCheckBox38:setImageUnchecked("/SODLFillable/images/checkboxUnchecked.png");
     obj.imageCheckBox38:setImageChecked("/SODLFillable/images/checkboxChecked.png");
-    obj.imageCheckBox38:setField("magicCheck_237");
+    obj.imageCheckBox38:setField("magicCheck_289");
     obj.imageCheckBox38:setName("imageCheckBox38");
 
     obj.imageCheckBox39 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -748,7 +748,7 @@ local function constructNew_frmSODLFillable4_svg()
     obj.imageCheckBox39:setHeight(20);
     obj.imageCheckBox39:setImageUnchecked("/SODLFillable/images/checkboxUnchecked.png");
     obj.imageCheckBox39:setImageChecked("/SODLFillable/images/checkboxChecked.png");
-    obj.imageCheckBox39:setField("magicCheck_238");
+    obj.imageCheckBox39:setField("magicCheck_290");
     obj.imageCheckBox39:setName("imageCheckBox39");
 
     obj.imageCheckBox40 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -759,7 +759,7 @@ local function constructNew_frmSODLFillable4_svg()
     obj.imageCheckBox40:setHeight(20);
     obj.imageCheckBox40:setImageUnchecked("/SODLFillable/images/checkboxUnchecked.png");
     obj.imageCheckBox40:setImageChecked("/SODLFillable/images/checkboxChecked.png");
-    obj.imageCheckBox40:setField("magicCheck_239");
+    obj.imageCheckBox40:setField("magicCheck_291");
     obj.imageCheckBox40:setName("imageCheckBox40");
 
     obj.textEditor4 = GUI.fromHandle(_obj_newObject("textEditor"));
@@ -771,7 +771,7 @@ local function constructNew_frmSODLFillable4_svg()
     obj.textEditor4:setFontSize(14);
     obj.textEditor4:setFontColor("#000000");
     obj.textEditor4:setTransparent(true);
-    obj.textEditor4:setField("magicDesc_24");
+    obj.textEditor4:setField("magicDesc_28");
     obj.textEditor4:setName("textEditor4");
 
     obj.edit17 = GUI.fromHandle(_obj_newObject("edit"));
@@ -783,7 +783,7 @@ local function constructNew_frmSODLFillable4_svg()
     obj.edit17:setFontSize(16);
     obj.edit17:setFontColor("#000000");
     obj.edit17:setTransparent(true);
-    obj.edit17:setField("magicName_25");
+    obj.edit17:setField("magicName_29");
     obj.edit17:setName("edit17");
 
     obj.edit18 = GUI.fromHandle(_obj_newObject("edit"));
@@ -795,7 +795,7 @@ local function constructNew_frmSODLFillable4_svg()
     obj.edit18:setFontSize(16);
     obj.edit18:setFontColor("#000000");
     obj.edit18:setTransparent(true);
-    obj.edit18:setField("magicTrad_25");
+    obj.edit18:setField("magicTrad_29");
     obj.edit18:setName("edit18");
 
     obj.edit19 = GUI.fromHandle(_obj_newObject("edit"));
@@ -807,7 +807,7 @@ local function constructNew_frmSODLFillable4_svg()
     obj.edit19:setFontSize(16);
     obj.edit19:setFontColor("#000000");
     obj.edit19:setTransparent(true);
-    obj.edit19:setField("magicLevel_25");
+    obj.edit19:setField("magicLevel_29");
     obj.edit19:setName("edit19");
 
     obj.edit20 = GUI.fromHandle(_obj_newObject("edit"));
@@ -819,7 +819,7 @@ local function constructNew_frmSODLFillable4_svg()
     obj.edit20:setFontSize(16);
     obj.edit20:setFontColor("#000000");
     obj.edit20:setTransparent(true);
-    obj.edit20:setField("magicConj_25");
+    obj.edit20:setField("magicConj_29");
     obj.edit20:setName("edit20");
 
     obj.layout6 = GUI.fromHandle(_obj_newObject("layout"));
@@ -838,7 +838,7 @@ local function constructNew_frmSODLFillable4_svg()
     obj.imageCheckBox41:setHeight(20);
     obj.imageCheckBox41:setImageUnchecked("/SODLFillable/images/checkboxUnchecked.png");
     obj.imageCheckBox41:setImageChecked("/SODLFillable/images/checkboxChecked.png");
-    obj.imageCheckBox41:setField("magicCheck_240");
+    obj.imageCheckBox41:setField("magicCheck_292");
     obj.imageCheckBox41:setName("imageCheckBox41");
 
     obj.imageCheckBox42 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -849,7 +849,7 @@ local function constructNew_frmSODLFillable4_svg()
     obj.imageCheckBox42:setHeight(20);
     obj.imageCheckBox42:setImageUnchecked("/SODLFillable/images/checkboxUnchecked.png");
     obj.imageCheckBox42:setImageChecked("/SODLFillable/images/checkboxChecked.png");
-    obj.imageCheckBox42:setField("magicCheck_241");
+    obj.imageCheckBox42:setField("magicCheck_293");
     obj.imageCheckBox42:setName("imageCheckBox42");
 
     obj.imageCheckBox43 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -860,7 +860,7 @@ local function constructNew_frmSODLFillable4_svg()
     obj.imageCheckBox43:setHeight(20);
     obj.imageCheckBox43:setImageUnchecked("/SODLFillable/images/checkboxUnchecked.png");
     obj.imageCheckBox43:setImageChecked("/SODLFillable/images/checkboxChecked.png");
-    obj.imageCheckBox43:setField("magicCheck_242");
+    obj.imageCheckBox43:setField("magicCheck_294");
     obj.imageCheckBox43:setName("imageCheckBox43");
 
     obj.imageCheckBox44 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -871,7 +871,7 @@ local function constructNew_frmSODLFillable4_svg()
     obj.imageCheckBox44:setHeight(20);
     obj.imageCheckBox44:setImageUnchecked("/SODLFillable/images/checkboxUnchecked.png");
     obj.imageCheckBox44:setImageChecked("/SODLFillable/images/checkboxChecked.png");
-    obj.imageCheckBox44:setField("magicCheck_243");
+    obj.imageCheckBox44:setField("magicCheck_295");
     obj.imageCheckBox44:setName("imageCheckBox44");
 
     obj.imageCheckBox45 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -882,7 +882,7 @@ local function constructNew_frmSODLFillable4_svg()
     obj.imageCheckBox45:setHeight(20);
     obj.imageCheckBox45:setImageUnchecked("/SODLFillable/images/checkboxUnchecked.png");
     obj.imageCheckBox45:setImageChecked("/SODLFillable/images/checkboxChecked.png");
-    obj.imageCheckBox45:setField("magicCheck_244");
+    obj.imageCheckBox45:setField("magicCheck_296");
     obj.imageCheckBox45:setName("imageCheckBox45");
 
     obj.imageCheckBox46 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -893,7 +893,7 @@ local function constructNew_frmSODLFillable4_svg()
     obj.imageCheckBox46:setHeight(20);
     obj.imageCheckBox46:setImageUnchecked("/SODLFillable/images/checkboxUnchecked.png");
     obj.imageCheckBox46:setImageChecked("/SODLFillable/images/checkboxChecked.png");
-    obj.imageCheckBox46:setField("magicCheck_245");
+    obj.imageCheckBox46:setField("magicCheck_297");
     obj.imageCheckBox46:setName("imageCheckBox46");
 
     obj.imageCheckBox47 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -904,7 +904,7 @@ local function constructNew_frmSODLFillable4_svg()
     obj.imageCheckBox47:setHeight(20);
     obj.imageCheckBox47:setImageUnchecked("/SODLFillable/images/checkboxUnchecked.png");
     obj.imageCheckBox47:setImageChecked("/SODLFillable/images/checkboxChecked.png");
-    obj.imageCheckBox47:setField("magicCheck_246");
+    obj.imageCheckBox47:setField("magicCheck_298");
     obj.imageCheckBox47:setName("imageCheckBox47");
 
     obj.imageCheckBox48 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -915,7 +915,7 @@ local function constructNew_frmSODLFillable4_svg()
     obj.imageCheckBox48:setHeight(20);
     obj.imageCheckBox48:setImageUnchecked("/SODLFillable/images/checkboxUnchecked.png");
     obj.imageCheckBox48:setImageChecked("/SODLFillable/images/checkboxChecked.png");
-    obj.imageCheckBox48:setField("magicCheck_247");
+    obj.imageCheckBox48:setField("magicCheck_299");
     obj.imageCheckBox48:setName("imageCheckBox48");
 
     obj.imageCheckBox49 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -926,7 +926,7 @@ local function constructNew_frmSODLFillable4_svg()
     obj.imageCheckBox49:setHeight(20);
     obj.imageCheckBox49:setImageUnchecked("/SODLFillable/images/checkboxUnchecked.png");
     obj.imageCheckBox49:setImageChecked("/SODLFillable/images/checkboxChecked.png");
-    obj.imageCheckBox49:setField("magicCheck_248");
+    obj.imageCheckBox49:setField("magicCheck_300");
     obj.imageCheckBox49:setName("imageCheckBox49");
 
     obj.imageCheckBox50 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -937,7 +937,7 @@ local function constructNew_frmSODLFillable4_svg()
     obj.imageCheckBox50:setHeight(20);
     obj.imageCheckBox50:setImageUnchecked("/SODLFillable/images/checkboxUnchecked.png");
     obj.imageCheckBox50:setImageChecked("/SODLFillable/images/checkboxChecked.png");
-    obj.imageCheckBox50:setField("magicCheck_249");
+    obj.imageCheckBox50:setField("magicCheck_301");
     obj.imageCheckBox50:setName("imageCheckBox50");
 
     obj.textEditor5 = GUI.fromHandle(_obj_newObject("textEditor"));
@@ -949,7 +949,7 @@ local function constructNew_frmSODLFillable4_svg()
     obj.textEditor5:setFontSize(14);
     obj.textEditor5:setFontColor("#000000");
     obj.textEditor5:setTransparent(true);
-    obj.textEditor5:setField("magicDesc_25");
+    obj.textEditor5:setField("magicDesc_29");
     obj.textEditor5:setName("textEditor5");
 
     obj.edit21 = GUI.fromHandle(_obj_newObject("edit"));
@@ -961,7 +961,7 @@ local function constructNew_frmSODLFillable4_svg()
     obj.edit21:setFontSize(16);
     obj.edit21:setFontColor("#000000");
     obj.edit21:setTransparent(true);
-    obj.edit21:setField("magicName_6");
+    obj.edit21:setField("magicName_30");
     obj.edit21:setName("edit21");
 
     obj.edit22 = GUI.fromHandle(_obj_newObject("edit"));
@@ -973,7 +973,7 @@ local function constructNew_frmSODLFillable4_svg()
     obj.edit22:setFontSize(16);
     obj.edit22:setFontColor("#000000");
     obj.edit22:setTransparent(true);
-    obj.edit22:setField("magicTrad_6");
+    obj.edit22:setField("magicTrad_30");
     obj.edit22:setName("edit22");
 
     obj.edit23 = GUI.fromHandle(_obj_newObject("edit"));
@@ -985,7 +985,7 @@ local function constructNew_frmSODLFillable4_svg()
     obj.edit23:setFontSize(16);
     obj.edit23:setFontColor("#000000");
     obj.edit23:setTransparent(true);
-    obj.edit23:setField("magicLevel_6");
+    obj.edit23:setField("magicLevel_30");
     obj.edit23:setName("edit23");
 
     obj.edit24 = GUI.fromHandle(_obj_newObject("edit"));
@@ -997,7 +997,7 @@ local function constructNew_frmSODLFillable4_svg()
     obj.edit24:setFontSize(16);
     obj.edit24:setFontColor("#000000");
     obj.edit24:setTransparent(true);
-    obj.edit24:setField("magicConj_6");
+    obj.edit24:setField("magicConj_30");
     obj.edit24:setName("edit24");
 
     obj.layout7 = GUI.fromHandle(_obj_newObject("layout"));
@@ -1016,7 +1016,7 @@ local function constructNew_frmSODLFillable4_svg()
     obj.imageCheckBox51:setHeight(20);
     obj.imageCheckBox51:setImageUnchecked("/SODLFillable/images/checkboxUnchecked.png");
     obj.imageCheckBox51:setImageChecked("/SODLFillable/images/checkboxChecked.png");
-    obj.imageCheckBox51:setField("magicCheck_250");
+    obj.imageCheckBox51:setField("magicCheck_302");
     obj.imageCheckBox51:setName("imageCheckBox51");
 
     obj.imageCheckBox52 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -1027,7 +1027,7 @@ local function constructNew_frmSODLFillable4_svg()
     obj.imageCheckBox52:setHeight(20);
     obj.imageCheckBox52:setImageUnchecked("/SODLFillable/images/checkboxUnchecked.png");
     obj.imageCheckBox52:setImageChecked("/SODLFillable/images/checkboxChecked.png");
-    obj.imageCheckBox52:setField("magicCheck_251");
+    obj.imageCheckBox52:setField("magicCheck_303");
     obj.imageCheckBox52:setName("imageCheckBox52");
 
     obj.imageCheckBox53 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -1038,7 +1038,7 @@ local function constructNew_frmSODLFillable4_svg()
     obj.imageCheckBox53:setHeight(20);
     obj.imageCheckBox53:setImageUnchecked("/SODLFillable/images/checkboxUnchecked.png");
     obj.imageCheckBox53:setImageChecked("/SODLFillable/images/checkboxChecked.png");
-    obj.imageCheckBox53:setField("magicCheck_252");
+    obj.imageCheckBox53:setField("magicCheck_304");
     obj.imageCheckBox53:setName("imageCheckBox53");
 
     obj.imageCheckBox54 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -1049,7 +1049,7 @@ local function constructNew_frmSODLFillable4_svg()
     obj.imageCheckBox54:setHeight(20);
     obj.imageCheckBox54:setImageUnchecked("/SODLFillable/images/checkboxUnchecked.png");
     obj.imageCheckBox54:setImageChecked("/SODLFillable/images/checkboxChecked.png");
-    obj.imageCheckBox54:setField("magicCheck_253");
+    obj.imageCheckBox54:setField("magicCheck_305");
     obj.imageCheckBox54:setName("imageCheckBox54");
 
     obj.imageCheckBox55 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -1060,7 +1060,7 @@ local function constructNew_frmSODLFillable4_svg()
     obj.imageCheckBox55:setHeight(20);
     obj.imageCheckBox55:setImageUnchecked("/SODLFillable/images/checkboxUnchecked.png");
     obj.imageCheckBox55:setImageChecked("/SODLFillable/images/checkboxChecked.png");
-    obj.imageCheckBox55:setField("magicCheck_254");
+    obj.imageCheckBox55:setField("magicCheck_306");
     obj.imageCheckBox55:setName("imageCheckBox55");
 
     obj.imageCheckBox56 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -1071,7 +1071,7 @@ local function constructNew_frmSODLFillable4_svg()
     obj.imageCheckBox56:setHeight(20);
     obj.imageCheckBox56:setImageUnchecked("/SODLFillable/images/checkboxUnchecked.png");
     obj.imageCheckBox56:setImageChecked("/SODLFillable/images/checkboxChecked.png");
-    obj.imageCheckBox56:setField("magicCheck_255");
+    obj.imageCheckBox56:setField("magicCheck_307");
     obj.imageCheckBox56:setName("imageCheckBox56");
 
     obj.imageCheckBox57 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -1082,7 +1082,7 @@ local function constructNew_frmSODLFillable4_svg()
     obj.imageCheckBox57:setHeight(20);
     obj.imageCheckBox57:setImageUnchecked("/SODLFillable/images/checkboxUnchecked.png");
     obj.imageCheckBox57:setImageChecked("/SODLFillable/images/checkboxChecked.png");
-    obj.imageCheckBox57:setField("magicCheck_256");
+    obj.imageCheckBox57:setField("magicCheck_308");
     obj.imageCheckBox57:setName("imageCheckBox57");
 
     obj.imageCheckBox58 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -1093,7 +1093,7 @@ local function constructNew_frmSODLFillable4_svg()
     obj.imageCheckBox58:setHeight(20);
     obj.imageCheckBox58:setImageUnchecked("/SODLFillable/images/checkboxUnchecked.png");
     obj.imageCheckBox58:setImageChecked("/SODLFillable/images/checkboxChecked.png");
-    obj.imageCheckBox58:setField("magicCheck_257");
+    obj.imageCheckBox58:setField("magicCheck_309");
     obj.imageCheckBox58:setName("imageCheckBox58");
 
     obj.imageCheckBox59 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -1104,7 +1104,7 @@ local function constructNew_frmSODLFillable4_svg()
     obj.imageCheckBox59:setHeight(20);
     obj.imageCheckBox59:setImageUnchecked("/SODLFillable/images/checkboxUnchecked.png");
     obj.imageCheckBox59:setImageChecked("/SODLFillable/images/checkboxChecked.png");
-    obj.imageCheckBox59:setField("magicCheck_258");
+    obj.imageCheckBox59:setField("magicCheck_310");
     obj.imageCheckBox59:setName("imageCheckBox59");
 
     obj.imageCheckBox60 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -1115,7 +1115,7 @@ local function constructNew_frmSODLFillable4_svg()
     obj.imageCheckBox60:setHeight(20);
     obj.imageCheckBox60:setImageUnchecked("/SODLFillable/images/checkboxUnchecked.png");
     obj.imageCheckBox60:setImageChecked("/SODLFillable/images/checkboxChecked.png");
-    obj.imageCheckBox60:setField("magicCheck_259");
+    obj.imageCheckBox60:setField("magicCheck_311");
     obj.imageCheckBox60:setName("imageCheckBox60");
 
     obj.textEditor6 = GUI.fromHandle(_obj_newObject("textEditor"));
@@ -1127,7 +1127,7 @@ local function constructNew_frmSODLFillable4_svg()
     obj.textEditor6:setFontSize(14);
     obj.textEditor6:setFontColor("#000000");
     obj.textEditor6:setTransparent(true);
-    obj.textEditor6:setField("magicDesc_26");
+    obj.textEditor6:setField("magicDesc_30");
     obj.textEditor6:setName("textEditor6");
 
     obj.layout8 = GUI.fromHandle(_obj_newObject("layout"));
@@ -1147,7 +1147,7 @@ local function constructNew_frmSODLFillable4_svg()
     obj.edit25:setFontSize(16);
     obj.edit25:setFontColor("#000000");
     obj.edit25:setTransparent(true);
-    obj.edit25:setField("magicName_27");
+    obj.edit25:setField("magicName_31");
     obj.edit25:setName("edit25");
 
     obj.edit26 = GUI.fromHandle(_obj_newObject("edit"));
@@ -1159,7 +1159,7 @@ local function constructNew_frmSODLFillable4_svg()
     obj.edit26:setFontSize(16);
     obj.edit26:setFontColor("#000000");
     obj.edit26:setTransparent(true);
-    obj.edit26:setField("magicTrad_27");
+    obj.edit26:setField("magicTrad_31");
     obj.edit26:setName("edit26");
 
     obj.edit27 = GUI.fromHandle(_obj_newObject("edit"));
@@ -1171,7 +1171,7 @@ local function constructNew_frmSODLFillable4_svg()
     obj.edit27:setFontSize(16);
     obj.edit27:setFontColor("#000000");
     obj.edit27:setTransparent(true);
-    obj.edit27:setField("magicLevel_27");
+    obj.edit27:setField("magicLevel_31");
     obj.edit27:setName("edit27");
 
     obj.edit28 = GUI.fromHandle(_obj_newObject("edit"));
@@ -1183,7 +1183,7 @@ local function constructNew_frmSODLFillable4_svg()
     obj.edit28:setFontSize(16);
     obj.edit28:setFontColor("#000000");
     obj.edit28:setTransparent(true);
-    obj.edit28:setField("magicConj_27");
+    obj.edit28:setField("magicConj_31");
     obj.edit28:setName("edit28");
 
     obj.layout9 = GUI.fromHandle(_obj_newObject("layout"));
@@ -1202,7 +1202,7 @@ local function constructNew_frmSODLFillable4_svg()
     obj.imageCheckBox61:setHeight(20);
     obj.imageCheckBox61:setImageUnchecked("/SODLFillable/images/checkboxUnchecked.png");
     obj.imageCheckBox61:setImageChecked("/SODLFillable/images/checkboxChecked.png");
-    obj.imageCheckBox61:setField("magicCheck_260");
+    obj.imageCheckBox61:setField("magicCheck_312");
     obj.imageCheckBox61:setName("imageCheckBox61");
 
     obj.imageCheckBox62 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -1213,7 +1213,7 @@ local function constructNew_frmSODLFillable4_svg()
     obj.imageCheckBox62:setHeight(20);
     obj.imageCheckBox62:setImageUnchecked("/SODLFillable/images/checkboxUnchecked.png");
     obj.imageCheckBox62:setImageChecked("/SODLFillable/images/checkboxChecked.png");
-    obj.imageCheckBox62:setField("magicCheck_261");
+    obj.imageCheckBox62:setField("magicCheck_313");
     obj.imageCheckBox62:setName("imageCheckBox62");
 
     obj.imageCheckBox63 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -1224,7 +1224,7 @@ local function constructNew_frmSODLFillable4_svg()
     obj.imageCheckBox63:setHeight(20);
     obj.imageCheckBox63:setImageUnchecked("/SODLFillable/images/checkboxUnchecked.png");
     obj.imageCheckBox63:setImageChecked("/SODLFillable/images/checkboxChecked.png");
-    obj.imageCheckBox63:setField("magicCheck_262");
+    obj.imageCheckBox63:setField("magicCheck_314");
     obj.imageCheckBox63:setName("imageCheckBox63");
 
     obj.imageCheckBox64 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -1235,7 +1235,7 @@ local function constructNew_frmSODLFillable4_svg()
     obj.imageCheckBox64:setHeight(20);
     obj.imageCheckBox64:setImageUnchecked("/SODLFillable/images/checkboxUnchecked.png");
     obj.imageCheckBox64:setImageChecked("/SODLFillable/images/checkboxChecked.png");
-    obj.imageCheckBox64:setField("magicCheck_263");
+    obj.imageCheckBox64:setField("magicCheck_315");
     obj.imageCheckBox64:setName("imageCheckBox64");
 
     obj.imageCheckBox65 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -1246,7 +1246,7 @@ local function constructNew_frmSODLFillable4_svg()
     obj.imageCheckBox65:setHeight(20);
     obj.imageCheckBox65:setImageUnchecked("/SODLFillable/images/checkboxUnchecked.png");
     obj.imageCheckBox65:setImageChecked("/SODLFillable/images/checkboxChecked.png");
-    obj.imageCheckBox65:setField("magicCheck_264");
+    obj.imageCheckBox65:setField("magicCheck_316");
     obj.imageCheckBox65:setName("imageCheckBox65");
 
     obj.imageCheckBox66 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -1257,7 +1257,7 @@ local function constructNew_frmSODLFillable4_svg()
     obj.imageCheckBox66:setHeight(20);
     obj.imageCheckBox66:setImageUnchecked("/SODLFillable/images/checkboxUnchecked.png");
     obj.imageCheckBox66:setImageChecked("/SODLFillable/images/checkboxChecked.png");
-    obj.imageCheckBox66:setField("magicCheck_265");
+    obj.imageCheckBox66:setField("magicCheck_317");
     obj.imageCheckBox66:setName("imageCheckBox66");
 
     obj.imageCheckBox67 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -1268,7 +1268,7 @@ local function constructNew_frmSODLFillable4_svg()
     obj.imageCheckBox67:setHeight(20);
     obj.imageCheckBox67:setImageUnchecked("/SODLFillable/images/checkboxUnchecked.png");
     obj.imageCheckBox67:setImageChecked("/SODLFillable/images/checkboxChecked.png");
-    obj.imageCheckBox67:setField("magicCheck_266");
+    obj.imageCheckBox67:setField("magicCheck_318");
     obj.imageCheckBox67:setName("imageCheckBox67");
 
     obj.imageCheckBox68 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -1279,7 +1279,7 @@ local function constructNew_frmSODLFillable4_svg()
     obj.imageCheckBox68:setHeight(20);
     obj.imageCheckBox68:setImageUnchecked("/SODLFillable/images/checkboxUnchecked.png");
     obj.imageCheckBox68:setImageChecked("/SODLFillable/images/checkboxChecked.png");
-    obj.imageCheckBox68:setField("magicCheck_267");
+    obj.imageCheckBox68:setField("magicCheck_319");
     obj.imageCheckBox68:setName("imageCheckBox68");
 
     obj.imageCheckBox69 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -1290,7 +1290,7 @@ local function constructNew_frmSODLFillable4_svg()
     obj.imageCheckBox69:setHeight(20);
     obj.imageCheckBox69:setImageUnchecked("/SODLFillable/images/checkboxUnchecked.png");
     obj.imageCheckBox69:setImageChecked("/SODLFillable/images/checkboxChecked.png");
-    obj.imageCheckBox69:setField("magicCheck_268");
+    obj.imageCheckBox69:setField("magicCheck_320");
     obj.imageCheckBox69:setName("imageCheckBox69");
 
     obj.imageCheckBox70 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -1301,7 +1301,7 @@ local function constructNew_frmSODLFillable4_svg()
     obj.imageCheckBox70:setHeight(20);
     obj.imageCheckBox70:setImageUnchecked("/SODLFillable/images/checkboxUnchecked.png");
     obj.imageCheckBox70:setImageChecked("/SODLFillable/images/checkboxChecked.png");
-    obj.imageCheckBox70:setField("magicCheck_269");
+    obj.imageCheckBox70:setField("magicCheck_321");
     obj.imageCheckBox70:setName("imageCheckBox70");
 
     obj.textEditor7 = GUI.fromHandle(_obj_newObject("textEditor"));
@@ -1313,7 +1313,7 @@ local function constructNew_frmSODLFillable4_svg()
     obj.textEditor7:setFontSize(14);
     obj.textEditor7:setFontColor("#000000");
     obj.textEditor7:setTransparent(true);
-    obj.textEditor7:setField("magicDesc_27");
+    obj.textEditor7:setField("magicDesc_31");
     obj.textEditor7:setName("textEditor7");
 
     obj.edit29 = GUI.fromHandle(_obj_newObject("edit"));
@@ -1325,7 +1325,7 @@ local function constructNew_frmSODLFillable4_svg()
     obj.edit29:setFontSize(16);
     obj.edit29:setFontColor("#000000");
     obj.edit29:setTransparent(true);
-    obj.edit29:setField("magicName_28");
+    obj.edit29:setField("magicName_32");
     obj.edit29:setName("edit29");
 
     obj.edit30 = GUI.fromHandle(_obj_newObject("edit"));
@@ -1337,7 +1337,7 @@ local function constructNew_frmSODLFillable4_svg()
     obj.edit30:setFontSize(16);
     obj.edit30:setFontColor("#000000");
     obj.edit30:setTransparent(true);
-    obj.edit30:setField("magicTrad_28");
+    obj.edit30:setField("magicTrad_32");
     obj.edit30:setName("edit30");
 
     obj.edit31 = GUI.fromHandle(_obj_newObject("edit"));
@@ -1349,7 +1349,7 @@ local function constructNew_frmSODLFillable4_svg()
     obj.edit31:setFontSize(16);
     obj.edit31:setFontColor("#000000");
     obj.edit31:setTransparent(true);
-    obj.edit31:setField("magicLevel_28");
+    obj.edit31:setField("magicLevel_32");
     obj.edit31:setName("edit31");
 
     obj.edit32 = GUI.fromHandle(_obj_newObject("edit"));
@@ -1361,7 +1361,7 @@ local function constructNew_frmSODLFillable4_svg()
     obj.edit32:setFontSize(16);
     obj.edit32:setFontColor("#000000");
     obj.edit32:setTransparent(true);
-    obj.edit32:setField("magicConj_28");
+    obj.edit32:setField("magicConj_32");
     obj.edit32:setName("edit32");
 
     obj.layout10 = GUI.fromHandle(_obj_newObject("layout"));
@@ -1380,7 +1380,7 @@ local function constructNew_frmSODLFillable4_svg()
     obj.imageCheckBox71:setHeight(20);
     obj.imageCheckBox71:setImageUnchecked("/SODLFillable/images/checkboxUnchecked.png");
     obj.imageCheckBox71:setImageChecked("/SODLFillable/images/checkboxChecked.png");
-    obj.imageCheckBox71:setField("magicCheck_270");
+    obj.imageCheckBox71:setField("magicCheck_322");
     obj.imageCheckBox71:setName("imageCheckBox71");
 
     obj.imageCheckBox72 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -1391,7 +1391,7 @@ local function constructNew_frmSODLFillable4_svg()
     obj.imageCheckBox72:setHeight(20);
     obj.imageCheckBox72:setImageUnchecked("/SODLFillable/images/checkboxUnchecked.png");
     obj.imageCheckBox72:setImageChecked("/SODLFillable/images/checkboxChecked.png");
-    obj.imageCheckBox72:setField("magicCheck_271");
+    obj.imageCheckBox72:setField("magicCheck_323");
     obj.imageCheckBox72:setName("imageCheckBox72");
 
     obj.imageCheckBox73 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -1402,7 +1402,7 @@ local function constructNew_frmSODLFillable4_svg()
     obj.imageCheckBox73:setHeight(20);
     obj.imageCheckBox73:setImageUnchecked("/SODLFillable/images/checkboxUnchecked.png");
     obj.imageCheckBox73:setImageChecked("/SODLFillable/images/checkboxChecked.png");
-    obj.imageCheckBox73:setField("magicCheck_272");
+    obj.imageCheckBox73:setField("magicCheck_324");
     obj.imageCheckBox73:setName("imageCheckBox73");
 
     obj.imageCheckBox74 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -1413,7 +1413,7 @@ local function constructNew_frmSODLFillable4_svg()
     obj.imageCheckBox74:setHeight(20);
     obj.imageCheckBox74:setImageUnchecked("/SODLFillable/images/checkboxUnchecked.png");
     obj.imageCheckBox74:setImageChecked("/SODLFillable/images/checkboxChecked.png");
-    obj.imageCheckBox74:setField("magicCheck_273");
+    obj.imageCheckBox74:setField("magicCheck_325");
     obj.imageCheckBox74:setName("imageCheckBox74");
 
     obj.imageCheckBox75 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -1424,7 +1424,7 @@ local function constructNew_frmSODLFillable4_svg()
     obj.imageCheckBox75:setHeight(20);
     obj.imageCheckBox75:setImageUnchecked("/SODLFillable/images/checkboxUnchecked.png");
     obj.imageCheckBox75:setImageChecked("/SODLFillable/images/checkboxChecked.png");
-    obj.imageCheckBox75:setField("magicCheck_274");
+    obj.imageCheckBox75:setField("magicCheck_326");
     obj.imageCheckBox75:setName("imageCheckBox75");
 
     obj.imageCheckBox76 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -1435,7 +1435,7 @@ local function constructNew_frmSODLFillable4_svg()
     obj.imageCheckBox76:setHeight(20);
     obj.imageCheckBox76:setImageUnchecked("/SODLFillable/images/checkboxUnchecked.png");
     obj.imageCheckBox76:setImageChecked("/SODLFillable/images/checkboxChecked.png");
-    obj.imageCheckBox76:setField("magicCheck_275");
+    obj.imageCheckBox76:setField("magicCheck_327");
     obj.imageCheckBox76:setName("imageCheckBox76");
 
     obj.imageCheckBox77 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -1446,7 +1446,7 @@ local function constructNew_frmSODLFillable4_svg()
     obj.imageCheckBox77:setHeight(20);
     obj.imageCheckBox77:setImageUnchecked("/SODLFillable/images/checkboxUnchecked.png");
     obj.imageCheckBox77:setImageChecked("/SODLFillable/images/checkboxChecked.png");
-    obj.imageCheckBox77:setField("magicCheck_276");
+    obj.imageCheckBox77:setField("magicCheck_328");
     obj.imageCheckBox77:setName("imageCheckBox77");
 
     obj.imageCheckBox78 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -1457,7 +1457,7 @@ local function constructNew_frmSODLFillable4_svg()
     obj.imageCheckBox78:setHeight(20);
     obj.imageCheckBox78:setImageUnchecked("/SODLFillable/images/checkboxUnchecked.png");
     obj.imageCheckBox78:setImageChecked("/SODLFillable/images/checkboxChecked.png");
-    obj.imageCheckBox78:setField("magicCheck_277");
+    obj.imageCheckBox78:setField("magicCheck_329");
     obj.imageCheckBox78:setName("imageCheckBox78");
 
     obj.imageCheckBox79 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -1468,7 +1468,7 @@ local function constructNew_frmSODLFillable4_svg()
     obj.imageCheckBox79:setHeight(20);
     obj.imageCheckBox79:setImageUnchecked("/SODLFillable/images/checkboxUnchecked.png");
     obj.imageCheckBox79:setImageChecked("/SODLFillable/images/checkboxChecked.png");
-    obj.imageCheckBox79:setField("magicCheck_278");
+    obj.imageCheckBox79:setField("magicCheck_330");
     obj.imageCheckBox79:setName("imageCheckBox79");
 
     obj.imageCheckBox80 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -1479,7 +1479,7 @@ local function constructNew_frmSODLFillable4_svg()
     obj.imageCheckBox80:setHeight(20);
     obj.imageCheckBox80:setImageUnchecked("/SODLFillable/images/checkboxUnchecked.png");
     obj.imageCheckBox80:setImageChecked("/SODLFillable/images/checkboxChecked.png");
-    obj.imageCheckBox80:setField("magicCheck_279");
+    obj.imageCheckBox80:setField("magicCheck_331");
     obj.imageCheckBox80:setName("imageCheckBox80");
 
     obj.textEditor8 = GUI.fromHandle(_obj_newObject("textEditor"));
@@ -1491,7 +1491,7 @@ local function constructNew_frmSODLFillable4_svg()
     obj.textEditor8:setFontSize(14);
     obj.textEditor8:setFontColor("#000000");
     obj.textEditor8:setTransparent(true);
-    obj.textEditor8:setField("magicDesc_28");
+    obj.textEditor8:setField("magicDesc_32");
     obj.textEditor8:setName("textEditor8");
 
     obj.edit33 = GUI.fromHandle(_obj_newObject("edit"));
@@ -1503,7 +1503,7 @@ local function constructNew_frmSODLFillable4_svg()
     obj.edit33:setFontSize(16);
     obj.edit33:setFontColor("#000000");
     obj.edit33:setTransparent(true);
-    obj.edit33:setField("magicName_29");
+    obj.edit33:setField("magicName_33");
     obj.edit33:setName("edit33");
 
     obj.edit34 = GUI.fromHandle(_obj_newObject("edit"));
@@ -1515,7 +1515,7 @@ local function constructNew_frmSODLFillable4_svg()
     obj.edit34:setFontSize(16);
     obj.edit34:setFontColor("#000000");
     obj.edit34:setTransparent(true);
-    obj.edit34:setField("magicTrad_29");
+    obj.edit34:setField("magicTrad_33");
     obj.edit34:setName("edit34");
 
     obj.edit35 = GUI.fromHandle(_obj_newObject("edit"));
@@ -1527,7 +1527,7 @@ local function constructNew_frmSODLFillable4_svg()
     obj.edit35:setFontSize(16);
     obj.edit35:setFontColor("#000000");
     obj.edit35:setTransparent(true);
-    obj.edit35:setField("magicLevel_29");
+    obj.edit35:setField("magicLevel_33");
     obj.edit35:setName("edit35");
 
     obj.edit36 = GUI.fromHandle(_obj_newObject("edit"));
@@ -1539,7 +1539,7 @@ local function constructNew_frmSODLFillable4_svg()
     obj.edit36:setFontSize(16);
     obj.edit36:setFontColor("#000000");
     obj.edit36:setTransparent(true);
-    obj.edit36:setField("magicConj_29");
+    obj.edit36:setField("magicConj_33");
     obj.edit36:setName("edit36");
 
     obj.layout11 = GUI.fromHandle(_obj_newObject("layout"));
@@ -1558,7 +1558,7 @@ local function constructNew_frmSODLFillable4_svg()
     obj.imageCheckBox81:setHeight(20);
     obj.imageCheckBox81:setImageUnchecked("/SODLFillable/images/checkboxUnchecked.png");
     obj.imageCheckBox81:setImageChecked("/SODLFillable/images/checkboxChecked.png");
-    obj.imageCheckBox81:setField("magicCheck_280");
+    obj.imageCheckBox81:setField("magicCheck_332");
     obj.imageCheckBox81:setName("imageCheckBox81");
 
     obj.imageCheckBox82 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -1569,7 +1569,7 @@ local function constructNew_frmSODLFillable4_svg()
     obj.imageCheckBox82:setHeight(20);
     obj.imageCheckBox82:setImageUnchecked("/SODLFillable/images/checkboxUnchecked.png");
     obj.imageCheckBox82:setImageChecked("/SODLFillable/images/checkboxChecked.png");
-    obj.imageCheckBox82:setField("magicCheck_281");
+    obj.imageCheckBox82:setField("magicCheck_333");
     obj.imageCheckBox82:setName("imageCheckBox82");
 
     obj.imageCheckBox83 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -1580,7 +1580,7 @@ local function constructNew_frmSODLFillable4_svg()
     obj.imageCheckBox83:setHeight(20);
     obj.imageCheckBox83:setImageUnchecked("/SODLFillable/images/checkboxUnchecked.png");
     obj.imageCheckBox83:setImageChecked("/SODLFillable/images/checkboxChecked.png");
-    obj.imageCheckBox83:setField("magicCheck_282");
+    obj.imageCheckBox83:setField("magicCheck_334");
     obj.imageCheckBox83:setName("imageCheckBox83");
 
     obj.imageCheckBox84 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -1591,7 +1591,7 @@ local function constructNew_frmSODLFillable4_svg()
     obj.imageCheckBox84:setHeight(20);
     obj.imageCheckBox84:setImageUnchecked("/SODLFillable/images/checkboxUnchecked.png");
     obj.imageCheckBox84:setImageChecked("/SODLFillable/images/checkboxChecked.png");
-    obj.imageCheckBox84:setField("magicCheck_283");
+    obj.imageCheckBox84:setField("magicCheck_335");
     obj.imageCheckBox84:setName("imageCheckBox84");
 
     obj.imageCheckBox85 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -1602,7 +1602,7 @@ local function constructNew_frmSODLFillable4_svg()
     obj.imageCheckBox85:setHeight(20);
     obj.imageCheckBox85:setImageUnchecked("/SODLFillable/images/checkboxUnchecked.png");
     obj.imageCheckBox85:setImageChecked("/SODLFillable/images/checkboxChecked.png");
-    obj.imageCheckBox85:setField("magicCheck_284");
+    obj.imageCheckBox85:setField("magicCheck_336");
     obj.imageCheckBox85:setName("imageCheckBox85");
 
     obj.imageCheckBox86 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -1613,7 +1613,7 @@ local function constructNew_frmSODLFillable4_svg()
     obj.imageCheckBox86:setHeight(20);
     obj.imageCheckBox86:setImageUnchecked("/SODLFillable/images/checkboxUnchecked.png");
     obj.imageCheckBox86:setImageChecked("/SODLFillable/images/checkboxChecked.png");
-    obj.imageCheckBox86:setField("magicCheck_285");
+    obj.imageCheckBox86:setField("magicCheck_337");
     obj.imageCheckBox86:setName("imageCheckBox86");
 
     obj.imageCheckBox87 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -1624,7 +1624,7 @@ local function constructNew_frmSODLFillable4_svg()
     obj.imageCheckBox87:setHeight(20);
     obj.imageCheckBox87:setImageUnchecked("/SODLFillable/images/checkboxUnchecked.png");
     obj.imageCheckBox87:setImageChecked("/SODLFillable/images/checkboxChecked.png");
-    obj.imageCheckBox87:setField("magicCheck_286");
+    obj.imageCheckBox87:setField("magicCheck_338");
     obj.imageCheckBox87:setName("imageCheckBox87");
 
     obj.imageCheckBox88 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -1635,7 +1635,7 @@ local function constructNew_frmSODLFillable4_svg()
     obj.imageCheckBox88:setHeight(20);
     obj.imageCheckBox88:setImageUnchecked("/SODLFillable/images/checkboxUnchecked.png");
     obj.imageCheckBox88:setImageChecked("/SODLFillable/images/checkboxChecked.png");
-    obj.imageCheckBox88:setField("magicCheck_287");
+    obj.imageCheckBox88:setField("magicCheck_339");
     obj.imageCheckBox88:setName("imageCheckBox88");
 
     obj.imageCheckBox89 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -1646,7 +1646,7 @@ local function constructNew_frmSODLFillable4_svg()
     obj.imageCheckBox89:setHeight(20);
     obj.imageCheckBox89:setImageUnchecked("/SODLFillable/images/checkboxUnchecked.png");
     obj.imageCheckBox89:setImageChecked("/SODLFillable/images/checkboxChecked.png");
-    obj.imageCheckBox89:setField("magicCheck_288");
+    obj.imageCheckBox89:setField("magicCheck_340");
     obj.imageCheckBox89:setName("imageCheckBox89");
 
     obj.imageCheckBox90 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -1657,7 +1657,7 @@ local function constructNew_frmSODLFillable4_svg()
     obj.imageCheckBox90:setHeight(20);
     obj.imageCheckBox90:setImageUnchecked("/SODLFillable/images/checkboxUnchecked.png");
     obj.imageCheckBox90:setImageChecked("/SODLFillable/images/checkboxChecked.png");
-    obj.imageCheckBox90:setField("magicCheck_289");
+    obj.imageCheckBox90:setField("magicCheck_341");
     obj.imageCheckBox90:setName("imageCheckBox90");
 
     obj.textEditor9 = GUI.fromHandle(_obj_newObject("textEditor"));
@@ -1669,7 +1669,7 @@ local function constructNew_frmSODLFillable4_svg()
     obj.textEditor9:setFontSize(14);
     obj.textEditor9:setFontColor("#000000");
     obj.textEditor9:setTransparent(true);
-    obj.textEditor9:setField("magicDesc_29");
+    obj.textEditor9:setField("magicDesc_33");
     obj.textEditor9:setName("textEditor9");
 
     obj.edit37 = GUI.fromHandle(_obj_newObject("edit"));
@@ -1681,7 +1681,7 @@ local function constructNew_frmSODLFillable4_svg()
     obj.edit37:setFontSize(16);
     obj.edit37:setFontColor("#000000");
     obj.edit37:setTransparent(true);
-    obj.edit37:setField("magicName_210");
+    obj.edit37:setField("magicName_34");
     obj.edit37:setName("edit37");
 
     obj.edit38 = GUI.fromHandle(_obj_newObject("edit"));
@@ -1693,7 +1693,7 @@ local function constructNew_frmSODLFillable4_svg()
     obj.edit38:setFontSize(16);
     obj.edit38:setFontColor("#000000");
     obj.edit38:setTransparent(true);
-    obj.edit38:setField("magicTrad_210");
+    obj.edit38:setField("magicTrad_34");
     obj.edit38:setName("edit38");
 
     obj.edit39 = GUI.fromHandle(_obj_newObject("edit"));
@@ -1705,7 +1705,7 @@ local function constructNew_frmSODLFillable4_svg()
     obj.edit39:setFontSize(16);
     obj.edit39:setFontColor("#000000");
     obj.edit39:setTransparent(true);
-    obj.edit39:setField("magicLevel_210");
+    obj.edit39:setField("magicLevel_34");
     obj.edit39:setName("edit39");
 
     obj.edit40 = GUI.fromHandle(_obj_newObject("edit"));
@@ -1717,7 +1717,7 @@ local function constructNew_frmSODLFillable4_svg()
     obj.edit40:setFontSize(16);
     obj.edit40:setFontColor("#000000");
     obj.edit40:setTransparent(true);
-    obj.edit40:setField("magicConj_210");
+    obj.edit40:setField("magicConj_34");
     obj.edit40:setName("edit40");
 
     obj.layout12 = GUI.fromHandle(_obj_newObject("layout"));
@@ -1736,7 +1736,7 @@ local function constructNew_frmSODLFillable4_svg()
     obj.imageCheckBox91:setHeight(20);
     obj.imageCheckBox91:setImageUnchecked("/SODLFillable/images/checkboxUnchecked.png");
     obj.imageCheckBox91:setImageChecked("/SODLFillable/images/checkboxChecked.png");
-    obj.imageCheckBox91:setField("magicCheck_290");
+    obj.imageCheckBox91:setField("magicCheck_342");
     obj.imageCheckBox91:setName("imageCheckBox91");
 
     obj.imageCheckBox92 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -1747,7 +1747,7 @@ local function constructNew_frmSODLFillable4_svg()
     obj.imageCheckBox92:setHeight(20);
     obj.imageCheckBox92:setImageUnchecked("/SODLFillable/images/checkboxUnchecked.png");
     obj.imageCheckBox92:setImageChecked("/SODLFillable/images/checkboxChecked.png");
-    obj.imageCheckBox92:setField("magicCheck_291");
+    obj.imageCheckBox92:setField("magicCheck_343");
     obj.imageCheckBox92:setName("imageCheckBox92");
 
     obj.imageCheckBox93 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -1758,7 +1758,7 @@ local function constructNew_frmSODLFillable4_svg()
     obj.imageCheckBox93:setHeight(20);
     obj.imageCheckBox93:setImageUnchecked("/SODLFillable/images/checkboxUnchecked.png");
     obj.imageCheckBox93:setImageChecked("/SODLFillable/images/checkboxChecked.png");
-    obj.imageCheckBox93:setField("magicCheck_292");
+    obj.imageCheckBox93:setField("magicCheck_344");
     obj.imageCheckBox93:setName("imageCheckBox93");
 
     obj.imageCheckBox94 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -1769,7 +1769,7 @@ local function constructNew_frmSODLFillable4_svg()
     obj.imageCheckBox94:setHeight(20);
     obj.imageCheckBox94:setImageUnchecked("/SODLFillable/images/checkboxUnchecked.png");
     obj.imageCheckBox94:setImageChecked("/SODLFillable/images/checkboxChecked.png");
-    obj.imageCheckBox94:setField("magicCheck_293");
+    obj.imageCheckBox94:setField("magicCheck_345");
     obj.imageCheckBox94:setName("imageCheckBox94");
 
     obj.imageCheckBox95 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -1780,7 +1780,7 @@ local function constructNew_frmSODLFillable4_svg()
     obj.imageCheckBox95:setHeight(20);
     obj.imageCheckBox95:setImageUnchecked("/SODLFillable/images/checkboxUnchecked.png");
     obj.imageCheckBox95:setImageChecked("/SODLFillable/images/checkboxChecked.png");
-    obj.imageCheckBox95:setField("magicCheck_294");
+    obj.imageCheckBox95:setField("magicCheck_346");
     obj.imageCheckBox95:setName("imageCheckBox95");
 
     obj.imageCheckBox96 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -1791,7 +1791,7 @@ local function constructNew_frmSODLFillable4_svg()
     obj.imageCheckBox96:setHeight(20);
     obj.imageCheckBox96:setImageUnchecked("/SODLFillable/images/checkboxUnchecked.png");
     obj.imageCheckBox96:setImageChecked("/SODLFillable/images/checkboxChecked.png");
-    obj.imageCheckBox96:setField("magicCheck_295");
+    obj.imageCheckBox96:setField("magicCheck_347");
     obj.imageCheckBox96:setName("imageCheckBox96");
 
     obj.imageCheckBox97 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -1802,7 +1802,7 @@ local function constructNew_frmSODLFillable4_svg()
     obj.imageCheckBox97:setHeight(20);
     obj.imageCheckBox97:setImageUnchecked("/SODLFillable/images/checkboxUnchecked.png");
     obj.imageCheckBox97:setImageChecked("/SODLFillable/images/checkboxChecked.png");
-    obj.imageCheckBox97:setField("magicCheck_296");
+    obj.imageCheckBox97:setField("magicCheck_348");
     obj.imageCheckBox97:setName("imageCheckBox97");
 
     obj.imageCheckBox98 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -1813,7 +1813,7 @@ local function constructNew_frmSODLFillable4_svg()
     obj.imageCheckBox98:setHeight(20);
     obj.imageCheckBox98:setImageUnchecked("/SODLFillable/images/checkboxUnchecked.png");
     obj.imageCheckBox98:setImageChecked("/SODLFillable/images/checkboxChecked.png");
-    obj.imageCheckBox98:setField("magicCheck_297");
+    obj.imageCheckBox98:setField("magicCheck_349");
     obj.imageCheckBox98:setName("imageCheckBox98");
 
     obj.imageCheckBox99 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -1824,7 +1824,7 @@ local function constructNew_frmSODLFillable4_svg()
     obj.imageCheckBox99:setHeight(20);
     obj.imageCheckBox99:setImageUnchecked("/SODLFillable/images/checkboxUnchecked.png");
     obj.imageCheckBox99:setImageChecked("/SODLFillable/images/checkboxChecked.png");
-    obj.imageCheckBox99:setField("magicCheck_298");
+    obj.imageCheckBox99:setField("magicCheck_350");
     obj.imageCheckBox99:setName("imageCheckBox99");
 
     obj.imageCheckBox100 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -1835,7 +1835,7 @@ local function constructNew_frmSODLFillable4_svg()
     obj.imageCheckBox100:setHeight(20);
     obj.imageCheckBox100:setImageUnchecked("/SODLFillable/images/checkboxUnchecked.png");
     obj.imageCheckBox100:setImageChecked("/SODLFillable/images/checkboxChecked.png");
-    obj.imageCheckBox100:setField("magicCheck_299");
+    obj.imageCheckBox100:setField("magicCheck_351");
     obj.imageCheckBox100:setName("imageCheckBox100");
 
     obj.textEditor10 = GUI.fromHandle(_obj_newObject("textEditor"));
@@ -1847,7 +1847,7 @@ local function constructNew_frmSODLFillable4_svg()
     obj.textEditor10:setFontSize(14);
     obj.textEditor10:setFontColor("#000000");
     obj.textEditor10:setTransparent(true);
-    obj.textEditor10:setField("magicDesc_210");
+    obj.textEditor10:setField("magicDesc_34");
     obj.textEditor10:setName("textEditor10");
 
     obj.edit41 = GUI.fromHandle(_obj_newObject("edit"));
@@ -1859,7 +1859,7 @@ local function constructNew_frmSODLFillable4_svg()
     obj.edit41:setFontSize(16);
     obj.edit41:setFontColor("#000000");
     obj.edit41:setTransparent(true);
-    obj.edit41:setField("magicName_2211");
+    obj.edit41:setField("magicName_35");
     obj.edit41:setName("edit41");
 
     obj.edit42 = GUI.fromHandle(_obj_newObject("edit"));
@@ -1871,7 +1871,7 @@ local function constructNew_frmSODLFillable4_svg()
     obj.edit42:setFontSize(16);
     obj.edit42:setFontColor("#000000");
     obj.edit42:setTransparent(true);
-    obj.edit42:setField("magicTrad_2211");
+    obj.edit42:setField("magicTrad_35");
     obj.edit42:setName("edit42");
 
     obj.edit43 = GUI.fromHandle(_obj_newObject("edit"));
@@ -1883,7 +1883,7 @@ local function constructNew_frmSODLFillable4_svg()
     obj.edit43:setFontSize(16);
     obj.edit43:setFontColor("#000000");
     obj.edit43:setTransparent(true);
-    obj.edit43:setField("magicLevel_2211");
+    obj.edit43:setField("magicLevel_35");
     obj.edit43:setName("edit43");
 
     obj.edit44 = GUI.fromHandle(_obj_newObject("edit"));
@@ -1895,7 +1895,7 @@ local function constructNew_frmSODLFillable4_svg()
     obj.edit44:setFontSize(16);
     obj.edit44:setFontColor("#000000");
     obj.edit44:setTransparent(true);
-    obj.edit44:setField("magicConj_2211");
+    obj.edit44:setField("magicConj_35");
     obj.edit44:setName("edit44");
 
     obj.layout13 = GUI.fromHandle(_obj_newObject("layout"));
@@ -1914,7 +1914,7 @@ local function constructNew_frmSODLFillable4_svg()
     obj.imageCheckBox101:setHeight(20);
     obj.imageCheckBox101:setImageUnchecked("/SODLFillable/images/checkboxUnchecked.png");
     obj.imageCheckBox101:setImageChecked("/SODLFillable/images/checkboxChecked.png");
-    obj.imageCheckBox101:setField("magicCheck_2100");
+    obj.imageCheckBox101:setField("magicCheck_352");
     obj.imageCheckBox101:setName("imageCheckBox101");
 
     obj.imageCheckBox102 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -1925,7 +1925,7 @@ local function constructNew_frmSODLFillable4_svg()
     obj.imageCheckBox102:setHeight(20);
     obj.imageCheckBox102:setImageUnchecked("/SODLFillable/images/checkboxUnchecked.png");
     obj.imageCheckBox102:setImageChecked("/SODLFillable/images/checkboxChecked.png");
-    obj.imageCheckBox102:setField("magicCheck_2101");
+    obj.imageCheckBox102:setField("magicCheck_353");
     obj.imageCheckBox102:setName("imageCheckBox102");
 
     obj.imageCheckBox103 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -1936,7 +1936,7 @@ local function constructNew_frmSODLFillable4_svg()
     obj.imageCheckBox103:setHeight(20);
     obj.imageCheckBox103:setImageUnchecked("/SODLFillable/images/checkboxUnchecked.png");
     obj.imageCheckBox103:setImageChecked("/SODLFillable/images/checkboxChecked.png");
-    obj.imageCheckBox103:setField("magicCheck_2102");
+    obj.imageCheckBox103:setField("magicCheck_354");
     obj.imageCheckBox103:setName("imageCheckBox103");
 
     obj.imageCheckBox104 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -1947,7 +1947,7 @@ local function constructNew_frmSODLFillable4_svg()
     obj.imageCheckBox104:setHeight(20);
     obj.imageCheckBox104:setImageUnchecked("/SODLFillable/images/checkboxUnchecked.png");
     obj.imageCheckBox104:setImageChecked("/SODLFillable/images/checkboxChecked.png");
-    obj.imageCheckBox104:setField("magicCheck_2103");
+    obj.imageCheckBox104:setField("magicCheck_355");
     obj.imageCheckBox104:setName("imageCheckBox104");
 
     obj.imageCheckBox105 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -1958,7 +1958,7 @@ local function constructNew_frmSODLFillable4_svg()
     obj.imageCheckBox105:setHeight(20);
     obj.imageCheckBox105:setImageUnchecked("/SODLFillable/images/checkboxUnchecked.png");
     obj.imageCheckBox105:setImageChecked("/SODLFillable/images/checkboxChecked.png");
-    obj.imageCheckBox105:setField("magicCheck_2104");
+    obj.imageCheckBox105:setField("magicCheck_356");
     obj.imageCheckBox105:setName("imageCheckBox105");
 
     obj.imageCheckBox106 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -1969,7 +1969,7 @@ local function constructNew_frmSODLFillable4_svg()
     obj.imageCheckBox106:setHeight(20);
     obj.imageCheckBox106:setImageUnchecked("/SODLFillable/images/checkboxUnchecked.png");
     obj.imageCheckBox106:setImageChecked("/SODLFillable/images/checkboxChecked.png");
-    obj.imageCheckBox106:setField("magicCheck_2105");
+    obj.imageCheckBox106:setField("magicCheck_357");
     obj.imageCheckBox106:setName("imageCheckBox106");
 
     obj.imageCheckBox107 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -1980,7 +1980,7 @@ local function constructNew_frmSODLFillable4_svg()
     obj.imageCheckBox107:setHeight(20);
     obj.imageCheckBox107:setImageUnchecked("/SODLFillable/images/checkboxUnchecked.png");
     obj.imageCheckBox107:setImageChecked("/SODLFillable/images/checkboxChecked.png");
-    obj.imageCheckBox107:setField("magicCheck_2106");
+    obj.imageCheckBox107:setField("magicCheck_358");
     obj.imageCheckBox107:setName("imageCheckBox107");
 
     obj.imageCheckBox108 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -1991,7 +1991,7 @@ local function constructNew_frmSODLFillable4_svg()
     obj.imageCheckBox108:setHeight(20);
     obj.imageCheckBox108:setImageUnchecked("/SODLFillable/images/checkboxUnchecked.png");
     obj.imageCheckBox108:setImageChecked("/SODLFillable/images/checkboxChecked.png");
-    obj.imageCheckBox108:setField("magicCheck_2107");
+    obj.imageCheckBox108:setField("magicCheck_359");
     obj.imageCheckBox108:setName("imageCheckBox108");
 
     obj.imageCheckBox109 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -2002,7 +2002,7 @@ local function constructNew_frmSODLFillable4_svg()
     obj.imageCheckBox109:setHeight(20);
     obj.imageCheckBox109:setImageUnchecked("/SODLFillable/images/checkboxUnchecked.png");
     obj.imageCheckBox109:setImageChecked("/SODLFillable/images/checkboxChecked.png");
-    obj.imageCheckBox109:setField("magicCheck_2108");
+    obj.imageCheckBox109:setField("magicCheck_360");
     obj.imageCheckBox109:setName("imageCheckBox109");
 
     obj.imageCheckBox110 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -2013,7 +2013,7 @@ local function constructNew_frmSODLFillable4_svg()
     obj.imageCheckBox110:setHeight(20);
     obj.imageCheckBox110:setImageUnchecked("/SODLFillable/images/checkboxUnchecked.png");
     obj.imageCheckBox110:setImageChecked("/SODLFillable/images/checkboxChecked.png");
-    obj.imageCheckBox110:setField("magicCheck_2109");
+    obj.imageCheckBox110:setField("magicCheck_361");
     obj.imageCheckBox110:setName("imageCheckBox110");
 
     obj.textEditor11 = GUI.fromHandle(_obj_newObject("textEditor"));
@@ -2025,7 +2025,7 @@ local function constructNew_frmSODLFillable4_svg()
     obj.textEditor11:setFontSize(14);
     obj.textEditor11:setFontColor("#000000");
     obj.textEditor11:setTransparent(true);
-    obj.textEditor11:setField("magicDesc_2211");
+    obj.textEditor11:setField("magicDesc_35");
     obj.textEditor11:setName("textEditor11");
 
     obj.edit45 = GUI.fromHandle(_obj_newObject("edit"));
@@ -2037,7 +2037,7 @@ local function constructNew_frmSODLFillable4_svg()
     obj.edit45:setFontSize(16);
     obj.edit45:setFontColor("#000000");
     obj.edit45:setTransparent(true);
-    obj.edit45:setField("magicName_12");
+    obj.edit45:setField("magicName_36");
     obj.edit45:setName("edit45");
 
     obj.edit46 = GUI.fromHandle(_obj_newObject("edit"));
@@ -2049,7 +2049,7 @@ local function constructNew_frmSODLFillable4_svg()
     obj.edit46:setFontSize(16);
     obj.edit46:setFontColor("#000000");
     obj.edit46:setTransparent(true);
-    obj.edit46:setField("magicTrad_12");
+    obj.edit46:setField("magicTrad_36");
     obj.edit46:setName("edit46");
 
     obj.edit47 = GUI.fromHandle(_obj_newObject("edit"));
@@ -2061,7 +2061,7 @@ local function constructNew_frmSODLFillable4_svg()
     obj.edit47:setFontSize(16);
     obj.edit47:setFontColor("#000000");
     obj.edit47:setTransparent(true);
-    obj.edit47:setField("magicLevel_12");
+    obj.edit47:setField("magicLevel_36");
     obj.edit47:setName("edit47");
 
     obj.edit48 = GUI.fromHandle(_obj_newObject("edit"));
@@ -2073,7 +2073,7 @@ local function constructNew_frmSODLFillable4_svg()
     obj.edit48:setFontSize(16);
     obj.edit48:setFontColor("#000000");
     obj.edit48:setTransparent(true);
-    obj.edit48:setField("magicConj_12");
+    obj.edit48:setField("magicConj_36");
     obj.edit48:setName("edit48");
 
     obj.layout14 = GUI.fromHandle(_obj_newObject("layout"));
@@ -2092,7 +2092,7 @@ local function constructNew_frmSODLFillable4_svg()
     obj.imageCheckBox111:setHeight(20);
     obj.imageCheckBox111:setImageUnchecked("/SODLFillable/images/checkboxUnchecked.png");
     obj.imageCheckBox111:setImageChecked("/SODLFillable/images/checkboxChecked.png");
-    obj.imageCheckBox111:setField("magicCheck_2110");
+    obj.imageCheckBox111:setField("magicCheck_362");
     obj.imageCheckBox111:setName("imageCheckBox111");
 
     obj.imageCheckBox112 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -2103,7 +2103,7 @@ local function constructNew_frmSODLFillable4_svg()
     obj.imageCheckBox112:setHeight(20);
     obj.imageCheckBox112:setImageUnchecked("/SODLFillable/images/checkboxUnchecked.png");
     obj.imageCheckBox112:setImageChecked("/SODLFillable/images/checkboxChecked.png");
-    obj.imageCheckBox112:setField("magicCheck_2111");
+    obj.imageCheckBox112:setField("magicCheck_363");
     obj.imageCheckBox112:setName("imageCheckBox112");
 
     obj.imageCheckBox113 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -2114,7 +2114,7 @@ local function constructNew_frmSODLFillable4_svg()
     obj.imageCheckBox113:setHeight(20);
     obj.imageCheckBox113:setImageUnchecked("/SODLFillable/images/checkboxUnchecked.png");
     obj.imageCheckBox113:setImageChecked("/SODLFillable/images/checkboxChecked.png");
-    obj.imageCheckBox113:setField("magicCheck_2112");
+    obj.imageCheckBox113:setField("magicCheck_364");
     obj.imageCheckBox113:setName("imageCheckBox113");
 
     obj.imageCheckBox114 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -2125,7 +2125,7 @@ local function constructNew_frmSODLFillable4_svg()
     obj.imageCheckBox114:setHeight(20);
     obj.imageCheckBox114:setImageUnchecked("/SODLFillable/images/checkboxUnchecked.png");
     obj.imageCheckBox114:setImageChecked("/SODLFillable/images/checkboxChecked.png");
-    obj.imageCheckBox114:setField("magicCheck_2113");
+    obj.imageCheckBox114:setField("magicCheck_365");
     obj.imageCheckBox114:setName("imageCheckBox114");
 
     obj.imageCheckBox115 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -2136,7 +2136,7 @@ local function constructNew_frmSODLFillable4_svg()
     obj.imageCheckBox115:setHeight(20);
     obj.imageCheckBox115:setImageUnchecked("/SODLFillable/images/checkboxUnchecked.png");
     obj.imageCheckBox115:setImageChecked("/SODLFillable/images/checkboxChecked.png");
-    obj.imageCheckBox115:setField("magicCheck_2114");
+    obj.imageCheckBox115:setField("magicCheck_366");
     obj.imageCheckBox115:setName("imageCheckBox115");
 
     obj.imageCheckBox116 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -2147,7 +2147,7 @@ local function constructNew_frmSODLFillable4_svg()
     obj.imageCheckBox116:setHeight(20);
     obj.imageCheckBox116:setImageUnchecked("/SODLFillable/images/checkboxUnchecked.png");
     obj.imageCheckBox116:setImageChecked("/SODLFillable/images/checkboxChecked.png");
-    obj.imageCheckBox116:setField("magicCheck_2115");
+    obj.imageCheckBox116:setField("magicCheck_367");
     obj.imageCheckBox116:setName("imageCheckBox116");
 
     obj.imageCheckBox117 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -2158,7 +2158,7 @@ local function constructNew_frmSODLFillable4_svg()
     obj.imageCheckBox117:setHeight(20);
     obj.imageCheckBox117:setImageUnchecked("/SODLFillable/images/checkboxUnchecked.png");
     obj.imageCheckBox117:setImageChecked("/SODLFillable/images/checkboxChecked.png");
-    obj.imageCheckBox117:setField("magicCheck_2116");
+    obj.imageCheckBox117:setField("magicCheck_368");
     obj.imageCheckBox117:setName("imageCheckBox117");
 
     obj.imageCheckBox118 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -2169,7 +2169,7 @@ local function constructNew_frmSODLFillable4_svg()
     obj.imageCheckBox118:setHeight(20);
     obj.imageCheckBox118:setImageUnchecked("/SODLFillable/images/checkboxUnchecked.png");
     obj.imageCheckBox118:setImageChecked("/SODLFillable/images/checkboxChecked.png");
-    obj.imageCheckBox118:setField("magicCheck_2117");
+    obj.imageCheckBox118:setField("magicCheck_369");
     obj.imageCheckBox118:setName("imageCheckBox118");
 
     obj.imageCheckBox119 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -2180,7 +2180,7 @@ local function constructNew_frmSODLFillable4_svg()
     obj.imageCheckBox119:setHeight(20);
     obj.imageCheckBox119:setImageUnchecked("/SODLFillable/images/checkboxUnchecked.png");
     obj.imageCheckBox119:setImageChecked("/SODLFillable/images/checkboxChecked.png");
-    obj.imageCheckBox119:setField("magicCheck_2118");
+    obj.imageCheckBox119:setField("magicCheck_370");
     obj.imageCheckBox119:setName("imageCheckBox119");
 
     obj.imageCheckBox120 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
@@ -2191,7 +2191,7 @@ local function constructNew_frmSODLFillable4_svg()
     obj.imageCheckBox120:setHeight(20);
     obj.imageCheckBox120:setImageUnchecked("/SODLFillable/images/checkboxUnchecked.png");
     obj.imageCheckBox120:setImageChecked("/SODLFillable/images/checkboxChecked.png");
-    obj.imageCheckBox120:setField("magicCheck_2119");
+    obj.imageCheckBox120:setField("magicCheck_371");
     obj.imageCheckBox120:setName("imageCheckBox120");
 
     obj.textEditor12 = GUI.fromHandle(_obj_newObject("textEditor"));
@@ -2203,7 +2203,7 @@ local function constructNew_frmSODLFillable4_svg()
     obj.textEditor12:setFontSize(14);
     obj.textEditor12:setFontColor("#000000");
     obj.textEditor12:setTransparent(true);
-    obj.textEditor12:setField("magicDesc_212");
+    obj.textEditor12:setField("magicDesc_36");
     obj.textEditor12:setName("textEditor12");
 
     function obj:_releaseEvents()

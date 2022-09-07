@@ -49,7 +49,7 @@ local function constructNew_frmSODLFillable2_svg()
     obj.image1:setTop(0);
     obj.image1:setWidth(893);
     obj.image1:setHeight(1263);
-    obj.image1:setSRC("/SODLFillable/images/2.png");
+    obj.image1:setSRC("/SODLFillable/images/magias.png");
     obj.image1:setStyle("stretch");
     obj.image1:setOptimize(true);
     obj.image1:setName("image1");

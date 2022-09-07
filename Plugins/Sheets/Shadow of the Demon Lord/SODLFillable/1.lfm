@@ -4,7 +4,7 @@
 #frmSODLFillable1_svg label {fontColor: black; textTrimming: none; wordWrap: false; autoSize: true;}</style>
     <scrollBox align="client">
         <rectangle width="918" height="1188" color="white">&#xD;
-            <image left="0" top="0" width="918" height="1188" src="images/1.png" style="stretch" optimize="true" compilerOrder="0"/>&#xD;
+            <image left="0" top="0" width="918" height="1188" src="images/atributos.png" style="stretch" optimize="true" compilerOrder="0"/>&#xD;
             <layout left="542" top="36" width="35" height="32" compilerOrder="39">
                 <edit transparent="true" fontSize="14.2" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="35" height="33" field="Level" compilerOrder="40"/>
             </layout>&#xD;
@@ -104,26 +104,26 @@
 
             <layout left="18" top="976" width="380" height="192" compilerOrder="43">
 
-                <edit left="0" top="0" width="100" height="31" fontSize="14" fontColor="#000000" field="Weapon_1" transparent="false" hint="Nome"/>
-                <edit left="0" top="32" width="100" height="31" fontSize="14" fontColor="#000000" field="Weapon_2" transparent="false" hint="Nome"/>
-			    <edit left="0" top="64" width="100" height="31" fontSize="14" fontColor="#000000" field="Weapon_3" transparent="false" hint="Nome"/>
-                <edit left="0" top="96" width="100" height="31" fontSize="14" fontColor="#000000" field="Weapon_4" transparent="false" hint="Nome"/>
-                <edit left="0" top="128" width="100" height="31" fontSize="14" fontColor="#000000" field="Weapon_5" transparent="false" hint="Nome"/>
-				<edit left="0" top="160" width="100" height="31" fontSize="14" fontColor="#000000" field="Weapon_6" transparent="false" hint="Nome"/>
+                <edit left="0" top="0" width="140" height="31" fontSize="14" fontColor="#000000" field="Weapon_1" transparent="false" hint="Nome"/>
+                <edit left="0" top="32" width="140" height="31" fontSize="14" fontColor="#000000" field="Weapon_2" transparent="false" hint="Nome"/>
+			    <edit left="0" top="64" width="140" height="31" fontSize="14" fontColor="#000000" field="Weapon_3" transparent="false" hint="Nome"/>
+                <edit left="0" top="96" width="140" height="31" fontSize="14" fontColor="#000000" field="Weapon_4" transparent="false" hint="Nome"/>
+                <edit left="0" top="128" width="140" height="31" fontSize="14" fontColor="#000000" field="Weapon_5" transparent="false" hint="Nome"/>
+				<edit left="0" top="160" width="140" height="31" fontSize="14" fontColor="#000000" field="Weapon_6" transparent="false" hint="Nome"/>
 				
-				<comboBox left="100" top="0" width="90" fontSize="14" fontColor="#a83232" transparent="false" items="{'Strength','Agility'}" values="{'Strength','Agility'}" value="{'Strength','Agility'}" field="Attribute_1"/>
-				<comboBox left="100" top="32" width="90" fontSize="14" fontColor="#a83232" transparent="false" items="{'Strength','Agility'}" values="{'Strength','Agility'}" value="{'Strength','Agility'}" field="Attribute_2"/>
-				<comboBox left="100" top="64" width="90" fontSize="14" fontColor="#a83232" transparent="false" items="{'Strength','Agility'}" values="{'Strength','Agility'}" value="{'Strength','Agility'}" field="Attribute_3"/>
-				<comboBox left="100" top="96" width="90" fontSize="14" fontColor="#a83232" transparent="false" items="{'Strength','Agility'}" values="{'Strength','Agility'}" value="{'Strength','Agility'}" field="Attribute_4"/>
-				<comboBox left="100" top="128" width="90" fontSize="14" fontColor="#a83232" transparent="false" items="{'Strength','Agility'}" values="{'Strength','Agility'}" value="{'Strength','Agility'}" field="Attribute_5"/>
-				<comboBox left="100" top="160" width="90" fontSize="14" fontColor="#a83232" transparent="false" items="{'Strength','Agility'}" values="{'Strength','Agility'}" value="{'Strength','Agility'}" field="Attribute_6"/>
+				<comboBox left="140" top="0" width="90" fontSize="14" fontColor="#a83232" transparent="false" items="{'Strength','Agility'}" values="{'Strength','Agility'}" value="{'Strength','Agility'}" field="Attribute_1"/>
+				<comboBox left="140" top="32" width="90" fontSize="14" fontColor="#a83232" transparent="false" items="{'Strength','Agility'}" values="{'Strength','Agility'}" value="{'Strength','Agility'}" field="Attribute_2"/>
+				<comboBox left="140" top="64" width="90" fontSize="14" fontColor="#a83232" transparent="false" items="{'Strength','Agility'}" values="{'Strength','Agility'}" value="{'Strength','Agility'}" field="Attribute_3"/>
+				<comboBox left="140" top="96" width="90" fontSize="14" fontColor="#a83232" transparent="false" items="{'Strength','Agility'}" values="{'Strength','Agility'}" value="{'Strength','Agility'}" field="Attribute_4"/>
+				<comboBox left="140" top="128" width="90" fontSize="14" fontColor="#a83232" transparent="false" items="{'Strength','Agility'}" values="{'Strength','Agility'}" value="{'Strength','Agility'}" field="Attribute_5"/>
+				<comboBox left="140" top="160" width="90" fontSize="14" fontColor="#a83232" transparent="false" items="{'Strength','Agility'}" values="{'Strength','Agility'}" value="{'Strength','Agility'}" field="Attribute_6"/>
 				
-                <edit left="190" top="0" width="60" height="31" fontSize="14" fontColor="#000000" field="Damageroll_1" transparent="false" hint="Dano"/>
-                <edit left="190" top="32" width="60" height="31" fontSize="14" fontColor="#000000" field="Damageroll_2" transparent="false" hint="Dano"/>
-				<edit left="190" top="64" width="60" height="31" fontSize="14" fontColor="#000000" field="Damageroll_3" transparent="false" hint="Dano"/>
-				<edit left="190" top="96" width="60" height="31" fontSize="14" fontColor="#000000" field="Damageroll_4" transparent="false" hint="Dano"/>
-				<edit left="190" top="128" width="60" height="31" fontSize="14" fontColor="#000000" field="Damageroll_5" transparent="false" hint="Dano"/>
-				<edit left="190" top="160" width="60" height="31" fontSize="14" fontColor="#000000" field="Damageroll_6" transparent="false" hint="Dano"/>
+                <edit left="230" top="0" width="60" height="31" fontSize="14" fontColor="#000000" field="Damageroll_1" transparent="false" hint="Dano"/>
+                <edit left="230" top="32" width="60" height="31" fontSize="14" fontColor="#000000" field="Damageroll_2" transparent="false" hint="Dano"/>
+				<edit left="230" top="64" width="60" height="31" fontSize="14" fontColor="#000000" field="Damageroll_3" transparent="false" hint="Dano"/>
+				<edit left="230" top="96" width="60" height="31" fontSize="14" fontColor="#000000" field="Damageroll_4" transparent="false" hint="Dano"/>
+				<edit left="230" top="128" width="60" height="31" fontSize="14" fontColor="#000000" field="Damageroll_5" transparent="false" hint="Dano"/>
+				<edit left="230" top="160" width="60" height="31" fontSize="14" fontColor="#000000" field="Damageroll_6" transparent="false" hint="Dano"/>
 				
                 <button left="290" top="0" width="30" height="30" fontSize="10" text="Atk">
 					<event name="onClick">
@@ -147,11 +147,12 @@
                             end;
 
                             if weaponName == '' then
-                                weaponName = "Weapon without name"
+                                weaponName = "Arma sem nome"
                             end;
+                            
                     
                             if characterTable ~= nil then
-                                characterTable.chat:rolarDados(attackRoll, weaponName);
+                                characterTable.chat:rolarDados(attackRoll, "Atacou com " .. weaponName);
                             end;
 
                         else
@@ -257,11 +258,11 @@
                             end;
 
                             if weaponName == '' then
-                                weaponName = "Weapon without name"
+                                weaponName = "Arma sem nome"
                             end;
                     
                             if characterTable ~= nil then
-                                characterTable.chat:rolarDados(attackRoll, weaponName);
+                                characterTable.chat:rolarDados(attackRoll, "Atacou com " .. weaponName);
                             end;
 
                         else
@@ -367,11 +368,11 @@
                             end;
 
                             if weaponName == '' then
-                                weaponName = "Weapon without name"
+                                weaponName = "Arma sem nome"
                             end;
                     
                             if characterTable ~= nil then
-                                characterTable.chat:rolarDados(attackRoll, weaponName);
+                                characterTable.chat:rolarDados(attackRoll, "Atacou com " .. weaponName);
                             end;
 
                         else
@@ -476,11 +477,11 @@
                             end;
 
                             if weaponName == '' then
-                                weaponName = "Weapon without name"
+                                weaponName = "Arma sem nome"
                             end;
                     
                             if characterTable ~= nil then
-                                characterTable.chat:rolarDados(attackRoll, weaponName);
+                                characterTable.chat:rolarDados(attackRoll, "Atacou com " .. weaponName);
                             end;
 
                         else
@@ -586,11 +587,11 @@
                             end;
 
                             if weaponName == '' then
-                                weaponName = "Weapon without name"
+                                weaponName = "Arma sem nome"
                             end;
                     
                             if characterTable ~= nil then
-                                characterTable.chat:rolarDados(attackRoll, weaponName);
+                                characterTable.chat:rolarDados(attackRoll, "Atacou com " .. weaponName);
                             end;
 
                         else
@@ -698,11 +699,11 @@
                             end;
 
                             if weaponName == '' then
-                                weaponName = "Weapon without name"
+                                weaponName = "Arma sem nome"
                             end;
                     
                             if characterTable ~= nil then
-                                characterTable.chat:rolarDados(attackRoll, weaponName);
+                                characterTable.chat:rolarDados(attackRoll, "Atacou com " .. weaponName);
                             end;
 
                         else
