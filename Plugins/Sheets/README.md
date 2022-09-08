@@ -81,7 +81,7 @@ Esses são plugins de fichas para diversos sistemas (Próprios e Comerciais) e s
 	- Ficha incompleta para uma adaptação de Pokémon d20.
 - [Reinos de Ferro](https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Reinos%20de%20Ferro/output/Ficha%20RdF.rpk?raw=true): Ambesek
 	- Ficha para o cenario e sistema Reinos de Ferro. 
-- [Shadow of the Demon Lord](https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Shadow%20of%20the%20Demon%20Lord/output/Shadow%20of%20the%20Demon%20Lord%20-%20Plugin.rpk?raw=true)
+- [Shadow of the Demon Lord](https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Shadow%20of%20the%20Demon%20Lord/output/Shadow%20of%20the%20Demon%20Lord%20-%20Plugin.rpk?raw=true): Valquíria Maia
 	- Ficha para Shadow of the Demon Lord.
 - [World of Darkness 20th](https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/World%20of%20Darkness%2020th/output/World%20of%20Darkness%2020th.rpk?raw=true): Ambesek
 	- Ficha para o Vampire the Dark Ages e Werewolf Apocalypse, edição de 20 anos. 
