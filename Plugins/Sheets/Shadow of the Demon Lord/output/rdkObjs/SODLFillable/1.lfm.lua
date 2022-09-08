@@ -99,13 +99,30 @@ local function constructNew_frmSODLFillable1_svg()
     obj.layout3 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout3:setParent(obj.rectangle1);
     obj.layout3:setLeft(322);
-    obj.layout3:setTop(419);
-    obj.layout3:setWidth(47);
-    obj.layout3:setHeight(44);
+    obj.layout3:setTop(370);
+    obj.layout3:setWidth(40);
+    obj.layout3:setHeight(20);
     obj.layout3:setName("layout3");
 
+    obj.button1 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button1:setParent(obj.layout3);
+    obj.button1:setLeft(0);
+    obj.button1:setTop(0);
+    obj.button1:setWidth(40);
+    obj.button1:setHeight(20);
+    obj.button1:setText("Teste");
+    obj.button1:setName("button1");
+
+    obj.layout4 = GUI.fromHandle(_obj_newObject("layout"));
+    obj.layout4:setParent(obj.rectangle1);
+    obj.layout4:setLeft(322);
+    obj.layout4:setTop(419);
+    obj.layout4:setWidth(45);
+    obj.layout4:setHeight(45);
+    obj.layout4:setName("layout4");
+
     obj.edit3 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit3:setParent(obj.layout3);
+    obj.edit3:setParent(obj.layout4);
     obj.edit3:setTransparent(true);
     obj.edit3:setFontSize(32);
     obj.edit3:setFontColor("#a83232");
@@ -114,21 +131,21 @@ local function constructNew_frmSODLFillable1_svg()
     obj.edit3:setVertTextAlign("center");
     obj.edit3:setLeft(0);
     obj.edit3:setTop(0);
-    obj.edit3:setWidth(47);
+    obj.edit3:setWidth(45);
     obj.edit3:setHeight(45);
     obj.edit3:setField("Strength");
     obj.edit3:setName("edit3");
 
-    obj.layout4 = GUI.fromHandle(_obj_newObject("layout"));
-    obj.layout4:setParent(obj.rectangle1);
-    obj.layout4:setLeft(366);
-    obj.layout4:setTop(469);
-    obj.layout4:setWidth(27);
-    obj.layout4:setHeight(28);
-    obj.layout4:setName("layout4");
+    obj.layout5 = GUI.fromHandle(_obj_newObject("layout"));
+    obj.layout5:setParent(obj.rectangle1);
+    obj.layout5:setLeft(366);
+    obj.layout5:setTop(469);
+    obj.layout5:setWidth(27);
+    obj.layout5:setHeight(28);
+    obj.layout5:setName("layout5");
 
     obj.label1 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label1:setParent(obj.layout4);
+    obj.label1:setParent(obj.layout5);
     obj.label1:setFontSize(18);
     obj.label1:setFontColor("#a83232");
     obj.label1:setHorzTextAlign("center");
@@ -143,16 +160,16 @@ local function constructNew_frmSODLFillable1_svg()
     obj.label1:setWordWrap(false);
     obj.label1:setAutoSize(true);
 
-    obj.layout5 = GUI.fromHandle(_obj_newObject("layout"));
-    obj.layout5:setParent(obj.rectangle1);
-    obj.layout5:setLeft(435);
-    obj.layout5:setTop(769);
-    obj.layout5:setWidth(47);
-    obj.layout5:setHeight(44);
-    obj.layout5:setName("layout5");
+    obj.layout6 = GUI.fromHandle(_obj_newObject("layout"));
+    obj.layout6:setParent(obj.rectangle1);
+    obj.layout6:setLeft(435);
+    obj.layout6:setTop(769);
+    obj.layout6:setWidth(47);
+    obj.layout6:setHeight(44);
+    obj.layout6:setName("layout6");
 
     obj.edit4 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit4:setParent(obj.layout5);
+    obj.edit4:setParent(obj.layout6);
     obj.edit4:setTransparent(true);
     obj.edit4:setFontSize(32);
     obj.edit4:setFontColor("#a83232");
@@ -166,16 +183,16 @@ local function constructNew_frmSODLFillable1_svg()
     obj.edit4:setField("Health");
     obj.edit4:setName("edit4");
 
-    obj.layout6 = GUI.fromHandle(_obj_newObject("layout"));
-    obj.layout6:setParent(obj.rectangle1);
-    obj.layout6:setLeft(439);
-    obj.layout6:setTop(703);
-    obj.layout6:setWidth(35);
-    obj.layout6:setHeight(32);
-    obj.layout6:setName("layout6");
+    obj.layout7 = GUI.fromHandle(_obj_newObject("layout"));
+    obj.layout7:setParent(obj.rectangle1);
+    obj.layout7:setLeft(439);
+    obj.layout7:setTop(703);
+    obj.layout7:setWidth(35);
+    obj.layout7:setHeight(32);
+    obj.layout7:setName("layout7");
 
     obj.edit5 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit5:setParent(obj.layout6);
+    obj.edit5:setParent(obj.layout7);
     obj.edit5:setTransparent(true);
     obj.edit5:setFontSize(18);
     obj.edit5:setFontColor("#a83232");
@@ -188,16 +205,33 @@ local function constructNew_frmSODLFillable1_svg()
     obj.edit5:setField("Healing_Rate");
     obj.edit5:setName("edit5");
 
-    obj.layout7 = GUI.fromHandle(_obj_newObject("layout"));
-    obj.layout7:setParent(obj.rectangle1);
-    obj.layout7:setLeft(244);
-    obj.layout7:setTop(607);
-    obj.layout7:setWidth(47);
-    obj.layout7:setHeight(44);
-    obj.layout7:setName("layout7");
+    obj.layout8 = GUI.fromHandle(_obj_newObject("layout"));
+    obj.layout8:setParent(obj.rectangle1);
+    obj.layout8:setLeft(244);
+    obj.layout8:setTop(670);
+    obj.layout8:setWidth(40);
+    obj.layout8:setHeight(20);
+    obj.layout8:setName("layout8");
+
+    obj.button2 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button2:setParent(obj.layout8);
+    obj.button2:setLeft(0);
+    obj.button2:setTop(0);
+    obj.button2:setWidth(40);
+    obj.button2:setHeight(20);
+    obj.button2:setText("Teste");
+    obj.button2:setName("button2");
+
+    obj.layout9 = GUI.fromHandle(_obj_newObject("layout"));
+    obj.layout9:setParent(obj.rectangle1);
+    obj.layout9:setLeft(244);
+    obj.layout9:setTop(607);
+    obj.layout9:setWidth(47);
+    obj.layout9:setHeight(44);
+    obj.layout9:setName("layout9");
 
     obj.edit6 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit6:setParent(obj.layout7);
+    obj.edit6:setParent(obj.layout9);
     obj.edit6:setTransparent(true);
     obj.edit6:setFontSize(32);
     obj.edit6:setFontColor("#a83232");
@@ -211,16 +245,16 @@ local function constructNew_frmSODLFillable1_svg()
     obj.edit6:setField("Agility");
     obj.edit6:setName("edit6");
 
-    obj.layout8 = GUI.fromHandle(_obj_newObject("layout"));
-    obj.layout8:setParent(obj.rectangle1);
-    obj.layout8:setLeft(309);
-    obj.layout8:setTop(606);
-    obj.layout8:setWidth(27);
-    obj.layout8:setHeight(28);
-    obj.layout8:setName("layout8");
+    obj.layout10 = GUI.fromHandle(_obj_newObject("layout"));
+    obj.layout10:setParent(obj.rectangle1);
+    obj.layout10:setLeft(309);
+    obj.layout10:setTop(606);
+    obj.layout10:setWidth(27);
+    obj.layout10:setHeight(28);
+    obj.layout10:setName("layout10");
 
     obj.label2 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label2:setParent(obj.layout8);
+    obj.label2:setParent(obj.layout10);
     obj.label2:setFontSize(18);
     obj.label2:setFontColor("#a83232");
     obj.label2:setHorzTextAlign("center");
@@ -235,16 +269,16 @@ local function constructNew_frmSODLFillable1_svg()
     obj.label2:setWordWrap(false);
     obj.label2:setAutoSize(true);
 
-    obj.layout9 = GUI.fromHandle(_obj_newObject("layout"));
-    obj.layout9:setParent(obj.rectangle1);
-    obj.layout9:setLeft(286);
-    obj.layout9:setTop(745);
-    obj.layout9:setWidth(35);
-    obj.layout9:setHeight(32);
-    obj.layout9:setName("layout9");
+    obj.layout11 = GUI.fromHandle(_obj_newObject("layout"));
+    obj.layout11:setParent(obj.rectangle1);
+    obj.layout11:setLeft(286);
+    obj.layout11:setTop(745);
+    obj.layout11:setWidth(35);
+    obj.layout11:setHeight(32);
+    obj.layout11:setName("layout11");
 
     obj.edit7 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit7:setParent(obj.layout9);
+    obj.edit7:setParent(obj.layout11);
     obj.edit7:setTransparent(true);
     obj.edit7:setFontSize(18);
     obj.edit7:setFontColor("#000000");
@@ -257,16 +291,16 @@ local function constructNew_frmSODLFillable1_svg()
     obj.edit7:setField("Defense");
     obj.edit7:setName("edit7");
 
-    obj.layout10 = GUI.fromHandle(_obj_newObject("layout"));
-    obj.layout10:setParent(obj.rectangle1);
-    obj.layout10:setLeft(546);
-    obj.layout10:setTop(420);
-    obj.layout10:setWidth(47);
-    obj.layout10:setHeight(44);
-    obj.layout10:setName("layout10");
+    obj.layout12 = GUI.fromHandle(_obj_newObject("layout"));
+    obj.layout12:setParent(obj.rectangle1);
+    obj.layout12:setLeft(546);
+    obj.layout12:setTop(420);
+    obj.layout12:setWidth(47);
+    obj.layout12:setHeight(44);
+    obj.layout12:setName("layout12");
 
     obj.edit8 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit8:setParent(obj.layout10);
+    obj.edit8:setParent(obj.layout12);
     obj.edit8:setTransparent(true);
     obj.edit8:setFontSize(32);
     obj.edit8:setFontColor("#a83232");
@@ -280,16 +314,33 @@ local function constructNew_frmSODLFillable1_svg()
     obj.edit8:setField("Intellect");
     obj.edit8:setName("edit8");
 
-    obj.layout11 = GUI.fromHandle(_obj_newObject("layout"));
-    obj.layout11:setParent(obj.rectangle1);
-    obj.layout11:setLeft(517);
-    obj.layout11:setTop(466);
-    obj.layout11:setWidth(27);
-    obj.layout11:setHeight(28);
-    obj.layout11:setName("layout11");
+    obj.layout13 = GUI.fromHandle(_obj_newObject("layout"));
+    obj.layout13:setParent(obj.rectangle1);
+    obj.layout13:setLeft(545);
+    obj.layout13:setTop(370);
+    obj.layout13:setWidth(40);
+    obj.layout13:setHeight(20);
+    obj.layout13:setName("layout13");
+
+    obj.button3 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button3:setParent(obj.layout13);
+    obj.button3:setLeft(0);
+    obj.button3:setTop(0);
+    obj.button3:setWidth(40);
+    obj.button3:setHeight(20);
+    obj.button3:setText("Teste");
+    obj.button3:setName("button3");
+
+    obj.layout14 = GUI.fromHandle(_obj_newObject("layout"));
+    obj.layout14:setParent(obj.rectangle1);
+    obj.layout14:setLeft(517);
+    obj.layout14:setTop(466);
+    obj.layout14:setWidth(27);
+    obj.layout14:setHeight(28);
+    obj.layout14:setName("layout14");
 
     obj.label3 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label3:setParent(obj.layout11);
+    obj.label3:setParent(obj.layout14);
     obj.label3:setFontSize(18);
     obj.label3:setFontColor("#a83232");
     obj.label3:setHorzTextAlign("center");
@@ -304,16 +355,16 @@ local function constructNew_frmSODLFillable1_svg()
     obj.label3:setWordWrap(false);
     obj.label3:setAutoSize(true);
 
-    obj.layout12 = GUI.fromHandle(_obj_newObject("layout"));
-    obj.layout12:setParent(obj.rectangle1);
-    obj.layout12:setLeft(621);
-    obj.layout12:setTop(408);
-    obj.layout12:setWidth(35);
-    obj.layout12:setHeight(32);
-    obj.layout12:setName("layout12");
+    obj.layout15 = GUI.fromHandle(_obj_newObject("layout"));
+    obj.layout15:setParent(obj.rectangle1);
+    obj.layout15:setLeft(621);
+    obj.layout15:setTop(408);
+    obj.layout15:setWidth(35);
+    obj.layout15:setHeight(32);
+    obj.layout15:setName("layout15");
 
     obj.edit9 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit9:setParent(obj.layout12);
+    obj.edit9:setParent(obj.layout15);
     obj.edit9:setTransparent(true);
     obj.edit9:setFontSize(18);
     obj.edit9:setFontColor("#000000");
@@ -326,16 +377,16 @@ local function constructNew_frmSODLFillable1_svg()
     obj.edit9:setField("Perception");
     obj.edit9:setName("edit9");
 
-    obj.layout13 = GUI.fromHandle(_obj_newObject("layout"));
-    obj.layout13:setParent(obj.rectangle1);
-    obj.layout13:setLeft(606);
-    obj.layout13:setTop(447);
-    obj.layout13:setWidth(22);
-    obj.layout13:setHeight(25);
-    obj.layout13:setName("layout13");
+    obj.layout16 = GUI.fromHandle(_obj_newObject("layout"));
+    obj.layout16:setParent(obj.rectangle1);
+    obj.layout16:setLeft(606);
+    obj.layout16:setTop(447);
+    obj.layout16:setWidth(22);
+    obj.layout16:setHeight(25);
+    obj.layout16:setName("layout16");
 
     obj.edit10 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit10:setParent(obj.layout13);
+    obj.edit10:setParent(obj.layout16);
     obj.edit10:setFontSize(18);
     obj.edit10:setFontColor("#000000");
     obj.edit10:setHorzTextAlign("center");
@@ -348,16 +399,16 @@ local function constructNew_frmSODLFillable1_svg()
     obj.edit10:setField("Perception_Modifier");
     obj.edit10:setName("edit10");
 
-    obj.layout14 = GUI.fromHandle(_obj_newObject("layout"));
-    obj.layout14:setParent(obj.rectangle1);
-    obj.layout14:setLeft(625);
-    obj.layout14:setTop(605);
-    obj.layout14:setWidth(47);
-    obj.layout14:setHeight(44);
-    obj.layout14:setName("layout14");
+    obj.layout17 = GUI.fromHandle(_obj_newObject("layout"));
+    obj.layout17:setParent(obj.rectangle1);
+    obj.layout17:setLeft(625);
+    obj.layout17:setTop(605);
+    obj.layout17:setWidth(47);
+    obj.layout17:setHeight(44);
+    obj.layout17:setName("layout17");
 
     obj.edit11 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit11:setParent(obj.layout14);
+    obj.edit11:setParent(obj.layout17);
     obj.edit11:setTransparent(true);
     obj.edit11:setFontSize(32);
     obj.edit11:setFontColor("#a83232");
@@ -371,16 +422,33 @@ local function constructNew_frmSODLFillable1_svg()
     obj.edit11:setField("Will");
     obj.edit11:setName("edit11");
 
-    obj.layout15 = GUI.fromHandle(_obj_newObject("layout"));
-    obj.layout15:setParent(obj.rectangle1);
-    obj.layout15:setLeft(581);
-    obj.layout15:setTop(607);
-    obj.layout15:setWidth(27);
-    obj.layout15:setHeight(28);
-    obj.layout15:setName("layout15");
+    obj.layout18 = GUI.fromHandle(_obj_newObject("layout"));
+    obj.layout18:setParent(obj.rectangle1);
+    obj.layout18:setLeft(630);
+    obj.layout18:setTop(670);
+    obj.layout18:setWidth(40);
+    obj.layout18:setHeight(20);
+    obj.layout18:setName("layout18");
+
+    obj.button4 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button4:setParent(obj.layout18);
+    obj.button4:setLeft(0);
+    obj.button4:setTop(0);
+    obj.button4:setWidth(40);
+    obj.button4:setHeight(20);
+    obj.button4:setText("Teste");
+    obj.button4:setName("button4");
+
+    obj.layout19 = GUI.fromHandle(_obj_newObject("layout"));
+    obj.layout19:setParent(obj.rectangle1);
+    obj.layout19:setLeft(581);
+    obj.layout19:setTop(607);
+    obj.layout19:setWidth(27);
+    obj.layout19:setHeight(28);
+    obj.layout19:setName("layout19");
 
     obj.edit12 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit12:setParent(obj.layout15);
+    obj.edit12:setParent(obj.layout19);
     obj.edit12:setTransparent(true);
     obj.edit12:setFontSize(18);
     obj.edit12:setFontColor("#a83232");
@@ -393,16 +461,16 @@ local function constructNew_frmSODLFillable1_svg()
     obj.edit12:setField("Will_Modifier");
     obj.edit12:setName("edit12");
 
-    obj.layout16 = GUI.fromHandle(_obj_newObject("layout"));
-    obj.layout16:setParent(obj.rectangle1);
-    obj.layout16:setLeft(255);
-    obj.layout16:setTop(470);
-    obj.layout16:setWidth(35);
-    obj.layout16:setHeight(32);
-    obj.layout16:setName("layout16");
+    obj.layout20 = GUI.fromHandle(_obj_newObject("layout"));
+    obj.layout20:setParent(obj.rectangle1);
+    obj.layout20:setLeft(255);
+    obj.layout20:setTop(470);
+    obj.layout20:setWidth(35);
+    obj.layout20:setHeight(32);
+    obj.layout20:setName("layout20");
 
     obj.edit13 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit13:setParent(obj.layout16);
+    obj.edit13:setParent(obj.layout20);
     obj.edit13:setTransparent(true);
     obj.edit13:setFontSize(18);
     obj.edit13:setFontColor("#000000");
@@ -415,16 +483,16 @@ local function constructNew_frmSODLFillable1_svg()
     obj.edit13:setField("Size");
     obj.edit13:setName("edit13");
 
-    obj.layout17 = GUI.fromHandle(_obj_newObject("layout"));
-    obj.layout17:setParent(obj.rectangle1);
-    obj.layout17:setLeft(216);
-    obj.layout17:setTop(520);
-    obj.layout17:setWidth(35);
-    obj.layout17:setHeight(32);
-    obj.layout17:setName("layout17");
+    obj.layout21 = GUI.fromHandle(_obj_newObject("layout"));
+    obj.layout21:setParent(obj.rectangle1);
+    obj.layout21:setLeft(216);
+    obj.layout21:setTop(520);
+    obj.layout21:setWidth(35);
+    obj.layout21:setHeight(32);
+    obj.layout21:setName("layout21");
 
     obj.edit14 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit14:setParent(obj.layout17);
+    obj.edit14:setParent(obj.layout21);
     obj.edit14:setTransparent(true);
     obj.edit14:setFontSize(18);
     obj.edit14:setFontColor("#000000");
@@ -437,16 +505,16 @@ local function constructNew_frmSODLFillable1_svg()
     obj.edit14:setField("Speed");
     obj.edit14:setName("edit14");
 
-    obj.layout18 = GUI.fromHandle(_obj_newObject("layout"));
-    obj.layout18:setParent(obj.rectangle1);
-    obj.layout18:setLeft(26);
-    obj.layout18:setTop(125);
-    obj.layout18:setWidth(283);
-    obj.layout18:setHeight(187);
-    obj.layout18:setName("layout18");
+    obj.layout22 = GUI.fromHandle(_obj_newObject("layout"));
+    obj.layout22:setParent(obj.rectangle1);
+    obj.layout22:setLeft(26);
+    obj.layout22:setTop(125);
+    obj.layout22:setWidth(283);
+    obj.layout22:setHeight(187);
+    obj.layout22:setName("layout22");
 
     obj.textEditor1 = GUI.fromHandle(_obj_newObject("textEditor"));
-    obj.textEditor1:setParent(obj.layout18);
+    obj.textEditor1:setParent(obj.layout22);
     obj.textEditor1:setLeft(0);
     obj.textEditor1:setTop(0);
     obj.textEditor1:setWidth(283);
@@ -457,16 +525,16 @@ local function constructNew_frmSODLFillable1_svg()
     obj.textEditor1:setTransparent(true);
     obj.textEditor1:setName("textEditor1");
 
-    obj.layout19 = GUI.fromHandle(_obj_newObject("layout"));
-    obj.layout19:setParent(obj.rectangle1);
-    obj.layout19:setLeft(601);
-    obj.layout19:setTop(47);
-    obj.layout19:setWidth(298);
-    obj.layout19:setHeight(255);
-    obj.layout19:setName("layout19");
+    obj.layout23 = GUI.fromHandle(_obj_newObject("layout"));
+    obj.layout23:setParent(obj.rectangle1);
+    obj.layout23:setLeft(601);
+    obj.layout23:setTop(47);
+    obj.layout23:setWidth(298);
+    obj.layout23:setHeight(255);
+    obj.layout23:setName("layout23");
 
     obj.textEditor2 = GUI.fromHandle(_obj_newObject("textEditor"));
-    obj.textEditor2:setParent(obj.layout19);
+    obj.textEditor2:setParent(obj.layout23);
     obj.textEditor2:setLeft(0);
     obj.textEditor2:setTop(0);
     obj.textEditor2:setWidth(298);
@@ -477,16 +545,16 @@ local function constructNew_frmSODLFillable1_svg()
     obj.textEditor2:setTransparent(true);
     obj.textEditor2:setName("textEditor2");
 
-    obj.layout20 = GUI.fromHandle(_obj_newObject("layout"));
-    obj.layout20:setParent(obj.rectangle1);
-    obj.layout20:setLeft(542);
-    obj.layout20:setTop(36);
-    obj.layout20:setWidth(35);
-    obj.layout20:setHeight(32);
-    obj.layout20:setName("layout20");
+    obj.layout24 = GUI.fromHandle(_obj_newObject("layout"));
+    obj.layout24:setParent(obj.rectangle1);
+    obj.layout24:setLeft(542);
+    obj.layout24:setTop(36);
+    obj.layout24:setWidth(35);
+    obj.layout24:setHeight(32);
+    obj.layout24:setName("layout24");
 
     obj.edit15 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit15:setParent(obj.layout20);
+    obj.edit15:setParent(obj.layout24);
     obj.edit15:setTransparent(true);
     obj.edit15:setFontSize(14.2);
     obj.edit15:setFontColor("#000000");
@@ -499,16 +567,16 @@ local function constructNew_frmSODLFillable1_svg()
     obj.edit15:setField("Level");
     obj.edit15:setName("edit15");
 
-    obj.layout21 = GUI.fromHandle(_obj_newObject("layout"));
-    obj.layout21:setParent(obj.rectangle1);
-    obj.layout21:setLeft(25);
-    obj.layout21:setTop(349);
-    obj.layout21:setWidth(180);
-    obj.layout21:setHeight(586);
-    obj.layout21:setName("layout21");
+    obj.layout25 = GUI.fromHandle(_obj_newObject("layout"));
+    obj.layout25:setParent(obj.rectangle1);
+    obj.layout25:setLeft(25);
+    obj.layout25:setTop(349);
+    obj.layout25:setWidth(180);
+    obj.layout25:setHeight(586);
+    obj.layout25:setName("layout25");
 
     obj.textEditor3 = GUI.fromHandle(_obj_newObject("textEditor"));
-    obj.textEditor3:setParent(obj.layout21);
+    obj.textEditor3:setParent(obj.layout25);
     obj.textEditor3:setLeft(0);
     obj.textEditor3:setTop(0);
     obj.textEditor3:setWidth(180);
@@ -519,16 +587,16 @@ local function constructNew_frmSODLFillable1_svg()
     obj.textEditor3:setTransparent(true);
     obj.textEditor3:setName("textEditor3");
 
-    obj.layout22 = GUI.fromHandle(_obj_newObject("layout"));
-    obj.layout22:setParent(obj.rectangle1);
-    obj.layout22:setLeft(18);
-    obj.layout22:setTop(976);
-    obj.layout22:setWidth(380);
-    obj.layout22:setHeight(192);
-    obj.layout22:setName("layout22");
+    obj.layout26 = GUI.fromHandle(_obj_newObject("layout"));
+    obj.layout26:setParent(obj.rectangle1);
+    obj.layout26:setLeft(18);
+    obj.layout26:setTop(976);
+    obj.layout26:setWidth(380);
+    obj.layout26:setHeight(192);
+    obj.layout26:setName("layout26");
 
     obj.edit16 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit16:setParent(obj.layout22);
+    obj.edit16:setParent(obj.layout26);
     obj.edit16:setLeft(0);
     obj.edit16:setTop(0);
     obj.edit16:setWidth(140);
@@ -541,7 +609,7 @@ local function constructNew_frmSODLFillable1_svg()
     obj.edit16:setName("edit16");
 
     obj.edit17 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit17:setParent(obj.layout22);
+    obj.edit17:setParent(obj.layout26);
     obj.edit17:setLeft(0);
     obj.edit17:setTop(32);
     obj.edit17:setWidth(140);
@@ -554,7 +622,7 @@ local function constructNew_frmSODLFillable1_svg()
     obj.edit17:setName("edit17");
 
     obj.edit18 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit18:setParent(obj.layout22);
+    obj.edit18:setParent(obj.layout26);
     obj.edit18:setLeft(0);
     obj.edit18:setTop(64);
     obj.edit18:setWidth(140);
@@ -567,7 +635,7 @@ local function constructNew_frmSODLFillable1_svg()
     obj.edit18:setName("edit18");
 
     obj.edit19 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit19:setParent(obj.layout22);
+    obj.edit19:setParent(obj.layout26);
     obj.edit19:setLeft(0);
     obj.edit19:setTop(96);
     obj.edit19:setWidth(140);
@@ -580,7 +648,7 @@ local function constructNew_frmSODLFillable1_svg()
     obj.edit19:setName("edit19");
 
     obj.edit20 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit20:setParent(obj.layout22);
+    obj.edit20:setParent(obj.layout26);
     obj.edit20:setLeft(0);
     obj.edit20:setTop(128);
     obj.edit20:setWidth(140);
@@ -593,7 +661,7 @@ local function constructNew_frmSODLFillable1_svg()
     obj.edit20:setName("edit20");
 
     obj.edit21 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit21:setParent(obj.layout22);
+    obj.edit21:setParent(obj.layout26);
     obj.edit21:setLeft(0);
     obj.edit21:setTop(160);
     obj.edit21:setWidth(140);
@@ -606,7 +674,7 @@ local function constructNew_frmSODLFillable1_svg()
     obj.edit21:setName("edit21");
 
     obj.comboBox1 = GUI.fromHandle(_obj_newObject("comboBox"));
-    obj.comboBox1:setParent(obj.layout22);
+    obj.comboBox1:setParent(obj.layout26);
     obj.comboBox1:setLeft(140);
     obj.comboBox1:setTop(0);
     obj.comboBox1:setWidth(90);
@@ -620,7 +688,7 @@ local function constructNew_frmSODLFillable1_svg()
     obj.comboBox1:setName("comboBox1");
 
     obj.comboBox2 = GUI.fromHandle(_obj_newObject("comboBox"));
-    obj.comboBox2:setParent(obj.layout22);
+    obj.comboBox2:setParent(obj.layout26);
     obj.comboBox2:setLeft(140);
     obj.comboBox2:setTop(32);
     obj.comboBox2:setWidth(90);
@@ -634,7 +702,7 @@ local function constructNew_frmSODLFillable1_svg()
     obj.comboBox2:setName("comboBox2");
 
     obj.comboBox3 = GUI.fromHandle(_obj_newObject("comboBox"));
-    obj.comboBox3:setParent(obj.layout22);
+    obj.comboBox3:setParent(obj.layout26);
     obj.comboBox3:setLeft(140);
     obj.comboBox3:setTop(64);
     obj.comboBox3:setWidth(90);
@@ -648,7 +716,7 @@ local function constructNew_frmSODLFillable1_svg()
     obj.comboBox3:setName("comboBox3");
 
     obj.comboBox4 = GUI.fromHandle(_obj_newObject("comboBox"));
-    obj.comboBox4:setParent(obj.layout22);
+    obj.comboBox4:setParent(obj.layout26);
     obj.comboBox4:setLeft(140);
     obj.comboBox4:setTop(96);
     obj.comboBox4:setWidth(90);
@@ -662,7 +730,7 @@ local function constructNew_frmSODLFillable1_svg()
     obj.comboBox4:setName("comboBox4");
 
     obj.comboBox5 = GUI.fromHandle(_obj_newObject("comboBox"));
-    obj.comboBox5:setParent(obj.layout22);
+    obj.comboBox5:setParent(obj.layout26);
     obj.comboBox5:setLeft(140);
     obj.comboBox5:setTop(128);
     obj.comboBox5:setWidth(90);
@@ -676,7 +744,7 @@ local function constructNew_frmSODLFillable1_svg()
     obj.comboBox5:setName("comboBox5");
 
     obj.comboBox6 = GUI.fromHandle(_obj_newObject("comboBox"));
-    obj.comboBox6:setParent(obj.layout22);
+    obj.comboBox6:setParent(obj.layout26);
     obj.comboBox6:setLeft(140);
     obj.comboBox6:setTop(160);
     obj.comboBox6:setWidth(90);
@@ -690,7 +758,7 @@ local function constructNew_frmSODLFillable1_svg()
     obj.comboBox6:setName("comboBox6");
 
     obj.edit22 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit22:setParent(obj.layout22);
+    obj.edit22:setParent(obj.layout26);
     obj.edit22:setLeft(230);
     obj.edit22:setTop(0);
     obj.edit22:setWidth(60);
@@ -703,7 +771,7 @@ local function constructNew_frmSODLFillable1_svg()
     obj.edit22:setName("edit22");
 
     obj.edit23 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit23:setParent(obj.layout22);
+    obj.edit23:setParent(obj.layout26);
     obj.edit23:setLeft(230);
     obj.edit23:setTop(32);
     obj.edit23:setWidth(60);
@@ -716,7 +784,7 @@ local function constructNew_frmSODLFillable1_svg()
     obj.edit23:setName("edit23");
 
     obj.edit24 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit24:setParent(obj.layout22);
+    obj.edit24:setParent(obj.layout26);
     obj.edit24:setLeft(230);
     obj.edit24:setTop(64);
     obj.edit24:setWidth(60);
@@ -729,7 +797,7 @@ local function constructNew_frmSODLFillable1_svg()
     obj.edit24:setName("edit24");
 
     obj.edit25 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit25:setParent(obj.layout22);
+    obj.edit25:setParent(obj.layout26);
     obj.edit25:setLeft(230);
     obj.edit25:setTop(96);
     obj.edit25:setWidth(60);
@@ -742,7 +810,7 @@ local function constructNew_frmSODLFillable1_svg()
     obj.edit25:setName("edit25");
 
     obj.edit26 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit26:setParent(obj.layout22);
+    obj.edit26:setParent(obj.layout26);
     obj.edit26:setLeft(230);
     obj.edit26:setTop(128);
     obj.edit26:setWidth(60);
@@ -755,7 +823,7 @@ local function constructNew_frmSODLFillable1_svg()
     obj.edit26:setName("edit26");
 
     obj.edit27 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit27:setParent(obj.layout22);
+    obj.edit27:setParent(obj.layout26);
     obj.edit27:setLeft(230);
     obj.edit27:setTop(160);
     obj.edit27:setWidth(60);
@@ -767,50 +835,10 @@ local function constructNew_frmSODLFillable1_svg()
     obj.edit27:setHint("Dano");
     obj.edit27:setName("edit27");
 
-    obj.button1 = GUI.fromHandle(_obj_newObject("button"));
-    obj.button1:setParent(obj.layout22);
-    obj.button1:setLeft(290);
-    obj.button1:setTop(0);
-    obj.button1:setWidth(30);
-    obj.button1:setHeight(30);
-    obj.button1:setFontSize(10);
-    obj.button1:setText("Atk");
-    obj.button1:setName("button1");
-
-    obj.button2 = GUI.fromHandle(_obj_newObject("button"));
-    obj.button2:setParent(obj.layout22);
-    obj.button2:setLeft(320);
-    obj.button2:setTop(0);
-    obj.button2:setWidth(30);
-    obj.button2:setHeight(30);
-    obj.button2:setFontSize(10);
-    obj.button2:setText("Dmg");
-    obj.button2:setName("button2");
-
-    obj.button3 = GUI.fromHandle(_obj_newObject("button"));
-    obj.button3:setParent(obj.layout22);
-    obj.button3:setLeft(290);
-    obj.button3:setTop(32);
-    obj.button3:setWidth(30);
-    obj.button3:setHeight(30);
-    obj.button3:setFontSize(10);
-    obj.button3:setText("Atk");
-    obj.button3:setName("button3");
-
-    obj.button4 = GUI.fromHandle(_obj_newObject("button"));
-    obj.button4:setParent(obj.layout22);
-    obj.button4:setLeft(320);
-    obj.button4:setTop(32);
-    obj.button4:setWidth(30);
-    obj.button4:setHeight(30);
-    obj.button4:setFontSize(10);
-    obj.button4:setText("Dmg");
-    obj.button4:setName("button4");
-
     obj.button5 = GUI.fromHandle(_obj_newObject("button"));
-    obj.button5:setParent(obj.layout22);
+    obj.button5:setParent(obj.layout26);
     obj.button5:setLeft(290);
-    obj.button5:setTop(64);
+    obj.button5:setTop(0);
     obj.button5:setWidth(30);
     obj.button5:setHeight(30);
     obj.button5:setFontSize(10);
@@ -818,9 +846,9 @@ local function constructNew_frmSODLFillable1_svg()
     obj.button5:setName("button5");
 
     obj.button6 = GUI.fromHandle(_obj_newObject("button"));
-    obj.button6:setParent(obj.layout22);
+    obj.button6:setParent(obj.layout26);
     obj.button6:setLeft(320);
-    obj.button6:setTop(64);
+    obj.button6:setTop(0);
     obj.button6:setWidth(30);
     obj.button6:setHeight(30);
     obj.button6:setFontSize(10);
@@ -828,9 +856,9 @@ local function constructNew_frmSODLFillable1_svg()
     obj.button6:setName("button6");
 
     obj.button7 = GUI.fromHandle(_obj_newObject("button"));
-    obj.button7:setParent(obj.layout22);
+    obj.button7:setParent(obj.layout26);
     obj.button7:setLeft(290);
-    obj.button7:setTop(96);
+    obj.button7:setTop(32);
     obj.button7:setWidth(30);
     obj.button7:setHeight(30);
     obj.button7:setFontSize(10);
@@ -838,9 +866,9 @@ local function constructNew_frmSODLFillable1_svg()
     obj.button7:setName("button7");
 
     obj.button8 = GUI.fromHandle(_obj_newObject("button"));
-    obj.button8:setParent(obj.layout22);
+    obj.button8:setParent(obj.layout26);
     obj.button8:setLeft(320);
-    obj.button8:setTop(96);
+    obj.button8:setTop(32);
     obj.button8:setWidth(30);
     obj.button8:setHeight(30);
     obj.button8:setFontSize(10);
@@ -848,9 +876,9 @@ local function constructNew_frmSODLFillable1_svg()
     obj.button8:setName("button8");
 
     obj.button9 = GUI.fromHandle(_obj_newObject("button"));
-    obj.button9:setParent(obj.layout22);
+    obj.button9:setParent(obj.layout26);
     obj.button9:setLeft(290);
-    obj.button9:setTop(128);
+    obj.button9:setTop(64);
     obj.button9:setWidth(30);
     obj.button9:setHeight(30);
     obj.button9:setFontSize(10);
@@ -858,9 +886,9 @@ local function constructNew_frmSODLFillable1_svg()
     obj.button9:setName("button9");
 
     obj.button10 = GUI.fromHandle(_obj_newObject("button"));
-    obj.button10:setParent(obj.layout22);
+    obj.button10:setParent(obj.layout26);
     obj.button10:setLeft(320);
-    obj.button10:setTop(128);
+    obj.button10:setTop(64);
     obj.button10:setWidth(30);
     obj.button10:setHeight(30);
     obj.button10:setFontSize(10);
@@ -868,9 +896,9 @@ local function constructNew_frmSODLFillable1_svg()
     obj.button10:setName("button10");
 
     obj.button11 = GUI.fromHandle(_obj_newObject("button"));
-    obj.button11:setParent(obj.layout22);
+    obj.button11:setParent(obj.layout26);
     obj.button11:setLeft(290);
-    obj.button11:setTop(160);
+    obj.button11:setTop(96);
     obj.button11:setWidth(30);
     obj.button11:setHeight(30);
     obj.button11:setFontSize(10);
@@ -878,25 +906,65 @@ local function constructNew_frmSODLFillable1_svg()
     obj.button11:setName("button11");
 
     obj.button12 = GUI.fromHandle(_obj_newObject("button"));
-    obj.button12:setParent(obj.layout22);
+    obj.button12:setParent(obj.layout26);
     obj.button12:setLeft(320);
-    obj.button12:setTop(160);
+    obj.button12:setTop(96);
     obj.button12:setWidth(30);
     obj.button12:setHeight(30);
     obj.button12:setFontSize(10);
     obj.button12:setText("Dmg");
     obj.button12:setName("button12");
 
-    obj.layout23 = GUI.fromHandle(_obj_newObject("layout"));
-    obj.layout23:setParent(obj.rectangle1);
-    obj.layout23:setLeft(380);
-    obj.layout23:setTop(979);
-    obj.layout23:setWidth(662);
-    obj.layout23:setHeight(187);
-    obj.layout23:setName("layout23");
+    obj.button13 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button13:setParent(obj.layout26);
+    obj.button13:setLeft(290);
+    obj.button13:setTop(128);
+    obj.button13:setWidth(30);
+    obj.button13:setHeight(30);
+    obj.button13:setFontSize(10);
+    obj.button13:setText("Atk");
+    obj.button13:setName("button13");
+
+    obj.button14 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button14:setParent(obj.layout26);
+    obj.button14:setLeft(320);
+    obj.button14:setTop(128);
+    obj.button14:setWidth(30);
+    obj.button14:setHeight(30);
+    obj.button14:setFontSize(10);
+    obj.button14:setText("Dmg");
+    obj.button14:setName("button14");
+
+    obj.button15 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button15:setParent(obj.layout26);
+    obj.button15:setLeft(290);
+    obj.button15:setTop(160);
+    obj.button15:setWidth(30);
+    obj.button15:setHeight(30);
+    obj.button15:setFontSize(10);
+    obj.button15:setText("Atk");
+    obj.button15:setName("button15");
+
+    obj.button16 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button16:setParent(obj.layout26);
+    obj.button16:setLeft(320);
+    obj.button16:setTop(160);
+    obj.button16:setWidth(30);
+    obj.button16:setHeight(30);
+    obj.button16:setFontSize(10);
+    obj.button16:setText("Dmg");
+    obj.button16:setName("button16");
+
+    obj.layout27 = GUI.fromHandle(_obj_newObject("layout"));
+    obj.layout27:setParent(obj.rectangle1);
+    obj.layout27:setLeft(380);
+    obj.layout27:setTop(979);
+    obj.layout27:setWidth(662);
+    obj.layout27:setHeight(187);
+    obj.layout27:setName("layout27");
 
     obj.textEditor4 = GUI.fromHandle(_obj_newObject("textEditor"));
-    obj.textEditor4:setParent(obj.layout23);
+    obj.textEditor4:setParent(obj.layout27);
     obj.textEditor4:setLeft(0);
     obj.textEditor4:setTop(0);
     obj.textEditor4:setWidth(210);
@@ -908,7 +976,7 @@ local function constructNew_frmSODLFillable1_svg()
     obj.textEditor4:setName("textEditor4");
 
     obj.textEditor5 = GUI.fromHandle(_obj_newObject("textEditor"));
-    obj.textEditor5:setParent(obj.layout23);
+    obj.textEditor5:setParent(obj.layout27);
     obj.textEditor5:setLeft(210);
     obj.textEditor5:setTop(0);
     obj.textEditor5:setWidth(210);
@@ -919,16 +987,16 @@ local function constructNew_frmSODLFillable1_svg()
     obj.textEditor5:setTransparent(true);
     obj.textEditor5:setName("textEditor5");
 
-    obj.layout24 = GUI.fromHandle(_obj_newObject("layout"));
-    obj.layout24:setParent(obj.rectangle1);
-    obj.layout24:setLeft(318);
-    obj.layout24:setTop(124);
-    obj.layout24:setWidth(261);
-    obj.layout24:setHeight(35);
-    obj.layout24:setName("layout24");
+    obj.layout28 = GUI.fromHandle(_obj_newObject("layout"));
+    obj.layout28:setParent(obj.rectangle1);
+    obj.layout28:setLeft(318);
+    obj.layout28:setTop(124);
+    obj.layout28:setWidth(261);
+    obj.layout28:setHeight(35);
+    obj.layout28:setName("layout28");
 
     obj.edit28 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit28:setParent(obj.layout24);
+    obj.edit28:setParent(obj.layout28);
     obj.edit28:setLeft(0);
     obj.edit28:setTop(0);
     obj.edit28:setWidth(261);
@@ -941,16 +1009,16 @@ local function constructNew_frmSODLFillable1_svg()
     obj.edit28:setTransparent(true);
     obj.edit28:setName("edit28");
 
-    obj.layout25 = GUI.fromHandle(_obj_newObject("layout"));
-    obj.layout25:setParent(obj.rectangle1);
-    obj.layout25:setLeft(318);
-    obj.layout25:setTop(191);
-    obj.layout25:setWidth(261);
-    obj.layout25:setHeight(35);
-    obj.layout25:setName("layout25");
+    obj.layout29 = GUI.fromHandle(_obj_newObject("layout"));
+    obj.layout29:setParent(obj.rectangle1);
+    obj.layout29:setLeft(318);
+    obj.layout29:setTop(191);
+    obj.layout29:setWidth(261);
+    obj.layout29:setHeight(35);
+    obj.layout29:setName("layout29");
 
     obj.edit29 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit29:setParent(obj.layout25);
+    obj.edit29:setParent(obj.layout29);
     obj.edit29:setLeft(0);
     obj.edit29:setTop(0);
     obj.edit29:setWidth(261);
@@ -963,16 +1031,16 @@ local function constructNew_frmSODLFillable1_svg()
     obj.edit29:setTransparent(true);
     obj.edit29:setName("edit29");
 
-    obj.layout26 = GUI.fromHandle(_obj_newObject("layout"));
-    obj.layout26:setParent(obj.rectangle1);
-    obj.layout26:setLeft(318);
-    obj.layout26:setTop(257);
-    obj.layout26:setWidth(261);
-    obj.layout26:setHeight(54);
-    obj.layout26:setName("layout26");
+    obj.layout30 = GUI.fromHandle(_obj_newObject("layout"));
+    obj.layout30:setParent(obj.rectangle1);
+    obj.layout30:setLeft(318);
+    obj.layout30:setTop(257);
+    obj.layout30:setWidth(261);
+    obj.layout30:setHeight(54);
+    obj.layout30:setName("layout30");
 
     obj.edit30 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit30:setParent(obj.layout26);
+    obj.edit30:setParent(obj.layout30);
     obj.edit30:setLeft(0);
     obj.edit30:setTop(0);
     obj.edit30:setWidth(261);
@@ -985,16 +1053,16 @@ local function constructNew_frmSODLFillable1_svg()
     obj.edit30:setTransparent(true);
     obj.edit30:setName("edit30");
 
-    obj.layout27 = GUI.fromHandle(_obj_newObject("layout"));
-    obj.layout27:setParent(obj.rectangle1);
-    obj.layout27:setLeft(687);
-    obj.layout27:setTop(352);
-    obj.layout27:setWidth(211);
-    obj.layout27:setHeight(583);
-    obj.layout27:setName("layout27");
+    obj.layout31 = GUI.fromHandle(_obj_newObject("layout"));
+    obj.layout31:setParent(obj.rectangle1);
+    obj.layout31:setLeft(687);
+    obj.layout31:setTop(352);
+    obj.layout31:setWidth(211);
+    obj.layout31:setHeight(583);
+    obj.layout31:setName("layout31");
 
     obj.textEditor6 = GUI.fromHandle(_obj_newObject("textEditor"));
-    obj.textEditor6:setParent(obj.layout27);
+    obj.textEditor6:setParent(obj.layout31);
     obj.textEditor6:setLeft(0);
     obj.textEditor6:setTop(0);
     obj.textEditor6:setWidth(211);
@@ -1005,16 +1073,16 @@ local function constructNew_frmSODLFillable1_svg()
     obj.textEditor6:setTransparent(true);
     obj.textEditor6:setName("textEditor6");
 
-    obj.layout28 = GUI.fromHandle(_obj_newObject("layout"));
-    obj.layout28:setParent(obj.rectangle1);
-    obj.layout28:setLeft(618);
-    obj.layout28:setTop(319);
-    obj.layout28:setWidth(35);
-    obj.layout28:setHeight(32);
-    obj.layout28:setName("layout28");
+    obj.layout32 = GUI.fromHandle(_obj_newObject("layout"));
+    obj.layout32:setParent(obj.rectangle1);
+    obj.layout32:setLeft(618);
+    obj.layout32:setTop(319);
+    obj.layout32:setWidth(35);
+    obj.layout32:setHeight(32);
+    obj.layout32:setName("layout32");
 
     obj.edit31 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit31:setParent(obj.layout28);
+    obj.edit31:setParent(obj.layout32);
     obj.edit31:setTransparent(true);
     obj.edit31:setFontSize(18);
     obj.edit31:setFontColor("#000000");
@@ -1027,16 +1095,16 @@ local function constructNew_frmSODLFillable1_svg()
     obj.edit31:setField("Power");
     obj.edit31:setName("edit31");
 
-    obj.layout29 = GUI.fromHandle(_obj_newObject("layout"));
-    obj.layout29:setParent(obj.rectangle1);
-    obj.layout29:setLeft(626);
-    obj.layout29:setTop(539);
-    obj.layout29:setWidth(35);
-    obj.layout29:setHeight(32);
-    obj.layout29:setName("layout29");
+    obj.layout33 = GUI.fromHandle(_obj_newObject("layout"));
+    obj.layout33:setParent(obj.rectangle1);
+    obj.layout33:setLeft(626);
+    obj.layout33:setTop(539);
+    obj.layout33:setWidth(35);
+    obj.layout33:setHeight(32);
+    obj.layout33:setName("layout33");
 
     obj.edit32 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit32:setParent(obj.layout29);
+    obj.edit32:setParent(obj.layout33);
     obj.edit32:setTransparent(true);
     obj.edit32:setFontSize(18);
     obj.edit32:setFontColor("#000000");
@@ -1049,16 +1117,16 @@ local function constructNew_frmSODLFillable1_svg()
     obj.edit32:setField("Insanity");
     obj.edit32:setName("edit32");
 
-    obj.layout30 = GUI.fromHandle(_obj_newObject("layout"));
-    obj.layout30:setParent(obj.rectangle1);
-    obj.layout30:setLeft(594);
-    obj.layout30:setTop(744);
-    obj.layout30:setWidth(35);
-    obj.layout30:setHeight(32);
-    obj.layout30:setName("layout30");
+    obj.layout34 = GUI.fromHandle(_obj_newObject("layout"));
+    obj.layout34:setParent(obj.rectangle1);
+    obj.layout34:setLeft(594);
+    obj.layout34:setTop(744);
+    obj.layout34:setWidth(35);
+    obj.layout34:setHeight(32);
+    obj.layout34:setName("layout34");
 
     obj.edit33 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit33:setParent(obj.layout30);
+    obj.edit33:setParent(obj.layout34);
     obj.edit33:setTransparent(true);
     obj.edit33:setFontSize(18);
     obj.edit33:setFontColor("#000000");
@@ -1071,16 +1139,16 @@ local function constructNew_frmSODLFillable1_svg()
     obj.edit33:setField("Corruption");
     obj.edit33:setName("edit33");
 
-    obj.layout31 = GUI.fromHandle(_obj_newObject("layout"));
-    obj.layout31:setParent(obj.rectangle1);
-    obj.layout31:setLeft(399);
-    obj.layout31:setTop(532);
-    obj.layout31:setWidth(110);
-    obj.layout31:setHeight(86);
-    obj.layout31:setName("layout31");
+    obj.layout35 = GUI.fromHandle(_obj_newObject("layout"));
+    obj.layout35:setParent(obj.rectangle1);
+    obj.layout35:setLeft(399);
+    obj.layout35:setTop(532);
+    obj.layout35:setWidth(110);
+    obj.layout35:setHeight(86);
+    obj.layout35:setName("layout35");
 
     obj.edit34 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit34:setParent(obj.layout31);
+    obj.edit34:setParent(obj.layout35);
     obj.edit34:setTransparent(true);
     obj.edit34:setFontSize(32);
     obj.edit34:setFontColor("#000000");
@@ -1093,16 +1161,16 @@ local function constructNew_frmSODLFillable1_svg()
     obj.edit34:setField("Damage");
     obj.edit34:setName("edit34");
 
-    obj.layout32 = GUI.fromHandle(_obj_newObject("layout"));
-    obj.layout32:setParent(obj.rectangle1);
-    obj.layout32:setLeft(210);
-    obj.layout32:setTop(838);
-    obj.layout32:setWidth(472);
-    obj.layout32:setHeight(96);
-    obj.layout32:setName("layout32");
+    obj.layout36 = GUI.fromHandle(_obj_newObject("layout"));
+    obj.layout36:setParent(obj.rectangle1);
+    obj.layout36:setLeft(210);
+    obj.layout36:setTop(838);
+    obj.layout36:setWidth(472);
+    obj.layout36:setHeight(96);
+    obj.layout36:setName("layout36");
 
     obj.textEditor7 = GUI.fromHandle(_obj_newObject("textEditor"));
-    obj.textEditor7:setParent(obj.layout32);
+    obj.textEditor7:setParent(obj.layout36);
     obj.textEditor7:setLeft(0);
     obj.textEditor7:setTop(0);
     obj.textEditor7:setWidth(472);
@@ -1113,16 +1181,16 @@ local function constructNew_frmSODLFillable1_svg()
     obj.textEditor7:setTransparent(true);
     obj.textEditor7:setName("textEditor7");
 
-    obj.layout33 = GUI.fromHandle(_obj_newObject("layout"));
-    obj.layout33:setParent(obj.rectangle1);
-    obj.layout33:setLeft(400);
-    obj.layout33:setTop(330);
-    obj.layout33:setHeight(100);
-    obj.layout33:setWidth(160);
-    obj.layout33:setName("layout33");
+    obj.layout37 = GUI.fromHandle(_obj_newObject("layout"));
+    obj.layout37:setParent(obj.rectangle1);
+    obj.layout37:setLeft(400);
+    obj.layout37:setTop(330);
+    obj.layout37:setHeight(100);
+    obj.layout37:setWidth(160);
+    obj.layout37:setName("layout37");
 
     obj.label4 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label4:setParent(obj.layout33);
+    obj.label4:setParent(obj.layout37);
     obj.label4:setLeft(0);
     obj.label4:setTop(0);
     obj.label4:setHeight(40);
@@ -1137,7 +1205,7 @@ local function constructNew_frmSODLFillable1_svg()
     obj.label4:setAutoSize(true);
 
     obj.comboBox7 = GUI.fromHandle(_obj_newObject("comboBox"));
-    obj.comboBox7:setParent(obj.layout33);
+    obj.comboBox7:setParent(obj.layout37);
     obj.comboBox7:setLeft(10);
     obj.comboBox7:setTop(30);
     obj.comboBox7:setWidth(60);
@@ -1149,6 +1217,170 @@ local function constructNew_frmSODLFillable1_svg()
     obj.comboBox7:setText("0");
     obj.comboBox7:setField("BoonsBanes");
     obj.comboBox7:setName("comboBox7");
+
+
+        local function rollAttributeSavingThrow(modifier, testName, boonOrBaneValue)
+
+            local attributeRoll = Firecast.interpretarRolagem("1d20");
+            local boonOrBaneRolledBonus = 0;
+            local characterTable = Firecast.getMesaDe(sheet);
+            local operation;
+            local boonOrBaneString;
+            local gameTable = Firecast.getMesaDe(sheet);
+            
+            if(modifier == nil) then
+                modifier = 0;
+            end;
+            
+            if (boonOrBaneValue ~= nil and boonOrBaneValue ~= '0' ) then
+                if (tonumber(boonOrBaneValue) > 0) then
+                    boonOrBaneString = " Boon";
+                    if (tonumber(boonOrBaneValue) > 1) then
+                        boonOrBaneString = " Boons";
+                    end;
+                elseif (0 > tonumber(boonOrBaneValue)) then
+                    boonOrBaneString = " Bane";
+                    if (-1 > tonumber(boonOrBaneValue)) then
+                        boonOrBaneString = " Banes";
+                    end;
+                end;
+                
+                boonBaneLocalRoll = Firecast.interpretarRolagem((boonOrBaneValue):sub(2) .. "d6");
+                            
+                characterTable.chat:rolarDados(boonBaneLocalRoll, boonOrBaneValue .. boonOrBaneString,
+                    function (boonOrBaneRollResult)
+                        for i=1, #boonOrBaneRollResult.ops, 1 do
+                            operation = boonOrBaneRollResult.ops[i];
+                            for j=1, #operation.resultados, 1 do
+                                if operation.resultados[j] > boonOrBaneRolledBonus then
+                                    boonOrBaneRolledBonus = operation.resultados[j];
+                                end;
+                            end;
+                        end;
+                
+                        
+                        
+                        boonOrBaneRolledBonus = Firecast.interpretarRolagem(boonOrBaneRolledBonus);
+                
+                        attributeRoll = Firecast.interpretarRolagem("1d20 "):concatenar(modifier):concatenar(boonOrBaneRolledBonus);
+                
+                        if characterTable ~= nil then
+                            characterTable.chat:rolarDados(attributeRoll,testName);
+                        end;
+                    end);
+            else
+                attributeRoll = Firecast.interpretarRolagem("1d20 "):concatenar(modifier);
+                                
+                if characterTable ~= nil then
+                    characterTable.chat:rolarDados(attributeRoll,testName);
+                end;
+            end;
+       
+            
+            end;
+      
+
+
+
+        local function rollAttack(weaponName, attribute)
+
+            local attackRoll = Firecast.interpretarRolagem("1d20");
+            local boonOrBaneRoll = 0;
+            local characterTable = Firecast.getMesaDe(sheet);
+            local boonOrBaneResult = 0;
+            local operation;
+            local boonOrBaneString = "";
+            local attributeModifier = 0;
+            local boonOrBaneValue = sheet.BoonsBanes;
+            
+            if weaponName == nil then
+                weaponName = "Arma sem nome";
+            end;
+            
+            if(attribute == "") then
+                characterTable.chat:enviarMensagem("Escolha um atributo para a rolagem de ataque.");
+            elseif (attribute == "Strength") then
+                attributeModifier = tonumber(sheet.Strength_Modifier);
+            elseif (attribute == "Agility") then
+                attributeModifier = tonumber(sheet.Agility_Modifier);
+            elseif (attribute == "Intellect") then
+                attributeModifier = tonumber(sheet.Intellect_Modifier);
+            elseif (attribute == "Will") then
+                attributeModifier = tonumber(sheet.Will_Modifier);
+            end;
+            
+            if(attributeModifier == nil) then
+                attributeModifier = 0;
+            end;             
+            
+            if(boonOrBaneValue ~= nil and boonOrBaneValue ~= '0' ) then
+                if (tonumber(boonOrBaneValue) > 0) then
+                    boonOrBaneString = " Boon";
+                    if (tonumber(boonOrBaneValue) > 1) then
+                        boonOrBaneString = " Boons";
+                    end;
+                elseif (0 > tonumber(boonOrBaneValue)) then
+                    boonOrBaneString = " Bane";
+                    if (-1 > tonumber(boonOrBaneValue)) then
+                        boonOrBaneString = " Banes";
+                    end;
+                end;
+                boonOrBaneRoll = Firecast.interpretarRolagem(tostring(boonOrBaneValue):sub(2).."d6");
+                characterTable.chat:rolarDados(boonOrBaneRoll, boonOrBaneValue..boonOrBaneString,
+                function (rollResult)
+                    for i=1,#rollResult.ops,1 do
+                       operation = rollResult.ops[i];
+                           for j=1, #operation.resultados,1 do
+                              if operation.resultados[j] > boonOrBaneResult then
+                                    boonOrBaneResult = operation.resultados[j];
+                              end;
+                           end;
+                    end;
+                    if (0 > tonumber(boonOrBaneValue)) then
+                        boonOrBaneResult = tonumber(-boonOrBaneResult);
+                    end;
+                    boonOrBaneResult = Firecast.interpretarRolagem(boonOrBaneResult);
+                    attackRoll = Firecast.interpretarRolagem("1d20 "):concatenar(attributeModifier):concatenar(boonOrBaneResult);
+                        
+                    if characterTable ~= nil then
+                        characterTable.chat:rolarDados(attackRoll,'Ataque de ' .. weaponName);
+                    end;    
+                end);
+            else
+                boonOrBaneResult = 0;
+                boonOrBaneRoll = 0;
+                attackRoll = Firecast.interpretarRolagem("1d20 "):concatenar(attributeModifier);
+                if characterTable ~= nil then
+                    characterTable.chat:rolarDados(attackRoll,'Ataque de ' .. weaponName);
+                end; 
+            end;
+            
+            
+            
+            
+        end;
+      
+
+
+
+         local function rollDamage(sheetDamageRoll, weaponName)
+            local characterTable = Firecast.getMesaDe(sheet);
+            local damageRoll = Firecast.interpretarRolagem(sheetDamageRoll);
+
+            if not damageRoll.possuiAlgumDado then
+                return;
+            end;
+
+            if weaponName == nil then
+                weaponName = "Arma sem nome";
+            end;
+
+            if characterTable ~= nil then
+                characterTable.chat:rolarDados(damageRoll, "Dano de " .. weaponName);
+            end;
+         end;
+      
+
 
     obj.dataLink1 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink1:setParent(obj.rectangle1);
@@ -1177,712 +1409,114 @@ local function constructNew_frmSODLFillable1_svg()
 
     obj._e_event0 = obj.button1:addEventListener("onClick",
         function (_)
-            local weaponName = sheet.Weapon_1;
-                                    local attribute = sheet.Attribute_1;
-            						local attackRoll = Firecast.interpretarRolagem("1d20");
-                                    local boonBaneLocalRoll = 0;
-                                    local characterTable = Firecast.getMesaDe(sheet);
-                                    local boonBaneBonus = 0;
-            						local operation;
-                                    local boonOrBane;
-            
-                                    if sheet.BoonsBanes == '0' or sheet.BoonsBanes == nil then 
-                                        if attribute == 'Strength' then
-                                            attackRoll = Firecast.interpretarRolagem(sheet.Strength_Modifier):concatenar(attackRoll);
-                                        elseif attribute == 'Agility' then
-                                            attackRoll = Firecast.interpretarRolagem(sheet.Agility_Modifier):concatenar(attackRoll);
-                                        elseif attribute == 'Intellect' then
-                                            attackRoll = Firecast.interpretarRolagem(sheet.Intellect_Modifier):concatenar(attackRoll);
-                                        elseif attribute == 'Will' then
-                                            attackRoll = Firecast.interpretarRolagem(sheet.Will_Modifier):concatenar(attackRoll);
-                                        else 
-                                            characterTable.chat:enviarMensagem("Escolha um atributo para a rolagem de ataque");
-                                            return;
-                                        end;
-            
-                                        if weaponName == nil then
-                                            weaponName = "Arma sem nome"
-                                        end;
-                                        
-                                        if characterTable ~= nil then
-                                            characterTable.chat:rolarDados(attackRoll, "Atacou com " .. weaponName);
-                                        end;
-            
-                                    else
-                                        if (tonumber(sheet.BoonsBanes) > 0) then
-                                            boonOrBane = " Boon";
-                                            if(tonumber(sheet.BoonsBanes) > 1) then
-                                                boonOrBane = " Boons";
-                                        end;
-                                        elseif (0 > tonumber(sheet.BoonsBanes)) then
-                                            boonOrBane = " Bane";
-                                            if(-1 > tonumber(sheet.BoonsBanes)) then
-                                                boonOrBane = " Banes";
-                                            end;
-                                        end;
-                                        boonBaneLocalRoll = Firecast.interpretarRolagem((sheet.BoonsBanes):sub(2) .. "d6");
-            
-                                        characterTable.chat:rolarDados(boonBaneLocalRoll, sheet.BoonsBanes .. boonOrBane,
-                                            function (rollResult)
-            
-                                                for i=1,#rollResult.ops,1 do
-                                                    operation = rollResult.ops[i];
-                                                    for j=1, #operation.resultados,1 do
-                                                        if operation.resultados[j] > boonBaneBonus then
-                                                            boonBaneBonus = operation.resultados[j];
-                                                        end;
-                                                    end;
-                                                end;
-            									
-                                                local attributeModifier;
-            
-            									if sheet.Attribute_1 == 'Strength' then
-                                                    attributeModifier = sheet.Strength_Modifier;
-                                                elseif sheet.Attribute_1 == 'Agility' then
-                                                    attributeModifier = sheet.Agility_Modifier;
-                                                else 
-                                                    characterTable.chat:enviarMensagem("Escolha um atributo para a rolagem de ataque.");
-                                                    return;
-                                                end;
-            
-                                                if(0 > tonumber(sheet.BoonsBanes)) then
-                                                    boonBaneBonus = tonumber(boonBaneBonus - attributeModifier);
-                                                elseif(tonumber(sheet.BoonsBanes) > 0) then
-                                                    boonBaneBonus = tonumber(boonBaneBonus + attributeModifier);
-                                                    end;
-                                                
-                                                if(0 > boonBaneBonus) then boonBaneBonus = tostring(boonBaneBonus).sub(2,0); end;
-                                                boonBaneBonus = Firecast.interpretarRolagem(boonBaneBonus);
-            
-                                                attackRoll = Firecast.interpretarRolagem("1d20 "):concatenar(boonBaneBonus);
-            
-                                                if sheet.Weapon_1 == nil then
-                                                    weaponName = "Arma sem nome";
-                                                end;
-                                        
-                                                if characterTable ~= nil then
-                                                    characterTable.chat:rolarDados(attackRoll,'Ataque de ' .. weaponName);
-                                                end;
-                                        end);
-                                    end;
+            rollAttributeSavingThrow(sheet.Strength_Modifier, 'Teste de Força', sheet.BoonsBanes)
         end, obj);
 
     obj._e_event1 = obj.button2:addEventListener("onClick",
         function (_)
-            local characterTable = Firecast.getMesaDe(sheet);
-                                    local damageRoll = Firecast.interpretarRolagem(sheet.Damageroll_1);
-            						local weaponName;
-            
-            						if not damageRoll.possuiAlgumDado then
-            							return;
-                                    end;
-            
-                                    if sheet.Weapon_1 == nil then
-                                        weaponName = "Arma sem nome";
-                                    else 
-                                        weaponName = sheet.Weapon_1;
-                                    end;
-            						
-                                    if characterTable ~= nil then
-            							characterTable.chat:rolarDados(damageRoll, "Dano de " .. weaponName);
-                                    end;
+            rollAttributeSavingThrow(sheet.Agility_Modifier, 'Teste de Agilidade', sheet.BoonsBanes)
         end, obj);
 
     obj._e_event2 = obj.button3:addEventListener("onClick",
         function (_)
-            local weaponName = sheet.Weapon_2;
-                                    local attribute = sheet.Attribute_2;
-            						local attackRoll = Firecast.interpretarRolagem("1d20");
-                                    local boonBaneLocalRoll = 0;
-                                    local characterTable = Firecast.getMesaDe(sheet);
-                                    local boonBaneBonus = 0;
-            						local operation;
-                                    local boonOrBane;
-            
-                                    if sheet.BoonsBanes == '0' or sheet.BoonsBanes == nil then 
-                                        if attribute == 'Strength' then
-                                            attackRoll = Firecast.interpretarRolagem(sheet.Strength_Modifier):concatenar(attackRoll);
-                                        elseif attribute == 'Agility' then
-                                            attackRoll = Firecast.interpretarRolagem(sheet.Agility_Modifier):concatenar(attackRoll);
-                                        elseif attribute == 'Intellect' then
-                                            attackRoll = Firecast.interpretarRolagem(sheet.Intellect_Modifier):concatenar(attackRoll);
-                                        elseif attribute == 'Will' then
-                                            attackRoll = Firecast.interpretarRolagem(sheet.Will_Modifier):concatenar(attackRoll);
-                                        else 
-                                            characterTable.chat:enviarMensagem("Escolha um atributo para a rolagem de ataque.");
-                                            return;
-                                        end;
-            
-                                        if weaponName == nil then
-                                            weaponName = "Arma sem nome";
-                                        end;
-                                
-                                        if characterTable ~= nil then
-                                            characterTable.chat:rolarDados(attackRoll, "Atacou com " .. weaponName);
-                                        end;
-            
-                                    else
-                                        if (tonumber(sheet.BoonsBanes) > 0) then
-                                            boonOrBane = " Boon";
-                                            if(tonumber(sheet.BoonsBanes) > 1) then
-                                                boonOrBane = " Boons";
-                                        end;
-                                        elseif (0 > tonumber(sheet.BoonsBanes)) then
-                                            boonOrBane = " Bane";
-                                            if(-1 > tonumber(sheet.BoonsBanes)) then
-                                                boonOrBane = " Banes";
-                                            end;
-                                        end;
-                                        boonBaneLocalRoll = Firecast.interpretarRolagem((sheet.BoonsBanes):sub(2) .. "d6");
-            
-                                        characterTable.chat:rolarDados(boonBaneLocalRoll, sheet.BoonsBanes .. boonOrBane,
-                                            function (rollResult)
-            
-                                                for i=1,#rollResult.ops,1 do
-                                                    operation = rollResult.ops[i];
-                                                    for j=1, #operation.resultados,1 do
-                                                        if operation.resultados[j] > boonBaneBonus then
-                                                            boonBaneBonus = operation.resultados[j];
-                                                        end;
-                                                    end;
-                                                end;
-            									
-                                                local attributeModifier;
-            
-            									if sheet.Attribute_2 == 'Strength' then
-                                                    attributeModifier = sheet.Strength_Modifier;
-                                                elseif sheet.Attribute_2 == 'Agility' then
-                                                    attributeModifier = sheet.Agility_Modifier;
-                                                else 
-                                                    characterTable.chat:enviarMensagem("Escolha um atributo para a rolagem de ataque.");
-                                                    return;
-                                                end;
-            
-                                                if(0 > tonumber(sheet.BoonsBanes)) then
-                                                    boonBaneBonus = tonumber(boonBaneBonus - attributeModifier);
-                                                elseif(tonumber(sheet.BoonsBanes) > 0) then
-                                                    boonBaneBonus = tonumber(boonBaneBonus + attributeModifier);
-                                                    end;
-                                                
-                                                if(0 > boonBaneBonus) then boonBaneBonus = tostring(boonBaneBonus).sub(2,0); end;
-                                                boonBaneBonus = Firecast.interpretarRolagem(boonBaneBonus);
-            
-                                                attackRoll = Firecast.interpretarRolagem("1d20 "):concatenar(boonBaneBonus);
-            
-                                                if sheet.Weapon_2 == nil then
-                                                    weaponName = "Arma sem nome";
-                                                end;
-                                        
-                                                if characterTable ~= nil then
-                                                    characterTable.chat:rolarDados(attackRoll,'Ataque de ' .. weaponName);
-                                                end;
-                                        end);
-                                    end;
+            rollAttributeSavingThrow(sheet.Intellect_Modifier, 'Teste de Intelecto', sheet.BoonsBanes)
         end, obj);
 
     obj._e_event3 = obj.button4:addEventListener("onClick",
         function (_)
-            local characterTable = Firecast.getMesaDe(sheet);
-                                    local damageRoll = Firecast.interpretarRolagem(sheet.Damageroll_2);
-            						local weaponName;
-            
-            						if not damageRoll.possuiAlgumDado then
-            							return;
-                                    end;
-            
-                                    if sheet.Weapon_2 == nil then
-                                        weaponName = "Arma sem nome";
-                                    else 
-                                        weaponName = sheet.Weapon_2;
-                                    end;
-            						
-                                    if characterTable ~= nil then
-            							characterTable.chat:rolarDados(damageRoll, "Dano de " .. weaponName);
-                                    end;
+            rollAttributeSavingThrow(sheet.Will_Modifier, 'Teste de Vontade', sheet.BoonsBanes)
         end, obj);
 
     obj._e_event4 = obj.button5:addEventListener("onClick",
         function (_)
-            local weaponName = sheet.Weapon_3;
-                                    local attribute = sheet.Attribute_3;
-            						local attackRoll = Firecast.interpretarRolagem("1d20");
-                                    local boonBaneLocalRoll = 0;
-                                    local characterTable = Firecast.getMesaDe(sheet);
-                                    local boonBaneBonus = 0;
-            						local operation;
-                                    local boonOrBane;
-            
-                                    if sheet.BoonsBanes == '0' or sheet.BoonsBanes == nil then 
-                                        if attribute == 'Strength' then
-                                            attackRoll = Firecast.interpretarRolagem(sheet.Strength_Modifier):concatenar(attackRoll);
-                                        elseif attribute == 'Agility' then
-                                            attackRoll = Firecast.interpretarRolagem(sheet.Agility_Modifier):concatenar(attackRoll);
-                                        elseif attribute == 'Intellect' then
-                                            attackRoll = Firecast.interpretarRolagem(sheet.Intellect_Modifier):concatenar(attackRoll);
-                                        elseif attribute == 'Will' then
-                                            attackRoll = Firecast.interpretarRolagem(sheet.Will_Modifier):concatenar(attackRoll);
-                                        else 
-                                            characterTable.chat:enviarMensagem("Escolha um atributo para a rolagem de ataque.");
-                                            return;
-                                        end;
-            
-                                        if weaponName == nil then
-                                            weaponName = "Arma sem nome"
-                                        end;
-                                
-                                        if characterTable ~= nil then
-                                            characterTable.chat:rolarDados(attackRoll, "Atacou com " .. weaponName);
-                                        end;
-            
-                                    else
-                                        if (tonumber(sheet.BoonsBanes) > 0) then
-                                            boonOrBane = " Boon";
-                                            if(tonumber(sheet.BoonsBanes) > 1) then
-                                                boonOrBane = " Boons";
-                                        end;
-                                        elseif (0 > tonumber(sheet.BoonsBanes)) then
-                                            boonOrBane = " Bane";
-                                            if(-1 > tonumber(sheet.BoonsBanes)) then
-                                                boonOrBane = " Banes";
-                                            end;
-                                        end;
-                                        boonBaneLocalRoll = Firecast.interpretarRolagem((sheet.BoonsBanes):sub(2) .. "d6");
-            
-                                        characterTable.chat:rolarDados(boonBaneLocalRoll, sheet.BoonsBanes .. boonOrBane,
-                                            function (rollResult)
-            
-                                                for i=1,#rollResult.ops,1 do
-                                                    operation = rollResult.ops[i];
-                                                    for j=1, #operation.resultados,1 do
-                                                        if operation.resultados[j] > boonBaneBonus then
-                                                            boonBaneBonus = operation.resultados[j];
-                                                        end;
-                                                    end;
-                                                end;
-            									
-                                                local attributeModifier;
-            
-            									if sheet.Attribute_3 == 'Strength' then
-                                                    attributeModifier = sheet.Strength_Modifier;
-                                                elseif sheet.Attribute_3 == 'Agility' then
-                                                    attributeModifier = sheet.Agility_Modifier;
-                                                elseif sheet.Attribute_3 == 'Intellect' then
-                                                    attackRoll = Firecast.interpretarRolagem(sheet.Intellect_Modifier):concatenar(attackRoll);
-                                                else 
-                                                    characterTable.chat:enviarMensagem("Escolha um atributo para a rolagem de ataque.");
-                                                    return;
-                                                end;
-            
-                                                if(0 > tonumber(sheet.BoonsBanes)) then
-                                                    boonBaneBonus = tonumber(boonBaneBonus - attributeModifier);
-                                                elseif(tonumber(sheet.BoonsBanes) > 0) then
-                                                    boonBaneBonus = tonumber(boonBaneBonus + attributeModifier);
-                                                    end;
-                                                
-                                                if(0 > boonBaneBonus) then boonBaneBonus = tostring(boonBaneBonus).sub(2,0); end;
-                                                boonBaneBonus = Firecast.interpretarRolagem(boonBaneBonus);
-            
-                                                attackRoll = Firecast.interpretarRolagem("1d20 "):concatenar(boonBaneBonus);
-            
-                                                if sheet.Weapon_3 == nil then
-                                                    weaponName = "Arma sem nome";
-                                                end;
-                                        
-                                                if characterTable ~= nil then
-                                                    characterTable.chat:rolarDados(attackRoll,'Ataque de ' .. weaponName);
-                                                end;
-                                        end);
-                                    end;
+            rollAttack(sheet.Weapon_1, sheet.Attribute_1)
         end, obj);
 
     obj._e_event5 = obj.button6:addEventListener("onClick",
         function (_)
-            local characterTable = Firecast.getMesaDe(sheet);
-                                    local damageRoll = Firecast.interpretarRolagem(sheet.Damageroll_3);
-            						local weaponName;
-                                    
-            						if not damageRoll.possuiAlgumDado then
-            							return;
-                                    end;
-            
-                                    if sheet.Weapon_31 == nil then
-                                        weaponName = "Arma sem nome";
-                                    else 
-                                        weaponName = sheet.Weapon_3;
-                                    end;
-            						
-                                    if characterTable ~= nil then
-            							characterTable.chat:rolarDados(damageRoll, "Dano de " .. weaponName);
-                                    end;
+            rollDamage(sheet.Damageroll_1, sheet.Weapon_1)
         end, obj);
 
     obj._e_event6 = obj.button7:addEventListener("onClick",
         function (_)
-            local weaponName = sheet.Weapon_4;
-                                    local attribute = sheet.Attribute_4;
-            						local attackRoll = Firecast.interpretarRolagem("1d20");
-                                    local boonBaneLocalRoll = 0;
-                                    local characterTable = Firecast.getMesaDe(sheet);
-                                    local boonBaneBonus = 0;
-            						local operation;
-                                    local boonOrBane;
-            
-                                    if sheet.BoonsBanes == '0' or sheet.BoonsBanes == nil then 
-                                        if attribute == 'Strength' then
-                                            attackRoll = Firecast.interpretarRolagem(sheet.Strength_Modifier):concatenar(attackRoll);
-                                        elseif attribute == 'Agility' then
-                                            attackRoll = Firecast.interpretarRolagem(sheet.Agility_Modifier):concatenar(attackRoll);
-                                        elseif attribute == 'Intellect' then
-                                            attackRoll = Firecast.interpretarRolagem(sheet.Intellect_Modifier):concatenar(attackRoll);
-                                        elseif attribute == 'Will' then
-                                            attackRoll = Firecast.interpretarRolagem(sheet.Will_Modifier):concatenar(attackRoll);   
-                                        else 
-                                            characterTable.chat:enviarMensagem("Escolha um atributo para a rolagem de ataque.");
-                                            return;
-                                        end;
-            
-                                        if weaponName == nil then
-                                            weaponName = "Arma sem nome"
-                                        end;
-                                
-                                        if characterTable ~= nil then
-                                            characterTable.chat:rolarDados(attackRoll, "Atacou com " .. weaponName);
-                                        end;
-            
-                                    else
-                                        if (tonumber(sheet.BoonsBanes) > 0) then
-                                            boonOrBane = " Boon";
-                                            if(tonumber(sheet.BoonsBanes) > 1) then
-                                                boonOrBane = " Boons";
-                                        end;
-                                        elseif (0 > tonumber(sheet.BoonsBanes)) then
-                                            boonOrBane = " Bane";
-                                            if(-1 > tonumber(sheet.BoonsBanes)) then
-                                                boonOrBane = " Banes";
-                                            end;
-                                        end;
-                                        boonBaneLocalRoll = Firecast.interpretarRolagem((sheet.BoonsBanes):sub(2) .. "d6");
-            
-                                        characterTable.chat:rolarDados(boonBaneLocalRoll, sheet.BoonsBanes .. boonOrBane,
-                                            function (rollResult)
-            
-                                                for i=1,#rollResult.ops,1 do
-                                                    operation = rollResult.ops[i];
-                                                    for j=1, #operation.resultados,1 do
-                                                        if operation.resultados[j] > boonBaneBonus then
-                                                            boonBaneBonus = operation.resultados[j];
-                                                        end;
-                                                    end;
-                                                end;
-            									
-                                                local attributeModifier;
-            
-            									if sheet.Attribute_4 == 'Strength' then
-                                                    attributeModifier = sheet.Strength_Modifier;
-                                                elseif sheet.Attribute_4 == 'Agility' then
-                                                    attributeModifier = sheet.Agility_Modifier;
-                                                else 
-                                                    characterTable.chat:enviarMensagem("Escolha um atributo para a rolagem de ataque.");
-                                                    return;
-                                                end;
-            
-                                                if(0 > tonumber(sheet.BoonsBanes)) then
-                                                    boonBaneBonus = tonumber(boonBaneBonus - attributeModifier);
-                                                elseif(tonumber(sheet.BoonsBanes) > 0) then
-                                                    boonBaneBonus = tonumber(boonBaneBonus + attributeModifier);
-                                                    end;
-                                                
-                                                if(0 > boonBaneBonus) then boonBaneBonus = tostring(boonBaneBonus).sub(2,0); end;
-                                                boonBaneBonus = Firecast.interpretarRolagem(boonBaneBonus);
-            
-                                                attackRoll = Firecast.interpretarRolagem("1d20 "):concatenar(boonBaneBonus);
-            
-                                                if sheet.Weapon_4 == nil then
-                                                    weaponName = "Arma sem nome";
-                                                end;
-                                        
-                                                if characterTable ~= nil then
-                                                    characterTable.chat:rolarDados(attackRoll,'Atacou com '..weaponName);
-                                                end;
-                                        end);
-                                    end;
+            rollAttack(sheet.Weapon_2, sheet.Attribute_2)
         end, obj);
 
     obj._e_event7 = obj.button8:addEventListener("onClick",
         function (_)
-            local characterTable = Firecast.getMesaDe(sheet);
-                                    local damageRoll = Firecast.interpretarRolagem(sheet.Damageroll_4);
-            						local weaponName;
-                                    
-            						if not damageRoll.possuiAlgumDado then
-            							return;
-                                    end;
-            
-                                    if sheet.Weapon_4 == nil then
-                                        weaponName = "Arma sem nome";
-                                    else 
-                                        weaponName = sheet.Weapon_4;
-                                    end;
-            						
-                                    if characterTable ~= nil then
-            							characterTable.chat:rolarDados(damageRoll, "Dano de " .. weaponName);
-                                    end;
+            rollDamage(sheet.Damageroll_2, sheet.Weapon_2)
         end, obj);
 
     obj._e_event8 = obj.button9:addEventListener("onClick",
         function (_)
-            local weaponName = sheet.Weapon_5;
-                                    local attribute = sheet.Attribute_5;
-            						local attackRoll = Firecast.interpretarRolagem("1d20");
-                                    local boonBaneLocalRoll = 0;
-                                    local characterTable = Firecast.getMesaDe(sheet);
-                                    local boonBaneBonus = 0;
-            						local operation;
-                                    local boonOrBane;
-            
-                                    if sheet.BoonsBanes == '0' or sheet.BoonsBanes == nil then 
-            
-                                        if attribute == 'Strength' then
-                                            attackRoll = Firecast.interpretarRolagem(sheet.Strength_Modifier):concatenar(attackRoll);
-                                        elseif attribute == 'Agility' then
-                                            attackRoll = Firecast.interpretarRolagem(sheet.Agility_Modifier):concatenar(attackRoll);
-                                        elseif attribute == 'Intellect' then
-                                            attackRoll = Firecast.interpretarRolagem(sheet.Intellect_Modifier):concatenar(attackRoll);
-                                        elseif attribute == 'Will' then
-                                            attackRoll = Firecast.interpretarRolagem(sheet.Will_Modifier):concatenar(attackRoll);
-                                        else 
-                                            characterTable.chat:enviarMensagem("Escolha um atributo para a rolagem de ataque.");
-                                            return;
-                                        end;
-            
-                                        if weaponName == nil then
-                                            weaponName = "Arma sem nome"
-                                        end;
-                                
-                                        if characterTable ~= nil then
-                                            characterTable.chat:rolarDados(attackRoll,"Atacou com "..weaponName);
-                                        end;
-            
-                                    else
-                                        if (tonumber(sheet.BoonsBanes) > 0) then
-                                            boonOrBane = " Boon";
-                                            if(tonumber(sheet.BoonsBanes) > 1) then
-                                                boonOrBane = " Boons";
-                                        end;
-                                        elseif (0 > tonumber(sheet.BoonsBanes)) then
-                                            boonOrBane = " Bane";
-                                            if(-1 > tonumber(sheet.BoonsBanes)) then
-                                                boonOrBane = " Banes";
-                                            end;
-                                        end;
-            
-                                        boonBaneLocalRoll = Firecast.interpretarRolagem((sheet.BoonsBanes):sub(2) .. "d6");
-            
-                                        characterTable.chat:rolarDados(boonBaneLocalRoll, sheet.BoonsBanes .. boonOrBane,
-                                            function (rollResult)
-            
-                                                for i=1,#rollResult.ops,1 do
-                                                    operation = rollResult.ops[i];
-                                                    for j=1, #operation.resultados,1 do
-                                                        if operation.resultados[j] > boonBaneBonus then
-                                                            boonBaneBonus = operation.resultados[j];
-                                                        end;
-                                                    end;
-                                                end;
-            									
-            									local attributeModifier;
-            
-            									if sheet.Attribute_5 == 'Strength' then
-                                                    attributeModifier = sheet.Strength_Modifier;
-                                                elseif sheet.Attribute_5 == 'Agility' then
-                                                    attributeModifier = sheet.Agility_Modifier;
-                                                else 
-                                                    characterTable.chat:enviarMensagem("Escolha um atributo para a rolagem de ataque.");
-                                                    return;
-                                                end;
-            
-                                                if(0 > tonumber(sheet.BoonsBanes)) then
-                                                    boonBaneBonus = tonumber(boonBaneBonus - attributeModifier);
-                                                elseif(tonumber(sheet.BoonsBanes) > 0) then
-                                                    boonBaneBonus = tonumber(boonBaneBonus + attributeModifier);
-                                                    end;
-                                                
-                                                if(0 > boonBaneBonus) then boonBaneBonus = tostring(boonBaneBonus).sub(2,0); end;
-                                                boonBaneBonus = Firecast.interpretarRolagem(boonBaneBonus);
-            
-                                                attackRoll = Firecast.interpretarRolagem("1d20 "):concatenar(boonBaneBonus);
-            
-                                                if sheet.Weapon_5 == nil then
-                                                    weaponName = "Arma sem nome";
-                                                end;
-                                        
-                                                if characterTable ~= nil then
-                                                    characterTable.chat:rolarDados(attackRoll,'Ataque de ' .. weaponName);
-                                                end;
-                                        end);
-                                    end;
+            rollAttack(sheet.Weapon_3, sheet.Attribute_3)
         end, obj);
 
     obj._e_event9 = obj.button10:addEventListener("onClick",
         function (_)
-            local characterTable = Firecast.getMesaDe(sheet);
-                                    local damageRoll = Firecast.interpretarRolagem(sheet.Damageroll_5);
-            						local weaponName;
-                                    
-            						if not damageRoll.possuiAlgumDado then
-            							return;
-                                    end;
-            
-                                    if sheet.Weapon_5 == nil then
-                                        weaponName = "Arma sem nome";
-                                    else 
-                                        weaponName = sheet.Weapon_5;
-                                    end;
-            						
-                                    if characterTable ~= nil then
-            							characterTable.chat:rolarDados(damageRoll, "Dano de " .. weaponName);
-                                    end;
+            rollDamage(sheet.Damageroll_3, sheet.Weapon_3)
         end, obj);
 
     obj._e_event10 = obj.button11:addEventListener("onClick",
         function (_)
-            local weaponName = sheet.Weapon_6;
-                                    local attribute = sheet.Attribute_6;
-            						local attackRoll = Firecast.interpretarRolagem("1d20");
-                                    local boonBaneLocalRoll = 0;
-                                    local characterTable = Firecast.getMesaDe(sheet);
-                                    local boonBaneBonus = 0;
-            						local operation;
-                                    local boonOrBane;
-            
-                                    if sheet.BoonsBanes == '0' or sheet.BoonsBanes == nil then 
-                                        if attribute == 'Strength' then
-                                            attackRoll = Firecast.interpretarRolagem(sheet.Strength_Modifier):concatenar(attackRoll);
-                                        elseif attribute == 'Agility' then
-                                            attackRoll = Firecast.interpretarRolagem(sheet.Agility_Modifier):concatenar(attackRoll);
-                                         elseif attribute == 'Intellect' then
-                                            attackRoll = Firecast.interpretarRolagem(sheet.Intellect_Modifier):concatenar(attackRoll);
-                                        else 
-                                            characterTable.chat:enviarMensagem("Escolha um atributo para a rolagem de ataque.");
-                                            return;
-                                        end;
-            
-                                        if weaponName == nil then
-                                            weaponName = "Arma sem nome"
-                                        end;
-                                
-                                        if characterTable ~= nil then
-                                            characterTable.chat:rolarDados(attackRoll, "Atacou com "..weaponName);
-                                        end;
-            
-                                    else
-                                        if (tonumber(sheet.BoonsBanes) > 0) then
-                                            boonOrBane = " Boon";
-                                            if(tonumber(sheet.BoonsBanes) > 1) then
-                                                boonOrBane = " Boons";
-                                        end;
-                                        elseif (0 > tonumber(sheet.BoonsBanes)) then
-                                            boonOrBane = " Bane";
-                                            if(-1 > tonumber(sheet.BoonsBanes)) then
-                                                boonOrBane = " Banes";
-                                            end;
-                                        end;
-            
-                                        boonBaneLocalRoll = Firecast.interpretarRolagem((sheet.BoonsBanes):sub(2) .. "d6");
-            
-                                        characterTable.chat:rolarDados(boonBaneLocalRoll, sheet.BoonsBanes .. boonOrBane,
-                                            function (rollResult)
-            
-                                                for i=1,#rollResult.ops,1 do
-                                                    operation = rollResult.ops[i];
-                                                    for j=1, #operation.resultados,1 do
-                                                        if operation.resultados[j] > boonBaneBonus then
-                                                            boonBaneBonus = operation.resultados[j];
-                                                        end;
-                                                    end;
-                                                end;
-            									
-            									local attributeModifier;
-            
-            									if sheet.Attribute_6 == 'Strength' then
-                                                    attributeModifier = sheet.Strength_Modifier;
-                                                elseif sheet.Attribute_6 == 'Agility' then
-                                                    attributeModifier = sheet.Agility_Modifier;
-                                                else 
-                                                    characterTable.chat:enviarMensagem("Escolha um atributo para a rolagem de ataque.");
-                                                    return;
-                                                end;
-            
-                                                if(0 > tonumber(sheet.BoonsBanes)) then
-                                                    boonBaneBonus = tonumber(boonBaneBonus - attributeModifier);
-                                                elseif(tonumber(sheet.BoonsBanes) > 0) then
-                                                    boonBaneBonus = tonumber(boonBaneBonus + attributeModifier);
-                                                    end;
-                                                
-                                                if(0 > boonBaneBonus) then boonBaneBonus = tostring(boonBaneBonus).sub(2,0); end;
-                                                boonBaneBonus = Firecast.interpretarRolagem(boonBaneBonus);
-            
-                                                attackRoll = Firecast.interpretarRolagem("1d20 "):concatenar(boonBaneBonus);
-            
-                                                if sheet.Weapon_6 == nil then
-                                                    weaponName = "Arma sem nome";
-                                                end;
-                                        
-                                                if characterTable ~= nil then
-                                                    characterTable.chat:rolarDados(attackRoll,'Ataque com '..weaponName);
-                                                end;
-                                        end);
-            
-                                    end;
+            rollAttack(sheet.Weapon_4, sheet.Attribute_4)
         end, obj);
 
     obj._e_event11 = obj.button12:addEventListener("onClick",
         function (_)
-            local characterTable = Firecast.getMesaDe(sheet);
-                                    local damageRoll = Firecast.interpretarRolagem(sheet.Damageroll_6);
-            						local weaponName;
-                                    
-            						if not damageRoll.possuiAlgumDado then
-            							return;
-                                    end;
-            
-                                    if sheet.Weapon_6 == nil then
-                                        weaponName = "Arma sem nome";
-                                    else 
-                                        weaponName = sheet.Weapon_6;
-                                    end;
-            						
-                                    if characterTable ~= nil then
-            							characterTable.chat:rolarDados(damageRoll, "Dano de " .. weaponName);
-                                    end;
+            rollDamage(sheet.Damageroll_4, sheet.Weapon_4)
         end, obj);
 
-    obj._e_event12 = obj.dataLink1:addEventListener("onChange",
+    obj._e_event12 = obj.button13:addEventListener("onClick",
+        function (_)
+            rollAttack(sheet.Weapon_5, sheet.Attribute_5)
+        end, obj);
+
+    obj._e_event13 = obj.button14:addEventListener("onClick",
+        function (_)
+            rollDamage(sheet.Damageroll_5, sheet.Weapon_5)
+        end, obj);
+
+    obj._e_event14 = obj.button15:addEventListener("onClick",
+        function (_)
+            rollAttack(sheet.Weapon_6, sheet.Attribute_6)
+        end, obj);
+
+    obj._e_event15 = obj.button16:addEventListener("onClick",
+        function (_)
+            rollDamage(sheet.Damageroll_6, sheet.Weapon_6)
+        end, obj);
+
+    obj._e_event16 = obj.dataLink1:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             sheet.Strength_Modifier = sheet.Strength - 10;
         end, obj);
 
-    obj._e_event13 = obj.dataLink2:addEventListener("onChange",
+    obj._e_event17 = obj.dataLink2:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             sheet.Agility_Modifier = sheet.Agility - 10;
         end, obj);
 
-    obj._e_event14 = obj.dataLink3:addEventListener("onChange",
+    obj._e_event18 = obj.dataLink3:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             sheet.Intellect_Modifier = sheet.Intellect - 10;
         end, obj);
 
-    obj._e_event15 = obj.dataLink4:addEventListener("onChange",
+    obj._e_event19 = obj.dataLink4:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             sheet.Will_Modifier = sheet.Will - 10;
         end, obj);
 
-    obj._e_event16 = obj.dataLink5:addEventListener("onChange",
+    obj._e_event20 = obj.dataLink5:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             sheet.Perception_Modifier = sheet.Perception - 10;
         end, obj);
 
     function obj:_releaseEvents()
+        __o_rrpgObjs.removeEventListenerById(self._e_event20);
+        __o_rrpgObjs.removeEventListenerById(self._e_event19);
+        __o_rrpgObjs.removeEventListenerById(self._e_event18);
+        __o_rrpgObjs.removeEventListenerById(self._e_event17);
         __o_rrpgObjs.removeEventListenerById(self._e_event16);
         __o_rrpgObjs.removeEventListenerById(self._e_event15);
         __o_rrpgObjs.removeEventListenerById(self._e_event14);
@@ -1911,6 +1545,7 @@ local function constructNew_frmSODLFillable1_svg()
           self:setNodeDatabase(nil);
         end;
 
+        if self.button15 ~= nil then self.button15:destroy(); self.button15 = nil; end;
         if self.layout15 ~= nil then self.layout15:destroy(); self.layout15 = nil; end;
         if self.layout10 ~= nil then self.layout10:destroy(); self.layout10 = nil; end;
         if self.edit9 ~= nil then self.edit9:destroy(); self.edit9 = nil; end;
@@ -1924,6 +1559,7 @@ local function constructNew_frmSODLFillable1_svg()
         if self.textEditor3 ~= nil then self.textEditor3:destroy(); self.textEditor3 = nil; end;
         if self.edit12 ~= nil then self.edit12:destroy(); self.edit12 = nil; end;
         if self.comboBox4 ~= nil then self.comboBox4:destroy(); self.comboBox4 = nil; end;
+        if self.button16 ~= nil then self.button16:destroy(); self.button16 = nil; end;
         if self.button2 ~= nil then self.button2:destroy(); self.button2 = nil; end;
         if self.layout24 ~= nil then self.layout24:destroy(); self.layout24 = nil; end;
         if self.comboBox6 ~= nil then self.comboBox6:destroy(); self.comboBox6 = nil; end;
@@ -1950,10 +1586,13 @@ local function constructNew_frmSODLFillable1_svg()
         if self.label4 ~= nil then self.label4:destroy(); self.label4 = nil; end;
         if self.edit5 ~= nil then self.edit5:destroy(); self.edit5 = nil; end;
         if self.textEditor2 ~= nil then self.textEditor2:destroy(); self.textEditor2 = nil; end;
+        if self.button13 ~= nil then self.button13:destroy(); self.button13 = nil; end;
         if self.layout32 ~= nil then self.layout32:destroy(); self.layout32 = nil; end;
+        if self.layout37 ~= nil then self.layout37:destroy(); self.layout37 = nil; end;
         if self.layout26 ~= nil then self.layout26:destroy(); self.layout26 = nil; end;
         if self.edit8 ~= nil then self.edit8:destroy(); self.edit8 = nil; end;
         if self.layout27 ~= nil then self.layout27:destroy(); self.layout27 = nil; end;
+        if self.layout36 ~= nil then self.layout36:destroy(); self.layout36 = nil; end;
         if self.textEditor5 ~= nil then self.textEditor5:destroy(); self.textEditor5 = nil; end;
         if self.layout28 ~= nil then self.layout28:destroy(); self.layout28 = nil; end;
         if self.textEditor7 ~= nil then self.textEditor7:destroy(); self.textEditor7 = nil; end;
@@ -1969,6 +1608,7 @@ local function constructNew_frmSODLFillable1_svg()
         if self.edit21 ~= nil then self.edit21:destroy(); self.edit21 = nil; end;
         if self.textEditor4 ~= nil then self.textEditor4:destroy(); self.textEditor4 = nil; end;
         if self.edit30 ~= nil then self.edit30:destroy(); self.edit30 = nil; end;
+        if self.layout34 ~= nil then self.layout34:destroy(); self.layout34 = nil; end;
         if self.button3 ~= nil then self.button3:destroy(); self.button3 = nil; end;
         if self.label1 ~= nil then self.label1:destroy(); self.label1 = nil; end;
         if self.layout4 ~= nil then self.layout4:destroy(); self.layout4 = nil; end;
@@ -1993,6 +1633,7 @@ local function constructNew_frmSODLFillable1_svg()
         if self.button10 ~= nil then self.button10:destroy(); self.button10 = nil; end;
         if self.layout2 ~= nil then self.layout2:destroy(); self.layout2 = nil; end;
         if self.layout29 ~= nil then self.layout29:destroy(); self.layout29 = nil; end;
+        if self.layout35 ~= nil then self.layout35:destroy(); self.layout35 = nil; end;
         if self.layout11 ~= nil then self.layout11:destroy(); self.layout11 = nil; end;
         if self.edit15 ~= nil then self.edit15:destroy(); self.edit15 = nil; end;
         if self.label3 ~= nil then self.label3:destroy(); self.label3 = nil; end;
@@ -2010,6 +1651,7 @@ local function constructNew_frmSODLFillable1_svg()
         if self.edit27 ~= nil then self.edit27:destroy(); self.edit27 = nil; end;
         if self.layout16 ~= nil then self.layout16:destroy(); self.layout16 = nil; end;
         if self.layout21 ~= nil then self.layout21:destroy(); self.layout21 = nil; end;
+        if self.button14 ~= nil then self.button14:destroy(); self.button14 = nil; end;
         if self.edit32 ~= nil then self.edit32:destroy(); self.edit32 = nil; end;
         if self.edit18 ~= nil then self.edit18:destroy(); self.edit18 = nil; end;
         if self.edit25 ~= nil then self.edit25:destroy(); self.edit25 = nil; end;

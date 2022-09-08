@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <form name="frmSODLFillable7_svg" align="client" theme="light" margins="{top=1}">
     <style>#frmSODLFillable7_svg path {color: black; strokeColor: black; mode: stretch;} &#xD;
-#frmSODLFillable3_svg label {fontColor: black; textTrimming: none; wordWrap: false; autoSize: true;}</style>
+#frmSODLFillable7_svg label {fontColor: black; textTrimming: none; wordWrap: false; autoSize: true;}</style>
     <scrollBox align="client">
         <rectangle width="893" height="1263" color="white">&#xD;
             <image left="0" top="0" width="893" height="1263" src="images/habilidades.png" style="stretch" optimize="true" compilerOrder="0"/>&#xD;

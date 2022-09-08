@@ -1,848 +1,357 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <form name="frmSODLFillable1_svg" align="client" theme="light" margins="{top=1}">
-    <style>#frmSODLFillable1_svg path {color: black; strokeColor: black; mode: stretch;} &#xD;
-#frmSODLFillable1_svg label {fontColor: black; textTrimming: none; wordWrap: false; autoSize: true;}</style>
-    <scrollBox align="client">
-        <rectangle width="918" height="1188" color="white">&#xD;
-            <image left="0" top="0" width="918" height="1188" src="images/atributos.png" style="stretch" optimize="true" compilerOrder="0"/>&#xD;
-            <layout left="542" top="36" width="35" height="32" compilerOrder="39">
-                <edit transparent="true" fontSize="14.2" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="35" height="33" field="Level" compilerOrder="40"/>
-            </layout>&#xD;
-            <layout left="601" top="47" width="298" height="255" compilerOrder="37">
-                <textEditor left="0" top="0" width="298" height="255" fontSize="14.2" fontColor="#000000" field="Professions" transparent="true" compilerOrder="38"/>
-            </layout>&#xD;
-            <layout left="26" top="59" width="283" height="35" compilerOrder="1">
-                <edit left="0" top="0" width="283" height="35" fontSize="24" fontColor="#000000" field="Name" transparent="true" compilerOrder="2"/>
-            </layout>&#xD;
-            <layout left="318" top="59" width="261" height="35" compilerOrder="3">
-                <edit left="0" top="0" width="261" height="35" fontSize="14.2" horzTextAlign="center" vertTextAlign="center" fontColor="#000000" field="Ancestry" transparent="true" compilerOrder="4"/>
-            </layout>&#xD;
-            <layout left="318" top="124" width="261" height="35" compilerOrder="47">
-                <edit left="0" top="0" width="261" height="35" fontSize="14.2" horzTextAlign="center" vertTextAlign="center" fontColor="#000000" field="Novice" transparent="true" compilerOrder="48"/>
-            </layout>&#xD;
-            <layout left="26" top="125" width="283" height="187" compilerOrder="35">
-                <textEditor left="0" top="0" width="283" height="187" fontSize="14.2" fontColor="#000000" field="Description" transparent="true" compilerOrder="36"/>
-            </layout>&#xD;
-            <layout left="318" top="191" width="261" height="35" compilerOrder="49">
-                <edit left="0" top="0" width="261" height="35" fontSize="14.2" horzTextAlign="center" vertTextAlign="center" fontColor="#000000" field="Expert" transparent="true" compilerOrder="50"/>
-            </layout>&#xD;
-            <layout left="318" top="257" width="261" height="54" compilerOrder="51">
-                <edit left="0" top="0" width="261" height="54" fontSize="14.2" horzTextAlign="center" vertTextAlign="center" fontColor="#000000" field="Master" transparent="true" compilerOrder="52"/>
-            </layout>&#xD;
-            <layout left="618" top="319" width="35" height="32" compilerOrder="55">
-                <edit transparent="true" fontSize="18" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="35" height="33" field="Power" compilerOrder="56"/>
-            </layout>&#xD;
-            <layout left="25" top="349" width="180" height="586" compilerOrder="41">
-                <textEditor left="0" top="0" width="180" height="586" fontSize="14.2" fontColor="#000000" field="Talents" transparent="true" compilerOrder="42"/>
-            </layout>&#xD;
-            <layout left="687" top="352" width="211" height="583" compilerOrder="53">
-                <textEditor left="0" top="0" width="211" height="583" fontSize="14.2" fontColor="#000000" field="Magic" transparent="true" compilerOrder="54"/>
-            </layout>&#xD;
-            <layout left="621" top="408" width="35" height="32" compilerOrder="23">
-                <edit transparent="true" fontSize="18" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="35" height="33" field="Perception" compilerOrder="24"/>
-            </layout>&#xD;
-            <layout left="322" top="419" width="47" height="44" compilerOrder="5">
-                <edit transparent="true" fontSize="32" fontColor="#a83232" fontStyle="bold" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="47" height="45" field="Strength" compilerOrder="6"/>
-            </layout>&#xD;
-            <layout left="546" top="420" width="47" height="44" compilerOrder="19">
-                <edit transparent="true" fontSize="32" fontColor="#a83232" fontStyle="bold" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="47" height="45" field="Intellect" compilerOrder="20"/>
-            </layout>&#xD;
-            <layout left="606" top="447" width="22" height="25" compilerOrder="25">
-                <edit fontSize="18" fontColor="#000000" horzTextAlign="center" transparent="true" vertTextAlign="center" left="0" top="0" width="22" height="26" field="Perception_Modifier" compilerOrder="26"/>
-            </layout>&#xD;
-           
-            <layout left="366" top="469" width="27" height="28" compilerOrder="7">
-                <label fontSize="18" fontColor="#a83232" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="27" height="29" field="Strength_Modifier" compilerOrder="8"/>
-            </layout>&#xD;
-            <layout left="255" top="470" width="35" height="32" compilerOrder="31">
-                <edit transparent="true" fontSize="18" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="35" height="33" field="Size" compilerOrder="32"/>
-            </layout>&#xD;
-            <layout left="216" top="520" width="35" height="32" compilerOrder="33">
-                <edit transparent="true" fontSize="18" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="35" height="33" field="Speed" compilerOrder="34"/>
-            </layout>&#xD;
-            <layout left="399" top="532" width="110" height="86" compilerOrder="61">
-                <edit transparent="true" fontSize="32" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="110" height="87" field="Damage" compilerOrder="62"/>
-            </layout>&#xD;
-            <layout left="626" top="539" width="35" height="32" compilerOrder="57">
-                <edit transparent="true" fontSize="18" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="35" height="33" field="Insanity" compilerOrder="58"/>
-            </layout>&#xD;
-            <layout left="625" top="605" width="47" height="44" compilerOrder="27">
-                <edit transparent="true" fontSize="32" fontColor="#a83232" fontStyle="bold" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="47" height="45" field="Will" compilerOrder="28"/>
-            </layout>&#xD;
-            <layout left="309" top="606" width="27" height="28" compilerOrder="15">
-                <label fontSize="18" fontColor="#a83232" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="27" height="29" field="Agility_Modifier" compilerOrder="16"/>
-            </layout>&#xD;
-            <layout left="244" top="607" width="47" height="44" compilerOrder="13">
-                <edit transparent="true" fontSize="32" fontColor="#a83232" fontStyle="bold" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="47" height="45" field="Agility" compilerOrder="14"/>
-            </layout>&#xD;
-            <layout left="581" top="607" width="27" height="28" compilerOrder="29">
-                <edit transparent="true" fontSize="18" fontColor="#a83232" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="27" height="29" field="Will_Modifier" compilerOrder="30"/>
-            </layout>&#xD;
-            <layout left="439" top="703" width="35" height="32" compilerOrder="11">
-                <edit transparent="true" fontSize="18" fontColor="#a83232" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="35" height="33" field="Healing_Rate" compilerOrder="12"/>
-            </layout>&#xD;
-            <layout left="594" top="744" width="35" height="32" compilerOrder="59">
-                <edit transparent="true" fontSize="18" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="35" height="33" field="Corruption" compilerOrder="60"/>
-            </layout>&#xD;
-            <layout left="286" top="745" width="35" height="32" compilerOrder="17">
-                <edit transparent="true" fontSize="18" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="35" height="33" field="Defense" compilerOrder="18"/>
-            </layout>&#xD;
-            <layout left="435" top="769" width="47" height="44" compilerOrder="9">
-                <edit transparent="true" fontSize="32" fontColor="#a83232" fontStyle="bold" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="47" height="45" field="Health" compilerOrder="10"/>
-            </layout>&#xD;
-            <layout left="210" top="838" width="472" height="96" compilerOrder="63">
-                <textEditor left="0" top="0" width="472" height="96" fontSize="14.2" fontColor="#000000" field="Notes" transparent="true" compilerOrder="64"/>
-            </layout>&#xD;
-            <layout left="400" top="330" height="100" width="160">
-                <label left="0" top="0" height="40" width="80" fontSize="16" fontStyle="bold" fontColor="#a83232" text="Boons/Banes"/>
-                <comboBox left="10" top="30" width="60" fontSize="14" fontColor="#a83232" transparent="false" items="{'-5','-4','-3','-2','-1','0','+1','+2','+3','+4','+5'}" value="{-5,-4,-3,-2,-1,0,+1,+2,+3,+4,+5}" text="0" field="BoonsBanes"/>
-            </layout>
+  <style>
+    #frmSODLFillable1_svg path {color: black; strokeColor: black; mode: stretch;} &#xD;
+    #frmSODLFillable1_svg label {fontColor: black; textTrimming: none; wordWrap: false; autoSize: true;}
+  </style>
+  <scrollBox align="client">
+    <rectangle width="918" height="1188" color="white">
+      &#xD;
+      <image left="0" top="0" width="918" height="1188" src="images/atributos.png" style="stretch" optimize="true" compilerOrder="0"/>&#xD;
+      <layout left="542" top="36" width="35" height="32" compilerOrder="39">
+        <edit transparent="true" fontSize="14.2" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="35" height="33" field="Level" compilerOrder="40"/>
+      </layout>&#xD;
+      <layout left="601" top="47" width="298" height="255" compilerOrder="37">
+        <textEditor left="0" top="0" width="298" height="255" fontSize="14.2" fontColor="#000000" field="Professions" transparent="true" compilerOrder="38"/>
+      </layout>&#xD;
+      <layout left="26" top="59" width="283" height="35" compilerOrder="1">
+        <edit left="0" top="0" width="283" height="35" fontSize="24" fontColor="#000000" field="Name" transparent="true" compilerOrder="2"/>
+      </layout>&#xD;
+      <layout left="318" top="59" width="261" height="35" compilerOrder="3">
+        <edit left="0" top="0" width="261" height="35" fontSize="14.2" horzTextAlign="center" vertTextAlign="center" fontColor="#000000" field="Ancestry" transparent="true" compilerOrder="4"/>
+      </layout>&#xD;
+      <layout left="318" top="124" width="261" height="35" compilerOrder="47">
+        <edit left="0" top="0" width="261" height="35" fontSize="14.2" horzTextAlign="center" vertTextAlign="center" fontColor="#000000" field="Novice" transparent="true" compilerOrder="48"/>
+      </layout>&#xD;
+      <layout left="26" top="125" width="283" height="187" compilerOrder="35">
+        <textEditor left="0" top="0" width="283" height="187" fontSize="14.2" fontColor="#000000" field="Description" transparent="true" compilerOrder="36"/>
+      </layout>&#xD;
+      <layout left="318" top="191" width="261" height="35" compilerOrder="49">
+        <edit left="0" top="0" width="261" height="35" fontSize="14.2" horzTextAlign="center" vertTextAlign="center" fontColor="#000000" field="Expert" transparent="true" compilerOrder="50"/>
+      </layout>&#xD;
+      <layout left="318" top="257" width="261" height="54" compilerOrder="51">
+        <edit left="0" top="0" width="261" height="54" fontSize="14.2" horzTextAlign="center" vertTextAlign="center" fontColor="#000000" field="Master" transparent="true" compilerOrder="52"/>
+      </layout>&#xD;
+      <layout left="618" top="319" width="35" height="32" compilerOrder="55">
+        <edit transparent="true" fontSize="18" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="35" height="33" field="Power" compilerOrder="56"/>
+      </layout>&#xD;
+      <layout left="25" top="349" width="180" height="586" compilerOrder="41">
+        <textEditor left="0" top="0" width="180" height="586" fontSize="14.2" fontColor="#000000" field="Talents" transparent="true" compilerOrder="42"/>
+      </layout>&#xD;
+      <layout left="687" top="352" width="211" height="583" compilerOrder="53">
+        <textEditor left="0" top="0" width="211" height="583" fontSize="14.2" fontColor="#000000" field="Magic" transparent="true" compilerOrder="54"/>
+      </layout>&#xD;
+      <layout left="621" top="408" width="35" height="32" compilerOrder="23">
+        <edit transparent="true" fontSize="18" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="35" height="33" field="Perception" compilerOrder="24"/>
+      </layout>&#xD;
+      <layout left="322" top="370" width="40" height="20" compilerOrder="5">
+        <button left="0" top="0" width="40" height="20" text="Teste" onClick="rollAttributeSavingThrow(sheet.Strength_Modifier, 'Teste de Força', sheet.BoonsBanes)"/>
+      </layout>&#xD;
+      <layout left="322" top="419" width="45" height="45" compilerOrder="5">
+        <edit transparent="true" fontSize="32" fontColor="#a83232" fontStyle="bold" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="45" height="45" field="Strength" compilerOrder="6"/>
+      </layout>&#xD;
+      <layout left="546" top="420" width="47" height="44" compilerOrder="19">
+        <edit transparent="true" fontSize="32" fontColor="#a83232" fontStyle="bold" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="47" height="45" field="Intellect" compilerOrder="20"/>
+      </layout>&#xD;
+      <layout left="606" top="447" width="22" height="25" compilerOrder="25">
+        <edit fontSize="18" fontColor="#000000" horzTextAlign="center" transparent="true" vertTextAlign="center" left="0" top="0" width="22" height="26" field="Perception_Modifier" compilerOrder="26"/>
+      </layout>&#xD;
+      <layout left="366" top="469" width="27" height="28" compilerOrder="7">
+        <label fontSize="18" fontColor="#a83232" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="27" height="29" field="Strength_Modifier" compilerOrder="8"/>
+      </layout>&#xD;
+      <layout left="255" top="470" width="35" height="32" compilerOrder="31">
+        <edit transparent="true" fontSize="18" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="35" height="33" field="Size" compilerOrder="32"/>
+      </layout>&#xD;
+      <layout left="216" top="520" width="35" height="32" compilerOrder="33">
+        <edit transparent="true" fontSize="18" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="35" height="33" field="Speed" compilerOrder="34"/>
+      </layout>&#xD;
+      <layout left="399" top="532" width="110" height="86" compilerOrder="61">
+        <edit transparent="true" fontSize="32" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="110" height="87" field="Damage" compilerOrder="62"/>
+      </layout>&#xD;
+      <layout left="626" top="539" width="35" height="32" compilerOrder="57">
+        <edit transparent="true" fontSize="18" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="35" height="33" field="Insanity" compilerOrder="58"/>
+      </layout>&#xD;
+      <layout left="625" top="605" width="47" height="44" compilerOrder="27">
+        <edit transparent="true" fontSize="32" fontColor="#a83232" fontStyle="bold" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="47" height="45" field="Will" compilerOrder="28"/>
+      </layout>&#xD;
+      <layout left="309" top="606" width="27" height="28" compilerOrder="15">
+        <label fontSize="18" fontColor="#a83232" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="27" height="29" field="Agility_Modifier" compilerOrder="16"/>
+      </layout>&#xD;
+      <layout left="244" top="670" width="40" height="20" compilerOrder="13">
+        <button left="0" top="0" width="40" height="20" text="Teste" onClick="rollAttributeSavingThrow(sheet.Agility_Modifier, 'Teste de Agilidade', sheet.BoonsBanes)"/>
+      </layout>
+      <layout left="244" top="607" width="47" height="44" compilerOrder="13">
+        <edit transparent="true" fontSize="32" fontColor="#a83232" fontStyle="bold" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="47" height="45" field="Agility" compilerOrder="14"/>
+      </layout>&#xD;
+      <layout left="630" top="670" width="40" height="20" compilerOrder="29">
+        <button left="0" top="0" width="40" height="20" text="Teste" onClick="rollAttributeSavingThrow(sheet.Will_Modifier, 'Teste de Vontade', sheet.BoonsBanes)"/>
+      </layout>
+      <layout left="581" top="607" width="27" height="28" compilerOrder="29">
+        <edit transparent="true" fontSize="18" fontColor="#a83232" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="27" height="29" field="Will_Modifier" compilerOrder="30"/>
+      </layout>&#xD;
+      <layout left="439" top="703" width="35" height="32" compilerOrder="11">
+        <edit transparent="true" fontSize="18" fontColor="#a83232" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="35" height="33" field="Healing_Rate" compilerOrder="12"/>
+      </layout>&#xD;
+      <layout left="594" top="744" width="35" height="32" compilerOrder="59">
+        <edit transparent="true" fontSize="18" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="35" height="33" field="Corruption" compilerOrder="60"/>
+      </layout>&#xD;
+      <layout left="286" top="745" width="35" height="32" compilerOrder="17">
+        <edit transparent="true" fontSize="18" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="35" height="33" field="Defense" compilerOrder="18"/>
+      </layout>&#xD;
+      <layout left="435" top="769" width="47" height="44" compilerOrder="9">
+        <edit transparent="true" fontSize="32" fontColor="#a83232" fontStyle="bold" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="47" height="45" field="Health" compilerOrder="10"/>
+      </layout>&#xD;
+      <layout left="210" top="838" width="472" height="96" compilerOrder="63">
+        <textEditor left="0" top="0" width="472" height="96" fontSize="14.2" fontColor="#000000" field="Notes" transparent="true" compilerOrder="64"/>
+      </layout>&#xD;
+      <layout left="400" top="330" height="100" width="160">
+        <label left="0" top="0" height="40" width="80" fontSize="16" fontStyle="bold" fontColor="#a83232" text="Boons/Banes"/>
+        <comboBox left="10" top="30" width="60" fontSize="14" fontColor="#a83232" transparent="false" items="{'-5','-4','-3','-2','-1','0','+1','+2','+3','+4','+5'}" value="{-5,-4,-3,-2,-1,0,+1,+2,+3,+4,+5}" text="0" field="BoonsBanes"/>
+      </layout>
+      <layout left="545" top="370" width="40" height="20" compilerOrder="21">
+        <button left="0" top="0" width="40" height="20" text="Teste" onClick="rollAttributeSavingThrow(sheet.Intellect_Modifier, 'Teste de Intelecto', sheet.BoonsBanes)"/>
+      </layout>&#xD;
+      <layout left="517" top="466" width="27" height="28" compilerOrder="21">
+        <label fontSize="18" fontColor="#a83232" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="27" height="29" field="Intellect_Modifier" compilerOrder="22"/>
+      </layout>&#xD;
 
-            <layout left="517" top="466" width="27" height="28" compilerOrder="21">
-                <label fontSize="18" fontColor="#a83232" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="27" height="29" field="Intellect_Modifier" compilerOrder="22"/>
-            </layout>&#xD;
+      
+      <script>
+        local function rollAttributeSavingThrow(modifier, testName, boonOrBaneValue)
 
-            <layout left="18" top="976" width="380" height="192" compilerOrder="43">
-
-                <edit left="0" top="0" width="140" height="31" fontSize="14" fontColor="#000000" field="Weapon_1" transparent="false" hint="Nome"/>
-                <edit left="0" top="32" width="140" height="31" fontSize="14" fontColor="#000000" field="Weapon_2" transparent="false" hint="Nome"/>
-			    <edit left="0" top="64" width="140" height="31" fontSize="14" fontColor="#000000" field="Weapon_3" transparent="false" hint="Nome"/>
-                <edit left="0" top="96" width="140" height="31" fontSize="14" fontColor="#000000" field="Weapon_4" transparent="false" hint="Nome"/>
-                <edit left="0" top="128" width="140" height="31" fontSize="14" fontColor="#000000" field="Weapon_5" transparent="false" hint="Nome"/>
-				<edit left="0" top="160" width="140" height="31" fontSize="14" fontColor="#000000" field="Weapon_6" transparent="false" hint="Nome"/>
-				
-				<comboBox left="140" top="0" width="90" fontSize="14" fontColor="#a83232" transparent="false" items="{'Strength','Agility','Intellect','Will'}" values="{'Strength','Agility','Intellect','Will'}" value="{'Strength','Agility','Intellect','Will'}" field="Attribute_1"/>
-				<comboBox left="140" top="32" width="90" fontSize="14" fontColor="#a83232" transparent="false" items="{'Strength','Agility','Intellect','Will'}" values="{'Strength','Agility','Intellect','Will'}" value="{'Strength','Agility','Intellect','Will'}" field="Attribute_2"/>
-				<comboBox left="140" top="64" width="90" fontSize="14" fontColor="#a83232" transparent="false" items="{'Strength','Agility','Intellect','Will'}" values="{'Strength','Agility','Intellect','Will'}" value="{'Strength','Agility','Intellect','Will'}" field="Attribute_3"/>
-				<comboBox left="140" top="96" width="90" fontSize="14" fontColor="#a83232" transparent="false" items="{'Strength','Agility','Intellect','Will'}" values="{'Strength','Agility','Intellect','Will'}" value="{'Strength','Agility','Intellect','Will'}" field="Attribute_4"/>
-				<comboBox left="140" top="128" width="90" fontSize="14" fontColor="#a83232" transparent="false" items="{'Strength','Agility','Intellect','Will'}" values="{'Strength','Agility','Intellect','Will'}" value="{'Strength','Agility','Intellect','Will'}" field="Attribute_5"/>
-				<comboBox left="140" top="160" width="90" fontSize="14" fontColor="#a83232" transparent="false" items="{'Strength','Agility','Intellect','Will'}" values="{'Strength','Agility','Intellect','Will'}" value="{'Strength','Agility','Intellect','Will'}" field="Attribute_6"/>
-				
-                <edit left="230" top="0" width="60" height="31" fontSize="14" fontColor="#000000" field="Damageroll_1" transparent="false" hint="Dano"/>
-                <edit left="230" top="32" width="60" height="31" fontSize="14" fontColor="#000000" field="Damageroll_2" transparent="false" hint="Dano"/>
-				<edit left="230" top="64" width="60" height="31" fontSize="14" fontColor="#000000" field="Damageroll_3" transparent="false" hint="Dano"/>
-				<edit left="230" top="96" width="60" height="31" fontSize="14" fontColor="#000000" field="Damageroll_4" transparent="false" hint="Dano"/>
-				<edit left="230" top="128" width="60" height="31" fontSize="14" fontColor="#000000" field="Damageroll_5" transparent="false" hint="Dano"/>
-				<edit left="230" top="160" width="60" height="31" fontSize="14" fontColor="#000000" field="Damageroll_6" transparent="false" hint="Dano"/>
-				
-                <button left="290" top="0" width="30" height="30" fontSize="10" text="Atk">
-					<event name="onClick">
-                        local weaponName = sheet.Weapon_1;
-                        local attribute = sheet.Attribute_1;
-						local attackRoll = Firecast.interpretarRolagem("1d20");
-                        local boonBaneLocalRoll = 0;
-                        local characterTable = Firecast.getMesaDe(sheet);
-                        local boonBaneBonus = 0;
-						local operation;
-                        local boonOrBane;
-
-                        if sheet.BoonsBanes == '0' or sheet.BoonsBanes == nil then 
-                            if attribute == 'Strength' then
-                                attackRoll = Firecast.interpretarRolagem(sheet.Strength_Modifier):concatenar(attackRoll);
-                            elseif attribute == 'Agility' then
-                                attackRoll = Firecast.interpretarRolagem(sheet.Agility_Modifier):concatenar(attackRoll);
-                            elseif attribute == 'Intellect' then
-                                attackRoll = Firecast.interpretarRolagem(sheet.Intellect_Modifier):concatenar(attackRoll);
-                            elseif attribute == 'Will' then
-                                attackRoll = Firecast.interpretarRolagem(sheet.Will_Modifier):concatenar(attackRoll);
-                            else 
-                                characterTable.chat:enviarMensagem("Escolha um atributo para a rolagem de ataque");
-                                return;
-                            end;
-
-                            if weaponName == nil then
-                                weaponName = "Arma sem nome"
-                            end;
-                            
-                            if characterTable ~= nil then
-                                characterTable.chat:rolarDados(attackRoll, "Atacou com " .. weaponName);
-                            end;
-
-                        else
-                            if (tonumber(sheet.BoonsBanes) > 0) then
-                                boonOrBane = " Boon";
-                                if(tonumber(sheet.BoonsBanes) > 1) then
-                                    boonOrBane = " Boons";
-                            end;
-                            elseif (0 > tonumber(sheet.BoonsBanes)) then
-                                boonOrBane = " Bane";
-                                if(-1 > tonumber(sheet.BoonsBanes)) then
-                                    boonOrBane = " Banes";
-                                end;
-                            end;
-                            boonBaneLocalRoll = Firecast.interpretarRolagem((sheet.BoonsBanes):sub(2) .. "d6");
-
-                            characterTable.chat:rolarDados(boonBaneLocalRoll, sheet.BoonsBanes .. boonOrBane,
-                                function (rollResult)
-
-                                    for i=1,#rollResult.ops,1 do
-                                        operation = rollResult.ops[i];
-                                        for j=1, #operation.resultados,1 do
-                                            if operation.resultados[j] > boonBaneBonus then
-                                                boonBaneBonus = operation.resultados[j];
-                                            end;
-                                        end;
-                                    end;
-									
-                                    local attributeModifier;
-
-									if sheet.Attribute_1 == 'Strength' then
-                                        attributeModifier = sheet.Strength_Modifier;
-                                    elseif sheet.Attribute_1 == 'Agility' then
-                                        attributeModifier = sheet.Agility_Modifier;
-                                    else 
-                                        characterTable.chat:enviarMensagem("Escolha um atributo para a rolagem de ataque.");
-                                        return;
-                                    end;
-
-                                    if(0 > tonumber(sheet.BoonsBanes)) then
-                                        boonBaneBonus = tonumber(boonBaneBonus - attributeModifier);
-                                    elseif(tonumber(sheet.BoonsBanes) > 0) then
-                                        boonBaneBonus = tonumber(boonBaneBonus + attributeModifier);
-                                        end;
-                                    
-                                    if(0 > boonBaneBonus) then boonBaneBonus = tostring(boonBaneBonus).sub(2,0); end;
-                                    boonBaneBonus = Firecast.interpretarRolagem(boonBaneBonus);
-
-                                    attackRoll = Firecast.interpretarRolagem("1d20 "):concatenar(boonBaneBonus);
-
-                                    if sheet.Weapon_1 == nil then
-                                        weaponName = "Arma sem nome";
-                                    end;
-                            
-                                    if characterTable ~= nil then
-                                        characterTable.chat:rolarDados(attackRoll,'Ataque de ' .. weaponName);
-                                    end;
-                            end);
-                        end;
-                    </event>
-                </button>
-				<button left="320" top="0" width="30" height="30" fontSize="10" text="Dmg">
-					<event name="onClick">
-                        local characterTable = Firecast.getMesaDe(sheet);
-                        local damageRoll = Firecast.interpretarRolagem(sheet.Damageroll_1);
-						local weaponName;
-
-						if not damageRoll.possuiAlgumDado then
-							return;
-                        end;
-
-                        if sheet.Weapon_1 == nil then
-                            weaponName = "Arma sem nome";
-                        else 
-                            weaponName = sheet.Weapon_1;
-                        end;
-						
-                        if characterTable ~= nil then
-							characterTable.chat:rolarDados(damageRoll, "Dano de " .. weaponName);
-                        end;
-                    </event>
-                </button>
-
-				<button left="290" top="32" width="30" height="30" fontSize="10" text="Atk">
-					<event name="onClick">
-						local weaponName = sheet.Weapon_2;
-                        local attribute = sheet.Attribute_2;
-						local attackRoll = Firecast.interpretarRolagem("1d20");
-                        local boonBaneLocalRoll = 0;
-                        local characterTable = Firecast.getMesaDe(sheet);
-                        local boonBaneBonus = 0;
-						local operation;
-                        local boonOrBane;
-
-                        if sheet.BoonsBanes == '0' or sheet.BoonsBanes == nil then 
-                            if attribute == 'Strength' then
-                                attackRoll = Firecast.interpretarRolagem(sheet.Strength_Modifier):concatenar(attackRoll);
-                            elseif attribute == 'Agility' then
-                                attackRoll = Firecast.interpretarRolagem(sheet.Agility_Modifier):concatenar(attackRoll);
-                            elseif attribute == 'Intellect' then
-                                attackRoll = Firecast.interpretarRolagem(sheet.Intellect_Modifier):concatenar(attackRoll);
-                            elseif attribute == 'Will' then
-                                attackRoll = Firecast.interpretarRolagem(sheet.Will_Modifier):concatenar(attackRoll);
-                            else 
-                                characterTable.chat:enviarMensagem("Escolha um atributo para a rolagem de ataque.");
-                                return;
-                            end;
-
-                            if weaponName == nil then
-                                weaponName = "Arma sem nome";
-                            end;
-                    
-                            if characterTable ~= nil then
-                                characterTable.chat:rolarDados(attackRoll, "Atacou com " .. weaponName);
-                            end;
-
-                        else
-                            if (tonumber(sheet.BoonsBanes) > 0) then
-                                boonOrBane = " Boon";
-                                if(tonumber(sheet.BoonsBanes) > 1) then
-                                    boonOrBane = " Boons";
-                            end;
-                            elseif (0 > tonumber(sheet.BoonsBanes)) then
-                                boonOrBane = " Bane";
-                                if(-1 > tonumber(sheet.BoonsBanes)) then
-                                    boonOrBane = " Banes";
-                                end;
-                            end;
-                            boonBaneLocalRoll = Firecast.interpretarRolagem((sheet.BoonsBanes):sub(2) .. "d6");
-
-                            characterTable.chat:rolarDados(boonBaneLocalRoll, sheet.BoonsBanes .. boonOrBane,
-                                function (rollResult)
-
-                                    for i=1,#rollResult.ops,1 do
-                                        operation = rollResult.ops[i];
-                                        for j=1, #operation.resultados,1 do
-                                            if operation.resultados[j] > boonBaneBonus then
-                                                boonBaneBonus = operation.resultados[j];
-                                            end;
-                                        end;
-                                    end;
-									
-                                    local attributeModifier;
-
-									if sheet.Attribute_2 == 'Strength' then
-                                        attributeModifier = sheet.Strength_Modifier;
-                                    elseif sheet.Attribute_2 == 'Agility' then
-                                        attributeModifier = sheet.Agility_Modifier;
-                                    else 
-                                        characterTable.chat:enviarMensagem("Escolha um atributo para a rolagem de ataque.");
-                                        return;
-                                    end;
-
-                                    if(0 > tonumber(sheet.BoonsBanes)) then
-                                        boonBaneBonus = tonumber(boonBaneBonus - attributeModifier);
-                                    elseif(tonumber(sheet.BoonsBanes) > 0) then
-                                        boonBaneBonus = tonumber(boonBaneBonus + attributeModifier);
-                                        end;
-                                    
-                                    if(0 > boonBaneBonus) then boonBaneBonus = tostring(boonBaneBonus).sub(2,0); end;
-                                    boonBaneBonus = Firecast.interpretarRolagem(boonBaneBonus);
-
-                                    attackRoll = Firecast.interpretarRolagem("1d20 "):concatenar(boonBaneBonus);
-
-                                    if sheet.Weapon_2 == nil then
-                                        weaponName = "Arma sem nome";
-                                    end;
-                            
-                                    if characterTable ~= nil then
-                                        characterTable.chat:rolarDados(attackRoll,'Ataque de ' .. weaponName);
-                                    end;
-                            end);
-                        end;
-                    </event>
-                </button>
-				<button left="320" top="32" width="30" height="30" fontSize="10" text="Dmg">
-					<event name="onClick">
-                        local characterTable = Firecast.getMesaDe(sheet);
-                        local damageRoll = Firecast.interpretarRolagem(sheet.Damageroll_2);
-						local weaponName;
-
-						if not damageRoll.possuiAlgumDado then
-							return;
-                        end;
-
-                        if sheet.Weapon_2 == nil then
-                            weaponName = "Arma sem nome";
-                        else 
-                            weaponName = sheet.Weapon_2;
-                        end;
-						
-                        if characterTable ~= nil then
-							characterTable.chat:rolarDados(damageRoll, "Dano de " .. weaponName);
-                        end;
-                    </event>
-                </button>
-                                    
-                <button left="290" top="64" width="30" height="30" fontSize="10" text="Atk">
-					<event name="onClick"> 
-						local weaponName = sheet.Weapon_3;
-                        local attribute = sheet.Attribute_3;
-						local attackRoll = Firecast.interpretarRolagem("1d20");
-                        local boonBaneLocalRoll = 0;
-                        local characterTable = Firecast.getMesaDe(sheet);
-                        local boonBaneBonus = 0;
-						local operation;
-                        local boonOrBane;
-
-                        if sheet.BoonsBanes == '0' or sheet.BoonsBanes == nil then 
-                            if attribute == 'Strength' then
-                                attackRoll = Firecast.interpretarRolagem(sheet.Strength_Modifier):concatenar(attackRoll);
-                            elseif attribute == 'Agility' then
-                                attackRoll = Firecast.interpretarRolagem(sheet.Agility_Modifier):concatenar(attackRoll);
-                            elseif attribute == 'Intellect' then
-                                attackRoll = Firecast.interpretarRolagem(sheet.Intellect_Modifier):concatenar(attackRoll);
-                            elseif attribute == 'Will' then
-                                attackRoll = Firecast.interpretarRolagem(sheet.Will_Modifier):concatenar(attackRoll);
-                            else 
-                                characterTable.chat:enviarMensagem("Escolha um atributo para a rolagem de ataque.");
-                                return;
-                            end;
-
-                            if weaponName == nil then
-                                weaponName = "Arma sem nome"
-                            end;
-                    
-                            if characterTable ~= nil then
-                                characterTable.chat:rolarDados(attackRoll, "Atacou com " .. weaponName);
-                            end;
-
-                        else
-                            if (tonumber(sheet.BoonsBanes) > 0) then
-                                boonOrBane = " Boon";
-                                if(tonumber(sheet.BoonsBanes) > 1) then
-                                    boonOrBane = " Boons";
-                            end;
-                            elseif (0 > tonumber(sheet.BoonsBanes)) then
-                                boonOrBane = " Bane";
-                                if(-1 > tonumber(sheet.BoonsBanes)) then
-                                    boonOrBane = " Banes";
-                                end;
-                            end;
-                            boonBaneLocalRoll = Firecast.interpretarRolagem((sheet.BoonsBanes):sub(2) .. "d6");
-
-                            characterTable.chat:rolarDados(boonBaneLocalRoll, sheet.BoonsBanes .. boonOrBane,
-                                function (rollResult)
-
-                                    for i=1,#rollResult.ops,1 do
-                                        operation = rollResult.ops[i];
-                                        for j=1, #operation.resultados,1 do
-                                            if operation.resultados[j] > boonBaneBonus then
-                                                boonBaneBonus = operation.resultados[j];
-                                            end;
-                                        end;
-                                    end;
-									
-                                    local attributeModifier;
-
-									if sheet.Attribute_3 == 'Strength' then
-                                        attributeModifier = sheet.Strength_Modifier;
-                                    elseif sheet.Attribute_3 == 'Agility' then
-                                        attributeModifier = sheet.Agility_Modifier;
-                                    elseif sheet.Attribute_3 == 'Intellect' then
-                                        attackRoll = Firecast.interpretarRolagem(sheet.Intellect_Modifier):concatenar(attackRoll);
-                                    else 
-                                        characterTable.chat:enviarMensagem("Escolha um atributo para a rolagem de ataque.");
-                                        return;
-                                    end;
-
-                                    if(0 > tonumber(sheet.BoonsBanes)) then
-                                        boonBaneBonus = tonumber(boonBaneBonus - attributeModifier);
-                                    elseif(tonumber(sheet.BoonsBanes) > 0) then
-                                        boonBaneBonus = tonumber(boonBaneBonus + attributeModifier);
-                                        end;
-                                    
-                                    if(0 > boonBaneBonus) then boonBaneBonus = tostring(boonBaneBonus).sub(2,0); end;
-                                    boonBaneBonus = Firecast.interpretarRolagem(boonBaneBonus);
-
-                                    attackRoll = Firecast.interpretarRolagem("1d20 "):concatenar(boonBaneBonus);
-
-                                    if sheet.Weapon_3 == nil then
-                                        weaponName = "Arma sem nome";
-                                    end;
-                            
-                                    if characterTable ~= nil then
-                                        characterTable.chat:rolarDados(attackRoll,'Ataque de ' .. weaponName);
-                                    end;
-                            end);
-                        end;
-                    </event>
-                </button>
-                <button left="320" top="64" width="30" height="30" fontSize="10" text="Dmg">
-					<event name="onClick">
-                        local characterTable = Firecast.getMesaDe(sheet);
-                        local damageRoll = Firecast.interpretarRolagem(sheet.Damageroll_3);
-						local weaponName;
-                        
-						if not damageRoll.possuiAlgumDado then
-							return;
-                        end;
-
-                        if sheet.Weapon_31 == nil then
-                            weaponName = "Arma sem nome";
-                        else 
-                            weaponName = sheet.Weapon_3;
-                        end;
-						
-                        if characterTable ~= nil then
-							characterTable.chat:rolarDados(damageRoll, "Dano de " .. weaponName);
-                        end;
-                    </event>
-                </button>
-                <button left="290" top="96" width="30" height="30" fontSize="10" text="Atk">
-					<event name="onClick"> 
-						local weaponName = sheet.Weapon_4;
-                        local attribute = sheet.Attribute_4;
-						local attackRoll = Firecast.interpretarRolagem("1d20");
-                        local boonBaneLocalRoll = 0;
-                        local characterTable = Firecast.getMesaDe(sheet);
-                        local boonBaneBonus = 0;
-						local operation;
-                        local boonOrBane;
-
-                        if sheet.BoonsBanes == '0' or sheet.BoonsBanes == nil then 
-                            if attribute == 'Strength' then
-                                attackRoll = Firecast.interpretarRolagem(sheet.Strength_Modifier):concatenar(attackRoll);
-                            elseif attribute == 'Agility' then
-                                attackRoll = Firecast.interpretarRolagem(sheet.Agility_Modifier):concatenar(attackRoll);
-                            elseif attribute == 'Intellect' then
-                                attackRoll = Firecast.interpretarRolagem(sheet.Intellect_Modifier):concatenar(attackRoll);
-                            elseif attribute == 'Will' then
-                                attackRoll = Firecast.interpretarRolagem(sheet.Will_Modifier):concatenar(attackRoll);   
-                            else 
-                                characterTable.chat:enviarMensagem("Escolha um atributo para a rolagem de ataque.");
-                                return;
-                            end;
-
-                            if weaponName == nil then
-                                weaponName = "Arma sem nome"
-                            end;
-                    
-                            if characterTable ~= nil then
-                                characterTable.chat:rolarDados(attackRoll, "Atacou com " .. weaponName);
-                            end;
-
-                        else
-                            if (tonumber(sheet.BoonsBanes) > 0) then
-                                boonOrBane = " Boon";
-                                if(tonumber(sheet.BoonsBanes) > 1) then
-                                    boonOrBane = " Boons";
-                            end;
-                            elseif (0 > tonumber(sheet.BoonsBanes)) then
-                                boonOrBane = " Bane";
-                                if(-1 > tonumber(sheet.BoonsBanes)) then
-                                    boonOrBane = " Banes";
-                                end;
-                            end;
-                            boonBaneLocalRoll = Firecast.interpretarRolagem((sheet.BoonsBanes):sub(2) .. "d6");
-
-                            characterTable.chat:rolarDados(boonBaneLocalRoll, sheet.BoonsBanes .. boonOrBane,
-                                function (rollResult)
-
-                                    for i=1,#rollResult.ops,1 do
-                                        operation = rollResult.ops[i];
-                                        for j=1, #operation.resultados,1 do
-                                            if operation.resultados[j] > boonBaneBonus then
-                                                boonBaneBonus = operation.resultados[j];
-                                            end;
-                                        end;
-                                    end;
-									
-                                    local attributeModifier;
-
-									if sheet.Attribute_4 == 'Strength' then
-                                        attributeModifier = sheet.Strength_Modifier;
-                                    elseif sheet.Attribute_4 == 'Agility' then
-                                        attributeModifier = sheet.Agility_Modifier;
-                                    else 
-                                        characterTable.chat:enviarMensagem("Escolha um atributo para a rolagem de ataque.");
-                                        return;
-                                    end;
-
-                                    if(0 > tonumber(sheet.BoonsBanes)) then
-                                        boonBaneBonus = tonumber(boonBaneBonus - attributeModifier);
-                                    elseif(tonumber(sheet.BoonsBanes) > 0) then
-                                        boonBaneBonus = tonumber(boonBaneBonus + attributeModifier);
-                                        end;
-                                    
-                                    if(0 > boonBaneBonus) then boonBaneBonus = tostring(boonBaneBonus).sub(2,0); end;
-                                    boonBaneBonus = Firecast.interpretarRolagem(boonBaneBonus);
-
-                                    attackRoll = Firecast.interpretarRolagem("1d20 "):concatenar(boonBaneBonus);
-
-                                    if sheet.Weapon_4 == nil then
-                                        weaponName = "Arma sem nome";
-                                    end;
-                            
-                                    if characterTable ~= nil then
-                                        characterTable.chat:rolarDados(attackRoll,'Atacou com '..weaponName);
-                                    end;
-                            end);
-                        end;
-                    </event>
-                </button>
-                <button left="320" top="96" width="30" height="30" fontSize="10" text="Dmg">
-					<event name="onClick">
-                        local characterTable = Firecast.getMesaDe(sheet);
-                        local damageRoll = Firecast.interpretarRolagem(sheet.Damageroll_4);
-						local weaponName;
-                        
-						if not damageRoll.possuiAlgumDado then
-							return;
-                        end;
-
-                        if sheet.Weapon_4 == nil then
-                            weaponName = "Arma sem nome";
-                        else 
-                            weaponName = sheet.Weapon_4;
-                        end;
-						
-                        if characterTable ~= nil then
-							characterTable.chat:rolarDados(damageRoll, "Dano de " .. weaponName);
-                        end;
-                    </event>
-                </button>
+            local attributeRoll = Firecast.interpretarRolagem("1d20");
+            local boonOrBaneRolledBonus = 0;
+            local characterTable = Firecast.getMesaDe(sheet);
+            local operation;
+            local boonOrBaneString;
+            local gameTable = Firecast.getMesaDe(sheet);
+            
+            if(modifier == nil) then
+                modifier = 0;
+            end;
+            
+            if (boonOrBaneValue ~= nil and boonOrBaneValue ~= '0' ) then
+                if (tonumber(boonOrBaneValue) > 0) then
+                    boonOrBaneString = " Boon";
+                    if (tonumber(boonOrBaneValue) > 1) then
+                        boonOrBaneString = " Boons";
+                    end;
+                elseif (0 > tonumber(boonOrBaneValue)) then
+                    boonOrBaneString = " Bane";
+                    if (-1 > tonumber(boonOrBaneValue)) then
+                        boonOrBaneString = " Banes";
+                    end;
+                end;
                 
-                <button left="290" top="128" width="30" height="30" fontSize="10" text="Atk">
-					<event name="onClick"> 
-					    local weaponName = sheet.Weapon_5;
-                        local attribute = sheet.Attribute_5;
-						local attackRoll = Firecast.interpretarRolagem("1d20");
-                        local boonBaneLocalRoll = 0;
-                        local characterTable = Firecast.getMesaDe(sheet);
-                        local boonBaneBonus = 0;
-						local operation;
-                        local boonOrBane;
-
-                        if sheet.BoonsBanes == '0' or sheet.BoonsBanes == nil then 
-
-                            if attribute == 'Strength' then
-                                attackRoll = Firecast.interpretarRolagem(sheet.Strength_Modifier):concatenar(attackRoll);
-                            elseif attribute == 'Agility' then
-                                attackRoll = Firecast.interpretarRolagem(sheet.Agility_Modifier):concatenar(attackRoll);
-                            elseif attribute == 'Intellect' then
-                                attackRoll = Firecast.interpretarRolagem(sheet.Intellect_Modifier):concatenar(attackRoll);
-                            elseif attribute == 'Will' then
-                                attackRoll = Firecast.interpretarRolagem(sheet.Will_Modifier):concatenar(attackRoll);
-                            else 
-                                characterTable.chat:enviarMensagem("Escolha um atributo para a rolagem de ataque.");
-                                return;
-                            end;
-
-                            if weaponName == nil then
-                                weaponName = "Arma sem nome"
-                            end;
-                    
-                            if characterTable ~= nil then
-                                characterTable.chat:rolarDados(attackRoll,"Atacou com "..weaponName);
-                            end;
-
-                        else
-                            if (tonumber(sheet.BoonsBanes) > 0) then
-                                boonOrBane = " Boon";
-                                if(tonumber(sheet.BoonsBanes) > 1) then
-                                    boonOrBane = " Boons";
-                            end;
-                            elseif (0 > tonumber(sheet.BoonsBanes)) then
-                                boonOrBane = " Bane";
-                                if(-1 > tonumber(sheet.BoonsBanes)) then
-                                    boonOrBane = " Banes";
+                boonBaneLocalRoll = Firecast.interpretarRolagem((boonOrBaneValue):sub(2) .. "d6");
+                            
+                characterTable.chat:rolarDados(boonBaneLocalRoll, boonOrBaneValue .. boonOrBaneString,
+                    function (boonOrBaneRollResult)
+                        for i=1, #boonOrBaneRollResult.ops, 1 do
+                            operation = boonOrBaneRollResult.ops[i];
+                            for j=1, #operation.resultados, 1 do
+                                if operation.resultados[j] > boonOrBaneRolledBonus then
+                                    boonOrBaneRolledBonus = operation.resultados[j];
                                 end;
                             end;
-
-                            boonBaneLocalRoll = Firecast.interpretarRolagem((sheet.BoonsBanes):sub(2) .. "d6");
-
-                            characterTable.chat:rolarDados(boonBaneLocalRoll, sheet.BoonsBanes .. boonOrBane,
-                                function (rollResult)
-
-                                    for i=1,#rollResult.ops,1 do
-                                        operation = rollResult.ops[i];
-                                        for j=1, #operation.resultados,1 do
-                                            if operation.resultados[j] > boonBaneBonus then
-                                                boonBaneBonus = operation.resultados[j];
-                                            end;
-                                        end;
-                                    end;
-									
-									local attributeModifier;
-
-									if sheet.Attribute_5 == 'Strength' then
-                                        attributeModifier = sheet.Strength_Modifier;
-                                    elseif sheet.Attribute_5 == 'Agility' then
-                                        attributeModifier = sheet.Agility_Modifier;
-                                    else 
-                                        characterTable.chat:enviarMensagem("Escolha um atributo para a rolagem de ataque.");
-                                        return;
-                                    end;
-
-                                    if(0 > tonumber(sheet.BoonsBanes)) then
-                                        boonBaneBonus = tonumber(boonBaneBonus - attributeModifier);
-                                    elseif(tonumber(sheet.BoonsBanes) > 0) then
-                                        boonBaneBonus = tonumber(boonBaneBonus + attributeModifier);
-                                        end;
-                                    
-                                    if(0 > boonBaneBonus) then boonBaneBonus = tostring(boonBaneBonus).sub(2,0); end;
-                                    boonBaneBonus = Firecast.interpretarRolagem(boonBaneBonus);
-
-                                    attackRoll = Firecast.interpretarRolagem("1d20 "):concatenar(boonBaneBonus);
-
-                                    if sheet.Weapon_5 == nil then
-                                        weaponName = "Arma sem nome";
-                                    end;
-                            
-                                    if characterTable ~= nil then
-                                        characterTable.chat:rolarDados(attackRoll,'Ataque de ' .. weaponName);
-                                    end;
-                            end);
                         end;
-
-                    </event>
-                </button>
-                <button left="320" top="128" width="30" height="30" fontSize="10" text="Dmg">
-					<event name="onClick">
-                        local characterTable = Firecast.getMesaDe(sheet);
-                        local damageRoll = Firecast.interpretarRolagem(sheet.Damageroll_5);
-						local weaponName;
+                
                         
-						if not damageRoll.possuiAlgumDado then
-							return;
-                        end;
-
-                        if sheet.Weapon_5 == nil then
-                            weaponName = "Arma sem nome";
-                        else 
-                            weaponName = sheet.Weapon_5;
-                        end;
-						
-                        if characterTable ~= nil then
-							characterTable.chat:rolarDados(damageRoll, "Dano de " .. weaponName);
-                        end;
-                    </event>
-                </button>
-                <button left="290" top="160" width="30" height="30" fontSize="10" text="Atk">
-					<event name="onClick"> 
-                        local weaponName = sheet.Weapon_6;
-                        local attribute = sheet.Attribute_6;
-						local attackRoll = Firecast.interpretarRolagem("1d20");
-                        local boonBaneLocalRoll = 0;
-                        local characterTable = Firecast.getMesaDe(sheet);
-                        local boonBaneBonus = 0;
-						local operation;
-                        local boonOrBane;
-
-                        if sheet.BoonsBanes == '0' or sheet.BoonsBanes == nil then 
-                            if attribute == 'Strength' then
-                                attackRoll = Firecast.interpretarRolagem(sheet.Strength_Modifier):concatenar(attackRoll);
-                            elseif attribute == 'Agility' then
-                                attackRoll = Firecast.interpretarRolagem(sheet.Agility_Modifier):concatenar(attackRoll);
-                             elseif attribute == 'Intellect' then
-                                attackRoll = Firecast.interpretarRolagem(sheet.Intellect_Modifier):concatenar(attackRoll);
-                            else 
-                                characterTable.chat:enviarMensagem("Escolha um atributo para a rolagem de ataque.");
-                                return;
-                            end;
-
-                            if weaponName == nil then
-                                weaponName = "Arma sem nome"
-                            end;
-                    
-                            if characterTable ~= nil then
-                                characterTable.chat:rolarDados(attackRoll, "Atacou com "..weaponName);
-                            end;
-
-                        else
-                            if (tonumber(sheet.BoonsBanes) > 0) then
-                                boonOrBane = " Boon";
-                                if(tonumber(sheet.BoonsBanes) > 1) then
-                                    boonOrBane = " Boons";
-                            end;
-                            elseif (0 > tonumber(sheet.BoonsBanes)) then
-                                boonOrBane = " Bane";
-                                if(-1 > tonumber(sheet.BoonsBanes)) then
-                                    boonOrBane = " Banes";
-                                end;
-                            end;
-
-                            boonBaneLocalRoll = Firecast.interpretarRolagem((sheet.BoonsBanes):sub(2) .. "d6");
-
-                            characterTable.chat:rolarDados(boonBaneLocalRoll, sheet.BoonsBanes .. boonOrBane,
-                                function (rollResult)
-
-                                    for i=1,#rollResult.ops,1 do
-                                        operation = rollResult.ops[i];
-                                        for j=1, #operation.resultados,1 do
-                                            if operation.resultados[j] > boonBaneBonus then
-                                                boonBaneBonus = operation.resultados[j];
-                                            end;
-                                        end;
-                                    end;
-									
-									local attributeModifier;
-
-									if sheet.Attribute_6 == 'Strength' then
-                                        attributeModifier = sheet.Strength_Modifier;
-                                    elseif sheet.Attribute_6 == 'Agility' then
-                                        attributeModifier = sheet.Agility_Modifier;
-                                    else 
-                                        characterTable.chat:enviarMensagem("Escolha um atributo para a rolagem de ataque.");
-                                        return;
-                                    end;
-
-                                    if(0 > tonumber(sheet.BoonsBanes)) then
-                                        boonBaneBonus = tonumber(boonBaneBonus - attributeModifier);
-                                    elseif(tonumber(sheet.BoonsBanes) > 0) then
-                                        boonBaneBonus = tonumber(boonBaneBonus + attributeModifier);
-                                        end;
-                                    
-                                    if(0 > boonBaneBonus) then boonBaneBonus = tostring(boonBaneBonus).sub(2,0); end;
-                                    boonBaneBonus = Firecast.interpretarRolagem(boonBaneBonus);
-
-                                    attackRoll = Firecast.interpretarRolagem("1d20 "):concatenar(boonBaneBonus);
-
-                                    if sheet.Weapon_6 == nil then
-                                        weaponName = "Arma sem nome";
-                                    end;
-                            
-                                    if characterTable ~= nil then
-                                        characterTable.chat:rolarDados(attackRoll,'Ataque com '..weaponName);
-                                    end;
-                            end);
-
-                        end;
-                    </event>
-                </button>
-                <button left="320" top="160" width="30" height="30" fontSize="10" text="Dmg">
-					<event name="onClick">
-                        local characterTable = Firecast.getMesaDe(sheet);
-                        local damageRoll = Firecast.interpretarRolagem(sheet.Damageroll_6);
-						local weaponName;
                         
-						if not damageRoll.possuiAlgumDado then
-							return;
-                        end;
-
-                        if sheet.Weapon_6 == nil then
-                            weaponName = "Arma sem nome";
-                        else 
-                            weaponName = sheet.Weapon_6;
-                        end;
-						
+                        boonOrBaneRolledBonus = Firecast.interpretarRolagem(boonOrBaneRolledBonus);
+                
+                        attributeRoll = Firecast.interpretarRolagem("1d20 "):concatenar(modifier):concatenar(boonOrBaneRolledBonus);
+                
                         if characterTable ~= nil then
-							characterTable.chat:rolarDados(damageRoll, "Dano de " .. weaponName);
+                            characterTable.chat:rolarDados(attributeRoll,testName);
                         end;
-                    </event>
-                </button>
-            </layout>&#xD;
-			
-            <layout left="380" top="979" width="662" height="187" compilerOrder="45">
-                <textEditor left="0" top="0" width="210" height="187" fontSize="14.2" fontColor="#000000" field="Equipment_1" transparent="true" compilerOrder="46"/>
-				<textEditor left="210" top="0" width="210" height="187" fontSize="14.2" fontColor="#000000" field="Equipment_2" transparent="true" compilerOrder="46"/>
-            </layout>&#xD;
+                    end);
+            else
+                attributeRoll = Firecast.interpretarRolagem("1d20 "):concatenar(modifier);
+                                
+                if characterTable ~= nil then
+                    characterTable.chat:rolarDados(attributeRoll,testName);
+                end;
+            end;
+       
+            
+            end;
+      </script>
+      
+      <script>
+        local function rollAttack(weaponName, attribute)
 
-            <dataLink field="Strength">
-				<event name="onChange">
-					sheet.Strength_Modifier = sheet.Strength - 10;
-				</event>
-			</dataLink>
-			<dataLink field="Agility">
-				<event name="onChange">
-					sheet.Agility_Modifier = sheet.Agility - 10;
-				</event>
-			</dataLink>
-			<dataLink field="Intellect">
-				<event name="onChange">
-					sheet.Intellect_Modifier = sheet.Intellect - 10;
-				</event>
-			</dataLink>
-			<dataLink field="Will">
-				<event name="onChange">
-					sheet.Will_Modifier = sheet.Will - 10;
-				</event>
-            </dataLink>
-            <dataLink field="Perception">
-				<event name="onChange">
-					sheet.Perception_Modifier = sheet.Perception - 10;
-				</event>
-            </dataLink>
-        </rectangle>
-    </scrollBox>
+            local attackRoll = Firecast.interpretarRolagem("1d20");
+            local boonOrBaneRoll = 0;
+            local characterTable = Firecast.getMesaDe(sheet);
+            local boonOrBaneResult = 0;
+            local operation;
+            local boonOrBaneString = "";
+            local attributeModifier = 0;
+            local boonOrBaneValue = sheet.BoonsBanes;
+            
+            if weaponName == nil then
+                weaponName = "Arma sem nome";
+            end;
+            
+            if(attribute == "") then
+                characterTable.chat:enviarMensagem("Escolha um atributo para a rolagem de ataque.");
+            elseif (attribute == "Strength") then
+                attributeModifier = tonumber(sheet.Strength_Modifier);
+            elseif (attribute == "Agility") then
+                attributeModifier = tonumber(sheet.Agility_Modifier);
+            elseif (attribute == "Intellect") then
+                attributeModifier = tonumber(sheet.Intellect_Modifier);
+            elseif (attribute == "Will") then
+                attributeModifier = tonumber(sheet.Will_Modifier);
+            end;
+            
+            if(attributeModifier == nil) then
+                attributeModifier = 0;
+            end;             
+            
+            if(boonOrBaneValue ~= nil and boonOrBaneValue ~= '0' ) then
+                if (tonumber(boonOrBaneValue) > 0) then
+                    boonOrBaneString = " Boon";
+                    if (tonumber(boonOrBaneValue) > 1) then
+                        boonOrBaneString = " Boons";
+                    end;
+                elseif (0 > tonumber(boonOrBaneValue)) then
+                    boonOrBaneString = " Bane";
+                    if (-1 > tonumber(boonOrBaneValue)) then
+                        boonOrBaneString = " Banes";
+                    end;
+                end;
+                boonOrBaneRoll = Firecast.interpretarRolagem(tostring(boonOrBaneValue):sub(2).."d6");
+                characterTable.chat:rolarDados(boonOrBaneRoll, boonOrBaneValue..boonOrBaneString,
+                function (rollResult)
+                    for i=1,#rollResult.ops,1 do
+                       operation = rollResult.ops[i];
+                           for j=1, #operation.resultados,1 do
+                              if operation.resultados[j] > boonOrBaneResult then
+                                    boonOrBaneResult = operation.resultados[j];
+                              end;
+                           end;
+                    end;
+                    if (0 > tonumber(boonOrBaneValue)) then
+                        boonOrBaneResult = tonumber(-boonOrBaneResult);
+                    end;
+                    boonOrBaneResult = Firecast.interpretarRolagem(boonOrBaneResult);
+                    attackRoll = Firecast.interpretarRolagem("1d20 "):concatenar(attributeModifier):concatenar(boonOrBaneResult);
+                        
+                    if characterTable ~= nil then
+                        characterTable.chat:rolarDados(attackRoll,'Ataque de ' .. weaponName);
+                    end;    
+                end);
+            else
+                boonOrBaneResult = 0;
+                boonOrBaneRoll = 0;
+                attackRoll = Firecast.interpretarRolagem("1d20 "):concatenar(attributeModifier);
+                if characterTable ~= nil then
+                    characterTable.chat:rolarDados(attackRoll,'Ataque de ' .. weaponName);
+                end; 
+            end;
+            
+            
+            
+            
+        end;
+      </script>
+      
+      <script>
+         local function rollDamage(sheetDamageRoll, weaponName)
+            local characterTable = Firecast.getMesaDe(sheet);
+            local damageRoll = Firecast.interpretarRolagem(sheetDamageRoll);
+
+            if not damageRoll.possuiAlgumDado then
+                return;
+            end;
+
+            if weaponName == nil then
+                weaponName = "Arma sem nome";
+            end;
+
+            if characterTable ~= nil then
+                characterTable.chat:rolarDados(damageRoll, "Dano de " .. weaponName);
+            end;
+         end;
+      </script>
+
+      <layout left="18" top="976" width="380" height="192" compilerOrder="43">
+
+        <edit left="0" top="0" width="140" height="31" fontSize="14" fontColor="#000000" field="Weapon_1" transparent="false" hint="Nome"/>
+        <edit left="0" top="32" width="140" height="31" fontSize="14" fontColor="#000000" field="Weapon_2" transparent="false" hint="Nome"/>
+        <edit left="0" top="64" width="140" height="31" fontSize="14" fontColor="#000000" field="Weapon_3" transparent="false" hint="Nome"/>
+        <edit left="0" top="96" width="140" height="31" fontSize="14" fontColor="#000000" field="Weapon_4" transparent="false" hint="Nome"/>
+        <edit left="0" top="128" width="140" height="31" fontSize="14" fontColor="#000000" field="Weapon_5" transparent="false" hint="Nome"/>
+        <edit left="0" top="160" width="140" height="31" fontSize="14" fontColor="#000000" field="Weapon_6" transparent="false" hint="Nome"/>
+
+        <comboBox left="140" top="0" width="90" fontSize="14" fontColor="#a83232" transparent="false" items="{'Strength','Agility','Intellect','Will'}" values="{'Strength','Agility','Intellect','Will'}" value="{'Strength','Agility','Intellect','Will'}" field="Attribute_1"/>
+        <comboBox left="140" top="32" width="90" fontSize="14" fontColor="#a83232" transparent="false" items="{'Strength','Agility','Intellect','Will'}" values="{'Strength','Agility','Intellect','Will'}" value="{'Strength','Agility','Intellect','Will'}" field="Attribute_2"/>
+        <comboBox left="140" top="64" width="90" fontSize="14" fontColor="#a83232" transparent="false" items="{'Strength','Agility','Intellect','Will'}" values="{'Strength','Agility','Intellect','Will'}" value="{'Strength','Agility','Intellect','Will'}" field="Attribute_3"/>
+        <comboBox left="140" top="96" width="90" fontSize="14" fontColor="#a83232" transparent="false" items="{'Strength','Agility','Intellect','Will'}" values="{'Strength','Agility','Intellect','Will'}" value="{'Strength','Agility','Intellect','Will'}" field="Attribute_4"/>
+        <comboBox left="140" top="128" width="90" fontSize="14" fontColor="#a83232" transparent="false" items="{'Strength','Agility','Intellect','Will'}" values="{'Strength','Agility','Intellect','Will'}" value="{'Strength','Agility','Intellect','Will'}" field="Attribute_5"/>
+        <comboBox left="140" top="160" width="90" fontSize="14" fontColor="#a83232" transparent="false" items="{'Strength','Agility','Intellect','Will'}" values="{'Strength','Agility','Intellect','Will'}" value="{'Strength','Agility','Intellect','Will'}" field="Attribute_6"/>
+
+        <edit left="230" top="0" width="60" height="31" fontSize="14" fontColor="#000000" field="Damageroll_1" transparent="false" hint="Dano"/>
+        <edit left="230" top="32" width="60" height="31" fontSize="14" fontColor="#000000" field="Damageroll_2" transparent="false" hint="Dano"/>
+        <edit left="230" top="64" width="60" height="31" fontSize="14" fontColor="#000000" field="Damageroll_3" transparent="false" hint="Dano"/>
+        <edit left="230" top="96" width="60" height="31" fontSize="14" fontColor="#000000" field="Damageroll_4" transparent="false" hint="Dano"/>
+        <edit left="230" top="128" width="60" height="31" fontSize="14" fontColor="#000000" field="Damageroll_5" transparent="false" hint="Dano"/>
+        <edit left="230" top="160" width="60" height="31" fontSize="14" fontColor="#000000" field="Damageroll_6" transparent="false" hint="Dano"/>
+
+
+        <button left="290" top="0" width="30" height="30" fontSize="10" text="Atk" onClick="rollAttack(sheet.Weapon_1, sheet.Attribute_1)"/>
+        <button left="320" top="0" width="30" height="30" fontSize="10" text="Dmg" onClick="rollDamage(sheet.Damageroll_1, sheet.Weapon_1)"/>
+
+        <button left="290" top="32" width="30" height="30" fontSize="10" text="Atk" onClick="rollAttack(sheet.Weapon_2, sheet.Attribute_2)"/>
+        <button left="320" top="32" width="30" height="30" fontSize="10" text="Dmg" onClick="rollDamage(sheet.Damageroll_2, sheet.Weapon_2)"/>
+
+        <button left="290" top="64" width="30" height="30" fontSize="10" text="Atk" onClick="rollAttack(sheet.Weapon_3, sheet.Attribute_3)"/>
+        <button left="320" top="64" width="30" height="30" fontSize="10" text="Dmg" onClick="rollDamage(sheet.Damageroll_3, sheet.Weapon_3)"/>
+
+        <button left="290" top="96" width="30" height="30" fontSize="10" text="Atk" onClick="rollAttack(sheet.Weapon_4, sheet.Attribute_4)"/>
+        <button left="320" top="96" width="30" height="30" fontSize="10" text="Dmg" onClick="rollDamage(sheet.Damageroll_4, sheet.Weapon_4)"/>
+         
+        <button left="290" top="128" width="30" height="30" fontSize="10" text="Atk" onClick="rollAttack(sheet.Weapon_5, sheet.Attribute_5)"/>
+        <button left="320" top="128" width="30" height="30" fontSize="10" text="Dmg" onClick="rollDamage(sheet.Damageroll_5, sheet.Weapon_5)"/>
+        
+        <button left="290" top="160" width="30" height="30" fontSize="10" text="Atk" onClick="rollAttack(sheet.Weapon_6, sheet.Attribute_6)"/>
+        <button left="320" top="160" width="30" height="30" fontSize="10" text="Dmg" onClick="rollDamage(sheet.Damageroll_6, sheet.Weapon_6)"/>
+                
+        
+      </layout>&#xD;
+
+      <layout left="380" top="979" width="662" height="187" compilerOrder="45">
+        <textEditor left="0" top="0" width="210" height="187" fontSize="14.2" fontColor="#000000" field="Equipment_1" transparent="true" compilerOrder="46"/>
+        <textEditor left="210" top="0" width="210" height="187" fontSize="14.2" fontColor="#000000" field="Equipment_2" transparent="true" compilerOrder="46"/>
+      </layout>&#xD;
+
+      <dataLink field="Strength">
+        <event name="onChange">
+          sheet.Strength_Modifier = sheet.Strength - 10;
+        </event>
+      </dataLink>
+      <dataLink field="Agility">
+        <event name="onChange">
+          sheet.Agility_Modifier = sheet.Agility - 10;
+        </event>
+      </dataLink>
+      <dataLink field="Intellect">
+        <event name="onChange">
+          sheet.Intellect_Modifier = sheet.Intellect - 10;
+        </event>
+      </dataLink>
+      <dataLink field="Will">
+        <event name="onChange">
+          sheet.Will_Modifier = sheet.Will - 10;
+        </event>
+      </dataLink>
+      <dataLink field="Perception">
+        <event name="onChange">
+          sheet.Perception_Modifier = sheet.Perception - 10;
+        </event>
+      </dataLink>
+    </rectangle>
+  </scrollBox>
 </form>

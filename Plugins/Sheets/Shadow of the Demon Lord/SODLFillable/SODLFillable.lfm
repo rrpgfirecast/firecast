@@ -21,9 +21,12 @@
         </tab>
         <tab title="Habilidades 2">
                     <import file="7.lfm"/>
-                </tab>
+        </tab>
         <tab title="Anotações">
                 <import file="8.lfm"/>
-            </tab>
+        </tab>
+        <tab title="Imagens">
+            <import file="9.lfm"/>
+        </tab>
     </tabControl>
 </form>
