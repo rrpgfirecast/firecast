@@ -164,18 +164,20 @@ local function constructNew_frmPericia()
         function (_, field, oldValue, newValue)
             if sheet==nil then return end
             
-                        if sheet.key==nil then sheet.key="" end
+                        local atr = 0
+                        if sheet.key~=nil then 
+                            atr = tonumber(sheet[sheet.key.."_mod"] or 0)
+                        end
             
                         local train = 0
                         if sheet.trained then
                             train = tonumber(sheet.skills_bonus or 0)
                         end
             
-                        sheet.total =  tonumber(sheet[sheet.key.."_mod"] or 0) + 
-                                                train + 
-                                                tonumber(sheet.other or 0) + 
-                                                tonumber(sheet.extra or 0) + 
-                                                tonumber(sheet.level or 0)
+                        sheet.total =   atr + train + 
+                                        tonumber(sheet.other or 0) + 
+                                        tonumber(sheet.extra or 0) + 
+                                        tonumber(sheet.level or 0)
         end, obj);
 
     obj._e_event3 = obj.dataLink2:addEventListener("onUserChange",

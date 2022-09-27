@@ -5,7 +5,7 @@
             <dataType id="Ambesek.Michiria" title="Ficha Michiria"/>
         </dataTypes>
     </element>
-    <element id="Ambesek.T20" name="Ficha T20" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20T20/output/Ficha%20T20.rpk?raw=true" fileName="Ficha T20.rpk" repositoryPath="Sheets/Ficha T20/" author="Ambesek" description="Ficha para o cenario e sistema Tormenta 20." version="1.0" compilationDate="27092022143332" compilationDigest="c9d04ae9fd3c1b78aecc3d341edb78a793bbf9dd">
+    <element id="Ambesek.T20" name="Ficha T20" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20T20/output/Ficha%20T20.rpk?raw=true" fileName="Ficha T20.rpk" repositoryPath="Sheets/Ficha T20/" author="Ambesek" description="Ficha para o cenario e sistema Tormenta 20." version="1.0.1" compilationDate="27092022143332" compilationDigest="c9d04ae9fd3c1b78aecc3d341edb78a793bbf9dd">
         <dataTypes>
             <dataType id="Ambesek.T20" title="Ficha T20"/>
         </dataTypes>

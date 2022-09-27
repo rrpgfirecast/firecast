@@ -4999,6 +4999,7 @@ local function constructNew_frmT20()
             
                                 if node~=nil then
                                     node.skills_bonus = sheet.skills_bonus
+                                    node.level = sheet.magic_lvl
                                     node.str_mod = sheet.str_mod
                                     node.dex_mod = sheet.dex_mod
                                     node.con_mod = sheet.con_mod
@@ -5074,6 +5075,7 @@ local function constructNew_frmT20()
             
                                 if node~=nil then
                                     node.skills_bonus = sheet.skills_bonus
+                                    node.level = sheet.magic_lvl
                                     node.str_mod = sheet.str_mod
                                     node.dex_mod = sheet.dex_mod
                                     node.con_mod = sheet.con_mod
