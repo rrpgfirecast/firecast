@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmDbsSelector" width="262" height="42" margins="{left=2,right=2,top=2,bottom=2}" theme="dark">
+    <script>
+        <![CDATA[
+        ]]> 
+    </script>
+    <image width="262" height="42" src="/imagens/Extra_Poder_Magia_Nome.png"/>
+
+    <button left="0" top="0" width="28" height="42" opacity="0.5">
+        <event name="onClick">
+            Dialogs.confirmYesNo("Deseja realmente apagar?",
+                                 function (confirmado)
+                                    if confirmado then
+                                        sheet.trained = false
+                                        NDB.deleteNode(sheet);
+                                    end;
+                                 end);
+        </event>
+    </button>
+
+    <edit left="35" top="4" width="223" height="34" field="nome" fontColor="black" transparent="true"/>
+</form>

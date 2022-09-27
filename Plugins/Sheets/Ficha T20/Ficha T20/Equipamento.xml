@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmEquipamento" align="client" theme="dark">
+    <script>
+        <![CDATA[
+        ]]> 
+    </script>
+    <scrollBox align="client">
+        <image width="1000" height="1000" src="/imagens/5-Equipamento.png"/>
+
+        <edit left="69" top="114" height="33" width="221" field="armor" transparent="true" fontColor="black" fontSize="20"/>
+        <edit left="308" top="114" height="33" width="79" field="armor_bonus" transparent="true" fontColor="black" horzTextAlign="center" fontSize="20"/>
+        <edit left="405" top="114" height="33" width="79" field="armor_pen" transparent="true" fontColor="black" type="number" max="0" horzTextAlign="center" fontSize="20"/>
+
+        <edit left="69" top="165" height="33" width="221" field="shield" transparent="true" fontColor="black" fontSize="20"/>
+        <edit left="308" top="165" height="33" width="79" field="shield_bonus" transparent="true" fontColor="black" horzTextAlign="center" fontSize="20"/>
+        <edit left="405" top="165" height="33" width="79" field="shield_pen" transparent="true" fontColor="black" type="number" max="0" horzTextAlign="center" fontSize="20"/>
+
+        <dataLink fields="{'armor_bonus','shield_bonus'}">
+            <event name="onChange">
+                if sheet==nil then return end
+
+                sheet.defense_armor = tonumber(sheet.armor_bonus or 0) + tonumber(sheet.shield_bonus or 0)
+            </event>
+        </dataLink>
+        <dataLink fields="{'armor_pen','shield_pen'}">
+            <event name="onChange">
+                if sheet==nil then return end
+
+                sheet.skills_penalty = tonumber(sheet.armor_pen or 0) + tonumber(sheet.shield_pen or 0)
+            </event>
+        </dataLink>
+
+        <label left="69" top="294" height="33" width="171" field="cash_total" horzTextAlign="center" fontColor="black" fontSize="20"/>
+        <edit left="278" top="294" height="33" width="83" field="cash_to" transparent="true" fontColor="black" type="number" horzTextAlign="center" fontSize="20"/>
+        <edit left="401" top="294" height="33" width="83" field="cash_ts" transparent="true" fontColor="black" type="number" horzTextAlign="center" fontSize="20"/>
+        <dataLink fields="{'cash_to','cash_ts'}">
+            <event name="onChange">
+                if sheet==nil then return end
+
+                sheet.cash_total = tonumber(sheet.cash_to or 0)*10 + tonumber(sheet.cash_ts or 0)
+            </event>
+        </dataLink>
+
+        <textEditor left="69" top="398" height="467" width="415" field="itens" transparent="true" fontColor="black"/>
+
+        <edit left="176" top="917" height="34" width="111" field="weight_curr" transparent="true" fontColor="black" type="number" horzTextAlign="center" fontSize="20"/>
+        <edit left="300" top="917" height="34" width="111" field="weight_total" transparent="true" fontColor="black" type="number" horzTextAlign="center" fontSize="20"/>
+
+        <button left="738" top="907" height="67" width="228" opacity="0.5">
+                <event name="onClick">
+                    local node = self.rcl_attack:append()
+
+                    if node~=nil then
+                        node.skills_bonus = sheet.skills_bonus
+                        node.str_mod = sheet.str_mod
+                        node.dex_mod = sheet.dex_mod
+                        node.con_mod = sheet.con_mod
+                        node.int_mod = sheet.int_mod
+                        node.wis_mod = sheet.wis_mod
+                        node.cha_mod = sheet.cha_mod
+                    end
+                </event>
+            </button>
+
+        <recordList left="519" top="98" height="782" width="443" name="rcl_attack" field="rcl_attack" templateForm="frmAtaque" layout="vertical"/>
+    </scrollBox>
+</form>

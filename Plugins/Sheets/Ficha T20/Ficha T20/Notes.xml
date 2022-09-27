@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmNotes" align="client" theme="dark">
+    <script>
+        <![CDATA[
+        ]]> 
+    </script>
+    <scrollBox align="client">
+        <image width="1000" height="1000" src="/imagens/8-Anotacoes.png"/>
+        <richEdit left="76" top="117" width="865" height="752" field="notes" backgroundColor="#333333" defaultFontSize="12" defaultFontColor="white"/>
+    </scrollBox>
+</form>

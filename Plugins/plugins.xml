@@ -5,6 +5,11 @@
             <dataType id="Ambesek.Michiria" title="Ficha Michiria"/>
         </dataTypes>
     </element>
+    <element id="Ambesek.T20" name="Ficha T20" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20T20/output/Ficha%20T20.rpk?raw=true" fileName="Ficha T20.rpk" repositoryPath="Sheets/Ficha T20/" author="Ambesek" description="Ficha para o cenario e sistema Tormenta 20." version="1.0" compilationDate="27092022143332" compilationDigest="c9d04ae9fd3c1b78aecc3d341edb78a793bbf9dd">
+        <dataTypes>
+            <dataType id="Ambesek.T20" title="Ficha T20"/>
+        </dataTypes>
+    </element>
     <element id="Ambesek.3DeT" name="Ficha 3D&amp;T RAT" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%203D%26T%20RAT/output/Ficha%203D%26T%20RAT.rpk?raw=true" fileName="Ficha 3D&amp;T RAT.rpk" repositoryPath="Sheets/Ficha 3D&amp;T RAT/" author="Ambesek" description="Ficha para Defensores de Toquio 3ª edição, revisado, ampliado e turbinado." version="1.0" compilationDate="22052022181512" compilationDigest="6a7708373499f4b55ec6f9fcc57e023c5f987cb9">
         <dataTypes>
             <dataType id="Ambesek.3DeT" title="Ficha 3D&amp;T Turbo"/>

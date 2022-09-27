@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmPrincipal" align="client" theme="dark">
+    <script>
+        <![CDATA[
+        ]]> 
+    </script>
+    <template name="atrBox">
+        <label left="0" top="0" height="84" width="100" field="$(field)_mod" horzTextAlign="center" fontColor="black" fontSize="36"/>
+        <edit left="27" top="100" height="35" width="47" field="$(field)" transparent="true" horzTextAlign="center" fontColor="black">
+            <event name="onChange">
+                if sheet==nil then return end
+
+                local mod = math.floor((tonumber(sheet.$(field) or 0)-10)/2)
+                if mod>0 then mod = "+" .. mod end
+
+                sheet.$(field)_mod = mod
+
+                -- Update custom skills atr
+                local nodes = NDB.getChildNodes(sheet.rcl_custom_skills); 
+                for i=1, #nodes, 1 do
+                    nodes[i].$(field)_mod = sheet.$(field)_mod
+                end
+
+                -- Update custom attacks atr
+                local nodes = NDB.getChildNodes(sheet.rcl_attack); 
+                for i=1, #nodes, 1 do
+                    nodes[i].$(field)_mod = sheet.$(field)_mod
+                end
+            </event>
+        </edit>
+    </template>
+    <scrollBox align="client">
+        <image width="1000" height="1000" src="/imagens/1-Principal.png"/>
+
+        <layout align="top" height="190">
+            <edit left="38" top="41" height="56" width="545" field="name_character" transparent="true" fontColor="black" fontSize="30"/>
+
+            <edit left="600" top="61" height="36" width="245" field="player" transparent="true" fontColor="black" fontSize="20"/>
+
+            <edit left="188" top="113" height="35" width="245" field="race" transparent="true" fontColor="black" fontSize="20"/>
+            <edit left="450" top="113" height="35" width="245" field="origin" transparent="true" fontColor="black" fontSize="20"/>
+            <edit left="711" top="113" height="35" width="205" field="job" transparent="true" fontColor="black" fontSize="20"/>
+            <edit left="921" top="113" height="35" width="35" field="level" transparent="true" fontColor="black" horzTextAlign="center">
+                <event name="onChange">
+                    if sheet==nil then return end
+
+                    local lvl = tonumber(sheet.level) or 1
+
+                    if lvl &lt;= 6 then
+                        sheet.skills_bonus = 2
+                    elseif lvl &lt;= 15 then
+                        sheet.skills_bonus = 4
+                    else
+                        sheet.skills_bonus = 6
+                    end
+
+                    sheet.magic_lvl = math.floor(lvl/2)
+
+                    -- Update custom skills bonus
+                    local nodes = NDB.getChildNodes(sheet.rcl_custom_skills); 
+                    for i=1, #nodes, 1 do
+                        nodes[i].skills_bonus = sheet.skills_bonus
+                        nodes[i].level = sheet.magic_lvl
+                    end
+
+                    -- Update custom attacks bonus
+                    local nodes = NDB.getChildNodes(sheet.rcl_attack); 
+                    for i=1, #nodes, 1 do
+                        nodes[i].skills_bonus = sheet.skills_bonus
+                        nodes[i].level = sheet.magic_lvl
+                    end
+                </event>
+            </edit>
+        </layout>
+        <layout align="top" height="175" margins="{top=35}">
+            <layout align="left" width="100" margins="{left=48}">
+                <atrBox field="str"/>
+            </layout>
+            <layout align="left" width="100" margins="{left=59}">
+                <atrBox field="dex"/>
+            </layout>
+            <layout align="left" width="100" margins="{left=59}">
+                <atrBox field="con"/>
+            </layout>
+            <layout align="left" width="100" margins="{left=59}">
+                <atrBox field="int"/>
+            </layout>
+            <layout align="left" width="100" margins="{left=59}">
+                <atrBox field="wis"/>
+            </layout>
+            <layout align="left" width="100" margins="{left=59}">
+                <atrBox field="cha"/>
+            </layout>
+        </layout>
+        <layout align="top" height="190" margins="{top=25}">>
+            <label left="48" top="0" height="100" width="100" field="defense" fontSize="36" horzTextAlign="center" fontColor="black"/>
+            <dataLink fields="{'defense_armor', 'defense_other', 'defense_extra', 'defense_optional'}">
+                <event name="onChange">
+                    sheet.defense = tonumber(sheet.defense_armor or 0) +
+                                    tonumber(sheet.defense_other or 0) +
+                                    tonumber(sheet.defense_extra or 0) +
+                                    tonumber(sheet.defense_optional or 0) + 10
+                </event>
+            </dataLink>
+
+            <label left="296" top="5" height="45" width="50" field="defense_armor" horzTextAlign="center" fontColor="black" fontSize="24"/>
+            <edit left="374" top="5" height="45" width="50" field="defense_other" transparent="true" horzTextAlign="center" fontColor="black" fontSize="24"/>
+            <edit left="452" top="5" height="45" width="50" field="defense_extra" transparent="true" horzTextAlign="center" fontColor="black" fontSize="24"/>
+            <edit left="530" top="5" height="45" width="50" field="defense_optional" transparent="true" horzTextAlign="center" fontColor="black" fontSize="24"/>
+
+            <label left="207" top="105" height="86" width="117" field="fort_total" horzTextAlign="center" fontColor="black" fontSize="36"/>
+            <label left="342" top="105" height="86" width="117" field="refl_total" horzTextAlign="center" fontColor="black" fontSize="36"/>
+            <label left="477" top="105" height="86" width="117" field="will_total" horzTextAlign="center" fontColor="black" fontSize="36"/>
+
+            <edit left="641" top="20" height="30" width="98" field="hp_curr" transparent="true" horzTextAlign="center" fontColor="black" fontSize="16"/>
+            <edit left="749" top="20" height="30" width="98" field="hp_total" transparent="true" horzTextAlign="center" fontColor="black" fontSize="16"/>
+            <edit left="857" top="20" height="30" width="98" field="hp_temp" transparent="true" horzTextAlign="center" fontColor="black" fontSize="16"/>
+
+            <edit left="641" top="125" height="30" width="98" field="mp_curr" transparent="true" horzTextAlign="center" fontColor="black" fontSize="16"/>
+            <edit left="749" top="125" height="30" width="98" field="mp_total" transparent="true" horzTextAlign="center" fontColor="black" fontSize="16"/>
+            <edit left="857" top="125" height="30" width="98" field="mp_temp" transparent="true" horzTextAlign="center" fontColor="black" fontSize="16"/>
+        </layout>
+
+        <image left="635" top="616" height="342" width="327" field="avatar" editable="true" style="autoFit">
+            <event name="OnStartDrag">
+                drag:addData("imageURL", sheet.avatar);
+            </event>
+        </image>
+
+        <textEditor left="67" top="718" height="228" width="512" field="notes_quick" transparent="true" fontColor="black"/>
+    </scrollBox>
+</form>

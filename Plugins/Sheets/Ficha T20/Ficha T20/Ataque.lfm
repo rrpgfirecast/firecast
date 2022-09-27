@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmAtaque" width="423" height="57" margins="{left=3,right=2,top=2,bottom=10}" theme="dark">
+    <script>
+        <![CDATA[
+        ]]> 
+    </script>
+    <image width="423" height="57" src="/imagens/Extra_Atk.png"/>
+
+    <imageCheckBox left="1" top="1" height="26" width="26" checkedImage="imagens/Marcado.png" uncheckedImage="imagens/Nao_Marcado.png" field="trained"/>
+    <edit left="31" top="4" height="20" width="178" field="attack" fontColor="black" transparent="true"/>
+
+    <label left="217" top="4" width="33" height="20" field="total" horzTextAlign="center" fontColor="black"/>
+    <button left="217" top="4" width="33" height="20" opacity="0.5">
+        <event name="onClick">
+            local roll = Firecast.interpretarRolagem("1d20+" .. (sheet.total or 0)); 
+
+            local room = Firecast.getMesaDe(sheet);
+            room.activeChat:rolarDados(roll, (sheet.attack or ""));
+        </event>
+    </button>
+
+    <comboBox left="275" top="4" width="33" height="20" items="{'for', 'des', 'con', 'int', 'sab', 'car'}" values="{'str', 'dex', 'con', 'int', 'wis', 'cha'}" field="key" fontSize="10" transparent="true" fontColor="black"/>
+
+    <edit left="328" top="4" width="23" height="20" field="other" horzTextAlign="center" fontColor="black" transparent="true"/>
+    <edit left="370" top="4" width="23" height="20" field="extra" horzTextAlign="center" fontColor="black" transparent="true"/>
+
+    <button left="400" top="4" width="22" height="22" opacity="0.5">
+        <event name="onClick">
+            Dialogs.confirmYesNo("Deseja realmente apagar esse ataque?",
+                                 function (confirmado)
+                                    if confirmado then
+                                        sheet.trained = false
+                                        NDB.deleteNode(sheet);
+                                    end;
+                                 end);
+        </event>
+    </button>
+
+    <dataLink fields="{'key', 'other', 'extra', 'skills_bonus', 'trained', 'str_mod', 'dex_mod', 'con_mod', 'int_mod', 'wis_mod', 'cha_mod','level'}">
+        <event name="onChange">
+            if sheet==nil then return end
+
+            if sheet.key==nil then sheet.key="" end
+
+            local train = 0
+            if sheet.trained then
+                train = tonumber(sheet.skills_bonus or 0)
+            end
+
+            sheet.total =  tonumber(sheet[sheet.key.."_mod"] or 0) + 
+                                    train + 
+                                    tonumber(sheet.other or 0) + 
+                                    tonumber(sheet.extra or 0) + 
+                                    tonumber(sheet.level or 0)
+        </event>
+    </dataLink>
+
+    <edit left="32" top="31" height="20" width="91" field="dmg_1" fontColor="black" transparent="true"/>
+    <edit left="141" top="31" height="20" width="42" field="dmg_2" fontColor="black" transparent="true"/>
+    <edit left="206" top="31" height="20" width="42" field="dmg_3" fontColor="black" transparent="true"/>
+    <edit left="270" top="31" height="20" width="42" field="dmg_4" fontColor="black" transparent="true"/>
+    <edit left="334" top="31" height="20" width="42" field="dmg_5" fontColor="black" transparent="true"/>
+</form>

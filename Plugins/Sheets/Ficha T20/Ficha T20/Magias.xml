@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmMagias" align="client" theme="dark">
+    <script>
+        <![CDATA[
+        ]]> 
+    </script>
+    <scrollBox align="client">
+        <image width="1000" height="1000" src="/imagens/4-Magias.png"/>
+
+        <image left="313" top="31" width="61" height="61" src="/imagens/botao_add.png" hitTest="true" onClick="self.rcl_magic:append()" cursor="handPoint"/>
+
+        <recordList left="55" top="93" width="286" height="855" name="rcl_magic" field="rcl_magic" templateForm="frmDbsSelector" layout="vertical" selectable="true">
+            <event name="onSelect">                    
+                local node = self.rcl_magic.selectedNode; 
+                self.dsb_magic.node = node;                       
+                self.dsb_magic.visible = (node ~= nil);
+            </event>
+        </recordList>
+
+        <dataScopeBox left="385" top="59" width="593" height="791" name="dsb_magic" visible="false">
+            <image width="593" height="791" src="/imagens/Extra_Magia.png"/>
+
+            <edit left="49" top="55" width="361" height="33" field="nome" fontColor="black" vertTextAlign="center" fontSize="20" transparent="true"/>
+            <edit left="432" top="55" width="114" height="33" field="casting" fontColor="black" vertTextAlign="center" fontSize="20" transparent="true"/>
+
+            <edit left="48" top="128" width="52" height="33" field="level" fontColor="black" vertTextAlign="center" fontSize="20" transparent="true"/>
+            <edit left="124" top="128" width="114" height="33" field="reach" fontColor="black" vertTextAlign="center" fontSize="20" transparent="true"/>
+            <edit left="259" top="128" width="116" height="33" field="target" fontColor="black" vertTextAlign="center" fontSize="20" transparent="true"/>
+            <edit left="395" top="128" width="151" height="33" field="resistance" fontColor="black" vertTextAlign="center" fontSize="20" transparent="true"/>
+
+            <textEditor left="49" top="206" width="496" height="495" field="details" fontColor="black" transparent="true"/>
+        </dataScopeBox>
+
+        <label left="451" top="890" width="57" height="35" fontSize="20" fontColor="black" field="magic_cd" horzTextAlign="center"/>
+        <label left="665" top="892" width="47" height="35" fontSize="20" fontColor="black" field="magic_lvl" horzTextAlign="center"/>/>
+        <comboBox left="743" top="892" width="47" height="35" items="{'for', 'des', 'con', 'int', 'sab', 'car'}" values="{'str', 'dex', 'con', 'int', 'wis', 'cha'}" field="magic_key" fontSize="20" transparent="true" fontColor="black"/>
+        <edit left="818" top="890" width="51" height="35" fontSize="20" field="magic_other" horzTextAlign="center" fontColor="black" transparent="true"/>
+        <edit left="896" top="890" width="51" height="35" fontSize="20" field="magic_extra" horzTextAlign="center" fontColor="black" transparent="true"/>
+
+        <dataLink fields="{'magic_lvl', 'magic_key', 'magic_other', 'magic_extra'}">
+            <event name="onChange">
+                if sheet==nil then return end
+
+
+                if sheet.magic_key==nil or sheet.magic_key=="" then 
+                    sheet.magic_key="-" 
+                end
+
+                sheet.magic_cd =    tonumber(sheet[sheet.magic_key.."_mod"] or 0) + 
+                                    tonumber(sheet.magic_lvl or 0) + 
+                                    tonumber(sheet.magic_other or 0) + 
+                                    tonumber(sheet.magic_extra or 0) + 10
+
+            </event>
+        </dataLink>
+    </scrollBox>
+</form>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmDetalhes" align="client" theme="dark">
+    <script>
+        <![CDATA[
+        ]]> 
+    </script>
+    <scrollBox align="client">
+        <image width="1000" height="1000" src="/imagens/6-Detalhes.png"/>
+
+        <image left="23" top="31" width="61" height="61" src="/imagens/botao_add.png" hitTest="true" onClick="self.rcl_connection1:append()" cursor="handPoint"/>
+        <image left="934" top="31" width="61" height="61" src="/imagens/botao_add.png" hitTest="true" onClick="self.rcl_connection2:append()" cursor="handPoint"/>
+
+        <recordList left="55" top="91" width="443" height="545" name="rcl_connection1" field="rcl_connection1" templateForm="frmConexao" layout="vertical"/>
+        <recordList left="519" top="91" width="443" height="545" name="rcl_connection2" field="rcl_connection2" templateForm="frmConexao" layout="vertical"/>
+
+        <edit left="69" top="752" width="196" height="36" field="height" transparent="true" fontColor="black" horzTextAlign="center" fontSize="20"/>
+        <edit left="277" top="752" width="196" height="36" field="hair" transparent="true" fontColor="black" fontSize="20"/>
+        <textEditor left="490" top="752" width="456" height="186" field="details" transparent="true" fontColor="black"/>
+
+        <edit left="69" top="827" width="196" height="36" field="eyes" transparent="true" fontColor="black" fontSize="20"/>
+        <edit left="277" top="827" width="196" height="36" field="skin" transparent="true" fontColor="black" fontSize="20"/>
+
+        <edit left="69" top="902" width="404" height="36" field="body" transparent="true" fontColor="black" fontSize="20"/>
+    </scrollBox>
+</form>

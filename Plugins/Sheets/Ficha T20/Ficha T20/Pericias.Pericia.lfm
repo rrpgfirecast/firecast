@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmPericia" width="423" height="27" margins="{left=2,right=10,top=2,bottom=2}" theme="dark">
+    <script>
+        <![CDATA[
+        ]]> 
+    </script>
+    <image width="423" height="27" src="/imagens/Extra_Per.png"/>
+
+    <imageCheckBox left="4" top="4" width="20" height="20" checkedImage="imagens/Marcado.png" uncheckedImage="imagens/Nao_Marcado.png" field="trained"/>
+
+    <edit left="31" width="178" height="20" field="skill" fontColor="black" transparent="true"/>
+
+    <label left="217" top="4" width="32" height="20" field="total" horzTextAlign="center" fontColor="black"/>
+    <button left="217" top="4" width="32" height="20" opacity="0.5">
+        <event name="onClick">
+            local roll = Firecast.interpretarRolagem("1d20+" .. (sheet.total or 0)); 
+
+            local room = Firecast.getMesaDe(sheet);
+            room.activeChat:rolarDados(roll, (sheet.skill or ""));
+        </event>
+    </button>
+
+    <comboBox left="275" top="4" width="33" height="20" items="{'for', 'des', 'con', 'int', 'sab', 'car'}" values="{'str', 'dex', 'con', 'int', 'wis', 'cha'}" field="key" fontSize="10" transparent="true" fontColor="black"/>
+
+    <edit left="328" top="4" width="23" height="20" field="other" horzTextAlign="center" fontColor="black" transparent="true"/>
+    <edit left="370" top="4" width="23" height="20" field="extra" horzTextAlign="center" fontColor="black" transparent="true"/>
+
+    <button left="400" top="4" width="22" height="22" opacity="0.5">
+        <event name="onClick">
+            Dialogs.confirmYesNo("Deseja realmente apagar essa perícia?",
+                                 function (confirmado)
+                                    if confirmado then
+                                        sheet.trained = false
+                                        NDB.deleteNode(sheet);
+                                    end;
+                                 end);
+        </event>
+    </button>
+
+    <dataLink fields="{'key', 'other', 'extra', 'skills_bonus', 'trained', 'str_mod', 'dex_mod', 'con_mod', 'int_mod', 'wis_mod', 'cha_mod', 'level'}">
+        <event name="onChange">
+            if sheet==nil then return end
+
+            if sheet.key==nil then sheet.key="" end
+
+            local train = 0
+            if sheet.trained then
+                train = tonumber(sheet.skills_bonus or 0)
+            end
+
+            sheet.total =  tonumber(sheet[sheet.key.."_mod"] or 0) + 
+                                    train + 
+                                    tonumber(sheet.other or 0) + 
+                                    tonumber(sheet.extra or 0) + 
+                                    tonumber(sheet.level or 0)
+        </event>
+    </dataLink>
+
+    <!-- Calcule o total de pericias treinadas-->
+    <dataLink fields="{'trained'}">
+        <event name="onUserChange">
+            if sheet~= nil then
+                local node = NDB.getRoot(sheet);
+                local trained = 0;
+
+                local nodes = NDB.getChildNodes(node.rcl_custom_skills); 
+                for i=1, #nodes, 1 do
+                    if nodes[i].trained then trained = trained +1 end
+                end
+
+                node.custom_trained = trained;
+            end;
+        </event>
+    </dataLink>
+</form>

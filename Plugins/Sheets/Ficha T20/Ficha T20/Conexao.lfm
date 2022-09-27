@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmConexao" width="416" height="150" margins="{left=2,right=10,top=2,bottom=2}" theme="dark">
+    <script>
+        <![CDATA[
+        ]]> 
+    </script>
+    <image width="416" height="150" src="/imagens/Extra_Conex.png"/>
+
+    <image left="5" top="4" width="141" height="141" field="avatar" editable="true" style="autoFit">
+        <event name="OnStartDrag">
+            drag:addData("imageURL", sheet.avatar);
+        </event>
+    </image>
+    <edit left="165" top="4" width="206" height="27" field="nome" transparent="true" fontColor="black" fontSize="20"/>
+    <textEditor left="165" top="49" width="247" height="97" field="details" transparent="true" fontColor="black"/>
+    <button left="381" top="0" width="35" height="35" opacity="0.5">
+        <event name="onClick">
+            Dialogs.confirmYesNo("Deseja realmente apagar essa conexão?",
+                                 function (confirmado)
+                                    if confirmado then
+                                        NDB.deleteNode(sheet);
+                                    end;
+                                 end);
+        </event>
+    </button>
+</form>

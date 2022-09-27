@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmPoderes" align="client" theme="dark">
+    <script>
+        <![CDATA[
+        ]]> 
+    </script>
+    <scrollBox align="client">
+        <image width="1000" height="1000" src="/imagens/3-Poderes.png"/>
+
+        <image left="313" top="31" width="61" height="61" src="/imagens/botao_add.png" hitTest="true" onClick="self.rcl_power:append()" cursor="handPoint"/>
+
+        <recordList left="55" top="93" width="286" height="855" name="rcl_power" field="rcl_power" templateForm="frmDbsSelector" layout="vertical" selectable="true">
+            <event name="onSelect">                    
+                local node = self.rcl_power.selectedNode; 
+                self.dsb_power.node = node;                       
+                self.dsb_power.visible = (node ~= nil);
+            </event>
+        </recordList>
+
+        <dataScopeBox left="385" top="59" width="593" height="591" name="dsb_power" visible="false">
+            <image width="593" height="591" src="/imagens/Extra_Poder.png"/>
+
+            <edit left="49" top="49" width="496" height="32" field="nome" fontColor="black" vertTextAlign="center" fontSize="20" transparent="true"/>
+
+            <textEditor left="49" top="128" width="496" height="343" field="details" fontColor="black" transparent="true"/>
+
+            <edit left="49" top="516" width="244" height="32" field="type" fontColor="black" vertTextAlign="center" fontSize="20" transparent="true"/>
+            <edit left="313" top="516" width="158" height="32" field="source" fontColor="black" vertTextAlign="center" fontSize="20" transparent="true"/>
+            <edit left="493" top="516" width="52" height="32" field="level" fontColor="black" horzTextAlign="center" fontSize="20" transparent="true"/>
+        </dataScopeBox>
+    </scrollBox>
+</form>

@@ -1,0 +1,263 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmPericias" align="client" theme="dark">
+    <script>
+        <![CDATA[
+        ]]> 
+    </script>
+    <template name="skill">
+        <imageCheckBox left="11" width="20" height="20" checkedImage="imagens/Marcado.png" uncheckedImage="imagens/Nao_Marcado.png" field="$(field)_trained"/>
+
+        <label left="258" width="32" height="20" field="$(field)_total" horzTextAlign="center" fontColor="black"/>
+        <button left="258" width="32" height="20" opacity="0.5">
+            <event name="onClick">
+                local roll = Firecast.interpretarRolagem("1d20+" .. (sheet.$(field)_total or 0)); 
+
+                local room = Firecast.getMesaDe(sheet);
+                room.activeChat:rolarDados(roll, "$(skill)");
+            </event>
+        </button>
+
+        <comboBox left="315" width="33" height="20" items="{'for', 'des', 'con', 'int', 'sab', 'car'}" values="{'str', 'dex', 'con', 'int', 'wis', 'cha'}" field="$(field)_key" fontSize="10" transparent="true" fontColor="black"/>
+
+        <edit left="368" width="23" height="20" field="$(field)_other" horzTextAlign="center" fontColor="black" transparent="true"/>
+        <edit left="410" width="23" height="20" field="$(field)_extra" horzTextAlign="center" fontColor="black" transparent="true"/>
+
+        <dataLink fields="{'$(field)_key', '$(field)_other', '$(field)_extra', 'skills_bonus', '$(field)_trained', 'str_mod', 'dex_mod', 'con_mod', 'int_mod', 'wis_mod', 'cha_mod', 'magic_lvl'}">
+            <event name="onChange">
+                if sheet==nil then return end
+
+                if sheet.$(field)_key==nil or sheet.$(field)_key=="" then 
+                    sheet.$(field)_key="$(atr)" 
+                end
+
+                local train = 0
+                if sheet.$(field)_trained then
+                    train = tonumber(sheet.skills_bonus or 0)
+                end
+
+                sheet.$(field)_total =  tonumber(sheet[sheet.$(field)_key.."_mod"] or 0) + 
+                                        train + 
+                                        tonumber(sheet.$(field)_other or 0) + 
+                                        tonumber(sheet.$(field)_extra or 0) + 
+                                        tonumber(sheet.magic_lvl or 0)
+            </event>
+        </dataLink>
+    </template>
+    <template name="skill2">
+        <imageCheckBox left="11" width="20" height="20" checkedImage="imagens/Marcado.png" uncheckedImage="imagens/Nao_Marcado.png" field="$(field)_trained"/>
+
+        <label left="255" width="32" height="20" field="$(field)_total" horzTextAlign="center" fontColor="black"/>
+        <button left="255" width="33" height="20" opacity="0.5">
+            <event name="onClick">
+                local roll = Firecast.interpretarRolagem("1d20+" .. (sheet.$(field)_total or 0)); 
+
+                local room = Firecast.getMesaDe(sheet);
+                room.activeChat:rolarDados(roll, "$(skill)");
+            </event>
+        </button>
+
+        <comboBox left="312" width="33" height="20" items="{'for', 'des', 'con', 'int', 'sab', 'car'}" values="{'str', 'dex', 'con', 'int', 'wis', 'cha'}" field="$(field)_key" fontSize="10" transparent="true" fontColor="black"/>
+
+        <edit left="365" width="23" height="20" field="$(field)_other" horzTextAlign="center" fontColor="black" transparent="true"/>
+        <edit left="407" width="23" height="20" field="$(field)_extra" horzTextAlign="center" fontColor="black" transparent="true"/>
+
+        <dataLink fields="{'$(field)_key', '$(field)_other', '$(field)_extra', 'skills_bonus', '$(field)_trained', 'skills_penalty', 'str_mod', 'dex_mod', 'con_mod', 'int_mod', 'wis_mod', 'cha_mod', 'magic_lvl'}">
+            <event name="onChange">
+                if sheet==nil then return end
+
+                --showMessage(sheet.$(field)_key)
+                if sheet.$(field)_key==nil or sheet.$(field)_key=="" then 
+                    sheet.$(field)_key="$(atr)" 
+                end
+
+                if $(need_training) and not sheet.$(field)_trained then
+                    sheet.$(field)_total = ""
+                else
+
+                    local pen = 0
+                    if $(penalty) then
+                        pen = tonumber(sheet.skills_penalty or 0)
+                    end
+                    local train = 0
+                    if sheet.$(field)_trained then
+                        train = tonumber(sheet.skills_bonus or 0)
+                    end
+
+                    sheet.$(field)_total =  tonumber(sheet[sheet.$(field)_key.."_mod"] or 0) + 
+                                            train + 
+                                            tonumber(sheet.$(field)_other or 0) + 
+                                            tonumber(sheet.$(field)_extra or 0) + 
+                                            pen + 
+                                            tonumber(sheet.magic_lvl or 0)
+                end
+            </event>
+        </dataLink>
+    </template>
+    <scrollBox align="client">
+        <image width="1000" height="1000" src="/imagens/2-Pericias.png"/>
+
+        <layout align="top" height="100" margins="{top=110}">
+            <layout align="left" width="440" margins="{left=55}">
+                <layout align="top" height="20" margins="{top=2}">
+                    <skill field="initiative" atr="dex" skill="Iniciativa"/>
+                </layout>
+                <layout align="top" height="20" margins="{top=14}">
+                    <skill field="fight" atr="str" skill="Luta"/>
+                </layout>
+                <layout align="top" height="20" margins="{top=14}">
+                    <skill field="aim" atr="dex" skill="Pontaria"/>
+                </layout>
+            </layout>
+            <layout align="left" width="440" margins="{left=24}">
+                <layout align="top" height="20" margins="{top=2}">
+                    <skill field="fort" atr="con" skill="Fortitude"/>
+                </layout>
+                <layout align="top" height="20" margins="{top=14}">
+                    <skill field="refl" atr="dex" skill="Reflexos"/>
+                </layout>
+                <layout align="top" height="20" margins="{top=14}">
+                    <skill field="will" atr="wis" skill="Vontade"/>
+                </layout>
+            </layout>
+        </layout>
+
+        <layout align="top" height="375" margins="{top=64}">
+            <layout align="left" width="440" margins="{left=55}">
+                <layout align="top" height="20" margins="{top=2}">
+                    <skill2 field="acrobatics" penalty="true" need_training="false" atr="dex" skill="Acrobacia"/>
+                </layout>
+                <layout align="top" height="20" margins="{top=16}">
+                    <skill2 field="training" penalty="false" need_training="true" atr="cha" skill="Adestramento"/>
+                </layout>
+                <layout align="top" height="20" margins="{top=15}">
+                    <skill2 field="athletics" penalty="false" need_training="false" atr="str" skill="Atletismo"/>
+                </layout>
+                <layout align="top" height="20" margins="{top=14}">
+                    <skill2 field="acting" penalty="false" need_training="false" atr="cha" skill="Atuação"/>
+                </layout>
+                <layout align="top" height="20" margins="{top=16}">
+                    <skill2 field="ride" penalty="false" need_training="false" atr="dex" skill="Cavalgar"/>
+                </layout>
+                <layout align="top" height="20" margins="{top=15}">
+                    <skill2 field="knowledge" penalty="false" need_training="true" atr="int" skill="Conhecimento"/>
+                </layout>
+                <layout align="top" height="20" margins="{top=15}">
+                    <skill2 field="cure" penalty="false" need_training="false" atr="wis" skill="Cura"/>
+                </layout>
+                <layout align="top" height="20" margins="{top=16}">
+                    <skill2 field="diplomacy" penalty="false" need_training="false" atr="cha" skill="Diplomacia"/>
+                </layout>
+                <layout align="top" height="20" margins="{top=15}">
+                    <skill2 field="deception" penalty="false" need_training="false" atr="cha" skill="Enganação"/>
+                </layout>
+                <layout align="top" height="20" margins="{top=15}">
+                    <skill2 field="stealth" penalty="true" need_training="false" atr="dex" skill="Furtividade"/>
+                </layout>
+                <layout align="top" height="20" margins="{top=15}">
+                    <skill2 field="war" penalty="false" need_training="true" atr="int" skill="Guerra"/>
+                </layout>
+            </layout>
+            <layout align="left" width="440" margins="{left=24}">
+                <layout align="top" height="20" margins="{top=2}">
+                    <skill2 field="intimidation" penalty="false" need_training="false" atr="cha" skill="Intimidação"/>
+                </layout>
+                <layout align="top" height="20" margins="{top=16}">
+                    <skill2 field="intuition" penalty="false" need_training="false" atr="wis" skill="Intuição"/>
+                </layout>
+                <layout align="top" height="20" margins="{top=15}">
+                    <skill2 field="investigation" penalty="false" need_training="false" atr="int" skill="Investigação"/>
+                </layout>
+                <layout align="top" height="20" margins="{top=14}">
+                    <skill2 field="gambling" penalty="false" need_training="true" atr="cha" skill="Jogatina"/>
+                </layout>
+                <layout align="top" height="20" margins="{top=16}">
+                    <skill2 field="thievery" penalty="true" need_training="true" atr="dex" skill="Ladinagem"/>
+                </layout>
+                <layout align="top" height="20" margins="{top=15}">
+                    <skill2 field="mysticism" penalty="false" need_training="true" atr="int" skill="Misticismo"/>
+                </layout>
+                <layout align="top" height="20" margins="{top=15}">
+                    <skill2 field="nobility" penalty="false" need_training="true" atr="int" skill="Nobreza"/>
+                </layout>
+                <layout align="top" height="20" margins="{top=16}">
+                    <skill2 field="perception" penalty="false" need_training="false" atr="wis" skill="Percepção"/>
+                </layout>
+                <layout align="top" height="20" margins="{top=15}">
+                    <skill2 field="piloting" penalty="false" need_training="true" atr="dex" skill="Pilotagem"/>
+                </layout>
+                <layout align="top" height="20" margins="{top=15}">
+                    <skill2 field="religion" penalty="false" need_training="true" atr="wis" skill="Religião"/>
+                </layout>
+                <layout align="top" height="20" margins="{top=15}">
+                    <skill2 field="survival" penalty="false" need_training="false" atr="wis" skill="Sobrevivência"/>
+                </layout>
+            </layout>
+        </layout>
+
+        <layout align="top" height="200" margins="{top=37}">
+            <recordList left="55" width="907" height="200" name="rcl_custom_skills" field="rcl_custom_skills" templateForm="frmPericia" layout="verticalTiles"/>
+        </layout>
+
+        <layout align="top" height="67" margins="{top=20}">
+            <label left="178" top="13" width="56" height="42" fontColor="black" field="skills_trained" fontSize="24" horzTextAlign="center"/>
+            <dataLink fields="{'initiative_trained', 'fight_trained', 'aim_trained', 'fort_trained', 'refl_trained', 'will_trained', 'acrobatics_trained', 'training_trained', 'athletics_trained', 'acting_trained', 'ride_trained', 'knowledge_trained', 'cure_trained', 'diplomacy_trained', 'deception_trained', 'stealth_trained', 'war_trained', 'intimidation_trained', 'intuition_trained', 'investigation_trained', 'gambling_trained', 'thievery_trained', 'mysticism_trained', 'nobility_trained', 'perception_trained', 'piloting_trained', 'religion_trained', 'survival_trained', 'custom_trained'}">
+                <event name="onChange">
+                    if sheet==nil then return end
+                    local trained = 0
+
+                    if sheet.initiative_trained then trained = trained + 1 end
+                    if sheet.fight_trained then trained = trained + 1 end
+                    if sheet.aim_trained then trained = trained + 1 end
+                    if sheet.fort_trained then trained = trained + 1 end
+                    if sheet.refl_trained then trained = trained + 1 end
+                    if sheet.will_trained then trained = trained + 1 end
+                    if sheet.acrobatics_trained then trained = trained + 1 end
+                    if sheet.training_trained then trained = trained + 1 end
+                    if sheet.athletics_trained then trained = trained + 1 end
+                    if sheet.acting_trained then trained = trained + 1 end
+                    if sheet.ride_trained then trained = trained + 1 end
+                    if sheet.knowledge_trained then trained = trained + 1 end
+                    if sheet.cure_trained then trained = trained + 1 end
+                    if sheet.diplomacy_trained then trained = trained + 1 end
+                    if sheet.deception_trained then trained = trained + 1 end
+                    if sheet.stealth_trained then trained = trained + 1 end
+                    if sheet.war_trained then trained = trained + 1 end
+                    if sheet.intimidation_trained then trained = trained + 1 end
+                    if sheet.intuition_trained then trained = trained + 1 end
+                    if sheet.investigation_trained then trained = trained + 1 end
+                    if sheet.gambling_trained then trained = trained + 1 end
+                    if sheet.thievery_trained then trained = trained + 1 end
+                    if sheet.mysticism_trained then trained = trained + 1 end
+                    if sheet.nobility_trained then trained = trained + 1 end
+                    if sheet.perception_trained then trained = trained + 1 end
+                    if sheet.piloting_trained then trained = trained + 1 end
+                    if sheet.religion_trained then trained = trained + 1 end
+                    if sheet.survival_trained then trained = trained + 1 end
+                    
+                    trained = trained + tonumber(sheet.custom_trained or 0)
+
+                    sheet.skills_trained = trained
+                </event>
+            </dataLink>
+            <label left="388" top="13" width="56" height="42" fontColor="black" field="skills_bonus" fontSize="24" horzTextAlign="center"/>
+            <label left="648" top="13" width="56" height="42" fontColor="black" field="skills_penalty" fontSize="24" horzTextAlign="center"/>
+
+            <button left="739" top="3" width="227" height="67" opacity="0.25">
+                <event name="onClick">
+                    local node = self.rcl_custom_skills:append()
+
+                    if node~=nil then
+                        node.skills_bonus = sheet.skills_bonus
+                        node.str_mod = sheet.str_mod
+                        node.dex_mod = sheet.dex_mod
+                        node.con_mod = sheet.con_mod
+                        node.int_mod = sheet.int_mod
+                        node.wis_mod = sheet.wis_mod
+                        node.cha_mod = sheet.cha_mod
+                    end
+                </event>
+            </button>
+
+        </layout>
+    </scrollBox>
+</form>

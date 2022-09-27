@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmCreditos" align="client" theme="dark">
+    <script>
+        <![CDATA[
+        ]]> 
+    </script>
+    <scrollBox align="client">
+        <image width="1000" height="1000" src="/imagens/9-Creditos.png"/>
+
+        <label left="245" top="439" width="75" height="20" field="versionInstalled" horzTextAlign="center" fontColor="black"/>
+        <label left="245" top="467" width="75" height="20" field="versionDownloaded" horzTextAlign="center" fontColor="black"/>
+
+        <imageCheckBox left="78" top="514" width="27" height="27" checkedImage="imagens/Marcado.png" uncheckedImage="imagens/Nao_Marcado.png" field="noUpdate"/>
+
+        <button left="78" top="551" width="119" height="40" opacity="0.5" onClick="GUI.openInBrowser('https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20T20/README.md')"/>
+        <button left="208" top="551" width="119" height="40" opacity="0.5" onClick="GUI.openInBrowser('https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20T20/output/Ficha%20T20.rpk?raw=true')"/>
+
+        <button left="78" top="804" width="172" height="57" opacity="0.5" onClick="GUI.openInBrowser('https://my.firecastrpg.com/a?a=pagRWEMesaInfo.actInfoMesa&amp;mesaid=64070');"/>
+        <button left="78" top="872" width="359" height="57" opacity="0.5" onClick="GUI.openInBrowser('https://my.firecastrpg.com/a?a=pagRWEMesaInfo.actInfoMesa&amp;mesaid=164636');"/>
+    </scrollBox>
+</form>
