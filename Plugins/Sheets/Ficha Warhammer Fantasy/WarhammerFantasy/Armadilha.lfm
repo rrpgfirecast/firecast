@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmArmadilha" height="25" width="350" margins="{top=2}">
+	 <script> 
+		<![CDATA[			
+		local function askForDelete()
+			Dialogs.confirmYesNo("Deseja realmente apagar essa armadilha?",
+								 function (confirmado)
+									if confirmado then
+										NDB.deleteNode(sheet);
+									end;
+								 end);
+		end;
+
+		local function showArmadilhaPopup()
+			local pop = self:findControlByName("popArmadilha");
+				
+			if pop ~= nil then
+				pop:setNodeObject(self.sheet);
+				pop:showPopupEx("right", self);
+			else
+				showMessage("Ops, bug.. nao encontrei o popup de armadilhas para exibir");
+			end;				
+		end;
+	]]>
+	</script>
+
+	<button align="right" width="25" text="i" onClick="showArmadilhaPopup();"/>
+	<button align="right" width="25" text="X" onClick="askForDelete();"/>
+	<edit align="client" vertTextAlign="center" field="nome"/>
+</form>

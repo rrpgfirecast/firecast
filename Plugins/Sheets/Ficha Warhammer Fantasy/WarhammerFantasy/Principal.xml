@@ -1,0 +1,145 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmAvatar" align="client">
+	<template name="Cabecalho">
+		<layout align="left" width="$(width)">
+			<label align="left" width="75" text="$(text)" horzTextAlign="center" fontSize="$(fontSize)"/>
+			<edit align="client" field="$(field)"/>
+		</layout>
+	</template>
+	<template name="Atributo">
+		<layout align="top" height="25">
+			<label align="left" width="100" text="$(text)" horzTextAlign="center" fontSize="$(fontSize)"/>
+			<edit align="left" width="30" field="$(field)Initial" horzTextAlign="center"/>
+			<edit align="left" width="30" field="$(field)Advances" horzTextAlign="center"/>
+			<rectangle align="left" width="30" color="black" strokeSize="1" strokeColor="white" padding="{left=2,right=2,top=2,bottom=2}">
+				<label align="client" field="$(field)Total" horzTextAlign="center"/>
+			</rectangle>
+
+            <dataLink fields="{'$(field)Initial', '$(field)Advances'}">
+                <event name="onChange">
+                	if sheet==nil then return end
+                    sheet.$(field)Total = tonumber(sheet.$(field)Initial or 0) +
+                                    tonumber(sheet.$(field)Advances or 0)
+                </event>
+            </dataLink>
+
+            <dataLink fields="{'$(field)Total'}">
+                <event name="onChange">
+		                -- Update custom skills atr
+		                local nodes = NDB.getChildNodes(sheet.campoDasPericias); 
+		                for i=1, #nodes, 1 do
+		                    nodes[i].$(field)Total = sheet.$(field)Total
+		                end
+
+		                -- Update custom attacks atr
+		                local nodes = NDB.getChildNodes(sheet.campoDasPericiasAvancadas); 
+		                for i=1, #nodes, 1 do
+		                    nodes[i].$(field)Total = sheet.$(field)Total
+		                end
+                </event>
+            </dataLink>
+		</layout>
+	</template>
+	<template name="LabelEdit">
+		<layout align="top" height="25">
+			<label align="left" width="100" text="$(text)" horzTextAlign="center" fontSize="$(fontSize)"/>
+			<edit align="left" width="30" field="$(field)"/>
+		</layout>
+	</template>
+
+	<scrollBox align="client">
+		<layout align="top" height="80">
+			<rectangle align="left" width="805" strokeSize="1" padding="{left=2,right=2,top=2,bottom=2}">
+				<layout align="top" height="25">
+					<Cabecalho text="Nome" field="name" width="400" fontSize="13"/>
+					<Cabecalho text="Especie" field="species" width="200" fontSize="13"/>
+					<Cabecalho text="Classe" field="job" width="200" fontSize="13"/>
+				</layout>
+				<layout align="top" height="25">
+					<Cabecalho text="Carreira" field="career" width="400" fontSize="13"/>
+					<Cabecalho text="Nível da Carreira" field="careerLevel" width="400" fontSize="9"/>
+				</layout>
+				<layout align="top" height="25">
+					<Cabecalho text="Caminho da Carreira" field="careerPath" width="600" fontSize="9"/>
+					<Cabecalho text="Status" field="status" width="200" fontSize="13"/>
+				</layout>
+			</rectangle>
+		</layout>
+
+		<layout align="top" height="280" margins="{top=5}">
+			<rectangle align="left" width="195" strokeSize="1" padding="{left=2,right=2,top=2,bottom=2}">
+				<layout align="top" height="25">
+					<label align="left" width="100" text=""/>
+					<label align="left" width="30" text="Ini" horzTextAlign="center"/>
+					<label align="left" width="30" text="Adv" horzTextAlign="center"/>
+					<label align="left" width="30" text="Curr" horzTextAlign="center"/>
+				</layout>
+				<Atributo text="Corpo-a-Corpo" field="ws" fontSize="13"/>
+				<Atributo text="Arma a Distancia" field="bs" fontSize="13"/>
+				<Atributo text="Força" field="s" fontSize="13"/>
+				<Atributo text="Constituição" field="t" fontSize="13"/>
+				<Atributo text="Iniciativa" field="i" fontSize="13"/>
+				<Atributo text="Agilidade" field="ag" fontSize="13"/>
+				<Atributo text="Destreza" field="dex" fontSize="13"/>
+				<Atributo text="Inteligencia" field="int" fontSize="13"/>
+				<Atributo text="Força de Vontade" field="wp" fontSize="11"/>
+				<Atributo text="Sociedade" field="fel" fontSize="13"/>
+			</rectangle>
+
+			<rectangle align="left" width="135" strokeSize="1" margins="{left=5}" padding="{left=2,right=2,top=2,bottom=2}">
+				<label align="top" width="100" text="RESILIÊNCIA" horzTextAlign="center"/>
+				<LabelEdit text="Resiliência" field="resilience" fontSize="13"/>
+				<LabelEdit text="Determinação" field="resolve" fontSize="13"/>
+				<LabelEdit text="Motivação" field="motivation" fontSize="13"/>
+
+				<label align="top" width="100" text="DESTINO" horzTextAlign="center" margins="{top=10}"/>
+				<LabelEdit text="Destino" field="fate" fontSize="13"/>
+				<LabelEdit text="Fortuna" field="fortuna" fontSize="13"/>
+			</rectangle>
+
+			<rectangle align="left" width="135" strokeSize="1" margins="{left=5}" padding="{left=2,right=2,top=2,bottom=2}">
+				<label align="top" width="100" text="MOVIMENTO" horzTextAlign="center"/>
+				<LabelEdit text="Movimento" field="movement" fontSize="13"/>
+				<LabelEdit text="Caminhar" field="walk" fontSize="13"/>
+				<LabelEdit text="Correr" field="run" fontSize="13"/>
+
+				<label align="top" width="100" text="EXPERIÊNCIA" horzTextAlign="center" margins="{top=10}"/>
+				<LabelEdit text="Atual" field="xpCurr" fontSize="13"/>
+				<LabelEdit text="Gasto" field="xpSpent" fontSize="13"/>
+				<LabelEdit text="Total" field="xpTotal" fontSize="13"/>
+			</rectangle>
+
+			<!-- Imagem para avatar do personagem editavel e que pode ser arrastada para o scene -->
+			<rectangle align="left" width="280" color="black" strokeColor="white" strokeSize="1" margins="{left=5}">
+				<label align="client" text="Avatar" horzTextAlign="center" margins="{left=2, right=2, top=2, bottom=2}">
+					<image align="client" field="avatar" editable="true" style="autoFit">
+						<event name="OnStartDrag">
+						    drag:addData("imageURL", sheet.avatar);
+						</event>
+					</image>
+				</label>
+			</rectangle>
+		</layout>
+
+		<layout align="top" height="230" margins="{top=5}">
+			<rectangle align="left" width="195" strokeSize="1" padding="{left=2,right=2,top=2,bottom=2}">
+				<label align="top" width="100" text="PSICOLOGIA" horzTextAlign="center"/>
+				<textEditor align="client" field="psychology"/>
+			</rectangle>
+			<rectangle align="left" width="195" strokeSize="1" padding="{left=2,right=2,top=2,bottom=2}"  margins="{left=5}">
+				<label align="top" width="100" text="CORRUPÇÃO &amp; MUTAÇÃO" horzTextAlign="center"/>
+				<textEditor align="client" field="corruption"/>
+			</rectangle>
+			<rectangle align="left" width="135" strokeSize="1" padding="{left=2,right=2,top=2,bottom=2}"  margins="{left=5}">
+				<label align="top" width="100" text="FERIMENTOS" horzTextAlign="center"/>
+				<LabelEdit text="SB" field="hpSB" fontSize="13"/>
+				<LabelEdit text="TBx2" field="hpTB" fontSize="13"/>
+				<LabelEdit text="WPB" field="hpWPB" fontSize="13"/>
+				<LabelEdit text="Resistência" field="hpHardy" fontSize="13"/>
+				<LabelEdit text="Ferimentos" field="hpWounds" fontSize="13"/>
+				<textEditor align="client" field="hpDetails"/>
+			</rectangle>
+		</layout>
+		
+	</scrollBox>
+</form>

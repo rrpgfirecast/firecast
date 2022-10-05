@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmPericias" align="client">
+	<scrollBox align="client">
+		<flowLayout align="top" autoHeight="true" maxColumns="3" horzAlign="center" orientation="vertical" avoidScale="true">
+			<ListaFlexivel nome="PERÍCIAS BÁSICAS" rclName="campoDasPericias" rclField="campoDasPericias" form="frmPericia"/>
+			<ListaFlexivel nome="PERÍCIAS AVANÇADAS" rclName="campoDasPericiasAvancadas" rclField="campoDasPericiasAvancadas" form="frmPericia"/>
+		</flowLayout>
+	</scrollBox>
+</form>

@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmMagias" align="client">
+
+	<popup name="popMagia" width="300" height="240" backOpacity="0.4" autoScopeNode="false">
+		<flowLayout align="top" autoHeight="true" maxControlsPerLine="3" margins="{bottom=4}" horzAlign="center">
+			<habilidadeSmallCenter text="CN" field="magicCN"/>
+			<habilidadeLarge text="Alcance" field="magicRange"/>
+			<habilidadeSmallCenter text="Alvo" field="magicTarget"/>
+			<habilidadeLarge text="Duração" field="magicDuration"/>
+		</flowLayout>
+		<textEditor align="client" field="descricao"/>
+	</popup>
+
+	<scrollBox align="client">
+		<flowLayout align="top" autoHeight="true" maxColumns="3" horzAlign="center" orientation="vertical" avoidScale="true">
+			<ListaFlexivel nome="MAGIAS" rclName="campoDasMagias" rclField="campoDasMagias" form="frmMagia"/>
+		</flowLayout>
+	</scrollBox>
+</form>

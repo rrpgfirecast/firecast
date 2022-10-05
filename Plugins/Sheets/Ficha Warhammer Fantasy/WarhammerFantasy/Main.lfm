@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<form name="frmTemplate" formType="sheetTemplate" dataType="Ambesek.Nefertyne.Template" title="Template" align="client" theme="dark">
+<form name="frmMain" formType="sheetTemplate" dataType="Ambesek.Warhammer.Fantasy" title="Ficha Warhammer Fantasy" align="client" theme="dark">
     <script>
         <![CDATA[
         local function isNewVersion(installed, downloaded)
@@ -58,39 +58,20 @@
         ]]> 
     </script>
     <tabControl align="client">
-        <tab title="Exemplos">
-            <tabControl align="client">
-                <tab title="DetailList">
-                    <import file="DetailList.lfm"/>
-                </tab>
-                <tab title="MultImageCheckbox">
-                    <import file="MultImageCheckbox.lfm"/>
-                </tab>
-                <tab title="ColorSelector">
-                    <import file="ColorSelector.lfm"/>
-                </tab>
-                <tab title="RclCounter">
-                    <import file="RclCounter.lfm"/>
-                </tab>
-                <tab title="Popup">
-                    <import file="Popup.lfm"/>
-                </tab>
-                <tab title="DiceRoll">
-                    <import file="DiceRoll.lfm"/>
-                </tab>
-                <tab title="Avatar">
-                    <import file="Avatar.lfm"/>
-                </tab>
-                <tab title="ImportExport">
-                    <import file="ImportExport.lfm"/>
-                </tab>
-                <tab title="ThemeControl">
-                    <import file="ThemeControl.lfm"/>
-                </tab>
-                <tab title="BarControl">
-                    <import file="BarControl.lfm"/>
-                </tab>
-            </tabControl>
+        <tab title="Principal">
+            <import file="Principal.xml"/>
+        </tab>
+        <tab title="Perícias">
+            <import file="Pericias.xml"/>
+        </tab>
+        <tab title="Habilidades">
+            <import file="Habilidades.xml"/>
+        </tab>
+        <tab title="Magias">
+            <import file="Magias.xml"/>
+        </tab>
+        <tab title="Equipamentos">
+            <import file="Equipamentos.xml"/>
         </tab>
         <tab title="Descrição">
             <import file="Description.lfm"/>
@@ -103,7 +84,7 @@
         </tab>
     </tabControl>
     <event name="onNodeReady">
-        Internet.download("raw_download_link",
+        Internet.download("https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20Warhammer%20Fantasy/output/Ficha%20Warhammer%20Fantasy.rpk?raw=true",
             function(stream, contentType)
                 local info = Firecast.Plugins.getRPKDetails(stream);
                 sheet.versionDownloaded = "VERSÃO DISPONÍVEL: " .. info.version;
@@ -122,7 +103,7 @@
                     Dialogs.choose("Há uma nova versão desse plugin. Deseja instalar?",{"Sim", "Não", "Não perguntar novamente."},
                         function(selected, selectedIndex, selectedText)
                             if selected and selectedIndex == 1 then
-                                GUI.openInBrowser('raw_download_link');
+                                GUI.openInBrowser('https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20Warhammer%20Fantasy/output/Ficha%20Warhammer%20Fantasy.rpk?raw=true');
                             elseif selected and selectedIndex == 3 then
                                 sheet.noUpdate = true;
                             end;
@@ -137,5 +118,38 @@
                 -- dividir "downloaded" por "total" lhe dará uma porcentagem do download.
             end,
             "checkForModification");
+    </event>
+    <event name="onNodeReady">
+        if sheet==nil then return end;
+        
+        if sheet.campoDasPericias == nil then
+            sheet.campoDasPericias = {}
+        end
+
+        local nodes = NDB.getChildNodes(sheet.campoDasPericias); 
+        if #nodes == 0 then
+            local skills = {"Artes", "Atletismo", "Suborno", "Charme", "Charme para Animais", "Escalar", "Calmo", "Resistencia ao Alcool", "Esquiva", "Dirigir", "Tenacidade", "Entretenimento", "Apostar", "Fofoca", "Pechinchar", "Intimidação", "Intuição", "Liderança", "Corpo a corpo (Basico)", "Corpo a corpo", "Navegação", "Sobrevivencia na Natureza", "Percepção", "Cavalgar", "Remar", "Furtividade"}
+            local keys = {"dex", "ag", "fel", "fel", "wp", "s", "wp", "t", "ag", "ag", "t", "fel", "int", "fel", "fel", "s", "i", "fel", "ws", "ws", "i", "int", "i", "ag", "s", "ag"}
+
+            for i=1, #skills, 1 do
+                local node = self.campoDasPericias:append();
+                if node~= nil then
+                    node.wsTotal = sheet.wsTotal
+                    node.bsTotal = sheet.bsTotal
+                    node.sTotal = sheet.sTotal
+                    node.tTotal = sheet.tTotal
+                    node.iTotal = sheet.iTotal
+                    node.agTotal = sheet.agTotal
+                    node.dexTotal = sheet.dexTotal
+                    node.intTotal = sheet.intTotal
+                    node.wpTotal = sheet.wpTotal
+                    node.felTotal = sheet.felTotal
+                    node.nome = skills[i]
+                    node.key = keys[i]
+                end
+            end
+        end
+
+        self.campoDasPericias:sort();
     </event>
 </form>

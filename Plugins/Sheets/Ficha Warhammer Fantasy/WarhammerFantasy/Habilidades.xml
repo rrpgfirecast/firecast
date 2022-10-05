@@ -1,0 +1,106 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmHabilidades" align="client">
+	<template name="habilidadeSmallCenter">
+		<flowPart minWidth="90" maxWidth="100" height="35">
+			<label align="top" class="tituloCampo" fontSize="10" text="$(text)" horzTextAlign="center" wordWrap="true" textTrimming="none" autoSize="true"/>
+			<edit align="client" class="" field="$(field)" horzTextAlign="center" fontSize="12" type="number"/>
+		</flowPart>
+	</template>
+	<template name="habilidadeLarge">
+		<flowPart minWidth="180" maxWidth="200" height="35">
+			<label align="top" class="tituloCampo" fontSize="10" text="$(text)" horzTextAlign="center" wordWrap="true" textTrimming="none" autoSize="true"/>
+			<edit align="client" class="" field="$(field)" fontSize="12"/>
+		</flowPart>
+	</template>
+	<template name="ListaFlexivel">
+		<flowPart minWidth="300" maxWidth="600" height="25" minScaledWidth="280" name="$(rclName)Part" adjustHeightToLine="false" margins="{left=5}">
+			<script>
+				<![CDATA[
+					rawset(self.$(rclName)Part, "_recalcHeight", 					
+						function ()
+							self.$(rclName)Part.height = self.$(rclName).height + 25;
+						end);
+				]]>
+			</script>
+
+			<layout align="top" height="25">
+				<button text="+" align="left" width="30">
+					<event name="onClick">
+						local node = self.$(rclName):append();
+
+						if node~= nil and ("$(rclName)" == "campoDasPericias" or "$(rclName)" == "campoDasPericiasAvancadas") then
+	                        node.wsTotal = sheet.wsTotal
+	                        node.bsTotal = sheet.bsTotal
+	                        node.sTotal = sheet.sTotal
+	                        node.tTotal = sheet.tTotal
+	                        node.iTotal = sheet.iTotal
+	                        node.agTotal = sheet.agTotal
+	                        node.dexTotal = sheet.dexTotal
+	                        node.intTotal = sheet.intTotal
+	                        node.wpTotal = sheet.wpTotal
+	                        node.felTotal = sheet.felTotal
+						end
+					</event>
+				</button>
+				<label text="$(nome)" align="left" width="225" margins="{left=5}"/>
+			</layout>
+
+			<recordList name="$(rclName)" field="$(rclField)" templateForm="$(form)" align="top" layout="vertical" autoHeight="true" hitTest="false" onResize="self.$(rclName)Part._recalcHeight();" minQt="0">
+				<event name="onCompare">
+		            return Utils.compareStringPtBr(nodeA.nome, nodeB.nome);
+			    </event>
+				<event name="onEndEnumeration">
+					if sheet==nil then return end;
+					
+					if "$(rclName)" == "campoDasPericias" then
+						if sheet.$(rclName) == nil then
+							sheet.$(rclName) = {}
+						end
+
+						local nodes = NDB.getChildNodes(sheet.$(rclName)); 
+						if #nodes > 0 then return end;
+
+						local skills = {"Artes", "Atletismo", "Suborno", "Charme", "Charme para Animais", "Escalar", "Calmo", "Resistencia ao Alcool", "Esquiva", "Dirigir", "Tenacidade", "Entretenimento", "Apostar", "Fofoca", "Pechinchar", "Intimidação", "Intuição", "Liderança", "Corpo a corpo (Basico)", "Corpo a corpo", "Navegação", "Sobrevivencia na Natureza", "Percepção", "Cavalgar", "Remar", "Furtividade"}
+						local keys = {"dex", "ag", "fel", "fel", "wp", "s", "wp", "t", "ag", "ag", "t", "fel", "int", "fel", "fel", "s", "i", "fel", "ws", "ws", "i", "int", "i", "ag", "s", "ag"}
+
+						for i=1, #skills, 1 do
+							local node = self.$(rclName):append();
+							if node~= nil then
+		                        node.wsTotal = sheet.wsTotal
+		                        node.bsTotal = sheet.bsTotal
+		                        node.sTotal = sheet.sTotal
+		                        node.tTotal = sheet.tTotal
+		                        node.iTotal = sheet.iTotal
+		                        node.agTotal = sheet.agTotal
+		                        node.dexTotal = sheet.dexTotal
+		                        node.intTotal = sheet.intTotal
+		                        node.wpTotal = sheet.wpTotal
+		                        node.felTotal = sheet.felTotal
+		                        node.nome = skills[i]
+		                        node.key = keys[i]
+							end
+						end
+
+						self.$(rclName):sort();
+					end
+				</event>
+			</recordList>
+		</flowPart>
+	</template>	
+
+	<popup name="popHabilidade" width="300" height="240" backOpacity="0.4" autoScopeNode="false">
+		<flowLayout align="top" autoHeight="true" maxControlsPerLine="3" margins="{bottom=4}" horzAlign="center">
+			<habilidadeSmallCenter text="Qtd" field="qtdHabilidade"/>
+			<habilidadeLarge text="Obtido" field="obtencaoHabilidade"/>
+			<habilidadeSmallCenter text="Página" field="paginaHabilidade"/>
+			<habilidadeLarge text="Livro" field="livroHabilidade"/>
+		</flowLayout>
+		<textEditor align="client" field="descricao"/>
+	</popup>
+
+	<scrollBox align="client">
+		<flowLayout align="top" autoHeight="true" maxColumns="3" horzAlign="center" orientation="vertical" avoidScale="true">
+			<ListaFlexivel nome="TALENTOS" rclName="campoDosTalentos" rclField="campoDosTalentos" form="frmHabilidade"/>
+		</flowLayout>
+	</scrollBox>
+</form>

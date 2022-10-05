@@ -1,0 +1,62 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmEquipamentos" align="client">
+	<popup name="popArmadura" width="300" height="240" backOpacity="0.4" autoScopeNode="false">
+		<flowLayout align="top" autoHeight="true" maxControlsPerLine="3" margins="{bottom=4}" horzAlign="center">
+			<habilidadeSmallCenter text="Carga" field="carga"/>
+			<habilidadeLarge text="Lugares" field="lugares"/>
+			<habilidadeSmallCenter text="PA" field="pa"/>
+			<habilidadeLarge text="Qualidades" field="qualidades"/>
+		</flowLayout>
+		<textEditor align="client" field="descricao"/>
+	</popup>
+	<popup name="popArmadilha" width="300" height="240" backOpacity="0.4" autoScopeNode="false">
+		<flowLayout align="top" autoHeight="true" maxControlsPerLine="3" margins="{bottom=4}" horzAlign="center">
+			<habilidadeLarge text="Nome" field="nome"/>
+			<habilidadeSmallCenter text="Carga" field="carga"/>
+		</flowLayout>
+		<textEditor align="client" field="descricao"/>
+	</popup>
+	<popup name="popArma" width="300" height="240" backOpacity="0.4" autoScopeNode="false">
+		<flowLayout align="top" autoHeight="true" maxControlsPerLine="3" margins="{bottom=4}" horzAlign="center">
+			<habilidadeSmallCenter text="Carga" field="carga"/>
+			<habilidadeLarge text="Dano" field="dano"/>
+			<habilidadeSmallCenter text="Alcance" field="alcance"/>
+			<habilidadeLarge text="Grupo" field="grupo"/>
+		</flowLayout>
+		<textEditor align="client" field="descricao"/>
+	</popup>
+
+	<scrollBox align="client">
+		<layout align="top" height="205">
+			<rectangle align="left" width="145" strokeSize="1" margins="{left=5}" padding="{left=2,right=2,top=2,bottom=2}">
+				<label align="top" width="100" text="PONTOS DE ARMADURA" horzTextAlign="center" fontSize="11"/>
+				<LabelEdit text="Cabeça" field="ptsArmCabeca" fontSize="13"/>
+				<LabelEdit text="Braço Esquerdo" field="ptsArmBraçoE" fontSize="13"/>
+				<LabelEdit text="Braço Direito" field="ptsArmBraçoD" fontSize="13"/>
+				<LabelEdit text="Corpo" field="ptsArmCorpo" fontSize="13"/>
+				<LabelEdit text="Perna Esquerda" field="ptsArmPernaE" fontSize="13"/>
+				<LabelEdit text="Perna Direita" field="ptsArmPernaD" fontSize="13"/>
+				<LabelEdit text="Escudo" field="ptsArmEscudo" fontSize="13"/>
+			</rectangle>
+			<rectangle align="left" width="135" strokeSize="1" margins="{left=5}" padding="{left=2,right=2,top=2,bottom=2}">
+				<label align="top" width="100" text="CARGA" horzTextAlign="center"/>
+				<LabelEdit text="Armaduras" field="cargaArmaduras" fontSize="13"/>
+				<LabelEdit text="Manifestações" field="cargaArmadilhas" fontSize="13"/>
+				<LabelEdit text="Armas" field="cargaArmas" fontSize="13"/>
+				<LabelEdit text="Maximo" field="cargaMaximo" fontSize="13"/>
+				<LabelEdit text="Total" field="cargaTotal" fontSize="13"/>
+			</rectangle>
+			<rectangle align="left" width="135" strokeSize="1" margins="{left=5}" padding="{left=2,right=2,top=2,bottom=2}">
+				<label align="top" width="100" text="RIQUEZA" horzTextAlign="center"/>
+				<LabelEdit text="D" field="riquezaD" fontSize="13"/>
+				<LabelEdit text="SS" field="riquezaSS" fontSize="13"/>
+				<LabelEdit text="GC" field="riquezaGC" fontSize="13"/>
+			</rectangle>
+		</layout>
+		<flowLayout align="top" autoHeight="true" maxColumns="3" horzAlign="center" orientation="vertical" avoidScale="true">
+			<ListaFlexivel nome="ARMADURAS" rclName="campoDasArmaduras" rclField="campoDasArmaduras" form="frmArmadura"/>
+			<ListaFlexivel nome="MANIFESTAÇÕES" rclName="campoDasArmadilhas" rclField="campoDasArmadilhas" form="frmArmadilha"/>
+			<ListaFlexivel nome="ARMAS" rclName="campoDasArmas" rclField="campoDasArmas" form="frmArma"/>
+		</flowLayout>
+	</scrollBox>
+</form>

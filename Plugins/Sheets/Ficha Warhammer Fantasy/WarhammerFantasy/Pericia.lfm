@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmPericia" height="25" width="350" margins="{top=2}">
+	 <script> 
+		<![CDATA[			
+		local function askForDelete()
+			Dialogs.confirmYesNo("Deseja realmente apagar essa pericia?",
+								 function (confirmado)
+									if confirmado then
+										NDB.deleteNode(sheet);
+									end;
+								 end);
+		end;
+	]]>
+	</script>
+	<edit align="client" vertTextAlign="center" field="nome"/>
+
+	<comboBox align="right" width="50" items="{'WS', 'BS', 'S', 'T', 'I', 'Ag', 'Dex', 'Int', 'WP', 'Fel'}" values="{'ws', 'bs', 's', 't', 'i', 'ag', 'dex', 'int', 'wp', 'fel'}" field="key"/>
+	<rectangle align="right" width="50" color="black" strokeSize="1" strokeColor="white" padding="{left=2,right=2,top=2,bottom=2}">
+		<label align="client" field="keyBonus" horzTextAlign="center"/>
+	</rectangle>
+	<edit align="right" width="50" field="advance" type="number" horzTextAlign="center"/>
+	<rectangle align="right" width="50" color="black" strokeSize="1" strokeColor="white" padding="{left=2,right=2,top=2,bottom=2}">
+		<label align="client" field="total" horzTextAlign="center"/>
+	</rectangle>
+    <dataLink fields="{'key', 'wsTotal', 'bsTotal', 'sTotal', 'tTotal', 'iTotal', 'agTotal', 'dexTotal', 'intTotal', 'wpTotal', 'felTotal'}">
+		<event name="onChange">
+			if sheet==nil then return end
+
+			local atr = sheet.key or "-"
+
+			sheet.keyBonus = sheet[atr.."Total"]
+		</event>
+    </dataLink>
+
+    <dataLink fields="{'keyBonus', 'advance'}">
+        <event name="onChange">
+        	if sheet==nil then return end
+            sheet.total = 	tonumber(sheet.keyBonus or 0) +
+                            tonumber(sheet.advance or 0)
+        </event>
+    </dataLink>
+
+	<button align="right" width="50" text="X" onClick="askForDelete();"/>
+</form>
+
+
