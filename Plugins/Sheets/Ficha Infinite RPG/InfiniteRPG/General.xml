@@ -24,74 +24,76 @@
 		</layout>
 	</template>
 	<scrollBox align="client">
-		<layout align="left" width="200" margins="{right=10}">
-			<!-- Imagem para avatar do personagem editavel e que pode ser arrastada para o scene -->
-			<rectangle align="top" height="200" color="black" strokeColor="white" strokeSize="1">
-				<label align="client" text="Avatar" horzTextAlign="center">
-					<image align="client" field="avatar" editable="true" style="autoFit" margins="{left=2, right=2, top=2, bottom=2}" animate="true">
-						<event name="OnStartDrag">
-						    drag:addData("imageURL", sheet.avatar);
+		<layout height="680" width="1120">
+			<layout align="left" width="200" margins="{right=10}">
+				<!-- Imagem para avatar do personagem editavel e que pode ser arrastada para o scene -->
+				<rectangle align="top" height="200" color="black" strokeColor="white" strokeSize="1">
+					<label align="client" text="Avatar" horzTextAlign="center">
+						<image align="client" field="avatar" editable="true" style="autoFit" margins="{left=2, right=2, top=2, bottom=2}" animate="true">
+							<event name="OnStartDrag">
+							    drag:addData("imageURL", sheet.avatar);
+							</event>
+						</image>
+					</label>
+				</rectangle>
+
+				<rectangle align="top" height="260" color="black" strokeColor="white" strokeSize="1" margins="{top=10}" padding="{top=5,bottom=5}">
+					<LabelEditVert text="Nível" field="nivel"/>
+					<LabelEditVert text="Rank" field="rank"/>
+					<LabelEditVert text="Tipo" field="tipo"/>
+					<LabelEditVert text="Sub-Tipo" field="subtipo"/>
+					<LabelEditVert text="Nível de Poder" field="nivelPoder"/>
+				</rectangle>
+
+				<rectangle align="top" height="200" color="black" strokeColor="white" strokeSize="1" margins="{top=10}">
+					<label align="top" height="25" text="XP" margins="{left=5,top=5}" fontSize="15"/>
+
+					<LabelRecVert text="Atributos" field="xpAtributos"/>
+					<LabelRecVert text="Pericias" field="xpPericias"/>
+					<LabelRecVert text="Total" field="xpTotal"/>
+
+					<dataLink fields="{'xpAtributos','xpPericias'}">
+						<event name="onChange">
+							if sheet==nil then return end;
+
+							local total = 	(tonumber(sheet.xpAtributos) or 0) +
+											(tonumber(sheet.xpPericias) or 0);
+
+							sheet.xpTotal = total
 						</event>
-					</image>
-				</label>
-			</rectangle>
+					</dataLink>
+				</rectangle>
+			</layout>
+			<layout align="left" width="600" margins="{right=10}">
+				<rectangle align="top" height="260" color="black" strokeColor="white" strokeSize="1" margins="{top=0}" padding="{top=5,bottom=5}">
+					<LabelEditVert text="Nome Completo" field="nome"/>
+					<LabelEditVert text="Sexo" field="sexo"/>
+					<LabelEditVert text="Altura" field="altura"/>
+					<LabelEditVert text="Peso" field="peso"/>
+					<LabelEditVert text="Idade" field="idade"/>
+				</rectangle>
 
-			<rectangle align="top" height="260" color="black" strokeColor="white" strokeSize="1" margins="{top=10}" padding="{top=5,bottom=5}">
-				<LabelEditVert text="Nível" field="nivel"/>
-				<LabelEditVert text="Rank" field="rank"/>
-				<LabelEditVert text="Tipo" field="tipo"/>
-				<LabelEditVert text="Sub-Tipo" field="subtipo"/>
-				<LabelEditVert text="Nível de Poder" field="nivelPoder"/>
-			</rectangle>
+				<rectangle align="top" height="200" color="black" strokeColor="white" strokeSize="1" margins="{top=10}">
+					<label align="top" height="25" text="Personalidade" margins="{left=5,top=5}"/>
+					<textEditor align="client" margins="{left=5,right=5,bottom=5}" field="personalidade"/>
+				</rectangle>
 
-			<rectangle align="top" height="200" color="black" strokeColor="white" strokeSize="1" margins="{top=10}">
-				<label align="top" height="25" text="XP" margins="{left=5,top=5}" fontSize="15"/>
-
-				<LabelRecVert text="Atributos" field="xpAtributos"/>
-				<LabelRecVert text="Pericias" field="xpPericias"/>
-				<LabelRecVert text="Total" field="xpTotal"/>
-
-				<dataLink fields="{'xpAtributos','xpPericias'}">
-					<event name="onChange">
-						if sheet==nil then return end;
-
-						local total = 	(tonumber(sheet.xpAtributos) or 0) +
-										(tonumber(sheet.xpPericias) or 0);
-
-						sheet.xpTotal = total
-					</event>
-				</dataLink>
-			</rectangle>
-		</layout>
-		<layout align="left" width="600" margins="{right=10}">
-			<rectangle align="top" height="260" color="black" strokeColor="white" strokeSize="1" margins="{top=0}" padding="{top=5,bottom=5}">
-				<LabelEditVert text="Nome Completo" field="nome"/>
-				<LabelEditVert text="Sexo" field="sexo"/>
-				<LabelEditVert text="Altura" field="altura"/>
-				<LabelEditVert text="Peso" field="peso"/>
-				<LabelEditVert text="Idade" field="idade"/>
-			</rectangle>
-
-			<rectangle align="top" height="200" color="black" strokeColor="white" strokeSize="1" margins="{top=10}">
-				<label align="top" height="25" text="Personalidade" margins="{left=5,top=5}"/>
-				<textEditor align="client" margins="{left=5,right=5,bottom=5}" field="personalidade"/>
-			</rectangle>
-
-			<rectangle align="top" height="200" color="black" strokeColor="white" strokeSize="1" margins="{top=10}">
-				<label align="top" height="25" text="Objetivo" margins="{left=5,top=5}"/>
-				<textEditor align="client" margins="{left=5,right=5,bottom=5}" field="objetivo"/>
-			</rectangle>
-		</layout>
-		<layout align="left" width="300" margins="{right=10}">
-			<rectangle align="top" height="680" color="black" strokeColor="white" strokeSize="1" margins="{top=0}">
-				<label align="client" text="Imagem" horzTextAlign="center">
-					<image align="client" field="avatar2" editable="true" style="autoFit" margins="{left=2, right=2, top=2, bottom=2}">	
-						<event name="OnStartDrag">
-						    drag:addData("imageURL", sheet.avatar2);
-						</event>
-					</image>
-				</label>
-			</rectangle>
+				<rectangle align="top" height="200" color="black" strokeColor="white" strokeSize="1" margins="{top=10}">
+					<label align="top" height="25" text="Objetivo" margins="{left=5,top=5}"/>
+					<textEditor align="client" margins="{left=5,right=5,bottom=5}" field="objetivo"/>
+				</rectangle>
+			</layout>
+			<layout align="left" width="300" margins="{right=10}">
+				<rectangle align="top" height="680" color="black" strokeColor="white" strokeSize="1" margins="{top=0}">
+					<label align="client" text="Imagem" horzTextAlign="center">
+						<image align="client" field="avatar2" editable="true" style="autoFit" margins="{left=2, right=2, top=2, bottom=2}">	
+							<event name="OnStartDrag">
+							    drag:addData("imageURL", sheet.avatar2);
+							</event>
+						</image>
+					</label>
+				</rectangle>
+			</layout>
 		</layout>
 	</scrollBox>
 </form>

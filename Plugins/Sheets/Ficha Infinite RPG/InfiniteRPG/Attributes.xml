@@ -4,7 +4,10 @@
 		<layout align="top" height="25" margins="{left=5,right=5}">
 			<label align="left" width="75" text="$(text)" margins="{right=5}"/>
 			
-			<edit align="left" width="50" field="$(field)Normal" margins="{right=5}"/>
+			<rectangle align="left" width="50" color="black" strokeColor="white" strokeSize="1" margins="{right=5}">
+				<label align="client" field="$(field)Normal" horzTextAlign="center"/>
+			</rectangle>
+
 			<edit align="left" width="50" field="$(field)Equip" margins="{right=5}"/>
 			<edit align="left" width="50" field="$(field)Add" margins="{right=5}"/>
 
@@ -16,25 +19,25 @@
 				<label align="client" field="$(field)Mod" horzTextAlign="center"/>
 			</rectangle>
 
-			<rectangle align="left" width="50" color="black" strokeColor="white" strokeSize="1" margins="{right=5}">
-				<label align="client" field="$(field)XP" horzTextAlign="center"/>
-			</rectangle>
+			<edit align="left" width="50" field="$(field)XP" margins="{right=5}"/>
 
-			<dataLink fields="{'$(field)Normal','$(field)Equip','$(field)Add','$(field)XP'}">
+			<dataLink fields="{'$(field)Equip','$(field)Add','$(field)XP'}">
 				<event name="onChange">
 					if sheet==nil then return end;
 
-					local normal = tonumber(sheet.$(field)Normal) or 0
+					local normal = 0
 					local cost = 10
-					local xp = 0
-					if normal > 0 then
-						xp = ((10 + (9 + normal))*normal)/2
+					local xp = tonumber(sheet.$(field)XP) or 0
+					while (xp >= cost) do
+						normal = normal + 1
+						xp = xp - cost
+						cost = cost + 1
 					end
 
 					local total = 	(tonumber(sheet.$(field)Equip) or 0) +
 									(tonumber(sheet.$(field)Add) or 0) + normal;
 
-					sheet.$(field)XP = xp
+					sheet.$(field)Normal = normal
 					sheet.$(field)Total = total
 					sheet.$(field)Mod = math.floor(total/10)
 				</event>
