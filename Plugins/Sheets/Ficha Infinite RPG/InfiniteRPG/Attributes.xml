@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmAttributes" align="client">
+	<template name="Attribute">
+		<layout align="top" height="25" margins="{left=5,right=5}">
+			<label align="left" width="75" text="$(text)" margins="{right=5}"/>
+			
+			<edit align="left" width="50" field="$(field)Normal" margins="{right=5}"/>
+			<edit align="left" width="50" field="$(field)Equip" margins="{right=5}"/>
+			<edit align="left" width="50" field="$(field)Add" margins="{right=5}"/>
+			<edit align="left" width="50" field="$(field)XP" margins="{right=5}"/>
+
+			<rectangle align="left" width="50" color="black" strokeColor="white" strokeSize="1" margins="{right=5}">
+				<label align="client" field="$(field)Total" horzTextAlign="center"/>
+			</rectangle>
+
+			<rectangle align="left" width="50" color="black" strokeColor="white" strokeSize="1" margins="{right=5}">
+				<label align="client" field="$(field)Mod" horzTextAlign="center"/>
+			</rectangle>
+
+			<dataLink fields="{'$(field)Normal','$(field)Equip','$(field)Add','$(field)XP'}">
+				<event name="onChange">
+					if sheet==nil then return end;
+
+					local ext = 0
+					local cost = 10
+					local xp = tonumber(sheet.$(field)XP) or 0
+					while xp >= cost do
+						xp = xp - cost
+						cost = cost +1
+						ext = ext +1
+					end
+
+					local total = 	(tonumber(sheet.$(field)Normal) or 0) +
+									(tonumber(sheet.$(field)Equip) or 0) +
+									(tonumber(sheet.$(field)Add) or 0) + ext;
+
+					sheet.$(field)Total = total
+					sheet.$(field)Mod = math.floor(total/10)
+				</event>
+			</dataLink>
+		</layout>
+	</template>
+	<scrollBox align="client">
+		<layout align="left" width="200" margins="{right=10}">
+			<rectangle align="top" height="160" color="black" strokeColor="white" strokeSize="1" margins="{top=0}" padding="{top=5,bottom=5}">
+				<LabelEditVert text="HP" field="hp"/>
+				<LabelEditVert text="PS" field="ps"/>
+				<LabelEditVert text="RD" field="rd"/>
+			</rectangle>
+
+			<rectangle align="top" height="275" color="black" strokeColor="white" strokeSize="1" margins="{top=10}">
+				<label align="top" height="25" text="Danos" margins="{left=5,top=5}"/>
+				<textEditor align="client" margins="{left=5,right=5,bottom=5}" field="danos"/>
+			</rectangle>
+		</layout>
+
+		<layout align="left" width="415" margins="{right=10}">
+			<rectangle align="top" height="235" color="black" strokeColor="white" strokeSize="1" margins="{top=0}" padding="{top=5,bottom=5}">
+				<layout align="top" height="25" margins="{left=5,right=5}">
+					<label align="left" width="75" text="" margins="{right=5}"/>
+					
+					<label align="left" width="50" text="Normal" margins="{right=5}" horzTextAlign="center"/>
+					<label align="left" width="50" text="Equip" margins="{right=5}" horzTextAlign="center"/>
+					<label align="left" width="50" text="Add" margins="{right=5}" horzTextAlign="center"/>
+					<label align="left" width="50" text="XP" margins="{right=5}" horzTextAlign="center"/>
+					<label align="left" width="50" text="Total" margins="{right=5}" horzTextAlign="center"/>
+					<label align="left" width="50" text="Mod" margins="{right=5}" horzTextAlign="center"/>
+				</layout>
+
+				<Attribute text="Fortitude" field="fortitude"/>
+				<Attribute text="Instinto" field="instinto"/>
+				<Attribute text="Destreza" field="destreza"/>
+				<Attribute text="Sabedoria" field="sabedoria"/>
+				<Attribute text="Intelecto" field="intelecto"/>
+				<Attribute text="Carisma" field="carisma"/>
+				<Attribute text="Resistência" field="resistencia"/>
+				<Attribute text="Vitalidade" field="vitalidade"/>
+
+				<dataLink fields="{'fortitudeXP','instintoXP','destrezaXP','sabedoriaXP','intelectoXP','carismaXP','resistenciaXP','vitalidadeXP'}">
+					<event name="onChange">
+						if sheet==nil then return end;
+
+						local total = 	(tonumber(sheet.fortitudeXP) or 0) +
+										(tonumber(sheet.instintoXP) or 0) +
+										(tonumber(sheet.destrezaXP) or 0) +
+										(tonumber(sheet.sabedoriaXP) or 0) +
+										(tonumber(sheet.intelectoXP) or 0) +
+										(tonumber(sheet.carismaXP) or 0) +
+										(tonumber(sheet.resistenciaXP) or 0) +
+										(tonumber(sheet.vitalidadeXP) or 0);
+
+						sheet.xpAtributos = total
+					</event>
+				</dataLink>
+			</rectangle>
+
+			<rectangle align="top" height="200" color="black" strokeColor="white" strokeSize="1" margins="{top=10}">
+				<label align="top" height="25" text="Poder" margins="{left=5,top=5}"/>
+				<textEditor align="client" margins="{left=5,right=5,bottom=5}" field="poder"/>
+			</rectangle>
+		</layout>
+	</scrollBox>
+</form>

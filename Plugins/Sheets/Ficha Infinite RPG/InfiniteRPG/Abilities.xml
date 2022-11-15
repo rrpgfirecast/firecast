@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmAbilities" align="client">
+	<popup name="popAbility" width="400" height="440" backOpacity="0.4" autoScopeNode="false">
+		<layout align="top" height="25">
+			<label align="left" width="50" text="Nome" horzTextAlign="center"/>
+			<edit align="left" width="200" field="nome"/>
+			<label align="left" width="50" text="Nível" horzTextAlign="center"/>
+			<edit align="left" width="50" field="nivel"/>
+			<button align="left" width="25" text="X" margins="{left=5}">
+				<event name="onClick">
+					Dialogs.confirmYesNo("Deseja realmente apagar?",
+										function (confirmado)
+											if confirmado then
+												NDB.deleteNode(self.popAbility.node);
+												self.popAbility:close();
+											end;
+										end);
+				</event>
+			</button>
+		</layout>
+		<layout align="top" height="200" margins="{top=5}">
+			<rectangle align="left" width="200" color="black" strokeColor="white" strokeSize="1" margins="{right=5}">
+				<label align="client" text="Habilidade" horzTextAlign="center">
+					<image align="client" field="icon" editable="true" style="autoFit" margins="{left=2, right=2, top=2, bottom=2}">
+						<event name="OnStartDrag">
+						    drag:addData("imageURL", sheet.icon);
+						</event>
+					</image>
+				</label>
+			</rectangle>
+
+			<layout align="client">
+				<layout align="top" height="50" margins="{top=0, bottom=0}">
+					<LabelEditVert text="Alcance" field="alcance"/>
+				</layout>
+				<layout align="top" height="50" margins="{top=0, bottom=0}">
+					<LabelEditVert text="Custo" field="custo"/>
+				</layout>
+				<layout align="top" height="100" margins="{top=0, bottom=0}">
+					<LabelTextEditVert text="Efeito/Dano" field="efeito"/>
+				</layout>
+			</layout>
+
+		</layout>
+		<layout align="top" height="200" margins="{top=0, bottom=5}">
+			<LabelTextEditVert text="Descrição" field="descricao"/>
+		</layout>
+	</popup>
+	<scrollBox align="client">
+		<layout align="top" height="25">
+			<button text="+" align="left" width="30" onClick="self.campoDasHabilidades:append();"/>
+			<label text="HABILIDADES" align="left" width="225" margins="{left=5}"/>
+		</layout>
+
+		<recordList name="campoDasHabilidades" field="campoDasHabilidades" templateForm="frmAbility" align="client" layout="verticalTiles" autoHeight="false" hitTest="false"  minQt="1"/>
+	</scrollBox>
+</form>
