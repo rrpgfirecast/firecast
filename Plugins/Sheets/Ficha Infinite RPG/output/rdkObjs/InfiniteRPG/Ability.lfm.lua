@@ -76,6 +76,7 @@ local function constructNew_frmAbility()
     obj.image1:setHitTest(true);
     obj.image1:setStyle("autoFit");
     obj.image1:setMargins({left=2, right=2, top=2, bottom=2});
+    lfm_setPropAsString(obj.image1, "animate",  "true");
     obj.image1:setName("image1");
 
     obj._e_event0 = obj.image1:addEventListener("onClick",

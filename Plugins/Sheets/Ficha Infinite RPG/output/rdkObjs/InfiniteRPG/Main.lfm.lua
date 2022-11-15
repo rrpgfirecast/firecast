@@ -148,6 +148,7 @@ local function constructNew_frmMain()
     obj.image1:setEditable(true);
     obj.image1:setStyle("autoFit");
     obj.image1:setMargins({left=2, right=2, top=2, bottom=2});
+    lfm_setPropAsString(obj.image1, "animate",  "true");
     obj.image1:setName("image1");
 
     obj.rectangle2 = GUI.fromHandle(_obj_newObject("rectangle"));

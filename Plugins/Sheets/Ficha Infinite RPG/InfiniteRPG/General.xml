@@ -28,7 +28,7 @@
 			<!-- Imagem para avatar do personagem editavel e que pode ser arrastada para o scene -->
 			<rectangle align="top" height="200" color="black" strokeColor="white" strokeSize="1">
 				<label align="client" text="Avatar" horzTextAlign="center">
-					<image align="client" field="avatar" editable="true" style="autoFit" margins="{left=2, right=2, top=2, bottom=2}">
+					<image align="client" field="avatar" editable="true" style="autoFit" margins="{left=2, right=2, top=2, bottom=2}" animate="true">
 						<event name="OnStartDrag">
 						    drag:addData("imageURL", sheet.avatar);
 						</event>
