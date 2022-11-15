@@ -7,7 +7,6 @@
 			<edit align="left" width="50" field="$(field)Normal" margins="{right=5}"/>
 			<edit align="left" width="50" field="$(field)Equip" margins="{right=5}"/>
 			<edit align="left" width="50" field="$(field)Add" margins="{right=5}"/>
-			<edit align="left" width="50" field="$(field)XP" margins="{right=5}"/>
 
 			<rectangle align="left" width="50" color="black" strokeColor="white" strokeSize="1" margins="{right=5}">
 				<label align="client" field="$(field)Total" horzTextAlign="center"/>
@@ -17,23 +16,25 @@
 				<label align="client" field="$(field)Mod" horzTextAlign="center"/>
 			</rectangle>
 
+			<rectangle align="left" width="50" color="black" strokeColor="white" strokeSize="1" margins="{right=5}">
+				<label align="client" field="$(field)XP" horzTextAlign="center"/>
+			</rectangle>
+
 			<dataLink fields="{'$(field)Normal','$(field)Equip','$(field)Add','$(field)XP'}">
 				<event name="onChange">
 					if sheet==nil then return end;
 
-					local ext = 0
+					local normal = tonumber(sheet.$(field)Normal) or 0
 					local cost = 10
-					local xp = tonumber(sheet.$(field)XP) or 0
-					while xp >= cost do
-						xp = xp - cost
-						cost = cost +1
-						ext = ext +1
+					local xp = 0
+					if normal > 0 then
+						xp = ((10 + (9 + normal))*normal)/2
 					end
 
-					local total = 	(tonumber(sheet.$(field)Normal) or 0) +
-									(tonumber(sheet.$(field)Equip) or 0) +
-									(tonumber(sheet.$(field)Add) or 0) + ext;
+					local total = 	(tonumber(sheet.$(field)Equip) or 0) +
+									(tonumber(sheet.$(field)Add) or 0) + normal;
 
+					sheet.$(field)XP = xp
 					sheet.$(field)Total = total
 					sheet.$(field)Mod = math.floor(total/10)
 				</event>
@@ -62,9 +63,9 @@
 					<label align="left" width="50" text="Normal" margins="{right=5}" horzTextAlign="center"/>
 					<label align="left" width="50" text="Equip" margins="{right=5}" horzTextAlign="center"/>
 					<label align="left" width="50" text="Add" margins="{right=5}" horzTextAlign="center"/>
-					<label align="left" width="50" text="XP" margins="{right=5}" horzTextAlign="center"/>
 					<label align="left" width="50" text="Total" margins="{right=5}" horzTextAlign="center"/>
 					<label align="left" width="50" text="Mod" margins="{right=5}" horzTextAlign="center"/>
+					<label align="left" width="50" text="XP" margins="{right=5}" horzTextAlign="center"/>
 				</layout>
 
 				<Attribute text="Fortitude" field="fortitude"/>
