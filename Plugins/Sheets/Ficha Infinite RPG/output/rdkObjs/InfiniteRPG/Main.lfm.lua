@@ -5068,34 +5068,64 @@ local function constructNew_frmMain()
         function (_, field, oldValue, newValue)
             if sheet==nil then return end;
             
-            				local total = 	(tonumber(sheet.atletismoNormal) or 0) + 
-            								(tonumber(sheet.halterofiliaNormal) or 0) + 
-            								(tonumber(sheet.sentidosNormal) or 0) + 
-            								(tonumber(sheet.coragemNormal) or 0) + 
-            								(tonumber(sheet.acrobaciaNormal) or 0) + 
-            								(tonumber(sheet.manuseioNormal) or 0) + 
-            								(tonumber(sheet.dancarNormal) or 0) + 
-            								(tonumber(sheet.furtividadeNormal) or 0) + 
-            								(tonumber(sheet.medicinaNormal) or 0) + 
-            								(tonumber(sheet.percepcaoNormal) or 0) + 
-            								(tonumber(sheet.culinariaNormal) or 0) + 
-            								(tonumber(sheet.sobrevivenciaNormal) or 0) + 
-            								(tonumber(sheet.controleNormal) or 0) + 
-            								(tonumber(sheet.naturezaNormal) or 0) + 
-            								(tonumber(sheet.mecanicaNormal) or 0) + 
-            								(tonumber(sheet.investigacaoNormal) or 0) + 
-            								(tonumber(sheet.fisicaNormal) or 0) + 
-            								(tonumber(sheet.computacaoNormal) or 0) + 
-            								(tonumber(sheet.poderNormal) or 0) + 
-            								(tonumber(sheet.sociedadeNormal) or 0) + 
-            								(tonumber(sheet.enganarNormal) or 0) + 
-            								(tonumber(sheet.intimidarNormal) or 0) + 
-            								(tonumber(sheet.heroismoNormal) or 0) + 
-            								(tonumber(sheet.cantarNormal) or 0) + 
-            								(tonumber(sheet.atuarNormal) or 0) + 
-            								(tonumber(sheet.persuadirNormal) or 0) + 
-            								(tonumber(sheet.resistirNormal) or 0) + 
-            								(tonumber(sheet.folegoNormal) or 0);
+            				local atletismo = (tonumber(sheet.atletismoNormal) or 0)
+            				atletismo = (1+atletismo)*atletismo/2
+            				local halterofilia = (tonumber(sheet.halterofiliaNormal) or 0)
+            				halterofilia = (1+halterofilia)*halterofilia/2
+            				local sentidos = (tonumber(sheet.sentidosNormal) or 0)
+            				sentidos = (1+sentidos)*sentidos/2
+            				local coragem = (tonumber(sheet.coragemNormal) or 0)
+            				coragem = (1+coragem)*coragem/2
+            				local acrobacia = (tonumber(sheet.acrobaciaNormal) or 0)
+            				acrobacia = (1+acrobacia)*acrobacia/2
+            				local manuseio = (tonumber(sheet.manuseioNormal) or 0)
+            				manuseio = (1+manuseio)*manuseio/2
+            				local dancar = (tonumber(sheet.dancarNormal) or 0)
+            				dancar = (1+dancar)*dancar/2
+            				local furtividade = (tonumber(sheet.furtividadeNormal) or 0)
+            				furtividade = (1+furtividade)*furtividade/2
+            				local medicina = (tonumber(sheet.medicinaNormal) or 0)
+            				medicina = (1+medicina)*medicina/2
+            				local percepcao = (tonumber(sheet.percepcaoNormal) or 0)
+            				percepcao = (1+percepcao)*percepcao/2
+            				local culinaria = (tonumber(sheet.culinariaNormal) or 0)
+            				culinaria = (1+culinaria)*culinaria/2
+            				local sobrevivencia = (tonumber(sheet.sobrevivenciaNormal) or 0)
+            				sobrevivencia = (1+sobrevivencia)*sobrevivencia/2
+            				local controle = (tonumber(sheet.controleNormal) or 0)
+            				controle = (1+controle)*controle/2
+            				local natureza = (tonumber(sheet.naturezaNormal) or 0)
+            				natureza = (1+natureza)*natureza/2
+            				local mecanica = (tonumber(sheet.mecanicaNormal) or 0)
+            				mecanica = (1+mecanica)*mecanica/2
+            				local investigacao = (tonumber(sheet.investigacaoNormal) or 0)
+            				investigacao = (1+investigacao)*investigacao/2
+            				local fisica = (tonumber(sheet.fisicaNormal) or 0)
+            				fisica = (1+fisica)*fisica/2
+            				local computacao = (tonumber(sheet.computacaoNormal) or 0)
+            				computacao = (1+computacao)*computacao/2
+            				local poder = (tonumber(sheet.poderNormal) or 0)
+            				poder = (1+poder)*poder/2
+            				local sociedade = (tonumber(sheet.sociedadeNormal) or 0)
+            				sociedade = (1+sociedade)*sociedade/2
+            				local enganar = (tonumber(sheet.enganarNormal) or 0)
+            				enganar = (1+enganar)*enganar/2
+            				local intimidar = (tonumber(sheet.intimidarNormal) or 0)
+            				intimidar = (1+intimidar)*intimidar/2
+            				local heroismo = (tonumber(sheet.heroismoNormal) or 0)
+            				heroismo = (1+heroismo)*heroismo/2
+            				local cantar = (tonumber(sheet.cantarNormal) or 0)
+            				cantar = (1+cantar)*cantar/2
+            				local atuar = (tonumber(sheet.atuarNormal) or 0)
+            				atuar = (1+atuar)*atuar/2
+            				local persuadir = (tonumber(sheet.persuadirNormal) or 0)
+            				persuadir = (1+persuadir)*persuadir/2
+            				local resistir = (tonumber(sheet.resistirNormal) or 0)
+            				resistir = (1+resistir)*resistir/2
+            				local folego = (tonumber(sheet.folegoNormal) or 0)
+            				folego = (1+folego)*folego/2
+            
+            				local total = atletismo+halterofilia+sentidos+coragem+acrobacia+manuseio+dancar+furtividade+medicina+percepcao+culinaria+sobrevivencia+controle+natureza+mecanica+investigacao+fisica+computacao+poder+sociedade+enganar+intimidar+heroismo+cantar+atuar+persuadir+resistir+folego
             
             				sheet.xpPericias = total*100
         end, obj);

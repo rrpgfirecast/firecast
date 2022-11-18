@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <root>
-    <element id="Ambesek.Infinite.RPG" name="Ficha Infinite RPG" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20Infinite%20RPG/output/Ficha%20Infinite%20RPG.rpk?raw=true" fileName="Ficha Infinite RPG.rpk" repositoryPath="Sheets/Ficha Infinite RPG/" author="Ambesek" description="Ficha para o sistema Infinite RPG." version="1.0.3" compilationDate="15112022161728" compilationDigest="663d20f6324ea844cecbb4d84906bd710a18f20a">
+    <element id="Ambesek.Infinite.RPG" name="Ficha Infinite RPG" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20Infinite%20RPG/output/Ficha%20Infinite%20RPG.rpk?raw=true" fileName="Ficha Infinite RPG.rpk" repositoryPath="Sheets/Ficha Infinite RPG/" author="Ambesek" description="Ficha para o sistema Infinite RPG." version="1.0.4" compilationDate="15112022161728" compilationDigest="663d20f6324ea844cecbb4d84906bd710a18f20a">
         <dataTypes>
             <dataType id="Ambesek.Infinite.RPG" title="Ficha Infinite RPG"/>
         </dataTypes>
