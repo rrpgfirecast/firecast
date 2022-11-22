@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmFicha_As_Chaves_da_Torre" formType="sheetTemplate" dataType="dev.sylon.AsChavesdaTorre" title="As Chaves da Torre v1" align="client" theme="light">
+    <tabControl align="client">
+        <tab title="Frente">
+            <import file="1.lfm"/>
+        </tab>
+        <tab title="Verso">
+            <import file="2.lfm"/>
+        </tab>
+    </tabControl>
+</form>

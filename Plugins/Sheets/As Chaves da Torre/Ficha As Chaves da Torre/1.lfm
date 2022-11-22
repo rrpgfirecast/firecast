@@ -1,0 +1,448 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmFicha_As_Chaves_da_Torre1_svg" align="client" theme="light" margins="{top=1}">
+    <style>#frmFicha_As_Chaves_da_Torre1_svg path {color: black; strokeColor: black; mode: stretch;} &#xD;
+#frmFicha_As_Chaves_da_Torre1_svg label {fontColor: black; textTrimming: none; wordWrap: false; autoSize: true;}</style>
+    <scrollBox align="client">
+        <rectangle width="1221" height="863" color="white">&#xD;
+            <image left="0" top="0" width="1221" height="863" src="images/1.png" style="stretch" optimize="true" compilerOrder="0"/>&#xD;
+            <layout left="66" top="27" width="415" height="20" compilerOrder="1">
+                <edit transparent="true" fontSize="12.8" fontColor="#000000" vertTextAlign="center" left="0" top="0" width="415" height="21" field="nome" compilerOrder="2"/>
+            </layout>&#xD;
+            <layout left="743" top="27" width="454" height="20" compilerOrder="13">
+                <edit transparent="true" fontSize="12.8" fontColor="#000000" vertTextAlign="center" left="0" top="0" width="454" height="21" field="conceito" compilerOrder="14"/>
+            </layout>&#xD;
+            <layout left="74" top="103" width="229" height="20" compilerOrder="3">
+                <edit transparent="true" fontSize="12.8" fontColor="#000000" vertTextAlign="center" left="0" top="0" width="229" height="21" field="icone" compilerOrder="4"/>
+            </layout>&#xD;
+            <layout left="34" top="131" width="352" height="17" compilerOrder="15">
+                <edit transparent="true" fontSize="10.5" fontColor="#000000" vertTextAlign="center" left="0" top="0" width="352" height="18" field="icone_descricao" compilerOrder="16"/>
+            </layout>&#xD;
+            <layout left="796" top="140.6" width="213" height="51.4" compilerOrder="111">
+                <textEditor left="0" top="0" width="213" height="51.4" fontSize="14.5" fontColor="#000000" field="memor_01" transparent="true" compilerOrder="112"/>
+            </layout>&#xD;
+            <layout left="1067" top="147" width="92" height="20" compilerOrder="123">
+                <edit transparent="true" fontSize="12.8" fontColor="#000000" vertTextAlign="center" left="0" top="0" width="92" height="21" field="chave_01" compilerOrder="124"/>
+            </layout>&#xD;
+            <layout left="34" top="148" width="352" height="17" compilerOrder="17">
+                <edit transparent="true" fontSize="10.5" fontColor="#000000" vertTextAlign="center" left="0" top="0" width="352" height="18" field="icone_descricao_1" compilerOrder="18"/>
+            </layout>&#xD;
+            <layout left="114" top="203" width="273" height="17" compilerOrder="21">
+                <edit transparent="true" fontSize="10.5" fontColor="#000000" vertTextAlign="center" left="0" top="0" width="273" height="18" field="aspecto_guard_01" compilerOrder="22"/>
+            </layout>&#xD;
+            <layout left="39" top="208" width="8" height="9" compilerOrder="49">
+                <checkBox left="0" top="0" width="8" height="10" field="Caixa_de_seleção_84" compilerOrder="50"/>
+            </layout>&#xD;
+            <layout left="1056" top="214" width="101" height="20" compilerOrder="125">
+                <edit transparent="true" fontSize="12.8" fontColor="#000000" vertTextAlign="center" left="0" top="0" width="101" height="21" field="chave_02" compilerOrder="126"/>
+            </layout>&#xD;
+            <layout left="796" top="218.6" width="213" height="51.4" compilerOrder="113">
+                <textEditor left="0" top="0" width="213" height="51.4" fontSize="14.5" fontColor="#000000" field="memor_02" transparent="true" compilerOrder="114"/>
+            </layout>&#xD;
+            <layout left="59" top="220" width="327" height="17" compilerOrder="23">
+                <edit transparent="true" fontSize="10.5" fontColor="#000000" vertTextAlign="center" left="0" top="0" width="327" height="18" field="aspecto_guard_02" compilerOrder="24"/>
+            </layout>&#xD;
+            <layout left="128" top="252" width="258" height="17" compilerOrder="25">
+                <edit transparent="true" fontSize="10.5" fontColor="#000000" vertTextAlign="center" left="0" top="0" width="258" height="18" field="aspecto_encant_01" compilerOrder="26"/>
+            </layout>&#xD;
+            <layout left="39" top="256" width="8" height="9" compilerOrder="51">
+                <checkBox left="0" top="0" width="8" height="10" field="Caixa_de_seleção_85" compilerOrder="52"/>
+            </layout>&#xD;
+            <layout left="59" top="269" width="327" height="17" compilerOrder="27">
+                <edit transparent="true" fontSize="10.5" fontColor="#000000" vertTextAlign="center" left="0" top="0" width="327" height="18" field="aspecto_encant_02" compilerOrder="28"/>
+            </layout>&#xD;
+            <layout left="1078" top="288" width="80" height="20" compilerOrder="127">
+                <edit transparent="true" fontSize="12.8" fontColor="#000000" vertTextAlign="center" left="0" top="0" width="80" height="21" field="chave_03" compilerOrder="128"/>
+            </layout>&#xD;
+            <layout left="503" top="290" width="174" height="26" compilerOrder="19">
+                <edit transparent="true" fontSize="14.5" fontColor="#000000" vertTextAlign="center" left="0" top="0" width="174" height="27" field="corrup" compilerOrder="20"/>
+            </layout>&#xD;
+            <layout left="796" top="296.6" width="213" height="51.4" compilerOrder="115">
+                <textEditor left="0" top="0" width="213" height="51.4" fontSize="14.5" fontColor="#000000" field="memor_03" transparent="true" compilerOrder="116"/>
+            </layout>&#xD;
+            <layout left="123" top="301" width="264" height="17" compilerOrder="29">
+                <edit transparent="true" fontSize="10.5" fontColor="#000000" vertTextAlign="center" left="0" top="0" width="264" height="18" field="aspecto_trap_01" compilerOrder="30"/>
+            </layout>&#xD;
+            <layout left="39" top="305" width="8" height="9" compilerOrder="53">
+                <checkBox left="0" top="0" width="8" height="10" field="Caixa_de_seleção_86" compilerOrder="54"/>
+            </layout>&#xD;
+            <layout left="59" top="318" width="327" height="17" compilerOrder="31">
+                <edit transparent="true" fontSize="10.5" fontColor="#000000" vertTextAlign="center" left="0" top="0" width="327" height="18" field="aspecto_trap_02" compilerOrder="32"/>
+            </layout>&#xD;
+            <layout left="675" top="323" width="6" height="7" compilerOrder="157">
+                <checkBox left="0" top="0" width="6" height="8" field="Caixa_de_seleção_169" compilerOrder="158"/>
+            </layout>&#xD;
+            <layout left="563" top="327" width="9" height="9" compilerOrder="159">
+                <checkBox left="0" top="0" width="9" height="10" field="Caixa_de_seleção_170" compilerOrder="160"/>
+            </layout>&#xD;
+            <layout left="584" top="327" width="9" height="9" compilerOrder="151">
+                <checkBox left="0" top="0" width="9" height="10" field="Caixa_de_seleção_166" compilerOrder="152"/>
+            </layout>&#xD;
+            <layout left="606" top="327" width="9" height="9" compilerOrder="153">
+                <checkBox left="0" top="0" width="9" height="10" field="Caixa_de_seleção_167" compilerOrder="154"/>
+            </layout>&#xD;
+            <layout left="628" top="327" width="9" height="9" compilerOrder="161">
+                <checkBox left="0" top="0" width="9" height="10" field="Caixa_de_seleção_171" compilerOrder="162"/>
+            </layout>&#xD;
+            <layout left="649" top="327" width="9" height="9" compilerOrder="155">
+                <checkBox left="0" top="0" width="9" height="10" field="Caixa_de_seleção_168" compilerOrder="156"/>
+            </layout>&#xD;
+            <layout left="675" top="348" width="6" height="7" compilerOrder="179">
+                <checkBox left="0" top="0" width="6" height="8" field="Caixa_de_seleção_187" compilerOrder="180"/>
+            </layout>&#xD;
+            <layout left="123" top="349" width="264" height="17" compilerOrder="33">
+                <edit transparent="true" fontSize="10.5" fontColor="#000000" vertTextAlign="center" left="0" top="0" width="264" height="18" field="aspecto_eng_01" compilerOrder="34"/>
+            </layout>&#xD;
+            <layout left="563" top="351" width="9" height="9" compilerOrder="181">
+                <checkBox left="0" top="0" width="9" height="10" field="Caixa_de_seleção_188" compilerOrder="182"/>
+            </layout>&#xD;
+            <layout left="584" top="351" width="9" height="9" compilerOrder="173">
+                <checkBox left="0" top="0" width="9" height="10" field="Caixa_de_seleção_184" compilerOrder="174"/>
+            </layout>&#xD;
+            <layout left="606" top="351" width="9" height="9" compilerOrder="175">
+                <checkBox left="0" top="0" width="9" height="10" field="Caixa_de_seleção_185" compilerOrder="176"/>
+            </layout>&#xD;
+            <layout left="628" top="351" width="9" height="9" compilerOrder="183">
+                <checkBox left="0" top="0" width="9" height="10" field="Caixa_de_seleção_189" compilerOrder="184"/>
+            </layout>&#xD;
+            <layout left="649" top="351" width="9" height="9" compilerOrder="177">
+                <checkBox left="0" top="0" width="9" height="10" field="Caixa_de_seleção_186" compilerOrder="178"/>
+            </layout>&#xD;
+            <layout left="39" top="353" width="8" height="9" compilerOrder="55">
+                <checkBox left="0" top="0" width="8" height="10" field="Caixa_de_seleção_87" compilerOrder="56"/>
+            </layout>&#xD;
+            <layout left="1069" top="361" width="97" height="20" compilerOrder="129">
+                <edit transparent="true" fontSize="12.8" fontColor="#000000" vertTextAlign="center" left="0" top="0" width="97" height="21" field="chave_04" compilerOrder="130"/>
+            </layout>&#xD;
+            <layout left="59" top="366" width="327" height="17" compilerOrder="35">
+                <edit transparent="true" fontSize="10.5" fontColor="#000000" vertTextAlign="center" left="0" top="0" width="327" height="18" field="aspecto_eng_02" compilerOrder="36"/>
+            </layout>&#xD;
+            <layout left="675" top="371" width="6" height="7" compilerOrder="191">
+                <checkBox left="0" top="0" width="6" height="8" field="Caixa_de_seleção_193" compilerOrder="192"/>
+            </layout>&#xD;
+            <layout left="796" top="372.6" width="213" height="51.4" compilerOrder="117">
+                <textEditor left="0" top="0" width="213" height="51.4" fontSize="14.5" fontColor="#000000" field="memor_04" transparent="true" compilerOrder="118"/>
+            </layout>&#xD;
+            <layout left="563" top="374" width="9" height="9" compilerOrder="193">
+                <checkBox left="0" top="0" width="9" height="10" field="Caixa_de_seleção_194" compilerOrder="194"/>
+            </layout>&#xD;
+            <layout left="584" top="374" width="9" height="9" compilerOrder="185">
+                <checkBox left="0" top="0" width="9" height="10" field="Caixa_de_seleção_190" compilerOrder="186"/>
+            </layout>&#xD;
+            <layout left="606" top="374" width="9" height="9" compilerOrder="187">
+                <checkBox left="0" top="0" width="9" height="10" field="Caixa_de_seleção_191" compilerOrder="188"/>
+            </layout>&#xD;
+            <layout left="628" top="374" width="9" height="9" compilerOrder="195">
+                <checkBox left="0" top="0" width="9" height="10" field="Caixa_de_seleção_195" compilerOrder="196"/>
+            </layout>&#xD;
+            <layout left="649" top="374" width="9" height="9" compilerOrder="189">
+                <checkBox left="0" top="0" width="9" height="10" field="Caixa_de_seleção_192" compilerOrder="190"/>
+            </layout>&#xD;
+            <layout left="128" top="397" width="258" height="17" compilerOrder="37">
+                <edit transparent="true" fontSize="10.5" fontColor="#000000" vertTextAlign="center" left="0" top="0" width="258" height="18" field="aspecto_pres_01" compilerOrder="38"/>
+            </layout>&#xD;
+            <layout left="39" top="400" width="8" height="9" compilerOrder="57">
+                <checkBox left="0" top="0" width="8" height="10" field="Caixa_de_seleção_88" compilerOrder="58"/>
+            </layout>&#xD;
+            <layout left="59" top="414" width="327" height="17" compilerOrder="39">
+                <edit transparent="true" fontSize="10.5" fontColor="#000000" vertTextAlign="center" left="0" top="0" width="327" height="18" field="aspecto_pres_02" compilerOrder="40"/>
+            </layout>&#xD;
+            <layout left="548" top="424" width="13" height="15" compilerOrder="163">
+                <edit transparent="true" fontSize="9" fontColor="#000000" vertTextAlign="center" left="0" top="0" width="13" height="16" field="vitalidade" compilerOrder="164"/>
+            </layout>&#xD;
+            <layout left="574" top="426" width="9" height="9" compilerOrder="9">
+                <checkBox left="0" top="0" width="9" height="10" field="Caixa_de_seleção_34" compilerOrder="10"/>
+            </layout>&#xD;
+            <layout left="595" top="426" width="9" height="9" compilerOrder="5">
+                <checkBox left="0" top="0" width="9" height="10" field="Caixa_de_seleção_32" compilerOrder="6"/>
+            </layout>&#xD;
+            <layout left="617" top="426" width="9" height="9" compilerOrder="143">
+                <checkBox left="0" top="0" width="9" height="10" field="Caixa_de_seleção_114" compilerOrder="144"/>
+            </layout>&#xD;
+            <layout left="639" top="426" width="9" height="9" compilerOrder="139">
+                <checkBox left="0" top="0" width="9" height="10" field="Caixa_de_seleção_112" compilerOrder="140"/>
+            </layout>&#xD;
+            <layout left="660" top="426" width="9" height="9" compilerOrder="135">
+                <checkBox left="0" top="0" width="9" height="10" field="Caixa_de_seleção_110" compilerOrder="136"/>
+            </layout>&#xD;
+            <layout left="682" top="426" width="9" height="9" compilerOrder="147">
+                <checkBox left="0" top="0" width="9" height="10" field="Caixa_de_seleção_116" compilerOrder="148"/>
+            </layout>&#xD;
+            <layout left="576" top="437" width="5" height="6" compilerOrder="11">
+                <checkBox left="0" top="0" width="5" height="7" field="Caixa_de_seleção_35" compilerOrder="12"/>
+            </layout>&#xD;
+            <layout left="597" top="437" width="5" height="6" compilerOrder="7">
+                <checkBox left="0" top="0" width="5" height="7" field="Caixa_de_seleção_33" compilerOrder="8"/>
+            </layout>&#xD;
+            <layout left="619" top="437" width="5" height="6" compilerOrder="145">
+                <checkBox left="0" top="0" width="5" height="7" field="Caixa_de_seleção_115" compilerOrder="146"/>
+            </layout>&#xD;
+            <layout left="641" top="437" width="5" height="6" compilerOrder="141">
+                <checkBox left="0" top="0" width="5" height="7" field="Caixa_de_seleção_113" compilerOrder="142"/>
+            </layout>&#xD;
+            <layout left="662" top="437" width="5" height="6" compilerOrder="137">
+                <checkBox left="0" top="0" width="5" height="7" field="Caixa_de_seleção_111" compilerOrder="138"/>
+            </layout>&#xD;
+            <layout left="684" top="437" width="5" height="6" compilerOrder="149">
+                <checkBox left="0" top="0" width="5" height="7" field="Caixa_de_seleção_117" compilerOrder="150"/>
+            </layout>&#xD;
+            <layout left="1062" top="441" width="101" height="20" compilerOrder="131">
+                <edit transparent="true" fontSize="12.8" fontColor="#000000" vertTextAlign="center" left="0" top="0" width="101" height="21" field="chave_05" compilerOrder="132"/>
+            </layout>&#xD;
+            <layout left="121" top="445" width="266" height="17" compilerOrder="41">
+                <edit transparent="true" fontSize="10.5" fontColor="#000000" vertTextAlign="center" left="0" top="0" width="266" height="18" field="aspecto_mis_01" compilerOrder="42"/>
+            </layout>&#xD;
+            <layout left="548" top="448" width="13" height="15" compilerOrder="165">
+                <edit transparent="true" fontSize="9" fontColor="#000000" vertTextAlign="center" left="0" top="0" width="13" height="16" field="deter" compilerOrder="166"/>
+            </layout>&#xD;
+            <layout left="39" top="449" width="8" height="9" compilerOrder="59">
+                <checkBox left="0" top="0" width="8" height="10" field="Caixa_de_seleção_89" compilerOrder="60"/>
+            </layout>&#xD;
+            <layout left="796" top="449.6" width="213" height="51.4" compilerOrder="119">
+                <textEditor left="0" top="0" width="213" height="51.4" fontSize="14.5" fontColor="#000000" field="memor_05" transparent="true" compilerOrder="120"/>
+            </layout>&#xD;
+            <layout left="574" top="451" width="9" height="9" compilerOrder="213">
+                <checkBox left="0" top="0" width="9" height="10" field="Caixa_de_seleção_204" compilerOrder="214"/>
+            </layout>&#xD;
+            <layout left="595" top="451" width="9" height="9" compilerOrder="197">
+                <checkBox left="0" top="0" width="9" height="10" field="Caixa_de_seleção_196" compilerOrder="198"/>
+            </layout>&#xD;
+            <layout left="617" top="451" width="9" height="9" compilerOrder="199">
+                <checkBox left="0" top="0" width="9" height="10" field="Caixa_de_seleção_197" compilerOrder="200"/>
+            </layout>&#xD;
+            <layout left="639" top="451" width="9" height="9" compilerOrder="215">
+                <checkBox left="0" top="0" width="9" height="10" field="Caixa_de_seleção_205" compilerOrder="216"/>
+            </layout>&#xD;
+            <layout left="660" top="451" width="9" height="9" compilerOrder="201">
+                <checkBox left="0" top="0" width="9" height="10" field="Caixa_de_seleção_198" compilerOrder="202"/>
+            </layout>&#xD;
+            <layout left="682" top="451" width="9" height="9" compilerOrder="203">
+                <checkBox left="0" top="0" width="9" height="10" field="Caixa_de_seleção_199" compilerOrder="204"/>
+            </layout>&#xD;
+            <layout left="59" top="462" width="327" height="17" compilerOrder="43">
+                <edit transparent="true" fontSize="10.5" fontColor="#000000" vertTextAlign="center" left="0" top="0" width="327" height="18" field="aspecto_mis_02" compilerOrder="44"/>
+            </layout>&#xD;
+            <layout left="576" top="462" width="5" height="6" compilerOrder="217">
+                <checkBox left="0" top="0" width="5" height="7" field="Caixa_de_seleção_206" compilerOrder="218"/>
+            </layout>&#xD;
+            <layout left="597" top="462" width="5" height="6" compilerOrder="205">
+                <checkBox left="0" top="0" width="5" height="7" field="Caixa_de_seleção_200" compilerOrder="206"/>
+            </layout>&#xD;
+            <layout left="618" top="462" width="5" height="6" compilerOrder="207">
+                <checkBox left="0" top="0" width="5" height="7" field="Caixa_de_seleção_201" compilerOrder="208"/>
+            </layout>&#xD;
+            <layout left="641" top="462" width="5" height="6" compilerOrder="219">
+                <checkBox left="0" top="0" width="5" height="7" field="Caixa_de_seleção_207" compilerOrder="220"/>
+            </layout>&#xD;
+            <layout left="662" top="462" width="5" height="6" compilerOrder="209">
+                <checkBox left="0" top="0" width="5" height="7" field="Caixa_de_seleção_202" compilerOrder="210"/>
+            </layout>&#xD;
+            <layout left="684" top="462" width="5" height="6" compilerOrder="211">
+                <checkBox left="0" top="0" width="5" height="7" field="Caixa_de_seleção_203" compilerOrder="212"/>
+            </layout>&#xD;
+            <layout left="548" top="475" width="13" height="15" compilerOrder="167">
+                <edit transparent="true" fontSize="9" fontColor="#000000" vertTextAlign="center" left="0" top="0" width="13" height="16" field="rela" compilerOrder="168"/>
+            </layout>&#xD;
+            <layout left="574" top="476" width="9" height="9" compilerOrder="237">
+                <checkBox left="0" top="0" width="9" height="10" field="Caixa_de_seleção_2014" compilerOrder="238"/>
+            </layout>&#xD;
+            <layout left="595" top="476" width="9" height="9" compilerOrder="221">
+                <checkBox left="0" top="0" width="9" height="10" field="Caixa_de_seleção_208" compilerOrder="222"/>
+            </layout>&#xD;
+            <layout left="617" top="476" width="9" height="9" compilerOrder="223">
+                <checkBox left="0" top="0" width="9" height="10" field="Caixa_de_seleção_209" compilerOrder="224"/>
+            </layout>&#xD;
+            <layout left="639" top="476" width="9" height="9" compilerOrder="239">
+                <checkBox left="0" top="0" width="9" height="10" field="Caixa_de_seleção_2015" compilerOrder="240"/>
+            </layout>&#xD;
+            <layout left="660" top="476" width="9" height="9" compilerOrder="225">
+                <checkBox left="0" top="0" width="9" height="10" field="Caixa_de_seleção_210" compilerOrder="226"/>
+            </layout>&#xD;
+            <layout left="682" top="476" width="9" height="9" compilerOrder="227">
+                <checkBox left="0" top="0" width="9" height="10" field="Caixa_de_seleção_211" compilerOrder="228"/>
+            </layout>&#xD;
+            <layout left="576" top="487" width="5" height="6" compilerOrder="241">
+                <checkBox left="0" top="0" width="5" height="7" field="Caixa_de_seleção_2016" compilerOrder="242"/>
+            </layout>&#xD;
+            <layout left="597" top="487" width="5" height="6" compilerOrder="229">
+                <checkBox left="0" top="0" width="5" height="7" field="Caixa_de_seleção_2010" compilerOrder="230"/>
+            </layout>&#xD;
+            <layout left="618" top="487" width="5" height="6" compilerOrder="231">
+                <checkBox left="0" top="0" width="5" height="7" field="Caixa_de_seleção_2011" compilerOrder="232"/>
+            </layout>&#xD;
+            <layout left="641" top="487" width="5" height="6" compilerOrder="243">
+                <checkBox left="0" top="0" width="5" height="7" field="Caixa_de_seleção_2017" compilerOrder="244"/>
+            </layout>&#xD;
+            <layout left="662" top="487" width="5" height="6" compilerOrder="233">
+                <checkBox left="0" top="0" width="5" height="7" field="Caixa_de_seleção_2012" compilerOrder="234"/>
+            </layout>&#xD;
+            <layout left="684" top="487" width="5" height="6" compilerOrder="235">
+                <checkBox left="0" top="0" width="5" height="7" field="Caixa_de_seleção_2013" compilerOrder="236"/>
+            </layout>&#xD;
+            <layout left="115" top="494" width="271" height="17" compilerOrder="45">
+                <edit transparent="true" fontSize="10.5" fontColor="#000000" vertTextAlign="center" left="0" top="0" width="271" height="18" field="aspecto_pre_01" compilerOrder="46"/>
+            </layout>&#xD;
+            <layout left="39" top="497" width="8" height="9" compilerOrder="61">
+                <checkBox left="0" top="0" width="8" height="10" field="Caixa_de_seleção_90" compilerOrder="62"/>
+            </layout>&#xD;
+            <layout left="548" top="500" width="13" height="15" compilerOrder="169">
+                <edit transparent="true" fontSize="9" fontColor="#000000" vertTextAlign="center" left="0" top="0" width="13" height="16" field="esp" compilerOrder="170"/>
+            </layout>&#xD;
+            <layout left="574" top="502" width="9" height="9" compilerOrder="261">
+                <checkBox left="0" top="0" width="9" height="10" field="Caixa_de_seleção_2024" compilerOrder="262"/>
+            </layout>&#xD;
+            <layout left="595" top="502" width="9" height="9" compilerOrder="245">
+                <checkBox left="0" top="0" width="9" height="10" field="Caixa_de_seleção_2018" compilerOrder="246"/>
+            </layout>&#xD;
+            <layout left="617" top="502" width="9" height="9" compilerOrder="247">
+                <checkBox left="0" top="0" width="9" height="10" field="Caixa_de_seleção_2019" compilerOrder="248"/>
+            </layout>&#xD;
+            <layout left="639" top="502" width="9" height="9" compilerOrder="263">
+                <checkBox left="0" top="0" width="9" height="10" field="Caixa_de_seleção_2025" compilerOrder="264"/>
+            </layout>&#xD;
+            <layout left="660" top="502" width="9" height="9" compilerOrder="249">
+                <checkBox left="0" top="0" width="9" height="10" field="Caixa_de_seleção_212" compilerOrder="250"/>
+            </layout>&#xD;
+            <layout left="682" top="502" width="9" height="9" compilerOrder="251">
+                <checkBox left="0" top="0" width="9" height="10" field="Caixa_de_seleção_213" compilerOrder="252"/>
+            </layout>&#xD;
+            <layout left="59" top="511" width="327" height="17" compilerOrder="47">
+                <edit transparent="true" fontSize="10.5" fontColor="#000000" vertTextAlign="center" left="0" top="0" width="327" height="18" field="aspecto_pre_02" compilerOrder="48"/>
+            </layout>&#xD;
+            <layout left="576" top="513" width="5" height="6" compilerOrder="265">
+                <checkBox left="0" top="0" width="5" height="7" field="Caixa_de_seleção_2026" compilerOrder="266"/>
+            </layout>&#xD;
+            <layout left="597" top="513" width="5" height="6" compilerOrder="253">
+                <checkBox left="0" top="0" width="5" height="7" field="Caixa_de_seleção_2020" compilerOrder="254"/>
+            </layout>&#xD;
+            <layout left="618" top="513" width="5" height="6" compilerOrder="255">
+                <checkBox left="0" top="0" width="5" height="7" field="Caixa_de_seleção_2021" compilerOrder="256"/>
+            </layout>&#xD;
+            <layout left="641" top="513" width="5" height="6" compilerOrder="267">
+                <checkBox left="0" top="0" width="5" height="7" field="Caixa_de_seleção_2027" compilerOrder="268"/>
+            </layout>&#xD;
+            <layout left="662" top="513" width="5" height="6" compilerOrder="257">
+                <checkBox left="0" top="0" width="5" height="7" field="Caixa_de_seleção_2022" compilerOrder="258"/>
+            </layout>&#xD;
+            <layout left="684" top="513" width="5" height="6" compilerOrder="259">
+                <checkBox left="0" top="0" width="5" height="7" field="Caixa_de_seleção_2023" compilerOrder="260"/>
+            </layout>&#xD;
+            <layout left="1070" top="524" width="80" height="20" compilerOrder="133">
+                <edit transparent="true" fontSize="12.8" fontColor="#000000" vertTextAlign="center" left="0" top="0" width="80" height="21" field="chave_06" compilerOrder="134"/>
+            </layout>&#xD;
+            <layout left="796" top="525.6" width="213" height="51.4" compilerOrder="121">
+                <textEditor left="0" top="0" width="213" height="51.4" fontSize="14.5" fontColor="#000000" field="memor_06" transparent="true" compilerOrder="122"/>
+            </layout>&#xD;
+            <layout left="548" top="526" width="13" height="15" compilerOrder="171">
+                <edit transparent="true" fontSize="9" fontColor="#000000" vertTextAlign="center" left="0" top="0" width="13" height="16" field="rec" compilerOrder="172"/>
+            </layout>&#xD;
+            <layout left="574" top="528" width="9" height="9" compilerOrder="285">
+                <checkBox left="0" top="0" width="9" height="10" field="Caixa_de_seleção_2034" compilerOrder="286"/>
+            </layout>&#xD;
+            <layout left="595" top="528" width="9" height="9" compilerOrder="269">
+                <checkBox left="0" top="0" width="9" height="10" field="Caixa_de_seleção_2028" compilerOrder="270"/>
+            </layout>&#xD;
+            <layout left="617" top="528" width="9" height="9" compilerOrder="271">
+                <checkBox left="0" top="0" width="9" height="10" field="Caixa_de_seleção_2029" compilerOrder="272"/>
+            </layout>&#xD;
+            <layout left="639" top="528" width="9" height="9" compilerOrder="287">
+                <checkBox left="0" top="0" width="9" height="10" field="Caixa_de_seleção_2035" compilerOrder="288"/>
+            </layout>&#xD;
+            <layout left="660" top="528" width="9" height="9" compilerOrder="273">
+                <checkBox left="0" top="0" width="9" height="10" field="Caixa_de_seleção_214" compilerOrder="274"/>
+            </layout>&#xD;
+            <layout left="682" top="528" width="9" height="9" compilerOrder="275">
+                <checkBox left="0" top="0" width="9" height="10" field="Caixa_de_seleção_215" compilerOrder="276"/>
+            </layout>&#xD;
+            <layout left="576" top="539" width="5" height="6" compilerOrder="289">
+                <checkBox left="0" top="0" width="5" height="7" field="Caixa_de_seleção_2036" compilerOrder="290"/>
+            </layout>&#xD;
+            <layout left="597" top="539" width="5" height="6" compilerOrder="277">
+                <checkBox left="0" top="0" width="5" height="7" field="Caixa_de_seleção_2030" compilerOrder="278"/>
+            </layout>&#xD;
+            <layout left="618" top="539" width="5" height="6" compilerOrder="279">
+                <checkBox left="0" top="0" width="5" height="7" field="Caixa_de_seleção_2031" compilerOrder="280"/>
+            </layout>&#xD;
+            <layout left="641" top="539" width="5" height="6" compilerOrder="291">
+                <checkBox left="0" top="0" width="5" height="7" field="Caixa_de_seleção_2037" compilerOrder="292"/>
+            </layout>&#xD;
+            <layout left="662" top="539" width="5" height="6" compilerOrder="281">
+                <checkBox left="0" top="0" width="5" height="7" field="Caixa_de_seleção_2032" compilerOrder="282"/>
+            </layout>&#xD;
+            <layout left="684" top="539" width="5" height="6" compilerOrder="283">
+                <checkBox left="0" top="0" width="5" height="7" field="Caixa_de_seleção_2033" compilerOrder="284"/>
+            </layout>&#xD;
+            <layout left="47" top="592" width="201" height="20" compilerOrder="63">
+                <edit transparent="true" fontSize="12.8" fontColor="#000000" vertTextAlign="center" left="0" top="0" width="201" height="21" field="comp_01" compilerOrder="64"/>
+            </layout>&#xD;
+            <layout left="276" top="592" width="201" height="20" compilerOrder="73">
+                <edit transparent="true" fontSize="12.8" fontColor="#000000" vertTextAlign="center" left="0" top="0" width="201" height="21" field="comp_06" compilerOrder="74"/>
+            </layout>&#xD;
+            <layout left="47" top="622" width="201" height="20" compilerOrder="65">
+                <edit transparent="true" fontSize="12.8" fontColor="#000000" vertTextAlign="center" left="0" top="0" width="201" height="21" field="comp_02" compilerOrder="66"/>
+            </layout>&#xD;
+            <layout left="276" top="622" width="201" height="20" compilerOrder="75">
+                <edit transparent="true" fontSize="12.8" fontColor="#000000" vertTextAlign="center" left="0" top="0" width="201" height="21" field="comp_07" compilerOrder="76"/>
+            </layout>&#xD;
+            <layout left="833" top="653" width="261" height="20" compilerOrder="105">
+                <edit transparent="true" fontSize="12.8" fontColor="#000000" vertTextAlign="center" left="0" top="0" width="261" height="21" field="deb_01" compilerOrder="106"/>
+            </layout>&#xD;
+            <layout left="47" top="654" width="201" height="20" compilerOrder="67">
+                <edit transparent="true" fontSize="12.8" fontColor="#000000" vertTextAlign="center" left="0" top="0" width="201" height="21" field="comp_03" compilerOrder="68"/>
+            </layout>&#xD;
+            <layout left="276" top="654" width="201" height="20" compilerOrder="77">
+                <edit transparent="true" fontSize="12.8" fontColor="#000000" vertTextAlign="center" left="0" top="0" width="201" height="21" field="comp_08" compilerOrder="78"/>
+            </layout>&#xD;
+            <layout left="519" top="654" width="261" height="20" compilerOrder="99">
+                <edit transparent="true" fontSize="12.8" fontColor="#000000" vertTextAlign="center" left="0" top="0" width="261" height="21" field="dest_01" compilerOrder="100"/>
+            </layout>&#xD;
+            <layout left="519" top="683" width="261" height="20" compilerOrder="101">
+                <edit transparent="true" fontSize="12.8" fontColor="#000000" vertTextAlign="center" left="0" top="0" width="261" height="21" field="dest_02" compilerOrder="102"/>
+            </layout>&#xD;
+            <layout left="833" top="683" width="261" height="20" compilerOrder="107">
+                <edit transparent="true" fontSize="12.8" fontColor="#000000" vertTextAlign="center" left="0" top="0" width="261" height="21" field="deb_02" compilerOrder="108"/>
+            </layout>&#xD;
+            <layout left="47" top="684" width="201" height="20" compilerOrder="69">
+                <edit transparent="true" fontSize="12.8" fontColor="#000000" vertTextAlign="center" left="0" top="0" width="201" height="21" field="comp_04" compilerOrder="70"/>
+            </layout>&#xD;
+            <layout left="276" top="684" width="201" height="20" compilerOrder="79">
+                <edit transparent="true" fontSize="12.8" fontColor="#000000" vertTextAlign="center" left="0" top="0" width="201" height="21" field="comp_09" compilerOrder="80"/>
+            </layout>&#xD;
+            <layout left="519" top="715" width="261" height="20" compilerOrder="103">
+                <edit transparent="true" fontSize="12.8" fontColor="#000000" vertTextAlign="center" left="0" top="0" width="261" height="21" field="dest_03" compilerOrder="104"/>
+            </layout>&#xD;
+            <layout left="833" top="715" width="261" height="20" compilerOrder="109">
+                <edit transparent="true" fontSize="12.8" fontColor="#000000" vertTextAlign="center" left="0" top="0" width="261" height="21" field="deb_03" compilerOrder="110"/>
+            </layout>&#xD;
+            <layout left="47" top="716" width="201" height="20" compilerOrder="71">
+                <edit transparent="true" fontSize="12.8" fontColor="#000000" vertTextAlign="center" left="0" top="0" width="201" height="21" field="comp_05" compilerOrder="72"/>
+            </layout>&#xD;
+            <layout left="276" top="716" width="201" height="20" compilerOrder="81">
+                <edit transparent="true" fontSize="12.8" fontColor="#000000" vertTextAlign="center" left="0" top="0" width="201" height="21" field="comp_010" compilerOrder="82"/>
+            </layout>&#xD;
+            <layout left="47" top="780" width="267" height="20" compilerOrder="83">
+                <edit transparent="true" fontSize="12.8" fontColor="#000000" vertTextAlign="center" left="0" top="0" width="267" height="21" field="berlo_01" compilerOrder="84"/>
+            </layout>&#xD;
+            <layout left="356" top="780" width="265" height="20" compilerOrder="87">
+                <edit transparent="true" fontSize="12.8" fontColor="#000000" vertTextAlign="center" left="0" top="0" width="265" height="21" field="equip_01" compilerOrder="88"/>
+            </layout>&#xD;
+            <layout left="639" top="780" width="265" height="20" compilerOrder="91">
+                <edit transparent="true" fontSize="12.8" fontColor="#000000" vertTextAlign="center" left="0" top="0" width="265" height="21" field="equip_03" compilerOrder="92"/>
+            </layout>&#xD;
+            <layout left="919" top="780" width="265" height="20" compilerOrder="95">
+                <edit transparent="true" fontSize="12.8" fontColor="#000000" vertTextAlign="center" left="0" top="0" width="265" height="21" field="equip_05" compilerOrder="96"/>
+            </layout>&#xD;
+            <layout left="47" top="800" width="267" height="20" compilerOrder="85">
+                <edit transparent="true" fontSize="12.8" fontColor="#000000" vertTextAlign="center" left="0" top="0" width="267" height="21" field="berlo_02" compilerOrder="86"/>
+            </layout>&#xD;
+            <layout left="356" top="800" width="265" height="20" compilerOrder="89">
+                <edit transparent="true" fontSize="12.8" fontColor="#000000" vertTextAlign="center" left="0" top="0" width="265" height="21" field="equip_02" compilerOrder="90"/>
+            </layout>&#xD;
+            <layout left="639" top="800" width="265" height="20" compilerOrder="93">
+                <edit transparent="true" fontSize="12.8" fontColor="#000000" vertTextAlign="center" left="0" top="0" width="265" height="21" field="equip_04" compilerOrder="94"/>
+            </layout>&#xD;
+            <layout left="919" top="800" width="265" height="20" compilerOrder="97">
+                <edit transparent="true" fontSize="12.8" fontColor="#000000" vertTextAlign="center" left="0" top="0" width="265" height="21" field="equip_06" compilerOrder="98"/>
+            </layout>&#xD;
+        </rectangle>
+    </scrollBox>
+</form>
