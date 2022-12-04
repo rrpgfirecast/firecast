@@ -1,0 +1,1286 @@
+<group> 
+   <layout name="Lnave3" align="client" visible="false">
+   
+   <!-- PRIMEIRA VARIAVEL DO Nko  qqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq-->
+  <layout name="NkoNave" align="client" visible="false">
+ 
+   <!-- Imagens em relação a NAVE -->
+     <image src="/imagens/fundo.png" left="333" top="62" width="452" height="323"/>
+   <image src="/imagens/CirculoNave.png" width="459" height="330" left="330.50" top="60"/>
+   
+   <!-- Imagens em relação ao model, nome e nivel;.-->
+   <image src="/imagens/quadradoPreenchidoCheio.png" left="50" top="94" width="279" height="54" />
+   <image src="/imagens/quadradoPreenchidoCheio.png" left="50" top="148" width="279" height="54" />
+   <image src="/imagens/quadradoPreenchidoCheio.png" left="50" top="201" width="279" height="54" />
+   <image src="/imagens/model.png" left="59" top="110" width="91" height="19" />
+   <image src="/imagens/nome.png" left="59" top="168" width="74" height="19" />
+   <image src="/imagens/nivelNave.png" left="59" top="216" width="71" height="25" />
+   
+   <!-- NAVES AQUI -->
+   <image name="Nko1" src="/Naves/N/1 - Nko/1.png" left="500" top="165" width="95" height="104" visible="false"/>
+   <image name="Nko2" src="/Naves/N/1 - Nko/2.png" left="500" top="165" width="120" height="114" visible="false"/>
+   <image name="Nko3" src="/Naves/N/1 - Nko/3.png" left="500" top="165" width="120" height="106" visible="false"/>
+   <image name="Nko4" src="/Naves/N/1 - Nko/4.png" left="500" top="165" width="120" height="104" visible="false"/>
+   <image name="Nko5" src="/Naves/N/1 - Nko/5.png" left="500" top="165" width="100" height="104" visible="false"/>
+   <image name="Nko6" src="/Naves/N/1 - Nko/6.png" left="500" top="165" width="95" height="104" visible="false"/>
+   <image name="Nko7" src="/Naves/N/1 - Nko/7.png" left="500" top="165" width="100" height="120" visible="false"/>
+   <image name="Nko8" src="/Naves/N/1 - Nko/8.png" left="500" top="165" width="100" height="120" visible="false"/>
+    
+	<label name="model17" left="153.13" top="95.50" width="173.63" height="47.25" horzTextAlign="center" fontSize="30" fontStyle="bold" text="Nko"/>
+	<edit field="nomeNave17" left="153.12" top="149.50" width="173.62" height="47.25" horzTextAlign="center" fontSize="30" fontStyle="bold" transparent="true"/>
+	<textEditor field="Textoanotacao32" left="334.25" top="276.25" width="222" height="111" transparent="true"/>
+	<textEditor field="Textoanotacao33" left="558.25" top="276.25" width="229" height="111" transparent="true"/>		
+	<label field="nivelNave17" left="153.12" top="203.50" width="173.62" height="47.25" horzTextAlign="center" fontSize="30" fontStyle="bold" hitTest="true">
+       <event name="onClick">
+           	  	    if rrpg.getMesaDe(sheet).meuJogador.isMestre then
+		dialogs.inputQuery("Nivel da Nave", "Quantidade de Pontos:", "",
+		   function (valorPreenchido)
+					  sheet.nivelNave17 = (sheet.nivelNave17 or 0) + valorPreenchido; 
+	    end);
+		end;		
+		 </event>
+		  </label>
+	
+	<!-- BOTOES AQUI  -->
+   <button text="UP" fontStyle="bold" fontColor="yellow" left="148.75" top="265.50" width="30" height="27">
+       <event name="onClick">
+	    if sheet.nivelNave17 >= 70 then
+		 	   sheet.nivelNave17 = (sheet.nivelNave17 or 0) +0;
+		 else
+	   sheet.nivelNave17 = (sheet.nivelNave17 or 0) +0.2;
+		 end;
+		 
+	    </event>
+	   <event name="onMenu">
+	   sheet.nivelNave17 = (sheet.nivelNave17 or 0) -0.2;
+	    </event>
+		 </button>
+	  <!-- AQUI FICA A PARTE DO HP DA NAVE -->
+		<template name="HpNave17">
+			<edit type="number" vertTextAlign="center" horzTextAlign="center" left="519" top="112" width="25" height="25" field="min$(slot)"/>
+			<dataLink field="min$(slot)">
+				<event name="onChange">
+					if sheet.min$(slot)~=nil and sheet.max$(slot)~=nil and sheet.usos$(slot)~=nil then
+						sheet.usos$(slot) = (sheet.min$(slot) or 0)/ (sheet.max$(slot) or 0);
+
+						local mesaDoPersonagem = rrpg.getMesaDe(sheet);
+						
+						local mod = 0;
+						if newValue~=nil and oldValue~=nil then
+							mod = newValue - oldValue;
+						end;
+						
+						if mod>0 then
+							mesaDoPersonagem.activeChat:enviarMensagem((sheet.nomeNave17 or "PONHA UM NOME NA SUA NAVE") .. " recuperou " .. mod .. " de HP " )
+						end;
+						if 0>mod then
+							mod = mod * -1;
+							mesaDoPersonagem.activeChat:enviarMensagem((sheet.nomeNave17 or "PONHA UM NOME NA SUA NAVE") .. " perdeu " .. mod .. " de HP " )
+						end;
+					else
+						sheet.usos$(slot) = 0;
+					end;
+				</event>
+			</dataLink>
+			
+			<edit type="number" vertTextAlign="center" horzTextAlign="center" left="548" top="112" width="25" height="25" field="max$(slot)">
+				<event name="onUserChange">
+					if sheet.min$(slot)~=nil and sheet.max$(slot)~=nil then
+						sheet.usos$(slot) = (sheet.min$(slot) or 0)/ (sheet.max$(slot) or 0);
+					end;
+				</event>
+			</edit>
+			<progressBar left="495" top="138" width="105" height="20.50" color="red" hitTest="true" max="1" field="usos$(slot)"/>
+		</template>
+		
+		<layout left="1" top="1" width="250" height="222" align="client">
+			<HpNave17 slot="Min17" nome="Max17"/>
+		</layout>		 
+		  </layout>			  
+
+		  
+   <!-- SEGUNDA VARIAVEL DO Nnp  qqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq-->
+  <layout name="NnpNave" align="client" visible="false">
+ 
+   <!-- Imagens em relação a NAVE -->
+     <image src="/imagens/fundo.png" left="333" top="62" width="452" height="323"/>
+   <image src="/imagens/CirculoNave.png" width="459" height="330" left="330.50" top="60"/>
+   
+   <!-- Imagens em relação ao model, nome e nivel;.-->
+   <image src="/imagens/quadradoPreenchidoCheio.png" left="50" top="94" width="279" height="54" />
+   <image src="/imagens/quadradoPreenchidoCheio.png" left="50" top="148" width="279" height="54" />
+   <image src="/imagens/quadradoPreenchidoCheio.png" left="50" top="201" width="279" height="54" />
+   <image src="/imagens/model.png" left="59" top="110" width="91" height="19" />
+   <image src="/imagens/nome.png" left="59" top="168" width="74" height="19" />
+   <image src="/imagens/nivelNave.png" left="59" top="216" width="71" height="25" />
+   
+   <!-- NAVES AQUI -->
+   <image name="Nnp1" src="/Naves/N/2 - Nnp/1.png" left="500" top="165" width="95" height="104" visible="false"/>
+   <image name="Nnp2" src="/Naves/N/2 - Nnp/2.png" left="500" top="165" width="120" height="114" visible="false"/>
+   <image name="Nnp3" src="/Naves/N/2 - Nnp/3.png" left="500" top="165" width="120" height="106" visible="false"/>
+   <image name="Nnp4" src="/Naves/N/2 - Nnp/4.png" left="500" top="165" width="120" height="104" visible="false"/>
+   <image name="Nnp5" src="/Naves/N/2 - Nnp/5.png" left="500" top="165" width="100" height="104" visible="false"/>
+   <image name="Nnp6" src="/Naves/N/2 - Nnp/6.png" left="500" top="165" width="95" height="104" visible="false"/>
+   <image name="Nnp7" src="/Naves/N/2 - Nnp/7.png" left="500" top="165" width="100" height="120" visible="false"/>
+   <image name="Nnp8" src="/Naves/N/2 - Nnp/8.png" left="500" top="165" width="100" height="120" visible="false"/>
+    
+	<label name="model18" left="153.13" top="95.50" width="173.63" height="47.25" horzTextAlign="center" fontSize="30" fontStyle="bold" text="Nnp"/>
+	<edit field="nomeNave18" left="153.12" top="149.50" width="173.62" height="47.25" horzTextAlign="center" fontSize="30" fontStyle="bold" transparent="true"/>
+	<textEditor field="Textoanotacao34" left="334.25" top="276.25" width="222" height="111" transparent="true"/>
+	<textEditor field="Textoanotacao35" left="558.25" top="276.25" width="229" height="111" transparent="true"/>	
+	
+	<label field="nivelNave18" left="153.12" top="203.50" width="173.62" height="47.25" horzTextAlign="center" fontSize="30" fontStyle="bold" hitTest="true">	
+       <event name="onClick">
+           	  	    if rrpg.getMesaDe(sheet).meuJogador.isMestre then
+		dialogs.inputQuery("Nivel da Nave", "Quantidade de Pontos:", "",
+		   function (valorPreenchido)
+					  sheet.nivelNave18 = (sheet.nivelNave18 or 0) + valorPreenchido; 
+	    end);
+		end;		
+		 </event>
+		   </label>
+
+
+	<!-- BOTOES AQUI  -->
+   <button text="UP" fontStyle="bold" fontColor="yellow" left="148.75" top="265.50" width="30" height="27">
+       <event name="onClick">
+        if rrpg.getMesaDe(sheet).meuJogador.isMestre then
+	 end;
+	    if sheet.nivelNave18 >= 70 then
+		 	   sheet.nivelNave18 = (sheet.nivelNave18 or 0) +0;
+		 else
+	   sheet.nivelNave18 = (sheet.nivelNave18 or 0) +0.2;
+	 end;	    
+		 </event>
+	   <event name="onMenu">
+	   sheet.nivelNave18 = (sheet.nivelNave18 or 0) -0.2;
+	    </event>
+		 </button>
+	  <!-- AQUI FICA A PARTE DO HP DA NAVE -->
+		<template name="HpNave18">
+			<edit type="number" vertTextAlign="center" horzTextAlign="center" left="519" top="112" width="25" height="25" field="min$(slot)"/>
+			<dataLink field="min$(slot)">
+				<event name="onChange">
+					if sheet.min$(slot)~=nil and sheet.max$(slot)~=nil and sheet.usos$(slot)~=nil then
+						sheet.usos$(slot) = (sheet.min$(slot) or 0)/ (sheet.max$(slot) or 0);
+
+						local mesaDoPersonagem = rrpg.getMesaDe(sheet);
+						
+						local mod = 0;
+						if newValue~=nil and oldValue~=nil then
+							mod = newValue - oldValue;
+						end;
+						
+						if mod>0 then
+							mesaDoPersonagem.activeChat:enviarMensagem((sheet.nomeNave18 or "PONHA UM NOME NA SUA NAVE") .. " recuperou " .. mod .. " de HP " )
+						end;
+						if 0>mod then
+							mod = mod * -1;
+							mesaDoPersonagem.activeChat:enviarMensagem((sheet.nomeNave18 or "PONHA UM NOME NA SUA NAVE") .. " perdeu " .. mod .. " de HP " )
+						end;
+					else
+						sheet.usos$(slot) = 0;
+					end;
+				</event>
+			</dataLink>
+			
+			<edit type="number" vertTextAlign="center" horzTextAlign="center" left="548" top="112" width="25" height="25" field="max$(slot)">
+				<event name="onUserChange">
+					if sheet.min$(slot)~=nil and sheet.max$(slot)~=nil then
+						sheet.usos$(slot) = (sheet.min$(slot) or 0)/ (sheet.max$(slot) or 0);
+					end;
+				</event>
+			</edit>
+			<progressBar left="495" top="138" width="105" height="20.50" color="red" hitTest="true" max="1" field="usos$(slot)"/>
+		</template>
+		
+		<layout left="1" top="1" width="250" height="222" align="client">
+			<HpNave18 slot="Min18" nome="Max18"/>
+		</layout>		 
+		  </layout>			  
+
+
+   <!-- TERCEIRA VARIAVEL DO Ne3 qqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq -->
+  <layout name="Ne3Nave" align="client" visible="false">
+ 
+         <!-- Imagens em relação a NAVE -->
+     <image src="/imagens/fundo.png" left="333" top="62" width="452" height="323"/>
+   <image src="/imagens/CirculoNave.png" width="459" height="330" left="330.50" top="60"/>
+   
+   <!-- Imagens em relação ao model, nome e nivel;.-->
+   <image src="/imagens/quadradoPreenchidoCheio.png" left="50" top="94" width="279" height="54" />
+   <image src="/imagens/quadradoPreenchidoCheio.png" left="50" top="148" width="279" height="54" />
+   <image src="/imagens/quadradoPreenchidoCheio.png" left="50" top="201" width="279" height="54" />
+   <image src="/imagens/model.png" left="59" top="110" width="91" height="19" />
+   <image src="/imagens/nome.png" left="59" top="168" width="74" height="19" />
+   <image src="/imagens/nivelNave.png" left="59" top="216" width="71" height="25" />
+   
+   <!-- NAVES AQUI -->
+   <image name="Ne31" src="/Naves/N/3 - Ne3/1.png" left="500" top="165" width="95" height="104" visible="false"/>
+   <image name="Ne32" src="/Naves/N/3 - Ne3/2.png" left="500" top="165" width="120" height="114" visible="false"/>
+   <image name="Ne33" src="/Naves/N/3 - Ne3/3.png" left="500" top="165" width="120" height="106" visible="false"/>
+   <image name="Ne34" src="/Naves/N/3 - Ne3/4.png" left="500" top="165" width="120" height="104" visible="false"/>
+   <image name="Ne35" src="/Naves/N/3 - Ne3/5.png" left="500" top="165" width="100" height="104" visible="false"/>
+   <image name="Ne36" src="/Naves/N/3 - Ne3/6.png" left="500" top="165" width="95" height="104" visible="false"/>
+   <image name="Ne37" src="/Naves/N/3 - Ne3/7.png" left="500" top="165" width="100" height="120" visible="false"/>
+   <image name="Ne38" src="/Naves/N/3 - Ne3/8.png" left="500" top="165" width="100" height="120" visible="false"/>
+    
+	<label name="model19" left="153.13" top="95.50" width="173.63" height="47.25" horzTextAlign="center" fontSize="30" fontStyle="bold" text="Ne3"/>
+	<edit field="nomeNave19" left="153.12" top="149.50" width="173.62" height="47.25" horzTextAlign="center" fontSize="30" fontStyle="bold" transparent="true"/>
+	<textEditor field="Textoanotacao35" left="334.25" top="276.25" width="222" height="111" transparent="true"/>
+	<textEditor field="Textoanotacao36" left="558.25" top="276.25" width="229" height="111" transparent="true"/>	
+	
+	<label field="nivelNave19" left="153.12" top="203.50" width="173.62" height="47.25" horzTextAlign="center" fontSize="30" fontStyle="bold" hitTest="true">
+       <event name="onClick">
+           	  	    if rrpg.getMesaDe(sheet).meuJogador.isMestre then
+		dialogs.inputQuery("Nivel da Nave", "Quantidade de Pontos:", "",
+		   function (valorPreenchido)
+					  sheet.nivelNave19 = (sheet.nivelNave19 or 0) + valorPreenchido; 
+	    end);
+		end;		
+		 </event>	
+		  </label>
+
+	
+	<!-- BOTOES AQUI  -->
+   <button text="UP" fontStyle="bold" fontColor="yellow" left="148.75" top="265.50" width="30" height="27">
+       <event name="onClick">
+	    if sheet.nivelNave19 >= 70 then
+		 	   sheet.nivelNave19 = (sheet.nivelNave19 or 0) +0;
+		 else
+	   sheet.nivelNave19 = (sheet.nivelNave19 or 0) +0.2;
+		 end;	    
+	    </event>
+	   <event name="onMenu">
+	   sheet.nivelNave19 = (sheet.nivelNave19 or 0) -0.2;
+	    </event>
+		 </button>
+	  <!-- AQUI FICA A PARTE DO HP DA NAVE -->
+		<template name="HpNave19">
+			<edit type="number" vertTextAlign="center" horzTextAlign="center" left="519" top="112" width="25" height="25" field="min$(slot)"/>
+			<dataLink field="min$(slot)">
+				<event name="onChange">
+					if sheet.min$(slot)~=nil and sheet.max$(slot)~=nil and sheet.usos$(slot)~=nil then
+						sheet.usos$(slot) = (sheet.min$(slot) or 0)/ (sheet.max$(slot) or 0);
+
+						local mesaDoPersonagem = rrpg.getMesaDe(sheet);
+						
+						local mod = 0;
+						if newValue~=nil and oldValue~=nil then
+							mod = newValue - oldValue;
+						end;
+						
+						if mod>0 then
+							mesaDoPersonagem.activeChat:enviarMensagem((sheet.nomeNave19 or "PONHA UM NOME NA SUA NAVE") .. " recuperou " .. mod .. " de HP " )
+						end;
+						if 0>mod then
+							mod = mod * -1;
+							mesaDoPersonagem.activeChat:enviarMensagem((sheet.nomeNave19 or "PONHA UM NOME NA SUA NAVE") .. " perdeu " .. mod .. " de HP " )
+						end;
+					else
+						sheet.usos$(slot) = 0;
+					end;
+				</event>
+			</dataLink>
+			
+			<edit type="number" vertTextAlign="center" horzTextAlign="center" left="548" top="112" width="25" height="25" field="max$(slot)">
+				<event name="onUserChange">
+					if sheet.min$(slot)~=nil and sheet.max$(slot)~=nil then
+						sheet.usos$(slot) = (sheet.min$(slot) or 0)/ (sheet.max$(slot) or 0);
+					end;
+				</event>
+			</edit>
+			<progressBar left="495" top="138" width="105" height="20.50" color="red" hitTest="true" max="1" field="usos$(slot)"/>
+		</template>
+		
+		<layout left="1" top="1" width="250" height="222" align="client">
+			<HpNave19 slot="Min19" nome="Max19"/>
+		</layout>		 
+		  </layout>			  
+	  	
+
+   <!-- QUARTA VARIAVEL DO NnpoQ qqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq -->
+  <layout name="NnpoQNave" align="client" visible="false">
+ 
+   <!-- Imagens em relação a NAVE -->
+     <image src="/imagens/fundo.png" left="333" top="62" width="452" height="323"/>
+   <image src="/imagens/CirculoNave.png" width="459" height="330" left="330.50" top="60"/>
+   
+   <!-- Imagens em relação ao model, nome e nivel;.-->
+   <image src="/imagens/quadradoPreenchidoCheio.png" left="50" top="94" width="279" height="54" />
+   <image src="/imagens/quadradoPreenchidoCheio.png" left="50" top="148" width="279" height="54" />
+   <image src="/imagens/quadradoPreenchidoCheio.png" left="50" top="201" width="279" height="54" />
+   <image src="/imagens/model.png" left="59" top="110" width="91" height="19" />
+   <image src="/imagens/nome.png" left="59" top="168" width="74" height="19" />
+   <image src="/imagens/nivelNave.png" left="59" top="216" width="71" height="25" />
+   
+   <!-- NAVES AQUI -->
+   <image name="NnpoQ1" src="/Naves/N/4 - NnpoQ/1.png" left="500" top="165" width="95" height="104" visible="false"/>
+   <image name="NnpoQ2" src="/Naves/N/4 - NnpoQ/2.png" left="500" top="165" width="120" height="114" visible="false"/>
+   <image name="NnpoQ3" src="/Naves/N/4 - NnpoQ/3.png" left="500" top="165" width="120" height="106" visible="false"/>
+   <image name="NnpoQ4" src="/Naves/N/4 - NnpoQ/4.png" left="500" top="165" width="120" height="104" visible="false"/>
+   <image name="NnpoQ5" src="/Naves/N/4 - NnpoQ/5.png" left="500" top="165" width="100" height="104" visible="false"/>
+   <image name="NnpoQ6" src="/Naves/N/4 - NnpoQ/6.png" left="500" top="165" width="95" height="104" visible="false"/>
+   <image name="NnpoQ7" src="/Naves/N/4 - NnpoQ/7.png" left="500" top="165" width="100" height="120" visible="false"/>
+   <image name="NnpoQ8" src="/Naves/N/4 - NnpoQ/8.png" left="500" top="165" width="100" height="120" visible="false"/>
+    
+	<label name="model20" left="153.13" top="95.50" width="173.63" height="47.25" horzTextAlign="center" fontSize="30" fontStyle="bold" text="NnpoQ"/>
+	<edit field="nomeNave20" left="153.12" top="149.50" width="173.62" height="47.25" horzTextAlign="center" fontSize="30" fontStyle="bold" transparent="true"/>
+	<textEditor field="Textoanotacao37" left="334.25" top="276.25" width="222" height="111" transparent="true"/>
+	<textEditor field="Textoanotacao38" left="558.25" top="276.25" width="229" height="111" transparent="true"/>	
+	
+	<label field="nivelNave20" left="153.12" top="203.50" width="173.62" height="47.25" horzTextAlign="center" fontSize="30" fontStyle="bold" text="0" hitTest="true">
+       <event name="onClick">
+           	  	    if rrpg.getMesaDe(sheet).meuJogador.isMestre then
+		dialogs.inputQuery("Nivel da Nave", "Quantidade de Pontos:", "",
+		   function (valorPreenchido)
+					  sheet.nivelNave20 = (sheet.nivelNave20 or 0) + valorPreenchido; 
+	    end);
+		end;		
+		 </event>
+		   </label>
+
+		 
+	<!-- BOTOES AQUI  -->
+   <button text="UP" fontStyle="bold" fontColor="yellow" left="148.75" top="265.50" width="30" height="27">
+       <event name="onClick">
+	    if sheet.nivelNave20 >= 70 then
+		 	   sheet.nivelNave20 = (sheet.nivelNave20 or 0) +0;
+		 else
+	   sheet.nivelNave20 = (sheet.nivelNave20 or 0) +0.2;
+		 end;
+		 </event>
+	   <event name="onMenu">
+	   sheet.nivelNave20 = (sheet.nivelNave20 or 0) -0.2;
+	    </event>
+		 </button>
+	  <!-- AQUI FICA A PARTE DO HP DA NAVE -->
+		<template name="HpNave20">
+			<edit type="number" vertTextAlign="center" horzTextAlign="center" left="519" top="112" width="25" height="25" field="min$(slot)"/>
+			<dataLink field="min$(slot)">
+				<event name="onChange">
+					if sheet.min$(slot)~=nil and sheet.max$(slot)~=nil and sheet.usos$(slot)~=nil then
+						sheet.usos$(slot) = (sheet.min$(slot) or 0)/ (sheet.max$(slot) or 0);
+
+						local mesaDoPersonagem = rrpg.getMesaDe(sheet);
+						
+						local mod = 0;
+						if newValue~=nil and oldValue~=nil then
+							mod = newValue - oldValue;
+						end;
+						
+						if mod>0 then
+							mesaDoPersonagem.activeChat:enviarMensagem((sheet.nomeNave20 or "PONHA UM NOME NA SUA NAVE") .. " recuperou " .. mod .. " de HP " )
+						end;
+						if 0>mod then
+							mod = mod * -1;
+							mesaDoPersonagem.activeChat:enviarMensagem((sheet.nomeNave20 or "PONHA UM NOME NA SUA NAVE") .. " perdeu " .. mod .. " de HP " )
+						end;
+					else
+						sheet.usos$(slot) = 0;
+					end;
+				</event>
+			</dataLink>
+			
+			<edit type="number" vertTextAlign="center" horzTextAlign="center" left="548" top="112" width="25" height="25" field="max$(slot)">
+				<event name="onUserChange">
+					if sheet.min$(slot)~=nil and sheet.max$(slot)~=nil then
+						sheet.usos$(slot) = (sheet.min$(slot) or 0)/ (sheet.max$(slot) or 0);
+					end;
+				</event>
+			</edit>
+			<progressBar left="495" top="138" width="105" height="20.50" color="red" hitTest="true" max="1" field="usos$(slot)"/>
+		</template>
+		
+		<layout left="1" top="1" width="250" height="222" align="client">
+			<HpNave20 slot="Min20" nome="Max20"/>
+		</layout>		 
+		  </layout>	
+
+   <!-- QUINTA VARIAVEL DO Nah3 qqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq -->
+  <layout name="Nah3Nave" align="client" visible="false">
+ 
+   <!-- Imagens em relação a NAVE -->
+     <image src="/imagens/fundo.png" left="333" top="62" width="452" height="323"/>
+   <image src="/imagens/CirculoNave.png" width="459" height="330" left="330.50" top="60"/>
+   
+   <!-- Imagens em relação ao model, nome e nivel;.-->
+   <image src="/imagens/quadradoPreenchidoCheio.png" left="50" top="94" width="279" height="54" />
+   <image src="/imagens/quadradoPreenchidoCheio.png" left="50" top="148" width="279" height="54" />
+   <image src="/imagens/quadradoPreenchidoCheio.png" left="50" top="201" width="279" height="54" />
+   <image src="/imagens/model.png" left="59" top="110" width="91" height="19" />
+   <image src="/imagens/nome.png" left="59" top="168" width="74" height="19" />
+   <image src="/imagens/nivelNave.png" left="59" top="216" width="71" height="25" />
+   
+   <!-- NAVES AQUI -->
+   <image name="Nah31" src="/Naves/N/5 - Nah3/1.png" left="500" top="165" width="95" height="104" visible="false"/>
+   <image name="Nah32" src="/Naves/N/5 - Nah3/2.png" left="500" top="165" width="120" height="114" visible="false"/>
+   <image name="Nah33" src="/Naves/N/5 - Nah3/3.png" left="500" top="165" width="120" height="106" visible="false"/>
+   <image name="Nah34" src="/Naves/N/5 - Nah3/4.png" left="500" top="165" width="120" height="104" visible="false"/>
+   <image name="Nah35" src="/Naves/N/5 - Nah3/5.png" left="500" top="165" width="100" height="104" visible="false"/>
+   <image name="Nah36" src="/Naves/N/5 - Nah3/6.png" left="500" top="165" width="95" height="104" visible="false"/>
+   <image name="Nah37" src="/Naves/N/5 - Nah3/7.png" left="500" top="165" width="100" height="120" visible="false"/>
+   <image name="Nah38" src="/Naves/N/5 - Nah3/8.png" left="500" top="165" width="100" height="120" visible="false"/>
+    
+	<label name="model21" left="153.13" top="95.50" width="173.63" height="47.25" horzTextAlign="center" fontSize="30" fontStyle="bold" text="Nah3"/>
+	<edit field="nomeNave121" left="153.12" top="149.50" width="173.62" height="47.25" horzTextAlign="center" fontSize="30" fontStyle="bold" transparent="true"/>
+	<textEditor field="Textoanotacao38" left="334.25" top="276.25" width="222" height="111" transparent="true"/>
+	<textEditor field="Textoanotacao39" left="558.25" top="276.25" width="229" height="111" transparent="true"/>	
+	
+	<label field="nivelNave21" left="153.12" top="203.50" width="173.62" height="47.25" horzTextAlign="center" fontSize="30" fontStyle="bold" text="0" hitTest="true">
+       <event name="onClick">
+           	  	    if rrpg.getMesaDe(sheet).meuJogador.isMestre then
+		dialogs.inputQuery("Nivel da Nave", "Quantidade de Pontos:", "",
+		   function (valorPreenchido)
+					  sheet.nivelNave21 = (sheet.nivelNave21 or 0) + valorPreenchido; 
+	    end);
+		end;		
+		 </event>
+		  </label>
+
+		 
+	<!-- BOTOES AQUI  -->
+   <button text="UP" fontStyle="bold" fontColor="yellow" left="148.75" top="265.50" width="30" height="27">
+       <event name="onClick">
+	    if sheet.nivelNave21 >= 70 then
+		 	   sheet.nivelNave21 = (sheet.nivelNave21 or 0) +0;
+		 else
+	   sheet.nivelNave21 = (sheet.nivelNave21 or 0) +0.2;
+		 end;
+	    </event>
+	   <event name="onMenu">
+	   sheet.nivelNave21 = (sheet.nivelNave21 or 0) -0.2;
+	    </event>
+		 </button>
+	  <!-- AQUI FICA A PARTE DO HP DA NAVE -->
+		<template name="HpNave21">
+			<edit type="number" vertTextAlign="center" horzTextAlign="center" left="519" top="112" width="25" height="25" field="min$(slot)"/>
+			<dataLink field="min$(slot)">
+				<event name="onChange">
+					if sheet.min$(slot)~=nil and sheet.max$(slot)~=nil and sheet.usos$(slot)~=nil then
+						sheet.usos$(slot) = (sheet.min$(slot) or 0)/ (sheet.max$(slot) or 0);
+
+						local mesaDoPersonagem = rrpg.getMesaDe(sheet);
+						
+						local mod = 0;
+						if newValue~=nil and oldValue~=nil then
+							mod = newValue - oldValue;
+						end;
+						
+						if mod>0 then
+							mesaDoPersonagem.activeChat:enviarMensagem((sheet.nomeNave21 or "PONHA UM NOME NA SUA NAVE") .. " recuperou " .. mod .. " de HP " )
+						end;
+						if 0>mod then
+							mod = mod * -1;
+							mesaDoPersonagem.activeChat:enviarMensagem((sheet.nomeNave21 or "PONHA UM NOME NA SUA NAVE") .. " perdeu " .. mod .. " de HP " )
+						end;
+					else
+						sheet.usos$(slot) = 0;
+					end;
+				</event>
+			</dataLink>
+			
+			<edit type="number" vertTextAlign="center" horzTextAlign="center" left="548" top="112" width="25" height="25" field="max$(slot)">
+				<event name="onUserChange">
+					if sheet.min$(slot)~=nil and sheet.max$(slot)~=nil then
+						sheet.usos$(slot) = (sheet.min$(slot) or 0)/ (sheet.max$(slot) or 0);
+					end;
+				</event>
+			</edit>
+			<progressBar left="495" top="138" width="105" height="20.50" color="red" hitTest="true" max="1" field="usos$(slot)"/>
+		</template>
+		
+		<layout left="1" top="1" width="250" height="222" align="client">
+			<HpNave21 slot="Min21" nome="Max21"/>
+		</layout>		 
+		  </layout>
+
+   <!-- SEXTA VARIAVEL DO NkL qqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq -->
+  <layout name="NkLNave" align="client" visible="false">
+ 
+   <!-- Imagens em relação a NAVE -->
+     <image src="/imagens/fundo.png" left="333" top="62" width="452" height="323"/>
+   <image src="/imagens/CirculoNave.png" width="459" height="330" left="330.50" top="60"/>
+   
+   <!-- Imagens em relação ao model, nome e nivel;.-->
+   <image src="/imagens/quadradoPreenchidoCheio.png" left="50" top="94" width="279" height="54" />
+   <image src="/imagens/quadradoPreenchidoCheio.png" left="50" top="148" width="279" height="54" />
+   <image src="/imagens/quadradoPreenchidoCheio.png" left="50" top="201" width="279" height="54" />
+   <image src="/imagens/model.png" left="59" top="110" width="91" height="19" />
+   <image src="/imagens/nome.png" left="59" top="168" width="74" height="19" />
+   <image src="/imagens/nivelNave.png" left="59" top="216" width="71" height="25" />
+   
+   <!-- NAVES AQUI -->
+   <image name="NkL1" src="/Naves/N/6 - NkL/1.png" left="500" top="165" width="95" height="104" visible="false"/>
+   <image name="NkL2" src="/Naves/N/6 - NkL/2.png" left="500" top="165" width="120" height="114" visible="false"/>
+   <image name="NkL3" src="/Naves/N/6 - NkL/3.png" left="500" top="165" width="120" height="106" visible="false"/>
+   <image name="NkL4" src="/Naves/N/6 - NkL/4.png" left="500" top="165" width="120" height="104" visible="false"/>
+   <image name="NkL5" src="/Naves/N/6 - NkL/5.png" left="500" top="165" width="100" height="104" visible="false"/>
+   <image name="NkL6" src="/Naves/N/6 - NkL/6.png" left="500" top="165" width="95" height="104" visible="false"/>
+   <image name="NkL7" src="/Naves/N/6 - NkL/7.png" left="500" top="165" width="100" height="120" visible="false"/>
+   <image name="NkL8" src="/Naves/N/6 - NkL/8.png" left="500" top="165" width="100" height="120" visible="false"/>
+    
+	<label name="model22" left="153.13" top="95.50" width="173.63" height="47.25" horzTextAlign="center" fontSize="30" fontStyle="bold" text="NkL"/>
+	<edit field="nomeNave22" left="153.12" top="149.50" width="173.62" height="47.25" horzTextAlign="center" fontSize="30" fontStyle="bold" transparent="true"/>
+	<textEditor field="Textoanotacao40" left="334.25" top="276.25" width="222" height="111" transparent="true"/>
+	<textEditor field="Textoanotacao41" left="558.25" top="276.25" width="229" height="111" transparent="true"/>	
+	
+	<label field="nivelNave22" left="153.12" top="203.50" width="173.62" height="47.25" horzTextAlign="center" fontSize="30" fontStyle="bold" text="0" hitTest="true">
+       <event name="onClick">
+           	  	    if rrpg.getMesaDe(sheet).meuJogador.isMestre then
+		dialogs.inputQuery("Nivel da Nave", "Quantidade de Pontos:", "",
+		   function (valorPreenchido)
+					  sheet.nivelNave22 = (sheet.nivelNave22 or 0) + valorPreenchido; 
+	    end);
+		end;		
+		 </event>
+		   </label>
+
+	
+	<!-- BOTOES AQUI  -->
+   <button text="UP" fontStyle="bold" fontColor="yellow" left="148.75" top="265.50" width="30" height="27">
+       <event name="onClick">
+	    if sheet.nivelNave22 >= 70 then
+		 	   sheet.nivelNave22 = (sheet.nivelNave22 or 0) +0;
+		 else
+	   sheet.nivelNave22 = (sheet.nivelNave22 or 0) +0.2;
+		 end;
+		 </event>
+	   <event name="onMenu">
+	   sheet.nivelNave22 = (sheet.nivelNave22 or 0) -0.2;
+	    </event>
+		 </button>
+	  <!-- AQUI FICA A PARTE DO HP DA NAVE -->
+		<template name="HpNave22">
+			<edit type="number" vertTextAlign="center" horzTextAlign="center" left="519" top="112" width="25" height="25" field="min$(slot)"/>
+			<dataLink field="min$(slot)">
+				<event name="onChange">
+					if sheet.min$(slot)~=nil and sheet.max$(slot)~=nil and sheet.usos$(slot)~=nil then
+						sheet.usos$(slot) = (sheet.min$(slot) or 0)/ (sheet.max$(slot) or 0);
+
+						local mesaDoPersonagem = rrpg.getMesaDe(sheet);
+						
+						local mod = 0;
+						if newValue~=nil and oldValue~=nil then
+							mod = newValue - oldValue;
+						end;
+						
+						if mod>0 then
+							mesaDoPersonagem.activeChat:enviarMensagem((sheet.nomeNave22 or "PONHA UM NOME NA SUA NAVE") .. " recuperou " .. mod .. " de HP " )
+						end;
+						if 0>mod then
+							mod = mod * -1;
+							mesaDoPersonagem.activeChat:enviarMensagem((sheet.nomeNave22 or "PONHA UM NOME NA SUA NAVE") .. " perdeu " .. mod .. " de HP " )
+						end;
+					else
+						sheet.usos$(slot) = 0;
+					end;
+				</event>
+			</dataLink>
+			
+			<edit type="number" vertTextAlign="center" horzTextAlign="center" left="548" top="112" width="25" height="25" field="max$(slot)">
+				<event name="onUserChange">
+					if sheet.min$(slot)~=nil and sheet.max$(slot)~=nil then
+						sheet.usos$(slot) = (sheet.min$(slot) or 0)/ (sheet.max$(slot) or 0);
+					end;
+				</event>
+			</edit>
+			<progressBar left="495" top="138" width="105" height="20.50" color="red" hitTest="true" max="1" field="usos$(slot)"/>
+		</template>
+		
+		<layout left="1" top="1" width="250" height="222" align="client">
+			<HpNave22 slot="Min22" nome="Max22"/>
+		</layout>		 
+		  </layout>	
+
+   <!-- SETIMA VARIAVEL DO NopQ qqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq -->
+  <layout name="NopQNave" align="client" visible="false">
+ 
+   <!-- Imagens em relação a NAVE -->
+     <image src="/imagens/fundo.png" left="333" top="62" width="452" height="323"/>
+   <image src="/imagens/CirculoNave.png" width="459" height="330" left="330.50" top="60"/>
+   
+   <!-- Imagens em relação ao model, nome e nivel;.-->
+   <image src="/imagens/quadradoPreenchidoCheio.png" left="50" top="94" width="279" height="54" />
+   <image src="/imagens/quadradoPreenchidoCheio.png" left="50" top="148" width="279" height="54" />
+   <image src="/imagens/quadradoPreenchidoCheio.png" left="50" top="201" width="279" height="54" />
+   <image src="/imagens/model.png" left="59" top="110" width="91" height="19" />
+   <image src="/imagens/nome.png" left="59" top="168" width="74" height="19" />
+   <image src="/imagens/nivelNave.png" left="59" top="216" width="71" height="25" />
+   
+   <!-- NAVES AQUI -->
+   <image name="NopQ1" src="/Naves/N/7 - NopQ/1.png" left="500" top="165" width="95" height="104" visible="false"/>
+   <image name="NopQ2" src="/Naves/N/7 - NopQ/2.png" left="500" top="165" width="120" height="114" visible="false"/>
+   <image name="NopQ3" src="/Naves/N/7 - NopQ/3.png" left="500" top="165" width="120" height="106" visible="false"/>
+   <image name="NopQ4" src="/Naves/N/7 - NopQ/4.png" left="500" top="165" width="120" height="104" visible="false"/>
+   <image name="NopQ5" src="/Naves/N/7 - NopQ/5.png" left="500" top="165" width="100" height="104" visible="false"/>
+   <image name="NopQ6" src="/Naves/N/7 - NopQ/6.png" left="500" top="165" width="95" height="104" visible="false"/>
+   <image name="NopQ7" src="/Naves/N/7 - NopQ/7.png" left="500" top="165" width="100" height="120" visible="false"/>
+   <image name="NopQ8" src="/Naves/N/7 - NopQ/8.png" left="500" top="165" width="100" height="120" visible="false"/>
+    
+	<label name="model23" left="153.13" top="95.50" width="173.63" height="47.25" horzTextAlign="center" fontSize="30" fontStyle="bold" text="NopQ"/>
+	<edit field="nomeNave23" left="153.12" top="149.50" width="173.62" height="47.25" horzTextAlign="center" fontSize="30" fontStyle="bold" transparent="true"/>
+	<textEditor field="Textoanotacao42" left="334.25" top="276.25" width="222" height="111" transparent="true"/>
+	<textEditor field="Textoanotacao43" left="558.25" top="276.25" width="229" height="111" transparent="true"/>	
+	
+	<label field="nivelNave23" left="153.12" top="203.50" width="173.62" height="47.25" horzTextAlign="center" fontSize="30" fontStyle="bold" text="0" hitTest="true">
+       <event name="onClick">
+           	  	    if rrpg.getMesaDe(sheet).meuJogador.isMestre then
+		dialogs.inputQuery("Nivel da Nave", "Quantidade de Pontos:", "",
+		   function (valorPreenchido)
+					  sheet.nivelNave23 = (sheet.nivelNave23 or 0) + valorPreenchido; 
+	    end);
+		end;		
+		 </event>
+		   </label>
+
+		 
+	<!-- BOTOES AQUI  -->
+   <button text="UP" fontStyle="bold" fontColor="yellow" left="148.75" top="265.50" width="30" height="27">
+       <event name="onClick">
+	    if sheet.nivelNave23 >= 70 then
+		 	   sheet.nivelNave23 = (sheet.nivelNave23 or 0) +0;
+		 else
+	   sheet.nivelNave23 = (sheet.nivelNave23 or 0) +0.2;
+		 end;
+		 </event>
+	   <event name="onMenu">
+	   sheet.nivelNave23 = (sheet.nivelNave23 or 0) -0.2;
+	    </event>
+		 </button>
+	  <!-- AQUI FICA A PARTE DO HP DA NAVE -->
+		<template name="HpNave23">
+			<edit type="number" vertTextAlign="center" horzTextAlign="center" left="519" top="112" width="25" height="25" field="min$(slot)"/>
+			<dataLink field="min$(slot)">
+				<event name="onChange">
+					if sheet.min$(slot)~=nil and sheet.max$(slot)~=nil and sheet.usos$(slot)~=nil then
+						sheet.usos$(slot) = (sheet.min$(slot) or 0)/ (sheet.max$(slot) or 0);
+
+						local mesaDoPersonagem = rrpg.getMesaDe(sheet);
+						
+						local mod = 0;
+						if newValue~=nil and oldValue~=nil then
+							mod = newValue - oldValue;
+						end;
+						
+						if mod>0 then
+							mesaDoPersonagem.activeChat:enviarMensagem((sheet.nomeNave23 or "PONHA UM NOME NA SUA NAVE") .. " recuperou " .. mod .. " de HP " )
+						end;
+						if 0>mod then
+							mod = mod * -1;
+							mesaDoPersonagem.activeChat:enviarMensagem((sheet.nomeNave23 or "PONHA UM NOME NA SUA NAVE") .. " perdeu " .. mod .. " de HP " )
+						end;
+					else
+						sheet.usos$(slot) = 0;
+					end;
+				</event>
+			</dataLink>
+			
+			<edit type="number" vertTextAlign="center" horzTextAlign="center" left="548" top="112" width="25" height="25" field="max$(slot)">
+				<event name="onUserChange">
+					if sheet.min$(slot)~=nil and sheet.max$(slot)~=nil then
+						sheet.usos$(slot) = (sheet.min$(slot) or 0)/ (sheet.max$(slot) or 0);
+					end;
+				</event>
+			</edit>
+			<progressBar left="495" top="138" width="105" height="20.50" color="red" hitTest="true" max="1" field="usos$(slot)"/>
+		</template>
+		
+		<layout left="1" top="1" width="250" height="222" align="client">
+			<HpNave23 slot="Min23" nome="Max23"/>
+		</layout>		 
+		  </layout>		
+
+   <!-- OITAVO VARIAVEL DO n2N qqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq -->
+  <layout name="n2NNave" align="client" visible="false">
+ 
+   <!-- Imagens em relação a NAVE -->
+     <image src="/imagens/fundo.png" left="333" top="62" width="452" height="323"/>
+   <image src="/imagens/CirculoNave.png" width="459" height="330" left="330.50" top="60"/>
+   
+   <!-- Imagens em relação ao model, nome e nivel;.-->
+   <image src="/imagens/quadradoPreenchidoCheio.png" left="50" top="94" width="279" height="54" />
+   <image src="/imagens/quadradoPreenchidoCheio.png" left="50" top="148" width="279" height="54" />
+   <image src="/imagens/quadradoPreenchidoCheio.png" left="50" top="201" width="279" height="54" />
+   <image src="/imagens/model.png" left="59" top="110" width="91" height="19" />
+   <image src="/imagens/nome.png" left="59" top="168" width="74" height="19" />
+   <image src="/imagens/nivelNave.png" left="59" top="216" width="71" height="25" />
+   
+   <!-- NAVES AQUI -->
+   <image name="n2N1" src="/Naves/N/8 - n2N/1.png" left="500" top="165" width="95" height="104" visible="false"/>
+   <image name="n2N2" src="/Naves/N/8 - n2N/2.png" left="500" top="165" width="120" height="114" visible="false"/>
+   <image name="n2N3" src="/Naves/N/8 - n2N/3.png" left="500" top="165" width="120" height="106" visible="false"/>
+   <image name="n2N4" src="/Naves/N/8 - n2N/4.png" left="500" top="165" width="120" height="104" visible="false"/>
+   <image name="n2N5" src="/Naves/N/8 - n2N/5.png" left="500" top="165" width="100" height="104" visible="false"/>
+   <image name="n2N6" src="/Naves/N/8 - n2N/6.png" left="500" top="165" width="95" height="104" visible="false"/>
+   <image name="n2N7" src="/Naves/N/8 - n2N/7.png" left="500" top="165" width="100" height="120" visible="false"/>
+   <image name="n2N8" src="/Naves/N/8 - n2N/8.png" left="500" top="165" width="100" height="120" visible="false"/>
+    
+	<label name="model24" left="153.13" top="95.50" width="173.63" height="47.25" horzTextAlign="center" fontSize="30" fontStyle="bold" text="n2N"/>
+	<edit field="nomeNave24" left="153.12" top="149.50" width="173.62" height="47.25" horzTextAlign="center" fontSize="30" fontStyle="bold" transparent="true"/>
+	<textEditor field="Textoanotacao44" left="334.25" top="276.25" width="222" height="111" transparent="true"/>
+	<textEditor field="Textoanotacao45" left="558.25" top="276.25" width="229" height="111" transparent="true"/>	
+	
+	<label field="nivelNave24" left="153.12" top="203.50" width="173.62" height="47.25" horzTextAlign="center" fontSize="30" fontStyle="bold" text="0" hitTest="true">
+       <event name="onClick">
+           	  	    if rrpg.getMesaDe(sheet).meuJogador.isMestre then
+		dialogs.inputQuery("Nivel da Nave", "Quantidade de Pontos:", "",
+		   function (valorPreenchido)
+					  sheet.nivelNave24 = (sheet.nivelNave24 or 0) + valorPreenchido; 
+	    end);
+		end;		
+		 </event>
+		  </label>
+
+		 
+	<!-- BOTOES AQUI  -->
+   <button text="UP" fontStyle="bold" fontColor="yellow" left="148.75" top="265.50" width="30" height="27">
+       <event name="onClick">
+	    if sheet.nivelNave24 >= 70 then
+		 	   sheet.nivelNave24 = (sheet.nivelNave24 or 0) +0;
+		 else
+	   sheet.nivelNave24 = (sheet.nivelNave24 or 0) +0.2;
+		 end;
+		 </event>
+	   <event name="onMenu">
+	   sheet.nivelNave24 = (sheet.nivelNave24 or 0) -0.2;
+	    </event>
+		 </button>
+	  <!-- AQUI FICA A PARTE DO HP DA NAVE -->
+		<template name="HpNave24">
+			<edit type="number" vertTextAlign="center" horzTextAlign="center" left="519" top="112" width="25" height="25" field="min$(slot)"/>
+			<dataLink field="min$(slot)">
+				<event name="onChange">
+					if sheet.min$(slot)~=nil and sheet.max$(slot)~=nil and sheet.usos$(slot)~=nil then
+						sheet.usos$(slot) = (sheet.min$(slot) or 0)/ (sheet.max$(slot) or 0);
+
+						local mesaDoPersonagem = rrpg.getMesaDe(sheet);
+						
+						local mod = 0;
+						if newValue~=nil and oldValue~=nil then
+							mod = newValue - oldValue;
+						end;
+						
+						if mod>0 then
+							mesaDoPersonagem.activeChat:enviarMensagem((sheet.nomeNave24 or "PONHA UM NOME NA SUA NAVE") .. " recuperou " .. mod .. " de HP " )
+						end;
+						if 0>mod then
+							mod = mod * -1;
+							mesaDoPersonagem.activeChat:enviarMensagem((sheet.nomeNave24 or "PONHA UM NOME NA SUA NAVE") .. " perdeu " .. mod .. " de HP " )
+						end;
+					else
+						sheet.usos$(slot) = 0;
+					end;
+				</event>
+			</dataLink>
+			
+			<edit type="number" vertTextAlign="center" horzTextAlign="center" left="548" top="112" width="25" height="25" field="max$(slot)">
+				<event name="onUserChange">
+					if sheet.min$(slot)~=nil and sheet.max$(slot)~=nil then
+						sheet.usos$(slot) = (sheet.min$(slot) or 0)/ (sheet.max$(slot) or 0);
+					end;
+				</event>
+			</edit>
+			<progressBar left="495" top="138" width="105" height="20.50" color="red" hitTest="true" max="1" field="usos$(slot)"/>
+		</template>
+		
+		<layout left="1" top="1" width="250" height="222" align="client">
+			<HpNave24 slot="Min24" nome="Max24"/>
+		</layout>		 
+		  </layout>			  
+		  
+		  
+
+		  
+	<button name="BotaoNaveN17" text="Nko" left="63.75" top="301" width="70.25" height="27" fontSize="15" fontStyle="bold">	 
+	    <event name="onClick">
+		self.NkoNave.visible = true;
+		self.NnpNave.visible = false
+		self.Ne3Nave.visible = false;
+		self.NnpoQNave.visible = false;
+		self.Nah3Nave.visible = false
+		self.NkLNave.visible = false;
+		self.NopQNave.visible = false;
+		self.n2NNave.visible = false;		
+		 </event>
+		  </button>
+		  
+	<button name="BotaoNaveN18" text="Nnp" left="138" top="301" width="70.25" height="27" fontSize="15" fontStyle="bold">
+	    <event name="onClick">
+		self.NkoNave.visible = false;
+		self.NnpNave.visible = true
+		self.Ne3Nave.visible = false;
+		self.NnpoQNave.visible = false;
+		self.Nah3Nave.visible = false
+		self.NkLNave.visible = false;
+		self.NopQNave.visible = false;
+		self.n2NNave.visible = false;		
+		
+		 </event>
+		  </button>	
+	<button name="BotaoNaveN19" text="Ne3" left="213" top="301" width="70.25" height="27" fontSize="15" fontStyle="bold">
+	    <event name="onClick">
+		self.NkoNave.visible = false;
+		self.NnpNave.visible = false
+		self.Ne3Nave.visible = true;
+		self.NnpoQNave.visible = false;
+		self.Nah3Nave.visible = false
+		self.NkLNave.visible = false;
+		self.NopQNave.visible = false;
+		self.n2NNave.visible = false;		
+		 </event>
+		  </button>		
+		  
+	<button name="BotaoNaveN20" text="NnpoQ" left="63.75" top="333" width="70.25" height="27" fontSize="15" fontStyle="bold">
+       <event name="onClick">
+		self.NkoNave.visible = false;
+		self.NnpNave.visible = false
+		self.Ne3Nave.visible = false;
+		self.NnpoQNave.visible = true;
+		self.Nah3Nave.visible = false
+		self.NkLNave.visible = false;
+		self.NopQNave.visible = false;
+		self.n2NNave.visible = false;		
+       </event>
+         </button>	   
+	<button name="BotaoNaveN21" text="Nah3" left="138" top="333" width="70.25" height="27" fontSize="15" fontStyle="bold">
+       <event name="onClick">
+		self.NkoNave.visible = false;
+		self.NnpNave.visible = false
+		self.Ne3Nave.visible = false;
+		self.NnpoQNave.visible = false;
+		self.Nah3Nave.visible = true
+		self.NkLNave.visible = false;
+		self.NopQNave.visible = false;
+		self.n2NNave.visible = false;		
+       </event>
+         </button>		
+		 
+	<button name="BotaoNaveN22" text="NkL" left="213" top="333" width="70.25" height="27" fontSize="15" fontStyle="bold">
+	       <event name="onClick">
+		self.NkoNave.visible = false;
+		self.NnpNave.visible = false
+		self.Ne3Nave.visible = false;
+		self.NnpoQNave.visible = false;
+		self.Nah3Nave.visible = false
+		self.NkLNave.visible = true;
+		self.NopQNave.visible = false;
+		self.n2NNave.visible = false;
+       </event>
+         </button>	
+		 
+	<button name="BotaoNaveN23" text="NopQ" left="63.75" top="365" width="70.25" height="27" fontSize="15" fontStyle="bold">
+	       <event name="onClick">
+		self.NkoNave.visible = false;
+		self.NnpNave.visible = false
+		self.Ne3Nave.visible = false;
+		self.NnpoQNave.visible = false;
+		self.Nah3Nave.visible = false
+		self.NkLNave.visible = false;
+		self.NopQNave.visible = true;
+		self.n2NNave.visible = false;		
+       </event>
+         </button>	
+		 
+	<button name="BotaoNaveN24" text="n2N" left="138" top="365" width="70.25" height="27" fontSize="15" fontStyle="bold">
+       <event name="onClick">	
+		self.NkoNave.visible = false;
+		self.NnpNave.visible = false
+		self.Ne3Nave.visible = false;
+		self.NnpoQNave.visible = false;
+		self.Nah3Nave.visible = false
+		self.NkLNave.visible = false;
+		self.NopQNave.visible = false;
+		self.n2NNave.visible = true;		
+       </event>
+         </button>			 
+		 
+		 <!-- TODOS OS DATALINKS FICARAM AQUI -->
+   <dataLink field="nivelNave17">  
+        <event name="onChange">
+		 if sheet.nivelNave17 >= 10 then
+		  self.Nko1.visible = false;
+		  self.Nko2.visible = true;
+		else
+		 self.Nko1.visible = true;
+		 self.Nko2.visible = false;
+		 end;
+         if sheet.nivelNave17 >= 20 then
+		  self.Nko2.visible = false;
+		  self.Nko3.visible = true;
+		else
+		  self.Nko3.visible = false;
+		 end;
+         if sheet.nivelNave17 >= 30 then
+		 self.Nko3.visible = false;
+		 self.Nko4.visible = true;
+		else
+		 self.Nko4.visible = false;
+		end;
+         if sheet.nivelNave17 >= 40 then
+		 self.Nko4.visible = false;
+		 self.Nko5.visible = true;
+		else
+		 self.Nko5.visible = false;
+		end;	
+         if sheet.nivelNave17 >= 50 then
+		 self.Nko5.visible = false;
+		 self.Nko6.visible = true;
+		else
+		 self.Nko6.visible = false;
+		end;
+         if sheet.nivelNave17 >= 60 then
+		 self.Nko6.visible = false;
+		 self.Nko7.visible = true;
+		else
+		 self.Nko7.visible = false;
+		end;
+         if sheet.nivelNave17 >= 70 then
+		 self.Nko7.visible = false;
+		 self.Nko8.visible = true;
+		else
+		 self.Nko8.visible = false;
+		end;		
+    </event>
+	  </dataLink>
+	  
+   <dataLink field="nivelNave18">  
+        <event name="onChange">
+		 if sheet.nivelNave18 >= 10 then
+		  self.Nnp1.visible = false;
+		  self.Nnp2.visible = true;
+		else
+		 self.Nnp1.visible = true;
+		 self.Nnp2.visible = false;
+		 end;
+         if sheet.nivelNave18 >= 20 then
+		  self.Nnp2.visible = false;
+		  self.Nnp3.visible = true;
+		else
+		  self.Nnp3.visible = false;
+		 end;
+         if sheet.nivelNave18 >= 30 then
+		 self.Nnp3.visible = false;
+		 self.Nnp4.visible = true;
+		else
+		 self.Nnp4.visible = false;
+		end;
+         if sheet.nivelNave18 >= 40 then
+		 self.Nnp4.visible = false;
+		 self.Nnp5.visible = true;
+		else
+		 self.Nnp5.visible = false;
+		end;	
+         if sheet.nivelNave18 >= 50 then
+		 self.Nnp5.visible = false;
+		 self.Nnp6.visible = true;
+		else
+		 self.Nnp6.visible = false;
+		end;
+         if sheet.nivelNave18 >= 60 then
+		 self.Nnp6.visible = false;
+		 self.Nnp7.visible = true;
+		else
+		 self.Nnp7.visible = false;
+		end;
+         if sheet.nivelNave18 >= 70 then
+		 self.Nnp7.visible = false;
+		 self.Nnp8.visible = true;
+		else
+		 self.Nnp8.visible = false;
+		end;		
+    </event>
+	  </dataLink>
+	  
+   <dataLink field="nivelNave19">  
+        <event name="onChange">
+		 if sheet.nivelNave19 >= 10 then
+		  self.Ne31.visible = false;
+		  self.Ne32.visible = true;
+		else
+		 self.Ne31.visible = true;
+		 self.Ne32.visible = false;
+		 end;
+         if sheet.nivelNave19 >= 20 then
+		  self.Ne32.visible = false;
+		  self.Ne33.visible = true;
+		else
+		  self.Ne33.visible = false;
+		 end;
+         if sheet.nivelNave19 >= 30 then
+		 self.Ne33.visible = false;
+		 self.Ne34.visible = true;
+		else
+		 self.Ne34.visible = false;
+		end;
+         if sheet.nivelNave19 >= 40 then
+		 self.Ne34.visible = false;
+		 self.Ne35.visible = true;
+		else
+		 self.Ne35.visible = false;
+		end;	
+         if sheet.nivelNave19 >= 50 then
+		 self.Ne35.visible = false;
+		 self.Ne36.visible = true;
+		else
+		 self.Ne36.visible = false;
+		end;
+         if sheet.nivelNave19 >= 60 then
+		 self.Ne36.visible = false;
+		 self.Ne37.visible = true;
+		else
+		 self.Ne37.visible = false;
+		end;
+         if sheet.nivelNave19 >= 70 then
+		 self.Ne37.visible = false;
+		 self.Ne38.visible = true;
+		else
+		 self.Ne38.visible = false;
+		end;		
+    </event>
+	  </dataLink>
+	  
+   <dataLink field="nivelNave20">  
+        <event name="onChange">
+		 if sheet.nivelNave20 >= 10 then
+		  self.NnpoQ1.visible = false;
+		  self.NnpoQ2.visible = true;
+		else
+		 self.NnpoQ1.visible = true;
+		 self.NnpoQ2.visible = false;
+		 end;
+         if sheet.nivelNave20 >= 20 then
+		  self.NnpoQ2.visible = false;
+		  self.NnpoQ3.visible = true;
+		else
+		  self.NnpoQ3.visible = false;
+		 end;
+         if sheet.nivelNave20 >= 30 then
+		 self.NnpoQ3.visible = false;
+		 self.NnpoQ4.visible = true;
+		else
+		 self.NnpoQ4.visible = false;
+		end;
+         if sheet.nivelNave20 >= 40 then
+		 self.NnpoQ4.visible = false;
+		 self.NnpoQ5.visible = true;
+		else
+		 self.NnpoQ5.visible = false;
+		end;	
+         if sheet.nivelNave20 >= 50 then
+		 self.NnpoQ5.visible = false;
+		 self.NnpoQ6.visible = true;
+		else
+		 self.NnpoQ6.visible = false;
+		end;
+         if sheet.nivelNave20 >= 60 then
+		 self.NnpoQ6.visible = false;
+		 self.NnpoQ7.visible = true;
+		else
+		 self.NnpoQ7.visible = false;
+		end;
+         if sheet.nivelNave20 >= 70 then
+		 self.NnpoQ7.visible = false;
+		 self.NnpoQ8.visible = true;
+		else
+		 self.NnpoQ8.visible = false;
+		end;		
+    </event>
+	  </dataLink>
+
+   <dataLink field="nivelNave21">  
+        <event name="onChange">
+		 if sheet.nivelNave21 >= 10 then
+		  self.Nah31.visible = false;
+		  self.Nah32.visible = true;
+		else
+		 self.Nah31.visible = true;
+		 self.Nah32.visible = false;
+		 end;
+         if sheet.nivelNave21 >= 20 then
+		  self.Nah32.visible = false;
+		  self.Nah33.visible = true;
+		else
+		  self.Nah33.visible = false;
+		 end;
+         if sheet.nivelNave21 >= 30 then
+		 self.Nah33.visible = false;
+		 self.Nah34.visible = true;
+		else
+		 self.Nah34.visible = false;
+		end;
+         if sheet.nivelNave21 >= 40 then
+		 self.Nah34.visible = false;
+		 self.Nah35.visible = true;
+		else
+		 self.Nah35.visible = false;
+		end;	
+         if sheet.nivelNave21 >= 50 then
+		 self.Nah35.visible = false;
+		 self.Nah36.visible = true;
+		else
+		 self.Nah36.visible = false;
+		end;
+         if sheet.nivelNave21 >= 60 then
+		 self.Nah36.visible = false;
+		 self.Nah37.visible = true;
+		else
+		 self.Nah37.visible = false;
+		end;
+         if sheet.nivelNave21 >= 70 then
+		 self.Nah37.visible = false;
+		 self.Nah38.visible = true;
+		else
+		 self.Nah38.visible = false;
+		end;	
+		
+    </event>
+	  </dataLink>
+	  
+   <dataLink field="nivelNave22">  
+        <event name="onChange">
+		 if sheet.nivelNave22 >= 10 then
+		  self.NkL1.visible = false;
+		  self.NkL2.visible = true;
+		else
+		 self.NkL1.visible = true;
+		 self.NkL2.visible = false;
+		 end;
+         if sheet.nivelNave22 >= 20 then
+		  self.NkL2.visible = false;
+		  self.NkL3.visible = true;
+		else
+		  self.NkL3.visible = false;
+		 end;
+         if sheet.nivelNave22 >= 30 then
+		 self.NkL3.visible = false;
+		 self.NkL4.visible = true;
+		else
+		 self.NkL4.visible = false;
+		end;
+         if sheet.nivelNave22 >= 40 then
+		 self.NkL4.visible = false;
+		 self.NkL5.visible = true;
+		else
+		 self.NkL5.visible = false;
+		end;	
+         if sheet.nivelNave22 >= 50 then
+		 self.NkL5.visible = false;
+		 self.NkL6.visible = true;
+		else
+		 self.NkL6.visible = false;
+		end;
+         if sheet.nivelNave22 >= 60 then
+		 self.NkL6.visible = false;
+		 self.NkL7.visible = true;
+		else
+		 self.NkL7.visible = false;
+		end;
+         if sheet.nivelNave22 >= 70 then
+		 self.NkL7.visible = false;
+		 self.NkL8.visible = true;
+		else
+		 self.NkL8.visible = false;
+		end;		
+    </event>
+	  </dataLink>
+	  
+   <dataLink field="nivelNave23">  
+        <event name="onChange">
+		 if sheet.nivelNave23 >= 10 then
+		  self.NopQ1.visible = false;
+		  self.NopQ2.visible = true;
+		else
+		 self.NopQ1.visible = true;
+		 self.NopQ2.visible = false;
+		 end;
+         if sheet.nivelNave23 >= 20 then
+		  self.NopQ2.visible = false;
+		  self.NopQ3.visible = true;
+		else
+		  self.NopQ3.visible = false;
+		 end;
+         if sheet.nivelNave23 >= 30 then
+		 self.NopQ3.visible = false;
+		 self.NopQ4.visible = true;
+		else
+		 self.NopQ4.visible = false;
+		end;
+         if sheet.nivelNave23 >= 40 then
+		 self.NopQ4.visible = false;
+		 self.NopQ5.visible = true;
+		else
+		 self.NopQ5.visible = false;
+		end;	
+         if sheet.nivelNave23 >= 50 then
+		 self.NopQ5.visible = false;
+		 self.NopQ6.visible = true;
+		else
+		 self.NopQ6.visible = false;
+		end;
+         if sheet.nivelNave23 >= 60 then
+		 self.NopQ6.visible = false;
+		 self.NopQ7.visible = true;
+		else
+		 self.NopQ7.visible = false;
+		end;
+         if sheet.nivelNave23 >= 70 then
+		 self.NopQ7.visible = false;
+		 self.NopQ8.visible = true;
+		else
+		 self.NopQ8.visible = false;
+		end;	
+    </event>
+	  </dataLink>
+	  
+   <dataLink field="nivelNave24">  
+        <event name="onChange">
+		 if sheet.nivelNave24 >= 10 then
+		  self.n2N1.visible = false;
+		  self.n2N2.visible = true;
+		else
+		 self.n2N1.visible = true;
+		 self.n2N2.visible = false;
+		 end;
+         if sheet.nivelNave24 >= 20 then
+		  self.n2N2.visible = false;
+		  self.n2N3.visible = true;
+		else
+		  self.n2N3.visible = false;
+		 end;
+         if sheet.nivelNave24 >= 30 then
+		 self.n2N3.visible = false;
+		 self.n2N4.visible = true;
+		else
+		 self.n2N4.visible = false;
+		end;
+         if sheet.nivelNave24 >= 40 then
+		 self.n2N4.visible = false;
+		 self.n2N5.visible = true;
+		else
+		 self.n2N5.visible = false;
+		end;	
+         if sheet.nivelNave24 >= 50 then
+		 self.n2N5.visible = false;
+		 self.n2N6.visible = true;
+		else
+		 self.n2N6.visible = false;
+		end;
+         if sheet.nivelNave24 >= 60 then
+		 self.n2N6.visible = false;
+		 self.n2N7.visible = true;
+		else
+		 self.n2N7.visible = false;
+		end;
+         if sheet.nivelNave24 >= 70 then
+		 self.n2N7.visible = false;
+		 self.n2N8.visible = true;
+		else
+		 self.n2N8.visible = false;
+		end;		
+    </event>
+	  </dataLink>
+	  
+	  
+ </layout> 
+</group>

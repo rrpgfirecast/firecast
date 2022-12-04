@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmListaContatos" width="248" height="189">
+		  
+
+
+
+			  
+              ### Aqui é DELETE ###
+	<image src="/imagens/Apagar.png" width="32" left="109" top="-28" onDblClick="ndb.deleteNode(sheet);"
+	    hitTest="true" cursor="handPoint"/>
+		
+
+    		
+			### AQUI FICA O ESQUEMA DA BORDA DA IMAGEM FEITA PELO PHOTOSHOP ###
+			 <image left="140" top="3" width="107" height="160" field="urlImage2" editable="true"  style="autoFit"/> 
+
+			 <image left="140" top="0" width="107" height="167" src="/imagens/bordaContatos.png"/>
+
+			 
+			 <!-- AQUI FICA OS EDIT -->
+			 
+	<edit left="0" top="12" width="107" height="28" field="NomeContato"/>
+
+		
+    <textEditor left="0" top="40" width="140" height="121" field="SobreContato"/>
+
+
+
+</form>

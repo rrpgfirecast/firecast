@@ -1,0 +1,479 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmFicha2_svg" align="client" theme="dark" margins="{top=1}">
+    <scrollBox align="client">
+        <rectangle width="1500" height="800">  
+		
+
+		<!-- CREDITOS PONTOS E AQI -->
+
+		 
+      <label top="120" left="1265" text="0" fontSize="20" field="Pontos" hitTest="true"
+	       width="257" height="28" fontFamily="Tahoma" fontColor="white" fontStyle="bold">
+			   <event name="onClick">
+	    if rrpg.getMesaDe(sheet).meuJogador.isMestre then
+		dialogs.inputQuery("Caixa de Poções", "Quantidade de Pontos de Atributo:", "",
+		   function (valorPreenchido)
+					  sheet.Pontos = (sheet.Pontos or 0) + valorPreenchido; 
+	    end);
+		end;
+		</event>
+		 </label>
+		   
+		         <label top="181" left="1406" text="0" fontSize="25" field="Nivel" hitTest="true"
+	       width="57" height="51" fontFamily="Dotum" fontColor="black" fontStyle="bold" horzTextAlign="center">
+			   <event name="onClick">
+	    if rrpg.getMesaDe(sheet).meuJogador.isMestre then
+		dialogs.inputQuery("Caixa de Poções", "Quantidade de Nivel:", "",
+		   function (valorPreenchido)
+					  sheet.Nivel = (sheet.Nivel or 0) + valorPreenchido; 
+	    end);
+		end;
+		</event>
+		  </label>
+		 <button text="UP" fontStyle="bold" fontColor="yellow" width="35" height="20" top="235" left="1415">
+		      <event name="onClick">
+			   if rrpg.getMesaDe(sheet).meuJogador.isMestre then
+			   sheet.Nivel = (sheet.Nivel or 0) +1;
+			   sheet.Pontos = (sheet.Pontos or 0) +0.2;
+			     else 
+				 showMessage("Você não possui permissões aqui, OTARIO!")
+		end;
+			</event>
+			 </button>
+			 
+<image src="/Imagens/Reseta.png" width="60" height="50" top="60" left="1250" hitTest="true" cursor="handPoint">
+            <event name="onClick">
+dialogs.confirmYesNo("Deseja realmente resetar sua armadura?",
+        function (confirmado)
+                if confirmado then
+	   if rrpg.getMesaDe(sheet).meuJogador.isMestre then
+	    sheet.atributopeesquerdo = ("[Coloque seu atributo]");
+		sheet.atributopedireito = ("[Coloque seu atributo]");
+		sheet.atributocostas = ("[Atributo aqui]");
+		sheet.atributoMmaodireita = ("[Atributo aqui]");
+		sheet.atributoMmaoesquerda = ("[Atributo aqui]");
+		sheet.Olhooutro = ("[Atributo aqui]");
+		sheet.Cabecaoutro = ("[Atributo aqui]");
+		sheet.Pontos = 0;
+		sheet.Nivel = 0;
+		sheet.Ppedireito = 0;
+		sheet.Ppeesquerdo = 0;
+		sheet.Costas = 0;
+		sheet.Mmaodireita = 0;
+		sheet.Mmaoesquerda = 0;
+		sheet.Olho = 0;
+		sheet.Cabeca = 0;
+		sheet.Nome = ("")
+		sheet.Versao = ("")
+		sheet.CDnA = ("")
+		sheet.Ppeesquerdooutros = ("")
+		sheet.Ppedireitooutros = ("")
+		sheet.Costasoutros = ("")
+		sheet.Mmaoesquerdaoutros = ("")
+		sheet.Mmaodireitaoutros = ("")
+		sheet.Cabecaoutros = ("")
+		sheet.Olhooutros = ("")
+        showMessage("Resetado com sucesso!")
+		else 
+		showMessage("Você não possui permissões aqui, OTARIO!")
+		 end;
+                else
+                        -- usuário escolheu NAO
+                end;
+        end);			
+
+		
+		 </event>
+		  </image>
+		 
+		 
+		  
+		
+		####FECHA AQUI #####
+
+            <image left="0" top="0" width="1500" height="800" src="images/2.png" 
+			     style="stretch" optimize="true" compilerOrder="0"/>
+				 <!-- Imagem URL -->
+	     <image field="imagemDoPersonagem" editable="true" style="autoFit" 
+              left="65" top="9" width="231" height="230"/>
+                <!-- Edits ==== TODOS -->
+				 <edit field="Nome" transparent="true" fontSize="20" width="251"
+				      fontFamily="Andalus" top="246" left="92"/>
+					  
+	 <edit field="Versao" transparent="true" fontSize="20" width="251"
+				      fontFamily="Andalus" top="278" left="93"/>		
+					  
+     <edit field="CDnA" transparent="true" fontSize="20" width="251"
+				      fontFamily="Andalus" top="310" left="93"/>
+					  
+     <textEditor field="Ppeesquerdooutros" transparent="true" fontSize="15"
+                     width="162" height="174" top="618" left="9" fontFamily="times New Roman"/>
+				
+	 <textEditor field="Ppedireitooutros" transparent="true" fontSize="15"
+                     width="162" height="175" top="618" left="185" fontFamily="times New Roman"/> 
+					 
+     <textEditor field="Costasoutros" width="310" height="88" transparent="true"
+                top="12" left="779" fontFamily="times New Roman" fontSize="15"/>
+				 
+     <textEditor field="Mmaoesquerdaoutros" width="310" height="88" transparent="true"
+                top="134" left="779" fontFamily="times New Roman" fontSize="15"/>
+			
+     <textEditor field="Mmaodireitaoutros" width="310" height="88" transparent="true"
+                top="250" left="779" fontFamily="times New Roman" fontSize="15"/>
+				
+     <textEditor field="Cabecaoutros" width="600" height="78" transparent="true"
+                top="494" left="495" fontFamily="times New Roman" fontSize="15"/>
+				
+     <textEditor field="Olhooutros" width="600" height="78" transparent="true"
+                top="713" left="495" fontFamily="times New Roman" fontSize="15"/>
+					 
+					  <!-- BUTTON para POntos Pé Esquerdo E LABEL ~~ 50 -->
+		         <button text="-" width="20" height="20" top="500" left="150">
+				           <event name="onClick">
+						     local Ppeesquerdo = (sheet.Ppeesquerdo or 0) -1;
+							   if Ppeesquerdo >= 0 then
+							    sheet.Ppeesquerdo = Ppeesquerdo; sheet.Pontos = (sheet.Pontos or 0) +0.9;
+							else 
+							 showMessage("Não há pontos para se tirar aqui, desculpe!");
+							 end;
+						</event>
+						 </button>
+						
+
+		         <button text="+" width="20" height="20" top="500" left="131">
+				   <event name="onClick">
+				     local Pontos = (sheet.Pontos or 0) -1;
+					   if Pontos >= 0 then 
+					    sheet.Pontos = Pontos; sheet.Ppeesquerdo = (sheet.Ppeesquerdo or 0) +1; 
+                            else
+                     showMessage("Acabou seus pontos de atributos, espere o próximo nível"); 	
+		end;
+		        </event>
+				  </button>
+					
+						
+
+			     <label field="Ppeesquerdo" fontSize="38" 
+				      fontFamily="Algerian" horzTextAlign="center"
+					      width="166" height="75" top="515" left="9" fontStyle="bold">
+	 <edit width="167" height="24"
+		   fontSize="15" fontFamily="times New Roman" text="Habilidade"
+		      align="top" horzTextAlign="center" fontColor="Cyan" transparent="true" field="atributopeesquerdo">
+		      </edit>
+			   </label>
+			   
+			<!-- BUTTON para pontos pé direito e label -->
+		         <button text="+" width="20" height="20" top="501" left="306">
+				      <event name="onClick">
+					   local Pontos = (sheet.Pontos or 0) -1;
+					    if Pontos >= 0 then
+					   sheet.Pontos = Pontos; sheet.Ppedireito = (sheet.Ppedireito or 0) +1;
+					   else
+					showMessage("Acabou seus pontos de atributos, espere o próximo nível")
+					end;
+					 </event>
+					  </button>
+					   
+				 
+		         <button text="-" width="20" height="20" top="501" left="325">
+				        <event name="onClick">
+						  local Ppedireito = (sheet.Ppedireito or 0) -1;
+						    if Ppedireito >= 0 then
+						  sheet.Ppedireito = Ppedireito; sheet.Pontos = (sheet.Pontos or 0) +0.9;
+						  else
+						  showMessage("Não há pontos para se tirar aqui, desculpe!")
+						  end;
+						  </event>
+						   </button>
+				  
+				 
+			     <label field="Ppedireito" fontSize="38"
+ 				      fontFamily="Algerian" horzTextAlign="center"
+					      width="166" height="75" top="515" left="184" fontStyle="bold">
+	 <edit transparent="true" width="167" height="24" field="atributopedireito"
+		   fontSize="15" fontFamily="times New Roman"
+		      align="top" horzTextAlign="center" fontColor="Cyan">
+		      </edit>
+			   </label>
+
+			<!-- BUTTON E LABEL para COSTAS -->
+	<button text="+" width="20" height="20" top="14" left="589">
+	  <event name="onClick">
+	     local Pontos = (sheet.Pontos or 0) -1;
+		  if Pontos >= 0 then
+		 sheet.Pontos = Pontos; sheet.Costas = (sheet.Costas or 0) +1;
+		 else
+		 showMessage("Acabou seus pontos de atributos, espere o próximo nível")
+		   end;
+		 </event>
+		  </button>
+	  
+				 
+    <button text="-" width="20" height="20" top="14" left="608">
+	  <event name="onClick">
+	     local Costas = (sheet.Costas or 0) -1;
+		  if Costas >= 0 then
+		  sheet.Costas = Costas; sheet.Pontos = (sheet.Pontos or 0) +0.9;
+		  else
+		  showMessage("Não há pontos para se tirar aqui, desculpe!")
+		  end;
+		 </event>
+		  </button>
+	
+	  <label field="Costas" fontSize="38"
+ 	      fontFamily="Algerian" horzTextAlign="center"
+		      width="166" height="75" top="13" left="559" fontStyle="bold"/>
+	 <edit transparent="true" width="111" height="24" field="atributocostas"
+		   fontSize="15" fontFamily="times New Roman" margins="{top=-15}"
+		  top="44" left="508" horzTextAlign="center" fontColor="Cyan"/>
+
+
+	
+
+      	<!-- Mão Esquerda e label e edit -->
+	
+	<button text="+" width="20" height="20" top="134" left="589">
+	      <event name="onClick">
+	     local Pontos = (sheet.Pontos or 0) -1;
+		  if Pontos >= 0 then
+		 sheet.Pontos = Pontos; sheet.Mmaoesquerda = (sheet.Mmaoesquerda or 0) +1;
+		 else
+		 showMessage("Acabou seus pontos de atributos, espere o próximo nível")
+		   end;
+		  </event>
+		   </button>
+				 
+    <button text="-" width="20" height="20" top="134" left="608">
+	      <event name="onClick">
+	     local Mmaoesquerda = (sheet.Mmaoesquerda or 0) -1;
+		  if Mmaoesquerda >= 0 then
+		  sheet.Mmaoesquerda = Mmaoesquerda; sheet.Pontos = (sheet.Pontos or 0) +0.9;
+		  else
+		  showMessage("Não há pontos para se tirar aqui, desculpe!")
+		  end;
+		  </event>
+		   </button>
+	
+	  <label field="Mmaoesquerda" fontSize="38"
+ 	      fontFamily="Algerian" horzTextAlign="center"
+		      width="166" height="75" top="134" left="559" fontStyle="bold"/>
+	 <edit transparent="true" width="111" height="24" field="atributoMmaoesquerda"
+		   fontSize="15" fontFamily="times New Roman" margins="{top=-15}"
+		  top="165" left="508" horzTextAlign="center" fontColor="Cyan"/>
+		  
+<!-- Mão direita e label e edit -->
+	<button text="+" width="20" height="20" top="251" left="589">
+	      <event name="onClick">
+	     local Pontos = (sheet.Pontos or 0) -1;
+		  if Pontos >= 0 then
+		 sheet.Pontos = Pontos; sheet.Mmaodireita = (sheet.Mmaodireita or 0) +1;
+		 else
+		 showMessage("Acabou seus pontos de atributos, espere o próximo nível")
+		   end;
+		  </event>
+		   </button>
+				 
+    <button text="-" width="20" height="20" top="251" left="608">
+	      <event name="onClick">
+		  local Mmaodireita = (sheet.Mmaodireita or 0) -1;
+		   if Mmaodireita >= 0 then 
+		    sheet.Mmaodireita = Mmaodireita; sheet.Pontos = (sheet.Pontos or 0) +0.9;
+			else 
+			 showMessage("Não há pontos para se tirar aqui, desculpe!")
+			  end;
+		  </event>
+		   </button>
+		   <!-- top=134 Top=165 -->
+	  <label field="Mmaodireita" fontSize="38"
+ 	      fontFamily="Algerian" horzTextAlign="center"
+		      width="166" height="75" top="252" left="559" fontStyle="bold"/>
+	 <edit transparent="true" width="111" height="24" field="atributoMmaodireita"
+		   fontSize="15" fontFamily="times New Roman" margins="{top=-15}"
+		  top="282" left="508" horzTextAlign="center" fontColor="Cyan"/>
+
+	
+<!-- Cabeça label e edit -->
+	<button text="+" width="20" height="20" top="377" left="1014">
+	      <event name="onClick">
+	     local Pontos = (sheet.Pontos or 0) -1;
+		  if Pontos >= 0 then
+		 sheet.Pontos = Pontos; sheet.Cabeca = (sheet.Cabeca or 0) +1;
+		 else
+		 showMessage("Acabou seus pontos de atributos, espere o próximo nível")
+		   end;
+		  </event>
+		   </button>
+				 
+    <button text="-" width="20" height="20" top="377" left="1033">
+	      <event name="onClick">
+		  local Cabeca = (sheet.Cabeca or 0) -1;
+		   if Cabeca >= 0 then 
+		    sheet.Cabeca = Cabeca; sheet.Pontos = (sheet.Pontos or 0) +0.9;
+			else 
+			 showMessage("Não há pontos para se tirar aqui, desculpe!")
+			  end;
+		  </event>
+		   </button>
+		   
+			     <label field="Cabeca" fontSize="38"
+ 				      fontFamily="Algerian" horzTextAlign="center"
+					      width="166" height="75" top="401" left="923" fontStyle="bold">
+	 <edit transparent="true" width="167" height="24" field="Cabecaoutro"
+		   fontSize="15" fontFamily="times New Roman"
+		      align="top" horzTextAlign="center" fontColor="Cyan">
+		      </edit>
+			   </label>
+	
+<!-- OLHO label e edit e outros -->
+	<button text="+" width="20" height="20" top="597" left="1014">
+	      <event name="onClick">
+	     local Pontos = (sheet.Pontos or 0) -1;
+		  if Pontos >= 0 then
+		 sheet.Pontos = Pontos; sheet.Olho = (sheet.Olho or 0) +1;
+		 else
+		 showMessage("Acabou seus pontos de atributos, espere o próximo nível")
+		   end;
+		  </event>
+		   </button>
+				 
+    <button text="-" width="20" height="20" top="597" left="1033">
+	      <event name="onClick">
+		  local Olho = (sheet.Olho or 0) -1;
+		   if Olho >= 0 then 
+		    sheet.Olho = Olho; sheet.Pontos = (sheet.Pontos or 0) +0.9;
+			else 
+			 showMessage("Não há pontos para se tirar aqui, desculpe!")
+			  end;
+		  </event>
+		   </button>	
+			     <label field="Olho" fontSize="38"
+ 				      fontFamily="Algerian" horzTextAlign="center"
+					      width="166" height="75" top="622" left="923" fontStyle="bold">
+	 <edit transparent="true" width="167" height="24" field="Olhooutro"
+		   fontSize="15" fontFamily="times New Roman"
+		      align="top" horzTextAlign="center" fontColor="Cyan">
+		      </edit>
+			   </label>					  
+<!-- TESTES -->
+   
+	    <image hitTest="true" top="358" left="50" width="129" height="39" name="Msg1" compilerOrder="6">
+        <event name="onMouseEnter">   
+                              self.Msg1.src = "/Imagens/Pé Esquerdo.png" 
+		</event>
+		<event name="OnMouseLeave">
+	                          self.Msg1.src = "/Imagens/aquinaotemnada.png" 
+		</event>				
+    </image>
+	
+	    <image hitTest="true" top="358" left="225" width="129" height="39" name="Msg2" compilerOrder="6">
+        <event name="onMouseEnter">   
+                              self.Msg2.src = "/Imagens/Pé Direito.png" 
+		</event>
+		<event name="OnMouseLeave">
+	                          self.Msg2.src = "/Imagens/aquinaotemnada.png" 
+		</event>				
+    </image>
+	
+	    <image hitTest="true" top="20" left="400" width="129" height="39" name="Msg3" compilerOrder="6">
+        <event name="onMouseEnter">   
+                              self.Msg3.src = "/Imagens/Costas.png" 
+		</event>
+		<event name="OnMouseLeave">
+	                          self.Msg3.src = "/Imagens/aquinaotemnada.png" 
+		</event>				
+    </image>
+	
+	    <image hitTest="true" top="140" left="400" width="129" height="39" name="Msg4" compilerOrder="6">
+        <event name="onMouseEnter">   
+                              self.Msg4.src = "/Imagens/Mão Esquerda.png" 
+		</event>
+		<event name="OnMouseLeave">
+	                          self.Msg4.src = "/Imagens/aquinaotemnada.png" 
+		</event>				
+    </image>
+
+	    <image hitTest="true" top="255" left="400" width="129" height="39" name="Msg5" compilerOrder="6">
+        <event name="onMouseEnter">   
+                              self.Msg5.src = "/Imagens/Mão Direita.png" 
+		</event>
+		<event name="OnMouseLeave">
+	                          self.Msg5.src = "/Imagens/aquinaotemnada.png" 
+		</event>				
+    </image>
+
+	    <image hitTest="true" top="365" left="420" width="129" height="39" name="Msg6" compilerOrder="6">
+        <event name="onMouseEnter">   
+                              self.Msg6.src = "/Imagens/Cabeça.png" 
+		</event>
+		<event name="OnMouseLeave">
+	                          self.Msg6.src = "/Imagens/aquinaotemnada.png" 
+		</event>				
+    </image>
+
+	    <image hitTest="true" top="600" left="420" width="129" height="39" name="Msg7" compilerOrder="6">
+        <event name="onMouseEnter">   
+                              self.Msg7.src = "/Imagens/Olho.png" 
+		</event>
+		<event name="OnMouseLeave">
+	                          self.Msg7.src = "/Imagens/aquinaotemnada.png" 
+		</event>				
+    </image>
+
+	<!-- CHIPS AQUI CABEÇA   -->
+	
+        <layout left="527.75" top="376.56" width="66.38" height="69.44">  
+                <imageCheckBox field="Chip1" width="66.38" align="left" 
+                              checkedImage="/imagens/ChipDeVisãoON1.png" 
+                              uncheckedImage="/imagens/ChipDeVisãoOFF1.png"/>
+        </layout>
+		
+        <layout left="608.75" top="376.56" width="66.38" height="69.44">  
+                <imageCheckBox field="Chip2" width="66.38" align="left" 
+                              checkedImage="/imagens/ChipDeVisãoON2.png" 
+                              uncheckedImage="/imagens/ChipDeVisãoOFF2.png"/>
+        </layout>
+
+        <layout left="689.75" top="376.56" width="66.38" height="69.44">  
+                <imageCheckBox field="Chip3" width="66.38" align="left" 
+                              checkedImage="/imagens/ChipDeVisãoON3.png" 
+                              uncheckedImage="/imagens/ChipDeVisãoOFF3.png"/>
+        </layout>
+
+        <layout left="771.75" top="376.56" width="66.38" height="69.44">  
+                <imageCheckBox field="Chip4" width="66.38" align="left" 
+                              checkedImage="/imagens/ChipDeVisãoON4.png" 
+                              uncheckedImage="/imagens/ChipDeVisãoOFF4.png"/>
+        </layout>		
+	
+	<!-- CHIPS AQUI VISÃO -->
+	
+        <layout left="527.75" top="596.56" width="66.38" height="69.44">  
+                <imageCheckBox field="Chip5" width="66.38" align="left" 
+                              checkedImage="/imagens/ChipDeVisãoON5.png" 
+                              uncheckedImage="/imagens/ChipDeVisãoOFF5.png"/>
+        </layout>
+		
+        <layout left="608.75" top="596.56" width="66.38" height="69.44">  
+                <imageCheckBox field="Chip6" width="66.38" align="left" 
+                              checkedImage="/imagens/ChipDeVisãoON6.png" 
+                              uncheckedImage="/imagens/ChipDeVisãoOFF6.png"/>
+        </layout>
+
+        <layout left="689.75" top="596.56" width="66.38" height="69.44">  
+                <imageCheckBox field="Chip7" width="66.38" align="left" 
+                              checkedImage="/imagens/ChipDeVisãoON7.png" 
+                              uncheckedImage="/imagens/ChipDeVisãoOFF7.png"/>
+        </layout>
+
+        <layout left="771.75" top="596.56" width="66.38" height="69.44">  
+                <imageCheckBox field="Chip8" width="66.38" align="left" 
+                              checkedImage="/imagens/ChipDeVisãoON8.png" 
+                              uncheckedImage="/imagens/ChipDeVisãoOFF8.png"/>
+        </layout>	
+        </rectangle>
+    </scrollBox>
+			        <popup name="popMeuPopup" width="100" height="100" backOpacity="0.0" top="0" left="0">
+                <label align="client" horzTextAlign="center" text="Aqui fica a informção das coisas."/>      
+                </popup>				
+
+</form>
