@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<group>
+
+<!-- Area de Labels1 230 ~~~ 230 -->
+      <label top="155" left="40" text="$70"/>
+	      <label top="169" left="42" text="+30" fontSize="8.0" fontColor="red"/>
+	  <label top="155" left="270" text="$40"/>
+	      <label top="169" left="272" text="+20" fontSize="8.0" fontColor="red"/>
+	  <label top="155" left="495" text="$20"/>
+	      <label top="169" left="495" text="+10" fontSize="8.0" fontColor="red"/>
+<!-- Area de Labels2 230 ~~~~ 230 -->
+      <label top="355" left="40" text="$70"/>
+	      <label top="369" left="42" text="+30" fontSize="8.0" fontColor="blue"/>
+	  <label top="355" left="270" text="$40"/>
+	      <label top="369" left="272" text="+20" fontSize="8.0" fontColor="blue"/>
+	  <label top="355" left="495" text="$20"/>
+	      <label top="369" left="495" text="+10" fontSize="8.0" fontColor="blue"/>
+		  
+		  
+<!-- AREA PARA QUANTIDADE -->
+
+        <label top="-25" left="200" width="250" height="200"  
+		     fontSize="22.0" wordWrap="false" fontStyle="bold" fontColor="Wheat" />
+			 
+			 
+<!-- CREDITOS -->
+ <label top="440" left="570" text="by Will Martins :) " fontStyle="italic" fontSize="10.0"/>
+
+</group>

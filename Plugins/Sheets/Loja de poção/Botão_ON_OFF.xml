@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<group>
+
+
+
+
+
+  <!-- Imagem do on e off -->
+ <image src="/Imagens/molduraDourada.png" width="671" height="226" left="6" top="51"/>
+ <image src="/Imagens/molduraDourada.png" width="671" height="226" left="6" top="250"/>
+ <image name="on" visible="true" src="/Imagens/Botao_on.png" left="430" top="-3" width="200" height="100" hitTest="true" cursor="handPoint">
+    <event name="onClick">
+    if rrpg.getMesaDe(sheet).meuJogador.isMestre then
+     sheet.olho = 0
+     end;
+     </event>
+      </image>
+
+ 
+  <image name="off" visible="false" src="/Imagens/Botao_off.png" left="430" top="-3" width="200" height="100" hitTest="true" cursor="handPoint">
+    <event name="onClick">
+   if rrpg.getMesaDe(sheet).meuJogador.isMestre then   
+     sheet.olho = 1
+     end;
+     </event>
+      </image>
+
+
+    <!-- 220 ~~ bloqueio da compra -->
+
+   <button name="Xn1" visible="false" top="210" left="30" width="76" height="30" text="Comprar">
+           <event name="onClick">
+            showMessage("Você precisa estar perto de uma loja para efetuar a compra")
+             </event>
+              </button>
+
+    <button name="Xn2" visible="false" top="210" left="250" width="76" height="30" text="Comprar" >
+           <event name="onClick">
+            showMessage("Você precisa estar perto de uma loja para efetuar a compra")
+             </event>
+              </button>
+     <button name="Xn3" visible="false" top="210" left="470" width="76" height="30" text="Comprar" > 
+           <event name="onClick">
+            showMessage("Você precisa estar perto de uma loja para efetuar a compra")
+             </event>
+              </button>
+      <button name="Xn4" visible="false" top="410" left="30" width="76" height="30" text="Comprar" >
+           <event name="onClick">
+            showMessage("Você precisa estar perto de uma loja para efetuar a compra")
+             </event>
+              </button>
+       <button name="Xn5" visible="false" top="410" left="250" width="76" height="30" text="Comprar" >
+           <event name="onClick">
+            showMessage("Você precisa estar perto de uma loja para efetuar a compra")
+             </event>
+              </button>
+        <button name="Xn6" visible="false" top="410" left="470" width="76" height="30" text="Comprar" >
+           <event name="onClick">
+            showMessage("Você precisa estar perto de uma loja para efetuar a compra")
+             </event>
+              </button>
+    
+    <!-- Imagens de bloqueio -->
+    <image name="X1" visible="false" src="/Imagens/XdP.png" top="210" left="30" width="76" height="30"/>
+     <image name="X2" visible="false" src="/Imagens/XdP.png" top="210" left="250" width="76" height="30"/>
+      <image name="X3" visible="false" src="/Imagens/XdP.png" top="210" left="470" width="76" height="30"/>
+       <image name="X4" visible="false" src="/Imagens/XdP.png" top="410" left="30" width="76" height="30"/>
+        <image name="X5" visible="false" src="/Imagens/XdP.png" top="410" left="250" width="76" height="30"/>
+         <image name="X6" visible="false" src="/Imagens/XdP.png" top="410" left="470" width="76" height="30"/>
+
+   <!-- CALCULOS AQUI -->
+     <dataLink field="olho">
+      <event name="onChange">
+    if sheet.olho >= 0 then;
+    self.on.visible = false;
+    self.off.visible = true;
+    self.Xn1.visible = true;
+    self.Xn2.visible = true;
+    self.Xn3.visible = true;
+    self.Xn4.visible = true;
+    self.Xn5.visible = true;
+    self.Xn6.visible = true;
+    self.X1.visible = true;
+    self.X2.visible = true;
+    self.X3.visible = true;
+    self.X4.visible = true;
+    self.X5.visible = true;
+    self.X6.visible = true;
+    end;
+    if sheet.olho >= 1 then;
+    self.on.visible = true;
+    self.off.visible = false;
+    self.Xn1.visible = false;
+    self.Xn2.visible = false;
+    self.Xn3.visible = false;
+    self.Xn4.visible = false;
+    self.Xn5.visible = false;
+    self.Xn6.visible = false;
+    self.X1.visible = false;
+    self.X2.visible = false;
+    self.X3.visible = false;
+    self.X4.visible = false;
+    self.X5.visible = false;
+    self.X6.visible = false;    
+
+    end;
+    </event>
+     </dataLink>
+
+</group>
