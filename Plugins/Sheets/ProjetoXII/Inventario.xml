@@ -1,0 +1,522 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<group>
+ <scrollBox align="client">
+ <!-- Imagem base aqui -->
+ 
+ <image src="/imagens/Inventario.png" left="0" top="0" width="700" height="900"/>
+ 
+ 
+ <!-- IMAGEM CARREGADAS AQUI  -->
+ 
+ <image field="itemEsquerda" name="itemEsquerda" left="131.75" top="175" width="138.75" height="121.50" editable="true" style="proportional"/>
+ 
+ <image field="itemDireita" left="428.75" top="175" width="138.75" height="121.50" editable="true" style="proportional"/>
+
+ <image field="Item1" left="90.75" top="342" width="138.75" height="121.50" editable="true" style="proportional"/>
+ 
+ <image field="Item2" left="277.75" top="342" width="138.75" height="121.50" editable="true" style="proportional"/>
+ 
+ <image field="Item3" left="470.75" top="342" width="138.75" height="121.50" editable="true" style="proportional"/>
+ 
+ <image field="Item4" left="89.75" top="581" width="138.75" height="121.50" editable="true" style="proportional"/>
+ 
+ <image field="Item5" left="277.75" top="581" width="138.75" height="121.50" editable="true" style="proportional"/>
+ 
+ <image field="Item6" left="469.75" top="582" width="138.75" height="121.50" editable="true" style="proportional"/>
+ 
+   
+ 
+ <!-- BOTOES AQUII DAS TROCAS -->
+
+  <image name="Primeiro" left="88" top="206.25" width="43" height="41" hitTest="true" cursor="handPoint" opacity="0">
+       <event name="onClick">
+		local aux = sheet.nome1;
+		local aux2 = sheet.dano1;
+		local aux3 = sheet.adicional1;
+		local aux4 = sheet.efeito1;
+		sheet.nome1 = sheet.nome3;
+		sheet.dano1 = sheet.dano3;
+		sheet.adicional1 = sheet.adicional3;
+		sheet.efeito1 = sheet.efeito3;
+		sheet.nome3 = aux;
+		sheet.dano3 = aux2;
+		sheet.adicional3 = aux3;
+		sheet.efeito3 = aux4;	   
+       local aux = sheet.itemEsquerda;
+       sheet.itemEsquerda = sheet.Item1;
+       sheet.Item1 = aux;
+	   </event>
+	     </image>
+		 
+  <image name="Segundo" left="569" top="206.25" width="43" height="41" hitTest="true" cursor="handPoint" opacity="0">
+       <event name="onClick">
+		local aux = sheet.nome2;
+		local aux2 = sheet.dano2;
+		local aux3 = sheet.adicional2;
+		local aux4 = sheet.efeito2;
+		sheet.nome2 = sheet.nome5;
+		sheet.dano2 = sheet.dano5;
+		sheet.adicional2 = sheet.adicional5;
+		sheet.efeito2 = sheet.efeito5;
+		sheet.nome5 = aux;
+		sheet.dano5 = aux2;
+		sheet.adicional5 = aux3;
+		sheet.efeito5 = aux4;	  
+       local aux = sheet.itemDireita;
+       sheet.itemDireita = sheet.Item3;
+       sheet.Item3 = aux;
+	   </event>
+	     </image>
+		 
+  <image name="Terceiro" left="88" top="472.75" width="43" height="41" hitTest="true" cursor="handPoint" opacity="0"> 
+       <event name="onClick">
+		local aux = sheet.nome3;
+		local aux2 = sheet.dano3;
+		local aux3 = sheet.adicional3;
+		local aux4 = sheet.efeito3;
+		sheet.nome3 = sheet.nome1;
+		sheet.dano3 = sheet.dano1;
+		sheet.adicional3 = sheet.adicional1;
+		sheet.efeito3 = sheet.efeito1;
+		sheet.nome1 = aux;
+		sheet.dano1 = aux2;
+		sheet.adicional1 = aux3;
+		sheet.efeito1 = aux4;
+      local aux = sheet.itemEsquerda;
+       sheet.itemEsquerda = sheet.item1;
+        sheet.item1 = aux;
+	   </event>
+	     </image>
+		 
+  <image name="Quarto" left="276" top="471.75" width="43" height="41" hitTest="true" cursor="handPoint" opacity="0">
+       <event name="onClick">
+		local aux = sheet.nome4;
+		local aux2 = sheet.dano4;
+		local aux3 = sheet.adicional4;
+		local aux4 = sheet.efeito4;
+		sheet.nome4 = sheet.nome3;
+		sheet.dano4 = sheet.dano3;
+		sheet.adicional4 = sheet.adicional3;
+		sheet.efeito4 = sheet.efeito3;
+		sheet.nome3 = aux;
+		sheet.dano3 = aux2;
+		sheet.adicional3 = aux3;
+		sheet.efeito3 = aux4;
+      local aux = sheet.Item2;
+       sheet.Item2 = sheet.Item1;
+        sheet.Item1 = aux;
+	   </event>
+	     </image>		 
+   
+  <image name="Quinto" left="468" top="471.75" width="43" height="41" hitTest="true" cursor="handPoint" opacity="0">
+       <event name="onClick"> 
+		local aux = sheet.nome5;
+		local aux2 = sheet.dano5;
+		local aux3 = sheet.adicional5;
+		local aux4 = sheet.efeito5;
+		sheet.nome5 = sheet.nome4;
+		sheet.dano5 = sheet.dano4;
+		sheet.adicional5 = sheet.adicional4;
+		sheet.efeito5 = sheet.efeito4;
+		sheet.nome4 = aux;
+		sheet.dano4 = aux2;
+		sheet.adicional4 = aux3;
+		sheet.efeito4 = aux4;
+      local aux = sheet.Item3;
+       sheet.Item3 = sheet.Item2;
+        sheet.Item2 = aux;
+	   </event>
+	     </image>  
+  <image name="Sexto" left="88" top="711.75" width="43" height="41" hitTest="true" cursor="handPoint" opacity="0">
+       <event name="onClick"> 
+		local aux = sheet.nome6;
+		local aux2 = sheet.dano6;
+		local aux3 = sheet.adicional6;
+		local aux4 = sheet.efeito6;
+		sheet.nome6 = sheet.nome7;
+		sheet.dano6 = sheet.dano7;
+		sheet.adicional6 = sheet.adicional7;
+		sheet.efeito6 = sheet.efeito7;
+		sheet.nome7 = aux;
+		sheet.dano7 = aux2;
+		sheet.adicional7 = aux3;
+		sheet.efeito7 = aux4;		 
+      local aux = sheet.Item4;
+       sheet.Item4 = sheet.Item5;
+        sheet.Item5 = aux;
+	   </event>
+	     </image>  
+  <image name="Setimo" left="277" top="711.75" width="43" height="41" hitTest="true" cursor="handPoint" opacity="0">
+       <event name="onClick">
+		local aux = sheet.nome7;
+		local aux2 = sheet.dano7;
+		local aux3 = sheet.adicional7;
+		local aux4 = sheet.efeito7;
+		sheet.nome7 = sheet.nome4;
+		sheet.dano7 = sheet.dano4;
+		sheet.adicional7 = sheet.adicional4;
+		sheet.efeito7 = sheet.efeito4;
+		sheet.nome4 = aux;
+		sheet.dano4 = aux2;
+		sheet.adicional4 = aux3;
+		sheet.efeito4 = aux4;		 
+      local aux = sheet.Item5;
+       sheet.Item5 = sheet.Item2;
+        sheet.Item2 = aux;
+	   </event>
+	     </image> 
+  
+  <image name="Oitavo" left="469" top="711.75" width="43" height="41" hitTest="true" cursor="handPoint" opacity="0">
+       <event name="onClick">
+		local aux = sheet.nome8;
+		local aux2 = sheet.dano8;
+		local aux3 = sheet.adicional8;
+		local aux4 = sheet.efeito8;
+		sheet.nome8 = sheet.nome5;
+		sheet.dano8 = sheet.dano5;
+		sheet.adicional8 = sheet.adicional5;
+		sheet.efeito8 = sheet.efeito5;
+		sheet.nome5 = aux;
+		sheet.dano5 = aux2;
+		sheet.adicional5 = aux3;
+		sheet.efeito5 = aux4;
+      local aux = sheet.Item6;
+       sheet.Item6 = sheet.Item3;
+        sheet.Item3 = aux;
+	   </event>
+	     </image>  
+		 
+	<!-- BOTOES AQUI DAS INFORMAÇÕES DOS ITENS -->
+		 
+  <image name="Inf1" left="88" top="165.25" width="43" height="41" hitTest="true" cursor="handPoint" opacity="0">
+       <event name="onClick">
+                  self.popMeuPopup1.scopeNode = sheet; 
+				  self.popMeuPopup1:show();
+	   </event>
+	     </image>  
+  
+  <image name="Inf2" left="569" top="165.25" width="43" height="41" hitTest="true" cursor="handPoint" opacity="0">
+       <event name="onClick">
+                  self.popMeuPopup2.scopeNode = sheet; 
+				  self.popMeuPopup2:show();
+	   </event>
+	     </image> 
+		 
+  <image name="Inf3" left="187" top="472.25" width="43" height="41" hitTest="true" cursor="handPoint" opacity="0">
+       <event name="onClick">
+                  self.popMeuPopup3.scopeNode = sheet; 
+				  self.popMeuPopup3:show();
+
+	   </event>
+	     </image>  
+		 
+  <image name="Inf4" left="375" top="472.25" width="43" height="41" hitTest="true" cursor="handPoint" opacity="0">
+       <event name="onClick">
+                  self.popMeuPopup4.scopeNode = sheet; 
+				  self.popMeuPopup4:show();
+
+	   </event>
+	     </image> 
+		 
+  <image name="Inf5" left="567" top="472.25" width="43" height="41" hitTest="true" cursor="handPoint" opacity="0">
+       <event name="onClick">
+                  self.popMeuPopup5.scopeNode = sheet; 
+				  self.popMeuPopup5:show();
+	   </event>
+	     </image>   
+		 
+  <image name="Inf6" left="187" top="712.25" width="43" height="41" hitTest="true" cursor="handPoint" opacity="0">
+       <event name="onClick">
+                  self.popMeuPopup6.scopeNode = sheet; 
+				  self.popMeuPopup6:show();
+	   </event>
+	     </image>   
+		 
+  <image name="Inf7" left="376" top="712.25" width="43" height="41" hitTest="true" cursor="handPoint" opacity="0">
+       <event name="onClick">
+                  self.popMeuPopup7.scopeNode = sheet; 
+				  self.popMeuPopup7:show();
+	   </event>
+	     </image>   
+		 
+  <image name="Inf8" left="568" top="712.25" width="43" height="41" hitTest="true" cursor="handPoint" opacity="0">	
+       <event name="onClick">
+                  self.popMeuPopup8.scopeNode = sheet; 
+				  self.popMeuPopup8:show();
+	   </event>
+	     </image> 
+ <!-- POPUPS AQUI  -->
+ 
+      <popup name="popMeuPopup1" width="400" height="533" backOpacity="0.5">
+	  	  <image src="/imagens/infDosItens.png" width="400" height="533" left="0" top="0"/>
+
+		  
+		  <!-- Aqui vou tentar por coisas usaveis  -->
+		  
+	<edit name="Botao1ParaUsar" field="Botao1ParaUsar" left="52" top="94" width="33" height="30" horzTextAlign="center"/>
+	<edit name="Botao2ParaUsar" field="Botao2ParaUsar" left="92" top="94" width="33" height="30" horzTextAlign="center"/>
+	
+	<button text="Usar" left="64" top="133" width="47" height="25">
+	 <event name="onClick">
+	 
+	 local Botao1ParaUsar = (sheet.Botao1ParaUsar or 0) -1;
+	  if Botao1ParaUsar >= 0 then
+	  sheet.Botao1ParaUsar = Botao1ParaUsar;
+	  else
+	  showMessage("Você não tem mais munição.")
+	  end;
+
+                   
+
+
+	   </event>
+	    </button>
+		
+
+	
+		  
+ <image field="itemEsquerda" left="132.75" top="67.25" width="140.75" height="114.50" editable="true" style="proportional"/>
+ 
+       <edit field="nome1" name="nome1" left="140" top="201.25" width="206.25" height="36.75" transparent="true" fontSize="20"/> 
+       <edit field="dano1" name="dano1" left="133" top="248.25" width="212.50" height="36.75" transparent="true" fontSize="20"/> 
+       <edit field="adicional1" name="adicional1" left="179" top="297.25" width="168" height="36" transparent="true" fontSize="20"/> 
+       <textEditor field="efeito1" name="efeito1" left="140.75" top="362.25" width="200.25" height="100.75" transparent="true" fontSize="20"/>
+  <image name="botaoDeletar9" left="295.75" top="104" width="43" height="41" hitTest="true" cursor="handPoint" opacity="0">
+       <event name="onClick">
+       self.nome1.text = ("")
+	   self.dano1.text = ("")
+	   self.adicional1.text = ("")
+	   self.efeito1.text = ("")
+	   sheet.itemEsquerda = nil
+	   </event>
+	     </image>  	   
+	  </popup>
+  
+      <popup name="popMeuPopup2" width="400" height="533" backOpacity="0.5">
+	  	  <image src="/imagens/infDosItens.png" width="400" height="533" left="0" top="0"/>
+
+ <image field="itemDireita" left="132.75" top="67.25" width="140.75" height="114.50" editable="true" style="proportional"/>
+ 
+       <edit field="nome2" name="nome2" left="140" top="201.25" width="206.25" height="36.75" transparent="true" fontSize="20"/> 
+       <edit field="dano2" name="dano2" left="133" top="248.25" width="212.50" height="36.75" transparent="true" fontSize="20"/> 
+       <edit field="adicional2" name="adicional2" left="179" top="297.25" width="168" height="36" transparent="true" fontSize="20"/> 
+       <textEditor field="efeito2" name="efeito2" left="140.75" top="362.25" width="200.25" height="100.75" transparent="true" fontSize="20"/>
+  <image name="botaoDeletar10" left="295.75" top="104" width="43" height="41" hitTest="true" cursor="handPoint" opacity="0">
+       <event name="onClick">
+       self.nome2.text = ("")
+	   self.dano2.text = ("")
+	   self.adicional2.text = ("")
+	   self.efeito2.text = ("")
+	   sheet.itemDireita = nil
+	   </event>
+	     </image>  
+	  </popup>  
+	  
+      <popup name="popMeuPopup3" width="400" height="533" backOpacity="0.5">
+	  	  <image src="/imagens/infDosItens.png" width="400" height="533" left="0" top="0"/>
+
+ <image field="Item1" left="132.75" top="67.25" width="140.75" height="114.50" editable="true" style="proportional"/>
+ 
+       <edit field="nome3" name="nome3" left="140" top="201.25" width="206.25" height="36.75" transparent="true" fontSize="20"/> 
+       <edit field="dano3" name="dano3" left="133" top="248.25" width="212.50" height="36.75" transparent="true" fontSize="20"/> 
+       <edit field="adicional3" name="adicional3" left="179" top="297.25" width="168" height="36" transparent="true" fontSize="20"/> 
+       <textEditor field="efeito3" name="efeito3" left="140.75" top="362.25" width="200.25" height="100.75" transparent="true" fontSize="20"/> 
+  <image name="botaoDeletar111" left="295.75" top="104" width="43" height="41" hitTest="true" cursor="handPoint" opacity="0">
+       <event name="onClick">
+       self.nome3.text = ("")
+	   self.dano3.text = ("")
+	   self.adicional3.text = ("")
+	   self.efeito3.text = ("")
+	   sheet.Item1 = nil
+	   </event>
+	     </image>  
+	  </popup> 
+	  
+      <popup name="popMeuPopup4" width="400" height="533" backOpacity="0.5">
+	  	  <image src="/imagens/infDosItens.png" width="400" height="533" left="0" top="0"/>
+
+ <image field="Item2" left="132.75" top="67.25" width="140.75" height="114.50" editable="true" style="proportional"/>
+ 
+       <edit field="nome4" name="nome4" left="140" top="201.25" width="206.25" height="36.75" transparent="true" fontSize="20"/> 
+       <edit field="dano4" name="dano4" left="133" top="248.25" width="212.50" height="36.75" transparent="true" fontSize="20"/> 
+       <edit field="adicional4" name="adicional4" left="179" top="297.25" width="168" height="36" transparent="true" fontSize="20"/> 
+       <textEditor field="efeito4" name="efeito4" left="140.75" top="362.25" width="200.25" height="100.75" transparent="true" fontSize="20"/>
+  <image name="botaoDeletar112" left="295.75" top="104" width="43" height="41" hitTest="true" cursor="handPoint" opacity="0">
+       <event name="onClick">
+       self.nome4.text = ("")
+	   self.dano4.text = ("")
+	   self.adicional4.text = ("")
+	   self.efeito4.text = ("")
+	   sheet.Item2 = nil
+	   </event>
+	     </image> 
+	  </popup> 	  
+
+      <popup name="popMeuPopup5" width="400" height="533" backOpacity="0.5">
+	  	  <image src="/imagens/infDosItens.png" width="400" height="533" left="0" top="0"/>
+
+ <image field="Item3" left="132.75" top="67.25" width="140.75" height="114.50" editable="true" style="proportional"/>
+ 
+       <edit field="nome5" name="nome5" left="140" top="201.25" width="206.25" height="36.75" transparent="true" fontSize="20"/> 
+       <edit field="dano5" name="dano5" left="133" top="248.25" width="212.50" height="36.75" transparent="true" fontSize="20"/> 
+       <edit field="adicional5" name="adicional5" left="179" top="297.25" width="168" height="36" transparent="true" fontSize="20"/> 
+       <textEditor field="efeito5" name="efeito5" left="140.75" top="362.25" width="200.25" height="100.75" transparent="true" fontSize="20"/> 
+  <image name="botaoDeletar113" left="295.75" top="104" width="43" height="41" hitTest="true" cursor="handPoint" opacity="0">
+       <event name="onClick">
+       self.nome5.text = ("")
+	   self.dano5.text = ("")
+	   self.adicional5.text = ("")
+	   self.efeito5.text = ("")
+	   sheet.Item3 = nil
+	   </event>
+	     </image> 
+	  </popup> 	
+
+      <popup name="popMeuPopup6" width="400" height="533" backOpacity="0.5">
+	  	  <image src="/imagens/infDosItens.png" width="400" height="533" left="0" top="0"/>
+
+ <image field="Item4" left="132.75" top="67.25" width="140.75" height="114.50" editable="true" style="proportional"/>
+ 
+       <edit field="nome6" name="nome6" left="140" top="201.25" width="206.25" height="36.75" transparent="true" fontSize="20"/> 
+       <edit field="dano6" name="dano6" left="133" top="248.25" width="212.50" height="36.75" transparent="true" fontSize="20"/> 
+       <edit field="adicional6" name="adicional6" left="179" top="297.25" width="168" height="36" transparent="true" fontSize="20"/> 
+       <textEditor field="efeito6" name="efeito6" left="140.75" top="362.25" width="200.25" height="100.75" transparent="true" fontSize="20"/> 
+  <image name="botaoDeletar114" left="295.75" top="104" width="43" height="41" hitTest="true" cursor="handPoint" opacity="0">
+       <event name="onClick">
+       self.nome6.text = ("")
+	   self.dano6.text = ("")
+	   self.adicional6.text = ("")
+	   self.efeito6.text = ("")
+	   sheet.Item4 = nil
+	   </event>
+	     </image> 	   
+	  </popup> 	
+
+      <popup name="popMeuPopup7" width="400" height="533" backOpacity="0.5">
+	  	  <image src="/imagens/infDosItens.png" width="400" height="533" left="0" top="0"/>
+
+ <image field="Item5" left="132.75" top="67.25" width="140.75" height="114.50" editable="true" style="proportional"/>
+ 
+       <edit field="nome7" name="nome7" left="140" top="201.25" width="206.25" height="36.75" transparent="true" fontSize="20"/> 
+       <edit field="dano7" name="dano7" left="133" top="248.25" width="212.50" height="36.75" transparent="true" fontSize="20"/> 
+       <edit field="adicional7" name="adicional7" left="179" top="297.25" width="168" height="36" transparent="true" fontSize="20"/> 
+       <textEditor field="efeito7" name="efeito7" left="140.75" top="362.25" width="200.25" height="100.75" transparent="true" fontSize="20"/> 
+  <image name="botaoDeletar115" left="295.75" top="104" width="43" height="41" hitTest="true" cursor="handPoint" opacity="0">
+       <event name="onClick">
+       self.nome7.text = ("")
+	   self.dano7.text = ("")
+	   self.adicional7.text = ("")
+	   self.efeito7.text = ("")
+	   sheet.Item5 = nil
+	   </event>
+	     </image> 
+	  </popup> 	
+
+      <popup name="popMeuPopup8" width="400" height="533" backOpacity="0.5">
+	  	  <image src="/imagens/infDosItens.png" width="400" height="533" left="0" top="0"/>
+
+ <image field="Item6" left="132.75" top="67.25" width="140.75" height="114.50" editable="true" style="proportional"/>
+ 
+       <edit field="nome8" name="nome8" left="140" top="201.25" width="206.25" height="36.75" transparent="true" fontSize="20"/> 
+       <edit field="dano8" name="dano8" left="133" top="248.25" width="212.50" height="36.75" transparent="true" fontSize="20"/> 
+       <edit field="adicional8" name="adicional8" left="179" top="297.25" width="168" height="36" transparent="true" fontSize="20"/> 
+       <textEditor field="efeito8" name="efeito8" left="140.75" top="362.25" width="200.25" height="100.75" transparent="true" fontSize="20"/> 
+  <image name="botaoDeletar116" left="295.75" top="104" width="43" height="41" hitTest="true" cursor="handPoint" opacity="0">
+       <event name="onClick">
+       self.nome8.text = ("")
+	   self.dano8.text = ("")
+	   self.adicional8.text = ("")
+	   self.efeito8.text = ("")
+	   sheet.Item6 = nil
+	   </event>
+	     </image> 
+	  </popup> 	  
+	  
+	  <!-- Deletar tudo  -->
+  <image name="botaoDeletar1" left="283" top="178.75" width="43" height="41" hitTest="true" cursor="handPoint" opacity="0">
+       <event name="onClick">
+       self.nome1.text = ("")
+	   self.dano1.text = ("")
+	   self.adicional1.text = ("")
+	   self.efeito1.text = ("")
+	   sheet.itemEsquerda = nil
+	   </event>
+	     </image>  	 
+
+  <image name="botaoDeletar2" left="372" top="178.75" width="43" height="41" hitTest="true" cursor="handPoint" opacity="0">
+       <event name="onClick">
+       self.nome2.text = ("")
+	   self.dano2.text = ("")
+	   self.adicional2.text = ("")
+	   self.efeito2.text = ("")
+	   sheet.itemDireita = nil
+	   </event>
+	     </image>  	 
+
+  <image name="botaoDeletar3" left="132" top="472.75" width="43" height="41" hitTest="true" cursor="handPoint" opacity="0">
+       <event name="onClick">
+       self.nome3.text = ("")
+	   self.dano3.text = ("")
+	   self.adicional3.text = ("")
+	   self.efeito3.text = ("")
+	   sheet.Item1 = nil
+	   </event>
+	     </image>  	 
+
+  <image name="botaoDeletar4" left="319" top="472.75" width="43" height="41" hitTest="true" cursor="handPoint" opacity="0">
+       <event name="onClick">
+       self.nome4.text = ("")
+	   self.dano4.text = ("")
+	   self.adicional4.text = ("")
+	   self.efeito4.text = ("")
+	   sheet.Item2 = nil
+	   </event>
+	     </image>  	 
+
+  <image name="botaoDeletar5" left="512" top="472.75" width="43" height="41" hitTest="true" cursor="handPoint" opacity="0">
+       <event name="onClick">
+       self.nome5.text = ("")
+	   self.dano5.text = ("")
+	   self.adicional5.text = ("")
+	   self.efeito5.text = ("")
+	   sheet.Item3 = nil
+	   </event>
+	     </image>  	 
+
+  <image name="botaoDeletar6" left="132" top="711.75" width="43" height="41" hitTest="true" cursor="handPoint" opacity="0">
+       <event name="onClick">
+       self.nome6.text = ("")
+	   self.dano6.text = ("")
+	   self.adicional6.text = ("")
+	   self.efeito6.text = ("")
+	   sheet.Item4 = nil
+	   </event>
+	     </image>  	 
+
+  <image name="botaoDeletar7" left="320" top="711.75" width="43" height="41" hitTest="true" cursor="handPoint" opacity="0">
+       <event name="onClick">
+       self.nome7.text = ("")
+	   self.dano7.text = ("")
+	   self.adicional7.text = ("")
+	   self.efeito7.text = ("")
+	   sheet.Item5 = nil
+	   </event>
+	     </image>  	 
+
+  <image name="botaoDeletar8" left="513" top="711.75" width="43" height="41" hitTest="true" cursor="handPoint" opacity="0">
+       <event name="onClick">
+       self.nome8.text = ("")
+	   self.dano8.text = ("")
+	   self.adicional8.text = ("")
+	   self.efeito8.text = ("")
+	   sheet.Item6 = nil
+	   </event>
+	     </image>  	 
+
+    <!-- DANO DE MAO ESQUERDA E DIREITA AQUI  -->
+	
+       <edit field="dano1" name="dano10" left="170" top="109.19" width="124.69" height="39.56" transparent="true" fontSize="20"/> 
+	   
+       <edit field="dano2" name="dano11" left="487" top="109.19" width="124.69" height="39.56" transparent="true" fontSize="20"/> 
+ </scrollBox>	
+</group>

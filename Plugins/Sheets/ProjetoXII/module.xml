@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module sdkVersion="3.5" originalPluginFileName="ProjetoXII.rpk" compilationDate="28052022085526" sdkApiVersion="87" compilationDigest="8b7abe74d27a259bba1c601a0ff1043eb279fd05">
+	<!--O id identifica seu plugin globalmente. Deve ser único, conter apenas caracteres alfanuméricos, underlines, pontos e deve conter ao menos 5 caracteres e um máximo de 40. Uma vez definido o ID, você não deve alterar ele ;) -->
+	<id>Projeto_XII_AContinuacao</id>
+	<!--version é a versão do seu plugin. Quando for lançar uma nova versão do seu módulo, altere aqui =) -->
+	<version>3.5</version>
+	
+	
+	
+	
+    <info lang="pt-BR">
+        <!--Informações do plugin na língua "pt-BR". Você pode ter várias tags "info", uma para cada tradução que quiser.-->
+        <name>ProjetoXII - Fora do Ar</name>
+        <description>Essa é a ficha do ProjetoXII. Cujo é uma continuação do Projeto X, criado em 2014</description>
+        <author>Programador: Will Martins, Desingners: Eyb</author>
+        <site>https://www.youtube.com/playlist?list=PLqFGVduddnfZ4O2-8ZCMkS7rJJc6vgPMQ</site>
+    </info>
+    
+    <assembledFeatures>
+        <dataTypes>
+            <dataType id="ProjetoXII" formType="sheetTemplate" lfmFile="Ficha.lfm" formName="frmFicha">
+                <info title="ProjetoXII"/>
+            </dataType>
+        </dataTypes>
+    </assembledFeatures>
+    <name>ProjetoXII - Fora do Ar</name>
+    <description>Essa é a ficha do ProjetoXII. Cujo é uma continuação do Projeto X, criado em 2014</description>
+    <author>Programador: Will Martins, Desingners: Eyb</author>
+    <site>https://www.youtube.com/playlist?list=PLqFGVduddnfZ4O2-8ZCMkS7rJJc6vgPMQ</site>
+    <contact>Facebook? Twitter? E-Mail?</contact>
+</module>

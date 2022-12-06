@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<group>
+<!-- TAVA NO FALSE E POSIÇÃO: 650 -->
+        <layout name="Contatos" width="323" height="520" left="650" top="1" visible="false">
+     <image src="/imagens/Contatos.png" width="323" height="520"/>
+	 
+
+		
+		
+		### 1 ### 
+        <layout name="ContatosArea" align="client">			   
+         		<!-- CLIQUE AQUI PARA GERAR  -->
+
+		 <image src="/imagens/ContatosImagem.png" left="50" top="54" width="55" height="51" 
+		      hitTest="true" cursor="handPoint">
+			     <event name="onClick">
+				 self.rclListaContatos:append();				 
+				 </event>
+				  </image>
+				  
+         <recordList name="rclListaContatos" field="CampoContatos" templateForm="frmListaContatos"
+		 left="35" top="111" width="265" height="348"/>
+		 
+                 
+	   </layout>
+	    </layout>
+	   
+</group>

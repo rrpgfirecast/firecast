@@ -1,0 +1,369 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmFicha123_svg" align="client" theme="dark" margins="{top=1}">
+    <scrollBox align="client">
+	
+    <image src="/imagens/paginaNaves.png" width="868" height="538"/>
+
+ <image src="/imagens/Reseta.png" left="0" top="0" width="70" height="70" cursor="handPoint" hitTest="true">
+      <event name="onClick">
+dialogs.confirmYesNo("Deseja realmente apagar todas as suas naves?",
+        function (confirmado)
+                if confirmado then
+	  sheet.nivelNave1 = 0;
+	  sheet.nivelNave2 = 0;
+	  sheet.nivelNave3 = 0;
+	  sheet.nivelNave4 = 0;
+	  sheet.nivelNave5 = 0;
+	  sheet.nivelNave6 = 0;
+	  sheet.nivelNave7 = 0;
+	  sheet.nivelNave8 = 0;
+	  sheet.nivelNave9 = 0;
+	  sheet.nivelNave10 = 0;
+	  sheet.nivelNave11 = 0;
+	  sheet.nivelNave12 = 0;
+	  sheet.nivelNave13 = 0;
+	  sheet.nivelNave14 = 0;
+	  sheet.nivelNave15 = 0;
+	  sheet.nivelNave16 = 0;
+	  sheet.nivelNave17 = 0;
+	  sheet.nivelNave18 = 0;
+	  sheet.nivelNave19 = 0;
+	  sheet.nivelNave20 = 0;
+	  sheet.nivelNave21 = 0;
+	  sheet.nivelNave22 = 0;
+	  sheet.nivelNave23 = 0;
+	  sheet.nivelNave24 = 0;
+	  sheet.nivelNave25 = 0;
+	  sheet.nivelNave26 = 0;
+	  sheet.nivelNave27 = 0;
+	  sheet.nivelNave28 = 0;
+	  sheet.nivelNave29 = 0;
+	  sheet.nivelNave30 = 0;
+	  sheet.nivelNave31 = 0;
+	  sheet.nivelNave32 = 0;
+      sheet.Textoanotacao1 = ("");
+      sheet.Textoanotacao2 = ("");
+      sheet.Textoanotacao3 = ("");
+      sheet.Textoanotacao4 = ("");
+      sheet.Textoanotacao5 = ("");
+      sheet.Textoanotacao6 = ("");
+      sheet.Textoanotacao7 = ("");
+      sheet.Textoanotacao8 = ("");
+      sheet.Textoanotacao9 = ("");
+      sheet.Textoanotacao10 = ("");
+      sheet.Textoanotacao11 = ("");
+      sheet.Textoanotacao12 = ("");
+      sheet.Textoanotacao13 = ("");
+      sheet.Textoanotacao14 = ("");
+      sheet.Textoanotacao15 = ("");
+      sheet.Textoanotacao16 = ("");
+      sheet.Textoanotacao17 = ("");
+      sheet.Textoanotacao18 = ("");
+      sheet.Textoanotacao19 = ("");
+      sheet.Textoanotacao20 = ("");
+      sheet.Textoanotacao21 = ("");
+      sheet.Textoanotacao22 = ("");
+      sheet.Textoanotacao23 = ("");
+      sheet.Textoanotacao24 = ("");
+      sheet.Textoanotacao25 = ("");
+      sheet.Textoanotacao26 = ("");
+      sheet.Textoanotacao27 = ("");
+      sheet.Textoanotacao28 = ("");
+      sheet.Textoanotacao29 = ("");
+      sheet.Textoanotacao30 = ("");
+      sheet.Textoanotacao31 = ("");
+      sheet.Textoanotacao32 = ("");
+      sheet.Textoanotacao33 = ("");
+      sheet.Textoanotacao34 = ("");
+      sheet.Textoanotacao35 = ("");
+      sheet.Textoanotacao36 = ("");
+      sheet.Textoanotacao37 = ("");
+      sheet.Textoanotacao38 = ("");
+      sheet.Textoanotacao39 = ("");
+      sheet.Textoanotacao40 = ("");
+      sheet.Textoanotacao41 = ("");
+      sheet.Textoanotacao142 = ("");
+      sheet.Textoanotacao43 = ("");
+      sheet.Textoanotacao44 = ("");
+      sheet.Textoanotacao45 = ("");
+      sheet.Textoanotacao46 = ("");
+      sheet.Textoanotacao47 = ("");
+      sheet.Textoanotacao48 = ("");
+      sheet.Textoanotacao49 = ("");
+      sheet.Textoanotacao50 = ("");
+      sheet.Textoanotacao51 = ("");
+      sheet.Textoanotacao52 = ("");
+      sheet.Textoanotacao53 = ("");
+      sheet.Textoanotacao54 = ("");
+      sheet.Textoanotacao55 = ("");
+      sheet.Textoanotacao56 = ("");
+      sheet.Textoanotacao57 = ("");
+      sheet.Textoanotacao58 = ("");
+      sheet.Textoanotacao59 = ("");
+      sheet.Textoanotacao60 = ("");
+      sheet.Textoanotacao61 = ("");
+	  sheet.nomeNave1 = ("");
+	  sheet.nomeNave2 = ("");
+	  sheet.nomeNave3 = ("");
+	  sheet.nomeNave4 = ("");
+	  sheet.nomeNave5 = ("");
+	  sheet.nomeNave6 = ("");
+	  sheet.nomeNave7 = ("");
+	  sheet.nomeNave8 = ("");
+	  sheet.nomeNave9 = ("");
+	  sheet.nomeNave10 = ("");
+	  sheet.nomeNave11 = ("");
+	  sheet.nomeNave12 = ("");
+	  sheet.nomeNave13 = ("");
+	  sheet.nomeNave14 = ("");
+	  sheet.nomeNave15 = ("");
+	  sheet.nomeNave16 = ("");
+	  sheet.nomeNave17 = ("");
+	  sheet.nomeNave18 = ("");
+	  sheet.nomeNave19 = ("");
+	  sheet.nomeNave20 = ("");
+	  sheet.nomeNave21 = ("");
+	  sheet.nomeNave22 = ("");
+	  sheet.nomeNave23 = ("");
+	  sheet.nomeNave24 = ("");
+	  sheet.nomeNave25 = ("");
+	  sheet.nomeNave26 = ("");
+	  sheet.nomeNave27 = ("");
+	  sheet.nomeNave28 = ("");
+	  sheet.nomeNave29 = ("");
+	  sheet.nomeNave30 = ("");
+	  sheet.nomeNave31 = ("");
+	  sheet.nomeNave32 = ("");
+	  sheet.min = 0
+
+                else
+                        -- aqui nada acontece
+                end;
+        end);
+
+	  
+	  
+	  </event>
+	   </image>
+	   
+	 <!-- REDONDO NAO PREENCHIDO  -->
+    <image name="RNP10" src="/imagens/RNP.png" width="32" height="32" left="302" top="417" hitTest="true" cursor="handPoint">
+        <event name="onClick">
+       self.RP10.visible = true
+	   self.RNP10.visible = false;
+	   self.RNP13.visible = true;	   
+	   self.RP13.visible = false;	   
+	   self.Lnave1.visible = true;
+	   self.Lnave2.visible = false;
+		self.Lnave3.visible = false;
+       self.Lnave4.visible = false;		
+	   self.RP11.visible = false;
+	   self.RNP11.visible = true;
+	   self.BotaoNaveN1.visible = true;
+	   self.BotaoNaveN2.visible = true;
+	   self.BotaoNaveN3.visible = true;
+	   self.BotaoNaveN4.visible = true;
+	   self.BotaoNaveN5.visible = true;
+	   self.BotaoNaveN6.visible = true;
+	   self.BotaoNaveN7.visible = true;
+	   self.BotaoNaveN8.visible = true;
+	   self.BotaoNaveN9.visible = false;
+	   self.BotaoNaveN10.visible = false;
+	   self.BotaoNaveN11.visible = false;
+	   self.BotaoNaveN12.visible = false;
+	   self.BotaoNaveN13.visible = false;
+	   self.BotaoNaveN14.visible = false;
+	   self.BotaoNaveN15.visible = false;
+	   self.BotaoNaveN16.visible = false;
+	   self.BotaoNaveN17.visible = false;
+	   self.BotaoNaveN18.visible = false;
+	   self.BotaoNaveN19.visible = false;
+	   self.BotaoNaveN20.visible = false;
+	   self.BotaoNaveN21.visible = false;
+	   self.BotaoNaveN22.visible = false;
+	   self.BotaoNaveN23.visible = false;
+	   self.BotaoNaveN24.visible = false;
+	   self.BotaoNaveN25.visible = false;
+	   self.BotaoNaveN26.visible = false;
+	   self.BotaoNaveN27.visible = false;
+	   self.BotaoNaveN28.visible = false;
+	   self.BotaoNaveN29.visible = false;
+	   self.BotaoNaveN30.visible = false;
+	   self.BotaoNaveN31.visible = false;
+	   self.BotaoNaveN32.visible = false;	   
+	   self.RP12.visible = false;
+	   self.RNP12.visible = true;
+	   
+</event>
+ </image> 
+ 
+	<image name="RNP11" src="/imagens/RNP.png" width="32" height="32" left="336" top="417" hitTest="true" cursor="handPoint">
+        <event name="onClick">
+		self.RP11.visible = true;
+		self.RNP13.visible = true;		
+		self.RP13.visible = false;		
+		self.RNP11.visible = false;
+		self.RNP10.visible = true;
+		self.RP10.visible = false;
+		self.Lnave1.visible = false;
+		self.Lnave1.visible = false;
+		self.Lnave2.visible = true;
+		self.Lnave3.visible = false;	
+       self.Lnave4.visible = false;				
+	    self.BotaoNaveN1.visible = false;
+	    self.BotaoNaveN2.visible = false;
+	    self.BotaoNaveN3.visible = false;
+	    self.BotaoNaveN4.visible = false;
+	    self.BotaoNaveN5.visible = false;
+	    self.BotaoNaveN6.visible = false;
+	    self.BotaoNaveN7.visible = false;
+	    self.BotaoNaveN8.visible = false;
+	   self.BotaoNaveN9.visible = true;
+	   self.BotaoNaveN10.visible = true;
+	   self.BotaoNaveN11.visible = true;
+	   self.BotaoNaveN12.visible = true;
+	   self.BotaoNaveN13.visible = true;
+	   self.BotaoNaveN14.visible = true;
+	   self.BotaoNaveN15.visible = true;
+	   self.BotaoNaveN16.visible = true;
+	   self.BotaoNaveN17.visible = false;
+	   self.BotaoNaveN18.visible = false;
+	   self.BotaoNaveN19.visible = false;
+	   self.BotaoNaveN20.visible = false;
+	   self.BotaoNaveN21.visible = false;
+	   self.BotaoNaveN22.visible = false;
+	   self.BotaoNaveN23.visible = false;
+	   self.BotaoNaveN24.visible = false;	
+	   self.BotaoNaveN25.visible = false;
+	   self.BotaoNaveN26.visible = false;
+	   self.BotaoNaveN27.visible = false;
+	   self.BotaoNaveN28.visible = false;
+	   self.BotaoNaveN29.visible = false;
+	   self.BotaoNaveN30.visible = false;
+	   self.BotaoNaveN31.visible = false;
+	   self.BotaoNaveN32.visible = false;	   
+	           self.RP12.visible = false;
+	   self.RNP12.visible = true;
+</event>
+ </image> 	
+ 
+	<image name="RNP12" src="/imagens/RNP.png" width="32" height="32" left="371" top="417" hitTest="true" cursor="handPoint">
+        <event name="onClick">
+		self.RP10.visible = false;	
+		self.RNP10.visible = true;	
+        self.RP12.visible = true;
+		self.RP11.visible = false;
+		self.RP13.visible = false;
+		self.RNP12.visible = false;
+		self.RNP11.visible = true;
+		self.RNP12.visible = false;
+		self.RNP13.visible = true;
+		self.Lnave1.visible = false;
+		self.Lnave2.visible = false;
+		self.Lnave3.visible = true;
+       self.Lnave4.visible = false;				
+	    self.BotaoNaveN1.visible = false;
+	    self.BotaoNaveN2.visible = false;
+	    self.BotaoNaveN3.visible = false;
+	    self.BotaoNaveN4.visible = false;
+	    self.BotaoNaveN5.visible = false;
+	    self.BotaoNaveN6.visible = false;
+	    self.BotaoNaveN7.visible = false;
+	    self.BotaoNaveN8.visible = false;
+	   self.BotaoNaveN9.visible = false;
+	   self.BotaoNaveN10.visible = false;
+	   self.BotaoNaveN11.visible = false;
+	   self.BotaoNaveN12.visible = false;
+	   self.BotaoNaveN13.visible = false;
+	   self.BotaoNaveN14.visible = false;
+	   self.BotaoNaveN15.visible = false;
+	   self.BotaoNaveN16.visible = false;		
+	   self.BotaoNaveN17.visible = true;
+	   self.BotaoNaveN18.visible = true;
+	   self.BotaoNaveN19.visible = true;
+	   self.BotaoNaveN20.visible = true;
+	   self.BotaoNaveN21.visible = true;
+	   self.BotaoNaveN22.visible = true;
+	   self.BotaoNaveN23.visible = true;
+	   self.BotaoNaveN24.visible = true;	
+	   self.BotaoNaveN25.visible = false;
+	   self.BotaoNaveN26.visible = false;
+	   self.BotaoNaveN27.visible = false;
+	   self.BotaoNaveN28.visible = false;
+	   self.BotaoNaveN29.visible = false;
+	   self.BotaoNaveN30.visible = false;
+	   self.BotaoNaveN31.visible = false;
+	   self.BotaoNaveN32.visible = false;	   
+</event>
+ </image> 	
+ 
+	<image name="RNP13" src="/imagens/RNP.png" width="32" height="32" left="406" top="417" hitTest="true" cursor="handPoint">
+        <event name="onClick">
+        self.RP12.visible = false;
+		self.RP11.visible = false;
+		self.RNP12.visible = true;
+		self.RNP11.visible = true;
+		self.RNP13.visible = false;
+		self.RP10.visible = false;
+		self.RNP10.visible = true;
+		self.Lnave1.visible = false;
+		self.Lnave2.visible = false;
+		self.Lnave3.visible = false;
+	    self.Lnave4.visible = true;		
+		self.RP13.visible = true;
+	    self.BotaoNaveN1.visible = false;
+	    self.BotaoNaveN2.visible = false;
+	    self.BotaoNaveN3.visible = false;
+	    self.BotaoNaveN4.visible = false;
+	    self.BotaoNaveN5.visible = false;
+	    self.BotaoNaveN6.visible = false;
+	    self.BotaoNaveN7.visible = false;
+	    self.BotaoNaveN8.visible = false;
+	   self.BotaoNaveN9.visible = false;
+	   self.BotaoNaveN10.visible = false;
+	   self.BotaoNaveN11.visible = false;
+	   self.BotaoNaveN12.visible = false;
+	   self.BotaoNaveN13.visible = false;
+	   self.BotaoNaveN14.visible = false;
+	   self.BotaoNaveN15.visible = false;
+	   self.BotaoNaveN16.visible = false;
+	   self.BotaoNaveN17.visible = false;
+	   self.BotaoNaveN18.visible = false;
+	   self.BotaoNaveN19.visible = false;
+	   self.BotaoNaveN20.visible = false;
+	   self.BotaoNaveN21.visible = false;
+	   self.BotaoNaveN22.visible = false;
+	   self.BotaoNaveN23.visible = false;
+	   self.BotaoNaveN24.visible = true;
+	   self.BotaoNaveN25.visible = true;
+	   self.BotaoNaveN26.visible = true;
+	   self.BotaoNaveN27.visible = true;
+	   self.BotaoNaveN28.visible = true;
+	   self.BotaoNaveN29.visible = true;
+	   self.BotaoNaveN30.visible = true;
+	   self.BotaoNaveN31.visible = true;
+	   self.BotaoNaveN32.visible = true;
+</event>
+ </image> 	
+ 
+	
+	<!-- REDONDO PREENCHIDO -->
+    <image name="RP10" src="/imagens/RP.png" width="32" height="32" left="302" top="417" hitTest="true" cursor="handPoint" visible="false"/>
+    <image name="RP11" src="/imagens/RP.png" width="32" height="32" left="336" top="417" hitTest="true" cursor="handPoint" visible="false"/>
+    <image name="RP12" src="/imagens/RP.png" width="32" height="32" left="371" top="417" hitTest="true" cursor="handPoint" visible="false"/>
+    <image name="RP13" src="/imagens/RP.png" width="32" height="32" left="406" top="417" hitTest="true" cursor="handPoint" visible="false"/>
+
+	
+	
+	<!-- DENTRO DO LAYOUT AQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ111111 -->
+	
+	   <import file="Lnave1.xml"/>
+	   <import file="Lnave2.xml"/>
+	   <import file="Lnave3.xml"/>
+	   <import file="Lnave4.xml"/>
+
+	  
+	   
+ 
+      </scrollBox>
+</form>

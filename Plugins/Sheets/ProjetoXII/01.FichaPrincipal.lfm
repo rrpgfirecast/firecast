@@ -1,0 +1,1053 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmFicha1_svg" align="client">
+
+<layout name="FichaPrincipalTD" align="client">
+
+
+    <scrollBox align="client">
+
+
+------TESTE 
+
+
+				 <!-- AREA DO DINHEIRO AQUI -->
+	     <image src="/imagens/Dinheiro.png" left="369" top="33" width="253" height="95"/>
+		 <button name="zeraSoma" visible="false">s
+		 <event name="onClick">
+
+		  
+		 sheet.soma = 0
+		  </event>
+		   </button> 
+		
+    <button left="383.75" top="47.50" width="73.50" height="72" opacity="0" text="$" fontColor="lime" fontStyle="bold">
+        <event name="onClick">
+	    if rrpg.getMesaDe(sheet).meuJogador.isMestre then
+		dialogs.inputQuery("Carteira", "Novo valor:", "",
+		   function (valorPreenchido)
+					  sheet.Soma = (sheet.Soma or 0 ) + valorPreenchido; 
+	    end);
+		end;
+	    </event>
+    </button>		 
+             <layout class="LayoutSoma" align="client">
+	<label left="471" top="60" fontStyle="bold" fontSize="30.0" autoSize="true" wordWrap="false" name="labSoma2"/>
+        <dataLink field="Soma">
+            <event name="onChange">
+function format_thousand(v)
+	local s = string.format("%d", math.floor(v))
+	local pos = string.len(s) % 3 
+	if pos == 0 then pos = 3 end
+    return string.sub(s, 1, pos)
+	    .. "" .. string.gsub(string.sub(s, pos+1), "(...)", ".%1") 
+		.. "" .. string.sub(string.format("%.0f", v - math.floor(v)), 3) 
+
+end;
+	  self.labSoma2.text = '$' .. format_thousand(sheet.soma);
+            </event>
+	    </dataLink>
+</layout>
+
+		
+ <!-- AQUI FICA AS VERSOES  609-->
+        <layout name="versoes" align="client" visible="true">
+			<button left="0" top="85" width="85" text="Atualizar" fontStyle="bold" fontColor="yellow" onClick="gui.openInBrowser('https://dl.dropboxusercontent.com/s/kv0ohcmcmxqrdrq/ProjetoXII.rpk')" />
+		
+		<rectangle left="0" top="21" width="102" height="22" color="white" strokeColor="black" strokeSize="1"/>
+		<image left="0" top="22" width="100" height="20" style="autoFit" src="https://dl.dropboxusercontent.com/s/d9wthpq1o0bmink/suaversao%203.png?dl=0"/>
+		
+		<rectangle left="0" top="63" width="102" height="22" color="white" strokeColor="black" strokeSize="1"/>
+		<image name="imgVersaoAtual"  src="/imagens/versaoCopia.png" left="0" top="64" width="100" height="20" style="autoFit"/>	
+
+		
+		<image src="/imagens/FontSuaVersao.png" left="-48" top="2" width="200" height="50"/>
+		<image src="/imagens/FontVersaoAtual.png" left="-33" top="46" width="181.50" height="50"/>
+		
+		</layout>
+		
+
+
+
+		
+		
+	     <image field="imagemDoPersonagem2" editable="true" style="autoFit" 
+             top="239" left="430"  width="145" height="144"/>
+<!-- Area para PERFIL  TUDO COMPLETO AQUI-->
+					
+			 <layout name="sobrePersonagem" width="286" height="471" top="100" left="50" visible="false">
+			<image src="/imagens/perfil.png" width="286" height="471">
+			
+			<button text="c" left="31" top="29" fontColor="black" fontStyle="bold" width="17" height="15" fontSize="12">
+			    <event name="onClick">
+				self.nomePersonagem.fontColor = ("Black");
+				self.idade.fontColor = ("Black");
+				self.raca.fontColor = ("Black");
+				self.profissao.fontColor = ("Black");
+				self.peso.fontColor = ("Black");
+				self.altura.fontColor = ("Black");
+				self.corolhos.fontColor = ("Black");
+				self.aparencia.fontColor = ("Black");
+				self.nivelatributo.fontColor = ("Black");
+				</event>
+				 </button>
+			<button text="c" left="48" top="29" fontColor="Blue" fontStyle="bold" width="17" height="15" fontSize="12">
+			    <event name="onClick">
+				self.nomePersonagem.fontColor = ("Blue");
+				self.idade.fontColor = ("Blue");
+				self.raca.fontColor = ("Blue");
+				self.profissao.fontColor = ("Blue");
+				self.peso.fontColor = ("Blue");
+				self.altura.fontColor = ("Blue");
+				self.corolhos.fontColor = ("Blue");
+				self.aparencia.fontColor = ("Blue");
+				self.nivelatributo.fontColor = ("Blue");
+				</event>
+				 </button>
+	
+			<button text="c" left="65" top="29" fontColor="AliceBlue" fontStyle="bold" width="17" height="15" fontSize="12">
+			    <event name="onClick">
+				self.nomePersonagem.fontColor = ("AliceBlue");
+				self.idade.fontColor = ("AliceBlue");
+				self.raca.fontColor = ("AliceBlue");
+				self.profissao.fontColor = ("AliceBlue");
+				self.peso.fontColor = ("AliceBlue");
+				self.altura.fontColor = ("AliceBlue");
+				self.corolhos.fontColor = ("AliceBlue");
+				self.aparencia.fontColor = ("AliceBlue");
+				self.nivelatributo.fontColor = ("AliceBlue");
+				</event>
+				 </button>
+	
+			<button text="c" left="83" top="29" fontColor="Brown" fontStyle="bold" width="17" height="15" fontSize="12">
+			    <event name="onClick">
+				self.nomePersonagem.fontColor = ("Brown");
+				self.idade.fontColor = ("Brown");
+				self.raca.fontColor = ("Brown");
+				self.profissao.fontColor = ("Brown");
+				self.peso.fontColor = ("Brown");
+				self.altura.fontColor = ("Brown");
+				self.corolhos.fontColor = ("Brown");
+				self.aparencia.fontColor = ("Brown");
+				self.nivelatributo.fontColor = ("Brown");
+				</event>
+				 </button>	
+	<edit field="nomePersonagem" name="nomePersonagem" top="103" left="26" width="237" height="33" transparent="true"
+          fontFamily="times New Roman" fontColor="Black" horzTextAlign="center"/>
+					  
+    <edit field="idade" name="idade" top="165" left="28" width="63" height="30" transparent="true"
+          fontFamily="times New Roman" fontColor="Black" horzTextAlign="center"/>	
+
+    <edit field="raca" name="raca" top="166" left="126" width="139" height="34" transparent="true"
+          fontFamily="times New Roman" fontColor="Black" horzTextAlign="center"/>				  
+
+    <edit field="profissao" name="profissao" top="225" left="27" width="236" height="34" transparent="true"
+          fontFamily="times New Roman" fontColor="Black" horzTextAlign="center"/>	
+		
+    <edit field="peso" name="peso" top="289" left="27" width="82" height="29" transparent="true"
+          fontFamily="times New Roman" fontColor="Black" horzTextAlign="center"/>
+		  
+    <edit field="altura" name="altura" top="289" left="128" width="135" height="30" transparent="true"
+          fontFamily="times New Roman" fontColor="Black" horzTextAlign="center"/>
+	
+    <edit field="corolhos" name="corolhos" top="350" left="25" width="107" height="30" transparent="true"
+          fontFamily="times New Roman" fontColor="Black" horzTextAlign="center"/>
+		  
+    <edit field="aparencia" name="aparencia" top="351" left="138" width="126" height="30" transparent="true"
+          fontFamily="times New Roman" fontColor="Black" horzTextAlign="center"/>
+
+    <label field="nivelatributo" name="nivelatributo" top="411" left="116" width="61" height="29" 
+          fontFamily="Dotum" fontColor="Black" horzTextAlign="center" fontSize="18"/>		  
+					  
+			   </image>
+			    </layout>				  
+  <!-- Area para ATRIBUTO TUDO COMPLETO AQUI 18 20 49 35  ~~~~ 46 -->
+				
+				<layout name="atributo" top="0" left="0" width="316" height="716" visible="false">
+				  <image src="/imagens/atributo.png" width="316" height="716">
+				  
+<!-- Area de PONTOS E NIVEL -->
+<label field="pontosatributo"
+      fontSize="20" top="139" left="125" fontStyle="bold" hitTest="true">
+	  <event name="onClick">
+	    if rrpg.getMesaDe(sheet).meuJogador.isMestre then
+		dialogs.inputQuery("Caixa de Poções", "Quantidade de Pontos:", "",
+		   function (valorPreenchido)
+					  sheet.pontosatributo = (sheet.pontosatributo or 0) + valorPreenchido; 
+	    end);
+		end;
+		 </event>
+		  </label>
+
+<label field="nivelatributo"
+      fontSize="20" top="217" left="135" fontStyle="bold" hitTest="true">
+	  <event name="onClick">
+	  	    if rrpg.getMesaDe(sheet).meuJogador.isMestre then
+		dialogs.inputQuery("Caixa de Poções", "Quantidade de Pontos:", "",
+		   function (valorPreenchido)
+					  sheet.nivelatributo = (sheet.nivelatributo or 0) + valorPreenchido; 
+	    end);
+		end;	
+		</event>
+		 </label>
+		 
+	     <button name="up" text="UP" fontColor="yellow" width="29" height="20" visible="true"
+		         top="217" left="185" fontSize="10.5" fontStyle="bold" 
+				 onMenu="nivelvoltarfunc(); poderEHabilidadefunc();" onClick="nivelfunc(); poderEHabilidadefunc(); mochila2func(); mochila3func(); mochila4func();">
+				  <event name="onClick">
+				if rrpg.getMesaDe(sheet).meuJogador.isMestre then
+			   sheet.nivelatributo = (sheet.nivelatributo or 0) +0;
+			   sheet.pontosatributo = (sheet.pontosatributo or 0) +1;
+			     else 
+				 showMessage("Você não possui permissões aqui, OTARIO!")
+		end;			
+        </event>
+		 </button>
+		  
+     <image src="/imagens/Reseta.png" width="61" height="41" top="87" left="125" hitTest="true" cursor="handPoint">
+	    <event name="onDblClick">
+					   if rrpg.getMesaDe(sheet).meuJogador.isMestre then
+		  sheet.pontosatributo = 12;
+		  sheet.nivelatributo = 0;
+		  sheet.Parcela = 0;
+		  sheet.Parcela1 = 0;
+		  sheet.Parcela2 = 0;
+		  sheet.Parcela3 = 0;
+		  sheet.Parcela4 = 0;
+		  sheet.Parcela5 = 0;
+		  sheet.Parcela6 = 0;
+		  sheet.Parcela7 = 0;
+		  sheet.Parcela8 = 0;
+		  sheet.parcela8s = 0;
+		  sheet.Parcela9 = 0;
+		  sheet.Parcela10 = 0;
+		  sheet.Parcela11 = 0;
+		  sheet.Parcela12 = 0;
+		  sheet.Parcela13 = 0;
+		  sheet.Parcela14 = 0;
+		  sheet.Parcela15 = 0;
+		  sheet.Parcela16 = 0;
+		  sheet.Parcela17 = 0;
+		  sheet.Parcela18 = 0;
+			     else 
+				 showMessage("Você não possui permissões aqui, OTARIO!")
+		end;
+		    </event>
+			 </image>
+
+ <!-- AREA DE SCRIPT  -->
+ --scripts
+	<script>
+
+	local function mochila2func();
+		if sheet.nivelatributo == 10 then
+			local chat = rrpg.getMesaDe(sheet).chat;
+			chat:enviarMensagem("[§K4]>>>" .."[§K12]" .. sheet.nomePersonagem  .. 
+			":" .." [§K7]Você acabou de destravar a mochila 2, pode usa avontade:" .. "[§K8]" .. " Nível: " 
+			 .. sheet.nivelatributo .. "!" .. 
+			"[§K7]" .. " Vá para seu inventario. :)"); 
+	end; 
+	 end;
+
+	local function mochila3func();
+		if sheet.nivelatributo == 25 then
+			local chat = rrpg.getMesaDe(sheet).chat;
+			chat:enviarMensagem("[§K4]>>>" .."[§K12]" .. sheet.nomePersonagem  .. 
+			":" .." [§K7]Você acabou de destravar a mochila 3, pode usa avontade:" .. "[§K8]" .. " Nível: " 
+			 .. sheet.nivelatributo .. "!" .. 
+			"[§K7]" .. " Vá para seu inventario. :)"); 
+	end; 
+	 end;
+
+	local function mochila4func();
+		if sheet.nivelatributo == 100 then
+			local chat = rrpg.getMesaDe(sheet).chat;
+			chat:enviarMensagem("[§K4]>>>" .."[§K12]" .. sheet.nomePersonagem  .. 
+			":" .." [§K7]Você acabou de destravar a mochila 4, pode usa avontade:" .. "[§K8]" .. " Nível: " 
+			 .. sheet.nivelatributo .. "!" .. 
+			"[§K7]" .. " Vá para seu inventario. :)"); 
+	end; 
+	 end;
+	
+		
+
+ 	local function nivelvoltarfunc()
+	
+		if sheet.nivelatributo > 0 then
+			sheet.nivelatributo = sheet.nivelatributo - 1;
+		
+			local chat = rrpg.getMesaDe(sheet).chat;
+			chat:enviarMensagem("[§K4]>" .. "[§K9]" .. sheet.nomePersonagem .. ":" .. "[§K10]" .. " Voltou para o:" .. 
+			"[§K8]" .. " Nível: "  ..  sheet.nivelatributo .. "!");
+			if sheet.nivelatributo == 2 then
+	end; 
+        end;	
+		    end;
+	local function nivelfunc()
+	if rrpg.getMesaDe(sheet).meuJogador.isMestre then
+		if sheet.nivelatributo >= 0 then
+			sheet.nivelatributo = sheet.nivelatributo + 1;
+			
+			local chat = rrpg.getMesaDe(sheet).chat;
+			chat:enviarMensagem("[§K4]>" .. "[§K9]" .. sheet.nomePersonagem .. ":" .. "[§K10]" .. 
+			" Subiu de nível! Foi para o:" .. "[§K8]" .. " Nível: "  .. sheet.nivelatributo .. "!");
+        			if sheet.nivelatributo == 2 then
+ end;
+   end;
+    end;
+	 end;
+	
+	local function poderEHabilidadefunc()
+	
+		if sheet.nivelatributo == 20 then
+			local chat = rrpg.getMesaDe(sheet).chat;
+			chat:enviarMensagem("[§K4]>>" .."[§K9]" .. sheet.nomePersonagem  .. 
+			":" .." [§K10]Finalmente pode descobrir uma habilidade nova, quando chegou no:" .. "[§K8]" .. " Nível: " 
+			 .. sheet.nivelatributo .. "!" .. 
+			"[§K10]" .. " ~Vá em Poderes/Habilidades e role sua nova habilidade que agora está habilitada. :)");
+	end; 
+	
+		if sheet.nivelatributo == 25 then
+			local chat = rrpg.getMesaDe(sheet).chat;
+			chat:enviarMensagem("[§K4]>>>" .."[§K9]" .. sheet.nomePersonagem  .. 
+			":" .." [§K10]Finalmente você pode descobrir um poder novo, quando chegou no:" .. "[§K8]" .. " Nível: " 
+			 .. sheet.nivelatributo .. "!" .. 
+			"[§K10]" .. " ~Vá em Poderes/Habilidades e role seu poder que agora está habilitado. :)");
+	end;
+	
+		if sheet.nivelatributo == 50 then
+			local chat = rrpg.getMesaDe(sheet).chat;
+			chat:enviarMensagem("[§K4]>>>>" .."[§K9]" .. sheet.nomePersonagem  .. 
+			":" .." [§K10]Finalmente pode descobrir uma habilidade nova, quando chegou no:" .. "[§K8]" .. " Nível: " 
+			 .. sheet.nivelatributo .. "!" .. 
+			"[§K10]" .. " ~Vá em Poderes/Habilidades e role sua nova habilidade que agora está habilitada. :)");
+	end; 
+	
+		if sheet.nivelatributo == 80 then
+			local chat = rrpg.getMesaDe(sheet).chat;
+			chat:enviarMensagem("[§K4]>>>>>>" .."[§K9]" .. sheet.nomePersonagem  .. 
+			":" .." [§K10]Finalmente pode descobrir uma habilidade nova, quando chegou no:" .. "[§K8]" .. " Nível: " 
+			 .. sheet.nivelatributo .. "!" .. 
+			"[§K10]" .. " ~Vá em Poderes/Habilidades e role sua nova habilidade que agora está habilitada. :)");
+	end; 
+	
+		if sheet.nivelatributo == 85 then
+			local chat = rrpg.getMesaDe(sheet).chat;
+			chat:enviarMensagem("[§K4]>>>>>>" .."[§K9]" .. sheet.nomePersonagem  .. 
+			":" .." [§K10]Finalmente você pode descobrir um poder novo, quando chegou no:" .. "[§K8]" .. " Nível: " 
+			 .. sheet.nivelatributo .. "!" .. 
+			"[§K10]" .. " ~Vá em Poderes/Habilidades e role seu poder que agora está habilitado. :)");
+	end;
+	
+		if sheet.nivelatributo == 100 then
+			local chat = rrpg.getMesaDe(sheet).chat;
+			chat:enviarMensagem("[§K4]>>>>>>" .."[§K9]" .. sheet.nomePersonagem  .. 
+			":" .." [§K10]Finalmente você pode descobrir um poder novo, quando chegou no:" .. "[§K8]" .. " Nível: " 
+			 .. sheet.nivelatributo .. "!" .. 
+			"[§K10]" .. " ~Vá em Poderes/Habilidades e role seu poder que agora está habilitado. :)");
+	end;
+	 end;
+	
+		
+	</script>
+	
+	
+	<!-- <script> -->
+	
+					<!-- local rolagem = rrpg.interpretarRolagem("1d20 + " .. (sheet.agarrar or "0")); -->
+					<!-- local mesaDoPersonagem = rrpg.getMesaDe(sheet); -->
+					<!-- mesaDoPersonagem.activeChat:rolarDados(rolagem, "Teste de Agarrar de " .. (sheet.nome or "PONHA UM NOME NO PERSONAGEM")); -->
+					
+	<!-- </script> -->
+	
+	  
+	              <!-- A -->
+<label field="Parcela" name="Parcela" top="276" left="134" width="49" height="35" horzTextAlign="center"
+      fontSize="22" fontFamily="Andalus" fontColor="black">
+	  	  <image src="/imagens/+.png" width="22" height="23" hitTest="true" cursor="handPoint"
+                 align="left" margins="{left=-22}">
+		<event name="onClick">
+		  local pontosatributo = (sheet.pontosatributo or 0) -1;
+		    if pontosatributo >= 0 then
+			 sheet.pontosatributo = pontosatributo; sheet.Parcela = (sheet.Parcela or 0) +1;
+	                 	else 
+	          showMessage("Você não tem pontos para destribuir, seu fumão!")    
+         end;			  
+		        </event>
+				 </image>
+				  </label>
+				  
+	  	  <image src="/imagens/-.png" width="22" height="23" hitTest="true" cursor="handPoint"
+                 top="282" left="8">
+				 		<event name="onClick">
+		  local Parcela = (sheet.Parcela or 0) -1;
+		    if Parcela >= 0 then
+			 sheet.Parcela = Parcela; sheet.pontosatributo = (sheet.pontosatributo or 0) +0.9;
+	                 	else 
+	          showMessage("CALMA CARA! Não tem mais nada aqui...")    
+         end;			  
+		        </event>
+				 </image>
+				 
+
+				 
+			 
+				 
+				  
+			 
+<label field="Parcela1" name="Parcela1" top="322" left="134" width="49" height="35" horzTextAlign="center"
+      fontSize="22" fontFamily="Andalus" fontColor="black">
+	  	  <image src="/imagens/+.png" width="22" height="23" hitTest="true" cursor="handPoint"
+                 align="left" margins="{left=-22}">
+		<event name="onClick">
+		  local pontosatributo = (sheet.pontosatributo or 0) -1;
+		    if pontosatributo >= 0 then
+			 sheet.pontosatributo = pontosatributo; sheet.Parcela1 = (sheet.Parcela1 or 0) +1;
+	                 	else 
+	          showMessage("Você não tem pontos para destribuir, seu fumão!")    
+         end;			  
+		        </event>
+				 </image>
+				  </label>
+			
+	  	  <image src="/imagens/-.png" width="22" height="23" hitTest="true" cursor="handPoint"
+                 top="328" left="8">				 
+				 		<event name="onClick">
+		  local Parcela1 = (sheet.Parcela1 or 0) -1;
+		    if Parcela1 >= 0 then
+			 sheet.Parcela1 = Parcela1; sheet.pontosatributo = (sheet.pontosatributo or 0) +0.9;
+	                 	else 
+	          showMessage("CALMA CARA! Não tem mais nada aqui...")    
+         end;			  
+		        </event>
+				 </image>
+	  
+<label field="Parcela2" name="Parcela2" top="368" left="134" width="49" height="35" horzTextAlign="center"
+      fontSize="22" fontFamily="Andalus" fontColor="black">
+	  	  <image src="/imagens/+.png" width="22" height="23" hitTest="true" cursor="handPoint"
+                 align="left" margins="{left=-22}">
+		<event name="onClick">
+		  local pontosatributo = (sheet.pontosatributo or 0) -1;
+		    if pontosatributo >= 0 then
+			 sheet.pontosatributo = pontosatributo; sheet.Parcela2 = (sheet.Parcela2 or 0) +1;
+	                 	else 
+	          showMessage("Você não tem pontos para destribuir, seu fumão!")    
+         end;			  
+		        </event>
+				 </image>
+				  </label>
+				  
+	  	  <image src="/imagens/-.png" width="22" height="23" hitTest="true" cursor="handPoint"
+                 top="374" left="8">	
+				 		<event name="onClick">
+		  local Parcela2 = (sheet.Parcela2 or 0) -1;
+		    if Parcela2 >= 0 then
+			 sheet.Parcela2 = Parcela2; sheet.pontosatributo = (sheet.pontosatributo or 0) +0.9;
+	                 	else 
+	          showMessage("CALMA CARA! Não tem mais nada aqui...")    
+         end;			  
+		        </event>
+				 </image>	
+				  
+<label field="Parcela3" name="Parcela3" top="414" left="134" width="49" height="35" horzTextAlign="center"
+      fontSize="22" fontFamily="Andalus" fontColor="black">
+	  	  <image src="/imagens/+.png" width="22" height="23" hitTest="true" cursor="handPoint"
+                 align="left" margins="{left=-22}">
+		<event name="onClick">
+		  local pontosatributo = (sheet.pontosatributo or 0) -1;
+		    if pontosatributo >= 0 then
+			 sheet.pontosatributo = pontosatributo; sheet.Parcela3 = (sheet.Parcela3 or 0) +1;
+	                 	else 
+	          showMessage("Você não tem pontos para destribuir, seu fumão!")    
+         end;			  
+		        </event>
+				 </image>
+				  </label>
+				  
+	  	  <image src="/imagens/-.png" width="22" height="23" hitTest="true" cursor="handPoint"
+                 top="420" left="8">	
+				 		<event name="onClick">
+		  local Parcela3 = (sheet.Parcela3 or 0) -1;
+		    if Parcela3 >= 0 then
+			 sheet.Parcela3 = Parcela3; sheet.pontosatributo = (sheet.pontosatributo or 0) +0.9;
+	                 	else 
+	          showMessage("CALMA CARA! Não tem mais nada aqui...")    
+         end;			  
+		        </event>
+				 </image>
+				  
+<label field="Parcela4" name="Parcela4" top="460" left="134" width="49" height="35" horzTextAlign="center"
+      fontSize="22" fontFamily="Andalus" fontColor="black">
+	  	  <image src="/imagens/+.png" width="22" height="23" hitTest="true" cursor="handPoint"
+                 align="left" margins="{left=-22}">
+		<event name="onClick">
+		  local pontosatributo = (sheet.pontosatributo or 0) -1;
+		    if pontosatributo >= 0 then
+			 sheet.pontosatributo = pontosatributo; sheet.Parcela4 = (sheet.Parcela4 or 0) +1;
+	                 	else 
+	          showMessage("Você não tem pontos para destribuir, seu fumão!")    
+         end;			  
+		        </event>
+				 </image>
+				  </label>
+				  
+	  	  <image src="/imagens/-.png" width="22" height="23" hitTest="true" cursor="handPoint"
+                 top="466" left="8">	
+				 		<event name="onClick">
+		  local Parcela4 = (sheet.Parcela4 or 0) -1;
+		    if Parcela4 >= 0 then
+			 sheet.Parcela4 = Parcela4; sheet.pontosatributo = (sheet.pontosatributo or 0) +0.9;
+	                 	else 
+	          showMessage("CALMA CARA! Não tem mais nada aqui...")    
+         end;			  
+		        </event>
+				 </image>				 
+				  
+<label field="Parcela5" name="Parcela5" top="506" left="134" width="49" height="35" horzTextAlign="center"
+      fontSize="22" fontFamily="Andalus" fontColor="black">
+	  	  <image src="/imagens/+.png" width="22" height="23" hitTest="true" cursor="handPoint"
+                 align="left" margins="{left=-22}">
+		<event name="onClick">
+		  local pontosatributo = (sheet.pontosatributo or 0) -1;
+		    if pontosatributo >= 0 then
+			 sheet.pontosatributo = pontosatributo; sheet.Parcela5 = (sheet.Parcela5 or 0) +1;
+	                 	else 
+	          showMessage("Você não tem pontos para destribuir, seu fumão!")    
+         end;			  
+		        </event>
+				 </image>
+				  </label>	  
+				  
+	  	  <image src="/imagens/-.png" width="22" height="23" hitTest="true" cursor="handPoint"
+                 top="512" left="8">	
+				 		<event name="onClick">
+		  local Parcela5 = (sheet.Parcela5 or 0) -1;
+		    if Parcela5 >= 0 then
+			 sheet.Parcela5 = Parcela5; sheet.pontosatributo = (sheet.pontosatributo or 0) +0.9;
+	                 	else 
+	          showMessage("CALMA CARA! Não tem mais nada aqui...")    
+         end;			  
+		        </event>
+				 </image>				 
+				  
+<label field="Parcela6" name="Parcela6" top="552" left="134" width="49" height="35" horzTextAlign="center"
+      fontSize="22" fontFamily="Andalus" fontColor="black">
+	  	  <image src="/imagens/+.png" width="22" height="23" hitTest="true" cursor="handPoint"
+                 align="left" margins="{left=-22}">
+		<event name="onClick">
+		  local pontosatributo = (sheet.pontosatributo or 0) -1;
+		    if pontosatributo >= 0 then
+			 sheet.pontosatributo = pontosatributo; sheet.Parcela6 = (sheet.Parcela6 or 0) +1;
+	                 	else 
+	          showMessage("Você não tem pontos para destribuir, seu fumão!")    
+         end;			  
+		        </event>
+				 </image>
+				  </label>  
+				  
+	  	  <image src="/imagens/-.png" width="22" height="23" hitTest="true" cursor="handPoint"
+                 top="558" left="8">	
+				 		<event name="onClick">
+		  local Parcela6 = (sheet.Parcela6 or 0) -1;
+		    if Parcela6 >= 0 then
+			 sheet.Parcela6 = Parcela6; sheet.pontosatributo = (sheet.pontosatributo or 0) +0.9;
+	                 	else 
+	          showMessage("CALMA CARA! Não tem mais nada aqui...")    
+         end;			  
+		        </event>
+				 </image>				 
+
+				  
+<label field="Parcela7" name="Parcela7" top="598" left="134" width="49" height="35" horzTextAlign="center"
+      fontSize="22" fontFamily="Andalus" fontColor="black">
+	  	  <image src="/imagens/+.png" width="22" height="23" hitTest="true" cursor="handPoint"
+                 align="left" margins="{left=-22}">
+		<event name="onClick">
+		  local pontosatributo = (sheet.pontosatributo or 0) -1;
+		    if pontosatributo >= 0 then
+			 sheet.pontosatributo = pontosatributo; sheet.Parcela7 = (sheet.Parcela7 or 0) +1;
+	                 	else 
+	          showMessage("Você não tem pontos para destribuir, seu fumão!")    
+         end;			  
+		        </event>
+				 </image>
+				  </label>  
+				  
+	  	  <image src="/imagens/-.png" width="22" height="23" hitTest="true" cursor="handPoint"
+                 top="604" left="8">	
+				 		<event name="onClick">
+		  local Parcela7 = (sheet.Parcela7 or 0) -1;
+		    if Parcela7 >= 0 then
+			 sheet.Parcela7 = Parcela7; sheet.pontosatributo = (sheet.pontosatributo or 0) +0.9;
+	                 	else 
+	          showMessage("CALMA CARA! Não tem mais nada aqui...")    
+         end;			  
+		        </event>
+				 </image>				 
+
+			 
+			 
+
+				  
+<label field="Parcela8" name="Parcela8" top="644" left="134" width="49" height="35" horzTextAlign="center"
+      fontSize="22" fontFamily="Andalus" fontColor="black">
+	  	  <image src="/imagens/+.png" width="22" height="23" hitTest="true" cursor="handPoint"
+                 align="left" margins="{left=-22}">
+		<event name="onClick">
+		  local pontosatributo = (sheet.pontosatributo or 0) -1;
+		    if pontosatributo >= 0 then
+			 sheet.pontosatributo = pontosatributo; sheet.Parcela8 = (sheet.Parcela8 or 0) +1;
+	                 	else 
+	          showMessage("Você não tem pontos para destribuir, seu fumão!")    
+         end;			  
+		        </event>
+				 </image>
+				  </label>
+	  	  <image src="/imagens/-.png" width="22" height="23" hitTest="true" cursor="handPoint"
+                 top="650" left="8">					  
+				 		<event name="onClick">
+		  local Parcela8 = (sheet.Parcela8 or 0) -1;
+		    if Parcela8 >= 0 then
+			 sheet.Parcela8 = Parcela8; sheet.pontosatributo = (sheet.pontosatributo or 0) +0.9;
+	                 	else 
+	          showMessage("CALMA CARA! Não tem mais nada aqui...")    
+         end;			  
+		        </event>
+				 </image>	
+				  
+<label field="Parcela8s" name="Parcela8s" top="684" left="198" width="48" height="27" horzTextAlign="center"
+      fontSize="22" fontFamily="Andalus" fontColor="black">
+	  	  <image src="/imagens/+.png" width="22" height="23" hitTest="true" cursor="handPoint"
+                 align="left" margins="{left=-22}">
+		<event name="onClick">
+		  local pontosatributo = (sheet.pontosatributo or 0) -1;
+		    if pontosatributo >= 0 then
+			 sheet.pontosatributo = pontosatributo; sheet.Parcela8s = (sheet.Parcela8s or 0) +1;
+	                 	else 
+	          showMessage("Você não tem pontos para destribuir, seu fumão!")    
+         end;				 
+		        </event>
+				 </image>
+				  </label>
+	  	  <image src="/imagens/-.png" width="22" height="23" hitTest="true" cursor="handPoint"
+                 top="686" left="8">					  
+				 		<event name="onClick">
+		  local Parcela8s = (sheet.Parcela8s or 0) -1;
+		    if Parcela8s >= 0 then
+			 sheet.Parcela8s = Parcela8s; sheet.pontosatributo = (sheet.pontosatributo or 0) +0.8;
+	                 	else 
+	          showMessage("CALMA CARA! Não tem mais nada aqui...")    
+         end;			  
+		        </event>
+				 </image>
+				  <button top="689" left="260" text="Invisivel" opacity="0">
+				  		 	  <event name="onClick">
+	    if rrpg.getMesaDe(sheet).meuJogador.isMestre then
+		dialogs.inputQuery("Caixa de Poções", "Qts sortes queimar:", "",
+		   function (valorPreenchido)
+					  sheet.Parcela8s = (sheet.Parcela8s or 0) + valorPreenchido; 
+	    end);
+		end;
+		       </event>
+			    </button>
+	              <!-- B -->
+<label field="Parcela9" name="Parcela9" hitTest="true" top="276" left="198" width="49" height="35" horzTextAlign="center"
+      fontSize="22" fontFamily="Andalus" fontColor="black">
+        <event name="onClick">
+	    if rrpg.getMesaDe(sheet).meuJogador.isMestre then
+		dialogs.inputQuery("Carteira", "Novo valor:", "",
+		   function (valorPreenchido)
+					  sheet.Parcela9 = (sheet.Parcela9 or 0 ) + valorPreenchido; 
+	    end);
+		end;
+	    </event>
+		 </label>
+<label field="Parcela10" name="Parcela10" hitTest="true" top="322" left="198" width="49" height="35" horzTextAlign="center"
+      fontSize="22" fontFamily="Andalus" fontColor="black">
+        <event name="onClick">
+	    if rrpg.getMesaDe(sheet).meuJogador.isMestre then
+		dialogs.inputQuery("Carteira", "Novo valor:", "",
+		   function (valorPreenchido)
+					  sheet.Parcela10 = (sheet.Parcela10 or 0 ) + valorPreenchido; 
+	    end);
+		end;
+	    </event>
+		 </label>	  
+<label field="Parcela11" name="Parcela11" hitTest="true" top="368" left="198" width="49" height="35" horzTextAlign="center"
+      fontSize="22" fontFamily="Andalus" fontColor="black">
+        <event name="onClick">
+	    if rrpg.getMesaDe(sheet).meuJogador.isMestre then
+		dialogs.inputQuery("Carteira", "Novo valor:", "",
+		   function (valorPreenchido)
+					  sheet.Parcela11 = (sheet.Parcela11 or 0 ) + valorPreenchido; 
+	    end);
+		end;
+	    </event>
+		 </label>	  
+<label field="Parcela12" name="Parcela12" hitTest="true" top="414" left="198" width="49" height="35" horzTextAlign="center"
+      fontSize="22" fontFamily="Andalus" fontColor="black">
+        <event name="onClick">
+	    if rrpg.getMesaDe(sheet).meuJogador.isMestre then
+		dialogs.inputQuery("Carteira", "Novo valor:", "",
+		   function (valorPreenchido)
+					  sheet.Parcela12 = (sheet.Parcela12 or 0 ) + valorPreenchido; 
+	    end);
+		end;
+	    </event>
+		 </label>	  
+<label field="Parcela13" name="Parcela13" hitTest="true" top="460" left="198" width="49" height="35" horzTextAlign="center"
+      fontSize="22" fontFamily="Andalus" fontColor="black">
+        <event name="onClick">
+	    if rrpg.getMesaDe(sheet).meuJogador.isMestre then
+		dialogs.inputQuery("Carteira", "Novo valor:", "",
+		   function (valorPreenchido)
+					  sheet.Parcela13 = (sheet.Parcela13 or 0 ) + valorPreenchido; 
+	    end);
+		end;
+	    </event>
+		 </label>	  
+<label field="Parcela14" name="Parcela14" hitTest="true" top="506" left="198" width="49" height="35" horzTextAlign="center"
+      fontSize="22" fontFamily="Andalus" fontColor="black">
+        <event name="onClick">
+	    if rrpg.getMesaDe(sheet).meuJogador.isMestre then
+		dialogs.inputQuery("Carteira", "Novo valor:", "",
+		   function (valorPreenchido)
+					  sheet.Parcela14 = (sheet.Parcela14 or 0 ) + valorPreenchido; 
+	    end);
+		end;
+	    </event>
+		 </label>	  
+<label field="Parcela15" name="Parcela15" hitTest="true" top="552" left="198" width="49" height="35" horzTextAlign="center"
+      fontSize="22" fontFamily="Andalus" fontColor="black">
+        <event name="onClick">
+	    if rrpg.getMesaDe(sheet).meuJogador.isMestre then
+		dialogs.inputQuery("Carteira", "Novo valor:", "",
+		   function (valorPreenchido)
+					  sheet.Parcela15 = (sheet.Parcela15 or 0 ) + valorPreenchido; 
+	    end);
+		end;
+	    </event>
+		 </label>	  
+<label field="Parcela16" name="Parcela16" hitTest="true" top="598" left="198" width="49" height="35" horzTextAlign="center"
+      fontSize="22" fontFamily="Andalus" fontColor="black">
+        <event name="onClick">
+	    if rrpg.getMesaDe(sheet).meuJogador.isMestre then
+		dialogs.inputQuery("Carteira", "Novo valor:", "",
+		   function (valorPreenchido)
+					  sheet.Parcela16 = (sheet.Parcela16 or 0 ) + valorPreenchido; 
+	    end);
+		end;
+	    </event>
+		 </label>	  
+<label field="Parcela17" name="Parcela17" hitTest="true" top="644" left="198" width="49" height="35" horzTextAlign="center"
+      fontSize="22" fontFamily="Andalus" fontColor="black">
+        <event name="onClick">
+	    if rrpg.getMesaDe(sheet).meuJogador.isMestre then
+		dialogs.inputQuery("Carteira", "Novo valor:", "",
+		   function (valorPreenchido)
+					  sheet.Parcela17 = (sheet.Parcela17 or 0 ) + valorPreenchido; 
+	    end);
+		end;
+	    </event>
+		 </label>	  
+	              <!-- C Anotação: TODOS São da soma total -->	  
+<label field="Parcela18" name="Parcela18" top="276" left="262" width="49" height="35" horzTextAlign="center"
+      fontSize="22" fontFamily="Andalus" fontColor="black">
+	   <button align="top" text="R" margins="{top=34}" fontStyle="bold" width="10" height="15">
+		 <event name="onClick">
+					local rolagem = rrpg.interpretarRolagem("1d20 + " .. (sheet.Parcela18 or "0"));
+					local mesaDoPersonagem = rrpg.getMesaDe(sheet);
+					mesaDoPersonagem.activeChat:rolarDados(rolagem, "Força de " .. (sheet.nomePersonagem or "PONHA UM NOME NO PERSONAGEM"));
+			
+	     </event>
+	     </button>
+		  </label>
+
+<label field="Parcela19" name="Parcela19" top="322" left="262" width="49" height="35" horzTextAlign="center"
+      fontSize="22" fontFamily="Andalus" fontColor="black">
+	   <button align="top" text="R" margins="{top=34}" fontStyle="bold" width="10" height="15">
+		 <event name="onClick">
+					local rolagem = rrpg.interpretarRolagem("1d20 + " .. (sheet.Parcela19 or "0"));
+					local mesaDoPersonagem = rrpg.getMesaDe(sheet);
+					mesaDoPersonagem.activeChat:rolarDados(rolagem, "Habilidade de " .. (sheet.nomePersonagem or "PONHA UM NOME NO PERSONAGEM"));
+			
+	     </event>
+	     </button>
+		  </label>	  
+<label field="Parcela20" name="Parcela20" top="368" left="262" width="49" height="35" horzTextAlign="center"
+      fontSize="22" fontFamily="Andalus" fontColor="black">
+	   <button align="top" text="R" margins="{top=34}" fontStyle="bold" width="10" height="15">
+		 <event name="onClick">
+					local rolagem = rrpg.interpretarRolagem("1d20 + " .. (sheet.Parcela20 or "0"));
+					local mesaDoPersonagem = rrpg.getMesaDe(sheet);
+					mesaDoPersonagem.activeChat:rolarDados(rolagem, "Destreza de " .. (sheet.nomePersonagem or "PONHA UM NOME NO PERSONAGEM"));
+			
+	     </event>
+	     </button>
+		  </label>	  
+<label field="Parcela21" name="Parcela21" top="414" left="262" width="49" height="35" horzTextAlign="center"
+      fontSize="22" fontFamily="Andalus" fontColor="black">
+	   <button align="top" text="R" margins="{top=34}" fontStyle="bold" width="10" height="15">
+		 <event name="onClick">
+					local rolagem = rrpg.interpretarRolagem("1d20 + " .. (sheet.Parcela21 or "0"));
+					local mesaDoPersonagem = rrpg.getMesaDe(sheet);
+					mesaDoPersonagem.activeChat:rolarDados(rolagem, "Esquiva de " .. (sheet.nomePersonagem or "PONHA UM NOME NO PERSONAGEM"));
+			
+	     </event>
+	     </button>
+		  </label>  
+<label field="Parcela22" name="Parcela22" top="460" left="262" width="49" height="35" horzTextAlign="center"
+      fontSize="22" fontFamily="Andalus" fontColor="black">
+	   <button align="top" text="R" margins="{top=34}" fontStyle="bold" width="10" height="15">
+		 <event name="onClick">
+					local rolagem = rrpg.interpretarRolagem("1d20 + " .. (sheet.Parcela22 or "0"));
+					local mesaDoPersonagem = rrpg.getMesaDe(sheet);
+					mesaDoPersonagem.activeChat:rolarDados(rolagem, "Energia de " .. (sheet.nomePersonagem or "PONHA UM NOME NO PERSONAGEM"));
+			
+	     </event>
+	     </button>
+		  </label>	  
+<label field="Parcela23" name="Parcela23" top="506" left="262" width="49" height="35" horzTextAlign="center"
+      fontSize="22" fontFamily="Andalus" fontColor="black">
+	   <button align="top" text="R" margins="{top=34}" fontStyle="bold" width="10" height="15">
+		 <event name="onClick">
+					local rolagem = rrpg.interpretarRolagem("1d20 + " .. (sheet.Parcela23 or "0"));
+					local mesaDoPersonagem = rrpg.getMesaDe(sheet);
+					mesaDoPersonagem.activeChat:rolarDados(rolagem, "Inteligência de " .. (sheet.nomePersonagem or "PONHA UM NOME NO PERSONAGEM"));
+			
+	     </event>
+	     </button>
+		  </label>	  
+<label field="Parcela24" name="Parcela24" top="552" left="262" width="49" height="35" horzTextAlign="center"
+      fontSize="22" fontFamily="Andalus" fontColor="black">
+	   <button align="top" text="R" margins="{top=34}" fontStyle="bold" width="10" height="15">
+		 <event name="onClick">
+					local rolagem = rrpg.interpretarRolagem("1d20 + " .. (sheet.Parcela24 or "0"));
+					local mesaDoPersonagem = rrpg.getMesaDe(sheet);
+					mesaDoPersonagem.activeChat:rolarDados(rolagem, "Carisma de " .. (sheet.nomePersonagem or "PONHA UM NOME NO PERSONAGEM"));
+			
+	     </event>
+	     </button>
+		  </label>  
+<label field="Parcela25" name="Parcela25" top="598" left="262" width="49" height="35" horzTextAlign="center"
+      fontSize="22" fontFamily="Andalus" fontColor="black">
+	   <button align="top" text="R" margins="{top=34}" fontStyle="bold" width="10" height="15">
+		 <event name="onClick">
+					local rolagem = rrpg.interpretarRolagem("1d20 + " .. (sheet.Parcela25 or "0"));
+					local mesaDoPersonagem = rrpg.getMesaDe(sheet);
+					mesaDoPersonagem.activeChat:rolarDados(rolagem, "Resistência de " .. (sheet.nomePersonagem or "PONHA UM NOME NO PERSONAGEM"));
+			
+	     </event>
+	     </button>
+		  </label>  
+<label field="Parcela26" name="Parcela26" top="644" left="262" width="49" height="35" horzTextAlign="center"
+      fontSize="22" fontFamily="Andalus" fontColor="black">
+	   <button align="top" text="R" margins="{top=34}" fontStyle="bold" width="10" height="15">
+		 <event name="onClick">
+					local rolagem = rrpg.interpretarRolagem("1d20 + " .. (sheet.Parcela26 or "0"));
+					local mesaDoPersonagem = rrpg.getMesaDe(sheet);
+					mesaDoPersonagem.activeChat:rolarDados(rolagem, "Percepção de " .. (sheet.nomePersonagem or "PONHA UM NOME NO PERSONAGEM"));
+			
+	     </event>
+	     </button>
+		  </label>	  
+        <dataLink fields="{'parcela', 'parcela9', 'parcela18'}">
+                <event name="onChange">                
+                       sheet.Parcela18 = (tonumber(sheet.parcela) or 0) +
+					                         (tonumber(sheet.parcela9) or 0); 
+											 
+
+                </event>
+        </dataLink>
+
+        <dataLink fields="{'parcela1', 'parcela10', 'parcela19'}">
+                <event name="onChange">                
+                       sheet.Parcela19 = (tonumber(sheet.parcela1) or 0) +
+					                         (tonumber(sheet.parcela10) or 0); 
+											 
+
+                </event>
+        </dataLink>
+		
+        <dataLink fields="{'parcela2', 'parcela11', 'parcela20'}">
+                <event name="onChange">                
+                       sheet.Parcela20 = (tonumber(sheet.parcela2) or 0) +
+					                         (tonumber(sheet.parcela11) or 0); 
+											 
+
+                </event>
+        </dataLink>	  
+	 
+        <dataLink fields="{'parcela3', 'parcela12', 'parcela21'}">
+                <event name="onChange">                
+                       sheet.Parcela21 = (tonumber(sheet.parcela3) or 0) +
+					                         (tonumber(sheet.parcela12) or 0); 
+											 
+
+                </event>
+        </dataLink>	
+		
+        <dataLink fields="{'parcela4', 'parcela13', 'parcela22'}">
+                <event name="onChange">                
+                       sheet.Parcela22 = (tonumber(sheet.parcela4) or 0) +
+					                         (tonumber(sheet.parcela13) or 0); 
+											 
+
+                </event>
+        </dataLink>	  
+
+        <dataLink fields="{'parcela5', 'parcela14', 'parcela23'}">
+                <event name="onChange">                
+                       sheet.Parcela23 = (tonumber(sheet.parcela5) or 0) +
+					                         (tonumber(sheet.parcela14) or 0); 
+											 
+
+                </event>
+        </dataLink>	 
+
+        <dataLink fields="{'parcela6', 'parcela15', 'parcela24'}">
+                <event name="onChange">                
+                       sheet.Parcela24 = (tonumber(sheet.parcela6) or 0) +
+					                         (tonumber(sheet.parcela15) or 0); 
+											 
+
+                </event>
+        </dataLink>	
+
+        <dataLink fields="{'parcela7', 'parcela16', 'parcela25'}">
+                <event name="onChange">                
+                       sheet.Parcela25 = (tonumber(sheet.parcela7) or 0) +
+					                         (tonumber(sheet.parcela16) or 0); 
+											 
+
+                </event>
+        </dataLink>	 	
+
+        <dataLink fields="{'parcela8', 'parcela17', 'parcela26'}">
+                <event name="onChange">                
+                       sheet.Parcela26 = (tonumber(sheet.parcela8) or 0) +
+					                         (tonumber(sheet.parcela17) or 0); 
+											 
+
+                </event>
+        </dataLink>			
+ </image>	 
+</layout>	  
+	  <!-- Outros -->
+	<!-- Area para Skill e Pericias --> 
+	   <import file="SkillePericias.xml"/>
+	   
+	<!-- Contatos aqui     -->
+	   <import file="Contatos.xml"/>
+					
+<!-- Aqui estão as LUZES das imagens ON E OFF  -->
+            <image name="FichaPrincipal" left="0" top="0" width="989" height="720" src="images/1.png" 
+			     style="stretch" optimize="true" compilerOrder="0"/>
+
+			<image name="luz" width="100" height="100" src="/imagens/sobrePersonagem.png" 
+			     top="133" left="355" hitTest="true" cursor="handPoint" opacity="0">
+				  <event name="onClick">
+                   if sheet.sobrePersonagem then
+				    sheet.sobrePersonagem = false;
+				   self.sobrePersonagem.visible = false
+				   self.luz.opacity = 0
+				   self.versoes.visible = true;
+				   else
+				    sheet.sobrePersonagem = true
+					self.sobrePersonagem.visible = true
+					self.luz.opacity = 10
+					self.atributo.visible = false
+					self.luz3.opacity = 0
+					self.luz2.opacity = 0 
+					self.luz4.opacity = 0 					
+					self.Pericias.visible = false
+					self.Contatos.visible = false;
+					self.versoes.visible = true;
+					end;				  
+				   </event>
+				    </image>		
+					
+			<image name="luz2" width="100" height="100" src="/imagens/pericias.png" 
+			     top="134" left="548.5" hitTest="true" cursor="handPoint" opacity="0">
+                   <event name="onClick">
+                    if sheet.Pericias then
+					sheet.Pericias = false;
+					self.Pericias.visible = false
+					self.luz2.opacity = 0
+					self.versoes.visible = true;
+					else
+					sheet.Pericias = true
+					self.Pericias.visible = true 
+					self.luz2.opacity = 10
+					self.luz.opacity = 0
+					self.luz3.opacity = 0
+					self.luz4.opacity = 0 										
+					self.sobrePersonagem.visible = false
+					self.atributo.visible = false;
+					self.Contatos.visible = false;
+					end;
+					 </event>
+					  </image>
+
+				 
+			<image name="luz3" width="100" height="100" src="/imagens/atributos.png" 
+			     top="407" left="356" hitTest="true" cursor="handPoint" opacity="0">
+				  <event name="onClick">
+                   if sheet.atributo then
+				    sheet.atributo = false;
+				   self.atributo.visible = false
+				   self.luz3.opacity = 0
+				   self.versoes.visible = true;
+				   else
+				   self.versoes.visible = false;
+				    sheet.atributo = true
+					self.atributo.visible = true
+					self.luz3.opacity = 10
+					self.sobrePersonagem.visible = false
+					self.luz.opacity = 0
+			        self.luz2.opacity = 0 
+					self.luz4.opacity = 0 										
+					self.Pericias.visible = false
+					self.Contatos.visible = false;
+					end;
+				   </event>
+				    </image>
+					
+					
+			
+			<image name="luz4" width="100" height="100" src="/imagens/listadeContatos.png" 
+			     top="410" left="553" hitTest="true" cursor="handPoint" opacity="0">
+				  <event name="onClick">
+                   if sheet.Contatos then
+				    sheet.Contatos = false;
+				   self.Contatos.visible = false
+				   self.luz4.opacity = 0
+				   self.versoes.visible = true;
+				   else
+				    sheet.Contatos = true
+					self.Contatos.visible = true
+					self.luz4.opacity = 10
+					self.sobrePersonagem.visible = false
+					self.luz.opacity = 0
+			        self.luz2.opacity = 0
+                    self.luz3.opacity = 0					
+					self.Pericias.visible = false
+					self.atributo.visible = false;
+					self.versoes.visible = true;
+					end;
+				   </event>
+				    </image>
+
+
+
+		 
+		
+    </scrollBox>
+</layout>
+
+<script>
+        self.imgVersaoAtual.url = 'https://dl.dropboxusercontent.com/s/bm31yrv3aoddlg5/versao.png?dl=0' .. math.random();
+
+    </script>
+     
+	
+</form>

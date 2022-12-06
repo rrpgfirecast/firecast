@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmRecordListLoja" align="client" >    
+   
+        <!-- Botão de inserir novo item à lista -->
+        <layout align="top" height="30" margins="{bottom=4}">
+                <button text="Criar Novo Item" width="150" align="left">
+                        <event name="onClick">                             
+                                self.rclListaDosItens:append();
+                        </event>
+                </button>
+        </layout>       
+
+        <!-- recordList, representando a lista -->
+        <recordList name="rclListaDosItens" field="campoDosItens" templateForm="frmRecordListLojaInterior"
+                                align="client" selectable="true">                              
+
+                <event name="onSelect">
+                        --[[
+                        Este evento é chamado quando o usuário selecionar/deselecionar itens da lista. Quando o usuário selecionar, vamos fazer nosso dataScopeBox (e todas as tag dentro dele) salvar e carregar dados no   objeto Nodo (NodeDatabase) do item selecionado.
+
+                  --]]                      
+                  local node = self.rclListaDosItens.selectedNode;  
+                         self.boxDetalhesDoItem.node = node;                       
+                  -- a caixa de detalhe só ficará visível se houver item selecionado
+                          self.boxDetalhesDoItem.visible = (node ~= nil);
+                </event>
+        </recordList>       
+        <!-- dataScopeBox representando a nossa caixa de detalhes -->  
+        <dataScopeBox name="boxDetalhesDoItem" visible="false" align="right" 
+                     width="400" margins="{left=4, right=4}">
+                <!-- Faça um layout "bonito" para sua caixa de detalhes =). Utilize a propriedade "field" nas tags aqui dentro   -->       
+
+                <rectangle align="top" color="black" xradius="10" yradius="10"
+                                   height="180" padding="{top=3, left=3, right=3, bottom=3}">
+  		<!-- BOTAO USAR  -->
+     <button text="Usar" width="39" height="22" left="85"/>                                 
+
+                        <layout align="top" height="30" margins="{bottom=4}">
+                                <label align="left" text="Titulo do Item:" autoSize="true"/>
+                                <edit align="client" field="campoTitulo"/>
+                        </layout>                       
+
+                        <layout align="top" height="130">              
+                                <image align="left" editable="true" field="campoURLImagem" width="130"/>                               
+
+                                <layout align="client" margins="{left=2}">
+                                        <edit align="top" field="campoSubTitulo" height="30"/>
+                                        <textEditor align="top" field="campoTextoGrande" height="100"/>
+                                </layout>                      
+                        </layout>
+                </rectangle>
+        </dataScopeBox>
+   
+</form>
