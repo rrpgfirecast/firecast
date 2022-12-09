@@ -1,0 +1,706 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmOP1_svg" align="client" theme="light" margins="{top=1}">
+    <style>#frmOP1_svg path {color: black; strokeColor: black; mode: stretch;}
+#frmOP1_svg label {fontColor: black; textTrimming: none; wordWrap: false; autoSize: true;}</style>
+    <style> .Pericia {transparent: true; width: 30; fontSize: 16; fontColor: black; horzTextAlign: center; type: number;}</style>
+	<style> .Caixa1 {transparent: true; height: 45; fontSize: 20; fontColor: black;}</style>
+    <style> .ATAQUES {transparent: true; fontSize: 16; fontColor: black; horzTextAlign: leading;}</style>	
+    <scrollBox align="client">
+        <rectangle width="892" height="1214" color="white">	
+            <image left="0" top="0" width="892" height="1214" src="images/1.png" style="stretch" optimize="true" compilerOrder="0"/>
+					
+			<edit field="Personagem" left="110" top="40" width="250" fontSize="25" class="Caixa1"/>			
+			<edit field="Jogador" left="380" top="40" width="125" class="Caixa1"/>		
+			<edit field="Origem" left="206" top="528" width="310" class="Caixa1"/>		
+			<edit field="Classe" left="196" top="585" width="310" class="Caixa1"/>
+			<edit field="NEX" left="160" top="645" width="50" fontSize="25" type="number" class="Caixa1"/>
+			<edit field="PErodada" left="230" top="645" width="65" fontSize="25" type="number" class="Caixa1" horzTextAlign="center"/>
+			<edit field="Deslc" left="380" top="645" width="129" fontSize="25" class="Caixa1" horzTextAlign="center"/>
+
+			<edit field="PV" left="130" top="720" width="65" fontSize="25" type="number" class="Caixa1" horzTextAlign="center"/>
+			<edit field="PE" left="330" top="720" width="65" fontSize="25" type="number" class="Caixa1" horzTextAlign="center"/>
+			<edit field="SAN" left="375" top="830" width="75" fontSize="25" type="number" class="Caixa1" horzTextAlign="center"/>
+			
+			<edit field="PVt" left="150" top="755" width="129" class="Caixa1" horzTextAlign="leading"/>
+			<edit field="PEt" left="350" top="755" width="129" class="Caixa1" horzTextAlign="leading"/>	
+			<edit field="SANt" left="395" top="870" width="129" class="Caixa1" horzTextAlign="leading"/>	
+
+			<edit field="Def" left="130" top="840" width="60" fontSize="25" class="Caixa1" horzTextAlign="center" readOnly="true"/>	
+			<edit field="DefEq" left="272" top="855" width="30" class="Caixa1" horzTextAlign="center"/>	
+			<edit field="DefOt" left="311" top="855" width="30" class="Caixa1" horzTextAlign="center"/>
+			
+			<edit field="Protecoes" left="180" top="905" width="330" fontSize="16" class="Caixa1" horzTextAlign="leading" hint="Equipamentos que adicionam defesa. Ex: Casaco de Couro +2 Def."/>	
+			<edit field="Resistencias" left="200" top="930" width="315" fontSize="16" class="Caixa1" horzTextAlign="leading"/>				
+			
+			<dataLink fields="{'Def', 'DefEq', 'DefOt'}">
+				<event name="onChange"> sheet.Def = 10 + (tonumber(sheet.DefEq) or 0) + (tonumber(sheet.DefOt) or 0)+ (tonumber(sheet.AGI) or 0); </event>
+			</dataLink>
+//////////////////////~~ATAQUES~~////////////////////// 1 a 5
+			<template name="TAtaques">
+				<edit field="$(NickAtaques)" left="$(lNickAtaques)" top="$(topAtaques)" class="ATAQUES" width="260"/>
+				<edit field="$(TesteAtaques)" left="$(lTesteAtaques)" top="$(topAtaques)" class="ATAQUES" width="100"/>	
+				<edit field="$(DanoAtaques)" left="$(lDanoAtaques)" top="$(topAtaques)" class="ATAQUES" width="100"/>
+				<edit field="$(CriticoAtaques)" left="$(lCriticoAtaques)" top="$(topAtaques)" class="ATAQUES" width="100"/>
+				<comboBox field="$(AlcanceAtaques)" left="$(lAlcanceAtaques)" top="$(topAtaques1)" class="ATAQUES" width="80" items="{'CaC', 'Curta', 'Médio', 'Longo', 'Extremo'}" hint="9m(6q), 18m(12q), 36m(24q), 90m(60q)"/>				
+				<edit field="$(EspecialAtaques)" left="$(lEspecialAtaques)" top="$(topAtaques)" class="ATAQUES" width="100"/>			
+			</template>
+			<TAtaques topAtaques="1015" topAtaques1="1020" NickAtaques="ATK1" TesteAtaques="TesteATK1" DanoAtaques="DanoATK1" CriticoAtaques="CriticoATK1" EspecialAtaques="EspecialATK1" AlcanceAtaques="AlcanceATK1"	lNickAtaques="105" lTesteAtaques="378" lDanoAtaques="482" lCriticoAtaques="590" lAlcanceAtaques="700" lEspecialAtaques="790"/>
+			
+			<TAtaques topAtaques="1040" topAtaques1="1045" NickAtaques="ATK2" TesteAtaques="TesteATK2" DanoAtaques="DanoATK2" CriticoAtaques="CriticoATK2" EspecialAtaques="EspecialATK2" AlcanceAtaques="AlcanceATK2"	lNickAtaques="105" lTesteAtaques="378" lDanoAtaques="482" lCriticoAtaques="590" lAlcanceAtaques="700" lEspecialAtaques="790"/>
+			
+			<TAtaques topAtaques="1065" topAtaques1="1070" NickAtaques="ATK3" TesteAtaques="TesteATK3" DanoAtaques="DanoATK3" CriticoAtaques="CriticoATK3" EspecialAtaques="EspecialATK3" AlcanceAtaques="AlcanceATK3"	lNickAtaques="105" lTesteAtaques="378" lDanoAtaques="482" lCriticoAtaques="590" lAlcanceAtaques="700" lEspecialAtaques="790"/>
+			
+			<TAtaques topAtaques="1090" topAtaques1="1095" NickAtaques="ATK4" TesteAtaques="TesteATK4" DanoAtaques="DanoATK4" CriticoAtaques="CriticoATK4" EspecialAtaques="EspecialATK4" AlcanceAtaques="AlcanceATK4"	lNickAtaques="105" lTesteAtaques="378" lDanoAtaques="482" lCriticoAtaques="590" lAlcanceAtaques="700" lEspecialAtaques="790"/>
+			
+			<TAtaques topAtaques="1115" topAtaques1="1120" NickAtaques="ATK5" TesteAtaques="TesteATK5" DanoAtaques="DanoATK5" CriticoAtaques="CriticoATK5" EspecialAtaques="EspecialATK5" AlcanceAtaques="AlcanceATK5" lNickAtaques="105" lTesteAtaques="378" lDanoAtaques="482" lCriticoAtaques="590" lAlcanceAtaques="700" lEspecialAtaques="790"/>	
+/////////////////////~~ATRIBUTOS~~/////////////////////
+    <style> .Atributo {transparent: true; width: 100; height: 50; fontSize: 40; fontColor: black; horzTextAlign: center; type: number;}</style>
+____________________INTELECTO____________________
+			<edit field="INT" left="388" top="240" class="Atributo"/>			
+			<edit left="415" top="300" width="50" transparent="true" readOnly="true">
+				<event name="onClick">					   
+						local msg = "";
+						
+						local rolagem = Firecast.interpretarRolagem(sheet.INT.. "d20");
+						
+						rolagem:rolarLocalmente();
+						
+						for i = 1, #rolagem.ops, 1 do  
+						
+								local operacao = rolagem.ops[i]; 
+								
+								local maior = 1
+								
+								if operacao.tipo == "dado" then        
+										msg = msg .. "[§K14]" .. operacao.quantidade .. "d" .. operacao.face .. ":";               
+										
+										for j = 1, #operacao.resultados, 1 do
+												msg = msg .. "  " ..operacao.resultados[j];												
+										
+										if operacao.resultados[j] > maior then maior = operacao.resultados[j]	
+										end;
+										end; 		
+								end;
+								
+								if 	maior > 0 then rolagem.resultado = maior
+								end;
+						end;
+						
+						msg = msg .. " >>>  Intelecto de " ..Firecast.getMesaDe(sheet).meuJogador.nick.. ": [§K8]" ..rolagem.resultado; 
+						
+						Firecast.getMesaDe(sheet).chat:enviarMensagem(msg);					   
+				</event>
+			</edit>			
+____________________FORÇA____________________
+			<edit field="FOR" left="141" top="240" class="Atributo"/>			
+			<edit left="165" top="300" width="50" transparent="true" readOnly="true">
+				<event name="onClick">					   
+						local msg = "";
+						
+						local rolagem = Firecast.interpretarRolagem(sheet.FOR.. "d20");
+						
+						rolagem:rolarLocalmente();
+						
+						for i = 1, #rolagem.ops, 1 do  
+						
+								local operacao = rolagem.ops[i]; 
+								
+								local maior = 1
+								
+								if operacao.tipo == "dado" then        
+										msg = msg .. "[§K14]" .. operacao.quantidade .. "d" .. operacao.face .. ":";               
+										
+										for j = 1, #operacao.resultados, 1 do
+												msg = msg .. "  " ..operacao.resultados[j];												
+										
+										if operacao.resultados[j] > maior then maior = operacao.resultados[j]	
+										end;
+										end; 		
+								end;
+								
+								if 	maior > 0 then rolagem.resultado = maior
+								end;
+						end;
+						
+						msg = msg .. " >>>  Força de " ..Firecast.getMesaDe(sheet).meuJogador.nick.. ": [§K8]" ..rolagem.resultado; 
+						
+						Firecast.getMesaDe(sheet).chat:enviarMensagem(msg);					   
+				</event>
+			</edit>
+____________________AGILIDADE____________________
+			<edit field="AGI" left="264" top="150" class="Atributo"/>			
+			<edit left="290" top="210" width="50" transparent="true" readOnly="true">
+				<event name="onClick">					   
+						local msg = "";
+						
+						local rolagem = Firecast.interpretarRolagem(sheet.AGI.. "d20");
+						
+						rolagem:rolarLocalmente();
+						
+						for i = 1, #rolagem.ops, 1 do  
+						
+								local operacao = rolagem.ops[i]; 
+								
+								local maior = 1
+								
+								if operacao.tipo == "dado" then        
+										msg = msg .. "[§K14]" .. operacao.quantidade .. "d" .. operacao.face .. ":";               
+										
+										for j = 1, #operacao.resultados, 1 do
+												msg = msg .. "  " ..operacao.resultados[j];												
+										
+										if operacao.resultados[j] > maior then maior = operacao.resultados[j]	
+										end;
+										end; 		
+								end;
+								
+								if 	maior > 0 then rolagem.resultado = maior
+								end;
+						end;
+						
+						msg = msg .. " >>>  Agilidade de " ..Firecast.getMesaDe(sheet).meuJogador.nick.. ": [§K8]" ..rolagem.resultado; 
+						
+						Firecast.getMesaDe(sheet).chat:enviarMensagem(msg);					   
+				</event>
+			</edit>					
+____________________PRESENCA____________________
+			<edit field="PRE" left="176" top="390" class="Atributo"/>			
+			<edit left="200" top="450" width="50" transparent="true" readOnly="true">
+				<event name="onClick">					   
+						local msg = "";
+						
+						local rolagem = Firecast.interpretarRolagem(sheet.PRE.. "d20");
+						
+						rolagem:rolarLocalmente();
+						
+						for i = 1, #rolagem.ops, 1 do  
+						
+								local operacao = rolagem.ops[i]; 
+								
+								local maior = 1
+								
+								if operacao.tipo == "dado" then        
+										msg = msg .. "[§K14]" .. operacao.quantidade .. "d" .. operacao.face .. ":";               
+										
+										for j = 1, #operacao.resultados, 1 do
+												msg = msg .. "  " ..operacao.resultados[j];												
+										
+										if operacao.resultados[j] > maior then maior = operacao.resultados[j]	
+										end;
+										end; 		
+								end;
+								
+								if 	maior > 0 then rolagem.resultado = maior
+								end;
+						end;
+						
+						msg = msg .. " >>>  Presença de " ..Firecast.getMesaDe(sheet).meuJogador.nick.. ": [§K8]" ..rolagem.resultado; 
+						
+						Firecast.getMesaDe(sheet).chat:enviarMensagem(msg);					   
+				</event>
+			</edit>
+____________________VIGOR____________________
+			<edit field="VIG" left="352" top="390" class="Atributo"/>			
+			<edit left="380" top="450" width="50" transparent="true" readOnly="true">
+				<event name="onClick">					   
+						local msg = "";
+						
+						local rolagem = Firecast.interpretarRolagem(sheet.VIG.. "d20");
+						
+						rolagem:rolarLocalmente();
+						
+						for i = 1, #rolagem.ops, 1 do  
+						
+								local operacao = rolagem.ops[i]; 
+								
+								local maior = 1
+								
+								if operacao.tipo == "dado" then        
+										msg = msg .. "[§K14]" .. operacao.quantidade .. "d" .. operacao.face .. ":";               
+										
+										for j = 1, #operacao.resultados, 1 do
+												msg = msg .. "  " ..operacao.resultados[j];												
+										
+										if operacao.resultados[j] > maior then maior = operacao.resultados[j]	
+										end;
+										end; 		
+								end;
+								
+								if 	maior > 0 then rolagem.resultado = maior
+								end;
+						end;
+						
+						msg = msg .. " >>> Vigor de " ..Firecast.getMesaDe(sheet).meuJogador.nick.. ": [§K8]" ..rolagem.resultado; 
+						
+						Firecast.getMesaDe(sheet).chat:enviarMensagem(msg);					   
+				</event>
+			</edit>
+/////////////////////~~PERICIAS~~/////////////////////
+
+        <template name="TPericiasAGI">
+			<edit field="$(BonusPericia)" left="$(leftBonus)" top="$(topPericia)" class="Pericia"/>
+			<edit field="$(TreinoPericia)" left="$(leftTreino)" top="$(topPericia)" class="Pericia"/>	
+			<edit field="$(OutrosPericia)" left="$(leftOutros)" top="$(topPericia)" class="Pericia"/>
+		<edit left="$(leftPericia)" top="$(topPericia)" width="60" height="20" transparent="true" readOnly="true">
+				<event name="onClick">					   
+						local msg = "";
+						
+						local rolagemF = 1;
+						
+						local rolagemS = sheet.$(BonusPericia)+sheet.$(TreinoPericia)+sheet.$(OutrosPericia)
+						
+						local rolagem = Firecast.interpretarRolagem(sheet.AGI.. "d20");
+						
+						rolagem:rolarLocalmente();
+						
+						for i = 1, #rolagem.ops, 1 do  
+						
+								local operacao = rolagem.ops[i]; 
+								
+								local maior = 1
+								
+								if operacao.tipo == "dado" then        
+										msg = msg .. "[§K14]" .. operacao.quantidade .. "d" .. operacao.face .. ":";               
+										
+										for j = 1, #operacao.resultados, 1 do
+												msg = msg .. "  " ..operacao.resultados[j];												
+										
+										if operacao.resultados[j] > maior then maior = operacao.resultados[j]	
+										end;
+										end; 		
+								end;
+								
+								if 	maior > 0 then rolagem.resultado = maior
+								end;
+								if rolagem.resultado > 0 then rolagemF = (rolagem.resultado+rolagemS)
+								end;
+						end;
+																		
+						msg = msg .. " >>> $(NickPericia)[§K0][+"..rolagemS.."] [§K15](c/ AGI)[§K14] de " ..Firecast.getMesaDe(sheet).meuJogador.nick.. ": [§K8]" ..rolagemF; 
+						
+						Firecast.getMesaDe(sheet).chat:enviarMensagem(msg);					   
+				</event>
+		</edit>				
+       </template>
+        <template name="TPericiasINT">
+			<edit field="$(BonusPericia)" left="$(leftBonus)" top="$(topPericia)" class="Pericia"/>
+			<edit field="$(TreinoPericia)" left="$(leftTreino)" top="$(topPericia)" class="Pericia"/>	
+			<edit field="$(OutrosPericia)" left="$(leftOutros)" top="$(topPericia)" class="Pericia"/>
+		<edit left="$(leftPericia)" top="$(topPericia)" width="60" height="20" transparent="true" readOnly="true">
+				<event name="onClick">					   
+						local msg = "";
+						
+						local rolagemF = 1;
+						
+						local rolagemS = sheet.$(BonusPericia)+sheet.$(TreinoPericia)+sheet.$(OutrosPericia)
+						
+						local rolagem = Firecast.interpretarRolagem(sheet.INT.. "d20");
+						
+						rolagem:rolarLocalmente();
+						
+						for i = 1, #rolagem.ops, 1 do  
+						
+								local operacao = rolagem.ops[i]; 
+								
+								local maior = 1
+								
+								if operacao.tipo == "dado" then        
+										msg = msg .. "[§K14]" .. operacao.quantidade .. "d" .. operacao.face .. ":";               
+										
+										for j = 1, #operacao.resultados, 1 do
+												msg = msg .. "  " ..operacao.resultados[j];												
+										
+										if operacao.resultados[j] > maior then maior = operacao.resultados[j]	
+										end;
+										end; 		
+								end;
+								
+								if 	maior > 0 then rolagem.resultado = maior
+								end;
+								if rolagem.resultado > 0 then rolagemF = (rolagem.resultado+rolagemS)
+								end;
+						end;
+																		
+						msg = msg .. " >>> $(NickPericia)[§K0][+"..rolagemS.."] [§K15](c/ INT)[§K14] de " ..Firecast.getMesaDe(sheet).meuJogador.nick.. ": [§K8]" ..rolagemF; 	
+						
+						Firecast.getMesaDe(sheet).chat:enviarMensagem(msg);					   
+				</event>
+		</edit>				
+       </template>
+        <template name="TPericiasVIG">
+			<edit field="$(BonusPericia)" left="$(leftBonus)" top="$(topPericia)" class="Pericia"/>
+			<edit field="$(TreinoPericia)" left="$(leftTreino)" top="$(topPericia)" class="Pericia"/>	
+			<edit field="$(OutrosPericia)" left="$(leftOutros)" top="$(topPericia)" class="Pericia"/>
+		<edit left="$(leftPericia)" top="$(topPericia)" width="60" height="20" transparent="true" readOnly="true">
+				<event name="onClick">					   
+						local msg = "";
+						
+						local rolagemF = 1;
+						
+						local rolagemS = sheet.$(BonusPericia)+sheet.$(TreinoPericia)+sheet.$(OutrosPericia)
+						
+						local rolagem = Firecast.interpretarRolagem(sheet.VIG.. "d20");
+						
+						rolagem:rolarLocalmente();
+						
+						for i = 1, #rolagem.ops, 1 do  
+						
+								local operacao = rolagem.ops[i]; 
+								
+								local maior = 1
+								
+								if operacao.tipo == "dado" then        
+										msg = msg .. "[§K14]" .. operacao.quantidade .. "d" .. operacao.face .. ":";               
+										
+										for j = 1, #operacao.resultados, 1 do
+												msg = msg .. "  " ..operacao.resultados[j];												
+										
+										if operacao.resultados[j] > maior then maior = operacao.resultados[j]	
+										end;
+										end; 		
+								end;
+								
+								if 	maior > 0 then rolagem.resultado = maior
+								end;
+								if rolagem.resultado > 0 then rolagemF = (rolagem.resultado+rolagemS)
+								end;
+						end;
+																		
+						msg = msg .. " >>> $(NickPericia)[§K0][+"..rolagemS.."] [§K15](c/ VIG)[§K14] de " ..Firecast.getMesaDe(sheet).meuJogador.nick.. ": [§K8]" ..rolagemF; 	
+						
+						Firecast.getMesaDe(sheet).chat:enviarMensagem(msg);					   
+				</event>
+		</edit>				
+       </template>
+        <template name="TPericiasPRE">
+			<edit field="$(BonusPericia)" left="$(leftBonus)" top="$(topPericia)" class="Pericia"/>
+			<edit field="$(TreinoPericia)" left="$(leftTreino)" top="$(topPericia)" class="Pericia"/>	
+			<edit field="$(OutrosPericia)" left="$(leftOutros)" top="$(topPericia)" class="Pericia"/>
+		<edit left="$(leftPericia)" top="$(topPericia)" width="60" height="20" transparent="true" readOnly="true">
+				<event name="onClick">					   
+						local msg = "";
+						
+						local rolagemF = 1;
+						
+						local rolagemS = sheet.$(BonusPericia)+sheet.$(TreinoPericia)+sheet.$(OutrosPericia)
+						
+						local rolagem = Firecast.interpretarRolagem(sheet.PRE.. "d20");
+						
+						rolagem:rolarLocalmente();
+						
+						for i = 1, #rolagem.ops, 1 do  
+						
+								local operacao = rolagem.ops[i]; 
+								
+								local maior = 1
+								
+								if operacao.tipo == "dado" then        
+										msg = msg .. "[§K14]" .. operacao.quantidade .. "d" .. operacao.face .. ":";               
+										
+										for j = 1, #operacao.resultados, 1 do
+												msg = msg .. "  " ..operacao.resultados[j];												
+										
+										if operacao.resultados[j] > maior then maior = operacao.resultados[j]	
+										end;
+										end; 		
+								end;
+								
+								if 	maior > 0 then rolagem.resultado = maior
+								end;
+								if rolagem.resultado > 0 then rolagemF = (rolagem.resultado+rolagemS)
+								end;
+						end;
+																		
+						msg = msg .. " >>> $(NickPericia)[§K0][+"..rolagemS.."] [§K15](c/ PRE)[§K14] de " ..Firecast.getMesaDe(sheet).meuJogador.nick.. ": [§K8]" ..rolagemF; 					
+						
+						Firecast.getMesaDe(sheet).chat:enviarMensagem(msg);					   
+				</event>
+		</edit>				
+       </template>
+        <template name="TPericiasFOR">
+			<edit field="$(BonusPericia)" left="$(leftBonus)" top="$(topPericia)" class="Pericia"/>
+			<edit field="$(TreinoPericia)" left="$(leftTreino)" top="$(topPericia)" class="Pericia"/>	
+			<edit field="$(OutrosPericia)" left="$(leftOutros)" top="$(topPericia)" class="Pericia"/>
+		<edit left="$(leftPericia)" top="$(topPericia)" width="60" height="20" transparent="true" readOnly="true">
+				<event name="onClick">					   
+						local msg = "";
+						
+						local rolagemF = 1;
+						
+						local rolagemS = sheet.$(BonusPericia)+sheet.$(TreinoPericia)+sheet.$(OutrosPericia)
+						
+						local rolagem = Firecast.interpretarRolagem(sheet.FOR.. "d20");
+						
+						rolagem:rolarLocalmente();
+						
+						for i = 1, #rolagem.ops, 1 do  
+						
+								local operacao = rolagem.ops[i]; 
+								
+								local maior = 1
+								
+								if operacao.tipo == "dado" then        
+										msg = msg .. "[§K14]" .. operacao.quantidade .. "d" .. operacao.face .. ":";               
+										
+										for j = 1, #operacao.resultados, 1 do
+												msg = msg .. "  " ..operacao.resultados[j];												
+										
+										if operacao.resultados[j] > maior then maior = operacao.resultados[j]	
+										end;
+										end; 		
+								end;
+								
+								if 	maior > 0 then rolagem.resultado = maior
+								end;
+								if rolagem.resultado > 0 then rolagemF = (rolagem.resultado+rolagemS)
+								end;
+						end;
+																		
+						msg = msg .. " >>> $(NickPericia)[§K0][+"..rolagemS.."] [§K15](c/ FOR)[§K14] de " ..Firecast.getMesaDe(sheet).meuJogador.nick.. ": [§K8]" ..rolagemF; 					
+						
+						Firecast.getMesaDe(sheet).chat:enviarMensagem(msg);					   
+				</event>
+		</edit>				
+       </template>	   
+	   
+	   <TPericiasAGI NickPericia="Acrobacia" topPericia="230" BonusPericia="AcrobaciaB" TreinoPericia="AcrobaciaT" OutrosPericia="AcrobaciaO" leftPericia="550"	leftBonus="742"  leftTreino="785" leftOutros="827"/>
+	   
+	   <TPericiasPRE NickPericia="Adestramento" topPericia="258" BonusPericia="AdestramentoB" TreinoPericia="AdestramentoT" OutrosPericia="AdestramentoO" leftPericia="550"	   leftBonus="742" leftTreino="785" leftOutros="827"/>
+	   
+	   <TPericiasPRE NickPericia="Artes" topPericia="284" BonusPericia="ArtesB" TreinoPericia="ArtesT" OutrosPericia="ArtesO" leftPericia="550" leftBonus="742" leftTreino="785" leftOutros="827"/>
+	   
+	   <TPericiasFOR NickPericia="Atletismo" topPericia="308" BonusPericia="AtletismoB" TreinoPericia="AtletismoT" OutrosPericia="AtletismoO" leftPericia="550" leftBonus="742" leftTreino="785" leftOutros="827"/>
+	   
+	   <TPericiasINT NickPericia="Atualidades" topPericia="330" BonusPericia="AtualidadesB" TreinoPericia="AtualidadesT" OutrosPericia="AtualidadesO" leftPericia="550"	leftBonus="742" leftTreino="785" leftOutros="827" />
+	   
+	   <TPericiasINT NickPericia="Cienciais" topPericia="356" BonusPericia="CienciaisB" TreinoPericia="CienciaisT" OutrosPericia="CienciaisO" leftPericia="550"	leftBonus="742" leftTreino="785" leftOutros="827" />  
+	   
+	   <TPericiasAGI NickPericia="Crime" topPericia="382" BonusPericia="CrimeB" TreinoPericia="CrimeT" OutrosPericia="CrimeO" leftPericia="550" leftBonus="742" leftTreino="785" leftOutros="827"/>
+	   
+	   <TPericiasPRE NickPericia="Diplomacia" topPericia="408" BonusPericia="DiplomaciaB" TreinoPericia="DiplomaciaT" OutrosPericia="DiplomaciaO" leftPericia="550"	leftBonus="742"  leftTreino="785" leftOutros="827"/>
+	   
+	   <TPericiasPRE
+	   NickPericia="Enganacao"
+	   topPericia="434"
+	   BonusPericia="EnganacaoB"
+	   TreinoPericia="EnganacaoT"
+	   OutrosPericia="EnganacaoO"	   
+	   leftPericia="550"	   
+	   leftBonus="742"  	   
+	   leftTreino="785" 
+	   leftOutros="827" 
+	   />
+	   <TPericiasVIG
+	   NickPericia="Fortitude"
+	   topPericia="460"
+	   BonusPericia="FortitudeB"
+	   TreinoPericia="FortitudeT"
+	   OutrosPericia="FortitudeO"	   
+	   leftPericia="550"	   
+	   leftBonus="742"  	   
+	   leftTreino="785" 
+	   leftOutros="827" 
+	   />	   
+	   <TPericiasAGI
+	   NickPericia="Furtividade"
+	   topPericia="486"
+	   BonusPericia="FurtividadeB"
+	   TreinoPericia="FurtividadeT"
+	   OutrosPericia="FurtividadeO"	   
+	   leftPericia="550"	   
+	   leftBonus="742"  	   
+	   leftTreino="785" 
+	   leftOutros="827" 
+	   />		   
+	   <TPericiasAGI
+	   NickPericia="Iniciativa"
+	   topPericia="512"
+	   BonusPericia="IniciativaB"
+	   TreinoPericia="IniciativaT"
+	   OutrosPericia="IniciativaO"	   
+	   leftPericia="550"	   
+	   leftBonus="742"  	   
+	   leftTreino="785" 
+	   leftOutros="827" 
+	   />
+	   <TPericiasPRE
+	   NickPericia="Intimidacao"
+	   topPericia="538"
+	   BonusPericia="IntimidacaoB"
+	   TreinoPericia="IntimidacaoT"
+	   OutrosPericia="IntimidacaoO"	   
+	   leftPericia="550"	   
+	   leftBonus="742"  	   
+	   leftTreino="785" 
+	   leftOutros="827" 
+	   />
+	   <TPericiasPRE
+	   NickPericia="Intuicao"
+	   topPericia="564"
+	   BonusPericia="IntuicaoB"
+	   TreinoPericia="IntuicaoT"
+	   OutrosPericia="IntuicaoO"	   
+	   leftPericia="550"	   
+	   leftBonus="742"  	   
+	   leftTreino="785" 
+	   leftOutros="827" 
+	   />
+	   <TPericiasINT
+	   NickPericia="Investigacao"
+	   topPericia="590"
+	   BonusPericia="InvestigacaoB"
+	   TreinoPericia="InvestigacaoT"
+	   OutrosPericia="InvestigacaoO"	   
+	   leftPericia="550"	   
+	   leftBonus="742"  	   
+	   leftTreino="785" 
+	   leftOutros="827" 
+	   />
+	   <TPericiasFOR
+	   NickPericia="Luta"
+	   topPericia="616"
+	   BonusPericia="LutaB"
+	   TreinoPericia="LutaT"
+	   OutrosPericia="LutaO"	   
+	   leftPericia="550"	   
+	   leftBonus="742"  	   
+	   leftTreino="785" 
+	   leftOutros="827" 
+	   />
+	   <TPericiasINT
+	   NickPericia="Medicina"
+	   topPericia="642"
+	   BonusPericia="MedicinaB"
+	   TreinoPericia="MedicinaT"
+	   OutrosPericia="MedicinaO"	   
+	   leftPericia="550"	   
+	   leftBonus="742"  	   
+	   leftTreino="785" 
+	   leftOutros="827" 
+	   />
+	   <TPericiasINT
+	   NickPericia="Ocultismo"
+	   topPericia="668"
+	   BonusPericia="OcultismoB"
+	   TreinoPericia="OcultismoT"
+	   OutrosPericia="OcultismoO"	   
+	   leftPericia="550"	   
+	   leftBonus="742"  	   
+	   leftTreino="785" 
+	   leftOutros="827" 
+	   />
+	   <TPericiasPRE
+	   NickPericia="Percepcao"
+	   topPericia="694"
+	   BonusPericia="PercepcaoB"
+	   TreinoPericia="PercepcaoT"
+	   OutrosPericia="PercepcaoO"	   
+	   leftPericia="550"	   
+	   leftBonus="742"  	   
+	   leftTreino="785" 
+	   leftOutros="827" 
+	   />	   
+	   <TPericiasAGI
+	   NickPericia="Pilotagem"
+	   topPericia="720"
+	   BonusPericia="PilotagemB"
+	   TreinoPericia="PilotagemT"
+	   OutrosPericia="PilotagemO"	   
+	   leftPericia="550"	   
+	   leftBonus="742"  	   
+	   leftTreino="785" 
+	   leftOutros="827" 
+	   />		   	   
+	   <TPericiasAGI
+	   NickPericia="Pontaria"
+	   topPericia="745"
+	   BonusPericia="PontariaB"
+	   TreinoPericia="PontariaT"
+	   OutrosPericia="PontariaO"	   
+	   leftPericia="550"	   
+	   leftBonus="742"  	   
+	   leftTreino="785" 
+	   leftOutros="827" 
+	   />		
+	   <TPericiasINT
+	   NickPericia="Profissao"
+	   topPericia="768"
+	   BonusPericia="ProfissaoB"
+	   TreinoPericia="ProfissaoT"
+	   OutrosPericia="ProfissaoO"	   
+	   leftPericia="550"	   
+	   leftBonus="742"  	   
+	   leftTreino="785" 
+	   leftOutros="827" 
+	   />	   
+	   <TPericiasAGI
+	   NickPericia="Reflexos"
+	   topPericia="794"
+	   BonusPericia="ReflexosB"
+	   TreinoPericia="ReflexosT"
+	   OutrosPericia="ReflexosO"	   
+	   leftPericia="550"	   
+	   leftBonus="742"  	   
+	   leftTreino="785" 
+	   leftOutros="827" 
+	   />
+	   <TPericiasPRE
+	   NickPericia="Religiao"
+	   topPericia="820"
+	   BonusPericia="ReligiaoB"
+	   TreinoPericia="ReligiaoT"
+	   OutrosPericia="ReligiaoO"	   
+	   leftPericia="550"	   
+	   leftBonus="742"  	   
+	   leftTreino="785" 
+	   leftOutros="827" 
+	   />	   
+	   <TPericiasINT
+	   NickPericia="Sobrevivencia"
+	   topPericia="846"
+	   BonusPericia="SobrevivenciaB"
+	   TreinoPericia="SobrevivenciaT"
+	   OutrosPericia="SobrevivenciaO"	   
+	   leftPericia="550"	   
+	   leftBonus="742"  	   
+	   leftTreino="785" 
+	   leftOutros="827" 
+	   />
+	   <TPericiasINT
+	   NickPericia="Tatica"
+	   topPericia="874"
+	   BonusPericia="TaticaB"
+	   TreinoPericia="TaticaT"
+	   OutrosPericia="TaticaO"	   
+	   leftPericia="550"	   
+	   leftBonus="742"  	   
+	   leftTreino="785" 
+	   leftOutros="827" 
+	   />
+	   <TPericiasINT
+	   NickPericia="Tecnologia"
+	   topPericia="898"
+	   BonusPericia="TecnologiaB"
+	   TreinoPericia="TecnologiaT"
+	   OutrosPericia="TecnologiaO"	   
+	   leftPericia="550"	   
+	   leftBonus="742"  	   
+	   leftTreino="785" 
+	   leftOutros="827" 
+	   />
+	   <TPericiasPRE
+	   NickPericia="Vontade"
+	   topPericia="925"
+	   BonusPericia="VontadeB"
+	   TreinoPericia="VontadeT"
+	   OutrosPericia="VontadeO"	   
+	   leftPericia="550"	   
+	   leftBonus="742"  	   
+	   leftTreino="785" 
+	   leftOutros="827" 
+	   />
+
+	   
+	   </rectangle>
+    </scrollBox>
+</form>

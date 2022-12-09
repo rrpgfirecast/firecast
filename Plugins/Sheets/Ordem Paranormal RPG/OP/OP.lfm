@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmOP" formType="sheetTemplate" dataType="OP.v1.0.Samelfero" title="Ordem Paranormal v1.0" align="client" theme="light">
+    <tabControl align="client">
+        <tab title="Frente">
+            <import file="1.lfm"/>
+        </tab>
+        <tab title="Verso">
+            <import file="2.lfm"/>
+        </tab>
+        <tab title="Créditos">
+            <import file="creditos.lfm"/>
+        </tab>		
+    </tabControl>
+</form>

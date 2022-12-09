@@ -14,6 +14,7 @@ Vale a pena ressalvar que qualquer pasta neste repositório contém seu plugin c
 | [Call Of Cthulhu 7e](https://github.com/rrpgfirecast/firecast/raw/master/Plugins/Sheets/Call%20Of%20Cthulhu%207e/output/Call%20Of%20Cthulhu%207e.rpk?raw=true) | helldemos | Ficha de _Call of Cthulhu_ 7ª edição. |
 | [Call Of Cthulhu Dark Ages](https://github.com/rrpgfirecast/firecast/raw/master/Plugins/Sheets/Call%20Of%20Cthulhu%20Dark%20Ages/output/Call%20Of%20Cthulhu%20Dark%20Ages.rpk?raw=true) | helldemos | Ficha de _Call of Cthulhu Dark Ages_. |
 | [D&D 3.5](https://github.com/rrpgfirecast/firecast/raw/master/Plugins/Sheets/D%26D%203.5/output/D%26D%203.5.rpk?raw=true) | Filernall | Ficha para o sistema D&D 3.5. |
+| [Dead Zone 2.0](https://github.com/ooicram/Samelfero/blob/master/Plugins/Sheets/Dead%20Zone%202.0/output/Dead%20Zone%202.0.rpk?raw=true) | Samelfero | Ficha para o sistema Dead Zone |
 | [DnD5e](https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/DnD5e/output/DnD5e.rpk?raw=true) | AlyssonRPG | Ficha D&D 5ª edição oficial do RRPG Firecast. |
 | [Ficha 13ª Era](https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%2013%C2%BA%20Era/output/Ficha%2013%C2%BA%20Era.rpk?raw=true) | Ruteski | Ficha para o sistema 13ª Era. |
 | [Ficha 4D&T](https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%204D&T/output/Ficha%204D&T.rpk?raw=true) | Ambesek | Ficha para o sistema 4D&T. |
@@ -63,6 +64,7 @@ Vale a pena ressalvar que qualquer pasta neste repositório contém seu plugin c
 | [Naruto 5e](https://github.com/rrpgfirecast/firecast/raw/master/Plugins/Sheets/Naruto%205e/output/Naruto%205e.rpk?raw=true) | helldemos | Naruto 5ª edição. |
 | [O Tomo](https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/O%20Tomo/output/O%20Tomo.rpk?raw=true) | rafaelskate8 | Ficha O Tomo para ser usada no RRPG Firecast. |
 | [Old Dragon](https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Old%20Dragon/output/Old%20Dragon.rpk?raw=true) | Matheus Furtado | Ficha para _Old Dragon_. |
+| [Ordem Paranormal](https://github.com/ooicram/Samelfero/blob/master/Plugins/Sheets/Dead%20Zone%202.0/output/Dead%20Zone%202.0.rpk?raw=true) | Samelfero | Ficha para o sistema Ordem Paranormal v1.0 |
 | [Os Mundos dos Mortos](https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Os%20Mundos%20dos%20Mortos/output/Os%20Mundos%20dos%20Mortos.rpk?raw=true) | Mestre_Stark | Plugin de ficha Os mundos dos mortos. |
 | [Pack Old Dragon](https://github.com/rrpgfirecast/firecast/raw/master/Plugins/Sheets/Pack%20Old%20Dragon/output/Pack%20Old%20Dragon.rpk?raw=true) | AlvagorH | Pacote com fichas de _Old Dragon_ Aprimorado e suas expansões e cenários. |
 | [Pendragon](https://github.com/rrpgfirecast/firecast/raw/master/Plugins/Sheets/Pendragon/output/Pendragon.rpk?raw=true) | thirteen | Ficha para King Arthur Pendragon _(Pendragon)_, edição 5.2. |
