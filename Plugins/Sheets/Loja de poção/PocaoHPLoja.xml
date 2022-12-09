@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<group>
+                <rectangle top="90" left="20" color="black" width="630" height="171" xradius="15" yradius="15"/>
+ <!-- PARTE X --> 
+<!-- PASSO 1  EDIT DA SOMA -->
+
+			
+<!-- PASSO 2 IMAGEM E NOME DA POÇAO-->
+         <label text="Poção Grande" top="155" wordWrap="false" left="130"/>
+	        <image top="110" left="40" hitTest="true" src="/Imagens/Poção HP Grande.png">
+			   <event name="onClick">
+	    if rrpg.getMesaDe(sheet).meuJogador.isMestre then
+		dialogs.inputQuery("Caixa de Poções", "Quantidade de Poções:", "",
+		   function (valorPreenchido)
+					  sheet.quantidade = (sheet.quantidade or 0 ) + valorPreenchido; 
+	    end);
+		end;
+		</event>
+		 </image>
+			   
+<!-- PASSO 3 LABEL PARA QUANTIDADE -->
+				<label top="110" left="120" field="quantidade" wordWrap="false" autoSize="true"/>
+				<!-- TESTE -->
+					  
+<!-- PASSO 4 BOTAO PARA COMPRA1 -->
+                <button name="comprar1" top="210" left="30" width="76" height="30" text="Comprar">
+				 <event name="onClick">
+                                 local Soma = (sheet.Soma or 0) -70;
+						         if Soma >= 0 then
+								 sheet.Soma = Soma; sheet.quantidade = (sheet.quantidade or 0) +1; local minhaMesa = rrpg.getMesaDe(sheet); 
+									local chat = minhaMesa.chat; 
+									chat:enviarMensagem("/me [§K4]Poção de HP[§K4] [§K1]Grande:[§K1] [§K7]Comprada![§K7] ");
+                            else
+                     showMessage("Você não moedas para gastar"); 	
+		end;
+
+                 </event>
+				</button>
+
+				          
+<!-- PASSSO 5 BOTAO PARA USAR1 -->
+       	   <button top="210" left="110" width="76" height="30" text="Usar">
+		      <event name="onClick">
+					 local quantidade = (sheet.quantidade or 0) - 1;
+                                    if quantidade >= 0 then
+                                    sheet.quantidade = quantidade;local minhaMesa = rrpg.getMesaDe(sheet); 
+									local chat = minhaMesa.chat; 
+									chat:enviarMensagem("/HP +30");
+                            else
+                      showMessage("Você não tem poções para usar"); 							
+                          end;								   
+           </event>
+		  </button>
+		  
+	<!-- PARTE Y --> 
+<!-- PASSO 6  LABEL QUANTIDADE2 E IMAGEM POÇAO HP MEDIA -->
+      
+       <label top="110" left="350" field="quantidade2" wordWrap="false" autoSize="true"/>
+         <image top="110" left="260" hitTest="true" src="/Imagens/Poção HP Média.png">
+			   <event name="onClick">
+	    if rrpg.getMesaDe(sheet).meuJogador.isMestre then
+		dialogs.inputQuery("Caixa de Poções", "Quantidade de Poções:", "",
+		   function (valorPreenchido)
+					  sheet.quantidade2 = (sheet.quantidade2 or 0 ) + valorPreenchido; 
+	    end);
+		end;
+		</event>
+		 </image>
+		
+<!-- PASSO 7 BOTAO QUANTIDADE2 DE COMPRAR2 -->
+                <button name="comprar2" top="210" left="250" width="76" height="30" text="Comprar">
+				 <event name="onClick">
+					 local Soma = (sheet.Soma or 0) - 40; 
+                                    if Soma >= 0 then
+                                    sheet.Soma = Soma; sheet.quantidade2 = (sheet.quantidade2 or 0) +1; local minhaMesa = rrpg.getMesaDe(sheet); 
+									local chat = minhaMesa.chat; 
+									chat:enviarMensagem("/me [§K4]Poção de HP[§K4] [§K1]Média:[§K1] [§K7]Comprada![§K7] ");
+                            else
+                     showMessage("Você não moedas para gastar"); 	
+                          end;
+
+
+							   
+                 </event>
+				</button>
+<!-- PASSO 8 BOTAO DE USAR2 -->
+         <button top="210" left="330" width="76" height="30" text="Usar">
+		      <event name="onClick">
+					 local quantidade2 = (sheet.quantidade2 or 0) - 1;
+                                    if quantidade2 >= 0 then
+                                    sheet.quantidade2 = quantidade2;local minhaMesa = rrpg.getMesaDe(sheet); 
+									local chat = minhaMesa.chat; 
+									chat:enviarMensagem("/HP +20");
+                            else
+                      showMessage("Você não tem poções para usar"); 
+							
+                          end;							   
+           </event>
+		   </button>
+<!-- PASSO 9 LABEL PARA NOME DA POÇAO -->
+         <label text="Poção Média" top="155" wordWrap="false" left="335"/>
+		 <!-- PARTE Z -->
+<!-- PASSO 10 IMAGEM DE POÇÃO HP PEQUENA 220~~220 -->
+         <image top="110" left="480" hitTest="true" src="/Imagens/Poção HP Pequena.png">
+			   <event name="onClick">
+	    if rrpg.getMesaDe(sheet).meuJogador.isMestre then
+		dialogs.inputQuery("Caixa de Poções", "Quantidade de Poções:", "",
+		   function (valorPreenchido)
+					  sheet.quantidade3 = (sheet.quantidade3 or 0 ) + valorPreenchido; 
+	    end);
+		end;
+		</event>
+		 </image>
+<!-- PASSO 11 BOTAO DE COMPRAR3 E USAR3 Z -->
+         <button name="comprar3" top="210" left="470" width="76" height="30" text="Comprar">
+		  <event name="onClick">
+					 local Soma = (sheet.Soma or 0) - 20; 
+                                    if Soma >= 0 then
+                                    sheet.Soma = Soma; sheet.quantidade3 = (sheet.quantidade3 or 0) +1; local minhaMesa = rrpg.getMesaDe(sheet); 
+									local chat = minhaMesa.chat; 
+									chat:enviarMensagem("/me [§K4]Poção de HP[§K4] [§K1]Pequena:[§K1] [§K7]Comprada![§K7] ");
+                            else
+                     showMessage("Você não moedas para gastar"); 	
+                          end;
+
+			</event>
+			 </button>
+		 <button top="210" left="550" width="76" height="30" text="Usar">
+		 		      <event name="onClick">
+					 local quantidade3 = (sheet.quantidade3 or 0) - 1;
+                                    if quantidade3 >= 0 then
+                                    sheet.quantidade3 = quantidade3;local minhaMesa = rrpg.getMesaDe(sheet); 
+									local chat = minhaMesa.chat; 
+									chat:enviarMensagem("/HP +10");
+                            else
+                      showMessage("Você não tem poções para usar"); 
+							
+                          end;			 
+           </event>
+		   </button>
+		   
+<!-- PASSO 12 QUANTIDADE3 -->
+         <label top="110" left="580" field="quantidade3" wordWrap="false" autoSize="true"/>
+<!-- PASSO 13 LABEL DE NOME DA POÇAO -->
+		 <label text="Poção Pequena" top="155" wordWrap="false" left="560"/>
+		 
+</group>

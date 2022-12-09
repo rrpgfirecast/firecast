@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<form formType="sheetTemplate" dataType="Loja_pocao_aqui" 
+     title="Loja_de_Pocao" name="Loja_Para_Pocao">
+     <image src="/Imagens/LojaDePotion.png" width="1020" height="478" />
+
+     <scrollBox align="client"> 
+    <import file="PocaoHPLoja.xml"/> 
+    <import file="PocaoMPLoja.xml"/>
+    <import file="Preços.xml"/>
+    <import file="Moedas.xml"/>
+    <import file="Vender.xml"/>
+    <import file="Botão_ON_OFF.xml"/>
+
+     </scrollBox>
+</form>

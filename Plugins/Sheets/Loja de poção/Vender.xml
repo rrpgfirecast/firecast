@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<group>
+<!-- HP Poção Grande 30 - 78 = 48 -->
+    <image hitTest="true" cursor="handPoint" top="110" left="30" width="27" height="22" name="Caixa11" src="/Imagens/vender_on.png" compilerOrder="6">
+        <event name="onMouseEnter">   
+                              self.Caixa11.src = "/Imagens/vender_off.png"
+		</event>
+		<event name="OnMouseLeave">
+	                          self.Caixa11.src = "/Imagens/vender_on.png"
+		</event>
+        <event name="onClick">
+            local quantidade = (sheet.quantidade or 0) -1;
+			      if quantidade >= 0 then
+		    sheet.quantidade = quantidade; 
+			local Soma = (sheet.Soma or 0) +70;
+			sheet.Soma = Soma; local minhaMesa = rrpg.getMesaDe(sheet); 
+									local chat = minhaMesa.chat; 
+									chat:enviarMensagem("/me [§K4]Poção de HP[§K4] [§K1]Grande:[§K1] [§K7]Vendida![§K7] ");
+                            else
+                     showMessage("Você não tem poções para vender"); 	
+                          end;
+		</event>
+		 </image>
+		 
+<!-- HP Poção Média 30 - 249 = 219 -->
+    <image hitTest="true" cursor="handPoint" top="110" left="249" width="27" height="22" name="Caixa12" src="/Imagens/vender_on.png" compilerOrder="6">
+        <event name="onMouseEnter">   
+                              self.Caixa12.src = "/Imagens/vender_off.png"
+		</event>
+		<event name="OnMouseLeave">
+	                          self.Caixa12.src = "/Imagens/vender_on.png"
+		</event>
+        <event name="onClick">
+            local quantidade2 = (sheet.quantidade2 or 0) -1;
+			      if quantidade2 >= 0 then
+		    sheet.quantidade2 = quantidade2; 
+			local Soma = (sheet.Soma or 0) +40;
+			sheet.Soma = Soma; local minhaMesa = rrpg.getMesaDe(sheet); 
+									local chat = minhaMesa.chat; 
+									chat:enviarMensagem("/me [§K4]Poção de HP[§K4] [§K1]Média:[§K1] [§K7]Vendida![§K7] ");
+                            else
+                     showMessage("Você não tem poções para vender"); 	
+                          end;
+		</event>
+		 </image>
+
+<!-- HP Poção Pequena ~~219~~ Resultado final -->
+    <image hitTest="true" cursor="handPoint" top="110" left="468" width="27" height="22" name="Caixa13" src="/Imagens/vender_on.png" compilerOrder="6">
+        <event name="onMouseEnter">   
+                              self.Caixa13.src = "/Imagens/vender_off.png"
+		</event>
+		<event name="OnMouseLeave">
+	                          self.Caixa13.src = "/Imagens/vender_on.png"
+		</event>
+        <event name="onClick">
+            local quantidade3 = (sheet.quantidade3 or 0) -1;
+			      if quantidade3 >= 0 then
+		    sheet.quantidade3 = quantidade3; 
+			local Soma = (sheet.Soma or 0) +20;
+			sheet.Soma = Soma; local minhaMesa = rrpg.getMesaDe(sheet); 
+									local chat = minhaMesa.chat; 
+									chat:enviarMensagem("/me [§K4]Poção de HP[§K4] [§K1]Pequena:[§K1] [§K7]Vendida![§K7] ");
+                            else
+                     showMessage("Você não tem poções para vender"); 	
+                          end;
+		</event>
+		 </image>
+
+<!-- MP Poção Grande 83 + 27 = 110 / 283 + 27 = 310 / ~~219~~ -->
+    <image hitTest="true" cursor="handPoint" top="310" left="30" width="27" height="22" name="Caixa14" src="/Imagens/vender_on.png" compilerOrder="6">
+        <event name="onMouseEnter">   
+                              self.Caixa14.src = "/Imagens/vender_off.png"
+		</event>
+		<event name="OnMouseLeave">
+	                          self.Caixa14.src = "/Imagens/vender_on.png"
+		</event>
+        <event name="onClick">
+            local quantidade4 = (sheet.quantidade4 or 0) -1;
+			      if quantidade4 >= 0 then
+		    sheet.quantidade4 = quantidade4; 
+			local Soma = (sheet.Soma or 0) +70;
+			sheet.Soma = Soma; local minhaMesa = rrpg.getMesaDe(sheet); 
+									local chat = minhaMesa.chat; 
+									chat:enviarMensagem("/me [§K11]Poção de MP[§K11] [§K1]Grande:[§K1] [§K7]Vendida![§K7] ");
+                            else
+                     showMessage("Você não tem poções para vender"); 	
+                          end;
+		</event>
+		 </image>
+
+<!-- MP Poção Média -->
+    <image hitTest="true" cursor="handPoint" top="310" left="249" width="27" height="22" name="Caixa15" src="/Imagens/vender_on.png" compilerOrder="6">
+        <event name="onMouseEnter">   
+                              self.Caixa15.src = "/Imagens/vender_off.png"
+		</event>
+		<event name="OnMouseLeave">
+	                          self.Caixa15.src = "/Imagens/vender_on.png"
+		</event>
+        <event name="onClick">
+            local quantidade5 = (sheet.quantidade5 or 0) -1;
+			      if quantidade5 >= 0 then
+		    sheet.quantidade5 = quantidade5; 
+			local Soma = (sheet.Soma or 0) +40;
+			sheet.Soma = Soma; local minhaMesa = rrpg.getMesaDe(sheet); 
+									local chat = minhaMesa.chat; 
+									chat:enviarMensagem("/me [§K11]Poção de MP[§K11] [§K1]Média:[§K1] [§K7]Vendida![§K7] ");
+                            else
+                     showMessage("Você não tem poções para vender"); 	
+                          end;
+		</event>
+		 </image>
+
+<!-- MP Poção Pequena ~~219~~ ResultadoFinal-->
+    <image hitTest="true" cursor="handPoint" top="310" left="468" width="27" height="22" name="Caixa16" src="/Imagens/vender_on.png" compilerOrder="6">
+        <event name="onMouseEnter">   
+                              self.Caixa16.src = "/Imagens/vender_off.png"
+		</event>
+		<event name="OnMouseLeave">
+	                          self.Caixa16.src = "/Imagens/vender_on.png"
+		</event>
+        <event name="onClick">
+            local quantidade6 = (sheet.quantidade6 or 0) -1;
+			      if quantidade6 >= 0 then
+		    sheet.quantidade6 = quantidade6; 
+			local Soma = (sheet.Soma or 0) +20;
+			sheet.Soma = Soma; local minhaMesa = rrpg.getMesaDe(sheet); 
+									local chat = minhaMesa.chat; 
+									chat:enviarMensagem("/me [§K11]Poção de MP[§K11] [§K1]Pequena:[§K1] [§K7]Vendida![§K7] ");
+                            else
+                     showMessage("Você não tem poções para vender"); 	
+                          end;
+		</event>
+		 </image>
+		 <!-- Lado cima ~~218 -->
+	<label left="28" top="94" text="Vender" fontSize="10" fontStyle="bold" />
+	<label left="246" top="94" text="Vender" fontSize="10" fontStyle="bold" />
+	<label left="464" top="94" text="Vender" fontSize="10" fontStyle="bold" />
+	
+	 <!-- Lado baixo ~~218 -->
+	<label left="28" top="294" text="Vender" fontSize="10" fontStyle="bold" />
+	<label left="246" top="294" text="Vender" fontSize="10" fontStyle="bold" />
+	<label left="464" top="294" text="Vender" fontSize="10" fontStyle="bold" />
+		
+</group>

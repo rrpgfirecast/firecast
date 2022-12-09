@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmProjetoXII111_svg" align="client" theme="dark" margins="{top=1}">
+    <scrollBox align="client">
+	  
+
+			  
+ 			  <richEdit align="client" name="AnotacaoEditorNovo" field="AnotacaoEditorNovo"
+			      backgroundColor="#333333" defaultFontColor="white" visible="true"/>
+				  
+			  <textEditor name="Nome33" field="Nome33" align="client" visible="false"/>
+			  
+  <layout name="ConteudoNovoEAntigo" align="client" margins="{left=200}" >
+  
+	  <button text="Conteudo Antigo" left="482" top="0" width="119" height="21.91">
+	       <event name="onClick">
+             self.Nome33.visible = true;
+			 self.AnotacaoEditorNovo.visible = false;
+			 </event>
+			  </button>
+
+	  <button text="Conteudo Novo" left="599" top="0" width="119" height="21.91">
+	       <event name="onClick">
+             self.Nome33.visible = false;
+			 self.AnotacaoEditorNovo.visible = true;
+			 </event>
+			  </button>	
+  </layout>			  
+    </scrollBox>
+</form>

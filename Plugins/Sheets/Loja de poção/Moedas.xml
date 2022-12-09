@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<group>
+		 
+    <button width="25" height="20" top="23" left="157" onClick="" text="$" fontColor="lime" fontStyle="bold">
+        <event name="onClick">
+	    if rrpg.getMesaDe(sheet).meuJogador.isMestre then
+		dialogs.inputQuery("Carteira", "Novo valor:", "",
+		   function (valorPreenchido)
+					  sheet.Soma = (sheet.Soma or 0 ) + valorPreenchido; 
+	    end);
+		end;
+	    </event>
+    </button>
+   <!-- AQUI VAI SER O DESING DELE -->
+         <style>
+                layout.LayoutSoma {
+                        width: 152;
+                        align: left;
+                        margins: {left=2, right=2};
+                }              
+
+                layout.LayoutSoma edit {
+                        height:40;
+                        horzTextAlign: center;
+                        fontSize: 20;
+                        align: top;
+                }              
+
+                layout.LayoutSoma label {
+                        align: top;
+                        horzTextAlign: center;
+                        vertTextAlign: leading;
+                        autoSize: true;
+
+                }              
+        </style>  
+
+             <layout class="LayoutSoma">
+    <label text="Dinheiro"/> 
+	      <edit width="60" height="30" readOnly="true">
+	<label fontStyle="bold" fontSize="19.0" autoSize="true" wordWrap="false" name="labSoma">
+        <dataLink field="Soma">
+            <event name="onChange">
+function format_thousand(v)
+	local s = string.format("%d", math.floor(v))
+	local pos = string.len(s) % 3 
+	if pos == 0 then pos = 3 end
+    return string.sub(s, 1, pos)
+	    .. "" .. string.gsub(string.sub(s, pos+1), "(...)", ".%1") 
+		.. "" .. string.sub(string.format("%.0f", v - math.floor(v)), 3) 
+
+end;
+	  self.labSoma.text = '$' .. format_thousand(sheet.soma);
+            </event>
+	    </dataLink>
+	</label>
+
+	    </edit>
+
+		
+</layout>
+
+<!-- Loja de poção: Zerando -->
+ <button name="QuantidadeTodos" text="Z-0" 
+             left="280" top="23" width="36" height="20"
+                    fontStyle="bold">
+		<event name="onDblClick">
+		 if rrpg.getMesaDe(sheet).meuJogador.isMestre then
+		sheet.quantidade = 0
+		sheet.quantidade2 = 0
+		sheet.quantidade3 = 0
+		sheet.quantidade4 = 0
+		sheet.quantidade5 = 0
+		sheet.quantidade6 = 0
+		sheet.quantidade7 = 0
+		sheet.quantidade8 = 0
+		sheet.Soma = 0
+		 else
+		 
+		 showMessage("Apenas o mestre tem permição.");
+		  
+		end;
+		
+		 </event>
+		  </button>
+		  
+ <button name="Skil500" text="Skill-" left="320" top="23" width="45" height="20"
+  fontStyle="bold"> 
+    <event name="onClick">
+	if rrpg.getMesaDe(sheet).meuJogador.isMestre then
+	 local Soma = (sheet.Soma or 0) -500;
+	  if Soma >= 0 then;
+	   sheet.Soma = Soma;
+	    end;
+		 else 
+             showMessage("Apenas o mestre tem permição.")
+		end;
+	  </event>
+	   </button>
+	   
+  <button name="Skill501" text="Skill+" left="370" top="23" width="45" height="20"
+    fontStyle="bold">
+	 <event name="onClick">
+	 if rrpg.getMesaDe(sheet).meuJogador.isMestre then
+	  local Soma = (sheet.Soma or 0) +500;
+	   if Soma >= 0 then 
+	    sheet.Soma = Soma;
+		 end;
+		  else 
+		   showMessage("Apenas o mestre tem permição.")
+		 end;
+	  </event>
+	   </button>
+	   
+	   
+	   
+		
+   
+
+</group>
