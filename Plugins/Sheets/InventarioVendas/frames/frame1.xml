@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<frame width="256" height="223">
+        <draw>
+                <!-- Imagem de fundo -->               
+
+                <image left="0" top="0" right="90" bottom="90" overflowX="stretch" overflowY="stretch">
+                        <anchors left="true" top="true" bottom="true" right="true"/>
+                        <source url="" left="0" right="256" top="0" bottom="223"/>
+                </image>                               
+        </draw>
+</frame>
