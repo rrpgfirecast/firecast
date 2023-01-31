@@ -102,7 +102,7 @@
 		
 		self.newMenuSeparatorItem = newMenuSeparatorItem;
 				
-		local function newMenuItem(caption, flowLayout, onClick)
+		local function newMenuItem(caption, flowLayout)
 			local item = newBaseMenuItem(flowLayout);
 			item.isHover = false;
 		
