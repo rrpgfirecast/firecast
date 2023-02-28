@@ -48,7 +48,7 @@
 	</flowLayout>
 	
 	<script><![CDATA[
-		local __Menuses = {self.flaLayout, self.flaCamadas, self.flaImageOptions};
+		local __Menuses = {self.flaLayout, self.flaCamadas, self.flaImageOptions, self.flaConditionOptions};
 		require("rrpgScene_Clipboard.dlua");
 		require("rrpgScene_Undo.dlua");
 	
