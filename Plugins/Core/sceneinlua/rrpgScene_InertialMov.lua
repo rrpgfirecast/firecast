@@ -18,7 +18,7 @@ local function getInertialMove(viewport)
 		local oldMinX, oldMinY, oldMaxX, oldMaxY;
 		local oldX, oldY;
 				
-		mov.onChange = function()
+		mov.onChange = function()		
 			local x, y = mov:getPos();		
 			local scale = viewport.scale;
 			
@@ -79,7 +79,28 @@ end;
 
 function INERTIAL_pointerMove(viewport, event)
 	local mov = getInertialMove(viewport);
-	mov:pointerMove(event.x, event.y);
+	
+	if rawget(mov, "_resetOnNextMove") == true then
+		rawset(mov, "_resetOnNextMove", false);
+		
+		local oldActive = mov.active;
+		local oldAnimated = mov.animated;
+		
+		mov.active = false;		
+		mov.animated = false;
+		
+		local oldX, oldY = mov:getPos();	
+		
+		mov:pointerUp(event.x, event.y);
+		mov:pointerDown(event.x, event.y);
+		
+		mov.animated = oldAnimated;		
+		mov.active = oldActive;
+		
+		mov:setPos(oldX, oldY);
+	else
+		mov:pointerMove(event.x, event.y);
+	end;	
 end;
 
 function INERTIAL_pointerUp(viewport, event)
@@ -96,6 +117,10 @@ function INERTIAL_Stop(viewport)
 	-- fazer aqui
 end;
 
+function INTERTIAL_ResetOnNextMove(viewport)
+	local mov = getInertialMove(viewport);
+	rawset(mov, "_resetOnNextMove", true); 	
+end;
 
 function RIGHT_BUTTON_INERTIAL_MOV_Start(scene)
 	local viewport = scene.viewport;

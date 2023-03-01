@@ -12,13 +12,16 @@ function TOUCH_NAV_Start(viewport)
 			
 		local listenerBeginZoom = 
 			viewport:listen("onGestureBeginZoom", 
-				function(x, y)
+				function(x, y)			
+					INTERTIAL_ResetOnNextMove(viewport);					
 					return true;					
 				end);
 				
 		local listenerZoom = 
 			viewport:listen("onGestureZoom", 
 				function(x, y, delta)
+					INTERTIAL_ResetOnNextMove(viewport);
+				
 					local refX, refY = viewport:screenToWorld(x, y);
 					local baseForFactor = math.min(viewport.width, viewport.height);					
 					local scaleFactor = delta / baseForFactor;
@@ -36,6 +39,7 @@ function TOUCH_NAV_Start(viewport)
 		local listenerEndZoom = 
 			viewport:listen("onGestureEndZoom", 
 				function(x, y)
+					INTERTIAL_ResetOnNextMove(viewport);				
 					return true;
 				end);	
 
