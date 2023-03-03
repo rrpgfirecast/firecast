@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module sdkVersion="3.6c">
+    <!--The "id" identifies your plugin globally. Must be unique, must contain only alphanumeric characters, underlines and dots and must contain at least 5 characters and a maximum of 40. Once set the ID, you should not change it;)-->
+    <id>GURPSbacana</id>
+    <!--"version" is the version of your plugin. When you release a new version of your module, change here =)-->
+    <version>1.5</version>
+    
+       
+    <info lang="pt-BR">
+        <!--Informações do plugin na língua "pt-BR". Você pode ter várias tags "info", uma para cada tradução que quiser.-->
+        <name>GURPS 4ed Padrão</name>
+        <description>Um plugin para GURPS que esteja minimamente util</description>
+        <author>Hell</author>
+        <contact>xa.andrew@yahoo.com.b</contact>
+    </info>
+	
+	<info lang="en-US">
+        <!--Informações do plugin na língua "pt-BR". Você pode ter várias tags "info", uma para cada tradução que quiser.-->
+        <name>GURPS 4th Standard</name>
+        <description>A plugin for GURPS that is minimally useful</description>
+        <author>Helldemon</author>
+        <contact>xa.andrew@yahoo.com.b</contact>
+    </info>
+</module>

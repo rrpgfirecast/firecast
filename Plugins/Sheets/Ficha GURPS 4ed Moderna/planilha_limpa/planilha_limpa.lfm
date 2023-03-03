@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmplanilha_limpa" formType="sheetTemplate" dataType="gurpspao" title="GURPS 3+1" align="client" theme="light">
+    <tabControl align="client">
+        <tab title="Frente">
+            <import file="1.lfm"/>
+        </tab>
+        <tab title="Verso">
+            <import file="2.lfm"/>
+        </tab>
+
+        <tab title="Historia">
+            <richEdit align="client" backgroundColor="white" defaultFontColor="black" field="txt"/>
+        </tab>
+    </tabControl>
+</form>
+
+

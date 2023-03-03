@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmgurpsnormal" formType="sheetTemplate" dataType="br.com.rrpg.gurps" title="Ficha de GURPS 4ed" align="client" theme="light">
+    <tabControl align="client">
+        <tab title="Frente">
+            <import file="1.lfm"/>
+        </tab>
+        <tab title="Verso">
+            <import file="2.lfm"/>
+        </tab>
+        <tab title="Historia">
+	   		<richEdit align="client" backgroundColor="white" defaultFontColor="black" field="txt"/>
+        </tab>
+    </tabControl>
+</form>

@@ -1,0 +1,917 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmgurpsnormal1_svg" align="client" theme="light" margins="{top=1}">
+    <style>#frmgurpsnormal1_svg path {color: black; strokeColor: black; mode: stretch;} &#xD;
+#frmgurpsnormal1_svg label {fontColor: black; textTrimming: none; wordWrap: false; autoSize: true;}</style>
+    <scrollBox align="client">
+        <rectangle width="1157" height="1616" color="white">&#xD;
+            <image left="0" top="0" width="1157" height="1616" src="images/1.png" style="stretch" optimize="true" compilerOrder="0"/>&#xD;
+            <layout left="1" top="3" width="157" height="23" compilerOrder="599">
+                <button left="0" top="0" width="157" height="24" compilerOrder="600"/>
+            </layout>&#xD;
+            <layout left="172" top="19" width="975" height="22" compilerOrder="603">
+                <textEditor left="0" top="0" width="975" height="22" fontSize="16" fontColor="#000000" field="GURPS_0__Page1_0__TextField14_0_" transparent="true" compilerOrder="604"/>
+            </layout>&#xD;
+            <layout left="1057" top="47" width="55" height="25" compilerOrder="417">
+                <edit transparent="true" fontSize="16.5" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="55" height="26" field="GURPS_0__Page1_0__Total_Pontos_0_" compilerOrder="418"/>
+            </layout>&#xD;
+            <layout left="391" top="49" width="273" height="25" compilerOrder="83">
+                <edit transparent="true" fontSize="16.5" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="273" height="26" field="GURPS_0__Page1_0__Nome_0_" compilerOrder="84"/>
+            </layout>&#xD;
+            <layout left="750" top="49" width="159" height="25" compilerOrder="137">
+                <edit transparent="true" fontSize="16.5" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="159" height="26" field="GURPS_0__Page1_0__Jogador_0_" compilerOrder="138"/>
+            </layout>&#xD;
+            <layout left="395" top="82" width="42" height="25" compilerOrder="289">
+                <edit transparent="true" fontSize="16.5" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="42" height="26" field="GURPS_0__Page1_0__Altura_0_" compilerOrder="290"/>
+            </layout>&#xD;
+            <layout left="486" top="82" width="60" height="25" compilerOrder="291">
+                <edit transparent="true" fontSize="16.5" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="60" height="26" field="GURPS_0__Page1_0__Peso_0_" compilerOrder="292"/>
+            </layout>&#xD;
+            <layout left="713" top="82" width="53" height="25" compilerOrder="293">
+                <edit transparent="true" fontSize="16.5" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="53" height="26" field="GURPS_0__Page1_0__ModificadorTamanho_0_" compilerOrder="294"/>
+            </layout>&#xD;
+            <layout left="826" top="82" width="72" height="25" compilerOrder="295">
+                <edit transparent="true" fontSize="16.5" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="72" height="26" field="GURPS_0__Page1_0__Idade_0_" compilerOrder="296"/>
+            </layout>&#xD;
+            <layout left="1058" top="82" width="52" height="25" compilerOrder="297">
+                <edit transparent="true" fontSize="16.5" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="52" height="26" field="GURPS_0__Page1_0__Pontos_Gastar_0_" compilerOrder="298"/>
+            </layout>&#xD;
+            <layout left="431" top="112" width="684" height="28" compilerOrder="85">
+                <edit transparent="true" fontSize="18.8" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="684" height="29" field="GURPS_0__Page1_0__Aparência_0_" compilerOrder="86"/>
+            </layout>&#xD;
+            <layout left="103" top="182" width="73" height="71" compilerOrder="3">
+                <edit transparent="true" fontSize="40" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="73" height="72" field="GURPS_0__Page1_0__ST_0_" compilerOrder="4"/>
+            </layout>&#xD;
+            <layout left="355" top="182" width="73" height="71" compilerOrder="11">
+                <edit transparent="true" fontSize="40" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="73" height="72" field="GURPS_0__Page1_0__PV_0_" compilerOrder="12"/>
+            </layout>&#xD;
+            <layout left="428" top="182" width="68" height="71" compilerOrder="13">
+                <edit transparent="true" fontSize="40" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="68" height="72" field="GURPS_0__Page1_0__PV_Atual_0_" compilerOrder="14"/>
+            </layout>&#xD;
+            <layout left="587" top="198" width="220" height="28" compilerOrder="139">
+                <edit transparent="true" fontSize="18.8" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="220" height="29" field="GURPS_0__Page1_0__Lingua1_0_" compilerOrder="140"/>
+            </layout>&#xD;
+            <layout left="808" top="198" width="134" height="28" compilerOrder="269">
+                <edit transparent="true" fontSize="18.8" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="134" height="29" field="GURPS_0__Page1_0__Falada1_0_" compilerOrder="270"/>
+            </layout>&#xD;
+            <layout left="943" top="198" width="127" height="28" compilerOrder="279">
+                <edit transparent="true" fontSize="18.8" fontColor="#000000" vertTextAlign="center" left="0" top="0" width="127" height="29" field="GURPS_0__Page1_0__Escrita1_0_" compilerOrder="280"/>
+            </layout>&#xD;
+            <layout left="186" top="199" width="55" height="33" compilerOrder="23">
+                <edit transparent="true" fontSize="20" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="55" height="34" field="GURPS_0__Page1_0__Custo_ST_0_" compilerOrder="24"/>
+            </layout>&#xD;
+            <layout left="505" top="199" width="55" height="33" compilerOrder="81">
+                <edit transparent="true" fontSize="20" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="55" height="34" field="GURPS_0__Page1_0__Custo_PV_0_" compilerOrder="82"/>
+            </layout>&#xD;
+            <layout left="1078" top="202" width="30" height="20" compilerOrder="301">
+                <edit transparent="true" fontSize="12.8" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="30" height="21" field="GURPS_0__Page1_0__Custo_lingua_1_0_" compilerOrder="302"/>
+            </layout>&#xD;
+            <layout left="587" top="225" width="220" height="28" compilerOrder="261">
+                <edit transparent="true" fontSize="18.8" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="220" height="29" field="GURPS_0__Page1_0__Lingua2_0_" compilerOrder="262"/>
+            </layout>&#xD;
+            <layout left="808" top="225" width="134" height="28" compilerOrder="271">
+                <edit transparent="true" fontSize="18.8" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="134" height="29" field="GURPS_0__Page1_0__Falada2_0_" compilerOrder="272"/>
+            </layout>&#xD;
+            <layout left="943" top="225" width="127" height="28" compilerOrder="281">
+                <edit transparent="true" fontSize="18.8" fontColor="#000000" vertTextAlign="center" left="0" top="0" width="127" height="29" field="GURPS_0__Page1_0__Escrita2_0_" compilerOrder="282"/>
+            </layout>&#xD;
+            <layout left="1078" top="229" width="30" height="20" compilerOrder="303">
+                <edit transparent="true" fontSize="12.8" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="30" height="21" field="GURPS_0__Page1_0__Custo_lingua_2_0_" compilerOrder="304"/>
+            </layout>&#xD;
+            <layout left="587" top="252" width="220" height="28" compilerOrder="263">
+                <edit transparent="true" fontSize="18.8" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="220" height="29" field="GURPS_0__Page1_0__Lingua3_0_" compilerOrder="264"/>
+            </layout>&#xD;
+            <layout left="808" top="252" width="134" height="28" compilerOrder="273">
+                <edit transparent="true" fontSize="18.8" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="134" height="29" field="GURPS_0__Page1_0__Falada3_0_" compilerOrder="274"/>
+            </layout>&#xD;
+            <layout left="943" top="252" width="127" height="28" compilerOrder="283">
+                <edit transparent="true" fontSize="18.8" fontColor="#000000" vertTextAlign="center" left="0" top="0" width="127" height="29" field="GURPS_0__Page1_0__Escrita3_0_" compilerOrder="284"/>
+            </layout>&#xD;
+            <layout left="103" top="254" width="73" height="71" compilerOrder="5">
+                <edit transparent="true" fontSize="40" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="73" height="72" field="GURPS_0__Page1_0__DX_0_" compilerOrder="6"/>
+            </layout>&#xD;
+            <layout left="355" top="254" width="73" height="71" compilerOrder="15">
+                <edit transparent="true" fontSize="40" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="73" height="72" field="GURPS_0__Page1_0__Vont_0_" compilerOrder="16"/>
+            </layout>&#xD;
+            <layout left="1078" top="257" width="30" height="20" compilerOrder="305">
+                <edit transparent="true" fontSize="12.8" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="30" height="21" field="GURPS_0__Page1_0__Custo_lingua_3_0_" compilerOrder="306"/>
+            </layout>&#xD;
+            <layout left="186" top="274" width="55" height="33" compilerOrder="25">
+                <edit transparent="true" fontSize="20" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="55" height="34" field="GURPS_0__Page1_0__Custo_DX_0_" compilerOrder="26"/>
+            </layout>&#xD;
+            <layout left="505" top="274" width="55" height="33" compilerOrder="31">
+                <edit transparent="true" fontSize="20" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="55" height="34" field="GURPS_0__Page1_0__Custo_Vont_0_" compilerOrder="32"/>
+            </layout>&#xD;
+            <layout left="587" top="279" width="220" height="28" compilerOrder="265">
+                <edit transparent="true" fontSize="18.8" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="220" height="29" field="GURPS_0__Page1_0__Lingua4_0_" compilerOrder="266"/>
+            </layout>&#xD;
+            <layout left="808" top="279" width="134" height="28" compilerOrder="275">
+                <edit transparent="true" fontSize="18.8" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="134" height="29" field="GURPS_0__Page1_0__Falada4_0_" compilerOrder="276"/>
+            </layout>&#xD;
+            <layout left="943" top="279" width="127" height="28" compilerOrder="285">
+                <edit transparent="true" fontSize="18.8" fontColor="#000000" vertTextAlign="center" left="0" top="0" width="127" height="29" field="GURPS_0__Page1_0__Escrita4_0_" compilerOrder="286"/>
+            </layout>&#xD;
+            <layout left="1078" top="282" width="30" height="20" compilerOrder="307">
+                <edit transparent="true" fontSize="12.8" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="30" height="21" field="GURPS_0__Page1_0__Custo_lingua_4_0_" compilerOrder="308"/>
+            </layout>&#xD;
+            <layout left="587" top="305" width="220" height="28" compilerOrder="267">
+                <edit transparent="true" fontSize="18.8" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="220" height="29" field="GURPS_0__Page1_0__Lingua5_0_" compilerOrder="268"/>
+            </layout>&#xD;
+            <layout left="808" top="305" width="134" height="28" compilerOrder="277">
+                <edit transparent="true" fontSize="18.8" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="134" height="29" field="GURPS_0__Page1_0__Falada5_0_" compilerOrder="278"/>
+            </layout>&#xD;
+            <layout left="943" top="305" width="127" height="28" compilerOrder="287">
+                <edit transparent="true" fontSize="18.8" fontColor="#000000" vertTextAlign="center" left="0" top="0" width="127" height="29" field="GURPS_0__Page1_0__Escrita5_0_" compilerOrder="288"/>
+            </layout>&#xD;
+            <layout left="1078" top="310" width="30" height="20" compilerOrder="309">
+                <edit transparent="true" fontSize="12.8" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="30" height="21" field="GURPS_0__Page1_0__Custo_lingua_5_0_" compilerOrder="310"/>
+            </layout>&#xD;
+            <layout left="103" top="326" width="73" height="71" compilerOrder="9">
+                <edit transparent="true" fontSize="40" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="73" height="72" field="GURPS_0__Page1_0__IQ_0_" compilerOrder="10"/>
+            </layout>&#xD;
+            <layout left="355" top="326" width="73" height="71" compilerOrder="17">
+                <edit transparent="true" fontSize="40" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="73" height="72" field="GURPS_0__Page1_0__Per_0_" compilerOrder="18"/>
+            </layout>&#xD;
+            <layout left="1078" top="347" width="30" height="20" compilerOrder="311">
+                <edit transparent="true" fontSize="12.8" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="30" height="21" field="GURPS_0__Page1_0__Custo_NT_0_" compilerOrder="312"/>
+            </layout>&#xD;
+            <layout left="186" top="348" width="55" height="33" compilerOrder="27">
+                <edit transparent="true" fontSize="20" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="55" height="34" field="GURPS_0__Page1_0__Custo_IQ_0_" compilerOrder="28"/>
+            </layout>&#xD;
+            <layout left="505" top="348" width="55" height="33" compilerOrder="33">
+                <edit transparent="true" fontSize="20" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="55" height="34" field="GURPS_0__Page1_0__Custo_Per_0_" compilerOrder="34"/>
+            </layout>&#xD;
+            <layout left="738" top="349" width="330" height="17" compilerOrder="143">
+                <edit transparent="true" fontSize="10.5" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="330" height="18" field="GURPS_0__Page1_0__NT_0_" compilerOrder="144"/>
+            </layout>&#xD;
+            <layout left="584" top="362" width="56" height="19" compilerOrder="419">
+                <edit transparent="true" fontSize="12" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="56" height="20" field="GURPS_0__Page1_0__RD1a_0_" compilerOrder="420"/>
+            </layout>&#xD;
+            <layout left="640" top="362" width="50" height="19" compilerOrder="431">
+                <edit transparent="true" fontSize="12" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="50" height="20" field="GURPS_0__Page1_0__RD1b_0_" compilerOrder="432"/>
+            </layout>&#xD;
+            <layout left="584" top="380" width="56" height="19" compilerOrder="433">
+                <edit transparent="true" fontSize="12" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="56" height="20" field="GURPS_0__Page1_0__RD2a_0_" compilerOrder="434"/>
+            </layout>&#xD;
+            <layout left="640" top="380" width="50" height="19" compilerOrder="429">
+                <edit transparent="true" fontSize="12" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="50" height="20" field="GURPS_0__Page1_0__RD2b_0_" compilerOrder="430"/>
+            </layout>&#xD;
+            <layout left="705" top="389" width="363" height="28" compilerOrder="141">
+                <edit transparent="true" fontSize="18.8" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="363" height="29" field="GURPS_0__Page1_0__FC1_0_" compilerOrder="142"/>
+            </layout>&#xD;
+            <layout left="1078" top="397" width="30" height="20" compilerOrder="313">
+                <edit transparent="true" fontSize="12.8" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="30" height="21" field="GURPS_0__Page1_0__Custo_FC1_0_" compilerOrder="314"/>
+            </layout>&#xD;
+            <layout left="103" top="399" width="73" height="71" compilerOrder="7">
+                <edit transparent="true" fontSize="40" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="73" height="72" field="GURPS_0__Page1_0__HT_0_" compilerOrder="8"/>
+            </layout>&#xD;
+            <layout left="355" top="399" width="73" height="71" compilerOrder="19">
+                <edit transparent="true" fontSize="40" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="73" height="72" field="GURPS_0__Page1_0__PF_0_" compilerOrder="20"/>
+            </layout>&#xD;
+            <layout left="428" top="399" width="68" height="71" compilerOrder="21">
+                <edit transparent="true" fontSize="40" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="68" height="72" field="GURPS_0__Page1_0__PF_Atual_0_" compilerOrder="22"/>
+            </layout>&#xD;
+            <layout left="584" top="399" width="56" height="19" compilerOrder="435">
+                <edit transparent="true" fontSize="12" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="56" height="20" field="GURPS_0__Page1_0__RD3a_0_" compilerOrder="436"/>
+            </layout>&#xD;
+            <layout left="640" top="399" width="50" height="19" compilerOrder="427">
+                <edit transparent="true" fontSize="12" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="50" height="20" field="GURPS_0__Page1_0__RD3b_0_" compilerOrder="428"/>
+            </layout>&#xD;
+            <layout left="705" top="416" width="363" height="28" compilerOrder="145">
+                <edit transparent="true" fontSize="18.8" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="363" height="29" field="GURPS_0__Page1_0__FC2_0_" compilerOrder="146"/>
+            </layout>&#xD;
+            <layout left="584" top="417" width="56" height="19" compilerOrder="437">
+                <edit transparent="true" fontSize="12" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="56" height="20" field="GURPS_0__Page1_0__RD4a_0_" compilerOrder="438"/>
+            </layout>&#xD;
+            <layout left="640" top="418" width="50" height="19" compilerOrder="425">
+                <edit transparent="true" fontSize="12" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="50" height="20" field="GURPS_0__Page1_0__RD4b_0_" compilerOrder="426"/>
+            </layout>&#xD;
+            <layout left="186" top="423" width="55" height="33" compilerOrder="29">
+                <edit transparent="true" fontSize="20" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="55" height="34" field="GURPS_0__Page1_0__Custo_HT_0_" compilerOrder="30"/>
+            </layout>&#xD;
+            <layout left="505" top="423" width="55" height="33" compilerOrder="35">
+                <edit transparent="true" fontSize="20" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="55" height="34" field="GURPS_0__Page1_0__Custo_PF_0_" compilerOrder="36"/>
+            </layout>&#xD;
+            <layout left="1078" top="424" width="30" height="20" compilerOrder="315">
+                <edit transparent="true" fontSize="12.8" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="30" height="21" field="GURPS_0__Page1_0__Custo_FC2_0_" compilerOrder="316"/>
+            </layout>&#xD;
+            <layout left="584" top="436" width="56" height="19" compilerOrder="439">
+                <edit transparent="true" fontSize="12" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="56" height="20" field="GURPS_0__Page1_0__RD5a_0_" compilerOrder="440"/>
+            </layout>&#xD;
+            <layout left="640" top="437" width="50" height="19" compilerOrder="423">
+                <edit transparent="true" fontSize="12" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="50" height="20" field="GURPS_0__Page1_0__RD5b_0_" compilerOrder="424"/>
+            </layout>&#xD;
+            <layout left="705" top="444" width="363" height="28" compilerOrder="147">
+                <edit transparent="true" fontSize="18.8" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="363" height="29" field="GURPS_0__Page1_0__FC3_0_" compilerOrder="148"/>
+            </layout>&#xD;
+            <layout left="1078" top="450" width="30" height="20" compilerOrder="317">
+                <edit transparent="true" fontSize="12.8" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="30" height="21" field="GURPS_0__Page1_0__Custo_FC3_0_" compilerOrder="318"/>
+            </layout>&#xD;
+            <layout left="584" top="454" width="56" height="19" compilerOrder="441">
+                <edit transparent="true" fontSize="12" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="56" height="20" field="GURPS_0__Page1_0__RD6a_0_" compilerOrder="442"/>
+            </layout>&#xD;
+            <layout left="640" top="455" width="50" height="19" compilerOrder="421">
+                <edit transparent="true" fontSize="12" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="50" height="20" field="GURPS_0__Page1_0__RD6b_0_" compilerOrder="422"/>
+            </layout>&#xD;
+            <layout left="273" top="482" width="53" height="24" compilerOrder="41">
+                <edit transparent="true" fontSize="15.8" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="53" height="25" field="GURPS_0__Page1_0__Base_Carga_0_" compilerOrder="42"/>
+            </layout>&#xD;
+            <layout left="434" top="482" width="49" height="24" compilerOrder="77">
+                <edit transparent="true" fontSize="15.8" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="49" height="25" field="GURPS_0__Page1_0__Dano_GdP_0_" compilerOrder="78"/>
+            </layout>&#xD;
+            <layout left="522" top="482" width="50" height="24" compilerOrder="79">
+                <edit transparent="true" fontSize="15.8" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="50" height="25" field="GURPS_0__Page1_0__Dano_GeB_0_" compilerOrder="80"/>
+            </layout>&#xD;
+            <layout left="163" top="505" width="92" height="28" compilerOrder="73">
+                <edit transparent="true" fontSize="18.8" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="92" height="29" field="GURPS_0__Page1_0__Vel_Basica_0_" compilerOrder="74"/>
+            </layout>&#xD;
+            <layout left="444" top="505" width="85" height="28" compilerOrder="75">
+                <edit transparent="true" fontSize="18.8" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="85" height="29" field="GURPS_0__Page1_0__Desl_Basico_0_" compilerOrder="76"/>
+            </layout>&#xD;
+            <layout left="260" top="511" width="36" height="20" compilerOrder="37">
+                <edit transparent="true" fontSize="12.8" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="36" height="21" field="GURPS_0__Page1_0__Custo_Vel_Basica_0_" compilerOrder="38"/>
+            </layout>&#xD;
+            <layout left="532" top="511" width="36" height="20" compilerOrder="39">
+                <edit transparent="true" fontSize="12.8" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="36" height="21" field="GURPS_0__Page1_0__Custo_Desl_Basico_0_" compilerOrder="40"/>
+            </layout>&#xD;
+            <layout left="601" top="511" width="72" height="66" compilerOrder="443">
+                <edit transparent="true" fontSize="40" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="72" height="67" field="GURPS_0__Page1_0__Aparar_0_" compilerOrder="444"/>
+            </layout>&#xD;
+            <layout left="813" top="521" width="297" height="28" compilerOrder="149">
+                <edit transparent="true" fontSize="18.8" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="297" height="29" field="GURPS_0__Page1_0__Reação_Aparencia_0_" compilerOrder="150"/>
+            </layout>&#xD;
+            <layout left="764" top="548" width="347" height="26" compilerOrder="151">
+                <edit transparent="true" fontSize="17.3" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="347" height="27" field="GURPS_0__Page1_0__Status_0_" compilerOrder="152"/>
+            </layout>&#xD;
+            <layout left="806" top="576" width="306" height="26" compilerOrder="157">
+                <edit transparent="true" fontSize="17.3" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="306" height="27" field="GURPS_0__Page1_0__Reputação1_0_" compilerOrder="158"/>
+            </layout>&#xD;
+            <layout left="235" top="578" width="60" height="24" compilerOrder="43">
+                <edit transparent="true" fontSize="15.8" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="60" height="25" field="GURPS_0__Page1_0__Base_Carga_Nenhuma_0_" compilerOrder="44"/>
+            </layout>&#xD;
+            <layout left="372" top="578" width="60" height="24" compilerOrder="45">
+                <edit transparent="true" fontSize="15.8" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="60" height="25" field="GURPS_0__Page1_0__DB_Nenhuma_0_" compilerOrder="46"/>
+            </layout>&#xD;
+            <layout left="525" top="578" width="43" height="24" compilerOrder="47">
+                <edit transparent="true" fontSize="15.8" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="43" height="25" field="GURPS_0__Page1_0__Esquiva_0_" compilerOrder="48"/>
+            </layout>&#xD;
+            <layout left="585" top="580" width="106" height="18" compilerOrder="447">
+                <edit transparent="true" fontSize="10" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="106" height="19" field="GURPS_0__Page1_0__Aparar2_0_" compilerOrder="448"/>
+            </layout>&#xD;
+            <layout left="703" top="603" width="409" height="26" compilerOrder="155">
+                <edit transparent="true" fontSize="17.3" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="409" height="27" field="GURPS_0__Page1_0__Reputação2_0_" compilerOrder="156"/>
+            </layout>&#xD;
+            <layout left="235" top="605" width="60" height="24" compilerOrder="57">
+                <edit transparent="true" fontSize="15.8" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="60" height="25" field="GURPS_0__Page1_0__Base_Carga_Leve_0_" compilerOrder="58"/>
+            </layout>&#xD;
+            <layout left="372" top="605" width="60" height="24" compilerOrder="59">
+                <edit transparent="true" fontSize="15.8" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="60" height="25" field="GURPS_0__Page1_0__DB_Leve_0_" compilerOrder="60"/>
+            </layout>&#xD;
+            <layout left="525" top="605" width="43" height="24" compilerOrder="49">
+                <edit transparent="true" fontSize="15.8" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="43" height="25" field="GURPS_0__Page1_0__Esquiva_1_0_" compilerOrder="50"/>
+            </layout>&#xD;
+            <layout left="601" top="629" width="72" height="66" compilerOrder="445">
+                <edit transparent="true" fontSize="40" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="72" height="67" field="GURPS_0__Page1_0__Bloqueio_0_" compilerOrder="446"/>
+            </layout>&#xD;
+            <layout left="703" top="629" width="409" height="26" compilerOrder="153">
+                <edit transparent="true" fontSize="17.3" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="409" height="27" field="GURPS_0__Page1_0__Reputação3_0_" compilerOrder="154"/>
+            </layout>&#xD;
+            <layout left="235" top="632" width="60" height="24" compilerOrder="61">
+                <edit transparent="true" fontSize="15.8" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="60" height="25" field="GURPS_0__Page1_0__Base_Carga_Media_0_" compilerOrder="62"/>
+            </layout>&#xD;
+            <layout left="372" top="632" width="60" height="24" compilerOrder="63">
+                <edit transparent="true" fontSize="15.8" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="60" height="25" field="GURPS_0__Page1_0__DB_Media_0_" compilerOrder="64"/>
+            </layout>&#xD;
+            <layout left="525" top="632" width="43" height="24" compilerOrder="51">
+                <edit transparent="true" fontSize="15.8" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="43" height="25" field="GURPS_0__Page1_0__Esquiva_2_0_" compilerOrder="52"/>
+            </layout>&#xD;
+            <layout left="703" top="655" width="409" height="26" compilerOrder="159">
+                <edit transparent="true" fontSize="17.3" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="409" height="27" field="GURPS_0__Page1_0__Reputação4_0_" compilerOrder="160"/>
+            </layout>&#xD;
+            <layout left="235" top="658" width="60" height="24" compilerOrder="65">
+                <edit transparent="true" fontSize="15.8" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="60" height="25" field="GURPS_0__Page1_0__Base_Carga_Pesada_0_" compilerOrder="66"/>
+            </layout>&#xD;
+            <layout left="372" top="658" width="60" height="24" compilerOrder="67">
+                <edit transparent="true" fontSize="15.8" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="60" height="25" field="GURPS_0__Page1_0__DB_Pesada_0_" compilerOrder="68"/>
+            </layout>&#xD;
+            <layout left="525" top="658" width="43" height="24" compilerOrder="53">
+                <edit transparent="true" fontSize="15.8" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="43" height="25" field="GURPS_0__Page1_0__Esquiva_3_0_" compilerOrder="54"/>
+            </layout>&#xD;
+            <layout left="703" top="682" width="409" height="26" compilerOrder="161">
+                <edit transparent="true" fontSize="17.3" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="409" height="27" field="GURPS_0__Page1_0__Reputação5_0_" compilerOrder="162"/>
+            </layout>&#xD;
+            <layout left="235" top="686" width="60" height="24" compilerOrder="69">
+                <edit transparent="true" fontSize="15.8" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="60" height="25" field="GURPS_0__Page1_0__Base_Carga_Mto_Pesada_0_" compilerOrder="70"/>
+            </layout>&#xD;
+            <layout left="372" top="686" width="60" height="24" compilerOrder="71">
+                <edit transparent="true" fontSize="15.8" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="60" height="25" field="GURPS_0__Page1_0__DB_Mto_Pesada_0_" compilerOrder="72"/>
+            </layout>&#xD;
+            <layout left="525" top="686" width="43" height="24" compilerOrder="55">
+                <edit transparent="true" fontSize="15.8" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="43" height="25" field="GURPS_0__Page1_0__Esquiva_4_0_" compilerOrder="56"/>
+            </layout>&#xD;
+            <layout left="585" top="696" width="106" height="18" compilerOrder="601">
+                <edit transparent="true" fontSize="10" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="106" height="19" field="GURPS_0__Page1_0__Bloqueio2_0_" compilerOrder="602"/>
+            </layout>&#xD;
+            <layout left="45" top="748" width="457" height="30" compilerOrder="135">
+                <edit transparent="true" fontSize="20" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="457" height="31" field="GURPS_0__Page1_0__Vantagem1_0_" compilerOrder="136"/>
+            </layout>&#xD;
+            <layout left="510" top="756" width="53" height="20" compilerOrder="299">
+                <edit transparent="true" fontSize="12.8" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="53" height="21" field="GURPS_0__Page1_0__Custo_Vantagem_1_0_" compilerOrder="300"/>
+            </layout>&#xD;
+            <layout left="589" top="777" width="286" height="33" compilerOrder="187">
+                <edit transparent="true" fontSize="20" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="286" height="34" field="GURPS_0__Page1_0__Pericia1_0_" compilerOrder="188"/>
+            </layout>&#xD;
+            <layout left="877" top="777" width="36" height="33" compilerOrder="217">
+                <edit transparent="true" fontSize="20" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="36" height="34" field="GURPS_0__Page1_0__NH1_0_" compilerOrder="218"/>
+            </layout>&#xD;
+            <layout left="939" top="777" width="40" height="33" compilerOrder="449">
+                <edit transparent="true" fontSize="20" fontColor="#000000" vertTextAlign="center" left="0" top="0" width="40" height="34" field="GURPS_0__Page1_0__NH_Relativo_1A_0_" compilerOrder="450"/>
+            </layout>&#xD;
+            <layout left="981" top="777" width="34" height="33" compilerOrder="451">
+                <edit transparent="true" fontSize="20" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="34" height="34" field="GURPS_0__Page1_0__NH_Relativo_1B_0_" compilerOrder="452"/>
+            </layout>&#xD;
+            <layout left="1017" top="777" width="31" height="33" compilerOrder="453">
+                <edit transparent="true" fontSize="20" fontColor="#000000" vertTextAlign="center" left="0" top="0" width="31" height="34" field="GURPS_0__Page1_0__Tipo_1_0_" compilerOrder="454"/>
+            </layout>&#xD;
+            <layout left="45" top="778" width="457" height="30" compilerOrder="87">
+                <edit transparent="true" fontSize="20" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="457" height="31" field="GURPS_0__Page1_0__Vantagem2_0_" compilerOrder="88"/>
+            </layout>&#xD;
+            <layout left="1055" top="786" width="55" height="20" compilerOrder="319">
+                <edit transparent="true" fontSize="12.8" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="55" height="21" field="GURPS_0__Page1_0__Custo_Pericia_1_0_" compilerOrder="320"/>
+            </layout>&#xD;
+            <layout left="510" top="788" width="53" height="20" compilerOrder="369">
+                <edit transparent="true" fontSize="12.8" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="53" height="21" field="GURPS_0__Page1_0__Custo_Vantagem_2_0_" compilerOrder="370"/>
+            </layout>&#xD;
+            <layout left="45" top="810" width="457" height="30" compilerOrder="89">
+                <edit transparent="true" fontSize="20" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="457" height="31" field="GURPS_0__Page1_0__Vantagem3_0_" compilerOrder="90"/>
+            </layout>&#xD;
+            <layout left="589" top="810" width="286" height="33" compilerOrder="163">
+                <edit transparent="true" fontSize="20" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="286" height="34" field="GURPS_0__Page1_0__Pericia2_0_" compilerOrder="164"/>
+            </layout>&#xD;
+            <layout left="877" top="810" width="36" height="33" compilerOrder="189">
+                <edit transparent="true" fontSize="20" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="36" height="34" field="GURPS_0__Page1_0__NH2_0_" compilerOrder="190"/>
+            </layout>&#xD;
+            <layout left="939" top="810" width="40" height="33" compilerOrder="455">
+                <edit transparent="true" fontSize="20" fontColor="#000000" vertTextAlign="center" left="0" top="0" width="40" height="34" field="GURPS_0__Page1_0__NH_Relativo_2A_0_" compilerOrder="456"/>
+            </layout>&#xD;
+            <layout left="981" top="810" width="34" height="33" compilerOrder="457">
+                <edit transparent="true" fontSize="20" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="34" height="34" field="GURPS_0__Page1_0__NH_Relativo_2B_0_" compilerOrder="458"/>
+            </layout>&#xD;
+            <layout left="1017" top="810" width="31" height="33" compilerOrder="459">
+                <edit transparent="true" fontSize="20" fontColor="#000000" vertTextAlign="center" left="0" top="0" width="31" height="34" field="GURPS_0__Page1_0__Tipo_2_0_" compilerOrder="460"/>
+            </layout>&#xD;
+            <layout left="1055" top="816" width="55" height="20" compilerOrder="321">
+                <edit transparent="true" fontSize="12.8" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="55" height="21" field="GURPS_0__Page1_0__Custo_Pericia_2_0_" compilerOrder="322"/>
+            </layout>&#xD;
+            <layout left="510" top="818" width="53" height="20" compilerOrder="371">
+                <edit transparent="true" fontSize="12.8" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="53" height="21" field="GURPS_0__Page1_0__Custo_Vantagem_3_0_" compilerOrder="372"/>
+            </layout>&#xD;
+            <layout left="589" top="840" width="286" height="33" compilerOrder="165">
+                <edit transparent="true" fontSize="20" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="286" height="34" field="GURPS_0__Page1_0__Pericia3_0_" compilerOrder="166"/>
+            </layout>&#xD;
+            <layout left="877" top="840" width="36" height="33" compilerOrder="191">
+                <edit transparent="true" fontSize="20" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="36" height="34" field="GURPS_0__Page1_0__NH3_0_" compilerOrder="192"/>
+            </layout>&#xD;
+            <layout left="939" top="840" width="40" height="33" compilerOrder="465">
+                <edit transparent="true" fontSize="20" fontColor="#000000" vertTextAlign="center" left="0" top="0" width="40" height="34" field="GURPS_0__Page1_0__NH_Relativo_3A_0_" compilerOrder="466"/>
+            </layout>&#xD;
+            <layout left="981" top="840" width="34" height="33" compilerOrder="463">
+                <edit transparent="true" fontSize="20" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="34" height="34" field="GURPS_0__Page1_0__NH_Relativo_3B_0_" compilerOrder="464"/>
+            </layout>&#xD;
+            <layout left="1017" top="840" width="31" height="33" compilerOrder="461">
+                <edit transparent="true" fontSize="20" fontColor="#000000" vertTextAlign="center" left="0" top="0" width="31" height="34" field="GURPS_0__Page1_0__Tipo_3_0_" compilerOrder="462"/>
+            </layout>&#xD;
+            <layout left="45" top="841" width="457" height="30" compilerOrder="91">
+                <edit transparent="true" fontSize="20" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="457" height="31" field="GURPS_0__Page1_0__Vantagem4_0_" compilerOrder="92"/>
+            </layout>&#xD;
+            <layout left="1055" top="846" width="55" height="20" compilerOrder="323">
+                <edit transparent="true" fontSize="12.8" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="55" height="21" field="GURPS_0__Page1_0__Custo_Pericia_3_0_" compilerOrder="324"/>
+            </layout>&#xD;
+            <layout left="510" top="848" width="53" height="20" compilerOrder="373">
+                <edit transparent="true" fontSize="12.8" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="53" height="21" field="GURPS_0__Page1_0__Custo_Vantagem_4_0_" compilerOrder="374"/>
+            </layout>&#xD;
+            <layout left="589" top="871" width="286" height="33" compilerOrder="1">
+                <edit transparent="true" fontSize="20" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="286" height="34" field="GURPS_0__Page1_0__Pericia4_0_" compilerOrder="2"/>
+            </layout>&#xD;
+            <layout left="877" top="871" width="36" height="33" compilerOrder="193">
+                <edit transparent="true" fontSize="20" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="36" height="34" field="GURPS_0__Page1_0__NH4_0_" compilerOrder="194"/>
+            </layout>&#xD;
+            <layout left="939" top="871" width="40" height="33" compilerOrder="471">
+                <edit transparent="true" fontSize="20" fontColor="#000000" vertTextAlign="center" left="0" top="0" width="40" height="34" field="GURPS_0__Page1_0__NH_Relativo_4A_0_" compilerOrder="472"/>
+            </layout>&#xD;
+            <layout left="981" top="871" width="34" height="33" compilerOrder="469">
+                <edit transparent="true" fontSize="20" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="34" height="34" field="GURPS_0__Page1_0__NH_Relativo_4B_0_" compilerOrder="470"/>
+            </layout>&#xD;
+            <layout left="1017" top="871" width="31" height="33" compilerOrder="467">
+                <edit transparent="true" fontSize="20" fontColor="#000000" vertTextAlign="center" left="0" top="0" width="31" height="34" field="GURPS_0__Page1_0__Tipo_4_0_" compilerOrder="468"/>
+            </layout>&#xD;
+            <layout left="45" top="872" width="457" height="30" compilerOrder="93">
+                <edit transparent="true" fontSize="20" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="457" height="31" field="GURPS_0__Page1_0__Vantagem5_0_" compilerOrder="94"/>
+            </layout>&#xD;
+            <layout left="1055" top="878" width="55" height="20" compilerOrder="325">
+                <edit transparent="true" fontSize="12.8" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="55" height="21" field="GURPS_0__Page1_0__Custo_Pericia_4_0_" compilerOrder="326"/>
+            </layout>&#xD;
+            <layout left="510" top="880" width="53" height="20" compilerOrder="375">
+                <edit transparent="true" fontSize="12.8" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="53" height="21" field="GURPS_0__Page1_0__Custo_Vantagem_5_0_" compilerOrder="376"/>
+            </layout>&#xD;
+            <layout left="45" top="902" width="457" height="30" compilerOrder="95">
+                <edit transparent="true" fontSize="20" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="457" height="31" field="GURPS_0__Page1_0__Vantagem6_0_" compilerOrder="96"/>
+            </layout>&#xD;
+            <layout left="589" top="902" width="286" height="33" compilerOrder="167">
+                <edit transparent="true" fontSize="20" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="286" height="34" field="GURPS_0__Page1_0__Pericia5_0_" compilerOrder="168"/>
+            </layout>&#xD;
+            <layout left="877" top="902" width="36" height="33" compilerOrder="195">
+                <edit transparent="true" fontSize="20" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="36" height="34" field="GURPS_0__Page1_0__NH5_0_" compilerOrder="196"/>
+            </layout>&#xD;
+            <layout left="939" top="902" width="40" height="33" compilerOrder="483">
+                <edit transparent="true" fontSize="20" fontColor="#000000" vertTextAlign="center" left="0" top="0" width="40" height="34" field="GURPS_0__Page1_0__NH_Relativo_5A_0_" compilerOrder="484"/>
+            </layout>&#xD;
+            <layout left="981" top="902" width="34" height="33" compilerOrder="479">
+                <edit transparent="true" fontSize="20" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="34" height="34" field="GURPS_0__Page1_0__NH_Relativo_5B_0_" compilerOrder="480"/>
+            </layout>&#xD;
+            <layout left="1017" top="902" width="31" height="33" compilerOrder="475">
+                <edit transparent="true" fontSize="20" fontColor="#000000" vertTextAlign="center" left="0" top="0" width="31" height="34" field="GURPS_0__Page1_0__Tipo_5_0_" compilerOrder="476"/>
+            </layout>&#xD;
+            <layout left="1055" top="909" width="55" height="20" compilerOrder="327">
+                <edit transparent="true" fontSize="12.8" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="55" height="21" field="GURPS_0__Page1_0__Custo_Pericia_5_0_" compilerOrder="328"/>
+            </layout>&#xD;
+            <layout left="510" top="910" width="53" height="20" compilerOrder="377">
+                <edit transparent="true" fontSize="12.8" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="53" height="21" field="GURPS_0__Page1_0__Custo_Vantagem_6_0_" compilerOrder="378"/>
+            </layout>&#xD;
+            <layout left="589" top="933" width="286" height="33" compilerOrder="169">
+                <edit transparent="true" fontSize="20" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="286" height="34" field="GURPS_0__Page1_0__Pericia6_0_" compilerOrder="170"/>
+            </layout>&#xD;
+            <layout left="877" top="933" width="36" height="33" compilerOrder="197">
+                <edit transparent="true" fontSize="20" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="36" height="34" field="GURPS_0__Page1_0__NH6_0_" compilerOrder="198"/>
+            </layout>&#xD;
+            <layout left="939" top="933" width="40" height="33" compilerOrder="481">
+                <edit transparent="true" fontSize="20" fontColor="#000000" vertTextAlign="center" left="0" top="0" width="40" height="34" field="GURPS_0__Page1_0__NH_Relativo_6A_0_" compilerOrder="482"/>
+            </layout>&#xD;
+            <layout left="981" top="933" width="34" height="33" compilerOrder="477">
+                <edit transparent="true" fontSize="20" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="34" height="34" field="GURPS_0__Page1_0__NH_Relativo_6B_0_" compilerOrder="478"/>
+            </layout>&#xD;
+            <layout left="1017" top="933" width="31" height="33" compilerOrder="473">
+                <edit transparent="true" fontSize="20" fontColor="#000000" vertTextAlign="center" left="0" top="0" width="31" height="34" field="GURPS_0__Page1_0__Tipo_6_0_" compilerOrder="474"/>
+            </layout>&#xD;
+            <layout left="45" top="934" width="457" height="30" compilerOrder="97">
+                <edit transparent="true" fontSize="20" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="457" height="31" field="GURPS_0__Page1_0__Vantagem7_0_" compilerOrder="98"/>
+            </layout>&#xD;
+            <layout left="1055" top="940" width="55" height="20" compilerOrder="329">
+                <edit transparent="true" fontSize="12.8" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="55" height="21" field="GURPS_0__Page1_0__Custo_Pericia_6_0_" compilerOrder="330"/>
+            </layout>&#xD;
+            <layout left="510" top="941" width="53" height="20" compilerOrder="379">
+                <edit transparent="true" fontSize="12.8" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="53" height="21" field="GURPS_0__Page1_0__Custo_Vantagem_7_0_" compilerOrder="380"/>
+            </layout>&#xD;
+            <layout left="45" top="964" width="457" height="30" compilerOrder="99">
+                <edit transparent="true" fontSize="20" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="457" height="31" field="GURPS_0__Page1_0__Vantagem8_0_" compilerOrder="100"/>
+            </layout>&#xD;
+            <layout left="589" top="964" width="286" height="33" compilerOrder="171">
+                <edit transparent="true" fontSize="20" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="286" height="34" field="GURPS_0__Page1_0__Pericia7_0_" compilerOrder="172"/>
+            </layout>&#xD;
+            <layout left="877" top="964" width="36" height="33" compilerOrder="199">
+                <edit transparent="true" fontSize="20" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="36" height="34" field="GURPS_0__Page1_0__NH7_0_" compilerOrder="200"/>
+            </layout>&#xD;
+            <layout left="939" top="964" width="40" height="33" compilerOrder="507">
+                <edit transparent="true" fontSize="20" fontColor="#000000" vertTextAlign="center" left="0" top="0" width="40" height="34" field="GURPS_0__Page1_0__NH_Relativo_7A_0_" compilerOrder="508"/>
+            </layout>&#xD;
+            <layout left="981" top="964" width="34" height="33" compilerOrder="499">
+                <edit transparent="true" fontSize="20" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="34" height="34" field="GURPS_0__Page1_0__NH_Relativo_7B_0_" compilerOrder="500"/>
+            </layout>&#xD;
+            <layout left="1017" top="964" width="31" height="33" compilerOrder="491">
+                <edit transparent="true" fontSize="20" fontColor="#000000" vertTextAlign="center" left="0" top="0" width="31" height="34" field="GURPS_0__Page1_0__Tipo_7_0_" compilerOrder="492"/>
+            </layout>&#xD;
+            <layout left="1055" top="971" width="55" height="20" compilerOrder="331">
+                <edit transparent="true" fontSize="12.8" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="55" height="21" field="GURPS_0__Page1_0__Custo_Pericia_7_0_" compilerOrder="332"/>
+            </layout>&#xD;
+            <layout left="510" top="972" width="53" height="20" compilerOrder="381">
+                <edit transparent="true" fontSize="12.8" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="53" height="21" field="GURPS_0__Page1_0__Custo_Vantagem_8_0_" compilerOrder="382"/>
+            </layout>&#xD;
+            <layout left="589" top="994" width="286" height="33" compilerOrder="173">
+                <edit transparent="true" fontSize="20" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="286" height="34" field="GURPS_0__Page1_0__Pericia8_0_" compilerOrder="174"/>
+            </layout>&#xD;
+            <layout left="877" top="994" width="36" height="33" compilerOrder="201">
+                <edit transparent="true" fontSize="20" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="36" height="34" field="GURPS_0__Page1_0__NH8_0_" compilerOrder="202"/>
+            </layout>&#xD;
+            <layout left="939" top="994" width="40" height="33" compilerOrder="505">
+                <edit transparent="true" fontSize="20" fontColor="#000000" vertTextAlign="center" left="0" top="0" width="40" height="34" field="GURPS_0__Page1_0__NH_Relativo_8A_0_" compilerOrder="506"/>
+            </layout>&#xD;
+            <layout left="981" top="994" width="34" height="33" compilerOrder="497">
+                <edit transparent="true" fontSize="20" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="34" height="34" field="GURPS_0__Page1_0__NH_Relativo_8B_0_" compilerOrder="498"/>
+            </layout>&#xD;
+            <layout left="1017" top="994" width="31" height="33" compilerOrder="489">
+                <edit transparent="true" fontSize="20" fontColor="#000000" vertTextAlign="center" left="0" top="0" width="31" height="34" field="GURPS_0__Page1_0__Tipo_8_0_" compilerOrder="490"/>
+            </layout>&#xD;
+            <layout left="45" top="995" width="457" height="30" compilerOrder="101">
+                <edit transparent="true" fontSize="20" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="457" height="31" field="GURPS_0__Page1_0__Vantagem9_0_" compilerOrder="102"/>
+            </layout>&#xD;
+            <layout left="1055" top="1001" width="55" height="20" compilerOrder="333">
+                <edit transparent="true" fontSize="12.8" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="55" height="21" field="GURPS_0__Page1_0__Custo_Pericia_8_0_" compilerOrder="334"/>
+            </layout>&#xD;
+            <layout left="510" top="1003" width="53" height="20" compilerOrder="383">
+                <edit transparent="true" fontSize="12.8" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="53" height="21" field="GURPS_0__Page1_0__Custo_Vantagem_9_0_" compilerOrder="384"/>
+            </layout>&#xD;
+            <layout left="45" top="1026" width="457" height="30" compilerOrder="103">
+                <edit transparent="true" fontSize="20" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="457" height="31" field="GURPS_0__Page1_0__Vantagem10_0_" compilerOrder="104"/>
+            </layout>&#xD;
+            <layout left="589" top="1026" width="286" height="33" compilerOrder="175">
+                <edit transparent="true" fontSize="20" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="286" height="34" field="GURPS_0__Page1_0__Pericia9_0_" compilerOrder="176"/>
+            </layout>&#xD;
+            <layout left="877" top="1026" width="36" height="33" compilerOrder="203">
+                <edit transparent="true" fontSize="20" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="36" height="34" field="GURPS_0__Page1_0__NH9_0_" compilerOrder="204"/>
+            </layout>&#xD;
+            <layout left="939" top="1026" width="40" height="33" compilerOrder="503">
+                <edit transparent="true" fontSize="20" fontColor="#000000" vertTextAlign="center" left="0" top="0" width="40" height="34" field="GURPS_0__Page1_0__NH_Relativo_9A_0_" compilerOrder="504"/>
+            </layout>&#xD;
+            <layout left="981" top="1026" width="34" height="33" compilerOrder="495">
+                <edit transparent="true" fontSize="20" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="34" height="34" field="GURPS_0__Page1_0__NH_Relativo_9B_0_" compilerOrder="496"/>
+            </layout>&#xD;
+            <layout left="1017" top="1026" width="31" height="33" compilerOrder="487">
+                <edit transparent="true" fontSize="20" fontColor="#000000" vertTextAlign="center" left="0" top="0" width="31" height="34" field="GURPS_0__Page1_0__Tipo_9_0_" compilerOrder="488"/>
+            </layout>&#xD;
+            <layout left="1055" top="1031" width="55" height="20" compilerOrder="335">
+                <edit transparent="true" fontSize="12.8" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="55" height="21" field="GURPS_0__Page1_0__Custo_Pericia_9_0_" compilerOrder="336"/>
+            </layout>&#xD;
+            <layout left="510" top="1034" width="53" height="20" compilerOrder="385">
+                <edit transparent="true" fontSize="12.8" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="53" height="21" field="GURPS_0__Page1_0__Custo_Vantagem_10_0_" compilerOrder="386"/>
+            </layout>&#xD;
+            <layout left="45" top="1056" width="457" height="30" compilerOrder="105">
+                <edit transparent="true" fontSize="20" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="457" height="31" field="GURPS_0__Page1_0__Vantagem11_0_" compilerOrder="106"/>
+            </layout>&#xD;
+            <layout left="589" top="1056" width="286" height="33" compilerOrder="177">
+                <edit transparent="true" fontSize="20" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="286" height="34" field="GURPS_0__Page1_0__Pericia10_0_" compilerOrder="178"/>
+            </layout>&#xD;
+            <layout left="877" top="1056" width="36" height="33" compilerOrder="205">
+                <edit transparent="true" fontSize="20" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="36" height="34" field="GURPS_0__Page1_0__NH10_0_" compilerOrder="206"/>
+            </layout>&#xD;
+            <layout left="939" top="1056" width="40" height="33" compilerOrder="501">
+                <edit transparent="true" fontSize="20" fontColor="#000000" vertTextAlign="center" left="0" top="0" width="40" height="34" field="GURPS_0__Page1_0__NH_Relativo_10A_0_" compilerOrder="502"/>
+            </layout>&#xD;
+            <layout left="981" top="1056" width="34" height="33" compilerOrder="493">
+                <edit transparent="true" fontSize="20" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="34" height="34" field="GURPS_0__Page1_0__NH_Relativo_10B_0_" compilerOrder="494"/>
+            </layout>&#xD;
+            <layout left="1017" top="1056" width="31" height="33" compilerOrder="485">
+                <edit transparent="true" fontSize="20" fontColor="#000000" vertTextAlign="center" left="0" top="0" width="31" height="34" field="GURPS_0__Page1_0__Tipo_10_0_" compilerOrder="486"/>
+            </layout>&#xD;
+            <layout left="1055" top="1063" width="55" height="20" compilerOrder="337">
+                <edit transparent="true" fontSize="12.8" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="55" height="21" field="GURPS_0__Page1_0__Custo_Pericia_10_0_" compilerOrder="338"/>
+            </layout>&#xD;
+            <layout left="510" top="1065" width="53" height="20" compilerOrder="387">
+                <edit transparent="true" fontSize="12.8" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="53" height="21" field="GURPS_0__Page1_0__Custo_Vantagem_11_0_" compilerOrder="388"/>
+            </layout>&#xD;
+            <layout left="589" top="1087" width="286" height="33" compilerOrder="179">
+                <edit transparent="true" fontSize="20" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="286" height="34" field="GURPS_0__Page1_0__Pericia11_0_" compilerOrder="180"/>
+            </layout>&#xD;
+            <layout left="877" top="1087" width="36" height="33" compilerOrder="207">
+                <edit transparent="true" fontSize="20" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="36" height="34" field="GURPS_0__Page1_0__NH11_0_" compilerOrder="208"/>
+            </layout>&#xD;
+            <layout left="939" top="1087" width="40" height="33" compilerOrder="531">
+                <edit transparent="true" fontSize="20" fontColor="#000000" vertTextAlign="center" left="0" top="0" width="40" height="34" field="GURPS_0__Page1_0__NH_Relativo_11A_0_" compilerOrder="532"/>
+            </layout>&#xD;
+            <layout left="981" top="1087" width="34" height="33" compilerOrder="523">
+                <edit transparent="true" fontSize="20" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="34" height="34" field="GURPS_0__Page1_0__NH_Relativo_11B_0_" compilerOrder="524"/>
+            </layout>&#xD;
+            <layout left="1017" top="1087" width="31" height="33" compilerOrder="515">
+                <edit transparent="true" fontSize="20" fontColor="#000000" vertTextAlign="center" left="0" top="0" width="31" height="34" field="GURPS_0__Page1_0__Tipo_11_0_" compilerOrder="516"/>
+            </layout>&#xD;
+            <layout left="45" top="1088" width="457" height="30" compilerOrder="107">
+                <edit transparent="true" fontSize="20" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="457" height="31" field="GURPS_0__Page1_0__Vantagem12_0_" compilerOrder="108"/>
+            </layout>&#xD;
+            <layout left="1055" top="1093" width="55" height="20" compilerOrder="339">
+                <edit transparent="true" fontSize="12.8" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="55" height="21" field="GURPS_0__Page1_0__Custo_Pericia_11_0_" compilerOrder="340"/>
+            </layout>&#xD;
+            <layout left="510" top="1095" width="53" height="20" compilerOrder="389">
+                <edit transparent="true" fontSize="12.8" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="53" height="21" field="GURPS_0__Page1_0__Custo_Vantagem_12_0_" compilerOrder="390"/>
+            </layout>&#xD;
+            <layout left="589" top="1119" width="286" height="33" compilerOrder="181">
+                <edit transparent="true" fontSize="20" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="286" height="34" field="GURPS_0__Page1_0__Pericia12_0_" compilerOrder="182"/>
+            </layout>&#xD;
+            <layout left="877" top="1119" width="36" height="33" compilerOrder="209">
+                <edit transparent="true" fontSize="20" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="36" height="34" field="GURPS_0__Page1_0__NH12_0_" compilerOrder="210"/>
+            </layout>&#xD;
+            <layout left="939" top="1119" width="40" height="33" compilerOrder="529">
+                <edit transparent="true" fontSize="20" fontColor="#000000" vertTextAlign="center" left="0" top="0" width="40" height="34" field="GURPS_0__Page1_0__NH_Relativo_12A_0_" compilerOrder="530"/>
+            </layout>&#xD;
+            <layout left="981" top="1119" width="34" height="33" compilerOrder="521">
+                <edit transparent="true" fontSize="20" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="34" height="34" field="GURPS_0__Page1_0__NH_Relativo_12B_0_" compilerOrder="522"/>
+            </layout>&#xD;
+            <layout left="1017" top="1119" width="31" height="33" compilerOrder="513">
+                <edit transparent="true" fontSize="20" fontColor="#000000" vertTextAlign="center" left="0" top="0" width="31" height="34" field="GURPS_0__Page1_0__Tipo_12_0_" compilerOrder="514"/>
+            </layout>&#xD;
+            <layout left="1055" top="1125" width="55" height="20" compilerOrder="341">
+                <edit transparent="true" fontSize="12.8" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="55" height="21" field="GURPS_0__Page1_0__Custo_Pericia_12_0_" compilerOrder="342"/>
+            </layout>&#xD;
+            <layout left="45" top="1149" width="457" height="30" compilerOrder="109">
+                <edit transparent="true" fontSize="20" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="457" height="31" field="GURPS_0__Page1_0__Desvantagem1_0_" compilerOrder="110"/>
+            </layout>&#xD;
+            <layout left="589" top="1149" width="286" height="33" compilerOrder="183">
+                <edit transparent="true" fontSize="20" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="286" height="34" field="GURPS_0__Page1_0__Pericia13_0_" compilerOrder="184"/>
+            </layout>&#xD;
+            <layout left="877" top="1149" width="36" height="33" compilerOrder="211">
+                <edit transparent="true" fontSize="20" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="36" height="34" field="GURPS_0__Page1_0__NH13_0_" compilerOrder="212"/>
+            </layout>&#xD;
+            <layout left="939" top="1149" width="40" height="33" compilerOrder="527">
+                <edit transparent="true" fontSize="20" fontColor="#000000" vertTextAlign="center" left="0" top="0" width="40" height="34" field="GURPS_0__Page1_0__NH_Relativo_13A_0_" compilerOrder="528"/>
+            </layout>&#xD;
+            <layout left="981" top="1149" width="34" height="33" compilerOrder="519">
+                <edit transparent="true" fontSize="20" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="34" height="34" field="GURPS_0__Page1_0__NH_Relativo_13B_0_" compilerOrder="520"/>
+            </layout>&#xD;
+            <layout left="1017" top="1149" width="31" height="33" compilerOrder="511">
+                <edit transparent="true" fontSize="20" fontColor="#000000" vertTextAlign="center" left="0" top="0" width="31" height="34" field="GURPS_0__Page1_0__Tipo_13_0_" compilerOrder="512"/>
+            </layout>&#xD;
+            <layout left="1055" top="1155" width="55" height="20" compilerOrder="343">
+                <edit transparent="true" fontSize="12.8" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="55" height="21" field="GURPS_0__Page1_0__Custo_Pericia_13_0_" compilerOrder="344"/>
+            </layout>&#xD;
+            <layout left="510" top="1158" width="53" height="20" compilerOrder="391">
+                <edit transparent="true" fontSize="12.8" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="53" height="21" field="GURPS_0__Page1_0__Custo_desvantagem_1_0_" compilerOrder="392"/>
+            </layout>&#xD;
+            <layout left="45" top="1181" width="457" height="30" compilerOrder="111">
+                <edit transparent="true" fontSize="20" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="457" height="31" field="GURPS_0__Page1_0__Desvantagem2_0_" compilerOrder="112"/>
+            </layout>&#xD;
+            <layout left="589" top="1181" width="286" height="33" compilerOrder="185">
+                <edit transparent="true" fontSize="20" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="286" height="34" field="GURPS_0__Page1_0__Pericia14_0_" compilerOrder="186"/>
+            </layout>&#xD;
+            <layout left="877" top="1181" width="36" height="33" compilerOrder="213">
+                <edit transparent="true" fontSize="20" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="36" height="34" field="GURPS_0__Page1_0__NH14_0_" compilerOrder="214"/>
+            </layout>&#xD;
+            <layout left="939" top="1181" width="40" height="33" compilerOrder="525">
+                <edit transparent="true" fontSize="20" fontColor="#000000" vertTextAlign="center" left="0" top="0" width="40" height="34" field="GURPS_0__Page1_0__NH_Relativo_14A_0_" compilerOrder="526"/>
+            </layout>&#xD;
+            <layout left="981" top="1181" width="34" height="33" compilerOrder="517">
+                <edit transparent="true" fontSize="20" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="34" height="34" field="GURPS_0__Page1_0__NH_Relativo_14B_0_" compilerOrder="518"/>
+            </layout>&#xD;
+            <layout left="1017" top="1181" width="31" height="33" compilerOrder="509">
+                <edit transparent="true" fontSize="20" fontColor="#000000" vertTextAlign="center" left="0" top="0" width="31" height="34" field="GURPS_0__Page1_0__Tipo_14_0_" compilerOrder="510"/>
+            </layout>&#xD;
+            <layout left="1055" top="1187" width="55" height="20" compilerOrder="345">
+                <edit transparent="true" fontSize="12.8" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="55" height="21" field="GURPS_0__Page1_0__Custo_Pericia_14_0_" compilerOrder="346"/>
+            </layout>&#xD;
+            <layout left="510" top="1188" width="53" height="20" compilerOrder="393">
+                <edit transparent="true" fontSize="12.8" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="53" height="21" field="GURPS_0__Page1_0__Custo_desvantagem_2_0_" compilerOrder="394"/>
+            </layout>&#xD;
+            <layout left="45" top="1211" width="457" height="30" compilerOrder="113">
+                <edit transparent="true" fontSize="20" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="457" height="31" field="GURPS_0__Page1_0__Desvantagem3_0_" compilerOrder="114"/>
+            </layout>&#xD;
+            <layout left="589" top="1211" width="286" height="33" compilerOrder="219">
+                <edit transparent="true" fontSize="20" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="286" height="34" field="GURPS_0__Page1_0__Pericia15_0_" compilerOrder="220"/>
+            </layout>&#xD;
+            <layout left="877" top="1211" width="36" height="33" compilerOrder="215">
+                <edit transparent="true" fontSize="20" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="36" height="34" field="GURPS_0__Page1_0__NH15_0_" compilerOrder="216"/>
+            </layout>&#xD;
+            <layout left="939" top="1211" width="40" height="33" compilerOrder="555">
+                <edit transparent="true" fontSize="20" fontColor="#000000" vertTextAlign="center" left="0" top="0" width="40" height="34" field="GURPS_0__Page1_0__NH_Relativo_15A_0_" compilerOrder="556"/>
+            </layout>&#xD;
+            <layout left="981" top="1211" width="34" height="33" compilerOrder="547">
+                <edit transparent="true" fontSize="20" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="34" height="34" field="GURPS_0__Page1_0__NH_Relativo_15B_0_" compilerOrder="548"/>
+            </layout>&#xD;
+            <layout left="1017" top="1211" width="31" height="33" compilerOrder="539">
+                <edit transparent="true" fontSize="20" fontColor="#000000" vertTextAlign="center" left="0" top="0" width="31" height="34" field="GURPS_0__Page1_0__Tipo_15_0_" compilerOrder="540"/>
+            </layout>&#xD;
+            <layout left="510" top="1218" width="53" height="20" compilerOrder="395">
+                <edit transparent="true" fontSize="12.8" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="53" height="21" field="GURPS_0__Page1_0__Custo_desvantagem_3_0_" compilerOrder="396"/>
+            </layout>&#xD;
+            <layout left="1055" top="1219" width="55" height="20" compilerOrder="347">
+                <edit transparent="true" fontSize="12.8" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="55" height="21" field="GURPS_0__Page1_0__Custo_Pericia_15_0_" compilerOrder="348"/>
+            </layout>&#xD;
+            <layout left="45" top="1242" width="457" height="30" compilerOrder="115">
+                <edit transparent="true" fontSize="20" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="457" height="31" field="GURPS_0__Page1_0__Desvantagem4_0_" compilerOrder="116"/>
+            </layout>&#xD;
+            <layout left="589" top="1242" width="286" height="33" compilerOrder="221">
+                <edit transparent="true" fontSize="20" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="286" height="34" field="GURPS_0__Page1_0__Pericia16_0_" compilerOrder="222"/>
+            </layout>&#xD;
+            <layout left="877" top="1242" width="36" height="33" compilerOrder="223">
+                <edit transparent="true" fontSize="20" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="36" height="34" field="GURPS_0__Page1_0__NH16_0_" compilerOrder="224"/>
+            </layout>&#xD;
+            <layout left="939" top="1242" width="40" height="33" compilerOrder="553">
+                <edit transparent="true" fontSize="20" fontColor="#000000" vertTextAlign="center" left="0" top="0" width="40" height="34" field="GURPS_0__Page1_0__NH_Relativo_16A_0_" compilerOrder="554"/>
+            </layout>&#xD;
+            <layout left="981" top="1242" width="34" height="33" compilerOrder="545">
+                <edit transparent="true" fontSize="20" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="34" height="34" field="GURPS_0__Page1_0__NH_Relativo_16B_0_" compilerOrder="546"/>
+            </layout>&#xD;
+            <layout left="1017" top="1242" width="31" height="33" compilerOrder="537">
+                <edit transparent="true" fontSize="20" fontColor="#000000" vertTextAlign="center" left="0" top="0" width="31" height="34" field="GURPS_0__Page1_0__Tipo_16_0_" compilerOrder="538"/>
+            </layout>&#xD;
+            <layout left="1055" top="1249" width="55" height="20" compilerOrder="349">
+                <edit transparent="true" fontSize="12.8" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="55" height="21" field="GURPS_0__Page1_0__Custo_Pericia_16_0_" compilerOrder="350"/>
+            </layout>&#xD;
+            <layout left="510" top="1250" width="53" height="20" compilerOrder="397">
+                <edit transparent="true" fontSize="12.8" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="53" height="21" field="GURPS_0__Page1_0__Custo_desvantagem_4_0_" compilerOrder="398"/>
+            </layout>&#xD;
+            <layout left="589" top="1272" width="286" height="33" compilerOrder="225">
+                <edit transparent="true" fontSize="20" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="286" height="34" field="GURPS_0__Page1_0__Pericia17_0_" compilerOrder="226"/>
+            </layout>&#xD;
+            <layout left="877" top="1272" width="36" height="33" compilerOrder="227">
+                <edit transparent="true" fontSize="20" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="36" height="34" field="GURPS_0__Page1_0__NH17_0_" compilerOrder="228"/>
+            </layout>&#xD;
+            <layout left="939" top="1272" width="40" height="33" compilerOrder="551">
+                <edit transparent="true" fontSize="20" fontColor="#000000" vertTextAlign="center" left="0" top="0" width="40" height="34" field="GURPS_0__Page1_0__NH_Relativo_17A_0_" compilerOrder="552"/>
+            </layout>&#xD;
+            <layout left="981" top="1272" width="34" height="33" compilerOrder="543">
+                <edit transparent="true" fontSize="20" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="34" height="34" field="GURPS_0__Page1_0__NH_Relativo_17B_0_" compilerOrder="544"/>
+            </layout>&#xD;
+            <layout left="1017" top="1272" width="31" height="33" compilerOrder="535">
+                <edit transparent="true" fontSize="20" fontColor="#000000" vertTextAlign="center" left="0" top="0" width="31" height="34" field="GURPS_0__Page1_0__Tipo_17_0_" compilerOrder="536"/>
+            </layout>&#xD;
+            <layout left="45" top="1273" width="457" height="30" compilerOrder="117">
+                <edit transparent="true" fontSize="20" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="457" height="31" field="GURPS_0__Page1_0__Desvantagem5_0_" compilerOrder="118"/>
+            </layout>&#xD;
+            <layout left="1055" top="1279" width="55" height="20" compilerOrder="351">
+                <edit transparent="true" fontSize="12.8" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="55" height="21" field="GURPS_0__Page1_0__Custo_Pericia_17_0_" compilerOrder="352"/>
+            </layout>&#xD;
+            <layout left="510" top="1282" width="53" height="20" compilerOrder="399">
+                <edit transparent="true" fontSize="12.8" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="53" height="21" field="GURPS_0__Page1_0__Custo_desvantagem_5_0_" compilerOrder="400"/>
+            </layout>&#xD;
+            <layout left="45" top="1304" width="457" height="30" compilerOrder="119">
+                <edit transparent="true" fontSize="20" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="457" height="31" field="GURPS_0__Page1_0__Desvantagem6_0_" compilerOrder="120"/>
+            </layout>&#xD;
+            <layout left="589" top="1304" width="286" height="33" compilerOrder="229">
+                <edit transparent="true" fontSize="20" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="286" height="34" field="GURPS_0__Page1_0__Pericia18_0_" compilerOrder="230"/>
+            </layout>&#xD;
+            <layout left="877" top="1304" width="36" height="33" compilerOrder="231">
+                <edit transparent="true" fontSize="20" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="36" height="34" field="GURPS_0__Page1_0__NH18_0_" compilerOrder="232"/>
+            </layout>&#xD;
+            <layout left="939" top="1304" width="40" height="33" compilerOrder="549">
+                <edit transparent="true" fontSize="20" fontColor="#000000" vertTextAlign="center" left="0" top="0" width="40" height="34" field="GURPS_0__Page1_0__NH_Relativo_18A_0_" compilerOrder="550"/>
+            </layout>&#xD;
+            <layout left="981" top="1304" width="34" height="33" compilerOrder="541">
+                <edit transparent="true" fontSize="20" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="34" height="34" field="GURPS_0__Page1_0__NH_Relativo_18B_0_" compilerOrder="542"/>
+            </layout>&#xD;
+            <layout left="1017" top="1304" width="31" height="33" compilerOrder="533">
+                <edit transparent="true" fontSize="20" fontColor="#000000" vertTextAlign="center" left="0" top="0" width="31" height="34" field="GURPS_0__Page1_0__Tipo_18_0_" compilerOrder="534"/>
+            </layout>&#xD;
+            <layout left="1055" top="1311" width="55" height="20" compilerOrder="353">
+                <edit transparent="true" fontSize="12.8" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="55" height="21" field="GURPS_0__Page1_0__Custo_Pericia_18_0_" compilerOrder="354"/>
+            </layout>&#xD;
+            <layout left="510" top="1312" width="53" height="20" compilerOrder="401">
+                <edit transparent="true" fontSize="12.8" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="53" height="21" field="GURPS_0__Page1_0__Custo_desvantagem_6_0_" compilerOrder="402"/>
+            </layout>&#xD;
+            <layout left="45" top="1334" width="457" height="30" compilerOrder="121">
+                <edit transparent="true" fontSize="20" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="457" height="31" field="GURPS_0__Page1_0__Desvantagem7_0_" compilerOrder="122"/>
+            </layout>&#xD;
+            <layout left="589" top="1335" width="286" height="33" compilerOrder="233">
+                <edit transparent="true" fontSize="20" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="286" height="34" field="GURPS_0__Page1_0__Pericia19_0_" compilerOrder="234"/>
+            </layout>&#xD;
+            <layout left="877" top="1335" width="36" height="33" compilerOrder="235">
+                <edit transparent="true" fontSize="20" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="36" height="34" field="GURPS_0__Page1_0__NH19_0_" compilerOrder="236"/>
+            </layout>&#xD;
+            <layout left="939" top="1335" width="40" height="33" compilerOrder="579">
+                <edit transparent="true" fontSize="20" fontColor="#000000" vertTextAlign="center" left="0" top="0" width="40" height="34" field="GURPS_0__Page1_0__NH_Relativo_19A_0_" compilerOrder="580"/>
+            </layout>&#xD;
+            <layout left="981" top="1335" width="34" height="33" compilerOrder="571">
+                <edit transparent="true" fontSize="20" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="34" height="34" field="GURPS_0__Page1_0__NH_Relativo_19B_0_" compilerOrder="572"/>
+            </layout>&#xD;
+            <layout left="1017" top="1335" width="31" height="33" compilerOrder="563">
+                <edit transparent="true" fontSize="20" fontColor="#000000" vertTextAlign="center" left="0" top="0" width="31" height="34" field="GURPS_0__Page1_0__Tipo_19_0_" compilerOrder="564"/>
+            </layout>&#xD;
+            <layout left="1055" top="1341" width="55" height="20" compilerOrder="355">
+                <edit transparent="true" fontSize="12.8" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="55" height="21" field="GURPS_0__Page1_0__Custo_Pericia_19_0_" compilerOrder="356"/>
+            </layout>&#xD;
+            <layout left="510" top="1342" width="53" height="20" compilerOrder="403">
+                <edit transparent="true" fontSize="12.8" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="53" height="21" field="GURPS_0__Page1_0__Custo_desvantagem_7_0_" compilerOrder="404"/>
+            </layout>&#xD;
+            <layout left="45" top="1366" width="457" height="30" compilerOrder="123">
+                <edit transparent="true" fontSize="20" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="457" height="31" field="GURPS_0__Page1_0__Desvantagem8_0_" compilerOrder="124"/>
+            </layout>&#xD;
+            <layout left="589" top="1366" width="286" height="33" compilerOrder="237">
+                <edit transparent="true" fontSize="20" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="286" height="34" field="GURPS_0__Page1_0__Pericia20_0_" compilerOrder="238"/>
+            </layout>&#xD;
+            <layout left="877" top="1366" width="36" height="33" compilerOrder="239">
+                <edit transparent="true" fontSize="20" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="36" height="34" field="GURPS_0__Page1_0__NH20_0_" compilerOrder="240"/>
+            </layout>&#xD;
+            <layout left="939" top="1366" width="40" height="33" compilerOrder="577">
+                <edit transparent="true" fontSize="20" fontColor="#000000" vertTextAlign="center" left="0" top="0" width="40" height="34" field="GURPS_0__Page1_0__NH_Relativo_20A_0_" compilerOrder="578"/>
+            </layout>&#xD;
+            <layout left="981" top="1366" width="34" height="33" compilerOrder="569">
+                <edit transparent="true" fontSize="20" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="34" height="34" field="GURPS_0__Page1_0__NH_Relativo_20B_0_" compilerOrder="570"/>
+            </layout>&#xD;
+            <layout left="1017" top="1366" width="31" height="33" compilerOrder="561">
+                <edit transparent="true" fontSize="20" fontColor="#000000" vertTextAlign="center" left="0" top="0" width="31" height="34" field="GURPS_0__Page1_0__Tipo_20_0_" compilerOrder="562"/>
+            </layout>&#xD;
+            <layout left="1055" top="1373" width="55" height="20" compilerOrder="357">
+                <edit transparent="true" fontSize="12.8" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="55" height="21" field="GURPS_0__Page1_0__Custo_Pericia_20_0_" compilerOrder="358"/>
+            </layout>&#xD;
+            <layout left="510" top="1374" width="53" height="20" compilerOrder="405">
+                <edit transparent="true" fontSize="12.8" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="53" height="21" field="GURPS_0__Page1_0__Custo_desvantagem_8_0_" compilerOrder="406"/>
+            </layout>&#xD;
+            <layout left="45" top="1396" width="457" height="30" compilerOrder="125">
+                <edit transparent="true" fontSize="20" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="457" height="31" field="GURPS_0__Page1_0__Desvantagem9_0_" compilerOrder="126"/>
+            </layout>&#xD;
+            <layout left="589" top="1397" width="286" height="33" compilerOrder="241">
+                <edit transparent="true" fontSize="20" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="286" height="34" field="GURPS_0__Page1_0__Pericia21_0_" compilerOrder="242"/>
+            </layout>&#xD;
+            <layout left="877" top="1397" width="36" height="33" compilerOrder="243">
+                <edit transparent="true" fontSize="20" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="36" height="34" field="GURPS_0__Page1_0__NH21_0_" compilerOrder="244"/>
+            </layout>&#xD;
+            <layout left="939" top="1397" width="40" height="33" compilerOrder="575">
+                <edit transparent="true" fontSize="20" fontColor="#000000" vertTextAlign="center" left="0" top="0" width="40" height="34" field="GURPS_0__Page1_0__NH_Relativo_21A_0_" compilerOrder="576"/>
+            </layout>&#xD;
+            <layout left="981" top="1397" width="34" height="33" compilerOrder="567">
+                <edit transparent="true" fontSize="20" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="34" height="34" field="GURPS_0__Page1_0__NH_Relativo_21B_0_" compilerOrder="568"/>
+            </layout>&#xD;
+            <layout left="1017" top="1397" width="31" height="33" compilerOrder="559">
+                <edit transparent="true" fontSize="20" fontColor="#000000" vertTextAlign="center" left="0" top="0" width="31" height="34" field="GURPS_0__Page1_0__Tipo_21_0_" compilerOrder="560"/>
+            </layout>&#xD;
+            <layout left="1055" top="1403" width="55" height="20" compilerOrder="359">
+                <edit transparent="true" fontSize="12.8" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="55" height="21" field="GURPS_0__Page1_0__Custo_Pericia_21_0_" compilerOrder="360"/>
+            </layout>&#xD;
+            <layout left="510" top="1406" width="53" height="20" compilerOrder="407">
+                <edit transparent="true" fontSize="12.8" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="53" height="21" field="GURPS_0__Page1_0__Custo_desvantagem_9_0_" compilerOrder="408"/>
+            </layout>&#xD;
+            <layout left="589" top="1427" width="286" height="33" compilerOrder="245">
+                <edit transparent="true" fontSize="20" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="286" height="34" field="GURPS_0__Page1_0__Pericia22_0_" compilerOrder="246"/>
+            </layout>&#xD;
+            <layout left="877" top="1427" width="36" height="33" compilerOrder="247">
+                <edit transparent="true" fontSize="20" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="36" height="34" field="GURPS_0__Page1_0__NH22_0_" compilerOrder="248"/>
+            </layout>&#xD;
+            <layout left="939" top="1427" width="40" height="33" compilerOrder="573">
+                <edit transparent="true" fontSize="20" fontColor="#000000" vertTextAlign="center" left="0" top="0" width="40" height="34" field="GURPS_0__Page1_0__NH_Relativo_22A_0_" compilerOrder="574"/>
+            </layout>&#xD;
+            <layout left="981" top="1427" width="34" height="33" compilerOrder="565">
+                <edit transparent="true" fontSize="20" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="34" height="34" field="GURPS_0__Page1_0__NH_Relativo_22B_0_" compilerOrder="566"/>
+            </layout>&#xD;
+            <layout left="1017" top="1427" width="31" height="33" compilerOrder="557">
+                <edit transparent="true" fontSize="20" fontColor="#000000" vertTextAlign="center" left="0" top="0" width="31" height="34" field="GURPS_0__Page1_0__Tipo_22_0_" compilerOrder="558"/>
+            </layout>&#xD;
+            <layout left="45" top="1428" width="457" height="30" compilerOrder="127">
+                <edit transparent="true" fontSize="20" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="457" height="31" field="GURPS_0__Page1_0__Desvantagem10_0_" compilerOrder="128"/>
+            </layout>&#xD;
+            <layout left="1055" top="1433" width="55" height="20" compilerOrder="361">
+                <edit transparent="true" fontSize="12.8" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="55" height="21" field="GURPS_0__Page1_0__Custo_Pericia_22_0_" compilerOrder="362"/>
+            </layout>&#xD;
+            <layout left="510" top="1436" width="53" height="20" compilerOrder="409">
+                <edit transparent="true" fontSize="12.8" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="53" height="21" field="GURPS_0__Page1_0__Custo_desvantagem_10_0_" compilerOrder="410"/>
+            </layout>&#xD;
+            <layout left="45" top="1459" width="457" height="30" compilerOrder="129">
+                <edit transparent="true" fontSize="20" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="457" height="31" field="GURPS_0__Page1_0__Desvantagem11_0_" compilerOrder="130"/>
+            </layout>&#xD;
+            <layout left="589" top="1459" width="286" height="33" compilerOrder="249">
+                <edit transparent="true" fontSize="20" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="286" height="34" field="GURPS_0__Page1_0__Pericia23_0_" compilerOrder="250"/>
+            </layout>&#xD;
+            <layout left="877" top="1459" width="36" height="33" compilerOrder="251">
+                <edit transparent="true" fontSize="20" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="36" height="34" field="GURPS_0__Page1_0__NH23_0_" compilerOrder="252"/>
+            </layout>&#xD;
+            <layout left="939" top="1459" width="40" height="33" compilerOrder="597">
+                <edit transparent="true" fontSize="20" fontColor="#000000" vertTextAlign="center" left="0" top="0" width="40" height="34" field="GURPS_0__Page1_0__NH_Relativo_23A_0_" compilerOrder="598"/>
+            </layout>&#xD;
+            <layout left="981" top="1459" width="34" height="33" compilerOrder="591">
+                <edit transparent="true" fontSize="20" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="34" height="34" field="GURPS_0__Page1_0__NH_Relativo_23B_0_" compilerOrder="592"/>
+            </layout>&#xD;
+            <layout left="1017" top="1459" width="31" height="33" compilerOrder="585">
+                <edit transparent="true" fontSize="20" fontColor="#000000" vertTextAlign="center" left="0" top="0" width="31" height="34" field="GURPS_0__Page1_0__Tipo_23_0_" compilerOrder="586"/>
+            </layout>&#xD;
+            <layout left="1055" top="1464" width="55" height="20" compilerOrder="363">
+                <edit transparent="true" fontSize="12.8" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="55" height="21" field="GURPS_0__Page1_0__Custo_Pericia_23_0_" compilerOrder="364"/>
+            </layout>&#xD;
+            <layout left="510" top="1466" width="53" height="20" compilerOrder="411">
+                <edit transparent="true" fontSize="12.8" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="53" height="21" field="GURPS_0__Page1_0__Custo_desvantagem_11_0_" compilerOrder="412"/>
+            </layout>&#xD;
+            <layout left="589" top="1489" width="286" height="33" compilerOrder="253">
+                <edit transparent="true" fontSize="20" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="286" height="34" field="GURPS_0__Page1_0__Pericia24_0_" compilerOrder="254"/>
+            </layout>&#xD;
+            <layout left="877" top="1489" width="36" height="33" compilerOrder="255">
+                <edit transparent="true" fontSize="20" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="36" height="34" field="GURPS_0__Page1_0__NH24_0_" compilerOrder="256"/>
+            </layout>&#xD;
+            <layout left="939" top="1489" width="40" height="33" compilerOrder="595">
+                <edit transparent="true" fontSize="20" fontColor="#000000" vertTextAlign="center" left="0" top="0" width="40" height="34" field="GURPS_0__Page1_0__NH_Relativo_24A_0_" compilerOrder="596"/>
+            </layout>&#xD;
+            <layout left="981" top="1489" width="34" height="33" compilerOrder="589">
+                <edit transparent="true" fontSize="20" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="34" height="34" field="GURPS_0__Page1_0__NH_Relativo_24B_0_" compilerOrder="590"/>
+            </layout>&#xD;
+            <layout left="1017" top="1489" width="31" height="33" compilerOrder="583">
+                <edit transparent="true" fontSize="20" fontColor="#000000" vertTextAlign="center" left="0" top="0" width="31" height="34" field="GURPS_0__Page1_0__Tipo_24_0_" compilerOrder="584"/>
+            </layout>&#xD;
+            <layout left="45" top="1490" width="457" height="30" compilerOrder="131">
+                <edit transparent="true" fontSize="20" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="457" height="31" field="GURPS_0__Page1_0__Desvantagem12_0_" compilerOrder="132"/>
+            </layout>&#xD;
+            <layout left="1055" top="1497" width="55" height="20" compilerOrder="365">
+                <edit transparent="true" fontSize="12.8" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="55" height="21" field="GURPS_0__Page1_0__Custo_Pericia_24_0_" compilerOrder="366"/>
+            </layout>&#xD;
+            <layout left="510" top="1498" width="53" height="20" compilerOrder="413">
+                <edit transparent="true" fontSize="12.8" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="53" height="21" field="GURPS_0__Page1_0__Custo_desvantagem_12_0_" compilerOrder="414"/>
+            </layout>&#xD;
+            <layout left="45" top="1520" width="457" height="30" compilerOrder="133">
+                <edit transparent="true" fontSize="20" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="457" height="31" field="GURPS_0__Page1_0__Desvantagem13_0_" compilerOrder="134"/>
+            </layout>&#xD;
+            <layout left="589" top="1520" width="286" height="33" compilerOrder="257">
+                <edit transparent="true" fontSize="20" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="286" height="34" field="GURPS_0__Page1_0__Pericia25_0_" compilerOrder="258"/>
+            </layout>&#xD;
+            <layout left="877" top="1520" width="36" height="33" compilerOrder="259">
+                <edit transparent="true" fontSize="20" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="36" height="34" field="GURPS_0__Page1_0__NH25_0_" compilerOrder="260"/>
+            </layout>&#xD;
+            <layout left="939" top="1520" width="40" height="33" compilerOrder="593">
+                <edit transparent="true" fontSize="20" fontColor="#000000" vertTextAlign="center" left="0" top="0" width="40" height="34" field="GURPS_0__Page1_0__NH_Relativo_25A_0_" compilerOrder="594"/>
+            </layout>&#xD;
+            <layout left="981" top="1520" width="34" height="33" compilerOrder="587">
+                <edit transparent="true" fontSize="20" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="34" height="34" field="GURPS_0__Page1_0__NH_Relativo_25B_0_" compilerOrder="588"/>
+            </layout>&#xD;
+            <layout left="1017" top="1520" width="31" height="33" compilerOrder="581">
+                <edit transparent="true" fontSize="20" fontColor="#000000" vertTextAlign="center" left="0" top="0" width="31" height="34" field="GURPS_0__Page1_0__Tipo_25_0_" compilerOrder="582"/>
+            </layout>&#xD;
+            <layout left="1055" top="1527" width="55" height="20" compilerOrder="367">
+                <edit transparent="true" fontSize="12.8" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="55" height="21" field="GURPS_0__Page1_0__Custo_Pericia_25_0_" compilerOrder="368"/>
+            </layout>&#xD;
+            <layout left="510" top="1528" width="53" height="20" compilerOrder="415">
+                <edit transparent="true" fontSize="12.8" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="53" height="21" field="GURPS_0__Page1_0__Custo_desvantagem_13_0_" compilerOrder="416"/>
+            </layout>&#xD;
+        </rectangle>
+    </scrollBox>
+    <dataLink fields="{&apos;GURPS_0__Page1_0__RD1a_0_&apos;, &apos;GURPS_0__Page1_0__RD2a_0_&apos;, &apos;GURPS_0__Page1_0__RD3a_0_&apos;, &apos;GURPS_0__Page1_0__RD4a_0_&apos;, &apos;GURPS_0__Page1_0__RD5a_0_&apos;, &apos;GURPS_0__Page1_0__RD6a_0_&apos;}" defaultValues="{&apos;Cabeça&apos;, &apos;Tronco&apos;, &apos;Braços&apos;, &apos;Mãos&apos;, &apos;Pernas&apos;, &apos;Pés&apos;}"/>
+</form>
