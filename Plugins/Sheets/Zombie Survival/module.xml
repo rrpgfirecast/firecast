@@ -1,12 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<module sdkVersion="3.5" compilationDate="03042018194859" sdkApiVersion="26" originalPluginFileName="Plugin Zombie Survival.rpk">
+<module sdkVersion="3.6c" compilationDate="03042018194859" sdkApiVersion="26" originalPluginFileName="Plugin Zombie Survival.rpk">
 	<!--O id identifica seu plugin globalmente. Deve ser único, conter apenas caracteres alfanuméricos, underlines, pontos e deve conter ao menos 5 caracteres e um máximo de 40. Uma vez definido o ID, você não deve alterar ele ;) -->
 	<id>ID_PLUGIN_ZOMBIE_SURVIVAL</id>
 	<!--version é a versão do seu plugin. Quando for lançar uma nova versão do seu módulo, altere aqui =) -->
 	<version>1.0</version>
-	<name>Plugin Zombie Survival v1</name>
-	<description>Esse Plugin foi feito a pedido do Wanderley pelo grupo do facebook RRPG Firecasters</description>
-	<author>JuniorMW</author>
-	    <site>http://www.seusite.com.br</site>
-    <contact>Facebook? Twitter? E-Mail?</contact>
+	
+	
+	
+	    
+    
+    <info lang="pt-BR">
+        <!--Informações do plugin na língua "pt-BR". Você pode ter várias tags "info", uma para cada tradução que quiser.-->
+        <name>Plugin Zombie Survival v1</name>
+        <description>Esse Plugin foi feito a pedido do Wanderley pelo grupo do facebook RRPG Firecasters</description>
+        <author>JuniorMW</author>
+        <site>http://www.seusite.com.br</site>
+        <contact>Facebook? Twitter? E-Mail?</contact>
+    </info>
 </module>

@@ -141,7 +141,7 @@
 				
 ## ------------ #### ------------ #### ------------ #### ------------ #### ------------ #### ------------ #### ------------ #### ------------ #### ------------ #### ------------ ####
 ## INICIATIVA ##
-            <layout left="182" top="590" width="100" height="27"> <label align="client" field="Iniciativa" fontColor="#00000" class="padraoCaract"/> </layout> 
+            <layout left="182" top="590" width="100" height="27"> <label align="client" field="Iniciativa" fontColor="#000000" class="padraoCaract"/> </layout> 
 			<dataLink fields="{'DES', 'PER'}">
 					<event name="onChange"> sheet.Iniciativa = (tonumber(sheet.DES) or 0) + (tonumber(sheet.PER) or 0); </event>
 			</dataLink>
@@ -160,7 +160,7 @@
 			<comboBox left="182" top="655" width="100" height="25" field="StatusMoralidade"  items="{'Selvagem', 'Egoísta', 'Moralista', 'Honroso', 'Santo'}" values="{'Selvagem', 'Egoísta', 'Moralista', 'Honroso', Santo}"
 			class="TXT_PCV" fontSize="18"/>
 
-            <layout left="180" top="695" width="100" height="30"> <edit fontColor="#00000" class="NUMEROS" width="100" height="30" field="Moralidade"/> </layout> 
+            <layout left="180" top="695" width="100" height="30"> <edit fontColor="#000000" class="NUMEROS" width="100" height="30" field="Moralidade"/> </layout> 
 
 			<button left="285" top="701" width="14" height="14" text="R" hint="Desc... ">
 				<event name="onClick">
@@ -174,7 +174,7 @@
 
 	## SaudeBASE ##
             <layout left="68" top="770" width="60" height="23">
-                <label align="client" field="Saude_Base" fontSize="20" fontColor="#00000" horzTextAlign="center" vertTextAlign="center"/> </layout> 
+                <label align="client" field="Saude_Base" fontSize="20" fontColor="#000000" horzTextAlign="center" vertTextAlign="center"/> </layout> 
 			<dataLink fields="{'FOR', 'SOR'}">
 					<event name="onChange">                
 						   sheet.Saude_Base = (tonumber(sheet.FOR) or 0) + (tonumber(sheet.SOR) or 0);

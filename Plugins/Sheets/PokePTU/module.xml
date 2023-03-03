@@ -1,13 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<module sdkVersion="3.5" compilationDate="20062021181133" sdkApiVersion="86" originalPluginFileName="PokePTU.rpk" compilationDigest="1bf693a2658282affcee7e1d4abe537f73038016">
+<module sdkVersion="3.6c" compilationDate="20062021181133" sdkApiVersion="86" originalPluginFileName="PokePTU.rpk" compilationDigest="1bf693a2658282affcee7e1d4abe537f73038016">
 	<id>ID_PLAYER_PokemonPTUHITO</id>
 	<version>5.0</version>
-	<name>Hito - Pokémon PTU</name>
-	<description>Essa ficha permite fazer a ficha de jogador e pokémons no sistema Pokémon Tabletop United.</description>
-	<author>Hitoshura</author>
-	<site/>
-	<contact>fliraf@gmail.com</contact>
-    <dataTypes>
-        <dataType title="Hitoshura - Pokemon PTU" name="frmHITOPOKEPTU" lfmFile="PokePTU.lfm">HITO_PLAYER_POKEMONPTU</dataType>
-    </dataTypes>
+	
+	
+	
+	
+	
+    
+    <info lang="pt-BR">
+        <!--Informações do plugin na língua "pt-BR". Você pode ter várias tags "info", uma para cada tradução que quiser.-->
+        <name>Hito - Pokémon PTU</name>
+        <description>Essa ficha permite fazer a ficha de jogador e pokémons no sistema Pokémon Tabletop United.</description>
+        <author>Hitoshura</author>
+        <site/>
+        <contact>fliraf@gmail.com</contact>
+    </info>
 </module>

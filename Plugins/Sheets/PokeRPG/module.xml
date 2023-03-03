@@ -1,13 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<module sdkVersion="3.5" compilationDate="13072020175251" sdkApiVersion="86" originalPluginFileName="PokeRPG.rpk" compilationDigest="d528eb986816fb165e822ccc8a453309db109369">
+<module sdkVersion="3.6c" compilationDate="13072020175251" sdkApiVersion="86" originalPluginFileName="PokeRPG.rpk" compilationDigest="d528eb986816fb165e822ccc8a453309db109369">
 	<id>ID_PLAYER_PokeRPGHITO</id>
 	<version>1.0</version>
-	<name>Hito - PokéRPG</name>
-	<description>Essa ficha permite fazer a ficha de jogador e pokémons no sistema PokéRPG (Facebook).</description>
-	<author>Hitoshura</author>
-	<site/>
-	<contact>fliraf@gmail.com</contact>
-    <dataTypes>
-        <dataType title="Hitoshura - PokéRPG" name="frmHITOPOKERPG" lfmFile="PokeRPG.lfm">HITO_PLAYER_POKERPG</dataType>
-    </dataTypes>
+	
+	
+	
+	
+	
+    
+    <info lang="pt-BR">
+        <!--Informações do plugin na língua "pt-BR". Você pode ter várias tags "info", uma para cada tradução que quiser.-->
+        <name>Hito - PokéRPG</name>
+        <description>Essa ficha permite fazer a ficha de jogador e pokémons no sistema PokéRPG (Facebook).</description>
+        <author>Hitoshura</author>
+        <site/>
+        <contact>fliraf@gmail.com</contact>
+    </info>
 </module>

@@ -249,7 +249,7 @@
 			<layout align="top" height="18" margins="{top=4}">
 				<colorBar num="4"/>
 			</layout>
-			<layout align="top" height="24" margins="top=8">
+			<layout align="top" height="24" margins="{top=8}">
 				<checkBox margins="{left=4}" align="left" field="EnviarNoChat" width="180" fontSize="12" text="Enviar alterações ao chat"/>
 				<dataLink field="EnviarNoChat" defaultValue="false"/>
 				<button align="right" width="80" text="OK!" margins="{right=8}">

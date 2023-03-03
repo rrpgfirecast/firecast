@@ -1,13 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<module sdkVersion="3.5" compilationDate="15032016203158" sdkApiVersion="7" originalPluginFileName="CALL1.rpk">
+<module sdkVersion="3.6c" compilationDate="15032016203158" sdkApiVersion="7" originalPluginFileName="CALL1.rpk">
 	<!--O id identifica seu plugin globalmente. Deve ser único, conter apenas caracteres alfanuméricos, underlines, pontos e deve conter ao menos 5 caracteres e um máximo de 40. Uma vez definido o ID, você não deve alterar ele ;) -->
 	<id>o_CHAMADO</id>
 	<!--version é a versão do seu plugin. Quando for lançar uma nova versão do seu módulo, altere aqui =) -->
 	<version>1.666</version>
-	<name>CALL OF CTHULHU</name>
-	<description>FICHA DE INVESTIGADOR PARA O CHAMADO DE CTHULHU</description>
-	<author>ALIPIO ARAUJO</author>
-	<site/>
-	<contact>www.facebook.com\OArqueiro</contact>
 	
+	
+	
+	
+	
+	
+    <info lang="pt-BR">
+        <!--Informações do plugin na língua "pt-BR". Você pode ter várias tags "info", uma para cada tradução que quiser.-->
+        <name>CALL OF CTHULHU</name>
+        <description>FICHA DE INVESTIGADOR PARA O CHAMADO DE CTHULHU</description>
+        <author>ALIPIO ARAUJO</author>
+        <site/>
+        <contact>www.facebook.com\OArqueiro</contact>
+    </info>
 </module>

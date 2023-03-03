@@ -1,13 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<module sdkVersion="3.5" compilationDate="08042020005937" sdkApiVersion="86" originalPluginFileName="PokePTA.rpk" compilationDigest="50d3680c3fcfad8482a18de70e8c16c05012160e">
+<module sdkVersion="3.6c" compilationDate="08042020005937" sdkApiVersion="86" originalPluginFileName="PokePTA.rpk" compilationDigest="50d3680c3fcfad8482a18de70e8c16c05012160e">
 	<id>ID_PLAYER_PokemonHITO</id>
 	<version>2.1</version>
-	<name>Pokémon - Ficha</name>
-	<description>Essa ficha permite fazer a ficha de jogador e pokémons no sistema do Elfos e Arcanios.</description>
-	<author>Hitoshura</author>
-	<site/>
-	<contact>fliraf@gmail.com</contact>
-    <dataTypes>
-        <dataType title="Hitoshura - Pokemon PTA (Caio)" name="frmHITOPOKE2" lfmFile="PokePTA.lfm">HITO_PLAYER_POKEMON</dataType>
-    </dataTypes>
+	
+	
+	
+	
+	
+    
+    <info lang="pt-BR">
+        <!--Informações do plugin na língua "pt-BR". Você pode ter várias tags "info", uma para cada tradução que quiser.-->
+        <name>Pokémon - Ficha</name>
+        <description>Essa ficha permite fazer a ficha de jogador e pokémons no sistema do Elfos e Arcanios.</description>
+        <author>Hitoshura</author>
+        <site/>
+        <contact>fliraf@gmail.com</contact>
+    </info>
 </module>

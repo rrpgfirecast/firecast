@@ -57,6 +57,7 @@
 		</tab>
 	</tabControl>
     <event name="onNodeReady">
+		<![CDATA[
         internet.download("https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20de%20Reinos%20d20/output/Ficha%20de%20Reinos%20d20.rpk?raw=true",
             function(stream, contentType)
                 local info = rrpg.plugins.getRPKDetails(stream);
@@ -91,5 +92,6 @@
                 -- esta função será chamada constantemente.
                 -- dividir "downloaded" por "total" lhe dará uma porcentagem do download.
             end);
+		]]> 
     </event>
 </form>

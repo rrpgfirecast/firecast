@@ -1,10 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<module sdkVersion="3.5" originalPluginFileName="afkbot.rpk">
+<module sdkVersion="3.6c" originalPluginFileName="afkbot.rpk">
 	<id>AfkBot</id>
 	<version>1.7.1</version>
-	<name>AfkBot</name>
-	<description>Crie uma mensagem padrão para responder quando estiver ocupado. Também protege a mesa de flood de dados e /rir se configurado para tal. Use /afkbot para abrir o popup de configuração.</description>
-	<author>Ambesek</author>
-	<site>http://pt-br.rpgmeister.wikia.com/wiki/Main_Page</site>
-	<contact>vinnyrpgmeister@gmail.com</contact>
+	
+	
+	
+	
+	
+    <info lang="pt-BR">
+        <!--Informações do plugin na língua "pt-BR". Você pode ter várias tags "info", uma para cada tradução que quiser.-->
+        <name>AfkBot</name>
+        <description>Crie uma mensagem padrão para responder quando estiver ocupado. Também protege a mesa de flood de dados e /rir se configurado para tal. Use /afkbot para abrir o popup de configuração.</description>
+        <author>Ambesek</author>
+        <site>http://pt-br.rpgmeister.wikia.com/wiki/Main_Page</site>
+        <contact>vinnyrpgmeister@gmail.com</contact>
+    </info>
 </module>

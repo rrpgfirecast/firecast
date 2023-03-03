@@ -1,10 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<module sdkVersion="3.5">
+<module sdkVersion="3.6c">
 	<id>Ambesek.Warhammer.Fantasy</id>
 	<version>1.0</version>
-	<name>Warhammer Fantasy</name>
-	<description>Ficha para o cenario e sistema Warhammer Fantasy. </description>
-	<author>Ambesek</author>
-	<site/>
-	<contact>vinnyrpgmeister@gmail.com</contact>
+	
+	
+	
+	
+	
+    <info lang="pt-BR">
+        <!--Informações do plugin na língua "pt-BR". Você pode ter várias tags "info", uma para cada tradução que quiser.-->
+        <name>Warhammer Fantasy</name>
+        <description>Ficha para o cenario e sistema Warhammer Fantasy. </description>
+        <author>Ambesek</author>
+        <site/>
+        <contact>vinnyrpgmeister@gmail.com</contact>
+    </info>
 </module>

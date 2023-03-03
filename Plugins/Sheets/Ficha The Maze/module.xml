@@ -1,10 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<module sdkVersion="3.5" compilationDate="04042018152322" sdkApiVersion="34" originalPluginFileName="Ficha The Maze.rpk">
+<module sdkVersion="3.6c" compilationDate="04042018152322" sdkApiVersion="34" originalPluginFileName="Ficha The Maze.rpk">
 	<id>Ambesek.The.Maze</id>
 	<version>3.5.9</version>
-	<name>FichaTheMaze</name>
-	<description>Ficha para o sistema e cenario The Maze. </description>
-	<author>Ambesek</author>
-	<site/>
-	<contact>vinnyrpgmeister@gmail.com</contact>    
+	
+	
+	
+	
+	    
+    <info lang="pt-BR">
+        <!--Informações do plugin na língua "pt-BR". Você pode ter várias tags "info", uma para cada tradução que quiser.-->
+        <name>FichaTheMaze</name>
+        <description>Ficha para o sistema e cenario The Maze. </description>
+        <author>Ambesek</author>
+        <site/>
+        <contact>vinnyrpgmeister@gmail.com</contact>
+    </info>
 </module>

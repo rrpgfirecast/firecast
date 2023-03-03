@@ -1,13 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<module sdkVersion="3.5" compilationDate="28032019225308" sdkApiVersion="86" originalPluginFileName="RPGPokemon.rpk" compilationDigest="ff34b4a056c667e2b91b65d283dfda605af2aed6">
+<module sdkVersion="3.6c" compilationDate="28032019225308" sdkApiVersion="86" originalPluginFileName="RPGPokemon.rpk" compilationDigest="ff34b4a056c667e2b91b65d283dfda605af2aed6">
 	<id>ID_PLAYER_RpgPokemonHITO</id>
 	<version>1.0</version>
-	<name>Pokémon - Ficha</name>
-	<description>Essa ficha permite fazer a ficha de jogador e pokémons no sistema RPG Pokémon.</description>
-	<author>Hitoshura</author>
-	<site/>
-	<contact>fliraf@gmail.com</contact>
-    <dataTypes>
-        <dataType title="Hitoshura - Ficha de Personagem (RPG Pokémon)" name="frmHITORPGPOKE2" lfmFile="RPGPokemon.lfm">HITO_RPGPOKEMON</dataType>
-    </dataTypes>
+	
+	
+	
+	
+	
+    
+    <info lang="pt-BR">
+        <!--Informações do plugin na língua "pt-BR". Você pode ter várias tags "info", uma para cada tradução que quiser.-->
+        <name>Pokémon - Ficha</name>
+        <description>Essa ficha permite fazer a ficha de jogador e pokémons no sistema RPG Pokémon.</description>
+        <author>Hitoshura</author>
+        <site/>
+        <contact>fliraf@gmail.com</contact>
+    </info>
 </module>

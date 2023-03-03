@@ -1,10 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<module sdkVersion="3.5" originalPluginFileName="nicksaver.rpk">
+<module sdkVersion="3.6c" originalPluginFileName="nicksaver.rpk">
 	<id>NickSaver</id>
 	<version>1.2</version>
-	<name>NickSaver</name>
-	<description>Salva o nick e cor de fonte do usuario por mesa. Use /nicksaver para abrir o popup de configuração. </description>
-	<author>Ambesek</author>
-	<site>http://pt-br.rpgmeister.wikia.com/wiki/Main_Page</site>
-	<contact>vinnyrpgmeister@gmail.com</contact>
+	
+	
+	
+	
+	
+    <info lang="pt-BR">
+        <!--Informações do plugin na língua "pt-BR". Você pode ter várias tags "info", uma para cada tradução que quiser.-->
+        <name>NickSaver</name>
+        <description>Salva o nick e cor de fonte do usuario por mesa. Use /nicksaver para abrir o popup de configuração. </description>
+        <author>Ambesek</author>
+        <site>http://pt-br.rpgmeister.wikia.com/wiki/Main_Page</site>
+        <contact>vinnyrpgmeister@gmail.com</contact>
+    </info>
 </module>

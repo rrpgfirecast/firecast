@@ -71,9 +71,11 @@ function messaging.createReceiver(messageName, callback, filters)
 	return obj;
 end;
 
-function messaging.disableReceiver(receiverId)
-	if (type(receiverId) == "table") and (receiverId.disable ~= nil) then
-		receiverId:disable();
+messaging.newReceiver = messaging.createReceiver;
+
+function messaging.disableReceiver(receiverObj)
+	if (type(receiverObj) == "table") and (receiverObj.disable ~= nil) then
+		receiverObj:disable();
 	end;
 end;
 

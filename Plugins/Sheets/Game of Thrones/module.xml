@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<module sdkVersion="3.5">
+<module sdkVersion="3.6c">
     <!--The "id" identifies your plugin globally. Must be unique, must contain only alphanumeric characters, underlines and dots and must contain at least 5 characters and a maximum of 40. Once set the ID, you should not change it;)-->
     <id>Game_of_Thrones</id>
     <!--"version" is the version of your plugin. When you release a new version of your module, change here =)-->
     <version>1.0</version>
-    <name>Game of Thrones</name>
-    <description>Ficha de Personagem do sistema Game of Thrones.</description>
-    <author>thirteen</author>
-    <site>https://www.twitter.com/i_am_thirteen</site>
-    <contact>thirteen#3109</contact>
+    
+    
+    
+    
+    
 <!--                                                            
                                                             
                                                             
@@ -33,4 +33,12 @@
 
 
 -->
+    <info lang="pt-BR">
+        <!--Informações do plugin na língua "pt-BR". Você pode ter várias tags "info", uma para cada tradução que quiser.-->
+        <name>Game of Thrones</name>
+        <description>Ficha de Personagem do sistema Game of Thrones.</description>
+        <author>thirteen</author>
+        <site>https://www.twitter.com/i_am_thirteen</site>
+        <contact>thirteen#3109</contact>
+    </info>
 </module>

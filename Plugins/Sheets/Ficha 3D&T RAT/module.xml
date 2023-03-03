@@ -1,10 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<module sdkVersion="3.5">
+<module sdkVersion="3.6c">
 	<id>Ambesek.3DeT</id>
 	<version>1.0</version>
-	<name>Ficha 3D&amp;T RAT</name>
-	<description>Ficha para Defensores de Toquio 3ª edição, revisado, ampliado e turbinado. </description>
-	<author>Ambesek</author>
-	<site/>
-	<contact>vinnyrpgmeister@gmail.com</contact>
+	
+	
+	
+	
+	
+    <info lang="pt-BR">
+        <!--Informações do plugin na língua "pt-BR". Você pode ter várias tags "info", uma para cada tradução que quiser.-->
+        <name>Ficha 3D&amp;T RAT</name>
+        <description>Ficha para Defensores de Toquio 3ª edição, revisado, ampliado e turbinado. </description>
+        <author>Ambesek</author>
+        <site/>
+        <contact>vinnyrpgmeister@gmail.com</contact>
+    </info>
 </module>

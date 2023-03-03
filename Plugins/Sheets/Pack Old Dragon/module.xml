@@ -1,17 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<module sdkVersion="3.5">
+<module sdkVersion="3.6c">
     <!--The "id" identifies your plugin globally. Must be unique, must contain only alphanumeric characters, underlines and dots and must contain at least 5 characters and a maximum of 40. Once set the ID, you should not change it;)-->
     <id>br.com.rrpg.ODAP_SDK3</id>
     <!--"version" is the version of your plugin. When you release a new version of your module, change here =)-->
     <version>1.5</version>
-    <name>Fichas Old Dragon </name>
-    <description>Pacote com fichas de Old Dragon Aprimorado e suas expansões/cenários</description>
-    <author>AlvagorH</author>
-    <site>http://www.yourwebsite.com</site>
-    <contact>https://www.facebook.com/sean.torres.5/</contact>
-	<dataTypes>
-        <dataType title="Old Dragon Aprimorado - Ficha de Personagem" name="frmOD" lfmFile="OD/OD.lfm">br.com.RRPG.ODAPM_S3</dataType>
-		<dataType title="Senhores da Guerra - Ficha de Personagem" name="frmSdG" lfmFile="SdG/SdG.lfm">br.com.RRPG.SdG_S3</dataType>
-		<dataType title="Thordezilhas - Ficha de Personagem" name="frmTSC" lfmFile="TSC/TSC.lfm">dataType="br.com.RRPG.TSC_S3"</dataType>
-    </dataTypes>
+    
+    
+    
+    
+    
+	
+    <info lang="pt-BR">
+        <!--Informações do plugin na língua "pt-BR". Você pode ter várias tags "info", uma para cada tradução que quiser.-->
+        <name>Fichas Old Dragon </name>
+        <description>Pacote com fichas de Old Dragon Aprimorado e suas expansões/cenários</description>
+        <author>AlvagorH</author>
+        <site>http://www.yourwebsite.com</site>
+        <contact>https://www.facebook.com/sean.torres.5/</contact>
+    </info>
 </module>

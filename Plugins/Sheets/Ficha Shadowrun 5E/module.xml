@@ -1,10 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<module sdkVersion="3.5">
+<module sdkVersion="3.6c">
 	<id>Ambesek.Nefertyne.Shadowrun5E</id>
 	<version>0.1.2</version>
-	<name>Ficha Shadowrun 5E</name>
-	<description>Ficha para o sistema e cenario Shadowrun 5ª edição. </description>
-	<author>Ambesek</author>
-	<site/>
-	<contact>vinnyrpgmeister@gmail.com</contact>
+	
+	
+	
+	
+	
+    <info lang="pt-BR">
+        <!--Informações do plugin na língua "pt-BR". Você pode ter várias tags "info", uma para cada tradução que quiser.-->
+        <name>Ficha Shadowrun 5E</name>
+        <description>Ficha para o sistema e cenario Shadowrun 5ª edição. </description>
+        <author>Ambesek</author>
+        <site/>
+        <contact>vinnyrpgmeister@gmail.com</contact>
+    </info>
 </module>

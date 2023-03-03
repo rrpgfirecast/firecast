@@ -1,11 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<module sdkVersion="3.5" compilationDate="27032022034149" sdkApiVersion="86" originalPluginFileName="Pathfinder 2E.rpk" compilationDigest="baccc941e41bee64e3c981a8da6ba44c875b2ede">
+<module sdkVersion="3.6c" compilationDate="27032022034149" sdkApiVersion="86" originalPluginFileName="Pathfinder 2E.rpk" compilationDigest="baccc941e41bee64e3c981a8da6ba44c875b2ede">
     <id>br.com.rrpg.pathfinder2e</id>
     <version>2.1</version>
-    <name>Pathfinder 2E</name>
-    <description>Ficha Pathfinder 2E 2.1</description>
-    <author>Hirobrin</author>
-    <site>https://firecast.app/pt_br/</site>
-    <contact>Hirobrin</contact>
     
+    
+    
+    
+    
+    
+    <info lang="pt-BR">
+        <!--Informações do plugin na língua "pt-BR". Você pode ter várias tags "info", uma para cada tradução que quiser.-->
+        <name>Pathfinder 2E</name>
+        <description>Ficha Pathfinder 2E 2.1</description>
+        <author>Hirobrin</author>
+        <site>https://firecast.app/pt_br/</site>
+        <contact>Hirobrin</contact>
+    </info>
 </module>

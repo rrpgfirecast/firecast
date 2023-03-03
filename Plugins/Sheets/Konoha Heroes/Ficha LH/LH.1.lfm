@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <form name="frmLH1" align="client" theme="dark">
 
     <scrollBox align="client">
@@ -157,7 +157,7 @@
 			<label left="170" top="25" width="50" height="25" text="Total" horzTextAlign="center"/>
 			<layout left="0" top="50" width="230" height="25">
 				<rectangle margins="{left = 5, right = 5}" align="client" color="DarkRed" opacity="0.5">
-					<rectangle margins="{left = 75" width="50" height="25" align="left" color="White" opacity="0.3"/>
+					<rectangle margins="{left = 75}" width="50" height="25" align="left" color="White" opacity="0.3"/>
 					<rectangle margins="{left = 5}" width="30" height="25" align="left" color="White" opacity="0.5"/>
 					<rectangle margins="{left = 5}" width="50" height="25" align="left" color="White" opacity="0.3"/>
 				</rectangle>
@@ -176,7 +176,7 @@
 			</layout>
 			<layout left="0" top="80" width="230" height="25">
 				<rectangle margins="{left = 5, right = 5}" align="client" color="DarkBlue" opacity="0.5">
-					<rectangle margins="{left = 75" width="50" height="25" align="left" color="White" opacity="0.3"/>
+					<rectangle margins="{left = 75}" width="50" height="25" align="left" color="White" opacity="0.3"/>
 					<rectangle margins="{left = 5}" width="30" height="25" align="left" color="White" opacity="0.5"/>
 					<rectangle margins="{left = 5}" width="50" height="25" align="left" color="White" opacity="0.3"/>
 				</rectangle>
@@ -195,7 +195,7 @@
 			</layout>
 			<layout left="0" top="110" width="230" height="25">
 				<rectangle margins="{left = 5, right = 5}" align="client" color="DarkGreen" opacity="0.5">
-					<rectangle margins="{left = 75" width="50" height="25" align="left" color="White" opacity="0.3"/>
+					<rectangle margins="{left = 75}" width="50" height="25" align="left" color="White" opacity="0.3"/>
 					<rectangle margins="{left = 5}" width="30" height="25" align="left" color="White" opacity="0.5"/>
 					<rectangle margins="{left = 5}" width="50" height="25" align="left" color="White" opacity="0.3"/>
 				</rectangle>

@@ -1,10 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<module sdkVersion="3.5">
+<module sdkVersion="3.6c">
 	<id>FICHA_ACN</id>
 	<version>1.2.2</version>
-	<name>Ficha Ao Cair da Noite</name>
-	<description>Ficha feita para o sistema Ao Cair da Noite</description>
-	<author>Ambesek &amp; Nefertyne</author>
-	<site>http://about:blank</site>
-	<contact>vinnyrpgmeister@gmail.com</contact>
+	
+	
+	
+	
+	
+    <info lang="pt-BR">
+        <!--Informações do plugin na língua "pt-BR". Você pode ter várias tags "info", uma para cada tradução que quiser.-->
+        <name>Ficha Ao Cair da Noite</name>
+        <description>Ficha feita para o sistema Ao Cair da Noite</description>
+        <author>Ambesek &amp; Nefertyne</author>
+        <site>http://about:blank</site>
+        <contact>vinnyrpgmeister@gmail.com</contact>
+    </info>
 </module>

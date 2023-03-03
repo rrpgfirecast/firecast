@@ -10,19 +10,11 @@
         <site>https://kanzaw.itch.io/</site>
         <contact>https://twitter.com/xavier_artpixel</contact>
     </info>
-    <dataTypes>
-        <dataType title="Ficha NoteQuest" name="frmficha_NoteQuest" lfmFile="ficha_NoteQuest.lfm">br_ficha.note.quest</dataType>
-    </dataTypes>
-    <assembledFeatures>
-        <dataTypes>
-            <dataType id="br_ficha.note.quest" formType="sheetTemplate" lfmFile="ficha_NoteQuest.lfm" formName="frmficha_NoteQuest">
-                <info title="Ficha NoteQuest"/>
-            </dataType>
-        </dataTypes>
-    </assembledFeatures>
-    <name>Ficha NoteQuest</name>
-    <description>Sistema de RPG criado por Tiago Junges.</description>
-    <author>Criador do plugin: KanZaw</author>
-    <site>https://kanzaw.itch.io/</site>
-    <contact>https://twitter.com/xavier_artpixel</contact>
+    
+    
+    
+    
+    
+    
+    
 </module>

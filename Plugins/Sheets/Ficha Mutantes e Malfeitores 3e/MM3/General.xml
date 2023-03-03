@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <form name="frmGeneral" align="client">	
 	<template name="HorzLabelEdit">
 		<layout align="left" width="250" margins="{right=5,left=5}">
@@ -134,7 +134,7 @@
 	</template>
 
 	<scrollBox align="client">
-		<rectangle align="top" height="35" color="black" strokeColor="white" strokeSize="1" margins="bottom=5" padding="{top=5,bottom=5}">
+		<rectangle align="top" height="35" color="black" strokeColor="white" strokeSize="1" margins="{bottom=5}" padding="{top=5,bottom=5}">
 			<HorzLabelEdit text="Herói" field="heroi"/>
 
 			<layout align="left" width="350" margins="{right=5,left=5}">
@@ -152,8 +152,8 @@
 			</layout>
 		</rectangle>
 
-		<layout align="top" height="260" margins="bottom=5" padding="{top=5,bottom=5}">
-			<rectangle align="left" width="250" color="black" strokeColor="white" strokeSize="1" margins="right=5">
+		<layout align="top" height="260" margins="{bottom=5}" padding="{top=5,bottom=5}">
+			<rectangle align="left" width="250" color="black" strokeColor="white" strokeSize="1" margins="{right=5}">
 				<label align="top" height="25" text="Atributos" horzTextAlign="center"/>
 
 
@@ -190,7 +190,7 @@
 					</event>
 				</dataLink>
 			</rectangle>
-			<rectangle align="left" width="290" color="black" strokeColor="white" strokeSize="1" margins="right=5">
+			<rectangle align="left" width="290" color="black" strokeColor="white" strokeSize="1" margins="{right=5}">
 				<label align="top" height="25" text="Defesas" horzTextAlign="center"/>
 
 
@@ -226,7 +226,7 @@
 					</event>
 				</dataLink>
 			</rectangle>
-			<rectangle align="left" width="250" color="black" strokeColor="white" strokeSize="1" margins="right=5">
+			<rectangle align="left" width="250" color="black" strokeColor="white" strokeSize="1" margins="{right=5}">
 				<layout align="top" height="5"/>
 
 				<SimpleSum text="Iniciativa" field="iniciativa" atr="agilidade"/>
@@ -237,7 +237,7 @@
 
 				<textEditor align="client" field="anotacoes4" margins="{left=5,right=5,top=5,bottom=5}"/>
 			</rectangle>
-			<rectangle align="left" width="150" color="black" strokeColor="white" strokeSize="1" margins="right=5">
+			<rectangle align="left" width="150" color="black" strokeColor="white" strokeSize="1" margins="{right=5}">
 				<label align="top" height="25" text="Pontos de Poder" horzTextAlign="center"/>
 
 				<HorzLabelEdit2 text="Total" field="ppTotal"/>
@@ -275,7 +275,7 @@
 			</rectangle>
 		</layout>
 
-		<layout align="top" height="300" margins="bottom=5" padding="{top=5,bottom=5}">
+		<layout align="top" height="300" margins="{bottom=5}" padding="{top=5,bottom=5}">
 			<rectangle align="left" width="600" color="black" strokeColor="white" strokeSize="1" margins="{right=5}">
 				<layout align="top" height="25" margins="{top=5}">
 					<button align="left" width="25" text="+" onClick="self.rclAtaques:append()" margins="{left=5}"/>

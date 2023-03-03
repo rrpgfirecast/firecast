@@ -1,10 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<module sdkVersion="3.5" compilationDate="14082017003735" sdkApiVersion="28" originalPluginFileName="PokeIcons.rpk">
+<module sdkVersion="3.6c" compilationDate="14082017003735" sdkApiVersion="28" originalPluginFileName="PokeIcons.rpk">
 	<id>PokeIcons</id>
 	<version>0.8</version>
-	<name>PokeIcons</name>
-	<description>Use comandos e atalhos /unown :numero: pra inserir pokémon no chat. Use /help para mais informações. Use /help para ver opções. </description>
-	<author>Ambesek</author>
-	<site>http://pt-br.rpgmeister.wikia.com/wiki/Main_Page</site>
-	<contact>vinnyrpgmeister@gmail.com</contact>
+	
+	
+	
+	
+	
+    <info lang="pt-BR">
+        <!--Informações do plugin na língua "pt-BR". Você pode ter várias tags "info", uma para cada tradução que quiser.-->
+        <name>PokeIcons</name>
+        <description>Use comandos e atalhos /unown :numero: pra inserir pokémon no chat. Use /help para mais informações. Use /help para ver opções. </description>
+        <author>Ambesek</author>
+        <site>http://pt-br.rpgmeister.wikia.com/wiki/Main_Page</site>
+        <contact>vinnyrpgmeister@gmail.com</contact>
+    </info>
 </module>

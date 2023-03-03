@@ -1,12 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<module sdkVersion="3.5">
+<module sdkVersion="3.6c">
     <!--The "id" identifies your plugin globally. Must be unique, must contain only alphanumeric characters, underlines and dots and must contain at least 5 characters and a maximum of 40. Once set the ID, you should not change it;)-->
     <id>ID_UNICO_PARA_POCAO</id>
     <!--"version" is the version of your plugin. When you release a new version of your module, change here =)-->
     <version>2.0</version>
-    <name>Loja de Poção</name>
-    <description>Facilite sua jogatina e não perca tempo.</description>
-    <author>Will Martins</author>
-    <site/>
-    <contact/>
+    
+    
+    
+    
+    
+    <info lang="pt-BR">
+        <!--Informações do plugin na língua "pt-BR". Você pode ter várias tags "info", uma para cada tradução que quiser.-->
+        <name>Loja de Poção</name>
+        <description>Facilite sua jogatina e não perca tempo.</description>
+        <author>Will Martins</author>
+        <site/>
+        <contact/>
+    </info>
 </module>

@@ -274,7 +274,6 @@ function objs.objectFromHandle(handle)
 		if (eventsOfThis ~= nil) then
 			local eventsIds = {};
 			local idx = 1;
-			local i;
 		
 			for k, v in pairs(eventsOfThis) do
 				eventsIds[idx] = k;
@@ -342,32 +341,7 @@ function objs.hierarchyObjectFromHandle(handle)
 		
 		return ret;
 	end;	
-	
-	--[[
-	function obj:getChildren__()
-		local ret = {};
-		local i;
-		local childCount = _obj_getProp(self.handle, "ChildrenCount");
-		local child;
-		local childHandle;
-		local idxDest = 1;
-			
-		for i = 0, childCount - 1, 1 do
-			childHandle = _gui_getChild(self.handle, i);
-			
-			if (childHandle ~= nil) then							
-				child = gui.fromHandle(childHandle);
-				
-				if (type(child) == "table") then							
-					ret[idxDest] = child;
-					idxDest = idxDest + 1;
-				end
-			end;	
-		end
 		
-		return ret;
-	end;  --]]
-	
 	function obj:findChildByName(childName, recursive, superficialSearch)
 		if recursive == nil then
 			recursive = true;
@@ -415,6 +389,7 @@ function objs.hierarchyObjectFromHandle(handle)
 	end;
 	
 	function obj:getParent() return gui.fromHandle(_gui_getParent(self.handle)) end
+	
 	function obj:setParent(parent) 
 		if (self._parent == parent) then
 			return;
@@ -439,10 +414,7 @@ function objs.hierarchyObjectFromHandle(handle)
 	 function obj:destroy()		 
 		self:removeAllEventListeners();
 	 
-	 	if self._children ~= nil then	 
-			local k;
-	 		local v;	 	
-	 	
+	 	if self._children ~= nil then	 		 	
 		    for k, v in pairs(self._children) do
 		    	if v ~= nil then
 		    		v:setParent(nil);

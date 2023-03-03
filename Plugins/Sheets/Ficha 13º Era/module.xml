@@ -1,12 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<module sdkVersion="3.5">
+<module sdkVersion="3.6c">
     <!--O id identifica seu plugin globalmente. Deve ser único, conter apenas caracteres alfanuméricos, underlines, pontos e deve conter ao menos 5 caracteres e um máximo de 40. Uma vez definido o ID, você não deve alterar ele ;) -->
     <id>FICHA_13_ERA</id>
     <!--version é a versão do seu plugin. Quando for lançar uma nova versão do seu módulo, altere aqui =) -->
     <version>1.0</version>
-    <name>Ficha 13º Era</name>
-    <description>Ficha de personagem para o sistema 13º Era</description>
-    <author>Lincoln Ruteskid</author>
-    <site>https://www.facebook.com/lruteski</site>
-    <contact>lruteski@gmail.com</contact>
+    
+    
+    
+    
+    
+    <info lang="pt-BR">
+        <!--Informações do plugin na língua "pt-BR". Você pode ter várias tags "info", uma para cada tradução que quiser.-->
+        <name>Ficha 13º Era</name>
+        <description>Ficha de personagem para o sistema 13º Era</description>
+        <author>Lincoln Ruteskid</author>
+        <site>https://www.facebook.com/lruteski</site>
+        <contact>lruteski@gmail.com</contact>
+    </info>
 </module>

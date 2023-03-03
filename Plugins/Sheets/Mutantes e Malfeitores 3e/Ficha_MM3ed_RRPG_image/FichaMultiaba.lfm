@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<form name="frm_FM" formType="sheetTemplate" dataType="Ficha_MM3e" title="Ficha Multiaba" align="client" theme="dark">
+<form name="frm_FM" formType="sheetTemplate" dataType="Ficha_MM3e_MultiAba" title="Ficha Multiaba" align="client" theme="dark">
 	<scrollBox align="client">
 		<label left="150" top="0" width="550" height="50" rotationAngle="0" horzTextAlign="leading" text="Os códigos desta aba foram adaptados de Ambesek/RPGMeister no GitHub.\n Obrigado por compartilhar! ^^" />
 		<popup name="popCredit" width="210" height="120" backOpacity="0.4">

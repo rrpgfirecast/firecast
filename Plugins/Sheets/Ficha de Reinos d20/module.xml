@@ -1,10 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<module sdkVersion="3.5">
+<module sdkVersion="3.6c">
 	<id>Ambesek.Nefertyne.Reinos</id>
 	<version>0.9</version>
-	<name>Ficha Reinos d20</name>
-	<description>Ficha para descrição de Reinos e Cidades seguindo o padrão d20system do Livro do Mestre. </description>
-	<author>Ambesek</author>
-	<site/>
-	<contact>vinnyrpgmeister@gmail.com</contact>
+	
+	
+	
+	
+	
+    <info lang="pt-BR">
+        <!--Informações do plugin na língua "pt-BR". Você pode ter várias tags "info", uma para cada tradução que quiser.-->
+        <name>Ficha Reinos d20</name>
+        <description>Ficha para descrição de Reinos e Cidades seguindo o padrão d20system do Livro do Mestre. </description>
+        <author>Ambesek</author>
+        <site/>
+        <contact>vinnyrpgmeister@gmail.com</contact>
+    </info>
 </module>

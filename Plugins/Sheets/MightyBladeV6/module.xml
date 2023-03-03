@@ -1,12 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<module sdkVersion="3.5" compilationDate="26062017215838" sdkApiVersion="26" originalPluginFileName="mb.rpk">
+<module sdkVersion="3.6c" compilationDate="26062017215838" sdkApiVersion="26" originalPluginFileName="mb.rpk">
 	<version>1.0</version>
-	<name>M&amp;B 3.0</name>
-	<description>Ficha MB 3.0</description>
-	<author>FichaEditavel-MarroarOligeiro</author>
-	<site>http://www.seusite.com.br</site>
-	<contact>Facebook? Twitter? E-Mail?</contact>
+	
+	
+	
+	
+	
 	<!--O id identifica seu plugin globalmente. Deve ser único, conter apenas caracteres alfanuméricos, underlines, pontos e deve conter ao menos 5 caracteres e um máximo de 40. Uma vez definido o ID, você não deve alterar ele ;) -->
 	<id>br.FichaDani_MB.3</id>
 	
+    <info lang="pt-BR">
+        <!--Informações do plugin na língua "pt-BR". Você pode ter várias tags "info", uma para cada tradução que quiser.-->
+        <name>M&amp;B 3.0</name>
+        <description>Ficha MB 3.0</description>
+        <author>FichaEditavel-MarroarOligeiro</author>
+        <site>http://www.seusite.com.br</site>
+        <contact>Facebook? Twitter? E-Mail?</contact>
+    </info>
 </module>

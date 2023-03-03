@@ -1,13 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<module sdkVersion="3.5" compilationDate="03042018140242" sdkApiVersion="34" originalPluginFileName="RRPG 1.rpk">
+<module sdkVersion="3.6c" compilationDate="03042018140242" sdkApiVersion="34" originalPluginFileName="RRPG 1.rpk">
 	<!--O id identifica seu plugin globalmente. Deve ser único, conter apenas caracteres alfanuméricos, underlines, pontos e deve conter ao menos 5 caracteres e um máximo de 40. Uma vez definido o ID, você não deve alterar ele ;) -->
 	<id>HdA.LBP</id>
 	<!--version é a versão do seu plugin. Quando for lançar uma nova versão do seu módulo, altere aqui =) -->
 	<version>1.0</version>
-	<name>HdA v1</name>
-	<description>Adiciona suporte para fichas do sistema Oficial de Hora de Aventura.</description>
-	<author>LeandroBP</author>
-	<site>https://www.facebook.com/lebreves</site>
-	<contact>lebreves@gmail.com</contact>
 	
+	
+	
+	
+	
+	
+    <info lang="pt-BR">
+        <!--Informações do plugin na língua "pt-BR". Você pode ter várias tags "info", uma para cada tradução que quiser.-->
+        <name>HdA v1</name>
+        <description>Adiciona suporte para fichas do sistema Oficial de Hora de Aventura.</description>
+        <author>LeandroBP</author>
+        <site>https://www.facebook.com/lebreves</site>
+        <contact>lebreves@gmail.com</contact>
+    </info>
 </module>

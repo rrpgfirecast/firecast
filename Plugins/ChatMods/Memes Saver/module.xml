@@ -1,10 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<module sdkVersion="3.5">
+<module sdkVersion="3.6c">
 	<id>MemesSaver</id>
 	<version>0.3.1</version>
-	<name>Memes Saver</name>
-	<description>Permite criar e salvar seus proprios memes. Use /help para ver opções. </description>
-	<author>Vinny Ambesek</author>
-	<site>http://pt-br.rpgmeister.wikia.com/wiki/Main_Page</site>
-	<contact>vinnyrpgmeister@gmail.com</contact>
+	
+	
+	
+	
+	
+    <info lang="pt-BR">
+        <!--Informações do plugin na língua "pt-BR". Você pode ter várias tags "info", uma para cada tradução que quiser.-->
+        <name>Memes Saver</name>
+        <description>Permite criar e salvar seus proprios memes. Use /help para ver opções. </description>
+        <author>Vinny Ambesek</author>
+        <site>http://pt-br.rpgmeister.wikia.com/wiki/Main_Page</site>
+        <contact>vinnyrpgmeister@gmail.com</contact>
+    </info>
 </module>

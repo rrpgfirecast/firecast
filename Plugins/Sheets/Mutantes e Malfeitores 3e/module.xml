@@ -1,10 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<module sdkVersion="3.5">
+<module sdkVersion="3.6c">
 	<id>MM3e_RRPG_Gilgante</id>
 	<version>2019-12-28</version>
-	<name>M&amp;M3e</name>
-	<description>Ficha para Mutantes e Malfeitores 3a edicao com frente, verso, aba de pericias, aba de lista de poderes, aba de Logs, aba de Consultas, rolagens de pericias, defesas, ataques e iniciativa.</description>
-	<author>Janus e Gilgante</author>
-	<site>http://www.rrpg.com.br</site>
-	<contact>Adicione os usuarios Janus ou Gilgante</contact>
+	
+	
+	
+	
+	
+    <info lang="pt-BR">
+        <!--Informações do plugin na língua "pt-BR". Você pode ter várias tags "info", uma para cada tradução que quiser.-->
+        <name>M&amp;M3e</name>
+        <description>Ficha para Mutantes e Malfeitores 3a edicao com frente, verso, aba de pericias, aba de lista de poderes, aba de Logs, aba de Consultas, rolagens de pericias, defesas, ataques e iniciativa.</description>
+        <author>Janus e Gilgante</author>
+        <site>http://www.rrpg.com.br</site>
+        <contact>Adicione os usuarios Janus ou Gilgante</contact>
+    </info>
 </module>

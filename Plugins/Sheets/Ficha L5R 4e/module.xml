@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<module sdkVersion="3.6" compilationDate="13082021050924" sdkApiVersion="86" originalPluginFileName="L5R 4e (Cálculos Automáticos).rpk" compilationDigest="00f11df80f97692222758424122595a42aa65f88">
+<module sdkVersion="3.6c" compilationDate="13082021050924" sdkApiVersion="86" originalPluginFileName="L5R 4e (Cálculos Automáticos).rpk" compilationDigest="00f11df80f97692222758424122595a42aa65f88">
     <!--The "id" identifies your plugin globally. Must be unique, must contain only alphanumeric characters, underlines and dots and must contain at least 5 characters and a maximum of 40. Once set the ID, you should not change it;)-->
     <id>Ficha_de_L5R_4e_SDK_3.5</id>
     <!--"version" is the version of your plugin. When you release a new version of your module, change here =)-->

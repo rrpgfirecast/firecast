@@ -1,12 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<module sdkVersion="3.5">
+<module sdkVersion="3.6c">
 	<!--O id identifica seu plugin globalmente. Deve ser único, conter apenas caracteres alfanuméricos, underlines, pontos e deve conter ao menos 5 caracteres e um máximo de 40. Uma vez definido o ID, você não deve alterar ele ;) -->
 	<id>Autolog</id>
 	<!--version é a versão do seu plugin. Quando for lançar uma nova versão do seu módulo, altere aqui =) -->
 	<version>1.2.6</version>
-	<name>Autolog</name>
-	<description>Salva automaticamente o log das mesas na pasta "Documentos\RRPG\Complementos\Autolog\Logs"</description>
-	<author>Dniester "Tyras" Amorim de Aguiar</author>
-	<site>N/A</site>
-	<contact>mrfishjr@gmail.com</contact>
+	
+	
+	
+	
+	
+    <info lang="pt-BR">
+        <!--Informações do plugin na língua "pt-BR". Você pode ter várias tags "info", uma para cada tradução que quiser.-->
+        <name>Autolog</name>
+        <description>Salva automaticamente o log das mesas na pasta "Documentos\RRPG\Complementos\Autolog\Logs"</description>
+        <author>Dniester "Tyras" Amorim de Aguiar</author>
+        <site>N/A</site>
+        <contact>mrfishjr@gmail.com</contact>
+    </info>
 </module>

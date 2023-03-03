@@ -367,8 +367,8 @@ function ndb.load(fileName, userName)
 	end;
 	
 	openDB = ndb.openNodeDatabaseFromHandle(_obj_newObject("TLocalLuaNodeDatabase"));
-	_localOpenNDBs[expandedName] = openDB;
 	_obj_invoke(openDB.handle, "SetupLocalFile", expandedName, userName);		
+	_localOpenNDBs[expandedName] = openDB;	
 	return ndb.getRoot(openDB);
 end;
 

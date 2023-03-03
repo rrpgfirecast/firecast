@@ -1,10 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<module sdkVersion="3.5">
+<module sdkVersion="3.6c">
 	<id>Ambesek.Pathfinder.2e</id>
 	<version>1.0.1</version>
-	<name>Ficha Pathfinder 2e</name>
-	<description>Ficha feita para o sistema Pathfinder 2e.</description>
-	<author>Ambesek</author>
-	<site>http://pt-br.rpgmeister.wikia.com/wiki/Main_Page</site>
-	<contact>vinnyrpgmeister@gmail.com</contact>
+	
+	
+	
+	
+	
+    <info lang="pt-BR">
+        <!--Informações do plugin na língua "pt-BR". Você pode ter várias tags "info", uma para cada tradução que quiser.-->
+        <name>Ficha Pathfinder 2e</name>
+        <description>Ficha feita para o sistema Pathfinder 2e.</description>
+        <author>Ambesek</author>
+        <site>http://pt-br.rpgmeister.wikia.com/wiki/Main_Page</site>
+        <contact>vinnyrpgmeister@gmail.com</contact>
+    </info>
 </module>

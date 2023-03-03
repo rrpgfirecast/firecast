@@ -1,10 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<module sdkVersion="3.5">
+<module sdkVersion="3.6c">
     <id>DeadZoneRPG_2.0</id>
     <version>2.3</version>
-    <name>Dead Zone 2.0</name>
-    <description>Plugin para o rpg Dead Zone.</description>
-    <author>Allan e Samelfero</author>
-    <site></site>
-    <contact>Discord: (CoM4nDanT3)#9025 e samelfero#5996</contact>
+    
+    
+    
+    
+    
+    <info lang="pt-BR">
+        <!--Informações do plugin na língua "pt-BR". Você pode ter várias tags "info", uma para cada tradução que quiser.-->
+        <name>Dead Zone 2.0</name>
+        <description>Plugin para o rpg Dead Zone.</description>
+        <author>Allan e Samelfero</author>
+        <site/>
+        <contact>Discord: (CoM4nDanT3)#9025 e samelfero#5996</contact>
+    </info>
 </module>
