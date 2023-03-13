@@ -30,6 +30,7 @@
             <image left="0" top="0" width="918" height="1188" src="images/Pg1.png" style="stretch" optimize="true" compilerOrder="0"/>
 ## Cabeçalho ##
             <layout left="649" top="52" width="250" height="50" >
+			
                 <edit transparent="true" class="padraocabeca"  width="250" height="30" field="Disposicao" fontStyle="bold"/>
             </layout> 
             <layout left="0" top="55" width="200" height="50">

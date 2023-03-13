@@ -10,8 +10,15 @@
         <tab title="Historia">
             <import file="3.lfm"/>
         </tab>
+        <tab title="Roll Itens">
+            <import file="RollItens.lfm"/>
+        </tab>
+        <tab title="Loja">
+            <import file="Loja.lfm"/>
+        </tab>
         <tab title="Creditos">
             <import file="creditos.lfm"/>
         </tab>
+        
     </tabControl>
 </form>

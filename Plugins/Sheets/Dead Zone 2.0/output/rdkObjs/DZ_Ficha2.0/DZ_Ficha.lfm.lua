@@ -8332,11 +8332,328 @@ local function constructNew_frmDZ_Ficha()
 
     obj.tab4 = GUI.fromHandle(_obj_newObject("tab"));
     obj.tab4:setParent(obj.tabControl1);
-    obj.tab4:setTitle("Creditos");
+    obj.tab4:setTitle("Roll Itens");
     obj.tab4:setName("tab4");
 
+    obj.frmRollItens = GUI.fromHandle(_obj_newObject("form"));
+    obj.frmRollItens:setParent(obj.tab4);
+    obj.frmRollItens:setName("frmRollItens");
+    obj.frmRollItens:setAlign("client");
+    obj.frmRollItens:setTheme("light");
+    obj.frmRollItens:setMargins({top=1});
+
+
+        function rolarDado(sheet)
+        local minhaMesa = Firecast.getRoomOf(sheet)
+        if minhaMesa == nil then
+          -- A sheet não está associada a uma sala no Firecast, então não podemos rolar dados
+          return
+        end
+        
+        local chat = minhaMesa.chat
+      
+        -- Definir tabela de mapeamento de resultados
+        local mapeamento = {
+          [1] = "Boneco de Ação, Balança de Precisão",
+          [2] = "Livro de Endereços, Roupa de Couro, Carteira de cigarros 2d10",
+          [3] = "Ataduras Adesivas, Tecido, Caixa de munição Fuzil",
+          [4] = "Compressor De Ar, Barbeador Elétrico, Câmera Tecpix",
+          [7] = "Purificador de ar. Óleo Lubrificante Anal",
+          [8] = "Secretária Eletrônica, Camisinhas, Cabeça de Manequim",
+          [9] = "Antissépticos, Frascos, Pólvora",
+          [10] = "CD de Áudio, Radio de Pilha, 1d10 Comida enlatada. Como rações.",  
+          [12] = "Mamadeira, Leite em Pó, Caneta, Tanque de hidrogênio explosivo, d10 de dano em um raio de 5m",
+          [13] = "Monitor e Receptor de Bebê, Filtro para Máscara de Gás",
+          [14] = "Assadeira, Bolsa com Artigos Esportivos",
+          [15] = "Bandagem Grande, Material Esterilizante",
+          [16] = "Bola de Beisebol, Colete a Prova de Balas", 
+          [17] = "Luva de Beisebol, Máscara de Beisebol, Pacote de Cocaína",
+          [18] = "Bola de Basquete, Tênis Adidas, Poster Cristiano Ronaldo",  
+          [19] = "Balança de Banheiro, Silver Tape, Tanque de hélio, o suficiente para encher 30 balões. Quando inalado, bônus de +2 em testes de disfarçar a voz de criança por 1 minuto.",
+          [20] = "Bateria, Playboy, Vibrador, Munição d10",
+          [21] = "Carregador de Bateria, Fone de Ouvido",
+          [22] = "Arma de Brinquedo, Bola de Futebol, Rifle Destruído",
+          [23] = "Munição de Pistola, Televisão Portátil",
+          [24] = "Lençol, Pinto de Borracha, Contador de Radiação",
+          [25] = "Sino, Caixinha Bailarina, 1d10 barras de proteína.",
+          [26] = "Bicicleta de Criança e Esportiva, Ácido Corrosivo", 
+          [27] = "Carrinho de Supermercado, Controle de Vídeo Game",
+          [28] = "Sino de Bicicleta, Roupa de Ciclista, Machado de Incêndio",
+          [29] = "Capacete de Bicicleta, Óculos de sol Importado",
+          [30] = "Binóculos, Bilhete com Senha de Cofre",
+          [31] = "Manguito de Pressão Arterial, Estetoscópio",
+          [32] = "Jogo de Tabuleiro, Cartas Eróticas, Mochila Velha",
+          [33] = "Livro, Tablet da Apple, Coleira de Cachorro",
+          [34] = "Bola de Boliche, Televisão, Chopeira",
+          [35] = "Pino de Boliche, Esmaltes de Unhas",
+          [36] = "Míni Serra, Martelo, Graxa, Garrafas de Vinho",
+          [37] = "Caixa à Prova de Fogo e Água, com Chave",
+          [38] = "Luvas de Boxe, Saco de Luta, Oculos Escuro Aviador",
+          [39] = "Kit de Maquiagem, Máscara de Gás, Motoserra", 
+          [40] = "Exterminador de Insetos, Isqueiro",
+          [41] = "Alicate de Corte de Cabo, Saco de Cimento 50 Kg",
+          [42] = "Abraçadeiras Saco com 100, Máscara de Gás", 
+          [43] = "Calculadora, Painel Solar, 1d10 Baterias",
+          [44] = "Computador, Kit de Unha, Saca Rolhas",
+          [45] = "Câmera infravermelho, Micro-ondas, Kit Primeiro Socorros",
+          [46] = "Barraca de Acampamento, 8 pessoas",
+          [47] = "Cigarros 2d10, Mapa e Bilhete, Lanterna sem Pilhas",
+          [48] = "Abridor de Latas, Caixinha de Fosforo.",
+          [49] = "Vela, Sapatos Femininos, Roupas Femininas",
+          [50] = "Canos hidráulicos, Jogo de Panelas, Lata de Gasolina",
+          [51] = "Reservatório de Água Potável, Soco Inglês",
+          [52] = "Revolver Velho, Cantil, Luvas Esportivas",
+          [53] = "Controle de Garagem, Pilhas, Caixa de Metal", 
+          [54] = "Kit de Primeiro Socorros, Papel Higiênico,",
+          [55] = "Enlatados, Wisky, Bola de Futebol,",
+          [56] = "Espada do Conan, Cinto, Cabeça Empalada",
+          [57] = "Secador, Compressor, Violão, Cigarros 2d10",
+          [58] = "Capa de Chuva, Kit de Solda",
+          [59] = "Distintivo Policial, Pistola, Espelho",
+          [60] = "Livro de Receitas, Baú Metal Com Dinheiro",
+          [61] = "Barril de Chope Metal, Cilindro para Fermentação",
+          [62] = "Material para Peixes e Anfíbios, Vara de Pesca",
+          [63] = "Roupa de Guarda de Transito, Par de Algemas",
+          [64] = "Absorvente, Pilulas Anticoncepcionais, Remédio Abortivo",
+          [65] = "Cilindro de Gás Letal, Cilindro de Oxigênio, Motor", 
+          [66] = "Central Radio Comunicador, Granadas, Lâmpadas",
+          [67] = "Microscópio, Iodo, Fogão Portátil, Bomba não detonada. Qualquer impacto forte fará com que ele exploda. D10 de dano em um raio de 5m. Pesado, pode ser largado ou catapultado, mas não arremessado com os braços.",
+          [68] = "Corda de Alpinismo, Cabide, Linha de Pesca, Iscas",
+          [69] = "Impressora, Álbum Completo Michael Jackson",
+          [70] = "Laser Verde, Cadeado Resistente com Chaves",
+          [71] = "Disquete Velho, Roupa do Super Homem, Homem Aranha",
+          [72] = "Moto Guardada, Chaves Reservas, Caixa Fechada - Surpresa",
+          [73] = "Ração de Cachorro, Gato Animal Com Filhotes, Vídeo Game",
+          [74] = "Canoa Esportiva, Nadadeiras, Mala de Senha Fechado",
+          [75] = "Extintor de Incêndio, Galão de Gasolina",
+          [76] = "Velas de Rituais, Cadeira de Massagem, Esteira",
+          [77] = "Crucifixo, Bandeira Americana Velha, Roupa de Padre",
+          [78] = "DVD de Sexo Gay, Paraquedas, Botas Militar",
+          [79] = "Carro de Controle Remoto, Remédios",
+          [80] = "Cabo de Chupeta, Cortador de Grama",
+          [81] = "Colar Cervical, Bateria de Carro, Ventilador Industrial",
+          [82] = "Armadura Medieval, Moto Serra, Caixa de Reparo",
+          [83] = "Armadilha Bomba Caseira, Caixa Aberta de Metal Resistente",
+          [84] = "Carrinho Improvisado de Combustível",
+          [85] = "Aparelho GPS, Chaves de uma Embarcação",
+          [86] = "Cinto de Acessórios, Guarda Chuva, Kit Odontológico",
+          [87] = "Cesto de Carregar Animal, Isqueiro Velho",
+          [88] = "Armadilha de Urso, Caixa de Pregos",
+          [89] = "Mochila de Hidratação, Revolver Enferrujado",
+          [90] = "Caixa de Coca Cola, Um saco de fertilizante de 50 kg.",
+          [91] = "Relógio de Pulso, Pá Militar, Comprimidos. Cure 1d3 de saúde. Chance de salvar contra veneno ou usar para perder 2 pontos de um valor aleatório em Atributo.",
+          [92] = "Pé de Cabra, Pesos Para Academia",
+          [93] = "Serra Manual de Construção",
+          [94] = "Arma de Paintball, Corda, Algema",
+          [95] = "Guitarra, Alarme Despertador",
+          [96] = "Filtro para Aquário, Desentupidor de Borracha",
+          [97] = "Sino de Vento Sonoro com Pequenos Metais Brilhantes",
+          [98] = "Sensor de Presença Sonoro",
+          [99] = "Chocalho, Megafone, Cordas de Violão",
+          [100] = "Sensor de Estacionamento Wifi",
+          [101] = "Uma bateria de carro descarregada. Contém ácido sulfúrico: veneno (1d10).",
+          [102] = "Uniforme Do Exercito Alemão",
+          [103] = "Alicate Cortador de Cerca, Bússola",
+          [104] = "Coldre, Lâmpadas, Liquidificador",
+          [105] = "Bastão de Luz Química Laranja",
+          [106] = "Máscara de gás - 1 Filtro, Isqueiro",
+          [107] = "Cigarro (1- 20), Bola de Tênis",
+          [108] = "Mapa, Atlas Marcado Com Estradas",
+          [109] = "Rádio Comunicador Simples",
+          [110] = "Apito para Cachorro, Bíblia Sagrada",
+          [111] = "Microscópio, Frascos Cilíndricos de Vidro, Frascos Quimicos",
+          [112] = "Chaves de um Helicóptero, Quepe Policial",
+          [113] = "Cela de Cavalo para Montaria",
+          [114] = "Armadilha Improvisada Escopeta",
+          [115] = "Peruca, Seios de Silicone, Lanterna Velha",
+          [116] = "Corda (9 Metros), Boneco UFC",
+          [117] = "Saco com Drogas, Centrifuga, Produtos Químicos", 
+          [118] = "Gerador de Energia, Ração para Aves 50 kg",
+          [119] = "Correntes de Metal 5 Metros",
+          [120] = "Moto de Trilha, Triciclo, Não Possui Chaves",
+          [121] = "Maquininha de Tatuagem, Kit Instrumentais Cirúrgicos",
+          [122] = "Detector de Monóxido de Carbono",
+          [123] = "Carrinho de Bebê, Chá Calmante",
+          [124] = "Caixa de Metal com Dinheiro - Possui Chave",
+          [125] = "Fita Isolante, Boné de Personagem",
+          [126] = "Braçadeira, Medidor de Barulho Sonoro",
+          [127] = "Telefone Celular, Serra Circular",
+          [128] = "Tigela de Cerâmica, Arame Farpado",
+          [129] = "Fato Químico Encapsulado",
+          [130] = "Cinzel, Lamparina, Cadeira Dobrável",
+          [131] = "Frascos de Vacina Animal",
+          [132] = "Martelo de Garra, Luvas, Apito de Segurança",
+          [133] = "Lâmpada, Tridente, Roupa de Jardinagem",
+          [134] = "Relógio Digital + Rádio, Livro de Jardinagem",
+          [135] = "Ferro de Passar Roupas Elétrico",
+          [136] = "Cafeteira Elétrica, Pacote de Rosquinha",
+          [137] = "Pinto de Borracha, Camisinhas, Peruca",
+          [138] = "Revista em Quadrinhos, Berrante, Botas de Boiadeiro de Couro",
+          [139] = "Mouse de Computador, com fio, HD Externo",
+          [140] = "Mouse de Computador, sem fio, Autoclave, Laringoscópio (Para Ventilação)",
+          [141] = "Alto-Falantes de Computador, Cinto de Granada",
+          [142] = "Controle de Videogame, Fone de Ouvido",
+          [143] = "Refrigerador, Pendulo Para Carnes Bovinas",
+          [144] = "Lápis de Cor 15 Cores, Mochila, Pistola de Cola Quente",
+          [145] = "Chave inglesa 74, Coo-ler com Rodinhas",
+          [146] = "Ferramenta de Crimpagem, Solda, Materiais de Construção Civil",
+          [147] = "Pé-De-Cabra, Materiais de Construção Civil, Britadeira",
+          [148] = "Muleta de Alumínio, Galão de Gasolina",
+          [149] = "Relógio Cuco, Quarto Completo, Posteres de Ídolos",
+          [150] = "Forma de Bolo, Copos em Metal, Laptop velho e pesado. Teste de Sorte para que ainda funcione. Qual poderia ser a senha?",
+          [151] = "Lâmpada de Mesa, Estoque de Bebidas Alcoólicas",
+          [152] = "Grampeador de Mesa, Lanche Rápido - Batata - Bolacha",
+          [153] = "Reprodutor de Música Digital (8 GB Com Cabo)",
+          [154] = "Termômetro Digital, Cozinha Completa",
+          [155] = "Tigela de Cachorro, Livro Religioso",
+          [156] = "Náilon, Ferramentas de Construção, Arame Farpado",
+          [157] = "Coleira de Cão com Espinhos, Panela de Pressão",
+          [158] = "Granada de Fumaça, Pneus Veicular",
+          [158] = "Torradeira Elétrica, Caixa de Temperos para as Refeições", 
+          [159] = "Manivela, Caixa De Sementes",
+          [160] = "Silver Tape, Toca Disco, Bumerangue",
+          [161] = "Pá de Lixo, Bombinhas de São João",
+          [162] = "DVD virgem, Bastão de Beisebol",
+          [163] = "Filme O Poderoso Chefão, Xuxa",
+          [164] = "Chaleira Elétrica, Lanche Rápido - Doritos",
+          [165] = "Lixadeira Elétrica, Fita Isolante, Chave de Roda",
+          [166] = "Cabo de Extensão Elétrico, 10 Metros",
+          [168] = "Silver Tape, Espada de Bambu, Chapéu",
+          [169] = "Cabo Eletrônico 5 metros, Água Mineral, Entalado Sardinha",
+          [170] = "Quadro de Pintura para Desenho",
+          [171] = "Ventilador, Televisão Fina, Óculos de Grau",
+          [172] = "Furadeira, Coquetel Molotov",
+          [173] = "Álcool, Alarme Antigo, Pedaços de Pano",
+          [174] = "Fogos de Artifício Bombinhas, Rojão",
+          [175] = "Antena de Comunicação, Walkie Tock do BEN-10",
+          [176] = "Partes de Circuito, Fios Elétricos Simples",
+          [178] = "Componentes Para Armas de Fogo, Molas, Lubrificantes",
+          [179] = "CDs de Música e DvD Infantis, Panela Elétrica",
+          [180] = "Vídeo Cassete, Camiseta Assinado Pela Madona",
+          [181] = "Notebook, Spray de Tinta, Caixa de Fosforo (D10)",
+          [182] = "Caixa de Munição, Detector de Fumaça",
+          [183] = "Ursinho de Pelúcia, Bichinho que aperta e faz Barulho",
+          [184] = "Artefato Explosivo, Dinamite",
+          [185] = "Caixa de Produtos Químicos Perigosos, Microfone",
+          [186] = "Agrotóxico, Borrifador Mecânico",
+          [187] = "Kit Médico Cirúrgico (Instrumentais)",
+          [188] = "Peças Mecânicas Automotivas, Colete", 
+          [189] = "Kit de Itens Esportivos, Taco de Sinuca, Bolas de Bilhar",
+          [190] = "Botijão de Gás, Chapinha de Cabelo",
+          [191] = "Placa de Energia Solar, Mini Vaso Químico Portátil",
+          [192] = "Vara de Pesca, Flechas, Bebedouro Desativado",
+          [193] = "Fação, Espada de Samurai",
+          [194] = "Alvo Para Tiro, Bandana de Rock",
+          [195] = "Aquecedor Elétrico, Esqueleto de Manequim",
+          [196] = "Material Higiênico, Alternador de Eletricidade",
+          [196] = "Aparelhagem de Raio-x, Instrumentos Odontológicos",
+          [197] = "Granada, Revista Playboy",
+          [198] = "Otorrinolaringologia, Bico de Pato (Genecologia)",
+          [199] = "Anotações Importantes, Cadeira de Rodas",
+          [200] = "Pistola Sinalizadora Laranja, Colete Salva-Vivas",
+          [201] = "Flecha Com Ponta Explosiva, Botas Militares",
+          [202] = "Claymore, Colete Militar, Poster do Rambo",
+          [203] = "Dinamites - Instáveis Vazando Óleo",
+          [204] = "Cela de Montaria, Ração Animal",
+          [205] = "2 pneus de trator velho, óculos de aros de metal quebrados",
+          [206] = "Serra de madeira sem corte",
+          [207] = "Pés de pranchas 2x4punhado de pregos enferrujados",
+          [208] = "Pote de cola de madeira, enxada de jardim",
+          [209] = "Olho de vidro, Cadeira de massagem com Circuitos",
+          [210] = "Cutelo de açougueiro enferrujado, Cama de Massagem com Circuitos",
+          [211] = "Carrinho de compras, Walkie Talkie, Foto de Crianças",
+          [212] = "Kit de costura pessoal, Sino de mão, Câmera Roll D8 [1-6: Quebrado; 7-8: Contém Filme]",
+          [213] = "Agulha de Tricô, Rolo D20 Enfeites de Natal, Proteção Torso + Capacete",
+          [214] = "Caneca de Café, Urso Teddy, Caneta Tinteira, Fogão Portátil, Torso de Manequim",
+          [215] = "Foto Emoldurada de Político do Velho Mundo, Mapa Topográfico Subaquático",
+          [216] = "Cardápio do Restaurante, Carro de Brinquedo Eletrico",
+          [217] = "Rolos de cabelo, Espátula de jardinagem, Frasco Anéstésico 1d10",
+          [218] = "Macarrão Seco, Maconha Prensada, Livro Intacto, Cofre",
+          [219] = "Lanterna de Helicóptero, Crânio Humano Carbonizado, Carcaça de Helicóptero",
+          [220] = "Botas de Alpinismo, Placa de Carro, Caça-Níquel de Alavanca, Agulha Hipodérmica",
+          [221] = "Garrafa de Café Vazia - Moedas Antigas, Garrafa de Uísque",
+          [222] = "Caixas com D30 Vidro Ornamentais, Boneca Falante Pilhas no Final",
+          [223] = "Bolso Cheio de Moedas, Revista de Mulheres Peladas",
+          [224] = "Volante, Triciclo de Criança, Bule Para Chá, Roupa do Papai Noel",
+          [225] = "Espelho de Mão, iPod, Panela de Arroz Elétrica",
+          [226] = "Pequena Célula de Energia, Rádio Comunicador",
+          [227] = "Guarda-Chuva, Sutiã de Mulher, Sinta Liga",
+          [228] = "Perfume, Cloro, Desinfetante, Máscara para Mergulho com Canudo",
+          [229] = "Rodinha de Academia Abdominal, Barra de Metal para Parede (Exercícios)",
+          [230] = "Peixe - Taxidermia, Manequim de Poliuretano Para Empalhamento.",
+          [231] = "Disco de Vinil (D10) mochila (role 3 vezes (AQUI NA LISTA) para ver o conteúdo)",
+          [232] = "Jarra Cheia de Areia, Rolo de caixa de chumbo 1d10 x Rolo 1d10 x 16",
+          [233] = "Rolo D10 Blocos de Brinquedo de Madeira, Caixa de Fósforos",
+          [234] = "Saco de Mármores Role 2d12 Mármores, Livro de Contos Infantis",
+          [235] = "Capa de Bolo de Casamento, Vela de Parafina, Secador de Cabelo",
+          [236] = "Meia Usada, Pedra de Amolar, Revista de Publicação para Adultos (Gay - Zoofilia)",
+          [237] = "Enlatados, Celular Rosa, Manequim de Ferro, Aquecedor Elétrico de Água",
+          [238] = "Engrenagens Mecânicas, Drone sem Controle e Bateria",
+          [239] = "Caixa de Música, Role D4 (1-2 Defeitos / 3-4 Funcionando)",
+          [240] = "Caixão, Tamanho Infantil, Formol, Corpos Dissecados",
+          [241] = "Rádio Portátil, Pato de Borracha, Toalha de chá, Esqueleto de Brinquedo",
+          [242] = "Traje Quimico. Protege contra radiação e veneno transportado pelo ar. Sem valor de armadura, mas ocupa espaço de armadura. Perde a utilidade quando danificado.243 - Barco de Remo, Roupa de Ski, Equipamento de Escalada",
+          [244] = "Cofre Antigo Velho, Anão de Jardim, Carrinho do Papai Noel",
+          [245] = "Maquina de Refrigerante e Salgadinhos Antigo, Almofada Macia Com Plumas",
+          [246] = "Cadeira de Balanço, Concha de Praia, Ração de Comida Canina",
+          [247] = "Cinto de Couro, Caneta, Lâmpada Com Sensor de Presença",
+          [248] = "Caixa de Lâmpadas, Roll D30 Intactas",
+          [249] = "Saco de Cimento (Usado), Tinta Vermelha para Parede",
+          [250] = "Prótese Dentaria, Caneta Motor de Dentista, Remédios Anti-inflamatórios",
+          [251] = "Espelho, Pente, Kit Higiênico, Esmalte de Unha, Peruca Loira",
+          [252] = "Cabo de Bateria, Aparelho Medidor de Radiação",
+          [253] = "Jarra Contendo Dentes D12, Feto em Conserva, Instrumentos de Parto",
+          [254] = "Faca, Diagrama de Chip de Água Carbonizada",
+          [255] = "Medidor de Velocidade, Medidor de Temperatura Corporal", 
+        }
+      
+        -- Rolar dado e obter resultado
+        local resultado = math.random(1, 255)
+      
+        -- Enviar mensagem com o resultado nomeado
+        if resultado ~= nil then
+          local mensagem = "[§B][§K11] Você Encontrou: [§K5][§B]" .. mapeamento[resultado]
+          chat:enviarMensagem(mensagem)
+        end
+      end
+            
+
+
+    obj.ItensComuns = GUI.fromHandle(_obj_newObject("button"));
+    obj.ItensComuns:setParent(obj.frmRollItens);
+    obj.ItensComuns:setName("ItensComuns");
+    obj.ItensComuns:setText("Rolar Itens comuns");
+    obj.ItensComuns:setWidth(152);
+    obj.ItensComuns:setHeight(30);
+    obj.ItensComuns:setLeft(0);
+    obj.ItensComuns:setTop(0);
+    lfm_setPropAsString(obj.ItensComuns, "fontStyle",  "bold");
+    obj.ItensComuns:setFontColor("black");
+
+    obj.tab5 = GUI.fromHandle(_obj_newObject("tab"));
+    obj.tab5:setParent(obj.tabControl1);
+    obj.tab5:setTitle("Loja");
+    obj.tab5:setName("tab5");
+
+    obj.frmLoja = GUI.fromHandle(_obj_newObject("form"));
+    obj.frmLoja:setParent(obj.tab5);
+    obj.frmLoja:setName("frmLoja");
+    obj.frmLoja:setAlign("client");
+    obj.frmLoja:setTheme("light");
+    obj.frmLoja:setMargins({top=1});
+
+    obj.button81 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button81:setParent(obj.frmLoja);
+    obj.button81:setText("Em construção");
+    obj.button81:setName("button81");
+
+    obj.tab6 = GUI.fromHandle(_obj_newObject("tab"));
+    obj.tab6:setParent(obj.tabControl1);
+    obj.tab6:setTitle("Creditos");
+    obj.tab6:setName("tab6");
+
     obj.frmFichaCreditos = GUI.fromHandle(_obj_newObject("form"));
-    obj.frmFichaCreditos:setParent(obj.tab4);
+    obj.frmFichaCreditos:setParent(obj.tab6);
     obj.frmFichaCreditos:setName("frmFichaCreditos");
     obj.frmFichaCreditos:setAlign("client");
 
@@ -8377,7 +8694,7 @@ local function constructNew_frmDZ_Ficha()
 
     obj.layout147 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout147:setParent(obj.scrollBox9);
-    obj.layout147:setLeft(560);
+    obj.layout147:setLeft(460);
     obj.layout147:setTop(290);
     obj.layout147:setWidth(200);
     obj.layout147:setHeight(160);
@@ -8448,27 +8765,99 @@ local function constructNew_frmDZ_Ficha()
     obj.label84:setTop(480);
     obj.label84:setWidth(210);
     obj.label84:setHeight(20);
-    obj.label84:setText("Sua Versão: 2.3");
+    obj.label84:setText("Sua Versão: 2.5");
     obj.label84:setHorzTextAlign("center");
     obj.label84:setName("label84");
 
-    obj.button81 = GUI.fromHandle(_obj_newObject("button"));
-    obj.button81:setParent(obj.scrollBox9);
-    obj.button81:setLeft(555);
-    obj.button81:setTop(500);
-    obj.button81:setWidth(100);
-    obj.button81:setText("Change Log");
-    obj.button81:setHint("Abre as notas de atualização da ficha");
-    obj.button81:setName("button81");
-
     obj.button82 = GUI.fromHandle(_obj_newObject("button"));
     obj.button82:setParent(obj.scrollBox9);
-    obj.button82:setLeft(667);
+    obj.button82:setLeft(555);
     obj.button82:setTop(500);
     obj.button82:setWidth(100);
-    obj.button82:setText("Atualizar");
-    obj.button82:setHint("Baixa a versão mais recente da ficha");
+    obj.button82:setText("Change Log");
+    obj.button82:setHint("Abre as notas de atualização da ficha");
     obj.button82:setName("button82");
+
+    obj.button83 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button83:setParent(obj.scrollBox9);
+    obj.button83:setLeft(667);
+    obj.button83:setTop(500);
+    obj.button83:setWidth(100);
+    obj.button83:setText("Atualizar");
+    obj.button83:setHint("Baixa a versão mais recente da ficha");
+    obj.button83:setName("button83");
+
+    obj.layout148 = GUI.fromHandle(_obj_newObject("layout"));
+    obj.layout148:setParent(obj.scrollBox9);
+    obj.layout148:setLeft(680);
+    obj.layout148:setTop(290);
+    obj.layout148:setWidth(200);
+    obj.layout148:setHeight(160);
+    obj.layout148:setName("layout148");
+
+    obj.rectangle25 = GUI.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle25:setParent(obj.layout148);
+    obj.rectangle25:setAlign("client");
+    obj.rectangle25:setColor("black");
+    obj.rectangle25:setXradius(5);
+    obj.rectangle25:setYradius(15);
+    obj.rectangle25:setCornerType("round");
+    obj.rectangle25:setName("rectangle25");
+
+    obj.label85 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label85:setParent(obj.layout148);
+    obj.label85:setLeft(0);
+    obj.label85:setTop(10);
+    obj.label85:setWidth(200);
+    obj.label85:setHeight(20);
+    obj.label85:setText("Mecânicas e implementações");
+    obj.label85:setHorzTextAlign("center");
+    obj.label85:setName("label85");
+
+    obj.label86 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label86:setParent(obj.layout148);
+    obj.label86:setLeft(0);
+    obj.label86:setTop(35);
+    obj.label86:setWidth(200);
+    obj.label86:setHeight(20);
+    obj.label86:setFontSize(11.5);
+    obj.label86:setText("Por MestreWill nick: (WillXOkumura)");
+    obj.label86:setHorzTextAlign("center");
+    obj.label86:setName("label86");
+
+    obj.button84 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button84:setParent(obj.layout148);
+    obj.button84:setLeft(50);
+    obj.button84:setTop(60);
+    obj.button84:setWidth(100);
+    obj.button84:setHeight(20);
+    obj.button84:setText("Atualizar");
+    obj.button84:setHint("Baixa a versão com mecânicas");
+    obj.button84:setFontColor("yellow");
+    obj.button84:setName("button84");
+
+    obj.button85 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button85:setParent(obj.layout148);
+    obj.button85:setLeft(50);
+    obj.button85:setTop(90);
+    obj.button85:setWidth(100);
+    obj.button85:setHeight(20);
+    obj.button85:setText("Meu GitHub");
+    obj.button85:setHint("Baixa a versão com mecânicas");
+    lfm_setPropAsString(obj.button85, "fontStyle",  "bold");
+    obj.button85:setFontColor("red");
+    obj.button85:setName("button85");
+
+    obj.label87 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label87:setParent(obj.layout148);
+    obj.label87:setLeft(0);
+    obj.label87:setTop(120);
+    obj.label87:setWidth(200);
+    obj.label87:setHeight(20);
+    obj.label87:setFontSize(15);
+    obj.label87:setText("Atualização provisória");
+    obj.label87:setHorzTextAlign("center");
+    obj.label87:setName("label87");
 
     obj._e_event0 = obj.button1:addEventListener("onClick",
         function (_)
@@ -9110,17 +9499,35 @@ local function constructNew_frmDZ_Ficha()
             self.rclNote:append();
         end, obj);
 
-    obj._e_event94 = obj.button81:addEventListener("onClick",
+    obj._e_event94 = obj.ItensComuns:addEventListener("onClick",
         function (_)
-            GUI.openInBrowser('https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Dead%20Zone%202.0/README.md')
+            rolarDado(sheet)
         end, obj);
 
     obj._e_event95 = obj.button82:addEventListener("onClick",
         function (_)
+            GUI.openInBrowser('https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Dead%20Zone%202.0/README.md')
+        end, obj);
+
+    obj._e_event96 = obj.button83:addEventListener("onClick",
+        function (_)
             GUI.openInBrowser('https://github.com/ooicram/DeadZoneRPG/raw/master/Plugins/Sheets/Dead%20Zone%202.0/output/Dead%20Zone%202.0.rpk')
         end, obj);
 
+    obj._e_event97 = obj.button84:addEventListener("onClick",
+        function (_)
+            GUI.openInBrowser('https://dl.dropboxusercontent.com/s/cczyaqmrwjo93r1/Dead_Zone_2.0_1.rpk?dl=0')
+        end, obj);
+
+    obj._e_event98 = obj.button85:addEventListener("onClick",
+        function (_)
+            GUI.openInBrowser('https://github.com/MestreWilll')
+        end, obj);
+
     function obj:_releaseEvents()
+        __o_rrpgObjs.removeEventListenerById(self._e_event98);
+        __o_rrpgObjs.removeEventListenerById(self._e_event97);
+        __o_rrpgObjs.removeEventListenerById(self._e_event96);
         __o_rrpgObjs.removeEventListenerById(self._e_event95);
         __o_rrpgObjs.removeEventListenerById(self._e_event94);
         __o_rrpgObjs.removeEventListenerById(self._e_event93);
@@ -9240,6 +9647,7 @@ local function constructNew_frmDZ_Ficha()
         if self.layout10 ~= nil then self.layout10:destroy(); self.layout10 = nil; end;
         if self.edit172 ~= nil then self.edit172:destroy(); self.edit172 = nil; end;
         if self.edit195 ~= nil then self.edit195:destroy(); self.edit195 = nil; end;
+        if self.button85 ~= nil then self.button85:destroy(); self.button85 = nil; end;
         if self.edit36 ~= nil then self.edit36:destroy(); self.edit36 = nil; end;
         if self.edit9 ~= nil then self.edit9:destroy(); self.edit9 = nil; end;
         if self.layout64 ~= nil then self.layout64:destroy(); self.layout64 = nil; end;
@@ -9269,6 +9677,7 @@ local function constructNew_frmDZ_Ficha()
         if self.button35 ~= nil then self.button35:destroy(); self.button35 = nil; end;
         if self.rectangle5 ~= nil then self.rectangle5:destroy(); self.rectangle5 = nil; end;
         if self.layout125 ~= nil then self.layout125:destroy(); self.layout125 = nil; end;
+        if self.ItensComuns ~= nil then self.ItensComuns:destroy(); self.ItensComuns = nil; end;
         if self.label8 ~= nil then self.label8:destroy(); self.label8 = nil; end;
         if self.DescCircunstancia4 ~= nil then self.DescCircunstancia4:destroy(); self.DescCircunstancia4 = nil; end;
         if self.image70 ~= nil then self.image70:destroy(); self.image70 = nil; end;
@@ -9414,6 +9823,7 @@ local function constructNew_frmDZ_Ficha()
         if self.edit121 ~= nil then self.edit121:destroy(); self.edit121 = nil; end;
         if self.textEditor9 ~= nil then self.textEditor9:destroy(); self.textEditor9 = nil; end;
         if self.button51 ~= nil then self.button51:destroy(); self.button51 = nil; end;
+        if self.frmLoja ~= nil then self.frmLoja:destroy(); self.frmLoja = nil; end;
         if self.button28 ~= nil then self.button28:destroy(); self.button28 = nil; end;
         if self.edit163 ~= nil then self.edit163:destroy(); self.edit163 = nil; end;
         if self.edit199 ~= nil then self.edit199:destroy(); self.edit199 = nil; end;
@@ -9489,12 +9899,14 @@ local function constructNew_frmDZ_Ficha()
         if self.button32 ~= nil then self.button32:destroy(); self.button32 = nil; end;
         if self.edit145 ~= nil then self.edit145:destroy(); self.edit145 = nil; end;
         if self.edit181 ~= nil then self.edit181:destroy(); self.edit181 = nil; end;
+        if self.label86 ~= nil then self.label86:destroy(); self.label86 = nil; end;
         if self.edit96 ~= nil then self.edit96:destroy(); self.edit96 = nil; end;
         if self.edit2 ~= nil then self.edit2:destroy(); self.edit2 = nil; end;
         if self.image59 ~= nil then self.image59:destroy(); self.image59 = nil; end;
         if self.label53 ~= nil then self.label53:destroy(); self.label53 = nil; end;
         if self.button27 ~= nil then self.button27:destroy(); self.button27 = nil; end;
         if self.edit109 ~= nil then self.edit109:destroy(); self.edit109 = nil; end;
+        if self.layout148 ~= nil then self.layout148:destroy(); self.layout148 = nil; end;
         if self.edit21 ~= nil then self.edit21:destroy(); self.edit21 = nil; end;
         if self.button24 ~= nil then self.button24:destroy(); self.button24 = nil; end;
         if self.DescVanDes5 ~= nil then self.DescVanDes5:destroy(); self.DescVanDes5 = nil; end;
@@ -9617,6 +10029,7 @@ local function constructNew_frmDZ_Ficha()
         if self.layout114 ~= nil then self.layout114:destroy(); self.layout114 = nil; end;
         if self.edit111 ~= nil then self.edit111:destroy(); self.edit111 = nil; end;
         if self.label57 ~= nil then self.label57:destroy(); self.label57 = nil; end;
+        if self.frmRollItens ~= nil then self.frmRollItens:destroy(); self.frmRollItens = nil; end;
         if self.edit71 ~= nil then self.edit71:destroy(); self.edit71 = nil; end;
         if self.button47 ~= nil then self.button47:destroy(); self.button47 = nil; end;
         if self.label71 ~= nil then self.label71:destroy(); self.label71 = nil; end;
@@ -9673,6 +10086,7 @@ local function constructNew_frmDZ_Ficha()
         if self.scrollBox2 ~= nil then self.scrollBox2:destroy(); self.scrollBox2 = nil; end;
         if self.label72 ~= nil then self.label72:destroy(); self.label72 = nil; end;
         if self.image65 ~= nil then self.image65:destroy(); self.image65 = nil; end;
+        if self.tab5 ~= nil then self.tab5:destroy(); self.tab5 = nil; end;
         if self.rectangle15 ~= nil then self.rectangle15:destroy(); self.rectangle15 = nil; end;
         if self.label12 ~= nil then self.label12:destroy(); self.label12 = nil; end;
         if self.edit68 ~= nil then self.edit68:destroy(); self.edit68 = nil; end;
@@ -9748,6 +10162,7 @@ local function constructNew_frmDZ_Ficha()
         if self.textEditor1 ~= nil then self.textEditor1:destroy(); self.textEditor1 = nil; end;
         if self.edit137 ~= nil then self.edit137:destroy(); self.edit137 = nil; end;
         if self.edit146 ~= nil then self.edit146:destroy(); self.edit146 = nil; end;
+        if self.button83 ~= nil then self.button83:destroy(); self.button83 = nil; end;
         if self.button9 ~= nil then self.button9:destroy(); self.button9 = nil; end;
         if self.textEditor20 ~= nil then self.textEditor20:destroy(); self.textEditor20 = nil; end;
         if self.edit6 ~= nil then self.edit6:destroy(); self.edit6 = nil; end;
@@ -9755,6 +10170,7 @@ local function constructNew_frmDZ_Ficha()
         if self.image55 ~= nil then self.image55:destroy(); self.image55 = nil; end;
         if self.textEditor23 ~= nil then self.textEditor23:destroy(); self.textEditor23 = nil; end;
         if self.frmFichaCreditos ~= nil then self.frmFichaCreditos:destroy(); self.frmFichaCreditos = nil; end;
+        if self.button84 ~= nil then self.button84:destroy(); self.button84 = nil; end;
         if self.edit90 ~= nil then self.edit90:destroy(); self.edit90 = nil; end;
         if self.textEditor8 ~= nil then self.textEditor8:destroy(); self.textEditor8 = nil; end;
         if self.label18 ~= nil then self.label18:destroy(); self.label18 = nil; end;
@@ -9780,6 +10196,7 @@ local function constructNew_frmDZ_Ficha()
         if self.edit167 ~= nil then self.edit167:destroy(); self.edit167 = nil; end;
         if self.label33 ~= nil then self.label33:destroy(); self.label33 = nil; end;
         if self.rectangle11 ~= nil then self.rectangle11:destroy(); self.rectangle11 = nil; end;
+        if self.tab6 ~= nil then self.tab6:destroy(); self.tab6 = nil; end;
         if self.image19 ~= nil then self.image19:destroy(); self.image19 = nil; end;
         if self.button62 ~= nil then self.button62:destroy(); self.button62 = nil; end;
         if self.DescVanDes7 ~= nil then self.DescVanDes7:destroy(); self.DescVanDes7 = nil; end;
@@ -9855,6 +10272,7 @@ local function constructNew_frmDZ_Ficha()
         if self.PopExp ~= nil then self.PopExp:destroy(); self.PopExp = nil; end;
         if self.rectangle22 ~= nil then self.rectangle22:destroy(); self.rectangle22 = nil; end;
         if self.textEditor24 ~= nil then self.textEditor24:destroy(); self.textEditor24 = nil; end;
+        if self.rectangle25 ~= nil then self.rectangle25:destroy(); self.rectangle25 = nil; end;
         if self.label74 ~= nil then self.label74:destroy(); self.label74 = nil; end;
         if self.image24 ~= nil then self.image24:destroy(); self.image24 = nil; end;
         if self.image66 ~= nil then self.image66:destroy(); self.image66 = nil; end;
@@ -9917,6 +10335,7 @@ local function constructNew_frmDZ_Ficha()
         if self.edit119 ~= nil then self.edit119:destroy(); self.edit119 = nil; end;
         if self.button17 ~= nil then self.button17:destroy(); self.button17 = nil; end;
         if self.edit48 ~= nil then self.edit48:destroy(); self.edit48 = nil; end;
+        if self.label85 ~= nil then self.label85:destroy(); self.label85 = nil; end;
         if self.button25 ~= nil then self.button25:destroy(); self.button25 = nil; end;
         if self.label46 ~= nil then self.label46:destroy(); self.label46 = nil; end;
         if self.edit190 ~= nil then self.edit190:destroy(); self.edit190 = nil; end;
@@ -9936,6 +10355,7 @@ local function constructNew_frmDZ_Ficha()
         if self.PopInventario ~= nil then self.PopInventario:destroy(); self.PopInventario = nil; end;
         if self.frmDZ_NPC_svg ~= nil then self.frmDZ_NPC_svg:destroy(); self.frmDZ_NPC_svg = nil; end;
         if self.edit202 ~= nil then self.edit202:destroy(); self.edit202 = nil; end;
+        if self.label87 ~= nil then self.label87:destroy(); self.label87 = nil; end;
         if self.edit91 ~= nil then self.edit91:destroy(); self.edit91 = nil; end;
         if self.edit70 ~= nil then self.edit70:destroy(); self.edit70 = nil; end;
         if self.label25 ~= nil then self.label25:destroy(); self.label25 = nil; end;

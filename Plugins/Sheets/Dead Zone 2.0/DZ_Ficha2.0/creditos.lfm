@@ -6,7 +6,7 @@
 		<image left="480" top="0" width="350" height="125" style="autoFit" src="https://i.imgur.com/HNK29eO.png?1"/>
 		<image left="500" top="125" width="350" height="125" style="autoFit" src="https://i.imgur.com/Xp12RUs.png"/>
 		
-		<layout left="560" top="290" width="200" height="160">
+		<layout left="460" top="290" width="200" height="160">
 			<rectangle align="client" color="black" xradius="5" yradius="15" cornerType="round"/>
 			<label left="0" top="10" width="200" height="20" text="Ficha criada por " horzTextAlign="center"/>
 			<label left="0" top="35" width="200" height="20" text="Marcio F. (Samelfero)" horzTextAlign="center"/>
@@ -15,9 +15,20 @@
 			<label left="0" top="105" width="200" height="20" text="Allan (allan_fns)" horzTextAlign="center"/>
 		</layout>
 		
-		<label left="560" top="480" width="210" height="20" text="Sua Versão: 2.3" horzTextAlign="center" />
+		<label left="560" top="480" width="210" height="20" text="Sua Versão: 2.5" horzTextAlign="center" />
 			
 		<button left="555" top="500" width="100" text="Change Log" hint="Abre as notas de atualização da ficha" onClick="GUI.openInBrowser('https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Dead%20Zone%202.0/README.md')" />
 		<button left="667" top="500" width="100" text="Atualizar" hint="Baixa a versão mais recente da ficha" onClick="GUI.openInBrowser('https://github.com/ooicram/DeadZoneRPG/raw/master/Plugins/Sheets/Dead%20Zone%202.0/output/Dead%20Zone%202.0.rpk')" />
+           
+		<!-- Creditos implementações de MestreWill -->
+		<layout left="680" top="290" width="200" height="160">
+			<rectangle align="client" color="black" xradius="5" yradius="15" cornerType="round"/>
+			<label left="0" top="10" width="200" height="20" text="Mecânicas e implementações" horzTextAlign="center"/>
+			<label left="0" top="35" width="200" height="20" fontSize="11.5" text="Por MestreWill nick: (WillXOkumura)" horzTextAlign="center"/>
+			<button left="50" top="60" width="100" height="20" text="Atualizar" hint="Baixa a versão com mecânicas" fontColor="yellow" onClick="GUI.openInBrowser('https://dl.dropboxusercontent.com/s/cczyaqmrwjo93r1/Dead_Zone_2.0_1.rpk?dl=0')" />
+			<button left="50" top="90" width="100" height="20" text="Meu GitHub" hint="Baixa a versão com mecânicas" fontStyle="bold" fontColor="red" onClick="GUI.openInBrowser('https://github.com/MestreWilll')" />
+			<label left="0" top="120" width="200" height="20" fontSize="15" text="Atualização provisória" horzTextAlign="center"/>
+		</layout> 
+	    	
 	</scrollBox>
 </form>

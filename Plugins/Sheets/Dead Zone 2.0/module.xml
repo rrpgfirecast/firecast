@@ -1,10 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<module sdkVersion="3.5">
+<module sdkVersion="3.5" sdkApiVersion="86">
     <id>DeadZoneRPG_2.0</id>
-    <version>2.3</version>
+    <version>2.5</version>
     <name>Dead Zone 2.0</name>
     <description>Plugin para o rpg Dead Zone.</description>
     <author>Allan e Samelfero</author>
-    <site></site>
+    <site/>
     <contact>Discord: (CoM4nDanT3)#9025 e samelfero#5996</contact>
+    <dataTypes>
+        <dataType title="Ficha 2.0 Dead Zone" name="frmDZ_Ficha" lfmFile="DZ_Ficha2.0/DZ_Ficha.lfm">DeadZoneRPG2.0</dataType>
+        <dataType title="Ficha 2.0 Dead Zone" name="frmDZ_Ficha" lfmFile="DZ_Ficha2.0/DZ_Ficha.lfm">DeadZoneRPG2.0</dataType>
+    </dataTypes>
 </module>
