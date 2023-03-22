@@ -3,6 +3,7 @@ local SharedObjects = require("rrpgSharedObjects.lua");
 local rrpgWrappers = {};
 local localStrongRefContextoObjects = {};	
 local Locale = require("locale.lua");
+local Async = require("async.lua");
 
 
 local SHARED_OBJECT_TYPE = "rrpgObject";
@@ -239,7 +240,15 @@ local function initMesaWrappedObjectFromHandle(handle)
 			end;
 		end;
 	end;
+	
+	function mesa:asyncOpenUserRoomNDB(name, options)
+		if not Async.haveNativeBackendSupport() or not System.checkAPIVersion(87, 3) then
+			return Async.Promise.withError("No API Support");
+		end;			
 		
+		return Async.Promise.wrap(_obj_invokeEx(self.handle, "AsyncOpenUserRoomNDB", name, options));
+	end;
+				
 	wObj.props["nome"] = {getter = "getNome", tipo = "string"};
 	wObj.props["descricao"] = {getter = "getDescricao", tipo = "string"};
 	wObj.props["msgStatus"] = {getter = "getMsgStatus", tipo = "string"};	
