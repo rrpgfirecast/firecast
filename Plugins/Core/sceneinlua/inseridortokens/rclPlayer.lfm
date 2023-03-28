@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<form name="rclItem" width="150" height="30" theme="dark" onMenu="ExibirMenu()" padding="{left=0}">
+<form name="rclItem" hitTest="true" width="150" height="30" theme="dark" onMenu="ExibirMenu()" padding="{left=0}">
     <script>
         local function ExibirMenu()
             if sheet==nil then return end;

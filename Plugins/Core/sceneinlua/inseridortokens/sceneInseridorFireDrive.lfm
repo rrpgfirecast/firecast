@@ -273,8 +273,34 @@
 				<button width="60" class="rodapeButton tokenRodapeButton" margins="{left=0, top=2, bottom=2, right=2}" name="delete" text="@@scene.inseridor.labels.delete" onClick="self:deleteToken()"/>
 
 				<button width="60" class="rodapeButton tokenRodapeButton" margins="{left=0, top=2, bottom=2}" name="btnMany" onClick="showPopupMany();" text="@@scene.inseridor.buttons.many"/>
-			</flowLayout>		
+			</flowLayout>
 		
+			<timer interval="250" enabled="false" name="dirTimer">
+				<event name="onTimer">
+					 self.dirTimer.enabled=false;
+					 self.rclListaDosTokens.selectedNode.dirOpen = not self.rclListaDosTokens.selectedNode.dirOpen;
+
+					if self.rclListaDosTokens.selectedNode.dirOpen then
+						-- Show kids of opened folder
+						local kids = self:getKidsOf(self.rclListaDosTokens.selectedNode.id)
+						for i,v in ipairs(kids) do
+							v.dirVisible = true
+						end
+					else
+						-- Hide all descendents of opened folder
+						local desc = self:getDescendentsOf(self.rclListaDosTokens.selectedNode.id)
+						for i,v in ipairs(desc) do
+							if v.directory then
+								v.dirOpen = false
+							end
+							v.dirVisible = false
+						end
+					end
+
+					self.rclListaDosTokens.selectedNode = nil;
+				</event>
+			</timer>
+
 			<rectangle align="client" color="#707070" strokeSize="1" strokeColor="#70707080">
 				<recordList align="client" name="rclListaDosTokens" field="tokensSalvos" templateForm="rclItem" selectable="true" autoHeight="false">
 					<event name="onSelect">
@@ -286,26 +312,7 @@
 						if self.rclListaDosTokens.selectedNode.directory == true then 
 							-- open/close folder
 							self.rclListaDosTokens:beginUpdate();
-							self.rclListaDosTokens.selectedNode.dirOpen = not self.rclListaDosTokens.selectedNode.dirOpen
-
-							if self.rclListaDosTokens.selectedNode.dirOpen then
-								-- Show kids of opened folder
-								local kids = self:getKidsOf(self.rclListaDosTokens.selectedNode.id)
-								for i,v in ipairs(kids) do
-									v.dirVisible = true
-								end
-							else
-								-- Hide all descendents of opened folder
-								local desc = self:getDescendentsOf(self.rclListaDosTokens.selectedNode.id)
-								for i,v in ipairs(desc) do
-									if v.directory then
-										v.dirOpen = false
-									end
-									v.dirVisible = false
-								end
-							end
-
-							self.rclListaDosTokens.selectedNode = nil
+							self.dirTimer.enabled=true
 						else
 							-- Use item as a token
 							self.dsbToken.node = self.rclListaDosTokens.selectedNode;
