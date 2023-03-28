@@ -309,7 +309,7 @@
 				</event>
 				<event name="onEndEnumeration">
 					local nodes = ndb.getChildNodes(sheet.opcoesFalsas);
-					if self.dcsMain.scopeNode == nil then
+					if self.dcsMain.scopeNode == nil and nodes[1] ~= nil then
 						self.dcsMain.scopeNode = nodes[1];
 						self.dcsTituloEAbas.scopeNode = nodes[1];
 						self.comboBoxFalsa.scopeNode = nodes[1];

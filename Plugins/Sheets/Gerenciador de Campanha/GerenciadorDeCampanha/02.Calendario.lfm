@@ -3,7 +3,7 @@
 	<script> 
 		<![CDATA[
 		local function write(str)
-            local mesa = Firecast.getMesaDe(sheet);
+            local mesa = Firecast.getMesaDe(sheet); 
             if str then
                 mesa.activeChat:escrever(str);
             else
@@ -354,6 +354,7 @@
 			</flowLayout>
 		</popup>
 
+		<layout width="1260"/>
 		<layout align="top" height="345">
     		<layout align="left" width="250" margins="{right=5}">
     			<rectangle align="client" color="Black"/>
