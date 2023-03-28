@@ -169,7 +169,7 @@
             </dataType>
         </dataTypes>
     </element>
-    <element id="br.com.rrpg.DnD5_SDK3" name="D&amp;D 5e" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/DnD5e/output/DnD5e.rpk?raw=true" fileName="DnD5e.rpk" repositoryPath="Sheets/DnD5e/" author="Firecast" description="Modelo de ficha de D&amp;D 5ª edição" version="1.0" compilationDate="03032023113520" compilationDigest="ae5a3f37772ad25b355e73436d5bc5177f0a6086">
+    <element id="br.com.rrpg.DnD5_SDK3" name="D&amp;D 5e" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/DnD5e/output/DnD5e.rpk?raw=true" fileName="DnD5e.rpk" repositoryPath="Sheets/DnD5e/" author="Firecast" description="Modelo de ficha de D&amp;D 5ª edição" version="1.1" compilationDate="03032023113520" compilationDigest="ae5a3f37772ad25b355e73436d5bc5177f0a6086">
         <info lang="en" name="D&amp;D 5th Edition" description="D&amp;D 5th edition character sheet for firecast"/>
         <info lang="pt-BR" name="D&amp;D 5e" description="Modelo de ficha de D&amp;D 5ª edição" author="Firecast" site="https://firecast.app/"/>
         <dataTypes>
@@ -254,7 +254,7 @@
             </dataType>
         </dataTypes>
     </element>
-    <element id="Ambesek.Nefertyne.Reinos" name="Ficha Reinos d20" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20de%20Reinos%20d20/output/Ficha%20de%20Reinos%20d20.rpk?raw=true" fileName="Ficha de Reinos d20.rpk" repositoryPath="Sheets/Ficha de Reinos d20/" author="Ambesek" description="Ficha para descrição de Reinos e Cidades seguindo o padrão d20system do Livro do Mestre." version="0.9" compilationDate="03032023114005" compilationDigest="8ee81964926e5ff6361f85fae26db3d3870e2fcc">
+    <element id="Ambesek.Nefertyne.Reinos" name="Ficha Reinos d20" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20de%20Reinos%20d20/output/Ficha%20de%20Reinos%20d20.rpk?raw=true" fileName="Ficha de Reinos d20.rpk" repositoryPath="Sheets/Ficha de Reinos d20/" author="Ambesek" description="Ficha para descrição de Reinos e Cidades seguindo o padrão d20system do Livro do Mestre." version="0.9.1" compilationDate="03032023114005" compilationDigest="8ee81964926e5ff6361f85fae26db3d3870e2fcc">
         <info lang="pt-BR" name="Ficha Reinos d20" description="Ficha para descrição de Reinos e Cidades seguindo o padrão d20system do Livro do Mestre." author="Ambesek"/>
         <dataTypes>
             <dataType id="Ambesek.Nefertyne.Reinos" title="Ficha Reinos d20" formType="sheetTemplate">
@@ -535,7 +535,7 @@
             </dataType>
         </dataTypes>
     </element>
-    <element id="GerenciadorDeCampanha" name="Gerenciador de Campanha" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Gerenciador%20de%20Campanha/output/Gerenciador%20de%20Campanha.rpk?raw=true" fileName="Gerenciador de Campanha.rpk" repositoryPath="Sheets/Gerenciador de Campanha/" author="Ambesek" description="Ficha para gerenciar informaçes publicas e privadas de jogo, com visualizaçao seletiva entre jogadores e mestres." version="1.2" compilationDate="21032023030157" compilationDigest="585395a219f8c7a357816e941aad6dcce59f3edf">
+    <element id="GerenciadorDeCampanha" name="Gerenciador de Campanha" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Gerenciador%20de%20Campanha/output/Gerenciador%20de%20Campanha.rpk?raw=true" fileName="Gerenciador de Campanha.rpk" repositoryPath="Sheets/Gerenciador de Campanha/" author="Ambesek" description="Ficha para gerenciar informaçes publicas e privadas de jogo, com visualizaçao seletiva entre jogadores e mestres." version="1.2.1" compilationDate="21032023030157" compilationDigest="585395a219f8c7a357816e941aad6dcce59f3edf">
         <info lang="pt-BR" name="Gerenciador de Campanha" description="Ficha para gerenciar informaçes publicas e privadas de jogo, com visualizaçao seletiva entre jogadores e mestres." author="Ambesek" site="http://pt-br.rpgmeister.wikia.com/wiki/Main_Page"/>
         <dataTypes>
             <dataType id="Ambesek.Gerenciador.RPGmeister" title="Gerenciador de Campanha" formType="sheetTemplate">
@@ -899,7 +899,7 @@
             </dataType>
         </dataTypes>
     </element>
-    <element id="LISTA_DE_NPC_RRPG" name="Lista de NPCs" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/TablesDock/Lista%20de%20NPCs/output/Lista%20de%20NPCs.rpk?raw=true" fileName="Lista de NPCs.rpk" repositoryPath="TablesDock/Lista de NPCs/" author="Mia Alexandra (Mia)" description="Um plugin que em resumo, é uma tabela onde é possível inserir NPCs diversos. A configuração das barrinhas e linhas é similar à do RRPG, para o propósito de manter a interface limpa e homogênea." version="2.1.1" compilationDate="21032023030254" compilationDigest="a608bae3700cd83df40d580549e515986061e1fe">
+    <element id="LISTA_DE_NPC_RRPG" name="Lista de NPCs" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/TablesDock/Lista%20de%20NPCs/output/Lista%20de%20NPCs.rpk?raw=true" fileName="Lista de NPCs.rpk" repositoryPath="TablesDock/Lista de NPCs/" author="Mia Alexandra (Mia)" description="Um plugin que em resumo, é uma tabela onde é possível inserir NPCs diversos. A configuração das barrinhas e linhas é similar à do RRPG, para o propósito de manter a interface limpa e homogênea." version="2.1.2" compilationDate="21032023030254" compilationDigest="a608bae3700cd83df40d580549e515986061e1fe">
         <info lang="pt-BR" name="Lista de NPCs" description="Um plugin que em resumo, é uma tabela onde é possível inserir NPCs diversos. A configuração das barrinhas e linhas é similar à do RRPG, para o propósito de manter a interface limpa e homogênea." author="Mia Alexandra (Mia)" site="http://bemtivii.wordpress.com"/>
         <dataTypes>
             <dataType id="Lista.de.NPC" title="Lista de NPCs" formType="tablesDock">
