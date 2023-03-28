@@ -159,8 +159,15 @@
 							
 							<!-- INICIATIVA -->
 							<flowPart stepSizes="{105}" minScaledWidth="75" height="120" frameStyle="frames/panel4transp/frame.xml">
-								<label align="top" text="@@DnD5e.frente.lab.initiative" height="20" fontSize="9" wordWrap="true" horzTextAlign="center" textTrimming="none"/>
-								<edit align="client" class="atributo transparente" field="iniciativa" fontSize="30"/>	
+								<button name="initiativeBut" align="top" text="@@DnD5e.frente.lab.initiative" height="20" fontSize="9" wordWrap="true" horzTextAlign="center" textTrimming="none" margins="{left=10,right=10}">
+									<event name="onKeyDown"> common.keyDown(sheet, event, self.initiativeVal); </event>
+									<event name="onKeyUp"> common.keyUp(sheet, event, self.initiativeVal); </event>
+									<event name="onClick"> common.onClick(sheet, common.rolaIniciativa, nil, nil, true); </event>
+									<event name="onMenu"> common.onClick(sheet, common.rolaIniciativa, nil, nil, false); </event>
+									<event name="onMouseEnter"> self.initiativeBut:setFocus(); </event>
+									<event name="onExit"> self.initiativeVal.fontColor = "white"; </event>
+								</button>
+								<edit name="initiativeVal" align="client" class="atributo transparente" field="iniciativa" fontSize="30"/>	
 							</flowPart>		
 
 							<!-- DESLOCAMENTO -->
@@ -223,7 +230,14 @@
 								<dndCheckBox align="right" width="25" field="testesContraMorte.f1" margins="{right=2}"/>
 								<dndCheckBox align="right" width="25" field="testesContraMorte.f2" margins="{right=6}"/>
 							</layout>
-							<label align="bottom" autoSize="true" text="@@DnD5e.frente.lab.deathteste" fontSize="11" vertTextAlign="center" horzTextAlign="center" />
+							<button align="bottom" name="DeathSave" text="@@DnD5e.frente.lab.deathteste" fontSize="11" vertTextAlign="center" horzTextAlign="center">
+								<event name="onKeyDown"> common.keyDown(sheet, event, self.DeathSave); </event>
+								<event name="onKeyUp"> common.keyUp(sheet, event, self.DeathSave); </event>
+								<event name="onClick"> common.onClick(sheet, common.deathSave, nil, nil, true); </event>
+								<event name="onMenu"> common.onClick(sheet, common.deathSave, nil, nil, false); </event>
+								<event name="onMouseEnter"> self.DeathSave:setFocus(); </event>
+								<event name="onExit"> self.DeathSave.fontColor = "white"; </event>
+							</button>
 						</flowPart>		
 					</flowLayout>										
 				</flowLayout>	
