@@ -28,7 +28,7 @@
 				
 				<radioButton groupName="tipoMacro" field="tipoMacro" fieldValue="S" text="@@macros.ui.macroType.simple"/>
 				<radioButton groupName="tipoMacro" field="tipoMacro" fieldValue="L" text="@@macros.ui.macroType.lua" margins="{bottom=12, right=8}"/>
-				<button  text="??" width="45" onClick="GUI.openInBrowser('http://rrpg.com.br/sdk3beta/RRPG%20SDK%203.html?Macros.html');"/>
+				<button  text="??" width="45" onClick="GUI.openInBrowser('https://firecast.app/sdk3/RRPG%20SDK%203.html?Macros.html');"/>
 				<flowLineBreak/>
 				
 				<label text="@@macros.ui.actionsTitle" autoSize="true" vertTextAlign="trailing"/>
