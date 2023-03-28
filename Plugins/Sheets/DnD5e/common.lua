@@ -269,7 +269,7 @@ function common.rolaMagia(node, modo, args, chat)
 					args.rolls = 1;
 				end;
 
-				args.acerto = common.interpreta(args.ficha, args.rolls .. 'd20 + ' .. node.magias.bonusAtaqueSTR);
+				args.acerto = common.interpreta(args.ficha, args.rolls .. 'd20 + ' .. (node.magias.bonusAtaqueSTR or 0));
 			else
 				args.ataque = 'nao';
 			end;
@@ -294,7 +294,7 @@ function common.rolaMagia(node, modo, args, chat)
 	end;
 
 	-- Mensagem
-	local texto = 'castou';
+	local texto = 'conjurou';
 	if args.magia.nome then
 		texto = texto .. ' "' .. args.magia.nome .. '"';
 	else

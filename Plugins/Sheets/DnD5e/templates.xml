@@ -228,6 +228,9 @@
 							end;
 							
 							if sheet.resistencias ~= nil then
+								if sheet.resistencias.$(field) == true then
+									sheet.resistencias.$(field) = 1
+								end
 								temResistencia = sheet.resistencias.$(field) or 0;
 							else
 								temResistencia = 0;
@@ -282,6 +285,9 @@
 							end;
 							
 							if sheet.pericias ~= nil then
+								if sheet.pericias.$(periciaField) == true then
+									sheet.pericias.$(periciaField) = 1
+								end
 								temPericia = sheet.pericias.$(periciaField) or 0;
 							else
 								temPericia = 0;
@@ -424,8 +430,16 @@
 	
 	<template name="magiaItemContentEditAndLine">
 		<edit name="edtNome" class="transparente" align="client" field="nome" margins="{left=4, right=4}" vertTextAlign="center"/>
-		<horzLine align="bottom" strokeColor="white"/>						
-		<button text="i" align="right" width="32" margins="{left=4, right=0, top=2, bottom=2}" onClick="showMagiaPopup();"/>		
+		<horzLine align="bottom" strokeColor="white"/>
+		<button name="edtNomeBut" text="🎲" align="right" width="32" margins="{left=4, right=0, top=2, bottom=2}">
+			<event name="onKeyDown"> common.keyDown(sheet, event, self.edtNome); </event>
+			<event name="onKeyUp"> common.keyUp(sheet, event, self.edtNome); </event>
+			<event name="onClick"> common.onClick(sheet, common.rolaMagia, { magia=self.sheet }, nil, true); </event>
+			<event name="onMenu"> common.onClick(sheet, common.rolaMagia, { magia=self.sheet }, nil, false); </event>
+			<event name="onMouseEnter"> self.edtNomeBut:setFocus(); </event>
+			<event name="onExit"> self.edtNome.fontColor = "white"; </event>
+		</button>					
+		<button text="i" align="right" width="32" margins="{left=4, right=0, top=2, bottom=2}" onClick="showMagiaPopup();" onMenu="mostraMagia();"/>		
 		<button text="@@DnD5e.spells.btn.delete" align="right" width="60" margins="{left=4, right=4, top=2, bottom=2}" onClick="askForDelete();"/>		
 	</template>
 	
@@ -450,6 +464,25 @@
 				else
 					showMessage("Ops, bug.. nao encontrei o popup de magia para exibir");
 				end;				
+			end;
+
+			local function mostraMagia()
+				local magia = sheet;																			if not magia		then return; end;
+				local ficha = sheet; while (NDB.getParent(ficha) ~= nil) do ficha = NDB.getParent(ficha); end;
+				local personagem = Firecast.getPersonagemDe(ficha);												if not personagem	then return; end;
+				local mesa = personagem.mesa;																	if not mesa			then return; end;
+				local chat = mesa.activeChat;																	if not chat			then return; end;
+
+				local mensagem = "";
+				if magia.nome then mensagem = mensagem .. "\nNome: '" .. magia.nome .. "'"; end;
+				if magia.tempoDeFormulacao then mensagem = mensagem .. "\nTempo de Formulação: '" .. magia.tempoDeFormulacao .. "'"; end;
+				if magia.alcance then mensagem = mensagem .. "\nAlcance: '" .. magia.alcance .. "'"; end;
+				if magia.componentes then mensagem = mensagem .. "\nComponentes: '" .. magia.componentes .. "'"; end;
+				if magia.duracao then mensagem = mensagem .. "\nDuração: '" .. magia.duracao .. "'"; end;
+				if magia.ataque then mensagem = mensagem .. "\nAtaque: '" .. magia.ataque .. "'"; end;
+				if magia.resistencia then mensagem = mensagem .. "\nTeste de Resistência: '" .. magia.resistencia .. "'"; end;
+				if magia.descricao then mensagem = mensagem .. "\nDescrição: '" .. magia.descricao .. "'"; end;
+				if mensagem ~= "" then mesa.activeChat:enviarMensagem(mensagem); end;
 			end;
 			]]>		
 		</script>
