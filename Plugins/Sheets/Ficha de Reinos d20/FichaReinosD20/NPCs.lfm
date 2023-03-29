@@ -1099,6 +1099,4 @@
 		self.TipoDeBarras:close();
 		FecharOPopupForm();
 	</event>
-	
-	<dataLink fields="{'Aberto1'}" defaultValues="false"/>
 </form>
