@@ -1,10 +1,12 @@
 ﻿[en]
 DnD5e.tab.equipament.attack.title=ATTACK
 DnD5e.tab.equipament.defend.title=DEFENSE
+DnD5e.tab.equipament.equip.title=EQUIPAMENT AND ATTACKS
 
 DnD5e.tab.equipament.btn.delete=Delete
 DnD5e.tab.equipament.btn.roll=Roll
 DnD5e.tab.equipament.btn.newItem=New Item
+DnD5e.tab.equipament.btn.property=Add Property
 DnD5e.tab.equipament.btn.pen=DIS.
 
 DnD5e.tab.equipament.atack.lab.name=NAME
@@ -15,7 +17,7 @@ DnD5e.tab.equipament.atack.lab.type=TYPE
 DnD5e.tab.equipament.atack.lab.property=PROPERTIES
 DnD5e.tab.equipament.atack.lab.range=RANGE
 DnD5e.tab.equipament.atack.lab.ammunition=AMMO
-DnD5e.tab.equipament.atack.lab.ammunitionAmount=AMMO QTY
+DnD5e.tab.equipament.atack.lab.ammunitionAmount=QTY
 
 DnD5e.tab.equipament.defend.lab.name=NAME
 DnD5e.tab.equipament.defend.lab.weight=WEIGHT
@@ -59,8 +61,9 @@ DnD5e.tabControl.tab.front=Front
 DnD5e.tabControl.tab.feature=Features & Traits
 DnD5e.tabControl.tab.equipment=Equipment
 DnD5e.tabControl.tab.spells=Spells
+DnD5e.tabControl.tab.counter=Counter
 DnD5e.tabControl.tab.annotations=Notes
-
+DnD5e.tabControl.tab.other=Other
 
 
 DnD5e.frente.lab.characterName=CHARACTER NAME
@@ -142,7 +145,111 @@ DnD5e.spells.resistance.int=Intelligence
 DnD5e.spells.resistance.wis=Wisdom
 DnD5e.spells.resistance.cha=Charisma
 
+Dnd5e.other.export=Export XML
+Dnd5e.other.exported=Sheet Exported!
+Dnd5e.other.save=Save sheet as XML
+Dnd5e.other.import=Import XML
+
 DnD5e.generic.deleteConfirmation=Do you really want to delete this item?
 DnD5e.generic.cantRoll=You cannot roll dice for this character.
 DnD5e.generic.attack=Attack
 DnD5e.generic.damage=Damage
+
+DnD5e.tab.equipment.property.finesse=Finesse
+DnD5e.tab.equipment.property.reach=Reach
+DnD5e.tab.equipment.property.throw=Throw
+DnD5e.tab.equipment.property.ranged=Ranged
+DnD5e.tab.equipment.property.th=Two Hands
+DnD5e.tab.equipment.property.specScimitar=Special (Double Scimitar)
+DnD5e.tab.equipment.property.specLance=Special (Mounted Lance)
+DnD5e.tab.equipment.property.specNet=Especial (Net)
+DnD5e.tab.equipment.property.light=Light
+DnD5e.tab.equipment.property.ammo=Ammo
+DnD5e.tab.equipment.property.heavy=Heavy
+DnD5e.tab.equipment.property.reload=Reload
+DnD5e.tab.equipment.property.versatile=Versatile
+DnD5e.tab.equipment.property.magic=Magic
+DnD5e.tab.equipment.property.silver=Silver
+DnD5e.tab.equipment.property.misfire1=Missfire 1
+DnD5e.tab.equipment.property.misfire2=Missfire 2
+DnD5e.tab.equipment.property.misfire3=Missfire 3
+DnD5e.tab.equipment.property.misfire4=Missfire 4
+DnD5e.tab.equipment.property.misfire5=Missfire 5
+
+DnD5e.tab.equipment.property.finesseDetails=Finesse
+DnD5e.tab.equipment.property.reachDetails=Reach
+DnD5e.tab.equipment.property.throwDetails=Throw
+DnD5e.tab.equipment.property.rangedDetails=Ranged
+DnD5e.tab.equipment.property.thDetails=Two Hands
+DnD5e.tab.equipment.property.specScimitarDetails=Special (Double Scimitar)
+DnD5e.tab.equipment.property.specLanceDetails=Special (Mounted Lance)
+DnD5e.tab.equipment.property.specNetDetails=Especial (Net)
+DnD5e.tab.equipment.property.lightDetails=Light
+DnD5e.tab.equipment.property.ammoDetails=Ammo
+DnD5e.tab.equipment.property.heavyDetails=Heavy
+DnD5e.tab.equipment.property.reloadDetails=Reload
+DnD5e.tab.equipment.property.versatileDetails=Versatile
+DnD5e.tab.equipment.property.magicDetails=Magic
+DnD5e.tab.equipment.property.silverDetails=Silver
+DnD5e.tab.equipment.property.misfire1Details=Missfire 1
+DnD5e.tab.equipment.property.misfire2Details=Missfire 2
+DnD5e.tab.equipment.property.misfire3Details=Missfire 3
+DnD5e.tab.equipment.property.misfire4Details=Missfire 4
+DnD5e.tab.equipment.property.misfire5Details=Missfire 5
+
+Dnd5e.messages.deniedRoll=You can't roll dice for this character.
+Dnd5e.messages.spellSlot=What is the spell slot level?
+Dnd5e.messages.spellCast=Do you want to spend this spell slot?
+Dnd5e.messages.noSpellSlot=You don't have spell slots from this level available.
+Dnd5e.messages.advantage= - Advantage
+Dnd5e.messages.disadvantage= - Disadvantage
+Dnd5e.messages.cast=casts
+Dnd5e.messages._oneSpell= one spell
+Dnd5e.messages.oneSpellSlot= with one spell slot of level 
+Dnd5e.messages.saveType=( Save using  
+Dnd5e.messages.critical=[§K4]( Critical Hit )
+Dnd5e.messages.hit=( Hit = 
+Dnd5e.messages.hit2=Hit
+Dnd5e.messages.spend=Do you wish to spend 
+Dnd5e.messages.noResources=You don't have enough charges of this resource.
+Dnd5e.messages.cast_=casts 
+Dnd5e.messages.oneSpell=one spell
+Dnd5e.messages._level_= (Level 
+Dnd5e.messages.saveKind=Save using 
+Dnd5e.messages.damage=Damage: 
+Dnd5e.messages.damage2=Damage
+Dnd5e.messages.damage3=Damage (
+Dnd5e.messages.invalidSKill=Invalid skill '
+Dnd5e.messages.result=( Result = 
+Dnd5e.messages.because= because of '
+Dnd5e.messages.noCharges=You don't have enough charges of '
+Dnd5e.messages.toUse=' to use '
+Dnd5e.messages.autoHit= - Automatic hit
+Dnd5e.messages.elvenPrecision= - Elven precision
+Dnd5e.messages.bigWeapons= - Reroll 1s e 2s, because of Combat with Big Weapons
+Dnd5e.messages.fail=rolled a critical failure.
+Dnd5e.messages.init=Initiative
+Dnd5e.messages.attacked=attacked
+Dnd5e.messages.save=Save - 
+Dnd5e.messages.deathSave=Death save
+Dnd5e.messages.awake=Awoke.
+Dnd5e.messages.stable=Stabilized
+Dnd5e.messages.uncounscious=hour(s) uncounscious
+Dnd5e.messages.died=Died after 3 failed death saves.
+Dnd5e.messages.delete=Do you with to delete this item?
+Dnd5e.messages.of= of
+Dnd5e.messages.melee=Melee Attack
+Dnd5e.messages.ranged=Ranged Attack
+
+DnD5e.tab.counter.add=Add
+DnD5e.tab.counter.import=Import from Macro
+DnD5e.tab.counter.description=Description
+DnD5e.tab.counter.roll=Roll
+DnD5e.tab.counter.shortRest=Short Rest
+DnD5e.tab.counter.longRest=Long Rest
+DnD5e.tab.counter.nothing=Nothing
+DnD5e.tab.counter.complete=Full
+DnD5e.tab.counter.halfUp=Half (⌃)
+DnD5e.tab.counter.halfDown=Half (⌄)
+DnD5e.tab.counter.changeBy=Change by
+DnD5e.tab.counter.changeTo=Change to

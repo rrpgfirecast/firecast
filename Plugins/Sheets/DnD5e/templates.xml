@@ -372,7 +372,7 @@
 		<dataLink field="$(field)">
 			<event name="onChange">
 				if sheet == nil then return end
-				local pics = {}
+				local pics
 
 				if ("$(losango)" == "true") then
 					pics = {"http://blob.firecast.com.br/blobs/RBKNDVWO_2605563/checkbox2_unchecked.png", 
@@ -499,5 +499,59 @@
 		<!-- end; -->
 		
 		<script>self.height=32;</script>
+	</template>
+
+	<template name="optAtaqueLegenda">
+		<flowPart height="$(height or 30)" minWidth="$(minWidth or width)" maxWidth="$(maxWidth or width)">
+			<label align="client" class="tituloCampo" text="$(text)" horzTextAlign="center" vertTextAlign="leading" wordWrap="true" textTrimming="none"/>
+		</flowPart>
+	</template>
+
+	<template name="optAtaqueField">
+		<flowPart height="$(height or 30)" minWidth="$(minWidth)" maxWidth="$(maxWidth)" avoidScale="true">
+			<edit align="client" class="infoNoTopo" field="$(field)" horzTextAlign="center" vertTextAlign="center" fontSize="13" transparent="false" hitTest="true"/>
+		</flowPart>
+	</template>
+
+	<template name="optAtaque">
+		<flowLayout class="tile" align="$(align)" height="$(height or 30)" width="$(width or 200)" name="$(name or flaOptAtaque)" horzAlign="justify">
+			<flowPart height="$(height or 30)" width="20">
+				<!-- if (enabled == "true") then -->
+					<checkBox align="client" hint="Usar opção de ataque" field="habilitado"/>
+				<!-- else -->
+					<checkBox align="client" checked="$(checked or true)" enabled="false"/>
+				<!-- end; -->
+			</flowPart>
+
+			<!-- 
+				if alcanceOuNome == "alcance" then
+					hint = "Alcance do ataque";
+				else
+					hint = "Nome da opção de ataque";
+				end;
+			 -->
+
+			<optAtaqueField height="$(height or 30)" minWidth="80"	maxWidth="150"	field="$(alcanceOuNome)" hint="$(hint)"/>
+			<optAtaqueField height="$(height or 30)" minWidth="110"	maxWidth="200"	field="ataque"			 hint="Modificador para o acerto"/>
+			<optAtaqueField height="$(height or 30)" minWidth="80"	maxWidth="170"	field="dano"			 hint="Modificador para o dano"/>
+			<optAtaqueField height="$(height or 30)" minWidth="80"	maxWidth="180"	field="tipo"			 hint="Tipo do dano, vazio para o mesmo do ataque"/>
+
+			<flowPart height="$(height or 30)" minWidth="100" maxWidth="200" avoidScale="true">
+				<comboBox name="cbOptAtaqueMunicao" align="client" class="infoNoTopo" field="municao" hint="Qual 'contador' deve ser gasto"/>
+				<dataLink field="contadoresMudaram">
+					<event name="onChange">
+						if sheet and sheet.contadoresMudaram then
+							self.cbOptAtaqueMunicao:setItems(common.getNomeContadores(sheet, {""}));
+						end;
+					</event>
+				</dataLink>
+			</flowPart>
+
+			<optAtaqueField height="$(height or 30)" minWidth="25"	maxWidth="50"	field="qtMunicao"		 hint="Quantos usos do contador"/>
+
+			<flowPart height="$(height or 30)" width="25">
+				<button name="btnApagar" align="client" text="✖" onClick="common.askForDelete(self.sheet);" enabled="$(enabled)"/>
+			</flowPart>
+		</flowLayout>
 	</template>
 </group>

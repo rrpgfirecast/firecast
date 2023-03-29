@@ -10,15 +10,19 @@
 		
 		<tab title="@@DnD5e.tabControl.tab.feature">
 			<import file="caracteristicas.xml"/>
-		</tab>		
+		</tab>
 		
 		<tab title="@@DnD5e.tabControl.tab.equipment">
 			<import file="equipamento.xml"/>
-		</tab>	
+		</tab>
 
 		<tab title="@@DnD5e.tabControl.tab.spells">
 			<import file="magias.xml"/>
-		</tab>		
+		</tab>
+
+		<tab title="@@DnD5e.tabControl.tab.counter">
+			<import file="contadores.xml"/>
+		</tab>
 
 		<tab title="@@DnD5e.tabControl.tab.annotations">
 						<rectangle class="fundo">
@@ -34,5 +38,42 @@
 				<textEditor name="anotacoesOld" align="client" field="outros.anotacoes" class="transparente"  margins="{left=2, right=2, top=2, bottom=2}" visible="true"/>
 			</rectangle>
 		</tab>
-	</tabControl>		
+
+		<tab title="@@DnD5e.tabControl.tab.other">
+			<!-- Combobox de exportar ficha -->
+			<button left="0" top="0" width="100" height="20" text="@@Dnd5e.other.export" >
+				<event name="onClick">
+					local xml = NDB.exportXML(sheet);
+
+					local export = {};
+					Utils.binaryEncode(export, "utf8", xml);
+
+					local stream = Utils.newMemoryStream();
+					stream:write(export);
+
+					Dialogs.saveFile(LANG("Dnd5e.other.save"), stream, "sheet.xml", "application/xml",
+						function()
+							stream:close();
+							showMessage(LANG("Dnd5e.other.exported"));
+						end);
+				</event>
+			</button>
+			<!-- Combobox de importar ficha -->
+			<button left="0" top="25" width="100" height="20" text="@@Dnd5e.other.import" >
+				<event name="onClick">
+					Dialogs.openFile(LANG("Dnd5e.other.import"), "application/xml", false, 
+						function(arquivos)
+							local arq = arquivos[1];
+
+							local import = {};
+							arq.stream:read(import, arq.stream.size);
+
+							local xml = Utils.binaryDecode(import, "utf8");
+
+							NDB.importXML(sheet, xml);
+						end);
+				</event>
+			</button>
+		</tab>
+	</tabControl>
 </form>

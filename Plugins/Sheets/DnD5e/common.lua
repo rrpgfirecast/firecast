@@ -1,13 +1,22 @@
-﻿common = {};
+﻿require("locale.lua");   
+
+common = {};
 
 common.atributos = {
-	forca			= 'Força',
-	destreza		= 'Destreza',
-	constituicao	= 'Constituição',
-	inteligencia	= 'Inteligência',
-	sabedoria		= 'Sabedoria',
-	carisma			= 'Carisma'
+	forca			= Locale.lang("DnD5e.spells.resistance.str"),
+	destreza		= Locale.lang("DnD5e.spells.resistance.dex"),
+	constituicao	= Locale.lang("DnD5e.spells.resistance.con"),
+	inteligencia	= Locale.lang("DnD5e.spells.resistance.int"),
+	sabedoria		= Locale.lang("DnD5e.spells.resistance.wis"),
+	carisma			= Locale.lang("DnD5e.spells.resistance.cha")
 };
+common.atributos["Força"] = Locale.lang("DnD5e.spells.resistance.str")
+common.atributos["Destreza"] = Locale.lang("DnD5e.spells.resistance.dex")
+common.atributos["Constituição"] = Locale.lang("DnD5e.spells.resistance.con")
+common.atributos["Inteligência"] = Locale.lang("DnD5e.spells.resistance.int")
+common.atributos["Sabedoria"] = Locale.lang("DnD5e.spells.resistance.wis")
+common.atributos["Carisma"] = Locale.lang("DnD5e.spells.resistance.cha")
+
 common.atributos2 = {
 	forca			= {'FOR', 'STR'},
 	destreza		= {'DES', 'DEX'},
@@ -17,56 +26,46 @@ common.atributos2 = {
 	carisma			= {'CAR', 'CHA'}
 };
 common.pericias = {
-	atletismo		= 'Atletismo',
-	acrobacia		= 'Acrobacia',
-	furtividade		= 'Furtividade',
-	prestidigitacao	= 'Prestidigitação',
-	arcanismo		= 'Arcanismo',
-	historia		= 'História',
-	investigacao	= 'Investigação',
-	natureza		= 'Natureza',
-	religiao		= 'Religião',
-	adestrarAnimais	= 'Adestrar Animais',
-	intuicao		= 'Intuição',
-	medicina		= 'Medicina',
-	percepcao		= 'Percepção',
-	sobrevivencia	= 'Sobrevivência',
-	atuacao			= 'Atuação',
-	enganacao		= 'Enganação',
-	intimidacao		= 'Intimidação',
-	persuasao		= 'Persuasão'
+	atletismo		= Locale.lang("DnD5e.skills.athletics"),
+	acrobacia		= Locale.lang("DnD5e.skills.acrobatics"),
+	furtividade		= Locale.lang("DnD5e.skills.stealth"),
+	prestidigitacao	= Locale.lang("DnD5e.skills.sleighthand"),
+	arcanismo		= Locale.lang("DnD5e.skills.arcana"),
+	historia		= Locale.lang("DnD5e.skills.history"),
+	investigacao	= Locale.lang("DnD5e.skills.investigation"),
+	natureza		= Locale.lang("DnD5e.skills.nature"),
+	religiao		= Locale.lang("DnD5e.skills.religion"),
+	adestrarAnimais	= Locale.lang("DnD5e.skills.animalhandling"),
+	intuicao		= Locale.lang("DnD5e.skills.insight"),
+	medicina		= Locale.lang("DnD5e.skills.medicine"),
+	percepcao		= Locale.lang("DnD5e.skills.perception"),
+	sobrevivencia	= Locale.lang("DnD5e.skills.survival"),
+	atuacao			= Locale.lang("DnD5e.skills.performance"),
+	enganacao		= Locale.lang("DnD5e.skills.deception"),
+	intimidacao		= Locale.lang("DnD5e.skills.intimidation"),
+	persuasao		= Locale.lang("DnD5e.skills.persuasion")
 };
 common.armas_propriedades = {
-	['Acuidade'] = [[Quando realizar um ataque com uma arma com a propriedade acuidade, você pode escolher usar seu modificador de Força ou de Destreza para realizar a jogada de ataque e de dano. ]] ..
-		[[Você precisa usar o mesmo modificador para ambas as jogadas, ataque e dano.]],
-	['Alcance'] = [[Essa arma adiciona 1,5 metro ao seu alcance quando você a usa para atacar. Essa propriedade também determina seu alcance ao realizar ataques de oportunidade com uma arma de alcance.]],
-	['Arremesso'] = [[Essa arma adiciona 1,5 metro ao seu alcance quando você a usa para atacar. Essa propriedade também determina seu alcance ao realizar ataques de oportunidade com uma arma de alcance.]],
-	['Distância'] = [[Uma arma que pode ser usada para realizar ataques à distância possui a distância mostrada entre parênteses após a propriedade munição ou arremesso. A distância lista dois números. ]] ..
-		[[O primeiro é a distância normal da arma, o segundo indica a distância máxima da arma, ambos em metros. Quando atacar um alvo que está além da distância normal da arma, ]] ..
-		[[você possui desvantagem na jogada de ataque. Você não pode atacar um alvo que esteja além da distância máxima da arma.]],
-	['Duas Mãos'] = [[Essa arma requer as duas mãos para ser usada. Essa propriedade só é relevante quando você ataca com a arma, não enquanto apenas a segura.]],
-	['Especial (Cimitarra Dupla)'] = [[Se você atacar com uma cimitarra dupla como parte da ação de ataque no seu turno, poderá usar uma ação bônus imediatamente depois para fazer um ataque corpo a corpo com ela. ]] ..
-		[[Esse ataque causa 1d4 de dano cortante ao acertar, em vez de 2d4.]],
-	['Especial (Lança de Montaria)'] = [[Você tem desvantagem quando usar a lança longa para atacar um alvo a até 1,5 metro de você. Além disso, uma lança longa requer as duas mãos para ser empunhada quando você não está em uma montaria.]],
-	['Especial (Rede)'] = [[Uma criatura Grande ou menor atingida por uma rede fica impedida até se libertar. Uma rede não afeta criaturas que não possuam uma forma definida, ou criaturas Enormes ou maiores. ]] ..
-		[[A criatura pode usar sua ação para realizar um teste de Força CD 10 para se libertar, ou outra criatura dentro do alcance que obtiver sucesso no teste pode fazer isso por ela. ]] ..
-		[[Causar 5 de dano cortante à rede (CA 10) também liberta a criatura sem feri-la, encerrando o efeito e destruindo a rede. Quando você usa uma ação, ação bônus, ou reação para atacar com a rede, ]] ..
-		[[você pode realizar apenas um ataque, independentemente do número de ataques que você possa realizar normalmente.]],
-	['Leve'] = [[Uma arma leve é pequena e de fácil manuseio, tornando-a ideal para usar quando você está combatendo com duas armas.]],
-	['Munição'] = [[Você pode usar uma arma que tenha a propriedade munição para realizar um ataque à distância, apenas se possuir munição para disparar a arma. Cada vez que você atacar com a arma, você gasta uma peça de munição. ]] ..
-		[[Sacar a munição de uma aljava, bolsa, ou outro recipiente faz parte do ataque. No fim da batalha, você pode recuperar metade de sua munição gasta, se tiver um minuto para procurar pelo campo de batalha. ]] ..
-		[[Recarregar uma arma de uma mão requer uma mão livre. ]],
-	['Pesada'] = [[Criaturas pequenas têm desvantagem nas jogadas de ataque com estas armas. O tamanho e o peso de uma arma pesada tornam-na muito grande para ser empunhada eficientemente por criaturas Pequenas.]],
-	['Recarga'] = [[Devido o tempo necessário para recarregar essa arma, você pode disparar apenas uma peça de munição da arma quando usa uma ação, ação bônus, ou reação para disparar, não importando quantos ataques você possua.]],
-	['Versátil'] = [[Essa arma pode ser usada com uma ou duas mãos. Um valor de dano aparece entre parênteses com a propriedade – é o dano da arma quando usada com as duas mãos para efetuar ataques corpo-a-corpo.]],
-	['Mágica'] = [[A arma é mágica.]],
-	['Prateada'] = [[A arma é banhada em prata.]],
-	['Crítico Maximizado'] = [[Essa arma usa a regra homebrew de maximizar o dano extra dos acertos críticos.]],
-	['Misfire 1'] = [[Misfire 1.]],
-	['Misfire 2'] = [[Misfire 2.]],
-	['Misfire 3'] = [[Misfire 3.]],
-	['Misfire 4'] = [[Misfire 4.]],
-	['Misfire 5'] = [[Misfire 5.]],
+	[Locale.lang("DnD5e.tab.equipment.property.finesse")] = Locale.lang("DnD5e.tab.equipment.property.finesseDetails"),
+	[Locale.lang("DnD5e.tab.equipment.property.reach")] = Locale.lang("DnD5e.tab.equipment.property.reachDetails"),
+	[Locale.lang("DnD5e.tab.equipment.property.throw")] = Locale.lang("DnD5e.tab.equipment.property.throwDetails"),
+	[Locale.lang("DnD5e.tab.equipment.property.ranged")] = Locale.lang("DnD5e.tab.equipment.property.rangedDetails"),
+	[Locale.lang("DnD5e.tab.equipment.property.th")] = Locale.lang("DnD5e.tab.equipment.property.thDetails"),
+	[Locale.lang("DnD5e.tab.equipment.property.specScimitar")] = Locale.lang("DnD5e.tab.equipment.property.specScimitarDetails"),
+	[Locale.lang("DnD5e.tab.equipment.property.specLance")] = Locale.lang("DnD5e.tab.equipment.property.specLanceDetails"),
+	[Locale.lang("DnD5e.tab.equipment.property.specNet")] = Locale.lang("DnD5e.tab.equipment.property.specNetDetails"),
+	[Locale.lang("DnD5e.tab.equipment.property.light")] = Locale.lang("DnD5e.tab.equipment.property.lightDetails"),
+	[Locale.lang("DnD5e.tab.equipment.property.ammo")] = Locale.lang("DnD5e.tab.equipment.property.ammoDetails"),
+	[Locale.lang("DnD5e.tab.equipment.property.heavy")] = Locale.lang("DnD5e.tab.equipment.property.heavyDetails"),
+	[Locale.lang("DnD5e.tab.equipment.property.reload")] = Locale.lang("DnD5e.tab.equipment.property.reloadDetails"),
+	[Locale.lang("DnD5e.tab.equipment.property.versatile")] = Locale.lang("DnD5e.tab.equipment.property.versatileDetails"),
+	[Locale.lang("DnD5e.tab.equipment.property.magic")] = Locale.lang("DnD5e.tab.equipment.property.magicDetails"),
+	[Locale.lang("DnD5e.tab.equipment.property.silver")] = Locale.lang("DnD5e.tab.equipment.property.silverDetails"),
+	[Locale.lang("DnD5e.tab.equipment.property.misfire1")] = Locale.lang("DnD5e.tab.equipment.property.misfire1Details"),
+	[Locale.lang("DnD5e.tab.equipment.property.misfire2")] = Locale.lang("DnD5e.tab.equipment.property.misfire2Details"),
+	[Locale.lang("DnD5e.tab.equipment.property.misfire3")] = Locale.lang("DnD5e.tab.equipment.property.misfire3Details"),
+	[Locale.lang("DnD5e.tab.equipment.property.misfire4")] = Locale.lang("DnD5e.tab.equipment.property.misfire4Details"),
+	[Locale.lang("DnD5e.tab.equipment.property.misfire5")] = Locale.lang("DnD5e.tab.equipment.property.misfire5Details")
 };
 common.ficha_propriedades = {
 	checkBonus = {
@@ -95,16 +94,6 @@ common.ficha_propriedades = {
 		min = 1,
 		max = 20,
 		default = 19,
-	},
-	jackOfAllTrades = {
-		nome = 'Versatilidade',
-		descricao = 'Habilidade de Bardos, adiciona metade de seu bonus de proficiência em testes de habilidade nos quais você não é proficiente.',
-		tipo = 'bool',
-	},
-	remarkableAthlete = {
-		nome = 'Atletismo Extraordinário',
-		descricao = 'Habilidade de Guerreiros Campeões, adiciona metade de seu bonus de proficiência em testes de habilidade de força, destreza e constituição, nos quais você não é proficiente.',
-		tipo = 'bool',
 	},
 	prescience = {
 		nome = 'Previsão',
@@ -146,11 +135,6 @@ common.ficha_propriedades = {
 		nome = 'Precisão Élfica',
 		descricao = 'Talento racial de Elfos, permite rolar 3 d20s quanto faz um ataque —que não usa força— com vantagem.',
 		tipo = 'bool',
-	},
-	maximizedCrit = {
-		nome = 'Crítico Maximizado',
-		descricao = 'Essa arma usa a regra homebrew de maximizar o dano extra dos acertos críticos.',
-		tipo = 'bool',
 	}
 };
 
@@ -164,7 +148,7 @@ function common.rolaD20(node, nRolagems, bonus, chat, texto, afterFunction)
 
 	-- Checa se pode rolar
 	if not common.podeRolar(node) then -- Permissão
-		showMessage('Você não pode rolar dados por essa personagem.');
+		showMessage(Locale.lang("Dnd5e.messages.deniedRoll"));
 		return;
 	end;
 
@@ -216,7 +200,7 @@ function common.rolaMagia(node, modo, args, chat)
 			else
 				local choices = {};
 				for i=args.magia.nivel,9,1 do table.insert(choices, ''..i); end;
-				Dialogs.choose("Qual o nível do espaço de magia?", choices,
+				Dialogs.choose(Locale.lang("Dnd5e.messages.spellSlot"), choices,
 					function(selected, selectedIndex, selectedText)
 						if selected then
 							args.nivel = tonumber(selectedText);
@@ -232,12 +216,12 @@ function common.rolaMagia(node, modo, args, chat)
 			if args.nivel == 0 then
 				args.gastaEspacoDeMagia = 'nao';
 			else
-				Dialogs.confirmYesNo("Deseja gastar esse espaço de magia?", function (selected)
+				Dialogs.confirmYesNo(Locale.lang("Dnd5e.messages.spellCast"), function (selected)
 					if selected then
 						local gastos = tonumber(node.magias["espacosGastos" .. args.nivel]);
 						local totais = tonumber(node.magias["espacosTotais" .. args.nivel]);
 						if (gastos == nil) or (totais == nil) or (gastos >= totais) then
-							showMessage("Você não tem espaços de magia desse nível disponiveis.");
+							showMessage(Locale.lang("Dnd5e.messages.noSpellSlot"));
 							return;
 						end;
 						args.gastaEspacoDeMagia = 'sim';
@@ -254,17 +238,20 @@ function common.rolaMagia(node, modo, args, chat)
 			if args.magia.ataque == 'Ataque Corpo-a-Corpo' or args.magia.ataque == 'Ataque a Distância' then
 				args.ataque = 'sim';
 
-
-				args.text = args.magia.ataque;
+				if args.magia.ataque == 'Ataque Corpo-a-Corpo' then
+					args.text = Locale.lang("Dnd5e.messages.melee")
+				else
+					args.text = Locale.lang("Dnd5e.messages.ranged")
+				end
 
 				if modo == 'vantagem' then
 					args.rolls = 2;
 					args.foo = math.max;
-					args.text = args.text .. ' - Vantagem';
+					args.text = args.text .. Locale.lang("Dnd5e.messages.advantage");
 				elseif modo == 'desvantagem' then
 					args.rolls = 2;
 					args.foo = math.min;
-					args.text = args.text .. ' - Desvantagem';
+					args.text = args.text .. Locale.lang("Dnd5e.messages.disadvantage");
 				else
 					args.rolls = 1;
 				end;
@@ -289,27 +276,27 @@ function common.rolaMagia(node, modo, args, chat)
 
 	-- Checa se pode rolar
 	if not common.podeRolar(node) then
-		showMessage('Você não pode rolar dados por essa personagem.');
+		showMessage(Locale.lang("Dnd5e.messages.deniedRoll"));
 		return;
 	end;
 
 	-- Mensagem
-	local texto = 'conjurou';
+	local texto = Locale.lang("Dnd5e.messages.cast");
 	if args.magia.nome then
 		texto = texto .. ' "' .. args.magia.nome .. '"';
 	else
-		texto = texto .. ' uma magia'
+		texto = texto .. Locale.lang("Dnd5e.messages._oneSpell")
 	end;
 
 	if args.gastaEspacoDeMagia == 'sim' then
-		texto = texto .. ' com um espaço de magia de nível ' .. args.nivel;
+		texto = texto .. Locale.lang("Dnd5e.messages.oneSpellSlot") .. args.nivel;
 		node.magias["espacosGastos" .. args.nivel] = tonumber(node.magias["espacosGastos" .. args.nivel]) + 1;
 	end;
 	chat:enviarAcao(texto);
 
 	-- Teste de Resistência
 	if args.resistencia ~= 'nao' then
-		chat:enviarAcao('( Teste de resistência de ' .. args.resistencia .. ', CD ' .. args.resistenciaCD .. ' )');
+		chat:enviarAcao(Locale.lang("Dnd5e.messages.saveType") .. common.atributos[args.resistencia] .. ', CD ' .. args.resistenciaCD .. ' )');
 	end;
 
 	-- Acerto
@@ -332,9 +319,9 @@ function common.rolaMagia(node, modo, args, chat)
 			d20 = math.floor(d20);
 
 			if d20 == 20 then
-				chat:enviarAcao('[§K4]( Acerto Crítico )');
+				chat:enviarAcao(Locale.lang("Dnd5e.messages.critical"));
 			elseif modo ~= 'normal' then
-				chat:enviarAcao('( Acerto = ' .. result .. ' )');
+				chat:enviarAcao(Locale.lang("Dnd5e.messages.hit") .. result .. ' )');
 			end;
 		end);
 	end;
@@ -378,7 +365,7 @@ function common.rolaMagia2(node, modo, args, chat)
 
 		local choices = {};
 		for i=args.magia.nivel,9,1 do table.insert(choices, floor(i)); end;
-		Dialogs.choose("Qual o nível do espaço de magia?", choices, function(selected, selectedIndex, selectedText)
+		Dialogs.choose(Locale.lang("Dnd5e.messages.spellSlot"), choices, function(selected, selectedIndex, selectedText)
 			if selected then
 				args.nivelEspaco = tonumber(selectedText);
 				return do_next();
@@ -389,12 +376,12 @@ function common.rolaMagia2(node, modo, args, chat)
 	elseif args.estado == 'perguntaEspacoGasta' then
 		if args.magia.nivel == 0 then return do_next(); end;
 
-		Dialogs.confirmYesNo("Deseja gastar esse espaço de magia?", function (selected)
+		Dialogs.confirmYesNo(Locale.lang("Dnd5e.messages.spellSlot"), function (selected)
 			if selected then
 				local nivelMagia = common.getNivelMagia(node, args.nivelEspaco) or {};
 				local restantes = tonumber(nivelMagia.espacosAtuais);
 				if not (restantes >= 1) then
-					showMessage("Você não tem espaços de magia desse nível disponiveis.");
+					showMessage(Locale.lang("Dnd5e.messages.noSpellSlot"));
 					return;
 				end;
 			end;
@@ -408,11 +395,11 @@ function common.rolaMagia2(node, modo, args, chat)
 
 		if not contador then return do_next(); end;
 
-		Dialogs.confirmYesNo("Deseja gastar " .. args.magia.contadorUsos .. " '" .. args.magia.contadorNome .. "'?", function (selected)
+		Dialogs.confirmYesNo(Locale.lang("Dnd5e.messages.spend") .. args.magia.contadorUsos .. " '" .. args.magia.contadorNome .. "'?", function (selected)
 			if selected then
 				local atual = tonumber(contador.valCur);
 				if not atual or args.magia.contadorUsos > atual then
-					showMessage("Você não tem usos suficientes desse recurso.");
+					showMessage(Locale.lang("Dnd5e.messages.noResources"));
 					return;
 				end;
 			end;
@@ -422,12 +409,12 @@ function common.rolaMagia2(node, modo, args, chat)
 
 		return;
 	elseif args.estado == 'conjuracao' then
-		local text = 'conjurou ';
+		local text = Locale.lang("Dnd5e.messages.cast_");
 		if args.magia.nome then text = text .. args.magia.nome;
-		else text = text .. 'uma magia';
+		else text = text .. Locale.lang("Dnd5e.messages.oneSpell");
 		end;
 
-		if args.nivelEspaco then text = text .. ' (Nível ' .. args.nivelEspaco .. ')'; end;
+		if args.nivelEspaco then text = text .. Locale.lang("Dnd5e.messages._level_") .. args.nivelEspaco .. ')'; end;
 
 		chat:enviarAcao(text);
 
@@ -451,10 +438,10 @@ function common.rolaMagia2(node, modo, args, chat)
 
 		if modo == 'vantagem' then
 			args.ataque.rolls = 2;
-			args.ataque.text = args.ataque.text .. ' - Vantagem';
+			args.ataque.text = args.ataque.text .. Locale.lang("Dnd5e.messages.advantage");
 		elseif modo == 'desvantagem' then
 			args.ataque.rolls = -2;
-			args.ataque.text = args.ataque.text .. ' - Desvantagem';
+			args.ataque.text = args.ataque.text .. Locale.lang("Dnd5e.messages.disadvantage");
 		else
 			args.ataque.rolls = 1;
 		end;
@@ -490,7 +477,7 @@ function common.rolaMagia2(node, modo, args, chat)
 	elseif args.estado == 'rolaTesteResistencia' then
 		if not args.testeResistencia then return do_next(); end;
 
-		chat:enviarAcao('Teste de resistência de ' .. args.testeResistencia.atributo .. ', CD ' .. args.testeResistencia.valor);
+		chat:enviarAcao(Locale.lang("Dnd5e.messages.saveKind") .. args.testeResistencia.atributo .. ', CD ' .. args.testeResistencia.valor);
 
 		return do_next();
 	elseif args.estado == 'rolaFormulasDano' then
@@ -504,7 +491,7 @@ function common.rolaMagia2(node, modo, args, chat)
 			local dano = danos[args.danoCount];
 
 			local text = '';
-			if dano.tipoDano then text = 'Dano: ' .. dano.tipoDano; end;
+			if dano.tipoDano then text = Locale.lang("Dnd5e.messages.damage") .. dano.tipoDano; end;
 			if dano.tipoDano and dano.contexto then text = text .. ' '; end;
 			if dano.contexto then text =  text .. dano.contexto; end;
 
@@ -575,23 +562,23 @@ function common.rolaPericia(node, modo, args, chat)
 			if common.fichaTemPropriedade(node, 'checkBonus') then args.rolagem = args.rolagem .. ' + ' .. common.fichaGetPropriedadeVal(node, 'checkBonus'); end;
 		elseif args.tipo == 'res' then
 			args.rolagem = node.resistencias['bonus'..suffix];
-			args.text = 'Resistência - ' .. common.atributos[suffix];
+			args.text = Locale.lang("Dnd5e.messages.save") .. common.atributos[suffix];
 			args.prof = node.resistencias[suffix];
 			if common.fichaTemPropriedade(node, 'saveBonus') then args.rolagem = args.rolagem .. ' + ' .. common.fichaGetPropriedadeVal(node, 'saveBonus'); end;
 		else
-			showMessage('Perícia inválida \'' .. args.field .. '\'.');
+			showMessage(Locale.lang("Dnd5e.messages.invalidSKill") .. args.field .. '\'.');
 			return;
 		end;
 
 		args.rolagem = common.interpreta(node, args.rolls .. 'd20 + ' .. args.rolagem);
-		if node.nome then args.text = args.text .. ' de ' .. node.nome; end;
+		if node.nome then args.text = args.text .. Locale.lang("Dnd5e.messages.of") .. node.nome; end;
 
 		if modo == 'vantagem' then
 			args.foo = math.max;
-			args.text = args.text .. ' - Vantagem';
+			args.text = args.text .. Locale.lang("Dnd5e.messages.advantage");
 		elseif modo == 'desvantagem' then
 			args.foo = math.min;
-			args.text = args.text .. ' - Desvantagem';
+			args.text = args.text .. Locale.lang("Dnd5e.messages.disadvantage");
 		end;
 	end;
 
@@ -599,7 +586,7 @@ function common.rolaPericia(node, modo, args, chat)
 
 	-- Checa se pode rolar
 	if not common.podeRolar(node) then
-		showMessage('Você não pode rolar dados por essa personagem.');
+		showMessage(Locale.lang("Dnd5e.messages.deniedRoll"));
 		return;
 	end;
 
@@ -622,9 +609,9 @@ function common.rolaPericia(node, modo, args, chat)
 		d20 = math.floor(d20);
 
 		if d20 < 10 and args.tipo == 'per' and args.prof and common.fichaTemPropriedade(node, 'reliableTalent') then
-			chat:enviarAcao('( Resultado = ' .. math.floor(result+10-d20) .. ' devido a \'' .. common.fichaGetPropriedade(node, 'reliableTalent').nome .. '\' )');
+			chat:enviarAcao(Locale.lang("Dnd5e.messages.result") .. math.floor(result+10-d20) .. Locale.lang("Dnd5e.messages.because") .. common.fichaGetPropriedade(node, 'reliableTalent').nome .. '\' )');
 		elseif modo ~= 'normal' then
-			chat:enviarAcao('( Resultado = ' .. result .. ' )');
+			chat:enviarAcao(Locale.lang("Dnd5e.messages.result") .. result .. ' )');
 		end;
 	end);
 end;
@@ -640,7 +627,7 @@ function common.rolaAtaque(node, modo, args, chat)
 
 	-- Checa se pode rolar
 	if not common.podeRolar(node) then -- Permissão
-		showMessage('Você não pode rolar dados por essa personagem.');
+		showMessage(Locale.lang("Dnd5e.messages.deniedRoll"));
 		return;
 	else -- Munição
 		if item.municao and item.municao ~= '' then
@@ -648,7 +635,7 @@ function common.rolaAtaque(node, modo, args, chat)
 			local contador = common.getContador(item, item.municao);
 			if contador and qtd then
 				if contador.valCur < qtd then
-					showMessage('Você não tem cargas suficientes de \'' .. item.municao .. '\' para usar \'' .. item.nome .. '\'');
+					showMessage(Locale.lang("Dnd5e.messages.noCharges") .. item.municao .. Locale.lang("Dnd5e.messages.toUse") .. item.nome .. '\'');
 					return;
 				else
 					contador.valCur = contador.valCur - qtd;
@@ -671,18 +658,18 @@ function common.rolaAtaque(node, modo, args, chat)
 		end;
 
 		if not args.text then
-			args.text = 'atacou';
+			args.text = Locale.lang("Dnd5e.messages.attacked");
 			if item.nome then args.text = args.text .. ' com ' .. item.nome; end;
 		end;
 
 		if modo == 'vantagem' then
 			args.foo = math.max;
-			args.text = args.text .. ' - Vantagem';
+			args.text = args.text .. Locale.lang("Dnd5e.messages.advantage");
 		elseif modo == 'desvantagem' then
 			args.foo = math.min;
-			args.text = args.text .. ' - Desvantagem';
+			args.text = args.text .. Locale.lang("Dnd5e.messages.disadvantage");
 		elseif modo == 'dano' then
-			args.text = args.text .. ' - Acerto automático';
+			args.text = args.text .. Locale.lang("Dnd5e.messages.autoHit");
 		end;
 
 		local acerto_rolls = {};
@@ -699,7 +686,7 @@ function common.rolaAtaque(node, modo, args, chat)
 			local contador = common.getContador(node, opt.municao);
 
 			if contador.valCur < qtd then
-				showMessage('Você não tem cargas suficientes de \'' .. opt.municao .. '\' para usar \'' .. opt.nome .. '\'');
+				showMessage(Locale.lang("Dnd5e.messages.noCharges") .. opt.municao .. Locale.lang("Dnd5e.messages.toUse") .. opt.nome .. '\'');
 				return false;
 			end;
 
@@ -741,10 +728,10 @@ function common.rolaAtaque(node, modo, args, chat)
 				if nome ~= 'Padrão' then table.insert(rolls, roll); end;
 			end;
 
-			args.textAcerto = 'Acerto';
-			if args.rolls == 3 then args.textAcerto = args.textAcerto .. ' - Precisão Élfica';
-			elseif modo == 'vantagem' then args.textAcerto = args.textAcerto .. ' - Vantagem';
-			elseif modo == 'desvantagem' then args.textAcerto = args.textAcerto .. ' - Desvantagem';
+			args.textAcerto = Locale.lang("Dnd5e.messages.hit2");
+			if args.rolls == 3 then args.textAcerto = args.textAcerto .. Locale.lang("Dnd5e.messages.elvenPrecision");
+			elseif modo == 'vantagem' then args.textAcerto = args.textAcerto .. Locale.lang("Dnd5e.messages.advantage");
+			elseif modo == 'desvantagem' then args.textAcerto = args.textAcerto .. Locale.lang("Dnd5e.messages.disadvantage");
 			end;
 			if #nomes > 0 then args.textAcerto = args.textAcerto .. ' - (' .. (acerto_rolls['Padrão'] and 'Padrão, ' or '') .. table.concat(nomes, ', ') .. ')'; end;
 
@@ -761,8 +748,8 @@ function common.rolaAtaque(node, modo, args, chat)
 				if nome ~= 'Padrão' then table.insert(rolls, roll); end;
 			end;
 
-			if tipo == '' then args.textAcerto = 'Dano';
-			else args.textsDano[tipo] = 'Dano (' .. tipo .. ')';
+			if tipo == '' then args.textAcerto = Locale.lang("Dnd5e.messages.damage2");
+			else args.textsDano[tipo] = Locale.lang("Dnd5e.messages.damage3") .. tipo .. ')';
 			end;
 			if #nomes > 0 then args.textsDano[tipo] = args.textsDano[tipo] .. ' - (' .. (dano_rolls[tipo]['Padrão'] and 'Padrão, ' or '') .. table.concat(nomes, ', ') .. ')'; end;
 
@@ -785,7 +772,7 @@ function common.rolaAtaque(node, modo, args, chat)
 
 		if roll then
 			if d20 and d20 >= args.acertoCritico then
-				text = text .. ' - [§K4]Acerto crítico';
+				text = text .. ' - ' .. Locale.lang("Dnd5e.messages.critical");
 				-- Critico Maximizado
 				if common.armaTemPropriedade(item, 'Crítico Maximizado') or common.fichaTemPropriedade(item, 'maximizedCrit') then
 					roll = roll:gsub('(%d*)d(%d+)', function(c1, c2) return c1 .. 'd' .. c2 .. '+' .. (tonumber(c1) or 1)*tonumber(c2); end);
@@ -831,7 +818,7 @@ function common.rolaAtaque(node, modo, args, chat)
 						end;
 						if novaRolagem then
 							if soma ~= 0 then novaRolagem = novaRolagem:concatenar(Firecast.interpretarRolagem(soma)); end;
-							chat:rolarDados(novaRolagem, text .. ' - Rerolando 1s e 2s, devido a Combate com Armas Grandes', function() rolaDano(next(args.rollsDano), d20); end);
+							chat:rolarDados(novaRolagem, text .. Locale.lang("Dnd5e.messages.bigWeapons"), function() rolaDano(next(args.rollsDano), d20); end);
 						else
 							rolaDano(next(args.rollsDano), d20);
 						end;
@@ -866,12 +853,12 @@ function common.rolaAtaque(node, modo, args, chat)
 			d20 = math.floor(d20);
 
 			if modo ~= 'normal' then
-				chat:enviarAcao('( Acerto = ' .. result .. ' )');
+				chat:enviarAcao(Locale.lang("Dnd5e.messages.hit") .. result .. ' )');
 			end;
 
 			-- Falha Crítica
 			if d20 <= args.falhaCritica then
-				chat:enviarAcao('rolou uma falha crítica.');
+				chat:enviarAcao(Locale.lang("Dnd5e.messages.fail"));
 				return;
 			end;
 
@@ -894,15 +881,15 @@ function common.rolaIniciativa(node, modo, args, chat)
 		else args.rolls = 1;
 		end;
 
-		args.text = 'Iniciativa';
-		if node.nome then args.text = args.text .. ' de ' .. node.nome; end;
+		args.text = Locale.lang("Dnd5e.messages.init");
+		if node.nome then args.text = args.text .. Locale.lang("Dnd5e.messages.of") .. node.nome; end;
 
 		if modo == 'vantagem' then
 			args.foo = math.max;
-			args.text = args.text .. ' - Vantagem';
+			args.text = args.text .. Locale.lang("Dnd5e.messages.advantage");
 		elseif modo == 'desvantagem' then
 			args.foo = math.min;
-			args.text = args.text .. ' - Desvantagem';
+			args.text = args.text .. Locale.lang("Dnd5e.messages.disadvantage");
 		end;
 
 		args.rolagem = common.interpreta(node, args.rolls .. 'd20 + ' .. (node.iniciativa or 'DEX'));
@@ -912,7 +899,7 @@ function common.rolaIniciativa(node, modo, args, chat)
 
 	-- Checa se pode rolar
 	if not common.podeRolar(node) then
-		showMessage('Você não pode rolar dados por essa personagem.');
+		showMessage(Locale.lang("Dnd5e.messages.deniedRoll"));
 		return;
 	end;
 
@@ -934,13 +921,14 @@ function common.rolaIniciativa(node, modo, args, chat)
 		result = math.floor(result);
 
 		if modo ~= 'normal' then
-			chat:enviarAcao('( Resultado = ' .. result .. ' )');
+			chat:enviarAcao(Locale.lang("Dnd5e.messages.result") .. result .. ' )');
 		end;
 	end);
 end;
 function common.deathSave(node, modo, args, chat)
 	-- Checa argumentos
-	if not node then return; end;
+	if not node then return end
+	if (tonumber(node.pv) or 0) > 0 then return end
 	node.testesContraMorte = node.testesContraMorte or {};
 
 	if args == nil then
@@ -950,15 +938,15 @@ function common.deathSave(node, modo, args, chat)
 		else args.rolls = 1;
 		end;
 
-		args.text = 'Teste contra morte';
-		if node.nome then args.text = args.text .. ' de ' .. node.nome; end;
+		args.text = Locale.lang("Dnd5e.messages.deathSave");
+		if node.nome then args.text = args.text .. Locale.lang("Dnd5e.messages.of") .. node.nome; end;
 
 		if modo == 'vantagem' then
 			args.foo = math.max;
-			args.text = args.text .. ' - Vantagem';
+			args.text = args.text .. Locale.lang("Dnd5e.messages.advantage");
 		elseif modo == 'desvantagem' then
 			args.foo = math.min;
-			args.text = args.text .. ' - Desvantagem';
+			args.text = args.text .. Locale.lang("Dnd5e.messages.disadvantage");
 		end;
 
 		args.rolagem = args.rolls .. 'd20';
@@ -969,7 +957,7 @@ function common.deathSave(node, modo, args, chat)
 
 	-- Checa se pode rolar
 	if not common.podeRolar(node) then
-		showMessage('Você não pode rolar dados por essa personagem.');
+		showMessage(Locale.lang("Dnd5e.messages.deniedRoll"));
 		return;
 	end;
 
@@ -1024,15 +1012,14 @@ function common.deathSave(node, modo, args, chat)
 		end;
 
 		if node.pv > 0 then
-			chat:enviarAcao("acordou.");
+			chat:enviarAcao(Locale.lang("Dnd5e.messages.awake"));
 			reset();
 		elseif s >= 3 then
-			chat:enviarAcao("estabilizou.");
-			chat:rolarDados("1d4", "Hora(s) inconsciente");
+			chat:enviarAcao(Locale.lang("Dnd5e.messages.stable"));
+			chat:rolarDados("1d4", Locale.lang("Dnd5e.messages.uncounscious"));
 			reset();
 		elseif f >= 3 then
-			chat:enviarAcao("morreu com 3 falhas em teste de resistência contra morte.");
-			reset();
+			chat:enviarAcao(Locale.lang("Dnd5e.messages.died"));
 		end;
 	end);
 end;
@@ -1158,7 +1145,7 @@ function common.hasValue(array, value)
 end;
 
 function common.askForDelete(node, text)
-	text = text or 'Deseja realmente apagar este item?';
+	text = text or Locale.lang("Dnd5e.messages.delete");
 	Dialogs.confirmYesNo(text, function(confirmado) if confirmado then NDB.deleteNode(node); end; end);
 end;
 
