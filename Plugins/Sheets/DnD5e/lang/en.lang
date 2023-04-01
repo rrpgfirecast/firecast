@@ -19,6 +19,12 @@ DnD5e.tab.equipament.atack.lab.range=RANGE
 DnD5e.tab.equipament.atack.lab.ammunition=AMMO
 DnD5e.tab.equipament.atack.lab.ammunitionAmount=QTY
 
+DnD5e.tab.equipament.selProp=Select property:
+DnD5e.tab.equipament.textCaption=Property
+DnD5e.tab.equipament.textPrompt=Input property name
+DnD5e.tab.equipament.hintCaption=Effect
+DnD5e.tab.equipament.hintPrompt=Input property effect
+
 DnD5e.tab.equipament.defend.lab.name=NAME
 DnD5e.tab.equipament.defend.lab.weight=WEIGHT
 DnD5e.tab.equipament.defend.lab.type=TYPE

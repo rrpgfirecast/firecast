@@ -772,7 +772,7 @@ function common.rolaAtaque(node, modo, args, chat)
 
 		if roll then
 			if d20 and d20 >= args.acertoCritico then
-				text = text .. ' - ' .. Locale.lang("Dnd5e.messages.critical");
+				text = (text or "") .. ' - ' .. Locale.lang("Dnd5e.messages.critical");
 				-- Critico Maximizado
 				if common.armaTemPropriedade(item, 'Crítico Maximizado') or common.fichaTemPropriedade(item, 'maximizedCrit') then
 					roll = roll:gsub('(%d*)d(%d+)', function(c1, c2) return c1 .. 'd' .. c2 .. '+' .. (tonumber(c1) or 1)*tonumber(c2); end);

@@ -19,6 +19,12 @@ DnD5e.tab.equipament.atack.lab.range=ALCANCE
 DnD5e.tab.equipament.atack.lab.ammunition=MUNIÇÃO
 DnD5e.tab.equipament.atack.lab.ammunitionAmount=QTD
 
+DnD5e.tab.equipament.selProp=Selecione a propriedade:
+DnD5e.tab.equipament.textCaption=Propriedade
+DnD5e.tab.equipament.textPrompt=Informe o nome da propriedade
+DnD5e.tab.equipament.hintCaption=Efeito
+DnD5e.tab.equipament.hintPrompt=Informe o efeito da propriedade
+
 DnD5e.tab.equipament.defend.lab.name=NOME
 DnD5e.tab.equipament.defend.lab.weight=PESO
 DnD5e.tab.equipament.defend.lab.type=TIPO
@@ -176,7 +182,7 @@ DnD5e.tab.equipment.property.misfire5=Misfire 5
 
 DnD5e.tab.equipment.property.finesseDetails=Quando realizar um ataque com uma arma com a propriedade acuidade, você pode escolher usar seu modificador de Força ou de Destreza para realizar a jogada de ataque e de dano. Você precisa usar o mesmo modificador para ambas as jogadas, ataque e dano.
 DnD5e.tab.equipment.property.reachDetails=Essa arma adiciona 1,5 metro ao seu alcance quando você a usa para atacar. Essa propriedade também determina seu alcance ao realizar ataques de oportunidade com uma arma de alcance.
-DnD5e.tab.equipment.property.throwDetails=Essa arma adiciona 1,5 metro ao seu alcance quando você a usa para atacar. Essa propriedade também determina seu alcance ao realizar ataques de oportunidade com uma arma de alcance.
+DnD5e.tab.equipment.property.throwDetails=Você pode arremessar a arma para realizar um ataque à distância. Se essa arma for uma arma de ataque corpo-a-corpo, você usa o mesmo modificador de habilidade para as jogadas de ataque e dano que usaria para realizar um ataque corpo-a-corpo com a arma.
 DnD5e.tab.equipment.property.rangedDetails=Uma arma que pode ser usada para realizar ataques à distância possui a distância mostrada entre parênteses após a propriedade munição ou arremesso. A distância lista dois números. O primeiro é a distância normal da arma, o segundo indica a distância máxima da arma, ambos em metros. Quando atacar um alvo que está além da distância normal da arma, você possui desvantagem na jogada de ataque. Você não pode atacar um alvo que esteja além da distância máxima da arma.
 DnD5e.tab.equipment.property.thDetails=Essa arma requer as duas mãos para ser usada. Essa propriedade só é relevante quando você ataca com a arma, não enquanto apenas a segura.
 DnD5e.tab.equipment.property.specScimitarDetails=Se você atacar com uma cimitarra dupla como parte da ação de ataque no seu turno, poderá usar uma ação bônus imediatamente depois para fazer um ataque corpo a corpo com ela. Esse ataque causa 1d4 de dano cortante ao acertar, em vez de 2d4.

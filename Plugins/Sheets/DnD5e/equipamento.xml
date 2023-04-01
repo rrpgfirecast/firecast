@@ -61,22 +61,35 @@
 								if equip ~= nil then
 									if equip.tabPropriedades == nil then equip.tabPropriedades = {}; end;
 
+									local other = LANG("DnD5e.tabControl.tab.other")
+
 									local choices = {};
 									for prop,_ in pairs(common.armas_propriedades) do if not equip.tabPropriedades[prop] then table.insert(choices, prop); end; end;
 									table.sort(choices)
+									table.insert(choices, other)
 
-									Dialogs.choose("Selecione a propriedade:", choices,
+									Dialogs.choose(LANG("DnD5e.tab.equipament.selProp"), choices,
 										function(selected, selectedIndex, selectedText)
 											if(selected) then
-												local node = self.rclProps:append()
-												node.texto = selectedText;
-												node.hint = common.armas_propriedades[selectedText];
-
-												equip.tabPropriedades[selectedText] = true;
-												equip.propriedades = common.concat(equip.tabPropriedades, ", ");
+												if selectedText == other then
+													Dialogs.inputQuery(LANG("DnD5e.tab.equipament.textCaption"), LANG("DnD5e.tab.equipament.textPrompt"), "" , function(text) 
+														Dialogs.inputQuery(LANG("DnD5e.tab.equipament.hintCaption"), LANG("DnD5e.tab.equipament.hintPrompt"), "" , function(hint)
+																local node = self.rclProps:append()
+																node.texto = text
+																node.hint = hint
+															end)
+														end)
+												else
+													local node = self.rclProps:append()
+													node.texto = selectedText;
+													node.hint = common.armas_propriedades[selectedText];
+	
+													equip.tabPropriedades[selectedText] = true;
+													equip.propriedades = common.concat(equip.tabPropriedades, ", ");
+												end
 											end;
 										end
-									);
+									)
 								end;
 							</event></button>
 							<dataLink field="propriedades"><event name="onChange">
