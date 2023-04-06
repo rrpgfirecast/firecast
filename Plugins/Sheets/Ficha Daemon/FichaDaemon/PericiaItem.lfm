@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmPericiaItem" height="25" width="350" margins="{top=2}">
+	 <script> 
+		<![CDATA[			
+		local function askForDelete()
+			Dialogs.confirmYesNo("Deseja realmente apagar?",
+								 function (confirmado)
+									if confirmado then
+										NDB.deleteNode(sheet);
+									end;
+								 end);
+		end;
+	]]>
+	</script>
+
+	<edit align="client" vertTextAlign="center" field="nome"/>
+	<layout align="right" width="205">
+		<comboBox align="left" width="75" field="atributo" items="{'CON','FR','DEX','AGI','INT','WILL','PER','CAR','-'}" values="{'constituicao','forca','destreza','agilidade','inteligencia','vontade','percepcao','carisma','none'}"/>
+
+		<layout align="right" width="130">
+			<layout align="left" width="100">
+				<edit align="left" width="50" field="gasto" type="number" vertTextAlign="center" horzTextAlign="center"/>
+				<rectangle align="right" width="50" color="black" strokeColor="white" strokeSize="1" compilerOrder="3">
+					<label field="total" align="client" horzTextAlign="center"/>
+				</rectangle>
+			</layout>
+			<dataLink fields="{'atributo','constituicao','forca','destreza','agilidade','inteligencia','vontade','percepcao','carisma','none','gasto'}">
+				<event name="onChange">
+					if sheet==nil then return end
+
+					local atr = sheet.atributo or "none"
+					sheet.total = (tonumber(sheet.gasto) or 0) + (tonumber(sheet[atr]) or 0)
+				</event>
+			</dataLink>
+
+			<button align="right" width="30" text="X" onClick="askForDelete();"/>
+		</layout>
+	</layout>
+</form>

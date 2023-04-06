@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmPrincipal" align="client">
+	<template name="Title">
+		<label text="$(text)" align="left" width="90"/>
+		<edit field="$(field)" align="client"/>
+	</template>
+	<template name="Title2">
+		<label text="$(text)" align="left" width="90"/>
+		<edit field="$(field)" align="client"/>
+		<edit field="$(field2)" align="right" width="50"/>
+	</template>
+	<template name="Title3">
+		<label text="$(text)" align="client"/>
+		<edit field="$(field)" align="right" width="50"/>
+		<edit field="$(field2)" align="right" width="50"/>
+	</template>
+	<template name="Title4">
+		<label text="$(text)" align="client"/>
+		<edit field="$(field)" align="right" width="50" compilerOrder="1"/>
+		<rectangle align="right" width="50" color="black" strokeColor="white" strokeSize="1" compilerOrder="2">
+			<label field="$(field2)" align="client" horzTextAlign="center"/>
+		</rectangle>
+	</template>
+	<template name="Atributo">
+		<label text="$(text)" align="client" width="90"/>
+		<edit field="$(field)Base" align="right" width="50" horzTextAlign="center" compilerOrder="1"/>
+		<edit field="$(field)Mod" align="right" width="50" horzTextAlign="center" compilerOrder="2"/>
+		<rectangle align="right" width="50" color="black" strokeColor="white" strokeSize="1" compilerOrder="3">
+			<label field="$(field)Perc" align="client" horzTextAlign="center"/>
+		</rectangle>
+		<dataLink fields="{'$(field)Base', '$(field)Mod'}">
+			<event name="onChange">
+				if sheet==nil then return end
+				local base = (tonumber(sheet.$(field)Base) or 0)
+				local mod = (tonumber(sheet.$(field)Mod) or 0)
+				sheet.$(field)Perc = mod + base * 4
+
+	            local nodes = NDB.getChildNodes(sheet.periciasArmas); 
+	            for i=1, #nodes, 1 do
+	                nodes[i].$(field) = base + mod
+	            end
+
+	            nodes = NDB.getChildNodes(sheet.pericias); 
+	            for i=1, #nodes, 1 do
+	                nodes[i].$(field) = base + mod
+	            end
+			</event>
+		</dataLink>
+	</template>
+
+	<popup name="popAprimoramento" width="300" height="240" backOpacity="0.4" autoScopeNode="false">
+		<textEditor align="client" field="descricao"/>
+	</popup>
+	
+	<scrollBox align="client">
+		<layout align="top" height="155">
+			<rectangle align="left" width="300" margins="{right=5}" color="black" strokeColor="white" strokeSize="1">
+				<layout align="top" height="25" margins="{top=5,left=5,right=5}">
+					<Title field="nome" text="Nome"/>
+				</layout>
+				<layout align="top" height="25" margins="{top=5,left=5,right=5}">
+					<Title field="raca" text="Raça"/>
+				</layout>
+				<layout align="top" height="25" margins="{top=5,left=5,right=5}">
+					<Title field="religiao" text="Religião"/>
+				</layout>
+				<layout align="top" height="25" margins="{top=5,left=5,right=5}">
+					<Title2 field="kit" field2="level" text="Kit"/>
+				</layout>
+				<layout align="top" height="25" margins="{top=5,left=5,right=5}">
+					<Title3 field="xpAtual" field2="xpObjetivo" text="Experiência"/>
+				</layout>
+			</rectangle>
+
+			<rectangle align="left" width="300" margins="{right=5}" color="black" strokeColor="white" strokeSize="1">
+				<layout align="top" height="25" margins="{top=5,left=5,right=5}">
+					<Title4 field="pv" field2="pvTotal" text="Pontos de Vida"/>
+				</layout>
+				<layout align="top" height="25" margins="{top=5,left=5,right=5}">
+					<Title3 field="ph" field2="phTotal" text="Pontos Heróicos"/>
+				</layout>
+				<layout align="top" height="25" margins="{top=5,left=5,right=5}">
+					<Title3 field="pm" field2="pmTotal" text="Pontos de Magia"/>
+				</layout>
+				<layout align="top" height="25" margins="{top=5,left=5,right=5}">
+					<Title3 field="pf" field2="pfTotal" text="Pontos de Fé"/>
+				</layout>
+				<layout align="top" height="25" margins="{top=5,left=5,right=5}">
+					<Title3 field="psi" field2="psiTotal" text="Pontos Psiônicos"/>
+				</layout>
+
+
+				<dataLink fields="{'constituicaoBase','constituicaoMod','forcaBase', 'forcaMod', 'level'}">
+					<event name="onChange">
+						if sheet==nil then return end
+						local mod = (tonumber(sheet.constituicaoBase) or 0) + 
+									(tonumber(sheet.constituicaoMod) or 0) + 
+									(tonumber(sheet.forcaBase) or 0) + 
+									(tonumber(sheet.forcaMod) or 0)
+						local level = (tonumber(sheet.level) or 0)
+						sheet.pvTotal = math.ceil(mod/2.0) + level
+					</event>
+				</dataLink>
+			</rectangle>
+
+			<!-- Imagem para avatar do personagem editavel e que pode ser arrastada para o scene -->
+			<rectangle align="left" width="155" color="black" strokeColor="white" strokeSize="1">
+				<label left="0" top="67.5" width="155" height="20" text="Avatar" horzTextAlign="center"/>
+				<image align="client" field="avatar" editable="true" style="autoFit" margins="{left=2, right=2, top=2, bottom=2}">
+					<event name="OnStartDrag">
+					    drag:addData("imageURL", sheet.avatar);
+					</event>
+				</image>
+			</rectangle>
+		</layout>
+		<layout align="top" height="245" margins="{top=5}">
+			<rectangle align="left" width="300" margins="{right=5}" color="black" strokeColor="white" strokeSize="1">
+				<layout align="top" height="25" margins="{top=5,left=5,right=5}">
+					<Atributo field="constituicao" text="Constituição"/>
+				</layout>
+				<layout align="top" height="25" margins="{top=5,left=5,right=5}">
+					<Atributo field="forca" text="Força"/>
+				</layout>
+				<layout align="top" height="25" margins="{top=5,left=5,right=5}">
+					<Atributo field="destreza" text="Destreza"/>
+				</layout>
+				<layout align="top" height="25" margins="{top=5,left=5,right=5}">
+					<Atributo field="agilidade" text="Agilidade"/>
+				</layout>
+				<layout align="top" height="25" margins="{top=5,left=5,right=5}">
+					<Atributo field="inteligencia" text="Inteligência"/>
+				</layout>
+				<layout align="top" height="25" margins="{top=5,left=5,right=5}">
+					<Atributo field="vontade" text="Força de Vontade"/>
+				</layout>
+				<layout align="top" height="25" margins="{top=5,left=5,right=5}">
+					<Atributo field="percepcao" text="Percepção"/>
+				</layout>
+				<layout align="top" height="25" margins="{top=5,left=5,right=5}">
+					<Atributo field="carisma" text="Carisma"/>
+				</layout>
+			</rectangle>
+			<rectangle align="left" width="300" margins="{right=5}" color="black" strokeColor="white" strokeSize="1">
+				<layout align="top" height="25" margins="{top=5,left=5,right=5}">
+					<button text="+" align="left" width="25" onClick="self.aprimoramentos:append();"/>
+					<label align="client" text="Aprimoramentos" margins="{left=5}"/>
+				</layout>
+				<recordList name="aprimoramentos" field="aprimoramentos" templateForm="frmAprimoramentoItem" align="client" layout="vertical" minQt="1" margins="{top=5,left=5,right=5,bottom=5}">
+					<event name="onCompare">
+				        return utils.compareStringPtBr(nodeA.nome, nodeB.nome)
+				    </event>
+				</recordList>
+			</rectangle>
+		</layout>
+	</scrollBox>
+</form>

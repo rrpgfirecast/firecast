@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmPericias" align="client">
+	<scrollBox align="client">
+		<rectangle align="left" width="500" margins="{right=5}" color="black" strokeColor="white" strokeSize="1">
+			<layout align="top" height="25" margins="{top=5,left=5,right=5}">
+				<button text="+" align="left" width="25" onClick="self.periciasArmas:append();"/>
+				<label align="client" text="Perícias com Armas" margins="{left=5}"/>
+			</layout>
+			<recordList name="periciasArmas" field="periciasArmas" templateForm="frmPericiaArmaItem" align="client" layout="vertical" minQt="1" margins="{top=5,left=5,right=5,bottom=5}">
+				<event name="onCompare">
+			        return utils.compareStringPtBr(nodeA.nome, nodeB.nome)
+			    </event>
+			</recordList>
+		</rectangle>
+		<rectangle align="left" width="400" margins="{right=5}" color="black" strokeColor="white" strokeSize="1">
+			<layout align="top" height="25" margins="{top=5,left=5,right=5}">
+				<button text="+" align="left" width="25" onClick="self.pericias:append();"/>
+				<label align="client" text="Perícias" margins="{left=5}"/>
+			</layout>
+			<recordList name="pericias" field="pericias" templateForm="frmPericiaItem" align="client" layout="vertical" minQt="1" margins="{top=5,left=5,right=5,bottom=5}">
+				<event name="onCompare">
+			        return utils.compareStringPtBr(nodeA.nome, nodeB.nome)
+			    </event>
+			</recordList>
+		</rectangle>
+		<rectangle align="left" width="300" margins="{right=5}" color="black" strokeColor="white" strokeSize="1">
+			<layout align="top" height="25" margins="{top=5,left=5,right=5}">
+				<label align="client" text="Idiomas" margins="{left=5}"/>
+			</layout>
+			<textEditor align="client" field="idiomas" margins="{left=5,right=5,bottom=5}"/>
+		</rectangle>
+	</scrollBox>
+</form>

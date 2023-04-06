@@ -1,0 +1,56 @@
+﻿local Locale = {};
+
+function Locale.lang(txtId)
+	return _system_locale_lang(txtId);
+end;
+
+function Locale.tryLang(txtId)
+	return _system_locale_tryLang(txtId);
+end;
+
+function Locale.loadLangTexts(langTexts)
+	return _system_locale_loadLangTexts(langTexts);
+end;
+
+function Locale.withDesiredAutoEval(callback, desiredEnabled, ...)
+	assert(type(callback) == 'function', "callback parameter is not a function");
+	
+	local wasAutoEvalEnabled = Locale.getIsAutoStringEvalEnabled();
+	Locale.setIsAutoStringEvalEnabled(desiredEnabled);	
+	
+	local r = table.pack(pcall(callback, ...));
+	
+	Locale.setIsAutoStringEvalEnabled(wasAutoEvalEnabled);	
+	
+	if not r[1] then
+		reraise(r[2]);
+	else
+		return table.unpack(r, 2);
+	end;	
+end
+
+function Locale.withEval(callback, ...)
+	return Locale.withDesiredAutoEval(callback, true, ...);
+end;
+
+function Locale.withNoEval(callback, ...)
+	return Locale.withDesiredAutoEval(callback, false, ...);
+end;
+
+function Locale.getIsAutoStringEvalEnabled()
+	return _system_locale_getCurrentThreadAutomaticLocalizedStringEvaluation(); 
+end;
+
+function Locale.setIsAutoStringEvalEnabled(enabled)
+	return _system_locale_setCurrentThreadAutomaticLocalizedStringEvaluation(not not enabled); 
+end;
+
+function Locale.eval(...)
+	return _system_locale_eval(...);
+end;
+
+function Locale.autoEval(...)
+	return _system_locale_autoEval(...);
+end;
+
+return Locale;

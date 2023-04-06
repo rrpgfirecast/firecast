@@ -8,6 +8,14 @@
             </dataType>
         </dataTypes>
     </element>
+    <element id="Ambesek.Daemon" name="Ficha Daemon" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20Daemon/output/Ficha%20Daemon.rpk?raw=true" fileName="Ficha Daemon.rpk" repositoryPath="Sheets/Ficha Daemon/" author="Ambesek" description="Ficha para o sistema Daemon." version="0.1" compilationDate="06042023021513" compilationDigest="8627d4e57e5b38cc7071ba418c594975bd50a13d">
+        <info lang="pt-BR" name="Ficha Daemon" description="Ficha para o sistema Daemon." author="Ambesek"/>
+        <dataTypes>
+            <dataType id="Ambesek.Daemon" title="Ficha Daemon" formType="sheetTemplate">
+                <info title="Ficha Daemon"/>
+            </dataType>
+        </dataTypes>
+    </element>
     <element id="Autolog" name="Autolog" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/ChatMods/Autolog/output/Autolog.rpk?raw=true" fileName="Autolog.rpk" repositoryPath="ChatMods/Autolog/" author="Dniester &quot;Tyras&quot; Amorim de Aguiar" description="Salva automaticamente o log das mesas na pasta &quot;Documentos\RRPG\Complementos\Autolog\Logs&quot;" version="1.2.6" compilationDate="03032023113324" compilationDigest="0062fd866c26d1e31316ed1d58d140e1024eb859">
         <info lang="pt-BR" name="Autolog" description="Salva automaticamente o log das mesas na pasta &quot;Documentos\RRPG\Complementos\Autolog\Logs&quot;" author="Dniester &quot;Tyras&quot; Amorim de Aguiar" site="N/A"/>
         <dataTypes>
