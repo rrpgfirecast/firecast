@@ -1390,15 +1390,27 @@ function common.onClick(node, foo, args, hk, useActiveChat)
 	node.keys = node.keys or {};
 	hk = hk or { vantagem = 16, desvantagem = 17 };
 
-	local chat = common.getMesa(node);
-	if useActiveChat then chat = chat.activeChat;
-	else chat = chat.chat;
+	local chat = common.getMesa(node).activeChat;
+	local options = {LANG("Dnd5e.messages.normal")}
+	if not useActiveChat then
+		options = {LANG("Dnd5e.messages.normal"),LANG("Dnd5e.messages.adv"),LANG("Dnd5e.messages.dis")}
 	end;
 
-	if     node.keys[hk.vantagem]    then	foo(node, 'vantagem',    args, chat);
-	elseif node.keys[hk.desvantagem] then	foo(node, 'desvantagem', args, chat);
-	else									foo(node, 'normal',      args, chat);
-	end;
+	Dialogs.choose(LANG("Dnd5e.messages.kind"), options,
+               function(selected, selectedIndex, selectedText)
+               		if useActiveChat then
+               			if     node.keys[hk.vantagem]    then	foo(node, 'vantagem',    args, chat);
+						elseif node.keys[hk.desvantagem] then	foo(node, 'desvantagem', args, chat);
+						else									foo(node, 'normal',      args, chat);
+						end;
+               		elseif selected then
+               			if     selectedIndex==2    	then	foo(node, 'vantagem',    args, chat)
+						elseif selectedIndex==3    	then	foo(node, 'desvantagem', args, chat)
+						else								foo(node, 'normal',      args, chat)
+						end;
+                  	end
+               end,
+               1, true)
 end;
 
 function common.getAttrBonus(node, attr)

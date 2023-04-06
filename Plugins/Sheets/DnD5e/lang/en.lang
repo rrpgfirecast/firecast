@@ -155,6 +155,8 @@ Dnd5e.other.export=Export XML
 Dnd5e.other.exported=Sheet Exported!
 Dnd5e.other.save=Save sheet as XML
 Dnd5e.other.import=Import XML
+Dnd5e.other.shortRest=Short Rest
+Dnd5e.other.longRest=Long Rest
 
 DnD5e.generic.deleteConfirmation=Do you really want to delete this item?
 DnD5e.generic.cantRoll=You cannot roll dice for this character.
@@ -259,3 +261,8 @@ DnD5e.tab.counter.halfUp=Half (⌃)
 DnD5e.tab.counter.halfDown=Half (⌄)
 DnD5e.tab.counter.changeBy=Change by
 DnD5e.tab.counter.changeTo=Change to
+
+Dnd5e.messages.adv=Advantage
+Dnd5e.messages.dis=Disadvantage
+Dnd5e.messages.normal=Normal
+Dnd5e.messages.kind=Kind of Roll

@@ -41,7 +41,7 @@
 
 		<tab title="@@DnD5e.tabControl.tab.other">
 			<!-- Combobox de exportar ficha -->
-			<button left="0" top="0" width="100" height="20" text="@@Dnd5e.other.export" >
+			<button left="0" top="0" width="150" height="20" text="@@Dnd5e.other.export" >
 				<event name="onClick">
 					local xml = NDB.exportXML(sheet);
 
@@ -59,7 +59,7 @@
 				</event>
 			</button>
 			<!-- Combobox de importar ficha -->
-			<button left="0" top="25" width="100" height="20" text="@@Dnd5e.other.import" >
+			<button left="0" top="25" width="150" height="20" text="@@Dnd5e.other.import" >
 				<event name="onClick">
 					Dialogs.openFile(LANG("Dnd5e.other.import"), "application/xml", false, 
 						function(arquivos)
@@ -72,6 +72,92 @@
 
 							NDB.importXML(sheet, xml);
 						end);
+				</event>
+			</button>
+
+			<button left="0" top="50" width="150" height="20" text="@@Dnd5e.other.shortRest">
+				<event name="onClick">
+		            local nodes = NDB.getChildNodes(sheet.contadores); 
+		            for i=1, #nodes, 1 do
+		            	-- only change short rest counters
+		            	local resetVal = nodes[i].selectedResetVal
+		                if nodes[i].selectedResetTime == "Descanso Curto" then
+
+		                	if resetVal == "Completa" then
+		                		nodes[i].valCur = nodes[i].valMax
+		                	elseif resetVal == "Recupera Metade (⌃)" then
+		                		nodes[i].valCur = math.min(nodes[i].valMax, nodes[i].valCur + math.ceil(nodes[i].valMax/2));
+		                	elseif resetVal == "Recupera Metade (⌄)" then
+		                		nodes[i].valCur = math.min(nodes[i].valMax, nodes[i].valCur + math.floor(nodes[i].valMax/2));
+		                	elseif resetVal == "Muda em" or resetVal == "Muda para" then
+
+								if not (resetVal == "Muda em" and nodes[i].valCur == nodes[i].valMax) then
+									local rolagem = Firecast.interpretarRolagem(common.interpreta(nodes[i], nodes[i].selectedResetVal2));
+									if not rolagem.possuiAlgumDado then
+										rolagem = Firecast.interpretarRolagem("1d1-1"):concatenar(rolagem);
+										rolagem:rolarLocalmente();
+										if resetVal == "Muda em" then
+											nodes[i].valCur = math.min(nodes[i].valMax, nodes[i].valCur + rolagem.resultado);
+										else
+											nodes[i].valCur = rolagem.resultado;
+										end;
+									else
+										common.getMesa(nodes[i]).activeChat:rolarDados(rolagem, nodes[i].name, function(arolagem)
+											if resetVal == "Muda em" then
+												nodes[i].valCur = math.min(nodes[i].valMax, nodes[i].valCur + arolagem.resultado);
+											else
+												nodes[i].valCur = arolagem.resultado;
+											end;
+										end);
+									end;
+								end;
+		                	end
+		                end
+		            end
+		        </event>
+			</button>
+
+			<button left="0" top="75" width="150" height="20" text="@@Dnd5e.other.longRest">
+				<event name="onClick">
+		            local nodes = NDB.getChildNodes(sheet.contadores); 
+		            for i=1, #nodes, 1 do
+		            	-- only change short rest counters
+		            	local resetVal = nodes[i].selectedResetVal
+		                if nodes[i].selectedResetTime == "Descanso Longo" then
+
+		                	if resetVal == "Completa" then
+		                		nodes[i].valCur = nodes[i].valMax
+		                	elseif resetVal == "Recupera Metade (⌃)" then
+		                		nodes[i].valCur = math.min(nodes[i].valMax, nodes[i].valCur + math.ceil(nodes[i].valMax/2));
+		                	elseif resetVal == "Recupera Metade (⌄)" then
+		                		nodes[i].valCur = math.min(nodes[i].valMax, nodes[i].valCur + math.floor(nodes[i].valMax/2));
+		                	elseif resetVal == "Muda em" or resetVal == "Muda para" then
+
+								if not (resetVal == "Muda em" and nodes[i].valCur == nodes[i].valMax) then
+									local rolagem = Firecast.interpretarRolagem(common.interpreta(nodes[i], nodes[i].selectedResetVal2));
+									if not rolagem.possuiAlgumDado then
+										rolagem = Firecast.interpretarRolagem("1d1-1"):concatenar(rolagem);
+										rolagem:rolarLocalmente();
+										if resetVal == "Muda em" then
+											nodes[i].valCur = math.min(nodes[i].valMax, nodes[i].valCur + rolagem.resultado);
+										else
+											nodes[i].valCur = rolagem.resultado;
+										end;
+									else
+										common.getMesa(nodes[i]).activeChat:rolarDados(rolagem, nodes[i].name, function(arolagem)
+											if resetVal == "Muda em" then
+												nodes[i].valCur = math.min(nodes[i].valMax, nodes[i].valCur + arolagem.resultado);
+											else
+												nodes[i].valCur = arolagem.resultado;
+											end;
+										end);
+									end;
+								end;
+		                	end
+		                else
+		                	nodes[i].valCur = nodes[i].valMax
+		                end
+		            end
 				</event>
 			</button>
 		</tab>

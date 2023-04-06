@@ -153,6 +153,8 @@ Dnd5e.other.export=Exportar XML
 Dnd5e.other.exported=Ficha Exportada!
 Dnd5e.other.save=Salvar Ficha como XML
 Dnd5e.other.import=Importar XML
+Dnd5e.other.shortRest=Descanço Curto
+Dnd5e.other.longRest=Descanço Longo
 
 DnD5e.generic.deleteConfirmation=Deseja realmente apagar este item?
 DnD5e.generic.cantRoll=Você não pode rolar dados por este personagem
@@ -257,3 +259,8 @@ DnD5e.tab.counter.halfUp=Recupera Metade (⌃)
 DnD5e.tab.counter.halfDown=Recupera Metade (⌄)
 DnD5e.tab.counter.changeBy=Muda em
 DnD5e.tab.counter.changeTo=Muda para
+
+Dnd5e.messages.adv=Vantagem
+Dnd5e.messages.dis=Desvantagem
+Dnd5e.messages.normal=Normal
+Dnd5e.messages.kind=Tipo de Rolagem
