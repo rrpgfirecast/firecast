@@ -264,3 +264,14 @@ Dnd5e.messages.adv=Vantagem
 Dnd5e.messages.dis=Desvantagem
 Dnd5e.messages.normal=Normal
 Dnd5e.messages.kind=Tipo de Rolagem
+
+Dnd5e.equipment.carry=Carga
+DnD5e.equipment.capacity=Capacidade
+DnD5e.equipment.lift=Erguer
+DnD5e.equipment.size=Tamanho
+DnD5e.equipment.tiny=Miúdo
+DnD5e.equipment.small=Pequeno
+DnD5e.equipment.medium=Médio
+DnD5e.equipment.large=Grande
+DnD5e.equipment.huge=Enorme
+DnD5e.equipment.gargantuan=Imenso

@@ -156,6 +156,14 @@
 								<label align="top" text="@@DnD5e.frente.lab.CA" height="20" fontSize="9" wordWrap="true" horzTextAlign="center" textTrimming="none"/>
 								<edit align="client" class="atributo transparente" field="CA" fontSize="30"/>	
 							</flowPart>
+							<dataLink fields="{'caEquip', 'atributos.moddestrezastr'}">
+								<event name="onChange">
+									if sheet==nil then return end
+									if sheet.atributos==nil then return end
+									sheet.CA = 10 + (tonumber(sheet.caEquip) or 0) + 
+													(tonumber(sheet.atributos.moddestrezastr) or 0)
+								</event>
+							</dataLink>
 							
 							<!-- INICIATIVA -->
 							<flowPart stepSizes="{105}" minScaledWidth="75" height="120" frameStyle="frames/panel4transp/frame.xml">

@@ -266,3 +266,14 @@ Dnd5e.messages.adv=Advantage
 Dnd5e.messages.dis=Disadvantage
 Dnd5e.messages.normal=Normal
 Dnd5e.messages.kind=Kind of Roll
+
+Dnd5e.equipment.carry=Carrying
+DnD5e.equipment.capacity=Capacity
+DnD5e.equipment.lift=Lift
+DnD5e.equipment.size=Size
+DnD5e.equipment.tiny=Tiny
+DnD5e.equipment.small=Small
+DnD5e.equipment.medium=Medium
+DnD5e.equipment.large=Large
+DnD5e.equipment.huge=Huge
+DnD5e.equipment.gargantuan=Gargantuan

@@ -188,6 +188,49 @@
 				</rectangle>
 				<textEditor name="editorOld" align="client" margins="{left=10, right=10}" field="equipamento.outros" fontSize="15" visible="true"/>
 
+				<layout align="right" width="140" margins="{right=5}">
+					<layout align="top" height="80" margins="{bottom=5}">
+						<frame align="top" frameStyle="frames/panel6/panel6.xml" height="60">
+							<edit align="client" frameRegion="ContentRegion" class="transparente" field="weight" fontSize="22" vertTextAlign="center" horzTextAlign="center"/>	
+						</frame>
+						
+						<label align="top" height="15" class="tituloCampo" autoSize="true" text="@@Dnd5e.equipment.carry" horzTextAlign="center" vertTextAlign="leading" wordWrap="true" textTrimming="none"/>	
+					</layout>
+					<layout align="top" height="80" margins="{bottom=5}">
+						<frame align="top" frameStyle="frames/panel6/panel6.xml" height="60">
+							<label align="client" frameRegion="ContentRegion" class="transparente" field="weightCapacity" fontSize="22" vertTextAlign="center" horzTextAlign="center"/>
+						</frame>
+						
+						<label align="top" height="15" class="tituloCampo" autoSize="true" text="@@DnD5e.equipment.capacity" horzTextAlign="center" vertTextAlign="leading" wordWrap="true" textTrimming="none"/>	
+					</layout>
+					<layout align="top" height="80" margins="{bottom=5}">
+						<frame align="top" frameStyle="frames/panel6/panel6.xml" height="60">
+							<label align="client" frameRegion="ContentRegion" class="transparente" field="weightLift" fontSize="22" vertTextAlign="center" horzTextAlign="center"/>
+						</frame>
+						
+						<label align="top" height="15" class="tituloCampo" autoSize="true" text="@@DnD5e.equipment.lift" horzTextAlign="center" vertTextAlign="leading" wordWrap="true" textTrimming="none"/>
+					</layout>
+					<layout align="top" height="80" margins="{bottom=5}">
+						<frame align="top" frameStyle="frames/panel6/panel6.xml" height="60">
+							<comboBox align="client" frameRegion="ContentRegion" class="transparente" field="weightSize" items="{'@@DnD5e.equipment.tiny','@@DnD5e.equipment.small','@@DnD5e.equipment.medium','@@DnD5e.equipment.large','@@DnD5e.equipment.huge','@@DnD5e.equipment.gargantuan'}" values="{'0.5', '1', '1.0', '2', '4', '8'}" horzTextAlign="center" vertTextAlign="center" fontSize="13" margins="{right=5}"/>	
+						</frame>
+						
+						<label align="top" height="15"  class="tituloCampo" autoSize="true" text="@@DnD5e.equipment.size" horzTextAlign="center" vertTextAlign="leading" wordWrap="true" textTrimming="none"/>	
+					</layout>
+					<dataLink fields="{'atributos.forca','weightSize'}">
+						<event name="onChange">
+							if sheet==nil then return end
+							if sheet.atributos==nil then return end
+
+							local forca = tonumber(sheet.atributos.forca) or 0
+							local size = tonumber(sheet.weightSize) or 1
+
+							sheet.weightCapacity = forca * 7.5 * size
+							sheet.weightLift = forca * 15 * size
+						</event>
+					</dataLink>
+				</layout>
+
 				<label align="bottom" autoSize="true" text="@@DnD5e.tab.equipament.lab.extraEquip" fontSize="12" vertTextAlign="center" horzTextAlign="center" fontStyle="bold" onResize="recalcularTamanhoEquipsDefesa();"/>
 			</flowPart>
 		</flowLayout>

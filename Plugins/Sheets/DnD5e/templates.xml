@@ -122,26 +122,26 @@
 		<!-- baseName = uniqueName("upperGridMagicEditBox"); -->
 	
 		<flowPart height="$(height or 50)" minScaledWidth="$(minScaledWidth or minWidth or 100)" 
-				  minWidth="$(minWidth or 100)" maxWidth="$(maxWidth or 160)" 
-				  maxScaledWidth="$(maxScaledWidth or maxWidth or 160)" avoidScale="true"
-				  name="$(baseName)" vertAlign="leading" margins="$(margins or '{left=5, right=5, top=5, bottom=5}')">			  
-				
-				<script>								
-					rawset(self.$(baseName), "_RecalcSize", 
-						function ()
-							self.$(baseName):setHeight(self.pan$(baseName):getHeight() + self.lab$(baseName):getHeight());
-						end);														
-				</script>				  
-				  
-				<frame name="pan$(baseName)" align="top" frameStyle="frames/panel6/panel6.xml" height="60">
-					<edit name="edt$(baseName)" frameRegion="ContentRegion" class="transparente" field="$(field)" fontSize="$(fontSize or 22)" vertTextAlign="center" horzTextAlign="center"/>	
-				</frame>
-				
-				<label name="lab$(baseName)" align="top" class="tituloCampo" autoSize="true" text="$(titulo)" horzTextAlign="center" vertTextAlign="leading" wordWrap="true" textTrimming="none"
-					   onResize="self.$(baseName)._RecalcSize();"/>												
-					   
-				<script>self.$(baseName)._RecalcSize();	</script>
-			</flowPart>					
+			  minWidth="$(minWidth or 100)" maxWidth="$(maxWidth or 160)" 
+			  maxScaledWidth="$(maxScaledWidth or maxWidth or 160)" avoidScale="true"
+			  name="$(baseName)" vertAlign="leading" margins="$(margins or '{left=5, right=5, top=5, bottom=5}')">			  
+			
+			<script>								
+				rawset(self.$(baseName), "_RecalcSize", 
+					function ()
+						self.$(baseName):setHeight(self.pan$(baseName):getHeight() + self.lab$(baseName):getHeight());
+					end);														
+			</script>				  
+			  
+			<frame name="pan$(baseName)" align="top" frameStyle="frames/panel6/panel6.xml" height="60">
+				<edit name="edt$(baseName)" frameRegion="ContentRegion" class="transparente" field="$(field)" fontSize="$(fontSize or 22)" vertTextAlign="center" horzTextAlign="center"/>	
+			</frame>
+			
+			<label name="lab$(baseName)" align="top" class="tituloCampo" autoSize="true" text="$(titulo)" horzTextAlign="center" vertTextAlign="leading" wordWrap="true" textTrimming="none"
+				   onResize="self.$(baseName)._RecalcSize();"/>												
+				   
+			<script>self.$(baseName)._RecalcSize();	</script>
+		</flowPart>					
 	</template>	
 		
 		

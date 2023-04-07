@@ -1159,8 +1159,13 @@ function common.fichaTemPropriedade(node, prop)
 	node = common.getTopNode(node);
 	if not node then return nil; end;
 
-	if common.ficha_propriedades[prop] == nil then showMessage('Propriedade \'' .. prop .. '\' inválida.'); return nil; end;
-	if common.ficha_propriedades[prop].implementado == false then showMessage('Acessando propriedade \'' .. prop .. '\' não implementada.'); end;
+	if common.ficha_propriedades[prop] == nil then 
+		--showMessage('Propriedade \'' .. prop .. '\' inválida.'); 
+		return nil; 
+	end;
+	--if common.ficha_propriedades[prop].implementado == false then 
+		--showMessage('Acessando propriedade \'' .. prop .. '\' não implementada.'); 
+	--end;
 
 	if not node.propriedades then node.propriedades = {}; end;
 
