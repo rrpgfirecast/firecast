@@ -3,7 +3,20 @@
 	<scrollBox align="client">
 		<rectangle align="left" width="500" margins="{right=5}" color="black" strokeColor="white" strokeSize="1">
 			<layout align="top" height="25" margins="{top=5,left=5,right=5}">
-				<button text="+" align="left" width="25" onClick="self.periciasArmas:append();"/>
+				<button text="+" align="left" width="25">
+					<event name="onClick">
+						local node = self.periciasArmas:append()
+						if node then
+							local base = (tonumber(sheet.destrezaBase) or 0)
+							local mod = (tonumber(sheet.destrezaMod) or 0)
+							node.destreza = base + mod
+							local base = (tonumber(sheet.agilidadeBase) or 0)
+							local mod = (tonumber(sheet.agilidadeMod) or 0)
+							node.agilidade = base + mod
+						end
+					</event>
+				</button>
+
 				<label align="client" text="Perícias com Armas" margins="{left=5}"/>
 			</layout>
 			<recordList name="periciasArmas" field="periciasArmas" templateForm="frmPericiaArmaItem" align="client" layout="vertical" minQt="1" margins="{top=5,left=5,right=5,bottom=5}">
@@ -14,7 +27,19 @@
 		</rectangle>
 		<rectangle align="left" width="400" margins="{right=5}" color="black" strokeColor="white" strokeSize="1">
 			<layout align="top" height="25" margins="{top=5,left=5,right=5}">
-				<button text="+" align="left" width="25" onClick="self.pericias:append();"/>
+				<button text="+" align="left" width="25">
+					<event name="onClick">
+						local node = self.pericias:append()
+						if node then
+							local atrs = {"constituicao","forca","destreza","agilidade","inteligencia","vontade","percepcao","carisma"}
+							for i,v in ipairs(atrs) do
+								local base = (tonumber(sheet[v.."Base"]) or 0)
+								local mod = (tonumber(sheet[v.."Mod"]) or 0)
+								node[v] = base + mod
+							end
+						end
+					</event>
+				</button>"/>
 				<label align="client" text="Perícias" margins="{left=5}"/>
 			</layout>
 			<recordList name="pericias" field="pericias" templateForm="frmPericiaItem" align="client" layout="vertical" minQt="1" margins="{top=5,left=5,right=5,bottom=5}">

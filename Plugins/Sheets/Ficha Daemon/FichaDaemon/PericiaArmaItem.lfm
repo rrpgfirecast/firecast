@@ -25,12 +25,16 @@
 					<label field="totalAtk" align="client" horzTextAlign="center"/>
 				</rectangle>
 			</layout>
-			<dataLink fields="{'atributo','destreza','agilidade','gastoAtk'}">
+			<dataLink fields="{'tipo','atributo','destreza','agilidade','gastoAtk'}">
 				<event name="onChange">
 					if sheet==nil then return end
 
 					local atr = sheet.atributo or "none"
-					sheet.totalAtk = (tonumber(sheet.gastoAtk) or 0) + (tonumber(sheet[atr]) or 0)
+					local gasto = (tonumber(sheet.gastoAtk) or 0)
+					if sheet.tipo == "Dist" then
+						gasto = math.floor(gasto/2)
+					end
+					sheet.totalAtk = gasto + (tonumber(sheet[atr]) or 0)
 				</event>
 			</dataLink>
 
@@ -40,12 +44,16 @@
 				</rectangle>
 				<edit align="right" width="30" field="gastoDef" type="number" vertTextAlign="center" horzTextAlign="center"/>
 			</layout>
-			<dataLink fields="{'atributo','destreza','agilidade','gastoDef'}">
+			<dataLink fields="{'tipo','atributo','destreza','agilidade','gastoDef'}">
 				<event name="onChange">
 					if sheet==nil then return end
 
 					local atr = sheet.atributo or "none"
-					sheet.totalDef = (tonumber(sheet.gastoDef) or 0) + (tonumber(sheet[atr]) or 0)
+					local gasto = (tonumber(sheet.gastoDef) or 0)
+					if sheet.tipo == "Dist" then
+						gasto = math.floor(gasto/2)
+					end
+					sheet.totalDef = gasto + (tonumber(sheet[atr]) or 0)
 				</event>
 			</dataLink>
 

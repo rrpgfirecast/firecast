@@ -1,0 +1,262 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rectangle class="fundo">
+	<style>
+		flowPart.magicHeader {
+			avoidScale: true;
+			minScaledWidth: 280;
+			minWidth: 300;
+			maxWidth: 600;
+			height: 80;			
+		}
+		
+		label.magicLevelNumber {			
+			horzTextAlign: center;
+			vertTextAlign: center;
+			fontSize: 18;			
+		}
+		
+		edit.magicLevelInformation {
+			horzTextAlign: center;
+			vertTextAlign: center;
+			fontSize: 18;
+			transparent: true;
+		}
+		
+		flowLayout.magicTile, flowPart.magicTile {
+			margins: {left=10, right=10, top=4, bottom=4};
+		}
+	</style>	
+
+	<template name="magicHeader0">
+		<flowPart class="magicHeader" frameStyle="frames/magicHeader/header0.xml">
+			<label frameRegion="RegiaoSmallTitulo" text="0" class="magicLevelNumber"/>
+			<label frameRegion="RegiaoConteudo" text="@@DnD5e.spells.cantrip" fontSize="15" horzTextAlign="center" vertTextAlign="center"/>
+		</flowPart>
+	</template>
+	
+	<template name="magicHeaderN">
+		<flowPart class="magicHeader" frameStyle="frames/magicHeader/header1.xml">
+			<label frameRegion="RegiaoSmallTitulo" text="$(level)" class="magicLevelNumber"/>
+			<edit frameRegion="RegiaoConteudo1" class="magicLevelInformation" field="magias.espacosTotais$(level)"/>
+			<edit frameRegion="RegiaoConteudo2" class="magicLevelInformation" field="magias.espacosGastos$(level)"/>
+		</flowPart>	
+	</template>	
+
+	<template name="magicRecordList">
+		<!-- 
+			baseName = uniqueName("flwMagicRecordList"); 
+		-->
+	
+		<flowPart minWidth="300" maxWidth="600" minScaledWidth="280" name="$(baseName)">																			
+			<script>
+				<![CDATA[
+					rawset(self.$(baseName), "_recalcHeight", 					
+						function ()
+							self.$(baseName).height = self.rcl$(baseName).height +
+														self.layBottom$(baseName).height + 
+														self.$(baseName).padding.top + self.$(baseName).padding.bottom + 7;
+						end);
+				]]>
+			</script>			
+		
+			<recordList name="rcl$(baseName)" align="top" field="magias.magias.nivel$(level)" templateForm="frmMagiaItemSemCheckbox" 
+						autoHeight="true" minHeight="5" onResize="self.$(baseName)._recalcHeight();" hitTest="false" margins="{left=10, right=10}"/>					
+						
+			<layout name="layBottom$(baseName)" align="top" height="36">			
+				<button name="btnNovo$(baseName)" align="left" onClick="self.rcl$(baseName):append();" text="@@DnD5e.spells.btn.newspell" width="160" margins="{top=4, bottom=4, left=48}"/>								
+			</layout>	
+			
+		</flowPart>
+			
+		<script>self.$(baseName)._recalcHeight();</script>			
+	</template>
+	
+	<template name="magicsLayout0">
+		<flowLayout class="halfTile3 magicTile" height="100" avoidScale="true" maxControlsPerLine="1" autoHeight="true">
+			<magicHeader0/>
+			<magicRecordList level="0"/>
+		</flowLayout>	
+	</template>
+	
+	<template name="magicsLayoutN">
+		<flowLayout class="halfTile3 magicTile" height="100" avoidScale="true" maxControlsPerLine="1" autoHeight="true">
+			<magicHeaderN level="$(level)"/>
+			<magicRecordList level="$(level)"/>			
+		</flowLayout>	
+	</template>	
+	
+	<template name="magicInfoField">
+		<flowPart minWidth="30" maxWidth="400" height="35">
+			<label align="top" class="tituloCampo" fontSize="10" text="$(text)" horzTextAlign="center" wordWrap="true" textTrimming="none" autoSize="true"/>
+			<edit align="client" class="" field="$(field)" horzTextAlign="center" fontSize="12"/>
+		</flowPart>
+	</template>
+	
+	<popup name="popMagia" width="250" height="400" backOpacity="0.4" autoScopeNode="false">
+		<edit align="top" class="" field="nome" textPrompt="NOME DA MAGIA" horzTextAlign="center"/>
+	
+		<flowLayout align="top" autoHeight="true" maxControlsPerLine="2" margins="{bottom=4}" horzAlign="center">
+			<magicInfoField text="Tipo" field="tipo"/>
+			<magicInfoField text="Formulação" field="formulacao"/>
+			<magicInfoField text="Formas e Caminhos" field="caminhos"/>
+			<flowLineBreak/>
+			<magicInfoField text="Componentes" field="componentes"/>
+			<flowLineBreak/>
+			<magicInfoField text="Alcance" field="alcance"/>
+			<magicInfoField text="Área" field="area"/>
+			<magicInfoField text="Duração" field="duracao"/>
+			<magicInfoField text="Teste de Resistência" field="resistencia"/>
+		</flowLayout>
+		
+		<textEditor align="client" field="descricao" class=""/>
+	</popup>
+	
+	<scrollBox align="client">
+		<flowLayout class="tile" align="top" height="500" margins="{left=10, right=10, top=10}" autoHeight="true" horzAlign="center" lineSpacing="3" name="fraMagiasLayout">
+			<!-- Primeira Linha -->
+			<flowLayout class="oneLineTile2" autoHeight="true" maxColumns="3" horzAlign="center" orientation="vertical">
+				<layout width="960" height="185">
+					<rectangle align="left" width="460" color="black" strokeColor="white" strokeSize="1">
+						<layout align="left" width="150" margins="{right=5}">
+							<layout align="top" height="25" margins="{top=5,left=5,right=5}">
+								<Title field="focus" text="Focus"/>
+							</layout>
+							<layout align="top" height="25" margins="{top=5,left=5,right=5}">
+								<Title field="entender" text="Entender"/>
+							</layout>
+							<layout align="top" height="25" margins="{top=5,left=5,right=5}">
+								<Title field="controlar" text="Controlar"/>
+							</layout>
+							<layout align="top" height="25" margins="{top=5,left=5,right=5}">
+								<Title field="criar" text="Criar"/>
+							</layout>
+						</layout>
+						<layout align="left" width="150" margins="{right=5}">
+							<layout align="top" height="25" margins="{top=5,left=5,right=5}">
+								<Title field="ar" text="Ar"/>
+							</layout>
+							<layout align="top" height="25" margins="{top=5,left=5,right=5}">
+								<Title field="terra" text="Terra"/>
+							</layout>
+							<layout align="top" height="25" margins="{top=5,left=5,right=5}">
+								<Title field="agua" text="Água"/>
+							</layout>
+							<layout align="top" height="25" margins="{top=5,left=5,right=5}">
+								<Title field="fogo" text="Fogo"/>
+							</layout>
+							<layout align="top" height="25" margins="{top=5,left=5,right=5}">
+								<Title field="luz" text="Luz"/>
+							</layout>
+							<layout align="top" height="25" margins="{top=5,left=5,right=5}">
+								<Title field="trevas" text="Trevas"/>
+							</layout>
+						</layout>
+						<layout align="left" width="150" margins="{right=0}">
+							<layout align="top" height="25" margins="{top=5,left=5,right=5}">
+								<Title field="arkanum" text="Arkanum"/>
+							</layout>
+							<layout align="top" height="25" margins="{top=5,left=5,right=5}">
+								<Title field="spiritum" text="Spiritum"/>
+							</layout>
+							<layout align="top" height="25" margins="{top=5,left=5,right=5}">
+								<Title field="humanos" text="Humanos"/>
+							</layout>
+							<layout align="top" height="25" margins="{top=5,left=5,right=5}">
+								<Title field="plantas" text="Plantas"/>
+							</layout>
+							<layout align="top" height="25" margins="{top=5,left=5,right=5}">
+								<Title field="animais" text="Animais"/>
+							</layout>
+							<layout align="top" height="25" margins="{top=5,left=5,right=5}">
+								<Title field="metamagia" text="Metamagia"/>
+							</layout>
+						</layout>
+					</rectangle>
+					<rectangle align="left" width="405" color="black" strokeColor="white" strokeSize="1" margins="{left=5}">
+						<layout align="left" width="200" margins="{right=0}">
+							<layout align="top" height="25" margins="{top=5,left=5,right=5}">
+								<Title5 field="magma" text="Magma"/>
+							</layout>
+							<layout align="top" height="25" margins="{top=5,left=5,right=5}">
+								<Title5 field="cinzas" text="Fogo Negro e Cinzas"/>
+							</layout>
+							<layout align="top" height="25" margins="{top=5,left=5,right=5}">
+								<Title5 field="cores" text="Cores e Brilhos"/>
+							</layout>
+							<layout align="top" height="25" margins="{top=5,left=5,right=5}">
+								<Title5 field="fumaca" text="Fumaça"/>
+							</layout>
+							<layout align="top" height="25" margins="{top=5,left=5,right=5}">
+								<Title5 field="relampagos" text="Relâmpagos"/>
+							</layout>
+							<layout align="top" height="25" margins="{top=5,left=5,right=5}">
+								<Title5 field="gelo" text="Gelo"/>
+							</layout>
+						</layout>
+						<layout align="left" width="200" margins="{right=0}">
+							<layout align="top" height="25" margins="{top=5,left=5,right=5}">
+								<Title5 field="vapores" text="Vapores e Poções"/>
+							</layout>
+							<layout align="top" height="25" margins="{top=5,left=5,right=5}">
+								<Title5 field="cristais" text="Cristais"/>
+							</layout>
+							<layout align="top" height="25" margins="{top=5,left=5,right=5}">
+								<Title5 field="lama" text="Lama"/>
+							</layout>
+							<layout align="top" height="25" margins="{top=5,left=5,right=5}">
+								<Title5 field="corrosao" text="Pó e Corrosão"/>
+							</layout>
+							<layout align="top" height="25" margins="{top=5,left=5,right=5}">
+								<Title5 field="vacuo" text="Vácuo"/>
+							</layout>
+							<layout align="top" height="25" margins="{top=5,left=5,right=5}">
+								<Title5 field="venenos" text="Venenos e Ácidos"/>
+							</layout>
+						</layout>
+					</rectangle>
+				</layout>
+			</flowLayout>
+
+			<dataLink fields="{'ar', 'terra', 'agua', 'fogo', 'luz', 'trevas'}">
+				<event name="onChange">
+					if sheet==nil then return end
+					local ar = (tonumber(sheet.ar) or 0)
+					local terra = (tonumber(sheet.terra) or 0)
+					local agua = (tonumber(sheet.agua) or 0)
+					local fogo = (tonumber(sheet.fogo) or 0)
+					local luz = (tonumber(sheet.luz) or 0)
+					local trevas = (tonumber(sheet.trevas) or 0)
+
+					sheet.magma = math.min(terra,fogo)
+					sheet.cinzas = math.min(fogo,trevas)
+					sheet.cores = math.min(fogo,luz)
+					sheet.fumaca = math.min(fogo,ar)
+					sheet.relampagos = math.min(luz,ar)
+					sheet.gelo = math.min(agua,ar)
+					sheet.vapores = math.min(agua,luz)
+					sheet.cristais = math.min(terra,luz)
+					sheet.lama = math.min(terra,agua)
+					sheet.corrosao = math.min(terra,trevas)
+					sheet.vacuo = math.min(ar,trevas)
+					sheet.venenos = math.min(agua,trevas)
+				</event>
+			</dataLink>
+	
+			<flowLineBreak/>
+
+			<!-- Itens de Magia -->
+			
+			<flowLayout class="oneLineTile2" autoHeight="true" maxColumns="3" horzAlign="center" orientation="vertical">
+				<magicsLayoutN level="1"/>
+				<magicsLayoutN level="2"/>
+				<magicsLayoutN level="3"/>
+				<magicsLayoutN level="4"/>
+				<magicsLayoutN level="5"/>
+				<magicsLayoutN level="6"/>
+				<magicsLayoutN level="7"/>
+				<magicsLayoutN level="8"/>
+				<magicsLayoutN level="9"/>
+			</flowLayout>
+		</flowLayout>
+	</scrollBox> 
+</rectangle>	

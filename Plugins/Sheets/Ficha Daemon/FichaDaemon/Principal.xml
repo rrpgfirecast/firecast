@@ -21,6 +21,12 @@
 			<label field="$(field2)" align="client" horzTextAlign="center"/>
 		</rectangle>
 	</template>
+	<template name="Title5">
+		<label text="$(text)" align="client"/>
+		<rectangle align="right" width="50" color="black" strokeColor="white" strokeSize="1">
+			<label field="$(field)" align="client" horzTextAlign="center"/>
+		</rectangle>
+	</template>
 	<template name="Atributo">
 		<label text="$(text)" align="client" width="90"/>
 		<edit field="$(field)Base" align="right" width="50" horzTextAlign="center" compilerOrder="1"/>
@@ -33,7 +39,7 @@
 				if sheet==nil then return end
 				local base = (tonumber(sheet.$(field)Base) or 0)
 				local mod = (tonumber(sheet.$(field)Mod) or 0)
-				sheet.$(field)Perc = mod + base * 4
+				sheet.$(field)Perc = (mod + base) * 4
 
 	            local nodes = NDB.getChildNodes(sheet.periciasArmas); 
 	            for i=1, #nodes, 1 do
