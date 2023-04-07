@@ -58,11 +58,7 @@
 			<!-- Outros Equipamentos e DINHEIRO -->
 			<flowPart class="tile" height="390" frameStyle="frames/panel4transp/frame.xml" minScaledWidth="290">	
 				<layout align="left" width="140" margins="{left=-20}">
-					<boxDinheiro align="top" text="@@DnD5e.tab.equipament.lab.PC" field="equipamento.dinheiro.pc"/>
-					<boxDinheiro align="top" text="@@DnD5e.tab.equipament.lab.PP" field="equipamento.dinheiro.pp" margins="{top=6}"/>
-					<boxDinheiro align="top" text="@@DnD5e.tab.equipament.lab.PE" field="equipamento.dinheiro.pe" margins="{top=6}"/>
-					<boxDinheiro align="top" text="@@DnD5e.tab.equipament.lab.PO" field="equipamento.dinheiro.po" margins="{top=6}"/>					
-					<boxDinheiro align="top" text="@@DnD5e.tab.equipament.lab.PL" field="equipamento.dinheiro.pl" margins="{top=6}"/>					
+					<boxDinheiro align="top" text="Dinheiro" field="equipamento.dinheiro.pc"/>				
 				</layout>
 
 				<layout align="left" width="400" margins="{left=10,right=10}">

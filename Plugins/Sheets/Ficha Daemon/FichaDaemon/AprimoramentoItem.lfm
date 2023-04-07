@@ -39,8 +39,15 @@
 			for i=1, #nodes, 1 do
 				pts = pts + (tonumber(nodes[i].custo) or 0)
 			end
-
 			node.ptsAprimoramentos = pts
+
+			nodes = NDB.getChildNodes(node.poderes)
+			pts = 0
+			for i=1, #nodes, 1 do
+				pts = pts + (tonumber(nodes[i].custo) or 0)
+			end
+			node.ptsPoderes = pts
+
 		</event>
 	</dataLink>
 </form>

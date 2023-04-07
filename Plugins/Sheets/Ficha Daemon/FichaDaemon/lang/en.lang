@@ -28,7 +28,7 @@ DnD5e.tab.equipament.hintPrompt=Input property effect
 DnD5e.tab.equipament.defend.lab.name=NAME
 DnD5e.tab.equipament.defend.lab.weight=WEIGHT
 DnD5e.tab.equipament.defend.lab.type=TYPE
-DnD5e.tab.equipament.defend.lab.ca=Protection Index
+DnD5e.tab.equipament.defend.lab.ca=PROTECTION INDEX
 DnD5e.tab.equipament.defend.lab.property=PROPERTIES
 
 DnD5e.tab.equipament.lab.extraEquip=OTHER EQUIPMENT

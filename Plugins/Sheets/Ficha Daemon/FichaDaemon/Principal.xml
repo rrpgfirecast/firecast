@@ -71,7 +71,7 @@
 					<Title field="religiao" text="Religião"/>
 				</layout>
 				<layout align="top" height="25" margins="{top=5,left=5,right=5}">
-					<Title2 field="kit" field2="level" text="Kit"/>
+					<Title2 field="kit" field2="level" text="Kit (Nível)"/>
 				</layout>
 				<layout align="top" height="25" margins="{top=5,left=5,right=5}">
 					<Title3 field="xpAtual" field2="xpObjetivo" text="Experiência"/>
@@ -109,15 +109,7 @@
 				</dataLink>
 			</rectangle>
 
-			<!-- Imagem para avatar do personagem editavel e que pode ser arrastada para o scene -->
-			<rectangle align="left" width="155" color="black" strokeColor="white" strokeSize="1">
-				<label left="0" top="67.5" width="155" height="20" text="Avatar" horzTextAlign="center"/>
-				<image align="client" field="avatar" editable="true" style="autoFit" margins="{left=2, right=2, top=2, bottom=2}">
-					<event name="OnStartDrag">
-					    drag:addData("imageURL", sheet.avatar);
-					</event>
-				</image>
-			</rectangle>
+			<image align="left" width="285" height="155" style="autoFit" src="images/daemon.jpg"/>
 		</layout>
 		<layout align="top" height="245" margins="{top=5}">
 			<rectangle align="left" width="300" margins="{right=5}" color="black" strokeColor="white" strokeSize="1">
@@ -146,38 +138,21 @@
 					<Atributo field="carisma" text="Carisma"/>
 				</layout>
 			</rectangle>
-			<rectangle align="left" width="300" margins="{right=5}" color="black" strokeColor="white" strokeSize="1">
-				<layout align="top" height="25" margins="{top=5,left=5,right=5}">
-					<button text="+" align="left" width="25" onClick="self.aprimoramentos:append();"/>
-					<label align="client" text="Aprimoramentos" margins="{left=5}"/>
-				</layout>
-				<recordList name="aprimoramentos" field="aprimoramentos" templateForm="frmAprimoramentoItem" align="client" layout="vertical" minQt="1" margins="{top=5,left=5,right=5,bottom=5}">
-					<event name="onCompare">
-				        return utils.compareStringPtBr(nodeA.nome, nodeB.nome)
-				    </event>
-				</recordList>
-			</rectangle>
 			<rectangle align="left" width="200" margins="{right=5}" color="black" strokeColor="white" strokeSize="1">
 				<layout align="top" height="25" margins="{top=5,left=5,right=5}">
-					<label align="client" text="PONTOS" margins="{left=5}"/>
+					<label align="client" text="TOTAL DE PONTOS GASTOS" margins="{left=5}"/>
 				</layout>
 				<layout align="top" height="25" margins="{top=5,left=5,right=5}">
 					<Title5 field="ptsAtributos" text="Atributos"/>
 				</layout>
 				<layout align="top" height="25" margins="{top=5,left=5,right=5}">
-					<Title5 field="ptsPericiasArmas" text="Perícias com Armas"/>
-				</layout>
-				<layout align="top" height="25" margins="{top=5,left=5,right=5}">
-					<Title5 field="ptsPericias" text="Perícias"/>
+					<Title5 field="ptsPericiasTotais" text="Perícias"/>
 				</layout>
 				<layout align="top" height="25" margins="{top=5,left=5,right=5}">
 					<Title5 field="ptsAprimoramentos" text="Aprimoramentos"/>
 				</layout>
 				<layout align="top" height="25" margins="{top=5,left=5,right=5}">
-				</layout>
-
-				<layout align="top" height="25" margins="{top=5,left=5,right=5}">
-					<Title5 field="ptsTotal" text="Total"/>
+					<Title5 field="ptsPoderes" text="Poderes"/>
 				</layout>
 
 
@@ -194,19 +169,52 @@
 					</event>
 				</dataLink>
 
-
-				<dataLink fields="{'ptsAtributos','ptsPericiasArmas','ptsPericias','ptsAprimoramentos'}">
+				<dataLink fields="{'ptsPericiasArmas','ptsPericias'}">
 					<event name="onChange">
 						if sheet==nil then return end
 						
-						local atrs = {"ptsAtributos","ptsPericiasArmas","ptsPericias","ptsAprimoramentos"}
+						local atrs = {"ptsPericiasArmas","ptsPericias"}
 						local pts = 0
 						for i,v in ipairs(atrs) do
 							pts = pts + (tonumber(sheet[v]) or 0)
 						end
-						sheet.ptsTotal = pts
+						sheet.ptsPericiasTotais = pts
 					</event>
 				</dataLink>
+			</rectangle>
+
+			<!-- Imagem para avatar do personagem editavel e que pode ser arrastada para o scene -->
+			<rectangle align="left" width="245" margins="{right=5}" color="black" strokeColor="white" strokeSize="1">
+				<label left="0" top="112.5" width="245" height="20" text="Avatar" horzTextAlign="center"/>
+				<image align="client" field="avatar" editable="true" style="autoFit" margins="{left=2, right=2, top=2, bottom=2}">
+					<event name="OnStartDrag">
+					    drag:addData("imageURL", sheet.avatar);
+					</event>
+				</image>
+			</rectangle>
+		</layout>
+		<layout align="top" height="245" margins="{top=5}">
+			<rectangle align="left" width="300" margins="{right=5}" color="black" strokeColor="white" strokeSize="1">
+				<layout align="top" height="25" margins="{top=5,left=5,right=5}">
+					<button text="+" align="left" width="25" onClick="self.aprimoramentos:append();"/>
+					<label align="client" text="Aprimoramentos" margins="{left=5}"/>
+				</layout>
+				<recordList name="aprimoramentos" field="aprimoramentos" templateForm="frmAprimoramentoItem" align="client" layout="vertical" minQt="1" margins="{top=5,left=5,right=5,bottom=5}">
+					<event name="onCompare">
+				        return utils.compareStringPtBr(nodeA.nome, nodeB.nome)
+				    </event>
+				</recordList>
+			</rectangle>
+			<rectangle align="left" width="300" margins="{right=5}" color="black" strokeColor="white" strokeSize="1">
+				<layout align="top" height="25" margins="{top=5,left=5,right=5}">
+					<button text="+" align="left" width="25" onClick="self.poderes:append();"/>
+					<label align="client" text="Poderes" margins="{left=5}"/>
+				</layout>
+				<recordList name="poderes" field="poderes" templateForm="frmAprimoramentoItem" align="client" layout="vertical" minQt="1" margins="{top=5,left=5,right=5,bottom=5}">
+					<event name="onCompare">
+				        return utils.compareStringPtBr(nodeA.nome, nodeB.nome)
+				    </event>
+				</recordList>
 			</rectangle>
 		</layout>
 	</scrollBox>

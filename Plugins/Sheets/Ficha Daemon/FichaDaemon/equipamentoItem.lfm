@@ -96,7 +96,7 @@
 					<upperGridCampoSolido height="40" field="dano" minWidth="80" titulo="@@DnD5e.tab.equipament.atack.lab.damage"/>									
 					<upperGridCampoSolido height="40" field="tipo" minWidth="100" titulo="@@DnD5e.tab.equipament.atack.lab.type"/>
 
-					<upperGridCampoSolido height="40" field="propriedades" minWidth="150" maxWidth="360" titulo="@@DnD5e.tab.equipament.atack.lab.property"/>
+					<upperGridCampoSolido height="40" field="propriedades" minWidth="150" maxWidth="360" titulo="INICIATIVA"/>
 					<upperGridCampoSolido height="40" field="alcance" titulo="@@DnD5e.tab.equipament.atack.lab.range"/>
 					<upperGridCampoSolido height="40" field="municao" titulo="@@DnD5e.tab.equipament.atack.lab.ammunition"/>
 					<upperGridCampoSolido height="40" field="qtMunicao" titulo="@@DnD5e.tab.equipament.atack.lab.ammunitionAmount" maxWidth="80" minWidth="50"/>
