@@ -128,6 +128,12 @@
 		<dataLink fields="{'$(field)','entender','controlar','criar'}">
 			<event name="onChange">
 				if sheet==nil then return end
+				if sheet.$(field)== nil then
+					sheet.$(field)Entender = nil
+					sheet.$(field)Controlar = nil
+					sheet.$(field)Criar = nil
+					return
+				end
 
 				local entender = (tonumber(sheet.entender) or 0)
 				local controlar = (tonumber(sheet.controlar) or 0)
@@ -156,7 +162,7 @@
 					<rectangle width="600" height="185" color="black" strokeColor="white" strokeSize="1" margins="{bottom=5}">
 						<layout align="left" width="150" margins="{right=5}">
 							<layout align="top" height="25" margins="{top=5,left=5,right=5}">
-								<CaminhosSecundario field="focus" text="Focus"/>
+								<Title5 field="focus" text="Focus"/>
 							</layout>
 							<layout align="top" height="25" margins="{top=5,left=5,right=5}">
 								<Title field="entender" text="Entender"/>

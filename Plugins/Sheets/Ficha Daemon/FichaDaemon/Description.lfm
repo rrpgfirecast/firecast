@@ -1,14 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <form name="frmTemplateDescription" align="client">
+	<template name="Descricao">
+		<layout align="left" width="380" margins="{right=10}">
+			<label align="left" width="90" text="$(text)" horzTextAlign="center"/>
+			<edit align="left" width="290" field="$(field)" vertTextAlign="center" />
+		</layout>
+	</template>
 	<scrollBox align="client">
-		<template name="Descricao">
-			<layout align="left" width="380" margins="{right=10}">
-				<label align="left" width="90" text="$(text)" horzTextAlign="center"/>
-				<edit align="left" width="290" field="$(field)" vertTextAlign="center" />
-			</layout>
-		</template>
+
+		<layout width="1205"/>
 		
-		<rectangle left="0" top="0" width="1205" height="105" color="black">
+		<rectangle align="top" height="105" color="black">
 			<label align="top" height="20" text="DESCRIÇÃO"/>
 
 			<layout align="top" height="25">
@@ -30,20 +32,9 @@
 			</layout>
 		</rectangle>
 		
-		<layout left="0" top="110" width="375" height="240">
-			<rectangle align="client" color="black"/>
-			<label left="5" top="1" width="100" height="20" text="APARÊNCIA"/>
-			<textEditor left="5" top="25" width="365" height="210" field="aparencia"/>
-		</layout>
-		<layout left="0" top="355" width="375" height="250">
-			<rectangle align="client" color="black"/>
-			<label left="5" top="1" width="100" height="20" text="PERSONALIDADE"/>
-			<textEditor left="5" top="25" width="365" height="220" field="personalidade"/>
-		</layout>
-		<layout left="380" top="110" width="825" height="495">
-			<rectangle align="client" color="black"/>
-			<label left="5" top="1" width="100" height="20" text="HISTORIA"/>
-			<richEdit left="5" top="25" width="815" height="465" field="background" backgroundColor="#333333" defaultFontSize="12" defaultFontColor="white"/>
-		</layout>
+		<rectangle align="client" color="black" strokeColor="white" strokeSize="1" margins="{top=5}">
+			<label align="top" height="20" text="HISTORIA" margins="{left=5,top=5,bottom=5}"/>
+			<richEdit align="client" field="background" backgroundColor="#333333" defaultFontSize="12" defaultFontColor="white"  margins="{left=5,right=5,bottom=5}"/>
+		</rectangle>
 	</scrollBox>
 </form>

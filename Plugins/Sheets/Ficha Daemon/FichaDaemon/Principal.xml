@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<form name="frmPrincipal" align="client">
+<form name="frmPrincipal" align="client" scale="1.25">
 	<template name="Title">
 		<label text="$(text)" align="left" width="90"/>
 		<edit field="$(field)" align="client"/>
@@ -19,6 +19,12 @@
 		<edit field="$(field)" align="right" width="50" compilerOrder="1"/>
 		<rectangle align="right" width="50" color="black" strokeColor="white" strokeSize="1" compilerOrder="2">
 			<label field="$(field2)" align="client" horzTextAlign="center"/>
+		</rectangle>
+	</template>
+	<template name="Title5">
+		<label text="$(text)" align="client"/>
+		<rectangle align="right" width="50" color="black" strokeColor="white" strokeSize="1">
+			<label field="$(field)" align="client" horzTextAlign="center"/>
 		</rectangle>
 	</template>
 	<template name="Atributo">
@@ -150,6 +156,57 @@
 				        return utils.compareStringPtBr(nodeA.nome, nodeB.nome)
 				    </event>
 				</recordList>
+			</rectangle>
+			<rectangle align="left" width="200" margins="{right=5}" color="black" strokeColor="white" strokeSize="1">
+				<layout align="top" height="25" margins="{top=5,left=5,right=5}">
+					<label align="client" text="PONTOS" margins="{left=5}"/>
+				</layout>
+				<layout align="top" height="25" margins="{top=5,left=5,right=5}">
+					<Title5 field="ptsAtributos" text="Atributos"/>
+				</layout>
+				<layout align="top" height="25" margins="{top=5,left=5,right=5}">
+					<Title5 field="ptsPericiasArmas" text="Perícias com Armas"/>
+				</layout>
+				<layout align="top" height="25" margins="{top=5,left=5,right=5}">
+					<Title5 field="ptsPericias" text="Perícias"/>
+				</layout>
+				<layout align="top" height="25" margins="{top=5,left=5,right=5}">
+					<Title5 field="ptsAprimoramentos" text="Aprimoramentos"/>
+				</layout>
+				<layout align="top" height="25" margins="{top=5,left=5,right=5}">
+				</layout>
+
+				<layout align="top" height="25" margins="{top=5,left=5,right=5}">
+					<Title5 field="ptsTotal" text="Total"/>
+				</layout>
+
+
+				<dataLink fields="{'constituicaoBase','forcaBase','destrezaBase','agilidadeBase','inteligenciaBase','vontadeBase','percepcaoBase','carismaBase'}">
+					<event name="onChange">
+						if sheet==nil then return end
+						
+						local atrs = {"constituicao","forca","destreza","agilidade","inteligencia","vontade","percepcao","carisma"}
+						local pts = 0
+						for i,v in ipairs(atrs) do
+							pts = pts + (tonumber(sheet[v.."Base"]) or 0)
+						end
+						sheet.ptsAtributos = pts
+					</event>
+				</dataLink>
+
+
+				<dataLink fields="{'ptsAtributos','ptsPericiasArmas','ptsPericias','ptsAprimoramentos'}">
+					<event name="onChange">
+						if sheet==nil then return end
+						
+						local atrs = {"ptsAtributos","ptsPericiasArmas","ptsPericias","ptsAprimoramentos"}
+						local pts = 0
+						for i,v in ipairs(atrs) do
+							pts = pts + (tonumber(sheet[v]) or 0)
+						end
+						sheet.ptsTotal = pts
+					</event>
+				</dataLink>
 			</rectangle>
 		</layout>
 	</scrollBox>

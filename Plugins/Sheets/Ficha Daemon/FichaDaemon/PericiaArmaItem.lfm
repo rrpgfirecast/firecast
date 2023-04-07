@@ -63,4 +63,20 @@
 			</layout>
 		</layout>
 	</layout>
+
+	<dataLink fields="{'gastoAtk','gastoDef'}">
+		<event name="onChange">
+			if sheet==nil then return end
+
+			local node = NDB.getRoot(sheet)
+			local nodes = NDB.getChildNodes(node.periciasArmas)
+			local pts = 0
+			for i=1, #nodes, 1 do
+				pts = pts + (tonumber(nodes[i].gastoAtk) or 0)
+				pts = pts + (tonumber(nodes[i].gastoDef) or 0)
+			end
+
+			node.ptsPericiasArmas = pts
+		</event>
+	</dataLink>
 </form>

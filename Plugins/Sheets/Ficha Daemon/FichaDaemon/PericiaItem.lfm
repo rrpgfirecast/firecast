@@ -36,4 +36,19 @@
 			<button align="right" width="30" text="X" onClick="askForDelete();"/>
 		</layout>
 	</layout>
+
+	<dataLink fields="{'gasto'}">
+		<event name="onChange">
+			if sheet==nil then return end
+
+			local node = NDB.getRoot(sheet)
+			local nodes = NDB.getChildNodes(node.pericias)
+			local pts = 0
+			for i=1, #nodes, 1 do
+				pts = pts + (tonumber(nodes[i].gasto) or 0)
+			end
+
+			node.ptsPericias = pts
+		</event>
+	</dataLink>
 </form>

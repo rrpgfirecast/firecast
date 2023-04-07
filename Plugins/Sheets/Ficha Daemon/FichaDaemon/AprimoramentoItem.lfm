@@ -28,4 +28,19 @@
 	<edit align="right" width="30" field="custo" type="number" vertTextAlign="center" horzTextAlign="center"/>
 	<button align="right" width="30" text="i" onClick="showHabilidadePopup();"/>
 	<button align="right" width="30" text="X" onClick="askForDelete();"/>
+
+	<dataLink fields="{'custo'}">
+		<event name="onChange">
+			if sheet==nil then return end
+
+			local node = NDB.getRoot(sheet)
+			local nodes = NDB.getChildNodes(node.aprimoramentos)
+			local pts = 0
+			for i=1, #nodes, 1 do
+				pts = pts + (tonumber(nodes[i].custo) or 0)
+			end
+
+			node.ptsAprimoramentos = pts
+		</event>
+	</dataLink>
 </form>
