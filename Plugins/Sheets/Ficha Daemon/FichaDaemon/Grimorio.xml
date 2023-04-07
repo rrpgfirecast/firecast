@@ -29,8 +29,8 @@
 
 	<template name="magicHeader0">
 		<flowPart class="magicHeader" frameStyle="frames/magicHeader/header0.xml">
-			<label frameRegion="RegiaoSmallTitulo" text="0" class="magicLevelNumber"/>
-			<label frameRegion="RegiaoConteudo" text="@@DnD5e.spells.cantrip" fontSize="15" horzTextAlign="center" vertTextAlign="center"/>
+			<label frameRegion="RegiaoSmallTitulo" text="$(level)" class="magicLevelNumber"/>
+			<label frameRegion="RegiaoConteudo" text="Circulo $(level)" fontSize="15" horzTextAlign="center" vertTextAlign="center"/>
 		</flowPart>
 	</template>
 	
@@ -73,8 +73,8 @@
 	
 	<template name="magicsLayout0">
 		<flowLayout class="halfTile3 magicTile" height="100" avoidScale="true" maxControlsPerLine="1" autoHeight="true">
-			<magicHeader0/>
-			<magicRecordList level="0"/>
+			<magicHeader0 level="$(level)"/>
+			<magicRecordList level="$(level)"/>
 		</flowLayout>	
 	</template>
 	
@@ -110,16 +110,53 @@
 		
 		<textEditor align="client" field="descricao" class=""/>
 	</popup>
+
+	<template name="Caminho">
+		<label text="$(text)" align="client"/>
+		<edit field="$(field)" align="right" width="30" horzTextAlign="center"/>
+		<layout align="right" width="90">
+			<rectangle align="right" width="30" color="black" strokeColor="white" strokeSize="1" hint="Entender">
+				<label field="$(field)Entender" align="client" horzTextAlign="center"/>
+			</rectangle>
+			<rectangle align="right" width="30" color="black" strokeColor="white" strokeSize="1" hint="Controlar">
+				<label field="$(field)Controlar" align="client" horzTextAlign="center"/>
+			</rectangle>
+			<rectangle align="right" width="30" color="black" strokeColor="white" strokeSize="1" hint="Criar">
+				<label field="$(field)Criar" align="client" horzTextAlign="center"/>
+			</rectangle>
+		</layout>
+		<dataLink fields="{'$(field)','entender','controlar','criar'}">
+			<event name="onChange">
+				if sheet==nil then return end
+
+				local entender = (tonumber(sheet.entender) or 0)
+				local controlar = (tonumber(sheet.controlar) or 0)
+				local criar = (tonumber(sheet.criar) or 0)
+				local mod = (tonumber(sheet.$(field)) or 0)
+
+				sheet.$(field)Entender = entender + mod
+				sheet.$(field)Controlar = controlar + mod
+				sheet.$(field)Criar = criar + mod
+
+			</event>
+		</dataLink>
+	</template>
+	<template name="CaminhosSecundario">
+		<label text="$(text)" align="client"/>
+		<rectangle align="right" width="50" color="black" strokeColor="white" strokeSize="1">
+			<label field="$(field)" align="client" horzTextAlign="center"/>
+		</rectangle>
+	</template>
 	
 	<scrollBox align="client">
 		<flowLayout class="tile" align="top" height="500" margins="{left=10, right=10, top=10}" autoHeight="true" horzAlign="center" lineSpacing="3" name="fraMagiasLayout">
 			<!-- Primeira Linha -->
 			<flowLayout class="oneLineTile2" autoHeight="true" maxColumns="3" horzAlign="center" orientation="vertical">
-				<layout width="960" height="185">
-					<rectangle align="left" width="460" color="black" strokeColor="white" strokeSize="1">
+				
+					<rectangle width="600" height="185" color="black" strokeColor="white" strokeSize="1" margins="{bottom=5}">
 						<layout align="left" width="150" margins="{right=5}">
 							<layout align="top" height="25" margins="{top=5,left=5,right=5}">
-								<Title field="focus" text="Focus"/>
+								<CaminhosSecundario field="focus" text="Focus"/>
 							</layout>
 							<layout align="top" height="25" margins="{top=5,left=5,right=5}">
 								<Title field="entender" text="Entender"/>
@@ -131,90 +168,111 @@
 								<Title field="criar" text="Criar"/>
 							</layout>
 						</layout>
-						<layout align="left" width="150" margins="{right=5}">
+						<layout align="left" width="220" margins="{right=5}">
 							<layout align="top" height="25" margins="{top=5,left=5,right=5}">
-								<Title field="ar" text="Ar"/>
+								<Caminho field="ar" text="Ar"/>
 							</layout>
 							<layout align="top" height="25" margins="{top=5,left=5,right=5}">
-								<Title field="terra" text="Terra"/>
+								<Caminho field="terra" text="Terra"/>
 							</layout>
 							<layout align="top" height="25" margins="{top=5,left=5,right=5}">
-								<Title field="agua" text="Água"/>
+								<Caminho field="agua" text="Água"/>
 							</layout>
 							<layout align="top" height="25" margins="{top=5,left=5,right=5}">
-								<Title field="fogo" text="Fogo"/>
+								<Caminho field="fogo" text="Fogo"/>
 							</layout>
 							<layout align="top" height="25" margins="{top=5,left=5,right=5}">
-								<Title field="luz" text="Luz"/>
+								<Caminho field="luz" text="Luz"/>
 							</layout>
 							<layout align="top" height="25" margins="{top=5,left=5,right=5}">
-								<Title field="trevas" text="Trevas"/>
+								<Caminho field="trevas" text="Trevas"/>
 							</layout>
 						</layout>
-						<layout align="left" width="150" margins="{right=0}">
+						<layout align="left" width="220" margins="{right=0}">
 							<layout align="top" height="25" margins="{top=5,left=5,right=5}">
-								<Title field="arkanum" text="Arkanum"/>
+								<Caminho field="arkanum" text="Arkanum"/>
 							</layout>
 							<layout align="top" height="25" margins="{top=5,left=5,right=5}">
-								<Title field="spiritum" text="Spiritum"/>
+								<Caminho field="spiritum" text="Spiritum"/>
 							</layout>
 							<layout align="top" height="25" margins="{top=5,left=5,right=5}">
-								<Title field="humanos" text="Humanos"/>
+								<Caminho field="humanos" text="Humanos"/>
 							</layout>
 							<layout align="top" height="25" margins="{top=5,left=5,right=5}">
-								<Title field="plantas" text="Plantas"/>
+								<Caminho field="plantas" text="Plantas"/>
 							</layout>
 							<layout align="top" height="25" margins="{top=5,left=5,right=5}">
-								<Title field="animais" text="Animais"/>
+								<Caminho field="animais" text="Animais"/>
 							</layout>
 							<layout align="top" height="25" margins="{top=5,left=5,right=5}">
-								<Title field="metamagia" text="Metamagia"/>
+								<Caminho field="metamagia" text="Metamagia"/>
+							</layout>
+						</layout>
+
+						<dataLink fields="{'entender','controlar','criar','ar','terra','agua','fogo','luz','trevas','arkanum','spiritum','humanos','plantas','animais','metamagia'}">
+							<event name="onChange">
+								if sheet==nil then return end
+								sheet.focus = (tonumber(sheet.entender) or 0) + 
+												(tonumber(sheet.controlar) or 0) + 
+												(tonumber(sheet.criar) or 0) + 
+												(tonumber(sheet.ar) or 0) + 
+												(tonumber(sheet.terra) or 0) + 
+												(tonumber(sheet.agua) or 0) + 
+												(tonumber(sheet.fogo) or 0) + 
+												(tonumber(sheet.luz) or 0) + 
+												(tonumber(sheet.trevas) or 0) + 
+												(tonumber(sheet.arkanum) or 0) + 
+												(tonumber(sheet.spiritum) or 0) + 
+												(tonumber(sheet.humanos) or 0) + 
+												(tonumber(sheet.plantas) or 0) + 
+												(tonumber(sheet.animais) or 0) + 
+												(tonumber(sheet.metamagia) or 0)
+							</event>
+						</dataLink>
+					</rectangle>
+					<rectangle width="405" height="185" color="black" strokeColor="white" strokeSize="1" margins="{left=5}">
+						<layout align="left" width="200" margins="{right=0}">
+							<layout align="top" height="25" margins="{top=5,left=5,right=5}">
+								<CaminhosSecundario field="magma" text="Magma"/>
+							</layout>
+							<layout align="top" height="25" margins="{top=5,left=5,right=5}">
+								<CaminhosSecundario field="cinzas" text="Fogo Negro e Cinzas"/>
+							</layout>
+							<layout align="top" height="25" margins="{top=5,left=5,right=5}">
+								<CaminhosSecundario field="cores" text="Cores e Brilhos"/>
+							</layout>
+							<layout align="top" height="25" margins="{top=5,left=5,right=5}">
+								<CaminhosSecundario field="fumaca" text="Fumaça"/>
+							</layout>
+							<layout align="top" height="25" margins="{top=5,left=5,right=5}">
+								<CaminhosSecundario field="relampagos" text="Relâmpagos"/>
+							</layout>
+							<layout align="top" height="25" margins="{top=5,left=5,right=5}">
+								<CaminhosSecundario field="gelo" text="Gelo"/>
+							</layout>
+						</layout>
+						<layout align="left" width="200" margins="{right=0}">
+							<layout align="top" height="25" margins="{top=5,left=5,right=5}">
+								<CaminhosSecundario field="vapores" text="Vapores e Poções"/>
+							</layout>
+							<layout align="top" height="25" margins="{top=5,left=5,right=5}">
+								<CaminhosSecundario field="cristais" text="Cristais"/>
+							</layout>
+							<layout align="top" height="25" margins="{top=5,left=5,right=5}">
+								<CaminhosSecundario field="lama" text="Lama"/>
+							</layout>
+							<layout align="top" height="25" margins="{top=5,left=5,right=5}">
+								<CaminhosSecundario field="corrosao" text="Pó e Corrosão"/>
+							</layout>
+							<layout align="top" height="25" margins="{top=5,left=5,right=5}">
+								<CaminhosSecundario field="vacuo" text="Vácuo"/>
+							</layout>
+							<layout align="top" height="25" margins="{top=5,left=5,right=5}">
+								<CaminhosSecundario field="venenos" text="Venenos e Ácidos"/>
 							</layout>
 						</layout>
 					</rectangle>
-					<rectangle align="left" width="405" color="black" strokeColor="white" strokeSize="1" margins="{left=5}">
-						<layout align="left" width="200" margins="{right=0}">
-							<layout align="top" height="25" margins="{top=5,left=5,right=5}">
-								<Title5 field="magma" text="Magma"/>
-							</layout>
-							<layout align="top" height="25" margins="{top=5,left=5,right=5}">
-								<Title5 field="cinzas" text="Fogo Negro e Cinzas"/>
-							</layout>
-							<layout align="top" height="25" margins="{top=5,left=5,right=5}">
-								<Title5 field="cores" text="Cores e Brilhos"/>
-							</layout>
-							<layout align="top" height="25" margins="{top=5,left=5,right=5}">
-								<Title5 field="fumaca" text="Fumaça"/>
-							</layout>
-							<layout align="top" height="25" margins="{top=5,left=5,right=5}">
-								<Title5 field="relampagos" text="Relâmpagos"/>
-							</layout>
-							<layout align="top" height="25" margins="{top=5,left=5,right=5}">
-								<Title5 field="gelo" text="Gelo"/>
-							</layout>
-						</layout>
-						<layout align="left" width="200" margins="{right=0}">
-							<layout align="top" height="25" margins="{top=5,left=5,right=5}">
-								<Title5 field="vapores" text="Vapores e Poções"/>
-							</layout>
-							<layout align="top" height="25" margins="{top=5,left=5,right=5}">
-								<Title5 field="cristais" text="Cristais"/>
-							</layout>
-							<layout align="top" height="25" margins="{top=5,left=5,right=5}">
-								<Title5 field="lama" text="Lama"/>
-							</layout>
-							<layout align="top" height="25" margins="{top=5,left=5,right=5}">
-								<Title5 field="corrosao" text="Pó e Corrosão"/>
-							</layout>
-							<layout align="top" height="25" margins="{top=5,left=5,right=5}">
-								<Title5 field="vacuo" text="Vácuo"/>
-							</layout>
-							<layout align="top" height="25" margins="{top=5,left=5,right=5}">
-								<Title5 field="venenos" text="Venenos e Ácidos"/>
-							</layout>
-						</layout>
-					</rectangle>
-				</layout>
+				
 			</flowLayout>
 
 			<dataLink fields="{'ar', 'terra', 'agua', 'fogo', 'luz', 'trevas'}">
@@ -247,15 +305,15 @@
 			<!-- Itens de Magia -->
 			
 			<flowLayout class="oneLineTile2" autoHeight="true" maxColumns="3" horzAlign="center" orientation="vertical">
-				<magicsLayoutN level="1"/>
-				<magicsLayoutN level="2"/>
-				<magicsLayoutN level="3"/>
-				<magicsLayoutN level="4"/>
-				<magicsLayoutN level="5"/>
-				<magicsLayoutN level="6"/>
-				<magicsLayoutN level="7"/>
-				<magicsLayoutN level="8"/>
-				<magicsLayoutN level="9"/>
+				<magicsLayout0 level="1"/>
+				<magicsLayout0 level="2"/>
+				<magicsLayout0 level="3"/>
+				<magicsLayout0 level="4"/>
+				<magicsLayout0 level="5"/>
+				<magicsLayout0 level="6"/>
+				<magicsLayout0 level="7"/>
+				<magicsLayout0 level="8"/>
+				<magicsLayout0 level="9"/>
 			</flowLayout>
 		</flowLayout>
 	</scrollBox> 

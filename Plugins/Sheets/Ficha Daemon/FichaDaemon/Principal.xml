@@ -21,12 +21,6 @@
 			<label field="$(field2)" align="client" horzTextAlign="center"/>
 		</rectangle>
 	</template>
-	<template name="Title5">
-		<label text="$(text)" align="client"/>
-		<rectangle align="right" width="50" color="black" strokeColor="white" strokeSize="1">
-			<label field="$(field)" align="client" horzTextAlign="center"/>
-		</rectangle>
-	</template>
 	<template name="Atributo">
 		<label text="$(text)" align="client" width="90"/>
 		<edit field="$(field)Base" align="right" width="50" horzTextAlign="center" compilerOrder="1"/>
