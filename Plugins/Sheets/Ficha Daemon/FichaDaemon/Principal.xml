@@ -109,7 +109,7 @@
 				</dataLink>
 			</rectangle>
 
-			<image align="left" width="285" height="155" style="autoFit" src="images/daemon.jpg"/>
+			<image align="left" width="285" height="155" style="autoFit" src="images/daemon.png"/>
 		</layout>
 		<layout align="top" height="245" margins="{top=5}">
 			<rectangle align="left" width="300" margins="{right=5}" color="black" strokeColor="white" strokeSize="1">

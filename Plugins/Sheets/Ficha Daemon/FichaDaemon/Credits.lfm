@@ -81,6 +81,7 @@
 				<label align="top" height="20" text="Vinny (Ambesek)" horzTextAlign="center" margins="{top=5}"/>
 				<label align="top" height="20" text="Consultores: " horzTextAlign="center" margins="{top=5}"/>
 				<label align="top" height="20" text="Mizuka" horzTextAlign="center" margins="{top=5}"/>
+				<label align="top" height="20" text="Megas1200" horzTextAlign="center" margins="{top=5}"/>
 			</rectangle>
 		</layout>
 

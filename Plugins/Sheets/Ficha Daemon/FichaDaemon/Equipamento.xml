@@ -58,7 +58,7 @@
 			<!-- Outros Equipamentos e DINHEIRO -->
 			<flowPart class="tile" height="390" frameStyle="frames/panel4transp/frame.xml" minScaledWidth="290">	
 				<layout align="left" width="140" margins="{left=-20}">
-					<boxDinheiro align="top" text="Dinheiro" field="equipamento.dinheiro.pc"/>				
+					<boxDinheiro align="top" text="$" field="equipamento.dinheiro.pc"/>				
 				</layout>
 
 				<layout align="left" width="400" margins="{left=10,right=10}">
