@@ -130,11 +130,6 @@ common.ficha_propriedades = {
 		nome = 'Elegância',
 		descricao = 'Habilidade de Discípulos, permite adicionar seu modificador de sabedoria para testes de carisma (atuação).',
 		tipo = 'bool',
-	},
-	elvenAccuracy = {
-		nome = 'Precisão Élfica',
-		descricao = 'Talento racial de Elfos, permite rolar 3 d20s quanto faz um ataque —que não usa força— com vantagem.',
-		tipo = 'bool',
 	}
 };
 
@@ -250,6 +245,14 @@ function common.rolaMagia(node, modo, args, chat)
 					args.text = args.text .. Locale.lang("Dnd5e.messages.advantage");
 				elseif modo == 'desvantagem' then
 					args.rolls = 2;
+					args.foo = math.min;
+					args.text = args.text .. Locale.lang("Dnd5e.messages.disadvantage");
+				elseif modo == 'vantagem2' then
+					args.rolls = 3;
+					args.foo = math.min;
+					args.text = args.text .. Locale.lang("Dnd5e.messages.advantage");
+				elseif modo == 'desvantagem2' then
+					args.rolls = 3;
 					args.foo = math.min;
 					args.text = args.text .. Locale.lang("Dnd5e.messages.disadvantage");
 				else
@@ -442,6 +445,12 @@ function common.rolaMagia2(node, modo, args, chat)
 		elseif modo == 'desvantagem' then
 			args.ataque.rolls = -2;
 			args.ataque.text = args.ataque.text .. Locale.lang("Dnd5e.messages.disadvantage");
+		elseif modo == 'vantagem2' then
+			args.ataque.rolls = 3;
+			args.ataque.text = args.ataque.text .. Locale.lang("Dnd5e.messages.advantage");
+		elseif modo == 'desvantagem2' then
+			args.ataque.rolls = -3;
+			args.ataque.text = args.ataque.text .. Locale.lang("Dnd5e.messages.disadvantage");
 		else
 			args.ataque.rolls = 1;
 		end;
@@ -543,7 +552,8 @@ function common.rolaPericia(node, modo, args, chat)
 	elseif not args.init then
 		args.init = true;
 
-		if modo == 'vantagem' or modo == 'desvantagem' then args.rolls = 2;
+		if modo == 'vantagem' or modo == 'desvantagem' then args.rolls = 2
+		elseif modo == 'vantagem2' or modo == 'desvantagem2' then args.rolls = 3
 		else args.rolls = 1;
 		end;
 
@@ -554,17 +564,19 @@ function common.rolaPericia(node, modo, args, chat)
 		if args.tipo == 'attr' then
 			args.rolagem = node.atributos['mod'..suffix];
 			args.text = common.atributos[suffix];
-			if common.fichaTemPropriedade(node, 'checkBonus') then args.rolagem = args.rolagem .. ' + ' .. common.fichaGetPropriedadeVal(node, 'checkBonus'); end;
+			if node.bonusHabilidades then 
+				args.rolagem = args.rolagem .. ' + ' .. (tonumber(node.bonusHabilidades) or 0);
+			end;
 		elseif args.tipo == 'per' then
 			args.rolagem = node.pericias['bonus'..suffix];
 			args.text = common.pericias[suffix];
 			args.prof = node.pericias[suffix];
-			if common.fichaTemPropriedade(node, 'checkBonus') then args.rolagem = args.rolagem .. ' + ' .. common.fichaGetPropriedadeVal(node, 'checkBonus'); end;
+			args.minRoll = node.pericias['bonus'..suffix..'strMinRoll'];
 		elseif args.tipo == 'res' then
 			args.rolagem = node.resistencias['bonus'..suffix];
 			args.text = Locale.lang("Dnd5e.messages.save") .. common.atributos[suffix];
 			args.prof = node.resistencias[suffix];
-			if common.fichaTemPropriedade(node, 'saveBonus') then args.rolagem = args.rolagem .. ' + ' .. common.fichaGetPropriedadeVal(node, 'saveBonus'); end;
+			args.minRoll = node.resistencias['bonus'..suffix..'strMinRoll'];
 		else
 			showMessage(Locale.lang("Dnd5e.messages.invalidSKill") .. args.field .. '\'.');
 			return;
@@ -573,10 +585,10 @@ function common.rolaPericia(node, modo, args, chat)
 		args.rolagem = common.interpreta(node, args.rolls .. 'd20 + ' .. args.rolagem);
 		if node.nome then args.text = args.text .. Locale.lang("Dnd5e.messages.of") .. node.nome; end;
 
-		if modo == 'vantagem' then
+		if modo == 'vantagem' or modo == 'vantagem2' then
 			args.foo = math.max;
 			args.text = args.text .. Locale.lang("Dnd5e.messages.advantage");
-		elseif modo == 'desvantagem' then
+		elseif modo == 'desvantagem' or modo == 'desvantagem2' then
 			args.foo = math.min;
 			args.text = args.text .. Locale.lang("Dnd5e.messages.disadvantage");
 		end;
@@ -607,9 +619,10 @@ function common.rolaPericia(node, modo, args, chat)
 
 		result = math.floor(result);
 		d20 = math.floor(d20);
+		local minRoll = tonumber(args.minRoll) or 1
 
-		if d20 < 10 and args.tipo == 'per' and args.prof and common.fichaTemPropriedade(node, 'reliableTalent') then
-			chat:enviarAcao(Locale.lang("Dnd5e.messages.result") .. math.floor(result+10-d20) .. Locale.lang("Dnd5e.messages.because") .. common.fichaGetPropriedade(node, 'reliableTalent').nome .. '\' )');
+		if d20 < minRoll then
+			chat:enviarAcao(Locale.lang("Dnd5e.messages.result") .. math.floor(result+minRoll-d20).. ", " .. Locale.lang("Dnd5e.messages.atrCaptionOpt2") .. ": " .. minRoll .. ")");
 		elseif modo ~= 'normal' then
 			chat:enviarAcao(Locale.lang("Dnd5e.messages.result") .. result .. ' )');
 		end;
@@ -652,8 +665,8 @@ function common.rolaAtaque(node, modo, args, chat)
 		item.tipo = item.tipo or '';
 
 		if item.ataque == '—' or item.ataque == '-' then args.rolls = 0; modo = 'dano';
-		elseif modo == 'vantagem' and common.fichaTemPropriedade(node, 'elvenAccuracy') then args.rolls = 3;
-		elseif modo == 'vantagem' or modo == 'desvantagem' then args.rolls = 2;
+		elseif modo == 'vantagem' or modo == 'desvantagem' then args.rolls = 2
+		elseif modo == 'vantagem2' or modo == 'desvantagem2' then args.rolls = 3
 		else args.rolls = 1;
 		end;
 
@@ -662,10 +675,10 @@ function common.rolaAtaque(node, modo, args, chat)
 			if item.nome then args.text = args.text .. ' com ' .. item.nome; end;
 		end;
 
-		if modo == 'vantagem' then
+		if modo == 'vantagem' or modo == 'vantagem2' then
 			args.foo = math.max;
 			args.text = args.text .. Locale.lang("Dnd5e.messages.advantage");
-		elseif modo == 'desvantagem' then
+		elseif modo == 'desvantagem' or modo == 'desvantagem2' then
 			args.foo = math.min;
 			args.text = args.text .. Locale.lang("Dnd5e.messages.disadvantage");
 		elseif modo == 'dano' then
@@ -730,8 +743,8 @@ function common.rolaAtaque(node, modo, args, chat)
 
 			args.textAcerto = Locale.lang("Dnd5e.messages.hit2");
 			if args.rolls == 3 then args.textAcerto = args.textAcerto .. Locale.lang("Dnd5e.messages.elvenPrecision");
-			elseif modo == 'vantagem' then args.textAcerto = args.textAcerto .. Locale.lang("Dnd5e.messages.advantage");
-			elseif modo == 'desvantagem' then args.textAcerto = args.textAcerto .. Locale.lang("Dnd5e.messages.disadvantage");
+			elseif modo == 'vantagem' or modo == 'vantagem2' then args.textAcerto = args.textAcerto .. Locale.lang("Dnd5e.messages.advantage");
+			elseif modo == 'desvantagem' or modo == 'desvantagem2' then args.textAcerto = args.textAcerto .. Locale.lang("Dnd5e.messages.disadvantage");
 			end;
 			if #nomes > 0 then args.textAcerto = args.textAcerto .. ' - (' .. (acerto_rolls['Padrão'] and 'Padrão, ' or '') .. table.concat(nomes, ', ') .. ')'; end;
 
@@ -877,17 +890,18 @@ function common.rolaIniciativa(node, modo, args, chat)
 	if args == nil then
 		args = {};
 
-		if modo == 'vantagem' or modo == 'desvantagem' then args.rolls = 2;
+		if modo == 'vantagem' or modo == 'desvantagem' then args.rolls = 2
+		elseif modo == 'vantagem2' or modo == 'desvantagem2' then args.rolls = 3
 		else args.rolls = 1;
 		end;
 
 		args.text = Locale.lang("Dnd5e.messages.init");
 		if node.nome then args.text = args.text .. Locale.lang("Dnd5e.messages.of") .. node.nome; end;
 
-		if modo == 'vantagem' then
+		if modo == 'vantagem' or modo == 'vantagem2' then
 			args.foo = math.max;
 			args.text = args.text .. Locale.lang("Dnd5e.messages.advantage");
-		elseif modo == 'desvantagem' then
+		elseif modo == 'desvantagem' or modo == 'desvantagem2' then
 			args.foo = math.min;
 			args.text = args.text .. Locale.lang("Dnd5e.messages.disadvantage");
 		end;
@@ -934,17 +948,18 @@ function common.deathSave(node, modo, args, chat)
 	if args == nil then
 		args = {};
 
-		if modo == 'vantagem' or modo == 'desvantagem' then args.rolls = 2;
+		if modo == 'vantagem' or modo == 'desvantagem' then args.rolls = 2
+		elseif modo == 'vantagem2' or modo == 'desvantagem2' then args.rolls = 3
 		else args.rolls = 1;
 		end;
 
 		args.text = Locale.lang("Dnd5e.messages.deathSave");
 		if node.nome then args.text = args.text .. Locale.lang("Dnd5e.messages.of") .. node.nome; end;
 
-		if modo == 'vantagem' then
+		if modo == 'vantagem' or modo == 'vantagem2' then
 			args.foo = math.max;
 			args.text = args.text .. Locale.lang("Dnd5e.messages.advantage");
-		elseif modo == 'desvantagem' then
+		elseif modo == 'desvantagem' or modo == 'desvantagem2' then
 			args.foo = math.min;
 			args.text = args.text .. Locale.lang("Dnd5e.messages.disadvantage");
 		end;
@@ -1398,7 +1413,7 @@ function common.onClick(node, foo, args, hk, useActiveChat)
 	local chat = common.getMesa(node).activeChat;
 	local options = {LANG("Dnd5e.messages.normal")}
 	if not useActiveChat then
-		options = {LANG("Dnd5e.messages.normal"),LANG("Dnd5e.messages.adv"),LANG("Dnd5e.messages.dis")}
+		options = {LANG("Dnd5e.messages.normal"),LANG("Dnd5e.messages.adv"),LANG("Dnd5e.messages.dis"),LANG("Dnd5e.messages.adv2"),LANG("Dnd5e.messages.dis2")}
 	end;
 
 	Dialogs.choose(LANG("Dnd5e.messages.kind"), options,
@@ -1411,6 +1426,8 @@ function common.onClick(node, foo, args, hk, useActiveChat)
                		elseif selected then
                			if     selectedIndex==2    	then	foo(node, 'vantagem',    args, chat)
 						elseif selectedIndex==3    	then	foo(node, 'desvantagem', args, chat)
+						elseif selectedIndex==4    	then	foo(node, 'vantagem2', args, chat)
+						elseif selectedIndex==5    	then	foo(node, 'desvantagem2', args, chat)
 						else								foo(node, 'normal',      args, chat)
 						end;
                   	end

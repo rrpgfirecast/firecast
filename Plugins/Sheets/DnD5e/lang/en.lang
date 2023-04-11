@@ -62,7 +62,6 @@ DnD5e.features.factionSymbol=FACTION SYMBOL
 DnD5e.features.alliesOrganizations=ALLIES & ORGANIZATIONS
 DnD5e.features.characterStory=CHARACTER BACKSTORY
 
-
 DnD5e.tabControl.tab.front=Front
 DnD5e.tabControl.tab.feature=Features & Traits
 DnD5e.tabControl.tab.equipment=Equipment
@@ -70,7 +69,6 @@ DnD5e.tabControl.tab.spells=Spells
 DnD5e.tabControl.tab.counter=Counter
 DnD5e.tabControl.tab.annotations=Notes
 DnD5e.tabControl.tab.other=Other
-
 
 DnD5e.frente.lab.characterName=CHARACTER NAME
 DnD5e.frente.lab.classaLevel=CLASS & LEVEL
@@ -81,6 +79,8 @@ DnD5e.frente.lab.trend=ALIGNMENT
 DnD5e.frente.lab.xp=EXPERIENCE POINTS
 DnD5e.frente.lab.inspiration=INSPIRATION
 DnD5e.frente.lab.proficiencyBonus=PROFICIENCY BONUS
+DnD5e.frente.lab.abilityBonus=ABILITIES BONUS
+DnD5e.frente.lab.saveBonus=SAVE BONUS
 DnD5e.frente.lab.passivawisdom=PASSIVE WISDOM (PERCEPTION)
 
 DnD5e.frente.box.strength=STRENGTH
@@ -103,7 +103,6 @@ DnD5e.frente.lab.sucess=SUCCESSES
 DnD5e.frente.lab.flaws=FAILURES
 DnD5e.frente.lab.deathteste=DEATH SAVES
 
-
 DnD5e.skills.athletics=Athletics
 DnD5e.skills.acrobatics=Acrobatics
 DnD5e.skills.stealth=Stealth
@@ -123,7 +122,6 @@ DnD5e.skills.deception=Deception
 DnD5e.skills.intimidation=Intimidation
 DnD5e.skills.persuasion=Persuasion
 DnD5e.savingThrows.title=Saving Throw
-
 
 DnD5e.spells.spellcasterClass=SPELLCASTING CLASS
 DnD5e.spells.spellcasterAbility= SPELLCASTING ABILITY
@@ -248,6 +246,7 @@ Dnd5e.messages.delete=Do you with to delete this item?
 Dnd5e.messages.of= of
 Dnd5e.messages.melee=Melee Attack
 Dnd5e.messages.ranged=Ranged Attack
+DnD5e.message.textPromptDamage=Input damage ammount
 
 DnD5e.tab.counter.add=Add
 DnD5e.tab.counter.import=Import from Macro
@@ -264,6 +263,8 @@ DnD5e.tab.counter.changeTo=Change to
 
 Dnd5e.messages.adv=Advantage
 Dnd5e.messages.dis=Disadvantage
+Dnd5e.messages.adv2=Advantage (x2)
+Dnd5e.messages.dis2=Disadvantage (x2)
 Dnd5e.messages.normal=Normal
 Dnd5e.messages.kind=Kind of Roll
 
@@ -277,3 +278,8 @@ DnD5e.equipment.medium=Medium
 DnD5e.equipment.large=Large
 DnD5e.equipment.huge=Huge
 DnD5e.equipment.gargantuan=Gargantuan
+Dnd5e.equipment.backpack=Backpack
+
+Dnd5e.messages.atrCaption=Select an Option
+Dnd5e.messages.atrCaptionOpt1=Alternative Stat
+Dnd5e.messages.atrCaptionOpt2=Minimum Roll

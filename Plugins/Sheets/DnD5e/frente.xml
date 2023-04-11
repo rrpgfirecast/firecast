@@ -75,17 +75,34 @@
 			<!-- SEGUNDA PARTE -->
 			
 			<flowLayout class="oneLineTile" horzAlign="justify" autoHeight="true" avoidScale="true">
-				<!-- INSPIRACAO -->
-				<flowPart minWidth="280" maxWidth="800" height="64" frameStyle="frames/posCaptionEdit1/frame.xml">
-					<edit align="left" class="pericia" field="inspiracao" width="65"/>
-					<label align="client" text="@@DnD5e.frente.lab.inspiration" margins="{left=10}" class="tituloCampo" horzTextAlign="center"/>
-				</flowPart>
 				
 				
 				<!-- BONUS PROFICIENCIA -->
 				<flowPart minWidth="280" maxWidth="800" height="64" frameStyle="frames/posCaptionEdit2/frame.xml">
 					<edit align="left" class="pericia" field="bonusProficiencia" width="70"/>
 					<label align="client" text="@@DnD5e.frente.lab.proficiencyBonus" margins="{left=10}" class="tituloCampo" horzTextAlign="center"/>
+				</flowPart>
+				
+				
+				<!-- BONUS HABILIDADES -->
+				<flowPart minWidth="280" maxWidth="800" height="64" frameStyle="frames/posCaptionEdit2/frame.xml">
+					<edit align="left" class="pericia" field="bonusHabilidades" width="70"/>
+					<label align="client" text="@@DnD5e.frente.lab.abilityBonus" margins="{left=10}" class="tituloCampo" horzTextAlign="center"/>
+				</flowPart>
+				
+				
+				<!-- BONUS RESISTENCIAS -->
+				<flowPart minWidth="280" maxWidth="800" height="64" frameStyle="frames/posCaptionEdit2/frame.xml">
+					<edit align="left" class="pericia" field="bonusResistencias" width="70"/>
+					<label align="client" text="@@DnD5e.frente.lab.saveBonus" margins="{left=10}" class="tituloCampo" horzTextAlign="center"/>
+				</flowPart>
+
+				<flowLineBreak/>
+
+				<!-- INSPIRACAO -->
+				<flowPart minWidth="280" maxWidth="800" height="64" frameStyle="frames/posCaptionEdit1/frame.xml">
+					<edit align="left" class="pericia" field="inspiracao" width="65"/>
+					<label align="client" text="@@DnD5e.frente.lab.inspiration" margins="{left=10}" class="tituloCampo" horzTextAlign="center"/>
 				</flowPart>	
 
 				<!-- SABEDORIA PASSIVA / PERCEPCAO -->
@@ -196,6 +213,27 @@
 									<edit align="client" class="transparente" field="PVMax" vertTextAlign="center" horzTextAlign="center"/>
 									<horzLine align="bottom" strokeColor="gray"/>
 								</layout>
+								<button text="@@DnD5e.generic.damage" align="right" width="50" margins="{right=5}">
+									<event name="onClick">
+										Dialogs.inputQuery(LANG("DnD5e.generic.damage"), LANG("DnD5e.message.textPromptDamage"), "",
+									        function (valorPreenchido)
+									            local dano = math.abs(tonumber(valorPreenchido) or 0)
+									            local pvTemp = tonumber(sheet.PVTemporario) or 0
+									            local pv = tonumber(sheet.PV) or 0
+
+									            if dano > pvTemp then
+									            	dano = dano - pvTemp
+									            	sheet.PVTemporario = 0
+
+									            	pv = pv - dano
+									            	sheet.PV = pv
+									            else
+									            	pvTemp = pvTemp - dano
+									            	sheet.PVTemporario = pvTemp
+									            end
+									        end);
+									</event>
+								</button>
 							</layout>
 							<edit align="client" field="PV" class="transparente" margins="{top=2}" horzTextAlign="center" vertTextAlign="center" fontSize="36" fontStyle="bold"/>
 							<label align="bottom" autoSize="true" text="@@DnD5e.frente.lab.PVCurrent" fontSize="11" vertTextAlign="center" horzTextAlign="center" fontStyle="bold"/>

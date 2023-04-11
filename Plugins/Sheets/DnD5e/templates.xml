@@ -212,17 +212,28 @@
 			
 			<flowLayout frameRegion="RegiaoDePericias" autoHeight="true" lineSpacing="0" horzAlign="leading">			
 				<boxPericia field="$('resistencias.' .. field)" fieldBonus="resistencias.bonus$(field)str" atributo="$(field)" titulo="@@DnD5e.savingThrows.title" losango="true"/>
-				<dataLink fields="{'atributos.mod$(field)', 'bonusProficiencia', 'resistencias.$(field)'}">
+				<dataLink fields="{'atributos.mod$(field)', 'bonusProficiencia', 'resistencias.$(field)', 'resistencias.$(field)strAltAtr', 'bonusResistencias'}">
 					<event name="onChange">
 							local modificador;
 							local temResistencia;
 									
 							if sheet.atributos ~= nil then
-								modificador = sheet.atributos.mod$(field);
-								
-								if modificador ~= nil then
-									modificador = tonumber(modificador);
-								end;
+								if sheet.resistencias.bonus$(field)strAltAtr ~= nil then
+									local mod1 = sheet.atributos["mod"..sheet.resistencias.bonus$(field)strAltAtr]
+									local mod2 = sheet.atributos.mod$(field)
+
+									modificador = math.max(mod1, mod2)
+
+									if modificador ~= nil then
+										modificador = tonumber(modificador);
+									end;
+								else
+									modificador = sheet.atributos.mod$(field);
+									
+									if modificador ~= nil then
+										modificador = tonumber(modificador);
+									end;
+								end
 							else
 								modificador = nil;
 							end;
@@ -237,7 +248,6 @@
 								sheet.resistencias = {};
 							end;
 													
-							
 							if modificador ~= nil then
 								local valor;
 							
@@ -245,7 +255,9 @@
 									valor = modificador	+ (tonumber(sheet.bonusProficiencia) or 0)
 								else
 									valor = modificador;
-								end;								
+								end;
+
+								valor = valor + (tonumber(sheet.bonusResistencias) or 0)					
 								
 								valor = math.tointeger(valor);
 								
@@ -269,17 +281,28 @@
 						periciaField = objPericia[2];
 					-->								
 					<boxPericia field="$('pericias.' .. periciaField)" fieldBonus="pericias.bonus$(periciaField)str" atributo="$('atributos.' .. field)" titulo="$(periciaTitulo)" attrSortGroup="$(field)"/>
-					<dataLink fields="{'atributos.mod$(field)', 'bonusProficiencia', 'pericias.$(periciaField)'}">
+					<dataLink fields="{'atributos.mod$(field)', 'bonusProficiencia', 'pericias.$(periciaField)', 'pericias.bonus$(periciaField)strAltAtr', 'bonusHabilidades'}">
 						<event name="onChange">
 							local modificador;
 							local temPericia;
 									
 							if sheet.atributos ~= nil then
-								modificador = sheet.atributos.mod$(field);
-								
-								if modificador ~= nil then
-									modificador = tonumber(modificador);
-								end;
+								if sheet.pericias.bonus$(periciaField)strAltAtr ~= nil then
+									local mod1 = sheet.atributos["mod"..sheet.pericias.bonus$(periciaField)strAltAtr]
+									local mod2 = sheet.atributos.mod$(field)
+
+									modificador = math.max(mod1, mod2)
+
+									if modificador ~= nil then
+										modificador = tonumber(modificador);
+									end;
+								else
+									modificador = sheet.atributos.mod$(field);
+									
+									if modificador ~= nil then
+										modificador = tonumber(modificador);
+									end;
+								end
 							else
 								modificador = nil;
 							end;
@@ -306,7 +329,9 @@
 									valor = modificador	+ math.floor((tonumber(sheet.bonusProficiencia) or 0)/2)
 								else
 									valor = modificador;
-								end;								
+								end;
+
+								valor = valor + (tonumber(sheet.bonusHabilidades) or 0)			
 								
 								valor = math.tointeger(valor);
 								
@@ -396,9 +421,30 @@
 	
 		<flowPart minWidth="206" maxWidth="250" height="17" name="$(flowPartUniqueName)">			
 			<dndMultiCheckBox align="left" field="$(field)" losango="$(losango)"/>
-			<layout align="left" width="26" margins="{left=2}">	
+			<layout align="left" width="26" margins="{left=2}" hitTest="True">	
 				<label name="$(flowPartUniqueName)str" field="$(fieldBonus)" align="client" horzTextAlign="center" vertTextAlign="trailing" textTrimming="none"/>
 				<horzLine strokeColor="white" strokeSize="1" align="bottom"/>
+				<event name="onClick">
+					Dialogs.choose(LANG("Dnd5e.messages.atrCaption"), {LANG("Dnd5e.messages.atrCaptionOpt1"), LANG("Dnd5e.messages.atrCaptionOpt2")},
+		               function(selected, selectedIndex, selectedText)
+		                	if selected then
+		                		if selectedIndex==1 then
+		                			Dialogs.choose(LANG("Dnd5e.messages.atrCaption"), {LANG("DnD5e.spells.resistance.str"),LANG("DnD5e.spells.resistance.dex"),LANG("DnD5e.spells.resistance.con"),LANG("DnD5e.spells.resistance.int"),LANG("DnD5e.spells.resistance.wis"),LANG("DnD5e.spells.resistance.cha"),"-"},
+						               function(selected, selectedIndex, selectedText)
+						                	if selected then
+						                		local atr = {"forca","destreza","constituicao","inteligencia","sabedoria","carisma",nil}
+						                		sheet.$(fieldBonus)AltAtr = atr[selectedIndex]
+						                	end
+						               end)
+		                		elseif selectedIndex==2 then
+		                			Dialogs.inputQuery(LANG("Dnd5e.messages.atrCaptionOpt2"), "", "1",
+								        function (valorPreenchido)
+								            sheet.$(fieldBonus)MinRoll = tonumber(valorPreenchido)
+								        end)
+		                		end
+		                	end
+		               end,1)
+				</event>
 			</layout>
 			<button name="$(flowPartUniqueName)button" align="left" text="$(titulo)" width="122" margins="{left=2}" fontSize="12">
 				<event name="onKeyDown"> common.keyDown(sheet, event, self.$(flowPartUniqueName)str); </event>

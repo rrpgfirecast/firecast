@@ -39,7 +39,6 @@ DnD5e.tab.equipament.lab.PE=PE
 DnD5e.tab.equipament.lab.PO=PO
 DnD5e.tab.equipament.lab.PL=PL
 
-
 DnD5e.features.nameCharacter=NOME DO PERSONAGEM
 DnD5e.features.age=IDADE
 DnD5e.features.height=ALTURA
@@ -62,7 +61,6 @@ DnD5e.features.factionSymbol=SÍMBOLO DA FACÇÃO
 DnD5e.features.alliesOrganizations=ALIADOS E ORGANIZAÇÕES
 DnD5e.features.characterStory=HISTÓRIA DOS PERSONAGENS
 
-
 DnD5e.tabControl.tab.front=Frente
 DnD5e.tabControl.tab.feature=Caracteristicas e Talentos
 DnD5e.tabControl.tab.equipment=Equipamento
@@ -79,7 +77,9 @@ DnD5e.frente.lab.race=RAÇA
 DnD5e.frente.lab.trend=TENDÊNCIA
 DnD5e.frente.lab.xp=PTS. DE EXPERIÊNCIA
 DnD5e.frente.lab.inspiration=INSPIRAÇÃO
-DnD5e.frente.lab.proficiencyBonus=BONUS DE PROFICIÊNCIA
+DnD5e.frente.lab.proficiencyBonus=BÔNUS DE PROFICIÊNCIA
+DnD5e.frente.lab.saveBonus=BÔNUS DE RESISTÊNCIA
+DnD5e.frente.lab.abilityBonus=BÔNUS DE HABILIDADES
 DnD5e.frente.lab.passivawisdom=SABEDORIA PASSIVA (PERCEPÇÃO)
 
 DnD5e.frente.box.strength=FORÇA
@@ -246,6 +246,7 @@ Dnd5e.messages.delete=Deseja realmente apagar este item?
 Dnd5e.messages.of= de 
 Dnd5e.messages.melee=Ataque Corpo-a-Corpo
 Dnd5e.messages.ranged=Ataque a Distância
+DnD5e.message.textPromptDamage=Informe a quantidade de dano
 
 DnD5e.tab.counter.add=Adicionar
 DnD5e.tab.counter.import=Importar de Macro
@@ -262,6 +263,8 @@ DnD5e.tab.counter.changeTo=Muda para
 
 Dnd5e.messages.adv=Vantagem
 Dnd5e.messages.dis=Desvantagem
+Dnd5e.messages.adv2=Vantagem (x2)
+Dnd5e.messages.dis2=Desvantagem (x2)
 Dnd5e.messages.normal=Normal
 Dnd5e.messages.kind=Tipo de Rolagem
 
@@ -275,3 +278,8 @@ DnD5e.equipment.medium=Médio
 DnD5e.equipment.large=Grande
 DnD5e.equipment.huge=Enorme
 DnD5e.equipment.gargantuan=Imenso
+Dnd5e.equipment.backpack=Mochila
+
+Dnd5e.messages.atrCaption=Selecione a Opção
+Dnd5e.messages.atrCaptionOpt1=Atributo Alternativo
+Dnd5e.messages.atrCaptionOpt2=Rolagem Mínima
