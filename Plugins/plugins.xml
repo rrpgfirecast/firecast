@@ -97,6 +97,9 @@
     <element id="Ambesek.OrderMarker" name="Order Marker" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Scene/OrderMarker/output/OrderMarker.rpk?raw=true" fileName="OrderMarker.rpk" repositoryPath="Scene/OrderMarker/" author="Ambesek" description="Allows for the creation of order marks on scene tokens." version="1.0" compilationDate="03032023113330" compilationDigest="281cc290086901efb9801bbaced2ab046be1844b">
         <info lang="pt-BR" name="Order Marker" description="Allows for the creation of order marks on scene tokens." author="Ambesek"/>
     </element>
+    <element id="Ambesek.RoomConfig" name="Room Configuration Manager" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Scene/RoomConfig/output/RoomConfig.rpk?raw=true" fileName="RoomConfig.rpk" repositoryPath="Scene/RoomConfig/" author="Ambesek" description="Allows for the creation of order marks on scene tokens." version="1.0" compilationDate="03032023113330" compilationDigest="281cc290086901efb9801bbaced2ab046be1844b">
+        <info lang="pt-BR" name="Room Configuration Manager" description="Salva e carrega configurações do scene na mesa." author="Ambesek"/>
+    </element>
     <element id="FICHA_ADnD_2e" name="Ficha Advanced Dungeons and Dragons 2th Edition" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/AD%26D%202e/output/AD%26D%202e.rpk?raw=true" fileName="AD&amp;D 2e.rpk" repositoryPath="Sheets/AD&amp;D 2e/" author="Ambesek &amp; Nefertyne" description="Ficha feita para o sistema Advanced Dungeons and Dragons 2th Edition" version="0.2" compilationDate="03032023113330" compilationDigest="0891acb33a5d8a261dad8e0b33f4176b43958836">
         <info lang="pt-BR" name="Ficha Advanced Dungeons and Dragons 2th Edition" description="Ficha feita para o sistema Advanced Dungeons and Dragons 2th Edition" author="Ambesek &amp; Nefertyne" site="http://about:blank"/>
         <dataTypes>

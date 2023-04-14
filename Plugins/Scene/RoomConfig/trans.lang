@@ -1,0 +1,9 @@
+[pt]
+scene.roomconfig.title=Configuração de Sala
+scene.roomconfig.save=Salvar Configuração
+scene.roomconfig.load=Carregar Configuração
+
+[en]
+scene.roomconfig.title=Room Configuration
+scene.roomconfig.save=Save Configuration
+scene.roomconfig.load=Load Configuration
