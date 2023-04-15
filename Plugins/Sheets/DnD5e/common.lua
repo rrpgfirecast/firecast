@@ -68,56 +68,9 @@ common.armas_propriedades = {
 	[Locale.lang("DnD5e.tab.equipment.property.misfire5")] = Locale.lang("DnD5e.tab.equipment.property.misfire5Details")
 };
 common.ficha_propriedades = {
-	checkBonus = {
-		nome = 'Bonus para Testes',
-		descricao = 'Bonus adicionado em todos os testes de habilidade (pode conter dados).',
-		tipo = 'rolagem',
-		default = '0',
-	},
-	saveBonus = {
-		nome = 'Bonus para Saves',
-		descricao = 'Bonus adicionado em todos os testes de resistência (pode conter dados).',
-		tipo = 'rolagem',
-		default = '0',
-	},
-	brutalCritical = {
-		nome = 'Crítico Brutal',
-		descricao = 'Habilidade de Meio-Orcs e Barbaros, adiciona um número adicional de dados quando faz um acerto crítico.',
-		tipo = 'int',
-		min = 1,
-		default = 1,
-	},
-	improvedCritical = {
-		nome = 'Crítico Melhorado',
-		descricao = 'Menor rolagem no d20 para um ataque ser considerado um acerto crítico.',
-		tipo = 'int',
-		min = 1,
-		max = 20,
-		default = 19,
-	},
 	prescience = {
 		nome = 'Previsão',
 		descricao = 'Habilidade de Psion, permite usar seu modificador de inteligência para testes de percepção e iniciativa, e fazer testes de resistência de inteligência ao invés de de destreza.',
-		tipo = 'bool',
-	},
-	magicalLogician = {
-		nome = '\'Magical Logician\'',
-		descricao = 'Habilidade de magos \'Filósofos\', permite usar seu modificador de inteligência para testes de persuasão.',
-		tipo = 'bool',
-	},
-	greatWeaponFighting = {
-		nome = 'Combate com Armas Grandes',
-		descricao = 'Estilo de combate que permite rerolar 1s e 2s em rolagems de dano.',
-		tipo = 'bool',
-	},
-	reliableTalent = {
-		nome = 'Talento Confiável',
-		descricao = 'Habilidade de Ladinos, permite substituir o resultado de qualquer d20 em testes de habilidades que você é proficiênte por um 10.',
-		tipo = 'bool',
-	},
-	imposing = {
-		nome = 'Imponente',
-		descricao = 'Habilidade da arvore de talentos de intimidação, permite usar seu modificador de força para testes de intimidação.',
 		tipo = 'bool',
 	},
 	lucky = {
@@ -125,11 +78,6 @@ common.ficha_propriedades = {
 		descricao = 'Habilidade de Halflings, permite rerolar 1s em d20s para ataques, testes de habilidade e testes de resistência.',
 		tipo = 'bool',
 		implementado = false,
-	},
-	elegance = {
-		nome = 'Elegância',
-		descricao = 'Habilidade de Discípulos, permite adicionar seu modificador de sabedoria para testes de carisma (atuação).',
-		tipo = 'bool',
 	}
 };
 
@@ -770,7 +718,7 @@ function common.rolaAtaque(node, modo, args, chat)
 			if #rolls > 0 then args.rollsDano[tipo] = common.interpreta(node, args.rollsDano[tipo] .. ' + ' .. table.concat(rolls, ' + ')); end;
 		end;
 
-		args.falhaCritica, args.acertoCritico = 1, tonumber(common.fichaGetPropriedadeVal(node, 'improvedCritical') or 20);
+		args.falhaCritica, args.acertoCritico = 1, (tonumber(NDB.getRoot(item).critChance) or 20);
 		for i=1,5 do if common.armaTemPropriedade(node, 'Misfire ' .. i) then args.falhaCritica = i; end; end;
 	end;
 
@@ -793,19 +741,19 @@ function common.rolaAtaque(node, modo, args, chat)
 					roll = roll:gsub('(%d*)d(%d+)', function(c1, c2) return tostring(2*(tonumber(c1) or 1)) .. 'd' .. c2; end);
 				end;
 				-- Critico Brutal
-				local critBrutal = common.fichaGetPropriedadeVal(item, 'brutalCritical');
-				if critBrutal and (tipo == args.tipoDanoPadrao) then
+				local critBrutal = NDB.getRoot(item).critDamage;
+				if critBrutal then
 					roll = roll:gsub('(%d+)d(%d+)', function(c1, c2) return math.floor(c1+critBrutal) .. 'd' .. c2; end, 1);
 				end;
 			end;
 			if not Firecast.interpretarRolagem(roll).possuiAlgumDado then roll = '1d1-1 + ' .. roll; end;
 			chat:rolarDados(roll, text, function(_roll)
 				--- Combate com Armas Grandes
+				local minRoll = (tonumber(NDB.getRoot(item).damageReroll) or 0)
 				if	common.armaTemPropriedade(item, 'Duas Mãos') and
 					not common.armaTemPropriedade(item, 'Distância') and
-					common.fichaTemPropriedade(item, 'greatWeaponFighting') and
-					dano_rolls[tipo]['Padrão'] and
-					true then
+					minRoll > 0 and
+					dano_rolls[tipo]['Padrão'] then
 						local rolls = dano_rolls[tipo]['Padrão'];
 						rolls = common.interpreta(node, rolls);
 						rolls = Firecast.interpretarRolagem(rolls); -- Só rerola os dados da arma
@@ -817,7 +765,7 @@ function common.rolaAtaque(node, modo, args, chat)
 							local op = _roll.ops[i];
 							if op.tipo == 'dado' then
 								for j=1,#op.resultados do
-									if op.resultados[j] == 1 or op.resultados[j] == 2 then
+									if op.resultados[j] <= minRoll then
 										soma = soma - op.resultados[j];
 										dadosPraRerolar[op.face] = (dadosPraRerolar[op.face] or 0) + 1;
 									end;
@@ -831,7 +779,7 @@ function common.rolaAtaque(node, modo, args, chat)
 						end;
 						if novaRolagem then
 							if soma ~= 0 then novaRolagem = novaRolagem:concatenar(Firecast.interpretarRolagem(soma)); end;
-							chat:rolarDados(novaRolagem, text .. Locale.lang("Dnd5e.messages.bigWeapons"), function() rolaDano(next(args.rollsDano), d20); end);
+							chat:rolarDados(novaRolagem, text .. Locale.lang("Dnd5e.messages.bigWeapons") .. minRoll, function() rolaDano(next(args.rollsDano), d20); end);
 						else
 							rolaDano(next(args.rollsDano), d20);
 						end;

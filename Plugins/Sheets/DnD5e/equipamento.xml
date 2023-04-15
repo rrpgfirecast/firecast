@@ -14,6 +14,30 @@
 				]]>
 			</script>
 
+			<flowLayout class="oneLineTile" horzAlign="justify" autoHeight="true" avoidScale="true">
+				<!-- MARGEM CRITICO -->
+				<flowPart minWidth="280" maxWidth="800" height="64" frameStyle="frames/posCaptionEdit2/frame.xml">
+					<edit align="left" class="pericia" field="critChance" width="70"/>
+					<label align="client" text="@@Dnd5e.equipment.criticalChance" margins="{left=10}" class="tituloCampo" horzTextAlign="center"/>
+				</flowPart>
+				<dataLink field="critChance" defaultValue="20"/>
+				<!-- DANO ADICIONAL CRITICO -->
+				<flowPart minWidth="280" maxWidth="800" height="64" frameStyle="frames/posCaptionEdit2/frame.xml">
+					<edit align="left" class="pericia" field="critDamage" width="70"/>
+					<label align="client" text="@@Dnd5e.equipment.criticalDamage" margins="{left=10}" class="tituloCampo" horzTextAlign="center"/>
+				</flowPart>
+				<!-- REROLAGEM DE DANO -->
+				<flowPart minWidth="280" maxWidth="800" height="64" frameStyle="frames/posCaptionEdit2/frame.xml">
+					<edit align="left" class="pericia" field="damageReroll" width="70"/>
+					<label align="client" text="@@Dnd5e.equipment.reroll" margins="{left=10}" class="tituloCampo" horzTextAlign="center"/>
+				</flowPart>
+				<dataLink field="damageReroll" defaultValue="0"/>
+
+
+			</flowLayout>
+
+			<flowLineBreak/>
+
 			<!-- Equipamentos e Ataques -->
 			<flowPart name="flwPartEquipAttack" class="tile" height="250" frameStyle="frames/panel5/frame.xml" minScaledWidth="290">
 				<layout align="client" margins="{top=10, bottom=10}">

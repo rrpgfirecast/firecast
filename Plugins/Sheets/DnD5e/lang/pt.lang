@@ -232,7 +232,7 @@ Dnd5e.messages.noCharges=Você não tem cargas suficientes de '
 Dnd5e.messages.toUse=' para usar '
 Dnd5e.messages.autoHit= - Acerto automático
 Dnd5e.messages.elvenPrecision= - Precisão Élfica
-Dnd5e.messages.bigWeapons= - Rerolando 1s e 2s, devido a Combate com Armas Grandes
+Dnd5e.messages.bigWeapons= - Rerolando dados de dano abaixo de 
 Dnd5e.messages.fail=rolou uma falha crítica.
 Dnd5e.messages.init=Iniciativa
 Dnd5e.messages.attacked=atacou
@@ -283,3 +283,7 @@ Dnd5e.equipment.backpack=Mochila
 Dnd5e.messages.atrCaption=Selecione a Opção
 Dnd5e.messages.atrCaptionOpt1=Atributo Alternativo
 Dnd5e.messages.atrCaptionOpt2=Rolagem Mínima
+
+Dnd5e.equipment.reroll=Rerolagem de Dano
+Dnd5e.equipment.criticalChance=Margem de Crítico
+Dnd5e.equipment.criticalDamage=Dado Adicional de Crítico

@@ -232,7 +232,7 @@ Dnd5e.messages.noCharges=You don't have enough charges of '
 Dnd5e.messages.toUse=' to use '
 Dnd5e.messages.autoHit= - Automatic hit
 Dnd5e.messages.elvenPrecision= - Elven precision
-Dnd5e.messages.bigWeapons= - Reroll 1s e 2s, because of Combat with Big Weapons
+Dnd5e.messages.bigWeapons= - Reroll damage dice under 
 Dnd5e.messages.fail=rolled a critical failure.
 Dnd5e.messages.init=Initiative
 Dnd5e.messages.attacked=attacked
@@ -283,3 +283,7 @@ Dnd5e.equipment.backpack=Backpack
 Dnd5e.messages.atrCaption=Select an Option
 Dnd5e.messages.atrCaptionOpt1=Alternative Stat
 Dnd5e.messages.atrCaptionOpt2=Minimum Roll
+
+Dnd5e.equipment.reroll=Damage Reroll
+Dnd5e.equipment.criticalChance=Critical Hit Margin
+Dnd5e.equipment.criticalDamage=Aditional Critical Damage Dice
