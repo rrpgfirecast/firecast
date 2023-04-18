@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmGrammarMistake" height="25" theme="dark">
+    <rectangle align="client" color="black" strokeColor="white" strokeSize="1" hitTest="false">
+        <label align="client" field="info.message" margins="{left=4}"/>
+    </rectangle>
+</form>

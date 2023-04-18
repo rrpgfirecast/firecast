@@ -1,0 +1,582 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmGramarCheckMain" formType="tablesDock" dataType="Ambesek.Language.Tool" title="Grammar Checker" align="client" theme="dark">
+	<script>
+        <![CDATA[
+		-- JSON DECODE FUNCTIONS
+
+		local escape_char_map = {
+			[ "\\" ] = "\\\\",
+			[ "\"" ] = "\\\"",
+			[ "\b" ] = "\\b",
+			[ "\f" ] = "\\f",
+			[ "\n" ] = "\\n",
+			[ "\r" ] = "\\r",
+			[ "\t" ] = "\\t",
+		}
+
+		local escape_char_map_inv = { [ "\\/" ] = "/" }
+		for k, v in pairs(escape_char_map) do
+			escape_char_map_inv[v] = k
+		end
+
+		local parse
+
+		local function create_set(...)
+			local res = {}
+			for i = 1, select("#", ...) do
+			res[ select(i, ...) ] = true
+			end
+			return res
+		end
+
+		local space_chars	= create_set(" ", "\t", "\r", "\n")
+		local delim_chars	= create_set(" ", "\t", "\r", "\n", "]", "}", ",")
+		local escape_chars  = create_set("\\", "/", '"', "b", "f", "n", "r", "t", "u")
+		local literals	= create_set("true", "false", "null")
+
+		local literal_map = {
+		  [ "true"  ] = true,
+		  [ "false" ] = false,
+		  [ "null"  ] = nil,
+		}
+
+		local function next_char(str, idx, set, negate)
+		  for i = idx, #str do
+			if set[str:sub(i, i)] ~= negate then
+			  return i
+			end
+		  end
+		  return #str + 1
+		end
+
+		local function decode_error(str, idx, msg)
+		  local line_count = 1
+		  local col_count = 1
+		  for i = 1, idx - 1 do
+			col_count = col_count + 1
+			if str:sub(i, i) == "\n" then
+			  line_count = line_count + 1
+			  col_count = 1
+			end
+		  end
+		  error( string.format("%s at line %d col %d", msg, line_count, col_count) )
+		end
+
+		local function codepoint_to_utf8(n)
+		  -- http://scripts.sil.org/cms/scripts/page.php?site_id=nrsi&id=iws-appendixa
+		  local f = math.floor
+		  if n <= 0x7f then
+			return string.char(n)
+		  elseif n <= 0x7ff then
+			return string.char(f(n / 64) + 192, n % 64 + 128)
+		  elseif n <= 0xffff then
+			return string.char(f(n / 4096) + 224, f(n % 4096 / 64) + 128, n % 64 + 128)
+		  elseif n <= 0x10ffff then
+			return string.char(f(n / 262144) + 240, f(n % 262144 / 4096) + 128,
+							   f(n % 4096 / 64) + 128, n % 64 + 128)
+		  end
+		  error( string.format("invalid unicode codepoint '%x'", n) )
+		end
+
+		local function parse_unicode_escape(s)
+		  local n1 = tonumber( s:sub(3, 6),  16 )
+		  local n2 = tonumber( s:sub(9, 12), 16 )
+		  -- Surrogate pair?
+		  if n2 then
+			return codepoint_to_utf8((n1 - 0xd800) * 0x400 + (n2 - 0xdc00) + 0x10000)
+		  else
+			return codepoint_to_utf8(n1)
+		  end
+		end
+
+		local function parse_string(str, i)
+		  local has_unicode_escape = false
+		  local has_surrogate_escape = false
+		  local has_escape = false
+		  local last
+		  for j = i + 1, #str do
+			local x = str:byte(j)
+
+			if x < 32 then
+			  decode_error(str, j, "control character in string")
+			end
+
+			if last == 92 then -- "\\" (escape char)
+			  if x == 117 then -- "u" (unicode escape sequence)
+				local hex = str:sub(j + 1, j + 5)
+				if not hex:find("%x%x%x%x") then
+				  decode_error(str, j, "invalid unicode escape in string")
+				end
+				if hex:find("^[dD][89aAbB]") then
+				  has_surrogate_escape = true
+				else
+				  has_unicode_escape = true
+				end
+			  else
+				local c = string.char(x)
+				if not escape_chars[c] then
+				  decode_error(str, j, "invalid escape char '" .. c .. "' in string")
+				end
+				has_escape = true
+			  end
+			  last = nil
+
+			elseif x == 34 then -- '"' (end of string)
+			  local s = str:sub(i + 1, j - 1)
+			  if has_surrogate_escape then
+				s = s:gsub("\\u[dD][89aAbB]..\\u....", parse_unicode_escape)
+			  end
+			  if has_unicode_escape then
+				s = s:gsub("\\u....", parse_unicode_escape)
+			  end
+			  if has_escape then
+				s = s:gsub("\\.", escape_char_map_inv)
+			  end
+			  return s, j + 1
+
+			else
+			  last = x
+			end
+		  end
+		  decode_error(str, i, "expected closing quote for string")
+		end
+
+		local function parse_number(str, i)
+		  local x = next_char(str, i, delim_chars)
+		  local s = str:sub(i, x - 1)
+		  local n = tonumber(s)
+		  if not n then
+			decode_error(str, i, "invalid number '" .. s .. "'")
+		  end
+		  return n, x
+		end
+
+		local function parse_literal(str, i)
+		  local x = next_char(str, i, delim_chars)
+		  local word = str:sub(i, x - 1)
+		  if not literals[word] then
+			decode_error(str, i, "invalid literal '" .. word .. "'")
+		  end
+		  return literal_map[word], x
+		end
+
+		local function parse_array(str, i)
+		  local res = {}
+		  local n = 1
+		  i = i + 1
+		  while 1 do
+			local x
+			i = next_char(str, i, space_chars, true)
+			-- Empty / end of array?
+			if str:sub(i, i) == "]" then
+			  i = i + 1
+			  break
+			end
+			-- Read token
+			x, i = parse(str, i)
+			res[n] = x
+			n = n + 1
+			-- Next token
+			i = next_char(str, i, space_chars, true)
+			local chr = str:sub(i, i)
+			i = i + 1
+			if chr == "]" then break end
+			if chr ~= "," then decode_error(str, i, "expected ']' or ','") end
+		  end
+		  return res, i
+		end
+
+		local function parse_object(str, i)
+		  local res = {}
+		  i = i + 1
+		  while 1 do
+			local key, val
+			i = next_char(str, i, space_chars, true)
+			-- Empty / end of object?
+			if str:sub(i, i) == "}" then
+			  i = i + 1
+			  break
+			end
+			-- Read key
+			if str:sub(i, i) ~= '"' then
+			  decode_error(str, i, "expected string for key")
+			end
+			key, i = parse(str, i)
+			-- Read ':' delimiter
+			i = next_char(str, i, space_chars, true)
+			if str:sub(i, i) ~= ":" then
+			  decode_error(str, i, "expected ':' after key")
+			end
+			i = next_char(str, i + 1, space_chars, true)
+			-- Read value
+			val, i = parse(str, i)
+			-- Set
+			res[key] = val
+			-- Next token
+			i = next_char(str, i, space_chars, true)
+			local chr = str:sub(i, i)
+			i = i + 1
+			if chr == "}" then break end
+			if chr ~= "," then decode_error(str, i, "expected '}' or ','") end
+		  end
+		  return res, i
+		end
+
+		local char_func_map = {
+		  [ '"' ] = parse_string,
+		  [ "0" ] = parse_number,
+		  [ "1" ] = parse_number,
+		  [ "2" ] = parse_number,
+		  [ "3" ] = parse_number,
+		  [ "4" ] = parse_number,
+		  [ "5" ] = parse_number,
+		  [ "6" ] = parse_number,
+		  [ "7" ] = parse_number,
+		  [ "8" ] = parse_number,
+		  [ "9" ] = parse_number,
+		  [ "-" ] = parse_number,
+		  [ "t" ] = parse_literal,
+		  [ "f" ] = parse_literal,
+		  [ "n" ] = parse_literal,
+		  [ "[" ] = parse_array,
+		  [ "{" ] = parse_object,
+		}
+
+		parse = function(str, idx)
+		  local chr = str:sub(idx, idx)
+		  local f = char_func_map[chr]
+		  if f then
+			return f(str, idx)
+		  end
+		  decode_error(str, idx, "unexpected character '" .. chr .. "'")
+		end
+
+		function decode(str)
+		  if type(str) ~= "string" then
+			error("expected argument of type string, got " .. type(str))
+		  end
+		  local res, idx = parse(str, next_char(str, 1, space_chars, true))
+		  idx = next_char(str, idx, space_chars, true)
+		  if idx <= #str then
+			decode_error(str, idx, "trailing garbage")
+		  end
+		  return res
+		end
+        ]]> 
+	</script>
+    <script>
+    	local httpRequest = Internet.newHTTPRequest("POST", "https://api.languagetoolplus.com/v2/check")
+    	httpRequest:setRequestHeader("accept", "application/json")
+    	httpRequest:setRequestHeader("Content-Type", "application/x-www-form-urlencoded")
+
+    	httpRequest.onResponse = function()
+    			if self.dsb.node.msg==nil or self.dsb.node.msg=="" then return end
+    			local utf = httpRequest.responseStream:readBinary("utf8")
+    			self.dsb.node.response = utf
+    			local resObj = decode(utf)
+
+    			self.dsb.node.mistakes = {}
+    			local matches = resObj.matches
+    			local firstElement
+    			for i=1, #matches do
+    				local node = self.mistakes:append()
+    				if node then
+    					if i==1 then
+    						firstElement = node
+    					end
+    					node.info = matches[i]
+    					node.order = i
+
+                    	self.mistakeDetails.node = node;
+						self.mistakeDetails.visible = (node ~= nil);
+
+    					local replacements = matches[i].replacements
+    					for j=1, #replacements do
+    						local rep = self.replacements:append()
+    						if rep then
+    							rep.replacement = replacements[j].value
+    						end
+    					end
+    				end
+
+    				if firstElement then
+                    	self.mistakeDetails.node = firstElement;
+						self.mistakeDetails.visible = (firstElement ~= nil);
+    				end
+    			end
+    		end
+        <![CDATA[
+        local function dump(o)
+           if type(o) == 'table' then
+              local s = '{ '
+              for k,v in pairs(o) do
+                 if type(k) ~= 'number' then k = '"'..k..'"' end
+                 s = s .. '['..k..'] = ' .. dump(v) .. ','
+              end
+              return s .. '} '
+           else
+              return tostring(o)
+           end
+        end
+        
+        local function write(str)
+            local mesa = Firecast.getMesaDe(self);
+            if str then
+                mesa.activeChat:escrever(str);
+            else
+                mesa.activeChat:escrever("String nula");
+            end;
+        end;
+
+        local function tryTranslate(text)
+            local trans = Locale.tryLang(text);
+            if trans == nil then trans = text end;
+            return trans;
+        end
+
+        local function isNewVersion(installed, downloaded)
+            local installedVersion = {};
+            local installedIndex = 0;
+            for i in string.gmatch(installed, "[^%.]+") do
+                installedIndex = installedIndex +1;
+                installedVersion[installedIndex] = i;
+            end
+
+            local downloadedVersion = {};
+            local downloadedIndex = 0;
+            for i in string.gmatch(downloaded, "[^%.]+") do
+                downloadedIndex = downloadedIndex +1;
+                downloadedVersion[downloadedIndex] = i;
+            end
+
+            for i=1, math.min(installedIndex, downloadedIndex), 1 do 
+                if (tonumber(installedVersion[i]) or 0) > (tonumber(downloadedVersion[i]) or 0) then
+                    return false;
+                elseif (tonumber(installedVersion[i]) or 0) < (tonumber(downloadedVersion[i]) or 0) then
+                    return true;
+                end;
+            end;
+
+            if downloadedIndex > installedIndex then
+                return true;
+            else
+                return false;
+            end;
+        end;
+
+        local function init()
+        	if sheet==nil then return end
+
+            grammar = NDB.load("grammar.xml")
+            
+            local mesa = Firecast.getMesaDe(sheet)
+            if mesa==nil then return end
+
+            if grammar.rooms == nil then
+            	grammar.rooms = {}
+            end
+            if grammar.rooms[mesa.codigoInterno] == nil then
+            	grammar.rooms[mesa.codigoInterno] = {}
+            end
+            grammar.rooms[mesa.codigoInterno].check = true
+
+            self.dsb:setNodeObject(grammar.rooms[mesa.codigoInterno])
+        end;
+
+        function utf8.sub(s,i,j)
+		    i=utf8.offset(s,i)
+		    j=utf8.offset(s,j+1)-1
+		    return string.sub(s,i,j)
+		end
+		
+		local function CheckGrammar()
+        	local data = "text="..Internet.httpEncode(self.dsb.node.msg).."&amp;language=pt-BR&amp;enabledOnly=false"
+
+        	if grammar.username and grammar.username~="" then
+        		data = data .. "&amp;username=".. grammar.username
+        	end
+        	if grammar.apikey and grammar.apikey~="" then
+        		data = data .. "&amp;apiKey=".. grammar.apikey
+        	end
+
+        	httpRequest:send(data)
+		end
+
+		local function SendMessage()
+			if self.dsb.node.msg==nil then return end 
+        	
+        	self.enviar:setFocus()
+
+        	local mesa = Firecast.getMesaDe(sheet)
+        	if mesa then
+        		if self.dsb.node.msgModeType == "gm" then
+        			mesa.activeChat:enviarNarracao(self.dsb.node.msg)
+		    		self.dsb.node.msg = ""
+		    		self.dsb.node.mistakes = {}
+        		elseif self.dsb.node.msgModeType == "npc" then
+        			if self.dsb.node.npc ~= nil and self.dsb.node.npc ~= "" then
+        				mesa.activeChat:enviarMensagemNPC(self.dsb.node.npc,self.dsb.node.msg)
+						self.dsb.node.msg = ""
+						self.dsb.node.mistakes = {}
+        			else
+        				self.npc:setFocus()
+        			end
+        		else
+        			mesa.activeChat:enviarMensagem(self.dsb.node.msg)
+		    		self.dsb.node.msg = ""
+		    		self.dsb.node.mistakes = {}
+        		end
+        	end
+		end
+        ]]> 
+    </script>
+    <dataScopeBox name="dsb" align="client">
+        <textEditor align="client" field="msg">
+        	<event name="onKeyDown">
+        		if (not event.shiftKey) and (event.keyCode == 13 or event.key == "\13") then
+        			local mesa = Firecast.getMesaDe(sheet)
+        			if mesa then
+        				SendMessage()
+		        		event.key = ""
+		        		event.keyCode = 0
+        			end
+        		elseif event.ctrlKey and (event.keyCode==84 or event.key == "t") then
+        			CheckGrammar()
+        		elseif event.ctrlKey and event.keyCode==116 then
+        			self.dsb.node.msgModeType = "none"
+        		elseif event.ctrlKey and event.keyCode==117 then
+        			self.dsb.node.msgModeType = "gm"
+        		elseif event.ctrlKey and event.keyCode==118 then
+        			self.dsb.node.msgModeType = "npc"
+        			self.npc:setFocus()
+        		end
+        	</event>
+        </textEditor>
+        <dataLink field="msg">
+        	<event name="onChange">
+        		if sheet==nil then return end
+        		if self.dsb.node.check then
+        			self.dsb.node.mistakes = {}
+        			local data = "text="..Internet.httpEncode(self.dsb.node.msg).."&amp;language=pt-BR&amp;enabledOnly=false"
+	    			httpRequest:send(data)
+	    		else
+	    			self.dsb.node.check = true
+        		end
+        	</event>
+        </dataLink>
+        <layout align="right" width="450">
+        	<recordList name="mistakes" field="mistakes" templateForm="frmGrammarMistake" align="left" width="100" selectable="true">
+                <event name="onSelect">
+                  	local node = self.mistakes.selectedNode; 
+                    self.mistakeDetails.node = node;
+					self.mistakeDetails.visible = (node ~= nil);
+                </event>
+        	</recordList>
+        	<dataScopeBox name="mistakeDetails" visible="false" align="client" margins="{left=4, right=4}">
+                <rectangle align="top" color="black" xradius="10" yradius="10" height="180" padding="{top=3, left=3, right=3, bottom=3}">
+                    <label name="message" align="top" height="25" field="info.message" hitTest="true"/>
+                    <dataLink field="info.message">
+                    	<event name="onChange">
+                    		if sheet==nil then return end
+
+                    		self.message.hint = self.mistakeDetails.node.info.message
+                    	</event>
+                    </dataLink>
+                    <label name="sentence" align="top" height="25" field="info.sentence" hitTest="true"/>
+                    <dataLink field="info.sentence">
+                    	<event name="onChange">
+                    		if sheet==nil then return end
+
+                    		self.sentence.hint = self.mistakeDetails.node.info.sentence
+                    	</event>
+                    </dataLink>
+
+		        	<recordList name="replacements" field="replacements" templateForm="frmGrammarReplacement" layout="horizontalTiles" align="client" selectable="true"/>
+                </rectangle>
+        	</dataScopeBox>
+        </layout>
+        <layout align="bottom" height="25">
+        	<button align="left" width="100" text="Checar">
+        		<event name="onClick">
+        			CheckGrammar()
+        		</event>
+        	</button>
+        	<button name="enviar" align="left" width="100" text="Enviar">
+        		<event name="onClick">
+        			SendMessage()
+        		</event>
+        	</button>
+
+        	<radioButton align="right" width="100" groupName="msgMode" field="msgModeType" text="Ninguém (ctrl+F5)" fieldValue="none" fontSize="10"/>
+        	<radioButton align="right" width="100" groupName="msgMode" field="msgModeType" text="Narrador (ctrl+F6)" fieldValue="gm" fontSize="10"/>
+        	<radioButton align="right" width="100" groupName="msgMode" field="msgModeType" text="NPC (ctrl+F7)" fieldValue="npc"/>
+        	<edit align="right" width="100" name="npc" field="npc" margins="{right=10}"/>
+
+        	<button align="right" width="100" text="Username" hint="Language Tool Username">
+        		<event name="onClick">
+        			Dialogs.inputQuery("Language Tool", "Username", "",
+				        function (valorPreenchido)
+				            grammar.username = valorPreenchido
+				        end)
+        		</event>
+        	</button>
+        	<button align="right" width="100" text="ApiKey" hint="Language Tool Api Key">
+        		<event name="onClick">
+        			Dialogs.inputQuery("Language Tool", "Api Key", "",
+				        function (valorPreenchido)
+				            grammar.apikey = valorPreenchido
+				        end)
+        		</event>
+        	</button>
+        	<button align="right" width="100" text="LanguageTool">
+        		<event name="onClick">
+        			GUI.openInBrowser("https://languagetool.org/")
+        		</event>
+        	</button>
+        </layout>
+    </dataScopeBox>
+    <event name="onNodeChanged">
+        init();
+    </event>
+    <event name="onNodeReady">
+        Internet.download("raw_download_link",
+            function(stream, contentType)
+                local info = Firecast.Plugins.getRPKDetails(stream);
+                updaterSheet.versionDownloaded = tryTranslate("available")..": " .. info.version;
+
+                local installed = Firecast.Plugins.getInstalledPlugins();
+                local myself;
+                for i=1, #installed, 1 do
+                    if installed[i].moduleId == info.moduleId then
+                        myself = installed[i];
+                        updaterSheet.versionInstalled = tryTranslate("installed")..": " .. installed[i].version;
+                    end;
+                end;
+
+                rawset(updaterSheet, "stream", stream);
+
+                if updaterSheet.noUpdate==true then return end;
+                if myself~= nil and isNewVersion(myself.version, info.version) then
+                    Dialogs.choose(tryTranslate("newVersion"),{tryTranslate("yes"), tryTranslate("no"), tryTranslate("dontAsk")},
+                        function(selected, selectedIndex, selectedText)
+                            if selected and selectedIndex == 1 then
+                                local install = Firecast.Plugins.installPlugin(rawget(updaterSheet,"stream"), true);
+                                if install==false then
+                                    GUI.openInBrowser('raw_download_link');
+                                end;
+                            elseif selected and selectedIndex == 3 then
+                                updaterSheet.noUpdate = true;
+                            end;
+                        end);
+                end;
+            end,       
+            function (errorMsg)
+                --showMessage(errorMsg);
+            end,       
+            function (downloaded, total)
+                -- esta função será chamada constantemente.
+                -- dividir "downloaded" por "total" lhe dará uma porcentagem do download.
+            end,
+            "checkForModification");
+    </event>
+</form>

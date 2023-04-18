@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmGrammarReplacement" height="25" width="100" theme="dark">
+    <button name="repButton" align="client" text="" margins="{left=4}">
+        <event name="onClick">
+            local error = NDB.getParent(NDB.getParent(sheet))
+            local node = NDB.getParent(NDB.getParent(error))
+
+            local left = utf8.sub(node.msg, 1, error.info.offset)
+            local right = utf8.sub(node.msg, error.info.offset+error.info.length+1, utf8.len(node.msg))
+
+            --showMessage("|"..left.."|")
+            --showMessage(error.info.offset+error.info.length+1)
+            --showMessage("|"..right.."|")
+            --showMessage(utf8.len(sheet.replacement))
+            --showMessage("|"..sheet.replacement.."|")
+
+            node.check = false
+            node.msg = left .. sheet.replacement .. right
+
+            local adjust = utf8.len(sheet.replacement) - error.info.length
+            local pos = error.order
+
+            local errors = NDB.getChildNodes(node.mistakes)
+            for i=1, #errors do
+                local err = errors[i]
+                if err.order > pos then
+                    err.info.offset = err.info.offset + adjust
+                end
+            end
+
+            NDB.deleteNode(error)
+        </event>
+    </button>
+    <dataLink  field="replacement">
+        <event name="onChange">
+            if sheet==nil then return end
+
+            self.repButton.text = sheet.replacement
+            self.repButton.hint = sheet.replacement
+        </event>
+    </dataLink>
+</form>
