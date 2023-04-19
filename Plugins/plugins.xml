@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <root>
-    <element id="Ambesek.Language.Tool" name="Grammar Checker" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/TablesDock/GrammarChecker/output/GrammarChecker.rpk?raw=true" fileName="GrammarChecker.rpk" repositoryPath="TablesDock/GrammarChecker/" author="Ambesek" description="Verificador de gramatica usando o language tool." version="1.0" compilationDate="18042023230153" compilationDigest="c60ba15287314beed067e6e094aef26d72764292">
+    <element id="Ambesek.Language.Tool" name="Grammar Checker" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/TablesDock/GrammarChecker/output/GrammarChecker.rpk?raw=true" fileName="GrammarChecker.rpk" repositoryPath="TablesDock/GrammarChecker/" author="Ambesek" description="Verificador de gramatica usando o language tool." version="1.0.1" compilationDate="18042023230153" compilationDigest="c60ba15287314beed067e6e094aef26d72764292">
         <info lang="pt-BR" name="Grammar Checker" description="Verificador de gramatica usando o language tool." author="Ambesek"/>
         <dataTypes>
             <dataType id="Ambesek.Language.Tool" title="Grammar Checker" formType="tablesDock">

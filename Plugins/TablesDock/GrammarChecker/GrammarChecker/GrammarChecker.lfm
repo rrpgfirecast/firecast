@@ -403,9 +403,8 @@
 		end
 
 		local function SendMessage()
-			if self.dsb.node.msg==nil then return end 
-        	
         	self.enviar:setFocus()
+			if self.dsb.node.msg==nil then return end 
 
         	local mesa = Firecast.getMesaDe(sheet)
         	if mesa then
@@ -427,11 +426,13 @@
 		    		self.dsb.node.mistakes = {}
         		end
         	end
+
+        	self.msg:setFocus()
 		end
         ]]> 
     </script>
     <dataScopeBox name="dsb" align="client">
-        <textEditor align="client" field="msg">
+        <textEditor name="msg" align="client" field="msg">
         	<event name="onKeyDown">
         		if (not event.shiftKey) and (event.keyCode == 13 or event.key == "\13") then
         			local mesa = Firecast.getMesaDe(sheet)
