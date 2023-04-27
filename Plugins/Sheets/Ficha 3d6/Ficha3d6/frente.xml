@@ -30,7 +30,7 @@
 	<template name="Atributo">
 		<button text="$(text)" align="left" width="90">
 			<event name="onClick">
-				local roll = "3d6+" .. (tonumber(sheet.$(field)Total) or 0)
+				local roll = "3d6+" .. (tonumber(sheet.$(field)Mod) or 0)
 
 				local rolagem = Firecast.interpretarRolagem(roll)
 
@@ -38,11 +38,14 @@
 				mesa.activeChat:rolarDados(rolagem, "$(text)");
 			</event>
 		</button>
-		<edit field="$(field)Ini" align="left" width="50"/>
-		<edit field="$(field)Up" align="left" width="50"/>
-		<edit field="$(field)Ext" align="left" width="50"/>
-		<rectangle align="left" width="50" color="black" strokeColor="white" strokeSize="1">
+		<edit field="$(field)Ini" align="left" width="40"/>
+		<edit field="$(field)Up" align="left" width="40"/>
+		<edit field="$(field)Ext" align="left" width="40"/>
+		<rectangle align="left" width="40" color="black" strokeColor="white" strokeSize="1">
 			<label field="$(field)Total" align="client" horzTextAlign="center"/>
+		</rectangle>
+		<rectangle align="left" width="40" color="black" strokeColor="white" strokeSize="1">
+			<label field="$(field)Mod" align="client" horzTextAlign="center"/>
 		</rectangle>
 
 		<dataLink fields="{'$(field)Ini','$(field)Up','$(field)Ext'}">
@@ -50,12 +53,14 @@
 				local total = 	(tonumber(sheet.$(field)Ini) or 0) +
 								(tonumber(sheet.$(field)Up) or 0) +
 								(tonumber(sheet.$(field)Ext) or 0)
-				total = math.floor(total / 10)
 				sheet.$(field)Total = total
+
+				local mod = math.floor(total / 10)
+				sheet.$(field)Mod = mod
 
 				local nodes = NDB.getChildNodes(sheet.pericias)
 				for i=1, #nodes do
-					nodes[i].$(field) = total
+					nodes[i].$(field) = mod
 				end
 			</event>
 		</dataLink>
@@ -204,10 +209,11 @@
 			<rectangle align="left" width="300" color="black" strokeColor="white" strokeSize="1" margins="{right=5}">
 				<layout align="top" height="25" margins="{top=5,left=5,right=5}">
 					<label text="" align="left" width="90" horzTextAlign="center"/>
-					<label text="Ini" align="left" width="50" horzTextAlign="center"/>
-					<label text="Up" align="left" width="50" horzTextAlign="center"/>
-					<label text="Ext" align="left" width="50" horzTextAlign="center"/>
-					<label text="Total" align="left" width="50" horzTextAlign="center"/>
+					<label text="Ini" align="left" width="40" horzTextAlign="center"/>
+					<label text="Up" align="left" width="40" horzTextAlign="center"/>
+					<label text="Ext" align="left" width="40" horzTextAlign="center"/>
+					<label text="Total" align="left" width="40" horzTextAlign="center"/>
+					<label text="Mod" align="left" width="40" horzTextAlign="center"/>
 				</layout>
 				<layout align="top" height="25" margins="{top=5,left=5,right=5}">
 					<Atributo field="str" text="STR"/>
@@ -258,7 +264,7 @@
 							if node then
 								local atrs = {"str","con","int","spr","dex"}
 								for i,v in ipairs(atrs) do
-									node[v] = (tonumber(sheet[v.."Total"]) or 0)
+									node[v] = (tonumber(sheet[v.."Mod"]) or 0)
 								end
 							end
 						</event>
@@ -267,7 +273,7 @@
 				</layout>
 				<recordList name="pericias" field="pericias" templateForm="frmPericiaItem" align="client" layout="vertical" minQt="1" margins="{top=5,left=5,right=5,bottom=5}">
 					<event name="onCompare">
-				        return utils.compareStringPtBr(nodeA.nome, nodeB.nome)
+				        return Utils.compareStringPtBr(nodeA.nome, nodeB.nome)
 				    </event>
 				</recordList>
 			</rectangle>
@@ -292,7 +298,7 @@
 		</event>
 	</dataLink>
 
-	<dataLink fields="{'nivel','arvore','avanco1','avanco2','strTotal','conTotal','intTotal','sprTotal','dexTotal'}">
+	<dataLink fields="{'nivel','arvore','avanco1','avanco2','strTotal','conTotal','intTotal','sprTotal','dexTotal','strIni','conIni','intIni','sprIni','dexIni'}">
 		<event name="onChange">
 			if sheet==nil then return end
 
@@ -305,308 +311,671 @@
 				classe = sheet.arvore
 			end
 			if classe==nil or classe=="-" then
+				showMessage(classe or "nil")
 				return
 			end
 
-			-- rokmas
 			local nivel = tonumber(sheet.nivel) or 1
 
 			-- Calculos de sub atributos
-			nivel = nivel - 1
 			local str = tonumber(sheet.strTotal) or 0
 			local con = tonumber(sheet.conTotal) or 0
 			local int = tonumber(sheet.intTotal) or 0
 			local spr = tonumber(sheet.sprTotal) or 0
 			local dex = tonumber(sheet.dexTotal) or 0
+			local strIni = tonumber(sheet.strIni) or 0
+			local conIni = tonumber(sheet.conIni) or 0
+			local intIni = tonumber(sheet.intIni) or 0
+			local sprIni = tonumber(sheet.sprIni) or 0
+			local dexIni = tonumber(sheet.dexIni) or 0
 
-			if classe == "Paladino" then
-				sheet.hpMax = math.floor( ((con * 2) + 7) + (1.5 * nivel + con) + 0.4 )
-				sheet.spMax = math.floor( ((con * 2) + 7) + (0.5 * nivel + con) + 0.4 )
-				sheet.mpMax = math.floor( ((spr * 2) + 7) + (0.5 * nivel + spr) + 0.4 )
-				sheet.atkF = math.floor( ((str / 2) + 6) + (0.3 * nivel + str) + 0.4 )
-				sheet.atkM = math.floor( ((int / 3) + 8) + (0.3 * nivel + int) + 0.4 )
-				sheet.defF = math.floor( ((con * 2) + 1) + (0.3 * nivel + con) + 0.4 )
-				sheet.defM = math.floor( ((con * 1) + 2) + (0.4 * nivel + con) + 0.4 )
+			
+			if classe == "Escudeiro" then
+				sheet.hpMax = math.floor((conIni * 2) + 7)
+				sheet.spMax = math.floor((conIni * 1) + 5)
+				sheet.mpMax = math.floor((sprIni * 1) + 5)
+				sheet.atkF = math.floor((strIni / 3) + 8)
+				sheet.atkM = math.floor((intIni / 1) + 4)
+				sheet.defF = math.floor((conIni * 0) + 5)
+				sheet.defM = math.floor((conIni * 0) + 5)
+				if nivel>1 then
+					sheet.hpMax = sheet.hpMax + math.floor( (1 * nivel + con) + 0.4 )
+					sheet.spMax = sheet.spMax + math.floor( (0.5 * nivel + con) + 0.4 )
+					sheet.mpMax = sheet.mpMax + math.floor( (0.5 * nivel + spr) + 0.4 )
+					sheet.atkF = sheet.atkF + math.floor( (0.4 * nivel + str) + 0.4 )
+					sheet.atkM = sheet.atkM + math.floor( (0.3 * nivel + int) + 0.4 )
+					sheet.defF = sheet.defF + math.floor( (0.3 * nivel + con) + 0.4 )
+					sheet.defM = sheet.defM + math.floor( (0.2 * nivel + con) + 0.4 )
+				end
+			elseif classe == "Cavaleiro" then
+				sheet.hpMax = math.floor((conIni * 3) + 9)
+				sheet.spMax = math.floor((conIni * 1) + 5)
+				sheet.mpMax = math.floor((sprIni * 1) + 5)
+				sheet.atkF = math.floor((strIni / 2) + 6)
+				sheet.atkM = math.floor((intIni / 3) + 8)
+				sheet.defF = math.floor((conIni * 1) + 2)
+				sheet.defM = math.floor((conIni * 1) + 2)
+				if nivel>1 then
+					sheet.hpMax = sheet.hpMax + math.floor( (1 * nivel + con) + 0.4 )
+					sheet.spMax = sheet.spMax + math.floor( (0.7 * nivel + con) + 0.4 )
+					sheet.mpMax = sheet.mpMax + math.floor( (0.5 * nivel + spr) + 0.4 )
+					sheet.atkF = sheet.atkF + math.floor( (0.3 * nivel + str) + 0.4 )
+					sheet.atkM = sheet.atkM + math.floor( (0.3 * nivel + int) + 0.4 )
+					sheet.defF = sheet.defF + math.floor( (0.3 * nivel + con) + 0.4 )
+					sheet.defM = sheet.defM + math.floor( (0.3 * nivel + con) + 0.4 )
+				end
+			elseif classe == "Paladino" then
+				sheet.hpMax = math.floor((conIni * 2) + 7) 
+				sheet.spMax = math.floor((conIni * 2) + 7)
+				sheet.mpMax = math.floor((sprIni * 2) + 7)
+				sheet.atkF = math.floor((strIni / 2) + 6)
+				sheet.atkM = math.floor((intIni / 3) + 8)
+				sheet.defF = math.floor((conIni * 2) + 1)
+				sheet.defM = math.floor((conIni * 1) + 2)
+				if nivel>1 then
+					sheet.hpMax = sheet.hpMax + math.floor( (1.5 * nivel + con) + 0.4 )
+					sheet.spMax = sheet.spMax + math.floor( (0.5 * nivel + con) + 0.4 )
+					sheet.mpMax = sheet.mpMax + math.floor( (0.5 * nivel + spr) + 0.4 )
+					sheet.atkF = sheet.atkF + math.floor( (0.3 * nivel + str) + 0.4 )
+					sheet.atkM = sheet.atkM + math.floor( (0.3 * nivel + int) + 0.4 )
+					sheet.defF = sheet.defF + math.floor( (0.3 * nivel + con) + 0.4 )
+					sheet.defM = sheet.defM + math.floor( (0.4 * nivel + con) + 0.4 )
+				end
 			elseif classe == "Espadachim" then
-				sheet.hpMax = math.floor( ((con * 2) + 7) + (1 * nivel+ con) + 0.4 )
-				sheet.spMax = math.floor( ((con * 1) + 5) + (0.5 * nivel + con) + 0.4 )
-				sheet.mpMax = math.floor( ((spr * 1) + 5) + (0.5 * nivel + spr) + 0.4 )
-				sheet.atkF = math.floor( ((str / 2) + 6) + (0.3 * nivel + str) + 0.4 )
-				sheet.atkM = math.floor( ((int / 3) + 8) + (0.3 * nivel + int) + 0.4 )
-				sheet.defF = math.floor( ((con * 0) + 5) + (0.2 * nivel + con) + 0.4 )
-				sheet.defM = math.floor( ((con * 0) + 5) + (0.2 * nivel + con) + 0.4 )
+				sheet.hpMax = math.floor((conIni * 2) + 7)
+				sheet.spMax = math.floor((conIni * 1) + 5)
+				sheet.mpMax = math.floor((sprIni * 1) + 5)
+				sheet.atkF = math.floor((strIni / 2) + 6)
+				sheet.atkM = math.floor((intIni / 3) + 8)
+				sheet.defF = math.floor((conIni * 0) + 5)
+				sheet.defM = math.floor((conIni * 0) + 5)
+				if nivel>1 then
+					sheet.hpMax = sheet.hpMax + math.floor( (1 * nivel + con) + 0.4 )
+					sheet.spMax = sheet.spMax + math.floor( (0.5 * nivel + con) + 0.4 )
+					sheet.mpMax = sheet.mpMax + math.floor( (0.5 * nivel + spr) + 0.4 )
+					sheet.atkF = sheet.atkF + math.floor( (0.3 * nivel + str) + 0.4 )
+					sheet.atkM = sheet.atkM + math.floor( (0.3 * nivel + int) + 0.4 )
+					sheet.defF = sheet.defF + math.floor( (0.2 * nivel + con) + 0.4 )
+					sheet.defM = sheet.defM + math.floor( (0.2 * nivel + con) + 0.4 )
+				end
 			elseif classe == "Samurai" then
-				sheet.hpMax = math.floor( ((con * 2) + 7) + (1 * nivel+ con) + 0.4 )
-				sheet.spMax = math.floor( ((con * 2) + 7) + (0.5 * nivel + con) + 0.4 )
-				sheet.mpMax = math.floor( ((int / 3) + 8) + (0.5 * nivel + spr) + 0.4 )
-				sheet.atkF = math.floor( ((str / 1) + 4) + (0.4 * nivel + str) + 0.4 )
-				sheet.atkM = math.floor( ((int / 3) + 8) + (0.3 * nivel + int) + 0.4 )
-				sheet.defF = math.floor( ((con * 1) + 2) + (0.3 * nivel + con) + 0.4 )
-				sheet.defM = math.floor( ((con * 1) + 2) + (0.2 * nivel + con) + 0.4 )
+				sheet.hpMax = math.floor((conIni * 2) + 7)
+				sheet.spMax = math.floor((conIni * 2) + 7)
+				sheet.mpMax = math.floor((intIni / 3) + 8)
+				sheet.atkF = math.floor((strIni / 1) + 4)
+				sheet.atkM = math.floor((intIni / 3) + 8)
+				sheet.defF = math.floor((conIni * 1) + 2)
+				sheet.defM = math.floor((conIni * 1) + 2)
+				if nivel>1 then
+					sheet.hpMax = sheet.hpMax + math.floor( (1 * nivel + con) + 0.4 )
+					sheet.spMax = sheet.spMax + math.floor( (0.5 * nivel + con) + 0.4 )
+					sheet.mpMax = sheet.mpMax + math.floor( (0.5 * nivel + spr) + 0.4 )
+					sheet.atkF = sheet.atkF + math.floor( (0.4 * nivel + str) + 0.4 )
+					sheet.atkM = sheet.atkM + math.floor( (0.3 * nivel + int) + 0.4 )
+					sheet.defF = sheet.defF + math.floor( (0.3 * nivel + con) + 0.4 )
+					sheet.defM = sheet.defM + math.floor( (0.2 * nivel + con) + 0.4 )
+				end
 			elseif classe == "Lanceiro" then
-				sheet.hpMax = math.floor( ((con * 2) + 7) + (1 * nivel+ con) + 0.4 )
-				sheet.spMax = math.floor( ((con * 3) + 9) + (0.5 * nivel + con) + 0.4 )
-				sheet.mpMax = math.floor( ((spr * 1) + 5) + (0.5 * nivel + spr) + 0.4 )
-				sheet.atkF = math.floor( ((str / 1) + 4) + (0.3 * nivel + str) + 0.4 )
-				sheet.atkM = math.floor( ((int / 3) + 8) + (0.3 * nivel + int) + 0.4 )
-				sheet.defF = math.floor( ((con * 0) + 5) + (0.3 * nivel + con) + 0.4 )
-				sheet.defM = math.floor( ((con * 0) + 5) + (0.2 * nivel + con) + 0.4 )
+				sheet.hpMax = math.floor((conIni * 2) + 7)
+				sheet.spMax = math.floor((conIni * 3) + 9)
+				sheet.mpMax = math.floor((sprIni * 1) + 5)
+				sheet.atkF = math.floor((strIni / 1) + 4)
+				sheet.atkM = math.floor((intIni / 3) + 8)
+				sheet.defF = math.floor((conIni * 0) + 5)
+				sheet.defM = math.floor((conIni * 0) + 5)
+				if nivel>1 then
+					sheet.hpMax = sheet.hpMax + math.floor( (1 * nivel + con) + 0.4 )
+					sheet.spMax = sheet.spMax + math.floor( (0.5 * nivel + con) + 0.4 )
+					sheet.mpMax = sheet.mpMax + math.floor( (0.5 * nivel + spr) + 0.4 )
+					sheet.atkF = sheet.atkF + math.floor( (0.3 * nivel + str) + 0.4 )
+					sheet.atkM = sheet.atkM + math.floor( (0.3 * nivel + int) + 0.4 )
+					sheet.defF = sheet.defF + math.floor( (0.3 * nivel + con) + 0.4 )
+					sheet.defM = sheet.defM + math.floor( (0.2 * nivel + con) + 0.4 )
+				end
 			elseif classe == "Matador de Dragão" then
-				sheet.hpMax = math.floor( ((con * 1) + 5) + (1.5 * nivel + con) + 0.4 )
-				sheet.spMax = math.floor( ((con * 3) + 9) + (0.5 * nivel + con) + 0.4 )
-				sheet.mpMax = math.floor( ((spr * 1) + 5) + (0.5 * nivel + spr) + 0.4 )
-				sheet.atkF = math.floor( ((str / 1) + 4) + (0.4 * nivel + str) + 0.4 )
-				sheet.atkM = math.floor( ((int / 3) + 8) + (0.3 * nivel + int) + 0.4 )
-				sheet.defF = math.floor( ((con * 0) + 5) + (0.3 * nivel + con) + 0.4 )
-				sheet.defM = math.floor( ((con * 0) + 5) + (0.2 * nivel + con) + 0.4 )
+				sheet.hpMax = math.floor((conIni * 1) + 5)
+				sheet.spMax = math.floor((conIni * 3) + 9)
+				sheet.mpMax = math.floor((sprIni * 1) + 5)
+				sheet.atkF = math.floor((strIni / 1) + 4)
+				sheet.atkM = math.floor((intIni / 3) + 8)
+				sheet.defF = math.floor((conIni * 0) + 5)
+				sheet.defM = math.floor((conIni * 0) + 5)
+				if nivel>1 then
+					sheet.hpMax = sheet.hpMax + math.floor( (1.5 * nivel + con) + 0.4 )
+					sheet.spMax = sheet.spMax + math.floor( (0.5 * nivel + con) + 0.4 )
+					sheet.mpMax = sheet.mpMax + math.floor( (0.5 * nivel + spr) + 0.4 )
+					sheet.atkF = sheet.atkF + math.floor( (0.4 * nivel + str) + 0.4 )
+					sheet.atkM = sheet.atkM + math.floor( (0.3 * nivel + int) + 0.4 )
+					sheet.defF = sheet.defF + math.floor( (0.3 * nivel + con) + 0.4 )
+					sheet.defM = sheet.defM + math.floor( (0.2 * nivel + con) + 0.4 )
+				end
 			elseif classe == "Pugilista" then
-				sheet.hpMax = math.floor( ((con * 2) + 7) + (1 * nivel+ con) + 0.4 )
-				sheet.spMax = math.floor( ((con * 2) + 7) + (0.5 * nivel + con) + 0.4 )
-				sheet.mpMax = math.floor( ((spr * 1) + 5) + (0.5 * nivel + spr) + 0.4 )
-				sheet.atkF = math.floor( ((str / 1) + 4) + (0.3 * nivel + str) + 0.4 )
-				sheet.atkM = math.floor( ((int / 3) + 8) + (0.3 * nivel + int) + 0.4 )
-				sheet.defF = math.floor( ((con * 1) + 2) + (0.2 * nivel + con) + 0.4 )
-				sheet.defM = math.floor( ((con * 0) + 5) + (0.2 * nivel + con) + 0.4 )
+				sheet.hpMax = math.floor((conIni * 2) + 7)
+				sheet.spMax = math.floor((conIni * 2) + 7)
+				sheet.mpMax = math.floor((sprIni * 1) + 5)
+				sheet.atkF = math.floor((strIni / 1) + 4)
+				sheet.atkM = math.floor((intIni / 3) + 8)
+				sheet.defF = math.floor((conIni * 1) + 2)
+				sheet.defM = math.floor((conIni * 0) + 5)
+				if nivel>1 then
+					sheet.hpMax = sheet.hpMax + math.floor( (1 * nivel + con) + 0.4 )
+					sheet.spMax = sheet.spMax + math.floor( (0.5 * nivel + con) + 0.4 )
+					sheet.mpMax = sheet.mpMax + math.floor( (0.5 * nivel + spr) + 0.4 )
+					sheet.atkF = sheet.atkF + math.floor( (0.3 * nivel + str) + 0.4 )
+					sheet.atkM = sheet.atkM + math.floor( (0.3 * nivel + int) + 0.4 )
+					sheet.defF = sheet.defF + math.floor( (0.2 * nivel + con) + 0.4 )
+					sheet.defM = sheet.defM + math.floor( (0.2 * nivel + con) + 0.4 )
+				end
 			elseif classe == "Monge" then
-				sheet.hpMax = math.floor( ((con * 2) + 7) + (1 * nivel+ con) + 0.4 )
-				sheet.spMax = math.floor( ((con * 3) + 9) + (0.7 * nivel + con) + 0.4 )
-				sheet.mpMax = math.floor( ((spr * 1) + 5) + (0.5 * nivel + spr) + 0.4 )
-				sheet.atkF = math.floor( ((str / 2) + 6) + (0.4 * nivel + str) + 0.4 )
-				sheet.atkM = math.floor( ((int / 3) + 8) + (0.3 * nivel + int) + 0.4 )
-				sheet.defF = math.floor( ((con * 1) + 2) + (0.2 * nivel + con) + 0.4 )
-				sheet.defM = math.floor( ((con * 1) + 2) + (0.3 * nivel + con) + 0.4 )
+				sheet.hpMax = math.floor((conIni * 2) + 7)
+				sheet.spMax = math.floor((conIni * 3) + 9)
+				sheet.mpMax = math.floor((sprIni * 1) + 5)
+				sheet.atkF = math.floor((strIni / 2) + 6)
+				sheet.atkM = math.floor((intIni / 3) + 8)
+				sheet.defF = math.floor((conIni * 1) + 2)
+				sheet.defM = math.floor((conIni * 1) + 2)
+				if nivel>1 then
+					sheet.hpMax = sheet.hpMax + math.floor( (1 * nivel + con) + 0.4 )
+					sheet.spMax = sheet.spMax + math.floor( (0.7 * nivel + con) + 0.4 )
+					sheet.mpMax = sheet.mpMax + math.floor( (0.5 * nivel + spr) + 0.4 )
+					sheet.atkF = sheet.atkF + math.floor( (0.4 * nivel + str) + 0.4 )
+					sheet.atkM = sheet.atkM + math.floor( (0.3 * nivel + int) + 0.4 )
+					sheet.defF = sheet.defF + math.floor( (0.2 * nivel + con) + 0.4 )
+					sheet.defM = sheet.defM + math.floor( (0.3 * nivel + con) + 0.4 )
+				end
 			elseif classe == "Aprendiz" then
-				sheet.hpMax = math.floor( ((con * 1) + 5) + (1 * nivel+ con) + 0.4 )
-				sheet.spMax = math.floor( ((con * 1) + 5) + (0.5 * nivel + con) + 0.4 )
-				sheet.mpMax = math.floor( ((spr * 1) + 5) + (0.9 * nivel + spr) + 0.4 )
-				sheet.atkF = math.floor( ((str / 3) + 8) + (0.3 * nivel + str) + 0.4 )
-				sheet.atkM = math.floor( ((int / 2) + 6) + (0.4 * nivel + int) + 0.4 )
-				sheet.defF = math.floor( ((con * 0) + 5) + (0.2 * nivel + con) + 0.4 )
-				sheet.defM = math.floor( ((con * 0) + 5) + (0.2 * nivel + con) + 0.4 )
+				sheet.hpMax = math.floor((conIni * 1) + 5)
+				sheet.spMax = math.floor((conIni * 1) + 5)
+				sheet.mpMax = math.floor((sprIni * 1) + 5)
+				sheet.atkF = math.floor((strIni / 3) + 8)
+				sheet.atkM = math.floor((intIni / 2) + 6)
+				sheet.defF = math.floor((conIni * 0) + 5)
+				sheet.defM = math.floor((conIni * 0) + 5)
+				if nivel>1 then
+					sheet.hpMax = sheet.hpMax + math.floor( (1 * nivel + con) + 0.4 )
+					sheet.spMax = sheet.spMax + math.floor( (0.5 * nivel + con) + 0.4 )
+					sheet.mpMax = sheet.mpMax + math.floor( (0.9 * nivel + spr) + 0.4 )
+					sheet.atkF = sheet.atkF + math.floor( (0.3 * nivel + str) + 0.4 )
+					sheet.atkM = sheet.atkM + math.floor( (0.4 * nivel + int) + 0.4 )
+					sheet.defF = sheet.defF + math.floor( (0.2 * nivel + con) + 0.4 )
+					sheet.defM = sheet.defM + math.floor( (0.2 * nivel + con) + 0.4 )
+				end
 			elseif classe == "Mago " then
-				sheet.hpMax = math.floor( ((con * 1) + 5) + (1 * nivel+ con) + 0.4 )
-				sheet.spMax = math.floor( ((con * 1) + 5) + (0.5 * nivel + con) + 0.4 )
-				sheet.mpMax = math.floor( ((spr * 2) + 7) + (0.5 * nivel + spr) + 0.4 )
-				sheet.atkF = math.floor( ((str / 3) + 8) + (0.3 * nivel + str) + 0.4 )
-				sheet.atkM = math.floor( ((int / 2) + 6) + (0.6 * nivel + int) + 0.4 )
-				sheet.defF = math.floor( ((con * 0) + 5) + (0.2 * nivel + con) + 0.4 )
-				sheet.defM = math.floor( ((con * 0) + 5) + (0.2 * nivel + con) + 0.4 )
+				sheet.hpMax = math.floor((conIni * 1) + 5)
+				sheet.spMax = math.floor((conIni * 1) + 5)
+				sheet.mpMax = math.floor((sprIni * 2) + 7)
+				sheet.atkF = math.floor((strIni / 3) + 8)
+				sheet.atkM = math.floor((intIni / 2) + 6)
+				sheet.defF = math.floor((conIni * 0) + 5)
+				sheet.defM = math.floor((conIni * 0) + 5)
+				if nivel>1 then
+					sheet.hpMax = sheet.hpMax + math.floor( (1 * nivel + con) + 0.4 )
+					sheet.spMax = sheet.spMax + math.floor( (0.5 * nivel + con) + 0.4 )
+					sheet.mpMax = sheet.mpMax + math.floor( (0.5 * nivel + spr) + 0.4 )
+					sheet.atkF = sheet.atkF + math.floor( (0.3 * nivel + str) + 0.4 )
+					sheet.atkM = sheet.atkM + math.floor( (0.6 * nivel + int) + 0.4 )
+					sheet.defF = sheet.defF + math.floor( (0.2 * nivel + con) + 0.4 )
+					sheet.defM = sheet.defM + math.floor( (0.2 * nivel + con) + 0.4 )
+				end
 			elseif classe == "Invocador" then
-				sheet.hpMax = math.floor( ((con * 1) + 5) + (1 * nivel+ con) + 0.4 )
-				sheet.spMax = math.floor( ((con * 1) + 5) + (0.5 * nivel + con) + 0.4 )
-				sheet.mpMax = math.floor( ((spr * 3) + 9) + (0.7 * nivel + spr) + 0.4 )
-				sheet.atkF = math.floor( ((str / 3) + 8) + (0.3 * nivel + str) + 0.4 )
-				sheet.atkM = math.floor( ((int / 2) + 6) + (0.6 * nivel + int) + 0.4 )
-				sheet.defF = math.floor( ((con * 1) + 2) + (0.2 * nivel + con) + 0.4 )
-				sheet.defM = math.floor( ((con * 1) + 2) + (0.2 * nivel + con) + 0.4 )
+				sheet.hpMax = math.floor((conIni * 1) + 5)
+				sheet.spMax = math.floor((conIni * 1) + 5)
+				sheet.mpMax = math.floor((sprIni * 3) + 9)
+				sheet.atkF = math.floor((strIni / 3) + 8)
+				sheet.atkM = math.floor((intIni / 2) + 6)
+				sheet.defF = math.floor((conIni * 1) + 2)
+				sheet.defM = math.floor((conIni * 1) + 2)
+				if nivel>1 then
+					sheet.hpMax = sheet.hpMax + math.floor( (1 * nivel + con) + 0.4 )
+					sheet.spMax = sheet.spMax + math.floor( (0.5 * nivel + con) + 0.4 )
+					sheet.mpMax = sheet.mpMax + math.floor( (0.7 * nivel + spr) + 0.4 )
+					sheet.atkF = sheet.atkF + math.floor( (0.3 * nivel + str) + 0.4 )
+					sheet.atkM = sheet.atkM + math.floor( (0.6 * nivel + int) + 0.4 )
+					sheet.defF = sheet.defF + math.floor( (0.2 * nivel + con) + 0.4 )
+					sheet.defM = sheet.defM + math.floor( (0.2 * nivel + con) + 0.4 )
+				end
 			elseif classe == "Cronomante" then
-				sheet.hpMax = math.floor( ((con * 1) + 5) + (1 * nivel+ con) + 0.4 )
-				sheet.spMax = math.floor( ((con * 1) + 5) + (0.5 * nivel + con) + 0.4 )
-				sheet.mpMax = math.floor( ((spr * 3) + 9) + (0.7 * nivel + spr) + 0.4 )
-				sheet.atkF = math.floor( ((str / 3) + 8) + (0.3 * nivel + str) + 0.4 )
-				sheet.atkM = math.floor( ((int / 2) + 6) + (0.4 * nivel + int) + 0.4 )
-				sheet.defF = math.floor( ((con * 0) + 5) + (0.2 * nivel + con) + 0.4 )
-				sheet.defM = math.floor( ((con * 0) + 5) + (0.3 * nivel + con) + 0.4 )
+				sheet.hpMax = math.floor((conIni * 1) + 5)
+				sheet.spMax = math.floor((conIni * 1) + 5)
+				sheet.mpMax = math.floor((sprIni * 3) + 9)
+				sheet.atkF = math.floor((strIni / 3) + 8)
+				sheet.atkM = math.floor((intIni / 2) + 6)
+				sheet.defF = math.floor((conIni * 0) + 5)
+				sheet.defM = math.floor((conIni * 0) + 5)
+				if nivel>1 then
+					sheet.hpMax = sheet.hpMax + math.floor( (1 * nivel + con) + 0.4 )
+					sheet.spMax = sheet.spMax + math.floor( (0.5 * nivel + con) + 0.4 )
+					sheet.mpMax = sheet.mpMax + math.floor( (0.7 * nivel + spr) + 0.4 )
+					sheet.atkF = sheet.atkF + math.floor( (0.3 * nivel + str) + 0.4 )
+					sheet.atkM = sheet.atkM + math.floor( (0.4 * nivel + int) + 0.4 )
+					sheet.defF = sheet.defF + math.floor( (0.2 * nivel + con) + 0.4 )
+					sheet.defM = sheet.defM + math.floor( (0.3 * nivel + con) + 0.4 )
+				end
 			elseif classe == "Taoísta" then
-				sheet.hpMax = math.floor( ((con * 2) + 7) + (1 * nivel+ con) + 0.4 )
-				sheet.spMax = math.floor( ((con * 1) + 5) + (0.5 * nivel + con) + 0.4 )
-				sheet.mpMax = math.floor( ((spr * 3) + 9) + (0.7 * nivel + spr) + 0.4 )
-				sheet.atkF = math.floor( ((str / 3) + 8) + (0.3 * nivel + str) + 0.4 )
-				sheet.atkM = math.floor( ((int / 1) + 4) + (0.4 * nivel + int) + 0.4 )
-				sheet.defF = math.floor( ((con * 0) + 5) + (0.2 * nivel + con) + 0.4 )
-				sheet.defM = math.floor( ((con * 0) + 5) + (0.3 * nivel + con) + 0.4 )
+				sheet.hpMax = math.floor((conIni * 2) + 7)
+				sheet.spMax = math.floor((conIni * 1) + 5)
+				sheet.mpMax = math.floor((sprIni * 3) + 9)
+				sheet.atkF = math.floor((strIni / 3) + 8)
+				sheet.atkM = math.floor((intIni / 1) + 4)
+				sheet.defF = math.floor((conIni * 0) + 5)
+				sheet.defM = math.floor((conIni * 0) + 5)
+				if nivel>1 then
+					sheet.hpMax = sheet.hpMax + math.floor( (1 * nivel + con) + 0.4 )
+					sheet.spMax = sheet.spMax + math.floor( (0.5 * nivel + con) + 0.4 )
+					sheet.mpMax = sheet.mpMax + math.floor( (0.7 * nivel + spr) + 0.4 )
+					sheet.atkF = sheet.atkF + math.floor( (0.3 * nivel + str) + 0.4 )
+					sheet.atkM = sheet.atkM + math.floor( (0.4 * nivel + int) + 0.4 )
+					sheet.defF = sheet.defF + math.floor( (0.2 * nivel + con) + 0.4 )
+					sheet.defM = sheet.defM + math.floor( (0.3 * nivel + con) + 0.4 )
+				end
 			elseif classe == "Elementalista" then
-				sheet.hpMax = math.floor( ((con * 2) + 7) + (0.5 * nivel + con) + 0.4 )
-				sheet.spMax = math.floor( ((con * 1) + 5) + (0.5 * nivel + con) + 0.4 )
-				sheet.mpMax = math.floor( ((spr * 3) + 9) + (0.7 * nivel + spr) + 0.4 )
-				sheet.atkF = math.floor( ((str / 3) + 8) + (0.3 * nivel + str) + 0.4 )
-				sheet.atkM = math.floor( ((int / 2) + 6) + (0.6 * nivel + int) + 0.4 )
-				sheet.defF = math.floor( ((con * 0) + 5) + (0.2 * nivel + con) + 0.4 )
-				sheet.defM = math.floor( ((con * 0) + 5) + (0.3 * nivel + con) + 0.4 )
+				sheet.hpMax = math.floor((conIni * 2) + 7) 
+				sheet.spMax = math.floor((conIni * 1) + 5)
+				sheet.mpMax = math.floor((sprIni * 3) + 9)
+				sheet.atkF = math.floor((strIni / 3) + 8)
+				sheet.atkM = math.floor((intIni / 2) + 6)
+				sheet.defF = math.floor((conIni * 0) + 5)
+				sheet.defM = math.floor((conIni * 0) + 5)
+				if nivel>1 then
+					sheet.hpMax = sheet.hpMax + math.floor( (0.5 * nivel + con) + 0.4 )
+					sheet.spMax = sheet.spMax + math.floor( (0.5 * nivel + con) + 0.4 )
+					sheet.mpMax = sheet.mpMax + math.floor( (0.7 * nivel + spr) + 0.4 )
+					sheet.atkF = sheet.atkF + math.floor( (0.3 * nivel + str) + 0.4 )
+					sheet.atkM = sheet.atkM + math.floor( (0.6 * nivel + int) + 0.4 )
+					sheet.defF = sheet.defF + math.floor( (0.2 * nivel + con) + 0.4 )
+					sheet.defM = sheet.defM + math.floor( (0.3 * nivel + con) + 0.4 )
+				end
 			elseif classe == "Necromante" then
-				sheet.hpMax = math.floor( ((con * 2) + 7) + (1 * nivel+ con) + 0.4 )
-				sheet.spMax = math.floor( ((con * 1) + 5) + (0.5 * nivel + con) + 0.4 )
-				sheet.mpMax = math.floor( ((spr * 1) + 5) + (0.9 * nivel + spr) + 0.4 )
-				sheet.atkF = math.floor( ((str / 3) + 8) + (0.3 * nivel + str) + 0.4 )
-				sheet.atkM = math.floor( ((int / 2) + 6) + (0.4 * nivel + int) + 0.4 )
-				sheet.defF = math.floor( ((con * 0) + 5) + (0.2 * nivel + con) + 0.4 )
-				sheet.defM = math.floor( ((con * 0) + 5) + (0.3 * nivel + con) + 0.4 )
+				sheet.hpMax = math.floor((conIni * 2) + 7)
+				sheet.spMax = math.floor((conIni * 1) + 5)
+				sheet.mpMax = math.floor((sprIni * 1) + 5)
+				sheet.atkF = math.floor((strIni / 3) + 8)
+				sheet.atkM = math.floor((intIni / 2) + 6)
+				sheet.defF = math.floor((conIni * 0) + 5)
+				sheet.defM = math.floor((conIni * 0) + 5)
+				if nivel>1 then
+					sheet.hpMax = sheet.hpMax + math.floor( (1 * nivel + con) + 0.4 )
+					sheet.spMax = sheet.spMax + math.floor( (0.5 * nivel + con) + 0.4 )
+					sheet.mpMax = sheet.mpMax + math.floor( (0.9 * nivel + spr) + 0.4 )
+					sheet.atkF = sheet.atkF + math.floor( (0.3 * nivel + str) + 0.4 )
+					sheet.atkM = sheet.atkM + math.floor( (0.4 * nivel + int) + 0.4 )
+					sheet.defF = sheet.defF + math.floor( (0.2 * nivel + con) + 0.4 )
+					sheet.defM = sheet.defM + math.floor( (0.3 * nivel + con) + 0.4 )
+				end
 			elseif classe == "Lorde das Sombras" then
-				sheet.hpMax = math.floor( ((con * 2) + 7) + (1 * nivel+ con) + 0.4 )
-				sheet.spMax = math.floor( ((con * 1) + 5) + (0.5 * nivel + con) + 0.4 )
-				sheet.mpMax = math.floor( ((spr * 3) + 9) + (0.5 * nivel + spr) + 0.4 )
-				sheet.atkF = math.floor( ((str / 3) + 8) + (0.3 * nivel + str) + 0.4 )
-				sheet.atkM = math.floor( ((int / 1) + 4) + (0.4 * nivel + int) + 0.4 )
-				sheet.defF = math.floor( ((con * 0) + 5) + (0.2 * nivel + con) + 0.4 )
-				sheet.defM = math.floor( ((con * 0) + 5) + (0.3 * nivel + con) + 0.4 )
+				sheet.hpMax = math.floor((conIni * 2) + 7)
+				sheet.spMax = math.floor((conIni * 1) + 5)
+				sheet.mpMax = math.floor((sprIni * 3) + 9)
+				sheet.atkF = math.floor((strIni / 3) + 8)
+				sheet.atkM = math.floor((intIni / 1) + 4)
+				sheet.defF = math.floor((conIni * 0) + 5)
+				sheet.defM = math.floor((conIni * 0) + 5)
+				if nivel>1 then
+					sheet.hpMax = sheet.hpMax + math.floor( (1 * nivel + con) + 0.4 )
+					sheet.spMax = sheet.spMax + math.floor( (0.5 * nivel + con) + 0.4 )
+					sheet.mpMax = sheet.mpMax + math.floor( (0.5 * nivel + spr) + 0.4 )
+					sheet.atkF = sheet.atkF + math.floor( (0.3 * nivel + str) + 0.4 )
+					sheet.atkM = sheet.atkM + math.floor( (0.4 * nivel + int) + 0.4 )
+					sheet.defF = sheet.defF + math.floor( (0.2 * nivel + con) + 0.4 )
+					sheet.defM = sheet.defM + math.floor( (0.3 * nivel + con) + 0.4 )
+				end
 			elseif classe == "Arruaceiro" then
-				sheet.hpMax = math.floor( ((con * 2) + 7) + (1 * nivel+ con) + 0.4 )
-				sheet.spMax = math.floor( ((con * 1) + 5) + (0.7 * nivel + con) + 0.4 )
-				sheet.mpMax = math.floor( ((spr * 1) + 5) + (0.5 * nivel + spr) + 0.4 )
-				sheet.atkF = math.floor( ((str / 2) + 6) + (0.4 * nivel + str) + 0.4 )
-				sheet.atkM = math.floor( ((int / 3) + 8) + (0.3 * nivel + int) + 0.4 )
-				sheet.defF = math.floor( ((con * 0) + 5) + (0.2 * nivel + con) + 0.4 )
-				sheet.defM = math.floor( ((con * 0) + 5) + (0.2 * nivel + con) + 0.4 )
+				sheet.hpMax = math.floor((conIni * 2) + 7)
+				sheet.spMax = math.floor((conIni * 1) + 5)
+				sheet.mpMax = math.floor((sprIni * 1) + 5)
+				sheet.atkF = math.floor((strIni / 2) + 6)
+				sheet.atkM = math.floor((intIni / 3) + 8)
+				sheet.defF = math.floor((conIni * 0) + 5)
+				sheet.defM = math.floor((conIni * 0) + 5)
+				if nivel>1 then
+					sheet.hpMax = sheet.hpMax + math.floor( (1 * nivel + con) + 0.4 )
+					sheet.spMax = sheet.spMax + math.floor( (0.7 * nivel + con) + 0.4 )
+					sheet.mpMax = sheet.mpMax + math.floor( (0.5 * nivel + spr) + 0.4 )
+					sheet.atkF = sheet.atkF + math.floor( (0.4 * nivel + str) + 0.4 )
+					sheet.atkM = sheet.atkM + math.floor( (0.3 * nivel + int) + 0.4 )
+					sheet.defF = sheet.defF + math.floor( (0.2 * nivel + con) + 0.4 )
+					sheet.defM = sheet.defM + math.floor( (0.2 * nivel + con) + 0.4 )
+				end
 			elseif classe == "Bandido" then
-				sheet.hpMax = math.floor( ((con * 2) + 7) + (1 * nivel+ con) + 0.4 )
-				sheet.spMax = math.floor( ((con * 1) + 5) + (0.7 * nivel + con) + 0.4 )
-				sheet.mpMax = math.floor( ((spr * 1) + 5) + (0.5 * nivel + spr) + 0.4 )
-				sheet.atkF = math.floor( ((int / 2) + 6) + (0.4 * nivel + str) + 0.4 )
-				sheet.atkM = math.floor( ((int / 3) + 8) + (0.3 * nivel + int) + 0.4 )
-				sheet.defF = math.floor( ((con * 1) + 2) + (0.3 * nivel + con) + 0.4 )
-				sheet.defM = math.floor( ((con * 1) + 2) + (0.2 * nivel + con) + 0.4 )
+				sheet.hpMax = math.floor((conIni * 2) + 7)
+				sheet.spMax = math.floor((conIni * 1) + 5)
+				sheet.mpMax = math.floor((sprIni * 1) + 5)
+				sheet.atkF = math.floor((intIni / 2) + 6)
+				sheet.atkM = math.floor((intIni / 3) + 8)
+				sheet.defF = math.floor((conIni * 1) + 2)
+				sheet.defM = math.floor((conIni * 1) + 2)
+				if nivel>1 then
+					sheet.hpMax = sheet.hpMax + math.floor( (1 * nivel + con) + 0.4 )
+					sheet.spMax = sheet.spMax + math.floor( (0.7 * nivel + con) + 0.4 )
+					sheet.mpMax = sheet.mpMax + math.floor( (0.5 * nivel + spr) + 0.4 )
+					sheet.atkF = sheet.atkF + math.floor( (0.4 * nivel + str) + 0.4 )
+					sheet.atkM = sheet.atkM + math.floor( (0.3 * nivel + int) + 0.4 )
+					sheet.defF = sheet.defF + math.floor( (0.3 * nivel + con) + 0.4 )
+					sheet.defM = sheet.defM + math.floor( (0.2 * nivel + con) + 0.4 )
+				end
 			elseif classe == "Ladino" then
-				sheet.hpMax = math.floor( ((con * 1) + 5) + (0.5 * nivel + con) + 0.4 )
-				sheet.spMax = math.floor( ((con * 2) + 7) + (0.7 * nivel + con) + 0.4 )
-				sheet.mpMax = math.floor( ((spr * 1) + 5) + (0.5 * nivel + spr) + 0.4 )
-				sheet.atkF = math.floor( ((str / 2) + 6) + (0.6 * nivel + str) + 0.4 )
-				sheet.atkM = math.floor( ((int / 3) + 8) + (0.3 * nivel + int) + 0.4 )
-				sheet.defF = math.floor( ((con * 1) + 2) + (0.2 * nivel + con) + 0.4 )
-				sheet.defM = math.floor( ((con * 1) + 2) + (0.2 * nivel + con) + 0.4 )
+				sheet.hpMax = math.floor((conIni * 1) + 5) 
+				sheet.spMax = math.floor((conIni * 2) + 7)
+				sheet.mpMax = math.floor((sprIni * 1) + 5)
+				sheet.atkF = math.floor((strIni / 2) + 6)
+				sheet.atkM = math.floor((intIni / 3) + 8)
+				sheet.defF = math.floor((conIni * 1) + 2)
+				sheet.defM = math.floor((conIni * 1) + 2)
+				if nivel>1 then
+					sheet.hpMax = sheet.hpMax + math.floor( (0.5 * nivel + con) + 0.4 )
+					sheet.spMax = sheet.spMax + math.floor( (0.7 * nivel + con) + 0.4 )
+					sheet.mpMax = sheet.mpMax + math.floor( (0.5 * nivel + spr) + 0.4 )
+					sheet.atkF = sheet.atkF + math.floor( (0.6 * nivel + str) + 0.4 )
+					sheet.atkM = sheet.atkM + math.floor( (0.3 * nivel + int) + 0.4 )
+					sheet.defF = sheet.defF + math.floor( (0.2 * nivel + con) + 0.4 )
+					sheet.defM = sheet.defM + math.floor( (0.2 * nivel + con) + 0.4 )
+				end
 			elseif classe == "Assassino" then
-				sheet.hpMax = math.floor( ((con * 1) + 5) + (0.5 * nivel + con) + 0.4 )
-				sheet.spMax = math.floor( ((con * 2) + 7) + (0.7 * nivel + con) + 0.4 )
-				sheet.mpMax = math.floor( ((spr * 1) + 5) + (0.5 * nivel + spr) + 0.4 )
-				sheet.atkF = math.floor( ((str / 1) + 4) + (0.6 * nivel + str) + 0.4 )
-				sheet.atkM = math.floor( ((int / 3) + 8) + (0.3 * nivel + int) + 0.4 )
-				sheet.defF = math.floor( ((con * 1) + 2) + (0.3 * nivel + con) + 0.4 )
-				sheet.defM = math.floor( ((con * 1) + 2) + (0.2 * nivel + con) + 0.4 )
+				sheet.hpMax = math.floor((conIni * 1) + 5) 
+				sheet.spMax = math.floor((conIni * 2) + 7)
+				sheet.mpMax = math.floor((sprIni * 1) + 5)
+				sheet.atkF = math.floor((strIni / 1) + 4)
+				sheet.atkM = math.floor((intIni / 3) + 8)
+				sheet.defF = math.floor((conIni * 1) + 2)
+				sheet.defM = math.floor((conIni * 1) + 2)
+				if nivel>1 then
+					sheet.hpMax = sheet.hpMax + math.floor( (0.5 * nivel + con) + 0.4 )
+					sheet.spMax = sheet.spMax + math.floor( (0.7 * nivel + con) + 0.4 )
+					sheet.mpMax = sheet.mpMax + math.floor( (0.5 * nivel + spr) + 0.4 )
+					sheet.atkF = sheet.atkF + math.floor( (0.6 * nivel + str) + 0.4 )
+					sheet.atkM = sheet.atkM + math.floor( (0.3 * nivel + int) + 0.4 )
+					sheet.defF = sheet.defF + math.floor( (0.3 * nivel + con) + 0.4 )
+					sheet.defM = sheet.defM + math.floor( (0.2 * nivel + con) + 0.4 )
+				end
 			elseif classe == "Emissário da Morte" then
-				sheet.hpMax = math.floor( ((con * 2) + 7) + (0.5 * nivel + con) + 0.4 )
-				sheet.spMax = math.floor( ((con * 1) + 5) + (0.7 * nivel + con) + 0.4 )
-				sheet.mpMax = math.floor( ((spr * 1) + 5) + (0.5 * nivel + spr) + 0.4 )
-				sheet.atkF = math.floor( ((str / 2) + 6) + (0.4 * nivel + str) + 0.4 )
-				sheet.atkM = math.floor( ((int / 3) + 8) + (0.3 * nivel + int) + 0.4 )
-				sheet.defF = math.floor( ((con * 1) + 2) + (0.3 * nivel + con) + 0.4 )
-				sheet.defM = math.floor( ((con * 0) + 5) + (0.2 * nivel + con) + 0.4 )
+				sheet.hpMax = math.floor((conIni * 2) + 7) 
+				sheet.spMax = math.floor((conIni * 1) + 5)
+				sheet.mpMax = math.floor((sprIni * 1) + 5)
+				sheet.atkF = math.floor((strIni / 2) + 6)
+				sheet.atkM = math.floor((intIni / 3) + 8)
+				sheet.defF = math.floor((conIni * 1) + 2)
+				sheet.defM = math.floor((conIni * 0) + 5)
+				if nivel>1 then
+					sheet.hpMax = sheet.hpMax + math.floor( (0.5 * nivel + con) + 0.4 )
+					sheet.spMax = sheet.spMax + math.floor( (0.7 * nivel + con) + 0.4 )
+					sheet.mpMax = sheet.mpMax + math.floor( (0.5 * nivel + spr) + 0.4 )
+					sheet.atkF = sheet.atkF + math.floor( (0.4 * nivel + str) + 0.4 )
+					sheet.atkM = sheet.atkM + math.floor( (0.3 * nivel + int) + 0.4 )
+					sheet.defF = sheet.defF + math.floor( (0.3 * nivel + con) + 0.4 )
+					sheet.defM = sheet.defM + math.floor( (0.2 * nivel + con) + 0.4 )
+				end
 			elseif classe == "Shinobi" then
-				sheet.hpMax = math.floor( ((con * 1) + 5) + (1 * nivel+ con) + 0.4 )
-				sheet.spMax = math.floor( ((con * 2) + 7) + (0.7 * nivel + con) + 0.4 )
-				sheet.mpMax = math.floor( ((spr * 1) + 5) + (0.7 * nivel + spr) + 0.4 )
-				sheet.atkF = math.floor( ((str / 2) + 6) + (0.6 * nivel + str) + 0.4 )
-				sheet.atkM = math.floor( ((int / 3) + 8) + (0.3 * nivel + int) + 0.4 )
-				sheet.defF = math.floor( ((con * 0) + 5) + (0.2 * nivel + con) + 0.4 )
-				sheet.defM = math.floor( ((con * 0) + 5) + (0.2 * nivel + con) + 0.4 )
+				sheet.hpMax = math.floor((conIni * 1) + 5)
+				sheet.spMax = math.floor((conIni * 2) + 7)
+				sheet.mpMax = math.floor((sprIni * 1) + 5)
+				sheet.atkF = math.floor((strIni / 2) + 6)
+				sheet.atkM = math.floor((intIni / 3) + 8)
+				sheet.defF = math.floor((conIni * 0) + 5)
+				sheet.defM = math.floor((conIni * 0) + 5)
+				if nivel>1 then
+					sheet.hpMax = sheet.hpMax + math.floor( (1 * nivel + con) + 0.4 )
+					sheet.spMax = sheet.spMax + math.floor( (0.7 * nivel + con) + 0.4 )
+					sheet.mpMax = sheet.mpMax + math.floor( (0.7 * nivel + spr) + 0.4 )
+					sheet.atkF = sheet.atkF + math.floor( (0.6 * nivel + str) + 0.4 )
+					sheet.atkM = sheet.atkM + math.floor( (0.3 * nivel + int) + 0.4 )
+					sheet.defF = sheet.defF + math.floor( (0.2 * nivel + con) + 0.4 )
+					sheet.defM = sheet.defM + math.floor( (0.2 * nivel + con) + 0.4 )
+				end
 			elseif classe == "Arqueiro" then
-				sheet.hpMax = math.floor( ((con * 3) + 9) + (0.5 * nivel + con) + 0.4 )
-				sheet.spMax = math.floor( ((con * 2) + 7) + (0.7 * nivel + con) + 0.4 )
-				sheet.mpMax = math.floor( ((spr * 1) + 5) + (0.5 * nivel + spr) + 0.4 )
-				sheet.atkF = math.floor( ((str / 3) + 8) + (0.4 * nivel + str) + 0.4 )
-				sheet.atkM = math.floor( ((int / 3) + 8) + (0.3 * nivel + int) + 0.4 )
-				sheet.defF = math.floor( ((con * 1) + 2) + (0.2 * nivel + con) + 0.4 )
-				sheet.defM = math.floor( ((con * 1) + 2) + (0.2 * nivel + con) + 0.4 )
+				sheet.hpMax = math.floor((conIni * 3) + 9) 
+				sheet.spMax = math.floor((conIni * 2) + 7)
+				sheet.mpMax = math.floor((sprIni * 1) + 5)
+				sheet.atkF = math.floor((strIni / 3) + 8)
+				sheet.atkM = math.floor((intIni / 3) + 8)
+				sheet.defF = math.floor((conIni * 1) + 2)
+				sheet.defM = math.floor((conIni * 1) + 2)
+				if nivel>1 then
+					sheet.hpMax = sheet.hpMax + math.floor( (0.5 * nivel + con) + 0.4 )
+					sheet.spMax = sheet.spMax + math.floor( (0.7 * nivel + con) + 0.4 )
+					sheet.mpMax = sheet.mpMax + math.floor( (0.5 * nivel + spr) + 0.4 )
+					sheet.atkF = sheet.atkF + math.floor( (0.4 * nivel + str) + 0.4 )
+					sheet.atkM = sheet.atkM + math.floor( (0.3 * nivel + int) + 0.4 )
+					sheet.defF = sheet.defF + math.floor( (0.2 * nivel + con) + 0.4 )
+					sheet.defM = sheet.defM + math.floor( (0.2 * nivel + con) + 0.4 )
+				end
 			elseif classe == "Caçador" then
-				sheet.hpMax = math.floor( ((con * 2) + 7) + (1 * nivel+ con) + 0.4 )
-				sheet.spMax = math.floor( ((con * 2) + 7) + (0.5 * nivel + con) + 0.4 )
-				sheet.mpMax = math.floor( ((spr * 1) + 5) + (0.5 * nivel + spr) + 0.4 )
-				sheet.atkF = math.floor( ((str / 1) + 4) + (0.3 * nivel + str) + 0.4 )
-				sheet.atkM = math.floor( ((int / 3) + 8) + (0.3 * nivel + int) + 0.4 )
-				sheet.defF = math.floor( ((con * 1) + 2) + (0.2 * nivel + con) + 0.4 )
-				sheet.defM = math.floor( ((con * 1) + 2) + (0.2 * nivel + con) + 0.4 )
+				sheet.hpMax = math.floor((conIni * 2) + 7)
+				sheet.spMax = math.floor((conIni * 2) + 7)
+				sheet.mpMax = math.floor((sprIni * 1) + 5)
+				sheet.atkF = math.floor((strIni / 1) + 4)
+				sheet.atkM = math.floor((intIni / 3) + 8)
+				sheet.defF = math.floor((conIni * 1) + 2)
+				sheet.defM = math.floor((conIni * 1) + 2)
+				if nivel>1 then
+					sheet.hpMax = sheet.hpMax + math.floor( (1 * nivel + con) + 0.4 )
+					sheet.spMax = sheet.spMax + math.floor( (0.5 * nivel + con) + 0.4 )
+					sheet.mpMax = sheet.mpMax + math.floor( (0.5 * nivel + spr) + 0.4 )
+					sheet.atkF = sheet.atkF + math.floor( (0.3 * nivel + str) + 0.4 )
+					sheet.atkM = sheet.atkM + math.floor( (0.3 * nivel + int) + 0.4 )
+					sheet.defF = sheet.defF + math.floor( (0.2 * nivel + con) + 0.4 )
+					sheet.defM = sheet.defM + math.floor( (0.2 * nivel + con) + 0.4 )
+				end
 			elseif classe == "Traper" then
-				sheet.hpMax = math.floor( ((con * 2) + 7) + (0.5 * nivel + con) + 0.4 )
-				sheet.spMax = math.floor( ((con * 2) + 7) + (0.7 * nivel + con) + 0.4 )
-				sheet.mpMax = math.floor( ((spr * 1) + 5) + (0.5 * nivel + spr) + 0.4 )
-				sheet.atkF = math.floor( ((str / 2) + 6) + (0.4 * nivel + str) + 0.4 )
-				sheet.atkM = math.floor( ((int / 3) + 8) + (0.3 * nivel + int) + 0.4 )
-				sheet.defF = math.floor( ((con * 1) + 2) + (0.2 * nivel + con) + 0.4 )
-				sheet.defM = math.floor( ((con * 1) + 2) + (0.2 * nivel + con) + 0.4 )
+				sheet.hpMax = math.floor((conIni * 2) + 7) 
+				sheet.spMax = math.floor((conIni * 2) + 7)
+				sheet.mpMax = math.floor((sprIni * 1) + 5)
+				sheet.atkF = math.floor((strIni / 2) + 6)
+				sheet.atkM = math.floor((intIni / 3) + 8)
+				sheet.defF = math.floor((conIni * 1) + 2)
+				sheet.defM = math.floor((conIni * 1) + 2)
+				if nivel>1 then
+					sheet.hpMax = sheet.hpMax + math.floor( (0.5 * nivel + con) + 0.4 )
+					sheet.spMax = sheet.spMax + math.floor( (0.7 * nivel + con) + 0.4 )
+					sheet.mpMax = sheet.mpMax + math.floor( (0.5 * nivel + spr) + 0.4 )
+					sheet.atkF = sheet.atkF + math.floor( (0.4 * nivel + str) + 0.4 )
+					sheet.atkM = sheet.atkM + math.floor( (0.3 * nivel + int) + 0.4 )
+					sheet.defF = sheet.defF + math.floor( (0.2 * nivel + con) + 0.4 )
+					sheet.defM = sheet.defM + math.floor( (0.2 * nivel + con) + 0.4 )
+				end
 			elseif classe == "Wugushi" then
-				sheet.hpMax = math.floor( ((con * 1) + 5) + (0.5 * nivel + con) + 0.4 )
-				sheet.spMax = math.floor( ((con * 1) + 5) + (0.7 * nivel + con) + 0.4 )
-				sheet.mpMax = math.floor( ((spr * 1) + 5) + (0.5 * nivel + spr) + 0.4 )
-				sheet.atkF = math.floor( ((str / 2) + 6) + (0.4 * nivel + str) + 0.4 )
-				sheet.atkM = math.floor( ((int / 3) + 8) + (0.3 * nivel + int) + 0.4 )
-				sheet.defF = math.floor( ((con * 1) + 2) + (0.2 * nivel + con) + 0.4 )
-				sheet.defM = math.floor( ((con * 1) + 2) + (0.2 * nivel + con) + 0.4 )
+				sheet.hpMax = math.floor((conIni * 1) + 5) 
+				sheet.spMax = math.floor((conIni * 1) + 5)
+				sheet.mpMax = math.floor((sprIni * 1) + 5)
+				sheet.atkF = math.floor((strIni / 2) + 6)
+				sheet.atkM = math.floor((intIni / 3) + 8)
+				sheet.defF = math.floor((conIni * 1) + 2)
+				sheet.defM = math.floor((conIni * 1) + 2)
+				if nivel>1 then
+					sheet.hpMax = sheet.hpMax + math.floor( (0.5 * nivel + con) + 0.4 )
+					sheet.spMax = sheet.spMax + math.floor( (0.7 * nivel + con) + 0.4 )
+					sheet.mpMax = sheet.mpMax + math.floor( (0.5 * nivel + spr) + 0.4 )
+					sheet.atkF = sheet.atkF + math.floor( (0.4 * nivel + str) + 0.4 )
+					sheet.atkM = sheet.atkM + math.floor( (0.3 * nivel + int) + 0.4 )
+					sheet.defF = sheet.defF + math.floor( (0.2 * nivel + con) + 0.4 )
+					sheet.defM = sheet.defM + math.floor( (0.2 * nivel + con) + 0.4 )
+				end
 			elseif classe == "Falcoeiro" then
-				sheet.hpMax = math.floor( ((con * 2) + 7) + (0.5 * nivel + con) + 0.4 )
-				sheet.spMax = math.floor( ((con * 1) + 5) + (0.7 * nivel + con) + 0.4 )
-				sheet.mpMax = math.floor( ((spr * 1) + 5) + (0.5 * nivel + spr) + 0.4 )
-				sheet.atkF = math.floor( ((str / 2) + 6) + (0.4 * nivel + str) + 0.4 )
-				sheet.atkM = math.floor( ((int / 3) + 8) + (0.3 * nivel + int) + 0.4 )
-				sheet.defF = math.floor( ((con * 1) + 2) + (0.2 * nivel + con) + 0.4 )
-				sheet.defM = math.floor( ((con * 1) + 2) + (0.2 * nivel + con) + 0.4 )
+				sheet.hpMax = math.floor((conIni * 2) + 7) 
+				sheet.spMax = math.floor((conIni * 1) + 5)
+				sheet.mpMax = math.floor((sprIni * 1) + 5)
+				sheet.atkF = math.floor((strIni / 2) + 6)
+				sheet.atkM = math.floor((intIni / 3) + 8)
+				sheet.defF = math.floor((conIni * 1) + 2)
+				sheet.defM = math.floor((conIni * 1) + 2)
+				if nivel>1 then
+					sheet.hpMax = sheet.hpMax + math.floor( (0.5 * nivel + con) + 0.4 )
+					sheet.spMax = sheet.spMax + math.floor( (0.7 * nivel + con) + 0.4 )
+					sheet.mpMax = sheet.mpMax + math.floor( (0.5 * nivel + spr) + 0.4 )
+					sheet.atkF = sheet.atkF + math.floor( (0.4 * nivel + str) + 0.4 )
+					sheet.atkM = sheet.atkM + math.floor( (0.3 * nivel + int) + 0.4 )
+					sheet.defF = sheet.defF + math.floor( (0.2 * nivel + con) + 0.4 )
+					sheet.defM = sheet.defM + math.floor( (0.2 * nivel + con) + 0.4 )
+				end
 			elseif classe == "Domador" then
-				sheet.hpMax = math.floor( ((con * 3) + 9) + (0.5 * nivel + con) + 0.4 )
-				sheet.spMax = math.floor( ((con * 1) + 5) + (0.5 * nivel + con) + 0.4 )
-				sheet.mpMax = math.floor( ((spr * 2) + 7) + (0.7 * nivel + spr) + 0.4 )
-				sheet.atkF = math.floor( ((str / 3) + 8) + (0.3 * nivel + str) + 0.4 )
-				sheet.atkM = math.floor( ((int / 2) + 6) + (0.4 * nivel + int) + 0.4 )
-				sheet.defF = math.floor( ((con * 0) + 5) + (0.2 * nivel + con) + 0.4 )
-				sheet.defM = math.floor( ((con * 0) + 5) + (0.2 * nivel + con) + 0.4 )
+				sheet.hpMax = math.floor((conIni * 3) + 9) 
+				sheet.spMax = math.floor((conIni * 1) + 5)
+				sheet.mpMax = math.floor((sprIni * 2) + 7)
+				sheet.atkF = math.floor((strIni / 3) + 8)
+				sheet.atkM = math.floor((intIni / 2) + 6)
+				sheet.defF = math.floor((conIni * 0) + 5)
+				sheet.defM = math.floor((conIni * 0) + 5)
+				if nivel>1 then
+					sheet.hpMax = sheet.hpMax + math.floor( (0.5 * nivel + con) + 0.4 )
+					sheet.spMax = sheet.spMax + math.floor( (0.5 * nivel + con) + 0.4 )
+					sheet.mpMax = sheet.mpMax + math.floor( (0.7 * nivel + spr) + 0.4 )
+					sheet.atkF = sheet.atkF + math.floor( (0.3 * nivel + str) + 0.4 )
+					sheet.atkM = sheet.atkM + math.floor( (0.4 * nivel + int) + 0.4 )
+					sheet.defF = sheet.defF + math.floor( (0.2 * nivel + con) + 0.4 )
+					sheet.defM = sheet.defM + math.floor( (0.2 * nivel + con) + 0.4 )
+				end
 			elseif classe == "Arbalaster" then
-				sheet.hpMax = math.floor( ((con * 2) + 7) + (1 * nivel+ con) + 0.4 )
-				sheet.spMax = math.floor( ((con * 2) + 7) + (0.7 * nivel + con) + 0.4 )
-				sheet.mpMax = math.floor( ((spr * 1) + 5) + (0.5 * nivel + spr) + 0.4 )
-				sheet.atkF = math.floor( ((str / 2) + 6) + (0.3 * nivel + str) + 0.4 )
-				sheet.atkM = math.floor( ((int / 3) + 8) + (0.3 * nivel + int) + 0.4 )
-				sheet.defF = math.floor( ((con * 1) + 2) + (0.3 * nivel + con) + 0.4 )
-				sheet.defM = math.floor( ((con * 0) + 5) + (0.3 * nivel + con) + 0.4 )
+				sheet.hpMax = math.floor((conIni * 2) + 7)
+				sheet.spMax = math.floor((conIni * 2) + 7)
+				sheet.mpMax = math.floor((sprIni * 1) + 5)
+				sheet.atkF = math.floor((strIni / 2) + 6)
+				sheet.atkM = math.floor((intIni / 3) + 8)
+				sheet.defF = math.floor((conIni * 1) + 2)
+				sheet.defM = math.floor((conIni * 0) + 5)
+				if nivel>1 then
+					sheet.hpMax = sheet.hpMax + math.floor( (1 * nivel + con) + 0.4 )
+					sheet.spMax = sheet.spMax + math.floor( (0.7 * nivel + con) + 0.4 )
+					sheet.mpMax = sheet.mpMax + math.floor( (0.5 * nivel + spr) + 0.4 )
+					sheet.atkF = sheet.atkF + math.floor( (0.3 * nivel + str) + 0.4 )
+					sheet.atkM = sheet.atkM + math.floor( (0.3 * nivel + int) + 0.4 )
+					sheet.defF = sheet.defF + math.floor( (0.3 * nivel + con) + 0.4 )
+					sheet.defM = sheet.defM + math.floor( (0.3 * nivel + con) + 0.4 )
+				end
 			elseif classe == "Adepto" then
-				sheet.hpMax = math.floor( ((con * 2) + 7) + (0.5 * nivel + con) + 0.4 )
-				sheet.spMax = math.floor( ((con * 1) + 5) + (0.7 * nivel + con) + 0.4 )
-				sheet.mpMax = math.floor( ((spr * 2) + 7) + (0.7 * nivel + spr) + 0.4 )
-				sheet.atkF = math.floor( ((str / 3) + 8) + (0.3 * nivel + str) + 0.4 )
-				sheet.atkM = math.floor( ((int / 3) + 8) + (0.4 * nivel + int) + 0.4 )
-				sheet.defF = math.floor( ((con * 0) + 5) + (0.4 * nivel + con) + 0.4 )
-				sheet.defM = math.floor( ((con * 1) + 2) + (0.4 * nivel + con) + 0.4 )
+				sheet.hpMax = math.floor((conIni * 2) + 7) 
+				sheet.spMax = math.floor((conIni * 1) + 5)
+				sheet.mpMax = math.floor((sprIni * 2) + 7)
+				sheet.atkF = math.floor((strIni / 3) + 8)
+				sheet.atkM = math.floor((intIni / 3) + 8)
+				sheet.defF = math.floor((conIni * 0) + 5)
+				sheet.defM = math.floor((conIni * 1) + 2)
+				if nivel>1 then
+					sheet.hpMax = sheet.hpMax + math.floor( (0.5 * nivel + con) + 0.4 )
+					sheet.spMax = sheet.spMax + math.floor( (0.7 * nivel + con) + 0.4 )
+					sheet.mpMax = sheet.mpMax + math.floor( (0.7 * nivel + spr) + 0.4 )
+					sheet.atkF = sheet.atkF + math.floor( (0.3 * nivel + str) + 0.4 )
+					sheet.atkM = sheet.atkM + math.floor( (0.4 * nivel + int) + 0.4 )
+					sheet.defF = sheet.defF + math.floor( (0.4 * nivel + con) + 0.4 )
+					sheet.defM = sheet.defM + math.floor( (0.4 * nivel + con) + 0.4 )
+				end
 			elseif classe == "Clerigo" then
-				sheet.hpMax = math.floor( ((con * 2) + 7) + (1 * nivel+ con) + 0.4 )
-				sheet.spMax = math.floor( ((con * 1) + 5) + (0.7 * nivel + con) + 0.4 )
-				sheet.mpMax = math.floor( ((spr * 2) + 7) + (0.7 * nivel + spr) + 0.4 )
-				sheet.atkF = math.floor( ((str / 3) + 8) + (0.3 * nivel + str) + 0.4 )
-				sheet.atkM = math.floor( ((int / 2) + 6) + (0.4 * nivel + int) + 0.4 )
-				sheet.defF = math.floor( ((con * 0) + 5) + (0.4 * nivel + con) + 0.4 )
-				sheet.defM = math.floor( ((con * 1) + 2) + (0.4 * nivel + con) + 0.4 )
+				sheet.hpMax = math.floor((conIni * 2) + 7)
+				sheet.spMax = math.floor((conIni * 1) + 5)
+				sheet.mpMax = math.floor((sprIni * 2) + 7)
+				sheet.atkF = math.floor((strIni / 3) + 8)
+				sheet.atkM = math.floor((intIni / 2) + 6)
+				sheet.defF = math.floor((conIni * 0) + 5)
+				sheet.defM = math.floor((conIni * 1) + 2)
+				if nivel>1 then
+					sheet.hpMax = sheet.hpMax + math.floor( (1 * nivel + con) + 0.4 )
+					sheet.spMax = sheet.spMax + math.floor( (0.7 * nivel + con) + 0.4 )
+					sheet.mpMax = sheet.mpMax + math.floor( (0.7 * nivel + spr) + 0.4 )
+					sheet.atkF = sheet.atkF + math.floor( (0.3 * nivel + str) + 0.4 )
+					sheet.atkM = sheet.atkM + math.floor( (0.4 * nivel + int) + 0.4 )
+					sheet.defF = sheet.defF + math.floor( (0.4 * nivel + con) + 0.4 )
+					sheet.defM = sheet.defM + math.floor( (0.4 * nivel + con) + 0.4 )
+				end
 			elseif classe == "Sacerdote" then
-				sheet.hpMax = math.floor( ((con * 3) + 9) + (0.5 * nivel + con) + 0.4 )
-				sheet.spMax = math.floor( ((con * 1) + 5) + (0.5 * nivel + con) + 0.4 )
-				sheet.mpMax = math.floor( ((spr * 3) + 9) + (0.7 * nivel + spr) + 0.4 )
-				sheet.atkF = math.floor( ((str / 3) + 8) + (0.3 * nivel + str) + 0.4 )
-				sheet.atkM = math.floor( ((int / 2) + 6) + (0.6 * nivel + int) + 0.4 )
-				sheet.defF = math.floor( ((con * 0) + 5) + (0.2 * nivel + con) + 0.4 )
-				sheet.defM = math.floor( ((con * 0) + 5) + (0.3 * nivel + con) + 0.4 )
+				sheet.hpMax = math.floor((conIni * 3) + 9) 
+				sheet.spMax = math.floor((conIni * 1) + 5)
+				sheet.mpMax = math.floor((sprIni * 3) + 9)
+				sheet.atkF = math.floor((strIni / 3) + 8)
+				sheet.atkM = math.floor((intIni / 2) + 6)
+				sheet.defF = math.floor((conIni * 0) + 5)
+				sheet.defM = math.floor((conIni * 0) + 5)
+				if nivel>1 then
+					sheet.hpMax = sheet.hpMax + math.floor( (0.5 * nivel + con) + 0.4 )
+					sheet.spMax = sheet.spMax + math.floor( (0.5 * nivel + con) + 0.4 )
+					sheet.mpMax = sheet.mpMax + math.floor( (0.7 * nivel + spr) + 0.4 )
+					sheet.atkF = sheet.atkF + math.floor( (0.3 * nivel + str) + 0.4 )
+					sheet.atkM = sheet.atkM + math.floor( (0.6 * nivel + int) + 0.4 )
+					sheet.defF = sheet.defF + math.floor( (0.2 * nivel + con) + 0.4 )
+					sheet.defM = sheet.defM + math.floor( (0.3 * nivel + con) + 0.4 )
+				end
 			elseif classe == "Cruzado" then
-				sheet.hpMax = math.floor( ((con * 3) + 9) + (1.5 * nivel + con) + 0.4 )
-				sheet.spMax = math.floor( ((con * 2) + 7) + (0.7 * nivel + con) + 0.4 )
-				sheet.mpMax = math.floor( ((spr * 1) + 5) + (0.9 * nivel + spr) + 0.4 )
-				sheet.atkF = math.floor( ((str / 2) + 6) + (0.4 * nivel + str) + 0.4 )
-				sheet.atkM = math.floor( ((int / 3) + 8) + (0.4 * nivel + int) + 0.4 )
-				sheet.defF = math.floor( ((con * 2) + 1) + (0.3 * nivel + con) + 0.4 )
-				sheet.defM = math.floor( ((con * 1) + 2) + (0.2 * nivel + con) + 0.4 )
+				sheet.hpMax = math.floor((conIni * 3) + 9) 
+				sheet.spMax = math.floor((conIni * 2) + 7)
+				sheet.mpMax = math.floor((sprIni * 1) + 5)
+				sheet.atkF = math.floor((strIni / 2) + 6)
+				sheet.atkM = math.floor((intIni / 3) + 8)
+				sheet.defF = math.floor((conIni * 2) + 1)
+				sheet.defM = math.floor((conIni * 1) + 2)
+				if nivel>1 then
+					sheet.hpMax = sheet.hpMax + math.floor( (1.5 * nivel + con) + 0.4 )
+					sheet.spMax = sheet.spMax + math.floor( (0.7 * nivel + con) + 0.4 )
+					sheet.mpMax = sheet.mpMax + math.floor( (0.9 * nivel + spr) + 0.4 )
+					sheet.atkF = sheet.atkF + math.floor( (0.4 * nivel + str) + 0.4 )
+					sheet.atkM = sheet.atkM + math.floor( (0.4 * nivel + int) + 0.4 )
+					sheet.defF = sheet.defF + math.floor( (0.3 * nivel + con) + 0.4 )
+					sheet.defM = sheet.defM + math.floor( (0.2 * nivel + con) + 0.4 )
+				end
 			elseif classe == "Padre" then
-				sheet.hpMax = math.floor( ((con * 2) + 7) + (0.5 * nivel + con) + 0.4 )
-				sheet.spMax = math.floor( ((con * 1) + 5) + (0.5 * nivel + con) + 0.4 )
-				sheet.mpMax = math.floor( ((spr * 1) + 5) + (0.9 * nivel + spr) + 0.4 )
-				sheet.atkF = math.floor( ((str / 3) + 8) + (0.3 * nivel + str) + 0.4 )
-				sheet.atkM = math.floor( ((int / 2) + 6) + (0.3 * nivel + int) + 0.4 )
-				sheet.defF = math.floor( ((con * 0) + 5) + (0.2 * nivel + con) + 0.4 )
-				sheet.defM = math.floor( ((con * 1) + 2) + (0.3 * nivel + con) + 0.4 )
+				sheet.hpMax = math.floor((conIni * 2) + 7) 
+				sheet.spMax = math.floor((conIni * 1) + 5)
+				sheet.mpMax = math.floor((sprIni * 1) + 5)
+				sheet.atkF = math.floor((strIni / 3) + 8)
+				sheet.atkM = math.floor((intIni / 2) + 6)
+				sheet.defF = math.floor((conIni * 0) + 5)
+				sheet.defM = math.floor((conIni * 1) + 2)
+				if nivel>1 then
+					sheet.hpMax = sheet.hpMax + math.floor( (0.5 * nivel + con) + 0.4 )
+					sheet.spMax = sheet.spMax + math.floor( (0.5 * nivel + con) + 0.4 )
+					sheet.mpMax = sheet.mpMax + math.floor( (0.9 * nivel + spr) + 0.4 )
+					sheet.atkF = sheet.atkF + math.floor( (0.3 * nivel + str) + 0.4 )
+					sheet.atkM = sheet.atkM + math.floor( (0.3 * nivel + int) + 0.4 )
+					sheet.defF = sheet.defF + math.floor( (0.2 * nivel + con) + 0.4 )
+					sheet.defM = sheet.defM + math.floor( (0.3 * nivel + con) + 0.4 )
+				end
 			elseif classe == "Exorcista" then
-				sheet.hpMax = math.floor( ((con * 2) + 7) + (1 * nivel + con) + 0.4 )
-				sheet.spMax = math.floor( ((con * 1) + 5) + (0.5 * nivel + con) + 0.4 )
-				sheet.mpMax = math.floor( ((spr * 2) + 7) + (0.9 * nivel + spr) + 0.4 )
-				sheet.atkF = math.floor( ((str / 3) + 8) + (0.3 * nivel + str) + 0.4 )
-				sheet.atkM = math.floor( ((int / 1) + 4) + (0.4 * nivel + int) + 0.4 )
-				sheet.defF = math.floor( ((con * 1) + 2) + (0.2 * nivel + con) + 0.4 )
-				sheet.defM = math.floor( ((con * 1) + 2) + (0.3 * nivel + con) + 0.4 )
+				sheet.hpMax = math.floor((conIni * 2) + 7)
+				sheet.spMax = math.floor((conIni * 1) + 5)
+				sheet.mpMax = math.floor((sprIni * 2) + 7)
+				sheet.atkF = math.floor((strIni / 3) + 8)
+				sheet.atkM = math.floor((intIni / 1) + 4)
+				sheet.defF = math.floor((conIni * 1) + 2)
+				sheet.defM = math.floor((conIni * 1) + 2)
+				if nivel>1 then
+					sheet.hpMax = sheet.hpMax + math.floor( (1 * nivel + con) + 0.4 )
+					sheet.spMax = sheet.spMax + math.floor( (0.5 * nivel + con) + 0.4 )
+					sheet.mpMax = sheet.mpMax + math.floor( (0.9 * nivel + spr) + 0.4 )
+					sheet.atkF = sheet.atkF + math.floor( (0.3 * nivel + str) + 0.4 )
+					sheet.atkM = sheet.atkM + math.floor( (0.4 * nivel + int) + 0.4 )
+					sheet.defF = sheet.defF + math.floor( (0.2 * nivel + con) + 0.4 )
+					sheet.defM = sheet.defM + math.floor( (0.3 * nivel + con) + 0.4 )
+				end
 			elseif classe == "Inquisitor" then
-				sheet.hpMax = math.floor( ((con * 1) + 5) + (1.5 * nivel + con) + 0.4 )
-				sheet.spMax = math.floor( ((con * 2) + 7) + (0.5 * nivel + con) + 0.4 )
-				sheet.mpMax = math.floor( ((spr * 2) + 7) + (0.7 * nivel + spr) + 0.4 )
-				sheet.atkF = math.floor( ((str / 1) + 4) + (0.3 * nivel + str) + 0.4 )
-				sheet.atkM = math.floor( ((int / 3) + 8) + (0.4 * nivel + int) + 0.4 )
-				sheet.defF = math.floor( ((con * 1) + 2) + (0.3 * nivel + con) + 0.4 )
-				sheet.defM = math.floor( ((con * 0) + 5) + (0.2 * nivel + con) + 0.4 )
+				sheet.hpMax = math.floor((conIni * 1) + 5) 
+				sheet.spMax = math.floor((conIni * 2) + 7)
+				sheet.mpMax = math.floor((sprIni * 2) + 7)
+				sheet.atkF = math.floor((strIni / 1) + 4)
+				sheet.atkM = math.floor((intIni / 3) + 8)
+				sheet.defF = math.floor((conIni * 1) + 2)
+				sheet.defM = math.floor((conIni * 0) + 5)
+				if nivel>1 then
+					sheet.hpMax = sheet.hpMax + math.floor( (1.5 * nivel + con) + 0.4 )
+					sheet.spMax = sheet.spMax + math.floor( (0.5 * nivel + con) + 0.4 )
+					sheet.mpMax = sheet.mpMax + math.floor( (0.7 * nivel + spr) + 0.4 )
+					sheet.atkF = sheet.atkF + math.floor( (0.3 * nivel + str) + 0.4 )
+					sheet.atkM = sheet.atkM + math.floor( (0.4 * nivel + int) + 0.4 )
+					sheet.defF = sheet.defF + math.floor( (0.3 * nivel + con) + 0.4 )
+					sheet.defM = sheet.defM + math.floor( (0.2 * nivel + con) + 0.4 )
+				end
 			elseif classe == "Templário" then
-				sheet.hpMax = math.floor( ((con * 3) + 9) + (1 * nivel+ con) + 0.4 )
-				sheet.spMax = math.floor( ((con * 2) + 7) + (0.5 * nivel + con) + 0.4 )
-				sheet.mpMax = math.floor( ((spr * 3) + 9) + (0.5 * nivel + spr) + 0.4 )
-				sheet.atkF = math.floor( ((str / 2) + 6) + (0.4 * nivel + str) + 0.4 )
-				sheet.atkM = math.floor( ((int / 3) + 8) + (0.4 * nivel + int) + 0.4 )
-				sheet.defF = math.floor( ((con * 2) + 1) + (0.3 * nivel + con) + 0.4 )
-				sheet.defM = math.floor( ((con * 1) + 2) + (0.2 * nivel + con) + 0.4 )
+				sheet.hpMax = math.floor((conIni * 3) + 9)
+				sheet.spMax = math.floor((conIni * 2) + 7)
+				sheet.mpMax = math.floor((sprIni * 3) + 9)
+				sheet.atkF = math.floor((strIni / 2) + 6)
+				sheet.atkM = math.floor((intIni / 3) + 8)
+				sheet.defF = math.floor((conIni * 2) + 1)
+				sheet.defM = math.floor((conIni * 1) + 2)
+				if nivel>1 then
+					sheet.hpMax = sheet.hpMax + math.floor( (1 * nivel + con) + 0.4 )
+					sheet.spMax = sheet.spMax + math.floor( (0.5 * nivel + con) + 0.4 )
+					sheet.mpMax = sheet.mpMax + math.floor( (0.5 * nivel + spr) + 0.4 )
+					sheet.atkF = sheet.atkF + math.floor( (0.4 * nivel + str) + 0.4 )
+					sheet.atkM = sheet.atkM + math.floor( (0.4 * nivel + int) + 0.4 )
+					sheet.defF = sheet.defF + math.floor( (0.3 * nivel + con) + 0.4 )
+					sheet.defM = sheet.defM + math.floor( (0.2 * nivel + con) + 0.4 )
+				end
 			end
 		</event>
 	</dataLink>

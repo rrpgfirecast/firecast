@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <root>
-    <element id="Ambesek.3d6" name="Ficha 3d6" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%203d6/output/Ficha%203d6.rpk?raw=true" fileName="Ficha 3d6.rpk" repositoryPath="Sheets/Ficha 3d6/" author="Ambesek" description="Ficha para o sistema 3d6" version="1.0" compilationDate="27042023002314" compilationDigest="12a8e47a6941a0e253ea8245cd92bb272160b228">
-        <info lang="pt-BR" name="Ficha 3d6" description="Ficha para o sistema 3d6" author="Ambesek"/>
+    <element id="Ambesek.3d6" name="Ficha ReDungeon" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%203d6/output/Ficha%203d6.rpk?raw=true" fileName="Ficha 3d6.rpk" repositoryPath="Sheets/Ficha 3d6/" author="Ambesek" description="Ficha para o sistema 3d6" version="1.0.1" compilationDate="27042023002314" compilationDigest="12a8e47a6941a0e253ea8245cd92bb272160b228">
+        <info lang="pt-BR" name="Ficha ReDungeon" description="Ficha para o sistema 3d6" author="Ambesek"/>
         <dataTypes>
-            <dataType id="Ambesek.3d6" title="Ficha 3d6" formType="sheetTemplate">
+            <dataType id="Ambesek.3d6" title="Ficha ReDungeon" formType="sheetTemplate">
                 <info title="Ficha 3d6"/>
             </dataType>
         </dataTypes>
