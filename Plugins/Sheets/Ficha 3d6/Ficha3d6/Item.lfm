@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmItem" width="1200" height="25" margins="{top=1}">
+	<rectangle align="client" color="#212121">
+		<edit align="left" width="200" field="nome"/>
+		<edit align="client" horzTextAlign="center" field="efeito"/>
+
+		<layout align="right" width="125">
+			<edit align="client" field="rolagem"/>
+
+			<button align="right" width="25" height="25" text="R">
+				<event name="onClick">
+					if sheet.rolagem == nil then return end
+
+					local rolagem = Firecast.interpretarRolagem(sheet.rolagem)
+					if not rolagem.possuiAlgumDado then return end
+
+					local mesa = Firecast.getMesaDe(sheet)
+
+					mesa.activeChat:rolarDados(rolagem, sheet.nome);
+				</event>
+			</button>
+		</layout>
+
+		<layout align="right" width="225">
+			<comboBox align="left" width="150" field="tipo" items="{'Consumível', 'Material', 'Arma', 'Equipamento', 'Peça de Vestimenta', '-'}"/>
+
+			<edit align="client" field="quantidade"/>
+
+			<button align="right" width="25" height="25" text="X">
+				<event name="onClick">
+					Dialogs.confirmOkCancel("Tem certeza que quer apagar esse item?",
+						function (confirmado)
+							if confirmado then
+								NDB.deleteNode(sheet);
+							end;
+					end);
+				</event>
+			</button>
+		</layout>
+	</rectangle>
+</form>

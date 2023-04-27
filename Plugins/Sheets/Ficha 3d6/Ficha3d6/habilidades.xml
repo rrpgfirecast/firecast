@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmHabilidades" align="client">
+	<scrollBox align="client">
+		<rectangle align="left" width="240" color="black" margins="{right=10}">
+			<layout align="top" height="25">
+				<!-- RecordList + DataScopeBox -->
+				<button align="left" width="25" text="+" onClick="self.rclHabilidades:append();"/>
+				<label align="client" text="Lista de Habilidades"/>
+			</layout>
+			<!-- RecordList para seleção -->
+			<recordList align="client" name="rclHabilidades" field="listaHabilidades" templateForm="frmHabilidadeItem" layout="vertical" selectable="true" minQt="1">
+				<event name="onCompare"><![CDATA[
+					-- Esse codigo organiza a ordem dos objetos da lista alfabeticamente. 
+			        return Utils.compareStringPtBr(nodeA.nome, nodeB.nome);              
+			        ]]>
+				</event>
+				<event name="onSelect"><![CDATA[
+						local node = self.rclHabilidades.selectedNode;
+						self.dsbHabilidade.node = node; 
+						self.dsbHabilidade.visible = (node ~= nil);
+					]]>
+				</event>
+				<event name="onEndEnumeration">
+				    if self.dsbHabilidade.selectedNode == nil and sheet ~= nil then
+				        local nodes = ndb.getChildNodes(sheet.listaHabilidades);               
+
+				        if #nodes > 0 then
+				            self.dsbHabilidade.selectedNode = nodes[1];
+				        end;
+				    end;
+				</event>
+			</recordList>
+		</rectangle>
+		
+		<!-- Info selecionada vai estar aqui -->
+		<dataScopeBox align="client" name="dsbHabilidade" visible="false">
+			<scrollBox align="client">
+				<layout align="top" height="100" margins="{top=5}">
+					<rectangle align="left" width="100" color="black" strokeColor="white" strokeSize="1" margins="{right=5}">
+						<image align="client" field="icon" animate="true" editable="true" style="proportional">
+							<event name="OnStartDrag">
+							    drag:addData("imageURL", sheet.icon);
+							</event>
+						</image>
+					</rectangle>
+					<layout align="client">
+						<layout align="top" height="25">
+							<label align="left" width="50" text="Nome"/>
+							<edit align="left" width="200" field="nome"/>
+						</layout>
+						<layout align="top" height="25">
+							<label align="left" width="50" text="Custo"/>
+							<edit align="left" width="50" field="custo"/>
+						</layout>
+					</layout>
+				</layout>
+				<textEditor align="client" field="detalhes" margins="{bottom=5,top=5}"/>
+			</scrollBox>
+		</dataScopeBox>
+	</scrollBox>
+</form>

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmHabilidadeItem" width="110" height="25" margins="{top=1,bottom=4}">
+	<rectangle align="client" color="#212121" hitTest="false">
+		<label align="client" field="nome" horzTextAlign="center"/>
+
+		<!-- Botão que apaga o objeto da lista -->
+		<button align="right" width="25" text="X">
+			<event name="onClick">
+				Dialogs.confirmOkCancel("Tem certeza que quer apagar esse objeto?",
+					function (confirmado)
+						if confirmado then
+							NDB.deleteNode(sheet);
+						end;
+				end);
+			</event>
+		</button>
+	</rectangle>
+
+	<dataLink field="nome">
+		<event name="onChange"><![CDATA[
+			-- Atualiza a ordem lista a cada alteração do nome
+			local rclName = self:findControlByName("rclSelector");
+			rclName:sort();
+	        ]]>
+		</event>
+	</dataLink>
+
+	<dataLink fields="{'custo'}">
+		<event name="onChange">
+			if sheet==nil then return end
+
+			local node = NDB.getRoot(sheet)
+			local nodes = NDB.getChildNodes(node.listaHabilidades)
+			local pts = 0
+			for i=1, #nodes, 1 do
+				pts = pts + (tonumber(nodes[i].custo) or 0)
+			end
+
+			node.ptsHabilidades = pts
+		</event>
+	</dataLink>
+</form>

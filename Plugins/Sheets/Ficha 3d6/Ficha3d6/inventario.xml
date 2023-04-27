@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmInventory" align="client">
+	<scrollBox align="client">
+		<rectangle align="top" top="270" width="1210" height="25" color="black" strokeColor="white" strokeSize="1" margins="{bottom=5}">
+			<button align="left" width="200" text="+Item" onClick="self.rclInventario:append();" margins="{left=2,top=2,bottom=2}"/>
+			<label align="client" horzTextAlign="center" text="Efeitos Adicionais"/>
+			<label align="right" width="125" horzTextAlign="center" text="Rolagem"/>
+			<layout align="right" width="225">
+				<label align="left" width="150" horzTextAlign="center" text="Tipo"/>
+				<label align="right" width="50" horzTextAlign="center" text="Qtd" margins="{right=25}"/>
+			</layout>
+		</rectangle>
+
+		<recordList align="client" name="rclInventario" field="listaDeItens" templateForm="frmItem" layout="vertical" minQt="1"/>
+	</scrollBox>
+</form>

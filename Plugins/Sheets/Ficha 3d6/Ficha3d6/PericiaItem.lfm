@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmPericiaItem" height="25" width="350" margins="{top=2}">
+	 <script> 
+		<![CDATA[			
+		local function askForDelete()
+			Dialogs.confirmYesNo("Deseja realmente apagar?",
+								 function (confirmado)
+									if confirmado then
+										NDB.deleteNode(sheet);
+									end;
+								 end);
+		end;
+	]]>
+	</script>
+
+	<checkBox align="left" field="trained" width="20"/>
+	<edit align="client" vertTextAlign="center" field="nome"/>
+	<layout align="right" width="235">
+		<comboBox align="left" width="75" field="atributo" items="{'STR','CON','INT','SPR','DEX','-'}" values="{'str','con','int','spr','dex','none'}"/>
+
+		<layout align="right" width="160">
+			<layout align="left" width="100">
+				<edit align="left" width="50" field="gasto" type="number" vertTextAlign="center" horzTextAlign="center"/>
+				<rectangle align="right" width="50" color="black" strokeColor="white" strokeSize="1" compilerOrder="3">
+					<label field="total" align="client" horzTextAlign="center"/>
+				</rectangle>
+			</layout>
+			<dataLink fields="{'atributo','gasto','str','con','int','spr','dex'}">
+				<event name="onChange">
+					if sheet==nil then return end
+
+					local atr = sheet.atributo or "none"
+					sheet.total = (tonumber(sheet.gasto) or 0) + (tonumber(sheet[atr]) or 0)
+				</event>
+			</dataLink>
+
+			<button align="right" width="30" text="R">
+				<event name="onClick">
+					local roll = "3d6+" .. (tonumber(sheet.total) or 0)
+
+					local rolagem = Firecast.interpretarRolagem(roll)
+
+					local mesa = Firecast.getMesaDe(sheet)
+
+					mesa.activeChat:rolarDados(rolagem, sheet.nome);
+				</event>
+			</button>
+			<button align="right" width="30" text="X" onClick="askForDelete();"/>
+		</layout>
+	</layout>
+
+	<dataLink fields="{'gasto'}">
+		<event name="onChange">
+			if sheet==nil then return end
+
+			local node = NDB.getRoot(sheet)
+			local nodes = NDB.getChildNodes(node.pericias)
+			local pts = 0
+			for i=1, #nodes, 1 do
+				local gasto = (tonumber(nodes[i].gasto) or 0)
+				pts = pts + (gasto * (1+gasto)/2)
+			end
+
+			node.ptsPericias = pts
+		</event>
+	</dataLink>
+</form>
