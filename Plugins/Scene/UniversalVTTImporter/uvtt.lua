@@ -293,55 +293,84 @@ SceneLib.registerPlugin(
 			            -- UPLOAD MAP TO FIREDRIVE
 			            FireDrive.createDirectory("/uploads")
 
-		                local date_table = os.date("*t")
-				        local subfolder = date_table.year .. date_table.month
+		              local date_table = os.date("*t")
+		              local month = date_table.month
+		              if month < 10 then
+		              	month = "0"..month
+		              end
+				        	local subfolder = date_table.year.. "-" .. month
 
-				        FireDrive.createDirectory("/uploads/" .. subfolder)
+				        	FireDrive.createDirectory("/uploads/" .. subfolder)
 
-				        FireDrive.upload("/uploads/" .. subfolder .. "/" .. arq.name..".png", mapStream,
-		                	function(fditem)
-								scene.bkgImageURL = fditem.url;	                		
-		                	end)
+				        	FireDrive.upload("/uploads/" .. subfolder .. "/" .. arq.name..".png", mapStream,
+		                function(fditem)
+											scene.bkgImageURL = fditem.url;	                		
+		                end)
 
-				        -- ADD WALLS
-				        for _,w in ipairs(dg.line_of_sight) do
-				        	local polygon = {}
-				        	local width = math.abs(w[1].x - w[2].x)
-				        	local height = math.abs(w[1].y - w[2].y)
+				        	local walls = false
+				        	-- ADD WALLS
+				        	for _,w in ipairs(dg.line_of_sight) do
+				        		local polygon = {}
+				        		local width = math.abs(w[1].x - w[2].x)
+				        		local height = math.abs(w[1].y - w[2].y)
+	
+					      	  if width > height then
+					      	  	polygon[1] = {x=(w[1].x)*size,y=(w[1].y-0.05)*size}
+					      	  	polygon[2] = {x=(w[2].x)*size,y=(w[2].y-0.05)*size}
+					      	  	polygon[3] = {x=(w[2].x)*size,y=(w[2].y+0.05)*size}
+					      	  	polygon[4] = {x=(w[1].x)*size,y=(w[1].y+0.05)*size}
+					      	  else
+					      	  	polygon[1] = {x=(w[1].x-0.05)*size,y=(w[1].y)*size}
+					      	  	polygon[2] = {x=(w[2].x-0.05)*size,y=(w[2].y)*size}
+					      	  	polygon[3] = {x=(w[2].x+0.05)*size,y=(w[2].y)*size}
+					      	  	polygon[4] = {x=(w[1].x+0.05)*size,y=(w[1].y)*size}
+					      	  end
+				        		scene.fogOfWar:addOpaqueArea(polygon)
+				        		walls = true
+				        	end
 
-					        if width > height then
-					        	polygon[1] = {x=(w[1].x)*size,y=(w[1].y-0.05)*size}
-					        	polygon[2] = {x=(w[2].x)*size,y=(w[2].y-0.05)*size}
-					        	polygon[3] = {x=(w[2].x)*size,y=(w[2].y+0.05)*size}
-					        	polygon[4] = {x=(w[1].x)*size,y=(w[1].y+0.05)*size}
-					        else
-					        	polygon[1] = {x=(w[1].x-0.05)*size,y=(w[1].y)*size}
-					        	polygon[2] = {x=(w[2].x-0.05)*size,y=(w[2].y)*size}
-					        	polygon[3] = {x=(w[2].x+0.05)*size,y=(w[2].y)*size}
-					        	polygon[4] = {x=(w[1].x+0.05)*size,y=(w[1].y)*size}
-					        end
-				        	scene.fogOfWar:addOpaqueArea(polygon)
-				        end
-				        --ADD DOORS
-				        for _,p in ipairs(dg.portals) do
-				        	local w = p.bounds
-				        	local polygon = {}
-				        	local width = math.abs(w[1].x - w[2].x)
-				        	local height = math.abs(w[1].y - w[2].y)
+				        	--ADD DOORS
+				        	for _,p in ipairs(dg.portals) do
+				        		local w = p.bounds
+				        		local polygon = {}
+				        		local width = math.abs(w[1].x - w[2].x)
+				        		local height = math.abs(w[1].y - w[2].y)
+	
+					      	  if width > height then
+					      	  	polygon[1] = {x=(w[1].x)*size,y=(w[1].y-0.05)*size}
+					      	  	polygon[2] = {x=(w[2].x)*size,y=(w[2].y-0.05)*size}
+					      	  	polygon[3] = {x=(w[2].x)*size,y=(w[2].y+0.05)*size}
+					      	  	polygon[4] = {x=(w[1].x)*size,y=(w[1].y+0.05)*size}
+					      	  else
+					      	  	polygon[1] = {x=(w[1].x-0.05)*size,y=(w[1].y)*size}
+					      	  	polygon[2] = {x=(w[2].x-0.05)*size,y=(w[2].y)*size}
+					      	  	polygon[3] = {x=(w[2].x+0.05)*size,y=(w[2].y)*size}
+					      	  	polygon[4] = {x=(w[1].x+0.05)*size,y=(w[1].y)*size}
+					      	  end
+				        		scene.fogOfWar:addOpaqueArea(polygon)
+				        		walls = true
+				        	end
+	
+				        	-- ADD AREA TO EXPLORE
+				        	if walls then
+				        		local polygon = {}
+				        		polygon[1] = {x=0,y=0}
+				        		polygon[2] = {x=scene.worldWidth,y=0}
+				        		polygon[3] = {x=scene.worldWidth,y=scene.worldHeight}
+				        		polygon[4] = {x=0,y=scene.worldHeight}
+	
+										scene.fogOfWar.enabled = true
+				        		scene.fogOfWar:setArea(polygon,"explorable")
+				        	end
 
-					        if width > height then
-					        	polygon[1] = {x=(w[1].x)*size,y=(w[1].y-0.05)*size}
-					        	polygon[2] = {x=(w[2].x)*size,y=(w[2].y-0.05)*size}
-					        	polygon[3] = {x=(w[2].x)*size,y=(w[2].y+0.05)*size}
-					        	polygon[4] = {x=(w[1].x)*size,y=(w[1].y+0.05)*size}
-					        else
-					        	polygon[1] = {x=(w[1].x-0.05)*size,y=(w[1].y)*size}
-					        	polygon[2] = {x=(w[2].x-0.05)*size,y=(w[2].y)*size}
-					        	polygon[3] = {x=(w[2].x+0.05)*size,y=(w[2].y)*size}
-					        	polygon[4] = {x=(w[1].x+0.05)*size,y=(w[1].y)*size}
-					        end
-				        	scene.fogOfWar:addOpaqueArea(polygon)
-				        end
+				        	-- ADD LIGHTS
+				        	for _,p in ipairs(dg.lights) do
+				        		local light = scene.items:addToken("background")
+				        		light.x = (p.position.x-0.5) * size
+				        		light.y = (p.position.y-0.5) * size
+				        		light.lightIntenseRange = p.range*size
+										light.lightAngle = 360
+				        	end
 			        end)
 	
 			end)
