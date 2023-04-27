@@ -75,7 +75,11 @@ SceneLib.registerPlugin(
 				                FireDrive.createDirectory("/uploads");
 
 				                local date_table = os.date("*t")
-				                local subfolder = date_table.year .. date_table.month;
+					            local month = date_table.month
+					            if month < 10 then
+					            	month = "0"..month
+					            end
+						        local subfolder = date_table.year.. "-" .. month
 
 				                FireDrive.createDirectory("/uploads/" .. subfolder);
 
