@@ -41,7 +41,6 @@
 		<layout left="380" top="110" width="825" height="495">
 			<rectangle align="client" color="black"/>
 			<label left="5" top="1" width="100" height="20" text="HISTORIA"/>
-			<button left="720" top="1" width="100" height="20" text="Copiar Antigo" onClick="System.setClipboardText(sheet.historia);"/>
 			<richEdit left="5" top="25" width="815" height="465" field="background" backgroundColor="#333333" defaultFontSize="12" defaultFontColor="white"/>
 		</layout>
 	</scrollBox>

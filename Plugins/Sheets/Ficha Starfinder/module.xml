@@ -1,14 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <module sdkVersion="3.6c">
 	<id>Ambesek.Starfinder</id>
-	<version>0.6.4</version>
-	
-	
-	
-	
-	
+	<version>0.7</version>
     <info lang="pt-BR">
-        <!--Informações do plugin na língua "pt-BR". Você pode ter várias tags "info", uma para cada tradução que quiser.-->
         <name>Ficha Starfinder</name>
         <description>Ficha feita para o sistema Starfinder.</description>
         <author>Ambesek</author>

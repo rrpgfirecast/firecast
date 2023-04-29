@@ -26,6 +26,8 @@
 			<ListaFlexivel nome="MECHAS" rclName="rclInventarioMechas" rclField="rclInventarioMechas" frm="frmInventaryItem"/>
 			<ListaFlexivel nome="VEICULOS" rclName="rclInventarioVeiculos" rclField="rclInventarioVeiculos" frm="frmInventaryItem"/>
 			<ListaFlexivel nome="EQUIPAMENTOS" rclName="rclInventarioEquipamentos" rclField="rclInventarioEquipamentos" frm="frmInventaryItem"/>
+			<ListaFlexivel nome="IMPLANTES" rclName="rclInventarioImplantes" rclField="rclInventarioImplantes" frm="frmInventaryItem"/>
+			<ListaFlexivel nome="MEDICINA" rclName="rclInventarioMedicina" rclField="rclInventarioMedicina" frm="frmInventaryItem"/>
 			<ListaFlexivel nome="ARMAS" rclName="rclInventarioArmas" rclField="rclInventarioArmas" frm="frmInventaryItem"/>
 			<ListaFlexivel nome="MUNIÇÃO" rclName="rclInventarioMunicao" rclField="rclInventarioMunicao" frm="frmInventaryItem"/>
 			<ListaFlexivel nome="PEÇAS" rclName="rclInventarioPecas" rclField="rclInventarioPecas" frm="frmInventaryItem"/>

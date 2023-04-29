@@ -72,7 +72,19 @@
                     if dif~=0 then return dif end
 
                     -- Ordene por nome
-                    return utils.compareStringPtBr(nodeA.nome, nodeB.nome);
+                    local n = utils.compareStringPtBr(nodeA.nome, nodeB.nome)
+                    if n~=0 then return n end
+
+                    -- Ordene por lvl
+                    local lvl = ((tonumber(nodeB.lvl) or 0) - (tonumber(nodeA.lvl) or 0));
+                    if lvl~=0 then return lvl end
+
+                    -- Ordene por qtd
+                    local qtd = ((tonumber(nodeB.qtd) or 0) - (tonumber(nodeA.qtd) or 0));
+                    if qtd~=0 then return qtd end
+
+                    -- Ordene por name
+                    return utils.compareStringPtBr(nodeA.name, nodeB.name);
                 </event>
             </recordList>
         </flowPart>

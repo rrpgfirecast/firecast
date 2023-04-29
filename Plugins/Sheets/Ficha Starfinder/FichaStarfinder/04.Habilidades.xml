@@ -36,8 +36,8 @@
 		</flowPart>
 	</template>	
 
-	<popup name="popHabilidade" width="300" height="240" backOpacity="0.4" autoScopeNode="false">
-			<flowLayout align="top" autoHeight="true" maxControlsPerLine="3" margins="{bottom=4}" horzAlign="center">
+	<popup name="popHabilidade" width="500" height="300" backOpacity="0.4" autoScopeNode="false">
+			<flowLayout align="top" autoHeight="true" maxControlsPerLine="2" margins="{bottom=4}" horzAlign="center">
 				<habilidadeSmallCenter text="Nível" field="nivelHabilidade"/>
 				<habilidadeLarge text="Obtido" field="obtencaoHabilidade"/>
 				<habilidadeSmallCenter text="Página" field="paginaHabilidade"/>

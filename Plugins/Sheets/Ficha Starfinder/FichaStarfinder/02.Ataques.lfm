@@ -5,7 +5,6 @@
 		local max;
 		local fimRolagem;
 		local array;
-		local decisivo;
 		local dano;
 		local danoCritico;
 
@@ -14,15 +13,11 @@
 			local mesa = Firecast.getMesaDe(sheet);
 			local valor = rolado.resultado;
 			
-			if (dado>=decisivo) then
-				mesa.activeChat:rolarDados(rolagem, "Confirmando Critico");
-			end;
-			
 			if dado>1 then
 				mesa.activeChat:rolarDados(dano, "Dano do Ataque " .. i);
 			end;
 			
-			if dado>=decisivo then
+			if dado>=20 then
 				mesa.activeChat:rolarDados(danoCritico, "Dano Extra do Critico "  .. i);
 			end;
 			
@@ -59,14 +54,14 @@
 		
 		<button left="279" top="6" width="73" text="ATAQUE" fontSize="11">
 			<event name="onClick">
-				i = 1;
-				max = 1;
+				i = 1
+				max = 1
+				if sheet.double$(num) then
+					max = 2
+				end
 				fimRolagem = false;
 				
 				array = {sheet.ataque$(num)a, sheet.ataque$(num)b};
-	
-				decisivo = sheet.decisivo$(num) or "20";
-				decisivo = tonumber(string.sub(decisivo, 1, 2));
 				
 				dano = sheet.dano$(num) or "1d1";
 				dano = Firecast.interpretarRolagem(dano);
@@ -84,12 +79,10 @@
 				if armamento==nil then armamento = sheet.arma$(num) end;
 				if armamento==nil then armamento = "arma" end;
 
-				municao = tonumber(sheet.municao$(num));
+				local municao = tonumber(sheet.municao$(num));
+				local usos = tonumber(sheet.usos$(num)) or 1;
 				
-				local mesa = Firecast.getMesaDe(sheet);
-				while array[max]~=nil do
-					max = max + 1;
-				end;
+				local mesa = Firecast.getMesaDe(sheet)
 				
 				local ataque = tonumber(array[1]) or 0;
 				if ataque~=nil then
@@ -103,7 +96,7 @@
 							pos(rolado)
 						end);
 					if municao~=nil then
-						sheet.municao$(num) = municao-max+1;
+						sheet.municao$(num) = municao-max*usos;
 					end;
 				end;
 			</event>
@@ -164,11 +157,11 @@
 		</button>
 		<edit vertTextAlign="center" left="493" top="30" width="82" height="25" field="danoCritico$(num)"/>
 		
-		<label left="290" top="55" width="70" height="25" text="DECISIVO"/>
-		<edit vertTextAlign="center" left="352" top="55" width="82" height="25" field="decisivo$(num)"/>
+		<label left="290" top="55" width="70" height="25" text="MUNIÇÃO"/>
+		<edit vertTextAlign="center" left="352" top="55" width="82" height="25" field="municao$(num)"/>
 		
-		<label left="445" top="55" width="50" height="25" text="MULTI"/>
-		<edit vertTextAlign="center" left="493" top="55" width="82" height="25" field="multiplicador$(num)"/>
+		<label left="445" top="55" width="50" height="25" text="USOS"/>
+		<edit vertTextAlign="center" left="493" top="55" width="82" height="25" field="usos$(num)"/>
 		
 		<label left="580" top="5" width="80" height="25" text="CATEGORIA"/>
 		<edit vertTextAlign="center" left="660" top="5" width="200" height="25" field="categoria$(num)"/>
@@ -176,11 +169,8 @@
 		<label left="610" top="30" width="50" height="25" text="OBS"/>
 		<edit vertTextAlign="center" left="660" top="30" width="200" height="25" field="obs$(num)"/>
 		
-		<label left="590" top="55" width="80" height="25" text="MUNIÇÃO"/>
-		<edit type="number" vertTextAlign="center" left="660" top="55" width="69" height="25" field="municao$(num)"/>
-		
-		<label left="735" top="55" width="70" height="25" text="ALCANCE"/>
-		<edit vertTextAlign="center" left="795" top="55" width="65" height="25" field="alcance$(num)"/>
+		<label left="590" top="55" width="80" height="25" text="ALCANCE"/>
+		<edit type="number" vertTextAlign="center" left="660" top="55" width="69" height="25" field="alcance$(num)"/>
 		
 		<rectangle left="869" top="4" width="332" height="77" color="black" strokeColor="white" strokeSize="1"/>
 		<label left="870" top="25" width="330" height="25" horzTextAlign="center" text="Clique para adicionar imagem"/>
@@ -199,8 +189,7 @@
 							sheet.ataque$(num)b = nil;
 							sheet.dano$(num) = nil;
 							sheet.danoCritico$(num) = nil;
-							sheet.decisivo$(num) = nil;
-							sheet.multiplicador$(num) = nil;
+							sheet.usos$(num) = nil;
 							sheet.categoria$(num) = nil;
 							sheet.obs$(num) = nil;
 							sheet.municao$(num) = nil;

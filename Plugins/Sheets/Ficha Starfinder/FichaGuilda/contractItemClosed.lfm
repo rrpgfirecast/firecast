@@ -29,22 +29,6 @@
 									end;
 								 end);
 		end;
-        local function askForClose()
-            Dialogs.confirmYesNo("Deseja realmente fechar esse contrato?",
-                                 function (confirmado)
-                                    if confirmado then
-                                        local rcl = self:findControlByName("rclContratosFechados");
-                                        if rcl == nil then return end
-
-                                        local item = rcl:append()
-                                        if item == nil then return end
-
-                                        NDB.copy(item, sheet)
-
-                                        NDB.deleteNode(sheet);
-                                    end;
-                                 end);
-        end;
 
         local function toggleCheckbox(name, index)
             if index < 1 or index > 5 then return end 

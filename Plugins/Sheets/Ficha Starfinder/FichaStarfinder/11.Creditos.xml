@@ -28,7 +28,7 @@
 					childHandle = _gui_getChild(rcl.handle, i);
 					
 					if (childHandle ~= nil) then							
-						child = gui.fromHandle(childHandle);
+						child = GUI.fromHandle(childHandle);
 						
 						if (type(child) == "table") then							
 							ret[idxDest] = child;

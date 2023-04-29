@@ -15,7 +15,7 @@
 			if sheet~= nil then
 				local node = NDB.getRoot(sheet);
 
-				local lists = {"rclInventarioNaves", "rclInventarioMechas", "rclInventarioVeiculos", "rclInventarioEquipamentos", "rclInventarioMunicao", "rclInventarioOutros", "rclInventarioArmas", "rclInventarioPecas"}
+				local lists = {"rclInventarioNaves", "rclInventarioMechas", "rclInventarioVeiculos", "rclInventarioEquipamentos", "rclInventarioMunicao", "rclInventarioOutros", "rclInventarioArmas", "rclInventarioPecas", "rclInventarioImplantes", "rclInventarioMedicina"}
 				local preco = 0;
 
 				for j=1, #lists, 1 do
@@ -31,7 +31,6 @@
 
 		]]>	
 	</script>
-
 
     <template name="formatEdit">
         <layout align="right" width="100">
@@ -55,7 +54,10 @@
 	<rectangle align="client" color="black" strokeColor="white" strokeSize="1" padding="{top=5,bottom=5,left=5,right=5}">
 		<edit align="client" field="name"/>
 		<formatEdit field="preco" unit="C"/>
-		<edit align="right" width="50" field="qtd" onChange="equipPrice()"/>
+		<label align="right" width="40" text="Lvl" horzTextAlign="center"/>
+		<edit align="right" width="40" field="lvl" onChange="equipPrice()"/>
+		<label align="right" width="40" text="Qtd" horzTextAlign="center"/>
+		<edit align="right" width="40" field="qtd" onChange="equipPrice()"/>
 	</rectangle>
 	<button align="right" width="25" text="X" onClick="askForDelete();"/>
 </form>
