@@ -30,6 +30,10 @@ local function constructNew_frmThemeControl()
     obj:setAlign("client");
 
 
+		
+
+
+
 			local function recursiveFindControls(node, controlsList)
 				local children = node:getChildren();
 				if node:getClassName() == "recordList" then
@@ -95,30 +99,28 @@ local function constructNew_frmThemeControl()
 		
 
 
+	
+	
+
+
     obj.scrollBox1 = GUI.fromHandle(_obj_newObject("scrollBox"));
     obj.scrollBox1:setParent(obj);
     obj.scrollBox1:setAlign("client");
     obj.scrollBox1:setName("scrollBox1");
 
-    obj.layout1 = GUI.fromHandle(_obj_newObject("layout"));
-    obj.layout1:setParent(obj.scrollBox1);
-    obj.layout1:setLeft(0);
-    obj.layout1:setTop(0);
-    obj.layout1:setWidth(200);
-    obj.layout1:setHeight(150);
-    obj.layout1:setName("layout1");
-
     obj.rectangle1 = GUI.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle1:setParent(obj.layout1);
+    obj.rectangle1:setParent(obj.scrollBox1);
     obj.rectangle1:setLeft(0);
     obj.rectangle1:setTop(0);
     obj.rectangle1:setWidth(200);
     obj.rectangle1:setHeight(150);
     obj.rectangle1:setColor("black");
+    obj.rectangle1:setStrokeColor("white");
+    obj.rectangle1:setStrokeSize(1);
     obj.rectangle1:setName("rectangle1");
 
     obj.label1 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label1:setParent(obj.layout1);
+    obj.label1:setParent(obj.rectangle1);
     obj.label1:setLeft(0);
     obj.label1:setTop(10);
     obj.label1:setWidth(80);
@@ -128,7 +130,7 @@ local function constructNew_frmThemeControl()
     obj.label1:setName("label1");
 
     obj.comboBox1 = GUI.fromHandle(_obj_newObject("comboBox"));
-    obj.comboBox1:setParent(obj.layout1);
+    obj.comboBox1:setParent(obj.rectangle1);
     obj.comboBox1:setLeft(95);
     obj.comboBox1:setTop(10);
     obj.comboBox1:setWidth(90);
@@ -139,13 +141,13 @@ local function constructNew_frmThemeControl()
     obj.comboBox1:setName("comboBox1");
 
     obj.dataLink1 = GUI.fromHandle(_obj_newObject("dataLink"));
-    obj.dataLink1:setParent(obj.layout1);
+    obj.dataLink1:setParent(obj.rectangle1);
     obj.dataLink1:setField("theme");
     obj.dataLink1:setDefaultValue("Escuro");
     obj.dataLink1:setName("dataLink1");
 
     obj.label2 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label2:setParent(obj.layout1);
+    obj.label2:setParent(obj.rectangle1);
     obj.label2:setLeft(0);
     obj.label2:setTop(35);
     obj.label2:setWidth(90);
@@ -155,7 +157,7 @@ local function constructNew_frmThemeControl()
     obj.label2:setName("label2");
 
     obj.label3 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label3:setParent(obj.layout1);
+    obj.label3:setParent(obj.rectangle1);
     obj.label3:setLeft(0);
     obj.label3:setTop(60);
     obj.label3:setWidth(90);
@@ -165,7 +167,7 @@ local function constructNew_frmThemeControl()
     obj.label3:setName("label3");
 
     obj.comboBox2 = GUI.fromHandle(_obj_newObject("comboBox"));
-    obj.comboBox2:setParent(obj.layout1);
+    obj.comboBox2:setParent(obj.rectangle1);
     obj.comboBox2:setLeft(95);
     obj.comboBox2:setTop(60);
     obj.comboBox2:setWidth(90);
@@ -175,13 +177,13 @@ local function constructNew_frmThemeControl()
     obj.comboBox2:setName("comboBox2");
 
     obj.dataLink2 = GUI.fromHandle(_obj_newObject("dataLink"));
-    obj.dataLink2:setParent(obj.layout1);
+    obj.dataLink2:setParent(obj.rectangle1);
     obj.dataLink2:setField("colorBackground");
     obj.dataLink2:setDefaultValue("#000000");
     obj.dataLink2:setName("dataLink2");
 
     obj.label4 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label4:setParent(obj.layout1);
+    obj.label4:setParent(obj.rectangle1);
     obj.label4:setLeft(0);
     obj.label4:setTop(85);
     obj.label4:setWidth(90);
@@ -191,7 +193,7 @@ local function constructNew_frmThemeControl()
     obj.label4:setName("label4");
 
     obj.comboBox3 = GUI.fromHandle(_obj_newObject("comboBox"));
-    obj.comboBox3:setParent(obj.layout1);
+    obj.comboBox3:setParent(obj.rectangle1);
     obj.comboBox3:setLeft(95);
     obj.comboBox3:setTop(85);
     obj.comboBox3:setWidth(90);
@@ -201,13 +203,13 @@ local function constructNew_frmThemeControl()
     obj.comboBox3:setName("comboBox3");
 
     obj.dataLink3 = GUI.fromHandle(_obj_newObject("dataLink"));
-    obj.dataLink3:setParent(obj.layout1);
+    obj.dataLink3:setParent(obj.rectangle1);
     obj.dataLink3:setField("colorStroke");
     obj.dataLink3:setDefaultValue("#FFFFFF");
     obj.dataLink3:setName("dataLink3");
 
     obj.label5 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label5:setParent(obj.layout1);
+    obj.label5:setParent(obj.rectangle1);
     obj.label5:setLeft(0);
     obj.label5:setTop(110);
     obj.label5:setWidth(90);
@@ -217,7 +219,7 @@ local function constructNew_frmThemeControl()
     obj.label5:setName("label5");
 
     obj.comboBox4 = GUI.fromHandle(_obj_newObject("comboBox"));
-    obj.comboBox4:setParent(obj.layout1);
+    obj.comboBox4:setParent(obj.rectangle1);
     obj.comboBox4:setLeft(95);
     obj.comboBox4:setTop(110);
     obj.comboBox4:setWidth(90);
@@ -227,7 +229,7 @@ local function constructNew_frmThemeControl()
     obj.comboBox4:setName("comboBox4");
 
     obj.dataLink4 = GUI.fromHandle(_obj_newObject("dataLink"));
-    obj.dataLink4:setParent(obj.layout1);
+    obj.dataLink4:setParent(obj.rectangle1);
     obj.dataLink4:setField("colorFont");
     obj.dataLink4:setDefaultValue("#FFFFFF");
     obj.dataLink4:setName("dataLink4");
@@ -338,7 +340,6 @@ local function constructNew_frmThemeControl()
         if self.dataLink2 ~= nil then self.dataLink2:destroy(); self.dataLink2 = nil; end;
         if self.comboBox1 ~= nil then self.comboBox1:destroy(); self.comboBox1 = nil; end;
         if self.dataLink4 ~= nil then self.dataLink4:destroy(); self.dataLink4 = nil; end;
-        if self.layout1 ~= nil then self.layout1:destroy(); self.layout1 = nil; end;
         if self.scrollBox1 ~= nil then self.scrollBox1:destroy(); self.scrollBox1 = nil; end;
         if self.rectangle1 ~= nil then self.rectangle1:destroy(); self.rectangle1 = nil; end;
         if self.comboBox2 ~= nil then self.comboBox2:destroy(); self.comboBox2 = nil; end;

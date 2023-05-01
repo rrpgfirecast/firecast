@@ -1,29 +1,34 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <form name="frmDetailList" align="client">
 	<scrollBox align="client">
-		<!-- RecordList + DataScopeBox -->
-		<button left="0" top="0" width="25" height="25" text="+" onClick="self.rclSelector:append();" hint="Adicionar"/>
-		<!-- Marcador de tamanho da Lista de Objetos -->
-	    <rectangle left="0" top="25" width="240" height="260" color="black"/>
-		<!-- RecordList para seleção -->
-		<recordList left="0" top="25" width="240" height="260" name="rclSelector" field="listaDeOpcoes" templateForm="frmDataScopeSelectionForm" layout="vertical" selectable="true">
-			<event name="onCompare"><![CDATA[
-				-- Esse codigo organiza a ordem dos objetos da lista alfabeticamente. 
-		        return Utils.compareStringPtBr(nodeA.nome, nodeB.nome);              
-		        ]]>
-			</event>
-			<event name="onSelect"><![CDATA[
-					local node = self.rclSelector.selectedNode;
-					self.boxDetalhesDoItem.node = node; 
-					self.boxDetalhesDoItem.visible = (node ~= nil);
-				]]>
-			</event>
-		</recordList>
+		<layout align="top" height="25">
+			<!-- RecordList + DataScopeBox -->
+			<button left="0" top="0" width="25" height="25" text="+" onClick="self.rclSelector:append();" hint="Adicionar"/>
+		</layout>
+		<layout align="left" width="250" margins="{right=10}">
+			<rectangle align="client" color="black">
+				<!-- RecordList para seleção -->
+				<recordList align="top" autoHeight="true" name="rclSelector" field="listaDeOpcoes" templateForm="frmDataScopeSelectionForm" layout="vertical" selectable="true">
+					<event name="onCompare"><![CDATA[
+						-- Esse codigo organiza a ordem dos objetos da lista alfabeticamente. 
+				        return Utils.compareStringPtBr(nodeA.nome, nodeB.nome);              
+				        ]]>
+					</event>
+					<event name="onSelect"><![CDATA[
+							local node = self.rclSelector.selectedNode;
+							self.boxDetalhesDoItem.node = node; 
+							self.boxDetalhesDoItem.visible = (node ~= nil);
+						]]>
+					</event>
+				</recordList>
+			</rectangle>
+		</layout>
 		<!-- Info selecionada vai estar aqui -->
-		<dataScopeBox left="250" top="25" width="240" height="260" name="boxDetalhesDoItem" visible="false">
-			<rectangle align="client" color="black"/>
-			<!-- O mesmo valor do edit nome vai estar no label do seletor pois tem o mesmo field -->
-			<edit left="5" top="5" width="230" height="25" field="nome"/>
+		<dataScopeBox align="client" name="boxDetalhesDoItem" visible="false">
+			<rectangle align="client" color="black">
+				<!-- O mesmo valor do edit nome vai estar no label do seletor pois tem o mesmo field -->
+				<edit left="5" top="5" width="230" height="25" field="nome"/>
+			</rectangle>
 		</dataScopeBox>
 	</scrollBox>
 </form>

@@ -90,6 +90,9 @@
                 <tab title="BarControl">
                     <import file="BarControl.lfm"/>
                 </tab>
+                <tab title="EditBar">
+                    <import file="EditBar.lfm"/>
+                </tab>
             </tabControl>
         </tab>
         <tab title="Descrição">

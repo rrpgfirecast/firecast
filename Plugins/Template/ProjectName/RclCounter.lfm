@@ -1,55 +1,59 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <form name="frmRclCounter" align="client">
 	<scrollBox align="client">
-		<!-- Guarda a soma os contadores da lista -->
-		<rectangle left="0" top="0" width="25" height="25" color="black" strokeColor="white" strokeSize="1"/>
-		<label left="0" top="0" width="25" height="25" field="countSum" horzTextAlign="center"/>
-		<label left="25" top="0" width="115" height="25" text="&lt;- Soma contador"/>
+		<layout align="top" height="25">
+			<!-- Guarda a soma os contadores da lista -->
+			<rectangle align="left" width="25" color="black" strokeColor="white" strokeSize="1">
+				<label left="0" top="0" width="25" height="25" field="countSum" horzTextAlign="center"/>
+			</rectangle>
+			<label align="left" width="125" text="&lt;- Soma contador"/>
+		
+			<!-- Adiciona objetos a lista com contador relativo ao ultimo objeto adicionado -->
+			<button align="left" width="125" height="25" text="+ Ultimo" hint="Adiciona objetos a lista com contador relativo ao ultimo objeto adicionado ">
+		    	<event name="onClick"><![CDATA[
+		    		-- Aumenta um contador enquanto adiciona um objeto
+					if sheet~=nil then
+						local objetos = NDB.getChildNodes(sheet.listaDe);
 
-		<!-- Adiciona objetos a lista com contador relativo ao ultimo objeto adicionado -->
-		<button left="165" top="0" width="25" height="25" text="+" hint="Adiciona objetos a lista com contador relativo ao ultimo objeto adicionado ">
-	    	<event name="onClick"><![CDATA[
-	    		-- Aumenta um contador enquanto adiciona um objeto
-				if sheet~=nil then
-					local objetos = NDB.getChildNodes(sheet.listaDe);
-
-					local node = self.rclName:append();
-					if node~=nil then
-						local contador = #objetos;
-						for i=1, #objetos, 1 do
-							local aux = tonumber(objetos[i].contador) or 0;
-							if aux > contador then
-								contador = aux;
+						local node = self.rclName:append();
+						if node~=nil then
+							local contador = #objetos;
+							for i=1, #objetos, 1 do
+								local aux = tonumber(objetos[i].contador) or 0;
+								if aux > contador then
+									contador = aux;
+								end;
 							end;
+							node.contador = contador + 1;
 						end;
-						node.contador = contador + 1;
+
+						self.rclName:sort();
 					end;
+					]]>
+				</event>
+		    </button>
+		    <!-- Adiciona objetos a lista com contador em relação ao tamanho da lista -->
+			<button align="left" width="125" height="25" text="+ Tamanho" hint="Adiciona objetos a lista com contador em relação ao tamanho da lista">
+		    	<event name="onClick"><![CDATA[
+		    		-- Aumenta um contador enquanto adiciona um objeto
+					if sheet~=nil then
+						local objetos = NDB.getChildNodes(sheet.listaDe);
+						local num = #objetos + 1;
 
-					self.rclName:sort();
-				end;
-				]]>
-			</event>
-	    </button>
-	    <!-- Adiciona objetos a lista com contador em relação ao tamanho da lista -->
-		<button left="190" top="0" width="25" height="25" text="+" hint="Adiciona objetos a lista com contador em relação ao tamanho da lista">
-	    	<event name="onClick"><![CDATA[
-	    		-- Aumenta um contador enquanto adiciona um objeto
-				if sheet~=nil then
-					local objetos = NDB.getChildNodes(sheet.listaDe);
-					local num = #objetos + 1;
+						local node = self.rclName:append();
+						if node~=nil then
+							node.contador = num;
+						end;
 
-					local node = self.rclName:append();
-					if node~=nil then
-						node.contador = num;
+						self.rclName:sort();
 					end;
+					]]>
+				</event>
+		    </button>
+		</layout>
 
-					self.rclName:sort();
-				end;
-				]]>
-			</event>
-	    </button>
 	    <!-- Marcador de tamanho da Lista de Objetos -->
-	    <rectangle left="0" top="25" width="250" height="260" color="black">
+	    <rectangle align="left" width="250" color="black" strokeColor="white" strokeSize="1">
 	    	<label align="top" height="20" text="Titulo da Lista" horzTextAlign="center"/>
 	    	<!-- Lista de Objetos -->
 			<!-- O templateForm é pego de outro arquivo. No caso: "RecordListForm.lfm" -->

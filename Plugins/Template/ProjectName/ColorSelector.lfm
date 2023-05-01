@@ -11,7 +11,7 @@
 		            end;
 		        </event>
     		</comboBox>
-		    <rectangle left="0" top="0" width="45" height="45" name="showColor" hitTest="true" cornerType="round" xradius="2" yradius="2" strokeColor="black" strokeSize="2" hint="Muda a cor padrão da fonte do editor de texto. Você só vai notar diferença ao começar um novo paragrafo. ">
+		    <rectangle left="0" top="0" width="45" height="45" name="showColor" hitTest="true" cornerType="round" xradius="2" yradius="2" strokeColor="black" strokeSize="2" hint="Muda a cor do retangulo. ">
 		        <event name="onMouseDown">
 		            self.colorSelector:dropDown();
 		            self.colorSelector.visible = true;

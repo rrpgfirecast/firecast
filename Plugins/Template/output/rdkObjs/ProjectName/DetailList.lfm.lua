@@ -34,8 +34,14 @@ local function constructNew_frmDetailList()
     obj.scrollBox1:setAlign("client");
     obj.scrollBox1:setName("scrollBox1");
 
+    obj.layout1 = GUI.fromHandle(_obj_newObject("layout"));
+    obj.layout1:setParent(obj.scrollBox1);
+    obj.layout1:setAlign("top");
+    obj.layout1:setHeight(25);
+    obj.layout1:setName("layout1");
+
     obj.button1 = GUI.fromHandle(_obj_newObject("button"));
-    obj.button1:setParent(obj.scrollBox1);
+    obj.button1:setParent(obj.layout1);
     obj.button1:setLeft(0);
     obj.button1:setTop(0);
     obj.button1:setWidth(25);
@@ -44,21 +50,23 @@ local function constructNew_frmDetailList()
     obj.button1:setHint("Adicionar");
     obj.button1:setName("button1");
 
+    obj.layout2 = GUI.fromHandle(_obj_newObject("layout"));
+    obj.layout2:setParent(obj.scrollBox1);
+    obj.layout2:setAlign("left");
+    obj.layout2:setWidth(250);
+    obj.layout2:setMargins({right=10});
+    obj.layout2:setName("layout2");
+
     obj.rectangle1 = GUI.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle1:setParent(obj.scrollBox1);
-    obj.rectangle1:setLeft(0);
-    obj.rectangle1:setTop(25);
-    obj.rectangle1:setWidth(240);
-    obj.rectangle1:setHeight(260);
+    obj.rectangle1:setParent(obj.layout2);
+    obj.rectangle1:setAlign("client");
     obj.rectangle1:setColor("black");
     obj.rectangle1:setName("rectangle1");
 
     obj.rclSelector = GUI.fromHandle(_obj_newObject("recordList"));
-    obj.rclSelector:setParent(obj.scrollBox1);
-    obj.rclSelector:setLeft(0);
-    obj.rclSelector:setTop(25);
-    obj.rclSelector:setWidth(240);
-    obj.rclSelector:setHeight(260);
+    obj.rclSelector:setParent(obj.rectangle1);
+    obj.rclSelector:setAlign("top");
+    obj.rclSelector:setAutoHeight(true);
     obj.rclSelector:setName("rclSelector");
     obj.rclSelector:setField("listaDeOpcoes");
     obj.rclSelector:setTemplateForm("frmDataScopeSelectionForm");
@@ -67,10 +75,7 @@ local function constructNew_frmDetailList()
 
     obj.boxDetalhesDoItem = GUI.fromHandle(_obj_newObject("dataScopeBox"));
     obj.boxDetalhesDoItem:setParent(obj.scrollBox1);
-    obj.boxDetalhesDoItem:setLeft(250);
-    obj.boxDetalhesDoItem:setTop(25);
-    obj.boxDetalhesDoItem:setWidth(240);
-    obj.boxDetalhesDoItem:setHeight(260);
+    obj.boxDetalhesDoItem:setAlign("client");
     obj.boxDetalhesDoItem:setName("boxDetalhesDoItem");
     obj.boxDetalhesDoItem:setVisible(false);
 
@@ -81,7 +86,7 @@ local function constructNew_frmDetailList()
     obj.rectangle2:setName("rectangle2");
 
     obj.edit1 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit1:setParent(obj.boxDetalhesDoItem);
+    obj.edit1:setParent(obj.rectangle2);
     obj.edit1:setLeft(5);
     obj.edit1:setTop(5);
     obj.edit1:setWidth(230);
@@ -97,14 +102,14 @@ local function constructNew_frmDetailList()
     obj._e_event1 = obj.rclSelector:addEventListener("onCompare",
         function (_, nodeA, nodeB)
             -- Esse codigo organiza a ordem dos objetos da lista alfabeticamente. 
-            		        return Utils.compareStringPtBr(nodeA.nome, nodeB.nome);
+            				        return Utils.compareStringPtBr(nodeA.nome, nodeB.nome);
         end, obj);
 
     obj._e_event2 = obj.rclSelector:addEventListener("onSelect",
         function (_)
             local node = self.rclSelector.selectedNode;
-            					self.boxDetalhesDoItem.node = node; 
-            					self.boxDetalhesDoItem.visible = (node ~= nil);
+            							self.boxDetalhesDoItem.node = node; 
+            							self.boxDetalhesDoItem.visible = (node ~= nil);
         end, obj);
 
     function obj:_releaseEvents()
@@ -124,11 +129,13 @@ local function constructNew_frmDetailList()
 
         if self.button1 ~= nil then self.button1:destroy(); self.button1 = nil; end;
         if self.boxDetalhesDoItem ~= nil then self.boxDetalhesDoItem:destroy(); self.boxDetalhesDoItem = nil; end;
+        if self.layout1 ~= nil then self.layout1:destroy(); self.layout1 = nil; end;
         if self.scrollBox1 ~= nil then self.scrollBox1:destroy(); self.scrollBox1 = nil; end;
         if self.rectangle1 ~= nil then self.rectangle1:destroy(); self.rectangle1 = nil; end;
+        if self.layout2 ~= nil then self.layout2:destroy(); self.layout2 = nil; end;
         if self.rectangle2 ~= nil then self.rectangle2:destroy(); self.rectangle2 = nil; end;
-        if self.edit1 ~= nil then self.edit1:destroy(); self.edit1 = nil; end;
         if self.rclSelector ~= nil then self.rclSelector:destroy(); self.rclSelector = nil; end;
+        if self.edit1 ~= nil then self.edit1:destroy(); self.edit1 = nil; end;
         self:_oldLFMDestroy();
     end;
 

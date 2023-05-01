@@ -35,6 +35,10 @@ local function constructNew_frmDiceRoll()
     obj.scrollBox1:setName("scrollBox1");
 
 
+			
+
+
+
 			local function rolagemCallback(rolagem)
 				local msg = "";
 				for i = 1, #rolagem.ops, 1 do  
@@ -63,6 +67,10 @@ local function constructNew_frmDiceRoll()
 				mesa.activeChat:escrever(msg);
 			end;
 			
+
+
+
+		
 
 
     obj.button1 = GUI.fromHandle(_obj_newObject("button"));

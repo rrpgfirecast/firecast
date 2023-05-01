@@ -66,7 +66,9 @@ local function constructNew_frmAvatar()
 
     obj._e_event0 = obj.image1:addEventListener("onStartDrag",
         function (_, drag, x, y)
-            drag:addData("imageURL", sheet.avatar);
+            if drag then
+            				    	drag:addData("imageURL", sheet.avatar)
+            				    end
         end, obj);
 
     function obj:_releaseEvents()

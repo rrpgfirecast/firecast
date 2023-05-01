@@ -34,36 +34,41 @@ local function constructNew_frmTemplateCreditos()
     obj.scrollBox1:setAlign("client");
     obj.scrollBox1:setName("scrollBox1");
 
+    obj.layout1 = GUI.fromHandle(_obj_newObject("layout"));
+    obj.layout1:setParent(obj.scrollBox1);
+    obj.layout1:setAlign("top");
+    obj.layout1:setHeight(250);
+    obj.layout1:setName("layout1");
+
     obj.image1 = GUI.fromHandle(_obj_newObject("image"));
-    obj.image1:setParent(obj.scrollBox1);
-    obj.image1:setLeft(0);
-    obj.image1:setTop(0);
-    obj.image1:setWidth(500);
-    obj.image1:setHeight(500);
+    obj.image1:setParent(obj.layout1);
+    obj.image1:setAlign("left");
+    obj.image1:setWidth(250);
+    obj.image1:setHeight(250);
     obj.image1:setStyle("autoFit");
     obj.image1:setSRC("logo_mesa");
+    obj.image1:setMargins({right=50});
     obj.image1:setName("image1");
 
     obj.image2 = GUI.fromHandle(_obj_newObject("image"));
-    obj.image2:setParent(obj.scrollBox1);
-    obj.image2:setLeft(550);
-    obj.image2:setTop(0);
+    obj.image2:setParent(obj.layout1);
+    obj.image2:setAlign("left");
     obj.image2:setWidth(250);
     obj.image2:setHeight(250);
     obj.image2:setStyle("autoFit");
     obj.image2:setSRC("/ProjectName/images/RPGmeister.jpg");
     obj.image2:setName("image2");
 
-    obj.layout1 = GUI.fromHandle(_obj_newObject("layout"));
-    obj.layout1:setParent(obj.scrollBox1);
-    obj.layout1:setLeft(850);
-    obj.layout1:setTop(0);
-    obj.layout1:setWidth(200);
-    obj.layout1:setHeight(160);
-    obj.layout1:setName("layout1");
+    obj.layout2 = GUI.fromHandle(_obj_newObject("layout"));
+    obj.layout2:setParent(obj.scrollBox1);
+    obj.layout2:setLeft(850);
+    obj.layout2:setTop(0);
+    obj.layout2:setWidth(200);
+    obj.layout2:setHeight(160);
+    obj.layout2:setName("layout2");
 
     obj.rectangle1 = GUI.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle1:setParent(obj.layout1);
+    obj.rectangle1:setParent(obj.layout2);
     obj.rectangle1:setAlign("client");
     obj.rectangle1:setColor("black");
     obj.rectangle1:setXradius(5);
@@ -72,7 +77,7 @@ local function constructNew_frmTemplateCreditos()
     obj.rectangle1:setName("rectangle1");
 
     obj.label1 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label1:setParent(obj.layout1);
+    obj.label1:setParent(obj.layout2);
     obj.label1:setLeft(0);
     obj.label1:setTop(10);
     obj.label1:setWidth(200);
@@ -82,7 +87,7 @@ local function constructNew_frmTemplateCreditos()
     obj.label1:setName("label1");
 
     obj.label2 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label2:setParent(obj.layout1);
+    obj.label2:setParent(obj.layout2);
     obj.label2:setLeft(0);
     obj.label2:setTop(35);
     obj.label2:setWidth(200);
@@ -214,6 +219,7 @@ local function constructNew_frmTemplateCreditos()
         if self.layout1 ~= nil then self.layout1:destroy(); self.layout1 = nil; end;
         if self.scrollBox1 ~= nil then self.scrollBox1:destroy(); self.scrollBox1 = nil; end;
         if self.rectangle1 ~= nil then self.rectangle1:destroy(); self.rectangle1 = nil; end;
+        if self.layout2 ~= nil then self.layout2:destroy(); self.layout2 = nil; end;
         if self.label2 ~= nil then self.label2:destroy(); self.label2 = nil; end;
         self:_oldLFMDestroy();
     end;

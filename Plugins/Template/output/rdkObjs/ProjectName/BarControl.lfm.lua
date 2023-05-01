@@ -30,6 +30,10 @@ local function constructNew_frmBarControl()
     obj:setAlign("client");
 
 
+		
+
+
+
 			local function addCurrent()
 				local mesa = Firecast.getMesaDe(sheet); 
 				local current = mesa.meuJogador:getBarValue(1);
@@ -70,6 +74,10 @@ local function constructNew_frmBarControl()
 				mesa.meuJogador:requestSetBarValue(1, nil, max);
 			end;
 		
+
+
+	
+	
 
 
     obj.scrollBox1 = GUI.fromHandle(_obj_newObject("scrollBox"));

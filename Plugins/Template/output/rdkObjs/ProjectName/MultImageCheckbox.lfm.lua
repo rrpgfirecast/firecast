@@ -58,6 +58,10 @@ local function constructNew_frmMultImageCheckbox()
     obj.image1:setName("image1");
 
 
+				
+
+
+
 				-- criando array das imagens que vão ser utilizadas. 
 				-- melhor usar imagens hospedadas no firedrive nesse caso
 				local pics = {	"http://firecast.blob.core.windows.net/blobs/KEMDMPRM_386214.png", 
@@ -71,6 +75,10 @@ local function constructNew_frmMultImageCheckbox()
 								"http://firecast.blob.core.windows.net/blobs/CEJAMDNT_386246.png", 
 								"http://firecast.blob.core.windows.net/blobs/MKLJSRET_386230.png"};
 				
+
+
+
+			
 
 
     obj._e_event0 = obj.button1:addEventListener("onClick",

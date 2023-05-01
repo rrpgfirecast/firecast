@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <form name="frmTemplateCreditos" align="client">
 	<scrollBox align="client">
-		<image left="0" top="0" width="500" height="500" style="autoFit" src="logo_mesa"/>
-		<image left="550" top="0" width="250" height="250" style="autoFit" src="images/RPGmeister.jpg"/>
+		<layout align="top" height="250">
+			<image align="left" width="250" height="250" style="autoFit" src="logo_mesa" margins="{right=50}"/>
+			<image align="left" width="250" height="250" style="autoFit" src="images/RPGmeister.jpg"/>
+		</layout>
 
 		<layout left="850" top="0" width="200" height="160">
 			<rectangle align="client" color="black" xradius="5" yradius="15" cornerType="round"/>

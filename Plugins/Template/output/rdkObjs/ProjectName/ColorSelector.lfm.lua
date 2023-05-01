@@ -67,7 +67,7 @@ local function constructNew_frmColorSelector()
     obj.showColor:setYradius(2);
     obj.showColor:setStrokeColor("black");
     obj.showColor:setStrokeSize(2);
-    obj.showColor:setHint("Muda a cor padrão da fonte do editor de texto. Você só vai notar diferença ao começar um novo paragrafo. ");
+    obj.showColor:setHint("Muda a cor do retangulo. ");
 
     obj._e_event0 = obj.colorSelector:addEventListener("onChange",
         function (_)
