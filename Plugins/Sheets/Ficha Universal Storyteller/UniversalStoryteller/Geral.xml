@@ -34,7 +34,7 @@
 		<rectangle align="top" height="155" color="black" strokeColor="white" strokeSize="1" margins="{bottom=5}" padding="{top=5,bottom=5,left=5,right=5}">
 	        <layout align="top" height="25" margins="{bottom=5}">
 	            <formatEdit width="250" height="25" field="atributo" formatFloat=""/>
-	            <button left="255" width="25" height="25">
+	            <button left="255" width="25" height="25" name="atributteButton">
 	            	<image align="client" style="autoFit" src="images/gear.png"/>
 	            	<event name="onClick">
 	            		<![CDATA[
@@ -42,7 +42,7 @@
 						
 						if pop ~= nil then
 							pop:setNodeObject(sheet);
-							pop:showPopupEx("bottomCenter", self.popupButton);
+							pop:showPopupEx("bottomCenter", self.atributteButton);
 						else
 							showMessage("Ops, bug.. nao encontrei o popup para exibir");
 						end;

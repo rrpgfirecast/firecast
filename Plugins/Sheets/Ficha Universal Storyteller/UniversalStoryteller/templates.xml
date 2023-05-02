@@ -198,4 +198,28 @@
             </recordList>
         </layout>
     </template>
+
+    <template name="OtherTitle">
+        <layout align="left" width="325" margins="{right=5}">
+            <formatEdit width="300" height="25" field="$(field)" formatFloat=""/>
+            <button left="300" width="25" height="25" text="+">
+                <event name="onClick">
+                    local node = self["rcl$(field)"]:append()
+                    if node then
+                        node.group = "$(field)"
+                    end
+                </event>
+            </button>
+        </layout>
+    </template>
+    <template name="OtherBox">
+        <layout align="left" width="325" margins="{right=5}">
+            <recordList align="client" name="$(field)" field="$(field)" templateForm="frmOtherItem" layout="vertical">
+                <event name="onCompare"><![CDATA[
+                    return utils.compareStringPtBr(nodeA.other, nodeB.other);            
+                    ]]>
+                </event>
+            </recordList>
+        </layout>
+    </template>
 </group>

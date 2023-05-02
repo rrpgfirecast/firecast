@@ -200,6 +200,9 @@
         <tab name="tabAbilities" title="Lista">
             <import file="Abilities.xml"/>
         </tab>
+        <tab name="tabOther" title="Outros">
+            <import file="Other.xml"/>
+        </tab>
         <tab title="Descrição">
             <import file="Description.xml"/>
         </tab>
