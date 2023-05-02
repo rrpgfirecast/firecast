@@ -1,0 +1,249 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmTemplate" formType="sheetTemplate" dataType="Ambesek.Universal.Storyteller" title="Ficha Universal Storyteller" align="client" theme="dark">
+    <script>
+        <![CDATA[
+        local function isNewVersion(installed, downloaded)
+            local installedVersion = {};
+            local installedIndex = 0;
+            for i in string.gmatch(installed, "[^%.]+") do
+                installedIndex = installedIndex +1;
+                installedVersion[installedIndex] = i;
+            end
+
+            local downloadedVersion = {};
+            local downloadedIndex = 0;
+            for i in string.gmatch(downloaded, "[^%.]+") do
+                downloadedIndex = downloadedIndex +1;
+                downloadedVersion[downloadedIndex] = i;
+            end
+
+            for i=1, math.min(installedIndex, downloadedIndex), 1 do 
+                if (tonumber(installedVersion[i]) or 0) > (tonumber(downloadedVersion[i]) or 0) then
+                    return false;
+                elseif (tonumber(installedVersion[i]) or 0) < (tonumber(downloadedVersion[i]) or 0) then
+                    return true;
+                end;
+            end;
+
+            if downloadedIndex > installedIndex then
+                return true;
+            else
+                return false;
+            end;
+        end;
+
+        local function rolagemExtraCallback(rolagem)
+            local dificuldade = tonumber(sheet.dificuldadeValue) or 8
+            local sucessos = 0
+            for i = 1, #rolagem.ops, 1 do  
+                local operacao = rolagem.ops[i]
+
+                -- Vamos verificar que tipo de operação é esta.
+                if operacao.tipo == "dado" then
+                    -- Loop percorrendo cada um dos resultados individuais deste conjunto de dados.
+                    for j = 1, #operacao.resultados, 1 do
+                        if operacao.resultados[j] >= dificuldade then
+                            sucessos = sucessos + 1
+                        end
+                    end
+                elseif operacao.tipo == "imediato" then
+                    sucessos = sucessos + operacao.valor
+                end
+            end
+
+            local mesa = Firecast.getMesaDe(sheet);
+            mesa.activeChat:enviarMensagem("Sucessos: " .. sucessos);
+        end;
+
+        local function rolagemCallback(rolagem)
+            local dificuldade = tonumber(sheet.dificuldadeValue) or 8
+            local fail = sheet.crit1
+            local crit = sheet.crit10
+            local sucessos = 0
+            local extra = 0
+            for i = 1, #rolagem.ops, 1 do  
+                local operacao = rolagem.ops[i];      
+
+                -- Vamos verificar que tipo de operação é esta.      
+                if operacao.tipo == "dado" then                     
+                    -- Loop percorrendo cada um dos resultados individuais deste conjunto de dados.
+                    for j = 1, #operacao.resultados, 1 do
+                        if operacao.resultados[j] >= dificuldade then
+                            sucessos = sucessos + 1
+                            if crit and operacao.resultados[j] >= 10 then
+                                extra = extra + 1
+                            end
+                        elseif fail and operacao.resultados[j] <= 1 then
+                            sucessos = sucessos - 1
+                        end
+                    end
+                end
+            end
+
+            if extra > 0 then
+                local roll = extra.."d10".."+"..sucessos
+
+                local rolagem = Firecast.interpretarRolagem(roll);
+                local mesa = Firecast.getMesaDe(sheet);
+                mesa.activeChat:rolarDados(rolagem, "Dados extras", rolagemExtraCallback);
+            else
+                local mesa = Firecast.getMesaDe(sheet);
+                mesa.activeChat:enviarMensagem("Sucessos: " .. sucessos);
+            end
+        end
+        ]]> 
+    </script>
+    <script>
+        <![CDATA[
+        -- DEBUG FUNCTIONS
+
+        local function dump(o)
+           if type(o) == 'table' then
+              local s = '{ '
+              for k,v in pairs(o) do
+                 if type(k) ~= 'number' then k = '"'..k..'"' end
+                 s = s .. '['..k..'] = ' .. dump(v) .. ','
+              end
+              return s .. '} '
+           else
+              return tostring(o)
+           end
+        end
+        
+        local function write(str)
+            local mesa = Firecast.getMesaDe(sheet);
+            if str then
+                mesa.activeChat:escrever(str);
+            else
+                mesa.activeChat:escrever("String nula");
+            end;
+        end;
+        ]]> 
+    </script>
+
+    <import file="templates.xml"/>
+    <import file="popups.xml"/>
+
+    <rectangle align="right" width="210" color="black" strokeColor="white" strokeSize="1" margins="{left=5}" padding="{top=5,bottom=5,left=5,right=5}">
+        <label align="top" height="25" text="Rolagens" horzTextAlign="center"/>
+
+        <rollBox field="roll1"/>
+        <rollBox field="roll2"/>
+
+        <Header field="dificuldade"/>
+        <dataLink field="dificuldade" defaultValue="Dificuldade"/>
+
+        <Header field="adicional"/>
+        <dataLink field="adicional" defaultValue="Adicional"/>
+
+        <checkBox align="top" height="25" text="Meia Parada" field="halfPool" margins="{bottom=5}"/>
+        <checkBox align="top" height="25" text="Falha 1" field="crit1" margins="{bottom=5}"/>
+        <checkBox align="top" height="25" text="Critico 10" field="crit10" margins="{bottom=5}"/>
+
+        <layout align="top" height="55"  margins="{bottom=5}">
+            <label align="top" height="25" text="Total" horzTextAlign="center" margins="{bottom=5}"/>
+            <boxLabel left="0" top="30" width="200" height="25" field="rollTotal"/>
+        </layout>
+
+        <dataLink fields="{'roll1Pool','roll2Pool','adicionalValue','halfPool'}">
+            <event name="onChange">
+                if sheet==nil then return end
+                local r1 = tonumber(sheet.roll1Pool) or 0
+                local r2 = tonumber(sheet.roll2Pool) or 0
+                local total = r1 + r2
+                if sheet.halfPool then
+                    total = total / 2
+                end
+
+                local add = tonumber(sheet.adicionalValue) or 0
+
+                sheet.rollTotal = total + add
+            </event>
+        </dataLink>
+
+        <button align="top" height="25" text="Rolar" margins="{bottom=5}">
+            <event name="onClick">
+                local dp = math.floor(tonumber(sheet.rollTotal) or 0)
+                local roll = dp.."d10"
+
+                local n1 = sheet.roll1Name
+                local n2 = sheet.roll2Name
+
+                local dificuldade = tonumber(sheet.dificuldadeValue) or 8
+
+                local msg = ""
+                if n1~=nil and n1~="" then
+                    msg = n1
+                    if n2~=nil and n2~="" then
+                        msg = msg .. "+" .. n2
+                    end
+                elseif n2~=nil and n2~="" then
+                    msg = n2
+                end
+
+                if msg=="" then
+                    msg = "Dificuldade: " .. dificuldade
+                else
+                    msg = msg .. ", Dificuldade: " .. dificuldade
+                end
+
+                local rolagem = Firecast.interpretarRolagem(roll);
+                local mesa = Firecast.getMesaDe(sheet);
+                mesa.activeChat:rolarDados(rolagem, msg, rolagemCallback);
+            </event>
+        </button>
+    </rectangle>
+    <tabControl align="client">
+        <tab title="Geral">
+            <import file="Geral.xml"/>
+        </tab>
+        <tab name="tabAbilities" title="Lista">
+            <import file="Abilities.xml"/>
+        </tab>
+        <tab title="Descrição">
+            <import file="Description.xml"/>
+        </tab>
+        <tab title="Anotações">
+            <import file="Notes.lfm"/>
+        </tab>
+		<tab title="Creditos">
+            <import file="Credits.lfm"/>
+        </tab>
+    </tabControl>
+    <event name="onNodeReady">
+        Internet.download("https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20Universal%20Storyteller/output/Ficha%20Universal%20Storyteller.rpk?raw=true",
+            function(stream, contentType)
+                local info = Firecast.Plugins.getRPKDetails(stream);
+                sheet.versionDownloaded = "VERSÃO DISPONÍVEL: " .. info.version;
+
+                local installed = Firecast.Plugins.getInstalledPlugins();
+                local myself;
+                for i=1, #installed, 1 do
+                    if installed[i].moduleId == info.moduleId then
+                        myself = installed[i];
+                        sheet.versionInstalled = "VERSÃO INSTALADA: " .. installed[i].version;
+                    end;
+                end;
+
+                if sheet.noUpdate==true then return end;
+                if myself~= nil and isNewVersion(myself.version, info.version) then
+                    Dialogs.choose("Há uma nova versão desse plugin. Deseja instalar?",{"Sim", "Não", "Não perguntar novamente."},
+                        function(selected, selectedIndex, selectedText)
+                            if selected and selectedIndex == 1 then
+                                GUI.openInBrowser('https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20Universal%20Storyteller/output/Ficha%20Universal%20Storyteller.rpk?raw=true');
+                            elseif selected and selectedIndex == 3 then
+                                sheet.noUpdate = true;
+                            end;
+                        end);
+                end;
+            end,       
+            function (errorMsg)
+                --showMessage(errorMsg);
+            end,       
+            function (downloaded, total)
+                -- esta função será chamada constantemente.
+                -- dividir "downloaded" por "total" lhe dará uma porcentagem do download.
+            end,
+            "checkForModification");
+    </event>
+</form>

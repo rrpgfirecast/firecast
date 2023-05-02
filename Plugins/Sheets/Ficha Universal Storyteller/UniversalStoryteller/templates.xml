@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<group>
+    <template name="formatEdit">
+        <rectangle left="$(left or 0)" width="$(width)" height="$(height)" color="black" strokeColor="white" strokeSize="1" name="$(field)Label" visible="true" opacity="0.75">
+            <label width="$(width)" height="$(height)" field="$(field)" horzTextAlign="center" fontSize="11" formatFloat="$(formatFloat)"/>
+            <event name="onClick">
+                self.$(field)Label.visible = false;
+                self.$(field)Edit.visible = true;
+                self.$(field)Edit:setFocus();
+            </event>
+        </rectangle>
+        <edit left="$(left or 0)" width="$(width)" height="$(height)" field="$(field)" fontSize="11" name="$(field)Edit" visible="false">
+            <event name="onExit">
+                self.$(field)Label.visible = true;
+                self.$(field)Edit.visible = false;
+            </event>
+        </edit>
+    </template>
+    <template name="boxLabel">
+        <rectangle left="$(left or 0)" top="$(top or 0)" width="$(width)" height="$(height)" color="black" strokeColor="white" strokeSize="1" visible="true" cornerType="innerLine" xradius="3" yradius="3">
+            <label width="$(width)" height="$(height)" field="$(field)" horzTextAlign="center" fontSize="11"/>
+        </rectangle>
+    </template>
+    <template name="editBox">
+        <layout left="$(left)" width="100">
+            <edit left="0" width="50" height="25" field="$(field)Custo"/>
+            <boxLabel left="50" width="50" height="25" field="$(field)Gasto"/>
+        </layout>
+    </template>
+
+    <template name="Header">
+        <layout align="top" height="25" margins="{bottom=5}">
+            <formatEdit left="0" width="100" height="25" field="$(field)" formatFloat=""/>
+            <edit left="100" width="150" height="25" field="$(field)Value"/>
+        </layout>
+    </template>
+
+    <template name="rollBox">
+        <layout align="top" height="55"  margins="{bottom=5}">
+            <label align="top" height="25" field="$(field)Name" horzTextAlign="center" margins="{bottom=5}"/>
+
+            <button top="30" width="25" height="25" text="X">
+                <event name="onClick">
+                    sheet.$(field)Name = nil
+                    sheet.$(field)Pool = nil
+                </event>
+            </button>
+            <boxLabel left="25" top="30" width="175" height="25" field="$(field)Pool"/>
+        </layout>
+    </template>
+
+    <template name="Attribute">
+        <layout align="top" height="25" margins="{bottom=5}">
+            <layout width="12.5" height="25">
+                <button top="0" height="12.5" width="12.5" text="1" fontSize="5">
+                    <event name="onClick">
+                        if sheet==nil then return end;
+                        sheet.roll1Name = sheet.$(field)
+                        sheet.roll1Pool = sheet.$(field)Total
+                    </event>
+                </button>
+                <button top="12.5" height="12.5" width="12.5" text="2" fontSize="5">
+                    <event name="onClick">
+                        if sheet==nil then return end;
+                        sheet.roll2Name = sheet.$(field)
+                        sheet.roll2Pool = sheet.$(field)Total
+                    </event>
+                </button>
+            </layout>
+
+            <formatEdit left="12.5" width="87.5" height="25" field="$(field)" formatFloat=""/>
+            <edit left="100" width="35" height="25" field="$(field)Ini"/>
+            <edit left="135" width="35" height="25" field="$(field)Bonus"/>
+            <edit left="170" width="35" height="25" field="$(field)XP"/>
+            <boxLabel left="205" width="45" height="25" field="$(field)Total"/>
+        </layout>
+
+        <dataLink fields="{'$(field)Ini','$(field)Bonus','$(field)XP'}">
+            <event name="onChange">
+                if sheet==nil then return end
+                sheet.$(field)Total =   (tonumber(sheet.$(field)Ini) or 0) + 
+                                        (tonumber(sheet.$(field)Bonus) or 0) + 
+                                        (tonumber(sheet.$(field)XP) or 0)
+            </event>
+        </dataLink>
+    </template>
+    <template name="AttributeBox">
+        <layout align="left" width="250" margins="{right=5}">
+            <Attribute field="$(field)_0"/>
+            <Attribute field="$(field)_1"/>
+            <Attribute field="$(field)_2"/>
+
+            <dataLink fields="{'$(field)_0Ini','$(field)_1Ini','$(field)_2Ini'}">
+                <event name="onChange">
+                    if sheet==nil then return end
+                    sheet.$(field)Ini =   (tonumber(sheet.$(field)_0Ini) or 0) + 
+                                            (tonumber(sheet.$(field)_1Ini) or 0) + 
+                                            (tonumber(sheet.$(field)_2Ini) or 0)
+                </event>
+            </dataLink>
+
+            <dataLink fields="{'$(field)_0Bonus','$(field)_1Bonus','$(field)_2Bonus'}">
+                <event name="onChange">
+                    if sheet==nil then return end
+                    sheet.$(field)Bonus =   (tonumber(sheet.$(field)_0Bonus) or 0) + 
+                                            (tonumber(sheet.$(field)_1Bonus) or 0) + 
+                                            (tonumber(sheet.$(field)_2Bonus) or 0)
+                </event>
+            </dataLink>
+
+            <dataLink fields="{'$(field)_0XP','$(field)_0Total','$(field)_1XP','$(field)_1Total','$(field)_2XP','$(field)_2Total','$(field)XPCusto'}">
+                <event name="onChange"><![CDATA[
+                    if sheet==nil then return end
+                    local custo = (tonumber(sheet.$(field)XPCusto) or 0)
+                    local sum = 0
+
+                    local total = (tonumber(sheet.$(field)_0Total) or 0)
+                    local xp = (tonumber(sheet.$(field)_0XP) or 0)
+                    local diff = total-xp
+
+                    while diff<total do
+                        diff=diff+1
+                        sum = sum + (diff*custo)
+                    end
+
+                    local total = (tonumber(sheet.$(field)_1Total) or 0)
+                    local xp = (tonumber(sheet.$(field)_1XP) or 0)
+                    local diff = total-xp
+
+                    while diff<total do
+                        diff=diff+1
+                        sum = sum + (diff*custo)
+                    end
+
+                    local total = (tonumber(sheet.$(field)_2Total) or 0)
+                    local xp = (tonumber(sheet.$(field)_2XP) or 0)
+                    local diff = total-xp
+
+                    while diff<total do
+                        diff=diff+1
+                        sum = sum + (diff*custo)
+                    end
+
+                    sheet.$(field)XPGasto = sum
+
+                    ]]> 
+                </event>
+            </dataLink>
+        </layout>
+    </template>
+    <template name="Config">
+        <layout align="top" height="25" margins="{bottom=5}">
+            <label align="left" width="100" field="$(field)" horzTextAlign="center"/>
+            <editBox left="100" field="$(field)Ini"/>
+            <editBox left="225" field="$(field)Bonus"/>
+            <editBox left="350" field="$(field)XP"/>
+        </layout>
+
+        <dataLink fields="{'$(field)IniCusto','$(field)Ini'}">
+            <event name="onChange">
+                local val = tonumber(sheet.$(field)Ini) or 0
+                local custo = tonumber(sheet.$(field)IniCusto) or 1
+
+                sheet.$(field)IniGasto = val*custo
+            </event>
+        </dataLink>
+
+        <dataLink fields="{'$(field)BonusCusto','$(field)Bonus'}">
+            <event name="onChange">
+                local val = tonumber(sheet.$(field)Bonus) or 0
+                local custo = tonumber(sheet.$(field)BonusCusto) or 5
+
+                sheet.$(field)BonusGasto = val*custo
+            </event>
+        </dataLink>
+    </template>
+
+    <template name="AbilityTitle">
+        <layout align="left" width="300" margins="{right=5}">
+            <formatEdit width="275" height="25" field="$(field)" formatFloat=""/>
+            <button left="275" width="25" height="25" text="+">
+                <event name="onClick">
+                    local node = self["rcl$(field)"]:append()
+                    if node then
+                        node.group = "$(field)"
+                    end
+                </event>
+            </button>
+        </layout>
+    </template>
+    <template name="AbilityBox">
+        <layout align="left" width="300" margins="{right=5}">
+            <recordList align="client" name="$(field)" field="$(field)" templateForm="frmAbilityItem" layout="vertical">
+                <event name="onCompare"><![CDATA[
+                    return utils.compareStringPtBr(nodeA.habilidade, nodeB.habilidade);            
+                    ]]>
+                </event>
+            </recordList>
+        </layout>
+    </template>
+</group>

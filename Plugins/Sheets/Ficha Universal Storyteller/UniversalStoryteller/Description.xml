@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmTemplateDescription" align="client">
+	<scrollBox align="client">
+		<rectangle align="top" height="95" color="black" strokeColor="white" strokeSize="1" margins="{bottom=5}" padding="{top=5,bottom=5,left=5,right=5}">
+			<rectangle align="left" width="200" color="black" strokeColor="white" strokeSize="1" margins="{right=5}">
+				<image align="client" field="sistema" editable="true" style="proportional" margins="{left=2, right=2, top=2, bottom=2}">
+					<event name="OnStartDrag">
+						if drag then
+					    	drag:addData("imageURL", sheet.sistema)
+					    end
+					</event>
+				</image>
+			</rectangle>
+
+			<layout align="left" width="250" margins="{right=5}">
+				<Header field="details0_0"/>
+				<Header field="details0_1"/>
+				<Header field="details0_2"/>
+			</layout>
+
+			<layout align="left" width="250" margins="{right=5}">
+				<Header field="details1_0"/>
+				<Header field="details1_1"/>
+				<Header field="details1_2"/>
+			</layout>
+
+			<layout align="left" width="250" margins="{right=5}">
+				<Header field="details2_0"/>
+				<Header field="details2_1"/>
+				<Header field="details2_2"/>
+			</layout>
+
+			<layout align="left" width="250" margins="{right=5}">
+				<Header field="details3_0"/>
+				<Header field="details3_1"/>
+				<Header field="details3_2"/>
+			</layout>
+		</rectangle>
+
+		<rectangle align="left" width="385" color="black" strokeColor="white" strokeSize="1" margins="{right=5}" padding="{top=5,bottom=5,left=5,right=5}">
+			<layout align="top" height="250" margins="{bottom=5}">
+				<label align="top" height="25" text="APARÊNCIA" margins="{left=5}"/>
+				<textEditor align="client" field="aparencia" margins="{top=5,bottom=5,left=5,right=5}"/>
+			</layout>
+			<layout align="top" height="250" margins="{bottom=5}">
+				<label align="top" height="25" text="PERSONALIDADE" margins="{left=5}"/>
+				<textEditor align="client" field="personalidade" margins="{top=5,bottom=5,left=5,right=5}"/>
+			</layout>
+		</rectangle>
+		
+		<rectangle align="client" color="black" strokeColor="white" strokeSize="1">
+			<label align="top" height="25" text="HISTORIA" margins="{left=5}"/>
+			<richEdit align="client" field="background" backgroundColor="#333333" defaultFontSize="12" defaultFontColor="white" margins="{top=5,bottom=5,left=5,right=5}"/>
+		</rectangle>
+	</scrollBox>
+</form>
