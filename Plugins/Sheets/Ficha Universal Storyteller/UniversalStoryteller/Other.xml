@@ -4,7 +4,7 @@
 		<rectangle align="top" height="65" color="black" strokeColor="white" strokeSize="1" margins="{bottom=5}" padding="{top=5,bottom=5,left=5,right=5}">
 		    <layout align="top" height="25" margins="{bottom=5}">
 		        <formatEdit width="325" height="25" field="other" formatFloat=""/>
-		        <button left="330" width="25" height="25" name="otherButton">
+		        <button left="330" width="25" height="25" name="otherButton" hint="Os itens dessa lista seguem um padrão de custo, e possuem um popup para anotar detalhes de funcionamento.">
 		        	<image align="client" style="autoFit" src="images/gear.png"/>
 		        	<event name="onClick">
 		        		<![CDATA[

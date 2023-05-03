@@ -84,7 +84,9 @@
 
 				<layout align="top" height="25"/>
 				<layout align="top" height="25"/>
-				<layout align="top" height="25"/>
+				<layout align="top" height="25">
+					<button margins="{left=50}" align="left" width="100" text="Modelos" onClick="GUI.openInBrowser('https://github.com/rrpgfirecast/firecast/tree/master/Plugins/Sheets/Ficha%20Universal%20Storyteller/__xmls')" />
+				</layout>
 				
 				<layout align="top" height="25">
 					<!-- Combobox de exportar ficha -->

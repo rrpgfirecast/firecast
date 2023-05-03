@@ -13,10 +13,32 @@
             <label align="left" width="100" text="Custo | Gasto" horzTextAlign="center" margins="{right=25}"/>
             <label align="left" width="100" text="Custo | Gasto" horzTextAlign="center" margins="{right=25}"/>
         </layout>
-        <Config field="atributo"/>
+        <ConfigTitle field="atributo"/>
         <Config field="atributo0"/>
         <Config field="atributo1"/>
         <Config field="atributo2"/>
+
+        <dataLink fields="{'atributo0IniGasto','atributo1IniGasto','atributo2IniGasto'}">
+            <event name="onChange"><![CDATA[
+                if sheet==nil then return end
+                sheet.atributoIniGasto =   (tonumber(sheet.atributo0IniGasto) or 0) + 
+                                        (tonumber(sheet.atributo1IniGasto) or 0) + 
+                                        (tonumber(sheet.atributo2IniGasto) or 0)
+
+                ]]> 
+            </event>
+        </dataLink>
+
+        <dataLink fields="{'atributo0BonusGasto','atributo1BonusGasto','atributo2BonusGasto'}">
+            <event name="onChange"><![CDATA[
+                if sheet==nil then return end
+                sheet.atributoBonusGasto =   (tonumber(sheet.atributo0BonusGasto) or 0) + 
+                                        (tonumber(sheet.atributo1BonusGasto) or 0) + 
+                                        (tonumber(sheet.atributo2BonusGasto) or 0)
+
+                ]]> 
+            </event>
+        </dataLink>
 
         <dataLink fields="{'atributo0XPGasto','atributo1XPGasto','atributo2XPGasto'}">
             <event name="onChange"><![CDATA[
@@ -42,7 +64,7 @@
             <label align="left" width="100" text="Custo | Gasto" horzTextAlign="center" margins="{right=25}"/>
             <label align="left" width="100" text="Custo | Gasto" horzTextAlign="center" margins="{right=25}"/>
         </layout>
-        <Config field="individual"/>
+        <ConfigTitle field="individual"/>
         <Config field="individual0"/>
 
         <Config field="individual1_0"/>
@@ -124,8 +146,7 @@
             </event>
         </dataLink>
     </popup>
-
-    <popup name="popConfigHab" width="470" height="230" backOpacity="0.4" autoScopeNode="false" padding="{top=10,bottom=10,left=10,right=10}">
+    <popup name="popConfigHab" width="470" height="260" backOpacity="0.4" autoScopeNode="false" padding="{top=10,bottom=10,left=10,right=10}">
         <layout align="top" height="25" margins="{bottom=5}">
             <label align="left" width="100" text=""/>
             <label align="left" width="100" text="Inicial" horzTextAlign="center" margins="{right=25}"/>
@@ -138,49 +159,56 @@
             <label align="left" width="100" text="Custo | Gasto" horzTextAlign="center" margins="{right=25}"/>
             <label align="left" width="100" text="Custo | Gasto" horzTextAlign="center" margins="{right=25}"/>
         </layout>
-        <Config field="habilidade"/>
-        <Config field="habilidade0"/>
-        <Config field="habilidade1"/>
-        <Config field="habilidade2"/>
-        <Config field="habilidade3"/>
+        <ConfigTitle field="habilidade"/>
+        <Config field="habilidade0" fontSize="11"/>
+        <Config field="habilidade1" fontSize="11"/>
+        <Config field="habilidade2" fontSize="11"/>
+        <Config field="habilidade3" fontSize="11"/>
 
-        <dataLink fields="{'habilidade0IniGasto','habilidade1IniGasto','habilidade2IniGasto','habilidade3IniGasto'}">
+        <layout align="top" height="25" margins="{bottom=5}">
+            <label align="left" width="100" text="Especializações" horzTextAlign="center" fontSize="13"/>
+            <edit left="100" width="50" height="25" field="EspecIni"/>
+            <edit left="225" width="50" height="25" field="EspecBonus"/>
+            <edit left="350" width="50" height="25" field="EspecXP"/>
+        </layout>
+
+        <dataLink fields="{'habilidade0IniGasto','habilidade1IniGasto','habilidade2IniGasto','habilidade3IniGasto','EspecIni'}">
             <event name="onChange"><![CDATA[
                 if sheet==nil then return end
                 sheet.habilidadeIniGasto =   (tonumber(sheet.habilidade0IniGasto) or 0) + 
                                             (tonumber(sheet.habilidade1IniGasto) or 0) + 
                                             (tonumber(sheet.habilidade2IniGasto) or 0) + 
-                                            (tonumber(sheet.habilidade3IniGasto) or 0)
+                                            (tonumber(sheet.habilidade3IniGasto) or 0) + 
+                                            (tonumber(sheet.EspecIni) or 0)
 
                 ]]> 
             </event>
         </dataLink>
-
-        <dataLink fields="{'habilidade0BonusGasto','habilidade1BonusGasto','habilidade2BonusGasto','habilidade3BonusGasto'}">
+        <dataLink fields="{'habilidade0BonusGasto','habilidade1BonusGasto','habilidade2BonusGasto','habilidade3BonusGasto','EspecBonus'}">
             <event name="onChange"><![CDATA[
                 if sheet==nil then return end
                 sheet.habilidadeBonusGasto =   (tonumber(sheet.habilidade0BonusGasto) or 0) + 
                                                 (tonumber(sheet.habilidade1BonusGasto) or 0) + 
                                                 (tonumber(sheet.habilidade2BonusGasto) or 0) + 
-                                                (tonumber(sheet.habilidade3BonusGasto) or 0)
+                                                (tonumber(sheet.habilidade3BonusGasto) or 0) + 
+                                                (tonumber(sheet.EspecBonus) or 0)
 
                 ]]> 
             </event>
         </dataLink>
-
-        <dataLink fields="{'habilidade0XPGasto','habilidade1XPGasto','habilidade2XPGasto','habilidade3XPGasto'}">
+        <dataLink fields="{'habilidade0XPGasto','habilidade1XPGasto','habilidade2XPGasto','habilidade3XPGasto','EspecXP'}">
             <event name="onChange"><![CDATA[
                 if sheet==nil then return end
                 sheet.habilidadeXPGasto =   (tonumber(sheet.habilidade0XPGasto) or 0) + 
                                             (tonumber(sheet.habilidade1XPGasto) or 0) + 
                                             (tonumber(sheet.habilidade2XPGasto) or 0) + 
-                                            (tonumber(sheet.habilidade3XPGasto) or 0)
+                                            (tonumber(sheet.habilidade3XPGasto) or 0) + 
+                                            (tonumber(sheet.EspecXP) or 0)
 
                 ]]> 
             </event>
         </dataLink>
     </popup>
-
     <popup name="popConfigOther" width="470" height="230" backOpacity="0.4" autoScopeNode="false" padding="{top=10,bottom=10,left=10,right=10}">
         <layout align="top" height="25" margins="{bottom=5}">
             <label align="left" width="100" text=""/>
@@ -194,11 +222,11 @@
             <label align="left" width="100" text="Custo | Gasto" horzTextAlign="center" margins="{right=25}"/>
             <label align="left" width="100" text="Custo | Gasto" horzTextAlign="center" margins="{right=25}"/>
         </layout>
-        <Config field="other"/>
-        <Config field="other0"/>
-        <Config field="other1"/>
-        <Config field="other2"/>
-        <Config field="other3"/>
+        <ConfigTitle field="other"/>
+        <Config field="other0" fontSize="11"/>
+        <Config field="other1" fontSize="11"/>
+        <Config field="other2" fontSize="11"/>
+        <Config field="other3" fontSize="11"/>
 
         <dataLink fields="{'other0IniGasto','other1IniGasto','other2IniGasto','other3IniGasto'}">
             <event name="onChange"><![CDATA[
@@ -236,9 +264,74 @@
             </event>
         </dataLink>
     </popup>
+    <popup name="popConfigOtherIndividual" width="470" height="230" backOpacity="0.4" autoScopeNode="false" padding="{top=10,bottom=10,left=10,right=10}">
+        <layout align="top" height="25" margins="{bottom=5}">
+            <label align="left" width="100" text=""/>
+            <label align="left" width="100" text="Inicial" horzTextAlign="center" margins="{right=25}"/>
+            <label align="left" width="100" text="Bônus" horzTextAlign="center" margins="{right=25}"/>
+            <label align="left" width="100" text="XP" horzTextAlign="center" margins="{right=25}"/>
+        </layout>
+        <layout align="top" height="25" margins="{bottom=5}">
+            <label align="left" width="100" text=""/>
+            <label align="left" width="100" text="Custo | Gasto" horzTextAlign="center" margins="{right=25}"/>
+            <label align="left" width="100" text="Custo | Gasto" horzTextAlign="center" margins="{right=25}"/>
+            <label align="left" width="100" text="Custo | Gasto" horzTextAlign="center" margins="{right=25}"/>
+        </layout>
+        <ConfigTitle field="otherIndividual"/>
+        <ConfigDefault field="otherIndividual0" fontSize="11"/>
+        <ConfigDefault field="otherIndividual1" fontSize="11"/>
+        <ConfigDefault field="otherIndividual2" fontSize="11"/>
+        <ConfigDefault field="otherIndividual3" fontSize="11"/>
+
+        <dataLink fields="{'otherIndividual0IniGasto','otherIndividual1IniGasto','otherIndividual2IniGasto','otherIndividual3IniGasto'}">
+            <event name="onChange"><![CDATA[
+                if sheet==nil then return end
+                sheet.otherIndividualIniGasto =   (tonumber(sheet.otherIndividual0IniGasto) or 0) + 
+                                            (tonumber(sheet.otherIndividual1IniGasto) or 0) + 
+                                            (tonumber(sheet.otherIndividual2IniGasto) or 0) + 
+                                            (tonumber(sheet.otherIndividual3IniGasto) or 0)
+
+                ]]> 
+            </event>
+        </dataLink>
+
+        <dataLink fields="{'otherIndividual0BonusGasto','otherIndividual1BonusGasto','otherIndividual2BonusGasto','otherIndividual3BonusGasto'}">
+            <event name="onChange"><![CDATA[
+                if sheet==nil then return end
+                sheet.otherIndividualBonusGasto =   (tonumber(sheet.otherIndividual0BonusGasto) or 0) + 
+                                                (tonumber(sheet.otherIndividual1BonusGasto) or 0) + 
+                                                (tonumber(sheet.otherIndividual2BonusGasto) or 0) + 
+                                                (tonumber(sheet.otherIndividual3BonusGasto) or 0)
+
+                ]]> 
+            </event>
+        </dataLink>
+
+        <dataLink fields="{'otherIndividual0XPGasto','otherIndividual1XPGasto','otherIndividual2XPGasto','otherIndividual3XPGasto'}">
+            <event name="onChange"><![CDATA[
+                if sheet==nil then return end
+                sheet.otherIndividualXPGasto =   (tonumber(sheet.otherIndividual0XPGasto) or 0) + 
+                                            (tonumber(sheet.otherIndividual1XPGasto) or 0) + 
+                                            (tonumber(sheet.otherIndividual2XPGasto) or 0) + 
+                                            (tonumber(sheet.otherIndividual3XPGasto) or 0)
+
+                ]]> 
+            </event>
+        </dataLink>
+    </popup>
     
     <popup name="popInfo" width="410" height="410" backOpacity="0.4" autoScopeNode="false" padding="{top=10,bottom=10,left=10,right=10}">
         <label align="top" height="25" field="other"/>
+        <textEditor align="client" field="details"/>
+    </popup>
+    <popup name="popIndividualInfo" width="410" height="410" backOpacity="0.4" autoScopeNode="false" padding="{top=10,bottom=10,left=10,right=10}">
+        <label align="top" height="25" field="other"/>
+        <layout align="top" height="25">
+            <label align="left" width="100" text="Custos"/>
+            <edit align="left" width="50" height="25" field="IniCusto"/>
+            <edit align="left" width="50" height="25" field="BonusCusto"/>
+            <edit align="left" width="50" height="25" field="XPCusto"/>
+        </layout>
         <textEditor align="client" field="details"/>
     </popup>
 

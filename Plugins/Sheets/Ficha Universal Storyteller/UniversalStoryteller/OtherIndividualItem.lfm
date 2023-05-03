@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmOtherIndividualItem" width="275" height="25" margins="{bottom=5}">
+	<import file="templates.xml"/>
+	<rectangle align="client" color="#212121">
+		<button align="right" width="25" text="i" margins="{left=2.5,right=0}" name="infoButton">
+			<event name="onClick">
+		        <![CDATA[
+			    local pop = self:findControlByName("popIndividualInfo");
+				
+				if pop ~= nil then
+					pop:setNodeObject(sheet);
+					pop:showPopupEx("bottomCenter", self.infoButton);
+				else
+					showMessage("Ops, bug.. nao encontrei o popup para exibir");
+				end;
+				]]>
+			</event>
+		</button>
+		<button align="right" width="25" text="X" margins="{left=0,right=2.5}">
+			<event name="onClick">
+				Dialogs.confirmOkCancel("Tem certeza que quer apagar esse objeto?",
+					function (confirmado)
+						if confirmado then
+							NDB.deleteNode(sheet);
+						end;
+				end);
+			</event>
+		</button>
+
+		<layout align="client">
+	        <layout align="top" height="25" margins="{bottom=2.5}">
+	            <layout width="12.5" height="25">
+	                <button top="0" height="12.5" width="12.5" text="1" fontSize="5">
+	                    <event name="onClick">
+	                    	local node = NDB.getRoot(sheet)
+	                        node.roll1Name = sheet.other
+	                        node.roll1Pool = sheet.otherTotal
+	                    </event>
+	                </button>
+	                <button top="12.5" height="12.5" width="12.5" text="2" fontSize="5">
+	                    <event name="onClick">
+	                    	local node = NDB.getRoot(sheet)
+	                        node.roll2Name = sheet.other
+	                        node.roll2Pool = sheet.otherTotal
+	                    </event>
+	                </button>
+	            </layout>
+
+	            <formatEdit left="12.5" width="87.5" height="25" field="other" formatFloat=""/>
+	            <edit left="100" width="35" height="25" field="otherIni"/>
+	            <edit left="135" width="35" height="25" field="otherBonus"/>
+	            <edit left="170" width="35" height="25" field="otherXP"/>
+	            <boxLabel left="205" width="45" height="25" field="otherTotal"/>
+	        </layout>
+	    </layout>
+
+        <dataLink fields="{'otherIni','otherBonus','otherXP'}">
+            <event name="onChange">
+                if sheet==nil then return end
+                sheet.otherTotal =   	(tonumber(sheet.otherIni) or 0) + 
+                                        	(tonumber(sheet.otherBonus) or 0) + 
+                                        	(tonumber(sheet.otherXP) or 0)
+            </event>
+        </dataLink>
+
+		<!-- Soma os contadores da lista -->
+		<dataLink fields="{'otherIni','IniCusto'}">
+			<event name="onChange"><![CDATA[
+		        if sheet==nil then return end
+
+				local node = NDB.getRoot(sheet);
+				local group = sheet.group
+				local objetos = NDB.getChildNodes(node["rcl"..group]);
+				local soma = 0;
+
+				for i=1, #objetos, 1 do 
+					local custo = (tonumber(objetos[i].IniCusto) or 0)
+					soma = soma + (tonumber(objetos[i].otherIni) or 0) * custo
+				end;
+
+				node[group.."IniGasto"] = soma;
+		        ]]>
+			</event>
+		</dataLink>
+		<dataLink fields="{'otherBonus','BonusCusto'}">
+			<event name="onChange"><![CDATA[
+		        if sheet==nil then return end
+				local node = NDB.getRoot(sheet);
+				local group = sheet.group
+				local objetos = NDB.getChildNodes(node["rcl"..group]);
+				local soma = 0;
+
+				for i=1, #objetos, 1 do 
+					local custo = (tonumber(objetos[i].BonusCusto) or 0)
+					soma = soma + (tonumber(objetos[i].otherBonus) or 0) * custo
+				end;
+
+				node[group.."BonusGasto"] = soma;
+		        ]]>
+			</event>
+		</dataLink>
+		<dataLink fields="{'otherXP','otherTotal','XPCusto'}">
+			<event name="onChange"><![CDATA[
+		        if sheet==nil then return end
+
+				local node = NDB.getRoot(sheet);
+				local group = sheet.group
+				local objetos = NDB.getChildNodes(node["rcl"..group]);
+				local soma = 0;
+
+				for i=1, #objetos, 1 do 
+            		local custo = (tonumber(objetos[i].XPCusto) or 0)
+	            	local total = (tonumber(objetos[i].otherTotal) or 0)
+	            	local xp = (tonumber(objetos[i].otherXP) or 0)
+
+            		local diff = total-xp
+
+            		while diff<total do
+	            	    diff=diff+1
+	            	    soma = soma + math.floor(diff*custo)
+	            	end
+				end;
+
+				node[group.."XPGasto"] = soma;
+		        ]]>
+			</event>
+		</dataLink>
+	</rectangle>
+</form>

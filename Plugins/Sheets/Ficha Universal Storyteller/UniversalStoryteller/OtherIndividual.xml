@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmOtherIndividual" align="client">
+	<scrollBox align="client">
+		<rectangle align="top" height="65" color="black" strokeColor="white" strokeSize="1" margins="{bottom=5}" padding="{top=5,bottom=5,left=5,right=5}">
+		    <layout align="top" height="25" margins="{bottom=5}">
+		        <formatEdit width="325" height="25" field="otherIndividual" formatFloat=""/>
+		        <button left="330" width="25" height="25" name="otherIndividualButton" hint="Esse popup pode ser usado pra controlar os custos padrões. Cada item dessa lista pode ter seus custos modificados de forma individual.">
+		        	<image align="client" style="autoFit" src="images/gear.png"/>
+		        	<event name="onClick">
+		        		<![CDATA[
+			    		local pop = self:findControlByName("popConfigOtherIndividual");
+						
+						if pop ~= nil then
+							pop:setNodeObject(sheet);
+							pop:showPopupEx("bottomCenter", self.otherIndividualButton);
+						else
+							showMessage("Ops, bug.. nao encontrei o popup para exibir");
+						end;
+						]]>
+		        	</event>
+		        </button>
+
+		        <dataLink field="otherIndividual">
+		        	<event name="onChange">
+		        		if sheet==nil then return end
+		        		if sheet.otherIndividual==nil or sheet.otherIndividual=="" then return end
+		        		self.tabOtherInd.title = sheet.otherIndividual
+		        	</event>
+		        </dataLink>
+		    </layout>
+
+		    <layout align="top" height="25" margins="{bottom=5}">
+		    	<OtherTitle field="otherIndividual0"/>
+		    	<OtherTitle field="otherIndividual1"/>
+		    	<OtherTitle field="otherIndividual2"/>
+		    	<OtherTitle field="otherIndividual3"/>
+		    </layout>
+
+	        <dataLink fields="{'otherIndividual0Ini','otherIndividual1Ini','otherIndividual2Ini','otherIndividual3Ini'}">
+	            <event name="onChange">
+	                if sheet==nil then return end
+	                sheet.otherIndividualIni =   (tonumber(sheet.otherIndividual0Ini) or 0) + 
+	                                        (tonumber(sheet.otherIndividual1Ini) or 0) + 
+	                                        (tonumber(sheet.otherIndividual2Ini) or 0) + 
+	                                        (tonumber(sheet.otherIndividual3Ini) or 0)
+	            </event>
+	        </dataLink>
+	        <dataLink fields="{'otherIndividual0Bonus','otherIndividual1Bonus','otherIndividual2Bonus','otherIndividual3Bonus'}">
+	            <event name="onChange">
+	                if sheet==nil then return end
+	                sheet.otherIndividualBonus =   (tonumber(sheet.otherIndividual0Bonus) or 0) + 
+	                                        (tonumber(sheet.otherIndividual1Bonus) or 0) + 
+	                                        (tonumber(sheet.otherIndividual2Bonus) or 0) + 
+	                                        (tonumber(sheet.otherIndividual3Bonus) or 0)
+	            </event>
+	        </dataLink>
+	        <dataLink fields="{'otherIndividual0XP','otherIndividual1XP','otherIndividual2XP','otherIndividual3XP'}">
+	            <event name="onChange">
+	                if sheet==nil then return end
+	                sheet.otherIndividualXP =   (tonumber(sheet.otherIndividual0XP) or 0) + 
+	                                        (tonumber(sheet.otherIndividual1XP) or 0) + 
+	                                        (tonumber(sheet.otherIndividual2XP) or 0) + 
+	                                        (tonumber(sheet.otherIndividual3XP) or 0)
+	            </event>
+	        </dataLink>
+		</rectangle>
+
+		<rectangle align="client" color="black" strokeColor="white" strokeSize="1" padding="{top=5,bottom=5,left=5,right=5}">
+			<OtherBox field="rclotherIndividual0" templateForm="frmOtherIndividualItem"/>
+			<OtherBox field="rclotherIndividual1" templateForm="frmOtherIndividualItem"/>
+			<OtherBox field="rclotherIndividual2" templateForm="frmOtherIndividualItem"/>
+			<OtherBox field="rclotherIndividual3" templateForm="frmOtherIndividualItem"/>
+		</rectangle>
+	</scrollBox>
+</form>

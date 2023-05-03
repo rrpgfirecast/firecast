@@ -21,6 +21,24 @@
 			<scrollBox align="client">
                 <recordList align="top" autoHeight="true" name="rclhealth" field="rclhealth" templateForm="frmHealthItem" layout="vertical"/>
             </scrollBox>
+
+			<layout align="bottom" height="25">
+				<formatEdit left="5" width="90" height="25" field="protecao"/>
+
+	            <edit left="100" width="35" height="25" field="protecao0"/>
+	            <edit left="135" width="35" height="25" field="protecao1"/>
+	            <edit left="170" width="35" height="25" field="protecao2"/>
+	            <boxLabel left="205" width="40" height="25" field="protecaoTotal"/>
+
+		        <dataLink fields="{'protecao0','protecao1','protecao2'}">
+		            <event name="onChange">
+		                if sheet==nil then return end
+		                sheet.protecaoTotal =   (tonumber(sheet.protecao0) or 0) + 
+		                                        (tonumber(sheet.protecao1) or 0) + 
+		                                        (tonumber(sheet.protecao2) or 0)
+		            </event>
+		        </dataLink>
+			</layout>
 		</rectangle>
 
 		<layout align="client">
@@ -166,11 +184,18 @@
 	            </dataLink>
 			</rectangle>
 
-			<layout align="top" height="210" margins="{bottom=5}">
-				<rectangle align="left" width="845" color="black" strokeColor="white" strokeSize="1" margins="{left=0}" padding="{top=5,bottom=5,left=5,right=5}">
-					<NoteBlock field="geralInfo" width="835"/>
-				</rectangle>
-			</layout>
+			<rectangle align="top" height="210" color="black" strokeColor="white" strokeSize="1" margins="{bottom=5}" padding="{top=5,bottom=5,left=5,right=5}">
+				<layout align="left" width="315" margins="{right=5}">
+					<NoteBlock field="geralInfo0" width="315"/>
+				</layout>
+				<layout align="left" width="315" margins="{right=5}">
+					<NoteBlock field="geralInfo1" width="315"/>
+				</layout>
+				<layout align="left" width="210" margins="{right=5}" padding="{top=5,bottom=5,left=5,right=5}">
+					<PointsUse field="Bonus" defaultValue="Pts. Bônus"/>
+					<PointsUse field="XP" defaultValue="Experiencia"/>
+				</layout>
+			</rectangle>
 		</layout>
 
 	</scrollBox>

@@ -125,10 +125,17 @@
     <import file="popups.xml"/>
 
     <rectangle align="right" width="210" color="black" strokeColor="white" strokeSize="1" margins="{left=5}" padding="{top=5,bottom=5,left=5,right=5}">
-        <label align="top" height="25" text="Rolagens" horzTextAlign="center"/>
+        <label align="top" height="25" text="ROLAGENS" horzTextAlign="center"/>
 
         <rollBox field="roll1"/>
+        <checkBox align="top" height="25" text="Meia Parada de Dados" field="halfPool1" margins="{bottom=5}"/>
+        
+        <layout align="top" height="25"/>
+
         <rollBox field="roll2"/>
+        <checkBox align="top" height="25" text="Meia Parada de Dados" field="halfPool2" margins="{bottom=5}"/>
+
+        <layout align="top" height="25"/>
 
         <Header field="dificuldade"/>
         <dataLink field="dificuldade" defaultValue="Dificuldade"/>
@@ -136,24 +143,30 @@
         <Header field="adicional"/>
         <dataLink field="adicional" defaultValue="Adicional"/>
 
-        <checkBox align="top" height="25" text="Meia Parada" field="halfPool" margins="{bottom=5}"/>
-        <checkBox align="top" height="25" text="Falha 1" field="crit1" margins="{bottom=5}"/>
-        <checkBox align="top" height="25" text="Critico 10" field="crit10" margins="{bottom=5}"/>
+        <layout align="top" height="25"/>
+
+        <checkBox align="top" height="25" text="Reduz Sucessos em 1" field="crit1" margins="{bottom=5}"/>
+        <checkBox align="top" height="25" text="Dado Extra em 10" field="crit10" margins="{bottom=5}"/>
+
+        <layout align="top" height="25"/>
 
         <layout align="top" height="55"  margins="{bottom=5}">
             <label align="top" height="25" text="Total" horzTextAlign="center" margins="{bottom=5}"/>
             <boxLabel left="0" top="30" width="200" height="25" field="rollTotal"/>
         </layout>
 
-        <dataLink fields="{'roll1Pool','roll2Pool','adicionalValue','halfPool','rollPen'}">
+        <dataLink fields="{'roll1Pool','roll2Pool','adicionalValue','halfPool1','halfPool2','rollPen'}">
             <event name="onChange">
                 if sheet==nil then return end
                 local r1 = tonumber(sheet.roll1Pool) or 0
                 local r2 = tonumber(sheet.roll2Pool) or 0
-                local total = r1 + r2
-                if sheet.halfPool then
-                    total = total / 2
+                if sheet.halfPool1 then
+                    r1 = r1 / 2
                 end
+                if sheet.halfPool2 then
+                    r2 = r2 / 2
+                end
+                local total = r1 + r2
 
                 local add = tonumber(sheet.adicionalValue) or 0
                 local pen = tonumber(sheet.rollPen) or 0
@@ -198,11 +211,14 @@
         <tab title="Geral">
             <import file="Geral.xml"/>
         </tab>
-        <tab name="tabAbilities" title="Lista">
+        <tab name="tabAbilities" title="Lista" hint="Lista de itens com especialização.">
             <import file="Abilities.xml"/>
         </tab>
-        <tab name="tabOther" title="Outros">
+        <tab name="tabOther" title="Outros" hint="Lista de itens com detalhes.">
             <import file="Other.xml"/>
+        </tab>
+        <tab name="tabOtherInd" title="Outros (Individual)" hint="Lista de itens com detalhes e custos individuais.">
+            <import file="OtherIndividual.xml"/>
         </tab>
         <tab title="Inventário">
             <import file="Inventory.xml"/>

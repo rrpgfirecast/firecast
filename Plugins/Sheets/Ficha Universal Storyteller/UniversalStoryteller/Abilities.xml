@@ -4,7 +4,7 @@
 		<rectangle align="top" height="65" color="black" strokeColor="white" strokeSize="1" margins="{bottom=5}" padding="{top=5,bottom=5,left=5,right=5}">
 		    <layout align="top" height="25" margins="{bottom=5}">
 		        <formatEdit width="300" height="25" field="habilidade" formatFloat=""/>
-		        <button left="305" width="25" height="25" name="abilityButton">
+		        <button left="305" width="25" height="25" name="abilityButton" hint="Os itens dessa lista possuem um espaço para especializações.">
 		        	<image align="client" style="autoFit" src="images/gear.png"/>
 		        	<event name="onClick">
 		        		<![CDATA[
