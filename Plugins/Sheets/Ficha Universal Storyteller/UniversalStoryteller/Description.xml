@@ -28,14 +28,6 @@
 		</rectangle>
 
 		<rectangle align="left" width="275" color="black" strokeColor="white" strokeSize="1" margins="{right=5}" padding="{top=5,bottom=5,left=5,right=5}">
-			<layout align="top" height="250" margins="{bottom=5}">
-				<label align="top" height="25" text="APARÊNCIA" margins="{left=5}"/>
-				<textEditor align="client" field="aparencia" margins="{top=5,bottom=5,left=5,right=5}"/>
-			</layout>
-			<layout align="top" height="250" margins="{bottom=5}">
-				<label align="top" height="25" text="PERSONALIDADE" margins="{left=5}"/>
-				<textEditor align="client" field="personalidade" margins="{top=5,bottom=5,left=5,right=5}"/>
-			</layout>
 			<rectangle align="top" height="260" color="black" strokeColor="white" strokeSize="1" margins="{right=5}">
 				<image align="client" field="avatar" editable="true" style="proportional" margins="{left=2, right=2, top=2, bottom=2}">
 					<event name="OnStartDrag">
@@ -45,6 +37,12 @@
 					</event>
 				</image>
 			</rectangle>
+			<layout align="top" height="250" margins="{top=5}">
+				<NoteBlock field="aparencia" width="260"/>
+			</layout>
+			<layout align="top" height="250" margins="{top=5}">
+				<NoteBlock field="personalidade" width="260"/>
+			</layout>
 		</rectangle>
 		
 		<rectangle align="client" color="black" strokeColor="white" strokeSize="1">

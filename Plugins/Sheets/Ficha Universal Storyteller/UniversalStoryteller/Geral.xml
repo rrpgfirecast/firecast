@@ -1,88 +1,177 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <form name="frmGeral" align="client">
 	<scrollBox align="client">
-		<rectangle align="top" height="95" color="black" strokeColor="white" strokeSize="1" margins="{bottom=5}" padding="{top=5,bottom=5,left=5,right=5}">
-			<rectangle align="left" width="200" color="black" strokeColor="white" strokeSize="1" margins="{right=5}">
-				<image align="client" field="sistema" editable="true" style="proportional" margins="{left=2, right=2, top=2, bottom=2}">
-					<event name="OnStartDrag">
-						if drag then
-					    	drag:addData("imageURL", sheet.sistema)
-					    end
-					</event>
-				</image>
+		<rectangle align="right" width="260" color="black" strokeColor="white" strokeSize="1" margins="{left=5}" padding="{top=5,bottom=5,left=5,right=5}">
+			<layout align="top" height="25">
+				<formatEdit width="225" height="25" field="health"/>
+	            <button left="225" width="25" height="25" text="+">
+	                <event name="onClick">
+	                    local node = self.rclhealth:append()
+	                </event>
+	            </button>
+			</layout>
+			<layout align="top" height="25">
+				<label left="20" width="85" height="25" text="" formatFloat=""/>
+
+	            <label left="105" width="30" height="25" text="Min"/>
+	            <label left="135" width="30" height="25" text="Max"/>
+	            <label left="170" width="30" height="25" text="Pen"/>
+			</layout>
+
+			<scrollBox align="client">
+                <recordList align="top" autoHeight="true" name="rclhealth" field="rclhealth" templateForm="frmHealthItem" layout="vertical"/>
+            </scrollBox>
+		</rectangle>
+
+		<layout align="client">
+			<rectangle align="top" height="95" color="black" strokeColor="white" strokeSize="1" margins="{bottom=5}" padding="{top=5,bottom=5,left=5,right=5}">
+				<rectangle align="left" width="200" color="black" strokeColor="white" strokeSize="1" margins="{right=5}">
+					<image align="client" field="sistema" editable="true" style="proportional" margins="{left=2, right=2, top=2, bottom=2}">
+						<event name="OnStartDrag">
+							if drag then
+						    	drag:addData("imageURL", sheet.sistema)
+						    end
+						</event>
+					</image>
+				</rectangle>
+
+				<layout align="left" width="250" margins="{right=5}">
+					<Header field="header0_0"/>
+					<Header field="header0_1"/>
+					<Header field="header0_2"/>
+				</layout>
+
+				<layout align="left" width="250" margins="{right=5}">
+					<Header field="header1_0"/>
+					<Header field="header1_1"/>
+					<Header field="header1_2"/>
+				</layout>
+
+				<layout align="left" width="250" margins="{right=5}">
+					<Header field="header2_0"/>
+					<Header field="header2_1"/>
+					<Header field="header2_2"/>
+				</layout>
 			</rectangle>
 
-			<layout align="left" width="250" margins="{right=5}">
-				<Header field="header0_0"/>
-				<Header field="header0_1"/>
-				<Header field="header0_2"/>
+			<rectangle align="top" height="155" color="black" strokeColor="white" strokeSize="1" margins="{bottom=5}" padding="{top=5,bottom=5,left=5,right=5}">
+		        <layout align="top" height="25" margins="{bottom=5}">
+		            <formatEdit width="250" height="25" field="atributo" formatFloat=""/>
+		            <button left="255" width="25" height="25" name="atributteButton">
+		            	<image align="client" style="autoFit" src="images/gear.png"/>
+		            	<event name="onClick">
+		            		<![CDATA[
+				    		local pop = self:findControlByName("popConfigAtr");
+							
+							if pop ~= nil then
+								pop:setNodeObject(sheet);
+								pop:showPopupEx("bottomCenter", self.atributteButton);
+							else
+								showMessage("Ops, bug.. nao encontrei o popup para exibir");
+							end;
+							]]>
+		            	</event>
+		            </button>
+		        </layout>
+
+		        <layout align="top" height="25" margins="{bottom=5}">
+		        	<layout align="left" width="250" margins="{right=5}">
+		            	<formatEdit width="250" height="25" field="atributo0" formatFloat=""/>
+		            </layout>
+		        	<layout align="left" width="250" margins="{right=5}">
+		            	<formatEdit width="250" height="25" field="atributo1" formatFloat=""/>
+		            </layout>
+		        	<layout align="left" width="250" margins="{right=5}">
+		            	<formatEdit width="250" height="25" field="atributo2" formatFloat=""/>
+		            </layout>
+		        </layout>
+
+				<AttributeBox field="atributo0"/>
+				<AttributeBox field="atributo1"/>
+				<AttributeBox field="atributo2"/>
+
+	            <dataLink fields="{'atributo0Ini','atributo1Ini','atributo2Ini'}">
+	                <event name="onChange">
+	                    if sheet==nil then return end
+	                    sheet.atributoIni =   (tonumber(sheet.atributo0Ini) or 0) + 
+	                                            (tonumber(sheet.atributo1Ini) or 0) + 
+	                                            (tonumber(sheet.atributo2Ini) or 0)
+	                </event>
+	            </dataLink>
+	            <dataLink fields="{'atributo0Bonus','atributo1Bonus','atributo2Bonus'}">
+	                <event name="onChange">
+	                    if sheet==nil then return end
+	                    sheet.atributoBonus =   (tonumber(sheet.atributo0Bonus) or 0) + 
+	                                            (tonumber(sheet.atributo1Bonus) or 0) + 
+	                                            (tonumber(sheet.atributo2Bonus) or 0)
+	                </event>
+	            </dataLink>
+			</rectangle>
+
+			<rectangle align="top" height="215" color="black" strokeColor="white" strokeSize="1" margins="{bottom=5}" padding="{top=5,bottom=5,left=5,right=5}">
+		        <layout align="top" height="25" margins="{bottom=5}">
+		            <formatEdit width="250" height="25" field="individual" formatFloat=""/>
+		            <button left="255" width="25" height="25" name="indiividualButton">
+		            	<image align="client" style="autoFit" src="images/gear.png"/>
+		            	<event name="onClick">
+		            		<![CDATA[
+				    		local pop = self:findControlByName("popConfigInd");
+							
+							if pop ~= nil then
+								pop:setNodeObject(sheet);
+								pop:showPopupEx("bottomCenter", self.indiividualButton);
+							else
+								showMessage("Ops, bug.. nao encontrei o popup para exibir");
+							end;
+							]]>
+		            	</event>
+		            </button>
+		        </layout>
+
+		        <layout align="top" height="25" margins="{bottom=5}">
+		        	<layout align="left" width="250" margins="{right=5}">
+		            	<formatEdit width="250" height="25" field="individual0" formatFloat=""/>
+		            </layout>
+		        	<layout align="left" width="250" margins="{right=5}">
+		            	<formatEdit width="250" height="25" field="individual1" formatFloat=""/>
+		            </layout>
+		        	<layout align="left" width="330" margins="{right=5}">
+		            	<formatEdit width="330" height="25" field="individual2" formatFloat=""/>
+		            </layout>
+		        </layout>
+
+				<IndividualBox field="individual0"/>
+				<IndividualBox field="individual1"/>
+				<BarBox field="individual2"/>
+
+	            <dataLink fields="{'individual0Ini','individual1Ini','individual2Ini','individual3Ini','individual4Ini'}">
+	                <event name="onChange">
+	                    if sheet==nil then return end
+	                    sheet.individualIni =   (tonumber(sheet.individual0Ini) or 0) + 
+	                                            (tonumber(sheet.individual1Ini) or 0) + 
+	                                            (tonumber(sheet.individual2Ini) or 0) + 
+	                                            (tonumber(sheet.individual3Ini) or 0) + 
+	                                            (tonumber(sheet.individual4Ini) or 0)
+	                </event>
+	            </dataLink>
+	            <dataLink fields="{'individual0Bonus','individual1Bonus','individual2Bonus','individual3Bonus','individual4Bonus'}">
+	                <event name="onChange">
+	                    if sheet==nil then return end
+	                    sheet.individualBonus =   (tonumber(sheet.individual0Bonus) or 0) + 
+	                                            (tonumber(sheet.individual1Bonus) or 0) + 
+	                                            (tonumber(sheet.individual2Bonus) or 0) + 
+	                                            (tonumber(sheet.individual3Bonus) or 0) + 
+	                                            (tonumber(sheet.individual4Bonus) or 0)
+	                </event>
+	            </dataLink>
+			</rectangle>
+
+			<layout align="top" height="210" margins="{bottom=5}">
+				<rectangle align="left" width="845" color="black" strokeColor="white" strokeSize="1" margins="{left=0}" padding="{top=5,bottom=5,left=5,right=5}">
+					<NoteBlock field="geralInfo" width="835"/>
+				</rectangle>
 			</layout>
+		</layout>
 
-			<layout align="left" width="250" margins="{right=5}">
-				<Header field="header1_0"/>
-				<Header field="header1_1"/>
-				<Header field="header1_2"/>
-			</layout>
-
-			<layout align="left" width="250" margins="{right=5}">
-				<Header field="header2_0"/>
-				<Header field="header2_1"/>
-				<Header field="header2_2"/>
-			</layout>
-		</rectangle>
-
-		<rectangle align="top" height="155" color="black" strokeColor="white" strokeSize="1" margins="{bottom=5}" padding="{top=5,bottom=5,left=5,right=5}">
-	        <layout align="top" height="25" margins="{bottom=5}">
-	            <formatEdit width="250" height="25" field="atributo" formatFloat=""/>
-	            <button left="255" width="25" height="25" name="atributteButton">
-	            	<image align="client" style="autoFit" src="images/gear.png"/>
-	            	<event name="onClick">
-	            		<![CDATA[
-			    		local pop = self:findControlByName("popConfigAtr");
-						
-						if pop ~= nil then
-							pop:setNodeObject(sheet);
-							pop:showPopupEx("bottomCenter", self.atributteButton);
-						else
-							showMessage("Ops, bug.. nao encontrei o popup para exibir");
-						end;
-						]]>
-	            	</event>
-	            </button>
-	        </layout>
-
-	        <layout align="top" height="25" margins="{bottom=5}">
-	        	<layout align="left" width="250" margins="{right=5}">
-	            	<formatEdit width="250" height="25" field="atributo0" formatFloat=""/>
-	            </layout>
-	        	<layout align="left" width="250" margins="{right=5}">
-	            	<formatEdit width="250" height="25" field="atributo1" formatFloat=""/>
-	            </layout>
-	        	<layout align="left" width="250" margins="{right=5}">
-	            	<formatEdit width="250" height="25" field="atributo2" formatFloat=""/>
-	            </layout>
-	        </layout>
-
-			<AttributeBox field="atributo0"/>
-			<AttributeBox field="atributo1"/>
-			<AttributeBox field="atributo2"/>
-
-            <dataLink fields="{'atributo0Ini','atributo1Ini','atributo2Ini'}">
-                <event name="onChange">
-                    if sheet==nil then return end
-                    sheet.atributoIni =   (tonumber(sheet.atributo0Ini) or 0) + 
-                                            (tonumber(sheet.atributo1Ini) or 0) + 
-                                            (tonumber(sheet.atributo2Ini) or 0)
-                </event>
-            </dataLink>
-            <dataLink fields="{'atributo0Bonus','atributo1Bonus','atributo2Bonus'}">
-                <event name="onChange">
-                    if sheet==nil then return end
-                    sheet.atributoBonus =   (tonumber(sheet.atributo0Bonus) or 0) + 
-                                            (tonumber(sheet.atributo1Bonus) or 0) + 
-                                            (tonumber(sheet.atributo2Bonus) or 0)
-                </event>
-            </dataLink>
-		</rectangle>
 	</scrollBox>
 </form>

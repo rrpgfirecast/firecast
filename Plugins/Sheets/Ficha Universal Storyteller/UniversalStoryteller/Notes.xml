@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmTemplateNotes" align="client">
+	<scrollBox align="client">
+		<rectangle align="left" width="410" margins="{right=10}" color="black" strokeColor="white" strokeSize="1" padding="{top=5,bottom=5,left=5,right=5}">
+			<NoteBlock field="anotacoes1" width="400"/>
+		</rectangle>
+
+		<rectangle align="left" width="410" margins="{right=10}" color="black" strokeColor="white" strokeSize="1" padding="{top=5,bottom=5,left=5,right=5}">
+			<NoteBlock field="anotacoes2" width="400"/>
+		</rectangle>
+
+		<rectangle align="left" width="410" margins="{right=10}" color="black" strokeColor="white" strokeSize="1" padding="{top=5,bottom=5,left=5,right=5}">
+			<NoteBlock field="anotacoes3" width="400"/>
+		</rectangle>
+	</scrollBox>
+</form>

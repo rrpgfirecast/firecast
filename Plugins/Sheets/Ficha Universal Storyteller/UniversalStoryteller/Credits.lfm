@@ -78,9 +78,50 @@
 		</layout>
 
 		<layout align="top" width="200" height="160" margins="{top=10}">
-			<rectangle align="left" width="200" color="black" strokeColor="white" strokeSize="1" margins="{right=10}">
+			<rectangle align="left" width="210" color="black" strokeColor="white" strokeSize="1" margins="{right=10}" padding="{right=5,left=5}">
 				<label align="top" height="25" text="Plugin feito por: " horzTextAlign="center"/>
 				<label align="top" height="25" text="Vinny (Ambesek)" horzTextAlign="center"/>
+
+				<layout align="top" height="25"/>
+				<layout align="top" height="25"/>
+				<layout align="top" height="25"/>
+				
+				<layout align="top" height="25">
+					<!-- Combobox de exportar ficha -->
+					<button align="left" width="100" text="Exportar Ficha" >
+						<event name="onClick">
+							local xml = NDB.exportXML(sheet);
+
+							local export = {};
+							local bytes = Utils.binaryEncode(export, "utf8", xml);
+
+							local stream = Utils.newMemoryStream();
+							local bytes = stream:write(export);
+
+							Dialogs.saveFile("Salvar Ficha como XML", stream, "ficha.xml", "application/xml",
+								function()
+									stream:close();
+									showMessage("Ficha Exportada.");
+								end);
+						</event>
+					</button>
+					<!-- Combobox de importar ficha -->
+					<button align="left" width="100" text="Importar Ficha" >
+						<event name="onClick">
+							Dialogs.openFile("Importar Ficha", "application/xml", false, 
+								function(arquivos)
+									local arq = arquivos[1];
+
+									local import = {};
+									local bytes = arq.stream:read(import, arq.stream.size);
+
+									local xml = Utils.binaryDecode(import, "utf8");
+
+									NDB.importXML(sheet, xml);
+								end);
+						</event>
+					</button>
+				</layout>
 			</rectangle>
 
 			<rectangle align="left" width="210" color="black" strokeColor="white" strokeSize="1" margins="{right=10}" padding="{right=5,left=5}">
@@ -147,9 +188,13 @@
 						local strokeColor = sheet.colorStroke or "#FFFFFF";
 
 			            local rectangles = findClass("rectangle");
-
 						for i=1, #rectangles, 1 do 
 							rectangles[i].strokeColor = strokeColor;
+						end;
+
+			            local progressBars = findClass("progressBar");
+						for i=1, #progressBars, 1 do 
+							progressBars[i].color = strokeColor;
 						end;
 			        </event>
 			    </dataLink>
@@ -196,46 +241,5 @@
 			    </dataLink>
 			</rectangle>
 		</layout>
-
-		<layout align="top" width="200" height="160" margins="{top=10}">
-			<rectangle align="left" width="110" color="black" strokeColor="white" strokeSize="1" margins="{right=10}" padding="{top=5,bottom=5,right=5,left=5}">
-				<!-- Combobox de exportar ficha -->
-				<button align="top" width="100" text="Exportar Ficha" >
-					<event name="onClick">
-						local xml = NDB.exportXML(sheet);
-
-						local export = {};
-						local bytes = Utils.binaryEncode(export, "utf8", xml);
-
-						local stream = Utils.newMemoryStream();
-						local bytes = stream:write(export);
-
-						Dialogs.saveFile("Salvar Ficha como XML", stream, "ficha.xml", "application/xml",
-							function()
-								stream:close();
-								showMessage("Ficha Exportada.");
-							end);
-					</event>
-				</button>
-				<!-- Combobox de importar ficha -->
-				<button align="top" width="100" text="Importar Ficha" >
-					<event name="onClick">
-						Dialogs.openFile("Importar Ficha", "application/xml", false, 
-							function(arquivos)
-								local arq = arquivos[1];
-
-								local import = {};
-								local bytes = arq.stream:read(import, arq.stream.size);
-
-								local xml = Utils.binaryDecode(import, "utf8");
-
-								NDB.importXML(sheet, xml);
-							end);
-					</event>
-				</button>
-			</rectangle>
-		</layout>
-		
-
 	</scrollBox>
 </form>

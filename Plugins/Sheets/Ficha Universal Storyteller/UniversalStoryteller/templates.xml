@@ -27,6 +27,76 @@
             <boxLabel left="50" width="50" height="25" field="$(field)Gasto"/>
         </layout>
     </template>
+    <template name="EditBar">
+        <layout left="$(left or 0)" top="$(top or 0)" height="25" width="75">
+            <layout align="left" width="45" margins="{top=5,bottom=5}">
+                <imageCheckBox align="client">
+                    <progressBar colorMode="hl" width="45" height="15" margins="{top=5,bottom=5}" hitTest="true" mouseGlow="true" color="Red" name="$(field)" field="$(field)Valor" fieldMax="$(field)ValorMax">
+                        <event name="onMouseEnter">
+                            self.Cor$(field).color = "Green";
+                            self.Valores$(field).visible = true;
+                            sheet.Info$(field) = (sheet.$(field)Valor or 0) .. "/"  .. (sheet.$(field)ValorMax or 0);                   
+                        </event>
+                        <event name="onMouseLeave">
+                            self.Valores$(field).visible = false;
+                        </event>
+                        <event name="onDblClick">
+                            sheet.$(field)ID = sheet.index;
+                            
+                            sheet.Modificador$(field) = "igual";
+                            sheet.Modificador$(field)Max = "igual";
+                            sheet.ValorTempAtual$(field) = sheet.$(field)Valor;
+                            sheet.ValorTempMax$(field) = sheet.$(field)ValorMax;
+                            sheet.ValorMudadoAtual$(field) = sheet.$(field)Valor;
+                            sheet.ValorMudadoMax$(field) = sheet.$(field)ValorMax;
+
+                            local rec = self:findControlByName("PopupBarColor");
+                            if rec~=nil then rec.color = "Green" end;
+                            
+                            local pop = self:findControlByName("BarPopup");
+                            if pop~= nil then
+                                pop.scopeNode = sheet
+                                pop.scopeNode.selectedBar = "$(field)"
+                                pop:show("top", self.$(field))
+                                pop.top = (pop.top + 29 + 10)
+                            end;
+                        </event>
+                    </progressBar>
+                </imageCheckBox>
+            </layout>
+            <layout align="left" width="30" margins="{top=5,bottom=5}" visible="false" name="Valores$(field)">
+                <rectangle align="client" xradius="2" yradius="2" name="Cor$(field)" color="Green">
+                    <label align="left" fontColor="white" fontSize="10" autoSize="true" textTrimming="none" wordWrap="false" name="Info$(field)" field="Info$(field)" horzTextAlign="center" text="0/0">
+                        <event name="onResize">
+                            self.Info$(field).width = (self.Valores$(field).width - 4);
+                        </event>
+                    </label>
+                </rectangle>
+            </layout>
+
+            <dataLink field="Cor$(field)" defaultValue="Green">
+                <event name="onUserChange">
+                    self.$(field).color = "Green";
+                </event>
+            </dataLink>
+            <dataLink field="$(field)Valor">
+                <event name="onChange">
+                    if sheet.$(field)Valor==nil then return end;
+                    if sheet.$(field)Valor==0 then 
+                        self.$(field).color = "Yellow";
+                    else
+                        self.$(field).color = "Green";
+                    end;
+                </event>
+            </dataLink>
+        </layout>
+    </template>
+    <template name="NoteBlock">
+        <layout align="top" height="25">
+            <formatEdit width="$(width)" height="25" field="$(field)Title"/>
+        </layout>
+        <textEditor align="client" field="$(field)Block"/>
+    </template>
 
     <template name="Header">
         <layout align="top" height="25" margins="{bottom=5}">
@@ -90,64 +160,237 @@
             <Attribute field="$(field)_1"/>
             <Attribute field="$(field)_2"/>
 
-            <dataLink fields="{'$(field)_0Ini','$(field)_1Ini','$(field)_2Ini'}">
+            <dataLink fields="{'$(field)_0Ini','$(field)_1Ini','$(field)_2Ini','$(field)_3Ini','$(field)_4Ini'}">
                 <event name="onChange">
                     if sheet==nil then return end
                     sheet.$(field)Ini =   (tonumber(sheet.$(field)_0Ini) or 0) + 
                                             (tonumber(sheet.$(field)_1Ini) or 0) + 
-                                            (tonumber(sheet.$(field)_2Ini) or 0)
+                                            (tonumber(sheet.$(field)_2Ini) or 0) + 
+                                            (tonumber(sheet.$(field)_3Ini) or 0) + 
+                                            (tonumber(sheet.$(field)_4Ini) or 0)
                 </event>
             </dataLink>
 
-            <dataLink fields="{'$(field)_0Bonus','$(field)_1Bonus','$(field)_2Bonus'}">
+            <dataLink fields="{'$(field)_0Bonus','$(field)_1Bonus','$(field)_2Bonus','$(field)_3Bonus','$(field)_4Bonus'}">
                 <event name="onChange">
                     if sheet==nil then return end
                     sheet.$(field)Bonus =   (tonumber(sheet.$(field)_0Bonus) or 0) + 
                                             (tonumber(sheet.$(field)_1Bonus) or 0) + 
-                                            (tonumber(sheet.$(field)_2Bonus) or 0)
+                                            (tonumber(sheet.$(field)_2Bonus) or 0) + 
+                                            (tonumber(sheet.$(field)_3Bonus) or 0) + 
+                                            (tonumber(sheet.$(field)_4Bonus) or 0)
                 </event>
             </dataLink>
 
-            <dataLink fields="{'$(field)_0XP','$(field)_0Total','$(field)_1XP','$(field)_1Total','$(field)_2XP','$(field)_2Total','$(field)XPCusto'}">
+            <dataLink fields="{'$(field)_0XP','$(field)_0Total','$(field)_1XP','$(field)_1Total','$(field)_2XP','$(field)_2Total','$(field)_3XP','$(field)_3Total','$(field)_4XP','$(field)_4Total','$(field)XPCusto'}">
                 <event name="onChange"><![CDATA[
                     if sheet==nil then return end
                     local custo = (tonumber(sheet.$(field)XPCusto) or 0)
-                    local sum = 0
+                    local soma = 0
 
-                    local total = (tonumber(sheet.$(field)_0Total) or 0)
-                    local xp = (tonumber(sheet.$(field)_0XP) or 0)
-                    local diff = total-xp
+                    for i=1, 5 do 
+                        local total = (tonumber(sheet["$(field)_"..i.."Total"]) or 0)
+                        local xp = (tonumber(sheet["$(field)_"..i.."XP"]) or 0)
+                        local diff = total-xp
 
-                    while diff<total do
-                        diff=diff+1
-                        sum = sum + (diff*custo)
+                        while diff<total do
+                            diff=diff+1
+                            soma = soma + math.floor(diff*custo)
+                        end
                     end
 
-                    local total = (tonumber(sheet.$(field)_1Total) or 0)
-                    local xp = (tonumber(sheet.$(field)_1XP) or 0)
-                    local diff = total-xp
-
-                    while diff<total do
-                        diff=diff+1
-                        sum = sum + (diff*custo)
-                    end
-
-                    local total = (tonumber(sheet.$(field)_2Total) or 0)
-                    local xp = (tonumber(sheet.$(field)_2XP) or 0)
-                    local diff = total-xp
-
-                    while diff<total do
-                        diff=diff+1
-                        sum = sum + (diff*custo)
-                    end
-
-                    sheet.$(field)XPGasto = sum
+                    sheet.$(field)XPGasto = soma
 
                     ]]> 
                 </event>
             </dataLink>
         </layout>
     </template>
+
+    <template name="Individual">
+        <layout align="top" height="25" margins="{bottom=5}">
+            <layout width="12.5" height="25">
+                <button top="0" height="12.5" width="12.5" text="1" fontSize="5">
+                    <event name="onClick">
+                        if sheet==nil then return end;
+                        sheet.roll1Name = sheet.$(field)
+                        sheet.roll1Pool = sheet.$(field)Total
+                    </event>
+                </button>
+                <button top="12.5" height="12.5" width="12.5" text="2" fontSize="5">
+                    <event name="onClick">
+                        if sheet==nil then return end;
+                        sheet.roll2Name = sheet.$(field)
+                        sheet.roll2Pool = sheet.$(field)Total
+                    </event>
+                </button>
+            </layout>
+
+            <formatEdit left="12.5" width="87.5" height="25" field="$(field)" formatFloat=""/>
+            <edit left="100" width="35" height="25" field="$(field)Ini"/>
+            <edit left="135" width="35" height="25" field="$(field)Bonus"/>
+            <edit left="170" width="35" height="25" field="$(field)XP"/>
+            <boxLabel left="205" width="45" height="25" field="$(field)Total"/>
+        </layout>
+
+        <dataLink fields="{'$(field)Ini','$(field)Bonus','$(field)XP'}">
+            <event name="onChange">
+                if sheet==nil then return end
+                sheet.$(field)Total =   (tonumber(sheet.$(field)Ini) or 0) + 
+                                        (tonumber(sheet.$(field)Bonus) or 0) + 
+                                        (tonumber(sheet.$(field)XP) or 0)
+            </event>
+        </dataLink>
+    </template>
+    <template name="IndividualBox">
+        <layout align="left" width="250" margins="{right=5}">
+            <Individual field="$(field)_0"/>
+            <Individual field="$(field)_1"/>
+            <Individual field="$(field)_2"/>
+            <Individual field="$(field)_3"/>
+            <Individual field="$(field)_4"/>
+
+            <dataLink fields="{'$(field)_0Ini','$(field)_1Ini','$(field)_2Ini','$(field)_3Ini','$(field)_4Ini'}">
+                <event name="onChange">
+                    if sheet==nil then return end
+                    sheet.$(field)Ini =   (tonumber(sheet.$(field)_0Ini) or 0) + 
+                                            (tonumber(sheet.$(field)_1Ini) or 0) + 
+                                            (tonumber(sheet.$(field)_2Ini) or 0) + 
+                                            (tonumber(sheet.$(field)_3Ini) or 0) + 
+                                            (tonumber(sheet.$(field)_4Ini) or 0)
+                </event>
+            </dataLink>
+
+            <dataLink fields="{'$(field)_0Bonus','$(field)_1Bonus','$(field)_2Bonus','$(field)_3Bonus','$(field)_4Bonus'}">
+                <event name="onChange">
+                    if sheet==nil then return end
+                    sheet.$(field)Bonus =   (tonumber(sheet.$(field)_0Bonus) or 0) + 
+                                            (tonumber(sheet.$(field)_1Bonus) or 0) + 
+                                            (tonumber(sheet.$(field)_2Bonus) or 0) + 
+                                            (tonumber(sheet.$(field)_3Bonus) or 0) + 
+                                            (tonumber(sheet.$(field)_4Bonus) or 0)
+                </event>
+            </dataLink>
+
+            <dataLink fields="{'$(field)_0XP','$(field)_0Total','$(field)_1XP','$(field)_1Total','$(field)_2XP','$(field)_2Total','$(field)_3XP','$(field)_3Total','$(field)_4XP','$(field)_4Total','$(field)XPCusto'}">
+                <event name="onChange"><![CDATA[
+                    if sheet==nil then return end
+                    local custo = (tonumber(sheet.$(field)XPCusto) or 0)
+                    local soma = 0
+
+                    for i=1, 5 do 
+                        local total = (tonumber(sheet["$(field)_"..i.."Total"]) or 0)
+                        local xp = (tonumber(sheet["$(field)_"..i.."XP"]) or 0)
+                        local diff = total-xp
+
+                        while diff<total do
+                            diff=diff+1
+                            soma = soma + math.floor(diff*custo)
+                        end
+                    end
+
+                    sheet.$(field)XPGasto = soma
+
+                    ]]> 
+                </event>
+            </dataLink>
+        </layout>
+    </template>
+
+    <template name="BarStat">
+        <layout align="top" height="25" margins="{bottom=5}">
+            <layout width="12.5" height="25">
+                <button top="0" height="12.5" width="12.5" text="1" fontSize="5">
+                    <event name="onClick">
+                        if sheet==nil then return end;
+                        sheet.roll1Name = sheet.$(field)
+                        sheet.roll1Pool = sheet.$(field)Total
+                    </event>
+                </button>
+                <button top="12.5" height="12.5" width="12.5" text="2" fontSize="5">
+                    <event name="onClick">
+                        if sheet==nil then return end;
+                        sheet.roll2Name = sheet.$(field)
+                        sheet.roll2Pool = sheet.$(field)Total
+                    </event>
+                </button>
+            </layout>
+
+            <formatEdit left="12.5" width="87.5" height="25" field="$(field)" formatFloat=""/>
+            <edit left="100" width="35" height="25" field="$(field)Ini"/>
+            <edit left="135" width="35" height="25" field="$(field)Bonus"/>
+            <edit left="170" width="35" height="25" field="$(field)XP"/>
+            <label left="205" width="5" text="|" horzTextAlign="center"/>
+            <edit left="210" width="35" height="25" field="$(field)Curr"/>
+            <boxLabel left="245" width="35" height="25" field="$(field)Total"/>
+
+            <progressBar left="282.5" top="5" width="45" height="15" field="$(field)Curr" fieldMax="$(field)Total" color="white"/>
+        </layout>
+
+        <dataLink fields="{'$(field)Ini','$(field)Bonus','$(field)XP'}">
+            <event name="onChange">
+                if sheet==nil then return end
+                sheet.$(field)Total =   (tonumber(sheet.$(field)Ini) or 0) + 
+                                        (tonumber(sheet.$(field)Bonus) or 0) + 
+                                        (tonumber(sheet.$(field)XP) or 0)
+            </event>
+        </dataLink>
+    </template>
+    <template name="BarBox">
+        <layout align="left" width="330" margins="{right=5}">
+            <BarStat field="$(field)_0"/>
+            <BarStat field="$(field)_1"/>
+            <BarStat field="$(field)_2"/>
+            <BarStat field="$(field)_3"/>
+            <BarStat field="$(field)_4"/>
+
+            <dataLink fields="{'$(field)_0Ini','$(field)_1Ini','$(field)_2Ini','$(field)_3Ini','$(field)_4Ini'}">
+                <event name="onChange">
+                    if sheet==nil then return end
+                    sheet.$(field)Ini =   (tonumber(sheet.$(field)_0Ini) or 0) + 
+                                            (tonumber(sheet.$(field)_1Ini) or 0) + 
+                                            (tonumber(sheet.$(field)_2Ini) or 0) + 
+                                            (tonumber(sheet.$(field)_3Ini) or 0) + 
+                                            (tonumber(sheet.$(field)_4Ini) or 0)
+                </event>
+            </dataLink>
+
+            <dataLink fields="{'$(field)_0Bonus','$(field)_1Bonus','$(field)_2Bonus','$(field)_3Bonus','$(field)_4Bonus'}">
+                <event name="onChange">
+                    if sheet==nil then return end
+                    sheet.$(field)Bonus =   (tonumber(sheet.$(field)_0Bonus) or 0) + 
+                                            (tonumber(sheet.$(field)_1Bonus) or 0) + 
+                                            (tonumber(sheet.$(field)_2Bonus) or 0) + 
+                                            (tonumber(sheet.$(field)_3Bonus) or 0) + 
+                                            (tonumber(sheet.$(field)_4Bonus) or 0)
+                </event>
+            </dataLink>
+
+            <dataLink fields="{'$(field)_0XP','$(field)_0Total','$(field)_1XP','$(field)_1Total','$(field)_2XP','$(field)_2Total','$(field)_3XP','$(field)_3Total','$(field)_4XP','$(field)_4Total','$(field)XPCusto'}">
+                <event name="onChange"><![CDATA[
+                    if sheet==nil then return end
+                    local custo = (tonumber(sheet.$(field)XPCusto) or 0)
+                    local soma = 0
+
+                    for i=1, 5 do 
+                        local total = (tonumber(sheet["$(field)_"..i.."Total"]) or 0)
+                        local xp = (tonumber(sheet["$(field)_"..i.."XP"]) or 0)
+                        local diff = total-xp
+
+                        while diff<total do
+                            diff=diff+1
+                            soma = soma + math.floor(diff*custo)
+                        end
+                    end
+
+                    sheet.$(field)XPGasto = soma
+
+                    ]]> 
+                </event>
+            </dataLink>
+        </layout>
+    </template>
+
     <template name="Config">
         <layout align="top" height="25" margins="{bottom=5}">
             <label align="left" width="100" field="$(field)" horzTextAlign="center"/>
@@ -175,6 +418,29 @@
         </dataLink>
     </template>
 
+    <template name="ConfigXP">
+        <dataLink fields="{'$(field)XPCusto','$(field)XP','$(field)Total'}">
+            <event name="onChange"><![CDATA[
+                if sheet==nil then return end 
+
+                local custo = tonumber(sheet.$(field)XPCusto) or 5
+                local xp = tonumber(sheet.$(field)XP) or 0
+                local total = tonumber(sheet.$(field)Total) or 0
+                local soma = 0
+
+                local diff = total-xp
+
+                while diff<total do
+                    diff=diff+1
+                    soma = soma + math.floor(diff*custo)
+                end
+
+                sheet.$(field)XPGasto = soma
+                ]]> 
+            </event>
+        </dataLink>
+    </template>
+
     <template name="AbilityTitle">
         <layout align="left" width="300" margins="{right=5}">
             <formatEdit width="275" height="25" field="$(field)" formatFloat=""/>
@@ -190,12 +456,14 @@
     </template>
     <template name="AbilityBox">
         <layout align="left" width="300" margins="{right=5}">
-            <recordList align="client" name="$(field)" field="$(field)" templateForm="frmAbilityItem" layout="vertical">
-                <event name="onCompare"><![CDATA[
-                    return utils.compareStringPtBr(nodeA.habilidade, nodeB.habilidade);            
-                    ]]>
-                </event>
-            </recordList>
+            <scrollBox align="client">
+                <recordList align="top" autoHeight="true" name="$(field)" field="$(field)" templateForm="frmAbilityItem" layout="vertical">
+                    <event name="onCompare"><![CDATA[
+                        return Utils.compareStringPtBr(nodeA.habilidade, nodeB.habilidade);            
+                        ]]>
+                    </event>
+                </recordList>
+            </scrollBox>
         </layout>
     </template>
 
@@ -214,12 +482,14 @@
     </template>
     <template name="OtherBox">
         <layout align="left" width="325" margins="{right=5}">
-            <recordList align="client" name="$(field)" field="$(field)" templateForm="frmOtherItem" layout="vertical">
-                <event name="onCompare"><![CDATA[
-                    return utils.compareStringPtBr(nodeA.other, nodeB.other);            
-                    ]]>
-                </event>
-            </recordList>
+            <scrollBox align="client">
+                <recordList align="top" autoHeight="true" name="$(field)" field="$(field)" templateForm="frmOtherItem" layout="vertical">
+                    <event name="onCompare"><![CDATA[
+                        return Utils.compareStringPtBr(nodeA.other, nodeB.other);            
+                        ]]>
+                    </event>
+                </recordList>
+            </scrollBox>
         </layout>
     </template>
 </group>

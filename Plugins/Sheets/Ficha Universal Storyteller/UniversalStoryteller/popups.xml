@@ -29,6 +29,101 @@
             </event>
         </dataLink>
     </popup>
+    <popup name="popConfigInd" width="470" height="450" backOpacity="0.4" autoScopeNode="false" padding="{top=10,bottom=10,left=10,right=10}">
+        <layout align="top" height="25" margins="{bottom=5}">
+            <label align="left" width="100" text=""/>
+            <label align="left" width="100" text="Inicial" horzTextAlign="center" margins="{right=25}"/>
+            <label align="left" width="100" text="Bônus" horzTextAlign="center" margins="{right=25}"/>
+            <label align="left" width="100" text="XP" horzTextAlign="center" margins="{right=25}"/>
+        </layout>
+        <layout align="top" height="25" margins="{bottom=5}">
+            <label align="left" width="100" text=""/>
+            <label align="left" width="100" text="Custo | Gasto" horzTextAlign="center" margins="{right=25}"/>
+            <label align="left" width="100" text="Custo | Gasto" horzTextAlign="center" margins="{right=25}"/>
+            <label align="left" width="100" text="Custo | Gasto" horzTextAlign="center" margins="{right=25}"/>
+        </layout>
+        <Config field="individual"/>
+        <Config field="individual0"/>
+
+        <Config field="individual1_0"/>
+        <Config field="individual1_1"/>
+        <Config field="individual1_2"/>
+        <Config field="individual1_3"/>
+        <Config field="individual1_4"/>
+        <Config field="individual2_0"/>
+        <Config field="individual2_1"/>
+        <Config field="individual2_2"/>
+        <Config field="individual2_3"/>
+        <Config field="individual2_4"/>
+
+        <ConfigXP field="individual1_0"/>
+        <ConfigXP field="individual1_1"/>
+        <ConfigXP field="individual1_2"/>
+        <ConfigXP field="individual1_3"/>
+        <ConfigXP field="individual1_4"/>
+        <ConfigXP field="individual2_0"/>
+        <ConfigXP field="individual2_1"/>
+        <ConfigXP field="individual2_2"/>
+        <ConfigXP field="individual2_3"/>
+        <ConfigXP field="individual2_4"/>
+
+        <dataLink fields="{'individual0XPGasto','individual1_0XPGasto','individual1_1XPGasto','individual1_2XPGasto','individual1_3XPGasto','individual1_4XPGasto','individual2_0XPGasto','individual2_1XPGasto','individual2_2XPGasto','individual2_3XPGasto','individual2_4XPGasto'}">
+            <event name="onChange"><![CDATA[
+                if sheet==nil then return end
+                sheet.individualXPGasto =   (tonumber(sheet.individual0XPGasto) or 0) + 
+                                            (tonumber(sheet.individual1_0XPGasto) or 0) + 
+                                            (tonumber(sheet.individual1_1XPGasto) or 0) + 
+                                            (tonumber(sheet.individual1_2XPGasto) or 0) + 
+                                            (tonumber(sheet.individual1_3XPGasto) or 0) + 
+                                            (tonumber(sheet.individual1_4XPGasto) or 0) + 
+                                            (tonumber(sheet.individual2_0XPGasto) or 0) + 
+                                            (tonumber(sheet.individual2_1XPGasto) or 0) + 
+                                            (tonumber(sheet.individual2_2XPGasto) or 0) + 
+                                            (tonumber(sheet.individual2_3XPGasto) or 0) + 
+                                            (tonumber(sheet.individual2_4XPGasto) or 0)
+
+                ]]> 
+            </event>
+        </dataLink>
+
+        <dataLink fields="{'individual0IniGasto','individual1_0IniGasto','individual1_1IniGasto','individual1_2IniGasto','individual1_3IniGasto','individual1_4IniGasto','individual2_0IniGasto','individual2_1IniGasto','individual2_2IniGasto','individual2_3IniGasto','individual2_4IniGasto'}">
+            <event name="onChange"><![CDATA[
+                if sheet==nil then return end
+                sheet.individualIniGasto =   (tonumber(sheet.individual0IniGasto) or 0) + 
+                                            (tonumber(sheet.individual1_0IniGasto) or 0) + 
+                                            (tonumber(sheet.individual1_1IniGasto) or 0) + 
+                                            (tonumber(sheet.individual1_2IniGasto) or 0) + 
+                                            (tonumber(sheet.individual1_3IniGasto) or 0) + 
+                                            (tonumber(sheet.individual1_4IniGasto) or 0) + 
+                                            (tonumber(sheet.individual2_0IniGasto) or 0) + 
+                                            (tonumber(sheet.individual2_1IniGasto) or 0) + 
+                                            (tonumber(sheet.individual2_2IniGasto) or 0) + 
+                                            (tonumber(sheet.individual2_3IniGasto) or 0) + 
+                                            (tonumber(sheet.individual2_4IniGasto) or 0)
+
+                ]]> 
+            </event>
+        </dataLink>
+
+        <dataLink fields="{'individual0BonusGasto','individual1_0BonusGasto','individual1_1BonusGasto','individual1_2BonusGasto','individual1_3BonusGasto','individual1_4BonusGasto','individual2_0BonusGasto','individual2_1BonusGasto','individual2_2BonusGasto','individual2_3BonusGasto','individual2_4BonusGasto'}">
+            <event name="onChange"><![CDATA[
+                if sheet==nil then return end
+                sheet.individualBonusGasto =   (tonumber(sheet.individual0BonusGasto) or 0) + 
+                                            (tonumber(sheet.individual1_0BonusGasto) or 0) + 
+                                            (tonumber(sheet.individual1_1BonusGasto) or 0) + 
+                                            (tonumber(sheet.individual1_2BonusGasto) or 0) + 
+                                            (tonumber(sheet.individual1_3BonusGasto) or 0) + 
+                                            (tonumber(sheet.individual1_4BonusGasto) or 0) + 
+                                            (tonumber(sheet.individual2_0BonusGasto) or 0) + 
+                                            (tonumber(sheet.individual2_1BonusGasto) or 0) + 
+                                            (tonumber(sheet.individual2_2BonusGasto) or 0) + 
+                                            (tonumber(sheet.individual2_3BonusGasto) or 0) + 
+                                            (tonumber(sheet.individual2_4BonusGasto) or 0)
+
+                ]]> 
+            </event>
+        </dataLink>
+    </popup>
 
     <popup name="popConfigHab" width="470" height="230" backOpacity="0.4" autoScopeNode="false" padding="{top=10,bottom=10,left=10,right=10}">
         <layout align="top" height="25" margins="{bottom=5}">
@@ -145,5 +240,111 @@
     <popup name="popInfo" width="410" height="410" backOpacity="0.4" autoScopeNode="false" padding="{top=10,bottom=10,left=10,right=10}">
         <label align="top" height="25" field="other"/>
         <textEditor align="client" field="details"/>
+    </popup>
+
+    <popup name="BarPopup" width="140" height="66" backOpacity="0" margins="{left=4, right=4, top=4, bottom=4}" autoScopeNode="false">
+        <rectangle align="client" color="white" xradius="5" yradius="5">
+            <rectangle align="client" name="PopupBarColor" color="#808080" xradius="5" yradius="5" opacity="0.9">
+                <label fontColor="black" margins="{left=6, top=2}" align="top" text="Valor" field="NomeBarrinha" fontSize="12" fontStyle="bold" textTrimming="character"/>
+                <layout align="client" margins="{top=2, left=4}">
+                    <layout align="top" height="18">
+                        <label fontColor="black" align="left" text="Atual:  " horzTextAlign="trailing" width="34" margins="{right=2}" fontSize="12"/>
+                        <comboBox fontColor="white" margins="{left=2}" align="left" transparent="false" width="40" field="ModificadorBarrinha" items="{'=', '+', '-'}" values="{'igual', 'mais', 'menos'}" value="igual"/>
+                        <edit fontColor="white" margins="{left=2, right=4}" type="number" align="client" field="ValorMudadoAtualBarrinha" name="currentBarValue">
+                            <event name="OnKeyDown">
+                                local oenter = (event.keyCode == 13)
+                                if oenter then
+                                    self.BarPopup:close();
+                                end;
+                            </event>
+                        </edit>
+                    </layout>
+                    <layout align="top" height="18">
+                        <label fontColor="black" align="left" text="Max:  " horzTextAlign="trailing" width="34" margins="{right=2}" fontSize="12"/>
+                        <comboBox fontColor="white" margins="{left=2}" align="left" transparent="false" width="40" field="ModificadorBarrinhaMax" items="{'=', '+', '-'}" values="{'igual', 'mais', 'menos'}" value="igual"/>
+                        <edit fontColor="white" margins="{left=2, right=4}" type="number" align="client" field="ValorMudadoMaxBarrinha" name="maxBarValue">
+                            <event name="OnKeyDown">
+                                local oenter = (event.keyCode == 13);
+                                if oenter then
+                                    self.BarPopup:close();
+                                end;
+                            </event>
+                        </edit>
+                    </layout>
+                </layout>
+            </rectangle>
+        </rectangle>
+
+        <event name="onNodeReady">
+            local node = self.BarPopup.scopeNode
+            if node == nil then return end
+            
+            local selectedBar = node.selectedBar
+
+            node.NomeBarrinha = node[selectedBar]
+            node.ValorMudadoAtualBarrinha = node[selectedBar.."Curr"]
+            node.ValorMudadoMaxBarrinha = node[selectedBar.."Total"]
+        </event>
+        
+        <event name="onClose">
+            setTimeout( function()
+                local node = self.BarPopup.scopeNode
+                if node == nil then return end
+
+                local selectedBar = node.selectedBar
+
+                if (node.ModificadorBarrinha == "igual") then
+                    node["ValorTempAtual"..selectedBar] = tonumber(node.ValorMudadoAtualBarrinha or 0);
+                elseif (node.ModificadorBarrinha == "mais") then
+                    node["ValorTempAtual"..selectedBar] = tonumber(node["ValorTempAtual"..selectedBar] or 0) + tonumber(node.ValorMudadoAtualBarrinha or 0);
+                elseif (node.ModificadorBarrinha == "menos") then
+                    node["ValorTempAtual"..selectedBar] = tonumber(node["ValorTempAtual"..selectedBar] or 0) - tonumber(node.ValorMudadoAtualBarrinha or 0);
+                end;
+                
+                if (node.ModificadorBarrinhaMax == "igual") then
+                    node["ValorTempMax"..selectedBar] = tonumber(node.ValorMudadoMaxBarrinha or 0);
+                elseif (node.ModificadorBarrinhaMax == "mais") then
+                    node["ValorTempMax"..selectedBar] = tonumber(node["ValorTempMax"..selectedBar] or 0) + tonumber(node.ValorMudadoMaxBarrinha or 0);
+                elseif (node.ModificadorBarrinhaMax == "menos") then
+                    node["ValorTempMax"..selectedBar] = tonumber(node["ValorTempMax"..selectedBar] or 0) - tonumber(node.ValorMudadoMaxBarrinha or 0);
+                end;
+                
+                local barrinhapc = 0
+                local barrinhapcmax = 0
+                local porcentagem = 0
+                local porcentagemmax = 0
+
+                barrinhapc = (node["ValorTempAtual"..selectedBar] - (node[selectedBar.."Valor"] or 0));
+                barrinhapcmax = (node["ValorTempMax"..selectedBar] - (node[selectedBar.."ValorMax"] or 0));
+                node[selectedBar.."Valor"] = node["ValorTempAtual"..selectedBar];
+                node[selectedBar.."ValorMax"] = node["ValorTempMax"..selectedBar];
+                
+                if ((barrinhapc ~= 0) or (barrinhapcmax ~= 0)) then
+                    local nome = node.AtributoBarrinha or "Barrinha";
+                    local personagem = sheet.nome or "personagem";
+                    local text = "[§K2]" .. nome .. "[§K3] de [§K2]" .. personagem.. "[§K3]: ";
+                    local valor = barrinhapc;
+                    local valormax = barrinhapcmax;
+                    
+                    if tonumber(barrinhapc) >= 0 then
+                        valor = "+" .. tostring(barrinhapc);
+                    end;
+                    if tonumber(barrinhapcmax) >= 0 then
+                        valormax = "+" .. tostring(barrinhapcmax);
+                    end;
+                    
+                    if tonumber(valormax) == 0 then
+                        text = text .. valor;
+                    else
+                        text = text .. valor .. "/" .. valormax;
+                    end;
+                    
+                    local mesaDoPersonagem = Firecast.getMesaDe(sheet);
+                    if mesaDoPersonagem ~= nil then
+                           mesaDoPersonagem.activeChat:enviarMensagem(text);
+                    end;
+                end;
+            end, 100);
+        </event>
     </popup>
 </group>

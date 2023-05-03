@@ -103,7 +103,7 @@
 
             		while diff<total do
 	            	    diff=diff+1
-	            	    soma = soma + (diff*custo)
+	            	    soma = soma + math.floor(diff*custo)
 	            	end
 				end;
 

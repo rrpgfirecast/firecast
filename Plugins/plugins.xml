@@ -1,5 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <root>
+    <element id="Ambesek.Universal.Storyteller" name="Ficha Universal Storyteller" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20Universal%20Storyteller/output/Ficha%20Universal%20Storyteller.rpk?raw=true" fileName="Ficha Universal Storyteller.rpk" repositoryPath="Sheets/Ficha Universal Storyteller/" author="Ambesek" description="Ficha Generica Universal para Storyteller" version="0.4" compilationDate="03052023073243" compilationDigest="f2cf7c045e56200c11d324feccb38be8020da570">
+        <info lang="pt-BR" name="Ficha Universal Storyteller" description="Ficha Generica Universal para Storyteller" author="Ambesek"/>
+        <dataTypes>
+            <dataType id="Ambesek.Universal.Storyteller" title="Ficha Universal Storyteller" formType="sheetTemplate">
+                <info title="Ficha Universal Storyteller"/>
+            </dataType>
+        </dataTypes>
+    </element>
     <element id="Ambesek.dd2vtt" name="Universal VTT Importer" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Scene/UniversalVTTImporter/output/UniversalVTTImporter.rpk?raw=true" fileName="UniversalVTTImporter.rpk" repositoryPath="Scene/UniversalVTTImporter/" author="Ambesek" description="Importa arquivos dd2vtt pro Firecast." version="1.1" compilationDate="27042023033920" compilationDigest="d695a4b25bf9a4bdb8a0eafe1fa587bae3916426">
         <info lang="pt-BR" name="Universal VTT Importer" description="Importa arquivos dd2vtt pro Firecast." author="Ambesek"/>
     </element>

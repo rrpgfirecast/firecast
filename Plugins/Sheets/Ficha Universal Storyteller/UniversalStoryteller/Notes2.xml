@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmNotes2" align="client">
+	<scrollBox align="client">
+		<rectangle align="left" width="410" margins="{right=10}" color="black" strokeColor="white" strokeSize="1" padding="{top=5,bottom=5,left=5,right=5}">
+			<NoteBlock field="anotacoes4" width="400"/>
+		</rectangle>
+
+		<rectangle align="left" width="410" margins="{right=10}" color="black" strokeColor="white" strokeSize="1" padding="{top=5,bottom=5,left=5,right=5}">
+			<NoteBlock field="anotacoes5" width="400"/>
+		</rectangle>
+
+		<rectangle align="left" width="410" margins="{right=10}" color="black" strokeColor="white" strokeSize="1" padding="{top=5,bottom=5,left=5,right=5}">
+			<NoteBlock field="anotacoes6" width="400"/>
+
+			<rectangle align="bottom" height="300" color="black" strokeColor="white" strokeSize="1" margins="{right=5}">
+				<image align="client" field="anotacoes6Pic" editable="true" style="proportional" margins="{left=2, right=2, top=2, bottom=2}">
+					<event name="OnStartDrag">
+						if drag then
+					    	drag:addData("imageURL", sheet.anotacoes6Pic)
+					    end
+					</event>
+				</image>
+			</rectangle>
+		</rectangle>
+	</scrollBox>
+</form>

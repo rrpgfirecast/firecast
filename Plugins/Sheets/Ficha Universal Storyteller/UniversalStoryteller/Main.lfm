@@ -145,7 +145,7 @@
             <boxLabel left="0" top="30" width="200" height="25" field="rollTotal"/>
         </layout>
 
-        <dataLink fields="{'roll1Pool','roll2Pool','adicionalValue','halfPool'}">
+        <dataLink fields="{'roll1Pool','roll2Pool','adicionalValue','halfPool','rollPen'}">
             <event name="onChange">
                 if sheet==nil then return end
                 local r1 = tonumber(sheet.roll1Pool) or 0
@@ -156,8 +156,9 @@
                 end
 
                 local add = tonumber(sheet.adicionalValue) or 0
+                local pen = tonumber(sheet.rollPen) or 0
 
-                sheet.rollTotal = total + add
+                sheet.rollTotal = total + add + pen
             </event>
         </dataLink>
 
@@ -203,11 +204,17 @@
         <tab name="tabOther" title="Outros">
             <import file="Other.xml"/>
         </tab>
+        <tab title="Inventário">
+            <import file="Inventory.xml"/>
+        </tab>
         <tab title="Descrição">
             <import file="Description.xml"/>
         </tab>
         <tab title="Anotações">
-            <import file="Notes.lfm"/>
+            <import file="Notes.xml"/>
+        </tab>
+        <tab title="Extras">
+            <import file="Notes2.xml"/>
         </tab>
 		<tab title="Creditos">
             <import file="Credits.lfm"/>

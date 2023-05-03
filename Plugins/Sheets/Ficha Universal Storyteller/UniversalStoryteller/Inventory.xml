@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmInventory" align="client">
+	<scrollBox align="client">
+		<rectangle align="left" width="260" color="black" strokeColor="white" strokeSize="1" margins="{left=0}" padding="{top=5,bottom=5,left=5,right=5}">
+			<NoteBlock field="inventory0" width="250"/>
+		</rectangle>
+
+		<layout align="client">
+			<layout align="top" height="210" margins="{bottom=5}">
+				<rectangle align="left" width="260" color="black" strokeColor="white" strokeSize="1" margins="{left=5}" padding="{top=5,bottom=5,left=5,right=5}">
+					<NoteBlock field="inventory1" width="250"/>
+				</rectangle>
+				<rectangle align="left" width="260" color="black" strokeColor="white" strokeSize="1" margins="{left=5}" padding="{top=5,bottom=5,left=5,right=5}">
+					<NoteBlock field="inventory2" width="250"/>
+				</rectangle>
+				<rectangle align="left" width="260" color="black" strokeColor="white" strokeSize="1" margins="{left=5}" padding="{top=5,bottom=5,left=5,right=5}">
+					<NoteBlock field="inventory3" width="250"/>
+				</rectangle>
+			</layout>
+			<layout align="top" height="210" margins="{bottom=5}">
+				<rectangle align="left" width="260" color="black" strokeColor="white" strokeSize="1" margins="{left=5}" padding="{top=5,bottom=5,left=5,right=5}">
+					<NoteBlock field="inventory4" width="250"/>
+				</rectangle>
+				<rectangle align="left" width="260" color="black" strokeColor="white" strokeSize="1" margins="{left=5}" padding="{top=5,bottom=5,left=5,right=5}">
+					<NoteBlock field="inventory5" width="250"/>
+				</rectangle>
+				<rectangle align="left" width="260" color="black" strokeColor="white" strokeSize="1" margins="{left=5}" padding="{top=5,bottom=5,left=5,right=5}">
+					<NoteBlock field="inventory6" width="250"/>
+				</rectangle>
+			</layout>
+			<layout align="top" height="210" margins="{bottom=5}">
+				<rectangle align="left" width="790" color="black" strokeColor="white" strokeSize="1" margins="{left=5}" padding="{top=5,bottom=5,left=5,right=5}">
+					<NoteBlock field="inventory7" width="780"/>
+				</rectangle>
+			</layout>
+		</layout>
+	</scrollBox>
+</form>
