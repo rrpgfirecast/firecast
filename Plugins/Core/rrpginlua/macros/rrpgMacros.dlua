@@ -3,6 +3,7 @@ local Dialogs = require("dialogs.lua");
 local NDB = require("ndb.lua");
 local Locale = require("locale.lua");
 local GUI = require("gui.lua");
+local Log = require("log.lua");
 
 local macros = {};
 local _MACRO_CALL_CO_FUNCTION_RET = "CallSomeFunctionInMainThread";
@@ -120,9 +121,18 @@ local yieldedFunctions = {};
 
 local function handleCoResume(co, ...)
 	local retornos = table.pack(coroutine.resume(co, ...));
+	local isFirstCoResume = rawget(co, "__firstCoResume");
+	rawset(co, "__firstCoResume", false);	
 												
 	if not retornos[1] then
-		reraise(lang("macros.error.executionError") .. ":\n" .. retornos[2]);
+		local chat = rawget(co, "__chat");	
+		local fullErrorMsg = lang("macros.error.executionError") .. ":\n" .. retornos[2];
+	
+		if not isFirstCoResume and chat ~= nil then
+			chat:escrever("[§K4]" .. fullErrorMsg)
+		else	
+			reraise(fullErrorMsg);
+		end;
 	else
 		if retornos[2] == _MACRO_CALL_CO_FUNCTION_RET then			
 			local f = yieldedFunctions[retornos[3]];
@@ -269,6 +279,50 @@ function yieldedFunctions.yGetSheetOfCharacter(co, character)
 			-- do nothing. coRoutine will be garbage collected
 			end;
 		end);
+end;
+
+function yieldedFunctions.yGetUserNDB(co, name, options)
+	local promise = Firecast.asyncOpenUserNDB(name, options);
+	
+	promise:thenDo(
+		function (root)
+			handleCoResume(co, true, root);	
+		end,
+		
+		function (errorMsg)
+			handleCoResume(co, false, errorMsg);	
+		end);
+end;
+
+function yieldedFunctions.yGetUserRoomNDB(co, mesa, name, options)	
+	local promise = mesa:asyncOpenUserRoomNDB(name, options);
+	
+	promise:thenDo(
+		function (root)
+			handleCoResume(co, true, root);	
+		end,
+		
+		function (errorMsg)
+			handleCoResume(co, false, errorMsg);	
+		end);	
+end;
+
+function yieldedFunctions.yGetRoomNDB(co, mesa, name, options)
+	local opcoes = {};
+	
+	if type(options) == "table" then
+		opcoes.criar = options.create;
+	end;
+	
+	mesa:abrirNDBDeMesa(name,
+		function(node)
+			if node ~= nil then
+				handleCoResume(co, true, node);
+			else	
+				handleCoResume(co, false, "failed to getRoomNDB");
+			end;
+		end, 
+		opcoes);
 end;
 
 local __delayedLoadMacroEnv = {
@@ -832,6 +886,38 @@ local function createMacroEnvTable(chat)
 		return coroutine.yield(_MACRO_CALL_CO_FUNCTION_RET, 'yGetSheetOfCharacter', character);			
 	end;
 	
+	env.getUserNDB = function(name, options)
+		local r, nodeOrError = coroutine.yield(_MACRO_CALL_CO_FUNCTION_RET, 'yGetUserNDB', name, options);	
+		
+		if r then
+			return nodeOrError;
+		else	
+			error(nodeOrError);
+		end;
+	end;
+	
+	env.getUserRoomNDB = function(name, options)
+		assertIsOnRoom("getUserRoomNDB");
+		local r, nodeOrError = coroutine.yield(_MACRO_CALL_CO_FUNCTION_RET, 'yGetUserRoomNDB', env.mesa, name, options);	
+		
+		if r then
+			return nodeOrError;
+		else	
+			error(nodeOrError);
+		end;
+	end;	
+	
+	env.getRoomNDB = function(name, options)
+		assertIsOnRoom("getRoomNDB");
+		local r, nodeOrError = coroutine.yield(_MACRO_CALL_CO_FUNCTION_RET, 'yGetRoomNDB', env.mesa, name, options);	
+		
+		if r then
+			return nodeOrError;
+		else	
+			error(nodeOrError);
+		end;
+	end;	
+	
 	env.pairs = pairs;
 	env.ipairs = ipairs;
 	env.pcall = pcall;
@@ -849,6 +935,7 @@ local function createMacroEnvTable(chat)
 	env.coroutine = cloneTable(coroutine);
 	env.utils = cloneTable(Utils);	
 	env.ndb = cloneTable(NDB);
+	env.Log = cloneTable(Log)
 	
 	env.Utils = env.utils;	
 	env.NDB = env.ndb;
@@ -910,7 +997,9 @@ function macros.compileMacro(body, chat, macroName, endCallback)
 		end;
 			
 		local co = coroutine.create(macroLauncher);		
-		rawset(co, "__endCallback", endCallback);			
+		rawset(co, "__endCallback", endCallback);	
+		rawset(co, "__chat", chat);	
+		rawset(co, "__firstCoResume", true);		
 		handleCoResume(co);
 	end;
 	

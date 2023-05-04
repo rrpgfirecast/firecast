@@ -141,9 +141,7 @@
 					end;
 				end, {criar=true});		
 
-			if globalSimpleMacrosNDB == nil then
-				globalSimpleMacrosNDB = NDB.load("simpleMacros.xml");
-			end;						
+      globalNeedSimpleMacrosNDB();
 				
 			if globalSimpleMacrosNDB.global == nil then
 				globalSimpleMacrosNDB.global = {};

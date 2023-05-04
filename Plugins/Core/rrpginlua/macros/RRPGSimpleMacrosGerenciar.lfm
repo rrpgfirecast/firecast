@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <popupForm name="frmGerenciarSimpleMacros" title="@@macros.ui.manageMacros" width="450" height="450" resizable="true">
 	<import file="../interfaceUtils.xml"/>
 
@@ -169,9 +169,7 @@
 	</tabControl>	
 	
 	<event name="onShow">	
-		if globalSimpleMacrosNDB == nil then
-			globalSimpleMacrosNDB = NDB.load("simpleMacros.xml");
-		end;			
+    globalNeedSimpleMacrosNDB();
 	
 		if globalSimpleMacrosNDB.global == nil then
 			globalSimpleMacrosNDB.global = {};
