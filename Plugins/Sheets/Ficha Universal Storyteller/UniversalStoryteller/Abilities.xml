@@ -1,76 +1,77 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <form name="frmAbilities" align="client">
 	<scrollBox align="client">
-		<layout width="1235"/>
-		<rectangle align="top" height="65" color="black" strokeColor="white" strokeSize="1" margins="{bottom=5}" padding="{top=5,bottom=5,left=5,right=5}">
-		    <layout align="top" height="25" margins="{bottom=5}">
-		        <formatEdit width="300" height="25" field="habilidade" formatFloat=""/>
-		        <button left="305" width="25" height="25" name="abilityButton" hint="Os itens dessa lista possuem um espaço para especializações.">
-		        	<image align="client" style="autoFit" src="images/gear.png"/>
-		        	<event name="onClick">
-		        		<![CDATA[
-			    		local pop = self:findControlByName("popConfigHab");
-						
-						if pop ~= nil then
-							pop:setNodeObject(sheet);
-							pop:showPopupEx("bottomCenter", self.abilityButton);
-						else
-							showMessage("Ops, bug.. nao encontrei o popup para exibir");
-						end;
-						]]>
-		        	</event>
-		        </button>
+		<layout align="left" width="1235">
+			<rectangle align="top" height="65" color="black" strokeColor="white" strokeSize="1" margins="{bottom=5}" padding="{top=5,bottom=5,left=5,right=5}">
+			    <layout align="top" height="25" margins="{bottom=5}">
+			        <formatEdit width="300" height="25" field="habilidade" formatFloat=""/>
+			        <button left="305" width="25" height="25" name="abilityButton" hint="Os itens dessa lista possuem um espaço para especializações.">
+			        	<image align="client" style="autoFit" src="images/gear.png"/>
+			        	<event name="onClick">
+			        		<![CDATA[
+				    		local pop = self:findControlByName("popConfigHab");
+							
+							if pop ~= nil then
+								pop:setNodeObject(sheet);
+								pop:showPopupEx("bottomCenter", self.abilityButton);
+							else
+								showMessage("Ops, bug.. nao encontrei o popup para exibir");
+							end;
+							]]>
+			        	</event>
+			        </button>
 
-		        <dataLink field="habilidade">
-		        	<event name="onChange">
-		        		if sheet==nil then return end
-		        		if sheet.habilidade==nil or sheet.habilidade=="" then return end
-		        		self.tabAbilities.title = sheet.habilidade
-		        	</event>
+			        <dataLink field="habilidade">
+			        	<event name="onChange">
+			        		if sheet==nil then return end
+			        		if sheet.habilidade==nil or sheet.habilidade=="" then return end
+			        		self.tabAbilities.title = sheet.habilidade
+			        	</event>
+			        </dataLink>
+			    </layout>
+
+			    <layout align="top" height="25" margins="{bottom=5}">
+			    	<AbilityTitle field="habilidade0"/>
+			    	<AbilityTitle field="habilidade1"/>
+			    	<AbilityTitle field="habilidade2"/>
+			    	<AbilityTitle field="habilidade3"/>
+			    </layout>
+
+		        <dataLink fields="{'habilidade0Ini','habilidade1Ini','habilidade2Ini','habilidade3Ini'}">
+		            <event name="onChange">
+		                if sheet==nil then return end
+		                sheet.habilidadeIni =   (tonumber(sheet.habilidade0Ini) or 0) + 
+		                                        (tonumber(sheet.habilidade1Ini) or 0) + 
+		                                        (tonumber(sheet.habilidade2Ini) or 0) + 
+		                                        (tonumber(sheet.habilidade3Ini) or 0)
+		            </event>
 		        </dataLink>
-		    </layout>
+		        <dataLink fields="{'habilidade0Bonus','habilidade1Bonus','habilidade2Bonus','habilidade3Bonus'}">
+		            <event name="onChange">
+		                if sheet==nil then return end
+		                sheet.habilidadeBonus =   (tonumber(sheet.habilidade0Bonus) or 0) + 
+		                                        (tonumber(sheet.habilidade1Bonus) or 0) + 
+		                                        (tonumber(sheet.habilidade2Bonus) or 0) + 
+		                                        (tonumber(sheet.habilidade3Bonus) or 0)
+		            </event>
+		        </dataLink>
+		        <dataLink fields="{'habilidade0XP','habilidade1XP','habilidade2XP','habilidade3XP'}">
+		            <event name="onChange">
+		                if sheet==nil then return end
+		                sheet.habilidadeXP =   (tonumber(sheet.habilidade0XP) or 0) + 
+		                                        (tonumber(sheet.habilidade1XP) or 0) + 
+		                                        (tonumber(sheet.habilidade2XP) or 0) + 
+		                                        (tonumber(sheet.habilidade3XP) or 0)
+		            </event>
+		        </dataLink>
+			</rectangle>
 
-		    <layout align="top" height="25" margins="{bottom=5}">
-		    	<AbilityTitle field="habilidade0"/>
-		    	<AbilityTitle field="habilidade1"/>
-		    	<AbilityTitle field="habilidade2"/>
-		    	<AbilityTitle field="habilidade3"/>
-		    </layout>
-
-	        <dataLink fields="{'habilidade0Ini','habilidade1Ini','habilidade2Ini','habilidade3Ini'}">
-	            <event name="onChange">
-	                if sheet==nil then return end
-	                sheet.habilidadeIni =   (tonumber(sheet.habilidade0Ini) or 0) + 
-	                                        (tonumber(sheet.habilidade1Ini) or 0) + 
-	                                        (tonumber(sheet.habilidade2Ini) or 0) + 
-	                                        (tonumber(sheet.habilidade3Ini) or 0)
-	            </event>
-	        </dataLink>
-	        <dataLink fields="{'habilidade0Bonus','habilidade1Bonus','habilidade2Bonus','habilidade3Bonus'}">
-	            <event name="onChange">
-	                if sheet==nil then return end
-	                sheet.habilidadeBonus =   (tonumber(sheet.habilidade0Bonus) or 0) + 
-	                                        (tonumber(sheet.habilidade1Bonus) or 0) + 
-	                                        (tonumber(sheet.habilidade2Bonus) or 0) + 
-	                                        (tonumber(sheet.habilidade3Bonus) or 0)
-	            </event>
-	        </dataLink>
-	        <dataLink fields="{'habilidade0XP','habilidade1XP','habilidade2XP','habilidade3XP'}">
-	            <event name="onChange">
-	                if sheet==nil then return end
-	                sheet.habilidadeXP =   (tonumber(sheet.habilidade0XP) or 0) + 
-	                                        (tonumber(sheet.habilidade1XP) or 0) + 
-	                                        (tonumber(sheet.habilidade2XP) or 0) + 
-	                                        (tonumber(sheet.habilidade3XP) or 0)
-	            </event>
-	        </dataLink>
-		</rectangle>
-
-		<rectangle align="client" color="black" strokeColor="white" strokeSize="1" padding="{top=5,bottom=5,left=5,right=5}">
-			<AbilityBox field="rclhabilidade0"/>
-			<AbilityBox field="rclhabilidade1"/>
-			<AbilityBox field="rclhabilidade2"/>
-			<AbilityBox field="rclhabilidade3"/>
-		</rectangle>
+			<rectangle align="client" color="black" strokeColor="white" strokeSize="1" padding="{top=5,bottom=5,left=5,right=5}">
+				<AbilityBox field="rclhabilidade0"/>
+				<AbilityBox field="rclhabilidade1"/>
+				<AbilityBox field="rclhabilidade2"/>
+				<AbilityBox field="rclhabilidade3"/>
+			</rectangle>
+		</layout>
 	</scrollBox>
 </form>

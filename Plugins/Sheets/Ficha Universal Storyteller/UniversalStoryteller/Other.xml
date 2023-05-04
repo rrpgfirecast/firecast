@@ -1,76 +1,77 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <form name="frmOther" align="client">
 	<scrollBox align="client">
-		<layout width="1235"/>
-		<rectangle align="top" height="65" color="black" strokeColor="white" strokeSize="1" margins="{bottom=5}" padding="{top=5,bottom=5,left=5,right=5}">
-		    <layout align="top" height="25" margins="{bottom=5}">
-		        <formatEdit width="325" height="25" field="other" formatFloat=""/>
-		        <button left="330" width="25" height="25" name="otherButton" hint="Os itens dessa lista seguem um padrão de custo, e possuem um popup para anotar detalhes de funcionamento.">
-		        	<image align="client" style="autoFit" src="images/gear.png"/>
-		        	<event name="onClick">
-		        		<![CDATA[
-			    		local pop = self:findControlByName("popConfigOther");
-						
-						if pop ~= nil then
-							pop:setNodeObject(sheet);
-							pop:showPopupEx("bottomCenter", self.otherButton);
-						else
-							showMessage("Ops, bug.. nao encontrei o popup para exibir");
-						end;
-						]]>
-		        	</event>
-		        </button>
+		<layout align="left" width="1335">
+			<rectangle align="top" height="65" color="black" strokeColor="white" strokeSize="1" margins="{bottom=5}" padding="{top=5,bottom=5,left=5,right=5}">
+			    <layout align="top" height="25" margins="{bottom=5}">
+			        <formatEdit width="325" height="25" field="other" formatFloat=""/>
+			        <button left="330" width="25" height="25" name="otherButton" hint="Os itens dessa lista seguem um padrão de custo, e possuem um popup para anotar detalhes de funcionamento.">
+			        	<image align="client" style="autoFit" src="images/gear.png"/>
+			        	<event name="onClick">
+			        		<![CDATA[
+				    		local pop = self:findControlByName("popConfigOther");
+							
+							if pop ~= nil then
+								pop:setNodeObject(sheet);
+								pop:showPopupEx("bottomCenter", self.otherButton);
+							else
+								showMessage("Ops, bug.. nao encontrei o popup para exibir");
+							end;
+							]]>
+			        	</event>
+			        </button>
 
-		        <dataLink field="other">
-		        	<event name="onChange">
-		        		if sheet==nil then return end
-		        		if sheet.other==nil or sheet.other=="" then return end
-		        		self.tabOther.title = sheet.other
-		        	</event>
+			        <dataLink field="other">
+			        	<event name="onChange">
+			        		if sheet==nil then return end
+			        		if sheet.other==nil or sheet.other=="" then return end
+			        		self.tabOther.title = sheet.other
+			        	</event>
+			        </dataLink>
+			    </layout>
+
+			    <layout align="top" height="25" margins="{bottom=5}">
+			    	<OtherTitle field="other0"/>
+			    	<OtherTitle field="other1"/>
+			    	<OtherTitle field="other2"/>
+			    	<OtherTitle field="other3"/>
+			    </layout>
+
+		        <dataLink fields="{'other0Ini','other1Ini','other2Ini','other3Ini'}">
+		            <event name="onChange">
+		                if sheet==nil then return end
+		                sheet.otherIni =   (tonumber(sheet.other0Ini) or 0) + 
+		                                        (tonumber(sheet.other1Ini) or 0) + 
+		                                        (tonumber(sheet.other2Ini) or 0) + 
+		                                        (tonumber(sheet.other3Ini) or 0)
+		            </event>
 		        </dataLink>
-		    </layout>
+		        <dataLink fields="{'other0Bonus','other1Bonus','other2Bonus','other3Bonus'}">
+		            <event name="onChange">
+		                if sheet==nil then return end
+		                sheet.otherBonus =   (tonumber(sheet.other0Bonus) or 0) + 
+		                                        (tonumber(sheet.other1Bonus) or 0) + 
+		                                        (tonumber(sheet.other2Bonus) or 0) + 
+		                                        (tonumber(sheet.other3Bonus) or 0)
+		            </event>
+		        </dataLink>
+		        <dataLink fields="{'other0XP','other1XP','other2XP','other3XP'}">
+		            <event name="onChange">
+		                if sheet==nil then return end
+		                sheet.otherXP =   (tonumber(sheet.other0XP) or 0) + 
+		                                        (tonumber(sheet.other1XP) or 0) + 
+		                                        (tonumber(sheet.other2XP) or 0) + 
+		                                        (tonumber(sheet.other3XP) or 0)
+		            </event>
+		        </dataLink>
+			</rectangle>
 
-		    <layout align="top" height="25" margins="{bottom=5}">
-		    	<OtherTitle field="other0"/>
-		    	<OtherTitle field="other1"/>
-		    	<OtherTitle field="other2"/>
-		    	<OtherTitle field="other3"/>
-		    </layout>
-
-	        <dataLink fields="{'other0Ini','other1Ini','other2Ini','other3Ini'}">
-	            <event name="onChange">
-	                if sheet==nil then return end
-	                sheet.otherIni =   (tonumber(sheet.other0Ini) or 0) + 
-	                                        (tonumber(sheet.other1Ini) or 0) + 
-	                                        (tonumber(sheet.other2Ini) or 0) + 
-	                                        (tonumber(sheet.other3Ini) or 0)
-	            </event>
-	        </dataLink>
-	        <dataLink fields="{'other0Bonus','other1Bonus','other2Bonus','other3Bonus'}">
-	            <event name="onChange">
-	                if sheet==nil then return end
-	                sheet.otherBonus =   (tonumber(sheet.other0Bonus) or 0) + 
-	                                        (tonumber(sheet.other1Bonus) or 0) + 
-	                                        (tonumber(sheet.other2Bonus) or 0) + 
-	                                        (tonumber(sheet.other3Bonus) or 0)
-	            </event>
-	        </dataLink>
-	        <dataLink fields="{'other0XP','other1XP','other2XP','other3XP'}">
-	            <event name="onChange">
-	                if sheet==nil then return end
-	                sheet.otherXP =   (tonumber(sheet.other0XP) or 0) + 
-	                                        (tonumber(sheet.other1XP) or 0) + 
-	                                        (tonumber(sheet.other2XP) or 0) + 
-	                                        (tonumber(sheet.other3XP) or 0)
-	            </event>
-	        </dataLink>
-		</rectangle>
-
-		<rectangle align="client" color="black" strokeColor="white" strokeSize="1" padding="{top=5,bottom=5,left=5,right=5}">
-			<OtherBox field="rclother0"/>
-			<OtherBox field="rclother1"/>
-			<OtherBox field="rclother2"/>
-			<OtherBox field="rclother3"/>
-		</rectangle>
+			<rectangle align="client" color="black" strokeColor="white" strokeSize="1" padding="{top=5,bottom=5,left=5,right=5}">
+				<OtherBox field="rclother0"/>
+				<OtherBox field="rclother1"/>
+				<OtherBox field="rclother2"/>
+				<OtherBox field="rclother3"/>
+			</rectangle>
+		</layout>
 	</scrollBox>
 </form>
