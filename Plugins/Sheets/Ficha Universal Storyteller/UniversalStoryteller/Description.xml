@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <form name="frmTemplateDescription" align="client">
 	<scrollBox align="client">
+		<layout width="1050" height="895">
 		<rectangle align="top" height="95" color="black" strokeColor="white" strokeSize="1" margins="{bottom=5}" padding="{top=5,bottom=5,left=5,right=5}">
 			<layout align="left" width="250" margins="{right=5}">
 				<Header field="details0_0"/>
@@ -44,8 +45,9 @@
 				<NoteBlock field="personalidade" width="260"/>
 			</layout>
 		</rectangle>
+		</layout>
 		
-		<rectangle align="client" color="black" strokeColor="white" strokeSize="1">
+		<rectangle align="client" color="black" strokeColor="white" strokeSize="1" margins="{left=280,top=100}">
 			<label align="top" height="25" text="HISTORIA" margins="{left=5}"/>
 			<richEdit align="client" field="background" backgroundColor="#333333" defaultFontSize="12" defaultFontColor="white" margins="{top=5,bottom=5,left=5,right=5}"/>
 		</rectangle>

@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <form name="frmInventory" align="client">
-	<scrollBox align="client">
-		<rectangle align="left" width="260" color="black" strokeColor="white" strokeSize="1" margins="{left=0}" padding="{top=5,bottom=5,left=5,right=5}">
-			<NoteBlock field="inventory0" width="250"/>
-		</rectangle>
+	<rectangle align="left" width="260" color="black" strokeColor="white" strokeSize="1" margins="{left=0}" padding="{top=5,bottom=5,left=5,right=5}">
+		<NoteBlock field="inventory0" width="250"/>
+	</rectangle>
 
-		<layout align="client">
+	<scrollBox align="client">
+		<layout width="795" height="640">
 			<layout align="top" height="210" margins="{bottom=5}">
 				<rectangle align="left" width="260" color="black" strokeColor="white" strokeSize="1" margins="{left=5}" padding="{top=5,bottom=5,left=5,right=5}">
 					<NoteBlock field="inventory1" width="250"/>

@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <form name="frmGeral" align="client">
-	<scrollBox align="client">
-		<rectangle align="right" width="260" color="black" strokeColor="white" strokeSize="1" margins="{left=5}" padding="{top=5,bottom=5,left=5,right=5}">
+	<rectangle align="right" width="260" color="black" strokeColor="white" strokeSize="1" margins="{left=5}" padding="{top=5,bottom=5,left=5,right=5}">
 			<layout align="top" height="25">
 				<formatEdit width="225" height="25" field="health"/>
 	            <button left="225" width="25" height="25" text="+">
@@ -39,9 +38,10 @@
 		            </event>
 		        </dataLink>
 			</layout>
-		</rectangle>
+	</rectangle>
 
-		<layout align="client">
+	<scrollBox align="client">
+		<layout width="1000" height="730">
 			<rectangle align="top" height="95" color="black" strokeColor="white" strokeSize="1" margins="{bottom=5}" padding="{top=5,bottom=5,left=5,right=5}">
 				<rectangle align="left" width="200" color="black" strokeColor="white" strokeSize="1" margins="{right=5}">
 					<image align="client" field="sistema" editable="true" style="proportional" margins="{left=2, right=2, top=2, bottom=2}">
@@ -197,6 +197,5 @@
 				</layout>
 			</rectangle>
 		</layout>
-
 	</scrollBox>
 </form>

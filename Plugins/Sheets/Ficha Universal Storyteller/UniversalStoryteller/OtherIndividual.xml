@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <form name="frmOtherIndividual" align="client">
 	<scrollBox align="client">
+		<layout width="1235"/>
 		<rectangle align="top" height="65" color="black" strokeColor="white" strokeSize="1" margins="{bottom=5}" padding="{top=5,bottom=5,left=5,right=5}">
 		    <layout align="top" height="25" margins="{bottom=5}">
 		        <formatEdit width="325" height="25" field="otherIndividual" formatFloat=""/>
