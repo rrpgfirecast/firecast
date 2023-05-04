@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<module sdkVersion="3.6c">
+<module sdkVersion="3.6d">
     <!--O id identifica seu módulo globalmente. Deve ser único, conter apenas caracteres alfanuméricos, underlines, pontos e deve conter ao menos 5 caracteres e um máximo de 40. Uma vez definido o ID, você não deve alterar ele ;) -->
     <id>br.com.rrpg.DnD5_SDK3</id>
     <!--version é a versão do seu módulo. Quando for lançar uma nova versão do seu módulo, altere aqui =) -->
