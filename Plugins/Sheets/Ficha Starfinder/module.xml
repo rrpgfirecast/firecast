@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <module sdkVersion="3.6c">
 	<id>Ambesek.Starfinder</id>
-	<version>0.7</version>
+	<version>0.8</version>
     <info lang="pt-BR">
         <name>Ficha Starfinder</name>
         <description>Ficha feita para o sistema Starfinder.</description>
@@ -9,4 +9,9 @@
         <site>http://pt-br.rpgmeister.wikia.com/wiki/Main_Page</site>
         <contact>vinnyrpgmeister@gmail.com</contact>
     </info>
+    
+    
+    
+    
+    
 </module>

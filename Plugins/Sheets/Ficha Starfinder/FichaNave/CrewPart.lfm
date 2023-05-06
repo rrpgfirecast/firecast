@@ -55,13 +55,21 @@
                     nome = personagens[i].nome;
                 end;
             end;
+
+            if nome == "" then
+                nomes[#nomes + 1] = sheet.nome;
+                valores[#valores + 1] = tostring(current);
+            end
             
             self.fichaComboBox.items = nomes;
             self.fichaComboBox.values = valores;
 
             if nome ~= "" then
-                sheet.ficha = current;
-                self.fichaComboBox.text = nome;
+                sheet.ficha = current
+                self.fichaComboBox.text = nome
+                sheet.nome = nome
+            else
+                self.fichaComboBox.text = sheet.nome
             end;
         end;
         ]]>	

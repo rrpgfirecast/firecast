@@ -188,7 +188,7 @@
 			<rectangle left="205" top="305" width="300" height="300" color="black">
 				<label left="0" top="0" width="300" height="25" text="INVENTARIO" horzTextAlign="center"/>
 				<textEditor left="5" top="30" width="290" height="240" field="inventarioComp"/> 
-				<label left="55" top="275" width="50" height="20" text="PESO"/>
+				<label left="55" top="275" width="50" height="20" text="VOL"/>
 				<edit left="95" top="270" width="70" height="25" field="pesoInventorioComp" vertTextAlign="center" horzTextAlign="center" />
 				<label left="175" top="275" width="50" height="20" text="PREÇO"/>
 				<edit left="225" top="270" width="70" height="25" field="precoInventorioComp" vertTextAlign="center" horzTextAlign="center" />

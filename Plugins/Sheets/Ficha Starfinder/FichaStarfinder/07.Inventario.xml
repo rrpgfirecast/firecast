@@ -67,10 +67,10 @@
 						self.rclListaDosEquipamentos:append();
 					</event>
 				</button>
-				<label left="30" top="5" width="270" height="20" text="EQUIPAMENTOS"/>
+				<label left="30" top="5" width="270" height="20" text="ARMAS &amp; ARMADURAS"/>
 				<label left="275" top="5" width="50" height="20" text="Vol"/>
 				<label left="325" top="5" width="50" height="20" text="$"/>
-				<recordList name="rclListaDosEquipamentos" field="campoDosEquipamentos" templateForm="frmFichaRPGmeister7A_svg" align="left" width="465" margins="{bottom=0,top=30}" layout="vertical" minQt="1"/>
+				<recordList name="rclListaDosEquipamentos" field="campoDosEquipamentos" templateForm="frmInventarioItem" align="left" width="465" margins="{bottom=0,top=30}" layout="vertical" minQt="1"/>
 
 				<layout align="bottom" height="30">
 					<label left="260" top="5" width="50" height="20" text="Vol"/>
@@ -85,22 +85,22 @@
 			<rectangle align="top" height="330" color="black" margins="{bottom=5}">
 				<button text="+" left="5" top="5" width="20" height="20">
 					<event name="onClick">
-						self.rclListaDosImplates:append();
+						self.rclEquipamentos:append();
 					</event>
 				</button>
 				
-				<label left="30" top="5" width="270" height="20" text="IMPLANTES"/>
+				<label left="30" top="5" width="270" height="20" text="EQUIPAMENTOS"/>
 				<label left="275" top="5" width="50" height="20" text="Vol"/>
 				<label left="325" top="5" width="50" height="20" text="$"/>
-				<recordList name="rclListaDosImplates" field="campoDosImplates" templateForm="frmFichaRPGmeister7A_svg" align="left" width="465" margins="{bottom=0,top=30}" layout="vertical" minQt="1"/>
+				<recordList name="rclEquipamentos" field="rclEquipamentos" templateForm="frmInventarioItem" align="left" width="465" margins="{bottom=0,top=30}" layout="vertical" minQt="1"/>
 
 				<layout align="bottom" height="30">
 					<label left="260" top="5" width="50" height="20" text="Vol"/>
 					<rectangle left="280" top="5" width="70" height="20" color="black" strokeColor="white" strokeSize="1"/>
-					<label vertTextAlign="center" horzTextAlign="center" left="280" top="5" width="70" height="20" field="pesoImplantes" formatFloat=",0.##"/>
+					<label vertTextAlign="center" horzTextAlign="center" left="280" top="5" width="70" height="20" field="pesoEquipamentos2" formatFloat=",0.##"/>
 					<label left="360" top="5" width="50" height="20" text="$"/>
 					<rectangle left="375" top="5" width="91" height="20" color="black" strokeColor="white" strokeSize="1"/>
-					<label vertTextAlign="center" horzTextAlign="center" left="375" top="5" width="91" height="20" field="precoImplantes"  formatFloat=",0.## C"/>
+					<label vertTextAlign="center" horzTextAlign="center" left="375" top="5" width="91" height="20" field="precoEquipamentos2"  formatFloat=",0.## C"/>
 				</layout>
 			</rectangle>
 		</layout>
@@ -163,12 +163,13 @@
 			<label left="20" top="115" width="65" height="20" text="EXTRA"/>
 			<edit field="cargaExtra" width="70" height="20" left="80" top="115" type="number"/>
 		</layout>
-		<dataLink fields="{'precoEquipamentos', 'precoImplantes', 'precoPermanencias', 'precoLivres', 'precoOutros', 'precoMunicoes', 'precoBolsos', 'precoImoveis', 'precoInventorioComp', 'dinheiroTotal', 'precoItens'}">
+		<dataLink fields="{'precoEquipamentos', 'precoEquipamentos2', 'precoImplantes', 'precoPermanencias', 'precoLivres', 'precoOutros', 'precoMunicoes', 'precoBolsos', 'precoImoveis', 'precoInventorioComp', 'dinheiroTotal', 'precoItens'}">
 			<event name="onChange">
 				if sheet~= nil then
 
 					-- Calculando todos gastos
 					local gastos = (tonumber(sheet.precoEquipamentos) or 0) +
+									(tonumber(sheet.precoEquipamentos2) or 0) +
 									(tonumber(sheet.precoImplantes) or 0) +
 									(tonumber(sheet.precoPermanencias) or 0) +
 									(tonumber(sheet.precoLivres) or 0) +
@@ -188,17 +189,18 @@
 				end;
 			</event>
 		</dataLink>
-		<dataLink fields="{'pesoEquipamentos', 'pesoImplantes', 'pesoPermanencias', 'pesoLivres', 'pesoOutros', 'pesoMunicoes', 'pesoBolsos', 'pesoImoveis', 'pesoInventorioComp'}">
+		<dataLink fields="{'pesoEquipamentos', 'pesoEquipamentos2', 'pesoImplantes', 'pesoPermanencias', 'pesoLivres', 'pesoOutros', 'pesoMunicoes', 'pesoBolsos', 'pesoImoveis', 'pesoInventorioComp'}">
 			<event name="onChange">
 				if sheet~=nil then
-					local carga = (tonumber(sheet.pesoEquipamentos) or 0) +
-								(tonumber(sheet.pesoImplantes) or 0) +
-								(tonumber(sheet.pesoPermanencias) or 0) +
-								(tonumber(sheet.pesoLivres) or 0) +
-								(tonumber(sheet.pesoOutros) or 0) +
-								(tonumber(sheet.pesoMunicoes) or 0) +
-								(tonumber(sheet.pesoBolsos) or 0) +
-								(tonumber(sheet.pesoImoveis) or 0);
+					local carga = 	(tonumber(sheet.pesoEquipamentos) or 0) +
+									(tonumber(sheet.pesoEquipamentos2) or 0) +
+									(tonumber(sheet.pesoImplantes) or 0) +
+									(tonumber(sheet.pesoPermanencias) or 0) +
+									(tonumber(sheet.pesoLivres) or 0) +
+									(tonumber(sheet.pesoOutros) or 0) +
+									(tonumber(sheet.pesoMunicoes) or 0) +
+									(tonumber(sheet.pesoBolsos) or 0) +
+									(tonumber(sheet.pesoImoveis) or 0);
 					sheet.cargaAtual = carga;
 				end;
 			</event>

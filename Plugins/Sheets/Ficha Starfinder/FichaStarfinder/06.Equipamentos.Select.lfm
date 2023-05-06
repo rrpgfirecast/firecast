@@ -1,39 +1,51 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<form name="frmFichaRPGmeister6ES_svg" width="150" height="40" theme="dark" margins="{top=3}">
-	<script>
-		local function use()
-			local mesa = Firecast.getMesaDe(sheet);
+<form name="frmAugSelect" width="150" height="40" margins="{top=10}">
+    <script>           
+        local function askForDelete()
+            Dialogs.confirmYesNo("Deseja realmente apagar esse implante?",
+                                 function (confirmado)
+                                    if confirmado then
+                                        NDB.deleteNode(sheet);
+                                    end;
+                                 end);
+        end;
+    </script>
+    <rectangle align="client" color="#333333" hitTest="false">
+        <button align="left" width="20" margins="{top=5,bottom=5}" text="X" onClick="askForDelete()"/>
+        <layout align="client">
+            <label align="top" height="25" field="slot" fontSize="16" horzTextAlign="center"/>
+            <label align="top" height="15" field="nome" fontSize="9" horzTextAlign="center"/>
+        </layout>
+    </rectangle>
 
-			local texto = (sheet.nome or "Equipamento") .. " foi usado.";
-			if sheet.cd~=nil then
-				texto = texto .. " CD: " .. sheet.cd .. ".";
-			end;
-			
-			if sheet.dados~=nil then
-				local rolagem = Firecast.interpretarRolagem(sheet.dados);
-				
-				mesa.activeChat:rolarDados(rolagem, texto);
-			end;
+    <dataLink fields="{'preco'}">
+        <event name="onChange">
+            if sheet== nil then return end
 
-			if sheet.BarrinhaValor~=nil then
-				sheet.BarrinhaValor = tonumber(sheet.BarrinhaValor) - 1;
+            local node = NDB.getRoot(sheet);
+            preco = 0;
+            nodes = NDB.getChildNodes(node.campoDosImplates); 
+            for i=1, #nodes, 1 do
+                preco = preco + (tonumber(nodes[i].preco) or 0);
+            end
 
-				if sheet.dados==nil then
-					mesa.activeChat:enviarMensagem(texto);
-				end;
-			end;
-		end;
-	</script>
+            node.precoImplantes = preco;
+        </event>
+    </dataLink>
 
-    <rectangle align="client" color="#333333" hitTest="false" name="background"/>
-    <button left="5" top="5" width="20" height="20" text="U" onClick="use();"/>
-    <label left="5" top="0" width="140" height="25" field="slot" fontSize="16" horzTextAlign="center"/>
-    <label left="5" top="25" width="140" height="15" field="nome" fontSize="9" horzTextAlign="center"/>
+    <dataLink fields="{'peso'}">
+        <event name="onChange">
+            if sheet== nil then return end
 
-    <event name="onMouseEnter">
-    	self.background.color = "#444444";
-    </event>
-    <event name="onMouseLeave">
-    	self.background.color = "#333333";
-    </event>
+            local node = NDB.getRoot(sheet);
+            peso = 0;
+            nodes = NDB.getChildNodes(node.campoDosImplates); 
+            for i=1, #nodes, 1 do
+                peso = peso + (tonumber(nodes[i].peso) or 0);
+            end
+
+            node.pesoImplantes = peso;
+        </event>
+    </dataLink>
+    
 </form>

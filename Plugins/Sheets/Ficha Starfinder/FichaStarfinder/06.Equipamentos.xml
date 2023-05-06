@@ -1,0 +1,212 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmFichaRPGmeister6E_svg" align="client" margins="{top=1}">
+	<scrollBox align="client">
+		<button text="+" align="top" height="25">
+			<event name="onClick">
+				self.rclImplantes:append();
+			</event>
+		</button>
+		<layout align="left" width="750">
+			<scrollBox align="left" width="150">
+				<recordList align="top" autoHeight="true" name="rclImplantes" field="campoDosImplates" templateForm="frmAugSelect" layout="vertical" selectable="true" minQt="0">
+				<event name="onEndEnumeration"><![CDATA[
+					if sheet~= nil then
+						local objetos = NDB.getChildNodes(sheet.campoDosImplates)
+						if self.rclImplantes.selectedNode== nil and #objetos>0 then
+							self.rclImplantes.selectedNode = objetos[1]; 
+						end;
+					end;
+					]]>
+				</event>
+				<event name="onSelect"><![CDATA[
+						local node = self.rclImplantes.selectedNode;
+						self.boxDetalheDoEquipamento.node = node; 
+						self.boxDetalheDoEquipamento.visible = (node ~= nil);
+					]]>
+				</event>
+				</recordList>
+			</scrollBox>
+
+			<layout align="left" width="600" margins="{left=5}">
+
+				<label left="0" top="605" width="50" height="20" text="CARGA"/>
+				<rectangle left="50" top="605" width="91" height="20" color="black" strokeColor="white" strokeSize="1"/>
+				<label vertTextAlign="center" horzTextAlign="center" left="50" top="605" width="91" height="20" field="pesoImplantes" formatFloat=",0.## Kg"/>
+				<label left="150" top="605" width="50" height="20" text="GASTOS"/>
+				<rectangle left="200" top="605" width="91" height="20" color="black" strokeColor="white" strokeSize="1"/>
+				<label vertTextAlign="center" horzTextAlign="center" left="200" top="605" width="91" height="20" field="precoImplantes"  formatFloat=",0.## PO"/>
+
+				<dataScopeBox left="0" top="0" width="600" height="602" name="boxDetalheDoEquipamento" visible="false">
+					<rectangle align="client" margins="{right=200}" color="black">
+						<edit align="top" height="25" margins="{left=5,top=5,right=5}" field="nome"/>
+						<textEditor align="top" height="300" margins="{left=5,top=5,right=5}" field="descricao"/>
+
+						<layout align="top" height="25" margins="{left=5,top=5,right=5}">
+							<label left="5" width="95" height="20" text="Vol" horzTextAlign="center"/>
+							<rectangle left="100" width="75" height="25" color="black" strokeColor="grey" strokeSize="1" name="weightLabel" visible="true" opacity="0.75" cornerType="innerRound" xradius="5" yradius="5">
+								<label width="75" height="25" field="peso" horzTextAlign="center" formatFloat=",0.## Kg"/>
+								<event name="onClick">
+									self.weightLabel.visible = false;
+									self.weightEdit.visible = true;
+									self.weightEdit:setFocus();
+								</event>
+							</rectangle>
+							<edit left="100" width="75" height="25" field="peso" type="float" vertTextAlign="center" name="weightEdit" visible="false">
+								<event name="onUserChange">
+									if self.boxDetalheDoEquipamento.node~= nil then
+										local node = NDB.getRoot(self.boxDetalheDoEquipamento.node);
+										local pesoEquipamento = 0;
+										local nodes = NDB.getChildNodes(node.listaDeEquipamentos); 
+										for i=1, #nodes, 1 do
+											pesoEquipamento = pesoEquipamento + (tonumber(nodes[i].peso) or 0);
+										end
+										node.pesoEquipamento = pesoEquipamento;
+									end;
+								</event>
+								<event name="onExit">
+									self.weightLabel.visible = true;
+									self.weightEdit.visible = false;
+								</event>
+							</edit>
+
+							<label left="200" width="95" height="20" text="Preço" horzTextAlign="center"/>
+							<rectangle left="290" width="75" height="25" color="black" strokeColor="grey" strokeSize="1" name="priceLabel" visible="true" opacity="0.75" cornerType="innerRound" xradius="5" yradius="5">
+								<label width="75" height="25" field="preco" horzTextAlign="center" formatFloat=",0.## PO"/>
+								<event name="onClick">
+									self.priceLabel.visible = false;
+									self.priceEdit.visible = true;
+									self.priceEdit:setFocus();
+								</event>
+							</rectangle>
+							<edit left="290" width="75" height="25" field="preco" type="float" vertTextAlign="center" name="priceEdit" visible="false">
+								<event name="onUserChange">
+									if self.boxDetalheDoEquipamento.node~= nil then
+										local node = NDB.getRoot(self.boxDetalheDoEquipamento.node);
+										local precoEquipamento = 0;
+										local nodes = NDB.getChildNodes(node.listaDeEquipamentos); 
+										for i=1, #nodes, 1 do
+											precoEquipamento = precoEquipamento + (tonumber(nodes[i].preco) or 0);
+										end
+										node.precoEquipamento = precoEquipamento;
+									end;
+								</event>
+								<event name="onExit">
+									self.priceLabel.visible = true;
+									self.priceEdit.visible = false;
+								</event>
+							</edit>
+						</layout>
+
+						<layout align="top" height="25" margins="{left=5,top=5,right=5}">
+							<checkBox align="left" width="90" margins="{left=5,right=5}" text="Pessoal" field="pessoal"/>
+							<checkBox align="left" width="90" margins="{left=5,right=5}" text="Cérebro" field="cerebro"/>
+							<checkBox align="left" width="90" margins="{left=5,right=5}" text="Olhos" field="olhos"/>
+							<checkBox align="left" width="90" margins="{left=5,right=5}" text="Ouvidos" field="ouvidos"/>
+						</layout>
+
+						<layout align="top" height="25" margins="{left=5,top=5,right=5}">
+							<checkBox align="left" width="90" margins="{left=5,right=5}" text="Garganta" field="garganta"/>
+							<checkBox align="left" width="90" margins="{left=5,right=5}" text="Endócrino" field="endocrino"/>
+							<checkBox align="left" width="90" margins="{left=5,right=5}" text="Pulmões" field="pulmoes"/>
+							<checkBox align="left" width="90" margins="{left=5,right=5}" text="Coração" field="coracao"/>
+						</layout>
+
+						<layout align="top" height="25" margins="{left=5,top=5,right=5}">
+							<checkBox align="left" width="90" margins="{left=5,right=5}" text="Coluna" field="coluna"/>
+							<checkBox align="left" width="90" margins="{left=5,right=5}" text="Pele" field="pele"/>
+						</layout>
+
+						<layout align="top" height="25" margins="{left=5,top=5,right=5}">
+							<checkBox align="left" width="90" margins="{left=5,right=5}" text="Braço Direito" field="bracoD" fontSize="11"/>
+							<checkBox align="left" width="90" margins="{left=5,right=5}" text="Braço Esquerdo" field="bracoE" fontSize="11"/>
+							<checkBox align="left" width="90" margins="{left=5,right=5}" text="Mão Direita" field="maoD" fontSize="10"/>
+							<checkBox align="left" width="90" margins="{left=5,right=5}" text="Mão Esquerda" field="maoE" fontSize="10"/>
+						</layout>
+
+						<layout align="top" height="25" margins="{left=5,top=5,right=5}">
+							<checkBox align="left" width="90" margins="{left=5,right=5}" text="Perna Direita" field="pernaD" fontSize="11"/>
+							<checkBox align="left" width="90" margins="{left=5,right=5}" text="Perna Esquerda" field="pernaE" fontSize="11"/>
+							<checkBox align="left" width="90" margins="{left=5,right=5}" text="Pé Direito" field="peD" fontSize="11"/>
+							<checkBox align="left" width="90" margins="{left=5,right=5}" text="Pé Esquerdo" field="peE" fontSize="11"/>
+						</layout>
+
+						<dataLink fields="{'pessoal','cerebro','olhos','ouvidos','garganta','endocrino','pulmoes','coracao','coluna','pele','bracoD','bracoE','maoD','maoE','pernaD','pernaE','peD','peE'}">
+							<event name="onChange">
+								if self.boxDetalheDoEquipamento.node==nil then return end
+
+								local node = self.boxDetalheDoEquipamento.node
+								local slot = ""
+								if node.pessoal then
+									slot = slot .. "Pessoal "
+								end
+								if node.cerebro then
+									slot = slot .. "Cérebro "
+								end
+								if node.olhos then
+									slot = slot .. "Olhos "
+								end
+								if node.ouvidos then
+									slot = slot .. "Ouvidos "
+								end
+								if node.garganta then
+									slot = slot .. "Garganta "
+								end
+								if node.endocrino then
+									slot = slot .. "Endócrino "
+								end
+								if node.pulmoes then
+									slot = slot .. "Pulmões "
+								end
+								if node.coracao then
+									slot = slot .. "Coração "
+								end
+								if node.coluna then
+									slot = slot .. "Coluna "
+								end
+								if node.pele then
+									slot = slot .. "Pele "
+								end
+
+								if node.bracoD and node.bracoE then
+									slot = slot .. "Braços "
+								elseif node.bracoD then
+									slot = slot .. "Braço Direito "
+								elseif node.bracoE then
+									slot = slot .. "Braço Esquerdo "
+								end
+
+								if node.maoD and node.maoE then
+									slot = slot .. "Mãos "
+								elseif node.maoD then
+									slot = slot .. "Mão Direita "
+								elseif node.maoE then
+									slot = slot .. "Mão Esquerda "
+								end
+
+								if node.pernaD and node.pernaE then
+									slot = slot .. "Pernas "
+								elseif node.pernaD then
+									slot = slot .. "Perna Direita "
+								elseif node.pernaE then
+									slot = slot .. "Perna Esquerda "
+								end
+
+								if node.peD and node.peE then
+									slot = slot .. "Pés "
+								elseif node.peD then
+									slot = slot .. "Pé Direito "
+								elseif node.peE then
+									slot = slot .. "Pé Esquerdo "
+								end
+
+								node.slot = slot
+							</event>
+						</dataLink>
+					</rectangle>
+
+					<image left="400" top="0" width="200" height="600" src="images/slots.png" field="imgSlots" style="stretch" optimize="true"/>
+				</dataScopeBox>
+			</layout>
+		</layout>
+	</scrollBox>
+</form>

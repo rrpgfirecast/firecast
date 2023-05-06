@@ -2,7 +2,6 @@
 <form name="frmFichaStarfinder" formType="sheetTemplate" dataType="Ambesek.FichaStarfinder" title="Ficha Starfinder" align="client" theme="dark">
     <script>
         <![CDATA[
-
         local function isNewVersion(installed, downloaded)
             local installedVersion = {};
             local installedIndex = 0;
@@ -34,6 +33,7 @@
         end;
         ]]> 
     </script>
+
     <tabControl align="client">
         <tab title="Geral">
             <import file="01.Geral.lfm"/>
@@ -49,6 +49,9 @@
         </tab>
 		<tab title="Magias">
             <import file="05.Magias.xml"/>
+        </tab>
+        <tab title="Implantes">
+            <import file="06.Equipamentos.xml"/>
         </tab>
         <tab title="Inventario">
             <import file="07.Inventario.xml"/>

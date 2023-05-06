@@ -497,7 +497,7 @@
             </dataType>
         </dataTypes>
     </element>
-    <element id="Ambesek.Starfinder" name="Ficha Starfinder" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20Starfinder/output/Ficha%20Starfinder.rpk?raw=true" fileName="Ficha Starfinder.rpk" repositoryPath="Sheets/Ficha Starfinder/" author="Ambesek" description="Ficha feita para o sistema Starfinder." version="0.7" compilationDate="03032023121116" compilationDigest="2046e66c2e46759b8d70d83e849c3cb0de3e18d9">
+    <element id="Ambesek.Starfinder" name="Ficha Starfinder" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20Starfinder/output/Ficha%20Starfinder.rpk?raw=true" fileName="Ficha Starfinder.rpk" repositoryPath="Sheets/Ficha Starfinder/" author="Ambesek" description="Ficha feita para o sistema Starfinder." version="0.8" compilationDate="03032023121116" compilationDigest="2046e66c2e46759b8d70d83e849c3cb0de3e18d9">
         <info lang="pt-BR" name="Ficha Starfinder" description="Ficha feita para o sistema Starfinder." author="Ambesek" site="http://pt-br.rpgmeister.wikia.com/wiki/Main_Page"/>
         <dataTypes>
             <dataType id="Ambesek.Starfinder.CompanhiaMercenaria" title="Ficha Starfinder (Companhia de Mercenarios)" formType="sheetTemplate">

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<form name="frmFichaRPGmeister7A_svg" width="465" height="25" theme="dark" margins="{top=1}">
+<form name="frmInventarioItem" width="465" height="25" theme="dark" margins="{top=1}">
 	<script> 
 		<![CDATA[			
 		local function askForDelete()
@@ -34,12 +34,12 @@
 				node.precoEquipamentos = preco;
 
 				preco = 0;
-				nodes = NDB.getChildNodes(node.campoDosImplates); 
+				nodes = NDB.getChildNodes(node.rclEquipamentos); 
 				for i=1, #nodes, 1 do
 					preco = preco + (tonumber(nodes[i].preco) or 0);
 				end
 
-				node.precoImplantes = preco;
+				node.precoEquipamentos2 = preco;
 			end;
 		end;
 
@@ -55,12 +55,12 @@
 				node.pesoEquipamentos = peso;
 
 				peso = 0;
-				nodes = NDB.getChildNodes(node.campoDosImplates); 
+				nodes = NDB.getChildNodes(node.rclEquipamentos); 
 				for i=1, #nodes, 1 do
 					peso = peso + (tonumber(nodes[i].peso) or 0);
 				end
 
-				node.pesoImplantes = peso;
+				node.pesoEquipamentos2 = peso;
 			end;
 		end;
 		]]>	

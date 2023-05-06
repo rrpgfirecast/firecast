@@ -63,7 +63,6 @@
 				local controls = findAllControls();
 				return filterByClass(className, controls);
 			end;
-
 		]]>	
 	</script>
 
