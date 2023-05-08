@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmConspiracoes_FichadePersonagemConspiracionista" formType="sheetTemplate" dataType="ConspiracoesRPG_Conspiracionista_Oficial" title="Conspirações - Conspiracionista (PDF)" align="client" theme="light">
+    <tabControl align="client">
+        <tab title="Frente">
+            <import file="1.lfm"/>
+        </tab>
+        <tab title="Verso">
+            <import file="2.lfm"/>
+        </tab>
+    </tabControl>
+</form>
