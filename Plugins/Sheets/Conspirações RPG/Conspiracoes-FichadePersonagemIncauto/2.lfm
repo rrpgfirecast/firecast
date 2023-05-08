@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmConspiracoes_FichadePersonagemIncauto2_svg" align="client" theme="light" margins="{top=1}">
+    <style>#frmConspiracoes_FichadePersonagemIncauto2_svg path {color: black; strokeColor: black; mode: stretch;} &#xD;
+#frmConspiracoes_FichadePersonagemIncauto2_svg label {fontColor: black; textTrimming: none; wordWrap: false; autoSize: true;}</style>
+    <scrollBox align="client">
+        <rectangle width="1191" height="1684" color="white">&#xD;
+            <image left="0" top="0" width="1191" height="1684" src="images/2.png" style="stretch" optimize="true" compilerOrder="0"/>&#xD;
+            <layout left="66" top="300" width="259" height="43" compilerOrder="9">
+                <edit transparent="true" fontSize="24" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="259" height="44" field="Texto1_0_1_0_5_0_1_1_1_0_1_0_0" compilerOrder="10"/>
+            </layout>&#xD;
+            <layout left="430" top="300" width="304" height="44" compilerOrder="23">
+                <edit transparent="true" fontSize="24" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="304" height="45" field="Texto1_0_1_0_5_0_1_1_1_0_1_0_1_1_1" compilerOrder="24"/>
+            </layout>&#xD;
+            <layout left="793" top="300" width="304" height="44" compilerOrder="25">
+                <edit transparent="true" fontSize="24" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="304" height="45" field="Texto1_0_1_0_5_0_1_1_1_0_1_0_1_2_1" compilerOrder="26"/>
+            </layout>&#xD;
+            <layout left="58" top="365" width="349" height="363" compilerOrder="1">
+                <textEditor left="0" top="0" width="349" height="363" fontSize="18" fontColor="#000000" field="Texto1_3_1_1_1_0_0_0" transparent="true" compilerOrder="2"/>
+            </layout>&#xD;
+            <layout left="422" top="365" width="349" height="363" compilerOrder="19">
+                <textEditor left="0" top="0" width="349" height="363" fontSize="18" fontColor="#000000" field="Texto1_3_1_1_1_0_0_1" transparent="true" compilerOrder="20"/>
+            </layout>&#xD;
+            <layout left="786" top="365" width="349" height="363" compilerOrder="21">
+                <textEditor left="0" top="0" width="349" height="363" fontSize="18" fontColor="#000000" field="Texto1_3_1_1_1_0_0_2" transparent="true" compilerOrder="22"/>
+            </layout>&#xD;
+            <layout left="430" top="729" width="304" height="44" compilerOrder="13">
+                <edit transparent="true" fontSize="24" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="304" height="45" field="Texto1_0_1_0_5_0_1_1_1_0_1_0_1_1_0" compilerOrder="14"/>
+            </layout>&#xD;
+            <layout left="793" top="729" width="304" height="44" compilerOrder="15">
+                <edit transparent="true" fontSize="24" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="304" height="45" field="Texto1_0_1_0_5_0_1_1_1_0_1_0_1_2_0" compilerOrder="16"/>
+            </layout>&#xD;
+            <layout left="66" top="730" width="304" height="43" compilerOrder="11">
+                <edit transparent="true" fontSize="24" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="304" height="44" field="Texto1_0_1_0_5_0_1_1_1_0_1_0_1_0" compilerOrder="12"/>
+            </layout>&#xD;
+            <layout left="58" top="798" width="351" height="413" compilerOrder="3">
+                <textEditor left="0" top="0" width="351" height="413" fontSize="18" fontColor="#000000" field="Texto1_3_1_1_1_1_0_0_0" transparent="true" compilerOrder="4"/>
+            </layout>&#xD;
+            <layout left="422" top="798" width="351" height="413" compilerOrder="5">
+                <textEditor left="0" top="0" width="351" height="413" fontSize="18" fontColor="#000000" field="Texto1_3_1_1_1_1_0_1" transparent="true" compilerOrder="6"/>
+            </layout>&#xD;
+            <layout left="786" top="798" width="351" height="413" compilerOrder="7">
+                <textEditor left="0" top="0" width="351" height="413" fontSize="18" fontColor="#000000" field="Texto1_3_1_1_1_1_0_2" transparent="true" compilerOrder="8"/>
+            </layout>&#xD;
+            <layout left="66" top="1231" width="1059" height="399" compilerOrder="17">
+                <textEditor left="0" top="0" width="1059" height="399" fontSize="18" fontColor="#000000" field="Texto1_3_1_1_1_1_0_0_1" transparent="true" compilerOrder="18"/>
+            </layout>&#xD;
+        </rectangle>
+    </scrollBox>
+</form>
