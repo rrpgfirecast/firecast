@@ -390,7 +390,7 @@
             </dataType>
         </dataTypes>
     </element>
-    <element id="FichaMultiaba" name="Ficha Multiaba" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20Multiaba/output/Ficha%20Multiaba.rpk?raw=true" fileName="Ficha Multiaba.rpk" repositoryPath="Sheets/Ficha Multiaba/" author="Ambesek" description="Ficha com multiplas abas com o texto rico." version="0.6.1" compilationDate="03032023114056" compilationDigest="51a4295a925b742006bc38325d81fc32fd7e7765">
+    <element id="FichaMultiaba" name="Ficha Multiaba" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20Multiaba/output/Ficha%20Multiaba.rpk?raw=true" fileName="Ficha Multiaba.rpk" repositoryPath="Sheets/Ficha Multiaba/" author="Ambesek" description="Ficha com multiplas abas com o texto rico." version="1.0" compilationDate="03032023114056" compilationDigest="51a4295a925b742006bc38325d81fc32fd7e7765">
         <info lang="pt-BR" name="Ficha Multiaba" description="Ficha com multiplas abas com o texto rico." author="Ambesek"/>
         <dataTypes>
             <dataType id="Ambesek.Nefertyne.FichaMultiaba" title="Ficha Multiaba" formType="sheetTemplate">
