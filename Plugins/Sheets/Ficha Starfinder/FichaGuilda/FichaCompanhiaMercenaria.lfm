@@ -44,7 +44,6 @@
         ]]> 
     </script>
 
-
     <template name="ListaFlexivel">
         <flowPart minWidth="300" maxWidth="600" height="25" minScaledWidth="280" name="$(rclName)Part" adjustHeightToLine="false" margins="{left=5}" avoidScale="true">
             <script>

@@ -28,7 +28,6 @@
 				node.recursosGastos = preco;
 			end;
 		end;
-
 		]]>	
 	</script>
 
@@ -51,7 +50,7 @@
         </layout>
     </template>
 
-	<rectangle align="client" color="black" strokeColor="white" strokeSize="1" padding="{top=5,bottom=5,left=5,right=5}">
+	<rectangle align="client" color="black" strokeColor="white" strokeSize="1" margins="{right=1}" padding="{top=5,bottom=5,left=5,right=5}">
 		<edit align="client" field="name"/>
 		<formatEdit field="preco" unit="C"/>
 		<label align="right" width="40" text="Lvl" horzTextAlign="center"/>
@@ -59,5 +58,18 @@
 		<label align="right" width="40" text="Qtd" horzTextAlign="center"/>
 		<edit align="right" width="40" field="qtd" onChange="equipPrice()"/>
 	</rectangle>
+
+	<button align="right" width="25" text="i">
+		<event name="onClick">
+			local pop = self:findControlByName("popupConfig");
+			
+			if pop ~= nil then
+				pop:setNodeObject(self.sheet);
+				pop:showPopupEx("center");
+			else
+				showMessage("Ops, bug.. nao encontrei o popup de opções para exibir");
+			end;
+		</event>
+	</button>
 	<button align="right" width="25" text="X" onClick="askForDelete();"/>
 </form>

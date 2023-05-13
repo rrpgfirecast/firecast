@@ -1,5 +1,82 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <form name="frmInventory" align="client">
+	<popup name="popupConfig" width="210" height="110" backOpacity="0.4" autoScopeNode="false" padding="{top=5,bottom=5,left=5,right=5}">
+		<layout align="top" height="25">
+			<label align="client" width="50" field="name" horzTextAlign="center"/>
+		</layout>
+		<layout align="top" height="25">
+			<label align="left" width="50" text="Qtd" horzTextAlign="center"/>
+			<edit  align="left" width="50" field="qtdMod"/>
+			<label align="left" width="50" text="%" horzTextAlign="center"/>
+			<edit  align="left" width="50" field="perc"/>
+		</layout>
+		<layout align="top" height="25">
+			<button align="left" width="100" text="Adicionar">
+				<event name="onClick">
+					local node = self.popupConfig.node
+					local root = NDB.getRoot(node);
+					
+					local qtd = math.abs(tonumber(node.qtd) or 0)
+					local qtdMod = math.abs(tonumber(node.qtdMod) or 0)
+
+					local preco = tonumber(node.preco) or 0
+					local creditos = tonumber(root.creditos) or 0
+
+					node.qtd = qtd + qtdMod
+
+					local extra = preco*qtdMod
+					root.creditos = creditos + extra
+				</event>
+			</button>
+			<button align="left" width="100" text="Remover">
+				<event name="onClick">
+					local node = self.popupConfig.node
+					local root = NDB.getRoot(node);
+					
+					local qtd = math.abs(tonumber(node.qtd) or 0)
+					local qtdMod = math.abs(tonumber(node.qtdMod) or 0)
+
+					local preco = tonumber(node.preco) or 0
+					local creditos = tonumber(root.creditos) or 0
+
+					node.qtd = qtd - qtdMod
+
+					local waste = preco*qtdMod
+					root.creditos = creditos - waste
+				</event>
+			</button>
+		</layout>
+		<layout align="top" height="25">
+			<button align="left" width="100" text="Comprar">
+				<event name="onClick">
+					local node = self.popupConfig.node
+
+					local qtd = math.abs(tonumber(node.qtd) or 0)
+					local qtdMod = math.abs(tonumber(node.qtdMod) or 0)
+
+					node.qtd = qtd + qtdMod
+				</event>
+			</button>
+			<button align="left" width="100" text="Vender">
+				<event name="onClick">
+					local node = self.popupConfig.node
+					local root = NDB.getRoot(node);
+					
+					local qtd = math.abs(tonumber(node.qtd) or 0)
+					local qtdMod = math.abs(tonumber(node.qtdMod) or 0)
+
+					node.qtd = qtd - qtdMod
+
+					local perc = tonumber(node.perc) or 0
+					local preco = tonumber(node.preco) or 0
+					local creditos = tonumber(root.creditos) or 0
+
+					local waste = (100-perc)/100*preco*qtdMod
+					root.creditos = creditos - waste
+				</event>
+			</button>
+		</layout>
+	</popup>
 	<scrollBox align="client">
 		<rectangle align="top" height="35" color="black" strokeColor="white" strokeSize="1" padding="{top=5,bottom=5,left=5,right=5}">
 			<layout align="left" width="300" margins="{right=5}">
