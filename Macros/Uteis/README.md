@@ -10,7 +10,6 @@ Listados abaixo estão as macros localizadas dentro dessa pasta e sua funcionalid
 | (coin)[https://github.com/rrpgfirecast/firecast/raw/master/Macros/Uteis/coin.lua?raw=true] | thirteen | O usuário escolhe uma das faces da moeda antes de arremessá-la. |
 | (descansar)[https://github.com/rrpgfirecast/firecast/raw/master/Macros/Uteis/descansar.lua?raw=true] | Ambesek | Recupera as barras do usuário completamente. |
 | (espec)[https://github.com/rrpgfirecast/firecast/raw/master/Macros/Uteis/espec.lua?raw=true] | Ambesek | Transforma em espectador cada jogador sem voz. |
-| (find)[https://github.com/rrpgfirecast/firecast/raw/master/Macros/Uteis/find.lua?raw=true] | Ambesek | Encontra e linka NPCs da biblioteca da mesa no chat. |
 | (kick)[https://github.com/rrpgfirecast/firecast/raw/master/Macros/Uteis/kick.lua?raw=true] | Ambesek | Expulsa o usuário da mesa através do login. |
 | (math)[https://github.com/rrpgfirecast/firecast/raw/master/Macros/Uteis/math.lua?raw=true] | Mia | Executa cálculos matemáticos. |
 | (mod)[https://github.com/rrpgfirecast/firecast/raw/master/Macros/Uteis/mod.lua?raw=true] | Ambesek | Inicia ou finaliza a sessão da mesa, além de dar ou retirar a voz dos jogadores. |
