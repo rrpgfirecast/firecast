@@ -18,5 +18,5 @@ Se deseja aprender a criar seus macros: http://rrpg.com.br/sdk3/RRPG%20SDK%203.h
   
   # Subpastas
   As subpastas organizam os macros por sistema. Há também duas pastas para macros não associados a sistemas. 
-- Uteis: Macros com funções que melhoram o chat do Firecast. 
+- Úteis: Macros com funções que melhoram o chat do Firecast. 
 - Ficha: Macros feitos para uso em conjunto com certos plugins de ficha. 
