@@ -97,7 +97,7 @@
 			<label top="0" width="150" height="25" text="Ordem da Aba" horzTextAlign="center"/>
 			<edit left="125" top="0" width="50" height="25" field="index" type="number" horzTextAlign="center">
 				<event name="onChange">
-					if sheet==nil then return end;
+					if self.popupConfig.node==nil then return end;
 					local rcl = self:findControlByName("rclAbas");
 					if rcl~= nil then rcl:sort() end;
 				</event>
@@ -117,7 +117,7 @@
 								if pop ~= nil then
 									pop:closePopup();
 								end;
-								NDB.deleteNode(sheet);
+								NDB.deleteNode(self.popupConfig.node);
 							end;
 					end);
 				</event>
