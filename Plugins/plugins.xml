@@ -8,7 +8,7 @@
             </dataType>
         </dataTypes>
     </element>
-    <element id="Ambesek.dd2vtt" name="Universal VTT Importer" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Scene/UniversalVTTImporter/output/UniversalVTTImporter.rpk?raw=true" fileName="UniversalVTTImporter.rpk" repositoryPath="Scene/UniversalVTTImporter/" author="Ambesek" description="Importa arquivos dd2vtt pro Firecast." version="1.1" compilationDate="27042023033920" compilationDigest="d695a4b25bf9a4bdb8a0eafe1fa587bae3916426">
+    <element id="Ambesek.dd2vtt" name="Universal VTT Importer" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Scene/UniversalVTTImporter/output/UniversalVTTImporter.rpk?raw=true" fileName="UniversalVTTImporter.rpk" repositoryPath="Scene/UniversalVTTImporter/" author="Ambesek" description="Importa arquivos dd2vtt pro Firecast." version="1.2" compilationDate="27042023033920" compilationDigest="d695a4b25bf9a4bdb8a0eafe1fa587bae3916426">
         <info lang="pt-BR" name="Universal VTT Importer" description="Importa arquivos dd2vtt pro Firecast." author="Ambesek"/>
     </element>
     <element id="Ambesek.3d6" name="Ficha ReDungeon" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%203d6/output/Ficha%203d6.rpk?raw=true" fileName="Ficha 3d6.rpk" repositoryPath="Sheets/Ficha 3d6/" author="Ambesek" description="Ficha para o sistema 3d6" version="1.0.1" compilationDate="27042023002314" compilationDigest="12a8e47a6941a0e253ea8245cd92bb272160b228">
