@@ -1,5 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <root>
+    <element id="Ambesek.FireBox" name="FireBox" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/TablesDock/FireBox/output/FireBox.rpk?raw=true" fileName="FireBox.rpk" repositoryPath="TablesDock/FireBox/" author="Ambesek" description="Sincroniza conteudo de uma pasta com o FireDrive." version="0.1" compilationDate="20052023051049" compilationDigest="a73e46a04ff7d132c8105f10a8ba90d21350041b">
+        <info lang="pt-BR" name="FireBox" description="Sincroniza conteudo de uma pasta com o FireDrive." author="Ambesek"/>
+        <dataTypes>
+            <dataType id="Ambesek.FireBox" title="FireBox" formType="tablesDock">
+                <info title="FireBox"/>
+            </dataType>
+        </dataTypes>
+    </element>
     <element id="Ambesek.Universal.Storyteller" name="Ficha Universal Storyteller" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20Universal%20Storyteller/output/Ficha%20Universal%20Storyteller.rpk?raw=true" fileName="Ficha Universal Storyteller.rpk" repositoryPath="Sheets/Ficha Universal Storyteller/" author="Ambesek" description="Ficha Generica Universal para Storyteller" version="0.5.1" compilationDate="03052023073243" compilationDigest="f2cf7c045e56200c11d324feccb38be8020da570">
         <info lang="pt-BR" name="Ficha Universal Storyteller" description="Ficha Generica Universal para Storyteller" author="Ambesek"/>
         <dataTypes>

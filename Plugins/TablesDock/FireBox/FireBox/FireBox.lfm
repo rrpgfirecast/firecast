@@ -1,0 +1,251 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmFireBoxMain" formType="tablesDock" dataType="Ambesek.FireBox" title="FireBox" align="client" theme="dark">
+    <script>
+        <![CDATA[
+        local function dump(o)
+           if type(o) == 'table' then
+              local s = '{ '
+              for k,v in pairs(o) do
+                 if type(k) ~= 'number' then k = '"'..k..'"' end
+                 s = s .. '['..k..'] = ' .. dump(v) .. ','
+              end
+              return s .. '} '
+           else
+              return tostring(o)
+           end
+        end
+        
+        local function write(str)
+            local mesa = Firecast.getMesaDe(self);
+            if str then
+                mesa.activeChat:escrever(str);
+            else
+                mesa.activeChat:escrever("String nula");
+            end;
+        end;
+
+        local function tryTranslate(text)
+            local trans = Locale.tryLang(text);
+            if trans == nil then trans = text end;
+            return trans;
+        end
+
+        local function isNewVersion(installed, downloaded)
+            local installedVersion = {};
+            local installedIndex = 0;
+            for i in string.gmatch(installed, "[^%.]+") do
+                installedIndex = installedIndex +1;
+                installedVersion[installedIndex] = i;
+            end
+
+            local downloadedVersion = {};
+            local downloadedIndex = 0;
+            for i in string.gmatch(downloaded, "[^%.]+") do
+                downloadedIndex = downloadedIndex +1;
+                downloadedVersion[downloadedIndex] = i;
+            end
+
+            for i=1, math.min(installedIndex, downloadedIndex), 1 do 
+                if (tonumber(installedVersion[i]) or 0) > (tonumber(downloadedVersion[i]) or 0) then
+                    return false;
+                elseif (tonumber(installedVersion[i]) or 0) < (tonumber(downloadedVersion[i]) or 0) then
+                    return true;
+                end;
+            end;
+
+            if downloadedIndex > installedIndex then
+                return true;
+            else
+                return false;
+            end;
+        end;
+
+        local function init()
+            firebox = NDB.load("firebox.xml")
+            firebox.onSync = false
+            self.dsb:setNodeObject(firebox)
+
+            VHD.forceDirectory("/firebox")
+        end
+
+        local function clear(status)
+	        local node = self.dsb.node
+
+	        node.cancel = false
+
+	        node.status = status
+	        node.operations = ""
+	        node.progress = ""
+	        node.progressPerc = ""
+
+	        node.dir = 0
+	        node.dirComp = 0
+
+	        node.numOps = 0
+	        node.numOpsComp = 0
+	        node.numOpsError = 0
+
+	        node.folderTimer = os.time()
+
+	        node.logs = ""
+        end
+
+        local function addLog(log)
+        	self.dsb.node.logs = log .. "\n" .. (self.dsb.node.logs or "")
+        end
+
+        local function has_value (tab, val)
+		    for index, value in ipairs(tab) do
+		        if value == val then
+		            return true
+		        end
+		    end
+		    return false
+		end
+
+        local function has_value_fd (tab, val)
+		    for index, value in ipairs(tab) do
+		        if value.name == val then
+		            return true
+		        end
+		    end
+		    return false
+		end
+        ]]>
+    </script>
+
+    <import file="fireboxScript.xml"/>
+
+    <popup name="popTutorial" backOpacity="0.4" align="client" margins="{left=25,right=25,bottom=25,top=25}" padding="{left=10,right=10,bottom=10,top=10}">
+    	<image align="top" height="185" src="images/tutorialPic.jpg"/>	
+    	<textEditor align="client" text="	1. A pasta que o FireBox vai salvar os arquivos. Por padrão ele cria uma pasta firebox dentro do Firedrive. Mas você pode usar outra pasta. Pra usar a pasta raiz use /.\n	2. Para abrir a pasta do FireBox no seu computador copie o codigo abaixo. Use o comando Windows+R, cole o texto e de enter.\n	3. O modo sincronizar vai fazer a pasta de destino ficar igual a pasta de origem, apagando arquivos se necessario. O modo de combinar não apagar arquivos, apenas baixa ou sobe eles.\n	4. Sobe arquivos do FireBox para o FireDrive.\n	5. Baixa os arquivos do FireDrive para o FireBox.\n	6. Para a operação do FireBox (Download ou Upload)."/>
+    </popup>
+
+    <dataScopeBox name="dsb" align="client">
+    	<layout align="client" margins="{left=5}">
+    		<label align="top" height="25" field="status" fontSize="11"/>
+    		<label align="top" height="25" field="operations" fontSize="11"/>
+    		<layout align="top" height="25">
+    			<label align="client" field="progress" fontSize="11"/>
+    			<label align="right" width="30" field="progressPerc" fontSize="11"/>
+    		</layout>
+    		<textEditor align="client" field="logs"/>
+    	</layout>
+    	<layout align="left" width="600">
+	        <layout align="top" height="25">
+	        	<label align="left" width="100" text="FireDrive Folder: " hint="Em que pasta do FireDrive vai colocar os arquivos do FireBox."/>
+	        	<edit align="client" margins="{left=5}" field="firedrive"/>
+	        	<dataLink field="firedrive" defaultValue="firebox"/>
+	        </layout>
+	        <layout align="top" height="25">
+		        <button align="left" width="100" text="Copiar" hint="Coloque nessa pasta os arquivos e pastas que quer sincronizar.">
+		        	<event name="onClick">
+		        		System.setClipboardText("%AppData%/Firecast/Plugins/ambesek.firebox_vhd/firebox")
+		        	</event>
+		        </button>
+	        	<label align="client" margins="{left=5}" text="Win+R: %AppData%/Firecast/Plugins/ambesek.firebox_vhd/firebox" hint="Coloque nessa pasta os arquivos e pastas que quer sincronizar."/>
+		        <button align="right" width="25" text="?">
+		        	<event name="onClick">
+						local pop = self:findControlByName("popTutorial");
+							
+						if pop ~= nil then
+							pop:setNodeObject(self.sheet);
+							pop:showPopupEx("center", self);
+						else
+							showMessage("Ops, bug.. nao encontrei o popup para exibir");
+						end;
+		        	</event>
+		        </button>
+	        </layout>
+	        <layout align="top" height="25">
+	        	<label align="left" width="100" text="Modo: " hint="Combinar: não apaga arquivos. Sincronizar: apaga arquivos que não estiverem na pasta de origem."/>
+	        	<radioButton align="left" width="100" margins="{left=5}" groupName="mode" field="mode" fieldValue="combine" text="Combinar" hint="Apenas baixa os arquivos em questão sem apagar nada."/>
+	        	<radioButton align="left" width="100" margins="{left=5}" groupName="mode" field="mode" fieldValue="sync" text="Sincronizar" hint="Apaga arquivos do destino que não existirem na origem."/>
+	        </layout>
+	        <button align="top" height="25" text="Copiar do FireBox para o FireDrive! (Upload)">
+	        	<event name="onClick">
+	        		local node = self.dsb.node
+	        		if node.onSync then return end
+
+	        		clear("Copiando do FireBox para o FireDrive!")
+	        		addLog("Upload Log")
+
+	        		node.onSync = true
+
+	        		AddToFolderList("Upload", node.firedrive, "/firebox")
+	        		RunFolderList()
+	        	</event>
+	        </button>
+	        <button align="top" height="25" text="Copiar do FireDrive para o FireBox! (Download)">
+	        	<event name="onClick">
+	        		local node = self.dsb.node
+	        		if node.onSync then return end
+
+	        		clear("Copiando do FireDrive para o FireBox!")
+	        		addLog("Download Log")
+
+	        		node.onSync = true
+
+	        		AddToFolderList("Download", node.firedrive, "/firebox")
+	        		RunFolderList()
+	        	</event>
+	        </button>
+	        <layout align="top" height="25"/>
+	        <button align="top" height="25" text="Cancelar!">
+	        	<event name="onClick">
+	        		local node = self.dsb.node
+	        		node.cancel = true
+	        	</event>
+	        </button>
+	        <layout align="top" height="25">
+	        	<label align="left" width="150" text="Em funcionamento: "/>
+	        	<label align="left" width="100" field="onSync"/>
+	        </layout>
+	    </layout>
+    </dataScopeBox>
+    <event name="onNodeChanged">
+        init();
+    </event>
+    <event name="onNodeReady">
+        Internet.download("https://github.com/rrpgfirecast/firecast/blob/master/Plugins/TablesDock/FireBox/output/FireBox.rpk?raw=true",
+            function(stream, contentType)
+                local info = Firecast.Plugins.getRPKDetails(stream)
+                local node = self.dsb.node
+                node.versionDownloaded = tryTranslate("available")..": " .. info.version;
+
+                local installed = Firecast.Plugins.getInstalledPlugins();
+                local myself;
+                for i=1, #installed, 1 do
+                    if installed[i].moduleId == info.moduleId then
+                        myself = installed[i];
+                        node.versionInstalled = tryTranslate("installed")..": " .. installed[i].version;
+                    end;
+                end;
+
+                rawset(node, "stream", stream);
+
+                if node.noUpdate==true then return end;
+                if myself~= nil and isNewVersion(myself.version, info.version) then
+                    Dialogs.choose(tryTranslate("newVersion"),{tryTranslate("yes"), tryTranslate("no"), tryTranslate("dontAsk")},
+                        function(selected, selectedIndex, selectedText)
+                            if selected and selectedIndex == 1 then
+                                local install = Firecast.Plugins.installPlugin(rawget(node,"stream"), true);
+                                if install==false then
+                                    GUI.openInBrowser('https://github.com/rrpgfirecast/firecast/blob/master/Plugins/TablesDock/FireBox/output/FireBox.rpk?raw=true');
+                                end;
+                            elseif selected and selectedIndex == 3 then
+                                node.noUpdate = true;
+                            end;
+                        end);
+                end;
+            end,       
+            function (errorMsg)
+                --showMessage(errorMsg);
+            end,       
+            function (downloaded, total)
+                -- esta função será chamada constantemente.
+                -- dividir "downloaded" por "total" lhe dará uma porcentagem do download.
+            end,
+            "checkForModification");
+    </event>
+</form>

@@ -1,0 +1,310 @@
+<script>
+local SyncUpload
+local RecursiveSyncUpload
+local SyncDownload
+local RecursiveSyncDownload
+local Upload
+local Download
+local RunFileList
+local RunFolderList
+
+-- TODO: Use paralel threads to make multiple uploads/downloads/analysis at time
+-- TODO: List all urls in a folder to export to token manager
+-- TODO: use tinify to compress and convert big images
+-- TODO: when two files have the same name in the same folder, compare to see if they are different
+
+local fileList = {}
+local folderList = {}
+
+local function AddToFileList(type, firedriveFile, fireboxFile)
+	local node = self.dsb.node
+
+	local obj = {}
+	obj.type = type
+	obj.firedrive = firedriveFile
+	obj.firebox = fireboxFile
+
+	table.insert(fileList, obj)
+
+	--addLog("File List " .. type .. ": " .. fireboxFile .. " | " .. (os.time() - node.folderTimer) .. " seconds.")
+
+	node.numOps = node.numOps + 1
+	node.operations = "Analisando pastas: " .. node.dirComp .. "/" .. node.dir .. "; Arquivos encontrados: " .. node.numOps
+end
+
+local function AddToFolderList(type, firedriveFolder, fireboxFolder)
+	local node = self.dsb.node
+
+	local obj = {}
+	obj.type = type
+	obj.firedrive = firedriveFolder
+	obj.firebox = fireboxFolder
+
+	table.insert(folderList, obj)
+
+	--addLog("Folder List " .. type .. ": " .. fireboxFolder .. " | " .. (os.time() - node.folderTimer) .. " seconds.")
+
+	node.dir = node.dir + 1
+	node.operations = "Analisando pastas: " .. node.dirComp .. "/" .. node.dir .. "; Arquivos encontrados: " .. node.numOps
+end
+
+Upload = function(firedriveFile, fireboxFile)
+	local node = self.dsb.node
+	node.status = "Subindo " .. node.numOps .. " arquivos."
+
+	FireDrive.upload(firedriveFile, VHD.openFile(fireboxFile, "r"), 
+		function (fdi)
+			-- Sucess Callback
+			node.numOpsComp = node.numOpsComp +1
+			node.operations = "Sucessos: " .. node.numOpsComp .. ", falhas: " .. node.numOpsError
+			--addLog(fireboxFile .. ": okay")
+			RunFileList()
+		end,
+		function (c,m)
+			node.progress = firedriveFile
+			node.progressPerc = (math.floor(c/m*100)) .. "%"
+		end,
+		function (reason)
+			-- Failure Callback
+			node.numOpsError = node.numOpsError +1
+			addLog(fireboxFile .. ": " .. reason)
+			node.operations = "Sucessos: " .. node.numOpsComp .. ", falhas: " .. node.numOpsError
+			RunFileList()
+		end)
+end
+
+Download = function(fdi, fireboxFile)
+	local node = self.dsb.node
+	node.status = "Baixando " .. node.numOps .. " arquivos."
+
+	Internet.download(fdi.url,
+        function(stream, contentType)
+        	-- Sucess Callback
+        	local newFile = VHD.openFile(fireboxFile, "w")
+        	newFile:copyFrom(stream, stream.size)
+
+			node.numOpsComp = node.numOpsComp +1
+			node.operations = "Sucessos: " .. node.numOpsComp .. ", falhas: " .. node.numOpsError
+
+			--addLog(fireboxFile .. ": okay")
+			RunFileList()
+        end,
+        function (reason)
+        	-- Failure Callback
+			node.numOpsError = node.numOpsError +1
+			node.operations = "Sucessos: " .. node.numOpsComp .. ", falhas: " .. node.numOpsError
+
+			addLog(fireboxFile .. ": " .. reason)
+			RunFileList()
+        end,
+		function (c,m)
+			node.progress = fireboxFile
+			node.progressPerc = (math.floor(c/m*100)) .. "%"
+		end)
+end
+
+RunFileList = function()
+	local node = self.dsb.node
+	if node.cancel then 
+		node.status = "Operação Cancelada."
+		node.onSync = false
+		fileList = {}
+		folderList = {}
+		return 
+	end
+
+	local pos = node.numOpsComp+node.numOpsError+1
+
+	local file = fileList[pos]
+
+	if file == nil then 
+		node.status = "Operação Finalizada."
+		node.onSync = false
+		fileList = {}
+		folderList = {}
+		return 
+	end
+
+	if file.type == "Upload" then
+		Upload(file.firedrive, file.firebox)
+	elseif file.type == "Download" then
+		Download(file.firedrive, file.firebox)
+	else
+		addLog("Invalid file operation: " .. file.type)
+		node.numOpsError = node.numOpsError + 1
+		node.operations = "Sucessos: " .. node.numOpsComp .. ", falhas: " .. node.numOpsError
+		RunFileList()
+	end
+end
+
+RunFolderList = function()
+	local node = self.dsb.node
+	if node.cancel then 
+		node.status = "Operação Cancelada."
+		node.onSync = false
+		fileList = {}
+		folderList = {}
+		return 
+	end
+
+	local folder = folderList[node.dirComp+1]
+
+	if folder == nil then 
+		node.status = "Download/Upload de Arquivos."
+		RunFileList()
+		return 
+	end
+
+	if folder.type == "Upload" then
+		RecursiveSyncUpload(folder.firedrive, folder.firebox)
+	elseif folder.type == "Download" then
+		RecursiveSyncDownload(folder.firedrive, folder.firebox)
+	end
+end
+
+SyncUpload = function(firedriveFolder, fireboxFolder)
+	local node = self.dsb.node
+	node.progress = "Getting Directory details for Upload"
+	FireDrive.getFiles(firedriveFolder,
+ 		function(fdiList)
+ 			local localList = VHD.enumerateContent(fireboxFolder)
+ 			-- For each file in fdiList, if object doesn't exist in localList, delete file from FireDrive 
+ 			-- For each file in localList, if object doesn't exist in fdiList, upload file to FireDrive 
+ 			-- When creating new folder call RecursiveSyncUpload
+
+ 			if node.mode == "sync" then
+     			for i, v in ipairs(fdiList) do
+     				if not has_value(localList, v.name) then
+     					FireDrive.delete(firedriveFolder .. "/" .. v.name,
+     						function()
+								--addLog("Firedrive deleted: " .. firedriveFolder .. "/" .. v.name)
+     						end,
+		    				function(reason)
+								--addLog("Firedrive Error delete: " .. firedriveFolder .. "/" .. v.name)
+		    				end)
+     				end
+     			end
+			end
+
+ 			for i, v in ipairs(localList) do
+ 				if VHD.directoryExists(fireboxFolder .. "/" .. v) then
+ 					AddToFolderList("Upload", firedriveFolder .. "/" .. v, fireboxFolder .. "/" .. v)
+ 				elseif not has_value_fd(fdiList, v) then 
+ 					AddToFileList("Upload", firedriveFolder .. "/" .. v, fireboxFolder .. "/" .. v)
+ 				else
+ 					--addLog("Already in FireDrive: " .. firedriveFolder .. "/" .. v .. " | " .. (os.time() - node.folderTimer) .. " seconds.")
+ 				end
+ 			end
+
+ 			addLog("Analyzed folder: " .. firedriveFolder .. " in " .. (os.time() - node.folderTimer) .. " seconds.")
+ 			node.dirComp = node.dirComp + 1
+ 			node.operations = "Analisando pastas: " .. node.dirComp .. "/" .. node.dir .. "; Arquivos encontrados: " .. node.numOps
+ 			RunFolderList()
+ 		end,
+ 		function(reason)
+			addLog("Upload Error getFiles: " .. firedriveFolder .. ": " .. reason)
+ 			node.dirComp = node.dirComp + 1
+ 			node.operations = "Analisando pastas: " .. node.dirComp .. "/" .. node.dir .. "; Arquivos encontrados: " .. node.numOps
+ 			RunFolderList()
+ 		end)
+end
+
+RecursiveSyncUpload = function(firedriveFolder, fireboxFolder)
+ 	local node = self.dsb.node
+
+ 	--addLog("Start folder: " .. firedriveFolder)
+ 	node.folderTimer = os.time()
+
+ 	VHD.forceDirectory(fireboxFolder)
+ 	if (firedriveFolder ~= "/") then
+ 		node.progress = "Creating Directory"
+     	FireDrive.createDirectory(firedriveFolder,
+     		function(fdi)
+     			-- Directory exists now
+     			SyncUpload(firedriveFolder, fireboxFolder)
+     		end,
+     		function(reason)
+				addLog("Upload Error createDir: " .. firedriveFolder .. ": " .. reason)
+ 				node.dirComp = node.dirComp + 1
+ 				node.operations = "Analisando pastas: " .. node.dirComp .. "/" .. node.dir .. "; Arquivos encontrados: " .. node.numOps
+ 				RunFolderList()
+     		end)
+     else
+     	SyncUpload(firedriveFolder, fireboxFolder)
+     end
+end
+
+SyncDownload = function(firedriveFolder, fireboxFolder)
+	local node = self.dsb.node
+	node.progress = "Getting Directory details for Download"
+	FireDrive.getFiles(firedriveFolder,
+ 		function(fdiList)
+ 			local localList = VHD.enumerateContent(fireboxFolder)
+ 			-- For each file in localList, if object doesn't exist in fdiList, delete file from FireBox
+ 			-- For each file in fdiList, if object doesn't exist in localList, download file to FireBox 
+ 			-- When creating new folder call RecursiveSyncDownload
+
+ 			if node.mode == "sync" then
+     			for i, v in ipairs(localList) do
+     				if not has_value_fd(fdiList, v) then
+ 						node.progress = "Deleting files ".. v
+     					if VHD.fileExists(fireboxFolder .. "/" .. v) then
+     						VHD.deleteFile(fireboxFolder .. "/" .. v)
+							--addLog("FireBox deleted file: " .. fireboxFolder .. "/" .. v)
+     					else
+     						VHD.deleteDirectory(fireboxFolder .. "/" .. v)
+     						--addLog("FireBox deleted folder: " .. fireboxFolder .. "/" .. v)
+     					end
+     				end
+     			end
+			end
+
+ 			node.progress = "Downloading files"
+ 			for i, v in ipairs(fdiList) do
+ 				if v.isDir then
+ 					AddToFolderList("Download", firedriveFolder .. "/" .. v.name, fireboxFolder .. "/" .. v.name)
+ 				elseif not has_value(localList, v.name) then
+ 					AddToFileList("Download", v, fireboxFolder .. "/" .. v.name)
+ 				else
+ 					--addLog("Already in FireBox: " .. fireboxFolder .. "/" .. v.name .. " | " .. (os.time() - node.folderTimer) .. " seconds.")
+ 				end
+ 			end
+
+ 			addLog("Analyzed folder: " .. firedriveFolder .. " in " .. (os.time() - node.folderTimer) .. " seconds.")
+ 			node.dirComp = node.dirComp + 1
+ 			node.operations = "Analisando pastas: " .. node.dirComp .. "/" .. node.dir .. "; Arquivos encontrados: " .. node.numOps
+ 			RunFolderList()
+ 		end,
+ 		function(reason)
+			addLog("Download Error getFiles: " .. firedriveFolder .. ": " .. reason)
+ 			node.dirComp = node.dirComp + 1
+ 			node.operations = "Analisando pastas: " .. node.dirComp .. "/" .. node.dir .. "; Arquivos encontrados: " .. node.numOps
+ 			RunFolderList()
+ 		end)
+end
+
+RecursiveSyncDownload = function(firedriveFolder, fireboxFolder)
+ 	local node = self.dsb.node
+
+ 	--addLog("Start folder: " .. firedriveFolder)
+ 	node.folderTimer = os.time()
+
+ 	VHD.forceDirectory(fireboxFolder)
+ 	if (firedriveFolder ~= "/") then
+ 		node.progress = "Creating Directory"
+     	FireDrive.createDirectory(firedriveFolder,
+     		function(fdi)
+     			-- Directory exists now
+     			SyncDownload(firedriveFolder, fireboxFolder)
+     		end,
+     		function(reason)
+				addLog("Download Error createDir: " .. firedriveFolder .. ": " .. reason)
+ 				node.dirComp = node.dirComp + 1
+ 				node.operations = "Analisando pastas: " .. node.dirComp .. "/" .. node.dir .. "; Arquivos encontrados: " .. node.numOps
+ 				RunFolderList()
+     		end)
+     else
+     	SyncDownload(firedriveFolder, fireboxFolder)
+     end
+end
+</script>
