@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmHatsuItem" height="30" theme="dark"> 
+	<script> 
+		<![CDATA[			
+		local function askForDelete()
+			Dialogs.confirmYesNo("Deseja realmente apagar esse hatsu?",
+								 function (confirmado)
+									if confirmado then
+										NDB.deleteNode(sheet);
+									end;
+								 end);
+		end;
+		]]>	
+	</script>
+	<rectangle align="client" color="black" xradius="10" yradius="10" hitTest="false" margins="{left=5, right=5, top=2.5, bottom=2.5}">
+		<label align="client" field="nome" horzTextAlign="center"/>
+		<button align="right" width="25" text="X" onClick="askForDelete();"/>
+	</rectangle>
+</form>

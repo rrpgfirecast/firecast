@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module sdkVersion="3.6c">
+    <!--O id identifica seu módulo globalmente. Deve ser único, conter apenas caracteres alfanuméricos, underlines, pontos e deve conter ao menos 5 caracteres e um máximo de 40. Uma vez definido o ID, você não deve alterar ele ;) -->
+    <id>Ambesek.Hunter.Hunter</id>
+    <!--version é a versão do seu módulo. Quando for lançar uma nova versão do seu módulo, altere aqui =) -->
+    <version>0.2</version>
+
+    <settings>
+        <automaticStringLocalization>true</automaticStringLocalization>
+    </settings>    
+
+    <info lang="pt-BR">
+        <!--Informações do plugin na língua "pt-BR". Você pode ter várias tags "info", uma para cada tradução que quiser.-->
+        <name>Ficha HxH</name>
+        <description>Ficha para jogos de Hunter x Hunter usando D&amp;D 5ª edição</description>
+        <author>Ambesek</author>
+        <site/>
+        <contact>vinnyrpgmeister@gmail.com</contact>
+    </info>
+
+    <info lang="en">
+        <!--Informações do plugin na língua "en". Você pode ter várias tags "info", uma para cada tradução que quiser.-->
+        <name>Ficha HxH</name>        
+        <description>Sheet for Hunter x Hunter using D&amp;D 5e.</description>
+    </info> 
+</module>

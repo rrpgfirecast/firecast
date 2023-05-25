@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<scrollBox align="client">		
+	<layout align="left" width="150">
+		<button align="top" height="25" text="Novo Hatsu" onClick="self.rclHatsu:append();"/>
+    	<recordList name="rclHatsu" field="rclHatsu" templateForm="frmHatsuItem" align="client" selectable="true">
+            <event name="onSelect">
+              	local node = self.rclHatsu.selectedNode
+                self.hatsuDetails.node = node
+              	self.hatsuDetails.visible = (node ~= nil)
+            </event>
+            <event name="onEndEnumeration">
+            	if sheet==nil then return end
+		        local nodes = ndb.getChildNodes(sheet.rclHatsu);
+		        if self.rclHatsu.selectedNode == nil then
+		            if #nodes > 0 then
+		               self.rclHatsu.selectedNode = nodes[1];
+		            end;
+		        end;
+			</event>
+    	</recordList>
+	</layout>
+	<layout align="client">
+		<dataScopeBox name="hatsuDetails" visible="false" align="client" margins="{left=5, right=5, top=5, bottom=5}">  
+            <rectangle align="client" color="black" xradius="10" yradius="10" height="180" padding="{top=5, left=5, right=5, bottom=5}">
+            	<edit align="top" height="25" field="nome"/>
+	            <layout align="top" height="25">
+	            	<radioButton align="left" width="60" text="Básico" groupName="HatsuProf" field="HatsuProf" fieldValue="1"/>
+	            	<radioButton align="left" width="100" text="Intermediário" groupName="HatsuProf" field="HatsuProf" fieldValue="2"/>
+	            	<radioButton align="left" width="100" text="Maestria" groupName="HatsuProf" field="HatsuProf" fieldValue="3"/>
+	            </layout>
+	            <layout align="top" height="25">
+	            	<label align="left" width="150" horzTextAlign="center" text="Categoria"/>
+	            	<edit align="client" field="categoria"/>
+	            </layout>
+	            <layout align="top" height="25">
+	            	<label align="left" width="150" horzTextAlign="center" text="Tempo de Ativação"/>
+	            	<edit align="client" field="ativacao"/>
+	            </layout>
+	            <layout align="top" height="25">
+	            	<label align="left" width="150" horzTextAlign="center" text="Alcance"/>
+	            	<edit align="client" field="alcance"/>
+	            </layout>
+	            <layout align="top" height="25">
+	            	<label align="left" width="150" horzTextAlign="center" text="Custo em Aura (%)"/>
+	            	<edit align="client" field="custo"/>
+	            </layout>
+	            <layout align="top" height="25">
+	            	<label align="left" width="150" horzTextAlign="center" text="Duração"/>
+	            	<edit align="client" field="duracao"/>
+	            </layout>
+	            <layout align="top" height="25">
+	            	<label align="left" width="150" horzTextAlign="center" text="Restrições/Condições"/>
+	            	<edit align="client" field="restricoes"/>
+	            </layout>
+	            <layout align="client">
+	            	<textEditor align="left" width="200" field="restricoesDetails"/>
+	            	<textEditor align="client" field="details"/>
+	            </layout>
+            </rectangle>
+    	</dataScopeBox>
+	</layout>
+</scrollBox>

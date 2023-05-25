@@ -1,0 +1,119 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<form dataType="Ambesek.Hunter.Hunter" formType="sheetTemplate" title="@@dnd.edition" description="@@dnd.sheet.description" name="frmDnD5" theme="dark">
+	<import file="styles.xml"/>
+	<import file="templates.xml"/>
+	
+    <script>
+        <![CDATA[
+        local function isNewVersion(installed, downloaded)
+            local installedVersion = {};
+            local installedIndex = 0;
+            for i in string.gmatch(installed, "[^%.]+") do
+                installedIndex = installedIndex +1;
+                installedVersion[installedIndex] = i;
+            end
+
+            local downloadedVersion = {};
+            local downloadedIndex = 0;
+            for i in string.gmatch(downloaded, "[^%.]+") do
+                downloadedIndex = downloadedIndex +1;
+                downloadedVersion[downloadedIndex] = i;
+            end
+
+            for i=1, math.min(installedIndex, downloadedIndex), 1 do 
+                if (tonumber(installedVersion[i]) or 0) > (tonumber(downloadedVersion[i]) or 0) then
+                    return false;
+                elseif (tonumber(installedVersion[i]) or 0) < (tonumber(downloadedVersion[i]) or 0) then
+                    return true;
+                end;
+            end;
+
+            if downloadedIndex > installedIndex then
+                return true;
+            else
+                return false;
+            end;
+        end
+        ]]> 
+    </script>
+	<tabControl align="client" name="pgcPrincipal">
+		<tab title="@@DnD5e.tabControl.tab.front">
+			<import file="frente.xml"/>
+		</tab>
+		
+		<tab title="@@DnD5e.tabControl.tab.feature">
+			<import file="caracteristicas.xml"/>
+		</tab>
+		
+		<tab title="@@DnD5e.tabControl.tab.equipment">
+			<import file="equipamento.xml"/>
+		</tab>
+		
+		<tab title="@@DnD5e.tabControl.tab.nen">
+			<import file="nen.xml"/>
+		</tab>
+		
+		<tab title="@@DnD5e.tabControl.tab.hatsu">
+			<import file="hatsu.xml"/>
+		</tab>
+
+		<tab title="@@DnD5e.tabControl.tab.counter">
+			<import file="contadores.xml"/>
+		</tab>
+
+		<tab title="@@DnD5e.tabControl.tab.annotations">
+			<rectangle class="fundo">
+				<checkBox align="right" width="15" field="outros.anotacoes_melhorado">
+					<event name="onChange">
+						if sheet then
+							self.anotacoesFancy:setVisible(sheet.outros.anotacoes_melhorado);
+							self.anotacoesOld:setVisible(not (sheet.outros.anotacoes_melhorado));
+						end;
+					</event>
+				</checkBox>
+				<richEdit name="anotacoesFancy" align="client" backgroundColor="#333333" defaultFontColor="white" field="outros.anotacoes2" hideSelection="false" defaultFontSize="15" animateImages="true" margins="{left=2, right=2, top=2, bottom=2}" visible="false"/>
+				<textEditor name="anotacoesOld" align="client" field="outros.anotacoes" class="transparente"  margins="{left=2, right=2, top=2, bottom=2}" visible="true"/>
+			</rectangle>
+		</tab>
+
+		<tab title="Créditos">
+			<import file="Credits.lfm"/>
+		</tab>
+	</tabControl>
+    <event name="onNodeReady">
+        Internet.download("https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20Hunter%20x%20Hunter/output/Ficha%20Hunter%20x%20Hunter.rpk?raw=true",
+            function(stream, contentType)
+                local info = Firecast.Plugins.getRPKDetails(stream);
+                sheet.versionDownloaded = "VERSÃO DISPONÍVEL: " .. info.version;
+
+                local installed = Firecast.Plugins.getInstalledPlugins();
+                local myself;
+                for i=1, #installed, 1 do
+                    if installed[i].moduleId == info.moduleId then
+                        myself = installed[i];
+                        sheet.versionInstalled = "VERSÃO INSTALADA: " .. installed[i].version;
+                    end;
+                end;
+
+                if sheet.noUpdate==true then return end;
+                if myself~= nil and isNewVersion(myself.version, info.version) then
+                    Dialogs.choose("Há uma nova versão desse plugin. Deseja instalar?",{"Sim", "Não", "Não perguntar novamente."},
+                        function(selected, selectedIndex, selectedText)
+                            if selected and selectedIndex == 1 then
+                                GUI.openInBrowser('https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20Hunter%20x%20Hunter/output/Ficha%20Hunter%20x%20Hunter.rpk?raw=true');
+                            elseif selected and selectedIndex == 3 then
+                                sheet.noUpdate = true;
+                            end;
+                        end);
+                end;
+            end,       
+            function (errorMsg)
+                --showMessage(errorMsg);
+            end,       
+            function (downloaded, total)
+                -- esta função será chamada constantemente.
+                -- dividir "downloaded" por "total" lhe dará uma porcentagem do download.
+            end,
+            "checkForModification");
+    </event>
+</form>

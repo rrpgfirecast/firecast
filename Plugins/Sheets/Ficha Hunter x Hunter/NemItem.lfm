@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmNenItem" height="30" theme="dark"> 
+	<rectangle align="client" color="black" xradius="10" yradius="10" hitTest="false" margins="{left=5, right=5, top=2.5, bottom=2.5}">
+		<label align="client" field="nome" horzTextAlign="center"/>
+	</rectangle>
+</form>

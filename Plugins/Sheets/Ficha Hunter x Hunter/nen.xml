@@ -1,0 +1,373 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<scrollBox align="client">		
+	<layout align="left" width="150">
+    	<recordList name="rclNenBasic" field="rclNenBasic" templateForm="frmNenItem" align="top" height="90" selectable="true" minQt="3">
+            <event name="onSelect">
+              	local node = self.rclNenBasic.selectedNode
+              	self.rclNenAdvanced.selectedNode = nil
+                self.nemDetails.node = node
+              	self.nemDetails.visible = (node ~= nil)
+            </event>
+            <event name="onEndEnumeration">
+            	if sheet==nil then return end
+		        local nodes = ndb.getChildNodes(sheet.rclNenBasic);
+		        if self.rclNenBasic.selectedNode == nil then
+		            if #nodes > 0 then
+		               self.rclNenBasic.selectedNode = nodes[1];
+		            end;
+		        end;
+
+		        local nomes = {"TEN", "REN", "ZETSU"}
+		        for i=1, #nodes, 1 do
+		        	if nodes[i].nome == nil then
+		        		nodes[i].nome = nomes[i]
+		        	end
+		        end
+			</event>
+    	</recordList>
+    	<recordList name="rclNenAdvanced" field="rclNenAdvanced" templateForm="frmNenItem" align="top" height="210" selectable="true" minQt="7" margins="{top=30}">
+            <event name="onSelect">
+              	local node = self.rclNenAdvanced.selectedNode
+              	self.rclNenBasic.selectedNode = nil
+                self.nemDetails.node = node;
+              	self.nemDetails.visible = (node ~= nil)
+            </event>
+            <event name="onEndEnumeration">
+            	if sheet==nil then return end
+		        local nodes = ndb.getChildNodes(sheet.rclNenAdvanced)
+
+		        local nomes = {"GYO", "EN", "IN", "SHU", "KEN", "KO", "RYU"}
+		        for i=1, #nodes, 1 do
+		        	if nodes[i].nome == nil then
+		        		nodes[i].nome = nomes[i]
+		        	end
+		        end
+			</event>
+    	</recordList> 
+	</layout>
+	<layout align="client">
+		<dataScopeBox name="nemDetails" visible="false" align="client" margins="{left=5, right=5, top=5, bottom=5}">  
+            <rectangle align="client" color="black" xradius="10" yradius="10" height="180" padding="{top=5, left=5, right=5, bottom=5}">
+            	<label align="top" height="25" field="nome" margins="{left=20}" fontStyle="bold"/>
+            	<layout align="top" height="25">
+	            	<layout align="top" height="25" name="basicProf" visible="false">
+	            		<radioButton align="left" width="60" text="Básico" groupName="NenProf" field="NenProf" fieldValue="1"/>
+	            		<radioButton align="left" width="100" text="Intermediário" groupName="NenProf" field="NenProf" fieldValue="2"/>
+	            		<radioButton align="left" width="100" text="Maestria" groupName="NenProf" field="NenProf" fieldValue="3"/>
+	            	</layout>
+	            	<layout align="top" height="25" name="gyoReq" visible="false">
+	            		<checkBox align="left" width="150" text="ZETSU (Intermediário)" field="req1"/>
+	            		<checkBox align="left" width="150" text="REN (Maestria)" field="req2"/>
+	            	</layout>
+	            	<layout align="top" height="25" name="enReq" visible="false">
+	            		<checkBox align="left" width="150" text="REN (Intermediário)" field="req1"/>
+	            		<checkBox align="left" width="150" text="TEN (Básico)" field="req2"/>
+	            	</layout>
+	            	<layout align="top" height="25" name="inReq" visible="false">
+	            		<checkBox align="left" width="150" text="ZETSU (Intermediário)" field="req1"/>
+	            	</layout>
+	            	<layout align="top" height="25" name="shuReq" visible="false">
+	            		<checkBox align="left" width="150" text="TEN (Maestria)" field="req1"/>
+	            	</layout>
+	            	<layout align="top" height="25" name="kenReq" visible="false">
+	            		<checkBox align="left" width="125" text="TEN (Maestria)" field="req1"/>
+	            		<checkBox align="left" width="150" text="REN (Maestria)" field="req2"/>
+	            	</layout>
+	            	<layout align="top" height="25" name="koReq" visible="false">
+	            		<checkBox align="left" width="125" text="REN (Maestria)" field="req1"/>
+	            		<checkBox align="left" width="125" text="ZETSU (Maestria)" field="req2"/>
+	            		<checkBox align="left" width="150" text="TEN (Básico)" field="req3"/>
+	            	</layout>
+	            	<layout align="top" height="25" name="ryuReq" visible="false">
+	            		<checkBox align="left" width="125" text="TEN (Maestria)" field="req1"/>
+	            		<checkBox align="left" width="125" text="REN (Maestria)" field="req2"/>
+	            		<checkBox align="left" width="150" text="ZETSU (Maestria)" field="req3"/>
+	            	</layout>
+	            </layout>
+            	<layout align="top" height="135">
+	            	<layout align="top" height="135" name="basicDetails" visible="false" padding="{top=5, left=5, right=5, bottom=5}">
+            			<layout align="top" height="25">
+            				<label align="left" width="150" text="Gasto de Aura/Custo" horzTextAlign="center" fontStyle="bold"/>
+            				<label align="client" field="cost"/>
+            			</layout>
+            			<layout align="top" height="25">
+            				<label align="left" width="150" text="Tempo de Ativação" horzTextAlign="center" fontStyle="bold"/>
+            				<label align="client" field="activation"/>
+            			</layout>
+            			<layout align="top" height="75">
+            				<label align="left" width="150" text="Efeito" horzTextAlign="center" fontStyle="bold"/>
+            				<label align="client" field="effect"/>
+            			</layout>
+	            	</layout>
+	            	<layout align="top" height="135" name="advancedDetails" visible="false" padding="{top=5, left=5, right=5, bottom=5}">
+	            		<label align="top" width="25" field="koCA" name="koCA" fontStyle="bold"/>
+	            		<label align="client" field="effect"/>
+	            	</layout>
+            	</layout>
+            	<layout align="top" height="160">
+            		<layout align="top" height="160" name="ryuTable" padding="{top=5, left=5, right=5, bottom=5}">
+            			<comboBox align="top" height="25" field="ryuTable" items="{'Progressão 1','Progressão 2','Progressão 3','Progressão 4','Progressão 5','Progressão 6'}">
+            				<event name="onChange">
+            					if sheet==nil then return end
+			            		if self.nemDetails.node==nil then return end
+			            		local node = self.nemDetails.node
+
+			            		local progressao = node.ryuTable
+			            		if progressao == "Progressão 1" then
+			            			node.table0_0 = "4ª"
+			            			node.table0_1 = "3"
+			            			node.table0_2 = "1"
+			            			node.table0_3 = "2"
+			            			node.table1_0 = "5ª"
+			            			node.table1_1 = "4"
+			            			node.table1_2 = "2"
+			            			node.table1_3 = "2"
+			            			node.table2_0 = "6ª"
+			            			node.table2_1 = "5"
+			            			node.table2_2 = "0"
+			            			node.table2_3 = "5"
+			            		elseif progressao == "Progressão 2" then
+			            			node.table0_0 = "5ª"
+			            			node.table0_1 = "4"
+			            			node.table0_2 = "2"
+			            			node.table0_3 = "2"
+			            			node.table1_0 = "6ª"
+			            			node.table1_1 = "5"
+			            			node.table1_2 = "0"
+			            			node.table1_3 = "5"
+			            			node.table2_0 = "4ª"
+			            			node.table2_1 = "3"
+			            			node.table2_2 = "1"
+			            			node.table2_3 = "2"
+			            		elseif progressao == "Progressão 3" then
+			            			node.table0_0 = "6ª"
+			            			node.table0_1 = "5"
+			            			node.table0_2 = "0"
+			            			node.table0_3 = "5"
+			            			node.table1_0 = "5ª"
+			            			node.table1_1 = "4"
+			            			node.table1_2 = "2"
+			            			node.table1_3 = "2"
+			            			node.table2_0 = "4ª"
+			            			node.table2_1 = "3"
+			            			node.table2_2 = "1"
+			            			node.table2_3 = "2"
+			            		elseif progressao == "Progressão 4" then
+			            			node.table0_0 = "4ª"
+			            			node.table0_1 = "3"
+			            			node.table0_2 = "1"
+			            			node.table0_3 = "2"
+			            			node.table1_0 = "6ª"
+			            			node.table1_1 = "5"
+			            			node.table1_2 = "0"
+			            			node.table1_3 = "5"
+			            			node.table2_0 = "5ª"
+			            			node.table2_1 = "4"
+			            			node.table2_2 = "2"
+			            			node.table2_3 = "2"
+			            		elseif progressao == "Progressão 5" then
+			            			node.table0_0 = "5ª"
+			            			node.table0_1 = "4"
+			            			node.table0_2 = "2"
+			            			node.table0_3 = "2"
+			            			node.table1_0 = "4ª"
+			            			node.table1_1 = "3"
+			            			node.table1_2 = "1"
+			            			node.table1_3 = "2"
+			            			node.table2_0 = "6ª"
+			            			node.table2_1 = "5"
+			            			node.table2_2 = "0"
+			            			node.table2_3 = "5"
+			            		elseif progressao == "Progressão 6" then
+			            			node.table0_0 = "6ª"
+			            			node.table0_1 = "5"
+			            			node.table0_2 = "0"
+			            			node.table0_3 = "5"
+			            			node.table1_0 = "4ª"
+			            			node.table1_1 = "3"
+			            			node.table1_2 = "1"
+			            			node.table1_3 = "2"
+			            			node.table2_0 = "5ª"
+			            			node.table2_1 = "4"
+			            			node.table2_2 = "2"
+			            			node.table2_3 = "2"
+			            		else
+			            			node.table0_0 = ""
+			            			node.table0_1 = ""
+			            			node.table0_2 = ""
+			            			node.table0_3 = ""
+			            			node.table1_0 = ""
+			            			node.table1_1 = ""
+			            			node.table1_2 = ""
+			            			node.table1_3 = ""
+			            			node.table2_0 = ""
+			            			node.table2_1 = ""
+			            			node.table2_2 = ""
+			            			node.table2_3 = ""
+			            		end
+            				</event>
+            			</comboBox>
+            			<layout align="top" height="25">
+            				<label align="left" width="100" text="Rodadas" horzTextAlign="center"/>
+            				<label align="left" width="100" text="Bônus CA" horzTextAlign="center"/>
+            				<label align="left" width="100" text="Reações" horzTextAlign="center"/>
+            				<label align="left" width="100" text="Bônus Ataque" horzTextAlign="center"/>
+            			</layout>
+            			<layout align="top" height="25">
+            				<label align="left" width="100" text="3 Iniciais" horzTextAlign="center"/>
+            				<label align="left" width="100" text="3" horzTextAlign="center"/>
+            				<label align="left" width="100" text="3" horzTextAlign="center"/>
+            				<label align="left" width="100" text="3" horzTextAlign="center"/>
+            			</layout>
+            			<layout align="top" height="25">
+            				<label align="left" width="100" field="table0_0" horzTextAlign="center"/>
+            				<label align="left" width="100" field="table0_1" horzTextAlign="center"/>
+            				<label align="left" width="100" field="table0_2" horzTextAlign="center"/>
+            				<label align="left" width="100" field="table0_3" horzTextAlign="center"/>
+            			</layout>
+            			<layout align="top" height="25">
+            				<label align="left" width="100" field="table1_0" horzTextAlign="center"/>
+            				<label align="left" width="100" field="table1_1" horzTextAlign="center"/>
+            				<label align="left" width="100" field="table1_2" horzTextAlign="center"/>
+            				<label align="left" width="100" field="table1_3" horzTextAlign="center"/>
+            			</layout>
+            			<layout align="top" height="25">
+            				<label align="left" width="100" field="table2_0" horzTextAlign="center"/>
+            				<label align="left" width="100" field="table2_1" horzTextAlign="center"/>
+            				<label align="left" width="100" field="table2_2" horzTextAlign="center"/>
+            				<label align="left" width="100" field="table2_3" horzTextAlign="center"/>
+            			</layout>
+            		</layout>
+            	</layout>
+            </rectangle>
+
+            <dataLink fields="{'nome','NenProf'}">
+            	<event name="onChange">
+            		if sheet==nil then return end
+            		if self.nemDetails.node==nil then return end
+            		local node = self.nemDetails.node
+
+            		local nome = node.nome
+            		local prof = tonumber(node.NenProf) or 0
+
+            		local isBasic = nome=="TEN" or nome=="REN" or nome=="ZETSU" 
+
+            		self.basicProf.visible = isBasic
+            		self.basicDetails.visible = isBasic
+
+            		if nome~=nil and isBasic and prof>0 then
+            			sheet[nome] = prof
+            			if nome=="TEN" then
+            				node.cost = "20%"
+            				node.activation = "1 Reação"
+            				local aux = {"+1","+2","+5"}
+            				node.effect = aux[prof] .. " CA"
+            			elseif nome=="REN" then
+            				local aux = {"5","10","5"}
+            				node.cost = aux[prof] .. "%"
+
+            				aux = {"","/Reação/Ação","/Reação/Ação"}
+            				node.activation = "1 Ação Menor" .. aux[prof]
+
+            				aux = {"Interação com materiais que possuem NEN e Proteção contra REN.", "+3 em Intimidação ou Arcanismo/Religião Utilizando REN.", "1x/dia adc +6 em Intimidação ou Arcanismo/Religião Utilizando REN sem gastar aura."}
+            				if prof >= 1 then
+            					node.effect = aux[1]
+            				end
+            				if prof >= 2 then
+            					node.effect = node.effect .. "\n" .. aux[2]
+            				end
+            				if prof >= 3 then
+            					node.effect = node.effect .. "\n" .. aux[3]
+            				end
+            			elseif nome=="ZETSU" then
+            				node.cost = ""
+
+            				local aux = {"2 Turnos em Zetsu","2 Turnos em Zetsu","1 Turno em Zetsu"}
+            				node.activation = aux[prof]
+
+            				aux = {"+5% Aura +1 Reação +3 Furtividade\n(Dano crítico ao sofrer dano de NEN)","+10% Aura +1 Reação +3 Furtividade\n(Dano crítico ao sofrer dano de NEN)","+10% Aura +2 Reação +6 Furtividade\n(Dano crítico ao sofrer dano de NEN)\nCriaturas não inteligentes ignoram sua presença"}
+            				node.effect = aux[prof]
+            			end
+            		end
+
+            		self.gyoReq.visible = nome=="GYO"
+            		self.enReq.visible = nome=="EN"
+            		self.inReq.visible = nome=="IN"
+            		self.shuReq.visible = nome=="SHU"
+            		self.kenReq.visible = nome=="KEN"
+            		self.koReq.visible = nome=="KO"
+            		self.koCA.visible = nome=="KO"
+            		self.ryuReq.visible = nome=="RYU"
+            		self.ryuTable.visible = nome=="RYU"
+            		self.advancedDetails.visible = not isBasic
+
+            		if nome~=nil and not isBasic then
+            			if nome=="GYO" then
+            				node.req1 = (tonumber(sheet.ZETSU) or 0) >= 2
+            				node.req2 = (tonumber(sheet.REN) or 0) >= 3
+
+            				node.effect = "Gasta-se 30% de aura e pode descobrir qualquer coisa ao alcance de visão com\nIN ou Zetsu, somando 5 nos testes de Investigação / Percepção / Intuição)\n\nUtilizada em outras partes do corpo (Tem efeito parecido com SHU, porém\naumentando em atributo.) Gasta-se 30% de aura e aplica-se +3 temporário ao\nmodificadores de FOR, DES ou CON até o início de seu próximo turno."
+
+            			elseif nome=="EN" then
+            				node.req1 = (tonumber(sheet.REN) or 0) >= 2
+            				node.req2 = (tonumber(sheet.TEN) or 0) >= 1
+
+            				node.effect = "Gasta-se 10% de aura e 2 reações para 3m (diâmetro) de EN. Caso alguém\nentre no espaço, é possível realizar um ataque direto como reação sem gastar sua\nação principal. Se múltiplos inimigos estiverem na área, é possível atacar todos\numa vez ao custo de um nível de exaustão.\nGasta-se +10% de aura e +2 reações para aumentar a cada 3m. Exemplo: 30% de\naura e 6 Reações para um En de 9m (diâmetro)."
+
+            			elseif nome=="IN" then
+            				node.req1 = (tonumber(sheet.ZETSU) or 0) >= 2
+
+            				node.effect = "Gasta-se 10% de aura para ocultar um item/material em sua posse até seu\npróximo turno. Usuários de Emissão utilizam IN à distância com vantagem\n(Caso alguém tente descobrir). Todos os outros com Desvantagem se\ntentarem ocultar algo à distância. (Caso alguém tente descobrir).\n\nTendo Maestria em Zetsu o custo passa para 5% Aura por turno."
+
+            			elseif nome=="SHU" then
+            				node.req1 = (tonumber(sheet.TEN) or 0) >= 3
+
+            				node.effect = "Gasta-se 10% de aura na Ação de ataque ou na Reação preparada e aplica-se\n+1 dano/CA ao item e o protege de efeitos físicos como queimar, molhar e etc.\n\nÉ possível gastar mais aura para aumentar a CA do item ou Dano proporcionalmente.\nUm Item envolto em Shu apenas pode ser destruído por uma\naura mais fortalecida em Shu."
+
+            			elseif nome=="KEN" then
+            				node.req1 = (tonumber(sheet.TEN) or 0) >= 3
+            				node.req2 = (tonumber(sheet.REN) or 0) >= 3
+
+            				node.effect = "Declarado em uma ação menor ou reação, dobra a \nCA por dois turnos ao custo de 5 reações e 30% de aura."
+
+            			elseif nome=="KO" then
+            				node.req1 = (tonumber(sheet.REN) or 0) >= 3
+            				node.req2 = (tonumber(sheet.ZETSU) or 0) >= 3
+            				node.req3 = (tonumber(sheet.TEN) or 0) >= 1
+
+            				node.effect = "Gasta-se 30% de aura e triplica o dano, porém\nreduz a CA em 80% até o início do próximo turno.\n\nNesse caso específico a CA pode ficar abaixo de 10."
+            				node.koCA = "CA: " .. math.ceil((tonumber(sheet.CA) or 0)/5)
+
+            			elseif nome=="RYU" then
+            				node.req1 = (tonumber(sheet.TEN) or 0) >= 3
+            				node.req2 = (tonumber(sheet.REN) or 0) >= 3
+            				node.req3 = (tonumber(sheet.ZETSU) or 0) >= 3
+
+            				node.effect = "Gasta-se 30% de aura e recebe 3 Reações Grátis. \nAs reações com RYU podem ser usadas para ataques extras.\n\nO dano e o dado de dano ainda tem o grau aumentado. \nEscolha uma tabela para aplicar seu RYU confundindo o oponente"
+
+            			end
+            		end
+            	</event>
+            </dataLink>
+    	</dataScopeBox>
+	</layout>
+	<layout align="right" width="150">
+		<comboBox align="top" height="25" field="exaustao" items="{'-','Exaustão 1','Exaustão 2','Exaustão 3'}">
+        	<event name="onChange">
+        		if sheet==nil then return end
+		   		local exaustao = sheet.exaustao
+
+		   		if exaustao == "Exaustão 1" then
+		   			sheet.exaustaoDetails = "Desvantagem em Testes de Habilidades e Resistencia.\n\n(Removida com um descanso curto)."
+		   		elseif exaustao == "Exaustão 2" then
+		   			sheet.exaustaoDetails = "Desvantagem em Testes de Habilidades e Resistencia.\nDesvantagem em Jogadas de Ataque (vantagem contra você também)\ne Movimento reduzido à metade. \n\n(Removida com um descanso longo.\nDescanso curto reduz ao 1º nível de exaustão)"
+		   		elseif exaustao == "Exaustão 3" then
+		   			sheet.exaustaoDetails = "Desvantagem em Testes de Habilidades e Resistencia.\nDesvantagem em Jogadas de Ataque (vantagem contra você também).\nMáximo de HP reduzido à metade pelo dia,\nmovimento se torna 0\n\n(Removida com 1 descanso longo e Zetsu por 2 dias\nou não usar habilidades de NEN por 1 semana)"
+		   		else
+		   			sheet.exaustaoDetails = ""
+		   		end
+        	</event>
+        </comboBox>
+        <label align="client" field="exaustaoDetails" horzTextAlign="center" vertTextAlign="leading"/>
+	</layout>
+</scrollBox>

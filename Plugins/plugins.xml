@@ -1,5 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <root>
+    <element id="Ambesek.Hunter.Hunter" name="Ficha HxH" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20Hunter%20x%20Hunter/output/Ficha%20Hunter%20x%20Hunter.rpk?raw=true" fileName="Ficha Hunter x Hunter.rpk" repositoryPath="Sheets/Ficha Hunter x Hunter/" author="Ambesek" description="Ficha para jogos de Hunter x Hunter usando D&amp;D 5ª edição" version="0.2" compilationDate="25052023001833" compilationDigest="edfd3027632259024bf3bc3920f7614317b99c8b">
+        <info lang="en" name="Ficha HxH" description="Sheet for Hunter x Hunter using D&amp;D 5e."/>
+        <info lang="pt-BR" name="Ficha HxH" description="Ficha para jogos de Hunter x Hunter usando D&amp;D 5ª edição" author="Ambesek"/>
+        <dataTypes>
+            <dataType id="Ambesek.Hunter.Hunter" title="HxH D&amp;amp;D 5e" formType="sheetTemplate">
+                <info lang="en" title="HxH D&amp;amp;D 5e" description="Sheet for Hunter x Hunter using D&amp;amp;amp;D 5e."/>
+                <info lang="pt" title="HxH D&amp;amp;D 5e" description="Ficha para jogos de Hunter x Hunter usando D&amp;amp;amp;D 5ª edição"/>
+            </dataType>
+        </dataTypes>
+    </element>
     <element id="Ambesek.FireBox" name="FireBox" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/TablesDock/FireBox/output/FireBox.rpk?raw=true" fileName="FireBox.rpk" repositoryPath="TablesDock/FireBox/" author="Ambesek" description="Sincroniza conteudo de uma pasta com o FireDrive." version="0.1" compilationDate="20052023051049" compilationDigest="a73e46a04ff7d132c8105f10a8ba90d21350041b">
         <info lang="pt-BR" name="FireBox" description="Sincroniza conteudo de uma pasta com o FireDrive." author="Ambesek"/>
         <dataTypes>

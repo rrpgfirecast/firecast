@@ -1,0 +1,291 @@
+﻿[pt]
+DnD5e.tab.equipament.attack.title=ATAQUE
+DnD5e.tab.equipament.defend.title=DEFESA
+DnD5e.tab.equipament.equip.title=EQUIPAMENTOS E ATAQUES
+
+DnD5e.tab.equipament.btn.delete=Apagar
+DnD5e.tab.equipament.btn.roll=Rolar
+DnD5e.tab.equipament.btn.newItem=Novo Item
+DnD5e.tab.equipament.btn.property=Adicionar Propriedade
+DnD5e.tab.equipament.btn.pen=DESV.
+
+DnD5e.tab.equipament.atack.lab.name=NOME
+DnD5e.tab.equipament.atack.lab.weight=PESO
+DnD5e.tab.equipament.atack.lab.attack=ATAQUE
+DnD5e.tab.equipament.atack.lab.damage=DANO
+DnD5e.tab.equipament.atack.lab.type=TIPO
+DnD5e.tab.equipament.atack.lab.property=PROPRIEDADES
+DnD5e.tab.equipament.atack.lab.range=ALCANCE
+DnD5e.tab.equipament.atack.lab.ammunition=MUNIÇÃO
+DnD5e.tab.equipament.atack.lab.ammunitionAmount=QTD
+
+DnD5e.tab.equipament.selProp=Selecione a propriedade:
+DnD5e.tab.equipament.textCaption=Propriedade
+DnD5e.tab.equipament.textPrompt=Informe o nome da propriedade
+DnD5e.tab.equipament.hintCaption=Efeito
+DnD5e.tab.equipament.hintPrompt=Informe o efeito da propriedade
+
+DnD5e.tab.equipament.defend.lab.name=NOME
+DnD5e.tab.equipament.defend.lab.weight=PESO
+DnD5e.tab.equipament.defend.lab.type=TIPO
+DnD5e.tab.equipament.defend.lab.ca=CLASSE DE ARMADURA
+DnD5e.tab.equipament.defend.lab.property=PROPRIEDADES
+
+DnD5e.tab.equipament.lab.extraEquip=OUTROS EQUIPAMENTOS
+
+DnD5e.tab.equipament.lab.PC=PC
+DnD5e.tab.equipament.lab.PP=PP
+DnD5e.tab.equipament.lab.PE=PE
+DnD5e.tab.equipament.lab.PO=PO
+DnD5e.tab.equipament.lab.PL=PL
+
+DnD5e.features.nameCharacter=NOME DO PERSONAGEM
+DnD5e.features.age=IDADE
+DnD5e.features.height=ALTURA
+DnD5e.features.weight=PESO
+DnD5e.features.eyes=OLHOS
+DnD5e.features.skin=PELE
+DnD5e.features.hair=CABELO
+DnD5e.features.appearance=APARÊNCIA
+DnD5e.features.personalityTraits=TRAÇOS DE PERSONALIDADE
+DnD5e.features.ideals=SONHOS/OBJETIVO
+DnD5e.features.bonds=O QUE ODEIO
+DnD5e.features.weaknesses=O QUE GOSTO
+DnD5e.features.featurestraits=TRAÇOS
+DnD5e.features.featuresclass=CARACTERÍSTICAS DE CLASSE
+DnD5e.features.featuresrace=CARACTERÍSTICAS DE RAÇA
+DnD5e.features.featuresfeats=TALENTOS
+DnD5e.features.languages=IDIOMAS
+DnD5e.features.faction=FACÇÃO
+DnD5e.features.factionSymbol=SÍMBOLO DA FACÇÃO
+DnD5e.features.alliesOrganizations=ALIADOS E ORGANIZAÇÕES
+DnD5e.features.characterStory=HISTÓRIA DOS PERSONAGENS
+
+DnD5e.tabControl.tab.front=Frente
+DnD5e.tabControl.tab.feature=Características Gerais
+DnD5e.tabControl.tab.equipment=Equipamento
+DnD5e.tabControl.tab.spells=Magias
+DnD5e.tabControl.tab.counter=Contadores
+DnD5e.tabControl.tab.annotations=Anotações
+DnD5e.tabControl.tab.other=Outros
+DnD5e.tabControl.tab.nen=Meu Domínio de NEN
+DnD5e.tabControl.tab.hatsu=Meus Hatsus
+
+DnD5e.frente.lab.characterName=NOME DO PERSONAGEM
+DnD5e.frente.lab.classaLevel=CATEGORIA DE NEN E NIVEL
+DnD5e.frente.lab.background=ANTECEDENTES
+DnD5e.frente.lab.player=JOGADOR
+DnD5e.frente.lab.race=RAÇA
+DnD5e.frente.lab.trend=TENDÊNCIA
+DnD5e.frente.lab.xp=PTS. DE EXPERIÊNCIA
+DnD5e.frente.lab.inspiration=INSPIRAÇÃO
+DnD5e.frente.lab.proficiencyBonus=BÔNUS DE PROFICIÊNCIA
+DnD5e.frente.lab.saveBonus=BÔNUS DE RESISTÊNCIA
+DnD5e.frente.lab.abilityBonus=BÔNUS DE HABILIDADES
+DnD5e.frente.lab.passivawisdom=REAÇÕES (7+SAB)
+
+DnD5e.frente.box.strength=FORÇA
+DnD5e.frente.box.dexterity=DESTREZA
+DnD5e.frente.box.constitution=CONSTITUIÇÃO
+DnD5e.frente.box.intelligence=INTELIGÊNCIA
+DnD5e.frente.box.wisdom=SABEDORIA
+DnD5e.frente.box.charisma=CARISMA
+
+DnD5e.frente.lab.CA=CLASSE DE ARMADURA
+DnD5e.frente.lab.initiative=INICIATIVA
+DnD5e.frente.lab.displacement=DESLOCAMENTO
+DnD5e.frente.lab.PVMax=PONTOS DE VIDA MÁXIMO
+DnD5e.frente.lab.PVCurrent=PONTOS DE VIDA ATUAL
+DnD5e.frente.lab.PVTemp=PONTOS DE VIDA TEMPORÁRIO
+
+
+DnD5e.frente.lab.total=TOTAL
+DnD5e.frente.lab.PVDice=DADOS DE VIDA
+DnD5e.frente.lab.sucess=SUCESSO
+DnD5e.frente.lab.flaws=FALHA
+DnD5e.frente.lab.deathteste=TESTE CONTRA MORTE
+
+DnD5e.skills.athletics=Atletismo
+DnD5e.skills.acrobatics=Acrobacia
+DnD5e.skills.stealth=Furtividade
+DnD5e.skills.sleighthand=Prestidigitaçào
+DnD5e.skills.arcana=Arcanismo
+DnD5e.skills.history=História
+DnD5e.skills.investigation=Investigação
+DnD5e.skills.nature=Natureza
+DnD5e.skills.religion=Religião
+DnD5e.skills.animalhandling=Adestrar Animais
+DnD5e.skills.insight=Intuição
+DnD5e.skills.medicine=Medicina
+DnD5e.skills.perception=Percepção
+DnD5e.skills.survival=Sobrevivência
+DnD5e.skills.performance=Atuação
+DnD5e.skills.deception=Enganação
+DnD5e.skills.intimidation=Intimidação
+DnD5e.skills.persuasion=Persuasão
+DnD5e.savingThrows.title=Teste de Resistencia
+
+DnD5e.spells.spellcasterClass=CLASSE CONJURADORA
+DnD5e.spells.spellcasterAbility= HABILIDADE DE CONJURAÇÃO
+DnD5e.spells.spellSaveDC= CD DA MAGIA
+DnD5e.spells.spellAttackBonus=BÔNUS DE ATAQUE DE MAGIA
+DnD5e.spells.SP/Ki=SP/Ki
+DnD5e.spells.cantrip=PRECES E TRUQUES
+DnD5e.spells.btn.newspell=Nova Magia
+DnD5e.spells.int=INTELIGÊNCIA
+DnD5e.spells.wis=SABEDORIA
+DnD5e.spells.char=CARISMA
+DnD5e.spells.formulationTime=TEMPO DE FORMULAÇÃO
+DnD5e.spells.range=ALCANCE
+DnD5e.spells.component=COMPONENTES	
+DnD5e.spells.duration=DURAÇÃO
+DnD5e.spells.btn.delete=Apagar
+DnD5e.spells.attack.none=Nenhum
+DnD5e.spells.attack.melee=Corpo-a-Corpo
+DnD5e.spells.attack.ranger=Distância
+DnD5e.spells.resistance.none=Nenhum
+DnD5e.spells.resistance.str=Força
+DnD5e.spells.resistance.dex=Destreza
+DnD5e.spells.resistance.con=Constituição
+DnD5e.spells.resistance.int=Inteligência
+DnD5e.spells.resistance.wis=Sabedoria
+DnD5e.spells.resistance.cha=Carisma
+
+Dnd5e.other.export=Exportar XML
+Dnd5e.other.exported=Ficha Exportada!
+Dnd5e.other.save=Salvar Ficha como XML
+Dnd5e.other.import=Importar XML
+Dnd5e.other.shortRest=Descanso Curto
+Dnd5e.other.longRest=Descanso Longo
+
+DnD5e.generic.deleteConfirmation=Deseja realmente apagar este item?
+DnD5e.generic.cantRoll=Você não pode rolar dados por este personagem
+DnD5e.generic.attack=Ataque
+DnD5e.generic.damage=Dano
+
+DnD5e.tab.equipment.property.finesse=Acuidade
+DnD5e.tab.equipment.property.reach=Alcance
+DnD5e.tab.equipment.property.throw=Arremesso
+DnD5e.tab.equipment.property.ranged=Distância
+DnD5e.tab.equipment.property.th=Duas Mãos
+DnD5e.tab.equipment.property.specScimitar=Especial (Cimitarra Dupla)
+DnD5e.tab.equipment.property.specLance=Especial (Lança de Montaria)
+DnD5e.tab.equipment.property.specNet=Especial (Rede)
+DnD5e.tab.equipment.property.light=Leve
+DnD5e.tab.equipment.property.ammo=Munição
+DnD5e.tab.equipment.property.heavy=Pesada
+DnD5e.tab.equipment.property.reload=Recarga
+DnD5e.tab.equipment.property.versatile=Versátil
+DnD5e.tab.equipment.property.magic=Mágica
+DnD5e.tab.equipment.property.silver=Prateada
+DnD5e.tab.equipment.property.misfire1=Misfire 1
+DnD5e.tab.equipment.property.misfire2=Misfire 2
+DnD5e.tab.equipment.property.misfire3=Misfire 3
+DnD5e.tab.equipment.property.misfire4=Misfire 4
+DnD5e.tab.equipment.property.misfire5=Misfire 5
+
+DnD5e.tab.equipment.property.finesseDetails=Quando realizar um ataque com uma arma com a propriedade acuidade, você pode escolher usar seu modificador de Força ou de Destreza para realizar a jogada de ataque e de dano. Você precisa usar o mesmo modificador para ambas as jogadas, ataque e dano.
+DnD5e.tab.equipment.property.reachDetails=Essa arma adiciona 1,5 metro ao seu alcance quando você a usa para atacar. Essa propriedade também determina seu alcance ao realizar ataques de oportunidade com uma arma de alcance.
+DnD5e.tab.equipment.property.throwDetails=Você pode arremessar a arma para realizar um ataque à distância. Se essa arma for uma arma de ataque corpo-a-corpo, você usa o mesmo modificador de habilidade para as jogadas de ataque e dano que usaria para realizar um ataque corpo-a-corpo com a arma.
+DnD5e.tab.equipment.property.rangedDetails=Uma arma que pode ser usada para realizar ataques à distância possui a distância mostrada entre parênteses após a propriedade munição ou arremesso. A distância lista dois números. O primeiro é a distância normal da arma, o segundo indica a distância máxima da arma, ambos em metros. Quando atacar um alvo que está além da distância normal da arma, você possui desvantagem na jogada de ataque. Você não pode atacar um alvo que esteja além da distância máxima da arma.
+DnD5e.tab.equipment.property.thDetails=Essa arma requer as duas mãos para ser usada. Essa propriedade só é relevante quando você ataca com a arma, não enquanto apenas a segura.
+DnD5e.tab.equipment.property.specScimitarDetails=Se você atacar com uma cimitarra dupla como parte da ação de ataque no seu turno, poderá usar uma ação bônus imediatamente depois para fazer um ataque corpo a corpo com ela. Esse ataque causa 1d4 de dano cortante ao acertar, em vez de 2d4.
+DnD5e.tab.equipment.property.specLanceDetails=Você tem desvantagem quando usar a lança longa para atacar um alvo a até 1,5 metro de você. Além disso, uma lança longa requer as duas mãos para ser empunhada quando você não está em uma montaria.
+DnD5e.tab.equipment.property.specNetDetails=Uma criatura Grande ou menor atingida por uma rede fica impedida até se libertar. Uma rede não afeta criaturas que não possuam uma forma definida, ou criaturas Enormes ou maiores. A criatura pode usar sua ação para realizar um teste de Força CD 10 para se libertar, ou outra criatura dentro do alcance que obtiver sucesso no teste pode fazer isso por ela. Causar 5 de dano cortante à rede (CA 10) também liberta a criatura sem feri-la, encerrando o efeito e destruindo a rede. Quando você usa uma ação, ação bônus, ou reação para atacar com a rede, você pode realizar apenas um ataque, independentemente do número de ataques que você possa realizar normalmente.
+DnD5e.tab.equipment.property.lightDetails=Uma arma leve é pequena e de fácil manuseio, tornando-a ideal para usar quando você está combatendo com duas armas.
+DnD5e.tab.equipment.property.ammoDetails=Você pode usar uma arma que tenha a propriedade munição para realizar um ataque à distância, apenas se possuir munição para disparar a arma. Cada vez que você atacar com a arma, você gasta uma peça de munição. Sacar a munição de uma aljava, bolsa, ou outro recipiente faz parte do ataque. No fim da batalha, você pode recuperar metade de sua munição gasta, se tiver um minuto para procurar pelo campo de batalha. Recarregar uma arma de uma mão requer uma mão livre. 
+DnD5e.tab.equipment.property.heavyDetails=Criaturas pequenas têm desvantagem nas jogadas de ataque com estas armas. O tamanho e o peso de uma arma pesada tornam-na muito grande para ser empunhada eficientemente por criaturas Pequenas.
+DnD5e.tab.equipment.property.reloadDetails=Devido o tempo necessário para recarregar essa arma, você pode disparar apenas uma peça de munição da arma quando usa uma ação, ação bônus, ou reação para disparar, não importando quantos ataques você possua.
+DnD5e.tab.equipment.property.versatileDetails=Essa arma pode ser usada com uma ou duas mãos. Um valor de dano aparece entre parênteses com a propriedade – é o dano da arma quando usada com as duas mãos para efetuar ataques corpo-a-corpo.
+DnD5e.tab.equipment.property.magicDetails=A arma é mágica.
+DnD5e.tab.equipment.property.silverDetails=A arma é banhada em prata.
+DnD5e.tab.equipment.property.misfire1Details=Misfire 1.
+DnD5e.tab.equipment.property.misfire2Details=Misfire 2.
+DnD5e.tab.equipment.property.misfire3Details=Misfire 3.
+DnD5e.tab.equipment.property.misfire4Details=Misfire 4.
+DnD5e.tab.equipment.property.misfire5Details=Misfire 5.
+
+Dnd5e.messages.deniedRoll=Você não pode rolar dados por essa personagem.
+Dnd5e.messages.spellSlot=Qual o nível do espaço de magia?
+Dnd5e.messages.spellCast=Deseja gastar esse espaço de magia?
+Dnd5e.messages.noSpellSlot=Você não tem espaços de magia desse nível disponiveis.
+Dnd5e.messages.advantage= - Vantagem
+Dnd5e.messages.disadvantage= - Desvantagem
+Dnd5e.messages.cast=conjurou
+Dnd5e.messages._oneSpell= uma magia
+Dnd5e.messages.oneSpellSlot= com um espaço de magia de nível 
+Dnd5e.messages.saveType=( Teste de resistência de 
+Dnd5e.messages.critical=[§K4]( Acerto Crítico )
+Dnd5e.messages.hit=( Acerto = 
+Dnd5e.messages.hit2=Acerto
+Dnd5e.messages.spend=Deseja gastar 
+Dnd5e.messages.noResources=Você não tem usos suficientes desse recurso.
+Dnd5e.messages.cast_=conjurou 
+Dnd5e.messages.oneSpell=uma magia
+Dnd5e.messages._level_= (Nível 
+Dnd5e.messages.saveKind=Teste de resistência de 
+Dnd5e.messages.damage=Dano: 
+Dnd5e.messages.damage2=Dano
+Dnd5e.messages.damage3=Dano (
+Dnd5e.messages.invalidSKill=Perícia inválida '
+Dnd5e.messages.result=( Resultado = 
+Dnd5e.messages.because= devido a '
+Dnd5e.messages.noCharges=Você não tem cargas suficientes de '
+Dnd5e.messages.toUse=' para usar '
+Dnd5e.messages.autoHit= - Acerto automático
+Dnd5e.messages.elvenPrecision= - Precisão Élfica
+Dnd5e.messages.bigWeapons= - Rerolando dados de dano abaixo de 
+Dnd5e.messages.fail=rolou uma falha crítica.
+Dnd5e.messages.init=Iniciativa
+Dnd5e.messages.attacked=atacou
+Dnd5e.messages.save=Resistência - 
+Dnd5e.messages.deathSave=Teste contra morte
+Dnd5e.messages.awake=Acordou.
+Dnd5e.messages.stable=Estabilizou
+Dnd5e.messages.uncounscious=Hora(s) inconsciente
+Dnd5e.messages.died=Morreu com 3 falhas em teste de resistência contra morte.
+Dnd5e.messages.delete=Deseja realmente apagar este item?
+Dnd5e.messages.of= de 
+Dnd5e.messages.melee=Ataque Corpo-a-Corpo
+Dnd5e.messages.ranged=Ataque a Distância
+DnD5e.message.textPromptDamage=Informe a quantidade de dano
+
+DnD5e.tab.counter.add=Adicionar
+DnD5e.tab.counter.import=Importar de Macro
+DnD5e.tab.counter.description=Descrição
+DnD5e.tab.counter.roll=Rolagem
+DnD5e.tab.counter.shortRest=Descanso Curto
+DnD5e.tab.counter.longRest=Descanso Longo
+DnD5e.tab.counter.nothing=Não Muda
+DnD5e.tab.counter.complete=Completa
+DnD5e.tab.counter.halfUp=Recupera Metade (⌃)
+DnD5e.tab.counter.halfDown=Recupera Metade (⌄)
+DnD5e.tab.counter.changeBy=Muda em
+DnD5e.tab.counter.changeTo=Muda para
+
+Dnd5e.messages.adv=Vantagem
+Dnd5e.messages.dis=Desvantagem
+Dnd5e.messages.adv2=Vantagem (x2)
+Dnd5e.messages.dis2=Desvantagem (x2)
+Dnd5e.messages.normal=Normal
+Dnd5e.messages.kind=Tipo de Rolagem
+
+Dnd5e.equipment.carry=Carga
+DnD5e.equipment.capacity=Capacidade
+DnD5e.equipment.lift=Erguer
+DnD5e.equipment.size=Tamanho
+DnD5e.equipment.tiny=Miúdo
+DnD5e.equipment.small=Pequeno
+DnD5e.equipment.medium=Médio
+DnD5e.equipment.large=Grande
+DnD5e.equipment.huge=Enorme
+DnD5e.equipment.gargantuan=Imenso
+Dnd5e.equipment.backpack=Mochila
+
+Dnd5e.messages.atrCaption=Selecione a Opção
+Dnd5e.messages.atrCaptionOpt1=Atributo Alternativo
+Dnd5e.messages.atrCaptionOpt2=Rolagem Mínima
+
+Dnd5e.equipment.reroll=Rerolagem de Dano
+Dnd5e.equipment.criticalChance=Margem de Crítico
+Dnd5e.equipment.criticalDamage=Dado Adicional de Crítico

@@ -1,0 +1,603 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<group>
+	<!-- TEMPLATES -->
+	<template name="panAtribsEx">
+		<layout left="$(left)" top="$(top)" width="200" height="300">
+			<!--  
+				itens = totable(body);
+				
+				for k, v in pairs(itens) do
+					titulo = v;
+					fieldName = "atributos." .. removerAcentos(titulo);
+			-->			
+			
+			<layout class="painelatrib">			
+				<label text="$(titulo)"/>
+				<edit field="$(fieldName)"/>			
+			</layout>	
+			
+			<!-- end;-->
+		</layout>
+	</template>	
+		
+	<template name="upperGridCampo">
+		<!-- baseName = uniqueName("UpperGridCampo"); -->	
+	
+		<flowPart height="$(height or 50)" minScaledWidth="$(minScaledWidth or minWidth or 100)" 
+				  minWidth="$(minWidth or 100)" maxWidth="$(maxWidth or 233)" 
+				  maxScaledWidth="$(maxScaledWidth or maxWidth or 233)" avoidScale="true"
+				  name="$(baseName)">
+				  
+				<edit name="edt$(baseName)" align="top" class="infoNoTopo" field="$(field)" fontSize="13"/>
+				<horzLine name="lin$(baseName)" align="top" strokeColor="#FFFFFF50" strokeSize="1"/>
+				<label name="lab$(baseName)" align="top" class="tituloCampo" text="$(titulo)" vertTextAlign="leading" wordWrap="true" textTrimming="none"/>															
+				
+				<script>    self.$(baseName):setHeight(self.edt$(baseName):getHeight() + self.lab$(baseName):getHeight() + self.lin$(baseName):getHeight());</script>								
+			</flowPart>					
+	</template>	
+	
+	<template name="upperGridCampoSolido">
+		<!-- baseName = uniqueName("GridCampoSolido"); -->
+	
+		<flowPart height="$(height or 50)" minScaledWidth="$(minScaledWidth or minWidth or 100)" 
+				  minWidth="$(minWidth or 100)" maxWidth="$(maxWidth or 233)" 
+				  maxScaledWidth="$(maxScaledWidth or maxWidth or 233)" avoidScale="true"
+				  name="$(baseName)">
+				  
+				<edit name="edt$(baseName)" align="top" class="infoNoTopo" field="$(field)" fontSize="13" transparent="false" vertTextAlign="center"/>
+				<label name="lab$(baseName)" align="top" class="tituloCampo" text="$(titulo)" vertTextAlign="leading" wordWrap="true" textTrimming="none"/>															
+				
+				<script>    self.$(baseName):setHeight(self.edt$(baseName):getHeight() + self.lab$(baseName):getHeight());</script>				
+			</flowPart>					
+	</template>		
+	
+	<template name="upperGridCampoSolidoCheckBox">
+		<!-- baseName = uniqueName("GridCampoSolido"); -->
+	
+		<flowPart height="$(height or 50)" minScaledWidth="$(minScaledWidth or minWidth or 32)" 
+				  minWidth="$(minWidth or 32)" maxWidth="$(maxWidth or 32)" 
+				  maxScaledWidth="$(maxScaledWidth or maxWidth or 32)" avoidScale="true"
+				  name="$(baseName)">
+				  
+				<dndCheckBox name="cbx$(baseName)" align="top" field="$(field)" losango="true" height="32"/>				
+				<label name="lab$(baseName)" align="top" class="tituloCampo" text="$(titulo)" horzTextAlign="center" vertTextAlign="leading" wordWrap="true" textTrimming="none"/>															
+				
+				<script>    self.$(baseName):setHeight(self.cbx$(baseName):getHeight() + self.lab$(baseName):getHeight());</script>				
+			</flowPart>					
+	</template>	
+
+	<template name="upperGridMagicBox">
+		<!-- baseName = uniqueName("upperGridMagicBox"); -->
+	
+		<flowPart height="$(height or 50)" minScaledWidth="$(minScaledWidth or minWidth or 100)" 
+				  minWidth="$(minWidth or 100)" maxWidth="$(maxWidth or 160)" 
+				  maxScaledWidth="$(maxScaledWidth or maxWidth or 160)" avoidScale="true"
+				  name="$(baseName)" vertAlign="leading" margins="$(margins or '{left=5, right=5, top=5, bottom=5}')">			  
+				
+				<script>								
+					rawset(self.$(baseName), "_RecalcSize", 
+						function ()
+							self.$(baseName):setHeight(self.pan$(baseName):getHeight() + self.lab$(baseName):getHeight());
+						end);														
+				</script>				  
+				  
+				<frame name="pan$(baseName)" align="top" frameStyle="frames/panel6/panel6.xml" height="60">
+					<label name="lab$(baseName)val" frameRegion="ContentRegion" class="transparente" field="$(field)" fontSize="$(fontSize or 22)" vertTextAlign="center" horzTextAlign="center"/>	
+				</frame>
+				
+				<label name="lab$(baseName)" align="top" class="tituloCampo" autoSize="true" text="$(titulo)" horzTextAlign="center" vertTextAlign="leading" wordWrap="true" textTrimming="none"
+					   onResize="self.$(baseName)._RecalcSize();"/>												
+					   
+				<script>self.$(baseName)._RecalcSize();	</script>
+			</flowPart>					
+	</template>	
+	
+	<template name="upperGridMagicComboBox">
+		<!-- baseName = uniqueName("upperGridMagicBox"); -->
+	
+		<flowPart height="$(height or 50)" minScaledWidth="$(minScaledWidth or minWidth or 100)" 
+				  minWidth="$(minWidth or 100)" maxWidth="$(maxWidth or 160)" 
+				  maxScaledWidth="$(maxScaledWidth or maxWidth or 160)" avoidScale="true"
+				  name="$(baseName)" vertAlign="leading" margins="$(margins or '{left=5, right=5, top=5, bottom=5}')">			  
+				
+				<script>								
+					rawset(self.$(baseName), "_RecalcSize", 
+						function ()
+							self.$(baseName):setHeight(self.pan$(baseName):getHeight() + self.lab$(baseName):getHeight());
+						end);														
+				</script>				  
+				  
+				<frame name="pan$(baseName)" align="top" frameStyle="frames/panel6/panel6.xml" height="60">
+					<comboBox name="cmb$(baseName)" frameRegion="ContentRegion" class="transparente" field="$(field)" items="$(items or {})" values="$(values or {})" horzTextAlign="center" vertTextAlign="center" fontSize="13"/>	
+				</frame>
+				
+				<label name="lab$(baseName)" align="top" class="tituloCampo" autoSize="true" text="$(titulo)" horzTextAlign="center" vertTextAlign="leading" wordWrap="true" textTrimming="none"
+					   onResize="self.$(baseName)._RecalcSize();"/>												
+					   
+				<script>self.$(baseName)._RecalcSize();	</script>
+			</flowPart>					
+	</template>		
+	
+	<template name="upperGridMagicEditBox">
+		<!-- baseName = uniqueName("upperGridMagicEditBox"); -->
+	
+		<flowPart height="$(height or 50)" minScaledWidth="$(minScaledWidth or minWidth or 100)" 
+			  minWidth="$(minWidth or 100)" maxWidth="$(maxWidth or 160)" 
+			  maxScaledWidth="$(maxScaledWidth or maxWidth or 160)" avoidScale="true"
+			  name="$(baseName)" vertAlign="leading" margins="$(margins or '{left=5, right=5, top=5, bottom=5}')">			  
+			
+			<script>								
+				rawset(self.$(baseName), "_RecalcSize", 
+					function ()
+						self.$(baseName):setHeight(self.pan$(baseName):getHeight() + self.lab$(baseName):getHeight());
+					end);														
+			</script>				  
+			  
+			<frame name="pan$(baseName)" align="top" frameStyle="frames/panel6/panel6.xml" height="60">
+				<edit name="edt$(baseName)" frameRegion="ContentRegion" class="transparente" field="$(field)" fontSize="$(fontSize or 22)" vertTextAlign="center" horzTextAlign="center"/>	
+			</frame>
+			
+			<label name="lab$(baseName)" align="top" class="tituloCampo" autoSize="true" text="$(titulo)" horzTextAlign="center" vertTextAlign="leading" wordWrap="true" textTrimming="none"
+				   onResize="self.$(baseName)._RecalcSize();"/>												
+				   
+			<script>self.$(baseName)._RecalcSize();	</script>
+		</flowPart>					
+	</template>	
+		
+		
+	<template name="boxAtributo">
+		<!-- 
+			if (type(body) == "string") and (body ~= "") then
+				pericias = totable(body);
+			else
+				pericias = {};
+			end;
+		-->
+	
+		<dataLink field="atributos.$(field)">
+			<event name="onChange">		
+				local numAsStr = tostring(newValue);
+				local numero;
+				
+				if numAsStr ~= "" then
+					numero = tonumber(newValue);
+				else
+					numero = nil;
+				end;
+
+				if type(sheet.atributos) ~= 'table' then
+					sheet.atributos = {};
+				end;				
+				
+				if type(numero) == 'number' then
+					local modificador = math.floor(numero / 2) - 5;								
+					sheet.atributos.mod$(field) = modificador;	
+				
+					if modificador >= 0 then
+						sheet.atributos.mod$(field)str = "+" .. modificador;
+					else	
+						sheet.atributos.mod$(field)str = "-" .. math.abs(modificador);
+					end;	
+				else
+					sheet.atributos.mod$(field) = nil;
+					sheet.atributos.mod$(field)str = nil;
+				end;
+			</event>
+		</dataLink>
+		
+		<script>
+			if self.__attrSortData == nil then
+				self.__attrSortData = {};
+			end;
+			
+			self.__attrSortData.$(field) = {};
+		</script>
+		
+		<flowPart height="140" minWidth="320" maxWidth="420" minScaledWidth="305" frameStyle="frames/atributeFrame2/frame.xml">
+			<layout left="6" top="12" width="116" height="115">
+				<edit class="atributo"  align="top" margins="{left=30, right=30}" field="atributos.$(field)" height="30" type="number" min="0" max="99"/>				
+			</layout>
+			
+			<label frameRegion="modificador" name="mod$(field)str" field="atributos.mod$(field)str" horzTextAlign="center" vertTextAlign="center" fontSize="46" fontStyle="bold"/>
+			<layout frameRegion="titulo">
+				<button align="client" name="mod$(field)button" text="$(titulo)" vertTextAlign="center" horzTextAlign="center" margins="{left=10,right=10}" fontSize="12">
+					<event name="onKeyDown"> common.keyDown(sheet, event, self.mod$(field)str); </event>
+					<event name="onKeyUp"> common.keyUp(sheet, event, self.mod$(field)str); </event>
+					<event name="onClick"> <![CDATA[common.onClick(sheet, common.rolaPericia, { tipo = 'attr', field = '$(field)'}, nil, true);]]> </event>
+					<event name="onMenu">  <![CDATA[common.onClick(sheet, common.rolaPericia, { tipo = 'attr', field = '$(field)'}, nil, false);]]> </event>
+					<event name="onMouseEnter"> self.mod$(field)button:setFocus(); </event>
+					<event name="onExit"> self.mod$(field)str.fontColor = "white"; </event>
+				</button>
+			</layout>
+			
+			<flowLayout frameRegion="RegiaoDePericias" autoHeight="true" lineSpacing="0" horzAlign="leading">			
+				<boxPericia field="$('resistencias.' .. field)" fieldBonus="resistencias.bonus$(field)str" atributo="$(field)" titulo="@@DnD5e.savingThrows.title" losango="true"/>
+				<dataLink fields="{'atributos.mod$(field)', 'bonusProficiencia', 'resistencias.$(field)', 'resistencias.$(field)strAltAtr', 'bonusResistencias'}">
+					<event name="onChange">
+							local modificador;
+							local temResistencia;
+									
+							if sheet.atributos ~= nil then
+								if sheet.resistencias.bonus$(field)strAltAtr ~= nil then
+									local mod1 = sheet.atributos["mod"..sheet.resistencias.bonus$(field)strAltAtr]
+									local mod2 = sheet.atributos.mod$(field)
+
+									modificador = math.max(mod1, mod2)
+
+									if modificador ~= nil then
+										modificador = tonumber(modificador);
+									end;
+								else
+									modificador = sheet.atributos.mod$(field);
+									
+									if modificador ~= nil then
+										modificador = tonumber(modificador);
+									end;
+								end
+							else
+								modificador = nil;
+							end;
+							
+							if sheet.resistencias ~= nil then
+								if sheet.resistencias.$(field) == true then
+									sheet.resistencias.$(field) = 1
+								end
+								temResistencia = sheet.resistencias.$(field) or 0;
+							else
+								temResistencia = 0;
+								sheet.resistencias = {};
+							end;
+													
+							if modificador ~= nil then
+								local valor;
+							
+								if temResistencia == 1 then
+									valor = modificador	+ (tonumber(sheet.bonusProficiencia) or 0)
+								else
+									valor = modificador;
+								end;
+
+								valor = valor + (tonumber(sheet.bonusResistencias) or 0)					
+								
+								valor = math.tointeger(valor);
+								
+								sheet.resistencias.bonus$(field) = valor;
+								
+								if valor >= 0 then
+									sheet.resistencias.bonus$(field)str = "+" .. valor;
+								else
+									sheet.resistencias.bonus$(field)str = "-" .. math.abs(valor);
+								end;
+							else
+								sheet.resistencias.bonus$(field) = nil;
+								sheet.resistencias.bonus$(field)str = nil;
+							end;	
+					</event>		
+				</dataLink>
+			
+				<!-- for i = 1, #pericias, 1 do 
+						objPericia = pericias[i];
+						periciaTitulo = objPericia[1];
+						periciaField = objPericia[2];
+					-->								
+					<boxPericia field="$('pericias.' .. periciaField)" fieldBonus="pericias.bonus$(periciaField)str" atributo="$('atributos.' .. field)" titulo="$(periciaTitulo)" attrSortGroup="$(field)"/>
+					<dataLink fields="{'atributos.mod$(field)', 'bonusProficiencia', 'pericias.$(periciaField)', 'pericias.bonus$(periciaField)strAltAtr', 'bonusHabilidades'}">
+						<event name="onChange">
+							local modificador;
+							local temPericia;
+									
+							if sheet.atributos ~= nil then
+								if sheet.pericias.bonus$(periciaField)strAltAtr ~= nil then
+									local mod1 = sheet.atributos["mod"..sheet.pericias.bonus$(periciaField)strAltAtr]
+									local mod2 = sheet.atributos.mod$(field)
+
+									modificador = math.max(mod1, mod2)
+
+									if modificador ~= nil then
+										modificador = tonumber(modificador);
+									end;
+								else
+									modificador = sheet.atributos.mod$(field);
+									
+									if modificador ~= nil then
+										modificador = tonumber(modificador);
+									end;
+								end
+							else
+								modificador = nil;
+							end;
+							
+							if sheet.pericias ~= nil then
+								if sheet.pericias.$(periciaField) == true then
+									sheet.pericias.$(periciaField) = 1
+								end
+								temPericia = sheet.pericias.$(periciaField) or 0;
+							else
+								temPericia = 0;
+								sheet.pericias = {};
+							end;
+													
+							
+							if modificador ~= nil then
+								local valor;
+							
+								if temPericia == 1 then
+									valor = modificador	+ (tonumber(sheet.bonusProficiencia) or 0)
+								elseif temPericia == 2 then
+									valor = modificador	+ (tonumber(sheet.bonusProficiencia) or 0)*2
+								elseif temPericia == 3 then
+									valor = modificador	+ math.floor((tonumber(sheet.bonusProficiencia) or 0)/2)
+								else
+									valor = modificador;
+								end;
+
+								valor = valor + (tonumber(sheet.bonusHabilidades) or 0)			
+								
+								valor = math.tointeger(valor);
+								
+								sheet.pericias.bonus$(periciaField)	= valor;
+								
+								if valor >= 0 then
+									sheet.pericias.bonus$(periciaField)str = "+" .. valor;
+								else
+									sheet.pericias.bonus$(periciaField)str = "-" .. math.abs(valor);
+								end;
+							else
+								sheet.pericias.bonus$(periciaField) = nil;
+								sheet.pericias.bonus$(periciaField)str = nil;
+							end;
+						</event>
+					</dataLink>
+				<!-- end; -->
+			</flowLayout>
+		</flowPart>
+	</template>
+	
+	<template name="dndCheckBox">
+		<!-- 	
+			if (losango == "true") then			
+				urlImageChecked = "images/checkbox2_checked.png";
+				urlImageUnchecked = "images/checkbox2_unchecked.png";
+			else
+				urlImageChecked = "images/checkbox1_checked.png";
+				urlImageUnchecked = "images/checkbox1_unchecked.png";			
+			end;			
+		-->
+		<imageCheckBox align="$(align or 'none')" width="$(width or 20)" margins="$(margins or '{}')" field="$(field)"  optimize="false" imageChecked="$(urlImageChecked)"
+			imageUnchecked="$(urlImageUnchecked)" name="$(name or '')" height="$(height or 20)"/>
+		<!-- -->
+	</template>
+	
+	<template name="dndMultiCheckBox">
+		<image align="$(align or 'none')" width="$(width or 20)" height="$(height or 20)" margins="$(margins or '{}')" name="$(name or '')" field="$(field)Icon" style="proportional" hitTest="true">
+			<event name="onClick"><![CDATA[
+				sheet.$(field) = tonumber(sheet.$(field)) or 0
+
+				-- Contador que vai de 0 a 1/3 e reseta ao passar de 1/3
+				if ("$(losango)" == "true") then
+					sheet.$(field) = (sheet.$(field) + 1) % 2
+				else 
+					sheet.$(field) = (sheet.$(field) + 1) % 4
+				end
+				]]>
+			</event>
+		</image>
+		<!--
+			if (losango == "true") then
+		-->
+		<dataLink field="$(field)Icon" defaultValue="http://blob.firecast.com.br/blobs/RBKNDVWO_2605563/checkbox2_unchecked.png"/>
+		<!--
+			else
+		-->
+		<dataLink field="$(field)Icon" defaultValue="http://blob.firecast.com.br/blobs/RWKSJIFU_781555/checkbox1_unchecked.png"/>
+		<!--
+			end
+		-->
+
+		<dataLink field="$(field)">
+			<event name="onChange">
+				if sheet == nil then return end
+				local pics
+
+				if ("$(losango)" == "true") then
+					pics = {"http://blob.firecast.com.br/blobs/RBKNDVWO_2605563/checkbox2_unchecked.png", 
+							"http://blob.firecast.com.br/blobs/OLODVDPF_2605569/checkbox2_checked.png"}
+				else
+					pics = {"http://blob.firecast.com.br/blobs/RWKSJIFU_781555/checkbox1_unchecked.png", 
+							"http://blob.firecast.com.br/blobs/MQFHLDSL_144272.png",
+							"http://blob.firecast.com.br/blobs/NLIQSGPU_2605567/checkbox1_double_checked.png",
+							"http://blob.firecast.com.br/blobs/HARRKEHM_2605564/checkbox1_half_checked.png"}
+				end;
+
+				local counter = tonumber(sheet.$(field)) or 0
+				sheet.$(field)Icon = pics[counter +1];
+			</event>
+		</dataLink>
+		<!-- -->
+	</template>
+		
+	<template name="boxPericia">
+		<!-- flowPartUniqueName = uniqueName("flpSkillFlowPart"); -->	
+	
+		<flowPart minWidth="206" maxWidth="250" height="17" name="$(flowPartUniqueName)">			
+			<dndMultiCheckBox align="left" field="$(field)" losango="$(losango)"/>
+			<layout align="left" width="26" margins="{left=2}" hitTest="True">	
+				<label name="$(flowPartUniqueName)str" field="$(fieldBonus)" align="client" horzTextAlign="center" vertTextAlign="trailing" textTrimming="none"/>
+				<horzLine strokeColor="white" strokeSize="1" align="bottom"/>
+				<event name="onClick">
+					Dialogs.choose(LANG("Dnd5e.messages.atrCaption"), {LANG("Dnd5e.messages.atrCaptionOpt1"), LANG("Dnd5e.messages.atrCaptionOpt2")},
+		               function(selected, selectedIndex, selectedText)
+		                	if selected then
+		                		if selectedIndex==1 then
+		                			Dialogs.choose(LANG("Dnd5e.messages.atrCaption"), {LANG("DnD5e.spells.resistance.str"),LANG("DnD5e.spells.resistance.dex"),LANG("DnD5e.spells.resistance.con"),LANG("DnD5e.spells.resistance.int"),LANG("DnD5e.spells.resistance.wis"),LANG("DnD5e.spells.resistance.cha"),"-"},
+						               function(selected, selectedIndex, selectedText)
+						                	if selected then
+						                		local atr = {"forca","destreza","constituicao","inteligencia","sabedoria","carisma",nil}
+						                		sheet.$(fieldBonus)AltAtr = atr[selectedIndex]
+						                	end
+						               end)
+		                		elseif selectedIndex==2 then
+		                			Dialogs.inputQuery(LANG("Dnd5e.messages.atrCaptionOpt2"), "", "1",
+								        function (valorPreenchido)
+								            sheet.$(fieldBonus)MinRoll = tonumber(valorPreenchido)
+								        end)
+		                		end
+		                	end
+		               end,1)
+				</event>
+			</layout>
+			<button name="$(flowPartUniqueName)button" align="left" text="$(titulo)" width="122" margins="{left=2}" fontSize="12">
+				<event name="onKeyDown"> common.keyDown(sheet, event, self.$(flowPartUniqueName)str); </event>
+				<event name="onKeyUp"> common.keyUp(sheet, event, self.$(flowPartUniqueName)str); </event>
+				<event name="onClick"> <![CDATA[common.onClick(sheet, common.rolaPericia, { tipo = 'per', field = '$(field)'}, nil, true);]]> </event>
+				<event name="onMenu">  <![CDATA[common.onClick(sheet, common.rolaPericia, { tipo = 'per', field = '$(field)'}, nil, false);]]> </event>
+				<event name="onMouseEnter"> self.$(flowPartUniqueName)button:setFocus(); </event>
+				<event name="onExit"> self.$(flowPartUniqueName)str.fontColor = "white"; </event>
+			</button>
+		</flowPart>
+		
+		<!-- 	
+			if (attrSortGroup ~= nil) and (attrSortGroup ~= "") and (fieldBonus ~= "") then			
+		-->				
+			<script>
+				table.insert(self.__attrSortData.$(attrSortGroup), {title="$(titulo)", controlName="$(flowPartUniqueName)"});				
+			</script>
+		<!-- 							
+			end;			
+		-->		
+	</template>			
+	
+	<template name="boxDinheiro">
+		<frame frameStyle="frames/dinheiro/pecaCobre.xml" width="$(width or 228)" height="$(height or 64)" align="$(align or 'none')" margins="$(margins or '{}')" >
+			<label class="tituloCampo" frameRegion="RegiaoSmallTitulo" horzTextAlign="center" vertTextAlign="center" text="$(text or 'PC')" textTrimming="none" wordWrap="false" />
+			<edit class="transparente" frameRegion="RegiaoValor" field="$(field)" vertTextAlign="center" horzTextAlign="center" fontSize="19"/>
+		</frame>
+	</template>
+	
+	<template name="magiaItemContentEditAndLine">
+		<edit name="edtNome" class="transparente" align="client" field="nome" margins="{left=4, right=4}" vertTextAlign="center"/>
+		<horzLine align="bottom" strokeColor="white"/>
+		<button name="edtNomeBut" text="🎲" align="right" width="32" margins="{left=4, right=0, top=2, bottom=2}">
+			<event name="onKeyDown"> common.keyDown(sheet, event, self.edtNome); </event>
+			<event name="onKeyUp"> common.keyUp(sheet, event, self.edtNome); </event>
+			<event name="onClick"> common.onClick(sheet, common.rolaMagia, { magia=self.sheet }, nil, true); </event>
+			<event name="onMenu"> common.onClick(sheet, common.rolaMagia, { magia=self.sheet }, nil, false); </event>
+			<event name="onMouseEnter"> self.edtNomeBut:setFocus(); </event>
+			<event name="onExit"> self.edtNome.fontColor = "white"; </event>
+		</button>					
+		<button text="i" align="right" width="32" margins="{left=4, right=0, top=2, bottom=2}" onClick="showMagiaPopup();" onMenu="mostraMagia();"/>		
+		<button text="@@DnD5e.spells.btn.delete" align="right" width="60" margins="{left=4, right=4, top=2, bottom=2}" onClick="askForDelete();"/>		
+	</template>
+	
+	<template name="magiaItemContent">
+		<script> 
+			<![CDATA[			
+			local function askForDelete()
+				Dialogs.confirmYesNo("@@DnD5e.generic.deleteConfirmation",
+									 function (confirmado)
+										if confirmado then
+											NDB.deleteNode(self.sheet);
+										end;
+									 end);
+			end;
+
+			local function showMagiaPopup()
+				local pop = self:findControlByName("popMagia");
+					
+				if pop ~= nil then
+					pop:setNodeObject(self.sheet);
+					pop:showPopupEx("bottomCenter", self.edtNome);
+				else
+					showMessage("Ops, bug.. nao encontrei o popup de magia para exibir");
+				end;				
+			end;
+
+			local function mostraMagia()
+				local magia = sheet;																			if not magia		then return; end;
+				local ficha = sheet; while (NDB.getParent(ficha) ~= nil) do ficha = NDB.getParent(ficha); end;
+				local personagem = Firecast.getPersonagemDe(ficha);												if not personagem	then return; end;
+				local mesa = personagem.mesa;																	if not mesa			then return; end;
+				local chat = mesa.activeChat;																	if not chat			then return; end;
+
+				local mensagem = "";
+				if magia.nome then mensagem = mensagem .. "\nNome: '" .. magia.nome .. "'"; end;
+				if magia.tempoDeFormulacao then mensagem = mensagem .. "\nTempo de Formulação: '" .. magia.tempoDeFormulacao .. "'"; end;
+				if magia.alcance then mensagem = mensagem .. "\nAlcance: '" .. magia.alcance .. "'"; end;
+				if magia.componentes then mensagem = mensagem .. "\nComponentes: '" .. magia.componentes .. "'"; end;
+				if magia.duracao then mensagem = mensagem .. "\nDuração: '" .. magia.duracao .. "'"; end;
+				if magia.ataque then mensagem = mensagem .. "\nAtaque: '" .. magia.ataque .. "'"; end;
+				if magia.resistencia then mensagem = mensagem .. "\nTeste de Resistência: '" .. magia.resistencia .. "'"; end;
+				if magia.descricao then mensagem = mensagem .. "\nDescrição: '" .. magia.descricao .. "'"; end;
+				if mensagem ~= "" then mesa.activeChat:enviarMensagem(mensagem); end;
+			end;
+			]]>		
+		</script>
+		
+		
+		
+		<!-- if (useCheckBox == "true") or (useCheckBox == true) then -->
+		<dndCheckBox align="left" field="marcacao" width="25"/>
+		<layout align="client">
+			<magiaItemContentEditAndLine/>			
+		</layout>		
+		<!-- else -->
+		<magiaItemContentEditAndLine/>
+		<!-- end; -->
+		
+		<script>self.height=32;</script>
+	</template>
+
+	<template name="optAtaqueLegenda">
+		<flowPart height="$(height or 30)" minWidth="$(minWidth or width)" maxWidth="$(maxWidth or width)">
+			<label align="client" class="tituloCampo" text="$(text)" horzTextAlign="center" vertTextAlign="leading" wordWrap="true" textTrimming="none"/>
+		</flowPart>
+	</template>
+
+	<template name="optAtaqueField">
+		<flowPart height="$(height or 30)" minWidth="$(minWidth)" maxWidth="$(maxWidth)" avoidScale="true">
+			<edit align="client" class="infoNoTopo" field="$(field)" horzTextAlign="center" vertTextAlign="center" fontSize="13" transparent="false" hitTest="true"/>
+		</flowPart>
+	</template>
+
+	<template name="optAtaque">
+		<flowLayout class="tile" align="$(align)" height="$(height or 30)" width="$(width or 200)" name="$(name or flaOptAtaque)" horzAlign="justify">
+			<flowPart height="$(height or 30)" width="20">
+				<!-- if (enabled == "true") then -->
+					<checkBox align="client" hint="Usar opção de ataque" field="habilitado"/>
+				<!-- else -->
+					<checkBox align="client" checked="$(checked or true)" enabled="false"/>
+				<!-- end; -->
+			</flowPart>
+
+			<!-- 
+				if alcanceOuNome == "alcance" then
+					hint = "Alcance do ataque";
+				else
+					hint = "Nome da opção de ataque";
+				end;
+			 -->
+
+			<optAtaqueField height="$(height or 30)" minWidth="80"	maxWidth="150"	field="$(alcanceOuNome)" hint="$(hint)"/>
+			<optAtaqueField height="$(height or 30)" minWidth="110"	maxWidth="200"	field="ataque"			 hint="Modificador para o acerto"/>
+			<optAtaqueField height="$(height or 30)" minWidth="80"	maxWidth="170"	field="dano"			 hint="Modificador para o dano"/>
+			<optAtaqueField height="$(height or 30)" minWidth="80"	maxWidth="180"	field="tipo"			 hint="Tipo do dano, vazio para o mesmo do ataque"/>
+
+			<flowPart height="$(height or 30)" minWidth="100" maxWidth="200" avoidScale="true">
+				<comboBox name="cbOptAtaqueMunicao" align="client" class="infoNoTopo" field="municao" hint="Qual 'contador' deve ser gasto"/>
+				<dataLink field="contadoresMudaram">
+					<event name="onChange">
+						if sheet and sheet.contadoresMudaram then
+							self.cbOptAtaqueMunicao:setItems(common.getNomeContadores(sheet, {""}));
+						end;
+					</event>
+				</dataLink>
+			</flowPart>
+
+			<optAtaqueField height="$(height or 30)" minWidth="25"	maxWidth="50"	field="qtMunicao"		 hint="Quantos usos do contador"/>
+
+			<flowPart height="$(height or 30)" width="25">
+				<button name="btnApagar" align="client" text="✖" onClick="common.askForDelete(self.sheet);" enabled="$(enabled)"/>
+			</flowPart>
+		</flowLayout>
+	</template>
+</group>
