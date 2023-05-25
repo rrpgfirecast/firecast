@@ -30,7 +30,7 @@
 	            </layout>
 	            <layout align="top" height="25">
 	            	<label align="left" width="150" horzTextAlign="center" text="Categoria"/>
-	            	<edit align="client" field="categoria"/>
+	            	<comboBox align="client" field="categoria" items="{'Reforço/Intensificação', 'Emissão', 'Manipulação', 'Materialização/Conjuração', 'Especialização', 'Transformação/Transmutação', '-'}"/>
 	            </layout>
 	            <layout align="top" height="25">
 	            	<label align="left" width="150" horzTextAlign="center" text="Tempo de Ativação"/>
@@ -53,7 +53,7 @@
 	            	<edit align="client" field="restricoes"/>
 	            </layout>
 	            <layout align="client">
-	            	<textEditor align="left" width="200" field="restricoesDetails"/>
+	            	<textEditor align="left" width="400" field="restricoesDetails"/>
 	            	<textEditor align="client" field="details"/>
 	            </layout>
             </rectangle>

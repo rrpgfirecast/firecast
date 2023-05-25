@@ -44,6 +44,13 @@
 			width: 195;
 		}
 		
+		comboBox.infoNoTopo {
+			fontSize: 18;
+			height: 30;
+			vertTextAlign: trailing;
+			width: 195;
+		}
+		
 		.alignedLeftPanel edit {
 			align: left;
 			margins: {right=5};

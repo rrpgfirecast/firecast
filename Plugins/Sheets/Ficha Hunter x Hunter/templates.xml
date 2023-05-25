@@ -35,6 +35,43 @@
 				<script>    self.$(baseName):setHeight(self.edt$(baseName):getHeight() + self.lab$(baseName):getHeight() + self.lin$(baseName):getHeight());</script>								
 			</flowPart>					
 	</template>	
+		
+	<template name="upperGridCampoComboBoxEdit">
+		<!-- baseName = uniqueName("UpperGridCampoComboBoxEdit"); -->	
+	
+		<flowPart height="$(height or 50)" minScaledWidth="$(minScaledWidth or minWidth or 100)" 
+				  minWidth="$(minWidth or 100)" maxWidth="$(maxWidth or 233)" 
+				  maxScaledWidth="$(maxScaledWidth or maxWidth or 233)" avoidScale="true"
+				  name="$(baseName)">
+				
+				<layout align="top" height="30">
+					<comboBox name="cb$(baseName)" align="client" class="infoNoTopo" field="$(field)cb" fontSize="11" items="$(items)"/>
+					<edit name="edt$(baseName)" align="right" width="25" class="infoNoTopo" field="$(field)" fontSize="13"/>
+				</layout>
+				<horzLine name="lin$(baseName)" align="top" strokeColor="#FFFFFF50" strokeSize="1"/>
+				<label name="lab$(baseName)" align="top" class="tituloCampo" text="$(titulo)" vertTextAlign="leading" wordWrap="true" textTrimming="none"/>															
+				
+				<script>    self.$(baseName):setHeight(self.edt$(baseName):getHeight() + self.lab$(baseName):getHeight() + self.lin$(baseName):getHeight());</script>								
+			</flowPart>					
+	</template>
+		
+	<template name="upperGridCampoComboBox">
+		<!-- baseName = uniqueName("UpperGridCampoComboBox"); -->	
+	
+		<flowPart height="$(height or 50)" minScaledWidth="$(minScaledWidth or minWidth or 100)" 
+				  minWidth="$(minWidth or 100)" maxWidth="$(maxWidth or 233)" 
+				  maxScaledWidth="$(maxScaledWidth or maxWidth or 233)" avoidScale="true"
+				  name="$(baseName)">
+				
+				<layout align="top" height="30">
+					<comboBox name="cb$(baseName)" align="client" class="infoNoTopo" field="$(field)cb" fontSize="13" items="$(items)"/>
+				</layout>
+				<horzLine name="lin$(baseName)" align="top" strokeColor="#FFFFFF50" strokeSize="1"/>
+				<label name="lab$(baseName)" align="top" class="tituloCampo" text="$(titulo)" vertTextAlign="leading" wordWrap="true" textTrimming="none"/>															
+				
+				<script>    self.$(baseName):setHeight(self.cb$(baseName):getHeight() + self.lab$(baseName):getHeight() + self.lin$(baseName):getHeight());</script>								
+			</flowPart>					
+	</template>
 	
 	<template name="upperGridCampoSolido">
 		<!-- baseName = uniqueName("GridCampoSolido"); -->

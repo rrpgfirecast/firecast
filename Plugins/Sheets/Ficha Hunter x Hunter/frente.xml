@@ -62,8 +62,8 @@
 
 				<!-- GRID DE INFORMACOES SUPERIORES DA FRENTE -->
 				<flowLayout  minWidth="320" maxWidth="1600" name="fraUpperGridFrente" avoidScale="true" frameStyle="frames/upperInfoGrid/frame.xml" autoHeight="true" vertAlign="trailing" maxControlsPerLine="3">								
-						<upperGridCampo field="classeENivel" minWidth="100" titulo="@@DnD5e.frente.lab.classaLevel"/>
-						<upperGridCampo field="antecedentes" titulo="@@DnD5e.frente.lab.background"/>
+						<upperGridCampoComboBoxEdit field="classeENivel" minWidth="100" titulo="@@DnD5e.frente.lab.classaLevel" items="{'Reforço/Intensificação', 'Emissão', 'Manipulação', 'Materialização/Conjuração', 'Especialização', 'Transformação/Transmutação'}"/>
+						<upperGridCampoComboBox field="antecedentes" titulo="@@DnD5e.frente.lab.background" items="{'-','Amigo dos Animais','Aristocrata','Artista','Assassino','Caçador de Feras','Cientista/Especialista','Criminoso','Discípulo','Guarda-Costas','Líder','Marinheiro','Mentalista','Negociante','Ninja','Orfão','Recluso','Soldado'}"/>
 						<upperGridCampo field="nomeDoJogador" titulo="@@DnD5e.frente.lab.player"/>									
 						<upperGridCampo field="raca" minWidth="100" titulo="@@DnD5e.frente.lab.race"/>
 						<upperGridCampo field="tendencia" titulo="@@DnD5e.frente.lab.trend"/>
