@@ -3,7 +3,7 @@
     <!--O id identifica seu módulo globalmente. Deve ser único, conter apenas caracteres alfanuméricos, underlines, pontos e deve conter ao menos 5 caracteres e um máximo de 40. Uma vez definido o ID, você não deve alterar ele ;) -->
     <id>Ambesek.Hunter.Hunter</id>
     <!--version é a versão do seu módulo. Quando for lançar uma nova versão do seu módulo, altere aqui =) -->
-    <version>1.0</version>
+    <version>1.0.2</version>
 
     <settings>
         <automaticStringLocalization>true</automaticStringLocalization>

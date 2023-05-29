@@ -5,6 +5,7 @@
             <event name="onSelect">
               	local node = self.rclNenBasic.selectedNode
               	self.rclNenAdvanced.selectedNode = nil
+              	self.rclNenAdvanced2.selectedNode = nil
                 self.nemDetails.node = node
               	self.nemDetails.visible = (node ~= nil)
             </event>
@@ -25,10 +26,11 @@
 		        end
 			</event>
     	</recordList>
-    	<recordList name="rclNenAdvanced" field="rclNenAdvanced" templateForm="frmNenItem" align="top" height="210" selectable="true" minQt="7" margins="{top=30}">
+    	<recordList name="rclNenAdvanced" field="rclNenAdvanced" templateForm="frmNenItem" align="top" height="120" selectable="true" minQt="4" margins="{top=30}">
             <event name="onSelect">
               	local node = self.rclNenAdvanced.selectedNode
               	self.rclNenBasic.selectedNode = nil
+              	self.rclNenAdvanced2.selectedNode = nil
                 self.nemDetails.node = node;
               	self.nemDetails.visible = (node ~= nil)
             </event>
@@ -36,7 +38,27 @@
             	if sheet==nil then return end
 		        local nodes = ndb.getChildNodes(sheet.rclNenAdvanced)
 
-		        local nomes = {"GYO", "EN", "IN", "SHU", "KEN", "KO", "RYU"}
+		        local nomes = {"GYO", "EN", "IN", "SHU"}
+		        for i=1, #nodes, 1 do
+		        	if nodes[i].nome == nil then
+		        		nodes[i].nome = nomes[i]
+		        	end
+		        end
+			</event>
+    	</recordList>
+    	<recordList name="rclNenAdvanced2" field="rclNenAdvanced2" templateForm="frmNenItem" align="top" height="90" selectable="true" minQt="3" margins="{top=30}">
+            <event name="onSelect">
+              	local node = self.rclNenAdvanced2.selectedNode
+              	self.rclNenBasic.selectedNode = nil
+              	self.rclNenAdvanced.selectedNode = nil
+                self.nemDetails.node = node;
+              	self.nemDetails.visible = (node ~= nil)
+            </event>
+            <event name="onEndEnumeration">
+            	if sheet==nil then return end
+		        local nodes = ndb.getChildNodes(sheet.rclNenAdvanced2)
+
+		        local nomes = {"KEN", "KO", "RYU"}
 		        for i=1, #nodes, 1 do
 		        	if nodes[i].nome == nil then
 		        		nodes[i].nome = nomes[i]
