@@ -213,6 +213,15 @@ function common.rolaMagia(node, modo, args, chat)
 			end;
 		end;
 
+		if args.dano == nil then
+			if args.magia.damageType ~= 'Sem dano' then
+				args.dano = "sim"
+				args.danoRolagem = common.interpreta(node, args.magia.damageValue);
+			else
+				args.dano = "nao"
+			end
+		end
+
 		if args.resistencia == nil then
 			if args.magia.resistencia and common.hasValue({'Força', 'Destreza', 'Constituição', 'Inteligência', 'Sabedoria', 'Carisma'}, args.magia.resistencia) then
 				args.resistencia = args.magia.resistencia;
@@ -274,6 +283,10 @@ function common.rolaMagia(node, modo, args, chat)
 			elseif modo ~= 'normal' then
 				chat:enviarAcao(Locale.lang("Dnd5e.messages.hit") .. result .. ' )');
 			end;
+
+			if args.dano ~= "nao" then
+				chat:rolarDados(args.danoRolagem, Locale.lang("DnD5e.spells.damage"))
+			end
 		end);
 	end;
 end;
@@ -385,7 +398,6 @@ function common.rolaMagia2(node, modo, args, chat)
 		args.ataque = {};
 
 		args.ataque.text = args.magia.ataqueTipo;
-
 
 		if modo == 'vantagem' then
 			args.ataque.rolls = 2;

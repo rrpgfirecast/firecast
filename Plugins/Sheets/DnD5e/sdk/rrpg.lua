@@ -2,7 +2,6 @@ require("rrpgEvents.lua");
 local ndb = require("ndb.lua");
 local objs = require("rrpgObjs.lua");
 local rrpgWrappers = require("rrpgWrappers.lua");
-local Async = require("async.lua")
 
 --[[ API do RRPG ]]--
 
@@ -393,14 +392,6 @@ function rrpg.unregisterChatToolButton(toolButtonId)
 			_obj_invoke(regClass.handle, "Deactivate");
 		end;
 	end;
-end;
-
-function rrpg.asyncOpenUserNDB(name, options)
-	if not Async.haveNativeBackendSupport() or not System.checkAPIVersion(87, 3) then
-		return Async.Promise.withError("No API Support");
-	end;
-		
-	return Async.Promise.wrap(_rrpg_Session_asyncOpenUserNDB(name, options));
 end;
 		
 rrpg.messaging = require("rrpgEventMessages.lua");

@@ -114,6 +114,12 @@
 				<label align="top" class="tituloCampo" fontSize="10" text="@@DnD5e.savingThrows.title" horzTextAlign="center" wordWrap="true" textTrimming="none" autoSize="true"/>
 				<comboBox align="client" class="" field="resistencia" horzTextAlign="center" fontSize="12" items="{'@@DnD5e.spells.resistance.none', '@@DnD5e.spells.resistance.str', '@@DnD5e.spells.resistance.dex', '@@DnD5e.spells.resistance.con', '@@DnD5e.spells.resistance.int', '@@DnD5e.spells.resistance.wis', '@@DnD5e.spells.resistance.cha'}" values="{'Nenhum', 'Força', 'Destreza', 'Constituição', 'Inteligência', 'Sabedoria', 'Carisma'}"/>
 			</flowPart>
+			s
+			<flowPart minWidth="30" maxWidth="800" height="35">
+				<label align="top" class="tituloCampo" fontSize="10" text="" horzTextAlign="center" wordWrap="true" textTrimming="none" autoSize="true"/>
+				<comboBox align="client" class="" field="damageType" horzTextAlign="center" fontSize="12" items="{'@@DnD5e.spells.damage.none', '@@DnD5e.spells.damage'}" values="{'Sem dano', 'Dano'}"/>
+			</flowPart>
+			<magicInfoField text="@@DnD5e.spells.damage" field="damageValue"/>
 		</flowLayout>
 
 		<textEditor align="client" field="descricao" class=""/>
@@ -133,15 +139,17 @@
 
 				<!-- GRID DE INFORMACOES SUPERIORES DA FRENTE -->
 				<flowLayout class="halfTile2"  minWidth="320" maxWidth="1600" name="fraUpperGridMagias" avoidScale="true" frameStyle="frames/upperInfoGrid/frame.xml" autoHeight="true" vertAlign="trailing" 
-						maxControlsPerLine="2" horzAlign="center" lineSpacing="8">
+						maxControlsPerLine="3" horzAlign="center" lineSpacing="8">
 					<upperGridMagicComboBox minWidth="145" field="magias.habilidadeDeConjuracao" titulo="@@DnD5e.spells.spellcasterAbility" items="{'', '@@DnD5e.frente.box.intelligence', '@@DnD5e.frente.box.wisdom', '@@DnD5e.frente.box.charisma'}" values="{'', 'int', 'sab', 'car'}"/>
 					<upperGridMagicBox field="magias.cdDaMagia" titulo="@@DnD5e.spells.spellSaveDC"/>
+					<upperGridMagicEditBox field="magias.cdExtra" titulo="@@DnD5e.spells.spellSaveDCExtra"/>
 					<upperGridMagicBox field="magias.bonusAtaqueSTR" titulo="@@DnD5e.spells.spellAttackBonus"/>
 					<upperGridMagicEditBox field="magias.spKi" titulo="@@DnD5e.spells.SP/Ki"/>
+					<upperGridMagicEditBox field="magias.ataqueExtra" titulo="@@DnD5e.spells.spellAttackExtra"/>
 				</flowLayout>
 			</flowLayout>
 	
-			<dataLink fields="{'magias.habilidadeDeConjuracao', 'atributos.modInteligencia', 'atributos.modSabedoria', 'atributos.modCarisma', 'bonusProficiencia'}">
+			<dataLink fields="{'magias.habilidadeDeConjuracao', 'atributos.modInteligencia', 'atributos.modSabedoria', 'atributos.modCarisma', 'bonusProficiencia', 'magias.ataqueExtra', 'magias.cdExtra'}">
 				<event name="onChange">	<![CDATA[
 					local hab;
 					local bonusProficiencia;
@@ -167,15 +175,13 @@
 						modHab = tonumber(sheet.atributos.modCarisma);
 					end;
 
-					bonusProficiencia = tonumber(sheet.bonusProficiencia);
-
-					if bonusProficiencia == nil then
-						bonusProficiencia = 0;
-					end;
+					bonusProficiencia = tonumber(sheet.bonusProficiencia) or 0;
+					ataqueExtra = tonumber(sheet.magias.ataqueExtra) or 0;
+					cdExtra = tonumber(sheet.magias.cdExtra) or 0;
 
 					if modHab ~= nil then
-						spellSaveValue = 8 + modHab + bonusProficiencia;
-						spellAttackValue = modHab + bonusProficiencia;
+						spellSaveValue = 8 + modHab + bonusProficiencia + cdExtra;
+						spellAttackValue = modHab + bonusProficiencia + ataqueExtra;
 					end;
 
 					sheet.magias.cdDaMagia = spellSaveValue;
