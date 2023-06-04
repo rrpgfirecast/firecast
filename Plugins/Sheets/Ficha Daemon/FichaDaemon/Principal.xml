@@ -28,7 +28,13 @@
 		</rectangle>
 	</template>
 	<template name="Atributo">
-		<label text="$(text)" align="client" width="90"/>
+		<button text="$(text)" align="client" margins="{right=5}">
+			<event name="onClick">
+				sheet.rollText = "$(text)"
+				sheet.rollValue = tonumber(sheet.$(field)Perc) or 0
+				AskToRoll()
+			</event>
+		</button>
 		<edit field="$(field)Base" align="right" width="50" horzTextAlign="center" compilerOrder="1"/>
 		<edit field="$(field)Mod" align="right" width="50" horzTextAlign="center" compilerOrder="2"/>
 		<rectangle align="right" width="50" color="black" strokeColor="white" strokeSize="1" compilerOrder="3">
@@ -153,6 +159,32 @@
 				</layout>
 				<layout align="top" height="25" margins="{top=5,left=5,right=5}">
 					<Title5 field="ptsPoderes" text="Poderes"/>
+				</layout>
+				<layout align="top" height="25" margins="{top=5,left=5,right=5}">
+				</layout>
+				<layout align="top" height="25" margins="{top=5,left=5,right=5}">
+				</layout>
+				<layout align="top" height="25" margins="{top=5,left=5,right=5}">
+					<button text="Iniciativa" align="client" margins="{right=5}">
+						<event name="onClick">
+		                    local mesa = rrpg.getMesaDe(sheet);                     
+
+		                    mesa.activeChat:rolarDados("1d10+"..(tonumber(sheet.iniciativa) or 0), "Iniciativa")
+						</event>
+					</button>
+					<edit field="iniciativaBonus" align="right" width="50" horzTextAlign="center" compilerOrder="1"/>
+					<rectangle align="right" width="50" color="black" strokeColor="white" strokeSize="1" compilerOrder="3">
+						<label field="iniciativa" align="client" horzTextAlign="center"/>
+					</rectangle>
+					<dataLink fields="{'iniciativaBonus', 'agilidadeBase', 'agilidadeMod'}">
+						<event name="onChange">
+							if sheet==nil then return end
+							local bonus = (tonumber(sheet.iniciativaBonus) or 0)
+							local agi = (tonumber(sheet.agilidadeBase) or 0)
+							local mod = (tonumber(sheet.agilidadeMod) or 0)
+							sheet.iniciativa = (bonus + agi + mod)
+						</event>
+					</dataLink>
 				</layout>
 
 

@@ -53,7 +53,7 @@
             </dataType>
         </dataTypes>
     </element>
-    <element id="Ambesek.Daemon" name="Ficha Daemon" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20Daemon/output/Ficha%20Daemon.rpk?raw=true" fileName="Ficha Daemon.rpk" repositoryPath="Sheets/Ficha Daemon/" author="Ambesek" description="Ficha para o sistema Daemon." version="1.0" compilationDate="06042023021513" compilationDigest="8627d4e57e5b38cc7071ba418c594975bd50a13d">
+    <element id="Ambesek.Daemon" name="Ficha Daemon" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20Daemon/output/Ficha%20Daemon.rpk?raw=true" fileName="Ficha Daemon.rpk" repositoryPath="Sheets/Ficha Daemon/" author="Ambesek" description="Ficha para o sistema Daemon." version="1.1" compilationDate="06042023021513" compilationDigest="8627d4e57e5b38cc7071ba418c594975bd50a13d">
         <info lang="pt-BR" name="Ficha Daemon" description="Ficha para o sistema Daemon." author="Ambesek"/>
         <dataTypes>
             <dataType id="Ambesek.Daemon" title="Ficha Daemon" formType="sheetTemplate">

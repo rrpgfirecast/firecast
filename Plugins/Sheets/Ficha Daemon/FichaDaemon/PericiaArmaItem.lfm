@@ -14,16 +14,24 @@
 	</script>
 
 	<edit align="client" vertTextAlign="center" field="nome"/>
-	<layout align="right" width="310">
+	<layout align="right" width="360">
 		<comboBox align="left" width="50" field="atributo" items="{'DEX','AGI'}" values="{'destreza', 'agilidade'}"/>
 		<comboBox align="left" width="50" field="tipo" items="{'C.a.C','Dist'}"/>
 
-		<layout align="right" width="210">
-			<layout align="left" width="60">
+		<layout align="right" width="260">
+			<layout align="left" width="85">
 				<edit align="left" width="30" field="gastoAtk" type="number" vertTextAlign="center" horzTextAlign="center"/>
 				<rectangle align="right" width="30" color="black" strokeColor="white" strokeSize="1" compilerOrder="3">
 					<label field="totalAtk" align="client" horzTextAlign="center"/>
 				</rectangle>
+				<button text="R" align="right" width="25">
+					<event name="onClick">
+						local node = NDB.getRoot(sheet)
+						node.rollText = sheet.nome or "ataque"
+						node.rollValue = tonumber(sheet.totalAtk) or 0
+						node.roll = true
+					</event>
+				</button>
 			</layout>
 			<dataLink fields="{'tipo','atributo','destreza','agilidade','gastoAtk'}">
 				<event name="onChange">
@@ -38,7 +46,15 @@
 				</event>
 			</dataLink>
 
-			<layout align="left" width="60">
+			<layout align="left" width="85">
+				<button text="R" align="left" width="25">
+					<event name="onClick">
+						local node = NDB.getRoot(sheet)
+						node.rollText = sheet.nome or "defesa"
+						node.rollValue = tonumber(sheet.totalDef) or 0
+						node.roll = true
+					</event>
+				</button>
 				<rectangle align="left" width="30" color="black" strokeColor="white" strokeSize="1" compilerOrder="3">
 					<label field="totalDef" align="client" horzTextAlign="center"/>
 				</rectangle>

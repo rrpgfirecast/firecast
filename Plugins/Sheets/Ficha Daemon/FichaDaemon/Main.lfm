@@ -34,6 +34,43 @@
             end;
         end;
 
+        local function AskToRoll()
+            local text = sheet.rollText or ""
+            local value = tonumber(sheet.rollValue) or 0
+
+            local roll = {}
+            roll[1] = (value*2)
+            roll[2] = (value)
+            roll[3] = math.floor(value/2)
+
+            local crit = math.max(math.ceil(value/4),5)
+
+            local options = {}
+            options[1] = "Fácil: " .. roll[1]
+            options[2] = "Normal: " .. roll[2]
+            options[3] = "Difícil: " .. roll[3]
+            
+            Dialogs.choose("Selecione uma das opções. Crítico: " .. crit, options,
+               function(selected, selectedIndex, selectedText)
+                  if selected then
+                    local mesa = rrpg.getMesaDe(sheet);                     
+
+                    mesa.activeChat:rolarDados("1d100", text .. " " .. selectedText,
+                        function (rolado)
+                            if rolado.resultado <= crit then
+                                    mesa.activeChat:enviarMensagem("SUCESSO CRÍTICO =D");
+                            elseif rolado.resultado >= 95 then
+                                    mesa.activeChat:enviarMensagem("FALHA CRÍTICA =(");
+                            elseif rolado.resultado <= roll[selectedIndex] then
+                                    mesa.activeChat:enviarMensagem("SUCESSO =)");
+                            else
+                                    mesa.activeChat:enviarMensagem("FALHA =/");
+                            end;
+                        end);
+                  end;
+               end)
+        end
+
         -- DEBUG FUNCTIONS
 
         local function dump(o)
@@ -59,6 +96,16 @@
         end;
         ]]> 
     </script>
+    <dataLink field="roll">
+        <event name="onChange">
+            if sheet==nil then return end
+
+            if sheet.roll then
+                sheet.roll = false
+                AskToRoll()
+            end
+        </event>
+    </dataLink>
     <tabControl align="client">
         <tab title="Principal">
             <import file="Principal.xml"/>
