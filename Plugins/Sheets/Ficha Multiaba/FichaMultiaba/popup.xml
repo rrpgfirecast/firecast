@@ -92,36 +92,4 @@
 
 			</layout>
 	</popup>
-	<popup name="popupConfig" width="210" height="160" backOpacity="0.4" autoScopeNode="false">
-		<layout left="5" top="5" width="200" height="160">
-			<label top="0" width="150" height="25" text="Ordem da Aba" horzTextAlign="center"/>
-			<edit left="125" top="0" width="50" height="25" field="index" type="number" horzTextAlign="center">
-				<event name="onChange">
-					if self.popupConfig.node==nil then return end;
-					local rcl = self:findControlByName("rclAbas");
-					if rcl~= nil then rcl:sort() end;
-				</event>
-			</edit>
-
-			<label top="25" width="150" height="25" text="Visibilidade" horzTextAlign="center"/>
-			<imageCheckBox name="cbxInvisivel" left="125" top="27" width="20" height="20" checkedImage="images/invisivel.png" uncheckedImage="images/visivel.png" autoChange="false" onClick="self:alternarVisibilidade();" hint="Altera a visibilidade entre somente o mestre e todos. "/> 
-
-			<label top="50" width="150" height="25" text="Apagar" horzTextAlign="center"/>
-			<button left="125" top="50" width="25" height="25" text="X" opacity="0.5" hint="Apaga a aba. ">
-				<event name="onClick">
-					Dialogs.confirmOkCancel("Tem certeza que quer apagar essa aba?",
-						function (confirmado)
-							if confirmado then
-								local pop = self:findControlByName("popupConfig");
-				
-								if pop ~= nil then
-									pop:closePopup();
-								end;
-								NDB.deleteNode(self.popupConfig.node);
-							end;
-					end);
-				</event>
-			</button>
-		</layout>
-	</popup>
 </group>
