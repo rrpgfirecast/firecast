@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module sdkVersion="3.6c">
+    <id>Ambesek.Mural.Npc</id>
+    <version>1.0</version>
+    <info lang="pt-BR">
+        <name>Mural de NPCs</name>
+        <description>Mural para apresentação de NPCs</description>
+        <author>Ambesek</author>
+        <site></site>
+        <contact>vinnyrpgmeister@gmail.com</contact>
+    </info>
+</module>

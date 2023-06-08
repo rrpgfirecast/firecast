@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<group>
+	<popup name="popCredit" width="415" height="250" backOpacity="0.4" autoScopeNode="false">
+			<image left="5" top="5" width="200" height="200" src="images/RPGmeister.jpg" style="stretch" optimize="true" compilerOrder="0"/>
+
+			<layout left="210" top="5" width="200" height="150">
+				<rectangle left="0" top="0" width="200" height="150" color="black" xradius="15" yradius="15" cornerType="round"/>
+				<label left="0" top="10" width="200" height="20" text="Programador: Vinny (Ambesek)" horzTextAlign="center"/>
+			</layout>
+
+			<label left="210" top="160" width="200" height="20" text="SUA VERSÃO:" field="versionInstalled"/>
+			<label left="210" top="190" width="200" height="20" text="VERSÃO ATUAL:" field="versionDownloaded"/>
+
+			<label left="5" top="215" width="120" height="20" text="CONHEÇA A MESA:"/>
+			<button left="125" top="215" width="100" text="RPGmeister" onClick="GUI.openInBrowser('https://my.firecast.app/a?a=pagRWEMesaInfo.actInfoMesa&amp;mesaid=64070');" />
+
+			<button left="305" top="215" width="100" text="Atualizar" onClick="GUI.openInBrowser('https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Mural%20de%20NPCs/output/Mural%20de%20NPCs.rpk?raw=true')" />
+	</popup>
+</group>

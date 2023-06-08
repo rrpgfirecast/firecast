@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmMuralSimples" formType="sheetTemplate" dataType="Ambesek.Mural.Npcs" title="Mural de NPCs" align="client" theme="dark">
+    <script>
+        <![CDATA[
+        local function isNewVersion(installed, downloaded)
+            local installedVersion = {};
+            local installedIndex = 0;
+            for i in string.gmatch(installed, "[^%.]+") do
+                installedIndex = installedIndex +1;
+                installedVersion[installedIndex] = i;
+            end
+
+            local downloadedVersion = {};
+            local downloadedIndex = 0;
+            for i in string.gmatch(downloaded, "[^%.]+") do
+                downloadedIndex = downloadedIndex +1;
+                downloadedVersion[downloadedIndex] = i;
+            end
+
+            for i=1, math.min(installedIndex, downloadedIndex), 1 do 
+                if (tonumber(installedVersion[i]) or 0) > (tonumber(downloadedVersion[i]) or 0) then
+                    return false;
+                elseif (tonumber(installedVersion[i]) or 0) < (tonumber(downloadedVersion[i]) or 0) then
+                    return true;
+                end;
+            end;
+
+            if downloadedIndex > installedIndex then
+                return true;
+            else
+                return false;
+            end;
+        end;
+
+        -- DEBUG FUNCTIONS
+
+        local function dump(o)
+           if type(o) == 'table' then
+              local s = '{ '
+              for k,v in pairs(o) do
+                 if type(k) ~= 'number' then k = '"'..k..'"' end
+                 s = s .. '['..k..'] = ' .. dump(v) .. ','
+              end
+              return s .. '} '
+           else
+              return tostring(o)
+           end
+        end
+        
+        local function write(str)
+            local mesa = Firecast.getMesaDe(sheet);
+            if str then
+                mesa.activeChat:escrever(str);
+            else
+                mesa.activeChat:escrever("String nula");
+            end;
+        end;
+        ]]> 
+    </script>
+    <import file="popup.xml"/>
+    <scrollBox align="client">
+        <layout align="top">
+            <layout align="left" width="150">
+                <button left="0" top="0" width="45" height="45" onClick="self.rclAbas:append();" hint="Adiciona nova aba. ">
+                    <image left="5" top="5" width="35" height="35" src="images/addIcon.png"/>
+                </button>
+                <button left="50" top="0" width="45" height="45" hint="Adiciona novo personagem aba.">
+                    <image left="5" top="5" width="35" height="35" src="images/player.png"/>
+                    <event name="onClick">
+                        if self.dsbMural.node==nil then return end
+                        self.rclMural:append();
+                    </event>
+                </button>
+                <button left="100" top="0" width="45" height="45" text="?" name="creditBt">
+                    <event name="onClick">
+                        local pop = self:findControlByName("popCredit");
+                    
+                        if pop ~= nil then
+                            pop:setNodeObject(self.sheet);
+                            pop:showPopupEx("bottom", self.creditBt);
+                        else
+                            showMessage("Ops, bug.. nao encontrei o popup de creditos para exibir");
+                        end;
+                    </event>
+                </button>
+            </layout>
+            <layout align="client">
+                <recordList name="rclAbas" field="abas" templateForm="frm_FM_Aba" align="top" height="46" selectable="true" layout="horizontal">
+                    <event name="onCompare">
+                        local comp = ((tonumber(nodeA.index) or 0) - (tonumber(nodeB.index) or 0));
+
+                        if comp == 0 then
+                            return Utils.compareStringPtBr(nodeA.nome, nodeB.nome);
+                        else
+                            return comp;
+                        end;
+                    </event>
+                    <event name="onSelect">
+                        local node = self.rclAbas.selectedNode;
+                        self.dsbMural.node = node;
+                        self.dsbMural.visible = (node ~= nil);
+                    </event>
+                    <event name="onEndEnumeration">
+                        if self.rclAbas.selectedNode == nil and sheet ~= nil then
+                            local nodes = NDB.getChildNodes(sheet.abas);               
+
+                            if #nodes > 0 then
+                                self.rclAbas.selectedNode = nodes[1];
+                            end;
+                        end;
+                    </event>
+                </recordList>
+            </layout>
+        </layout>
+        <layout align="client">
+            <dataScopeBox name="dsbMural" align="client" visible="false">
+                <rectangle align="client" color="DarkGray">
+                    <scrollBox align="client">
+                        <recordList name="rclMural" field="abas" templateForm="frmNPC" align="top" autoHeight="true" selectable="true" layout="vertical">
+                            <event name="onCompare">
+                                return Utils.compareStringPtBr(nodeA.nome, nodeB.nome);
+                            </event>
+                        </recordList>
+                    </scrollBox>
+                </rectangle>
+            </dataScopeBox>
+        </layout>
+    </scrollBox>
+    <event name="onNodeReady">
+        Internet.download("https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Mural%20de%20NPCs/output/Mural%20de%20NPCs.rpk?raw=true",
+            function(stream, contentType)
+                local info = Firecast.Plugins.getRPKDetails(stream);
+                sheet.versionDownloaded = "VERSÃO DISPONÍVEL: " .. info.version;
+
+                local installed = Firecast.Plugins.getInstalledPlugins();
+                local myself;
+                for i=1, #installed, 1 do
+                    if installed[i].moduleId == info.moduleId then
+                        myself = installed[i];
+                        sheet.versionInstalled = "VERSÃO INSTALADA: " .. installed[i].version;
+                    end;
+                end;
+
+                if sheet.noUpdate==true then return end;
+                if myself~= nil and isNewVersion(myself.version, info.version) then
+                    Dialogs.choose("Há uma nova versão desse plugin. Deseja instalar?",{"Sim", "Não", "Não perguntar novamente."},
+                        function(selected, selectedIndex, selectedText)
+                            if selected and selectedIndex == 1 then
+                                GUI.openInBrowser('https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Mural%20de%20NPCs/output/Mural%20de%20NPCs.rpk?raw=true');
+                            elseif selected and selectedIndex == 3 then
+                                sheet.noUpdate = true;
+                            end;
+                        end);
+                end;
+            end,       
+            function (errorMsg)
+                --showMessage(errorMsg);
+            end,       
+            function (downloaded, total)
+                -- esta função será chamada constantemente.
+                -- dividir "downloaded" por "total" lhe dará uma porcentagem do download.
+            end,
+            "checkForModification");
+    </event>
+</form>

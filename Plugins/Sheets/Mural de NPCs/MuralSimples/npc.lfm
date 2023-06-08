@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmNPC" height="150" width="300" theme="dark" margins="{bottom=5}">
+	<rectangle align="client" color="DimGray">
+		<rectangle align="left" width="140" margins="{left=5,top=5,bottom=5,right=5}" color="black" strokeColor="white" strokeSize="1">
+			<label left="0" top="60" width="140" height="20" text="Avatar" horzTextAlign="center"/>
+			<image align="client" field="avatar" editable="true" style="autoFit" margins="{left=2, right=2, top=2, bottom=2}">
+				<event name="OnStartDrag">
+					if drag then
+				    	drag:addData("imageURL", sheet.avatar)
+				    end
+				</event>
+			</image>
+		</rectangle>
+
+		<layout align="client" margins="{top=5,bottom=5,right=5}">
+			<layout align="top" height="25">
+				<edit align="client" field="nome"/>
+
+				<button align="right" width="25" text="X" hint="Apaga a aba.">
+					<event name="onClick">
+						Dialogs.confirmOkCancel("Tem certeza que quer apagar esse personagem?",
+							function (confirmado)
+								if confirmado then
+									NDB.deleteNode(sheet);
+								end;
+						end);
+					</event>
+				</button>
+			</layout>
+			<textEditor align="client" field="details"/>
+		</layout>
+	</rectangle>
+</form>

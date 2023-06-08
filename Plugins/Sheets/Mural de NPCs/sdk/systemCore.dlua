@@ -1,0 +1,51 @@
+﻿local system = {};
+
+function system.setClipboardText(text)
+	return _system_setClipboardText(text);
+end;
+
+function system.getClipboardText()
+	return _system_getClipboardText();
+end;
+
+function system.readClipboardAsDragNDrop(callback, options)
+	if (type(callback) ~= 'function') or not system.checkAPIVersion(87, 2) then
+		return false;
+	end;
+	
+	options = options or {};
+	options.x = tonumber(options.x) or 0;
+	options.y = tonumber(options.y) or 0;	
+
+	return _gui_readClipboardAsDragNDrop(options.x, options.y, callback);
+end;
+
+function system.getScreenSize()
+	return _system_getScreenSize();
+end;
+
+function system.isMobile()
+	return _system_isMobile();
+end;
+
+function system.getTickCount()
+	return _system_getTickCount();
+end;
+
+function system.checkAPIVersion(major, minor)
+	return system.getAPIVersion() >= system.makeAPIVersionNumber(major, minor);
+end;
+
+function system.getAPIVersion()
+	if _system_getAPIVersion ~= nil then
+		return _system_getAPIVersion();
+	else
+		return system.makeAPIVersionNumber(87, 0);
+	end;
+end;
+
+function system.makeAPIVersionNumber(major, minor)
+	return ((major or 0) << 16) | ((minor or 0) & 0xFFFF);
+end;
+
+return system;

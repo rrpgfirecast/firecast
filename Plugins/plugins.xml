@@ -1,5 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <root>
+    <element id="Ambesek.Mural.Npc" name="Mural de NPCs" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Mural%20de%20NPCs/output/Mural%20de%20NPCs.rpk?raw=true" fileName="Mural de NPCs.rpk" repositoryPath="Sheets/Mural de NPCs/" author="Ambesek" description="Mural para apresentação de NPCs" version="1.0" compilationDate="08062023011111" compilationDigest="4b586d093e1db45201220c0c9a43ba762213d385">
+        <info lang="pt-BR" name="Mural de NPCs" description="Mural para apresentação de NPCs" author="Ambesek"/>
+        <dataTypes>
+            <dataType id="Ambesek.Mural.Npcs" title="Mural de NPCs" formType="sheetTemplate">
+                <info title="Mural de NPCs"/>
+            </dataType>
+        </dataTypes>
+    </element>
     <element id="Ambesek.Hunter.Hunter" name="Ficha HxH" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20Hunter%20x%20Hunter/output/Ficha%20Hunter%20x%20Hunter.rpk?raw=true" fileName="Ficha Hunter x Hunter.rpk" repositoryPath="Sheets/Ficha Hunter x Hunter/" author="Ambesek" description="Ficha para jogos de Hunter x Hunter usando D&amp;D 5ª edição" version="1.0" compilationDate="25052023001833" compilationDigest="edfd3027632259024bf3bc3920f7614317b99c8b">
         <info lang="en" name="Ficha HxH" description="Sheet for Hunter x Hunter using D&amp;D 5e."/>
         <info lang="pt-BR" name="Ficha HxH" description="Ficha para jogos de Hunter x Hunter usando D&amp;D 5ª edição" author="Ambesek"/>
