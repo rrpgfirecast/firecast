@@ -138,7 +138,7 @@
 							elseif arvore == "Arqueiro" then
 								self.avanco1.items = {'Caçador','Falcoeiro','Arbalaster','-'}
 							elseif arvore == "Adepto" then
-								self.avanco1.items = {'Clerigo','Padre','Inquisitor','-'}
+								self.avanco1.items = {'Clerigo','Exorcista','Inquisitor','-'}
 							else
 								self.avanco1.items = {'-'}
 							end
@@ -175,12 +175,8 @@
 								self.avanco2.items = {'Lordes das Sombras','-'}
 							elseif avanco1 == "Caçador" then
 								self.avanco2.items = {'Traper','Wugushi','-'}
-							elseif avanco1 == "Falcoeiro" then
-								self.avanco2.items = {'Domador','-'}
 							elseif avanco1 == "Clerigo" then
 								self.avanco2.items = {'Sacerdote','Cruzado','-'}
-							elseif avanco1 == "Padre" then
-								self.avanco2.items = {'Exorcista','-'}
 							elseif avanco1 == "Inquisitor" then
 								self.avanco2.items = {'Templário','-'}
 							else
@@ -311,7 +307,7 @@
 				classe = sheet.arvore
 			end
 			if classe==nil or classe=="-" then
-				showMessage(classe or "nil")
+				--showMessage(classe or "nil")
 				return
 			end
 
