@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmPrincipal" align="client">
+	<template name="Title">
+		<label text="$(text)" align="left" width="90" horzTextAlign="center"/>
+		<edit field="$(field)" align="client"/>
+	</template>
+	<template name="Title2">
+		<label text="$(text)" align="left" width="90"/>
+		<edit field="$(field)" align="client"/>
+		<edit field="$(field2)" align="right" width="50"/>
+	</template>
+	<template name="Title3">
+		<label text="$(text)" align="client"/>
+		<edit field="$(field)" align="right" width="50"/>
+		<edit field="$(field2)" align="right" width="50"/>
+	</template>
+	<template name="Title4">
+		<label text="$(text)" align="client"/>
+		<edit field="$(field)" align="right" width="50" compilerOrder="1"/>
+		<rectangle align="right" width="50" color="black" strokeColor="white" strokeSize="1" compilerOrder="2">
+			<label field="$(field2)" align="client" horzTextAlign="center"/>
+		</rectangle>
+	</template>
+	<template name="Title5">
+		<label text="$(text)" align="client"/>
+		<rectangle align="right" width="50" color="black" strokeColor="white" strokeSize="1">
+			<label field="$(field)" align="client" horzTextAlign="center"/>
+		</rectangle>
+	</template>
+
+	<template name="Atributo">
+		<label text="$(text)" align="left" width="40"/>
+		<edit field="$(field)" align="client" type="number"/>
+	</template>
+	<template name="Descricao">
+		<layout align="left" width="380" margins="{right=10}">
+			<label align="left" width="90" text="$(text)" horzTextAlign="center"/>
+			<edit align="left" width="290" field="$(field)" vertTextAlign="center" />
+		</layout>
+	</template>
+	<template name="ListaFlexivel">
+		<flowPart minWidth="200" maxWidth="600" height="25" minScaledWidth="280" name="$(rclName)Part" adjustHeightToLine="false" margins="{left=5}">
+			<script>
+				<![CDATA[
+					rawset(self.$(rclName)Part, "_recalcHeight", 					
+						function ()
+							self.$(rclName)Part.height = self.$(rclName).height + 25;
+						end);
+				]]>
+			</script>
+
+			<layout align="top" height="25">
+				<button text="+" align="left" width="30" onClick="self.$(rclName):append();"/>
+				<label text="$(nome)" align="left" width="225" margins="{left=5}"/>
+			</layout>
+
+			<recordList name="$(rclName)" field="$(rclField)" templateForm="$(templateForm)" align="top" layout="vertical" autoHeight="true" hitTest="false" onResize="self.$(rclName)Part._recalcHeight();" minQt="1">
+				<event name="onCompare">
+			        return ((tonumber(nodeA.nivelHabilidade) or 0) - (tonumber(nodeB.nivelHabilidade) or 0));
+			    </event>
+			</recordList>
+		</flowPart>
+	</template>
+
+	<popup name="popVantagem" width="300" height="240" backOpacity="0.4" autoScopeNode="false">
+		<textEditor align="client" field="descricao"/>
+	</popup>
+	
+	<scrollBox align="client">
+		<layout align="top" height="185">
+			<rectangle align="left" width="185" color="black" strokeColor="white" strokeSize="1" margins="{right=5}">
+				<label left="0" top="82.5" width="185" height="20" text="Avatar" horzTextAlign="center"/>
+				<image align="client" field="avatar" editable="true" style="autoFit" margins="{left=2, right=2, top=2, bottom=2}">
+					<event name="OnStartDrag">
+						if drag then
+					    	drag:addData("imageURL", sheet.avatar)
+					    end
+					</event>
+				</image>
+			</rectangle>
+			<rectangle align="left" width="100" margins="{right=5}" color="black" strokeColor="white" strokeSize="1">
+				<layout align="top" height="25" margins="{top=5,left=5,right=5}">
+					<Atributo field="for" text="FOR"/>
+				</layout>
+				<layout align="top" height="25" margins="{top=5,left=5,right=5}">
+					<Atributo field="des" text="DES"/>
+				</layout>
+				<layout align="top" height="25" margins="{top=5,left=5,right=5}">
+					<Atributo field="con" text="CON"/>
+				</layout>
+				<layout align="top" height="25" margins="{top=5,left=5,right=5}">
+					<Atributo field="int" text="INT"/>
+				</layout>
+				<layout align="top" height="25" margins="{top=5,left=5,right=5}">
+					<Atributo field="sab" text="SAB"/>
+				</layout>
+				<layout align="top" height="25" margins="{top=5,left=5,right=5}">
+					<Atributo field="car" text="CAR"/>
+				</layout>
+			</rectangle>
+
+			<rectangle align="left" width="1205" color="black" strokeColor="white" strokeSize="1">
+				<label align="top" height="20" text="DESCRIÇÃO" margins="{left=10}"/>
+
+				<layout align="top" height="25" margins="{right=45}">
+					<Title text="NOME" field="nome"/>
+				</layout>
+
+				<layout align="top" height="25">
+					<Descricao text="PASSADO" field="passado"/>
+					<Descricao text="IDADE" field="idade"/>
+					<Descricao text="OLHOS" field="aparenciaOlhos"/>
+				</layout>
+
+				<layout align="top" height="25">
+					<Descricao text="ALTURA" field="altura"/>
+					<Descricao text="GÊNERO" field="genero"/>
+					<Descricao text="PELE" field="pele"/>
+				</layout>
+
+				<layout align="top" height="25">
+					<Descricao text="PESO" field="peso"/>
+					<Descricao text="OUTROS" field="aparenciaOutros"/>
+					<Descricao text="CABELO" field="cabelo"/>
+				</layout>
+			</rectangle>
+		</layout>
+
+		<layout align="client" margins="{top=5}">
+			<rectangle align="left" width="290" margins="{right=5}" color="black" strokeColor="white" strokeSize="1" padding="{top=5}">
+				<scrollBox align="client">
+					<flowLayout align="top" autoHeight="true" maxColumns="1" horzAlign="center" orientation="vertical" avoidScale="true">
+						<ListaFlexivel nome="PERÍCIAS" rclName="campoDasPericias" rclField="campoDasPericias" templateForm="frmPericia"/>
+					</flowLayout>
+				</scrollBox>
+			</rectangle>
+
+			<rectangle align="left" width="1205" margins="{right=5}" color="black" strokeColor="white" strokeSize="1">
+				<layout align="left" width="350" margins="{right=5,left=5,top=5,bottom=5}">
+					<scrollBox align="client">
+						<flowLayout align="top" autoHeight="true" maxColumns="1" horzAlign="center" orientation="vertical" avoidScale="true">
+							<ListaFlexivel nome="VANTAGENS" rclName="campoDasVantagens" rclField="campoDasVantagens" templateForm="frmVantagem"/>
+						</flowLayout>
+					</scrollBox>
+		        </layout>
+				<layout align="left" width="350" margins="{right=5,left=5,top=5,bottom=5}">
+					<scrollBox align="client">
+						<flowLayout align="top" autoHeight="true" maxColumns="1" horzAlign="center" orientation="vertical" avoidScale="true">
+							<ListaFlexivel nome="DESVANTAGENS" rclName="campoDasDesvantagens" rclField="campoDasDesvantagens" templateForm="frmVantagem"/>
+						</flowLayout>
+					</scrollBox>
+		        </layout>
+				<layout align="left" width="450" margins="{right=5,left=5,top=5,bottom=5}">
+					<rectangle align="client" color="black" xradius="5" yradius="15" cornerType="round">
+			        	<label align="top" height="20" text="INVENTÁRIO" horzTextAlign="center"/>
+						<textEditor align="client" field="inventario" margins="{left=5,right=5,bottom=5}"/>
+					</rectangle>
+		        </layout>
+			</rectangle>
+		</layout>
+	</scrollBox>
+</form>

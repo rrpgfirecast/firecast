@@ -1,5 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <root>
+    <element id="Ambesek.Sistema.2d6" name="Ficha +2d6" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20%2B2d6/output/Ficha%20%2B2d6.rpk?raw=true" fileName="Ficha +2d6.rpk" repositoryPath="Sheets/Ficha +2d6/" author="Ambesek" description="Ficha para o sistema +2d6." version="1.0" compilationDate="02082023002415" compilationDigest="5c15dc0b60347145dbd2aa489933bee2697a7fcc">
+        <info lang="pt-BR" name="Ficha +2d6" description="Ficha para o sistema +2d6." author="Ambesek"/>
+        <dataTypes>
+            <dataType id="Ambesek.Sistema.2d6" title="Ficha +2d6" formType="sheetTemplate">
+                <info title="Ficha +2d6"/>
+            </dataType>
+        </dataTypes>
+    </element>
     <element id="Ambesek.Mural.Npc" name="Mural de NPCs" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Mural%20de%20NPCs/output/Mural%20de%20NPCs.rpk?raw=true" fileName="Mural de NPCs.rpk" repositoryPath="Sheets/Mural de NPCs/" author="Ambesek" description="Mural para apresentação de NPCs" version="1.0" compilationDate="08062023011111" compilationDigest="4b586d093e1db45201220c0c9a43ba762213d385">
         <info lang="pt-BR" name="Mural de NPCs" description="Mural para apresentação de NPCs" author="Ambesek"/>
         <dataTypes>

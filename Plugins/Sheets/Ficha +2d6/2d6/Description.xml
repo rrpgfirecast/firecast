@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmDescription" align="client">
+	<scrollBox align="client">
+		<layout align="client" margins="{right=10}">
+			<rectangle align="client" color="black">
+				<label align="top" margins="{top=5,left=5}" height="20" text="HISTORIA"/>
+				<richEdit align="client" field="background" backgroundColor="#333333" defaultFontSize="12" defaultFontColor="white"/>
+			</rectangle>
+		</layout>
+
+		<layout align="right" width="375">
+			<layout left="0" top="0" width="375" height="300">
+				<rectangle align="client" color="black"/>
+				<label left="5" top="1" width="100" height="20" text="APARÊNCIA"/>
+				<textEditor left="5" top="25" width="365" height="270" field="aparencia"/>
+			</layout>
+			<layout left="0" top="310" width="375" height="300">
+				<rectangle align="client" color="black"/>
+				<label left="5" top="1" width="100" height="20" text="PERSONALIDADE"/>
+				<textEditor left="5" top="25" width="365" height="270" field="personalidade"/>
+			</layout>
+		</layout>
+	</scrollBox>
+</form>

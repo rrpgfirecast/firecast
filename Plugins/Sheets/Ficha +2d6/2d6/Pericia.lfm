@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmPericia" height="25" width="350" margins="{top=2}">
+	 <script> 
+		<![CDATA[			
+		local function askForDelete()
+			Dialogs.confirmYesNo("Deseja realmente apagar essa perícia?",
+								 function (confirmado)
+									if confirmado then
+										NDB.deleteNode(sheet);
+									end;
+								 end);
+		end;
+
+		local function showHabilidadePopup()
+			local pop = self:findControlByName("popVantagem");
+				
+			if pop ~= nil then
+				pop:setNodeObject(self.sheet);
+				pop:showPopupEx("right", self);
+			else
+				showMessage("Ops, bug.. nao encontrei o popup de habilidades para exibir");
+			end;				
+		end;
+	]]>
+	</script>
+
+	<layout align="right" width="140">
+		<layout align="left" width="90">
+			<comboBox vertTextAlign="center" horzTextAlign="center" align="left" width="60" field="chave" items="{'FOR', 'DES', 'CON', 'INT', 'SAB', 'CAR', '-'}" values="{'for', 'des', 'con', 'int', 'sab', 'car', 'none'}" fontColor="white"/>
+			<edit align="right" width="30" field="bonus" type="number" vertTextAlign="center"/>
+		</layout>
+		<layout align="right" width="50">
+			<button align="right" width="25" text="R">
+				<event name="onClick">
+					local node = NDB.getRoot(sheet);
+					local mesa = Firecast.getMesaDe(sheet);
+
+					local atr = tonumber( node[(sheet.chave or "none")] ) or 0
+					local bonus = tonumber(sheet.bonus) or 0
+
+					local rolagem = rrpg.interpretarRolagem("2d6+"..bonus.."+"..atr)
+
+					mesa.activeChat:rolarDados(rolagem, "Teste de " .. (sheet.nomePericia or "Pericia") .. " de " .. (node.nome or "Nome"))
+				</event>
+			</button>
+			<button align="right" width="25" text="X" onClick="askForDelete();"/>
+		</layout>
+	</layout>
+	<edit align="client" vertTextAlign="center" field="nomePericia"/>
+</form>
