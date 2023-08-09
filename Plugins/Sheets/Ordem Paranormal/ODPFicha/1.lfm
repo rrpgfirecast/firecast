@@ -1,0 +1,419 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmODPFicha1_svg" align="client" theme="light" margins="{top=1}">
+    <style>#frmODPFicha1_svg path {color: black; strokeColor: black; mode: stretch;} &#xD;
+#frmODPFicha1_svg label {fontColor: black; textTrimming: none; wordWrap: false; autoSize: true;}</style>
+    <scrollBox align="client">
+        <rectangle width="1162" height="1559" color="white">&#xD;
+            <image left="0" top="0" width="1162" height="1559" src="images/1.png" style="stretch" optimize="true" compilerOrder="0"/>&#xD;
+            <layout left="148" top="61" width="319" height="35" compilerOrder="1">
+                <edit transparent="true" fontSize="24.1" fontColor="#000000" vertTextAlign="center" left="0" top="0" width="319" height="36" field="personagem" compilerOrder="2"/>
+            </layout>&#xD;
+            <layout left="501" top="61" width="142" height="35" compilerOrder="3">
+                <edit transparent="true" fontSize="24.1" fontColor="#000000" vertTextAlign="center" left="0" top="0" width="142" height="36" field="jogador" compilerOrder="4"/>
+            </layout>&#xD;
+            <layout left="364" top="194" width="84" height="70" compilerOrder="5">
+                <edit transparent="true" fontSize="50.4" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="84" height="71" field="atr_agi" compilerOrder="6"/>
+            </layout>&#xD;
+            <layout left="204" top="299" width="84" height="70" compilerOrder="9">
+                <edit transparent="true" fontSize="50.4" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="84" height="71" field="atr_for" compilerOrder="10"/>
+            </layout>&#xD;
+            <layout left="521" top="299" width="84" height="70" compilerOrder="7">
+                <edit transparent="true" fontSize="50.4" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="84" height="71" field="atr_int" compilerOrder="8"/>
+            </layout>&#xD;
+            <layout left="909" top="303" width="31" height="27" compilerOrder="83">
+                <edit transparent="true" fontSize="18" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="31" height="28" field="b_acrobacia" compilerOrder="84"/>
+            </layout>&#xD;
+            <layout left="1065" top="304" width="39" height="28" compilerOrder="139">
+                <edit transparent="true" fontSize="18.8" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="39" height="29" field="o_acrobacia" compilerOrder="140"/>
+            </layout>&#xD;
+            <layout left="953" top="305" width="108" height="27" compilerOrder="217">
+                <edit transparent="true" fontSize="16" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="108" height="28" field="treino_acrobacia" compilerOrder="218"/>
+            </layout>&#xD;
+            <layout left="910" top="337" width="31" height="28" compilerOrder="85">
+                <edit transparent="true" fontSize="18.8" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="31" height="29" field="b_adestramento" compilerOrder="86"/>
+            </layout>&#xD;
+            <layout left="1065" top="337" width="39" height="28" compilerOrder="141">
+                <edit transparent="true" fontSize="18.8" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="39" height="29" field="o_adestramento" compilerOrder="142"/>
+            </layout>&#xD;
+            <layout left="953" top="338" width="107" height="27" compilerOrder="215">
+                <edit transparent="true" fontSize="16" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="107" height="28" field="treino_adestramento" compilerOrder="216"/>
+            </layout>&#xD;
+            <layout left="911" top="369" width="31" height="28" compilerOrder="87">
+                <edit transparent="true" fontSize="18.8" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="31" height="29" field="b_artes" compilerOrder="88"/>
+            </layout>&#xD;
+            <layout left="1065" top="370" width="39" height="28" compilerOrder="143">
+                <edit transparent="true" fontSize="18.8" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="39" height="29" field="o_artes" compilerOrder="144"/>
+            </layout>&#xD;
+            <layout left="953" top="371" width="107" height="27" compilerOrder="213">
+                <edit transparent="true" fontSize="16" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="107" height="28" field="treino_artes" compilerOrder="214"/>
+            </layout>&#xD;
+            <layout left="1066" top="402" width="39" height="28" compilerOrder="145">
+                <edit transparent="true" fontSize="18.8" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="39" height="29" field="o_atletismo" compilerOrder="146"/>
+            </layout>&#xD;
+            <layout left="911" top="403" width="31" height="28" compilerOrder="89">
+                <edit transparent="true" fontSize="18.8" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="31" height="29" field="b_atletismo" compilerOrder="90"/>
+            </layout>&#xD;
+            <layout left="953" top="404" width="107" height="27" compilerOrder="211">
+                <edit transparent="true" fontSize="16" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="107" height="28" field="treino_atletismo" compilerOrder="212"/>
+            </layout>&#xD;
+            <layout left="911" top="435" width="31" height="28" compilerOrder="91">
+                <edit transparent="true" fontSize="18.8" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="31" height="29" field="b_atualidades" compilerOrder="92"/>
+            </layout>&#xD;
+            <layout left="1065" top="435" width="39" height="28" compilerOrder="147">
+                <edit transparent="true" fontSize="18.8" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="39" height="29" field="o_atualidades" compilerOrder="148"/>
+            </layout>&#xD;
+            <layout left="953" top="437" width="107" height="27" compilerOrder="209">
+                <edit transparent="true" fontSize="16" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="107" height="28" field="treino_atualidades" compilerOrder="210"/>
+            </layout>&#xD;
+            <layout left="1066" top="468" width="39" height="28" compilerOrder="149">
+                <edit transparent="true" fontSize="18.8" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="39" height="29" field="o_ciencias" compilerOrder="150"/>
+            </layout>&#xD;
+            <layout left="910" top="469" width="31" height="28" compilerOrder="93">
+                <edit transparent="true" fontSize="18.8" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="31" height="29" field="b_ciencias" compilerOrder="94"/>
+            </layout>&#xD;
+            <layout left="953" top="470" width="107" height="27" compilerOrder="207">
+                <edit transparent="true" fontSize="18" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="107" height="28" field="treino_ciencias" compilerOrder="208"/>
+            </layout>&#xD;
+            <layout left="249" top="491" width="84" height="70" compilerOrder="11">
+                <edit transparent="true" fontSize="50.4" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="84" height="71" field="atr_pre" compilerOrder="12"/>
+            </layout>&#xD;
+            <layout left="476" top="493" width="84" height="70" compilerOrder="13">
+                <edit transparent="true" fontSize="50.4" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="84" height="71" field="atr_vig" compilerOrder="14"/>
+            </layout>&#xD;
+            <layout left="1065" top="501" width="39" height="28" compilerOrder="151">
+                <edit transparent="true" fontSize="18.8" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="39" height="29" field="o_crime" compilerOrder="152"/>
+            </layout>&#xD;
+            <layout left="910" top="502" width="31" height="28" compilerOrder="95">
+                <edit transparent="true" fontSize="18.8" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="31" height="29" field="b_crime" compilerOrder="96"/>
+            </layout>&#xD;
+            <layout left="953" top="502" width="108" height="27" compilerOrder="205">
+                <edit transparent="true" fontSize="18" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="108" height="28" field="treino_crime" compilerOrder="206"/>
+            </layout>&#xD;
+            <layout left="1066" top="534" width="39" height="28" compilerOrder="153">
+                <edit transparent="true" fontSize="18.8" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="39" height="29" field="o_diplomacia" compilerOrder="154"/>
+            </layout>&#xD;
+            <layout left="910" top="535" width="31" height="28" compilerOrder="97">
+                <edit transparent="true" fontSize="18.8" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="31" height="29" field="b_diplomacia" compilerOrder="98"/>
+            </layout>&#xD;
+            <layout left="953" top="535" width="108" height="27" compilerOrder="203">
+                <edit transparent="true" fontSize="16" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="108" height="28" field="treino_diplomacia" compilerOrder="204"/>
+            </layout>&#xD;
+            <layout left="909" top="567" width="31" height="28" compilerOrder="99">
+                <edit transparent="true" fontSize="18.8" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="31" height="29" field="b_enganacao" compilerOrder="100"/>
+            </layout>&#xD;
+            <layout left="1065" top="567" width="39" height="28" compilerOrder="155">
+                <edit transparent="true" fontSize="18.8" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="39" height="29" field="o_enganacao" compilerOrder="156"/>
+            </layout>&#xD;
+            <layout left="953" top="568" width="107" height="27" compilerOrder="201">
+                <edit transparent="true" fontSize="16" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="107" height="28" field="treino_enganacao" compilerOrder="202"/>
+            </layout>&#xD;
+            <layout left="909" top="600" width="31" height="28" compilerOrder="101">
+                <edit transparent="true" fontSize="18.8" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="31" height="29" field="b_fortitude" compilerOrder="102"/>
+            </layout>&#xD;
+            <layout left="1065" top="600" width="39" height="28" compilerOrder="157">
+                <edit transparent="true" fontSize="18.8" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="39" height="29" field="o_fortitude" compilerOrder="158"/>
+            </layout>&#xD;
+            <layout left="954" top="601" width="108" height="27" compilerOrder="197">
+                <edit transparent="true" fontSize="16" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="108" height="28" field="treino_fortitude" compilerOrder="198"/>
+            </layout>&#xD;
+            <layout left="909" top="633" width="31" height="28" compilerOrder="103">
+                <edit transparent="true" fontSize="18.8" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="31" height="29" field="b_furtividade" compilerOrder="104"/>
+            </layout>&#xD;
+            <layout left="1066" top="633" width="39" height="28" compilerOrder="159">
+                <edit transparent="true" fontSize="18.8" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="39" height="29" field="o_furtividade" compilerOrder="160"/>
+            </layout>&#xD;
+            <layout left="953" top="634" width="108" height="27" compilerOrder="219">
+                <edit transparent="true" fontSize="16" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="108" height="28" field="treino_furtividade" compilerOrder="220"/>
+            </layout>&#xD;
+            <layout left="1066" top="665" width="39" height="28" compilerOrder="161">
+                <edit transparent="true" fontSize="18.8" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="39" height="29" field="o_iniciativa" compilerOrder="162"/>
+            </layout>&#xD;
+            <layout left="909" top="666" width="31" height="28" compilerOrder="105">
+                <edit transparent="true" fontSize="18.8" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="31" height="29" field="b_iniciativa" compilerOrder="106"/>
+            </layout>&#xD;
+            <layout left="954" top="667" width="108" height="27" compilerOrder="221">
+                <edit transparent="true" fontSize="16" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="108" height="28" field="treino_iniciativa" compilerOrder="222"/>
+            </layout>&#xD;
+            <layout left="272" top="680" width="379" height="37" compilerOrder="265">
+                <edit transparent="true" fontSize="24" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="379" height="38" field="origem" compilerOrder="266"/>
+            </layout>&#xD;
+            <layout left="954" top="699" width="108" height="27" compilerOrder="223">
+                <edit transparent="true" fontSize="16" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="108" height="28" field="treino_intimidacao" compilerOrder="224"/>
+            </layout>&#xD;
+            <layout left="1066" top="699" width="39" height="28" compilerOrder="163">
+                <edit transparent="true" fontSize="18.8" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="39" height="29" field="o_intimidacao" compilerOrder="164"/>
+            </layout>&#xD;
+            <layout left="909" top="700" width="31" height="28" compilerOrder="107">
+                <edit transparent="true" fontSize="18.8" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="31" height="29" field="b_intimidacao" compilerOrder="108"/>
+            </layout>&#xD;
+            <layout left="909" top="732" width="31" height="28" compilerOrder="109">
+                <edit transparent="true" fontSize="18.8" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="31" height="29" field="b_intuicao" compilerOrder="110"/>
+            </layout>&#xD;
+            <layout left="954" top="732" width="107" height="27" compilerOrder="225">
+                <edit transparent="true" fontSize="16" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="107" height="28" field="treino_intuicao" compilerOrder="226"/>
+            </layout>&#xD;
+            <layout left="1066" top="732" width="39" height="28" compilerOrder="165">
+                <edit transparent="true" fontSize="18.8" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="39" height="29" field="o_intuicao" compilerOrder="166"/>
+            </layout>&#xD;
+            <layout left="258" top="747" width="392" height="37" compilerOrder="199">
+                <edit transparent="true" fontSize="24" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="392" height="38" field="classe" compilerOrder="200"/>
+            </layout>&#xD;
+            <layout left="909" top="764" width="31" height="28" compilerOrder="111">
+                <edit transparent="true" fontSize="18.8" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="31" height="29" field="b_investigacao" compilerOrder="112"/>
+            </layout>&#xD;
+            <layout left="954" top="765" width="107" height="27" compilerOrder="227">
+                <edit transparent="true" fontSize="16" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="107" height="28" field="treino_investigacao" compilerOrder="228"/>
+            </layout>&#xD;
+            <layout left="1065" top="765" width="39" height="28" compilerOrder="167">
+                <edit transparent="true" fontSize="18.8" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="39" height="29" field="o_investigacao" compilerOrder="168"/>
+            </layout>&#xD;
+            <layout left="909" top="797" width="31" height="28" compilerOrder="113">
+                <edit transparent="true" fontSize="18.8" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="31" height="29" field="b_luta" compilerOrder="114"/>
+            </layout>&#xD;
+            <layout left="954" top="798" width="107" height="27" compilerOrder="235">
+                <edit transparent="true" fontSize="16" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="107" height="28" field="treino_luta" compilerOrder="236"/>
+            </layout>&#xD;
+            <layout left="1065" top="798" width="39" height="28" compilerOrder="169">
+                <edit transparent="true" fontSize="18.8" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="39" height="29" field="o_luta" compilerOrder="170"/>
+            </layout>&#xD;
+            <layout left="490" top="816" width="160" height="54" compilerOrder="15">
+                <edit transparent="true" fontSize="38.3" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="160" height="55" field="deslocamento" compilerOrder="16"/>
+            </layout>&#xD;
+            <layout left="208" top="817" width="53" height="49" compilerOrder="17">
+                <edit transparent="true" fontSize="34.6" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="53" height="50" field="nex" compilerOrder="18"/>
+            </layout>&#xD;
+            <layout left="303" top="819" width="74" height="46" compilerOrder="19">
+                <edit transparent="true" fontSize="32.3" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="74" height="47" field="pe_rodada" compilerOrder="20"/>
+            </layout>&#xD;
+            <layout left="909" top="830" width="31" height="28" compilerOrder="115">
+                <edit transparent="true" fontSize="18.8" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="31" height="29" field="b_medicina" compilerOrder="116"/>
+            </layout>&#xD;
+            <layout left="954" top="831" width="107" height="27" compilerOrder="237">
+                <edit transparent="true" fontSize="16" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="107" height="28" field="treino_medicina" compilerOrder="238"/>
+            </layout>&#xD;
+            <layout left="1065" top="831" width="39" height="28" compilerOrder="171">
+                <edit transparent="true" fontSize="18.8" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="39" height="29" field="o_medicina" compilerOrder="172"/>
+            </layout>&#xD;
+            <layout left="909" top="863" width="31" height="28" compilerOrder="117">
+                <edit transparent="true" fontSize="18.8" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="31" height="29" field="b_ocultismo" compilerOrder="118"/>
+            </layout>&#xD;
+            <layout left="1065" top="863" width="39" height="28" compilerOrder="173">
+                <edit transparent="true" fontSize="18.8" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="39" height="29" field="o_ocultismo" compilerOrder="174"/>
+            </layout>&#xD;
+            <layout left="954" top="864" width="107" height="27" compilerOrder="239">
+                <edit transparent="true" fontSize="16" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="107" height="28" field="treino_ocultismo" compilerOrder="240"/>
+            </layout>&#xD;
+            <layout left="170" top="896" width="78" height="61" compilerOrder="21">
+                <edit transparent="true" fontSize="43.6" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="78" height="62" field="pv_max" compilerOrder="22"/>
+            </layout>&#xD;
+            <layout left="909" top="896" width="31" height="28" compilerOrder="119">
+                <edit transparent="true" fontSize="18.8" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="31" height="29" field="b_percepcao" compilerOrder="120"/>
+            </layout>&#xD;
+            <layout left="1065" top="896" width="39" height="28" compilerOrder="175">
+                <edit transparent="true" fontSize="18.8" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="39" height="29" field="o_percepcao" compilerOrder="176"/>
+            </layout>&#xD;
+            <layout left="954" top="897" width="107" height="27" compilerOrder="241">
+                <edit transparent="true" fontSize="16" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="107" height="28" field="treino_percepcao" compilerOrder="242"/>
+            </layout>&#xD;
+            <layout left="429" top="898" width="72" height="61" compilerOrder="25">
+                <edit transparent="true" fontSize="43.6" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="72" height="62" field="pe_max" compilerOrder="26"/>
+            </layout>&#xD;
+            <layout left="1065" top="929" width="39" height="28" compilerOrder="177">
+                <edit transparent="true" fontSize="18.8" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="39" height="29" field="o_pilotagem" compilerOrder="178"/>
+            </layout>&#xD;
+            <layout left="909" top="930" width="31" height="28" compilerOrder="121">
+                <edit transparent="true" fontSize="18.8" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="31" height="29" field="b_pilotagem" compilerOrder="122"/>
+            </layout>&#xD;
+            <layout left="954" top="930" width="107" height="27" compilerOrder="243">
+                <edit transparent="true" fontSize="16" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="107" height="28" field="treino_pilotagem" compilerOrder="244"/>
+            </layout>&#xD;
+            <layout left="630" top="950" width="21" height="14" compilerOrder="231">
+                <edit transparent="true" fontSize="8.3" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="21" height="15" field="mod_pe" compilerOrder="232"/>
+            </layout>&#xD;
+            <layout left="346" top="951" width="20" height="14" compilerOrder="229">
+                <edit transparent="true" fontSize="8.3" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="20" height="15" field="mod_pv" compilerOrder="230"/>
+            </layout>&#xD;
+            <layout left="909" top="962" width="31" height="28" compilerOrder="123">
+                <edit transparent="true" fontSize="18.8" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="31" height="29" field="b_pontaria" compilerOrder="124"/>
+            </layout>&#xD;
+            <layout left="954" top="962" width="107" height="27" compilerOrder="245">
+                <edit transparent="true" fontSize="16" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="107" height="28" field="treino_pontaria" compilerOrder="246"/>
+            </layout>&#xD;
+            <layout left="1065" top="962" width="39" height="28" compilerOrder="179">
+                <edit transparent="true" fontSize="18.8" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="39" height="29" field="o_pontaria" compilerOrder="180"/>
+            </layout>&#xD;
+            <layout left="456" top="963" width="195" height="40" compilerOrder="35">
+                <edit transparent="true" fontSize="27.8" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="195" height="41" field="pe_atual" compilerOrder="36"/>
+            </layout>&#xD;
+            <layout left="197" top="964" width="168" height="39" compilerOrder="33">
+                <edit transparent="true" fontSize="27.1" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="168" height="40" field="pv_atual" compilerOrder="34"/>
+            </layout>&#xD;
+            <layout left="700" top="994" width="120" height="26" compilerOrder="195">
+                <edit transparent="true" fontSize="16" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="120" height="27" field="profissao" compilerOrder="196"/>
+            </layout>&#xD;
+            <layout left="909" top="995" width="31" height="28" compilerOrder="125">
+                <edit transparent="true" fontSize="18.8" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="31" height="29" field="b_profissao" compilerOrder="126"/>
+            </layout>&#xD;
+            <layout left="954" top="995" width="107" height="27" compilerOrder="247">
+                <edit transparent="true" fontSize="16" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="107" height="28" field="treino_profissao" compilerOrder="248"/>
+            </layout>&#xD;
+            <layout left="1065" top="995" width="39" height="28" compilerOrder="181">
+                <edit transparent="true" fontSize="18.8" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="39" height="29" field="o_profissao" compilerOrder="182"/>
+            </layout>&#xD;
+            <layout left="162" top="1027" width="92" height="81" compilerOrder="27">
+                <edit transparent="true" fontSize="58.6" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="92" height="82" field="defesa_base" compilerOrder="28"/>
+            </layout>&#xD;
+            <layout left="909" top="1028" width="31" height="27" compilerOrder="127">
+                <edit transparent="true" fontSize="18" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="31" height="28" field="b_reflexos" compilerOrder="128"/>
+            </layout>&#xD;
+            <layout left="954" top="1028" width="107" height="27" compilerOrder="249">
+                <edit transparent="true" fontSize="16" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="107" height="28" field="treino_reflexos" compilerOrder="250"/>
+            </layout>&#xD;
+            <layout left="1065" top="1028" width="39" height="28" compilerOrder="183">
+                <edit transparent="true" fontSize="18.8" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="39" height="29" field="o_reflexos" compilerOrder="184"/>
+            </layout>&#xD;
+            <layout left="486" top="1030" width="84" height="61" compilerOrder="23">
+                <edit transparent="true" fontSize="43.6" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="84" height="62" field="san_max" compilerOrder="24"/>
+            </layout>&#xD;
+            <layout left="909" top="1060" width="31" height="28" compilerOrder="129">
+                <edit transparent="true" fontSize="18.8" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="31" height="29" field="b_religiao" compilerOrder="130"/>
+            </layout>&#xD;
+            <layout left="1065" top="1060" width="39" height="28" compilerOrder="185">
+                <edit transparent="true" fontSize="18.8" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="39" height="29" field="o_religiao" compilerOrder="186"/>
+            </layout>&#xD;
+            <layout left="954" top="1061" width="107" height="27" compilerOrder="251">
+                <edit transparent="true" fontSize="16" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="107" height="28" field="treino_religiao" compilerOrder="252"/>
+            </layout>&#xD;
+            <layout left="419" top="1078" width="37" height="28" compilerOrder="31">
+                <edit transparent="true" fontSize="18.8" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="37" height="29" field="defesa_outros" compilerOrder="32"/>
+            </layout>&#xD;
+            <layout left="361" top="1079" width="37" height="28" compilerOrder="29">
+                <edit transparent="true" fontSize="18.8" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="37" height="29" field="defesa_equip" compilerOrder="30"/>
+            </layout>&#xD;
+            <layout left="631" top="1082" width="20" height="14" compilerOrder="233">
+                <edit transparent="true" fontSize="8.3" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="20" height="15" field="mod_san" compilerOrder="234"/>
+            </layout>&#xD;
+            <layout left="910" top="1093" width="31" height="28" compilerOrder="131">
+                <edit transparent="true" fontSize="18.8" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="31" height="29" field="b_sobrevivencia" compilerOrder="132"/>
+            </layout>&#xD;
+            <layout left="954" top="1094" width="107" height="27" compilerOrder="253">
+                <edit transparent="true" fontSize="16" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="107" height="28" field="treino_sobrevivencia" compilerOrder="254"/>
+            </layout>&#xD;
+            <layout left="1065" top="1094" width="39" height="28" compilerOrder="187">
+                <edit transparent="true" fontSize="18.8" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="39" height="29" field="o_sobrevivencia" compilerOrder="188"/>
+            </layout>&#xD;
+            <layout left="512" top="1096" width="139" height="38" compilerOrder="37">
+                <edit transparent="true" fontSize="26.3" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="139" height="39" field="san_atual" compilerOrder="38"/>
+            </layout>&#xD;
+            <layout left="225" top="1125" width="39" height="28" compilerOrder="261">
+                <edit transparent="true" fontSize="18.8" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="39" height="29" field="esquiva" compilerOrder="262"/>
+            </layout>&#xD;
+            <layout left="418" top="1126" width="39" height="28" compilerOrder="263">
+                <edit transparent="true" fontSize="18.8" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="39" height="29" field="bloqueio" compilerOrder="264"/>
+            </layout>&#xD;
+            <layout left="1065" top="1126" width="39" height="28" compilerOrder="189">
+                <edit transparent="true" fontSize="18.8" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="39" height="29" field="o_tatica" compilerOrder="190"/>
+            </layout>&#xD;
+            <layout left="910" top="1127" width="31" height="28" compilerOrder="133">
+                <edit transparent="true" fontSize="18.8" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="31" height="29" field="b_tatica" compilerOrder="134"/>
+            </layout>&#xD;
+            <layout left="954" top="1127" width="107" height="27" compilerOrder="255">
+                <edit transparent="true" fontSize="16" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="107" height="28" field="treino_tatica" compilerOrder="256"/>
+            </layout>&#xD;
+            <layout left="910" top="1159" width="31" height="28" compilerOrder="135">
+                <edit transparent="true" fontSize="18.8" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="31" height="29" field="b_tecnologia" compilerOrder="136"/>
+            </layout>&#xD;
+            <layout left="1065" top="1159" width="39" height="28" compilerOrder="191">
+                <edit transparent="true" fontSize="18.8" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="39" height="29" field="o_tecnologia" compilerOrder="192"/>
+            </layout>&#xD;
+            <layout left="954" top="1160" width="107" height="27" compilerOrder="257">
+                <edit transparent="true" fontSize="16" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="107" height="28" field="treino_tecnologia" compilerOrder="258"/>
+            </layout>&#xD;
+            <layout left="263" top="1181" width="388" height="28" compilerOrder="39">
+                <edit transparent="true" fontSize="18.8" fontColor="#000000" vertTextAlign="center" left="0" top="0" width="388" height="29" field="protecao" compilerOrder="40"/>
+            </layout>&#xD;
+            <layout left="1066" top="1192" width="39" height="28" compilerOrder="193">
+                <edit transparent="true" fontSize="18.8" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="39" height="29" field="o_vontade" compilerOrder="194"/>
+            </layout>&#xD;
+            <layout left="909" top="1193" width="31" height="28" compilerOrder="137">
+                <edit transparent="true" fontSize="18.8" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="31" height="29" field="b_vontade" compilerOrder="138"/>
+            </layout>&#xD;
+            <layout left="954" top="1193" width="107" height="27" compilerOrder="259">
+                <edit transparent="true" fontSize="16" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="107" height="28" field="treino_vontade" compilerOrder="260"/>
+            </layout>&#xD;
+            <layout left="264" top="1216" width="389" height="28" compilerOrder="41">
+                <edit transparent="true" fontSize="18.8" fontColor="#000000" vertTextAlign="center" left="0" top="0" width="389" height="29" field="resistencias" compilerOrder="42"/>
+            </layout>&#xD;
+            <layout left="143" top="1310" width="330" height="28" compilerOrder="43">
+                <edit transparent="true" fontSize="18.8" fontColor="#000000" vertTextAlign="center" left="0" top="0" width="330" height="29" field="arma1" compilerOrder="44"/>
+            </layout>&#xD;
+            <layout left="488" top="1310" width="119" height="28" compilerOrder="63">
+                <edit transparent="true" fontSize="18.8" fontColor="#000000" vertTextAlign="center" left="0" top="0" width="119" height="29" field="teste1" compilerOrder="64"/>
+            </layout>&#xD;
+            <layout left="623" top="1311" width="125" height="28" compilerOrder="73">
+                <edit transparent="true" fontSize="18.8" fontColor="#000000" vertTextAlign="center" left="0" top="0" width="125" height="29" field="dano1" compilerOrder="74"/>
+            </layout>&#xD;
+            <layout left="763" top="1311" width="340" height="28" compilerOrder="53">
+                <edit transparent="true" fontSize="18.8" fontColor="#000000" vertTextAlign="center" left="0" top="0" width="340" height="29" field="critico1" compilerOrder="54"/>
+            </layout>&#xD;
+            <layout left="142" top="1342" width="330" height="28" compilerOrder="45">
+                <edit transparent="true" fontSize="18.8" fontColor="#000000" vertTextAlign="center" left="0" top="0" width="330" height="29" field="arma2" compilerOrder="46"/>
+            </layout>&#xD;
+            <layout left="488" top="1344" width="119" height="28" compilerOrder="65">
+                <edit transparent="true" fontSize="18.8" fontColor="#000000" vertTextAlign="center" left="0" top="0" width="119" height="29" field="teste2" compilerOrder="66"/>
+            </layout>&#xD;
+            <layout left="623" top="1344" width="125" height="28" compilerOrder="75">
+                <edit transparent="true" fontSize="18.8" fontColor="#000000" vertTextAlign="center" left="0" top="0" width="125" height="29" field="dano2" compilerOrder="76"/>
+            </layout>&#xD;
+            <layout left="763" top="1344" width="340" height="28" compilerOrder="55">
+                <edit transparent="true" fontSize="18.8" fontColor="#000000" vertTextAlign="center" left="0" top="0" width="340" height="29" field="critico2" compilerOrder="56"/>
+            </layout>&#xD;
+            <layout left="142" top="1375" width="330" height="28" compilerOrder="47">
+                <edit transparent="true" fontSize="18.8" fontColor="#000000" vertTextAlign="center" left="0" top="0" width="330" height="29" field="arma3" compilerOrder="48"/>
+            </layout>&#xD;
+            <layout left="488" top="1375" width="119" height="28" compilerOrder="67">
+                <edit transparent="true" fontSize="18.8" fontColor="#000000" vertTextAlign="center" left="0" top="0" width="119" height="29" field="teste3" compilerOrder="68"/>
+            </layout>&#xD;
+            <layout left="623" top="1376" width="125" height="28" compilerOrder="77">
+                <edit transparent="true" fontSize="18.8" fontColor="#000000" vertTextAlign="center" left="0" top="0" width="125" height="29" field="dano3" compilerOrder="78"/>
+            </layout>&#xD;
+            <layout left="763" top="1376" width="340" height="28" compilerOrder="57">
+                <edit transparent="true" fontSize="18.8" fontColor="#000000" vertTextAlign="center" left="0" top="0" width="340" height="29" field="critico3" compilerOrder="58"/>
+            </layout>&#xD;
+            <layout left="142" top="1407" width="330" height="28" compilerOrder="49">
+                <edit transparent="true" fontSize="18.8" fontColor="#000000" vertTextAlign="center" left="0" top="0" width="330" height="29" field="arma4" compilerOrder="50"/>
+            </layout>&#xD;
+            <layout left="488" top="1407" width="119" height="28" compilerOrder="69">
+                <edit transparent="true" fontSize="18.8" fontColor="#000000" vertTextAlign="center" left="0" top="0" width="119" height="29" field="teste4" compilerOrder="70"/>
+            </layout>&#xD;
+            <layout left="765" top="1407" width="340" height="28" compilerOrder="59">
+                <edit transparent="true" fontSize="18.8" fontColor="#000000" vertTextAlign="center" left="0" top="0" width="340" height="29" field="critico4" compilerOrder="60"/>
+            </layout>&#xD;
+            <layout left="623" top="1409" width="125" height="28" compilerOrder="79">
+                <edit transparent="true" fontSize="18.8" fontColor="#000000" vertTextAlign="center" left="0" top="0" width="125" height="29" field="dano4" compilerOrder="80"/>
+            </layout>&#xD;
+            <layout left="142" top="1440" width="330" height="28" compilerOrder="51">
+                <edit transparent="true" fontSize="18.8" fontColor="#000000" vertTextAlign="center" left="0" top="0" width="330" height="29" field="arma5" compilerOrder="52"/>
+            </layout>&#xD;
+            <layout left="488" top="1440" width="119" height="28" compilerOrder="71">
+                <edit transparent="true" fontSize="18.8" fontColor="#000000" vertTextAlign="center" left="0" top="0" width="119" height="29" field="teste5" compilerOrder="72"/>
+            </layout>&#xD;
+            <layout left="623" top="1440" width="125" height="28" compilerOrder="81">
+                <edit transparent="true" fontSize="18.8" fontColor="#000000" vertTextAlign="center" left="0" top="0" width="125" height="29" field="dano5" compilerOrder="82"/>
+            </layout>&#xD;
+            <layout left="765" top="1440" width="340" height="28" compilerOrder="61">
+                <edit transparent="true" fontSize="18.8" fontColor="#000000" vertTextAlign="center" left="0" top="0" width="340" height="29" field="critico5" compilerOrder="62"/>
+            </layout>&#xD;
+            <layout left="100" top="1491" width="94" height="22" compilerOrder="269">
+                <button left="0" top="0" width="94" height="23" compilerOrder="270"/>
+            </layout>&#xD;
+            <layout left="204" top="1491" width="22" height="22" compilerOrder="267">
+                <checkBox left="0" top="0" width="22" height="23" field="desativar" compilerOrder="268"/>
+            </layout>&#xD;
+            <layout left="230" top="1491" width="166" height="22" compilerOrder="271">
+                <edit transparent="true" fontSize="14.3" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="166" height="23" field="autoon" compilerOrder="272"/>
+            </layout>&#xD;
+        </rectangle>
+    </scrollBox>
+    <dataLink fields="{&apos;atr_agi&apos;, &apos;atr_for&apos;, &apos;atr_int&apos;, &apos;atr_pre&apos;, &apos;atr_vig&apos;, &apos;autoon&apos;, &apos;bloqueio&apos;, &apos;b_acrobacia&apos;, &apos;b_adestramento&apos;, &apos;b_artes&apos;, &apos;b_atletismo&apos;, &apos;b_atualidades&apos;, &apos;b_ciencias&apos;, &apos;b_crime&apos;, &apos;b_diplomacia&apos;, &apos;b_enganacao&apos;, &apos;b_fortitude&apos;, &apos;b_furtividade&apos;, &apos;b_iniciativa&apos;, &apos;b_intimidacao&apos;, &apos;b_intuicao&apos;, &apos;b_investigacao&apos;, &apos;b_luta&apos;, &apos;b_medicina&apos;, &apos;b_ocultismo&apos;, &apos;b_percepcao&apos;, &apos;b_pilotagem&apos;, &apos;b_pontaria&apos;, &apos;b_profissao&apos;, &apos;b_reflexos&apos;, &apos;b_religiao&apos;, &apos;b_sobrevivencia&apos;, &apos;b_tatica&apos;, &apos;b_tecnologia&apos;, &apos;b_vontade&apos;, &apos;classe&apos;, &apos;defesa_base&apos;, &apos;defesa_equip&apos;, &apos;defesa_outros&apos;, &apos;esquiva&apos;, &apos;origem&apos;, &apos;pe_max&apos;, &apos;pe_rodada&apos;, &apos;profissao&apos;, &apos;pv_max&apos;, &apos;san_max&apos;, &apos;treino_acrobacia&apos;, &apos;treino_adestramento&apos;, &apos;treino_artes&apos;, &apos;treino_atletismo&apos;, &apos;treino_atualidades&apos;, &apos;treino_ciencias&apos;, &apos;treino_crime&apos;, &apos;treino_diplomacia&apos;, &apos;treino_enganacao&apos;, &apos;treino_fortitude&apos;, &apos;treino_furtividade&apos;, &apos;treino_iniciativa&apos;, &apos;treino_intimidacao&apos;, &apos;treino_intuicao&apos;, &apos;treino_investigacao&apos;, &apos;treino_luta&apos;, &apos;treino_medicina&apos;, &apos;treino_ocultismo&apos;, &apos;treino_percepcao&apos;, &apos;treino_pilotagem&apos;, &apos;treino_pontaria&apos;, &apos;treino_profissao&apos;, &apos;treino_reflexos&apos;, &apos;treino_religiao&apos;, &apos;treino_sobrevivencia&apos;, &apos;treino_tatica&apos;, &apos;treino_tecnologia&apos;, &apos;treino_vontade&apos;}" defaultValues="{&apos;1&apos;, &apos;1&apos;, &apos;1&apos;, &apos;1&apos;, &apos;1&apos;, &apos;Automação ativada&apos;, &apos;0&apos;, &apos;0&apos;, &apos;0&apos;, &apos;0&apos;, &apos;0&apos;, &apos;0&apos;, &apos;0&apos;, &apos;0&apos;, &apos;0&apos;, &apos;0&apos;, &apos;0&apos;, &apos;0&apos;, &apos;0&apos;, &apos;0&apos;, &apos;0&apos;, &apos;0&apos;, &apos;0&apos;, &apos;0&apos;, &apos;0&apos;, &apos;0&apos;, &apos;0&apos;, &apos;0&apos;, &apos;0&apos;, &apos;0&apos;, &apos;0&apos;, &apos;0&apos;, &apos;0&apos;, &apos;0&apos;, &apos;0&apos;, &apos;0&apos;, &apos;11&apos;, &apos;0&apos;, &apos;0&apos;, &apos;11&apos;, &apos;0&apos;, &apos;0&apos;, &apos;0&apos;, &apos;PROFISSÃO*&apos;, &apos;0&apos;, &apos;0&apos;, &apos;0&apos;, &apos;0&apos;, &apos;0&apos;, &apos;0&apos;, &apos;0&apos;, &apos;0&apos;, &apos;0&apos;, &apos;0&apos;, &apos;0&apos;, &apos;0&apos;, &apos;0&apos;, &apos;0&apos;, &apos;0&apos;, &apos;0&apos;, &apos;0&apos;, &apos;0&apos;, &apos;0&apos;, &apos;0&apos;, &apos;0&apos;, &apos;0&apos;, &apos;0&apos;, &apos;0&apos;, &apos;0&apos;, &apos;0&apos;, &apos;0&apos;, &apos;0&apos;, &apos;0&apos;, &apos;0&apos;}"/>
+</form>

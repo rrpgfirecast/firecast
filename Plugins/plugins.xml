@@ -1,5 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <root>
+    <element id="ODPThandvorg" name="Ordem Paranormal 1.2" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ordem%20Paranormal%201.2/output/Ordem%20Paranormal%201.2.rpk?raw=true" fileName="Ordem Paranormal 1.2.rpk" repositoryPath="Sheets/Ordem Paranormal 1.2/" author="Thandvorg" description="Ficha de Ordem Paranormal para Firecast" version="1.0" compilationDate="09082023202336" compilationDigest="76db9d9583e036f127ae5619f0525f8d490a9c37">
+        <info lang="pt-BR" name="Ordem Paranormal 1.2" description="Ficha de Ordem Paranormal para Firecast" author="Thandvorg" site="http://www.seu.site.com.br"/>
+        <dataTypes>
+            <dataType id="ODPThandvorg" title="ODPFicha (PDF)" formType="sheetTemplate">
+                <info title="ODPFicha (PDF)"/>
+            </dataType>
+        </dataTypes>
+    </element>
     <element id="Ambesek.Sistema.2d6" name="Ficha +2d6" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20%2B2d6/output/Ficha%20%2B2d6.rpk?raw=true" fileName="Ficha +2d6.rpk" repositoryPath="Sheets/Ficha +2d6/" author="Ambesek" description="Ficha para o sistema +2d6." version="1.0" compilationDate="02082023002415" compilationDigest="5c15dc0b60347145dbd2aa489933bee2697a7fcc">
         <info lang="pt-BR" name="Ficha +2d6" description="Ficha para o sistema +2d6." author="Ambesek"/>
         <dataTypes>
