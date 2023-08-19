@@ -10,10 +10,22 @@
 									end;
 								 end);
 		end;
+
+		local function showHabilidadePopup()
+			local pop = self:findControlByName("popAprimoramento");
+				
+			if pop ~= nil then
+				pop:setNodeObject(self.sheet);
+				pop:showPopupEx("right", self);
+			else
+				showMessage("Ops, bug.. nao encontrei o popup para exibir");
+			end;				
+		end;
 	]]>
 	</script>
 
 	<edit align="client" vertTextAlign="center" field="nome"/>
+	<button align="right" width="30" text="i" onClick="showHabilidadePopup();"/>
 	<layout align="right" width="230">
 		<comboBox align="left" width="75" field="atributo" items="{'CON','FR','DEX','AGI','INT','WILL','PER','CAR','-'}" values="{'constituicao','forca','destreza','agilidade','inteligencia','vontade','percepcao','carisma','none'}"/>
 

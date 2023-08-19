@@ -10,15 +10,27 @@
 									end;
 								 end);
 		end;
+
+		local function showHabilidadePopup()
+			local pop = self:findControlByName("popAprimoramento");
+				
+			if pop ~= nil then
+				pop:setNodeObject(self.sheet);
+				pop:showPopupEx("right", self);
+			else
+				showMessage("Ops, bug.. nao encontrei o popup para exibir");
+			end;				
+		end;
 	]]>
 	</script>
 
 	<edit align="client" vertTextAlign="center" field="nome"/>
-	<layout align="right" width="360">
+	<button align="right" width="30" text="i" onClick="showHabilidadePopup();"/>
+	<layout align="right" width="420">
 		<comboBox align="left" width="50" field="atributo" items="{'DEX','AGI'}" values="{'destreza', 'agilidade'}"/>
 		<comboBox align="left" width="50" field="tipo" items="{'C.a.C','Dist'}"/>
 
-		<layout align="right" width="260">
+		<layout align="right" width="320">
 			<layout align="left" width="85">
 				<edit align="left" width="30" field="gastoAtk" type="number" vertTextAlign="center" horzTextAlign="center"/>
 				<rectangle align="right" width="30" color="black" strokeColor="white" strokeSize="1" compilerOrder="3">
@@ -30,6 +42,10 @@
 						node.rollText = sheet.nome or "ataque"
 						node.rollValue = tonumber(sheet.totalAtk) or 0
 						node.roll = true
+
+						node.rollDamage = true
+						node.rollDamageValue = sheet.dano
+						node.rollDamageValueCrit = sheet.critico
 					</event>
 				</button>
 			</layout>
@@ -73,8 +89,9 @@
 				</event>
 			</dataLink>
 
-			<layout align="right" width="90">
+			<layout align="right" width="150">
 				<edit align="left" width="60" field="dano" vertTextAlign="center"/>
+				<edit align="left" width="60" field="critico" vertTextAlign="center"/>
 				<button align="right" width="30" text="X" onClick="askForDelete();"/>
 			</layout>
 		</layout>

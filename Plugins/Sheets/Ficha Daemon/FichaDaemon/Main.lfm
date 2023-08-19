@@ -34,6 +34,43 @@
             end;
         end;
 
+        local function DoRollDamage(crit)
+            sheet.rollDamage = false
+
+            local rolagem = Firecast.interpretarRolagem(sheet.rollDamageValue or "")
+            if crit then 
+                rolagem = Firecast.interpretarRolagem(sheet.rollDamageValueCrit or "")
+            end
+            if rolagem.possuiAlgumDado then 
+                local mesa = rrpg.getMesaDe(sheet);
+                mesa.activeChat:rolarDados(rolagem, "Dano")
+            else
+                showMessage("No dice.")
+            end
+        end 
+
+        local function DoRoll(rollText, rollCrit, rollTarget)
+            local mesa = rrpg.getMesaDe(sheet);        
+            mesa.activeChat:rolarDados("1d100", rollText,
+                function (rolado)
+                    if rolado.resultado <= rollCrit then
+                        mesa.activeChat:enviarMensagem("SUCESSO CRÍTICO =D");
+                        if sheet.rollDamage then 
+                            DoRollDamage(true)
+                        end
+                    elseif rolado.resultado >= 95 then
+                        mesa.activeChat:enviarMensagem("FALHA CRÍTICA =(");
+                    elseif rolado.resultado <= rollTarget then
+                        mesa.activeChat:enviarMensagem("SUCESSO =)");
+                        if sheet.rollDamage then 
+                            DoRollDamage(false)
+                        end
+                    else
+                        mesa.activeChat:enviarMensagem("FALHA =/");
+                    end;
+                end);
+        end
+
         local function AskToRoll()
             local text = sheet.rollText or ""
             local value = tonumber(sheet.rollValue) or 0
@@ -52,22 +89,30 @@
             
             Dialogs.choose("Selecione uma das opções. Crítico: " .. crit, options,
                function(selected, selectedIndex, selectedText)
-                  if selected then
-                    local mesa = rrpg.getMesaDe(sheet);                     
+                    if selected then
+                        -- roll type + difficulty
+                        local rollText = text .. " " .. selectedText
+                        local rollCrit = crit
+                        local rollTarget = roll[selectedIndex]
 
-                    mesa.activeChat:rolarDados("1d100", text .. " " .. selectedText,
-                        function (rolado)
-                            if rolado.resultado <= crit then
-                                    mesa.activeChat:enviarMensagem("SUCESSO CRÍTICO =D");
-                            elseif rolado.resultado >= 95 then
-                                    mesa.activeChat:enviarMensagem("FALHA CRÍTICA =(");
-                            elseif rolado.resultado <= roll[selectedIndex] then
-                                    mesa.activeChat:enviarMensagem("SUCESSO =)");
-                            else
-                                    mesa.activeChat:enviarMensagem("FALHA =/");
-                            end;
-                        end);
-                  end;
+                        Dialogs.confirmYesNo("É resistido?",
+                            function (confirmado)
+                                if confirmado then
+                                    Dialogs.inputQuery("Valor Resistido.", "Informe o valor a resistir.", "",
+                                        function (penalty)
+                                            -- Added 50-penalty
+                                            local penalty = math.abs( tonumber(penalty) or 0 )
+                                            rollTarget = rollTarget + 50 - penalty
+
+                                            local rollText = rollText .. " [Resistido: " .. rollTarget .."]"
+                                            
+                                            DoRoll(rollText, rollCrit, rollTarget)
+                                        end)
+                                else
+                                    DoRoll(rollText, rollCrit, rollTarget)
+                                end;
+                            end);
+                    end;
                end)
         end
 
