@@ -106,12 +106,16 @@
 				local objetos = NDB.getChildNodes(node["rcl"..group]);
 				local soma = 0;
             	local custo = (tonumber(node[group.."XPCusto"]) or 0)
+            	local novo = (tonumber(node[group.."XPNovo"]) or custo)
 
 				for i=1, #objetos, 1 do 
 	            	local total = (tonumber(objetos[i].otherTotal) or 0)
 	            	local xp = (tonumber(objetos[i].otherXP) or 0)
 
             		local diff = total-xp
+	                if diff==0 and total>0 then 
+	                    soma = soma + (novo-custo)
+	                end
 
             		while diff<total do
 	            	    diff=diff+1

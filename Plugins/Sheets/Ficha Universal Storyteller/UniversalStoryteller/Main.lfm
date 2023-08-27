@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<form name="frmTemplate" formType="sheetTemplate" dataType="Ambesek.Universal.Storyteller" title="Ficha Universal Storyteller" align="client" theme="dark">
+<form name="frmFUS" formType="sheetTemplate" dataType="Ambesek.Universal.Storyteller" title="Ficha Universal Storyteller" align="client" theme="dark">
     <script>
         <![CDATA[
         local function isNewVersion(installed, downloaded)
@@ -59,6 +59,7 @@
             local dificuldade = tonumber(sheet.dificuldadeValue) or 8
             local fail = sheet.crit1
             local crit = sheet.crit10
+            local add = sheet.add10
             local sucessos = 0
             local extra = 0
             for i = 1, #rolagem.ops, 1 do  
@@ -72,6 +73,9 @@
                             sucessos = sucessos + 1
                             if crit and operacao.resultados[j] >= 10 then
                                 extra = extra + 1
+                            end
+                            if add and operacao.resultados[j] >= 10 then
+                                sucessos = sucessos + 1
                             end
                         elseif fail and operacao.resultados[j] <= 1 then
                             sucessos = sucessos - 1
@@ -146,7 +150,9 @@
         <layout align="top" height="25"/>
 
         <checkBox align="top" height="25" text="Reduz Sucessos em 1" field="crit1" margins="{bottom=5}"/>
+        <checkBox align="top" height="25" text="Sucesso Extra em 10" field="add10" margins="{bottom=5}"/>
         <checkBox align="top" height="25" text="Dado Extra em 10" field="crit10" margins="{bottom=5}"/>
+        <checkBox align="top" height="25" text="Penalide Vitalidade" field="penVit" margins="{bottom=5}"/>
 
         <layout align="top" height="25"/>
 
@@ -155,7 +161,7 @@
             <boxLabel left="0" top="30" width="200" height="25" field="rollTotal"/>
         </layout>
 
-        <dataLink fields="{'roll1Pool','roll2Pool','adicionalValue','halfPool1','halfPool2','rollPen'}">
+        <dataLink fields="{'roll1Pool','roll2Pool','adicionalValue','halfPool1','halfPool2','rollPen', 'penVit'}">
             <event name="onChange">
                 if sheet==nil then return end
                 local r1 = tonumber(sheet.roll1Pool) or 0
@@ -169,7 +175,10 @@
                 local total = r1 + r2
 
                 local add = tonumber(sheet.adicionalValue) or 0
-                local pen = tonumber(sheet.rollPen) or 0
+                local pen = 0
+                if sheet.penVit then
+                    pen = tonumber(sheet.rollPen) or 0
+                end
 
                 sheet.rollTotal = total + add + pen
             </event>

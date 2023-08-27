@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <form name="frmOtherIndividual" align="client">
 	<scrollBox align="client">
-		<layout align="left" width="1335">
+		<layout align="left" width="1665">
 			<rectangle align="top" height="65" color="black" strokeColor="white" strokeSize="1" margins="{bottom=5}" padding="{top=5,bottom=5,left=5,right=5}">
 			    <layout align="top" height="25" margins="{bottom=5}">
 			        <formatEdit width="325" height="25" field="otherIndividual" formatFloat=""/>
@@ -35,33 +35,37 @@
 			    	<OtherTitle field="otherIndividual1"/>
 			    	<OtherTitle field="otherIndividual2"/>
 			    	<OtherTitle field="otherIndividual3"/>
+			    	<OtherTitle field="otherIndividual4"/>
 			    </layout>
 
-		        <dataLink fields="{'otherIndividual0Ini','otherIndividual1Ini','otherIndividual2Ini','otherIndividual3Ini'}">
+		        <dataLink fields="{'otherIndividual0Ini','otherIndividual1Ini','otherIndividual2Ini','otherIndividual3Ini','otherIndividual4Ini'}">
 		            <event name="onChange">
 		                if sheet==nil then return end
 		                sheet.otherIndividualIni =   (tonumber(sheet.otherIndividual0Ini) or 0) + 
 		                                        (tonumber(sheet.otherIndividual1Ini) or 0) + 
 		                                        (tonumber(sheet.otherIndividual2Ini) or 0) + 
-		                                        (tonumber(sheet.otherIndividual3Ini) or 0)
+		                                        (tonumber(sheet.otherIndividual3Ini) or 0) + 
+		                                        (tonumber(sheet.otherIndividual4Ini) or 0)
 		            </event>
 		        </dataLink>
-		        <dataLink fields="{'otherIndividual0Bonus','otherIndividual1Bonus','otherIndividual2Bonus','otherIndividual3Bonus'}">
+		        <dataLink fields="{'otherIndividual0Bonus','otherIndividual1Bonus','otherIndividual2Bonus','otherIndividual3Bonus','otherIndividual4Bonus'}">
 		            <event name="onChange">
 		                if sheet==nil then return end
 		                sheet.otherIndividualBonus =   (tonumber(sheet.otherIndividual0Bonus) or 0) + 
 		                                        (tonumber(sheet.otherIndividual1Bonus) or 0) + 
 		                                        (tonumber(sheet.otherIndividual2Bonus) or 0) + 
-		                                        (tonumber(sheet.otherIndividual3Bonus) or 0)
+		                                        (tonumber(sheet.otherIndividual3Bonus) or 0) + 
+		                                        (tonumber(sheet.otherIndividual4Bonus) or 0)
 		            </event>
 		        </dataLink>
-		        <dataLink fields="{'otherIndividual0XP','otherIndividual1XP','otherIndividual2XP','otherIndividual3XP'}">
+		        <dataLink fields="{'otherIndividual0XP','otherIndividual1XP','otherIndividual2XP','otherIndividual3XP','otherIndividual4XP'}">
 		            <event name="onChange">
 		                if sheet==nil then return end
 		                sheet.otherIndividualXP =   (tonumber(sheet.otherIndividual0XP) or 0) + 
 		                                        (tonumber(sheet.otherIndividual1XP) or 0) + 
 		                                        (tonumber(sheet.otherIndividual2XP) or 0) + 
-		                                        (tonumber(sheet.otherIndividual3XP) or 0)
+		                                        (tonumber(sheet.otherIndividual3XP) or 0) + 
+		                                        (tonumber(sheet.otherIndividual4XP) or 0)
 		            </event>
 		        </dataLink>
 			</rectangle>
@@ -71,6 +75,7 @@
 				<OtherBox field="rclotherIndividual1" templateForm="frmOtherIndividualItem"/>
 				<OtherBox field="rclotherIndividual2" templateForm="frmOtherIndividualItem"/>
 				<OtherBox field="rclotherIndividual3" templateForm="frmOtherIndividualItem"/>
+				<OtherBox field="rclotherIndividual4" templateForm="frmOtherIndividualItem"/>
 			</rectangle>
 		</layout>
 	</scrollBox>

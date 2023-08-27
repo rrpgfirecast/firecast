@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <group>
-    <popup name="popConfigAtr" width="470" height="200" backOpacity="0.4" autoScopeNode="false" padding="{top=10,bottom=10,left=10,right=10}">
+    <popup name="popConfigAtr" width="520" height="200" backOpacity="0.4" autoScopeNode="false" padding="{top=10,bottom=10,left=10,right=10}">
         <layout align="top" height="25" margins="{bottom=5}">
             <label align="left" width="100" text=""/>
             <label align="left" width="100" text="Inicial" horzTextAlign="center" margins="{right=25}"/>
@@ -11,7 +11,7 @@
             <label align="left" width="100" text=""/>
             <label align="left" width="100" text="Custo | Gasto" horzTextAlign="center" margins="{right=25}"/>
             <label align="left" width="100" text="Custo | Gasto" horzTextAlign="center" margins="{right=25}"/>
-            <label align="left" width="100" text="Custo | Gasto" horzTextAlign="center" margins="{right=25}"/>
+            <label align="left" width="150" text="Novo | Custo | Gasto" horzTextAlign="center" margins="{right=25}"/>
         </layout>
         <ConfigTitle field="atributo"/>
         <Config field="atributo0"/>
@@ -51,7 +51,7 @@
             </event>
         </dataLink>
     </popup>
-    <popup name="popConfigInd" width="470" height="450" backOpacity="0.4" autoScopeNode="false" padding="{top=10,bottom=10,left=10,right=10}">
+    <popup name="popConfigInd" width="520" height="450" backOpacity="0.4" autoScopeNode="false" padding="{top=10,bottom=10,left=10,right=10}">
         <layout align="top" height="25" margins="{bottom=5}">
             <label align="left" width="100" text=""/>
             <label align="left" width="100" text="Inicial" horzTextAlign="center" margins="{right=25}"/>
@@ -62,7 +62,7 @@
             <label align="left" width="100" text=""/>
             <label align="left" width="100" text="Custo | Gasto" horzTextAlign="center" margins="{right=25}"/>
             <label align="left" width="100" text="Custo | Gasto" horzTextAlign="center" margins="{right=25}"/>
-            <label align="left" width="100" text="Custo | Gasto" horzTextAlign="center" margins="{right=25}"/>
+            <label align="left" width="150" text="Novo | Custo | Gasto" horzTextAlign="center" margins="{right=25}"/>
         </layout>
         <ConfigTitle field="individual"/>
         <Config field="individual0"/>
@@ -146,7 +146,7 @@
             </event>
         </dataLink>
     </popup>
-    <popup name="popConfigHab" width="470" height="260" backOpacity="0.4" autoScopeNode="false" padding="{top=10,bottom=10,left=10,right=10}">
+    <popup name="popConfigHab" width="520" height="260" backOpacity="0.4" autoScopeNode="false" padding="{top=10,bottom=10,left=10,right=10}">
         <layout align="top" height="25" margins="{bottom=5}">
             <label align="left" width="100" text=""/>
             <label align="left" width="100" text="Inicial" horzTextAlign="center" margins="{right=25}"/>
@@ -157,7 +157,7 @@
             <label align="left" width="100" text=""/>
             <label align="left" width="100" text="Custo | Gasto" horzTextAlign="center" margins="{right=25}"/>
             <label align="left" width="100" text="Custo | Gasto" horzTextAlign="center" margins="{right=25}"/>
-            <label align="left" width="100" text="Custo | Gasto" horzTextAlign="center" margins="{right=25}"/>
+            <label align="left" width="150" text="Novo | Custo | Gasto" horzTextAlign="center" margins="{right=25}"/>
         </layout>
         <ConfigTitle field="habilidade"/>
         <Config field="habilidade0" fontSize="11"/>
@@ -209,7 +209,7 @@
             </event>
         </dataLink>
     </popup>
-    <popup name="popConfigOther" width="470" height="230" backOpacity="0.4" autoScopeNode="false" padding="{top=10,bottom=10,left=10,right=10}">
+    <popup name="popConfigOther" width="520" height="230" backOpacity="0.4" autoScopeNode="false" padding="{top=10,bottom=10,left=10,right=10}">
         <layout align="top" height="25" margins="{bottom=5}">
             <label align="left" width="100" text=""/>
             <label align="left" width="100" text="Inicial" horzTextAlign="center" margins="{right=25}"/>
@@ -220,7 +220,7 @@
             <label align="left" width="100" text=""/>
             <label align="left" width="100" text="Custo | Gasto" horzTextAlign="center" margins="{right=25}"/>
             <label align="left" width="100" text="Custo | Gasto" horzTextAlign="center" margins="{right=25}"/>
-            <label align="left" width="100" text="Custo | Gasto" horzTextAlign="center" margins="{right=25}"/>
+            <label align="left" width="150" text="Novo | Custo | Gasto" horzTextAlign="center" margins="{right=25}"/>
         </layout>
         <ConfigTitle field="other"/>
         <Config field="other0" fontSize="11"/>
@@ -264,7 +264,7 @@
             </event>
         </dataLink>
     </popup>
-    <popup name="popConfigOtherIndividual" width="470" height="230" backOpacity="0.4" autoScopeNode="false" padding="{top=10,bottom=10,left=10,right=10}">
+    <popup name="popConfigOtherIndividual" width="520" height="255" backOpacity="0.4" autoScopeNode="false" padding="{top=10,bottom=10,left=10,right=10}">
         <layout align="top" height="25" margins="{bottom=5}">
             <label align="left" width="100" text=""/>
             <label align="left" width="100" text="Inicial" horzTextAlign="center" margins="{right=25}"/>
@@ -275,45 +275,49 @@
             <label align="left" width="100" text=""/>
             <label align="left" width="100" text="Custo | Gasto" horzTextAlign="center" margins="{right=25}"/>
             <label align="left" width="100" text="Custo | Gasto" horzTextAlign="center" margins="{right=25}"/>
-            <label align="left" width="100" text="Custo | Gasto" horzTextAlign="center" margins="{right=25}"/>
+            <label align="left" width="150" text="Novo | Custo | Gasto" horzTextAlign="center" margins="{right=25}"/>
         </layout>
         <ConfigTitle field="otherIndividual"/>
         <ConfigDefault field="otherIndividual0" fontSize="11"/>
         <ConfigDefault field="otherIndividual1" fontSize="11"/>
         <ConfigDefault field="otherIndividual2" fontSize="11"/>
         <ConfigDefault field="otherIndividual3" fontSize="11"/>
+        <ConfigDefault field="otherIndividual4" fontSize="11"/>
 
-        <dataLink fields="{'otherIndividual0IniGasto','otherIndividual1IniGasto','otherIndividual2IniGasto','otherIndividual3IniGasto'}">
+        <dataLink fields="{'otherIndividual0IniGasto','otherIndividual1IniGasto','otherIndividual2IniGasto','otherIndividual3IniGasto', 'otherIndividual4IniGasto'}">
             <event name="onChange"><![CDATA[
                 if sheet==nil then return end
                 sheet.otherIndividualIniGasto =   (tonumber(sheet.otherIndividual0IniGasto) or 0) + 
                                             (tonumber(sheet.otherIndividual1IniGasto) or 0) + 
                                             (tonumber(sheet.otherIndividual2IniGasto) or 0) + 
-                                            (tonumber(sheet.otherIndividual3IniGasto) or 0)
+                                            (tonumber(sheet.otherIndividual3IniGasto) or 0) + 
+                                            (tonumber(sheet.otherIndividual4IniGasto) or 0)
 
                 ]]> 
             </event>
         </dataLink>
 
-        <dataLink fields="{'otherIndividual0BonusGasto','otherIndividual1BonusGasto','otherIndividual2BonusGasto','otherIndividual3BonusGasto'}">
+        <dataLink fields="{'otherIndividual0BonusGasto','otherIndividual1BonusGasto','otherIndividual2BonusGasto','otherIndividual3BonusGasto', 'otherIndividual4BonusGasto'}">
             <event name="onChange"><![CDATA[
                 if sheet==nil then return end
                 sheet.otherIndividualBonusGasto =   (tonumber(sheet.otherIndividual0BonusGasto) or 0) + 
                                                 (tonumber(sheet.otherIndividual1BonusGasto) or 0) + 
                                                 (tonumber(sheet.otherIndividual2BonusGasto) or 0) + 
-                                                (tonumber(sheet.otherIndividual3BonusGasto) or 0)
+                                                (tonumber(sheet.otherIndividual3BonusGasto) or 0) + 
+                                                (tonumber(sheet.otherIndividual4BonusGasto) or 0)
 
                 ]]> 
             </event>
         </dataLink>
 
-        <dataLink fields="{'otherIndividual0XPGasto','otherIndividual1XPGasto','otherIndividual2XPGasto','otherIndividual3XPGasto'}">
+        <dataLink fields="{'otherIndividual0XPGasto','otherIndividual1XPGasto','otherIndividual2XPGasto','otherIndividual3XPGasto', 'otherIndividual4XPGasto'}">
             <event name="onChange"><![CDATA[
                 if sheet==nil then return end
                 sheet.otherIndividualXPGasto =   (tonumber(sheet.otherIndividual0XPGasto) or 0) + 
                                             (tonumber(sheet.otherIndividual1XPGasto) or 0) + 
                                             (tonumber(sheet.otherIndividual2XPGasto) or 0) + 
-                                            (tonumber(sheet.otherIndividual3XPGasto) or 0)
+                                            (tonumber(sheet.otherIndividual3XPGasto) or 0) + 
+                                            (tonumber(sheet.otherIndividual4XPGasto) or 0)
 
                 ]]> 
             </event>
@@ -324,12 +328,13 @@
         <label align="top" height="25" field="other"/>
         <textEditor align="client" field="details"/>
     </popup>
-    <popup name="popIndividualInfo" width="410" height="410" backOpacity="0.4" autoScopeNode="false" padding="{top=10,bottom=10,left=10,right=10}">
+    <popup name="popIndividualInfo" width="460" height="410" backOpacity="0.4" autoScopeNode="false" padding="{top=10,bottom=10,left=10,right=10}">
         <label align="top" height="25" field="other"/>
         <layout align="top" height="25">
             <label align="left" width="100" text="Custos"/>
             <edit align="left" width="50" height="25" field="IniCusto"/>
             <edit align="left" width="50" height="25" field="BonusCusto"/>
+            <edit align="left" width="50" height="25" field="XPNovo"/>
             <edit align="left" width="50" height="25" field="XPCusto"/>
         </layout>
         <textEditor align="client" field="details"/>

@@ -110,10 +110,14 @@
 
 				for i=1, #objetos, 1 do 
             		local custo = (tonumber(objetos[i].XPCusto) or 0)
+            		local novo = (tonumber(objetos[i].XPNovo) or custo)
 	            	local total = (tonumber(objetos[i].otherTotal) or 0)
 	            	local xp = (tonumber(objetos[i].otherXP) or 0)
 
             		local diff = total-xp
+	                if diff==0 and total>0 then 
+	                    soma = soma + (novo-custo)
+	                end
 
             		while diff<total do
 	            	    diff=diff+1
