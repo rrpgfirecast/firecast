@@ -44,17 +44,155 @@
 			</dataLink>
 		</layout>
 	</template>
+	<template name="Attribute2">
+		<label align="top" height="25" text="$(text)" margins="{left=5,right=5}"/>
+		<layout align="top" height="25" margins="{left=5,right=5}">
+			<rectangle align="left" width="50" color="black" strokeColor="white" strokeSize="1" margins="{right=5}">
+				<label align="client" field="$(field)Base" horzTextAlign="center"/>
+			</rectangle>
+
+			<edit align="left" width="50" field="$(field)Add" margins="{right=5}"/>
+
+			<rectangle align="left" width="50" color="black" strokeColor="white" strokeSize="1" margins="{right=5}">
+				<label align="client" field="$(field)Total" horzTextAlign="center"/>
+			</rectangle>
+
+			<dataLink fields="{'$(field)Base','$(field)Add'}">
+				<event name="onChange">
+					if sheet==nil then return end;
+
+					local total = 	(tonumber(sheet.$(field)Base) or 0) +
+									(tonumber(sheet.$(field)Add) or 0) + $(initial);
+
+					sheet.$(field)Total = total
+				</event>
+			</dataLink>
+		</layout>
+	</template>
 	<scrollBox align="client">
 		<layout align="left" width="200" margins="{right=10}">
 			<rectangle align="top" height="160" color="black" strokeColor="white" strokeSize="1" margins="{top=0}" padding="{top=5,bottom=5}">
-				<LabelEditVert text="HP" field="hp"/>
-				<LabelEditVert text="PS" field="ps"/>
-				<LabelEditVert text="RD" field="rd"/>
+				<Attribute2 text="HP" field="hp" initial="50"/>
+				<dataLink fields="{'fortitudeTotal', 'vitalidadeTotal'}">
+					<event name="onChange">
+						if sheet==nil then return end
+
+						local fort = tonumber(sheet.fortitudeTotal) or 0
+						fort = math.floor(fort/15)
+						local vit = tonumber(sheet.vitalidadeTotal) or 0
+						vit = math.floor(vit/10)
+
+						sheet.hpBase = fort * 20 + vit * 80
+					</event>
+				</dataLink>
+				<Attribute2 text="PS" field="ps" initial="30"/>
+				<dataLink fields="{'resistenciaTotal', 'vitalidadeTotal'}">
+					<event name="onChange">
+						if sheet==nil then return end
+
+						local res = tonumber(sheet.resistenciaTotal) or 0
+						res = math.floor(res/15)
+						local vit = tonumber(sheet.vitalidadeTotal) or 0
+						vit = math.floor(vit/10)
+
+						sheet.psBase = res * 10 + vit * 20
+					</event>
+				</dataLink>
+				<Attribute2 text="RD" field="rd" initial="0"/>
+				<dataLink fields="{'resistenciaTotal'}">
+					<event name="onChange">
+						if sheet==nil then return end
+
+						local res = tonumber(sheet.resistenciaTotal) or 0
+						res = math.floor(res/10)
+
+						sheet.rdBase = res * 8
+					</event>
+				</dataLink>
 			</rectangle>
 
-			<rectangle align="top" height="275" color="black" strokeColor="white" strokeSize="1" margins="{top=10}">
-				<label align="top" height="25" text="Danos" margins="{left=5,top=5}"/>
-				<textEditor align="client" margins="{left=5,right=5,bottom=5}" field="danos"/>
+			<rectangle align="top" height="355" color="black" strokeColor="white" strokeSize="1" margins="{top=10}">
+				<Attribute2 text="Dano" field="dano" initial="0"/>
+				<dataLink fields="{'fortitudeTotal'}">
+					<event name="onChange">
+						if sheet==nil then return end
+
+						local fort = tonumber(sheet.fortitudeTotal) or 0
+						fort = math.floor(fort/10)
+
+						sheet.danoBase = fort * 5
+					</event>
+				</dataLink>
+				<Attribute2 text="Acerto" field="acerto" initial="0"/>
+				<dataLink fields="{'destrezaTotal'}">
+					<event name="onChange">
+						if sheet==nil then return end
+
+						local des = tonumber(sheet.destrezaTotal) or 0
+						des = math.floor(des/10)
+
+						sheet.acertoBase = des * 1
+					</event>
+				</dataLink>
+				<Attribute2 text="Esquiva" field="esquiva" initial="0"/>
+				<dataLink fields="{'destrezaTotal', 'instintoTotal'}">
+					<event name="onChange">
+						if sheet==nil then return end
+
+						local des = tonumber(sheet.destrezaTotal) or 0
+						des = math.floor(des/15)
+						local inst = tonumber(sheet.instintoTotal) or 0
+						inst = math.floor(inst/10)
+
+						sheet.esquivaBase = des * 1 + inst * 1
+					</event>
+				</dataLink>
+				<Attribute2 text="Defesa" field="defesa" initial="0"/>
+				<dataLink fields="{'resistenciaTotal', 'instintoTotal'}">
+					<event name="onChange">
+						if sheet==nil then return end
+
+						local res = tonumber(sheet.resistenciaTotal) or 0
+						res = math.floor(res/10)
+						local inst = tonumber(sheet.instintoTotal) or 0
+						inst = math.floor(inst/10)
+
+						sheet.defesaBase = res * 1 + inst * 1
+					</event>
+				</dataLink>
+				<Attribute2 text="Iniciativa" field="iniciativa" initial="0"/>
+				<dataLink fields="{'instintoTotal'}">
+					<event name="onChange">
+						if sheet==nil then return end
+
+						local inst = tonumber(sheet.instintoTotal) or 0
+						inst = math.floor(inst/10)
+
+						sheet.iniciativaBase = inst * 1
+					</event>
+				</dataLink>
+				<Attribute2 text="Dano Especial" field="danoEspecial" initial="0"/>
+				<dataLink fields="{'intelectoTotal'}">
+					<event name="onChange">
+						if sheet==nil then return end
+
+						local int = tonumber(sheet.intelectoTotal) or 0
+						int = math.floor(int/10)
+
+						sheet.danoEspecialBase = int * 7
+					</event>
+				</dataLink>
+				<Attribute2 text="Defesa Especial" field="defesaEspecial" initial="0"/>
+				<dataLink fields="{'sabedoriaTotal'}">
+					<event name="onChange">
+						if sheet==nil then return end
+
+						local sab = tonumber(sheet.sabedoriaTotal) or 0
+						sab = math.floor(sab/10)
+
+						sheet.defesaEspecialBase = sab * 6
+					</event>
+				</dataLink>
 			</rectangle>
 		</layout>
 
@@ -98,9 +236,16 @@
 				</dataLink>
 			</rectangle>
 
-			<rectangle align="top" height="200" color="black" strokeColor="white" strokeSize="1" margins="{top=10}">
+			<rectangle align="top" height="280" color="black" strokeColor="white" strokeSize="1" margins="{top=10}">
 				<label align="top" height="25" text="Poder" margins="{left=5,top=5}"/>
 				<textEditor align="client" margins="{left=5,right=5,bottom=5}" field="poder"/>
+			</rectangle>
+		</layout>
+
+		<layout align="left" width="200" margins="{right=10}">
+			<rectangle align="top" height="525" color="black" strokeColor="white" strokeSize="1" margins="{top=0}">
+				<label align="top" height="25" text="Danos" margins="{left=5,top=0}"/>
+				<textEditor align="client" margins="{left=5,right=5,bottom=5}" field="danos"/>
 			</rectangle>
 		</layout>
 	</scrollBox>
