@@ -54,14 +54,15 @@
 		<flowLayout class="tile" name="fraLayout" avoidScale="true" autoHeight="true" vertAlign="trailing" align="top" lineSpacing="2" horzAlign="justify" onResize="atualizarDesiredHeight();">
 			<upperGridCampoSolido height="40" field="nome" minWidth="190" maxWidth="400" titulo="@@DnD5e.tab.equipament.defend.lab.name"/>
 			<upperGridCampoSolido height="40" field="peso" minWidth="50" maxWidth="200" titulo="@@DnD5e.tab.equipament.defend.lab.weight"/>											
-			<upperGridCampoSolido height="40" field="tipo" minWidth="100" titulo="@@DnD5e.tab.equipament.defend.lab.type"/>				
-			<upperGridCampoSolido height="40" field="caBonus" titulo="@@DnD5e.tab.equipament.defend.lab.ca"/>									
+			<upperGridCampoSolido height="40" field="tipo" minWidth="100" titulo="@@DnD5e.tab.equipament.defend.lab.type"/>							
+			<upperGridCampoSolidoCheckBox height="40" field="active" titulo="@@DnD5e.tab.equipament.btn.active"/>
+			<upperGridCampoSolido height="40" field="caBonus" titulo="@@DnD5e.tab.equipament.defend.lab.ca"/>
 			<upperGridCampoSolidoCheckBox height="40" field="penalidade" titulo="@@DnD5e.tab.equipament.btn.pen"/>
 			<upperGridCampoSolido height="40" field="propriedades" minWidth="150" maxWidth="360" titulo="@@DnD5e.tab.equipament.defend.lab.property"/>
 		</flowLayout>	
 	</layout>
 
-	<dataLink fields="{'caBonus'}">
+	<dataLink fields="{'caBonus','active'}">
 		<event name="onChange">
 			if sheet==nil then return end
 
@@ -69,14 +70,16 @@
 			local nodes = NDB.getChildNodes(node.equipamentos.defesas)
 			local ca = 0
 			for i=1, #nodes, 1 do
-				local bonus = common.interpreta(nodes[i], nodes[i].caBonus)
+				if nodes[i].active then
+					local bonus = common.interpreta(nodes[i], nodes[i].caBonus)
 
-				local rolagem = Firecast.interpretarRolagem(bonus)
-				rolagem = Firecast.interpretarRolagem("1d1-1"):concatenar(rolagem)
-				rolagem:rolarLocalmente()
-				bonus = rolagem.resultado
-				
-				ca = ca + (tonumber(bonus) or 0)
+					local rolagem = Firecast.interpretarRolagem(bonus)
+					rolagem = Firecast.interpretarRolagem("1d1-1"):concatenar(rolagem)
+					rolagem:rolarLocalmente()
+					bonus = rolagem.resultado
+					
+					ca = ca + (tonumber(bonus) or 0)
+				end
 			end
 
 			node.caEquip = ca

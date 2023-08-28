@@ -197,7 +197,7 @@ function common.rolaMagia(node, modo, args, chat)
 					args.text = args.text .. Locale.lang("Dnd5e.messages.disadvantage");
 				elseif modo == 'vantagem2' then
 					args.rolls = 3;
-					args.foo = math.min;
+					args.foo = math.max;
 					args.text = args.text .. Locale.lang("Dnd5e.messages.advantage");
 				elseif modo == 'desvantagem2' then
 					args.rolls = 3;
@@ -288,6 +288,8 @@ function common.rolaMagia(node, modo, args, chat)
 				chat:rolarDados(args.danoRolagem, Locale.lang("DnD5e.spells.damage"))
 			end
 		end);
+	elseif args.ataque == 'nao' and args.dano ~= "nao" then
+		chat:rolarDados(args.danoRolagem, Locale.lang("DnD5e.spells.damage"))
 	end;
 end;
 function common.rolaMagia2(node, modo, args, chat)

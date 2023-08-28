@@ -8,6 +8,7 @@ DnD5e.tab.equipament.btn.roll=Roll
 DnD5e.tab.equipament.btn.newItem=New Item
 DnD5e.tab.equipament.btn.property=Add Property
 DnD5e.tab.equipament.btn.pen=DIS.
+DnD5e.tab.equipament.btn.active=USE
 
 DnD5e.tab.equipament.atack.lab.name=NAME
 DnD5e.tab.equipament.atack.lab.weight=WEIGHT

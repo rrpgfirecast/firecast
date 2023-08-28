@@ -484,8 +484,9 @@
 			<event name="onMenu"> common.onClick(sheet, common.rolaMagia, { magia=self.sheet }, nil, false); </event>
 			<event name="onMouseEnter"> self.edtNomeBut:setFocus(); </event>
 			<event name="onExit"> self.edtNome.fontColor = "white"; </event>
-		</button>					
-		<button text="i" align="right" width="32" margins="{left=4, right=0, top=2, bottom=2}" onClick="showMagiaPopup();" onMenu="mostraMagia();"/>		
+		</button>
+		<button text="💬" align="right" width="32" margins="{left=4, right=0, top=2, bottom=2}" onClick="mostraMagia();"/>
+		<button text="i" align="right" width="32" margins="{left=4, right=0, top=2, bottom=2}" onClick="showMagiaPopup();"/>		
 		<button text="@@DnD5e.spells.btn.delete" align="right" width="60" margins="{left=4, right=4, top=2, bottom=2}" onClick="askForDelete();"/>		
 	</template>
 	
@@ -527,6 +528,7 @@
 				if magia.duracao then mensagem = mensagem .. "\nDuração: '" .. magia.duracao .. "'"; end;
 				if magia.ataque then mensagem = mensagem .. "\nAtaque: '" .. magia.ataque .. "'"; end;
 				if magia.resistencia then mensagem = mensagem .. "\nTeste de Resistência: '" .. magia.resistencia .. "'"; end;
+				if magia.damageValue then mensagem = mensagem .. "\nDano: '" .. magia.damageValue .. "'"; end;
 				if magia.descricao then mensagem = mensagem .. "\nDescrição: '" .. magia.descricao .. "'"; end;
 				if mensagem ~= "" then mesa.activeChat:enviarMensagem(mensagem); end;
 			end;
