@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <form name="frmPrincipal" align="client" scale="1.25">
 	<template name="Title">
-		<label text="$(text)" align="left" width="90"/>
-		<edit field="$(field)" align="client"/>
+		<label text="$(text)" align="left" width="$(width or 90)" fontSize="$(fontSize or 13)"/>
+		<edit field="$(field)" align="client" fontSize="$(fontSize or 13)"/>
 	</template>
 	<template name="Title2">
 		<label text="$(text)" align="left" width="90"/>
@@ -32,29 +32,33 @@
 			<event name="onClick">
 				sheet.rollText = "$(text)"
 				sheet.rollValue = tonumber(sheet.$(field)Perc) or 0
-				AskToRoll()
+				AskToRoll(true)
 			</event>
 		</button>
-		<edit field="$(field)Base" align="right" width="50" horzTextAlign="center" compilerOrder="1"/>
-		<edit field="$(field)Mod" align="right" width="50" horzTextAlign="center" compilerOrder="2"/>
-		<rectangle align="right" width="50" color="black" strokeColor="white" strokeSize="1" compilerOrder="3">
+		<edit field="$(field)Base" align="right" width="33" horzTextAlign="center" compilerOrder="1"/>
+		<edit field="$(field)Mod" align="right" width="33" horzTextAlign="center" compilerOrder="2"/>
+		<edit field="$(field)Out" align="right" width="33" horzTextAlign="center" compilerOrder="3"/>
+		<rectangle align="right" width="50" color="black" strokeColor="white" strokeSize="1" compilerOrder="4">
 			<label field="$(field)Perc" align="client" horzTextAlign="center"/>
 		</rectangle>
-		<dataLink fields="{'$(field)Base', '$(field)Mod'}">
+		<dataLink fields="{'$(field)Base', '$(field)Mod', '$(field)Out'}">
 			<event name="onChange">
 				if sheet==nil then return end
 				local base = (tonumber(sheet.$(field)Base) or 0)
 				local mod = (tonumber(sheet.$(field)Mod) or 0)
-				sheet.$(field)Perc = (mod + base) * 4
+				local out = (tonumber(sheet.$(field)Out) or 0)
+				local total = (mod + base + out)
+				sheet.$(field)Perc = total * 4
+				sheet.$(field)Total = total
 
 	            local nodes = NDB.getChildNodes(sheet.periciasArmas); 
 	            for i=1, #nodes, 1 do
-	                nodes[i].$(field) = base + mod
+	                nodes[i].$(field) = total
 	            end
 
 	            nodes = NDB.getChildNodes(sheet.pericias); 
 	            for i=1, #nodes, 1 do
-	                nodes[i].$(field) = base + mod
+	                nodes[i].$(field) = total
 	            end
 			</event>
 		</dataLink>
@@ -65,189 +69,263 @@
 	</popup>
 	
 	<scrollBox align="client">
-		<layout align="top" height="155">
-			<rectangle align="left" width="300" margins="{right=5}" color="black" strokeColor="white" strokeSize="1">
-				<layout align="top" height="25" margins="{top=5,left=5,right=5}">
-					<Title field="nome" text="Nome"/>
-				</layout>
-				<layout align="top" height="25" margins="{top=5,left=5,right=5}">
-					<Title field="raca" text="Raça"/>
-				</layout>
-				<layout align="top" height="25" margins="{top=5,left=5,right=5}">
-					<Title field="religiao" text="Religião"/>
-				</layout>
-				<layout align="top" height="25" margins="{top=5,left=5,right=5}">
-					<Title2 field="kit" field2="level" text="Kit (Nível)"/>
-				</layout>
-				<layout align="top" height="25" margins="{top=5,left=5,right=5}">
-					<Title3 field="xpAtual" field2="xpObjetivo" text="Experiência"/>
-				</layout>
-			</rectangle>
+		<layout width="1015" height="655">
 
-			<rectangle align="left" width="300" margins="{right=5}" color="black" strokeColor="white" strokeSize="1">
-				<layout align="top" height="25" margins="{top=5,left=5,right=5}">
-					<Title4 field="pv" field2="pvTotal" text="Pontos de Vida"/>
-				</layout>
-				<layout align="top" height="25" margins="{top=5,left=5,right=5}">
-					<Title3 field="ph" field2="phTotal" text="Pontos Heróicos"/>
-				</layout>
-				<layout align="top" height="25" margins="{top=5,left=5,right=5}">
-					<Title3 field="pm" field2="pmTotal" text="Pontos de Magia"/>
-				</layout>
-				<layout align="top" height="25" margins="{top=5,left=5,right=5}">
-					<Title3 field="pf" field2="pfTotal" text="Pontos de Fé"/>
-				</layout>
-				<layout align="top" height="25" margins="{top=5,left=5,right=5}">
-					<Title3 field="psi" field2="psiTotal" text="Pontos Psiônicos"/>
-				</layout>
+			<layout align="left" width="300" margins="{right=5}">
+				<rectangle align="top" height="155" margins="{bottom=5}" color="black" strokeColor="white" strokeSize="1">
+					<layout align="top" height="25" margins="{top=5,left=5,right=5}">
+						<Title field="nome" text="Nome"/>
+					</layout>
+					<layout align="top" height="25" margins="{top=5,left=5,right=5}">
+						<Title field="raca" text="Raça"/>
+					</layout>
+					<layout align="top" height="25" margins="{top=5,left=5,right=5}">
+						<Title field="religiao" text="Religião"/>
+					</layout>
+					<layout align="top" height="25" margins="{top=5,left=5,right=5}">
+						<Title2 field="kit" field2="level" text="Kit (Nível)"/>
+					</layout>
+					<layout align="top" height="25" margins="{top=5,left=5,right=5}">
+						<Title3 field="xpAtual" field2="xpObjetivo" text="Experiência"/>
+					</layout>
+				</rectangle>
+
+				<rectangle align="top" height="245" margins="{bottom=5}" color="black" strokeColor="white" strokeSize="1">
+					<layout align="top" height="25" margins="{top=5,left=5,right=5}">
+						<Atributo field="constituicao" text="Constituição"/>
+					</layout>
+					<layout align="top" height="25" margins="{top=5,left=5,right=5}">
+						<Atributo field="forca" text="Força"/>
+					</layout>
+					<layout align="top" height="25" margins="{top=5,left=5,right=5}">
+						<Atributo field="destreza" text="Destreza"/>
+					</layout>
+					<layout align="top" height="25" margins="{top=5,left=5,right=5}">
+						<Atributo field="agilidade" text="Agilidade"/>
+					</layout>
+					<layout align="top" height="25" margins="{top=5,left=5,right=5}">
+						<Atributo field="inteligencia" text="Inteligência"/>
+					</layout>
+					<layout align="top" height="25" margins="{top=5,left=5,right=5}">
+						<Atributo field="vontade" text="Força de Vontade"/>
+					</layout>
+					<layout align="top" height="25" margins="{top=5,left=5,right=5}">
+						<Atributo field="percepcao" text="Percepção"/>
+					</layout>
+					<layout align="top" height="25" margins="{top=5,left=5,right=5}">
+						<Atributo field="carisma" text="Carisma"/>
+					</layout>
+				</rectangle>
+
+				<rectangle align="top" height="245" margins="{bottom=5}" color="black" strokeColor="white" strokeSize="1">
+					<layout align="top" height="25" margins="{top=5,left=5,right=5}">
+						<label align="client" text="TOTAL DE PONTOS GASTOS" margins="{left=5}"/>
+					</layout>
+					<layout align="top" height="25" margins="{top=5,left=5,right=5}">
+						<Title5 field="ptsAtributos" text="Atributos"/>
+					</layout>
+					<layout align="top" height="25" margins="{top=5,left=5,right=5}">
+						<Title5 field="ptsPericiasTotais" text="Perícias"/>
+					</layout>
+					<layout align="top" height="25" margins="{top=5,left=5,right=5}">
+						<Title5 field="ptsAprimoramentos" text="Aprimoramentos"/>
+					</layout>
+					<layout align="top" height="25" margins="{top=5,left=5,right=5}">
+						<Title5 field="ptsPoderes" text="Poderes"/>
+					</layout>
+					<layout align="top" height="25" margins="{top=5,left=5,right=5}">
+					</layout>
+					<layout align="top" height="25" margins="{top=5,left=5,right=5}">
+					</layout>
+					<layout align="top" height="25" margins="{top=5,left=5,right=5}">
+						<button text="Iniciativa" align="client" margins="{right=5}">
+							<event name="onClick">
+			                    local mesa = rrpg.getMesaDe(sheet);                     
+
+			                    mesa.activeChat:rolarDados("1d10+"..(tonumber(sheet.iniciativa) or 0), "Iniciativa")
+							</event>
+						</button>
+						<edit field="iniciativaBonus" align="right" width="50" horzTextAlign="center" compilerOrder="1"/>
+						<rectangle align="right" width="50" color="black" strokeColor="white" strokeSize="1" compilerOrder="3">
+							<label field="iniciativa" align="client" horzTextAlign="center"/>
+						</rectangle>
+						<dataLink fields="{'iniciativaBonus', 'agilidadeTotal'}">
+							<event name="onChange">
+								if sheet==nil then return end
+								local bonus = (tonumber(sheet.iniciativaBonus) or 0)
+								local total = (tonumber(sheet.agilidadeTotal) or 0)
+								sheet.iniciativa = (bonus + total)
+							</event>
+						</dataLink>
+					</layout>
 
 
-				<dataLink fields="{'constituicaoBase','constituicaoMod','forcaBase', 'forcaMod', 'level'}">
-					<event name="onChange">
-						if sheet==nil then return end
-						local mod = (tonumber(sheet.constituicaoBase) or 0) + 
-									(tonumber(sheet.constituicaoMod) or 0) + 
-									(tonumber(sheet.forcaBase) or 0) + 
-									(tonumber(sheet.forcaMod) or 0)
-						local level = (tonumber(sheet.level) or 0)
-						sheet.pvTotal = math.ceil(mod/2.0) + level
-					</event>
-				</dataLink>
-			</rectangle>
-
-			<image align="left" width="285" height="155" style="autoFit" src="images/daemon.png"/>
-		</layout>
-		<layout align="top" height="245" margins="{top=5}">
-			<rectangle align="left" width="300" margins="{right=5}" color="black" strokeColor="white" strokeSize="1">
-				<layout align="top" height="25" margins="{top=5,left=5,right=5}">
-					<Atributo field="constituicao" text="Constituição"/>
-				</layout>
-				<layout align="top" height="25" margins="{top=5,left=5,right=5}">
-					<Atributo field="forca" text="Força"/>
-				</layout>
-				<layout align="top" height="25" margins="{top=5,left=5,right=5}">
-					<Atributo field="destreza" text="Destreza"/>
-				</layout>
-				<layout align="top" height="25" margins="{top=5,left=5,right=5}">
-					<Atributo field="agilidade" text="Agilidade"/>
-				</layout>
-				<layout align="top" height="25" margins="{top=5,left=5,right=5}">
-					<Atributo field="inteligencia" text="Inteligência"/>
-				</layout>
-				<layout align="top" height="25" margins="{top=5,left=5,right=5}">
-					<Atributo field="vontade" text="Força de Vontade"/>
-				</layout>
-				<layout align="top" height="25" margins="{top=5,left=5,right=5}">
-					<Atributo field="percepcao" text="Percepção"/>
-				</layout>
-				<layout align="top" height="25" margins="{top=5,left=5,right=5}">
-					<Atributo field="carisma" text="Carisma"/>
-				</layout>
-			</rectangle>
-			<rectangle align="left" width="200" margins="{right=5}" color="black" strokeColor="white" strokeSize="1">
-				<layout align="top" height="25" margins="{top=5,left=5,right=5}">
-					<label align="client" text="TOTAL DE PONTOS GASTOS" margins="{left=5}"/>
-				</layout>
-				<layout align="top" height="25" margins="{top=5,left=5,right=5}">
-					<Title5 field="ptsAtributos" text="Atributos"/>
-				</layout>
-				<layout align="top" height="25" margins="{top=5,left=5,right=5}">
-					<Title5 field="ptsPericiasTotais" text="Perícias"/>
-				</layout>
-				<layout align="top" height="25" margins="{top=5,left=5,right=5}">
-					<Title5 field="ptsAprimoramentos" text="Aprimoramentos"/>
-				</layout>
-				<layout align="top" height="25" margins="{top=5,left=5,right=5}">
-					<Title5 field="ptsPoderes" text="Poderes"/>
-				</layout>
-				<layout align="top" height="25" margins="{top=5,left=5,right=5}">
-				</layout>
-				<layout align="top" height="25" margins="{top=5,left=5,right=5}">
-				</layout>
-				<layout align="top" height="25" margins="{top=5,left=5,right=5}">
-					<button text="Iniciativa" align="client" margins="{right=5}">
-						<event name="onClick">
-		                    local mesa = rrpg.getMesaDe(sheet);                     
-
-		                    mesa.activeChat:rolarDados("1d10+"..(tonumber(sheet.iniciativa) or 0), "Iniciativa")
-						</event>
-					</button>
-					<edit field="iniciativaBonus" align="right" width="50" horzTextAlign="center" compilerOrder="1"/>
-					<rectangle align="right" width="50" color="black" strokeColor="white" strokeSize="1" compilerOrder="3">
-						<label field="iniciativa" align="client" horzTextAlign="center"/>
-					</rectangle>
-					<dataLink fields="{'iniciativaBonus', 'agilidadeBase', 'agilidadeMod'}">
+					<dataLink fields="{'constituicaoBase','forcaBase','destrezaBase','agilidadeBase','inteligenciaBase','vontadeBase','percepcaoBase','carismaBase'}">
 						<event name="onChange">
 							if sheet==nil then return end
-							local bonus = (tonumber(sheet.iniciativaBonus) or 0)
-							local agi = (tonumber(sheet.agilidadeBase) or 0)
-							local mod = (tonumber(sheet.agilidadeMod) or 0)
-							sheet.iniciativa = (bonus + agi + mod)
+							
+							local atrs = {"constituicao","forca","destreza","agilidade","inteligencia","vontade","percepcao","carisma"}
+							local pts = 0
+							for i,v in ipairs(atrs) do
+								pts = pts + (tonumber(sheet[v.."Base"]) or 0)
+							end
+							sheet.ptsAtributos = pts
 						</event>
 					</dataLink>
-				</layout>
+
+					<dataLink fields="{'ptsPericiasArmas','ptsPericias'}">
+						<event name="onChange">
+							if sheet==nil then return end
+							
+							local atrs = {"ptsPericiasArmas","ptsPericias"}
+							local pts = 0
+							for i,v in ipairs(atrs) do
+								pts = pts + (tonumber(sheet[v]) or 0)
+							end
+							sheet.ptsPericiasTotais = pts
+						</event>
+					</dataLink>
+				</rectangle>
+			</layout>
+
+			<layout align="left" width="300" margins="{right=5}">
+				<rectangle align="top" height="155" margins="{bottom=5}" color="black" strokeColor="white" strokeSize="1">
+					<layout align="top" height="25" margins="{top=5,left=5,right=5}">
+						<Title text="ALTURA" field="altura" width="60"/>
+					</layout>
+					<layout align="top" height="25" margins="{top=5,left=5,right=5}">
+						<Title text="PESO" field="peso" width="60"/>
+					</layout>
+					<layout align="left" width="150">
+						<layout align="top" height="25" margins="{top=5,left=5,right=5}">
+							<Title text="IDADE" field="idade" width="60"/>
+						</layout>
+						<layout align="top" height="25" margins="{top=5,left=5,right=5}">
+							<Title text="GÊNERO" field="genero" width="60"/>
+						</layout>
+						<layout align="top" height="25" margins="{top=5,left=5,right=5}">
+							<Title text="OUTROS" field="aparenciaOutros" width="60"/>
+						</layout>
+						</layout>
+						<layout align="left" width="150">
+						<layout align="top" height="25" margins="{top=5,left=5,right=5}">
+							<Title text="OLHOS" field="aparenciaOlhos" width="60"/>
+						</layout>
+						<layout align="top" height="25" margins="{top=5,left=5,right=5}">
+							<Title text="PELE" field="pele" width="60"/>
+						</layout>
+						<layout align="top" height="25" margins="{top=5,left=5,right=5}">
+							<Title text="CABELO" field="cabelo" width="60"/>
+						</layout>
+					</layout>
+				</rectangle>
+
+				<rectangle align="top" height="245" margins="{bottom=5}" color="black" strokeColor="white" strokeSize="1">
+					<layout align="top" height="25" margins="{top=5,left=5,right=5}">
+						<button text="+" align="left" width="25" onClick="self.aprimoramentos:append();"/>
+						<label align="client" text="Aprimoramentos" margins="{left=5}"/>
+					</layout>
+					<recordList name="aprimoramentos" field="aprimoramentos" templateForm="frmAprimoramentoItem" align="client" layout="vertical" minQt="1" margins="{top=5,left=5,right=5,bottom=5}">
+						<event name="onCompare">
+					        return utils.compareStringPtBr(nodeA.nome, nodeB.nome)
+					    </event>
+					</recordList>
+				</rectangle>
+
+				<rectangle align="top" height="245" margins="{bottom=5}" color="black" strokeColor="white" strokeSize="1">
+					<layout align="top" height="25" margins="{top=5,left=5,right=5}">
+						<button text="+" align="left" width="25" onClick="self.poderes:append();"/>
+						<label align="client" text="Poderes" margins="{left=5}"/>
+					</layout>
+					<recordList name="poderes" field="poderes" templateForm="frmAprimoramentoItem" align="client" layout="vertical" minQt="1" margins="{top=5,left=5,right=5,bottom=5}">
+						<event name="onCompare">
+					        return utils.compareStringPtBr(nodeA.nome, nodeB.nome)
+					    </event>
+					</recordList>
+				</rectangle>
+			</layout>
+
+			<layout align="left" width="405" margins="{right=5}">
+				<!-- Imagem para avatar do personagem editavel e que pode ser arrastada para o scene -->
+				<rectangle align="top" height="405" margins="{bottom=5}" color="black" strokeColor="white" strokeSize="1">
+					<label left="0" top="112.5" width="245" height="20" text="Avatar" horzTextAlign="center"/>
+					<image align="client" field="avatar" editable="true" style="autoFit" margins="{left=2, right=2, top=2, bottom=2}">
+						<event name="OnStartDrag">
+						    drag:addData("imageURL", sheet.avatar);
+						</event>
+					</image>
+				</rectangle>
+
+				<rectangle align="top" height="245" margins="{bottom=5}" color="black" strokeColor="white" strokeSize="1">
+					<layout align="top" height="25" margins="{top=5,left=5,right=5}">
+						<Title4 field="pv" field2="pvTotal" text="Pontos de Vida"/>
+					</layout>
+					<layout align="top" height="25" margins="{top=5,left=5,right=5}">
+						<Title3 field="ph" field2="phTotal" text="Pontos Heróicos"/>
+					</layout>
+					<layout align="top" height="25" margins="{top=5,left=5,right=5}">
+						<Title3 field="pm" field2="pmTotal" text="Pontos de Magia"/>
+					</layout>
+					<layout align="top" height="25" margins="{top=5,left=5,right=5}">
+						<Title3 field="pf" field2="pfTotal" text="Pontos de Fé"/>
+					</layout>
+					<layout align="top" height="25" margins="{top=5,left=5,right=5}">
+						<Title3 field="psi" field2="psiTotal" text="Pontos Psiônicos"/>
+					</layout>
+					<layout align="top" height="25" margins="{top=5,left=5,right=5}"/>
+					<layout align="top" height="25" margins="{top=5,left=5,right=5}">
+						<Title4 field="bforcaBonus" field2="bforcaTotal" text="Bônus de Força"/>
+					</layout>
+					<layout align="top" height="25" margins="{top=5,left=5,right=5}">
+						<Title4 field="movimencacaoBonus" field2="movimencacaoTotal" text="Movimentação"/>
+					</layout>
 
 
-				<dataLink fields="{'constituicaoBase','forcaBase','destrezaBase','agilidadeBase','inteligenciaBase','vontadeBase','percepcaoBase','carismaBase'}">
-					<event name="onChange">
-						if sheet==nil then return end
-						
-						local atrs = {"constituicao","forca","destreza","agilidade","inteligencia","vontade","percepcao","carisma"}
-						local pts = 0
-						for i,v in ipairs(atrs) do
-							pts = pts + (tonumber(sheet[v.."Base"]) or 0)
-						end
-						sheet.ptsAtributos = pts
-					</event>
-				</dataLink>
+					<dataLink fields="{'constituicaoTotal','forcaTotal', 'level'}">
+						<event name="onChange">
+							if sheet==nil then return end
+							local total = (tonumber(sheet.constituicaoTotal) or 0) + 
+										(tonumber(sheet.forcaTotal) or 0)
+							local level = (tonumber(sheet.level) or 0)
+							sheet.pvTotal = math.ceil(total/2.0) + level
+						</event>
+					</dataLink>
+					<dataLink fields="{'agilidadeTotal'}">
+						<event name="onChange">
+							if sheet==nil then return end
+							local total = (tonumber(sheet.agilidadeTotal) or 0)
+							local bonus = (tonumber(sheet.movimencacaoBonus) or 0)
 
-				<dataLink fields="{'ptsPericiasArmas','ptsPericias'}">
-					<event name="onChange">
-						if sheet==nil then return end
-						
-						local atrs = {"ptsPericiasArmas","ptsPericias"}
-						local pts = 0
-						for i,v in ipairs(atrs) do
-							pts = pts + (tonumber(sheet[v]) or 0)
-						end
-						sheet.ptsPericiasTotais = pts
-					</event>
-				</dataLink>
-			</rectangle>
+							local table = {1.5,1.5,2,2,2.5,2.5,3,3,3.5,4,4.5,5,5.5,6,7,8,9,10,11,12,14,16,18,20,22,25,28,30,35,40,45,50,56,63,70,80,90,100,110,125,140,160,180,200,220}
+							local extra = 220
+							if total &lt; 46 and total > 0 then
+								extra = table[total]
+							elseif total &lt; 1 then
+								extra = 0
+							end
 
-			<!-- Imagem para avatar do personagem editavel e que pode ser arrastada para o scene -->
-			<rectangle align="left" width="245" margins="{right=5}" color="black" strokeColor="white" strokeSize="1">
-				<label left="0" top="112.5" width="245" height="20" text="Avatar" horzTextAlign="center"/>
-				<image align="client" field="avatar" editable="true" style="autoFit" margins="{left=2, right=2, top=2, bottom=2}">
-					<event name="OnStartDrag">
-					    drag:addData("imageURL", sheet.avatar);
-					</event>
-				</image>
-			</rectangle>
-		</layout>
-		<layout align="top" height="245" margins="{top=5}">
-			<rectangle align="left" width="300" margins="{right=5}" color="black" strokeColor="white" strokeSize="1">
-				<layout align="top" height="25" margins="{top=5,left=5,right=5}">
-					<button text="+" align="left" width="25" onClick="self.aprimoramentos:append();"/>
-					<label align="client" text="Aprimoramentos" margins="{left=5}"/>
-				</layout>
-				<recordList name="aprimoramentos" field="aprimoramentos" templateForm="frmAprimoramentoItem" align="client" layout="vertical" minQt="1" margins="{top=5,left=5,right=5,bottom=5}">
-					<event name="onCompare">
-				        return utils.compareStringPtBr(nodeA.nome, nodeB.nome)
-				    </event>
-				</recordList>
-			</rectangle>
-			<rectangle align="left" width="300" margins="{right=5}" color="black" strokeColor="white" strokeSize="1">
-				<layout align="top" height="25" margins="{top=5,left=5,right=5}">
-					<button text="+" align="left" width="25" onClick="self.poderes:append();"/>
-					<label align="client" text="Poderes" margins="{left=5}"/>
-				</layout>
-				<recordList name="poderes" field="poderes" templateForm="frmAprimoramentoItem" align="client" layout="vertical" minQt="1" margins="{top=5,left=5,right=5,bottom=5}">
-					<event name="onCompare">
-				        return utils.compareStringPtBr(nodeA.nome, nodeB.nome)
-				    </event>
-				</recordList>
-			</rectangle>
+							sheet.movimencacaoTotal = extra + bonus
+						</event>
+					</dataLink>
+					<dataLink fields="{'forcaTotal'}">
+						<event name="onChange">
+							if sheet==nil then return end
+							local total = (tonumber(sheet.forcaTotal) or 0)
+							local bonus = (tonumber(sheet.bforcaBonus) or 0)
+
+							local table = {-3,-3,-2,-2,-1,-1,-1,-1,0,0,0,0,0,0}
+							local extra = math.floor((total-13)/2)
+							if total &lt; 15 and total > 0 then
+								extra = table[total]
+							elseif total &lt; 1 then
+								extra = 0
+							end
+
+							sheet.bforcaTotal = extra + bonus
+						</event>
+					</dataLink>
+				</rectangle>
+			</layout>
 		</layout>
 	</scrollBox>
 </form>

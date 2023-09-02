@@ -6,35 +6,5 @@
 			<edit align="left" width="290" field="$(field)" vertTextAlign="center" />
 		</layout>
 	</template>
-	<scrollBox align="client">
-
-		<layout width="1205"/>
-		
-		<rectangle align="top" height="105" color="black">
-			<label align="top" height="20" text="DESCRIÇÃO"/>
-
-			<layout align="top" height="25">
-				<Descricao text="ORIGEM" field="origem"/>
-				<Descricao text="IDADE" field="idade"/>
-				<Descricao text="OLHOS" field="aparenciaOlhos"/>
-			</layout>
-
-			<layout align="top" height="25">
-				<Descricao text="ALTURA" field="altura"/>
-				<Descricao text="GÊNERO" field="genero"/>
-				<Descricao text="PELE" field="pele"/>
-			</layout>
-
-			<layout align="top" height="25">
-				<Descricao text="PESO" field="peso"/>
-				<Descricao text="OUTROS" field="aparenciaOutros"/>
-				<Descricao text="CABELO" field="cabelo"/>
-			</layout>
-		</rectangle>
-		
-		<rectangle align="client" color="black" strokeColor="white" strokeSize="1" margins="{top=5}">
-			<label align="top" height="20" text="HISTORIA" margins="{left=5,top=5,bottom=5}"/>
-			<richEdit align="client" field="background" backgroundColor="#333333" defaultFontSize="12" defaultFontColor="white"  margins="{left=5,right=5,bottom=5}"/>
-		</rectangle>
-	</scrollBox>
+	<richEdit align="client" field="background" backgroundColor="#333333" defaultFontSize="12" defaultFontColor="white"/>
 </form>

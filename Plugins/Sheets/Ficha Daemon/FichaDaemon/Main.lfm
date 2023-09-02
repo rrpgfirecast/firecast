@@ -71,7 +71,7 @@
                 end);
         end
 
-        local function AskToRoll()
+        local function AskToRoll(alternative)
             local text = sheet.rollText or ""
             local value = tonumber(sheet.rollValue) or 0
 
@@ -100,9 +100,17 @@
                                 if confirmado then
                                     Dialogs.inputQuery("Valor Resistido.", "Informe o valor a resistir.", "",
                                         function (penalty)
-                                            -- Added 50-penalty
-                                            local penalty = math.abs( tonumber(penalty) or 0 )
-                                            rollTarget = rollTarget + 50 - penalty
+                                            -- For atribute resisted test
+                                            penalty = math.abs( tonumber(penalty) or 0 )
+                                            if alternative then
+                                                rollTarget = math.floor(value/4)
+                                                rollTarget = ((rollTarget - penalty) * 5) + 50
+
+                                                rollText = text .. " " .. math.floor(value/4) .. "-" .. penalty
+                                            else
+                                                -- Added 50-penalty
+                                                rollTarget = rollTarget + 50 - penalty
+                                            end
 
                                             local rollText = rollText .. " [Resistido: " .. rollTarget .."]"
                                             
@@ -164,7 +172,7 @@
         <tab title="Grimório">
             <import file="Grimorio.xml"/>
         </tab>
-        <tab title="Descrição">
+        <tab title="Historia">
             <import file="Description.lfm"/>
         </tab>
         <tab title="Anotações">
