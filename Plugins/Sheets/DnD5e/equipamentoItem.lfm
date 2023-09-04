@@ -20,10 +20,12 @@
 	<layout name="layItem" align="client" margins="{top=5, bottom=5}">
 		<button name="btnApagar"		align="left" width="25" margins="{right=2}" text="✖" onClick="askForDelete();"/>
 		<button name="btnRolarAtaque"	align="left" width="25" margins="{right=2}" text="🎲">
-			<event name="onKeyDown"> common.keyDown(sheet, event); </event>
-			<event name="onKeyUp"> common.keyUp(sheet, event); </event>
+			<event name="onKeyDown"> common.keyDown(sheet, event, self.editName); </event>
+			<event name="onKeyUp"> common.keyUp(sheet, event, self.editName); </event>
 			<event name="onClick"> <![CDATA[common.onClick(sheet, common.rolaAtaque, { item = sheet }, nil, true);]]> </event>
 			<event name="onMenu">  <![CDATA[common.onClick(sheet, common.rolaAtaque, { item = sheet }, nil, false);]]> </event>
+			<event name="onMouseEnter"> self.btnRolarAtaque:setFocus(); </event>
+			<event name="onExit"> self.editName.fontColor = "white"; </event>
 		</button>
 		<edit name="editName" align="client" field="nome" vertTextAlign="leading" enabled="false"/>
 	</layout>
