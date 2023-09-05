@@ -1,0 +1,363 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmAvatar" height="175" width="400" margins="{top=5,bottom=5,left=5,right=5}">
+	<!-- Funções de controle de visibilidade da opção -->
+	<script><![CDATA[
+        local function dump(o)
+           if type(o) == 'table' then
+              local s = '{ '
+              for k,v in pairs(o) do
+                 if type(k) ~= 'number' then k = '"'..k..'"' end
+                 s = s .. '['..k..'] = ' .. dump(v) .. ','
+              end
+              return s .. '} '
+           else
+              return tostring(o)
+           end
+        end
+        
+        local function write(str)
+            local mesa = Firecast.getMesaDe(self);
+            if str then
+                mesa.activeChat:escrever(str);
+            else
+                mesa.activeChat:escrever("String nula");
+            end;
+        end;
+
+	     function self:alternarVisibilidade()
+	         if self.cbxInvisivel.checked then
+	              NDB.setPermission(sheet, "group", "jogadores", "read", nil);
+	              NDB.setPermission(sheet, "group", "espectadores", "read", nil);
+	         else
+	              NDB.setPermission(sheet, "group", "jogadores", "read", "deny");
+	              NDB.setPermission(sheet, "group", "espectadores", "read", "deny");
+	         end
+	     end
+
+	     function self:atualizarCbxInvisivel()          
+	         self.cbxInvisivel.checked = NDB.getPermission(sheet, "group", "espectadores", "read") == "deny" or
+	                                     NDB.getPermission(sheet, "group", "jogadores", "read") == "deny"                                                                                    
+	          self.cbxInvisivel.enabled = NDB.testPermission(sheet, "writePermissions");
+	     end
+
+		function self:listAllCharacters()
+			local mesa = Firecast.getMesaDe(sheet);
+
+			local personagens = {};
+			recursiveEnumPersonagensEmBibItem(mesa.biblioteca, personagens);
+			
+			table.sort(personagens,
+				function(left, right)
+					return Utils.compareStringPtBr(left.nome, right.nome) < 0;
+				end);
+				
+			local nomes = {};
+			local valores = {};
+			
+			nomes[1] = "Sem Ficha";
+			valores[1] = "0";
+			
+			for i = 1, #personagens, 1 do
+				nomes[#nomes + 1] = personagens[i].nome;
+				valores[#valores + 1] = tostring(personagens[i].codigoInterno);
+			end;
+			
+			self.cmbPersonagem.items = nomes;
+			self.cmbPersonagem.values = valores;
+
+			if sheet.characterName ~= nil then
+				self.cmbPersonagem.text = sheet.characterName
+			end
+		end;
+
+		function recursiveEnumPersonagensEmBibItem(bibItem, dest)
+			if bibItem.tipo == "personagem" then
+				dest[#dest + 1] = bibItem;
+			else
+				local filhos = bibItem.filhos;
+				
+				for i = 1, #filhos, 1 do
+					recursiveEnumPersonagensEmBibItem(filhos[i], dest);
+				end;
+			end;
+		end;
+
+		]]>
+	</script>
+
+    <template name="formatEdit">
+        <rectangle align="$(align or 'none')" left="$(left or 0)" width="$(width or 25)" height="$(height or 25)" color="black" strokeColor="white" strokeSize="1" name="$(field)Label" visible="true" opacity="0.75" hint="Clique em mim para editar meu valor.">
+            <label align="$(align or 'none')" width="$(width or 25)" height="$(height or 25)" field="$(field)" horzTextAlign="center" fontSize="$(fontSize or 13)" formatFloat="$(formatFloat)"/>
+            <event name="onClick">
+                self.$(field)Label.visible = false;
+                self.$(field)Edit.visible = true;
+                self.$(field)Edit:setFocus();
+            </event>
+        </rectangle>
+        <edit align="$(align or 'none')" left="$(left or 0)" width="$(width or 25)" height="$(height or 25)" field="$(field)" fontSize="$(fontSize or 13)" name="$(field)Edit" visible="false">
+            <event name="onExit">
+                self.$(field)Label.visible = true;
+                self.$(field)Edit.visible = false;
+            </event>
+            <event name="OnKeyDown">
+                local oenter = (event.keyCode == 13)
+                if oenter then
+	                self.$(field)Label.visible = true;
+	                self.$(field)Edit.visible = false;
+                end;
+            </event>
+        </edit>
+    </template>
+    <template name="EditBar">
+        <layout align="$(align or 'none')" left="$(left or 0)" top="$(top or 0)" height="25" width="75">
+            <layout align="client" margins="{top=0,bottom=0}">
+                <imageCheckBox align="client">
+                    <progressBar colorMode="hl" align="client" margins="{top=5,bottom=5}" hitTest="true" mouseGlow="true" color="DarkGray" name="$(field)" field="$(field)Valor" fieldMax="$(field)ValorMax">
+                        <event name="onMouseEnter">
+                            self.Cor$(field).color = sheet.$(field)Color or "DarkGray";
+                            self.$(field).color = sheet.$(field)Color or "DarkGray";
+                            self.Valores$(field).visible = true;
+                            sheet.Info$(field) = (sheet.$(field)Valor or 0) .. "/"  .. (sheet.$(field)ValorMax or 0);                   
+                        </event>
+                        <event name="onMouseLeave">
+                            self.Valores$(field).visible = false;
+                        </event>
+                        <event name="onDblClick">
+                            sheet.$(field)ID = sheet.index;
+                            
+                            sheet.Modificador$(field) = "igual";
+                            sheet.Modificador$(field)Max = "igual";
+                            sheet.ValorTempAtual$(field) = sheet.$(field)Valor;
+                            sheet.ValorTempMax$(field) = sheet.$(field)ValorMax;
+                            sheet.ValorMudadoAtual$(field) = sheet.$(field)Valor;
+                            sheet.ValorMudadoMax$(field) = sheet.$(field)ValorMax;
+
+                            local rec = self:findControlByName("PopupBarColor");
+                            if rec~=nil then rec.color = sheet.$(field)Color or "DarkGray" end;
+                            
+                            local pop = self:findControlByName("BarPopup");
+                            if pop~= nil then
+                                pop.scopeNode = sheet
+                                pop.scopeNode.selectedBar = "$(field)"
+                                pop:show("top", self.$(field))
+                                pop.top = (pop.top + 29 + 10)
+                            end;
+                        </event>
+                    </progressBar>
+                </imageCheckBox>
+            </layout>
+            <layout align="right" width="30" margins="{top=5,bottom=5}" visible="false" name="Valores$(field)">
+                <rectangle align="client" xradius="2" yradius="2" name="Cor$(field)" color="DarkGray">
+                    <label align="left" fontColor="white" fontSize="10" autoSize="true" textTrimming="none" wordWrap="false" name="Info$(field)" field="Info$(field)" horzTextAlign="center" text="0/0">
+                        <event name="onResize">
+                            self.Info$(field).width = (self.Valores$(field).width - 4);
+                        </event>
+                    </label>
+                </rectangle>
+            </layout>
+
+            <dataLink field="$(field)Color" defaultValue="DarkGray">
+                <event name="onChange">
+                	if sheet==nil then return end
+                    self.$(field).color = sheet.$(field)Color or "DarkGray"
+                </event>
+            </dataLink>
+            <dataLink field="$(field)Valor">
+                <event name="onChange">
+                    if sheet.$(field)Valor==nil then return end;
+                    self.$(field).color = sheet.$(field)Color or "DarkGray"
+                </event>
+            </dataLink>
+        </layout>
+    </template>
+
+	<rectangle align="client" color="#212121" hitTest="false">
+		<layout align="left" width="150">
+			<rectangle align="top" height="150" color="black" strokeColor="white" strokeSize="1" margins="{top=0,bottom=0}">
+				<image align="client" field="avatar" editable="true" style="autoFit" margins="{left=2, right=2, top=2, bottom=2}">
+					<event name="OnStartDrag">
+						if drag then
+					    	drag:addData("imageURL", sheet.avatar)
+					    end
+					</event>
+				</image>
+			</rectangle>
+			<layout align="top" height="25">
+				<comboBox name="cmbPersonagem" align="client" field="character">
+					<event name="onChange">
+						if sheet==nil then return end
+						sheet.characterName = self.cmbPersonagem.text
+
+						local mesa = Firecast.getMesaDe(sheet)
+						local bibItem = mesa:findBibliotecaItem(sheet.character)
+						if bibItem and bibItem.avatar ~= nil then
+							sheet.avatar = bibItem.avatar
+						end
+					</event>
+				</comboBox>
+				<dataLink field="characterName">
+					<event name="onChange">
+						if sheet==nil then return end
+						self.cmbPersonagem.text = sheet.characterName
+					</event>
+				</dataLink>
+			</layout>
+		</layout>
+
+		<layout align="client" margins="{left=5,right=5}">
+			<layout align="top" height="25">
+				<formatEdit field="nome" align="client"/>
+				<dataLink field="nome" defaultValue="Nome">
+					<event name="onChange">	
+						if sheet==nil then return end
+						local root = NDB.getRoot(sheet)
+						Utils.setTimeout(
+							function()
+								root.sort = true
+							end, 1000)
+						
+					</event>
+				</dataLink>
+			</layout>
+			<layout align="top" height="25">
+				<EditBar field="bar1" align="client"/>
+			</layout>
+			<layout align="top" height="25">
+				<EditBar field="bar2" align="client"/>
+			</layout>
+			<layout align="top" height="25">
+				<EditBar field="bar3" align="client"/>
+			</layout>
+			<layout align="top" height="25">
+				<EditBar field="bar4" align="client"/>
+			</layout>
+			<layout align="top" height="20">
+				<formatEdit field="linha1" align="client" fontSize="10"/>
+				<dataLink field="linha1" defaultValue="&lt;linha&gt;"/>
+			</layout>
+			<layout align="top" height="20" margins="{top=5,bottom=0}">
+				<formatEdit field="linha2" align="client" fontSize="10"/>
+				<dataLink field="linha2" defaultValue="&lt;linha&gt;"/>
+			</layout>
+		</layout>
+
+		<layout align="right" width="25" margins="{right=5}">
+
+			<button align="top" height="25" text="📝" margins="{bottom=0,right=0}" hint="Exibe o link pra ficha do personagem no chat.">
+				<event name="onClick">
+					-- Show sheet link
+					if sheet==nil then return end
+					local mesa = Firecast.getMesaDe(sheet);
+
+					if mesa ~= nil then
+						local link = "firecast:/rooms/"..mesa.codigoInterno.."/library/".. sheet.character .. " [" .. sheet.characterName .. "]"
+						mesa.activeChat:enviarMensagem(link)
+					end
+				</event>
+			</button>
+
+			<button align="top" height="25" text="⚫" name="attitudeBT" hint="Atitude do PdM para com os jogadores.">
+				<script>
+					<![CDATA[
+					local pics = {	"⚫",
+									"🔵", 
+									"🟢", 
+									"🟡", 
+									"🟠",
+									"🔴",
+									"⚪"};
+					]]>
+				</script>
+
+				<event name="onClick"><![CDATA[
+					if sheet.attitudeCounter == nil then
+						sheet.attitudeCounter = 0;
+					end;
+					-- Contador que vai de 0 a N e reseta ao passar de N
+					sheet.attitudeCounter = (sheet.attitudeCounter + 1) % #pics
+					]]>
+				</event>
+			</button>
+			<dataLink field="attitudeCounter">
+				<event name="onChange">
+					self.attitudeBT.text = pics[sheet.attitudeCounter +1]
+				</event>
+			</dataLink>
+
+			<button align="top" height="25" text="🗒️" margins="{bottom=0,right=0}" hint="Exibe um campo de anotações do PdM.">
+				<event name="onClick">
+                    local pop = self:findControlByName("NotesPopup");
+                    if pop~= nil then
+                        pop.scopeNode = sheet
+                        pop:show("center", self)
+                    end;
+				</event>
+			</button>
+
+			<button align="top" height="25" text="💾" margins="{bottom=0,right=0}" hint="Envia objeto pra lista oculta.">
+				<event name="onClick">
+		    		Dialogs.confirmYesNo("Deseja manda esse npc pra lista oculta?",
+		                function (confirmado)
+		                   if confirmado then
+		                       local rcl = self:findControlByName("listaOculta");
+		                       if rcl == nil then return end
+
+		                       local item = rcl:append()
+		                       if item == nil then return end
+
+		                       NDB.copy(item, sheet)
+
+		                       NDB.deleteNode(sheet);
+		                   end;
+		                end);
+				</event>
+			</button>
+
+			<button align="top" height="25" text="💬" margins="{bottom=0,right=0}" hint="Falar como esse personagem.">
+				<event name="onClick">
+		    		local dsb = self:findControlByName("messageEditor")
+		    		dsb.node = sheet
+
+		    		local layout = self:findControlByName("messageLayout")
+		    		layout.visible = (sheet ~= nil);
+				</event>
+			</button>
+
+			<imageCheckBox name="cbxInvisivel" align="top" height="25" checkedImage="images/invisivel.png" uncheckedImage="images/visivel.png" autoChange="false" onClick="self:alternarVisibilidade();" hint="Altera a visibilidade entre somente o mestre e todos."/> 
+
+			<button align="bottom" height="25" text="X" margins="{bottom=0,right=0}">
+				<event name="onClick">
+					Dialogs.confirmOkCancel("Tem certeza que quer apagar esse avatar?",
+						function (confirmado)
+							if confirmado then
+								NDB.deleteNode(sheet);
+							end;
+					end);
+				</event>
+			</button>
+		</layout>
+	</rectangle>
+
+	<!-- Atualiza se o objeto está invisivel ou não -->
+	<event name="onScopeNodeChanged">
+	    if self.observer ~= nil then   
+	        self.observer.enabled = false;
+	        self.observer = nil;
+	    end;
+	     
+	    if sheet ~= nil then   
+	        self.observer = NDB.newObserver(sheet);
+	        self.observer.onPermissionListChanged =
+	            function(node)                 
+	                self:atualizarCbxInvisivel();
+	            end;                               
+	        self.observer.onFinalPermissionsCouldBeChanged =
+	            function(node)
+	                self:atualizarCbxInvisivel();
+	            end;                               
+	        self:atualizarCbxInvisivel();  
+
+	        self:listAllCharacters()
+	    end;
+	</event>
+</form>
