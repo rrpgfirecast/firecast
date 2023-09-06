@@ -47,7 +47,7 @@
             <button align="left" text="?" width="25" onClick="GUI.openInBrowser('https://firecast.app/sdk3/StringdecoresnoLuaForm.html')"/>
         </layout>
     </popup>
-    <popup name="BarPopup" width="140" height="66" backOpacity="0" margins="{left=4, right=4, top=4, bottom=4}" autoScopeNode="false">
+    <popup name="BarPopup" width="150" height="66" backOpacity="0" margins="{left=4, right=4, top=4, bottom=4}" autoScopeNode="false">
         <rectangle align="client" color="white" xradius="5" yradius="5">
             <rectangle align="client" name="PopupBarColor" color="#808080" xradius="5" yradius="5" opacity="0.9">
                 <label fontColor="black" margins="{left=6, top=2}" align="top" text="Valor" field="NomeBarrinha" fontSize="12" fontStyle="bold" textTrimming="character"/>
@@ -462,33 +462,33 @@
         </layout>
     </scrollBox>
     <event name="onNodeReady">
-        Internet.download("raw_download_link",
+        Internet.download("https://github.com/rrpgfirecast/firecast/blob/master/Plugins/TablesDock/Lista%20de%20PdMs/output/Lista%20de%20PdMs.rpk?raw=true",
             function(stream, contentType)
                 local info = Firecast.Plugins.getRPKDetails(stream);
-                updaterSheet.versionDownloaded = tryTranslate("available")..": " .. info.version;
+                sheet.versionDownloaded = tryTranslate("available")..": " .. info.version;
 
                 local installed = Firecast.Plugins.getInstalledPlugins();
                 local myself;
                 for i=1, #installed, 1 do
                     if installed[i].moduleId == info.moduleId then
                         myself = installed[i];
-                        updaterSheet.versionInstalled = tryTranslate("installed")..": " .. installed[i].version;
+                        sheet.versionInstalled = tryTranslate("installed")..": " .. installed[i].version;
                     end;
                 end;
 
-                rawset(updaterSheet, "stream", stream);
+                rawset(sheet, "stream", stream);
 
-                if updaterSheet.noUpdate==true then return end;
+                if sheet.noUpdate==true then return end;
                 if myself~= nil and isNewVersion(myself.version, info.version) then
                     Dialogs.choose(tryTranslate("newVersion"),{tryTranslate("yes"), tryTranslate("no"), tryTranslate("dontAsk")},
                         function(selected, selectedIndex, selectedText)
                             if selected and selectedIndex == 1 then
-                                local install = Firecast.Plugins.installPlugin(rawget(updaterSheet,"stream"), true);
+                                local install = Firecast.Plugins.installPlugin(rawget(sheet,"stream"), true);
                                 if install==false then
-                                    GUI.openInBrowser('raw_download_link');
+                                    GUI.openInBrowser('https://github.com/rrpgfirecast/firecast/blob/master/Plugins/TablesDock/Lista%20de%20PdMs/output/Lista%20de%20PdMs.rpk?raw=true');
                                 end;
                             elseif selected and selectedIndex == 3 then
-                                updaterSheet.noUpdate = true;
+                                sheet.noUpdate = true;
                             end;
                         end);
                 end;

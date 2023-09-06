@@ -190,7 +190,7 @@
 
 						local mesa = Firecast.getMesaDe(sheet)
 						local bibItem = mesa:findBibliotecaItem(sheet.character)
-						if bibItem and bibItem.avatar ~= nil then
+						if bibItem and bibItem.avatar ~= nil and bibItem.avatar ~= "" then
 							sheet.avatar = bibItem.avatar
 						end
 					</event>
