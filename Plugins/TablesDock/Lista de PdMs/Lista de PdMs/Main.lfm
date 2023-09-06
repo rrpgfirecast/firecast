@@ -443,7 +443,7 @@
                                     text = self.messageEditor.node.NomeRolagem .. " - " .. (self.messageEditor.node.nome or "nome");
                                 end
                 
-                                local rolando = rrpg.interpretarRolagem(rolagem); 
+                                local rolando = rrpg.interpretarRolagem(self.messageEditor.node.TextoRolagem); 
                                 
                                 if not rolando.possuiAlgumDado then
                                     rolando = rrpg.interpretarRolagem("1d20"):concatenar(rolando);
