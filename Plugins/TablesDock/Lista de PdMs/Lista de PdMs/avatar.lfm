@@ -66,9 +66,10 @@
 			self.cmbPersonagem.values = valores;
 
 			if sheet.characterName ~= nil then
+				sheet.character = sheet.characterID
 				self.cmbPersonagem.text = sheet.characterName
 			end
-		end;
+		end
 
 		function recursiveEnumPersonagensEmBibItem(bibItem, dest)
 			if bibItem.tipo == "personagem" then
@@ -79,31 +80,203 @@
 				for i = 1, #filhos, 1 do
 					recursiveEnumPersonagensEmBibItem(filhos[i], dest);
 				end;
-			end;
-		end;
+			end
+		end
 
+		function self:CheckCustomAvatar()
+			if sheet==nil then return end
+			if sheet.characterID==nil then self.loadBT.visible=false;return end
+
+			local mesa = Firecast.getMesaDe(sheet)
+			if mesa==nil then return end
+
+			local bibItem = mesa:findBibliotecaItem(sheet.characterID)
+			if bibItem==nil then self.loadBT.visible=false;return end
+			
+			local knowDataTypes = {
+				"dataType5919525159726570555",
+				"dataType2850853990837453463",
+				"dataType9150763801005266856",
+				"dataType3259961376468481717",
+				"dataType3655081265232148693",
+				"dataType5216828343016777651"}
+
+			if bibItem.dataType~=nil and bibItem.dataType~="" then
+				local dataType = "dataType"..hash(bibItem.dataType)
+				local anyKnown = false
+
+				for i=1, #knowDataTypes, 1 do 
+					self[knowDataTypes[i]].visible = knowDataTypes[i] == dataType
+					anyKnown = anyKnown or knowDataTypes[i] == dataType
+				end
+
+				self.loadBT.visible = anyKnown
+			else
+				self.loadBT.visible=false
+			end
+		end
+
+		function self:loadSheet(node)
+			if node==nil then showMessage("Não consegui ver a ficha.");return end
+			-- valid character sheet
+
+			if sheet==nil then return end
+			local mesa = Firecast.getMesaDe(sheet)
+			if mesa==nil then return end
+			local bibItem = mesa:findBibliotecaItem(sheet.characterID)
+			if bibItem==nil then return end
+						
+			local dataType = "dataType"..hash(bibItem.dataType)
+			if dataType=="dataType5919525159726570555" or dataType=="dataType2850853990837453463" then
+				-- Alterar.DataType.FichaRPGmeister
+				-- Ambesek.Nefertyne.FichaPathfinder
+				sheet.avatar = node.avatar
+				sheet.nome = node.nome
+				sheet.bar1Valor = node.pvTotal
+				sheet.bar1ValorMax = node.pvTotal
+				sheet.bar2Valor = node.efetCon
+				sheet.bar2ValorMax = node.efetCon
+				sheet.ca = node.ca
+				sheet.desl = (node.deslTerrestre or "?") .. "m"
+
+	            local pericias = NDB.getChildNodes(node.campoDasPericias)
+	            local perc = nil
+	            local sm = nil 
+	            for i=1, #pericias, 1 do
+	                if pericias[i].nomePericia == "Percepção" then 
+	                	perc = pericias[i].totalPericia
+	                end
+	                if pericias[i].nomePericia == "Sentir Motivação" then 
+	                	sm = pericias[i].totalPericia
+	                end
+	            end
+	            if perc ~= nil then 
+					sheet.percepcao = perc 
+				else
+					sheet.percepcao = efetModSab
+				end
+	            if sm ~= nil then 
+					sheet.sentirmotivacao = sm 
+				else
+					sheet.sentirmotivacao = efetModSab
+				end
+			elseif dataType=="dataType9150763801005266856" then
+				-- Ambesek.FichaStarfinder
+				sheet.avatar = node.avatar
+				sheet.nome = node.nome
+				sheet.bar1Valor = node.pe
+				sheet.bar1ValorMax = node.pe
+				sheet.bar2Valor = node.pv
+				sheet.bar2ValorMax = node.pv
+				sheet.bar3Valor = node.pd
+				sheet.bar3ValorMax = node.pd
+				sheet.cac = node.cac
+				sheet.cae = node.cae
+				sheet.camc = node.camc
+				sheet.desl = (node.deslTerrestre or "?") .. "m"
+
+	            local pericias = NDB.getChildNodes(node.campoDasPericias)
+	            local perc = nil
+	            local sm = nil 
+	            for i=1, #pericias, 1 do
+	                if pericias[i].nomePericia == "Percepção" then 
+	                	perc = pericias[i].totalPericia
+	                end
+	                if pericias[i].nomePericia == "Sentir Motivação" then 
+	                	sm = pericias[i].totalPericia
+	                end
+	            end
+	            if perc ~= nil then 
+					sheet.percepcao = perc 
+				else
+					sheet.percepcao = efetModSab
+				end
+	            if sm ~= nil then 
+					sheet.sentirmotivacao = sm 
+				else
+					sheet.sentirmotivacao = efetModSab
+				end
+			elseif dataType=="dataType3259961376468481717" then
+				--Ambesek.Starfinder.Veiculos
+				sheet.avatar = node.avatarComp
+				sheet.nome = node.nome
+				sheet.bar1Valor = node.pe
+				sheet.bar1ValorMax = node.pe
+				sheet.bar2Valor = node.pv
+				sheet.bar2ValorMax = node.pv
+
+				sheet.cac = node.cac
+				sheet.cae = node.cae
+				sheet.protecao = node.protecao
+				sheet.deslMetros = (node.deslMetros or "?") .. "m"
+				sheet.deslViagem = (node.deslViagem or "?") .. "Km/h"
+			elseif dataType=="dataType3655081265232148693" then
+				--Ambesek.Starfinder.Nave
+				sheet.avatar = node.avatarComp
+				sheet.nome = node.nome
+
+				local escudo_total = (tonumber(node.escudo_proa) or 0) + 
+									 (tonumber(node.escudo_popa) or 0) + 
+									 (tonumber(node.escudo_bombordo) or 0) + 
+									 (tonumber(node.escudo_estibordo) or 0)
+
+				sheet.bar1Valor = escudo_total
+				sheet.bar1ValorMax = escudo_total
+				sheet.bar2Valor = node.casco
+				sheet.bar2ValorMax = node.casco
+
+				sheet.ca = node.ca
+				sheet.tm = node.tm
+				sheet.ld = node.casco_ld
+				sheet.lc = node.casco_lc
+				sheet.velocidade = node.velocidade
+				sheet.manobra = node.curva
+				sheet.deriva = node.deriva_class
+			elseif dataType=="dataType5216828343016777651" then
+				--br.com.rrpg.DnD5_S3
+				sheet.avatar = node.imagens.aparencia
+				sheet.nome = node.nome
+
+				sheet.bar1Valor = node.PVMax
+				sheet.bar1ValorMax = node.PVMax
+
+				sheet.ca = node.CA
+				sheet.desl = node.deslocamento
+				sheet.percepcao = node.sabedoriaPassiva
+				sheet.proficiencia = node.bonusProficiencia
+			end
+		end
+
+		function hash(str)
+		    h = 5381;
+
+		    for c in str:gmatch"." do
+		        h = ((h << 5) + h) + string.byte(c)
+		    end
+		    return math.abs(h)
+		end
 		]]>
 	</script>
 
     <template name="formatEdit">
-        <rectangle align="$(align or 'none')" left="$(left or 0)" width="$(width or 25)" height="$(height or 25)" color="black" strokeColor="white" strokeSize="1" name="$(field)Label" visible="true" opacity="0.75" hint="Clique em mim para editar meu valor.">
+        <rectangle align="$(align or 'none')" left="$(left or 0)" width="$(width or 25)" height="$(height or 25)" color="black" strokeColor="white" strokeSize="1" name="$(field)Label$(extra or '')" visible="true" opacity="0.75" hint="Clique em mim para editar meu valor.">
             <label align="$(align or 'none')" width="$(width or 25)" height="$(height or 25)" field="$(field)" horzTextAlign="center" fontSize="$(fontSize or 13)" formatFloat="$(formatFloat)"/>
             <event name="onClick">
-                self.$(field)Label.visible = false;
-                self.$(field)Edit.visible = true;
-                self.$(field)Edit:setFocus();
+                self.$(field)Label$(extra or '').visible = false;
+                self.$(field)Edit$(extra or '').visible = true;
+                self.$(field)Edit$(extra or ''):setFocus();
             </event>
         </rectangle>
-        <edit align="$(align or 'none')" left="$(left or 0)" width="$(width or 25)" height="$(height or 25)" field="$(field)" fontSize="$(fontSize or 13)" name="$(field)Edit" visible="false">
+        <edit align="$(align or 'none')" left="$(left or 0)" width="$(width or 25)" height="$(height or 25)" field="$(field)" fontSize="$(fontSize or 13)" name="$(field)Edit$(extra or '')" visible="false">
             <event name="onExit">
-                self.$(field)Label.visible = true;
-                self.$(field)Edit.visible = false;
+                self.$(field)Label$(extra or '').visible = true;
+                self.$(field)Edit$(extra or '').visible = false;
             </event>
             <event name="OnKeyDown">
                 local oenter = (event.keyCode == 13)
                 if oenter then
-	                self.$(field)Label.visible = true;
-	                self.$(field)Edit.visible = false;
+	                self.$(field)Label$(extra or '').visible = true;
+	                self.$(field)Edit$(extra or '').visible = false;
                 end;
             </event>
         </edit>
@@ -114,7 +287,7 @@
                 <imageCheckBox align="client">
                     <progressBar colorMode="hl" align="client" margins="{top=5,bottom=5}" hitTest="true" mouseGlow="true" color="DarkGray" name="$(field)" field="$(field)Valor" fieldMax="$(field)ValorMax">
                         <event name="onMouseEnter">
-                            self.Cor$(field).color = sheet.$(field)Color or "DarkGray";
+                            --self.Cor$(field).color = sheet.$(field)Color or "DarkGray";
                             self.$(field).color = sheet.$(field)Color or "DarkGray";
                             self.Valores$(field).visible = true;
                             sheet.Info$(field) = (sheet.$(field)Valor or 0) .. "/"  .. (sheet.$(field)ValorMax or 0);                   
@@ -146,8 +319,8 @@
                     </progressBar>
                 </imageCheckBox>
             </layout>
-            <layout align="right" width="30" margins="{top=5,bottom=5}" visible="false" name="Valores$(field)">
-                <rectangle align="client" xradius="2" yradius="2" name="Cor$(field)" color="DarkGray">
+            <layout align="right" width="40" margins="{top=5,bottom=5}" visible="false" name="Valores$(field)">
+                <rectangle align="client" xradius="2" yradius="2" name="Cor$(field)" color="DimGray">
                     <label align="left" fontColor="white" fontSize="10" autoSize="true" textTrimming="none" wordWrap="false" name="Info$(field)" field="Info$(field)" horzTextAlign="center" text="0/0">
                         <event name="onResize">
                             self.Info$(field).width = (self.Valores$(field).width - 4);
@@ -173,24 +346,34 @@
 
 	<rectangle align="client" color="#212121" hitTest="false">
 		<layout align="left" width="150">
-			<rectangle align="top" height="150" color="black" strokeColor="white" strokeSize="1" margins="{top=0,bottom=0}">
-				<image align="client" field="avatar" editable="true" style="autoFit" margins="{left=2, right=2, top=2, bottom=2}">
-					<event name="OnStartDrag">
-						if drag then
-					    	drag:addData("imageURL", sheet.avatar)
-					    end
-					</event>
-				</image>
-			</rectangle>
 			<layout align="top" height="25">
+				<button align="left" width="25" text="🔗" visible="false" name="loadBT" margins="{bottom=0,right=0}" hint="Carrega info da ficha pras barrinhas.">
+					<event name="onClick">
+						if sheet==nil then return end
+						local mesa = Firecast.getMesaDe(sheet)
+						if mesa==nil then return end
+						local bibItem = mesa:findBibliotecaItem(sheet.characterID)
+						if bibItem==nil then return end
+
+						bibItem:loadSheetNDB(
+							function (node)
+								self:loadSheet(node)
+							end)
+					</event>
+				</button>
 				<comboBox name="cmbPersonagem" align="client" field="character">
 					<event name="onChange">
 						if sheet==nil then return end
 						sheet.characterName = self.cmbPersonagem.text
+						if sheet.character ~= nil then
+							sheet.characterID = sheet.character
+						end
+
+						self:CheckCustomAvatar()
 
 						local mesa = Firecast.getMesaDe(sheet)
-						local bibItem = mesa:findBibliotecaItem(sheet.character)
-						if bibItem and bibItem.avatar ~= nil and bibItem.avatar ~= "" then
+						local bibItem = mesa:findBibliotecaItem(sheet.characterID)
+						if bibItem and bibItem.avatar ~= nil and bibItem.avatar ~= "" and sheet.avatar == nil then
 							sheet.avatar = bibItem.avatar
 						end
 					</event>
@@ -202,42 +385,233 @@
 					</event>
 				</dataLink>
 			</layout>
+			<rectangle align="top" height="150" color="black" strokeColor="white" strokeSize="1" margins="{top=0,bottom=0}">
+				<image align="client" field="avatar" editable="true" style="autoFit" margins="{left=2, right=2, top=2, bottom=2}" animate="true">
+					<event name="OnStartDrag">
+						if drag then
+					    	drag:addData("imageURL", sheet.avatar)
+					    end
+					</event>
+				</image>
+			</rectangle>
 		</layout>
 
 		<layout align="client" margins="{left=5,right=5}">
-			<layout align="top" height="25">
-				<formatEdit field="nome" align="client"/>
-				<dataLink field="nome" defaultValue="Nome">
-					<event name="onChange">	
-						if sheet==nil then return end
-						local root = NDB.getRoot(sheet)
-						Utils.setTimeout(
-							function()
-								root.sort = true
-							end, 1000)
-						
-					</event>
-				</dataLink>
+			<layout align="client">
+				<layout align="top" height="25">
+					<formatEdit field="nome" align="client"/>
+					<dataLink field="nome" defaultValue="Nome">
+						<event name="onChange">	
+							if sheet==nil then return end
+							local root = NDB.getRoot(sheet)
+							Utils.setTimeout(
+								function()
+									root.sort = true
+								end, 1000)
+							
+						</event>
+					</dataLink>
+				</layout>
+				<layout align="top" height="25">
+					<EditBar field="bar1" align="client"/>
+				</layout>
+				<layout align="top" height="25">
+					<EditBar field="bar2" align="client"/>
+				</layout>
+				<layout align="top" height="25">
+					<EditBar field="bar3" align="client"/>
+				</layout>
+				<layout align="top" height="25">
+					<EditBar field="bar4" align="client"/>
+				</layout>
+				<layout align="top" height="20">
+					<formatEdit field="linha1" align="client" fontSize="10"/>
+					<dataLink field="linha1" defaultValue="&lt;linha&gt;"/>
+				</layout>
+				<layout align="top" height="20" margins="{top=5,bottom=0}">
+					<formatEdit field="linha2" align="client" fontSize="10"/>
+					<dataLink field="linha2" defaultValue="&lt;linha&gt;"/>
+				</layout>
 			</layout>
-			<layout align="top" height="25">
-				<EditBar field="bar1" align="client"/>
+
+			<!--Alterar.DataType.FichaRPGmeister-->
+			<layout align="right" width="50" margins="{left=5}" name="dataType5919525159726570555" visible="false">
+				<layout align="top" height="20" margins="{bottom=5}">
+					<label align="left" width="15" text="🛡️" margins="{right=5}" hint="CA" hitTest="true"/>
+					<formatEdit field="ca" align="client" fontSize="11" extra="Meister"/>
+				</layout>
+				<layout align="top" height="20" margins="{bottom=5}">
+					<label align="left" width="15" text="👟" margins="{right=5}" hint="Deslocamento Terrestre" hitTest="true"/>
+					<formatEdit field="desl" align="client" fontSize="11" extra="Meister"/>
+				</layout>
+				<layout align="top" height="20" margins="{bottom=5}">
+					<label align="left" width="15" text="🔎" margins="{right=5}" hint="Percepção" hitTest="true"/>
+					<formatEdit field="percepcao" align="client" fontSize="11" extra="Meister"/>
+				</layout>
+				<layout align="top" height="20" margins="{bottom=5}">
+					<label align="left" width="15" text="🕵️" margins="{right=5}" hint="Sentir Motivação" hitTest="true"/>
+					<formatEdit field="sentirmotivacao" align="client" fontSize="11" extra="Meister"/>
+				</layout>
+				<layout align="top" height="20" margins="{bottom=5}">
+					<label align="left" width="15" text="👁️" margins="{right=5}" hint="Visão em Luminosidade Normal" hitTest="true"/>
+					<formatEdit field="visao" align="client" fontSize="11" extra="Meister"/>
+				</layout>
+				<layout align="top" height="20">
+					<label align="left" width="15" text="🔦" margins="{right=5}" hint="Visão na Penumbra." hitTest="true"/>
+					<formatEdit field="penumbra" align="client" fontSize="11" extra="Meister"/>
+				</layout>
+				<layout align="top" height="20" margins="{top=5,bottom=0}">
+					<label align="left" width="15" text="🕶️" margins="{right=5}" hint="Visão no Escuro" hitTest="true"/>
+					<formatEdit field="escuro" align="client" fontSize="11" extra="Meister"/>
+				</layout>
 			</layout>
-			<layout align="top" height="25">
-				<EditBar field="bar2" align="client"/>
+
+			<!--br.com.rrpg.DnD5_S3-->
+			<layout align="right" width="50" margins="{left=5}" name="dataType5216828343016777651" visible="false">
+				<layout align="top" height="20" margins="{bottom=5}">
+					<label align="left" width="15" text="🛡️" margins="{right=5}" hint="CA" hitTest="true"/>
+					<formatEdit field="ca" align="client" fontSize="11" extra="5e"/>
+				</layout>
+				<layout align="top" height="20" margins="{bottom=5}">
+					<label align="left" width="15" text="👟" margins="{right=5}" hint="Deslocamento Terrestre" hitTest="true"/>
+					<formatEdit field="desl" align="client" fontSize="11" extra="5e"/>
+				</layout>
+				<layout align="top" height="20" margins="{bottom=5}">
+					<label align="left" width="15" text="🔎" margins="{right=5}" hint="Percepção" hitTest="true"/>
+					<formatEdit field="percepcao" align="client" fontSize="11" extra="5e"/>
+				</layout>
+				<layout align="top" height="20" margins="{bottom=5}">
+					<label align="left" width="15" text="🌟" margins="{right=5}" hint="Proficiência" hitTest="true"/>
+					<formatEdit field="proficiencia" align="client" fontSize="11" extra="5e"/>
+				</layout>
+				<layout align="top" height="20" margins="{bottom=5}">
+					<label align="left" width="15" text="👁️" margins="{right=5}" hint="Visão em Luminosidade Normal" hitTest="true"/>
+					<formatEdit field="visao" align="client" fontSize="11" extra="5e"/>
+				</layout>
+				<layout align="top" height="20">
+					<label align="left" width="15" text="🔦" margins="{right=5}" hint="Visão na Penumbra." hitTest="true"/>
+					<formatEdit field="penumbra" align="client" fontSize="11" extra="5e"/>
+				</layout>
+				<layout align="top" height="20" margins="{top=5,bottom=0}">
+					<label align="left" width="15" text="🕶️" margins="{right=5}" hint="Visão no Escuro" hitTest="true"/>
+					<formatEdit field="escuro" align="client" fontSize="11" extra="5e"/>
+				</layout>
 			</layout>
-			<layout align="top" height="25">
-				<EditBar field="bar3" align="client"/>
+
+			<!--Ambesek.Nefertyne.FichaPathfinder-->
+			<layout align="right" width="50" margins="{left=5}" name="dataType2850853990837453463" visible="false">
+				<layout align="top" height="20" margins="{bottom=5}">
+					<label align="left" width="15" text="🛡️" margins="{right=5}" hint="CA" hitTest="true"/>
+					<formatEdit field="ca" align="client" fontSize="11" extra="Path"/>
+				</layout>
+				<layout align="top" height="20" margins="{bottom=5}">
+					<label align="left" width="15" text="👟" margins="{right=5}" hint="Deslocamento Terrestre" hitTest="true"/>
+					<formatEdit field="desl" align="client" fontSize="11" extra="Path"/>
+				</layout>
+				<layout align="top" height="20" margins="{bottom=5}">
+					<label align="left" width="15" text="🔎" margins="{right=5}" hint="Percepção" hitTest="true"/>
+					<formatEdit field="percepcao" align="client" fontSize="11" extra="Path"/>
+				</layout>
+				<layout align="top" height="20" margins="{bottom=5}">
+					<label align="left" width="15" text="🕵️" margins="{right=5}" hint="Sentir Motivação" hitTest="true"/>
+					<formatEdit field="sentirmotivacao" align="client" fontSize="11" extra="Path"/>
+				</layout>
+				<layout align="top" height="20" margins="{bottom=5}">
+					<label align="left" width="15" text="👁️" margins="{right=5}" hint="Visão Luminosidade Normal" hitTest="true"/>
+					<formatEdit field="visao" align="client" fontSize="11" extra="Path"/>
+				</layout>
+				<layout align="top" height="20">
+					<label align="left" width="15" text="🔦" margins="{right=5}" hint="Visão na Penumbra." hitTest="true"/>
+					<formatEdit field="penumbra" align="client" fontSize="11" extra="Path"/>
+				</layout>
+				<layout align="top" height="20" margins="{top=5,bottom=0}">
+					<label align="left" width="15" text="🕶️" margins="{right=5}" hint="Visão no Escuro" hitTest="true"/>
+					<formatEdit field="escuro" align="client" fontSize="11" extra="Path"/>
+				</layout>
 			</layout>
-			<layout align="top" height="25">
-				<EditBar field="bar4" align="client"/>
+
+			<!--Ambesek.FichaStarfinder-->
+			<layout align="right" width="50" margins="{left=5}" name="dataType9150763801005266856" visible="false">
+				<layout align="top" height="20" margins="{bottom=5}">
+					<label align="left" width="15" text="🔋" margins="{right=5}" hint="CA Energia" hitTest="true"/>
+					<formatEdit field="cae" align="client" fontSize="11" extra="SF"/>
+				</layout>
+				<layout align="top" height="20" margins="{bottom=5}">
+					<label align="left" width="15" text="🛡️" margins="{right=5}" hint="CA Cinética" hitTest="true"/>
+					<formatEdit field="cac" align="client" fontSize="11" extra="SF"/>
+				</layout>
+				<layout align="top" height="20" margins="{bottom=5}">
+					<label align="left" width="15" text="🤼" margins="{right=5}" hint="CA Manobra Combate" hitTest="true"/>
+					<formatEdit field="camc" align="client" fontSize="11" extra="SF"/>
+				</layout>
+				<layout align="top" height="20" margins="{bottom=5}">
+					<label align="left" width="15" text="👟" margins="{right=5}" hint="Deslocamento Terrestre" hitTest="true"/>
+					<formatEdit field="desl" align="client" fontSize="11" extra="SF"/>
+				</layout>
+				<layout align="top" height="20" margins="{bottom=5}">
+					<label align="left" width="15" text="🔎" margins="{right=5}" hint="Percepção" hitTest="true"/>
+					<formatEdit field="percepcao" align="client" fontSize="11" extra="SF"/>
+				</layout>
+				<layout align="top" height="20" margins="{bottom=5}">
+					<label align="left" width="15" text="🕵️" margins="{right=5}" hint="Sentir Motivação" hitTest="true"/>
+					<formatEdit field="sentirmotivacao" align="client" fontSize="11" extra="SF"/>
+				</layout>
 			</layout>
-			<layout align="top" height="20">
-				<formatEdit field="linha1" align="client" fontSize="10"/>
-				<dataLink field="linha1" defaultValue="&lt;linha&gt;"/>
+
+			<!--Ambesek.Starfinder.Veiculos-->
+			<layout align="right" width="75" margins="{left=5}" name="dataType3259961376468481717" visible="false">
+				<layout align="top" height="20" margins="{bottom=5}">
+					<label align="left" width="15" text="🔋" margins="{right=5}" hint="CA Energia" hitTest="true"/>
+					<formatEdit field="cae" align="client" fontSize="11" extra="SFV"/>
+				</layout>
+				<layout align="top" height="20" margins="{bottom=5}">
+					<label align="left" width="15" text="🛡️" margins="{right=5}" hint="CA Cinética" hitTest="true"/>
+					<formatEdit field="cac" align="client" fontSize="11" extra="SFV"/>
+				</layout>
+				<layout align="top" height="20" margins="{bottom=5}">
+					<label align="left" width="15" text="⚜️" margins="{right=5}" hint="Proteção" hitTest="true"/>
+					<formatEdit field="protecao" align="client" fontSize="11" extra="SFV"/>
+				</layout>
+				<layout align="top" height="20" margins="{bottom=5}">
+					<label align="left" width="15" text="🦿" margins="{right=5}" hint="Deslocamento Terrestre" hitTest="true"/>
+					<formatEdit field="deslMetros" align="client" fontSize="11" extra="SFV"/>
+				</layout>
+				<layout align="top" height="20" margins="{bottom=5}">
+					<label align="left" width="15" text="🚘" margins="{right=5}" hint="Deslocamento Viagem" hitTest="true"/>
+					<formatEdit field="deslViagem" align="client" fontSize="9" extra="SFV"/>
+				</layout>
 			</layout>
-			<layout align="top" height="20" margins="{top=5,bottom=0}">
-				<formatEdit field="linha2" align="client" fontSize="10"/>
-				<dataLink field="linha2" defaultValue="&lt;linha&gt;"/>
+
+			<!--Ambesek.Starfinder.Nave-->
+			<layout align="right" width="50" margins="{left=5}" name="dataType3655081265232148693" visible="false">
+				<layout align="top" height="20" margins="{bottom=5}">
+					<label align="left" width="15" text="🛡️" margins="{right=5}" hint="CA" hitTest="true"/>
+					<formatEdit field="ca" align="client" fontSize="11" extra="SFN"/>
+				</layout>
+				<layout align="top" height="20" margins="{bottom=5}">
+					<label align="left" width="15" text="📡" margins="{right=5}" hint="TM" hitTest="true"/>
+					<formatEdit field="tm" align="client" fontSize="11" extra="SFN"/>
+				</layout>
+				<layout align="top" height="20" margins="{bottom=5}">
+					<label align="left" width="15" text="💥" margins="{right=5}" hint="Limiar de Dano" hitTest="true"/>
+					<formatEdit field="ld" align="client" fontSize="11" extra="SFN"/>
+				</layout>
+				<layout align="top" height="20" margins="{bottom=5}">
+					<label align="left" width="15" text="💢" margins="{right=5}" hint="Limiar de Crítico" hitTest="true"/>
+					<formatEdit field="lc" align="client" fontSize="11" extra="SFN"/>
+				</layout>
+				<layout align="top" height="20" margins="{bottom=5}">
+					<label align="left" width="15" text="🚀" margins="{right=5}" hint="Velocidade" hitTest="true"/>
+					<formatEdit field="velocidade" align="client" fontSize="11" extra="SFN"/>
+				</layout>
+				<layout align="top" height="20" margins="{bottom=5}">
+					<label align="left" width="15" text="↩️" margins="{right=5}" hint="Manobra" hitTest="true"/>
+					<formatEdit field="manobra" align="client" fontSize="11" extra="SFN"/>
+				</layout>
+				<layout align="top" height="20" margins="{bottom=5}">
+					<label align="left" width="15" text="🌌" margins="{right=5}" hint="Deriva" hitTest="true"/>
+					<formatEdit field="deriva" align="client" fontSize="9" extra="SFN"/>
+				</layout>
 			</layout>
 		</layout>
 
@@ -247,6 +621,8 @@
 				<event name="onClick">
 					-- Show sheet link
 					if sheet==nil then return end
+					if sheet.character==nil then return end
+					if tonumber(sheet.character) == 0 then return end
 					local mesa = Firecast.getMesaDe(sheet);
 
 					if mesa ~= nil then
@@ -325,7 +701,7 @@
 
 			<imageCheckBox name="cbxInvisivel" align="top" height="25" checkedImage="images/invisivel.png" uncheckedImage="images/visivel.png" autoChange="false" onClick="self:alternarVisibilidade();" hint="Altera a visibilidade entre somente o mestre e todos."/> 
 
-			<button align="bottom" height="25" text="X" margins="{bottom=0,right=0}">
+			<button align="bottom" height="25" text="🗑️" margins="{bottom=0,right=0}">
 				<event name="onClick">
 					Dialogs.confirmOkCancel("Tem certeza que quer apagar esse avatar?",
 						function (confirmado)
@@ -356,6 +732,8 @@
 	                self:atualizarCbxInvisivel();
 	            end;                               
 	        self:atualizarCbxInvisivel();  
+
+	        self:CheckCustomAvatar()
 
 	        self:listAllCharacters()
 	    end;

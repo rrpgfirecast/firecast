@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <form name="frmAvatarOculto" height="25" width="200" margins="{top=5,bottom=5,left=5,right=5}">
 	<rectangle align="client" color="black" strokeColor="white" strokeSize="1" visible="true">
 		<label align="client" field="nome" horzTextAlign="center"/>
