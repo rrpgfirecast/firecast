@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="vantagens" height="25" align="top" margins="{bottom=10}">
+<style>
+edit {
+	fontSize: 14;
+	fontColor: white;
+	fontStyle: bold;
+	textTrimming: character;
+	fontFamily: Constantia;
+	transparent: true;
+}
+imageCheckBox{
+	checkedImage: /images/checkBoxAtv.png;
+	uncheckedImage: /images/checkBoxDes.png;
+	height: 25;
+	width: 14;
+	align: right;
+	margins: {right=3};
+	autoChange: false;
+}
+</style>
+	<layout align="client">
+		<layout align="left" width="85" margins="{right=10}">
+			<imageCheckBox field="fldCheckVant_01" name="nomeCheckVant_01" onClick="
+				sheet.fldCheckVant_01 = not sheet.fldCheckVant_01;
+				
+				if(sheet.fldCheckVant_02) then 
+					sheet.fldCheckVant_01 = true; 
+					sheet.fldCheckVant_02 = false; 
+					sheet.fldCheckVant_03 = false; 
+					sheet.fldCheckVant_04 = false; 
+					sheet.fldCheckVant_05 = false; 
+				end;
+			" />
+			<imageCheckBox field="fldCheckVant_02" name="nomeCheckVant_02" onClick="
+				sheet.fldCheckVant_02 = not sheet.fldCheckVant_02;
+				
+				if(sheet.fldCheckVant_02) then 
+					sheet.fldCheckVant_01 = true; 
+				else 
+					sheet.fldCheckVant_01 = false;
+				end;
+				
+				if(sheet.fldCheckVant_03) then 
+					sheet.fldCheckVant_01 = true; 
+					sheet.fldCheckVant_02 = true; 
+					sheet.fldCheckVant_03 = false; 
+					sheet.fldCheckVant_04 = false; 
+					sheet.fldCheckVant_05 = false; 
+				end;
+			" />
+			<imageCheckBox field="fldCheckVant_03" name="nomeCheckVant_03" onClick="
+				sheet.fldCheckVant_03 = not sheet.fldCheckVant_03;
+				
+				if(sheet.fldCheckVant_03) then 
+					sheet.fldCheckVant_01 = true; 
+					sheet.fldCheckVant_02 = true; 
+				else 
+					sheet.fldCheckVant_01 = false; 
+					sheet.fldCheckVant_02 = false; 
+				end;
+				
+				if(sheet.fldCheckVant_04) then 
+					sheet.fldCheckVant_01 = true; 
+					sheet.fldCheckVant_02 = true; 
+					sheet.fldCheckVant_03 = true; 
+					sheet.fldCheckVant_04 = false; 
+					sheet.fldCheckVant_05 = false; 
+				end;
+			" />
+			<imageCheckBox field="fldCheckVant_04" name="nomeCheckVant_04" onClick="
+				sheet.fldCheckVant_04 = not sheet.fldCheckVant_04;
+				
+				if(sheet.fldCheckVant_04) then 
+					sheet.fldCheckVant_01 = true; 
+					sheet.fldCheckVant_02 = true; 
+					sheet.fldCheckVant_03 = true; 
+				else 
+					sheet.fldCheckVant_01 = false; 
+					sheet.fldCheckVant_02 = false; 
+					sheet.fldCheckVant_03 = false; 
+				end;
+				
+				if(sheet.fldCheckVant_05) then 
+					sheet.fldCheckVant_01 = true; 
+					sheet.fldCheckVant_02 = true; 
+					sheet.fldCheckVant_03 = true; 
+					sheet.fldCheckVant_04 = true; 
+					sheet.fldCheckVant_05 = false; 
+				end;
+			" />
+			<imageCheckBox field="fldCheckVant_05" name="nomeCheckVant_05" onClick="
+				sheet.fldCheckVant_05 = not sheet.fldCheckVant_05;
+				
+				if(sheet.fldCheckVant_05) then 
+					sheet.fldCheckVant_01 = true; 
+					sheet.fldCheckVant_02 = true; 
+					sheet.fldCheckVant_03 = true; 
+					sheet.fldCheckVant_04 = true; 
+				else 
+					sheet.fldCheckVant_01 = false; 
+					sheet.fldCheckVant_02 = false; 
+					sheet.fldCheckVant_03 = false; 
+					sheet.fldCheckVant_04 = false; 
+				end;
+			" />
+		</layout>
+		<edit align="left" width="148" field="fldVantagem" /><dataLink field="fldVantagem" defaultValue="—" />
+		<layout align="left" width="22" height="22">
+			<button text="🞭" width="22" height="22" onClick="NDB.deleteNode(sheet);" hint="Apagar" />
+		</layout>
+	</layout>
+</form>
