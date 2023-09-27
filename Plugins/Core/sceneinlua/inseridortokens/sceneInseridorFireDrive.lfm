@@ -390,8 +390,6 @@
 									nodeA = self:findItemById(nodeA.father)
 								end;
 							end;
-
-							return 0
 					</event>
 				</recordList>
 			</rectangle>
@@ -729,8 +727,7 @@
 			local kids = {};
 			local index = 0;
 
-			local tokens = NDB.getChildNodes(sheet.tokensSalvos);
-			local found = true;
+			local tokens = NDB.getChildNodes(sheet.tokensSalvos);			
 
 			for i,v in ipairs(tokens) do
 				if v.father == id then
@@ -747,8 +744,7 @@
 			local index = 0;
 			local dept = 0;
 
-			local tokens = NDB.getChildNodes(sheet.tokensSalvos);
-			local found = true;
+			local tokens = NDB.getChildNodes(sheet.tokensSalvos);			
 
 			while dept <= index do
 				for i,v in ipairs(tokens) do
@@ -884,7 +880,7 @@
 					local arq = arquivos[1];
 
 					local import = {};
-					local bytes = arq.stream:read(import, arq.stream.size);
+					arq.stream:read(import, arq.stream.size);
 
 					local xml = Utils.binaryDecode(import, "utf8");
 
@@ -896,10 +892,10 @@
 			local xml = NDB.exportXML(sheet);
 
 			local export = {};
-			local bytes = Utils.binaryEncode(export, "utf8", xml);
+			Utils.binaryEncode(export, "utf8", xml);
 
 			local stream = Utils.newMemoryStream();
-			local bytes = stream:write(export);
+			stream:write(export);
 
 			Dialogs.saveFile(lang("scene.inseridor.export"), stream, "tokens.xml", "application/xml",
 				function()
