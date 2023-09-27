@@ -73,14 +73,45 @@ function nav.criarAddPopup(ctrl)
 					 end;
 
 	
+	function ctrl:convertFireDriveFilterToOpenDialogFilter()
+		local buildingFilter = nil;
+		local filter = ctrl.filter;
+		
+		local function appendOpenFileFilter(filterStr)
+			if buildingFilter == nil then
+				buildingFilter = filterStr;
+			else	
+				buildingFilter = buildingFilter .. ", " .. filterStr;
+			end;
+		end;
+	
+		local function handleFireDriveFilterStr(filterStr) 
+			if type(filterStr) ~= "string" then
+				return;
+			end;
+			
+			if filterStr:match("image/.+") then
+				appendOpenFileFilter("image/*");
+			elseif filterStr:match("video/.+") then
+				appendOpenFileFilter("video/*");
+			end;
+		end;		
+		
+		if filter ~= nil then				
+			if type(filter) == "table" then
+				for i = 1, #filter do
+					handleFireDriveFilterStr(filter[i]);
+				end;
+			elseif type(filter) == "string" then
+				handleFireDriveFilterStr(filter);
+			end;
+		end;	
+		
+		return buildingFilter;
+	end;
+	
 	btnUpload.onClick = function ()
-							local filtroAbrir = nil;
-							
-							if ctrl.filter ~= nil then
-								if ctrl.filter:match("image/.+") then
-									filtroAbrir = "image/*";
-								end;
-							end;
+							local filtroAbrir = ctrl:convertFireDriveFilterToOpenDialogFilter();
 							
 							dialogs.openFile("@@firedrive.uploadFile.prompt", filtroAbrir, true, 
 								function(files)
@@ -333,6 +364,28 @@ function nav.newFDNavigatorLayout()
 		end;
 	end;
 		
+	function ctrl:testMimeTypeForFilter(mimeType)
+		local f = ctrl.filter;
+		
+		if f == nil then
+			return true;
+		elseif type(f) == "table" then
+			for i = 1, #f do
+				local filterItem = f[i];
+			
+				if (type(filterItem) == "string") and (mimeType:match(filterItem)) then
+					return true;
+				end;
+			end;
+			
+			return false;
+		elseif type(f) == "string" then
+			return mimeType:match(f);
+		else	
+			return false;
+		end;
+	end;
+		
 	function ctrl:gotoDir(directory, callback)
 		local pathParts = breakPathIntoParts(directory);
 		btnVoltar.visible = #pathParts > 0;		
@@ -369,7 +422,7 @@ function nav.newFDNavigatorLayout()
 								for i = 1, #itens, 1 do
 									local it = itens[i];
 									
-									if it.isDir or (it.mimeType ~= nil and it.mimeType:match(ctrl.filter)) then
+									if it.isDir or (it.mimeType ~= nil and ctrl:testMimeTypeForFilter(it.mimeType)) then
 										filteredItens[#filteredItens + 1] = it;
 									end;													
 								end;

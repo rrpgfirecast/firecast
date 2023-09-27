@@ -158,7 +158,7 @@ SceneLib.registerPlugin(
 				 -5,
 				 {},
 				 function()
-					Dialogs.openFile(lang("scene.inseridor.instruction"), "image/*", false,
+					Dialogs.openFile(lang("scene.inseridor.instruction"), "image/*, video/*", false,
 				        function(arquivos)
 				                local arq = arquivos[1];
 
@@ -190,7 +190,13 @@ SceneLib.registerPlugin(
 										token.image.url = fditem.url;
 										token.name = fditem.name;
 										token.selected = true;
-				                	end);          
+				                	end,
+									
+									nil,
+									
+									function (failureReason)
+										showMessage(failureReason);
+									end);          
 				        end);
 				 end);
 
