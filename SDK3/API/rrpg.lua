@@ -34,9 +34,12 @@ function rrpg.getMesas()
   end
     
   return mesas;
-end;				
+end;			
+
+rrpg.getRooms = rrpg.getMesas;	
 		
 rrpg.props["mesas"] = {getter="getMesas", tipo="table"};
+rrpg.props["rooms"] = rrpg.props["mesas"];
 		
 local propsRolagem = {
 	possuiAlgumDado = {getter="getPossuiAlgumDado", tipo="bool"},
@@ -150,6 +153,8 @@ function rrpg.interpretarRolagem(stringDaRolagem)
 	return rolObj;
 end;
 
+rrpg.parseRoll = rrpg.interpretarRolagem;
+
 function rrpg.loadRolagemFromBase64EncodedString(encodedString)
 	local rolObj = newRolagemObject();
 	rolObj:loadFromBase64EncodedString(encodedString);	
@@ -184,6 +189,8 @@ function rrpg.findMesa(codigoInterno)
 	
 	return nil;
 end; 
+
+rrpg.findRoom = rrpg.findMesa;
 
 function rrpg.getMesaDe(object)		
 	if type(object) == "number" then
@@ -249,6 +256,8 @@ function rrpg.getBibliotecaItemDe(object)
 	return nil;
 end;
 
+rrpg.getLibraryItemOf = rrpg.getBibliotecaItemDe;
+
 function rrpg.getPersonagemDe(object)	
 	local ctxObj = localRRPG.getBibliotecaItemDe(object);
 	
@@ -258,6 +267,8 @@ function rrpg.getPersonagemDe(object)
 		return nil;
 	end;	
 end;
+
+rrpg.getCharacterOf = rrpg.getPersonagemDe;
 	
 function rrpg.getCurrentUser()
 	return _rrpg_getCurrentUser();
@@ -400,7 +411,10 @@ function rrpg.asyncOpenUserNDB(name, options)
 		return Async.Promise.withError("No API Support");
 	end;
 		
-	return Async.Promise.wrap(_rrpg_Session_asyncOpenUserNDB(name, options));
+	return rrpgWrappers.__serverRequestQueue:addAsyncJob(
+		function () 
+			return Async.Promise.wrap(_rrpg_Session_asyncOpenUserNDB(name, options));
+		end);						
 end;
 		
 rrpg.messaging = require("rrpgEventMessages.lua");

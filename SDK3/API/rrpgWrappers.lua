@@ -65,6 +65,33 @@ local function newTimedJobQueue(interval)
 		end;
 	end;
 	
+	function o:addAsyncJob(callback, ...)
+		if not System.checkAPIVersion(87, 4) then
+			return callback(...);
+		end;
+	
+		local promise, resolution = Async.Promise.toResolve();
+		assert((promise ~= nil) and (resolution ~= nil));
+				
+		o:addJob(
+			function(...)
+				assert(resolution ~= nil);
+				local r, data = pcall(callback, ...);	
+				
+				if r then
+					if Async.Promise.isPromise(data) then
+						data:thenResolve(resolution);
+					else
+						resolution:setSuccess(data);
+					end;
+				else	
+					resolution:setFailure(data);
+				end;
+			end, ...);
+		
+		return promise;
+	end;
+	
 	function o:clear()
 		o.timer.enabled = false;
 		o.gerador = 0;
@@ -78,6 +105,7 @@ local function newTimedJobQueue(interval)
 end;
 
 local __serverRequestQueue = newTimedJobQueue(250);
+rrpgWrappers.__serverRequestQueue = __serverRequestQueue;
 
 local function initWrappedObjectFromHandle(handle)
 	local wObj = objs.objectFromHandle(handle); 
@@ -246,7 +274,10 @@ local function initMesaWrappedObjectFromHandle(handle)
 			return Async.Promise.withError("No API Support");
 		end;			
 		
-		return Async.Promise.wrap(_obj_invokeEx(self.handle, "AsyncOpenUserRoomNDB", name, options));
+		return __serverRequestQueue:addAsyncJob(
+			function ()
+				return Async.Promise.wrap(_obj_invokeEx(self.handle, "AsyncOpenUserRoomNDB", name, options));			
+			end);	
 	end;
 				
 	wObj.props["nome"] = {getter = "getNome", tipo = "string"};
@@ -266,6 +297,8 @@ local function initMesaWrappedObjectFromHandle(handle)
 	wObj.props["biblioteca"] = {getter = "getBiblioteca", tipo = "table"};	
 	wObj.props["chat"] = {getter="getChat", tipo="table"};
 	wObj.props["activeChat"] = {getter="getActiveChat", tipo="table"};
+	
+	wObj.props["library"] = wObj.props["biblioteca"];	
 	
 	return wObj;
 end;
@@ -366,6 +399,111 @@ local function initBibliotecaItemWrappedObjectFromHandle(handle)
     	return filhos;	
 	end;
 	
+	function bibItem:__asyncCreateBibItem(bibItemType, params)
+		assert(type(params) == "table");
+		
+		if not System.checkAPIVersion(87, 4) then
+			return Async.Promise.failed("No API Support");
+		end;
+		
+		local innerPromise = __serverRequestQueue:addAsyncJob(
+			function ()
+				return Async.Promise.wrap(_obj_invokeEx(self.handle, "AsyncCreateBibItemObjectID", bibItemType, params));			
+			end);			
+			
+		return Async.Promise.toHandle(innerPromise,
+			function (newObjectID)
+				local newObj = rrpgWrappers.contextObjectFromID(newObjectID);
+				
+				if newObj ~= nil then
+					return newObj;
+				else	
+					error("Could not find the new created library item");
+				end;
+			end);
+	end;
+	
+	function bibItem:asyncCreateChar(charParams)
+		if type(charParams) ~= "table" then
+			error("charParams must be a table");
+		end;
+		
+		if charParams.name == nil then
+			error("Required field: charParams.name");
+		end;
+		
+		if charParams.name == nil then
+			error("Required field: charParams.dataType");
+		end;		
+		
+		return bibItem:__asyncCreateBibItem('character', charParams);
+	end;
+	
+	function bibItem:asyncCreateDir(dirParams)
+		if type(dirParams) ~= "table" then
+			error("dirParams must be a table");
+		end;
+		
+		if dirParams.name == nil then
+			error("Required field: dirParams.name");
+		end;
+		
+		return bibItem:__asyncCreateBibItem('directory', dirParams);
+	end;	
+	
+	function bibItem:asyncCreateScene3(gridParams)
+		if type(gridParams) ~= "table" then
+			error("gridParams must be a table");
+		end;
+		
+		if gridParams.name == nil then
+			error("Required field: gridParams.name");
+		end;
+		
+		return bibItem:__asyncCreateBibItem('scene3', gridParams);
+	end;		
+
+	function bibItem:asyncDelete()
+		if not System.checkAPIVersion(87, 4) then
+			return Async.Promise.failed("No API Support");
+		end;
+		
+		return __serverRequestQueue:addAsyncJob(
+			function ()
+				return Async.Promise.wrap(_obj_invokeEx(bibItem.handle, "AsyncDelete"));			
+			end);			
+	end;		
+
+	function bibItem:asyncMoveTo(newParent)			
+		if type(newParent) ~= 'table' then
+			error('Parameter "newParent" must be an object');
+		end;	
+	
+		if not System.checkAPIVersion(87, 4) then
+			return Async.Promise.failed("No API Support");
+		end;			
+	
+		return __serverRequestQueue:addAsyncJob(
+			function ()
+				return Async.Promise.wrap(_obj_invokeEx(bibItem.handle, "AsyncMoveTo", newParent.objectID));			
+			end);	
+	end;
+
+	function bibItem:asyncUpdate(changes)
+		if type(changes) ~= 'table' then
+			error('Parameter "changes" must be a table');
+		end;	
+	
+		if not System.checkAPIVersion(87, 4) then
+			return Async.Promise.failed("No API Support");
+		end;		
+	
+		return __serverRequestQueue:addAsyncJob(
+			function ()
+				return Async.Promise.wrap(_obj_invokeEx(bibItem.handle, "AsyncUpdate", changes));			
+			end);	
+	end;		
+	
 	function bibItem:getMesa() return rrpgWrappers.objectFromID(_obj_getProp(self.handle, "MesaObjectID")); end;
 	function bibItem:getNome() return _obj_getProp(self.handle, "Nome"); end;
 	function bibItem:getPai() return rrpgWrappers.objectFromID(_obj_getProp(self.handle, "ItemMaeObjectID")); end;
@@ -391,10 +529,54 @@ local function initBibliotecaItemWrappedObjectFromHandle(handle)
 	wObj.props["tipo"] = {getter = "getTipo", tipo = "string"};		
 	wObj.props["codigoInterno"] = {getter = "getCodigoInterno", tipo = "int"};	
 	
+	wObj.props["room"] = wObj.props["mesa"];	
+	wObj.props["parent"] = wObj.props["pai"];
+	wObj.props["name"] = wObj.props["nome"];	
+	wObj.props["children"] = wObj.props["filhos"];
+	wObj.props["ownerLogin"] = wObj.props["loginDono"];
+	wObj.props["creatorLogin"] = wObj.props["loginCriador"];
+	wObj.props["creator"] = wObj.props["criador"];
+	wObj.props["owner"] = wObj.props["dono"];
+	wObj.props["visible"] = wObj.props["visivel"];	
+	wObj.props["recursiveVisible"] = wObj.props["visivelRecursivamente"];		
 	return wObj;
 end;		
 		
 --[ OBJETO PERSONAGEM ]--			
+
+local __PersonagemWrappedObjectProps = {};
+
+for i = 0, 3 do
+	local barIndex = i;
+	
+	__PersonagemWrappedObjectProps["bar" .. tostring(i) .. "Val"] = {tipo = "int", getter = function (personagem)
+																							  	if System.checkAPIVersion(87, 4) then
+																									return _obj_invokeEx(personagem.handle, "GetBarVal", barIndex)
+																								else
+																									return 0;
+																								end;			
+																						    end};	
+																						  
+	__PersonagemWrappedObjectProps["bar" .. tostring(i) .. "Max"] = {tipo = "int", getter = function (personagem)
+																							  	if System.checkAPIVersion(87, 4) then
+																									return _obj_invokeEx(personagem.handle, "GetBarMax", barIndex)
+																								else
+																									return 0;
+																								end;			
+																						    end};
+end;
+
+for i = 0, 1 do
+	local edtLineIndex = i;
+	
+	__PersonagemWrappedObjectProps["edtLine" .. tostring(i)] = {tipo = "string", getter = function (personagem)
+																							  	if System.checkAPIVersion(87, 4) then
+																									return _obj_invokeEx(personagem.handle, "GetEdtLine", edtLineIndex)
+																								else
+																									return "";
+																								end;			
+																						    end};			
+end;	
 		
 local function initBibPersonagemWrappedObjectFromHandle(handle)
 	local wObj = initBibliotecaItemWrappedObjectFromHandle(handle); 
@@ -484,6 +666,11 @@ local function initBibPersonagemWrappedObjectFromHandle(handle)
 	wObj.props["escritaBloqueada"] = {getter = "getEscritaBloqueada", tipo = "bool"};
 	wObj.props["avatar"] = {readProp="Avatar", tipo = "string"};
 	
+	for k, v in pairs(__PersonagemWrappedObjectProps) do
+		wObj.props[k] = v;
+	end;	
+
+	wObj.props["editionBlocked"] = wObj.props["escritaBloqueada"];	
 	return wObj;
 end;			
 
