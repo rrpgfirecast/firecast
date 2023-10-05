@@ -1,0 +1,571 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form formType="sheetTemplate" dataType="Gatan.MageTheAwakening2e" title="Mage the Awakening 2e" name="frmMtA2e" theme="dark">
+<style>
+label {
+	fontSize: 14;
+	fontColor: white;
+	fontStyle: bold;
+	textTrimming: character;
+	fontFamily: Constantia;
+}
+checkBox {
+	fontSize: 14;
+	fontColor: white;
+	fontStyle: bold;
+	textTrimming: character;
+	fontFamily: Constantia;
+}
+edit {
+	fontSize: 14;
+	fontColor: #cdcdcd;
+	textTrimming: character;
+	fontFamily: Constantia;
+	transparent: true;
+}
+horzLine{
+	strokeColor: #424242;
+	margins: {top=7};
+	align: top;
+	
+}
+imageCheckBox{
+	checkedImage: /images/checkBoxAtv.png;
+	uncheckedImage: /images/checkBoxDes.png;
+	height: 25;
+	width: 14;
+	align: right;
+	margins: {left=3};
+	autoChange: false;
+}
+rectangle.LinhaDeFora{
+	align: client; 
+	color: transparent; 
+	strokeColor: #272727; 
+	strokeSize: 2; 
+	xradius: 25; 
+	yradius: 25; 
+	cornerType: bevel; 
+	margins: {top=20, right=20, bottom=20, left=20};
+}
+rectangle.LinhaDeDentro{
+	align: client; 
+	color: transparent; 
+	strokeColor: #272727; 
+	strokeSize: 1; 
+	xradius: 23; 
+	yradius: 23; 
+	cornerType: bevel; 
+	margins: {top=5, right=5, bottom=5, left=5};
+}
+rectangle.Fundo{
+	align: client; 
+	color: #272727; 
+	xradius: 20; 
+	yradius: 20; 
+	cornerType: bevel; 
+	margins: {top=10, right=10, bottom=10, left=10};
+}
+label.Divisor {
+	fontSize: 20;
+	fontColor: white;
+	fontStyle: bold;
+	textTrimming: character;
+	fontFamily: Constantia;
+	horzTextAlign: center;
+	autoSize: true;
+	align: client;
+	margins: {bottom=7};
+}
+label.AtrClasse{
+	fontSize: 10;
+	fontColor: white;
+	textTrimming: character;
+	fontFamily: Constantia;
+	horzTextAlign: center;
+	align: top;
+}
+flowLayout.Tabela{
+	align: top; 
+	orientation: horizontal; 
+	horzAlign: center; 
+	autoHeight: true; 
+	maxControlsPerLine: 3; 
+	margins: {left=20, top=20, bottom=30, right=20};
+}
+flowLayout.Tabela2{
+	align: top; 
+	orientation: vertical; 
+	horzAlign: center; 
+	autoHeight: true; 
+	maxControlsPerLine: 1; 
+	margins: {left=20, top=20, bottom=30, right=20};
+}
+flowLayout.Tabela3{
+	align: top; 
+	orientation: horizontal; 
+	horzAlign: center; 
+	autoHeight: true; 
+	maxControlsPerLine: 3; 
+	margins: {left=0, top=20, bottom=30, right=0};
+}
+flowLayout.Tabela4{
+	align: top; 
+	orientation: horizontal; 
+	horzAlign: center; 
+	autoHeight: true; 
+	maxControlsPerLine: 4; 
+	margins: {left=20, top=20, bottom=30, right=20};
+}
+
+flowPart.flowCampo{
+	minWidth: 220; 
+	maxWidth: 220; 
+	height: 25; 
+	margins: {left=20, right=20, bottom=10};
+}
+flowPart.flowCampoLarge{
+	minWidth: 285; 
+	maxWidth: 285; 
+	height: 25; 
+	margins: {left=0, right=0, bottom=10};
+}
+flowPart.flowCampomini{
+	minWidth: 200; 
+	maxWidth: 200; 
+	height: 25; 
+	margins: {left=20, right=20, bottom=10};
+}
+flowPart.flowCampoanao{
+	minWidth: 275; 
+	maxWidth: 275; 
+	margins: {left=15, right=15, bottom=10};
+}
+flowPart.flowCampo180{
+	minWidth: 180; 
+	maxWidth: 180; 
+	margins: {left=15, right=15, bottom=10};
+}
+edit.EditBold{
+	fontSize: 14;
+	fontColor: white;
+	fontStyle: bold;
+	textTrimming: character;
+	fontFamily: Constantia;
+}
+</style>
+<script>
+<![CDATA[
+	local function CalcSangue()
+	local nivel = 1;
+	
+	if(sheet.fldCheck100_01 or false) then nivel = 2; end;
+	if(sheet.fldCheck100_02 or false) then nivel = 3; end;
+	if(sheet.fldCheck100_03 or false) then nivel = 4; end;
+	if(sheet.fldCheck100_04 or false) then nivel = 5; end;
+	if(sheet.fldCheck100_05 or false) then nivel = 6; end;
+	if(sheet.fldCheck100_06 or false) then nivel = 7; end;
+	if(sheet.fldCheck100_07 or false) then nivel = 8; end;
+	if(sheet.fldCheck100_08 or false) then nivel = 9; end;
+	if(sheet.fldCheck100_09 or false) then nivel = 10; end;
+	if(sheet.fldCheck100_10 or false) then nivel = 11; end;
+	
+	local tbBP ={
+		{""},
+		{"3 Horas", "5", "2", "1", "1", "10/1", "3/2", "Uma vez por dia."},
+		{"3 Horas", "5", "2", "1", "1", "11/2", "3/3", "Uma vez por dia."},
+		{"1 Hora", "5", "3", "2", "2", "12/3", "4/3", "Uma vez por dia."},
+		{"1 Hora", "5", "3", "2", "2", "13/4", "4/4", "Uma vez por dia."},
+		{"30 Minutos", "5", "4", "3", "2", "15/5", "5/4", "Duas vezes por dia."},
+		{"30 Minutos", "6", "4", "3", "3", "20/6", "5/5", "Duas vezes por dia."},
+		{"10 Minutos", "7", "5", "4", "3", "25/7", "5/5", "Três vezes por dia."},
+		{"10 Minutos", "8", "5", "4", "3", "30/8", "5/5", "Três vezes por dia."},
+		{"1 Minuto (20 turnos)", "9", "6", "5", "4", "50/10", "5/5", "Quatro vezes por dia."},
+		{"1 Minuto (20 turnos)", "10", "6", "5", "4", "75/15", "5/5", "Quatro vezes por dia."},
+	}; 
+	
+	sheet.fldsanggnosisRitual	= tbBP[nivel][1]; 
+	sheet.fldsanggnosisTraitMax = tbBP[nivel][2];
+	sheet.fldsanggnosisYantra = tbBP[nivel][3];
+	sheet.fldsanggnosisParadox = tbBP[nivel][4];
+	sheet.fldsanggnosisCS = tbBP[nivel][5];
+	sheet.fldsanggnosisObsessions = tbBP[nivel][5];
+	sheet.fldsanggnosisMPR = tbBP[nivel][6];
+	sheet.fldsanggnosisArcana = tbBP[nivel][7];
+	sheet.fldsanggnosisScour = tbBP[nivel][8];
+	end;
+	
+	local function TrocarAba(a)
+		if(a == 'D') then
+			if(self.layFrente:isVisible()) then
+				self.layFrente.visible = false;
+				self.layVerso.visible = true;
+				self.layFrente:needRepaint();
+				self.layVerso:needRepaint();
+				
+			elseif(self.layVerso:isVisible()) then
+				self.layVerso.visible = false;
+				self.layNote.visible = true;
+				self.layVerso:needRepaint();
+				self.layNote:needRepaint();
+				
+			elseif(self.layNote:isVisible()) then
+				self.layNote.visible = false;
+				self.layFrente.visible = true;
+				self.layNote:needRepaint();
+				self.layFrente:needRepaint();
+			end;
+		end;
+		
+		if(a == 'E') then
+			if(self.layFrente:isVisible()) then
+				self.layFrente.visible = false;
+				self.layNote.visible = true;
+				self.layFrente:needRepaint();
+				self.layNote:needRepaint();
+				
+			elseif(self.layVerso:isVisible()) then
+				self.layVerso.visible = false;
+				self.layFrente.visible = true;
+				self.layVerso:needRepaint();
+				self.layFrente:needRepaint();
+				
+			elseif(self.layNote:isVisible()) then
+				self.layNote.visible = false;
+				self.layVerso.visible = true;
+				self.layNote:needRepaint();
+				self.layVerso:needRepaint();
+			end;
+		
+		end;
+	end;
+]]>
+</script>
+<import file="templates.lfm" />
+	<!-- LAYOUT DO FUNDO -->
+	<image align="client" style="autofit" url="/images/background.png" />
+	<layout align="client" frameStyle="/frames/frameFundo.xml">
+	<scrollBox align="client">
+		<flowLayout autoHeight="true" align="top" horzAlign="center">
+		<flowPart align="top" height="1620" minWidth="400" maxWidth="1000">
+		<rectangle class="LinhaDeFora">
+			<rectangle class="LinhaDeDentro">
+				<tabControl align="client">
+					<tab title="Frente">
+						<rectangle class="Fundo">					
+							<image align="top" style="proportional" height="100" url="/images/logotype1.png" margins="{top=40, left=40, right=40}" />
+							<!-- FRENTE DA FICHA -->
+							<layout name="layFrente" align="client">	
+							
+								<!-- CABEÇALHO -->
+								<flowLayout class="Tabela" margins="{left=20, top=25, bottom=30, right=20}">
+									<Campo rotulo="Shadow Name" semAcento="ShadowName" largura="110" />
+									<Campo rotulo="Virtue" semAcento="Virtue" largura="60" />
+									<Campo rotulo="Path" semAcento="Path" largura="45" />
+									
+									<Campo rotulo="Player" semAcento="Player" largura="57" />
+									<Campo rotulo="Vice" semAcento="Vice" largura="40" />
+									<Campo rotulo="Order" semAcento="Order" largura="50" />
+									
+									<Campo rotulo="Chronicle" semAcento="Chronicle" largura="80" />
+									<Campo rotulo="Concept" semAcento="Concept" largura="70" />
+									<Campo rotulo="Legacy" semAcento="Legacy" largura="60" />
+								
+									<DezPontos2 rotulo="G N O S I S" numero="100" />
+									<DezPontos2 rotulo="W I S D O M" numero="101" />
+									
+								</flowLayout>
+
+								<!-- <flowLayout class="Tabela2" margins="{left=20, top=25, bottom=30, right=20}">
+									<DezPontos2 rotulo="GNOSIS" numero="100" />
+									<DezPontos2 rotulo="WISDOM" numero="101" />
+								</flowLayout> -->
+								
+								<!-- ATRIBUTOS -->					
+								<Header conteudo="A T T R I B U T E S" linha="320" largura="180" />
+								
+								<flowLayout class="Tabela" margins="{left=0, top=20, bottom=20, right=0}" maxControlsPerLine="4">
+									<ColunaAtt classAtr="M E N T A L" atr01="Intelligence" atr02="Wits" atr03="Resolve" n01="07" n02="08" n03="09" />
+									<Coluna classAtr="P H Y S I C A L" atr01="Strength" atr02="Dexterity" atr03="Stamina" n01="01" n02="02" n03="03" />
+									<Coluna classAtr="S O C I A L" atr01="Presence" atr02="Manipulation" atr03="Composure" n01="04" n02="05" n03="06" />
+								</flowLayout>
+								
+								<!-- HABILIDADES -->
+								<Header conteudo="S K I L L S" linha="350" largura="110" />
+								
+								<flowLayout class="Tabela3">
+									<SkillsHeader classAtr="(-3 UNSKILLED)"/>
+									<SkillsHeader classAtr="(-1 UNSKILLED)" />
+									<SkillsHeader classAtr="(-1 UNSKILLED)" />
+									<ColunaHab	n01="10" atr01="Academics"
+											n02="11" atr02="Computer"
+											n03="12" atr03="Crafts"
+											n04="13" atr04="Investigation"
+											n05="14" atr05="Medicine"
+											n06="15" atr06="Occult"
+											n07="16" atr07="Politics"
+											n08="17" atr08="Science"/>
+									<ColunaHab	n01="19" atr01="Athletics"
+											n02="20" atr02="Brawl"
+											n03="21" atr03="Drive"
+											n04="22" atr04="Firearms"
+											n05="23" atr05="Larceny"
+											n06="24" atr06="Stealth"
+											n07="25" atr07="Survival"
+											n08="26" atr08="Weaponry"/>
+									<ColunaHab	n01="28" atr01="Animal Ken"
+											n02="29" atr02="Empathy"
+											n03="30" atr03="Expression"
+											n04="31" atr04="Intimidation"
+											n05="32" atr05="Persuasion"
+											n06="33" atr06="Socialize"
+											n07="34" atr07="Streetwise"
+											n08="35" atr08="Subterfuge"/>
+									
+								</flowLayout>
+
+							</layout>
+
+						</rectangle>
+					</tab>
+					<tab title="Atributos Secundários">
+						<rectangle class="Fundo">					
+						<!-- FRENTE DA FICHA -->
+
+						<!-- VERSO DA FICHA -->
+							<layout name="layVerso" align="client">
+
+							<Header2 conteudo="M A R C A D O R E S" linha="305" largura="200" align="top" margins="{top=20}" />
+								
+								<!-- ATRIBUTOS DERIVADOS -->
+								<flowLayout class="Tabela" margins="{left=20, top=10, bottom=30, right=20}">
+									<helth classAtr="H E A L T H" id="Health" />
+									<Barrinha2 cor="lightblue" classAtr="W I L L P O W E R" id="Willpower" />
+									<Barrinha2 cor="skyblue" classAtr="M A N A" id="Mana" />
+								</flowLayout>
+								
+								<!-- DISCIPLINAS -->
+								<Header conteudo="L I N H A S" linha="355" largura="110" />
+
+								<flowLayout class="Tabela2" margins="{left=20, top=25, bottom=30, right=20}">
+									<Campo rotulo="Size" semAcento="Size" largura="35" />
+									<Campo rotulo="Speed" semAcento="Speed" largura="50" />
+									<Campo rotulo="Defense" semAcento="Defense" largura="65" />
+									
+									<Campo rotulo="Armor" semAcento="Armor" largura="50" />
+									<Campo rotulo="Initiative" semAcento="Initiative" largura="70" />
+									<flowPart>
+									<label field=" "/>
+									</flowPart>
+									<Campo rotulo="Beats" semAcento="Beats" largura="45" />
+									
+									<Campo rotulo="Arcane Beats" semAcento="ArcaneBeats" largura="95" />
+								</flowLayout>
+
+								<Header conteudo="D E S C R I T I V O S" linha="305" largura="210" />
+								
+								<flowLayout class="Tabela4">
+								<Descritivos classAtr="T I L T S" id="Tilts"/>
+								<Descritivos classAtr="C O N D I T I O N S" id="Conditions"/>
+								<Descritivos classAtr="O B S E S S I O N S" id="Obsessions"/>
+								<Descritivos classAtr="A S P I R A T I O N S" id="Aspirations"/>
+								</flowLayout>
+
+								<Header conteudo="A R M A S" linha="350" largura="120" />
+
+								
+								<layout align="top" height="30">
+									<layout align="right" width="25" margins="{right=80}" ><button height="25" text="🞦" width="25" onClick="self.rclArmas:append();" hint="Nova Arma"/></layout>
+								</layout>
+								<flowLayout class="Tabela" align="top" autoHeight="true" margins="{left=30, top=0, bottom=30, right=20}">
+									<recordList width="800" anchors="top" margins="{left=20}" minQt="1" layout="horizontalTiles" name="rclArmas" field="fldArmas" templateForm="armas" height="460" onSelect="self.rclArmas:sort();">
+										<event name="onCompare">
+											return Utils.compareStringPtBr(nodeA.fldDis_Disc00, nodeB.fldDis_Disc00);
+										</event>
+									</recordList>
+
+								</flowLayout>	
+
+								</layout>
+
+						</rectangle>
+					</tab>
+
+					<tab title="Magias">
+						<rectangle class="Fundo">					
+							<layout name="layMagias" align="client">
+
+							<Header2 conteudo="S P E L L S" linha="350" largura="110" align="top" margins="{top=20}" />
+
+								<flowLayout class="Tabela" margins="{left=20, top=25, bottom=30, right=20}">
+									<Spells classAtr="R O T E S" rclname="rclrotes" rclfld="fldrotes" />
+									<Spells classAtr="P R A X I S" rclname="rclpraxis" rclfld="fldpraxis" />
+									<Spells classAtr="A C T I V E   S P E L L S" rclname="rclactspells" rclfld="fldactspells" />
+									<Spells classAtr="I N U R E D   S P E L L S" rclname="rclinspells" rclfld="fldinspells" />
+								</flowLayout>
+
+							<Header conteudo="N I M B U S" linha="350" largura="110" align="top" />
+								<flowLayout class="Tabela4">
+									<Descritivos classAtr="S I G N A T U R E" id="nimbus1"/>
+									<Descritivos classAtr="I M M E D I A T E" id="nimbus2"/>
+									<Descritivos classAtr="L O N G - T E R M" id="Conditions"/>
+								</flowLayout>
+
+								<Header conteudo="A T T A I N M E N T S" linha="300" largura="210" align="top" />
+
+								<flowLayout class="Tabela" margins="{left=20, top=25, bottom=30, right=20}">
+									<Spells classAtr="L E G A C Y" rclname="rclLegacy" rclfld="fldLegacy" />
+									<Spells classAtr="A R C A N E" rclname="rclArcane" rclfld="fldArcane" />
+								</flowLayout>
+
+							</layout>
+						</rectangle>
+					</tab>
+
+					<tab title="Personagem">
+						<rectangle class="Fundo">					
+							<layout name="layPersonagem" align="client">
+
+
+
+								<flowLayout class="Tabela" margins="{left=20, top=30, bottom=5, right=20}">
+
+									<flowPart class="flowCampo" height="440" minWidth="260" maxWidth="260" margins="{bottom=0, left=5, right=5}">
+										<flowLayout orientation="vertical" width="260" autoHeight="true" maxColumns="1">
+											<flowPart class="flowCampo" minWidth="260" maxWidth="260" margins="{bottom=5}"><label class="AtrClasse" text="I M A G E M" /></flowPart>
+											<layout align="none" height="400" width="260">
+												<image align="none" height="400" width="260" style="autofit" editable="true" field="fldFotoPJ" hint="Alterar Aparência" />
+												<dataLink field="fldFotoPJ" defaultValue="/images/character.png" />
+												<image height="400" width="260" url="/images/frame.png" style="proportional"/>
+											</layout>
+										</flowLayout>
+									</flowPart>
+									
+									<flowPart class="flowCampo" height="440" minWidth="530" maxWidth="530" margins="{bottom=0, left=5, right=5}">
+										<flowLayout orientation="vertical" width="530" autoHeight="true" maxColumns="1">
+											<flowPart class="flowCampo" minWidth="530" maxWidth="530" margins="{bottom=5}"><label class="AtrClasse" text="H I S T Ó R I A" /></flowPart>
+											<rectangle height="400" width="530" color="#202020" cornerType="bevel" xradius="10" yradius="10" padding="{top=10, bottom=10, left=10, right=10}">
+												<textEditor align="client" transparent="true" field="fldBG" name="nomeBG" fontFamily="Constantia" fontSize="13"/>
+												<dataLink field="fldBG" defaultValue="Escreva aqui." />
+											</rectangle>
+										</flowLayout>
+									</flowPart>
+								</flowLayout>
+								
+								<flowLayout class="Tabela" margins="{left=20, top=0, bottom=30, right=20}">
+									<ColunaText classAtr="A P A R Ê N C I A" id="Aparencia" />
+									<ColunaDouble classAtr1="O B J E T I V O S" id1="Objetivos" classAtr2="F E R R A M E N T A   D E D I C A D A" id2="FerramentaDedicada" />
+									<ColunaText classAtr="P E R S O N A L I D A D E" id="Personalidade" />
+								</flowLayout>
+								
+								<flowLayout class="Tabela" maxControlsPerLine="3">
+									<flowPart height="600" margins="{left=5, right=5, bottom=10}" minWidth="265" maxWidth="260">
+										<rectangle height="600" color="transparent" align="client">
+										<Header conteudo="A R C A N A" linha="74" largura="114" />
+										
+										<recordList align="top" minQt="3" layout="vertical" name="rclArcana" field="fldArcana" templateForm="vantagens" autoHeight="true" margins="{top=20}" onItemRemoved="self.layPersonagem:needRepaint();" onSelect="self.rclArcana:sort();">
+											<event name="onCompare">
+												return Utils.compareStringPtBr(nodeA.fldArcana, nodeB.fldArcana);
+											</event>
+										</recordList>
+										<button align="top" height="25" text="🞦" onClick="self.rclArcana:append();" hint="Nova Arcana" />
+										
+										</rectangle>
+									</flowPart>
+
+									<flowPart height="600" margins="{left=5, right=5, bottom=10}" minWidth="265" maxWidth="260">
+										<rectangle height="600" color="transparent" align="client">
+										<Header conteudo="M E R I T S" linha="74" largura="114" />
+										
+										<recordList align="top" minQt="3" layout="vertical" name="rclMerits" field="fldMerits" templateForm="vantagens" autoHeight="true" margins="{top=20}" onItemRemoved="self.layPersonagem:needRepaint();" onSelect="self.rclMerits:sort();">
+											<event name="onCompare">
+												return Utils.compareStringPtBr(nodeA.fldMerits, nodeB.fldMerits);
+											</event>
+										</recordList>
+										<button align="top" height="25" text="🞦" onClick="self.rclMerits:append();" hint="Novo Merit" />
+										
+										</rectangle>
+									</flowPart>
+									
+									<flowPart height="620" margins="{left=5, right=5, bottom=10, top=30}" minWidth="265" maxWidth="260">
+										<rectangle height="620" color="transparent" align="client">
+										<Header conteudo="D E S P E R T A R" linha="47" largura="168" />
+											<flowLayout align="top" autoHeight="true" orientation="vertical" margins="{top=20}">
+												<template name="tbSangue">
+													<flowPart align="top" height="50" width="240" margins="{bottom=5}">
+														<label fontSize="10" textTrimming="character" fontFamily="Constantia"  width="240" horzTextAlign="leading" align="top" text="$(legenda)" fontColor="#6f6f6f" margins="{bottom=5}"/>
+														<label align="top" field="fldsang$(nome)" name="sang$(nome)" />
+														<dataLink field="fldsang$(nome)" defaultValue="—" />
+													</flowPart>
+												</template>
+												
+												<tbSangue legenda="INTERVALO DE RITUAL" nome="gnosisRitual" />
+												<tbSangue legenda="MÁXIMO DE ATRIBUTO/HABILIDADE" nome="gnosisTraitMax" />
+												<tbSangue legenda="YANTRAS" nome="gnosisYantra" />
+												<tbSangue legenda="PARADOXO" nome="gnosisParadox" />
+												<tbSangue legenda="MAGIAS COMBINADAS" nome="gnosisCS" />
+												<tbSangue legenda="OBSESSÕES" nome="gnosisObsessions" />
+												<tbSangue legenda="MANA/POR TURNO" nome="gnosisMPR" />
+												<tbSangue legenda="NÍVEL MÁXIMO DE ARCANUM (MAIOR/OUTROS)" nome="gnosisArcana" />
+												<tbSangue legenda="PATTERN SCOURING" nome="gnosisScour" />
+												<!-- <flowPart align="top" height="150" width="197.5" margins="{bottom=5}">
+													<label class="AtrClasse" horzTextAlign="leading" align="top" text="PENALIDADE DE ALIMENTAÇÃO" fontColor="#6f6f6f" margins="{bottom=5}" />
+													<label align="top" field="fldsangFeed" name="sangFeed" height="130" autoSize="true" />
+													<dataLink field="fldsangFeed" defaultValue="—" />
+												</flowPart> -->
+												
+											</flowLayout>
+											
+											<layout align="top" height="50" margins="{top=20}">
+												<layout align="top" height="25">
+													<label class="AtrClasse" text="G N O S I S" margins="{left=5}"/>
+												</layout>
+												<layout align="top" height="25">
+													<layout align="left" margins="{left=48}" height="25" width="195">
+														<Bolinhas10 numero="100" nomeBolinha="nomeVerso" />
+														<dataLink fields="{'fldCheck100_01', 'fldCheck100_02', 
+																		'fldCheck100_03', 'fldCheck100_04',
+																		'fldCheck100_05', 'fldCheck100_06',
+																		'fldCheck100_07', 'fldCheck100_08',
+																		'fldCheck100_09', 'fldCheck100_10',}">
+															<event name="onChange">
+																if(sheet==nil) then return; end;
+																CalcSangue();
+															</event>
+														</dataLink>
+													</layout>
+												</layout>
+											</layout>
+											
+										</rectangle>
+									</flowPart>
+								</flowLayout>
+								
+							</layout>
+						 </rectangle>
+						</tab>
+						<!-- ANOTAÇÕES DA FICHA -->
+
+					<tab title="Anotações">
+						<rectangle class="Fundo">					
+							<layout name="layNote" align="client">
+								<flowLayout class="Tabela" height="30" margins="{top=20}">
+									<flowPart height="30" minWidth="400" maxWidth="1000" margins="">
+										<flowLayout class="Tabela" autoHeight="false" height="25" margins="">
+											<flowPart height="30" minWidth="0" maxWidth="325" width="325"><horzLine /></flowPart>
+											<flowPart height="30" width="170"><label class="Divisor" text="A N O T A Ç Õ E S" /></flowPart>
+											<flowPart height="30" minWidth="0" maxWidth="325" width="325"><horzLine /></flowPart>
+										</flowLayout>
+									</flowPart>
+								</flowLayout>
+								<richEdit field="Notes" align="client" margins="{top=10, bottom=40, right=40, left=40}" backgroundColor="#272727" defaultFontColor="white" />
+							</layout>
+						</rectangle>
+					</tab>
+				</tabControl>
+			</rectangle>
+		</rectangle>
+		</flowPart>
+		</flowLayout>
+	</scrollBox>
+	</layout>
+</form>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="spells" height="25" align="top" margins="{bottom=10}">
+<style>
+edit {
+	fontSize: 14;
+	fontColor: white;
+	fontStyle: bold;
+	textTrimming: character;
+	fontFamily: Constantia;
+	transparent: true;
+}
+imageCheckBox{
+	checkedImage: /images/checkBoxAtv.png;
+	uncheckedImage: /images/checkBoxDes.png;
+	height: 25;
+	width: 14;
+	align: right;
+	margins: {right=3};
+	autoChange: false;
+}
+</style>
+	<layout align="client">
+		<edit align="left" width="350" height="25" field="fldSpell" /><dataLink field="fldSpell" defaultValue="—" />
+		<layout align="left" width="22" height="22">
+			<button text="🞭" width="22" height="22" onClick="NDB.deleteNode(sheet);" hint="Apagar Magia" />
+		</layout>
+	</layout>
+</form>
