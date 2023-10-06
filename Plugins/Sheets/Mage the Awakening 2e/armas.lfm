@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="armas" height="230" width="220" margins="{left=20, right=20}">
+<style>
+label {
+	fontSize: 14;
+	fontColor: white;
+	fontStyle: bold;
+	textTrimming: character;
+	fontFamily: Constantia;
+}
+edit {
+	fontSize: 14;
+	fontColor: #cdcdcd;
+	textTrimming: character;
+	fontFamily: Constantia;
+	transparent: true;
+}
+horzLine{
+	strokeColor: #424242;
+	margins: {top=7};
+	align: top;
+	
+}
+imageCheckBox{
+	checkedImage: /images/checkBoxAtv.png;
+	uncheckedImage: /images/checkBoxDes.png;
+	height: 25;
+	width: 14;
+	align: right;
+	margins: {left=3};
+	autoChange: false;
+}
+rectangle.LinhaDeFora{
+	align: top; 
+	color: transparent; 
+	strokeColor: #272727; 
+	strokeSize: 2; 
+	xradius: 25; 
+	yradius: 25; 
+	cornerType: bevel; 
+	margins: {top=20, right=20, bottom=20, left=20};
+	height: 1460;
+}
+rectangle.LinhaDeDentro{
+	align: client; 
+	color: transparent; 
+	strokeColor: #272727; 
+	strokeSize: 1; 
+	xradius: 23; 
+	yradius: 23; 
+	cornerType: bevel; 
+	margins: {top=5, right=5, bottom=5, left=5};
+}
+rectangle.Fundo{
+	align: client; 
+	color: #272727; 
+	xradius: 20; 
+	yradius: 20; 
+	cornerType: bevel; 
+	margins: {top=10, right=10, bottom=10, left=10};
+}
+label.Divisor {
+	fontSize: 20;
+	fontColor: white;
+	fontStyle: bold;
+	textTrimming: character;
+	fontFamily: Constantia;
+	horzTextAlign: center;
+	autoSize: true;
+	align: client;
+	margins: {bottom=7};
+}
+label.AtrClasse{
+	fontSize: 10;
+	fontColor: white;
+	textTrimming: character;
+	fontFamily: Constantia;
+	horzTextAlign: center;
+	align: top;
+}
+flowLayout.Tabela{
+	align: top; 
+	orientation: horizontal; 
+	horzAlign: center; 
+	autoHeight: true; 
+	maxControlsPerLine: 2; 
+}
+flowPart.flowCampo{
+	minWidth: 220; 
+	maxWidth: 220; 
+	height: 25; 
+	margins: {left=20, right=20, bottom=10};
+}
+flowPart.flowCampo2{
+	minWidth: 100; 
+	maxWidth: 100; 
+	height: 25; 
+	margins: {left=5, right=5, bottom=10};
+}
+flowPart.flowCampo3{
+	minWidth: 160; 
+	maxWidth: 160; 
+	height: 25; 
+	margins: {left=5, right=5, bottom=0};
+}
+edit.EditBold{
+	fontSize: 14;
+	fontColor: white;
+	fontStyle: bold;
+	textTrimming: character;
+	fontFamily: Constantia;
+}
+
+</style>	
+
+		<template name="Campo">
+			<flowPart class="flowCampo">
+					<label align="left" width="$(largura)" text="$(rotulo): " />
+					<edit align="client" field="fld$(semAcento)" />
+			</flowPart>
+		</template>
+
+		<template name="Campo2">
+			<flowPart class="flowCampo2">
+					<label align="left" width="$(largura)" text="$(rotulo): " />
+					<edit align="client" field="fld$(semAcento)" />
+			</flowPart>
+		</template>
+	
+		<template name="CincoPontosDis">
+			<flowPart class="flowCampo3" margins="{bottom=0}">
+					<edit align="left" class="EditBold" field="fldDis_$(numero)" width="$(largura)" />
+					<dataLink field="fldDis_$(numero)" defaultValue="—" />
+			</flowPart>
+		</template>
+
+		<flowPart class="flowCampo" height="230" width="220" margins="{top=10}">
+		<rectangle align="client" color="#202020" cornerType="bevel" xradius="10" yradius="10" padding="{top=10, bottom=10, left=10, right=10}" margins="{bottom=10}">
+			<flowLayout orientation="vertical" width="220" autoHeight="true" maxColumns="1">
+				<flowLayout class="Tabela" minWidth="220" maxWidth="220" margins="{top=5, left=10, bottom=5}">
+					<CincoPontosDis largura="160" numero="Disc00" margins="{top=10}"/>
+					<flowPart height="25" margins="{top=5, bottom=0}">
+						<layout align="right" width="22" height="22" margins="{right=7}">
+							<button text="🞭" width="22" height="22" onClick="NDB.deleteNode(sheet);" hint="Apagar Arma" />
+						</layout>
+					</flowPart>
+				</flowLayout>
+				<horzLine align="none" margins="{bottom=10}" top="24" width="215" />
+
+				<flowLayout class="Tabela" autoHeight="false" minWidth="220" maxWidth="220" height="100" margins="">
+						<Campo2 rotulo="Damage" semAcento="Damage" largura="60"/> 
+						<Campo2 rotulo="Range" semAcento="Range" largura="50"/>
+						<Campo2 rotulo="Clip" semAcento="Clip" largura="35"/>
+						<Campo2 rotulo="Init" semAcento="Init" largura="30"/>
+						<Campo2 rotulo="Strength" semAcento="Strength" largura="65"/>
+						<Campo2 rotulo="Size" semAcento="Size" largura="35"/>
+				</flowLayout>
+
+				<flowPart minWidth="200" maxWidth="209" height="60" margins="{top=5, right=5}">
+					<textEditor align="client" transparent="false" field="texteditor$(classAtr)" margins="{bottom=5, right=10}" />
+				</flowPart>
+					
+			</flowLayout>		
+			</rectangle>
+		</flowPart>
+</form>
