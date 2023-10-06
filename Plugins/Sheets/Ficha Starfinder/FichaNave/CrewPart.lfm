@@ -74,11 +74,13 @@
         end;
         ]]>	
 	</script>
-    <comboBox align="left" width="100" field="funcao" name="funcao" margins="{top=1,bottom=1}" items="{'Capitão','Artilheiro','Engenheiro','Oficial','Piloto','Médico','Outro'}" values="{'1','2','3','4','5','6','7'}"/>
+    <comboBox align="left" width="100" field="funcao" name="funcao" margins="{top=1,bottom=1}" items="{'Capitão','Imediato','Artilheiro','Engenheiro','Oficial','Conjurador','Piloto','Médico','Outro'}" values="{'1','2','3','4','5','6','7','8','9'}"/>
     <comboBox align="left" width="75" field="tipo" name="tipo" margins="{top=1,bottom=1}" items="{'PJ','PdM','Generico'}" values="{'1','2','3'}"/>
     <layout align="client">
         <comboBox align="client" field="ficha" name="fichaComboBox" margins="{top=1,bottom=1}" items="{}" values="{}" visible="false"/>
-        <edit align="client" field="ficha" name="fichaEdit" margins="{top=1,bottom=1}" visible="false"/>
+
+        <edit align="right" width="50" field="bonus" name="bonusEdit" margins="{top=1,bottom=1}" visible="false"/>
+        <edit align="client" field="fichaPers" name="fichaEdit" margins="{top=1,bottom=1}" visible="false"/>
     </layout>
 	<layout align="right" width="90">
         <checkBox align="left" width="20" field="boss"/>
@@ -91,16 +93,19 @@
             local tipo = tonumber(sheet.tipo) or 0;
 
             if tipo == 1 then
-                self.fichaComboBox.visible = true;
-                self.fichaEdit.visible = false;
-                self.listAllCharacters("PJs");
+                self.fichaComboBox.visible = true
+                self.fichaEdit.visible = false
+                self.bonusEdit.visible = false
+                self.listAllCharacters("PJs")
             elseif tipo == 2 then
-                self.fichaComboBox.visible = true;
-                self.fichaEdit.visible = false;
-                self.listAllCharacters("PdMs");
+                self.fichaComboBox.visible = true
+                self.fichaEdit.visible = false
+                self.bonusEdit.visible = false
+                self.listAllCharacters("PdMs")
             elseif tipo == 3 then
-                self.fichaComboBox.visible = false;
-                self.fichaEdit.visible = true;
+                self.fichaComboBox.visible = false
+                self.fichaEdit.visible = true
+                self.bonusEdit.visible = true
             end;
             
         </event>
@@ -110,15 +115,15 @@
         <event name="onChange">
         	if sheet==nil then return end;
 
-            local trips = {0,0,0,0,0,0,0};
+            local trips = {0,0,0,0,0,0,0,0,0};
             local node = NDB.getParent(NDB.getParent(sheet));
 
             local nodes = NDB.getChildNodes(node.listaTripulantes); 
             for i=1, #nodes, 1 do
                 local funcao = tonumber(nodes[i].funcao) or 0;
-                local qtd = tonumber(nodes[i].qtd) or 0;
+                local qtd = tonumber(nodes[i].qtd) or 1;
 
-                if funcao >= 1 and funcao &lt;= 7 then
+                if funcao >= 1 and funcao &lt;= 9 then
                     trips[funcao] = trips[funcao] + qtd;
                 end;
             end;
@@ -130,6 +135,8 @@
             node.trip_atual5 = trips[5];
             node.trip_atual6 = trips[6];
             node.trip_atual7 = trips[7];
+            node.trip_atual8 = trips[8];
+            node.trip_atual9 = trips[9];
         </event>
     </dataLink>
 </form>

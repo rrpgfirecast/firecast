@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<form name="frmWeaponPart" width="400" height="25" theme="dark" margins="{top=1}">
+<form name="frmWeaponPart" width="500" height="105" theme="dark" margins="{top=5}">
 	<script> 
 		<![CDATA[			
 		local function askForDelete()
@@ -21,16 +21,188 @@
 				showMessage("Ops, bug.. nao encontrei o popup para exibir");
 			end;				
 		end;
+
+        function recursiveEnumPersonagensEmBibItem(bibItem, dest, tipo)
+            if bibItem.tipo == "personagem" and tipo == "PJs" then
+                if bibItem.loginDono ~= nil and bibItem.loginDono ~= "" then
+                    dest[#dest + 1] = bibItem;
+                end;
+            elseif bibItem.tipo == "personagem" and tipo == "PdMs" then
+                if (bibItem.loginDono == nil) or (bibItem.loginDono == "") then
+                    dest[#dest + 1] = bibItem;
+                end;
+            else
+                local filhos = bibItem.filhos;
+                
+                for i = 1, #filhos, 1 do
+                    recursiveEnumPersonagensEmBibItem(filhos[i], dest, tipo);
+                end;
+            end;
+        end;
+
+        function self.listAllCharacters(tipo)
+            local mesa = Firecast.getMesaDe(sheet);
+
+            local personagens = {};
+            recursiveEnumPersonagensEmBibItem(mesa.biblioteca, personagens, tipo);
+            
+            table.sort(personagens,
+                function(left, right)
+                    return Utils.compareStringPtBr(left.nome, right.nome) < 0;
+                end);
+                
+            local nomes = {};
+            local valores = {};
+            
+            nomes[1] = "-";
+            valores[1] = "0";
+            local current = tonumber(sheet.ficha);
+            local nome = "";
+            
+            for i = 1, #personagens, 1 do
+                nomes[#nomes + 1] = personagens[i].nome;
+                valores[#valores + 1] = tostring(personagens[i].codigoInterno);
+                if personagens[i].codigoInterno == current then
+                    nome = personagens[i].nome;
+                end;
+            end;
+
+            if nome == "" then
+                nomes[#nomes + 1] = sheet.nomePers;
+                valores[#valores + 1] = tostring(current);
+            end
+            
+            self.fichaComboBox.items = nomes;
+            self.fichaComboBox.values = valores;
+
+            if nome ~= "" then
+                sheet.ficha = current
+                self.fichaComboBox.text = nome
+                sheet.nomePers = nome
+            else
+                self.fichaComboBox.text = sheet.nomePers
+            end;
+        end;
+
+        function self:loadSheet()
+            if sheet==nil then return end
+
+
+            local tipo = tonumber(sheet.tipoPers) or 0;
+            if tipo == 1 or tipo == 2 then
+                -- Load from Sheet
+
+                local mesa = Firecast.getMesaDe(sheet)
+                if mesa==nil then return end
+                local bibItem = mesa:findBibliotecaItem(sheet.fichaID)
+                if bibItem==nil then return end
+                bibItem:loadSheetNDB(
+                        function (node)
+                            sheet.ataquePers = (tonumber(node.bba) or 0)
+                                                + (tonumber(node.efetModDes) or 0)
+                        end)
+            elseif tipo == 3 then
+                sheet.ataquePers = sheet.bonus
+            end;
+        end
 		]]>	
 	</script>
-	<edit align="client" field="nome" margins="{top=1,bottom=1}"/>
 
-    <edit align="right" width="50" text="Dano" field="dano" margins="{top=1,bottom=1}"/>
-	<layout align="right" width="125" margins="{top=1,bottom=1}">
-        <comboBox align="left" field="categoria" width="75" items="{'-','Pessoal','Leve','Pesada','Capital'}" values="{'0','1','2','3','4'}"/>
-		<button align="right" width="23" text="i" onClick="showPopup();"/>
-		<button align="right" width="23" text="X" onClick="askForDelete();"/>
-	</layout>
+    <rectangle align="client" color="black" strokeColor="white" strokeSize="1" padding="{top=2,bottom=2,right=2,left=2}">
+        <layout align="top" height="25">
+        	<edit align="client" field="nome" margins="{top=1,bottom=1}"/>
+
+        	<layout align="right" width="250" margins="{top=1,bottom=1}">
+                <layout align="left" width="200">
+                    <comboBox align="left" width="75" field="tipoPers" name="tipoPers" margins="{top=1,bottom=1}" items="{'PJ','PdM','Generico'}" values="{'1','2','3'}"/>
+                    <layout align="client">
+                        <comboBox align="client" field="ficha" name="fichaComboBox" margins="{top=1,bottom=1}" items="{}" values="{}" visible="false"/>
+                        
+                        <edit align="client" field="fichaPers" name="fichaEdit" margins="{top=1,bottom=1}" visible="false"/>
+                        <edit align="right" width="50" field="bonus" name="bonusEdit" margins="{top=1,bottom=1}" visible="false"/>
+                    </layout>
+                </layout>
+        		<button align="right" width="23" text="i" onClick="showPopup();"/>
+        		<button align="right" width="23" text="X" onClick="askForDelete();"/>
+        	</layout>
+        </layout>
+
+        <layout align="top" height="25">
+            <layout align="left" width="125" margins="{right=5}">
+                <label text="Alcance" align="left" width="50" horzTextAlign="center" fontSize="11"/>
+                <comboBox align="right" field="alcance" width="75" items="{'-','Curto','Médio','Longo'}" values="{'0','1','2','3'}"/>
+            </layout>
+            <layout align="left" width="125" margins="{right=5}">
+                <label text="Tamanho" align="left" width="50" horzTextAlign="center" fontSize="11"/>
+                <comboBox align="right" field="categoria" width="75" items="{'-','Pessoal','Leve','Pesada','Capital'}" values="{'0','1','2','3','4'}"/>
+            </layout>
+            <layout align="left" width="125" margins="{right=5}">
+                <label text="Tipo" align="left" width="50" horzTextAlign="center" fontSize="11"/>
+                <comboBox align="right" field="tipo" width="75" items="{'-','Direta','Guiada'}" values="{'0','1','2'}"/>
+            </layout>
+            <layout align="left" width="125" margins="{right=5}">
+                <label text="Velocidade" align="left" width="75" horzTextAlign="center" fontSize="11"/>
+                <edit align="client" field="velocidade" margins="{top=1,bottom=1}"/>
+            </layout>
+        </layout>
+
+        <layout align="top" height="25">
+            <layout align="left" width="125" margins="{right=5}">
+                <button text="Ataque" align="left" width="50" horzTextAlign="center" fontSize="11">
+                    <event name="onClick">
+                        local ataque = (tonumber(sheet.ataquePers) or 0) + (tonumber(sheet.ataqueMod) or 0)
+                        local rolagem = Firecast.interpretarRolagem("1d20+" .. ataque);
+
+                        local mesa = Firecast.getMesaDe(sheet);
+                        local tipo = tonumber(sheet.tipoPers) or 0;
+                        if tipo == 1 or tipo == 2 then
+                            mesa.activeChat:rolarDados(rolagem, "Ataque com " .. (sheet.nome or "arma") .. " de " .. (sheet.nomePers or "artilheiro"));
+                        elseif tipo == 3 then
+                            mesa.activeChat:rolarDados(rolagem, "Ataque com " .. (sheet.nome or "arma") .. " de " .. (sheet.fichaPers or "artilheiro"));
+                        end
+
+                        local ammo = tonumber(sheet.municao)
+                        if ammo ~= nil then
+                            ammo = ammo - 1
+                            sheet.municao = ammo
+                        end
+                    </event>
+                </button>
+                <rectangle align="left" width="37.5" color="#000000" strokeColor="white" strokeSize="1">
+                    <label align="client" field="ataquePers" horzTextAlign="center" vertTextAlign="center"/>
+                </rectangle>
+                <edit align="client" field="ataqueMod" margins="{top=1,bottom=1}"/>
+            </layout>
+            <layout align="left" width="125" margins="{right=5}">
+                <button text="Dano" align="left" width="50" horzTextAlign="center" fontSize="11">
+                    <event name="onClick">
+                        local rolagem = Firecast.interpretarRolagem(sheet.dano or "1d1");
+
+                        local mesa = Firecast.getMesaDe(sheet);
+                        local tipo = tonumber(sheet.tipoPers) or 0;
+                        if tipo == 1 or tipo == 2 then
+                            mesa.activeChat:rolarDados(rolagem, "Dano de " .. (sheet.nome or "arma") .. " de " .. (sheet.nomePers or "artilheiro"));
+                        elseif tipo == 3 then
+                            mesa.activeChat:rolarDados(rolagem, "Dano de " .. (sheet.nome or "arma") .. " de " .. (sheet.fichaPers or "artilheiro"));
+                        end
+                    </event>
+                </button>
+                <edit align="client" field="dano" margins="{top=1,bottom=1}"/>
+            </layout>
+            <layout align="left" width="125" margins="{right=5}">
+                <label text="Munição" align="left" width="50" horzTextAlign="center" fontSize="9"/>
+                <edit align="client" field="municao" margins="{top=1,bottom=1}"/>
+            </layout>
+            <button text="Carregar Ficha" align="left" width="125" horzTextAlign="center" fontSize="11">
+              <event name="onClick">
+                  self:loadSheet()
+              </event>
+            </button>
+        </layout>
+
+        <edit align="bottom" height="25" field="especial" margins="{top=1,bottom=1}"/>
+    </rectangle>
+
     <dataLink field="tripTipo" defaultValue="Artilheiro"/>
 	<dataLink field="pf">
         <event name="onChange">
@@ -153,6 +325,78 @@
             else
                 sheet.tripMax = 0;
             end;
+
+            local node = NDB.getParent(NDB.getParent(sheet));
+            local nodes = NDB.getChildNodes(node.campoProa); 
+            local slots = 0
+            for i=1, #nodes, 1 do
+                local categoria = tonumber(nodes[i].categoria) or 0
+                if categoria==2 then
+                    slots = slots + 1
+                elseif categoria==3 then
+                    slots = slots + 2
+                elseif categoria==4 then
+                    slots = slots +5
+                end
+            end;
+            node.campoProaSlots = slots
+
+            local nodes = NDB.getChildNodes(node.campoPopa); 
+            slots = 0
+            for i=1, #nodes, 1 do
+                local categoria = tonumber(nodes[i].categoria) or 0
+                if categoria==2 then
+                    slots = slots + 1
+                elseif categoria==3 then
+                    slots = slots + 2
+                elseif categoria==4 then
+                    slots = slots +5
+                end
+            end;
+            node.campoPopaSlots = slots
+
+            local nodes = NDB.getChildNodes(node.campoBombordo); 
+            slots = 0
+            for i=1, #nodes, 1 do
+                local categoria = tonumber(nodes[i].categoria) or 0
+                if categoria==2 then
+                    slots = slots + 1
+                elseif categoria==3 then
+                    slots = slots + 2
+                elseif categoria==4 then
+                    slots = slots +5
+                end
+            end;
+            node.campoBombordoSlots = slots
+
+            local nodes = NDB.getChildNodes(node.campoEstibordo); 
+            slots = 0
+            for i=1, #nodes, 1 do
+                local categoria = tonumber(nodes[i].categoria) or 0
+                if categoria==2 then
+                    slots = slots + 1
+                elseif categoria==3 then
+                    slots = slots + 2
+                elseif categoria==4 then
+                    slots = slots +5
+                end
+            end;
+            node.campoEstibordoSlots = slots
+
+            local nodes = NDB.getChildNodes(node.campoTorreta); 
+            slots = 0
+            for i=1, #nodes, 1 do
+                local categoria = tonumber(nodes[i].categoria) or 0
+                if categoria==2 then
+                    slots = slots + 1
+                elseif categoria==3 then
+                    slots = slots + 2
+                elseif categoria==4 then
+                    slots = slots +5
+                end
+            end;
+            node.campoTorretaSlots = slots*2
+
         </event>
     </dataLink>
     <dataLink field="tripMin">
@@ -223,6 +467,38 @@
             end;
 
             node.weapon_tripMax = tripMax;
+        </event>
+    </dataLink>
+    <dataLink field="tipoPers">
+        <event name="onChange">
+            if sheet==nil then return end;
+            local tipo = tonumber(sheet.tipoPers) or 0;
+
+            if tipo == 1 then
+                self.fichaComboBox.visible = true
+                self.fichaEdit.visible = false
+                self.bonusEdit.visible = false
+                self.listAllCharacters("PJs")
+            elseif tipo == 2 then
+                self.fichaComboBox.visible = true
+                self.fichaEdit.visible = false
+                self.bonusEdit.visible = false
+                self.listAllCharacters("PdMs")
+            elseif tipo == 3 then
+                self.fichaComboBox.visible = false
+                self.fichaEdit.visible = true
+                self.bonusEdit.visible = true
+            end;
+            
+        </event>
+    </dataLink>
+    <dataLink field="ficha">
+        <event name="onChange">
+            if sheet==nil then return end;
+
+            if (tonumber(sheet.ficha)) then
+                sheet.fichaID = sheet.ficha 
+            end
         </event>
     </dataLink>
 	

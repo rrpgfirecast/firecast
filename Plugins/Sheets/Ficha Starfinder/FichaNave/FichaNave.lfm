@@ -106,7 +106,7 @@
     </template> 
     <template name="VertLabelLabel">
         <layout align="left" width="$(width)" margins="{right=5}">
-            <label text="$(text)" width="$(width)" horzTextAlign="leading" fontSize="$(fontSize)"/>
+            <label text="$(text)" width="$(width)" horzTextAlign="leading" fontSize="$(fontSize)" hint="$(hint or '')"  hitTest="$(hitTest)"/>
             <rectangle top="20" height="25" width="$(width)" color="#F0FFFF" strokeColor="black" strokeSize="1">
                 <label align="client" field="$(field)" horzTextAlign="center" vertTextAlign="center" format="$(format)" formatFloat="$(formatFloat)"/>
             </rectangle>
@@ -206,11 +206,11 @@
 
         <label align="top" text="Preço" height="25" horzTextAlign="center"/>
         <layout align="top" height="50">
-            <VertLabelLabel text="Total" field="precoTotal" width="60" fontSize="11" format="%d C"/>
+            <VertLabelLabel text="Total" field="precoTotal" width="60" fontSize="11" format="%d C" hitTest="false"/>
             <VertLabelEdit text="Level" field="precoPorLevel" width="60" fontSize="11"/>
-            <VertLabelLabel text="" field="precoLevel" width="60" fontSize="11" format="%d C"/>
+            <VertLabelLabel text="" field="precoLevel" width="60" fontSize="11" format="%d C" hitTest="false"/>
             <VertLabelEdit text="Tam" field="precoPorTam" width="60" fontSize="11"/>
-            <VertLabelLabel text="" field="precoTam" width="60" fontSize="11" format="%d C"/>
+            <VertLabelLabel text="" field="precoTam" width="60" fontSize="11" format="%d C" hitTest="false"/>
             <VertLabelEdit text="Fixo" field="precoAdd" width="60" fontSize="11"/>
             <VertLabelEdit text="+%" field="precoMult" width="60" fontSize="11"/>
         </layout>
@@ -220,8 +220,8 @@
     <popup name="costPop" width="325" height="60" backOpacity="0.4" autoScopeNode="false" padding="{left=5,right=0,top=5,bottom=5}">
         <layout align="top" height="50">
             <VertLabelEdit text="Base" field="precoBase" width="75" fontSize="11"/>
-            <VertLabelLabel text="Multiplicador" field="precoMult" width="75" fontSize="9" format="%.2f"/>
-            <VertLabelLabel text="Adicionais" field="precoMod" width="75" fontSize="11" format="%d C"/>
+            <VertLabelLabel text="Multiplicador" field="precoMult" width="75" fontSize="9" format="%.2f" hitTest="false"/>
+            <VertLabelLabel text="Adicionais" field="precoMod" width="75" fontSize="11" format="%d C" hitTest="false"/>
             <VertLabelEdit text="Outros" field="precoOutros" width="75" fontSize="11"/>
         </layout>
     </popup>
@@ -229,8 +229,8 @@
         <layout align="top" height="50">
             <VertLabelEdit text="Base (q)" field="deslBase" width="60" fontSize="11"/>
             <VertLabelEdit text="Viagem (Km/h)" field="deslBaseViagem" width="60" fontSize="9"/>
-            <VertLabelLabel text="Multiplicador" field="deslMult" width="60" fontSize="9" format="%.2f"/>
-            <VertLabelLabel text="Adicionais (q)" field="deslAdd" width="60" fontSize="9"/>
+            <VertLabelLabel text="Multiplicador" field="deslMult" width="60" fontSize="9" format="%.2f" hitTest="false"/>
+            <VertLabelLabel text="Adicionais (q)" field="deslAdd" width="60" fontSize="9" hitTest="false"/>
             <VertLabelEdit text="Outros (q)" field="deslOutros" width="60" fontSize="11"/>
             <VertLabelEdit text="Outros (Km/h)" field="deslOutrosViagem" width="60" fontSize="9"/>
         </layout>
@@ -239,13 +239,13 @@
         <label align="top" text="Pilotagem" height="25" horzTextAlign="center"/>
         <layout align="top" height="50">
             <VertLabelEdit text="Base" field="pilBase" width="60" fontSize="11"/>
-            <VertLabelLabel text="Adicional" field="pilotarAdd" width="60" fontSize="9"/>
+            <VertLabelLabel text="Adicional" field="pilotarAdd" width="60" fontSize="9" hitTest="false"/>
             <VertLabelEdit text="Outros" field="pilOutros" width="60" fontSize="11"/>
         </layout>
         <label align="top" text="Ataque" height="25" horzTextAlign="center"/>
         <layout align="top" height="50">
             <VertLabelEdit text="Base" field="atkBase" width="60" fontSize="11"/>
-            <VertLabelLabel text="Adicional" field="ataqueAdd" width="60" fontSize="9"/>
+            <VertLabelLabel text="Adicional" field="ataqueAdd" width="60" fontSize="9" hitTest="false"/>
             <VertLabelEdit text="Outros" field="atkOutros" width="60" fontSize="11"/>
         </layout>
     </popup>
@@ -253,22 +253,22 @@
         <label align="top" text="CAE" height="25" horzTextAlign="center"/>
         <layout align="top" height="50">
             <VertLabelEdit text="Base" field="caeBase" width="60" fontSize="11"/>
-            <VertLabelLabel text="Adicional" field="caeAdd" width="60" fontSize="9"/>
-            <VertLabelLabel text="Multiplicador" field="caeMult" width="60" fontSize="9"/>
+            <VertLabelLabel text="Adicional" field="caeAdd" width="60" fontSize="9" hitTest="false"/>
+            <VertLabelLabel text="Multiplicador" field="caeMult" width="60" fontSize="9" hitTest="false"/>
             <VertLabelEdit text="Outros" field="caeOutros" width="60" fontSize="11"/>
         </layout>
         <label align="top" text="CAC" height="25" horzTextAlign="center"/>
         <layout align="top" height="50">
             <VertLabelEdit text="Base" field="cacBase" width="60" fontSize="11"/>
-            <VertLabelLabel text="Adicional" field="cacAdd" width="60" fontSize="9"/>
-            <VertLabelLabel text="Multiplicador" field="cacMult" width="60" fontSize="9"/>
+            <VertLabelLabel text="Adicional" field="cacAdd" width="60" fontSize="9" hitTest="false"/>
+            <VertLabelLabel text="Multiplicador" field="cacMult" width="60" fontSize="9" hitTest="false"/>
             <VertLabelEdit text="Outros" field="cacOutros" width="60" fontSize="11"/>
         </layout>
         <label align="top" text="Proteção" height="25" horzTextAlign="center"/>
         <layout align="top" height="50">
             <VertLabelEdit text="Base" field="protBase" width="60" fontSize="11"/>
-            <VertLabelLabel text="Adicional" field="protAdd" width="60" fontSize="9"/>
-            <VertLabelLabel text="Multiplicador" field="protMult" width="60" fontSize="9"/>
+            <VertLabelLabel text="Adicional" field="protAdd" width="60" fontSize="9" hitTest="false"/>
+            <VertLabelLabel text="Multiplicador" field="protMult" width="60" fontSize="9" hitTest="false"/>
             <VertLabelEdit text="Outros" field="protOutros" width="60" fontSize="11"/>
         </layout>
     </popup>
@@ -276,8 +276,8 @@
         <label align="top" text="Estrutura" height="25" horzTextAlign="center"/>
         <layout align="top" height="50">
             <VertLabelEdit text="Base" field="pvBase" width="60" fontSize="11"/>
-            <VertLabelLabel text="Adicional" field="pvAdd" width="60" fontSize="9"/>
-            <VertLabelLabel text="Multiplicador" field="pvMult" width="60" fontSize="9"/>
+            <VertLabelLabel text="Adicional" field="pvAdd" width="60" fontSize="9" hitTest="false"/>
+            <VertLabelLabel text="Multiplicador" field="pvMult" width="60" fontSize="9" hitTest="false"/>
             <VertLabelEdit text="Outros" field="pvOutros" width="60" fontSize="11"/>
             <VertLabelCombo text="Cobertura" field="cobertura" width="100" fontSize="13" items="{'Nenhuma', 'Parcial', 'Completa'}" values="{'25','50','75'}"/>
         </layout>
@@ -301,20 +301,20 @@
         <layout align="top" height="50">
             <VertLabelEdit text="Mínima" field="tripMin" width="75" fontSize="13"/>
             <VertLabelEdit text="Máxima" field="tripMax" width="75" fontSize="13"/>
-            <VertLabelCombo text="Tipo" field="tripTipo" width="75" fontSize="13" items="{'Capitão','Artilheiro','Engenheiro','Oficial','Piloto','Médico','Outro'}" values="{'1','2','3','4','5','6','7'}"/>
+            <VertLabelCombo text="Tipo" field="tripTipo" width="75" fontSize="13" items="{'Capitão','Imediato','Artilheiro','Engenheiro','Oficial','Conjurador','Piloto','Médico','Outro'}" values="{'1','2','3','4','5','6','7','8','9'}"/>
         </layout>
     </popup>
     <popup name="reactorPop" width="245" height="135" backOpacity="0.4" autoScopeNode="false" padding="{left=5,right=0,top=5,bottom=5}">
         <layout align="top" height="50">
-            <VertLabelLabel text="PF" field="pf" width="75" fontSize="13"/>
-            <VertLabelLabel text="UNE" field="une" width="75" fontSize="13"/>
-            <VertLabelLabel text="Blocos" field="blocos" width="75" fontSize="13" formatFloat=",0"/>
+            <VertLabelLabel text="PF" field="pf" width="75" fontSize="13" hitTest="false"/>
+            <VertLabelLabel text="UNE" field="une" width="75" fontSize="13" hitTest="false"/>
+            <VertLabelLabel text="Blocos" field="blocos" width="75" fontSize="13" formatFloat=",0" hitTest="false"/>
         </layout>
         <label align="top" text="Tripulação" height="25" horzTextAlign="center"/>
         <layout align="top" height="50">
-            <VertLabelLabel text="Mínima" field="tripMin" width="75" fontSize="13"/>
-            <VertLabelLabel text="Máxima" field="tripMax" width="75" fontSize="13"/>
-            <VertLabelLabel text="Tipo" field="tripTipo" width="75" fontSize="13"/>
+            <VertLabelLabel text="Mínima" field="tripMin" width="75" fontSize="13" hitTest="false"/>
+            <VertLabelLabel text="Máxima" field="tripMax" width="75" fontSize="13" hitTest="false"/>
+            <VertLabelLabel text="Tipo" field="tripTipo" width="75" fontSize="13" hitTest="false"/>
         </layout>
     </popup>
     <popup name="weaponPop" width="245" height="300" backOpacity="0.4" autoScopeNode="false" padding="{left=5,right=0,top=5,bottom=5}">
@@ -323,21 +323,11 @@
             <VertLabelEdit text="UNE" field="une" width="75" fontSize="13"/>
             <VertLabelEdit text="Blocos" field="blocos" width="75" fontSize="13" formatFloat=",0"/>
         </layout>
-        <layout align="top" height="50">
-            <VertLabelEdit text="Dano" field="dano" width="75" fontSize="13"/>
-            <VertLabelEdit text="Tipo" field="tipo" width="75" fontSize="13"/>
-            <VertLabelCombo text="Tamanho" field="categoria" width="75" fontSize="13" items="{'-','Pessoal','Leve','Pesada','Capital'}" values="{'0','1','2','3','4'}"/>
-        </layout>
-        <layout align="top" height="50">
-            <VertLabelEdit text="Alcance" field="alcance" width="75" fontSize="13"/>
-            <VertLabelEdit text="Velocidade" field="velocidade" width="75" fontSize="13"/>
-            <VertLabelEdit text="Especial" field="especial" width="75" fontSize="13"/>
-        </layout>
         <label align="top" text="Tripulação" height="25" horzTextAlign="center"/>
         <layout align="top" height="50">
-            <VertLabelLabel text="Mínima" field="tripMin" width="75" fontSize="13"/>
-            <VertLabelLabel text="Máxima" field="tripMax" width="75" fontSize="13"/>
-            <VertLabelLabel text="Tipo" field="tripTipo" width="75" fontSize="13"/>
+            <VertLabelLabel text="Mínima" field="tripMin" width="75" fontSize="13" hitTest="false"/>
+            <VertLabelLabel text="Máxima" field="tripMax" width="75" fontSize="13" hitTest="false"/>
+            <VertLabelLabel text="Tipo" field="tripTipo" width="75" fontSize="13" hitTest="false"/>
         </layout>
         <textEditor align="client" field="detalhes"/>
     </popup>

@@ -153,12 +153,12 @@
 	            if perc ~= nil then 
 					sheet.percepcao = perc 
 				else
-					sheet.percepcao = efetModSab
+					sheet.percepcao = node.efetModSab
 				end
 	            if sm ~= nil then 
 					sheet.sentirmotivacao = sm 
 				else
-					sheet.sentirmotivacao = efetModSab
+					sheet.sentirmotivacao = node.efetModSab
 				end
 			elseif dataType=="dataType9150763801005266856" then
 				-- Ambesek.FichaStarfinder
@@ -189,12 +189,12 @@
 	            if perc ~= nil then 
 					sheet.percepcao = perc 
 				else
-					sheet.percepcao = efetModSab
+					sheet.percepcao = node.efetModSab
 				end
 	            if sm ~= nil then 
 					sheet.sentirmotivacao = sm 
 				else
-					sheet.sentirmotivacao = efetModSab
+					sheet.sentirmotivacao = node.efetModSab
 				end
 			elseif dataType=="dataType3259961376468481717" then
 				--Ambesek.Starfinder.Veiculos
@@ -585,19 +585,19 @@
 			<!--Ambesek.Starfinder.Nave-->
 			<layout align="right" width="50" margins="{left=5}" name="dataType3655081265232148693" visible="false">
 				<layout align="top" height="20" margins="{bottom=5}">
-					<label align="left" width="15" text="🛡️" margins="{right=5}" hint="CA" hitTest="true"/>
+					<label align="left" width="15" text="🛡️" margins="{right=5}" hint="Classe de Armadura (CA)" hitTest="true"/>
 					<formatEdit field="ca" align="client" fontSize="11" extra="SFN"/>
 				</layout>
 				<layout align="top" height="20" margins="{bottom=5}">
-					<label align="left" width="15" text="📡" margins="{right=5}" hint="TM" hitTest="true"/>
+					<label align="left" width="15" text="📡" margins="{right=5}" hint="Trava de Mira (TM)" hitTest="true"/>
 					<formatEdit field="tm" align="client" fontSize="11" extra="SFN"/>
 				</layout>
 				<layout align="top" height="20" margins="{bottom=5}">
-					<label align="left" width="15" text="💥" margins="{right=5}" hint="Limiar de Dano" hitTest="true"/>
+					<label align="left" width="15" text="💥" margins="{right=5}" hint="Limiar de Dano (LD)" hitTest="true"/>
 					<formatEdit field="ld" align="client" fontSize="11" extra="SFN"/>
 				</layout>
 				<layout align="top" height="20" margins="{bottom=5}">
-					<label align="left" width="15" text="💢" margins="{right=5}" hint="Limiar de Crítico" hitTest="true"/>
+					<label align="left" width="15" text="💢" margins="{right=5}" hint="Limiar de Crítico (LC)" hitTest="true"/>
 					<formatEdit field="lc" align="client" fontSize="11" extra="SFN"/>
 				</layout>
 				<layout align="top" height="20" margins="{bottom=5}">

@@ -30,8 +30,9 @@
 					local xp = tonumber(sheet.$(field)XP) or 0
 					while (xp >= cost) do
 						normal = normal + 1
+						local extra = math.floor((normal+1)/10) * 10
 						xp = xp - cost
-						cost = cost + 1
+						cost = cost + 1 + extra
 					end
 
 					local total = 	(tonumber(sheet.$(field)Equip) or 0) +

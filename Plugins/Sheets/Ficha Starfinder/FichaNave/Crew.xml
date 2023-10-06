@@ -1,106 +1,40 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <form name="frmCrew" align="client">
+	<template name="CrewQtd">
+		<layout align="top" height="25">
+			<layout align="left" width="5"/>
+			<rectangle align="left" width="95" color="#F0FFFF" strokeColor="black" strokeSize="1" margins="{right=5}">
+		        <label align="client" text="$(job)" horzTextAlign="center" vertTextAlign="center"/>
+		    </rectangle>
+			<rectangle align="left" width="45" color="#F0FFFF" strokeColor="black" strokeSize="1" margins="{right=5}">
+		        <label align="client" field="trip_min$(num)" horzTextAlign="center" vertTextAlign="center"/>
+		    </rectangle>
+			<rectangle align="left" width="45" color="#F0FFFF" strokeColor="black" strokeSize="1" margins="{right=5}">
+		        <label align="client" field="trip_max$(num)" horzTextAlign="center" vertTextAlign="center"/>
+		    </rectangle>
+			<rectangle align="left" width="45" color="#F0FFFF" strokeColor="black" strokeSize="1" margins="{right=5}">
+		        <label align="client" field="trip_atual$(num)" horzTextAlign="center" vertTextAlign="center"/>
+		    </rectangle>
+		</layout>
+	</template>
 	<scrollBox align="client">
 		<layout align="left" width="255" margins="{right=5}">
 			<rectangle align="client" color="black" strokeColor="white" strokeSize="1">
 				<layout align="top" height="50">
 					<layout align="left" width="5"/>
-					<VertLabelLabel text="Tipo" field="trip_tipo1" width="95" fontSize="13"/>
-					<VertLabelLabel text="Min" field="trip_min1" width="45" fontSize="13"/>
-					<VertLabelLabel text="Max" field="trip_max1" width="45" fontSize="13"/>
-					<VertLabelLabel text="Atual" field="trip_atual1" width="45" fontSize="13"/>
+					<VertLabelLabel text="Tipo" field="trip_tipo1" width="95" fontSize="13" hitTest="false"/>
+					<VertLabelLabel text="Min" field="trip_min1" width="45" fontSize="13" hitTest="false"/>
+					<VertLabelLabel text="Max" field="trip_max1" width="45" fontSize="13" hitTest="false"/>
+					<VertLabelLabel text="Atual" field="trip_atual1" width="45" fontSize="13" hitTest="false"/>
 				</layout>
-				<layout align="top" height="25">
-					<layout align="left" width="5"/>
-					<rectangle align="left" width="95" color="#F0FFFF" strokeColor="black" strokeSize="1" margins="{right=5}">
-		                <label align="client" field="trip_tipo2" horzTextAlign="center" vertTextAlign="center"/>
-		            </rectangle>
-					<rectangle align="left" width="45" color="#F0FFFF" strokeColor="black" strokeSize="1" margins="{right=5}">
-		                <label align="client" field="trip_min2" horzTextAlign="center" vertTextAlign="center"/>
-		            </rectangle>
-					<rectangle align="left" width="45" color="#F0FFFF" strokeColor="black" strokeSize="1" margins="{right=5}">
-		                <label align="client" field="trip_max2" horzTextAlign="center" vertTextAlign="center"/>
-		            </rectangle>
-					<rectangle align="left" width="45" color="#F0FFFF" strokeColor="black" strokeSize="1" margins="{right=5}">
-		                <label align="client" field="trip_atual2" horzTextAlign="center" vertTextAlign="center"/>
-		            </rectangle>
-				</layout>
-				<layout align="top" height="25">
-					<layout align="left" width="5"/>
-					<rectangle align="left" width="95" color="#F0FFFF" strokeColor="black" strokeSize="1" margins="{right=5}">
-		                <label align="client" field="trip_tipo3" horzTextAlign="center" vertTextAlign="center"/>
-		            </rectangle>
-					<rectangle align="left" width="45" color="#F0FFFF" strokeColor="black" strokeSize="1" margins="{right=5}">
-		                <label align="client" field="trip_min3" horzTextAlign="center" vertTextAlign="center"/>
-		            </rectangle>
-					<rectangle align="left" width="45" color="#F0FFFF" strokeColor="black" strokeSize="1" margins="{right=5}">
-		                <label align="client" field="trip_max3" horzTextAlign="center" vertTextAlign="center"/>
-		            </rectangle>
-					<rectangle align="left" width="45" color="#F0FFFF" strokeColor="black" strokeSize="1" margins="{right=5}">
-		                <label align="client" field="trip_atual3" horzTextAlign="center" vertTextAlign="center"/>
-		            </rectangle>
-				</layout>
-				<layout align="top" height="25">
-					<layout align="left" width="5"/>
-					<rectangle align="left" width="95" color="#F0FFFF" strokeColor="black" strokeSize="1" margins="{right=5}">
-		                <label align="client" field="trip_tipo4" horzTextAlign="center" vertTextAlign="center"/>
-		            </rectangle>
-					<rectangle align="left" width="45" color="#F0FFFF" strokeColor="black" strokeSize="1" margins="{right=5}">
-		                <label align="client" field="trip_min4" horzTextAlign="center" vertTextAlign="center"/>
-		            </rectangle>
-					<rectangle align="left" width="45" color="#F0FFFF" strokeColor="black" strokeSize="1" margins="{right=5}">
-		                <label align="client" field="trip_max4" horzTextAlign="center" vertTextAlign="center"/>
-		            </rectangle>
-					<rectangle align="left" width="45" color="#F0FFFF" strokeColor="black" strokeSize="1" margins="{right=5}">
-		                <label align="client" field="trip_atual4" horzTextAlign="center" vertTextAlign="center"/>
-		            </rectangle>
-				</layout>
-				<layout align="top" height="25">
-					<layout align="left" width="5"/>
-					<rectangle align="left" width="95" color="#F0FFFF" strokeColor="black" strokeSize="1" margins="{right=5}">
-		                <label align="client" field="trip_tipo5" horzTextAlign="center" vertTextAlign="center"/>
-		            </rectangle>
-					<rectangle align="left" width="45" color="#F0FFFF" strokeColor="black" strokeSize="1" margins="{right=5}">
-		                <label align="client" field="trip_min5" horzTextAlign="center" vertTextAlign="center"/>
-		            </rectangle>
-					<rectangle align="left" width="45" color="#F0FFFF" strokeColor="black" strokeSize="1" margins="{right=5}">
-		                <label align="client" field="trip_max5" horzTextAlign="center" vertTextAlign="center"/>
-		            </rectangle>
-					<rectangle align="left" width="45" color="#F0FFFF" strokeColor="black" strokeSize="1" margins="{right=5}">
-		                <label align="client" field="trip_atual5" horzTextAlign="center" vertTextAlign="center"/>
-		            </rectangle>
-				</layout>
-				<layout align="top" height="25">
-					<layout align="left" width="5"/>
-					<rectangle align="left" width="95" color="#F0FFFF" strokeColor="black" strokeSize="1" margins="{right=5}">
-		                <label align="client" field="trip_tipo6" horzTextAlign="center" vertTextAlign="center"/>
-		            </rectangle>
-					<rectangle align="left" width="45" color="#F0FFFF" strokeColor="black" strokeSize="1" margins="{right=5}">
-		                <label align="client" field="trip_min6" horzTextAlign="center" vertTextAlign="center"/>
-		            </rectangle>
-					<rectangle align="left" width="45" color="#F0FFFF" strokeColor="black" strokeSize="1" margins="{right=5}">
-		                <label align="client" field="trip_max6" horzTextAlign="center" vertTextAlign="center"/>
-		            </rectangle>
-					<rectangle align="left" width="45" color="#F0FFFF" strokeColor="black" strokeSize="1" margins="{right=5}">
-		                <label align="client" field="trip_atual6" horzTextAlign="center" vertTextAlign="center"/>
-		            </rectangle>
-				</layout>
-				<layout align="top" height="25">
-					<layout align="left" width="5"/>
-					<rectangle align="left" width="95" color="#F0FFFF" strokeColor="black" strokeSize="1" margins="{right=5}">
-		                <label align="client" field="trip_tipo7" horzTextAlign="center" vertTextAlign="center"/>
-		            </rectangle>
-					<rectangle align="left" width="45" color="#F0FFFF" strokeColor="black" strokeSize="1" margins="{right=5}">
-		                <label align="client" field="trip_min7" horzTextAlign="center" vertTextAlign="center"/>
-		            </rectangle>
-					<rectangle align="left" width="45" color="#F0FFFF" strokeColor="black" strokeSize="1" margins="{right=5}">
-		                <label align="client" field="trip_max7" horzTextAlign="center" vertTextAlign="center"/>
-		            </rectangle>
-					<rectangle align="left" width="45" color="#F0FFFF" strokeColor="black" strokeSize="1" margins="{right=5}">
-		                <label align="client" field="trip_atual7" horzTextAlign="center" vertTextAlign="center"/>
-		            </rectangle>
-
-				</layout>
+				<CrewQtd num="2" job="Imediato"/>
+				<CrewQtd num="3" job="Artilheiro"/>
+				<CrewQtd num="4" job="Engenheiro"/>
+				<CrewQtd num="5" job="Oficial"/>
+				<CrewQtd num="6" job="Conjurador"/>
+				<CrewQtd num="7" job="Piloto"/>
+				<CrewQtd num="8" job="Médico"/>
+				<CrewQtd num="9" job="Outro"/>
 				<layout align="top" height="25">
 					<layout align="left" width="5"/>
 					<button align="left" width="95" text="+" margins="{right=5}" onClick="self.rclTripulantes:append();"/>
@@ -126,8 +60,8 @@
 			</rectangle>
 		</layout>
 	</scrollBox>
-	<dataLink fields="{'trip_tipo1','trip_tipo2','trip_tipo3','trip_tipo4','trip_tipo5','trip_tipo6','trip_tipo7'}" defaultValues="{'Capitão','Artilheiro','Engenheiro','Oficial','Piloto','Médico','Outro'}" />
-	<dataLink fields="{'trip_min1','trip_min2','trip_min3','trip_min4','trip_min5','trip_min6','trip_min7'}">
+	<dataLink fields="{'trip_tipo1'}" defaultValues="{'Capitão'}" />
+	<dataLink fields="{'trip_min1','trip_min2','trip_min3','trip_min4','trip_min5','trip_min6','trip_min7','trip_min8','trip_min9'}">
 		<event name="onChange">
 			if sheet==nil then return end;
 
@@ -137,10 +71,12 @@
 									(tonumber(sheet.trip_min4) or 0) +
 									(tonumber(sheet.trip_min5) or 0) +
 									(tonumber(sheet.trip_min6) or 0) +
-									(tonumber(sheet.trip_min7) or 0);
+									(tonumber(sheet.trip_min7) or 0) +
+									(tonumber(sheet.trip_min8) or 0) +
+									(tonumber(sheet.trip_min9) or 0);
 		</event>
 	</dataLink>
-	<dataLink fields="{'trip_max1','trip_max2','trip_max3','trip_max4','trip_max5','trip_max6','trip_max7'}">
+	<dataLink fields="{'trip_max1','trip_max2','trip_max3','trip_max4','trip_max5','trip_max6','trip_max7','trip_max8','trip_max9'}">
 		<event name="onChange">
 			if sheet==nil then return end;
 
@@ -150,10 +86,12 @@
 									(tonumber(sheet.trip_max4) or 0) +
 									(tonumber(sheet.trip_max5) or 0) +
 									(tonumber(sheet.trip_max6) or 0) +
-									(tonumber(sheet.trip_max7) or 0);
+									(tonumber(sheet.trip_max7) or 0) +
+									(tonumber(sheet.trip_max8) or 0) +
+									(tonumber(sheet.trip_max9) or 0);
 		</event>
 	</dataLink>
-	<dataLink fields="{'trip_atual1','trip_atual2','trip_atual3','trip_atual4','trip_atual5','trip_atual6','trip_atual7'}">
+	<dataLink fields="{'trip_atual1','trip_atual2','trip_atual3','trip_atual4','trip_atual5','trip_atual6','trip_atual7','trip_atual8','trip_atual9'}">
 		<event name="onChange">
 			if sheet==nil then return end;
 
@@ -163,7 +101,9 @@
 									(tonumber(sheet.trip_atual4) or 0) +
 									(tonumber(sheet.trip_atual5) or 0) +
 									(tonumber(sheet.trip_atual6) or 0) +
-									(tonumber(sheet.trip_atual7) or 0);
+									(tonumber(sheet.trip_atual7) or 0) +
+									(tonumber(sheet.trip_atual8) or 0) +
+									(tonumber(sheet.trip_atual9) or 0);
 		</event>
 	</dataLink>
 </form>

@@ -14,6 +14,10 @@
 			<layout align="top" height="25">
 				<button text="+" align="left" width="30" onClick="self.$(rclName):append();"/>
 				<label text="$(nome)" align="left" width="225" margins="{left=5}"/>
+
+                <rectangle align="right" width="40" color="#000000" strokeColor="white" strokeSize="1">
+                    <label align="client" field="$(rclField)Slots" horzTextAlign="center" vertTextAlign="center"/>
+                </rectangle>
 			</layout>
 
 			<recordList name="$(rclName)" field="$(rclField)" templateForm="frmWeaponPart" align="top" layout="vertical" autoHeight="true" hitTest="false" onResize="self.$(rclName)Part._recalcHeight();" minQt="1">
@@ -34,4 +38,18 @@
 			<ListaFlexivel nome="Antipessoal" rclName="campoAntipessoal" rclField="campoAntipessoal"/>
 		</flowLayout>
 	</scrollBox>
+
+	<dataLink fields="{'campoProaSlots','campoPopaSlots','campoBombordoSlots','campoEstibordoSlots','campoTorretaSlots','ranque'}">
+        <event name="onChange">
+        	if sheet==nil then return end;
+        	local ranque = tonumber(sheet.ranque) or 0;
+        	local slots = 	(tonumber(sheet.campoProaSlots) or 0) + 
+        					(tonumber(sheet.campoPopaSlots) or 0) + 
+        					(tonumber(sheet.campoBombordoSlots) or 0) + 
+        					(tonumber(sheet.campoEstibordoSlots) or 0) + 
+        					(tonumber(sheet.campoTorretaSlots) or 0);
+
+        	sheet.weaponSlots = slots .. "/" .. (ranque*2)
+        </event>
+    </dataLink>
 </form>

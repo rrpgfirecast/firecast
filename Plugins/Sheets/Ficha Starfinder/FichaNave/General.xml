@@ -21,12 +21,12 @@
 					<layout align="top" height="50">
 						<layout align="left" width="5"/>
 						<VertLabelEdit text="Ranque" field="ranque" width="95" fontSize="13"/>
-						<VertLabelLabel text="Class. Deriva" field="deriva_class" width="95" fontSize="13"/>
+						<VertLabelLabel text="Class. Deriva" field="deriva_class" width="95" fontSize="13" hitTest="false"/>
 					</layout>
 					<layout align="top" height="50">
 						<layout align="left" width="5"/>
-						<VertLabelLabel text="Manobra" field="manobra" width="145" fontSize="13"/>
-						<VertLabelLabel text="Velocidade" field="velocidade" width="45" fontSize="9"/>
+						<VertLabelLabel text="Manobra" field="manobra" width="145" fontSize="13" hitTest="false"/>
+						<VertLabelLabel text="Velocidade" field="velocidade" width="45" fontSize="9" hitTest="false"/>
 					</layout>
 					<layout align="top" height="50">
 						<layout align="left" width="5"/>
@@ -38,29 +38,30 @@
 				<rectangle align="left" width="340" color="black" strokeColor="white" strokeSize="1" margins="{right=5}">
 					<layout align="top" height="50">
 						<layout align="left" width="5"/>
-						<VertLabelLabel text="CA" field="ca" width="60" fontSize="13"/>
+						<VertLabelLabel text="CA" field="ca" width="60" fontSize="13" hint="Classe de Armadura" hitTest="true"/>
 						<VertLabelEdit text="Piloto" field="ca_piloto" width="60" fontSize="13"/>
-						<VertLabelLabel text="Armadura" field="ca_armadura" width="60" fontSize="13"/>
-						<VertLabelLabel text="Tamanho" field="ca_tamanho" width="60" fontSize="13"/>
+						<VertLabelLabel text="Armadura" field="ca_armadura" width="60" fontSize="13" hitTest="false"/>
+						<VertLabelLabel text="Tamanho" field="ca_tamanho" width="60" fontSize="13" hitTest="false"/>
 						<VertLabelEdit text="Outros" field="ca_outros" width="60" fontSize="13"/>
 					</layout>
 					<layout align="top" height="50">
 						<layout align="left" width="5"/>
-						<VertLabelLabel text="TM" field="tm" width="60" fontSize="13"/>
+						<VertLabelLabel text="TM" field="tm" width="60" fontSize="13" hint="Trava de Mira" hitTest="true"/>
 						<VertLabelEdit text="Piloto" field="ca_piloto" width="60" fontSize="13"/>
-						<VertLabelLabel text="Contramedidas" field="tm_contramedidas" width="60" fontSize="8"/>
-						<VertLabelLabel text="Tamanho" field="ca_tamanho" width="60" fontSize="13"/>
+						<VertLabelLabel text="Contramedidas" field="tm_contramedidas" width="60" fontSize="8" hitTest="false"/>
+						<VertLabelLabel text="Tamanho" field="ca_tamanho" width="60" fontSize="13" hitTest="false"/>
 						<VertLabelEdit text="Outros" field="tm_outros" width="60" fontSize="13"/>
 					</layout>
 					<layout align="top" height="50">
 						<layout align="left" width="5"/>
-						<VertLabelLabel text="Casco" field="casco" width="60" fontSize="13"/>
-						<VertLabelLabel text="LD" field="casco_ld" width="60" fontSize="13"/>
-						<VertLabelLabel text="LC" field="casco_lc" width="60" fontSize="13"/>
+						<VertLabelLabel text="Casco" field="casco" width="60" fontSize="13" hitTest="false"/>
+						<VertLabelLabel text="LD" field="casco_ld" width="60" fontSize="13" hint="Limiar de Dano" hitTest="true"/>
+						<VertLabelLabel text="LC" field="casco_lc" width="60" fontSize="13" hint="Limiar de Crítico" hitTest="true"/>
+						<VertLabelLabel text="Armas" field="weaponSlots" width="60" fontSize="13" hitTest="false"/>
 					</layout>
 					<layout align="top" height="50">
 						<layout align="left" width="5"/>
-						<VertLabelLabel text="Escudo" field="escudo_total" width="60" fontSize="13"/>
+						<VertLabelLabel text="Escudo" field="escudo_total" width="60" fontSize="13" hitTest="false"/>
 						<VertLabelEdit text="Proa" field="escudo_proa" width="60" fontSize="13"/>
 						<VertLabelEdit text="Popa" field="escudo_popa" width="60" fontSize="13"/>
 						<VertLabelEdit text="Bombordo" field="escudo_bombordo" width="60" fontSize="11"/>
@@ -103,7 +104,7 @@
 					</layout>
 					<layout align="top" height="50">
 						<layout align="left" width="5"/>
-						<VertLabelLabel text="Danos Críticos" field="danos" width="95" fontSize="11"/>
+						<VertLabelLabel text="Danos Críticos" field="danos" width="95" fontSize="11" hitTest="false"/>
 					</layout>
 				</rectangle>
 			</layout>
@@ -717,26 +718,28 @@
 				local expansao = (tonumber(sheet.expansao_tripMin) or 0);
 				local pilotos = math.floor(propulsor/10);
 
-				local expansoes = {0,0,0,0,0,0,0};
+				local expansoes = {0,0,0,0,0,0,0,0,0};
 
 	            local nodes = NDB.getChildNodes(sheet.listaExpansao); 
 	            for i=1, #nodes, 1 do
 	                local trip = (tonumber(nodes[i].tripMin) or 0);
 	                local tipo = (tonumber(nodes[i].tripTipo) or 0);
 
-	                if tipo >=1 and tipo &lt;= 7 then
+	                if tipo >=1 and tipo &lt;= 9 then
 	                	expansoes[tipo] = expansoes[tipo] + trip;
 	                end;
 	            end;
 
 				tripMin = tripMin + propulsor + escudo + deriva + reator + weapon + expansao;
 				sheet.trip_min1 = capitao + expansoes[1];
-				sheet.trip_min2 = weapon + expansoes[2];
-				sheet.trip_min3 = (propulsor - pilotos) + deriva + reator + expansoes[3];
-				sheet.trip_min4 = escudo + expansoes[4];
-				sheet.trip_min5 = pilotos + expansoes[5];
-				sheet.trip_min6 = expansoes[6];
-				sheet.trip_min7 = expansoes[7];
+				sheet.trip_min2 = 0
+				sheet.trip_min3 = weapon + expansoes[3];
+				sheet.trip_min4 = (propulsor - pilotos) + deriva + reator + expansoes[4];
+				sheet.trip_min5 = escudo + expansoes[5];
+				sheet.trip_min6 = 0
+				sheet.trip_min7 = pilotos + expansoes[7];
+				sheet.trip_min8 = expansoes[8];
+				sheet.trip_min9 = expansoes[9];
 
 			end;
 
@@ -758,26 +761,28 @@
 				local expansao = (tonumber(sheet.expansao_tripMax) or 0);
 				local pilotos = math.floor(propulsor/10);
 
-				local expansoes = {0,0,0,0,0,0,0};
+				local expansoes = {0,0,0,0,0,0,0,0,0};
 
 	            local nodes = NDB.getChildNodes(sheet.listaExpansao); 
 	            for i=1, #nodes, 1 do
 	                local trip = (tonumber(nodes[i].tripMax) or 0);
 	                local tipo = (tonumber(nodes[i].tripTipo) or 0);
 
-	                if tipo >=1 and tipo &lt;= 7 then
+	                if tipo >=1 and tipo &lt;= 9 then
 	                	expansoes[tipo] = expansoes[tipo] + trip;
 	                end;
 	            end;
 
 				tripMax = tripMax + propulsor + escudo + deriva + reator + weapon + expansao;
 				sheet.trip_max1 = capitao + expansoes[1];
-				sheet.trip_max2 = weapon + expansoes[2];
-				sheet.trip_max3 = propulsor - pilotos + deriva + reator + expansoes[3];
-				sheet.trip_max4 = escudo + expansoes[4];
-				sheet.trip_max5 = pilotos + expansoes[5];
-				sheet.trip_max6 = expansoes[6];
-				sheet.trip_max7 = expansoes[7];
+				sheet.trip_max2 = 1
+				sheet.trip_max3 = weapon + expansoes[3];
+				sheet.trip_max4 = propulsor - pilotos + deriva + reator + expansoes[4];
+				sheet.trip_max5 = escudo + expansoes[5];
+				sheet.trip_max6 = 1
+				sheet.trip_max7 = pilotos + expansoes[7];
+				sheet.trip_max8 = expansoes[8];
+				sheet.trip_max9 = expansoes[9];
 			end;
 
 			sheet.tripulacaoMax = tripMax;

@@ -27,6 +27,25 @@
         </dataLink>
     </template>
 
+    <popup name="CreditsPopup" width="415" height="250" backOpacity="0.4" autoScopeNode="false" margins="{top=25,bottom=25,left=25,right=25}">
+            <image left="5" top="5" width="200" height="200" src="images/RPGmeister.jpg" style="stretch" optimize="true" compilerOrder="0"/>
+
+            <layout left="210" top="5" width="200" height="150">
+                <rectangle left="0" top="0" width="200" height="150" color="black" xradius="15" yradius="15" cornerType="round"/>
+                <label left="0" top="10" width="200" height="20" text="Programador: Vinny (Ambesek)" horzTextAlign="center"/>
+                <label left="0" top="95" width="200" height="20" text="Ficha feita para a mesa: " horzTextAlign="center"/>
+                <label left="0" top="120" width="200" height="20" text="RPGmeister" horzTextAlign="center"/>
+            </layout>
+
+            <label left="210" top="160" width="200" height="20" text="SUA VERSÃO:" field="versionInstalled"/>
+            <label left="210" top="190" width="200" height="20" text="VERSÃO ATUAL:" field="versionDownloaded"/>
+
+            <label left="5" top="215" width="120" height="20" text="CONHEÇA A MESA:"/>
+            <button left="125" top="215" width="100" text="RPGmeister" onClick="GUI.openInBrowser('https://my.firecast.app/a?a=pagRWEMesaInfo.actInfoMesa&amp;mesaid=64070');" />
+
+            <button left="305" top="215" width="100" text="Atualizar" onClick="GUI.openInBrowser('https://github.com/rrpgfirecast/firecast/blob/master/Plugins/TablesDock/Lista%20de%20PdMs/output/Lista%20de%20PdMs.rpk?raw=true')" />
+    </popup>
+
     <popup name="NotesPopup" align="client" margins="{top=25,bottom=25,left=25,right=25}">
         <richEdit align="client" field="background" backgroundColor="#333333" defaultFontSize="12" defaultFontColor="white"/>
     </popup>
@@ -260,6 +279,15 @@
                     ]]>
                 </event>
             </button>
+            <button align="left" text="ℹ️" width="25" hint="Creditos.">
+                <event name="onClick">
+                    local pop = self:findControlByName("CreditsPopup");
+                    if pop~= nil then
+                        pop.scopeNode = sheet
+                        pop:show("center", self)
+                    end;
+                </event>
+            </button>
             <dataLink field="listaCounter">
                 <event name="onChange">
                     self.listaBT.text = pics[sheet.listaCounter +1]
@@ -335,7 +363,7 @@
                         </button>
                         <button align="right" width="60" text="Limpar" margins="{right=4}">
                             <event name="onClick">
-                                self.messageEditor.node.TextoMensagem = "";
+                                self.messageEditor.node.TextoMensagem = ""
                             </event>
                         </button>
                         <layout align="right" width="132">
@@ -408,14 +436,17 @@
                                     if (tonumber(self.messageEditor.node.ShowNome) == 3) then
                                         if self.messageEditor.node.nome ~= nil then
                                             chat:enviarMensagemNPC(self.messageEditor.node.nome, cor .. linha);
+                                            self.messageEditor.node.TextoMensagem = ""
                                         else
                                             showMessage("O personagem não possui um nome. Adicione um antes de enviar por este modo.")
                                         end;
                                     elseif (tonumber(self.messageEditor.node.ShowNome) == 1) then
                                         chat:enviarNarracao(cor .. linha);
+                                        self.messageEditor.node.TextoMensagem = ""
                                     elseif (tonumber(self.messageEditor.node.ShowNome) == 2) then
                                         if self.messageEditor.node.avatar ~= nil then
                                             chat:enviarNarracao("[§I" .. self.messageEditor.node.avatar .. "][50][50] " .. cor .. linha)
+                                            self.messageEditor.node.TextoMensagem = ""
                                         else
                                             showMessage("O personagem não possui uma imagem. Adicione uma antes de enviar por este modo.")
                                         end;
@@ -423,6 +454,7 @@
                                         if self.messageEditor.node.avatar ~= nil then
                                             if self.messageEditor.node.nome ~= nil then
                                                 chat:enviarMensagemNPC(self.messageEditor.node.nome, "[§I" .. self.messageEditor.node.avatar .. "][50][50] " .. cor .. linha);
+                                                self.messageEditor.node.TextoMensagem = ""
                                             else
                                                 showMessage("O personagem não possui um nome. Adicione um antes de enviar por este modo.")
                                             end;
@@ -431,6 +463,7 @@
                                         end;
                                     else
                                         chat:enviarMensagem(cor .. linha);
+                                        self.messageEditor.node.TextoMensagem = ""
                                     end;
                                 end;
                             </event>
@@ -443,10 +476,10 @@
                                     text = self.messageEditor.node.NomeRolagem .. " - " .. (self.messageEditor.node.nome or "nome");
                                 end
                 
-                                local rolando = rrpg.interpretarRolagem(self.messageEditor.node.TextoRolagem); 
+                                local rolando = Firecast.interpretarRolagem(self.messageEditor.node.TextoRolagem); 
                                 
                                 if not rolando.possuiAlgumDado then
-                                    rolando = rrpg.interpretarRolagem("1d20"):concatenar(rolando);
+                                    rolando = Firecast.interpretarRolagem("1d20"):concatenar(rolando);
                                 end; 
                                 
                                 local mesa = Firecast.getMesaDe(self.messageEditor.node);
@@ -465,14 +498,14 @@
         Internet.download("https://github.com/rrpgfirecast/firecast/blob/master/Plugins/TablesDock/Lista%20de%20PdMs/output/Lista%20de%20PdMs.rpk?raw=true",
             function(stream, contentType)
                 local info = Firecast.Plugins.getRPKDetails(stream);
-                sheet.versionDownloaded = tryTranslate("available")..": " .. info.version;
+                sheet.versionDownloaded = "VERSÃO ATUAL: " .. info.version;
 
                 local installed = Firecast.Plugins.getInstalledPlugins();
                 local myself;
                 for i=1, #installed, 1 do
                     if installed[i].moduleId == info.moduleId then
                         myself = installed[i];
-                        sheet.versionInstalled = tryTranslate("installed")..": " .. installed[i].version;
+                        sheet.versionInstalled = "SUA VERSÃO: " .. installed[i].version;
                     end;
                 end;
 

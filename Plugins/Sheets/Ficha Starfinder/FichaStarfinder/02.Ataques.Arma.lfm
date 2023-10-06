@@ -334,7 +334,7 @@
     		sheet.decisivo = decisivo;
 		end;
 	</script>
-<template name="checkEdit">
+	<template name="checkEdit">
 		<checkBox left="0" top="$(top)" width="150" height="25" text="$(text)" field="$(field)" hint="$(hint)"/>
 		<edit  left="150" top="$(top)" width="40" height="25" field="$(field)$(prompt1)"/>
 		<dataLink field="$(field)$(prompt1)" defaultValue="$(prompt1)" />
