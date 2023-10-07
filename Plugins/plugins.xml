@@ -496,7 +496,7 @@
             </dataType>
         </dataTypes>
     </element>
-    <element id="Ambesek.Ragnarock" name="Plugin Ragnarök" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20Ragnarock/output/Ficha%20Ragnarock.rpk?raw=true" fileName="Ficha Ragnarock.rpk" repositoryPath="Sheets/Ficha Ragnarock/" author="Ambesek" description="Ficha para um sistema proprio de Ragnaröck." version="0.7.1" compilationDate="03032023114812" compilationDigest="b11c4f9eb371010465c8378716c01fb2d17dafd5">
+    <element id="Ambesek.Ragnarock" name="Plugin Ragnarök" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20Ragnarock/output/Ficha%20Ragnarock.rpk?raw=true" fileName="Ficha Ragnarock.rpk" repositoryPath="Sheets/Ficha Ragnarock/" author="Ambesek" description="Ficha para um sistema proprio de Ragnaröck." version="0.8" compilationDate="03032023114812" compilationDigest="b11c4f9eb371010465c8378716c01fb2d17dafd5">
         <info lang="pt-BR" name="Plugin Ragnarök" description="Ficha para um sistema proprio de Ragnaröck." author="Ambesek"/>
         <dataTypes>
             <dataType id="Ambesek.Ragnarock" title="Plugin Ragnarök" formType="sheetTemplate">

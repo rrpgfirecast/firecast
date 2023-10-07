@@ -74,8 +74,8 @@
 
 	<scrollBox align="client">
 		<image align="client" field="bgCreditos" style="autoFit" editable="true"/>
-		<dataLink field="bgCreditos" defaultValue="http://blob.firecast.com.br/blobs/IOMEJDGU_1601950/Aba_10.jpg"/>
-		<image left="0" top="0" width="484" height="290" style="autoFit" src="images/ragnarok.jpg"/>
+		<dataLink field="bgCreditos" defaultValue="http://blob.firecast.com.br/blobs/LHHWTTSV_1623630/luisa-odulio-50-2017.jpg"/>
+		<image left="0" top="0" width="484" height="290" style="autoFit" src="images/ragnarok_c.jpg"/>
 		<image left="550" top="0" width="250" height="250" style="autoFit" src="images/RPGmeister.jpg"/>
 
 		<layout left="850" top="0" width="200" height="160">

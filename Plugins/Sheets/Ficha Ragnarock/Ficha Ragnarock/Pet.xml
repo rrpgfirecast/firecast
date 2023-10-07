@@ -61,14 +61,14 @@
 													    
 													    if result &lt;= atr then
 													        sucessos = sucessos +1;
+														    if result &lt;= margem then
+														        decisivo = decisivo +1;
+														    end;
 													    else
 													        falhas = falhas +1;
-													    end;
-													    if result &lt;= margem then
-													        decisivo = decisivo +1;
-													    end;
-													    if result == faces then
-													        falhaCritica = falhaCritica +1;
+														    if result == faces then
+														        falhaCritica = falhaCritica +1;
+														    end;
 													    end;
 													end;
 

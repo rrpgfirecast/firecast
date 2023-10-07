@@ -77,14 +77,14 @@
 
 													    if result &lt;= atr then
 													        sucessos = sucessos +1;
+														    if result &lt;= margem then
+														        decisivo = decisivo +1;
+														    end;
 													    else
 													        falhas = falhas +1;
-													    end;
-													    if result &lt;= margem then
-													        decisivo = decisivo +1;
-													    end;
-													    if result == faces then
-													        falhaCritica = falhaCritica +1;
+														    if result == faces then
+														        falhaCritica = falhaCritica +1;
+														    end;
 													    end;
 													end;
 
@@ -143,6 +143,7 @@
 				<UpperBar width="30" text="Nível" field="level" fontSize="13"/>
 				<UpperBar width="100" text="Experiência" field="exp" fontSize="13"/>
 				<UpperBar width="30" text="Job" field="job" fontSize="13"/>
+				<UpperBar width="100" text="Experiência Job" field="expJob" fontSize="13"/>
 				<UpperBar width="150" text="Personalidade" field="personalidade" fontSize="13"/>
 				<UpperBar width="100" text="Aparência" field="aparencia" fontSize="13"/>
 			</rectangle>
@@ -289,9 +290,6 @@
 						<layout align="top" height="25" margins="{bottom=5}">
 							<LabelEditMid text="Proteção Física" field="def_total" fontSize="13"/>
 						</layout>
-						<layout align="top" height="25" margins="{bottom=0}">
-							<LabelEditMid text="Resistências" field="def_resistencias" fontSize="13"/>
-						</layout>
 						<layout align="top" height="25" margins="{top=0}">
 							<checkBox left="0" top="0" width="190" height="25" field="doubleRoll" text="Usar dois atributos na rolagem." fontSize="12" hint="Clique no primeiro e depois no segundo. ">
 								<event name="onChange">
@@ -353,7 +351,7 @@
 					<textEditor align="top" height="165" field="desvantagens"/>
 				</layout>
 
-				<image left="1010" top="25" width="190" height="116" style="autoFit" src="images/ragnarok_b.jpg"/>
+				<image left="1010" top="25" width="190" height="116" style="autoFit" src="images/ragnarok_c.jpg"/>
 							</rectangle>
 
 		</layout>
