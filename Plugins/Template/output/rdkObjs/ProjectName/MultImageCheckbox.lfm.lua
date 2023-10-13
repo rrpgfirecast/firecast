@@ -34,12 +34,16 @@ local function constructNew_frmMultImageCheckbox()
     obj.scrollBox1:setAlign("client");
     obj.scrollBox1:setName("scrollBox1");
 
+    obj.layout1 = GUI.fromHandle(_obj_newObject("layout"));
+    obj.layout1:setParent(obj.scrollBox1);
+    obj.layout1:setAlign("top");
+    obj.layout1:setHeight(100);
+    obj.layout1:setName("layout1");
+
     obj.button1 = GUI.fromHandle(_obj_newObject("button"));
-    obj.button1:setParent(obj.scrollBox1);
-    obj.button1:setLeft(0);
-    obj.button1:setTop(0);
+    obj.button1:setParent(obj.layout1);
+    obj.button1:setAlign("left");
     obj.button1:setWidth(100);
-    obj.button1:setHeight(100);
     obj.button1:setHint("click to change image");
     obj.button1:setName("button1");
 
@@ -58,38 +62,38 @@ local function constructNew_frmMultImageCheckbox()
     obj.image1:setName("image1");
 
 
+					
+
+
+
+					-- criando array das imagens que vão ser utilizadas. 
+					-- melhor usar imagens hospedadas no firedrive nesse caso
+					local pics = {	"http://firecast.blob.core.windows.net/blobs/KEMDMPRM_386214.png", 
+									"http://firecast.blob.core.windows.net/blobs/IAUQMVUR_386260.png", 
+									"http://firecast.blob.core.windows.net/blobs/QNIIBIMV_386244.png", 
+									"http://firecast.blob.core.windows.net/blobs/APKABCKF_386218.png", 
+									"http://firecast.blob.core.windows.net/blobs/DFBFKPTH_386212.png", 
+									"http://firecast.blob.core.windows.net/blobs/PPIRFSBI_386208.png", 
+									"http://firecast.blob.core.windows.net/blobs/FGLDGNRW_386257.png", 
+									"http://firecast.blob.core.windows.net/blobs/LFRIRPIW_386226.png", 
+									"http://firecast.blob.core.windows.net/blobs/CEJAMDNT_386246.png", 
+									"http://firecast.blob.core.windows.net/blobs/MKLJSRET_386230.png"};
+					
+
+
+
 				
-
-
-
-				-- criando array das imagens que vão ser utilizadas. 
-				-- melhor usar imagens hospedadas no firedrive nesse caso
-				local pics = {	"http://firecast.blob.core.windows.net/blobs/KEMDMPRM_386214.png", 
-								"http://firecast.blob.core.windows.net/blobs/IAUQMVUR_386260.png", 
-								"http://firecast.blob.core.windows.net/blobs/QNIIBIMV_386244.png", 
-								"http://firecast.blob.core.windows.net/blobs/APKABCKF_386218.png", 
-								"http://firecast.blob.core.windows.net/blobs/DFBFKPTH_386212.png", 
-								"http://firecast.blob.core.windows.net/blobs/PPIRFSBI_386208.png", 
-								"http://firecast.blob.core.windows.net/blobs/FGLDGNRW_386257.png", 
-								"http://firecast.blob.core.windows.net/blobs/LFRIRPIW_386226.png", 
-								"http://firecast.blob.core.windows.net/blobs/CEJAMDNT_386246.png", 
-								"http://firecast.blob.core.windows.net/blobs/MKLJSRET_386230.png"};
-				
-
-
-
-			
 
 
     obj._e_event0 = obj.button1:addEventListener("onClick",
         function (_)
             if sheet.imageCounter == nil then
-            					sheet.imageCounter = 0;
-            				end;
-            				-- Contador que vai de 0 a 9 e reseta ao passar de 9
-            				sheet.imageCounter = (sheet.imageCounter + 1) % #pics;
-            				-- pegando imagem do array. O +1 é por que arrays em lua começam em 1 e não em 0
-            				sheet.clickableImage = pics[sheet.imageCounter +1];
+            						sheet.imageCounter = 0;
+            					end;
+            					-- Contador que vai de 0 a 9 e reseta ao passar de 9
+            					sheet.imageCounter = (sheet.imageCounter + 1) % #pics;
+            					-- pegando imagem do array. O +1 é por que arrays em lua começam em 1 e não em 0
+            					sheet.clickableImage = pics[sheet.imageCounter +1];
         end, obj);
 
     function obj:_releaseEvents()
@@ -105,8 +109,9 @@ local function constructNew_frmMultImageCheckbox()
           self:setNodeDatabase(nil);
         end;
 
-        if self.image1 ~= nil then self.image1:destroy(); self.image1 = nil; end;
+        if self.layout1 ~= nil then self.layout1:destroy(); self.layout1 = nil; end;
         if self.scrollBox1 ~= nil then self.scrollBox1:destroy(); self.scrollBox1 = nil; end;
+        if self.image1 ~= nil then self.image1:destroy(); self.image1 = nil; end;
         if self.button1 ~= nil then self.button1:destroy(); self.button1 = nil; end;
         if self.dataLink1 ~= nil then self.dataLink1:destroy(); self.dataLink1 = nil; end;
         self:_oldLFMDestroy();

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<form name="frmDataScopeSelectionForm" width="110" height="25" margins="{top=1}">
+<form name="frmDetailListItem" height="30" margins="{top=1}">
 	<!-- Funções de controle de visibilidade da opção -->
 	<script>
 	     function self:alternarVisibilidade()
@@ -18,13 +18,13 @@
 	     end;
 	</script>
 
-	<rectangle align="client" color="#212121" hitTest="false">
-		<label left="0" top="0" width="170" height="25" field="nome" horzTextAlign="center"/>
+	<rectangle align="client" color="#212121" hitTest="false" strokeSize="1" strokeColor="#FFFFFF" padding="{top=2,right=2,left=2,bottom=2}">
+		<label align="client" field="nome" horzTextAlign="center" margins="{left=5}"/>
 
 		<!-- alterna visibilidade entre todo mundo e só o mestre -->
-		 <imageCheckBox name="cbxInvisivel" left="172" top="2" width="20" height="20" checkedImage="images/invisivel.png" uncheckedImage="images/visivel.png" autoChange="false" onClick="self:alternarVisibilidade();" hint="Altera a visibilidade entre somente o mestre e todos. "/> 
+		<imageCheckBox name="cbxInvisivel" align="right" width="25" checkedImage="images/invisivel.png" uncheckedImage="images/visivel.png" autoChange="false" onClick="self:alternarVisibilidade();" hint="Altera a visibilidade entre somente o mestre e todos. "/> 
 		<!-- Botão que apaga o objeto da lista -->
-		<button left="195" top="0" width="25" height="25" text="X">
+		<button align="right" width="25" text="X">
 			<event name="onClick">
 				Dialogs.confirmOkCancel("Tem certeza que quer apagar esse objeto?",
 					function (confirmado)
@@ -35,7 +35,7 @@
 			</event>
 		</button>
 
-		<!-- Poe Nome como valor padrao do field nome, e atualiza a lista sempre que altera-lo -->
+		<!-- Poe nome como valor padrao do field nome, e atualiza a lista sempre que altera-lo -->
 		<dataLink field="nome" defaultValue="Nome">
 			<event name="onChange"><![CDATA[
 				-- Atualiza a ordem lista a cada alteração do nome

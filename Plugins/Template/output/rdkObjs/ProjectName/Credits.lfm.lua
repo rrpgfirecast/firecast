@@ -61,111 +61,119 @@ local function constructNew_frmTemplateCreditos()
 
     obj.layout2 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout2:setParent(obj.scrollBox1);
-    obj.layout2:setLeft(850);
-    obj.layout2:setTop(0);
+    obj.layout2:setAlign("top");
     obj.layout2:setWidth(200);
     obj.layout2:setHeight(160);
+    obj.layout2:setMargins({top=10});
     obj.layout2:setName("layout2");
 
     obj.rectangle1 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle1:setParent(obj.layout2);
-    obj.rectangle1:setAlign("client");
+    obj.rectangle1:setAlign("left");
+    obj.rectangle1:setWidth(200);
     obj.rectangle1:setColor("black");
-    obj.rectangle1:setXradius(5);
-    obj.rectangle1:setYradius(15);
-    obj.rectangle1:setCornerType("round");
+    obj.rectangle1:setStrokeColor("white");
+    obj.rectangle1:setStrokeSize(1);
+    obj.rectangle1:setMargins({right=10});
     obj.rectangle1:setName("rectangle1");
 
     obj.label1 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label1:setParent(obj.layout2);
-    obj.label1:setLeft(0);
-    obj.label1:setTop(10);
-    obj.label1:setWidth(200);
-    obj.label1:setHeight(20);
-    obj.label1:setText("Template feito por: ");
+    obj.label1:setParent(obj.rectangle1);
+    obj.label1:setAlign("top");
+    obj.label1:setHeight(25);
+    obj.label1:setText("Plugin feito por: ");
     obj.label1:setHorzTextAlign("center");
     obj.label1:setName("label1");
 
     obj.label2 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label2:setParent(obj.layout2);
-    obj.label2:setLeft(0);
-    obj.label2:setTop(35);
-    obj.label2:setWidth(200);
-    obj.label2:setHeight(20);
+    obj.label2:setParent(obj.rectangle1);
+    obj.label2:setAlign("top");
+    obj.label2:setHeight(25);
     obj.label2:setText("Vinny (Ambesek)");
     obj.label2:setHorzTextAlign("center");
     obj.label2:setName("label2");
 
+    obj.rectangle2 = GUI.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle2:setParent(obj.layout2);
+    obj.rectangle2:setAlign("left");
+    obj.rectangle2:setWidth(210);
+    obj.rectangle2:setColor("black");
+    obj.rectangle2:setStrokeColor("white");
+    obj.rectangle2:setStrokeSize(1);
+    obj.rectangle2:setMargins({right=10});
+    obj.rectangle2:setPadding({right=5,left=5});
+    obj.rectangle2:setName("rectangle2");
+
     obj.label3 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label3:setParent(obj.scrollBox1);
-    obj.label3:setLeft(555);
-    obj.label3:setTop(275);
-    obj.label3:setWidth(200);
-    obj.label3:setHeight(20);
+    obj.label3:setParent(obj.rectangle2);
+    obj.label3:setAlign("top");
+    obj.label3:setHeight(25);
     obj.label3:setText("Versão Atual: ");
     obj.label3:setHorzTextAlign("center");
     obj.label3:setField("versionInstalled");
     obj.label3:setName("label3");
 
     obj.label4 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label4:setParent(obj.scrollBox1);
-    obj.label4:setLeft(555);
-    obj.label4:setTop(300);
-    obj.label4:setWidth(200);
-    obj.label4:setHeight(20);
+    obj.label4:setParent(obj.rectangle2);
+    obj.label4:setAlign("top");
+    obj.label4:setHeight(25);
     obj.label4:setText("Sua Versão: ");
     obj.label4:setHorzTextAlign("center");
     obj.label4:setField("versionDownloaded");
     obj.label4:setName("label4");
 
     obj.checkBox1 = GUI.fromHandle(_obj_newObject("checkBox"));
-    obj.checkBox1:setParent(obj.scrollBox1);
-    obj.checkBox1:setLeft(555);
-    obj.checkBox1:setTop(325);
-    obj.checkBox1:setWidth(200);
-    obj.checkBox1:setHeight(20);
+    obj.checkBox1:setParent(obj.rectangle2);
+    obj.checkBox1:setAlign("top");
+    obj.checkBox1:setHeight(25);
     obj.checkBox1:setField("noUpdate");
     obj.checkBox1:setText("Não pedir para atualizar.");
     obj.checkBox1:setName("checkBox1");
 
+    obj.layout3 = GUI.fromHandle(_obj_newObject("layout"));
+    obj.layout3:setParent(obj.rectangle2);
+    obj.layout3:setAlign("top");
+    obj.layout3:setHeight(25);
+    obj.layout3:setName("layout3");
+
     obj.button1 = GUI.fromHandle(_obj_newObject("button"));
-    obj.button1:setParent(obj.scrollBox1);
-    obj.button1:setLeft(555);
-    obj.button1:setTop(350);
+    obj.button1:setParent(obj.layout3);
+    obj.button1:setAlign("left");
     obj.button1:setWidth(100);
     obj.button1:setText("Change Log");
     obj.button1:setName("button1");
 
     obj.button2 = GUI.fromHandle(_obj_newObject("button"));
-    obj.button2:setParent(obj.scrollBox1);
-    obj.button2:setLeft(667);
-    obj.button2:setTop(350);
+    obj.button2:setParent(obj.layout3);
+    obj.button2:setAlign("left");
     obj.button2:setWidth(100);
     obj.button2:setText("Atualizar");
     obj.button2:setName("button2");
 
     obj.label5 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label5:setParent(obj.scrollBox1);
-    obj.label5:setLeft(555);
-    obj.label5:setTop(400);
-    obj.label5:setWidth(200);
-    obj.label5:setHeight(20);
+    obj.label5:setParent(obj.rectangle2);
+    obj.label5:setAlign("top");
+    obj.label5:setHeight(25);
     obj.label5:setText("Conheça as Mesas:");
     obj.label5:setName("label5");
 
+    obj.layout4 = GUI.fromHandle(_obj_newObject("layout"));
+    obj.layout4:setParent(obj.rectangle2);
+    obj.layout4:setAlign("top");
+    obj.layout4:setHeight(25);
+    obj.layout4:setName("layout4");
+
     obj.button3 = GUI.fromHandle(_obj_newObject("button"));
-    obj.button3:setParent(obj.scrollBox1);
-    obj.button3:setLeft(555);
-    obj.button3:setTop(425);
+    obj.button3:setParent(obj.layout4);
+    obj.button3:setAlign("left");
     obj.button3:setWidth(100);
     obj.button3:setText("RPGmeister");
     obj.button3:setName("button3");
 
     obj.button4 = GUI.fromHandle(_obj_newObject("button"));
-    obj.button4:setParent(obj.scrollBox1);
-    obj.button4:setLeft(667);
-    obj.button4:setTop(425);
-    obj.button4:setWidth(125);
+    obj.button4:setParent(obj.layout4);
+    obj.button4:setAlign("left");
+    obj.button4:setWidth(100);
     obj.button4:setText("Nome Mesa");
     obj.button4:setName("button4");
 
@@ -210,11 +218,14 @@ local function constructNew_frmTemplateCreditos()
         if self.button1 ~= nil then self.button1:destroy(); self.button1 = nil; end;
         if self.button3 ~= nil then self.button3:destroy(); self.button3 = nil; end;
         if self.label1 ~= nil then self.label1:destroy(); self.label1 = nil; end;
+        if self.layout4 ~= nil then self.layout4:destroy(); self.layout4 = nil; end;
+        if self.rectangle2 ~= nil then self.rectangle2:destroy(); self.rectangle2 = nil; end;
         if self.label3 ~= nil then self.label3:destroy(); self.label3 = nil; end;
         if self.label4 ~= nil then self.label4:destroy(); self.label4 = nil; end;
         if self.button2 ~= nil then self.button2:destroy(); self.button2 = nil; end;
         if self.image1 ~= nil then self.image1:destroy(); self.image1 = nil; end;
         if self.image2 ~= nil then self.image2:destroy(); self.image2 = nil; end;
+        if self.layout3 ~= nil then self.layout3:destroy(); self.layout3 = nil; end;
         if self.checkBox1 ~= nil then self.checkBox1:destroy(); self.checkBox1 = nil; end;
         if self.layout1 ~= nil then self.layout1:destroy(); self.layout1 = nil; end;
         if self.scrollBox1 ~= nil then self.scrollBox1:destroy(); self.scrollBox1 = nil; end;
