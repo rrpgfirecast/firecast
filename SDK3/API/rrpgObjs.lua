@@ -110,7 +110,19 @@ end;
 local objectMetaTable = {
 	--[[ Comparação padrão entre objetos ]]--
 	__eq = function(op1, op2)
-		return op1.handle == op2.handle;
+		if op1.handle ~= nil then
+			if op2.handle ~= nil then
+				return op1.handle == op2.handle;
+			else
+				return false;
+			end;
+		else
+			if op2.handle ~= nil then
+				return false;
+			else
+				return op1 == op2;
+			end;		
+		end;
 	end,
 	
 	--[[ getter padrão de propriedades dos objetos. Chamado quando tentar gettar uma propriedade que não existe ]]--
@@ -231,8 +243,7 @@ local objectMetaTable = {
 		-- Se chegou até aqui, é porque não conseguiu fazer nenhuma atribuição especial.
 		-- Vamos fazer uma atribuição padrão
 		rawset(table, key, value);
-	end,	
-	
+	end,		
 	
 	__gc = function(obj)	
 		if obj.destroy ~= nil then
@@ -306,11 +317,19 @@ function objs.objectFromHandle(handle)
 	end	
 	
 	function obj:getClassName()
-		return _obj_getClassName(self.handle);
+		if self.handle ~= nil then
+			return _obj_getClassName(self.handle);
+		else
+			return "";
+		end;
 	end;
 	
 	return obj;
 end
+
+function objs.newPureLuaObject()
+	return objs.objectFromHandle(nil);
+end;
 
 function objs.componentFromHandle(handle)
 	local obj = objs.objectFromHandle(handle);	

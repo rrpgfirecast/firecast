@@ -17,9 +17,8 @@ rawset(rrpg, "listeners", {generator = 0});
 rawset(rrpg, "dataTypes", {});
 rawset(rrpg, "forms", {});
 rawset(rrpg, "props", {});
-
 		
-function rrpg.getMesas()
+function rrpg:getMesas()
   local hs = _rrpg_GetMesasIDs();	
   local mesas = {};
   local idx = 1;  
@@ -34,9 +33,7 @@ function rrpg.getMesas()
   end
     
   return mesas;
-end;				
-		
-rrpg.props["mesas"] = {getter="getMesas", tipo="table"};
+end;			
 		
 local propsRolagem = {
 	possuiAlgumDado = {getter="getPossuiAlgumDado", tipo="bool"},
@@ -217,8 +214,6 @@ function rrpg.getMesaDe(object)
 	
 	return nil;
 end;
-
-rrpg.getRoomOf = rrpg.getMesaDe;
 	
 function rrpg.getBibliotecaItemDe(object)		
 	if (type(object) ~= "table") then
@@ -400,16 +395,31 @@ function rrpg.asyncOpenUserNDB(name, options)
 		return Async.Promise.withError("No API Support");
 	end;
 		
-	return Async.Promise.wrap(_rrpg_Session_asyncOpenUserNDB(name, options));
+	return rrpgWrappers.__serverRequestQueue:addAsyncJob(
+		function () 
+			return Async.Promise.wrap(_rrpg_Session_asyncOpenUserNDB(name, options));
+		end);						
 end;
-		
+			
 rrpg.messaging = require("rrpgEventMessages.lua");
+	
+rrpg.props["mesas"] = {getter="getMesas", tipo="table"};
 
+-- Alias functions
 rrpg.listen = rrpg.messaging.listen;
 rrpg.listenOnce = rrpg.messaging.listenOnce;
 rrpg.unlisten = rrpg.messaging.unlisten;
 rrpg.groupOnceListeners = rrpg.messaging.groupOnceListeners;
 rrpg.Messaging = rrpg.messaging;
+rrpg.parseRoll = rrpg.interpretarRolagem;
+rrpg.findRoom = rrpg.findMesa;
+rrpg.getRoomOf = rrpg.getMesaDe;
+rrpg.getRooms = rrpg.getMesas;	
+rrpg.getLibraryItemOf = rrpg.getBibliotecaItemDe;
+rrpg.getCharacterOf = rrpg.getPersonagemDe;
+
+-- Alias properties
+rrpg.props["rooms"] = rrpg.props["mesas"];
 		
 RRPG = rrpg;		
 		

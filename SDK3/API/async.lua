@@ -16,6 +16,17 @@ function Promise.__newPromise()
 		return Promise.resolved(nil);
 	end;
 	
+	function p:thenFinally(callback)
+		local wrappedContinuationCallback = 
+			function(ignoredParameter)
+				if callback ~= nil then
+					return callback();
+				end;
+			end;
+	
+		p:thenDo(wrappedContinuationCallback, wrappedContinuationCallback);		
+	end;
+	
 	function p:onSuccess(callback)	
 		return p:thenDo(callback, nil);
 	end
@@ -92,6 +103,10 @@ function Promise.wrapPromiseResolution(handle)
 		return _async_promiseResolution_setFailure(handle, errorMsg);
 	end;
 	
+	function r:setUserAborted()
+		return _async_promiseResolution_setUserAborted(handle);
+	end;	
+	
 	return r;
 end;
 
@@ -105,6 +120,10 @@ function Promise.__newStubPromiseResolution()
 	function r:setFailure(errorMsg)
 		return false;
 	end;
+	
+	function r:setUserAborted()
+		return false;
+	end;		
 	
 	return r;	
 end;

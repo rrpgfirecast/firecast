@@ -148,6 +148,17 @@ local function handleCoResume(co, ...)
 	end;
 end;
 
+function yieldedFunctions.yAwait(co, promise)		
+	promise:thenDo(
+		function(data)
+			handleCoResume(co, true, data);
+		end,
+		
+		function(errorMessage)
+			handleCoResume(co, false, errorMessage);
+		end);
+end;
+
 function yieldedFunctions.yRolarDado(co, chat, rolagem, msgAdicional)	
 	chat:rolarDados(rolagem, msgAdicional,
 		function(rolado)
@@ -415,6 +426,16 @@ local function createMacroEnvTable(chat)
 		
 		if mesa == nil then
 			throwMacroNotAssociatedToRooom(featureName);
+		end;
+	end;
+	
+	env.await = function(promise)
+		local r, dataOrError = coroutine.yield(_MACRO_CALL_CO_FUNCTION_RET, 'yAwait', promise);	
+		
+		if r then
+			return dataOrError;
+		else	
+			error(dataOrError);
 		end;
 	end;
 	
@@ -916,6 +937,18 @@ local function createMacroEnvTable(chat)
 		else	
 			error(nodeOrError);
 		end;
+	end;	
+		
+	env.playLocal = function(address, volume)	
+		local audioLib = require("audio.lua");		
+		local trackPromise = audioLib.defaultPlayer:play(address, volume);
+		return env.await(trackPromise);
+	end;
+	
+	env.playRoom = function(address, volume)
+		assertIsOnRoom("playRoom");
+		local trackPromise = env.mesa.audioPlayer:play(address, volume);
+		return env.await(trackPromise);	
 	end;	
 	
 	env.pairs = pairs;

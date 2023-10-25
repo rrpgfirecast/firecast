@@ -17,9 +17,8 @@ rawset(rrpg, "listeners", {generator = 0});
 rawset(rrpg, "dataTypes", {});
 rawset(rrpg, "forms", {});
 rawset(rrpg, "props", {});
-
 		
-function rrpg.getMesas()
+function rrpg:getMesas()
   local hs = _rrpg_GetMesasIDs();	
   local mesas = {};
   local idx = 1;  
@@ -35,11 +34,6 @@ function rrpg.getMesas()
     
   return mesas;
 end;			
-
-rrpg.getRooms = rrpg.getMesas;	
-		
-rrpg.props["mesas"] = {getter="getMesas", tipo="table"};
-rrpg.props["rooms"] = rrpg.props["mesas"];
 		
 local propsRolagem = {
 	possuiAlgumDado = {getter="getPossuiAlgumDado", tipo="bool"},
@@ -153,8 +147,6 @@ function rrpg.interpretarRolagem(stringDaRolagem)
 	return rolObj;
 end;
 
-rrpg.parseRoll = rrpg.interpretarRolagem;
-
 function rrpg.loadRolagemFromBase64EncodedString(encodedString)
 	local rolObj = newRolagemObject();
 	rolObj:loadFromBase64EncodedString(encodedString);	
@@ -190,8 +182,6 @@ function rrpg.findMesa(codigoInterno)
 	return nil;
 end; 
 
-rrpg.findRoom = rrpg.findMesa;
-
 function rrpg.getMesaDe(object)		
 	if type(object) == "number" then
 		return rrpg.findMesa(object);
@@ -224,8 +214,6 @@ function rrpg.getMesaDe(object)
 	
 	return nil;
 end;
-
-rrpg.getRoomOf = rrpg.getMesaDe;
 	
 function rrpg.getBibliotecaItemDe(object)		
 	if (type(object) ~= "table") then
@@ -256,8 +244,6 @@ function rrpg.getBibliotecaItemDe(object)
 	return nil;
 end;
 
-rrpg.getLibraryItemOf = rrpg.getBibliotecaItemDe;
-
 function rrpg.getPersonagemDe(object)	
 	local ctxObj = localRRPG.getBibliotecaItemDe(object);
 	
@@ -267,8 +253,6 @@ function rrpg.getPersonagemDe(object)
 		return nil;
 	end;	
 end;
-
-rrpg.getCharacterOf = rrpg.getPersonagemDe;
 	
 function rrpg.getCurrentUser()
 	return _rrpg_getCurrentUser();
@@ -416,14 +400,26 @@ function rrpg.asyncOpenUserNDB(name, options)
 			return Async.Promise.wrap(_rrpg_Session_asyncOpenUserNDB(name, options));
 		end);						
 end;
-		
+			
 rrpg.messaging = require("rrpgEventMessages.lua");
+	
+rrpg.props["mesas"] = {getter="getMesas", tipo="table"};
 
+-- Alias functions
 rrpg.listen = rrpg.messaging.listen;
 rrpg.listenOnce = rrpg.messaging.listenOnce;
 rrpg.unlisten = rrpg.messaging.unlisten;
 rrpg.groupOnceListeners = rrpg.messaging.groupOnceListeners;
 rrpg.Messaging = rrpg.messaging;
+rrpg.parseRoll = rrpg.interpretarRolagem;
+rrpg.findRoom = rrpg.findMesa;
+rrpg.getRoomOf = rrpg.getMesaDe;
+rrpg.getRooms = rrpg.getMesas;	
+rrpg.getLibraryItemOf = rrpg.getBibliotecaItemDe;
+rrpg.getCharacterOf = rrpg.getPersonagemDe;
+
+-- Alias properties
+rrpg.props["rooms"] = rrpg.props["mesas"];
 		
 RRPG = rrpg;		
 		
