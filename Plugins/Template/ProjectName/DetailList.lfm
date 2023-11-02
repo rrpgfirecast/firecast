@@ -3,12 +3,12 @@
 	<scrollBox align="client">
 		<layout align="top" height="25">
 			<!-- RecordList + DataScopeBox -->
-			<button left="0" top="0" width="25" height="25" text="+" onClick="self.rclSelector:append();" hint="Adicionar"/>
+			<button align="left" width="25" text="+" onClick="self.rclSelector:append();" hint="Adicionar"/>
 		</layout>
 		<layout align="left" width="250" margins="{right=10}">
 			<rectangle align="client" color="black">
 				<!-- RecordList para seleção -->
-				<recordList align="top" autoHeight="true" name="rclSelector" field="listaDeOpcoes" templateForm="frmDataScopeSelectionForm" layout="vertical" selectable="true">
+				<recordList align="top" autoHeight="true" name="rclSelector" field="listaDeOpcoes" templateForm="frmDetailListItem" layout="vertical" selectable="true">
 					<event name="onCompare"><![CDATA[
 						-- Esse codigo organiza a ordem dos objetos da lista alfabeticamente. 
 				        return Utils.compareStringPtBr(nodeA.nome, nodeB.nome);              
@@ -27,7 +27,8 @@
 		<dataScopeBox align="client" name="boxDetalhesDoItem" visible="false">
 			<rectangle align="client" color="black">
 				<!-- O mesmo valor do edit nome vai estar no label do seletor pois tem o mesmo field -->
-				<edit left="5" top="5" width="230" height="25" field="nome"/>
+				<edit align="top" height="25" field="nome" margins="{top=5,right=5,left=5,bottom=5}"/>
+				<textEditor align="client" height="25" field="details" margins="{right=5,left=5,bottom=5}"/>
 			</rectangle>
 		</dataScopeBox>
 	</scrollBox>
