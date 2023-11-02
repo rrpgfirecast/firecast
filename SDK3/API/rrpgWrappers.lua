@@ -4,7 +4,7 @@ local rrpgWrappers = {};
 local localStrongRefContextoObjects = {};	
 local Locale = require("locale.lua");
 local Async = require("async.lua");
-
+local System = require("system.lua");
 
 local SHARED_OBJECT_TYPE = "rrpgObject";
 
@@ -132,22 +132,51 @@ end;
 local function initMesaWrappedObjectFromHandle(handle)
 	local wObj = initWrappedObjectFromHandle(handle); 
 	local mesa = wObj;
-    
-	function mesa:getChat() 
-		local objMesa = rrpgWrappers.objectFromID(_obj_getProp(self.handle, "ChatObjectID")); 
-		
-		if objMesa == nil then
-			return rrpgWrappers.NullChatWrapper;  -- ao invés de retornar NULL, vamos retorna um objeto que não faz nada.
-		else
-			return objMesa;
-		end;
-	end;
-	
+
 	function mesa:getActiveChat()
 		local objMesa = rrpgWrappers.objectFromID(_obj_getProp(self.handle, "ActiveChatObjectID")); 
 		
 		if objMesa == nil then
 			return mesa:getChat();
+		else
+			return objMesa;
+		end;
+	end;
+    
+	function mesa:getAudioPlayer()
+		local cachedPlayer = rawget(self, "__cachedAudioPlayer");
+
+		if cachedPlayer == nil then
+			local audioLib = require("audioCore.dlua");
+		
+			if System.checkAPIVersion(87, 4) then
+				if self.isObjectAlive then				
+					local audioPlayerHandle = _obj_invokeEx(self.handle, 'CreateRoomAudioPlayer');		
+
+					if audioPlayerHandle ~= nil then
+						cachedPlayer = audioLib._audioPlayerWrapperFromHandle(audioPlayerHandle);
+					else
+						cachedPlayer = audioLib._newNullAudioPlayerWrapper("Failed to initialize room audio player");
+					end;
+				else
+					cachedPlayer = audioLib._newNullAudioPlayerWrapper("Not in room");
+				end
+			else
+				cachedPlayer = audioLib._newNullAudioPlayerWrapper();
+			end;
+					
+			assert(cachedPlayer ~= nil);			
+			rawset(self, "__cachedAudioPlayer", cachedPlayer);
+		end;
+
+		return cachedPlayer;	
+	end;
+	
+	function mesa:getChat() 
+		local objMesa = rrpgWrappers.objectFromID(_obj_getProp(self.handle, "ChatObjectID")); 
+		
+		if objMesa == nil then
+			return rrpgWrappers.NullChatWrapper;  -- ao invés de retornar NULL, vamos retorna um objeto que não faz nada.
 		else
 			return objMesa;
 		end;
@@ -280,6 +309,8 @@ local function initMesaWrappedObjectFromHandle(handle)
 			end);	
 	end;
 				
+	wObj.props["activeChat"] = {getter="getActiveChat", tipo="table"};					
+	wObj.props["audioPlayer"] = {getter="getAudioPlayer", tipo="table"};				
 	wObj.props["nome"] = {getter = "getNome", tipo = "string"};
 	wObj.props["descricao"] = {getter = "getDescricao", tipo = "string"};
 	wObj.props["msgStatus"] = {getter = "getMsgStatus", tipo = "string"};	
@@ -296,7 +327,6 @@ local function initMesaWrappedObjectFromHandle(handle)
 	wObj.props["meuJogador"] = {getter = "getMeuJogador", tipo = "table"};	
 	wObj.props["biblioteca"] = {getter = "getBiblioteca", tipo = "table"};	
 	wObj.props["chat"] = {getter="getChat", tipo="table"};
-	wObj.props["activeChat"] = {getter="getActiveChat", tipo="table"};
 	
 	wObj.props["library"] = wObj.props["biblioteca"];	
 	
