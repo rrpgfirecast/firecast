@@ -76,17 +76,7 @@ local function newTimedJobQueue(interval)
 		o:addJob(
 			function(...)
 				assert(resolution ~= nil);
-				local r, data = pcall(callback, ...);	
-				
-				if r then
-					if Async.Promise.isPromise(data) then
-						data:thenResolve(resolution);
-					else
-						resolution:setSuccess(data);
-					end;
-				else	
-					resolution:setFailure(data);
-				end;
+				Async.execute(callback, ...):thenResolve(resolution);
 			end, ...);
 		
 		return promise;
