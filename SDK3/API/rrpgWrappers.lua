@@ -265,7 +265,7 @@ local function initMesaWrappedObjectFromHandle(handle)
 							jaNotificouEmCarregamento = true;
 							
 							if opcoes.callbackDeCarga ~= nil then
-								opcoes.callbackDeCarga();
+								opcoes.callbackDeCarga(rootNode);
 							end;
 						end;
 					end;
@@ -286,6 +286,34 @@ local function initMesaWrappedObjectFromHandle(handle)
 				setTimeout(callback, 1, nil);
 			end;
 		end;
+	end;
+	
+	function mesa:asyncOpenRoomNDB(name, options)		
+		options = options or {};			
+	
+		local promise, resolution = Async.Promise.pending();
+				
+		local adaptedOptions = {};				
+		adaptedOptions.criar = options.create;
+		
+		if options.skipLoad then
+			adaptedOptions.callbackDeCarga = 
+				function(loadingNode)
+					resolution:setSuccess(loadingNode);
+				end;
+		end;
+		
+		self:abrirNDBDeMesa(name, 
+			function(loadedNode)
+				if loadedNode ~= nil then
+					resolution:setSuccess(loadedNode);
+				else	
+					resolution:setFailure("Could not load room nodedatabase");
+				end;
+			end, 
+			adaptedOptions);
+				
+		return promise;
 	end;
 	
 	function mesa:asyncOpenUserRoomNDB(name, options)
@@ -605,7 +633,9 @@ local function initBibPersonagemWrappedObjectFromHandle(handle)
 	function bibItem:getDataType() return _obj_getProp(self.handle, "DataType"); end;
 	function bibItem:getEscritaBloqueada() return _obj_getProp(self.handle, "EscritaBloqueada"); end;	
 	
-	function bibItem:loadSheetNDB(callback)
+	function bibItem:loadSheetNDB(callback, params)
+		params = params or {};
+	
 		local ndbBib = require("ndb.lua");
 		local ndbHandle = _obj_invokeEx(self.handle, 'GetOrCreateSheetNDB');
 		
@@ -638,16 +668,16 @@ local function initBibPersonagemWrappedObjectFromHandle(handle)
 		
 		local state = ndbBib.getState(rootNode);
 		
-		if state == "open" then
+		if (state == "open") or 
+   		   ((state == "opening") and (params.skipLoad)) then
 			-- Already loaded
 			if callback ~= nil then
 				callback(rootNode);
-				--setTimeout(callback, 1, rootNode);
 			end;
 			
 			return;
 		end;
-		
+
 		-- Not loaded yet, letz monitor
 		
 		local jaNotificou = false;
@@ -680,6 +710,22 @@ local function initBibPersonagemWrappedObjectFromHandle(handle)
 		listenerLoaded = ndbObj:addEventListener("OnLoaded", checkState);
 				
 		checkState();		
+	end;
+	
+	function bibItem:asyncOpenNDB(options)
+		options = options or {};
+		local promise, resolution = Async.Promise.pending();
+		
+		self:loadSheetNDB(
+			function (loadedNDB)
+				if loadedNDB ~= nil then
+					resolution:setSuccess(loadedNDB);
+				else
+					resolution:setFailure("Could not load character nodedatabase");
+				end;
+			end, options);
+		
+		return promise;
 	end;
 	
 	wObj.props["dataType"] = {getter = "getDataType", tipo = "string"};	
