@@ -91,6 +91,15 @@ function lDialogs.showMessage(msg, callback)
 							end);
 end;
 
+function lDialogs.showErrorMessage(msg, callback)
+	lDialogs.showMessageDlg(msg, lDialogs.DT_ERROR, {lDialogs.DB_OK}, 
+							function(modalResult)
+								if type(callback) == "function" then
+									callback();
+								end;
+							end);
+end;
+
 function lDialogs.alert(msg, callback)
 	lDialogs.showMessageDlg(msg, lDialogs.DT_WARNING, {lDialogs.DB_OK}, 
 							function(modalResult)
@@ -99,7 +108,6 @@ function lDialogs.alert(msg, callback)
 								end;
 							end);
 end;
-
 
 function lDialogs.newInputQueryDialog()
 	local dlg = objs.objectFromHandle(_obj_newObject("TLuaInputQueryDialog"));

@@ -1,3 +1,5 @@
+local Async = require("async.lua");
+
 objs = {}
 rrpgObjs = objs;
 
@@ -44,7 +46,11 @@ function objs.addEventListener(object, eventName, funcCallback, parameterSelf)
 	local eveItem = {};
 	eveItem.objectHandle = objectHandle;
 	eveItem.eventName = eventName;
-	eveItem.funcCallback = funcCallback;
+	
+	eveItem.funcCallback = function(...)	
+		return Async.execute(funcCallback, ...):unwrap();
+	end;
+	
 	eveItem.hasParameterSelf = ((parameterSelf ~= nil) and (type(parameterSelf) == 'table'));	
 	
     local evesOfObject = localObjs.events.eventsOfObjectsObjRef[object];

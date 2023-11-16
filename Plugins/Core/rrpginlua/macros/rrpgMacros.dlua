@@ -4,9 +4,11 @@ local NDB = require("ndb.lua");
 local Locale = require("locale.lua");
 local GUI = require("gui.lua");
 local Log = require("log.lua");
+local Async = require("async.lua");
 
 local macros = {};
 local _MACRO_CALL_CO_FUNCTION_RET = "CallSomeFunctionInMainThread";
+local _FIRECAST_EXECUTABLE_GLOBAL_REFERENCE_TABLE = "____systemGRTBL____";
 
 local cloneFunctions = {};
 
@@ -138,6 +140,8 @@ local function handleCoResume(co, ...)
 			local f = yieldedFunctions[retornos[3]];
 			
 			f(co, table.unpack(retornos, 4));
+		elseif retornos[2] == Async._ASYNC_EXEC_AWAIT_CO_RET then
+			yieldedFunctions.yAwait(co, retornos[3])			
 		elseif coroutine.status(co)	== "dead" then
 			local endCallback = rawget(co, "__endCallback");
 			
@@ -150,8 +154,8 @@ end;
 
 function yieldedFunctions.yAwait(co, promise)		
 	promise:thenDo(
-		function(data)
-			handleCoResume(co, true, data);
+		function(...)
+			handleCoResume(co, true, ...);
 		end,
 		
 		function(errorMessage)
@@ -430,12 +434,12 @@ local function createMacroEnvTable(chat)
 	end;
 	
 	env.await = function(promise)
-		local r, dataOrError = coroutine.yield(_MACRO_CALL_CO_FUNCTION_RET, 'yAwait', promise);	
+		local ret = table.pack(coroutine.yield(_MACRO_CALL_CO_FUNCTION_RET, 'yAwait', promise));		
 		
-		if r then
-			return dataOrError;
+		if ret[1] then
+			return table.unpack(ret, 2);
 		else	
-			error(dataOrError);
+			error(ret[2]);
 		end;
 	end;
 	
@@ -968,7 +972,14 @@ local function createMacroEnvTable(chat)
 	env.coroutine = cloneTable(coroutine);
 	env.utils = cloneTable(Utils);	
 	env.ndb = cloneTable(NDB);
-	env.Log = cloneTable(Log)
+	env.Log = cloneTable(Log);
+	env.Async = cloneTable(Async);
+	
+	if rawget(_G, _FIRECAST_EXECUTABLE_GLOBAL_REFERENCE_TABLE) == nil then
+		rawset(_G, _FIRECAST_EXECUTABLE_GLOBAL_REFERENCE_TABLE, {});		
+	end;
+	
+	env[_FIRECAST_EXECUTABLE_GLOBAL_REFERENCE_TABLE] = rawget(_G, _FIRECAST_EXECUTABLE_GLOBAL_REFERENCE_TABLE); 
 	
 	env.Utils = env.utils;	
 	env.NDB = env.ndb;
