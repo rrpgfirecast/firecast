@@ -400,6 +400,14 @@ function rrpg.asyncOpenUserNDB(name, options)
 			return Async.Promise.wrap(_rrpg_Session_asyncOpenUserNDB(name, options));
 		end);						
 end;
+
+function rrpg.parseTalemark(text, talemarkOptions)
+	if System.checkAPIVersion(87, 4) then
+		return _obj_invokeEx(localRRPG.handle, 'ParseTalemark', text, talemarkOptions);	
+	else
+		return {type="root"};
+	end;
+end;
 			
 rrpg.messaging = require("rrpgEventMessages.lua");
 	
@@ -423,5 +431,12 @@ rrpg.props["rooms"] = rrpg.props["mesas"];
 		
 RRPG = rrpg;		
 		
+		
+-- Exported API to the Firecast Executable
+
+function __rrpg_loadRolagemFromBase64EncodedString(encodedString)
+	return rrpg.loadRolagemFromBase64EncodedString(encodedString);
+end;		
+				
 require("rrpgEventMessagesAdapters.lua");
 return rrpg;
