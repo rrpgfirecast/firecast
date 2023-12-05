@@ -376,7 +376,7 @@ local __delayedLoadMacroEnv = {
 			else
 				throwMacroNotAssociatedToRooom("myPlayer");
 			end;
-		end;
+		end,
 		
 	mesa = function(chat)
 		local m = rrpg.getMesaDe(chat); 
@@ -386,7 +386,7 @@ local __delayedLoadMacroEnv = {
 		else
 			throwMacroNotAssociatedToRooom("room");
 		end;
-	end;
+	end,
 	
 	arg = function(chat, env)
 		local str = env.parametro or "";
@@ -399,23 +399,27 @@ local __delayedLoadMacroEnv = {
 		end;
 		
 		return ret;
-	end;
+	end,
 	
 	parameter = function(chat, env)
 		return env.parametro;
-	end;
+	end,
 	
 	myCharacter = function(chat, env)
 		return env.getCharacterOfPlayer(env.myPlayer);
-	end;
+	end,
 	
 	sheet = function(chat, env)
 		return env.getCharacterSheet(env.myCharacter);
-	end;
+	end,
 	
 	chat = function(chat, env)
 		return cloneTable(chat);
-	end;	
+	end,
+	
+	Firecast = function(chat, env)
+		return cloneTable(require("firecast.lua"));
+	end	
 };
 
 __delayedLoadMacroEnv.myPlayer = __delayedLoadMacroEnv.meuJogador;
