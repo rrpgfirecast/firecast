@@ -5,7 +5,7 @@
 			local mesa = Firecast.getMesaDe(sheet);
 
 			local mod = math.floor(tonumber(sheet[field]) or 0);
-			local rolagem = Firecast.interpretarRolagem("2d6 + " .. mod);
+			local rolagem = Firecast.interpretarRolagem("2d10 + " .. mod);
 
 			mesa.activeChat:rolarDados(rolagem, text);
 		end;
