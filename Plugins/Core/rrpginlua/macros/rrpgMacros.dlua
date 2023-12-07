@@ -163,13 +163,6 @@ function yieldedFunctions.yAwait(co, promise)
 		end);
 end;
 
-function yieldedFunctions.yRolarDado(co, chat, rolagem, msgAdicional)	
-	chat:rolarDados(rolagem, msgAdicional,
-		function(rolado)
-			handleCoResume(co, rolado.resultado, rolado);
-		end);
-end;
-
 function yieldedFunctions.yChatSendMessageAndWait(co, chat, functionNameToCall, ...)	
 	local functionToCall = chat[functionNameToCall] ;
 	
@@ -453,15 +446,14 @@ local function createMacroEnvTable(chat)
 	
 	env.write = env.escrever;
 	
-	function env.enviar(texto)
-		return coroutine.yield(_MACRO_CALL_CO_FUNCTION_RET, 'yChatSendMessageAndWait', chat, 'enviarMensagem', texto); 
+	function env.enviar(text, params)
+		return env.await(chat:asyncSendStd(text, params));		
 	end;		
 	
 	env.send = env.enviar;
 	
-	function env.rolar(rolagem, msgAdicional)
-		local resultado, rolagemObj = coroutine.yield(_MACRO_CALL_CO_FUNCTION_RET, 'yRolarDado', chat, rolagem, msgAdicional);
-		return resultado, rolagemObj;
+	function env.rolar(rolagem, msgAdicional, params)
+		return env.await(chat:asyncRoll(rolagem, msgAdicional, params));		
 	end;
 	
 	env.roll = env.rolar;
@@ -486,8 +478,8 @@ local function createMacroEnvTable(chat)
 	
 	env.wait = env.esperar;
 	
-	function env.agir(acao)
-		return coroutine.yield(_MACRO_CALL_CO_FUNCTION_RET, 'yChatSendMessageAndWait', chat, 'enviarAcao', acao); 	
+	function env.agir(acao, params)
+		return env.await(chat:asyncSendAction(acao, params));		
 	end;
 	
 	env.act = env.agir;
@@ -959,6 +951,10 @@ local function createMacroEnvTable(chat)
 		return env.await(trackPromise);	
 	end;	
 	
+	env.writeEx = function(text, talemarkOptions)
+		return chat:writeEx(text, talemarkOptions);	
+	end;
+		
 	env.pairs = pairs;
 	env.ipairs = ipairs;
 	env.pcall = pcall;

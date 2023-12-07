@@ -1118,6 +1118,14 @@ local function initBaseChatWrappedObjectFromHandle(handle)
 				return Async.Promise.wrap(_obj_invokeEx(self.handle, "AsyncQueryLogRecsFromServer", params));
 			end);	
 	end;		
+	
+	function wChat:writeEx(text, talemarkOptions) 		
+		if System.checkAPIVersion(87, 4) then
+			return _obj_invokeEx(self.handle, "WriteEx", text, talemarkOptions);
+		else
+			return self:escrever(text);
+		end;		
+	end;		
 				
 	wChat.props["room"] = {getter = "getRoom", tipo = "table"};	
 	wChat.props["impersonation"] = {getter = "getImpersonation", setter = "setImpersonation", tipo = "table"};	

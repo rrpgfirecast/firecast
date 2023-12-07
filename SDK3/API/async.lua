@@ -83,7 +83,7 @@ setmetatable(PromiseMetatable, BasePromiseMetatable);
 PromiseMetatable.__index = PromiseMetatable; 
 
 function PromiseMetatable:peek()
-	if System.checkAPIVersion(87, 4) then
+	if System.checkAPIVersion(87, 4) and (_async_promise_peek ~= nil) then
 		return _async_promise_peek(self.handle);
 	else
 		return false;
