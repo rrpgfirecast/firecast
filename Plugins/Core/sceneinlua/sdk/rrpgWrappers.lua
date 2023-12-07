@@ -4,7 +4,8 @@ local rrpgWrappers = {};
 local localStrongRefContextoObjects = {};	
 local Locale = require("locale.lua");
 local Async = require("async.lua");
-
+local System = require("system.lua");
+local Utils = require('utils.lua');
 
 local SHARED_OBJECT_TYPE = "rrpgObject";
 
@@ -65,6 +66,34 @@ local function newTimedJobQueue(interval)
 		end;
 	end;
 	
+	function o:addAsyncJob(callback, ...)
+		if not System.checkAPIVersion(87, 4) then
+			return callback(...);
+		end;
+	
+		local promise, resolution = Async.Promise.toResolve();
+		assert((promise ~= nil) and (resolution ~= nil));
+								
+		o:addJob(
+			function(...)
+				assert(resolution ~= nil);
+				
+				local function protectedCallback(...)
+					local ret = table.pack(pcall(callback, ...));
+					
+					if ret[1] then
+						return table.unpack(ret, 2);
+					else
+						return Async.Promise.failed(ret[2]);
+					end;
+				end;
+				
+				Async.execute(protectedCallback, ...):thenResolve(resolution);
+			end, ...);
+		
+		return promise;
+	end;
+	
 	function o:clear()
 		o.timer.enabled = false;
 		o.gerador = 0;
@@ -78,6 +107,7 @@ local function newTimedJobQueue(interval)
 end;
 
 local __serverRequestQueue = newTimedJobQueue(250);
+rrpgWrappers.__serverRequestQueue = __serverRequestQueue;
 
 local function initWrappedObjectFromHandle(handle)
 	local wObj = objs.objectFromHandle(handle); 
@@ -104,22 +134,51 @@ end;
 local function initMesaWrappedObjectFromHandle(handle)
 	local wObj = initWrappedObjectFromHandle(handle); 
 	local mesa = wObj;
-    
-	function mesa:getChat() 
-		local objMesa = rrpgWrappers.objectFromID(_obj_getProp(self.handle, "ChatObjectID")); 
-		
-		if objMesa == nil then
-			return rrpgWrappers.NullChatWrapper;  -- ao invés de retornar NULL, vamos retorna um objeto que não faz nada.
-		else
-			return objMesa;
-		end;
-	end;
-	
+
 	function mesa:getActiveChat()
 		local objMesa = rrpgWrappers.objectFromID(_obj_getProp(self.handle, "ActiveChatObjectID")); 
 		
 		if objMesa == nil then
 			return mesa:getChat();
+		else
+			return objMesa;
+		end;
+	end;
+    
+	function mesa:getAudioPlayer()
+		local cachedPlayer = rawget(self, "__cachedAudioPlayer");
+
+		if cachedPlayer == nil then
+			local audioLib = require("audioCore.dlua");
+		
+			if System.checkAPIVersion(87, 4) then
+				if self.isObjectAlive then				
+					local audioPlayerHandle = _obj_invokeEx(self.handle, 'CreateRoomAudioPlayer');		
+
+					if audioPlayerHandle ~= nil then
+						cachedPlayer = audioLib._audioPlayerWrapperFromHandle(audioPlayerHandle);
+					else
+						cachedPlayer = audioLib._newNullAudioPlayerWrapper("Failed to initialize room audio player");
+					end;
+				else
+					cachedPlayer = audioLib._newNullAudioPlayerWrapper("Not in room");
+				end
+			else
+				cachedPlayer = audioLib._newNullAudioPlayerWrapper();
+			end;
+					
+			assert(cachedPlayer ~= nil);			
+			rawset(self, "__cachedAudioPlayer", cachedPlayer);
+		end;
+
+		return cachedPlayer;	
+	end;
+	
+	function mesa:getChat() 
+		local objMesa = rrpgWrappers.objectFromID(_obj_getProp(self.handle, "ChatObjectID")); 
+		
+		if objMesa == nil then
+			return rrpgWrappers.NullChatWrapper;  -- ao invés de retornar NULL, vamos retorna um objeto que não faz nada.
 		else
 			return objMesa;
 		end;
@@ -218,7 +277,7 @@ local function initMesaWrappedObjectFromHandle(handle)
 							jaNotificouEmCarregamento = true;
 							
 							if opcoes.callbackDeCarga ~= nil then
-								opcoes.callbackDeCarga();
+								opcoes.callbackDeCarga(rootNode);
 							end;
 						end;
 					end;
@@ -241,14 +300,47 @@ local function initMesaWrappedObjectFromHandle(handle)
 		end;
 	end;
 	
+	function mesa:asyncOpenRoomNDB(name, options)		
+		options = options or {};			
+	
+		local promise, resolution = Async.Promise.pending();
+				
+		local adaptedOptions = {};				
+		adaptedOptions.criar = options.create;
+		
+		if options.skipLoad then
+			adaptedOptions.callbackDeCarga = 
+				function(loadingNode)
+					resolution:setSuccess(loadingNode);
+				end;
+		end;
+		
+		self:abrirNDBDeMesa(name, 
+			function(loadedNode)
+				if loadedNode ~= nil then
+					resolution:setSuccess(loadedNode);
+				else	
+					resolution:setFailure("Could not load room nodedatabase");
+				end;
+			end, 
+			adaptedOptions);
+				
+		return promise;
+	end;
+	
 	function mesa:asyncOpenUserRoomNDB(name, options)
 		if not Async.haveNativeBackendSupport() or not System.checkAPIVersion(87, 3) then
 			return Async.Promise.withError("No API Support");
 		end;			
 		
-		return Async.Promise.wrap(_obj_invokeEx(self.handle, "AsyncOpenUserRoomNDB", name, options));
+		return __serverRequestQueue:addAsyncJob(
+			function ()
+				return Async.Promise.wrap(_obj_invokeEx(self.handle, "AsyncOpenUserRoomNDB", name, options));			
+			end);	
 	end;
 				
+	wObj.props["activeChat"] = {getter="getActiveChat", tipo="table"};					
+	wObj.props["audioPlayer"] = {getter="getAudioPlayer", tipo="table"};				
 	wObj.props["nome"] = {getter = "getNome", tipo = "string"};
 	wObj.props["descricao"] = {getter = "getDescricao", tipo = "string"};
 	wObj.props["msgStatus"] = {getter = "getMsgStatus", tipo = "string"};	
@@ -265,7 +357,9 @@ local function initMesaWrappedObjectFromHandle(handle)
 	wObj.props["meuJogador"] = {getter = "getMeuJogador", tipo = "table"};	
 	wObj.props["biblioteca"] = {getter = "getBiblioteca", tipo = "table"};	
 	wObj.props["chat"] = {getter="getChat", tipo="table"};
-	wObj.props["activeChat"] = {getter="getActiveChat", tipo="table"};
+	
+	wObj.props["library"] = wObj.props["biblioteca"];	
+	wObj.props["me"] = wObj.props["meuJogador"];	
 	
 	return wObj;
 end;
@@ -344,6 +438,10 @@ local function initJogadorWrappedObjectFromHandle(handle)
 	wObj.props["codigoInterno"] = {getter = "getCodigoInterno", tipo = "int"};
 	wObj.props["personagemPrincipal"] = {readProp="PersonagemPrincipal", tipo = "int"};
 	
+	if System.checkAPIVersion(87, 4) then
+		wObj.props["id"] = {readProp="ID", tipo = "int"};
+	end;
+	
 	return wObj;
 end;		
 	
@@ -365,6 +463,111 @@ local function initBibliotecaItemWrappedObjectFromHandle(handle)
     	   	
     	return filhos;	
 	end;
+	
+	function bibItem:__asyncCreateBibItem(bibItemType, params)
+		assert(type(params) == "table");
+		
+		if not System.checkAPIVersion(87, 4) then
+			return Async.Promise.failed("No API Support");
+		end;
+		
+		local innerPromise = __serverRequestQueue:addAsyncJob(
+			function ()
+				return Async.Promise.wrap(_obj_invokeEx(self.handle, "AsyncCreateBibItemObjectID", bibItemType, params));			
+			end);			
+			
+		return Async.Promise.toHandle(innerPromise,
+			function (newObjectID)
+				local newObj = rrpgWrappers.contextObjectFromID(newObjectID);
+				
+				if newObj ~= nil then
+					return newObj;
+				else	
+					error("Could not find the new created library item");
+				end;
+			end);
+	end;
+	
+	function bibItem:asyncCreateChar(charParams)
+		if type(charParams) ~= "table" then
+			error("charParams must be a table");
+		end;
+		
+		if charParams.name == nil then
+			error("Required field: charParams.name");
+		end;
+		
+		if charParams.name == nil then
+			error("Required field: charParams.dataType");
+		end;		
+		
+		return bibItem:__asyncCreateBibItem('character', charParams);
+	end;
+	
+	function bibItem:asyncCreateDir(dirParams)
+		if type(dirParams) ~= "table" then
+			error("dirParams must be a table");
+		end;
+		
+		if dirParams.name == nil then
+			error("Required field: dirParams.name");
+		end;
+		
+		return bibItem:__asyncCreateBibItem('directory', dirParams);
+	end;	
+	
+	function bibItem:asyncCreateScene3(gridParams)
+		if type(gridParams) ~= "table" then
+			error("gridParams must be a table");
+		end;
+		
+		if gridParams.name == nil then
+			error("Required field: gridParams.name");
+		end;
+		
+		return bibItem:__asyncCreateBibItem('scene3', gridParams);
+	end;		
+
+	function bibItem:asyncDelete()
+		if not System.checkAPIVersion(87, 4) then
+			return Async.Promise.failed("No API Support");
+		end;
+		
+		return __serverRequestQueue:addAsyncJob(
+			function ()
+				return Async.Promise.wrap(_obj_invokeEx(bibItem.handle, "AsyncDelete"));			
+			end);			
+	end;		
+
+	function bibItem:asyncMoveTo(newParent)			
+		if type(newParent) ~= 'table' then
+			error('Parameter "newParent" must be an object');
+		end;	
+	
+		if not System.checkAPIVersion(87, 4) then
+			return Async.Promise.failed("No API Support");
+		end;			
+	
+		return __serverRequestQueue:addAsyncJob(
+			function ()
+				return Async.Promise.wrap(_obj_invokeEx(bibItem.handle, "AsyncMoveTo", newParent.objectID));			
+			end);	
+	end;
+
+	function bibItem:asyncUpdate(changes)
+		if type(changes) ~= 'table' then
+			error('Parameter "changes" must be a table');
+		end;	
+	
+		if not System.checkAPIVersion(87, 4) then
+			return Async.Promise.failed("No API Support");
+		end;		
+	
+		return __serverRequestQueue:addAsyncJob(
+			function ()
+				return Async.Promise.wrap(_obj_invokeEx(bibItem.handle, "AsyncUpdate", changes));			
+			end);	
+	end;		
 	
 	function bibItem:getMesa() return rrpgWrappers.objectFromID(_obj_getProp(self.handle, "MesaObjectID")); end;
 	function bibItem:getNome() return _obj_getProp(self.handle, "Nome"); end;
@@ -391,10 +594,54 @@ local function initBibliotecaItemWrappedObjectFromHandle(handle)
 	wObj.props["tipo"] = {getter = "getTipo", tipo = "string"};		
 	wObj.props["codigoInterno"] = {getter = "getCodigoInterno", tipo = "int"};	
 	
+	wObj.props["room"] = wObj.props["mesa"];	
+	wObj.props["parent"] = wObj.props["pai"];
+	wObj.props["name"] = wObj.props["nome"];	
+	wObj.props["children"] = wObj.props["filhos"];
+	wObj.props["ownerLogin"] = wObj.props["loginDono"];
+	wObj.props["creatorLogin"] = wObj.props["loginCriador"];
+	wObj.props["creator"] = wObj.props["criador"];
+	wObj.props["owner"] = wObj.props["dono"];
+	wObj.props["visible"] = wObj.props["visivel"];	
+	wObj.props["recursiveVisible"] = wObj.props["visivelRecursivamente"];		
 	return wObj;
 end;		
 		
 --[ OBJETO PERSONAGEM ]--			
+
+local __PersonagemWrappedObjectProps = {};
+
+for i = 0, 3 do
+	local barIndex = i;
+	
+	__PersonagemWrappedObjectProps["bar" .. tostring(i) .. "Val"] = {tipo = "int", getter = function (personagem)
+																							  	if System.checkAPIVersion(87, 4) then
+																									return _obj_invokeEx(personagem.handle, "GetBarVal", barIndex)
+																								else
+																									return 0;
+																								end;			
+																						    end};	
+																						  
+	__PersonagemWrappedObjectProps["bar" .. tostring(i) .. "Max"] = {tipo = "int", getter = function (personagem)
+																							  	if System.checkAPIVersion(87, 4) then
+																									return _obj_invokeEx(personagem.handle, "GetBarMax", barIndex)
+																								else
+																									return 0;
+																								end;			
+																						    end};
+end;
+
+for i = 0, 1 do
+	local edtLineIndex = i;
+	
+	__PersonagemWrappedObjectProps["edtLine" .. tostring(i)] = {tipo = "string", getter = function (personagem)
+																							  	if System.checkAPIVersion(87, 4) then
+																									return _obj_invokeEx(personagem.handle, "GetEdtLine", edtLineIndex)
+																								else
+																									return "";
+																								end;			
+																						    end};			
+end;	
 		
 local function initBibPersonagemWrappedObjectFromHandle(handle)
 	local wObj = initBibliotecaItemWrappedObjectFromHandle(handle); 
@@ -403,7 +650,9 @@ local function initBibPersonagemWrappedObjectFromHandle(handle)
 	function bibItem:getDataType() return _obj_getProp(self.handle, "DataType"); end;
 	function bibItem:getEscritaBloqueada() return _obj_getProp(self.handle, "EscritaBloqueada"); end;	
 	
-	function bibItem:loadSheetNDB(callback)
+	function bibItem:loadSheetNDB(callback, params)
+		params = params or {};
+	
 		local ndbBib = require("ndb.lua");
 		local ndbHandle = _obj_invokeEx(self.handle, 'GetOrCreateSheetNDB');
 		
@@ -436,16 +685,16 @@ local function initBibPersonagemWrappedObjectFromHandle(handle)
 		
 		local state = ndbBib.getState(rootNode);
 		
-		if state == "open" then
+		if (state == "open") or 
+   		   ((state == "opening") and (params.skipLoad)) then
 			-- Already loaded
 			if callback ~= nil then
 				callback(rootNode);
-				--setTimeout(callback, 1, rootNode);
 			end;
 			
 			return;
 		end;
-		
+
 		-- Not loaded yet, letz monitor
 		
 		local jaNotificou = false;
@@ -480,10 +729,31 @@ local function initBibPersonagemWrappedObjectFromHandle(handle)
 		checkState();		
 	end;
 	
+	function bibItem:asyncOpenNDB(options)
+		options = options or {};
+		local promise, resolution = Async.Promise.pending();
+		
+		self:loadSheetNDB(
+			function (loadedNDB)
+				if loadedNDB ~= nil then
+					resolution:setSuccess(loadedNDB);
+				else
+					resolution:setFailure("Could not load character nodedatabase");
+				end;
+			end, options);
+		
+		return promise;
+	end;
+	
 	wObj.props["dataType"] = {getter = "getDataType", tipo = "string"};	
 	wObj.props["escritaBloqueada"] = {getter = "getEscritaBloqueada", tipo = "bool"};
 	wObj.props["avatar"] = {readProp="Avatar", tipo = "string"};
 	
+	for k, v in pairs(__PersonagemWrappedObjectProps) do
+		wObj.props[k] = v;
+	end;	
+
+	wObj.props["editionBlocked"] = wObj.props["escritaBloqueada"];	
 	return wObj;
 end;			
 
@@ -533,13 +803,25 @@ local function _setupCallbackTrapForUniqueRoll(idOfRoll, callbackFunction)
 end;
 
 local _NULL_FUNCTION = function() end;
+local _NULL_ARRAY_FUNCTION = function() return {}; end;
+local _NULL_PROMISE_FUNCTION = function() Async.Promise.failed("Chat is not alive"); end;
+
 rrpgWrappers.NullChatWrapper = {enviarMensagem = _NULL_FUNCTION, 
 								rolarDados = _NULL_FUNCTION,
 								enviarAcao = _NULL_FUNCTION,
 								enviarRisada = _NULL_FUNCTION,
 								enviarMensagemNPC = _NULL_FUNCTION,
-								enviarNarracao = _NULL_FUNCTION};
-
+								enviarNarracao = _NULL_FUNCTION,
+								setImpersonation = _NULL_FUNCTION,
+								readLogRecs = _NULL_ARRAY_FUNCTION,
+								asyncQueryLogRecs = _NULL_PROMISE_FUNCTION,
+								asyncSendLaugh = _NULL_PROMISE_FUNCTION,
+								asyncSendAction = _NULL_PROMISE_FUNCTION,
+								asyncSendStd = _NULL_PROMISE_FUNCTION,
+								participants = {},
+								medium = {kind="undefined"}
+								};
+								
 local function initBaseChatWrappedObjectFromHandle(handle)
 	local wObj = initWrappedObjectFromHandle(handle); 
 	local wChat = wObj;
@@ -554,6 +836,17 @@ local function initBaseChatWrappedObjectFromHandle(handle)
 		
 		return queue;
 	end;
+	
+	function wChat:_getLongTimedJobQueue()
+		local queue = rawget(self, "_longTimedJobQueue");
+		
+		if queue == nil then
+			queue = newTimedJobQueue(1000);
+			rawset(self, "_longTimedJobQueue", queue);
+		end;
+		
+		return queue;
+	end;	
 	
 	function wChat:escrever(texto, quebrarLinha, permitirSmileys) 
 		if quebrarLinha == nil then
@@ -710,8 +1003,139 @@ local function initBaseChatWrappedObjectFromHandle(handle)
 		end;			
 	end;
 			
+	function wChat:__asyncSendEx(msgDesc, params) 
+		if not System.checkAPIVersion(87, 4) then
+			return Async.Promise.failed("No API Support");
+		end;
+		
+		local finalMsgDesc = Utils.cloneTable(params) or {};
+		
+		for k, v in pairs(msgDesc) do
+			finalMsgDesc[k] = v;
+		end;
+				
+		local queue = self:_getTimedJobQueue()
+		
+		return queue:addAsyncJob(
+			function()
+				return Async.Promise.wrap(_obj_invokeEx(self.handle, "AsyncSendEx", finalMsgDesc));
+			end);	
+	end;
+			
+	function wChat:asyncSendStd(content, params) 						
+		return self:__asyncSendEx({msgType="standard", content=content}, params);
+	end;
+	
+	function wChat:asyncSendAction(content, params) 						
+		return self:__asyncSendEx({msgType="action", content=content}, params);
+	end;
+	
+	function wChat:asyncSendLaugh(params) 						
+		return self:__asyncSendEx({msgType="laugh"}, params);
+	end;	
+	
+	function wChat:asyncRoll(expression, message, params) 			
+		local expressionAsStr;
+
+		if type(expression) == "string" then
+			expressionAsStr = Locale.autoEval(expression);
+		elseif (type(expression) == "table") and (expression.getAsString ~= nil) then
+			expressionAsStr = expression:getAsString();		
+		else
+			expressionAsStr = nil;
+		end;
+	
+		local sendPromise = self:__asyncSendEx({msgType="dice", expression=expressionAsStr, content=message}, params);
+		
+		return sendPromise:thenDo(
+			function(logRec)				
+				local roll = logRec.msg.roll;
+				assert(roll ~= nil);
+				
+				return roll.resultado, roll, logRec;
+			end);		
+	end;		
+	
+	function wChat:readLogRecs() 
+		if System.checkAPIVersion(87, 4) then 
+			return _obj_invokeEx(self.handle, "ReadValidLogRecs");
+		else
+			return {};
+		end;
+	end;
+	
+	function wChat:getImpersonation() 
+		if System.checkAPIVersion(87, 4) then 
+			return _obj_invokeEx(self.handle, "GetUIImpersonation");
+		else
+			return {mode="none"};
+		end;
+	end;	
+	
+	function wChat:setImpersonation(impersonation)
+		if System.checkAPIVersion(87, 4) then 
+			return _obj_invokeEx(self.handle, "SetUIImpersonation", impersonation);
+		else	
+			return false;
+		end;	
+	end;
+	
+	function wChat:getTalemarkOptions()
+		if System.checkAPIVersion(87, 4) then 
+			return _obj_invokeEx(self.handle, "GetTalemarkOptions");
+		else
+			return {};
+		end;
+	end;	
+	
+	function wChat:getMedium()
+		if System.checkAPIVersion(87, 4) then 
+			return _obj_invokeEx(self.handle, "GetMedium");
+		else
+			return {kind="undefined"};
+		end;
+	end;		
+	
+	function wChat:getParticipants() 
+		if System.checkAPIVersion(87, 4) then 
+			return _obj_invokeEx(self.handle, "GetParticipants");
+		else
+			return {};
+		end;		
+	end;
+	
+	function wChat:asyncQueryLogRecs(params) 		
+		if not System.checkAPIVersion(87, 4) then
+			return Async.Promise.failed("No API Support");
+		end;		
+		
+		params = Utils.cloneTable(params or {});
+		
+		local queue = self:_getLongTimedJobQueue()
+		
+		return queue:addAsyncJob(
+			function()
+				return Async.Promise.wrap(_obj_invokeEx(self.handle, "AsyncQueryLogRecsFromServer", params));
+			end);	
+	end;		
+	
+	function wChat:writeEx(text, talemarkOptions) 		
+		if System.checkAPIVersion(87, 4) then
+			return _obj_invokeEx(self.handle, "WriteEx", text, talemarkOptions);
+		else
+			return self:escrever(text);
+		end;		
+	end;		
 				
 	wChat.props["room"] = {getter = "getRoom", tipo = "table"};	
+	wChat.props["impersonation"] = {getter = "getImpersonation", setter = "setImpersonation", tipo = "table"};	
+	wChat.props["talemarkOptions"] = {getter = "getTalemarkOptions", tipo = "table"};	
+	wChat.props["medium"] = {getter = "getMedium", tipo = "table" };
+	wChat.props["participants"] = {getter = "getParticipants", tipo = "table" };	
+		
+	-- aliases
+	wChat.write = wChat.escrever;
+	
 	return wObj;
 end;
 		
@@ -775,6 +1199,10 @@ end;
 
 function _INTERNAL_AUX_ContextObjectFromID(objectID)
 	return rrpgWrappers.contextObjectFromID(objectID);
+end;
+
+function _INTERNAL_AUX_NullChatWrapper()
+	return rrpgWrappers.NullChatWrapper;
 end;
 
 SharedObjects.registerUnpacker(SHARED_OBJECT_TYPE,

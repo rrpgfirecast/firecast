@@ -341,7 +341,7 @@ function objs.componentFromHandle(handle)
 	local obj = objs.objectFromHandle(handle);	
 	
 	function obj:getName() return _obj_getProp(self.handle, "Name"); end;
-	function obj:setName(name) _obj_setProp(self.handle, "Name", name) end;			
+	function obj:setName(name) _obj_setProp(self.handle, "Name", name); end;			
 	
 	obj.props = {}
 	obj.props["name"] = {setter = "setName", getter = "getName", tipo = "string"};		

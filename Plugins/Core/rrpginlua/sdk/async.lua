@@ -83,7 +83,7 @@ setmetatable(PromiseMetatable, BasePromiseMetatable);
 PromiseMetatable.__index = PromiseMetatable; 
 
 function PromiseMetatable:peek()
-	if System.checkAPIVersion(87, 4) then
+	if System.checkAPIVersion(87, 4) and (_async_promise_peek ~= nil) then
 		return _async_promise_peek(self.handle);
 	else
 		return false;
@@ -178,6 +178,66 @@ function Promise.__newStubFailedPromise(errorMsg)
 	return p;
 end;
 
+function Promise.__newStubPendingPromise()
+	local p = Promise.__newBaseStubPromise();
+	
+	p.__resolved = false;
+	
+	-- Promise interface
+	
+	function p:peek()
+		if self.__resolved then
+			return true, p.__success, table.unpack(p.__data);
+		else	
+			return false;
+		end;
+	end;	
+	
+	function p:thenDo(successCallback, errorCallback)
+		if self.__resolved then
+			if self.__success and type(successCallback) == "function" then
+				successCallback(table.unpack(self.__data));
+			elseif not self.__success and type(errorCallback) == "function" then
+				errorCallback(table.unpack(self.__data));
+			end;	
+		else
+			if type(errorCallback) == "function" then
+				errorCallback("No API Support");
+			end;
+		end;
+		
+		return Async.Promise.failed("No API Support");
+	end;
+	
+	-- PromiseResolution interface
+	
+	function p:setSuccess(...)
+		if not self.__resolved then
+			self.__resolved = true;
+			self.__success = true;
+			self.__data = table.pack(...);
+		else
+			return false;
+		end;
+	end;
+	
+	function p:setFailure(errorMsg)
+		if not self.__resolved then
+			self.__resolved = true;
+			self.__success = false;
+			self.__data = {errorMsg};
+		else
+			return false;
+		end;
+	end;
+	
+	function p:setUserAborted()
+		return self:setFailure("UserAbortedException");
+	end;	
+		
+	return p;
+end;
+
 function Promise.wrap(handle)
 	local p = {}	
 	setmetatable(p, PromiseMetatable);			
@@ -191,24 +251,6 @@ function Promise.wrapPromiseResolution(handle)
 	r.handle = handle;	
 		
 	return r;
-end;
-
-function Promise.__newStubPromiseResolution()
-	local r = {};
-	
-	function r:setSuccess(...)
-		return false;
-	end;
-	
-	function r:setFailure(errorMsg)
-		return false;
-	end;
-	
-	function r:setUserAborted()
-		return false;
-	end;		
-	
-	return r;	
 end;
 
 function _asyncExecution.__asyncExecAwaitPromise(co, promise)
@@ -317,10 +359,8 @@ function Promise.toResolve()
 	
 		return promise, promiseResolution;
 	else
-		local stubPromise = Promise.__newStubFailedPromise("No API Support");
-		local stubPromiseResolution = Promise.__newStubPromiseResolution();
-		
-		return stubPromise, stubPromiseResolution;	
+		local stubPromise = Promise.__newStubPendingPromise();		
+		return stubPromise, stubPromise; -- the same stub object act as Promise and PromiseResolution at same time	
 	end;		
 end;
 
