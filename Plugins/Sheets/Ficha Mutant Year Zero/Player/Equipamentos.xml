@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmEquipamentos" align="client">
+	<popup name="popEquipamento" width="300" height="240" backOpacity="0.4" autoScopeNode="false">
+		<flowLayout align="top" autoHeight="true" maxControlsPerLine="2" margins="{bottom=4}" horzAlign="center">
+			<habilidadeSmallCenter text="Quantidade" field="qtdEquipamento"/>
+			<habilidadeSmallCenter text="Preço" field="precoEquipamento"/>
+		</flowLayout>
+		<textEditor align="client" field="descricao"/>
+	</popup>
+	<popup name="popArma" width="300" height="240" backOpacity="0.4" autoScopeNode="false">
+		<flowLayout align="top" autoHeight="true" maxControlsPerLine="3" margins="{bottom=4}" horzAlign="center">
+			<habilidadeSmallCenter text="Quantidade" field="qtdArma"/>
+			<habilidadeSmallCenter text="Preço" field="precoArma"/>
+			<flowLineBreak/>
+			<habilidadeSmallCenter text="Bônus" field="bonusArma"/>
+			<habilidadeSmallCenter text="Dano" field="danoArma"/>
+			<habilidadeSmallCenter text="Alcance" field="alcanceArma"/>
+		</flowLayout>
+		<textEditor align="client" field="descricao"/>
+	</popup>
+
+	<scrollBox align="client">
+		<flowLayout align="top" autoHeight="true" maxColumns="3" horzAlign="center" orientation="vertical" avoidScale="true">
+			<ListaFlexivel nome="EQUIPAMENTOS" rclName="campoDosEquipamentos" rclField="campoDosEquipamentos" templateForm="frmEquipamentosItem"/>
+			<ListaFlexivel nome="ITEMS" rclName="campoDosItems" rclField="campoDosItems" templateForm="frmEquipamentosItem"/>
+			<ListaFlexivel nome="ITEMS PEQUENOS" rclName="campoDosItemsPequenos" rclField="campoDosItemsPequenos" templateForm="frmEquipamentosItem"/>
+			<ListaFlexivel nome="Armas" rclName="campoDasArmas" rclField="campoDasArmas" templateForm="frmArmaItem"/>
+		</flowLayout>
+	</scrollBox>
+</form>

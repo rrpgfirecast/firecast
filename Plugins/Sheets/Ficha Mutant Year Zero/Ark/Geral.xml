@@ -1,0 +1,62 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmGeral" align="client">
+	<template name="Desenvolvimento">
+		<layout align="top" height="25" margins="{top=4}">
+			<label align="client" text="$(text)" horzTextAlign="center"/>
+			<edit align="right" width="40" field="$(field)" type="number"/>
+		</layout>
+	</template>
+	<template name="Chefe">
+		<layout align="top" height="25" margins="{top=4}">
+			<edit align="client" field="$(field)Nome" horzTextAlign="center"/>
+			<edit align="right" width="100" field="$(field)Tipo"/>
+		</layout>
+	</template>
+
+	<scrollBox align="client">
+		<rectangle align="top" height="35" color="#000000" strokeSize="1" strokeColor="#FFFFFF" padding="{top=2,right=2,left=2,bottom=2}">
+			<layout align="left" width="270" margins="{top=5,bottom=5,left=5,right=5}">
+				<label align="left" width="75" text="Tipo" horzTextAlign="center"/>
+				<edit align="client" field="tipo"/>
+			</layout>
+			<layout align="left" width="305" margins="{top=5,bottom=5,left=5,right=5}">
+				<label align="left" width="100" text="Coordenadas" horzTextAlign="center"/>
+				<edit align="client" field="coordenadas"/>
+			</layout>
+		</rectangle>
+
+		<layout align="top" height="150" margins="{top=5}">
+			<rectangle align="left" width="200" color="#000000" strokeSize="1" strokeColor="#FFFFFF" padding="{top=2,right=5,left=2,bottom=2}">
+				<label align="top" height="25" margins="{top=0}" text="NÍVEIS DE DESENVOLVIMENTO" horzTextAlign="center"/>
+				<Desenvolvimento text="Comida" field="comida"/>
+				<Desenvolvimento text="Cultura" field="cultura"/>
+				<Desenvolvimento text="Tecnologia" field="tecnologia"/>
+				<Desenvolvimento text="Guerra" field="guerra"/>
+			</rectangle>
+
+			<rectangle align="left" width="280" color="#000000" strokeSize="1" strokeColor="#FFFFFF" margins="{left=5}" padding="{top=2,right=2,left=2,bottom=2}">
+				<label align="top" height="25" margins="{top=0}" text="DESCRIÇÃO" horzTextAlign="center"/>
+				<textEditor align="client" field="ferimentos" margins="{right=5,left=5,bottom=5}"/>
+			</rectangle>
+
+			<rectangle align="left" width="150" color="#000000" strokeSize="1" strokeColor="#FFFFFF" padding="{top=2,right=5,left=2,bottom=2}">
+				<label align="top" height="25" margins="{top=0}" text="OUTROS" horzTextAlign="center"/>
+				<Desenvolvimento text="População" field="populacao"/>
+				<Desenvolvimento text="Água" field="agua"/>
+				<Desenvolvimento text="Estação" field="estacao"/>
+			</rectangle>
+
+			<rectangle align="left" width="350" color="#000000" strokeSize="1" strokeColor="#FFFFFF" padding="{top=2,right=5,left=2,bottom=2}">
+				<label align="top" height="25" margins="{top=0}" text="CHEFÕES" horzTextAlign="center"/>
+				<Chefe field="chefe0"/>
+				<Chefe field="chefe1"/>
+				<Chefe field="chefe2"/>
+				<Chefe field="chefe3"/>
+			</rectangle>
+		</layout>
+
+		<flowLayout align="top" autoHeight="true" maxColumns="3" horzAlign="leading" orientation="vertical" avoidScale="true" margins="{top=10}">
+			<ListaFlexivel nome="REGISTROS" rclName="campoDosRegistros" rclField="campoDosRegistros" templateForm="frmRegistrosItem"/>
+		</flowLayout>
+	</scrollBox>
+</form>

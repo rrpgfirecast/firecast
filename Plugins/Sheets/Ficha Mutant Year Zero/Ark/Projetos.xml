@@ -1,0 +1,71 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmProjetos" align="client">
+	<template name="habilidadeSmallCenter">
+		<flowPart minWidth="90" maxWidth="100" height="35">
+			<label align="top" class="tituloCampo" fontSize="10" text="$(text)" horzTextAlign="center" wordWrap="true" textTrimming="none" autoSize="true"/>
+			<edit align="client" class="" field="$(field)" horzTextAlign="center" fontSize="12"/>
+		</flowPart>
+	</template>
+	<template name="habilidadeLarge">
+		<flowPart minWidth="180" maxWidth="200" height="35">
+			<label align="top" class="tituloCampo" fontSize="10" text="$(text)" horzTextAlign="center" wordWrap="true" textTrimming="none" autoSize="true"/>
+			<edit align="client" class="" field="$(field)" fontSize="12"/>
+		</flowPart>
+	</template>
+	<template name="ListaFlexivel">
+		<flowPart minWidth="300" maxWidth="900" height="25" minScaledWidth="280" name="$(rclName)Part" adjustHeightToLine="false" margins="{left=5}">
+			<script>
+				<![CDATA[
+					rawset(self.$(rclName)Part, "_recalcHeight", 					
+						function ()
+							self.$(rclName)Part.height = self.$(rclName).height + 25;
+						end);
+				]]>
+			</script>
+
+			<layout align="top" height="25">
+				<button text="+" align="left" width="30">
+					<event name="onClick">
+						local node = self.$(rclName):append()
+						if node ~= nil and "$(templateForm)" == "frmPericiasItem" then
+							node.forca = sheet.forcaTotal
+							node.agilidade = sheet.agilidadeTotal
+							node.astucia = sheet.astuciaTotal
+							node.empatia = sheet.empatiaTotal
+						end
+					</event>
+				</button>
+				<label text="$(nome)" align="left" width="225" margins="{left=5}"/>
+			</layout>
+
+			<recordList name="$(rclName)" field="$(rclField)" templateForm="$(templateForm)" align="top" layout="vertical" autoHeight="true" hitTest="false" onResize="self.$(rclName)Part._recalcHeight();" minQt="0">
+				<event name="onCompare">
+			        return ((tonumber(nodeA.nivelProjeto) or 0) - (tonumber(nodeB.nivelProjeto) or 0));
+			    </event>
+			</recordList>
+		</flowPart>
+	</template>	
+
+	<popup name="popProjeto" width="300" height="240" backOpacity="0.4" autoScopeNode="false">
+		<flowLayout align="top" autoHeight="true" maxControlsPerLine="3" margins="{bottom=4}" horzAlign="center">
+			<habilidadeLarge text="Perícias" field="pericias"/>
+			<habilidadeSmallCenter text="Trabalho" field="trabalho"/>
+		</flowLayout>
+		<textEditor align="client" field="comentarios"/>
+	</popup>
+
+	<popup name="popRegistro" width="300" height="240" backOpacity="0.4" autoScopeNode="false">
+		<flowLayout align="top" autoHeight="true" maxControlsPerLine="2" margins="{bottom=4}" horzAlign="center">
+			<habilidadeLarge text="Terreno" field="terreno"/>
+			<habilidadeSmallCenter text="Podridão" field="podridao"/>
+			<habilidadeLarge text="Ameaça" field="ameaca"/>
+		</flowLayout>
+		<textEditor align="client" field="comentarios"/>
+	</popup>
+
+	<scrollBox align="client">
+		<flowLayout align="top" autoHeight="true" maxColumns="3" horzAlign="center" orientation="vertical" avoidScale="true">
+			<ListaFlexivel nome="PROJETOS" rclName="campoDosProjetos" rclField="campoDosProjetos" templateForm="frmProjetosItem"/>
+		</flowLayout>
+	</scrollBox>
+</form>

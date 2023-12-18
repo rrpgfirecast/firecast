@@ -1,0 +1,76 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmRclCounter" align="client">
+	<scrollBox align="client">
+		<layout align="top" height="25">
+			<!-- Guarda a soma os contadores da lista -->
+			<rectangle align="left" width="25" color="black" strokeColor="white" strokeSize="1">
+				<label left="0" top="0" width="25" height="25" field="countSum" horzTextAlign="center"/>
+			</rectangle>
+			<label align="left" width="125" text="&lt;- Soma contador"/>
+		
+			<!-- Adiciona objetos a lista com contador relativo ao ultimo objeto adicionado -->
+			<button align="left" width="125" height="25" text="+ Ultimo" hint="Adiciona objetos a lista com contador relativo ao ultimo objeto adicionado ">
+		    	<event name="onClick"><![CDATA[
+		    		-- Aumenta um contador enquanto adiciona um objeto
+					if sheet~=nil then
+						local objetos = NDB.getChildNodes(sheet.listaDe);
+
+						local node = self.rclName:append();
+						if node~=nil then
+							local contador = #objetos;
+							for i=1, #objetos, 1 do
+								local aux = tonumber(objetos[i].contador) or 0;
+								if aux > contador then
+									contador = aux;
+								end;
+							end;
+							node.contador = contador + 1;
+						end;
+
+						self.rclName:sort();
+					end;
+					]]>
+				</event>
+		    </button>
+		    <!-- Adiciona objetos a lista com contador em relação ao tamanho da lista -->
+			<button align="left" width="125" height="25" text="+ Tamanho" hint="Adiciona objetos a lista com contador em relação ao tamanho da lista">
+		    	<event name="onClick"><![CDATA[
+		    		-- Aumenta um contador enquanto adiciona um objeto
+					if sheet~=nil then
+						local objetos = NDB.getChildNodes(sheet.listaDe);
+						local num = #objetos + 1;
+
+						local node = self.rclName:append();
+						if node~=nil then
+							node.contador = num;
+						end;
+
+						self.rclName:sort();
+					end;
+					]]>
+				</event>
+		    </button>
+		</layout>
+
+	    <!-- Marcador de tamanho da Lista de Objetos -->
+	    <rectangle align="left" width="250" color="black" strokeColor="white" strokeSize="1">
+	    	<label align="top" height="20" text="Titulo da Lista" horzTextAlign="center"/>
+	    	<!-- Lista de Objetos -->
+			<!-- O templateForm é pego de outro arquivo. No caso: "RecordListForm.lfm" -->
+			<recordList align="client" margins="{left=5,right=5,bottom=5,top=5}" name="rclName" field="listaDe" templateForm="frmRecordListForm" layout="vertical">
+				<event name="onCompare"><![CDATA[
+					-- Esse codigo organiza a ordem dos objetos da lista. 
+			        if (tonumber(nodeA.contador) or 0) < (tonumber(nodeB.contador) or 0) then
+			            return -1;
+			        elseif (tonumber(nodeA.contador) or 0) > (tonumber(nodeB.contador) or 0) then
+			            return 1;
+			        else   
+			            return 0;
+			        end;               
+			        ]]>
+				</event>
+			</recordList>
+	    </rectangle>
+			
+	</scrollBox>
+</form>
