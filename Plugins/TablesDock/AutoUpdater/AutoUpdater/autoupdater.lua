@@ -1,8 +1,12 @@
 require("rrpg.lua");
 require("vhd.lua");
 require("utils.lua");
-require("internet.lua");
+require("async.lua");
+local Internet = require("internet.lua");
+local Locale = require("locale.lua");
+local NDB = require("ndb.lua");
 
+local PLUGINS_XML_URL = "https://raw.githubusercontent.com/rrpgfirecast/firecast/master/Plugins/plugins.xml";
 
 function getConfigWindow()
 	local cfgForm = GUI.newForm("autoupdaterPopup");
@@ -24,8 +28,7 @@ function dump(o)
    end
 end
         
-local function write(str, chat)
-    local mesa = Firecast.getMesaDe(self);
+local function write(str, chat)	
     if str then
         chat:escrever(str);
     else
@@ -76,7 +79,7 @@ end
 
 local function tryInstall(id, chat)
 	-- try to download
-	Internet.download("https://raw.githubusercontent.com/rrpgfirecast/firecast/master/Plugins/plugins.xml",
+	Internet.download(PLUGINS_XML_URL,
         function(stream, contentType)
             if VHD.fileExists("plugins.xml") then
                 VHD.deleteFile("plugins.xml");
@@ -119,7 +122,150 @@ local function tryInstall(id, chat)
             -- dividir "downloaded" por "total" lhe dará uma porcentagem do download.
         end,
         "alwaysDownload");
-end
+end;
+
+local function loadPluginsXMLAsNode()
+	local xmlStream = await(Internet.asyncDownload(PLUGINS_XML_URL, "checkForModification"));	
+	return NDB.newMemNodeDatabase(xmlStream);
+end;
+
+local function findDataTypeNodeInsideDataTypesArrayNode(dataTypesArrayNode, dataType, formType)
+	assert(dataTypesArrayNode ~= nil);
+	dataTypesArray = NDB.getChildNodes(dataTypesArrayNode);
+	
+	for i = 1, #dataTypesArray, 1 do
+		local dataTypeNode = dataTypesArray[i];
+		assert(dataTypeNode ~= nil);
+		
+		if (lowercase(dataTypeNode.id) == lowercase(dataType)) and 
+		   (lowercase(dataTypeNode.formType) == lowercase(formType)) then
+			return dataTypeNode;
+		end;
+	end			
+	
+	return nil;
+end;
+
+local function findDataTypeNodeInsidePluginNode(pluginNode, dataType, formType)
+	assert(pluginNode ~= nil);
+	local dataTypesArrayNodes = pluginNode.dataTypes;
+	
+	if dataTypesArrayNodes ~= nil then
+		return findDataTypeNodeInsideDataTypesArrayNode(dataTypesArrayNodes, dataType, formType);
+	else
+		return nil;
+	end;
+end;
+
+local function findDataTypeNodeInsideDocRoot(docRootNode, dataType, formType)
+	assert(docRootNode ~= nil);
+	local pluginNodeArray = NDB.getChildNodes(docRootNode);
+
+	for i = 1, #pluginNodeArray, 1 do
+		local pluginNode = pluginNodeArray[i];
+		assert(pluginNode ~= nil);
+		
+		local dataTypeNode = findDataTypeNodeInsidePluginNode(pluginNode, dataType, formType);
+		
+		if dataTypeNode ~= nil then
+			return dataTypeNode, pluginNode;
+		end;
+	end;
+	
+	return nil, nil;
+end;
+
+local function loadLocalizedTextsFromInfoNode(infoNode, destLocalizedTexts)
+	assert((infoNode ~= nil) and (destLocalizedTexts ~= nil));
+		
+	local localeId = infoNode.lang;
+	local attributes = NDB.getAttributes(infoNode);
+	
+	for k, v in pairs(attributes) do
+		if k ~= "lang" then
+			destLocalizedTexts:addText(localeId, k, v);
+		end;
+	end;
+end;
+
+local function scanAndLoadLocalizedTextsFromInfoNodesInside(parentNode, destLocalizedTexts)
+	assert((parentNode ~= nil) and (destLocalizedTexts ~= nil));	
+
+	local childNodes = NDB.getChildNodes(parentNode);
+	
+	for i = 1, #childNodes, 1 do
+		if NDB.getNodeName(childNodes[i]) == "info" then
+			loadLocalizedTextsFromInfoNode(childNodes[i], destLocalizedTexts);
+		end;
+	end;	
+end;
+
+local function dataTypeNodeToLocalizedTable(dataTypeNode)
+	assert(dataTypeNode ~= nil);
+	
+	local texts = Locale.newLocalizedTexts();
+	texts:addText("", "title", dataTypeNode.title);	
+	
+	scanAndLoadLocalizedTextsFromInfoNodesInside(dataTypeNode, texts);
+		
+	return {id = dataTypeNode.id,
+			formType = dataTypeNode.formType, 
+	        title = texts:tryLang("title"),
+			description = texts:tryLang("description")};
+end;
+
+local function pluginNodeToLocalizedTable(pluginNode)
+	assert(pluginNode ~= nil);
+	
+	local texts = Locale.newLocalizedTexts();
+	texts:addText("", "name", pluginNode.name);	
+	texts:addText("", "author", pluginNode.author);	
+	texts:addText("", "description", pluginNode.description);
+	texts:addText("", "version", pluginNode.version);
+	texts:addText("", "site", pluginNode.site);
+	texts:addText("", "contact", pluginNode.contact);
+	
+	scanAndLoadLocalizedTextsFromInfoNodesInside(pluginNode, texts);
+		
+	return {id = pluginNode.id,
+			url = pluginNode.url,
+			fileName = pluginNode.fileName,
+			repositoryPath = pluginNode.repositoryPath,
+			compilationDate = pluginNode.compilationDate,
+			compilationDigest = pluginNode.compilationDigest,			
+			name = texts:tryLang("name"),
+			author = texts:tryLang("author"),
+	        description = texts:tryLang("description"),
+			version = texts:tryLang("version"),
+			site = texts:tryLang("site"),
+			contact = texts:tryLang("contact")};		
+end;
+
+-- Functions exported to the Firecast Client Executable
+
+function AutoUpdater_asyncFindDataTypeNode(dataType, formType)
+	local docNode = loadPluginsXMLAsNode();
+	assert(docNode ~= nil);
+	
+	local dataTypeNode, pluginNode = findDataTypeNodeInsideDocRoot(docNode, dataType, formType);				
+	
+	if (dataTypeNode ~= nil) and (pluginNode ~= nil) then	
+		local dataTypeAsInfoTable = dataTypeNodeToLocalizedTable(dataTypeNode);
+		local pluginAsInfoTable = pluginNodeToLocalizedTable(pluginNode);	
+		
+		return true, dataTypeAsInfoTable, pluginAsInfoTable;
+	else	
+		return false;
+	end;
+end;
+
+function AutoUpdater_showAvailablePlugins()
+	local cfgForm = getConfigWindow();
+	assert(cfgForm ~= nil);
+
+	cfgForm.tabAvailable:activate();
+	cfgForm:show();	
+end;
 
 -- Implementação dos comandos
 Firecast.Messaging.listen("HandleChatCommand", 
@@ -127,12 +273,11 @@ Firecast.Messaging.listen("HandleChatCommand",
 		if message.comando == "autoupdater" then
 			local args = {};
 			local index = 0;
+						
 			for i in string.gmatch(message.parametro, "%S+") do
 				index = index + 1;
 				args[index] = i;
 			end
-
-			local obj = {parametro=message.parametro, arg=args};
 
 			if index == 0 then
 				local cfgForm = getConfigWindow();
@@ -143,7 +288,7 @@ Firecast.Messaging.listen("HandleChatCommand",
 			else
 				-- search for the plugin and download
 				tryInstall(message.parametro, message.chat);
-			end;
+			end;		
 
 			message.response = {handled = true};
 		end
