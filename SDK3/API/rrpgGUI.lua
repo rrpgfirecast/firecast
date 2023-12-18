@@ -150,7 +150,8 @@ local function controlFromHandle(handle)
 	ctrl.props["scaleX"] = {setter = "setScaleX", getter = "getScaleX", tipo="double"};			
 	ctrl.props["scaleY"] = {setter = "setScaleY", getter = "getScaleY", tipo="double"};				
 	ctrl.props["scale"] = {setter = "setScale", getter = "getScale", tipo="double"};				
-	ctrl.props["parent"] = {setter = "setParent", getter = "getParent", tipo="table"};		
+	ctrl.props["parent"] = {setter = "setParent", getter = "getParent", tipo="table"};	
+	
 	ctrl.props["cursor"] = {setter = "setCursor", getter = "getCursor", tipo="enum",
 							values={'default', 'arrow', 'handPoint', 'hourGlass',
    								    'IBeam', 'size', 'sizeNESW', 'sizeNS',
@@ -160,31 +161,13 @@ local function controlFromHandle(handle)
 								    'help', 'cross'}};				
 	ctrl.props["hint"] = {setter = "setHint", getter = "getHint", tipo="string"};
 	
-	--[[
-	ctrl.props["effect"] = {setter = "setEffect", getter = "getEffect", tipo="enum",
-							values = {"none", "shadow", "blur", "glow",
-									  "innerglow", "reflection", "wave",
-									  "pixelate", "sepia", "paper", "hueajuste",
-									  "bloom", "invert", "monochrome", "colortransparency"}}
-	ctrl.props["effectTriggers"] = {setter = "setEffectTriggers", getter = "getEffectTriggers", tipo="set",
-									values = {"IsChecked=True", "IsChecked=False",
-										      "IsFocused=True", "IsFocused=False",
-										      "IsMouseOver=True", "IsMouseOver=False",
-										      "IsPressed=True", "IsPressed=False",
-										      "IsSelected=True", "IsSelected=False"}}
-										      
-	ctrl.props["effectParam"] = {setter="setEffectParam", getter="getEffectParam", tipo="double"};
-	ctrl.props["effectParam2"] = {setter="setEffectParam2", getter="getEffectParam2", tipo="double"};
-	ctrl.props["effectParam3"] = {setter="setEffectParam3", getter="getEffectParam3", tipo="double"};
-	ctrl.props["effectParam4"] = {setter="setEffectParam4", getter="getEffectParam4", tipo="double"};	]]--
-
 	if ctrl.eves == nil then
 		ctrl.eves = {};
 	end;
 	
 	ctrl.eves["onResize"] = "";
-	ctrl.eves["onClick"] = "";
-	ctrl.eves["onDblClick"] = "";
+	ctrl.eves["onClick"] = "event";
+	ctrl.eves["onDblClick"] = "event";
 	ctrl.eves["onMouseDown"] = "event";
 	ctrl.eves["onMouseMove"] = "event";
 	ctrl.eves["onMouseUp"] = "event";
@@ -194,12 +177,11 @@ local function controlFromHandle(handle)
 	ctrl.eves["onExit"] = "";
 	ctrl.eves["onKeyDown"] = "event";
 	ctrl.eves["onKeyUp"] = "event";
-	ctrl.eves["onMenu"] = 'x, y';
-	ctrl.eves["onStartDrag"] = 'drag, x, y';	
-	ctrl.eves["onStartDrop"] = 'drop, x, y, drag';	
-	--ctrl.eves["onTap"] = "x, y";
+	ctrl.eves["onMenu"] = 'x, y, event';
+	ctrl.eves["onStartDrag"] = 'drag, x, y, event';	
+	ctrl.eves["onStartDrop"] = 'drop, x, y, drag, event';		
 	
-	ctrl:setParent(ctrl:getParent()); -- trabalhar as questões de referências
+	ctrl:setParent(ctrl:getParent()); 
 	
 	return ctrl;
 end
@@ -1977,6 +1959,17 @@ function gui.toast(message)
 		return _gui_toast(message);
 	else	
 		require('dialogs.lua').showMessage(message);
+	end;
+end;
+
+function gui.getShiftState()
+	if System.checkAPIVersion(87, 4) then
+		return _gui_getShiftState();
+	else	
+		return {shiftKey = false,
+				ctrlKey = false,
+				altKey = false,
+				cmdKey = false};
 	end;
 end;
 
