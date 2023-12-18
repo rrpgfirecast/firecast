@@ -2,7 +2,7 @@
 <form name="frmTemplateCreditos" align="client">
 	<scrollBox align="client">
 		<layout align="top" height="250">
-			<image align="left" width="250" height="250" style="autoFit" src="logo_mesa" margins="{right=50}"/>
+			<image align="left" width="400" height="300" style="proportional" src="images/logo.png" margins="{right=50}"/>
 			<image align="left" width="250" height="250" style="autoFit" src="images/RPGmeister.jpg"/>
 		</layout>
 
