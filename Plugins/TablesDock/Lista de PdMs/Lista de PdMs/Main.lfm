@@ -435,8 +435,14 @@
                                 for linha in textoCompleto:gmatch("[^\13\10]+") do
                                     if (tonumber(self.messageEditor.node.ShowNome) == 3) then
                                         if self.messageEditor.node.nome ~= nil then
-                                            chat:enviarMensagemNPC(self.messageEditor.node.nome, cor .. linha);
+                                            local impersonation = {}
+                                            impersonation.mode = "character"
+                                            impersonation.name = self.messageEditor.node.nome
+                                            chat:setImpersonation(impersonation)
+
+                                            chat:enviarMensagem(cor .. linha);
                                             self.messageEditor.node.TextoMensagem = ""
+                                            chat:setImpersonation({})
                                         else
                                             showMessage("O personagem não possui um nome. Adicione um antes de enviar por este modo.")
                                         end;
@@ -445,16 +451,30 @@
                                         self.messageEditor.node.TextoMensagem = ""
                                     elseif (tonumber(self.messageEditor.node.ShowNome) == 2) then
                                         if self.messageEditor.node.avatar ~= nil then
-                                            chat:enviarNarracao("[§I" .. self.messageEditor.node.avatar .. "][50][50] " .. cor .. linha)
+                                            local impersonation = {}
+                                            impersonation.mode = "character"
+                                            impersonation.avatar = self.messageEditor.node.avatar
+                                            chat:setImpersonation(impersonation)
+
+                                            chat:enviarMensagem(cor .. linha)
                                             self.messageEditor.node.TextoMensagem = ""
+                                            chat:setImpersonation({})
                                         else
                                             showMessage("O personagem não possui uma imagem. Adicione uma antes de enviar por este modo.")
                                         end;
                                     elseif (tonumber(self.messageEditor.node.ShowNome) == 4) then
                                         if self.messageEditor.node.avatar ~= nil then
                                             if self.messageEditor.node.nome ~= nil then
-                                                chat:enviarMensagemNPC(self.messageEditor.node.nome, "[§I" .. self.messageEditor.node.avatar .. "][50][50] " .. cor .. linha);
+                                                local impersonation = {}
+                                                impersonation.mode = "character"
+                                                impersonation.avatar = self.messageEditor.node.avatar
+                                                impersonation.name = self.messageEditor.node.nome
+                                                chat:setImpersonation(impersonation)
+
+                                                chat:enviarMensagem(cor .. linha);
+                                                
                                                 self.messageEditor.node.TextoMensagem = ""
+                                                chat:setImpersonation({})
                                             else
                                                 showMessage("O personagem não possui um nome. Adicione um antes de enviar por este modo.")
                                             end;
