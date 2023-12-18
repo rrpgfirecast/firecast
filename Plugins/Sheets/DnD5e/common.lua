@@ -256,7 +256,7 @@ function common.rolaMagia(node, modo, args, chat)
 
 	-- Teste de Resistência
 	if args.resistencia ~= 'nao' then
-		chat:enviarAcao(Locale.lang("Dnd5e.messages.saveType") .. common.atributos[args.resistencia] .. ', CD ' .. args.resistenciaCD .. ' )');
+		chat:enviarAcao(Locale.lang("Dnd5e.messages.saveType") .. common.atributos[args.resistencia] .. ', CD ' .. (args.resistenciaCD or '-') .. ' )');
 	end;
 
 	-- Acerto
