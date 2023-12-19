@@ -1,0 +1,658 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form formType="sheetTemplate" dataType="thirteen.VaMv5" title="V:aM V5 Roma" name="frmVaMv5" theme="dark">
+	<style>
+label {
+	fontSize: 14;
+	fontColor: black;
+	fontStyle: bold;
+	textTrimming: character;
+	fontFamily: Constantia;
+}
+edit {
+	fontSize: 14;
+	fontColor: black;
+	textTrimming: character;
+	fontFamily: Constantia;
+	transparent: true;
+}
+horzLine{
+	strokeColor: #424242;
+	margins: {top=7};
+	align: top;
+	
+}
+imageCheckBox{
+	checkedImage: /images/checkBoxAtv.png;
+	uncheckedImage: /images/checkBoxDes.png;
+	height: 25;
+	width: 14;
+	align: right;
+	margins: {left=3};
+	autoChange: false;
+}
+rectangle.LinhaDeFora{
+	align: client; 
+	color: transparent; 
+	strokeColor: #272727; 
+	strokeSize: 2; 
+	xradius: 25; 
+	yradius: 25; 
+	cornerType: bevel; 
+	margins: {top=20, right=20, bottom=20, left=20};
+}
+rectangle.LinhaDeDentro{
+	align: client; 
+	color: transparent; 
+	strokeColor: #272727; 
+	strokeSize: 1; 
+	xradius: 23; 
+	yradius: 23; 
+	cornerType: bevel; 
+	margins: {top=5, right=5, bottom=5, left=5};
+}
+rectangle.Fundo{
+	align: client; 
+	color: #272727; 
+	xradius: 20; 
+	yradius: 20; 
+	cornerType: bevel; 
+	margins: {top=10, right=10, bottom=10, left=10};
+}
+label.Divisor {
+	fontSize: 20;
+	fontColor: red;
+	fontStyle: bold;
+	textTrimming: character;
+	fontFamily: Constantia;
+	horzTextAlign: center;
+	autoSize: true;
+	align: client;
+	margins: {bottom=7};
+}
+label.AtrClasse{
+	fontSize: 10;
+	fontColor: red;
+	textTrimming: character;
+	fontFamily: Constantia;
+	horzTextAlign: center;
+	align: top;
+}
+flowLayout.Tabela{
+	align: top; 
+	orientation: horizontal; 
+	horzAlign: center; 
+	autoHeight: true; 
+	maxControlsPerLine: 3; 
+	margins: {left=20, top=20, bottom=30, right=20};
+}
+flowPart.flowCampo{
+	minWidth: 220; 
+	maxWidth: 220; 
+	height: 25; 
+	margins: {left=20, right=20, bottom=10};
+}
+edit.EditBold{
+	fontSize: 14;
+	fontColor: red;
+	fontStyle: bold;
+	textTrimming: character;
+	fontFamily: Constantia;
+}
+</style>
+	<script>
+		<![CDATA[
+	local function CalcSangue()
+	local nivel = 1;
+	
+	if(sheet.fldCheckPotencia_01 or false) then nivel = 2; end;
+	if(sheet.fldCheckPotencia_02 or false) then nivel = 3; end;
+	if(sheet.fldCheckPotencia_03 or false) then nivel = 4; end;
+	if(sheet.fldCheckPotencia_04 or false) then nivel = 5; end;
+	if(sheet.fldCheckPotencia_05 or false) then nivel = 6; end;
+	if(sheet.fldCheckPotencia_06 or false) then nivel = 7; end;
+	if(sheet.fldCheckPotencia_07 or false) then nivel = 8; end;
+	if(sheet.fldCheckPotencia_08 or false) then nivel = 9; end;
+	if(sheet.fldCheckPotencia_09 or false) then nivel = 10; end;
+	if(sheet.fldCheckPotencia_10 or false) then nivel = 11; end;
+	
+	local tbBP ={
+		{"+1 dado", "1 de Dano Superficial", "—", "—", "00", "—"},
+		{"+2 dados", "1 de Dano Superficial", "—", "Nível 1", "02", "—"},
+		{"+2 dados", "2 de Dano Superficial", "+1 dado", "Nível 1", "02", "Sangue Animal ou Conservado sacia Metade da Fome"},
+		{"+3 dados", "2 de Dano Superficial", "+1 dado", "Abaixo do Nível 2", "03", "Sangue Animal ou Conservado não sacia Fome"},
+		{"+3 dados", "3 de Dano Superficial", "+2 dados", "Abaixo do Nível 2", "03", "Sangue Animal ou Conservado não sacia Fome\n\nHumanos saciam -1 de Fome"},
+		{"+4 dados", "3 de Dano Superficial", "+2 dados", "Abaixo do Nível 3", "04", "Sangue Animal ou Conservado não sacia Fome\n\nHumanos saciam -1 de Fome\n\nNecessário matar um mortal para reduzir Fome abaixo de 2"},
+		{"+4 dados", "3 de Dano Superficial", "+3 dados", "Abaixo do Nível 3", "04", "Sangue Animal ou Conservado não sacia Fome\n\nHumanos saciam -2 de Fome\n\nNecessário matar um mortal para reduzir Fome abaixo de 2"},
+		{"+5 dados", "3 de Dano Superficial", "+3 dados", "Abaixo do Nível 4", "05", "Sangue Animal ou Conservado não sacia Fome\n\nHumanos saciam -2 de Fome\n\nNecessário matar um mortal para reduzir Fome abaixo de 2"},
+		{"+5 dados", "4 de Dano Superficial", "+4 dados", "Abaixo do Nível 4", "05", "Sangue Animal ou Conservado não sacia Fome\n\nHumanos saciam -2 de Fome\n\nNecessário matar um mortal para reduzir Fome abaixo de 3"},
+		{"+6 dados", "4 de Dano Superficial", "+4 dados", "Abaixo do Nível 5", "06", "Sangue Animal ou Conservado não sacia Fome\n\nHumanos saciam -2 de Fome\n\nNecessário matar um mortal para reduzir Fome abaixo de 3"},
+		{"+6 dados", "5 de Dano Superficial", "+5 dados", "Abaixo do Nível 5", "06", "Sangue Animal ou Conservado não sacia Fome\n\nHumanos saciam -3 de Fome\n\nNecessário matar um mortal para reduzir Fome abaixo de 3"},
+	}; 
+	
+	sheet.fldsangSurto	= tbBP[nivel][1]; 
+	sheet.fldsangRegen = tbBP[nivel][2];
+	sheet.fldsangBonus = tbBP[nivel][3];
+	sheet.fldsangReroll = tbBP[nivel][4];
+	sheet.fldsangBane = tbBP[nivel][5];
+	sheet.fldsangFeed = tbBP[nivel][6];
+	
+	end;
+	
+	local function TrocarAba(a)
+		if(a == 'D') then
+			if(self.layFrente:isVisible()) then
+				self.layFrente.visible = false;
+				self.layVerso.visible = true;
+				self.layFrente:needRepaint();
+				self.layVerso:needRepaint();
+				
+			elseif(self.layVerso:isVisible()) then
+				self.layVerso.visible = false;
+				self.layNote.visible = true;
+				self.layVerso:needRepaint();
+				self.layNote:needRepaint();
+				
+			elseif(self.layNote:isVisible()) then
+				self.layNote.visible = false;
+				self.layFrente.visible = true;
+				self.layNote:needRepaint();
+				self.layFrente:needRepaint();
+			end;
+		end;
+		
+		if(a == 'E') then
+			if(self.layFrente:isVisible()) then
+				self.layFrente.visible = false;
+				self.layNote.visible = true;
+				self.layFrente:needRepaint();
+				self.layNote:needRepaint();
+				
+			elseif(self.layVerso:isVisible()) then
+				self.layVerso.visible = false;
+				self.layFrente.visible = true;
+				self.layVerso:needRepaint();
+				self.layFrente:needRepaint();
+				
+			elseif(self.layNote:isVisible()) then
+				self.layNote.visible = false;
+				self.layVerso.visible = true;
+				self.layNote:needRepaint();
+				self.layVerso:needRepaint();
+			end;
+		
+		end;
+	end;
+]]>
+	</script>
+	<import file="templates.lfm" />
+	<!-- LAYOUT DO FUNDO -->
+	<image align="client" style="autofit" url="/images/background.png" />
+	<layout align="client" frameStyle="/frames/frameFundo.xml">
+		<scrollBox align="client">
+			<flowLayout autoHeight="true" align="top" horzAlign="center">
+				<flowPart align="top" height="1620" minWidth="30" maxWidth="50">
+					<image align="client" style="proportional" url="/images/left-arrow.png" hitTest="true" cursor="handPoint" hint="Trocar de Aba" onClick="if(sheet==nil) then return end; TrocarAba('E');" />
+				</flowPart>
+				<flowPart align="top" height="1620" minWidth="400" maxWidth="1000">
+					<rectangle class="LinhaDeFora">
+						<rectangle class="LinhaDeDentro">
+							<image align="top" style="proportional" height="100" url="/images/logotype.png" margins="{top=40, left=40, right=40}" />
+							<!-- FRENTE DA FICHA -->
+							<layout name="layFrente" align="client">
+								<!-- CABEÇALHO -->
+								<flowLayout class="Tabela" margins="{left=20, top=25, bottom=30, right=20}">
+									<Campo rotulo="Nome" semAcento="Nome" largura="45" />
+									<Campo rotulo="Conceito" semAcento="Conceito" largura="65" />
+									<Campo rotulo="Predador" semAcento="Predador" largura="68" />
+									<Campo rotulo="Crônica" semAcento="Cronica" largura="57" />
+									<Campo rotulo="Ambição" semAcento="Ambicao" largura="65" />
+									<Campo rotulo="Clã" semAcento="Cla" largura="26" />
+									<Campo rotulo="Pater Sanguinis" semAcento="Senhor" largura="53" fontSize="10"/>
+									<Campo rotulo="Desejo" semAcento="Desejo" largura="50" />
+									<Campo rotulo="Geração" semAcento="Geracao" largura="60" />
+									<Campo rotulo="Idade Real" semAcento="IdReal" largura="75" />
+									<Campo rotulo="Idade Aparente" semAcento="IdAparente" largura="105" />
+									<Campo rotulo="Ressonância" semAcento="Ressonancia" largura="87" />
+								</flowLayout>
+								<!-- ATRIBUTOS -->
+								<Header conteudo="A T R I B U T O S" linha="330" largura="160" />
+								<flowLayout class="Tabela" margins="{left=20, top=20, bottom=0, right=20}">
+									<Coluna classAtr="F Í S I C O" atr01="Força" atr02="Destreza" atr03="Vigor" n01="01" n02="02" n03="03" />
+									<Coluna classAtr="S O C I A L" atr01="Carisma" atr02="Manipulação" atr03="Autocontrole" n01="04" n02="05" n03="06" />
+									<Coluna classAtr="M E N T A L" atr01="Inteligência" atr02="Raciocínio" atr03="Determinação" n01="07" n02="08" n03="09" />
+								</flowLayout>
+								<!-- ATRIBUTOS DERIVADOS -->
+								<flowLayout class="Tabela" margins="{left=20, top=10, bottom=30, right=20}">
+									<ColunaQuinze classAtr="V I T A L I D A D E" id="Vit" />
+									<ColunaDez classAtr="H U M A N I D A D E" id="Hum" />
+									<ColunaDez classAtr="F O R Ç A   D E   V O N T A D E" id="FdV" />
+								</flowLayout>
+								<!-- HABILIDADES -->
+								<Header conteudo="H A B I L I D A D E S" linha="310" largura="200" />
+								<flowLayout class="Tabela">
+									<ColunaHab	n01="10" atr01="Armas Brancas"
+									n02="11" atr02="Arquearia"
+									n03="12" atr03="Atletismo"
+									n04="13" atr04="Briga"
+									n05="14" atr05="Condução"
+									n06="15" atr06="Furtividade"
+									n07="16" atr07="Ladroagem"
+									n08="17" atr08="Ofícios"
+									n09="18" atr09="Sobrevivência"/>
+									<ColunaHab	n01="19" atr01="Animais"
+									n02="20" atr02="Etiqueta"
+									n03="21" atr03="Intimidação"
+									n04="22" atr04="Liderança"
+									n05="23" atr05="Manha"
+									n06="24" atr06="Performance"
+									n07="25" atr07="Persuasão"
+									n08="26" atr08="Sagacidade"
+									n09="27" atr09="Subterfúgio"/>
+									<ColunaHab	n01="28" atr01="Instrução"
+									n02="29" atr02="Religião"
+									n03="30" atr03="Comércio"
+									n04="31" atr04="Investigação"
+									n05="32" atr05="Medicina"
+									n06="33" atr06="Ocultismo"
+									n07="34" atr07="Percepção"
+									n08="35" atr08="Política"
+									n09="36" atr09="Est. Militar"/>
+								</flowLayout>
+								<!-- DISCIPLINAS -->
+								<Header conteudo="D I S C I P L I N A S" linha="315" largura="190" />
+								<layout align="top" height="30">
+									<layout align="right" width="25" margins="{right=80}" >
+										<button height="25" text="🞦" width="25" onClick="self.rclDisciplinas:append();" hint="Nova Disciplina" fontColor="beige"/>
+									</layout>
+								</layout>
+								<flowLayout class="Tabela" align="top" autoHeight="true" margins="{left=30, top=0, bottom=30, right=20}">
+									<recordList width="800" anchors="top" margins="{left=20}" minQt="3" layout="horizontalTiles" name="rclDisciplinas" field="fldDisciplinas" templateForm="disciplinas" height="460"/>
+								</flowLayout>
+							</layout>
+							<!-- VERSO DA FICHA -->
+							<layout name="layVerso" align="client" visible="false">
+								<flowLayout class="Tabela" margins="{left=20, top=25, bottom=5, right=20}">
+									<flowPart class="flowCampo" height="440" minWidth="260" maxWidth="260" margins="{bottom=0, left=5, right=5}">
+										<flowLayout orientation="vertical" width="260" autoHeight="true" maxColumns="1">
+											<flowPart class="flowCampo" minWidth="260" maxWidth="260" margins="{bottom=5}">
+												<label class="AtrClasse" text="A P A R Ê N C I A" />
+											</flowPart>
+											<layout align="none" height="400" width="260">
+												<image align="none" height="400" width="260" style="autofit" editable="true" field="fldFotoPJ" hint="Alterar Aparência" />
+												<dataLink field="fldFotoPJ" defaultValue="/images/vampire.jpg" />
+												<image height="400" width="260" url="/images/frame.png" style="proportional"/>
+											</layout>
+										</flowLayout>
+									</flowPart>
+									<flowPart class="flowCampo" height="440" minWidth="530" maxWidth="530" margins="{bottom=0, left=5, right=5}">
+										<flowLayout orientation="vertical" width="530" autoHeight="true" maxColumns="1">
+											<flowPart class="flowCampo" minWidth="530" maxWidth="530" margins="{bottom=5}">
+												<label class="AtrClasse" text="P R E L Ú D I O" />
+											</flowPart>
+											<rectangle height="400" width="530" color="#202020" cornerType="bevel" xradius="10" yradius="10" padding="{top=10, bottom=10, left=10, right=10}">
+												<textEditor align="client" transparent="true" field="fldBG" name="nomeBG" fontFamily="Constantia" fontSize="13"  fontColor="beige"/>
+												<dataLink field="fldBG" defaultValue="Escreva aqui."/>
+											</rectangle>
+										</flowLayout>
+									</flowPart>
+								</flowLayout>
+								<flowLayout class="Tabela" margins="{left=20, top=0, bottom=30, right=20}">
+									<ColunaText classAtr="P R Í N C I P I O S   D A   C R Ô N I C A" id="Cronica" />
+									<ColunaText classAtr="P I L A R E S   🙵   C O N V I C Ç Õ E S" id="Pilar" />
+									<ColunaText classAtr="P E R D I Ç Ã O   D O   C L Ã" id="Perdicao" />
+								</flowLayout>
+								<flowLayout class="Tabela" maxControlsPerLine="2">
+									<flowPart height="600" margins="{left=5, right=5, bottom=10}" minWidth="395" maxWidth="390">
+										<rectangle height="600" color="transparent" align="client">
+											<Header conteudo="V A N T A G E N S" linha="115" largura="164" />
+											<recordList align="top" minQt="3" layout="vertical" name="rclVantagens" field="fldVantagens" templateForm="vantagens" autoHeight="true" margins="{top=20}" onItemRemoved="self.layVerso:needRepaint();"/>
+											<button align="top" height="25" text="🞦" onClick="self.rclVantagens:append();" hint="Nova Vantagem" fontColor="beige"/>
+										</rectangle>
+									</flowPart>
+									<flowPart height="600" margins="{left=5, right=5, bottom=10}" minWidth="395" maxWidth="390">
+										<rectangle height="600" color="transparent" align="client">
+											<Header conteudo="P O D E R E S" linha="132" largura="128" />
+											<flowLayout align="top" autoHeight="true" orientation="vertical" margins="{top=20}">
+												<template name="tbSangue">
+													<flowPart align="top" height="50" width="197.5" margins="{bottom=5}">
+														<label class="AtrClasse" horzTextAlign="leading" align="top" text="$(legenda)" fontColor="DarkRed" margins="{bottom=5}"/>
+														<label align="top" field="fldsang$(nome)" name="sang$(nome)" />
+														<dataLink field="fldsang$(nome)" defaultValue="—" />
+													</flowPart>
+												</template>
+												<tbSangue legenda="SURTO DE SANGUE" nome="Surto" />
+												<tbSangue legenda="REGENERAÇÃO" nome="Regen" />
+												<tbSangue legenda="BÔNUS DE PODER" nome="Bonus" />
+												<tbSangue legenda="RERROLAGEM DE SANGUE" nome="Reroll" />
+												<tbSangue legenda="GRAVIDADE DA PERDIÇÃO" nome="Bane" />
+												<flowPart align="top" height="150" width="197.5" margins="{bottom=5}">
+													<label class="AtrClasse" horzTextAlign="leading" align="top" text="PENALIDADE DE ALIMENTAÇÃO" fontColor="DarkRed" margins="{bottom=5}" />
+													<label align="top" field="fldsangFeed" name="sangFeed" height="130" autoSize="true" />
+													<dataLink field="fldsangFeed" defaultValue="—" />
+												</flowPart>
+											</flowLayout>
+											<layout align="top" height="50" margins="{top=20}">
+												<layout align="top" height="25">
+													<label class="AtrClasse" text="P O T Ê N C I A   S A N G U Í N E A" />
+												</layout>
+												<layout align="top" height="25">
+													<layout align="left" margins="{left=113.5}" height="25" width="168">
+														<imageCheckBox field="fldCheckPotencia_01" name="nomeCheckPotencia_01" onClick="
+												sheet.fldCheckPotencia_01 = not sheet.fldCheckPotencia_01;
+												
+												if(sheet.fldCheckPotencia_02) then 
+													sheet.fldCheckPotencia_01 = true; 
+													sheet.fldCheckPotencia_02 = false; 
+													sheet.fldCheckPotencia_03 = false; 
+													sheet.fldCheckPotencia_04 = false; 
+													sheet.fldCheckPotencia_05 = false; 
+													sheet.fldCheckPotencia_06 = false; 
+													sheet.fldCheckPotencia_07 = false; 
+													sheet.fldCheckPotencia_08 = false; 
+													sheet.fldCheckPotencia_09 = false; 
+													sheet.fldCheckPotencia_10 = false; 
+												end;
+											" />
+														<imageCheckBox field="fldCheckPotencia_02" name="nomeCheckPotencia_02" onClick="
+												sheet.fldCheckPotencia_02 = not sheet.fldCheckPotencia_02;
+												
+												if(sheet.fldCheckPotencia_02) then 
+													sheet.fldCheckPotencia_01 = true; 
+												else 
+													sheet.fldCheckPotencia_01 = false;
+												end;
+												
+												if(sheet.fldCheckPotencia_03) then 
+													sheet.fldCheckPotencia_01 = true; 
+													sheet.fldCheckPotencia_02 = true; 
+													sheet.fldCheckPotencia_03 = false; 
+													sheet.fldCheckPotencia_04 = false; 
+													sheet.fldCheckPotencia_05 = false;
+													sheet.fldCheckPotencia_06 = false; 
+													sheet.fldCheckPotencia_07 = false; 
+													sheet.fldCheckPotencia_08 = false; 
+													sheet.fldCheckPotencia_09 = false; 
+													sheet.fldCheckPotencia_10 = false;  
+												end;
+											" />
+														<imageCheckBox field="fldCheckPotencia_03" name="nomeCheckPotencia_03" onClick="
+												sheet.fldCheckPotencia_03 = not sheet.fldCheckPotencia_03;
+												
+												if(sheet.fldCheckPotencia_03) then 
+													sheet.fldCheckPotencia_01 = true; 
+													sheet.fldCheckPotencia_02 = true; 
+												else 
+													sheet.fldCheckPotencia_01 = false; 
+													sheet.fldCheckPotencia_02 = false; 
+												end;
+												
+												if(sheet.fldCheckPotencia_04) then 
+													sheet.fldCheckPotencia_01 = true; 
+													sheet.fldCheckPotencia_02 = true; 
+													sheet.fldCheckPotencia_03 = true; 
+													sheet.fldCheckPotencia_04 = false; 
+													sheet.fldCheckPotencia_05 = false;
+													sheet.fldCheckPotencia_06 = false; 
+													sheet.fldCheckPotencia_07 = false; 
+													sheet.fldCheckPotencia_08 = false; 
+													sheet.fldCheckPotencia_09 = false; 
+													sheet.fldCheckPotencia_10 = false;  
+												end;
+											" />
+														<imageCheckBox field="fldCheckPotencia_04" name="nomeCheckPotencia_04" onClick="
+												sheet.fldCheckPotencia_04 = not sheet.fldCheckPotencia_04;
+												
+												if(sheet.fldCheckPotencia_04) then 
+													sheet.fldCheckPotencia_01 = true; 
+													sheet.fldCheckPotencia_02 = true; 
+													sheet.fldCheckPotencia_03 = true; 
+												else 
+													sheet.fldCheckPotencia_01 = false; 
+													sheet.fldCheckPotencia_02 = false; 
+													sheet.fldCheckPotencia_03 = false; 
+												end;
+												
+												if(sheet.fldCheckPotencia_05) then 
+													sheet.fldCheckPotencia_01 = true; 
+													sheet.fldCheckPotencia_02 = true; 
+													sheet.fldCheckPotencia_03 = true; 
+													sheet.fldCheckPotencia_04 = true; 
+													sheet.fldCheckPotencia_05 = false; 
+													sheet.fldCheckPotencia_06 = false; 
+													sheet.fldCheckPotencia_07 = false; 
+													sheet.fldCheckPotencia_08 = false; 
+													sheet.fldCheckPotencia_09 = false; 
+													sheet.fldCheckPotencia_10 = false; 
+												end;
+											" />
+														<imageCheckBox field="fldCheckPotencia_05" name="nomeCheckPotencia_05" onClick="
+												sheet.fldCheckPotencia_05 = not sheet.fldCheckPotencia_05;
+												
+												if(sheet.fldCheckPotencia_05) then 
+													sheet.fldCheckPotencia_01 = true; 
+													sheet.fldCheckPotencia_02 = true; 
+													sheet.fldCheckPotencia_03 = true; 
+													sheet.fldCheckPotencia_04 = true; 
+												else 
+													sheet.fldCheckPotencia_01 = false; 
+													sheet.fldCheckPotencia_02 = false; 
+													sheet.fldCheckPotencia_03 = false; 
+													sheet.fldCheckPotencia_04 = false; 
+												end;
+												
+												if(sheet.fldCheckPotencia_06) then 
+													sheet.fldCheckPotencia_01 = true; 
+													sheet.fldCheckPotencia_02 = true; 
+													sheet.fldCheckPotencia_03 = true; 
+													sheet.fldCheckPotencia_04 = true; 
+													sheet.fldCheckPotencia_05 = true; 
+													sheet.fldCheckPotencia_06 = false; 
+													sheet.fldCheckPotencia_07 = false; 
+													sheet.fldCheckPotencia_08 = false; 
+													sheet.fldCheckPotencia_09 = false; 
+													sheet.fldCheckPotencia_10 = false; 
+												end;
+											" />
+														<imageCheckBox field="fldCheckPotencia_06" name="nomeCheckPotencia_06" onClick="
+												sheet.fldCheckPotencia_06 = not sheet.fldCheckPotencia_06;
+												
+												if(sheet.fldCheckPotencia_06) then 
+													sheet.fldCheckPotencia_01 = true; 
+													sheet.fldCheckPotencia_02 = true; 
+													sheet.fldCheckPotencia_03 = true; 
+													sheet.fldCheckPotencia_04 = true; 
+													sheet.fldCheckPotencia_05 = true; 
+												else 
+													sheet.fldCheckPotencia_01 = false; 
+													sheet.fldCheckPotencia_02 = false; 
+													sheet.fldCheckPotencia_03 = false; 
+													sheet.fldCheckPotencia_04 = false; 
+													sheet.fldCheckPotencia_05 = false; 
+												end;
+												
+												if(sheet.fldCheckPotencia_07) then 
+													sheet.fldCheckPotencia_01 = true; 
+													sheet.fldCheckPotencia_02 = true; 
+													sheet.fldCheckPotencia_03 = true; 
+													sheet.fldCheckPotencia_04 = true; 
+													sheet.fldCheckPotencia_05 = true; 
+													sheet.fldCheckPotencia_06 = true; 
+													sheet.fldCheckPotencia_07 = false; 
+													sheet.fldCheckPotencia_08 = false; 
+													sheet.fldCheckPotencia_09 = false; 
+													sheet.fldCheckPotencia_10 = false; 
+												end;
+											" />
+														<imageCheckBox field="fldCheckPotencia_07" name="nomeCheckPotencia_07" onClick="
+												sheet.fldCheckPotencia_07 = not sheet.fldCheckPotencia_07;
+												
+												if(sheet.fldCheckPotencia_07) then 
+													sheet.fldCheckPotencia_01 = true; 
+													sheet.fldCheckPotencia_02 = true; 
+													sheet.fldCheckPotencia_03 = true; 
+													sheet.fldCheckPotencia_04 = true; 
+													sheet.fldCheckPotencia_05 = true; 
+													sheet.fldCheckPotencia_06 = true; 
+												else 
+													sheet.fldCheckPotencia_01 = false; 
+													sheet.fldCheckPotencia_02 = false; 
+													sheet.fldCheckPotencia_03 = false; 
+													sheet.fldCheckPotencia_04 = false; 
+													sheet.fldCheckPotencia_05 = false; 
+													sheet.fldCheckPotencia_06 = false; 
+												end;
+												
+												if(sheet.fldCheckPotencia_08) then 
+													sheet.fldCheckPotencia_01 = true; 
+													sheet.fldCheckPotencia_02 = true; 
+													sheet.fldCheckPotencia_03 = true; 
+													sheet.fldCheckPotencia_04 = true; 
+													sheet.fldCheckPotencia_05 = true; 
+													sheet.fldCheckPotencia_06 = true; 
+													sheet.fldCheckPotencia_07 = true; 
+													sheet.fldCheckPotencia_08 = false; 
+													sheet.fldCheckPotencia_09 = false; 
+													sheet.fldCheckPotencia_10 = false; 
+												end;
+											" />
+														<imageCheckBox field="fldCheckPotencia_08" name="nomeCheckPotencia_08" onClick="
+												sheet.fldCheckPotencia_08 = not sheet.fldCheckPotencia_08;
+												
+												if(sheet.fldCheckPotencia_08) then 
+													sheet.fldCheckPotencia_01 = true; 
+													sheet.fldCheckPotencia_02 = true; 
+													sheet.fldCheckPotencia_03 = true; 
+													sheet.fldCheckPotencia_04 = true; 
+													sheet.fldCheckPotencia_05 = true; 
+													sheet.fldCheckPotencia_06 = true; 
+													sheet.fldCheckPotencia_07 = true; 
+												else 
+													sheet.fldCheckPotencia_01 = false; 
+													sheet.fldCheckPotencia_02 = false; 
+													sheet.fldCheckPotencia_03 = false; 
+													sheet.fldCheckPotencia_04 = false; 
+													sheet.fldCheckPotencia_05 = false; 
+													sheet.fldCheckPotencia_06 = false; 
+													sheet.fldCheckPotencia_07 = false; 
+												end;
+												
+												if(sheet.fldCheckPotencia_09) then 
+													sheet.fldCheckPotencia_01 = true; 
+													sheet.fldCheckPotencia_02 = true; 
+													sheet.fldCheckPotencia_03 = true; 
+													sheet.fldCheckPotencia_04 = true; 
+													sheet.fldCheckPotencia_05 = true; 
+													sheet.fldCheckPotencia_06 = true; 
+													sheet.fldCheckPotencia_07 = true; 
+													sheet.fldCheckPotencia_08 = true; 
+													sheet.fldCheckPotencia_09 = false; 
+													sheet.fldCheckPotencia_10 = false; 
+												end;
+											" />
+														<imageCheckBox field="fldCheckPotencia_09" name="nomeCheckPotencia_09" onClick="
+												sheet.fldCheckPotencia_09 = not sheet.fldCheckPotencia_09;
+												
+												if(sheet.fldCheckPotencia_09) then 
+													sheet.fldCheckPotencia_01 = true; 
+													sheet.fldCheckPotencia_02 = true; 
+													sheet.fldCheckPotencia_03 = true; 
+													sheet.fldCheckPotencia_04 = true; 
+													sheet.fldCheckPotencia_05 = true; 
+													sheet.fldCheckPotencia_06 = true; 
+													sheet.fldCheckPotencia_07 = true; 
+													sheet.fldCheckPotencia_08 = true; 
+												else 
+													sheet.fldCheckPotencia_01 = false; 
+													sheet.fldCheckPotencia_02 = false; 
+													sheet.fldCheckPotencia_03 = false; 
+													sheet.fldCheckPotencia_04 = false; 
+													sheet.fldCheckPotencia_05 = false; 
+													sheet.fldCheckPotencia_06 = false; 
+													sheet.fldCheckPotencia_07 = false; 
+													sheet.fldCheckPotencia_08 = false; 
+												end;
+												
+												if(sheet.fldCheckPotencia_10) then 
+													sheet.fldCheckPotencia_01 = true; 
+													sheet.fldCheckPotencia_02 = true; 
+													sheet.fldCheckPotencia_03 = true; 
+													sheet.fldCheckPotencia_04 = true; 
+													sheet.fldCheckPotencia_05 = true; 
+													sheet.fldCheckPotencia_06 = true; 
+													sheet.fldCheckPotencia_07 = true; 
+													sheet.fldCheckPotencia_08 = true; 
+													sheet.fldCheckPotencia_09 = true; 
+													sheet.fldCheckPotencia_10 = false; 
+												end;
+											" />
+														<imageCheckBox field="fldCheckPotencia_10" name="nomeCheckPotencia_10" onClick="
+												sheet.fldCheckPotencia_10 = not sheet.fldCheckPotencia_10;
+												
+												if(sheet.fldCheckPotencia_10) then 
+													sheet.fldCheckPotencia_01 = true; 
+													sheet.fldCheckPotencia_02 = true; 
+													sheet.fldCheckPotencia_03 = true; 
+													sheet.fldCheckPotencia_04 = true; 
+													sheet.fldCheckPotencia_05 = true; 
+													sheet.fldCheckPotencia_06 = true; 
+													sheet.fldCheckPotencia_07 = true; 
+													sheet.fldCheckPotencia_08 = true; 
+													sheet.fldCheckPotencia_09 = true; 
+												else 
+													sheet.fldCheckPotencia_01 = false; 
+													sheet.fldCheckPotencia_02 = false; 
+													sheet.fldCheckPotencia_03 = false; 
+													sheet.fldCheckPotencia_04 = false; 
+													sheet.fldCheckPotencia_05 = false; 
+													sheet.fldCheckPotencia_06 = false; 
+													sheet.fldCheckPotencia_07 = false; 
+													sheet.fldCheckPotencia_08 = false; 
+													sheet.fldCheckPotencia_09 = false; 
+												end;
+											" />
+														<dataLink fields="{'fldCheckPotencia_01', 'fldCheckPotencia_02', 
+															   'fldCheckPotencia_03', 'fldCheckPotencia_04',
+															   'fldCheckPotencia_05', 'fldCheckPotencia_06',
+															   'fldCheckPotencia_07', 'fldCheckPotencia_08',
+															   'fldCheckPotencia_09', 'fldCheckPotencia_10',}">
+															<event name="onChange">
+													if(sheet==nil) then return; end;
+													CalcSangue();
+												</event>
+														</dataLink>
+													</layout>
+												</layout>
+											</layout>
+										</rectangle>
+									</flowPart>
+								</flowLayout>
+							</layout>
+							<!-- ANOTAÇÕES DA FICHA -->
+							<layout name="layNote" align="client" visible="false">
+								<flowLayout class="Tabela" height="30" margins="{top=20}">
+									<flowPart height="30" minWidth="400" maxWidth="1000" margins="">
+										<flowLayout class="Tabela" autoHeight="false" height="25" margins="">
+											<flowPart height="30" minWidth="0" maxWidth="325" width="325">
+												<horzLine />
+											</flowPart>
+											<flowPart height="30" width="170">
+												<label class="Divisor" text="A N O T A Ç Õ E S" />
+											</flowPart>
+											<flowPart height="30" minWidth="0" maxWidth="325" width="325">
+												<horzLine />
+											</flowPart>
+										</flowLayout>
+									</flowPart>
+								</flowLayout>
+								<richEdit field="Notes" align="client" margins="{top=10, bottom=40, right=40, left=40}" backgroundColor="#272727" defaultFontColor="beige" />
+							</layout>
+						</rectangle>
+					</rectangle>
+				</flowPart>
+				<flowPart align="top" height="1620" minWidth="30" maxWidth="50">
+					<image align="client" style="proportional" url="/images/right-arrow.png" hitTest="true" cursor="handPoint" hint="Trocar de Aba" onClick="if(sheet==nil) then return end; TrocarAba('D');" />
+				</flowPart>
+			</flowLayout>
+		</scrollBox>
+	</layout>
+</form>

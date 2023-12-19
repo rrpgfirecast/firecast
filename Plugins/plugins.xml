@@ -575,6 +575,14 @@
             </dataType>
         </dataTypes>
     </element>
+    <element id="VaMv5.Rome" name="Vampire the Masquerade V5 Rome" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Vampire%20The%20Masquerade%205th%20Rome/output/Vampire%20The%20Masquerade%205th%20Rome.rpk?raw=true" fileName="Vampire The Masquerade 5th Rome.rpk" repositoryPath="Sheets/Vampire The Masquerade 5th Rome/" author="thirteen&amp;Ambesek" description="Ficha de Personagem do sistema Vampiro: a Máscara, Quinta edição. Roma antiga." version="1.1" compilationDate="19122023061420" compilationDigest="6173782ae3e18fffe3de66993313a59143cd6335">
+        <info lang="pt-BR" name="Vampire the Masquerade V5 Rome" description="Ficha de Personagem do sistema Vampiro: a Máscara, Quinta edição. Roma antiga." author="thirteen&amp;Ambesek" site="https://www.twitter.com/i_am_thirteen"/>
+        <dataTypes>
+            <dataType id="thirteen.VaMv5" title="V:aM V5 Roma" formType="sheetTemplate">
+                <info title="V:aM V5 Roma"/>
+            </dataType>
+        </dataTypes>
+    </element>
     <element id="Ambesek.T20" name="Ficha T20" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20T20/output/Ficha%20T20.rpk?raw=true" fileName="Ficha T20.rpk" repositoryPath="Sheets/Ficha T20/" author="Ambesek" description="Ficha para o cenario e sistema Tormenta 20." version="1.0.1" compilationDate="03032023121119" compilationDigest="bbeca6a2faa31e9ebfcb365f33acc2ce546ab9b0">
         <info lang="pt-BR" name="Ficha T20" description="Ficha para o cenario e sistema Tormenta 20." author="Ambesek"/>
         <dataTypes>
