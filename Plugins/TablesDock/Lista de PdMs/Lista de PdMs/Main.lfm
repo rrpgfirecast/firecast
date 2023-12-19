@@ -223,6 +223,86 @@
 
             return style
         end
+
+        local function SendMessage()
+
+            local node = self.messageEditor.node
+            local mesa = Firecast.getMesaDe(node);
+            local chat = mesa.activeChat;
+
+            local params = {}
+            params.talemarkOptions = {}
+            if node.normalUse then
+                params.talemarkOptions.defaultTextStyle = GetTalemarkBlockStyle(node, "normal")
+            end
+            if node.acaoUse then
+                params.talemarkOptions.charActionTextStyle = GetTalemarkBlockStyle(node, "acao")
+            end
+            if node.pensamentoUse then
+                params.talemarkOptions.charQuotedSpeechTextStyle = GetTalemarkBlockStyle(node, "pensamento")
+            end
+            if node.falaUse then
+                params.talemarkOptions.charEmDashSpeechTextStyle = GetTalemarkBlockStyle(node, "fala")
+            end
+            if node.offUse then
+                params.talemarkOptions.outOfCharTextStyle = GetTalemarkBlockStyle(node, "off")
+            end
+
+                                    
+            local textoCompleto = self.TextoMensagem.text;
+            for linha in textoCompleto:gmatch("[^\13\10]+") do
+                if (tonumber(node.ShowNome) == 1) then
+                    chat:enviarNarracao(linha);
+                    node.TextoMensagem = ""
+                elseif (tonumber(node.ShowNome) == 2) then
+                    if node.avatar ~= nil then
+                        params.impersonation = {}
+                        params.impersonation.mode = "character"
+                        params.impersonation.avatar = node.avatar
+
+                        chat:asyncSendStd(linha, params);
+
+                        node.TextoMensagem = ""
+                    else
+                        showMessage("O personagem não possui uma imagem. Adicione uma antes de enviar por este modo.")
+                    end;
+                elseif (tonumber(node.ShowNome) == 3) then
+                    if node.nome ~= nil then
+                        params.impersonation = {}
+                        params.impersonation.mode = "character"
+                        params.impersonation.name = node.nome
+
+                        chat:asyncSendStd(linha, params);
+
+                        node.TextoMensagem = ""
+                    else
+                        showMessage("O personagem não possui um nome. Adicione um antes de enviar por este modo.")
+                    end;
+                elseif (tonumber(node.ShowNome) == 4) then
+                    if node.avatar ~= nil then
+                        if node.nome ~= nil then
+                            
+                            params.impersonation = {}
+                            params.impersonation.mode = "character"
+                            params.impersonation.avatar = node.avatar
+                            params.impersonation.name = node.nome
+
+                            chat:asyncSendStd(linha, params);
+                            
+                            node.TextoMensagem = ""
+                        else
+                            showMessage("O personagem não possui um nome. Adicione um antes de enviar por este modo.")
+                        end;
+                    else
+                        showMessage("O personagem não possui uma imagem. Adicione uma antes de enviar por este modo.")
+                    end;
+                else
+                    chat:enviarMensagem(linha);
+                    node.TextoMensagem = ""
+                end;
+            end;
+        end
+
         local function ShowPopup(popup, sheet)
             local pop = self:findControlByName(popup);
             if pop~= nil then
@@ -404,7 +484,15 @@
                         </button>
                     </layout>
                     
-                    <textEditor align="client" fontSize="12" name="TextoMensagem" field="TextoMensagem" margins="{left=4, right=4, top=4, bottom=4}"/>
+                    <textEditor align="client" fontSize="12" name="TextoMensagem" field="TextoMensagem" margins="{left=4, right=4, top=4, bottom=4}">
+                        <event name="onKeyDown">
+                            if event.ctrlKey and event.keyCode==13 then
+                                event.keyCode = 0
+                                event.key = ""
+                                SendMessage()
+                            end
+                        </event>
+                    </textEditor>
                     
                     <layout align="bottom" height="20" margins="{bottom=4, top=4}">
                         <label align="left" width="100" fontSize="12" text="Formatar:" fontStyle="bold" margins="{left=8}" />
@@ -480,85 +568,7 @@
                         <edit align="top" height="22" fontSize="12" margins="{left=4, right=4, top=4, bottom=4}" field="NomeRolagem"/>
                     </layout>
                     <layout align="client" margins="{left=4, right=4}">
-                        <button align="top" height="22" fontSize="12" margins="{left=4, right=4}" text="Enviar Mensagem">
-                            <event name="onClick">
-                                local node = self.messageEditor.node
-                                local mesa = Firecast.getMesaDe(node);
-                                local chat = mesa.activeChat;
-
-                                local params = {}
-                                params.talemarkOptions = {}
-                                if node.normalUse then
-                                    params.talemarkOptions.defaultTextStyle = GetTalemarkBlockStyle(node, "normal")
-                                end
-                                if node.acaoUse then
-                                    params.talemarkOptions.charActionTextStyle = GetTalemarkBlockStyle(node, "acao")
-                                end
-                                if node.pensamentoUse then
-                                    params.talemarkOptions.charQuotedSpeechTextStyle = GetTalemarkBlockStyle(node, "pensamento")
-                                end
-                                if node.falaUse then
-                                    params.talemarkOptions.charEmDashSpeechTextStyle = GetTalemarkBlockStyle(node, "fala")
-                                end
-                                if node.offUse then
-                                    params.talemarkOptions.outOfCharTextStyle = GetTalemarkBlockStyle(node, "off")
-                                end
-
-                                
-                                local textoCompleto = self.TextoMensagem.text;
-                                for linha in textoCompleto:gmatch("[^\13\10]+") do
-                                    if (tonumber(node.ShowNome) == 1) then
-                                        chat:enviarNarracao(linha);
-                                        node.TextoMensagem = ""
-                                    elseif (tonumber(node.ShowNome) == 2) then
-                                        if node.avatar ~= nil then
-                                            params.impersonation = {}
-                                            params.impersonation.mode = "character"
-                                            params.impersonation.avatar = node.avatar
-
-                                            chat:asyncSendStd(linha, params);
-
-                                            node.TextoMensagem = ""
-                                        else
-                                            showMessage("O personagem não possui uma imagem. Adicione uma antes de enviar por este modo.")
-                                        end;
-                                    elseif (tonumber(node.ShowNome) == 3) then
-                                        if node.nome ~= nil then
-                                            params.impersonation = {}
-                                            params.impersonation.mode = "character"
-                                            params.impersonation.name = node.nome
-
-                                            chat:asyncSendStd(linha, params);
-
-                                            node.TextoMensagem = ""
-                                        else
-                                            showMessage("O personagem não possui um nome. Adicione um antes de enviar por este modo.")
-                                        end;
-                                    elseif (tonumber(node.ShowNome) == 4) then
-                                        if node.avatar ~= nil then
-                                            if node.nome ~= nil then
-                                                
-                                                params.impersonation = {}
-                                                params.impersonation.mode = "character"
-                                                params.impersonation.avatar = node.avatar
-                                                params.impersonation.name = node.nome
-
-                                                chat:asyncSendStd(linha, params);
-                                                
-                                                node.TextoMensagem = ""
-                                            else
-                                                showMessage("O personagem não possui um nome. Adicione um antes de enviar por este modo.")
-                                            end;
-                                        else
-                                            showMessage("O personagem não possui uma imagem. Adicione uma antes de enviar por este modo.")
-                                        end;
-                                    else
-                                        chat:enviarMensagem(linha);
-                                        node.TextoMensagem = ""
-                                    end;
-                                end;
-                            </event>
-                        </button>
+                        <button align="top" height="22" fontSize="12" margins="{left=4, right=4}" text="Enviar Mensagem" onClick="SendMessage()"/>
                         
                         <button align="top" height="22" fontSize="12" margins="{top=4, left=4, right=4}" text="Enviar Rolagem">
                             <event name="onClick">
