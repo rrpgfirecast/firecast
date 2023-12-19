@@ -161,9 +161,7 @@
 		</layout>
 	
 		<scrollBox name="MainClient" align="client" margins="{top=2}">
-			<recordList name="rclListaDeNPC" layout="VerticalTiles" field="campoDosNPC" templateForm="CaixaFichaNPC" align="none" autoHeight="true" selectable="true" minQt="0" >		<event name="onBeginEnumeration">
-					
-				</event>							
+			<recordList name="rclListaDeNPC" layout="VerticalTiles" field="campoDosNPC" templateForm="CaixaFichaNPC" align="none" autoHeight="true" selectable="true" minQt="0" >
 			
 				<event name="onItemAdded">
 					node.CorBarrinha1 = (sheet.CorBarrinha1 or "#808080");

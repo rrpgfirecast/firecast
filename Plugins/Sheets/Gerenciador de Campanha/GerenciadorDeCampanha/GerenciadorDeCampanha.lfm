@@ -43,6 +43,9 @@
 		<tab title="NPCs">
 			<import file="MainDockNPCs.lfm"/>
 		</tab>
+        <tab title="PdMs">
+            <import file="ListaPdMs.lfm"/>
+        </tab>
 		<tab title="Iniciativas">
 			<import file="CombatTrackerDock.lfm"/>
 		</tab>

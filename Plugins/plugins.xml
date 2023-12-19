@@ -353,7 +353,7 @@
             </dataType>
         </dataTypes>
     </element>
-    <element id="Ambesek.Nefertyne.Reinos" name="Ficha Reinos d20" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20de%20Reinos%20d20/output/Ficha%20de%20Reinos%20d20.rpk?raw=true" fileName="Ficha de Reinos d20.rpk" repositoryPath="Sheets/Ficha de Reinos d20/" author="Ambesek" description="Ficha para descrição de Reinos e Cidades seguindo o padrão d20system do Livro do Mestre." version="0.9.1" compilationDate="03032023114005" compilationDigest="8ee81964926e5ff6361f85fae26db3d3870e2fcc">
+    <element id="Ambesek.Nefertyne.Reinos" name="Ficha Reinos d20" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20de%20Reinos%20d20/output/Ficha%20de%20Reinos%20d20.rpk?raw=true" fileName="Ficha de Reinos d20.rpk" repositoryPath="Sheets/Ficha de Reinos d20/" author="Ambesek" description="Ficha para descrição de Reinos e Cidades seguindo o padrão d20system do Livro do Mestre." version="0.10" compilationDate="03032023114005" compilationDigest="8ee81964926e5ff6361f85fae26db3d3870e2fcc">
         <info lang="pt-BR" name="Ficha Reinos d20" description="Ficha para descrição de Reinos e Cidades seguindo o padrão d20system do Livro do Mestre." author="Ambesek"/>
         <dataTypes>
             <dataType id="Ambesek.Nefertyne.Reinos" title="Ficha Reinos d20" formType="sheetTemplate">
@@ -642,7 +642,7 @@
             </dataType>
         </dataTypes>
     </element>
-    <element id="GerenciadorDeCampanha" name="Gerenciador de Campanha" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Gerenciador%20de%20Campanha/output/Gerenciador%20de%20Campanha.rpk?raw=true" fileName="Gerenciador de Campanha.rpk" repositoryPath="Sheets/Gerenciador de Campanha/" author="Ambesek" description="Ficha para gerenciar informaçes publicas e privadas de jogo, com visualizaçao seletiva entre jogadores e mestres." version="1.2.1" compilationDate="21032023030157" compilationDigest="585395a219f8c7a357816e941aad6dcce59f3edf">
+    <element id="GerenciadorDeCampanha" name="Gerenciador de Campanha" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Gerenciador%20de%20Campanha/output/Gerenciador%20de%20Campanha.rpk?raw=true" fileName="Gerenciador de Campanha.rpk" repositoryPath="Sheets/Gerenciador de Campanha/" author="Ambesek" description="Ficha para gerenciar informaçes publicas e privadas de jogo, com visualizaçao seletiva entre jogadores e mestres." version="1.3" compilationDate="21032023030157" compilationDigest="585395a219f8c7a357816e941aad6dcce59f3edf">
         <info lang="pt-BR" name="Gerenciador de Campanha" description="Ficha para gerenciar informaçes publicas e privadas de jogo, com visualizaçao seletiva entre jogadores e mestres." author="Ambesek" site="http://pt-br.rpgmeister.wikia.com/wiki/Main_Page"/>
         <dataTypes>
             <dataType id="Ambesek.Gerenciador.RPGmeister" title="Gerenciador de Campanha" formType="sheetTemplate">

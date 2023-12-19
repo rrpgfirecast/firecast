@@ -46,9 +46,12 @@
 		<tab title="Pontos de Interesse">
 			<import file="Geography.lfm"/>
 		</tab>
-		<tab title="Pessoas Importantes">
+		<tab title="Pessoas Importantes (Antigo)">
 			<import file="MainDockNPCs.lfm"/>
 		</tab>
+        <tab title="Pessoas Importantes">
+            <import file="ListaPdMs.lfm"/>
+        </tab>
 		<tab title="Anotações">
 			<import file="Notes.lfm"/>
 		</tab>
