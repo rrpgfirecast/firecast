@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<form name="frmTemplate" formType="sheetTemplate" dataType="Ambesek.Nefertyne.Reinos" title="Ficha Reinos d20" align="client" theme="dark">
+<form name="frmArk" formType="sheetTemplate" dataType="Ambesek.Mutant.Year.Zero.Ark" title="Ficha Mutant Year Zero (Ark)" align="client" theme="dark">
     <script>
         <![CDATA[
         local function isNewVersion(installed, downloaded)
@@ -31,40 +31,57 @@
                 return false;
             end;
         end;
+
+        -- DEBUG FUNCTIONS
+
+        -- turns an object in a string
+        local function dump(o)
+           if type(o) == 'table' then
+              local s = '{ '
+              for k,v in pairs(o) do
+                 if type(k) ~= 'number' then k = '"'..k..'"' end
+                 s = s .. '['..k..'] = ' .. dump(v) .. ','
+              end
+              return s .. '} '
+           else
+              return tostring(o)
+           end
+        end
+        
+        -- write string in the chat
+        local function write(str)
+            local mesa = Firecast.getMesaDe(sheet);
+            if str then
+                mesa.activeChat:escrever(str);
+            else
+                mesa.activeChat:escrever("String nula");
+            end;
+        end;
         ]]> 
     </script>
-	<tabControl align="client" name="tabControl">
-		<tab title="Reino">
-			<import file="Kingdom.lfm"/>
-		</tab>
-		<tab title="Mapa">
-			<import file="Map.lfm"/>
-		</tab>
-		<tab title="Cidades">
-			<import file="Cities.lfm"/>
-		</tab>
-		<tab title="Pontos de Interesse">
-			<import file="Geography.lfm"/>
-		</tab>
-		<tab title="Pessoas Importantes">
-			<import file="MainDockNPCs.lfm"/>
-		</tab>
-		<tab title="Anotações">
-			<import file="Notes.lfm"/>
-		</tab>
+
+    <tabControl align="client">
+        <tab title="Geral">
+            <import file="Geral.xml"/>
+        </tab>
+        <tab title="Projetos">
+            <import file="Projetos.xml"/>
+        </tab>
+        <tab title="Anotações">
+            <import file="../Player/Notes.lfm"/>
+        </tab>
 		<tab title="Creditos">
-			<import file="Credits.lfm"/>
-		</tab>
-	</tabControl>
+            <import file="../Player/Credits.lfm"/>
+        </tab>
+    </tabControl>
+    
     <event name="onNodeReady">
-		<![CDATA[
-        internet.download("https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20de%20Reinos%20d20/output/Ficha%20de%20Reinos%20d20.rpk?raw=true",
+        Internet.download("https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20Mutant%20Year%20Zero/output/Ficha%20Mutant%20Year%20Zero.rpk?raw=true",
             function(stream, contentType)
-                local info = rrpg.plugins.getRPKDetails(stream);
-                if sheet == nil then return end;
+                local info = Firecast.Plugins.getRPKDetails(stream);
                 sheet.versionDownloaded = "VERSÃO DISPONÍVEL: " .. info.version;
 
-                local installed = rrpg.plugins.getInstalledPlugins();
+                local installed = Firecast.Plugins.getInstalledPlugins();
                 local myself;
                 for i=1, #installed, 1 do
                     if installed[i].moduleId == info.moduleId then
@@ -78,7 +95,7 @@
                     Dialogs.choose("Há uma nova versão desse plugin. Deseja instalar?",{"Sim", "Não", "Não perguntar novamente."},
                         function(selected, selectedIndex, selectedText)
                             if selected and selectedIndex == 1 then
-                                gui.openInBrowser('https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20de%20Reinos%20d20/output/Ficha%20de%20Reinos%20d20.rpk?raw=true');
+                                GUI.openInBrowser('https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20Mutant%20Year%20Zero/output/Ficha%20Mutant%20Year%20Zero.rpk?raw=true');
                             elseif selected and selectedIndex == 3 then
                                 sheet.noUpdate = true;
                             end;
@@ -91,7 +108,7 @@
             function (downloaded, total)
                 -- esta função será chamada constantemente.
                 -- dividir "downloaded" por "total" lhe dará uma porcentagem do download.
-            end);
-		]]> 
+            end,
+            "checkForModification");
     </event>
 </form>

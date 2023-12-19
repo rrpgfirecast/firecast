@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <root>
-    <element id="Ambesek.Lista.PdMs" name="Lista de PdMs" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/TablesDock/Lista%20de%20PdMs/output/Lista%20de%20PdMs.rpk?raw=true" fileName="Lista de PdMs.rpk" repositoryPath="TablesDock/Lista de PdMs/" author="Ambesek" description="Janela acoplavel que exibe avatares para PdMs." version="1.2" compilationDate="05092023232812" compilationDigest="4de740028c3c67c4a0ccc2af2e3bc94ef5f6901e">
+    <element id="Ambesek.Mutant.Year.Zero" name="Ficha Mutant Year Zero" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20Mutant%20Year%20Zero/output/Ficha%20Mutant%20Year%20Zero.rpk?raw=true" fileName="Ficha Mutant Year Zero.rpk" repositoryPath="Sheets/Ficha Mutant Year Zero/" author="Ambesek" description="Ficha pro cenario e sistema &apos;Mutant Year Zero&apos;." version="1.0" compilationDate="18122023152510" compilationDigest="203790d3adffe960bf7359f862ec930eaed1a483">
+        <info lang="pt-BR" name="Ficha Mutant Year Zero" description="Ficha pro cenario e sistema &apos;Mutant Year Zero&apos;." author="Ambesek"/>
+        <dataTypes>
+            <dataType id="Ambesek.Mutant.Year.Zero.Ark" title="Ficha Mutant Year Zero (Ark)" formType="sheetTemplate">
+                <info title="Ficha Mutant Year Zero (Ark)"/>
+            </dataType>
+            <dataType id="Ambesek.Mutant.Year.Zero.Player" title="Ficha Mutant Year Zero (Player)" formType="sheetTemplate">
+                <info title="Ficha Mutant Year Zero (Player)"/>
+            </dataType>
+        </dataTypes>
+    </element>
+    <element id="Ambesek.Lista.PdMs" name="Lista de PdMs" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/TablesDock/Lista%20de%20PdMs/output/Lista%20de%20PdMs.rpk?raw=true" fileName="Lista de PdMs.rpk" repositoryPath="TablesDock/Lista de PdMs/" author="Ambesek" description="Janela acoplavel que exibe avatares para PdMs." version="1.5" compilationDate="05092023232812" compilationDigest="4de740028c3c67c4a0ccc2af2e3bc94ef5f6901e">
         <info lang="pt-BR" name="Lista de PdMs" description="Janela acoplavel que exibe avatares para PdMs." author="Ambesek"/>
         <dataTypes>
             <dataType id="Ambesek.Lista.PdMs" title="Lista de PdMs" formType="tablesDock">
@@ -61,7 +72,7 @@
     <element id="Ambesek.dd2vtt" name="Universal VTT Importer" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Scene/UniversalVTTImporter/output/UniversalVTTImporter.rpk?raw=true" fileName="UniversalVTTImporter.rpk" repositoryPath="Scene/UniversalVTTImporter/" author="Ambesek" description="Importa arquivos dd2vtt pro Firecast." version="1.2" compilationDate="27042023033920" compilationDigest="d695a4b25bf9a4bdb8a0eafe1fa587bae3916426">
         <info lang="pt-BR" name="Universal VTT Importer" description="Importa arquivos dd2vtt pro Firecast." author="Ambesek"/>
     </element>
-    <element id="Ambesek.3d6" name="Ficha ReDungeon" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%203d6/output/Ficha%203d6.rpk?raw=true" fileName="Ficha 3d6.rpk" repositoryPath="Sheets/Ficha 3d6/" author="Ambesek" description="Ficha para o sistema 3d6" version="1.1" compilationDate="27042023002314" compilationDigest="12a8e47a6941a0e253ea8245cd92bb272160b228">
+    <element id="Ambesek.3d6" name="Ficha ReDungeon" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%203d6/output/Ficha%203d6.rpk?raw=true" fileName="Ficha 3d6.rpk" repositoryPath="Sheets/Ficha 3d6/" author="Ambesek" description="Ficha para o sistema 3d6" version="1.1.1" compilationDate="27042023002314" compilationDigest="12a8e47a6941a0e253ea8245cd92bb272160b228">
         <info lang="pt-BR" name="Ficha ReDungeon" description="Ficha para o sistema 3d6" author="Ambesek"/>
         <dataTypes>
             <dataType id="Ambesek.3d6" title="Ficha ReDungeon" formType="sheetTemplate">
@@ -77,7 +88,7 @@
             </dataType>
         </dataTypes>
     </element>
-    <element id="AfkBot" name="AfkBot" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/ChatMods/AfkBot/output/AfkBot.rpk?raw=true" fileName="AfkBot.rpk" repositoryPath="ChatMods/AfkBot/" author="Ambesek" description="Crie uma mensagem padrão para responder quando estiver ocupado. Também protege a mesa de flood de dados e /rir se configurado para tal. Use /afkbot para abrir o popup de configuração." version="1.7.1" compilationDate="03032023113324" compilationDigest="1e111946749050bbcff455ee86fd6b2e4b3ad4c8">
+    <element id="AfkBot" name="AfkBot" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/ChatMods/AfkBot/output/AfkBot.rpk?raw=true" fileName="AfkBot.rpk" repositoryPath="ChatMods/AfkBot/" author="Ambesek" description="Crie uma mensagem padrão para responder quando estiver ocupado. Também protege a mesa de flood de dados e /rir se configurado para tal. Use /afkbot para abrir o popup de configuração." version="1.8" compilationDate="03032023113324" compilationDigest="1e111946749050bbcff455ee86fd6b2e4b3ad4c8">
         <info lang="pt-BR" name="AfkBot" description="Crie uma mensagem padrão para responder quando estiver ocupado. Também protege a mesa de flood de dados e /rir se configurado para tal. Use /afkbot para abrir o popup de configuração." author="Ambesek" site="http://pt-br.rpgmeister.wikia.com/wiki/Main_Page"/>
         <dataTypes>
             <dataType id="ambesek.afkbot" title="AfkBot" formType="undefined">
@@ -342,7 +353,7 @@
             </dataType>
         </dataTypes>
     </element>
-    <element id="Ambesek.Nefertyne.Reinos" name="Ficha Reinos d20" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20de%20Reinos%20d20/output/Ficha%20de%20Reinos%20d20.rpk?raw=true" fileName="Ficha de Reinos d20.rpk" repositoryPath="Sheets/Ficha de Reinos d20/" author="Ambesek" description="Ficha para descrição de Reinos e Cidades seguindo o padrão d20system do Livro do Mestre." version="0.9.1" compilationDate="03032023114005" compilationDigest="8ee81964926e5ff6361f85fae26db3d3870e2fcc">
+    <element id="Ambesek.Nefertyne.Reinos" name="Ficha Reinos d20" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20de%20Reinos%20d20/output/Ficha%20de%20Reinos%20d20.rpk?raw=true" fileName="Ficha de Reinos d20.rpk" repositoryPath="Sheets/Ficha de Reinos d20/" author="Ambesek" description="Ficha para descrição de Reinos e Cidades seguindo o padrão d20system do Livro do Mestre." version="0.10" compilationDate="03032023114005" compilationDigest="8ee81964926e5ff6361f85fae26db3d3870e2fcc">
         <info lang="pt-BR" name="Ficha Reinos d20" description="Ficha para descrição de Reinos e Cidades seguindo o padrão d20system do Livro do Mestre." author="Ambesek"/>
         <dataTypes>
             <dataType id="Ambesek.Nefertyne.Reinos" title="Ficha Reinos d20" formType="sheetTemplate">
@@ -564,6 +575,14 @@
             </dataType>
         </dataTypes>
     </element>
+    <element id="VaMv5.Rome" name="Vampire the Masquerade V5 Rome" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Vampire%20The%20Masquerade%205th%20Rome/output/Vampire%20The%20Masquerade%205th%20Rome.rpk?raw=true" fileName="Vampire The Masquerade 5th Rome.rpk" repositoryPath="Sheets/Vampire The Masquerade 5th Rome/" author="thirteen&amp;Ambesek" description="Ficha de Personagem do sistema Vampiro: a Máscara, Quinta edição. Roma antiga." version="1.1" compilationDate="19122023061420" compilationDigest="6173782ae3e18fffe3de66993313a59143cd6335">
+        <info lang="pt-BR" name="Vampire the Masquerade V5 Rome" description="Ficha de Personagem do sistema Vampiro: a Máscara, Quinta edição. Roma antiga." author="thirteen&amp;Ambesek" site="https://www.twitter.com/i_am_thirteen"/>
+        <dataTypes>
+            <dataType id="thirteen.VaMv5" title="V:aM V5 Roma" formType="sheetTemplate">
+                <info title="V:aM V5 Roma"/>
+            </dataType>
+        </dataTypes>
+    </element>
     <element id="Ambesek.T20" name="Ficha T20" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20T20/output/Ficha%20T20.rpk?raw=true" fileName="Ficha T20.rpk" repositoryPath="Sheets/Ficha T20/" author="Ambesek" description="Ficha para o cenario e sistema Tormenta 20." version="1.0.1" compilationDate="03032023121119" compilationDigest="bbeca6a2faa31e9ebfcb365f33acc2ce546ab9b0">
         <info lang="pt-BR" name="Ficha T20" description="Ficha para o cenario e sistema Tormenta 20." author="Ambesek"/>
         <dataTypes>
@@ -623,7 +642,7 @@
             </dataType>
         </dataTypes>
     </element>
-    <element id="GerenciadorDeCampanha" name="Gerenciador de Campanha" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Gerenciador%20de%20Campanha/output/Gerenciador%20de%20Campanha.rpk?raw=true" fileName="Gerenciador de Campanha.rpk" repositoryPath="Sheets/Gerenciador de Campanha/" author="Ambesek" description="Ficha para gerenciar informaçes publicas e privadas de jogo, com visualizaçao seletiva entre jogadores e mestres." version="1.2.1" compilationDate="21032023030157" compilationDigest="585395a219f8c7a357816e941aad6dcce59f3edf">
+    <element id="GerenciadorDeCampanha" name="Gerenciador de Campanha" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Gerenciador%20de%20Campanha/output/Gerenciador%20de%20Campanha.rpk?raw=true" fileName="Gerenciador de Campanha.rpk" repositoryPath="Sheets/Gerenciador de Campanha/" author="Ambesek" description="Ficha para gerenciar informaçes publicas e privadas de jogo, com visualizaçao seletiva entre jogadores e mestres." version="1.3" compilationDate="21032023030157" compilationDigest="585395a219f8c7a357816e941aad6dcce59f3edf">
         <info lang="pt-BR" name="Gerenciador de Campanha" description="Ficha para gerenciar informaçes publicas e privadas de jogo, com visualizaçao seletiva entre jogadores e mestres." author="Ambesek" site="http://pt-br.rpgmeister.wikia.com/wiki/Main_Page"/>
         <dataTypes>
             <dataType id="Ambesek.Gerenciador.RPGmeister" title="Gerenciador de Campanha" formType="sheetTemplate">

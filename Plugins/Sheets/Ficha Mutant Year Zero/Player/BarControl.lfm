@@ -1,0 +1,62 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmBarControl" align="client">
+	<script>
+		<![CDATA[
+			local function addCurrent()
+				local mesa = Firecast.getMesaDe(sheet); 
+				local current = mesa.meuJogador:getBarValue(1);
+				current = current + (tonumber(sheet.current) or 0);
+				mesa.meuJogador:requestSetBarValue(1, current);
+			end;
+
+			local function subtractCurrent()
+				local mesa = Firecast.getMesaDe(sheet); 
+				local current = mesa.meuJogador:getBarValue(1);
+				current = current - (tonumber(sheet.current) or 0);
+				mesa.meuJogador:requestSetBarValue(1, current);
+			end;
+
+			local function setCurrent()
+				local mesa = Firecast.getMesaDe(sheet); 
+				local current = (tonumber(sheet.current) or 0);
+				mesa.meuJogador:requestSetBarValue(1, current);
+			end;
+
+			local function addMax()
+				local mesa = Firecast.getMesaDe(sheet); 
+				local current, max = mesa.meuJogador:getBarValue(1);
+				max = max + (tonumber(sheet.max) or 0);
+				mesa.meuJogador:requestSetBarValue(1, nil, max);
+			end;
+
+			local function subtractMax()
+				local mesa = Firecast.getMesaDe(sheet); 
+				local current, max = mesa.meuJogador:getBarValue(1);
+				max = max - (tonumber(sheet.max) or 0);
+				mesa.meuJogador:requestSetBarValue(1, nil, max);
+			end;
+
+			local function setMax()
+				local mesa = Firecast.getMesaDe(sheet); 
+				local max = (tonumber(sheet.max) or 0);
+				mesa.meuJogador:requestSetBarValue(1, nil, max);
+			end;
+		]]>	
+	</script>
+	<scrollBox align="client">
+		<layout left="0" top="0" width="300" height="25">
+			<label left="0" top="0" width="100" height="25" text="Atual" horzTextAlign="center"/>
+			<edit left="100" top="0" width="50" height="25" field="current"/>
+			<button left="150" top="0" width="50" height="25" text="+" onClick="addCurrent()"/>
+			<button left="200" top="0" width="50" height="25" text="-" onClick="subtractCurrent()"/>
+			<button left="250" top="0" width="50" height="25" text="=" onClick="setCurrent()"/>
+		</layout>
+		<layout left="0" top="25" width="300" height="25">
+			<label left="0" top="0" width="100" height="25" text="Maximo" horzTextAlign="center"/>
+			<edit left="100" top="0" width="50" height="25" field="max"/>
+			<button left="150" top="0" width="50" height="25" text="+" onClick="addMax()"/>
+			<button left="200" top="0" width="50" height="25" text="-" onClick="subtractMax()"/>
+			<button left="250" top="0" width="50" height="25" text="=" onClick="setMax()"/>
+		</layout>
+	</scrollBox>
+</form>

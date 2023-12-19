@@ -463,25 +463,44 @@ Firecast.Messaging.listen("ChatMessage",
 		end
 
 		if arg[1]=="afkbot" then
-
-
 			-- give voice to players
-			if ((arg[2]=="voz" or arg[2]=="voice") and message.jogador~=nil and message.jogador.isJogador and message.mesa.isModerada and afkdb.config[message.mesa.codigoInterno].giveVoice) then
-				message.jogador:requestSetVoz(true);
-			elseif ((arg[2]=="ficha" or arg[2]=="sheet") and afkdb.config[message.mesa.codigoInterno].giveSheet and message.jogador~= nil and message.jogador.personagemPrincipal==-1 and afkdb.config[message.mesa.codigoInterno].dataType~=nil) then 
-				Firecast.Requests.criarPersonagem(message.mesa.biblioteca, message.jogador.login, afkdb.config[message.mesa.codigoInterno].dataType, false, message.jogador,
-					function (sucess)
-						-- do nothing
-					end,
-					function (fail)
-						-- showMessage(fail)
-					end);
+			if (arg[2]=="voz" or arg[2]=="voice") then
+				if not afkdb.config[message.mesa.codigoInterno].giveVoice then
+					tryNPC(true, message.chat, "AfkBot", "O mestre não me permite te dar voz.")
+				elseif (message.jogador~=nil and not message.jogador.isJogador) then
+					tryNPC(true, message.chat, "AfkBot", "Jogador Invalido.")
+				elseif (not message.mesa.isModerada) then
+					tryNPC(true, message.chat, "AfkBot", "Mesa não está moderada. Você não precisa de voz.")
+				else
+					message.jogador:requestSetVoz(true);
+				end
+			elseif (arg[2]=="ficha" or arg[2]=="sheet") then 
+				if not afkdb.config[message.mesa.codigoInterno].giveSheet then
+					tryNPC(true, message.chat, "AfkBot", "O mestre não me permite te dar ficha.")
+				elseif (afkdb.config[message.mesa.codigoInterno].dataType==nil or afkdb.config[message.mesa.codigoInterno].dataType == "") then
+					tryNPC(true, message.chat, "AfkBot", "O mestre não definiu que ficha eu posso te dar.")
+				elseif (message.jogador==nil) then
+					tryNPC(true, message.chat, "AfkBot", "Usuario Invalido.")
+				elseif (message.jogador.personagemPrincipal ~= -1) then
+					tryNPC(true, message.chat, "AfkBot", "Você já tem ficha.")
+				else
+					local charParams = {}
+					charParams.name = message.jogador.login
+					charParams.dataType = afkdb.config[message.mesa.codigoInterno].dataType
+					charParams.visible = false
+					charParams.ownerLogin  = message.jogador.login
+
+					message.mesa.biblioteca:asyncCreateChar(charParams)
+					tryNPC(true, message.chat, "AfkBot", "Ficha Liberada.")
+				end
 			elseif (arg[2]=="off") then
 				-- poe o jogador no off chat
-			elseif (arg[2]=="math") then
-				-- faz calculo matematico
-			elseif (arg[2]==">>" and message.jogador~=nil and message.jogador.isJogador and afkdb.config[message.mesa.codigoInterno].passAction) then
-				if Utils.compareStringPtBr(Utils.removerFmtChat(message.jogador.nick), Utils.removerFmtChat(afkdb.config[message.mesa.codigoInterno].actionOwner)) == 0 then
+			elseif (arg[2]==">>") then
+				if not afkdb.config[message.mesa.codigoInterno].passAction then
+					tryNPC(true, message.chat, "AfkBot", "O mestre não me permite passar tua vez.")
+				elseif (message.jogador==nil and not message.jogador.isJogador) then
+					tryNPC(true, message.chat, "AfkBot", "Usuario Invalido.")
+				elseif Utils.compareStringPtBr(Utils.removerFmtChat(message.jogador.nick), Utils.removerFmtChat(afkdb.config[message.mesa.codigoInterno].actionOwner)) == 0 then
 					message.chat:enviarMensagem("/>>");
 				else
 					tryNPC(true,message.chat,"AfkBot","Não é sua vez \"" .. (Utils.removerFmtChat(message.jogador.nick) or "nil") .. "\", é a vez de \"" .. (afkdb.config[message.mesa.codigoInterno].actionOwner or "nil") .. "\".");
@@ -494,7 +513,7 @@ Firecast.Messaging.listen("ChatMessage",
 				end
 				ShowBibItem(message, param);
 			else
-				-- message.chat:enviarMensagem("AfkBot: Não posso. ");
+				tryNPC(true, message.chat, "AfkBot", "Não entendi. Tente: 'voz', 'ficha', '>>' ou 'show'.")
 			end;
 		elseif message.mine and string.sub(txt,1,string.len(" >> Turno de "))==" >> Turno de " then
 			afkdb.config[message.mesa.codigoInterno].actionOwner = string.sub(txt,string.len(" >> Turno de ")+1,-2);

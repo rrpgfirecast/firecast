@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmDetailList" align="client">
+	<scrollBox align="client">
+		<layout align="top" height="25">
+			<!-- RecordList + DataScopeBox -->
+			<button align="left" width="25" text="+" onClick="self.rclSelector:append();" hint="Adicionar"/>
+		</layout>
+		<layout align="left" width="250" margins="{right=10}">
+			<rectangle align="client" color="black">
+				<!-- RecordList para seleção -->
+				<recordList align="top" autoHeight="true" name="rclSelector" field="listaDeOpcoes" templateForm="frmDetailListItem" layout="vertical" selectable="true">
+					<event name="onCompare"><![CDATA[
+						-- Esse codigo organiza a ordem dos objetos da lista alfabeticamente. 
+				        return Utils.compareStringPtBr(nodeA.nome, nodeB.nome);              
+				        ]]>
+					</event>
+					<event name="onSelect"><![CDATA[
+							local node = self.rclSelector.selectedNode;
+							self.boxDetalhesDoItem.node = node; 
+							self.boxDetalhesDoItem.visible = (node ~= nil);
+						]]>
+					</event>
+				</recordList>
+			</rectangle>
+		</layout>
+		<!-- Info selecionada vai estar aqui -->
+		<dataScopeBox align="client" name="boxDetalhesDoItem" visible="false">
+			<rectangle align="client" color="black">
+				<!-- O mesmo valor do edit nome vai estar no label do seletor pois tem o mesmo field -->
+				<edit align="top" height="25" field="nome" margins="{top=5,right=5,left=5,bottom=5}"/>
+				<textEditor align="client" height="25" field="details" margins="{right=5,left=5,bottom=5}"/>
+			</rectangle>
+		</dataScopeBox>
+	</scrollBox>
+</form>

@@ -27,6 +27,24 @@
         </dataLink>
     </template>
 
+    <template name="TextOptions">
+        <layout align="client" margins="{top=10,bottom=10,left=10,right=10}">
+            <checkBox align="top" height="25" text="Formatar texto: $(text)" field="$(field)Use"/>
+            <layout align="top" height="25">
+                <label align="left" width="100" text="Cor do Texto"/>
+                <colorComboBox align="client" field="$(field)Color" useAlpha="false"/>
+            </layout>
+            <layout align="top" height="25">
+                <label align="left" width="100" text="Cor do Fundo"/>
+                <colorComboBox align="client" field="$(field)ColorBG"/>
+            </layout>
+            <checkBox align="top" height="25" text="Negrito" field="$(field)Negrito"/>
+            <checkBox align="top" height="25" text="Sublinhado" field="$(field)Sublinhado"/>
+            <checkBox align="top" height="25" text="Itálico" field="$(field)Italico"/>
+            <checkBox align="top" height="25" text="Tachado" field="$(field)Tachado"/>
+        </layout>
+    </template>
+
     <popup name="CreditsPopup" width="415" height="250" backOpacity="0.4" autoScopeNode="false" margins="{top=25,bottom=25,left=25,right=25}">
             <image left="5" top="5" width="200" height="200" src="images/RPGmeister.jpg" style="stretch" optimize="true" compilerOrder="0"/>
 
@@ -174,8 +192,124 @@
         </event>
     </popup>
 
+    <popup name="TextDefaultPopup" width="250" height="200" margins="{top=25,bottom=25,left=25,right=25}">
+        <TextOptions text="Normal" field="normal"/>
+    </popup>
+    <popup name="TextActionPopup" width="250" height="200" margins="{top=25,bottom=25,left=25,right=25}">
+        <TextOptions text="Ação" field="acao"/>
+    </popup>
+    <popup name="TextThoughtPopup" width="250" height="200" margins="{top=25,bottom=25,left=25,right=25}">
+        <TextOptions text="Pensamento" field="pensamento"/>
+    </popup>
+    <popup name="TextSpeechPopup" width="250" height="200" margins="{top=25,bottom=25,left=25,right=25}">
+        <TextOptions text="Fala" field="fala"/>
+    </popup>
+    <popup name="TextOffPopup" width="250" height="200" margins="{top=25,bottom=25,left=25,right=25}">
+        <TextOptions text="Off" field="off"/>
+    </popup>
+
     <script>
         <![CDATA[
+        local function GetTalemarkBlockStyle(node, text)
+            local style = {}
+
+            style = {}
+            style.color = node[text.."Color"]
+            style.bkgColor = node[text.."ColorBG"]
+            style.bold = node[text.."Negrito"]
+            style.italic = node[text.."Italico"]
+            style.strikeout = node[text.."Tachado"]
+            style.underline = node[text.."Sublinhado"]
+
+            return style
+        end
+
+        local function SendMessage()
+
+            local node = self.messageEditor.node
+            local mesa = Firecast.getMesaDe(node);
+            local chat = mesa.activeChat;
+
+            local params = {}
+            params.talemarkOptions = {}
+            if node.normalUse then
+                params.talemarkOptions.defaultTextStyle = GetTalemarkBlockStyle(node, "normal")
+            end
+            if node.acaoUse then
+                params.talemarkOptions.charActionTextStyle = GetTalemarkBlockStyle(node, "acao")
+            end
+            if node.pensamentoUse then
+                params.talemarkOptions.charQuotedSpeechTextStyle = GetTalemarkBlockStyle(node, "pensamento")
+            end
+            if node.falaUse then
+                params.talemarkOptions.charEmDashSpeechTextStyle = GetTalemarkBlockStyle(node, "fala")
+            end
+            if node.offUse then
+                params.talemarkOptions.outOfCharTextStyle = GetTalemarkBlockStyle(node, "off")
+            end
+
+                                    
+            local textoCompleto = self.TextoMensagem.text;
+            for linha in textoCompleto:gmatch("[^\13\10]+") do
+                if (tonumber(node.ShowNome) == 1) then
+                    chat:enviarNarracao(linha);
+                    node.TextoMensagem = ""
+                elseif (tonumber(node.ShowNome) == 2) then
+                    if node.avatar ~= nil then
+                        params.impersonation = {}
+                        params.impersonation.mode = "character"
+                        params.impersonation.avatar = node.avatar
+
+                        chat:asyncSendStd(linha, params);
+
+                        node.TextoMensagem = ""
+                    else
+                        showMessage("O personagem não possui uma imagem. Adicione uma antes de enviar por este modo.")
+                    end;
+                elseif (tonumber(node.ShowNome) == 3) then
+                    if node.nome ~= nil then
+                        params.impersonation = {}
+                        params.impersonation.mode = "character"
+                        params.impersonation.name = node.nome
+
+                        chat:asyncSendStd(linha, params);
+
+                        node.TextoMensagem = ""
+                    else
+                        showMessage("O personagem não possui um nome. Adicione um antes de enviar por este modo.")
+                    end;
+                elseif (tonumber(node.ShowNome) == 4) then
+                    if node.avatar ~= nil then
+                        if node.nome ~= nil then
+                            
+                            params.impersonation = {}
+                            params.impersonation.mode = "character"
+                            params.impersonation.avatar = node.avatar
+                            params.impersonation.name = node.nome
+
+                            chat:asyncSendStd(linha, params);
+                            
+                            node.TextoMensagem = ""
+                        else
+                            showMessage("O personagem não possui um nome. Adicione um antes de enviar por este modo.")
+                        end;
+                    else
+                        showMessage("O personagem não possui uma imagem. Adicione uma antes de enviar por este modo.")
+                    end;
+                else
+                    chat:enviarMensagem(linha);
+                    node.TextoMensagem = ""
+                end;
+            end;
+        end
+
+        local function ShowPopup(popup, sheet)
+            local pop = self:findControlByName(popup);
+            if pop~= nil then
+                pop.scopeNode = sheet
+                pop:show("center", self)
+            end;
+        end
         local function dump(o)
            if type(o) == 'table' then
               local s = '{ '
@@ -335,14 +469,12 @@
                 </event>
             </recordList>
         </layout>
-        <layout align="bottom" height="200" name="messageLayout" visible="false">
+        <layout align="bottom" height="220" name="messageLayout" visible="false">
             <dataScopeBox align="client" name="messageEditor">
                 <layout align="top" height="128" margins="{top=4}">
                     <layout align="top" height="18" margins="{left=8}">
                         <label align="left" fontSize="12" fontStyle="bold" autoSize="true" text="Mensagem"/>
                         <comboBox align="left" field="ShowNome" fontColor="white" fontSize="12" items="{'Texto', 'Narração', 'Avatar', 'Mostrar Nome', 'Nome e Avatar'}" values="{'0', '1', '2', '3', '4'}" text="Texto" width="118" vertTextAlign="trailing" margins="{left=10}"/>
-                        
-                        <comboBox align="left" name="CorP" field="CorP" margins="{left=8, right=4}" width="48" fontColor="white" items="{'1','2','3','4','5','6','7','8','9','10','11','12','13','14','15','16','17','18','19','20','21','22','23','24','25','26','27','28'}" values="{'1','2','3','4','5','6','7','8','9','10','11','12','13','14','15','16','17','18','19','20','21','22','23','24','25','26','27','28'}" value="1"/>
 
                         <button align="right" width="25" text="X" margins="{bottom=0,right=0}">
                             <event name="onClick">
@@ -352,7 +484,15 @@
                         </button>
                     </layout>
                     
-                    <textEditor align="client" fontSize="12" name="TextoMensagem" field="TextoMensagem" margins="{left=4, right=4, top=4, bottom=4}"/>
+                    <textEditor align="client" fontSize="12" name="TextoMensagem" field="TextoMensagem" margins="{left=4, right=4, top=4, bottom=4}">
+                        <event name="onKeyDown">
+                            if event.ctrlKey and event.keyCode==13 then
+                                event.keyCode = 0
+                                event.key = ""
+                                SendMessage()
+                            end
+                        </event>
+                    </textEditor>
                     
                     <layout align="bottom" height="20" margins="{bottom=4, top=4}">
                         <label align="left" width="100" fontSize="12" text="Formatar:" fontStyle="bold" margins="{left=8}" />
@@ -410,6 +550,13 @@
                             </event>
                         </button>
                     </layout>
+                    <layout align="bottom" height="20" margins="{left=8}">
+                        <button align="left" width="85" text="Normal" onClick="ShowPopup('TextDefaultPopup', self.messageEditor.node)"/>
+                        <button align="left" width="85" text="Ação" onClick="ShowPopup('TextActionPopup', self.messageEditor.node)"/>
+                        <button align="left" width="85" text="Pensamento" onClick="ShowPopup('TextThoughtPopup', self.messageEditor.node)"/>
+                        <button align="left" width="85" text="Fala" onClick="ShowPopup('TextSpeechPopup', self.messageEditor.node)"/>
+                        <button align="left" width="85" text="Off" onClick="ShowPopup('TextOffPopup', self.messageEditor.node)"/>
+                    </layout>
                 </layout>
                 <layout align="bottom" height="60" margins="{top=4}">
                     <layout align="left" width="80" margins="{left=4}">
@@ -421,53 +568,7 @@
                         <edit align="top" height="22" fontSize="12" margins="{left=4, right=4, top=4, bottom=4}" field="NomeRolagem"/>
                     </layout>
                     <layout align="client" margins="{left=4, right=4}">
-                        <button align="top" height="22" fontSize="12" margins="{left=4, right=4}" text="Enviar Mensagem">
-                            <event name="onClick">
-                                local minhaMesa = Firecast.getMesaDe(self.messageEditor.node);
-                                local chat = minhaMesa.activeChat;    
-                                
-                                local cor = ""
-                                if tonumber(self.CorP.text) then
-                                    cor = "[§K" .. self.CorP.text .. "]"
-                                end
-                                
-                                local textoCompleto = self.TextoMensagem.text;
-                                for linha in textoCompleto:gmatch("[^\13\10]+") do
-                                    if (tonumber(self.messageEditor.node.ShowNome) == 3) then
-                                        if self.messageEditor.node.nome ~= nil then
-                                            chat:enviarMensagemNPC(self.messageEditor.node.nome, cor .. linha);
-                                            self.messageEditor.node.TextoMensagem = ""
-                                        else
-                                            showMessage("O personagem não possui um nome. Adicione um antes de enviar por este modo.")
-                                        end;
-                                    elseif (tonumber(self.messageEditor.node.ShowNome) == 1) then
-                                        chat:enviarNarracao(cor .. linha);
-                                        self.messageEditor.node.TextoMensagem = ""
-                                    elseif (tonumber(self.messageEditor.node.ShowNome) == 2) then
-                                        if self.messageEditor.node.avatar ~= nil then
-                                            chat:enviarNarracao("[§I" .. self.messageEditor.node.avatar .. "][50][50] " .. cor .. linha)
-                                            self.messageEditor.node.TextoMensagem = ""
-                                        else
-                                            showMessage("O personagem não possui uma imagem. Adicione uma antes de enviar por este modo.")
-                                        end;
-                                    elseif (tonumber(self.messageEditor.node.ShowNome) == 4) then
-                                        if self.messageEditor.node.avatar ~= nil then
-                                            if self.messageEditor.node.nome ~= nil then
-                                                chat:enviarMensagemNPC(self.messageEditor.node.nome, "[§I" .. self.messageEditor.node.avatar .. "][50][50] " .. cor .. linha);
-                                                self.messageEditor.node.TextoMensagem = ""
-                                            else
-                                                showMessage("O personagem não possui um nome. Adicione um antes de enviar por este modo.")
-                                            end;
-                                        else
-                                            showMessage("O personagem não possui uma imagem. Adicione uma antes de enviar por este modo.")
-                                        end;
-                                    else
-                                        chat:enviarMensagem(cor .. linha);
-                                        self.messageEditor.node.TextoMensagem = ""
-                                    end;
-                                end;
-                            </event>
-                        </button>
+                        <button align="top" height="22" fontSize="12" margins="{left=4, right=4}" text="Enviar Mensagem" onClick="SendMessage()"/>
                         
                         <button align="top" height="22" fontSize="12" margins="{top=4, left=4, right=4}" text="Enviar Rolagem">
                             <event name="onClick">

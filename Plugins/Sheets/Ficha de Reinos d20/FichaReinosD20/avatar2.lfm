@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmAvatarOculto" height="25" width="200" margins="{top=5,bottom=5,left=5,right=5}">
+	<rectangle align="client" color="black" strokeColor="white" strokeSize="1" visible="true">
+		<label align="client" field="nome" horzTextAlign="center"/>
+	</rectangle>
+
+	<button align="right" width="25" text="📌" margins="{bottom=0,right=0}" hint="Envia objeto pra lista publica.">
+		<event name="onClick">
+    		Dialogs.confirmYesNo("Deseja manda esse npc pra lista publica?",
+                function (confirmado)
+                   if confirmado then
+                       local rcl = self:findControlByName("lista");
+                       if rcl == nil then return end
+
+                       local item = rcl:append()
+                       if item == nil then return end
+
+                       NDB.copy(item, sheet)
+
+                       NDB.deleteNode(sheet);
+                   end;
+                end);
+		</event>
+	</button>
+
+	<button align="right" width="25" text="X" margins="{bottom=0,right=0}">
+		<event name="onClick">
+			Dialogs.confirmOkCancel("Tem certeza que quer apagar esse avatar?",
+				function (confirmado)
+					if confirmado then
+						NDB.deleteNode(sheet);
+					end;
+			end);
+		</event>
+	</button>
+</form>

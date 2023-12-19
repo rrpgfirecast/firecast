@@ -275,7 +275,7 @@
 			</rectangle>
 		</layout>
 	</scrollBox>
-	<dataLink fields="{'strUp','conUp','intUp','sprUp','dexUp','strIni','conIni','intIni','sprIni','dexIni','ptsHabilidades','ptsPericias'}">
+	<dataLink fields="{'strUp','conUp','intUp','sprUp','dexUp','ptsHabilidades','ptsPericias'}">
 		<event name="onChange">
 			if sheet== nil then return end
 
@@ -284,11 +284,6 @@
 								(tonumber(sheet.intUp) or 0)*3 + 
 								(tonumber(sheet.sprUp) or 0)*3 + 
 								(tonumber(sheet.dexUp) or 0)*3 + 
-								(tonumber(sheet.strIni) or 0) + 
-								(tonumber(sheet.conIni) or 0) + 
-								(tonumber(sheet.intIni) or 0) + 
-								(tonumber(sheet.sprIni) or 0) + 
-								(tonumber(sheet.dexIni) or 0) + 
 								(tonumber(sheet.ptsHabilidades) or 0) + 
 								(tonumber(sheet.ptsPericias) or 0)
 		</event>
