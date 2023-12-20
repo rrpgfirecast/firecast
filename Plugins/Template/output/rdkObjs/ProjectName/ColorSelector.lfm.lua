@@ -103,10 +103,10 @@ local function constructNew_frmColorSelector()
           self:setNodeDatabase(nil);
         end;
 
-        if self.layout1 ~= nil then self.layout1:destroy(); self.layout1 = nil; end;
+        if self.showColor ~= nil then self.showColor:destroy(); self.showColor = nil; end;
         if self.scrollBox1 ~= nil then self.scrollBox1:destroy(); self.scrollBox1 = nil; end;
         if self.colorSelector ~= nil then self.colorSelector:destroy(); self.colorSelector = nil; end;
-        if self.showColor ~= nil then self.showColor:destroy(); self.showColor = nil; end;
+        if self.layout1 ~= nil then self.layout1:destroy(); self.layout1 = nil; end;
         self:_oldLFMDestroy();
     end;
 

@@ -425,7 +425,7 @@
     <template name="atrUse">
     	<layout align="top" height="25">
         	<checkBox align="left" width="100" text="$(text)" field="use$(field)" hint="Marque se o modificador desse atributo entra no ataque."/>
-        	<comboBox align="left" width="50" field="mult$(field)" items="{'0', '0.5', '1', '1.5', '2'}" hint="Quantas vezes esse atributo é aplicado ao dano."/>
+        	<comboBox align="left" width="50" field="mult$(field)" items="{'0', '0.5', '1', '1.5', '2', '2.5', '3'}" hint="Quantas vezes esse atributo é aplicado ao dano."/>
         	<dataLink field="mult$(field)" defaultValue="0"/>
         </layout>
     </template>

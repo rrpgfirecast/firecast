@@ -84,10 +84,10 @@ local function constructNew_frmAvatar()
           self:setNodeDatabase(nil);
         end;
 
+        if self.label1 ~= nil then self.label1:destroy(); self.label1 = nil; end;
         if self.image1 ~= nil then self.image1:destroy(); self.image1 = nil; end;
         if self.scrollBox1 ~= nil then self.scrollBox1:destroy(); self.scrollBox1 = nil; end;
         if self.rectangle1 ~= nil then self.rectangle1:destroy(); self.rectangle1 = nil; end;
-        if self.label1 ~= nil then self.label1:destroy(); self.label1 = nil; end;
         self:_oldLFMDestroy();
     end;
 

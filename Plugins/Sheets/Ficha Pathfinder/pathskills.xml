@@ -96,7 +96,7 @@
     <item chavePericia="5" exigeTreino="False" nomePericia="Sobrevivência">
         <__ndb__ id="33" t_chavePericia="S" t_exigeTreino="B" t_nomePericia="S"/>
     </item>
-    <item chavePericia="4" exigeTreino="True" nomePericia="Usar Instrumento Mágico">
+    <item chavePericia="6" exigeTreino="True" nomePericia="Usar Instrumento Mágico">
         <__ndb__ id="34" t_chavePericia="S" t_exigeTreino="B" t_nomePericia="S"/>
     </item>
     <item chavePericia="2" exigeTreino="False" nomePericia="Voo" penalidadeArmadura2="True">

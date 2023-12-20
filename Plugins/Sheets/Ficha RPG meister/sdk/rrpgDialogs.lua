@@ -1,4 +1,5 @@
 local objs = require("rrpgObjs.lua");
+local Async = require("async.lua");
 
 local lDialogs = {};
 
@@ -90,6 +91,15 @@ function lDialogs.showMessage(msg, callback)
 							end);
 end;
 
+function lDialogs.showErrorMessage(msg, callback)
+	lDialogs.showMessageDlg(msg, lDialogs.DT_ERROR, {lDialogs.DB_OK}, 
+							function(modalResult)
+								if type(callback) == "function" then
+									callback();
+								end;
+							end);
+end;
+
 function lDialogs.alert(msg, callback)
 	lDialogs.showMessageDlg(msg, lDialogs.DT_WARNING, {lDialogs.DB_OK}, 
 							function(modalResult)
@@ -98,7 +108,6 @@ function lDialogs.alert(msg, callback)
 								end;
 							end);
 end;
-
 
 function lDialogs.newInputQueryDialog()
 	local dlg = objs.objectFromHandle(_obj_newObject("TLuaInputQueryDialog"));
@@ -201,6 +210,21 @@ function lDialogs.openFile(prompt, accept, multiple, callback, cancelCallback)
 	
 	runningFileQuerys[query] = true;
 	_obj_invoke(query.handle, "Execute");
+end;
+
+function lDialogs.asyncOpenFile(prompt, accept, multiple)
+	local promise, resolution = Async.Promise.pending();
+
+	lDialogs.openFile(prompt, accept, multiple,
+		function(data)
+			resolution:setSuccess(data);
+		end,
+		
+		function()
+			resolution:setUserAborted();
+		end);
+		
+	return promise;
 end;
 
 local function _newFileSaveObject()

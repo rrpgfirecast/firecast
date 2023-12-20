@@ -96,6 +96,9 @@
                 <tab title="EditBar">
                     <import file="EditBar.lfm"/>
                 </tab>
+                <tab title="NDB">
+                    <import file="UserNDBTest.xml"/>
+                </tab>
             </tabControl>
         </tab>
         <tab title="Descrição">
