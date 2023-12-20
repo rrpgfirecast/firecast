@@ -1,15 +1,17 @@
-local Macros = require("rrpgMacros.dlua");
--- Macros code
+--Add Macros code
+local version = 1
+
 local ataqText = [[
 -- USO: /ataq <Nº do ataque> <Filtro>
+-- /ataq ou /atq <numero (opcional) <filtro npc|pc|pcOnline|all|mine (opcional)>", descricao="Ficha Pathfinder. Ao usar /per (sem parametros) abre um popup para selecionar um ataque avançado. Será feito o ataque com o personagem mais recentemente atribuido. Ao usar /per acompanhado de um numero e sem um filtro, o ataque naquela posição será realizado. Ao usar /per acompanhado de um valor (use -1 se quiser selecionar o ataque na janela pop up) e um parametro de filtro é aberta uma janela para selecionar um personagem para realizar o ataque.
 if parametro~="" and parametro~=nil and #arg==0 then
   --write("param != arg")
   --write(parametro)
   arg = {};
   local index = 0;
   for i in string.gmatch(parametro, "%S+") do
-  	index = index + 1;
-  	arg[index] = i;
+    index = index + 1;
+    arg[index] = i;
   end
 end
 local indice = tonumber(arg[1])
@@ -79,16 +81,18 @@ for i=1, index, 1 do
   end
 end
 ]]
+
 local perText = [[
 -- USO: /per <Nome da Pericia> <Filtro>
+-- /per <numero ou nome (opcional)> <filtro npc|pc|pcOnline|all|mine (opcional)>", descricao="Ficha Pathfinder. Ao usar /per (sem parametros) abre um popup para selecionar um teste de pericia. Será feito o teste de atributo do personagem mais recentemente atribuido. Ao usar /per acompanhado de um numero e sem um filtro o teste da pericia naquela posição da ficha será realizado. Ao usar /per acompanhado do nome da pericia o teste daquela pericia será realizado. Tente por o nome da pericia parecido com como está na ficha. O macro vai tentar ignorar letras maiusculas, acentos e outros. Ao usar /per acompanhado de um valor (numero ou nome, use -1 se quiser selecionar a pericia na janela pop up) e um parametro de filtro é aberta uma janela para selecionar um personagem para realizar o teste.
 if parametro~="" and parametro~=nil and #arg==0 then
   --write("param != arg")
   --write(parametro)
   arg = {};
   local index = 0;
   for i in string.gmatch(parametro, "%S+") do
-  	index = index + 1;
-  	arg[index] = i;
+    index = index + 1;
+    arg[index] = i;
   end
 end
 local indice = tonumber(arg[1])
@@ -130,17 +134,19 @@ end
 local teste = "1d20+"
 teste = teste .. (tonumber(pericias[indice].totalPericia) or 0)
 rolar(teste, "Teste de " .. lista[indice] .. " de " .. (personagem.nome or "Nome"))
-]];
+]]
+
 local atrText = [[
 -- USO: /atr <Nº do atributo 1:6> <filtro>
+-- /atr <numero 1 a 6 (opcional)> <filtro npc|pc|pcOnline|all|mine (opcional)>", descricao="Ficha Pathfinder. Ao usar /atr (sem parametros) abre um popup para selecionar um teste de resistencia. Será feito o teste de atributo do personagem mais recentemente atribuido. Ao usar /atr acompanhado de um numero e sem um filtro o teste de atributo (1: FOR, 2: DES, 3: CON, 4: INT, 5: SAB, 6:CAR) é feito para o personagem mais recentemente atribuido. Ao usar /atr acompanhado de um valor (use -1 se quiser selecionar o atributo na janela pop up) e um parametro de filtro é aberta uma janela para selecionar um personagem para realizar o teste.
 if parametro~="" and parametro~=nil and #arg==0 then
   --write("param != arg")
   --write(parametro)
   arg = {};
   local index = 0;
   for i in string.gmatch(parametro, "%S+") do
-  	index = index + 1;
-  	arg[index] = i;
+    index = index + 1;
+    arg[index] = i;
   end
 end
 local indice = tonumber(arg[1])
@@ -180,16 +186,17 @@ elseif indice == 6 then
 end
 ]]
 
-local trText= [[
+local trText = [[
 -- USO: /tr <Nº do TR 1:3> <filtro>
+-- /tr <numero 1 a 3 (opcional)> <filtro npc|pc|pcOnline|all|mine (opcional)>", descricao="Ficha Pathfinder. Ao usar /tr (sem parametros) abre um popup para selecionar um teste de resistencia. Será feito o teste de resistência do personagem mais recentemente atribuido. Ao usar /tr acompanhado de um numero e sem um filtro o teste de resistencia (1: fortitude, 2: reflexos, 3: vontade) é feito para o personagem mais recentemente atribuido. Ao usar /tr acompanhado de um valor (use -1 se quiser selecionar a resistencia na janela pop up) e um parametro de filtro é aberta uma janela para selecionar um personagem para realizar o teste.
 if parametro~="" and parametro~=nil and #arg==0 then
   --write("param != arg")
   --write(parametro)
   arg = {};
   local index = 0;
   for i in string.gmatch(parametro, "%S+") do
-  	index = index + 1;
-  	arg[index] = i;
+    index = index + 1;
+    arg[index] = i;
   end
 end
 local indice = tonumber(arg[1])
@@ -218,18 +225,19 @@ elseif indice == 3 then
   teste = teste .. (tonumber(personagem.trVon) or 0)
   rolar(teste, "Teste de Vontade de " .. (personagem.nome or "Nome"))
 end
-]];
+]]
 
-local iniText= [[
+local iniText = [[
 -- USO: /ini <filtro>
+-- /ini <filtro npc|pc|pcOnline|all|mine (opcional)>", descricao="Ficha Pathfinder. Ao usar /ini (sem parametros) a iniciativa do personagem mais recentemente atribuido é rolada. Ao usar /per acompanhado de um filtro é aberta uma janela para selecionar um personagem para rolar a iniciativa.
 if parametro~="" and parametro~=nil and #arg==0 then
   --write("param != arg")
   --write(parametro)
   arg = {};
   local index = 0;
   for i in string.gmatch(parametro, "%S+") do
-  	index = index + 1;
-  	arg[index] = i;
+    index = index + 1;
+    arg[index] = i;
   end
 end
 
@@ -245,57 +253,54 @@ end
 local teste = "1d20+"
 teste = teste .. (tonumber(personagem.iniciativa) or 0)
 rolar(teste, "Iniciativa de " .. (personagem.nome or "Nome"))
-]];
-rrpg.messaging.listen("HandleChatCommand", 
-	function (message)
-		
-		local args = {};
-		local index = 0;
-		for i in string.gmatch(message.parametro, "%S+") do
-			index = index + 1;
-			args[index] = i;
-		end
+]]
 
-		local obj = {parametro=message.parametro, arg=args};
+-- If using room ndb look for 'RRPG_Macros'
+-- If using user ndb look for 'macros' [mesas/global]
+local promise = Firecast.asyncOpenUserNDB("macros", {create=false})
+local node = nil
 
-		if message.comando == "ataq" or message.comando == "atq" then
-			local ataqFunction = Macros.compileMacro(ataqText, message.chat, "ataq");
-			ataqFunction(obj);
+local function AddMacro(nome,code)
+  local macro = nil
 
-			message.response = {handled = true};
+  -- TRY TO FIND IF MACRO ALREADY EXISTS
+  local macros = NDB.getChildNodes(node.global.macros)
+  for i=1, #macros, 1 do 
+    if macros[i].macro == nome then
+      -- MACRO EXIST CHECK IF OLDER VERSION
+      local currentVersion = tonumber(macros[i].version) or 0
+      if version > currentVersion then
+        -- THIS IS A NEWER VERSION, INSTALL
+        macro = macros[i]
+      else
+        -- CANCEL MACRO UPDATE, OLDER VERSION
+        return
+      end
+    end
+  end
 
-		elseif message.comando == "per" then
-			local perFunction = Macros.compileMacro(perText, message.chat, "per");
-			perFunction(obj);
+  -- MACRO DOESN'T EXISTS, CREATE NEW
+  if macro == nil then
+    macro = NDB.createChildNode(node.global.macros, "item")
+  end
 
-			message.response = {handled = true};
+  -- ADD MACRO DETAILS
+  macro.tipoMacro = "L"
+  macro.macro = nome
+  macro.version = version
+  macro.acoes = code
+end
 
-		elseif message.comando == "atr" then
-			local atrFunction = Macros.compileMacro(atrText, message.chat, "atr");
-			atrFunction(obj);
+promise:thenDo(
+  function(userNDB)
+    node = userNDB
 
-			message.response = {handled = true};
+    AddMacro("ataq", ataqText)
+    AddMacro("atq", ataqText)
+    AddMacro("per", perText)
+    AddMacro("atr", atrText)
+    AddMacro("tr", trText)
+    AddMacro("ini", iniText)
+  end);
 
-		elseif message.comando == "tr" then
-			local trFunction = Macros.compileMacro(trText, message.chat, "tr");
-			trFunction(obj);
 
-			message.response = {handled = true};
-
-		elseif message.comando == "ini" then
-			local iniFunction = Macros.compileMacro(iniText, message.chat, "ini");
-			iniFunction(obj);
-
-			message.response = {handled = true};
-
-		end
-	end);
-
-rrpg.messaging.listen("ListChatCommands",
-    function(message)
-        message.response = {{comando="/tr <numero 1 a 3 (opcional)> <filtro npc|pc|pcOnline|all|mine (opcional)>", descricao="Ficha Pathfinder. Ao usar /tr (sem parametros) abre um popup para selecionar um teste de resistencia. Será feito o teste de resistência do personagem mais recentemente atribuido. Ao usar /tr acompanhado de um numero e sem um filtro o teste de resistencia (1: fortitude, 2: reflexos, 3: vontade) é feito para o personagem mais recentemente atribuido. Ao usar /tr acompanhado de um valor (use -1 se quiser selecionar a resistencia na janela pop up) e um parametro de filtro é aberta uma janela para selecionar um personagem para realizar o teste."},
-                            {comando="/atr <numero 1 a 6 (opcional)> <filtro npc|pc|pcOnline|all|mine (opcional)>", descricao="Ficha Pathfinder. Ao usar /atr (sem parametros) abre um popup para selecionar um teste de resistencia. Será feito o teste de atributo do personagem mais recentemente atribuido. Ao usar /atr acompanhado de um numero e sem um filtro o teste de atributo (1: FOR, 2: DES, 3: CON, 4: INT, 5: SAB, 6:CAR) é feito para o personagem mais recentemente atribuido. Ao usar /atr acompanhado de um valor (use -1 se quiser selecionar o atributo na janela pop up) e um parametro de filtro é aberta uma janela para selecionar um personagem para realizar o teste."},
-                            {comando="/per <numero ou nome (opcional)> <filtro npc|pc|pcOnline|all|mine (opcional)>", descricao="Ficha Pathfinder. Ao usar /per (sem parametros) abre um popup para selecionar um teste de pericia. Será feito o teste de atributo do personagem mais recentemente atribuido. Ao usar /per acompanhado de um numero e sem um filtro o teste da pericia naquela posição da ficha será realizado. Ao usar /per acompanhado do nome da pericia o teste daquela pericia será realizado. Tente por o nome da pericia parecido com como está na ficha. O macro vai tentar ignorar letras maiusculas, acentos e outros. Ao usar /per acompanhado de um valor (numero ou nome, use -1 se quiser selecionar a pericia na janela pop up) e um parametro de filtro é aberta uma janela para selecionar um personagem para realizar o teste."},
-                            {comando="/ataq ou /atq <numero (opcional) <filtro npc|pc|pcOnline|all|mine (opcional)>", descricao="Ficha Pathfinder. Ao usar /per (sem parametros) abre um popup para selecionar um ataque avançado. Será feito o ataque com o personagem mais recentemente atribuido. Ao usar /per acompanhado de um numero e sem um filtro, o ataque naquela posição será realizado. Ao usar /per acompanhado de um valor (use -1 se quiser selecionar o ataque na janela pop up) e um parametro de filtro é aberta uma janela para selecionar um personagem para realizar o ataque."},
-                        	  {comando="/ini <filtro npc|pc|pcOnline|all|mine (opcional)>", descricao="Ficha Pathfinder. Ao usar /ini (sem parametros) a iniciativa do personagem mais recentemente atribuido é rolada. Ao usar /per acompanhado de um filtro é aberta uma janela para selecionar um personagem para rolar a iniciativa."}};
-    end);

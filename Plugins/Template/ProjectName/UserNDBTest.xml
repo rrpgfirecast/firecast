@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmUserNDBTest" align="client">
+	<scrollBox align="client">
+		<rectangle align="client" color="black" xradius="5" yradius="15" cornerType="round">
+	    	<button align="top" height="20" text="ADD NEW GLOBAL MACRO">
+	    		<event name="onClick">
+	        			local promise = Firecast.asyncOpenUserNDB("macros", {create=false})
+	        			-- If using room ndb look for 'RRPG_Macros'
+	        			-- If using user ndb look for 'macros' [mesas/global]
+	        			local node = await(promise)
+
+	        			-- ADD NEW MACRO
+	        			local nome = sheet.macroNome
+	        			local version = tonumber(sheet.macroVersion) or 0
+	        			local macro = nil
+
+	        			-- TRY TO FIND IF MACRO ALREADY EXISTS
+	        			local macros = NDB.getChildNodes(node.global.macros)
+	        			for i=1, #macros, 1 do 
+	        				if macros[i].macro == nome then
+	        					-- MACRO EXIST CHECK IF OLDER VERSION
+	        					local currentVersion = tonumber(macros[i].version) or 0
+	        					if version > currentVersion then
+	        						-- THIS IS A NEWER VERSION, INSTALL
+	        						macro = macros[i]
+	        					else
+	        						-- CANCEL MACRO UPDATE, OLDER VERSION
+	        						return
+	        					end
+	        				end
+	        			end
+
+	        			-- MACRO DOESN'T EXISTS, CREATE NEW
+	        			if macro == nil then
+	        				macro = NDB.createChildNode(node.global.macros, "item")
+	        			end
+
+	        			macro.tipoMacro = "L"
+	        			macro.macro = nome
+	        			macro.version = version
+	        			macro.acoes = sheet.macroCode
+	        		</event>
+	    	</button>
+	    	<layout align="top" height="25">
+	    		<label align="left" width="100" text="nome"/>
+	    		<edit align="client" field="macroNome"/>
+	    	</layout>
+	    	<layout align="top" height="25">
+	    		<label align="left" width="100" text="versao"/>
+	    		<edit align="client" field="macroVersion" type="number"/>
+	    	</layout>
+			<textEditor align="client" field="macroCode" margins="{left=10,right=10,bottom=10}"/>
+		</rectangle>
+	</scrollBox>
+</form>

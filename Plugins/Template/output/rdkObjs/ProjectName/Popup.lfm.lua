@@ -87,10 +87,10 @@ local function constructNew_frmPopup()
           self:setNodeDatabase(nil);
         end;
 
-        if self.scrollBox1 ~= nil then self.scrollBox1:destroy(); self.scrollBox1 = nil; end;
-        if self.popExemplo ~= nil then self.popExemplo:destroy(); self.popExemplo = nil; end;
         if self.popupButton ~= nil then self.popupButton:destroy(); self.popupButton = nil; end;
         if self.label1 ~= nil then self.label1:destroy(); self.label1 = nil; end;
+        if self.scrollBox1 ~= nil then self.scrollBox1:destroy(); self.scrollBox1 = nil; end;
+        if self.popExemplo ~= nil then self.popExemplo:destroy(); self.popExemplo = nil; end;
         self:_oldLFMDestroy();
     end;
 
