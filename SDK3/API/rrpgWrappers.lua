@@ -338,6 +338,14 @@ local function initMesaWrappedObjectFromHandle(handle)
 				return Async.Promise.wrap(_obj_invokeEx(self.handle, "AsyncOpenUserRoomNDB", name, options));			
 			end);	
 	end;
+	
+	function mesa:getFirecastURI()
+		if System.checkAPIVersion(87, 4) then
+			return _obj_invokeEx(self.handle, "GetFirecastURI");
+		else
+			return "";
+		end;
+	end;
 				
 	wObj.props["activeChat"] = {getter="getActiveChat", tipo="table"};					
 	wObj.props["audioPlayer"] = {getter="getAudioPlayer", tipo="table"};				
@@ -349,6 +357,7 @@ local function initMesaWrappedObjectFromHandle(handle)
 	wObj.props["sistema"] = {getter = "getSistema", tipo = "string"};	
 	wObj.props["msgBoasVindas"] = {getter = "getMsgBoasVindas", tipo = "string"};	
 	wObj.props["codigoInterno"] = {getter = "getCodigoInterno", tipo = "int"};	
+	wObj.props["firecastURI"] = {getter = "getFirecastURI", tipo = "string"};	
 	wObj.props["isRestrito18Anos"] = {getter = "getIsRestrito18Anos", tipo = "bool"};	
 	wObj.props["haVagas"] = {getter = "getHaVagas", tipo = "bool"};		
 	wObj.props["isModerada"] = {getter = "getIsModerada", tipo = "bool"};	
@@ -569,6 +578,14 @@ local function initBibliotecaItemWrappedObjectFromHandle(handle)
 			end);	
 	end;		
 	
+	function bibItem:getFirecastURI()
+		if System.checkAPIVersion(87, 4) then
+			return _obj_invokeEx(self.handle, "GetFirecastURI");
+		else
+			return "";
+		end;	
+	end;
+	
 	function bibItem:getMesa() return rrpgWrappers.objectFromID(_obj_getProp(self.handle, "MesaObjectID")); end;
 	function bibItem:getNome() return _obj_getProp(self.handle, "Nome"); end;
 	function bibItem:getPai() return rrpgWrappers.objectFromID(_obj_getProp(self.handle, "ItemMaeObjectID")); end;
@@ -598,7 +615,8 @@ local function initBibliotecaItemWrappedObjectFromHandle(handle)
 	wObj.props["parent"] = wObj.props["pai"];
 	wObj.props["name"] = wObj.props["nome"];	
 	wObj.props["children"] = wObj.props["filhos"];
-	wObj.props["ownerLogin"] = wObj.props["loginDono"];
+	wObj.props["firecastURI"] = {getter = "getFirecastURI", tipo = "string"};	
+	wObj.props["ownerLogin"] = wObj.props["loginDono"];	
 	wObj.props["creatorLogin"] = wObj.props["loginCriador"];
 	wObj.props["creator"] = wObj.props["criador"];
 	wObj.props["owner"] = wObj.props["dono"];

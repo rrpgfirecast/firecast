@@ -1,8 +1,14 @@
 local objs = require("rrpgObjs.lua");
 local ndb = require("ndb.lua");
 local System = require("system.lua");
+local Async = require("async.lua");
 
-gui = {}
+if System.checkAPIVersion(87, 4) then
+	gui = objs.objectFromHandle(_obj_newObject("TLuaGUIServices"));
+else
+	gui = {};
+end
+
 GUI = gui;
 
 local guiLoaders = {};
@@ -20,10 +26,8 @@ local function controlFromHandle(handle)
 	function ctrl:endUpdate() _obj_invoke(self.handle, "EndUpdate"); end
 	function ctrl:needRepaint() _obj_invoke(self.handle, "Repaint"); end
 	
-	
 	function ctrl:getVisible() return _obj_getProp(self.handle, "Visible"); end;
-	function ctrl:setVisible(visible) _obj_setProp(self.handle, "Visible", visible == true) end;
-	
+	function ctrl:setVisible(visible) _obj_setProp(self.handle, "Visible", visible == true) end;	
 	
 	function ctrl:getAlign() return _obj_getProp(self.handle, "Align"); end;
 	function ctrl:setAlign(align) _obj_setProp(self.handle, "Align", align); end;	
@@ -1951,6 +1955,15 @@ function gui.openInBrowser(url)
 		end;
 		
 		return _gui_openInBrowser(url);	
+	end;
+end;
+
+function gui.asyncOpenFirecastURI(uri, params)
+	if System.checkAPIVersion(87, 4) then
+		local promiseHandle = _obj_invokeEx(gui.handle, "AsyncOpenFirecastURI", uri, params);
+		return Async.Promise.wrap(promiseHandle);
+	else
+		return Async.Promise.failed("No API Support");
 	end;
 end;
 
