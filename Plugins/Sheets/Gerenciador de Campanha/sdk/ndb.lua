@@ -372,8 +372,8 @@ function ndb.load(fileName, userName)
 	return ndb.getRoot(openDB);
 end;
 
-function ndb.newMemNodeDatabase()
-	local openDB = ndb.openNodeDatabaseFromHandle(_obj_newObject("TLuaMemoryNodeDatabase"));
+function ndb.newMemNodeDatabase(initialContent)
+	local openDB = ndb.openNodeDatabaseFromHandle(_obj_newObject("TLuaMemoryNodeDatabase", initialContent));	
 	return ndb.getRoot(openDB);
 end;
 

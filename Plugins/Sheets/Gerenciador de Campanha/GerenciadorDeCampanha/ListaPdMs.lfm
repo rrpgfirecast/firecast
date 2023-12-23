@@ -32,11 +32,43 @@
             <checkBox align="top" height="25" text="Formatar texto: $(text)" field="$(field)Use"/>
             <layout align="top" height="25">
                 <label align="left" width="100" text="Cor do Texto"/>
-                <colorComboBox align="client" field="$(field)Color" useAlpha="false"/>
+                <rectangle name="$(field)Color" align="client">
+                    <event name="onClick">
+                        local promise = Dialogs.asyncSelectTalemarkColor(sheet.$(field)Color);       
+                        local r, color = pawait(promise);
+
+                        if r then
+                            self["$(popup)"].node.$(field)Color = color
+                            self.$(field)Color.color = sheet.$(field)Color
+                        end; 
+                    </event>
+                </rectangle>
+                <dataLink field="$(field)Color">
+                    <event name="onChange">
+                        if self["$(popup)"].node==nil then return end
+                        self.$(field)Color.color = self["$(popup)"].node.$(field)Color
+                    </event>
+                </dataLink>
             </layout>
             <layout align="top" height="25">
                 <label align="left" width="100" text="Cor do Fundo"/>
-                <colorComboBox align="client" field="$(field)ColorBG"/>
+                <rectangle name="$(field)ColorBG" align="client">
+                    <event name="onClick">
+                        local promise = Dialogs.asyncSelectTalemarkColor(sheet.$(field)ColorBG);
+                        local r, color = pawait(promise);
+
+                        if r then
+                            self["$(popup)"].node.$(field)ColorBG = color
+                            self.$(field)ColorBG.color = sheet.$(field)ColorBG
+                        end; 
+                    </event>
+                </rectangle>
+                <dataLink field="$(field)ColorBG">
+                    <event name="onChange">
+                        if self["$(popup)"].node==nil then return end
+                        self.$(field)ColorBG.color = self["$(popup)"].node.$(field)ColorBG
+                    </event>
+                </dataLink>
             </layout>
             <checkBox align="top" height="25" text="Negrito" field="$(field)Negrito"/>
             <checkBox align="top" height="25" text="Sublinhado" field="$(field)Sublinhado"/>
@@ -82,7 +114,11 @@
         </layout>
         <layout align="top" height="25" margins="{left=5}">
             <button align="left" text="?" width="25" onClick="GUI.openInBrowser('https://firecast.app/sdk3/StringdecoresnoLuaForm.html')"/>
+            <comboBox align="client" field="sortMode" items="{'Organizar: Nome', 'Organizar: Cor'}" values="{'Nome', 'Cor'}" value="Nome"/>
         </layout>
+        <event name="onNodeReady">
+
+        </event>
     </popup>
     <popup name="BarPopup" width="150" height="66" backOpacity="0" margins="{left=4, right=4, top=4, bottom=4}" autoScopeNode="false">
         <rectangle align="client" color="white" xradius="5" yradius="5">
@@ -193,19 +229,19 @@
     </popup>
 
     <popup name="TextDefaultPopup" width="250" height="200" margins="{top=25,bottom=25,left=25,right=25}">
-        <TextOptions text="Normal" field="normal"/>
+        <TextOptions text="Normal" field="normal" popup="TextDefaultPopup"/>
     </popup>
     <popup name="TextActionPopup" width="250" height="200" margins="{top=25,bottom=25,left=25,right=25}">
-        <TextOptions text="Ação" field="acao"/>
+        <TextOptions text="Ação" field="acao" popup="TextActionPopup"/>
     </popup>
     <popup name="TextThoughtPopup" width="250" height="200" margins="{top=25,bottom=25,left=25,right=25}">
-        <TextOptions text="Pensamento" field="pensamento"/>
+        <TextOptions text="Pensamento" field="pensamento" popup="TextThoughtPopup"/>
     </popup>
     <popup name="TextSpeechPopup" width="250" height="200" margins="{top=25,bottom=25,left=25,right=25}">
-        <TextOptions text="Fala" field="fala"/>
+        <TextOptions text="Fala" field="fala" popup="TextSpeechPopup"/>
     </popup>
     <popup name="TextOffPopup" width="250" height="200" margins="{top=25,bottom=25,left=25,right=25}">
-        <TextOptions text="Off" field="off"/>
+        <TextOptions text="Off" field="off" popup="TextOffPopup"/>
     </popup>
 
     <script>
@@ -413,6 +449,7 @@
                     ]]>
                 </event>
             </button>
+            <button align="left" text="❌" width="25" onClick="Firecast.getMesaDe(self).chat:setImpersonation({});" hint="Remove personificações do chat."/>
             <button align="left" text="ℹ️" width="25" hint="Creditos.">
                 <event name="onClick">
                     local pop = self:findControlByName("CreditsPopup");
@@ -443,7 +480,15 @@
         <layout align="client" visible="true" name="listaPdMPublica">
             <recordList align="client" name="lista" field="lista" templateForm="frmAvatar" layout="horizontalTiles">
                 <event name="onCompare"><![CDATA[
-                    return Utils.compareStringPtBr(nodeA.nome, nodeB.nome);            
+                    if sheet.sortMode=="Cor" then
+                        local diff = ((tonumber(nodeA.attitudeCounter) or 0)-(tonumber(nodeB.attitudeCounter) or 0))
+                        if diff~= 0 then
+                            return diff
+                        end
+                    end
+                    
+                    return Utils.compareStringPtBr(nodeA.nome, nodeB.nome)
+                    
                     ]]>
                 </event>
             </recordList>
