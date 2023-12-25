@@ -100,7 +100,7 @@ local function constructNew_frmDetailList()
     obj.textEditor1:setName("textEditor1");
 
     obj._e_event0 = obj.button1:addEventListener("onClick",
-        function (_)
+        function (_, event)
             self.rclSelector:append();
         end, obj);
 

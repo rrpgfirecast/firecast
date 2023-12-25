@@ -65,7 +65,7 @@ local function constructNew_frmAvatar()
     obj.image1:setName("image1");
 
     obj._e_event0 = obj.image1:addEventListener("onStartDrag",
-        function (_, drag, x, y)
+        function (_, drag, x, y, event)
             if drag then
             				    	drag:addData("imageURL", sheet.avatar)
             				    end

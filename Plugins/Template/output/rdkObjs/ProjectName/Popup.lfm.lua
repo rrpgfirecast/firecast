@@ -63,7 +63,7 @@ local function constructNew_frmPopup()
     obj.label1:setName("label1");
 
     obj._e_event0 = obj.popupButton:addEventListener("onClick",
-        function (_)
+        function (_, event)
             local pop = self:findControlByName("popExemplo");
             				
             				if pop ~= nil then

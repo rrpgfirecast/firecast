@@ -1,20 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<module sdkVersion="3.6c">
+<module sdkVersion="3.6e beta 5">
     <id>Ambesek.Auto.Updater</id>
-    <version>1.1.1</version>
+    <version>1.2</version>
     <settings>
         <automaticStringLocalization>true</automaticStringLocalization>
     </settings>
     <info lang="pt-BR">
         <!--Informações do plugin na língua "pt-BR". Você pode ter várias tags "info", uma para cada tradução que quiser.-->
         <name>Plugin Auto Updater</name>
-        <description>Verifica seus plugins e encontra quais tem atualizações disponíveis no git do firecast. Também permite acesso a plugins não instalados do git.</description>
+        <description>Verifica seus plugins e macros, e encontra quais tem atualizações disponíveis no git do firecast. Também permite acesso a plugins não instalados do git.</description>
         <author>Ambesek</author>
         <site>http://pt-br.rpgmeister.wikia.com/wiki/Main_Page</site>
         <contact>vinnyrpgmeister@gmail.com</contact>
     </info>
     
     <info lang="en">        
-        <description>Check your plugins and find which ones have updates available in Firecast git. It also allows access to not installed git plugins.</description>            
+        <description>Check your plugins and macros, and find which ones have updates available in Firecast git. It also allows access to not installed git plugins.</description>            
     </info>    
 </module>

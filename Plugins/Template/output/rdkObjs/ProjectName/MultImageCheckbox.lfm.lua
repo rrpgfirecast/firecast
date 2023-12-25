@@ -86,7 +86,7 @@ local function constructNew_frmMultImageCheckbox()
 
 
     obj._e_event0 = obj.button1:addEventListener("onClick",
-        function (_)
+        function (_, event)
             if sheet.imageCounter == nil then
             						sheet.imageCounter = 0;
             					end;

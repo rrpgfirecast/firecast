@@ -111,7 +111,7 @@ local function constructNew_frmRclCounter()
     obj.rclName:setLayout("vertical");
 
     obj._e_event0 = obj.button1:addEventListener("onClick",
-        function (_)
+        function (_, event)
             -- Aumenta um contador enquanto adiciona um objeto
             					if sheet~=nil then
             						local objetos = NDB.getChildNodes(sheet.listaDe);
@@ -133,7 +133,7 @@ local function constructNew_frmRclCounter()
         end, obj);
 
     obj._e_event1 = obj.button2:addEventListener("onClick",
-        function (_)
+        function (_, event)
             -- Aumenta um contador enquanto adiciona um objeto
             					if sheet~=nil then
             						local objetos = NDB.getChildNodes(sheet.listaDe);

@@ -53,7 +53,7 @@ local function constructNew_frmImportExport()
     obj.button2:setName("button2");
 
     obj._e_event0 = obj.button1:addEventListener("onClick",
-        function (_)
+        function (_, event)
             local xml = NDB.exportXML(sheet);
             
             				local export = {};
@@ -70,7 +70,7 @@ local function constructNew_frmImportExport()
         end, obj);
 
     obj._e_event1 = obj.button2:addEventListener("onClick",
-        function (_)
+        function (_, event)
             Dialogs.openFile("Importar Ficha", "application/xml", false, 
             					function(arquivos)
             						local arq = arquivos[1];

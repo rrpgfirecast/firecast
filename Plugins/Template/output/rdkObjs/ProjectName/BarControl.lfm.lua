@@ -194,32 +194,32 @@ local function constructNew_frmBarControl()
     obj.button6:setName("button6");
 
     obj._e_event0 = obj.button1:addEventListener("onClick",
-        function (_)
+        function (_, event)
             addCurrent()
         end, obj);
 
     obj._e_event1 = obj.button2:addEventListener("onClick",
-        function (_)
+        function (_, event)
             subtractCurrent()
         end, obj);
 
     obj._e_event2 = obj.button3:addEventListener("onClick",
-        function (_)
+        function (_, event)
             setCurrent()
         end, obj);
 
     obj._e_event3 = obj.button4:addEventListener("onClick",
-        function (_)
+        function (_, event)
             addMax()
         end, obj);
 
     obj._e_event4 = obj.button5:addEventListener("onClick",
-        function (_)
+        function (_, event)
             subtractMax()
         end, obj);
 
     obj._e_event5 = obj.button6:addEventListener("onClick",
-        function (_)
+        function (_, event)
             setMax()
         end, obj);
 
