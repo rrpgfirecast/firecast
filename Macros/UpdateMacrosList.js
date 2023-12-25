@@ -22,13 +22,14 @@ var walkSync = function(dir, filelist) {
 };
 
 function escapeXml(unsafe) {
-    return unsafe.replace(/[<>&'"]/g, function (c) {
+    return unsafe.replace(/[<>&'" ]/g, function (c) {
         switch (c) {
             case '<': return '&lt;';
             case '>': return '&gt;';
             case '&': return '&amp;';
             case '\'': return '&apos;';
             case '"': return '&quot;';
+            case ' ': return '%20';
         }
     });
 };
