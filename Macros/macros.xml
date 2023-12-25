@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+	<element name="7sVa" path="7thSea/7sVa.lua" link="https://raw.githubusercontent.com/rrpgfirecast/firecast/master/Macros/7thSea/7sVa.lua"/>
+	<element name="7sVb" path="7thSea/7sVb.lua" link="https://raw.githubusercontent.com/rrpgfirecast/firecast/master/Macros/7thSea/7sVb.lua"/>
+	<element name="acn" path="Ao Cair da Noite/acn.lua" link="https://raw.githubusercontent.com/rrpgfirecast/firecast/master/Macros/Ao Cair da Noite/acn.lua"/>
+	<element name="Uno" path="Cards/Uno.lua" link="https://raw.githubusercontent.com/rrpgfirecast/firecast/master/Macros/Cards/Uno.lua"/>
+	<element name="base_para_magias" path="D&amp;D5e/base_para_magias.lua" link="https://raw.githubusercontent.com/rrpgfirecast/firecast/master/Macros/D&amp;D5e/base_para_magias.lua"/>
+	<element name="r2" path="D&amp;D5e/r2.lua" link="https://raw.githubusercontent.com/rrpgfirecast/firecast/master/Macros/D&amp;D5e/r2.lua"/>
+	<element name="skills_saves" path="D&amp;D5e/skills_saves.lua" link="https://raw.githubusercontent.com/rrpgfirecast/firecast/master/Macros/D&amp;D5e/skills_saves.lua"/>
+	<element name="area" path="D20/area.lua" link="https://raw.githubusercontent.com/rrpgfirecast/firecast/master/Macros/D20/area.lua"/>
+	<element name="area2" path="D20/area2.lua" link="https://raw.githubusercontent.com/rrpgfirecast/firecast/master/Macros/D20/area2.lua"/>
+	<element name="ataque" path="D20/ataque.lua" link="https://raw.githubusercontent.com/rrpgfirecast/firecast/master/Macros/D20/ataque.lua"/>
+	<element name="ataque2" path="D20/ataque2.lua" link="https://raw.githubusercontent.com/rrpgfirecast/firecast/master/Macros/D20/ataque2.lua"/>
+	<element name="ataqueTotal" path="D20/ataqueTotal.lua" link="https://raw.githubusercontent.com/rrpgfirecast/firecast/master/Macros/D20/ataqueTotal.lua"/>
+	<element name="atributo" path="D20/atributo.lua" link="https://raw.githubusercontent.com/rrpgfirecast/firecast/master/Macros/D20/atributo.lua"/>
+	<element name="att" path="D20/att.lua" link="https://raw.githubusercontent.com/rrpgfirecast/firecast/master/Macros/D20/att.lua"/>
+	<element name="bastao" path="D20/bastao.lua" link="https://raw.githubusercontent.com/rrpgfirecast/firecast/master/Macros/D20/bastao.lua"/>
+	<element name="cd" path="D20/cd.lua" link="https://raw.githubusercontent.com/rrpgfirecast/firecast/master/Macros/D20/cd.lua"/>
+	<element name="d" path="D20/d.lua" link="https://raw.githubusercontent.com/rrpgfirecast/firecast/master/Macros/D20/d.lua"/>
+	<element name="dano" path="D20/dano.lua" link="https://raw.githubusercontent.com/rrpgfirecast/firecast/master/Macros/D20/dano.lua"/>
+	<element name="dcritico" path="D20/dcritico.lua" link="https://raw.githubusercontent.com/rrpgfirecast/firecast/master/Macros/D20/dcritico.lua"/>
+	<element name="macro" path="Ficha/Macro para Demônio A Queda/macro.lua" link="https://raw.githubusercontent.com/rrpgfirecast/firecast/master/Macros/Ficha/Macro para Demônio A Queda/macro.lua"/>
+	<element name="AfastarMortosVivos" path="Ficha/Pack Old Dragon/AfastarMortosVivos.lua" link="https://raw.githubusercontent.com/rrpgfirecast/firecast/master/Macros/Ficha/Pack Old Dragon/AfastarMortosVivos.lua"/>
+	<element name="Ataque" path="Ficha/Pack Old Dragon/Ataque.lua" link="https://raw.githubusercontent.com/rrpgfirecast/firecast/master/Macros/Ficha/Pack Old Dragon/Ataque.lua"/>
+	<element name="JogadaDeProteção" path="Ficha/Pack Old Dragon/JogadaDeProteção.lua" link="https://raw.githubusercontent.com/rrpgfirecast/firecast/master/Macros/Ficha/Pack Old Dragon/JogadaDeProteção.lua"/>
+	<element name="TestesDeAtributos" path="Ficha/Pack Old Dragon/TestesDeAtributos.lua" link="https://raw.githubusercontent.com/rrpgfirecast/firecast/master/Macros/Ficha/Pack Old Dragon/TestesDeAtributos.lua"/>
+	<element name="recoverSkills" path="Ficha/recoverSkills.lua" link="https://raw.githubusercontent.com/rrpgfirecast/firecast/master/Macros/Ficha/recoverSkills.lua"/>
+	<element name="ataq" path="Ficha/RPGmeister/ataq.lua" link="https://raw.githubusercontent.com/rrpgfirecast/firecast/master/Macros/Ficha/RPGmeister/ataq.lua"/>
+	<element name="atr" path="Ficha/RPGmeister/atr.lua" link="https://raw.githubusercontent.com/rrpgfirecast/firecast/master/Macros/Ficha/RPGmeister/atr.lua"/>
+	<element name="per" path="Ficha/RPGmeister/per.lua" link="https://raw.githubusercontent.com/rrpgfirecast/firecast/master/Macros/Ficha/RPGmeister/per.lua"/>
+	<element name="tr" path="Ficha/RPGmeister/tr.lua" link="https://raw.githubusercontent.com/rrpgfirecast/firecast/master/Macros/Ficha/RPGmeister/tr.lua"/>
+	<element name="setSkill" path="Ficha/setSkill.lua" link="https://raw.githubusercontent.com/rrpgfirecast/firecast/master/Macros/Ficha/setSkill.lua"/>
+	<element name="showSkills" path="Ficha/showSkills.lua" link="https://raw.githubusercontent.com/rrpgfirecast/firecast/master/Macros/Ficha/showSkills.lua"/>
+	<element name="useSkill" path="Ficha/useSkill.lua" link="https://raw.githubusercontent.com/rrpgfirecast/firecast/master/Macros/Ficha/useSkill.lua"/>
+	<element name="got" path="GoT/got.lua" link="https://raw.githubusercontent.com/rrpgfirecast/firecast/master/Macros/GoT/got.lua"/>
+	<element name="alvoaleatorio" path="GURPS/alvoaleatorio.lua" link="https://raw.githubusercontent.com/rrpgfirecast/firecast/master/Macros/GURPS/alvoaleatorio.lua"/>
+	<element name="critico" path="GURPS/critico.lua" link="https://raw.githubusercontent.com/rrpgfirecast/firecast/master/Macros/GURPS/critico.lua"/>
+	<element name="falhacritica" path="GURPS/falhacritica.lua" link="https://raw.githubusercontent.com/rrpgfirecast/firecast/master/Macros/GURPS/falhacritica.lua"/>
+	<element name="headshot" path="GURPS/headshot.lua" link="https://raw.githubusercontent.com/rrpgfirecast/firecast/master/Macros/GURPS/headshot.lua"/>
+	<element name="re" path="GURPS/re.lua" link="https://raw.githubusercontent.com/rrpgfirecast/firecast/master/Macros/GURPS/re.lua"/>
+	<element name="rg" path="GURPS/rg.lua" link="https://raw.githubusercontent.com/rrpgfirecast/firecast/master/Macros/GURPS/rg.lua"/>
+	<element name="explosao" path="Lenda dos 5 Aneis/explosao.lua" link="https://raw.githubusercontent.com/rrpgfirecast/firecast/master/Macros/Lenda dos 5 Aneis/explosao.lua"/>
+	<element name="l5r" path="Lenda dos 5 Aneis/l5r.lua" link="https://raw.githubusercontent.com/rrpgfirecast/firecast/master/Macros/Lenda dos 5 Aneis/l5r.lua"/>
+	<element name="ua" path="O Um Anel/ua.lua" link="https://raw.githubusercontent.com/rrpgfirecast/firecast/master/Macros/O Um Anel/ua.lua"/>
+	<element name="ore" path="ORE/ore.lua" link="https://raw.githubusercontent.com/rrpgfirecast/firecast/master/Macros/ORE/ore.lua"/>
+	<element name="boostdie" path="Outros/boostdie.lua" link="https://raw.githubusercontent.com/rrpgfirecast/firecast/master/Macros/Outros/boostdie.lua"/>
+	<element name="dishes" path="Pendragon 5.2/dishes.lua" link="https://raw.githubusercontent.com/rrpgfirecast/firecast/master/Macros/Pendragon 5.2/dishes.lua"/>
+	<element name="feast" path="Pendragon 5.2/feast.lua" link="https://raw.githubusercontent.com/rrpgfirecast/firecast/master/Macros/Pendragon 5.2/feast.lua"/>
+	<element name="knight" path="Pendragon 5.2/knight.lua" link="https://raw.githubusercontent.com/rrpgfirecast/firecast/master/Macros/Pendragon 5.2/knight.lua"/>
+	<element name="poke" path="Pokémon/poke.lua" link="https://raw.githubusercontent.com/rrpgfirecast/firecast/master/Macros/Pokémon/poke.lua"/>
+	<element name="sw" path="Savage Worlds/sw.lua" link="https://raw.githubusercontent.com/rrpgfirecast/firecast/master/Macros/Savage Worlds/sw.lua"/>
+	<element name="sr" path="Shadowrun/sr.lua" link="https://raw.githubusercontent.com/rrpgfirecast/firecast/master/Macros/Shadowrun/sr.lua"/>
+	<element name="sw" path="Star Wars Genesis/sw.lua" link="https://raw.githubusercontent.com/rrpgfirecast/firecast/master/Macros/Star Wars Genesis/sw.lua"/>
+	<element name="compulsao" path="Storytelling/compulsao.lua" link="https://raw.githubusercontent.com/rrpgfirecast/firecast/master/Macros/Storytelling/compulsao.lua"/>
+	<element name="ds" path="Storytelling/ds.lua" link="https://raw.githubusercontent.com/rrpgfirecast/firecast/master/Macros/Storytelling/ds.lua"/>
+	<element name="st" path="Storytelling/st.lua" link="https://raw.githubusercontent.com/rrpgfirecast/firecast/master/Macros/Storytelling/st.lua"/>
+	<element name="v5" path="Storytelling/v5.lua" link="https://raw.githubusercontent.com/rrpgfirecast/firecast/master/Macros/Storytelling/v5.lua"/>
+	<element name="atencao" path="Uteis/atencao.lua" link="https://raw.githubusercontent.com/rrpgfirecast/firecast/master/Macros/Uteis/atencao.lua"/>
+	<element name="bar" path="Uteis/bar.lua" link="https://raw.githubusercontent.com/rrpgfirecast/firecast/master/Macros/Uteis/bar.lua"/>
+	<element name="calc" path="Uteis/calc.lua" link="https://raw.githubusercontent.com/rrpgfirecast/firecast/master/Macros/Uteis/calc.lua"/>
+	<element name="coin" path="Uteis/coin.lua" link="https://raw.githubusercontent.com/rrpgfirecast/firecast/master/Macros/Uteis/coin.lua"/>
+	<element name="descansar" path="Uteis/descansar.lua" link="https://raw.githubusercontent.com/rrpgfirecast/firecast/master/Macros/Uteis/descansar.lua"/>
+	<element name="espec" path="Uteis/espec.lua" link="https://raw.githubusercontent.com/rrpgfirecast/firecast/master/Macros/Uteis/espec.lua"/>
+	<element name="find" path="Uteis/find.lua" link="https://raw.githubusercontent.com/rrpgfirecast/firecast/master/Macros/Uteis/find.lua"/>
+	<element name="kick" path="Uteis/kick.lua" link="https://raw.githubusercontent.com/rrpgfirecast/firecast/master/Macros/Uteis/kick.lua"/>
+	<element name="math" path="Uteis/math.lua" link="https://raw.githubusercontent.com/rrpgfirecast/firecast/master/Macros/Uteis/math.lua"/>
+	<element name="mod" path="Uteis/mod.lua" link="https://raw.githubusercontent.com/rrpgfirecast/firecast/master/Macros/Uteis/mod.lua"/>
+	<element name="rollbar" path="Uteis/rollbar.lua" link="https://raw.githubusercontent.com/rrpgfirecast/firecast/master/Macros/Uteis/rollbar.lua"/>
+	<element name="show" path="Uteis/show.lua" link="https://raw.githubusercontent.com/rrpgfirecast/firecast/master/Macros/Uteis/show.lua"/>
+	<element name="timer" path="Uteis/timer.lua" link="https://raw.githubusercontent.com/rrpgfirecast/firecast/master/Macros/Uteis/timer.lua"/>
+	<element name="TrocaDeCor" path="Uteis/TrocaDeCor.lua" link="https://raw.githubusercontent.com/rrpgfirecast/firecast/master/Macros/Uteis/TrocaDeCor.lua"/>
+	<element name="voz" path="Uteis/voz.lua" link="https://raw.githubusercontent.com/rrpgfirecast/firecast/master/Macros/Uteis/voz.lua"/>
+</root> 
