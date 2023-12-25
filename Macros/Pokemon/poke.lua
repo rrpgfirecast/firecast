@@ -1,4 +1,4 @@
-﻿local num = arg[1];
+local num = arg[1];
 if num == nil or num == "?" then
 	escrever("Use: /poke <frase>");
 	escrever("Cada numero entre 1 e 802 no inicio de uma palavra vai ser substituido por um pokemon.");
