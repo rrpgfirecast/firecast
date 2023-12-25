@@ -13,7 +13,7 @@ if invalid then
   local input = true;
 
   while input do
-    values[aux+1] = tonumber(inputQuery("Bônus de Ataque. Deixe em branco pra terminar. ", nil, true));
+    values[aux+1] = tonumber(inputQuery("BÃ´nus de Ataque. Deixe em branco pra terminar. ", nil, true));
     if values[aux+1] == nil then
       input = false;
     else

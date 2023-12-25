@@ -1,9 +1,9 @@
--- faz uma rolagem de d20 + bonus
+﻿-- faz uma rolagem de d20 + bonus
 local bonus= tonumber(arg[1]); 
 local info = arg[2];
 
 if bonus == nil then
-  bonus = tonumber(inputQuery("B�nus."));
+  bonus = tonumber(inputQuery("Bônus."));
   info = inputQuery("Teste de ?.", nil, true);
 end; 
 

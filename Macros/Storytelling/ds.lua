@@ -1,4 +1,4 @@
--- Faz a rolagem seguindo as regras de Storytelling
+﻿-- Faz a rolagem seguindo as regras de Storytelling
 local dados = 1;
 local dificuldade = 10;
 
@@ -39,7 +39,7 @@ while explosao > 0 do
 end;
 
 if drama then
-	enviar("Falha dram�tica!");
+	enviar("Falha dramática!");
 else 
 	enviar(sucessos .. " Sucesso(s)!");
 end;

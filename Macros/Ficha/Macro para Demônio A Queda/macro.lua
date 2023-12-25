@@ -1,4 +1,4 @@
-local indice = tonumber(arg[1]);
+﻿local indice = tonumber(arg[1]);
 local dificuldade1 = tonumber(arg[2]);
 local bonus = tonumber(arg[3]);
 local nome = parametro;

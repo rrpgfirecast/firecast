@@ -1,4 +1,4 @@
-local indice = tonumber(arg[1]);
+﻿local indice = tonumber(arg[1]);
 local mod = arg[2];
 local texto = "";
 local personagem = sheet;

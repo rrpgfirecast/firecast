@@ -1,4 +1,4 @@
--- MACRO [V:AM - V5 2.0] RRPG8
+﻿-- MACRO [V:AM - V5 2.0] RRPG8
 
 	-- INICIALIZANDO E CAPTANDO VARIÁVEIS E ARGUMENTOS
     local dados = tonumber(arg[1]) or 1;
@@ -104,19 +104,19 @@
     local text = "[§K2]Sucessos: [§K1]" .. sucessos .. textDesempate;
  
     if (dez>= 2 and dezFome == 0) then
-        text = text .. "     [§B][§K3]𝕮𝖗𝖎𝖙𝖎𝖈𝖔[§B]";
+        text = text .. "     [§B][§K3]Crítico[§B]";
     end;
  
     if ((dez+dezFome)>= 2 and dezFome >= 1) then
-        text = text .. "     [§B][§K7]𝕮𝖗𝖎𝖙𝖎𝖈𝖔 𝖁𝖎𝖔𝖑𝖊𝖓𝖙𝖔[§B]";
+        text = text .. "     [§B][§K7]Crítico Violento[§B]";
     end;
  
     if (sucessos == 0 and um >= 1 and umFome == 0) then
-        text = text .. "     [§B][§K7]𝕱𝖆𝖑𝖍𝖆 𝕮𝖗𝖎𝖙𝖎𝖈𝖆[§B]";
+        text = text .. "     [§B][§K7]Falha Crítica[§B]";
     end;
  
     if (sucessos == 0 and umFome >= 1) then
-        text = text .. "     [§B][§K#AD0000]𝕱𝖆𝖑𝖍𝖆 𝕭𝖊𝖘𝖙𝖎𝖆𝖑[§B]";
+        text = text .. "     [§B][§K#AD0000]Falha Bestial[§B]";
     end;
  
-    enviar("‎‎‎\n"..text);
+    enviar("\n"..text);
