@@ -1427,9 +1427,7 @@ local function richEditFromHandle(handle)
 	function ctrl:getSelectionFontStyle() if System.checkAPIVersion(87, 4) then return _obj_invokeEx(self.handle, "LGetSelectionFontStyle"); else return {}; end; end;
 	function ctrl:getSelectionFloat() if System.checkAPIVersion(87, 4) then return _obj_invokeEx(self.handle, "LGetSelectionFloat"); else return "none"; end; end;
 	function ctrl:getSelectionParaAlign() if System.checkAPIVersion(87, 4) then return _obj_invokeEx(self.handle, "LGetSelectionParaAlign"); else return "left"; end; end;
-	function ctrl:setSelectionPosInChars(startPos, endPos) if System.checkAPIVersion(87, 4) then return _obj_invokeEx(self.handle, "LSetSelectionPosInChars", startPos, endPos); end; end;
-	function ctrl:setSelectionPosInGlyphs(startPos, endPos) if System.checkAPIVersion(87, 4) then return _obj_invokeEx(self.handle, "LSetSelectionPosInGlyphs", startPos, endPos); end; end;
-	
+		
 	function ctrl:gotoStart(holdSelection) if System.checkAPIVersion(87, 4) then return _obj_invokeEx(self.handle, "LGotoStart", holdSelection); end; end;
 	function ctrl:gotoEnd(holdSelection) if System.checkAPIVersion(87, 4) then return _obj_invokeEx(self.handle, "LGotoEnd", holdSelection); end; end;
 	function ctrl:gotoNext(holdSelection) if System.checkAPIVersion(87, 4) then return _obj_invokeEx(self.handle, "LGotoNext", holdSelection); end; end;
