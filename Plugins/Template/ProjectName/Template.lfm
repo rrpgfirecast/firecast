@@ -96,7 +96,7 @@
                 <tab title="EditBar">
                     <import file="EditBar.lfm"/>
                 </tab>
-                <tab title="NDB">
+                <tab title="Macros">
                     <import file="UserNDBTest.xml"/>
                 </tab>
             </tabControl>

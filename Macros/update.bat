@@ -1,0 +1,2 @@
+node UpdateMacrosList.js
+pause

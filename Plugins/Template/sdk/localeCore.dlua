@@ -1,4 +1,6 @@
-﻿local Locale = {};
+﻿local System = require("system.lua");
+local Objs = require("rrpgObjs.lua");
+local Locale = {};
 
 function Locale.lang(txtId)
 	return _system_locale_lang(txtId);
@@ -51,6 +53,52 @@ end;
 
 function Locale.autoEval(...)
 	return _system_locale_autoEval(...);
+end;
+
+function Locale.__createNullLocalizedTexts()
+	local nullTxts = {};
+	
+	function nullTxts:lang(textId)
+		error("No API Support");
+	end;
+	
+	function nullTxts:tryLang(textId)
+		return nil;
+	end;
+	
+	function nullTxts:loadTexts(langTexts)
+	end;
+	
+	function nullTxts:addText(localeId, textId, text)
+	end;
+	
+	return nullTxts;	
+end;
+
+function Locale.newLocalizedTexts()
+	if not System.checkAPIVersion(87, 4) then
+		return Locale.__createNullLocalizedTexts();
+	end;
+		
+	local txts = Objs.objectFromHandle(_obj_newObject("TLuaLocalizedTexts"));	
+	
+	function txts:addText(localeId, textId, text)
+		return _obj_invokeEx(self.handle, "AddText", localeId, textId, text);
+	end;	
+	
+	function txts:lang(textId)
+		return _obj_invokeEx(self.handle, "Lang", textId);
+	end;
+	
+	function txts:loadTexts(langTexts)
+		return _obj_invokeEx(self.handle, "LoadTexts", langTexts);
+	end;	
+	
+	function txts:tryLang(textId)
+		return _obj_invokeEx(self.handle, "TryLang", textId);
+	end;
+		
+	return txts;
 end;
 
 return Locale;

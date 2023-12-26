@@ -1,36 +1,76 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<form name="frmAvatarOculto" height="25" width="200" margins="{top=5,bottom=5,left=5,right=5}">
+<form name="frmAvatarOculto" height="50" width="250" margins="{top=5,bottom=5,left=5,right=5}">
+	<event name="onNodeReady">
+		if sheet == nil then return end
+		if sheet.avatar == nil or sheet.avatar == "" then
+			sheet.avatar = "http://blob.firecast.com.br/blobs/WKJUDMBE_3007903/empty_token.png"
+		end
+	</event>
 	<rectangle align="client" color="black" strokeColor="white" strokeSize="1" visible="true">
+		<image align="left" width="50" field="avatar" editable="true" style="autoFit" margins="{left=2, right=2, top=2, bottom=2}" animate="true">
+			<event name="OnStartDrag">
+				if drag then
+			    	drag:addData("imageURL", sheet.avatar)
+			    end
+			</event>
+		</image>
+		<dataLink field="avatar" defaultValue="http://blob.firecast.com.br/blobs/WKJUDMBE_3007903/empty_token.png"/>
 		<label align="client" field="nome" horzTextAlign="center"/>
 	</rectangle>
 
-	<button align="right" width="25" text="📌" margins="{bottom=0,right=0}" hint="Envia objeto pra lista publica.">
-		<event name="onClick">
-    		Dialogs.confirmYesNo("Deseja manda esse npc pra lista publica?",
-                function (confirmado)
-                   if confirmado then
-                       local rcl = self:findControlByName("lista");
-                       if rcl == nil then return end
+	<layout align="right" width="25">
+		<button align="top" height="25" text="💬" margins="{bottom=0,right=0}" hint="Falar como esse personagem.">
+			<event name="onClick">
+		 		local dsb = self:findControlByName("messageEditor")
+		 		dsb.node = sheet
 
-                       local item = rcl:append()
-                       if item == nil then return end
+		 		local layout = self:findControlByName("messageLayout")
+		 		layout.visible = (sheet ~= nil);
+			</event>
+		</button>
 
-                       NDB.copy(item, sheet)
+		<button align="top" height="25" text="👁️‍🗨️" margins="{bottom=0,right=0}" hint="Personificar esse personagem.">
+			<event name="onClick">
+	              local impersonation = {}
+	              impersonation.mode = "character"
+	              impersonation.avatar = sheet.avatar
+	              impersonation.name = sheet.nome
 
-                       NDB.deleteNode(sheet);
-                   end;
-                end);
-		</event>
-	</button>
+	              local mesa = Firecast.getMesaDe(self);
+	              mesa.chat:setImpersonation(impersonation)
+			</event>
+		</button>
+	</layout>
 
-	<button align="right" width="25" text="X" margins="{bottom=0,right=0}">
-		<event name="onClick">
-			Dialogs.confirmOkCancel("Tem certeza que quer apagar esse avatar?",
-				function (confirmado)
-					if confirmado then
-						NDB.deleteNode(sheet);
-					end;
-			end);
-		</event>
-	</button>
+	<layout align="right" width="25">
+		<button align="top" height="25" text="📌" margins="{bottom=0,right=0}" hint="Envia objeto pra lista publica.">
+			<event name="onClick">
+	    		Dialogs.confirmYesNo("Deseja manda esse npc pra lista publica?",
+	                function (confirmado)
+	                   if confirmado then
+	                       local rcl = self:findControlByName("lista");
+	                       if rcl == nil then return end
+
+	                       local item = rcl:append()
+	                       if item == nil then return end
+
+	                       NDB.copy(item, sheet)
+
+	                       NDB.deleteNode(sheet);
+	                   end;
+	                end);
+			</event>
+		</button>
+
+		<button align="top" height="25" text="X" margins="{bottom=0,right=0}">
+			<event name="onClick">
+				Dialogs.confirmOkCancel("Tem certeza que quer apagar esse avatar?",
+					function (confirmado)
+						if confirmado then
+							NDB.deleteNode(sheet);
+						end;
+				end);
+			</event>
+		</button>
+	</layout>
 </form>

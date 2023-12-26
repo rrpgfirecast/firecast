@@ -1,4 +1,4 @@
--- Joga uma rolagem de dano N vezes
+﻿-- Joga uma rolagem de dano N vezes
 local dano = arg[1];
 local qtd = tonumber(arg[2]);
 
@@ -7,7 +7,7 @@ if dano==nil then
 end
 
 if qtd == nil then
-  qtd = tonumber(inputQuery("Quantidade de vezes que o dano � causado."));
+  qtd = tonumber(inputQuery("Quantidade de vezes que o dano é causado."));
 end;
 
 local total = 0;

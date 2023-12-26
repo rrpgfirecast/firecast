@@ -71,7 +71,7 @@ local function constructNew_frmRecordListForm()
     obj.dataLink1:setName("dataLink1");
 
     obj._e_event0 = obj.button1:addEventListener("onClick",
-        function (_)
+        function (_, event)
             Dialogs.confirmOkCancel("Tem certeza que quer apagar esse objeto?",
             					function (confirmado)
             						if confirmado then

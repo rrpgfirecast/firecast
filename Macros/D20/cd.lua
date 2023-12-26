@@ -1,10 +1,10 @@
--- Teste contra alguma CD
+ï»¿-- Teste contra alguma CD
 local bonus= tonumber(arg[1]); 
 local dificuldade = tonumber(arg[2]); 
 local info = arg[3];
 
 if bonus == nil then
-  bonus = tonumber(inputQuery("Bônus."));
+  bonus = tonumber(inputQuery("BÃ´nus."));
 end;
 
 if dificuldade == nil then
@@ -24,5 +24,5 @@ local resultado = rolar("1d20+" .. bonus, text);
 if resultado >= dificuldade then
   enviar("Passou no teste!");
 else
-  enviar("Não passou no teste");
+  enviar("NÃ£o passou no teste");
 end;

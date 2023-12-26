@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmMacroItem" height="50" margins="{top=1}">
+	<script>
+        local function tryTranslate(text)
+            local trans = Locale.tryLang(text);
+            if trans == nil then trans = text end;
+            return trans;
+        end
+	</script>
+	<rectangle align="client" color="#212121" hitTest="false">
+		<label align="left" width="150" field="name" horzTextAlign="center" textTrimming="none" wordWrap="true" hitTest="false"/>
+		<label align="left" width="350" field="path" horzTextAlign="center" textTrimming="none" wordWrap="true" hitTest="false"/>
+	</rectangle>
+</form>

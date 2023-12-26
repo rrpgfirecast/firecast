@@ -449,8 +449,12 @@ function Async.await(promise)
 	local ret = table.pack(promise:peek());
 	
 	if ret[1] then
-		if ret[2] then
-			return table.unpack(ret, 3);
+		if ret[2] then	
+			if #ret >= 3 then
+				return table.unpack(ret, 3);
+			else
+				return nil;
+			end;
 		else
 			local traceMessage = ret[3] .. "\n" .. debug.traceback(coroutine.running(), nil, 2);	
 			reraise(traceMessage);					
@@ -460,7 +464,11 @@ function Async.await(promise)
 	ret = table.pack(coroutine.yield(_ASYNC_EXEC_AWAIT_CO_RET, promise));
 	
 	if ret[1] then
-		return table.unpack(ret, 2);
+		if #ret >= 2 then
+			return table.unpack(ret, 2);
+		else	
+			return nil;
+		end;
 	else	
 		local traceMessage = ret[2] .. "\n" .. debug.traceback(coroutine.running(), nil, 2);	
 		reraise(traceMessage);
@@ -501,6 +509,6 @@ Promise.succeeded  = Promise.resolved;
 Promise.resolve = Promise.resolved;
 Promise.reject = Promise.withError;
 await = Async.await;
-pawait = await;
+pawait = Async.pawait;
 
 return Async

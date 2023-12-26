@@ -93,7 +93,7 @@ local function constructNew_frmDiceRoll()
     obj.edit1:setName("edit1");
 
     obj._e_event0 = obj.button1:addEventListener("onClick",
-        function (_)
+        function (_, event)
             local roll = sheet.roll or "1d1-1";
             	    		local rolagem = Firecast.interpretarRolagem(roll);
             				local mesa = Firecast.getMesaDe(sheet);

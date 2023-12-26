@@ -178,22 +178,22 @@ local function constructNew_frmTemplateCreditos()
     obj.button4:setName("button4");
 
     obj._e_event0 = obj.button1:addEventListener("onClick",
-        function (_)
+        function (_, event)
             GUI.openInBrowser('link_change_log')
         end, obj);
 
     obj._e_event1 = obj.button2:addEventListener("onClick",
-        function (_)
+        function (_, event)
             GUI.openInBrowser('raw_download_link')
         end, obj);
 
     obj._e_event2 = obj.button3:addEventListener("onClick",
-        function (_)
+        function (_, event)
             GUI.openInBrowser('https://my.firecastrpg.com/a?a=pagRWEMesaInfo.actInfoMesa&mesaid=64070');
         end, obj);
 
     obj._e_event3 = obj.button4:addEventListener("onClick",
-        function (_)
+        function (_, event)
             GUI.openInBrowser('link_mesa');
         end, obj);
 

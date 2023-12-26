@@ -1,4 +1,4 @@
--- Faz a rolagem seguindo as regras de Storytelling
+ï»¿-- Faz a rolagem seguindo as regras de Storytelling
 local dados = tonumber(arg[1]);
 local dificuldade = 8;
 if dados == nil then
@@ -6,7 +6,7 @@ if dados == nil then
    return;
 end; 
 if dados < 0 then
-   escrever("Não utilize números negativos.");
+   escrever("NÃ£o utilize nÃºmeros negativos.");
    return;
 end; 
 

@@ -2,7 +2,7 @@ local num = arg[1];
 if num == nil or num == "?" then
 	escrever("Use: /poke <frase>");
 	escrever("Cada numero entre 1 e 802 no inicio de uma palavra vai ser substituido por um pokemon.");
-	escrever("Seguir o numero com -m -mx ou -my permite exibir mega evoluções.");
+	escrever("Seguir o numero com -m -mx ou -my permite exibir mega evoluÃ§Ãµes.");
 	escrever("Seguir o numero com -a permite exibir Alolan Forms.");
 	return;
 end;
@@ -33,7 +33,7 @@ for i=1, #arg, 1 do
 			else
 				num = "" .. num .. rest;
 			end;
-			arg[i] = "[§I http://www.serebii.net/pokedex-sm/icon/" .. num .. ".png]";
+			arg[i] = "[Â§I http://www.serebii.net/pokedex-sm/icon/" .. num .. ".png]";
 		end;
 	end;
 	text = text .. " " .. arg[i];

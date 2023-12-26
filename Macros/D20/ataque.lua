@@ -3,11 +3,11 @@ local bonus = tonumber(arg[1]);
 local qtd = tonumber(arg[2]);
 
 if bonus==nil then
-  bonus = tonumber(inputQuery("Bônus de Ataque."));
+  bonus = tonumber(inputQuery("BÃ´nus de Ataque."));
 end;
 
 if qtd == nil then
-  qtd = tonumber(inputQuery("Quantidade de ataques. Cada ataque após o primeiro recebe -5. "));
+  qtd = tonumber(inputQuery("Quantidade de ataques. Cada ataque apÃ³s o primeiro recebe -5. "));
 end;
 
 for i=1, qtd, 1 do

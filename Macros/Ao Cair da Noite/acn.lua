@@ -1,5 +1,5 @@
 -- Faz a rolagem seguindo as regras de ACN
--- Como storyteller, mas nao tem falhas criticas ou decisivos
+-- Como storyteller, mas nao tem falhas criticas ou decisivos 
 local dados = tonumber(arg[1]);
 local dificuldade = tonumber(arg[2]);
 if dados == nil or dificuldade == nil then
@@ -7,7 +7,7 @@ if dados == nil or dificuldade == nil then
    return;
 end; 
 if dados < 0 or dificuldade < 0 then
-   escrever("Não utilize números negativos.");
+   escrever("Nao utilize numeros negativos.");
    return;
 end; 
 

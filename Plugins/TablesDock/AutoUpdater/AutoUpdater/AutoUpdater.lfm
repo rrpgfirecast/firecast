@@ -109,6 +109,10 @@
             for i=1, #nodesInstalled, 1 do
                 NDB.deleteNode(nodesInstalled[i]);
             end;
+            local macros = NDB.getChildNodes(updaterSheet.macroList); 
+            for i=1, #macros, 1 do
+                NDB.deleteNode(macros[i]);
+            end;
 
             -- Adiciona os plugins instalados a lista
             for i=1, #installed, 1 do
@@ -172,12 +176,54 @@
                         end, 
                         1000
                     );
-                end,       
+                end,
                 function (errorMsg)
                     -- esta função será chamada quando ocorrer algum erro no download.
                     -- errorMsg possui a msg de erro
                     showMessage(tryTranslate("error.load").."\n" .. errorMsg);
-                end,       
+                end,
+                function (downloaded, total)
+                    -- esta função será chamada constantemente.
+                    -- dividir "downloaded" por "total" lhe dará uma porcentagem do download.
+                end,
+                "alwaysDownload");
+
+            -- Init Macros
+            Internet.download("https://raw.githubusercontent.com/rrpgfirecast/firecast/master/Macros/macros.xml",
+                function(stream, contentType)
+                    if VHD.fileExists("macros.xml") then
+                        VHD.deleteFile("macros.xml");
+                    end;
+                    local file = VHD.openFile("macros.xml", "w");
+                    file:copyFrom(stream, stream.size);
+                    setTimeout(
+                        function ()
+                            file:close();
+                            local import = NDB.load("macros.xml");
+
+                            local list = NDB.getChildNodes(import);
+
+                            for i=1, #list, 1 do
+                                -- Adiciona cada macro a lista de macros
+                                local macro = self.macroList:append()
+                                if macro then 
+                                    macro.name = list[i].name
+                                    macro.path = (list[i].path):gsub("%%20", " ")
+                                    macro.link = list[i].link
+                                end
+                            end;
+
+                            self.macroList:sort();
+
+                        end, 
+                        1000
+                    );
+                end,
+                function (errorMsg)
+                    -- esta função será chamada quando ocorrer algum erro no download.
+                    -- errorMsg possui a msg de erro
+                    showMessage(tryTranslate("error.load").."\n" .. errorMsg);
+                end,
                 function (downloaded, total)
                     -- esta função será chamada constantemente.
                     -- dividir "downloaded" por "total" lhe dará uma porcentagem do download.
@@ -193,6 +239,9 @@
             </tab>
             <tab title="@@hud.avaialable" name="tabAvailable">
                 <import file="Available.lfm"/>
+            </tab>
+            <tab title="@@hud.macro" name="tabMacro">
+                <import file="Macro.lfm"/>
             </tab>
     		<tab title="@@hud.credits" name="tabCredits">
                 <import file="Credits.lfm"/>
