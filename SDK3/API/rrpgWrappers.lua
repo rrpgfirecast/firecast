@@ -1106,6 +1106,12 @@ local function initBaseChatWrappedObjectFromHandle(handle)
 		end;
 	end;	
 	
+	function wChat:setTalemarkOptions(options)
+		if System.checkAPIVersion(87, 4) then 
+			return _obj_invokeEx(self.handle, "SetTalemarkOptions", options);
+		end;
+	end;		
+		
 	function wChat:getMedium()
 		if System.checkAPIVersion(87, 4) then 
 			return _obj_invokeEx(self.handle, "GetMedium");
@@ -1143,11 +1149,11 @@ local function initBaseChatWrappedObjectFromHandle(handle)
 		else
 			return self:escrever(text);
 		end;		
-	end;		
+	end;	
 				
 	wChat.props["room"] = {getter = "getRoom", tipo = "table"};	
 	wChat.props["impersonation"] = {getter = "getImpersonation", setter = "setImpersonation", tipo = "table"};	
-	wChat.props["talemarkOptions"] = {getter = "getTalemarkOptions", tipo = "table"};	
+	wChat.props["talemarkOptions"] = {getter = "getTalemarkOptions", setter="setTalemarkOptions", tipo = "table"};	
 	wChat.props["medium"] = {getter = "getMedium", tipo = "table" };
 	wChat.props["participants"] = {getter = "getParticipants", tipo = "table" };	
 		
