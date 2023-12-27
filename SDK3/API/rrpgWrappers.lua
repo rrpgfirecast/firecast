@@ -344,8 +344,17 @@ local function initMesaWrappedObjectFromHandle(handle)
 			return _obj_invokeEx(self.handle, "GetFirecastURI");
 		else
 			return "";
-		end;
+		end;		
 	end;
+	
+	function mesa:asyncOpenPVT(login, params) 		
+		if System.checkAPIVersion(87, 4) then
+			local promiseHandle = _obj_invokeEx(self.handle, "AsyncOpenPVT", login, params);
+			return Async.Promise.wrap(promiseHandle);
+		else
+			return Async.Promise.failed("No API Support");
+		end;		
+	end;			
 				
 	wObj.props["activeChat"] = {getter="getActiveChat", tipo="table"};					
 	wObj.props["audioPlayer"] = {getter="getAudioPlayer", tipo="table"};				
