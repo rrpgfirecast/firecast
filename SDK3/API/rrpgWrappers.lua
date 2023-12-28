@@ -354,7 +354,30 @@ local function initMesaWrappedObjectFromHandle(handle)
 		else
 			return Async.Promise.failed("No API Support");
 		end;		
-	end;			
+	end;		
+
+	function mesa:asyncCreateGroupPVT(logins, params) 		
+		if System.checkAPIVersion(87, 4) then
+			local clonedLogins = Utils.cloneTable(logins);
+			local clonedParams = Utils.cloneTable(params);
+		
+			return __serverRequestQueue:addAsyncJob(
+				function ()
+					local promiseHandle = _obj_invokeEx(self.handle, "AsyncCreateGroupPVT", clonedLogins, clonedParams);
+					return Async.Promise.wrap(promiseHandle);				
+				end);
+		else
+			return Async.Promise.failed("No API Support");
+		end;		
+	end;	
+	
+	function mesa:getChats()
+		if System.checkAPIVersion(87, 4) then
+			return _obj_invokeEx(self.handle, "GetChats");
+		else
+			return {self:getChat()};
+		end;
+	end;
 				
 	wObj.props["activeChat"] = {getter="getActiveChat", tipo="table"};					
 	wObj.props["audioPlayer"] = {getter="getAudioPlayer", tipo="table"};				
@@ -845,6 +868,7 @@ rrpgWrappers.NullChatWrapper = {enviarMensagem = _NULL_FUNCTION,
 								asyncSendLaugh = _NULL_PROMISE_FUNCTION,
 								asyncSendAction = _NULL_PROMISE_FUNCTION,
 								asyncSendStd = _NULL_PROMISE_FUNCTION,
+								asyncInvite = _NULL_PROMISE_FUNCTION,
 								participants = {},
 								medium = {kind="undefined"}
 								};
@@ -1159,6 +1183,20 @@ local function initBaseChatWrappedObjectFromHandle(handle)
 			return self:escrever(text);
 		end;		
 	end;	
+				
+	function wChat:asyncInvite(logins)
+		if System.checkAPIVersion(87, 4) then
+			local clonedLogins = Utils.cloneTable(logins);
+		
+			return __serverRequestQueue:addAsyncJob(
+				function ()
+					local promiseHandle = _obj_invokeEx(self.handle, "AsyncInvite", clonedLogins);
+					return Async.Promise.wrap(promiseHandle);				
+				end);
+		else
+			return Async.Promise.failed("No API Support");
+		end;
+	end;
 				
 	wChat.props["room"] = {getter = "getRoom", tipo = "table"};	
 	wChat.props["impersonation"] = {getter = "getImpersonation", setter = "setImpersonation", tipo = "table"};	
