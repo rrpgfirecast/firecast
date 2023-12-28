@@ -344,6 +344,38 @@ local function initMesaWrappedObjectFromHandle(handle)
 			return _obj_invokeEx(self.handle, "GetFirecastURI");
 		else
 			return "";
+		end;		
+	end;
+	
+	function mesa:asyncOpenPVT(login, params) 		
+		if System.checkAPIVersion(87, 4) then
+			local promiseHandle = _obj_invokeEx(self.handle, "AsyncOpenPVT", login, params);
+			return Async.Promise.wrap(promiseHandle);
+		else
+			return Async.Promise.failed("No API Support");
+		end;		
+	end;		
+
+	function mesa:asyncCreateGroupPVT(logins, params) 		
+		if System.checkAPIVersion(87, 4) then
+			local clonedLogins = Utils.cloneTable(logins);
+			local clonedParams = Utils.cloneTable(params);
+		
+			return __serverRequestQueue:addAsyncJob(
+				function ()
+					local promiseHandle = _obj_invokeEx(self.handle, "AsyncCreateGroupPVT", clonedLogins, clonedParams);
+					return Async.Promise.wrap(promiseHandle);				
+				end);
+		else
+			return Async.Promise.failed("No API Support");
+		end;		
+	end;	
+	
+	function mesa:getChats()
+		if System.checkAPIVersion(87, 4) then
+			return _obj_invokeEx(self.handle, "GetChats");
+		else
+			return {self:getChat()};
 		end;
 	end;
 				
@@ -836,6 +868,7 @@ rrpgWrappers.NullChatWrapper = {enviarMensagem = _NULL_FUNCTION,
 								asyncSendLaugh = _NULL_PROMISE_FUNCTION,
 								asyncSendAction = _NULL_PROMISE_FUNCTION,
 								asyncSendStd = _NULL_PROMISE_FUNCTION,
+								asyncInvite = _NULL_PROMISE_FUNCTION,
 								participants = {},
 								medium = {kind="undefined"}
 								};
@@ -1106,6 +1139,12 @@ local function initBaseChatWrappedObjectFromHandle(handle)
 		end;
 	end;	
 	
+	function wChat:setTalemarkOptions(options)
+		if System.checkAPIVersion(87, 4) then 
+			return _obj_invokeEx(self.handle, "SetTalemarkOptions", options);
+		end;
+	end;		
+		
 	function wChat:getMedium()
 		if System.checkAPIVersion(87, 4) then 
 			return _obj_invokeEx(self.handle, "GetMedium");
@@ -1143,11 +1182,25 @@ local function initBaseChatWrappedObjectFromHandle(handle)
 		else
 			return self:escrever(text);
 		end;		
-	end;		
+	end;	
+				
+	function wChat:asyncInvite(logins)
+		if System.checkAPIVersion(87, 4) then
+			local clonedLogins = Utils.cloneTable(logins);
+		
+			return __serverRequestQueue:addAsyncJob(
+				function ()
+					local promiseHandle = _obj_invokeEx(self.handle, "AsyncInvite", clonedLogins);
+					return Async.Promise.wrap(promiseHandle);				
+				end);
+		else
+			return Async.Promise.failed("No API Support");
+		end;
+	end;
 				
 	wChat.props["room"] = {getter = "getRoom", tipo = "table"};	
 	wChat.props["impersonation"] = {getter = "getImpersonation", setter = "setImpersonation", tipo = "table"};	
-	wChat.props["talemarkOptions"] = {getter = "getTalemarkOptions", tipo = "table"};	
+	wChat.props["talemarkOptions"] = {getter = "getTalemarkOptions", setter="setTalemarkOptions", tipo = "table"};	
 	wChat.props["medium"] = {getter = "getMedium", tipo = "table" };
 	wChat.props["participants"] = {getter = "getParticipants", tipo = "table" };	
 		
