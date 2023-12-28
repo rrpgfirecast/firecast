@@ -354,7 +354,30 @@ local function initMesaWrappedObjectFromHandle(handle)
 		else
 			return Async.Promise.failed("No API Support");
 		end;		
-	end;			
+	end;		
+
+	function mesa:asyncCreateGroupPVT(logins, params) 		
+		if System.checkAPIVersion(87, 4) then
+			local clonedLogins = Utils.cloneTable(logins);
+			local clonedParams = Utils.cloneTable(params);
+		
+			return __serverRequestQueue:addAsyncJob(
+				function ()
+					local promiseHandle = _obj_invokeEx(self.handle, "AsyncCreateGroupPVT", clonedLogins, clonedParams);
+					return Async.Promise.wrap(promiseHandle);				
+				end);
+					else
+			return Async.Promise.failed("No API Support");
+		end;		
+	end;	
+	
+	function mesa:getChats()
+		if System.checkAPIVersion(87, 4) then
+			return _obj_invokeEx(self.handle, "GetChats");
+		else
+			return {self:getChat()};
+		end;
+	end;
 				
 	wObj.props["activeChat"] = {getter="getActiveChat", tipo="table"};					
 	wObj.props["audioPlayer"] = {getter="getAudioPlayer", tipo="table"};				
