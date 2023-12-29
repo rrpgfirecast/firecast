@@ -34,6 +34,8 @@ if afkdb.config == nil then
 	afkdb.config = {};
 end;
 
+local afktemp = {}
+
 local config = NDB.load("config.xml");
 
 local function isNewVersion(installed, downloaded)
@@ -71,6 +73,9 @@ local function initializeRoom(mesa)
 	if afkdb.config[mesa.codigoInterno] == nil then
 		afkdb.config[mesa.codigoInterno] = {};
 	end;
+	if afktemp[mesa.codigoInterno] == nil then
+		afktemp[mesa.codigoInterno] = {}
+	end
 end
 local function initializeClock(mesa)
 	if afkdb.config[mesa.codigoInterno].clock == nil then
@@ -274,7 +279,7 @@ Firecast.Messaging.listen("HandleChatCommand",
 		end
 	end);
 
--- Escuta das mensagens de chat padrão e decide se deve ou não enviar o alerta por conta dessa mensagem
+-- Escuta as mensagens de chat padrão e decide se deve ou não enviar o alerta por conta dessa mensagem
 Firecast.Messaging.listen("ChatMessage", 
 	function (message)
 		if message.mesa == nil then return end;
@@ -357,18 +362,26 @@ Firecast.Messaging.listen("MesaJoined",
 		end;
 
 		-- Enviar mensagem de bos vindas automatica.
-		local list = NDB.getChildNodes(afkdb.config[message.mesa.codigoInterno].welcomeList);
+		local list = NDB.getChildNodes(afkdb.config[message.mesa.codigoInterno].welcomeList)
 		if (not message.mesa.isModerada) then
 			for i=1, #list, 1 do 
-				local item = list[i];
+				local item = list[i]
 				if item.login == message.jogador.login then
-					message.mesa.chat:enviarMensagem(item.message);
+					message.mesa.chat:enviarMensagem(item.message)
 					if not item.permanent then
-						NDB.deleteNode(item);
+						NDB.deleteNode(item)
 					end
-				end;
-			end;
-		end;
+				end
+			end
+		end
+
+		-- Adicionar automaticamente ao offchat
+		if afktemp[message.mesa.codigoInterno].offchat ~= nil then
+			afktemp[message.mesa.codigoInterno].offchat:asyncInvite({message.jogador.login})
+			if message.jogador.isJogador then
+				message.jogador:requestSetVoz(true);
+			end
+		end
 	end);
 
 -- Escuta por rolagens de dado
@@ -472,7 +485,7 @@ Firecast.Messaging.listen("ChatMessage",
 				elseif (not message.mesa.isModerada) then
 					tryNPC(true, message.chat, "AfkBot", "Mesa não está moderada. Você não precisa de voz.")
 				else
-					message.jogador:requestSetVoz(true);
+					message.jogador:requestSetVoz(true)
 				end
 			elseif (arg[2]=="ficha" or arg[2]=="sheet") then 
 				if not afkdb.config[message.mesa.codigoInterno].giveSheet then
@@ -494,7 +507,32 @@ Firecast.Messaging.listen("ChatMessage",
 					tryNPC(true, message.chat, "AfkBot", "Ficha Liberada.")
 				end
 			elseif (arg[2]=="off") then
-				-- poe o jogador no off chat
+				if (not message.mesa.isModerada) then
+					tryNPC(true, message.chat, "AfkBot", "Mesa não está moderada.")
+				else
+					if message.jogador.isMestre then
+						-- torna esse o off chat
+						if message.chat.medium.kind == "groupPvtOnRoom" then
+							if afktemp[message.mesa.codigoInterno].offchat == message.chat then
+								afktemp[message.mesa.codigoInterno].offchat = nil
+								tryNPC(true, message.chat, "AfkBot", "A partir de agora não há este não é o off chat.")
+							else
+								afktemp[message.mesa.codigoInterno].offchat = message.chat
+								tryNPC(true, message.chat, "AfkBot", "A partir de agora esse é o off chat.")
+							end
+						else
+							tryNPC(true, message.chat, "AfkBot", "Esse chat não pode ser usado como off chat.")
+						end
+					else
+						-- poe o jogador no off chat
+						if afktemp[message.mesa.codigoInterno].offchat ~= nil then
+							afktemp[message.mesa.codigoInterno].offchat:asyncInvite({message.jogador.login})
+							tryNPC(true, message.chat, "AfkBot", "Feito.")
+						else
+							tryNPC(true, message.chat, "AfkBot", "Não há off chat valido.")
+						end
+					end
+				end
 			elseif (arg[2]==">>") then
 				if not afkdb.config[message.mesa.codigoInterno].passAction then
 					tryNPC(true, message.chat, "AfkBot", "O mestre não me permite passar tua vez.")
@@ -512,6 +550,53 @@ Firecast.Messaging.listen("ChatMessage",
 					if arg[i] ~= nil then param = param .. " " .. arg[i] end;
 				end
 				ShowBibItem(message, param);
+			elseif (arg[2]=="start") then
+				if (message.jogador==nil and not message.jogador.isMestre) then
+					tryNPC(true, message.chat, "AfkBot", "Usuario Invalido.")
+				elseif (message.mesa.isModerada) then
+					tryNPC(true, message.chat, "AfkBot", "Mesa já está moderada.")
+				else
+					-- moderate
+					message.mesa:requestSetModerada(true)
+					-- give voice
+					local jogadores = message.mesa.jogadores
+					local logins = {}
+					for i=1, #jogadores, 1 do
+						logins[i] = jogadores[i].login
+						if jogadores[i].isJogador then
+							jogadores[i]:requestSetVoz(true)
+						end
+					end
+					-- add all to off chat
+					if (#logins > 1)  then
+						local promise = message.mesa:asyncCreateGroupPVT(logins);
+						afktemp[message.mesa.codigoInterno].offchat = await(promise);
+					end
+					-- clear chat
+					message.chat:enviarMensagem("/clear")
+					-- add start message
+					message.chat:enviarMensagem(afkdb.config[message.mesa.codigoInterno].msgStart)
+				end
+			elseif (arg[2]=="end") then
+				if (message.jogador==nil and not message.jogador.isMestre) then
+					tryNPC(true, message.chat, "AfkBot", "Usuario Invalido.")
+				elseif (not message.mesa.isModerada) then
+					tryNPC(true, message.chat, "AfkBot", "Mesa não está moderada.")
+				else
+					-- add end message
+					message.chat:enviarMensagem(afkdb.config[message.mesa.codigoInterno].msgEnd)
+					-- remove voice
+					local jogadores = message.mesa.jogadores
+					for i=1, #jogadores, 1 do
+						if jogadores[i].isJogador then
+							jogadores[i]:requestSetVoz(false)
+						end
+					end
+					-- end moderation
+					message.mesa:requestSetModerada(false)
+					-- end off chat
+					afktemp[message.mesa.codigoInterno].offchat = nil
+				end
 			else
 				tryNPC(true, message.chat, "AfkBot", "Não entendi. Tente: 'voz', 'ficha', '>>' ou 'show'.")
 			end;

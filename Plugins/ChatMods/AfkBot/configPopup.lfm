@@ -39,6 +39,17 @@
 				<edit align="left" width="150" field="dataType"/>
 			</layout>
 
+			<horzLine align="top" height="5"/>
+			<label align="top" height="25" text="Configurações de Sessão"/>
+			<layout align="top" height="25">
+				<label align="left" width="120" fontSize="11" text="Messagem Inicial" horzTextAlign="center"/>
+				<edit align="left" width="150" field="msgStart"/>
+			</layout>
+			<layout align="top" height="25">
+				<label align="left" width="120" fontSize="11" text="Messagem Final" horzTextAlign="center"/>
+				<edit align="left" width="150" field="msgEnd"/>
+			</layout>
+
 			<dataLink fields="{'botEnabled','autoEnable'}">
 				<event name="OnChange">
 					if sheet==nil then return end;
