@@ -109,7 +109,7 @@
             </dataType>
         </dataTypes>
     </element>
-    <element id="Ambesek.Hunter.Hunter" name="Ficha HxH" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20Hunter%20x%20Hunter/output/Ficha%20Hunter%20x%20Hunter.rpk?raw=true" fileName="Ficha Hunter x Hunter.rpk" repositoryPath="Sheets/Ficha Hunter x Hunter/" author="Ambesek" description="Ficha para jogos de Hunter x Hunter usando D&amp;D 5ª edição" version="1.0.2" compilationDate="28052023211505" compilationDigest="025f4f5a79130696647ebe697bc916ca5e2cb0a3">
+    <element id="Ambesek.Hunter.Hunter" name="Ficha HxH" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20Hunter%20x%20Hunter/output/Ficha%20Hunter%20x%20Hunter.rpk?raw=true" fileName="Ficha Hunter x Hunter.rpk" repositoryPath="Sheets/Ficha Hunter x Hunter/" author="Ambesek" description="Ficha para jogos de Hunter x Hunter usando D&amp;D 5ª edição" version="1.0.3" compilationDate="28052023211505" compilationDigest="025f4f5a79130696647ebe697bc916ca5e2cb0a3">
         <info lang="en" name="Ficha HxH" description="Sheet for Hunter x Hunter using D&amp;D 5e."/>
         <info lang="pt-BR" name="Ficha HxH" description="Ficha para jogos de Hunter x Hunter usando D&amp;D 5ª edição" author="Ambesek"/>
         <dataTypes>
@@ -409,7 +409,7 @@
             </dataType>
         </dataTypes>
     </element>
-    <element id="br.com.rrpg.DnD5_SDK3" name="D&amp;D 5e" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/DnD5e/output/DnD5e.rpk?raw=true" fileName="DnD5e.rpk" repositoryPath="Sheets/DnD5e/" author="Firecast" description="Modelo de ficha de D&amp;D 5ª edição" version="1.2.2" compilationDate="15102023013024" compilationDigest="118201af7af0d25cd225fbfd923fdee44dd739a2">
+    <element id="br.com.rrpg.DnD5_SDK3" name="D&amp;D 5e" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/DnD5e/output/DnD5e.rpk?raw=true" fileName="DnD5e.rpk" repositoryPath="Sheets/DnD5e/" author="Firecast" description="Modelo de ficha de D&amp;D 5ª edição" version="1.2.3" compilationDate="15102023013024" compilationDigest="118201af7af0d25cd225fbfd923fdee44dd739a2">
         <info lang="en" name="D&amp;D 5th Edition" description="D&amp;D 5th edition character sheet for firecast"/>
         <info lang="pt-BR" name="D&amp;D 5e" description="Modelo de ficha de D&amp;D 5ª edição" author="Firecast" site="https://firecast.app/"/>
         <dataTypes>

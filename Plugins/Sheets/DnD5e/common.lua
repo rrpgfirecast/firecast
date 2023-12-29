@@ -1378,6 +1378,10 @@ function common.onClick(node, foo, args, hk, useActiveChat)
 		options = {LANG("Dnd5e.messages.normal"),LANG("Dnd5e.messages.adv"),LANG("Dnd5e.messages.dis"),LANG("Dnd5e.messages.adv2"),LANG("Dnd5e.messages.dis2")}
 	end;
 
+	local keys = GUI.getShiftState()
+	node.keys[hk.vantagem] = keys.shiftKey 
+	node.keys[hk.desvantagem] = keys.ctrlKey 
+
 	Dialogs.choose(LANG("Dnd5e.messages.kind"), options,
                function(selected, selectedIndex, selectedText)
                		if useActiveChat then
