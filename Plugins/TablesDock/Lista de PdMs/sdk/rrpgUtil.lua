@@ -453,13 +453,25 @@ function utils.cloneTable(t, deep)
 		return nil;
 	end;
 
-	local r = {};
+	local r = {};	
 	
-	for k, v in pairs(t) do	
+	for i = 1, #t do
+		local v = t[i];
+		
 		if (deep) and (type(v) == "table") then
-			r[k] = utils.cloneTable(v);
+			r[i] = utils.cloneTable(v);
 		else
-			r[k] = v;
+			r[i] = v;
+		end;		
+	end;
+		
+	for k, v in pairs(t) do	
+		if r[k] == nil then
+			if (deep) and (type(v) == "table") then
+				r[k] = utils.cloneTable(v);
+			else
+				r[k] = v;
+			end;
 		end;
 	end;
 	

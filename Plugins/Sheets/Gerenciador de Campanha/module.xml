@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<module sdkVersion="3.6e beta 5">
+<module sdkVersion="3.6e beta 6">
 	<id>GerenciadorDeCampanha</id>
-	<version>1.4</version>
+	<version>1.5</version>
     <info lang="pt-BR">
         <!--Informações do plugin na língua "pt-BR". Você pode ter várias tags "info", uma para cada tradução que quiser.-->
         <name>Gerenciador de Campanha</name>

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<form name="frmMainListaPdMs" formType="tablesDock" dataType="Ambesek.Lista.PdMs" title="Lista de PdMs" align="client" theme="dark">
+<form name="frmMainListaPdMs" formType="tablesDock" dataType="Ambesek.Lista.PdMs" title="@@dock.title" align="client" theme="dark">
 
     <template name="BarSetting">
         <edit align="left" width="100" field="$(field)Name"/>
@@ -29,9 +29,9 @@
 
     <template name="TextOptions">
         <layout align="client" margins="{top=10,bottom=10,left=10,right=10}">
-            <checkBox align="top" height="25" text="Formatar texto: $(text)" field="$(field)Use"/>
+            <checkBox align="top" height="25" text="@@talemark.title$(text)" field="$(field)Use"/>
             <layout align="top" height="25">
-                <label align="left" width="100" text="Cor do Texto"/>
+                <label align="left" width="100" text="@@talemark.fontColor"/>
                 <rectangle name="$(field)Color" align="client">
                     <event name="onClick">
                         local promise = Dialogs.asyncSelectTalemarkColor(sheet.$(field)Color);       
@@ -51,7 +51,7 @@
                 </dataLink>
             </layout>
             <layout align="top" height="25">
-                <label align="left" width="100" text="Cor do Fundo"/>
+                <label align="left" width="100" text="@@talemark.bgColor"/>
                 <rectangle name="$(field)ColorBG" align="client">
                     <event name="onClick">
                         local promise = Dialogs.asyncSelectTalemarkColor(sheet.$(field)ColorBG);
@@ -70,10 +70,10 @@
                     </event>
                 </dataLink>
             </layout>
-            <checkBox align="top" height="25" text="Negrito" field="$(field)Negrito"/>
-            <checkBox align="top" height="25" text="Sublinhado" field="$(field)Sublinhado"/>
-            <checkBox align="top" height="25" text="Itálico" field="$(field)Italico"/>
-            <checkBox align="top" height="25" text="Tachado" field="$(field)Tachado"/>
+            <checkBox align="top" height="25" text="@@talemark.bold" field="$(field)Negrito"/>
+            <checkBox align="top" height="25" text="@@talemark.underline" field="$(field)Sublinhado"/>
+            <checkBox align="top" height="25" text="@@talemark.italic" field="$(field)Italico"/>
+            <checkBox align="top" height="25" text="@@talemark.crossed" field="$(field)Tachado"/>
         </layout>
     </template>
 
@@ -82,21 +82,24 @@
 
             <layout left="210" top="5" width="200" height="150">
                 <rectangle left="0" top="0" width="200" height="150" color="black" xradius="15" yradius="15" cornerType="round"/>
-                <label left="0" top="10" width="200" height="20" text="Programador: Vinny (Ambesek)" horzTextAlign="center"/>
-                <label left="0" top="95" width="200" height="20" text="Ficha feita para a mesa: " horzTextAlign="center"/>
-                <label left="0" top="120" width="200" height="20" text="RPGmeister" horzTextAlign="center"/>
+                <label left="0" top="10" width="200" height="20" text="@@credits.programmer" horzTextAlign="center"/>
+                <label left="0" top="70" width="200" height="20" text="@@credits.room" horzTextAlign="center"/>
+                <label left="0" top="95" width="200" height="20" text="RPGmeister" horzTextAlign="center"/>
+                <label left="0" top="120" width="200" height="20" text="StarTech" horzTextAlign="center"/>
             </layout>
 
-            <label left="210" top="160" width="200" height="20" text="SUA VERSÃO:" field="versionInstalled"/>
-            <label left="210" top="190" width="200" height="20" text="VERSÃO ATUAL:" field="versionDownloaded"/>
+            <label left="210" top="160" width="200" height="20" text="@@credits.version" field="versionInstalled"/>
+            <label left="210" top="190" width="200" height="20" text="@@credits.versionCurrent" field="versionDownloaded"/>
 
-            <label left="5" top="215" width="120" height="20" text="CONHEÇA A MESA:"/>
-            <button left="125" top="215" width="100" text="RPGmeister" onClick="GUI.openInBrowser('https://my.firecast.app/a?a=pagRWEMesaInfo.actInfoMesa&amp;mesaid=64070');" />
+            <label left="5" top="215" width="120" height="20" text="@@credits.visit" fontSize="11"/>
+            <button left="125" top="215" width="90" text="RPGmeister" onClick="GUI.openInBrowser('https://my.firecast.app/a?a=pagRWEMesaInfo.actInfoMesa&amp;mesaid=64070');" />
+            <button left="215" top="215" width="90" text="StarTech" onClick="GUI.openInBrowser('https://my.firecast.app/a?a=pagRWEMesaInfo.actInfoMesa&amp;mesaid=195975');" />
 
-            <button left="305" top="215" width="100" text="Atualizar" onClick="GUI.openInBrowser('https://github.com/rrpgfirecast/firecast/blob/master/Plugins/TablesDock/Lista%20de%20PdMs/output/Lista%20de%20PdMs.rpk?raw=true')" />
+            <button left="305" top="215" width="100" text="@@credits.update" onClick="GUI.openInBrowser('https://github.com/rrpgfirecast/firecast/blob/master/Plugins/TablesDock/Lista%20de%20PdMs/output/Lista%20de%20PdMs.rpk?raw=true')" />
     </popup>
 
     <popup name="NotesPopup" align="client" margins="{top=25,bottom=25,left=25,right=25}">
+        <checkBox align="top" height="25" text="@@dialogs.dmOnly" field="dmOnly"/>
         <richEdit align="client" field="background" backgroundColor="#333333" defaultFontSize="12" defaultFontColor="white"/>
     </popup>
     <popup name="SettingsPopup" width="270" height="145" backOpacity="0.4" autoScopeNode="false">
@@ -126,7 +129,7 @@
                 <label fontColor="black" margins="{left=6, top=2}" align="top" text="Valor" field="NomeBarrinha" fontSize="12" fontStyle="bold" textTrimming="character"/>
                 <layout align="client" margins="{top=2, left=4}">
                     <layout align="top" height="18">
-                        <label fontColor="black" align="left" text="Atual:  " horzTextAlign="trailing" width="34" margins="{right=2}" fontSize="12"/>
+                        <label fontColor="black" align="left" text="@@bar.current" horzTextAlign="trailing" width="34" margins="{right=2}" fontSize="12"/>
                         <comboBox fontColor="white" margins="{left=2}" align="left" transparent="false" width="40" field="ModificadorBarrinha" items="{'=', '+', '-'}" values="{'igual', 'mais', 'menos'}" value="igual"/>
                         <dataLink field="ModificadorBarrinha" defaultValue="igual"/>
                         <edit fontColor="white" margins="{left=2, right=4}" type="number" align="client" field="ValorMudadoAtualBarrinha" name="currentBarValue">
@@ -139,7 +142,7 @@
                         </edit>
                     </layout>
                     <layout align="top" height="18">
-                        <label fontColor="black" align="left" text="Max:  " horzTextAlign="trailing" width="34" margins="{right=2}" fontSize="12"/>
+                        <label fontColor="black" align="left" text="@@bar.max" horzTextAlign="trailing" width="34" margins="{right=2}" fontSize="12"/>
                         <comboBox fontColor="white" margins="{left=2}" align="left" transparent="false" width="40" field="ModificadorBarrinhaMax" items="{'=', '+', '-'}" values="{'igual', 'mais', 'menos'}" value="igual"/>
                         <dataLink field="ModificadorBarrinhaMax" defaultValue="igual"/>
                         <edit fontColor="white" margins="{left=2, right=4}" type="number" align="client" field="ValorMudadoMaxBarrinha" name="maxBarValue">
@@ -229,19 +232,19 @@
     </popup>
 
     <popup name="TextDefaultPopup" width="250" height="200" margins="{top=25,bottom=25,left=25,right=25}">
-        <TextOptions text="Normal" field="normal" popup="TextDefaultPopup"/>
+        <TextOptions text="@@talemark.normal" field="normal" popup="TextDefaultPopup"/>
     </popup>
     <popup name="TextActionPopup" width="250" height="200" margins="{top=25,bottom=25,left=25,right=25}">
-        <TextOptions text="Ação" field="acao" popup="TextActionPopup"/>
+        <TextOptions text="@@talemark.action" field="acao" popup="TextActionPopup"/>
     </popup>
     <popup name="TextThoughtPopup" width="250" height="200" margins="{top=25,bottom=25,left=25,right=25}">
-        <TextOptions text="Pensamento" field="pensamento" popup="TextThoughtPopup"/>
+        <TextOptions text="@@talemark.thought" field="pensamento" popup="TextThoughtPopup"/>
     </popup>
     <popup name="TextSpeechPopup" width="250" height="200" margins="{top=25,bottom=25,left=25,right=25}">
-        <TextOptions text="Fala" field="fala" popup="TextSpeechPopup"/>
+        <TextOptions text="@@talemark.speak" field="fala" popup="TextSpeechPopup"/>
     </popup>
     <popup name="TextOffPopup" width="250" height="200" margins="{top=25,bottom=25,left=25,right=25}">
-        <TextOptions text="Off" field="off" popup="TextOffPopup"/>
+        <TextOptions text="@@talemark.off" field="off" popup="TextOffPopup"/>
     </popup>
 
     <script>
@@ -407,7 +410,7 @@
     </script>
     <scrollBox align="client">
         <layout align="top" height="25" margins="{top=5,right=5,left=5}">
-            <button align="left" text="👤" width="25" hint="Adiciona avatar">
+            <button align="left" text="👤" width="25" hint="@@hint.avatar">
                 <event name="onClick">
                     local avatar = self.lista:append()
                     if avatar~= nil then
@@ -422,7 +425,7 @@
                     end
                 </event>
             </button>
-            <button align="left" text="⚙️" width="25" hint="Opções das barrinhas.">
+            <button align="left" text="⚙️" width="25" hint="@@hint.options">
                 <event name="onClick">
                     local pop = self:findControlByName("SettingsPopup");
                     if pop~= nil then
@@ -431,8 +434,8 @@
                     end;
                 </event>
             </button>
-            <button align="left" text="🔄" width="25" onClick="self.lista:sort();self.listaOculta:sort()" hint="Ordena a lista"/>
-            <button align="left" text="🙈" width="25" name="listaBT" hint="Exibe/Oculta a lista oculta.">
+            <button align="left" text="🔄" width="25" onClick="self.lista:sort();self.listaOculta:sort()" hint="@@hint.sort"/>
+            <button align="left" text="🙈" width="25" name="listaBT" hint="@@hint.alt">
                                 <script>
                     <![CDATA[
                     local pics = {  "🙈",
@@ -449,8 +452,8 @@
                     ]]>
                 </event>
             </button>
-            <button align="left" text="❌" width="25" onClick="Firecast.getMesaDe(self).chat:setImpersonation({});" hint="Remove personificações do chat."/>
-            <button align="left" text="ℹ️" width="25" hint="Creditos.">
+            <button align="left" text="❌" width="25" onClick="Firecast.getMesaDe(self).activeChat:setImpersonation({});Firecast.getMesaDe(self).activeChat.talemarkOptions=nil;" hint="@@hint.removeImp"/>
+            <button align="left" text="ℹ️" width="25" hint="@@hint.credits">
                 <event name="onClick">
                     local pop = self:findControlByName("CreditsPopup");
                     if pop~= nil then
@@ -501,10 +504,10 @@
                     end
                 </event>
             </dataLink>
-            <BarDefaults field="bar1" text="Barrinha1"/>
-            <BarDefaults field="bar2" text="Barrinha2"/>
-            <BarDefaults field="bar3" text="Barrinha3"/>
-            <BarDefaults field="bar4" text="Barrinha4"/>
+            <BarDefaults field="bar1" text="@@bar.dName 1"/>
+            <BarDefaults field="bar2" text="@@bar.dName 2"/>
+            <BarDefaults field="bar3" text="@@bar.dName 3"/>
+            <BarDefaults field="bar4" text="@@bar.dName 4"/>
         </layout>
         <layout align="client" visible="false" name="listaPdMOculta">
             <recordList align="client" name="listaOculta" field="listaOculta" templateForm="frmAvatarOculto" layout="horizontalTiles">
@@ -518,8 +521,8 @@
             <dataScopeBox align="client" name="messageEditor">
                 <layout align="top" height="128" margins="{top=4}">
                     <layout align="top" height="18" margins="{left=8}">
-                        <label align="left" fontSize="12" fontStyle="bold" autoSize="true" text="Mensagem"/>
-                        <comboBox align="left" field="ShowNome" fontColor="white" fontSize="12" items="{'Texto', 'Narração', 'Avatar', 'Mostrar Nome', 'Nome e Avatar'}" values="{'0', '1', '2', '3', '4'}" text="Texto" width="118" vertTextAlign="trailing" margins="{left=10}"/>
+                        <label align="left" fontSize="12" fontStyle="bold" autoSize="true" text="@@msg.title"/>
+                        <comboBox align="left" field="ShowNome" fontColor="white" fontSize="12" items="{'Texto', 'Narração', 'Avatar', 'Mostrar Nome', 'Nome e Avatar'}" values="{'0', '1', '2', '3', '4'}" text="@@msg.txt" width="118" vertTextAlign="trailing" margins="{left=10}"/>
 
                         <button align="right" width="25" text="X" margins="{bottom=0,right=0}">
                             <event name="onClick">
@@ -540,19 +543,19 @@
                     </textEditor>
                     
                     <layout align="bottom" height="20" margins="{bottom=4, top=4}">
-                        <label align="left" width="100" fontSize="12" text="Formatar:" fontStyle="bold" margins="{left=8}" />
-                        <button align="right" width="48" text="Enter" margins="{right=2}">
+                        <label align="left" width="100" fontSize="12" text="@@msg.format" fontStyle="bold" margins="{left=8}" />
+                        <button align="right" width="48" text="@@msg.enter" margins="{right=2}">
                             <event name="onClick">
                                 self.messageEditor.node.TextoMensagem = (self.messageEditor.node.TextoMensagem or "") .. "\13\10";
                             </event>
                         </button>
-                        <button align="right" width="60" text="Limpar" margins="{right=4}">
+                        <button align="right" width="60" text="@@msg.clear" margins="{right=4}">
                             <event name="onClick">
                                 self.messageEditor.node.TextoMensagem = ""
                             </event>
                         </button>
                         <layout align="right" width="132">
-                            <label left="0" fontColor="white" fontSize="12" autoSize="true" text="Aplicar Cor:"/>
+                            <label left="0" fontColor="white" fontSize="12" autoSize="true" text="@@msg.color"/>
                             <comboBox left="70" height="20" name="CorN" field="CorN" margins="{left=8}" width="48" fontColor="white" items="{' ', '1','2','3','4','5','6','7','8','9','10','11','12','13','14','15','16','17','18','19','20','21','22','23','24','25','26','27','28'}" values="{'0', '01','02','03','04','05','06','07','08','09','10','11','12','13','14','15','16','17','18','19','20','21','22','23','24','25','26','27','28'}" value="0">
                             </comboBox>
                         </layout>
@@ -596,26 +599,26 @@
                         </button>
                     </layout>
                     <layout align="bottom" height="20" margins="{left=8}">
-                        <button align="left" width="85" text="Normal" onClick="ShowPopup('TextDefaultPopup', self.messageEditor.node)"/>
-                        <button align="left" width="85" text="Ação" onClick="ShowPopup('TextActionPopup', self.messageEditor.node)"/>
-                        <button align="left" width="85" text="Pensamento" onClick="ShowPopup('TextThoughtPopup', self.messageEditor.node)"/>
-                        <button align="left" width="85" text="Fala" onClick="ShowPopup('TextSpeechPopup', self.messageEditor.node)"/>
-                        <button align="left" width="85" text="Off" onClick="ShowPopup('TextOffPopup', self.messageEditor.node)"/>
+                        <button align="left" width="85" text="@@talemark.normal" onClick="ShowPopup('TextDefaultPopup', self.messageEditor.node)"/>
+                        <button align="left" width="85" text="@@talemark.action" onClick="ShowPopup('TextActionPopup', self.messageEditor.node)"/>
+                        <button align="left" width="85" text="@@talemark.thought" onClick="ShowPopup('TextThoughtPopup', self.messageEditor.node)"/>
+                        <button align="left" width="85" text="@@talemark.speak" onClick="ShowPopup('TextSpeechPopup', self.messageEditor.node)"/>
+                        <button align="left" width="85" text="@@talemark.off" onClick="ShowPopup('TextOffPopup', self.messageEditor.node)"/>
                     </layout>
                 </layout>
                 <layout align="bottom" height="60" margins="{top=4}">
                     <layout align="left" width="80" margins="{left=4}">
-                        <label align="top" height="18" fontSize="12" margins="{left=8}" text="Rolagem"/>
+                        <label align="top" height="18" fontSize="12" margins="{left=8}" text="@@msg.roll"/>
                         <edit align="top" height="22" fontSize="12" margins="{left=4, right=4, top=4, bottom=4}" field="TextoRolagem"/>
                     </layout>
                     <layout align="left" width="180" margins="{left=4}">
-                        <label align="top" height="18" fontSize="12" margins="{left=8}" text="Nome da Rolagem"/>
+                        <label align="top" height="18" fontSize="12" margins="{left=8}" text="@@msg.rollName"/>
                         <edit align="top" height="22" fontSize="12" margins="{left=4, right=4, top=4, bottom=4}" field="NomeRolagem"/>
                     </layout>
                     <layout align="client" margins="{left=4, right=4}">
-                        <button align="top" height="22" fontSize="12" margins="{left=4, right=4}" text="Enviar Mensagem" onClick="SendMessage()"/>
+                        <button align="top" height="22" fontSize="12" margins="{left=4, right=4}" text="@@msg.send" onClick="SendMessage()"/>
                         
-                        <button align="top" height="22" fontSize="12" margins="{top=4, left=4, right=4}" text="Enviar Rolagem">
+                        <button align="top" height="22" fontSize="12" margins="{top=4, left=4, right=4}" text="@@msg.rollSend">
                             <event name="onClick">
                                 local text = ""
                                 if self.messageEditor.node.NomeRolagem ~= nil then
