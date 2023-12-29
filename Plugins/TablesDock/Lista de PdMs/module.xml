@@ -4,7 +4,6 @@
     <id>Ambesek.Lista.PdMs</id>
     <!--"version" é a versão do seu plugin. Quando você lança uma nova versão do seu módulo, altere aqui =)-->
     <version>1.7</version>
-
     <settings>
         <automaticStringLocalization>true</automaticStringLocalization>
     </settings>

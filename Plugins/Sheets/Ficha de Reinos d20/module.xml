@@ -2,6 +2,9 @@
 <module sdkVersion="3.6e beta 6">
 	<id>Ambesek.Nefertyne.Reinos</id>
 	<version>0.12</version>
+    <settings>
+        <automaticStringLocalization>true</automaticStringLocalization>
+    </settings>
     <info lang="pt-BR">
         <!--Informações do plugin na língua "pt-BR". Você pode ter várias tags "info", uma para cada tradução que quiser.-->
         <name>Ficha Reinos d20</name>
