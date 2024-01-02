@@ -1,0 +1,163 @@
+[pt]
+dock.title=Lista de PdMs
+
+talemark.title=Formatar texto: 
+talemark.fontColor=Cor do Texto
+talemark.bgColor=Cor do Fundo
+talemark.bold=Negrito
+talemark.underline=Sublinhado
+talemark.italic=Itálico
+talemark.crossed=Tachado
+talemark.normal=Normal
+talemark.action=Ação
+talemark.thought=Pensamento
+talemark.speak=Fala
+talemark.off=Off
+
+credits.programmer=Programador: Vinny (Ambesek)
+credits.room=Ficha feita para a mesa: 
+credits.version=SUA VERSÃO:
+credits.versionCurrent=VERSÃO ATUAL:
+credits.visit=CONHEÇA AS MESAS:
+credits.update=Atualizar
+
+bar.current=Atual:  
+bar.max=Max:  
+bar.dName=Barrinha
+
+msg.title=Mensagem
+msg.txt=Texto
+msg.format=Formatar:
+msg.enter=Enter
+msg.clear=Limpar
+msg.color=Aplicar Cor:
+msg.roll=Rolagem
+msg.rollName=Nome da Rolagem
+msg.send=Enviar Mensagem
+msg.rollSend=Enviar Rolagem
+
+hint.avatar=Adiciona PdM
+hint.options=Opções das barrinhas
+hint.sort=Ordena a lista
+hint.alt=Exibe/Oculta a lista oculta
+hint.removeImp=Remove personificações do chat
+hint.credits=Creditos
+
+hint.click=Clique em mim para editar meu valor
+hint.load=Carrega info da ficha pras barrinhas
+hint.ca=Classe de Armadura (CA)
+hint.speedLand=Deslocamento Terrestre
+hint.perception=Percepção
+hint.senseMotive=Sentir Motivação
+hint.lightNormal=Visão em Luminosidade Normal
+hint.lightLow=Visão na Penumbra
+hint.lightDark=Visão no Escuro
+hint.prof=Proficiência
+hint.cae=CA Energia (CAE)
+hint.cac=CA Cinética (CAC)
+hint.camc=CA Manobra Combate (CAMC)
+hint.protection=Proteção
+hint.speedTravel=Deslocamento Viagem
+hint.tm=Trava de Mira (TM)
+hint.ld=Limiar de Dano (LD)
+hint.lc=Limiar de Crítico (LC)
+hint.speed=Velocidade
+hint.maneuver=Manobra
+hint.hyperspace=Deriva
+hint.attitude=Atitude do PdM para com os jogadores
+hint.link=Abre a ficha do personagem
+hint.notes=Exibe um campo de anotações do PdM
+hint.copy=Copia informações de barrinha, linhas e avatar do dono da ficha
+hint.talk=Falar como esse personagem
+hint.impersonate=Personificar esse personagem
+hint.hide=Envia objeto pra lista oculta
+hint.show=Envia objeto pra lista publica
+hint.visibility=Altera a visibilidade entre somente o mestre e todos
+
+dialogs.delete.avatar=Tem certeza que quer apagar esse PdM?
+dialogs.hide=Deseja manda esse npc pra lista oculta?
+dialogs.show=Deseja manda esse npc pra lista publica?
+dialogs.dmOnly=Apenas o Mestre pode ver
+
+
+[en]
+dock.title=NPC List
+
+talemark.title=Format text: 
+talemark.fontColor=Text Color
+talemark.bgColor=Background Color
+talemark.bold=Bold
+talemark.underline=Underline
+talemark.italic=Italic
+talemark.crossed=Strikeout
+talemark.normal=Normal
+talemark.action=Action
+talemark.thought=Thought
+talemark.speak=Speech
+talemark.off=Off
+
+credits.programmer=Programmer: Vinny (Ambesek)
+credits.room=Plugin made for the room: 
+credits.version=YOUR VERSION:
+credits.versionCurrent=AVAILABLE VERSION:
+credits.visit=VISIT THE ROOM:
+credits.update=Update
+
+bar.current=Current:  
+bar.max=Max:  
+bar.dName=Bar
+
+msg.title=Message
+msg.txt=Text
+msg.format=Format:
+msg.enter=Enter
+msg.clear=Clear
+msg.color=Add Color:
+msg.roll=Roll
+msg.rollName=Roll Name
+msg.send=Send Message
+msg.rollSend=Send Roll
+
+hint.avatar=Add NPC
+hint.options=Bar options
+hint.sort=Sort list
+hint.alt=Show/Hide hidden list
+hint.removeImp=Remove impersonation on this chat
+hint.credits=Credits
+
+hint.click=Click me to change my value
+hint.load=Load sheet data to NPC
+hint.ca=Armor Class (AC)
+hint.speedLand=Land Speed
+hint.perception=Perception
+hint.senseMotive=Sense Motive
+hint.lightNormal=Normal Light Vision
+hint.lightLow=Low Light Vision
+hint.lightDark=Darkvision
+hint.prof=Proficiency
+hint.cae=Energy Armor Class (EAC)
+hint.cac=Kinetic Armor Class (KAC)
+hint.camc=Combat Maneuver Armor Class (CMAC)
+hint.protection=Protection
+hint.speedTravel=Travel Speed
+hint.tm=Target Lock (TL)
+hint.ld=Damage Threshold (DT)
+hint.lc=Critical Threshold (CT)
+hint.speed=Speed
+hint.maneuver=Maneuver
+hint.hyperspace=Hyperspace
+hint.attitude=NPC attitude
+hint.link=Opens the character sheet
+hint.notes=Show NPC notes
+hint.copy=Copy player avatar information
+hint.talk=Talk as this character
+hint.impersonate=Impersonate this character
+hint.hide=Send object to hidden list
+hint.show=Send object to public list
+hint.visibility=Change visibility between DM and everyone
+
+dialogs.delete.avatar=Do you really wish to delete this NPC?
+dialogs.hide=Do you wish to hidden this NPC?
+dialogs.show=Do you wish to show this NPC?
+dialogs.dmOnly=Only the DM can see
+

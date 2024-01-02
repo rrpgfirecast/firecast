@@ -257,11 +257,25 @@
 		    end
 		    return math.abs(h)
 		end
+
+        local function GetTalemarkBlockStyle(node, text)
+            local style = {}
+
+            style = {}
+            style.color = node[text.."Color"]
+            style.bkgColor = node[text.."ColorBG"]
+            style.bold = node[text.."Negrito"]
+            style.italic = node[text.."Italico"]
+            style.strikeout = node[text.."Tachado"]
+            style.underline = node[text.."Sublinhado"]
+
+            return style
+        end
 		]]>
 	</script>
 
     <template name="formatEdit">
-        <rectangle align="$(align or 'none')" left="$(left or 0)" width="$(width or 25)" height="$(height or 25)" color="black" strokeColor="white" strokeSize="1" name="$(field)Label$(extra or '')" visible="true" opacity="0.75" hint="Clique em mim para editar meu valor.">
+        <rectangle align="$(align or 'none')" left="$(left or 0)" width="$(width or 25)" height="$(height or 25)" color="black" strokeColor="white" strokeSize="1" name="$(field)Label$(extra or '')" visible="true" opacity="0.75" hint="@@hint.click">
             <label align="$(align or 'none')" width="$(width or 25)" height="$(height or 25)" field="$(field)" horzTextAlign="center" fontSize="$(fontSize or 13)" formatFloat="$(formatFloat)"/>
             <event name="onClick">
                 self.$(field)Label$(extra or '').visible = false;
@@ -349,7 +363,7 @@
 	<rectangle align="client" color="#212121" hitTest="false">
 		<layout align="left" width="150">
 			<layout align="top" height="25">
-				<button align="left" width="25" text="🔗" visible="false" name="loadBT" margins="{bottom=0,right=0}" hint="Carrega info da ficha pras barrinhas.">
+				<button align="left" width="25" text="🔗" visible="false" name="loadBT" margins="{bottom=0,right=0}" hint="@@hint.load">
 					<event name="onClick">
 						if sheet==nil then return end
 						local mesa = Firecast.getMesaDe(sheet)
@@ -439,31 +453,31 @@
 			<!--Alterar.DataType.FichaRPGmeister-->
 			<layout align="right" width="50" margins="{left=5}" name="dataType5919525159726570555" visible="false">
 				<layout align="top" height="20" margins="{bottom=5}">
-					<label align="left" width="15" text="🛡️" margins="{right=5}" hint="CA" hitTest="true"/>
+					<label align="left" width="15" text="🛡️" margins="{right=5}" hitTest="true" hint="@@hint.ca"/>
 					<formatEdit field="ca" align="client" fontSize="11" extra="Meister"/>
 				</layout>
 				<layout align="top" height="20" margins="{bottom=5}">
-					<label align="left" width="15" text="👟" margins="{right=5}" hint="Deslocamento Terrestre" hitTest="true"/>
+					<label align="left" width="15" text="👟" margins="{right=5}" hitTest="true" hint="@@hint.speedLand"/>
 					<formatEdit field="desl" align="client" fontSize="11" extra="Meister"/>
 				</layout>
 				<layout align="top" height="20" margins="{bottom=5}">
-					<label align="left" width="15" text="🔎" margins="{right=5}" hint="Percepção" hitTest="true"/>
+					<label align="left" width="15" text="🔎" margins="{right=5}" hitTest="true" hint="@@hint.perception"/>
 					<formatEdit field="percepcao" align="client" fontSize="11" extra="Meister"/>
 				</layout>
 				<layout align="top" height="20" margins="{bottom=5}">
-					<label align="left" width="15" text="🕵️" margins="{right=5}" hint="Sentir Motivação" hitTest="true"/>
+					<label align="left" width="15" text="🕵️" margins="{right=5}" hitTest="true" hint="@@hint.senseMotive"/>
 					<formatEdit field="sentirmotivacao" align="client" fontSize="11" extra="Meister"/>
 				</layout>
 				<layout align="top" height="20" margins="{bottom=5}">
-					<label align="left" width="15" text="👁️" margins="{right=5}" hint="Visão em Luminosidade Normal" hitTest="true"/>
+					<label align="left" width="15" text="👁️" margins="{right=5}" hitTest="true" hint="@@hint.lightNormal"/>
 					<formatEdit field="visao" align="client" fontSize="11" extra="Meister"/>
 				</layout>
 				<layout align="top" height="20">
-					<label align="left" width="15" text="🔦" margins="{right=5}" hint="Visão na Penumbra." hitTest="true"/>
+					<label align="left" width="15" text="🔦" margins="{right=5}" hitTest="true" hint="@@hint.lightLow"/>
 					<formatEdit field="penumbra" align="client" fontSize="11" extra="Meister"/>
 				</layout>
 				<layout align="top" height="20" margins="{top=5,bottom=0}">
-					<label align="left" width="15" text="🕶️" margins="{right=5}" hint="Visão no Escuro" hitTest="true"/>
+					<label align="left" width="15" text="🕶️" margins="{right=5}" hitTest="true" hint="@@hint.lightDark"/>
 					<formatEdit field="escuro" align="client" fontSize="11" extra="Meister"/>
 				</layout>
 			</layout>
@@ -471,31 +485,31 @@
 			<!--br.com.rrpg.DnD5_S3-->
 			<layout align="right" width="50" margins="{left=5}" name="dataType5216828343016777651" visible="false">
 				<layout align="top" height="20" margins="{bottom=5}">
-					<label align="left" width="15" text="🛡️" margins="{right=5}" hint="CA" hitTest="true"/>
+					<label align="left" width="15" text="🛡️" margins="{right=5}" hitTest="true" hint="@@hint.ca"/>
 					<formatEdit field="ca" align="client" fontSize="11" extra="5e"/>
 				</layout>
 				<layout align="top" height="20" margins="{bottom=5}">
-					<label align="left" width="15" text="👟" margins="{right=5}" hint="Deslocamento Terrestre" hitTest="true"/>
+					<label align="left" width="15" text="👟" margins="{right=5}" hitTest="true" hint="@@hint.speedLand"/>
 					<formatEdit field="desl" align="client" fontSize="11" extra="5e"/>
 				</layout>
 				<layout align="top" height="20" margins="{bottom=5}">
-					<label align="left" width="15" text="🔎" margins="{right=5}" hint="Percepção" hitTest="true"/>
+					<label align="left" width="15" text="🔎" margins="{right=5}" hitTest="true" hint="@@hint.perception"/>
 					<formatEdit field="percepcao" align="client" fontSize="11" extra="5e"/>
 				</layout>
 				<layout align="top" height="20" margins="{bottom=5}">
-					<label align="left" width="15" text="🌟" margins="{right=5}" hint="Proficiência" hitTest="true"/>
+					<label align="left" width="15" text="🌟" margins="{right=5}" hitTest="true" hint="@@hint.prof"/>
 					<formatEdit field="proficiencia" align="client" fontSize="11" extra="5e"/>
 				</layout>
 				<layout align="top" height="20" margins="{bottom=5}">
-					<label align="left" width="15" text="👁️" margins="{right=5}" hint="Visão em Luminosidade Normal" hitTest="true"/>
+					<label align="left" width="15" text="👁️" margins="{right=5}" hitTest="true" hint="@@hint.lightNormal"/>
 					<formatEdit field="visao" align="client" fontSize="11" extra="5e"/>
 				</layout>
 				<layout align="top" height="20">
-					<label align="left" width="15" text="🔦" margins="{right=5}" hint="Visão na Penumbra." hitTest="true"/>
+					<label align="left" width="15" text="🔦" margins="{right=5}" hitTest="true" hint="@@hint.lightLow"/>
 					<formatEdit field="penumbra" align="client" fontSize="11" extra="5e"/>
 				</layout>
 				<layout align="top" height="20" margins="{top=5,bottom=0}">
-					<label align="left" width="15" text="🕶️" margins="{right=5}" hint="Visão no Escuro" hitTest="true"/>
+					<label align="left" width="15" text="🕶️" margins="{right=5}" hitTest="true" hint="@@hint.lightDark"/>
 					<formatEdit field="escuro" align="client" fontSize="11" extra="5e"/>
 				</layout>
 			</layout>
@@ -503,31 +517,31 @@
 			<!--Ambesek.Nefertyne.FichaPathfinder-->
 			<layout align="right" width="50" margins="{left=5}" name="dataType2850853990837453463" visible="false">
 				<layout align="top" height="20" margins="{bottom=5}">
-					<label align="left" width="15" text="🛡️" margins="{right=5}" hint="CA" hitTest="true"/>
+					<label align="left" width="15" text="🛡️" margins="{right=5}" hitTest="true" hint="@@hint.ca"/>
 					<formatEdit field="ca" align="client" fontSize="11" extra="Path"/>
 				</layout>
 				<layout align="top" height="20" margins="{bottom=5}">
-					<label align="left" width="15" text="👟" margins="{right=5}" hint="Deslocamento Terrestre" hitTest="true"/>
+					<label align="left" width="15" text="👟" margins="{right=5}" hitTest="true" hint="@@hint.speedLand"/>
 					<formatEdit field="desl" align="client" fontSize="11" extra="Path"/>
 				</layout>
 				<layout align="top" height="20" margins="{bottom=5}">
-					<label align="left" width="15" text="🔎" margins="{right=5}" hint="Percepção" hitTest="true"/>
+					<label align="left" width="15" text="🔎" margins="{right=5}" hitTest="true" hint="@@hint.perception"/>
 					<formatEdit field="percepcao" align="client" fontSize="11" extra="Path"/>
 				</layout>
 				<layout align="top" height="20" margins="{bottom=5}">
-					<label align="left" width="15" text="🕵️" margins="{right=5}" hint="Sentir Motivação" hitTest="true"/>
+					<label align="left" width="15" text="🕵️" margins="{right=5}" hitTest="true" hint="@@hint.senseMotive"/>
 					<formatEdit field="sentirmotivacao" align="client" fontSize="11" extra="Path"/>
 				</layout>
 				<layout align="top" height="20" margins="{bottom=5}">
-					<label align="left" width="15" text="👁️" margins="{right=5}" hint="Visão Luminosidade Normal" hitTest="true"/>
+					<label align="left" width="15" text="👁️" margins="{right=5}" hitTest="true" hint="@@hint.lightNormal"/>
 					<formatEdit field="visao" align="client" fontSize="11" extra="Path"/>
 				</layout>
 				<layout align="top" height="20">
-					<label align="left" width="15" text="🔦" margins="{right=5}" hint="Visão na Penumbra." hitTest="true"/>
+					<label align="left" width="15" text="🔦" margins="{right=5}" hitTest="true" hint="@@hint.lightLow"/>
 					<formatEdit field="penumbra" align="client" fontSize="11" extra="Path"/>
 				</layout>
 				<layout align="top" height="20" margins="{top=5,bottom=0}">
-					<label align="left" width="15" text="🕶️" margins="{right=5}" hint="Visão no Escuro" hitTest="true"/>
+					<label align="left" width="15" text="🕶️" margins="{right=5}" hitTest="true" hint="@@hint.lightDark"/>
 					<formatEdit field="escuro" align="client" fontSize="11" extra="Path"/>
 				</layout>
 			</layout>
@@ -535,27 +549,27 @@
 			<!--Ambesek.FichaStarfinder-->
 			<layout align="right" width="50" margins="{left=5}" name="dataType9150763801005266856" visible="false">
 				<layout align="top" height="20" margins="{bottom=5}">
-					<label align="left" width="15" text="🔋" margins="{right=5}" hint="CA Energia" hitTest="true"/>
+					<label align="left" width="15" text="🔋" margins="{right=5}" hitTest="true" hint="@@hint.cae"/>
 					<formatEdit field="cae" align="client" fontSize="11" extra="SF"/>
 				</layout>
 				<layout align="top" height="20" margins="{bottom=5}">
-					<label align="left" width="15" text="🛡️" margins="{right=5}" hint="CA Cinética" hitTest="true"/>
+					<label align="left" width="15" text="🛡️" margins="{right=5}" hitTest="true" hint="@@hint.cac"/>
 					<formatEdit field="cac" align="client" fontSize="11" extra="SF"/>
 				</layout>
 				<layout align="top" height="20" margins="{bottom=5}">
-					<label align="left" width="15" text="🤼" margins="{right=5}" hint="CA Manobra Combate" hitTest="true"/>
+					<label align="left" width="15" text="🤼" margins="{right=5}" hitTest="true" hint="@@hint.camc"/>
 					<formatEdit field="camc" align="client" fontSize="11" extra="SF"/>
 				</layout>
 				<layout align="top" height="20" margins="{bottom=5}">
-					<label align="left" width="15" text="👟" margins="{right=5}" hint="Deslocamento Terrestre" hitTest="true"/>
+					<label align="left" width="15" text="👟" margins="{right=5}" hitTest="true" hint="@@hint.speedLand"/>
 					<formatEdit field="desl" align="client" fontSize="11" extra="SF"/>
 				</layout>
 				<layout align="top" height="20" margins="{bottom=5}">
-					<label align="left" width="15" text="🔎" margins="{right=5}" hint="Percepção" hitTest="true"/>
+					<label align="left" width="15" text="🔎" margins="{right=5}" hitTest="true" hint="@@hint.perception"/>
 					<formatEdit field="percepcao" align="client" fontSize="11" extra="SF"/>
 				</layout>
 				<layout align="top" height="20" margins="{bottom=5}">
-					<label align="left" width="15" text="🕵️" margins="{right=5}" hint="Sentir Motivação" hitTest="true"/>
+					<label align="left" width="15" text="🕵️" margins="{right=5}" hitTest="true" hint="@@hint.senseMotive"/>
 					<formatEdit field="sentirmotivacao" align="client" fontSize="11" extra="SF"/>
 				</layout>
 			</layout>
@@ -563,23 +577,23 @@
 			<!--Ambesek.Starfinder.Veiculos-->
 			<layout align="right" width="75" margins="{left=5}" name="dataType3259961376468481717" visible="false">
 				<layout align="top" height="20" margins="{bottom=5}">
-					<label align="left" width="15" text="🔋" margins="{right=5}" hint="CA Energia" hitTest="true"/>
+					<label align="left" width="15" text="🔋" margins="{right=5}" hitTest="true" hint="@@hint.cae"/>
 					<formatEdit field="cae" align="client" fontSize="11" extra="SFV"/>
 				</layout>
 				<layout align="top" height="20" margins="{bottom=5}">
-					<label align="left" width="15" text="🛡️" margins="{right=5}" hint="CA Cinética" hitTest="true"/>
+					<label align="left" width="15" text="🛡️" margins="{right=5}" hitTest="true" hint="@@hint.cac"/>
 					<formatEdit field="cac" align="client" fontSize="11" extra="SFV"/>
 				</layout>
 				<layout align="top" height="20" margins="{bottom=5}">
-					<label align="left" width="15" text="⚜️" margins="{right=5}" hint="Proteção" hitTest="true"/>
+					<label align="left" width="15" text="⚜️" margins="{right=5}" hitTest="true" hint="@@hint.protection"/>
 					<formatEdit field="protecao" align="client" fontSize="11" extra="SFV"/>
 				</layout>
 				<layout align="top" height="20" margins="{bottom=5}">
-					<label align="left" width="15" text="🦿" margins="{right=5}" hint="Deslocamento Terrestre" hitTest="true"/>
+					<label align="left" width="15" text="🦿" margins="{right=5}" hitTest="true" hint="@@hint.speedLand"/>
 					<formatEdit field="deslMetros" align="client" fontSize="11" extra="SFV"/>
 				</layout>
 				<layout align="top" height="20" margins="{bottom=5}">
-					<label align="left" width="15" text="🚘" margins="{right=5}" hint="Deslocamento Viagem" hitTest="true"/>
+					<label align="left" width="15" text="🚘" margins="{right=5}" hitTest="true" hint="@@hint.speedTravel"/>
 					<formatEdit field="deslViagem" align="client" fontSize="9" extra="SFV"/>
 				</layout>
 			</layout>
@@ -587,31 +601,31 @@
 			<!--Ambesek.Starfinder.Nave-->
 			<layout align="right" width="50" margins="{left=5}" name="dataType3655081265232148693" visible="false">
 				<layout align="top" height="20" margins="{bottom=5}">
-					<label align="left" width="15" text="🛡️" margins="{right=5}" hint="Classe de Armadura (CA)" hitTest="true"/>
+					<label align="left" width="15" text="🛡️" margins="{right=5}" hitTest="true" hint="@@hint.ca"/>
 					<formatEdit field="ca" align="client" fontSize="11" extra="SFN"/>
 				</layout>
 				<layout align="top" height="20" margins="{bottom=5}">
-					<label align="left" width="15" text="📡" margins="{right=5}" hint="Trava de Mira (TM)" hitTest="true"/>
+					<label align="left" width="15" text="📡" margins="{right=5}" hitTest="true" hint="@@hint.tm"/>
 					<formatEdit field="tm" align="client" fontSize="11" extra="SFN"/>
 				</layout>
 				<layout align="top" height="20" margins="{bottom=5}">
-					<label align="left" width="15" text="💥" margins="{right=5}" hint="Limiar de Dano (LD)" hitTest="true"/>
+					<label align="left" width="15" text="💥" margins="{right=5}" hitTest="true" hint="@@hint.ld"/>
 					<formatEdit field="ld" align="client" fontSize="11" extra="SFN"/>
 				</layout>
 				<layout align="top" height="20" margins="{bottom=5}">
-					<label align="left" width="15" text="💢" margins="{right=5}" hint="Limiar de Crítico (LC)" hitTest="true"/>
+					<label align="left" width="15" text="💢" margins="{right=5}" hitTest="true" hint="@@hint.lc"/>
 					<formatEdit field="lc" align="client" fontSize="11" extra="SFN"/>
 				</layout>
 				<layout align="top" height="20" margins="{bottom=5}">
-					<label align="left" width="15" text="🚀" margins="{right=5}" hint="Velocidade" hitTest="true"/>
+					<label align="left" width="15" text="🚀" margins="{right=5}" hitTest="true" hint="@@hint.speed"/>
 					<formatEdit field="velocidade" align="client" fontSize="11" extra="SFN"/>
 				</layout>
 				<layout align="top" height="20" margins="{bottom=5}">
-					<label align="left" width="15" text="↩️" margins="{right=5}" hint="Manobra" hitTest="true"/>
+					<label align="left" width="15" text="↩️" margins="{right=5}" hitTest="true" hint="@@hint.maneuver"/>
 					<formatEdit field="manobra" align="client" fontSize="11" extra="SFN"/>
 				</layout>
 				<layout align="top" height="20" margins="{bottom=5}">
-					<label align="left" width="15" text="🌌" margins="{right=5}" hint="Deriva" hitTest="true"/>
+					<label align="left" width="15" text="🌌" margins="{right=5}" hitTest="true" hint="@@hint.hyperspace"/>
 					<formatEdit field="deriva" align="client" fontSize="9" extra="SFN"/>
 				</layout>
 			</layout>
@@ -619,7 +633,7 @@
 
 		<layout align="right" width="25" margins="{right=5}">
 
-			<button align="top" height="25" text="⚫" name="attitudeBT" hint="Atitude do PdM para com os jogadores.">
+			<button align="top" height="25" text="⚫" name="attitudeBT" hint="@@hint.attitude">
 				<script>
 					<![CDATA[
 					local pics = {	"⚫",
@@ -647,22 +661,19 @@
 				</event>
 			</dataLink>
 
-			<button align="top" height="25" text="📝" margins="{bottom=0,right=0}" hint="Exibe o link pra ficha do personagem no chat.">
+			<button align="top" height="25" text="📝" margins="{bottom=0,right=0}" hint="@@hint.link">
 				<event name="onClick">
-					-- Show sheet link
 					if sheet==nil then return end
-					if sheet.character==nil then return end
-					if tonumber(sheet.character) == 0 then return end
-					local mesa = Firecast.getMesaDe(sheet);
+					local mesa = Firecast.getMesaDe(sheet)
+					if mesa==nil then return end
+					local bibItem = mesa:findBibliotecaItem(sheet.characterID)
+					if bibItem==nil then return end
 
-					if mesa ~= nil then
-						local link = "firecast:/rooms/"..mesa.codigoInterno.."/library/".. sheet.character .. " [" .. sheet.characterName .. "]"
-						mesa.activeChat:enviarMensagem(link)
-					end
+					GUI.asyncOpenFirecastURI(bibItem.firecastURI, {autoFocus=true, newTab=true});
 				</event>
 			</button>
 
-			<button align="top" height="25" text="🗒️" margins="{bottom=0,right=0}" hint="Exibe um campo de anotações do PdM.">
+			<button align="top" height="25" text="🗒️" margins="{bottom=0,right=0}" hint="@@hint.notes">
 				<event name="onClick">
 					mesa = rrpg.getMesaDe(sheet);
 					local pop;
@@ -672,6 +683,9 @@
 						pop = self:findControlByName("popupDetailsSmall");
 					end
 					if pop == nil then
+						if (not mesa.meuJogador.isMestre and sheet.dmOnly) then
+							return 
+						end
 						pop = self:findControlByName("NotesPopup");
 					end
                     if pop~= nil then
@@ -681,9 +695,32 @@
 				</event>
 			</button>
 
+			<button align="top" height="25" text="📎" margins="{bottom=0,right=0}" hint="@@hint.copy">
+				<event name="onClick">
+					if sheet==nil then return end
+					local mesa = Firecast.getMesaDe(sheet)
+					if mesa==nil then return end
+					local bibItem = mesa:findBibliotecaItem(sheet.characterID)
+					if bibItem==nil then return end
+
+					sheet.avatar = bibItem.avatar
+					sheet.bar1Valor = bibItem.bar0Val
+					sheet.bar1ValorMax = bibItem.bar0Max
+					sheet.bar2Valor = bibItem.bar1Val
+					sheet.bar2ValorMax = bibItem.bar1Max
+					sheet.bar3Valor = bibItem.bar2Val
+					sheet.bar3ValorMax = bibItem.bar2Max
+					sheet.bar4Valor = bibItem.bar3Val
+					sheet.bar4ValorMax = bibItem.bar3Max
+
+					sheet.linha1 = bibItem.edtLine0
+					sheet.linha2 = bibItem.edtLine1
+				</event>
+			</button>
+
 			<button align="bottom" height="25" text="🗑️" margins="{bottom=0,right=0}">
 				<event name="onClick">
-					Dialogs.confirmOkCancel("Tem certeza que quer apagar esse avatar?",
+					Dialogs.confirmOkCancel(lang("dialogs.delete.avatar"),
 						function (confirmado)
 							if confirmado then
 								NDB.deleteNode(sheet);
@@ -693,8 +730,7 @@
 			</button>
 		</layout>
 		<layout align="right" width="25" margins="{right=5}">
-
-			<button align="top" height="25" text="💬" margins="{bottom=0,right=0}" hint="Falar como esse personagem.">
+			<button align="top" height="25" text="💬" margins="{bottom=0,right=0}" hint="@@hint.talk">
 				<event name="onClick">
 		    		local dsb = self:findControlByName("messageEditor")
 		    		dsb.node = sheet
@@ -704,7 +740,7 @@
 				</event>
 			</button>
 
-			<button align="top" height="25" text="👁️‍🗨️" margins="{bottom=0,right=0}" hint="Personificar esse personagem.">
+			<button align="top" height="25" text="👁️‍🗨️" margins="{bottom=0,right=0}" hint="@@hint.impersonate">
 				<event name="onClick">
                     local impersonation = {}
                     impersonation.mode = "character"
@@ -712,13 +748,32 @@
                     impersonation.name = sheet.nome
 
                     local mesa = Firecast.getMesaDe(self)
-                    mesa.chat:setImpersonation(impersonation)
+                    mesa.activeChat:setImpersonation(impersonation)
+
+                    local talemarkOptions = {}
+		            if sheet.normalUse then
+		                talemarkOptions.defaultTextStyle = GetTalemarkBlockStyle(sheet, "normal")
+		            end
+		            if sheet.acaoUse then
+		                talemarkOptions.charActionTextStyle = GetTalemarkBlockStyle(sheet, "acao")
+		            end
+		            if sheet.pensamentoUse then
+		                talemarkOptions.charQuotedSpeechTextStyle = GetTalemarkBlockStyle(sheet, "pensamento")
+		            end
+		            if sheet.falaUse then
+		                talemarkOptions.charEmDashSpeechTextStyle = GetTalemarkBlockStyle(sheet, "fala")
+		            end
+		            if sheet.offUse then
+		                talemarkOptions.outOfCharTextStyle = GetTalemarkBlockStyle(sheet, "off")
+		            end
+
+		            mesa.activeChat.talemarkOptions = talemarkOptions
 				</event>
 			</button>
 
-			<button align="top" height="25" text="💾" margins="{bottom=0,right=0}" hint="Envia objeto pra lista oculta.">
+			<button align="top" height="25" text="💾" margins="{bottom=0,right=0}" hint="@@hint.hide">
 				<event name="onClick">
-		    		Dialogs.confirmYesNo("Deseja manda esse npc pra lista oculta?",
+		    		Dialogs.confirmYesNo(lang("dialogs.hide"),
 		                function (confirmado)
 		                   if confirmado then
 		                       local rcl = self:findControlByName("listaOculta");
@@ -735,7 +790,7 @@
 				</event>
 			</button>
 
-			<imageCheckBox name="cbxInvisivel" align="top" height="25" checkedImage="images/invisivel.png" uncheckedImage="images/visivel.png" autoChange="false" onClick="self:alternarVisibilidade();" hint="Altera a visibilidade entre somente o mestre e todos."/> 
+			<imageCheckBox name="cbxInvisivel" align="top" height="25" checkedImage="images/invisivel.png" uncheckedImage="images/visivel.png" autoChange="false" onClick="self:alternarVisibilidade();" hint="@@hint.visibility"/> 
 		</layout>
 	</rectangle>
 

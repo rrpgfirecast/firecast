@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <root>
-    <element id="AfkBot" name="AfkBot" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/ChatMods/AfkBot/output/AfkBot.rpk?raw=true" fileName="AfkBot.rpk" repositoryPath="ChatMods/AfkBot/" author="Ambesek" description="Crie uma mensagem padrão para responder quando estiver ocupado. Também protege a mesa de flood de dados e /rir se configurado para tal. Use /afkbot para abrir o popup de configuração." version="1.8" compilationDate="18122023180517" compilationDigest="fafe30d4aa106c480d7d165bea016eda6e9ff2e6">
+    <element id="AfkBot" name="AfkBot" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/ChatMods/AfkBot/output/AfkBot.rpk?raw=true" fileName="AfkBot.rpk" repositoryPath="ChatMods/AfkBot/" author="Ambesek" description="Crie uma mensagem padrão para responder quando estiver ocupado. Também protege a mesa de flood de dados e /rir se configurado para tal. Use /afkbot para abrir o popup de configuração." version="1.10" compilationDate="18122023180517" compilationDigest="fafe30d4aa106c480d7d165bea016eda6e9ff2e6">
         <info lang="pt-BR" name="AfkBot" description="Crie uma mensagem padrão para responder quando estiver ocupado. Também protege a mesa de flood de dados e /rir se configurado para tal. Use /afkbot para abrir o popup de configuração." author="Ambesek" site="http://pt-br.rpgmeister.wikia.com/wiki/Main_Page"/>
         <dataTypes>
             <dataType id="ambesek.afkbot" title="AfkBot" formType="undefined">
@@ -135,7 +135,7 @@
             </dataType>
         </dataTypes>
     </element>
-    <element id="Ambesek.Lista.PdMs" name="Lista de PdMs" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/TablesDock/Lista%20de%20PdMs/output/Lista%20de%20PdMs.rpk?raw=true" fileName="Lista de PdMs.rpk" repositoryPath="TablesDock/Lista de PdMs/" author="Ambesek" description="Janela acoplavel que exibe avatares para PdMs." version="1.5" compilationDate="19122023141247" compilationDigest="f2b327a6d54eb49a07a988b638c52fc468637073">
+    <element id="Ambesek.Lista.PdMs" name="Lista de PdMs" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/TablesDock/Lista%20de%20PdMs/output/Lista%20de%20PdMs.rpk?raw=true" fileName="Lista de PdMs.rpk" repositoryPath="TablesDock/Lista de PdMs/" author="Ambesek" description="Janela acoplavel que exibe avatares para PdMs." version="1.7" compilationDate="19122023141247" compilationDigest="f2b327a6d54eb49a07a988b638c52fc468637073">
         <info lang="pt-BR" name="Lista de PdMs" description="Janela acoplavel que exibe avatares para PdMs." author="Ambesek"/>
         <dataTypes>
             <dataType id="Ambesek.Lista.PdMs" title="Lista de PdMs" formType="tablesDock">
@@ -213,7 +213,7 @@
             </dataType>
         </dataTypes>
     </element>
-    <element id="Ambesek.Nefertyne.Reinos" name="Ficha Reinos d20" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20de%20Reinos%20d20/output/Ficha%20de%20Reinos%20d20.rpk?raw=true" fileName="Ficha de Reinos d20.rpk" repositoryPath="Sheets/Ficha de Reinos d20/" author="Ambesek" description="Ficha para descrição de Reinos e Cidades seguindo o padrão d20system do Livro do Mestre." version="0.10" compilationDate="19122023141739" compilationDigest="ef4d0511e4c06c56a61224f0fa1e565e1b7fd5d4">
+    <element id="Ambesek.Nefertyne.Reinos" name="Ficha Reinos d20" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20de%20Reinos%20d20/output/Ficha%20de%20Reinos%20d20.rpk?raw=true" fileName="Ficha de Reinos d20.rpk" repositoryPath="Sheets/Ficha de Reinos d20/" author="Ambesek" description="Ficha para descrição de Reinos e Cidades seguindo o padrão d20system do Livro do Mestre." version="0.12" compilationDate="19122023141739" compilationDigest="ef4d0511e4c06c56a61224f0fa1e565e1b7fd5d4">
         <info lang="pt-BR" name="Ficha Reinos d20" description="Ficha para descrição de Reinos e Cidades seguindo o padrão d20system do Livro do Mestre." author="Ambesek"/>
         <dataTypes>
             <dataType id="Ambesek.Lista.PdMs" title="Lista de PdMs" formType="tablesDock">
@@ -683,7 +683,7 @@
             </dataType>
         </dataTypes>
     </element>
-    <element id="GerenciadorDeCampanha" name="Gerenciador de Campanha" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Gerenciador%20de%20Campanha/output/Gerenciador%20de%20Campanha.rpk?raw=true" fileName="Gerenciador de Campanha.rpk" repositoryPath="Sheets/Gerenciador de Campanha/" author="Ambesek" description="Ficha para gerenciar informaçes publicas e privadas de jogo, com visualizaçao seletiva entre jogadores e mestres." version="1.3" compilationDate="19122023144041" compilationDigest="9536147bb8ea576ccdce645fbfade57476e855ff">
+    <element id="GerenciadorDeCampanha" name="Gerenciador de Campanha" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Gerenciador%20de%20Campanha/output/Gerenciador%20de%20Campanha.rpk?raw=true" fileName="Gerenciador de Campanha.rpk" repositoryPath="Sheets/Gerenciador de Campanha/" author="Ambesek" description="Ficha para gerenciar informaçes publicas e privadas de jogo, com visualizaçao seletiva entre jogadores e mestres." version="1.5" compilationDate="19122023144041" compilationDigest="9536147bb8ea576ccdce645fbfade57476e855ff">
         <info lang="pt-BR" name="Gerenciador de Campanha" description="Ficha para gerenciar informaçes publicas e privadas de jogo, com visualizaçao seletiva entre jogadores e mestres." author="Ambesek" site="http://pt-br.rpgmeister.wikia.com/wiki/Main_Page"/>
         <dataTypes>
             <dataType id="Ambesek.Gerenciador.RPGmeister" title="Gerenciador de Campanha" formType="sheetTemplate">

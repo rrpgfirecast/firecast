@@ -1,5 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <form name="frmAvatarOculto" height="50" width="250" margins="{top=5,bottom=5,left=5,right=5}">
+	<script>
+        local function GetTalemarkBlockStyle(node, text)
+            local style = {}
+
+            style = {}
+            style.color = node[text.."Color"]
+            style.bkgColor = node[text.."ColorBG"]
+            style.bold = node[text.."Negrito"]
+            style.italic = node[text.."Italico"]
+            style.strikeout = node[text.."Tachado"]
+            style.underline = node[text.."Sublinhado"]
+
+            return style
+        end
+	</script>
 	<event name="onNodeReady">
 		if sheet == nil then return end
 		if sheet.avatar == nil or sheet.avatar == "" then
@@ -19,7 +34,7 @@
 	</rectangle>
 
 	<layout align="right" width="25">
-		<button align="top" height="25" text="💬" margins="{bottom=0,right=0}" hint="Falar como esse personagem.">
+		<button align="top" height="25" text="💬" margins="{bottom=0,right=0}" hint="@@hint.talk">
 			<event name="onClick">
 		 		local dsb = self:findControlByName("messageEditor")
 		 		dsb.node = sheet
@@ -29,23 +44,42 @@
 			</event>
 		</button>
 
-		<button align="top" height="25" text="👁️‍🗨️" margins="{bottom=0,right=0}" hint="Personificar esse personagem.">
+		<button align="top" height="25" text="👁️‍🗨️" margins="{bottom=0,right=0}" hint="@@hint.impersonate">
 			<event name="onClick">
-	              local impersonation = {}
-	              impersonation.mode = "character"
-	              impersonation.avatar = sheet.avatar
-	              impersonation.name = sheet.nome
+                    local impersonation = {}
+                    impersonation.mode = "character"
+                    impersonation.avatar = sheet.avatar
+                    impersonation.name = sheet.nome
 
-	              local mesa = Firecast.getMesaDe(self);
-	              mesa.chat:setImpersonation(impersonation)
-			</event>
+                    local mesa = Firecast.getMesaDe(self)
+                    mesa.activeChat:setImpersonation(impersonation)
+
+                    local talemarkOptions = {}
+		            if sheet.normalUse then
+		                talemarkOptions.defaultTextStyle = GetTalemarkBlockStyle(sheet, "normal")
+		            end
+		            if sheet.acaoUse then
+		                talemarkOptions.charActionTextStyle = GetTalemarkBlockStyle(sheet, "acao")
+		            end
+		            if sheet.pensamentoUse then
+		                talemarkOptions.charQuotedSpeechTextStyle = GetTalemarkBlockStyle(sheet, "pensamento")
+		            end
+		            if sheet.falaUse then
+		                talemarkOptions.charEmDashSpeechTextStyle = GetTalemarkBlockStyle(sheet, "fala")
+		            end
+		            if sheet.offUse then
+		                talemarkOptions.outOfCharTextStyle = GetTalemarkBlockStyle(sheet, "off")
+		            end
+
+		            mesa.activeChat.talemarkOptions = talemarkOptions
+				</event>
 		</button>
 	</layout>
 
 	<layout align="right" width="25">
-		<button align="top" height="25" text="📌" margins="{bottom=0,right=0}" hint="Envia objeto pra lista publica.">
+		<button align="top" height="25" text="📌" margins="{bottom=0,right=0}" hint="@@hint.show">
 			<event name="onClick">
-	    		Dialogs.confirmYesNo("Deseja manda esse npc pra lista publica?",
+	    		Dialogs.confirmYesNo(lang("dialogs.show"),
 	                function (confirmado)
 	                   if confirmado then
 	                       local rcl = self:findControlByName("lista");
@@ -64,7 +98,7 @@
 
 		<button align="top" height="25" text="X" margins="{bottom=0,right=0}">
 			<event name="onClick">
-				Dialogs.confirmOkCancel("Tem certeza que quer apagar esse avatar?",
+				Dialogs.confirmOkCancel(lang("dialogs.delete.avatar"),
 					function (confirmado)
 						if confirmado then
 							NDB.deleteNode(sheet);
