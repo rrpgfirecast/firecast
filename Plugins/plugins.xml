@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <root>
-    <element id="AfkBot" name="AfkBot" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/ChatMods/AfkBot/output/AfkBot.rpk?raw=true" fileName="AfkBot.rpk" repositoryPath="ChatMods/AfkBot/" author="Ambesek" description="Crie uma mensagem padrão para responder quando estiver ocupado. Também protege a mesa de flood de dados e /rir se configurado para tal. Use /afkbot para abrir o popup de configuração." version="1.10" compilationDate="18122023180517" compilationDigest="fafe30d4aa106c480d7d165bea016eda6e9ff2e6">
+    <element id="AfkBot" name="AfkBot" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/ChatMods/AfkBot/output/AfkBot.rpk?raw=true" fileName="AfkBot.rpk" repositoryPath="ChatMods/AfkBot/" author="Ambesek" description="Crie uma mensagem padrão para responder quando estiver ocupado. Também protege a mesa de flood de dados e /rir se configurado para tal. Use /afkbot para abrir o popup de configuração." version="1.10" compilationDate="30122023183627" compilationDigest="cb06895e5f2c465b9bd1aa05ef5ee61262c2e09b">
         <info lang="pt-BR" name="AfkBot" description="Crie uma mensagem padrão para responder quando estiver ocupado. Também protege a mesa de flood de dados e /rir se configurado para tal. Use /afkbot para abrir o popup de configuração." author="Ambesek" site="http://pt-br.rpgmeister.wikia.com/wiki/Main_Page"/>
         <dataTypes>
             <dataType id="ambesek.afkbot" title="AfkBot" formType="undefined">
@@ -40,15 +40,15 @@
             </dataType>
         </dataTypes>
     </element>
-    <element id="Ambesek.Auto.Updater" name="Plugin Auto Updater" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/TablesDock/AutoUpdater/output/AutoUpdater.rpk?raw=true" fileName="AutoUpdater.rpk" repositoryPath="TablesDock/AutoUpdater/" author="Ambesek" description="Verifica seus plugins e encontra quais tem atualizações disponíveis no git do firecast. Também permite acesso a plugins não instalados do git." version="1.2" compilationDate="03032023122704" compilationDigest="e6cf9fa0834dc81dc2a506af82630f8e134c0e21">
-        <info lang="pt-BR" name="Plugin Auto Updater" description="Verifica seus plugins e encontra quais tem atualizações disponíveis no git do firecast. Também permite acesso a plugins não instalados do git." author="Ambesek" site="http://pt-br.rpgmeister.wikia.com/wiki/Main_Page"/>
-        <info lang="en" description="Check your plugins and find which ones have updates available in Firecast git. It also allows access to not installed git plugins."/>
+    <element id="Ambesek.Auto.Updater" name="Plugin Auto Updater" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/TablesDock/AutoUpdater/output/AutoUpdater.rpk?raw=true" fileName="AutoUpdater.rpk" repositoryPath="TablesDock/AutoUpdater/" author="Ambesek" description="Verifica seus plugins e macros, e encontra quais tem atualizações disponíveis no git do firecast. Também permite acesso a plugins não instalados do git." version="1.2" compilationDate="25122023205835" compilationDigest="e3bd94e509be4b5b13a249564c3fc3450e4a1bbe">
+        <info lang="pt-BR" name="Plugin Auto Updater" description="Verifica seus plugins e macros, e encontra quais tem atualizações disponíveis no git do firecast. Também permite acesso a plugins não instalados do git." author="Ambesek" site="http://pt-br.rpgmeister.wikia.com/wiki/Main_Page"/>
+        <info lang="en" description="Check your plugins and macros, and find which ones have updates available in Firecast git. It also allows access to not installed git plugins."/>
         <dataTypes>
-            <dataType id="ambesek.autoupdater" title="Auto Updater" formType="undefined">
-                <info title="Auto Updater"/>
-            </dataType>
             <dataType id="Ambesek.Auto.Updater" title="Plugin Auto Updater" formType="tablesDock">
                 <info title="Plugin Auto Updater"/>
+            </dataType>
+            <dataType id="ambesek.autoupdater" title="Auto Updater" formType="undefined">
+                <info title="Auto Updater"/>
             </dataType>
         </dataTypes>
     </element>
@@ -109,7 +109,7 @@
             </dataType>
         </dataTypes>
     </element>
-    <element id="Ambesek.Hunter.Hunter" name="Ficha HxH" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20Hunter%20x%20Hunter/output/Ficha%20Hunter%20x%20Hunter.rpk?raw=true" fileName="Ficha Hunter x Hunter.rpk" repositoryPath="Sheets/Ficha Hunter x Hunter/" author="Ambesek" description="Ficha para jogos de Hunter x Hunter usando D&amp;D 5ª edição" version="1.0.3" compilationDate="28052023211505" compilationDigest="025f4f5a79130696647ebe697bc916ca5e2cb0a3">
+    <element id="Ambesek.Hunter.Hunter" name="Ficha HxH" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20Hunter%20x%20Hunter/output/Ficha%20Hunter%20x%20Hunter.rpk?raw=true" fileName="Ficha Hunter x Hunter.rpk" repositoryPath="Sheets/Ficha Hunter x Hunter/" author="Ambesek" description="Ficha para jogos de Hunter x Hunter usando D&amp;D 5ª edição" version="1.0.3" compilationDate="28122023151951" compilationDigest="164b870a2ec73eb44db893dca3be2c994d8a1ec6">
         <info lang="en" name="Ficha HxH" description="Sheet for Hunter x Hunter using D&amp;D 5e."/>
         <info lang="pt-BR" name="Ficha HxH" description="Ficha para jogos de Hunter x Hunter usando D&amp;D 5ª edição" author="Ambesek"/>
         <dataTypes>
@@ -135,11 +135,12 @@
             </dataType>
         </dataTypes>
     </element>
-    <element id="Ambesek.Lista.PdMs" name="Lista de PdMs" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/TablesDock/Lista%20de%20PdMs/output/Lista%20de%20PdMs.rpk?raw=true" fileName="Lista de PdMs.rpk" repositoryPath="TablesDock/Lista de PdMs/" author="Ambesek" description="Janela acoplavel que exibe avatares para PdMs." version="1.7" compilationDate="19122023141247" compilationDigest="f2b327a6d54eb49a07a988b638c52fc468637073">
+    <element id="Ambesek.Lista.PdMs" name="Lista de PdMs" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/TablesDock/Lista%20de%20PdMs/output/Lista%20de%20PdMs.rpk?raw=true" fileName="Lista de PdMs.rpk" repositoryPath="TablesDock/Lista de PdMs/" author="Ambesek" description="Janela acoplavel que exibe avatares para PdMs." version="1.7" compilationDate="29122023153413" compilationDigest="f9391cf2a0efce42c1091f09e4e84b35a9ffeb7f">
         <info lang="pt-BR" name="Lista de PdMs" description="Janela acoplavel que exibe avatares para PdMs." author="Ambesek"/>
         <dataTypes>
             <dataType id="Ambesek.Lista.PdMs" title="Lista de PdMs" formType="tablesDock">
-                <info title="Lista de PdMs"/>
+                <info lang="en" title="NPC List"/>
+                <info lang="pt" title="Lista de PdMs"/>
             </dataType>
         </dataTypes>
     </element>
@@ -213,12 +214,9 @@
             </dataType>
         </dataTypes>
     </element>
-    <element id="Ambesek.Nefertyne.Reinos" name="Ficha Reinos d20" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20de%20Reinos%20d20/output/Ficha%20de%20Reinos%20d20.rpk?raw=true" fileName="Ficha de Reinos d20.rpk" repositoryPath="Sheets/Ficha de Reinos d20/" author="Ambesek" description="Ficha para descrição de Reinos e Cidades seguindo o padrão d20system do Livro do Mestre." version="0.12" compilationDate="19122023141739" compilationDigest="ef4d0511e4c06c56a61224f0fa1e565e1b7fd5d4">
+    <element id="Ambesek.Nefertyne.Reinos" name="Ficha Reinos d20" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20de%20Reinos%20d20/output/Ficha%20de%20Reinos%20d20.rpk?raw=true" fileName="Ficha de Reinos d20.rpk" repositoryPath="Sheets/Ficha de Reinos d20/" author="Ambesek" description="Ficha para descrição de Reinos e Cidades seguindo o padrão d20system do Livro do Mestre." version="0.12" compilationDate="29122023171225" compilationDigest="c512289314638c016396d29d4bb445e23043b258">
         <info lang="pt-BR" name="Ficha Reinos d20" description="Ficha para descrição de Reinos e Cidades seguindo o padrão d20system do Livro do Mestre." author="Ambesek"/>
         <dataTypes>
-            <dataType id="Ambesek.Lista.PdMs" title="Lista de PdMs" formType="tablesDock">
-                <info title="Lista de PdMs"/>
-            </dataType>
             <dataType id="Ambesek.Nefertyne.Reinos" title="Ficha Reinos d20" formType="sheetTemplate">
                 <info title="Ficha Reinos d20"/>
             </dataType>
@@ -286,7 +284,7 @@
             </dataType>
         </dataTypes>
     </element>
-    <element id="Ambesek.Starfinder" name="Ficha Starfinder" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20Starfinder/output/Ficha%20Starfinder.rpk?raw=true" fileName="Ficha Starfinder.rpk" repositoryPath="Sheets/Ficha Starfinder/" author="Ambesek" description="Ficha feita para o sistema Starfinder." version="0.11" compilationDate="06102023221658" compilationDigest="0853b1073209d7f32439dfd4a72fa09741833a34">
+    <element id="Ambesek.Starfinder" name="Ficha Starfinder" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20Starfinder/output/Ficha%20Starfinder.rpk?raw=true" fileName="Ficha Starfinder.rpk" repositoryPath="Sheets/Ficha Starfinder/" author="Ambesek" description="Ficha feita para o sistema Starfinder." version="0.11" compilationDate="20122023042427" compilationDigest="07418e528a6545f8f10c8ee7cd5682ddac9f1b6c">
         <info lang="pt-BR" name="Ficha Starfinder" description="Ficha feita para o sistema Starfinder." author="Ambesek" site="http://pt-br.rpgmeister.wikia.com/wiki/Main_Page"/>
         <dataTypes>
             <dataType id="Ambesek.Starfinder.CompanhiaMercenaria" title="Ficha Starfinder (Companhia de Mercenarios)" formType="sheetTemplate">
@@ -398,6 +396,22 @@
             </dataType>
         </dataTypes>
     </element>
+    <element id="br.com.czagalo.SotWW_Monsters_N_NPCs" name="SotWW - Monsters and NPCs" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/sotww_pdm/output/sotww_pdm.rpk?raw=true" fileName="sotww_pdm.rpk" repositoryPath="Sheets/sotww_pdm/" author="Célio Zagalo" description="Ficha para monstros e pdms, com rolagem de dados." version="1.1" compilationDate="04012024165330" compilationDigest="4789fd8d61211b0ee6a4a3641faa9aad8196f7ee">
+        <info lang="pt-BR" name="SotWW - Monsters and NPCs" description="Ficha para monstros e pdms, com rolagem de dados." author="Célio Zagalo" site="https://www.instagram.com/czagalo/"/>
+        <dataTypes>
+            <dataType id="br.com.czagalo.SotWW_Monsters_and_NPCs" title="SotWW - Monsters and NPCs" formType="sheetTemplate">
+                <info title="SotWW - Monsters and NPCs"/>
+            </dataType>
+        </dataTypes>
+    </element>
+    <element id="br.com.czagalo_sotWW_pjs" name="SotWW - Quick Play" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/sotww_pjs/output/sotww_pjs.rpk?raw=true" fileName="sotww_pjs.rpk" repositoryPath="Sheets/sotww_pjs/" author="Célio Zagalo" description="Ficha de Personagem para teste do Quick Play do RPG Shadow of the Weird Wizard" version="1.0" compilationDate="04012024182204" compilationDigest="91c9b0762c5806357d2291b0ad6f106cd65aa02e">
+        <info lang="pt-BR" name="SotWW - Quick Play" description="Ficha de Personagem para teste do Quick Play do RPG Shadow of the Weird Wizard" author="Célio Zagalo" site="https://github.com/czagalo"/>
+        <dataTypes>
+            <dataType id="br.com.czagalo_Planilha_SotWW" title="Shadow of the Weird Wizard" formType="sheetTemplate">
+                <info title="Shadow of the Weird Wizard"/>
+            </dataType>
+        </dataTypes>
+    </element>
     <element id="br.com.rrpg.AODD_SDK3" name="A Odisseia do Dragão" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20A%20Odisseia%20do%20Drag%C3%A3o/output/Ficha%20A%20Odisseia%20do%20Drag%C3%A3o.rpk?raw=true" fileName="Ficha A Odisseia do Dragão.rpk" repositoryPath="Sheets/Ficha A Odisseia do Dragão/" author="AlvagorH e Hellzen" description="Adiciona suporte para a ficha do sistema A Odisseia do Dragão" version="3.0" compilationDate="03032023113523" compilationDigest="29e652e923b525a1cd11d22690357e12dcf71dbb">
         <info lang="pt-BR" name="A Odisseia do Dragão" description="Adiciona suporte para a ficha do sistema A Odisseia do Dragão" author="AlvagorH e Hellzen" site="http://www.yourwebsite.com"/>
         <dataTypes>
@@ -409,7 +423,7 @@
             </dataType>
         </dataTypes>
     </element>
-    <element id="br.com.rrpg.DnD5_SDK3" name="D&amp;D 5e" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/DnD5e/output/DnD5e.rpk?raw=true" fileName="DnD5e.rpk" repositoryPath="Sheets/DnD5e/" author="Firecast" description="Modelo de ficha de D&amp;D 5ª edição" version="1.2.3" compilationDate="15102023013024" compilationDigest="118201af7af0d25cd225fbfd923fdee44dd739a2">
+    <element id="br.com.rrpg.DnD5_SDK3" name="D&amp;D 5e" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/DnD5e/output/DnD5e.rpk?raw=true" fileName="DnD5e.rpk" repositoryPath="Sheets/DnD5e/" author="Firecast" description="Modelo de ficha de D&amp;D 5ª edição" version="1.2.3" compilationDate="28122023151323" compilationDigest="10af262ae3cdf02dadd5a3420ba3503df9d151a4">
         <info lang="en" name="D&amp;D 5th Edition" description="D&amp;D 5th edition character sheet for firecast"/>
         <info lang="pt-BR" name="D&amp;D 5e" description="Modelo de ficha de D&amp;D 5ª edição" author="Firecast" site="https://firecast.app/"/>
         <dataTypes>
@@ -624,7 +638,7 @@
             </dataType>
         </dataTypes>
     </element>
-    <element id="FICHA_PATHFINDER" name="Ficha Pathfinder" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20Pathfinder/output/Ficha%20Pathfinder.rpk?raw=true" fileName="Ficha Pathfinder.rpk" repositoryPath="Sheets/Ficha Pathfinder/" author="Ambesek &amp; Nefertyne" description="Ficha feita para o sistema Pathfinder." version="0.12" compilationDate="03032023114701" compilationDigest="3831041622d14c1a253b87e7efeba5ef2d66b8a0">
+    <element id="FICHA_PATHFINDER" name="Ficha Pathfinder" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20Pathfinder/output/Ficha%20Pathfinder.rpk?raw=true" fileName="Ficha Pathfinder.rpk" repositoryPath="Sheets/Ficha Pathfinder/" author="Ambesek &amp; Nefertyne" description="Ficha feita para o sistema Pathfinder." version="0.12" compilationDate="20122023042446" compilationDigest="1991327929e099b7cc5dcb8f6f3fe890a77becf6">
         <info lang="pt-BR" name="Ficha Pathfinder" description="Ficha feita para o sistema Pathfinder." author="Ambesek &amp; Nefertyne" site="http://pt-br.rpgmeister.wikia.com/wiki/Main_Page"/>
         <dataTypes>
             <dataType id="Ambesek.Nefertyne.FichaPathfinder" title="Ficha Pathfinder" formType="sheetTemplate">
@@ -648,7 +662,7 @@
             </dataType>
         </dataTypes>
     </element>
-    <element id="FICHA_RPG_MEISTER" name="Ficha RPG meister" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20RPG%20meister/output/Ficha%20RPG%20meister.rpk?raw=true" fileName="Ficha RPG meister.rpk" repositoryPath="Sheets/Ficha RPG meister/" author="Ambesek &amp; Nefertyne" description="Ficha feita para a mesa RPGmeister. Funciona normalmente para o sistema d20/D&amp;D3.5" version="3.8" compilationDate="03032023114916" compilationDigest="80622d07f7480915127872bbd4950a5bf88531b9">
+    <element id="FICHA_RPG_MEISTER" name="Ficha RPG meister" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20RPG%20meister/output/Ficha%20RPG%20meister.rpk?raw=true" fileName="Ficha RPG meister.rpk" repositoryPath="Sheets/Ficha RPG meister/" author="Ambesek &amp; Nefertyne" description="Ficha feita para a mesa RPGmeister. Funciona normalmente para o sistema d20/D&amp;D3.5" version="3.8" compilationDate="20122023042024" compilationDigest="0c67473de142b3f8829b34edc5d5ed60db1e7241">
         <info lang="pt-BR" name="Ficha RPG meister" description="Ficha feita para a mesa RPGmeister. Funciona normalmente para o sistema d20/D&amp;D3.5" author="Ambesek &amp; Nefertyne" site="http://pt-br.rpgmeister.wikia.com/wiki/Main_Page"/>
         <dataTypes>
             <dataType id="Alterar.DataType.FichaRPGmeister" title="Ficha RPGmeister" formType="sheetTemplate">
@@ -683,14 +697,11 @@
             </dataType>
         </dataTypes>
     </element>
-    <element id="GerenciadorDeCampanha" name="Gerenciador de Campanha" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Gerenciador%20de%20Campanha/output/Gerenciador%20de%20Campanha.rpk?raw=true" fileName="Gerenciador de Campanha.rpk" repositoryPath="Sheets/Gerenciador de Campanha/" author="Ambesek" description="Ficha para gerenciar informaçes publicas e privadas de jogo, com visualizaçao seletiva entre jogadores e mestres." version="1.5" compilationDate="19122023144041" compilationDigest="9536147bb8ea576ccdce645fbfade57476e855ff">
+    <element id="GerenciadorDeCampanha" name="Gerenciador de Campanha" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Gerenciador%20de%20Campanha/output/Gerenciador%20de%20Campanha.rpk?raw=true" fileName="Gerenciador de Campanha.rpk" repositoryPath="Sheets/Gerenciador de Campanha/" author="Ambesek" description="Ficha para gerenciar informaçes publicas e privadas de jogo, com visualizaçao seletiva entre jogadores e mestres." version="1.5" compilationDate="29122023171206" compilationDigest="eac6dff0ab4e29602b742a663345fdc96bce7e85">
         <info lang="pt-BR" name="Gerenciador de Campanha" description="Ficha para gerenciar informaçes publicas e privadas de jogo, com visualizaçao seletiva entre jogadores e mestres." author="Ambesek" site="http://pt-br.rpgmeister.wikia.com/wiki/Main_Page"/>
         <dataTypes>
             <dataType id="Ambesek.Gerenciador.RPGmeister" title="Gerenciador de Campanha" formType="sheetTemplate">
                 <info title="Gerenciador de Campanha"/>
-            </dataType>
-            <dataType id="Ambesek.Lista.PdMs" title="Lista de PdMs" formType="tablesDock">
-                <info title="Lista de PdMs"/>
             </dataType>
         </dataTypes>
     </element>

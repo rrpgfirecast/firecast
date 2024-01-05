@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmprototipo_planilha_weird_wizard" formType="sheetTemplate" dataType="br.com.czagalo_Planilha_SotWW" title="Shadow of the Weird Wizard" align="client" theme="light">
+    <import file="1.lfm"/>
+</form>
