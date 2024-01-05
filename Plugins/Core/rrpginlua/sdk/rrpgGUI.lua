@@ -1,8 +1,14 @@
 local objs = require("rrpgObjs.lua");
 local ndb = require("ndb.lua");
 local System = require("system.lua");
+local Async = require("async.lua");
 
-gui = {}
+if System.checkAPIVersion(87, 4) then
+	gui = objs.objectFromHandle(_obj_newObject("TLuaGUIServices"));
+else
+	gui = {};
+end
+
 GUI = gui;
 
 local guiLoaders = {};
@@ -20,10 +26,8 @@ local function controlFromHandle(handle)
 	function ctrl:endUpdate() _obj_invoke(self.handle, "EndUpdate"); end
 	function ctrl:needRepaint() _obj_invoke(self.handle, "Repaint"); end
 	
-	
 	function ctrl:getVisible() return _obj_getProp(self.handle, "Visible"); end;
-	function ctrl:setVisible(visible) _obj_setProp(self.handle, "Visible", visible == true) end;
-	
+	function ctrl:setVisible(visible) _obj_setProp(self.handle, "Visible", visible == true) end;	
 	
 	function ctrl:getAlign() return _obj_getProp(self.handle, "Align"); end;
 	function ctrl:setAlign(align) _obj_setProp(self.handle, "Align", align); end;	
@@ -150,7 +154,8 @@ local function controlFromHandle(handle)
 	ctrl.props["scaleX"] = {setter = "setScaleX", getter = "getScaleX", tipo="double"};			
 	ctrl.props["scaleY"] = {setter = "setScaleY", getter = "getScaleY", tipo="double"};				
 	ctrl.props["scale"] = {setter = "setScale", getter = "getScale", tipo="double"};				
-	ctrl.props["parent"] = {setter = "setParent", getter = "getParent", tipo="table"};		
+	ctrl.props["parent"] = {setter = "setParent", getter = "getParent", tipo="table"};	
+	
 	ctrl.props["cursor"] = {setter = "setCursor", getter = "getCursor", tipo="enum",
 							values={'default', 'arrow', 'handPoint', 'hourGlass',
    								    'IBeam', 'size', 'sizeNESW', 'sizeNS',
@@ -160,31 +165,13 @@ local function controlFromHandle(handle)
 								    'help', 'cross'}};				
 	ctrl.props["hint"] = {setter = "setHint", getter = "getHint", tipo="string"};
 	
-	--[[
-	ctrl.props["effect"] = {setter = "setEffect", getter = "getEffect", tipo="enum",
-							values = {"none", "shadow", "blur", "glow",
-									  "innerglow", "reflection", "wave",
-									  "pixelate", "sepia", "paper", "hueajuste",
-									  "bloom", "invert", "monochrome", "colortransparency"}}
-	ctrl.props["effectTriggers"] = {setter = "setEffectTriggers", getter = "getEffectTriggers", tipo="set",
-									values = {"IsChecked=True", "IsChecked=False",
-										      "IsFocused=True", "IsFocused=False",
-										      "IsMouseOver=True", "IsMouseOver=False",
-										      "IsPressed=True", "IsPressed=False",
-										      "IsSelected=True", "IsSelected=False"}}
-										      
-	ctrl.props["effectParam"] = {setter="setEffectParam", getter="getEffectParam", tipo="double"};
-	ctrl.props["effectParam2"] = {setter="setEffectParam2", getter="getEffectParam2", tipo="double"};
-	ctrl.props["effectParam3"] = {setter="setEffectParam3", getter="getEffectParam3", tipo="double"};
-	ctrl.props["effectParam4"] = {setter="setEffectParam4", getter="getEffectParam4", tipo="double"};	]]--
-
 	if ctrl.eves == nil then
 		ctrl.eves = {};
 	end;
 	
 	ctrl.eves["onResize"] = "";
-	ctrl.eves["onClick"] = "";
-	ctrl.eves["onDblClick"] = "";
+	ctrl.eves["onClick"] = "event";
+	ctrl.eves["onDblClick"] = "event";
 	ctrl.eves["onMouseDown"] = "event";
 	ctrl.eves["onMouseMove"] = "event";
 	ctrl.eves["onMouseUp"] = "event";
@@ -194,12 +181,11 @@ local function controlFromHandle(handle)
 	ctrl.eves["onExit"] = "";
 	ctrl.eves["onKeyDown"] = "event";
 	ctrl.eves["onKeyUp"] = "event";
-	ctrl.eves["onMenu"] = 'x, y';
-	ctrl.eves["onStartDrag"] = 'drag, x, y';	
-	ctrl.eves["onStartDrop"] = 'drop, x, y, drag';	
-	--ctrl.eves["onTap"] = "x, y";
+	ctrl.eves["onMenu"] = 'x, y, event';
+	ctrl.eves["onStartDrag"] = 'drag, x, y, event';	
+	ctrl.eves["onStartDrop"] = 'drop, x, y, drag, event';		
 	
-	ctrl:setParent(ctrl:getParent()); -- trabalhar as questões de referências
+	ctrl:setParent(ctrl:getParent()); 
 	
 	return ctrl;
 end
@@ -1422,9 +1408,65 @@ local function richEditFromHandle(handle)
 	local ctrl = controlFromHandle(handle);
 	
 	function ctrl:getField() return _gui_getFieldName(self.handle); end;
-	function ctrl:setField(v) _gui_setFieldName(self.handle, v); end;	
+	function ctrl:setField(v) _gui_setFieldName(self.handle, v); end;
 	
+	function ctrl:beginEdit() if System.checkAPIVersion(87, 4) then return _obj_invokeEx(self.handle, "LBeginEdit") end; end;
+	function ctrl:endEdit() if System.checkAPIVersion(87, 4) then return _obj_invokeEx(self.handle, "LEndEdit") end; end;
+	
+	function ctrl:selectAll() if System.checkAPIVersion(87, 4) then return _obj_invokeEx(self.handle, "LSelectAll") end; end;
+	function ctrl:unselect() if System.checkAPIVersion(87, 4) then return _obj_invokeEx(self.handle, "LUnselect") end; end;	
+	function ctrl:getSelectionPosInChars() if System.checkAPIVersion(87, 4) then return _obj_invokeEx(self.handle, "LGetSelectionPosInChars"); else return 0, 0; end; end;
+	function ctrl:getSelectionPosInGlyphs() if System.checkAPIVersion(87, 4) then return _obj_invokeEx(self.handle, "LGetSelectionPosInGlyphs"); else return 0, 0; end; end;	
+	function ctrl:getIsSelectionForward() if System.checkAPIVersion(87, 4) then return _obj_invokeEx(self.handle, "LGetIsSelectionForward"); else return true; end; end;
+	function ctrl:getSelectionText() if System.checkAPIVersion(87, 4) then return _obj_invokeEx(self.handle, "LGetSelectionText"); else return ""; end; end;		
+	function ctrl:getSelectionURL() if System.checkAPIVersion(87, 4) then return _obj_invokeEx(self.handle, "LGetSelectionURL"); else return ""; end; end;			
+	function ctrl:getSelectionFontColor() if System.checkAPIVersion(87, 4) then return _obj_invokeEx(self.handle, "LGetSelectionFontColor"); else return "Black"; end; end;
+	function ctrl:getSelectionFontBkgColor() if System.checkAPIVersion(87, 4) then return _obj_invokeEx(self.handle, "LGetSelectionFontBkgColor"); else return "White"; end; end;
+	function ctrl:getSelectionFontSize() if System.checkAPIVersion(87, 4) then return _obj_invokeEx(self.handle, "LGetSelectionFontSize"); else return 14; end; end;
+	function ctrl:getSelectionFontFamily() if System.checkAPIVersion(87, 4) then return _obj_invokeEx(self.handle, "LGetSelectionFontFamily"); else return "Roboto"; end; end;
+	function ctrl:getSelectionFontStyle() if System.checkAPIVersion(87, 4) then return _obj_invokeEx(self.handle, "LGetSelectionFontStyle"); else return {}; end; end;
+	function ctrl:getSelectionFloat() if System.checkAPIVersion(87, 4) then return _obj_invokeEx(self.handle, "LGetSelectionFloat"); else return "none"; end; end;
+	function ctrl:getSelectionParaAlign() if System.checkAPIVersion(87, 4) then return _obj_invokeEx(self.handle, "LGetSelectionParaAlign"); else return "left"; end; end;
 		
+	function ctrl:gotoStart(holdSelection) if System.checkAPIVersion(87, 4) then return _obj_invokeEx(self.handle, "LGotoStart", holdSelection); end; end;
+	function ctrl:gotoEnd(holdSelection) if System.checkAPIVersion(87, 4) then return _obj_invokeEx(self.handle, "LGotoEnd", holdSelection); end; end;
+	function ctrl:gotoNext(holdSelection) if System.checkAPIVersion(87, 4) then return _obj_invokeEx(self.handle, "LGotoNext", holdSelection); end; end;
+	function ctrl:gotoPrevious(holdSelection) if System.checkAPIVersion(87, 4) then return _obj_invokeEx(self.handle, "LGotoPrevious", holdSelection); end; end;
+	function ctrl:gotoStartOfLine(holdSelection) if System.checkAPIVersion(87, 4) then return _obj_invokeEx(self.handle, "LGotoStartOfLine", holdSelection); end; end;
+	function ctrl:gotoEndOfLine(holdSelection) if System.checkAPIVersion(87, 4) then return _obj_invokeEx(self.handle, "LGotoEndOfLine", holdSelection); end; end;
+	function ctrl:gotoNextWord(holdSelection) if System.checkAPIVersion(87, 4) then return _obj_invokeEx(self.handle, "LGotoNextWord", holdSelection); end; end;
+	function ctrl:gotoPreviousWord(holdSelection) if System.checkAPIVersion(87, 4) then return _obj_invokeEx(self.handle, "LGotoPreviousWord", holdSelection); end; end;
+	function ctrl:gotoLineUp(holdSelection) if System.checkAPIVersion(87, 4) then return _obj_invokeEx(self.handle, "LGotoLineUp", holdSelection); end; end;
+	function ctrl:gotoLineDown(holdSelection) if System.checkAPIVersion(87, 4) then return _obj_invokeEx(self.handle, "LGotoLineDown", holdSelection); end; end;
+	function ctrl:gotoPageUp(holdSelection) if System.checkAPIVersion(87, 4) then return _obj_invokeEx(self.handle, "LGotoPageUp", holdSelection); end; end;
+	function ctrl:gotoPageDown(holdSelection) if System.checkAPIVersion(87, 4) then return _obj_invokeEx(self.handle, "LGotoPageDown", holdSelection); end; end;
+	function ctrl:gotoPositionInGlyphs(pos, holdSelection) if System.checkAPIVersion(87, 4) then return _obj_invokeEx(self.handle, "LGotoPositionInGlyphs", pos, holdSelection); end; end;
+	function ctrl:gotoPositionInChars(pos, holdSelection) if System.checkAPIVersion(87, 4) then return _obj_invokeEx(self.handle, "LGotoPositionInChars", pos, holdSelection); end; end;
+	
+	function ctrl:copySelectionToClipboard() if System.checkAPIVersion(87, 4) then return _obj_invokeEx(self.handle, "LCopySelectionToClipboard"); end; end;
+	
+	function ctrl:deleteSelection() if System.checkAPIVersion(87, 4) then return _obj_invokeEx(self.handle, "LEditOp_DeleteSelection"); end; end;		
+	function ctrl:insertText(text) if System.checkAPIVersion(87, 4) then return _obj_invokeEx(self.handle, "LEditOp_InsertText", text); end; end;
+	function ctrl:insertTalemark(talemarkText, talemarkOptions, talemarkSheetStyle) if System.checkAPIVersion(87, 4) then return _obj_invokeEx(self.handle, "LEditOp_InsertTalemark", talemarkText, talemarkOptions, talemarkSheetStyle); end; end;
+	function ctrl:insertImage(params) if System.checkAPIVersion(87, 4) then return _obj_invokeEx(self.handle, "LEditOp_InsertImage", params); end; end;
+	function ctrl:breakLine() if System.checkAPIVersion(87, 4) then return _obj_invokeEx(self.handle, "LEditOp_BreakLine"); end; end;
+	function ctrl:breakParagraph() if System.checkAPIVersion(87, 4) then return _obj_invokeEx(self.handle, "LEditOp_BreakParagraph"); end; end;
+	function ctrl:indent(qty) if System.checkAPIVersion(87, 4) then return _obj_invokeEx(self.handle, "LEditOp_Indent", qty); end; end;
+	function ctrl:pasteFromClipboard() if System.checkAPIVersion(87, 4) then return _obj_invokeEx(self.handle, "LEditOp_PasteFromClipboard"); end; end;
+	function ctrl:cutSelectionToClipboard() if System.checkAPIVersion(87, 4) then return _obj_invokeEx(self.handle, "LEditOp_CutSelectionToClipboard"); end; end;
+	function ctrl:setSelectionURL(url) if System.checkAPIVersion(87, 4) then return _obj_invokeEx(self.handle, "LEditOp_SetSelectionURL", url); end; end;
+	function ctrl:setSelectionFontColor(color) if System.checkAPIVersion(87, 4) then return _obj_invokeEx(self.handle, "LEditOp_SetSelectionFontColor", color); end; end;
+	function ctrl:setSelectionFontBkgColor(color) if System.checkAPIVersion(87, 4) then return _obj_invokeEx(self.handle, "LEditOp_SetSelectionFontBkgColor", color); end; end;
+	function ctrl:setSelectionFontSize(size) if System.checkAPIVersion(87, 4) then return _obj_invokeEx(self.handle, "LEditOp_SetSelectionFontSize", size); end; end;
+	function ctrl:setSelectionFontFamily(family) if System.checkAPIVersion(87, 4) then return _obj_invokeEx(self.handle, "LEditOp_SetSelectionFontFamily", family); end; end;
+	function ctrl:setSelectionFontStyle(style) if System.checkAPIVersion(87, 4) then return _obj_invokeEx(self.handle, "LEditOp_SetSelectionFontStyle", style); end; end;
+	function ctrl:setSelectionFloat(floatMode) if System.checkAPIVersion(87, 4) then return _obj_invokeEx(self.handle, "LEditOp_SetSelectionFloat", floatMode); end; end;
+	function ctrl:setSelectionParaAlign(paraAlign) if System.checkAPIVersion(87, 4) then return _obj_invokeEx(self.handle, "LEditOp_SetSelectionParaAlign", paraAlign); end; end;
+		
+	function ctrl:getLengthInChars() if System.checkAPIVersion(87, 4) then return _obj_invokeEx(self.handle, "LGetLengthInChars"); else return 0; end; end;		
+	function ctrl:getLengthInGlyphs() if System.checkAPIVersion(87, 4) then return _obj_invokeEx(self.handle, "LGetLengthInGlyphs"); else return 0; end; end;
+	function ctrl:getText() if System.checkAPIVersion(87, 4) then return _obj_invokeEx(self.handle, "LGetText"); else return ""; end; end;	
+			
 	ctrl.props["animateImages"] = {readProp = "CanAnimateImages", writeProp = "CanAnimateImages", tipo = "bool"};			
 	ctrl.props["field"] = {setter = "setField", getter = "getField", tipo = "string"};		
 	ctrl.props["backgroundColor"] = {readProp = "BackgroundColor", writeProp = "BackgroundColor", tipo = "color"};
@@ -1972,11 +2014,31 @@ function gui.openInBrowser(url)
 	end;
 end;
 
+function gui.asyncOpenFirecastURI(uri, params)
+	if System.checkAPIVersion(87, 4) then
+		local promiseHandle = _obj_invokeEx(gui.handle, "AsyncOpenFirecastURI", uri, params);
+		return Async.Promise.wrap(promiseHandle);
+	else
+		return Async.Promise.failed("No API Support");
+	end;
+end;
+
 function gui.toast(message)
 	if System.checkAPIVersion(87, 2)  then
 		return _gui_toast(message);
 	else	
 		require('dialogs.lua').showMessage(message);
+	end;
+end;
+
+function gui.getShiftState()
+	if System.checkAPIVersion(87, 4) then
+		return _gui_getShiftState();
+	else	
+		return {shiftKey = false,
+				ctrlKey = false,
+				altKey = false,
+				cmdKey = false};
 	end;
 end;
 

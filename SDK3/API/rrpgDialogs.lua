@@ -1,6 +1,14 @@
 local objs = require("rrpgObjs.lua");
+local Async = require("async.lua");
+local System = require("system.lua");
 
-local lDialogs = {};
+local lDialogs;
+
+if System.checkAPIVersion(87, 4) then
+	lDialogs = objs.objectFromHandle(_obj_newObject("TLuaDialogsServices"));
+else
+	lDialogs = {};
+end
 
 local function newDialogObject(className)
 	return objs.objectFromHandle(_obj_newObject(className));
@@ -90,6 +98,15 @@ function lDialogs.showMessage(msg, callback)
 							end);
 end;
 
+function lDialogs.showErrorMessage(msg, callback)
+	lDialogs.showMessageDlg(msg, lDialogs.DT_ERROR, {lDialogs.DB_OK}, 
+							function(modalResult)
+								if type(callback) == "function" then
+									callback();
+								end;
+							end);
+end;
+
 function lDialogs.alert(msg, callback)
 	lDialogs.showMessageDlg(msg, lDialogs.DT_WARNING, {lDialogs.DB_OK}, 
 							function(modalResult)
@@ -98,7 +115,6 @@ function lDialogs.alert(msg, callback)
 								end;
 							end);
 end;
-
 
 function lDialogs.newInputQueryDialog()
 	local dlg = objs.objectFromHandle(_obj_newObject("TLuaInputQueryDialog"));
@@ -201,6 +217,21 @@ function lDialogs.openFile(prompt, accept, multiple, callback, cancelCallback)
 	
 	runningFileQuerys[query] = true;
 	_obj_invoke(query.handle, "Execute");
+end;
+
+function lDialogs.asyncOpenFile(prompt, accept, multiple)
+	local promise, resolution = Async.Promise.pending();
+
+	lDialogs.openFile(prompt, accept, multiple,
+		function(data)
+			resolution:setSuccess(data);
+		end,
+		
+		function()
+			resolution:setUserAborted();
+		end);
+		
+	return promise;
 end;
 
 local function _newFileSaveObject()
@@ -485,6 +516,14 @@ function lDialogs.chooseMultiple(prompt, options, callback)
 		end);
 end;
 
+function lDialogs.asyncSelectTalemarkColor(initialColor)
+	if System.checkAPIVersion(87, 4) then
+		local promiseHandle = _obj_invokeEx(lDialogs.handle, "AsyncSelectTalemarkColor", initialColor);
+		return Async.Promise.wrap(promiseHandle);
+	else
+		return Async.Promise.failed("No API Support");
+	end;
+end;
 
 dialogs = lDialogs;
 Dialogs = dialogs;

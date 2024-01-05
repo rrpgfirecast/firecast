@@ -234,16 +234,16 @@
     </script>
     <dataScopeBox name="scope" align="client">
         <tabControl align="client">
-            <tab title="@@hud.installed">
+            <tab title="@@hud.installed" name="tabInstalled">
                 <import file="Installed.lfm"/>
             </tab>
-            <tab title="@@hud.avaialable">
+            <tab title="@@hud.avaialable" name="tabAvailable">
                 <import file="Available.lfm"/>
             </tab>
-            <tab title="@@hud.macro">
+            <tab title="@@hud.macro" name="tabMacro">
                 <import file="Macro.lfm"/>
             </tab>
-    		<tab title="@@hud.credits">
+    		<tab title="@@hud.credits" name="tabCredits">
                 <import file="Credits.lfm"/>
             </tab>
         </tabControl>
