@@ -40,7 +40,7 @@
             </dataType>
         </dataTypes>
     </element>
-    <element id="Ambesek.Auto.Updater" name="Plugin Auto Updater" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/TablesDock/AutoUpdater/output/AutoUpdater.rpk?raw=true" fileName="AutoUpdater.rpk" repositoryPath="TablesDock/AutoUpdater/" author="Ambesek" description="Verifica seus plugins e macros, e encontra quais tem atualizações disponíveis no git do firecast. Também permite acesso a plugins não instalados do git." version="1.2" compilationDate="25122023205835" compilationDigest="e3bd94e509be4b5b13a249564c3fc3450e4a1bbe">
+    <element id="Ambesek.Auto.Updater" name="Plugin Auto Updater" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/TablesDock/AutoUpdater/output/AutoUpdater.rpk?raw=true" fileName="AutoUpdater.rpk" repositoryPath="TablesDock/AutoUpdater/" author="Ambesek" description="Verifica seus plugins e macros, e encontra quais tem atualizações disponíveis no git do firecast. Também permite acesso a plugins não instalados do git." version="1.2" compilationDate="04012024133607" compilationDigest="487b4bdcfca2d6adb67e2b628f4c0f4cf86d6c1e">
         <info lang="pt-BR" name="Plugin Auto Updater" description="Verifica seus plugins e macros, e encontra quais tem atualizações disponíveis no git do firecast. Também permite acesso a plugins não instalados do git." author="Ambesek" site="http://pt-br.rpgmeister.wikia.com/wiki/Main_Page"/>
         <info lang="en" description="Check your plugins and macros, and find which ones have updates available in Firecast git. It also allows access to not installed git plugins."/>
         <dataTypes>
@@ -423,7 +423,7 @@
             </dataType>
         </dataTypes>
     </element>
-    <element id="br.com.rrpg.DnD5_SDK3" name="D&amp;D 5e" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/DnD5e/output/DnD5e.rpk?raw=true" fileName="DnD5e.rpk" repositoryPath="Sheets/DnD5e/" author="Firecast" description="Modelo de ficha de D&amp;D 5ª edição" version="1.2.3" compilationDate="28122023151323" compilationDigest="10af262ae3cdf02dadd5a3420ba3503df9d151a4">
+    <element id="br.com.rrpg.DnD5_SDK3" name="D&amp;D 5e" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/DnD5e/output/DnD5e.rpk?raw=true" fileName="DnD5e.rpk" repositoryPath="Sheets/DnD5e/" author="Firecast" description="Modelo de ficha de D&amp;D 5ª edição" version="1.2.3" compilationDate="29122023134825" compilationDigest="bfe1384c3ff5d4427eff98fa2e1235a8adeb9577">
         <info lang="en" name="D&amp;D 5th Edition" description="D&amp;D 5th edition character sheet for firecast"/>
         <info lang="pt-BR" name="D&amp;D 5e" description="Modelo de ficha de D&amp;D 5ª edição" author="Firecast" site="https://firecast.app/"/>
         <dataTypes>
@@ -471,7 +471,7 @@
             </dataType>
         </dataTypes>
     </element>
-    <element id="BR.COM.RRPG.SCENE3_IN_LUA" name="Núcleo do Scene 3" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Core/sceneinlua/output/sceneinlua.rpk?raw=true" fileName="sceneinlua.rpk" repositoryPath="Core/sceneinlua/" author="Firecast - AlyssonRPG" description="Plug-in que possui funcionalidades básicas para o tabuleiro de combate, também conhecido como Scene 3" version="1.0" compilationDate="27092023202243" compilationDigest="68ebff9870dca449ac418b94f829643b626c641b">
+    <element id="BR.COM.RRPG.SCENE3_IN_LUA" name="Núcleo do Scene 3" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Core/sceneinlua/output/sceneinlua.rpk?raw=true" fileName="sceneinlua.rpk" repositoryPath="Core/sceneinlua/" author="Firecast - AlyssonRPG" description="Plug-in que possui funcionalidades básicas para o tabuleiro de combate, também conhecido como Scene 3" version="1.0" compilationDate="04012024133541" compilationDigest="6bf0978cb756d4f459ff7c33756a9ba3986f7044">
         <info lang="en" name="Scene 3 Core" description="Plug-in that has basic features for the combat grid, also known as Scene 3"/>
         <info lang="pt" name="Núcleo do Scene 3" description="Plug-in que possui funcionalidades básicas para o tabuleiro de combate, também conhecido como Scene 3" author="Firecast - AlyssonRPG" site="http://www.rrpg.com.br"/>
     </element>
@@ -694,6 +694,14 @@
         <dataTypes>
             <dataType id="thirteen.GoT" title="Game of Thrones" formType="sheetTemplate">
                 <info title="Game of Thrones"/>
+            </dataType>
+        </dataTypes>
+    </element>
+    <element id="Gatan.MageTheAwakening2e" name="Mage the Awakening 2e" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Mage%20the%20Awakening%202e/output/Mage%20the%20Awakening%202e.rpk?raw=true" fileName="Mage the Awakening 2e.rpk" repositoryPath="Sheets/Mage the Awakening 2e/" author="Gatan" description="Ficha para a splat MtA 2e de Storytelling." version="2" compilationDate="06012024184405" compilationDigest="0573a7c0f379fde97eef6164f138ae39676a7393">
+        <info lang="pt-BR" name="Mage the Awakening 2e" description="Ficha para a splat MtA 2e de Storytelling." author="Gatan" site="https://github.com/TrojanHorse-bot"/>
+        <dataTypes>
+            <dataType id="Gatan.MageTheAwakening2e" title="Mage the Awakening 2e" formType="sheetTemplate">
+                <info title="Mage the Awakening 2e"/>
             </dataType>
         </dataTypes>
     </element>
@@ -959,7 +967,7 @@
             </dataType>
         </dataTypes>
     </element>
-    <element id="RRPG.FIRECAST.FMXModule" name="Firecast" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Core/rrpginlua/output/rrpginlua.rpk?raw=true" fileName="rrpginlua.rpk" repositoryPath="Core/rrpginlua/" author="Firecast" description="Contém funcionalidades padrões do Firecast. Não é possível desinstalar este plug-in." version="1.0" compilationDate="27092023202250" compilationDigest="498e06e54dc68354d109b15c1f1c27f28e7c8497">
+    <element id="RRPG.FIRECAST.FMXModule" name="Firecast" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Core/rrpginlua/output/rrpginlua.rpk?raw=true" fileName="rrpginlua.rpk" repositoryPath="Core/rrpginlua/" author="Firecast" description="Contém funcionalidades padrões do Firecast. Não é possível desinstalar este plug-in." version="1.0" compilationDate="04012024133533" compilationDigest="06c94f323a1242cb228585d34c818e76656ba61c">
         <info lang="pt" name="Firecast" description="Contém funcionalidades padrões do Firecast. Não é possível desinstalar este plug-in." author="Firecast" site="http://www.rrpg.com.br"/>
         <info lang="en" description="Contains standard Firecast features. Is not possible to uninstall this plug-in."/>
         <dataTypes>

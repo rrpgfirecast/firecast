@@ -448,6 +448,36 @@ function utils.generateUniqueString()
 	return _rrpg_generateUniqueStrID();
 end;
 
+function utils.cloneTable(t, deep)
+	if t == nil then
+		return nil;
+	end;
+
+	local r = {};	
+	
+	for i = 1, #t do
+		local v = t[i];
+		
+		if (deep) and (type(v) == "table") then
+			r[i] = utils.cloneTable(v);
+		else
+			r[i] = v;
+		end;		
+	end;
+		
+	for k, v in pairs(t) do	
+		if r[k] == nil then
+			if (deep) and (type(v) == "table") then
+				r[k] = utils.cloneTable(v);
+			else
+				r[k] = v;
+			end;
+		end;
+	end;
+	
+	return r;
+end;
+
 utils.colorToRGBA = _gui_colorToRGBA;
 utils.RGBAToColor = _gui_RGBAToColor;
 

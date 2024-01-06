@@ -105,7 +105,7 @@ local function fdExecuteUpload(params)
 	local metadata = {};
 	params.stream.position = 0;
 	
-	if params.stream.size > 15 * 1024 * 1024 then
+	if params.stream.size > 128 * 1024 * 1024 then
 		if params.onFailure then
 			params.onFailure("FILE TOO BIG");
 		end;
