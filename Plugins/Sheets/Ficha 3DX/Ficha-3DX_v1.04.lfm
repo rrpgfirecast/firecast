@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmFicha_3DX_v1_04" formType="sheetTemplate" dataType="marceloroberto.3dx" title="Ficha 3DX para Firecast" align="client" theme="light">
+    <import file="1.lfm"/>
+</form>
