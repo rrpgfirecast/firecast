@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <root>
-    <element id="AfkBot" name="AfkBot" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/ChatMods/AfkBot/output/AfkBot.rpk?raw=true" fileName="AfkBot.rpk" repositoryPath="ChatMods/AfkBot/" author="Ambesek" description="Crie uma mensagem padrão para responder quando estiver ocupado. Também protege a mesa de flood de dados e /rir se configurado para tal. Use /afkbot para abrir o popup de configuração." version="1.10" compilationDate="30122023183627" compilationDigest="cb06895e5f2c465b9bd1aa05ef5ee61262c2e09b">
+    <element id="AfkBot" name="AfkBot" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/ChatMods/AfkBot/output/AfkBot.rpk?raw=true" fileName="AfkBot.rpk" repositoryPath="ChatMods/AfkBot/" author="Ambesek" description="Crie uma mensagem padrão para responder quando estiver ocupado. Também protege a mesa de flood de dados e /rir se configurado para tal. Use /afkbot para abrir o popup de configuração." version="1.11" compilationDate="23012024025235" compilationDigest="8dc612c0280dc62129ba5a129653ba1edca6477e">
         <info lang="pt-BR" name="AfkBot" description="Crie uma mensagem padrão para responder quando estiver ocupado. Também protege a mesa de flood de dados e /rir se configurado para tal. Use /afkbot para abrir o popup de configuração." author="Ambesek" site="http://pt-br.rpgmeister.wikia.com/wiki/Main_Page"/>
         <dataTypes>
             <dataType id="ambesek.afkbot" title="AfkBot" formType="undefined">
@@ -859,6 +859,14 @@
         <dataTypes>
             <dataType id="mg.mg.now" title="Malditos Goblins" formType="sheetTemplate">
                 <info title="Malditos Goblins"/>
+            </dataType>
+        </dataTypes>
+    </element>
+    <element id="marceloroberto.3dx" name="Ficha 3DX" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%203DX/output/Ficha%203DX.rpk?raw=true" fileName="Ficha 3DX.rpk" repositoryPath="Sheets/Ficha 3DX/" author="Marcelo Roberto" description="Ficha de 3DX para Firecast" version="1.0" compilationDate="16012024192007" compilationDigest="f8a4fe5998f9a06f63e0f1df09de7dcc232ef3fb">
+        <info lang="pt-BR" name="Ficha 3DX" description="Ficha de 3DX para Firecast" author="Marcelo Roberto" site="http://www.marceloroberto.com.br"/>
+        <dataTypes>
+            <dataType id="marceloroberto.3dx" title="Ficha 3DX para Firecast" formType="sheetTemplate">
+                <info title="Ficha 3DX para Firecast"/>
             </dataType>
         </dataTypes>
     </element>
