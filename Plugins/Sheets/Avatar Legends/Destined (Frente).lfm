@@ -1,0 +1,260 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmdestined1_svg" align="client" theme="dark" margins="{top=1}">
+    <style>#frmdestined1_svg path {color: black; strokeColor: black; mode: stretch;} &#xD;
+#frmdestined1_svg label {fontColor: black; textTrimming: none; wordWrap: false; autoSize: true;}</style>
+    <scrollBox align="client">
+        <rectangle width="1224" height="1584" color="white">&#xD;
+            <image left="0" top="0" width="1224" height="1584" src="images/DestinedFrente.jpg" style="stretch" optimize="true" compilerOrder="0"/>&#xD;
+			
+			<layout left="429" top="50" width="387" height="44" compilerOrder="3">
+                <edit transparent="true" fontSize="24" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="387" height="45" field="destName" compilerOrder="4"/>
+            </layout>;
+			
+           <!-- Backgrounds -->
+            <layout left="61" top="133" width="40" height="50" compilerOrder="7">
+                <checkBox field="desMilitary" compilerOrder="8"/>
+            </layout>;
+            <layout left="162" top="133" width="40" height="50" compilerOrder="9">
+                <checkBox field="desOutaw" compilerOrder="10"/>
+            </layout>;
+            <layout left="264" top="133" width="40" height="50" compilerOrder="11">
+                <checkBox field="desUrban" compilerOrder="12"/>
+            </layout>;
+            <layout left="61" top="152" width="40" height="50" compilerOrder="17">
+                <checkBox field="desMonastic" compilerOrder="18"/>
+            </layout>;
+			 <layout left="162" top="152" width="40" height="50" compilerOrder="13">
+                <checkBox field="desPrivileged" compilerOrder="14"/>
+            </layout>;
+            <layout left="264" top="152" width="40" height="50" compilerOrder="15">
+                <checkBox field="desWilderness" compilerOrder="16"/>
+            </layout>;
+           
+			<!-- Demeanor -->
+            <layout left="61" top="203" width="40" height="50" compilerOrder="19">
+                <checkBox field="desAbove" compilerOrder="20"/>
+            </layout>;
+			<layout left="61" top="223" width="40" height="50" compilerOrder="21">
+                <checkBox field="desPerfectionist" compilerOrder="22"/>
+            </layout>;
+			<layout left="61" top="243" width="40" height="50" compilerOrder="25">
+                <checkBox field="desChilly" compilerOrder="26"/>
+            </layout>;
+            <layout left="163" top="203" width="40" height="50" compilerOrder="23">
+                <checkBox field="desRebelious" compilerOrder="24"/>
+            </layout>;
+            <layout left="163" top="223" width="40" height="50" compilerOrder="27">
+                <checkBox field="desFlippant" compilerOrder="28"/>
+            </layout>;
+            <layout left="163" top="243" width="40" height="50" compilerOrder="29">
+                <checkBox field="desStandoffish" compilerOrder="30"/>
+            </layout>;
+           
+			<!-- Statuses -->
+            <layout left="881" top="267" width="40" height="50" compilerOrder="43">
+                <checkBox field="desEmpowered" compilerOrder="44"/>
+            </layout>;
+            <layout left="881" top="287" width="40" height="50" compilerOrder="45">
+                <checkBox field="desFavored" compilerOrder="46"/>
+            </layout>;
+            <layout left="881" top="307" width="40" height="50" compilerOrder="47">
+                <checkBox field="desInspired" compilerOrder="48"/>
+            </layout>;
+			 <layout left="881" top="327" width="40" height="50" compilerOrder="49">
+                <checkBox field="desPrepared" compilerOrder="50"/>
+            </layout>;
+			 <layout left="1025" top="267" width="40" height="50" compilerOrder="51">
+                <checkBox field="desDoomed" compilerOrder="52"/>
+            </layout>;
+            <layout left="1025" top="287" width="40" height="50" compilerOrder="55">
+                <checkBox field="desImpaired" compilerOrder="56"/>
+            </layout>;
+			<layout left="1025" top="307" width="40" height="50" compilerOrder="57">
+                <checkBox field="desTrapped" compilerOrder="58"/>
+            </layout>;
+			<layout left="1025" top="327" width="40" height="50" compilerOrder="53">
+                <checkBox field="desStunned" compilerOrder="54"/>
+            </layout>;
+			
+			<!-- Fighting Style e Training -->
+			<layout left="73" top="297" width="285" height="44" compilerOrder="5">
+                <edit transparent="true" fontSize="24" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="285" height="45" field="Fight_Style" compilerOrder="6"/>
+            </layout>;
+			
+            <layout left="417" top="323" width="50" height="60" compilerOrder="33">
+                <checkBox field="desWater" compilerOrder="34"/>
+            </layout>;
+			<layout left="491" top="323" width="50" height="60" compilerOrder="31">
+                <checkBox field="desEarth" compilerOrder="32"/>
+            </layout>;
+			<layout left="565" top="323" width="50" height="60" compilerOrder="35">
+                <checkBox field="desFire" compilerOrder="36"/>
+            </layout>;
+            <layout left="640" top="323" width="50" height="60" compilerOrder="39">
+                <checkBox field="desAir" compilerOrder="40"/>
+            </layout>;
+			 <layout left="714" top="323" width="50" height="60" compilerOrder="37">
+                <checkBox field="desMartial" compilerOrder="38"/>
+            </layout>;
+            <layout left="788" top="323" width="50" height="60" compilerOrder="41">
+                <checkBox field="desMech" compilerOrder="42"/>
+            </layout>;
+			
+			<!-- Stats e Conditions -->
+			<layout left="113" top="442" width="34" height="44" compilerOrder="59">
+                <edit transparent="true" fontSize="24" fontColor="#000000" type="number" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="34" height="45" field="desCreativity" compilerOrder="60"/>
+            </layout>;
+            <layout left="113" top="494" width="34" height="44" compilerOrder="61">
+                <edit transparent="true" fontSize="24" fontColor="#000000" type="number" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="34" height="45" field="desFocus" compilerOrder="62"/>
+            </layout>;
+			<layout left="113" top="545" width="34" height="44" compilerOrder="63">
+                <edit transparent="true" fontSize="24" fontColor="#000000" type="number" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="34" height="45" field="desHarmony" compilerOrder="64"/>
+            </layout>;
+			 <layout left="113" top="597" width="34" height="44" compilerOrder="65">
+                <edit transparent="true" fontSize="24" fontColor="#000000" type="number" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="34" height="45" field="desPassion" compilerOrder="66"/>
+            </layout>;
+			<layout left="852" top="445" width="19" height="20" compilerOrder="77">
+                <checkBox field="desAfraid" compilerOrder="78"/>
+            </layout>;
+            <layout left="852" top="493" width="19" height="20" compilerOrder="79">
+                <checkBox field="desAngry" compilerOrder="80"/>
+            </layout>;
+            <layout left="852" top="543" width="19" height="20" compilerOrder="81">
+                <checkBox field="desGuilty" compilerOrder="82"/>
+            </layout>;
+			 <layout left="852" top="594" width="19" height="20" compilerOrder="83">
+                <checkBox field="desInsecure" compilerOrder="84"/>
+            </layout>;
+            <layout left="852" top="645" width="19" height="20" compilerOrder="85">
+                <checkBox field="desTroubled" compilerOrder="86"/>
+            </layout>;
+			
+			<!-- Center -->
+            <layout left="479" top="589" width="23" height="25" compilerOrder="115">
+                <checkBox field="desCenter0" compilerOrder="116"/>
+            </layout>;
+            <layout left="519" top="589" width="23" height="25" compilerOrder="117">
+                <checkBox field="desCenter1" compilerOrder="118"/>
+            </layout>;
+            <layout left="558" top="589" width="23" height="25" compilerOrder="119">
+                <checkBox field="desCenter2" compilerOrder="120"/>
+            </layout>;
+            <layout left="598" top="589" width="23" height="25" compilerOrder="121">
+                <checkBox field="desCenter3" compilerOrder="122"/>
+            </layout>;
+            <layout left="638" top="589" width="23" height="25" compilerOrder="123">
+                <checkBox field="desCenter4" compilerOrder="124"/>
+            </layout>;
+            <layout left="678" top="589" width="23" height="25" compilerOrder="125">
+                <checkBox field="desCenter5" compilerOrder="126"/>
+            </layout>;
+            <layout left="718" top="589" width="23" height="25" compilerOrder="127">
+                <checkBox field="desCenter6" compilerOrder="128"/>
+            </layout>;
+           
+		   <!-- Balance -->
+			<radioButton left="479" top="546" width="23" height="25" groupName="balanceUp"/>
+			<radioButton left="519" top="546" width="23" height="25" groupName="balanceUp"/>
+			<radioButton left="558" top="546" width="23" height="25" groupName="balanceUp"/>
+			<radioButton left="598" top="546" width="23" height="25" groupName="balanceUp"/>
+			<radioButton left="638" top="546" width="23" height="25" groupName="balanceUp"/>
+			<radioButton left="678" top="546" width="23" height="25" groupName="balanceUp"/>
+			<radioButton left="718" top="546" width="23" height="25" groupName="balanceUp"/>
+			
+			
+			<radioButton left="479" top="626" width="23" height="25" groupName="balanceDown"/>
+			<radioButton left="519" top="626" width="23" height="25" groupName="balanceDown"/>
+			<radioButton left="558" top="626" width="23" height="25" groupName="balanceDown"/>
+			<radioButton left="598" top="626" width="23" height="25" groupName="balanceDown"/>
+			<radioButton left="638" top="626" width="23" height="25" groupName="balanceDown"/>
+			<radioButton left="678" top="626" width="23" height="25" groupName="balanceDown"/>
+			<radioButton left="718" top="626" width="23" height="25" groupName="balanceDown"/>
+		   
+		   <!-- Fatigue -->
+		    <layout left="108" top="707" width="23" height="25" compilerOrder="67">
+                <checkBox field="desFatigue0" compilerOrder="68"/>
+            </layout>;
+		    <layout left="140" top="707" width="23" height="25" compilerOrder="69">
+                <checkBox field="desFatigue1" compilerOrder="70"/>
+            </layout>;
+            <layout left="171" top="707" width="23" height="25" compilerOrder="71">
+                <checkBox field="desFatigue2" compilerOrder="72"/>
+            </layout>;
+            <layout left="203" top="707" width="23" height="25" compilerOrder="73">
+                <checkBox field="desFatigue3" compilerOrder="74"/>
+            </layout>;
+            <layout left="233" top="707" width="36" height="40" compilerOrder="75">
+                <checkBox field="desFatigue4" compilerOrder="76"/>
+            </layout>;
+			
+			<!-- Moves -->
+			<layout left="627" top="834" width="23" height="17" compilerOrder="139">
+                <checkBox left="0" top="0" width="23" height="18" field="desMoves0" compilerOrder="140"/>
+            </layout>&#xD;
+            <layout left="907" top="833" width="23" height="17" compilerOrder="141">
+                <checkBox left="0" top="0" width="23" height="18" field="desMoves1" compilerOrder="142"/>
+            </layout>&#xD;
+			 <layout left="626" top="1247" width="23" height="17" compilerOrder="143">
+                <checkBox left="0" top="0" width="23" height="18" field="desMoves2" compilerOrder="144"/>
+            </layout>&#xD;
+			<layout left="627" top="1367" width="23" height="17" compilerOrder="145">
+                <checkBox left="0" top="0" width="23" height="18" field="desMoves3" compilerOrder="146"/>
+            </layout>&#xD;
+			 <layout left="907" top="1001" width="23" height="17" compilerOrder="147">
+                <checkBox left="0" top="0" width="23" height="18" field="desMoves4" compilerOrder="148"/>
+            </layout>&#xD;
+			
+			<!-- Marked by Fate -->
+            <layout left="364" top="874" width="23" height="17" compilerOrder="149">
+                <checkBox left="0" top="0" width="23" height="15" field="Check_Box30_0" compilerOrder="150"/>
+            </layout>&#xD;
+            <layout left="364" top="992" width="23" height="17" compilerOrder="151">
+                <checkBox left="0" top="0" width="23" height="15" field="Check_Box30_1" compilerOrder="152"/>
+            </layout>&#xD;
+            <layout left="281" top="1192" width="62" height="18" compilerOrder="1">
+                <edit transparent="true" fontSize="11.3" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="62" height="19" field="I_will_bring_great_change_to" compilerOrder="2"/>
+            </layout>&#xD;
+            <layout left="363" top="1207" width="23" height="17" compilerOrder="153">
+                <checkBox left="0" top="0" width="23" height="15" field="Check_Box30_2" compilerOrder="154"/>
+            </layout>&#xD;
+            <layout left="271" top="1212" width="62" height="18" compilerOrder="3">
+                <edit transparent="true" fontSize="11.3" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="62" height="19" field="I_will_weather_betrayal_by" compilerOrder="4"/>
+            </layout>&#xD;
+            <layout left="166" top="1232" width="62" height="18" compilerOrder="5">
+                <edit transparent="true" fontSize="11.3" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="62" height="19" field="I_will_lose" compilerOrder="6"/>
+            </layout>&#xD;
+            <layout left="248" top="1252" width="62" height="18" compilerOrder="7">
+                <edit transparent="true" fontSize="11.3" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="62" height="19" field="I_will_need_the_help_of" compilerOrder="8"/>
+            </layout>&#xD;
+            <layout left="101" top="1292" width="77" height="18" compilerOrder="9">
+                <edit transparent="true" fontSize="11.3" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="77" height="19" field="I_will_learn_a_crucial_truth_from" compilerOrder="10"/>
+            </layout>&#xD;
+            <layout left="236" top="1312" width="62" height="18" compilerOrder="11">
+                <edit transparent="true" fontSize="11.3" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="62" height="19" field="I_will_defend_or_save" compilerOrder="12"/>
+            </layout>&#xD;
+			
+			<layout left="211" top="1350" width="23" height="17" compilerOrder="159">
+                <checkBox left="0" top="0" width="23" height="16" field="Check_Box31_0" compilerOrder="160"/>
+            </layout>&#xD;
+            <layout left="231" top="1350" width="23" height="17" compilerOrder="161">
+                <checkBox left="0" top="0" width="23" height="16" field="Check_Box31_1" compilerOrder="162"/>
+            </layout>&#xD;
+            <layout left="251" top="1350" width="23" height="15" compilerOrder="163">
+                <checkBox left="0" top="0" width="23" height="16" field="Check_Box31_2" compilerOrder="164"/>
+            </layout>&#xD;
+            <layout left="271" top="1350" width="23" height="17" compilerOrder="165">
+                <checkBox left="0" top="0" width="23" height="16" field="Check_Box31_3" compilerOrder="166"/>
+            </layout>&#xD;
+            <layout left="291" top="1350" width="23" height="17" compilerOrder="167">
+                <checkBox left="0" top="0" width="23" height="16" field="Check_Box31_4" compilerOrder="168"/>
+            </layout>&#xD;
+			
+			<layout left="364" top="1348" width="23" height="17" compilerOrder="157">
+                <checkBox left="0" top="0" width="23" height="15" field="Check_Box30_4" compilerOrder="158"/>
+            </layout>&#xD;
+			 <layout left="363" top="1409" width="23" height="17" compilerOrder="155">
+                <checkBox left="0" top="0" width="23" height="16" field="Check_Box30_3" compilerOrder="156"/>
+            </layout>&#xD;
+        </rectangle>
+    </scrollBox>
+</form>

@@ -1,0 +1,270 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmbold1_svg" align="client" theme="dark" margins="{top=1}">
+    <style>#frmbold1_svg path {color: black; strokeColor: black; mode: stretch;} &#xD;
+#frmbold1_svg label {fontColor: black; textTrimming: none; wordWrap: false; autoSize: true;}</style>
+    <scrollBox align="client">
+        <rectangle width="1224" height="1584" color="white">&#xD;
+            <image left="0" top="0" width="1224" height="1584" src="images/BoldFrente.png" style="stretch" optimize="true" compilerOrder="0"/>&#xD;
+            
+			<layout left="329" top="50" width="387" height="44" compilerOrder="3">
+                <edit transparent="true" fontSize="24" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="387" height="45" field="bolName" compilerOrder="4"/>
+            </layout>;
+			
+			<!-- Backgrounds -->
+            <layout left="61" top="133" width="40" height="50" compilerOrder="7">
+                <checkBox field="bolMilitary" compilerOrder="8"/>
+            </layout>;
+            <layout left="162" top="133" width="40" height="50" compilerOrder="9">
+                <checkBox field="bolOutaw" compilerOrder="10"/>
+            </layout>;
+            <layout left="264" top="133" width="40" height="50" compilerOrder="11">
+                <checkBox field="bolUrban" compilerOrder="12"/>
+            </layout>;
+            <layout left="61" top="152" width="40" height="50" compilerOrder="17">
+                <checkBox field="bolMonastic" compilerOrder="18"/>
+            </layout>;
+			 <layout left="162" top="152" width="40" height="50" compilerOrder="13">
+                <checkBox field="bolPrivileged" compilerOrder="14"/>
+            </layout>;
+            <layout left="264" top="152" width="40" height="50" compilerOrder="15">
+                <checkBox field="bolWilderness" compilerOrder="16"/>
+            </layout>;
+           
+			<!-- Demeanor -->
+            <layout left="61" top="203" width="40" height="50" compilerOrder="19">
+                <checkBox field="bolAbove" compilerOrder="20"/>
+            </layout>;
+			<layout left="61" top="223" width="40" height="50" compilerOrder="21">
+                <checkBox field="bolPerfectionist" compilerOrder="22"/>
+            </layout>;
+			<layout left="61" top="243" width="40" height="50" compilerOrder="25">
+                <checkBox field="bolChilly" compilerOrder="26"/>
+            </layout>;
+            <layout left="164" top="203" width="40" height="50" compilerOrder="23">
+                <checkBox field="bolRebelious" compilerOrder="24"/>
+            </layout>;
+            <layout left="164" top="223" width="40" height="50" compilerOrder="27">
+                <checkBox field="bolFlippant" compilerOrder="28"/>
+            </layout>;
+            <layout left="164" top="243" width="40" height="50" compilerOrder="29">
+                <checkBox field="bolStandoffish" compilerOrder="30"/>
+            </layout>;
+           
+			<!-- Statuses -->
+            <layout left="881" top="267" width="40" height="50" compilerOrder="43">
+                <checkBox field="bolEmpowered" compilerOrder="44"/>
+            </layout>;
+            <layout left="881" top="287" width="40" height="50" compilerOrder="45">
+                <checkBox field="bolFavored" compilerOrder="46"/>
+            </layout>;
+            <layout left="881" top="307" width="40" height="50" compilerOrder="47">
+                <checkBox field="bolInspired" compilerOrder="48"/>
+            </layout>;
+			 <layout left="881" top="327" width="40" height="50" compilerOrder="49">
+                <checkBox field="bolPrepared" compilerOrder="50"/>
+            </layout>;
+			 <layout left="1025" top="267" width="40" height="50" compilerOrder="51">
+                <checkBox field="bolDoomed" compilerOrder="52"/>
+            </layout>;
+            <layout left="1025" top="287" width="40" height="50" compilerOrder="55">
+                <checkBox field="bolImpaired" compilerOrder="56"/>
+            </layout>;
+			<layout left="1025" top="307" width="40" height="50" compilerOrder="57">
+                <checkBox field="bolTrapped" compilerOrder="58"/>
+            </layout>;
+			<layout left="1025" top="327" width="40" height="50" compilerOrder="53">
+                <checkBox field="bolStunned" compilerOrder="54"/>
+            </layout>;
+			
+			<!-- Fighting Style e Training -->
+			<layout left="73" top="297" width="285" height="44" compilerOrder="5">
+                <edit transparent="true" fontSize="24" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="285" height="45" field="Fight_Style" compilerOrder="6"/>
+            </layout>;
+			
+            <layout left="417" top="323" width="50" height="60" compilerOrder="33">
+                <checkBox field="bolWater" compilerOrder="34"/>
+            </layout>;
+			<layout left="491" top="323" width="50" height="60" compilerOrder="31">
+                <checkBox field="bolEarth" compilerOrder="32"/>
+            </layout>;
+			<layout left="565" top="323" width="50" height="60" compilerOrder="35">
+                <checkBox field="bolFire" compilerOrder="36"/>
+            </layout>;
+            <layout left="640" top="323" width="50" height="60" compilerOrder="39">
+                <checkBox field="bolAir" compilerOrder="40"/>
+            </layout>;
+			 <layout left="714" top="323" width="50" height="60" compilerOrder="37">
+                <checkBox field="bolMartial" compilerOrder="38"/>
+            </layout>;
+            <layout left="788" top="323" width="50" height="60" compilerOrder="41">
+                <checkBox field="bolMech" compilerOrder="42"/>
+            </layout>;
+			
+			<!-- Stats e Conditions -->
+			<layout left="113" top="442" width="34" height="44" compilerOrder="59">
+                <edit transparent="true" fontSize="24" fontColor="#000000" type="number" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="34" height="45" field="bolCreativity" compilerOrder="60"/>
+            </layout>;
+            <layout left="113" top="494" width="34" height="44" compilerOrder="61">
+                <edit transparent="true" fontSize="24" fontColor="#000000" type="number" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="34" height="45" field="bolFocus" compilerOrder="62"/>
+            </layout>;
+			<layout left="113" top="545" width="34" height="44" compilerOrder="63">
+                <edit transparent="true" fontSize="24" fontColor="#000000" type="number" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="34" height="45" field="bolHarmony" compilerOrder="64"/>
+            </layout>;
+			 <layout left="113" top="597" width="34" height="44" compilerOrder="65">
+                <edit transparent="true" fontSize="24" fontColor="#000000" type="number" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="34" height="45" field="bolPassion" compilerOrder="66"/>
+            </layout>;
+			<layout left="852" top="445" width="19" height="20" compilerOrder="77">
+                <checkBox field="bolAfraid" compilerOrder="78"/>
+            </layout>;
+            <layout left="852" top="493" width="19" height="20" compilerOrder="79">
+                <checkBox field="bolAngry" compilerOrder="80"/>
+            </layout>;
+            <layout left="852" top="543" width="19" height="20" compilerOrder="81">
+                <checkBox field="bolGuilty" compilerOrder="82"/>
+            </layout>;
+			 <layout left="852" top="594" width="19" height="20" compilerOrder="83">
+                <checkBox field="bolInsecure" compilerOrder="84"/>
+            </layout>;
+            <layout left="852" top="645" width="19" height="20" compilerOrder="85">
+                <checkBox field="bolTroubled" compilerOrder="86"/>
+            </layout>;
+			
+			<!-- Center -->
+            <layout left="479" top="589" width="23" height="25" compilerOrder="115">
+                <checkBox field="bolCenter0" compilerOrder="116"/>
+            </layout>;
+            <layout left="519" top="589" width="23" height="25" compilerOrder="117">
+                <checkBox field="bolCenter1" compilerOrder="118"/>
+            </layout>;
+            <layout left="558" top="589" width="23" height="25" compilerOrder="119">
+                <checkBox field="bolCenter2" compilerOrder="120"/>
+            </layout>;
+            <layout left="598" top="589" width="23" height="25" compilerOrder="121">
+                <checkBox field="bolCenter3" compilerOrder="122"/>
+            </layout>;
+            <layout left="638" top="589" width="23" height="25" compilerOrder="123">
+                <checkBox field="bolCenter4" compilerOrder="124"/>
+            </layout>;
+            <layout left="678" top="589" width="23" height="25" compilerOrder="125">
+                <checkBox field="bolCenter5" compilerOrder="126"/>
+            </layout>;
+            <layout left="718" top="589" width="23" height="25" compilerOrder="127">
+                <checkBox field="bolCenter6" compilerOrder="128"/>
+            </layout>;
+           
+		   <!-- Balance -->
+			<radioButton left="479" top="546" width="23" height="25" groupName="balanceUp"/>
+			<radioButton left="519" top="546" width="23" height="25" groupName="balanceUp"/>
+			<radioButton left="558" top="546" width="23" height="25" groupName="balanceUp"/>
+			<radioButton left="598" top="546" width="23" height="25" groupName="balanceUp"/>
+			<radioButton left="638" top="546" width="23" height="25" groupName="balanceUp"/>
+			<radioButton left="678" top="546" width="23" height="25" groupName="balanceUp"/>
+			<radioButton left="718" top="546" width="23" height="25" groupName="balanceUp"/>
+			
+			
+			<radioButton left="479" top="626" width="23" height="25" groupName="balanceDown"/>
+			<radioButton left="519" top="626" width="23" height="25" groupName="balanceDown"/>
+			<radioButton left="558" top="626" width="23" height="25" groupName="balanceDown"/>
+			<radioButton left="598" top="626" width="23" height="25" groupName="balanceDown"/>
+			<radioButton left="638" top="626" width="23" height="25" groupName="balanceDown"/>
+			<radioButton left="678" top="626" width="23" height="25" groupName="balanceDown"/>
+			<radioButton left="718" top="626" width="23" height="25" groupName="balanceDown"/>
+		   
+		   <!-- Fatigue -->
+		    <layout left="108" top="707" width="23" height="25" compilerOrder="67">
+                <checkBox field="bolFatigue0" compilerOrder="68"/>
+            </layout>;
+		    <layout left="140" top="707" width="23" height="25" compilerOrder="69">
+                <checkBox field="bolFatigue1" compilerOrder="70"/>
+            </layout>;
+            <layout left="171" top="707" width="23" height="25" compilerOrder="71">
+                <checkBox field="bolFatigue2" compilerOrder="72"/>
+            </layout>;
+            <layout left="203" top="707" width="23" height="25" compilerOrder="73">
+                <checkBox field="bolFatigue3" compilerOrder="74"/>
+            </layout>;
+            <layout left="233" top="707" width="36" height="40" compilerOrder="75">
+                <checkBox field="bolFatigue4" compilerOrder="76"/>
+            </layout>;
+			
+			<!-- Moves -->
+            <layout left="533" top="835" width="23" height="17" compilerOrder="127">
+                <checkBox left="0" top="0" width="23" height="18" field="bolMoves0" compilerOrder="128"/>
+            </layout>&#xD;
+            <layout left="860" top="836" width="23" height="17" compilerOrder="129">
+                <checkBox left="0" top="0" width="23" height="18" field="bolMoves1" compilerOrder="130"/>
+            </layout>&#xD;
+			<layout left="533" top="1075" width="23" height="17" compilerOrder="131">
+                <checkBox left="0" top="0" width="23" height="18" field="bolMoves2" compilerOrder="132"/>
+            </layout>&#xD;
+			<layout left="860" top="1115" width="23" height="17" compilerOrder="133">
+                <checkBox left="0" top="0" width="23" height="18" field="bolMoves3" compilerOrder="134"/>
+            </layout>&#xD;
+			<layout left="533" top="1354" width="23" height="17" compilerOrder="135">
+                <checkBox left="0" top="0" width="23" height="18" field="bolMoves4" compilerOrder="136"/>
+            </layout>&#xD;
+			
+			<!-- Legacy -->
+            <layout left="87" top="1020" width="23" height="15" compilerOrder="137">
+                <checkBox left="0" top="0" width="23" height="16" field="bolLegacy1" compilerOrder="138"/>
+            </layout>&#xD;
+            <layout left="87" top="1039" width="23" height="15" compilerOrder="139">
+                <checkBox left="0" top="0" width="23" height="16" field="bolLegacy2" compilerOrder="140"/>
+            </layout>&#xD;
+            <layout left="87" top="1059" width="23" height="15" compilerOrder="141">
+                <checkBox left="0" top="0" width="23" height="16" field="bolLegacy3" compilerOrder="142"/>
+            </layout>&#xD;
+            <layout left="87" top="1079" width="23" height="15" compilerOrder="143">
+                <checkBox left="0" top="0" width="23" height="16" field="bolLegacy4" compilerOrder="144"/>
+            </layout>&#xD;
+            <layout left="87" top="1099" width="23" height="15" compilerOrder="145">
+                <checkBox left="0" top="0" width="23" height="16" field="bolLegacy5" compilerOrder="146"/>
+            </layout>&#xD;
+            <layout left="87" top="1118" width="23" height="15" compilerOrder="147">
+                <checkBox left="0" top="0" width="23" height="16" field="bolLegacy6" compilerOrder="148"/>
+            </layout>&#xD;
+            <layout left="87" top="1138" width="23" height="15" compilerOrder="149">
+                <checkBox left="0" top="0" width="23" height="16" field="bolLegacy7" compilerOrder="150"/>
+            </layout>&#xD;
+            <layout left="87" top="1158" width="23" height="15" compilerOrder="151">
+                <checkBox left="0" top="0" width="23" height="16" field="bolLegacy8" compilerOrder="152"/>
+            </layout>&#xD;
+            <layout left="87" top="1178" width="23" height="15" compilerOrder="153">
+                <checkBox left="0" top="0" width="23" height="16" field="bolLegacy9" compilerOrder="154"/>
+            </layout>&#xD;
+            <layout left="87" top="1197" width="23" height="15" compilerOrder="155">
+                <checkBox left="0" top="0" width="23" height="16" field="bolLegacy10" compilerOrder="156"/>
+            </layout>&#xD;
+            <layout left="87" top="1217" width="23" height="15" compilerOrder="157">
+                <checkBox left="0" top="0" width="23" height="16" field="bolLegacy11" compilerOrder="158"/>
+            </layout>&#xD;
+            <layout left="87" top="1237" width="23" height="15" compilerOrder="159">
+                <checkBox left="0" top="0" width="23" height="16" field="bolLegacy12" compilerOrder="160"/>
+            </layout>&#xD;
+            <layout left="87" top="1257" width="23" height="15" compilerOrder="161">
+                <checkBox left="0" top="0" width="23" height="16" field="bolLegacy13" compilerOrder="162"/>
+            </layout>&#xD;
+            <layout left="87" top="1280" width="23" height="15" compilerOrder="163">
+                <checkBox left="0" top="0" width="23" height="16" field="bolLegacy14" compilerOrder="164"/>
+            </layout>&#xD;
+            <layout left="87" top="1300" width="23" height="15" compilerOrder="165">
+                <checkBox left="0" top="0" width="23" height="16" field="bolLegacy15" compilerOrder="166"/>
+            </layout>&#xD;
+            <layout left="87" top="1319" width="23" height="15" compilerOrder="167">
+                <checkBox left="0" top="0" width="23" height="16" field="bolLegacy16" compilerOrder="168"/>
+            </layout>&#xD;
+            <layout left="87" top="1339" width="23" height="15" compilerOrder="169">
+                <checkBox left="0" top="0" width="23" height="16" field="bolLegacy17" compilerOrder="170"/>
+            </layout>&#xD;
+            <layout left="87" top="1359" width="23" height="15" compilerOrder="171">
+                <checkBox left="0" top="0" width="23" height="16" field="bolLegacy18" compilerOrder="172"/>
+            </layout>&#xD;
+            <layout left="87" top="1380" width="23" height="15" compilerOrder="173">
+                <checkBox left="0" top="0" width="23" height="16" field="bolLegacy19" compilerOrder="174"/>
+            </layout>&#xD;
+            <layout left="87" top="1400" width="23" height="15" compilerOrder="175">
+                <checkBox left="0" top="0" width="23" height="16" field="bolLegacy20" compilerOrder="176"/>
+            </layout>&#xD;
+        </rectangle>
+    </scrollBox>
+</form>
